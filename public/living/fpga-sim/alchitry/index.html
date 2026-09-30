@@ -477,25 +477,36 @@ output led7 heartbeat</pre>
   <section class="figure-shell" id="energy">
     <header>
       <div class="title-row"><span class="fig-id">energy</span><h2>Energy metering (education)</h2></div>
-      <div class="chips"><span class="chip illustrative">no onboard meter</span></div>
+      <div class="chips"><span class="chip illustrative">Pt V2 unmetered</span><span class="chip">KV260 seed Metered</span></div>
     </header>
     <p>
       The Alchitry Pt V2 does <strong>not</strong> include an onboard joule or watt-hour meter.
       Stage C UART and LED results prove <em>decision agreement</em> (allow / refuse / commit), not board energy.
+      The Wise Computer Automation (WCA) composite <code>commit = lut_allow AND SafePH AND CBF</code> on Pt V2 remains <strong>Unmetered</strong> for joules.
       Analytical OpCounter joules from Stages A and B remain model numbers. Do not invent readings.
     </p>
     <div class="panel">
-      <h3>How you would meter a stated workload later</h3>
-      <ul class="plain">
-        <li><strong>USB inline power meter</strong> between the host USB port and the board (reports volts/amps/watts on the 5&nbsp;V bus). State the workload (bitstream, UART run length) beside any number.</li>
-        <li><strong>Shunt resistor + oscilloscope</strong> on the 5&nbsp;V supply rail: capture voltage across a known shunt, integrate <code>V·I</code> over the episode. Calibrate the shunt; report sense resistance and bandwidth.</li>
-        <li><strong>Not a DUT meter:</strong> Vivado / nextpnr / post-place-and-route power estimates, SparkFun catalog figures, and OpCounter analytical joules. Those are models or vendor specs, not board-measured energy.</li>
-      </ul>
+      <h3>KV260 INA260 — free-running WCA seed (Metered)</h3>
+      <p>
+        Board watts are measured on the AMD Kria KV260 Vision AI Starter Kit via SOM
+        Texas Instruments INA260 (<code>ina260_u14</code>, <code>hwmon2/power1_input</code>, microwatts),
+        using <code>openie-fpga/tools/kv260-settle/pwr.sh</code> trimmed-mean discipline and ferrotherm A/B/A
+        (settle, sample, paired differences, reload A). Harness:
+        <code>openie-fpga/artifacts/stage-c/wca-kv260-meter/</code>.
+      </p>
+      <p>
+        <strong>2026-09-30 A/B/A (re-derivable log):</strong>
+        A = <code>baseline.bit.bin</code>, B = <code>wca_seed_freerun.bit.bin</code>
+        (439 CLB LUTs, DONT_TOUCH sink; SHA256 <code>bd37b1b3c0a60b26ae09a587a8b5910ef6e6eeee99fde605b0d2cbfa4cff86bd</code>).
+        N=4 passes, settle 15&nbsp;s, sample 25&nbsp;s @ ~4&nbsp;Hz.
+        mean A1 = <strong>3.9167&nbsp;W</strong>, mean B = <strong>3.0955&nbsp;W</strong>, mean A2 = <strong>3.9196&nbsp;W</strong>;
+        mean (B−A1) = <strong>−0.8212&nbsp;W</strong> (SE <strong>0.0024&nbsp;W</strong> over pass deltas);
+        drift mean (A2−A1) = 0.0029&nbsp;W (SE 0.0032&nbsp;W).
+        Sensor file: <code>logs/aba-baseline-vs-wca_seed_freerun.dat</code>.
+        <strong>No pJ claim</strong> (no ops/time definition). Watts only.
+        This is a free-running seed fabric energy rung — not a closed-loop Pt V2 UART gate joule cost.
+      </p>
     </div>
-    <p class="attr-note">
-      Until a meter reading exists on a stated workload, keep <code>board_synth_claimed=false</code> and write “energy unmetered” next to Stage C claims.
-      Guide path: <a href="index.html">/living/fpga-sim/alchitry/</a>.
-    </p>
   </section>
 
   <section class="figure-shell" id="limits">
@@ -503,7 +514,7 @@ output led7 heartbeat</pre>
       <div class="title-row"><span class="fig-id">limits</span><h2>Limits</h2></div>
     </header>
     <ul class="plain">
-      <li><strong>Energy unmetered.</strong> Pt V2 has no onboard joule meter. Stage C attached none. See <a href="#energy">Energy metering</a>. Analytical OpCounter joules remain model numbers.</li>
+      <li><strong>Energy unmetered on Pt V2.</strong> Pt V2 has no onboard joule meter. Stage C attached none. Planned meter: KV260 INA260 (see <a href="#energy">Energy metering</a>). Analytical OpCounter joules remain model numbers.</li>
       <li><strong>Toy gate ≠ full SoC.</strong> Native XC7 synthesis for this netlist reported a tiny resource footprint after optimization (Stage C note: 8 LUTs / 0 FFs). LED visibility is best-effort for the minimal demo, not a cycle-accurate WCA core.</li>
       <li><strong>No UART readback</strong> in this design. Functional evidence was detect + JTAG program success, plus visual LED activity.</li>
       <li><strong>Vendor specs ≠ DUT energy.</strong> SparkFun catalog figures describe the part. They do not replace a meter.</li>
