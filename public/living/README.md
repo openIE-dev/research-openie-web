@@ -1,4 +1,14 @@
-# Living paper shells (P0 + 3D stubs + PDF twin v0)
+# Interactive figures (P0 stubs)
+
+**Product note:** Readable research studies and downloadable PDFs live at
+[`/papers/`](https://research.openie.dev/papers/ni/) and [`/pdfs/`](https://research.openie.dev/pdfs/ni.pdf).
+This directory ships **interactive figures** that accompany those studies — not the papers themselves.
+
+Local box `python3 -m http.server` instructions are for developers only; production is served at https://research.openie.dev/living/.
+
+---
+
+## Living paper shells (P0 + 3D stubs + PDF twin v0)
 
 **Date:** Wed Sep 30, 2026 (America/New_York, EDT)  
 **Contract:** [`../LIVING_PAPER_CONTRACT.md`](../LIVING_PAPER_CONTRACT.md) · inventory [`../FIGURE_INVENTORY.md`](../FIGURE_INVENTORY.md)

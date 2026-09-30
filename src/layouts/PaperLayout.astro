@@ -1,0 +1,213 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  deck: string;
+  status?: string;
+  author?: string;
+  figuresHref: string;
+  pdfHref: string;
+  description?: string;
+  headings?: { depth: number; slug: string; text: string }[];
+}
+
+const {
+  title,
+  deck,
+  status = 'Research study · draft',
+  author = 'David Charlot · Open Interface Engineering',
+  figuresHref,
+  pdfHref,
+  description,
+  headings = [],
+} = Astro.props;
+
+const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3).slice(0, 40);
+---
+
+<Layout title={title} description={description ?? deck}>
+  <article class="px-6 md:px-10 pt-16 md:pt-20 pb-24">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-[minmax(0,1fr)_220px] gap-10 lg:gap-14">
+      <div class="min-w-0">
+        <div class="flex flex-wrap items-center gap-3 mb-5">
+          <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-dark bg-brand-amber px-2.5 py-1 rounded">
+            {status}
+          </span>
+          <span class="font-mono text-[10px] text-brand-gray">board_synth_claimed=false</span>
+        </div>
+
+        <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-brand-white max-w-[22ch] md:max-w-none">
+          {title}
+        </h1>
+        <p class="mt-5 font-body text-base md:text-lg text-brand-slate leading-relaxed max-w-[70ch]">
+          {deck}
+        </p>
+        <p class="mt-3 font-mono text-[11px] text-brand-gray">{author}</p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href={pdfHref}
+            class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors"
+            download
+          >
+            Download PDF
+          </a>
+          <a
+            href={figuresHref}
+            class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors"
+          >
+            Interactive figures
+          </a>
+          <a
+            href="/"
+            class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors"
+          >
+            ← Catalog
+          </a>
+        </div>
+
+        <p class="mt-6 font-body text-xs text-brand-gray leading-relaxed max-w-[70ch]">
+          These are research studies / draft papers — not final journal PDFs. Claims keep honesty tags.
+          Interactive figures live under <a href={figuresHref} class="text-brand-cyan no-underline hover:underline">/living/</a>; prose and downloadable PDFs live here.
+        </p>
+
+        <div class="paper-prose mt-12 max-w-[70ch]">
+          <slot />
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-brand-border flex flex-wrap gap-3">
+          <a href={pdfHref} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold" download>Download PDF</a>
+          <span class="text-brand-gray">·</span>
+          <a href={figuresHref} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal">Interactive figures</a>
+          <span class="text-brand-gray">·</span>
+          <a href="/" class="font-mono text-xs text-brand-slate no-underline hover:text-brand-white">Catalog</a>
+        </div>
+      </div>
+
+      {toc.length > 0 && (
+        <aside class="hidden lg:block">
+          <nav class="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2" aria-label="Table of contents">
+            <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">Contents</p>
+            <ul class="space-y-1.5 list-none p-0 m-0">
+              {toc.map((h) => (
+                <li class={h.depth === 3 ? 'pl-3' : ''}>
+                  <a
+                    href={`#${h.slug}`}
+                    class="font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan leading-snug block"
+                  >
+                    {h.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+      )}
+    </div>
+  </article>
+</Layout>
+
+<style is:global>
+  .paper-prose {
+    font-family: var(--font-body);
+    color: var(--color-brand-slate);
+    line-height: 1.7;
+    font-size: 0.975rem;
+  }
+  .paper-prose > :first-child { margin-top: 0; }
+  .paper-prose h1 {
+    font-size: 1.75rem;
+    margin: 2.5rem 0 1rem;
+    color: var(--color-brand-white);
+  }
+  .paper-prose h2 {
+    font-size: 1.35rem;
+    margin: 2.25rem 0 0.85rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-brand-border);
+    color: var(--color-brand-white);
+  }
+  .paper-prose h3 {
+    font-size: 1.1rem;
+    margin: 1.75rem 0 0.65rem;
+    color: var(--color-brand-white);
+  }
+  .paper-prose h4 {
+    font-size: 1rem;
+    margin: 1.4rem 0 0.5rem;
+    color: var(--color-brand-light);
+  }
+  .paper-prose p { margin: 0.85rem 0; }
+  .paper-prose ul, .paper-prose ol {
+    margin: 0.85rem 0;
+    padding-left: 1.35rem;
+  }
+  .paper-prose li { margin: 0.35rem 0; }
+  .paper-prose a {
+    color: var(--color-brand-cyan);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .paper-prose a:hover { color: var(--color-brand-teal); }
+  .paper-prose strong { color: var(--color-brand-light); font-weight: 600; }
+  .paper-prose em { color: var(--color-brand-light); }
+  .paper-prose code {
+    font-family: var(--font-mono);
+    font-size: 0.82em;
+    color: var(--color-brand-cyan);
+    background: rgba(255,255,255,0.04);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+  }
+  .paper-prose pre {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--color-brand-border);
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 1.1rem 0;
+  }
+  .paper-prose pre code {
+    background: none;
+    padding: 0;
+    color: var(--color-brand-slate);
+  }
+  .paper-prose blockquote {
+    margin: 1.1rem 0;
+    padding: 0.35rem 0 0.35rem 1rem;
+    border-left: 3px solid var(--color-brand-amber);
+    color: var(--color-brand-light);
+  }
+  .paper-prose hr {
+    border: 0;
+    height: 1px;
+    margin: 2rem 0;
+    background: var(--color-brand-border);
+  }
+  .paper-prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+    font-size: 0.85rem;
+    display: block;
+    overflow-x: auto;
+  }
+  .paper-prose th, .paper-prose td {
+    border: 1px solid var(--color-brand-border);
+    padding: 0.5rem 0.65rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .paper-prose th {
+    background: rgba(255,255,255,0.04);
+    color: var(--color-brand-white);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .paper-prose img { max-width: 100%; height: auto; border-radius: 8px; }
+</style>

@@ -6,39 +6,46 @@ const projects = [
     id: 'ni',
     title: 'Notational Intelligence as Commit Law',
     deck: 'System One decides in software. WCA decides whether the machine is allowed to move.',
-    status: 'Living P0 shell',
+    status: 'Research study · draft',
     about: '/about/ni',
-    living: '/papers/ni/',
+    paper: '/papers/ni/',
+    pdf: '/pdfs/ni.pdf',
+    figures: '/living/ni/',
     tags: ['commit law', 'MCP gate', 'honesty grades'],
   },
   {
     id: 'satiation',
     title: 'Satiation & Scarcity after Free AI',
     deck: 'Capability scales. Appetite does not. Design to done.',
-    status: 'Living P0 shell',
+    status: 'Research study · draft',
     about: '/about/satiation',
-    living: '/papers/satiation/',
+    paper: '/papers/satiation/',
+    pdf: '/pdfs/satiation.pdf',
+    figures: '/living/satiation/',
     tags: ['satiation', 'scarcity', 'bliss surface'],
   },
 ];
 ---
 
-<Layout title="Living papers" description="Catalog of OpenIE research projects and living whitepapers. Interactive first; PDF twin; no paid services.">
+<Layout title="Research catalog" description="OpenIE research studies: readable papers, downloadable PDFs, and interactive figures. Draft studies — board_synth_claimed=false.">
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-12 max-w-7xl mx-auto">
     <p class="section-label mb-4">research.openie.dev</p>
     <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-brand-white max-w-3xl">
-      Living papers hub
+      Research catalog
     </h1>
     <p class="mt-6 font-body text-base md:text-lg text-brand-slate max-w-2xl leading-relaxed">
-      Dedicated catalog for OpenIE research. Interactive web is canonical; PDF twin maps the same object and claim IDs.
-      No paid third-party research services in the product stack.
+      Readable research studies with downloadable PDFs. Interactive figures under <span class="text-brand-cyan">/living/</span> are companions — not the papers themselves.
+      Draft status · honesty tags kept · <span class="font-mono text-brand-amber text-sm">board_synth_claimed=false</span>.
     </p>
     <div class="mt-8 flex flex-wrap gap-3">
-      <a href="/living/" class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
-        Open living hub
+      <a href="/papers/ni/" class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
+        Read NI paper
       </a>
-      <a href="/living/pdf-twin/" class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">
-        PDF twin v0
+      <a href="/papers/satiation/" class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">
+        Read Satiation paper
+      </a>
+      <a href="/living/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">
+        Figures hub
       </a>
     </div>
   </section>
@@ -47,7 +54,7 @@ const projects = [
     <div class="flex items-end justify-between gap-4 mb-8">
       <div>
         <p class="section-label mb-2">Catalog</p>
-        <h2 class="text-2xl md:text-3xl text-brand-white">Research projects</h2>
+        <h2 class="text-2xl md:text-3xl text-brand-white">Research studies</h2>
       </div>
       <p class="font-mono text-[11px] text-brand-gray hidden sm:block">board_synth_claimed=false</p>
     </div>
@@ -67,10 +74,16 @@ const projects = [
             ))}
           </div>
           <div class="flex flex-wrap gap-3">
-            <a href={p.living} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors">
-              Living paper →
+            <a href={p.paper} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">
+              Read paper →
             </a>
-            <a href={p.about} class="font-mono text-xs text-brand-slate no-underline hover:text-brand-white transition-colors">
+            <a href={p.pdf} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors" download>
+              Download PDF
+            </a>
+            <a href={p.figures} class="font-mono text-xs text-brand-slate no-underline hover:text-brand-white transition-colors">
+              Figures
+            </a>
+            <a href={p.about} class="font-mono text-xs text-brand-gray no-underline hover:text-brand-white transition-colors">
               About
             </a>
           </div>
@@ -81,13 +94,14 @@ const projects = [
 
   <section class="px-6 md:px-10 pb-24 max-w-7xl mx-auto">
     <div class="glass-card p-6 md:p-8">
-      <p class="section-label mb-3">Contract</p>
-      <h2 class="text-xl text-brand-white mb-3">Living paper contract</h2>
+      <p class="section-label mb-3">Honesty</p>
+      <h2 class="text-xl text-brand-white mb-3">Research studies, not journal finals</h2>
       <ul class="space-y-2 font-body text-sm text-brand-slate leading-relaxed list-disc pl-5">
-        <li>Interactive web is canonical; PDF is a twin with the same section / object / claim IDs.</li>
+        <li>Prose lives at <code class="text-brand-cyan">/papers/</code>; real PDFs at <code class="text-brand-cyan">/pdfs/</code>.</li>
+        <li>Interactive figures stay under <code class="text-brand-cyan">/living/</code> — companions, not paper shells sold as papers.</li>
         <li>No Notion AI, Elicit, Consensus, or other paid research services in the runtime.</li>
         <li>Claim ledgers bind web, PDF, Medium, demos, and metadata. Forbidden claims stay off the UI.</li>
-        <li>Materials also archived under <code class="text-brand-cyan">openie-web/research/</code> for permanence.</li>
+        <li><code class="text-brand-amber">board_synth_claimed=false</code> — software reference stack; surrogate joules ≠ board watts.</li>
       </ul>
     </div>
   </section>

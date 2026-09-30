@@ -1,13 +1,21 @@
 # research.openie.dev
 
-OpenIE research / living-papers hub. Live at **research.openie.dev**.
+OpenIE research hub. Live at **research.openie.dev**.
 
-Lists research projects (NI Commit Law, Satiation, …). Interactive web is canonical; PDF twin maps the same IDs. No paid research services.
+**IA (locked):**
+- `/papers/{ni,satiation}/` — readable research study prose (draft papers)
+- `/pdfs/{ni,satiation}.pdf` — real downloadable study PDFs
+- `/living/` — **interactive figures** (P0 stubs), not papers
+- Status honesty: research study · draft; `board_synth_claimed=false`
+
+No paid research services in the product stack.
 
 ## Stack
 
 - Astro 5
 - Tailwind 4
+- Study markdown: `src/content/papers/*.md`
+- PDFs generated into `public/pdfs/` (pandoc + weasyprint)
 
 ## Build
 
@@ -22,44 +30,27 @@ Dev:
 pnpm dev
 ```
 
-Living P0 shells ship as static assets under `public/living/` (ES modules need HTTP — use `pnpm preview` or any static server after build). Canonical paper paths:
+Regenerate PDFs (Mac; needs pandoc + weasyprint):
 
-- `/papers/ni/` → redirect → `/living/ni/`
-- `/papers/satiation/` → redirect → `/living/satiation/`
+```bash
+./scripts/generate-pdfs.sh
+```
 
 ## Deploy
 
-Production: Tailscale `100.64.224.0` (Mac Studio) via Cloudflare Tunnel (`e5522233-…` / joule) → Caddy `:8443`.
+Production: Tailscale `100.64.224.0` (Mac Studio) via Cloudflare Tunnel → Caddy `:8443`.
 
 ```bash
-# Preferred:
 /Users/dcharlot/data-share/vibe-coding/site-ops/deploy/deploy.sh research
-
-# After Caddyfile hostname changes:
-/Users/dcharlot/data-share/vibe-coding/site-ops/deploy/deploy.sh --caddy
-
-# Or manually:
-pnpm build
-rsync -azq --delete dist/ dcharlot@100.64.224.0:/Users/dcharlot/sites/research-openie-web/
 ```
-
-## DNS / tunnel
-
-- DNS CNAME (already present): `research.openie.dev` → `e5522233-8dc5-40cb-8001-e073e21c5ced.cfargotunnel.com` (proxied), same tunnel as other `*.openie.dev` siblings
-- Tunnel catch-all → Caddy `:8443`
-- Caddy: `@researchopenie host research.openie.dev` → `~/sites/research-openie-web`
-
-## Site-ops
-
-Manifest: `site-ops/deploy/manifest.toml` → `[[site]] name = "research"`.
 
 ## Permanence / GitHub
 
-Public home for OpenIE materials: **https://github.com/openIE-dev** (org).
+- Canonical site: https://github.com/openIE-dev/research-openie-web
+- Drafting tree: sibling `openie-web/research/` (personal remotes — not canonical)
 
-- Site source: https://github.com/openIE-dev/research-openie-web (local `research-openie-web/`)
-- Contract / inventory / living export drafts: sibling `openie-web/research/` (local drafting tree; remotes today are personal Forgejo + `dcharlot65-personal` — migrate permanence into an `openIE-dev` repo rather than treating personal as canonical)
+## Source studies
 
-## Source living export
-
-Authoritative shells often originate from `wca-lut-edge/artifacts/living/`. Re-copy into `public/living/` when shells update.
+Authoritative study prose often originates from `wca-lut-edge/artifacts/*_STUDY.md`.
+Copy/clean into `src/content/papers/` then regenerate PDFs.
+Figure shells often originate from `wca-lut-edge/artifacts/living/` → `public/living/`.

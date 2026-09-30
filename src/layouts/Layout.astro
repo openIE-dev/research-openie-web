@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title,
-  description = "OpenIE Research — living papers hub. Interactive web is canonical; PDF twin maps the same IDs. No paid research services.",
+  description = "OpenIE Research — research studies with downloadable PDFs and interactive figures. Draft status · board_synth_claimed=false.",
 } = Astro.props;
 ---
 
@@ -60,7 +60,8 @@ const {
         <a href="/#catalog" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Catalog</a>
         <a href="/about/ni" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">NI Commit Law</a>
         <a href="/about/satiation" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Satiation</a>
-        <a href="/living/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-amber no-underline hover:text-brand-gold transition-colors">Living hub</a>
+        <a href="/papers/ni/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Papers</a>
+        <a href="/living/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-amber no-underline hover:text-brand-gold transition-colors">Figures</a>
         <a href="https://openie.dev" class="font-mono text-xs max-md:text-sm text-brand-cyan border border-brand-cyan/30 px-4 py-1.5 rounded-md no-underline hover:bg-brand-cyan/10 hover:border-brand-cyan transition-all">
           openie.dev
         </a>
@@ -81,8 +82,8 @@ const {
             Open<span class="text-brand-cyan">IE</span> Research
           </div>
           <p class="font-body text-[12px] text-brand-gray max-w-[320px] leading-relaxed">
-            Living papers hub for Open Interface Engineering, Inc.<br>
-            Interactive web is canonical · PDF twin · no paid services
+            Research studies hub for Open Interface Engineering, Inc.<br>
+            Papers + PDFs · figures under /living · no paid services
           </p>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-12">
@@ -91,7 +92,9 @@ const {
             <div class="space-y-2">
               <a href="/papers/ni/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">NI Commit Law</a>
               <a href="/papers/satiation/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Satiation</a>
-              <a href="/living/pdf-twin/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">PDF twin v0</a>
+              <a href="/pdfs/ni.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">NI PDF</a>
+              <a href="/pdfs/satiation.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Satiation PDF</a>
+              <a href="/living/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Figures</a>
             </div>
           </div>
           <div>
