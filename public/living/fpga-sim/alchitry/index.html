@@ -477,7 +477,7 @@ output led7 heartbeat</pre>
   <section class="figure-shell" id="energy">
     <header>
       <div class="title-row"><span class="fig-id">energy</span><h2>Energy metering (education)</h2></div>
-      <div class="chips"><span class="chip illustrative">Pt V2 unmetered</span><span class="chip">KV260 seed Metered</span></div>
+      <div class="chips"><span class="chip illustrative">Pt V2 unmetered</span><span class="chip">KV260 Metered</span></div>
     </header>
     <p>
       The Alchitry Pt V2 does <strong>not</strong> include an onboard joule or watt-hour meter.
@@ -486,25 +486,45 @@ output led7 heartbeat</pre>
       Analytical OpCounter joules from Stages A and B remain model numbers. Do not invent readings.
     </p>
     <div class="panel">
-      <h3>KV260 INA260 — free-running WCA seed (Metered)</h3>
+      <h3>Definitions</h3>
+      <ul class="plain">
+        <li><strong>W</strong> (watt) — SI power from the KV260 Texas Instruments INA260 (<code>ina260_u14</code>, <code>power1_input</code> in microwatts).</li>
+        <li><strong>pJ</strong> (picojoule) — 10<sup>−12</sup> joule.</li>
+        <li><strong>op</strong> — one enabled <em>seed-cycle</em> of the free-running WCA seed fabric (LFSR step + 16× allow-LUT + 8× SafePH residual + commit bank), counted on-device.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>KV260 INA260 — free-running WCA seed vs baseline (Metered watts)</h3>
       <p>
-        Board watts are measured on the AMD Kria KV260 Vision AI Starter Kit via SOM
-        Texas Instruments INA260 (<code>ina260_u14</code>, <code>hwmon2/power1_input</code>, microwatts),
-        using <code>openie-fpga/tools/kv260-settle/pwr.sh</code> trimmed-mean discipline and ferrotherm A/B/A
-        (settle, sample, paired differences, reload A). Harness:
-        <code>openie-fpga/artifacts/stage-c/wca-kv260-meter/</code>.
+        Harness: <code>openie-fpga/artifacts/stage-c/wca-kv260-meter/</code>
+        (trimmed-mean <code>pwr.sh</code> discipline; ferrotherm A/B/A).
       </p>
       <p>
-        <strong>2026-09-30 A/B/A (re-derivable log):</strong>
+        <strong>2026-09-30 A/B/A (rung 1):</strong>
         A = <code>baseline.bit.bin</code>, B = <code>wca_seed_freerun.bit.bin</code>
-        (439 CLB LUTs, DONT_TOUCH sink; SHA256 <code>bd37b1b3c0a60b26ae09a587a8b5910ef6e6eeee99fde605b0d2cbfa4cff86bd</code>).
-        N=4 passes, settle 15&nbsp;s, sample 25&nbsp;s @ ~4&nbsp;Hz.
+        (439 CLB LUTs; SHA256 <code>bd37b1b3c0a60b26ae09a587a8b5910ef6e6eeee99fde605b0d2cbfa4cff86bd</code>).
+        N=4, settle 15&nbsp;s, sample 25&nbsp;s @ ~4&nbsp;Hz.
         mean A1 = <strong>3.9167&nbsp;W</strong>, mean B = <strong>3.0955&nbsp;W</strong>, mean A2 = <strong>3.9196&nbsp;W</strong>;
-        mean (B−A1) = <strong>−0.8212&nbsp;W</strong> (SE <strong>0.0024&nbsp;W</strong> over pass deltas);
-        drift mean (A2−A1) = 0.0029&nbsp;W (SE 0.0032&nbsp;W).
-        Sensor file: <code>logs/aba-baseline-vs-wca_seed_freerun.dat</code>.
-        <strong>No pJ claim</strong> (no ops/time definition). Watts only.
-        This is a free-running seed fabric energy rung — not a closed-loop Pt V2 UART gate joule cost.
+        mean (B−A1) = <strong>−0.8212&nbsp;W</strong> (SE <strong>0.0024&nbsp;W</strong>).
+        Log: <code>logs/aba-baseline-vs-wca_seed_freerun.dat</code>.
+        Negative delta means the seed freerun rail draw is lighter than that SOM baseline bitstream — not “seed is free.”
+        <strong>No pJ</strong> on this arm (no ops/time).
+      </p>
+    </div>
+    <div class="panel">
+      <h3>KV260 INA260 — halt vs freerun with op counter (Metered pJ/op)</h3>
+      <p>
+        <strong>2026-09-30 A/B/A (rung 2):</strong>
+        Same bitstream <code>wca_seed_axi.bit.bin</code>
+        (SHA256 <code>d5018ff8d690560a6970cc77dc60dcfd5ecc496ef8faca37d523925472ee1ad5</code>;
+        975 CLB LUTs; AXI4-Lite @ <code>0xA0000000</code>).
+        A = <code>run=0</code> (halt), B = <code>run=1</code> (freerun). N=4, settle 15&nbsp;s, sample 25&nbsp;s @ ~4&nbsp;Hz.
+        mean A1 = <strong>3.0883&nbsp;W</strong>, mean B = <strong>3.0981&nbsp;W</strong>, mean A2 = <strong>3.0852&nbsp;W</strong>;
+        mean (B−A1) = <strong>+0.0098&nbsp;W</strong> (SE <strong>0.0031&nbsp;W</strong>).
+        On-device <code>op_count</code> (MAGIC <code>0x0CA5EED1</code>): mean ops/s = <strong>9.9998008×10<sup>7</sup></strong> (≈100&nbsp;MHz PL0).
+        <strong>pJ/op</strong> = (B−A1)&nbsp;W / (ops/s) × 10<sup>12</sup> → mean <strong>98.0&nbsp;pJ/op</strong> (SE <strong>30.8&nbsp;pJ/op</strong>, N=4).
+        Log: <code>logs/aba-halt-vs-freerun-axi.dat</code>.
+        This isolates enable-gated fabric activity on one design; it is not a closed-loop Pt V2 UART gate joule cost.
       </p>
     </div>
   </section>
