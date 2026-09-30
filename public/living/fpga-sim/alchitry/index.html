@@ -275,7 +275,7 @@ Programmed 104140 bytes via JTAG (SRAM) - DONE + EOS asserted</pre>
       <div class="chips"><span class="chip modelled">measured transcript</span></div>
     </header>
     <p>
-      After flashing <code>wca_seed1_uart_pt_v2.bit</code>, open the FT2232H channel B serial port
+      After flashing <code>wca_commit_gate_uart_pt_v2.bit</code> (synthesizable TLMM+LUT+PH commit gate; not a decision ROM), open the FT2232H channel B serial port
       (on macOS typically <code>/dev/cu.usbserial-0000001</code>) at 115200 baud 8N1.
       One episode prints a banner <code>WCA1 C01 R15 S06</code> and sixteen lines
       <code>Sii Lx Ex Cx</code>. Seed-1 agreement means sole commit at step 6
@@ -301,7 +301,7 @@ python3 -c "import serial,time; s=serial.Serial('/dev/cu.usbserial-0000001',1152
     <ul class="plain">
       <li><strong>Stage A (Rust / Icarus).</strong> Software reference and register-transfer level (RTL) simulation. Analytical OpCounter joules. Not board power.</li>
       <li><strong>Stage B (WASM / WebGPU).</strong> Same decision core in the browser with LUT and commit-trace visualization. Simulated agreement with Stage A seed-1 golden. WebGPU time is not energy.</li>
-      <li><strong>Stage C (this board).</strong> Detect + SRAM program of a minimal LED commit-gate. Partially done: programmed, energy unmetered, toy netlist rather than a full SoC.</li>
+      <li><strong>Stage C (this board).</strong> Detect + SRAM program of a synthesizable WCA commit-gate UART (TLMM + allow LUT + Q8.8 PH). UART agrees with seed-1 golden. Energy unmetered. Stimulus streams plant/proposal state; not a closed-loop float plant.</li>
     </ul>
   </section>
 
@@ -313,8 +313,8 @@ python3 -c "import serial,time; s=serial.Serial('/dev/cu.usbserial-0000001',1152
     <div class="panel">
       <h3>Bitstream identity (Stage C)</h3>
       <dl class="metrics" style="font-family:var(--mono);font-size:0.82rem;display:grid;grid-template-columns:auto 1fr;gap:0.2rem 0.85rem;margin:0">
-        <dt>file</dt><dd><a href="../stage-c/wca_commit_gate_pt_v2.bit">stage-c/wca_commit_gate_pt_v2.bit</a> (104140 bytes)</dd>
-        <dt>SHA-256</dt><dd class="hash">08e130e35eee764e13f3f9d6ddc5cedbc3c0d3dda3974d101ba1a9161e816fd7</dd>
+        <dt>file</dt><dd><a href="../stage-c/wca_commit_gate_uart_pt_v2.bit">stage-c/wca_commit_gate_uart_pt_v2.bit</a> (3825913 bytes)</dd>
+        <dt>SHA-256</dt><dd class="hash">5308f5c4d83bc484c6a6f6b5f6228941e68e880d34be4893dca60b1f6bd5343c</dd>
         <dt>IDCODE</dt><dd>0x13631093 (XC7A100T class, as reported by flash)</dd>
         <dt>evidence</dt><dd><a href="../stage-c/board-evidence.md">board-evidence.md</a></dd>
       </dl>

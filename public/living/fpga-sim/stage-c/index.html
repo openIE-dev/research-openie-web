@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta http-equiv="refresh" content="0; url=../alchitry/"/>
-<title>Stage C · redirect to Alchitry guide</title>
-<link rel="stylesheet" href="../../css/living.css"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Stage C — Alchitry Pt V2 WCA commit-gate</title>
+  <style>
+    body{font-family:system-ui,sans-serif;max-width:52rem;margin:2rem auto;padding:0 1rem;line-height:1.5;color:#1a1a1a}
+    code,pre{font-family:ui-monospace,Menlo,monospace;font-size:0.9rem}
+    pre{background:#f4f4f5;padding:0.85rem 1rem;overflow:auto;border-radius:6px}
+    .ok{color:#067d3c;font-weight:600}
+    .warn{color:#9a6700}
+    a{color:#0b57d0}
+  </style>
 </head>
 <body>
-<main style="padding:2rem;max-width:40rem;margin:auto;font-family:system-ui">
-  <h1>Stage C evidence</h1>
-  <p>Primary builder guide: <a href="../alchitry/">/living/fpga-sim/alchitry/</a>.</p>
-  <p>Raw evidence notes: <a href="./board-evidence.md">board-evidence.md</a>.</p>
-  <p>Bitstream: <a href="./wca_seed1_uart_pt_v2.bit">wca_seed1_uart_pt_v2.bit</a>
-     · design: <a href="./wca_seed1_uart_pt_v2.v">wca_seed1_uart_pt_v2.v</a>.</p>
-<p>UART agreement: <a href="./uart-agreement.json">uart-agreement.json</a> · <a href="./uart-transcript.txt">uart-transcript.txt</a></p>
-</main>
+  <h1>Stage C: synthesizable WCA commit-gate on Alchitry Pt V2</h1>
+  <p>Board UART agreement with the Rust seed-1 golden
+    (<span class="ok">agree=true</span>: 1 commit / 15 refuse / step 6).
+    Energy remains <strong>unmetered</strong>. No invented joules.</p>
+  <p>Bitstream: <a href="./wca_commit_gate_uart_pt_v2.bit">wca_commit_gate_uart_pt_v2.bit</a>
+     · design: <a href="./wca_commit_gate_uart_pt_v2.v">wca_commit_gate_uart_pt_v2.v</a>
+     · PH: <a href="./wca_ph_energy.v">wca_ph_energy.v</a>
+     · LUT: <a href="./wca_allow_lut.v">wca_allow_lut.v</a>
+     · TLMM: <a href="./wca_tlmm_synth.v">wca_tlmm_synth.v</a>.</p>
+  <p>This build <strong>replaces the seed-1 decision ROM</strong>. The FPGA computes
+    <code>commit = lut_allow ∧ energy_ok</code> from streaming plant/proposal state
+    (TLMM proposal path + Q8.8 port-Hamiltonian energy + allow LUT).</p>
+  <h2>Evidence</h2>
+  <ul>
+    <li><a href="./board-evidence.md">board-evidence.md</a></li>
+    <li><a href="./uart-agreement.json">uart-agreement.json</a></li>
+    <li><a href="./uart-transcript.txt">uart-transcript.txt</a></li>
+    <li><a href="./seed1_uart_expected.txt">seed1_uart_expected.txt</a></li>
+  </ul>
+  <h2>Limits</h2>
+  <p class="warn">Stimulus streams seed-1 plant/proposal state (not a closed-loop float plant).
+    Legacy Q8.8 PH (not Safe Q16.16). Fabric at 50 MHz (clk/2). Energy unmetered.
+    <code>board_synth_claimed=false</code>.</p>
+  <p>Builder guide: <a href="../alchitry/">/living/fpga-sim/alchitry/</a></p>
 </body>
 </html>
