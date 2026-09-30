@@ -1,0 +1,58 @@
+{
+  "board_synth_claimed": false,
+  "cases": [
+    {
+      "case": "read_only_bypass",
+      "classification": "read_only",
+      "executed": true,
+      "has_commit": false
+    },
+    {
+      "case": "irreversible_refuse",
+      "classification": "irreversible",
+      "commit": false,
+      "executed": false,
+      "executor_calls": 0,
+      "plant_action": [
+        0.0
+      ],
+      "reasons": [
+        {
+          "code": "energy_veto",
+          "detail": "mcp_energy_veto",
+          "eps": 0.05,
+          "v": 15.536249999999999,
+          "vdot": 6.0,
+          "vdot_q": 393219
+        },
+        {
+          "code": "cbf_veto",
+          "detail": "mcp_cbf_veto",
+          "h": 2.463750000000001
+        }
+      ]
+    },
+    {
+      "case": "irreversible_allow",
+      "classification": "irreversible",
+      "commit": true,
+      "compose": "lut_and_safe_and_cbf",
+      "executed": true,
+      "executor_calls": 1,
+      "plant_action": [
+        -0.02
+      ]
+    },
+    {
+      "case": "shell_exec_gated",
+      "classification": "irreversible",
+      "commit": true,
+      "executed": true,
+      "tool_class_str": "irreversible"
+    }
+  ],
+  "compose_default": "LutAndSafeAndCbf",
+  "method": "rust_mcp_commit_gate_v1",
+  "note": "Refuse never executes. Irreversible tools require Certificate under configured compose.",
+  "schema_version": "wca.commit.v1"
+}

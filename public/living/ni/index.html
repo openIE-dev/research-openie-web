@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Living · Notational Intelligence as Commit Law</title>
+<link rel="stylesheet" href="../css/living.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <div class="brand">P1 · NI Commit Law</div>
+    <nav class="nav">
+      <a href="../index.html">Hub</a>
+      <a href="index.html" class="active">NI</a>
+      <a href="../satiation/index.html">Satiation</a>
+      <a href="../README.md">README</a>
+    </nav>
+    <span class="honesty-bar">board_synth_claimed=false</span>
+  </div>
+</header>
+<main>
+  <div class="hero">
+    <h1>Notational Intelligence as Commit Law</h1>
+    <p class="deck-line">System One decides in software. WCA decides whether the machine is allowed to move.</p>
+    <p class="subtitle">Living stub — P0 figures as interactive shells. Claims stay ledger-safe (<code>CLAIM_LEDGER_NI.md</code>). Display grades V0–V2 only for this prototype.</p>
+  </div>
+
+  <nav class="toc" aria-label="Figure TOC">
+    <h2>P0 figure IDs on this page</h2>
+    <ul>
+      <li><a href="#ni-inf-01"><span class="id">ni-inf-01</span> Brahe→Kepler lineage</a></li>
+      <li><a href="#ni-diag-01"><span class="id">ni-diag-01</span> System One → WCA complement</a></li>
+      <li><a href="#ni-diag-02"><span class="id">ni-diag-02</span> Commit stack / compose</a></li>
+      <li><a href="#ni-fig-01"><span class="id">ni-fig-01</span> wca.commit.v1 schema</a></li>
+      <li><a href="#ni-run-01"><span class="id">ni-run-01</span> Seed-1 SoC runner</a></li>
+      <li><a href="#ni-run-02"><span class="id">ni-run-02</span> Safe-PH false-allow=0</a></li>
+      <li><a href="#ni-run-03"><span class="id">ni-run-03</span> MCP gate demo</a></li>
+      <li><a href="#ni-inf-02"><span class="id">ni-inf-02</span> Joule tiers A/B/C</a></li>
+      <li><a href="#ni-3d-01"><span class="id">ni-3d-01</span> Plant state 3D orbit (stub)</a></li>
+      <li><a href="#shared-diag-01"><span class="id">shared-diag-01</span> Complement path (shared)</a></li>
+      <li><a href="#shared-inf-01"><span class="id">shared-inf-01</span> Wave vs IT/IS bet</a></li>
+      <li><a href="#shared-inf-02"><span class="id">shared-inf-02</span> Honesty tag legend</a></li>
+      <li><a href="#shared-fig-01"><span class="id">shared-fig-01</span> Commit atoms strip</a></li>
+      <li><a href="#shared-tab-01"><span class="id">shared-tab-01</span> Joule tier vocabulary</a></li>
+    </ul>
+  </nav>
+
+  <!-- ni-inf-01 -->
+  <section class="figure-shell" id="ni-inf-01">
+    <header>
+      <div class="title-row"><span class="fig-id">ni-inf-01</span><h2>Brahe→Kepler notational lineage</h2></div>
+      <div class="chips">
+        <span class="chip illustrative">illustrative</span>
+        <span class="chip v1">V1</span>
+        <span class="chip stub">stub</span>
+        <div class="badge-toggle" aria-label="measured/modelled toggle">
+          <button type="button" data-badge="measured">measured</button>
+          <button type="button" data-badge="modelled" class="on-modelled">modelled</button>
+        </div>
+      </div>
+    </header>
+    <div class="widget">
+      <div class="timeline" data-timeline></div>
+      <div class="cite-chip" data-cite></div>
+    </div>
+    <p class="caption"><strong>PDF twin:</strong> Static timeline + caption + cite list. §1 / §2. Hover nodes; click opens cite chip. Lee cited generously.</p>
+  </section>
+
+  <!-- ni-diag-01 -->
+  <section class="figure-shell" id="ni-diag-01">
+    <header>
+      <div class="title-row"><span class="fig-id">ni-diag-01</span><h2>System One → WCA complement</h2></div>
+      <div class="chips">
+        <span class="chip illustrative">illustrative</span>
+        <span class="chip v1">V1</span>
+        <span class="chip stub">stub</span>
+      </div>
+    </header>
+    <div class="widget">
+      <div class="panel-grid">
+        <button type="button" class="card" data-layer="system-one">System One</button>
+        <button type="button" class="card" data-layer="tlmm">TLMM / Proposal</button>
+        <button type="button" class="card" data-layer="gate">Gate</button>
+        <button type="button" class="card" data-layer="plant">Plant</button>
+      </div>
+      <div class="panel-grid" data-layer-detail style="margin-top:0.75rem"></div>
+    </div>
+    <p class="caption"><strong>PDF twin:</strong> Static Mermaid/SVG of complement path. §2 / §7. Proposers upstream; gate owns irreversible branch.</p>
+  </section>
+
+  <!-- ni-diag-02 -->
+  <section class="figure-shell" id="ni-diag-02">
+    <header>
+      <div class="title-row"><span class="fig-id">ni-diag-02</span><h2>Commit stack · compose predicates</h2></div>
+      <div class="chips">
+        <span class="chip illustrative">illustrative</span>
+        <span class="chip v1">V1</span>
+        <span class="chip stub">stub</span>
+      </div>
+    </header>
+    <div class="widget-controls">
+      <label>Compose <select data-compose-select></select></label>
+    </div>
+    <div class="stack-flow" data-stack-flow></div>
+    <p class="small" data-formula style="margin-top:0.5rem"></p>
+    <p class="caption"><strong>PDF twin:</strong> Static stack flow sense→propose→certify→commit|refuse. §3 / §4.</p>
+  </section>
+
+  <!-- ni-fig-01 -->
+  <section class="figure-shell" id="ni-fig-01">
+    <header>
+      <div class="title-row"><span class="fig-id">ni-fig-01</span><h2>wca.commit.v1 annotated schema</h2></div>
+      <div class="chips">
+        <span class="chip measured">measured (schema)</span>
+        <span class="chip illustrative">illustrative (UI)</span>
+        <span class="chip v2">V2</span>
+        <span class="chip stub">stub</span>
+      </div>
+    </header>
+    <div class="widget-controls" data-field-chips></div>
+    <p class="small" data-field-detail></p>
+    <pre class="json-view" data-json-view></pre>
+    <p class="caption"><strong>PDF twin:</strong> Static annotated refuse example JSON. §3 / §4. Source: <code>schemas/wca.commit.v1/</code>.</p>
+  </section>
+
+  <!-- ni-run-01 -->
+  <section class="figure-shell" id="ni-run-01">
+    <header>
+      <div class="title-row"><span class="fig-id">ni-run-01</span><h2>Seed-1 SoC golden code-runner</h2></div>
+      <div class="chips">
+        <span class="chip measured">measured</span>
+        <span class="chip surrogate">[SURROGATE]</span>
+        <span class="chip v2">V2</span>
+        <span class="chip stub">stub</span>
+        <span class="chip" data-grade-status data-measured-label="measured + [SURROGATE]" data-modelled-label="illustrative UI">measured + [SURROGATE]</span>
+        <div class="badge-toggle">
+          <button type="button" data-badge="measured" class="on-measured">measured</button>
+          <button type="button" data-badge="modelled">modelled</button>
+        </div>
+      </div>
+    </header>
+    <div class="widget-controls">
+      <button type="button" data-run>Show frozen golden</button>
+      <button type="button" data-reset>Reset</button>
+    </div>
+    <div class="scoreboard" data-scoreboard></div>
+    <div class="cmd" data-cmd></div>
+    <p class="small" data-run-note></p>
+    <p class="caption"><strong>PDF twin:</strong> Static scoreboard committed=1 / refused=15 / J≈8.6795e-10. §5. Browser shows frozen RESULTS; live re-run via cargo (not WASM yet).</p>
+  </section>
+
+  <!-- ni-run-02 -->
+  <section class="figure-shell" id="ni-run-02">
+    <header>
+      <div class="title-row"><span class="fig-id">ni-run-02</span><h2>Safe-PH false-allow=0</h2></div>
+      <div class="chips">
+        <span class="chip measured">measured (toy)</span>
+        <span class="chip v2">V2</span>
+        <span class="chip stub">stub</span>
+        <span class="chip allow" data-fa-chip>false-allow = 0</span>
+      </div>
+    </header>
+    <div class="widget-controls">
+      <label><input type="checkbox" data-safe-toggle/> Show --safe-ph seed-1 parity</label>
+    </div>
+    <table class="living-table" data-fa-table></table>
+    <p class="small" data-seed-safe style="margin-top:0.6rem">Toggle Safe-PH to show seed-1 parity row.</p>
+    <div class="cmd" data-cmd></div>
+    <p class="caption"><strong>PDF twin:</strong> Static Safe-PH false-allow=0 table excerpt. §5. Toy grids only.</p>
+  </section>
+
+  <!-- ni-run-03 -->
+  <section class="figure-shell" id="ni-run-03">
+    <header>
+      <div class="title-row"><span class="fig-id">ni-run-03</span><h2>MCP gate demo</h2></div>
+      <div class="chips">
+        <span class="chip measured">measured (demo)</span>
+        <span class="chip v2">V2</span>
+        <span class="chip stub">stub</span>
+      </div>
+    </header>
+    <div class="widget-controls">
+      <span class="small">executor_calls: <strong data-executor-calls>0</strong></span>
+    </div>
+    <div class="atom-strip" data-mcp-cases style="margin-bottom:0.75rem"></div>
+    <pre class="json-view" data-mcp-detail>Select a demo case…</pre>
+    <div class="cmd" data-cmd></div>
+    <p class="caption"><strong>PDF twin:</strong> Static mcp_gate_demo.json case table. §5 / §7. Refuse-before-execute on irreversible tools.</p>
+  </section>
+
+  <!-- ni-inf-02 -->
+  <section class="figure-shell" id="ni-inf-02">
+    <header>
+      <div class="title-row"><span class="fig-id">ni-inf-02</span><h2>Joule tiers A/B/C + honesty flag</h2></div>
+      <div class="chips">
+        <span class="chip illustrative">illustrative</span>
+        <span class="chip surrogate">[SURROGATE] tier A</span>
+        <span class="chip v1">V1</span>
+        <span class="chip stub">stub</span>
+        <span class="chip warn" data-board-flag>board_synth_claimed=false</span>
+      </div>
+    </header>
+    <div class="tier-ladder" data-tier-ladder></div>
+    <p class="small" data-tier-detail style="margin-top:0.6rem">Click a tier. UI refuses DUT language until evidence exists.</p>
+    <p class="caption"><strong>PDF twin:</strong> Static tier ladder + board_synth_claimed=false badge. §5 / §8.</p>
+  </section>
+
+  <!-- shared-diag-01 -->
+  <section class="figure-shell" id="shared-diag-01">
+    <header>
+      <div class="title-row"><span class="fig-id">shared-diag-01</span><h2>Complement path (shared embedding)</h2></div>
+      <div class="chips">
+        <span class="chip illustrative">illustrative</span>
+        <span class="chip v1">V1</span>
+        <span class="chip stub">stub</span>
+      </div>
+    </header>
+    <p class="small">Same object as <a href="#ni-diag-01">ni-diag-01</a> — one build, two embeddings.</p>
+    <div class="widget">
+      <div class="panel-grid">
+        <button type="button" class="card" data-layer="system-one">System One</button>
+        <button type="button" class="card" data-layer="tlmm">TLMM</button>
+        <button type="button" class="card" data-layer="gate">Gate</button>
+        <button type="button" class="card" data-layer="plant">Plant</button>
+      </div>
+      <div class="panel-grid" data-layer-detail style="margin-top:0.75rem"></div>
+    </div>
+    <p class="caption"><strong>PDF twin:</strong> Static Mermaid/SVG. §7 / §7.</p>
+  </section>
+
+  <!-- shared-inf-01 -->
+  <section class="figure-shell" id="shared-inf-01">
+    <header>
+      <div class="title-row"><span class="fig-id">shared-inf-01</span><h2>Hardware/scale wave vs IT/IS commit-law bet</h2></div>
+      <div class="chips">
+        <span class="chip illustrative">illustrative</span>
+        <span class="chip v1">V1</span>
+        <span class="chip stub">stub</span>
+      </div>
+    </header>
+    <div class="two-col">
+      <div class="card"><h3>Wave center</h3><ul>
+        <li>Bigger transformers + tokens/$</li>
+        <li>Soft confidence / RLHF as “safety”</li>
+        <li>FLOPs/$ dashboards</li>
+        <li>Dense matmul substrates</li>
+      </ul></div>
+      <div class="card"><h3>OpenIE / WCA bet</h3><ul>
+        <li>Notation as runtime commit/refuse law</li>
+        <li>lut_allow ∧ energy_ok [∧ cbf] certificates</li>
+        <li>Joule honesty by tier A/B/C + DUT when real</li>
+        <li>LUT-first hot path behind scaled proposers</li>
+      </ul></div>
+    </div>
+    <div class="widget-controls lens-toggle" style="margin-top:0.75rem">
+      <button type="button" class="card" data-steelman="hooker">Steelman · Hooker</button>
+      <button type="button" class="card" data-steelman="kaplan">Steelman · Kaplan</button>
+      <button type="button" class="card" data-steelman="epoch">Steelman · Epoch</button>
+    </div>
+    <p class="small" data-steelman-panel>Click a steelman card.</p>
+    <p class="caption"><strong>PDF twin:</strong> Static two-column thesis panel. §1 / §1.</p>
+  </section>
+
+  <!-- shared-inf-02 -->
+  <section class="figure-shell" id="shared-inf-02">
+    <header>
+      <div class="title-row"><span class="fig-id">shared-inf-02</span><h2>Honesty tag legend</h2></div>
+      <div class="chips">
+        <span class="chip illustrative">illustrative</span>
+        <span class="chip v2">V2</span>
+        <span class="chip stub">stub</span>
+      </div>
+    </header>
+    <div class="honesty-legend" data-honesty-legend>
+      <button type="button" class="tag-card" data-tag="SURROGATE"><span class="chip surrogate">[SURROGATE]</span><span class="tag-short">OpCounter × analytical E; sim-only</span></button>
+      <button type="button" class="tag-card" data-tag="DUT"><span class="chip measured">[DUT]</span><span class="tag-short">Device-under-test metered</span></button>
+      <button type="button" class="tag-card" data-tag="VENDOR"><span class="chip warn">[VENDOR]</span><span class="tag-short">Vendor self-bench; not scoreboard</span></button>
+      <button type="button" class="tag-card" data-tag="UNVERIFIED"><span class="chip illustrative">[UNVERIFIED]</span><span class="tag-short">Not fetch-checked this window</span></button>
+      <button type="button" class="tag-card" data-tag="SOFT"><span class="chip soft">[SOFT]</span><span class="tag-short">Historical / metaphor analogy</span></button>
+      <button type="button" class="tag-card" data-tag="MIRROR"><span class="chip illustrative">[MIRROR]</span><span class="tag-short">Secondary PDF of a primary</span></button>
+      <button type="button" class="tag-card" data-tag="BOARD"><span class="chip surrogate">board_synth_claimed=false</span><span class="tag-short">No FPGA board watts claimed</span></button>
+    </div>
+    <p class="small" data-tag-detail style="margin-top:0.75rem">Click a tag. Grades V0–V4 never upgrade a ledger row. Must appear near any J figure.</p>
+    <p class="caption"><strong>PDF twin:</strong> Static tag legend strip. §8 / §8.</p>
+  </section>
+
+  <!-- shared-fig-01 -->
+  <section class="figure-shell" id="shared-fig-01">
+    <header>
+      <div class="title-row"><span class="fig-id">shared-fig-01</span><h2>Commit atoms strip</h2></div>
+      <div class="chips">
+        <span class="chip measured">measured (schema)</span>
+        <span class="chip illustrative">illustrative (UI)</span>
+        <span class="chip v2">V2</span>
+        <span class="chip stub">stub</span>
+      </div>
+    </header>
+    <div class="atom-strip">
+      <button type="button" class="atom" data-atom="Proposal">Proposal</button>
+      <span class="muted">→</span>
+      <button type="button" class="atom" data-atom="Certificate">Certificate</button>
+      <span class="muted">→</span>
+      <button type="button" class="atom" data-atom="RefuseReason">RefuseReason</button>
+      <span class="muted">→</span>
+      <button type="button" class="atom" data-atom="CommitDecision">CommitDecision</button>
+    </div>
+    <p class="small" data-atom-detail style="margin-top:0.6rem">Click an atom.</p>
+    <p class="caption"><strong>PDF twin:</strong> Static atom strip. §3–4 / §4.</p>
+  </section>
+
+  <!-- shared-tab-01 -->
+  <section class="figure-shell" id="shared-tab-01">
+    <header>
+      <div class="title-row"><span class="fig-id">shared-tab-01</span><h2>Joule tier vocabulary (shared)</h2></div>
+      <div class="chips">
+        <span class="chip illustrative">illustrative</span>
+        <span class="chip surrogate">[SURROGATE] A</span>
+        <span class="chip v1">V1</span>
+        <span class="chip stub">stub</span>
+        <span class="chip warn" data-board-flag>board_synth_claimed=false</span>
+      </div>
+    </header>
+    <div class="tier-ladder" data-tier-ladder></div>
+    <p class="small" data-tier-detail style="margin-top:0.6rem">Twin of ni-inf-02 content.</p>
+    <p class="caption"><strong>PDF twin:</strong> Static tier table. §8 / §8.</p>
+  </section>
+
+  <!-- ni-3d-01 -->
+  <section class="figure-shell" id="ni-3d-01">
+    <header>
+      <div class="title-row"><span class="fig-id">ni-3d-01</span><h2>Toy plant state · 3D orbit stub</h2></div>
+      <div class="chips">
+        <span class="chip illustrative">illustrative</span>
+        <span class="chip modelled">modelled (toy)</span>
+        <span class="chip surrogate">[SURROGATE] J unused here</span>
+        <span class="chip v1">V1</span>
+        <span class="chip stub">stub</span>
+      </div>
+    </header>
+    <p class="small">Drag canvas to orbit. Sliders set (θ, ω). Overlay is a <strong>toy</strong> energy/safety paint — not ISS-complete; not board watts. Default matches seed-1 init (θ=1.5, ω=3.0).</p>
+    <div class="orbit3d-wrap">
+      <canvas class="orbit3d" data-ni-plant-canvas width="640" height="320" aria-label="Plant state 3D orbit stub"></canvas>
+      <div class="orbit3d-hud">
+        <span data-gate-chip class="chip warn">gate: —</span>
+        <span class="small" data-plant-readout>θ=1.50 · ω=3.00</span>
+      </div>
+    </div>
+    <div class="widget-controls">
+      <label>θ <input type="range" min="-3.14" max="3.14" step="0.01" value="1.5" data-theta/></label>
+      <label>ω <input type="range" min="-6" max="6" step="0.05" value="3.0" data-omega/></label>
+      <button type="button" data-reset-plant>Reset seed-1 init</button>
+    </div>
+    <p class="caption"><strong>PDF twin:</strong> Static 2D phase snapshot + caption. §5 / Appendix. Inventory grade: illustrative / modelled (toy).</p>
+  </section>
+</main>
+<footer class="footer">P1 living stub · OpenIE · Sep 30, 2026 EDT · IDs from FIGURE_INVENTORY.md</footer>
+<script type="module" src="../js/living-core.js"></script>
+<script type="module" src="../js/ni-widgets.js"></script>
+</body>
+</html>

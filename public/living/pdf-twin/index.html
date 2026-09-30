@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PDF twin v0 — OpenIE living papers</title>
+<link rel="stylesheet" href="../css/living.css"/>
+<style>
+  body { background: #0b1220; }
+  .print-help {
+    background: #111827; border: 1px solid #334155; border-radius: 10px;
+    padding: 1rem 1.15rem; margin: 1rem 0 1.5rem; font-size: 0.9rem; color: #94a3b8;
+  }
+  .print-help code { color: #5eead4; }
+  @media print {
+    .print-help, .site-header, .hub-cards { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header no-print">
+  <div class="inner">
+    <div class="brand">PDF twin v0</div>
+    <nav class="nav">
+      <a href="../index.html">Living hub</a>
+      <a href="ni.html">P1 twin</a>
+      <a href="satiation.html">P2 twin</a>
+      <a href="../pdf-twin-map.md">Map</a>
+    </nav>
+    <span class="honesty-bar">board_synth_claimed=false</span>
+  </div>
+</header>
+<main>
+  <div class="hero">
+    <h1>PDF twin v0</h1>
+    <p class="deck-line">Same figure IDs + captions as living pages. Print-to-PDF from the browser.</p>
+    <p class="subtitle">Seamless map with <code>../pdf-twin-map.md</code>. No second figure set. Static default-state snapshots only.</p>
+  </div>
+  <div class="print-help no-print">
+    <strong>Export:</strong> open <code>ni.html</code> or <code>satiation.html</code> → browser <strong>Print…</strong> → Destination <strong>Save as PDF</strong>
+    (layout: Letter/A4, backgrounds on if you want chips). Or:
+    <pre class="code" style="margin-top:0.6rem">cd artifacts/living
+python3 -m http.server 8765
+# http://127.0.0.1:8765/pdf-twin/ni.html
+# http://127.0.0.1:8765/pdf-twin/satiation.html</pre>
+  </div>
+  <div class="hub-cards">
+    <a class="hub-card" href="ni.html">
+      <h2>P1 · NI Commit Law twin</h2>
+      <p>All P0 NI + shared IDs + ni-3d-01 static caption twin.</p>
+    </a>
+    <a class="hub-card" href="satiation.html">
+      <h2>P2 · Satiation twin</h2>
+      <p>All P0 sat + shared IDs + sat-3d-01 static caption twin.</p>
+    </a>
+  </div>
+</main>
+<footer class="footer">PDF twin v0 · OpenIE · Sep 30, 2026 EDT</footer>
+</body>
+</html>

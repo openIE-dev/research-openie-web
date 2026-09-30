@@ -1,0 +1,36 @@
+{
+  "schema_version": "wca.commit.v1",
+  "decision": "allow",
+  "commit": true,
+  "compose": "lut_and_energy",
+  "proposal": {
+    "schema_version": "wca.commit.v1",
+    "proposal_id": "soc-seed1-late",
+    "source": "tlmm",
+    "state": {
+      "x": [0.4, -0.2],
+      "t": 0.75
+    },
+    "action": {
+      "u": [-0.35],
+      "latents": [-1.0, 1.0]
+    },
+    "estimated_joules": 4.0e-11
+  },
+  "certificate": {
+    "schema_version": "wca.commit.v1",
+    "decision": "allow",
+    "lut_allow": true,
+    "energy_ok": true,
+    "compose": "lut_and_energy",
+    "bits": 0,
+    "v_num": 12000,
+    "vdot_q": -8,
+    "estimated_joules": 2.0e-11,
+    "reasons": [],
+    "board_synth_claimed": false
+  },
+  "plant_action": [-0.35],
+  "cycle_id": "soc-seed1-late",
+  "board_synth_claimed": false
+}

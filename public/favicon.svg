@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="4" fill="#0A0A0F"/>
+  <!-- retention: an etched trace that thins as it persists across substrates -->
+  <line x1="6"  y1="9"  x2="26" y2="9"  stroke="#F59E0B" stroke-width="2.0" opacity="1.00"/>
+  <line x1="6"  y1="14" x2="26" y2="14" stroke="#F59E0B" stroke-width="1.6" opacity="0.78"/>
+  <line x1="6"  y1="19" x2="26" y2="19" stroke="#F59E0B" stroke-width="1.2" opacity="0.55"/>
+  <line x1="6"  y1="24" x2="26" y2="24" stroke="#F59E0B" stroke-width="0.9" opacity="0.32"/>
+  <circle cx="16" cy="9" r="1.6" fill="#F59E0B"/>
+</svg>
