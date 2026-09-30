@@ -3,56 +3,58 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OpenIE Interactive Figures — Hub</title>
+<title>OpenIE Living Papers — Hub</title>
 <link rel="stylesheet" href="css/living.css"/>
 </head>
 <body>
 <header class="site-header">
   <div class="inner">
-    <div class="brand">OpenIE · figures</div>
+    <div class="brand">OpenIE · living papers</div>
     <nav class="nav">
       <a href="index.html" class="active">Hub</a>
-      <a href="ni/index.html">NI figures</a>
-      <a href="satiation/index.html">Satiation figures</a>
-      <a href="/papers/ni/">NI paper</a>
-      <a href="/papers/satiation/">Satiation paper</a>
-      <a href="pdf-twin/index.html">Print twin</a>
+      <a href="ni/index.html">P1 · NI Commit Law</a>
+      <a href="satiation/index.html">P2 · Satiation</a>
+      <a href="README.md">README</a>
+      <a href="pdf-twin/index.html">PDF twin v0</a>
+      <a href="pdf-twin-map.md">PDF twin map</a>
     </nav>
   </div>
 </header>
 <main>
   <div class="hero">
-    <h1>Interactive figures (P0 stubs)</h1>
-    <p class="deck-line">Figures accompany the research studies. Readable papers and downloadable PDFs live under <a href="/">/papers/</a> and <a href="/pdfs/ni.pdf">/pdfs/</a>.</p>
-    <p class="subtitle">Prototype figure shells from the figure inventory. No paid services. <span class="honesty-bar">board_synth_claimed=false</span></p>
+    <h1>Living paper shells (P0 figures)</h1>
+    <p class="deck-line">Interactive web is canonical. PDF twin = same IDs + static export notes.</p>
+    <p class="subtitle">Prototype shells for dual whitepapers under <code>artifacts/FIGURE_INVENTORY.md</code>. No paid services. <span class="honesty-bar">board_synth_claimed=false</span></p>
   </div>
   <div class="hub-cards">
     <a class="hub-card" href="ni/index.html">
-      <h2>NI Commit Law — figures</h2>
-      <p>P0 shells + <code>ni-3d-01</code> canvas orbit stub + shared honesty legend. <strong>Paper:</strong> <span>/papers/ni/</span></p>
+      <h2>Paper 1 — Notational Intelligence as Commit Law</h2>
+      <p>P0 shells + <code>ni-3d-01</code> canvas orbit stub + shared (incl. upgraded <code>shared-inf-02</code>).</p>
+    </a>
+    <a class="hub-card" href="fpga-sim/index.html">
+      <h2>Stage B · FPGA / LUT simulator</h2>
+      <p>Rust→WASM commit gate with WebGPU LUT/trace paint. Simulated agreement with seed-1 golden. Not Alchitry board watts. <strong>URL:</strong> <span>/living/fpga-sim/</span></p>
     </a>
     <a class="hub-card" href="satiation/index.html">
-      <h2>Satiation — figures</h2>
-      <p>P0 shells + <code>sat-3d-01</code> bliss surface stub + shared honesty legend. <strong>Paper:</strong> <span>/papers/satiation/</span></p>
+      <h2>Paper 2 — Satiation &amp; Scarcity after Free AI</h2>
+      <p>P0 shells + <code>sat-3d-01</code> bliss surface stub + shared honesty legend.</p>
     </a>
-    <a class="hub-card" href="/pdfs/ni.pdf">
-      <h2>Download study PDFs</h2>
-      <p>Primary PDFs are the research studies (not browser-print of figures). NI · Satiation under <code>/pdfs/</code>.</p>
+    <a class="hub-card" href="pdf-twin/index.html">
+      <h2>PDF twin v0</h2>
+      <p>Print-CSS HTML with same figure IDs/captions. Browser Print → Save as PDF.</p>
     </a>
   </div>
   <section class="figure-shell" style="margin-top:2rem">
     <header>
-      <div class="title-row"><h2>Where to read</h2></div>
-      <div class="chips"><span class="chip v0">Figures only</span></div>
+      <div class="title-row"><h2>How to open</h2></div>
+      <div class="chips"><span class="chip v0">V0 shell</span></div>
     </header>
-    <p class="caption" style="padding:1rem 1.25rem">
-      Research prose: <a href="/papers/ni/">/papers/ni/</a> · <a href="/papers/satiation/">/papers/satiation/</a>.
-      PDFs: <a href="/pdfs/ni.pdf">/pdfs/ni.pdf</a> · <a href="/pdfs/satiation.pdf">/pdfs/satiation.pdf</a>.
-      Print twin of figures (secondary): <a href="pdf-twin/index.html">pdf-twin/</a>.
-      Catalog: <a href="/">research.openie.dev</a>.
-    </p>
+    <pre class="code">cd /workspace/wca-lut-edge/artifacts/living
+python3 -m http.server 8765
+# then open http://127.0.0.1:8765/</pre>
+    <p class="caption">ES modules require a local HTTP server (not <code>file://</code>). 3D: <code>/ni/#ni-3d-01</code>, <code>/satiation/#sat-3d-01</code>. PDF twin: <a href="pdf-twin/index.html">pdf-twin/</a>. See <a href="README.md">README.md</a>.</p>
   </section>
 </main>
-<footer class="footer">OpenIE · interactive figures · Sep 30, 2026 EDT · papers live at /papers/</footer>
+<footer class="footer">OpenIE / wca-lut-edge · living shell pass · Sep 30, 2026 EDT · inventory IDs only</footer>
 </body>
 </html>

@@ -1,0 +1,20 @@
+{
+  "name": "wca-fpga-sim",
+  "type": "module",
+  "collaborators": [
+    "David Charlot <david.charlot@users.noreply.github.com>"
+  ],
+  "description": "Stage B: Rust→WASM browser FPGA/LUT commit-gate simulator (WebGPU viz; not board watts)",
+  "version": "0.1.0",
+  "license": "MIT",
+  "files": [
+    "wca_fpga_sim_bg.wasm",
+    "wca_fpga_sim.js",
+    "wca_fpga_sim.d.ts"
+  ],
+  "main": "wca_fpga_sim.js",
+  "types": "wca_fpga_sim.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

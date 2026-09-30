@@ -15,7 +15,7 @@ board_synth_claimed: false
 
 Agents propose actions. Irreversible work begins only when an action is allowed to run. This paper treats that permission step as a formal object. Linus Lee's notational intelligence is the observation that a change in symbols can make some thoughts cheap and others expressible. The claim here is narrower. For machines that can move matter or call an irreversible tool, the useful notation is a runtime law: a proposal may not authorize itself. The software reference, Wise Computer Automation (WCA), records the law as four objects under schema `wca.commit.v1`: a proposal, a certificate, a typed refuse reason, and a commit decision. The certificate used in the reference is conjunctive. A look-up table (LUT) allow bit must hold, and an energy predicate must hold. An optional control barrier function (CBF) may be added. Read-only calls may bypass the gate. Irreversible calls may not.
 
-Energy numbers in this paper are products of operation counts and analytical energy constants (an OpCounter model). They are not board power. Field-programmable gate array (FPGA) behavior in the repository is Icarus Verilog simulation of emitted register-transfer language, not a placed design. We have not synthesized or metered an FPGA board. The intended physical target, once a meter exists, is an Alchitry Pt V2. A specified next instrument, not present in this release, would compile the same Rust gate to WebAssembly (WASM) and show LUT state and commit traces in a browser through the WebGPU API. That instrument would still be an emulation. It would not be a device-under-test (DUT) measurement.
+Energy numbers in this paper are products of operation counts and analytical energy constants (an OpCounter model). They are not board power. Field-programmable gate array (FPGA) behavior in the repository is Icarus Verilog simulation of emitted register-transfer language, not a placed design. We have not synthesized or metered an FPGA board. The intended physical target, once a meter exists, is an Alchitry Pt V2. Stage B is available as a browser instrument at https://research.openie.dev/living/fpga-sim/. It compiles the same Rust gate to WebAssembly (WASM) and shows LUT state and commit traces through the WebGPU API. That instrument is an emulation. It is not a device-under-test (DUT) measurement and it is not Alchitry board power.
 
 The measured software results are bounded. On a 16-step pendulum episode with seed 1, the reference commits 1 step and refuses 15. The analytical episode energy is 8.6795e-10 joule. On the reported Safe fixed-point port-Hamiltonian check, false allows against a continuous energy oracle are 0 on the stated grids. A Model Context Protocol (MCP) demo refuses an irreversible tool call without invoking the executor. A toy comparison with an energy-set barrier and a discrete shield shows disagreement across safety definitions. None of these results is a claim of silicon energy leadership, of industrial control performance, or of a completed board measurement.
 
@@ -43,7 +43,7 @@ Terms are defined at first scientific use below and collected here so later sect
 | Runtime verification (RV) | Checking a property on an executing trace. Related, not identical, to the commit record. |
 | Device under test (DUT) | Hardware measured under a stated workload with a stated meter. No DUT result is reported. |
 | Field-programmable gate array (FPGA) | Reconfigurable logic. This paper reports simulation of Verilog, not a board. |
-| WebAssembly (WASM) | A portable compilation target for the browser. The WASM FPGA emulator is specified and not shipped. |
+| WebAssembly (WASM) | A portable compilation target for the browser. The Stage B WASM FPGA emulator is shipped at https://research.openie.dev/living/fpga-sim/. |
 | WebGPU | The browser GPU API named as the display and grid-evaluation path for that emulator. |
 | Alchitry Pt V2 | The intended later board: vendor documentation identifies a Xilinx Artix-7 XC7A100T. Not synthesized here. |
 | DiffLogic | Differentiable logic gate networks trained toward Boolean structure (Petersen et al., 2022). |
@@ -203,7 +203,7 @@ The completeness path for replication has three stages. Only the first stage exi
 
 Stage A, present. Rust binaries in `wca-commit` run the episode, the Safe check, the tool demo, and the analytical joule account. Icarus simulates emitted Verilog on a workstation.
 
-Stage B, specified, not shipped. Compile the pure decision core (proposal in, certificate out, plant step, analytical joule update) to `wasm32`. A static page loads the module. WebGPU holds the LUT words and a trace buffer of `(step, lut_allow, energy_ok, cbf_ok, decision)` in storage buffers. A render or compute pass displays the table and the trace. An optional compute pass evaluates the published Safe residual on a grid copied from the CPU test, so a reader can see false-allow counts without trusting a screenshot. WebGPU timestamps are not joules. The WASM module is an emulation of the same functions the Rust crate runs. It is not a cycle-accurate model of an Artix-7, not a switching-activity power model, and not a substitute for Icarus on the Verilog. The repository does not yet contain this target. Figure notes in the project mark the WASM episode loop as aspirational. This paper does not report a run.
+Stage B, shipped. The pure decision core (proposal in, certificate out, plant step, analytical joule update) compiles to `wasm32` (`crates/wca-fpga-sim`). A static page at https://research.openie.dev/living/fpga-sim/ loads the module. WebGPU holds the LUT words and a trace buffer of `(step, lut_allow, energy_ok, cbf_ok, decision)` for display. WebGPU timestamps are not joules. On seed-1 (16 steps, theta 1.5, omega 3.0) the WASM episode reports committed 1, refused 15, analytical joule 8.6795e-10, matching Stage A. The WASM module is an emulation of the same functions the Rust crate runs. It is not a cycle-accurate model of an Artix-7, not a switching-activity power model, and not a substitute for Icarus on the Verilog. Stage B does not claim an Alchitry Pt V2 DUT.
 
 Stage C, optional and future. Synthesize the Verilog for an Alchitry Pt V2 and meter a stated workload. SparkFun's product page for that board names FPGA XC7A100T-2FGG84I and lists 101,440 logic cells, 240 DSP48E1 slices, 4,860 Kb of block RAM, and 256 MB of DDR3L. Those are vendor specifications (https://www.sparkfun.com/alchitry-pt-v2.html). This paper does not check them on a bench and does not report current, voltage, or energy from the board. Until stage C exists, the prose statement is: we have not synthesized or metered the FPGA board.
 
@@ -322,7 +322,7 @@ World models reduce some prediction error and leave a residual. Specialized infe
 
 ### 5.8 Analytical joules are not a costume for watts
 
-The constants in Section 3.4 are chosen engineering numbers. They make counts comparable inside the repo. They are not calibrated to an Artix-7 rail. Selling them as board watts would be a false measurement report. The correct report is the one given: operation counts are computed; joules are modeled; the board has not been synthesized or metered. Stage B of Section 3.7 would make the same model inspectable in a browser. It would not change the measurement class. Stage C would.
+The constants in Section 3.4 are chosen engineering numbers. They make counts comparable inside the repo. They are not calibrated to an Artix-7 rail. Selling them as board watts would be a false measurement report. The correct report is the one given: operation counts are computed; joules are modeled; the board has not been synthesized or metered. Stage B of Section 3.7 makes the same model inspectable in a browser at https://research.openie.dev/living/fpga-sim/. It does not change the measurement class. Stage C would.
 
 ## 6. Limits and threats to validity
 
@@ -330,7 +330,7 @@ Internal validity. Seed-1 is one initial condition. The Safe grid is large but s
 
 Construct validity. Commit count as utility does not measure task success. False allow is defined against a named oracle. A system can have zero false allows against `Vdot <= epsilon` and still leave the safe set `h >= 0`, which NI-4 shows. Readers who treat "safe" as one word will misread the table.
 
-External validity. Both plants are toys. There is no manipulator, quadrotor, or human-in-the-loop trial. The MCP demo does not call a network. Verilog is simulated. The browser instrument is not built. The Alchitry Pt V2 is a specified target, not a measured one. Vendor logic-cell counts are not confirmed here.
+External validity. Both plants are toys. There is no manipulator, quadrotor, or human-in-the-loop trial. The MCP demo does not call a network. Verilog is simulated. The browser instrument is shipped as Stage B simulation. The Alchitry Pt V2 is a specified Stage C target, not a measured one. Vendor logic-cell counts are not confirmed here.
 
 Measurement validity. Analytical constants can be edited to any scale. Comparisons to Horowitz's picojoule tables, to Landauer's bound, or to vendor tokens per joule are not valid with these constants. A DUT meter under a stated workload is the missing measurement. Post-place-and-route tool power would be a third class, still not a meter. This paper reports neither.
 
@@ -342,7 +342,7 @@ Falsifiers. NI-2 is false if the stated command on the stated crate revision doe
 
 ## 7. Conclusion
 
-The paper defined a commit decision as a conjunctive certificate over a LUT allow bit and an energy predicate, with an optional barrier, and showed a software reference that emits the decision before an irreversible effect. On the reported pendulum tests, the Safe fixed-point rule has zero false allows against its continuous oracle, at the cost of a measured false-refuse count. On the reported comparisons, that oracle is not the same as set invariance. Analytical episode energy for the seed-1 run is 8.6795e-10 joule under published constants. Tool refuse in the MCP demo does not call the executor. Verilog checks are simulation. The browser WASM and WebGPU instrument is specified so that the same decision can be inspected without a board, and it is not a result of this paper. The Alchitry Pt V2 remains a possible DUT after synthesis and metering. Until then, the reference is a measured software artifact and an unmeasured chip.
+The paper defined a commit decision as a conjunctive certificate over a LUT allow bit and an energy predicate, with an optional barrier, and showed a software reference that emits the decision before an irreversible effect. On the reported pendulum tests, the Safe fixed-point rule has zero false allows against its continuous oracle, at the cost of a measured false-refuse count. On the reported comparisons, that oracle is not the same as set invariance. Analytical episode energy for the seed-1 run is 8.6795e-10 joule under published constants. Tool refuse in the MCP demo does not call the executor. Verilog checks are simulation. The browser WASM and WebGPU instrument is available at https://research.openie.dev/living/fpga-sim/ so that the same decision can be inspected without a board. It remains a simulation, not a DUT result. The Alchitry Pt V2 remains a possible Stage C DUT after synthesis and metering. Until then, the reference is a measured software artifact and an unmeasured chip.
 
 ## References
 
@@ -481,7 +481,7 @@ Repository flag, factual, not a result: `board_synth_claimed=false`.
 
 ## Appendix B. Browser FPGA emulator: architecture to build
 
-This appendix is a build specification. It is not evidence that the emulator runs.
+This appendix describes the Stage B emulator architecture. The shipped instrument lives at https://research.openie.dev/living/fpga-sim/. Seed-1 agreement numbers below are from the WASM run against the Stage A golden.
 
 Modules.
 

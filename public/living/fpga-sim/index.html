@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Living · Stage B FPGA/LUT commit-gate simulator (WASM + WebGPU)</title>
+<link rel="stylesheet" href="../css/living.css"/>
+<style>
+  .sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 900px) { .sim-grid { grid-template-columns: 1fr; } }
+  .panel {
+    background: var(--bg-elev); border: 1px solid var(--border);
+    border-radius: 10px; padding: 0.85rem 1rem;
+  }
+  .panel h3 {
+    font-family: var(--mono); font-size: 0.9rem; color: var(--accent);
+    margin: 0 0 0.6rem;
+  }
+  #gpu-canvas {
+    width: 100%; height: 280px; display: block;
+    background: #020617; border-radius: 8px; border: 1px solid var(--border);
+  }
+  .metrics {
+    font-family: var(--mono); font-size: 0.82rem; line-height: 1.65;
+    display: grid; grid-template-columns: auto 1fr; gap: 0.15rem 0.85rem;
+  }
+  .metrics dt { color: var(--muted); }
+  .metrics dd { margin: 0; color: #f1f5f9; }
+  .ok { color: var(--allow); font-weight: 600; }
+  .bad { color: var(--refuse); font-weight: 600; }
+  .trace {
+    font-family: var(--mono); font-size: 0.72rem; max-height: 320px;
+    overflow: auto; width: 100%; border-collapse: collapse;
+  }
+  .trace th, .trace td {
+    padding: 0.25rem 0.4rem; border-bottom: 1px solid #1e293b; text-align: right;
+  }
+  .trace th { color: var(--muted); position: sticky; top: 0; background: var(--bg-elev); }
+  .trace td.commit-yes { color: var(--allow); }
+  .trace td.commit-no { color: var(--refuse); }
+  .limits {
+    font-size: 0.88rem; color: var(--muted); border-left: 3px solid var(--warn);
+    padding: 0.65rem 0.9rem; margin: 1rem 0; background: #1c1917;
+  }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
+  button.run {
+    font-family: var(--mono); background: #134e4a; color: var(--accent);
+    border: 1px solid #2dd4bf; border-radius: 6px; padding: 0.45rem 0.85rem;
+    cursor: pointer; font-size: 0.85rem;
+  }
+  button.run:hover { background: #115e59; }
+  .status { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); min-height: 1.2em; }
+  .hash { word-break: break-all; font-size: 0.72rem; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <div class="brand">Stage B · FPGA sim</div>
+    <nav class="nav">
+      <a href="../index.html">Hub</a>
+      <a href="../ni/index.html">NI</a>
+      <a href="../satiation/index.html">Satiation</a>
+      <a href="index.html" class="active">FPGA sim</a>
+      <a href="/papers/ni/">NI paper</a>
+    </nav>
+    <span class="honesty-bar">simulation · board_synth_claimed=false</span>
+  </div>
+</header>
+<main>
+  <div class="hero">
+    <h1>Stage B · WASM FPGA / LUT commit-gate simulator</h1>
+    <p class="deck-line">Rust decision core in the browser. WebGPU paints the allow LUT and commit trace. This page is a simulated / emulated instrument, not an Alchitry board meter.</p>
+    <p class="subtitle">Acceptance: bit-agree with Stage A seed-1 golden (committed 1, refused 15, analytical J 8.6795e-10). Stage C (optional DUT: Alchitry Pt V2) is not claimed here.</p>
+  </div>
+
+  <div class="limits">
+    <strong>Measurement class.</strong> The commit / refuse sequence and certificate fields are produced by the same Rust functions as Stage A, compiled to WebAssembly.
+    Analytical episode joules come from the OpCounter model. WebGPU GPU time is not energy and is not board power.
+    Icarus Verilog remains the RTL oracle on the workstation. This page does not replace it and does not report Alchitry Pt V2 watts.
+  </div>
+
+  <section class="figure-shell" id="fpga-sim">
+    <header>
+      <div class="title-row"><span class="fig-id">fpga-sim</span><h2>Seed-1 episode · WASM core + WebGPU view</h2></div>
+      <div class="chips">
+        <span class="chip modelled">simulated (WASM)</span>
+        <span class="chip illustrative">WebGPU viz</span>
+        <span class="chip v2">V2</span>
+      </div>
+    </header>
+
+    <div class="btn-row">
+      <button type="button" class="run" id="btn-run">Run seed-1 in WASM</button>
+      <span class="status" id="status">Loading WASM module…</span>
+    </div>
+
+    <div class="sim-grid">
+      <div class="panel">
+        <h3>Agreement with Stage A golden</h3>
+        <dl class="metrics" id="metrics">
+          <dt>status</dt><dd id="m-ok">-</dd>
+          <dt>committed</dt><dd id="m-c">-</dd>
+          <dt>refused</dt><dd id="m-r">-</dd>
+          <dt>energy_only</dt><dd id="m-eo">-</dd>
+          <dt>episode J</dt><dd id="m-j">-</dd>
+          <dt>expected J</dt><dd>8.6795e-10</dd>
+          <dt>|ΔJ|</dt><dd id="m-dj">-</dd>
+          <dt>commit step</dt><dd id="m-cs">-</dd>
+          <dt>ops</dt><dd id="m-ops">-</dd>
+          <dt>allow_mask</dt><dd id="m-mask">-</dd>
+          <dt>LUT mem SHA-256</dt><dd class="hash" id="m-hash">-</dd>
+          <dt>board_synth_claimed</dt><dd id="m-board">-</dd>
+        </dl>
+      </div>
+      <div class="panel">
+        <h3>WebGPU LUT + trace paint</h3>
+        <canvas id="gpu-canvas" width="640" height="280"></canvas>
+        <p class="small status" id="gpu-status" style="margin-top:0.5rem">WebGPU idle.</p>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:1rem">
+      <h3>Commit trace (WASM)</h3>
+      <table class="trace" id="trace">
+        <thead>
+          <tr>
+            <th>i</th><th>lut</th><th>eok</th><th>commit</th><th>bits</th>
+            <th>u</th><th>θ</th><th>ω</th><th>V̇_q</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <p class="caption">
+      <strong>Rebuild:</strong> from <code>wca-lut-edge</code>, run
+      <code>wasm-pack build crates/wca-fpga-sim --target web --release --out-dir …/living/fpga-sim/pkg</code>
+      (see crate README). Stage C optional DUT: Alchitry Pt V2 after synthesis and metering; not claimed on this page.
+    </p>
+  </section>
+</main>
+<footer class="footer">OpenIE · Stage B WASM FPGA sim · simulated, not board-measured · Sep 30, 2026 EDT</footer>
+<script type="module" src="./sim.js"></script>
+</body>
+</html>

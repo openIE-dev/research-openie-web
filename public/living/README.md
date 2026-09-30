@@ -1,14 +1,4 @@
-# Interactive figures (P0 stubs)
-
-**Product note:** Readable research studies and downloadable PDFs live at
-[`/papers/`](https://research.openie.dev/papers/ni/) and [`/pdfs/`](https://research.openie.dev/pdfs/ni.pdf).
-This directory ships **interactive figures** that accompany those studies — not the papers themselves.
-
-Local box `python3 -m http.server` instructions are for developers only; production is served at https://research.openie.dev/living/.
-
----
-
-## Living paper shells (P0 + 3D stubs + PDF twin v0)
+# Living paper shells (P0 + 3D stubs + PDF twin v0)
 
 **Date:** Wed Sep 30, 2026 (America/New_York, EDT)  
 **Contract:** [`../LIVING_PAPER_CONTRACT.md`](../LIVING_PAPER_CONTRACT.md) · inventory [`../FIGURE_INVENTORY.md`](../FIGURE_INVENTORY.md)
@@ -108,3 +98,13 @@ cargo run --release --bin wca-mcp-gate
 - No invented Epoch price points
 - No npm / heavy framework
 - No `git push` / global git config from this workstream
+
+
+## Stage B FPGA simulator
+
+Live path: [`fpga-sim/`](fpga-sim/) (also https://research.openie.dev/living/fpga-sim/).
+
+Rust decision core compiled to WebAssembly; WebGPU paints the LUT and commit trace.
+Seed-1 acceptance: committed 1, refused 15, analytical J 8.6795e-10.
+This is simulated / emulated software. It is not an Alchitry Pt V2 DUT measurement.
+Rebuild: see `crates/wca-fpga-sim/README.md` in wca-lut-edge.
