@@ -137,7 +137,7 @@ struct VSOut {
 @fragment fn fs(in: VSOut) -> @location(0) vec4f {
   // Nearest-style sampling of LUT (top half) and trace (bottom half)
   let uv = in.uv;
-  let cell = vec2f(uv.x * 16.0, uv.y < 0.5 ? 0.25 : 0.75);
+  let cell = vec2f(uv.x * 16.0, select(0.75, 0.25, uv.y < 0.5));
   return textureSample(tex, samp, vec2f(cell.x / 16.0, cell.y));
 }
 `,
