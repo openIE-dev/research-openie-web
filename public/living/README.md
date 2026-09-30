@@ -108,3 +108,11 @@ Rust decision core compiled to WebAssembly; WebGPU paints the LUT and commit tra
 Seed-1 acceptance: committed 1, refused 15, analytical J 8.6795e-10.
 This is simulated / emulated software. It is not an Alchitry Pt V2 DUT measurement.
 Rebuild: see `crates/wca-fpga-sim/README.md` in wca-lut-edge.
+
+## Alchitry Pt V2 guide (Stage C)
+
+Builder how-to for detect / build / flash / LED map:
+
+- Live: `/living/fpga-sim/alchitry/`
+- Evidence: `/living/fpga-sim/stage-c/board-evidence.md`
+- Honesty: programmed over JTAG (SRAM); energy unmetered; toy gate is not a full WCA SoC.
