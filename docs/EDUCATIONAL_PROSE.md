@@ -1,186 +1,127 @@
-# Educational Prose Lock — OpenIE Research Papers
+# Educational Prose Lock - OpenIE Research Papers
 
-**Author:** David Charlot · Open Interface Engineering  
-**Date:** Wed Sep 30, 2026 (America/New_York / EDT)  
-**Status:** STYLE LOCK for public teaching papers on research.openie.dev  
-**Audience:** learners, builders, and operators who need to *explain* the claim after reading
+**Author:** David Charlot, Open Interface Engineering
+**Date:** Wed Sep 30, 2026 (America/New_York)
+**Status:** STYLE LOCK for the two research papers on research.openie.dev
+**Genre:** scientific paper. Teaching clarity is required. Op-ed voice is not.
 
-This file is the shared writing contract for both living papers:
+Papers:
 
 1. Notational Intelligence as Commit Law (`ni`)
 2. Satiation and Scarcity after Free AI (`satiation`)
 
-Copy lives at `artifacts/EDUCATIONAL_PROSE.md` (box / wca-lut-edge) and `docs/EDUCATIONAL_PROSE.md` (research-openie-web).
+Copies: `artifacts/EDUCATIONAL_PROSE.md` (this tree) and `docs/EDUCATIONAL_PROSE.md` (research-openie-web).
 
----
+## 1. What the reader must be able to do
 
-## 1. Philosophy (Institute + OpenIE)
+Name each object. Define it. Say what fails if it is missing. Give one formal or numerical example. Connect it to the next object.
 
-Teach first principles, then skilled use. One idea at a time.
+Do not write to sound impressive. Do not write a speech. Claims are cited, measured, or proved. If none of the three is available, the sentence is a limit, a definition, or a specified measurement that has not been run. Label which.
 
-For every important object:
+`board_synth_claimed=false` stays in repository metadata and in an appendix until a synthesis log and a meter exist. In the paper body, write the fact: we have not synthesized or metered the FPGA board.
 
-1. **Name** the thing.
-2. **Define** it in plain language.
-3. **Show why it matters** (what fails without it).
-4. Give a **concrete example**.
-5. **Connect** it to the next object.
+## 2. Acronyms
 
-The Feynman bar applies: the reader should leave able to explain the claim in their own words. Do not write to impress with jargon.
-
-Interactive figures remain separate under `/living/`. Paper prose must stand alone as education. A reader who never opens a figure must still understand the thesis.
-
-Honesty is pedagogy:
-
-- Keep `board_synth_claimed=false` until board synthesis and a real meter exist.
-- Tag claims: **[SURROGATE]**, **[DUT]**, **[VENDOR]**, **[UNVERIFIED]**, **[SOFT]**.
-- Soft historical analogies must be marked **[SOFT]**.
-- Do not invent scientific claims. Reorder and rewrite for teaching only.
-
-Tone target: Physical AI Institute education copy (physicalai-bmi.org/education). Concrete. Sequential. No hype. Medium cuts under `artifacts/presentations/MEDIUM_*.md` are closer to human voice, but they still contain em-dashes. Strip those.
-
----
-
-## 2. Acronyms (academic standard)
-
-Spell out on **first use**, then put the acronym in parentheses:
+Spell out on first use, then the acronym in parentheses:
 
 > Wise Computer Automation (WCA)
 
-Every paper opens early with a **Glossary** of all acronyms and coined terms used in that paper.
+Each paper has a Notation section before the acronym is used as a bare token. If a term appears once, spell it and skip the acronym.
 
-Never lead a section with bare WCA, EFA, TLMM, CBF, LUT, MCP, DUT, or similar.
-
-If a term appears only once, prefer spelling it out and skip the acronym.
-
-Define when used (non-exhaustive):
-
-| Acronym / term | Spell-out / gloss |
-|----------------|-------------------|
+| Acronym or term | Spell-out |
+|-----------------|-----------|
 | OpenIE | Open Interface Engineering |
 | WCA | Wise Computer Automation |
-| EFA | Energy-First Architecture (or Energy-First Automation when that is the local sense; say which) |
-| LUT | Look-Up Table |
-| TLMM | Ternary Look-up Matrix Multiplier (ternary table-lookup proposal path) |
-| CBF | Control Barrier Function |
+| EFA | Energy-First Architecture |
+| LUT | look-up table |
+| TLMM | ternary look-up matrix multiplier |
+| CBF | control barrier function |
 | MCP | Model Context Protocol |
-| DUT | Device Under Test |
-| FPGA | Field-Programmable Gate Array |
-| RV | Runtime Verification |
-| IT | Information Theory |
-| IS | Information Science |
-| AGI | Artificial General Intelligence |
-| OTLP | OpenTelemetry Protocol (if used) |
-| RAPL | Running Average Power Limit |
-| NVML | NVIDIA Management Library |
-| SoC | System on Chip / software plant loop in this stack (say which) |
-| JSON | JavaScript Object Notation |
+| DUT | device under test |
+| FPGA | field-programmable gate array |
 | WASM | WebAssembly |
-| System One | typed decision models that collapse generation tax (Laya / Jev class) |
-| DiffLogic | differentiable logic networks that map toward gates / LUTs |
-| port-Hamiltonian | structured energy dynamics used for passivity / energy certificates |
+| WebGPU | browser GPU API of that name (not an abbreviation to invent) |
+| Alchitry Pt V2 | the named board (Artix-7 class in vendor docs) |
+| RV | runtime verification |
+| IT / IS | information theory / information science |
+| AGI | artificial general intelligence |
+| JSON | JavaScript Object Notation |
+| System One | typed decision models (Laya / Jev class) |
+| DiffLogic | differentiable logic gate networks |
 
-Also define **OpenIE**, **notational intelligence**, **commit law**, **satiation**, **economic done**, and **free-at-margin** when used as if known.
+Also define notational intelligence, commit law, satiation, economic done, and free at the margin in the paper that uses them.
 
----
+## 3. Prose bans
 
-## 3. Ban list (AI grammar / ticks)
+Dashes. No em-dash. No en-dash used as a dash. Use a period, comma, colon, parentheses, or a new sentence. ASCII hyphen only inside compounds and identifiers.
 
-**Dashes**
+Refuse these tics: delve, tapestry, landscape used as a metaphor, pivotal, underscore, unveil, robust solutioning, "In today's rapidly evolving", "It is important to note", stacks of synonymous adjectives, "studies show" without a citation, "the model understands".
 
-- No em-dashes (`—`).
-- No en-dashes (`–`) used as em-dashes.
-- Prefer period, comma, colon, parentheses, or a short new sentence.
-- Prefer ASCII hyphen-minus (`-`) in prose compounds when a hyphen is truly needed.
-- Code and math may use minus signs as required by the language.
+Prefer short declarative sentences. One claim per sentence when defining a term.
 
-**Words and templates to refuse**
+Do not rename measurement class as a moral label. Do not print bracket tags such as surrogate, vendor, or soft as chips beside sentences. Say the measurement class in the sentence.
 
-- delve, tapestry, landscape (figurative), pivotal, underscore, unveil
-- robust solutioning
-- "In today's rapidly evolving"
-- "It is important to note that"
-- parallel triad spam of synonymous adjectives
-- "studies show" without a cite
-- anthropomorphic "the model understands"
+## 4. Measurement reporting
 
-**Prefer**
+Three classes, in ordinary words:
 
-- Short declarative sentences (about 15–20 words on average)
-- Active voice
-- One claim per sentence when teaching a definition
-- Blunt asides when they teach
-- Fewer ornamental tables; keep tables only when they teach a comparison the reader needs
-- Sound like a clear teacher, not a research memo for insiders
-- Strip refrain templates and fake dialectic
+- Modeled: a stated formula, including OpCounter counts times analytical energy constants. Say that the joule figure is an analytical estimate, not board power.
+- Simulated: the Rust reference or Icarus Verilog executed the case. Verilog simulation is not a placed FPGA.
+- Board-measured: a meter on a stated device and workload. None are reported.
 
----
+Vendor catalog text (SparkFun on the Alchitry Pt V2, Epoch summaries, sell-side notes) is attributed to that source. It is not relabeled as an OpenIE measurement.
 
-## 4. Shared educational skeleton
+Soft comparisons (Brahe and Kepler, technology sequences without a regression) are described as analogies or as orientation. They are not given a result number.
 
-Keep this order for both papers (section titles may vary slightly):
+Instrument path, specified and not shipped:
 
-1. Title + who this is for
-2. What you will learn (3–5 bullets)
-3. Glossary (required)
-4. Problem in plain language
-5. Core thesis (one crisp paragraph)
-6. Definitions / objects (teach each formally)
-7. How it works (steps + example)
-8. Evidence from the software reference (honest tags)
-9. Common confusions / counters
-10. Limits
-11. What to do next / figures link
-12. References (keep cite integrity; do not invent cites)
+1. Today: Rust software reference and Icarus simulation.
+2. Next build: Rust decision core compiled to WebAssembly, LUT and commit trace shown in the browser with WebGPU. Acceptance is agreement with step 1. WebGPU time is not energy.
+3. Later, optional: synthesize for an Alchitry Pt V2 and meter it. Only step 3 is board-measured.
 
-Optional short appendix: reproducibility commands without insider path spam in the main teaching body.
+Do not write that the emulator already runs. Do not write silicon joule leadership or board watts.
 
-Length aim: readable teaching paper, about 4–8k words of body. Cut dump of the old study. Preserve claim-ledger honesty.
+## 5. Paper order
 
-Shared deck line (both papers may use):
+1. Abstract
+2. Notation
+3. Introduction
+4. Related work
+5. Definitions and methods
+6. Results or evidence
+7. Discussion
+8. Limits and threats to validity
+9. Conclusion
+10. References
+11. Appendix: commands, paths, and the unshipped emulator specification
 
-> System One decides in software. Wise Computer Automation decides whether the machine is allowed to move.
+Target length: 8,000 to 12,000 words of substance. Do not pad. Do not cut a proof or a table to sound short.
 
-Shared refuse bridge:
+Numbered claims must point at a log, a schema, or a citation. Needs-experiment items appear as protocols or limits, not as findings.
 
-> Refuse = economic done ∪ physical unsafe
+Frozen ledgers still bound what may be asserted: `CLAIM_LEDGER_NI.md`, `CLAIM_LEDGER_SATIATION.md`. Forbidden rows stay out.
 
----
+## 6. Gate before publish
 
-## 5. Claim integrity
+On both markdown bodies:
 
-Frozen ledgers remain binding:
+1. Fail if an em-dash or en-dash appears.
+2. Fail if `WCA`, `EFA`, `TLMM`, or `CBF` appears before its spelled-out definition.
+3. Fail if the ban-list words in Section 3 appear.
+4. Fail if bracket measurement chips are used as a labeling system.
+5. Confirm Notation, a methods section, results tied to sources, limits, references, and a reproducibility appendix.
+6. Confirm word count is between 8,000 and 12,000.
 
-- `CLAIM_LEDGER_NI.md`
-- `CLAIM_LEDGER_SATIATION.md`
-
-Allowed rows may appear. Forbidden rows must not appear, even softened. Needs-experiment rows appear only as limits or future work.
-
-Seed-1 / Model Context Protocol demo numbers appear only if they exist in sources. Surrogate joules stay labeled **[SURROGATE]**.
-
----
-
-## 6. Verification gate (before publish)
-
-Run on both paper markdown bodies:
-
-1. Fail if `—` or `–` appears in prose body (prefer ASCII hyphen-minus).
-2. Fail if `\bWCA\b` appears before the spelled-out first definition line. Same for EFA, TLMM, CBF.
-3. Count ban-list words; expect about zero.
-4. Spot-check first screen: Glossary present, first acronym uses spelled out, teaching skeleton visible.
-
----
-
-## 7. Where prose lives
+## 7. Paths
 
 | Surface | Path |
 |---------|------|
 | Style lock (box) | `wca-lut-edge/artifacts/EDUCATIONAL_PROSE.md` |
 | Style lock (site) | `research-openie-web/docs/EDUCATIONAL_PROSE.md` |
 | Live NI paper | `research-openie-web/src/content/papers/ni.md` |
-| Live Satiation paper | `research-openie-web/src/content/papers/satiation.md` |
-| Box canonical NI | `wca-lut-edge/artifacts/NOTATIONAL_INTELLIGENCE_STUDY.md` |
-| Box canonical Satiation | `wca-lut-edge/artifacts/SATIATION_RESEARCH_STUDY.md` |
+| Live satiation paper | `research-openie-web/src/content/papers/satiation.md` |
+| Box NI | `wca-lut-edge/artifacts/NOTATIONAL_INTELLIGENCE_STUDY.md` |
+| Box satiation | `wca-lut-edge/artifacts/SATIATION_RESEARCH_STUDY.md` |
 | Public site | https://research.openie.dev |
 
 *End of EDUCATIONAL_PROSE.md*

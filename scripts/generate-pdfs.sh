@@ -28,7 +28,7 @@ th, td { border: 1px solid #d1d5db; padding: 0.35rem 0.45rem; vertical-align: to
 th { background: #f3f4f6; }
 blockquote { border-left: 3px solid #f59e0b; margin: 0.75rem 0; padding: 0.15rem 0 0.15rem 0.85rem; color: #333; }
 .meta { font-size: 0.9rem; color: #444; margin-bottom: 1rem; }
-.honesty {
+.measurement {
   background: #fffbeb; border: 1px solid #fcd34d; padding: 0.65rem 0.8rem;
   margin: 0.75rem 0 1.25rem; font-size: 0.88rem;
 }
@@ -76,10 +76,10 @@ header = f'''# {title}
 https://research.openie.dev/papers/{id_}/ · PDF https://research.openie.dev/pdfs/{id_}.pdf
 </div>
 
-<div class="honesty">
-<strong>Honesty.</strong> Teaching paper / research study draft, not a final journal PDF.
-No fabricated citations. Claims keep honesty tags ([UNVERIFIED] / [VENDOR] / [SURROGATE] / [SOFT] as present in the study).
-<code>board_synth_claimed=false</code>: software reference stack; surrogate joules are not board watts.
+<div class="measurement">
+<strong>Measurement.</strong> Research study, not a journal final.
+Energy figures from the software reference are OpCounter analytical estimates, not board power.
+We have not synthesized or metered an FPGA board. No fabricated citations.
 </div>
 
 > {deck}

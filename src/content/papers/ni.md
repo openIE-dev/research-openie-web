@@ -1,9 +1,9 @@
 ---
 title: "Notational Intelligence as Commit Law"
-deck: "System One decides in software. Wise Computer Automation decides whether the machine is allowed to move."
+deck: "A software reference for commit and refuse at irreversible actions, with analytical energy accounting and no board power measurement."
 id: ni
-status: "Teaching paper · research study draft"
-author: "David Charlot · Open Interface Engineering"
+status: "Research study"
+author: "David Charlot, Open Interface Engineering"
 figures: "/living/ni/"
 pdf: "/pdfs/ni.pdf"
 board_synth_claimed: false
@@ -11,466 +11,497 @@ board_synth_claimed: false
 
 # Notational Intelligence as Commit Law
 
-**Who this is for.** Engineers, operators, and students who want to understand why symbols matter at the moment a machine is allowed to move. You do not need a control-theory background. You do need patience for one careful definition at a time.
+## Abstract
 
-**Honesty.** This is a teaching paper and research study draft, not a final journal article. The software reference does not claim Field-Programmable Gate Array (FPGA) board synthesis. The flag stays `board_synth_claimed=false`. Surrogate energy numbers are labeled **[SURROGATE]**. Soft analogies are labeled **[SOFT]**. Vendor numbers stay **[VENDOR]**. Unverified items stay **[UNVERIFIED]**.
+Agents propose actions. Irreversible work begins only when an action is allowed to run. This paper treats that permission step as a formal object. Linus Lee's notational intelligence is the observation that a change in symbols can make some thoughts cheap and others expressible. The claim here is narrower. For machines that can move matter or call an irreversible tool, the useful notation is a runtime law: a proposal may not authorize itself. The software reference, Wise Computer Automation (WCA), records the law as four objects under schema `wca.commit.v1`: a proposal, a certificate, a typed refuse reason, and a commit decision. The certificate used in the reference is conjunctive. A look-up table (LUT) allow bit must hold, and an energy predicate must hold. An optional control barrier function (CBF) may be added. Read-only calls may bypass the gate. Irreversible calls may not.
 
-**Public.** https://research.openie.dev/papers/ni/ · PDF https://research.openie.dev/pdfs/ni.pdf · Figures https://research.openie.dev/living/ni/
+Energy numbers in this paper are products of operation counts and analytical energy constants (an OpCounter model). They are not board power. Field-programmable gate array (FPGA) behavior in the repository is Icarus Verilog simulation of emitted register-transfer language, not a placed design. We have not synthesized or metered an FPGA board. The intended physical target, once a meter exists, is an Alchitry Pt V2. A specified next instrument, not present in this release, would compile the same Rust gate to WebAssembly (WASM) and show LUT state and commit traces in a browser through the WebGPU API. That instrument would still be an emulation. It would not be a device-under-test (DUT) measurement.
 
----
+The measured software results are bounded. On a 16-step pendulum episode with seed 1, the reference commits 1 step and refuses 15. The analytical episode energy is 8.6795e-10 joule. On the reported Safe fixed-point port-Hamiltonian check, false allows against a continuous energy oracle are 0 on the stated grids. A Model Context Protocol (MCP) demo refuses an irreversible tool call without invoking the executor. A toy comparison with an energy-set barrier and a discrete shield shows disagreement across safety definitions. None of these results is a claim of silicon energy leadership, of industrial control performance, or of a completed board measurement.
 
-## What you will learn
+## Notation
 
-- Why better symbols can matter more than louder tools, and why that claim is incomplete for agents that move matter.
-- What Wise Computer Automation (WCA) means as a teachable commit boundary: Proposal, Certificate, RefuseReason, CommitDecision.
-- How a Look-Up Table (LUT) allow bit can combine with an energy check (and optionally a Control Barrier Function) before irreversible action.
-- How to read honest energy claims by tier, and why surrogate joules are not board watts.
-- How to answer common objections without abandoning the claim or inventing evidence.
+Terms are defined at first scientific use below and collected here so later sections can use the short form.
 
----
+| Term | Definition in this paper |
+|------|--------------------------|
+| Open Interface Engineering (OpenIE) | The organization that maintains the software reference and this study. |
+| Notational intelligence | Lee's claim that better notations can raise what a person or system can reliably do, beyond adding tools alone. |
+| Commit law | A runtime rule that either applies a proposed action or holds. The proposer does not get a second, informal channel. |
+| Wise Computer Automation (WCA) | The software reference that implements commit law at the boundary between a proposal and an irreversible effect. |
+| Energy-First Architecture (EFA) | The design choice to put an energy predicate inside the permission record, not only in a later report. |
+| Proposal | A candidate action `u`, state, and optional analytical energy hints. It cannot commit. |
+| Certificate | The gate record: LUT allow, energy predicate, optional CBF predicate, reasons, and metrics. |
+| Refuse reason | A typed code such as `lut_veto`, `energy_veto`, `cbf_veto`, `budget_exceeded`, or `policy`. |
+| Commit decision | The envelope that sets plant action to `u` or to zero. |
+| Look-up table (LUT) | A discrete map from a compact code to allow or refuse. |
+| Ternary look-up matrix multiplier (TLMM) | The reference's cheap ternary table-lookup proposal path. |
+| Control barrier function (CBF) | A certificate of set invariance when its inequality holds (Ames et al., 2019). |
+| Model Context Protocol (MCP) | A tool-call transport. In this paper it is an adapter under test, not a plant certificate. |
+| System One | Typed decision procedures (Laya / Jev class) that choose among known options in software. They are proposers. |
+| Port-Hamiltonian | A structured energy model used here for a passivity-style check on toy plants. |
+| Runtime verification (RV) | Checking a property on an executing trace. Related, not identical, to the commit record. |
+| Device under test (DUT) | Hardware measured under a stated workload with a stated meter. No DUT result is reported. |
+| Field-programmable gate array (FPGA) | Reconfigurable logic. This paper reports simulation of Verilog, not a board. |
+| WebAssembly (WASM) | A portable compilation target for the browser. The WASM FPGA emulator is specified and not shipped. |
+| WebGPU | The browser GPU API named as the display and grid-evaluation path for that emulator. |
+| Alchitry Pt V2 | The intended later board: vendor documentation identifies a Xilinx Artix-7 XC7A100T. Not synthesized here. |
+| DiffLogic | Differentiable logic gate networks trained toward Boolean structure (Petersen et al., 2022). |
+| Analytical energy estimate | `J = sum_op count_op * E_op` with named constants. Not board power. |
+| Modeled | A quantity obtained from a stated formula or fitted structure. |
+| Simulated | A quantity obtained by executing the software or Verilog model. |
+| Board-measured | A quantity from a meter on a stated device and workload. None are reported. |
 
-## Glossary
+Scope of the argument. Section 2 places the commit record against notation research, information theory, scaling results, LUT networks, and control certificates. Section 3 defines the objects, the plants, the analytical energy model, and the unshipped browser instrument. Section 4 reports only quantities produced by the software reference or by a cited external source. Section 5 answers objections that have published form. Section 6 states what would falsify the claims and what was not measured.
 
-| Term | Plain meaning in this paper |
-|------|-----------------------------|
-| **Open Interface Engineering (OpenIE)** | Delaware B-Corp building energy-aware computing infrastructure. Public research home: research.openie.dev. |
-| **Notational intelligence** | Linus Lee's phrase (2022): better notations can raise effective intelligence more than automated tools alone. |
-| **Commit law** | Runtime rule the machine cannot ignore: allow the action, or refuse and hold. |
-| **Wise Computer Automation (WCA)** | OpenIE's product name for automation that treats commit and refuse as first-class law at the AI-to-machine boundary. |
-| **Energy-First Architecture (EFA)** | Discipline that prices action in energy terms and uses energy structure as part of the certificate, not as a slide after the fact. |
-| **Proposal** | Cheap proposed action `u` plus state. Never self-authorizing. |
-| **Certificate** | Gate-owned allow or refuse record: look-up allow AND energy OK, optionally AND barrier OK. |
-| **RefuseReason** | Typed veto code such as `lut_veto`, `energy_veto`, `cbf_veto`, `budget_exceeded`, or `policy`. Not a vibe score. |
-| **CommitDecision** | Envelope that either sets `plant_action = u` or holds at zeros. |
-| **Look-Up Table (LUT)** | Discrete table that maps a compact state code to allow or refuse. |
-| **Ternary Look-up Matrix Multiplier (TLMM)** | Cheap ternary table-lookup proposal path used in the software reference. |
-| **Control Barrier Function (CBF)** | Control-theoretic certificate that keeps the system inside a safe set when its inequality holds. |
-| **Model Context Protocol (MCP)** | Anthropic's tool and data transport standard for agents. Transport is not a plant certificate. |
-| **System One** | Typed decision models (Laya / Jev class) that collapse generation tax for known option sets. Upstream proposers, not plant gates. |
-| **port-Hamiltonian** | Structured energy dynamics used here for passivity-style energy checks on toy plants. |
-| **Runtime Verification (RV)** | Checking properties on running traces. Kinship with gates; not the same as shipping product nomenclature. |
-| **Device Under Test (DUT)** | Real hardware under a stated workload with a real meter. |
-| **Field-Programmable Gate Array (FPGA)** | Reconfigurable silicon. Board synthesis is not claimed in this stack. |
-| **DiffLogic** | Differentiable logic networks that train toward gates and look-up structures. |
-| **System on Chip loop (SoC loop)** | In this repo: the software plant episode loop (`wca-soc-loop`), not a fabricated chip claim. |
-| **JavaScript Object Notation (JSON)** | Text data format used for commit envelopes and demo records. |
-| **Artificial General Intelligence (AGI)** | Broad human-level AI aspiration. Not a result claimed here. |
-| **Information Theory (IT) / Information Science (IS)** | Shannon-to-Kolmogorov-to-Landauer tradition. Cross-entropy training is information-theoretic; that is not the same as treating commit certificates as product law. |
-| **Joule tier A / B / C** | A = surrogate OpCounter times analytical energy constants. B = post-synthesis tool estimates. C = board or DUT meter. |
-| **[SURROGATE] / [DUT] / [VENDOR] / [UNVERIFIED] / [SOFT]** | Honesty tags for evidence grade. |
+## 1. Introduction
 
----
+A language model can rank actions. Ranking is not permission. The failure mode that matters for a plant, a shell, a payment, or a destructive laboratory step is a commit: the action runs. Soft scores remain useful upstream. They are the wrong type at the irreversible branch, because a probability does not name which predicate failed, and it does not force the actuator command to zero.
 
-## Problem in plain language
+Lee (2022) states a prior claim cleanly. Notation is not decoration. A notation that makes an operation executable changes which errors can be written down and which can be hidden. Iverson (1980) made the same point for array languages: notation is a tool of thought. Engelbart (1962) treated language, artifacts, methods, and training as one system. Kay (1972) and Victor (2013; 2012 talk) argued that representations should keep consequences near the idea being edited. Matuschak and Nielsen asked why tools for thought stall as products. That literature is about cognition and media. It does not, by itself, specify a record that a machine must obey before it moves.
 
-Modern AI systems are excellent at proposing.
+The industrial center of recent artificial intelligence is scale. Kaplan et al. (2020) and Hoffmann et al. (2022) report loss scaling with parameters, data, and compute. Hooker (2021) argues that ideas spread when they fit available hardware and kernels. Epoch AI reports large declines in the price of a fixed inference performance (Epoch AI, 2025; Emberson and Roodman, 2026). Those results are about capability and cost of proposal. They do not define a commit predicate.
 
-They draft text. They suggest tool calls. They invent plans. They can sound confident while being wrong. Soft confidence strings are good for ranking options. They are bad as permission to move a plant, run a shell, spend money, or destroy a sample.
+This paper's contribution is a software reference for that predicate, plus a report of what the reference actually does on toy plants. The contribution is compositional. Boolean LUT shields, energy certificates, ternary table lookup, and tool transports each exist in prior work. The reference wires them as one auditable decision: proposal, then certificate, then typed refuse or commit. The scan recorded in the project state-of-the-art note did not find a published product that ships that exact composition as one boundary. A scan is not a proof of absence. Private systems can exist. The claim is the existence and behavior of this reference, not a global first.
 
-Linus Lee's essay *Notational intelligence* (thesephist, 2022) states an old truth clearly: inventing better symbols can raise effective intelligence more than inventing louder tools. He stands in a generous lineage. Kenneth Iverson treated notation as a tool of thought. Douglas Engelbart described humans plus language, artifacts, methods, and training as one augmented system. Alan Kay argued for personal dynamic media. Bret Victor argued that representations must upgrade so consequence stays close to idea. Andy Matuschak and Michael Nielsen diagnosed why tools for thought stall commercially.
+Three measurement statements constrain every later number. First, joules computed by the OpCounter are analytical estimates. Second, Verilog results are simulation. Third, we have not synthesized or metered the FPGA board. `board_synth_claimed` remains false in the repository metadata until a synthesis log and a meter exist. Those sentences replace any badge-style labeling. A reader should be able to tell modeled, simulated, and board-measured apart from the method clause attached to the number.
 
-That lineage is true. For agentic Physical AI it is incomplete.
+## 2. Related work
 
-The expensive mistakes are no longer only "I could not think the thought." The expensive mistakes are **commits**: torque applied, shell executed, payment sent, sample destroyed. Probability routes. Certificates commit.
+### 2.1 Notation and tools for thought
 
-The industry center of gravity is still scale: bigger transformers, more tokens per dollar, specialized inference silicon, world models as appearance catalogs. Those bets are real. They are not the same as treating lawful minimal description, joule bounds as product discipline, and certificates that commit under physical law as the primary product program.
+Lee (2022) argues that inventing notations can matter more than inventing additional automated tools, because a notation changes the thoughts that are cheap. The interview record with The Gradient is consistent with that essay and is not an independent empirical result. Iverson (1980), Turing Award lecture, is the classical computer-science statement: notation is a tool of thought, and executability is part of the test. Engelbart (1962) locates intelligence in a human plus artifact system, not in a bare brain. Kay (1972) specifies a personal dynamic medium. Victor's "Media for Thinking the Unthinkable" and "Inventing on Principle" argue that creators need representations whose consequences are visible while the idea is still being formed. Matuschak and Nielsen, "How can we develop transformative tools for thought?", document adoption and institutional failure modes of such tools.
 
-OpenIE's teaching claim is narrow. We need notation that the runtime cannot ignore at the irreversible boundary.
+This paper uses that lineage for one limited inference. If a notation is executable, some failures become ordinary data rather than unrepresented accidents. A typed refuse reason is an instance. It does not support the strong Sapir-Whorf claim that language determines thought. The strong claim is rejected in Section 5. The weak claim, which is Iverson's, is that an executable notation changes the cost of operations and the representability of errors.
 
----
+Chollet (2019) defines intelligence as skill-acquisition efficiency and grounds the definition in algorithmic information theory. That definition is about learning new skills, not about commit. It is cited so the paper does not confuse a frozen benchmark score with a theory of intelligence. This paper does not add an energy term to Chollet's definition and then treat the sum as measured.
 
-## Core thesis
+### 2.2 Information, description length, and physical cost
 
-Lee is Brahe-scale for notation: precise observation that symbols amplify thought. The Keplerian step for agents that can hurt the world is to treat notation as **runtime commit and refuse law**. In the OpenIE software reference, that law is versioned wire under `wca.commit.v1`:
+Shannon (1948) defines entropy and channel capacity. Shannon (1959) defines rate-distortion: how much description is required for a stated fidelity. Kolmogorov (1965) defines description length by program size. Solomonoff (1964) defines inductive inference by a mixture over programs. Chaitin (1977) develops program-size complexity. Cover and Thomas (2006) is the textbook spine. Jaynes (1957) uses maximum entropy as a rule for distributions under constraints. Brillouin (1956) connects information to physical negentropy in the Maxwell-demon line.
 
-> Proposal → Certificate → RefuseReason → CommitDecision
+Cross-entropy training of a language model is an information-theoretic objective on a data distribution. Sutskever's 2023 Simons Institute talk, which is a talk and not a paper, discusses unsupervised learning as compression. That fact does not yield a Kolmogorov certificate for a particular string, and it does not yield a commit bit. The distinction is the one drawn in the project citation spine: statistical compression of a training measure is not the same object as a runtime allow set under a plant constraint.
 
-Composition is conjunctive on purpose:
+Landauer (1961) proves a lower bound: logically irreversible erasure dissipates at least `kT ln 2` per bit in the ideal model. Bennett (1973) shows that logically reversible computation can avoid that erasure cost in the limit. Horowitz (2014) reports practical CMOS energy at picojoule scales for operations and memory movement, far above the Landauer bound, and treats energy rather than transistor count as the constraint. Mead (1990) is the neuromorphic argument for analog efficiency. Sandberg (2016) warns that a brain power near 20 watt does not bound the energy of an engineered system trained from scratch. A cortical partitioning preprint (arXiv:2102.06273) further warns against treating all of that biological power as comparable compute. This paper uses Landauer and Horowitz as bounds and practice tables. It does not claim that any model in the reference operates near `kT ln 2`.
 
-> commit = lut_allow ∧ energy_ok [∧ cbf_ok]
+### 2.3 Scale, hardware fit, and price
 
-Scaled proposers stay welcome upstream. System One can decide in software. Wise Computer Automation decides whether the machine is allowed to move. Silicon joule leadership is not claimed. Board watts are not claimed. The product claim is auditable commit nomenclature you can teach, run, and refuse with typed reasons.
+Hestness et al. (2017), Kaplan et al. (2020), and Hoffmann et al. (2022) document empirical scaling of deep learning loss. Amodei and Hernandez (2018), an OpenAI blog post, describe rapid growth in training compute for landmark results. The page is a vendor essay. This paper does not depend on a specific doubling time from it. Sutton (2019) argues that general methods which use computation have beaten systems that encode the contents of human knowledge as fixed features. The essay is not an argument against every constraint. A commit predicate is a constraint on action, not a hand-built chess feature. Hooker (2021) explains why alternatives lose when the installed base of chips and libraries rewards dense matrix multiplication.
 
----
+Epoch AI (2025) reports inference price drops on the order of 9 to 900 times per year at fixed benchmark performance, depending on the benchmark. Emberson and Roodman (2026) report about a 47 percent quarterly decline in the cost of a given performance since about 2023, which they summarize as about 13 times per year, with a faster decline near the frontier. Those are Epoch's published summaries. They are evidence about price. They are not evidence that joules or irreversible commits have become free. The companion paper on satiation uses the same price series for a demand argument. This paper uses them only to separate proposal cost from permission.
 
-## Definitions and objects
+### 2.4 LUT networks, ternary lookup, and differentiable logic
 
-### Notational intelligence, taught carefully
+Umuroglu et al. (2020) map sparse low-bit networks to FPGA truth tables (LogicNets). Petersen et al. (2022) train networks of logic gates with differentiable relaxations (DiffLogic). Bacellar et al. (2024) train weightless networks of LUTs (differentiable weightless neural networks). Ma et al. (2024) study ternary-weight language models (BitNet b1.58). Wei et al. (2024) implement low-bit matrix multiplication by table lookup on CPUs (T-MAC). The TeLLMe line (arXiv:2504.16266) is a ternary LUT matrix-multiplication design aimed at FPGA execution. Those systems show that tables and gates are a real compute substrate. They do not, in the papers cited, attach a port-Hamiltonian energy veto and a typed commit envelope to a tool executor.
 
-**Name.** Notational intelligence.
+The reference uses DiffLogic as a thin allow table on toy features, and TLMM as a proposal path. That is a different job from using a logic network as the whole classifier, which is the usual DiffLogic evaluation (vision benchmarks, large gate counts). Section 6 records the capacity gap.
 
-**Definition.** A change in symbols that makes harder thoughts cheap, clear, or newly possible.
+### 2.5 Certificates, shields, and runtime monitoring
 
-**Why it matters.** Tools automate steps. Notation changes which steps are even thinkable. Iverson's APL made array thought executable. Lee's essay asks for notations that enable previously unthinkable thoughts, not mere productivity.
+Ames et al. (2019) survey control barrier functions as set-invariance certificates, typically enforced by a filter or a quadratic program. Alshiekh et al. (2018 preprint arXiv:1708.08611) introduce shields that replace unsafe actions with safe ones, minimally when possible. Dawson, Gao, and Fan (2022) survey learned Lyapunov and barrier certificates and the failure modes of treating a neural network as a certificate without a check. Manek and Kolter (2020) learn stable dynamics with a Lyapunov structure. Greydanus, Dzamba, and Yosinski (2019) learn Hamiltonian neural networks. Roth et al. (2025) study stable port-Hamiltonian neural networks. Yu, Zikelic, and Henzinger (2024) repair neural certificates using runtime monitors. Leung and Pare (arXiv:2512.24493) study energy-aware Bayesian barrier filters. Sanchez et al. (2018) survey runtime-verification taxonomies.
 
-**Example.** A `RefuseReason` enum does not make a model "understand safety." It makes silent unsafe success unrepresentable as success. The bad outcome cannot be filed as a quiet win.
+The reference does not replace that mathematics. The Safe path is a conservative fixed-point test of a known energy identity on a pendulum, `V = (1/2)(g theta^2 + omega^2)` with `Vdot = omega * u`. The CBF used in the toy bake-off is an energy-set inequality on the same `V`, not a claim to have solved the Ames quadratic program on a manipulator. Learned Lyapunov structure on a cart-pole is a second toy, reported in Section 4, and is not a region-of-attraction theorem for arbitrary plants.
 
-**Connect.** For Physical AI, the notation that matters most is the one wired into the allow-or-hold branch.
+### 2.6 World models, typed decisions, and tool transport
 
-### Proposal
+Ha and Schmidhuber (2018) and Hafner et al. (DreamerV3, arXiv:2301.04104) show that learned models can propose actions from imagined trajectories. LeCun's JEPA essays (Meta research blog) argue for predictive world models. LeCun et al. (2006) is the earlier energy-based learning tutorial. Prediction error is not identically zero in these systems. A predictor can sit upstream of a gate. It cannot replace the gate unless its predictions are perfect and the plant model is the plant. This paper does not compete with those systems on prediction benchmarks.
 
-A Proposal is cheap. It carries a candidate action `u`, relevant state, and optional surrogate energy hints. Sources can be a Ternary Look-up Matrix Multiplier path, a System One typed decision, or an agent tool call. A Proposal never self-commits. If your design lets the proposer authorize the plant, you do not have a gate. You have a suggestion with actuators.
+System One, as described by Laya (product page) and in related preprints arXiv:2503.23303 and arXiv:2510.01237, collapses generation cost when the option set is typed and known. Anthropic's Model Context Protocol announcement specifies discovery and transport for tools. Transport delivers a call. It does not evaluate `Vdot`. The reference's MCP adapter is a beachhead: irreversible tools require a certificate before the executor runs. That is an engineering claim about this adapter, tested by the demo in Section 4, not a claim about every MCP server in production.
 
-### Certificate
+### 2.7 What the composition adds
 
-A Certificate is gate-owned. It records Boolean allow from the Look-Up Table, an energy or Safe check, and optionally a Control Barrier Function conjunct. It also carries metrics and the honesty flag `board_synth_claimed`. Soft confidence is not a Certificate. A green probability is not a Certificate.
+Shields refuse unsafe actions but are not, in the cited papers, exported as the reference's four-field commit record with an analytical joule account. DiffLogic and LUT networks compute functions. They are not, in those papers, a veto in front of a separate proposer and a tool executor. Energy-aware barrier filters are continuous. The reference's allow bit is a table. The compositional claim is the wiring: LUT allow and energy predicate and optional barrier, recorded with a typed reason, applied before an irreversible effect, with analytical energy kept distinct from board power. Section 4 states which parts of that wiring were executed.
 
-### RefuseReason
+## 3. Definitions and methods
 
-RefuseReason is typed. Examples: `lut_veto`, `energy_veto`, `cbf_veto`, `budget_exceeded`, `policy`. Typed reasons make audit possible. "The model felt unsure" is not an audit trail.
+### 3.1 Objects
 
-### CommitDecision
-
-CommitDecision is the envelope. On allow, `plant_action = u`. On refuse, hold at zeros and keep reasons. The irreversible executor runs only on allow.
-
-### Energy-First Architecture in one paragraph
-
-Energy-First Architecture here means: treat energy structure as part of the permission story. The software reference uses port-Hamiltonian or Safe fixed-point checks on toy plants. That is kinship with energy certificates, not a claim that the stack matches Ames-style Control Barrier Function quadratic programs on rich plants, and not a claim of board watts.
-
-### Compose predicates (software reference)
-
-Three teaching predicates appear often:
-
-1. `lut_and_energy`: Look-Up Table allow and energy OK.
-2. `lut_and_safe`: Look-Up Table allow and Safe energy mode.
-3. `lut_and_safe_and_cbf`: Look-Up Table allow, Safe, and Control Barrier Function OK.
-
-Read-only or reversible paths may bypass. Irreversible paths must not.
-
----
-
-## How it works
-
-### Step map
+Fix a state `x` and a candidate action `u` in a set `U`. A proposal is a tuple
 
 ```text
-state
-  -> optional System One typed branch (software decision)
-  -> only if machine action is required:
-       Proposal (TLMM / agent / other cheap proposer)
-       -> Commit Gate: lut_allow AND energy_ok [AND cbf_ok]
-       -> allow: plant_action = u
-       -> refuse: plant_action = 0 + RefuseReason list
+Proposal = (u, x, hints)
 ```
 
-Deck line:
+`hints` may include analytical energy quantities. A proposal has no interpretation as permission.
 
-> System One decides in software. Wise Computer Automation decides whether the machine is allowed to move.
+A certificate is a tuple
 
-### Concrete refuse example
-
-Here is a real envelope pattern from the software reference (schema `wca.commit.v1`). The Look-Up Table allows. Energy refuses. The plant holds.
-
-```json
-{
-  "schema_version": "wca.commit.v1",
-  "decision": "refuse",
-  "commit": false,
-  "compose": "lut_and_energy",
-  "certificate": {
-    "lut_allow": true,
-    "energy_ok": false,
-    "reasons": [
-      {
-        "code": "energy_veto",
-        "vdot_q": 1461,
-        "detail": "rtl_energy_veto Vdot_q=1461 > eps_q=13"
-      }
-    ],
-    "board_synth_claimed": false
-  },
-  "plant_action": [0.0],
-  "board_synth_claimed": false
-}
+```text
+Certificate = (lut_allow, energy_ok, cbf_ok, reasons, metrics)
 ```
 
-Teaching point: allow on one conjunct is not enough. Conjunction is the lesson.
+`lut_allow` and `energy_ok` are Booleans. `cbf_ok` is a Boolean when the selected compose mode requires it, and is absent otherwise. `reasons` is a list of refuse reasons. `metrics` includes the analytical energy account and the flag that board synthesis is not claimed.
 
-### Model Context Protocol beachhead
+Compose modes in the schema README are:
 
-Model Context Protocol solves discovery and transport for tools. It does not certify passivity or energy before actuators. In the software reference, the irreversible adapter refuses before side effects. Refuse means the executor is never called. Read-only tools may bypass. Unknown tools default to irreversible. Demo mode uses a recording executor that never touches real I/O. Demo record `mcp_gate_demo.json` shows cases such as read-only bypass, irreversible refuse (`executed=false`, `executor_calls=0`), and irreversible allow under `lut_and_safe_and_cbf`.
+```text
+lut_and_energy        : commit <=> lut_allow AND energy_ok
+lut_and_safe          : commit <=> lut_allow AND safe_energy_ok
+lut_and_safe_and_cbf  : commit <=> lut_allow AND safe_energy_ok AND cbf_ok
+```
 
-### Brahe then Kepler **[SOFT]**
+Ablations `energy_only` and `lut_only` exist so a comparison can remove one conjunct. They are not the default for irreversible tools.
 
-Tycho Brahe assembled observations of rare precision without the dynamical law those observations were waiting for. Kepler turned the data into enforceable planetary motion. **[SOFT]** historical analogy: Lee is Brahe-scale for notation. Charlot's program is the bet that Proposal, Certificate, RefuseReason, and CommitDecision are the laws agents must obey at runtime, not optional documentation. Soft analogies teach orientation. They are not evidence.
+A commit decision is
 
----
+```text
+if commit then plant_action = u else plant_action = 0
+```
 
-## Evidence from the software reference
+with the certificate attached. The executor for an irreversible tool is called only in the first branch.
 
-All rows below are Allowed only within the frozen claim ledger for this paper. Forbidden claims are omitted on purpose.
+Worked record. File `artifacts/schemas/wca.commit.v1/examples/commit_decision_refuse.json` stores a refuse in which `lut_allow` is true and `energy_ok` is false. The reason code is `energy_veto`. The fixed-point detail string is `Vdot_q=1461 > eps_q=13`. `plant_action` is `[0.0]`. The record sets `board_synth_claimed` to false. One true conjunct does not commit. That is the content of the conjunction, not a slogan.
 
-### Compositional software-reference novelty
+### 3.2 Plants and oracles
 
-The stack ships Proposal → Certificate → RefuseReason → CommitDecision as runtime commit law (`wca.commit.v1`), with Rust twins and schema files. This is a software reference. `board_synth_claimed=false`.
+The primary plant is a pendulum. Continuous reference quantities used by the Safe check are `g = 9.81`, `epsilon = 0.05`, `V = (1/2)(g theta^2 + omega^2)`, and `Vdot = omega * u`. `energy_ok` in the continuous oracle means `Vdot <= epsilon`.
 
-### Seed-1 System on Chip golden episode **[SURROGATE]**
+The legacy discrete check is a Q8.8 fixed-point approximation, bit-matched to the Verilog module `wca_ph_energy.v` in simulation. The Safe check (`SafeFixedPointPHCertificate`) uses Q16.16 and an exact integer residual. The reported predicate is
 
-On the measured software plant loop (`wca-soc-loop`, 16 steps, seed 1, init theta 1.5, omega 3.0):
+```text
+energy_ok <=> 4*omega_q*u_q + 2*(abs(omega_q)+abs(u_q)) + 1
+              <= floor(4*epsilon*S^2)
+```
 
-- committed = 1
-- refused = 15
-- episode surrogate joules ≈ 8.6795e-10 **[SURROGATE]**
-- `board_synth_claimed=false`
+with the rounding argument given in `artifacts/RESULTS.md`: under round-to-nearest with error at most half a least significant bit, `Vdot` is bounded by `(prod + (1/2) abs + 1/4) / S^2`. The design goal is one-sided. If the Safe predicate allows, the continuous oracle allows. The converse is not required. Extra refuses are a measured cost, not a contradiction of the safety direction.
 
-These joules are OpCounter times analytical energy constants. They are not board watts. They are not Device Under Test measurements. They teach that refuse can dominate an honest episode without being a slogan.
+A second plant, cart-pole, is used only in the learned-Lyapunov simulation. State is `[x, xdot, theta, thetadot]`, with `g = 9.81`, cart mass 1.0, pole mass 0.1, length 0.5. `V` is a quadratic form `xi^T P xi / 2` with `P` positive definite by a Cholesky construction plus a multiple of the identity. The fit is stochastic gradient on a hinge of `Vdot + alpha V` under a linear policy, seed 42, 400 iterations, batch 32, `alpha = 0.15`, as recorded in `RESULTS.md`. The continuous gate is `Vdot <= 0.05`. The Safe discrete rule adds a Lipschitz margin times half a least significant bit. This is a simulation of one fitted quadratic on one box. It is not a proof for other plants.
 
-### Safe energy false-allow discipline on toy grids
+### 3.3 LUT allow and proposal path
 
-Safe port-Hamiltonian mode aims for zero false-allow against continuous checks on toy plants. That is measured on toy plants only. It is not Input-to-State Stability completeness, and it is not a bake-off win against Ames-style Control Barrier Function quadratic programs.
+The allow LUT in the reported episodes is a DiffLogic export with mask `21887` on four features: absolute theta, absolute omega, absolute `u`, and an energy bit, unless a section says otherwise. TLMM is a grouped ternary table lookup used as a proposer. Iso-correctness means agreement with a naive ternary matrix product within absolute tolerance 1e-12, which `RESULTS.md` records as measured in software. Scale behavior is whatever `wca-tlmm-scale` writes under a stated analytical forward budget. The default budget discussed in results is 2e-10 joule per forward, analytical, not electrical.
 
-### Dual compose on a toy plant
+### 3.4 Analytical energy model
 
-`lut_allow ∧ energy_ok [∧ cbf_ok]` runs on the software dual plant path. Toy dual. Not an Ames quadratic-program bake-off win.
+`RESULTS.md` separates two facts. Operation counts are exact in the OpCounter. Joules are the counts times constants:
 
-### Model Context Protocol refuse-before-execute
+| Constant | Value (joule) | Role |
+|----------|----------------|------|
+| `E_LUT_READ` | 1e-12 | LUT read |
+| `E_BRAM_WORD` | 1e-11 | BRAM word |
+| `E_BITMASK_OP` | 5e-14 | bitmask operation |
+| `E_ADD` | 5e-13 | add |
+| `E_PACK` | 2e-13 | pack |
+| `E_COMMIT_BASE` | 2e-11 | commit overhead |
+| `E_REFUSE_OVERHEAD` | 5e-12 | refuse overhead |
 
-Irreversible tools require a Certificate. On refuse, executed stays false and the executor is not called. Demo and software gate only. Not a production computer-use agent fleet.
+`J = sum count_op * E_op`. Structure counters such as shared BRAM hits are reported and are not charged unless they change a counted read. Changing a constant rescales every analytical joule in lockstep. That is why the numbers cannot be compared to a vendor's tokens per joule, to MLPerf Tiny energy, or to a rail measurement. They can be compared across modes inside the same model.
 
-### Iso-correct Ternary Look-up Matrix Multiplier under stated joule budgets **[SURROGATE]**
+Utility in the internal tables is commit count. Commit count is not a task reward. A policy that commits more can score higher utility per joule while violating the energy oracle. Section 4 therefore does not treat utility per joule as a safety metric.
 
-Control-sized paths keep table-lookup proposals inside stated surrogate joule budgets. Surrogate budget, not TeLLMe board parity.
+### 3.5 Tool adapter
 
-### Auditable OpCounter accounting **[SURROGATE]**
+`wca-mcp-gate` classifies tools. Read-only tools may execute without a commit record. Unknown tools are treated as irreversible. Irreversible tools require a certificate under the configured compose mode, default `lut_and_safe_and_cbf` in `artifacts/mcp_gate_demo.json`. On refuse, `executed` is false and `executor_calls` is 0. The demo executor records calls and does not perform host input or output. The method string in the demo file is `rust_mcp_commit_gate_v1`.
 
-Energy accounting is explicit and inspectable in code. Language must stay "surrogate joules," never "board watts."
+### 3.6 Simulation of Verilog
 
-### What scans support (and do not)
+The repository emits Verilog and memory images for the allow LUT and the commit gate (`artifacts/fpga/`). `wca-rtl-verify` and Icarus Verilog check bit-exact behavior of those models against the software oracle. Icarus executes a simulation. It does not place, route, or measure a chip. No Vivado or Quartus report is a result of this paper.
 
-Sep 29-30, 2026 product and literature scans did not find a published product stack that ships Boolean allow Look-Up Table AND port-Hamiltonian / Safe energy certificate AND cheap Ternary Look-up Matrix Multiplier (or System One) proposal as one auditable commit boundary. That white space is real as a scan finding. Silicon joule leadership is not. Private unknown systems can exist. Do not upgrade a scan gap into a metaphysical first.
+### 3.7 Specified browser instrument (not a result)
 
-### Compose, do not compete (teaching table)
+The completeness path for replication has three stages. Only the first stage exists.
 
-| Layer | Owns | Does not own |
-|-------|------|--------------|
-| System One / typed natural language | Software decisions | Plant energy certificates |
-| World models / JEPA-class | Imagination / prediction | Permission to move |
-| Groq / Etched / Taalas-class | Tokens per joule **[VENDOR]** | Refuse-to-commit |
-| Wise Computer Automation / Energy-First gate | `lut ∧ safe [∧ cbf]`, refuse taxonomy | Free-form generation |
-| OpenIE metering | Joule-visible budgets | Fantasy board watts |
+Stage A, present. Rust binaries in `wca-commit` run the episode, the Safe check, the tool demo, and the analytical joule account. Icarus simulates emitted Verilog on a workstation.
 
----
+Stage B, specified, not shipped. Compile the pure decision core (proposal in, certificate out, plant step, analytical joule update) to `wasm32`. A static page loads the module. WebGPU holds the LUT words and a trace buffer of `(step, lut_allow, energy_ok, cbf_ok, decision)` in storage buffers. A render or compute pass displays the table and the trace. An optional compute pass evaluates the published Safe residual on a grid copied from the CPU test, so a reader can see false-allow counts without trusting a screenshot. WebGPU timestamps are not joules. The WASM module is an emulation of the same functions the Rust crate runs. It is not a cycle-accurate model of an Artix-7, not a switching-activity power model, and not a substitute for Icarus on the Verilog. The repository does not yet contain this target. Figure notes in the project mark the WASM episode loop as aspirational. This paper does not report a run.
 
+Stage C, optional and future. Synthesize the Verilog for an Alchitry Pt V2 and meter a stated workload. SparkFun's product page for that board names FPGA XC7A100T-2FGG84I and lists 101,440 logic cells, 240 DSP48E1 slices, 4,860 Kb of block RAM, and 256 MB of DDR3L. Those are vendor specifications (https://www.sparkfun.com/alchitry-pt-v2.html). This paper does not check them on a bench and does not report current, voltage, or energy from the board. Until stage C exists, the prose statement is: we have not synthesized or metered the FPGA board.
 
-### Teaching the information-science cross-cut without hype
+The scientific reason for stage B is replication and inspection, not a new physical claim. A reader with a browser should eventually be able to step the same seed-1 episode and read the same allow bit and reason codes that the crate prints. Agreement with stage A is the acceptance test for stage B. Agreement with a meter is the acceptance test for stage C. The tests are different, and this paper completes neither beyond stage A.
 
-Cross-entropy training of large models is already information-theoretic in a narrow sense. That fact does not settle product law.
+### 3.8 What is not a method of this paper
 
-Information Theory and Information Science give a spine from Shannon to Kolmogorov to Landauer. Shannon prices communication under noise. Kolmogorov prices description length. Landauer prices irreversible bit erasure with a thermodynamic lower bound. OpenIE's teaching move is different from "cite Landauer on a slide." The move is to make commit certificates and joule honesty the objects an operator can audit before matter moves.
+No human-subject study. No claim about linguistic relativity beyond the rejection in Section 5. No training-compute extrapolation. No identification of economic satiation, which is the companion paper. No optimization against Groq, Etched, or Taalas throughput. No world-model benchmark.
 
-Scale still matters. Kaplan-style and Chinchilla-style scaling results, plus Epoch cost curves, show capability and price tracking compute. Sara Hooker's Hardware Lottery shows research ideas advancing when hardware fits them. None of that erases the commit boundary. It explains why proposers got loud first.
+## 4. Results
 
-### Why Look-Up Table allow is teachable
+All quantities in this section are simulated in the software reference unless a sentence cites an external paper. Analytical joules use Section 3.4. No row is board-measured.
 
-A Look-Up Table allow bit is intentionally boring.
+### 4.1 Claim NI-1. The commit record exists as a schema and a Rust type
 
-You encode a compact discrete state. You look up allow or refuse. You can burn the table toward gates. You can simulate it. You can audit it. Differentiable logic work such as DiffLogic, and FPGA-oriented weightless or look-up nets, show a research path where tables and gates are the substrate rather than dense floating multiply alone.
+Schemas `Proposal`, `Certificate`, `RefuseReason`, and `CommitDecision` are in `artifacts/schemas/wca.commit.v1/`. Rust types are in `crates/wca-commit/src/schema.rs`. Round-trip tests are `cargo test -p wca-commit`. This is an existence result about the reference, version `wca.commit.v1`. It is not a uniqueness theorem.
 
-Boring is a feature at the irreversible boundary. The gate should not invent poetry. The gate should answer: may this action run now?
+### 4.2 Claim NI-2. Seed-1 pendulum episode
 
-### Why energy_ok is not "green vibes"
+Command, from `RESULTS.md`:
 
-`energy_ok` in this stack means a structural check on a toy energy certificate, often port-Hamiltonian or Safe fixed-point form. Teaching translation: does the proposed action keep the energy story inside the rule we declared?
+```text
+cargo run --release --bin wca-soc-loop -- \
+  --steps 16 --init-theta 1.5 --init-omega 3.0 --seed 1
+```
 
-If the surrogate energy derivative exceeds epsilon, refuse. If the Look-Up Table says no, refuse. If an optional Control Barrier Function says the safe-set inequality fails, refuse. Conjunction means one green light is not enough.
+Reported outcome: committed = 1, refused = 15, analytical episode energy = 8.6795e-10 joule. The same committed and refused counts and the same analytical energy are reported for `--safe-ph` on that seed. `RESULTS.md` states that the single commit is step 6. Toolchain note in that file: Rust 1.98. Re-running the binary is the reproduction. The energy is not a measurement of a chip.
 
-### Worked walk-through for a new reader
+### 4.3 Claim NI-3. False allows of the Safe energy check
 
-Imagine an agent proposes a small torque on a toy rotary plant.
+`wca-ph-tighten` compares discrete decisions to the continuous oracle `Vdot <= epsilon`. On a 21 cubed grid plus 200,000 near-threshold Monte Carlo samples (209,261 decisions):
 
-1. The proposer emits a Proposal with action `u` and state.
-2. The Look-Up Table maps the discretized state to allow = true.
-3. The energy check computes a fixed-point energy rate and compares it to a threshold.
-4. The rate is too large. Certificate sets `energy_ok = false` and records `energy_veto`.
-5. CommitDecision sets `commit = false` and `plant_action = [0.0]`.
-6. An auditor reads the RefuseReason list and sees exactly why the plant held.
+| Path | False allow | False refuse | Both allow | Both refuse |
+|------|-------------|--------------|------------|-------------|
+| Legacy Q8.8 | 30836 | 105 | 104711 | 73609 |
+| Safe v1 (Q8.8 over-approximation) | 0 | 42430 | 62386 | 104445 |
+| Safe v2 (Q16.16 residual) | 0 | 79 | 104737 | 104445 |
 
-No anthropomorphism is required. The runtime did not "understand danger." It enforced a named predicate.
+`RESULTS.md` also states that a denser 41 cubed grid plus 50,000 Monte Carlo samples, checked in `cargo test`, asserts false allow equal to 0. Safe v2 cuts false refuses from 42,430 to 79 relative to Safe v1 while keeping false allows at 0. Legacy Q8.8 is not safe on this definition: it records 30,836 false allows. These counts are properties of the numerical test, not of a physical pendulum.
 
-### What success looks like after you learn this
+### 4.4 Claim NI-4. Toy barrier comparison, neither definition dominates
 
-You should be able to teach a colleague, without slides:
+`wca-cbf-bakeoff` runs seeds 0 through 4, 40 steps, time step 0.05, action scale 2.5, shared demo TLMM and DiffLogic mask `21887`. The energy-set barrier uses `h = 18 - V` and allows when `h >= 0` and `omega * u <= kappa * h` with `kappa = 0.05`. The discrete shield allows a step that stays inside absolute theta at most 2 and absolute omega at most 4. Closed-loop means differ because trajectories diverge. The file reports per-episode means for commits and sums for violation counts. Selected rows:
 
-- Soft confidence is not permission.
-- Proposal is cheap and never self-authorizing.
-- Certificate is conjunctive and gate-owned.
-- RefuseReason is typed.
-- Surrogate joules are labeled until a Device Under Test meter exists.
-- System One can decide in software while Wise Computer Automation still owns motion.
+| Filter | Commit | Refuse | Analytical J | False allow vs PH | `h < 0` | `Vdot > epsilon` |
+|--------|--------|--------|--------------|-------------------|---------|------------------|
+| `lut_and_safe_ph` | 1 | 38 | 2.153e-09 | 0 | 4 | 0 |
+| `cbf_energy_set` | 1 | 38 | 2.056e-09 | 3 | 0 | 3 |
+| `shield_discrete` | 18 | 21 | 2.306e-09 | 90 | 38 | 90 |
+| `lut_only` | 40 | 0 | 2.544e-09 | 194 | 220 | 194 |
 
-If you can say those six sentences in your own words, the paper did its job.
+On this plant and this oracle, `lut_and_safe_ph` has zero `Vdot` violations and four `h < 0` events. The energy-set barrier has zero `h < 0` events and three `Vdot` violations. The shield commits more and violates the energy oracle often. `lut_only` matches `always_allow` on violations in the reported table. Offline agreement on a shared always-allow stream of 200 steps gives 4 disagreements between `lut_and_safe_ph` and `cbf_energy_set`, and 70 against the shield.
 
+Interpretation inside the test: passivity and set invariance are different predicates. The LUT-and-energy gate is not equivalent to an Ames filter, and it does not win every column. A full quadratic-program baseline on a richer plant is not in this table. That comparison remains open. The result that is available is the disagreement, which is evidence against collapsing the two certificates into one word.
 
+### 4.5 Claim NI-5. Cart-pole Safe Lyapunov simulation
 
-### Honesty tags as part of the notation
+On the audit described in Section 3.2 (grid n = 7 plus 20,000 boundary samples inside the Lipschitz box, 26,487 decisions), Safe learned Lyapunov versus the continuous `Vdot` oracle records false allow 0, false refuse 3, both allow 15,925, both refuse 10,559. Closed-loop means over five seeds: `lut_and_safe_lyap` commits 11, refuses 28, analytical J 2.719e-09, and records zero false allows against that oracle. The level-set barrier on the same `V` commits 14 and records 15 energy-oracle violations. The discrete shield commits 29 and records 95. Same pattern as the pendulum: the Safe conjunct tracks its own oracle; a different certificate tracks a different one; permissiveness without the oracle is not safety.
 
-Treat honesty tags as vocabulary students must learn:
+This is one additional simulated plant. It does not establish the commit law on industrial dynamics.
 
-- **[SURROGATE]**: analytical or proxy meter. Useful for development. Not board watts.
-- **[DUT]**: Device Under Test measurement under a stated workload.
-- **[VENDOR]**: company-reported figure. May be true. Is not independent science until checked.
-- **[UNVERIFIED]**: not checked in the drafting window. Do not launder into fact.
-- **[SOFT]**: analogy or pattern recognition. Orientation aid, not proof.
+### 4.6 Claim NI-6. MCP demo
 
-A paper that hides these tags teaches the wrong lesson: that certainty is a prose style. Certainty is an evidence grade.
+`artifacts/mcp_gate_demo.json` records four cases. `board_synth_claimed` in the file is false.
 
+| Case | Class | Executed | Executor calls | Commit |
+|------|-------|----------|----------------|--------|
+| `read_only_bypass` | read-only | true | (no commit record) | absent |
+| `irreversible_refuse` | irreversible | false | 0 | false |
+| `irreversible_allow` | irreversible | true | 1 | true |
+| `shell_exec_gated` | irreversible | true | (gated) | true |
 
-## Common confusions and counters
+The refuse case lists `energy_veto` (`vdot` 6.0 against `eps` 0.05) and `cbf_veto`. Plant action on that case is `[0.0]`. The allow case uses compose `lut_and_safe_and_cbf` and plant action `[-0.02]`. The note in the file states that refuse never executes. This is a demo of the adapter, not a field study of computer-use agents.
 
-Each counter is stated in strong form, then answered briefly.
+### 4.7 Claim NI-7. TLMM under an analytical budget
 
-### "Just scale the model."
+`RESULTS.md` reports a demo 2 by 4, group 2 configuration near 4.24e-11 analytical joule, under the forward budget. The largest configurations that remain under the 2e-10 forward budget stop at 64 parameters. Widths 8 by 16 and above exceed that budget even after the optimizer. Iso-correctness against naive ternary arithmetic is a software comparison at tolerance 1e-12. These statements do not say that the design matches TeLLMe throughput or any board energy.
 
-Scaled proposers without a commit law still pay propose-then-discard tax and false-act tax. Bigger models belong behind the gate, not instead of it. Hooker's *Hardware Lottery* reminds us ideas win when hardware fits them. Look-up and logic-net lines exist because substrates matter.
+### 4.8 Claim NI-8. DiffLogic allow versus an energy teacher, toy only
 
-### "Natural language plus Model Context Protocol is enough."
+On the hard multi-seed gate benchmark in `RESULTS.md`, after threshold calibration and denser labels, DiffLogic matches the energy teacher on refuse rate 50.0 plus or minus 15.9 percent, precision at threshold 0.890 plus or minus 0.067, and recall 0.802 plus or minus 0.076. A bitmask reference refuses more (71.0 plus or minus 14.9 percent) and recalls less (0.454 plus or minus 0.266). Before calibration, DiffLogic refuse rate was 57.5 plus or minus 14.1 percent with recall 0.724 plus or minus 0.163. The match is on this toy labeling setup. It is not an ImageNet or control-suite result. Internal utility per joule rises for the calibrated gate (3.570e9 versus 3.212e9 before) under the analytical model. As Section 3.4 states, that ratio uses commit count as utility.
 
-They solve discovery and transport. They do not certify passivity or energy before actuators. Typed System One decisions shrink generation cost. They still do not own plant certificates. Probability routes. Certificates commit.
+### 4.9 What the scan supports
 
-### "This is Sapir-Whorf. Language does not determine thought."
+The state-of-the-art note dated with the September 2026 scans records no published system found that composes a learned Boolean allow LUT, a port-Hamiltonian or Lyapunov energy predicate, and a ternary LUT proposal as one commit boundary with bit-exact RTL simulation and an analytical joule account. Nearest neighbors are named there: shields, energy-aware barrier filters, logic networks as the whole model, and TLMM designs without an energy certificate. The scan supports a gap statement about the literature that was searched. It does not support a priority claim over unpublished work, and it does not support an energy-leadership claim.
 
-Strong linguistic determinism is rejected here. The weak Iverson claim is enough: executable notation changes which operations are cheap and which errors are expressible. A RefuseReason enum does not cage cognition. It makes silent unsafe commit unrepresentable as success.
+## 5. Discussion
 
-### "Formalization is bureaucracy."
+### 5.1 Scale does not answer the commit question
 
-Bureaucracy is real when you formalize everything. This stack formalizes only the commit boundary: a cheap Look-Up Table and an energy check, with optional barrier conjunct. Read-only and reversible paths can bypass. That is minimally invasive filtering, not a proof of the whole agent.
+Kaplan, Hoffmann, Hooker, Sutton, and Epoch answer how proposal cost and loss behave. A larger proposer can still emit an action that fails `Vdot <= epsilon`. Putting that proposer behind the certificate uses scale where the evidence says scale works, and uses the predicate where scale is silent. The Bitter Lesson objects to frozen human features that block learning. It does not entail deleting a safety predicate. If a future result shows that an unconstrained policy meets the same false-allow test at lower analytical cost and equal task error, NI-3's engineering preference for the gate would be weakened on that plant. The logical distinction between proposal and permission would remain.
 
-### "Checking certificates will burn the edge budget."
+### 5.2 Natural language and MCP are transport and proposal
 
-Valid for heavy quadratic programs or SMT every step. Weaker for a burned Look-Up Table plus fixed-point energy sized for the plant. Seed-1 golden episode numbers above are **[SURROGATE]** evidence that the gate can be small relative to a full generative proposer. Obligation remains: meter gate joules versus proposal joules on real workloads. That split meter is not fully shipped as product empirics.
+MCP solves discovery and call shape. System One solves some decisions without free-form generation. Neither object is `energy_ok`. The demo in NI-6 shows a refuse that does not call the executor. A production deployment could bypass the adapter. The claim is not that the protocol makes bypass impossible. The claim is that permission has to be a separate record if irreversible effects are to be auditable.
 
-### "Certificates create false security."
+### 5.3 Strong linguistic determinism is not the claim
 
-Strongest objection. A wrong energy model with a green light is worse than an honest soft policy. Mitigations in this stack: continuous twin checks on toys; refuse reason split; never market soft confidence as a certificate; label joule tiers so surrogate never masquerades as silicon. Still missing versus state of the art: disturbance completeness, learned verified Lyapunov coverage, Bayesian credibility budgets. Document residual assumptions. Do not sell completeness you did not measure.
+The strong hypothesis that language determines thought is not a premise. The operational statement is local. In this schema, a commit without a passing certificate is not a successful record. An untyped confidence string can be stored beside a success flag and still leave the reason unstated. The enum removes that particular ambiguity. It does not describe human cognition.
 
-### "Control Barrier Functions and Lyapunov methods already solved this."
+### 5.4 Formalism can be wasteful; this predicate is small
 
-They solve important certificate math. A Control Barrier Function certifies set invariance. Lyapunov or energy methods certify decrease or passivity. Wise Computer Automation's contribution here is product nomenclature plus Look-Up Table-exportable discrete shield plus energy conjunct plus Model Context Protocol irreversible beachhead as a shipping software reference. Compose: add `cbf_ok` rather than pretending the Look-Up Table replaced Ames theory.
+Requiring a proof of the whole agent at every step would dominate the budget. The reference formalizes one boundary. Read-only calls bypass. The Safe residual is a fixed-point inequality, not a general SMT query. NI-2's analytical episode energy is 8.6795e-10 joule under the stated constants, dominated by whatever the counters charge, and is still not a fraction of a generative model's board energy because that comparison was not measured. A split between proposal analytical joules and gate analytical joules on a real agent workload is not in the results. Until it is, the cost objection is open for large certificates and unanswered only for this toy gate.
 
-### "World models make the gate unnecessary."
+### 5.5 A wrong model with a green light is a real failure
 
-Prediction error is not zero. World models compose as proposer imagination. The gate still refuses physically illegal commits. Prediction is not permission.
+If `V` is not the plant's energy, `energy_ok` can be true while the plant is not safe. The mitigation present in the reference is a continuous twin on the toys, a separated reason code, and a refusal to treat a probability as a certificate. The mitigation not present is disturbance Input-to-State Stability, a verified region of attraction, or a Bayesian credibility budget of the kind Leung and Pare study. NI-4 is the evidence that two respectable certificates disagree. That disagreement is a reason to name the predicate, not a reason to trust either one outside its test.
 
-### "Specialized silicon makes software gates irrelevant."
+### 5.6 Prior certificate theory is not duplicated here
 
-Tokens per joule is the proposal path **[VENDOR]** until independently metered. It does not own refuse-to-commit for actuators or irreversible tools. Specialized inference lowers proposal cost. The gate still owns the irreversible branch.
+Ames, Alshiekh, Dawson, and the runtime-monitoring papers already define filters and monitors. NI-1's addition is the product record and the composition with a LUT export and a tool executor in one reference. Where the toy barrier wins on set invariance, the paper says so (NI-4, NI-5). Composition is `cbf_ok` as another conjunct when that predicate is the one required. It is not a claim that the LUT computes the Ames quadratic program.
 
-### "Surrogate joules are cosplay."
+### 5.7 Predictors and specialized inference chips
 
-Agree when someone sells them as board watts. Label tier A. Keep `board_synth_claimed=false`. Device Under Test tier C is required before strong energy claims.
+World models reduce some prediction error and leave a residual. Specialized inference devices change the cost of proposals. Vendor throughput figures are vendor reports until an independent meter repeats them. This paper does not repeat them and does not rank the reference against those devices. The gate's job is the irreversible branch. If a device's only interface is a token stream, the commit record still has to live somewhere before actuators or irreversible tools run.
 
----
+### 5.8 Analytical joules are not a costume for watts
 
-## Limits
+The constants in Section 3.4 are chosen engineering numbers. They make counts comparable inside the repo. They are not calibrated to an Artix-7 rail. Selling them as board watts would be a false measurement report. The correct report is the one given: operation counts are computed; joules are modeled; the board has not been synthesized or metered. Stage B of Section 3.7 would make the same model inspectable in a browser. It would not change the measurement class. Stage C would.
 
-Read these as teaching limits, not fine print to skip.
+## 6. Limits and threats to validity
 
-1. **Toy plants.** Measured false-allow discipline and dual compose are on software toy plants, not rich industrial robots.
-2. **Surrogate joules only.** Tier A. No Vivado or Quartus board synthesis claim. No Joulescope-class Device Under Test claim.
-3. **No silicon leadership claim.** Do not beat Groq, Etched, or Taalas on tokens per joule in this paper.
-4. **No world-model primacy claim.** World Labs-class appearance catalogs are proposers, not gates.
-5. **No "first energy-aware AI" claim.** Landauer is a lower bound, not a product design point. CMOS practice sits far above \(kT\ln 2\).
-6. **No brain-matching efficiency claim.** Biology near 20 W is an existence proof and a messy metabolic story, not a shipping SoC budget.
-7. **Incomplete versus barrier state of the art.** Input-to-State Stability, Bayesian barriers, and Ames-style bake-offs remain needs-experiment.
-8. **Scan white space is not omniscience.** Unpublished private stacks can exist.
-9. **Utility metrics.** Internal commit-count utility is easy to game. It is not MLPerf.
+Internal validity. Seed-1 is one initial condition. The Safe grid is large but still a chosen box and a chosen epsilon. Monte Carlo samples near the threshold stress the boundary the designers chose to stress. A different epsilon or a different plant identity breaks the numerical claim until re-run. The CBF in the bake-off is an energy-set inequality implemented in the same crate, not an independently coded solver from an Ames reference implementation. Disagreement is informative. Absolute ranking against the literature's code is not established.
 
-Honesty tags stay visible because they are part of the notation. Lying about the meter is a notational failure.
+Construct validity. Commit count as utility does not measure task success. False allow is defined against a named oracle. A system can have zero false allows against `Vdot <= epsilon` and still leave the safe set `h >= 0`, which NI-4 shows. Readers who treat "safe" as one word will misread the table.
 
----
+External validity. Both plants are toys. There is no manipulator, quadrotor, or human-in-the-loop trial. The MCP demo does not call a network. Verilog is simulated. The browser instrument is not built. The Alchitry Pt V2 is a specified target, not a measured one. Vendor logic-cell counts are not confirmed here.
 
-## What to do next
+Measurement validity. Analytical constants can be edited to any scale. Comparisons to Horowitz's picojoule tables, to Landauer's bound, or to vendor tokens per joule are not valid with these constants. A DUT meter under a stated workload is the missing measurement. Post-place-and-route tool power would be a third class, still not a meter. This paper reports neither.
 
-1. Re-state the thesis in your own words: notation becomes law at the irreversible boundary.
-2. Open the interactive figures: https://research.openie.dev/living/ni/
-3. Download the PDF twin: https://research.openie.dev/pdfs/ni.pdf
-4. If you have the software reference, run the demos in the appendix. Compare refuse envelopes to the example above.
-5. Read the companion teaching paper on satiation: https://research.openie.dev/papers/satiation/  
-   That paper explains why human appetite finishes while capability races, and why refuse also means economic done.
+Statistical reporting. Where `RESULTS.md` gives a mean and a standard deviation, this paper copies them. It does not add confidence intervals that were not computed. Multi-seed coverage is five seeds on the bake-offs and the hard gate benchmark's reported spreads. That is not a large-sample claim.
 
-Product rules that follow from the teaching:
+Claim hygiene. The following are not results: silicon joule leadership; operation near the Landauer bound; brain-equivalent power; a win over System One on latency; a win over world-model benchmarks; strong linguistic determinism; identification of "intelligence" with commit count.
 
-- Keep `wca.commit.v1` as the notation product.
-- Put scaled proposers and System One upstream.
-- Gate irreversible tools before executors run.
-- Meter gate joules and proposal joules separately when you instrument real work.
-- Never flip `board_synth_claimed` without synthesis plus a meter.
+Falsifiers. NI-2 is false if the stated command on the stated crate revision does not print those counts. NI-3 is false if the Safe v2 test reports a false allow on the stated grid. NI-6 is false if the refuse case in the demo file executes. NI-1 is false if the schema and the runtime diverge. A stage B emulator that disagrees with stage A on seed 1 fails its own acceptance test. A future meter that assigns board energy to the analytical number without a calibration study does not confirm the analytical model.
 
-Refuse is not a failure mode. Refuse is the product.
+## 7. Conclusion
 
----
+The paper defined a commit decision as a conjunctive certificate over a LUT allow bit and an energy predicate, with an optional barrier, and showed a software reference that emits the decision before an irreversible effect. On the reported pendulum tests, the Safe fixed-point rule has zero false allows against its continuous oracle, at the cost of a measured false-refuse count. On the reported comparisons, that oracle is not the same as set invariance. Analytical episode energy for the seed-1 run is 8.6795e-10 joule under published constants. Tool refuse in the MCP demo does not call the executor. Verilog checks are simulation. The browser WASM and WebGPU instrument is specified so that the same decision can be inspected without a board, and it is not a result of this paper. The Alchitry Pt V2 remains a possible DUT after synthesis and metering. Until then, the reference is a measured software artifact and an unmeasured chip.
 
 ## References
 
-### Notational intelligence and tools for thought
+Alshiekh, M., Bloem, R., Ehlers, R., Konighofer, B., Niekum, S., and Topcu, U. Safe reinforcement learning via shielding. arXiv:1708.08611.
 
-- Lee, L. *Notational intelligence.* https://thesephist.com/posts/notation/
-- Lee × The Gradient. https://thegradientpub.substack.com/p/linus-lee-at-the-boundary-of-machine
-- Iverson, K. E. *Notation as a Tool of Thought.* https://dl.acm.org/doi/10.1145/358896.358899
-- Engelbart, D. *Augmenting Human Intellect* (1962). https://www.dougengelbart.org/pubs/augment-3906-Framework.html
-- Kay, A. *A Personal Computer for Children of All Ages* (1972). https://worrydream.com/refs/Kay_1972_-_A_Personal_Computer_for_Children_of_All_Ages.pdf
-- Victor, B. *Media for Thinking the Unthinkable.* https://worrydream.com/MediaForThinkingTheUnthinkable/
-- Victor, B. *Inventing on Principle.* https://www.youtube.com/watch?v=PUv66718DII
-- Matuschak, A. & Nielsen, M. *How can we develop transformative tools for thought?* https://numinous.productions/ttft/
-- Chollet, F. *On the Measure of Intelligence.* https://arxiv.org/abs/1911.01547
+Ames, A. D., Coogan, S., Egerstedt, M., Notomista, G., Sreenath, K., and Tabuada, P. Control barrier functions: theory and applications. European Control Conference, 2019. https://doi.org/10.23919/ECC.2019.8796030
 
-### Certificates, barriers, runtime verification, energy structure
+Amodei, D., and Hernandez, D. AI and compute. OpenAI, 2018. https://openai.com/index/ai-and-compute/
 
-- Sánchez et al. RV domains survey. https://arxiv.org/abs/1811.06740
-- Yu, Žikelić, Henzinger. Certificate repair via runtime monitoring. https://arxiv.org/abs/2412.12996
-- Ames et al. Control Barrier Function ECC. https://doi.org/10.23919/ECC.2019.8796030
-- Alshiekh et al. Safe RL via Shielding. https://arxiv.org/abs/1708.08611
-- Dawson, Gao, Fan. Safe Control With Learned Certificates. https://arxiv.org/abs/2202.11762
-- Manek & Kolter. Learning Stable Deep Dynamics. https://arxiv.org/abs/2001.06116
-- Leung & Paré. Energy-Aware Bayesian CBFs. https://arxiv.org/abs/2512.24493
-- Greydanus et al. Hamiltonian Neural Networks. https://arxiv.org/abs/1906.01563
-- Roth et al. Stable Port-Hamiltonian Neural Networks. https://arxiv.org/abs/2502.02480
+Anthropic. Introducing the Model Context Protocol. https://www.anthropic.com/news/model-context-protocol
 
-### Hardware lottery, look-up compute, energy bounds
+Bacellar, A., et al. Differentiable weightless neural networks. arXiv:2410.11112.
 
-- Hooker, S. *The Hardware Lottery.* https://arxiv.org/abs/2009.06489
-- Petersen et al. DiffLogic. https://arxiv.org/abs/2210.08277
-- Bacellar et al. DWN. https://arxiv.org/abs/2410.11112
-- Ma et al. BitNet b1.58. https://arxiv.org/abs/2402.17764
-- Wei et al. T-MAC. https://arxiv.org/abs/2407.00088
-- TeLLMe family. https://arxiv.org/abs/2504.16266
-- Landauer, R. (1961). Irreversibility and Heat Generation in the Computing Process.
-- Horowitz, M. Computing's Energy Problem (ISSCC 2014).
-- Sandberg, A. brain energetics overview. https://arxiv.org/abs/1602.04019
+Bennett, C. H. Logical reversibility of computation. IBM Journal of Research and Development, 1973. https://doi.org/10.1147/rd.176.0525
 
-### Agents, world models, System One
+Brillouin, L. Science and Information Theory. Academic Press, 1956.
 
-- Anthropic Model Context Protocol. https://www.anthropic.com/news/model-context-protocol
-- Ha & Schmidhuber. World Models. https://arxiv.org/abs/1803.10122
-- Hafner et al. DreamerV3. https://arxiv.org/abs/2301.04104
-- Laya System One. https://laya-ai.com/system-one-models
-- Related arXiv: https://arxiv.org/abs/2503.23303 · https://arxiv.org/abs/2510.01237
-- OpenIE joule-lang. https://github.com/openIE-dev/joule-lang
+Chaitin, G. J. Algorithmic information theory. IBM Journal of Research and Development, 1977. https://doi.org/10.1147/rd.214.0350
 
-### Local claim discipline
+Chollet, F. On the measure of intelligence. arXiv:1911.01547.
 
-Frozen Allowed / Forbidden / Needs-experiment rows: OpenIE claim ledger for Notational Intelligence (research archive). Public teaching cut must not promote Forbidden rows.
+Cover, T. M., and Thomas, J. A. Elements of Information Theory, 2nd ed. Wiley, 2006. https://doi.org/10.1002/047174882X
 
----
+Dawson, C., Gao, S., and Fan, C. Safe control with learned certificates: a survey of neural Lyapunov, barrier, and contraction methods. arXiv:2202.11762.
 
-## Appendix A. Reproducibility (short)
+Emberson, L., and Roodman, D. / Epoch AI. The plunging price of thought. 22 September 2026. https://epoch.ai/publications/the-plunging-price-of-thought
 
-Verified toolchain in the drafting window: Rust 1.98.x.
+Engelbart, D. C. Augmenting human intellect: a conceptual framework. 1962. https://www.dougengelbart.org/pubs/augment-3906-Framework.html
 
-```bash
-# SoC episode (seed-1 golden: committed=1 refused=15 J≈8.6795e-10 [SURROGATE])
+Epoch AI. LLM inference price trends. 12 March 2025. https://epoch.ai/data-insights/llm-inference-price-trends
+
+Greydanus, S., Dzamba, M., and Yosinski, J. Hamiltonian neural networks. arXiv:1906.01563.
+
+Ha, D., and Schmidhuber, J. World models. arXiv:1803.10122.
+
+Hafner, D., Pasukonis, J., Ba, J., and Lillicrap, T. Mastering diverse domains through world models. arXiv:2301.04104.
+
+Hestness, J., et al. Deep learning scaling is predictable, empirically. arXiv:1712.00409.
+
+Hoffmann, J., et al. Training compute-optimal large language models. arXiv:2203.15556.
+
+Hooker, S. The hardware lottery. arXiv:2009.06489. Communications of the ACM, 2021. https://doi.org/10.1145/3467017
+
+Horowitz, M. Computing's energy problem (and what we can do about it). IEEE International Solid-State Circuits Conference, 2014. https://doi.org/10.1109/ISSCC.2014.6757323
+
+Iverson, K. E. Notation as a tool of thought. Communications of the ACM, 1980. https://dl.acm.org/doi/10.1145/358896.358899
+
+Jaynes, E. T. Information theory and statistical mechanics. Physical Review 106, 620, 1957. https://doi.org/10.1103/PhysRev.106.620
+
+Kaplan, J., et al. Scaling laws for neural language models. arXiv:2001.08361.
+
+Kay, A. A personal computer for children of all ages. 1972. https://worrydream.com/refs/Kay_1972_-_A_Personal_Computer_for_Children_of_All_Ages.pdf
+
+Kolmogorov, A. N. Three approaches to the quantitative definition of information. 1965. English: International Journal of Computer Mathematics, 1968. https://doi.org/10.1080/00207166808803030
+
+Landauer, R. Irreversibility and heat generation in the computing process. IBM Journal of Research and Development, 1961. https://doi.org/10.1147/rd.53.0183
+
+Laya. System One models. https://laya-ai.com/system-one-models
+
+LeCun, Y., Chopra, S., Hadsell, R., Ranzato, M., and Huang, F. J. A tutorial on energy-based learning. 2006. http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf
+
+LeCun, Y. Path towards autonomous machine intelligence / JEPA discussion. Meta AI blog. https://ai.meta.com/blog/yann-lecun-advances-in-ai-research/
+
+Lee, L. Notational intelligence. 2022. https://thesephist.com/posts/notation/
+
+Leung, K., and Pare, P. E. Energy-aware Bayesian control barrier functions. arXiv:2512.24493.
+
+Ma, S., et al. The era of 1-bit LLMs: all large language models are in 1.58 bits. arXiv:2402.17764.
+
+Manek, G., and Kolter, J. Z. Learning stable deep dynamics models. arXiv:2001.06116.
+
+Marcus, G. Deep learning: a critical appraisal. arXiv:1801.00631.
+
+Matuschak, A., and Nielsen, M. How can we develop transformative tools for thought? https://numinous.productions/ttft/
+
+Mead, C. Neuromorphic electronic systems. Proceedings of the IEEE, 1990. https://doi.org/10.1109/5.58356
+
+Petersen, F., et al. Deep differentiable logic gate networks. arXiv:2210.08277.
+
+Roth, F., et al. Stable port-Hamiltonian neural networks. arXiv:2502.02480.
+
+Sanchez, C., et al. A survey of challenges for runtime verification from advanced application domains. arXiv:1811.06740.
+
+Sandberg, A. Energetics of the brain and AI. arXiv:1602.04019.
+
+Shannon, C. E. A mathematical theory of communication. Bell System Technical Journal, 1948. https://doi.org/10.1002/j.1538-7305.1948.tb01338.x
+
+Shannon, C. E. Coding theorems for a discrete source with a fidelity criterion. IRE National Convention Record, 1959.
+
+Solomonoff, R. J. A formal theory of inductive inference, parts I and II. Information and Control, 1964.
+
+SparkFun. Alchitry Pt V2 product page. https://www.sparkfun.com/alchitry-pt-v2.html
+
+Sutton, R. The bitter lesson. 13 March 2019. http://www.incompleteideas.net/IncIdeas/BitterLesson.html
+
+Sutskever, I. An observation on generalization. Simons Institute talk, 2023. https://www.youtube.com/watch?v=AKMuA_TVz3A
+
+TeLLMe family. arXiv:2504.16266.
+
+Umuroglu, Y., et al. LogicNets. arXiv:2004.03021.
+
+Victor, B. Inventing on principle. 2012. https://www.youtube.com/watch?v=PUv66718DII
+
+Victor, B. Media for thinking the unthinkable. https://worrydream.com/MediaForThinkingTheUnthinkable/
+
+Wei, J., et al. T-MAC. arXiv:2407.00088.
+
+Yu, E., Zikelic, D., and Henzinger, T. A. Neural control and certificate repair via runtime monitoring. arXiv:2412.12996.
+
+Related preprints cited for typed decision models: arXiv:2503.23303 and arXiv:2510.01237.
+
+Cortical energy partitioning caveat: arXiv:2102.06273.
+
+Local measurement record: `artifacts/RESULTS.md` in the `wca-lut-edge` software reference. Schema examples: `artifacts/schemas/wca.commit.v1/examples/`. Demo: `artifacts/mcp_gate_demo.json`.
+
+## Appendix A. Reproducibility
+
+Workstation path used to generate the cited logs: the `wca-lut-edge` tree, Rust 1.98 as recorded in `RESULTS.md`. Day-to-day commands:
+
+```text
+cargo test -p wca-commit
 cargo run --release --bin wca-soc-loop -- \
   --steps 16 --init-theta 1.5 --init-omega 3.0 --seed 1
-
-# Model Context Protocol Commit Gate demo
+cargo run --release --bin wca-soc-loop -- \
+  --steps 16 --init-theta 1.5 --init-omega 3.0 --seed 1 --safe-ph
+cargo run --release --bin wca-ph-tighten -- --grid 21 --out artifacts/ph_tighten_report.json
+cargo run --release --bin wca-cbf-bakeoff -- --out artifacts/cbf_bakeoff_report.json
+cargo run --release --bin wca-lyap-plant -- --out artifacts/lyap_plant_report.json
 cargo run --release --bin wca-mcp-gate -- --demo
-
-# Safe energy mode on the toy loop
-cargo run --release --bin wca-soc-loop -- --safe-ph --steps 16 --seed 1
+cargo run --release --bin wca-tlmm-scale -- --out artifacts/tlmm_scale_report.json
 ```
 
-Do not quote these numbers as board watts. Keep `board_synth_claimed=false` until synthesis and a Device Under Test meter exist.
+Icarus Verilog was version 12.0 in the environment note in `RESULTS.md`. RTL checks are simulation. Do not read analytical joules as board power.
 
----
+Repository flag, factual, not a result: `board_synth_claimed=false`.
 
-*David Charlot is founder of Open Interface Engineering (openie.dev). Companion teaching paper: Satiation and Scarcity after Free AI. Style lock: EDUCATIONAL_PROSE.md.*
+## Appendix B. Browser FPGA emulator: architecture to build
+
+This appendix is a build specification. It is not evidence that the emulator runs.
+
+Modules.
+
+1. `decision_core`. Pure functions already represented by the Rust certificate, plant step, and joule accumulator. No file system and no threads required. Target `wasm32-unknown-unknown`.
+2. `lut_image`. The same memory image the Verilog path loads (`artifacts/fpga/wca_allow_lut.mem` and successors). The browser copy must hash-match the file used for the Icarus check.
+3. `trace`. A fixed schema: step index, state, `u`, `lut_allow`, `energy_ok`, `cbf_ok`, reason codes, analytical joule increment, plant action. Identical field names to `wca.commit.v1` so a dump can be diffed against the crate's JSON.
+4. `webgpu_view`. Device, queue, and a storage buffer for the LUT and the trace. A shader draws allow and refuse. A second dispatch may map the Safe residual across a grid. Buffers are for inspection. They are not a power model.
+5. `workstation_oracle`. Icarus remains the RTL oracle. The browser does not replace it. Disagreement between WASM and the Rust binary fails the build. Disagreement between WASM and Icarus on the shared LUT image fails the build. Neither comparison mentions watts.
+
+Acceptance tests, to be run when the target exists.
+
+- Seed-1, 16 steps, init theta 1.5, omega 3.0: committed 1, refused 15, analytical joule 8.6795e-10, matching NI-2.
+- Safe grid smoke: false allow 0 on a published subset of the 209,261-decision test, matching NI-3's direction.
+- MCP refuse vector: executor call count 0, matching NI-6.
+- A unit test that WebGPU buffer readback equals the WASM trace. If readback is unavailable, the page must show that the GPU path did not confirm the trace, and the CPU WASM trace remains the result.
+
+Physical follow-on, separate repository milestone. Vivado flow for the Alchitry Pt V2, using the vendor constraints for XC7A100T, then a meter on a stated workload. Only that milestone can support a board-measured joule. The vendor page's logic-cell and memory figures stay vendor figures until then.
+
+Out of scope for the emulator: training DiffLogic in the browser, claiming Artix-7 dynamic power from a shader, and flipping `board_synth_claimed` to true.
+
+## Appendix C. Relation to the companion study
+
+The companion paper, "Satiation and Scarcity after Free AI," uses the same commit record for a different predicate: stop when a stated work or care loop is complete. The shared sentence is compositional. Refuse if the chore is already complete, or if the physical predicate fails. This paper supplies the physical predicate and the measurement classes. It does not estimate a demand curve.
