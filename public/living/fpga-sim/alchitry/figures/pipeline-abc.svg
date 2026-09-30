@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 300" role="img" aria-labelledby="t3 d3">
+  <title id="t3">Pipeline Stage A to B to C</title>
+  <desc id="d3">Measurement classes from Rust reference through WASM sim to Alchitry board.</desc>
+  <rect width="860" height="300" fill="#0b1220"/>
+  <text x="24" y="32" fill="#94a3b8" font-family="ui-monospace,monospace" font-size="13">Figure · Stage A → B → C measurement classes</text>
+  <!-- Stage A -->
+  <rect x="30" y="60" width="240" height="180" rx="12" fill="#111827" stroke="#38bdf8" stroke-width="2"/>
+  <text x="48" y="92" fill="#7dd3fc" font-family="ui-monospace,monospace" font-size="14">Stage A · modeled / sim</text>
+  <text x="48" y="120" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13">Rust decision core</text>
+  <text x="48" y="142" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13">Icarus Verilog (RTL)</text>
+  <text x="48" y="164" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">OpCounter analytical J</text>
+  <text x="48" y="186" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">seed-1 golden</text>
+  <text x="48" y="215" fill="#64748b" font-family="ui-monospace,monospace" font-size="11">not board watts</text>
+  <!-- arrow -->
+  <path d="M280 150 H320" stroke="#64748b" stroke-width="3"/>
+  <!-- Stage B -->
+  <rect x="320" y="60" width="240" height="180" rx="12" fill="#111827" stroke="#34d399" stroke-width="2"/>
+  <text x="338" y="92" fill="#6ee7b7" font-family="ui-monospace,monospace" font-size="14">Stage B · simulated</text>
+  <text x="338" y="120" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13">WASM in browser</text>
+  <text x="338" y="142" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13">WebGPU LUT + trace</text>
+  <text x="338" y="164" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">/living/fpga-sim/</text>
+  <text x="338" y="186" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">agrees with Stage A</text>
+  <text x="338" y="215" fill="#64748b" font-family="ui-monospace,monospace" font-size="11">GPU time ≠ energy</text>
+  <path d="M570 150 H610" stroke="#64748b" stroke-width="3"/>
+  <!-- Stage C -->
+  <rect x="610" y="60" width="220" height="180" rx="12" fill="#111827" stroke="#fbbf24" stroke-width="2"/>
+  <text x="628" y="92" fill="#fcd34d" font-family="ui-monospace,monospace" font-size="14">Stage C · partial</text>
+  <text x="628" y="120" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13">Alchitry Pt V2</text>
+  <text x="628" y="142" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13">SRAM program OK</text>
+  <text x="628" y="164" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">JTAG DONE+EOS</text>
+  <text x="628" y="186" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="12">energy UNMETERED</text>
+  <text x="628" y="215" fill="#64748b" font-family="ui-monospace,monospace" font-size="11">toy gate ≠ SoC</text>
+  <text x="30" y="275" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">board_synth_claimed=false until a meter reading on a stated workload exists. Vendor catalog figures are not DUT energy.</text>
+</svg>

@@ -164,7 +164,7 @@ Stage A, existing: Rust simulation and Icarus Verilog simulation. Analytical ene
 
 Stage B, shipped: WASM compilation of the decision core and a WebGPU view of the LUT and the commit trace, at https://research.openie.dev/living/fpga-sim/. WebGPU time is not energy. Acceptance is agreement with stage A on published episodes (seed-1: committed 1, refused 15, analytical J 8.6795e-10).
 
-Stage C, partially done (2026-09-30 EDT): `ofpga detect` found Alchitry Pt V2; `ofpga flash` programmed `wca_commit_gate_pt_v2.bit` (minimal commit-gate LED demo; SHA-256 08e130e35eee764e13f3f9d6ddc5cedbc3c0d3dda3974d101ba1a9161e816fd7) with JTAG IDCODE 0x13631093 and DONE+EOS asserted. Energy unmetered. Vendor specifications on SparkFun's page (XC7A100T-2FGG84I, 101,440 logic cells, 240 DSP48E1 slices, 4,860 Kb block RAM, 256 MB DDR3L) are not DUT energy results. Evidence: companion `https://research.openie.dev/living/fpga-sim/stage-c/board-evidence.md`.
+Stage C, partially done (2026-09-30 EDT): `ofpga detect` found Alchitry Pt V2; `ofpga flash` programmed `wca_commit_gate_pt_v2.bit` (minimal commit-gate LED demo; SHA-256 08e130e35eee764e13f3f9d6ddc5cedbc3c0d3dda3974d101ba1a9161e816fd7) with JTAG IDCODE 0x13631093 and DONE+EOS asserted. Energy unmetered. Vendor specifications on SparkFun's page (XC7A100T-2FGG84I, 101,440 logic cells, 240 DSP48E1 slices, 4,860 Kb block RAM, 256 MB DDR3L) are not DUT energy results. Evidence: companion `https://research.openie.dev/living/fpga-sim/stage-c/board-evidence.md`. See builder guide: https://research.openie.dev/living/fpga-sim/alchitry/.
 
 This paper adds a mapping, not a fourth stage. Economic done, if encoded as `policy` or `budget_exceeded`, should appear in the same trace as `energy_veto`, so a future split (Section 3.3) can group reason codes. The browser view would make that grouping readable. It would not create the missing corpus. Stage C programmed the FPGA board and left joules unmetered.
 
@@ -442,7 +442,7 @@ cargo run --release --bin wca-soc-loop -- \
 
 Expect, from the companion's recorded logs: demo refuse with executor calls 0; seed-1 committed 1, refused 15, analytical energy 8.6795e-10 joule. Those outputs do not estimate satiation.
 
-Browser instrument, shipped as Stage B at https://research.openie.dev/living/fpga-sim/, shared with the companion's Appendix B. The decision core runs in WASM. WebGPU paints the LUT image and the commit trace. Diff the trace against the Rust JSON. Do not convert GPU timestamps to joules. Stage C (2026-09-30) detected and SRAM-programmed the Alchitry Pt V2 with a minimal commit-gate bitstream and JTAG DONE+EOS; energy remains unmetered—do not mark joules as measured. Vendor page: https://www.sparkfun.com/alchitry-pt-v2.html. A meter on a stated workload remains future.
+Browser instrument, shipped as Stage B at https://research.openie.dev/living/fpga-sim/, shared with the companion's Appendix B. The decision core runs in WASM. WebGPU paints the LUT image and the commit trace. Diff the trace against the Rust JSON. Do not convert GPU timestamps to joules. Stage C (2026-09-30) detected and SRAM-programmed the Alchitry Pt V2 with a minimal commit-gate bitstream and JTAG DONE+EOS; energy remains unmetered - do not mark joules as measured. Vendor page: https://www.sparkfun.com/alchitry-pt-v2.html. A meter on a stated workload remains future. Builder guide: https://research.openie.dev/living/fpga-sim/alchitry/.
 
 Factual repository flag: `board_synth_claimed=false`.
 

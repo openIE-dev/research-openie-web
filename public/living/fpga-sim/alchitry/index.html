@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Guide · Alchitry Pt V2 with OpenIE / WCA commit-gate (Stage C)</title>
+<link rel="stylesheet" href="../../css/living.css"/>
+<style>
+  .guide-toc {
+    display: flex; flex-wrap: wrap; gap: 0.45rem 0.75rem;
+    margin: 1rem 0 1.5rem; font-family: var(--mono); font-size: 0.78rem;
+  }
+  .guide-toc a {
+    color: var(--accent); text-decoration: none;
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: 0.3rem 0.7rem; background: #0f172a;
+  }
+  .guide-toc a:hover { border-color: var(--accent); }
+  .panel {
+    background: var(--bg-elev); border: 1px solid var(--border);
+    border-radius: 10px; padding: 0.9rem 1.05rem; margin: 1rem 0;
+  }
+  .panel h3 {
+    font-family: var(--mono); font-size: 0.9rem; color: var(--accent);
+    margin: 0 0 0.55rem;
+  }
+  .limits {
+    font-size: 0.9rem; color: var(--muted); border-left: 3px solid var(--warn);
+    padding: 0.7rem 0.95rem; margin: 1rem 0; background: #1c1917;
+  }
+  .fig {
+    margin: 1.1rem 0; background: #020617; border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden;
+  }
+  .fig img, .fig object { width: 100%; height: auto; display: block; }
+  .fig .cap {
+    font-size: 0.82rem; color: var(--muted); padding: 0.65rem 0.9rem;
+    border-top: 1px solid #1e293b;
+  }
+  pre.code-block {
+    font-family: var(--mono); font-size: 0.75rem; line-height: 1.5;
+    background: #020617; border: 1px solid var(--border); border-radius: 8px;
+    padding: 0.85rem 1rem; overflow: auto; color: #e2e8f0;
+  }
+  table.led-map {
+    width: 100%; border-collapse: collapse; font-size: 0.88rem;
+    font-family: var(--mono);
+  }
+  table.led-map th, table.led-map td {
+    text-align: left; padding: 0.4rem 0.55rem;
+    border-bottom: 1px solid #1e293b;
+  }
+  table.led-map th { color: var(--muted); font-weight: 500; }
+  .ok { color: var(--allow); }
+  .bad { color: var(--refuse); }
+  .warn-t { color: var(--warn); }
+  .hash { word-break: break-all; font-size: 0.72rem; }
+  ol.steps, ul.plain { padding-left: 1.2rem; }
+  ol.steps li, ul.plain li { margin: 0.35rem 0; line-height: 1.5; }
+  .src-links a { color: var(--accent); }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <div class="brand">Guide · Alchitry Pt V2</div>
+    <nav class="nav">
+      <a href="../../index.html">Hub</a>
+      <a href="../index.html">FPGA sim</a>
+      <a href="index.html" class="active">Alchitry</a>
+      <a href="../stage-c/board-evidence.md">Stage C evidence</a>
+      <a href="/papers/ni/">NI paper</a>
+    </nav>
+    <span class="honesty-bar">stage_c_programmed_unmetered · board_synth_claimed=false · toy gate</span>
+  </div>
+</header>
+<main>
+  <div class="hero">
+    <h1>Alchitry Pt V2 with OpenIE / WCA commit-gate</h1>
+    <p class="deck-line">Educational guide for builders: detect the board, build a blink and the Wise Computer Automation (WCA) commit-gate demo, flash it, and read the LEDs. Matches Stage C evidence captured 2026-09-30 EDT.</p>
+    <p class="subtitle">This page is a how-to companion to <a href="../index.html">/living/fpga-sim/</a> (Stage B browser simulation) and <a href="../stage-c/board-evidence.md">stage-c/board-evidence.md</a>. It does not report board joules.</p>
+  </div>
+
+  <nav class="guide-toc" aria-label="On this page">
+    <a href="#board">Board</a>
+    <a href="#need">What you need</a>
+    <a href="#detect">Detect</a>
+    <a href="#build">Build</a>
+    <a href="#flash">Flash</a>
+    <a href="#leds">LEDs</a>
+    <a href="#pipeline">Stages A to C</a>
+    <a href="#source">Source</a>
+    <a href="#limits">Limits</a>
+  </nav>
+
+  <div class="limits">
+    <strong>Honesty first.</strong> Stage C detected an Alchitry Pt V2 and programmed a minimal commit-gate bitstream over JTAG in static random-access memory (SRAM) mode with configuration DONE and end-of-startup (EOS) asserted. No power meter was attached. Do not invent joules. The toy gate is not a full WCA system-on-chip (SoC). <code>board_synth_claimed</code> stays false until a meter reading on a stated workload exists.
+  </div>
+
+  <section class="figure-shell" id="board">
+    <header>
+      <div class="title-row"><span class="fig-id">board</span><h2>What the board is</h2></div>
+      <div class="chips">
+        <span class="chip illustrative">vendor catalog</span>
+        <span class="chip v2">Pt V2</span>
+      </div>
+    </header>
+    <p>
+      The <strong>Alchitry Pt V2</strong> is a field-programmable gate array (FPGA) development board sold by SparkFun Electronics.
+      Vendor documentation lists a Xilinx (AMD) Artix-7 part <code>XC7A100T-2FGG84I</code>, with catalog figures including 101,440 logic cells, 240 DSP48E1 slices, 4,860 Kb block RAM, 256 MB DDR3L, eight general-purpose LEDs, a 100 MHz oscillator, and an FT2232HQ bridge for USB JTAG and UART.
+      Cite the vendor page for those catalog numbers; they are not Open Interface Engineering (OpenIE) bench measurements.
+    </p>
+    <p class="src-links">
+      Vendor: <a href="https://www.sparkfun.com/alchitry-pt-v2.html">sparkfun.com/alchitry-pt-v2.html</a>.
+      Stage C USB product string observed on the attached board: <code>Alchitry Pt V2</code> (vid <code>0x0403</code> / pid <code>0x6010</code>).
+    </p>
+  </section>
+
+  <section class="figure-shell" id="need">
+    <header>
+      <div class="title-row"><span class="fig-id">need</span><h2>What you need</h2></div>
+    </header>
+    <ul class="plain">
+      <li>Mac or Linux host with a free USB port.</li>
+      <li>Alchitry Pt V2 powered and connected by USB (FT2232H JTAG channel).</li>
+      <li>Rust toolchain and the <code>openie-fpga</code> tree so the <code>ofpga</code> CLI builds (<code>cargo build -p ofpga-cli --release</code>, then use the resulting <code>ofpga</code> binary).</li>
+      <li>Design sources in the repo root: <code>blink_alchitry_pt_v2.fpga</code> and <code>wca_commit_gate_pt_v2.fpga</code>.</li>
+    </ul>
+  </section>
+
+  <section class="figure-shell" id="detect">
+    <header>
+      <div class="title-row"><span class="fig-id">detect</span><h2>Detect the board</h2></div>
+      <div class="chips"><span class="chip modelled">measured detect log</span></div>
+    </header>
+    <p>With the board attached, run:</p>
+    <pre class="code-block">ofpga detect</pre>
+    <p>Expected output shape from the Stage C capture (2026-09-30 01:49:59 EDT):</p>
+    <pre class="code-block">1 device(s) found:
+
+  FPGA Boards:
+    Alchitry Pt V2 (Artix-7)
+      USB 0403:6010 - Jtag</pre>
+    <p>
+      Matching product string via IOKit on macOS: <code>Alchitry Pt V2</code>.
+      If nothing is listed, check the cable, power, and that no other process holds the FTDI interface.
+    </p>
+  </section>
+
+  <section class="figure-shell" id="build">
+    <header>
+      <div class="title-row"><span class="fig-id">build</span><h2>Build blink and the commit-gate demo</h2></div>
+    </header>
+    <p>From the <code>openie-fpga</code> repository root:</p>
+    <pre class="code-block"># Sanity blink (LED0 toggles from a free-running counter)
+ofpga build blink_alchitry_pt_v2.fpga -t alchitry-pt-v2
+
+# Stage C commit-gate LED demo
+ofpga build wca_commit_gate_pt_v2.fpga -t alchitry-pt-v2</pre>
+    <p>
+      Target alias <code>alchitry-pt-v2</code> selects the native XC7 emitter for the Artix-7 on this board.
+      Successful builds write bitstreams under <code>build/</code> (for example <code>build/wca_commit_gate_pt_v2.bit</code>).
+    </p>
+    <div class="panel">
+      <h3>Design path</h3>
+      <p class="src-links" style="margin:0">
+        Canonical demo source in-tree: <code>openie-fpga/wca_commit_gate_pt_v2.fpga</code>.
+        Mirrored on this site: <a href="./wca_commit_gate_pt_v2.fpga"><code>./wca_commit_gate_pt_v2.fpga</code></a>
+        and <a href="../stage-c/wca_commit_gate_pt_v2.fpga"><code>../stage-c/wca_commit_gate_pt_v2.fpga</code></a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="figure-shell" id="flash">
+    <header>
+      <div class="title-row"><span class="fig-id">flash</span><h2>Flash steps (SRAM vs configuration flash)</h2></div>
+    </header>
+    <ol class="steps">
+      <li>Confirm detect succeeds.</li>
+      <li>Program the bitstream into FPGA configuration SRAM over JTAG (default Stage C path):
+        <pre class="code-block">ofpga flash build/wca_commit_gate_pt_v2.bit
+# or pin the board explicitly:
+ofpga flash build/wca_commit_gate_pt_v2.bit -b alchitry-pt-v2</pre>
+      </li>
+      <li>Read the tool status. Stage C recorded Mode <strong>Sram</strong>, size 104140 bytes, IDCODE <code>0x13631093</code>, Status DONE=1 INIT=1, STAT with CRC_ERR=0 EOS=1 DONE=1.</li>
+    </ol>
+    <div class="panel">
+      <h3>SRAM vs flash</h3>
+      <p style="margin:0">
+        <strong>SRAM configuration</strong> loads the fabric for the current power cycle. A reset or power loss clears it. That is what Stage C used.
+        The Pt V2 also carries vendor-listed configuration flash (32 Mbit on the SparkFun page). Persisting a bitstream into that flash is a separate workflow and was not part of the Stage C evidence log.
+        Prefer SRAM while iterating demos.
+      </p>
+    </div>
+    <p>Excerpt from the Stage C flash log:</p>
+    <pre class="code-block">Board: Alchitry Pt V2 (Artix-7)
+USB:   bus 0 addr 14 (0403:6010)
+Mode:  Sram
+Size:  104140 bytes
+IDCODE: 0x13631093
+Status: 0x35 (DONE=1 INIT=1)
+STAT: 0x501079FC (CRC_ERR=0 EOS=1 DONE=1 STARTUP_STATE=4 BUS_WIDTH=x1)
+Programmed 104140 bytes via JTAG (SRAM) - DONE + EOS asserted</pre>
+  </section>
+
+  <section class="figure-shell" id="leds">
+    <header>
+      <div class="title-row"><span class="fig-id">leds</span><h2>How to read the LEDs</h2></div>
+      <div class="chips"><span class="chip illustrative">Stage C design</span></div>
+    </header>
+    <p>
+      The demo drives active-high LEDs from a free-running counter and two toy predicates.
+      <code>commit</code> is the conjunction of look-up table (LUT) allow and energy OK, matching the Stage C design comment and the software commit-gate idea from Stages A and B.
+    </p>
+    <div class="fig">
+      <img src="./figures/board-led-legend.svg" alt="Alchitry Pt V2 LED legend for commit, refuse, lut_allow, energy_ok, and heartbeat"/>
+      <p class="cap">LED package pins for Pt V2 (from <code>openie-fpga</code> <code>alchitry_pins.rs</code>): LED0=P19, LED1=P20, LED2=T21, LED3=R19, LED7=W20, CLOCK=W19.</p>
+    </div>
+    <table class="led-map">
+      <thead>
+        <tr><th>LED</th><th>Signal</th><th>Meaning in this demo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="ok">led0</td><td>commit</td><td>lut_allow AND energy_ok</td></tr>
+        <tr><td class="bad">led1</td><td>refuse</td><td>NOT commit</td></tr>
+        <tr><td>led2</td><td>lut_allow</td><td>toy: allow when counter bit2 is clear</td></tr>
+        <tr><td>led3</td><td>energy_ok</td><td>toy: allow when counter bit20 is set (not a meter)</td></tr>
+        <tr><td>led4-6</td><td>(unused)</td><td>not driven by this design</td></tr>
+        <tr><td class="warn-t">led7</td><td>heartbeat</td><td>counter bit23; proves the fabric is live</td></tr>
+      </tbody>
+    </table>
+    <div class="fig">
+      <img src="./figures/commit-compose.svg" alt="Block diagram: counter bits to lut_allow, energy_ok, AND to commit and refuse LEDs"/>
+      <p class="cap">Compose path inside <code>wca_commit_gate_pt_v2.fpga</code>. energy_ok here is a free-running bit mask, not board-measured energy.</p>
+    </div>
+  </section>
+
+  <section class="figure-shell" id="pipeline">
+    <header>
+      <div class="title-row"><span class="fig-id">pipeline</span><h2>Relationship to Stage A and Stage B</h2></div>
+    </header>
+    <div class="fig">
+      <img src="./figures/pipeline-abc.svg" alt="Pipeline diagram Stage A Rust, Stage B WASM WebGPU, Stage C Alchitry programmed unmetered"/>
+      <p class="cap">Measurement classes. Stage B lives at <a href="../index.html">/living/fpga-sim/</a>. Stage C evidence: <a href="../stage-c/board-evidence.md">board-evidence.md</a>.</p>
+    </div>
+    <ul class="plain">
+      <li><strong>Stage A (Rust / Icarus).</strong> Software reference and register-transfer level (RTL) simulation. Analytical OpCounter joules. Not board power.</li>
+      <li><strong>Stage B (WASM / WebGPU).</strong> Same decision core in the browser with LUT and commit-trace visualization. Simulated agreement with Stage A seed-1 golden. WebGPU time is not energy.</li>
+      <li><strong>Stage C (this board).</strong> Detect + SRAM program of a minimal LED commit-gate. Partially done: programmed, energy unmetered, toy netlist rather than a full SoC.</li>
+    </ul>
+  </section>
+
+  <section class="figure-shell" id="source">
+    <header>
+      <div class="title-row"><span class="fig-id">source</span><h2>Source, bitstream SHA, and paths</h2></div>
+      <div class="chips"><span class="chip modelled">stage-c evidence</span></div>
+    </header>
+    <div class="panel">
+      <h3>Bitstream identity (Stage C)</h3>
+      <dl class="metrics" style="font-family:var(--mono);font-size:0.82rem;display:grid;grid-template-columns:auto 1fr;gap:0.2rem 0.85rem;margin:0">
+        <dt>file</dt><dd><a href="../stage-c/wca_commit_gate_pt_v2.bit">stage-c/wca_commit_gate_pt_v2.bit</a> (104140 bytes)</dd>
+        <dt>SHA-256</dt><dd class="hash">08e130e35eee764e13f3f9d6ddc5cedbc3c0d3dda3974d101ba1a9161e816fd7</dd>
+        <dt>IDCODE</dt><dd>0x13631093 (XC7A100T class, as reported by flash)</dd>
+        <dt>evidence</dt><dd><a href="../stage-c/board-evidence.md">board-evidence.md</a></dd>
+      </dl>
+    </div>
+    <p>Key <code>.fpga</code> design (also on disk in <code>openie-fpga/</code>):</p>
+    <pre class="code-block"># WCA commit-gate LED demo for Alchitry Pt V2 (Artix-7 XC7A100T)
+# LED map (active-high on Pt V2):
+#   led0 = commit   (lut_allow AND energy_ok)
+#   led1 = refuse   (NOT commit)
+#   led2 = lut_allow (toy: allow when counter bit2 == 0)
+#   led3 = energy_ok (toy: allow when counter bit20 == 1)
+#   led7 = heartbeat (counter bit23)
+#
+# Build:  ofpga build wca_commit_gate_pt_v2.fpga -t alchitry-pt-v2
+# Flash:  ofpga flash build/wca_commit_gate_pt_v2.bit -b alchitry-pt-v2
+
+new wca_commit_gate_pt_v2
+clock 100
+input clk 1
+
+const one 1 24
+const zero 0 24
+add next_count counter one
+reg counter next_count
+
+const energy_mask 1048576 24
+and energy_bits counter energy_mask
+eq energy_z energy_bits zero
+not energy_ok energy_z
+
+const lut_mask 4 24
+and lut_bits counter lut_mask
+eq lut_allow lut_bits zero
+
+and commit lut_allow energy_ok
+not refuse commit
+
+const hb_mask 8388608 24
+and heartbeat counter hb_mask
+
+output led0 commit
+output led1 refuse
+output led2 lut_allow
+output led3 energy_ok
+output led7 heartbeat</pre>
+    <p class="src-links">
+      Full file: <a href="./wca_commit_gate_pt_v2.fpga">wca_commit_gate_pt_v2.fpga</a>.
+      Site research tree: <a href="https://github.com/openIE-dev/research-openie-web">github.com/openIE-dev/research-openie-web</a>
+      (<code>public/living/fpga-sim/alchitry/</code>, <code>public/living/fpga-sim/stage-c/</code>).
+      Tooling tree path on the author workstation: <code>openie-fpga/wca_commit_gate_pt_v2.fpga</code>.
+    </p>
+  </section>
+
+  <section class="figure-shell" id="limits">
+    <header>
+      <div class="title-row"><span class="fig-id">limits</span><h2>Limits</h2></div>
+    </header>
+    <ul class="plain">
+      <li><strong>Energy unmetered</strong> unless a meter is present on a stated workload. Stage C had none. Analytical OpCounter joules from Stages A and B remain model numbers.</li>
+      <li><strong>Toy gate ≠ full SoC.</strong> Native XC7 synthesis for this netlist reported a tiny resource footprint after optimization (Stage C note: 8 LUTs / 0 FFs). LED visibility is best-effort for the minimal demo, not a cycle-accurate WCA core.</li>
+      <li><strong>No UART readback</strong> in this design. Functional evidence was detect + JTAG program success, plus visual LED activity.</li>
+      <li><strong>Vendor specs ≠ DUT energy.</strong> SparkFun catalog figures describe the part. They do not replace a meter.</li>
+      <li><strong>Flag.</strong> <code>board_synth_claimed=false</code> until board-measured joules exist.</li>
+    </ul>
+  </section>
+
+  <section class="figure-shell">
+    <header>
+      <div class="title-row"><h2>See also</h2></div>
+    </header>
+    <ul class="plain src-links">
+      <li><a href="../index.html">Stage B WASM / WebGPU simulator</a></li>
+      <li><a href="../stage-c/board-evidence.md">Stage C board evidence</a></li>
+      <li><a href="/papers/ni/">Notational Intelligence as Commit Law</a> (paper)</li>
+      <li><a href="/papers/satiation/">Satiation and Scarcity after Free AI</a> (paper)</li>
+      <li><a href="https://www.sparkfun.com/alchitry-pt-v2.html">SparkFun Alchitry Pt V2</a> (vendor)</li>
+    </ul>
+  </section>
+</main>
+<footer class="footer">OpenIE · Alchitry Pt V2 guide · Stage C programmed, energy unmetered · Sep 30, 2026 EDT</footer>
+</body>
+</html>

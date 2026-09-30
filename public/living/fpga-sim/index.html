@@ -62,6 +62,8 @@
       <a href="../ni/index.html">NI</a>
       <a href="../satiation/index.html">Satiation</a>
       <a href="index.html" class="active">FPGA sim</a>
+      <a href="alchitry/index.html">Alchitry guide</a>
+      <a href="stage-c/board-evidence.md">Stage C</a>
       <a href="/papers/ni/">NI paper</a>
     </nav>
     <span class="honesty-bar">simulation · board_synth_claimed=false · stage_c_programmed_unmetered</span>
@@ -71,7 +73,7 @@
   <div class="hero">
     <h1>Stage B · WASM FPGA / LUT commit-gate simulator</h1>
     <p class="deck-line">Rust decision core in the browser. WebGPU paints the allow LUT and commit trace. This page is a simulated / emulated instrument, not an Alchitry board meter.</p>
-    <p class="subtitle">Acceptance: bit-agree with Stage A seed-1 golden (committed 1, refused 15, analytical J 8.6795e-10). Stage C partial (2026-09-30): Alchitry Pt V2 detected and SRAM-programmed with a minimal commit-gate bitstream (JTAG DONE+EOS); energy unmetered — this page remains a simulation.</p>
+    <p class="subtitle">Acceptance: bit-agree with Stage A seed-1 golden (committed 1, refused 15, analytical J 8.6795e-10). Stage C partial (2026-09-30): Alchitry Pt V2 detected and SRAM-programmed with a minimal commit-gate bitstream (JTAG DONE+EOS); energy unmetered. This page remains a simulation. Builder how-to: <a href="alchitry/index.html">/living/fpga-sim/alchitry/</a>.</p>
   </div>
 
   <div class="limits">
@@ -136,7 +138,7 @@
     <p class="caption">
       <strong>Rebuild:</strong> from <code>wca-lut-edge</code>, run
       <code>wasm-pack build crates/wca-fpga-sim --target web --release --out-dir …/living/fpga-sim/pkg</code>
-      (see crate README). Stage C optional DUT: Alchitry Pt V2 after synthesis and metering; not claimed on this page.
+      (see crate README). Stage C: see <a href="alchitry/index.html">Alchitry Pt V2 guide</a> and <a href="stage-c/board-evidence.md">board-evidence.md</a> (programmed; energy unmetered).
     </p>
   </section>
 </main>

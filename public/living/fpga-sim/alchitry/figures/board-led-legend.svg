@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="t1 d1">
+  <title id="t1">Alchitry Pt V2 LED legend for WCA commit-gate demo</title>
+  <desc id="d1">Eight LEDs with Stage C roles: commit, refuse, lut_allow, energy_ok, unused, heartbeat.</desc>
+  <rect width="720" height="420" fill="#0b1220"/>
+  <text x="24" y="36" fill="#94a3b8" font-family="ui-monospace,monospace" font-size="13">Figure · Pt V2 LED map (active-high) · Stage C demo</text>
+  <text x="24" y="58" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="20" font-weight="600">Alchitry Pt V2 · Artix-7 XC7A100T</text>
+  <!-- board outline -->
+  <rect x="40" y="90" width="280" height="280" rx="14" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <text x="54" y="118" fill="#64748b" font-family="ui-monospace,monospace" font-size="11">USB / FT2232H JTAG</text>
+  <rect x="54" y="128" width="72" height="28" rx="4" fill="#1e293b" stroke="#475569"/>
+  <text x="62" y="146" fill="#94a3b8" font-family="ui-monospace,monospace" font-size="10">0403:6010</text>
+  <text x="54" y="185" fill="#64748b" font-family="ui-monospace,monospace" font-size="11">FPGA</text>
+  <rect x="54" y="195" width="120" height="70" rx="6" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="68" y="225" fill="#67e8f9" font-family="ui-monospace,monospace" font-size="12">XC7A100T</text>
+  <text x="68" y="245" fill="#64748b" font-family="ui-monospace,monospace" font-size="10">100 MHz clk</text>
+  <!-- LED row -->
+  <g font-family="ui-monospace,monospace" font-size="10">
+    <!-- LED0 commit -->
+    <circle cx="70" cy="320" r="12" fill="#10b981" stroke="#34d399" stroke-width="2"/>
+    <text x="62" y="348" fill="#e2e8f0">0</text>
+    <!-- LED1 refuse -->
+    <circle cx="105" cy="320" r="12" fill="#ef4444" stroke="#f87171" stroke-width="2"/>
+    <text x="97" y="348" fill="#e2e8f0">1</text>
+    <!-- LED2 lut_allow -->
+    <circle cx="140" cy="320" r="12" fill="#38bdf8" stroke="#7dd3fc" stroke-width="2"/>
+    <text x="132" y="348" fill="#e2e8f0">2</text>
+    <!-- LED3 energy_ok -->
+    <circle cx="175" cy="320" r="12" fill="#a78bfa" stroke="#c4b5fd" stroke-width="2"/>
+    <text x="167" y="348" fill="#e2e8f0">3</text>
+    <!-- LED4 unused -->
+    <circle cx="210" cy="320" r="12" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+    <text x="202" y="348" fill="#64748b">4</text>
+    <!-- LED5 unused -->
+    <circle cx="245" cy="320" r="12" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+    <text x="237" y="348" fill="#64748b">5</text>
+    <!-- LED6 unused -->
+    <circle cx="280" cy="320" r="12" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+    <text x="272" y="348" fill="#64748b">6</text>
+    <!-- LED7 heartbeat -->
+    <circle cx="315" cy="320" r="12" fill="#fbbf24" stroke="#fcd34d" stroke-width="2">
+      <animate attributeName="opacity" values="1;0.25;1" dur="1.6s" repeatCount="indefinite"/>
+    </circle>
+    <text x="307" y="348" fill="#e2e8f0">7</text>
+  </g>
+  <!-- legend panel -->
+  <g font-family="system-ui,sans-serif" font-size="13">
+    <text x="360" y="120" fill="#e2e8f0" font-size="15" font-weight="600">LED roles (demo)</text>
+    <circle cx="372" cy="155" r="8" fill="#10b981"/><text x="390" y="160" fill="#e2e8f0"><tspan fill="#34d399" font-family="ui-monospace,monospace">led0</tspan> commit = lut_allow AND energy_ok</text>
+    <circle cx="372" cy="185" r="8" fill="#ef4444"/><text x="390" y="190" fill="#e2e8f0"><tspan fill="#f87171" font-family="ui-monospace,monospace">led1</tspan> refuse = NOT commit</text>
+    <circle cx="372" cy="215" r="8" fill="#38bdf8"/><text x="390" y="220" fill="#e2e8f0"><tspan fill="#7dd3fc" font-family="ui-monospace,monospace">led2</tspan> lut_allow (toy: counter bit2 clear)</text>
+    <circle cx="372" cy="245" r="8" fill="#a78bfa"/><text x="390" y="250" fill="#e2e8f0"><tspan fill="#c4b5fd" font-family="ui-monospace,monospace">led3</tspan> energy_ok (toy: counter bit20 set)</text>
+    <circle cx="372" cy="275" r="8" fill="#1e293b" stroke="#475569"/><text x="390" y="280" fill="#94a3b8"><tspan font-family="ui-monospace,monospace">led4-6</tspan> unused in this demo</text>
+    <circle cx="372" cy="305" r="8" fill="#fbbf24"/><text x="390" y="310" fill="#e2e8f0"><tspan fill="#fcd34d" font-family="ui-monospace,monospace">led7</tspan> heartbeat (counter bit23)</text>
+    <text x="360" y="350" fill="#64748b" font-family="ui-monospace,monospace" font-size="11">Package pins (Pt V2): LED0=P19 ... LED7=W20 · CLOCK=W19</text>
+    <text x="360" y="370" fill="#64748b" font-family="ui-monospace,monospace" font-size="11">Source: openie-fpga alchitry_pins.rs (PtV2 tables)</text>
+  </g>
+</svg>

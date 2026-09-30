@@ -7,7 +7,9 @@ OpenIE research hub. Live at **research.openie.dev**.
 - `/pdfs/{ni,satiation}.pdf` — real downloadable study PDFs
 - `/living/` — **interactive figures** (P0 stubs), not papers
 - `/living/fpga-sim/` — Stage B Rust→WASM commit-gate simulator (WebGPU viz; simulated, not Alchitry watts)
-- Status honesty: research study · draft; `board_synth_claimed=false`
+- `/living/fpga-sim/alchitry/` - Stage C builder guide (Alchitry Pt V2 detect/build/flash/LEDs; programmed, energy unmetered)
+- `/living/fpga-sim/stage-c/` - Stage C evidence artifacts (bitstream + board-evidence.md)
+- Status honesty: research study · draft; `board_synth_claimed=false`; Stage C programmed unmetered
 
 No paid research services in the product stack.
 

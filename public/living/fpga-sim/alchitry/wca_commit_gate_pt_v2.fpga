@@ -1,0 +1,47 @@
+# WCA commit-gate LED demo for Alchitry Pt V2 (Artix-7 XC7A100T)
+# Minimal Stage C fabric: visible LUT-allow / energy / commit / refuse LEDs.
+# Not a full WCA SoC. Not metered joules. Heartbeat proves fabric is live.
+#
+# LED map (active-high on Pt V2):
+#   led0 = commit   (lut_allow AND energy_ok)
+#   led1 = refuse   (NOT commit)
+#   led2 = lut_allow (toy: allow when counter bit2 == 0)
+#   led3 = energy_ok (toy: allow when counter bit20 == 1)
+#   led7 = heartbeat (counter bit23)
+#
+# Build:  ofpga build wca_commit_gate_pt_v2.fpga -t alchitry-pt-v2
+# Flash:  ofpga flash build/wca_commit_gate_pt_v2.bit -b alchitry-pt-v2
+
+new wca_commit_gate_pt_v2
+clock 100
+input clk 1
+
+const one 1 24
+const zero 0 24
+add next_count counter one
+reg counter next_count
+
+# energy_ok when bit20 set (counter & 2^20 != 0)
+const energy_mask 1048576 24
+and energy_bits counter energy_mask
+eq energy_z energy_bits zero
+not energy_ok energy_z
+
+# lut_allow when bit2 clear (toy half-duty allow/refuse address proxy)
+const lut_mask 4 24
+and lut_bits counter lut_mask
+eq lut_allow lut_bits zero
+
+# commit = lut_allow AND energy_ok
+and commit lut_allow energy_ok
+not refuse commit
+
+# heartbeat bit23
+const hb_mask 8388608 24
+and heartbeat counter hb_mask
+
+output led0 commit
+output led1 refuse
+output led2 lut_allow
+output led3 energy_ok
+output led7 heartbeat
