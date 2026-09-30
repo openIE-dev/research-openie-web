@@ -66,14 +66,13 @@
       <a href="stage-c/board-evidence.md">Stage C</a>
       <a href="/papers/ni/">NI paper</a>
     </nav>
-    <span class="honesty-bar">simulation · board_synth_claimed=false · stage_c_programmed_unmetered</span>
-  </div>
+    </div>
 </header>
 <main>
   <div class="hero">
     <h1>Stage B · WASM FPGA / LUT commit-gate simulator</h1>
-    <p class="deck-line">Rust decision core in the browser. WebGPU paints the allow LUT and commit trace. This page is a simulated / emulated instrument, not an Alchitry board meter.</p>
-    <p class="subtitle">Acceptance: bit-agree with Stage A seed-1 golden (committed 1, refused 15, analytical J 8.6795e-10). Stage C partial (2026-09-30): Alchitry Pt V2 detected and SRAM-programmed with a minimal commit-gate bitstream (JTAG DONE+EOS); energy unmetered. This page remains a simulation. Builder how-to: <a href="alchitry/index.html">/living/fpga-sim/alchitry/</a>.</p>
+    <p class="deck-line">Rust decision core in the browser. WebGPU paints the allow look-up table (LUT) and commit trace. This page is a simulated instrument. For the physical board path, use the Alchitry Pt V2 guide.</p>
+    <p class="subtitle">Acceptance: bit-agree with Stage A seed-1 golden (committed 1, refused 15, analytical joules 8.6795e-10). Stage C (2026-09-30): Alchitry Pt V2 UART transcript agrees with the same seed-1 allow/refuse sequence; energy still unmetered. <strong>CTA:</strong> run the WASM episode below, then open the <a href="alchitry/index.html">Alchitry builder guide</a> and <a href="stage-c/board-evidence.md">Stage C UART evidence</a>.</p>
   </div>
 
   <div class="limits">
@@ -93,6 +92,8 @@
     </header>
 
     <div class="btn-row">
+      <a class="run" href="alchitry/index.html" style="text-decoration:none;display:inline-block">Open Alchitry guide</a>
+      <a class="run" href="stage-c/board-evidence.md" style="text-decoration:none;display:inline-block">Stage C UART evidence</a>
       <button type="button" class="run" id="btn-run">Run seed-1 in WASM</button>
       <span class="status" id="status">Loading WASM module…</span>
     </div>

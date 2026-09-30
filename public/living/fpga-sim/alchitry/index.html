@@ -98,8 +98,7 @@
       <a href="../stage-c/board-evidence.md">Stage C evidence</a>
       <a href="/papers/ni/">NI paper</a>
     </nav>
-    <span class="honesty-bar">stage_c_programmed_unmetered · board_synth_claimed=false · toy gate</span>
-  </div>
+    </div>
 </header>
 <main>
   <div class="hero">
@@ -115,6 +114,7 @@
     <a href="#build">Build</a>
     <a href="#flash">Flash</a>
     <a href="#leds">LEDs</a>
+    <a href="#uart">UART</a>
     <a href="#pipeline">Stages A to C</a>
     <a href="#source">Source</a>
     <a href="#resources">Resources</a>
@@ -122,7 +122,7 @@
   </nav>
 
   <div class="limits">
-    <strong>Honesty first.</strong> Stage C detected an Alchitry Pt V2 and programmed a minimal commit-gate bitstream over JTAG in static random-access memory (SRAM) mode with configuration DONE and end-of-startup (EOS) asserted. No power meter was attached. Do not invent joules. The toy gate is not a full WCA system-on-chip (SoC). <code>board_synth_claimed</code> stays false until a meter reading on a stated workload exists.
+    <strong>What Stage C measured.</strong> Stage C detected an Alchitry Pt V2, programmed a seed-1 commit-gate bitstream over JTAG in static random-access memory (SRAM) mode (DONE and end-of-startup (EOS) asserted), and captured a universal asynchronous receiver-transmitter (UART) transcript that matches the software seed-1 allow/refuse sequence. No power meter was attached. Do not invent joules. The design is a seed-1 decision read-only memory (ROM) reporter, not a full Wise Computer Automation (WCA) system-on-chip (SoC).
   </div>
 
   <section class="figure-shell" id="board">
@@ -266,6 +266,28 @@ Programmed 104140 bytes via JTAG (SRAM) - DONE + EOS asserted</pre>
       <img src="./figures/commit-compose.svg" alt="Block diagram: counter bits to lut_allow, energy_ok, AND to commit and refuse LEDs"/>
       <p class="cap">Compose path inside <code>wca_commit_gate_pt_v2.fpga</code>. energy_ok here is a free-running bit mask, not board-measured energy.</p>
     </div>
+  </section>
+
+
+  <section class="figure-shell" id="uart">
+    <header>
+      <div class="title-row"><span class="fig-id">uart</span><h2>UART seed-1 readback</h2></div>
+      <div class="chips"><span class="chip modelled">measured transcript</span></div>
+    </header>
+    <p>
+      After flashing <code>wca_seed1_uart_pt_v2.bit</code>, open the FT2232H channel B serial port
+      (on macOS typically <code>/dev/cu.usbserial-0000001</code>) at 115200 baud 8N1.
+      One episode prints a banner <code>WCA1 C01 R15 S06</code> and sixteen lines
+      <code>Sii Lx Ex Cx</code>. Seed-1 agreement means sole commit at step 6
+      (<code>S06 L1 E1 C1</code>), with <code>lut_allow=1</code> on every step and
+      <code>energy_ok</code> only there.
+    </p>
+    <pre class="code-block"># example capture
+python3 -c "import serial,time; s=serial.Serial('/dev/cu.usbserial-0000001',115200,timeout=0.2); time.sleep(0.2); print(s.read(8000).decode('ascii','replace')); s.close()"</pre>
+    <p class="src-links"><strong>CTA:</strong> compare your capture to
+      <a href="../stage-c/uart-transcript.txt">uart-transcript.txt</a> and
+      <a href="../stage-c/uart-agreement.json">uart-agreement.json</a>.
+      Full notes: <a href="../stage-c/board-evidence.md">board-evidence.md</a>.</p>
   </section>
 
   <section class="figure-shell" id="pipeline">

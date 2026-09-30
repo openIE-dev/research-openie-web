@@ -1,0 +1,40 @@
+{
+  "agree": true,
+  "committed": 1,
+  "refused": 15,
+  "commit_step": 6,
+  "episode_lines": [
+    "WCA1 C01 R15 S06",
+    "S00 L1 E0 C0",
+    "S01 L1 E0 C0",
+    "S02 L1 E0 C0",
+    "S03 L1 E0 C0",
+    "S04 L1 E0 C0",
+    "S05 L1 E0 C0",
+    "S06 L1 E1 C1",
+    "S07 L1 E0 C0",
+    "S08 L1 E0 C0",
+    "S09 L1 E0 C0",
+    "S0A L1 E0 C0",
+    "S0B L1 E0 C0",
+    "S0C L1 E0 C0",
+    "S0D L1 E0 C0",
+    "S0E L1 E0 C0",
+    "S0F L1 E0 C0"
+  ],
+  "bitstream_sha256": "a1d2d069837f5cdf90fe224f28a75c420148bff6403306f3d995cdcb9320a430",
+  "bitstream_bytes": 3825905,
+  "uart_port": "/dev/cu.usbserial-0000001",
+  "baud": 115200,
+  "energy": "unmetered",
+  "design": "wca_seed1_uart_pt_v2",
+  "board": "Alchitry Pt V2 (Artix-7 XC7A100T)",
+  "flash": "ofpga flash (SRAM) DONE+EOS CRC_ERR=0 IDCODE=0x13631093",
+  "method": "seed-1 decision ROM on FPGA; commit=lut_allow AND energy_ok; ASCII UART readback",
+  "limits": [
+    "Not a full TLMM+PH WCA SoC on FPGA; decisions come from a seed-1 golden ROM that matches software/WASM.",
+    "Analytical episode joules 8.6795e-10 remain a software/WASM OpCounter model number.",
+    "No power meter attached; energy unmetered; board_synth_claimed=false."
+  ],
+  "captured_at": "2026-09-30 02:23:38 EDT"
+}
