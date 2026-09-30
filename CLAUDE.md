@@ -57,7 +57,7 @@ Manifest: `site-ops/deploy/manifest.toml` → `[[site]] name = "research"`.
 
 Public home for OpenIE materials: **https://github.com/openIE-dev** (org).
 
-- Site source: local `research-openie-web/` (prefer remote under `openIE-dev/` when published)
+- Site source: https://github.com/openIE-dev/research-openie-web (local `research-openie-web/`)
 - Contract / inventory / living export drafts: sibling `openie-web/research/` (local drafting tree; remotes today are personal Forgejo + `dcharlot65-personal` — migrate permanence into an `openIE-dev` repo rather than treating personal as canonical)
 
 ## Source living export
