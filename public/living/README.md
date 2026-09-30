@@ -113,6 +113,6 @@ Rebuild: see `crates/wca-fpga-sim/README.md` in wca-lut-edge.
 
 Builder how-to for detect / build / flash / LED map:
 
-- Live: `/living/fpga-sim/alchitry/`
+- Live: `/living/fpga-sim/alchitry/` (builder guide; Resources section mirrors SparkFun/Alchitry docs and attributed product photos under `alchitry/images/`)
 - Evidence: `/living/fpga-sim/stage-c/board-evidence.md`
 - Honesty: programmed over JTAG (SRAM); energy unmetered; toy gate is not a full WCA SoC.

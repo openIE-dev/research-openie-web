@@ -58,6 +58,33 @@
   ol.steps, ul.plain { padding-left: 1.2rem; }
   ol.steps li, ul.plain li { margin: 0.35rem 0; line-height: 1.5; }
   .src-links a { color: var(--accent); }
+
+  .photo-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.65rem; margin: 0.85rem 0 0.35rem;
+  }
+  .photo-grid figure {
+    margin: 0; background: #020617; border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+  }
+  .photo-grid img { width: 100%; height: auto; display: block; }
+  .photo-grid figcaption {
+    font-size: 0.72rem; color: var(--muted); padding: 0.45rem 0.55rem;
+    border-top: 1px solid #1e293b; line-height: 1.35;
+  }
+  .attr-note {
+    font-size: 0.82rem; color: var(--muted); margin: 0.55rem 0 0;
+    line-height: 1.45;
+  }
+  table.pin-overview {
+    width: 100%; border-collapse: collapse; font-size: 0.86rem;
+    font-family: var(--mono); margin: 0.75rem 0;
+  }
+  table.pin-overview th, table.pin-overview td {
+    text-align: left; padding: 0.4rem 0.55rem;
+    border-bottom: 1px solid #1e293b; vertical-align: top;
+  }
+  table.pin-overview th { color: var(--muted); font-weight: 500; }
 </style>
 </head>
 <body>
@@ -90,6 +117,7 @@
     <a href="#leds">LEDs</a>
     <a href="#pipeline">Stages A to C</a>
     <a href="#source">Source</a>
+    <a href="#resources">Resources</a>
     <a href="#limits">Limits</a>
   </nav>
 
@@ -110,8 +138,13 @@
       Vendor documentation lists a Xilinx (AMD) Artix-7 part <code>XC7A100T-2FGG84I</code>, with catalog figures including 101,440 logic cells, 240 DSP48E1 slices, 4,860 Kb block RAM, 256 MB DDR3L, eight general-purpose LEDs, a 100 MHz oscillator, and an FT2232HQ bridge for USB JTAG and UART.
       Cite the vendor page for those catalog numbers; they are not Open Interface Engineering (OpenIE) bench measurements.
     </p>
+
+    <div class="fig">
+      <img src="./images/27873-Alchitry-Pt-V2-Feature.jpg" alt="Alchitry Pt V2 product photo, SparkFun SKU DEV-27873 feature view"/>
+      <p class="cap">Alchitry Pt V2 (SparkFun SKU DEV-27873). Product photo © SparkFun Electronics. Educational non-commercial display; see <a href="./images/ATTRIBUTION.md">images/ATTRIBUTION.md</a>.</p>
+    </div>
     <p class="src-links">
-      Vendor: <a href="https://www.sparkfun.com/alchitry-pt-v2.html">sparkfun.com/alchitry-pt-v2.html</a>.
+      Vendor: <a href="https://www.sparkfun.com/alchitry-pt-v2.html">sparkfun.com/alchitry-pt-v2.html</a> (SKU DEV-27873).
       Stage C USB product string observed on the attached board: <code>Alchitry Pt V2</code> (vid <code>0x0403</code> / pid <code>0x6010</code>).
     </p>
   </section>
@@ -313,6 +346,108 @@ output led7 heartbeat</pre>
     </p>
   </section>
 
+
+  <section class="figure-shell" id="resources">
+    <header>
+      <div class="title-row"><span class="fig-id">resources</span><h2>Official online resources</h2></div>
+      <div class="chips">
+        <span class="chip illustrative">vendor docs</span>
+        <span class="chip v2">Pt V2</span>
+      </div>
+    </header>
+    <p>
+      Catalog pages, schematics, pinouts, and software docs below are published by SparkFun Electronics, Alchitry LLC, and AMD (Xilinx Artix-7).
+      Open Interface Engineering (OpenIE) mirrors a few product photos for this educational guide and does not replace the vendor sites.
+      Catalog figures remain vendor figures, not OpenIE bench measurements.
+    </p>
+
+    <div class="panel">
+      <h3>Product and hardware docs</h3>
+      <ul class="plain src-links">
+        <li><a href="https://www.sparkfun.com/alchitry-pt-v2.html">SparkFun Alchitry Pt V2</a> (SKU DEV-27873)</li>
+        <li><a href="https://shop.alchitry.com/products/alchitry-pt">Alchitry shop: Pt V2</a></li>
+        <li>Schematic PDF (linked from SparkFun as Rev A): <a href="https://cdn.alchitry.com/docs/Pt-V2/Alchitry%20Platinum%20Rev%20A.pdf">Alchitry Platinum Rev A</a></li>
+        <li>Schematic PDF (linked from Alchitry shop as Rev B): <a href="https://cdn.alchitry.com/docs/Pt-V2/Alchitry%20Platinum%20Rev%20B.pdf">Alchitry Platinum Rev B</a></li>
+        <li>3D model (STEP): <a href="https://cdn.alchitry.com/docs/Pt-V2/Alchitry%20Platinum%20v2.step">Alchitry Platinum v2.step</a></li>
+        <li>Connector position drawing (Alchitry notes Pt positions match the Au drawing): <a href="https://cdn.alchitry.com/docs/Au-V2/AuDrawing.pdf">AuDrawing.pdf</a></li>
+        <li>AMD Artix-7 DC and AC switching characteristics (DS181): <a href="https://docs.amd.com/v/u/en-US/ds181_Artix_7_Data_Sheet">ds181</a></li>
+        <li>AMD 7 Series SelectIO (UG471): <a href="https://docs.amd.com/v/u/en-US/ug471_7Series_SelectIO">ug471</a></li>
+        <li>AMD 7 Series Clocking (UG472): <a href="https://docs.amd.com/v/u/en-US/ug472_7Series_Clocking">ug472</a></li>
+        <li>Vivado setup (Alchitry tutorial; Au and Pt builds need Vivado): <a href="https://alchitry.com/tutorials/setup/vivado/">alchitry.com/tutorials/setup/vivado</a></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Pin map and constraints</h3>
+      <p style="margin:0 0 0.65rem">
+        Alchitry V2 boards use three Hirose DF40 connectors per side: one 50-pin Control header and two 80-pin input/output (IO) banks labeled Bank A (closer to Control) and Bank B.
+        The Pt additionally has connectors on the bottom side. Top and bottom pin names for Banks A and B are identical in software and are distinguished with the <code>SIDE(TOP)</code> or <code>SIDE(BOTTOM)</code> attribute in Alchitry Constraint Format (ACF) files.
+        Full cell-by-cell tables (including Multi-Gigabit Transceiver, or MGT, pairs on the bottom) live on the Alchitry pinouts page. Do not invent pin numbers from memory.
+      </p>
+      <ul class="plain src-links">
+        <li><a href="https://alchitry.com/tutorials/references/pinouts-and-custom-elements/">Pinouts and Custom Elements</a> (official tables for Pt top and bottom)</li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1t2A2apBwaQrpOtj8-f1AKn4eQP6NPnVamPfEwm4tclc/edit?usp=sharing">Alchitry Pt V2 pinout and trace lengths</a> (Google Sheet linked from the Alchitry shop)</li>
+        <li><a href="https://alchitry.com/tutorials/references/alchitry-constraints-reference/">Alchitry Constraints Reference</a> (<code>PINOUT</code>, <code>SIDE</code>, <code>PT_ALPHA</code> for first-batch boards)</li>
+      </ul>
+      <table class="pin-overview">
+        <thead>
+          <tr><th>Region</th><th>What the vendor docs describe</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Top Banks A and B</td><td>General-purpose and differential IO; includes multi-voltage pairs and clock-capable inputs. See the Pt Top Pinout Table.</td></tr>
+          <tr><td>Bottom Banks A and B</td><td>Second independent stack. Bottom Bank B includes MGT clock, transmit, and receive pairs. See the Pt Bottom Pinout Table.</td></tr>
+          <tr><td>Control header</td><td>Power, reset, done, program, Joint Test Action Group (JTAG) related pins, voltage select, and analog references. LED breakouts differ from Au and Cu; the Pt Control table maps IO pairs where Au and Cu list LEDs.</td></tr>
+          <tr><td>On-board LEDs</td><td>Eight general-purpose LEDs. OpenIE Stage C package pins (from <code>alchitry_pins.rs</code>): LED0=P19, LED1=P20, LED2=T21, LED3=R19, LED7=W20, CLOCK=W19.</td></tr>
+        </tbody>
+      </table>
+      <div class="fig">
+        <img src="./images/AU_v2_Banks_Labeled.svg" alt="Alchitry V2 bank and connector orientation diagram labeled Bank A, Bank B, and Control"/>
+        <p class="cap">V2 bank orientation diagram from Alchitry docs CDN (<code>AU_v2_Banks_Labeled.svg</code>), used on the pinouts tutorial. Attribution: Alchitry LLC. Educational mirror; see <a href="./images/ATTRIBUTION.md">ATTRIBUTION.md</a>.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Alchitry Labs and Lucid</h3>
+      <ul class="plain src-links">
+        <li><a href="https://alchitry.com/alchitry-labs/">Alchitry Labs</a> (download and toolchain notes)</li>
+        <li><a href="https://github.com/alchitry/Alchitry-Labs-V2">GitHub: alchitry/Alchitry-Labs-V2</a> (GNU General Public License v3.0)</li>
+        <li><a href="https://alchitry.com/tutorials/references/lucid-reference/">Lucid Reference</a> (Lucid V2 hardware description language)</li>
+        <li><a href="https://alchitry.com/tutorials/references/lucid-v1-to-v2/">Lucid V1 to V2</a> (migration notes; includes simulation motivation)</li>
+      </ul>
+      <p class="attr-note" style="margin:0.55rem 0 0">
+        This OpenIE guide builds with <code>ofpga</code> from the <code>openie-fpga</code> tree, not Alchitry Labs.
+        Labs and Lucid remain the vendor path for Lucid projects and for generating ACF constraints.
+      </p>
+    </div>
+
+    <h3 style="font-family:var(--mono);font-size:0.9rem;color:var(--accent);margin:1.1rem 0 0.45rem">Product photos (SparkFun)</h3>
+    <div class="photo-grid">
+      <figure>
+        <img src="./images/27873-Alchitry-Pt-V2-Feature.jpg" alt="Alchitry Pt V2 feature product photo"/>
+        <figcaption>Feature</figcaption>
+      </figure>
+      <figure>
+        <img src="./images/27873-Alchitry-Pt-V2-Front.jpg" alt="Alchitry Pt V2 front product photo"/>
+        <figcaption>Front</figcaption>
+      </figure>
+      <figure>
+        <img src="./images/27873-Alchitry-Pt-V2-Back.jpg" alt="Alchitry Pt V2 back product photo"/>
+        <figcaption>Back (low-profile side)</figcaption>
+      </figure>
+      <figure>
+        <img src="./images/27873-Alchitry-Pt-V2-Scale.jpg" alt="Alchitry Pt V2 scale product photo"/>
+        <figcaption>Scale</figcaption>
+      </figure>
+    </div>
+    <p class="attr-note">
+      Photos © SparkFun Electronics, SKU DEV-27873, from
+      <a href="https://www.sparkfun.com/alchitry-pt-v2.html">sparkfun.com/alchitry-pt-v2.html</a>.
+      SparkFun has stated that product images are generally under Creative Commons Attribution-NonCommercial-ShareAlike 3.0 (CC BY-NC-SA 3.0).
+      This page is educational and non-commercial. Full notes: <a href="./images/ATTRIBUTION.md">images/ATTRIBUTION.md</a>.
+      Commercial reuse requires SparkFun permission.
+    </p>
+  </section>
+
   <section class="figure-shell" id="limits">
     <header>
       <div class="title-row"><span class="fig-id">limits</span><h2>Limits</h2></div>
@@ -336,9 +471,12 @@ output led7 heartbeat</pre>
       <li><a href="/papers/ni/">Notational Intelligence as Commit Law</a> (paper)</li>
       <li><a href="/papers/satiation/">Satiation and Scarcity after Free AI</a> (paper)</li>
       <li><a href="https://www.sparkfun.com/alchitry-pt-v2.html">SparkFun Alchitry Pt V2</a> (vendor)</li>
+      <li><a href="#resources">Official online resources</a> (docs, pinouts, Labs, photos)</li>
+      <li><a href="https://alchitry.com/tutorials/references/pinouts-and-custom-elements/">Alchitry pinouts tutorial</a></li>
+      <li><a href="https://github.com/alchitry/Alchitry-Labs-V2">Alchitry Labs V2 on GitHub</a></li>
     </ul>
   </section>
 </main>
-<footer class="footer">OpenIE · Alchitry Pt V2 guide · Stage C programmed, energy unmetered · Sep 30, 2026 EDT</footer>
+<footer class="footer">OpenIE · Alchitry Pt V2 guide · Stage C programmed, energy unmetered · vendor resources mirrored with attribution · Sep 30, 2026 EDT</footer>
 </body>
 </html>
