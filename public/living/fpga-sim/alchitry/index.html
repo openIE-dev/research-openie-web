@@ -118,11 +118,12 @@
     <a href="#pipeline">Stages A to C</a>
     <a href="#source">Source</a>
     <a href="#resources">Resources</a>
+    <a href="#energy">Energy metering</a>
     <a href="#limits">Limits</a>
   </nav>
 
   <div class="limits">
-    <strong>What Stage C measured.</strong> Stage C detected an Alchitry Pt V2, programmed a seed-1 commit-gate bitstream over JTAG in static random-access memory (SRAM) mode (DONE and end-of-startup (EOS) asserted), and captured a universal asynchronous receiver-transmitter (UART) transcript that matches the software seed-1 allow/refuse sequence. No power meter was attached. Do not invent joules. The design is a seed-1 decision read-only memory (ROM) reporter, not a full Wise Computer Automation (WCA) system-on-chip (SoC).
+    <strong>What Stage C measured.</strong> Stage C detected an Alchitry Pt V2, programmed a <em>closed-loop</em> WCA commit-gate bitstream (on-fabric pendulum plant + Safe Q16.16 port-Hamiltonian check) over JTAG in SRAM mode (DONE and EOS asserted), and captured a UART transcript that matches the software seed-1 allow/refuse sequence (1 commit / 15 refuses / step 6). The Alchitry Pt V2 has <strong>no onboard joule meter</strong>. No power meter was attached. Do not invent joules. Vivado or post-place-and-route power estimates are not device-under-test (DUT) readings.
   </div>
 
   <section class="figure-shell" id="board">
@@ -168,7 +169,7 @@
     </header>
     <p>With the board attached, run:</p>
     <pre class="code-block">ofpga detect</pre>
-    <p>Expected output shape from the Stage C capture (2026-09-30 01:49:59 EDT):</p>
+    <p>Expected UART shape from the closed-loop Stage C capture (2026-09-30 ~03:51 EDT):</p>
     <pre class="code-block">1 device(s) found:
 
   FPGA Boards:
@@ -215,7 +216,7 @@ ofpga build wca_commit_gate_pt_v2.fpga -t alchitry-pt-v2</pre>
 # or pin the board explicitly:
 ofpga flash build/wca_commit_gate_pt_v2.bit -b alchitry-pt-v2</pre>
       </li>
-      <li>Read the tool status. Stage C recorded Mode <strong>Sram</strong>, size 104140 bytes, IDCODE <code>0x13631093</code>, Status DONE=1 INIT=1, STAT with CRC_ERR=0 EOS=1 DONE=1.</li>
+      <li>Read the tool status. Closed-loop Stage C recorded Mode <strong>Sram</strong>, size 3825913 bytes, IDCODE <code>0x13631093</code>, Status DONE=1 INIT=1, STAT with CRC_ERR=0 EOS=1 DONE=1.</li>
     </ol>
     <div class="panel">
       <h3>SRAM vs flash</h3>
@@ -257,7 +258,7 @@ Programmed 104140 bytes via JTAG (SRAM) - DONE + EOS asserted</pre>
         <tr><td class="ok">led0</td><td>commit</td><td>lut_allow AND energy_ok</td></tr>
         <tr><td class="bad">led1</td><td>refuse</td><td>NOT commit</td></tr>
         <tr><td>led2</td><td>lut_allow</td><td>toy: allow when counter bit2 is clear</td></tr>
-        <tr><td>led3</td><td>energy_ok</td><td>toy: allow when counter bit20 is set (not a meter)</td></tr>
+        <tr><td>led3</td><td>energy_ok</td><td>Safe Q16.16 PH residual pass (not a joule meter)</td></tr>
         <tr><td>led4-6</td><td>(unused)</td><td>not driven by this design</td></tr>
         <tr><td class="warn-t">led7</td><td>heartbeat</td><td>counter bit23; proves the fabric is live</td></tr>
       </tbody>
@@ -301,7 +302,7 @@ python3 -c "import serial,time; s=serial.Serial('/dev/cu.usbserial-0000001',1152
     <ul class="plain">
       <li><strong>Stage A (Rust / Icarus).</strong> Software reference and register-transfer level (RTL) simulation. Analytical OpCounter joules. Not board power.</li>
       <li><strong>Stage B (WASM / WebGPU).</strong> Same decision core in the browser with LUT and commit-trace visualization. Simulated agreement with Stage A seed-1 golden. WebGPU time is not energy.</li>
-      <li><strong>Stage C (this board).</strong> Detect + SRAM program of a synthesizable WCA commit-gate UART (TLMM + allow LUT + Q8.8 PH). UART agrees with seed-1 golden. Energy unmetered. Stimulus streams plant/proposal state; not a closed-loop float plant.</li>
+      <li><strong>Stage C (this board).</strong> Detect + SRAM program of a closed-loop WCA commit-gate UART (on-fabric pendulum plant + TLMM + allow LUT + Safe Q16.16 PH). UART agrees with seed-1 golden where comparable. Energy unmetered — Pt V2 has no onboard joule meter.</li>
     </ul>
   </section>
 
@@ -470,12 +471,37 @@ output led7 heartbeat</pre>
     </p>
   </section>
 
+  
+  <section class="figure-shell" id="energy">
+    <header>
+      <div class="title-row"><span class="fig-id">energy</span><h2>Energy metering (education)</h2></div>
+      <div class="chips"><span class="chip illustrative">no onboard meter</span></div>
+    </header>
+    <p>
+      The Alchitry Pt V2 does <strong>not</strong> include an onboard joule or watt-hour meter.
+      Stage C UART and LED results prove <em>decision agreement</em> (allow / refuse / commit), not board energy.
+      Analytical OpCounter joules from Stages A and B remain model numbers. Do not invent readings.
+    </p>
+    <div class="panel">
+      <h3>How you would meter a stated workload later</h3>
+      <ul class="plain">
+        <li><strong>USB inline power meter</strong> between the host USB port and the board (reports volts/amps/watts on the 5&nbsp;V bus). State the workload (bitstream, UART run length) beside any number.</li>
+        <li><strong>Shunt resistor + oscilloscope</strong> on the 5&nbsp;V supply rail: capture voltage across a known shunt, integrate <code>V·I</code> over the episode. Calibrate the shunt; report sense resistance and bandwidth.</li>
+        <li><strong>Not a DUT meter:</strong> Vivado / nextpnr / post-place-and-route power estimates, SparkFun catalog figures, and OpCounter analytical joules. Those are models or vendor specs, not board-measured energy.</li>
+      </ul>
+    </div>
+    <p class="attr-note">
+      Until a meter reading exists on a stated workload, keep <code>board_synth_claimed=false</code> and write “energy unmetered” next to Stage C claims.
+      Guide path: <a href="index.html">/living/fpga-sim/alchitry/</a>.
+    </p>
+  </section>
+
   <section class="figure-shell" id="limits">
     <header>
       <div class="title-row"><span class="fig-id">limits</span><h2>Limits</h2></div>
     </header>
     <ul class="plain">
-      <li><strong>Energy unmetered</strong> unless a meter is present on a stated workload. Stage C had none. Analytical OpCounter joules from Stages A and B remain model numbers.</li>
+      <li><strong>Energy unmetered.</strong> Pt V2 has no onboard joule meter. Stage C attached none. See <a href="#energy">Energy metering</a>. Analytical OpCounter joules remain model numbers.</li>
       <li><strong>Toy gate ≠ full SoC.</strong> Native XC7 synthesis for this netlist reported a tiny resource footprint after optimization (Stage C note: 8 LUTs / 0 FFs). LED visibility is best-effort for the minimal demo, not a cycle-accurate WCA core.</li>
       <li><strong>No UART readback</strong> in this design. Functional evidence was detect + JTAG program success, plus visual LED activity.</li>
       <li><strong>Vendor specs ≠ DUT energy.</strong> SparkFun catalog figures describe the part. They do not replace a meter.</li>
@@ -499,6 +525,6 @@ output led7 heartbeat</pre>
     </ul>
   </section>
 </main>
-<footer class="footer">OpenIE · Alchitry Pt V2 guide · Stage C programmed, energy unmetered · vendor resources mirrored with attribution · Sep 30, 2026 EDT</footer>
+<footer class="footer">OpenIE · Alchitry Pt V2 guide · Stage C closed-loop + Safe Q16.16, energy unmetered · vendor resources mirrored with attribution · Sep 30, 2026 EDT</footer>
 </body>
 </html>

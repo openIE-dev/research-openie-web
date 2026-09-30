@@ -1,6 +1,6 @@
 ---
 title: "Satiation and Scarcity after Free AI"
-deck: "Satiation as a completeness predicate; Epoch prices; physical refuse paths. Stage C UART seed-1 agreement; energy unmetered."
+deck: "Published price collapse for digital inference does not identify free energy, free actuation, or unbounded value after a chore is complete."
 id: satiation
 status: "Research study"
 author: "David Charlot, Open Interface Engineering"
@@ -19,7 +19,7 @@ A second fact is about price, not physics. Epoch AI reports large declines in th
 
 The paper does not report a randomized trial, a done-detector error rate, or a split between energy spent before completeness and energy spent after it. Those measurements are specified and absent. What the software reference does provide is a place to put the stop: Wise Computer Automation (WCA) can refuse on a policy or budget reason, or on a physical predicate (look-up table allow and an energy check, optional control barrier function). The companion paper measures the physical predicate on toy plants. This paper states the economic predicate and the evidence that is actually published.
 
-Stage B is shipped as a browser instrument at https://research.openie.dev/living/fpga-sim/ (see companion paper): WASM + WebGPU emulation of the commit gate. It is a simulation, not board power, and not a satiation measurement. Stage C on an Alchitry Pt V2 (2026-09-30 EDT) detected the board via `ofpga detect` (product string Alchitry Pt V2, Artix-7, USB 0403:6010), SRAM-programmed a synthesizable WCA commit-gate UART bitstream (`wca_commit_gate_uart_pt_v2.bit`, SHA-256 5308f5c4d83bc484c6a6f6b5f6228941e68e880d34be4893dca60b1f6bd5343c) via `ofpga flash` with JTAG DONE+EOS, and captured a UART transcript that agrees with the software/WASM seed-1 decision sequence (committed 1, refused 15, commit step 6). No power meter was attached; energy remains unmetered and is not a satiation measurement. Analytical joules from the companion's OpCounter are not board power. `board_synth_claimed` stays false until a meter reading exists.
+No field-programmable gate array (FPGA) has been synthesized or metered for this study. An Alchitry Pt V2 is the intended later device under test (DUT). A browser instrument that compiles the gate to WebAssembly (WASM) and displays it with WebGPU is shipped as Stage B at https://research.openie.dev/living/fpga-sim/ (see companion paper). It is a simulation, not a board result, and it is not a satiation measurement here. Analytical joules from the companion's OpCounter are not board power and are not evidence of satiation.
 
 ## Notation
 
@@ -39,11 +39,11 @@ Stage B is shipped as a browser instrument at https://research.openie.dev/living
 | Model Context Protocol (MCP) | Tool transport. Not a detector of economic done. |
 | System One | Typed software decisions for known option sets. A proposer, not a completeness proof. |
 | Artificial general intelligence (AGI) | A broad capability target. Not a price observation and not a result of this paper. |
-| Device under test (DUT) | Hardware under a stated workload. Stage C programmed an Alchitry Pt V2 and matched seed-1 decisions over UART; no meter reading reported. |
-| Field-programmable gate array (FPGA) | Reconfigurable logic. Stage C programmed a seed-1 commit-gate UART bitstream on Alchitry Pt V2; energy unmetered. |
+| Device under test (DUT) | Metered hardware under a stated workload. None reported. |
+| Field-programmable gate array (FPGA) | Reconfigurable logic. Not synthesized here. |
 | WebAssembly (WASM) | Browser compilation target for the shipped Stage B emulator of the gate (https://research.openie.dev/living/fpga-sim/). |
 | WebGPU | Browser GPU API named for display of that emulator. Not a power meter. |
-| Alchitry Pt V2 | SparkFun Artix-7 XC7A100T. Detected, SRAM-programmed, and UART seed-1 agreement in Stage C (2026-09-30); energy unmetered. |
+| Alchitry Pt V2 | Intended later board (vendor: Artix-7 XC7A100T). Not measured. |
 | Analytical energy estimate | Operation count times a named constant. Modeled. Not board-measured. |
 | Direct rebound | Extra use of a service when its effective price falls, on the same service (Gillingham, Rapson, and Wagner). |
 | Modeled / simulated / board-measured | Formula, program execution, or meter. This paper's new numbers are none of the three; its empirical content is citation of published series and documents. |
@@ -134,7 +134,7 @@ The set-union in words is: the runtime refuses if the economic rule fires or the
 
 ### 3.2 What was done in this study
 
-This study is a structured reading. Sources are the citation spine checked in the project on 29 to 30 September 2026, the satiation notes, and the companion's software record. No new price index was built. No chore corpus was labeled. No agent was instrumented. An Alchitry Pt V2 was detected, programmed, and UART-read back in Stage C without a power meter. Methods that would make the operational definition empirical are listed in Section 3.3 so they are not confused with results.
+This study is a structured reading. Sources are the citation spine checked in the project on 29 to 30 September 2026, the satiation notes, and the companion's software record. No new price index was built. No chore corpus was labeled. No agent was instrumented. No FPGA was synthesized. Methods that would make the operational definition empirical are listed in Section 3.3 so they are not confused with results.
 
 Design rules in Section 4.4 are recommendations conditional on the definitions. They are not estimated treatment effects. A reader can reject a rule without rejecting Epoch's price series, and can accept the price series without accepting a product recommendation.
 
@@ -144,7 +144,7 @@ Design rules in Section 4.4 are recommendations conditional on the definitions. 
 2. Detector errors. On a labeled corpus, false done (predicate declared true when a clause is false) and false continue (`C` true and the system keeps calling). No rates are published here.
 3. Care handoff. Time to safe state and a handoff checklist, contrasted with session length. Not measured.
 4. Segment table. Which products have a short `C` and which are open-ended research or adversarial races. Not estimated. The military case is excluded from the satiation claim in Section 5 rather than forced into it.
-5. Board energy. Stage C in Appendix B. UART decision agreement recorded; energy unmetered.
+5. Board energy. Stage C in Appendix B. Not done.
 
 Until those exist, sentences about "overkill joules" are hypotheses. Sentences about Epoch prices are citations.
 
@@ -164,9 +164,9 @@ Stage A, existing: Rust simulation and Icarus Verilog simulation. Analytical ene
 
 Stage B, shipped: WASM compilation of the decision core and a WebGPU view of the LUT and the commit trace, at https://research.openie.dev/living/fpga-sim/. WebGPU time is not energy. Acceptance is agreement with stage A on published episodes (seed-1: committed 1, refused 15, analytical J 8.6795e-10).
 
-Stage C, UART agreement (2026-09-30 EDT): `ofpga detect` found Alchitry Pt V2; `ofpga flash` programmed `wca_commit_gate_uart_pt_v2.bit` (synthesizable TLMM+LUT+PH commit-gate UART; SHA-256 5308f5c4d83bc484c6a6f6b5f6228941e68e880d34be4893dca60b1f6bd5343c) with JTAG IDCODE 0x13631093 and DONE+EOS asserted. UART transcript on FT2232H channel B matched seed-1 software/WASM decisions (committed 1, refused 15, commit step 6). Energy unmetered. Vendor specifications on SparkFun's page (XC7A100T-2FGG84I, 101,440 logic cells, 240 DSP48E1 slices, 4,860 Kb block RAM, 256 MB DDR3L) are not DUT energy results. Evidence: companion `https://research.openie.dev/living/fpga-sim/stage-c/board-evidence.md`. Builder guide: https://research.openie.dev/living/fpga-sim/alchitry/.
+Stage C, board programmed for the companion's commit-gate demo; energy still unmetered. The Alchitry Pt V2 has no onboard joule meter. UART decision agreement is not a watt reading. Vendor specifications on SparkFun's page (XC7A100T-2FGG84I, 101,440 logic cells, 240 DSP48E1 slices, 4,860 Kb block RAM, 256 MB DDR3L) are not DUT energy results. Metering methods: companion guide [/living/fpga-sim/alchitry/#energy](https://research.openie.dev/living/fpga-sim/alchitry/#energy).
 
-This paper adds a mapping, not a fourth stage. Economic done, if encoded as `policy` or `budget_exceeded`, should appear in the same trace as `energy_veto`, so a future split (Section 3.3) can group reason codes. The browser view would make that grouping readable. It would not create the missing corpus. Stage C programmed the FPGA board, matched seed-1 decisions over UART, and left joules unmetered.
+This paper adds a mapping, not a fourth stage. Economic done, if encoded as `policy` or `budget_exceeded`, should appear in the same trace as `energy_veto`, so a future split (Section 3.3) can group reason codes. The browser view would make that grouping readable. It would not create the missing corpus. We have not synthesized or metered the FPGA board.
 
 
 ### 2.8 Fidelity criteria and stop rules
@@ -260,7 +260,7 @@ These rules follow if one accepts the definitions and wants a product that optim
 
 1. Write `C` before adding model capacity.
 2. Treat a synthesis price moat as temporary when Epoch-type series and open weights apply to that chore.
-3. Do not describe stage A analytical joules, stage B WASM traces, or a programmed-but-unmetered FPGA as free energy.
+3. Do not describe stage A analytical joules, stage B WASM traces, or an unmetered FPGA as free energy.
 4. Prefer a detector of `C` with an error table over an unlabeled increase in model size, once the chore is the product.
 5. Keep physical permission on the certificate defined in the companion whenever the call is irreversible.
 6. Report pre-done and post-done energy separately when the split exists. It does not exist yet.
@@ -271,7 +271,7 @@ Kill tests for a roadmap, also design: a plan that assumes unbounded appetite fo
 
 ### 4.11 What would be a result and is not
 
-A table of false-done and false-continue rates. A time series of calls after `t*`. A meter reading on the Alchitry Pt V2 (programming alone does not supply one). A structural rebound estimate. An AGI price premium estimated on a satiated chore. None of these appear in Section 4's supported claims.
+A table of false-done and false-continue rates. A time series of calls after `t*`. A meter reading on the Alchitry Pt V2. A structural rebound estimate. An AGI price premium estimated on a satiated chore. None of these appear in Section 4's supported claims.
 
 
 ### 4.12 Non-identity, stated as a comparison of objectives
@@ -319,7 +319,7 @@ A model that drafts a note faster can raise throughput of notes and leave examin
 
 ### 5.6 Free synthesis is not free actuation
 
-Stage A joules are modeled. Stage B is simulated in a browser. Stage C programmed an Alchitry Pt V2, matched seed-1 UART decisions, and left energy unmetered; board-measured joules remain future. An actuator command is the companion's commit bit. Epoch prices sit on a different axis from all three. Collapsing them into "free AI" deletes the measurement class. The WASM and WebGPU path is useful because it lets a third party replay the decision trace without owning the Alchitry board. Usefulness as a replica is not a watt.
+Stage A joules are modeled. Stage B would be simulated in a browser. Stage C would be board-measured and is future. An actuator command is the companion's commit bit. Epoch prices sit on a different axis from all three. Collapsing them into "free AI" deletes the measurement class. The WASM and WebGPU path is useful because it lets a third party replay the decision trace without owning the Alchitry board. Usefulness as a replica is not a watt.
 
 ### 5.7 Confidence is not a certificate
 
@@ -349,7 +349,7 @@ Internal validity of the price claim. S-2 inherits whatever identification Epoch
 
 External validity. Work and care, as defined, exclude military rivalry and may exclude research. Phone ownership does not transfer to agent products. Bicycle share prices do not transfer to software margins. The constructed episodes are not a sample.
 
-Measurement validity. No split joules, no detector confusion matrix, no metered DUT. Stage C board programming is not an energy claim. The companion's false-allow counts are about a pendulum oracle, not about economic done. Importing them as evidence of satiation would be a category error. Vendor FPGA specifications are not energy.
+Measurement validity. No split joules, no detector confusion matrix, no DUT. The companion's false-allow counts are about a pendulum oracle, not about economic done. Importing them as evidence of satiation would be a category error. Vendor FPGA specifications are not energy.
 
 Omitted variable. New tasks can absorb spending released by cheap synthesis. Section 5.1 states this. A roadmap that treats per-chore satiation as a forecast of aggregate compute demand is not licensed by this paper.
 
@@ -359,11 +359,11 @@ Falsifiers. S-1 fails if the cited theory does not contain a zero marginal-utili
 
 
 
-The same discipline applies to vendor FPGA specifications. SparkFun lists logic cells, DSP slices, block RAM, and DRAM capacity for the Alchitry Pt V2. Those quantities describe a catalog part. They do not describe switching activity, static power, or the energy of a commit trace. Stage C named the bitstream, recorded JTAG success, and captured UART seed-1 agreement; a meter and duration for joules are still missing. The browser emulator remains a replica of the software decision, not a preview of the meter.
+The same discipline applies to vendor FPGA specifications. SparkFun lists logic cells, DSP slices, block RAM, and DRAM capacity for the Alchitry Pt V2. Those quantities describe a catalog part. They do not describe switching activity, static power, or the energy of a commit trace. A later DUT report has to name the bitstream, the clock, the workload, the meter, and the duration. Until that report exists, the board is a planned instrument, and the browser emulator is a planned replica of the software decision, not a preview of the meter.
 
 ## 7. Conclusion
 
-Satiation is a standard object in the theory cited, and it has a narrow operational form: a written completeness predicate that extra synthesis does not advance. Epoch's published series document a sharp fall in the money price of fixed-performance inference. That fall supports a free-at-the-margin description of digital chores and does not support free joules, free plant motion, or the end of care's cost structure. Bicycle share prices, smartphone diffusion, and attention markets are weaker and stronger in the specific ways Section 4 states. The commit reference can store an economic refuse and a physical refuse as different reasons. The physical side is simulated in the companion; Stage C programmed an Alchitry Pt V2 and matched seed-1 decisions over UART without metering joules. A WASM and WebGPU emulator replicates the trace in a browser at https://research.openie.dev/living/fpga-sim/. An Alchitry Pt V2 meter would be a different, later measurement. The missing scientific objects are a labeled done detector, a pre-done versus post-done energy split, and a demand estimate that can see rebound. Until they exist, the paper's empirical content is the cited record, and its formal content is the predicate.
+Satiation is a standard object in the theory cited, and it has a narrow operational form: a written completeness predicate that extra synthesis does not advance. Epoch's published series document a sharp fall in the money price of fixed-performance inference. That fall supports a free-at-the-margin description of digital chores and does not support free joules, free plant motion, or the end of care's cost structure. Bicycle share prices, smartphone diffusion, and attention markets are weaker and stronger in the specific ways Section 4 states. The commit reference can store an economic refuse and a physical refuse as different reasons. The physical side is simulated in the companion and is not board-measured. A WASM and WebGPU emulator replicates the trace in a browser at https://research.openie.dev/living/fpga-sim/ and remains a simulation. An Alchitry Pt V2 meter would be a different, later measurement. The missing scientific objects are a labeled done detector, a pre-done versus post-done energy split, and a demand estimate that can see rebound. Until they exist, the paper's empirical content is the cited record, and its formal content is the predicate.
 
 ## References
 
@@ -442,7 +442,7 @@ cargo run --release --bin wca-soc-loop -- \
 
 Expect, from the companion's recorded logs: demo refuse with executor calls 0; seed-1 committed 1, refused 15, analytical energy 8.6795e-10 joule. Those outputs do not estimate satiation.
 
-Browser instrument, shipped as Stage B at https://research.openie.dev/living/fpga-sim/, shared with the companion's Appendix B. The decision core runs in WASM. WebGPU paints the LUT image and the commit trace. Diff the trace against the Rust JSON. Do not convert GPU timestamps to joules. Stage C (2026-09-30) detected and SRAM-programmed the Alchitry Pt V2 with a seed-1 UART commit-gate bitstream, matched the seed-1 decision sequence over UART, and recorded JTAG DONE+EOS; energy remains unmetered - do not mark joules as measured. Vendor page: https://www.sparkfun.com/alchitry-pt-v2.html. A meter on a stated workload remains future. Builder guide: https://research.openie.dev/living/fpga-sim/alchitry/.
+Browser instrument, shipped as Stage B at https://research.openie.dev/living/fpga-sim/, shared with the companion's Appendix B. The decision core runs in WASM. WebGPU paints the LUT image and the commit trace. Diff the trace against the Rust JSON. Do not convert GPU timestamps to joules. Do not mark the Alchitry Pt V2 as measured. Vendor page: https://www.sparkfun.com/alchitry-pt-v2.html. Synthesis plus a meter is Stage C, a later study.
 
 Factual repository flag: `board_synth_claimed=false`.
 
