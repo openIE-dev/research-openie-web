@@ -77,9 +77,9 @@ https://research.openie.dev/papers/{id_}/ · PDF https://research.openie.dev/pdf
 </div>
 
 <div class="honesty">
-<strong>Honesty.</strong> Research study / draft paper — not a final journal PDF.
+<strong>Honesty.</strong> Teaching paper / research study draft, not a final journal PDF.
 No fabricated citations. Claims keep honesty tags ([UNVERIFIED] / [VENDOR] / [SURROGATE] / [SOFT] as present in the study).
-<code>board_synth_claimed=false</code> — software reference stack; surrogate joules ≠ board watts.
+<code>board_synth_claimed=false</code>: software reference stack; surrogate joules are not board watts.
 </div>
 
 > {deck}

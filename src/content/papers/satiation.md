@@ -1,504 +1,432 @@
 ---
-title: "Human Satiation & Completeness in AI Economics — Research Study"
+title: "Satiation and Scarcity after Free AI"
 deck: "Capability scales. Appetite does not. Design to done."
 id: satiation
-status: "Research study · draft"
+status: "Teaching paper · research study draft"
 author: "David Charlot · Open Interface Engineering"
 figures: "/living/satiation/"
 pdf: "/pdfs/satiation.pdf"
 board_synth_claimed: false
 ---
 
-# Human Satiation & Completeness in AI Economics — Research Study
+# Satiation and Scarcity after Free AI
 
-**Author / lane:** David Charlot · Open Interface Engineering (OpenIE) · WCA / EFA Commit Gate  
-**Status:** Research study · draft (not a final journal PDF)  
-**Public:** https://research.openie.dev/papers/satiation/ · PDF https://research.openie.dev/pdfs/satiation.pdf  
-**Date:** Tue Sep 29–Wed Sep 30, 2026 (America/New_York / EDT)  
-**Role:** Comprehensive research layer backing Medium #2 (MEDIUM_SATIATION) and a future whitepaper; decision rules already in SATIATION_BLUEPRINT (research archive).  
-**Honesty:** No fabricated citations. Soft historical analogies labeled **[SOFT]**. Unverified or vendor claims marked **[UNVERIFIED]** / **[VENDOR]** / **[SURROGATE]**. Stack remains software reference: `board_synth_claimed=false`.
+**Who this is for.** Product leaders, economists adjacent to AI, engineers building agents, and students who need a clear account of why "more intelligence" stops buying human value after a job is done. Pair with the Notational Intelligence teaching paper if you need the commit-gate mechanics.
 
-**Companion artifacts:** PRODUCT_LANDSCAPE, NOTATIONAL_INTELLIGENCE_RESEARCH, PRODUCT, SYSTEM_ONE_TO_WCA (research archive).
+**Honesty.** Teaching paper and research study draft. Soft historical analogies are marked **[SOFT]**. Sell-side or press magnitudes are marked **[VENDOR]** or **[PRESS]** until primary dashboards are re-checked. Energy numbers from the software reference stay **[SURROGATE]**. Stack flag: `board_synth_claimed=false`. No fabricated citations.
+
+**Public.** https://research.openie.dev/papers/satiation/ · PDF https://research.openie.dev/pdfs/satiation.pdf · Figures https://research.openie.dev/living/satiation/
 
 ---
 
-## 0. Executive synthesis
+## What you will learn
 
-**Thesis (Charlot).** Mainstream AI economics often treats demand for intelligence like demand for oil: elastic, unbounded, forever hungry. For **work and care**, that is the wrong physics. Humans **satiate**. When a loop is *done*—invoice filed, child picked up, patient assessed, pipeline green—extra synthesis does not create human value. It creates noise, cost, and overkill. Capability can scale. Appetite cannot.
-
-**Five findings (evidence-weighted).**
-
-1. **Satiation is a real economic object**, not a soft preference. Classical consumer theory already admits **bliss points** where more of a good reduces utility (see §1). Engagement KPIs (tokens, seats, time-on-task) systematically diverge from **economic done**.
-2. **Tech cycles really do race → satiate → commodity**, but the analogies are strongest as **[SOFT]** pattern recognition, not law. Verifiable cases (1890s bicycle boom/bust; U.S. smartphone ownership flat at ~91%; LCD panels as commodity; airline seats as yield-managed commodities) support the narrative where labeled.
-3. **Digital AI is already on a free-at-margin arc** for many chores. Epoch AI documents extreme inference price declines for fixed performance (~9–900×/yr in Mar 2025 insight; ~47%/quarter ≈ 13×/yr in Sep 2026 “plunging price of thought” report). Open weights and System One–style typed decisions further cannibalize synthesis scarcity (§4). This is **not** free joules—physics still meters energy.
-4. **Care and work completeness** are where satiation is most obvious and most ignored. Baumol’s cost disease literature shows why labor-intensive care resists pure productivity theater; Autor / Acemoglu–Restrepo task frameworks show automation displaces *tasks*, not “infinite appetite.” More AI after done can harm (§5). Steelman counters (status, creative unbounded demand, military/R&D) are real and scoped (§5.4).
-5. **What does not discount:** physics (Landauer lower bound; Horowitz CMOS energy reality), actuators/matter, liability, and **commit**. OpenIE meters joules; WCA refuse-to-commit makes economic done ∪ physical unsafe both refuse (§6–7).
-
-**Deck line (unchanged from blueprint):** Capability scales. Appetite does not. Design to done.
-
-**Product one-liner:** Sell completion. Meter joules. Refuse after the finish line—and refuse before the plant moves without a certificate.
+- What satiation means as an economic and operational object for work and care, not as a soft preference.
+- Why engagement metrics diverge from economic done, and why that divergence wastes money and attention.
+- How familiar technology cycles move from race to satiation to commodity, with honesty labels on the history.
+- What "free at the margin" means for digital AI chores without claiming free joules or free plant motion.
+- What stays scarce after synthesis gets cheap: physics, liability, and commit. How Open Interface Engineering (OpenIE) meters and Wise Computer Automation (WCA) refuse connect to that scarcity.
 
 ---
 
-## 1. Definitions
+## Glossary
 
-### 1.1 Satiation
+| Term | Plain meaning in this paper |
+|------|-----------------------------|
+| **Open Interface Engineering (OpenIE)** | Energy-aware computing company. Motto in practice: measure, route, eliminate excessive waste. |
+| **Satiation** | Past a completeness threshold, more synthesis or tooling does not increase human-valued completeness for that chore. |
+| **Bliss point** | Classical consumer-theory bundle where more of a good reduces utility. Kinship with satiation; cite Andersen and textbook treatments. |
+| **Economic done** | Human-valued finish line for a work or care loop. Orthogonal to model capability ceiling. |
+| **Work completeness** | Ticket closed, patch shipped, report filed, ledger reconciled, acceptance met. |
+| **Care completeness** | Assessment finished, meds reconciled, family notified, child safe, handoff done. |
+| **Free-at-margin** | Digital chore synthesis whose marginal price tends toward utility, bundling, or free, while joules and commit remain non-free. |
+| **Wise Computer Automation (WCA)** | Commit nomenclature and gate discipline at the AI-to-machine boundary. |
+| **Energy-First Architecture (EFA)** | Treat energy as part of permission and metering, not as a late marketing slide. |
+| **Proposal / Certificate / RefuseReason / CommitDecision** | Wire objects of commit law. See the Notational Intelligence paper for full teaching. |
+| **Look-Up Table (LUT)** | Discrete allow table used in the software reference gate. |
+| **Control Barrier Function (CBF)** | Optional safe-set certificate conjunct. |
+| **Model Context Protocol (MCP)** | Tool transport standard. Not a done detector. |
+| **System One** | Typed decision models that collapse generation tax for known options. |
+| **Artificial General Intelligence (AGI)** | Broad capability aspiration. Not a pricing excuse for satiated chores. |
+| **Device Under Test (DUT)** | Real meter on real hardware under a stated workload. |
+| **Joule tier A / B / C** | Surrogate / post-synthesis estimate / board meter. |
+| **[SOFT] / [SURROGATE] / [VENDOR] / [PRESS] / [UNVERIFIED]** | Honesty tags. |
 
-**Economic satiation** (standard): the more of a good one already has, the less one is willing to give up for more—driven by diminishing (and eventually zero / negative) marginal utility. Wikipedia’s summary and Andersen (2001) frame this as a structural feature of preference dynamics, not merely “taste.”
+---
 
-**Bliss point (textbook consumer theory):** a bundle \((x^*, y^*)\) at which further increases in consumption *reduce* utility. Indifference curves become closed around the bliss point; the usual monotonicity (“more is better”) fails. If the bliss point is affordable, the consumer stops there and may not spend all income. See Varian-adjacent textbook treatments (e.g. LibreTexts / *Introduction to Economic Analysis* §12.4 examples on pizza–beer bliss points).
+## Problem in plain language
 
-**Operational (this study / OpenIE–WCA):** A task or care loop is **satiated** when additional synthesis, tooling, tokens, or “AI features” do not increase **human-valued completeness** (work closed / care closed). Past that threshold, more AI ≈ noise + cost + attention tax.
+Most AI forecasts assume infinite appetite.
 
-This operational definition is deliberately narrower than “all goods eventually satiate.” Status goods, military capability races, and open-ended R&D can remain non-satiating (§5.4). The claim is about **work & care completeness**, not about every human preference.
+More capability. More tokens. More seats. More agents. Charts go up and to the right because modelers treat demand for intelligence like demand for oil: elastic, unbounded, forever hungry.
 
-### 1.2 Completeness
+That is the wrong physics for work and care.
 
-| Term | Meaning here |
-|------|----------------|
-| **Work completeness** | Ticket closed, patch shipped, report filed, ledger reconciled, acceptance criteria met. |
-| **Care completeness** | Assessment finished, meds reconciled, family notified, child safe, elder transfer done. |
-| **Economic done** | Human-valued finish line for that loop—orthogonal to model capability ceiling. |
-| **Technical capacity** | What the system *can* still generate after done. |
+Humans satiate. When a job is done (the invoice filed, the child picked up, the patient assessed, the pipeline green) extra intelligence does not create extra value. It creates noise, cost, and overkill. Capability can scale. Appetite cannot.
 
-Completeness is a **stop condition**, not a quality score. A done detector that fires too early is under-care; one that never fires is engagement cosplay.
+Unbounded-demand models miss the finish line. They price closed loops as if they were still open markets. They sell Artificial General Intelligence blue-ocean premiums for work that is already at human satiation: low-value chores wearing a frontier costume.
 
-### 1.3 Economic done vs engagement KPIs
+If your strategy assumes infinite appetite for intelligence-as-a-service, you are optimizing a world that does not exist for a large share of digital chores.
+
+---
+
+## Core thesis
+
+For work and care, satiation is a real stop condition. Digital AI chores are already on a free-at-margin arc for many synthesis tasks. Physics and commit do not discount like software. Open Interface Engineering makes joules visible. Wise Computer Automation makes refuse first-class for both economic done and physical unsafe.
+
+Deck line:
+
+> Capability scales. Appetite does not. Design to done.
+
+Product one-liner:
+
+> Sell completion. Meter joules. Refuse after the finish line, and refuse before the plant moves without a certificate.
+
+---
+
+## Definitions and objects
+
+### Satiation
+
+**Name.** Satiation.
+
+**Definition (economic kinship).** The more of a good one already has, the less one will give up for more. Marginal utility falls. It can reach zero or turn negative. Andersen (2001) treats satiation as a structural feature of preference dynamics, not merely taste. Textbook bliss points make the same idea geometric: past the bliss bundle, more reduces utility.
+
+**Definition (operational, this paper).** A task or care loop is satiated when additional synthesis, tooling, tokens, or "AI features" do not increase human-valued completeness (work closed / care closed). Past that threshold, more AI is noise plus cost plus attention tax.
+
+**Why it matters.** Products that assume "more is always better" will overbuild seats, over-prompt agents, and misread engagement as value.
+
+**Example.** You do not want an infinite spell-check. You want the document correct. You do not want unbounded navigation. You want to arrive. You do not want forever-more chat about the same chore. You want the chore closed.
+
+**Scope.** This is narrower than "all goods eventually satiate." Status goods, military races, and open-ended research can remain non-satiating. The claim targets work and care completeness.
+
+### Economic done versus engagement
 
 | Lens | Engagement / unbounded model | Satiation / completeness model |
 |------|------------------------------|--------------------------------|
-| Demand curve | Always more intelligence useful | Flat (or negative) after completeness |
-| Product KPI | Engagement, tokens, seats, sessions | Time-to-done; refuse rate after done; joules after done |
-| Pricing story | Scarcity premium forever | Commodity after satiation; premium where physics / commit bind |
+| Demand | Always more intelligence useful | Flat or negative after completeness |
+| Product KPI | Tokens, seats, sessions, time-on-task | Time-to-done; refuse rate after done; joules after done |
+| Pricing | Scarcity premium forever | Commodity after satiation; premium where physics or commit bind |
 | Failure mode | Under-build capacity | Overkill after closed loops |
-| Human constraint | Assumed elastic attention | Finite attention, trust, hours, responsibility |
+| Human constraint | Elastic attention assumed | Finite attention, trust, hours, responsibility |
 | Safety story | Soft confidence / more monitoring | Typed refuse + hold at commit boundary |
 
-**Attention economy contrast.** Tristan Harris / Center for Humane Technology critique engagement maximization as extracting attention rather than serving user goals ([humanetech.com](https://www.humanetech.com/youth/the-attention-economy); Harris talks / 80,000 Hours interview). Tim Wu’s *The Attention Merchants* (Penguin / Knopf lineage) frames attention as inventory sold to advertisers. **Implication for AI product:** regenerating after done is the enterprise cousin of infinite scroll—same KPI pathology, different costume.
+Attention-economy critiques (Center for Humane Technology; Tim Wu's *The Attention Merchants*) describe engagement maximization as extracting attention rather than serving goals. Regenerating after done is the enterprise cousin of infinite scroll. Same pathology, different costume.
 
-### 1.4 Contrast with unbounded-demand AI forecasts
+### Free-at-margin
 
-Unbounded-demand models treat intelligence-as-a-service like oil: more capability ⇒ more willingness-to-pay ⇒ larger TAM forever. That can be approximately true for:
+**Name.** Free-at-margin.
 
-- new task categories (reinstatement in Acemoglu–Restrepo sense);
-- status / arms-race domains;
-- frontier R&D where “better” has no finish line.
+**Definition.** For pure information chores with a clear completeness condition, marginal price collapses toward bundling, utility pricing, or "just there," like spell-check around a text box.
 
-It is a **category error** for satiated digital chores (spell-check-shaped synthesis, closed tickets, closed care assessments). Goldman Sachs Research’s *Gen AI: Too Much Spend, Too Little Benefit?* (Jun 2024; overview https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit ; PDF mirrors circulated as TOM_AI 2.0) is an existence proof that serious sell-side research already doubts whether ~$1T-scale infra spend maps cleanly to economy-wide productivity. Secondary coverage (e.g. 404 Media summary of the same note) amplifies the skepticism; treat magnitudes as **[VENDOR/SELL-SIDE]** and re-check the primary PDF before quoting numbers in a whitepaper.
+**Why it matters.** Teams confuse temporary synthesis scarcity with durable matter scarcity. Soft moats get eaten by rivals, open weights, cascades, retrieval, and typed decision heads.
 
-**Category error to avoid:** “AI gets cheaper ⇒ infinite demand.” Jevons / rebound say cheaper energy *services* can increase *use*—but only where appetite is not already at a bliss point. For closed chores, cheaper AI often means **same done, lower bill**—or **same done, more noise if loops don’t stop**.
+**Critical honesty.** Free-at-margin is not free physics. Joules still meter. Plant motion still requires commit. Never write "free AI" as if Landauer and actuators vanished.
 
----
+### Completeness objects
 
-## 2. Literature & adjacent fields
+- **Work completeness:** close the ticket, ship the patch, file the report, reconcile the ledger.
+- **Care completeness:** finish the assessment, reconcile meds, notify family, keep the child safe.
+- **Technical capacity:** what the system can still generate after done.
 
-### 2.1 Satiation in consumer theory / utility
-
-| Source | Claim | URL / ID |
-|--------|-------|----------|
-| Andersen, Esben Sloth (2001). “Satiation in an Evolutionary Model of Structural Dynamics.” *Journal of Evolutionary Economics* 11(1): 143–164 | Evolutionary / structural dynamics with satiation | DOI: [10.1007/PL00003852](https://doi.org/10.1007/PL00003852) |
-| Wikipedia *Economic satiation* | Survey stub linking satiation to diminishing MU | https://en.wikipedia.org/wiki/Economic_satiation |
-| LibreTexts / *Introduction to Economic Analysis* §12.4 | Bliss-point isoquants; satiation as max utility then decline | https://socialsci.libretexts.org/ (search “bliss point”) |
-| Econ-Viz *Satiation (Bliss Point)* | Quadratic utility \(U=-\!a(x-x^*)^2-\!b(y-y^*)^2\); closed indifference ellipses | https://econ-viz.org/models/satiation/ |
-
-**Takeaway for AI econ:** “More is better” is an *axiom choice*, not a law of nature. Work/care products that assume monotonicity past completeness will misprice and overbuild.
-
-### 2.2 Jevons paradox & rebound
-
-| Source | Claim | URL |
-|--------|-------|-----|
-| Jevons, W. S. (1865). *The Coal Question* | Efficiency gains can *increase* coal use (“backfire”) | Historical classic; modern reprints vary |
-| Gillingham, Rapson & Wagner (2015/16). “The Rebound Effect and Energy Efficiency Policy.” *REEP* | Micro rebound often ~20–40%; little support for universal backfire; macro harder | https://gwagner.com/wp-content/uploads/Gillingham-Rapson-Wagner-2015-Rebound-Effect.pdf |
-| Stern (2020 survey CAMA) | Economy-wide rebound estimates mixed; some large | https://cama.crawford.anu.edu.au/sites/default/files/publication/cama_crawford_anu_edu_au/2020-07/70_2020_stern.pdf |
-| TypeSafe “Jev” naming | Explicit nod to Jevons paradox: cheaper decisions → more decisions | Product landscape context; **[VENDOR]** branding |
-
-**Bridge to satiation thesis:** Rebound requires residual demand elasticity. At a bliss point / completeness threshold, the direct rebound on *that chore* collapses toward zero—you do not drive infinite miles once you have arrived; you do not spell-check forever once the document is correct. Rebound can still appear as **new tasks** (Acemoglu–Restrepo reinstatement) or **attention spillover** (agents inventing work). Product rule: meter post-done joules separately from pre-done joules.
-
-### 2.3 Baumol cost disease / care economy
-
-| Source | Claim | URL |
-|--------|-------|-----|
-| Baumol, W. J. (1967). “Macroeconomics of Unbalanced Growth.” *AER* 57: 415–426 | Progressive vs stagnant sectors; relative cost rise in labor-intensive services | Classic AER cite |
-| Hartwig / OECD panel literature | Baumol effect statistically linked to health spending growth | e.g. Hartwig *J Health Econ* 2008 lineage |
-| Colombier & Hartwig / related (2025) acute vs LTC | Baumol affects both acute and long-term care; stronger in LTC | https://link.springer.com/article/10.1007/s10754-025-09392-9 ; PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC12361285/ |
-| Bates & Santerre / *SSQ* | Cost disease ~15–40% of “full” effect on HCE in one instrumented design | https://onlinelibrary.wiley.com/doi/10.1111/ssqu.12384 |
-| Atella et al. / *Health Economics* (2018) | Skeptical: little support for BCD once trending addressed | https://onlinelibrary.wiley.com/doi/10.1002/hec.3641 |
-| Pomp & Vujić (CPB) | ~0.5% real health spend growth per 1% economy-wide productivity | https://www.cpb.nl/system/files/cpbmedia/publicaties/download/rising-health-spending-new-medical-technology-and-baumol-effect.pdf |
-
-**Honesty:** Baumol is contested in magnitude. Consensus-enough for this study: **care remains labor-, trust-, and liability-intensive**; AI that speeds documentation without a done/refuse discipline can raise measured “activity” while missing completeness—or worse, add generative noise into clinical workflows.
-
-### 2.4 Automation: displacement vs task completion
-
-| Source | Claim | URL |
-|--------|-------|-----|
-| Acemoglu & Restrepo (2019). “Automation and New Tasks.” *JEP* 33(2): 3–30 | Automation = displacement; new tasks = reinstatement; “so-so” automation worst | https://www.aeaweb.org/articles?id=10.1257/jep.33.2.3 ; NBER https://www.nber.org/papers/w25684 |
-| Acemoglu & Restrepo (2018). “The Race between Man and Machine.” *AER* | Factor shares / employment under automation vs new tasks | https://pubs.aeaweb.org/doi/pdf/10.1257/aer.20160696 |
-| Autor task literature (broader) | Polarization / routine-biased change; tasks not jobs | Multiple papers; use Autor’s survey pieces when citing in whitepaper |
-
-**Mapping:** Completeness-oriented AI is closer to **closing a task** than to inventing engagement. Unbounded agent loops without done detectors look like “so-so automation”: costly activity, weak productivity.
-
-### 2.5 Attention economy critiques
-
-| Source | Claim | URL |
-|--------|-------|-----|
-| Center for Humane Technology | Engagement metrics extract attention; redesign incentives | https://www.humanetech.com/youth/the-attention-economy |
-| Tristan Harris (80,000 Hours / talks) | Replace time-spent with time-well-spent; incentive redesign | https://80000hours.org/podcast/episodes/tristan-harris-changing-incentives-social-media/ |
-| Tim Wu, *The Attention Merchants* | Attention as sold inventory | https://www.penguinrandomhouse.com/books/234876/the-attention-merchants-by-tim-wu/ |
-
-**AI parallel:** Token meters and seat licenses optimized for usage will fight satiation. Joule meters and done detectors align with completeness.
-
-### 2.6 “Good enough” technology / Christensen commodity
-
-| Source | Claim | URL |
-|--------|-------|-----|
-| Christensen, *The Innovator’s Dilemma* (1997) | Overshoot → customers become overserved; “good enough” wins on convenience/price | https://en.wikipedia.org/wiki/The_Innovator%27s_Dilemma ; Christensen Institute https://www.christenseninstitute.org/theory/disruptive-innovation/ |
-| Christensen Institute checklist | Disruption ≠ breakthrough sustaining innovation | same |
-
-**Mapping [SOFT]:** Frontier AI is sustaining innovation for many digital chores; open weights / small specialists / typed decision heads are “good enough” disruptors. After satiation, customers do not want louder capability—they want cheaper, quieter completion.
-
-### 2.7 Historical tech diffusion cycles (verifiable notes)
-
-| Cycle | Verifiable anchor | Honesty |
-|-------|-------------------|---------|
-| **Bicycles (1890s)** | British Bicycle Mania 1895–1900: cycle shares +>200% then −>75% (Quinn & Turner, *Cambridge Journal of Economics* 2019) | Strong on boom/bust finance; satiation-of-*use* is **[SOFT]** reading |
-| | U.S. peak sales per capita ~1897 not matched until ~1965 (Dowell & Swaminathan lineage; industry structure lit) | Strong on market saturation of prestige phase |
-| **Cars** | Mass mobility / used markets after horsepower theater | **[SOFT]** narrative; cite specific series in whitepaper if needed |
-| **Planes / airlines** | Post-1978 U.S. deregulation → seats as perishable commodities; yield/revenue management | Strong on commodity endgame of *seats*; not on “speed records satiation” |
-| **TVs** | Developed-market ownership near universal; LCD panels traded as commodities; replacement cycles | Strong on panel commodity; resolution arms race → “good enough” is **[SOFT]** |
-| **Phones** | Pew: U.S. smartphone ownership **91%** in 2024 and **91%** in 2025; cellphones **98%** | Strong saturation evidence (https://www.pewresearch.org/internet/fact-sheet/mobile/) |
-
-### 2.8 AI TAM / forecast critiques
-
-| Source | Claim | Honesty |
-|--------|-------|---------|
-| Goldman Sachs *Gen AI: Too Much Spend, Too Little Benefit?* (2024) | Infra spend vs benefit skepticism | Sell-side; verify PDF numbers before whitepaper quotes |
-| Epoch AI inference price work (2025–2026) | Extreme price/performance declines—consistent with commodity phase for *capability-at-price*, not with infinite WTP | Research nonprofit; strong on cost curves |
-| System One wave (Jev / Laya, Sep 2026) | Typed decisions collapse generation tax; moats thin | See `PRODUCT_LANDSCAPE.md`; **[VENDOR]** multiples |
+Completeness is a stop condition, not a quality vibes score. A done detector that fires too early is under-care. One that never fires is engagement cosplay.
 
 ---
 
-## 3. Cycle table deepened (race → satiation → commodity)
+## How it works
 
-| Technology | Race phase | Satiation signal | Commodity endgame | Evidence notes | Honesty |
-|------------|------------|------------------|-------------------|----------------|---------|
-| **Bicycles** | Novelty, clubs, prestige machines; 1890s mania | “I can get there”; middle-class craze exhausts | Utility transport / recreation kit; exports of surplus | Quinn & Turner (2019) share boom/bust; U.S. ~1897 peak | Race/finance **strong**; “completeness” reading **[SOFT]** |
-| **Cars** | HP wars, brand theater | Reliable trips > endless upgrades | Mass mobility, used markets | Pattern recognition across auto history | **[SOFT]** |
-| **Planes** | Heroic aviation, speed records | Arrive safely on a schedule | Seats + fuel + RM math | Airline RM / deregulation literature | Seat commodity **strong**; heroics→schedule **[SOFT]** |
-| **TVs** | Screen size / resolution arms race | Enough fidelity for content | Commodity panel + subscription pipe | Panel pricing reports; near-universal ownership in rich markets | Panel commodity **strong**; “enough fidelity” **[SOFT]** |
-| **Cell phones / smartphones** | Spec sheets, camera Mpx | Always-reachable communication | Pocket utility computer | Pew 91% smartphone / 98% cellphone (2025) | Saturation **strong** |
-| **AI (digital chores)** | Frontier seats, agents, AGI theater | Chore closed without theater | Bundled / free-at-margin synthesis | Epoch cost curves; open weights; System One | Cost collapse **strong**; satiation of *chores* is thesis (**operational**) |
+### The cycle pattern (race to satiation to commodity)
 
-**Rule (blueprint, unchanged):** If your AI wedge is still “more capability” after the user’s finish line, you are selling race-phase theater into a commodity market.
+We have watched related movies. New tech races. People overpay for status and scarcity. Usefulness saturates. The product becomes infrastructure: cheap, expected, boring.
 
-**Wildcard (~6 months frontier distill onto inferior hardware) [SOFT + emerging evidence]:** Distillation, quantization, BitNet/TeLLMe/T-MAC-class methods, and open cascades move yesterday’s frontier competence onto weaker silicon (`PRODUCT_LANDSCAPE.md` Axis B). Treat “~6 months” as a **heuristic planning horizon**, not a measured law—label **[UNVERIFIED]** as a universal constant; cite specific model/hardware pairs when claiming in whitepaper.
+| Technology | Race phase | Satiation signal | Commodity endgame | Honesty |
+|------------|------------|------------------|-------------------|---------|
+| Bicycles | Novelty, clubs, prestige | "I can get there" | Utility / recreation kit | Boom-bust finance strong (Quinn & Turner); completeness reading **[SOFT]** |
+| Cars | Horsepower and brand theater | Reliable trips | Mass mobility, used markets | Pattern **[SOFT]** |
+| Planes | Heroic aviation, speed records | Arrive safely on a schedule | Seats and fuel math | Seat commodity strong; heroics-to-schedule **[SOFT]** |
+| TVs | Screen and resolution arms race | Enough fidelity for content | Commodity panel + subscription | Panel commodity strong; "enough fidelity" **[SOFT]** |
+| Cell phones | Spec sheets and cameras | Always-reachable communication | Pocket utility computer | Pew smartphone ownership ~91% (2024-2025) strong saturation |
+| AI digital chores | Frontier seats, agents, AGI theater | Chore closed without theater | Bundled / free-at-margin synthesis | Cost collapse strong (Epoch); chore satiation is the operational thesis |
 
----
+**Rule.** If your AI wedge is still "more capability" after the user's finish line, you are selling race-phase theater into a commodity market.
 
-## 4. Free-at-margin arc (real cites only)
+### The free-AI arc, taught as steps
 
-### 4.1 Spell-check → feature → air
+1. **Spell-check was a product.** Then a feature. Then expected air around the text box **[SOFT]** industry observation for the last stage.
+2. **Search and maps** moved from scarce discovery toward expected infrastructure via ads and bundling **[SOFT]** pattern.
+3. **Inference price for fixed performance collapsed.** Epoch AI (Mar 2025 data insight) reports extreme year-scale declines across benchmarks. Epoch AI (Sep 2026, *The plunging price of thought*) reports roughly 47% cost decline per quarter for given performance since about 2023 (about 13× per year). Read primary pages before quoting finer splits.
+4. **Open weights and typed decisions** further cannibalize synthesis scarcity. System One-class tools collapse generation tax for known option sets.
+5. **Frontier competence slides down the device stack** via distillation, quantization, and table-lookup methods. Treat "~6 months frontier distill" as a planning heuristic only (**[UNVERIFIED]** as a universal law).
 
-| Stage | Pattern | Cite |
-|-------|---------|------|
-| Product | Standalone spelling tools / early WP features | Wikipedia *Spell checker* https://en.wikipedia.org/wiki/Spell_checking |
-| Feature | WordPerfect mid-1980s integration; MS Word background check (Word 95 red underline narrative) | Same; secondary histories (e.g. Inkbot editing history piece—use as **[SECONDARY]**) |
-| Air | Expected correctness layer around the text box; not sold as a seat | Lived infrastructure; hard to cite a single paper—treat as **[SOFT]** industry observation |
+Teaching translation: the destination for many digital chores is spell-check economics, not forever scarcity premiums.
 
-**Decision rule:** Do not build a seat license for air.
+### Care and work: design to done
 
-### 4.2 Search, maps, open internet
+Work completeness example: the pull request is merged and tests are green. Extra agent churn is latency and distraction.
 
-Search and maps followed advertising / bundling paths toward “just there” marginal access. Exact pricing histories are firm-specific; the **pattern** (scarce discovery → expected infrastructure) is **[SOFT]** but widely observed. Prefer primary company filings or academic IO papers if the whitepaper needs hard numbers.
+Care completeness example: the handoff is done and the person is safe. More generative chat is not more care. Care is not a funnel.
 
-### 4.3 Open weights & inference cost curves
+Baumol's cost-disease tradition explains why labor-intensive care resists pure productivity theater. Magnitudes are contested across papers. Consensus enough for teaching: care remains labor-intensive, trust-intensive, and liability-intensive. Artificial intelligence that speeds documentation without a done or refuse discipline can raise measured activity while missing completeness.
 
-| Finding | Source | URL |
-|---------|--------|-----|
-| Price to hit fixed LLM performance fell ~**9×–900× per year** across six benchmarks (GPT-4-level GPQA Diamond ~**40×/yr**) | Epoch AI data insight, Mar 12, 2025 | https://epoch.ai/data-insights/llm-inference-price-trends |
-| Cost of given performance fell ~**47% per quarter (~13×/yr)** since ~2023; faster near SOTA | Epoch AI, *The plunging price of thought*, Sep 22, 2026 | https://epoch.ai/publications/the-plunging-price-of-thought |
-| Open-weight token share rising; revenue share lagging (press summaries Aug/Sep 2026) | Tech press / gateway reports | Treat specific % as **[PRESS]** until primary dashboards cited |
-| System One typed decisions: collapse generation tax for known option sets | `PRODUCT_LANDSCAPE.md`; Laya catalog | https://laya-ai.com/system-one-models ; Jev **[VENDOR]** |
+Acemoglu and Restrepo (2019) frame automation as task displacement plus possible new-task reinstatement. Completeness-oriented AI is closer to closing a task than inventing engagement. Unbounded agent loops without done detectors look like "so-so automation": costly activity, weak productivity.
 
-**Interpretation for satiation thesis:**
+**Product rule.** Ship a done detector before shipping a louder model.
 
-- Free **at the margin** = priced like spell-check for pure information chores with clear completeness—not zero energy bill.
-- Moats that were only **synthesis scarcity** get eaten by rivals, open weights, cascades, retrieval, typed heads.
-- Frontier still matters for non-satiating domains (R&D, arms races, novel tasks)—do not overclaim.
+### What still stays scarce
 
-### 4.4 People frontload payment [SOFT operational]
+If digital intelligence races toward free at the margin, what does not discount?
 
-Users and firms often **prepay** (subscriptions, reserved capacity, seat licenses) while expecting AI to behave like air. That mismatch—frontloaded spend against satiating appetite—creates waste visible only if you meter **joules after done**. OpenIE’s job is to make that waste legible.
+**Physics does not discount.** Mass, heat, latency of matter, batteries, actuators, factories, clinic floors. You can backfill software onto weaker chips. You cannot wish joules out of Landauer's ledger or torque out of a plant.
 
----
+**Commit stays scarce.** The hard part is not proposing another action. The hard path is allowing the machine to move, or allowing an irreversible tool to run, when the world pays for the mistake. Soft confidence strings are not certificates. Probability routes. Certificates commit.
 
-## 5. Care & work completeness
+**Liability and trust stay scarce.** Someone still owns the signature, the handoff, and the harm.
 
-### 5.1 Where more AI after done harms
+### Bridge to Wise Computer Automation
 
-| Domain | Completeness test | Harm of post-done AI |
-|--------|-------------------|----------------------|
-| **Office / tickets** | Closed with acceptance | Re-prompt churn, latency, attention tax, shadow IT agents inventing work |
-| **Coding chores** | Verified correct artifact | Regenerating lawful answers via frontier (CFC chemistry) |
-| **Healthcare documentation** | Note complete, orders reconciled | Hallucinated embellishment, alert fatigue, billing narrative inflation |
-| **Eldercare / childcare logistics** | Person safe, handoff done | Engagement-style chat replacing presence; false motion |
-| **Clinical decision support** | Assessment + plan signed | Probability theater without liability-bearing commit |
-
-Baumol lens: the scarce input is often **trusted human time and responsibility**, not tokens. AI that cannot stop competes with that scarce input.
-
-### 5.2 Healthcare / eldercare / childcare — completeness first
-
-Design principle: **care is not a funnel**. Metrics should be time-to-safe-state, handoff integrity, and refuse-on-complete—not session length.
-
-Empirically, health spending drivers are multi-causal (Baumol + tech + income + demographics). This study does **not** claim AI “solves Baumol.” It claims AI without satiation discipline can **worsen** measured busy-ness in stagnant-sector work.
-
-### 5.3 Office work — done detectors before louder models
-
-Blueprint rule, reinforced: **Ship a done detector before shipping a louder model.**
-
-Acemoglu–Restrepo: prefer automations with real productivity (not so-so), and expect new tasks—but new tasks are not an excuse for infinite loops on *old* closed tasks.
-
-### 5.4 Steelman counterarguments (non-satiating domains)
-
-| Counter | Steelman | Reply (scoped) |
-|---------|----------|----------------|
-| **Status goods** | Veblen / positional demand never satiates; “best model” is a trophy | True for status. False for invoice filing. Segment markets. |
-| **Creative unbounded demand** | Art, research ideation, entertainment want more novelty | Partially true. Still often has *project-level* done (ship the album, submit the paper). |
-| **Military / security** | Adversary sets the ceiling; arms races lack bliss points | True. Commit/safety gates still bind; satiation thesis does not apply cleanly. |
-| **Open-ended R&D / AGI race** | Better science tools raise ambition | True for frontier labs. Does not rescue TAM math for satiated SaaS chores. |
-| **Jevons on AI** | Cheaper inference ⇒ vastly more inference | Often true *globally*; can coexist with *per-chore* satiation. Meter both. |
-| **Engagement is the product** | Some businesses sell attention | Then they are not in the work/care completeness business—say so honestly. |
-| **Humans don’t know done** | Preferences are constructed; more features reveal demand | Sometimes. Still need stop conditions to avoid harm in care/liability domains. |
-
----
-
-## 6. Scarcity residual: physics, joules, actuators, liability, commit
-
-### 6.1 What stays scarce vs what commodities
-
-| Still scarce | Heading commodity |
-|--------------|-------------------|
-| Joules / thermodynamic & CMOS energy cost | Generic text synthesis for closed chores |
-| Matter, actuators, clinic/floor time | Spec-sheet “AI features” without completion |
-| Irreversible commit / liability | Soft moats that were only temporary synthesis scarcity |
-| Auditable certificates + refuse taxonomy | Confidence strings as safety |
-| Honest meters (OpenIE joules) | Seat licenses with no ledger |
-
-### 6.2 Landauer (honesty)
-
-Landauer (1961), “Irreversibility and Heat Generation in the Computing Process,” *IBM Journal*: logically irreversible operations require a minimum heat generation on the order of \(kT\) per irreversible bit operation (often quoted as \(kT\ln 2\) per erased bit). PDF mirror: https://cqi.inf.usi.ch/qic/61_Landauer.pdf
-
-**Honesty for OpenIE messaging:**
-
-- Landauer is a **lower bound**, many orders of magnitude below practical CMOS dissipation.
-- It does **not** mean today’s LLM inference is near the bound.
-- It **does** mean “information is free” is false in physics—erasure and irreversible commits have a thermodynamic story.
-- Do not slap Landauer on a marketing slide as if GPT inference were \(kT\ln 2\) away from free.
-
-### 6.3 Horowitz / CMOS energy reality
-
-Mark Horowitz, “Computing’s Energy Problem (and What We Can Do About It),” ISSCC 2014, pp. 10–14 (IEEE: DOI 10.1109/ISSCC.2014.6757323). Core message in secondary teaching notes and talks: systems are increasingly **energy-limited**; architectural specialization and reducing memory/IO energy matter more than wishing Dennard scaling back.
-
-**Honesty:** Quote ISSCC paper carefully; vendor “X tokens/J” claims are **[VENDOR]** until DUT-metered. WCA stack: `board_synth_claimed=false`; surrogate J = OpCounter × analytical \(E_*\) (**[SURROGATE]**).
-
-### 6.4 Actuators, liability, commit gates → OpenIE + WCA
-
-Compose (software reference, unchanged):
+In the OpenIE software reference, compose looks like:
 
 ```text
-commit = LUT allow ∧ energy/safe ok [∧ CBF]
+commit = lut_allow AND energy_ok [AND cbf_ok]
 ```
 
-| Signal | Gate behavior |
-|--------|---------------|
-| Economic done (satiated chore) | Policy / budget refuse — do not spend |
-| Physical unsafe / over-budget | Energy / LUT / CBF refuse — hold plant |
-| Irreversible tool | No executor call until Certificate allows |
+On refuse: typed reasons, plant hold, executor not called.
 
-**Refuse = economic done ∪ physical unsafe** — two faces of one discipline.
+Teaching bridge sentence:
 
-OpenIE: **Measure · route · eliminate excessive waste** — meter in joules (or honest Wh), not tokens/seats/vibes as primary scarcity.
+> Refuse = economic done ∪ physical unsafe
 
-Linkage to notational intelligence research: certificates as **runtime commit law**, not soft prose (`NOTATIONAL_INTELLIGENCE_RESEARCH.md`).
+Two faces of one discipline. You do not pay frontier joules for a chore that is already complete. You do not spend plant joules on an action the gate will not certify.
+
+OpenIE meters the lane in joules (or honest watt-hours), not tokens, seats, or vibe-points as primary scarcity. Measure. Route. Eliminate excessive waste. When the meter is honest, satiation becomes visible: you can see where appetite ended and overkill began.
+
+Landauer honesty for messaging:
+
+- Landauer is a lower bound.
+- It does not mean today's large-model inference is near \(kT\ln 2\).
+- It does mean "information is free" is false in physics.
+- Do not slap Landauer on a marketing slide as product nearness.
+
+Horowitz (ISSCC 2014) teaching point: computing is increasingly energy-limited; memory and data movement dominate. Quote carefully. Vendor tokens-per-joule claims stay **[VENDOR]** until Device Under Test metering exists. This stack remains `board_synth_claimed=false`.
 
 ---
 
-## 7. Decision rules / product implications (extends blueprint)
 
-### 7.1 Core rules (from blueprint, retained)
+### Worked example: a closed ticket that will not stay closed
 
-1. Design to **done**; sell completion.
-2. Assume soft synthesis moats get eaten.
-3. Plan for competence sliding down the device stack.
-4. Compete on **meter + commit**, not chat theater.
-5. Never claim “free” for energy or plant motion.
-6. Ship **done detector** before louder model.
-7. Probability routes; **certificates commit**.
+A support team uses an agent to draft replies.
 
-### 7.2 Extensions from this study
+Completeness test: customer issue resolved, reply sent, ticket status Done.
 
-| ID | Rule | Rationale |
-|----|------|-----------|
-| R-S6 | Split meters: **pre-done J** vs **post-done J** | Makes satiation visible; ties to rebound vs bliss-point distinction |
-| R-S7 | Segment TAM: satiating chores vs non-satiating races | Avoids applying AGI blue-ocean prices to spell-check-shaped work |
-| R-S8 | Treat engagement KPIs as **hostile** in care/work products unless proven aligned | Attention-economy literature |
-| R-S9 | For care: optimize handoff integrity / safe-state time, not session length | Baumol + completeness |
-| R-S10 | When citing Landauer/Horowitz, state measurement tier (A surrogate / B post-synth / C board) | Honesty; matches NI research memo |
-| R-S11 | Jevons naming (cheaper → more) is a **warning**, not a growth excuse for uncapped agents | TypeSafe irony + rebound lit |
-| R-S12 | Kill criteria K-S1–K-S5 remain binding (blueprint §9) | Strategy hygiene |
+Without satiation discipline, the agent keeps "improving" the thread: alternate drafts, summary of the summary, suggested follow-ups the customer did not ask for. Token meters look healthy. Human attention does not. The finish line was already crossed.
 
-### 7.3 Anti-patterns (extended)
+With satiation discipline:
+
+1. Done detector fires when acceptance criteria are met.
+2. Further synthesis is refused as policy or budget refuse (economic done).
+3. If an irreversible action appears (charge a card, delete a record), Wise Computer Automation still requires a Certificate.
+4. Meters show pre-done joules separately from post-done joules once instrumentation exists.
+
+Teaching point: refuse after done is not hostility to users. It is respect for finite human days.
+
+### Worked example: care handoff
+
+A care coordinator uses a language model to draft a handoff note.
+
+Completeness test: critical fields filled, medication list reconciled, receiving party confirmed, person in a safe state.
+
+Engagement metrics would reward a long session. Care metrics should reward time-to-safe-state and handoff integrity. Extra generative flourish after the handoff is signed is not care. It is noise beside liability.
+
+### Anti-patterns card
 
 | Anti-pattern | Why it fails |
 |--------------|--------------|
-| AGI blue-ocean price on satiated chores | Appetite already flat |
-| Soft confidence as plant permission | Probability ≠ certificate |
-| Token/$ as only scarcity meter | Misses joules and irreversible commit |
-| Infinite agent loops as “productivity” | No completeness stop |
-| “Free AI” erasing energy/plant cost | Physics does not discount |
-| Using rebound/Jevons to deny satiation | Rebound needs residual elasticity |
-| Landauer cosplay (“we’re near kT”) | Orders of magnitude gap; **[SURROGATE]** risk |
+| Artificial General Intelligence blue-ocean price on satiated chores | Appetite already flat |
+| Soft confidence as plant permission | Probability is not a certificate |
+| Token price as the only scarcity meter | Misses joules and irreversible commit |
+| Infinite agent loops as productivity | No completeness stop |
+| "Free AI" erasing energy or plant cost | Physics does not discount |
+| Using rebound to deny satiation | Rebound needs residual elasticity |
+| Landauer cosplay ("we are near kT") | Orders of magnitude gap; surrogate risk |
+
+### How to teach the claim in under a minute
+
+Say this out loud:
+
+"People finish work and care loops. Models do not know that unless we define done. Cheap synthesis is racing toward free at the margin for digital chores. Joules and irreversible commits do not become free. So meter energy, detect done, and refuse both overkill and unsafe motion."
+
+If a listener can repeat that without your slides, the teaching landed.
+
+
+## Evidence (allowed claims only)
+
+### Theory and literature evidence
+
+- Satiation and bliss-point lineage: Andersen (2001) and standard consumer theory. Theory claim with cites, not a measured agent evaluation.
+- Engagement versus done: attention-economy literature (Wu; Humane Technology). Framing plus literature, not a randomized trial.
+- Free-at-margin cost curves: Epoch AI inference price work (2025 insight; 2026 plunging-price report). Free-at-margin is not free physics.
+- Task automation framing: Acemoglu and Restrepo (2019); Autor task tradition. Contested magnitudes. Frame, do not "solve."
+- Care cost-disease framing: Baumol (1967) and later health-econ debates. Contested magnitudes. Care stays trust and liability intensive.
+- Sell-side skepticism existence proof: Goldman Sachs *Gen AI: Too Much Spend, Too Little Benefit?* overview. Treat dollar magnitudes as **[VENDOR/SELL-SIDE]** and re-check the primary PDF before quoting.
+
+### Historical cycle evidence
+
+- Bicycle mania finance: Quinn and Turner (2019) on British cycle shares boom and bust. Strong on race finance. Completeness reading **[SOFT]**.
+- Smartphone saturation: Pew Research mobile fact sheet, U.S. smartphone ownership about 91% in 2024 and 2025. Strong saturation evidence.
+- Airline seats as yield-managed commodities after deregulation: strong on commodity endgame of seats.
+
+### Design claims (not empirics yet)
+
+Decision rules from the satiation blueprint remain design claims:
+
+1. Design to done; sell completion.
+2. Assume soft synthesis moats get eaten.
+3. Plan for competence sliding down the device stack.
+4. Compete on meter plus commit, not chat theater.
+5. Never claim free for energy or plant motion.
+6. Ship done detector before louder model.
+7. Probability routes; certificates commit.
+8. Split meters for pre-done joules versus post-done joules (needed experiment).
+9. Segment total addressable market: satiating chores versus non-satiating races.
+10. Treat engagement KPIs as hostile in care and work products unless proven aligned.
+
+### Software-reference kinship
+
+The commit stack that teaches refuse-before-execute is the same Wise Computer Automation reference used in the Notational Intelligence paper. Seed-1 surrogate episode numbers and Model Context Protocol demo behaviors may be cited only with **[SURROGATE]** and demo labels. They do not prove economic satiation empirically. They prove that refuse can be implemented as typed runtime law.
 
 ---
 
-## 8. Implications for whitepaper + Medium #2 revision notes
+## Common confusions and counters
 
-### 8.1 What Medium #2 already covers
+### "Cheaper AI will always unlock infinite demand (Jevons)."
 
-- Unbounded-demand critique; satiation definition for work/care
-- Soft cycle table (bikes→cars→planes→TVs→phones)
-- Free-AI arc (spell-check → internet → free at margin)
-- Care & work completeness
-- Physics + commit scarcity; OpenIE meters + WCA refuse
-- CFC chemistry metaphor; compose formula
+Rebound requires residual demand elasticity. At a bliss point for a closed chore, direct rebound on that chore collapses toward zero. You do not spell-check forever once the document is correct. Rebound can still appear as new tasks or attention spillover. Product rule: meter post-done joules separately from pre-done joules. Denying global rebound while asserting per-chore satiation without split meters is not allowed as settled empirics.
 
-### 8.2 What this study adds (do not dump wholesale into Medium)
+### "Status and creative markets never satiate."
 
-1. **Formal definitions** linked to bliss-point / consumer theory and engagement-KPI contrast.
-2. **Literature map** with real DOIs/URLs (satiation, rebound, Baumol, Acemoglu–Restrepo, Christensen, attention economy).
-3. **Evidence-labeled cycle table** (Quinn & Turner; Pew; airline RM; honesty labels).
-4. **Quantitative free-at-margin spine** (Epoch 2025 insight + 2026 plunging-price report).
-5. **Steelman counter-table** for status / creative / military / R&D / Jevons.
-6. **Landauer + Horowitz honesty** (bound vs CMOS practice; measurement tiers).
-7. **Extended decision rules** R-S6–R-S12 and whitepaper outline hooks.
-8. **Bibliography + method appendix**.
+Often true for status trophies and some creative novelty. False for invoice filing. Segment markets. Do not price satiated chores as Artificial General Intelligence blue ocean.
 
-### 8.3 Suggested Medium #2 micro-edits (optional; do not rewrite)
+### "Military and adversarial races have no bliss point."
 
-1. After the cycle table sentence “Soft reading of history, deliberately,” consider adding: “Deeper sources and honesty labels live in the companion research study.”
-2. Where “Landauer’s ledger” appears, a footnote-level honesty clause helps: lower bound, not a claim that LLMs are near \(kT\ln 2\).
-3. Optional one-liner citing Epoch on inference price collapse (with link)—only if Medium style allows outbound research links.
-4. No change needed to the compose formula or OpenIE/WCA positioning; study confirms, does not contradict.
+True enough that the satiation thesis does not apply cleanly there. Commit and safety gates still bind. Scope the claim.
 
-### 8.4 Whitepaper skeleton (future)
+### "Open-ended research always wants more."
 
-1. Problem: AI econ without satiation  
-2. Theory: bliss points, completeness, rebound scoped  
-3. Empirics: cost curves + diffusion cases  
-4. Care/work sector analysis  
-5. Scarcity residual + commit nomenclature  
-6. OpenIE + WCA reference architecture  
-7. Falsifiers / kill criteria  
-8. Full bibliography  
+True for frontier labs and many science tools. That does not rescue total-addressable-market math for satiated software-as-a-service chores.
+
+### "Humans do not know when they are done."
+
+Sometimes preferences are constructed. Care and liability domains still need stop conditions. "Maybe they want more chat" is a weak excuse for uncapped agents beside a patient handoff.
+
+### "Engagement is the product."
+
+Then say so honestly. You are not in the work or care completeness business. Different ethics, different meters.
+
+### "AI will solve Baumol and end care cost disease."
+
+Forbidden overclaim. Care stays trust-intensive and liability-intensive. Artificial intelligence can raise activity while missing completeness.
+
+### "Free AI means free energy."
+
+Hard refuse. Free-at-margin is a price story for digital synthesis. Physics still meters joules. Plants still need certificates.
+
+### "Soft confidence is enough permission."
+
+Probability routes. Certificates commit. Shared anti-pattern with the Notational Intelligence paper.
 
 ---
 
-## 9. Bibliography (real URLs / DOIs only)
+## Limits
 
-### Economics & theory
-
-1. Andersen, E. S. (2001). Satiation in an Evolutionary Model of Structural Dynamics. *Journal of Evolutionary Economics*. https://doi.org/10.1007/PL00003852  
-2. Baumol, W. J. (1967). Macroeconomics of Unbalanced Growth. *American Economic Review* 57: 415–426.  
-3. Acemoglu, D. & Restrepo, P. (2019). Automation and New Tasks. *Journal of Economic Perspectives* 33(2). https://www.aeaweb.org/articles?id=10.1257/jep.33.2.3 ; NBER https://www.nber.org/papers/w25684  
-4. Acemoglu, D. & Restrepo, P. (2018). The Race between Man and Machine. *AER*. https://pubs.aeaweb.org/doi/pdf/10.1257/aer.20160696  
-5. Gillingham, K., Rapson, D. & Wagner, G. (2015). The Rebound Effect and Energy Efficiency Policy. Working PDF: https://gwagner.com/wp-content/uploads/Gillingham-Rapson-Wagner-2015-Rebound-Effect.pdf  
-6. Stern, D. (2020). How large is the economy-wide rebound effect? CAMA Working Paper. https://cama.crawford.anu.edu.au/sites/default/files/publication/cama_crawford_anu_edu_au/2020-07/70_2020_stern.pdf  
-7. Jevons, W. S. (1865). *The Coal Question*.  
-
-### Care / Baumol empirics
-
-8. Colombier, C. et al. / Hartwig lineage (2025). Baumol’s cost disease in acute versus long-term care. https://link.springer.com/article/10.1007/s10754-025-09392-9 ; PMC https://pmc.ncbi.nlm.nih.gov/articles/PMC12361285/  
-9. Bates, L. J. & Santerre, R. E. Drivers of Health-Care Expenditure… *Social Science Quarterly*. https://onlinelibrary.wiley.com/doi/10.1111/ssqu.12384  
-10. Atella et al. (2018). Is health care infected by Baumol’s cost disease? *Health Economics*. https://onlinelibrary.wiley.com/doi/10.1002/hec.3641  
-11. Pomp, M. & Vujić, S. Rising health spending… CPB. https://www.cpb.nl/system/files/cpbmedia/publicaties/download/rising-health-spending-new-medical-technology-and-baumol-effect.pdf  
-
-### Innovation / attention / satiation refs
-
-12. Christensen Institute — Disruptive Innovation. https://www.christenseninstitute.org/theory/disruptive-innovation/  
-13. Wikipedia — *The Innovator’s Dilemma*. https://en.wikipedia.org/wiki/The_Innovator%27s_Dilemma  
-14. Wikipedia — *Economic satiation*. https://en.wikipedia.org/wiki/Economic_satiation  
-15. Econ-Viz — Satiation (Bliss Point). https://econ-viz.org/models/satiation/  
-16. Center for Humane Technology — Attention Economy. https://www.humanetech.com/youth/the-attention-economy  
-17. 80,000 Hours — Tristan Harris interview. https://80000hours.org/podcast/episodes/tristan-harris-changing-incentives-social-media/  
-18. Wu, T. — *The Attention Merchants* (publisher page). https://www.penguinrandomhouse.com/books/234876/the-attention-merchants-by-tim-wu/  
-
-### Historical cycles / saturation
-
-19. Quinn, W. & Turner, J. D. (2019). Technological revolutions and speculative finance: British Bicycle Mania. *Cambridge Journal of Economics*. https://ideas.repec.org/a/oup/cambje/v43y2019i2p271-294..html  
-20. Pew Research Center — Mobile Fact Sheet (updated Nov 20, 2025; 2025 fielding). https://www.pewresearch.org/internet/fact-sheet/mobile/  
-21. Wikipedia — *Spell checker*. https://en.wikipedia.org/wiki/Spell_checking  
-
-### AI cost / forecasts
-
-22. Epoch AI (2025-03-12). LLM inference prices… https://epoch.ai/data-insights/llm-inference-price-trends  
-23. Epoch AI (2026-09-22). The plunging price of thought. https://epoch.ai/publications/the-plunging-price-of-thought  
-24. Goldman Sachs — Gen AI: too much spend, too little benefit? https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit  
-25. Laya System One catalog. https://laya-ai.com/system-one-models  
-
-### Physics / energy
-
-26. Landauer, R. (1961). Irreversibility and Heat Generation in the Computing Process. *IBM Journal*. PDF mirror https://cqi.inf.usi.ch/qic/61_Landauer.pdf  
-27. Horowitz, M. (2014). Computing’s Energy Problem… ISSCC. IEEE DOI 10.1109/ISSCC.2014.6757323  
-
-### Internal companions
-
-28. `artifacts/presentations/MEDIUM_SATIATION.md`  
-29. `artifacts/SATIATION_BLUEPRINT.md`  
-30. `artifacts/PRODUCT_LANDSCAPE.md`  
-31. `artifacts/NOTATIONAL_INTELLIGENCE_RESEARCH.md`  
+1. **No shipped split meter yet** for pre-done versus post-done joules on real workloads. Design rule, not present empiric.
+2. **No done-detector evaluation rates** published here (false-done / false-continue). Future work.
+3. **Care handoff integrity metrics** not measured in this archive.
+4. **Total-addressable-market segmentation study** remains strategy until studied.
+5. **Energy claims on the software reference** are **[SURROGATE]** only. `board_synth_claimed=false`.
+6. **Historical analogies** are partly **[SOFT]**. Do not upgrade soft pattern recognition into natural law.
+7. **Epoch magnitudes** should be re-read from primary pages before executive citation of exact multiples.
+8. **Goldman Sachs dollar figures** need primary PDF verification before quotation.
+9. **Military and arms-race domains** are out of clean satiation scope.
+10. **No claim that OpenIE has eliminated waste in production fleets.** The lane is meter plus commit discipline.
 
 ---
 
-## 10. Honesty appendix + method
+## What to do next
 
-### 10.1 Method
+1. Pick one chore you ship. Write its completeness test in one sentence.
+2. Ask whether your KPI rewards done or rewards lingering.
+3. If you meter tokens or seats as primary scarcity, add a joule (or honest watt-hour) view.
+4. Separate pre-done spend from post-done spend, even if the split starts as a spreadsheet.
+5. Put irreversible actions behind a certificate gate. Read the companion paper: https://research.openie.dev/papers/ni/
+6. Open figures: https://research.openie.dev/living/satiation/
+7. Download PDF: https://research.openie.dev/pdfs/satiation.pdf
 
-| Item | Detail |
-|------|--------|
-| **Dates** | Research & drafting Tue Sep 29–Wed Sep 30, 2026, America/New_York (EDT, UTC−4). Box `date` at drafting: Tue Sep 29 23:11 EDT 2026. |
-| **Tools** | WebSearch, WebFetch on primary pages; read of local Medium #2, blueprint, PRODUCT_LANDSCAPE, NOTATIONAL_INTELLIGENCE_RESEARCH. |
-| **Prior artifacts** | Extended, not contradicted; contradictions would be flagged—none material found. |
-| **Citation rule** | Real URL/DOI or tag **[UNVERIFIED]/[VENDOR]/[SURROGATE]/[SOFT]/[PRESS]/[SECONDARY]**. |
-| **Excluded** | Fabricated papers, invented statistics, silicon joule leadership claims, board synthesis claims. |
+Five piece assembly without mythology:
 
-### 10.2 Label legend
+1. Human satiation bounds demand for work and care. Completeness is the feature.
+2. Tech cycles race, then satiate, then commodity. Digital AI chores included.
+3. Free at the margin is the software destiny of spell-check-shaped tasks.
+4. Physics and commit remain scarce.
+5. OpenIE makes the energy interface visible. Wise Computer Automation makes the AI-to-machine commit boundary named, auditable, and refuse-first.
 
-| Tag | Meaning |
-|-----|---------|
-| **[SOFT]** | Historical / narrative analogy; pattern-helpful, not econometric law |
-| **[UNVERIFIED]** | Plausible but not pinned to a primary measurement here |
-| **[VENDOR]** | Company self-report or branded benchmark |
-| **[SURROGATE]** | Analytical / OpCounter energy, not DUT watts |
-| **[PRESS]** | News secondary; re-check primary before whitepaper |
-| **[SECONDARY]** | Blog/textbook exposition, not original paper |
+Capability can keep racing. Human appetite will not. Companies that win the commodity phase will design for done: cheapest-correct paths, joule meters, and commit gates that know when to hold.
 
-### 10.3 Explicit non-claims
-
-- Does **not** claim all human demand satiates.  
-- Does **not** claim Landauer binds practical LLM energy.  
-- Does **not** claim WCA board joules (`board_synth_claimed=false`).  
-- Does **not** claim Baumol is the sole driver of health costs.  
-- Does **not** claim Epoch rates extrapolate forever.  
-- Does **not** treat Goldman Sachs as gospel—sell-side critique only.
-
-### 10.4 Falsifiers (research-facing)
-
-| Falsifier | Would weaken thesis if… |
-|-----------|-------------------------|
-| F1 | Controlled studies show post-completeness generative AI raises validated care/work outcomes without added harm |
-| F2 | Persistent WTP premiums for frontier synthesis on clearly closed chores despite open-weight parity |
-| F3 | Inference prices stop falling *and* demand for closed-chore synthesis remains highly elastic for years |
-| F4 | Commit/liability becomes cheaply insurable at scale with soft scores alone (no certificates) |
+That is not Artificial General Intelligence theater. That is present-tense engineering for present humans.
 
 ---
 
-*End of study. Companion publish prose: Medium #2. Decision tables: SATIATION_BLUEPRINT.md. OpenIE · WCA lane.*
+## References
+
+### Economics and theory
+
+- Andersen, E. S. (2001). Satiation in an Evolutionary Model of Structural Dynamics. *Journal of Evolutionary Economics*. https://doi.org/10.1007/PL00003852
+- Baumol, W. J. (1967). Macroeconomics of Unbalanced Growth. *American Economic Review* 57: 415-426.
+- Acemoglu, D. & Restrepo, P. (2019). Automation and New Tasks. *Journal of Economic Perspectives* 33(2). https://www.aeaweb.org/articles?id=10.1257/jep.33.2.3
+- Gillingham, Rapson & Wagner. The Rebound Effect and Energy Efficiency Policy. https://gwagner.com/wp-content/uploads/Gillingham-Rapson-Wagner-2015-Rebound-Effect.pdf
+- Christensen, C. *The Innovator's Dilemma* (1997). Christensen Institute overview: https://www.christenseninstitute.org/theory/disruptive-innovation/
+
+### Attention and forecasts
+
+- Center for Humane Technology, attention economy overview. https://www.humanetech.com/youth/the-attention-economy
+- Wu, T. *The Attention Merchants.* https://www.penguinrandomhouse.com/books/234876/the-attention-merchants-by-tim-wu/
+- Goldman Sachs Research overview: *Gen AI: Too Much Spend, Too Little Benefit?* https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit
+
+### Cost curves and saturation evidence
+
+- Epoch AI. LLM inference price trends (Mar 2025). https://epoch.ai/data-insights/llm-inference-price-trends
+- Epoch AI. *The plunging price of thought* (Sep 2026). https://epoch.ai/publications/the-plunging-price-of-thought
+- Pew Research Center mobile fact sheet. https://www.pewresearch.org/internet/fact-sheet/mobile/
+- Quinn & Turner (2019). British Bicycle Mania, *Cambridge Journal of Economics*.
+
+### Energy honesty and commit kinship
+
+- Landauer, R. (1961). Irreversibility and Heat Generation in the Computing Process.
+- Horowitz, M. Computing's Energy Problem (ISSCC 2014).
+- Companion teaching paper: Notational Intelligence as Commit Law. https://research.openie.dev/papers/ni/
+- Anthropic Model Context Protocol. https://www.anthropic.com/news/model-context-protocol
+- Laya System One. https://laya-ai.com/system-one-models
+
+### Local claim discipline
+
+Frozen Allowed / Forbidden / Needs-experiment rows: OpenIE claim ledger for Satiation (research archive). Public teaching cut must not promote Forbidden rows.
+
+---
+
+## Appendix A. Decision rules card
+
+| ID | Rule |
+|----|------|
+| R1 | Design to done; sell completion. |
+| R2 | Assume soft synthesis moats get eaten. |
+| R3 | Plan for competence sliding down devices. |
+| R4 | Compete on meter + commit. |
+| R5 | Never claim free energy or free plant motion. |
+| R6 | Split pre-done J vs post-done J. |
+| R7 | Segment satiating chores vs non-satiating races. |
+| R8 | Treat engagement KPIs as hostile in care/work unless aligned. |
+| R9 | Care metrics: handoff integrity / safe-state time, not session length. |
+| R10 | State joule tier when citing Landauer or Horowitz in product claims. |
+
+---
+
+*David Charlot is founder of Open Interface Engineering (openie.dev). Companion teaching paper: Notational Intelligence as Commit Law. Style lock: EDUCATIONAL_PROSE.md.*
