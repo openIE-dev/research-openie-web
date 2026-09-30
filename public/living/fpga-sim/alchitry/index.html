@@ -488,43 +488,46 @@ output led7 heartbeat</pre>
     <div class="panel">
       <h3>Definitions</h3>
       <ul class="plain">
-        <li><strong>W</strong> (watt) — SI power from the KV260 Texas Instruments INA260 (<code>ina260_u14</code>, <code>power1_input</code> in microwatts).</li>
-        <li><strong>pJ</strong> (picojoule) — 10<sup>−12</sup> joule.</li>
-        <li><strong>op</strong> — one enabled <em>seed-cycle</em> of the free-running WCA seed fabric (LFSR step + 16× allow-LUT + 8× SafePH residual + commit bank), counted on-device.</li>
+        <li><strong>W</strong> (watt) — SI power from the KV260 Texas Instruments INA260 (<code>ina260_u14</code>, <code>power1_input</code>).</li>
+        <li><strong>pJ</strong> (picojoule) — 10<sup>−12</sup> joule; <strong>nJ</strong> = 10<sup>−9</sup> joule.</li>
+        <li><strong>op / gate-cycle</strong> — one enabled clock of the freerun bank under test (seed-cycle or richer gate-cycle), counted on-device via AXI <code>op_count</code>.</li>
+        <li><strong>SafePH</strong> — Safe Q16.16 Port-Hamiltonian energy certificate (<code>wca_ph_energy</code>).</li>
+        <li><strong>CBF</strong> — control barrier function fabric conjunct (<code>wca_cbf_energy</code>).</li>
       </ul>
     </div>
     <div class="panel">
-      <h3>KV260 INA260 — free-running WCA seed vs baseline (Metered watts)</h3>
+      <h3>KV260 — rung 1 seed vs baseline (Metered watts)</h3>
       <p>
-        Harness: <code>openie-fpga/artifacts/stage-c/wca-kv260-meter/</code>
-        (trimmed-mean <code>pwr.sh</code> discipline; ferrotherm A/B/A).
-      </p>
-      <p>
-        <strong>2026-09-30 A/B/A (rung 1):</strong>
         A = <code>baseline.bit.bin</code>, B = <code>wca_seed_freerun.bit.bin</code>
-        (439 CLB LUTs; SHA256 <code>bd37b1b3c0a60b26ae09a587a8b5910ef6e6eeee99fde605b0d2cbfa4cff86bd</code>).
-        N=4, settle 15&nbsp;s, sample 25&nbsp;s @ ~4&nbsp;Hz.
-        mean A1 = <strong>3.9167&nbsp;W</strong>, mean B = <strong>3.0955&nbsp;W</strong>, mean A2 = <strong>3.9196&nbsp;W</strong>;
-        mean (B−A1) = <strong>−0.8212&nbsp;W</strong> (SE <strong>0.0024&nbsp;W</strong>).
-        Log: <code>logs/aba-baseline-vs-wca_seed_freerun.dat</code>.
-        Negative delta means the seed freerun rail draw is lighter than that SOM baseline bitstream — not “seed is free.”
-        <strong>No pJ</strong> on this arm (no ops/time).
+        (SHA256 <code>bd37b1b3…86bd</code>). N=4; mean (B−A1) = <strong>−0.8212&nbsp;W</strong> (SE 0.0024&nbsp;W).
+        <strong>No pJ</strong> (no ops/time). Log: <code>logs/aba-baseline-vs-wca_seed_freerun.dat</code>.
       </p>
     </div>
     <div class="panel">
-      <h3>KV260 INA260 — halt vs freerun with op counter (Metered pJ/op)</h3>
+      <h3>KV260 — rung 2 seed AXI halt vs freerun (Metered pJ/op)</h3>
       <p>
-        <strong>2026-09-30 A/B/A (rung 2):</strong>
-        Same bitstream <code>wca_seed_axi.bit.bin</code>
-        (SHA256 <code>d5018ff8d690560a6970cc77dc60dcfd5ecc496ef8faca37d523925472ee1ad5</code>;
-        975 CLB LUTs; AXI4-Lite @ <code>0xA0000000</code>).
-        A = <code>run=0</code> (halt), B = <code>run=1</code> (freerun). N=4, settle 15&nbsp;s, sample 25&nbsp;s @ ~4&nbsp;Hz.
-        mean A1 = <strong>3.0883&nbsp;W</strong>, mean B = <strong>3.0981&nbsp;W</strong>, mean A2 = <strong>3.0852&nbsp;W</strong>;
-        mean (B−A1) = <strong>+0.0098&nbsp;W</strong> (SE <strong>0.0031&nbsp;W</strong>).
-        On-device <code>op_count</code> (MAGIC <code>0x0CA5EED1</code>): mean ops/s = <strong>9.9998008×10<sup>7</sup></strong> (≈100&nbsp;MHz PL0).
-        <strong>pJ/op</strong> = (B−A1)&nbsp;W / (ops/s) × 10<sup>12</sup> → mean <strong>98.0&nbsp;pJ/op</strong> (SE <strong>30.8&nbsp;pJ/op</strong>, N=4).
-        Log: <code>logs/aba-halt-vs-freerun-axi.dat</code>.
-        This isolates enable-gated fabric activity on one design; it is not a closed-loop Pt V2 UART gate joule cost.
+        <code>wca_seed_axi.bit.bin</code> (SHA256 <code>d5018ff8…1ad5</code>); PL0 ~100&nbsp;MHz; A=<code>run=0</code>, B=<code>run=1</code>.
+        mean (B−A1) = <strong>+0.0098&nbsp;W</strong> (SE 0.0031&nbsp;W); ops/s ≈ 1.000×10<sup>8</sup>;
+        <strong>98.0±30.8&nbsp;pJ/op</strong> (seed-cycle). Log: <code>logs/aba-halt-vs-freerun-axi.dat</code>.
+      </p>
+    </div>
+    <div class="panel">
+      <h3>KV260 — rung 3 richer LUT∧SafePH∧CBF gate (Metered pJ/op)</h3>
+      <p>
+        <code>wca_gate_axi.bit.bin</code>
+        (SHA256 <code>ff45e23f855c19eda1ec087271306b26d95fb07f480bd2d93d6ecd58a08d5bb2</code>;
+        6370 CLB LUTs, 128 DSPs; MAGIC <code>0x0CA5EED3</code>).
+        Eight parallel lanes of Stage C <code>wca_allow_lut</code> ∧ Safe Q16.16 <code>wca_ph_energy</code> ∧ <code>wca_cbf_energy</code>;
+        commit = lut_allow ∧ energy_ok ∧ cbf_ok.
+        Vivado timing closed at <strong>25&nbsp;MHz</strong> (WNS +15.5&nbsp;ns); runtime PL0 forced to ~25&nbsp;MHz via CRL to match closure.
+        A=<code>run=0</code>, B=<code>run=1</code>; N=4; settle 15&nbsp;s; sample 25&nbsp;s @ ~4&nbsp;Hz.
+        mean A1 = <strong>3.0873&nbsp;W</strong>, mean B = <strong>3.3730&nbsp;W</strong>, mean A2 = <strong>3.0919&nbsp;W</strong>;
+        mean (B−A1) = <strong>+0.2857&nbsp;W</strong> (SE <strong>0.0032&nbsp;W</strong>).
+        On-device ops/s = <strong>2.4999488×10<sup>7</sup></strong>.
+        <strong>pJ/op</strong> = ΔW / ops/s × 10<sup>12</sup> → mean <strong>11428&nbsp;pJ/op</strong> (SE <strong>129&nbsp;pJ/op</strong>) ≈ <strong>11.43&nbsp;nJ/gate-cycle</strong>.
+        Log: <code>logs/aba-halt-vs-gate-axi.dat</code>.
+        Harness: <code>openie-fpga/artifacts/stage-c/wca-kv260-meter/</code>.
+        Not a closed-loop Pt V2 UART plant+TLMM joule cost.
       </p>
     </div>
   </section>
