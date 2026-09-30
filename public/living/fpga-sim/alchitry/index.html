@@ -103,7 +103,7 @@
 <main>
   <div class="hero">
     <h1>Alchitry Pt V2 with OpenIE / WCA commit-gate</h1>
-    <p class="deck-line">Educational guide for builders: detect the board, build a blink and the Wise Computer Automation (WCA) commit-gate demo, flash it, and read the LEDs. Matches Stage C evidence captured 2026-09-30 EDT.</p>
+    <p class="deck-line">Educational guide for builders: detect the board, build a blink and the Wise Computer Automation (WCA) commit-gate demo, flash it, and read the LEDs. Matches Stage C evidence captured 2026-09-30 EDT (closed-loop pendulum with Safe PH and control barrier function).</p>
     <p class="subtitle">This page is a how-to companion to <a href="../index.html">/living/fpga-sim/</a> (Stage B browser simulation) and <a href="../stage-c/board-evidence.md">stage-c/board-evidence.md</a>. It does not report board joules.</p>
   </div>
 
@@ -123,7 +123,7 @@
   </nav>
 
   <div class="limits">
-    <strong>What Stage C measured.</strong> Stage C detected an Alchitry Pt V2, programmed a <em>closed-loop</em> WCA commit-gate bitstream (on-fabric pendulum plant + Safe Q16.16 port-Hamiltonian check) over JTAG in SRAM mode (DONE and EOS asserted), and captured a UART transcript that matches the software seed-1 allow/refuse sequence (1 commit / 15 refuses / step 6). The Alchitry Pt V2 has <strong>no onboard joule meter</strong>. No power meter was attached. Do not invent joules. Vivado or post-place-and-route power estimates are not device-under-test (DUT) readings.
+    <strong>What Stage C measured.</strong> Stage C detected an Alchitry Pt V2, programmed a <em>closed-loop</em> WCA commit-gate bitstream (on-fabric pendulum plant + Safe Q16.16 port-Hamiltonian (PH) residual + Ames-style energy-set control barrier function (CBF)) over JTAG in SRAM mode (DONE and EOS asserted), and captured a UART transcript that matches the software seed-1 allow/refuse sequence (1 commit / 15 refuses / step 6). On that seed-1 closed-loop episode the CBF conjunct agrees with look-up table (LUT) allow and Safe PH (composite identical to LUT and Safe PH alone). The Alchitry Pt V2 has <strong>no onboard joule meter</strong>. No power meter was attached. Do not invent joules. Vivado or post-place-and-route power estimates are not device-under-test (DUT) readings.
   </div>
 
   <section class="figure-shell" id="board">
@@ -244,7 +244,9 @@ Programmed 104140 bytes via JTAG (SRAM) - DONE + EOS asserted</pre>
     </header>
     <p>
       The demo drives active-high LEDs from a free-running counter and two toy predicates.
-      <code>commit</code> is the conjunction of look-up table (LUT) allow and energy OK, matching the Stage C design comment and the software commit-gate idea from Stages A and B.
+      <code>commit</code> is the conjunction of look-up table (LUT) allow, Safe port-Hamiltonian (PH) energy OK, and control barrier function (CBF) OK:
+      <code>commit = lut_allow AND energy_ok AND cbf_ok</code>.
+      A <strong>control barrier function</strong> is a set-invariance certificate: with barrier <code>h = E_max - V</code> on the same pendulum energy <code>V</code>, the fabric refuses when <code>h &lt; 0</code> or when the Lie check <code>ω·u ≤ κ·h</code> fails (Safe Q16.16 residual twin of the Ames energy-set CBF).
     </p>
     <div class="fig">
       <img src="./figures/board-led-legend.svg" alt="Alchitry Pt V2 LED legend for commit, refuse, lut_allow, energy_ok, and heartbeat"/>
@@ -255,7 +257,7 @@ Programmed 104140 bytes via JTAG (SRAM) - DONE + EOS asserted</pre>
         <tr><th>LED</th><th>Signal</th><th>Meaning in this demo</th></tr>
       </thead>
       <tbody>
-        <tr><td class="ok">led0</td><td>commit</td><td>lut_allow AND energy_ok</td></tr>
+        <tr><td class="ok">led0</td><td>commit</td><td>lut_allow AND energy_ok AND cbf_ok</td></tr>
         <tr><td class="bad">led1</td><td>refuse</td><td>NOT commit</td></tr>
         <tr><td>led2</td><td>lut_allow</td><td>toy: allow when counter bit2 is clear</td></tr>
         <tr><td>led3</td><td>energy_ok</td><td>Safe Q16.16 PH residual pass (not a joule meter)</td></tr>
@@ -276,7 +278,7 @@ Programmed 104140 bytes via JTAG (SRAM) - DONE + EOS asserted</pre>
       <div class="chips"><span class="chip modelled">measured transcript</span></div>
     </header>
     <p>
-      After flashing <code>wca_commit_gate_uart_pt_v2.bit</code> (synthesizable TLMM+LUT+PH commit gate; not a decision ROM), open the FT2232H channel B serial port
+      After flashing <code>wca_commit_gate_uart_pt_v2.bit</code> (synthesizable TLMM+LUT+PH+CBF commit gate; not a decision ROM), open the FT2232H channel B serial port
       (on macOS typically <code>/dev/cu.usbserial-0000001</code>) at 115200 baud 8N1.
       One episode prints a banner <code>WCA1 C01 R15 S06</code> and sixteen lines
       <code>Sii Lx Ex Cx</code>. Seed-1 agreement means sole commit at step 6
@@ -302,7 +304,7 @@ python3 -c "import serial,time; s=serial.Serial('/dev/cu.usbserial-0000001',1152
     <ul class="plain">
       <li><strong>Stage A (Rust / Icarus).</strong> Software reference and register-transfer level (RTL) simulation. Analytical OpCounter joules. Not board power.</li>
       <li><strong>Stage B (WASM / WebGPU).</strong> Same decision core in the browser with LUT and commit-trace visualization. Simulated agreement with Stage A seed-1 golden. WebGPU time is not energy.</li>
-      <li><strong>Stage C (this board).</strong> Detect + SRAM program of a closed-loop WCA commit-gate UART (on-fabric pendulum plant + TLMM + allow LUT + Safe Q16.16 PH). UART agrees with seed-1 golden where comparable. Energy unmetered — Pt V2 has no onboard joule meter.</li>
+      <li><strong>Stage C (this board).</strong> Detect + SRAM program of a closed-loop WCA commit-gate UART (on-fabric pendulum plant + TLMM + allow LUT + Safe Q16.16 PH + Ames energy-set CBF). UART agrees with seed-1 golden where comparable (on seed-1 the CBF conjunct does not change the allow/refuse trace versus LUT and Safe PH alone). Energy unmetered. Pt V2 has no onboard joule meter.</li>
     </ul>
   </section>
 
@@ -525,6 +527,6 @@ output led7 heartbeat</pre>
     </ul>
   </section>
 </main>
-<footer class="footer">OpenIE · Alchitry Pt V2 guide · Stage C closed-loop + Safe Q16.16, energy unmetered · vendor resources mirrored with attribution · Sep 30, 2026 EDT</footer>
+<footer class="footer">OpenIE · Alchitry Pt V2 guide · Stage C closed-loop + Safe Q16.16 PH + CBF, energy unmetered · vendor resources mirrored with attribution · Sep 30, 2026 EDT</footer>
 </body>
 </html>
