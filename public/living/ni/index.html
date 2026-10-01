@@ -29,7 +29,7 @@
   <p class="subtitle"><strong>CTA:</strong> run the shipped simulator at <a href="../fpga-sim/">/living/fpga-sim/</a>, then the <a href="../fpga-sim/alchitry/">Alchitry Pt V2 guide</a> for Stage C UART seed-1 evidence.</p>
 
   <nav class="toc" aria-label="Figure TOC">
-    <h2>P0 figure IDs on this page</h2>
+    <h2>P0 figure IDs on this page (Manim media on ni-inf-01 / ni-diag-02 / ni-inf-02)</h2>
     <ul>
       <li><a href="#ni-inf-01"><span class="id">ni-inf-01</span> Brahe→Kepler lineage</a></li>
       <li><a href="#ni-diag-01"><span class="id">ni-diag-01</span> System One → WCA complement</a></li>
@@ -67,7 +67,15 @@
       <div class="timeline" data-timeline></div>
       <div class="cite-chip" data-cite></div>
     </div>
-    <p class="caption"><strong>PDF twin:</strong> Static timeline + caption + cite list. §1 / §2. Hover nodes; click opens cite chip. Lee cited generously.</p>
+    <figure class="living-media" data-fig="ni-inf-01">
+      <video autoplay muted loop playsinline controls poster="media/ni-inf-01-lineage.gif"
+             aria-label="Notational lineage from Iverson to WCA commit law">
+        <source src="media/ni-inf-01-lineage.webm" type="video/webm"/>
+        <source src="media/ni-inf-01-lineage.mp4" type="video/mp4"/>
+      </video>
+      <figcaption class="caption">Manim. Iverson to Lee to WCA: notation becomes the allow/refuse gate. Cite Lee generously. board_synth_claimed=false. No meters.</figcaption>
+    </figure>
+<p class="caption"><strong>PDF twin:</strong> Static timeline + caption + cite list. §1 / §2. Hover nodes; click opens cite chip. Lee cited generously.</p>
   </section>
 
   <!-- ni-diag-01 -->
@@ -107,7 +115,15 @@
     </div>
     <div class="stack-flow" data-stack-flow></div>
     <p class="small" data-formula style="margin-top:0.5rem"></p>
-    <p class="caption"><strong>PDF twin:</strong> Static stack flow sense→propose→certify→commit|refuse. §3 / §4.</p>
+    <figure class="living-media" data-fig="ni-diag-02">
+      <video autoplay muted loop playsinline controls poster="media/ni-diag-02-commit-stack.gif"
+             aria-label="Commit stack sense propose certify commit or refuse">
+        <source src="media/ni-diag-02-commit-stack.webm" type="video/webm"/>
+        <source src="media/ni-diag-02-commit-stack.mp4" type="video/mp4"/>
+      </video>
+      <figcaption class="caption">Manim. Sense → propose → certify (LUT ∧ energy [∧ CBF]) → commit|refuse. Proposal never self-commits. measured_j=None. board_synth_claimed=false.</figcaption>
+    </figure>
+<p class="caption"><strong>PDF twin:</strong> Static stack flow sense→propose→certify→commit|refuse. §3 / §4.</p>
   </section>
 
   <!-- ni-fig-01 -->
@@ -206,7 +222,15 @@
     </header>
     <div class="tier-ladder" data-tier-ladder></div>
     <p class="small" data-tier-detail style="margin-top:0.6rem">Click a tier. UI refuses DUT language until evidence exists.</p>
-    <p class="caption"><strong>PDF twin:</strong> Static tier ladder + board_synth_claimed=false badge. §5 / §8.</p>
+    <figure class="living-media" data-fig="ni-inf-02">
+      <video autoplay muted loop playsinline controls poster="media/ni-inf-02-joule-tiers.gif"
+             aria-label="Joule tiers A surrogate B tool C DUT locked">
+        <source src="media/ni-inf-02-joule-tiers.webm" type="video/webm"/>
+        <source src="media/ni-inf-02-joule-tiers.mp4" type="video/mp4"/>
+      </video>
+      <figcaption class="caption">Manim. Tier A = OpCounter × analytical E_* (surrogate). Tier B = tool estimate. Tier C = DUT meter, not claimed. board_synth_claimed=false. Never invent measured_j.</figcaption>
+    </figure>
+<p class="caption"><strong>PDF twin:</strong> Static tier ladder + board_synth_claimed=false badge. §5 / §8.</p>
   </section>
 
   <!-- shared-diag-01 -->
