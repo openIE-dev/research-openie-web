@@ -47,6 +47,7 @@ Same section `id=` values as living pages. Map: [`pdf-twin-map.md`](pdf-twin-map
 | `index.html` | Hub linking P1 + P2 + PDF twin |
 | `ni/index.html` | NI Commit Law — NI + shared + `ni-3d-01` |
 | `satiation/index.html` | Satiation — sat + shared + `sat-3d-01` |
+| `mol/index.html` | Mixture of Limits — cascade/floors stubs; analytical ≠ board power |
 | `css/living.css` | Shared shell + orbit3d + print helpers |
 | `js/living-core.js` | Badge toggle, helpers |
 | `js/orbit3d.js` | Pure-canvas perspective orbit (minimal deps) |

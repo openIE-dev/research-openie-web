@@ -1,0 +1,56 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Mixture of Limits"
+  description="About: Mixture of Limits — Navigation Law for Computer Intelligence. OpenIE research study. Readable paper, PDF, and interactive figures. board_synth_claimed=false."
+>
+  <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
+    <p class="section-label mb-4">Paper 3 · about</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
+      Mixture of Limits
+    </h1>
+    <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
+      Navigation law for computer intelligence: floors where more bits stop buying outcomes.
+      Compression and predictive formulas beat excess enumeration. Soft-ref constructive existence
+      in software (~29 VERIFIED prove criteria) is claimable; FPGA and board package energy are not.
+    </p>
+    <p class="mt-4 font-body text-sm text-brand-gray leading-relaxed">
+      Status: research study, not a journal final. Figures under /living/mol/ are companions.
+      Analytical OpCounter / catalog estimates are not board power. No fake meters.
+      <code class="text-brand-cyan">board_synth_claimed=false</code>. Landauer is labeled estimate only.
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/papers/mol/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
+        Read paper → /papers/mol/
+      </a>
+      <a href="/pdfs/mol.pdf" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors" download>
+        Download PDF
+      </a>
+      <a href="/living/mol/" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/30 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
+        Interactive figures
+      </a>
+      <a href="/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">
+        ← Catalog
+      </a>
+    </div>
+
+    <div class="mt-12 glass-card p-6 space-y-3">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray">Paths</p>
+      <p class="font-mono text-xs text-brand-slate"><span class="text-brand-cyan">/papers/mol/</span> → study prose</p>
+      <p class="font-mono text-xs text-brand-slate"><span class="text-brand-cyan">/pdfs/mol.pdf</span> → downloadable study PDF (regenerate via scripts/generate-pdfs.sh)</p>
+      <p class="font-mono text-xs text-brand-slate"><span class="text-brand-cyan">/living/mol/</span> → interactive figures (not the paper)</p>
+    </div>
+
+    <div class="mt-8 glass-card p-6 space-y-2">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray">Honesty</p>
+      <p class="font-body text-sm text-brand-slate leading-relaxed">
+        Living stubs must state: analytical OpCounter ≠ board power; no fake meters;
+        <code class="text-brand-cyan">measured_j</code> never invented; Landauer estimate labeled;
+        soft-ref prove ≠ FPGA/board package energy claim.
+      </p>
+    </div>
+  </section>
+</Layout>

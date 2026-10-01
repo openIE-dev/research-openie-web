@@ -121,4 +121,5 @@ PY
 
 gen_one ni
 gen_one satiation
+gen_one mol
 echo 'PDF generation complete'

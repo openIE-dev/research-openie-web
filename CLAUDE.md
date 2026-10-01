@@ -3,8 +3,8 @@
 OpenIE research hub. Live at **research.openie.dev**.
 
 **IA (locked):**
-- `/papers/{ni,satiation}/` — readable research study prose (draft papers)
-- `/pdfs/{ni,satiation}.pdf` — real downloadable study PDFs
+- `/papers/{ni,satiation,mol}/` — readable research study prose (draft papers)
+- `/pdfs/{ni,satiation,mol}.pdf` — real downloadable study PDFs
 - `/living/` — **interactive figures** (P0 stubs), not papers
 - `/living/fpga-sim/` — Stage B Rust→WASM commit-gate simulator (WebGPU viz; simulated, not Alchitry watts)
 - `/living/fpga-sim/alchitry/` - Stage C builder guide (Alchitry Pt V2 detect/build/flash/LEDs; programmed, energy unmetered)
