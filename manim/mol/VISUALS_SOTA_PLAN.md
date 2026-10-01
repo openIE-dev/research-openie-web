@@ -170,4 +170,4 @@ Site copy: `content-src/VISUALS_SOTA_PLAN.md`
 | When (EDT) | Wave | Commit | What |
 |------------|------|--------|------|
 | Thu Oct 1, 2026 ~10:55 | W0 | `34c44d0` | MoL Manim lineage (`mol-inf-01`) + cascade (`mol-diag-01`) mp4/gif/webm wired into `/living/mol/` |
-| Thu Oct 1, 2026 ~11:00 | W1 | `157b256` | MoL floors (`mol-diag-02`), close (`mol-diag-03`), MoL≠MoE (`mol-tab-01`) mp4/gif/webm; honesty captions; Mac Manim 0.21.0; MathTex→Text (no brew LaTeX) |
+| Thu Oct 1, 2026 ~11:00 | W1 | `ad7ead1` | MoL floors (`mol-diag-02`), close (`mol-diag-03`), MoL≠MoE (`mol-tab-01`) mp4/gif/webm; honesty captions; Mac Manim 0.21.0; MathTex→Text (no brew LaTeX) |
