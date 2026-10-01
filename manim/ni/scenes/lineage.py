@@ -1,6 +1,6 @@
 """ni-inf-01 — Notational lineage: Iverson → … → Lee → WCA commit law.
 
-Teacher short. No fake meters. board_synth_claimed=false.
+Teacher short. No board meters. board_synth_claimed=false.
 Text only (no MathTex / LaTeX).
 """
 from manim import *
@@ -12,7 +12,7 @@ class NotationalLineage(Scene):
         title = Text("ni-inf-01  Notation lineage", font_size=28, color="#93c5fd")
         title.to_edge(UP, buff=0.35)
         footer = Text(
-            "Living twin of Brahe→Kepler framing  ·  board_synth_claimed=false",
+            "Notation becomes the allow/refuse gate  ·  board_synth_claimed=false",
             font_size=15,
             color="#64748b",
         )

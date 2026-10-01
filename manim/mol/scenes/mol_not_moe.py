@@ -5,7 +5,7 @@ from manim import *
 class MolNotMoe(Scene):
     def construct(self):
         self.camera.background_color = "#0b1220"
-        title = Text("mol-tab-01 · MoL ≠ MoE", font_size=28, color="#93c5fd")
+        title = Text("mol-tab-01 · MoL is not MoE", font_size=28, color="#93c5fd")
         title.to_edge(UP, buff=0.35)
         honesty = Text(
             "estimated_j labeled · measured_j=None soft-ref · board_synth_claimed=false",
@@ -33,7 +33,7 @@ class MolNotMoe(Scene):
             fill_opacity=1,
         )
         cols = VGroup(left, right).arrange(RIGHT, buff=0.45).shift(DOWN * 0.05)
-        lh = Text("MoE / model↔model", font_size=22, color="#fb7185", weight=BOLD)
+        lh = Text("MoE / model-to-model", font_size=22, color="#fb7185", weight=BOLD)
         rh = Text("MoL", font_size=22, color="#34d399", weight=BOLD)
         lh.next_to(left.get_top(), DOWN, buff=0.2)
         rh.next_to(right.get_top(), DOWN, buff=0.2)

@@ -23,32 +23,33 @@
 <main>
   <div class="hero">
     <h1>Mixture of Limits</h1>
-    <p class="deck-line">Floors where more bits stop buying outcomes. Lookup → Formula → Solver → Model LAST.</p>
-    <p class="subtitle">Living stub — P0 figure shells. Claims stay ledger-safe with the MoL study.
-      <strong>Honesty:</strong> analytical OpCounter / catalog <code>estimated_j</code> ≠ board power;
-      Landauer is a labeled estimate only; <code>measured_j</code> is never invented;
-      <code>board_synth_claimed=false</code>; soft-ref <code>mol prove</code> ~29 VERIFIED is software constructive existence — not FPGA/board package energy.
-      No fake meters. <strong>Thesis addendum:</strong> bottleneck is applied math × materials/hardware embodiment — not awareness (Shannon/Landauer/Howard/Kolmogorov et al. already named the floors).</p>
+    <p class="deck-line">Floors where more bits stop buying outcomes. Try lookup, then formula, then solver. Open the model last.</p>
+    <p class="subtitle">This page shows the P0 figure shells for the MoL study. Claims stay ledger-safe with the paper.
+      <strong>Honesty:</strong> analytical OpCounter and catalog <code>estimated_j</code> are not board power.
+      The Landauer value is a labeled estimate only. <code>measured_j</code> is never invented.
+      <code>board_synth_claimed=false</code>. Soft-ref <code>mol prove</code> (~29 VERIFIED) is software constructive existence, not FPGA or board package energy.
+      No meter reading is reported here, and no board joules are asserted.
+      The remaining bottleneck is applied math and hardware embodiment. The page does not claim a new awareness limit (Shannon, Landauer, Howard, Kolmogorov and related floors already name those bounds).</p>
   </div>
-  <p class="subtitle"><strong>CTA:</strong> read the study at <a href="/papers/mol/">/papers/mol/</a>.
+  <p class="subtitle">Read the study at <a href="/papers/mol/">/papers/mol/</a>.
     Companion commit figures: <a href="../fpga-sim/">/living/fpga-sim/</a> (NI Stage B/C; energy rules unchanged).</p>
 
   <nav class="toc" aria-label="Figure TOC">
     <h2>P0 figure IDs on this page (Manim media on mol-inf-01 / mol-diag-01 / mol-diag-02 / mol-diag-03 / mol-tab-01)</h2>
     <ul>
-      <li><a href="#mol-inf-01"><span class="id">mol-inf-01</span> Kepler→Newton→Shannon/Landauer lineage</a></li>
-      <li><a href="#mol-diag-01"><span class="id">mol-diag-01</span> Cascade Lookup→Formula→Solver→Model LAST</a></li>
-      <li><a href="#mol-diag-02"><span class="id">mol-diag-02</span> Floors: VoI / grammar / energy / certificate / settle-refuse</a></li>
-      <li><a href="#mol-diag-03"><span class="id">mol-diag-03</span> Close: propose→certify→commit|refuse→receipt</a></li>
-      <li><a href="#mol-tab-01"><span class="id">mol-tab-01</span> MoL ≠ MoE contrast (§9)</a></li>
-      <li><a href="#mol-tab-02"><span class="id">mol-tab-02</span> Prove ↔ claim honesty stub</a></li>
-      <li><a href="#mol-note-01"><span class="id">mol-note-01</span> Energy honesty legend (Metered | Estimated | Unmetered)</a></li>
+      <li><a href="#mol-inf-01"><span class="id">mol-inf-01</span> Compression lineage from Brahe to MoL floors</a></li>
+      <li><a href="#mol-diag-01"><span class="id">mol-diag-01</span> Cascade: lookup, formula, solver, model last</a></li>
+      <li><a href="#mol-diag-02"><span class="id">mol-diag-02</span> Named floors: VoI, grammar, energy, certificate, settle-refuse</a></li>
+      <li><a href="#mol-diag-03"><span class="id">mol-diag-03</span> Commit or refuse, then issue a receipt</a></li>
+      <li><a href="#mol-tab-01"><span class="id">mol-tab-01</span> How MoL differs from MoE (§9)</a></li>
+      <li><a href="#mol-tab-02"><span class="id">mol-tab-02</span> How proof status maps to claims</a></li>
+      <li><a href="#mol-note-01"><span class="id">mol-note-01</span> Energy honesty labels (Metered, Estimated, Unmetered)</a></li>
     </ul>
   </nav>
 
   <section id="mol-inf-01" class="figure-block">
     <h2><span class="id">mol-inf-01</span> Historical compression lineage</h2>
-    <p>Brahe enumerated; Kepler compressed; Newton closed forms; Shannon priced bits; Landauer priced irreversible erasure (estimate). MoL navigates that lineage as CI floors.</p>
+    <p>Brahe enumerated. Kepler compressed. Newton closed forms. Shannon priced bits. Landauer priced irreversible erasure as an estimate. MoL navigates that lineage as CI floors.</p>
 
     <figure class="living-media" data-fig="mol-inf-01">
       <video autoplay muted loop playsinline controls poster="media/mol-inf-01-lineage.gif"
@@ -56,14 +57,14 @@
         <source src="media/mol-inf-01-lineage.webm" type="video/webm"/>
         <source src="media/mol-inf-01-lineage.mp4" type="video/mp4"/>
       </video>
-      <figcaption class="caption">Manim · illustrative · Landauer = labeled thermodynamic lower-bound estimate · board_synth_claimed=false · no fake meters</figcaption>
+      <figcaption class="caption">Illustrative Manim figure. The Landauer value is a labeled thermodynamic lower-bound estimate, not a board measurement. <code>board_synth_claimed=false</code>. No meter reading is reported here.</figcaption>
     </figure>
   </section>
 
   <section id="mol-diag-01" class="figure-block">
-    <h2><span class="id">mol-diag-01</span> Cascade</h2>
+    <h2><span class="id">mol-diag-01</span> How the cascade works</h2>
     <pre class="mono">Lookup → Formula → Solver/settle → Model LAST</pre>
-    <p>Grammar covered ⇒ do not open the model.</p>
+    <p>When the grammar covers the request, the system stops before opening the model.</p>
 
     <figure class="living-media" data-fig="mol-diag-01">
       <video autoplay muted loop playsinline controls poster="media/mol-diag-01-cascade.gif"
@@ -71,13 +72,13 @@
         <source src="media/mol-diag-01-cascade.webm" type="video/webm"/>
         <source src="media/mol-diag-01-cascade.mp4" type="video/mp4"/>
       </video>
-      <figcaption class="caption">Manim · illustrative · Grammar covered ⇒ do not open Model · Unmetered/Estimated only · board_synth_claimed=false</figcaption>
+      <figcaption class="caption">Illustrative Manim figure. When grammar covers the request, do not open the model. Values here are Unmetered or Estimated only. <code>board_synth_claimed=false</code>.</figcaption>
     </figure>
   </section>
 
   <section id="mol-diag-02" class="figure-block">
     <h2><span class="id">mol-diag-02</span> Named floors</h2>
-    <p>VoI stop · grammar coverage · energy (Landauer estimate) · efa_certificate · settle_refuse · primitive_gap.</p>
+    <p>VoI stop. Grammar coverage. Energy (Landauer estimate). <code>efa_certificate</code>. <code>settle_refuse</code>. <code>primitive_gap</code>.</p>
 
     <figure class="living-media" data-fig="mol-diag-02">
       <video autoplay muted loop playsinline controls poster="media/mol-diag-02-floors.gif"
@@ -85,15 +86,15 @@
         <source src="media/mol-diag-02-floors.webm" type="video/webm"/>
         <source src="media/mol-diag-02-floors.mp4" type="video/mp4"/>
       </video>
-      <figcaption class="caption">Manim · illustrative · Landauer = labeled thermodynamic lower-bound estimate · μ = catalog/estimate ≠ board package joules · measured_j=None · board_synth_claimed=false · no fake meters</figcaption>
+      <figcaption class="caption">Illustrative Manim figure. Landauer is a labeled thermodynamic lower-bound estimate. μ is a catalog or estimate value, not board package joules. <code>measured_j=None</code>. <code>board_synth_claimed=false</code>. No meter reading is reported here.</figcaption>
     </figure>
   </section>
 
   <section id="mol-diag-03" class="figure-block">
-    <h2><span class="id">mol-diag-03</span> Close / receipt</h2>
+    <h2><span class="id">mol-diag-03</span> Commit or refuse, then issue a receipt</h2>
     <pre class="mono">propose → certify → commit|refuse → receipt
 claim.* / act.* / close.* / receipt.*
-ModelGenerated ↛ Deterministic
+ModelGenerated is not Deterministic evidence
 measured_j only if Metered; else None
 refuse = lawful success + receipt</pre>
 
@@ -103,13 +104,13 @@ refuse = lawful success + receipt</pre>
         <source src="media/mol-diag-03-close.webm" type="video/webm"/>
         <source src="media/mol-diag-03-close.mp4" type="video/mp4"/>
       </video>
-      <figcaption class="caption">Manim · illustrative · refuse = lawful success + receipt · measured_j only if Metered · board_synth_claimed=false · no invented joules</figcaption>
+      <figcaption class="caption">Illustrative Manim figure. A refuse is a lawful success when a receipt is issued. Set <code>measured_j</code> only when Metered. <code>board_synth_claimed=false</code>. No board joules are asserted.</figcaption>
     </figure>
   </section>
 
   <section id="mol-tab-01" class="figure-block">
-    <h2><span class="id">mol-tab-01</span> MoL ≠ MoE</h2>
-    <p>Short contrast from paper <a href="/papers/mol/#9-mol--moe-and-the-modelmodel-sota-table">§9</a>. Field systems optimize <em>which neural generator runs</em>; MoL asks whether a generator should run at all. Full model↔model SOTA table + verified cites live in the study — no invented joules here.</p>
+    <h2><span class="id">mol-tab-01</span> How MoL differs from MoE</h2>
+    <p>Short contrast from paper <a href="/papers/mol/#9-mol--moe-and-the-modelmodel-sota-table">§9</a>. Field systems optimize which neural generator runs. MoL differs from MoE in the decision it makes: it asks whether generation should run at all. The full model-to-model SOTA table and verified cites live in the study. No board joules are asserted here.</p>
 
     <figure class="living-media" data-fig="mol-tab-01">
       <video autoplay muted loop playsinline controls poster="media/mol-tab-01-not-moe.gif"
@@ -117,35 +118,35 @@ refuse = lawful success + receipt</pre>
         <source src="media/mol-tab-01-not-moe.webm" type="video/webm"/>
         <source src="media/mol-tab-01-not-moe.mp4" type="video/mp4"/>
       </video>
-      <figcaption class="caption">Manim · illustrative · estimated_j labeled · soft-ref measured_j=None · board_synth_claimed=false · no fake meters · see table below + /papers/mol/ §9</figcaption>
+      <figcaption class="caption">Illustrative Manim figure. <code>estimated_j</code> is labeled. Soft-ref keeps <code>measured_j=None</code>. <code>board_synth_claimed=false</code>. No meter reading is reported here. See the table below and <a href="/papers/mol/#9-mol--moe-and-the-modelmodel-sota-table">/papers/mol/ §9</a>.</figcaption>
     </figure>
     <table>
       <thead>
-        <tr><th>Axis</th><th>MoE / model↔model field</th><th>MoL</th></tr>
+        <tr><th>Axis</th><th>MoE / model-to-model field</th><th>MoL</th></tr>
       </thead>
       <tbody>
         <tr><td>Where the mixture lives</td><td>Inside the model (experts, draft/target, strong/weak LLMs)</td><td>Outside generation (named floors + cascade gears)</td></tr>
         <tr><td>Routing object</td><td>Which <strong>model</strong> answers</td><td>Which <strong>tier</strong> closes: Lookup / Formula / Solver / Model</td></tr>
-        <tr><td>Refuse</td><td>Rare; usually escalate to a larger model</td><td>First-class: VoI, grammar, settle, certificate, primitive_gap, …</td></tr>
+        <tr><td>Refuse</td><td>Rare; usually escalate to a larger model</td><td>First-class: VoI, grammar, settle, certificate, primitive_gap, and related floors</td></tr>
         <tr><td>Energy honesty</td><td>Latency/cost proxies; some papers meter GPU energy for LLM serving</td><td>Receipts: labeled <code>estimated_j</code>; soft-ref <code>measured_j=None</code>; <code>board_synth_claimed=false</code></td></tr>
         <tr><td>Success metric</td><td>Tokens/s, cost@quality, speculative speedup</td><td>Certified commit + typed ReplayClass + receipt</td></tr>
       </tbody>
     </table>
-    <p class="caption">Analytical / catalog estimates ≠ board power. No fake meters. See <a href="/papers/mol/#9-mol--moe-and-the-modelmodel-sota-table">/papers/mol/ §9</a>.</p>
+    <p class="caption">Analytical and catalog estimates are not board power. No meter reading is reported here. See <a href="/papers/mol/#9-mol--moe-and-the-modelmodel-sota-table">/papers/mol/ §9</a>.</p>
   </section>
 
   <section id="mol-tab-02" class="figure-block">
-    <h2><span class="id">mol-tab-02</span> Prove ↔ claim honesty</h2>
-    <p>Soft-ref <code>mol prove</code> stamps <code>VERIFIED</code> onto paper <code>claim.*</code> ids (see study <a href="/papers/mol/#6-prove--claim-map">§6</a>). Soft-ref-only residuals stay roadmap — do not escalate to measured results.</p>
+    <h2><span class="id">mol-tab-02</span> How proof status maps to claims</h2>
+    <p>Soft-ref <code>mol prove</code> stamps <code>VERIFIED</code> onto paper <code>claim.*</code> ids (see study <a href="/papers/mol/#6-prove--claim-map">§6</a>). Soft-ref-only residuals stay on the roadmap. Do not escalate them to measured results.</p>
     <ul>
-      <li><strong>Proven path:</strong> Unmetered (+ Estimated where μ / Landauer / fuel appear); <code>board_synth_claimed=false</code></li>
-      <li><strong>Soft-ref only (pointer):</strong> live RAPL/NVML as default close; live wgpu presence; Ferric / BMI loop; klere-vm FPGA pJ; full Periodic Stack 258 + μ calib; trained Model leaf — see §6.3</li>
-      <li>No invented <code>measured_j</code>; no board joules from MoL v0.1 prove</li>
+      <li><strong>Proven path:</strong> Unmetered (plus Estimated where μ, Landauer, or fuel appear); <code>board_synth_claimed=false</code></li>
+      <li><strong>Soft-ref only (pointer):</strong> live RAPL/NVML as default close; live wgpu presence; Ferric / BMI loop; klere-vm FPGA pJ; full Periodic Stack 258 + μ calib; trained Model leaf. See §6.3</li>
+      <li>No invented <code>measured_j</code>. No board joules from MoL v0.1 prove</li>
     </ul>
   </section>
 
   <section id="mol-note-01" class="figure-block">
-    <h2><span class="id">mol-note-01</span> Energy honesty</h2>
+    <h2><span class="id">mol-note-01</span> Energy honesty labels</h2>
     <p>OpenIE honesty grammar (matches paper §6 / §9):</p>
     <table>
       <thead>
@@ -154,20 +155,20 @@ refuse = lawful success + receipt</pre>
       <tbody>
         <tr><td><strong>Unmetered</strong></td><td>Software-ref / soft-ref path; <code>measured_j=None</code>; estimate may be labeled</td></tr>
         <tr><td><strong>Estimated</strong></td><td>Catalog / Landauer / fuel / μ surrogate with explicit <code>EstimateKind</code> or <code>mu_source=catalog</code></td></tr>
-        <tr><td><strong>Metered</strong></td><td>Optional live probe (<code>energy-meter</code>) actually returned numbers — <strong>not</strong> required for prove; never invented</td></tr>
+        <tr><td><strong>Metered</strong></td><td>Optional live probe (<code>energy-meter</code>) actually returned numbers. Not required for prove. Never invented</td></tr>
       </tbody>
     </table>
     <ul>
-      <li>Analytical OpCounter / catalog estimates ≠ board power</li>
-      <li>Landauer = labeled thermodynamic lower-bound estimate</li>
-      <li>No fake RAPL/NVML/package meters in soft-ref</li>
+      <li>Analytical OpCounter and catalog estimates are not board power</li>
+      <li>Landauer is a labeled thermodynamic lower-bound estimate</li>
+      <li>No fake RAPL, NVML, or package meters in soft-ref</li>
       <li><code>board_synth_claimed=false</code></li>
-      <li>Default prove close: <strong>Unmetered</strong> (+ <strong>Estimated</strong> where labeled)</li>
+      <li>Default prove close: <strong>Unmetered</strong> (plus <strong>Estimated</strong> where labeled)</li>
     </ul>
   </section>
 </main>
 <footer class="site-footer">
-  <p>OpenIE Research · living stub · not the paper · <a href="/papers/mol/">/papers/mol/</a></p>
+  <p>OpenIE Research · living figures · not the paper · <a href="/papers/mol/">/papers/mol/</a></p>
 </footer>
 </body>
 </html>

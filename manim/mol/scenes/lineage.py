@@ -50,7 +50,7 @@ class LineageCompress(Scene):
             )
 
         landauer_note = Text(
-            "Landauer: irreversible bit erasure — thermodynamic lower-bound ESTIMATE (not board watts)",
+            "Landauer: irreversible bit erasure. Thermodynamic lower-bound ESTIMATE (not board watts)",
             font_size=16,
             color="#fde68a",
         )

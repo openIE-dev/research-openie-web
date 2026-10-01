@@ -11,7 +11,7 @@ class CascadeLast(Scene):
         title = Text("mol-diag-01 · Cascade", font_size=28, color="#93c5fd")
         title.to_edge(UP, buff=0.35)
         honesty = Text(
-            "illustrative · board_synth_claimed=false · no fake meters",
+            "illustrative · board_synth_claimed=false · no board meters",
             font_size=16,
             color="#64748b",
         )
@@ -55,7 +55,7 @@ class CascadeLast(Scene):
             arrows.add(a)
 
         rule = Text(
-            "Grammar covered  ⇒  do not open the Model",
+            "When grammar covers the request, do not open the Model",
             font_size=22,
             color="#fbbf24",
         )

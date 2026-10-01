@@ -5,7 +5,7 @@ from manim import *
 class CloseReceipt(Scene):
     def construct(self):
         self.camera.background_color = "#0b1220"
-        title = Text("mol-diag-03 · Close / receipt", font_size=28, color="#93c5fd")
+        title = Text("mol-diag-03 · Commit or refuse", font_size=28, color="#93c5fd")
         title.to_edge(UP, buff=0.35)
         honesty = Text(
             "refuse = lawful success + receipt · measured_j only if Metered",
@@ -38,7 +38,7 @@ class CloseReceipt(Scene):
             Arrow(boxes[i].get_right(), boxes[i + 1].get_left(), buff=0.06, stroke_width=3, color="#475569")
             for i in range(len(boxes) - 1)
         ])
-        ban = Text("ModelGenerated ↛ Deterministic", font_size=20, color="#fb7185")
+        ban = Text("ModelGenerated is not Deterministic", font_size=20, color="#fb7185")
         ban.next_to(boxes, DOWN, buff=0.55)
 
         self.play(FadeIn(title), FadeIn(honesty))
