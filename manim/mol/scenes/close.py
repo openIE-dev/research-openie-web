@@ -22,7 +22,15 @@ class CloseReceipt(Scene):
         ]
         boxes = VGroup()
         for name, color in steps:
-            r = RoundedRectangle(0.12, 2.8, 0.85, stroke_color=color, stroke_width=3, fill_color="#111827", fill_opacity=1)
+            r = RoundedRectangle(
+                corner_radius=0.12,
+                width=2.8,
+                height=0.85,
+                stroke_color=color,
+                stroke_width=3,
+                fill_color="#111827",
+                fill_opacity=1,
+            )
             t = Text(name, font_size=22, color=color)
             boxes.add(VGroup(r, t.move_to(r)))
         boxes.arrange(RIGHT, buff=0.32).shift(UP * 0.25)

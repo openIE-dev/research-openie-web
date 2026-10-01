@@ -8,3 +8,6 @@ content-src/
 
 # Manim render cache (shipped assets live under public/living/*/media/)
 manim/**/media/
+
+__pycache__/
+*.pyc

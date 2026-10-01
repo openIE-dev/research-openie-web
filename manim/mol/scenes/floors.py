@@ -19,7 +19,8 @@ class EnergyFloorEstimate(Scene):
             Text(f"· {f}", font_size=24, color="#e2e8f0") for f in floors
         ]).arrange(DOWN, aligned_edge=LEFT, buff=0.18).shift(LEFT * 2.2 + UP * 0.2)
 
-        eq = MathTex(r"E \ge \theta \cdot \mu", font_size=56, color="#fbbf24")
+        # Text (not MathTex) — Mac brew manim has no LaTeX; keep equation as unicode
+        eq = Text("E ≥ θ · μ", font_size=52, color="#fbbf24", weight=BOLD)
         eq.shift(RIGHT * 2.4 + UP * 0.4)
         note = Text("μ = catalog / estimate\n≠ board package joules", font_size=18, color="#94a3b8")
         note.next_to(eq, DOWN, buff=0.35)

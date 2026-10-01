@@ -107,8 +107,8 @@ ffmpeg -y -i CascadeLast.mp4 -c:v libvpx-vp9 -b:v 0 -crf 35 -an CascadeLast.webm
 
 | Wave | Deliverable | Exit criteria |
 |------|-------------|---------------|
-| **W0 (this pass)** | Plan + 1–2 Manim scenes + ≥1 rendered asset wired into `living/mol/` | Cascade or lineage visible on `/living/mol/`; honesty caption present |
-| **W1** | Scenes 3–5 (floors, close, MoL≠MoE) + WebM | All five MoL P0 motion IDs have media |
+| **W0** | Plan + 1–2 Manim scenes + ≥1 rendered asset wired into `living/mol/` | **DONE** — cascade + lineage on `/living/mol/` |
+| **W1** | Scenes 3–5 (floors, close, MoL≠MoE) + WebM | **DONE** — all five MoL P0 motion IDs have media |
 | **W2** | Light SVG/D3 interactivity for cascade + close (optional) | Same IDs; Manim as poster/autoplay fallback |
 | **W3** | NI Manim: `ni-inf-01`, `ni-diag-02`, `ni-inf-02` | No fake board watts; shared legend intact |
 | **W4** | Satiation Manim: `sat-inf-01`, `sat-diag-01`, `sat-fig-01` motion twin | Epoch cites only; bliss labelled textbook |
@@ -161,4 +161,13 @@ Site copy: `content-src/VISUALS_SOTA_PLAN.md`
 - [ ] Wired under correct living `id=`  
 - [ ] Honesty caption / chips present  
 - [ ] `pnpm build` (or site build script) still passes  
-- [ ] No invented joules / board watts in frames or captions  
+- [ ] No invented joules / board watts in frames or captions
+
+---
+
+## 8. Ship log
+
+| When (EDT) | Wave | Commit | What |
+|------------|------|--------|------|
+| Thu Oct 1, 2026 ~10:55 | W0 | `34c44d0` | MoL Manim lineage (`mol-inf-01`) + cascade (`mol-diag-01`) mp4/gif/webm wired into `/living/mol/` |
+| Thu Oct 1, 2026 ~11:00 | W1 | `157b256` | MoL floors (`mol-diag-02`), close (`mol-diag-03`), MoL≠MoE (`mol-tab-01`) mp4/gif/webm; honesty captions; Mac Manim 0.21.0; MathTex→Text (no brew LaTeX) |
