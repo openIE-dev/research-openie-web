@@ -2,7 +2,7 @@
 
 **Owner:** David Charlot / OpenIE  
 **Date:** Thu Oct 1, 2026 (America/New_York, EDT)  
-**Status:** MoL W0+W1 live; NI W3 first-wave Manim live; Satiation next  
+**Status:** MoL W0+W1 live; NI W3 live; Satiation W4 first-wave Manim live  
 **Site root:** `/Users/dcharlot/data-share/vibe-coding/research-openie-web`  
 **Living root:** `public/living/`  
 **Scene source:** `/workspace/mol-manim/` (box) + `manim/mol/` (site mirror)
@@ -111,7 +111,7 @@ ffmpeg -y -i CascadeLast.mp4 -c:v libvpx-vp9 -b:v 0 -crf 35 -an CascadeLast.webm
 | **W1** | Scenes 3–5 (floors, close, MoL≠MoE) + WebM | **DONE** — all five MoL P0 motion IDs have media |
 | **W2** | Light SVG/D3 interactivity for cascade + close (optional) | Same IDs; Manim as poster/autoplay fallback |
 | **W3** | NI Manim: `ni-inf-01`, `ni-diag-02`, `ni-inf-02` | **DONE** — three NI motion IDs have media |
-| **W4** | Satiation Manim: `sat-inf-01`, `sat-diag-01`, `sat-fig-01` motion twin | Epoch cites only; bliss labelled textbook |
+| **W4** | Satiation Manim: `sat-inf-01`, `sat-diag-01`, `sat-fig-01` motion twin | **DONE** — three Satiation motion IDs have media |
 
 ---
 
@@ -172,3 +172,4 @@ Site copy: `content-src/VISUALS_SOTA_PLAN.md`
 | Thu Oct 1, 2026 ~10:55 | W0 | `34c44d0` | MoL Manim lineage (`mol-inf-01`) + cascade (`mol-diag-01`) mp4/gif/webm wired into `/living/mol/` |
 | Thu Oct 1, 2026 ~11:00 | W1 | `ad7ead1` | MoL floors (`mol-diag-02`), close (`mol-diag-03`), MoL≠MoE (`mol-tab-01`) mp4/gif/webm; honesty captions; Mac Manim 0.21.0; MathTex→Text (no brew LaTeX) |
 | Thu Oct 1, 2026 ~11:05 | W3 | `3cb7b37` | NI Manim lineage (`ni-inf-01`), commit stack (`ni-diag-02`), joule tiers (`ni-inf-02`) mp4/gif/webm wired into `/living/ni/`; teacher captions; board_synth_claimed=false; no fake measured_j / board watts |
+| Thu Oct 1, 2026 ~11:15 | W4 | `TBD` | Satiation Manim engagement lens (`sat-inf-01`), refuse Venn (`sat-diag-01`), bliss point (`sat-fig-01`) mp4/gif/webm wired into `/living/satiation/`; textbook bliss labelled; Epoch cites only (no invented series); teacher captions; board_synth_claimed=false |
