@@ -44,13 +44,13 @@ The dominant construction for computer intelligence (CI) treats the neural net a
 
 Information theory names the modern accounting of that pattern. Shannon (1948) prices bits under uncertainty as settled law. Value of Information (VoI) prices whether another observation is worth its cost for a decision. Landauer (1961) prices irreversible bit erasure in joules at temperature \(T\): \(E_{\min} = k_B T \ln 2\) per bit erased in the ideal model. That Landauer quantity is a thermodynamic lower bound; this study cites it only as a **labeled estimate**, never as a wattmeter reading. Together they imply floors: past a point, more bits stop buying outcomes that matter for a stated benefit.
 
-**Thesis.** Pursuit of limits is the path toward AGI-grade reliability. Excess-token and MoE scaling diverge from true VoI for a given benefit. Mixture of Limits is the executable navigation law that binds those floors (VoI, grammar, Landauer/joules as estimate, certificate, settle-refuse) against industry Mixture-of-Experts. **Addendum:** Shannon, Landauer, Kolmogorov/Solomonoff/Chaitin, Howard (VoI), and formula-first science AI already state these floors as settled theory. The remaining bottleneck is **applied mathematics embodied in materials and physical hardware**. **Frontier addendum (§8.4-§8.7):** deeper latents, energy-based hybrids, and world models can improve generators; they do not cancel VoI, grammar, energy, or certify floors. Mixture of Limits remains the navigation law, not a horse race among generators.
+**Thesis.** Pursuit of limits is the path toward AGI-grade reliability. Excess-token and MoE scaling diverge from true VoI for a given benefit. Mixture of Limits is the executable navigation law that binds those floors (VoI, grammar, Landauer/joules as estimate, certificate, settle-refuse) against industry Mixture-of-Experts. **Addendum:** Shannon, Landauer, Kolmogorov/Solomonoff/Chaitin, Howard (VoI), and formula-first science AI already state these floors as settled theory. The remaining bottleneck is **applied mathematics embodied in materials and physical hardware**. **Frontier addendum (§8.4-§8.12):** deeper latents, energy-based hybrids, world models, test-time compute, super learning, architecture fads (including Jamba-class hybrids and mixture of experts), and algorithmic efficiency wins still improve generators or ensembles; they do not cancel VoI, grammar, energy, or certify floors. Mixture of Limits remains the navigation law, not a horse race among generators. The hardware-economics reading (§8.12) states that computers are hardware, software is applied engineering under constraints, and floors bind even when optimized algorithms take market share on cheaper devices.
 
 This paper's contribution is the study prose for that law as published on research.openie.dev, grounded in the clean-room `mixture-of-limits` software reference (Apache-2.0 OR MIT). Companion studies already on this site supply the commit-record interface ([Notational Intelligence as Commit Law](/papers/ni/)) and the economic stop after free digital inference ([Satiation and Scarcity after Free AI](/papers/satiation/)). Mixture of Limits is the navigation law those companions sit under: NI owns irreversible commit shape; Satiation owns economic done; Mixture of Limits owns *which gear closes* and *when refuse is success*.
 
 Three measurement statements constrain every later number. First, joules from catalog surrogates and OpCounter-style analytics are **estimates**, not board power. Second, Landauer annotations are **estimates**, never equal to RAPL/NVML/`measured_j`. Third, this study sets `board_synth_claimed=false` and does not invent `measured_j`.
 
-Scope. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine \(E(x) \ge \theta(D)\cdot\mu(S,V)\). Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (EBM/LLM/latent hybrid), and World Labs (spatial world models), with the addendum that even projected-superior methods still hit floors. Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits.
+Scope. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine \(E(x) \ge \theta(D)\cdot\mu(S,V)\). Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (energy-based model / large language model / latent hybrid), World Labs (spatial world models), test-time inference (test-time compute), super learning, a survey of live 2025–2026 approaches, the AI21 Jamba hybrid story versus later DeepSeek / GLM efficiency moves, and the hardware-economics thesis, with the addendum that even projected-superior methods still hit floors. Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits.
 
 ---
 
@@ -439,11 +439,87 @@ Latent compression, EBM settle hybrids (Logical Intelligence), and spatial world
 
 Soft-ref `mol prove` remains constructive existence **in software** only. No board package energy is claimed for Logical Intelligence, World Labs, or OpenIE soft-ref paths.
 
+### 8.8 Test-time inference / test-time compute: more thinking is not free of floors
+
+**Teach first.** **Test-time inference** (also called **test-time compute**) means spending additional computation *after* training, when answering a query: longer **chain-of-thought** (CoT) traces, search over candidate solutions, **majority vote** across samples, verifier-guided selection, or **process reward** scoring of intermediate steps. OpenAI's o1 / o3-style systems popularized sequential scaling of reasoning traces at inference (OpenAI, "Learning to reason with LLMs," 2024). Related process supervision trains reward models on step-level labels rather than only final answers (Lightman et al., "Let's Verify Step by Step," arXiv:2305.20050; ICLR 2024). Parallel strategies sample many short traces and aggregate; sequential strategies extend one long trace. Surveys of inference-time scaling for complex tasks document both families and their dependence on verifier quality (e.g. arXiv:2504.00294).
+
+The industry narrative treats extra thinking tokens as a new scaling axis parallel to training tokens and parameters. That axis is real as *engineering*: longer verified search can raise accuracy on hard problems when the verifier is good and the budget is spent on the right difficulty band. Empirical work on o1-like models also shows diminishing returns, overthinking, and cases where longer CoTs degrade accuracy or where parallel majority-style methods scale better than unbounded sequential length (e.g. ACL 2025 findings on o1-like test-time scaling; related overthinking analyses).
+
+**Mixture of Limits reading.** Extra inference tokens are still bits under a budget.
+
+1. **Value of Information (VoI).** Another thinking step is another observation about an internal search state. When the marginal step does not change the decision benefit \(B\), VoI says stop. Majority vote that re-samples without changing \(B\) fails the same test.
+2. **Grammar coverage.** If Lookup, Formula, or Solver already covers the coordinate, opening a long CoT generator is waste. Covered grammar closes before Model.
+3. **Energy / Landauer.** Every additional sampled token and every verifier forward pass erases and rewrites information. Landauer prices irreversible erasure as a thermodynamic lower bound; this study cites it only as a **labeled estimate**, never as board package joules. Catalog or OpCounter estimates for test-time paths remain **Estimated** / **Unmetered** on the soft-ref path (`measured_j` never invented; `board_synth_claimed=false`).
+4. **Certify-before-commit.** A process-reward score or majority winner is a proposal until certify → commit|refuse → receipt. Soft-ref ReplayClass honesty still applies: a long reasoning trace does not launder into `Deterministic` without a certificate path.
+
+**Teach-first takeaway.** Test-time compute is a budget allocation inside the generative corridor. Mixture of Limits navigates whether that budget should open at all. More thinking steps are not free of VoI, grammar, energy, or certify floors.
+
+### 8.9 Super learning: stacking ensembles still hit floors
+
+**Teach first (academic term).** **Super learning** (also called the **super learner**) is a cross-validated ensemble / stacking method from targeted learning: fit a library of candidate algorithms, collect out-of-fold predictions, then learn a meta-learner that combines them to minimize cross-validated risk (van der Laan, Polley, and Hubbard, 2007; Polley and van der Laan, "Super Learner In Prediction," U.C. Berkeley Biostatistics Working Paper 266). It is related to stacking as introduced by Wolpert (1992) and adapted by Breiman (1996). A discrete super learner selects the single best candidate by cross-validated risk; an ensemble super learner learns weights (often non-negative and summing to one) over candidates. The oracle results for cross-validation selectors underwrite asymptotic optimality *relative to the library*, not freedom from information or energy floors.
+
+**Label the industry narrative separately.** Public "superintelligence" scaling talk (systems that broadly outperform humans across domains) is a *product and aspiration narrative*, not the van der Laan estimator. This study does not invent a product named Super Learning, and it does not equate marketing AGI timelines with the academic super learner.
+
+**Mixture of Limits reading.** Ensembles and stacks are still Model-class residual when they generate; when they combine deterministic candidates they still face VoI and certify limits.
+
+1. **VoI.** Another base learner or another fold is another observation. When the meta-learner cannot change \(B\), stop.
+2. **Grammar.** If Formula or Lookup covers the coordinate, stacking neural candidates is excess enumeration under a different name.
+3. **Energy honesty.** Training and evaluating a library multiplies forward passes. Estimates remain estimates; no soft-ref `measured_j` is invented for any ensemble; `board_synth_claimed=false`.
+4. **Certify.** A stacked prediction is still a proposal until a certificate or typed refuse closes the act. Oracle optimality inside a library does not coerce `ModelGenerated` to `Deterministic`.
+
+**Teach-first takeaway.** Super learning is honest ensemble selection under cross-validation. Mixture of Limits maps it onto floors: better combination of residual leaves does not retire VoI, grammar, energy, or certify.
+
+### 8.10 Survey of live approaches treated as "the answer" (2025–2026)
+
+Each row teaches the technique once with a verified cite, then one Mixture of Limits floor sentence. This is not an uncited acronym dump. Author-reported speedups and benchmark scores are **field results**, not OpenIE soft-ref measurements.
+
+| Approach | What it is (teach once) | Verified cite | Floor that still binds |
+|---|---|---|---|
+| **Speculative decoding** | A small **drafter** proposes several tokens; the large **target** model verifies them in parallel, preserving the target distribution while cutting serial decode steps | Leviathan, Kalman, and Matias, "Fast Inference from Transformers via Speculative Decoding," ICML 2023 (PMLR); see also §9 HCSpec / CAS-Spec field rows | Speeds generation; does not refuse generation when VoI or grammar says stop |
+| **Mixture of experts (MoE)** | Sparse gating routes each token to a few expert feed-forward modules so total parameters grow faster than active compute | Shazeer et al., "Outrageously Large Neural Networks," ICLR 2017 (arXiv:1701.06538); Lepikhin et al., GShard, 2020 (arXiv:2006.16668); Fedus et al., Switch Transformers, JMLR 2022 | Capacity *inside* the generative corridor; Mixture of Limits floors live *outside* generation (§2, §9) |
+| **State-space models (SSMs)** | Sequence models with a compact recurrent state and near-linear scaling in context (selective SSM / **Mamba**) as an alternative or complement to attention | Gu and Dao, "Mamba: Linear-Time Sequence Modeling with Selective State Spaces," arXiv:2312.00752 (2023); Gu, Goel, and Ré, S4, ICLR 2022 | Efficient sequence leaf; still Model LAST when used as generator; VoI and certify unchanged |
+| **Retrieval-augmented generation (RAG)** | Retrieve documents from an external index, then condition the generator on those passages so knowledge need not live only in weights | Lewis et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks," NeurIPS 2020 (arXiv:2005.11401) | Retrieval can rhyme with Lookup when the hit is certified; uncertified retrieved text remains proposal, not Deterministic commit |
+| **Reasoning models / CoT scaling** | Models trained or prompted to emit long intermediate reasoning (o1/o3-style, DeepSeek-R1, QwQ, and cousins) | OpenAI o1 public writeup (2024); DeepSeek-AI et al., DeepSeek-R1 technical report (2025); §8.8 | Extra reasoning tokens still hit VoI and energy floors; longer is not always better |
+| **Diffusion language models** | Discrete or continuous **diffusion** denoising over tokens or latents rather than purely left-to-right next-token prediction (e.g. score-entropy discrete diffusion) | Lou, Meng, and Ermon, "Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution" (SEDD), ICML 2024 (PMLR v235) | Denoising steps spend bits and joules; Landauer remains a labeled estimate only; certify before commit |
+| **Linear attention / retention variants** | Attention alternatives with linear or chunkwise cost for long context (e.g. **Retentive Network / RetNet** multi-scale retention) | Sun et al., "Retentive Network: A Successor to Transformer for Large Language Models," arXiv:2307.08621 (2023) | Cheaper long context is algorithmic efficiency; floors still stop when VoI or grammar is covered |
+
+**Teach-first takeaway.** Every live "answer" above optimizes *how* a generator runs or *which* parameters activate. Mixture of Limits asks whether the generator should run for the stated benefit, and which named floor closes first.
+
+### 8.11 AI21 Jamba, then DeepSeek / GLM: architecture brand vs implementation efficiency
+
+**Teach the public Jamba story first.** **Mamba** is a selective state-space sequence model with linear-time scaling in context (Gu and Dao, 2023). **AI21 Labs** positioned **Jamba** as a production-grade hybrid: interleaved Transformer attention layers and Mamba layers, plus mixture-of-experts on some MLPs, aimed at high throughput and a smaller key-value cache on long contexts (Lieber et al., "Jamba: A Hybrid Transformer-Mamba Language Model," arXiv:2403.19887; AI21 blog announcing Jamba; follow-on Jamba-1.5 at larger active/total parameter counts, arXiv:2408.12570). Public claims emphasized hybrid efficiency (throughput and memory vs pure Transformers of similar class) and long context (up to 256K tokens in the released configurations). Author-reported benchmark and throughput numbers are **field results**; this study does not import them as OpenIE soft-ref `measured_j`.
+
+**What moved the frontier next was not a single architecture brand.** Later open releases from Chinese labs showed that **algorithmic implementation**, training recipe, and inference engineering (often still on Transformer + MoE backbones) could take market share without waiting for the newest Western accelerator stack as the only path:
+
+- **DeepSeek.** DeepSeekMoE (Dai et al., ACL 2024) and DeepSeek-V3 (DeepSeek-AI, arXiv:2412.19437) combine fine-grained MoE, multi-head latent attention, and systems co-design (including reported FP8 mixed-precision training and pipeline overlap). DeepSeek-R1 applies large-scale reinforcement learning for reasoning traces on that efficient base. Public technical reports emphasize cost-effective training relative to closed peers; treat GPU-hour and benchmark figures as **author-reported**, not soft-ref meters.
+- **GLM / Zhipu.** The GLM family (Zhipu AI / Z.ai) progressed from dense GLM-4-class models to MoE reasoning releases such as GLM-4.5 (arXiv:2508.06471), with large total parameter counts and smaller active counts per token, plus agentic / reasoning post-training. Again, scores and active-parameter claims are field/author-reported.
+
+Other Chinese and open labs followed similar patterns: MoE routing, quantization, speculative decoding, and training-systems efficiency on hardware that Western narratives sometimes treated as second-tier. The precise competitive ranking among vendors is out of scope and changes by week. What is in scope for Mixture of Limits is the structural lesson.
+
+**Mixture of Limits reading.**
+
+1. Jamba-class hybrids are a legitimate efficiency leaf: SSM + attention + MoE can cut memory and raise throughput for long generative contexts. They remain generators. Floors still bind.
+2. DeepSeek / GLM-class results show that **implementation efficiency** (algorithms, precision, routing, RL post-training) moves the cost frontier. That is applied engineering, not a repeal of Shannon, Howard, or Landauer.
+3. No architecture announcement retires VoI, grammar coverage, labeled energy estimates, or certify-before-commit. Soft-ref `board_synth_claimed=false`; no invented `measured_j` for Jamba, DeepSeek, or GLM.
+
+**Teach-first takeaway.** Architecture fads and lab efficiency wins are real. Mixture of Limits states why they matter and where they stop: cheaper generation still stops when VoI, grammar, or energy says stop.
+
+### 8.12 Hardware economics thesis: computers are hardware; floors outlast fads
+
+**State as the study's claim (David Charlot / OpenIE framing), grounded in the sections above.**
+
+1. **Computers are hardware.** Every program runs on materials and devices: gates, memory, interconnects, power delivery, cooling. There is no software that escapes physics.
+2. **Software is written for hardware.** Instruction sets, memory hierarchies, batch sizes, and quantization schemes exist because of devices. Software is **human applied engineering** under constraints and under economic / survival motivation. It is not a separate rocket-science realm detached from cost, yield, and joules.
+3. **China showed the West a margin.** Inefficient deployment on the newest hardware leaves room. Optimized algorithms, MoE routing, training-systems co-design, and inference tricks on older or cheaper accelerators can take market share. The DeepSeek / GLM public efficiency stories (§8.11) are instances of that pattern; so are speculative decoding and quantization stacks (§8.10). Treat vendor scoreboards as field reports, not OpenIE meters.
+4. **Mixture of Limits reading.** Architecture fads (Jamba hybrids, mixture of experts, test-time compute, diffusion language models, linear attention, retrieval-augmented generation, world models, energy-based hybrids) do not retire floors. The bottleneck remains **applied mathematics embodied in materials and devices**, plus honest joule accounting. Algorithmic efficiency is real and is exactly why floors matter: cheaper implementations still stop when VoI, grammar, or energy says stop. Estimates (`estimated_j`, Landauer as labeled estimate) are not board package energy. Soft-ref never invents `measured_j`. `board_synth_claimed=false`.
+
+**Bridge.** §8.0.1 already stated that awareness of floors is not the gap; embodiment is. §8.12 adds the economic corollary: markets reward implementations that extract more work per device-dollar, and Mixture of Limits is the navigation law that keeps those implementations honest about when more work buys nothing.
+
 ## 9. Mixture of Limits is not MoE, and the model-to-model SOTA table
 
 ### 9.0 Spine (history + mathematics, not a horse race)
 
-Mixture of Limits is proven as an **information-theoretic** approach rooted in **physics**: formula/law discovery in the Newton-Kepler lineage, not excess generation. Academia already has Shannon → Landauer → complexity/VoI → symbolic and energy floors; Mixture of Limits **embodies** those floors in a commit|refuse cascade. The remaining bottleneck is applied math × materials (hardware), not an awareness gap. The table below situates field systems so readers see what they optimize (**which neural generator runs**) without turning Mixture of Limits into another SOTA horse race. For latent depth, Logical Intelligence EBM hybrids, and World Labs world models, see §8.4-§8.7: even projected-superior methods still hit the same floors. Mixture of Limits asks whether a generator should run at all, converging to VoI/floors the way physics converged to predictive laws.
+Mixture of Limits is proven as an **information-theoretic** approach rooted in **physics**: formula/law discovery in the Newton-Kepler lineage, not excess generation. Academia already has Shannon → Landauer → complexity/VoI → symbolic and energy floors; Mixture of Limits **embodies** those floors in a commit|refuse cascade. The remaining bottleneck is applied math × materials (hardware), not an awareness gap. The table below situates field systems so readers see what they optimize (**which neural generator runs**) without turning Mixture of Limits into another SOTA horse race. For latent depth, Logical Intelligence EBM hybrids, World Labs world models, test-time compute, super learning, live approach survey, Jamba/DeepSeek/GLM efficiency, and hardware economics, see §8.4-§8.12: even projected-superior methods still hit the same floors. Mixture of Limits asks whether a generator should run at all, converging to VoI/floors the way physics converged to predictive laws.
 
 ### 9.1 Law contrast (not a rebrand)
 
@@ -518,6 +594,9 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 - How VoI thresholds should be set per domain without smuggling engagement metrics as completeness (see Satiation).
 - Whether mechanism libraries (MWM cousins; AI-Newton concept base) should be imported as typed Lookup entries without breaking clean-room prove.
 - How to bind third-party EBM settle scores (e.g. Logical Intelligence-style energies) and world-model proposals (e.g. World Labs Atlas/Marble) into certify-before-commit without laundering generative output as Deterministic.
+- How to price test-time compute budgets under VoI so adaptive thinking stops when marginal CoT tokens do not change \(B\), without treating longer traces as automatic progress.
+- Whether academic super-learner libraries should be imported as typed Solver/ensemble leaves under certify, without equating them to industry superintelligence narratives.
+- How to document algorithmic-efficiency wins (DeepSeek / GLM-class MoE and systems co-design; speculative decoding) as Estimated field results beside soft-ref receipts without laundering author GPU-hours as Mixture of Limits `measured_j`.
 
 **Companions on this site**
 
@@ -525,7 +604,7 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 - [Satiation and Scarcity after Free AI](/papers/satiation/); economic done after free digital inference.
 - Living figures: [/living/mol/](/living/mol/) (companions; analytical OpCounter ≠ board power; no fake meters).
 
-**Closing sentence.** Pursuit of limits (compression into predictive law, priced information, thermodynamic honesty) is the through-line from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits is that through-line stated as a navigation law for computer intelligence; embodying it in materials remains the hard problem. Latents, EBM hybrids, and world models (§8.4-§8.7) refine generators; they do not retire the floors.
+**Closing sentence.** Pursuit of limits (compression into predictive law, priced information, thermodynamic honesty) is the through-line from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits is that through-line stated as a navigation law for computer intelligence; embodying it in materials remains the hard problem. Latents, EBM hybrids, world models, test-time compute, ensembles, and architecture-efficiency wins (§8.4-§8.12) refine generators and lower device-dollar cost; they do not retire the floors. Computers are hardware; software is applied engineering under constraints; honest joule accounting still binds.
 
 ## References
 
@@ -554,7 +633,7 @@ Primary Mixture of Limits workspace sources (not peer-reviewed publications): `m
 16. DeepMind AlphaProof / AlphaGeometry formal-math RL. *Nature* (2025). DOI: [10.1038/s41586-025-09833-y](https://doi.org/10.1038/s41586-025-09833-y).
 17. AutoSINDy (hunt note). arXiv:[2605.09696](https://arxiv.org/abs/2605.09696).
 
-### Latent / EBM hybrid / spatial world models (§8.4-§8.7)
+### Latent / EBM hybrid / spatial world models (§8.4-§8.7; continued in §8.8-§8.12)
 
 18. Bodnia, E., & Hanin, B. (21 Jan 2026). Energy-Based Models for Reasoning, LLMs for the Interface: Scaling Reasoning with Agentic AI. Logical Intelligence blog. https://logicalintelligence.com/blog/energy-based-models-for-reasoning
 19. Logical Intelligence. Kona 1.0 product page. https://logicalintelligence.com/kona-ebms-energy-based-models (accessed 2026-10-01).
@@ -564,13 +643,48 @@ Primary Mixture of Limits workspace sources (not peer-reviewed publications): `m
 23. World Labs Team (1 Sep 2026). Atlas: A World Model for Spatial Intelligence. World Labs blog. https://www.worldlabs.ai/blog/atlas
 24. Li, F.-F. From Words to Worlds: Spatial Intelligence is AI's Next Frontier (public essay / a16z feature excerpt). https://www.a16z.news/p/from-words-to-worlds-spatial-intelligence (accessed 2026-10-01).
 
+### Test-time compute / process reward / reasoning models (§8.8)
+
+25. OpenAI (2024). Learning to reason with LLMs (o1 public writeup). https://openai.com/index/learning-to-reason-with-llms/
+26. Lightman, H., et al. (2023). Let's Verify Step by Step. arXiv:[2305.20050](https://arxiv.org/abs/2305.20050). ICLR 2024.
+27. Snell, C., et al. / related inference-time scaling surveys. Inference-Time Scaling for Complex Tasks (survey snapshot). arXiv:[2504.00294](https://arxiv.org/abs/2504.00294).
+28. Wang, Y., et al. / ACL 2025 line on o1-like test-time scaling. Revisiting the Test-Time Scaling of o1-like Models. ACL 2025. https://aclanthology.org/2025.acl-long.232.pdf
+
+### Super learning (§8.9)
+
+29. van der Laan, M. J., Polley, E. C., & Hubbard, A. E. (2007). Super Learner. *Statistical Applications in Genetics and Molecular Biology*, 6(1). Related working paper: Polley & van der Laan, Super Learner In Prediction, U.C. Berkeley Biostatistics Working Paper 266. https://biostats.bepress.com/ucbbiostat/paper266/
+30. Wolpert, D. H. (1992). Stacked generalization. *Neural Networks*, 5(2), 241–259.
+31. Breiman, L. (1996). Stacked regressions. *Machine Learning*, 24, 49–64.
+
+### Live approaches survey (§8.10)
+
+32. Leviathan, Y., Kalman, M., & Matias, Y. (2023). Fast Inference from Transformers via Speculative Decoding. *ICML* (PMLR). https://proceedings.mlr.press/v202/leviathan23a.html
+33. Shazeer, N., et al. (2017). Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer. ICLR. arXiv:[1701.06538](https://arxiv.org/abs/1701.06538).
+34. Lepikhin, D., et al. (2020). GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding. arXiv:[2006.16668](https://arxiv.org/abs/2006.16668).
+35. Fedus, W., Zoph, B., & Shazeer, N. (2022). Switch Transformers. *JMLR*, 23(120).
+36. Gu, A., & Dao, T. (2023). Mamba: Linear-Time Sequence Modeling with Selective State Spaces. arXiv:[2312.00752](https://arxiv.org/abs/2312.00752).
+37. Gu, A., Goel, K., & Ré, C. (2022). Efficiently Modeling Long Sequences with Structured State Spaces (S4). ICLR.
+38. Lewis, P., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. *NeurIPS*. arXiv:[2005.11401](https://arxiv.org/abs/2005.11401).
+39. Lou, A., Meng, C., & Ermon, S. (2024). Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution (SEDD). *ICML* (PMLR v235). https://proceedings.mlr.press/v235/lou24a.html
+40. Sun, Y., et al. (2023). Retentive Network: A Successor to Transformer for Large Language Models. arXiv:[2307.08621](https://arxiv.org/abs/2307.08621).
+
+### AI21 Jamba / DeepSeek / GLM (§8.11)
+
+41. Lieber, O., et al. (2024). Jamba: A Hybrid Transformer-Mamba Language Model. arXiv:[2403.19887](https://arxiv.org/abs/2403.19887). AI21 announcement: https://www.ai21.com/blog/announcing-jamba/
+42. Team Jamba / AI21 (2024). Jamba-1.5: Hybrid Transformer-Mamba Models at Scale. arXiv:[2408.12570](https://arxiv.org/abs/2408.12570).
+43. Dai, D., et al. (2024). DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models. *ACL*. https://aclanthology.org/2024.acl-long.70.pdf
+44. DeepSeek-AI (2024). DeepSeek-V3 Technical Report. arXiv:[2412.19437](https://arxiv.org/abs/2412.19437).
+45. DeepSeek-AI (2025). DeepSeek-R1 technical report / reasoning release (public technical materials).
+46. GLM-4.5 Team / Zhipu AI (2025). GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models. arXiv:[2508.06471](https://arxiv.org/abs/2508.06471).
+47. GLM Team (2024). ChatGLM: A Family of Large Language Models from GLM-130B to GLM-4 All Tools. arXiv:[2406.12793](https://arxiv.org/abs/2406.12793).
+
 ### OpenIE companions
 
-25. Charlot, D. Notational Intelligence as Commit Law. research.openie.dev/papers/ni/.
-26. Charlot, D. Satiation and Scarcity after Free AI. research.openie.dev/papers/satiation/.
-27. OpenIE Periodic Stack; compute.openie.dev (258 primitives / 33 families).
+48. Charlot, D. Notational Intelligence as Commit Law. research.openie.dev/papers/ni/.
+49. Charlot, D. Satiation and Scarcity after Free AI. research.openie.dev/papers/satiation/.
+50. OpenIE Periodic Stack; compute.openie.dev (258 primitives / 33 families).
 
-Kepler's laws / Newton's *Principia* / Brahe's observational program are treated as historical common knowledge in §8.1; imprint DOIs for critical editions **TBD** if a journal version requires them. Raiffa decision-analysis imprint DOI **TBD**. Press-wire details for Logical Intelligence beyond the company blog (exact pilot lists, internal AGI claims) treated as company-reported; not independently audited here.
+Kepler's laws / Newton's *Principia* / Brahe's observational program are treated as historical common knowledge in §8.1; imprint DOIs for critical editions **TBD** if a journal version requires them. Raiffa decision-analysis imprint DOI **TBD**. Press-wire details for Logical Intelligence beyond the company blog (exact pilot lists, internal AGI claims) treated as company-reported; not independently audited here. Author-reported GPU-hours, throughput, and benchmark scores for Jamba, DeepSeek, GLM, speculative decoding, and test-time scaling papers are **field / author-reported**; not soft-ref `measured_j`.
 
 ## Appendix A. Honesty checklist
 
@@ -583,7 +697,7 @@ Kepler's laws / Newton's *Principia* / Brahe's observational program are treated
 - §§6 and 9 Leapfrog placeholders intentionally incomplete
 - DOIs only when verified via search/source inventory; otherwise marked TBD
 - Bottleneck claim is materials/applied-math embodiment. Settled IT/physics already name the floors
-- §8.4-§8.7 map latents / Logical Intelligence / World Labs onto floors; not a generator horse race; no invented product joules
+- §8.4-§8.12 map latents / Logical Intelligence / World Labs / test-time compute / super learning / live approaches / Jamba–DeepSeek–GLM / hardware economics onto floors; not a generator horse race; no invented product joules; estimates ≠ board package energy
 
 ## Appendix B. Reproducibility pointers
 
