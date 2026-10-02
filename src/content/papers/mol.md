@@ -15,7 +15,7 @@ board_synth_claimed: false
 
 Mixture of Limits is a navigation law for computer intelligence: there exist **floors** past which additional tokens, parameters, or joules do not purchase verifiable progress on a task coordinate. The law is information-theoretic and rooted in physics. Across human scientific history, compression into predictive formulas and invariants has repeatedly beaten excess enumeration of observations: from Kepler's laws over Tycho's tables, through Newton's closed forms, to Shannon's bit accounting and Landauer's thermodynamic floor on irreversible erasure. Mixture of Limits operationalizes that lineage for machines: **Lookup → Formula → Solver/settle → Model LAST**, with close owned as propose → certify → commit|refuse → receipt.
 
-The industry default escalates Mixture-of-Experts (MoE) capacity *inside* a generative corridor. Mixture of Limits instead names floors *outside* generation: Value of Information (VoI), grammar coverage, Landauer/joule estimate, certificate, and settle-refuse. It demotes the neural net to a residual leaf. Soft-ref `mol prove` (~29 VERIFIED criteria in the mixture-of-limits workspace) is claimable as **constructive existence in software**. This study does **not** claim FPGA or board package energy. Landauer appears only as a labeled estimate. `measured_j` is never invented; `board_synth_claimed=false`.
+The industry default escalates Mixture-of-Experts (MoE) capacity *inside* a generative corridor. Mixture of Limits instead names floors *outside* generation: Value of Information (VoI), grammar coverage, Landauer/joule estimate, certificate, and settle-refuse. It demotes the neural net to a residual leaf. Soft-ref `mol prove` (**43 VERIFIED** criteria in the mixture-of-limits workspace, including product A1–A14) is claimable as **constructive existence in software**. This study does **not** claim FPGA or board package energy. Landauer appears only as a labeled estimate. `measured_j` is never invented; `board_synth_claimed=false`.
 
 ### Claims and measurement bounds
 
@@ -120,7 +120,7 @@ Receipts may annotate `landauer_floor_J` from this formula. That annotation is e
 
 **Historical rhyme.** Kepler did not need every future observation once the three laws closed the grammar of planetary motion for the epoch. Newton did not need a larger ephemeris table to predict a new orbit once \(F=ma\) and inverse-square gravitation covered the coordinate. Shannon did not need infinite samples to bound channel capacity. Landauer did not need a particular chip to state a thermodynamic lower bound. Mixture of Limits spine is the same move for CI: bind a floor, close cheapest-sufficient, refuse when the floor says stop.
 
-**Constructive existence (software).** Soft-ref `cargo run -p mol-cli -- prove` is required to print VERIFIED per criterion and exit 0 (~29 soft-ref criteria spanning deterministic close, formula/lookup without model, VoI refuse, settle commit+refuse, certificate refuse, capability default-deny, receipt honesty, replay-class coercion deny, Periodic Stack subset navigation, μ catalog, transcript replay, Z2 cite / Z1 compose, agent mailbox, bitemporal memory, fabric routing, desktop headless shell, OS meter honesty, WASM capsule, Agent Lane, multi-fabric receipts, ecosystem e2e certify; see PLAN.md in the Mixture of Limits workspace). That is claimable as constructive existence **in software**. It is **not** a board energy claim. Detailed prove↔claim mapping is Leapfrog-owned (§6).
+**Constructive existence (software).** Soft-ref `cargo run -p mol-cli -- prove` is required to print VERIFIED per criterion and exit 0 (**43** criteria spanning deterministic close, formula/lookup without model, VoI refuse, settle commit+refuse, certificate refuse, capability default-deny, receipt honesty, replay-class coercion deny, Periodic Stack subset navigation, μ catalog, transcript replay, Z2 cite / Z1 compose, agent mailbox, bitemporal memory, fabric routing, desktop headless shell, OS meter honesty, WASM capsule, Agent Lane, multi-fabric receipts, ecosystem e2e certify, and product A1–A14 including Tier-1 RAPL/NVML/macOS-SMC meter honesty; see PLAN.md in the Mixture of Limits workspace). That is claimable as constructive existence **in software**. It is **not** a board energy claim. Detailed prove↔claim mapping is Leapfrog-owned (§6).
 
 ---
 
@@ -626,6 +626,25 @@ cargo run -p mol-cli -- prove   # includes A11 + A14; soft-ref ALL VERIFIED
 Living figures under [/living/mol/](/living/mol/) remain companions (cascade / floors / close). They do not claim Arena GPU package joules.
 
 
+### 11.2 Tier-1 OS meters (RAPL / NVML / macOS equivalent)
+
+Optional feature `energy-meter` / `os-meter` ships **Tier-1** probes so package `measured_j` populates **only** on real readings:
+
+| Platform | Probe | Package `measured_j` |
+|---|---|---|
+| Linux | RAPL/powercap `energy_uj` delta | package domain when present |
+| NVIDIA | `nvidia-smi` `power.draw`×window or `energy.consumed` mJ delta | device-total GPU energy as Metered package (`MeasureSource::Nvml`) |
+| macOS | IOReport rails + SMC `PSTR` watts×window (no sudo); root `powermetrics` when available | SMC `PSTR` (no Energy Model Package channel — never rail-sum) |
+
+Soft-ref `mol prove` keeps the feature **off** (`measured_j=None`). Acceptance **A13** stamps RAPL + NVML + SMC fixtures and forbids inventing from utilization %. Estimates ≠ `measured_j`. `board_synth_claimed=false`.
+
+```bash
+cargo run -p mol-cli --features energy-meter -- meter --sample-ms 200
+cargo run -p mol-cli -- prove   # A13 Tier-1 honesty + Tier-2 StubShuntHal
+```
+
+Canonical notes: `docs/tier1-os-meters.md` and `docs/macos-package-meter.md` in [openIE-dev/mixture-of-limits](https://github.com/openIE-dev/mixture-of-limits).
+
 ### 11.3 Primitive Distillation Loop (hardened)
 
 After a **certified** Model LAST commit, `mol distill` appends a Lookup or Formula entry to `DistillStore` with Deterministic replay (uncertified proposals never distill). Cascade `with_distill_store` then makes a **second pass** on the distilled pattern close at Lookup/Formula **without** opening Model LAST (`mol prove` A12). Soft-ref receipts keep `estimated_j` labeled Estimated; never invent `measured_j`. Estimates ≠ `measured_j`.
@@ -634,6 +653,19 @@ After a **certified** Model LAST commit, `mol distill` appends a Lookup or Formu
 cargo run -p mol-cli -- distill "ticket summary" --gear lookup --store product/fixtures/distill_store.json
 cargo run -p mol-cli -- prove   # A12: Model LAST → distill → second-pass Lookup without model
 ```
+
+### 11.4 Product acceptance and publish path
+
+Mixture of Limits product embodiment lives in-repo under `product/` (chore YAML, ACCEPTANCE A1–A14, ARCHITECTURE, ARENA, PUBLISH). Soft-ref constructive existence is `mol prove` (**43 VERIFIED** as of Fri Oct 2, 2026 America/New_York), including A13 Tier-1 meter honesty and A14 arena head-on. Canonical code: [openIE-dev/mixture-of-limits](https://github.com/openIE-dev/mixture-of-limits). Research hub study prose is this page; living figures under [/living/mol/](/living/mol/) remain soft-ref companions and do not claim board package joules.
+
+```bash
+cargo test --workspace
+cargo run -p mol-cli -- prove          # A1–A14
+cargo run -p mol-cli -- run --chore product/mol.yaml
+cargo run -p mol-cli -- arena
+```
+
+Publish path: keep `product/` mirrored in the clean-room repo; optional separate `mixture-of-limits-product` repo stays deferred. Estimates ≠ `measured_j`. Say **Mixture of Limits** in full on first use in product voice.
 
 ## References
 
