@@ -13,7 +13,7 @@ board_synth_claimed: false
 
 ## Abstract
 
-Many planning models treat demand for machine intelligence as if it had no finish line. Consumer theory already contains the opposite object. Satiation, and the related bliss point, is the region in which further units of a good do not raise utility and may lower it (Andersen, 2001). This paper defines an operational cousin for work and care: a loop is economically done when a stated completeness predicate holds, and further synthesis on that loop does not increase the predicate. Engagement time, token count, and seat count are different variables. They can rise after completeness.
+Many planning models treat demand for machine intelligence as if it had no finish line. Consumer theory already contains the opposite object. Satiation, and the related bliss point, is the region in which further units of a good do not raise utility and may lower it (Andersen, 2001). This paper defines an operational cousin for work and care: a loop is Economic Reality of Satiation when a stated completeness predicate holds, and further synthesis on that loop does not increase the predicate. Engagement time, token count, and seat count are different variables. They can rise after completeness.
 
 A second fact is about price, not physics. Epoch AI reports large declines in the price of a fixed inference performance (Epoch AI, 2025; Emberson and Roodman, 2026). This paper calls the resulting situation free at the margin for digital chores whose output is information and whose completeness test is finite. The phrase does not mean that joules are free, that a plant may move without a certificate, or that care labor has been automated away. Landauer's bound is a lower bound on erasure, not a description of current accelerators (Landauer, 1961; Horowitz, 2014).
 
@@ -28,7 +28,7 @@ No field-programmable gate array (FPGA) has been synthesized or metered for this
 | Open Interface Engineering (OpenIE) | The organization maintaining the software reference and these two studies. |
 | Satiation | In the cited theory, a fall of marginal utility to zero or below. In this paper's operational clause, further synthesis does not increase a stated completeness predicate. |
 | Bliss point | A bundle at which additional quantity of the good reduces utility. A textbook object. Not estimated here. |
-| Economic done | The event that the completeness predicate becomes true. Orthogonal to model scale. |
+| Economic Reality of Satiation | The event that the completeness predicate becomes true. Orthogonal to model scale. |
 | Work completeness | A stated work stop: ticket closed, patch merged, report filed, ledger reconciled, or an equivalent written test. |
 | Care completeness | A stated care stop: assessment finished, medications reconciled, receiving party notified, person in a safe state, or an equivalent written test. |
 | Free at the margin | Marginal price of a digital synthesis step trends toward bundled or negligible money price. Joules and commits stay costly. |
@@ -36,7 +36,7 @@ No field-programmable gate array (FPGA) has been synthesized or metered for this
 | Energy-First Architecture (EFA) | The choice to keep an energy predicate inside permission. |
 | Look-up table (LUT) | Discrete allow map used by the reference gate. |
 | Control barrier function (CBF) | Set-invariance certificate, optional conjunct (Ames et al., 2019). |
-| Model Context Protocol (MCP) | Tool transport. Not a detector of economic done. |
+| Model Context Protocol (MCP) | Tool transport. Not a detector of Economic Reality of Satiation. |
 | System One | Typed software decisions for known option sets. A proposer, not a completeness proof. |
 | Artificial general intelligence (AGI) | A broad capability target. Not a price observation and not a result of this paper. |
 | Device under test (DUT) | Metered hardware under a stated workload. None reported. |
@@ -62,15 +62,15 @@ This paper's positive claim is definitional and bibliographic. Satiation is a co
 
 ### Companion laws
 
-This study is the **Economic done** law in the research catalog triad.
+This study is the **Economic Reality of Satiation** law in the research catalog triad.
 
 | Role | Study | Owns |
 |---|---|---|
 | **Navigation** | [Mixture of Limits](https://research.openie.dev/papers/mol/) | Lookup → Formula → Solver → Model LAST; floors including Value of Information (VoI). |
 | **Commit** | [Notational Intelligence as Commit Law](https://research.openie.dev/papers/ni/) | propose → certify → commit\|refuse → receipt; physical permit on the gate. |
-| **Economic done** | This paper | Completeness predicate `C(z)`; stop when VoI is zero on that predicate, or when budget / policy refuse fires. |
+| **Economic Reality of Satiation** | This paper | Completeness predicate `C(z)`; stop when VoI is zero on that predicate, or when budget / policy refuse fires. |
 
-Mixture of Limits navigates. Notational Intelligence owns irreversible commit. This paper owns economic done after free-at-the-margin digital inference. Free at the margin is not free joules. Estimates ≠ board-measured `measured_j`.
+Mixture of Limits navigates. Notational Intelligence owns irreversible commit. This paper owns Economic Reality of Satiation after free-at-the-margin digital inference. Free at the margin is not free joules. Estimates ≠ board-measured `measured_j`.
 
 ## 2. Related work
 
@@ -78,7 +78,7 @@ Mixture of Limits navigates. Notational Intelligence owns irreversible commit. T
 
 Andersen (2001) treats satiation inside an evolutionary model of structural change, not as a verbal preference. The durable element for this paper is the economic one: marginal valuation of a good can reach zero. Textbook bliss points make the geometry explicit. For a bundle `x*`, utility does not increase in a coordinate past `x*`, and a smooth representation can have negative marginal utility there. A quadratic illustration, `U(x) = -a (x - x*)^2` for `a > 0`, has a maximum at `x*` and a negative derivative beyond it. That function is a model used to teach the definition. It is not fitted to agent logs in this study. No coefficient `a` is reported.
 
-The operational translation requires a predicate the model does not know unless someone states it. Let `C(z) = 1` when the written completeness test for episode `z` holds, else 0. Satiation on that episode means there exists a time `t*` such that `C` is 1 at `t*` and additional model calls after `t*` leave `C` unchanged. Economic done is the event `C` becomes 1. This is a definition. It becomes an empirical claim only with a labeled set of episodes and a detector whose errors are counted. Section 4 does not contain that count.
+The operational translation requires a predicate the model does not know unless someone states it. Let `C(z) = 1` when the written completeness test for episode `z` holds, else 0. Satiation on that episode means there exists a time `t*` such that `C` is 1 at `t*` and additional model calls after `t*` leave `C` unchanged. The internal event **economic done** is when `C` becomes 1; this paper names that layer Economic Reality of Satiation. This is a definition. It becomes an empirical claim only with a labeled set of episodes and a detector whose errors are counted. Section 4 does not contain that count.
 
 ### 2.2 Tasks, displacement, and cost disease
 
@@ -118,7 +118,7 @@ Goldman Sachs published a research note titled "Gen AI: Too Much Spend, Too Litt
 
 ### 2.7 Commit records as the interface, not the demand estimate
 
-The companion paper specifies proposal, certificate, refuse reason, and commit decision. Compose modes include LUT allow and energy, with an optional CBF. Refuse reasons include `policy` and `budget_exceeded` as well as `energy_veto`. That taxonomy can represent economic done and physical refusal as different codes. Representation is not identification. A code that fires does not prove that a human was at a bliss point. It proves that the runtime classified the step under a rule someone installed.
+The companion paper specifies proposal, certificate, refuse reason, and commit decision. Compose modes include LUT allow and energy, with an optional CBF. Refuse reasons include `policy` and `budget_exceeded` as well as `energy_veto`. That taxonomy can represent Economic Reality of Satiation and physical refusal as different codes. Representation is not identification. A code that fires does not prove that a human was at a bliss point. It proves that the runtime classified the step under a rule someone installed.
 
 ## 3. Definitions and methods
 
@@ -131,7 +131,7 @@ Let an episode be a sequence of model or tool calls `z_1, ..., z_T` together wit
 
 `C` is not a probability. A detector that outputs a score still needs a threshold and an error table before it is a predicate in the sense of Section 4's missing experiment.
 
-Economic done at time `t*` means `C = 0` on the prefix before `t*` and `C = 1` at `t*`, for the chosen test. Satiation relative to model calls means that for all `t > t*`, extra calls do not flip any clause of `C` from false to true. Calls that undo `C` are harm, not value. The definition does not say humans always know `t*`. It says that if no `C` is written, the satiation claim is not yet a statement about that product.
+The internal event **economic done** at time `t*` means `C = 0` on the prefix before `t*` and `C = 1` at `t*`, for the chosen test. This paper names the catalog layer **Economic Reality of Satiation**. Satiation relative to model calls means that for all `t > t*`, extra calls do not flip any clause of `C` from false to true. Calls that undo `C` are harm, not value. The definition does not say humans always know `t*`. It says that if no `C` is written, the satiation claim is not yet a statement about that product.
 
 Free at the margin is a statement about money price. Let `p_t(q)` be the price of synthesis service `q` at date `t`. The archival price evidence is that `p_t` for fixed benchmark performance has fallen at the rates Epoch reports. Free at the margin means `p_t` is low enough that a seat license is a weak explanation of cost for that chore. It does not mean the integral of power over time is zero.
 
@@ -178,7 +178,7 @@ Stage B, shipped: WASM compilation of the decision core and a WebGPU view of the
 
 Stage C, board programmed for the companion's commit-gate demo (closed-loop pendulum with LUT allow, Safe PH, and Ames energy-set CBF); energy still unmetered. The Alchitry Pt V2 has no onboard joule meter. UART decision agreement is not a watt reading. Vendor specifications on SparkFun's page (XC7A100T-2FGG84I, 101,440 logic cells, 240 DSP48E1 slices, 4,860 Kb block RAM, 256 MB DDR3L) are not DUT energy results. Metering methods: companion guide [/living/fpga-sim/alchitry/#energy](https://research.openie.dev/living/fpga-sim/alchitry/#energy).
 
-This paper adds a mapping, not a fourth stage. Economic done, if encoded as `policy` or `budget_exceeded`, should appear in the same trace as `energy_veto`, so a future split (Section 3.3) can group reason codes. The browser view would make that grouping readable. It would not create the missing corpus. We have not synthesized or metered the FPGA board.
+This paper adds a mapping, not a fourth stage. Economic Reality of Satiation, if encoded as `policy` or `budget_exceeded`, should appear in the same trace as `energy_veto`, so a future split (Section 3.3) can group reason codes. The browser view would make that grouping readable. It would not create the missing corpus. We have not synthesized or metered the FPGA board.
 
 
 ### 2.8 Fidelity criteria and stop rules
@@ -296,7 +296,7 @@ Let `x` be call count, `s` session length, `J_pre` and `J_post` energy before an
 | `s` increased | welfare increased |
 | `p` fell (S-2) | `J_post = 0` |
 | `C = 1` | the detector's error rate is known |
-| physical refuse fired (S-8) | the chore was economically done |
+| physical refuse fired (S-8) | the completeness predicate held |
 | ownership of phones is high (S-5) | marginal value of another model call is zero |
 | cycle-share prices boomed and busted (S-4) | households reached a transport bliss point |
 
@@ -361,7 +361,7 @@ Internal validity of the price claim. S-2 inherits whatever identification Epoch
 
 External validity. Work and care, as defined, exclude military rivalry and may exclude research. Phone ownership does not transfer to agent products. Bicycle share prices do not transfer to software margins. The constructed episodes are not a sample.
 
-Measurement validity. No split joules, no detector confusion matrix, no DUT. The companion's false-allow counts are about a pendulum oracle, not about economic done. Importing them as evidence of satiation would be a category error. Vendor FPGA specifications are not energy.
+Measurement validity. No split joules, no detector confusion matrix, no DUT. The companion's false-allow counts are about a pendulum oracle, not about Economic Reality of Satiation. Importing them as evidence of satiation would be a category error. Vendor FPGA specifications are not energy.
 
 Omitted variable. New tasks can absorb spending released by cheap synthesis. Section 5.1 states this. A roadmap that treats per-chore satiation as a forecast of aggregate compute demand is not licensed by this paper.
 

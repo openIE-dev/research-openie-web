@@ -74,7 +74,7 @@ This study is the **Commit** law in the research catalog triad.
 |---|---|---|
 | **Navigation** | [Mixture of Limits](https://research.openie.dev/papers/mol/) | Lookup → Formula → Solver → Model LAST; VoI / grammar / energy / certificate / settle-refuse floors. |
 | **Commit** | This paper | propose → certify → commit\|refuse → receipt. Notational Intelligence owns irreversible commit. |
-| **Economic done** | [Satiation and Scarcity after Free AI](https://research.openie.dev/papers/satiation/) | Completeness predicate / budget stop on the same refuse taxonomy. |
+| **Economic Reality of Satiation** | [Satiation and Scarcity after Free AI](https://research.openie.dev/papers/satiation/) | Completeness predicate / budget stop on the same refuse taxonomy. |
 
 Navigation chooses the gear. This paper records the irreversible branch. Satiation supplies the economic stop. Estimates remain estimates; package `measured_j` only when Metered.
 
@@ -516,7 +516,7 @@ Out of scope for the emulator: training DiffLogic in the browser, claiming Artix
 
 ## Appendix C. Relation to the companion studies
 
-The research catalog triad is Navigation / Commit / Economic done. This paper is Commit.
+The research catalog triad is Navigation / Commit / Economic Reality of Satiation. This paper is Commit.
 
 "Satiation and Scarcity after Free AI" uses the same commit record for a different predicate: stop when a stated work or care loop is complete. The shared sentence is compositional. Refuse if the chore is already complete, or if the physical predicate fails. This paper supplies the physical predicate and the measurement classes. It does not estimate a demand curve.
 

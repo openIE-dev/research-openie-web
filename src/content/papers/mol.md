@@ -27,19 +27,19 @@ Information theory names the modern accounting of that pattern. Shannon (1948) p
 
 **Thesis.** Pursuit of limits is the path toward AGI-grade reliability. Excess-token and MoE scaling diverge from true VoI for a given benefit. Mixture of Limits is the executable navigation law that binds those floors (VoI, grammar, Landauer/joules as estimate, certificate, settle-refuse) against industry Mixture-of-Experts. **The industry race is a race to the plateau floors, not unbounded scale:** once VoI is zero past a named floor, more parameters and tokens buy nothing verifiable on that coordinate—only energy/compute optimization on the plateau remains. **Addendum:** Shannon, Landauer, Kolmogorov/Solomonoff/Chaitin, Howard (VoI), and formula-first science AI already state these floors as settled theory. The remaining bottleneck is **applied mathematics embodied in materials and physical hardware**. **Frontier addendum (§8.4-§8.14): SOTA at the plateau.** Once the floor is known and Value of Information is zero past it, the only remaining work is optimize energy and compute on that plateau: cheapest-sufficient Lookup → Formula → Solver → Model LAST. Deeper latents, energy-based hybrids, world models, test-time compute, super learning, SSM hybrids, mixture of experts, transmission / gearing / cascade / memory-context / test-time methods, and the cross-field plateau moves in §8.14 are **implementation options for plateau spend**—not a narrative race among generators. They do not cancel VoI, grammar, energy, or certify floors. Mixture of Limits remains the navigation law. Dual-phase perception (§11.1) bounds the unstructured front door without retiring Model LAST for residual reasoning. The hardware-economics reading (§8.12) states that computers are hardware, software is applied engineering under constraints, and plateau spend still binds to floors on real devices. §8.13 organizes verified public reports by technique—transmission, gearing/MoE routing, cascade, memory/context, and test-time—as sources for plateau options. §8.14 races major AI/ML fields to the floor that binds each.
 
-This paper's contribution is the study prose for that law as published on research.openie.dev, grounded in the clean-room `mixture-of-limits` software reference (Apache-2.0 OR MIT). Companion studies already on this site supply the commit-record interface ([Notational Intelligence as Commit Law](/papers/ni/)) and the economic stop after free digital inference ([Satiation and Scarcity after Free AI](/papers/satiation/)). Mixture of Limits is the navigation law those companions sit under: NI owns irreversible commit shape; Satiation owns economic done; Mixture of Limits owns *which gear closes* and *when refuse is success*.
+This paper's contribution is the study prose for that law as published on research.openie.dev, grounded in the clean-room `mixture-of-limits` software reference (Apache-2.0 OR MIT). Companion studies already on this site supply the commit-record interface ([Notational Intelligence as Commit Law](/papers/ni/)) and the economic stop after free digital inference ([Satiation and Scarcity after Free AI](/papers/satiation/)). Mixture of Limits is the navigation law those companions sit under: NI owns irreversible commit shape; Satiation owns Economic Reality of Satiation; Mixture of Limits owns *which gear closes* and *when refuse is success*.
 
 Three measurement facts constrain every later number. First, joules from catalog surrogates and OpCounter-style analytics are **estimates**, not board power. Second, Landauer annotations are **estimates**, distinct from RAPL/NVML/`measured_j`. Third, `board_synth_claimed=false`; package `measured_j` is set only when a Metered probe returns a reading.
 
 ### Companion laws
 
-Three studies on this catalog form one stack: **Navigation**, **Commit**, and **Economic done**. They compose. They do not collapse into one paper.
+Three studies on this catalog form one stack: **Navigation**, **Commit**, and **Economic Reality of Satiation**. They compose. They do not collapse into one paper.
 
 | Role | Study | Owns |
 |---|---|---|
 | **Navigation** | [Mixture of Limits](https://research.openie.dev/papers/mol/) | Which gear closes: Lookup → Formula → Solver → Model LAST. Floors include Value of Information (VoI), grammar coverage, energy estimate, Energy-First Architecture (EFA) / certificate refuse, and settle-refuse. |
 | **Commit** | [Notational Intelligence as Commit Law](https://research.openie.dev/papers/ni/) | Irreversible close shape: propose → certify → commit\|refuse → receipt. Notational Intelligence owns the commit record. Analytical joules here are estimates; package `measured_j` only when Metered. |
-| **Economic done** | [Satiation and Scarcity after Free AI](https://research.openie.dev/papers/satiation/) | Stop when VoI is zero on a stated completeness predicate, or when budget / policy refuse fires. Free at the margin for digital inference is not free joules and not free actuation. |
+| **Economic Reality of Satiation** | [Satiation and Scarcity after Free AI](https://research.openie.dev/papers/satiation/) | Stop when VoI is zero on a stated completeness predicate, or when budget / policy refuse fires. Free at the margin for digital inference is not free joules and not free actuation. |
 
 ```
 ┌──────────────────────────────────────────────────────────┐
@@ -55,7 +55,7 @@ Three studies on this catalog form one stack: **Navigation**, **Commit**, and **
 └────────────────────────────┬─────────────────────────────┘
                              ▼
 ┌──────────────────────────────────────────────────────────┐
-│  Economic done — Satiation and Scarcity after Free AI    │
+│  Economic Reality of Satiation — Satiation and Scarcity after Free AI    │
 │  VoI = 0 on completeness C(z), or budget / policy hit    │
 └──────────────────────────────────────────────────────────┘
 ```
@@ -64,11 +64,11 @@ Three studies on this catalog form one stack: **Navigation**, **Commit**, and **
 flowchart TB
   NAV["Navigation<br/>Mixture of Limits<br/>Lookup → Formula → Solver → Model LAST"]
   COM["Commit<br/>Notational Intelligence as Commit Law<br/>propose → certify → commit|refuse → receipt"]
-  ECO["Economic done<br/>Satiation and Scarcity after Free AI<br/>VoI = 0 or budget hit"]
+  ECO["Economic Reality of Satiation<br/>Satiation and Scarcity after Free AI<br/>VoI = 0 or budget hit"]
   NAV --> COM --> ECO
 ```
 
-Mixture of Limits owns *which gear closes* and *when refuse is success*. Notational Intelligence owns the irreversible commit shape. Satiation owns economic done. Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`.
+Mixture of Limits owns *which gear closes* and *when refuse is success*. Notational Intelligence owns the irreversible commit shape. Satiation owns Economic Reality of Satiation. Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`.
 
 ### OpenIE map (no prior literacy assumed)
 
@@ -87,7 +87,7 @@ This study lives inside the OpenIE family of sites. Readers do not need those si
 
 Other names this paper uses without treating them as assumed literacy: **MathGround** denotes the OpenIE cascade / replay-class discipline that enforces Lookup → Formula → Solver → Model LAST; **WCA** denotes capability / certify refuse adapters (live MCP path remains soft-ref roadmap); **leapfrog / `openie-path`** denotes ask-bridge adapters (stubs on the proven path). Living companions for this study: [/living/mol/](/living/mol/). FPGA commit figures for NI: [/living/fpga-sim/](/living/fpga-sim/).
 
-Scope. Companion laws (Navigation / Commit / Economic done) and the OpenIE map above name the catalog triad and stack / compute / knowledge / synthesis / verify / research before any later allusion. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine \(E(x) \ge \theta(D)\cdot\mu(S,V)\). Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (energy-based model / large language model / latent hybrid), World Labs (spatial world models), and **SOTA at the plateau** (§8.7): once VoI is zero past the floor, plateau spend is the only work—test-time compute, super learning, live SOTA methods (SSMs, MoE, RAG, speculative decode, …), SSM hybrids / MoE / implementation efficiency (including Jamba-class, DeepSeek, GLM as options), hardware economics (including edge / neuromorphic soft-ref), plateau techniques for transmission / gearing / cascade / memory-context / test-time (§8.13), industry gap levers (Mixture-of-Depths, AWQ/GPTQ/FP8, vLLM/SGLang; §8.10.1), and the cross-field **race to plateau floors** table (§8.14: RLHF, diffusion, GNNs, multimodal, federated/continual, pruning/KD/NAS, Bayesian/conformal/causal/active, GraphRAG, agent memory, structured generation, CUDA Graphs). Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits. Section 11 states engineering gaps to close—dual-phase front-door perception, O(1) meta-routing, Primitive Distillation for open grammars, Tier 0/1/2 measurement realism, and a declarative DX roadmap—as plateau work under the same floors, not apologies.
+Scope. Companion laws (Navigation / Commit / Economic Reality of Satiation) and the OpenIE map above name the catalog triad and stack / compute / knowledge / synthesis / verify / research before any later allusion. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine \(E(x) \ge \theta(D)\cdot\mu(S,V)\). Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (energy-based model / large language model / latent hybrid), World Labs (spatial world models), and **SOTA at the plateau** (§8.7): once VoI is zero past the floor, plateau spend is the only work—test-time compute, super learning, live SOTA methods (SSMs, MoE, RAG, speculative decode, …), SSM hybrids / MoE / implementation efficiency (including Jamba-class, DeepSeek, GLM as options), hardware economics (including edge / neuromorphic soft-ref), plateau techniques for transmission / gearing / cascade / memory-context / test-time (§8.13), industry gap levers (Mixture-of-Depths, AWQ/GPTQ/FP8, vLLM/SGLang; §8.10.1), and the cross-field **race to plateau floors** table (§8.14: RLHF, diffusion, GNNs, multimodal, federated/continual, pruning/KD/NAS, Bayesian/conformal/causal/active, GraphRAG, agent memory, structured generation, CUDA Graphs). Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits. Section 11 states engineering gaps to close—dual-phase front-door perception, O(1) meta-routing, Primitive Distillation for open grammars, Tier 0/1/2 measurement realism, and a declarative DX roadmap—as plateau work under the same floors, not apologies.
 
 ---
 
@@ -212,7 +212,7 @@ Multi-fabric soft-ref: after tier selection, route cheapest sufficient `DeviceKi
 
 Digital inference prices can fall toward free-at-margin without implying free energy, free actuation, or unbounded value after a chore is complete. The companion study **[Satiation and Scarcity after Free AI](/papers/satiation/)** defines satiation as a stop on a written completeness predicate and cites published inference-price series. Mixture of Limits supplies the *machine* stop that matches that economic intuition: VoI and grammar floors refuse excess generation once benefit is covered; commit/refuse receipts (NI) record the irreversible boundary.
 
-Satiation owns economic done and its price tables; NI owns the commit record; Mixture of Limits owns navigation floors that make "done" and "unsafe" executable without opening the model leaf.
+Satiation owns Economic Reality of Satiation and its price tables; NI owns the commit record; Mixture of Limits owns navigation floors that make "done" and "unsafe" executable without opening the model leaf.
 
 ---
 
@@ -755,7 +755,7 @@ If AGI-grade reliability means closing tasks with certificates, receipts, and kn
 
 **The missing piece is not the idea.** Shannon, Howard, Landauer, Bennett, Kolmogorov, Solomonoff, and Chaitin state the floors as settled theory. The bottleneck Mixture of Limits asserts is **applied mathematics embodied in materials and physical hardware**: devices, fabrics, and meters that make cheapest-sufficient close real at the edge, without laundering estimates as board watts, and without treating MoE capacity as a substitute for grammar coverage.
 
-Mixture of Limits says CI should navigate those floors explicitly: Lookup and Formula first, Solver when settle is the right physics, Model last, refuse when VoI or safety says stop. Soft-ref prove shows the navigation law is constructive in software. Companions on this site (NI commit record; Satiation economic done) supply interfaces and economic stops. Soft-ref path keeps `board_synth_claimed=false` and `measured_j=None` unless Metered.
+Mixture of Limits says CI should navigate those floors explicitly: Lookup and Formula first, Solver when settle is the right physics, Model last, refuse when VoI or safety says stop. Soft-ref prove shows the navigation law is constructive in software. Companions on this site (NI commit record; Satiation Economic Reality of Satiation) supply interfaces and economic stops. Soft-ref path keeps `board_synth_claimed=false` and `measured_j=None` unless Metered.
 
 **Open questions**
 
@@ -783,7 +783,7 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 **Companions on this site**
 
 - [Notational Intelligence as Commit Law](/papers/ni/); commit/refuse record; analytical energy; measurement bounds.
-- [Satiation and Scarcity after Free AI](/papers/satiation/); economic done after free digital inference.
+- [Satiation and Scarcity after Free AI](/papers/satiation/); Economic Reality of Satiation after free digital inference.
 - Living figures: [/living/mol/](/living/mol/) (companions; analytical OpCounter ≠ board power; package `measured_j` only when Metered).
 
 **Closing sentence.** Pursuit of limits (compression into predictive law, priced information, thermodynamic accounting) is the through-line from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits is that through-line stated as a navigation law for computer intelligence; embodying it in materials remains the hard problem. Section 11 names the next engineering gaps on that embodiment path. The industry race is a race to the plateau floors, not unbounded scale. Once the floor is known and VoI is zero past it, SOTA at the plateau (§8.4-§8.14) means optimize energy/compute with cheapest-sufficient Lookup → Formula → Solver → Model LAST—latents, EBM hybrids, world models, test-time, ensembles, SSM/MoE efficiency, transmission/gearing/cascade/memory-context techniques, and the cross-field plateau moves of §8.14 as options. They do not retire the floors. Computers are hardware; software is applied engineering under constraints; labeled joule accounting binds.

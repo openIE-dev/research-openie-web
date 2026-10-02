@@ -1,4 +1,4 @@
-"""sat-diag-01 — Refuse = economic done union physical unsafe.
+"""sat-diag-01 — Refuse = Economic Reality of Satiation union physical unsafe.
 
 Design claim. Two refuse branches share one CommitDecision hold.
 No board watts. measured_j=None.
@@ -35,7 +35,7 @@ class RefuseDoneUnsafe(Scene):
         done.shift(LEFT * 1.35 + UP * 0.35)
         unsafe.shift(RIGHT * 1.35 + UP * 0.35)
 
-        done_lab = Text("Economic done", font_size=22, color="#6ee7b7", weight=BOLD)
+        done_lab = Text("Economic Reality of Satiation", font_size=22, color="#6ee7b7", weight=BOLD)
         done_sub = Text("policy / budget", font_size=15, color="#94a3b8")
         done_lab.move_to(done.get_center() + LEFT * 0.55 + UP * 0.35)
         done_sub.next_to(done_lab, DOWN, buff=0.12)

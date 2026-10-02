@@ -59,7 +59,7 @@ function initLenses() {
       if (btn.dataset.lens === "engagement") {
         panel.innerHTML = `<div class="card"><h3>Engagement KPI lens</h3><p>Optimize session length, tokens, seats, re-prompts. Divergence risk: busy-ness after work/care is already complete.</p></div>`;
       } else {
-        panel.innerHTML = `<div class="card"><h3>Economic-done lens</h3><p>Optimize time-to-done / refuse rate after completeness. Further synthesis past the finish line ≈ noise + cost.</p></div>`;
+        panel.innerHTML = `<div class="card"><h3>Economic Reality of Satiation lens</h3><p>Optimize time-to-done / refuse rate after completeness. Further synthesis past the finish line ≈ noise + cost.</p></div>`;
       }
     });
   });
@@ -211,7 +211,7 @@ function initRefuseBridge() {
       btn.classList.add("active");
       if (!detail) return;
       if (btn.dataset.branch === "done") {
-        detail.innerHTML = `<div class="card"><h3>Economic done</h3><p>Policy / budget refuse — do not spend after completeness. Maps to RefuseReason <code>policy</code> / <code>budget_exceeded</code>.</p></div>`;
+        detail.innerHTML = `<div class="card"><h3>Economic Reality of Satiation</h3><p>Policy / budget refuse — do not spend after completeness. Maps to RefuseReason <code>policy</code> / <code>budget_exceeded</code>.</p></div>`;
       } else {
         detail.innerHTML = `<div class="card"><h3>Physical unsafe</h3><p>Energy / LUT / CBF refuse — hold plant. Maps to <code>energy_veto</code>, <code>lut_veto</code>, <code>cbf_veto</code>.</p></div>`;
       }
