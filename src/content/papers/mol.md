@@ -13,7 +13,7 @@ board_synth_claimed: false
 
 ## Abstract
 
-Mixture of Limits is a navigation law for computer intelligence: there exist **floors** past which additional tokens, parameters, or joules do not purchase verifiable progress on a task coordinate. The law is information-theoretic and rooted in physics. Across human scientific history, compression into predictive formulas and invariants has repeatedly beaten excess enumeration of observations: from Kepler's laws over Tycho's tables, through Newton's closed forms, to Shannon's bit accounting and Landauer's thermodynamic floor on irreversible erasure. Mixture of Limits operationalizes that lineage for machines: **Lookup → Formula → Solver/settle → Model LAST**, with close owned as propose → certify → commit|refuse → receipt.
+Mixture of Limits is a navigation law for computer intelligence: there exist **floors** past which additional tokens, parameters, or joules do not purchase verifiable progress on a task coordinate. The law is information-theoretic and rooted in physics. Across human scientific history, compression into predictive formulas and invariants has repeatedly beaten excess enumeration of observations: from Kepler's laws over Tycho's tables, through Newton's closed forms, to Shannon's bit accounting and Landauer's thermodynamic floor on irreversible erasure. Mixture of Limits operationalizes that lineage for machines: **Lookup → Formula → Solver/settle → Model LAST**, with close owned as propose → certify → commit|refuse → receipt. Unstructured front doors (speech, pixels, free text) need a **dual-phase** stack: Phase 1 is a bounded ultra-light quantized transducer that emits a typed AST or schema; Phase 2 is the Mixture of Limits cascade. Perception is a front gear, not a demotion of Model LAST for residual reasoning.
 
 The industry default escalates Mixture-of-Experts (MoE) capacity *inside* a generative corridor. Mixture of Limits instead names floors *outside* generation: Value of Information (VoI), grammar coverage, Landauer/joule estimate, certificate, and settle-refuse. The industry race is a **race to those plateau floors**, not unbounded scale: once VoI is zero past the floor, optimize energy/compute on the plateau. Mixture of Limits demotes the neural net to a residual leaf. Soft-ref `mol prove` is constructive existence in software. Catalog and Landauer figures on receipts are **estimates**; package `measured_j` appears only when a labeled meter returns a reading.
 
@@ -25,13 +25,13 @@ The dominant construction for computer intelligence (CI) treats the neural net a
 
 Information theory names the modern accounting of that pattern. Shannon (1948) prices bits under uncertainty as settled law. Value of Information (VoI) prices whether another observation is worth its cost for a decision. Landauer (1961) prices irreversible bit erasure in joules at temperature \(T\): \(E_{\min} = k_B T \ln 2\) per bit erased in the ideal model. That Landauer quantity is a thermodynamic lower bound and, on Mixture of Limits receipts, a **labeled estimate**—not a wattmeter reading. Together they imply floors: past a point, more bits stop buying outcomes that matter for a stated benefit.
 
-**Thesis.** Pursuit of limits is the path toward AGI-grade reliability. Excess-token and MoE scaling diverge from true VoI for a given benefit. Mixture of Limits is the executable navigation law that binds those floors (VoI, grammar, Landauer/joules as estimate, certificate, settle-refuse) against industry Mixture-of-Experts. **The industry race is a race to the plateau floors, not unbounded scale:** once VoI is zero past a named floor, more parameters and tokens buy nothing verifiable on that coordinate—only energy/compute optimization on the plateau remains. **Addendum:** Shannon, Landauer, Kolmogorov/Solomonoff/Chaitin, Howard (VoI), and formula-first science AI already state these floors as settled theory. The remaining bottleneck is **applied mathematics embodied in materials and physical hardware**. **Frontier addendum (§8.4-§8.14): SOTA at the plateau.** Once the floor is known and Value of Information is zero past it, the only remaining work is optimize energy and compute on that plateau: cheapest-sufficient Lookup → Formula → Solver → Model LAST. Deeper latents, energy-based hybrids, world models, test-time compute, super learning, SSM hybrids, mixture of experts, transmission / gearing / cascade / memory-context / test-time methods, and the cross-field plateau moves in §8.14 are **implementation options for plateau spend**—not a narrative race among generators. They do not cancel VoI, grammar, energy, or certify floors. Mixture of Limits remains the navigation law. The hardware-economics reading (§8.12) states that computers are hardware, software is applied engineering under constraints, and plateau spend still binds to floors on real devices. §8.13 organizes verified public reports by technique—transmission, gearing/MoE routing, cascade, memory/context, and test-time—as sources for plateau options. §8.14 races major AI/ML fields to the floor that binds each.
+**Thesis.** Pursuit of limits is the path toward AGI-grade reliability. Excess-token and MoE scaling diverge from true VoI for a given benefit. Mixture of Limits is the executable navigation law that binds those floors (VoI, grammar, Landauer/joules as estimate, certificate, settle-refuse) against industry Mixture-of-Experts. **The industry race is a race to the plateau floors, not unbounded scale:** once VoI is zero past a named floor, more parameters and tokens buy nothing verifiable on that coordinate—only energy/compute optimization on the plateau remains. **Addendum:** Shannon, Landauer, Kolmogorov/Solomonoff/Chaitin, Howard (VoI), and formula-first science AI already state these floors as settled theory. The remaining bottleneck is **applied mathematics embodied in materials and physical hardware**. **Frontier addendum (§8.4-§8.14): SOTA at the plateau.** Once the floor is known and Value of Information is zero past it, the only remaining work is optimize energy and compute on that plateau: cheapest-sufficient Lookup → Formula → Solver → Model LAST. Deeper latents, energy-based hybrids, world models, test-time compute, super learning, SSM hybrids, mixture of experts, transmission / gearing / cascade / memory-context / test-time methods, and the cross-field plateau moves in §8.14 are **implementation options for plateau spend**—not a narrative race among generators. They do not cancel VoI, grammar, energy, or certify floors. Mixture of Limits remains the navigation law. Dual-phase perception (§11.1) bounds the unstructured front door without retiring Model LAST for residual reasoning. The hardware-economics reading (§8.12) states that computers are hardware, software is applied engineering under constraints, and plateau spend still binds to floors on real devices. §8.13 organizes verified public reports by technique—transmission, gearing/MoE routing, cascade, memory/context, and test-time—as sources for plateau options. §8.14 races major AI/ML fields to the floor that binds each.
 
 This paper's contribution is the study prose for that law as published on research.openie.dev, grounded in the clean-room `mixture-of-limits` software reference (Apache-2.0 OR MIT). Companion studies already on this site supply the commit-record interface ([Notational Intelligence as Commit Law](/papers/ni/)) and the economic stop after free digital inference ([Satiation and Scarcity after Free AI](/papers/satiation/)). Mixture of Limits is the navigation law those companions sit under: NI owns irreversible commit shape; Satiation owns economic done; Mixture of Limits owns *which gear closes* and *when refuse is success*.
 
 Three measurement facts constrain every later number. First, joules from catalog surrogates and OpCounter-style analytics are **estimates**, not board power. Second, Landauer annotations are **estimates**, distinct from RAPL/NVML/`measured_j`. Third, `board_synth_claimed=false`; package `measured_j` is set only when a Metered probe returns a reading.
 
-Scope. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine \(E(x) \ge \theta(D)\cdot\mu(S,V)\). Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (energy-based model / large language model / latent hybrid), World Labs (spatial world models), and **SOTA at the plateau** (§8.7): once VoI is zero past the floor, plateau spend is the only work—test-time compute, super learning, live SOTA methods (SSMs, MoE, RAG, speculative decode, …), SSM hybrids / MoE / implementation efficiency (including Jamba-class, DeepSeek, GLM as options), hardware economics (including edge / neuromorphic soft-ref), plateau techniques for transmission / gearing / cascade / memory-context / test-time (§8.13), industry gap levers (Mixture-of-Depths, AWQ/GPTQ/FP8, vLLM/SGLang; §8.10.1), and the cross-field **race to plateau floors** table (§8.14: RLHF, diffusion, GNNs, multimodal, federated/continual, pruning/KD/NAS, Bayesian/conformal/causal/active, GraphRAG, agent memory, structured generation, CUDA Graphs). Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits.
+Scope. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine \(E(x) \ge \theta(D)\cdot\mu(S,V)\). Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (energy-based model / large language model / latent hybrid), World Labs (spatial world models), and **SOTA at the plateau** (§8.7): once VoI is zero past the floor, plateau spend is the only work—test-time compute, super learning, live SOTA methods (SSMs, MoE, RAG, speculative decode, …), SSM hybrids / MoE / implementation efficiency (including Jamba-class, DeepSeek, GLM as options), hardware economics (including edge / neuromorphic soft-ref), plateau techniques for transmission / gearing / cascade / memory-context / test-time (§8.13), industry gap levers (Mixture-of-Depths, AWQ/GPTQ/FP8, vLLM/SGLang; §8.10.1), and the cross-field **race to plateau floors** table (§8.14: RLHF, diffusion, GNNs, multimodal, federated/continual, pruning/KD/NAS, Bayesian/conformal/causal/active, GraphRAG, agent memory, structured generation, CUDA Graphs). Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits. Section 11 states engineering gaps to close—dual-phase front-door perception, O(1) meta-routing, Primitive Distillation for open grammars, Tier 0/1/2 measurement realism, and a declarative DX roadmap—as plateau work under the same floors, not apologies.
 
 ---
 
@@ -719,6 +719,10 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 - How to import **conformal abstention** and **Bayesian uncertainty** scores as typed refuse thresholds without laundering model-emitted confidence as a Mixture of Limits receipt.
 - Whether **GraphRAG** community summaries and **MemGPT**-class agent memory pages should bind as Lookup when certified, or remain proposal until certify-before-commit.
 - How **active-learning VoI** budgets (Settles/Howard) should share threshold machinery with test-time CoT VoI (§8.8) without smuggling engagement metrics as completeness.
+- How dual-phase perception (§11.1) should bound Phase-1 transducer energy so typed AST emission stays cheaper than opening Model LAST on unstructured input.
+- How VoI / grammar meta-checks (§11.2) stay O(1) Bloom/trie/EBNF relative to the smallest allowed inference leaf.
+- How Primitive Distillation (§11.3) certifies Model LAST proposals into new Lookup/Formula entries without laundering uncertified proposals as Deterministic.
+- When Tier-2 shunt meters (§11.4) publish package `measured_j` beside Tier-0 analytical and Tier-1 OS telemetry without mixing estimate classes on a receipt.
 
 **Companions on this site**
 
@@ -726,7 +730,157 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 - [Satiation and Scarcity after Free AI](/papers/satiation/); economic done after free digital inference.
 - Living figures: [/living/mol/](/living/mol/) (companions; analytical OpCounter ≠ board power; package `measured_j` only when Metered).
 
-**Closing sentence.** Pursuit of limits (compression into predictive law, priced information, thermodynamic accounting) is the through-line from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits is that through-line stated as a navigation law for computer intelligence; embodying it in materials remains the hard problem. The industry race is a race to the plateau floors, not unbounded scale. Once the floor is known and VoI is zero past it, SOTA at the plateau (§8.4-§8.14) means optimize energy/compute with cheapest-sufficient Lookup → Formula → Solver → Model LAST—latents, EBM hybrids, world models, test-time, ensembles, SSM/MoE efficiency, transmission/gearing/cascade/memory-context techniques, and the cross-field plateau moves of §8.14 as options. They do not retire the floors. Computers are hardware; software is applied engineering under constraints; labeled joule accounting binds.
+**Closing sentence.** Pursuit of limits (compression into predictive law, priced information, thermodynamic accounting) is the through-line from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits is that through-line stated as a navigation law for computer intelligence; embodying it in materials remains the hard problem. Section 11 names the next engineering gaps on that embodiment path. The industry race is a race to the plateau floors, not unbounded scale. Once the floor is known and VoI is zero past it, SOTA at the plateau (§8.4-§8.14) means optimize energy/compute with cheapest-sufficient Lookup → Formula → Solver → Model LAST—latents, EBM hybrids, world models, test-time, ensembles, SSM/MoE efficiency, transmission/gearing/cascade/memory-context techniques, and the cross-field plateau moves of §8.14 as options. They do not retire the floors. Computers are hardware; software is applied engineering under constraints; labeled joule accounting binds.
+
+
+## 11. Closing the engineering gaps: dual-phase roadmap
+
+Shannon, Landauer, Howard, and formula-first science already name the floors. Soft-ref `mol prove` shows constructive existence in software. What remains is engineering: close the gaps that keep Mixture of Limits from owning unstructured front doors, cheap meta-routing, open-ended domains, honest meters, and a usable developer surface—without inventing package joules or demoting the cascade.
+
+This section states those gaps as **plateau work under named floors**. Each item is a gap to close, not a hedge on the law. Estimates remain estimates. `board_synth_claimed=false`. Only Metered paths populate `measured_j`.
+
+### 11.1 Front-door perception paradox: dual-phase stack
+
+**Gap.** Mixture of Limits cascade assumes a typed task coordinate: Lookup → Formula → Solver → Model LAST. Real front doors arrive unstructured—speech waveforms, pixels, free text. Without a front gear, the system either refuses everything outside grammar or opens Model LAST as the parser. Both fail the plateau: refuse wastes covered work; parser-as-model burns residual capacity before floors are checked.
+
+**Close.** Dual-phase Mixture of Limits:
+
+```text
+                    ┌─────────────────────────────────────────┐
+  unstructured in → │ Phase 1 · bounded micro-perception      │
+  (audio/pixels/    │ ultra-light quantized transducer / TinyML│
+   free text)       │ → typed AST / schema / task coordinate  │
+                    └──────────────────┬──────────────────────┘
+                                       │ typed request
+                                       ▼
+                    ┌─────────────────────────────────────────┐
+                    │ Phase 2 · Mixture of Limits cascade     │
+                    │ Lookup → Formula → Solver → Model LAST  │
+                    │ floors: VoI · grammar · energy · certify│
+                    └──────────────────┬──────────────────────┘
+                                       │
+                          commit | refuse + receipt
+```
+
+Phase 1 is a **bounded front gear**: fixed vocabulary or schema emitters in the TinyML / quantized-transducer class (MCUNet-class MCU inference; Tiny Transducer-class speech ASR). It does not replace Formula. It does not become the substrate. Its job is to emit a typed AST or schema so Phase 2 can navigate floors. Model LAST remains the residual reasoning leaf inside Phase 2 when grammar and VoI say escalate—not the front-door parser by default.
+
+**Plateau reading.** Perception spend is plateau spend on the front gear. Once the AST is typed, VoI past the grammar floor is still zero for covered coordinates. Dual-phase does not demote Lookup → Formula → Solver → Model LAST; it feeds that cascade.
+
+### 11.2 Meta-compute routing overhead
+
+**Gap.** VoI checks, grammar coverage, and settle-refuse must gate escalation. If those checks cost more than a small inference leaf, the router loses to always-call-model on wall-clock and joules (as estimates). Meta-compute that is heavier than the thing it refuses is not a floor—it is waste on the plateau.
+
+**Close.** Keep routing **strictly cheaper than the smallest allowed inference**:
+
+| Check | Target cost class | Mechanism sketch |
+|---|---|---|
+| Grammar hit / miss | O(1) or O(token) streaming | Trie / Aho–Corasick over typed AST terminals; Bloom filter for negative Lookup |
+| Schema / EBNF accept | linear in input, no model | Deterministic EBNF / PEG parse; reject → refuse or escalate |
+| VoI stop | O(1) threshold table | Precomputed \(\Delta B\) vs catalog cost; no forward pass |
+| Settle-ready | O(state) local | Ternary / certificate probe before Solver open |
+
+```text
+  request AST
+       │
+       ▼
+  [Bloom / trie Lookup?] --hit--> Lookup close
+       │ miss
+       ▼
+  [EBNF / Formula grammar?] --cover--> Formula / Solver
+       │ uncovered
+       ▼
+  [VoI > 0 AND allow_model?] --yes--> Model LAST → certify
+       │ no
+       ▼
+     refuse + receipt
+```
+
+Rule: if a proposed meta-check needs a neural forward pass, it is not a Mixture of Limits floor check—it is another leaf and must be budgeted as such.
+
+### 11.3 Static Periodic Stack vs open-ended domains
+
+**Gap.** Soft-ref navigates a Periodic Stack **subset** (Present/Gap cells; scale notes cite 258 primitives / 33 families). Open-ended domains arrive with undefined grammar. A static stack either silently under-covers or pretends coverage.
+
+**Close.** Two disciplined exits when grammar is undefined:
+
+1. **Refuse or escalate** with an explicit `primitive_gap` / grammar-miss receipt. Refuse is success when VoI or safety says stop. Escalation opens Model LAST only under budget and `allow_model`.
+2. **Primitive Distillation Loop** when a residual is worth keeping:
+
+```text
+  Model LAST proposal
+         │
+         ▼
+  certify (typed check / proof / settle)
+         │ pass
+         ▼
+  AST compile → new Lookup row or Formula identity
+         │
+         ▼
+  Periodic Stack Present cell (replay class Deterministic)
+```
+
+Uncertified proposals never become Lookup. Distilled entries carry provenance: source receipt, certify method, replay class. This is plateau embodiment of formula-first science: the model proposes; the stack keeps only what certifies.
+
+### 11.4 Measurement realism: Tier 0 / Tier 1 / Tier 2
+
+**Gap.** Readers collapse Landauer annotations, OpCounter analytics, OS telemetry, and board shunt readings into one “joules” number. Mixture of Limits forbids that collapse.
+
+**Close.** Three labeled tiers; only Tier 2 Metered populates package `measured_j`:
+
+| Tier | Source | Receipt fields | What it is not |
+|---|---|---|---|
+| **0 Analytical** | Catalog \(\mu\), OpCounter, Landauer \(n k_B T \ln 2\) | `estimated_j`, `landauer_floor_J`, `mu_source=catalog` | Board package energy |
+| **1 OS telemetry** | RAPL, NVML, IOReport, powermetrics | Labeled `MeasureSource`; may set `measured_j` only when Metered probe succeeds | Shunt-grade package truth; VM/unavailable stays unset |
+| **2 Shunt / package meter** | Inline current shunt, certified bench meter | `measured_j` under Metered; `board_synth_claimed` only if synth+meter path is actually claimed | Soft-ref default (soft-ref keeps `board_synth_claimed=false`) |
+
+```text
+  Tier 0  estimated_j / Landauer estimate
+  Tier 1  OS telemetry (RAPL/NVML/…) ──► measured_j only if Metered label
+  Tier 2  shunt / package meter     ──► measured_j (Metered)
+```
+
+**Measurement facts (unchanged).** Soft-ref path: `board_synth_claimed=false`; `measured_j=None` unless a Metered probe returns. Estimates ≠ board joules. Never invent `measured_j` from prove criteria, catalog ratios, or field author GPU-hours.
+
+### 11.5 Developer experience roadmap (not shipped product)
+
+**Gap.** Soft-ref `mol prove` is a clean-room existence proof. Operators still need a declarative surface, local develop loop, and an honest benchmark story versus MoE routers—without claiming a shipped product that does not exist.
+
+**Close.** Roadmap only (not claimed shipped):
+
+**Declarative `mol.yaml` sketch**
+
+```yaml
+# Roadmap sketch — not a shipped product claim
+version: 0.1
+task:
+  id: unit.convert.si.length
+  grammar: formula.si_units
+cascade:
+  allow_model: false
+  floors: [voi, grammar, energy, efa_certificate]
+phase1:
+  enabled: false   # typed input assumed; enable for unstructured front doors
+measurement:
+  tier: 0          # 0 analytical | 1 os_telemetry | 2 shunt
+  board_synth_claimed: false
+```
+
+**CLI loop (roadmap):** `mol prove` (exists in soft-ref) → `mol dev` (watch, replay, receipt diff) → `mol bench` (J/query and latency versus MoE / always-model baselines using **Estimated** or Metered labels—never invented board joules).
+
+**Benchmark framing.** Compare joules-per-query and certify rate of Mixture of Limits cascade against MoE token routes on the same typed task set. Report Tier 0/1/2 explicitly. Soft-ref constructive existence is not a board energy score.
+
+### 11.6 Roadmap summary
+
+| Gap | Close | Ships when |
+|---|---|---|
+| Unstructured front door | Dual-phase: TinyML/transducer → typed AST → cascade | Phase-1 gear + schema emitters under prove |
+| Expensive meta-routing | O(1) Bloom/trie/EBNF/VoI tables | Soft-ref criteria for router cost ≪ leaf cost |
+| Undefined grammar | Refuse/`primitive_gap` or Primitive Distillation | Certify→AST compile→Lookup/Formula path |
+| Joules collapsed | Tier 0 / 1 / 2 labels; Metered-only `measured_j` | Receipt schema + optional shunt path |
+| DX / MoE comparison | `mol.yaml`, `mol dev`, J/query bench | Roadmap; not claimed shipped product |
+
+Mixture of Limits stays the navigation law. Dual-phase, cheap meta-compute, distillation, measurement tiers, and DX are how the law gets embodied on the plateau—Lookup → Formula → Solver → Model LAST, with perception as a bounded front gear and Model LAST still last.
+
 
 ## References
 
@@ -863,6 +1017,11 @@ Primary Mixture of Limits workspace sources (not peer-reviewed publications): `m
 99. Edge, D., et al. (2024). From Local to Global: A GraphRAG Approach to Query-Focused Summarization. arXiv:[2404.16130](https://arxiv.org/abs/2404.16130).
 100. Willard, B. T., & Louf, R. (2023). Efficient Guided Generation for Large Language Models (Outlines). arXiv:[2307.09702](https://arxiv.org/abs/2307.09702).
 
+### Dual-phase perception / TinyML transducers (§11.1)
+
+101. Lin, J., Chen, W.-M., Lin, Y., et al. (2020). MCUNet: Tiny Deep Learning on IoT Devices. *NeurIPS*. arXiv:[2007.10319](https://arxiv.org/abs/2007.10319). (Also listed as ref. 74; retained here for §11.1 locality.)
+102. Zhang, Y., Sun, S., & Ma, L. (2021). Tiny Transducer: A Highly-Efficient Speech Recognition Model on Edge Devices. *ICASSP*. arXiv:[2101.06856](https://arxiv.org/abs/2101.06856). DOI: [10.1109/ICASSP39728.2021.9413854](https://doi.org/10.1109/ICASSP39728.2021.9413854).
+
 ### OpenIE companions
 
 48. Charlot, D. Notational Intelligence as Commit Law. research.openie.dev/papers/ni/.
@@ -882,6 +1041,8 @@ Kepler's laws / Newton's *Principia* / Brahe's observational program are treated
 - DOIs only when verified via search/source inventory; otherwise marked TBD
 - Bottleneck: materials/applied-math embodiment. Settled IT/physics already name the floors
 - §8.4-§8.14 map latents / Logical Intelligence / World Labs / **SOTA at the plateau** (test-time / super learning / live SOTA methods including MoD / quantization / inference engines / SSM–MoE–implementation efficiency / hardware economics / edge–neuromorphic soft-ref / transmission–gearing–cascade–memory-context–test-time / **race to plateau floors across AI/ML fields**) as plateau spend options under Mixture of Limits floors; the industry race is to those floors, not unbounded scale; §9 contrasts Constitutional AI and tool-use agents with typed certify-before-commit; field product joules, API prices, and author-reported KV bytes stay field; estimates ≠ board package energy
+- §11 closes engineering gaps as plateau work: dual-phase micro-perception (§11.1), O(1) meta-routing (§11.2), Primitive Distillation (§11.3), Tier 0/1/2 measurement realism (§11.4; only Metered populates `measured_j`), DX roadmap `mol.yaml` / `mol prove` / `mol dev` / J/query bench (§11.5)—roadmap, not claimed shipped product
+- Dual-phase does not demote Lookup → Formula → Solver → Model LAST; Phase 1 emits typed AST/schema; Model LAST remains residual leaf in Phase 2
 
 ## Appendix B. Reproducibility pointers
 
