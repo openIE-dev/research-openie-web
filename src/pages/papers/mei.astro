@@ -1,0 +1,19 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/mei.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description={`${frontmatter.title}: OpenIE teaching paper / research study draft. board_synth_claimed=false. Budget-native class; estimates ≠ measured_j.`}
+  headings={headings}
+>
+  <Content />
+</PaperLayout>

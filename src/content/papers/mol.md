@@ -33,13 +33,14 @@ Three measurement facts constrain every later number. First, joules from catalog
 
 ### Companion laws
 
-Three studies on this catalog form one stack: **Navigation**, **Commit**, and **Economic Reality of Satiation**. They compose. They do not collapse into one paper.
+Three studies on this catalog form one stack: **Navigation**, **Commit**, and **Economic Reality of Satiation**. They compose. They do not collapse into one paper. A fourth study, [Metabolic Intelligence](/papers/mei/), owns the energy-budget envelope and actuators that make those floors bind at tag and campus scale.
 
 | Role | Study | Owns |
 |---|---|---|
 | **Navigation** | [Mixture of Limits](https://research.openie.dev/papers/mol/) | Which gear closes: Lookup → Formula → Solver → Model LAST. Floors include Value of Information (VoI), grammar coverage, energy estimate, Energy-First Architecture (EFA) / certificate refuse, and settle-refuse. |
 | **Commit** | [Notational Intelligence as Commit Law](https://research.openie.dev/papers/ni/) | Irreversible close shape: propose → certify → commit\|refuse → receipt. Notational Intelligence owns the commit record. Analytical joules here are estimates; package `measured_j` only when Metered. |
 | **Economic Reality of Satiation** | [Satiation and Scarcity after Free AI](https://research.openie.dev/papers/satiation/) | Stop when VoI is zero on a stated completeness predicate, or when budget / policy refuse fires. Free at the margin for digital inference is not free joules and not free actuation. |
+| **Energy budget / metabolic embodiment** | [Metabolic Intelligence](https://research.openie.dev/papers/mei/) | Budget envelope and actuators: digital enzymes, \(J(m|q)\) obtain-router, OpenADR/MQTT campus service. Soft-ref path: `board_synth_claimed=false`. |
 
 ```
 ┌──────────────────────────────────────────────────────────┐
@@ -76,7 +77,7 @@ This study lives inside the OpenIE family of sites. Readers do not need those si
 
 | Surface | URL | What it is | Relation to Mixture of Limits |
 |---|---|---|---|
-| **Research** (this hub) | [research.openie.dev](https://research.openie.dev) | Readable studies, PDFs, and living figures. This paper is `/papers/mol/`; companions are Notational Intelligence (`/papers/ni/`) and Satiation (`/papers/satiation/`). | Publishes the navigation-law study prose and soft-ref measurement bounds. |
+| **Research** (this hub) | [research.openie.dev](https://research.openie.dev) | Readable studies, PDFs, and living figures. This paper is `/papers/mol/`; companions are Notational Intelligence (`/papers/ni/`), Satiation (`/papers/satiation/`), and Metabolic Intelligence (`/papers/mei/`). | Publishes the navigation-law study prose and soft-ref measurement bounds. |
 | **Stack** | [stack.openie.dev](https://stack.openie.dev) | Teaching map of the family: information theory, game theory, and mechanism design as one substrate; directory of the eight periodic stacks. | Orientation layer. Mixture of Limits is not "another stack card"; it is the **navigation law** that chooses cheapest-sufficient close across stack coordinates. |
 | **Compute** | [compute.openie.dev](https://compute.openie.dev) | Periodic Stack of Computation: **258 primitives / 33 families**, thermodynamic floor every sibling inherits. | The primitive table Mixture of Limits **navigates**. Soft-ref proves the full live catalog (**258 Present / 258 live** Lookup/Formula/Solver/Navigate gears) plus honest HW Gap cells; HW Gaps soft-ref sims ×8 (`physical_settle`…`photonic_mzi`) + Ferric/Stage C inventories are in proof with Gap cells retained. μ calib + silicon meters remain outside soft-ref proof. Empty HW cells → `primitive_gap`. estimates≠measured_j; `stage_c_measured=false` until meters. |
 | **Knowledge** | [knowledge.openie.dev](https://knowledge.openie.dev) | Working definition of a claim as seven axes ⟨valid time, transaction time, reference time, granularity, scope, certainty, provenance⟩. | Typed claims and cite/compose leaves (Z2 cite / Z1 compose in soft-ref) bind to this object shape. Mixture of Limits does not redefine knowledge; it refuses escalation when grammar and VoI say the claim coordinate is already covered. |
@@ -784,6 +785,7 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 
 - [Notational Intelligence as Commit Law](/papers/ni/); commit/refuse record; analytical energy; measurement bounds.
 - [Satiation and Scarcity after Free AI](/papers/satiation/); Economic Reality of Satiation after free digital inference.
+- [Metabolic Intelligence](/papers/mei/); energy-budget embodiment from tag to campus.
 - Living figures: [/living/mol/](/living/mol/) (companions; analytical OpCounter ≠ board power; package `measured_j` only when Metered).
 
 **Closing sentence.** Pursuit of limits (compression into predictive law, priced information, thermodynamic accounting) is the through-line from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits is that through-line stated as a navigation law for computer intelligence; embodying it in materials remains the hard problem. Section 11 names the next engineering gaps on that embodiment path. The industry race is a race to the plateau floors, not unbounded scale. Once the floor is known and VoI is zero past it, SOTA at the plateau (§8.4-§8.14) means optimize energy/compute with cheapest-sufficient Lookup → Formula → Solver → Model LAST—latents, EBM hybrids, world models, test-time, ensembles, SSM/MoE efficiency, transmission/gearing/cascade/memory-context techniques, and the cross-field plateau moves of §8.14 as options. They do not retire the floors. Computers are hardware; software is applied engineering under constraints; labeled joule accounting binds.

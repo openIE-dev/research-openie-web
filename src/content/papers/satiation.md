@@ -69,8 +69,9 @@ This study is the **Economic Reality of Satiation** law in the research catalog 
 | **Navigation** | [Mixture of Limits](https://research.openie.dev/papers/mol/) | Lookup → Formula → Solver → Model LAST; floors including Value of Information (VoI). |
 | **Commit** | [Notational Intelligence as Commit Law](https://research.openie.dev/papers/ni/) | propose → certify → commit\|refuse → receipt; physical permit on the gate. |
 | **Economic Reality of Satiation** | This paper | Completeness predicate `C(z)`; stop when VoI is zero on that predicate, or when budget / policy refuse fires. |
+| **Energy budget** | [Metabolic Intelligence](https://research.openie.dev/papers/mei/) | Budget envelope / actuators at tag and campus. |
 
-Mixture of Limits navigates. Notational Intelligence owns irreversible commit. This paper owns Economic Reality of Satiation after free-at-the-margin digital inference. Free at the margin is not free joules. Estimates ≠ board-measured `measured_j`.
+Mixture of Limits navigates. Notational Intelligence owns irreversible commit. This paper owns Economic Reality of Satiation after free-at-the-margin digital inference. [Metabolic Intelligence](/papers/mei/) owns the energy-budget envelope and actuators. Free at the margin is not free joules. Estimates ≠ board-measured `measured_j`.
 
 ## 2. Related work
 

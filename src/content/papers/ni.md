@@ -75,6 +75,7 @@ This study is the **Commit** law in the research catalog triad.
 | **Navigation** | [Mixture of Limits](https://research.openie.dev/papers/mol/) | Lookup → Formula → Solver → Model LAST; VoI / grammar / energy / certificate / settle-refuse floors. |
 | **Commit** | This paper | propose → certify → commit\|refuse → receipt. Notational Intelligence owns irreversible commit. |
 | **Economic Reality of Satiation** | [Satiation and Scarcity after Free AI](https://research.openie.dev/papers/satiation/) | Completeness predicate / budget stop on the same refuse taxonomy. |
+| **Energy budget** | [Metabolic Intelligence](https://research.openie.dev/papers/mei/) | Budget envelope and actuators that make floors bind at tag and campus scale. |
 
 Navigation chooses the gear. This paper records the irreversible branch. Satiation supplies the economic stop. Estimates remain estimates; package `measured_j` only when Metered.
 
