@@ -606,6 +606,25 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 
 **Closing sentence.** Pursuit of limits (compression into predictive law, priced information, thermodynamic honesty) is the through-line from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits is that through-line stated as a navigation law for computer intelligence; embodying it in materials remains the hard problem. Latents, EBM hybrids, world models, test-time compute, ensembles, and architecture-efficiency wins (§8.4-§8.12) refine generators and lower device-dollar cost; they do not retire the floors. Computers are hardware; software is applied engineering under constraints; honest joule accounting still binds.
 
+
+## 11. Developer experience and product path
+
+Mixture of Limits is a navigation law with a clean-room runtime. The valued product path is dual-phase: **Phase-1** bounded micro-perception (optional) emits a typed AST/schema; **Phase-2** runs Lookup → Formula → Solver → Model LAST under floors (VoI, grammar, energy, NI certify, satiation). Soft-ref receipts always stamp `estimated_j`; `measured_j` only when a real meter reading exists. Estimates ≠ `measured_j`. `board_synth_claimed=false`.
+
+### 11.1 Phase-1 micro-perception on the Arena harness
+
+Arena-shaped chores (typed decision / ticket-close / risk) score Mixture of Limits head-on against frontier-sim (always-model) and System One leaf stubs. Typed baselines stay `phase1=false`. When `phase1=true`, unstructured ticket / risk / decision strings run through the in-tree **rule AST transducer** (`mol phase1` / `run_phase1`) and only then enter the cascade. Unrecognized input refuses parser-as-model; Model LAST remains last.
+
+Soft-ref `mol arena` on the clean-room tree (n=36; Fri Oct 2, 2026 America/New_York): **mol_cascade 36/36** correct_close and **5/5** refuse_when_C=1; frontier_sim and system_one_leaf **28/36** with **0/5** on satiation. Mean Estimated joules: mol ~2.1e-11, frontier 5.0e-1, system_one 2.5e-4. No invented `measured_j`. Published soft-ref table: `product/ARENA_RESULTS.md` in [openIE-dev/mixture-of-limits](https://github.com/openIE-dev/mixture-of-limits). Product acceptance A11 (Phase-1) and A14 (arena) ride inside `mol prove`.
+
+```bash
+cargo run -p mol-cli -- phase1 "please close ticket as R-OK"
+cargo run -p mol-cli -- arena
+cargo run -p mol-cli -- prove   # includes A11 + A14; soft-ref ALL VERIFIED
+```
+
+Living figures under [/living/mol/](/living/mol/) remain companions (cascade / floors / close). They do not claim Arena GPU package joules.
+
 ## References
 
 Primary Mixture of Limits workspace sources (not peer-reviewed publications): `mixture-of-limits` README.md, BLUEPRINT.md, PLAN.md; `docs/adjacent-field-hunt.md`; `docs/appendix-mwm-ai-newton.md` (author: David Charlot / OpenIE).
@@ -692,7 +711,7 @@ Kepler's laws / Newton's *Principia* / Brahe's observational program are treated
 - Soft-ref: `measured_j=None`; never invent meters
 - Landauer = labeled estimate only
 - Analytical / catalog `estimated_j` ≠ board power
-- Soft-ref `mol prove` ~29 VERIFIED = constructive existence in **software** only
+- Soft-ref `mol prove` ALL VERIFIED (43) = constructive existence in **software** only (A1–A14 product gaps included)
 - Clean-room Mixture of Limits: law+runtime, not an MoE wrapper
 - §§6 and 9 Leapfrog placeholders intentionally incomplete
 - DOIs only when verified via search/source inventory; otherwise marked TBD
@@ -704,7 +723,9 @@ Kepler's laws / Newton's *Principia* / Brahe's observational program are treated
 ```bash
 # On a machine with the mixture-of-limits workspace:
 cargo test --workspace
-cargo run -p mol-cli -- prove   # expect VERIFIED lines, exit 0
+cargo run -p mol-cli -- prove   # expect ALL VERIFIED (43), exit 0; includes A11 Phase-1 + A14 arena
+cargo run -p mol-cli -- arena   # soft-ref head-on; refresh product/ARENA_RESULTS.md from real run only
+cargo run -p mol-cli -- phase1 "please close ticket as R-OK"
 ```
 
 Site preview for this study (research-openie-web):
