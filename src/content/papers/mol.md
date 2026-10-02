@@ -78,7 +78,7 @@ This study lives inside the OpenIE family of sites. Readers do not need those si
 |---|---|---|---|
 | **Research** (this hub) | [research.openie.dev](https://research.openie.dev) | Readable studies, PDFs, and living figures. This paper is `/papers/mol/`; companions are Notational Intelligence (`/papers/ni/`) and Satiation (`/papers/satiation/`). | Publishes the navigation-law study prose and soft-ref measurement bounds. |
 | **Stack** | [stack.openie.dev](https://stack.openie.dev) | Teaching map of the family: information theory, game theory, and mechanism design as one substrate; directory of the eight periodic stacks. | Orientation layer. Mixture of Limits is not "another stack card"; it is the **navigation law** that chooses cheapest-sufficient close across stack coordinates. |
-| **Compute** | [compute.openie.dev](https://compute.openie.dev) | Periodic Stack of Computation: **258 primitives / 33 families**, thermodynamic floor every sibling inherits. | The primitive table Mixture of Limits **navigates**. Soft-ref proves a subset navigator; full live catalog is outside soft-ref proof. Empty cells → `primitive_gap`. |
+| **Compute** | [compute.openie.dev](https://compute.openie.dev) | Periodic Stack of Computation: **258 primitives / 33 families**, thermodynamic floor every sibling inherits. | The primitive table Mixture of Limits **navigates**. Soft-ref proves a growing live catalog (~180 Present / ≥170 live gears); remaining ~78/258 outside soft-ref proof. Empty cells → `primitive_gap`. |
 | **Knowledge** | [knowledge.openie.dev](https://knowledge.openie.dev) | Working definition of a claim as seven axes ⟨valid time, transaction time, reference time, granularity, scope, certainty, provenance⟩. | Typed claims and cite/compose leaves (Z2 cite / Z1 compose in soft-ref) bind to this object shape. Mixture of Limits does not redefine knowledge; it refuses escalation when grammar and VoI say the claim coordinate is already covered. |
 | **Synthesis** | [synthesis.openie.dev](https://synthesis.openie.dev) | Periodic Stack of Digital Information Synthesis: AI as software; zones Z₁/Z₂/Z₃; cost surface \(E(x)=\sum \theta(p)\cdot\mu(p,H)\). | Plateau spend and cascade order rhyme with synthesis zones (closed-form → constrained → unbounded). Mixture of Limits owns **floors outside generation**—VoI, grammar, energy estimate, certify, settle-refuse—so Z₃-style generation stays Model LAST. |
 | **Verify** | [proof.openie.dev](https://proof.openie.dev) | Periodic Stack of Verification: cheapest-sufficient solver under \(E(x)\ge\theta(D)\cdot\mu(S,V)\). | Cousin energy law. Mixture of Limits uses the same spine form for path energy; Verify maps verified artifacts; Mixture of Limits maps which gear closes before commit. |
@@ -252,7 +252,7 @@ Default close path for all proven claims: **Unmetered** (+ **Estimated** where �
 | P7 | Capability default-deny mutate | `claim.mol.capability_deny_mutate` | `AutomateGate::default().gate(Mutate)` → Refuse. | - | Unmetered |
 | P8 | Receipt labels | `claim.mol.receipt_honesty` | Software-ref: `measured_j=None`, `board_synth_claimed=false`, estimate labeled (`EstimateKind`). | Live RAPL/NVML default close OUT OF SCOPE | Unmetered / Estimated |
 | P9 | `ModelGenerated` ↛ `Deterministic` | `claim.mol.replay_no_strengthen` | `TypedAnswer::weaken_to` returns `ReplayCoercion`. | - | - |
-| P10 | Periodic Stack subset navigation | `claim.mol.stack_subset_nav` | Family + present primitive + scale → COMMIT at Lookup; note cites 258/33. | Full 258 live catalog OUT OF SCOPE | Unmetered |
+| P10 | Periodic Stack live catalog navigation | `claim.mol.stack_live_catalog` | Family + present + scale → COMMIT at Lookup; ≥170 live Lookup/Formula/Solver gears; note cites 258/33. | Remaining ~78/258 thesis primitives OUT OF SCOPE | Unmetered |
 | P11 | `primitive_gap` via registry probe | `claim.mol.primitive_gap` | Gap marker `physical_settle` + absent name → REFUSE `primitive_gap` (not string-only). | - | Unmetered |
 | P12 | μ / impedance catalog | `claim.mol.mu_catalog` | Receipts stamp `mu_source=catalog`, `mu`, `landauer_floor_ratio`; `E≈θ·μ` (catalog estimate, not RAPL/`measured_j`). | μ **calib corpus** OUT OF SCOPE | Estimated |
 | P13 | Receipt transcript replay | `claim.mol.receipt_replay` | JSONL/in-memory replay reproduces commit/refuse + limit id; model never answered. | - | Unmetered |
@@ -282,7 +282,7 @@ These are PLAN §6 residuals. Citing them is allowed as roadmap / reference sema
 | klere-vm WASM / FPGA meter (real pJ) | Software-ref `StubKlereSettle` | P5 |
 | Live `openie-path` / leapfrog ask bridge | Adapter port | - |
 | Live WCA MCP / `wca-lut-edge` in-proc certify | Adapter port | - |
-| Full Periodic Stack 258 live catalog + μ calib corpus | Subset navigator + Gap + tier μ catalog are in proof | P10, P12 |
+| Remaining ~78/258 Periodic Stack thesis primitives + μ calib corpus | Live catalog (≥170 gears) + Gap + tier μ catalog + Stage C soft-ref inventory (`stage_c_measured=false`) are in proof | P10, P12 |
 | Trained weights / candle / tract Model leaf | Model stays demoted stub | P3, P4, P16 |
 
 ### 6.4 Seeded knowledge claims (Z2 corpus; not the prove map)
@@ -759,7 +759,7 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 
 **Open questions**
 
-- Full Periodic Stack 258 live catalog and calibrated \(\mu\) corpora (subset navigator is in soft-ref proof; full catalog is not).
+- Remaining ~78/258 Periodic Stack thesis primitives and calibrated \(\mu\) corpora (live catalog ≥170 gears is in soft-ref proof; full 258 is not).
 - Live WCA MCP / System One pre-gate and leapfrog `openie-path` ask (adapters remain stubs on the proven path).
 - Materials / device paths that make Formula+LUT coin-cell closes dominate generative spend, with Metered probes when package joules are claimed.
 - When a Metered `measured_j` path is published beside soft-ref estimates without laundering estimate as board watts.
@@ -921,7 +921,7 @@ measurement:
   board_synth_claimed: false
 ```
 
-**CLI loop (shipped in clean-room):** `mol prove` (PLAN + product A1–A14) → `mol run --chore mol.yaml` → `mol bench` (J/query versus always-model / MoE-sim; **Estimated|Metered** only) → `mol arena` (typed decision / ticket-close / risk head-on versus frontier_sim + system_one_leaf; metrics correct_close, refuse-when-C=1, estimated_j, latency) → `mol phase1` → `mol distill` (Primitive Distillation v1). `mol dev` watch UI remains polish. Package joules stay Estimated unless Metered.
+**CLI loop (shipped in clean-room):** `mol prove` (PLAN + product A1–A14) → `mol run --chore mol.yaml` → `mol bench` (J/query versus always-model / MoE-sim; **Estimated|Metered** only) → `mol arena` (typed decision / ticket-close / risk head-on versus frontier_sim + system_one_leaf; metrics correct_close, refuse-when-C=1, estimated_j, latency) → `mol phase1` → `mol distill` (Primitive Distillation v1) → `mol dev` (catalog/Stage C/PUBLISH status). Watch/receipt-diff UI polish remains residual. Package joules stay Estimated unless Metered.
 
 **Product path.** Mixture of Limits as a valued product surface (problem, vs Laya System One, `mol.yaml`, acceptance A1–A14, dual-phase → live in-crate NI certify → satiation architecture, distillation v1, durable episodes, Tier-1/2 meter honesty, Arena head-on) lives under the clean-room tree at `product/` (optional drafting mirror `mixture-of-limits-product`). Canonical code + docs: [`openIE-dev/mixture-of-limits`](https://github.com/openIE-dev/mixture-of-limits) (`mol prove` embeds A1–A14; `mol run` / `mol bench` / `mol arena` / `mol phase1` / `mol distill`). Soft-ref constructive existence remains `mol prove`; package joules stay Estimated unless Metered. Compete head-on: correct_close, refuse-when-C=1, estimated_j, latency — floors win when they exist; Model LAST when needed; peers age; each stands alone; frontier is expensive/out of road (see `product/COMPETITIVE.md`, `product/ARENA.md`).
 
@@ -935,7 +935,7 @@ measurement:
 | Expensive meta-routing | O(1) Bloom/trie/EBNF/VoI tables | Soft-ref criteria for router cost ≪ leaf cost |
 | Undefined grammar | Refuse/`primitive_gap` or Primitive Distillation | Certify→AST compile→Lookup/Formula path |
 | Joules collapsed | Tier 0 / 1 / 2 labels; Metered-only `measured_j` | Receipt schema + optional shunt path |
-| DX / MoE / Arena comparison | `mol.yaml`, `mol prove` A1–A14, `mol bench`, `mol arena`, `mol distill`, `mol phase1` | Shipped in `openIE-dev/mixture-of-limits` `product/`; `mol dev` UI polish residual |
+| DX / MoE / Arena comparison | `mol.yaml`, `mol prove` A1–A14, `mol bench`, `mol arena`, `mol distill`, `mol phase1`, `mol dev` status | Shipped in `openIE-dev/mixture-of-limits` `product/`; watch/receipt-diff UI polish residual |
 
 Mixture of Limits stays the navigation law. Dual-phase, cheap meta-compute, distillation, measurement tiers, and DX are how the law gets embodied on the plateau—Lookup → Formula → Solver → Model LAST, with perception as a bounded front gear and Model LAST still last.
 
@@ -1103,7 +1103,7 @@ Kepler's laws / Newton's *Principia* / Brahe's observational program are treated
 - DOIs only when verified via search/source inventory; otherwise marked TBD
 - Bottleneck: materials/applied-math embodiment. Settled IT/physics already name the floors
 - §8.4-§8.14 map latents / Logical Intelligence / World Labs / **SOTA at the plateau** (test-time / super learning / live SOTA methods including MoD / quantization / inference engines / SSM–MoE–implementation efficiency / hardware economics / edge–neuromorphic soft-ref / transmission–gearing–cascade–memory-context–test-time / **race to plateau floors across AI/ML fields**) as plateau spend options under Mixture of Limits floors; the industry race is to those floors, not unbounded scale; §9 contrasts Constitutional AI and tool-use agents with typed certify-before-commit; field product joules, API prices, and author-reported KV bytes stay field; estimates ≠ board package energy
-- §11 closes engineering gaps as plateau work: dual-phase micro-perception (§11.1; rule AST path shipped), O(1) meta-routing (§11.2), Primitive Distillation v1 (§11.3; `mol distill`), Tier 0/1/2 measurement realism (§11.4; only Metered populates `measured_j`; Tier-2 shunt HAL stub honesty), DX `mol.yaml` / `mol prove` A1–A14 / `mol bench` / `mol arena` / `mol phase1` / `mol distill` (§11.5)—shipped in clean-room `product/`; `mol dev` UI polish residual. Out of soft-ref: Ferric robot EFA, WCA MCP network, FPGA Stage C package meters
+- §11 closes engineering gaps as plateau work: dual-phase micro-perception (§11.1; rule AST path shipped), O(1) meta-routing (§11.2), Primitive Distillation v1 (§11.3; `mol distill`), Tier 0/1/2 measurement realism (§11.4; only Metered populates `measured_j`; Tier-2 shunt HAL stub honesty), DX `mol.yaml` / `mol prove` A1–A14 / `mol bench` / `mol arena` / `mol phase1` / `mol distill` (§11.5)—shipped in clean-room `product/`; `mol dev` UI polish residual. Out of soft-ref: Ferric robot EFA, live WCA MCP network (HTTP|MCP certify env-gated in-tree), FPGA Stage C package meters (`stage_c_measured=false`; soft-ref artifact inventory wired)
 - Dual-phase does not demote Lookup → Formula → Solver → Model LAST; Phase 1 emits typed AST/schema; Model LAST remains residual leaf in Phase 2
 
 ## Appendix B. Reproducibility pointers
