@@ -205,7 +205,7 @@ Satiation owns Economic Reality of Satiation: stop when completeness \(C(z)\) ho
 | **Verify** | [proof.openie.dev](https://proof.openie.dev) | Cousin energy law for verified artifacts. |
 | **Product** | [klere.ai](https://klere.ai) | **Klere** — product home of the MEI class. This study owns the law/class; Klere owns embodiment. Public site is thin access framing (not a feature list). Tags / campus / stack named in §10 are Klere surfaces or roadmap. |
 
-Living figures: [/living/mei/](/living/mei/) (static teaching figures from pack charts; Manim motion later). Soft-ref path keeps package energy Estimated unless Metered.
+Living figures: [/living/mei/](/living/mei/) (Manim clips + pack charts + teaching tables). Klere positioning: [/about/mei/](/about/mei/). Soft-ref path keeps package energy Estimated unless Metered.
 
 ---
 
@@ -670,7 +670,7 @@ Companions stay distinct. [Mixture of Limits](/papers/mol/) navigates Lookup →
 
 Metabolic Intelligence is **designed for Klere** ([klere.ai](https://klere.ai)). This study does not replace the Mixture of Limits product path (`mol.yaml` / `mol run` / A1–A14). It supplies the envelope those floors spend; **Klere** is the product embodiment of the MEI class (edge tags / resource-optimized central / stack as Klere surfaces or roadmap — not invented shipped features; not uncapped hyperscale). The Mixture of Limits cascade decides the gear; metabolic actuators and the obtain-router decide how hard the envelope may be driven at tag sleep current and at lean-campus import meters. When VoI is zero or the budget refuse fires, Satiation and Mixture of Limits already name stop as success. This study shows that stop is executable with OpenADR reports and node sleep, that enzyme recognition can stay inside a coin-cell envelope without a transformer pretrain, and that the class does not require dedicated water/power/hyperscale-cooling plants as a design consequence of its budgets.
 
-Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`. Living figures: [/living/mei/](/living/mei/) (static pack charts + teaching tables; Manim later). PDF: [/pdfs/mei.pdf](/pdfs/mei.pdf) when regenerated.
+Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`. Living figures: [/living/mei/](/living/mei/) (Manim dual-scale + obtain-router clips; pack charts; teaching tables). Investor/partner one-pager: [/about/mei/](/about/mei/). PDF: [/pdfs/mei.pdf](/pdfs/mei.pdf) when regenerated.
 
 ---
 
@@ -722,6 +722,11 @@ Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`. Living f
 27. OpenIE Metabolic Intelligence handoff pack (2 Oct 2026): `HANDOFF.md`, `radar/README.md`, `synthesis/`, `datacenter/service/`, `benchmarks/`, `mcu/`.
 28. OpenIE Metabolic Intelligence SOTA brief (2 Oct 2026). `docs/MEI_SOTA_BRIEF_2026-10-02.md`.
 29. Dalgaty et al. Probabilistic in-memory computing for energy-based models (arXiv:2609.11281, 2609.11288, 2026). Model / TLM evidence for AIMC vs HBM-bound GPU mismatch. Evidence: **P**.
+30. Memristor Hopfield / adaptive associative memory (2026). Nature Communications s41467-026-69958-0; arXiv:2605.07223. CIM energy-min peer. Evidence: **M/P**.
+31. Photonic neuromorphic / analog memory (2026). Nature Communications s41467-026-69084-x; fully analog photonic online training arXiv:2506.18041 (853 fJ/op paper claim). Evidence: **M/S**. Cited as joule-floor substrate peers, not MEI software class.
+32. PEARL; OmniRouter (arXiv:2502.20576); Energy-Aware LRM (arXiv:2601.00823) (2025–Jan 2026). Academic joule/cost-aware multi-LLM routers. Price which LLM answers, not Lookup→Formula→Solver→Model LAST. Evidence: **P**.
+33. Klere product home. https://klere.ai . Thin public access framing as of this writing; not a shipped feature catalog. Research owns MEI class; Klere owns embodiment.
+34. ML.ENERGY v3.0 (Jan 2026). Energy leaderboard. **Historical-ish** relative to Sep 2026 field curves. Evidence: **M**.
 
 *No chicken-spoilage Anwar publish numbers. No invented citations. Numbers not tied to pack evidence M/C or a named external meter remain estimates. Soft-ref path: `board_synth_claimed=false`.*
 
@@ -768,3 +773,75 @@ Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`. Living f
 8. Product home: **Klere** ([klere.ai](https://klere.ai)). Research owns the class; Klere owns embodiment.
 
 
+## Appendix D. Glossary of definitions
+
+Spell-outs and working definitions used in this study. First use in the body also carries a short gloss; this appendix is the lookup table.
+
+| Term | Definition |
+|---|---|
+| **Metabolic Intelligence (MEI)** | Budget-native / energy-envelope intelligence class: budget in → best obtainable answer out, at edge and resource-optimized central under one thesis (not uncapped hyperscale). |
+| **Klere** | Product home of the MEI class ([klere.ai](https://klere.ai)). Research owns the law/class; Klere owns embodiment. Public site is thin access framing unless a feature is labeled proven pack. |
+| **Budget envelope \(B\)** | Explicit joule or power bound that constrains obtainable answers; first-class input, not post-hoc telemetry. |
+| **Digital enzyme** | Silicon recognition unit with binding site, product, allosteric context switch, Hill cooperativity, abundance as learned weight, and a cost for every binding check. Bit-enzyme variant uses no multiplies. |
+| **Metabolic schedule** | Duty cycle for sensing and heating that meets a monitoring objective while minimizing average power (heater + sleep + radio). |
+| **Obtain mechanism** | How an input is acquired: Lookup, Formula / Calculate, Solver, Model, Guess — ordered by Mixture of Limits. |
+| **Obtain-router / \(J(m\|q)\)** | Rule \(m^* = \arg\min_m J(m\|q)\) with \(J(m\|q) = E_m + \lambda \cdot \tfrac{1}{2} \cdot S_q^2 \cdot \mathrm{var}_m(t)\). |
+| **Grid-following service** | Control plane that accepts OpenADR / DSX Flex signals and applies ordered levers so campus import stays under cap. |
+| **Resource-optimized central** | Budget-capped, grid-following lean campus. Not an uncapped hyperscale plant with dedicated water/power/cooling as design defaults. |
+| **Edge / tag** | Microwatt-class cold-chain or similar sensing node under coin-cell physics. |
+| **Evidence class** | Label on a number: real protocol, emulator-measured, datasheet, measured-kernel model, looked-up, calculation, plant model, estimate (pack radar M/C/V/R/D/S/P). |
+| **Proven pack** | Evidence artifact present in the OpenIE metabolic handoff pack and cited with its class in this study. |
+| **Klere roadmap** | Product packaging / SKU / operator surface not yet shipped as a live Klere feature; may reuse proven pack under separate evidence class. |
+| **Estimate** | Number that is modeled, looked-up, or curve-derived and not a board package meter. |
+| **Soft-ref path** | `board_synth_claimed=false`; estimates ≠ package `measured_j`. |
+| **Value of Information (VoI)** | Howard (1966): expected improvement in decision utility from an observation, net of cost. |
+| **Satiation** | Companion law: stop when VoI is zero or budget refuse fires (Economic Reality of Satiation). |
+| **Mixture of Limits** | Companion navigation law: Lookup → Formula → Solver → Model LAST. |
+| **Notational Intelligence** | Companion commit law: certify-before-commit. |
+| **OpenADR** | Open Automated Demand Response protocol (3.1 VTN used in pack demos). |
+| **DSX Flex** | Emerald / NVIDIA-shaped campus flexibility MQTT service used as peer actuator shape in pack demos. |
+| **AEMA** | AI Energy Management Alliance (Emerald AI, Google, NVIDIA). No published protocol spec as of 1 Oct 2026 radar. |
+| **board_synth_claimed** | Repository honesty flag. False means no FPGA board synthesis/meter claim. |
+| **measured_j** | Package joule field populated only when a labeled meter returns a reading (Metered). |
+
+## Appendix E. Claim ledger (proven pack vs roadmap vs estimate)
+
+Sell these as **separate evidence classes**. Do not upgrade a row without changing its class and citation.
+
+### E.1 Proven pack (cite in sales as pack evidence)
+
+| Claim | Evidence pointer | Class |
+|---|---|---|
+| Enzyme families + early exit: 1,723 instr/decision vs int8 MLP 2,451 (matched Cortex-M4 setting) | Pack `mcu/` emulator | Emulator-measured |
+| SmellNet sequential: enzymes 77.7% vs MLP 18.4% (50 foods, 5 groups, no revisit) | Pack `benchmarks/` | Real dataset protocol |
+| Metabolic tag schedule ~9.92 µW total (heater ~2.99, sleep ~6.93) on BME690+STM32U3 model | Pack `tag_budget_2026_results.json` | Datasheet + schedule model |
+| OpenADR 3.1 VTN + DSX Flex MQTT service tested end-to-end | Pack `datacenter/service/` | Real protocol |
+| Ordered levers: pause → speed → route → effort → battery → shed | Pack service + study §8 | Real protocol + plant model |
+| Closed scenario set with node sleep: zero time over cap (pack headline) | Pack scenario table / charts | Plant model + real protocol |
+| Standing obtain rule / \(J(m\|q)\) math + ledger bands | Pack `synthesis/` + study §4 | Calculation + looked-up |
+| Soft-ref companions (Mixture of Limits / NI / Satiation) | Catalog papers | Research study |
+
+### E.2 Klere roadmap (not invented shipped features)
+
+| Surface | What is proven underneath | What is still roadmap |
+|---|---|---|
+| Edge / tag SKU | Enzyme + schedule pack evidence | Klere packaging, ops licence, field SKU |
+| Lean-campus operator product | OpenADR/DSX demos + scenario table | Operator UX, SLA, multi-site productization |
+| Obtain / stack gateway | Router math, soft-ref `mol` companions, speed-tier synthesis | Packaged gateway DX beyond research surfaces |
+| Dynamo 1.5 / DPS live actuators | Vendor docs as envelope peers | Live wired power-cap actuators in Klere |
+
+### E.3 Estimate / labeled model (not board measured_j)
+
+| Quantity | Status |
+|---|---|
+| Wh/answer curve bands | Curves / measured-kernel model → **Estimated** until Metered |
+| CR2032 lifetime years | Capacity model from datasheet ÷ average µW → **Estimate** |
+| Campus plant watts / time-over-cap charts | Plant model (protocols real) → **Model** |
+| Landauer \(k_B T \ln 2\) on receipts | Labeled thermodynamic lower-bound **estimate** |
+| Water / power / cooling “not required by design” | Design consequence of envelope + pack evidence — **not** measured liters saved |
+| AEMA latency / ramp | **Forbidden** — no published protocol spec |
+| Anwar chicken-spoilage accuracy | **Internal only** — no licence; not published |
+
+### E.4 Soft-ref lock
+
+`board_synth_claimed=false`. Package `measured_j` only when Metered. Investor/partner prose must keep proven pack, roadmap, and estimate on separate lines.
