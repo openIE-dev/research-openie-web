@@ -1,6 +1,6 @@
 ---
 title: "Metabolic Intelligence: Budget-Native Compute from Tag to Campus"
-deck: "A new form of AI: budget goes in; the best answer that budget can buy comes out. Digital enzymes at microwatts; grid-following service at 100 MW. Academic thesis, economic argument, and market value under settled Shannon–Landauer–VoI law."
+deck: "A new form of AI designed for Klere (klere.ai): budget goes in; the best answer that budget can buy comes out. Research owns the MEI class; Klere owns the product embodiment. Digital enzymes at microwatts; grid-following service at 100 MW. Academic thesis, economic argument, and market value under settled Shannon–Landauer–VoI law."
 id: mei
 status: "Research study"
 author: "David Charlot, Open Interface Engineering"
@@ -14,6 +14,8 @@ board_synth_claimed: false
 ## Abstract
 
 **Metabolic Intelligence** is a budget-native class of computer intelligence. A stated energy budget goes in; the best answer that budget can buy comes out. The class is not a transformer update. It sits with Logical Intelligence (energy-based settle), World Labs (spatial world models), and other post-transformer programs as a next wave: intelligence whose first coordinate is the joule envelope, not the next-token corridor.
+
+**Designed for Klere.** Metabolic Intelligence is designed for **Klere** ([klere.ai](https://klere.ai)) — Open Interface Engineering's product home for the MEI class. This research study owns the law and class definition. Klere owns the product embodiment. As of this writing the public site is a thin access / energy-efficient AI framing; it is not a shipped feature catalog. Tag, campus, and obtain-stack surfaces named below are **Klere roadmap** unless this study labels them as a **proven pack**.
 
 Class properties, stated plainly:
 
@@ -38,7 +40,7 @@ Hardware dual-map: the class runs today on GPUs and MCUs (von Neumann), and poin
 
 People should not have to fight over energy to eat or to use AI. That civic sentence is the design brief. Cold-chain tags that watch food should last years on a coin cell. Campuses that serve answers should follow the grid when the grid asks them to cut, without inventing false board joules or collapsing every research law into one paper.
 
-The dominant construction for computer intelligence still treats the transformer corridor as the substrate: pretrain a large generative model, then spend tokens and watts at serve time. That corridor has produced real products. It is not the only class. **Logical Intelligence** casts reasoning as energy minimization over constraints (Business Wire, 20 Jan 2026). **World Labs** casts spatial intelligence as world models that predict views and dynamics (Atlas, 1 Sep 2026). **Metabolic Intelligence** casts intelligence as **budget-native obtain and actuate**: the envelope is first-class; the answer is the best the envelope can buy.
+The dominant construction for computer intelligence still treats the transformer corridor as the substrate: pretrain a large generative model, then spend tokens and watts at serve time. That corridor has produced real products. It is not the only class. **Logical Intelligence** casts reasoning as energy minimization over constraints (Business Wire, 20 Jan 2026). **World Labs** casts spatial intelligence as world models that predict views and dynamics (Atlas, 1 Sep 2026). **Metabolic Intelligence** casts intelligence as **budget-native obtain and actuate**: the envelope is first-class; the answer is the best the envelope can buy. The class is designed for **Klere** ([klere.ai](https://klere.ai)): research owns the law; Klere owns the product embodiment. Do not read the thin public landing page as live product features.
 
 Shannon (1948) prices bits under uncertainty as settled law. Howard's Value of Information (1966) prices whether another observation is worth its cost for a decision. Landauer (1961) prices irreversible bit erasure in joules at temperature \(T\): \(E_{\min} = k_B T \ln 2\) per bit erased in the ideal model. On receipts that Landauer quantity is a **labeled estimate**, not a wattmeter reading. Together they imply floors: past a point, more bits stop buying outcomes that matter for a stated benefit. Metabolic Intelligence embodies those floors as **schedules and actuators** at the edge of a tag and at the meter of a campus.
 
@@ -197,6 +199,7 @@ Satiation owns Economic Reality of Satiation: stop when completeness \(C(z)\) ho
 | **Compute** | [compute.openie.dev](https://compute.openie.dev) | Primitive table the cascade navigates; metabolic actuators spend primitives under μ on hardware H. |
 | **Synthesis** | [synthesis.openie.dev](https://synthesis.openie.dev) | Cost surface \(E(x)=\sum \theta(p)\cdot\mu(p,H)\); this study extends obtain cost as \(J(m\|q)\). |
 | **Verify** | [proof.openie.dev](https://proof.openie.dev) | Cousin energy law for verified artifacts. |
+| **Product** | [klere.ai](https://klere.ai) | **Klere** — product home of the MEI class. This study owns the law/class; Klere owns embodiment. Public site is thin access framing (not a feature list). Tags / campus / stack named in §10 are Klere surfaces or roadmap. |
 
 Living placeholder for figures: [/living/mei/](/living/mei/). Soft-ref path keeps package energy Estimated unless Metered.
 
@@ -430,7 +433,9 @@ The same standing rule threads all four layers. Soft-ref path keeps every layer'
 
 ### 10.1 Who buys what
 
-| Buyer | What they buy | Why now (market clock) | Evidence class for timing |
+**Vehicle.** Buyers purchase through **Klere** ([klere.ai](https://klere.ai)) — the product home designed around Metabolic Intelligence. This paper sells the class and the evidence packs; Klere is the commercial vehicle. Do not invent shipped SKUs from the thin public site.
+
+| Buyer | What they buy (via Klere) | Why now (market clock) | Evidence class for timing |
 |---|---|---|---|
 | **Cold-chain / food ops** | Microwatt gas tags + enzyme recognition under metabolic schedule | FSMA 204 enforcement barred before 20 Jul 2028 (FDA proposed); EU PPWR since 12 Aug 2026 | **R** (rules) |
 | **AI campus / colo / hyperscale energy ops** | Grid-following service: OpenADR 3.1 VEN + DSX Flex MQTT + ordered levers | Emerald DSX Flex commercial path (1 Jun 2026); AEMA alliance (16 Sep 2026, **no spec yet**) | **C/V** |
@@ -438,9 +443,11 @@ The same standing rule threads all four layers. Soft-ref path keeps every layer'
 
 ### 10.2 Product slices (honest scope)
 
-1. **Edge pack.** Digital enzyme / bit-enzyme classifiers; family index; physics-informed features; tag budget model for BME690 / ZMOD4410 / SGP41 + STM32U3 / nRF54L15. Not a neuromorphic gas-odour nJ claim (shipping figures **not found**).
-2. **Campus service.** OpenADR 3.1 + DSX Flex–shaped control; gateway with `x-consumer` speed tiers; plant-model tested scenarios. Plant is a model; protocols are real.
-3. **Obtain stack.** \(J(m\|q)\) router as Mixture of Limits embodiment; satiation stop wired to refuse codes.
+Label each slice as **proven pack** (evidence in this study) or **Klere roadmap** (product packaging not claimed shipped).
+
+1. **Edge pack** (*proven pack* for recognition / schedule evidence; *Klere roadmap* for commercial tag SKU). Digital enzyme / bit-enzyme classifiers; family index; physics-informed features; tag budget model for BME690 / ZMOD4410 / SGP41 + STM32U3 / nRF54L15. Not a neuromorphic gas-odour nJ claim (shipping figures **not found**).
+2. **Campus service** (*proven pack* for OpenADR/MQTT protocol demos + scenario table; *Klere roadmap* for commercial flexibility product). OpenADR 3.1 + DSX Flex–shaped control; gateway with `x-consumer` speed tiers; plant-model tested scenarios. Plant is a model; protocols are real.
+3. **Obtain stack** (*proven pack* for router math / soft-ref companions; *Klere roadmap* for packaged gateway). \(J(m\|q)\) router as Mixture of Limits embodiment; satiation stop wired to refuse codes.
 
 ### 10.3 Competitive differentiation
 
@@ -462,11 +469,13 @@ Do not sell Wh/answer, µW lifetime, or × work/MW as board-measured without a n
 
 ### 10.5 Buyer journeys (three packs)
 
-**Journey A — Cold-chain operator.** Problem: FSMA 204 / PPWR timing raises the cost of blind legs in the chain; coin-cell tags must last years. Offer: metabolic schedule (~10 µW class on Oct 2026 parts, datasheet + model) + enzyme recognition with sequential learning for new SKUs without full MLP retrain. Proof artifacts: MCU instruction table; SmellNet sequential protocol; tag budget script. Not offered: Anwar chicken accuracy; neuromorphic gas nJ; board `measured_j`.
+Vehicle for all three journeys: **Klere** ([klere.ai](https://klere.ai)). Research study = class + evidence; Klere = product embodiment. Proven pack vs roadmap is labeled per journey.
 
-**Journey B — Campus energy / flexibility lead.** Problem: interconnection and peak stress; AEMA / DSX language is rising; operators need levers that preserve interactive work. Offer: OpenADR 3.1 VEN + DSX Flex MQTT backstop + ordered levers with scenario pack (zero time over cap with node sleep). Proof artifacts: real VTN / broker tests; scenario table A–R; recovery-ramp redesign note. Not offered: AEMA latency/ramp numbers; plant watts as meter readings; "100% served through 90% cut" as universal.
+**Journey A — Cold-chain operator (Klere edge / tags surface).** Problem: FSMA 204 / PPWR timing raises the cost of blind legs in the chain; coin-cell tags must last years. Offer via Klere: metabolic schedule (~10 µW class on Oct 2026 parts, datasheet + model) + enzyme recognition with sequential learning for new SKUs without full MLP retrain. **Proven pack:** MCU instruction table; SmellNet sequential protocol; tag budget script. **Klere roadmap:** commercial tag SKU / field install packaging. Not offered: Anwar chicken accuracy; neuromorphic gas nJ; board `measured_j`.
 
-**Journey C — Platform / stack buyer.** Problem: serving stacks route models but do not price obtain zones; transformers stay default. Offer: \(J(m\|q)\) router + metabolic gateway (`x-consumer` speed tiers, route, effort) under Mixture of Limits product path. Proof artifacts: synthesis ledger bands; efficiency pack work-per-MW ranges; standing obtain rule. Not offered: Wh/answer as `measured_j`; "routing costs no quality."
+**Journey B — Campus energy / flexibility lead (Klere campus surface).** Problem: interconnection and peak stress; AEMA / DSX language is rising; operators need levers that preserve interactive work. Offer via Klere: OpenADR 3.1 VEN + DSX Flex MQTT backstop + ordered levers with scenario pack (zero time over cap with node sleep). **Proven pack:** real VTN / broker tests; scenario table A–R; recovery-ramp redesign note. **Klere roadmap:** commercial flexibility product and operator SKU. Not offered: AEMA latency/ramp numbers; plant watts as meter readings; "100% served through 90% cut" as universal.
+
+**Journey C — Platform / stack buyer (Klere stack surface).** Problem: serving stacks route models but do not price obtain zones; transformers stay default. Offer via Klere: \(J(m\|q)\) router + metabolic gateway (`x-consumer` speed tiers, route, effort) under the Mixture of Limits product path, embodied as Klere stack surfaces. **Proven pack:** synthesis ledger bands; efficiency pack work-per-MW ranges; standing obtain rule; soft-ref companions. **Klere roadmap:** packaged gateway / DX productization beyond `mol.yaml` / `mol run`. Not offered: Wh/answer as `measured_j`; "routing costs no quality."
 
 ### 10.6 Pricing and packaging honesty
 
@@ -480,10 +489,12 @@ Do not sell Wh/answer, µW lifetime, or × work/MW as board-measured without a n
 
 ### 10.7 Go-to-market sequencing (engineering, not hype)
 
-1. **Publish the class** (this paper + SOTA brief) with soft-ref honesty.
-2. **Ship protocol demos** (OpenADR/DSX test harness) as interoperability evidence.
+Sequencing is for **Klere** as product home; this paper remains the class publication.
+
+1. **Publish the class** (this paper + SOTA brief) with soft-ref honesty; point product inquiries to [klere.ai](https://klere.ai) without overclaiming the thin public site.
+2. **Ship protocol demos** (OpenADR/DSX test harness) as interoperability evidence (proven pack → Klere campus roadmap).
 3. **Meter one pool** (highest VoI ledger item) before any Wh/answer sales claim upgrades evidence class.
-4. **Licence edge pack** and seek chicken-dataset permission only if publish is required—until then keep Anwar numbers internal.
+4. **Licence edge pack** into Klere packaging and seek chicken-dataset permission only if publish is required—until then keep Anwar numbers internal.
 5. **Wire Dynamo 1.5 / DPS** as live actuators when vendor hooks are available; until then keep them noted, not claimed live.
 
 ## 11. SOTA at the metabolic frontier
@@ -616,13 +627,13 @@ Stage C / package `measured_j` for Metabolic Intelligence hardware remains **ope
 
 ## 14. Conclusion and relation to Mixture of Limits product
 
-**Metabolic Intelligence** teaches a budget-native class: physics-informed, test-time, zero-shot under grammar, sequential / super learning without mandatory pretrain, dual-mapped to GPUs/MCUs today and to neuromorphic / analog / photonic / adiabatic substrates next. A budget goes in; the best answer that budget can buy comes out. Digital enzymes prove the class at microwatts. The OpenADR / DSX Flex service proves the class at 100 MW. The \(J(m\|q)\) router makes the standing obtain rule executable. The economic argument binds free-at-margin digital inference to scarce joules. The market value proposition names who buys tags, campus flexibility, and the software stack—without selling unmetered numbers.
+**Metabolic Intelligence** teaches a budget-native class: physics-informed, test-time, zero-shot under grammar, sequential / super learning without mandatory pretrain, dual-mapped to GPUs/MCUs today and to neuromorphic / analog / photonic / adiabatic substrates next. A budget goes in; the best answer that budget can buy comes out. Digital enzymes prove the class at microwatts. The OpenADR / DSX Flex service proves the class at 100 MW. The \(J(m\|q)\) router makes the standing obtain rule executable. The economic argument binds free-at-margin digital inference to scarce joules. The market value proposition names who buys tags, campus flexibility, and the software stack **through Klere**—without selling unmetered numbers or inventing live product features from a thin landing page.
 
 Companions stay distinct. [Mixture of Limits](/papers/mol/) navigates Lookup → Formula → Solver → Model LAST and owns the product path (`mol.yaml` / `mol run` / A1–A14; [openIE-dev/mixture-of-limits](https://github.com/openIE-dev/mixture-of-limits)). [Notational Intelligence](/papers/ni/) owns certify-before-commit. [Satiation](/papers/satiation/) owns Economic Reality of Satiation. This study owns the envelope and actuators that make those floors bind when food is watched on a coin cell and when a campus must shed watts without lying about meters.
 
-### Product surface under Mixture of Limits
+### Product surface: Klere under Mixture of Limits
 
-Metabolic Intelligence does not replace the Mixture of Limits product path. It supplies the envelope those floors spend: the Mixture of Limits cascade decides the gear; metabolic actuators and the obtain-router decide how hard the envelope may be driven at tag sleep current and at campus import meters. When VoI is zero or the budget refuse fires, Satiation and Mixture of Limits already name stop as success. This study shows that stop is executable with OpenADR reports and node sleep, and that enzyme recognition can stay inside a coin-cell envelope without a transformer pretrain.
+Metabolic Intelligence is **designed for Klere** ([klere.ai](https://klere.ai)). This study does not replace the Mixture of Limits product path (`mol.yaml` / `mol run` / A1–A14). It supplies the envelope those floors spend; **Klere** is the product embodiment of the MEI class (tags / campus / stack as Klere surfaces or roadmap — not invented shipped features). The Mixture of Limits cascade decides the gear; metabolic actuators and the obtain-router decide how hard the envelope may be driven at tag sleep current and at campus import meters. When VoI is zero or the budget refuse fires, Satiation and Mixture of Limits already name stop as success. This study shows that stop is executable with OpenADR reports and node sleep, and that enzyme recognition can stay inside a coin-cell envelope without a transformer pretrain.
 
 Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`. Living figures: [/living/mei/](/living/mei/) (placeholder; companions pending). PDF: [/pdfs/mei.pdf](/pdfs/mei.pdf) when regenerated.
 
