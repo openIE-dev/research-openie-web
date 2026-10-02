@@ -5,6 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Living · Metabolic Intelligence</title>
 <link rel="stylesheet" href="../css/living.css"/>
+<style>
+  .ev-chip {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em;
+    text-transform: uppercase; padding: 0.15rem 0.45rem; border-radius: 4px;
+    border: 1px solid var(--border); color: var(--warn); background: #1c1917;
+  }
+  .ev-chip.real { color: var(--allow); border-color: #065f46; }
+  .ev-chip.emu { color: #7dd3fc; border-color: #0e7490; }
+  .ev-chip.model { color: var(--soft); border-color: #5b21b6; }
+  .ev-chip.datasheet { color: var(--warn); border-color: #854d0e; }
+  .figure-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem 1.25rem; margin: 1.75rem 0; scroll-margin-top: 4.5rem; }
+  .figure-block h2 { font-family: var(--mono); font-size: 1.05rem; margin: 0 0 0.75rem; color: #f1f5f9; }
+  .figure-block .id { font-family: var(--mono); color: var(--accent); font-size: 0.85em; }
+  .figure-block img { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); background: #fcfcfb; }
+  .figure-block .caption { color: var(--muted); font-size: 0.85rem; margin-top: 0.65rem; }
+  .teach-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 0.75rem 0; }
+  .teach-table th, .teach-table td { border: 1px solid var(--border); padding: 0.4rem 0.55rem; text-align: left; vertical-align: top; }
+  .teach-table th { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); background: #0f172a; }
+  .svg-wrap { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; }
+  .note-manim { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); margin-top: 1.5rem; padding: 0.65rem 0.8rem; border: 1px dashed var(--border); border-radius: 8px; }
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -23,34 +44,169 @@
 <main>
   <div class="hero">
     <h1>Metabolic Intelligence</h1>
-    <p class="deck-line">A budget goes in; the best answer that budget can buy comes out.</p>
-    <p class="subtitle">Living figures for Metabolic Intelligence are pending. This page is a placeholder so
-      <code>/living/mei/</code> does not 404. Claims stay ledger-safe with the study at
+    <p class="deck-line">A budget goes in; the best answer that budget can buy comes out. Designed for Klere (klere.ai): edge + resource-optimized central — not uncapped hyperscale.</p>
+    <p class="subtitle">Static teaching figures from the OpenIE metabolic pack. Claims stay ledger-safe with the study at
       <a href="/papers/mei/">/papers/mei/</a>. Soft-ref path:
       <code>board_synth_claimed=false</code>; estimates ≠ package <code>measured_j</code>.
-      Chicken-spoilage Anwar results are internal only, not published.</p>
+      Chicken-spoilage Anwar results are internal only, not published.
+      Evidence chips label each figure. Manim motion is deferred; ship static HTML+PNG/SVG first.</p>
   </div>
   <p class="subtitle">Catalog triad:
     <a href="/papers/mol/">Navigation (Mixture of Limits)</a> ·
     <a href="/papers/ni/">Commit (Notational Intelligence)</a> ·
     <a href="/papers/satiation/">Economic Reality of Satiation</a>.
     Fourth study: <strong>Energy budget / Metabolic Intelligence</strong>.
-    See <a href="/#companion-laws">catalog triad</a> and <a href="/#metabolic-intelligence">energy-budget strip</a>.</p>
+    Product home: <a href="https://klere.ai">klere.ai</a>.</p>
+
   <nav class="toc" aria-label="Figure TOC">
-    <h2>Planned figure shells (not yet rendered)</h2>
+    <h2>Figure IDs on this page (static; Manim later)</h2>
     <ul>
-      <li><span class="id">mei-diag-01</span> Budget-in → best-answer-out dual scale (tag ↔ campus)</li>
-      <li><span class="id">mei-diag-02</span> J(m|q) obtain router: look up → calculate → model → guess</li>
-      <li><span class="id">mei-tab-01</span> Digital enzyme vs int8 MLP instruction counts</li>
-      <li><span class="id">mei-tab-02</span> Tag metabolic schedule (~10 µW)</li>
-      <li><span class="id">mei-diag-03</span> Grid service lever order + OpenADR / DSX Flex</li>
-      <li><span class="id">mei-map-01</span> Hardware dual-map: von Neumann today / post–von Neumann next</li>
+      <li><a href="#mei-diag-01"><span class="id">mei-diag-01</span> Budget-in → best-answer-out dual scale</a></li>
+      <li><a href="#mei-diag-02"><span class="id">mei-diag-02</span> J(m|q) obtain router</a></li>
+      <li><a href="#mei-tab-01"><span class="id">mei-tab-01</span> Digital enzyme vs int8 MLP instruction counts</a></li>
+      <li><a href="#mei-tab-02"><span class="id">mei-tab-02</span> Tag metabolic schedule (~10 µW)</a></li>
+      <li><a href="#mei-chart-01"><span class="id">mei-chart-01</span> Energy vs speed (pack chart)</a></li>
+      <li><a href="#mei-chart-02"><span class="id">mei-chart-02</span> Grid day mechanism (pack chart)</a></li>
+      <li><a href="#mei-chart-03"><span class="id">mei-chart-03</span> Grid service scenario A (pack chart)</a></li>
+      <li><a href="#mei-diag-03"><span class="id">mei-diag-03</span> Grid lever order</a></li>
+      <li><a href="#mei-map-01"><span class="id">mei-map-01</span> Hardware dual-map</a></li>
     </ul>
   </nav>
+
+  <section id="mei-diag-01" class="figure-block">
+    <h2><span class="id">mei-diag-01</span> Budget-in → best-answer-out (dual scale)</h2>
+    <p><span class="ev-chip model">Teaching diagram</span> <span class="ev-chip">Unmetered</span></p>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 720 220" width="100%" height="auto" role="img" aria-label="Dual scale budget in best answer out">
+        <rect x="20" y="30" width="200" height="160" rx="10" fill="#111827" stroke="#334155"/>
+        <text x="120" y="58" text-anchor="middle" fill="#5eead4" font-family="IBM Plex Mono, monospace" font-size="13">EDGE / TAG</text>
+        <text x="120" y="88" text-anchor="middle" fill="#e2e8f0" font-family="IBM Plex Sans, sans-serif" font-size="12">Budget B ≈ µW</text>
+        <text x="120" y="112" text-anchor="middle" fill="#94a3b8" font-family="IBM Plex Sans, sans-serif" font-size="11">heater · sleep · enzyme</text>
+        <text x="120" y="148" text-anchor="middle" fill="#fbbf24" font-family="IBM Plex Mono, monospace" font-size="12">coin-cell plant</text>
+        <text x="120" y="170" text-anchor="middle" fill="#94a3b8" font-family="IBM Plex Sans, sans-serif" font-size="10">no hyperscale cooling</text>
+
+        <rect x="260" y="70" width="200" height="80" rx="10" fill="#0f172a" stroke="#5eead4" stroke-width="2"/>
+        <text x="360" y="100" text-anchor="middle" fill="#5eead4" font-family="IBM Plex Mono, monospace" font-size="13">BUDGET IN</text>
+        <text x="360" y="124" text-anchor="middle" fill="#e2e8f0" font-family="IBM Plex Sans, sans-serif" font-size="12">best answer under B</text>
+
+        <rect x="500" y="30" width="200" height="160" rx="10" fill="#111827" stroke="#334155"/>
+        <text x="600" y="58" text-anchor="middle" fill="#5eead4" font-family="IBM Plex Mono, monospace" font-size="13">LEAN CENTRAL</text>
+        <text x="600" y="88" text-anchor="middle" fill="#e2e8f0" font-family="IBM Plex Sans, sans-serif" font-size="12">Budget B = MW cap</text>
+        <text x="600" y="112" text-anchor="middle" fill="#94a3b8" font-family="IBM Plex Sans, sans-serif" font-size="11">pause · speed · route</text>
+        <text x="600" y="148" text-anchor="middle" fill="#fbbf24" font-family="IBM Plex Mono, monospace" font-size="12">grid-following</text>
+        <text x="600" y="170" text-anchor="middle" fill="#94a3b8" font-family="IBM Plex Sans, sans-serif" font-size="10">not uncapped hyperscale</text>
+
+        <path d="M220 110 H260" stroke="#5eead4" stroke-width="2" marker-end="url(#arrow)"/>
+        <path d="M460 110 H500" stroke="#5eead4" stroke-width="2"/>
+        <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#5eead4"/></marker></defs>
+      </svg>
+    </div>
+    <p class="caption">Class diagram only. Water/power/cooling plants not required <em>by design</em> at these envelopes — not a liters-saved meter. Soft-ref: <code>board_synth_claimed=false</code>.</p>
+  </section>
+
+  <section id="mei-diag-02" class="figure-block">
+    <h2><span class="id">mei-diag-02</span> J(m|q) obtain router</h2>
+    <p><span class="ev-chip model">Calculation + looked-up</span> <span class="ev-chip">Estimated</span></p>
+    <pre class="mono" style="font-family:var(--mono);font-size:0.85rem;background:#0f172a;border:1px solid var(--border);border-radius:8px;padding:1rem;overflow-x:auto;">Lookup → Formula / Calculate → Solver → Model LAST → Guess
+m* = argmin_m J(m|q) = E_m + λ · ½ · S_q² · var_m(t)</pre>
+    <p class="caption">Standing obtain rule under Mixture of Limits. Ledger Wh/answer bands are estimates — not board <code>measured_j</code>.</p>
+  </section>
+
+  <section id="mei-tab-01" class="figure-block">
+    <h2><span class="id">mei-tab-01</span> Digital enzyme vs int8 MLP (instruction counts)</h2>
+    <p><span class="ev-chip emu">Emulator-measured</span> <span class="ev-chip">Pack MCU</span></p>
+    <table class="teach-table">
+      <thead><tr><th>Model (Cortex-M4 pack)</th><th>Instr / decision</th><th>Notes</th><th>Evidence</th></tr></thead>
+      <tbody>
+        <tr><td>Enzyme families + early exit (12-feature pack row)</td><td>1,723</td><td>Matched decision setting vs MLP</td><td>Emulator (unicorn / pack <code>mcu/</code>)</td></tr>
+        <tr><td>int8 MLP (same setting)</td><td>2,451</td><td>Baseline dense leaf</td><td>Emulator</td></tr>
+        <tr><td>SmellNet sequential (50 foods, 5 groups, no revisit)</td><td>—</td><td>Enzymes 77.7% vs MLP 18.4%</td><td>Real dataset protocol</td></tr>
+      </tbody>
+    </table>
+    <p class="caption">Instruction counts ≠ wattmeter. Do not upgrade to board joules. Chicken-spoilage Anwar numbers stay internal (no licence).</p>
+  </section>
+
+  <section id="mei-tab-02" class="figure-block">
+    <h2><span class="id">mei-tab-02</span> Tag metabolic schedule (~10 µW class)</h2>
+    <p><span class="ev-chip datasheet">Datasheet + schedule model</span></p>
+    <table class="teach-table">
+      <thead><tr><th>Policy (BME690 + STM32U3)</th><th>Heater µW</th><th>Sleep µW</th><th>Total µW</th><th>CR2032 years (model)</th></tr></thead>
+      <tbody>
+        <tr><td>fixed every 0.5 h</td><td>15.00</td><td>6.93</td><td>21.93</td><td>~3.7</td></tr>
+        <tr><td>fixed every 1 h</td><td>7.50</td><td>6.93</td><td>14.43</td><td>~5.6</td></tr>
+        <tr><td>fixed every 4 h</td><td>1.88</td><td>6.93</td><td>8.81</td><td>~9.1</td></tr>
+        <tr><td><strong>metabolic + T/RH wake, cap 4 h</strong></td><td>2.99</td><td>6.93</td><td><strong>9.92</strong></td><td><strong>~8.1</strong></td></tr>
+        <tr><td>metabolic + T/RH wake, cap 8 h</td><td>2.26</td><td>6.93</td><td>9.19</td><td>~8.8</td></tr>
+      </tbody>
+    </table>
+    <p class="caption">From pack <code>tag_budget_2026_results.json</code>. Sleep floor dominates on the metabolic schedule — “heater is always the cost” is false here. Capacity model ≠ shelf-measured years.</p>
+  </section>
+
+  <section id="mei-chart-01" class="figure-block">
+    <h2><span class="id">mei-chart-01</span> Energy vs speed (pack chart)</h2>
+    <p><span class="ev-chip model">Curves / measured-kernel model</span> <span class="ev-chip">Estimated</span></p>
+    <figure>
+      <img src="media/energy_vs_speed.png" alt="Energy per chat answer versus streaming speed for V4 Pro and Flash on GB300/B300"/>
+      <figcaption class="caption">Pack asset <code>datacenter/curves/energy_vs_speed.png</code> (AI Configurator curves × estimated all-in kW/GPU). Speed-matching and Flash-first are test-time levers under a live budget — not a new pretrain. Wh/answer stays Estimated until Metered.</figcaption>
+    </figure>
+  </section>
+
+  <section id="mei-chart-02" class="figure-block">
+    <h2><span class="id">mei-chart-02</span> Grid day mechanism (pack chart)</h2>
+    <p><span class="ev-chip model">Plant model</span> <span class="ev-chip datasheet">Mechanism test</span></p>
+    <figure>
+      <img src="media/grid_day.png" alt="Cluster power through a simulated grid day under multiple policies"/>
+      <figcaption class="caption">Pack asset <code>datacenter/grid_day.png</code>. Cluster power vs grid cap by policy. Plant is a model; use with OpenADR/DSX protocol evidence, not as a field meter.</figcaption>
+    </figure>
+  </section>
+
+  <section id="mei-chart-03" class="figure-block">
+    <h2><span class="id">mei-chart-03</span> Grid service scenario A (notice, closed loop)</h2>
+    <p><span class="ev-chip real">Real protocol + plant model</span></p>
+    <figure>
+      <img src="media/grid_day_scenario_A.png" alt="Scenario A: notice, closed loop, 60/70 day — grid cap, load, import, battery, levers"/>
+      <figcaption class="caption">Pack asset <code>datacenter/service/tests/grid_day_A_notice_closed_60_70.png</code>. Protocols (OpenADR 3.1 VTN, DSX Flex MQTT) are real; campus watts are the plant model. Headline with node sleep: zero time over cap in the closed scenario set.</figcaption>
+    </figure>
+  </section>
+
+  <section id="mei-diag-03" class="figure-block">
+    <h2><span class="id">mei-diag-03</span> Grid lever order (least service lost per MW)</h2>
+    <p><span class="ev-chip real">Real protocol demos</span> <span class="ev-chip model">Plant model</span></p>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 720 120" width="100%" height="auto" role="img" aria-label="Ordered grid levers">
+        <text x="20" y="28" fill="#94a3b8" font-family="IBM Plex Mono, monospace" font-size="11">LEAST SERVICE LOST → MOST</text>
+        <rect x="20" y="45" width="100" height="44" rx="8" fill="#111827" stroke="#34d399"/><text x="70" y="72" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="IBM Plex Sans, sans-serif">pause</text>
+        <rect x="130" y="45" width="100" height="44" rx="8" fill="#111827" stroke="#5eead4"/><text x="180" y="72" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="IBM Plex Sans, sans-serif">slow speed</text>
+        <rect x="240" y="45" width="100" height="44" rx="8" fill="#111827" stroke="#5eead4"/><text x="290" y="72" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="IBM Plex Sans, sans-serif">route small</text>
+        <rect x="350" y="45" width="100" height="44" rx="8" fill="#111827" stroke="#fbbf24"/><text x="400" y="72" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="IBM Plex Sans, sans-serif">↓ effort</text>
+        <rect x="460" y="45" width="100" height="44" rx="8" fill="#111827" stroke="#fbbf24"/><text x="510" y="72" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="IBM Plex Sans, sans-serif">battery</text>
+        <rect x="570" y="45" width="100" height="44" rx="8" fill="#111827" stroke="#f87171"/><text x="620" y="72" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="IBM Plex Sans, sans-serif">shed</text>
+      </svg>
+    </div>
+    <p class="caption">OpenADR 3.1 + DSX Flex–shaped service. AEMA has no published protocol spec yet (1 Oct 2026 radar). Do not sell AEMA latency numbers.</p>
+  </section>
+
+  <section id="mei-map-01" class="figure-block">
+    <h2><span class="id">mei-map-01</span> Hardware dual-map</h2>
+    <p><span class="ev-chip">Operational map</span> <span class="ev-chip">Unmetered</span></p>
+    <table class="teach-table">
+      <thead><tr><th>Leaf</th><th>Runs today (von Neumann)</th><th>Post–von Neumann path</th><th>Status in study</th></tr></thead>
+      <tbody>
+        <tr><td>Digital enzyme</td><td>MCU / Cortex-M4 C</td><td>Content-addressable / sparse associative</td><td>Emulator-measured instructions</td></tr>
+        <tr><td>J(m|q) router</td><td>CPU / gateway service</td><td>N/A (software)</td><td>Math + ledger</td></tr>
+        <tr><td>Campus levers</td><td>GPU planners, Redfish, MQTT</td><td>Analog power fabrics (speculative)</td><td>Real protocols; plant model</td></tr>
+        <tr><td>Latent / EBM optional</td><td>GPU ViT / Lean</td><td>Analog DenseAM / memristor Hopfield</td><td>Cited peers; not OpenIE meters</td></tr>
+      </tbody>
+    </table>
+    <p class="caption">Teaching map from study Appendix B. Soft-ref path: <code>board_synth_claimed=false</code>.</p>
+  </section>
+
+  <p class="note-manim">Manim motion for mei-diag-01 / mei-diag-02 / mei-diag-03 is deferred. This page ships static HTML + pack PNG + SVG first so <code>/living/mei/</code> is not a placeholder. Voice locks unchanged; thesis video docs untouched.</p>
+
   <section class="figure-block">
     <h2>Measurement note</h2>
-    <p>No Manim media on this page yet. No board package joules are claimed here.
-      Read the study for evidence classes (real protocol / emulator / datasheet / curves / plant model).</p>
+    <p>No board package joules are claimed here. Evidence classes: real protocol / emulator / datasheet / curves / plant model.
+      Read the study for full grammar. Pack third-party notices: <a href="media/PACK_THIRD_PARTY_NOTICES.md">PACK_THIRD_PARTY_NOTICES.md</a>.</p>
   </section>
 </main>
 </body>

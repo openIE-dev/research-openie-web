@@ -23,7 +23,15 @@ const {
   headings = [],
 } = Astro.props;
 
-const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3).slice(0, 40);
+// Prefer every H2 as a top-level sibling in the outline (never drop §§9+ under a 40-cap).
+// Fill remaining TOC slots with H3s so later major sections stay visible next to §8.
+const h2s = headings.filter((h) => h.depth === 2);
+const h3s = headings.filter((h) => h.depth === 3);
+const tocBudget = 80;
+const toc = [
+  ...h2s,
+  ...h3s.slice(0, Math.max(0, tocBudget - h2s.length)),
+].sort((a, b) => headings.indexOf(a) - headings.indexOf(b));
 ---
 
 <Layout title={title} description={description ?? deck}>
@@ -126,6 +134,8 @@ const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3).slice(0, 40);
     padding-top: 0.5rem;
     border-top: 1px solid var(--color-brand-border);
     color: var(--color-brand-white);
+    clear: both;
+    display: block;
   }
   .paper-prose h3 {
     font-size: 1.1rem;
