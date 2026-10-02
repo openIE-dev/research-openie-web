@@ -921,11 +921,11 @@ measurement:
   board_synth_claimed: false
 ```
 
-**CLI loop (shipped in clean-room):** `mol prove` (PLAN + product A1–A13) → `mol run --chore mol.yaml` → `mol bench` (J/query versus always-model / MoE-sim; **Estimated|Metered** only) → `mol phase1` → `mol distill` (Primitive Distillation v1). `mol dev` watch UI remains polish. Package joules stay Estimated unless Metered.
+**CLI loop (shipped in clean-room):** `mol prove` (PLAN + product A1–A14) → `mol run --chore mol.yaml` → `mol bench` (J/query versus always-model / MoE-sim; **Estimated|Metered** only) → `mol arena` (typed decision / ticket-close / risk head-on versus frontier_sim + system_one_leaf; metrics correct_close, refuse-when-C=1, estimated_j, latency) → `mol phase1` → `mol distill` (Primitive Distillation v1). `mol dev` watch UI remains polish. Package joules stay Estimated unless Metered.
 
-**Product path.** Mixture of Limits as a valued product surface (problem, vs Laya System One, `mol.yaml`, acceptance A1–A13, dual-phase → live in-crate NI certify → satiation architecture, distillation v1, durable episodes, Tier-1/2 meter honesty) lives under the clean-room tree at `product/` (optional drafting mirror `mixture-of-limits-product`). Canonical code + docs: [`openIE-dev/mixture-of-limits`](https://github.com/openIE-dev/mixture-of-limits) (`mol prove` embeds A1–A13; `mol run` / `mol bench` / `mol phase1` / `mol distill`). Soft-ref constructive existence remains `mol prove`; package joules stay Estimated unless Metered. Win on J/query, refuse correctness, and certify-before-commit—not chat Elo (see `product/COMPETITIVE.md`).
+**Product path.** Mixture of Limits as a valued product surface (problem, vs Laya System One, `mol.yaml`, acceptance A1–A14, dual-phase → live in-crate NI certify → satiation architecture, distillation v1, durable episodes, Tier-1/2 meter honesty, Arena head-on) lives under the clean-room tree at `product/` (optional drafting mirror `mixture-of-limits-product`). Canonical code + docs: [`openIE-dev/mixture-of-limits`](https://github.com/openIE-dev/mixture-of-limits) (`mol prove` embeds A1–A14; `mol run` / `mol bench` / `mol arena` / `mol phase1` / `mol distill`). Soft-ref constructive existence remains `mol prove`; package joules stay Estimated unless Metered. Compete head-on: correct_close, refuse-when-C=1, estimated_j, latency — floors win when they exist; Model LAST when needed; peers age; each stands alone; frontier is expensive/out of road (see `product/COMPETITIVE.md`, `product/ARENA.md`).
 
-**Benchmark framing.** Compare joules-per-query and certify rate of Mixture of Limits cascade against MoE token routes on the same typed task set. Report Tier 0/1/2 explicitly. Soft-ref constructive existence is not a board energy score.
+**Benchmark framing.** Compare joules-per-query, correct close, refuse-when-C=1, and certify rate of Mixture of Limits cascade against MoE / frontier always-model and System One leaf stubs on the same typed task set (`mol arena`). Report Tier 0/1/2 explicitly. Soft-ref constructive existence is not a board energy score; never invent `measured_j`.
 
 ### 11.6 Roadmap summary
 
@@ -935,7 +935,7 @@ measurement:
 | Expensive meta-routing | O(1) Bloom/trie/EBNF/VoI tables | Soft-ref criteria for router cost ≪ leaf cost |
 | Undefined grammar | Refuse/`primitive_gap` or Primitive Distillation | Certify→AST compile→Lookup/Formula path |
 | Joules collapsed | Tier 0 / 1 / 2 labels; Metered-only `measured_j` | Receipt schema + optional shunt path |
-| DX / MoE comparison | `mol.yaml`, `mol prove` A1–A13, `mol bench`, `mol distill`, `mol phase1` | Shipped in `openIE-dev/mixture-of-limits` `product/`; `mol dev` UI polish residual |
+| DX / MoE / Arena comparison | `mol.yaml`, `mol prove` A1–A14, `mol bench`, `mol arena`, `mol distill`, `mol phase1` | Shipped in `openIE-dev/mixture-of-limits` `product/`; `mol dev` UI polish residual |
 
 Mixture of Limits stays the navigation law. Dual-phase, cheap meta-compute, distillation, measurement tiers, and DX are how the law gets embodied on the plateau—Lookup → Formula → Solver → Model LAST, with perception as a bounded front gear and Model LAST still last.
 
@@ -1103,7 +1103,7 @@ Kepler's laws / Newton's *Principia* / Brahe's observational program are treated
 - DOIs only when verified via search/source inventory; otherwise marked TBD
 - Bottleneck: materials/applied-math embodiment. Settled IT/physics already name the floors
 - §8.4-§8.14 map latents / Logical Intelligence / World Labs / **SOTA at the plateau** (test-time / super learning / live SOTA methods including MoD / quantization / inference engines / SSM–MoE–implementation efficiency / hardware economics / edge–neuromorphic soft-ref / transmission–gearing–cascade–memory-context–test-time / **race to plateau floors across AI/ML fields**) as plateau spend options under Mixture of Limits floors; the industry race is to those floors, not unbounded scale; §9 contrasts Constitutional AI and tool-use agents with typed certify-before-commit; field product joules, API prices, and author-reported KV bytes stay field; estimates ≠ board package energy
-- §11 closes engineering gaps as plateau work: dual-phase micro-perception (§11.1; rule AST path shipped), O(1) meta-routing (§11.2), Primitive Distillation v1 (§11.3; `mol distill`), Tier 0/1/2 measurement realism (§11.4; only Metered populates `measured_j`; Tier-2 shunt HAL stub honesty), DX `mol.yaml` / `mol prove` A1–A13 / `mol bench` / `mol phase1` / `mol distill` (§11.5)—shipped in clean-room `product/`; `mol dev` UI polish residual. Out of soft-ref: Ferric robot EFA, WCA MCP network, FPGA Stage C package meters
+- §11 closes engineering gaps as plateau work: dual-phase micro-perception (§11.1; rule AST path shipped), O(1) meta-routing (§11.2), Primitive Distillation v1 (§11.3; `mol distill`), Tier 0/1/2 measurement realism (§11.4; only Metered populates `measured_j`; Tier-2 shunt HAL stub honesty), DX `mol.yaml` / `mol prove` A1–A14 / `mol bench` / `mol arena` / `mol phase1` / `mol distill` (§11.5)—shipped in clean-room `product/`; `mol dev` UI polish residual. Out of soft-ref: Ferric robot EFA, WCA MCP network, FPGA Stage C package meters
 - Dual-phase does not demote Lookup → Formula → Solver → Model LAST; Phase 1 emits typed AST/schema; Model LAST remains residual leaf in Phase 2
 
 ## Appendix B. Reproducibility pointers
