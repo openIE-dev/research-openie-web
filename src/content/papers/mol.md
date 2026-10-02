@@ -78,7 +78,7 @@ This study lives inside the OpenIE family of sites. Readers do not need those si
 |---|---|---|---|
 | **Research** (this hub) | [research.openie.dev](https://research.openie.dev) | Readable studies, PDFs, and living figures. This paper is `/papers/mol/`; companions are Notational Intelligence (`/papers/ni/`) and Satiation (`/papers/satiation/`). | Publishes the navigation-law study prose and soft-ref measurement bounds. |
 | **Stack** | [stack.openie.dev](https://stack.openie.dev) | Teaching map of the family: information theory, game theory, and mechanism design as one substrate; directory of the eight periodic stacks. | Orientation layer. Mixture of Limits is not "another stack card"; it is the **navigation law** that chooses cheapest-sufficient close across stack coordinates. |
-| **Compute** | [compute.openie.dev](https://compute.openie.dev) | Periodic Stack of Computation: **258 primitives / 33 families**, thermodynamic floor every sibling inherits. | The primitive table Mixture of Limits **navigates**. Soft-ref proves a growing live catalog (~180 Present / ≥170 live gears); remaining ~78/258 outside soft-ref proof. Empty cells → `primitive_gap`. |
+| **Compute** | [compute.openie.dev](https://compute.openie.dev) | Periodic Stack of Computation: **258 primitives / 33 families**, thermodynamic floor every sibling inherits. | The primitive table Mixture of Limits **navigates**. Soft-ref proves the full live catalog (**258 Present / 258 live** Lookup/Formula/Solver/Navigate gears) plus honest HW Gaps; μ calib + silicon Gaps remain outside soft-ref proof. Empty HW cells → `primitive_gap`. estimates≠measured_j; `stage_c_measured=false` until meters. |
 | **Knowledge** | [knowledge.openie.dev](https://knowledge.openie.dev) | Working definition of a claim as seven axes ⟨valid time, transaction time, reference time, granularity, scope, certainty, provenance⟩. | Typed claims and cite/compose leaves (Z2 cite / Z1 compose in soft-ref) bind to this object shape. Mixture of Limits does not redefine knowledge; it refuses escalation when grammar and VoI say the claim coordinate is already covered. |
 | **Synthesis** | [synthesis.openie.dev](https://synthesis.openie.dev) | Periodic Stack of Digital Information Synthesis: AI as software; zones Z₁/Z₂/Z₃; cost surface \(E(x)=\sum \theta(p)\cdot\mu(p,H)\). | Plateau spend and cascade order rhyme with synthesis zones (closed-form → constrained → unbounded). Mixture of Limits owns **floors outside generation**—VoI, grammar, energy estimate, certify, settle-refuse—so Z₃-style generation stays Model LAST. |
 | **Verify** | [proof.openie.dev](https://proof.openie.dev) | Periodic Stack of Verification: cheapest-sufficient solver under \(E(x)\ge\theta(D)\cdot\mu(S,V)\). | Cousin energy law. Mixture of Limits uses the same spine form for path energy; Verify maps verified artifacts; Mixture of Limits maps which gear closes before commit. |
@@ -122,7 +122,7 @@ The model tier is **LAST**. Default budgets set `allow_model=false`. Even when a
 
 ### Periodic Stack
 
-Mixture of Limits navigates the OpenIE **Periodic Stack of Computation** at [compute.openie.dev](https://compute.openie.dev) (**258 primitives / 33 families**). Sibling maps: [stack.openie.dev](https://stack.openie.dev) (family directory), [knowledge.openie.dev](https://knowledge.openie.dev) (seven-axis claim), [synthesis.openie.dev](https://synthesis.openie.dev) (synthesis zones / cost surface). The soft-ref proves an in-tree **subset** navigator with Present/Gap cells and scale notes citing 258/33. Full live catalog and μ calibration corpora remain outside soft-ref proof scope. Empty cells surface as `primitive_gap`.
+Mixture of Limits navigates the OpenIE **Periodic Stack of Computation** at [compute.openie.dev](https://compute.openie.dev) (**258 primitives / 33 families**). Sibling maps: [stack.openie.dev](https://stack.openie.dev) (family directory), [knowledge.openie.dev](https://knowledge.openie.dev) (seven-axis claim), [synthesis.openie.dev](https://synthesis.openie.dev) (synthesis zones / cost surface). The soft-ref proves an in-tree **live catalog** navigator with 258 Present cells (all live Lookup/Formula/Solver/Navigate) + honest Gap markers and scale notes citing 258/33. μ calibration corpora and silicon HW Gaps remain outside soft-ref proof scope. Empty cells surface as `primitive_gap`.
 
 ### Mixture of Limits is not MoE
 
@@ -252,7 +252,7 @@ Default close path for all proven claims: **Unmetered** (+ **Estimated** where �
 | P7 | Capability default-deny mutate | `claim.mol.capability_deny_mutate` | `AutomateGate::default().gate(Mutate)` → Refuse. | - | Unmetered |
 | P8 | Receipt labels | `claim.mol.receipt_honesty` | Software-ref: `measured_j=None`, `board_synth_claimed=false`, estimate labeled (`EstimateKind`). | Live RAPL/NVML default close OUT OF SCOPE | Unmetered / Estimated |
 | P9 | `ModelGenerated` ↛ `Deterministic` | `claim.mol.replay_no_strengthen` | `TypedAnswer::weaken_to` returns `ReplayCoercion`. | - | - |
-| P10 | Periodic Stack live catalog navigation | `claim.mol.stack_live_catalog` | Family + present + scale → COMMIT at Lookup; ≥170 live Lookup/Formula/Solver gears; note cites 258/33. | Remaining ~78/258 thesis primitives OUT OF SCOPE | Unmetered |
+| P10 | Periodic Stack live catalog navigation | `claim.mol.stack_live_catalog` | Family + present + scale → COMMIT at Lookup; 258 live Lookup/Formula/Solver/Navigate gears; note cites 258/33. | μ calib + HW Gaps OUT OF SCOPE | Unmetered |
 | P11 | `primitive_gap` via registry probe | `claim.mol.primitive_gap` | Gap marker `physical_settle` + absent name → REFUSE `primitive_gap` (not string-only). | - | Unmetered |
 | P12 | μ / impedance catalog | `claim.mol.mu_catalog` | Receipts stamp `mu_source=catalog`, `mu`, `landauer_floor_ratio`; `E≈θ·μ` (catalog estimate, not RAPL/`measured_j`). | μ **calib corpus** OUT OF SCOPE | Estimated |
 | P13 | Receipt transcript replay | `claim.mol.receipt_replay` | JSONL/in-memory replay reproduces commit/refuse + limit id; model never answered. | - | Unmetered |
@@ -282,7 +282,7 @@ These are PLAN §6 residuals. Citing them is allowed as roadmap / reference sema
 | klere-vm WASM / FPGA meter (real pJ) | Software-ref `StubKlereSettle` | P5 |
 | Live `openie-path` / leapfrog ask bridge | Adapter port | - |
 | Live WCA MCP / `wca-lut-edge` in-proc certify | Adapter port | - |
-| Remaining ~78/258 Periodic Stack thesis primitives + μ calib corpus | Live catalog (≥170 gears) + Gap + tier μ catalog + Stage C soft-ref inventory (`stage_c_measured=false`) are in proof | P10, P12 |
+| μ calib corpus + HW Gaps (physical_settle / reversible / ising / adiabatic / ferric / quantum / analog / photonic) | Live catalog (258 Present / 258 live gears) + Gap + tier μ catalog + Stage C soft-ref inventory (`stage_c_measured=false`) are in proof | P10, P12 |
 | Trained weights / candle / tract Model leaf | Model stays demoted stub | P3, P4, P16 |
 
 ### 6.4 Seeded knowledge claims (Z2 corpus; not the prove map)
@@ -759,7 +759,7 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 
 **Open questions**
 
-- Remaining ~78/258 Periodic Stack thesis primitives and calibrated \(\mu\) corpora (live catalog ≥170 gears is in soft-ref proof; full 258 is not).
+- Calibrated \(\mu\) corpora and HW Gaps (live catalog 258 Present / 258 live gears is in soft-ref proof; estimates≠measured_j; `stage_c_measured=false` until meters).
 - Live WCA MCP / System One pre-gate and leapfrog `openie-path` ask (adapters remain stubs on the proven path).
 - Materials / device paths that make Formula+LUT coin-cell closes dominate generative spend, with Metered probes when package joules are claimed.
 - When a Metered `measured_j` path is published beside soft-ref estimates without laundering estimate as board watts.
