@@ -26,9 +26,9 @@
     <p class="deck-line">Floors where more bits stop buying outcomes. Try lookup, then formula, then solver. Open the model last.</p>
     <p class="subtitle">This page shows the P0 figure shells for the Mixture of Limits study. Claims stay ledger-safe with the paper.
       Analytical OpCounter and catalog <code>estimated_j</code> are not board power.
-      The Landauer value is a labeled estimate only. <code>measured_j</code> is never invented.
-      <code>board_synth_claimed=false</code>. Soft-ref <code>mol prove</code> (~29 VERIFIED) is software constructive existence, not FPGA or board package energy.
-      No meter reading is reported here, and no board joules are asserted.
+      Soft-ref path: Landauer is a labeled thermodynamic lower-bound estimate; <code>measured_j=None</code> unless Metered; <code>board_synth_claimed=false</code>.
+      Soft-ref <code>mol prove</code> (~29 VERIFIED) is software constructive existence, not FPGA or board package energy.
+      Figures on this page are Unmetered or Estimated.
       Shannon, Landauer, Howard, Kolmogorov and related floors already name those bounds as settled theory. The remaining bottleneck is applied math and hardware embodiment.
       Study §8.4-§8.7 teach latent depth, Logical Intelligence (EBM + LLM + latent), and World Labs (spatial world models): even projected-superior generators still hit VoI, grammar, energy, and certify floors.</p>
   </div>
@@ -44,7 +44,7 @@
       <li><a href="#mol-diag-03"><span class="id">mol-diag-03</span> Commit or refuse, then issue a receipt</a></li>
       <li><a href="#mol-tab-01"><span class="id">mol-tab-01</span> How Mixture of Limits differs from MoE (§9)</a></li>
       <li><a href="#mol-tab-02"><span class="id">mol-tab-02</span> How proof status maps to claims</a></li>
-      <li><a href="#mol-note-01"><span class="id">mol-note-01</span> Energy honesty labels (Metered, Estimated, Unmetered)</a></li>
+      <li><a href="#mol-note-01"><span class="id">mol-note-01</span> Energy measurement labels (Metered, Estimated, Unmetered)</a></li>
     </ul>
   </nav>
 
@@ -129,7 +129,7 @@ refuse = lawful success + receipt</pre>
         <tr><td>Where the mixture lives</td><td>Inside the model (experts, draft/target, strong/weak LLMs)</td><td>Outside generation (named floors + cascade gears)</td></tr>
         <tr><td>Routing object</td><td>Which <strong>model</strong> answers</td><td>Which <strong>tier</strong> closes: Lookup / Formula / Solver / Model</td></tr>
         <tr><td>Refuse</td><td>Rare; usually escalate to a larger model</td><td>First-class: VoI, grammar, settle, certificate, primitive_gap, and related floors</td></tr>
-        <tr><td>Energy honesty</td><td>Latency/cost proxies; some papers meter GPU energy for LLM serving</td><td>Receipts: labeled <code>estimated_j</code>; soft-ref <code>measured_j=None</code>; <code>board_synth_claimed=false</code></td></tr>
+        <tr><td>Energy labels</td><td>Latency/cost proxies; some papers meter GPU energy for LLM serving</td><td>Receipts: labeled <code>estimated_j</code>; soft-ref <code>measured_j=None</code>; <code>board_synth_claimed=false</code></td></tr>
         <tr><td>Success metric</td><td>Tokens/s, cost@quality, speculative speedup</td><td>Certified commit + typed ReplayClass + receipt</td></tr>
       </tbody>
     </table>
@@ -142,13 +142,13 @@ refuse = lawful success + receipt</pre>
     <ul>
       <li><strong>Proven path:</strong> Unmetered (plus Estimated where μ, Landauer, or fuel appear); <code>board_synth_claimed=false</code></li>
       <li><strong>Soft-ref only (pointer):</strong> live RAPL/NVML as default close; live wgpu presence; Ferric / BMI loop; klere-vm FPGA pJ; full Periodic Stack 258 + μ calib; trained Model leaf. See §6.3</li>
-      <li>No invented <code>measured_j</code>. No board joules from soft-ref v0.1 prove</li>
+      <li>Soft-ref v0.1 prove: <code>measured_j=None</code>; software constructive existence, not board joules</li>
     </ul>
   </section>
 
   <section id="mol-note-01" class="figure-block">
-    <h2><span class="id">mol-note-01</span> Energy honesty labels</h2>
-    <p>OpenIE honesty grammar (matches paper §6 / §9):</p>
+    <h2><span class="id">mol-note-01</span> Energy measurement labels</h2>
+    <p>OpenIE measurement grammar (matches paper §6 / §9):</p>
     <table>
       <thead>
         <tr><th>Label</th><th>Meaning</th></tr>
@@ -156,13 +156,13 @@ refuse = lawful success + receipt</pre>
       <tbody>
         <tr><td><strong>Unmetered</strong></td><td>Software-ref / soft-ref path; <code>measured_j=None</code>; estimate may be labeled</td></tr>
         <tr><td><strong>Estimated</strong></td><td>Catalog / Landauer / fuel / μ surrogate with explicit <code>EstimateKind</code> or <code>mu_source=catalog</code></td></tr>
-        <tr><td><strong>Metered</strong></td><td>Optional live probe (<code>energy-meter</code>) actually returned numbers. Not required for prove. Never invented</td></tr>
+        <tr><td><strong>Metered</strong></td><td>Optional live probe (<code>energy-meter</code>) returned numbers. Not required for prove.</td></tr>
       </tbody>
     </table>
     <ul>
       <li>Analytical OpCounter and catalog estimates are not board power</li>
       <li>Landauer is a labeled thermodynamic lower-bound estimate</li>
-      <li>No fake RAPL, NVML, or package meters in soft-ref</li>
+      <li>Soft-ref path does not stamp RAPL/NVML/package meters without a Metered probe</li>
       <li><code>board_synth_claimed=false</code></li>
       <li>Default prove close: <strong>Unmetered</strong> (plus <strong>Estimated</strong> where labeled)</li>
     </ul>

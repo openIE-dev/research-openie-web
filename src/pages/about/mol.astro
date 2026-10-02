@@ -18,8 +18,9 @@ import Layout from '../../layouts/Layout.astro';
     </p>
     <p class="mt-4 font-body text-sm text-brand-gray leading-relaxed">
       Status: research study, not a journal final. Figures under /living/mol/ are companions.
-      Analytical OpCounter / catalog estimates are not board power. No fake meters.
-      <code class="text-brand-cyan">board_synth_claimed=false</code>. Landauer is labeled estimate only.
+      Analytical OpCounter / catalog estimates are estimates, not board power.
+      Soft-ref path: <code class="text-brand-cyan">board_synth_claimed=false</code>; Landauer is a labeled estimate;
+      package <code class="text-brand-cyan">measured_j</code> only when Metered.
     </p>
 
     <div class="mt-10 flex flex-wrap gap-3">
@@ -47,9 +48,9 @@ import Layout from '../../layouts/Layout.astro';
     <div class="mt-8 glass-card p-6 space-y-2">
       <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray">Measurement bounds</p>
       <p class="font-body text-sm text-brand-slate leading-relaxed">
-        Living stubs must state: analytical OpCounter ≠ board power; no fake meters;
-        <code class="text-brand-cyan">measured_j</code> never invented; Landauer estimate labeled;
-        soft-ref prove ≠ FPGA/board package energy claim.
+        Analytical OpCounter ≠ board power. Landauer estimate labeled.
+        Soft-ref prove path: <code class="text-brand-cyan">measured_j=None</code> unless Metered;
+        <code class="text-brand-cyan">board_synth_claimed=false</code>. Soft-ref constructive existence is software, not FPGA/board package energy.
       </p>
     </div>
   </section>
