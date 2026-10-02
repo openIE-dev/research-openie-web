@@ -50,7 +50,7 @@
 <main>
   <div class="hero">
     <h1>Metabolic Intelligence</h1>
-    <p class="deck-line">A budget goes in. The best answer that budget can buy comes out. Designed for Klere (klere.ai): edge plus resource-optimized central, not uncapped hyperscale.</p>
+    <p class="deck-line">Energy binds. A budget goes in. The best answer that budget can buy comes out. Designed for Klere (klere.ai): edge and resource-optimized central, not uncapped hyperscale.</p>
     <p class="subtitle">This page teaches the dual-scale class with pack charts and short Manim clips.
       Claims stay ledger-safe with the study at <a href="/papers/mei/">/papers/mei/</a>.
       Soft-ref path: <code>board_synth_claimed=false</code>. Estimates are not package <code>measured_j</code>.
@@ -78,6 +78,7 @@
   <nav class="toc" aria-label="Figure TOC">
     <h2>Figure IDs on this page</h2>
     <ul>
+      <li><a href="#mei-arg-01"><span class="id">mei-arg-01</span> Why this is the future</a></li>
       <li><a href="#mei-diag-01"><span class="id">mei-diag-01</span> Budget-in → best-answer-out dual scale</a></li>
       <li><a href="#mei-diag-02"><span class="id">mei-diag-02</span> J(m|q) obtain router</a></li>
       <li><a href="#mei-tab-01"><span class="id">mei-tab-01</span> Digital enzyme vs int8 MLP instruction counts</a></li>
@@ -93,6 +94,37 @@
       <li><a href="#mei-map-01"><span class="id">mei-map-01</span> Hardware dual-map</a></li>
     </ul>
   </nav>
+
+
+  <section id="mei-arg-01" class="figure-block">
+    <h2><span class="id">mei-arg-01</span> Why this is the future</h2>
+    <p><span class="ev-chip model">Teaching diagram</span> <span class="ev-chip">Settled law + pack labels</span></p>
+    <p class="teach">Read top to bottom. Energy binds by settled law, not by a slogan. The transformer corridor can keep improving and still plateau as a deployment future, because uncapped import stops buying the next useful answer. Metabolic Intelligence takes a budget in and returns the best answer that budget can buy. Mixture of Limits chooses the gear. Two plants, edge and resource-optimized central, remove the hyperscale water and power prerequisite by design. That is not a liter count and not a board <code>measured_j</code>. Klere is the product home. Research owns the class.</p>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 760 340" width="100%" height="auto" role="img" aria-label="Why Metabolic Intelligence is the future, five claims">
+        <rect width="760" height="340" fill="#0f172a"/>
+        <text x="24" y="28" fill="#5eead4" font-family="IBM Plex Mono, monospace" font-size="13">mei-arg-01 · argument, not a meter</text>
+        <g font-family="IBM Plex Sans, sans-serif">
+          <rect x="20" y="44" width="720" height="48" rx="8" fill="#111827" stroke="#5eead4"/>
+          <text x="36" y="64" fill="#5eead4" font-family="IBM Plex Mono, monospace" font-size="12">1  ENERGY BINDS</text>
+          <text x="36" y="82" fill="#e2e8f0" font-size="13">Shannon fidelity · Howard Value of Information · Landauer estimate · Horowitz data movement</text>
+          <rect x="20" y="100" width="720" height="48" rx="8" fill="#111827" stroke="#fbbf24"/>
+          <text x="36" y="120" fill="#fbbf24" font-family="IBM Plex Mono, monospace" font-size="12">2  CORRIDOR PLATEAUS AS DEPLOYMENT</text>
+          <text x="36" y="138" fill="#e2e8f0" font-size="13">Quality can keep moving. Uncapped import is not the next useful answer. Not a scaling chart.</text>
+          <rect x="20" y="156" width="720" height="48" rx="8" fill="#111827" stroke="#34d399"/>
+          <text x="36" y="176" fill="#34d399" font-family="IBM Plex Mono, monospace" font-size="12">3  BUDGET IN, BEST ANSWER OUT</text>
+          <text x="36" y="194" fill="#e2e8f0" font-size="13">Mixture of Limits: Lookup, Formula, Solver, Model last. Priced by J(m|q).</text>
+          <rect x="20" y="212" width="720" height="48" rx="8" fill="#111827" stroke="#60a5fa"/>
+          <text x="36" y="232" fill="#60a5fa" font-family="IBM Plex Mono, monospace" font-size="12">4  TWO PLANTS, NOT HYPERSCALE WATER AND POWER</text>
+          <text x="36" y="250" fill="#e2e8f0" font-size="13">Edge: coin cell, ~10 µW class (datasheet + schedule). Lean central: OpenADR / DSX, cap held with sleep.</text>
+          <rect x="20" y="268" width="720" height="48" rx="8" fill="#111827" stroke="#fde68a"/>
+          <text x="36" y="288" fill="#fde68a" font-family="IBM Plex Mono, monospace" font-size="12">5  KLERE IS THE PRODUCT HOME</text>
+          <text x="36" y="306" fill="#e2e8f0" font-size="13">Research owns the class. Roadmap is not proven pack. No invented liters. No board measured_j.</text>
+        </g>
+      </svg>
+    </div>
+    <p class="caption">Static teaching figure. Study section “Why this is the future” and Appendix F. Soft-ref: <code>board_synth_claimed=false</code>.</p>
+  </section>
 
   <section id="mei-diag-01" class="figure-block">
     <h2><span class="id">mei-diag-01</span> Budget-in → best-answer-out (dual scale)</h2>
@@ -288,7 +320,7 @@ m* = argmin_m J(m|q) = E_m + λ · ½ · S_q² · var_m(t)</pre>
     <p class="caption">Teaching map from study Appendix B. Soft-ref path: <code>board_synth_claimed=false</code>.</p>
   </section>
 
-  <p class="note-manim">Shipped Manim: <code>mei-diag-01</code> dual scale, <code>mei-diag-02</code> obtain router (mp4/webm/gif). Backlog: <code>mei-diag-03</code> lever-order motion; enzyme vs MLP bar motion. Voice locks unchanged. Thesis video docs untouched and not committed.</p>
+  <p class="note-manim">Shipped Manim: <code>mei-diag-01</code> dual scale, <code>mei-diag-02</code> obtain router (mp4/webm/gif). Static argument figure: <code>mei-arg-01</code> (no new render). Backlog: <code>mei-diag-03</code> lever-order motion; enzyme vs MLP bar motion. Voice locks unchanged. Thesis video docs untouched and not committed.</p>
 
   <section class="figure-block">
     <h2>Measurement note</h2>
