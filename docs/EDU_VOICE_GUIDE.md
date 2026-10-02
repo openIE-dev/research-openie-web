@@ -130,21 +130,21 @@ Searched `/Users/dcharlot/data-share/vibe-coding/` on Mac `4e1505fa-e469-4612-97
 9. **Preserve provenance.** Link the study, section, figure ID, or receipt field next to the claim it supports. Separate a constructive proof from an implementation result.
 10. **Read aloud once.** If a caption sounds like a launch trailer, a list of labels, or a compressed status dump, split it into teaching sentences.
 
-## 3. MoL / NI / Satiation caption rewrite checklist
+## 3. Mixture of Limits / NI / Satiation caption rewrite checklist
 
-### MoL phrases to rewrite
+### Mixture of Limits phrases to rewrite
 Observed in `research-openie-web/public/living/mol/index.html`:
 
-- “Living stub — P0 figure shells.” -> “This page shows the P0 figure shells for the MoL study.”
-- “Thesis addendum: bottleneck is applied math × materials/hardware embodiment — not awareness...” -> “The remaining bottleneck is applied math and hardware embodiment. The page does not claim a new awareness limit.”
+- “Living stub — P0 figure shells.” -> “This page shows the P0 figure shells for the Mixture of Limits study.”
+- “Thesis addendum: bottleneck is applied math × materials/hardware embodiment — not awareness...” -> “Shannon, Landauer, Howard, and Kolmogorov already name those floors as settled theory. The remaining bottleneck is applied math and hardware embodiment.”
 - “Manim · illustrative · Landauer = labeled thermodynamic lower-bound estimate...” -> “Illustrative Manim figure. The Landauer value is a labeled lower-bound estimate, not a board measurement.”
 - “Grammar covered ⇒ do not open Model” -> “When the grammar covers the request, the system stops before opening the model.”
 - “Close / receipt” and “Prove ↔ claim honesty” -> “Commit or refuse, then issue a receipt” and “How proof status maps to claims.”
 - “ModelGenerated ↛ Deterministic” -> “A model-generated proposal is not deterministic evidence.”
 - “No fake meters” / “no invented joules” -> “No meter reading is reported here, and no board joules are asserted.”
-- “MoL ≠ MoE” -> “MoL differs from MoE in the decision it makes: it asks whether generation should run at all.”
+- “MoL ≠ MoE” -> “Mixture of Limits differs from Mixture-of-Experts (MoE) in the decision it makes: it asks whether generation should run at all.”
 
-### Apply the same pass to MoL, NI, and Satiation
+### Apply the same pass to Mixture of Limits, NI, and Satiation
 
 - Search captions and subtitles for `—`, `→`, `↔`, `↛`, `≠`, `×`, pipe-separated label strings, and unexplained slash-separated phrases.
 - Replace meta-signals such as “thesis addendum,” “living stub,” “slogan,” “close,” and “legend” with descriptive teaching headers.
@@ -156,4 +156,4 @@ Observed in `research-openie-web/public/living/mol/index.html`:
 - Use teach-first captions for NI and Satiation too: define the decision or observable before naming the research thesis.
 - End with the study link or figure reference, not a slogan tick.
 
-No MoL captions were changed, and no commit, push, or deploy was performed. The requested guide was copied to the Mac at `/Users/dcharlot/data-share/vibe-coding/research-openie-web/docs/EDU_VOICE_GUIDE.md`.
+No Mixture of Limits captions were changed, and no commit, push, or deploy was performed. The requested guide was copied to the Mac at `/Users/dcharlot/data-share/vibe-coding/research-openie-web/docs/EDU_VOICE_GUIDE.md`.

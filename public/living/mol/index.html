@@ -14,7 +14,7 @@
       <a href="../index.html">Hub</a>
       <a href="../ni/index.html">NI</a>
       <a href="../satiation/index.html">Satiation</a>
-      <a href="index.html" class="active">MoL</a>
+      <a href="index.html" class="active">Mixture of Limits</a>
       <a href="../fpga-sim/">FPGA sim</a>
       <a href="../README.md">README</a>
     </nav>
@@ -24,12 +24,12 @@
   <div class="hero">
     <h1>Mixture of Limits</h1>
     <p class="deck-line">Floors where more bits stop buying outcomes. Try lookup, then formula, then solver. Open the model last.</p>
-    <p class="subtitle">This page shows the P0 figure shells for the MoL study. Claims stay ledger-safe with the paper.
-      <strong>Honesty:</strong> analytical OpCounter and catalog <code>estimated_j</code> are not board power.
+    <p class="subtitle">This page shows the P0 figure shells for the Mixture of Limits study. Claims stay ledger-safe with the paper.
+      Analytical OpCounter and catalog <code>estimated_j</code> are not board power.
       The Landauer value is a labeled estimate only. <code>measured_j</code> is never invented.
       <code>board_synth_claimed=false</code>. Soft-ref <code>mol prove</code> (~29 VERIFIED) is software constructive existence, not FPGA or board package energy.
       No meter reading is reported here, and no board joules are asserted.
-      The remaining bottleneck is applied math and hardware embodiment. The page does not claim a new awareness limit (Shannon, Landauer, Howard, Kolmogorov and related floors already name those bounds).</p>
+      Shannon, Landauer, Howard, Kolmogorov and related floors already name those bounds as settled theory. The remaining bottleneck is applied math and hardware embodiment.</p>
   </div>
   <p class="subtitle">Read the study at <a href="/papers/mol/">/papers/mol/</a>.
     Companion commit figures: <a href="../fpga-sim/">/living/fpga-sim/</a> (NI Stage B/C; energy rules unchanged).</p>
@@ -37,11 +37,11 @@
   <nav class="toc" aria-label="Figure TOC">
     <h2>P0 figure IDs on this page (Manim media on mol-inf-01 / mol-diag-01 / mol-diag-02 / mol-diag-03 / mol-tab-01)</h2>
     <ul>
-      <li><a href="#mol-inf-01"><span class="id">mol-inf-01</span> Compression lineage from Brahe to MoL floors</a></li>
+      <li><a href="#mol-inf-01"><span class="id">mol-inf-01</span> Compression lineage from Brahe to Mixture of Limits floors</a></li>
       <li><a href="#mol-diag-01"><span class="id">mol-diag-01</span> Cascade: lookup, formula, solver, model last</a></li>
       <li><a href="#mol-diag-02"><span class="id">mol-diag-02</span> Named floors: VoI, grammar, energy, certificate, settle-refuse</a></li>
       <li><a href="#mol-diag-03"><span class="id">mol-diag-03</span> Commit or refuse, then issue a receipt</a></li>
-      <li><a href="#mol-tab-01"><span class="id">mol-tab-01</span> How MoL differs from MoE (§9)</a></li>
+      <li><a href="#mol-tab-01"><span class="id">mol-tab-01</span> How Mixture of Limits differs from MoE (§9)</a></li>
       <li><a href="#mol-tab-02"><span class="id">mol-tab-02</span> How proof status maps to claims</a></li>
       <li><a href="#mol-note-01"><span class="id">mol-note-01</span> Energy honesty labels (Metered, Estimated, Unmetered)</a></li>
     </ul>
@@ -49,11 +49,11 @@
 
   <section id="mol-inf-01" class="figure-block">
     <h2><span class="id">mol-inf-01</span> Historical compression lineage</h2>
-    <p>Brahe enumerated. Kepler compressed. Newton closed forms. Shannon priced bits. Landauer priced irreversible erasure as an estimate. MoL navigates that lineage as CI floors.</p>
+    <p>Brahe enumerated. Kepler compressed. Newton closed forms. Shannon priced bits. Landauer priced irreversible erasure (labeled estimate here). Mixture of Limits navigates that lineage as CI floors.</p>
 
     <figure class="living-media" data-fig="mol-inf-01">
       <video autoplay muted loop playsinline controls poster="media/mol-inf-01-lineage.gif"
-             aria-label="Compression lineage Brahe to MoL floors">
+             aria-label="Compression lineage Brahe to Mixture of Limits floors">
         <source src="media/mol-inf-01-lineage.webm" type="video/webm"/>
         <source src="media/mol-inf-01-lineage.mp4" type="video/mp4"/>
       </video>
@@ -109,20 +109,20 @@ refuse = lawful success + receipt</pre>
   </section>
 
   <section id="mol-tab-01" class="figure-block">
-    <h2><span class="id">mol-tab-01</span> How MoL differs from MoE</h2>
-    <p>Short contrast from paper <a href="/papers/mol/#9-mol--moe-and-the-modelmodel-sota-table">§9</a>. Field systems optimize which neural generator runs. MoL differs from MoE in the decision it makes: it asks whether generation should run at all. The full model-to-model SOTA table and verified cites live in the study. No board joules are asserted here.</p>
+    <h2><span class="id">mol-tab-01</span> How Mixture of Limits differs from MoE</h2>
+    <p>Short contrast from paper <a href="/papers/mol/#9-mixture-of-limits-is-not-moe-and-the-model-to-model-sota-table">§9</a>. Field systems optimize which neural generator runs. Mixture of Limits differs from Mixture-of-Experts (MoE) in the decision it makes: it asks whether generation should run at all. The full model-to-model SOTA table and verified cites live in the study. No board joules are asserted here.</p>
 
     <figure class="living-media" data-fig="mol-tab-01">
       <video autoplay muted loop playsinline controls poster="media/mol-tab-01-not-moe.gif"
-             aria-label="MoL not equal MoE contrast mixture outside vs inside generation">
+             aria-label="Mixture of Limits not equal MoE contrast mixture outside vs inside generation">
         <source src="media/mol-tab-01-not-moe.webm" type="video/webm"/>
         <source src="media/mol-tab-01-not-moe.mp4" type="video/mp4"/>
       </video>
-      <figcaption class="caption">Illustrative Manim figure. <code>estimated_j</code> is labeled. Soft-ref keeps <code>measured_j=None</code>. <code>board_synth_claimed=false</code>. No meter reading is reported here. See the table below and <a href="/papers/mol/#9-mol--moe-and-the-modelmodel-sota-table">/papers/mol/ §9</a>.</figcaption>
+      <figcaption class="caption">Illustrative Manim figure. <code>estimated_j</code> is labeled. Soft-ref keeps <code>measured_j=None</code>. <code>board_synth_claimed=false</code>. No meter reading is reported here. See the table below and <a href="/papers/mol/#9-mixture-of-limits-is-not-moe-and-the-model-to-model-sota-table">/papers/mol/ §9</a>.</figcaption>
     </figure>
     <table>
       <thead>
-        <tr><th>Axis</th><th>MoE / model-to-model field</th><th>MoL</th></tr>
+        <tr><th>Axis</th><th>MoE / model-to-model field</th><th>Mixture of Limits</th></tr>
       </thead>
       <tbody>
         <tr><td>Where the mixture lives</td><td>Inside the model (experts, draft/target, strong/weak LLMs)</td><td>Outside generation (named floors + cascade gears)</td></tr>
@@ -132,7 +132,7 @@ refuse = lawful success + receipt</pre>
         <tr><td>Success metric</td><td>Tokens/s, cost@quality, speculative speedup</td><td>Certified commit + typed ReplayClass + receipt</td></tr>
       </tbody>
     </table>
-    <p class="caption">Analytical and catalog estimates are not board power. No meter reading is reported here. See <a href="/papers/mol/#9-mol--moe-and-the-modelmodel-sota-table">/papers/mol/ §9</a>.</p>
+    <p class="caption">Analytical and catalog estimates are not board power. No meter reading is reported here. See <a href="/papers/mol/#9-mixture-of-limits-is-not-moe-and-the-model-to-model-sota-table">/papers/mol/ §9</a>.</p>
   </section>
 
   <section id="mol-tab-02" class="figure-block">
@@ -141,7 +141,7 @@ refuse = lawful success + receipt</pre>
     <ul>
       <li><strong>Proven path:</strong> Unmetered (plus Estimated where μ, Landauer, or fuel appear); <code>board_synth_claimed=false</code></li>
       <li><strong>Soft-ref only (pointer):</strong> live RAPL/NVML as default close; live wgpu presence; Ferric / BMI loop; klere-vm FPGA pJ; full Periodic Stack 258 + μ calib; trained Model leaf. See §6.3</li>
-      <li>No invented <code>measured_j</code>. No board joules from MoL v0.1 prove</li>
+      <li>No invented <code>measured_j</code>. No board joules from soft-ref v0.1 prove</li>
     </ul>
   </section>
 
