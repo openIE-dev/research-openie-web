@@ -15,26 +15,7 @@ board_synth_claimed: false
 
 Mixture of Limits is a navigation law for computer intelligence: there exist **floors** past which additional tokens, parameters, or joules do not purchase verifiable progress on a task coordinate. The law is information-theoretic and rooted in physics. Across human scientific history, compression into predictive formulas and invariants has repeatedly beaten excess enumeration of observations: from Kepler's laws over Tycho's tables, through Newton's closed forms, to Shannon's bit accounting and Landauer's thermodynamic floor on irreversible erasure. Mixture of Limits operationalizes that lineage for machines: **Lookup → Formula → Solver/settle → Model LAST**, with close owned as propose → certify → commit|refuse → receipt.
 
-The industry default escalates Mixture-of-Experts (MoE) capacity *inside* a generative corridor. Mixture of Limits instead names floors *outside* generation: Value of Information (VoI), grammar coverage, Landauer/joule estimate, certificate, and settle-refuse. It demotes the neural net to a residual leaf. Soft-ref `mol prove` (~29 VERIFIED criteria in the mixture-of-limits workspace) is claimable as **constructive existence in software**. This study does **not** claim FPGA or board package energy. Landauer appears only as a labeled estimate. `measured_j` is never invented; `board_synth_claimed=false`.
-
-### Claims and measurement bounds
-
-**What this study claims**
-
-- Mixture of Limits as a clean-room navigation law (floors + cascade + close/receipt), not a wrapper on MoE.
-- Soft-ref constructive existence: in-tree `mol prove` criteria printing VERIFIED (software reference).
-- Information-theoretic / physics-rooted thesis: compression and closed forms beat excess enumeration when grammar is covered.
-- Analytical / catalog energy estimates (`estimated_j`, `mu_source=catalog`) and Landauer as a **labeled thermodynamic lower-bound estimate**.
-- Typed honesty: `ModelGenerated` cannot coerce to `Deterministic`; refuse is a lawful success with a receipt.
-- **Bottleneck addendum:** floors are settled in IT/physics/decision theory; the hard gap is applied-math × materials/hardware embodiment.
-
-**Measurement bounds (instrumentation honesty)**
-
-- Board, FPGA, RAPL, NVML, or package joules (`measured_j` stays unset in soft-ref; never invent meters).
-- `board_synth_claimed` is **false**; no synthesized or metered Mixture of Limits board package is reported here.
-- Equality of Landauer to wall joules, OpCounter estimates, or any hardware probe.
-- AGI achievement, ARC-AGI leadership, or MoE accuracy SOTA (Leapfrog owns the Mixture of Limits vs MoE + model-to-model table in §9).
-- Live WCA MCP, Ferric/EFA hardware certificates, klere-vm FPGA meters, or the full Periodic Stack 258 live catalog as proven here.
+The industry default escalates Mixture-of-Experts (MoE) capacity *inside* a generative corridor. Mixture of Limits instead names floors *outside* generation: Value of Information (VoI), grammar coverage, Landauer/joule estimate, certificate, and settle-refuse. It demotes the neural net to a residual leaf. Soft-ref `mol prove` is constructive existence in software; catalog/Landauer estimates are estimates, not invented board package joules.
 
 ---
 
