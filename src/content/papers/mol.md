@@ -25,13 +25,13 @@ The dominant construction for computer intelligence (CI) treats the neural net a
 
 Information theory names the modern accounting of that pattern. Shannon (1948) prices bits under uncertainty as settled law. Value of Information (VoI) prices whether another observation is worth its cost for a decision. Landauer (1961) prices irreversible bit erasure in joules at temperature \(T\): \(E_{\min} = k_B T \ln 2\) per bit erased in the ideal model. That Landauer quantity is a thermodynamic lower bound and, on Mixture of Limits receipts, a **labeled estimate**—not a wattmeter reading. Together they imply floors: past a point, more bits stop buying outcomes that matter for a stated benefit.
 
-**Thesis.** Pursuit of limits is the path toward AGI-grade reliability. Excess-token and MoE scaling diverge from true VoI for a given benefit. Mixture of Limits is the executable navigation law that binds those floors (VoI, grammar, Landauer/joules as estimate, certificate, settle-refuse) against industry Mixture-of-Experts. **Addendum:** Shannon, Landauer, Kolmogorov/Solomonoff/Chaitin, Howard (VoI), and formula-first science AI already state these floors as settled theory. The remaining bottleneck is **applied mathematics embodied in materials and physical hardware**. **Frontier addendum (§8.4-§8.12):** deeper latents, energy-based hybrids, world models, test-time compute, super learning, architecture fads (including Jamba-class hybrids and mixture of experts), and algorithmic efficiency wins still improve generators or ensembles; they do not cancel VoI, grammar, energy, or certify floors. Mixture of Limits remains the navigation law, not a horse race among generators. The hardware-economics reading (§8.12) states that computers are hardware, software is applied engineering under constraints, and floors bind even when optimized algorithms take market share on cheaper devices.
+**Thesis.** Pursuit of limits is the path toward AGI-grade reliability. Excess-token and MoE scaling diverge from true VoI for a given benefit. Mixture of Limits is the executable navigation law that binds those floors (VoI, grammar, Landauer/joules as estimate, certificate, settle-refuse) against industry Mixture-of-Experts. **Addendum:** Shannon, Landauer, Kolmogorov/Solomonoff/Chaitin, Howard (VoI), and formula-first science AI already state these floors as settled theory. The remaining bottleneck is **applied mathematics embodied in materials and physical hardware**. **Frontier addendum (§8.4-§8.13):** deeper latents, energy-based hybrids, world models, test-time compute, super learning, architecture fads (including Jamba-class hybrids and mixture of experts), algorithmic efficiency wins, and Asia-focused transmission / gearing / cascade / routing work still improve generators or ensembles; they do not cancel VoI, grammar, energy, or certify floors. Mixture of Limits remains the navigation law, not a horse race among generators. The hardware-economics reading (§8.12) states that computers are hardware, software is applied engineering under constraints, and floors bind even when optimized algorithms take market share on cheaper devices. The Asia survey (§8.13) shows Chinese, Indian, and broader Asian labs optimizing how bits move and which expert/path runs under silicon constraints—converging toward Mixture of Limits floors without naming the law.
 
 This paper's contribution is the study prose for that law as published on research.openie.dev, grounded in the clean-room `mixture-of-limits` software reference (Apache-2.0 OR MIT). Companion studies already on this site supply the commit-record interface ([Notational Intelligence as Commit Law](/papers/ni/)) and the economic stop after free digital inference ([Satiation and Scarcity after Free AI](/papers/satiation/)). Mixture of Limits is the navigation law those companions sit under: NI owns irreversible commit shape; Satiation owns economic done; Mixture of Limits owns *which gear closes* and *when refuse is success*.
 
 Three measurement facts constrain every later number. First, joules from catalog surrogates and OpCounter-style analytics are **estimates**, not board power. Second, Landauer annotations are **estimates**, distinct from RAPL/NVML/`measured_j`. Third, `board_synth_claimed=false`; package `measured_j` is set only when a Metered probe returns a reading.
 
-Scope. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine \(E(x) \ge \theta(D)\cdot\mu(S,V)\). Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (energy-based model / large language model / latent hybrid), World Labs (spatial world models), test-time inference (test-time compute), super learning, a survey of live 2025–2026 approaches, the AI21 Jamba hybrid story versus later DeepSeek / GLM efficiency moves, and the hardware-economics thesis, with the addendum that even projected-superior methods still hit floors. Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits.
+Scope. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine \(E(x) \ge \theta(D)\cdot\mu(S,V)\). Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (energy-based model / large language model / latent hybrid), World Labs (spatial world models), test-time inference (test-time compute), super learning, a survey of live 2025–2026 approaches, the AI21 Jamba hybrid story versus later DeepSeek / GLM efficiency moves, the hardware-economics thesis, and an Asia-focused survey of transmission / gearing / cascade / routing (§8.13), with the addendum that even projected-superior methods still hit floors. Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits.
 
 ---
 
@@ -494,13 +494,78 @@ Other Chinese and open labs followed similar patterns: MoE routing, quantization
 3. **China showed the West a margin.** Inefficient deployment on the newest hardware leaves room. Optimized algorithms, MoE routing, training-systems co-design, and inference tricks on older or cheaper accelerators can take market share. The DeepSeek / GLM public efficiency stories (§8.11) are instances of that pattern; so are speculative decoding and quantization stacks (§8.10). Treat vendor scoreboards as field reports, not OpenIE meters.
 4. **Mixture of Limits reading.** Architecture fads (Jamba hybrids, mixture of experts, test-time compute, diffusion language models, linear attention, retrieval-augmented generation, world models, energy-based hybrids) do not retire floors. The bottleneck remains **applied mathematics embodied in materials and devices**, plus labeled joule accounting. Algorithmic efficiency is real and is exactly why floors matter: cheaper implementations still stop when VoI, grammar, or energy says stop. Estimates (`estimated_j`, Landauer as labeled estimate) are not board package energy. Soft-ref path: `measured_j=None`; `board_synth_claimed=false`.
 
-**Bridge.** §8.0.1 already stated that awareness of floors is not the gap; embodiment is. §8.12 adds the economic corollary: markets reward implementations that extract more work per device-dollar, and Mixture of Limits is the navigation law that binds those implementations to floors when more work buys nothing.
+**Bridge.** §8.0.1 already stated that awareness of floors is not the gap; embodiment is. §8.12 adds the economic corollary: markets reward implementations that extract more work per device-dollar, and Mixture of Limits is the navigation law that binds those implementations to floors when more work buys nothing. §8.13 surveys Asian labs that already extract that device-dollar margin via transmission / gearing / cascade / routing—still generators until refuse is law.
+
+### 8.13 Asia survey: transmission, gearing, cascade, and routing under silicon constraints
+
+**Thesis of this section.** Chinese, Indian, and broader Asian labs optimize **transmission** (how bits move through attention, KV cache, and interconnect), **gearing** (which expert / path / attention mode fires), **cascade** (early-exit prefill, self-decoder then cross-decoder, Lookup→Formula→Solver→Model LAST as OpenIE order), and **routing** (token→expert and token→sparse KV selection) under hardware and economic constraints. That is algorithmic efficiency on available silicon. These programs approach Mixture of Limits ideas—cheapest sufficient compute, refuse waste of HBM / SSD / prefill FLOPs—without naming the law. Unbounded parameter counts and optimization still dominate until memory/context and refuse are first-class. Hardware economics (§8.12) applies: author-reported FLOPs, cache bytes, and API prices are **field / author-reported**, not OpenIE soft-ref `measured_j`. Estimates ≠ board package joules.
+
+Teach the shared primitives before the labs:
+
+| Primitive | Meaning in this survey | Floor bind |
+|---|---|---|
+| **YOCO** (You Only Cache Once) | Decoder–decoder layout: a self-decoder builds shared global KV once; a cross-decoder reuses it via cross-attention; prefill can early-exit after the self-decoder (Sun et al., NeurIPS 2024; arXiv:2405.05254) | Cuts KV memory and prefill work; still a generator architecture—VoI / grammar / certify floors remain |
+| **HySparse2** | Hybrid sparse attention with two-level KV sharing: outer KV Bridging (YOCO-style self-/cross-decoder, full-attention layers only) plus inner KV Reuse (sparse layers reuse full-attention KV and token-level top-\(k\)); prefill exits after the self-decoder (Wei, Gao, …, Luo / Xiaomi LLM-Core; arXiv:2609.26368) | Compresses long-context transmission cost; does not invent a refuse floor outside generation |
+| **CSA2 / CED** | DeepSeek-V4.1-Flash: Causal Encoder–Decoder (CED, YOCO-inspired) plus Compressed Sparse Attention 2 (Full / Reindex / Reuse modes, hierarchical sparse indexer, FP4 main KV) | Extreme KV and prefill compression for agents; still MoE generation |
+| **MoE routing** | Gate selects a small active expert set per token (DeepSeekMoE, Qwen MoE, Kimi, Sarvam, Solar, …) | Gearing inside the generative corridor—cheaper than dense, not Mixture of Limits floors |
+| **MTP / speculative path** | Multi-token prediction or draft modules densify training and accelerate decode | Test-time / decode gearing; energy and VoI floors still bind |
+| **Cache-hit pricing** | API bills cache-hit input far below cache-miss; long sessions that break prefix reuse jump cost | Hardware-economics transmission price; field meter, not soft-ref `measured_j` |
+
+#### 8.13.1 DeepSeek: MoE efficiency, multi-token prediction, R1 test-time path, V4.1 Flash memory
+
+**DeepSeekMoE / V3 (gearing + MTP).** DeepSeek-V3 is a Mixture-of-Experts (MoE) language model with 671B total parameters and 37B activated per token, using Multi-head Latent Attention (MLA), DeepSeekMoE routing, auxiliary-loss-free load balancing, and a Multi-Token Prediction (MTP) training objective that can also support speculative decoding (DeepSeek-AI, arXiv:2412.19437; earlier DeepSeekMoE at ACL 2024). That is **gearing**: only a sparse expert path runs per token. It approaches cheapest-sufficient *inside* generation.
+
+**R1 (test-time reasoning path).** DeepSeek-R1 incentivizes reasoning via large-scale reinforcement learning (RL), with R1-Zero showing emergent reflection/verification behaviors and R1 adding cold-start data plus multi-stage training; public report arXiv:2501.12948, with a Nature paper (Guo et al., 2025, DOI [10.1038/s41586-025-09422-z](https://doi.org/10.1038/s41586-025-09422-z)). R1 dynamically allocates more reasoning tokens to harder problems—a test-time cascade—while still overthinking on easy items. Mixture of Limits reading: longer chains are not free of VoI or energy floors (§8.8).
+
+**YOCO → CED / V4.1 Flash (transmission + memory).** YOCO showed that caching global KV once and early-exiting prefill after a self-decoder cuts memory and latency by orders of magnitude on long contexts (Sun et al., 2024). DeepSeek-V4.1-Flash pushes that lineage into agent workloads: a multimodal MoE with 552B backbone parameters, up to **1M** context, Causal Encoder–Decoder (CED) activating **8B** parameters per token in prefill and **16B** in decode, Compressed Sparse Attention 2 (CSA2) with Full / Reindex / Reuse modes, FP4 main KV, SWA Bounded Replay, Engram conditional memory, and DSpark speculative decoding (DeepSeek-AI, arXiv:2609.19969; weights at [huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)). Author-reported global KV footprint is **890 bytes/token** (~1/4 of V4-Flash); persistent KV with SWA Bounded Replay ~1/8 of V4-Flash. That is **transmission** law under HBM/SSD constraints—not a board joule claim.
+
+**Pricing / cache break (hardware economics).** DeepSeek’s public API prices `deepseek-flash` (served as DeepSeek-V4.1-Flash) with a large gap between cache-hit and cache-miss input (e.g. peak cache-hit \$0.006 vs cache-miss \$0.3 per 1M input tokens; [api-docs.deepseek.com/quick_start/pricing](https://api-docs.deepseek.com/quick_start/pricing)). Field discussion on Hacker News notes sessions that lose prefix cache around ~60% of a context window and suddenly pay ~50× more ([news.ycombinator.com/item?id=49735410](https://news.ycombinator.com/item?id=49735410))—an operator anecdote, not an OpenIE meter. Mixture of Limits bind: cheap cache reuse is cheapest-sufficient transmission; when reuse breaks, escalated spend is still generative corridor cost, not a certified refuse.
+
+**Floor bind.** DeepSeek repeatedly refuses *waste of KV / prefill / active parameters*, yet still scales unbounded MoE capacity and optimization. Memory/context is becoming first-class; settle-refuse and VoI outside generation are not.
+
+#### 8.13.2 Xiaomi MiMo: hybrid attention, MTP, HySparse2 toward MiMo V3
+
+**Spelling.** Xiaomi (not “Xiami”). Public LLM line: **MiMo**.
+
+**MiMo-7B / V2-Flash.** MiMo-7B is a dense reasoning model pretrained on ~25T tokens with MTP and RL post-training (Xiaomi LLM-Core, arXiv:2505.07608). MiMo-V2-Flash is a 309B-total / 15B-active MoE with hybrid Sliding-Window Attention (SWA) and global attention (5:1, 128-token window), MTP reused as speculative draft, native context extended to 256K (arXiv:2601.02780). That is gearing (sparse experts) plus transmission (hybrid attention KV reduction).
+
+**HySparse2 and MiMo V3.** HySparse2 (Wei, Gao, …, Cao, Luo / Xiaomi LLM-Core, arXiv:2609.26368) teaches two-level KV sharing for long-horizon agents: KV Bridging (YOCO-style) so prefill can exit after the self-decoder, plus KV Reuse with **token-level** sparse selection and a forced local window (no separate SWA branch in sparse layers). On matched 80B-A3B MoE ablations, author-reported 1M-token prefill FLOPs drop ~2.92× vs HySparse and ~5.02× vs Hybrid SWA; KV cache ~2.69 GB vs 6.72 / 12.09 GB. Public reporting attributes MiMo V3’s intended architecture to HySparse2 under Xiaomi MiMo lead Fuli Luo (team materials / TechNode 2026-09-24; HySparse2 paper authorship). Treat V3 product status as field announcement until a full V3 technical report ships; the **routing / cascade / transmission** claims bound to the HySparse2 paper.
+
+**Floor bind.** Xiaomi compresses long-context transmission and prefill cascade under device memory—Mixture of Limits–adjacent cheapest-sufficient—while remaining MoE/hybrid-generator first.
+
+#### 8.13.3 Other China: Qwen, GLM, Moonshot/Kimi, Baichuan, ByteDance, Huawei
+
+Brief teach + floor bind each (routing-relevant only):
+
+- **Qwen / Alibaba.** Qwen3 MoE uses fine-grained expert segmentation (e.g. 128 experts, 8 active; no shared experts in the Qwen3 MoE design) plus a unified thinking / non-thinking mode and thinking-budget control (Qwen Team, arXiv:2505.09388). Qwen3-Next further sparsifies (public Alibaba materials: hybrid attention, highly sparse MoE, MTP). **Floor bind:** gearing + test-time budget—still generative; budget is not VoI refuse outside the model.
+- **GLM / Zhipu.** Already in §8.11: GLM-4.5 MoE reasoning / agentic releases (arXiv:2508.06471). **Floor bind:** active-parameter efficiency on silicon; floors outside generation remain OpenIE law.
+- **Moonshot / Kimi.** Kimi K2 is a ~1.04T-total / ~32B-active MoE with MLA-class attention and MuonClip training (MoonshotAI, arXiv:2507.20534). **Floor bind:** extreme sparse gearing; agentic length still hits energy/VoI.
+- **Baichuan.** Baichuan 2 public report is dense 7B/13B training systems work (arXiv:2309.10305)—include only as efficiency-under-hardware, not as MoE routing. **Floor bind:** systems gearing ≠ Mixture of Limits cascade.
+- **ByteDance Seed.** Public Seed / Doubao lines emphasize long-context and agent products; cite only vendor technical materials when routing/MoE details are explicit—do not invent architecture. Where MoE or sparse attention is documented, bind as generative gearing under §8.12 economics.
+- **Huawei MindSpore / Pangu.** PanGu-Σ targets sparse trillion-scale sparse heterogeneous compute (arXiv:2303.10845); LocMoE reduces MoE communication overhead on Ascend clusters (IJCAI 2024). **Floor bind:** routing locality as transmission cost on available accelerators—hardware economics, not soft-ref joules.
+
+#### 8.13.4 India: Sarvam and sourced efficiency work
+
+- **Sarvam.** Sarvam-30B is a public MoE (≈30B total / ≈2.4B active; 128 sparse experts + shared expert; top-6 routing; GQA) aimed at Indian-language reasoning with efficient deployment (Sarvam model card / docs; Hugging Face `sarvamai/sarvam-30b` config). **Floor bind:** expert gearing for multilingual benefit under smaller active FLOPs.
+- **Krutrim.** Public Krutrim LLM technical report describes a dense multilingual foundational model (arXiv:2502.09642)—**not** an MoE routing paper. Cite for Indic coverage / efficiency narrative; do not invent sparse routing.
+- **AI4Bharat.** Strong open Indic datasets and benchmarks (e.g. IndicXTREME / related suites) that other systems evaluate against—infrastructure for grammar coverage of Indic languages, not a MoE router itself.
+- Skip unsourced “routing” claims.
+
+#### 8.13.5 Broader Asia (routing / cascade / gearing only)
+
+- **SB Intuitions (SoftBank group).** Sarashina2-8×70B is a Japanese MoE upcycled from Sarashina2-70B (8 experts, top-2 active; public SB Intuitions release 2024). **Floor bind:** sparse gearing for language-local silicon economics.
+- **Upstage (Korea).** Solar Open / Solar Open 2 public MoE lines (e.g. ~100B-class with ~12B active; later ~250B / ~15B active with hundreds of routed experts; arXiv:2601.07022 and Upstage blogs). **Floor bind:** sovereign MoE gearing on constrained GPU budgets.
+- **NAVER HyperCLOVA.** HyperCLOVA X THINK technical materials emphasize reasoning / long context (arXiv:2506.22403)—include only as test-time / context path, not as MoE gearing unless a MoE card is cited.
+- **Yi / 01.AI.** Cite only if a current public MoE or cascade paper is in hand; otherwise omit rather than name-dump.
+
+**Section close.** Across these labs, the convergent move is: move fewer bits (YOCO / CED / HySparse2 / FP4 KV), fire fewer experts (MoE), and spend test-time tokens where difficulty rises (R1 / thinking budgets)—algorithmic efficiency on available silicon. That converges toward Mixture of Limits **floors** (stop waste; cheapest sufficient) without stating VoI, grammar, certificate, or settle-refuse as law. Unbounded params + optimization still dominate the corporate narrative until memory/context *and* refuse are first-class. Hardware economics (§8.12) is the correct reading of API cache pricing and author-reported KV bytes: field reports, not `measured_j`.
+
 
 ## 9. Mixture of Limits is not MoE, and the model-to-model SOTA table
 
 ### 9.0 Spine (history + mathematics, not a horse race)
 
-Mixture of Limits is proven as an **information-theoretic** approach rooted in **physics**: formula/law discovery in the Newton-Kepler lineage, not excess generation. Academia already has Shannon → Landauer → complexity/VoI → symbolic and energy floors; Mixture of Limits **embodies** those floors in a commit|refuse cascade. The remaining bottleneck is applied math × materials (hardware), not an awareness gap. The table below situates field systems so readers see what they optimize (**which neural generator runs**) without turning Mixture of Limits into another SOTA horse race. For latent depth, Logical Intelligence EBM hybrids, World Labs world models, test-time compute, super learning, live approach survey, Jamba/DeepSeek/GLM efficiency, and hardware economics, see §8.4-§8.12: even projected-superior methods still hit the same floors. Mixture of Limits asks whether a generator should run at all, converging to VoI/floors the way physics converged to predictive laws.
+Mixture of Limits is proven as an **information-theoretic** approach rooted in **physics**: formula/law discovery in the Newton-Kepler lineage, not excess generation. Academia already has Shannon → Landauer → complexity/VoI → symbolic and energy floors; Mixture of Limits **embodies** those floors in a commit|refuse cascade. The remaining bottleneck is applied math × materials (hardware), not an awareness gap. The table below situates field systems so readers see what they optimize (**which neural generator runs**) without turning Mixture of Limits into another SOTA horse race. For latent depth, Logical Intelligence EBM hybrids, World Labs world models, test-time compute, super learning, live approach survey, Jamba/DeepSeek/GLM efficiency, hardware economics, and the Asia transmission/gearing/cascade/routing survey, see §8.4-§8.13: even projected-superior methods still hit the same floors. Mixture of Limits asks whether a generator should run at all, converging to VoI/floors the way physics converged to predictive laws.
 
 ### 9.1 Law contrast (not a rebrand)
 
@@ -585,7 +650,7 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 - [Satiation and Scarcity after Free AI](/papers/satiation/); economic done after free digital inference.
 - Living figures: [/living/mol/](/living/mol/) (companions; analytical OpCounter ≠ board power; package `measured_j` only when Metered).
 
-**Closing sentence.** Pursuit of limits (compression into predictive law, priced information, thermodynamic accounting) is the through-line from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits is that through-line stated as a navigation law for computer intelligence; embodying it in materials remains the hard problem. Latents, EBM hybrids, world models, test-time compute, ensembles, and architecture-efficiency wins (§8.4-§8.12) refine generators and lower device-dollar cost; they do not retire the floors. Computers are hardware; software is applied engineering under constraints; labeled joule accounting binds.
+**Closing sentence.** Pursuit of limits (compression into predictive law, priced information, thermodynamic accounting) is the through-line from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits is that through-line stated as a navigation law for computer intelligence; embodying it in materials remains the hard problem. Latents, EBM hybrids, world models, test-time compute, ensembles, architecture-efficiency wins, and Asia transmission/gearing/routing programs (§8.4-§8.13) refine generators and lower device-dollar cost; they do not retire the floors. Computers are hardware; software is applied engineering under constraints; labeled joule accounting binds.
 
 ## References
 
@@ -655,9 +720,29 @@ Primary Mixture of Limits workspace sources (not peer-reviewed publications): `m
 42. Team Jamba / AI21 (2024). Jamba-1.5: Hybrid Transformer-Mamba Models at Scale. arXiv:[2408.12570](https://arxiv.org/abs/2408.12570).
 43. Dai, D., et al. (2024). DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models. *ACL*. https://aclanthology.org/2024.acl-long.70.pdf
 44. DeepSeek-AI (2024). DeepSeek-V3 Technical Report. arXiv:[2412.19437](https://arxiv.org/abs/2412.19437).
-45. DeepSeek-AI (2025). DeepSeek-R1 technical report / reasoning release (public technical materials).
+45. Guo, D., Yang, D., Zhang, H., et al. / DeepSeek-AI (2025). DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning. arXiv:[2501.12948](https://arxiv.org/abs/2501.12948). Nature version: Guo et al., *Nature* 645, 633–638 (2025). DOI: [10.1038/s41586-025-09422-z](https://doi.org/10.1038/s41586-025-09422-z).
 46. GLM-4.5 Team / Zhipu AI (2025). GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models. arXiv:[2508.06471](https://arxiv.org/abs/2508.06471).
 47. GLM Team (2024). ChatGLM: A Family of Large Language Models from GLM-130B to GLM-4 All Tools. arXiv:[2406.12793](https://arxiv.org/abs/2406.12793).
+
+
+### Asia transmission / gearing / cascade / routing (§8.13)
+
+48. Sun, Y., Dong, L., Zhu, Y., et al. (2024). You Only Cache Once: Decoder-Decoder Architectures for Language Models (YOCO). *NeurIPS*. arXiv:[2405.05254](https://arxiv.org/abs/2405.05254).
+49. DeepSeek-AI (2026). DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression. arXiv:[2609.19969](https://arxiv.org/abs/2609.19969). Model card: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash. Pricing (field): https://api-docs.deepseek.com/quick_start/pricing.
+50. Wei, J., Gao, Y., Zhang, Q., et al. / Xiaomi LLM-Core (2026). HySparse2: Hybrid Sparse Attention with Two-Level KV Sharing. arXiv:[2609.26368](https://arxiv.org/abs/2609.26368).
+51. Xiaomi LLM-Core (2025). MiMo: Unlocking the Reasoning Potential of Language Model – From Pretraining to Posttraining. arXiv:[2505.07608](https://arxiv.org/abs/2505.07608).
+52. Xiaomi Team / LLM-Core (2026). MiMo-V2-Flash Technical Report. arXiv:[2601.02780](https://arxiv.org/abs/2601.02780).
+53. Qwen Team (2025). Qwen3 Technical Report. arXiv:[2505.09388](https://arxiv.org/abs/2505.09388).
+54. MoonshotAI / Team Kimi (2025). Kimi K2: Open Agentic Intelligence. arXiv:[2507.20534](https://arxiv.org/abs/2507.20534).
+55. Yang, A., et al. (2023). Baichuan 2: Open Large-scale Language Models. arXiv:[2309.10305](https://arxiv.org/abs/2309.10305).
+56. Ren, X., et al. (2023). PanGu-Σ: Towards Trillion Parameter Language Model with Sparse Heterogeneous Computing. arXiv:[2303.10845](https://arxiv.org/abs/2303.10845).
+57. Li, J., et al. (2024). LocMoE: A Low-Overhead MoE for Large Language Model Training. *IJCAI*. arXiv:[2401.13920](https://arxiv.org/abs/2401.13920).
+58. Sarvam AI (2025–2026). Sarvam-30B MoE model card / docs (≈30B total / ≈2.4B active; 128 experts + shared; top-6). https://huggingface.co/sarvamai/sarvam-30b ; https://docs.sarvam.ai/
+59. Kallappa, A., et al. / Krutrim Team (2025). Krutrim LLM: Multilingual Foundational Model for over a Billion People. arXiv:[2502.09642](https://arxiv.org/abs/2502.09642).
+60. SB Intuitions (2024). Sarashina2-8x70B MoE release notes / tech blog (8 experts, top-2). https://www.sbintuitions.co.jp/
+61. Upstage (2026). Solar Open Technical Report. arXiv:[2601.07022](https://arxiv.org/abs/2601.07022). Solar Open 2 product materials: https://www.upstage.ai/
+62. NAVER Cloud / HyperCLOVA (2025). HyperCLOVA X THINK. arXiv:[2506.22403](https://arxiv.org/abs/2506.22403).
+63. Field note (not a meter): Hacker News thread on DeepSeek-V4.1-Flash KV / prefix-cache economics, item 49735410. https://news.ycombinator.com/item?id=49735410
 
 ### OpenIE companions
 
@@ -665,7 +750,7 @@ Primary Mixture of Limits workspace sources (not peer-reviewed publications): `m
 49. Charlot, D. Satiation and Scarcity after Free AI. research.openie.dev/papers/satiation/.
 50. OpenIE Periodic Stack; compute.openie.dev (258 primitives / 33 families).
 
-Kepler's laws / Newton's *Principia* / Brahe's observational program are treated as historical common knowledge in §8.1; imprint DOIs for critical editions **TBD** if a journal version requires them. Raiffa decision-analysis imprint DOI **TBD**. Press-wire details for Logical Intelligence beyond the company blog (exact pilot lists, internal AGI claims) are company-reported. Author-reported GPU-hours, throughput, and benchmark scores for Jamba, DeepSeek, GLM, speculative decoding, and test-time scaling papers are **field / author-reported**, not soft-ref `measured_j`.
+Kepler's laws / Newton's *Principia* / Brahe's observational program are treated as historical common knowledge in §8.1; imprint DOIs for critical editions **TBD** if a journal version requires them. Raiffa decision-analysis imprint DOI **TBD**. Press-wire details for Logical Intelligence beyond the company blog (exact pilot lists, internal AGI claims) are company-reported. Author-reported GPU-hours, throughput, KV bytes/token, prefill FLOPs, API cache prices, and benchmark scores for Jamba, DeepSeek (including V4.1-Flash), GLM, Xiaomi MiMo / HySparse2, Qwen, Kimi, Sarvam, Solar, speculative decoding, and test-time scaling papers are **field / author-reported**, not soft-ref `measured_j`. Hacker News cache-break anecdotes are operator reports, not OpenIE meters.
 
 ## Appendix A. Measurement bounds
 
@@ -677,7 +762,7 @@ Kepler's laws / Newton's *Principia* / Brahe's observational program are treated
 - §§6 and 9 Leapfrog placeholders intentionally incomplete
 - DOIs only when verified via search/source inventory; otherwise marked TBD
 - Bottleneck: materials/applied-math embodiment. Settled IT/physics already name the floors
-- §8.4-§8.12 map latents / Logical Intelligence / World Labs / test-time compute / super learning / live approaches / Jamba–DeepSeek–GLM / hardware economics onto floors—not a generator horse race; field product joules stay field; estimates ≠ board package energy
+- §8.4-§8.13 map latents / Logical Intelligence / World Labs / test-time compute / super learning / live approaches / Jamba–DeepSeek–GLM / hardware economics / Asia transmission–gearing–cascade–routing onto floors—not a generator horse race; field product joules, API prices, and author-reported KV bytes stay field; estimates ≠ board package energy
 
 ## Appendix B. Reproducibility pointers
 
