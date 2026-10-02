@@ -625,6 +625,16 @@ cargo run -p mol-cli -- prove   # includes A11 + A14; soft-ref ALL VERIFIED
 
 Living figures under [/living/mol/](/living/mol/) remain companions (cascade / floors / close). They do not claim Arena GPU package joules.
 
+
+### 11.3 Primitive Distillation Loop (hardened)
+
+After a **certified** Model LAST commit, `mol distill` appends a Lookup or Formula entry to `DistillStore` with Deterministic replay (uncertified proposals never distill). Cascade `with_distill_store` then makes a **second pass** on the distilled pattern close at Lookup/Formula **without** opening Model LAST (`mol prove` A12). Soft-ref receipts keep `estimated_j` labeled Estimated; never invent `measured_j`. Estimates ≠ `measured_j`.
+
+```bash
+cargo run -p mol-cli -- distill "ticket summary" --gear lookup --store product/fixtures/distill_store.json
+cargo run -p mol-cli -- prove   # A12: Model LAST → distill → second-pass Lookup without model
+```
+
 ## References
 
 Primary Mixture of Limits workspace sources (not peer-reviewed publications): `mixture-of-limits` README.md, BLUEPRINT.md, PLAN.md; `docs/adjacent-field-hunt.md`; `docs/appendix-mwm-ai-newton.md` (author: David Charlot / OpenIE).
