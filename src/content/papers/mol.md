@@ -31,7 +31,24 @@ This paper's contribution is the study prose for that law as published on resear
 
 Three measurement facts constrain every later number. First, joules from catalog surrogates and OpCounter-style analytics are **estimates**, not board power. Second, Landauer annotations are **estimates**, distinct from RAPL/NVML/`measured_j`. Third, `board_synth_claimed=false`; package `measured_j` is set only when a Metered probe returns a reading.
 
-Scope. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine \(E(x) \ge \theta(D)\cdot\mu(S,V)\). Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (energy-based model / large language model / latent hybrid), World Labs (spatial world models), and **SOTA at the plateau** (§8.7): once VoI is zero past the floor, plateau spend is the only work—test-time compute, super learning, live SOTA methods (SSMs, MoE, RAG, speculative decode, …), SSM hybrids / MoE / implementation efficiency (including Jamba-class, DeepSeek, GLM as options), hardware economics (including edge / neuromorphic soft-ref), plateau techniques for transmission / gearing / cascade / memory-context / test-time (§8.13), industry gap levers (Mixture-of-Depths, AWQ/GPTQ/FP8, vLLM/SGLang; §8.10.1), and the cross-field **race to plateau floors** table (§8.14: RLHF, diffusion, GNNs, multimodal, federated/continual, pruning/KD/NAS, Bayesian/conformal/causal/active, GraphRAG, agent memory, structured generation, CUDA Graphs). Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits. Section 11 states engineering gaps to close—dual-phase front-door perception, O(1) meta-routing, Primitive Distillation for open grammars, Tier 0/1/2 measurement realism, and a declarative DX roadmap—as plateau work under the same floors, not apologies.
+### OpenIE map (no prior literacy assumed)
+
+This study lives inside the OpenIE family of sites. Readers do not need those sites memorized; the map below states what each surface is and where Mixture of Limits sits.
+
+| Surface | URL | What it is | Relation to Mixture of Limits |
+|---|---|---|---|
+| **Research** (this hub) | [research.openie.dev](https://research.openie.dev) | Readable studies, PDFs, and living figures. This paper is `/papers/mol/`; companions are Notational Intelligence (`/papers/ni/`) and Satiation (`/papers/satiation/`). | Publishes the navigation-law study prose and soft-ref measurement bounds. |
+| **Stack** | [stack.openie.dev](https://stack.openie.dev) | Teaching map of the family: information theory, game theory, and mechanism design as one substrate; directory of the eight periodic stacks. | Orientation layer. Mixture of Limits is not "another stack card"; it is the **navigation law** that chooses cheapest-sufficient close across stack coordinates. |
+| **Compute** | [compute.openie.dev](https://compute.openie.dev) | Periodic Stack of Computation: **258 primitives / 33 families**, thermodynamic floor every sibling inherits. | The primitive table Mixture of Limits **navigates**. Soft-ref proves a subset navigator; full live catalog is outside soft-ref proof. Empty cells → `primitive_gap`. |
+| **Knowledge** | [knowledge.openie.dev](https://knowledge.openie.dev) | Working definition of a claim as seven axes ⟨valid time, transaction time, reference time, granularity, scope, certainty, provenance⟩. | Typed claims and cite/compose leaves (Z2 cite / Z1 compose in soft-ref) bind to this object shape. Mixture of Limits does not redefine knowledge; it refuses escalation when grammar and VoI say the claim coordinate is already covered. |
+| **Synthesis** | [synthesis.openie.dev](https://synthesis.openie.dev) | Periodic Stack of Digital Information Synthesis: AI as software; zones Z₁/Z₂/Z₃; cost surface \(E(x)=\sum \theta(p)\cdot\mu(p,H)\). | Plateau spend and cascade order rhyme with synthesis zones (closed-form → constrained → unbounded). Mixture of Limits owns **floors outside generation**—VoI, grammar, energy estimate, certify, settle-refuse—so Z₃-style generation stays Model LAST. |
+| **Verify** | [proof.openie.dev](https://proof.openie.dev) | Periodic Stack of Verification: cheapest-sufficient solver under \(E(x)\ge\theta(D)\cdot\mu(S,V)\). | Cousin energy law. Mixture of Limits uses the same spine form for path energy; Verify maps verified artifacts; Mixture of Limits maps which gear closes before commit. |
+
+**One paragraph.** Stack teaches the family map. Compute names the permitted-act primitives. Knowledge defines the claim object those primitives carry. Synthesis places digital information synthesis on a cost surface and zone grammar. Verify prices verified artifacts under a related energy inequality. Research hosts the studies. **Mixture of Limits is the navigation law across that family:** Lookup → Formula → Solver → Model LAST, with named floors that stop escalation when more bits stop buying outcomes. It is not a rebrand of Mixture-of-Experts, not a substitute for the Periodic Stack pages, and not a claim that soft-ref software measures board package joules.
+
+Other names this paper uses without treating them as assumed literacy: **MathGround** denotes the OpenIE cascade / replay-class discipline that enforces Lookup → Formula → Solver → Model LAST; **WCA** denotes capability / certify refuse adapters (live MCP path remains soft-ref roadmap); **leapfrog / `openie-path`** denotes ask-bridge adapters (stubs on the proven path). Living companions for this study: [/living/mol/](/living/mol/). FPGA commit figures for NI: [/living/fpga-sim/](/living/fpga-sim/).
+
+Scope. The OpenIE map above names stack / compute / knowledge / synthesis / verify / research before any later allusion. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine \(E(x) \ge \theta(D)\cdot\mu(S,V)\). Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (energy-based model / large language model / latent hybrid), World Labs (spatial world models), and **SOTA at the plateau** (§8.7): once VoI is zero past the floor, plateau spend is the only work—test-time compute, super learning, live SOTA methods (SSMs, MoE, RAG, speculative decode, …), SSM hybrids / MoE / implementation efficiency (including Jamba-class, DeepSeek, GLM as options), hardware economics (including edge / neuromorphic soft-ref), plateau techniques for transmission / gearing / cascade / memory-context / test-time (§8.13), industry gap levers (Mixture-of-Depths, AWQ/GPTQ/FP8, vLLM/SGLang; §8.10.1), and the cross-field **race to plateau floors** table (§8.14: RLHF, diffusion, GNNs, multimodal, federated/continual, pruning/KD/NAS, Bayesian/conformal/causal/active, GraphRAG, agent memory, structured generation, CUDA Graphs). Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits. Section 11 states engineering gaps to close—dual-phase front-door perception, O(1) meta-routing, Primitive Distillation for open grammars, Tier 0/1/2 measurement realism, and a declarative DX roadmap—as plateau work under the same floors, not apologies.
 
 ---
 
@@ -66,7 +83,7 @@ The model tier is **LAST**. Default budgets set `allow_model=false`. Even when a
 
 ### Periodic Stack
 
-Mixture of Limits navigates the OpenIE **Periodic Stack** (compute.openie.dev: **258 primitives / 33 families**). The soft-ref proves an in-tree **subset** navigator with Present/Gap cells and scale notes citing 258/33. Full live catalog and μ calibration corpora remain outside soft-ref proof scope. Empty cells surface as `primitive_gap`.
+Mixture of Limits navigates the OpenIE **Periodic Stack of Computation** at [compute.openie.dev](https://compute.openie.dev) (**258 primitives / 33 families**). Sibling maps: [stack.openie.dev](https://stack.openie.dev) (family directory), [knowledge.openie.dev](https://knowledge.openie.dev) (seven-axis claim), [synthesis.openie.dev](https://synthesis.openie.dev) (synthesis zones / cost surface). The soft-ref proves an in-tree **subset** navigator with Present/Gap cells and scale notes citing 258/33. Full live catalog and μ calibration corpora remain outside soft-ref proof scope. Empty cells surface as `primitive_gap`.
 
 ### Mixture of Limits is not MoE
 
@@ -107,7 +124,7 @@ Receipts may annotate `landauer_floor_J` from this formula. That annotation is *
 
 ## 4. Cascade and close: Lookup → Formula → Solver → Model LAST
 
-MathGround / OpenIE cascade order (type-enforced replay classes):
+MathGround / OpenIE cascade order (type-enforced replay classes; synthesis zones and compute primitives on [synthesis.openie.dev](https://synthesis.openie.dev) and [compute.openie.dev](https://compute.openie.dev)):
 
 ```text
 Lookup → Formula (closed-form) → Solver / settle → Model LAST
@@ -1024,9 +1041,13 @@ Primary Mixture of Limits workspace sources (not peer-reviewed publications): `m
 
 ### OpenIE companions
 
-48. Charlot, D. Notational Intelligence as Commit Law. research.openie.dev/papers/ni/.
-49. Charlot, D. Satiation and Scarcity after Free AI. research.openie.dev/papers/satiation/.
-50. OpenIE Periodic Stack; compute.openie.dev (258 primitives / 33 families).
+48. Charlot, D. Notational Intelligence as Commit Law. [research.openie.dev/papers/ni/](https://research.openie.dev/papers/ni/).
+49. Charlot, D. Satiation and Scarcity after Free AI. [research.openie.dev/papers/satiation/](https://research.openie.dev/papers/satiation/).
+50. OpenIE Periodic Stack of Computation; [compute.openie.dev](https://compute.openie.dev) (258 primitives / 33 families).
+50a. OpenIE Stack (family map); [stack.openie.dev](https://stack.openie.dev).
+50b. OpenIE Knowledge (seven-axis claim); [knowledge.openie.dev](https://knowledge.openie.dev).
+50c. OpenIE Synthesis (DIS / zones / cost surface); [synthesis.openie.dev](https://synthesis.openie.dev).
+50d. OpenIE Verify (verification stack); [proof.openie.dev](https://proof.openie.dev).
 
 Kepler's laws / Newton's *Principia* / Brahe's observational program are treated as historical common knowledge in §8.1; imprint DOIs for critical editions **TBD** if a journal version requires them. Raiffa decision-analysis imprint DOI **TBD**. Press-wire details for Logical Intelligence beyond the company blog (exact pilot lists, internal AGI claims) are company-reported. Author-reported GPU-hours, throughput, KV bytes/token, prefill FLOPs, API cache prices, and benchmark scores for Jamba, DeepSeek (including V4.1-Flash), GLM, Xiaomi MiMo / HySparse2, Qwen, Kimi, Sarvam, Solar, speculative decoding, and test-time scaling papers are **field / author-reported**, not soft-ref `measured_j`. Hacker News cache-break anecdotes are operator reports, not OpenIE meters.
 
