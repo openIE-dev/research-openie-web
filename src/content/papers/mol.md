@@ -921,7 +921,9 @@ measurement:
   board_synth_claimed: false
 ```
 
-**CLI loop (roadmap):** `mol prove` (exists in soft-ref) → `mol dev` (watch, replay, receipt diff) → `mol bench` (J/query and latency versus MoE / always-model baselines using **Estimated** or Metered labels—never invented board joules).
+**CLI loop (roadmap):** `mol prove` (exists in soft-ref) → `mol run --chore mol.yaml` (product stub: declarative chore close) → `mol dev` (watch, replay, receipt diff) → `mol bench` (J/query and latency versus MoE / always-model baselines using **Estimated** or Metered labels—never invented board joules).
+
+**Product path.** Mixture of Limits as a valued product surface (problem, vs Laya System One, `mol.yaml`, acceptance A1–A6, dual-phase → NI commit → satiation architecture) lives in the OpenIE product package `mixture-of-limits-product` and is mirrored under the clean-room tree at `product/`. That package embodies navigation + certify-before-commit + satiation stop for chores with written `C(z)`—not another diagnosis paper. Soft-ref constructive existence remains `mol prove`; package joules stay Estimated unless Metered.
 
 **Benchmark framing.** Compare joules-per-query and certify rate of Mixture of Limits cascade against MoE token routes on the same typed task set. Report Tier 0/1/2 explicitly. Soft-ref constructive existence is not a board energy score.
 
