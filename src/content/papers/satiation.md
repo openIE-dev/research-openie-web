@@ -60,6 +60,18 @@ The constraints that do not follow from a price series are physical and institut
 
 This paper's positive claim is definitional and bibliographic. Satiation is a coherent object. Published prices for inference have fallen sharply. Engagement metrics are not completeness metrics. The software reference can represent a refuse for "do not spend" and a refuse for "do not move" as different reason codes on one decision. The negative claim is equally important. This paper does not identify a structural demand system, does not estimate rebound, and does not report board energy.
 
+### Companion laws
+
+This study is the **Economic done** law in the research catalog triad.
+
+| Role | Study | Owns |
+|---|---|---|
+| **Navigation** | [Mixture of Limits](https://research.openie.dev/papers/mol/) | Lookup → Formula → Solver → Model LAST; floors including Value of Information (VoI). |
+| **Commit** | [Notational Intelligence as Commit Law](https://research.openie.dev/papers/ni/) | propose → certify → commit\|refuse → receipt; physical permit on the gate. |
+| **Economic done** | This paper | Completeness predicate `C(z)`; stop when VoI is zero on that predicate, or when budget / policy refuse fires. |
+
+Mixture of Limits navigates. Notational Intelligence owns irreversible commit. This paper owns economic done after free-at-the-margin digital inference. Free at the margin is not free joules. Estimates ≠ board-measured `measured_j`.
+
 ## 2. Related work
 
 ### 2.1 Satiation and bliss points

@@ -66,6 +66,18 @@ This paper's contribution is a software reference for that predicate, plus a rep
 
 Three measurement statements constrain every later number. First, joules computed by the OpCounter are analytical estimates. Second, Verilog results are simulation. Third, we have not synthesized or metered the FPGA board. `board_synth_claimed` remains false in the repository metadata until a synthesis log and a meter exist. Those sentences replace any badge-style labeling. A reader should be able to tell modeled, simulated, and board-measured apart from the method clause attached to the number.
 
+### Companion laws
+
+This study is the **Commit** law in the research catalog triad.
+
+| Role | Study | Owns |
+|---|---|---|
+| **Navigation** | [Mixture of Limits](https://research.openie.dev/papers/mol/) | Lookup → Formula → Solver → Model LAST; VoI / grammar / energy / certificate / settle-refuse floors. |
+| **Commit** | This paper | propose → certify → commit\|refuse → receipt. Notational Intelligence owns irreversible commit. |
+| **Economic done** | [Satiation and Scarcity after Free AI](https://research.openie.dev/papers/satiation/) | Completeness predicate / budget stop on the same refuse taxonomy. |
+
+Navigation chooses the gear. This paper records the irreversible branch. Satiation supplies the economic stop. Estimates remain estimates; package `measured_j` only when Metered.
+
 ## 2. Related work
 
 ### 2.1 Notation and tools for thought
@@ -502,6 +514,10 @@ Physical follow-on for board **joules**. Stage C already programmed a closed-loo
 
 Out of scope for the emulator: training DiffLogic in the browser, claiming Artix-7 dynamic power from a shader, and flipping `board_synth_claimed` to true.
 
-## Appendix C. Relation to the companion study
+## Appendix C. Relation to the companion studies
 
-The companion paper, "Satiation and Scarcity after Free AI," uses the same commit record for a different predicate: stop when a stated work or care loop is complete. The shared sentence is compositional. Refuse if the chore is already complete, or if the physical predicate fails. This paper supplies the physical predicate and the measurement classes. It does not estimate a demand curve.
+The research catalog triad is Navigation / Commit / Economic done. This paper is Commit.
+
+"Satiation and Scarcity after Free AI" uses the same commit record for a different predicate: stop when a stated work or care loop is complete. The shared sentence is compositional. Refuse if the chore is already complete, or if the physical predicate fails. This paper supplies the physical predicate and the measurement classes. It does not estimate a demand curve.
+
+"Mixture of Limits" is the navigation law: Lookup → Formula → Solver → Model LAST, with named floors that say when refuse is success. It does not replace the commit record defined here.
