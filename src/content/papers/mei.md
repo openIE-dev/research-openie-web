@@ -608,7 +608,7 @@ Power-aware serving and grid flexibility stay in §11.4. They are actuators.
 | World Labs / V-JEPA | Spatial / latent world models | Budget-native enzymes + campus grid service; latent optional |
 | Dense Associative Memory / analog energy-based models | Physics dynamics for inference | Cited substrate path. Enzymes and the envelope stay this class |
 | Dynamo / DSX / AEMA | Power and grid actuators | Actuators **inside** Mixture of Limits intelligence |
-| Tsetlin machines / hyperdimensional computing | Sparse non-transformer silicon | Edge cousins. The class adds campus \(J(m|q)\) and the OpenADR envelope |
+| Tsetlin machines / hyperdimensional computing | Sparse non-transformer silicon | Edge cousins. The class adds the obtain-router and the OpenADR envelope |
 | Trillium Labs | Announced open post-training recipes (2 Oct 2026). No recipe in the launch sources | Open corridor of the frontier stack. Not this class |
 
 ```mermaid
