@@ -144,17 +144,32 @@ These lemmas are engineering consequences of the definitions. They are not theor
 
 ### 2.6 Related work by method (academic corridor)
 
-Method taxonomy is first-class; geography is not a claim axis.
+Method is the claim axis. Geography is not. What this class absorbs is stated as law. Everything else in this section is cited only. URLs and dates below were checked on 2 Oct 2026. A vendor joule, a vendor latency, or a vendor accuracy stays on the vendor's page. It is not this pack's `measured_j`.
 
-**Energy-based and certify models.** Logical Intelligence's Kona 1.0 pilots (Business Wire, 20 Jan 2026) move constraint energy and Lean-checkable commit into product pilots. DenseAM and Hopfield-style dynamical models (arXiv:2512.15002; arXiv:2604.05042) cast attention and retrieval as energy descent, with analog constant-time inference as a research path. Thermodynamic continuous-variable EBM blueprints (2026 preprints) push sampling onto physics substrates. Metabolic Intelligence cites these as **class neighbors** for test-time settle. It does not claim their constraint energy equals campus import joules.
+**Absorbed (not citations).** Four objects are Metabolic Intelligence.
 
-**Latent world models.** V-JEPA 2 / V-JEPA 2-AC (Assran et al., arXiv:2506.09985, 11 Jun 2025) demonstrate latent prediction and zero-shot robot planning without task reward after large video pretrain. World Labs Atlas (1 Sep 2026) continues the spatial world-model corridor. Metabolic Intelligence treats latent models as an optional Model-zone leaf, not the enzyme substrate. Zero-shot robotics peer strength is acknowledged; the no-pretrain claim stays scoped to the enzyme path (Proposition 7).
+1. **Physics envelope.** \(B\) is joules on a tag episode or watts on a lean-campus import cap. Energy budget is physics: the condition under which the answer is obtained. It is not a discount on the answer, and it is not a Faustian cheaper-answer trade.
+2. **Superior answer.** Levers and routing refuse or defer work that would violate \(B\). They do not degrade the certified answer. The answer that commits is the best one. Budget-native obtain, digital enzymes, physics-informed features, and test-time close are how answers that were thought impossible become reachable. That reach is inside the envelope.
+3. **Digital enzymes.** Binding site, product, allosteric context, abundance as learned weight, a cost on every binding check, early exit. The unit is this study (§5): emulator-measured Cortex-M4 counts and the SmellNet sequential protocol. Tsetlin machines and hyperdimensional computing, cited below, are edge cousins. They are not the enzyme.
+4. **Dual hardware map.** The class runs today on GPUs and MCUs. It points at neuromorphic, analog in-memory, photonic, and adiabatic substrates where energy-based and latent settle can map (Appendix B). The map is operational. A substrate paper is not a second definition of the class. Deployment is the edge and the resource-optimized central. Hyperscale water, power, and cooling plants are not required by design.
 
-**Logic and hyperdimensional edge ML.** Tsetlin Machine ASICs report 8.6 nJ per MNIST frame at 65 nm (Tunheim et al., arXiv:2501.19347, Jan 2025). Hyperdimensional computing and sparse distributed memory lineages supply associative recall on SRAM/FPGA and speculative memristive bundling. These are **edge cousins**: online learning, low forgetting in some continual settings, nJ-class decisions. They do not supply OpenADR obtain-routing or dual-scale thesis.
+**Cited only.**
 
-**Joule-aware serving and routing.** PEARL, OmniRouter, and Energy-Aware LRM papers (2025–Jan 2026) price which LLM answers under cost or energy budgets. NVIDIA Dynamo 1.5 (18 Sep 2026) adds per-GPU power annotations. InferenceX and MLPerf supply tok/s/MW field measurements (Sep 2026). Emerald DSX Flex and AEMA (Jun / Sep 2026) move campus flexibility into commercial and alliance language. Metabolic Intelligence uses these as **envelope actuators and meters**, then binds them to Mixture of Limits obtain zones—an integration peers do not presently publish as one class.
+**Energy-based models, Hopfield networks, and Dense Associative Memory.** Hopfield (1982) casts associative memory as descent on an energy. Krotov and Hopfield (arXiv:1606.01164, 2016) raise capacity with higher-order energies (Dense Associative Memory). Ramsauer et al. (arXiv:2008.02217, 2020) recover softmax attention as a modern Hopfield update. Hoover, Krotov, and coauthors (arXiv:2302.07253, NeurIPS 2023) define the Energy Transformer: attention layers built to minimize a token energy. Gladstone et al. (arXiv:2507.02092, 2025) train Energy-Based Transformers that assign an energy to an input–prediction pair and predict by gradient minimization of that energy. Bacvanski, Hopfield, Krotov, and coauthors (arXiv:2512.15002, 16 Dec 2025) propose analog RC and crossbar circuits for Dense Associative Memory and analyze constant-time inference from amplifier specifications; that bound is their analysis, not a meter here. Montanari, Bullo, Krotov, and Motter (arXiv:2604.05042, 2026) survey energy-based dynamical models from Hopfield networks through Dense Associative Memory to oscillator machines. Logical Intelligence is the product neighbor on this axis, not these theory papers. Bodnia and Hanin (21 Jan 2026) describe Kona as non-autoregressive at the trace, globally scored, and continuous-state: an energy over partial and complete traces, with Aleph coordinating calls to Kona and language models. Kona 1.0 pilots are the Business Wire account of 20 Jan 2026. Their scalar is constraint energy. It is not campus import joules and not a coin-cell schedule. This study does not adopt their benchmark figures.
 
-**OpenIE prior surfaces.** Synthesis cost \(E(x)\), Mixture of Limits navigation, Notational commit, and Satiation stop are prior OpenIE law. This study is the embodiment layer: budgets and actuators that make those floors spendable in joules and watts.
+**Latent prediction and spatial world models.** LeCun (version 0.9.2, 27 Jun 2022) names the joint-embedding predictive architecture as a path to autonomous machine intelligence. V-JEPA 2 and V-JEPA 2-AC (Assran et al., arXiv:2506.09985, 11 Jun 2025) predict in a latent video space and, after large video pretraining plus less than 62 hours of unlabeled robot video, plan a robot arm from image goals without a task reward. World Labs Marble (12 Nov 2025) is a generative multimodal world model. Atlas (1 Sep 2026) is their later omni model over text, images, video, and 3D. A latent model is an optional Model-last leaf under Mixture of Limits. Their pretrain stays on their path (Proposition 7). This study does not speak for their results.
+
+**State-space efficiency corridor.** Mamba (Gu and Dao, arXiv:2312.00752, 2023) is a selective state-space sequence model: linear scaling in length, constant-size recurrent state, no attention block. Mamba-2 (Dao and Gu, arXiv:2405.21060, 2024) states a structured state-space duality with attention. The corridor prices sequence compute inside the transformer-replacement race. It does not price an obtain zone, a heater duty cycle, or a grid cap.
+
+**Neuromorphic, analog, and photonic substrates.** Intel announced Hala Point on 17 Apr 2024: 1,152 Loihi 2 processors, 1.15 billion neurons, stated maximum 2,600 W. That watt figure is Intel's. Chen et al. (Nature Communications, 30 Sep 2025, doi:10.1038/s41467-025-63794-4) demonstrated an ALBERT transformer on a 14 nm analog in-memory inference chip. Ahmed et al. (Nature, 9 Apr 2025, doi:10.1038/s41586-025-08854-x) report a photonic processor executing ResNet, BERT, and an Atari reinforcement-learning workload. These demonstrations sit on the dual hardware map. They are not the class. Shipping neuromorphic gas or odour nanojoule figures were not found. Innatera Pulsar remains a vendor milliwatt-class audio and radar part, above the tag schedule near 10 µW (datasheet plus schedule model).
+
+**Tsetlin machines and hyperdimensional computing.** Granmo (arXiv:1804.01508, 2018) learns propositional clauses with teams of Tsetlin automata. Kanerva (*Cognitive Computation*, 2009) defines hyperdimensional computing on high-dimensional random vectors. Tunheim et al. (arXiv:2501.19347, 31 Jan 2025) report an all-digital 65 nm Tsetlin accelerator at 8.6 nJ per MNIST frame. Hyperdimensional Tsetlin machines (arXiv:2406.02648, 2024) combine the two encodings. Cite them as sparse edge cousins: online learning and nJ-class decisions on the tasks they publish. They do not supply the OpenADR obtain-router or the dual-scale thesis.
+
+**Open post-training recipes.** Trillium Labs ([trilliumlabs.org](https://trilliumlabs.org/)), Nathan Lambert and Tom Zick, was unveiled on 2 Oct 2026. Lambert's note the same day says the nonprofit is building open post-training recipes and intends to expand into open infrastructure for recursive self-improvement, reward hacking, and multi-agent systems. WIRED the same day (Will Knight) reports the initial focus as post-training: publishing experiment details so others can study and replicate them. Those sources describe a program. They do not contain a recipe, a dataset, a configuration, or a model release. None is inferred. Trillium Labs is the open corridor of the frontier transformer stack. It is not Metabolic Intelligence and not a Klere product.
+
+**Envelope actuators, not a class.** PEARL, OmniRouter, and Energy-Aware LRM (2025–Jan 2026) price which language model answers. NVIDIA Dynamo 1.5 (18 Sep 2026), InferenceX, MLPerf, Emerald DSX Flex, and the AI Energy Management Alliance are serving and grid actuators (§11.4). Metabolic Intelligence binds those actuator shapes to Mixture of Limits obtain zones. The actuators are not the intelligence class.
+
+Companion law stays companion law, named in full: Mixture of Limits navigates, Notational Intelligence commits, Satiation stops. This study is the envelope those floors spend.
 
 ### 2.7 Evidence grammar (how to read every table)
 
@@ -567,26 +582,23 @@ Class properties (stated as operating claims; peer overlap cited honestly below)
 | **No large pretrain required** | Enzyme / bit-enzyme **online** path on MCU | Tsetlin / Hebbian AM cousins. **Do not** attribute this to JEPA, World Labs, or Logical Intelligence frontier stacks; they pretrain heavily. Scope the claim to the enzyme path. |
 | **Physics-informed** | E-nose kinetics, drift-invariant features (+9–11 late-life points); heater / sleep schedule; Landauer as labeled estimate | PINN lineage; analog EBM as physics substrate. Physics features ≠ thermodynamic optimality without meters. |
 
-**Class, not a peer list.** Post-transformer work is a set of methods: energy-based models, latent and world models, state-space sequence models, neuromorphic and analog and photonic substrates, logic and associative leaves (enzymes, Tsetlin, hyperdimensional computing), and open frontier recipes. Metabolic Intelligence, embodied as Klere, is the budget-native class on the edge and the resource-optimized central. The envelope is the physical condition of the superior answer. Neighbors keep their own axis. None of them is this class, and none of this is a geography. The combination here is edge ↔ resource-optimized central, OpenADR 3.1 / DSX Flex–shaped lean service, the \(J(m|q)\) obtain-router, digital enzymes, and Satiation stop, with hyperscale water, power, and cooling plants not required by design. Soft-ref path: `board_synth_claimed=false`.
+**Class, not a peer list.** Section 2.6 absorbs four objects into Metabolic Intelligence: the physics envelope, the superior answer, digital enzymes, and the dual hardware map. The table below cites the rest. Klere ([klere.ai](https://klere.ai)) embodies the absorbed class on the edge and the resource-optimized central. Neighbors keep their axis. None of them is this class, and none of this is a geography. The combination here is edge and resource-optimized central, an OpenADR 3.1 and DSX Flex–shaped lean service, the \(J(m|q)\) obtain-router, digital enzymes, and Satiation stop, with hyperscale water, power, and cooling plants not required by design. Soft-ref path: `board_synth_claimed=false`.
 
 ### 11.2 Method taxonomy (must-cite; method-first, not geography)
 
-Many post-transformer efforts exist. This table places them by method so the class is not read as one more name in a list. Klere embodies one class: the envelope obtains the superior answer, on the edge and the resource-optimized central. [Trillium Labs](https://trilliumlabs.org/) is an open-science institution for frontier model recipes and releases ("Fostering the open science of frontier AI"). That is the open corridor of the same transformer and frontier stack. It is not Metabolic Intelligence and not a Klere product. The landing is thin. This study does not infer a technical stack from it.
+The prose, URLs, and dates are in §2.6. This table is the index. Digital enzymes, the physics envelope, the superior answer, and the dual hardware map are not rows: they are the class. Checked 2 Oct 2026. Do not promote a cell into `measured_j`.
 
-| Method | vs transformer | Existing HW | Post–von Neumann | Ev. | MEI overlap |
-|---|---|---|---|---|---|
-| **Certify/commit EBM (Logical Intelligence)** | Next-token → energy landscape + Lean-checkable proofs | GPU + Lean; Kona / Aleph pilots (Jan 2026) | Analog DenseAM / Hopfield-style CIM (research) | V/C | Test-time verify. Constraint energy ≠ campus joules. Not "no pretrain." |
-| **Latent JEPA / world models** | Pixel/token gen → predict in latent; plan by latent energy | GPU ViT + MPC (V-JEPA 2-AC, Jun 2025); World Labs Marble / Atlas | Speculative: latent dynamics on analog associative recall | M/V | **Zero-shot** planning peer. **Requires** large video pretrain — conflicts with enzyme "no pretrain" unless claims are split by path. |
-| **DenseAM / Hopfield EBM** | Attention cast as energy flow; retrieval = minimize E | Digital solvers on GPU/CPU | Analog RC + crossbar; memristor Hopfield (2026) | P/S | Test-time energy descent; physics-native dynamics |
-| **Thermodynamic / equilibrium EBM HW** | Sampling Z digitally → Langevin/Gibbs on physics | Superconducting / stochastic analog research | Hardware-native EBM sampling | P | Physics-informed substrate; early |
-| **Digital enzymes (OpenIE)** | Dense MLP → recognition + abundance + budgeted binding | MCU / Cortex-M4 (emulator-measured instr.) | Content-addressable / sparse associative fit | M/S | Sequential learning; budget dial; no large pretrain on enzyme path; physics-informed features |
-| **Tsetlin / bit-logic** | Real-valued nets → propositional clauses | Digital ASIC 65 nm (8.6 nJ/MNIST frame, Jan 2025) | Stays digital-sparse | M/P | Online / continual peers; nJ edge |
-| **HDC + SDM** | Dense embeddings → hypervectors / sparse distributed memory | SRAM/FPGA HDC; HDStream 2026 | Associative CAM / memristive bundling | P/V | Fast associative recall; not the campus story |
-| **SSM / Mamba / RWKV** | Quadratic attn → linear state | GPU; FPGA/ASIC | Still digital accelerators | M/P | Corridor efficiency peer only; **not** budget-native class |
-| **Photonic / analog CIM / adiabatic** | Data-move → in-memory / charge recovery | Lab photonic fJ/op claims; NeuRRAM lineage; Innatera Pulsar ~0.4–0.6 mW audio/radar | Core post-vN joule-floor path | M/V/S | Joule floor hardware; **not** the MEI software class by itself |
-| **Power-aware serving (soft)** | Same transformer + power caps / speed dial | Dynamo 1.5 (18 Sep 2026); DPS | N/A | V/M | Illustrates **budget binding** at campus; not a new intelligence class |
-| **Grid-flexible campus (soft)** | Flat load → dispatchable envelope | DSX Flex; OpenADR 3.x; AEMA (16 Sep 2026, **no spec yet**) | N/A | C/V/R | Envelope as grid budget; OpenIE wires this to obtain-router |
-| **Open frontier recipes (Trillium Labs)** | Recipes and model releases on the transformer / frontier stack | Publication institution, not a substrate | Not a hardware claim | V | Open corridor of that stack. Not MEI. Not a competitor product. [trilliumlabs.org](https://trilliumlabs.org/) |
+| Method (cited only) | Canonical cite | Cite for | Do not absorb |
+|---|---|---|---|
+| **Energy-based models / Hopfield / Dense Associative Memory** | Hopfield 1982; Krotov and Hopfield, arXiv:1606.01164 (2016); Ramsauer et al., arXiv:2008.02217 (2020); Energy Transformer, arXiv:2302.07253 (NeurIPS 2023); Energy-Based Transformers, arXiv:2507.02092 (2025); analog Dense Associative Memory, arXiv:2512.15002 (16 Dec 2025); energy-based dynamical models, arXiv:2604.05042 (2026) | Test-time energy descent. Attention recovered as an energy update. | Their energy is not campus joules and not the tag schedule. Amplifier time bounds are theirs. |
+| **Logical Intelligence** | Business Wire, 20 Jan 2026; Bodnia and Hanin, 21 Jan 2026, [logicalintelligence.com/blog/energy-based-models-for-reasoning](https://logicalintelligence.com/blog/energy-based-models-for-reasoning) | Constraint energy. Non-autoregressive trace. Lean-checkable commit via Aleph. | Not obtain routing. Not dual deployment. Not "no pretrain." Do not copy their benchmark figures. |
+| **V-JEPA / World Labs** | LeCun, v0.9.2, 27 Jun 2022; Assran et al., arXiv:2506.09985, 11 Jun 2025; Marble, 12 Nov 2025; Atlas, 1 Sep 2026 | Latent prediction and spatial world models | Large video pretrain stays on their path. Optional Model-last leaf only. |
+| **State-space corridor (Mamba, Mamba-2)** | arXiv:2312.00752 (2023); arXiv:2405.21060 (2024) | Linear-time selective state. Sequence efficiency versus quadratic attention. | Not an obtain zone. Not a grid cap. Not the class. |
+| **Neuromorphic / analog / photonic** | Hala Point, Intel, 17 Apr 2024; Chen et al., Nature Communications, 30 Sep 2025, doi:10.1038/s41467-025-63794-4; Ahmed et al., Nature, 9 Apr 2025, doi:10.1038/s41586-025-08854-x | Substrates on the dual hardware map (Appendix B) | Not the software class. Vendor watts are not `measured_j`. |
+| **Tsetlin machines / hyperdimensional computing** | Granmo, arXiv:1804.01508 (2018); Kanerva, 2009; Tunheim et al., arXiv:2501.19347, 31 Jan 2025 (8.6 nJ per MNIST frame, 65 nm) | Sparse logic and associative edge cousins | Not the enzyme. Not OpenADR. |
+| **Trillium Labs** | [trilliumlabs.org](https://trilliumlabs.org/); Lambert note and WIRED, both 2 Oct 2026 | Announced program: open post-training recipes on the frontier stack | No recipe, dataset, or release is in those sources. Not Klere. |
+
+Power-aware serving and grid flexibility stay in §11.4. They are actuators.
 
 ### 11.3 Positioning vs named peers
 
@@ -594,10 +606,10 @@ Many post-transformer efforts exist. This table places them by method so the cla
 |---|---|---|
 | Logical Intelligence | Constraint energy + formal commit | Joule envelope + obtain routing + dual scale |
 | World Labs / V-JEPA | Spatial / latent world models | Budget-native enzymes + campus grid service; latent optional |
-| DenseAM / analog EBM | Physics dynamics for inference | Software enzyme class **plus** envelope ops; cite as HW future |
+| Dense Associative Memory / analog energy-based models | Physics dynamics for inference | Cited substrate path. Enzymes and the envelope stay this class |
 | Dynamo / DSX / AEMA | Power and grid actuators | Actuators **inside** Mixture of Limits intelligence |
-| Tsetlin / HDC | Efficient non-transformer silicon | Cousins at edge; the class adds campus \(J(m|q)\) and the OpenADR envelope |
-| Trillium Labs | Open science of frontier model recipes and releases | Open corridor of the transformer stack. Not this class |
+| Tsetlin machines / hyperdimensional computing | Sparse non-transformer silicon | Edge cousins. The class adds campus \(J(m|q)\) and the OpenADR envelope |
+| Trillium Labs | Announced open post-training recipes (2 Oct 2026). No recipe in the launch sources | Open corridor of the frontier stack. Not this class |
 
 ```mermaid
 flowchart TB
@@ -763,7 +775,7 @@ Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`. Living f
 10. Logical Intelligence. Aleph PutnamBench Lean-certified materials. [logicalintelligence.com](https://logicalintelligence.com). Evidence: **V**.
 11. Assran, M., et al. (11 Jun 2025). *V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning*. arXiv:2506.09985. Zero-shot MPC planning peer; **requires** large video pretrain. **Historical relative to May 2026+ radar cut** but must-cite for zero-shot. Evidence: **M**.
 12. World Labs (1 Sep 2026). Atlas world model. https://www.worldlabs.ai/blog/atlas . Evidence: **V**.
-13. World Labs Marble / RTFM (Nov / Oct 2025). Spatial world-model corridor. **Historical** within World Labs arc. Evidence: **V**.
+13. World Labs (12 Nov 2025). Marble: A Multimodal World Model. https://www.worldlabs.ai/blog/marble-world-model . Generative spatial world model. Evidence: **V**.
 
 ### EBM / associative / logic ML (theory and silicon)
 
@@ -797,8 +809,27 @@ Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`. Living f
 32. PEARL; OmniRouter (arXiv:2502.20576); Energy-Aware LRM (arXiv:2601.00823) (2025–Jan 2026). Academic joule/cost-aware multi-LLM routers. Price which LLM answers, not Lookup→Formula→Solver→Model LAST. Evidence: **P**.
 33. Klere product home. https://klere.ai . Thin public access framing as of this writing; not a shipped feature catalog. Research owns MEI class; Klere owns embodiment.
 34. ML.ENERGY v3.0 (Jan 2026). Energy leaderboard. **Historical-ish** relative to Sep 2026 field curves. Evidence: **M**.
-35. Trillium Labs. Fostering the open science of frontier AI. https://trilliumlabs.org/ . Open model ecosystem: recipes and releases on the frontier stack. Public page names Nathan Lambert (executive director) and Tom Zick (president). Landing is thin; no technical stack is inferred here. Not Metabolic Intelligence. Not a Klere product. Evidence: **V**.
+35. Trillium Labs. https://trilliumlabs.org/ . Unveiled 2 Oct 2026. Nathan Lambert, executive director; Tom Zick, president. Launch sources say the lab is building open post-training recipes. They do not publish a recipe. Not Metabolic Intelligence. Not a Klere product. Evidence: **V**. See refs 51–52.
 36. Sutton, R. (2019). The Bitter Lesson. http://www.incompleteideas.net/IncIdeas/BitterLesson.html . Answered in this class by distillation into Lookup, Formula, and enzyme (§12.10), not by uncapped pretrain.
+
+### Post-transformer corridor (checked 2 Oct 2026)
+
+37. Hopfield, J. J. (1982). Neural networks and physical systems with emergent collective computational abilities. *PNAS* 79(8):2554–2558.
+38. Krotov, D., & Hopfield, J. J. (2016). Dense Associative Memory for Pattern Recognition. arXiv:1606.01164. https://arxiv.org/abs/1606.01164
+39. Ramsauer, H., et al. (2020). Hopfield Networks is All You Need. arXiv:2008.02217. https://arxiv.org/abs/2008.02217
+40. Hoover, B., Liang, Y., Pham, B., Panda, R., Strobelt, H., Chau, D. H., Zaki, M., & Krotov, D. (2023). Energy Transformer. NeurIPS. arXiv:2302.07253. https://arxiv.org/abs/2302.07253
+41. Gladstone, A., et al. (2025). Energy-Based Transformers are Scalable Learners and Thinkers. arXiv:2507.02092. https://arxiv.org/abs/2507.02092
+42. LeCun, Y. (27 Jun 2022). A Path Towards Autonomous Machine Intelligence. Version 0.9.2. https://openreview.net/pdf?id=BZ5a1r-kVsf
+43. Gu, A., & Dao, T. (2023). Mamba: Linear-Time Sequence Modeling with Selective State Spaces. arXiv:2312.00752. https://arxiv.org/abs/2312.00752
+44. Dao, T., & Gu, A. (2024). Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality (Mamba-2). arXiv:2405.21060. https://arxiv.org/abs/2405.21060
+45. Intel (17 Apr 2024). Hala Point: 1,152 Loihi 2 processors, 1.15 billion neurons, stated maximum 2,600 W. https://newsroom.intel.com/artificial-intelligence/intel-builds-worlds-largest-neuromorphic-system-to-enable-more-sustainable-ai . Vendor description. Not `measured_j`.
+46. Chen, A., et al. (30 Sep 2025). Demonstration of transformer-based ALBERT model on a 14nm analog AI inference chip. *Nature Communications*. https://doi.org/10.1038/s41467-025-63794-4 . Substrate demonstration. Not `measured_j`.
+47. Ahmed, S. R., et al. (9 Apr 2025). Universal photonic artificial intelligence acceleration. *Nature*. https://doi.org/10.1038/s41586-025-08854-x . Reports ResNet, BERT, and an Atari workload on a photonic processor. Substrate only. Not `measured_j`.
+48. Granmo, O.-C. (2018). The Tsetlin Machine — A Game Theoretic Bandit Driven Approach to Optimal Pattern Recognition with Propositional Logic. arXiv:1804.01508. https://arxiv.org/abs/1804.01508
+49. Kanerva, P. (2009). Hyperdimensional Computing: An Introduction to Computing in Distributed Representation with High-Dimensional Random Vectors. *Cognitive Computation* 1:139–159.
+50. Bodnia, E., & Hanin, B. (21 Jan 2026). Energy-Based Models for Reasoning, LLMs for the Interface. https://logicalintelligence.com/blog/energy-based-models-for-reasoning . Mechanism account of Kona. Their benchmark figures are not adopted here.
+51. Knight, W. (2 Oct 2026). These AI Experts Want to Do High-Stakes Research Out in the Open. *WIRED*. https://www.wired.com/story/trillium-labs-wants-to-do-high-risk-ai-research-in-the-open/ . Launch-day account. No recipe is published there.
+52. Lambert, N. (2 Oct 2026). Trillium Labs unveiling note. https://substack.com/@natolambert/note/c-351283371 . States that the lab is building open post-training recipes. The note does not contain a recipe.
 
 *No chicken-spoilage Anwar publish numbers. No invented citations. Numbers not tied to pack evidence M/C or a named external meter remain estimates. Soft-ref path: `board_synth_claimed=false`.*
 
