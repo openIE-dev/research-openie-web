@@ -44,13 +44,13 @@ The dominant construction for computer intelligence (CI) treats the neural net a
 
 Information theory names the modern accounting of that pattern. Shannon (1948) prices bits under uncertainty as settled law. Value of Information (VoI) prices whether another observation is worth its cost for a decision. Landauer (1961) prices irreversible bit erasure in joules at temperature \(T\): \(E_{\min} = k_B T \ln 2\) per bit erased in the ideal model. That Landauer quantity is a thermodynamic lower bound; this study cites it only as a **labeled estimate**, never as a wattmeter reading. Together they imply floors: past a point, more bits stop buying outcomes that matter for a stated benefit.
 
-**Thesis.** Pursuit of limits is the path toward AGI-grade reliability. Excess-token and MoE scaling diverge from true VoI for a given benefit. Mixture of Limits is the executable navigation law that binds those floors (VoI, grammar, Landauer/joules as estimate, certificate, settle-refuse) against industry Mixture-of-Experts. **Addendum:** Shannon, Landauer, Kolmogorov/Solomonoff/Chaitin, Howard (VoI), and formula-first science AI already state these floors as settled theory. The remaining bottleneck is **applied mathematics embodied in materials and physical hardware**.
+**Thesis.** Pursuit of limits is the path toward AGI-grade reliability. Excess-token and MoE scaling diverge from true VoI for a given benefit. Mixture of Limits is the executable navigation law that binds those floors (VoI, grammar, Landauer/joules as estimate, certificate, settle-refuse) against industry Mixture-of-Experts. **Addendum:** Shannon, Landauer, Kolmogorov/Solomonoff/Chaitin, Howard (VoI), and formula-first science AI already state these floors as settled theory. The remaining bottleneck is **applied mathematics embodied in materials and physical hardware**. **Frontier addendum (§8.4-§8.7):** deeper latents, energy-based hybrids, and world models can improve generators; they do not cancel VoI, grammar, energy, or certify floors. Mixture of Limits remains the navigation law, not a horse race among generators.
 
 This paper's contribution is the study prose for that law as published on research.openie.dev, grounded in the clean-room `mixture-of-limits` software reference (Apache-2.0 OR MIT). Companion studies already on this site supply the commit-record interface ([Notational Intelligence as Commit Law](/papers/ni/)) and the economic stop after free digital inference ([Satiation and Scarcity after Free AI](/papers/satiation/)). Mixture of Limits is the navigation law those companions sit under: NI owns irreversible commit shape; Satiation owns economic done; Mixture of Limits owns *which gear closes* and *when refuse is success*.
 
 Three measurement statements constrain every later number. First, joules from catalog surrogates and OpCounter-style analytics are **estimates**, not board power. Second, Landauer annotations are **estimates**, never equal to RAPL/NVML/`measured_j`. Third, this study sets `board_synth_claimed=false` and does not invent `measured_j`.
 
-Scope. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine \(E(x) \ge \theta(D)\cdot\mu(S,V)\). Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 is a Leapfrog-owned placeholder for the prove↔claim map. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, and states that the gap is physical/materials + applied-math embodiment; not lack of awareness. Section 9 is a Leapfrog-owned placeholder for Mixture of Limits≠MoE and model↔model SOTA. Section 10 opens toward AGI via limits.
+Scope. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine \(E(x) \ge \theta(D)\cdot\mu(S,V)\). Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (EBM/LLM/latent hybrid), and World Labs (spatial world models), with the addendum that even projected-superior methods still hit floors. Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits.
 
 ---
 
@@ -203,7 +203,7 @@ Default close path for all proven claims: **Unmetered** (+ **Estimated** where �
 | P0 | `cargo test --workspace` green | `claim.mol.ci_workspace` | Proven (CI / operator; not printed by `mol prove`) | - |
 | P1 | `cargo run -p mol-cli -- prove` exits 0 | `claim.mol.prove_harness` | Proven (prints `VERIFIED` per row below) | Unmetered |
 
-### 6.2 Proven claims (P2–P24)
+### 6.2 Proven claims (P2-P24)
 
 | Prove # | Criterion (PLAN) | Paper claim id | Claim (one sentence) | Soft-ref / scope note | Measurement |
 |---|---|---|---|---|---|
@@ -378,11 +378,72 @@ Additional hunt rows (AtomAgents/SciAgents, KeplerAgent/NewtonBench, AI-Descarte
 
 Tier A systems recover or verify formulas. Classical IT already priced bits, VoI, and erasure. Mixture of Limits names the **navigation law** that decides *when* Lookup/Formula/Solver suffice, *when* to refuse, and *how* receipts stay honest about estimated vs measured joules, then implements a clean-room soft-ref close loop. Soft-ref constructive existence is software constructive existence. It is not a materials breakthrough, and it does not invent new physics on a new corpus.
 
+
+### 8.4 Latent space: depth buys compression, not freedom from floors
+
+A **latent space** is a compressed coordinate system for states that matter to a task: continuous vectors (dense embeddings), discrete codes (VQ / codebook indices), or hybrids. Depth in a latent buys what Shannon and Kolmogorov already price: a shorter description of structure that would otherwise be enumerated as raw observations, pixels, tokens, or traces. Autoencoders, VAEs, diffusion latents, and continuous reasoning traces are modern instances of that move. The representation can make Lookup hits cheaper, Formula edits local, and Solver landscapes smoother.
+
+Representation is not law. A deeper latent does not erase the floors Mixture of Limits names:
+
+1. **Value of Information (VoI).** Extra latent dimensions, longer continuous traces, or denser codebooks are more bits under a budget. When marginal latent bits do not change the decision benefit \(B\), VoI says stop. Excess latent enumeration is the same failure mode as excess token enumeration, only in a different alphabet.
+2. **Grammar coverage.** If Lookup, Formula, or Solver already covers the coordinate, opening a latent generator is waste. Covered grammar closes before Model. A latent that rediscovers a closed form is still Model residual when a Formula leaf was available.
+3. **Energy / Landauer.** Encoding, decoding, denoising, and gradient edits on latents erase and rewrite information. Landauer prices irreversible erasure as a thermodynamic lower bound; this study cites it only as a **labeled estimate**, never as board package joules. Catalog or OpCounter estimates for latent paths remain **Estimated** / **Unmetered** on the soft-ref path (`measured_j` never invented; `board_synth_claimed=false`).
+4. **Certify-before-commit.** A low-energy latent state is a proposal until a certificate, settle, or typed refuse closes the act. Soft-ref close still binds propose → certify → commit|refuse → receipt. Latent score ≠ irreversible commit.
+
+**Teach-first takeaway.** Latent depth is a compression technology. Mixture of Limits navigates whether that compression is cheapest-sufficient for the task, or whether refuse is the lawful success. See also §9: the question is not which latent generator wins a horse race; it is whether a generator should run at all.
+
+### 8.5 Logical Intelligence: energy-based reasoning with LLMs and latents
+
+**Logical Intelligence** (logicalintelligence.com) is a company building energy-based reasoning systems for constraint-heavy and mission-critical settings. Public materials (company blog and product pages, January 2026) teach a hybrid stack rather than a single chatbot:
+
+- **Kona** is their core **energy-based model (EBM)** for reasoning (sometimes called an energy-based reasoning model, EBRM). An EBM assigns a scalar **energy** to a candidate state: low energy means more consistent with constraints and objectives; high energy means something is broken. Per their technical blog (Bodnia and Hanin, 21 Jan 2026), Kona is non-autoregressive at the *trace* level, globally scored over partial and complete traces, and reasons in a **continuous latent space** with dense vector tokens so local gradient-style edits can reduce constraint violations without regenerating an entire discrete prefix.
+- **Aleph** is their orchestration / agentic layer that coordinates Kona, LLMs, and other tools. Public positioning: LLMs handle natural-language interface and candidate generation; the EBM layer evaluates and repairs under constraints. Aleph is also described as delivering verified / formal-reasoning workflows today (benchmark claims such as PutnamBench appear on their site; treat score numbers as **author-reported** unless independently reproduced here).
+- Product framing on the Kona page: Kona is not marketed as a chatbot. Language models express and explore; Kona is positioned to evaluate what is valid or permissible before irreversible action in high-stakes domains (company examples include energy, manufacturing, semiconductor verification, robotics). Kona 1.0 was announced for partner pilots (company and press materials, Jan 2026). Leadership publicly listed includes founder and CEO Eve Bodnia and Yann LeCun as founding chair of a technical research board (company site / press).
+
+**Classical EBM backdrop (settled ML architecture).** Energy-based models treat inference as finding low-energy configurations under a learned energy function. That framing is older than any one product; LeCun and others have long argued that reasoning can be cast as optimization over an energy landscape. Logical Intelligence's public thesis is that discrete, locally scored, autoregressive LLM traces scale poorly for long-horizon constraint satisfaction, and that continuous, globally scored EBM traces address that gap when paired with LLMs for interface.
+
+**Mixture of Limits reading (cascade map, not a product endorsement).**
+
+| Logical Intelligence public piece | Cascade rhyme | Floor that still binds |
+|---|---|---|
+| Continuous latent trace + energy score | Soft rhyme with **Solver / settle**: optimize / repair under constraints | `settle_refuse`, VoI, energy estimate; low energy ≠ board joules |
+| LLM for language / candidates | **Model** residual for expression and proposal | Model LAST; `ModelGenerated` ↛ `Deterministic` |
+| Aleph orchestration among tools | Cheapest-sufficient routing among gears | Grammar coverage first; refuse when escalation is VoI-negative or unsafe |
+| Constraint / proof-oriented close | Certify-before-commit spirit | Certificate / typed refuse before irreversible act |
+
+This study does **not** claim Logical Intelligence implements Mixture of Limits, OpenIE soft-ref prove, Periodic Stack navigation, or OpenIE receipts. It does **not** import their latency or Sudoku benchmark numbers as soft-ref `measured_j`, and it does not flip `board_synth_claimed`. Unverified internal training details, unpublished energy-function forms, and any claim of AGI completion remain **TBD** / out of scope. What is verified here is the public architecture story and the mapping: energy-based settle can rhyme with Solver; LLM residual stays Model LAST; latents do not erase VoI or Landauer floors.
+
+### 8.6 World Labs: spatial intelligence and world models
+
+**World Labs** (worldlabs.ai) is a frontier research and product company focused on **spatial intelligence**: models that perceive, generate, reason about, and interact with virtual and physical worlds across space and time. Co-founders publicly include Fei-Fei Li, Justin Johnson, Ben Mildenhall, and Christoph Lassner (company About page).
+
+**Teach the products and architecture first (public sources).**
+
+- **Marble** is their first product: generative 3D world models that create spatially coherent, persistent 3D worlds from images, video, text, and 3D layouts (company About).
+- **Atlas** (company blog, 1 Sep 2026) is described as an omni **world model** pretrained to operate on text, images, video, and 3D. Architecture: a **multimodal autoregressive diffusion transformer**. Inputs are grounded in 3D to form a shared **spatial context**; the model generates what comes next while aiming for 3D consistency with what it has seen, and imagining what lies beyond. Public capability claims include camera-controlled video generation, sparse-view spatial reconstruction (including explicit 3D such as point clouds / Gaussian splats), space-time simulation for Real-to-Sim robotics workflows, and image / 360 generation. Atlas is positioned to power future Marble versions and is in early access with select partners. Author-reported benchmarks on camera-conditioned generation and 3D reconstruction appear on the Atlas post; this study cites the architecture and task list, not those numbers as OpenIE measurements.
+
+Fei-Fei's public spatial-intelligence framing (including the "from words to worlds" thesis) states that world models must handle semantic, physical, geometric, and dynamic complexity beyond today's LLM text corridor. That is a generator-class ambition: better world generators and simulators.
+
+**Mixture of Limits reading: even projected-superior world models hit floors.**
+
+1. **Grammar coverage.** Faithful reconstruction from enough views is not the same as a closed predictive law for a task. When a Formula or Lookup already answers the coordinate, generating a world is excess. Imagination that fills unseen regions is generative residual, not Deterministic commit.
+2. **Certify-before-commit.** A spatially consistent video or splat is a proposal about geometry and appearance. Irreversible acts (robot motion, financial or safety-critical side effects) still require certify → commit|refuse → receipt. Soft-ref ReplayClass honesty still applies: generative world output does not launder into Deterministic without a certificate path.
+3. **VoI and energy.** Longer videos, denser 3D contexts, more denoising steps, and Real-to-Sim rollouts spend bits and joules. VoI stops when extra world detail does not change the decision benefit. Landauer still bounds irreversible erasure as a labeled estimate only; Atlas / Marble training or inference joules are **not** reported here as soft-ref `measured_j`. `board_synth_claimed=false`.
+4. **Materials embodiment.** High-fidelity world models intensify the applied-math × materials bottleneck: sensors, fabrics, and meters that make cheapest-sufficient close real at the edge, without laundering estimates as board watts.
+
+World Labs systems optimize **which world generator / simulator runs** and how well it tracks space. Mixture of Limits asks whether that generator should run for the stated benefit, and which named floor closes first. Cross-link: §9 Mixture of Limits is not MoE table (outside-generation floors vs inside-generator capacity).
+
+### 8.7 Thesis addendum: even methods projected to be superior still have limits
+
+Latent compression, EBM settle hybrids (Logical Intelligence), and spatial world models (World Labs) can each be projected as superior to naive next-token MoE scaling for their stated jobs. Superiority inside a generative or hybrid corridor does not cancel Shannon pricing of bits, Howard pricing of VoI, Landauer pricing of irreversible erasure, or the require-to-certify before irreversible commit. Mixture of Limits is the **navigation law** that names those floors and binds Lookup → Formula → Solver/settle → Model LAST with refuse as lawful success. It is not a horse race among generators, latent depths, or world-model brands.
+
+Soft-ref `mol prove` remains constructive existence **in software** only. No board package energy is claimed for Logical Intelligence, World Labs, or OpenIE soft-ref paths.
+
 ## 9. Mixture of Limits is not MoE, and the model-to-model SOTA table
 
 ### 9.0 Spine (history + mathematics, not a horse race)
 
-Mixture of Limits is proven as an **information-theoretic** approach rooted in **physics**: formula/law discovery in the Newton-Kepler lineage, not excess generation. Academia already has Shannon → Landauer → complexity/VoI → symbolic and energy floors; Mixture of Limits **embodies** those floors in a commit|refuse cascade. The remaining bottleneck is applied math × materials (hardware), not an awareness gap. The table below situates field systems so readers see what they optimize (**which neural generator runs**) without turning Mixture of Limits into another SOTA horse race. Mixture of Limits asks whether a generator should run at all, converging to VoI/floors the way physics converged to predictive laws.
+Mixture of Limits is proven as an **information-theoretic** approach rooted in **physics**: formula/law discovery in the Newton-Kepler lineage, not excess generation. Academia already has Shannon → Landauer → complexity/VoI → symbolic and energy floors; Mixture of Limits **embodies** those floors in a commit|refuse cascade. The remaining bottleneck is applied math × materials (hardware), not an awareness gap. The table below situates field systems so readers see what they optimize (**which neural generator runs**) without turning Mixture of Limits into another SOTA horse race. For latent depth, Logical Intelligence EBM hybrids, and World Labs world models, see §8.4-§8.7: even projected-superior methods still hit the same floors. Mixture of Limits asks whether a generator should run at all, converging to VoI/floors the way physics converged to predictive laws.
 
 ### 9.1 Law contrast (not a rebrand)
 
@@ -411,7 +472,7 @@ Measurement labels: **Metered** | **Estimated** | **Unmetered**; only when that 
 | **GreenServ** | *GreenServ: Energy-Efficient Context-Aware Dynamic Routing for Multi-Model LLM Inference* | arXiv:[2601.17551](https://arxiv.org/abs/2601.17551) · ICPE 2026 | Contextual bandit multi-LLM router | Query features → LLM; accuracy vs **measured GPU energy** (Zeus) | **Metered** (authors’ GPU Wh via Zeus) on their LLM pool (field result, not Mixture of Limits board synth) | Model pool routing; Mixture of Limits cascade is non-neural first |
 | **VoltanaLLM** | *VoltanaLLM: Energy-Efficient and SLO-Aware Disaggregated LLM Serving via Adaptive Frequency Control and State-Space Routing* | arXiv:[2509.04827](https://arxiv.org/abs/2509.04827) | P/D-disagg serving + frequency + state-space route | Prefill/decode instances + GPU frequency under TTFT/ITL SLOs | **Metered** (authors; pyNVML on A100/GH200) up to ~36.3% E2E GPU energy vs max-freq baseline (field serving result) | Routes **instances of the same generative stack**; Mixture of Limits may never open decode |
 | **HCSpec** | *HCSpec: Two-Tier Horizontal Cascade Speculative Decoding for High-Efficiency Large Language Model Inference* | DOI:[10.18653/v1/2026.acl-long.353](https://doi.org/10.18653/v1/2026.acl-long.353) · ACL 2026 | Speculative decoding (draft↔target) | Position-specialized draft cascade → target verify | Latency speedup (vs EAGLE-3 / AR); energy not Mixture of Limits claim | Speeds generation; does not refuse generation on floors |
-| **CAS-Spec** | *CAS-Spec: Cascade Adaptive Self-Speculative Decoding for On-the-Fly Lossless Inference Acceleration of LLMs* | arXiv:[2510.26843](https://arxiv.org/abs/2510.26843) · NeurIPS 2025 | Self-speculative cascade (DSIA drafts) | Draft stages from target (sparsity/quant) + DyTC | Latency speedup ~1.1×–2.3× AR (authors); lossless tokens | Model-internal draft hierarchy ≠ Mixture of Limits floors |
+| **CAS-Spec** | *CAS-Spec: Cascade Adaptive Self-Speculative Decoding for On-the-Fly Lossless Inference Acceleration of LLMs* | arXiv:[2510.26843](https://arxiv.org/abs/2510.26843) · NeurIPS 2025 | Self-speculative cascade (DSIA drafts) | Draft stages from target (sparsity/quant) + DyTC | Latency speedup ~1.1×-2.3× AR (authors); lossless tokens | Model-internal draft hierarchy ≠ Mixture of Limits floors |
 | **GCD** | *Grammar-Constrained Decoding for Structured NLP Tasks without Finetuning* | arXiv:[2305.13971](https://arxiv.org/abs/2305.13971) · DOI:[10.18653/v1/2023.emnlp-main.674](https://doi.org/10.18653/v1/2023.emnlp-main.674) · EMNLP 2023 | Grammar-constrained LLM decoding | Mask logits to CFG | Unmetered / quality metrics | Constrains **tokens**; Mixture of Limits constrains **commit** |
 | **CRANE** | *CRANE: Reasoning with constrained LLM generation* | arXiv:[2502.09061](https://arxiv.org/abs/2502.09061) · ICML 2025 (PMLR v267) | Reasoning-augmented constrained decoding | Alternate unconstrained reason ↔ constrained answer | Accuracy on GSM-symbolic / FOLIO; not Mixture of Limits joules | Still LLM generation under grammar; Mixture of Limits can close at Formula without an LLM |
 
@@ -456,6 +517,7 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 - When (if ever) a Metered `measured_j` path is published beside soft-ref estimates without laundering estimate as board watts.
 - How VoI thresholds should be set per domain without smuggling engagement metrics as completeness (see Satiation).
 - Whether mechanism libraries (MWM cousins; AI-Newton concept base) should be imported as typed Lookup entries without breaking clean-room prove.
+- How to bind third-party EBM settle scores (e.g. Logical Intelligence-style energies) and world-model proposals (e.g. World Labs Atlas/Marble) into certify-before-commit without laundering generative output as Deterministic.
 
 **Companions on this site**
 
@@ -463,7 +525,7 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 - [Satiation and Scarcity after Free AI](/papers/satiation/); economic done after free digital inference.
 - Living figures: [/living/mol/](/living/mol/) (companions; analytical OpCounter ≠ board power; no fake meters).
 
-**Closing sentence.** Pursuit of limits; compression into predictive law, priced information, thermodynamic honesty; is the through-line from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits is that through-line stated as a navigation law for computer intelligence; embodying it in materials remains the hard problem.
+**Closing sentence.** Pursuit of limits (compression into predictive law, priced information, thermodynamic honesty) is the through-line from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits is that through-line stated as a navigation law for computer intelligence; embodying it in materials remains the hard problem. Latents, EBM hybrids, and world models (§8.4-§8.7) refine generators; they do not retire the floors.
 
 ## References
 
@@ -492,13 +554,23 @@ Primary Mixture of Limits workspace sources (not peer-reviewed publications): `m
 16. DeepMind AlphaProof / AlphaGeometry formal-math RL. *Nature* (2025). DOI: [10.1038/s41586-025-09833-y](https://doi.org/10.1038/s41586-025-09833-y).
 17. AutoSINDy (hunt note). arXiv:[2605.09696](https://arxiv.org/abs/2605.09696).
 
+### Latent / EBM hybrid / spatial world models (§8.4-§8.7)
+
+18. Bodnia, E., & Hanin, B. (21 Jan 2026). Energy-Based Models for Reasoning, LLMs for the Interface: Scaling Reasoning with Agentic AI. Logical Intelligence blog. https://logicalintelligence.com/blog/energy-based-models-for-reasoning
+19. Logical Intelligence. Kona 1.0 product page. https://logicalintelligence.com/kona-ebms-energy-based-models (accessed 2026-10-01).
+20. Logical Intelligence. Company site (Aleph / leadership / latent reasoning positioning). https://logicalintelligence.com/ (accessed 2026-10-01).
+21. Logical Intelligence. What Sudoku Reveals About AI Reasoning Architectures (Kona demo writeup). https://logicalintelligence.com/blog/energy-based-model-sudoku-demo (accessed 2026-10-01). Author-reported Sudoku latency/accuracy figures are not imported as soft-ref `measured_j`.
+22. World Labs. About. https://www.worldlabs.ai/about (accessed 2026-10-01).
+23. World Labs Team (1 Sep 2026). Atlas: A World Model for Spatial Intelligence. World Labs blog. https://www.worldlabs.ai/blog/atlas
+24. Li, F.-F. From Words to Worlds: Spatial Intelligence is AI's Next Frontier (public essay / a16z feature excerpt). https://www.a16z.news/p/from-words-to-worlds-spatial-intelligence (accessed 2026-10-01).
+
 ### OpenIE companions
 
-18. Charlot, D. Notational Intelligence as Commit Law. research.openie.dev/papers/ni/.
-19. Charlot, D. Satiation and Scarcity after Free AI. research.openie.dev/papers/satiation/.
-20. OpenIE Periodic Stack; compute.openie.dev (258 primitives / 33 families).
+25. Charlot, D. Notational Intelligence as Commit Law. research.openie.dev/papers/ni/.
+26. Charlot, D. Satiation and Scarcity after Free AI. research.openie.dev/papers/satiation/.
+27. OpenIE Periodic Stack; compute.openie.dev (258 primitives / 33 families).
 
-Kepler's laws / Newton's *Principia* / Brahe's observational program are treated as historical common knowledge in §8.1; imprint DOIs for critical editions **TBD** if a journal version requires them. Raiffa decision-analysis imprint DOI **TBD**.
+Kepler's laws / Newton's *Principia* / Brahe's observational program are treated as historical common knowledge in §8.1; imprint DOIs for critical editions **TBD** if a journal version requires them. Raiffa decision-analysis imprint DOI **TBD**. Press-wire details for Logical Intelligence beyond the company blog (exact pilot lists, internal AGI claims) treated as company-reported; not independently audited here.
 
 ## Appendix A. Honesty checklist
 
@@ -511,6 +583,7 @@ Kepler's laws / Newton's *Principia* / Brahe's observational program are treated
 - §§6 and 9 Leapfrog placeholders intentionally incomplete
 - DOIs only when verified via search/source inventory; otherwise marked TBD
 - Bottleneck claim is materials/applied-math embodiment. Settled IT/physics already name the floors
+- §8.4-§8.7 map latents / Logical Intelligence / World Labs onto floors; not a generator horse race; no invented product joules
 
 ## Appendix B. Reproducibility pointers
 
