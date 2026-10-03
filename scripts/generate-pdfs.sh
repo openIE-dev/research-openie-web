@@ -123,4 +123,5 @@ gen_one ni
 gen_one satiation
 gen_one mol
 gen_one mei
+gen_one spellcheck
 echo 'PDF generation complete'

@@ -76,8 +76,9 @@ This study is the **Commit** law in the research catalog triad.
 | **Commit** | This paper | propose → certify → commit\|refuse → receipt. Notational Intelligence owns irreversible commit. |
 | **Economic Reality of Satiation** | [Satiation and Scarcity after Free AI](https://research.openie.dev/papers/satiation/) | Completeness predicate / budget stop on the same refuse taxonomy. |
 | **Energy budget** | [Metabolic Intelligence](https://research.openie.dev/papers/mei/) | Budget envelope and actuators that make floors bind at tag and campus scale. |
+| **Automation path** | [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) | Existence proof: computer intelligence that became ordinary because it was cheap, local, and paired to hardware people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
 
-Navigation chooses the gear. This paper records the irreversible branch. Satiation supplies the economic stop. Estimates remain estimates; package `measured_j` only when Metered.
+Navigation chooses the gear. This paper records the irreversible branch. Satiation supplies the economic stop. Estimates remain estimates; package `measured_j` only when Metered. [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) is the existence proof of the automation path these laws are for: a suggestion is a proposal until the writer commits it. Energy to run is the only true metric of computer intelligence: token price, parameter count, moat rent, and access fees collapse to zero by commoditization, and what remains is joules. Estimates are not `measured_j`.
 
 ## 2. Related work
 
@@ -537,3 +538,5 @@ The research catalog triad is Navigation / Commit / Economic Reality of Satiatio
 "Satiation and Scarcity after Free AI" uses the same commit record for a different predicate: stop when a stated work or care loop is complete. The shared sentence is compositional. Refuse if the chore is already complete, or if the physical predicate fails. This paper supplies the physical predicate and the measurement classes. It does not estimate a demand curve.
 
 "Mixture of Limits" is the navigation law: Lookup → Formula → Solver → Model LAST, with named floors that say when refuse is success. It does not replace the commit record defined here.
+
+"Spell Check is Global" records the path. A spelling suggestion is a proposal. Acceptance is the commit. The study does not replace the commit record.

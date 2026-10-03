@@ -41,6 +41,7 @@ Three studies on this catalog form one stack: **Navigation**, **Commit**, and **
 | **Commit** | [Notational Intelligence as Commit Law](https://research.openie.dev/papers/ni/) | Irreversible close shape: propose → certify → commit\|refuse → receipt. Notational Intelligence owns the commit record. Analytical joules here are estimates; package `measured_j` only when Metered. |
 | **Economic Reality of Satiation** | [Satiation and Scarcity after Free AI](https://research.openie.dev/papers/satiation/) | Stop when VoI is zero on a stated completeness predicate, or when budget / policy refuse fires. Free at the margin for digital inference is not free joules and not free actuation. |
 | **Energy budget / metabolic embodiment** | [Metabolic Intelligence](https://research.openie.dev/papers/mei/) | Budget envelope and actuators: digital enzymes, \(J(m|q)\) obtain-router, OpenADR/MQTT campus service. Soft-ref path: `board_synth_claimed=false`. |
+| **Automation path** | [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) | Existence proof: computer intelligence that became ordinary because it was cheap, local, and paired to hardware people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
 
 ```
 ┌──────────────────────────────────────────────────────────┐
@@ -69,7 +70,7 @@ flowchart TB
   NAV --> COM --> ECO
 ```
 
-Mixture of Limits owns *which gear closes* and *when refuse is success*. Notational Intelligence owns the irreversible commit shape. Satiation owns Economic Reality of Satiation. Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`.
+Mixture of Limits owns *which gear closes* and *when refuse is success*. Notational Intelligence owns the irreversible commit shape. Satiation owns Economic Reality of Satiation. [Spell Check is Global](/papers/spellcheck/) is the existence proof of the path: the nonword gear is Lookup, then a short edit, on hardware that is available, accessible, and capable. Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`. Energy to run is the only true metric of computer intelligence: token price, parameter count, moat rent, and access fees collapse to zero by commoditization, and what remains is joules. Estimates are not `measured_j`.
 
 ### OpenIE map (no prior literacy assumed)
 
@@ -77,7 +78,7 @@ This study lives inside the OpenIE family of sites. Readers do not need those si
 
 | Surface | URL | What it is | Relation to Mixture of Limits |
 |---|---|---|---|
-| **Research** (this hub) | [research.openie.dev](https://research.openie.dev) | Readable studies, PDFs, and living figures. This paper is `/papers/mol/`; companions are Notational Intelligence (`/papers/ni/`), Satiation (`/papers/satiation/`), and Metabolic Intelligence (`/papers/mei/`). | Publishes the navigation-law study prose and soft-ref measurement bounds. |
+| **Research** (this hub) | [research.openie.dev](https://research.openie.dev) | Readable studies, PDFs, and living figures. This paper is `/papers/mol/`; companions are Notational Intelligence (`/papers/ni/`), Satiation (`/papers/satiation/`), Metabolic Intelligence (`/papers/mei/`), and Spell Check is Global (`/papers/spellcheck/`). | Publishes the navigation-law study prose and soft-ref measurement bounds. |
 | **Stack** | [stack.openie.dev](https://stack.openie.dev) | Teaching map of the family: information theory, game theory, and mechanism design as one substrate; directory of the eight periodic stacks. | Orientation layer. Mixture of Limits is not "another stack card"; it is the **navigation law** that chooses cheapest-sufficient close across stack coordinates. |
 | **Compute** | [compute.openie.dev](https://compute.openie.dev) | Periodic Stack of Computation: **258 primitives / 33 families**, thermodynamic floor every sibling inherits. | The primitive table Mixture of Limits **navigates**. Soft-ref proves the full live catalog (**258 Present / 258 live** Lookup/Formula/Solver/Navigate gears) plus honest HW Gap cells; HW Gaps soft-ref sims ×8 (`physical_settle`…`photonic_mzi`) + Ferric/Stage C inventories are in proof with Gap cells retained. μ calib + silicon meters remain outside soft-ref proof. Empty HW cells → `primitive_gap`. estimates≠measured_j; `stage_c_measured=false` until meters. |
 | **Knowledge** | [knowledge.openie.dev](https://knowledge.openie.dev) | Working definition of a claim as seven axes ⟨valid time, transaction time, reference time, granularity, scope, certainty, provenance⟩. | Typed claims and cite/compose leaves (Z2 cite / Z1 compose in soft-ref) bind to this object shape. Mixture of Limits does not redefine knowledge; it refuses escalation when grammar and VoI say the claim coordinate is already covered. |

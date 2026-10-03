@@ -276,7 +276,7 @@ Companion law stays companion law, named in full: Mixture of Limits navigates, N
 
 ## 3. Companion laws and OpenIE map
 
-Four studies on this catalog compose. They do not collapse into one paper.
+Four studies on this catalog compose. They do not collapse into one paper. A fifth study, [Spell Check is Global](/papers/spellcheck/), is the existence proof of the automation path: computer intelligence that became ordinary because it was cheap, local, and paired to hardware people already have. The envelope obtains that answer. It does not discount it. Klere is the product home of this class, not a prison. Energy to run is the only true metric of computer intelligence: token price, parameter count, moat rent, and access fees collapse to zero by commoditization, and what remains is joules. Estimates are not `measured_j`.
 
 | Role | Study | Owns |
 |---|---|---|
@@ -284,6 +284,7 @@ Four studies on this catalog compose. They do not collapse into one paper.
 | **Commit** | [Notational Intelligence as Commit Law](/papers/ni/) | propose → certify → commit\|refuse → receipt. |
 | **Economic Reality of Satiation** | [Satiation and Scarcity after Free AI](/papers/satiation/) | Stop when VoI is zero on completeness \(C(z)\), or when budget / policy refuse fires. |
 | **Energy budget / metabolic embodiment** | This paper (Metabolic Intelligence) | Budget envelope and actuators: tag sleep/heater; campus OpenADR/MQTT levers; \(J(m\|q)\) obtain-router. |
+| **Automation path** | [Spell Check is Global](/papers/spellcheck/) | Existence proof: computer intelligence that became ordinary because it was cheap, local, and paired to hardware people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
 
 ```mermaid
 flowchart TB
@@ -317,7 +318,7 @@ Satiation owns Economic Reality of Satiation: stop when completeness \(C(z)\) ho
 
 | Surface | URL | Relation |
 |---|---|---|
-| **Research** | [research.openie.dev](https://research.openie.dev) | This study is `/papers/mei/`. Companions: Mixture of Limits, Notational Intelligence, Satiation. |
+| **Research** | [research.openie.dev](https://research.openie.dev) | This study is `/papers/mei/`. Companions: Mixture of Limits, Notational Intelligence, Satiation, Spell Check is Global. |
 | **Stack** | [stack.openie.dev](https://stack.openie.dev) | Family map; MEI is embodiment, not another stack card. |
 | **Compute** | [compute.openie.dev](https://compute.openie.dev) | Primitive table the cascade navigates; metabolic actuators spend primitives under μ on hardware H. |
 | **Synthesis** | [synthesis.openie.dev](https://synthesis.openie.dev) | Cost surface \(E(x)=\sum \theta(p)\cdot\mu(p,H)\); this study extends obtain cost as \(J(m\|q)\). |

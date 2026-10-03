@@ -70,8 +70,9 @@ This study is the **Economic Reality of Satiation** law in the research catalog 
 | **Commit** | [Notational Intelligence as Commit Law](https://research.openie.dev/papers/ni/) | propose → certify → commit\|refuse → receipt; physical permit on the gate. |
 | **Economic Reality of Satiation** | This paper | Completeness predicate `C(z)`; stop when VoI is zero on that predicate, or when budget / policy refuse fires. |
 | **Energy budget** | [Metabolic Intelligence](https://research.openie.dev/papers/mei/) | Budget envelope / actuators at tag and campus. |
+| **Automation path** | [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) | Existence proof: computer intelligence that became ordinary because it was cheap, local, and paired to hardware people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
 
-Mixture of Limits navigates. Notational Intelligence owns irreversible commit. This paper owns Economic Reality of Satiation after free-at-the-margin digital inference. [Metabolic Intelligence](/papers/mei/) owns the energy-budget envelope and actuators. Free at the margin is not free joules. Estimates ≠ board-measured `measured_j`.
+Mixture of Limits navigates. Notational Intelligence owns irreversible commit. This paper owns Economic Reality of Satiation after free-at-the-margin digital inference. [Metabolic Intelligence](/papers/mei/) owns the energy-budget envelope and actuators. [Spell Check is Global](/papers/spellcheck/) is the existence proof of the path: once a token is kept, further spelling candidates have zero value of information on that predicate. Free at the margin is not free joules. Estimates ≠ board-measured `measured_j`. Energy to run is the only true metric of computer intelligence: token price, parameter count, moat rent, and access fees collapse to zero by commoditization, and what remains is joules. Estimates are not `measured_j`.
 
 ## 2. Related work
 
