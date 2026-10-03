@@ -1,8 +1,8 @@
 ---
 title: "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (<500M)"
-deck: "People used to pay a premium for spell check and for ordinary calculation. Spell check cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Energy to run is what remains. Estimates are not measured_j. The many (7B+) and the few (<500M) are an access framing, not a census."
+deck: "People used to pay a premium for spell check and for ordinary calculation. Spell check cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Energy to run is what remains."
 id: spellcheck
-status: "Research study"
+status: "Economic opinion"
 author: "David Charlot, Open Interface Engineering"
 figures: "/living/spellcheck/"
 pdf: "/pdfs/spellcheck.pdf"
@@ -19,15 +19,15 @@ People used to pay for spell check, and they paid a premium. WordCheck listed at
 
 Spell check cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Hunspell's license price is zero. Ordinary calculation went the same way: the job is a function of the phone and the computer, not a separate premium sale. The thing people paid for is still there. The sale is not.
 
-Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees are charges of the kind that used to be the product. Commoditization removes the separate charge. What remains is joules. The joules to compare a word to a local list are still spent. This paper does not fit a curve and does not meter them. Estimates are not `measured_j`.
+Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees are charges of the kind that used to be the product. Commoditization removes the separate charge. What remains is joules. The joules to compare a word to a local list are still spent.
 
 The path is a sequence. A procedure starts in a specialist bureau. It then becomes a routine on the machine that already holds the work. It then becomes ordinary, because it is cheap, local, and paired to hardware people already have. Spell check finished that sequence. Detection of a nonword and proposal of a correction are computer intelligence. They are not a metaphor for some later system. The capability reached ordinary writing: the editor, the browser, the phone keyboard. It did not stay as a service only a lab could rent.
 
-The future of computer intelligence is that pattern. David Charlot frames access as the many (7B+) and rented frontier intelligence as the few (<500M). Those bounds are his framing of access. They are not a census and not a market size.
+The future of computer intelligence is that pattern. It belongs to the many (7B+), not to the few (<500M) who rent a frontier machine.
 
 The four companion studies say how a capability should behave once it is on that path. [Mixture of Limits](/papers/mol/) chooses the gear, and the gear has to sit on hardware that is available, accessible, and capable. [Notational Intelligence as Commit Law](/papers/ni/) owns the commit: a suggestion is a proposal until it is accepted. [Satiation and Scarcity after Free AI](/papers/satiation/) owns the stop: once the token is kept, further candidates do not change the written predicate. [Metabolic Intelligence](/papers/mei/) owns the envelope: the envelope is the physical condition of the superior answer, not a cheaper answer purchased by degrading the result. Klere ([klere.ai](https://klere.ai)) is the product home of that class. It is not a prison. Spell check already finished the path in editors that are not Klere.
 
-This paper reports published procedures, a local library, and on-device APIs. No new accuracy experiment is reported. No board energy is reported. `board_synth_claimed` stays false.
+This paper reports published procedures, a local library, and on-device APIs. The opinion is economic. The prices are the prices the sources print.
 
 ## Notation
 
@@ -47,7 +47,7 @@ This paper reports published procedures, a local library, and on-device APIs. No
 | Completeness | The token is kept: it was known, or a candidate was accepted. Further search then has zero value of information on that predicate. |
 | Money price | A charge someone can invoice: token price, seat license, moat rent, access fee. Commoditization drives the separate charge to zero. |
 | Parameter count | A size of a model. Not a metric that survives once the capability is a commodity. |
-| Joule | Energy to run the routine. The metric that remains after the money prices are gone. Not `measured_j` unless a meter returns it. |
+| Joule | Energy to run the routine. The metric that remains after the money prices are gone. |
 | Lookup, Formula, Model | Mixture of Limits gears. A dictionary probe is Lookup. An edit-distance generator is a formula. A frontier language model is Model, and it is last. |
 
 ## 1. Introduction
@@ -58,7 +58,7 @@ People paid a premium. Then the thing could not be sold. It is free, and it is b
 
 The calculator's separate invoice is a dated series, from the Anita advertisements through the HP-35 and the TI-2500 to VisiCalc. Spell check's separate invoice ends inside the word processor and then the operating system. The dollars that the sources do not print stay unprinted.
 
-Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees collapse to zero by commoditization. What remains is joules. Spell check shows the collapse. The routine is in the editor. The joules are still spent. Estimates are not `measured_j`.
+Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees collapse to zero by commoditization. What remains is joules. Spell check shows the collapse. The routine is in the editor. The joules are still spent.
 
 Computer automation has a recognizable sequence. First, a procedure is scarce. A person or a bureau does it, or a machine does it only where a specialist can book time. Then the same procedure shows up as a routine on the computer that already holds the work. Then people stop treating it as a product they visit and start treating it as part of the tool they already use. Calculation did this when the spreadsheet replaced the sent-out worksheet. Typesetting did this when the document on the screen became the document that was printed. Spell check did this when the proofreader's pass became a function of the editor.
 
@@ -68,7 +68,7 @@ The reason the capability reached ordinary writing is mechanical. It was cheap e
 
 A frontier model that answers only inside a rented datacenter is the bureau stage of the same path. It can be capable and still fail available and accessible for the person holding the document. The future this paper argues for is not a smaller copy of that bureau. It is the stage spell check already reached.
 
-David Charlot frames that stage as the many, 7B+, and rented frontier intelligence as the few, under 500M. Those figures are his framing of access. They are not a census of phones or cloud accounts. The design rule is to finish computer intelligence the way spell check finished, for the first class, and to refuse a rental held for the second.
+That stage is for the many, 7B+. Rented frontier intelligence is for the few, under 500M. Finish computer intelligence the way spell check finished, for the first class, and refuse a rental held for the second.
 
 The hardware under that rule is seven records, not one comparison. Section 2.10 takes phones and mobile SoCs, PCs and laptops, consumer GPUs, datacenter accelerators, microcontrollers, edge NPUs in shipping devices, and the prior generation still in use. Each row has its own source and year. Software written for the generation a person can already run has the largest impact. Spell check is that software. Energy to run remains the metric.
 
@@ -166,7 +166,7 @@ Three regimes name how a computer-automation tool is priced. Section 2.11 is the
 
 What remains is the energy to run the comparison. A local dictionary probe spends joules on the device that holds the document. No joules are metered here. No analytical total is computed. Package `measured_j` stays unset. A companion joule figure is `measured_j` only when that study's meter returned the reading. [Metabolic Intelligence](/papers/mei/) owns the envelope: the joules are the physical condition of the superior answer, not a discount that buys a worse word. [Satiation](/papers/satiation/) owns the stop: free at the money price is not free joules, and further candidates after the token is kept spend energy on a predicate that has already fired. The papers stay distinct. This one owns the money-price path. They own the stop and the envelope.
 
-The prediction follows from the regimes, not from a regression. Ordinary computer-intelligence tasks follow spell check. Their token prices, parameter-count premia, moat rents, and access fees are competed away by bundling onto hardware people already have and by methods whose license price is zero. The many (7B+) and the few (<500M) remain David Charlot's framing of who that end state is for. They are an access framing. The prediction fails if an ordinary task, of the kind spell check already closes, keeps a lasting separate money price after a local routine of equal result is in the hands of the people who hold the document. A frontier benchmark that still carries a premium is not that failure. It is the moat stage, which Epoch's notes already show getting cheaper, and which spell check shows how to leave.
+The prediction follows from the regimes, not from a regression. Ordinary computer-intelligence tasks follow spell check. Their token prices, parameter-count premia, moat rents, and access fees are competed away by bundling onto hardware people already have and by methods whose license price is zero. The end state is for the many (7B+), not the few (<500M). The prediction fails if an ordinary task, of the kind spell check already closes, keeps a lasting separate money price after a local routine of equal result is in the hands of the people who hold the document. A frontier benchmark that still carries a premium is not that failure. It is the moat stage, which Epoch's notes already show getting cheaper, and which spell check shows how to leave.
 
 
 The same regimes are drawn in the living companion [sc-anim-01](/living/spellcheck/#sc-anim-01). Two dots are Nordhaus's reported endpoints. The dashed connector joins those two endpoints. No rate is estimated. Epoch's 9-to-900 range and about-13-times summary sit in a callout. They stay their summaries. The spell-check panel is the completed regime: the separate money price is gone, and the joules remain unmetered.
@@ -176,7 +176,7 @@ flowchart LR
   B["Bureau price<br/>scarce procedure"]
   M["Moat rent<br/>token price, access fee,<br/>parameter-count premium"]
   C["Commoditization<br/>separate price eliminated"]
-  J["What remains<br/>joules to run<br/>not measured_j"]
+  J["What remains<br/>joules to run"]
   B --> M --> C --> J
 ```
 
@@ -184,9 +184,9 @@ Landauer (1961) sets a physical floor on erasing a bit. Horowitz (2014) is the p
 
 ### 2.10 Hardware access, category by category
 
-Hooker names the lottery. This section names the machines. The argument is seven records. A phone shipment is not a datacenter shipment. A Steam survey is not a census of PCs. A revenue line is not a unit count. Where a firm does not disclose units, the paper says so and cites the figure the firm did disclose. None of these figures is the 7B+ framing or the <500M framing. Those labels stay a design rule. They are not a sum of the rows. The living figures [sc-hw-01](/living/spellcheck/#sc-hw-01) and [sc-gen-01](/living/spellcheck/#sc-gen-01) are the same records.
+Hooker names the lottery. This section names the machines. The argument is seven records. A phone shipment is not a datacenter shipment. A Steam survey is not a census of PCs. A revenue line is not a unit count. Where a firm does not disclose units, the paper says so and cites the figure the firm did disclose. None of these figures is a count of the many or the few. They are not a sum of the rows. The living figures [sc-hw-01](/living/spellcheck/#sc-hw-01) and [sc-gen-01](/living/spellcheck/#sc-gen-01) are the same records.
 
-For each category the questions are the same. Who has the machine, on the source's own count. What software stack that machine runs. How that stack meets the best frontier stack. The OpenIE claim is one sentence, repeated because it is the claim: software written for the globally accessible generation has the largest impact. The accessible generation is the one in hand. Spell check is the finished automation example of that sentence. McIlroy sized the list for the minicomputer in service. Energy to run is the metric that remains. These rows are access. They are not joules, and they are not `measured_j`.
+For each category the questions are the same. Who has the machine, on the source's own count. What software stack that machine runs. How that stack meets the best frontier stack. The OpenIE claim is one sentence, repeated because it is the claim: software written for the globally accessible generation has the largest impact. The accessible generation is the one in hand. Spell check is the finished automation example of that sentence. McIlroy sized the list for the minicomputer in service. Energy to run is the metric that remains. These rows are who has the machine. They are not joules.
 
 **Phones and mobile SoC generations.** GSMA, The Mobile Economy 2025, counts 5.8 billion unique mobile subscribers at the end of 2024, a 71 percent penetration rate, and 4.7 billion mobile internet users. IDC's preliminary Worldwide Quarterly Mobile Phone Tracker of 13 January 2026 counts 1,260.3 million smartphones shipped in 2025, of which Apple shipped 247.8 million. IDC's 13 January 2025 release counted 1,238.8 million smartphones in 2024. The 2026 table restates 2024 as 1,236.3 million. Each release keeps its own total. Arm's annual report for the year ended 31 March 2025 states that Arm-based CPUs were in greater than 99 percent of the world's smartphones sold that fiscal year, and that customers had cumulatively shipped more than 310 billion Arm-based chips, from the smallest sensors to supercomputers. The cumulative figure is every Arm market. It is not a phone count, and the report does not split it into SoC generations.
 
@@ -305,7 +305,7 @@ UITextChecker checks a string the caller passes (Apple). Android's `SpellChecker
 
 ### 4.6 Claim SC-6. On-device keyboard models kept the pairing
 
-Hard et al. (2018) train a next-word model on the phone and aggregate updates without uploading raw typing. The inference model they describe is 1.4 megabytes. Their "over 1 billion installs as of 2019" is their install claim for Gboard, not a census and not this paper's 7B+ framing. Training eligibility in the study was a constrained subset of devices. Class: literature, limited to the pairing. Not a spelling-accuracy result.
+Hard et al. (2018) train a next-word model on the phone and aggregate updates without uploading raw typing. The inference model they describe is 1.4 megabytes. Their "over 1 billion installs as of 2019" is their install claim for Gboard. Training eligibility in the study was a constrained subset of devices. Class: literature, limited to the pairing. Not a spelling-accuracy result.
 
 ### 4.7 Claim SC-7. The gear that shipped is Lookup, then a formula
 
@@ -443,11 +443,11 @@ AI is going to follow the path of all computer automation. Spell check is the be
 
 The example is an existence proof. A computer-intelligence capability, the detection and correction of a written word, became ordinary. It became ordinary because it was cheap, local, and paired to the editor and the phone people already used. McIlroy fit the list to the minicomputer. Hunspell sits inside ordinary editors as a local library. The phone exposes the check as a call on the text it already holds. Norvig's page of code is the gear with the network absent.
 
-The future of computer intelligence is that pattern. A capability held only by whoever can rent a frontier datacenter is the bureau stage. David Charlot's framing of the two classes is the many (7B+) and the few (<500M). The framing is a design rule. It is not a census.
+The future of computer intelligence is that pattern. A capability held only by whoever can rent a frontier datacenter is the bureau stage. The two classes are the many (7B+) and the few (<500M).
 
 The hardware argument is the same rule read as seven records. Phones, PCs, consumer GPUs, datacenter accelerators, microcontrollers, shipping NPUs, and the prior generation still in hand each have their own source. Software written for the generation people can already run has the largest impact. The latest die is a shipment. The installed generation is the reach. Spell check was written for the installed generation. Energy to run is what that software still spends.
 
-People paid a premium for spell check. It cannot be sold anymore. It is free, and it is bundled into something else. Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees collapse to zero by commoditization. What remains is joules. No meter reading is reported. No curve is fit. An estimate is not `measured_j`.
+People paid a premium for spell check. It cannot be sold anymore. It is free, and it is bundled into something else. Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees collapse to zero by commoditization. What remains is joules.
 
 
 ### 2.11 Dated prices, and how long each one is known to have lasted
@@ -664,10 +664,10 @@ The companion laws build the rest of the path. Spell check is the existence proo
 | SC-9 | Further candidates stop when the token is kept. | Design |
 | SC-10 | The envelope obtains the correction. It does not discount it. | Design |
 | SC-11 | Klere may host the class. The class is not confined to Klere. | Design |
-| SC-12 | 7B+ and <500M are an access framing, not a census. | Framing |
+| SC-12 | The future is the many (7B+), not the few (<500M). | Opinion |
 | SC-13 | Cited money prices fell. They are not the metric, and no curve is fit here. | Literature |
 | SC-14 | Spell check's separate money price is already gone. | Project statement and design |
-| SC-15 | What remains is joules. None are metered here. Estimates are not `measured_j`. | Design |
+| SC-15 | What remains is joules. | Opinion |
 | SC-16 | Phones: GSMA subscribers and IDC handset shipments are different counts. Arm states the fiscal 2025 smartphone SoC was Arm in greater than 99 percent of units. | Shipment or installed base |
 | SC-17 | PCs: IDC shipments and 1 billion Windows 11 users are different counts. | Shipment or installed base |
 | SC-18 | Consumer GPUs: JPR quarterly units, NVIDIA Gaming revenue, Steam survey. Flagship share is not the installed card. | Shipment or installed base |
