@@ -13,13 +13,13 @@ board_synth_claimed: false
 
 ## Abstract
 
-AI is going to follow the path of all computer automation. Spell check is the best example of that path.
+This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are fewer than 500 million people. Spell check is the finished case.
 
 People used to pay for spell check, and they paid a premium. WordCheck listed at $200.00 in January 1981. Grammatik II was $89 in 1988. Grammatik III was $99 in 1989. WordPerfect 3.0 was $495 in October 1983, and it included a spell-check command. Word 1.0 was $395 and did not include spell check. The checker was added in Word 2.0, and it was a checker the firm purchased. Ordinary calculation was sold the same way. The Anita Mk 8 was £335 in December 1961. The HP 9100A was $4,900. The Bowmar 901B was $240 in September 1971. The HP-35 was $395. Lotus 1-2-3 was fixed at $495 before it went on sale.
 
 Spell check cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Hunspell's license price is zero. Ordinary calculation went the same way: the job is a function of the phone and the computer, not a separate premium sale. The thing people paid for is still there. The sale is not.
 
-This is an economic opinion. Price a capability by scarcity and it stays with the few, under 500 million people. Build it for global access and it reaches the many, more than 7 billion people. Spell check is what the second choice looks like when it is finished. The separate price is gone. The capability is bundled into the tool people already have.
+Price a capability by scarcity and it stays with fewer than 500 million people. Build it for global access and it reaches more than 7 billion people. Spell check is the second choice, finished. The separate price is gone. The capability is bundled into the tool people already have.
 
 Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees are charges of the kind that used to be the product. Commoditization removes the separate charge. What remains is joules. The joules to compare a word to a local list are still spent.
 
@@ -54,7 +54,7 @@ This paper reports published procedures, a local library, and on-device APIs. Th
 
 ## 1. Introduction
 
-AI is going to follow the path of all computer automation. Spell check is the best example of that path.
+This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are fewer than 500 million people. Spell check is the finished case.
 
 People paid a premium. Then the thing could not be sold. It is free, and it is bundled into something else. The prices in Section 2.11 are that fact. The names in Section 2.9 come after it.
 
@@ -441,7 +441,7 @@ Section 2.11 prints prices only from pages read for this paper. An advertisement
 
 ## 7. Conclusion
 
-AI is going to follow the path of all computer automation. Spell check is the best example of that path.
+This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are fewer than 500 million people. Spell check is the finished case.
 
 The example is an existence proof. A computer-intelligence capability, the detection and correction of a written word, became ordinary. It became ordinary because it was cheap, local, and paired to the editor and the phone people already used. McIlroy fit the list to the minicomputer. Hunspell sits inside ordinary editors as a local library. The phone exposes the check as a call on the text it already holds. Norvig's page of code is the gear with the network absent.
 
