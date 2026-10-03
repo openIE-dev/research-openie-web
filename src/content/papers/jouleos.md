@@ -1,6 +1,6 @@
 ---
 title: "The search for JouleOS"
-deck: "The problems of existing compute fabric and software, stated as a review and a design guide. Those problems are the need for a solution like JouleOS."
+deck: "Existing compute fabric treats the floor as fixed. Kernels, builds, guests, and instruction contracts are collapsed into one rung. Agents are wrapped on top of that settlement. Energy to run is not the condition of a commit. Secure compute requires one law, one meter, and one refusal. That requirement is the search for a solution like JouleOS."
 id: jouleos
 status: "Research study"
 author: "David Charlot, Open Interface Engineering"
@@ -11,7 +11,7 @@ board_synth_claimed: false
 
 # The search for JouleOS
 
-A comprehensive review and design guide for secure compute infrastructure in the age of AI.
+Existing compute fabric treats the floor as fixed. Kernels, builds, guests, and instruction contracts are collapsed into one rung. Agents are wrapped on top of that settlement. Energy to run is not the condition of a commit. Secure compute requires one law, one meter, and one refusal. That requirement is the search for a solution like JouleOS.
 
 OpenIE research study five. Written 3 October 2026 (ET).
 
