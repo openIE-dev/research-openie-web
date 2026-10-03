@@ -125,6 +125,14 @@ System One, as described by Laya (product page) and in related preprints arXiv:2
 
 Shields refuse unsafe actions but are not, in the cited papers, exported as the reference's four-field commit record with an analytical joule account. DiffLogic and LUT networks compute functions. They are not, in those papers, a veto in front of a separate proposer and a tool executor. Energy-aware barrier filters are continuous. The reference's allow bit is a table. The compositional claim is the wiring: LUT allow and energy predicate and optional barrier, recorded with a typed reason, applied before an irreversible effect, with analytical energy kept distinct from board power. Section 4 states which parts of that wiring were executed.
 
+### 2.8 Certify / commit peers (2025–2026)
+
+Peer systems now enforce a decision **before** an irreversible tool runs. That strengthens the commit-law thesis; it does not duplicate this reference's record.
+
+Shi et al., **Progent** (arXiv:[2504.11703](https://arxiv.org/abs/2504.11703)), check every tool call against symbolic least-privilege rules and use an SMT solver so privilege can only narrow without approval (monotonic confinement). Chen, Kang, and Li, **ShieldAgent** (ICML 2025; [proceedings.mlr.press/v267/chen25ae.html](https://proceedings.mlr.press/v267/chen25ae.html)), enforce verifiable safety-policy circuits over agent action trajectories before shielding. Yu, Žikelić, and Henzinger (AAAI 2025; [doi:10.1609/aaai.v39i25.34840](https://doi.org/10.1609/aaai.v39i25.34840)) repair neural certificates via runtime monitoring. A companion line verifies ReLU control-barrier certificates online over a lookahead region (arXiv:[2507.11987](https://arxiv.org/abs/2507.11987)).
+
+**What this paper owns.** Those peers are policy, shield, or certificate-repair objects. This reference ships a four-field commit envelope (`proposal` → `certificate` → `commit|refuse` → receipt) with a conjunctive LUT allow bit and an energy predicate, typed refuse reasons, and analytical joules kept distinct from board power. Transport (MCP) remains proposal. [Mixture of Limits](/papers/mol/) chooses the gear on available fabric. [Satiation](/papers/satiation/) supplies the economic stop. [Metabolic Intelligence](/papers/mei/) supplies the budget envelope. `board_synth_claimed=false`.
+
 ## 3. Definitions and methods
 
 ### 3.1 Objects
@@ -463,7 +471,14 @@ Victor, B. Media for thinking the unthinkable. https://worrydream.com/MediaForTh
 
 Wei, J., et al. T-MAC. arXiv:2407.00088.
 
-Yu, E., Zikelic, D., and Henzinger, T. A. Neural control and certificate repair via runtime monitoring. arXiv:2412.12996.
+Yu, E., Žikelić, Đ., and Henzinger, T. A. Neural control and certificate repair via runtime monitoring. AAAI 2025. https://doi.org/10.1609/aaai.v39i25.34840 (arXiv:2412.12996).
+
+Shi, T., He, J., Wang, Z., et al. Progent: Securing AI Agents with Privilege Control. arXiv:2504.11703. https://arxiv.org/abs/2504.11703
+
+Chen, Z., Kang, M., and Li, B. ShieldAgent: Shielding Agents via Verifiable Safety Policy Reasoning. ICML 2025 (PMLR v267). https://proceedings.mlr.press/v267/chen25ae.html
+
+Formal verification of neural certificates done dynamically. arXiv:2507.11987. https://arxiv.org/abs/2507.11987
+
 
 Related preprints cited for typed decision models: arXiv:2503.23303 and arXiv:2510.01237.
 

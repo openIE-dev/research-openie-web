@@ -574,6 +574,15 @@ Related plateau levers—quantization, speculative decoding, training-systems ov
 
 **Bridge.** §8.0.1 already stated that awareness of floors is not the gap; embodiment is. §8.12 adds the economic corollary: markets reward plateau spend that extracts more work per device-dollar, and Mixture of Limits is the navigation law that binds that spend to floors when more work buys nothing. §8.13 surveys public transmission / gearing / cascade / memory-context / test-time techniques as plateau options—still generators until refuse is law.
 
+### 8.12.1 Hardware-paired navigation (2025–2026 peers)
+
+Mixture of Limits is not a software-only order. Navigation is Lookup → Formula → Solver → Model LAST **on hardware that is available, accessible, and capable** ([Metabolic Intelligence](/papers/mei/) states the three tests). Hooker's hardware lottery remains settled law: ideas look like progress when they fit installed chips and kernels (Hooker, 2021; [doi:10.1145/3467017](https://doi.org/10.1145/3467017)).
+
+Recent field work strengthens the pairing without replacing the navigation law. Huang et al. (arXiv:2507.19142, Jul 2025), **A3D-MoE**, co-design MoE routing with 3D heterogeneous integration, score-aware HBM access, and attention–MoE fusion; author-reported energy cuts of about 2×–4× are **their** architecture result, not OpenIE `measured_j`. Chung, Wu, Ma, and Chowdhury (arXiv:2601.22076, 2026), **Where Do the Joules Go?**, measure 1,858 inference configurations on H100/B200 and map energy to latent factors across algorithm, software, and hardware layers—task type alone can swing LLM energy per response by about 25×. That is plateau diagnosis of spend on available fabric. It is not Lookup → Formula → Solver refuse.
+
+**Cross-links.** [Notational Intelligence](/papers/ni/) owns certify-before-commit on the irreversible branch. [Satiation](/papers/satiation/) owns the economic stop when completeness holds or scarce joules bind. [Metabolic Intelligence](/papers/mei/) owns the envelope and fabric interface tax. Soft-ref path: estimates ≠ board package energy; `board_synth_claimed=false`.
+
+
 ### 8.13 Plateau techniques: transmission, gearing, cascade, memory/context, test-time
 
 **Thesis of this section (SOTA at the plateau).** Public research programs optimize **transmission** (how bits move through attention, KV cache, and interconnect), **gearing / MoE routing** (which expert / path / attention mode fires), **cascade** (early-exit prefill, self-decoder then cross-decoder; Lookup→Formula→Solver→Model LAST as OpenIE order), **memory/context** (long-horizon KV, conditional memory, hybrid attention windows), and **test-time** (reasoning budgets, multi-token prediction, speculative decode) under hardware and economic constraints. That is **plateau spend**: algorithmic efficiency on available silicon once Model is open. These programs approach Mixture of Limits ideas—cheapest sufficient compute, refuse waste of HBM / SSD / prefill FLOPs—without naming the law. Unbounded parameter counts and optimization still dominate until memory/context and refuse are first-class. Hardware economics (§8.12) applies: author-reported FLOPs, cache bytes, and API prices are **field / author-reported**, not OpenIE soft-ref `measured_j`. Estimates ≠ board package joules. Labs are cited as sources for plateau options by method.
@@ -992,6 +1001,12 @@ Primary Mixture of Limits workspace sources (not peer-reviewed publications): `m
 29. van der Laan, M. J., Polley, E. C., & Hubbard, A. E. (2007). Super Learner. *Statistical Applications in Genetics and Molecular Biology*, 6(1). Related working paper: Polley & van der Laan, Super Learner In Prediction, U.C. Berkeley Biostatistics Working Paper 266. https://biostats.bepress.com/ucbbiostat/paper266/
 30. Wolpert, D. H. (1992). Stacked generalization. *Neural Networks*, 5(2), 241–259.
 31. Breiman, L. (1996). Stacked regressions. *Machine Learning*, 24, 49–64.
+
+### Hardware-paired navigation peers (§8.12.1)
+
+103. Hooker, S. (2021). The hardware lottery. *Communications of the ACM*. [doi:10.1145/3467017](https://doi.org/10.1145/3467017); arXiv:[2009.06489](https://arxiv.org/abs/2009.06489).
+104. Huang, W.-H., Sharda, J., Shih, C.-J., et al. (2025). A3D-MoE: Acceleration of Large Language Models with Mixture of Experts via 3D Heterogeneous Integration. arXiv:[2507.19142](https://arxiv.org/abs/2507.19142).
+105. Chung, J.-W., Wu, R., Ma, J. J., & Chowdhury, M. (2026). Where Do the Joules Go? Diagnosing Inference Energy Consumption. arXiv:[2601.22076](https://arxiv.org/abs/2601.22076).
 
 ### Live SOTA methods for plateau spend (§8.10)
 

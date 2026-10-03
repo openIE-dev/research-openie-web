@@ -192,6 +192,14 @@ Cover and Thomas (2006) is the textbook path into rate-distortion if a reader wa
 
 The rebound survey of Gillingham, Rapson, and Wagner separates channels that a single slogan collapses. Direct rebound is additional use of the same service when its effective cost falls. Indirect rebound is spending of saved resources on other services. Economy-wide rebound runs through prices and growth. The survey's policy domain is energy efficiency, not tokens. The taxonomy still transfers as a warning about identification. A measured fall in `p_t` (claim S-2) identifies none of the three channels by itself. Direct rebound on a chore with `C` already true requires that buyers still pay for calls that do not change `C`. Indirect and economy-wide channels can be large when new tasks appear (Acemoglu and Restrepo, 2019). A paper that reported one elasticity and called it "the rebound" would be under-specified. This paper reports no elasticity.
 
+### 2.10 Scarce joules and the economic stop (2025–2026 peers)
+
+Epoch's price series (S-2) show synthesis getting cheaper in money. Recent energy publications show joules remaining scarce—and often growing in the aggregate.
+
+Chung, Wu, Ma, and Chowdhury (arXiv:[2601.22076](https://arxiv.org/abs/2601.22076), 2026) diagnose inference energy across 1,858 configurations: task type alone can move LLM energy per response by about 25×; video generation can exceed image energy by two orders of magnitude. The *Joule* article "Energy use of AI inference, efficiency pathways, and test-time scaling" ([cell.com/joule/fulltext/S2542-4351(26)00114-5](https://www.cell.com/joule/fulltext/S2542-4351(26)00114-5), online 22 Apr 2026) estimates optimized frontier-scale queries in the sub-watt-hour median range while reporting that long reasoning and agentic queries can raise energy by more than an order of magnitude; efficiency gains of 8–20× are line-of-sight, not free joules. Luccioni, Strubell, and Crawford (FAccT 2025) ([doi:10.1145/3715275.3732007](https://doi.org/10.1145/3715275.3732007)) warn that efficiency without a stop can amplify total spend (Jevons). Epoch AI's energy overview ([epoch.ai/publications/ai-energy](https://epoch.ai/publications/ai-energy), updated Jul 2026) separates modest per-query costs from rapidly doubling aggregate data-center power.
+
+**Reading for this paper.** Free at the margin is a money-price statement. Scarce joules are a physical statement. The operational stop is Economic Reality of Satiation: when `C(z) = 1`, further synthesis does not raise the written objective, and `policy` / `budget_exceeded` refuse is success. [Notational Intelligence](/papers/ni/) owns the physical certificate. [Mixture of Limits](/papers/mol/) navigates cheapest-sufficient gears. [Metabolic Intelligence](/papers/mei/) owns the envelope actuators. Estimates ≠ board-measured `measured_j`.
+
 ## 3.6 Protocol for a done-detector study (not executed)
 
 The following protocol is a method for a future measurement. No step has been run. It is written so the missing result has an exit criterion rather than a slogan.
@@ -425,6 +433,14 @@ SparkFun. Alchitry Pt V2. https://www.sparkfun.com/alchitry-pt-v2.html
 Wei, J., et al. T-MAC. arXiv:2407.00088.
 
 Wu, T. The Attention Merchants. Knopf. https://www.penguinrandomhouse.com/books/234876/the-attention-merchants-by-tim-wu/
+
+Chung, J.-W., Wu, R., Ma, J. J., and Chowdhury, M. Where Do the Joules Go? Diagnosing Inference Energy Consumption. arXiv:2601.22076. https://arxiv.org/abs/2601.22076
+
+Energy use of AI inference, efficiency pathways, and test-time scaling. *Joule*, 2026. https://www.cell.com/joule/fulltext/S2542-4351(26)00114-5
+
+Luccioni, A. S., Strubell, E., and Crawford, K. From efficiency gains to rebound effects: the problem of Jevons' Paradox in AI's polarized environmental debate. *FAccT* 2025. https://doi.org/10.1145/3715275.3732007
+
+Ostrovsky, N. / Epoch AI. What you need to know about AI energy use. Updated 14 July 2026. https://epoch.ai/publications/ai-energy
 
 Companion measurement record: Charlot, "Notational Intelligence as Commit Law," this repository. Software logs: `artifacts/RESULTS.md`, `artifacts/mcp_gate_demo.json`, `artifacts/schemas/wca.commit.v1/`.
 

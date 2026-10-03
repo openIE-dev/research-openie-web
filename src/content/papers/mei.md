@@ -115,6 +115,14 @@ The envelope \(B\) is physics. It is the condition under which the superior answ
 
 [Mixture of Limits](/papers/mol/) navigates. [Notational Intelligence](/papers/ni/) owns certify-before-commit. [Satiation](/papers/satiation/) owns the stop when Value of Information is zero or budget refuse fires. This study owns the envelope and the actuators those locks spend. Research owns the class. Klere owns the product. Estimates stay estimates. `board_synth_claimed=false`. Package `measured_j` is written when a labeled meter returns.
 
+### Peer fabric pairing and the superior answer (2025–2026)
+
+The envelope \(B\) is the physical condition under which the **superior answer** is obtained. Work that would violate \(B\) is refused or deferred. It is not degraded into a cheaper answer, and it is not a Faustian trade of certification for watts.
+
+Field peers now publish the same pairing lesson on other axes. Chen et al. (*Nature Communications*, 30 Sep 2025, [doi:10.1038/s41467-025-63794-4](https://doi.org/10.1038/s41467-025-63794-4)) ran ALBERT on a 14 nm analog AI inference chip—transformer-shaped work on analog fabric; their accuracy and device counts stay theirs, not package `measured_j`. Greatorex et al., **TEXEL** (*Nature Communications*, 11 Jul 2025, [doi:10.1038/s41467-025-61576-6](https://doi.org/10.1038/s41467-025-61576-6)), ship a mixed-signal neuromorphic processor built so CMOS and beyond-CMOS devices can be paired for on-chip learning—availability and accessibility of a fabric before a leaf is claimed capable. Huang et al., **A3D-MoE** (arXiv:[2507.19142](https://arxiv.org/abs/2507.19142)), pair MoE routing to 3D-integrated HBM and fused attention–MoE datapaths. Chung et al. (arXiv:[2601.22076](https://arxiv.org/abs/2601.22076)) show inference joules are governed by algorithm–software–hardware latent factors on H100/B200.
+
+**What Metabolic Intelligence adds.** Those citations are substrate or serving co-design. This class binds one envelope across edge and resource-optimized central, with Mixture of Limits gears hosted only where fabric is available, accessible, and capable (§12 interface tax). Klere ([klere.ai](https://klere.ai)) is the designed home. The class is not confined to it. Soft-ref path: `board_synth_claimed=false`.
+
 ---
 
 ## Why this is the future
@@ -1049,6 +1057,10 @@ Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`. Living f
 *No chicken-spoilage Anwar publish numbers. No invented citations. Numbers not tied to pack evidence M/C or a named external meter remain estimates. Soft-ref path: `board_synth_claimed=false`.*
 
 ---
+
+Greatorex, H., Richter, O., Mastella, M., et al. (2025). A neuromorphic processor with on-chip learning for beyond-CMOS device integration. *Nature Communications*. https://doi.org/10.1038/s41467-025-61576-6
+Huang, W.-H., et al. (2025). A3D-MoE: Acceleration of Large Language Models with Mixture of Experts via 3D Heterogeneous Integration. arXiv:2507.19142. https://arxiv.org/abs/2507.19142
+Chung, J.-W., Wu, R., Ma, J. J., and Chowdhury, M. (2026). Where Do the Joules Go? Diagnosing Inference Energy Consumption. arXiv:2601.22076. https://arxiv.org/abs/2601.22076
 
 ## Appendix A. Notation quick reference
 
