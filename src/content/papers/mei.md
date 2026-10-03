@@ -36,11 +36,90 @@ Dual-scale proof in this study (edge + resource-optimized central — not uncapp
 
 Hardware dual-map: the class runs today on GPUs and MCUs (von Neumann), and points at post–von Neumann substrates (neuromorphic, analog / in-memory, photonic, reversible / adiabatic) where energy-based and latent settle map natively. Estimates remain estimates. Soft-ref path: `board_synth_claimed=false`; package `measured_j` only when Metered.
 
+**The pair.** Current fields map AGI to the algorithm and not to paired hardware and software. Metabolic Intelligence refuses that split. Computers are hardware. Software is applied engineering written for that hardware. AGI-grade reliability is the pair. The hardware lottery (Hooker, 2020) is settled: ideas look like progress because they fit available chips. Mixture of Limits navigates gears that a fabric can host. The argument is [The pair, not the algorithm](#the-pair-not-the-algorithm).
+
+---
+
+## The pair, not the algorithm
+
+Current AI fields map AGI to the algorithm. They do not map it to paired hardware and software. The model is treated as the intelligence. The chip is treated as a rack the model happens to occupy. The programming language is treated as a neutral notation. Metabolic Intelligence refuses that split. AGI-grade reliability is the pair. It is not the algorithm alone.
+
+**Computers are hardware.** Software is applied engineering written for that hardware under constraints. An algorithm with no device is a notation. A device with no procedure is a material. Reliability that holds on a whiteboard and fails on the part that must run it is not the grade. The pair either holds on a named host or it does not.
+
+**Human–machine interfacing is the tradeoff that writes the pair.** Interfacing a person to a machine, and writing algorithms in human-created programming languages, is a tug of war among physics, applied mathematics, and materials science. Physics prices irreversible erasure and data movement (Landauer, 1961; Horowitz, 2014). Applied mathematics is the procedure a person can write, certify, and stop. Materials science is which device can hold that procedure. A language that hides the device does not cancel the tradeoff. It collects the cost as a runtime, as memory traffic, and as a meter that no longer matches the joule.
+
+### The hardware lottery
+
+Sara Hooker (2020) named this fact in *The Hardware Lottery* ([arXiv:2009.06489](https://arxiv.org/abs/2009.06489); later *Communications of the ACM* 64(12), 2021, [doi:10.1145/3467017](https://doi.org/10.1145/3467017)). A research idea wins because it is suited to the available software and hardware, not because it is superior to alternative directions. The lottery is which ideas look like progress because they fit the chips that already exist. Domain-specialized hardware raises the cost of any direction that does not fit those chips. The field then writes the winner down as an algorithmic result. The winner was the fit. That observation is settled. This study does not reopen it.
+
+The instance in front of every datacenter is exact attention written as a GPU kernel. Dao, Fu, Ermon, Rudra, and Ré (2022) made attention IO-aware: tile \(Q\), \(K\), and \(V\) so the \(N \times N\) matrix is not materialized in high-bandwidth memory, and fuse the steps into one CUDA kernel that uses on-chip SRAM (*FlashAttention*, [arXiv:2205.14135](https://arxiv.org/abs/2205.14135)). The algorithm changed because the memory hierarchy of the chip demanded it. Their wall-clock figures stay theirs. They are not this pack's `measured_j`. The mechanism is the point. Attention looked like the path of progress because that kernel was written for the GPU already in the rack.
+
+### Availability, accessibility, capability
+
+Mixture of Limits is not a software-only order. Navigation is Lookup, then Formula, then Solver, then Model last, because each gear exists only where a fabric can host it. Three tests decide the host. All three are required.
+
+1. **Available.** The device is manufactured, and a public description of what it executes exists. A whiteboard substrate is not available.
+2. **Accessible.** A person can reach the device through a programming language and a runtime that exist: CUDA, a Cortex-M kernel library, a Wasm engine, an FPGA toolchain, a vendor SDK. The reach is the interface tax ([§12](#12-state-of-the-art-on-every-existing-compute-fabric)): data movement, the shim, precision, latency, and meter honesty.
+3. **Capable.** The device can execute that gear under the precision contract. `never_lower_precision` either holds or the work is refused. A faster device that returns an uncertified answer is not capable of the commit.
+
+A gear that fails one test is not run on that host. The router does not promote the next gear in order to hide a missing host. \(J(m|q)\) prices the host that passed the three tests. The estimator of \(J\) is itself Lookup or Formula and is capped so meta-compute cannot eat the envelope \(B\).
+
+### Lookup is a memory, not a model
+
+Lookup closes when the coordinate is already in a table the host can address. Horowitz (2014) places practical CMOS energy in moving that data, far above the Landauer ideal. The arithmetic is not the cost. The capable hosts are the ones that already hold an addressable array.
+
+| Host | What is available and accessible | What it is capable of | What this study does not claim |
+|---|---|---|---|
+| CPU | Ordinary addressable memory. The language is the host ISA. | A registry or table hit. Movement is the joule. | A package `measured_j` for a table hit |
+| Wasm | W3C WebAssembly Core Specification, version 3.0, [TR/wasm-core](https://www.w3.org/TR/wasm-core/) (consulted 2 Oct 2026). Linear memory is a contiguous byte array. Load and store are in the spec. | A table inside that array, in a browser or a standalone engine. | A joule. The spec has no energy model. No Wasm joule is invented here |
+| MCU | Flash and SRAM on the Cortex-M tag. The metabolic schedule is the duty cycle around the hit. | A known context or a known refuse, on-device, without an off-tag model. | That an emulator instruction count is a board joule |
+| FPGA | On-chip LUT and block RAM, when a card is already in the rack. | A fixed table, if the router stays off the card. | A bitstream energy. `board_synth_claimed=false` |
+
+The GPU is available and accessible for Lookup and is the wrong first host. A kernel launch moves weights through HBM to recover a coordinate a table already held. That launch is interface tax, not navigation.
+
+### Formula is the ALU the language actually emits
+
+Formula closes when a closed form measures the same quantity. Lemma A still holds: at equal or lower variance the lower-energy mechanism wins for every non-negative stake. The host is whichever ALU the language emits, not whichever accelerator won the lottery.
+
+Wasm's numeric instructions are the accessible form of that ALU inside a sandbox: 32- and 64-bit integer and IEEE-754 operations, specified as a virtual instruction set with no architectural joule (same W3C core specification). On a CPU the same closed form is scalar or SIMD code. On a Cortex-M the integer ALU is the capable unit. The bit-enzyme variant in this pack uses no multiplies. The formula is integer arithmetic on that ALU. A GPU can evaluate the same expression. It becomes the host only when the closed form is the residual leaf and the launch still fits \(B\). Otherwise the formula stays on the CPU or the Wasm engine, and Model is not opened.
+
+### Solver is settle on a device that can hold the contract
+
+Solver is iteration or physical settle, not a smaller transformer. The capable host depends on the mechanism.
+
+On a CPU, a short certified iteration is available and accessible in ordinary code. That is the host Appendix B already assigns the obtain-router. No new meter is attached to it.
+
+On analog in-memory and Hopfield-class substrates, settle is the device. Dense associative memory, memristor Hopfield networks, and probabilistic in-memory energy-based models are already cited in this study (refs 14, 15, 29, 30, 37, 38). Chen et al. (*Nature Communications*, 30 Sep 2025, [doi:10.1038/s41467-025-63794-4](https://doi.org/10.1038/s41467-025-63794-4)) ran an ALBERT inference on a 14 nm analog chip. That demonstration shows a transformer-shaped workload on an analog device. It does not show Mixture of Limits, and it is not this pack's `measured_j`.
+
+A CUDA attention kernel is not a solver. It is a Model leaf that won the lottery. Calling it a solver because it iterates inside a kernel misnames the gear.
+
+### Model last is the kernel the chip already runs
+
+Model is the residual gear. It runs where a parametric kernel is available, accessible, and capable, and only after Lookup, Formula, and Solver have failed to cover the coordinate.
+
+**GPU.** The accessible stack is CUDA. The algorithm that actually occupies it is IO-aware attention, as FlashAttention specified for HBM versus on-chip SRAM, and the serving kernels around it. Selective state-space models (Gu and Dao, 2023; Dao and Gu, 2024) change the recurrence and still ship as GPU kernels. They do not change the host. Field curves for that host are already labeled in this study: InferenceX and MLPerf Inference v6.1 report throughput and derived power. Those figures stay measured-kernel or looked-up. They are not package `measured_j`. NVIDIA Dynamo 1.5 is a vendor power actuator. It is not obtain routing. The interface tax on this fabric is HBM movement, the serving shim, the kernel's numeric format, and token latency.
+
+**MCU.** The accessible algorithm on a Cortex-M is an integer kernel, not a datacenter transformer. Lai, Suda, and Chandra (2018) published CMSIS-NN, int8 and int16 network kernels for Arm Cortex-M ([arXiv:1801.06601](https://arxiv.org/abs/1801.06601)). MLPerf Tiny v1.4 (Jul 2026) is the public meter class for MCU inference energy. Both are other groups' results. Neither is this pack's `measured_j`, and neither is the digital enzyme. The enzyme comparison this pack stands on is emulator-measured on a Cortex-M4: 1,723 instructions with early exit versus 2,451 for an int8 MLP at matched accuracy, and the SmellNet sequential protocol. CMSIS-NN quantizes. On a commit path, `never_lower_precision` holds or the work is refused. Quantization is not an optimization of a certified quantity.
+
+**FPGA.** Umuroglu et al. (FPGA 2017, [arXiv:1612.07119](https://arxiv.org/abs/1612.07119)) mapped binarized networks onto streaming FPGA datapaths: binary operations, on-chip parameters, per-layer folding. That is the published pairing of a low-precision model leaf to LUT fabric. Their platform watts and frame rates stay theirs. This study did not place or route a design and did not meter a card. `board_synth_claimed=false`. A bit-enzyme or a lookup table is the leaf a card can hold. The router stays on the CPU. A card that narrows a certified quantity to meet a timing constraint is refused.
+
+**Neuromorphic, analog, photonic.** These devices are available as already cited. They are accessible through a vendor SDK, which is the runtime tax. They are capable of a residual leaf whose mechanism matches the substrate, and not of the obtain-router. Intel's Hala Point description (17 Apr 2024: 1,152 Loihi 2 processors, stated maximum 2,600 W) is a vendor system figure, not a per-answer joule. Ahmed et al. (*Nature*, 9 Apr 2025, [doi:10.1038/s41586-025-08854-x](https://doi.org/10.1038/s41586-025-08854-x)) report ResNet, BERT, and an Atari workload on a photonic processor. Tunheim et al. ([arXiv:2501.19347](https://arxiv.org/abs/2501.19347)) report 8.6 nJ per MNIST frame on a 65 nm Tsetlin accelerator; that nanojoule is their silicon measurement, not OpenIE `measured_j`, and the Tsetlin machine is not the enzyme. Innatera Pulsar-class parts publish audio and radar milliwatts, not a gas-tag schedule. Shipping neuromorphic gas or odour nanojoule figures are not in this citation set.
+
+### What the order is doing
+
+Lookup is first because addressable memory is the available, accessible, capable host on every computer this study names, and Horowitz already priced the movement. Formula is next because the ALU the language emits can evaluate a closed form without a kernel launch. Solver is next where iteration or settle fits a host that holds the contract. Model is last because its capable hosts are the specialized devices, and the lottery made those devices look like the definition of intelligence.
+
+Klere ([klere.ai](https://klere.ai)) is the designed home because that order is the runtime, not a translation into someone else's stack. The interface tax is lowest there. It is not zero: data movement still costs joules. Metabolic Intelligence is not confined to Klere. The same gears run on the GPU fleet, the Cortex-M tag, the CPU and Wasm host, the accelerator card, and the substrates just cited. The host changes \(\mu(p,H)\) and the tax. It does not change the utility of what commits. A host that can only return a worse answer is not used.
+
+The envelope \(B\) is physics. It is the condition under which the superior answer is obtained. It is not a cheaper answer. Work that would violate \(B\) is refused or deferred. The answer that commits is the best one. Deployment of every host above is the edge and the resource-optimized central, not an uncapped hyperscale campus. Dedicated water, power, and hyperscale cooling plants are not required by design. That is a design consequence of the envelope plus pack evidence. It is not a measured liter count.
+
+[Mixture of Limits](/papers/mol/) navigates. [Notational Intelligence](/papers/ni/) owns certify-before-commit. [Satiation](/papers/satiation/) owns the stop when Value of Information is zero or budget refuse fires. This study owns the envelope and the actuators those locks spend. Research owns the class. Klere owns the product. Estimates stay estimates. `board_synth_claimed=false`. Package `measured_j` is written when a labeled meter returns.
+
 ---
 
 ## Why this is the future
 
-Industry and academic messaging still treats transformer scale, plus the hyperscale power and water plant that scale presupposes, as the default future of computer intelligence. That default can be answered. It cannot be answered by a slogan. A skeptic who wants to set Metabolic Intelligence aside has to deny settled physics (Shannon, Landauer, or Value of Information), deny a labeled measurement from this pack, or deny an explicit roadmap this study already separates from proven pack. This section states the argument. Appendix F answers the dismissals that usually follow. Living diagram: [/living/mei/#mei-arg-01](/living/mei/#mei-arg-01).
+The pair above is the map this future refuses. Industry and academic messaging still treats transformer scale, plus the hyperscale power and water plant that scale presupposes, as the default future of computer intelligence. That default can be answered. It cannot be answered by a slogan. A skeptic who wants to set Metabolic Intelligence aside has to deny settled physics (Shannon, Landauer, or Value of Information), deny a labeled measurement from this pack, or deny an explicit roadmap this study already separates from proven pack. This section states the argument. Appendix F answers the dismissals that usually follow. Living diagram: [/living/mei/#mei-arg-01](/living/mei/#mei-arg-01).
 
 **Energy is the binding constraint.** Shannon (1948) gives bits a rate-distortion structure: past a fidelity point, more bits buy little additional fidelity. Howard's Value of Information (1966) prices an observation by the improvement it makes in decision utility, net of cost. When that value is zero on a stated completeness predicate, further spend does not raise the written objective. Landauer (1961) prices irreversible bit erasure at \(k_B T \ln 2\) per bit in the ideal model. On a receipt that quantity is a labeled estimate, not a wattmeter. Horowitz (2014) shows that practical CMOS energy is dominated by moving data, far above that ideal. These are settled coordinates. They are not Open Interface Engineering inventions. A future whose first coordinate is uncapped watts has to say which of them fails.
 
@@ -64,7 +143,7 @@ The dominant construction for computer intelligence still treats the transformer
 
 Shannon (1948) prices bits under uncertainty as settled law. Howard's Value of Information (1966) prices whether another observation is worth its cost for a decision. Landauer (1961) prices irreversible bit erasure in joules at temperature \(T\): \(E_{\min} = k_B T \ln 2\) per bit erased in the ideal model. On receipts that Landauer quantity is a **labeled estimate**, not a wattmeter reading. Together they imply floors: past a point, more bits stop buying outcomes that matter for a stated benefit. Metabolic Intelligence embodies those floors as **schedules and actuators** at the edge of a tag and at the meter of a lean central plant.
 
-**Formal thesis.** Let \(B\) be the metabolic envelope in joules (tag episode) or watts / megawatts (lean-campus import). \(B\) is the physical condition under which the superior answer is obtained. It is not a menu of cheaper substitutes. Metabolic Intelligence returns that answer by budget-native obtain, enzymes, physics-informed features, and test-time close. A stated utility \(U\) (accuracy, completeness of a chore, interactive close) is what the committed answer maximizes. Grid-following levers refuse or defer work that would violate \(B\). They do not degrade the certified answer. The answer that commits is the best one. The substrate is digital enzymes and other algorithmic compute under that envelope, plus a grid-following service whose levers keep the envelope. Deployment scopes are **edge** and **resource-optimized central** — not an uncapped hyperscale campus whose first coordinate is unlimited import. Class properties follow: physics-informed features and heaters; test-time binding and routing; sequential / super learning without full pretrain replay; zero-shot close when grammar covers; pretrain as residual leaf, not default. Computers are hardware; software is applied engineering under constraints.
+**Formal thesis.** Let \(B\) be the metabolic envelope in joules (tag episode) or watts / megawatts (lean-campus import). \(B\) is the physical condition under which the superior answer is obtained. It is not a menu of cheaper substitutes. Metabolic Intelligence returns that answer by budget-native obtain, enzymes, physics-informed features, and test-time close. A stated utility \(U\) (accuracy, completeness of a chore, interactive close) is what the committed answer maximizes. Grid-following levers refuse or defer work that would violate \(B\). They do not degrade the certified answer. The answer that commits is the best one. The substrate is digital enzymes and other algorithmic compute under that envelope, plus a grid-following service whose levers keep the envelope. Deployment scopes are **edge** and **resource-optimized central** — not an uncapped hyperscale campus whose first coordinate is unlimited import. Class properties follow: physics-informed features and heaters; test-time binding and routing; sequential / super learning without full pretrain replay; zero-shot close when grammar covers; pretrain as residual leaf, not default. Computers are hardware; software is applied engineering under constraints. AGI-grade reliability is that pair, not the algorithm alone ([The pair, not the algorithm](#the-pair-not-the-algorithm)).
 
 Three measurement facts constrain every later number. First, curve and ledger watt-hours are **model / measured-kernel / looked-up** composites, labeled by evidence class. Second, tag microwatts mix **datasheet** and **schedule model**; instruction counts are **emulator-measured**. Third, `board_synth_claimed=false`; package `measured_j` appears only when a labeled meter returns a reading.
 
@@ -88,6 +167,7 @@ The problem is dual-scale by construction — **edge** and **resource-optimized 
 | Term | Definition in this paper |
 |---|---|
 | **Metabolic Intelligence (MEI)** | Budget-native class. The metabolic envelope is the physical condition under which the superior answer is obtained, at the edge and the resource-optimized central (not uncapped hyperscale). Not a cheaper answer. |
+| **Hardware–software pair** | AGI-grade reliability is the procedure together with the fabric that hosts it. Not the algorithm alone. Each Mixture of Limits gear requires a host that is available, accessible, and capable. |
 | **Budget envelope** | Explicit joule or power condition \(B\) under which the superior answer is obtained. First-class physical condition, not a post-hoc telemetry label and not a quality discount. |
 | **Digital enzyme** | Silicon recognition unit with binding site, product, allosteric context switch, Hill cooperativity, abundance as learned weight, and a cost for every binding check. Bit-enzyme variant uses no multiplies. |
 | **Metabolic schedule** | Duty cycle for sensing and heating that meets a monitoring objective while minimizing average power (heater + sleep + radio). |
@@ -649,13 +729,13 @@ Term hunt (2 Oct 2026): **Metabolic Intelligence** as a named peer class to Logi
 
 Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`.
 
-The state of the art on each existing fabric, and the interface tax of hosting the class there, is [State of the art on every existing compute fabric](#12-state-of-the-art-on-every-existing-compute-fabric).
+The gear-to-host pairing is [The pair, not the algorithm](#the-pair-not-the-algorithm). The state of the art on each existing fabric, and the interface tax of hosting the class there, is [State of the art on every existing compute fabric](#12-state-of-the-art-on-every-existing-compute-fabric).
 
 ---
 
 ## 12. State of the art on every existing compute fabric
 
-Metabolic Intelligence is the state of the art of budget-native obtain on every compute fabric that already exists. The state of the art is the class. It is not a silicon leaderboard, and it is not a cheaper answer. Four objects travel with the class onto every host: the physics envelope \(B\), the superior answer, digital enzymes, and the dual hardware map. The superior answer is the one that commits. Work that would violate \(B\) is refused or deferred. It is not degraded. Mixture of Limits chooses the gear: Lookup, then Formula, then Solver, then Model last. The obtain-router prices that gear as \(J(m|q)\) before spend. The estimator is Lookup or Formula and is capped so meta-compute cannot eat \(B\).
+Which algorithm runs on which fabric, under the tests of availability, accessibility, and capability, is stated in [The pair, not the algorithm](#the-pair-not-the-algorithm). Metabolic Intelligence is the state of the art of budget-native obtain on every compute fabric that already exists. The state of the art is the class. It is not a silicon leaderboard, and it is not a cheaper answer. Four objects travel with the class onto every host: the physics envelope \(B\), the superior answer, digital enzymes, and the dual hardware map. The superior answer is the one that commits. Work that would violate \(B\) is refused or deferred. It is not degraded. Mixture of Limits chooses the gear: Lookup, then Formula, then Solver, then Model last. The obtain-router prices that gear as \(J(m|q)\) before spend. The estimator is Lookup or Formula and is capped so meta-compute cannot eat \(B\).
 
 SLA-bounded levers are the contract already stated as law. The invariants are `never_lower_precision` and `max_deferral`. On the resource-optimized central the order is pause, then speed, then route, then effort, then battery, then shed. On the tag the lever is the metabolic schedule. Shed and a worse commit sit outside the invariant. Energy on every host is \(E_{\mathrm{mem}} + E_{\mathrm{compute}}\). Instruction counts, kernel time, and device ops are the compute term. Memory movement is in the budget. Horowitz (2014) places practical CMOS energy in that movement. The orders in §13.7 are literature physics. They are not this pack's `measured_j`.
 
@@ -960,6 +1040,11 @@ Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`. Living f
 50. Bodnia, E., & Hanin, B. (21 Jan 2026). Energy-Based Models for Reasoning, LLMs for the Interface. https://logicalintelligence.com/blog/energy-based-models-for-reasoning . Mechanism account of Kona. Their benchmark figures are not adopted here.
 51. Knight, W. (2 Oct 2026). These AI Experts Want to Do High-Stakes Research Out in the Open. *WIRED*. https://www.wired.com/story/trillium-labs-wants-to-do-high-risk-ai-research-in-the-open/ . Launch-day account. No recipe is published there.
 52. Lambert, N. (2 Oct 2026). Trillium Labs unveiling note. https://substack.com/@natolambert/note/c-351283371 . States that the lab is building open post-training recipes. The note does not contain a recipe.
+53. Hooker, S. (2020). The Hardware Lottery. arXiv:2009.06489. https://arxiv.org/abs/2009.06489 . A research idea wins because it suits available software and hardware, not because it is the superior direction. Later: Hooker, S. (2021). The Hardware Lottery. *Communications of the ACM* 64(12). https://doi.org/10.1145/3467017 .
+54. Dao, T., Fu, D. Y., Ermon, S., Rudra, A., & Ré, C. (2022). FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness. NeurIPS. arXiv:2205.14135. https://arxiv.org/abs/2205.14135 . IO-aware exact attention as a fused CUDA kernel over GPU HBM and on-chip SRAM. **Historical** mechanism. Their wall-clock figures are not `measured_j`.
+55. Lai, L., Suda, N., & Chandra, V. (2018). CMSIS-NN: Efficient Neural Network Kernels for Arm Cortex-M CPUs. arXiv:1801.06601. https://arxiv.org/abs/1801.06601 . int8 and int16 kernels for Cortex-M. **Historical**. Not the digital enzyme. Not this pack's `measured_j`.
+56. W3C. WebAssembly Core Specification, version 3.0. https://www.w3.org/TR/wasm-core/ . Consulted 2 Oct 2026. Linear memory and numeric instructions. No energy model. No Wasm joule is taken from this document.
+57. Umuroglu, Y., et al. (2017). FINN: A Framework for Fast, Scalable Binarized Neural Network Inference. FPGA. arXiv:1612.07119. https://arxiv.org/abs/1612.07119 . Binarized networks mapped to streaming FPGA datapaths. **Historical**. Their platform figures are not `measured_j`. `board_synth_claimed=false`.
 
 *No chicken-spoilage Anwar publish numbers. No invented citations. Numbers not tied to pack evidence M/C or a named external meter remain estimates. Soft-ref path: `board_synth_claimed=false`.*
 
@@ -1029,7 +1114,9 @@ Spell-outs and working definitions used in this study. First use in the body als
 | **Soft-ref path** | `board_synth_claimed=false`; estimates ≠ package `measured_j`. |
 | **Value of Information (VoI)** | Howard (1966): expected improvement in decision utility from an observation, net of cost. |
 | **Satiation** | Companion law: stop when VoI is zero or budget refuse fires (Economic Reality of Satiation). |
-| **Mixture of Limits** | Companion navigation law: Lookup → Formula → Solver → Model LAST. |
+| **Mixture of Limits** | Companion navigation law: Lookup → Formula → Solver → Model LAST. Each gear is hosted by a fabric that is available, accessible, and capable. Not a software-only order. |
+| **Hardware lottery** | Hooker (2020): a research idea wins because it fits available software and hardware, not because it is the superior direction. In this study the lottery is which ideas look like progress because they fit available chips. Settled observation. |
+| **Hardware–software pair** | AGI-grade reliability is the algorithm together with the device it runs on. Computers are hardware. Software is applied engineering written for that hardware. |
 | **Notational Intelligence** | Companion commit law: certify-before-commit. |
 | **OpenADR** | Open Automated Demand Response protocol (3.1 VTN used in pack demos). |
 | **DSX Flex** | Emerald / NVIDIA-shaped campus flexibility MQTT service used as peer actuator shape in pack demos. |
