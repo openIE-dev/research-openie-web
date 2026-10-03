@@ -398,7 +398,7 @@ What remains hard, and what Mixture of Limits companions (NI commit law; coin-ce
 
 **Information theory and physical cost.** Shannon, Howard (VoI), Landauer, Bennett, Kolmogorov/Solomonoff/Chaitin, and Cover & Thomas form the IT/decision/thermodynamic chain in §8.0. Mixture of Limits binds them as named floors and labeled estimates. Soft-ref Landauer stamps are lower-bound estimates, not claims of near-bound silicon operation.
 
-**Notational intelligence.** Lee's notational-intelligence claim is the companion frame for executable predicates; see [NI Commit Law](/papers/ni/).
+**Notational intelligence.** Lee's notational-intelligence claim is the companion frame for executable predicates; see [Notational Intelligence as Commit Law](/papers/ni/).
 
 ### 8.2 Tier A detail: formula / mechanism / executable physics
 
