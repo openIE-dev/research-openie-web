@@ -151,7 +151,7 @@ Method is the claim axis. Geography is not. What this class absorbs is stated as
 1. **Physics envelope.** \(B\) is joules on a tag episode or watts on a lean-campus import cap. Energy budget is physics: the condition under which the answer is obtained. It is not a discount on the answer, and it is not a Faustian cheaper-answer trade.
 2. **Superior answer.** Levers and routing refuse or defer work that would violate \(B\). They do not degrade the certified answer. The answer that commits is the best one. Budget-native obtain, digital enzymes, physics-informed features, and test-time close are how answers that were thought impossible become reachable. That reach is inside the envelope.
 3. **Digital enzymes.** Binding site, product, allosteric context, abundance as learned weight, a cost on every binding check, early exit. The unit is this study (§5): emulator-measured Cortex-M4 counts and the SmellNet sequential protocol. Tsetlin machines and hyperdimensional computing, cited below, are edge cousins. They are not the enzyme.
-4. **Dual hardware map.** The class runs today on GPUs and MCUs. It points at neuromorphic, analog in-memory, photonic, and adiabatic substrates where energy-based and latent settle can map (Appendix B). The map is operational. A substrate paper is not a second definition of the class. Deployment is the edge and the resource-optimized central. Hyperscale water, power, and cooling plants are not required by design.
+4. **Dual hardware map.** The class runs today on GPUs and MCUs. It points at neuromorphic, analog in-memory, photonic, and adiabatic substrates where energy-based and latent settle can map (Appendix B). The map is operational. A substrate paper is not a second definition of the class. Deployment is the edge and the resource-optimized central. Hyperscale water, power, and cooling plants are not required by design. The interface tax of hosting the class on each existing fabric is §12. Klere is the designed home. The class is not confined to it.
 
 **Cited only.**
 
@@ -649,59 +649,187 @@ Term hunt (2 Oct 2026): **Metabolic Intelligence** as a named peer class to Logi
 
 Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`.
 
+The state of the art on each existing fabric, and the interface tax of hosting the class there, is [State of the art on every existing compute fabric](#12-state-of-the-art-on-every-existing-compute-fabric).
+
 ---
 
-## 12. Review answered by construction
+## 12. State of the art on every existing compute fabric
+
+Metabolic Intelligence is the state of the art of budget-native obtain on every compute fabric that already exists. The state of the art is the class. It is not a silicon leaderboard, and it is not a cheaper answer. Four objects travel with the class onto every host: the physics envelope \(B\), the superior answer, digital enzymes, and the dual hardware map. The superior answer is the one that commits. Work that would violate \(B\) is refused or deferred. It is not degraded. Mixture of Limits chooses the gear: Lookup, then Formula, then Solver, then Model last. The obtain-router prices that gear as \(J(m|q)\) before spend. The estimator is Lookup or Formula and is capped so meta-compute cannot eat \(B\).
+
+SLA-bounded levers are the contract already stated as law. The invariants are `never_lower_precision` and `max_deferral`. On the resource-optimized central the order is pause, then speed, then route, then effort, then battery, then shed. On the tag the lever is the metabolic schedule. Shed and a worse commit sit outside the invariant. Energy on every host is \(E_{\mathrm{mem}} + E_{\mathrm{compute}}\). Instruction counts, kernel time, and device ops are the compute term. Memory movement is in the budget. Horowitz (2014) places practical CMOS energy in that movement. The orders in §13.7 are literature physics. They are not this pack's `measured_j`.
+
+The fabric sets \(\mu(p,H)\). It does not set the utility of what commits. Klere ([klere.ai](https://klere.ai)) is the designed home and the product home. It is where Metabolic Intelligence works best, because the home is built so the four objects are the runtime. Metabolic Intelligence is not confined to Klere. The same objects run on alternate fabric. A host that can only return a worse answer is not used.
+
+The **interface tax** is what a host charges for not being that home. Five terms, on every row below:
+
+1. **Data movement.** Crossings the designed home does not make: HBM, a sandbox copy, a host-to-card link, on and off a substrate.
+2. **API or runtime shim.** CUDA, a vendor HAL, a WASM runtime, a toolchain, a neuromorphic SDK. The shim stays. The law sits in front of it.
+3. **Precision.** The host's numeric format. `never_lower_precision` either holds or the work is refused. Rounding a certified quantity is not an optimization.
+4. **Latency.** The host's clock: tokens per second, an instruction path, a sandbox call, a pipeline fill, a settle time. It is not a licence to commit early with a worse answer.
+5. **Meter honesty.** What the host will report as joules. Curves, datasheets, vendor watts, and other groups' silicon figures keep their evidence class. Package `measured_j` is written when a meter on this pack returns. `board_synth_claimed=false`.
+
+Deployment on every row is the edge and the resource-optimized central. An existing GPU fleet is a budget-capped host. It is not an uncapped hyperscale campus. Dedicated water, power, and hyperscale cooling plants are not required by design. That is a design consequence of the envelope. It is not a measured liter count.
+
+| Fabric | What runs there | Interface tax | Versus Klere-native | Path to the state of the art on that fabric |
+|---|---|---|---|---|
+| Klere native | Enzymes, \(J(m\|q)\), contract levers, tier meters | Lowest. No class-to-runtime shim. Memory energy remains. Meters stay in class | The reference home | The envelope obtains the superior answer on the edge and the resource-optimized central |
+| GPU / CUDA stacks | Model-last leaf and campus actuators. The router stays in front of the kernel | HBM movement, serving shim, host precision, token latency. Curve watts are not `measured_j` | The installed fleet and kernel curves. The enzyme schedule is not native. Idle power needs node sleep | Price \(J\) before launch. Keep the contract. Count \(E_{\mathrm{mem}}\) |
+| MCU / Cortex-M | Enzyme leaf. The metabolic schedule is the lever | A bare image pays the HAL, SRAM, and emulator-not-joules. The Klere schedule collapses that tax to physics | Coin-cell proof. A tag alone is not the campus service | Family index, early exit, sleep floor, Lookup before any off-tag model |
+| CPU / WASM | Lookup and Formula. The router host | Sandbox or process copies, runtime shim. No pack joule on a WASM leaf | Grammar closes without an accelerator. No tag plant and no grid plant on the leaf itself | The standing obtain rule. Model last is another fabric |
+| FPGA / accelerator card | Bit-enzyme and lookup datapath, as a mechanism | Host link, toolchain shim, fixed-point under the contract. Meter empty | A deterministic leaf when the card is already there. No right to quote card watts | Router and contract stay on the home. Refuse the link when it would break \(B\) |
+| Neuromorphic, analog in-memory, photonic | Residual sparse or energy leaf only | Vendor SDK, on-and-off movement, their precision, their latency. Their figures stay theirs | A lower \(\mu(p,H)\) on a matched leaf. The envelope is not inside the chip | The home keeps \(B\) and \(J\). The substrate does not define the class |
+
+### 12.1 Klere native
+
+Klere is the designed home. The interface tax is the lowest of the six, and it is not zero. Data movement still costs joules. The home does not delete \(E_{\mathrm{mem}}\). It refuses to hide that term inside a FLOP count or a token price.
+
+Digital enzymes are the recognition leaf: binding site, product, allosteric context, abundance as the learned weight, a cost on every binding check, early exit. The proven pack under that leaf is the Cortex-M4 emulator count and the SmellNet sequential protocol (§5). Klere packaging of a tag SKU is roadmap (Appendix E). The law and the pack are not waiting on the SKU. The public site is thin access framing. It is not a feature catalog, and it is not a shim. Research owns the class. Klere owns the embodiment.
+
+The obtain-router is native. \(J(m|q)\) runs before spend. Lookup and Formula close a covered coordinate. Solver is next. Model is last. The estimator of \(J\) is itself Lookup or Formula. If that estimate exceeds the cap, the router takes the default gear and does not run a heavy estimator. SLA-bounded levers are native on both plants: the metabolic schedule on the edge, and the ordered grid levers inside the contract on the resource-optimized central. Notational Intelligence remains the commit law. Satiation remains the stop. They are companions. They are not translation layers.
+
+Precision is the contract. There is no foreign quantizer on the commit path. Latency is binding, routing, and lever selection under the live budget. It is not an adapter parked in front of someone else's serving API. Meter honesty is part of the low tax. The home reports evidence class. Datasheet plus schedule, emulator counts, real protocol, plant model, calculation, and estimate stay in their rows. Package `measured_j` stays empty until a labeled meter returns. That empty field is the instrument. It is not a weaker class.
+
+This row is the reference. Every later tradeoff is priced against it. What the home does not pretend to have shipped is an operator console, a field SKU, or a live Dynamo wire-up. Those stay roadmap. The state of the art on the home is the envelope obtaining the superior answer at both design plants, with hyperscale water and power not required by design.
+
+### 12.2 GPU and CUDA serving stacks
+
+Existing datacenters already run CUDA serving stacks. That fleet is a host. It is not the class, and it is not a requirement to build an uncapped campus around it.
+
+The mapping is specific. A transformer kernel is a Model-last leaf or a serving actuator. It is not a digital enzyme. Enzyme recognition stays on the edge path, or as a host-side leaf in front of the launch. \(J(m|q)\) runs in the gateway. If Lookup or Formula measures the same quantity, Lemma A says the kernel is not the minimizer, and the kernel is not launched. SLA-bounded levers on deferrable work are the §8 order, inside `never_lower_precision` and `max_deferral`. Certified and interactive work runs to close or to refuse. Route and effort move deferrable work. They do not commit a worse answer. The withdrawn claim that Flash routing costs no quality stays withdrawn. NVIDIA Dynamo 1.5 power-aware scaling (18 Sep 2026) is a vendor actuator shape. It is not obtain routing.
+
+\(E_{\mathrm{mem}} + E_{\mathrm{compute}}\) on this fabric is dominated by weight and cache movement through HBM and the interconnect. Kernel time is only the compute term. The interface tax is that movement, plus the serving shim. CUDA, the engine used for the curves (SGLang in the AI Configurator method), and the GPU planner price tokens and speed. Metabolic Intelligence prices the obtain zone first. The shim remains in the rack. The law sits in front of the launch.
+
+Precision on the fleet is the kernel's format, including the NVFP4 kernels in the measured-kernel method. The contract forbids lowering precision to buy the cap. Latency on the fleet is tokens per second per user. Looked-up medians and measured-kernel throughput are the host's clock. They are not binding-check latency. Meter honesty: the synthesis ledger's 0.20 Wh per V4 Pro answer at today's speed on GB300 (p10–p90 0.044–0.68) is calculation plus looked-up inputs. InferenceX-derived all-in power (GB300 2.12 kW, B300 1.90, B200 1.71, Vera Rubin 3.30) is calculated from published measurements. Both are estimates or measured-kernel models. Neither is `measured_j`.
+
+Against Klere-native the fleet is a gain and a loss. The gain is the installed plant, the kernel curves, and a service that already speaks GPU budgets. The pack's campus shape is a budget-capped 100 MW plant model under a real OpenADR 3.1 VTN and a real MQTT DSX Flex broker. With node sleep available, that closed scenario set records zero time over the grid cap (Proposition 5, plant model plus real protocol). The loss is the native enzyme, the coin-cell sleep floor, and a runtime whose first object is the envelope. Without node sleep, idle GPUs alone miss a deep cut (scenario E: 96 min over cap). Lemma D is the mechanism: if idle import already exceeds the cap, levers that leave nodes powered cannot meet it. Node sleep is feasibility. The deployment stays resource-optimized central. Dedicated water, power, and hyperscale cooling are not required by design.
+
+The path to the state of the art on this fabric is the order above. Price \(J(m|q)\) before launch. Bind the contract to the live cap. Count HBM movement in the envelope. Refuse or defer work that would violate \(B\). The answer that commits is the best one. That is the metabolic state of the art on an existing CUDA datacenter. It is not a new joule record on GB300 or Rubin silicon.
+
+### 12.3 MCU and Cortex-M class edge
+
+Cold-chain tags are Cortex-M class parts. This is where the proven pack measures the enzyme, and where a bare image still pays an interface tax if it is not the Klere schedule.
+
+The digital enzyme maps directly. On a Cortex-M4, emulator-measured, 12 features: enzyme families with early exit take 1,723 instructions per decision; an int8 MLP takes 2,451 at matched accuracy. On SmellNet, 50 foods, five sequential groups, no revisit, enzymes hold 77.7% where the MLP falls to 18.4%. That protocol is the sequential-learning property under a fixed budget (Proposition 2). It is not a universal end of catastrophic forgetting. Physics-informed features are part of the same leaf. The bit-enzyme variant uses no multiplies.
+
+\(J(m|q)\) on the tag has a short menu. Known context and known refuse close on Lookup or Formula. The enzyme is the residual recognition leaf. A generative model is not the substrate. The no-pretrain sentence is this path only (Proposition 7). SLA-bounded control is the metabolic schedule: heater duty and MCU sleep inside the coin-cell envelope, with thermal feedback on the heater. Drift upload is a scheduled act inside that same envelope. This study does not publish a separate radio joule.
+
+\(E_{\mathrm{mem}} + E_{\mathrm{compute}}\): the published 1,723 is the compute term. SRAM movement is in the budget whether or not the emulator printed it. A classifier decision at about 92 nJ is calculated from the STM32U3 CoreMark datasheet figure (15.5 µA/MHz at 3.3 V). It is not a board package meter. On the metabolic schedule of about 9.6 readings per day, the sleep floor dominates the heater: heater about 3.0 µW, STM32U3 sleep about 6.9 µW, tag total about 10 µW, CR2032 life about 8.1 years on the capacity model (datasheet plus schedule model, Proposition 3). The life figure is an estimate. The instruction count is emulator-measured. The accuracy protocol is real.
+
+The interface tax depends on who owns the schedule. A bare Cortex-M image pays the vendor HAL, the RTOS if one is linked, the fixed SRAM crossings, and a meter that stops at instructions. A float copy of the same decision is an extra precision tax. It is not the enzyme the emulator counted. Latency is the instruction path, not a network round trip. Meter honesty is mandatory: emulator counts are not joules. When Klere owns the schedule, this fabric sits inside the home, and the tax collapses to the physics that remains: sleep current, heater physics, and the calculated 92 nJ. The MCU is the edge plant of the product. It is not a second product company. That is why the home is still the lowest tax, including here.
+
+Against full Klere, a tag alone loses the OpenADR and DSX Flex service and the gateway router. Those live on the resource-optimized central and on the CPU host. The class is the two plants. Against an int8 MLP on the same core, the enzyme path is the result this pack stands on. The MLP is the control.
+
+The path to the state of the art on this fabric: family index, early exit, abundance decay; physics-informed features; a schedule chosen for sleep current; Lookup and Formula before any off-tag model; refuse the next heater pulse when Value of Information does not pay. Do not promote the emulator to `measured_j`. Chicken-spoilage numbers are not published.
+
+### 12.4 CPU, WASM, and lookup-formula hosts
+
+Appendix B places the \(J(m|q)\) router on a CPU or gateway today. That host is existing fabric. WASM is the portable sandbox form of the same host: a table and a closed form inside a linear memory, in a browser or an edge gateway. No WASM joule is in this pack. None is invented here.
+
+The native leaves are Lookup and Formula. Mixture of Limits puts them first for a reason that is algebraic. Lemma A: when two mechanisms measure the same quantity, the lower energy at equal or lower variance wins for every non-negative stake. A table that holds the coordinate beats a calculation. A closed form beats a model. An enzyme binary can run as integer code on the CPU. That is a faithful port of the algorithm. It is not the tag's sleep physics, and it is not a GPU kernel.
+
+The SLA-bounded lever on this host is the gateway's cap. The estimator of \(J\) is Lookup or Formula and is capped. Over the cap, the default gear runs. A heavy estimator does not. Open entropy goes to Model last, and Model last is a call to another fabric, made only when this host does not pretend to close. \(E_{\mathrm{mem}} + E_{\mathrm{compute}}\) on a formula is usually the copy, not the arithmetic. A sandbox crossing into WASM linear memory is \(E_{\mathrm{mem}}\). A covered coordinate that never opens a model never pays HBM.
+
+The interface tax is the runtime. Process boundary or WASM sandbox, plus the JS boundary when the host is a browser, plus the gateway RPC when the host is a service. Each copy is data movement. Precision is the table's precision. A sandbox float that rounds a certified quantity violates `never_lower_precision` and is refused. Latency is the call overhead and the cache miss. For a covered coordinate that overhead is still the short path, because the alternative is a model round trip. Meter honesty: this row is software and calculation. There is no package `measured_j` for a WASM leaf.
+
+Against Klere-native the gain is reach. The class runs where there is no GPU, no Cortex-M, and no custom silicon. Answers that were thought to require a model become reachable when the grammar covers the coordinate. That is zero-shot under grammar, scoped to the covered leaf, not a claim about robot planning. The loss is the plants. A WASM table is not a coin-cell tag and not an OpenADR campus. Klere remains the home that binds those plants. The CPU or WASM host is how the same law runs on ordinary computers.
+
+The path to the state of the art on this fabric is the standing rule. Don't calculate what can be looked up. Don't guess what can be calculated. Don't spend hard-guessing effort on an easy guess. Price the residual with \(J(m|q)\). The state of the art on a CPU or WASM host is the covered answer under \(B\). It is not a smaller model.
+
+### 12.5 FPGA and existing accelerator cards
+
+`board_synth_claimed=false`. This study has no FPGA board-synthesis meter and no package `measured_j` from an accelerator card. This section does not add one. Existing cards are still a fabric the class can be hosted on. The path is a mechanism. It is not a bitstream result.
+
+A bit-enzyme uses no multiplies. Lookup is a table. A binding check with early exit is a fixed datapath. Those shapes are what LUT logic and on-card memory hold. That is the mapping. It is not a place-and-route report. \(J(m|q)\) stays on the host CPU. The card does not become the router. SLA-bounded levers stay on the control plane. A card that narrows a certified quantity to meet a power rail or a timing constraint violates `never_lower_precision` and is refused.
+
+\(E_{\mathrm{mem}} + E_{\mathrm{compute}}\) on a card is, until a meter says otherwise, the host link plus on-card memory movement. PCIe or on-board DMA can exceed the on-fabric operation. Count that crossing in \(J\) or do not call the card. The interface tax is that link, the vendor toolchain, and the driver runtime. Fixed-point width is chosen so the contract holds. Pipeline fill is the latency term. Early exit pays only when the card can return before the full pipeline. This study did not measure that return. Meter honesty is the empty field. A programmed part elsewhere in the catalog is not a Metabolic Intelligence joule.
+
+Against Klere-native the gain, when a card is already in the rack, is a deterministic leaf for a binding check or a lookup, without launching a GPU kernel for a covered coordinate. The loss is the designed schedule, the proven pack (Cortex-M emulator and real protocols, not a card), and any right to quote card watts. Hyperscale support plants are still not required. A card in a lean host does not create a water plant.
+
+The path to the state of the art on this fabric: keep the router and the contract on Klere or on the CPU gateway that obeys the same law; place only a leaf the card executes without lowering precision; refuse the call when link energy would violate \(B\); leave `measured_j` empty until a labeled meter returns. That is the metabolic state of the art on accelerator cards that already exist. It is not a placed-and-routed energy claim.
+
+### 12.6 Neuromorphic, analog in-memory, and photonic substrates
+
+These substrates exist. Some of them ship. They sit on the dual hardware map. They are not a second definition of Metabolic Intelligence, and they do not eat the class (Appendix F). Computers are hardware. The class runs on whatever hardware spends the joules. Each citation below was already verified in this study. Each keeps its label. None is this pack's `measured_j`.
+
+| Substrate | Already verified in this study | Label |
+|---|---|---|
+| Hala Point | Intel, 17 Apr 2024. 1,152 Loihi 2 processors, 1.15 billion neurons, stated maximum 2,600 W | **Vendor.** Not `measured_j` |
+| Analog in-memory ALBERT | Chen et al., *Nature Communications*, 30 Sep 2025, doi:10.1038/s41467-025-63794-4. A 14 nm analog inference chip running ALBERT | **Their demonstration.** Not this pack's meter |
+| Photonic processor | Ahmed et al., *Nature*, 9 Apr 2025, doi:10.1038/s41586-025-08854-x. ResNet, BERT, and an Atari workload | **Their demonstration.** Substrate only. Not `measured_j` |
+| Tsetlin ASIC | Tunheim et al., arXiv:2501.19347, 31 Jan 2025. All-digital 65 nm accelerator, 8.6 nJ per MNIST frame | **Their silicon measurement.** Edge cousin. Not the enzyme. Not OpenIE `measured_j` |
+
+Sparse clause teams, energy descent, analog in-memory multiply, and photonic matrix ops are what those devices compute. A digital enzyme is a binding check with abundance and early exit. The Tsetlin machine is a cousin on the edge. It is not the enzyme, and it does not supply the obtain-router or the OpenADR envelope. Analog ALBERT and photonic BERT show a transformer workload running on a new device. They show the device. They do not show Mixture of Limits.
+
+\(J(m|q)\) stays on the host. Spike cost, analog settle, and a photonic multiply are \(\mu(p,H)\) for a residual leaf. They are not the metabolic envelope \(B\), and they are not campus import joules. SLA-bounded levers do not move inside the neuron, the crossbar, or the mesh. If the device cannot hold `never_lower_precision`, the leaf is refused. \(E_{\mathrm{mem}} + E_{\mathrm{compute}}\): these substrates are built to cut data movement, which is the Horowitz term, and that cut is their claim. On the host side of the link, movement remains. This study does not add a measured saving.
+
+The interface tax is the shim and the crossing. A Loihi graph, an analog programming model, a photonic compile, or the Tsetlin accelerator's datapath is the runtime tax. Metabolic Intelligence does not become the vendor SDK. Hala Point's stated maximum of 2,600 W is Intel's system figure. It is a vendor description of a machine. It is not a per-answer joule, and it is not evidence that the host link is free. Precision is the device's precision, including analog variation. The contract holds or the work is refused. There is no rounding discount on the committed answer. Latency is event time, settle time, or time of flight. The SLA is the host's. A faster device that returns an uncertified answer is outside the envelope. Meter honesty is the label column. Shipping neuromorphic gas or odour nanojoule figures are not in this citation set. This study does not invent them. Section 6 already places shipping neuromorphic microcontroller audio and radar parts above the tag's metabolic schedule. That comparison is datasheet plus schedule model against a vendor class. It is not a new cite.
+
+Against Klere-native the gain is a lower \(\mu(p,H)\) on a leaf whose mechanism matches the substrate. The gain belongs to the citation that measured or announced it. The loss is everything that makes the class: the envelope, the obtain order, the tag schedule, and the grid service. None of those four citations contain that stack.
+
+The path to the state of the art on this fabric: Klere, or a CPU gateway under the same law, keeps \(B\), \(J(m|q)\), and the contract. The substrate executes only the residual leaf that matches. Work that would violate the envelope is refused or deferred. The answer that commits is the best one. State of the art here is that composition. It is not a claim that this pack metered Hala Point, the 14 nm analog chip, the photonic processor, or the 65 nm Tsetlin ASIC.
+
+Adiabatic and reversible machines stay on Appendix B as a pointed path. This section does not add a citation for them.
+
+### 12.7 One answer, six hosts
+
+The comparison is against Klere-native. It is not against a degraded answer. On every fabric the committed answer is the same object: the superior answer under \(B\). Alternate fabric changes the interface tax and changes \(\mu(p,H)\). It does not change the utility of what commits. Klere is where the tax is lowest and where the product lives. Metabolic Intelligence is how the same class is the state of the art on the GPU fleet, the Cortex-M tag, the CPU and WASM lookup host, the accelerator card, and the substrates already cited. Confinement to one chip family is false. A Faustian cheaper commit is false. Hyperscale water and power are not required by design.
+
+Soft-ref path: `board_synth_claimed=false`. Estimates are not `measured_j`.
+
+---
+
+## 13. Review answered by construction
 
 Metabolic Intelligence does not bargain the answer down. Klere is the product that builds the class. The envelope is the physical condition under which the superior answer is obtained. The points below are mechanisms of that class, stated as law. Pack numbers stay in their evidence class: emulator counts, datasheet schedules, protocol tests, plant models, calculations. `board_synth_claimed=false` because meters are the measurement instrument of the solution. Package `measured_j` is written when a meter returns. No shunt joules are invented. Chicken-spoilage Anwar numbers are not published.
 
-### 12.1 A priori difficulty
+### 13.1 A priori difficulty
 
 The obtain router prices cost before spend. \(J(m|q)\) is that estimate. The estimator is a Lookup or Formula gear. Its compute is capped so meta-compute cannot eat \(B\). If the estimate of the estimator exceeds the cap, the router takes the default gear and does not run a heavy estimator.
 
-### 12.2 Enzyme capacity
+### 13.2 Enzyme capacity
 
 Family index, early exit, and abundance decay are the capacity control. The sequential learning bound is part of the enzyme. Garbage collection is decay of abundance. Cortex-M4 counts in §5 are emulator-measured instructions for the family-index path. They are the compute term of that control.
 
-### 12.3 Non-monotonic utility
+### 13.3 Non-monotonic utility
 
 Levers do not assume a smooth utility of energy. Certified and interactive work runs to close or to refuse. Deferrable work is what pauses. A breakthrough task is not aborted because a linear spend line was crossed. The answer that commits is the best one. The envelope is not a Faustian discount.
 
-### 12.4 Two ledgers
+### 13.4 Two ledgers
 
 Compile-time synthesis energy and the serve-time envelope are both counted. Tag microwatts (§6, datasheet plus schedule model) are the serve-time envelope. Offline synthesis sits on the compile ledger \(E(x)\). Dual accounting is the law. Compile joules stay on the compile ledger. Serve joules stay on the serve ledger.
 
-### 12.5 Contract-bounded levers
+### 13.5 Contract-bounded levers
 
 A contract declares invariants: `never_lower_precision`, `max_deferral`. Grid follow happens inside the contract. Shed is last, and only outside the invariant. The ordered levers in §8 are that law on the lean campus. They refuse or defer work that would violate the envelope. They do not degrade the certified answer.
 
-### 12.6 Edge sync inside the envelope
+### 13.6 Edge sync inside the envelope
 
 Drift upload is a scheduled act inside the metabolic budget, under the same sleep and heater discipline as the rest of the tag. It is inside the CR2032 envelope. The published schedule (about 10 µW, datasheet plus schedule model) is the envelope those acts share. This study does not add a separate radio joule.
 
-### 12.7 Energy is memory plus compute
+### 13.7 Energy is memory plus compute
 
 The energy metric is \(E_{\mathrm{mem}} + E_{\mathrm{compute}}\). Instruction counts are a compute term only. Memory movement is in the budget. Horowitz (2014) places practical CMOS energy in data movement: on the order of 10 pJ for an internal cache access or a functional operation, and 1–2 nJ for a DRAM access, in that plenary's technology frame. Those are literature orders for the physics of moving data. They are not this pack's `measured_j`.
 
-### 12.8 Thermal and process loop
+### 13.8 Thermal and process loop
 
 The control loop is live. On the campus service, power-model bias is learned (plant model: +5 MW on a hot day). On the edge, the metabolic schedule includes thermal feedback: heater duty follows the thermal state, inside the same envelope. That loop is metabolic control.
 
-### 12.9 Open entropy is Model LAST
+### 13.9 Open entropy is Model LAST
 
 A bounded domain is the class. Work covered by Lookup, Formula, or Solver closes there. Open entropy goes to Model LAST. That order is the architecture.
 
-### 12.10 Primitive distillation
+### 13.10 Primitive distillation
 
 Grammars and formulas are extracted from traces and installed as Lookup, Formula, or enzyme. Human craft of those leaves is not the long-term path. Sutton's Bitter Lesson (2019) says general methods that scale with compute overtake hand-built features. This class answers that lesson by distillation into Lookup, Formula, and enzyme. It does not answer it with uncapped pretrain.
 
-### 12.11 Tier meters
+### 13.11 Tier meters
 
 Energy is reported by tier. When a meter returns, the package field `measured_j` is that reading. Until then the row stays an estimate, a datasheet, an emulator count, a protocol test, or a plant model. Estimates stay estimates.
 
 ---
 
-## 13. Corrections log
+## 14. Corrections log
 
 Condensed from the Metabolic Intelligence handoff corrections log. Withdrawn claims are stated plainly.
 
@@ -726,11 +854,11 @@ Chicken-spoilage Anwar numbers stay **unpublished** (no licence).
 
 ---
 
-## 14. Measurement classes
+## 15. Measurement classes
 
 Evidence classes used in this study: **real protocol**, **emulator-measured**, **datasheet**, **measured-kernel model**, **looked-up**, **calculation**, **plant model**, **estimate**. Estimates ≠ `measured_j`. Soft-ref path: `board_synth_claimed=false`.
 
-Tier meters are how the solution reports energy (§12.11). Package `measured_j` is written when a meter returns. Until then the row stays in the class below. Stake order on the synthesis ledger, for the next meter readings:
+Tier meters are how the solution reports energy (§13.11). Package `measured_j` is written when a meter returns. Until then the row stays in the class below. Stake order on the synthesis ledger, for the next meter readings:
 
 1. One GB300 pool for a day (energy-per-answer band; campus-scale value of the meter).
 2. Vera Rubin chat curve from a metered pool or AISimulate once Rubin-supported.
@@ -742,9 +870,11 @@ Tag figures are datasheet plus schedule plus emulator. Campus figures are curves
 
 ---
 
-## 15. Conclusion and relation to Mixture of Limits product
+## 16. Conclusion and relation to Mixture of Limits product
 
-**Metabolic Intelligence** teaches a budget-native class: physics-informed, test-time, zero-shot under grammar, sequential / super learning without mandatory pretrain, dual-mapped to GPUs/MCUs today and to neuromorphic / analog / photonic / adiabatic substrates next. The envelope is the physical condition under which the superior answer is obtained. It is not a cheaper answer. The mechanisms are stated as law in [Review answered by construction](#review-answered-by-construction). Designed for the **edge** and the **resource-optimized central datacenter** — not the uncapped hyperscale campus. At those energy budgets, dedicated water, power, and hyperscale cooling plants are **not required** (design consequence of the class + pack evidence: µW tags; grid-following lean campus — not invented liters saved). Digital enzymes prove the class at microwatts. The OpenADR / DSX Flex service proves the class at a budget-capped 100 MW lean plant. The \(J(m\|q)\) router makes the standing obtain rule executable. The economic argument binds free-at-margin digital inference to scarce joules and shared ecosystems. The market value proposition names who buys tags, lean-campus flexibility, and the software stack **through Klere**—without selling unmetered numbers or inventing live product features from a thin landing page. The argument a skeptic must answer is [Why this is the future](#why-this-is-the-future). Dismissals and their evidence class are in Appendix F. Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`.
+How that class is the state of the art on every fabric that already exists, and what interface tax each host charges relative to Klere, is [State of the art on every existing compute fabric](#12-state-of-the-art-on-every-existing-compute-fabric).
+
+**Metabolic Intelligence** teaches a budget-native class: physics-informed, test-time, zero-shot under grammar, sequential / super learning without mandatory pretrain, dual-mapped to GPUs/MCUs today and to neuromorphic / analog / photonic / adiabatic substrates next. The envelope is the physical condition under which the superior answer is obtained. It is not a cheaper answer. The mechanisms are stated as law in [Review answered by construction](#13-review-answered-by-construction). Designed for the **edge** and the **resource-optimized central datacenter** — not the uncapped hyperscale campus. At those energy budgets, dedicated water, power, and hyperscale cooling plants are **not required** (design consequence of the class + pack evidence: µW tags; grid-following lean campus — not invented liters saved). Digital enzymes prove the class at microwatts. The OpenADR / DSX Flex service proves the class at a budget-capped 100 MW lean plant. The \(J(m\|q)\) router makes the standing obtain rule executable. The economic argument binds free-at-margin digital inference to scarce joules and shared ecosystems. The market value proposition names who buys tags, lean-campus flexibility, and the software stack **through Klere**—without selling unmetered numbers or inventing live product features from a thin landing page. The argument a skeptic must answer is [Why this is the future](#why-this-is-the-future). Dismissals and their evidence class are in Appendix F. Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`.
 
 Companions stay distinct. [Mixture of Limits](/papers/mol/) navigates Lookup → Formula → Solver → Model LAST and owns the product path (`mol.yaml` / `mol run` / A1–A14; [openIE-dev/mixture-of-limits](https://github.com/openIE-dev/mixture-of-limits)). [Notational Intelligence](/papers/ni/) owns certify-before-commit. [Satiation](/papers/satiation/) owns Economic Reality of Satiation. This study owns the envelope and actuators that make those floors bind when food is watched on a coin cell and when a campus must shed watts without lying about meters.
 
@@ -810,7 +940,7 @@ Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`. Living f
 33. Klere product home. https://klere.ai . Thin public access framing as of this writing; not a shipped feature catalog. Research owns MEI class; Klere owns embodiment.
 34. ML.ENERGY v3.0 (Jan 2026). Energy leaderboard. **Historical-ish** relative to Sep 2026 field curves. Evidence: **M**.
 35. Trillium Labs. https://trilliumlabs.org/ . Unveiled 2 Oct 2026. Nathan Lambert, executive director; Tom Zick, president. Launch sources say the lab is building open post-training recipes. They do not publish a recipe. Not Metabolic Intelligence. Not a Klere product. Evidence: **V**. See refs 51–52.
-36. Sutton, R. (2019). The Bitter Lesson. http://www.incompleteideas.net/IncIdeas/BitterLesson.html . Answered in this class by distillation into Lookup, Formula, and enzyme (§12.10), not by uncapped pretrain.
+36. Sutton, R. (2019). The Bitter Lesson. http://www.incompleteideas.net/IncIdeas/BitterLesson.html . Answered in this class by distillation into Lookup, Formula, and enzyme (§13.10), not by uncapped pretrain.
 
 ### Post-transformer corridor (checked 2 Oct 2026)
 
@@ -904,6 +1034,7 @@ Spell-outs and working definitions used in this study. First use in the body als
 | **OpenADR** | Open Automated Demand Response protocol (3.1 VTN used in pack demos). |
 | **DSX Flex** | Emerald / NVIDIA-shaped campus flexibility MQTT service used as peer actuator shape in pack demos. |
 | **AEMA** | AI Energy Management Alliance (Emerald AI, Google, NVIDIA). No published protocol spec as of 1 Oct 2026 radar. |
+| **Interface tax** | What a host charges to run Metabolic Intelligence when that host is not the designed home: data movement, API or runtime shim, precision conversion, added latency, and meter honesty. Klere pays the lowest tax. The tax is not permission to commit a worse answer. |
 | **board_synth_claimed** | Repository honesty flag. False means no FPGA board synthesis/meter claim. |
 | **measured_j** | Package joule field populated only when a labeled meter returns a reading (Metered). |
 | **Dual ledger** | Compile-time synthesis energy and serve-time envelope, both counted. Tag µW is serve-time. Offline synthesis is compile-time. |
@@ -932,7 +1063,7 @@ Sell these as **separate evidence classes**. Do not upgrade a row without changi
 | Surface | What is proven underneath | What is still roadmap |
 |---|---|---|
 | Edge / tag SKU | Enzyme + schedule pack evidence | Klere packaging, ops licence, field SKU |
-| Lean-campus operator product | OpenADR/DSX demos + scenario table; contract invariants are class law (§12.5) | Operator console and multi-site packaging |
+| Lean-campus operator product | OpenADR/DSX demos + scenario table; contract invariants are class law (§13.5) | Operator console and multi-site packaging |
 | Obtain / stack gateway | Router math, soft-ref `mol` companions, speed-tier synthesis | Packaged gateway DX beyond research surfaces |
 | Dynamo 1.5 / DPS live actuators | Vendor docs as envelope peers | Live wired power-cap actuators in Klere |
 
@@ -954,7 +1085,7 @@ Sell these as **separate evidence classes**. Do not upgrade a row without changi
 
 ### E.5 Mechanisms of the class (design law)
 
-These rows are the construction in §12. They are not open work. Evidence class on any number stays with the pack row that measured it.
+These rows are the construction in §13. They are not open work. Evidence class on any number stays with the pack row that measured it.
 
 | Mechanism | Law |
 |---|---|
@@ -969,6 +1100,7 @@ These rows are the construction in §12. They are not open work. Evidence class 
 | Model LAST | Open entropy goes to Model LAST. That is the architecture. |
 | Primitive distillation | Traces yield Lookup, Formula, and enzyme. Not uncapped pretrain. |
 | Tier meters | `measured_j` when a meter returns. Estimates stay estimates. |
+| Fabric portability | The same envelope, enzymes, obtain-router, and contract levers are the class on every existing fabric (§12). The fabric sets \(\mu(p,H)\) and the interface tax. It does not set a cheaper answer. Klere is the home. The class is not confined to Klere. |
 
 
 
@@ -986,7 +1118,7 @@ The no-pretrain sentence is scoped to the digital-enzyme path (Proposition 7). O
 
 ### F.3 "Neuromorphic hardware will eat this."
 
-Neuromorphic, analog in-memory, photonic, and adiabatic machines are substrates on the hardware map (Appendix B), not a rival definition of the class. Computers are hardware. The class has to run on whatever hardware spends the joules. It runs today on MCUs and GPUs. It points at post-von Neumann parts where energy-based and latent settle map more natively. Innatera Pulsar, a shipping neuromorphic microcontroller, is about 0.4–0.6 mW on audio and radar in the pack notes, far above a duty-cycled tag near 10 µW (datasheet plus schedule model). Shipping neuromorphic gas or odour nanojoule figures were not found. A substrate can lower \(\mu(p,H)\). It does not by itself choose Lookup before Model, follow an OpenADR signal, or stop when Value of Information is zero. Evidence class: **vendor** (Pulsar class) plus **datasheet / schedule model** (tag). Not a claim that neuromorphic parts are useless.
+Neuromorphic, analog in-memory, photonic, and adiabatic machines are substrates on the hardware map (Appendix B), not a rival definition of the class. Computers are hardware. The class has to run on whatever hardware spends the joules. It runs today on MCUs and GPUs. It points at post-von Neumann parts where energy-based and latent settle map more natively. Innatera Pulsar, a shipping neuromorphic microcontroller, is about 0.4–0.6 mW on audio and radar in the pack notes, far above a duty-cycled tag near 10 µW (datasheet plus schedule model). Shipping neuromorphic gas or odour nanojoule figures were not found. A substrate can lower \(\mu(p,H)\). It does not by itself choose Lookup before Model, follow an OpenADR signal, or stop when Value of Information is zero. Evidence class: **vendor** (Pulsar class) plus **datasheet / schedule model** (tag). Not a claim that neuromorphic parts are useless. The interface tax of those substrates, and of the fabrics the class already runs on, is §12.
 
 ### F.4 "Logical Intelligence already did energy-based models."
 
