@@ -1,6 +1,6 @@
 ---
 title: "The search for JouleOS"
-deck: "A comprehensive review and design guide for secure compute infrastructure in the age of AI. One intent stream, lowered onto the coordinate it measured. WebAssembly is a binary instruction format for a stack-based virtual machine. The WebAssembly runtime is the operating system that is seen."
+deck: "The problems of existing compute fabric and software, stated as a review and a design guide. Those problems are the need for a solution like JouleOS."
 id: jouleos
 status: "Research study"
 author: "David Charlot, Open Interface Engineering"
@@ -13,7 +13,7 @@ board_synth_claimed: false
 
 A comprehensive review and design guide for secure compute infrastructure in the age of AI.
 
-OpenIE research study five. OpenIE research study. Written 3 October 2026 (ET). The working copy of this draft lives with the study notes. The JouleOS repository is read and not modified.
+OpenIE research study five. Written 3 October 2026 (ET).
 
 Computers are hardware. Software is applied engineering written for that hardware under constraints. Energy to run is the only true metric of computer intelligence. All other factors collapse to zero.
 
@@ -21,13 +21,15 @@ Computers are hardware. Software is applied engineering written for that hardwar
 
 ## 1. What this study is
 
-This study walks the reader from the compute stack to a destination that already exists as a development tree: JouleOS. It is a review of how secure compute is composed today. It is a design guide for what a machine must speak if an agent is to be scheduled, metered, and refused under law. It is not a ranking of kernels. It is not a slogan about green computing.
+This study is the account of existing compute fabric and the software written for it. The problems of that fabric and that software are the point. A machine that schedules, meters, and refuses an agent under law does not exist on the stack as it is composed today. The need those problems state is a solution of the JouleOS kind. The study is not a document of that project.
+
+It is a review of how secure compute is composed today. It is a design guide for what a machine must speak if an agent is to be scheduled, metered, and refused under law. It is not a ranking of kernels. It is not a slogan about green computing.
 
 The OpenIE thesis is stated once and held for the rest of the file. Energy to run is the only true metric of computer intelligence. Latency, token counts, accuracy benches, and brand names are not the unit that decides whether a commit is allowed. They collapse when the meter and the refusal are real. Mixture of Limits is the schedule, the meter, and the refusal on that machine. Metabolic Intelligence is the envelope of the best answer that fits the energy the hardware can spend. Neither name is abbreviated in this draft.
 
 The review depends on an internal working note that drew the unsettled stack before any destination was named: `the OpenIE stack working note`, with the sift in `the OpenIE convergence working note`. Those files are working notes. They are not published papers. Where a fact lives only there, this draft cites the working note and does not pretend a journal published it.
 
-The destination depends on the JouleOS tree as it exists on the user's machine, read and not modified: `the JouleOS development tree`. The standards that name the schedule, the law, the commit, and the isolation ladder are the Transaction Science page sources and the JouleContract draft: the `*-transaction-science-web` trees beside that project, and `JouleContract draft 0.3`.
+The standards that name the schedule, the law, the commit, and the isolation ladder are the Transaction Science page sources and the JouleContract draft: the `*-transaction-science-web` trees, and `JouleContract draft 0.3`. JouleOS is named where a solution of that kind is the answer the problems require.
 
 This study does not invent measured joules. When the JouleOS README states Lawful near one microjoule, LlmInLoop near five millijoules, or a roughly one-hundred-thousand-fold ratio against an LLM-everything corpus, those figures are quoted as that project's own claims and labeled as such. Estimator readings are not measured joules. Nominal ranges drawn for application pillars on a standards site are not metered joules and are not twenty-two operating systems.
 
@@ -294,9 +296,12 @@ OpenShell can sandbox, supervise, prove policy, and add BlueField Sentry without
 
 ---
 
-## 12. Destination: the JouleOS development project
+## 12. What the problems require
 
-The destination is not a slogan. It is a tree. Read what the tree contains. Do not invent what it does not contain.
+The problems in sections 2 through 11 are one problem. The floor is assumed fixed. The agent is wrapped. Energy to run is not the refusal condition. Capability is ambient. The meter is an estimator treated as a measurement, or it is absent. The instruction contract, the machine's law, the build, the guest, the translation, and the human surface are separate products that do not share one intent.
+
+A solution like JouleOS is what those problems require. Hardware, runtime, language, and surface are one artifact. One intent stream is lowered onto the coordinate the runtime measured. The WebAssembly runtime is the operating system that is seen. The bare-metal kernel is the coordinate where the law is native. JouleOS is a development project of that kind. This study does not document the project. It states the need the project answers.
+
 
 ### 12.1 What the README says it is
 
@@ -351,7 +356,7 @@ A design guide ends in requirements a reader can check, not in a brand preferenc
 7. Require a commit with precondition, postcondition, invariant, frame, and joule ceiling: JouleContract.
 8. Require the lowest S0 to S7 rung that satisfies, with grants, meter tags HwShunt or ModelBased or Estimator, and attestation: the sandbox standard.
 9. Require Mixture of Limits as schedule, meter, and refusal on the machine, and Metabolic Intelligence as the best answer inside the energy envelope, with no offload-to-server rule pretending to be thrift.
-10. Describe JouleOS as the Unified Design Architecture runtime: one intent stream lowered per measured coordinate, the WebAssembly runtime as the surface that is seen, and the bare-metal kernel as the coordinate where the law is native rather than as a second product.
+10. Require a solution of the JouleOS kind: one intent stream lowered per measured coordinate, the WebAssembly runtime as the operating system that is seen, and the bare-metal kernel as the coordinate where the law is native.
 
 Energy to run is the only true metric of computer intelligence. All other factors collapse to zero.
 
@@ -398,4 +403,4 @@ Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file s
 - Any claim that a WebAssembly runtime on a host already owns that host's privileged mode. The runtime is the operating system that is seen. The host kernel remains the host's law.
 - Any treatment of Transaction Science application-pillar tables or nominal jLow/jHigh ranges as metered joules or as twenty-two operating systems.
 
-End of study draft, 3 October 2026, with the Unified Design Architecture destination.
+End of study draft, 3 October 2026. The subject is the fabric and the software. A solution like JouleOS is what they require.
