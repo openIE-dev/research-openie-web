@@ -25,7 +25,7 @@ Energy to run is the only true metric of computer intelligence. Token price, par
 
 The path is a sequence. A procedure starts in a specialist bureau. It then becomes a routine on the machine that already holds the work. It then becomes ordinary, because it is cheap, local, and paired to hardware people already have. Spell check finished that sequence. Detection of a nonword and proposal of a correction are computer intelligence. They are not a metaphor for some later system. The capability reached ordinary writing: the editor, the browser, the phone keyboard. It did not stay as a service only a lab could rent.
 
-The future of computer intelligence is that pattern. The many are more than 7 billion people. The few are under 500 million people. Scarcity pricing holds the capability for the few. Global access gives it to the many. Spell check already did the second.
+The future of computer intelligence is that pattern. The many are more than 7 billion people. The few are fewer than 500 million people. Scarcity pricing holds the capability for the few. Global access gives it to the many. Spell check already did the second.
 
 The four companion studies say how a capability should behave once it is on that path. [Mixture of Limits](/papers/mol/) chooses the gear, and the gear has to sit on hardware that is available, accessible, and capable. [Notational Intelligence as Commit Law](/papers/ni/) owns the commit: a suggestion is a proposal until it is accepted. [Satiation and Scarcity after Free AI](/papers/satiation/) owns the stop: once the token is kept, further candidates do not change the written predicate. [Metabolic Intelligence](/papers/mei/) owns the envelope: the envelope is the physical condition of the superior answer, not a cheaper answer purchased by degrading the result. Klere ([klere.ai](https://klere.ai)) is the product home of that class. It is not a prison. Spell check already finished the path in editors that are not Klere.
 
@@ -246,6 +246,81 @@ The OpenIE claim, for this row and for the six before it: software written for t
 
 The on-device theses line up with that claim, and they do not replace the shipment record. Hooker (2020; 2021) says an idea wins by fitting the hardware that exists. Apple's report fits an approximately 3 billion parameter model to Apple silicon and leaves the larger model on Private Cloud Compute. Liquid AI's LFM2 report searches architectures under measured latency and memory on a phone CPU and a laptop CPU, and ships the weights for those runtimes. PrismML's public claim is that a ternary model is the artifact that fits a local device, at the ratios the firm states. Spell check remains the finished example. The dictionary probe needed none of these models. It needed the machine that already held the text.
 
+### 2.11 Dated prices, and how long each one is known to have lasted
+
+The regimes in Section 2.9 are names. This section is the price tape. Each row is a price a source prints, the date that source attaches, and what that source says about how long the price lasted. Where the source is one advertisement, the duration is the gap until the next advertisement that compilation prints. That gap is not a continuous price audit. Where two sources disagree, both are printed. Where a price is not on the page, it is not filled in. The living table is [sc-price-01](/living/spellcheck/#sc-price-01).
+
+**Desk calculators, Sumlock Comptometer and Anita.** The advertisement index at anita-calculators.info is a compilation of dated ads. It is not a price list kept by the firm.
+
+Autumn 1949. A Plus adding-machine advertisement on that index says "Now Plus for only $100." The index does not say how long that price lasted.
+
+October 1961. The Anita Mk 8 was launched at the Business Efficiency Exhibition in London. Office Magazine, December 1961, pages 1244-1245, reprinted on the same site, states the price as £335 and states that orders would be taken from 1 January 1962. The review says the machine was not yet generally available.
+
+May 1963. An advertisement on the index prices the Anita Mk 8 at £355 and the Comptometer 993s at £265. The index does not record an Mk 8 price between the December 1961 review and this advertisement. The interval is the silence between those two dates, not a certificate that £335 held.
+
+January 1964. The index prices the Mk 8 at £365. February 1964. The Comptometer 993 series is priced as a range, £160 to £330.
+
+January 1965. The index prices the Mk 8 at £335 and the Mk 9 at £425. The Mk 8 advertised price is £335 in the December 1961 review, £355 in May 1963, £365 in January 1964, and £335 in January 1965. Each figure is one advertisement or one review. None of them says the price was constant between dates.
+
+November 1965. The index prices the Mk 9 at £425 and states that more than 16,000 Anitas were in use, and that the Anita was introduced in January 1962. From the January 1965 advertisement to this one, the Mk 9 price on the index is unchanged at £425. That is two observations. It is not a monthly audit.
+
+July 1966. The index prices the Mk 10 at £460.
+
+June 1968. "Focus on ANITA," an advertisement in Office Methods and Machines, June 1968, page 41, is cited by the model pages at anita-calculators.info. Those pages transcribe three amounts from it. Mk 10: £480. The Mk 10 page quotes the advertisement: "Price £480." Mk 11: £298. Mk 12: £480. The index still does not print the amounts. The Mk 9 amount is not on the Mk 9 page. That page prices the 1964 introduction at £425, citing "BEE '64," Industrial Electronics, November 1964, page 521. That £425 is the introduction price. It is not a transcription of the June 1968 line. The June 1968 Mk 9 amount stays blank. July 1966 had priced the Mk 10 at £460. June 1968 prices it at £480. Those are two advertisements. The months between them are not an audit.
+
+April 1969 and May 1969. The index prices the Anita 1000 at £285 in both months. July 1969. The Anita 1010 is £320. February 1971. The Anita 1000LSI is £192 and the 1010LSI is £250. These are later models. A lower price on a later model is not a cut in the Mk 8's price.
+
+**HP-35.** Three sources agree on the introduction price and disagree on the calendar of the cuts.
+
+Computer History Museum, "This Day in History," 4 January 1972: Hewlett-Packard introduced the HP-35 and it sold for $395.
+
+Datamath Calculator Museum, HP-35 page: announced 4 January 1972, available February 1972, MSRP $395 in January 1972, MSRP $295 in January 1974. The same page says that early in 1975 the price tag dropped to $195 and the calculator was discontinued soon after the HP-21. It also prices the HP-65, introduced 19 January 1974, at $795. It does not list a May 1973 cut and it does not list $225.
+
+Craig Finseth, hpdata file for the HP-35A: introduction price $395. The introduction date in that file is 1 July 1972, taken from a "wall of fame," with a possible 1 February 1972. Discontinuation 1 February 1975 at $195. The file's price-change lines are 1 May 1973 at $295, 1 May 1974 at $225, and 1 February 1975 at $195. A note in the same file says the price went to $295 when the HP-45A was introduced. Datamath dates the HP-45 to May 1973, which is the month Finseth uses for $295, while Datamath's own MSRP line still shows $295 as a January 1974 figure.
+
+Printed as durations, and only inside each source. Finseth's list, if taken as that file's schedule: $395 from the introduction date in that file until 1 May 1973; $295 from 1 May 1973 until 1 May 1974; $225 from 1 May 1974 until 1 February 1975; $195 on the discontinuation date. The introduction date in that file is itself marked uncertain. Datamath's list: $395 as the January 1972 MSRP, and $295 as the January 1974 MSRP. The page does not say the price held at $395 for every month in between. $195 is "early in the year 1975," not a day. The months between the January 1974 figure and that 1975 figure are not itemized.
+
+This paper does not choose Finseth's May 1973 date over Datamath's January 1974 date.
+
+**TI-2500 Datamath.** Datamath Calculator Museum, TI-2500 Version 1 page: announced April 1972 at a suggested retail price of $149.95. First customers received calculators in June 1972 at Neiman-Marcus and Sanger-Harris in Dallas. Formal introduction 21 September 1972. The suggested retail price was reduced to $119.95 by the date of that introduction. The page does not give the day of the cut. The documented window for $149.95 in this source runs from the April announcement to 21 September 1972. Later cuts after $119.95 are not on this page. The same page names the Bowmar 901B, introduced September 1971, and gives it no price. Datamath's HP-35 page names the HP 9100A of 1968 and gives it no price. The prices are on other pages, read below.
+
+**HP 9100A.** The Computer History Museum scan of the 1968 brochure, collection 102646164, prints "Priced at $4900" and "hp 9100A Calculator, Price: $4900." The HP Memory Project states the same $4900 as the price on page 130 of the 1969 catalog, and states that the model was introduced in the September 1968 Hewlett-Packard Journal. The brochure does not say how long $4900 lasted. A later price is not taken from a page this paper did not read.
+
+**Bowmar 901B.** Datamath Calculator Museum, Bowmar 901B page: date of introduction September 1971, new price $240. The page states a suggested retail price of $240.00 for the 901B launched on the TMS0103. The duration of $240 is not on the page.
+
+**The calculator as software.** Wikipedia, VisiCalc, as of the page read for this paper. Personal Software began selling VisiCalc in mid-1979 for under US$100. The same article cites a formal introduction scheduled for the National Computer Conference, 4 to 7 June 1979. It also cites Peter Jennings: the first Apple II copy, version 1.37, went out on 17 October 1979. Both dates are in the article. This paper does not collapse them.
+
+The article states that by 1982 the price had risen from $100 to $250, citing Softline, March 1982. It does not give the month of the increase. The $100 figure and the $250 figure are two dated reports. The duration of each price between those reports is not in the article. A separate sentence in the article calls it the $100 VisiCalc against a $2,000 Apple II. That $2,000 is the machine, from later retellings in the article, not a second software price.
+
+The same article says financial modeling languages on timesharing systems cost $20,000, citing a UCLA teaching case. That is a bureau price for a different product class, not VisiCalc's invoice.
+
+Sales figures in the article, kept as the article states them: more than 39,000 copies in January 1983, still the best-selling software product; 5,700 copies in December 1983. Lotus Development acquired Software Arts and ended sales. The lead dates that end to 1985. A cited InfoWorld item is dated 2 June 1986 and titled as VisiCalc discontinued. Both dates stay.
+
+DOS Days, Lotus 1-2-3 page: the program was released in January 1983. The page does not state the January 1983 price. Gregg Williams, Byte, December 1982, pages 182-198, reviewed a prerelease copy. The review, as reprinted, says Lotus had fixed the price of 1-2-3 at $495, and that the program would be available for the IBM Personal Computer sometime next month. That $495 is the price fixed before commercial sale, printed in December 1982. It is not a receipt dated 26 January 1983. DOS Days still does not print a January price of its own. It states that Release 2.2 and Release 3 cost the same, $495, the same price as Microsoft Excel 2.1 and Borland Quattro Pro at the time of that comparison. How long $495 had already lasted, and whether the 1983 price was $495, are not on that page. Release 4 for DOS, May 1994, added a spell checker. That is a feature date, not a price.
+
+**Spell check as a product, then as a line that disappeared.**
+
+Wikipedia, "Spell checker," as read for this paper. In 1961 Les Earnest's project used a list of 10,000 acceptable words. February 1971: Ralph Gorin wrote SPELL for the DEC PDP-10 at Stanford's Artificial Intelligence Laboratory, in assembly, and made it publicly accessible. The article states no price. A laboratory program is not a retail schedule.
+
+The first personal-computer checkers appeared in 1980. WordCheck for Commodore systems was released in late 1980 in time for an advertisement in Compute!, January 1981, issue 8, page 119. That page was read. The advertisement is from Micro Computer Industries, Ltd. The WordCheck copy says the program is available for CBM and PET 32K machines with dual disk drives, and then: "List price is only $200.00." The same page also prices Create-A-Base and an inventory program at $200.00. The WordCheck figure is the sentence attached to the dual-disk line. The Wikipedia article does not quote it. This paper does.
+
+The article says the market for standalone packages was short-lived, and that by the mid-1980s WordStar and WordPerfect had incorporated spell checkers. "Short-lived" and "by the mid-1980s" are the article's own bounds. They are not a pair of invoice dates. No standalone dollar price is in the article.
+
+Sector Software's Spellbound, 1987, and Microsoft Word since Word 95, are the article's examples of interactive checking. The article gives neither a price. The citation for the Word 95 clause is Raymond Chen, The Old New Thing, 22 June 2026. Word 95 is the 1995 product. The separate price of its checker is not stated because the checker was inside the word processor.
+
+Edward Mendelson, "A Chronology of Versions," WPDOS. March 1980: SSI*WP for Data General minicomputers, US$5,500 per copy. The chronology does not say that copy included a spelling checker. That $5,500 is the word processor. Its duration is not stated.
+
+26 November 1982: WordPerfect 2.20 for the IBM PC. No price in the chronology. DOS Days says that version featured a 30,000-word dictionary. The page does not name a spell-check command for 2.20. October 1983: WordPerfect 3.0 for DOS. Mendelson's command list for that version assigns Alt-F5, when no text is selected, to Spellcheck. A spell-check command was in the shipping DOS product by October 1983. DOS Days states that version 3.0 was released at Comdex in October 1983 for $495. The chronology does not print that price. DOS Days does not, in the 3.0 paragraph, name the spell checker. The command list does. The $495 is the word processor. The spell command is not given its own price.
+
+30 November 1992: WordPerfect 5.2 for Windows includes Grammatik 5. 6 January 1993: WordPerfect acquires Reference Software International, author of Grammatik. Inclusion is the end of a separate grammar invoice inside that product. The chronology does not state Grammatik's earlier retail price. Two earlier retail prices are on other pages. The Chicago Tribune, 10 April 1988, states that Grammatik II costs $89. START, volume 4 number 4, November 1989, states Grammatik III at $99, from Reference Software. Neither page is a price for Grammatik 5 at the acquisition. That standalone price stays blank.
+
+Wikipedia, History of Microsoft Word. Word 1.0, released October 1983, costing $395, citing John Markoff, InfoWorld, 30 May 1983. That is the word processor. The article does not say whether version 1.0 contained a spelling checker. Richard Brodie, who wrote much of version 1, said in an October 2008 email interview published by Benj Edwards on 7 November 2015: "Besides 1.0, 1.1 added mail merge, 2.0 simply added a bundled spell checker that we purchased." On that statement, version 1.0 did not include the spell checker. Version 1.1 added mail merge. Version 2.0 added a spell checker the firm purchased. Michal Necasek, OS/2 Museum, 26 May 2018, identifies the spell checker in DOS Word 2.x and 3.x, sold roughly from 1985 to 1987, as licensed from Software Heaven, Inc. The $395 is not a spell-check price. Word for Windows, November 1989, USD $498. The article does not say how long $498 lasted. Microsoft Write for the Atari ST retailed at $129.95. One stated retail price. No duration.
+
+The elimination already stated in Section 2.9 is the last price on this tape. Hunspell's license price as a library is zero under the tri-license the README states. The README does not publish a prior retail schedule. Apple's system-wide checker, described in the spell-check article as the operating system taking over spelling fixes, has no separate price in that article. The duration of "no separate price" begins, on that article's wording, by the mid-1980s for the incorporated word-processor checkers. The operating-system checker is not dated to a day in the article.
+
+
+The companion laws build the rest of the path. Spell check is the existence proof. Mixture of Limits keeps Model last and demands a fabric that is available, accessible, and capable. Notational Intelligence makes the suggestion a proposal until commit. Satiation stops when the token is kept. Metabolic Intelligence keeps the envelope as the condition of the superior answer, on the edge and in a resource-optimized central fabric, and refuses the trade that would worsen the answer to make it cheap. Klere is where that class has a product home. Spell check already ran the path elsewhere. The home is not a prison.
+
 ## 3. Definitions and methods
 
 ### 3.1 The path, as a test
@@ -336,6 +411,10 @@ Klere is the product home of Metabolic Intelligence. Public klere.ai, as the com
 More than 7 billion people, and fewer than 500 million people. The opinion is what happens when technology is built for global access instead of priced by scarcity. Class: opinion.
 
 
+### 4.13 What would be a result and is not
+
+No fraction of written words, no language-coverage survey, no energy per suggestion, and no headcount of frontier-datacenter renters is reported. The category figures in Section 2.10 are the publishers' figures. They are not that headcount, and they are not a derivation of 7B+ or <500M. Those measurements of renters belong to a different study.
+
 ### 4.14 Claim SC-13. The money prices are in a race. They are not the metric
 
 Epoch AI (2025) and Emberson and Roodman (2026) report rapid declines in the money price of a fixed measured performance, at the rates named in Section 2.9. Nordhaus (2007) reports a much longer decline in the money price of computation, at the magnitudes named there. Class: literature. This paper does not refit either series. A token price, a parameter count, a moat rent, and an access fee are money-side factors. The theory says commoditization drives them to zero as separate charges. The cited series show the direction for computation in the long record and for inference in the recent record. They are not a curve this paper estimated.
@@ -388,10 +467,6 @@ The Anita, HP 9100A, HP-35, Bowmar 901B, TI-2500, VisiCalc, and Lotus prices in 
 ### 4.26 Claim SC-25. Spell check lost its separate price inside products whose own prices are only partly known
 
 WordCheck's January 1981 advertisement lists $200.00 for CBM and PET 32K machines with dual disk drives. WordPerfect 3.0, October 1983, has a spell-check command on Mendelson's list. DOS Days states the Comdex price of that version as $495. That is the word processor. Brodie states that Word 2.0 added a purchased spell checker and that 1.1 added mail merge, so version 1.0 did not include the checker. The October 1983 price of $395 is the word processor. Grammatik II costs $89 in the Chicago Tribune of 10 April 1988. Grammatik III is $99 in START, November 1989. Hunspell's separate license price is zero. The June 1968 Anita Mk 9 amount stays blank. A Grammatik 5 standalone price at the 1993 acquisition stays blank. Class: price history.
-
-### 4.13 What would be a result and is not
-
-No fraction of written words, no language-coverage survey, no energy per suggestion, and no headcount of frontier-datacenter renters is reported. The category figures in Section 2.10 are the publishers' figures. They are not that headcount, and they are not a derivation of 7B+ or <500M. Those measurements of renters belong to a different study.
 
 ## 5. Discussion
 
@@ -449,81 +524,6 @@ It finished because the routine was cheap, local, and paired to hardware people 
 
 The machines in Section 2.10 are the reach of each choice. Phones, PCs, consumer GPUs, datacenter accelerators, microcontrollers, shipping NPUs, and the prior generation still in hand each have their own source. Software written for the machine people already run is global access. A price that requires the rental is scarcity. Energy to run is the only true metric of computer intelligence once the separate charge is gone. Token price, parameter count, moat rent, and access fees go with that charge. What remains is joules.
 
-
-### 2.11 Dated prices, and how long each one is known to have lasted
-
-The regimes in Section 2.9 are names. This section is the price tape. Each row is a price a source prints, the date that source attaches, and what that source says about how long the price lasted. Where the source is one advertisement, the duration is the gap until the next advertisement that compilation prints. That gap is not a continuous price audit. Where two sources disagree, both are printed. Where a price is not on the page, it is not filled in. The living table is [sc-price-01](/living/spellcheck/#sc-price-01).
-
-**Desk calculators, Sumlock Comptometer and Anita.** The advertisement index at anita-calculators.info is a compilation of dated ads. It is not a price list kept by the firm.
-
-Autumn 1949. A Plus adding-machine advertisement on that index says "Now Plus for only $100." The index does not say how long that price lasted.
-
-October 1961. The Anita Mk 8 was launched at the Business Efficiency Exhibition in London. Office Magazine, December 1961, pages 1244-1245, reprinted on the same site, states the price as £335 and states that orders would be taken from 1 January 1962. The review says the machine was not yet generally available.
-
-May 1963. An advertisement on the index prices the Anita Mk 8 at £355 and the Comptometer 993s at £265. The index does not record an Mk 8 price between the December 1961 review and this advertisement. The interval is the silence between those two dates, not a certificate that £335 held.
-
-January 1964. The index prices the Mk 8 at £365. February 1964. The Comptometer 993 series is priced as a range, £160 to £330.
-
-January 1965. The index prices the Mk 8 at £335 and the Mk 9 at £425. The Mk 8 advertised price is £335 in the December 1961 review, £355 in May 1963, £365 in January 1964, and £335 in January 1965. Each figure is one advertisement or one review. None of them says the price was constant between dates.
-
-November 1965. The index prices the Mk 9 at £425 and states that more than 16,000 Anitas were in use, and that the Anita was introduced in January 1962. From the January 1965 advertisement to this one, the Mk 9 price on the index is unchanged at £425. That is two observations. It is not a monthly audit.
-
-July 1966. The index prices the Mk 10 at £460.
-
-June 1968. "Focus on ANITA," an advertisement in Office Methods and Machines, June 1968, page 41, is cited by the model pages at anita-calculators.info. Those pages transcribe three amounts from it. Mk 10: £480. The Mk 10 page quotes the advertisement: "Price £480." Mk 11: £298. Mk 12: £480. The index still does not print the amounts. The Mk 9 amount is not on the Mk 9 page. That page prices the 1964 introduction at £425, citing "BEE '64," Industrial Electronics, November 1964, page 521. That £425 is the introduction price. It is not a transcription of the June 1968 line. The June 1968 Mk 9 amount stays blank. July 1966 had priced the Mk 10 at £460. June 1968 prices it at £480. Those are two advertisements. The months between them are not an audit.
-
-April 1969 and May 1969. The index prices the Anita 1000 at £285 in both months. July 1969. The Anita 1010 is £320. February 1971. The Anita 1000LSI is £192 and the 1010LSI is £250. These are later models. A lower price on a later model is not a cut in the Mk 8's price.
-
-**HP-35.** Three sources agree on the introduction price and disagree on the calendar of the cuts.
-
-Computer History Museum, "This Day in History," 4 January 1972: Hewlett-Packard introduced the HP-35 and it sold for $395.
-
-Datamath Calculator Museum, HP-35 page: announced 4 January 1972, available February 1972, MSRP $395 in January 1972, MSRP $295 in January 1974. The same page says that early in 1975 the price tag dropped to $195 and the calculator was discontinued soon after the HP-21. It also prices the HP-65, introduced 19 January 1974, at $795. It does not list a May 1973 cut and it does not list $225.
-
-Craig Finseth, hpdata file for the HP-35A: introduction price $395. The introduction date in that file is 1 July 1972, taken from a "wall of fame," with a possible 1 February 1972. Discontinuation 1 February 1975 at $195. The file's price-change lines are 1 May 1973 at $295, 1 May 1974 at $225, and 1 February 1975 at $195. A note in the same file says the price went to $295 when the HP-45A was introduced. Datamath dates the HP-45 to May 1973, which is the month Finseth uses for $295, while Datamath's own MSRP line still shows $295 as a January 1974 figure.
-
-Printed as durations, and only inside each source. Finseth's list, if taken as that file's schedule: $395 from the introduction date in that file until 1 May 1973; $295 from 1 May 1973 until 1 May 1974; $225 from 1 May 1974 until 1 February 1975; $195 on the discontinuation date. The introduction date in that file is itself marked uncertain. Datamath's list: $395 as the January 1972 MSRP, and $295 as the January 1974 MSRP. The page does not say the price held at $395 for every month in between. $195 is "early in the year 1975," not a day. The months between the January 1974 figure and that 1975 figure are not itemized.
-
-This paper does not choose Finseth's May 1973 date over Datamath's January 1974 date.
-
-**TI-2500 Datamath.** Datamath Calculator Museum, TI-2500 Version 1 page: announced April 1972 at a suggested retail price of $149.95. First customers received calculators in June 1972 at Neiman-Marcus and Sanger-Harris in Dallas. Formal introduction 21 September 1972. The suggested retail price was reduced to $119.95 by the date of that introduction. The page does not give the day of the cut. The documented window for $149.95 in this source runs from the April announcement to 21 September 1972. Later cuts after $119.95 are not on this page. The same page names the Bowmar 901B, introduced September 1971, and gives it no price. Datamath's HP-35 page names the HP 9100A of 1968 and gives it no price. The prices are on other pages, read below.
-
-**HP 9100A.** The Computer History Museum scan of the 1968 brochure, collection 102646164, prints "Priced at $4900" and "hp 9100A Calculator, Price: $4900." The HP Memory Project states the same $4900 as the price on page 130 of the 1969 catalog, and states that the model was introduced in the September 1968 Hewlett-Packard Journal. The brochure does not say how long $4900 lasted. A later price is not taken from a page this paper did not read.
-
-**Bowmar 901B.** Datamath Calculator Museum, Bowmar 901B page: date of introduction September 1971, new price $240. The page states a suggested retail price of $240.00 for the 901B launched on the TMS0103. The duration of $240 is not on the page.
-
-**The calculator as software.** Wikipedia, VisiCalc, as of the page read for this paper. Personal Software began selling VisiCalc in mid-1979 for under US$100. The same article cites a formal introduction scheduled for the National Computer Conference, 4 to 7 June 1979. It also cites Peter Jennings: the first Apple II copy, version 1.37, went out on 17 October 1979. Both dates are in the article. This paper does not collapse them.
-
-The article states that by 1982 the price had risen from $100 to $250, citing Softline, March 1982. It does not give the month of the increase. The $100 figure and the $250 figure are two dated reports. The duration of each price between those reports is not in the article. A separate sentence in the article calls it the $100 VisiCalc against a $2,000 Apple II. That $2,000 is the machine, from later retellings in the article, not a second software price.
-
-The same article says financial modeling languages on timesharing systems cost $20,000, citing a UCLA teaching case. That is a bureau price for a different product class, not VisiCalc's invoice.
-
-Sales figures in the article, kept as the article states them: more than 39,000 copies in January 1983, still the best-selling software product; 5,700 copies in December 1983. Lotus Development acquired Software Arts and ended sales. The lead dates that end to 1985. A cited InfoWorld item is dated 2 June 1986 and titled as VisiCalc discontinued. Both dates stay.
-
-DOS Days, Lotus 1-2-3 page: the program was released in January 1983. The page does not state the January 1983 price. Gregg Williams, Byte, December 1982, pages 182-198, reviewed a prerelease copy. The review, as reprinted, says Lotus had fixed the price of 1-2-3 at $495, and that the program would be available for the IBM Personal Computer sometime next month. That $495 is the price fixed before commercial sale, printed in December 1982. It is not a receipt dated 26 January 1983. DOS Days still does not print a January price of its own. It states that Release 2.2 and Release 3 cost the same, $495, the same price as Microsoft Excel 2.1 and Borland Quattro Pro at the time of that comparison. How long $495 had already lasted, and whether the 1983 price was $495, are not on that page. Release 4 for DOS, May 1994, added a spell checker. That is a feature date, not a price.
-
-**Spell check as a product, then as a line that disappeared.**
-
-Wikipedia, "Spell checker," as read for this paper. In 1961 Les Earnest's project used a list of 10,000 acceptable words. February 1971: Ralph Gorin wrote SPELL for the DEC PDP-10 at Stanford's Artificial Intelligence Laboratory, in assembly, and made it publicly accessible. The article states no price. A laboratory program is not a retail schedule.
-
-The first personal-computer checkers appeared in 1980. WordCheck for Commodore systems was released in late 1980 in time for an advertisement in Compute!, January 1981, issue 8, page 119. That page was read. The advertisement is from Micro Computer Industries, Ltd. The WordCheck copy says the program is available for CBM and PET 32K machines with dual disk drives, and then: "List price is only $200.00." The same page also prices Create-A-Base and an inventory program at $200.00. The WordCheck figure is the sentence attached to the dual-disk line. The Wikipedia article does not quote it. This paper does.
-
-The article says the market for standalone packages was short-lived, and that by the mid-1980s WordStar and WordPerfect had incorporated spell checkers. "Short-lived" and "by the mid-1980s" are the article's own bounds. They are not a pair of invoice dates. No standalone dollar price is in the article.
-
-Sector Software's Spellbound, 1987, and Microsoft Word since Word 95, are the article's examples of interactive checking. The article gives neither a price. The citation for the Word 95 clause is Raymond Chen, The Old New Thing, 22 June 2026. Word 95 is the 1995 product. The separate price of its checker is not stated because the checker was inside the word processor.
-
-Edward Mendelson, "A Chronology of Versions," WPDOS. March 1980: SSI*WP for Data General minicomputers, US$5,500 per copy. The chronology does not say that copy included a spelling checker. That $5,500 is the word processor. Its duration is not stated.
-
-26 November 1982: WordPerfect 2.20 for the IBM PC. No price in the chronology. DOS Days says that version featured a 30,000-word dictionary. The page does not name a spell-check command for 2.20. October 1983: WordPerfect 3.0 for DOS. Mendelson's command list for that version assigns Alt-F5, when no text is selected, to Spellcheck. A spell-check command was in the shipping DOS product by October 1983. DOS Days states that version 3.0 was released at Comdex in October 1983 for $495. The chronology does not print that price. DOS Days does not, in the 3.0 paragraph, name the spell checker. The command list does. The $495 is the word processor. The spell command is not given its own price.
-
-30 November 1992: WordPerfect 5.2 for Windows includes Grammatik 5. 6 January 1993: WordPerfect acquires Reference Software International, author of Grammatik. Inclusion is the end of a separate grammar invoice inside that product. The chronology does not state Grammatik's earlier retail price. Two earlier retail prices are on other pages. The Chicago Tribune, 10 April 1988, states that Grammatik II costs $89. START, volume 4 number 4, November 1989, states Grammatik III at $99, from Reference Software. Neither page is a price for Grammatik 5 at the acquisition. That standalone price stays blank.
-
-Wikipedia, History of Microsoft Word. Word 1.0, released October 1983, costing $395, citing John Markoff, InfoWorld, 30 May 1983. That is the word processor. The article does not say whether version 1.0 contained a spelling checker. Richard Brodie, who wrote much of version 1, said in an October 2008 email interview published by Benj Edwards on 7 November 2015: "Besides 1.0, 1.1 added mail merge, 2.0 simply added a bundled spell checker that we purchased." On that statement, version 1.0 did not include the spell checker. Version 1.1 added mail merge. Version 2.0 added a spell checker the firm purchased. Michal Necasek, OS/2 Museum, 26 May 2018, identifies the spell checker in DOS Word 2.x and 3.x, sold roughly from 1985 to 1987, as licensed from Software Heaven, Inc. The $395 is not a spell-check price. Word for Windows, November 1989, USD $498. The article does not say how long $498 lasted. Microsoft Write for the Atari ST retailed at $129.95. One stated retail price. No duration.
-
-The elimination already stated in Section 2.9 is the last price on this tape. Hunspell's license price as a library is zero under the tri-license the README states. The README does not publish a prior retail schedule. Apple's system-wide checker, described in the spell-check article as the operating system taking over spelling fixes, has no separate price in that article. The duration of "no separate price" begins, on that article's wording, by the mid-1980s for the incorporated word-processor checkers. The operating-system checker is not dated to a day in the article.
-
-
-The companion laws build the rest of the path. Spell check is the existence proof. Mixture of Limits keeps Model last and demands a fabric that is available, accessible, and capable. Notational Intelligence makes the suggestion a proposal until commit. Satiation stops when the token is kept. Metabolic Intelligence keeps the envelope as the condition of the superior answer, on the edge and in a resource-optimized central fabric, and refuses the trade that would worsen the answer to make it cheap. Klere is where that class has a product home. Spell check already ran the path elsewhere. The home is not a prison.
 
 ## References
 
