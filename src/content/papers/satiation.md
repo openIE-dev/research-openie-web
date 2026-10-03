@@ -86,7 +86,7 @@ The operational translation requires a predicate the model does not know unless 
 
 Baumol (1967) analyzes unbalanced growth. If one sector's productivity rises and another's does not, the relative cost of the stagnant sector rises, and it can dominate expenditure even when its quantity grows slowly. Health care, education, and live performance are the usual examples. Later health-economics papers dispute magnitudes and mechanisms. This paper uses Baumol for a negative instruction: do not infer, from a fall in token price, that care has become a software good. Care remains dependent on time, trust, and liability in the ordinary institutional sense. A documentation model can increase recorded activity, which is a Baumol-relevant ambiguity: measured output can move while the care predicate does not.
 
-The labor literature associated with David Autor decomposes jobs into tasks that machines may or may not perform. This archive does not pin a single Autor article as the source, so this paper does not attribute a quotation or a table to a specific Autor paper. The pinned statement is Acemoglu and Restrepo (2019), "Automation and New Tasks: How Technology Displaces and Reinstates Labor," Journal of Economic Perspectives 33(2), https://www.aeaweb.org/articles?id=10.1257/jep.33.2.3. They argue that displacement reduces labor's task share and that new tasks can restore it. A completeness-oriented stop is closer to finishing a task than to creating a new engagement task. An agent loop with no stop can raise activity measures without a productivity gain. That possibility is consistent with their warning about weak automation. It is not a parameter estimated here.
+The labor literature associated with David Autor decomposes jobs into tasks that machines may or may not perform. The pinned statement is Acemoglu and Restrepo (2019), "Automation and New Tasks: How Technology Displaces and Reinstates Labor," Journal of Economic Perspectives 33(2), https://www.aeaweb.org/articles?id=10.1257/jep.33.2.3. They argue that displacement reduces labor's task share and that new tasks can restore it. A completeness-oriented stop is closer to finishing a task than to creating a new engagement task. An agent loop with no stop can raise activity measures without a productivity gain. That possibility is consistent with their warning about weak automation.
 
 ### 2.3 Attention and engagement
 
@@ -94,11 +94,11 @@ Wu's book "The Attention Merchants" (publisher page: https://www.penguinrandomho
 
 ### 2.4 Historical cycles
 
-Technology markets often show a speculative phase, a use phase, and a later commodity phase. The evidence is uneven, and this paper does not treat the sequence as a law of nature.
+Technology markets often show a speculative phase, a use phase, and a later commodity phase. The evidence is uneven.
 
 Quinn (2019), "Technological revolutions and speculative finance: evidence from the British Bicycle Mania," Cambridge Journal of Economics 43(2), 271-294, https://doi.org/10.1093/cje/bey029, studies cycle-share prices from 1895 to 1900. Prices rose by over 200 percent and then fell by more than 75 percent. The paper's result is about speculative finance and fundamentals, not about a measured "enough bicycle" predicate for households. Using it as a picture of race-phase finance is supported. Using it as a proof of transport satiation is not. Earlier notes in this project sometimes said "Quinn and Turner" for this episode. The verified article above is Quinn (2019). A different Quinn article on cornering risk thanks John Turner in the acknowledgments. That is not coauthorship of the Cambridge Journal paper. This paper cites the article that was checked.
 
-Cars, scheduled aviation, and television have commodity-like markets in the everyday sense: used vehicles, yield-managed seats, and panels sold as inputs to content. This paper does not cite a single identification study that pins a bliss point for each of those goods. The rows are historical orientation. They are not regressions. Airline yield management after deregulation is a pricing institution for a seat, which is evidence of a commodity market in seats, not evidence that passengers' demand for travel is globally satiated.
+Cars, scheduled aviation, and television have commodity-like markets in the everyday sense: used vehicles, yield-managed seats, and panels sold as inputs to content. The rows are historical orientation. They are not regressions. Airline yield management after deregulation is a pricing institution for a seat, which is evidence of a commodity market in seats, not evidence that passengers' demand for travel is globally satiated.
 
 Pew Research Center's mobile fact sheet (https://www.pewresearch.org/internet/fact-sheet/mobile/) is the saturation source used for phones. The project archive records U.S. smartphone ownership near 91 percent in the 2024 and 2025 fact-sheet readings. A reader who quotes the figure should open the live sheet, because fact sheets are revised. High ownership is evidence of diffusion. It is not, by itself, evidence that marginal value of another phone camera is zero.
 
@@ -110,7 +110,7 @@ Epoch AI (2025), "LLM inference price trends," https://epoch.ai/data-insights/ll
 
 System One-class tools are relevant as a mechanism for a further price cut on decision problems with a known option set. The Laya product page describes that product class. It is not a completeness evaluation.
 
-A planning rule of thumb that frontier competence reaches cheaper devices in about six months is not a measured constant in this archive. This paper does not use it as a law. Distillation, quantization, and table-lookup inference (Ma et al., 2024; Wei et al., 2024) are published mechanisms by which a given competence can move to cheaper hardware. The speed is an empirical question per model pair.
+A planning rule of thumb that frontier competence reaches cheaper devices in about six months is not a measured constant in this archive. Distillation, quantization, and table-lookup inference (Ma et al., 2024; Wei et al., 2024) are published mechanisms by which a given competence can move to cheaper hardware. The speed is an empirical question per model pair.
 
 ### 2.6 Physical cost
 
@@ -148,7 +148,7 @@ The set-union in words is: the runtime refuses if the economic rule fires or the
 
 ### 3.2 What was done in this study
 
-This study is a structured reading. Sources are the citation spine checked in the project on 29 to 30 September 2026, the satiation notes, and the companion's software record. No new price index was built. No chore corpus was labeled. No agent was instrumented. No FPGA was synthesized. Methods that would make the operational definition empirical are listed in Section 3.3 so they are not confused with results.
+This study is a structured reading. Sources are the citation spine checked in the project on 29 to 30 September 2026, the satiation notes, and the companion's software record. Section 3.3 names the measurements that would make the operational definition empirical.
 
 Design rules in Section 4.4 are recommendations conditional on the definitions. They are not estimated treatment effects. A reader can reject a rule without rejecting Epoch's price series, and can accept the price series without accepting a product recommendation.
 
@@ -187,7 +187,7 @@ This paper adds a mapping, not a fourth stage. Economic Reality of Satiation, if
 
 Shannon (1959) defines a rate-distortion function: the least description rate that holds expected distortion at or below a chosen fidelity. The object is communication under a constraint the user states. It is not a demand curve for intelligence. The resemblance to this paper is only structural. A completeness predicate `C` is a hard fidelity: either the stated clauses hold, or they do not. A language-model loss is closer to an average distortion on a training distribution. Falling loss, and falling price at a fixed benchmark, can be read as movement along a rate-resource curve of the kind Kaplan et al. (2020) and Hoffmann et al. (2022) estimate for training. That movement does not choose `C` for a particular chore. Confusing benchmark distortion with chore completeness is the category error behind unbounded-seat plans for closed work.
 
-Cover and Thomas (2006) is the textbook path into rate-distortion if a reader wants the formal development. This paper does not estimate an `R(D)` for any agent. It uses the existence of the fidelity concept to keep two numbers apart: a score that can always be improved by a fraction, and a predicate that is already true.
+Cover and Thomas (2006) is the textbook path into rate-distortion if a reader wants the formal development. It uses the existence of the fidelity concept to keep two numbers apart: a score that can always be improved by a fraction, and a predicate that is already true.
 
 ### 2.9 Rebound taxonomy, without a new estimate
 
@@ -266,7 +266,7 @@ Baumol (1967) supplies the framework. Acemoglu and Restrepo (2019) supply the ta
 
 ### 4.7 Claim S-7. A sell-side note questions spend versus benefit
 
-The Goldman Sachs page named in Section 2.6 exists and frames the question in its title. No numeric extract is a result of this paper.
+The Goldman Sachs page named in Section 2.6 exists and frames the question in its title.
 
 ### 4.8 Claim S-8. The reference can encode both stop types
 
@@ -274,7 +274,7 @@ Schema and demo evidence are in the companion. `policy` and `budget_exceeded` ar
 
 ### 4.9 Claim S-9. Physical law is not priced to zero by Epoch
 
-Landauer (1961) and Horowitz (2014) support a permanent gap between an ideal erasure bound and CMOS practice. The companion's analytical model is a third object, neither the bound nor a board. S-9 says only that a citation of Epoch does not discharge a citation of Landauer. No numerical ratio of accelerator energy to `kT ln 2` is computed in this paper, because that ratio would require a stated device, workload, and temperature, which were not measured.
+Landauer (1961) and Horowitz (2014) support a permanent gap between an ideal erasure bound and CMOS practice. The companion's analytical model is a third object, neither the bound nor a board. S-9 says only that a citation of Epoch does not discharge a citation of Landauer.
 
 ### 4.10 Design rules, marked as design
 
@@ -329,7 +329,7 @@ Some goods are valued because they are not finished: status, open-ended art, res
 
 ### 5.3 Adversarial demand
 
-If the other party's gain is this party's loss, "enough" is not defined by a local checklist. Arms races and some security contests are in that class. This paper does not claim satiation there. Physical commit constraints can still apply: an unsafe action can be refused while the strategic demand remains open. Scope is part of the claim, not a footnote that cancels it.
+If the other party's gain is this party's loss, "enough" is not defined by a local checklist. Arms races and some security contests are in that class. Physical commit constraints can still apply: an unsafe action can be refused while the strategic demand remains open. Scope is part of the claim, not a footnote that cancels it.
 
 ### 5.4 Incomplete knowledge of done
 

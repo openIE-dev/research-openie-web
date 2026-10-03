@@ -111,7 +111,7 @@ Kukich (1992) organizes the field into the three problems named above. Nonword d
 
 McIlroy (1982) describes the word list behind the UNIX spelling checker. The abstract states the engineering constraint and the result. The checker may be used on minicomputers, so the list must be compact. Stripping prefixes and suffixes, hashing, and compression take a reduced list of 30,000 English words down to 26,000 16-bit machine words. Johnson's earlier checker looked up words of a document that was already on the machine. McIlroy's contribution, for this paper, is the pairing: the dictionary was compressed because the target was the minicomputer people would actually run, not a larger machine reserved for the job.
 
-Those word counts are his published counts. They are not a measurement taken for this study.
+Those word counts are his published counts.
 
 ### 2.3 A noisy channel is still a local program
 
@@ -192,7 +192,7 @@ For each category the questions are the same. Who has the machine, on the source
 
 **Phones and mobile SoC generations.** GSMA, The Mobile Economy 2025, counts 5.8 billion unique mobile subscribers at the end of 2024, a 71 percent penetration rate, and 4.7 billion mobile internet users. IDC's preliminary Worldwide Quarterly Mobile Phone Tracker of 13 January 2026 counts 1,260.3 million smartphones shipped in 2025, of which Apple shipped 247.8 million. IDC's 13 January 2025 release counted 1,238.8 million smartphones in 2024. The 2026 table restates 2024 as 1,236.3 million. Each release keeps its own total. Arm's annual report for the year ended 31 March 2025 states that Arm-based CPUs were in greater than 99 percent of the world's smartphones sold that fiscal year, and that customers had cumulatively shipped more than 310 billion Arm-based chips, from the smallest sensors to supercomputers. The cumulative figure is every Arm market. It is not a phone count, and the report does not split it into SoC generations.
 
-The 2025 handset is a current mobile SoC generation: Apple silicon, Qualcomm Snapdragon, MediaTek, Samsung, Google Tensor. This paper does not invent a die shipment for each vendor. IDC counts branded handsets. The subscriber count is people with a mobile subscription, not a count of SoCs.
+The 2025 handset is a current mobile SoC generation: Apple silicon, Qualcomm Snapdragon, MediaTek, Samsung, Google Tensor. IDC counts branded handsets. The subscriber count is people with a mobile subscription, not a count of SoCs.
 
 The software stack on that handset already includes a local checker. UITextChecker and Android `SpellCheckerService` are the spelling case. A model on the same handset uses Apple Core ML and the Foundation Models framework, Android LiteRT and NNAPI, Qualcomm's QNN compiler, ExecuTorch, or llama.cpp. Apple's 9 June 2025 account, aligned to the 17 July 2025 technical report, describes an on-device foundation model of about 3 billion parameters, compressed to 2 bits per weight, and a server mixture-of-experts model that runs on Private Cloud Compute. Liquid AI's LFM2 report designs dense models from 350 million to 2.6 billion parameters, and an 8.3 billion mixture-of-experts model with 1.5 billion active, for ExecuTorch, llama.cpp, and vLLM, and times them on a Samsung Galaxy S25 with a Snapdragon 8 Elite. PrismML states that its Ternary Bonsai 2 27B, which it says is built on Qwen3.8 27B, retains 98.2 percent of the full-precision counterpart at a 9 times smaller footprint, 5.9 GB. Those ratios are PrismML's. This paper does not remeasure them.
 
@@ -218,7 +218,7 @@ On the 28 January 2026 call, Nadella said Microsoft's fleet includes NVIDIA, AMD
 
 Who has it: the buyers who contract for that revenue. Hood said much of the GPU capital is already contracted for the useful life of the hardware. That is a rental market. The stack on the accelerator is CUDA, ROCm, and the serving stacks that assume the card, including TensorRT-LLM and vLLM. This category is the frontier stack. Everyone else's interface to it is an API, a distilled model, or a quantised model. The OpenIE claim for this row: software that requires the accelerator reaches the renters. Software written for the generations in the other rows reaches the people who hold those machines. Spell check did the second. The first is the bureau stage.
 
-**MCUs, tiny parts, and embedded parts.** Arm's cumulative figure of more than 310 billion chips includes sensors and embedded devices. The annual report does not split that cumulative figure into microcontrollers. This paper does not invent the split. IC Insights, 29 March 2022, states that 2021 deliveries reached 30.9 billion microcontrollers, after unit growth of 12 percent that year. That is a 2021 shipment. A 2025 microcontroller census is still not in the sources used here. The same note forecasts 35.8 billion units in 2026. The forecast is not used as a current count.
+**MCUs, tiny parts, and embedded parts.** Arm's cumulative figure of more than 310 billion chips includes sensors and embedded devices. The annual report does not split that cumulative figure into microcontrollers. IC Insights, 29 March 2022, states that 2021 deliveries reached 30.9 billion microcontrollers, after unit growth of 12 percent that year. That is a 2021 shipment. The same note forecasts 35.8 billion units in 2026. The forecast is not a current count.
 
 MLCommons, 17 September 2025, published MLPerf Tiny v1.3. The suite measures neural networks that are typically under 100 kilobytes. The release contains 70 results across five tests, including 27 power results, from Kai Jiang, Qualcomm, STMicroelectronics, and Syntiant. Five hardware platforms were benchmarked for the first time. The tests cover image classification, visual wake words, keyword spotting, anomaly detection, and a streaming wake-word task.
 
@@ -279,8 +279,6 @@ Datamath Calculator Museum, HP-35 page: announced 4 January 1972, available Febr
 Craig Finseth, hpdata file for the HP-35A: introduction price $395. The introduction date in that file is 1 July 1972, taken from a "wall of fame," with a possible 1 February 1972. Discontinuation 1 February 1975 at $195. The file's price-change lines are 1 May 1973 at $295, 1 May 1974 at $225, and 1 February 1975 at $195. A note in the same file says the price went to $295 when the HP-45A was introduced. Datamath dates the HP-45 to May 1973, which is the month Finseth uses for $295, while Datamath's own MSRP line still shows $295 as a January 1974 figure.
 
 Printed as durations, and only inside each source. Finseth's list, if taken as that file's schedule: $395 from the introduction date in that file until 1 May 1973; $295 from 1 May 1973 until 1 May 1974; $225 from 1 May 1974 until 1 February 1975; $195 on the discontinuation date. The introduction date in that file is itself marked uncertain. Datamath's list: $395 as the January 1972 MSRP, and $295 as the January 1974 MSRP. The page does not say the price held at $395 for every month in between. $195 is "early in the year 1975," not a day. The months between the January 1974 figure and that 1975 figure are not itemized.
-
-This paper does not choose Finseth's May 1973 date over Datamath's January 1974 date.
 
 **TI-2500 Datamath.** Datamath Calculator Museum, TI-2500 Version 1 page: announced April 1972 at a suggested retail price of $149.95. First customers received calculators in June 1972 at Neiman-Marcus and Sanger-Harris in Dallas. Formal introduction 21 September 1972. The suggested retail price was reduced to $119.95 by the date of that introduction. The page does not give the day of the cut. The documented window for $149.95 in this source runs from the April announcement to 21 September 1972. Later cuts after $119.95 are not on this page. The same page names the Bowmar 901B, introduced September 1971, and gives it no price. Datamath's HP-35 page names the HP 9100A of 1968 and gives it no price. The prices are on other pages, read below.
 
@@ -345,7 +343,7 @@ The many are more than 7 billion people. The few are fewer than 500 million peop
 
 ### 3.4 What was done
 
-The method is a reading of the primary sources in Section 2, plus a mapping onto the four companion laws. No new corpus was labeled. No program was timed for this study. No board was synthesized or metered. Package `measured_j` is unset. `board_synth_claimed` is false.
+The method is a reading of the primary sources in Section 2, plus a mapping onto the four companion laws.
 
 Evidence classes used below:
 
@@ -423,9 +421,9 @@ Epoch AI (2025) and Emberson and Roodman (2026) report rapid declines in the mon
 
 People paid a premium for a spelling checker. That product cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Hunspell's license price is zero, and the check runs as a local library inside ordinary editors (Hunspell README; Section 2.5 and Section 4.4). There is no residual token price for the nonword case the local gear closes. Class: project statement plus design. This is the completed automation example. It is not an illustration of a different product.
 
-### 4.16 Claim SC-15. What remains is joules, and they are not metered here
+### 4.16 Claim SC-15. What remains is joules
 
-After the separate money price is gone, the energy to run the routine remains. Class: design, tied to [Satiation](/papers/satiation/) for the money-versus-joule split and to [Metabolic Intelligence](/papers/mei/) for the envelope. This paper reports no `measured_j`. An estimate is not a measurement. `board_synth_claimed` stays false.
+After the separate money price is gone, the energy to run the routine remains. Class: design, tied to [Satiation](/papers/satiation/) for the money-versus-joule split and to [Metabolic Intelligence](/papers/mei/) for the envelope.
 
 ### 4.17 Claim SC-16. Phones are an annual shipment plus a subscriber base
 
@@ -512,7 +510,7 @@ IDC totals are preliminary and the next release restates the prior year. The Ste
 
 No board was synthesized or metered. No analytical energy is computed. `measured_j` is unset.
 
-Section 2.11 prints prices only from pages read for this paper. An advertisement index is not a monthly price audit. The June 1968 Anita Mk 9 amount is still absent. The model pages transcribe Mk 10, Mk 11, and Mk 12 from that advertisement and do not transcribe the Mk 9 line. Finseth's HP-35 schedule and Datamath's HP-35 MSRP lines are both printed. Neither is promoted to the other's calendar. The Byte price for 1-2-3 is the price fixed before commercial availability, not a 26 January 1983 receipt. Huang's Blackwell count is a stated shipment, not a line in the fiscal 2026 release. IC Insights' 30.9 billion microcontrollers are 2021 deliveries, not a 2025 census. Canalys prints a fourth-quarter 2024 unit count for AI-capable PCs and a full-year share without a full-year unit count.
+The June 1968 Anita Mk 9 amount is still absent. The model pages transcribe Mk 10, Mk 11, and Mk 12 from that advertisement and do not transcribe the Mk 9 line. Finseth's HP-35 schedule and Datamath's HP-35 MSRP lines are both printed. Neither is promoted to the other's calendar. The Byte price for 1-2-3 is the price fixed before commercial availability, not a 26 January 1983 receipt. Huang's Blackwell count is a stated shipment, not a line in the fiscal 2026 release. IC Insights' 30.9 billion microcontrollers are 2021 deliveries, not a 2025 census. Canalys prints a fourth-quarter 2024 unit count for AI-capable PCs and a full-year share without a full-year unit count.
 
 ## 7. Conclusion
 

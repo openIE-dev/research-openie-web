@@ -88,7 +88,7 @@ Lee (2022) argues that inventing notations can matter more than inventing additi
 
 This paper uses that lineage for one limited inference. If a notation is executable, some failures become ordinary data rather than unrepresented accidents. A typed refuse reason is an instance. It does not support the strong Sapir-Whorf claim that language determines thought. The strong claim is rejected in Section 5. The weak claim, which is Iverson's, is that an executable notation changes the cost of operations and the representability of errors.
 
-Chollet (2019) defines intelligence as skill-acquisition efficiency and grounds the definition in algorithmic information theory. That definition is about learning new skills, not about commit. It is cited so the paper does not confuse a frozen benchmark score with a theory of intelligence. This paper does not add an energy term to Chollet's definition and then treat the sum as measured.
+Chollet (2019) defines intelligence as skill-acquisition efficiency and grounds the definition in algorithmic information theory. That definition is about learning new skills, not about commit.
 
 ### 2.2 Information, description length, and physical cost
 
@@ -340,7 +340,7 @@ Ames, Alshiekh, Dawson, and the runtime-monitoring papers already define filters
 
 ### 5.7 Predictors and specialized inference chips
 
-World models reduce some prediction error and leave a residual. Specialized inference devices change the cost of proposals. Vendor throughput figures are vendor reports until an independent meter repeats them. This paper does not repeat them and does not rank the reference against those devices. The gate's job is the irreversible branch. If a device's only interface is a token stream, the commit record still has to live somewhere before actuators or irreversible tools run.
+World models reduce some prediction error and leave a residual. Specialized inference devices change the cost of proposals. Vendor throughput figures are vendor reports until an independent meter repeats them. The gate's job is the irreversible branch. If a device's only interface is a token stream, the commit record still has to live somewhere before actuators or irreversible tools run.
 
 ### 5.8 Analytical joules are not a costume for watts
 

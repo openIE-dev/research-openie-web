@@ -68,12 +68,12 @@ A gear that fails one test is not run on that host. The router does not promote 
 
 Lookup closes when the coordinate is already in a table the host can address. Horowitz (2014) places practical CMOS energy in moving that data, far above the Landauer ideal. The arithmetic is not the cost. The capable hosts are the ones that already hold an addressable array.
 
-| Host | What is available and accessible | What it is capable of | What this study does not claim |
+| Host | What is available and accessible | What it is capable of | What the host does not price |
 |---|---|---|---|
-| CPU | Ordinary addressable memory. The language is the host ISA. | A registry or table hit. Movement is the joule. | A package `measured_j` for a table hit |
-| Wasm | W3C WebAssembly Core Specification, version 3.0, [TR/wasm-core](https://www.w3.org/TR/wasm-core/) (consulted 2 Oct 2026). Linear memory is a contiguous byte array. Load and store are in the spec. | A table inside that array, in a browser or a standalone engine. | A joule. The spec has no energy model. No Wasm joule is invented here |
-| MCU | Flash and SRAM on the Cortex-M tag. The metabolic schedule is the duty cycle around the hit. | A known context or a known refuse, on-device, without an off-tag model. | That an emulator instruction count is a board joule |
-| FPGA | On-chip LUT and block RAM, when a card is already in the rack. | A fixed table, if the router stays off the card. | A bitstream energy. `board_synth_claimed=false` |
+| CPU | Ordinary addressable memory. The language is the host ISA. | A registry or table hit. Movement is the joule. | The joule of the table hit |
+| Wasm | W3C WebAssembly Core Specification, version 3.0, [TR/wasm-core](https://www.w3.org/TR/wasm-core/) (consulted 2 Oct 2026). Linear memory is a contiguous byte array. Load and store are in the spec. | A table inside that array, in a browser or a standalone engine. | Energy. The specification has no energy model |
+| MCU | Flash and SRAM on the Cortex-M tag. The metabolic schedule is the duty cycle around the hit. | A known context or a known refuse, on-device, without an off-tag model. | Board joules. An emulator count is an instruction count |
+| FPGA | On-chip LUT and block RAM, when a card is already in the rack. | A fixed table, if the router stays off the card. | Bitstream energy |
 
 The GPU is available and accessible for Lookup and is the wrong first host. A kernel launch moves weights through HBM to recover a coordinate a table already held. That launch is interface tax, not navigation.
 
@@ -428,7 +428,7 @@ Metabolic schedule (about 9.6 readings/day), October 2026 parts:
 
 Correction (honesty): earlier prose said "the heater is the cost." True for frequent readings. On the metabolic schedule the **MCU sleep floor** is the larger term. Choose the MCU for sleep current. Innatera Pulsar-class neuromorphic parts publish audio/radar milliwatts, not gas-tag microwatt schedules; they are peers on the post–von Neumann map, not drop-in tag winners today.
 
-Drift upload is a scheduled act inside that same sleep and heater discipline, inside the CR2032 envelope. It is not an extra drain beside the envelope. This study does not publish a separate radio joule. Heater duty is thermal feedback inside the same metabolic control. The published ~10 µW class figure stays datasheet plus schedule model.
+Drift upload is a scheduled act inside that same sleep and heater discipline, inside the CR2032 envelope. It is not an extra drain beside the envelope. Heater duty is thermal feedback inside the same metabolic control. The published ~10 µW class figure stays datasheet plus schedule model.
 
 Market timing (rules, not hype): FDA proposed FSMA 204 compliance move to 20 Jul 2028; Congress barred earlier enforcement. EU PPWR applies since 12 Aug 2026. These dates are the **market clock** for cold-chain observability buyers, not a product launch slogan.
 
@@ -969,7 +969,7 @@ Companions stay distinct. [Mixture of Limits](/papers/mol/) navigates Lookup →
 
 ### Product surface: Klere under Mixture of Limits
 
-Metabolic Intelligence is **designed for Klere** ([klere.ai](https://klere.ai)). This study does not replace the Mixture of Limits product path (`mol.yaml` / `mol run` / A1–A14). It supplies the envelope those floors spend; **Klere** is the product embodiment of the MEI class (edge tags / resource-optimized central / stack as Klere surfaces or roadmap — not invented shipped features; not uncapped hyperscale). The Mixture of Limits cascade decides the gear; metabolic actuators and the obtain-router decide how hard the envelope may be driven at tag sleep current and at lean-campus import meters. When VoI is zero or the budget refuse fires, Satiation and Mixture of Limits already name stop as success. This study shows that stop is executable with OpenADR reports and node sleep, that enzyme recognition can stay inside a coin-cell envelope without a transformer pretrain, and that the class does not require dedicated water/power/hyperscale-cooling plants as a design consequence of its budgets.
+Metabolic Intelligence is **designed for Klere** ([klere.ai](https://klere.ai)). Mixture of Limits decides the gear. Metabolic Intelligence supplies the envelope those floors spend. **Klere** is the product embodiment of the class, on edge tags and in resource-optimized central datacenters. The Mixture of Limits cascade decides the gear; metabolic actuators and the obtain-router decide how hard the envelope may be driven at tag sleep current and at lean-campus import meters. When VoI is zero or the budget refuse fires, Satiation and Mixture of Limits already name stop as success. This study shows that stop is executable with OpenADR reports and node sleep, that enzyme recognition can stay inside a coin-cell envelope without a transformer pretrain, and that the class does not require dedicated water/power/hyperscale-cooling plants as a design consequence of its budgets.
 
 Soft-ref path: `board_synth_claimed=false`; estimates ≠ `measured_j`. Living figures: [/living/mei/](/living/mei/) (Manim dual-scale + obtain-router clips; pack charts; teaching tables). Investor/partner one-pager: [/about/mei/](/about/mei/). PDF: [/pdfs/mei.pdf](/pdfs/mei.pdf) when regenerated.
 

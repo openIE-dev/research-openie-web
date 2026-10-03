@@ -25,13 +25,11 @@ This study is the account of existing compute fabric and the software written fo
 
 It is a review of how secure compute is composed today. It is a design guide for what a machine must speak if an agent is to be scheduled, metered, and refused under law. It is not a ranking of kernels. It is not a slogan about green computing.
 
-The OpenIE thesis is stated once and held for the rest of the file. Energy to run is the only true metric of computer intelligence. Latency, token counts, accuracy benches, and brand names are not the unit that decides whether a commit is allowed. They collapse when the meter and the refusal are real. Mixture of Limits is the schedule, the meter, and the refusal on that machine. Metabolic Intelligence is the envelope of the best answer that fits the energy the hardware can spend. Neither name is abbreviated in this draft.
+The OpenIE thesis is stated once and held for the rest of the file. Energy to run is the only true metric of computer intelligence. Latency, token counts, accuracy benches, and brand names are not the unit that decides whether a commit is allowed. They collapse when the meter and the refusal are real. Mixture of Limits is the schedule, the meter, and the refusal on that machine. Metabolic Intelligence is the envelope of the best answer that fits the energy the hardware can spend. Neither name is abbreviated.
 
-The review depends on an internal working note that drew the unsettled stack before any destination was named: `the OpenIE stack working note`, with the sift in `the OpenIE convergence working note`. Those files are working notes. They are not published papers. Where a fact lives only there, this draft cites the working note and does not pretend a journal published it.
+The review depends on an internal working note that drew the unsettled stack before any destination was named: `the OpenIE stack working note`, with the sift in `the OpenIE convergence working note`. Those files are working notes. They are not published papers. Where a fact lives only there, the working note is the source.
 
 The standards that name the schedule, the law, the commit, and the isolation ladder are the Transaction Science page sources and the JouleContract draft: the `*-transaction-science-web` trees, and `JouleContract draft 0.3`. JouleOS is named where a solution of that kind is the answer the problems require.
-
-This study does not invent measured joules. When the JouleOS README states Lawful near one microjoule, LlmInLoop near five millijoules, or a roughly one-hundred-thousand-fold ratio against an LLM-everything corpus, those figures are quoted as that project's own claims and labeled as such. Estimator readings are not measured joules. Nominal ranges drawn for application pillars on a standards site are not metered joules and are not twenty-two operating systems.
 
 ---
 
@@ -47,7 +45,7 @@ Sources for this placement: NVIDIA Technical Blog, "Add Runtime Controls to AI A
 
 ### 2.2 OpenHuman: a Rust harness whose core stays on the host
 
-OpenHuman is an open-source agent harness with a Rust core, licensed under GPL-3.0, and described by its README as early beta (https://github.com/tinyhumansai/openhuman). The same core runs a desktop app, a browser UI, a terminal client, and an embeddable library. The density figures in that README are memory measurements from the project's own fleet sweeps and cold-start timings. They are not joules. This study records them only as the project's memory claims and does not convert them into energy.
+OpenHuman is an open-source agent harness with a Rust core, licensed under GPL-3.0, and described by its README as early beta (https://github.com/tinyhumansai/openhuman). The same core runs a desktop app, a browser UI, a terminal client, and an embeddable library. The density figures in that README are memory measurements from the project's own fleet sweeps and cold-start timings.
 
 The sandbox design in the project's own pull requests and security docs is the class mechanism that matters here. Sandbox backends are named None, Local, and Docker. Local uses Landlock on Linux, Seatbelt on macOS, or AppContainer on Windows, with a documented no-op fallback where the host provides no jail. Docker runs ephemeral containers with hardened defaults when that path is selected. ReadOnly resolves to None for execution enforcement: it does not add a jail. Elevated tools such as git, install, docker management, and process operations are defined to leave the jail and run on the host path. The core always runs on the host. The agent is confined where the harness chooses to confine tool execution. The host kernel and process model remain the floor.
 
@@ -82,7 +80,7 @@ The instruction set is the contract the chip offers. It names the operations the
 
 Hardware abstraction is software that hides board and chip differences from the software above it. Vendor documents do not all place it on a free-floating rung under the operating system. Microsoft's driver documentation places a hardware abstraction layer inside Windows. CMSIS and a vendor HAL such as the STM32CubeF4 HAL are libraries, not operating systems. The teaching line keeps David's order. The later contracts refuse to promote hardware abstraction into a seventh kind of thing.
 
-An operating system, on this line, is software that manages the computer for other programs. That rung is not one job. Section 4 of the working study takes it apart. This draft will do the same by job, not by fame.
+An operating system, on this line, is software that manages the computer for other programs. That rung is not one job. The separation is by job, not by fame.
 
 A compiler turns a person's text into instructions for a contract. A runtime stays with the program while it runs. Both are applied engineering for a hardware contract. They are not the computer.
 
@@ -170,7 +168,7 @@ Source: `the OpenIE stack working note` sections 4, 8, 9, 10, and 11, and figure
 
 ### 5.12 Three names that stay unresolved
 
-Commercial HarmonyOS stays between two statements. OpenHarmony's overview says the project uses a multi-kernel design, Linux or LiteOS, behind a kernel abstraction layer. Huawei consumer document pages fetched for the working study returned a shell titled Document and no kernel sentence. This draft does not pick a kernel for the commercial product.
+Commercial HarmonyOS stays between two statements. OpenHarmony's overview says the project uses a multi-kernel design, Linux or LiteOS, behind a kernel abstraction layer. Huawei consumer document pages fetched for the working study returned a shell titled Document and no kernel sentence. No kernel is stated for the commercial product.
 
 WeensyOS stays unresolved. Course URLs returned 404 for the working study. The 2026 course home does not name it. No kernel is guessed.
 
@@ -202,7 +200,7 @@ Source: `the OpenIE stack working note` section 6 and figure `05-ai-treats-it-as
 
 ## 8. The constellation by job
 
-The working study drew the other ways, academia and research, another look, and loose ends as maps grouped by job. This draft does not reprint those catalogs. It keeps the method.
+The working study drew the other ways, academia and research, another look, and loose ends as maps grouped by job. The method is the point.
 
 Jobs already separated include: host operating system, kernel, real-time kernel, verified or separation kernel, hypervisor, unikernel or library operating system, instruction-set contract, accelerator contract, translation layer, build system, distribution, middleware, hardware-abstraction library, teaching kernel, research kernel, human surface.
 
@@ -254,7 +252,7 @@ An agent is a program. It is a guest: it runs under a law it does not write, on 
 
 Mixture of Limits is the schedule, the meter, and the refusal. The schedule is the machine's law deciding what may run. The meter is energy to run, read from the machine, not estimated to make a story. The refusal is that same law declining a commit that is not certified. Mixture of Limits is not a new kernel brand and not a new instruction set. A verified kernel in the review is evidence that a refusal can be a proof. It is not a license to rename the law.
 
-The energy budget is the envelope of the best answer, not a cheaper-answer trade. Metabolic Intelligence is not a Faustian bargain. This study does not send work to a server because a battery or a neural processor is unhappy. There is no such rule. The envelope is the energy the hardware can spend. The best answer is the one that fits inside it. A worse answer is not justified by having spent less. A better answer is not forbidden for being the one the meter allowed.
+The energy budget is the envelope of the best answer, not a cheaper-answer trade. Metabolic Intelligence is not a Faustian bargain. There is no offload-to-server rule. The envelope is the energy the hardware can spend. The best answer is the one that fits inside it. A worse answer is not justified by having spent less. A better answer is not forbidden for being the one the meter allowed.
 
 All other factors collapse to zero. A new kernel that does not change what may run, what may commit, or what the meter records is a new name. The review is full of those names.
 
@@ -280,7 +278,7 @@ Source: `/Users/dcharlot/data-share/vibe-coding/jcp-transaction-science-web/src/
 
 ### 11.3 JouleContract is the commit
 
-JouleContract is the commit. The Transaction Science page source states the core object as precondition, postcondition, invariant, frame, and joule ceiling. The frame is the declared mutable footprint: everything the transition may touch. Everything outside it is implicitly invariant. The draft specification text at version 0.3.0 states precondition, postcondition, invariant, and joule ceiling as the four obligations in its core-object section, and inherits functional-safety, energy-management, and AI-governance canons into one receipt. This draft follows the page source for the five-clause object including frame, and cites the v0.3 file as the draft specification text beside it. The ceiling is an energy performance indicator against a declared baseline. Provenance tags travel with every joule figure. Estimator and unaccounted categories are not promoted into measured joules.
+JouleContract is the commit. The Transaction Science page source states the core object as precondition, postcondition, invariant, frame, and joule ceiling. The frame is the declared mutable footprint: everything the transition may touch. Everything outside it is implicitly invariant. The draft specification text at version 0.3.0 states precondition, postcondition, invariant, and joule ceiling as the four obligations in its core-object section, and inherits functional-safety, energy-management, and AI-governance canons into one receipt. The ceiling is an energy performance indicator against a declared baseline. Provenance tags travel with every joule figure. Estimator and unaccounted categories are not promoted into measured joules.
 
 Sources: `/Users/dcharlot/data-share/vibe-coding/joulecontract-transaction-science-web/src/pages/index.astro`; `JouleContract draft 0.3`.
 
@@ -300,7 +298,7 @@ OpenShell can sandbox, supervise, prove policy, and add BlueField Sentry without
 
 The problems in sections 2 through 11 are one problem. The floor is assumed fixed. The agent is wrapped. Energy to run is not the refusal condition. Capability is ambient. The meter is an estimator treated as a measurement, or it is absent. The instruction contract, the machine's law, the build, the guest, the translation, and the human surface are separate products that do not share one intent.
 
-A solution like JouleOS is what those problems require. Hardware, runtime, language, and surface are one artifact. One intent stream is lowered onto the coordinate the runtime measured. The WebAssembly runtime is the operating system that is seen. The bare-metal kernel is the coordinate where the law is native. JouleOS is a development project of that kind. This study does not document the project. It states the need the project answers.
+A solution like JouleOS is what those problems require. Hardware, runtime, language, and surface are one artifact. One intent stream is lowered onto the coordinate the runtime measured. The WebAssembly runtime is the operating system that is seen. The bare-metal kernel is the coordinate where the law is native. JouleOS is a development project of that kind.
 
 
 ### 12.1 What the README says it is
@@ -317,7 +315,7 @@ The in-memory bytes are the durable bytes. There is no serialize and deserialize
 
 ### 12.3 Cascade under Energy-Oriented Computing
 
-A cascade of refine families is cost-ordered cheapest first per EOC version 0.2. The README's own claim, labeled as the project's claim and not as a measurement performed by this study, places Lawful near one microjoule and LlmInLoop near five millijoules, with intermediate families between them. The dispatcher picks the cheapest family that can satisfy. Check is deterministic: schema, constraint evaluation, provenance verify. There is no large-language-model-as-judge. The README's benchmark claim of roughly a one-hundred-thousand-fold lower joules-per-work ratio against an LLM-everything corpus is likewise the project's own claim, not a figure this study metered.
+A cascade of refine families is cost-ordered cheapest first per EOC version 0.2. The README places Lawful near one microjoule and LlmInLoop near five millijoules, with intermediate families between them. The dispatcher picks the cheapest family that can satisfy. Check is deterministic: schema, constraint evaluation, provenance verify. There is no large-language-model-as-judge. The README states a roughly one-hundred-thousand-fold lower joules-per-work ratio against an LLM-everything corpus.
 
 ### 12.4 Capability ledger
 
@@ -336,10 +334,6 @@ WebAssembly, defined above, is a binary instruction format for a stack-based vir
 The bare-metal kernel is the coordinate where the law is native. The trusted computing base links without the host standard library. The just-in-time compiler stays outside that base. The kernel is not a second product. The fabric is other machines. The seen artifact is one module, one receipt, and one refuse.
 
 Source: `os-notes/UDA.md`, `os-notes/LOWERING.md`, and `crates/joule-os-wasm/Cargo.toml` in the JouleOS tree.
-
-### 12.7 Figures this study does not meter
-
-Shipment counts, prices, and market share are not in this study. Nominal ranges drawn for application pillars are not metered joules and are not twenty-two operating systems. An estimator tag is not a measured joule.
 
 ---
 
@@ -364,7 +358,7 @@ Energy to run is the only true metric of computer intelligence. All other factor
 
 ## 14. Claim ledger
 
-Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file says it), Project claim (the named project's own figure or status, not metered by this study), David's observation or OpenIE thesis (normative for this series, not a measurement), Working-note fact (stated in the internal os-stack study or convergence note; not a published paper).
+Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file says it), Project claim (the named project's own figure or status), OpenIE thesis, Working-note fact (stated in the internal stack study or convergence note).
 
 | Claim | Kind | Source |
 | --- | --- | --- |
@@ -387,20 +381,8 @@ Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file s
 | JouleContract commit object includes pre, post, invariant, frame, joule ceiling (page source); v0.3 draft text states pre, post, inv, ceiling in §3. | Sourced fact | `joulecontract-transaction-science-web` index.astro; `joulecontract-spec-v0.3.md` |
 | Sandbox ladder S0 to S7; lowest rung that satisfies; meter tags HwShunt / ModelBased / Estimator; attestation. | Sourced fact | `sandbox-transaction-science-web` index.astro |
 | JouleOS: single-level store, EOC cascade, capability ledger, energy oracle with provenance, Rust, small TCB, AOT in TCB and JIT out, bare-metal vs hosted. | Project claim / Sourced fact | `the JouleOS development tree/README.md`, `docs/ARCHITECTURE.md`, `os-notes/THEOREM.md` |
-| JouleOS README Lawful ~1 µJ, LlmInLoop ~5 mJ, ~10^5× vs LLM-everything on a corpus. | Project claim | joule-os README (not measured by this study) |
+| JouleOS README Lawful ~1 µJ, LlmInLoop ~5 mJ, ~10^5× vs LLM-everything on a corpus. | Project claim | joule-os README |
 | Unified Design Architecture is one artifact lowered per measured coordinate. The WebAssembly runtime is the surface that is seen. A virtual machine or a container is a coordinate. The bare-metal kernel is where the law is native, not a second product. | Definition / design reading of the tree | joule-os `os-notes/UDA.md`, `os-notes/LOWERING.md`, `crates/joule-os-wasm/Cargo.toml` |
-| This draft invents no measured joules, prices, shipments, or market share. | Definition | Brief |
 
 ---
 
-## 15. What this draft refused to state
-
-- Any measured joule figure as if this study metered it.
-- Any price, shipment count, or market share.
-- Any kernel identity for commercial HarmonyOS, WeensyOS, or Taos.
-- Any offload-to-server rule as Metabolic Intelligence.
-- Any ranking of kernels by popularity or geography.
-- Any claim that a WebAssembly runtime on a host already owns that host's privileged mode. The runtime is the operating system that is seen. The host kernel remains the host's law.
-- Any treatment of Transaction Science application-pillar tables or nominal jLow/jHigh ranges as metered joules or as twenty-two operating systems.
-
-End of study draft, 3 October 2026. The subject is the fabric and the software. A solution like JouleOS is what they require.
