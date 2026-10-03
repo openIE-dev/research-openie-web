@@ -1,5 +1,5 @@
 ---
-title: "Spell Check is Global — The Future of Computer Intelligence in the hands of the many (7B+) and not the few (<500M)"
+title: "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (<500M)"
 deck: "AI is going to follow the path of all computer automation. Spell check is the completed example. Energy to run is the only true metric of computer intelligence: token price, parameter count, moat rent, and access fees collapse to zero by commoditization, and what remains is joules. Estimates are not measured_j. The many (7B+) and the few (<500M) are an access framing, not a census."
 id: spellcheck
 status: "Research study"
@@ -9,21 +9,21 @@ pdf: "/pdfs/spellcheck.pdf"
 board_synth_claimed: false
 ---
 
-# Spell Check is Global — The Future of Computer Intelligence in the hands of the many (7B+) and not the few (<500M)
+# Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (<500M)
 
 ## Abstract
 
 AI is going to follow the path of all computer automation. Spell check is the best example of that path.
 
-The argument is an economic theory, not only an access slogan. Computer automation is priced, and the price creates a race. A scarce procedure is sold at a bureau price. A firm that can ship it then charges a moat rent. That rent is what calls rivals to displace the product or replace it. Commoditization is the end of the race: the separate money price is eliminated. Token price, parameter count, moat rent, and access fees are among the charges that collapse. Energy to run is the only true metric of computer intelligence. What remains is joules. Spell check is the completed example. The correction is no longer a line item, and the joules to compare a word to a local list are still spent. This paper does not fit a curve and does not estimate a coefficient. Estimates are not `measured_j`.
+The argument is economic theory. Computer automation is priced, and the price creates a race. A scarce procedure is sold at a bureau price. A firm that can ship it then charges a moat rent. That rent is what calls rivals to displace the product or replace it. Commoditization is the end of the race: the separate money price is eliminated. Token price, parameter count, moat rent, and access fees are among the charges that collapse. Energy to run is the only true metric of computer intelligence. What remains is joules. Spell check is the completed example. The correction is no longer a line item, and the joules to compare a word to a local list are still spent. This paper does not fit a curve and does not estimate a coefficient. Estimates are not `measured_j`.
 
-The path is a sequence, not a slogan. A procedure starts in a specialist bureau. It then becomes a routine on the machine that already holds the work. It then becomes ordinary, because it is cheap, local, and paired to hardware people already have. Spell check finished that sequence. Detection of a nonword and proposal of a correction are computer intelligence. They are not a metaphor for some later system. The capability reached ordinary writing: the editor, the browser, the phone keyboard. It did not stay as a service only a lab could rent.
+The path is a sequence. A procedure starts in a specialist bureau. It then becomes a routine on the machine that already holds the work. It then becomes ordinary, because it is cheap, local, and paired to hardware people already have. Spell check finished that sequence. Detection of a nonword and proposal of a correction are computer intelligence. They are not a metaphor for some later system. The capability reached ordinary writing: the editor, the browser, the phone keyboard. It did not stay as a service only a lab could rent.
 
-The future of computer intelligence is that pattern. David Charlot frames access as the many (7B+) rather than the few who can rent frontier datacenters (<500M). This paper uses those bounds as his framing of access. It does not count people, subscriptions, or datacenter customers. It does not convert the bounds into a market size.
+The future of computer intelligence is that pattern. David Charlot frames access as the many (7B+) and rented frontier intelligence as the few (<500M). Those bounds are his framing of access. They are not a census and not a market size.
 
 The four companion studies say how a capability should behave once it is on that path. [Mixture of Limits](/papers/mol/) chooses the gear, and the gear has to sit on hardware that is available, accessible, and capable. [Notational Intelligence as Commit Law](/papers/ni/) owns the commit: a suggestion is a proposal until it is accepted. [Satiation and Scarcity after Free AI](/papers/satiation/) owns the stop: once the token is kept, further candidates do not change the written predicate. [Metabolic Intelligence](/papers/mei/) owns the envelope: the envelope is the physical condition of the superior answer, not a cheaper answer purchased by degrading the result. Klere ([klere.ai](https://klere.ai)) is the product home of that class. It is not a prison. Spell check already finished the path in editors that are not Klere.
 
-This paper is a bibliographic and design study. It reports published procedures, a local library, and on-device APIs. It does not report a new accuracy experiment. It does not report board energy. `board_synth_claimed` stays false.
+This paper reports published procedures, a local library, and on-device APIs. No new accuracy experiment is reported. No board energy is reported. `board_synth_claimed` stays false.
 
 ## Notation
 
@@ -50,7 +50,7 @@ This paper is a bibliographic and design study. It reports published procedures,
 
 AI is going to follow the path of all computer automation. Spell check is the best example of that path.
 
-Energy to run is the only true metric of computer intelligence. All the other factors people price today collapse to zero by commoditization: the token price, the parameter count treated as a product, the moat rent, the access fee. What remains is joules. Spell check already shows the collapse. Nobody rents a spell-check datacenter to fix a nonword. The routine is in the editor. The joules are still real, and this paper does not pretend to have metered them. Estimates are not `measured_j`.
+Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees collapse to zero by commoditization. What remains is joules. Spell check shows the collapse. The routine is in the editor. The joules are still spent. Estimates are not `measured_j`.
 
 Computer automation has a recognizable sequence. First, a procedure is scarce. A person or a bureau does it, or a machine does it only where a specialist can book time. Then the same procedure shows up as a routine on the computer that already holds the work. Then people stop treating it as a product they visit and start treating it as part of the tool they already use. Calculation did this when the spreadsheet replaced the sent-out worksheet. Typesetting did this when the document on the screen became the document that was printed. Spell check did this when the proofreader's pass became a function of the editor.
 
@@ -60,11 +60,11 @@ The reason the capability reached ordinary writing is mechanical. It was cheap e
 
 A frontier model that answers only inside a rented datacenter is the bureau stage of the same path. It can be capable and still fail available and accessible for the person holding the document. The future this paper argues for is not a smaller copy of that bureau. It is the stage spell check already reached.
 
-David Charlot frames that stage as the many, 7B+, and frames rented frontier intelligence as the few, under 500M. Those figures are his framing of access. This paper does not re-estimate them, does not cite them as a demographic result, and does not treat them as a count of who owns a phone or who holds a cloud account. The claim that uses them is a design claim: build computer intelligence so that it finishes the way spell check finished, for the people in the first bound, rather than holding it as a rental for the people in the second.
+David Charlot frames that stage as the many, 7B+, and rented frontier intelligence as the few, under 500M. Those figures are his framing of access. They are not a census of phones or cloud accounts. The design rule is to finish computer intelligence the way spell check finished, for the first class, and to refuse a rental held for the second.
 
 ### Companion laws
 
-This study is the automation path. It does not replace the catalog triad, and it does not replace Metabolic Intelligence.
+This study is the automation path. The catalog triad stays intact. Metabolic Intelligence stays the energy budget.
 
 | Role | Study | Owns |
 |---|---|---|
@@ -74,7 +74,7 @@ This study is the automation path. It does not replace the catalog triad, and it
 | **Energy budget** | [Metabolic Intelligence](/papers/mei/) | The envelope is the physical condition of the superior answer. Not a cheaper answer. Edge and a resource-optimized central datacenter. Klere is the product home, not a prison. |
 | **Automation path** | This paper | Spell check is the existence proof that computer intelligence becomes ordinary when it is cheap, local, and paired to hardware people already have. |
 
-Navigation chooses the gear. Commit records the irreversible branch. Satiation says when to stop. Metabolic Intelligence says the envelope obtains the answer rather than degrading it. This paper says where that stack has to live if computer intelligence is to follow the path the rest of computer automation already took.
+Navigation chooses the gear. Commit records the irreversible branch. Satiation says when to stop. Metabolic Intelligence says the envelope obtains the superior answer. This paper says where that stack has to live if computer intelligence is to follow the path the rest of computer automation already took.
 
 ### A token, taught in order
 
@@ -113,13 +113,13 @@ Kernighan, Church, and Gale (1990) rank candidate corrections with a noisy-chann
 
 Norvig (2007) wrote the explanation on a plane, with no spelling-error data and no internet connection. The language model is a local file of about a million words, counted into 32,192 distinct words appearing 1,115,504 times. The error model is deliberately crude: a known word at edit distance 0 beats any word at distance 1, which beats any word at distance 2. After the flight he evaluated against sets drawn from Mitton's Birkbeck corpus. He reports 75 percent of 270 development pairs correct, at 41 words per second, and 68 percent of 400 final-test pairs correct, at 35 words per second. He states that he met his goals for brevity and speed and missed his hope of 80 to 90 percent accuracy.
 
-This paper uses those numbers as his reported evaluation. It does not claim the toy is an industrial checker. The industrial point is the opposite of a leaderboard. A useful slice of the capability runs from a file on the machine in front of the programmer, at tens of words per second, with the network absent. That is the shape of a finished automation path. The misses he lists, especially unknown dictionary words and decisions that need neighboring tokens, are the residual. They are arguments for a better local gear, not arguments that the job must move back to a bureau.
+Those numbers are his reported evaluation. The toy is not an industrial checker. A useful slice of the capability runs from a file on the machine in front of the programmer, at tens of words per second, with the network absent. That is the shape of a finished automation path. The misses he lists, especially unknown dictionary words and decisions that need neighboring tokens, are the residual. They are arguments for a better local gear, not arguments that the job must move back to a bureau.
 
 ### 2.5 The library inside ordinary editors
 
 The Hunspell project states that Hunspell is the spell checker and morphological analyzer used by LibreOffice, by free browsers including Firefox and Chrome, and by other tools and operating systems including Linux distributions and macOS (Hunspell README). The library reads a local dictionary file and a local affix file. The command-line tool checks a local text file. The code descends from MySpell, Kevin Hendricks's implementation in OpenOffice.org, itself a reimplementation of affix spelling from Geoff Kuenning's International Ispell. László Németh's Hunspell adds Unicode and the morphology needed for languages where a bare English word list is the wrong gear.
 
-That README is a project statement about where the library is used. It is not a census of installations, and this paper does not turn it into one. The fact it contributes is deployment class: the checker that ordinary editors call is a local library and a local word list, not a session rented from a frontier datacenter.
+That README states where the library is used. The fact it contributes is deployment class. The checker inside those programs is a local library and a local word list.
 
 ### 2.6 The phone already in the hand
 
@@ -137,27 +137,27 @@ Hooker (2020; 2021) names the hardware lottery: a research idea wins because it 
 
 ### 2.8 What this literature is not asked to prove
 
-None of these sources is a world population table. None of them measures how many people can rent a frontier datacenter. This paper does not borrow a subscriber count, a phone-ownership rate, or a unique-user figure and relabel it as 7B+ or as less than 500M. When a number appears in Section 4, it is the source's own count: dictionary words, test-set size, words per second, or a published identification rate.
+None of these sources is a population table. When a number appears in Section 4, it is the source's own count: dictionary words, test-set size, words per second, or a published identification rate. 7B+ and <500M are not derived from them.
 
 
 ### 2.9 How computer automation is priced
 
-Energy to run is the only true metric of computer intelligence. The sentence is the theory. The history and the recent price notes are the evidence the theory is allowed to use. This section does not fit a curve. It does not state a slope, a half-life, or a year in which a price hits zero. A cited rate stays inside the paper that published it.
+Energy to run is the only true metric of computer intelligence. History and the recent price notes are the evidence. A cited rate stays inside the paper that published it. No curve is fit here. No slope, half-life, or zero-price year is stated.
 
 Three regimes name how a computer-automation tool is priced.
 
-**Bureau price.** While the procedure is scarce, the buyer pays a person or a booked machine. Nordhaus (2007) measures the long money price of computation itself, not of spell check. In that article the price of computation starts at around $500 per million computations per second for manual work and falls to around \(6 \times 10^{-11}\) per million computations per second by 2006, in 2006 prices, a decline on the order of seven trillion. Those are his reported figures. This paper does not refit them and does not turn them into a forecast. They document that the money price of the substrate of automation fell by orders of magnitude. A fall in that index is not yet the elimination of a product's separate invoice, and it is not a joule meter.
+**Bureau price.** While the procedure is scarce, the buyer pays a person or a booked machine. Nordhaus (2007) measures the long money price of computation itself, not of spell check. In that article the price of computation starts at around $500 per million computations per second for manual work and falls to around \(6 \times 10^{-11}\) per million computations per second by 2006, in 2006 prices, a decline on the order of seven trillion. Those are his reported figures. They are not refit here and they are not a forecast. They document that the money price of the substrate of automation fell by orders of magnitude. A fall in that index is not yet the elimination of a product's separate invoice, and it is not a joule meter.
 
-**Moat price, and the race it creates.** Once a firm can ship the procedure, it can charge more than it costs to run. That gap is moat rent. An access fee and a token price are the same gap in different costumes. A parameter count becomes part of the costume when buyers are taught to pay for size. The rent is what creates the race. Rivals displace the moat by bundling the capability into a product the buyer already has, or they replace the product outright. Published inference prices say the race is underway for language models and has not finished. Epoch AI (2025) reports price declines at fixed performance on the order of 9 to 900 times per year across the benchmarks in that note. Emberson and Roodman (2026) report about a 47 percent decline per quarter in the cost of a given performance since about 2023, which they summarize as about 13 times per year. Those are their summaries of their series. This paper does not re-estimate the index, does not draw a line through the points, and does not promote either rate as a law past their window. [Satiation and Scarcity after Free AI](/papers/satiation/) already uses these notes for a different claim: a falling money price is not free energy and not a completeness predicate. This paper does not absorb that claim. It uses the same cited fall as evidence of moat displacement still in progress.
+**Moat price, and the race it creates.** Once a firm can ship the procedure, it can charge more than it costs to run. That gap is moat rent. An access fee and a token price are the same gap in different costumes. A parameter count becomes part of the costume when buyers are taught to pay for size. The rent is what creates the race. Rivals displace the moat by bundling the capability into a product the buyer already has, or they replace the product outright. Published inference prices say the race is underway for language models and has not finished. Epoch AI (2025) reports price declines at fixed performance on the order of 9 to 900 times per year across the benchmarks in that note. Emberson and Roodman (2026) report about a 47 percent decline per quarter in the cost of a given performance since about 2023, which they summarize as about 13 times per year. Those are their summaries of their series. The index is not re-estimated. No line is drawn through the points. Neither rate is a law past their window. [Satiation and Scarcity after Free AI](/papers/satiation/) uses these notes for a different claim: a falling money price is not free energy and not a completeness predicate. That claim stays in that paper. It uses the same cited fall as evidence of moat displacement still in progress.
 
-**Pricing elimination.** Commoditization is the end of the separate charge. The capability remains. The invoice line does not. Spell check is the completed example, and it is an example rather than a metaphor. Hunspell is a free spell-checking library under a tri-license (LGPL, GPL, and MPL). The project states that LibreOffice, Firefox, Chrome, Linux distributions, and macOS call it, and that a check reads a local dictionary (Hunspell README). The buyer of those editors does not pay a token price for a nonword, does not pay an access fee to a spelling bureau, and does not shop a parameter count. The method's money price as a separate good is zero. That is pricing elimination. It is not a claim that the editor itself is free, and it is not a claim that the phone was free. It is a claim that spelling correction is no longer priced as its own good.
+**Pricing elimination.** Commoditization is the end of the separate charge. The capability remains. The invoice line does not. Spell check is the completed example. Hunspell is a free spell-checking library under a tri-license (LGPL, GPL, and MPL). The project states that LibreOffice, Firefox, Chrome, Linux distributions, and macOS call it, and that a check reads a local dictionary (Hunspell README). The buyer of those editors does not pay a token price for a nonword, does not pay an access fee to a spelling bureau, and does not shop a parameter count. The method's money price as a separate good is zero. That is pricing elimination. It is not a claim that the editor itself is free, and it is not a claim that the phone was free. It is a claim that spelling correction is no longer priced as its own good.
 
-What remains is the energy to run the comparison. A local dictionary probe spends joules on the device that holds the document. This paper does not measure them. No analytical total is computed here, so none can be mistaken for a meter. Package `measured_j` stays unset. Estimates, including any joule figure in a companion study, are not `measured_j` unless that study's meter returned the reading. [Metabolic Intelligence](/papers/mei/) owns the envelope: the joules are the physical condition of the superior answer, not a discount that buys a worse word. [Satiation](/papers/satiation/) owns the stop: free at the money price is not free joules, and further candidates after the token is kept spend energy on a predicate that has already fired. The papers stay distinct. This one owns the money-price path. They own the stop and the envelope.
+What remains is the energy to run the comparison. A local dictionary probe spends joules on the device that holds the document. No joules are metered here. No analytical total is computed. Package `measured_j` stays unset. A companion joule figure is `measured_j` only when that study's meter returned the reading. [Metabolic Intelligence](/papers/mei/) owns the envelope: the joules are the physical condition of the superior answer, not a discount that buys a worse word. [Satiation](/papers/satiation/) owns the stop: free at the money price is not free joules, and further candidates after the token is kept spend energy on a predicate that has already fired. The papers stay distinct. This one owns the money-price path. They own the stop and the envelope.
 
-The prediction follows from the regimes, not from a regression. Ordinary computer-intelligence tasks follow spell check. Their token prices, parameter-count premia, moat rents, and access fees are competed away by bundling onto hardware people already have and by methods whose license price is zero. The many (7B+) and the few (<500M) remain David Charlot's framing of who that end state is for. They are not a point on a curve. The prediction can fail in a way that is easy to state. It fails if an ordinary task, of the kind spell check already closes, keeps a lasting separate money price after a local routine of equal result is in the hands of the people who hold the document. A frontier benchmark that still carries a premium is not that failure. It is the moat stage, which Epoch's notes already show getting cheaper, and which spell check shows how to leave.
+The prediction follows from the regimes, not from a regression. Ordinary computer-intelligence tasks follow spell check. Their token prices, parameter-count premia, moat rents, and access fees are competed away by bundling onto hardware people already have and by methods whose license price is zero. The many (7B+) and the few (<500M) remain David Charlot's framing of who that end state is for. They are an access framing. The prediction fails if an ordinary task, of the kind spell check already closes, keeps a lasting separate money price after a local routine of equal result is in the hands of the people who hold the document. A frontier benchmark that still carries a premium is not that failure. It is the moat stage, which Epoch's notes already show getting cheaper, and which spell check shows how to leave.
 
 
-The same regimes are drawn, not fitted, in the living companion [sc-anim-01](/living/spellcheck/#sc-anim-01). Two dots are Nordhaus's reported endpoints. A dashed connector between them is a visual aid, not a regression and not a rate. Epoch's 9-to-900 and about-13-times summaries sit in a callout because they are ranges and summaries, not a slope this paper estimated. The spell-check panel is the completed regime: the separate money price is gone, and the joules remain unmetered.
+The same regimes are drawn in the living companion [sc-anim-01](/living/spellcheck/#sc-anim-01). Two dots are Nordhaus's reported endpoints. The dashed connector joins those two endpoints. No rate is estimated. Epoch's 9-to-900 range and about-13-times summary sit in a callout. They stay their summaries. The spell-check panel is the completed regime: the separate money price is gone, and the joules remain unmetered.
 
 ```mermaid
 flowchart LR
@@ -168,7 +168,7 @@ flowchart LR
   B --> M --> C --> J
 ```
 
-Landauer (1961) sets a physical floor on erasing a bit. Horowitz (2014) is the practical CMOS statement the companion satiation study already uses: data movement dominates, far above that ideal bound. A dictionary probe moves bits. Commoditization can zero the invoice and still leave that motion. This paper does not convert either citation into a joule total for spell check.
+Landauer (1961) sets a physical floor on erasing a bit. Horowitz (2014) is the practical CMOS statement the companion satiation study already uses: data movement dominates, far above that ideal bound. A dictionary probe moves bits. Commoditization can zero the invoice and still leave that motion. No joule total for spell check is computed from either citation.
 
 
 ## 3. Definitions and methods
@@ -185,7 +185,7 @@ A capability is on the automation path when all five of the following hold.
 
 Spell check, in the form that shipped inside editors and keyboards, meets the five. A chat model that answers only inside a rented frontier datacenter fails 2, 3, and 4 for the person who does not have the rental. The thesis is that computer intelligence will be built until it meets the five, because that is the path computer automation takes, and spell check is the completed example of computer intelligence on that path.
 
-### 3.2 Existence proof, not an analogy
+### 3.2 Existence proof
 
 An analogy says "X is like Y" and then talks about X. An existence proof exhibits Y. Here Y is spell check. The procedures in Section 2 are Y. The products that call a local library are Y. The claim about the future of computer intelligence is a claim that the same path is the one to build, because this instance already finished. Where the instance is narrow, the paper says so. Nonword detection and isolated-word correction finished the path. Context-dependent correction is the residual gear, and it is not finished until it is local in the same sense.
 
@@ -274,17 +274,17 @@ After the separate money price is gone, the energy to run the routine remains. C
 
 ### 4.13 What would be a result and is not
 
-This paper does not report the fraction of written words that pass through a local checker. It does not report a language-coverage survey. It does not report energy per suggestion. It does not report a headcount of people who can rent a frontier model. A study that measured any of those would be a different study, with a meter or a census this one does not contain.
+No fraction of written words, no language-coverage survey, no energy per suggestion, and no headcount of frontier-datacenter renters is reported. Those measurements belong to a different study.
 
 ## 5. Discussion
 
-### 5.1 Cloud grammar products do not erase the proof
+### 5.1 Cloud grammar products sit on a finished path
 
 Some grammar products send text to a remote service and return advice. That rental layer exists. It does not replace the checker that already runs inside the editor. A remote service can be the right gear for a context decision the local list cannot close. It becomes a return to the bureau when it is the only way to perform a check the local gear already performs. The existence proof is the local routine. The rental layer is a later product sitting on top of a path that already finished.
 
 ### 5.2 Frontier chat is the bureau stage
 
-A large model behind an API is a specialist bureau with a short queue. It is a real capability. It is not, by itself, the automation path. The path finishes when the gears people actually need run on hardware they already have, or on a resource-optimized central fabric built so that access matches the many rather than the rental class. Spell check is the example of finishing. It is not a hint that one should describe a datacenter product with a friendlier adjective.
+A large model behind an API is a specialist bureau with a short queue. The automation path is the later stage: the gears people need run on hardware they already have, or on a resource-optimized central fabric open to the many. Spell check is that finished stage.
 
 ### 5.3 Available, accessible, capable
 
@@ -294,29 +294,29 @@ Mixture of Limits refuses a software-only reading of the cascade. A gear counts 
 
 The interface that underlines a word and waits is a commit law a person can see. The interface that silently replaces a word is a commit that happened without a receipt the writer inspected. Notational Intelligence prefers the first shape whenever the replacement is hard to undo, and a sent message is hard to undo. Satiation prefers the first shape for a different reason: the completeness predicate should be the writer's acceptance or an explicit policy, not an unbounded search for a prettier token. The two laws agree on the underline. They are not the same law.
 
-### 5.5 The envelope is not a discount
+### 5.5 The envelope obtains the answer
 
-Metabolic Intelligence says energy binds, and that the binding is how the superior answer is obtained. Applied here, the rule is easy to misread as "ship the small model because it is cheaper." That reading is rejected. The small gear is required when it is the gear that closes, as it does for a nonword at edit distance one. The larger gear is required when the token is a real word and only context can show that it is the wrong word. In both cases the envelope decides whether the gear may run. It does not authorize a wrong token because the wrong token was inexpensive. Edge devices are the natural host for the gear that already fits. A resource-optimized central fabric is the host for a context gear that does not fit the phone, if that fabric is built so the person can use it. An uncapped hyperscale campus is not required for a dictionary probe. The companion study argues it is not required by design for the class. This paper does not add a water or power figure to that argument.
+Metabolic Intelligence states the law: energy binds, and the envelope is how the superior answer is obtained. A nonword at edit distance one closes on the small gear. A real word that is the wrong word closes on context. The envelope admits the gear that obtains the right token. A wrong token is refused even when it is cheap. Edge devices host the gear that already fits. A resource-optimized central fabric hosts a context gear that does not fit the phone. An uncapped hyperscale campus is outside the design of a dictionary probe. No water or power figure is added here.
 
 ### 5.6 What would count against the thesis
 
-The thesis fails if the only spelling capability that reached ordinary writing required a rented frontier datacenter. The sources in Section 2 say the opposite for nonword detection and isolated-word correction. The thesis is not tested by a leaderboard on which a large model beats Hunspell at context-sensitive grammar. That result, if measured, would name a residual gear. It would become a counterexample to the path only if that gear could not be put on hardware people already have or on a resource-optimized central fabric they can use. This paper does not run that measurement. It states the condition.
+The thesis fails if the spelling capability that reached ordinary writing required a rented frontier datacenter. Section 2 shows the opposite for nonword detection and isolated-word correction. A leaderboard on which a large model beats Hunspell at context-sensitive grammar names a residual gear. That gear counters the path only if it cannot run on hardware people already have or on a resource-optimized central fabric they can use. That measurement is not in this study. The condition is the test.
 
 ## 6. Limits and threats to validity
 
-The classic detection papers are centered on English word lists. Hunspell's own feature list is a reminder that rich morphology needs affixes, not a longer English list. This paper does not survey coverage by language and does not claim that every writing system has a finished local checker.
+The classic detection papers use English word lists. Hunspell's feature list states that rich morphology needs affixes. Language coverage is not surveyed here. A finished local checker for every writing system is not claimed.
 
-Norvig's 68 percent is his final-test figure for a toy with a flawed error model. Citing it as the accuracy of industrial spell check would be false. This paper cites it as evidence that a local toy runs, and as evidence that the toy is not the ceiling.
+Norvig's 68 percent is his final-test figure for a toy with a flawed error model. It is evidence that a local toy runs. It is not the accuracy of industrial spell check, and it is not the ceiling.
 
-UITextChecker and `SpellCheckerService` document a local call. They do not document an offline guarantee under every vendor configuration, and they do not document joules. Hard et al. (2018) is next-word prediction. A reader who needs a spelling-accuracy number for a phone keyboard will not find it in that citation.
+UITextChecker and `SpellCheckerService` document a local call. They publish no joules and no offline guarantee for every vendor configuration. Hard et al. (2018) is next-word prediction. No spelling-accuracy number is taken from that paper.
 
-The Hunspell README is a project statement about adopters. It can go out of date. It is not an audit of which engine a named operating system uses this year.
+The Hunspell README is a project statement about adopters. It is not an audit of this year's engine inside each named operating system.
 
-Auto-correct policies differ. Some commit without asking. SC-8 says the right shape is propose-then-commit. It does not audit vendors.
+Auto-correct policies differ. Some commit without asking. SC-8 states the law: propose, then commit. Vendors are not audited here.
 
-The access bounds are not identified by any method in Section 3. Treating 7B+ or <500M as a finding of this paper is a misread.
+7B+ and <500M are David Charlot's access framing. Section 3 does not estimate them.
 
-No board was synthesized or metered. Analytical energy is not reported, because this study does not compute it. Nothing here sets `measured_j`.
+No board was synthesized or metered. No analytical energy is computed. `measured_j` is unset.
 
 ## 7. Conclusion
 
@@ -324,23 +324,23 @@ AI is going to follow the path of all computer automation. Spell check is the be
 
 The example is an existence proof. A computer-intelligence capability, the detection and correction of a written word, became ordinary. It became ordinary because it was cheap, local, and paired to the editor and the phone people already used. McIlroy fit the list to the minicomputer. Hunspell sits inside ordinary editors as a local library. The phone exposes the check as a call on the text it already holds. Norvig's page of code is the gear with the network absent.
 
-The future of computer intelligence is that pattern, not a capability held by whoever can rent a frontier datacenter. David Charlot's framing of the two classes is the many (7B+) and the few (<500M). The framing is a design rule. It is not a census this paper conducted.
+The future of computer intelligence is that pattern. A capability held only by whoever can rent a frontier datacenter is the bureau stage. David Charlot's framing of the two classes is the many (7B+) and the few (<500M). The framing is a design rule. It is not a census.
 
-Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees collapse to zero by commoditization. Spell check is the completed example of that collapse. What remains is joules. This paper does not meter them, does not fit a curve, and does not treat an estimate as `measured_j`.
+Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees collapse to zero by commoditization. Spell check is the completed example of that collapse. What remains is joules. No meter reading is reported. No curve is fit. An estimate is not `measured_j`.
 
-The companion laws say how to build the rest of the path without pretending spell check was a metaphor. Mixture of Limits keeps Model last and demands a fabric that is available, accessible, and capable. Notational Intelligence makes the suggestion a proposal until commit. Satiation stops when the token is kept. Metabolic Intelligence keeps the envelope as the condition of the superior answer, on the edge and in a resource-optimized central fabric, and refuses the trade that would worsen the answer to make it cheap. Klere is where that class has a product home. Spell check already ran the path elsewhere. The home is not a prison.
+The companion laws build the rest of the path. Spell check is the existence proof. Mixture of Limits keeps Model last and demands a fabric that is available, accessible, and capable. Notational Intelligence makes the suggestion a proposal until commit. Satiation stops when the token is kept. Metabolic Intelligence keeps the envelope as the condition of the superior answer, on the edge and in a resource-optimized central fabric, and refuses the trade that would worsen the answer to make it cheap. Klere is where that class has a product home. Spell check already ran the path elsewhere. The home is not a prison.
 
 ## References
 
-1. Damerau, F. J. A technique for computer detection and correction of spelling errors. Communications of the ACM, 7(3), 171–176, 1964. https://doi.org/10.1145/363958.363994
+1. Damerau, F. J. A technique for computer detection and correction of spelling errors. Communications of the ACM, 7(3), 171-176, 1964. https://doi.org/10.1145/363958.363994
 
-2. Peterson, J. L. Computer programs for detecting and correcting spelling errors. Communications of the ACM, 23(12), 676–687, 1980. https://doi.org/10.1145/359038.359041
+2. Peterson, J. L. Computer programs for detecting and correcting spelling errors. Communications of the ACM, 23(12), 676-687, 1980. https://doi.org/10.1145/359038.359041
 
-3. McIlroy, M. D. Development of a spelling list. IEEE Transactions on Communications, 30(1), 91–99, 1982. https://doi.org/10.1109/TCOM.1982.1095395
+3. McIlroy, M. D. Development of a spelling list. IEEE Transactions on Communications, 30(1), 91-99, 1982. https://doi.org/10.1109/TCOM.1982.1095395
 
-4. Kernighan, M. D., Church, K. W., and Gale, W. A. A spelling correction program based on a noisy channel model. In COLING 1990, 205–210. https://aclanthology.org/C90-2036/ and https://doi.org/10.3115/997939.997975
+4. Kernighan, M. D., Church, K. W., and Gale, W. A. A spelling correction program based on a noisy channel model. In COLING 1990, 205-210. https://aclanthology.org/C90-2036/ and https://doi.org/10.3115/997939.997975
 
-5. Kukich, K. Techniques for automatically correcting words in text. ACM Computing Surveys, 24(4), 377–439, 1992. https://doi.org/10.1145/146370.146380
+5. Kukich, K. Techniques for automatically correcting words in text. ACM Computing Surveys, 24(4), 377-439, 1992. https://doi.org/10.1145/146370.146380
 
 6. Norvig, P. How to write a spelling corrector. 2007 (page updated through 2016). https://norvig.com/spell-correct.html
 
@@ -352,7 +352,7 @@ The companion laws say how to build the rest of the path without pretending spel
 
 10. Hard, A., Rao, K., Mathews, R., Ramaswamy, S., Beaufays, F., Augenstein, S., Eichner, H., Kiddon, C., and Ramage, D. Federated learning for mobile keyboard prediction. arXiv:1811.03604, 2018. https://arxiv.org/abs/1811.03604
 
-11. Hooker, S. The hardware lottery. arXiv:2009.06489, 2020. Communications of the ACM, 64(12), 58–65, 2021. https://doi.org/10.1145/3467017
+11. Hooker, S. The hardware lottery. arXiv:2009.06489, 2020. Communications of the ACM, 64(12), 58-65, 2021. https://doi.org/10.1145/3467017
 
 12. Charlot, D. Mixture of Limits: Navigation Law for Computer Intelligence. https://research.openie.dev/papers/mol/
 
@@ -364,11 +364,11 @@ The companion laws say how to build the rest of the path without pretending spel
 
 16. Nordhaus, W. D. Two centuries of productivity growth in computing. The Journal of Economic History, 2007. Reported computation prices are his, from around $500 per million computations per second for manual work to around \(6 \times 10^{-11}\) by 2006, in 2006 prices. https://www.cambridge.org/core/journals/journal-of-economic-history/article/two-centuries-of-productivity-growth-in-computing/856EC5947A5857296D3328FA154BA3A3
 
-17. Epoch AI. LLM inference price trends. 12 March 2025. Declines at fixed performance on the order of 9 to 900 times per year across the benchmarks in that note. This paper does not refit them. https://epoch.ai/data-insights/llm-inference-price-trends
+17. Epoch AI. LLM inference price trends. 12 March 2025. Declines at fixed performance on the order of 9 to 900 times per year across the benchmarks in that note. Not refit here. https://epoch.ai/data-insights/llm-inference-price-trends
 
-18. Emberson, L., and Roodman, D. / Epoch AI. The plunging price of thought. 22 September 2026. About a 47 percent decline per quarter, summarized as about 13 times per year, since about 2023. This paper does not refit them. https://epoch.ai/publications/the-plunging-price-of-thought
+18. Emberson, L., and Roodman, D. / Epoch AI. The plunging price of thought. 22 September 2026. About a 47 percent decline per quarter, summarized as about 13 times per year, since about 2023. Not refit here. https://epoch.ai/publications/the-plunging-price-of-thought
 
-19. Landauer, R. Irreversibility and heat generation in the computing process. IBM Journal of Research and Development, 5(3), 183–191, 1961. https://doi.org/10.1147/rd.53.0183
+19. Landauer, R. Irreversibility and heat generation in the computing process. IBM Journal of Research and Development, 5(3), 183-191, 1961. https://doi.org/10.1147/rd.53.0183
 
 20. Horowitz, M. Computing's energy problem (and what we can do about it). IEEE International Solid-State Circuits Conference, 2014. https://doi.org/10.1109/ISSCC.2014.6757323
 
