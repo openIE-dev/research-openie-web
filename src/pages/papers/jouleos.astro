@@ -1,0 +1,19 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/jouleos.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description={`${frontmatter.title}. A review and design guide. One intent stream lowered per measured coordinate. The wasm runtime is the operating system that is seen. board_synth_claimed=false.`}
+  headings={headings}
+>
+  <Content />
+</PaperLayout>
