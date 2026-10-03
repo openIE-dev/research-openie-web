@@ -68,6 +68,16 @@ deck = fm_get('deck', '')
 author = fm_get('author', 'David Charlot · Open Interface Engineering')
 status = fm_get('status', 'Research study · draft')
 
+if id_ == 'spellcheck':
+    measure = ''
+else:
+    measure = '''<div class="measurement">
+<strong>Measurement.</strong> Research study, not a journal final.
+Energy figures from the software reference are OpCounter analytical estimates, not board power.
+We have not synthesized or metered an FPGA board. No fabricated citations.
+</div>
+'''
+
 header = f'''# {title}
 
 <div class="meta">
@@ -76,11 +86,7 @@ header = f'''# {title}
 https://research.openie.dev/papers/{id_}/ · PDF https://research.openie.dev/pdfs/{id_}.pdf
 </div>
 
-<div class="measurement">
-<strong>Measurement.</strong> Research study, not a journal final.
-Energy figures from the software reference are OpCounter analytical estimates, not board power.
-We have not synthesized or metered an FPGA board. No fabricated citations.
-</div>
+{measure}
 
 > {deck}
 
