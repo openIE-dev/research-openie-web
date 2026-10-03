@@ -1,6 +1,6 @@
 ---
 title: "The search for JouleOS"
-deck: "A comprehensive review and design guide for secure compute infrastructure in the age of AI. One intent stream, lowered onto the coordinate it measured. The wasm runtime is the operating system that is seen."
+deck: "A comprehensive review and design guide for secure compute infrastructure in the age of AI. One intent stream, lowered onto the coordinate it measured. WebAssembly is a binary instruction format for a stack-based virtual machine. The WebAssembly runtime is the operating system that is seen."
 id: jouleos
 status: "Research study"
 author: "David Charlot, Open Interface Engineering"
@@ -324,17 +324,17 @@ The energy oracle reads where the platform exposes a counter: Apple silicon proc
 
 ### 12.6 Unified Design Architecture, and the runtime that is seen
 
-Unified Design Architecture is the organizing principle in the project's own note. Hardware, runtime, language, and surface are one artifact. The project does not own the silicon, so the runtime measures its coordinate at boot and lowers one intent stream onto that coordinate. The control vector is not a single distance from bare metal. Address-space ownership, capability enforcement, persistence directness, and dispatch reach are separate axes. A browser can have no persistent namespace and still inherit a hard capability wall. A hosted process sits in someone else's namespace. Bare metal owns the address space and still has to build capability discipline.
+Unified Design Architecture names one artifact. Hardware, runtime, language, and surface are designed together. The runtime measures its coordinate at boot and lowers one intent stream onto that coordinate. The control vector has four axes: address-space ownership, capability enforcement, persistence directness, and dispatch reach. A browser has no persistent namespace and a hard capability wall. A hosted process sits in another namespace. Bare metal owns the address space and builds its own capability discipline.
 
-The wasm runtime is the operating system that is seen. The progressive web app is that surface in a browser. The crate `joule-os-wasm` is the workload host: the same module, interpreted with the same semantics, on a hosted coordinate, a bare-metal coordinate, and the browser. A virtual machine and a container are coordinates of the same kind. They already supply a boundary. What they usually ship inside that boundary is someone else's operating system. The potential is that the wasm runtime is the operating system lowered onto that boundary. Whether the coordinate can honor the guarantee is measured at boot. If it cannot, the intent refuses.
+WebAssembly, defined above, is a binary instruction format for a stack-based virtual machine. It is not the instruction set of a chip. The WebAssembly runtime is the operating system that is seen. The same module has the same semantics on a hosted coordinate, a bare-metal coordinate, and in the browser. A virtual machine and a container are coordinates. Each supplies a boundary. The WebAssembly runtime is the operating system lowered onto that boundary. If the coordinate cannot honor the guarantee, the intent refuses.
 
-The bare-metal kernel remains the coordinate where the law is native. The trusted computing base links without the host standard library, and the just-in-time crate stays out by construction. That kernel is not a second product and not the thing the fabric runs. The fabric is other people's machines. The seen artifact is one module, one receipt, and one refuse.
+The bare-metal kernel is the coordinate where the law is native. The trusted computing base links without the host standard library. The just-in-time compiler stays outside that base. The kernel is not a second product. The fabric is other machines. The seen artifact is one module, one receipt, and one refuse.
 
-Source for the principle and the control vector: `os-notes/UDA.md` and `os-notes/LOWERING.md` in the JouleOS tree. Source for the wasm host: `crates/joule-os-wasm/Cargo.toml`.
+Source: `os-notes/UDA.md`, `os-notes/LOWERING.md`, and `crates/joule-os-wasm/Cargo.toml` in the JouleOS tree.
 
-### 12.7 What this study will not say about the tree
+### 12.7 Figures this study does not meter
 
-It will not invent shipment counts, prices, or market share. It will not treat the Transaction Science periodic table of application pillars, or any nominal jLow and jHigh ranges drawn for illustration on those sites, as metered joules or as twenty-two operating systems. It will not modify the JouleOS repository. This file is the study. Publication is a separate step and does not modify the JouleOS repository.
+Shipment counts, prices, and market share are not in this study. Nominal ranges drawn for application pillars are not metered joules and are not twenty-two operating systems. An estimator tag is not a measured joule.
 
 ---
 
@@ -351,7 +351,7 @@ A design guide ends in requirements a reader can check, not in a brand preferenc
 7. Require a commit with precondition, postcondition, invariant, frame, and joule ceiling: JouleContract.
 8. Require the lowest S0 to S7 rung that satisfies, with grants, meter tags HwShunt or ModelBased or Estimator, and attestation: the sandbox standard.
 9. Require Mixture of Limits as schedule, meter, and refusal on the machine, and Metabolic Intelligence as the best answer inside the energy envelope, with no offload-to-server rule pretending to be thrift.
-10. Describe JouleOS as the Unified Design Architecture runtime: one intent stream lowered per measured coordinate, the wasm runtime as the surface that is seen, and the bare-metal kernel as the coordinate where the law is native rather than as a second product.
+10. Describe JouleOS as the Unified Design Architecture runtime: one intent stream lowered per measured coordinate, the WebAssembly runtime as the surface that is seen, and the bare-metal kernel as the coordinate where the law is native rather than as a second product.
 
 Energy to run is the only true metric of computer intelligence. All other factors collapse to zero.
 
@@ -383,7 +383,7 @@ Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file s
 | Sandbox ladder S0 to S7; lowest rung that satisfies; meter tags HwShunt / ModelBased / Estimator; attestation. | Sourced fact | `sandbox-transaction-science-web` index.astro |
 | JouleOS: single-level store, EOC cascade, capability ledger, energy oracle with provenance, Rust, small TCB, AOT in TCB and JIT out, bare-metal vs hosted. | Project claim / Sourced fact | `the JouleOS development tree/README.md`, `docs/ARCHITECTURE.md`, `os-notes/THEOREM.md` |
 | JouleOS README Lawful ~1 µJ, LlmInLoop ~5 mJ, ~10^5× vs LLM-everything on a corpus. | Project claim | joule-os README (not measured by this study) |
-| Unified Design Architecture is one artifact lowered per measured coordinate. The wasm runtime is the surface that is seen. A virtual machine or a container is a coordinate. The bare-metal kernel is where the law is native, not a second product. | Definition / design reading of the tree | joule-os `os-notes/UDA.md`, `os-notes/LOWERING.md`, `crates/joule-os-wasm/Cargo.toml` |
+| Unified Design Architecture is one artifact lowered per measured coordinate. The WebAssembly runtime is the surface that is seen. A virtual machine or a container is a coordinate. The bare-metal kernel is where the law is native, not a second product. | Definition / design reading of the tree | joule-os `os-notes/UDA.md`, `os-notes/LOWERING.md`, `crates/joule-os-wasm/Cargo.toml` |
 | This draft invents no measured joules, prices, shipments, or market share. | Definition | Brief |
 
 ---
@@ -395,8 +395,7 @@ Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file s
 - Any kernel identity for commercial HarmonyOS, WeensyOS, or Taos.
 - Any offload-to-server rule as Metabolic Intelligence.
 - Any ranking of kernels by popularity or geography.
-- Any claim that a wasm runtime on a host already owns that host's privileged mode. The runtime is the operating system that is seen. The host kernel remains the host's law.
+- Any claim that a WebAssembly runtime on a host already owns that host's privileged mode. The runtime is the operating system that is seen. The host kernel remains the host's law.
 - Any treatment of Transaction Science application-pillar tables or nominal jLow/jHigh ranges as metered joules or as twenty-two operating systems.
-- Any modification of the JouleOS repository from this study.
 
 End of study draft, 3 October 2026, with the Unified Design Architecture destination.
