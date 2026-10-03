@@ -386,3 +386,21 @@ Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file s
 
 ---
 
+
+## 15. JouleOS
+
+JouleOS is the operating system the problems in this study require. Hardware, runtime, language, and surface are one artifact. The name of that arrangement is Unified Design Architecture.
+
+The runtime measures the coordinate it occupies and lowers one intent stream onto that coordinate. A coordinate is a browser, a hosted process, a virtual machine, a container, or bare metal. WebAssembly is a binary instruction format for a stack-based virtual machine. It is not the instruction set of a chip. The WebAssembly runtime is the operating system that is seen. The same module has the same semantics on every coordinate. If the coordinate cannot honor the capability or the energy guarantee, the intent refuses.
+
+The machine's law is a capability ledger. Only the kernel issues a typed capability. Delegation narrows what was granted. Revocation is by generation. Authority is not ambient.
+
+Persistence is a single-level store. The bytes in memory are the durable bytes. Each mutation commits or rolls back at an instruction boundary.
+
+The schedule is Energy-Oriented Computing. Refine families run cheapest first. The check is deterministic. A large language model is not the judge. The project states Lawful near one microjoule, LlmInLoop near five millijoules, and about a hundred-thousand-fold lower joules per unit of work than a corpus that sends every step through a large language model.
+
+The meter reads the counter the platform exposes and names the source. On Apple silicon that source is the process energy interface. On Linux it is RAPL. Elsewhere the source is an estimator, and an estimator is not a measured joule. Work classes are not added together.
+
+The bare-metal kernel is the coordinate where this law is native. Its trusted computing base is small and links without the host standard library. Just-in-time compilation stays outside that base. On every other coordinate the same runtime is what runs. The kernel is not a second product.
+
+Energy to run is the only true metric of computer intelligence. All other factors collapse to zero.
