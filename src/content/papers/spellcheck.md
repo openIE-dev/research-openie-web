@@ -200,7 +200,7 @@ Valve's Steam Hardware and Software Survey for September 2026 reports, among cli
 
 The stack is CUDA on NVIDIA, and ROCm or Vulkan on AMD. llama.cpp runs a quantised model on the card. vLLM serves a model when the card holds the weight. The interface to the frontier stack is quantisation, a smaller model, or an API. A consumer card runs the model that fits. The frontier training system does not fit. The OpenIE claim for this row: software aimed at the flagship aims at 0.40 percent of a gamer survey. Software aimed at the cards people still report, including 30-series and 40-series parts, covers the installed generation. That is the larger impact.
 
-**Datacenter accelerators.** NVIDIA's same fiscal 2026 release reports Data Center revenue of $193.7 billion for the year, up 68 percent, and $62.3 billion in the fourth quarter. The release does not disclose unit shipments of Hopper, Blackwell, or Rubin. It describes a multiyear partnership with Meta that includes millions of Blackwell and Rubin GPUs. That sentence is NVIDIA's account of a deployment plan. It is not an audited count of cards in racks.
+**Datacenter accelerators.** NVIDIA's same fiscal 2026 release reports Data Center revenue of $193.7 billion for the year, up 68 percent, and $62.3 billion in the fourth quarter. The release does not disclose unit shipments of Hopper, Blackwell, or Rubin. It describes a multiyear partnership with Meta that includes millions of Blackwell and Rubin GPUs. That sentence is NVIDIA's account of a deployment plan. It is not an audited count of cards in racks. On 28 October 2025, at GTC in Washington, Jensen Huang said 6 million Blackwell GPUs had shipped in the last four quarters. CNBC reported that sentence the same day. The fiscal 2026 release still does not disclose unit shipments. The 6 million figure is Huang's statement. It is not an audited unit line. The same report quotes an expected $500 billion in GPU sales across Blackwell and Rubin. That is a sales expectation. This paper does not turn it into a unit count.
 
 AMD's 3 February 2026 release reports Data Center segment revenue of $16.6 billion for calendar 2025, up 32 percent, and states that the growth reflects both EPYC CPUs and Instinct GPUs. Instinct is not a separate revenue line, except one disclosed slice: fourth-quarter Instinct MI308 revenue to China of about $390 million. No Instinct unit count is in the release.
 
@@ -208,13 +208,13 @@ On the 28 January 2026 call, Nadella said Microsoft's fleet includes NVIDIA, AMD
 
 Who has it: the buyers who contract for that revenue. Hood said much of the GPU capital is already contracted for the useful life of the hardware. That is a rental market. The stack on the accelerator is CUDA, ROCm, and the serving stacks that assume the card, including TensorRT-LLM and vLLM. This category is the frontier stack. Everyone else's interface to it is an API, a distilled model, or a quantised model. The OpenIE claim for this row: software that requires the accelerator reaches the renters. Software written for the generations in the other rows reaches the people who hold those machines. Spell check did the second. The first is the bureau stage.
 
-**MCUs, tiny parts, and embedded parts.** Arm's cumulative figure of more than 310 billion chips includes sensors and embedded devices. The annual report does not split that cumulative figure into microcontrollers. This paper does not invent the split. A global microcontroller unit census for 2025 is not in the sources used here.
+**MCUs, tiny parts, and embedded parts.** Arm's cumulative figure of more than 310 billion chips includes sensors and embedded devices. The annual report does not split that cumulative figure into microcontrollers. This paper does not invent the split. IC Insights, 29 March 2022, states that 2021 deliveries reached 30.9 billion microcontrollers, after unit growth of 12 percent that year. That is a 2021 shipment. A 2025 microcontroller census is still not in the sources used here. The same note forecasts 35.8 billion units in 2026. The forecast is not used as a current count.
 
 MLCommons, 17 September 2025, published MLPerf Tiny v1.3. The suite measures neural networks that are typically under 100 kilobytes. The release contains 70 results across five tests, including 27 power results, from Kai Jiang, Qualcomm, STMicroelectronics, and Syntiant. Five hardware platforms were benchmarked for the first time. The tests cover image classification, visual wake words, keyword spotting, anomaly detection, and a streaming wake-word task.
 
 The stack is TensorFlow Lite for Microcontrollers, CMSIS-NN, and the vendor runtimes those submissions use. The model is kilobytes. A frontier language model does not load. The interface to the frontier stack is a task model compiled for the part: a wake word, a sensor score, a kernel. The OpenIE claim for this row: software for this generation is the software that fits the part. Arm's cumulative shipment is the largest silicon figure in this section, and it is not a datacenter. Impact follows the part that ships.
 
-**Edge accelerators and NPUs in shipping devices.** Yusuf Mehdi, 20 May 2024, defined a Copilot+ PC by a neural processing unit of 40+ TOPS. The first wave uses Snapdragon X Elite and Snapdragon X Plus, which that post states deliver 45 NPU TOPS. The on-device experiences are specified to run on that NPU with small language models, while large models remain available through Azure. Gartner, as reported by Computerworld on 28 August 2025 from Gartner's release the same day, forecast 77.8 million AI PCs in 2025, 31 percent of the global PC market. That is a forecast published before the year closed. It is not IDC's completed PC total, and it is not a count of Copilot+ PCs alone.
+**Edge accelerators and NPUs in shipping devices.** Yusuf Mehdi, 20 May 2024, defined a Copilot+ PC by a neural processing unit of 40+ TOPS. The first wave uses Snapdragon X Elite and Snapdragon X Plus, which that post states deliver 45 NPU TOPS. The on-device experiences are specified to run on that NPU with small language models, while large models remain available through Azure. Gartner, as reported by Computerworld on 28 August 2025 from Gartner's release the same day, forecast 77.8 million AI PCs in 2025, 31 percent of the global PC market. That is a forecast published before the year closed. It is not IDC's completed PC total, and it is not a count of Copilot+ PCs alone. Canalys, now part of Omdia, in data dated 25 February 2025 and reported on 7 March 2025, counts 15.4 million AI-capable PCs shipped in the fourth quarter of 2024, 23 percent of PC shipments that quarter. For the full year 2024 the same note says 17 percent of PCs shipped were AI-capable and does not print the year's unit total. Its definition is a desktop or notebook with a dedicated chipset or block for on-device AI workloads. The examples it names are AMD XDNA, Apple's Neural Engine, Intel AI Boost, and Qualcomm Hexagon. The 15.4 million is a closed quarter. Gartner's 77.8 million stays a forecast.
 
 Apple's on-device model of about 3 billion parameters is compiled for Apple silicon, which includes the Neural Engine. Apple does not publish a separate Neural Engine shipment. The active-device base is the earlier Apple figure, not an NPU census.
 
@@ -352,15 +352,15 @@ JPR's 11.48 million add-in boards in the fourth quarter of 2025 are a shipment. 
 
 ### 4.20 Claim SC-19. Datacenter accelerators are disclosed as revenue, not as a unit census
 
-NVIDIA's $193.7 billion Data Center revenue and AMD's $16.6 billion Data Center segment revenue are the disclosed figures. Instinct is not separated except for the MI308 China slice of about $390 million. Maya 200 is named. TPU and Trainium units are not in the sources used. Class: shipment or installed base, limited to what was disclosed. NVIDIA's "millions" of Blackwell and Rubin GPUs in the Meta partnership sentence is a stated plan.
+NVIDIA's $193.7 billion Data Center revenue and AMD's $16.6 billion Data Center segment revenue are the disclosed figures. Instinct is not separated except for the MI308 China slice of about $390 million. Maya 200 is named. TPU and Trainium units are not in the sources used. Class: shipment or installed base, limited to what was disclosed. NVIDIA's "millions" of Blackwell and Rubin GPUs in the Meta partnership sentence is a stated plan. Huang's 6 million Blackwell GPUs in the four quarters before 28 October 2025 is a stated shipment, reported by CNBC. It is not a unit line in the fiscal 2026 release.
 
 ### 4.21 Claim SC-20. Tiny and embedded parts have a benchmark and a cumulative chip figure, not a 2025 MCU census
 
-Arm's more than 310 billion cumulative chips include this class and are not split. MLPerf Tiny v1.3 measures networks typically under 100 kilobytes, with 70 results and 27 power results. Class: shipment or installed base, plus a benchmark. No 2025 microcontroller unit total is stated.
+Arm's more than 310 billion cumulative chips include this class and are not split. IC Insights states 30.9 billion microcontroller deliveries in 2021. MLPerf Tiny v1.3 measures networks typically under 100 kilobytes, with 70 results and 27 power results. Class: shipment or installed base, plus a benchmark. No 2025 microcontroller unit total is stated.
 
 ### 4.22 Claim SC-21. Shipping NPUs are a spec, a forecast, and a compiled on-device model
 
-Copilot+ is a 40+ TOPS NPU class, with the first wave at 45 TOPS on Snapdragon X. Gartner's 77.8 million AI PCs and 31 percent share are an August 2025 forecast. Apple's about 3 billion parameter on-device model is the documented Apple silicon workload. Class: shipment or installed base where a count exists, and a product spec where it does not. The forecast is labeled a forecast.
+Copilot+ is a 40+ TOPS NPU class, with the first wave at 45 TOPS on Snapdragon X. Canalys counts 15.4 million AI-capable PCs in the fourth quarter of 2024. Gartner's 77.8 million AI PCs and 31 percent share are an August 2025 forecast. Apple's about 3 billion parameter on-device model is the documented Apple silicon workload. Class: shipment or installed base where a count exists, and a product spec where it does not. The forecast is labeled a forecast.
 
 ### 4.23 Claim SC-22. Prior generations remain the accessible stock
 
@@ -373,11 +373,11 @@ The design claim is that software written for the globally accessible generation
 
 ### 4.25 Claim SC-24. Calculator prices are dated observations, not one curve
 
-The Anita, HP-35, TI-2500, VisiCalc, and Lotus prices in Section 2.11 are the prices the cited pages print. Durations are the intervals those pages support. Finseth and Datamath disagree on the date of the HP-35 cut from $395 to $295. Both dates are printed. Class: price history.
+The Anita, HP 9100A, HP-35, Bowmar 901B, TI-2500, VisiCalc, and Lotus prices in Section 2.11 are the prices the cited pages print. Durations are the intervals those pages support. Finseth and Datamath disagree on the date of the HP-35 cut from $395 to $295. Both dates are printed. Class: price history.
 
 ### 4.26 Claim SC-25. Spell check lost its separate price inside products whose own prices are only partly known
 
-WordCheck's January 1981 advertisement is cited. Its dollar price is not, because the page that would carry it was not read. WordPerfect 3.0, October 1983, has a spell-check command and no price in the chronology used. Word for Windows in November 1989 is priced at $498 as a word processor. Hunspell's separate license price is zero. The missing standalone prices stay missing. Class: price history.
+WordCheck's January 1981 advertisement lists $200.00 for CBM and PET 32K machines with dual disk drives. WordPerfect 3.0, October 1983, has a spell-check command on Mendelson's list. DOS Days states the Comdex price of that version as $495. That is the word processor. Brodie states that Word 2.0 added a purchased spell checker and that 1.1 added mail merge, so version 1.0 did not include the checker. The October 1983 price of $395 is the word processor. Grammatik II costs $89 in the Chicago Tribune of 10 April 1988. Grammatik III is $99 in START, November 1989. Hunspell's separate license price is zero. The June 1968 Anita Mk 9 amount stays blank. A Grammatik 5 standalone price at the 1993 acquisition stays blank. Class: price history.
 
 ### 4.13 What would be a result and is not
 
@@ -427,7 +427,7 @@ IDC totals are preliminary and the next release restates the prior year. The Ste
 
 No board was synthesized or metered. No analytical energy is computed. `measured_j` is unset.
 
-Section 2.11 prints prices only from pages read for this paper. An advertisement index is not a monthly price audit. The June 1968 Anita amounts, the WordCheck dollar price, the January 1983 Lotus 1-2-3 price, the HP 9100A price, and the Bowmar 901B price are absent because those pages do not state them or were not read. Finseth's HP-35 schedule and Datamath's HP-35 MSRP lines are both printed. Neither is promoted to the other's calendar.
+Section 2.11 prints prices only from pages read for this paper. An advertisement index is not a monthly price audit. The June 1968 Anita Mk 9 amount is still absent. The model pages transcribe Mk 10, Mk 11, and Mk 12 from that advertisement and do not transcribe the Mk 9 line. Finseth's HP-35 schedule and Datamath's HP-35 MSRP lines are both printed. Neither is promoted to the other's calendar. The Byte price for 1-2-3 is the price fixed before commercial availability, not a 26 January 1983 receipt. Huang's Blackwell count is a stated shipment, not a line in the fiscal 2026 release. IC Insights' 30.9 billion microcontrollers are 2021 deliveries, not a 2025 census. Canalys prints a fourth-quarter 2024 unit count for AI-capable PCs and a full-year share without a full-year unit count.
 
 ## 7. Conclusion
 
@@ -462,7 +462,7 @@ November 1965. The index prices the Mk 9 at £425 and states that more than 16,0
 
 July 1966. The index prices the Mk 10 at £460.
 
-June 1968. The index says an advertisement carries prices for the Mk 9, Mk 10, Mk 11, and Mk 12. The index does not transcribe the amounts. This paper does not supply them.
+June 1968. "Focus on ANITA," an advertisement in Office Methods and Machines, June 1968, page 41, is cited by the model pages at anita-calculators.info. Those pages transcribe three amounts from it. Mk 10: £480. The Mk 10 page quotes the advertisement: "Price £480." Mk 11: £298. Mk 12: £480. The index still does not print the amounts. The Mk 9 amount is not on the Mk 9 page. That page prices the 1964 introduction at £425, citing "BEE '64," Industrial Electronics, November 1964, page 521. That £425 is the introduction price. It is not a transcription of the June 1968 line. The June 1968 Mk 9 amount stays blank. July 1966 had priced the Mk 10 at £460. June 1968 prices it at £480. Those are two advertisements. The months between them are not an audit.
 
 April 1969 and May 1969. The index prices the Anita 1000 at £285 in both months. July 1969. The Anita 1010 is £320. February 1971. The Anita 1000LSI is £192 and the 1010LSI is £250. These are later models. A lower price on a later model is not a cut in the Mk 8's price.
 
@@ -478,7 +478,11 @@ Printed as durations, and only inside each source. Finseth's list, if taken as t
 
 This paper does not choose Finseth's May 1973 date over Datamath's January 1974 date.
 
-**TI-2500 Datamath.** Datamath Calculator Museum, TI-2500 Version 1 page: announced April 1972 at a suggested retail price of $149.95. First customers received calculators in June 1972 at Neiman-Marcus and Sanger-Harris in Dallas. Formal introduction 21 September 1972. The suggested retail price was reduced to $119.95 by the date of that introduction. The page does not give the day of the cut. The documented window for $149.95 in this source runs from the April announcement to 21 September 1972. Later cuts after $119.95 are not on this page. The same page names the Bowmar 901B, introduced September 1971, and gives it no price. Datamath's HP-35 page names the HP 9100A of 1968 and gives it no price. Those prices are absent here because they are absent there.
+**TI-2500 Datamath.** Datamath Calculator Museum, TI-2500 Version 1 page: announced April 1972 at a suggested retail price of $149.95. First customers received calculators in June 1972 at Neiman-Marcus and Sanger-Harris in Dallas. Formal introduction 21 September 1972. The suggested retail price was reduced to $119.95 by the date of that introduction. The page does not give the day of the cut. The documented window for $149.95 in this source runs from the April announcement to 21 September 1972. Later cuts after $119.95 are not on this page. The same page names the Bowmar 901B, introduced September 1971, and gives it no price. Datamath's HP-35 page names the HP 9100A of 1968 and gives it no price. The prices are on other pages, read below.
+
+**HP 9100A.** The Computer History Museum scan of the 1968 brochure, collection 102646164, prints "Priced at $4900" and "hp 9100A Calculator, Price: $4900." The HP Memory Project states the same $4900 as the price on page 130 of the 1969 catalog, and states that the model was introduced in the September 1968 Hewlett-Packard Journal. The brochure does not say how long $4900 lasted. A later price is not taken from a page this paper did not read.
+
+**Bowmar 901B.** Datamath Calculator Museum, Bowmar 901B page: date of introduction September 1971, new price $240. The page states a suggested retail price of $240.00 for the 901B launched on the TMS0103. The duration of $240 is not on the page.
 
 **The calculator as software.** Wikipedia, VisiCalc, as of the page read for this paper. Personal Software began selling VisiCalc in mid-1979 for under US$100. The same article cites a formal introduction scheduled for the National Computer Conference, 4 to 7 June 1979. It also cites Peter Jennings: the first Apple II copy, version 1.37, went out on 17 October 1979. Both dates are in the article. This paper does not collapse them.
 
@@ -488,13 +492,13 @@ The same article says financial modeling languages on timesharing systems cost $
 
 Sales figures in the article, kept as the article states them: more than 39,000 copies in January 1983, still the best-selling software product; 5,700 copies in December 1983. Lotus Development acquired Software Arts and ended sales. The lead dates that end to 1985. A cited InfoWorld item is dated 2 June 1986 and titled as VisiCalc discontinued. Both dates stay.
 
-DOS Days, Lotus 1-2-3 page: the program was released in January 1983. The page does not state the January 1983 price. It states that Release 2.2 and Release 3 cost the same, $495, the same price as Microsoft Excel 2.1 and Borland Quattro Pro at the time of that comparison. How long $495 had already lasted, and whether the 1983 price was $495, are not on that page. Release 4 for DOS, May 1994, added a spell checker. That is a feature date, not a price.
+DOS Days, Lotus 1-2-3 page: the program was released in January 1983. The page does not state the January 1983 price. Gregg Williams, Byte, December 1982, pages 182-198, reviewed a prerelease copy. The review, as reprinted, says Lotus had fixed the price of 1-2-3 at $495, and that the program would be available for the IBM Personal Computer sometime next month. That $495 is the price fixed before commercial sale, printed in December 1982. It is not a receipt dated 26 January 1983. DOS Days still does not print a January price of its own. It states that Release 2.2 and Release 3 cost the same, $495, the same price as Microsoft Excel 2.1 and Borland Quattro Pro at the time of that comparison. How long $495 had already lasted, and whether the 1983 price was $495, are not on that page. Release 4 for DOS, May 1994, added a spell checker. That is a feature date, not a price.
 
 **Spell check as a product, then as a line that disappeared.**
 
 Wikipedia, "Spell checker," as read for this paper. In 1961 Les Earnest's project used a list of 10,000 acceptable words. February 1971: Ralph Gorin wrote SPELL for the DEC PDP-10 at Stanford's Artificial Intelligence Laboratory, in assembly, and made it publicly accessible. The article states no price. A laboratory program is not a retail schedule.
 
-The first personal-computer checkers appeared in 1980. WordCheck for Commodore systems was released in late 1980 in time for an advertisement in Compute!, January 1981, issue 8, page 119. The article does not quote a price from that advertisement. The advertisement page was not read for this paper. No WordCheck price is stated here.
+The first personal-computer checkers appeared in 1980. WordCheck for Commodore systems was released in late 1980 in time for an advertisement in Compute!, January 1981, issue 8, page 119. That page was read. The advertisement is from Micro Computer Industries, Ltd. The WordCheck copy says the program is available for CBM and PET 32K machines with dual disk drives, and then: "List price is only $200.00." The same page also prices Create-A-Base and an inventory program at $200.00. The WordCheck figure is the sentence attached to the dual-disk line. The Wikipedia article does not quote it. This paper does.
 
 The article says the market for standalone packages was short-lived, and that by the mid-1980s WordStar and WordPerfect had incorporated spell checkers. "Short-lived" and "by the mid-1980s" are the article's own bounds. They are not a pair of invoice dates. No standalone dollar price is in the article.
 
@@ -502,11 +506,11 @@ Sector Software's Spellbound, 1987, and Microsoft Word since Word 95, are the ar
 
 Edward Mendelson, "A Chronology of Versions," WPDOS. March 1980: SSI*WP for Data General minicomputers, US$5,500 per copy. The chronology does not say that copy included a spelling checker. That $5,500 is the word processor. Its duration is not stated.
 
-26 November 1982: WordPerfect 2.20 for the IBM PC. No price in the chronology. October 1983: WordPerfect 3.0 for DOS. Mendelson's command list for that version assigns Alt-F5 to Spellcheck. A spell-check command was in the shipping DOS product by October 1983. The price of version 3.0 is not in the chronology. The spell command is not given its own price.
+26 November 1982: WordPerfect 2.20 for the IBM PC. No price in the chronology. DOS Days says that version featured a 30,000-word dictionary. The page does not name a spell-check command for 2.20. October 1983: WordPerfect 3.0 for DOS. Mendelson's command list for that version assigns Alt-F5, when no text is selected, to Spellcheck. A spell-check command was in the shipping DOS product by October 1983. DOS Days states that version 3.0 was released at Comdex in October 1983 for $495. The chronology does not print that price. DOS Days does not, in the 3.0 paragraph, name the spell checker. The command list does. The $495 is the word processor. The spell command is not given its own price.
 
-30 November 1992: WordPerfect 5.2 for Windows includes Grammatik 5. 6 January 1993: WordPerfect acquires Reference Software International, author of Grammatik. Inclusion is the end of a separate grammar invoice inside that product. The chronology does not state Grammatik's earlier retail price.
+30 November 1992: WordPerfect 5.2 for Windows includes Grammatik 5. 6 January 1993: WordPerfect acquires Reference Software International, author of Grammatik. Inclusion is the end of a separate grammar invoice inside that product. The chronology does not state Grammatik's earlier retail price. Two earlier retail prices are on other pages. The Chicago Tribune, 10 April 1988, states that Grammatik II costs $89. START, volume 4 number 4, November 1989, states Grammatik III at $99, from Reference Software. Neither page is a price for Grammatik 5 at the acquisition. That standalone price stays blank.
 
-Wikipedia, History of Microsoft Word. Word 1.0, released October 1983, costing $395, citing John Markoff, InfoWorld, 30 May 1983. That is the word processor. The article does not say whether version 1.0 contained a spelling checker. This paper does not assert that it did. Word for Windows, November 1989, USD $498. The article does not say how long $498 lasted. Microsoft Write for the Atari ST retailed at $129.95. One stated retail price. No duration.
+Wikipedia, History of Microsoft Word. Word 1.0, released October 1983, costing $395, citing John Markoff, InfoWorld, 30 May 1983. That is the word processor. The article does not say whether version 1.0 contained a spelling checker. Richard Brodie, who wrote much of version 1, said in an October 2008 email interview published by Benj Edwards on 7 November 2015: "Besides 1.0, 1.1 added mail merge, 2.0 simply added a bundled spell checker that we purchased." On that statement, version 1.0 did not include the spell checker. Version 1.1 added mail merge. Version 2.0 added a spell checker the firm purchased. Michal Necasek, OS/2 Museum, 26 May 2018, identifies the spell checker in DOS Word 2.x and 3.x, sold roughly from 1985 to 1987, as licensed from Software Heaven, Inc. The $395 is not a spell-check price. Word for Windows, November 1989, USD $498. The article does not say how long $498 lasted. Microsoft Write for the Atari ST retailed at $129.95. One stated retail price. No duration.
 
 The elimination already stated in Section 2.9 is the last price on this tape. Hunspell's license price as a library is zero under the tri-license the README states. The README does not publish a prior retail schedule. Apple's system-wide checker, described in the spell-check article as the operating system taking over spelling fixes, has no separate price in that article. The duration of "no separate price" begins, on that article's wording, by the mid-1980s for the incorporated word-processor checkers. The operating-system checker is not dated to a day in the article.
 
@@ -587,27 +591,55 @@ The companion laws build the rest of the path. Spell check is the existence proo
 
 36. PrismML. Product statement for Ternary Bonsai 2 27B, described by the firm as built on Qwen3.8 27B: 98.2 percent retention of the full-precision counterpart, 9 times smaller footprint, 5.9 GB. The firm also states 9 times less memory, 8 times faster, and 5 times less energy. Vendor figures. Not remeasured here. https://prismml.com/
 
-37. Sumlock and Anita advertisement index, compiled at anita-calculators.info. Dated advertisements used here: Autumn 1949 Plus at $100; May 1963 Anita Mk 8 £355 and Comptometer 993s £265; January 1964 Mk 8 £365; February 1964 Comptometer 993 series £160 to £330; January 1965 Mk 8 £335 and Mk 9 £425; November 1965 Mk 9 £425 and more than 16,000 Anitas in use; July 1966 Mk 10 £460; June 1968 prices named but not transcribed on the index; April and May 1969 Anita 1000 £285; July 1969 Anita 1010 £320; February 1971 1000LSI £192 and 1010LSI £250. http://www.anita-calculators.info/html/advertisements_-_brochures.html
+37. Sumlock and Anita advertisement index, compiled at anita-calculators.info. Dated advertisements used here: Autumn 1949 Plus at $100; May 1963 Anita Mk 8 £355 and Comptometer 993s £265; January 1964 Mk 8 £365; February 1964 Comptometer 993 series £160 to £330; January 1965 Mk 8 £335 and Mk 9 £425; November 1965 Mk 9 £425 and more than 16,000 Anitas in use; July 1966 Mk 10 £460; June 1968 index names the ad and does not transcribe amounts; model pages transcribe Mk 10 £480, Mk 11 £298, Mk 12 £480, and do not transcribe Mk 9; April and May 1969 Anita 1000 £285; July 1969 Anita 1010 £320; February 1971 1000LSI £192 and 1010LSI £250. http://www.anita-calculators.info/html/advertisements_-_brochures.html
 
 38. Office Magazine. "Simple and Silent," review of the Anita Mk 8, December 1961, pp. 1244-1245. Price £335. Orders from 1 January 1962. Reprint: http://www.anita-calculators.info/html/review_of_anita_mk_8.html
 
 39. Computer History Museum. This Day in History, 4 January 1972. Hewlett-Packard introduces the HP-35, sold for $395. https://www.computerhistory.org/tdih/january/4/
 
-40. Datamath Calculator Museum. Hewlett-Packard HP-35. Announced 4 January 1972, available February 1972. MSRP $395 in January 1972. MSRP $295 in January 1974. Price tag $195 early in 1975, then discontinued. HP-65 introduced 19 January 1974 at $795. HP 9100A of 1968 named, no price on this page. http://www.datamath.org/Related/HewlettPackard/HP35.htm
+40. Datamath Calculator Museum. Hewlett-Packard HP-35. Announced 4 January 1972, available February 1972. MSRP $395 in January 1972. MSRP $295 in January 1974. Price tag $195 early in 1975, then discontinued. HP-65 introduced 19 January 1974 at $795. HP 9100A of 1968 named, no price on this page. The price is on the 1968 brochure, reference 48. http://www.datamath.org/Related/HewlettPackard/HP35.htm
 
 41. Finseth, C. hpdata file for the HP-35A. Introduction price $395. Introduction date 1 July 1972 from a wall of fame, possibly 1 February 1972. Price changes: 1 May 1973 $295, 1 May 1974 $225, 1 February 1975 $195. Discontinued 1 February 1975 at $195. https://www.finseth.com/hpdata/hp35a.php
 
-42. Datamath Calculator Museum. Texas Instruments TI-2500 Datamath Version 1. Announced April 1972 at a suggested retail price of $149.95. First customers June 1972, Neiman-Marcus and Sanger-Harris, Dallas. Formal introduction 21 September 1972, suggested price reduced to $119.95 by that date. Bowmar 901B named, September 1971, no price on this page. http://www.datamath.org/BASIC/DATAMATH/ti-2500-1.htm
+42. Datamath Calculator Museum. Texas Instruments TI-2500 Datamath Version 1. Announced April 1972 at a suggested retail price of $149.95. First customers June 1972, Neiman-Marcus and Sanger-Harris, Dallas. Formal introduction 21 September 1972, suggested price reduced to $119.95 by that date. Bowmar 901B named, September 1971, no price on this page. The price is on the 901B page, reference 49. http://www.datamath.org/BASIC/DATAMATH/ti-2500-1.htm
 
 43. Wikipedia. VisiCalc. Mid-1979 sale for under US$100. National Computer Conference introduction scheduled 4 to 7 June 1979. First Apple II copy 17 October 1979, citing Peter Jennings. By 1982 the price had risen from $100 to $250, citing Softline, March 1982. More than 39,000 copies in January 1983. 5,700 copies in December 1983. Lotus ended sales, lead date 1985, with an InfoWorld item dated 2 June 1986. Timesharing modeling languages at $20,000, citing a UCLA case. https://en.wikipedia.org/wiki/VisiCalc
 
 44. DOS Days. Lotus 1-2-3. Released January 1983. The page does not state the 1983 price. Release 2.2 and Release 3 both $495, the same price as Microsoft Excel 2.1 and Borland Quattro Pro at the time of that comparison. Release 4 for DOS, May 1994, added a spell checker. https://dosdays.co.uk/topics/Software/lotus_123.php
 
-45. Wikipedia. Spell checker. Earnest, 1961, list of 10,000 words. Gorin, SPELL, February 1971, PDP-10 at Stanford, no price. WordCheck for Commodore, late 1980, Compute! January 1981, issue 8, page 119, price not quoted. Standalone market short-lived; by the mid-1980s WordStar and WordPerfect had incorporated checkers. Spellbound, 1987. Interactive checking in Microsoft Word since Word 95, citing Raymond Chen, The Old New Thing, 22 June 2026. System-wide Mac OS X checker, no separate price and no day. https://en.wikipedia.org/wiki/Spell_checking
+44a. Williams, G. Lotus Development Corporation's 1-2-3. Byte, December 1982, pp. 182-198. Prerelease review. Lotus had fixed the price at $495, with availability for the IBM PC sometime next month. Read from the reprint at https://aresluna.org/attached/computerhistory/articles/spreadsheets/lotus123review/
 
-46. Mendelson, E. WPDOS: A Chronology of Versions. March 1980: SSI*WP for Data General, US$5,500 per copy, spelling not stated. 26 November 1982: WordPerfect 2.20 for the IBM PC, no price. October 1983: WordPerfect 3.0 for DOS, Alt-F5 assigned to Spellcheck in the command list, no price. 30 November 1992: WordPerfect 5.2 for Windows includes Grammatik 5. 6 January 1993: acquisition of Reference Software International. https://mendelson.org/wpdos/chronology.html
+45. Wikipedia. Spell checker. Earnest, 1961, list of 10,000 words. Gorin, SPELL, February 1971, PDP-10 at Stanford, no price. WordCheck for Commodore, late 1980, Compute! January 1981, issue 8, page 119. The article does not quote the price. The advertisement, read for this paper, lists $200.00. Standalone market short-lived; by the mid-1980s WordStar and WordPerfect had incorporated checkers. Spellbound, 1987. Interactive checking in Microsoft Word since Word 95, citing Raymond Chen, The Old New Thing, 22 June 2026. System-wide Mac OS X checker, no separate price and no day. https://en.wikipedia.org/wiki/Spell_checking
+
+46. Mendelson, E. WPDOS: A Chronology of Versions. March 1980: SSI*WP for Data General, US$5,500 per copy, spelling not stated. 26 November 1982: WordPerfect 2.20 for the IBM PC, no price. October 1983: WordPerfect 3.0 for DOS, Alt-F5 assigned to Spellcheck when no text is selected, no price in the chronology. 30 November 1992: WordPerfect 5.2 for Windows includes Grammatik 5. 6 January 1993: acquisition of Reference Software International. The chronology does not state Grammatik's earlier retail price. https://mendelson.org/wpdos/chronology.html
 
 47. Wikipedia. History of Microsoft Word. Word 1.0, October 1983, $395, citing Markoff, InfoWorld, 30 May 1983. The article does not say that version included a spelling checker. Word for Windows, November 1989, USD $498. Microsoft Write for the Atari ST, $129.95. Durations of those prices are not in the article. https://en.wikipedia.org/wiki/History_of_Microsoft_Word
+
+48. Hewlett-Packard. hp 9100A Calculator brochure, 1968. Computer History Museum collection 102646164. "Priced at $4900." "Price: $4900." http://archive.computerhistory.org/resources/text/HP/HP.9100A.1968.102646164.pdf
+
+49. HP Memory Project. The 9100A was introduced in the September 1968 Hewlett-Packard Journal and is priced at $4900 on page 130 of the 1969 catalog. https://www.hpmemoryproject.org/wb_pages/wall_b_page_11a.htm
+
+50. Datamath Calculator Museum. Bowmar 901B. Introduced September 1971. New price $240. Suggested retail price $240.00. http://datamath.org/Related/Bowmar/901B.htm
+
+51. Compute! January 1981, issue 8, page 119. Micro Computer Industries, Ltd. WordCheck advertisement. CBM and PET 32K machines with dual disk drives. "List price is only $200.00."
+
+52. DOS Days. WordPerfect. Version 2.20 featured a 30,000-word dictionary. Version 3.0, October 1983, Comdex, $495. The 3.0 paragraph does not name the spell checker. https://dosdays.co.uk/topics/Software/wordperfect.php
+
+53. Edwards, B. Interview with Charles Simonyi and Richard Brodie, October 2008, published 7 November 2015. Brodie: "Besides 1.0, 1.1 added mail merge, 2.0 simply added a bundled spell checker that we purchased." http://www.vintagecomputing.com/index.php/archives/1165/vcg-anthology-interview-charles-simonyi-and-richard-brodie-creators-of-microsoft-word-2008
+
+54. Necasek, M. A Word on the CALL 5 Spell. OS/2 Museum, 26 May 2018. Spell checker in DOS Word 2.x and 3.x, sold roughly 1985 to 1987, licensed from Software Heaven, Inc. http://www.os2museum.com/wp/a-word-on-the-call-5-spell/
+
+55. Chicago Tribune. Software isn't sexist friendly. 10 April 1988. Grammatik II costs $89. Read at https://bancodeprofissionais.com/1988/04/10/software-isnt-sexist-friendly/ which prints the Tribune article of that date.
+
+56. Edwards, D. Mac & PC on the ST: Readability and Grammatik III Under pc-ditto. START, vol. 4, no. 4, November 1989. Grammatik III, $99. https://www.atarimagazines.com/startv4n4/macandpc.php
+
+57. ANITA model pages. Mk 10, Mk 11, and Mk 12 transcribe "Focus on ANITA," Office Methods and Machines, June 1968, p. 41: Mk 10 £480, Mk 11 £298, Mk 12 £480. Mk 9 page: introduced 1964 at £425, citing Industrial Electronics, November 1964, p. 521. No June 1968 Mk 9 amount. http://www.anita-calculators.info/html/anita_mk_10.html http://www.anita-calculators.info/html/anita_mk_11.html http://www.anita-calculators.info/html/anita_mk_12.html http://www.anita-calculators.info/html/anita_mk_9.html
+
+58. CNBC. Huang says Nvidia AI chips are now in full production in Arizona. 28 October 2025. Huang: 6 million Blackwell GPUs shipped in the last four quarters. Expected GPU sales of $500 billion across Blackwell and Rubin are a sales expectation, not a unit count. https://www.cnbc.com/2025/10/28/nvidia-jensen-huang-gtc-washington-dc-ai.html
+
+59. IC Insights. Microcontrollers Get a Lift From Automotive After 2021 Rebound. 29 March 2022. 30.9 billion microcontroller units delivered in 2021. Forecast of 35.8 billion units in 2026 is not used as a current count. https://www.icinsights.com/news/bulletins/microcontrollers-get-a-lift-from-automotive-after-2021-rebound/
+
+60. Canalys, now part of Omdia. Data dated 25 February 2025, reported 7 March 2025. 15.4 million AI-capable PCs in the fourth quarter of 2024, 23 percent of PC shipments that quarter. Full year 2024: 17 percent, unit total not printed. Definition: a dedicated chipset or block for on-device AI workloads. https://telecomreseller.com/2025/03/07/ai-capable-pc-shipment-share-rises-to-23-in-q4-2024/
 
 ## Appendix A. Claim map
 
@@ -631,13 +663,13 @@ The companion laws build the rest of the path. Spell check is the existence proo
 | SC-16 | Phones: GSMA subscribers and IDC handset shipments are different counts. Arm states the fiscal 2025 smartphone SoC was Arm in greater than 99 percent of units. | Shipment or installed base |
 | SC-17 | PCs: IDC shipments and 1 billion Windows 11 users are different counts. | Shipment or installed base |
 | SC-18 | Consumer GPUs: JPR quarterly units, NVIDIA Gaming revenue, Steam survey. Flagship share is not the installed card. | Shipment or installed base |
-| SC-19 | Datacenter accelerators: NVIDIA and AMD revenue. Units not disclosed, except that the absence is stated. | Shipment or installed base |
-| SC-20 | Tiny and embedded: Arm cumulative chips, unsplit. MLPerf Tiny v1.3. No 2025 MCU census. | Shipment or installed base |
-| SC-21 | Shipping NPUs: 40+ TOPS spec, Gartner forecast, Apple on-device model. | Spec, forecast, and shipment |
+| SC-19 | Datacenter accelerators: NVIDIA and AMD revenue. Huang's 6 million Blackwell GPUs is a stated shipment, not a 10-K unit line. | Shipment or installed base |
+| SC-20 | Tiny and embedded: Arm cumulative chips, unsplit. IC Insights: 30.9 billion MCUs in 2021. MLPerf Tiny v1.3. No 2025 MCU census. | Shipment or installed base |
+| SC-21 | Shipping NPUs: 40+ TOPS spec, Canalys 15.4 million AI-capable PCs in Q4 2024, Gartner forecast, Apple on-device model. | Spec, forecast, and shipment |
 | SC-22 | Prior generations remain in hand. Shipment year and installed base are not divided into a share. | Shipment or installed base |
 | SC-23 | Software for the globally accessible generation has the largest impact. Spell check is the finished case. | Design |
 | SC-24 | Calculator prices are the cited pages' prices. Durations are only the intervals those pages support. HP-35 cut dates that disagree are both printed. | Price history |
-| SC-25 | Spell check's separate price ends inside the word processor and the library. Prices the sources do not print are left blank. | Price history |
+| SC-25 | Spell check's separate price ends inside the word processor and the library. Word 1.0 did not include the checker, on Brodie's statement. Prices the sources do not print stay blank. | Price history |
 
 ## Appendix B. Relation to the companion studies
 
