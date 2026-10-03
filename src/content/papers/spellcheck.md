@@ -1,6 +1,6 @@
 ---
 title: "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (<500M)"
-deck: "AI is going to follow the path of all computer automation. Spell check is the completed example. Energy to run is the only true metric of computer intelligence: token price, parameter count, moat rent, and access fees collapse to zero by commoditization, and what remains is joules. Estimates are not measured_j. The many (7B+) and the few (<500M) are an access framing, not a census."
+deck: "People used to pay a premium for spell check and for ordinary calculation. Spell check cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Energy to run is what remains. Estimates are not measured_j. The many (7B+) and the few (<500M) are an access framing, not a census."
 id: spellcheck
 status: "Research study"
 author: "David Charlot, Open Interface Engineering"
@@ -15,7 +15,11 @@ board_synth_claimed: false
 
 AI is going to follow the path of all computer automation. Spell check is the best example of that path.
 
-The argument is economic theory. Computer automation is priced, and the price creates a race. A scarce procedure is sold at a bureau price. A firm that can ship it then charges a moat rent. That rent is what calls rivals to displace the product or replace it. Commoditization is the end of the race: the separate money price is eliminated. Token price, parameter count, moat rent, and access fees are among the charges that collapse. Energy to run is the only true metric of computer intelligence. What remains is joules. Spell check is the completed example. The correction is no longer a line item, and the joules to compare a word to a local list are still spent. This paper does not fit a curve and does not estimate a coefficient. Estimates are not `measured_j`.
+People used to pay for spell check, and they paid a premium. WordCheck listed at $200.00 in January 1981. Grammatik II was $89 in 1988. Grammatik III was $99 in 1989. WordPerfect 3.0 was $495 in October 1983, and it included a spell-check command. Word 1.0 was $395 and did not include spell check. The checker was added in Word 2.0, and it was a checker the firm purchased. Ordinary calculation was sold the same way. The Anita Mk 8 was £335 in December 1961. The HP 9100A was $4,900. The Bowmar 901B was $240 in September 1971. The HP-35 was $395. Lotus 1-2-3 was fixed at $495 before it went on sale.
+
+Spell check cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Hunspell's license price is zero. Ordinary calculation went the same way: the job is a function of the phone and the computer, not a separate premium sale. The thing people paid for is still there. The sale is not.
+
+Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees are charges of the kind that used to be the product. Commoditization removes the separate charge. What remains is joules. The joules to compare a word to a local list are still spent. This paper does not fit a curve and does not meter them. Estimates are not `measured_j`.
 
 The path is a sequence. A procedure starts in a specialist bureau. It then becomes a routine on the machine that already holds the work. It then becomes ordinary, because it is cheap, local, and paired to hardware people already have. Spell check finished that sequence. Detection of a nonword and proposal of a correction are computer intelligence. They are not a metaphor for some later system. The capability reached ordinary writing: the editor, the browser, the phone keyboard. It did not stay as a service only a lab could rent.
 
@@ -49,6 +53,8 @@ This paper reports published procedures, a local library, and on-device APIs. No
 ## 1. Introduction
 
 AI is going to follow the path of all computer automation. Spell check is the best example of that path.
+
+People paid a premium. Then the thing could not be sold. It is free, and it is bundled into something else. The prices in Section 2.11 are that fact. The names in Section 2.9 come after it.
 
 The calculator's separate invoice is a dated series, from the Anita advertisements through the HP-35 and the TI-2500 to VisiCalc. Spell check's separate invoice ends inside the word processor and then the operating system. The dollars that the sources do not print stay unprinted.
 
@@ -147,6 +153,8 @@ None of the spelling sources above is a population table. When a spelling number
 ### 2.9 How computer automation is priced
 
 Energy to run is the only true metric of computer intelligence. History and the recent price notes are the evidence. A cited rate stays inside the paper that published it. No curve is fit here. No slope, half-life, or zero-price year is stated.
+
+In plain words, before the names. People used to pay a premium for spell check and for ordinary calculation. Spell check cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Ordinary calculation is bundled into the phone and the computer. The names below are only labels for that sequence.
 
 Three regimes name how a computer-automation tool is priced. Section 2.11 is the dated tape for the calculator and for spell check. Each price is a source's price. No curve is fit through them.
 
@@ -332,7 +340,7 @@ Epoch AI (2025) and Emberson and Roodman (2026) report rapid declines in the mon
 
 ### 4.15 Claim SC-14. Spell check has already eliminated the separate price
 
-Hunspell's license price is zero, and the check runs as a local library inside ordinary editors (Hunspell README; Section 2.5 and Section 4.4). There is no residual token price for the nonword case the local gear closes. Class: project statement plus design. This is the completed automation example. It is not an illustration of a different product.
+People paid a premium for a spelling checker. That product cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Hunspell's license price is zero, and the check runs as a local library inside ordinary editors (Hunspell README; Section 2.5 and Section 4.4). There is no residual token price for the nonword case the local gear closes. Class: project statement plus design. This is the completed automation example. It is not an illustration of a different product.
 
 ### 4.16 Claim SC-15. What remains is joules, and they are not metered here
 
@@ -439,7 +447,7 @@ The future of computer intelligence is that pattern. A capability held only by w
 
 The hardware argument is the same rule read as seven records. Phones, PCs, consumer GPUs, datacenter accelerators, microcontrollers, shipping NPUs, and the prior generation still in hand each have their own source. Software written for the generation people can already run has the largest impact. The latest die is a shipment. The installed generation is the reach. Spell check was written for the installed generation. Energy to run is what that software still spends.
 
-Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees collapse to zero by commoditization. Spell check is the completed example of that collapse. What remains is joules. No meter reading is reported. No curve is fit. An estimate is not `measured_j`.
+People paid a premium for spell check. It cannot be sold anymore. It is free, and it is bundled into something else. Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees collapse to zero by commoditization. What remains is joules. No meter reading is reported. No curve is fit. An estimate is not `measured_j`.
 
 
 ### 2.11 Dated prices, and how long each one is known to have lasted
