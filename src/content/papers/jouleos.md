@@ -1,5 +1,5 @@
 ---
-title: "The search for JouleOS"
+title: "The Search for JouleOS"
 deck: "Existing compute fabric treats the floor as fixed. Kernels, builds, guests, and instruction contracts are collapsed into one rung. Agents are wrapped on top of that settlement. Energy to run is not the condition of a commit. Secure compute requires one law, one meter, and one refusal. That requirement is the search for a solution like JouleOS."
 id: jouleos
 status: "Research study"
@@ -9,7 +9,7 @@ pdf: "/pdfs/jouleos.pdf"
 board_synth_claimed: false
 ---
 
-# The search for JouleOS
+# The Search for JouleOS
 
 Existing compute fabric treats the floor as fixed. Kernels, builds, guests, and instruction contracts are collapsed into one rung. Agents are wrapped on top of that settlement. Energy to run is not the condition of a commit. Secure compute requires one law, one meter, and one refusal. That requirement is the search for a solution like JouleOS.
 
