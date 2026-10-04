@@ -1062,7 +1062,7 @@ Chung, J.-W., Wu, R., Ma, J. J., and Chowdhury, M. (2026). Where Do the Joules G
 | Symbol | Meaning |
 |---|---|
 | B | Budget envelope (J or W / MW) |
-| 𝒠(B) | Obtainable answers under B |
+| 𝒜(B) | Obtainable answers under B |
 | U(a) | Stated utility of answer a |
 | q, y | Need and decision |
 | m, M | Obtain mechanism and menu |
