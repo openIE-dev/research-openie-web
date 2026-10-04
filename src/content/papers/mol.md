@@ -470,21 +470,83 @@ Verified here: the public architecture story and the cascade map—energy-based 
 
 ### 8.5.1 Embodiment classes: the convergence is hybrid interplay
 
-§8.5 already separates the objects inside one public stack. The energy-based settle returns a low-energy configuration, a scalar consistency score over a trace (as §8.5 cites: Bodnia and Hanin, 21 Jan 2026, and the Logical Intelligence pages listed there). That score is constraint energy. It is not a measured joule. The language model beside it returns candidates. Neither object is the commit. Close remains propose, then certify, then commit or refuse, then a receipt (§4). The same separation is the limit of each embodiment class. It is not a feature of one vendor.
+§8.5 already separates the objects inside one public stack. The energy-based settle returns a low-energy configuration. The scalar over a trace, as §8.5 cites, is constraint energy. It is not a measured joule. The language model beside it returns candidates. Neither object is the commit. Close remains propose, then certify, then commit or refuse, then a receipt (§4). The same separation is the limit of each embodiment class. It is not a feature of one name.
 
-A **decision model** stops at a typed probability. Cloudflare Clef, announced 1 Oct 2026, returns a yes/no, a choice, or a score, each with a probability (Chen, Reneau, and Flansburg, 1 Oct 2026). Whatever route, escalation, or deferral follows is outside that return. The model does not commit. A probability is not an act.
+A **decision model** stops at a typed probability. The return is a yes or no, a choice, or a score, each with a probability. Whatever route, escalation, or deferral follows is outside that return. The model does not commit. A probability is not an act.
 
-A **bounded ask** stops at a typed value, or at not-sure. ThinkThen (Ian Maurer, 1 Oct 2026, MIT) is code that asks one bounded question and receives a typed value. The tool writes no text and takes no action. Exit code 3 is not-sure. Not-sure is a refuse object, not a generated answer.
+A **bounded ask** stops at a typed value, or at not-sure. The ask writes no text and takes no action. Not-sure is a refuse object, not a generated answer.
 
-A **statechart** stops at a legal transition. XState is the JavaScript library for statecharts and actors (Stately, XState repository). An event changes state only when that state allows it. An illegal event does not transition. The object returned is the next legal state, or no transition. This paper does not ship XState. A library transition is not an external commit.
+A **statechart** stops at a legal transition. An event changes state only when that state allows it. An illegal event does not transition. The object returned is the next legal state, or no transition. A library transition is not an external commit.
 
-A **visual editor** stops at the chart a person can audit. Stately is the visual editor of those XState charts (Stately). The editor's object is the chart. The chart is the door: what the chart does not allow does not pass. The editor does not commit the act behind the door.
+A **visual statechart editor** stops at the chart a person can audit. The editor's object is the chart. The chart is the door: what the chart does not allow does not pass. The editor does not commit the act behind the door.
 
 An **energy-based settle**, already placed in §8.5, stops at a low-energy configuration. Constraint energy is not `measured_j`. A low-energy configuration is not an irreversible act.
 
 None of these classes is the whole intelligence. The convergence is hybrid interplay. The chart is the door. The decision model may fill a proposal. The bounded ask may return a typed value or not-sure. The energy settle may score a configuration. Something outside the model still commits or refuses. Mixture of Limits is the navigation law of that interplay: Lookup → Formula → Solver → Model last. Refuse is success. Energy to run is the only true metric. All other factors collapse to zero. Constraint energy remains a score on a configuration. It is not that metric.
 
-ThinkThen speaks System One, which it defines as the request format Jev answers, and uses Jev as the default. Clef states compatibility with that Jev API. A shared ask shape is not shared authority. Two typed answers still do not commit. These stops are not plateau knobs inside one generator (§8.7). Stacking the names does not produce a commit. Soft-ref path: `board_synth_claimed=false`. Nothing in the vendor announcements is a measurement of this study.
+A shared request shape is not shared authority. Two typed answers still do not commit. These stops are not plateau knobs inside one generator (§8.7). Stacking classes does not produce a commit. Soft-ref path: `board_synth_claimed=false`. Nothing in the class map is a measurement of this study.
+
+### Class map
+
+The class map places each public instance under the object that instance returns. Rows are ordered by class. A project that returns two objects appears twice, once for each object. The map is not a ranking.
+
+| Class | Object returned | Instance |
+|---|---|---|
+| Decision model | Typed probability | [Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) |
+| Decision model | Typed probability | [Clef](https://huggingface.co/Cloudflare/clef) |
+| Decision model | Typed probability | [d1](https://docs.liquid.ai/lfm/models/decision-models) |
+| Decision model | Typed probability | [Solar Decide](https://console.upstage.ai/api/systemone) |
+| Decision model | Typed probability | [pplx-decider](https://huggingface.co/perplexity-ai/pplx-decider-v1-27b) |
+| Decision model | Typed probability | [Kev](https://huggingface.co/jaredpalmer/kev-4b) |
+| Decision model | Typed probability | [Laya](https://huggingface.co/convaiinnovations/laya) |
+| Decision model | Typed probability | [Bespoke Nimble](https://huggingface.co/bespokelabs/Bespoke-Nimble-9B) |
+| Decision model | Typed probability | [OpenThai-SystemOne](https://huggingface.co/iapp/OpenThai-SystemOne) |
+| Decision model | Typed probability | [Decider](https://huggingface.co/Mapika/decider-4b) |
+| Decision model | Typed probability | [OpenJev](https://huggingface.co/openjev/openjev) |
+| Decision model | Typed probability | [Mica](https://huggingface.co/sky7350/Mica-v0.1-4B) |
+| Decision model | Typed probability | [Winnow](https://huggingface.co/EldanRing/Winnow-12B) |
+| Decision model | Typed probability | [CLM](https://huggingface.co/Contrastive-LM/CLM-v0.1-8B) |
+| Decision model | Typed probability | [Julia](https://huggingface.co/SupersonicLabs/Julia-1) |
+| Decision model | Typed probability | [NanoJev](https://huggingface.co/C-Tianyu/NanoJev) |
+| Decision model | Typed probability | [open-jev DeBERTa](https://huggingface.co/com-kotobalabs/open-jev-deberta-v3-large) |
+| Decision model | Typed probability | [fastText](https://fasttext.cc/docs/en/supervised-tutorial.html) |
+| Decision model | Typed probability | [Cloud Natural Language](https://docs.cloud.google.com/natural-language/docs/classifying-text) |
+| Bounded ask | Typed value, or not-sure | [ThinkThen](https://thinkthen.dev/reference/answers/) |
+| Bounded ask | Typed value, or not-sure | [GLiNER2.5-Decide](https://huggingface.co/fastino/GLiNER2.5-Decide) |
+| Statechart | Legal transition | [XState](https://github.com/statelyai/xstate) |
+| Statechart | Legal transition | [Qt State Machine](https://doc.qt.io/qt-6/qtstatemachine-index.html) |
+| Statechart | Legal transition | [Qt SCXML](https://doc.qt.io/qt-6/qtscxml-overview.html) |
+| Statechart | Legal transition | [Boost.Statechart](https://www.boost.org/doc/libs/latest/libs/statechart/doc/index.html) |
+| Statechart | Legal transition | [Boost.MSM](https://www.boost.org/doc/libs/1_86_0/libs/msm/doc/HTML/index.html) |
+| Statechart | Legal transition | [Boost.SML](https://github.com/boost-ext/sml) |
+| Statechart | Legal transition | [Akka FSM](https://doc.akka.io/libraries/akka-core/current/fsm.html) |
+| Statechart | Legal transition | [Spring Statemachine](https://github.com/spring-attic/spring-statemachine) |
+| Statechart | Legal transition | [Apache Commons SCXML](https://commons.apache.org/proper/commons-scxml/index.html) |
+| Statechart | Legal transition | [transitions](https://github.com/pytransitions/transitions) |
+| Statechart | Legal transition | [Sismic](https://sismic.readthedocs.io/en/latest/) |
+| Statechart | Legal transition | [Stateless](https://github.com/dotnet-state-machine/stateless) |
+| Statechart | Legal transition | [QP/C](https://www.state-machine.com/qpc/) |
+| Statechart | Legal transition | [AASM](https://github.com/aasm/aasm) |
+| Statechart | Legal transition | [SCION](https://github.com/jbeard4/SCION) |
+| Statechart | Legal transition | [javascript-state-machine](https://github.com/jakesgordon/javascript-state-machine) |
+| Statechart | Legal transition | [state_machines](https://github.com/state-machines/state_machines) |
+| Statechart | Legal transition | [HFSM2](https://github.com/andrew-gresyk/HFSM2) |
+| Statechart | Legal transition | [uSCXML](https://github.com/tklab-tud/uscxml) |
+| Visual statechart editor | Auditable chart | [Stately](https://stately.ai/) |
+| Visual statechart editor | Auditable chart | [itemis CREATE](https://www.itemis.com/en/products/itemis-create/) |
+| Visual statechart editor | Auditable chart | [QM](https://www.state-machine.com/products/qm) |
+| Visual statechart editor | Auditable chart | [Engineering Rhapsody](https://www.ibm.com/products/engineering-rhapsody) |
+| Visual statechart editor | Auditable chart | [Enterprise Architect](https://sparxsystems.com/resources/tutorials/uml2/state-diagram.html) |
+| Visual statechart editor | Auditable chart | [Papyrus](https://eclipse.dev/papyrus/) |
+| Visual statechart editor | Auditable chart | [StarUML](https://staruml.io/) |
+| Visual statechart editor | Auditable chart | [Visual Paradigm](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-state-machine-diagram/) |
+| Visual statechart editor | Auditable chart | [IAR Visual State](https://www.iar.com/embedded-development-tools) |
+| Visual statechart editor | Auditable chart | [sketch.systems](https://sketch.systems/) |
+| Visual statechart editor | Auditable chart | [Qt Creator](https://doc.qt.io/qtcreator/creator-scxml.html) |
+| Energy-based settle | Low-energy configuration | [Kona](https://logicalintelligence.com/blog/energy-based-models-for-reasoning) |
+| Energy-based settle | Low-energy configuration | [Simulated Bifurcation Machine](https://www.global.toshiba/ww/products-solutions/ai-iot/sbm/intro.html) |
+| Energy-based settle | Low-energy configuration | [Fixstars Amplify AE](https://amplify.fixstars.com/en/engine) |
+| Energy-based settle | Low-energy configuration | [CMOS annealing](https://www.hitachi.com/en/press/articles/2024/06/0606/) |
 
 ### 8.6 World Labs: spatial intelligence and world models
 
@@ -1023,10 +1085,61 @@ Primary Mixture of Limits workspace sources (not peer-reviewed publications): `m
 
 ### Embodiment-class limits (§8.5.1)
 
-106. Chen, M., Reneau, A., & Flansburg, K. (1 Oct 2026). Introducing Clef: our open-source decision models, and new RL fine-tuning platform. Cloudflare Blog. https://blog.cloudflare.com/clef-decision-models/
-107. Maurer, I. (1 Oct 2026). Introducing ThinkThen. https://thinkthen.dev/blog/introducing-thinkthen/
-108. Stately. XState. State machines, statecharts, and actors for complex logic. https://github.com/statelyai/xstate
-109. Stately. https://stately.ai/
+106. TypeSafe AI (15 Sep 2026). Introducing System One Models and Jev. https://typesafe.ai/blog/introducing-system-one-models-and-jev (accessed 2026-10-04).
+107. Cloudflare. Clef model card. https://huggingface.co/Cloudflare/clef (accessed 2026-10-04).
+108. Liquid AI. Decision Models. https://docs.liquid.ai/lfm/models/decision-models (accessed 2026-10-04).
+109. Upstage. Solar Decide, Structured Decision API. https://console.upstage.ai/api/systemone (accessed 2026-10-04).
+110. Perplexity. pplx-decider-v1-27b model card. https://huggingface.co/perplexity-ai/pplx-decider-v1-27b (accessed 2026-10-04).
+111. Palmer, J. Kev-4B model card. https://huggingface.co/jaredpalmer/kev-4b (accessed 2026-10-04).
+112. Laya model card. https://huggingface.co/convaiinnovations/laya (accessed 2026-10-04).
+113. Bespoke Labs. Bespoke-Nimble-9B model card. https://huggingface.co/bespokelabs/Bespoke-Nimble-9B (accessed 2026-10-04).
+114. iApp Technology. OpenThai-SystemOne model card. https://huggingface.co/iapp/OpenThai-SystemOne (accessed 2026-10-04).
+115. Decider-4B model card. https://huggingface.co/Mapika/decider-4b (accessed 2026-10-04).
+116. OpenJev model card. https://huggingface.co/openjev/openjev (accessed 2026-10-04).
+117. Mica v0.1 4B model card. https://huggingface.co/sky7350/Mica-v0.1-4B (accessed 2026-10-04).
+118. Winnow-12B model card. https://huggingface.co/EldanRing/Winnow-12B (accessed 2026-10-04).
+119. Contrastive-LM. CLM-v0.1-8B model card. https://huggingface.co/Contrastive-LM/CLM-v0.1-8B (accessed 2026-10-04).
+120. Supersonic Labs. Julia 1 model card. https://huggingface.co/SupersonicLabs/Julia-1 (accessed 2026-10-04).
+121. NanoJev model card. https://huggingface.co/C-Tianyu/NanoJev (accessed 2026-10-04).
+122. Kotoba. open-jev-deberta-v3-large model card. https://huggingface.co/com-kotobalabs/open-jev-deberta-v3-large (accessed 2026-10-04).
+123. fastText. Text classification tutorial. https://fasttext.cc/docs/en/supervised-tutorial.html (accessed 2026-10-04).
+124. Google Cloud. Classifying content. https://docs.cloud.google.com/natural-language/docs/classifying-text (accessed 2026-10-04).
+125. ThinkThen. How answers work. https://thinkthen.dev/reference/answers/ (accessed 2026-10-04).
+126. Fastino. GLiNER2.5-Decide model card. https://huggingface.co/fastino/GLiNER2.5-Decide (accessed 2026-10-04).
+127. Stately. XState. https://github.com/statelyai/xstate (accessed 2026-10-04).
+128. Qt Group. Qt State Machine. https://doc.qt.io/qt-6/qtstatemachine-index.html (accessed 2026-10-04).
+129. Qt Group. Qt SCXML Overview. https://doc.qt.io/qt-6/qtscxml-overview.html (accessed 2026-10-04).
+130. Boost.Statechart. https://www.boost.org/doc/libs/latest/libs/statechart/doc/index.html (accessed 2026-10-04).
+131. Boost.MetaStateMachine (Boost 1.86). https://www.boost.org/doc/libs/1_86_0/libs/msm/doc/HTML/index.html (accessed 2026-10-04).
+132. boost-ext. SML. https://github.com/boost-ext/sml (accessed 2026-10-04).
+133. Akka. Classic FSM. https://doc.akka.io/libraries/akka-core/current/fsm.html (accessed 2026-10-04).
+134. Spring Statemachine. https://github.com/spring-attic/spring-statemachine (accessed 2026-10-04).
+135. Apache Commons SCXML. https://commons.apache.org/proper/commons-scxml/index.html (accessed 2026-10-04).
+136. pytransitions. transitions. https://github.com/pytransitions/transitions (accessed 2026-10-04).
+137. Sismic user manual. https://sismic.readthedocs.io/en/latest/ (accessed 2026-10-04).
+138. dotnet-state-machine. Stateless. https://github.com/dotnet-state-machine/stateless (accessed 2026-10-04).
+139. Quantum Leaps. QP/C. https://www.state-machine.com/qpc/ (accessed 2026-10-04).
+140. AASM. https://github.com/aasm/aasm (accessed 2026-10-04).
+141. SCION. https://github.com/jbeard4/SCION (accessed 2026-10-04).
+142. javascript-state-machine. https://github.com/jakesgordon/javascript-state-machine (accessed 2026-10-04).
+143. state_machines. https://github.com/state-machines/state_machines (accessed 2026-10-04).
+144. HFSM2. https://github.com/andrew-gresyk/HFSM2 (accessed 2026-10-04).
+145. uSCXML. https://github.com/tklab-tud/uscxml (accessed 2026-10-04).
+146. Stately. https://stately.ai/ (accessed 2026-10-04).
+147. itemis. itemis CREATE. https://www.itemis.com/en/products/itemis-create/ (accessed 2026-10-04).
+148. Quantum Leaps. QM. https://www.state-machine.com/products/qm (accessed 2026-10-04).
+149. IBM. Engineering Rhapsody. https://www.ibm.com/products/engineering-rhapsody (accessed 2026-10-04).
+150. Sparx Systems. State Machine Diagram, UML 2 Tutorial. https://sparxsystems.com/resources/tutorials/uml2/state-diagram.html (accessed 2026-10-04).
+151. Eclipse Papyrus. https://eclipse.dev/papyrus/ (accessed 2026-10-04).
+152. StarUML. https://staruml.io/ (accessed 2026-10-04).
+153. Visual Paradigm. What is State Machine Diagram? https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-state-machine-diagram/ (accessed 2026-10-04).
+154. IAR. Embedded development tools (IAR Visual State). https://www.iar.com/embedded-development-tools (accessed 2026-10-04).
+155. sketch.systems. https://sketch.systems/ (accessed 2026-10-04).
+156. Qt Group. Editing SCXML state charts in Qt Creator. https://doc.qt.io/qtcreator/creator-scxml.html (accessed 2026-10-04).
+157. Bodnia, E., & Hanin, B. (21 Jan 2026). Energy-Based Models for Reasoning, LLMs for the Interface. Logical Intelligence blog. https://logicalintelligence.com/blog/energy-based-models-for-reasoning (accessed 2026-10-04).
+158. Toshiba. Simulated Bifurcation Machine, introduction. https://www.global.toshiba/ww/products-solutions/ai-iot/sbm/intro.html (accessed 2026-10-04).
+159. Fixstars. Amplify annealing machines. https://amplify.fixstars.com/en/engine (accessed 2026-10-04).
+160. Hitachi (6 Jun 2024). CMOS annealing technology "relaxed MA". https://www.hitachi.com/en/press/articles/2024/06/0606/ (accessed 2026-10-04).
 
 22. World Labs. About. https://www.worldlabs.ai/about (accessed 2026-10-01).
 23. World Labs Team (1 Sep 2026). Atlas: A World Model for Spatial Intelligence. World Labs blog. https://www.worldlabs.ai/blog/atlas
