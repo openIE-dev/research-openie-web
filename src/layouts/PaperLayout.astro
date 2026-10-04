@@ -9,6 +9,8 @@ interface Props {
   figuresHref: string;
   pdfHref: string;
   description?: string;
+  paperId?: string;
+  genre?: string;
   headings?: { depth: number; slug: string; text: string }[];
 }
 
@@ -20,8 +22,13 @@ const {
   figuresHref,
   pdfHref,
   description,
+  paperId,
+  genre,
   headings = [],
 } = Astro.props;
+
+const citeUrl = paperId ? `https://research.openie.dev/papers/${paperId}/` : 'https://research.openie.dev/';
+const pdfUrl = paperId ? `https://research.openie.dev/pdfs/${paperId}.pdf` : pdfHref;
 
 // Prefer every H2 as a top-level sibling in the outline (never drop §§9+ under a 40-cap).
 // Fill remaining TOC slots with H3s so later major sections stay visible next to §8.
@@ -77,7 +84,23 @@ const toc = [
 
         <p class="mt-6 font-body text-xs text-brand-gray leading-relaxed max-w-[70ch]">
           Research studies, not journal finals. Notation is defined in the paper. Analytical energy estimates are not board power. Interactive figures live under <a href={figuresHref} class="text-brand-cyan no-underline hover:underline">/living/</a>.
+          Shared terms: <a href="/glossary/" class="text-brand-cyan no-underline hover:underline">glossary</a>.
         </p>
+
+        <div class="mt-6 glass-card p-4 max-w-[70ch]" id="cite-this">
+          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-2">Cite this</p>
+          {genre && (
+            <p class="font-body text-xs text-brand-slate mb-2">Genre: {genre}</p>
+          )}
+          <p class="font-body text-xs text-brand-slate leading-relaxed">
+            {author}. <em class="text-brand-light">{title}</em>. Open Interface Engineering.
+            Web: <a href={citeUrl} class="text-brand-cyan no-underline hover:underline">{citeUrl}</a>.
+            PDF: <a href={pdfUrl} class="text-brand-cyan no-underline hover:underline">{pdfUrl}</a>.
+          </p>
+          <p class="font-body text-[11px] text-brand-gray leading-relaxed mt-2">
+            No separate license file is published in this repository. Cite the URL above. Do not invent an SPDX identifier.
+          </p>
+        </div>
 
         <div class="paper-prose mt-12 max-w-[70ch]">
           <slot />

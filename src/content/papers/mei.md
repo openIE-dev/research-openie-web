@@ -40,6 +40,10 @@ Hardware dual-map: the class runs today on GPUs and MCUs (von Neumann), and poin
 
 ---
 
+### Terms used here
+
+Metabolic Intelligence is the AI product class. Klere is hardware and the product home. Soft-ref means the software reference path without board package `measured_j`. Value of information, evidence classes, Periodic Stack, and `board_synth_claimed` are on the shared [glossary](/glossary/). Living companions: [/living/mei/](/living/mei/). Campus headline "zero time over cap" always carries the condition already stated in the scenario table: with node sleep available, under the stated plant model.
+
 ## The pair, not the algorithm
 
 Current AI fields map AGI to the algorithm. They do not map it to paired hardware and software. The model is treated as the intelligence. The chip is treated as a rack the model happens to occupy. The programming language is treated as a neutral notation. Metabolic Intelligence refuses that split. AGI-grade reliability is the pair. It is not the algorithm alone.

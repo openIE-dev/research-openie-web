@@ -1,6 +1,6 @@
 ---
-title: "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (<500M)"
-deck: "People used to pay a premium for spell check. It cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. That is what happens when a technology is built for global access, for the many (7B+ people), instead of priced by scarcity for the few (<500M people). Energy to run is what remains."
+title: "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)"
+deck: "People used to pay a premium for spell check. It cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. That is what happens when a technology is built for global access, for the many (7B+ people), instead of priced by scarcity for the few (under 500M people). Energy to run is what remains."
 id: spellcheck
 status: "Economic opinion"
 author: "David Charlot, Open Interface Engineering"
@@ -9,7 +9,7 @@ pdf: "/pdfs/spellcheck.pdf"
 board_synth_claimed: false
 ---
 
-# Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (<500M)
+# Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)
 
 ## Abstract
 
@@ -43,7 +43,7 @@ This paper reports published procedures, a local library, and on-device APIs. Th
 | Accessible | The person can invoke the capability on that fabric without sending the job to a specialist bureau. |
 | Capable | The fabric can run the gear that closes the job. |
 | The many (7B+) | More than 7 billion people. The people global access is for. |
-| The few (<500M) | Fewer than 500 million people. The people a scarcity price can still reach. |
+| The few (under 500M) | Fewer than 500 million people. The people a scarcity price can still reach. |
 | Proposal | A spelling suggestion. The document has not changed yet. |
 | Commit | The replacement is written. Notational Intelligence owns this shape. |
 | Completeness | The token is kept: it was known, or a candidate was accepted. Further search then has zero value of information on that predicate. |
@@ -51,6 +51,10 @@ This paper reports published procedures, a local library, and on-device APIs. Th
 | Parameter count | A size of a model. Not a metric that survives once the capability is a commodity. |
 | Joule | Energy to run the routine. The metric that remains after the money prices are gone. |
 | Lookup, Formula, Model | Mixture of Limits gears. A dictionary probe is Lookup. An edit-distance generator is a formula. A frontier language model is Model, and it is last. |
+
+### Terms used here
+
+The many (more than 7 billion people) and the few (fewer than 500 million people) are people, not a census disclaimer. Soft-ref, value of information, Mixture of Limits gears, and `board_synth_claimed` are on the shared [glossary](/glossary/). Living companions: [/living/spellcheck/](/living/spellcheck/).
 
 ## 1. Introduction
 
@@ -86,7 +90,7 @@ Navigation chooses the gear. Commit records the irreversible branch. Satiation s
 
 ### A token, taught in order
 
-Norvig (2007) documents a local corrector and the call `correction('speling')`, which returns `spelling`. Walk that call as the path, not as a demo of a product.
+Norvig (2007) documents a local corrector and the call `correction('speling')`, which returns `spelling`. Walk that call as the teaching example of the path. The production existence proof is Hunspell in ordinary editors, stated in Section 2.5.
 
 1. The string is already on the machine. Nothing is sent to a bureau.
 2. Lookup asks whether `speling` is in the local word counts. It is not.
@@ -105,7 +109,7 @@ Damerau (1964) gives a method for a word that is missing from a dictionary and h
 
 Peterson (1980) surveys computer programs that detect and correct spelling errors. By that date the capability is a literature of working programs, not a proposal that a program might someday check a word.
 
-Kukich (1992) organizes the field into the three problems named above. Nonword detection uses a word list, pattern matching, or n-gram analysis. Isolated-word correction proposes a dictionary word for a detected nonword. Context-dependent correction handles a token that is a real word and still the wrong word. The survey is the map. The existence proof in this paper is that the first two problems left the survey and entered ordinary editors.
+Kukich (1992) organizes the field into the three problems named above. Nonword detection uses a word list, pattern matching, or n-gram analysis. Isolated-word correction proposes a dictionary word for a detected nonword. Context-dependent correction handles a token that is a real word and still the wrong word. The survey is the map. The existence proof in this paper rests on Hunspell in production: LibreOffice, Firefox, Chrome, Linux distributions, and macOS call a local dictionary routine (Hunspell README). The first two Kukich problems left the survey and entered those ordinary editors. Norvig (2007) remains the teaching walkthrough of Lookup then a short edit, not the production fact.
 
 ### 2.2 The list was built to fit the machine
 

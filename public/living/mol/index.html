@@ -67,6 +67,7 @@
 
   <section id="mol-diag-01" class="figure-block">
     <h2><span class="id">mol-diag-01</span> How the cascade works</h2>
+    <p class="subtitle">Supports the Mixture of Limits cascade claim in <a href="/papers/mol/#2-law-floors-where-more-bits-stop-buying-outcomes">/papers/mol/</a> §2 and §4.</p>
     <pre class="mono">Lookup → Formula → Solver/settle → Model LAST</pre>
     <p>When the grammar covers the request, the system stops before opening the model.</p>
 
@@ -82,6 +83,7 @@
 
   <section id="mol-diag-02" class="figure-block">
     <h2><span class="id">mol-diag-02</span> Named floors</h2>
+    <p class="subtitle">Supports the named-floors table in <a href="/papers/mol/">/papers/mol/</a> (VoI, grammar, energy, certificate, settle-refuse).</p>
     <p>VoI stop. Grammar coverage. Energy (Landauer estimate). <code>efa_certificate</code>. <code>settle_refuse</code>. <code>primitive_gap</code>.</p>
 
     <figure class="living-media" data-fig="mol-diag-02">
@@ -96,6 +98,7 @@
 
   <section id="mol-diag-03" class="figure-block">
     <h2><span class="id">mol-diag-03</span> Commit or refuse, then issue a receipt</h2>
+    <p class="subtitle">Supports close shape shared with <a href="/papers/ni/">Notational Intelligence</a>; navigation side in <a href="/papers/mol/">/papers/mol/</a>.</p>
     <pre class="mono">propose → certify → commit|refuse → receipt
 claim.* / act.* / close.* / receipt.*
 ModelGenerated is not Deterministic evidence

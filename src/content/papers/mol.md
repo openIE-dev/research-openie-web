@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits: Navigation Law for Computer Intelligence"
-deck: "Floors where more bits stop buying outcomes. Compression and predictive formulas beat excess enumeration; neural nets are a demoted residual leaf. Soft-ref constructive existence in software; not FPGA or board package energy."
+deck: "Floors where more bits stop buying outcomes. Compression and predictive formulas beat excess enumeration; the model leaf is a conditionally available residual, off by default, never coercible to Deterministic. Soft-ref means the software reference path; not FPGA or board package energy."
 id: mol
 status: "Research study"
 author: "David Charlot, Open Interface Engineering"
@@ -16,6 +16,18 @@ board_synth_claimed: false
 Mixture of Limits is a navigation law for computer intelligence: there exist **floors** past which additional tokens, parameters, or joules do not purchase verifiable progress on a task coordinate. The law is information-theoretic and rooted in physics. Across human scientific history, compression into predictive formulas and invariants has repeatedly beaten excess enumeration of observations: from Kepler's laws over Tycho's tables, through Newton's closed forms, to Shannon's bit accounting and Landauer's thermodynamic floor on irreversible erasure. Mixture of Limits operationalizes that lineage for machines: **Lookup → Formula → Solver/settle → Model LAST**, with close owned as propose → certify → commit|refuse → receipt. Unstructured front doors (speech, pixels, free text) need a **dual-phase** stack: Phase 1 is a bounded ultra-light quantized transducer that emits a typed AST or schema; Phase 2 is the Mixture of Limits cascade. Perception is a front gear, not a demotion of Model LAST for residual reasoning.
 
 The industry default escalates Mixture-of-Experts (MoE) capacity *inside* a generative corridor. Mixture of Limits instead names floors *outside* generation: Value of Information (VoI), grammar coverage, Landauer/joule estimate, certificate, and settle-refuse. The industry race is a **race to those plateau floors**, not unbounded scale: once VoI is zero past the floor, optimize energy/compute on the plateau. Mixture of Limits demotes the neural net to a residual leaf. Soft-ref `mol prove` is constructive existence in software. Catalog and Landauer figures on receipts are **estimates**; package `measured_j` appears only when a labeled meter returns a reading.
+
+### Terms used here
+
+**Soft-ref** has one meaning in this paper: the software reference path that proves the navigation law without board synthesis or package metering. Receipts on that path label energy as estimate and leave `measured_j` unset until a named meter returns. Soft-ref is not a second, looser evidence class for live silicon. Periodic Stack, replay class, value of information, evidence classes, and `board_synth_claimed` are defined on the shared [glossary](/glossary/).
+
+**Model leaf (one sentence).** The model gear is a conditionally available residual: off by default (`allow_model=false`), opened only when cheaper gears miss, and never coercible to Deterministic (`ModelGenerated` cannot be rewritten as `Deterministic`).
+
+**Living figures for claims on this page.** Cascade: [/living/mol/#mol-diag-01](/living/mol/#mol-diag-01). Named floors: [/living/mol/#mol-diag-02](/living/mol/#mol-diag-02). Commit or refuse then receipt: [/living/mol/#mol-diag-03](/living/mol/#mol-diag-03). MoE contrast: [/living/mol/#mol-tab-01](/living/mol/#mol-tab-01).
+
+### The law before the survey
+
+Lookup → Formula → Solver → Model last. Floors stop escalation when more bits stop buying outcomes: VoI, grammar, energy estimate, certificate, settle-refuse. Close is propose → certify → commit|refuse → receipt. Section 8 is a survey of plateau options under that law. It is not the law.
 
 ---
 
@@ -101,7 +113,7 @@ Scope. Companion laws (Navigation / Commit / Economic Reality of Satiation) and 
 Consequences:
 
 1. **Mathematical compression / formulas beat excess tokens** when the grammar is covered.
-2. **Neural nets are a demoted residual leaf**, not the default substrate of CI.
+2. **Neural nets are a conditionally available residual leaf** (off by default; never coercible to Deterministic), not the default substrate of CI.
 3. Routing is **cheapest-sufficient**: escalate only on miss; refuse when escalation is unsafe or VoI-negative.
 4. Proof / energy law: \(E(x) \ge \theta(D)\cdot\mu(S,V)\) with labeled joule receipts; Landauer labeled as estimate.
 5. **Available devices / multi-fabric**: after a cascade gear closes, pick the cheapest sufficient device class; not one accelerator by default.
@@ -121,7 +133,7 @@ Consequences:
 
 ### Neural net demotion
 
-The model tier is **LAST**. Default budgets set `allow_model=false`. Even when allowed, the model remains a leaf: it may propose residual content; it never bypasses certify-before-commit, and `ModelGenerated` answers cannot be laundered as `Deterministic`. Coin-cell / edge power is O(1) formula plus LUT refuse, not a tiny transformer.
+The model gear is a conditionally available residual: off by default (`allow_model=false`), opened only when cheaper gears miss, and never coercible to Deterministic (`ModelGenerated` cannot be rewritten as `Deterministic`). It may propose residual content; it never bypasses certify-before-commit. Coin-cell / edge power is O(1) formula plus LUT refuse, not a tiny transformer.
 
 ### Periodic Stack
 
@@ -1136,7 +1148,7 @@ cargo run -p mol-cli -- prove   # expect VERIFIED lines, exit 0
 Site preview for this study (research-openie-web):
 
 ```bash
-cd /Users/dcharlot/data-share/vibe-coding/research-openie-web
+# From the research-openie-web checkout root:
 pnpm install
 pnpm dev
 # open /papers/mol/ , /about/mol , /living/mol/

@@ -13,7 +13,7 @@ board_synth_claimed: false
 
 ## Abstract
 
-Many planning models treat demand for machine intelligence as if it had no finish line. Consumer theory already contains the opposite object. Satiation, and the related bliss point, is the region in which further units of a good do not raise utility and may lower it (Andersen, 2001). This paper defines an operational cousin for work and care: a loop is Economic Reality of Satiation when a stated completeness predicate holds, and further synthesis on that loop does not increase the predicate. Engagement time, token count, and seat count are different variables. They can rise after completeness.
+Many planning models treat demand for machine intelligence as if it had no finish line. Consumer theory already contains the opposite object. Satiation, and the related bliss point, is the region in which further units of a good do not raise utility and may lower it (Andersen, 2001). This paper defines an operational cousin for work and care: a loop is Economic Reality of Satiation when a stated completeness predicate holds, further calls do not flip any clause of that predicate from false to true, and calls that undo the predicate are harm, not value. Engagement time, token count, and seat count are different variables. They can rise after completeness.
 
 A second fact is about price, not physics. Epoch AI reports large declines in the price of a fixed inference performance (Epoch AI, 2025; Emberson and Roodman, 2026). This paper calls the resulting situation free at the margin for digital chores whose output is information and whose completeness test is finite. The phrase does not mean that joules are free, that a plant may move without a certificate, or that care labor has been automated away. Landauer's bound is a lower bound on erasure, not a description of current accelerators (Landauer, 1961; Horowitz, 2014).
 
@@ -26,7 +26,7 @@ No field-programmable gate array (FPGA) has been synthesized or metered for this
 | Term | Definition in this paper |
 |------|--------------------------|
 | Open Interface Engineering (OpenIE) | The organization maintaining the software reference and these two studies. |
-| Satiation | In the cited theory, a fall of marginal utility to zero or below. In this paper's operational clause, further synthesis does not increase a stated completeness predicate. |
+| Satiation | In the cited theory, a fall of marginal utility to zero or below. In this paper's operational clause, after completeness, further calls do not flip any clause of `C` from false to true; calls that undo `C` are harm, not value (Section 3.1). |
 | Bliss point | A bundle at which additional quantity of the good reduces utility. A textbook object. Not estimated here. |
 | Economic Reality of Satiation | The event that the completeness predicate becomes true. Orthogonal to model scale. |
 | Work completeness | A stated work stop: ticket closed, patch merged, report filed, ledger reconciled, or an equivalent written test. |
@@ -47,6 +47,10 @@ No field-programmable gate array (FPGA) has been synthesized or metered for this
 | Analytical energy estimate | Operation count times a named constant. Modeled. Not board-measured. |
 | Direct rebound | Extra use of a service when its effective price falls, on the same service (Gillingham, Rapson, and Wagner). |
 | Modeled / simulated / board-measured | Formula, program execution, or meter. This paper's new numbers are none of the three; its empirical content is citation of published series and documents. |
+
+### Terms used here
+
+Completeness predicate `C`, Economic Reality of Satiation, free at the margin, and refuse reason codes are defined in the table above and in Section 3.1. Soft-ref, value of information, evidence classes, and `board_synth_claimed` are on the shared [glossary](/glossary/).
 
 Scope. Section 2 reviews satiation theory, task automation, attention markets, technology-cycle evidence, and inference prices. Section 3 writes predicates and says which were not estimated. Section 4 lists claims that rest on citations or on the companion's software demo, and separates them from design rules. Section 5 answers rebound, care costs, and military demand. Section 6 lists threats to validity. The commit mechanics and toy measurements live in the companion paper, "Notational Intelligence as Commit Law."
 
@@ -80,7 +84,7 @@ Mixture of Limits navigates. Notational Intelligence owns irreversible commit. T
 
 Andersen (2001) treats satiation inside an evolutionary model of structural change, not as a verbal preference. The durable element for this paper is the economic one: marginal valuation of a good can reach zero. Textbook bliss points make the geometry explicit. For a bundle `x*`, utility does not increase in a coordinate past `x*`, and a smooth representation can have negative marginal utility there. A quadratic illustration, `U(x) = -a (x - x*)^2` for `a > 0`, has a maximum at `x*` and a negative derivative beyond it. That function is a model used to teach the definition. It is not fitted to agent logs in this study. No coefficient `a` is reported.
 
-The operational translation requires a predicate the model does not know unless someone states it. Let `C(z) = 1` when the written completeness test for episode `z` holds, else 0. Satiation on that episode means there exists a time `t*` such that `C` is 1 at `t*` and additional model calls after `t*` leave `C` unchanged. The internal event **economic done** is when `C` becomes 1; this paper names that layer Economic Reality of Satiation. This is a definition. It becomes an empirical claim only with a labeled set of episodes and a detector whose errors are counted. Section 4 does not contain that count.
+The operational translation requires a predicate the model does not know unless someone states it. Let `C(z) = 1` when the written completeness test for episode `z` holds, else 0. Satiation on that episode means there exists a time `t*` such that `C` is 1 at `t*` and, for all later calls, no clause of `C` flips from false to true. Calls that undo `C` are harm, not value. Section 3.1 states the same rule. The internal event **economic done** is when `C` becomes 1; this paper names that layer Economic Reality of Satiation. This is a definition. It becomes an empirical claim only with a labeled set of episodes and a detector whose errors are counted. Section 4 does not contain that count.
 
 ### 2.2 Tasks, displacement, and cost disease
 

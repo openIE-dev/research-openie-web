@@ -11,6 +11,10 @@ board_synth_claimed: false
 
 # The Search for JouleOS
 
+## Abstract
+
+Genre: review and design guide.
+
 Existing compute fabric treats the floor as fixed. Kernels, builds, guests, and instruction contracts are collapsed into one rung. Agents are wrapped on top of that settlement. Energy to run is not the condition of a commit. Secure compute requires one law, one meter, and one refusal. That requirement is the search for a solution like JouleOS.
 
 OpenIE research study five. Written 3 October 2026 (ET).
@@ -26,6 +30,10 @@ This study is the account of existing compute fabric and the software written fo
 It is a review of how secure compute is composed today. It is a design guide for what a machine must speak if an agent is to be scheduled, metered, and refused under law. It is not a ranking of kernels. It is not a slogan about green computing.
 
 The OpenIE thesis is stated once and held for the rest of the file. Energy to run is the only true metric of computer intelligence. Latency, token counts, accuracy benches, and brand names are not the unit that decides whether a commit is allowed. They collapse when the meter and the refusal are real. Mixture of Limits is the schedule, the meter, and the refusal on that machine. Metabolic Intelligence is the envelope of the best answer that fits the energy the hardware can spend. Neither name is abbreviated.
+
+### Terms used here
+
+Soft-ref means the software reference path that proves a study law without board synthesis or package metering. Periodic Stack, replay class, value of information, evidence classes, and `board_synth_claimed` are defined on the shared [glossary](/glossary/). Working notes named below are unpublished unless a public URL is given. They are not proof by private path.
 
 The review depends on an internal working note that drew the unsettled stack before any destination was named: `the OpenIE stack working note`, with the sift in `the OpenIE convergence working note`. Those files are working notes. They are not published papers. Where a fact lives only there, the working note is the source.
 
@@ -268,25 +276,25 @@ A safety schema that does not speak these is another patch on a fixed floor. Tea
 
 Energy-Oriented Computing, written in full on first use and shortened to EOC only after that teaching, is the schedule. The page source states a four-stage pipeline: state-construct, retrieve, refine, check. The work is typed, grounded, done, and validated. A large language model is one refine operator among several, ordered last, reached when nothing cheaper has produced an answer that survives the check. The schedule is not tokens. The specification addendum states non-goals that include token economics: EOC does not denominate, bill, or reason in tokens.
 
-Source: `/Users/dcharlot/data-share/vibe-coding/eoc-transaction-science-web/src/components/Pipeline.astro` and `Spec.astro` (page sources for the EOC Transaction Science site).
+Source: unpublished working note (EOC Transaction Science page sources: Pipeline and Spec). Not a public URL in this study. Do not treat a private tree path as proof.
 
 ### 11.2 The Joule Context Protocol is the law
 
 The Joule Context Protocol, shortened to JCP only after this sentence, is the law for agentic action. A Grant binds a subject to a capability and a joule budget in one signed object. Child grants only narrow: less capability, less budget, sooner expiry, accumulated caveats. Tool output is data, never instructions. Authorization is decided by the runtime outside the model. Every decision seals as a signed JCR-1 receipt. A capability you cannot pay for is denied. An expenditure you are not capable of is denied. One check, made outside the model, sealed in a receipt.
 
-Source: `/Users/dcharlot/data-share/vibe-coding/jcp-transaction-science-web/src/pages/index.astro`.
+Source: unpublished working note (Joule Context Protocol Transaction Science page source). Not a public URL in this study. Do not treat a private tree path as proof.
 
 ### 11.3 JouleContract is the commit
 
 JouleContract is the commit. The Transaction Science page source states the core object as precondition, postcondition, invariant, frame, and joule ceiling. The frame is the declared mutable footprint: everything the transition may touch. Everything outside it is implicitly invariant. The draft specification text at version 0.3.0 states precondition, postcondition, invariant, and joule ceiling as the four obligations in its core-object section, and inherits functional-safety, energy-management, and AI-governance canons into one receipt. The ceiling is an energy performance indicator against a declared baseline. Provenance tags travel with every joule figure. Estimator and unaccounted categories are not promoted into measured joules.
 
-Sources: `/Users/dcharlot/data-share/vibe-coding/joulecontract-transaction-science-web/src/pages/index.astro`; `JouleContract draft 0.3`.
+Sources: unpublished working note (JouleContract Transaction Science page source); `JouleContract draft 0.3`. Not a public URL in this study. Do not treat a private tree path as proof.
 
 ### 11.4 The sandbox standard is the S0 to S7 ladder
 
 The sandbox Transaction Science page defines an isolation ladder from S0 to S7: Bare, Capability, Sandbox, Partition, Unikernel, MicroVM, Confidential, Sovereign. The rule is the lowest rung that satisfies the work. Escalation is the escape hatch, not the entry point. Every resource a unit touches is explicitly granted. Every run emits a signed energy receipt with readings tagged HwShunt, ModelBased, or Estimator. Attestation states what image ran, at what tier, under what grants, on what hardware, for what cost. At confidential and sovereign rungs, hardware attestation and audit-chain links enter the statement.
 
-Source: `/Users/dcharlot/data-share/vibe-coding/sandbox-transaction-science-web/src/pages/index.astro`.
+Source: unpublished working note (sandbox Transaction Science page source). Not a public URL in this study. Do not treat a private tree path as proof.
 
 ### 11.5 Why a patch that omits these is still a patch
 
@@ -315,7 +323,7 @@ The in-memory bytes are the durable bytes. There is no serialize and deserialize
 
 ### 12.3 Cascade under Energy-Oriented Computing
 
-A cascade of refine families is cost-ordered cheapest first per EOC version 0.2. The README places Lawful near one microjoule and LlmInLoop near five millijoules, with intermediate families between them. The dispatcher picks the cheapest family that can satisfy. Check is deterministic: schema, constraint evaluation, provenance verify. There is no large-language-model-as-judge. The README states a roughly one-hundred-thousand-fold lower joules-per-work ratio against an LLM-everything corpus.
+A cascade of refine families is cost-ordered cheapest first per EOC version 0.2. The README places Lawful near one microjoule and LlmInLoop near five millijoules, with intermediate families between them. The dispatcher picks the cheapest family that can satisfy. Check is deterministic: schema, constraint evaluation, provenance verify. There is no large-language-model-as-judge. The project's own README claims a roughly one-hundred-thousand-fold lower joules-per-work ratio against an LLM-everything corpus. That figure is a **project claim** from the JouleOS README. It is not a measurement of this study. This study does not supply a methodology, baseline workload, hardware, or task-complexity normalization for that ratio. Soft-ref path: estimates are not `measured_j`.
 
 ### 12.4 Capability ledger
 
@@ -376,12 +384,12 @@ Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file s
 | Commercial HarmonyOS kernel, WeensyOS, and Taos remain unresolved. | Working-note fact | `the OpenIE stack working note` §11; `CONVERGENCE.md` §4 |
 | NVIDIA Open Agent Safety Platform / OpenShell announced 28 September 2026; sandbox, supervisor, policy, optional BlueField Sentry. | Sourced fact | https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell/ ; https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Launches-Open-Agent-Safety-Platform-to-Secure-Agents-From-Testing-to-Deployment/default.aspx |
 | OpenHuman is Rust, GPL-3.0, early beta; core on host; sandbox backends None / Local / Docker; ReadOnly resolves to None for jail enforcement; elevated tools leave the jail; README density figures are memory. | Sourced fact / Project claim | https://github.com/tinyhumansai/openhuman ; https://github.com/tinyhumansai/openhuman/pull/3261 |
-| EOC pipeline is state-construct, retrieve, refine, check; not tokens. | Sourced fact | `eoc-transaction-science-web` Pipeline.astro, Spec.astro |
-| JCP Grant binds capability to joule budget; child grants narrow; tool output is data; check outside the model; JCR-1 receipts. | Sourced fact | `jcp-transaction-science-web` index.astro |
-| JouleContract commit object includes pre, post, invariant, frame, joule ceiling (page source); v0.3 draft text states pre, post, inv, ceiling in §3. | Sourced fact | `joulecontract-transaction-science-web` index.astro; `joulecontract-spec-v0.3.md` |
-| Sandbox ladder S0 to S7; lowest rung that satisfies; meter tags HwShunt / ModelBased / Estimator; attestation. | Sourced fact | `sandbox-transaction-science-web` index.astro |
+| EOC pipeline is state-construct, retrieve, refine, check; not tokens. | Working-note fact | unpublished EOC Transaction Science page sources |
+| JCP Grant binds capability to joule budget; child grants narrow; tool output is data; check outside the model; JCR-1 receipts. | Working-note fact | unpublished JCP Transaction Science page source |
+| JouleContract commit object includes pre, post, invariant, frame, joule ceiling (page source); v0.3 draft text states pre, post, inv, ceiling in §3. | Working-note fact | unpublished JouleContract page source; `JouleContract draft 0.3` |
+| Sandbox ladder S0 to S7; lowest rung that satisfies; meter tags HwShunt / ModelBased / Estimator; attestation. | Working-note fact | unpublished sandbox Transaction Science page source |
 | JouleOS: single-level store, EOC cascade, capability ledger, energy oracle with provenance, Rust, small TCB, AOT in TCB and JIT out, bare-metal vs hosted. | Project claim / Sourced fact | `the JouleOS development tree/README.md`, `docs/ARCHITECTURE.md`, `os-notes/THEOREM.md` |
-| JouleOS README Lawful ~1 µJ, LlmInLoop ~5 mJ, ~10^5× vs LLM-everything on a corpus. | Project claim | joule-os README |
+| JouleOS README Lawful ~1 µJ, LlmInLoop ~5 mJ, ~10^5× vs LLM-everything on a corpus. | Project claim (README only; not this study's measurement) | joule-os README |
 | Unified Design Architecture is one artifact lowered per measured coordinate. The WebAssembly runtime is the surface that is seen. A virtual machine or a container is a coordinate. The bare-metal kernel is where the law is native, not a second product. | Definition / design reading of the tree | joule-os `os-notes/UDA.md`, `os-notes/LOWERING.md`, `crates/joule-os-wasm/Cargo.toml` |
 
 ---
@@ -397,7 +405,7 @@ The machine's law is a capability ledger. Only the kernel issues a typed capabil
 
 Persistence is a single-level store. The bytes in memory are the durable bytes. Each mutation commits or rolls back at an instruction boundary.
 
-The schedule is Energy-Oriented Computing. Refine families run cheapest first. The check is deterministic. A large language model is not the judge. The project states Lawful near one microjoule, LlmInLoop near five millijoules, and about a hundred-thousand-fold lower joules per unit of work than a corpus that sends every step through a large language model.
+The schedule is Energy-Oriented Computing. Refine families run cheapest first. The check is deterministic. A large language model is not the judge. The project states Lawful near one microjoule and LlmInLoop near five millijoules. The project's own README also claims about a hundred-thousand-fold lower joules per unit of work than a corpus that sends every step through a large language model. That ratio remains a project claim, not a result of this review.
 
 The meter reads the counter the platform exposes and names the source. On Apple silicon that source is the process energy interface. On Linux it is RAPL. Elsewhere the source is an estimator, and an estimator is not a measured joule. Work classes are not added together.
 

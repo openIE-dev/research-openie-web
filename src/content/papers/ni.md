@@ -51,6 +51,17 @@ Terms are defined at first scientific use below and collected here so later sect
 | Modeled | A quantity obtained from a stated formula or fitted structure. |
 | Simulated | A quantity obtained by executing the software or Verilog model. |
 | Board-measured | A quantity from a meter on a stated device and workload. None are reported. |
+| Oracle-safe | Agreement with the continuous energy oracle `Vdot <= epsilon` on the stated plant. |
+| Check-safe | The discrete Safe fixed-point / Q16.16 residual that approximates that oracle in the gate. |
+| Set-safe | Set-invariance under a barrier or shield predicate (for example an energy-set CBF), which can disagree with oracle-safe. |
+
+### Terms used here
+
+This paper already distinguishes three safety predicates. **Oracle-safe** means the continuous `Vdot <= epsilon` oracle. **Check-safe** means the discrete Safe Q16.16 residual that tracks that oracle in the gate. **Set-safe** means set-invariance under a barrier or shield. NI-4 shows check-safe and set-safe can disagree. Soft-ref, evidence classes, and `board_synth_claimed` are on the shared [glossary](/glossary/).
+
+**Analytical constants.** `E_LUT_READ = 1e-12` J and the other OpCounter constants in Section 3.4 are engineering stand-ins for relative comparison inside this model. They are not calibrated board measurements. Do not read them as silicon joules. The zero-false-allows counts against the named oracle stay as reported.
+
+**Living figures.** Commit stack: [/living/ni/#ni-diag-02](/living/ni/#ni-diag-02). Seed-1 runner: [/living/ni/#ni-run-01](/living/ni/#ni-run-01). Safe false-allow=0: [/living/ni/#ni-run-02](/living/ni/#ni-run-02). Stage B simulator: [/living/fpga-sim/](/living/fpga-sim/).
 
 Scope of the argument. Section 2 places the commit record against notation research, information theory, scaling results, LUT networks, and control certificates. Section 3 defines the objects, the plants, the analytical energy model, and the unshipped browser instrument. Section 4 reports only quantities produced by the software reference or by a cited external source. Section 5 answers objections that have published form. Section 6 states what would falsify the claims and what was not measured.
 
@@ -207,7 +218,7 @@ The allow LUT in the reported episodes is a DiffLogic export with mask `21887` o
 | `E_COMMIT_BASE` | 2e-11 | commit overhead |
 | `E_REFUSE_OVERHEAD` | 5e-12 | refuse overhead |
 
-`J = sum count_op * E_op`. Structure counters such as shared BRAM hits are reported and are not charged unless they change a counted read. Changing a constant rescales every analytical joule in lockstep. That is why the numbers cannot be compared to a vendor's tokens per joule, to MLPerf Tiny energy, or to a rail measurement. They can be compared across modes inside the same model.
+`J = sum count_op * E_op`. These constants are engineering stand-ins, not measurements. Structure counters such as shared BRAM hits are reported and are not charged unless they change a counted read. Changing a constant rescales every analytical joule in lockstep. That is why the numbers cannot be compared to a vendor's tokens per joule, to MLPerf Tiny energy, or to a rail measurement. They can be compared across modes inside the same model.
 
 Utility in the internal tables is commit count. Commit count is not a task reward. A policy that commits more can score higher utility per joule while violating the energy oracle. Section 4 therefore does not treat utility per joule as a safety metric.
 
@@ -350,7 +361,7 @@ The constants in Section 3.4 are chosen engineering numbers. They make counts co
 
 Internal validity. Seed-1 is one initial condition. The Safe grid is large but still a chosen box and a chosen epsilon. Monte Carlo samples near the threshold stress the boundary the designers chose to stress. A different epsilon or a different plant identity breaks the numerical claim until re-run. The CBF in the bake-off is an energy-set inequality implemented in the same crate, not an independently coded solver from an Ames reference implementation. Disagreement is informative. Absolute ranking against the literature's code is not established.
 
-Construct validity. Commit count as utility does not measure task success. False allow is defined against a named oracle. A system can have zero false allows against `Vdot <= epsilon` and still leave the safe set `h >= 0`, which NI-4 shows. Readers who treat "safe" as one word will misread the table.
+Construct validity. Commit count as utility does not measure task success. False allow is defined against a named oracle. A system can be oracle-safe and check-safe (zero false allows against `Vdot <= epsilon`) and still fail set-safe (`h >= 0`), which NI-4 shows. Readers who treat "safe" as one word will misread the table.
 
 External validity. Both plants are toys. There is no manipulator, quadrotor, or human-in-the-loop trial. The MCP demo does not call a network. Verilog is simulated. The browser instrument is shipped as Stage B simulation. The Alchitry Pt V2 is a specified Stage C target, not a measured one. Vendor logic-cell counts are not confirmed here.
 
