@@ -276,25 +276,25 @@ A safety schema that does not speak these is another patch on a fixed floor. Tea
 
 Energy-Oriented Computing, written in full on first use and shortened to EOC only after that teaching, is the schedule. The page source states a four-stage pipeline: state-construct, retrieve, refine, check. The work is typed, grounded, done, and validated. A large language model is one refine operator among several, ordered last, reached when nothing cheaper has produced an answer that survives the check. The schedule is not tokens. The specification addendum states non-goals that include token economics: EOC does not denominate, bill, or reason in tokens.
 
-Source: unpublished working note (EOC Transaction Science page sources: Pipeline and Spec). Not a public URL in this study. Do not treat a private tree path as proof.
+Source: unpublished working note (EOC Transaction Science page sources: Pipeline and Spec). Not a public URL in this study.
 
 ### 11.2 The Joule Context Protocol is the law
 
 The Joule Context Protocol, shortened to JCP only after this sentence, is the law for agentic action. A Grant binds a subject to a capability and a joule budget in one signed object. Child grants only narrow: less capability, less budget, sooner expiry, accumulated caveats. Tool output is data, never instructions. Authorization is decided by the runtime outside the model. Every decision seals as a signed JCR-1 receipt. A capability you cannot pay for is denied. An expenditure you are not capable of is denied. One check, made outside the model, sealed in a receipt.
 
-Source: unpublished working note (Joule Context Protocol Transaction Science page source). Not a public URL in this study. Do not treat a private tree path as proof.
+Source: unpublished working note (Joule Context Protocol Transaction Science page source). Not a public URL in this study.
 
 ### 11.3 JouleContract is the commit
 
 JouleContract is the commit. The Transaction Science page source states the core object as precondition, postcondition, invariant, frame, and joule ceiling. The frame is the declared mutable footprint: everything the transition may touch. Everything outside it is implicitly invariant. The draft specification text at version 0.3.0 states precondition, postcondition, invariant, and joule ceiling as the four obligations in its core-object section, and inherits functional-safety, energy-management, and AI-governance canons into one receipt. The ceiling is an energy performance indicator against a declared baseline. Provenance tags travel with every joule figure. Estimator and unaccounted categories are not promoted into measured joules.
 
-Sources: unpublished working note (JouleContract Transaction Science page source); `JouleContract draft 0.3`. Not a public URL in this study. Do not treat a private tree path as proof.
+Sources: unpublished working note (JouleContract Transaction Science page source); `JouleContract draft 0.3`. Not a public URL in this study.
 
 ### 11.4 The sandbox standard is the S0 to S7 ladder
 
 The sandbox Transaction Science page defines an isolation ladder from S0 to S7: Bare, Capability, Sandbox, Partition, Unikernel, MicroVM, Confidential, Sovereign. The rule is the lowest rung that satisfies the work. Escalation is the escape hatch, not the entry point. Every resource a unit touches is explicitly granted. Every run emits a signed energy receipt with readings tagged HwShunt, ModelBased, or Estimator. Attestation states what image ran, at what tier, under what grants, on what hardware, for what cost. At confidential and sovereign rungs, hardware attestation and audit-chain links enter the statement.
 
-Source: unpublished working note (sandbox Transaction Science page source). Not a public URL in this study. Do not treat a private tree path as proof.
+Source: unpublished working note (sandbox Transaction Science page source). Not a public URL in this study.
 
 ### 11.5 Why a patch that omits these is still a patch
 
