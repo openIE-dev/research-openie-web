@@ -170,3 +170,11 @@ html[data-theme="light"] .eq-block { background: rgba(255,255,255,0.6); }
 /* ═══ PERFORMANCE ═══ */
 section:not(:first-of-type) { content-visibility: auto; contain-intrinsic-size: auto 500px; }
 @media (prefers-reduced-motion: reduce) { .pulse, .pulse-d, .pulse-t, .float, .anim-pulse-0, .anim-pulse-1, .anim-pulse-2, .anim-pulse-3, .anim-flow, .anim-drift, .anim-climb { animation: none !important; stroke-dashoffset: 0 !important; } [data-reveal] { opacity: 1; transform: none; } #particle-canvas { display: none; } }
+
+/* KaTeX: one self-hosted stylesheet, inherited color, scroll long displays */
+.katex { color: inherit; }
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0.75rem 0;
+}

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# Generate study PDFs into public/pdfs/ using pandoc + weasyprint.
+# Generate study PDFs into public/pdfs/ using weasyprint.
+# Pandoc MathML does not draw KaTeX, so each PDF is the built paper
+# article (dist/papers/<id>/index.html) plus the existing paper header.
+# Run pnpm build first.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$ROOT/public/pdfs"
@@ -38,92 +41,113 @@ CSS
 gen_one() {
   local id="$1"
   local src="$ROOT/src/content/papers/${id}.md"
-  local tmp="$ROOT/.pdf-build/${id}.md"
+  local built="$ROOT/dist/papers/${id}/index.html"
   local html="$ROOT/.pdf-build/${id}.html"
   local pdf="$OUT/${id}.pdf"
+  local katex_css="$ROOT/node_modules/katex/dist/katex.min.css"
 
-  python3 - "$src" "$tmp" "$id" << 'PY'
-import sys, re
-src, tmp, id_ = sys.argv[1], sys.argv[2], sys.argv[3]
-raw = open(src).read()
-# strip Astro YAML frontmatter
-if raw.startswith('---'):
-    end = raw.find('\n---', 3)
+  if [[ ! -f "$built" ]]; then
+    echo "missing built page $built; run pnpm build first" >&2
+    exit 1
+  fi
+  if [[ ! -f "$katex_css" ]]; then
+    echo "missing $katex_css" >&2
+    exit 1
+  fi
+
+  python3 - "$src" "$built" "$html" "$id" "$CSS" "$katex_css" << 'PY'
+import html as html_lib
+import re
+import sys
+from pathlib import Path
+
+src, built, out, id_, css, katex_css = sys.argv[1:]
+raw = Path(src).read_text()
+fm = ""
+if raw.startswith("---"):
+    end = raw.find("\n---", 3)
     if end != -1:
         fm = raw[3:end]
-        body = raw[end+4:].lstrip('\n')
-    else:
-        fm, body = '', raw
-else:
-    fm, body = '', raw
 
-def fm_get(key, default=''):
-    m = re.search(rf'^{re.escape(key)}:\s*("?)(.*?)\1\s*$', fm, re.M)
+def fm_get(key, default=""):
+    pattern = "^" + re.escape(key) + r":\s*(\"?)(.*?)\1\s*$"
+    m = re.search(pattern, fm, re.M)
     if not m:
         return default
     return m.group(2)
 
-title = fm_get('title', id_)
-deck = fm_get('deck', '')
-author = fm_get('author', 'David Charlot · Open Interface Engineering')
-status = fm_get('status', 'Research study · draft')
+title = fm_get("title", id_)
+deck = fm_get("deck", "")
+author = fm_get("author", "David Charlot, Open Interface Engineering")
+status = fm_get("status", "Research study, draft")
 
-if id_ == 'spellcheck':
-    measure = ''
+page = Path(built).read_text()
+m = re.search(r'<div class="paper-prose[^"]*">', page)
+if not m:
+    raise SystemExit("paper-prose not found in " + built)
+void = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+tag_re = re.compile(r"<!--.*?-->|<!\[CDATA\[.*?\]\]>|<[^>]+>", re.S)
+depth = 1
+end_at = None
+for tm in tag_re.finditer(page, m.end()):
+    t = tm.group()
+    if t.startswith("<!--") or t.startswith("<!"):
+        continue
+    mm = re.match(r"</?\s*([a-zA-Z0-9]+)", t)
+    if not mm:
+        continue
+    name = mm.group(1).lower()
+    if t.startswith("</"):
+        depth -= 1
+        if depth == 0:
+            end_at = tm.start()
+            break
+    elif not (t.endswith("/>") or name in void):
+        depth += 1
+if end_at is None:
+    raise SystemExit("paper-prose did not close in " + built)
+body = page[m.end():end_at]
+body = re.sub(r"\s*<h1\b[^>]*>.*?</h1>", "", body, count=1, flags=re.S)
+
+if id_ == "spellcheck":
+    measure = ""
 else:
-    measure = '''<div class="measurement">
-<strong>Measurement.</strong> Research study, not a journal final.
-Energy figures from the software reference are OpCounter analytical estimates, not board power.
-We have not synthesized or metered an FPGA board. No fabricated citations.
-</div>
-'''
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research study, not a journal final.\n"
+        "Energy figures from the software reference are OpCounter analytical estimates, not board power.\n"
+        "We have not synthesized or metered an FPGA board. No fabricated citations.\n"
+        "</div>\n"
+    )
 
-header = f'''# {title}
+header = (
+    "<h1>" + html_lib.escape(title) + "</h1>\n"
+    '<div class="meta">\n<strong>' + html_lib.escape(author) + "</strong><br/>\n"
+    + html_lib.escape(status) + " · OpenIE research.openie.dev<br/>\n"
+    + "https://research.openie.dev/papers/" + html_lib.escape(id_) + "/ · PDF https://research.openie.dev/pdfs/" + html_lib.escape(id_) + ".pdf\n"
+    + "</div>\n"
+    + measure
+    + "<blockquote>" + html_lib.escape(deck) + "</blockquote>\n"
+)
 
-<div class="meta">
-<strong>{author}</strong><br/>
-{status} · OpenIE research.openie.dev<br/>
-https://research.openie.dev/papers/{id_}/ · PDF https://research.openie.dev/pdfs/{id_}.pdf
-</div>
-
-{measure}
-
-> {deck}
-
-'''
-# Drop the study's own H1 if it duplicates title
-body2 = body
-lines = body2.splitlines()
-if lines and lines[0].startswith('# '):
-    body2 = '\n'.join(lines[1:]).lstrip('\n')
-
-open(tmp, 'w').write(header + body2)
-print(f'prepared {tmp}')
+doc = (
+    "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\"/>\n<title>"
+    + html_lib.escape(title)
+    + "</title>\n<link rel=\"stylesheet\" href=\"" + css + "\"/>\n"
+    + "<link rel=\"stylesheet\" href=\"" + katex_css + "\"/>\n</head>\n<body>\n"
+    + header
+    + body
+    + "\n</body>\n</html>\n"
+)
+Path(out).write_text(doc)
+print("prepared " + out)
 PY
 
-  /opt/homebrew/bin/pandoc "$tmp" \
-    -o "$html" \
-    --standalone \
-    --from markdown+pipe_tables+gfm_auto_identifiers \
-    --metadata title="$id" \
-    --css="$CSS" \
-    -V lang=en
-
-  # Inline CSS for weasyprint reliability: pandoc --css links; weasyprint needs file path
-  /opt/homebrew/bin/pandoc "$tmp" \
-    -o "$pdf" \
-    --pdf-engine=weasyprint \
-    --from markdown+pipe_tables \
-    --css="$CSS" \
-    --metadata title="$id" \
-    2>"$ROOT/.pdf-build/${id}.weasy.log" || {
-      echo "weasyprint via pandoc failed for $id; trying HTML→weasyprint"
-      /opt/homebrew/bin/weasyprint "$html" "$pdf" 2>>"$ROOT/.pdf-build/${id}.weasy.log"
-    }
-
+  /opt/homebrew/bin/weasyprint "$html" "$pdf"
   ls -la "$pdf"
   file "$pdf"
 }
+
 
 gen_one ni
 gen_one satiation

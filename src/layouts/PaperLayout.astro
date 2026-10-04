@@ -1,5 +1,6 @@
 ---
 import Layout from './Layout.astro';
+import 'katex/dist/katex.min.css';
 
 interface Props {
   title: string;
@@ -239,4 +240,11 @@ const toc = [
     text-transform: uppercase;
   }
   .paper-prose img { max-width: 100%; height: auto; border-radius: 8px; }
+
+  .paper-prose .katex { color: inherit; font-size: 1.05em; }
+  .paper-prose .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 0.85rem 0;
+  }
 </style>
