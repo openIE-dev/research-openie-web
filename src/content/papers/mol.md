@@ -1023,6 +1023,26 @@ Energy to run is the only true metric of computer intelligence. All other factor
 
 **Facility reporting duty.** The Agency for Natural Resources and Energy (資源エネルギー庁), explainer of 20 May 2026, states that new measures under the 省エネ・非化石転換法 took effect in April 2026. From the fiscal year 2026 submission, the periodic report adds data-centre electricity use, PUE, エネルギー消費原単位, and future targets. The page defines PUE as the data centre facility's total energy consumption divided by the IT equipment's energy consumption. The same page sets a benchmark of PUE at or below 1.4 by fiscal year 2030 for designated data-centre operators, and a PUE at or below 1.3 for data centres newly built from fiscal year 2029, assessed from the fiscal year after two years of operation. PUE is facility overhead. It is not the energy of a computation.
 
+### 11.4.2 Research that treats energy as the condition
+
+Public standards have no firm requirement to be energy first and energy bound. Mixture of Limits treats energy to run as the foundation. The Klere energy processing unit is the hardware that can hold a run to that bound. A standard that leaves the meter optional does not. The works below treat energy, power, or a physical bound as a condition of the computation. Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. A number below is that paper's bound or that paper's measurement. It is not package `measured_j`.
+
+**Speed bound from energy.** Margolus and Levitin (1998) bound the minimum time for an isolated system to reach an orthogonal state by the average energy above the ground state, $\tau_{\perp} \ge h/(4E)$. Their abstract states that adding one joule of energy cannot raise the processing rate by more than about $3 \times 10^{33}$ operations per second. Class: physical bound.
+
+**Work bound on measurement and erasure.** Sagawa and Ueda (2009) derive lower bounds on the work of a measurement and on the work of erasure. The sum is bounded below by the mutual information $I$ gained in the measurement, $W_{\mathrm{meas}} + W_{\mathrm{eras}} \ge k_{\mathrm{B}} T I$. For a symmetric memory the erasure bound matches Landauer. For an asymmetric memory the erasure bound can lie below that match. Class: thermodynamic bound.
+
+**Dissipation of nonpredictive memory.** Still, Sivak, Bell, and Crooks (2012) set the instantaneous nonpredictive information equal to the average work dissipated when the driving signal changes, in units of $k_{\mathrm{B}} T$. A system built to keep memory, and built to operate at minimum dissipation, has to be predictive. Class: thermodynamic bound.
+
+**Measured erasure.** Bérut, Arakelyan, Petrosyan, Ciliberto, Dillenschneider, and Lutz (2012) erase one bit stored in a colloidal particle in a modulated double-well trap. They report that the mean dissipated heat saturates at the Landauer bound in the limit of long erasure cycles. Class: measured approach to a thermodynamic bound. That heat is their measurement.
+
+Jun, Gavrilov, and Bechhoefer (2014) erase one bit with a colloidal particle in a feedback trap. Work is computed from the trajectory and the imposed potential. The full-erasure protocol's asymptotic work is compatible with the Landauer bound. The same cycle without phase-space compression is compatible with zero work. Class: measured work of erasure, with a reversible control. That work is their measurement.
+
+**Heat of a Turing-machine realization.** Kolchinsky and Wolpert (2020) assign a heat function to a physical realization of a Turing machine. For the coin-flipping realization of a universal machine, heat on an input is proportional to the excess length of that input over the shortest program for the same output, up to an additive constant. The minimum heat required to produce any chosen output is bounded by a constant. The expected heat on the coin-flipping input distribution is infinite. Class: thermodynamic bound on a computation. The heat function is not package `measured_j`.
+
+**Energy as the training objective.** You, Chung, and Chowdhury (2023) define energy-to-accuracy as average GPU power times time-to-accuracy. GPU power is read with NVML, and the GPU power limit is a training knob. An exploratory run stops when its cost exceeds twice the lowest cost observed so far. The paper reports energy reductions of 15.3% to 75.8% against maximum batch size and maximum power limit, on the GPUs named in the evaluation. Class: energy as the objective of training, with a stop. Those reductions are their NVML measurements.
+
+**Energy schedule under a time bound.** Chung, Gu, Jang, Meng, Bansal, and Chowdhury (2024) define energy bloat as the energy in a large-model training iteration that can be removed without lengthening the critical path. Perseus profiles the time and energy of each forward and backward computation and sets GPU frequency through NVML. The energy-optimal iteration time is the minimum of the minimum-energy iteration time and the straggler iteration time. The paper reports per-iteration energy reductions of up to 30%, with negligible or no slowdown. Class: energy schedule of a training iteration. Those reductions are their measurements.
+
 ### 11.5 Developer experience roadmap (not shipped product)
 
 **Gap.** Soft-ref `mol prove` is a clean-room existence proof. Operators still need a declarative surface, local develop loop, and an honest benchmark story versus MoE routers—without claiming a shipped product that does not exist.
@@ -1065,7 +1085,7 @@ measurement:
 
 Mixture of Limits stays the navigation law. Dual-phase, cheap meta-compute, distillation, measurement tiers, and DX are how the law gets embodied on the plateau—Lookup → Formula → Solver → Model LAST, with perception as a bounded front gear and Model LAST still last.
 
-The documents in §11.4.1 do not set `measured_j`.
+The documents in §11.4.1 do not set `measured_j`. The works in §11.4.2 do not set it either.
 
 
 ## References
@@ -1283,6 +1303,17 @@ Primary Mixture of Limits workspace sources (not peer-reviewed publications): `m
 113. CEN-CENELEC. Gap Analysis of Standards for EU AI Act Compliance for healthcare Artificial Intelligence, Task 2 Mid-Phase Report. 18 December 2025. Lists CEN/CLC/TR 18145:2025 (WI JT021010) as published in the JTC 21 column. https://www.cencenelec.eu/media/CEN-CENELEC/AreasOfWork/CEN%20sectors/Healthcare/cen-clc_sag_healthcarestandards-midphasereportartificialintelligence.pdf
 114. CEN and CENELEC. Update on CEN and CENELEC's Decision to Accelerate the Development of Standards for Artificial Intelligence. Posted 23 October 2025. https://www.cencenelec.eu/news-events/news/2025/brief-news/2025-10-23-ai-standardization/
 115. 資源エネルギー庁. 増加が見込まれるデータセンターの電力需要をどうする？さらなる省エネを進める新たな制度に注目！ Explainer, 20 May 2026, correction noted 4 June 2026. https://www.enecho.meti.go.jp/about/special/johoteikyo/data_center2026.html
+
+### Energy as the condition (§11.4.2)
+
+161. Margolus, N., & Levitin, L. B. (1998). The maximum speed of dynamical evolution. *Physica D*, 120, 188-195. DOI: [10.1016/S0167-2789(98)00054-2](https://doi.org/10.1016/S0167-2789(98)00054-2). arXiv:[quant-ph/9710043](https://arxiv.org/abs/quant-ph/9710043).
+162. Sagawa, T., & Ueda, M. (2009). Minimal energy cost for thermodynamic information processing: measurement and information erasure. *Physical Review Letters*, 102, 250602. DOI: [10.1103/PhysRevLett.102.250602](https://doi.org/10.1103/PhysRevLett.102.250602). Erratum: *Physical Review Letters*, 106, 189901 (2011).
+163. Still, S., Sivak, D. A., Bell, A. J., & Crooks, G. E. (2012). Thermodynamics of prediction. *Physical Review Letters*, 109, 120604. DOI: [10.1103/PhysRevLett.109.120604](https://doi.org/10.1103/PhysRevLett.109.120604).
+164. Bérut, A., Arakelyan, A., Petrosyan, A., Ciliberto, S., Dillenschneider, R., & Lutz, E. (2012). Experimental verification of Landauer's principle linking information and thermodynamics. *Nature*, 483, 187-189. DOI: [10.1038/nature10872](https://doi.org/10.1038/nature10872).
+165. Jun, Y., Gavrilov, M., & Bechhoefer, J. (2014). High-precision test of Landauer's principle in a feedback trap. *Physical Review Letters*, 113, 190601. DOI: [10.1103/PhysRevLett.113.190601](https://doi.org/10.1103/PhysRevLett.113.190601).
+166. Kolchinsky, A., & Wolpert, D. H. (2020). Thermodynamic costs of Turing machines. *Physical Review Research*, 2, 033312. DOI: [10.1103/PhysRevResearch.2.033312](https://doi.org/10.1103/PhysRevResearch.2.033312).
+167. You, J., Chung, J.-W., & Chowdhury, M. (2023). Zeus: Understanding and Optimizing GPU Energy Consumption of DNN Training. *20th USENIX Symposium on Networked Systems Design and Implementation (NSDI 23)*, 119-139. https://www.usenix.org/conference/nsdi23/presentation/you. arXiv:[2208.06102](https://arxiv.org/abs/2208.06102).
+168. Chung, J.-W., Gu, Y., Jang, I., Meng, L., Bansal, N., & Chowdhury, M. (2024). Reducing Energy Bloat in Large Model Training. *ACM SIGOPS 30th Symposium on Operating Systems Principles (SOSP '24)*. DOI: [10.1145/3694715.3695970](https://doi.org/10.1145/3694715.3695970). arXiv:[2312.06902](https://arxiv.org/abs/2312.06902).
 
 ### Dual-phase perception / TinyML transducers (§11.1)
 
