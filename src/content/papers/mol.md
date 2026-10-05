@@ -1097,6 +1097,36 @@ Torrejon, Riou, Abreu Araujo, Tsunegi, Khalsa, Querlioz, Bortolotti, Cros, Yakus
 
 **Reservoir computing on a physical substrate.** Zhong, Tang, Li, Liang, Liu, Li, Xi, Yao, Hao, Gao, Qian, and Wu (2022) build a fully analog reservoir computer: dynamic memristors form the reservoir and non-volatile memristors form the readout. They report real-time spatiotemporal processing with three orders of magnitude lower power consumption than digital hardware, 96.6% on arrhythmia detection, and 97.9% on dynamic gesture recognition. Class: power ratio against digital hardware. That ratio is their comparison.
 
+### 11.4.5 The transform is free: passive, reversible, and frequency-space computing
+
+Mixture of Limits treats energy to run as the foundation, and physics says where that energy goes. A passive, linear, reversible transform dissipates no energy in the transform itself. A lens performs a Fourier transform as light crosses it. A diffractive layer, a metasurface, and a conservative or adiabatic gate map inputs to outputs the same way. Energy use goes to zero as computation moves into frequency space. What remains sits at three places: the source that makes the signal, the detector that reads it, and the bit that is erased. The erased bit is the Landauer line already cited, at least $k_B T \ln 2$ per bit. Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. The works below are ordered by method class, not by region. Each class line names how a number was made, or says that the paper gives no energy figure. No work below reports a measured zero, and none sets package `measured_j`. Estimates are not `measured_j`.
+
+**Conservative and reversible logic.** Fredkin and Toffoli (1982) define conservative logic, a model of computation that keeps the reversibility of the dynamical laws and conserves additive quantities, energy among them. They show that it is ideally possible to build sequential circuits with zero internal power dissipation, and they give a model in which elastic collisions of identical balls compute. Class: dissipation bound in an ideal model, no measured energy.
+
+Bennett (1982) reviews the thermodynamics of computation. Ballistic models compute at finite speed with zero energy dissipation in principle, Brownian models dissipate an energy that approaches zero only at zero speed, the enzymatic apparatus of DNA replication, transcription, and translation dissipates $20$ to $100\,kT$ per step, and each merge of computation paths needs a driving force of $kT \ln 2$. The irreversible step is erasure, not measurement. Class: dissipation bound and review, with the paper's own $kT$ figures.
+
+Landauer (1988) states that reversible computers can dissipate arbitrarily small amounts of energy per step if the computation runs slowly enough. In communication and measurement, only the steps that discard information have a lower limit on energy, and those steps can be avoided in transmission. Class: dissipation bound, no energy figure given.
+
+**Adiabatic and superconducting reversible circuits.** Takeuchi, Yamanashi, and Yoshikawa (2013) couple a 5 GHz superconducting resonator to an adiabatic quantum-flux-parametron gate and read the gate's dissipation from the resonator's insertion loss. They report a bit energy of about 10 zJ at 5 GHz. Class: measured dissipation on chip, read through a resonator.
+
+Takeuchi, Yamanashi, and Yoshikawa (2014) build a reversible logic gate from adiabatic quantum-flux-parametron devices and demonstrate its logical and physical reversibility at 4.2 K. Their circuit simulation gives about $1 \times 10^{-21}$ J per cycle for the gate and buffers, 69 gates in all, at a rise and fall time of 10,000 ps, and a bit energy of about $2 \times 10^{-23}$ J per cycle per gate, the same order as $k_B T \ln 2 \approx 4.0 \times 10^{-23}$ J at 4.2 K. Class: reversibility demonstrated on chip, dissipation simulated from a circuit model.
+
+Herr (2025) builds reversible gates in the adiabatic quantum flux parametron by copying the inputs of standard gates and disposing of the copies with a terminate gate that dissipates only $kT \ln 2$. For a chip of $10^9$ devices with realistic fabrication spread, the preprint projects total dissipation of about 7 times the Landauer limit. Class: dissipation projected from a device model.
+
+Frank, Brocato, Tierney, Missert, and Hsia (2020) describe S2LAL, a CMOS logic family that is fully static and fully adiabatic apart from leakage, with one tick of latency per stage and a minimum clock period of 8 ticks on an 8-phase trapezoidal power clock. The preprint argues that in a process built to minimize leakage it should exceed every known semiconductor logic family in energy efficiency. Class: adiabatic circuit design, no energy figure given.
+
+**Passive optical and wave transforms.** Goodman (2017) is the textbook source. A thin lens acts as a phase transformation, a lens Fourier-transforms the field (Chapter 6), and coherent analog optical information processing is built on that property (Chapter 10). Class: passive transform, textbook physics, no energy figure given.
+
+Lin, Rivenson, Yardimci, Veli, Luo, Jarrahi, and Ozcan (2018) design passive diffractive layers with deep learning and 3D-print them as an all-optical diffractive deep neural network. At a terahertz spectrum the layers classify handwritten digits and fashion products and perform the function of an imaging lens. Class: passive transform, no energy figure given.
+
+Silva, Monticone, Castaldi, Galdi, Alù, and Engheta (2014) design metamaterial blocks that perform spatial differentiation, integration, or convolution on the profile of a wave as it propagates through them. The blocks are thinner than lens-based optical processors by several orders of magnitude. Class: passive transform, no energy figure given.
+
+Mohammadi Estakhri, Edwards, and Engheta (2019) inverse-design a metastructure that solves integral equations with monochromatic electromagnetic fields: the input wave is the function and the output field is the solution. They demonstrate it at microwave frequencies. Class: passive transform, no energy figure given.
+
+**The energy floor at the source, the detector, and the wire.** Miller (2017) reviews optoelectronic devices for low-energy processing and interconnect, including sub-femtojoule devices in waveguide, lasers, modulators, LEDs, and integrated photodetectors that reduce or remove receiver circuit energy. The review sets a target of interconnects from about 1 cm to about 10 m at about 10 fJ per bit. Class: device energy floor and target, review.
+
+Hamerly, Bernstein, Sludds, Soljačić, and Englund (2019) propose a photonic accelerator in which the multiplication happens in coherent photoelectric detection. Their preprint reports sub-aJ energies per multiply-and-accumulate and a standard quantum limit, set by photodetector shot noise, as low as 50 zJ per multiply-and-accumulate, below the Landauer limit for digital irreversible computation. Class: detector shot-noise floor projected from a device model.
+
 ### 11.5 Developer experience roadmap (not shipped product)
 
 **Gap.** Soft-ref `mol prove` is a clean-room existence proof. Operators still need a declarative surface, local develop loop, and an honest benchmark story versus MoE routers—without claiming a shipped product that does not exist.
@@ -1139,7 +1169,7 @@ measurement:
 
 Mixture of Limits stays the navigation law. Dual-phase, cheap meta-compute, distillation, measurement tiers, and DX are how the law gets embodied on the plateau—Lookup → Formula → Solver → Model LAST, with perception as a bounded front gear and Model LAST still last.
 
-The documents in §11.4.1 do not set `measured_j`. The works in §11.4.2, §11.4.3, and §11.4.4 do not set it either.
+The documents in §11.4.1 do not set `measured_j`. The works in §11.4.2, §11.4.3, §11.4.4, and §11.4.5 do not set it either.
 
 
 ## References
@@ -1398,6 +1428,22 @@ Primary Mixture of Limits workspace sources (not peer-reviewed publications): `m
 189. Romera, M., Talatchian, P., Tsunegi, S., Abreu Araujo, F., Cros, V., Bortolotti, P., Trastoy, J., Yakushiji, K., Fukushima, A., Kubota, H., Yuasa, S., Ernoult, M., Vodenicarevic, D., Hirtzlin, T., Locatelli, N., Querlioz, D., & Grollier, J. (2018). Vowel recognition with four coupled spin-torque nano-oscillators. *Nature*, 563, 230-234. DOI: [10.1038/s41586-018-0632-y](https://doi.org/10.1038/s41586-018-0632-y). arXiv:[1711.02704](https://arxiv.org/abs/1711.02704).
 190. Torrejon, J., Riou, M., Abreu Araujo, F., Tsunegi, S., Khalsa, G., Querlioz, D., Bortolotti, P., Cros, V., Yakushiji, K., Fukushima, A., Kubota, H., Yuasa, S., Stiles, M. D., & Grollier, J. (2017). Neuromorphic computing with nanoscale spintronic oscillators. *Nature*, 547, 428-431. DOI: [10.1038/nature23011](https://doi.org/10.1038/nature23011). arXiv:[1701.07715](https://arxiv.org/abs/1701.07715).
 191. Zhong, Y., Tang, J., Li, X., Liang, X., Liu, Z., Li, Y., Xi, Y., Yao, P., Hao, Z., Gao, B., Qian, H., & Wu, H. (2022). A memristor-based analogue reservoir computing system for real-time and power-efficient signal processing. *Nature Electronics*, 5, 672-681. DOI: [10.1038/s41928-022-00838-3](https://doi.org/10.1038/s41928-022-00838-3).
+
+### Passive and reversible transforms (§11.4.5)
+
+192. Fredkin, E., & Toffoli, T. (1982). Conservative logic. *International Journal of Theoretical Physics*, 21, 219-253. DOI: [10.1007/BF01857727](https://doi.org/10.1007/BF01857727).
+193. Bennett, C. H. (1982). The thermodynamics of computation: a review. *International Journal of Theoretical Physics*, 21, 905-940. DOI: [10.1007/BF02084158](https://doi.org/10.1007/BF02084158).
+194. Landauer, R. (1988). Dissipation and noise immunity in computation and communication. *Nature*, 335, 779-784. DOI: [10.1038/335779a0](https://doi.org/10.1038/335779a0).
+195. Takeuchi, N., Yamanashi, Y., & Yoshikawa, N. (2013). Measurement of 10 zJ energy dissipation of adiabatic quantum-flux-parametron logic using a superconducting resonator. *Applied Physics Letters*, 102, 052602. DOI: [10.1063/1.4790276](https://doi.org/10.1063/1.4790276).
+196. Takeuchi, N., Yamanashi, Y., & Yoshikawa, N. (2014). Reversible logic gate using adiabatic superconducting devices. *Scientific Reports*, 4, 6354. DOI: [10.1038/srep06354](https://doi.org/10.1038/srep06354).
+197. Herr, Q. (2025). Landauer-Limited Dissipation in Quantum-Flux-Parametron Logic. arXiv:[2504.04284](https://arxiv.org/abs/2504.04284).
+198. Frank, M. P., Brocato, R. W., Tierney, B. D., Missert, N. A., & Hsia, A. H. (2020). Reversible Computing with Fast, Fully Static, Fully Adiabatic CMOS. arXiv:[2009.00448](https://arxiv.org/abs/2009.00448).
+199. Goodman, J. W. (2017). *Introduction to Fourier Optics* (4th ed.). W. H. Freeman, Macmillan Learning. ISBN 9781319119164. [Publisher page](https://www.macmillanlearning.com/college/us/product/Introduction-to-Fourier-Optics/p/1319119166).
+200. Lin, X., Rivenson, Y., Yardimci, N. T., Veli, M., Luo, Y., Jarrahi, M., & Ozcan, A. (2018). All-optical machine learning using diffractive deep neural networks. *Science*, 361, 1004-1008. DOI: [10.1126/science.aat8084](https://doi.org/10.1126/science.aat8084). arXiv:[1804.08711](https://arxiv.org/abs/1804.08711).
+201. Silva, A., Monticone, F., Castaldi, G., Galdi, V., Alù, A., & Engheta, N. (2014). Performing mathematical operations with metamaterials. *Science*, 343, 160-163. DOI: [10.1126/science.1242818](https://doi.org/10.1126/science.1242818).
+202. Mohammadi Estakhri, N., Edwards, B., & Engheta, N. (2019). Inverse-designed metastructures that solve equations. *Science*, 363, 1333-1338. DOI: [10.1126/science.aaw2498](https://doi.org/10.1126/science.aaw2498).
+203. Miller, D. A. B. (2017). Attojoule optoelectronics for low-energy information processing and communications. *Journal of Lightwave Technology*, 35(3), 346-396. DOI: [10.1109/JLT.2017.2647779](https://doi.org/10.1109/JLT.2017.2647779). arXiv:[1609.05510](https://arxiv.org/abs/1609.05510).
+204. Hamerly, R., Bernstein, L., Sludds, A., Soljačić, M., & Englund, D. (2019). Large-scale optical neural networks based on photoelectric multiplication. *Physical Review X*, 9, 021032. DOI: [10.1103/PhysRevX.9.021032](https://doi.org/10.1103/PhysRevX.9.021032). arXiv:[1812.07614](https://arxiv.org/abs/1812.07614).
 
 ### Dual-phase perception / TinyML transducers (§11.1)
 
