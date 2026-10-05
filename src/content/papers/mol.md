@@ -1043,6 +1043,28 @@ Jun, Gavrilov, and Bechhoefer (2014) erase one bit with a colloidal particle in 
 
 **Energy schedule under a time bound.** Chung, Gu, Jang, Meng, Bansal, and Chowdhury (2024) define energy bloat as the energy in a large-model training iteration that can be removed without lengthening the critical path. Perseus profiles the time and energy of each forward and backward computation and sets GPU frequency through NVML. The energy-optimal iteration time is the minimum of the minimum-energy iteration time and the straggler iteration time. The paper reports per-iteration energy reductions of up to 30%, with negligible or no slowdown. Class: energy schedule of a training iteration. Those reductions are their measurements.
 
+### 11.4.3 Neuromorphic substrates and measured-run energy
+
+Mixture of Limits treats energy to run as the foundation. The works below state energy or power of a computation as a physical quantity on a named platform, or they stop under an energy or accuracy-energy bound. They are ordered by method class, not by region. Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. A number below is that paper's own measurement or that paper's own bound. It is not package `measured_j`. Estimates are not `measured_j`.
+
+**Physical quantity of a neuromorphic substrate.** Merolla, Arthur, Alvarez-Icaza, Cassidy, Sawada, Akopyan, Jackson, Imam, Guo, Nakamura, Brezzo, Vo, Esser, Appuswamy, Taba, Amir, Flickner, Risk, Manohar, and Modha (2014) build TrueNorth: 4096 neurosynaptic cores, 1 million programmable spiking neurons, and 256 million configurable synapses. With 400-by-240 video at 30 frames per second, the chip consumes 63 mW. Class: physical quantity of a neuromorphic substrate. That 63 mW is their measurement.
+
+Frenkel, Lefebvre, Legat, and Bol (2018) build ODIN, a 256-neuron 64k-synapse online-learning digital spiking processor in 28 nm FDSOI. At 0.55 V they report a global energy per synaptic operation of 12.7 pJ at the maximum synaptic-operation rate. With rank-order coding on a single-layer MNIST network after on-chip SDSP learning, they report 15 nJ per inference at 84.5% accuracy. Class: physical quantity of a neuromorphic substrate, and measured energy of a run. Those energies are their measurements.
+
+**Measured energy of a run on a named neuromorphic platform.** Esser, Merolla, Arthur, Cassidy, Appuswamy, Andreopoulos, Berg, McKinstry, Melano, Barch, di Nolfo, Datta, Amir, Taba, Flickner, and Modha (2016) map deep convolutional networks onto TrueNorth. Across eight vision and speech datasets, single-chip networks run at 1200 to 2600 frames per second and use between 25 and 275 mW. Class: measured energy of a run. Those powers and throughputs are their measurements.
+
+Göltz, Kriener, Baumbach, Billaudelle, Breitwieser, Cramer, Dold, Kungl, Senn, Schemmel, Meier, and Petrovici (2021) train hierarchical time-to-first-spike networks of leaky integrate-and-fire neurons and emulate them on BrainScaleS-2. On downsampled MNIST they report 8.4 µJ per classification at 96.9% test accuracy, with chip power measured at 175 mW during runtime. Class: measured energy of a run. That 8.4 µJ is their measurement.
+
+Blouw, Choo, Hunsberger, and Eliasmith (2019) benchmark a keyword spotter on Loihi against CPU, GPU, Jetson TX1, and Movidius. On Loihi they report 0.00027 joules per inference at 296 inferences per second, with idle 0.029 W and running 0.110 W. Classification accuracy on their test set matches the TensorFlow reference. Class: measured energy of a run. Those joules are their measurements.
+
+Gobieski, Lucia, and Beckmann (2019) run deep neural network inference on an intermittent energy-harvesting MSP430 with Sonic and Tails. Across three networks they report that Sonic reduces inference energy by $6.9\times$ and Tails by $12.2\times$ relative to tiled Alpaca. Loop continuation keeps each loop iteration idempotent so a run continues after a power failure without nontermination. Class: measured energy of a run under an intermittent energy buffer. Those reductions are their measurements.
+
+**Measured energy of inference on named GPUs.** Samsi, Zhao, McDonald, Li, Michaleas, Jones, Bergeron, Kepner, Tiwari, and Gadepally (2023) measure LLaMA inference energy on named NVIDIA V100 and A100 GPUs with nvidia-smi and DCGM. They report energy per second, per decoded token, and per response for LLaMA 7B, 13B, and 65B on Alpaca and GSM8K, including multi-node sharding up to 32 GPUs. Class: measured energy of a run. Those joules are their measurements.
+
+Luccioni, Jernite, and Strubell (2024) measure energy and carbon for 1,000 inferences across 88 models, 10 tasks, and 30 datasets on NVIDIA A100 GPUs with CodeCarbon. Mean energy per 1,000 queries ranges from 0.002 kWh for text classification to 2.907 kWh for image generation. Multi-purpose generative models emit orders of magnitude more carbon than task-specific models on the same discriminative tasks. Class: measured energy of a run. Those kilowatt-hours are their measurements.
+
+**Energy bound with a stop.** Yang, Zhu, and Liu (2019) train deep networks under a quantitative energy budget. The budget is an optimization constraint. Weighted sparse projection and layer input masking enforce it during training. The trained model is designed to meet the budget while maximizing accuracy. Their energy model follows a systolic-array estimate. Class: energy bound with a stop. That budget is their estimation model. It is not package `measured_j`.
+
 ### 11.5 Developer experience roadmap (not shipped product)
 
 **Gap.** Soft-ref `mol prove` is a clean-room existence proof. Operators still need a declarative surface, local develop loop, and an honest benchmark story versus MoE routers—without claiming a shipped product that does not exist.
@@ -1085,7 +1107,7 @@ measurement:
 
 Mixture of Limits stays the navigation law. Dual-phase, cheap meta-compute, distillation, measurement tiers, and DX are how the law gets embodied on the plateau—Lookup → Formula → Solver → Model LAST, with perception as a bounded front gear and Model LAST still last.
 
-The documents in §11.4.1 do not set `measured_j`. The works in §11.4.2 do not set it either.
+The documents in §11.4.1 do not set `measured_j`. The works in §11.4.2 and §11.4.3 do not set it either.
 
 
 ## References
@@ -1314,6 +1336,19 @@ Primary Mixture of Limits workspace sources (not peer-reviewed publications): `m
 166. Kolchinsky, A., & Wolpert, D. H. (2020). Thermodynamic costs of Turing machines. *Physical Review Research*, 2, 033312. DOI: [10.1103/PhysRevResearch.2.033312](https://doi.org/10.1103/PhysRevResearch.2.033312).
 167. You, J., Chung, J.-W., & Chowdhury, M. (2023). Zeus: Understanding and Optimizing GPU Energy Consumption of DNN Training. *20th USENIX Symposium on Networked Systems Design and Implementation (NSDI 23)*, 119-139. https://www.usenix.org/conference/nsdi23/presentation/you. arXiv:[2208.06102](https://arxiv.org/abs/2208.06102).
 168. Chung, J.-W., Gu, Y., Jang, I., Meng, L., Bansal, N., & Chowdhury, M. (2024). Reducing Energy Bloat in Large Model Training. *ACM SIGOPS 30th Symposium on Operating Systems Principles (SOSP '24)*. DOI: [10.1145/3694715.3695970](https://doi.org/10.1145/3694715.3695970). arXiv:[2312.06902](https://arxiv.org/abs/2312.06902).
+
+
+### Neuromorphic substrates and measured-run energy (§11.4.3)
+
+169. Merolla, P. A., Arthur, J. V., Alvarez-Icaza, R., Cassidy, A. S., Sawada, J., Akopyan, F., Jackson, B. L., Imam, N., Guo, C., Nakamura, Y., Brezzo, B., Vo, I., Esser, S. K., Appuswamy, R., Taba, B., Amir, A., Flickner, M. D., Risk, W. P., Manohar, R., & Modha, D. S. (2014). A million spiking-neuron integrated circuit with a scalable communication network and interface. *Science*, 345(6197), 668-673. DOI: [10.1126/science.1254642](https://doi.org/10.1126/science.1254642).
+170. Frenkel, C., Lefebvre, M., Legat, J.-D., & Bol, D. (2018). A 0.086-mm² 12.7-pJ/SOP 64k-Synapse 256-Neuron Online-Learning Digital Spiking Neuromorphic Processor in 28nm CMOS. *IEEE Transactions on Biomedical Circuits and Systems*. DOI: [10.1109/TBCAS.2018.2880425](https://doi.org/10.1109/TBCAS.2018.2880425). arXiv:[1804.07858](https://arxiv.org/abs/1804.07858).
+171. Esser, S. K., Merolla, P. A., Arthur, J. V., Cassidy, A. S., Appuswamy, R., Andreopoulos, A., Berg, D. J., McKinstry, J. L., Melano, T., Barch, D. R., di Nolfo, C., Datta, P., Amir, A., Taba, B., Flickner, M. D., & Modha, D. S. (2016). Convolutional networks for fast, energy-efficient neuromorphic computing. *Proceedings of the National Academy of Sciences*, 113(41), 11441-11446. DOI: [10.1073/pnas.1604850113](https://doi.org/10.1073/pnas.1604850113). arXiv:[1603.08270](https://arxiv.org/abs/1603.08270).
+172. Göltz, J., Kriener, L., Baumbach, A., Billaudelle, S., Breitwieser, O., Cramer, B., Dold, D., Kungl, A. F., Senn, W., Schemmel, J., Meier, K., & Petrovici, M. A. (2021). Fast and energy-efficient neuromorphic deep learning with first-spike times. *Nature Machine Intelligence*, 3, 823-835. DOI: [10.1038/s42256-021-00388-x](https://doi.org/10.1038/s42256-021-00388-x). arXiv:[1912.11443](https://arxiv.org/abs/1912.11443).
+173. Blouw, P., Choo, X., Hunsberger, E., & Eliasmith, C. (2019). Benchmarking Keyword Spotting Efficiency on Neuromorphic Hardware. *Proceedings of the 7th Annual Neuro-inspired Computational Elements Workshop (NICE '19)*. DOI: [10.1145/3320288.3320304](https://doi.org/10.1145/3320288.3320304). arXiv:[1812.01739](https://arxiv.org/abs/1812.01739).
+174. Gobieski, G., Lucia, B., & Beckmann, N. (2019). Intelligence Beyond the Edge: Inference on Intermittent Embedded Systems. *Proceedings of the Twenty-Fourth International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS '19)*, 199-213. DOI: [10.1145/3297858.3304011](https://doi.org/10.1145/3297858.3304011). arXiv:[1810.07751](https://arxiv.org/abs/1810.07751).
+175. Samsi, S., Zhao, D., McDonald, J., Li, B., Michaleas, A., Jones, M., Bergeron, W., Kepner, J., Tiwari, D., & Gadepally, V. (2023). From Words to Watts: Benchmarking the Energy Costs of Large Language Model Inference. *2023 IEEE High Performance Extreme Computing Conference (HPEC)*. DOI: [10.1109/HPEC58863.2023.10363447](https://doi.org/10.1109/HPEC58863.2023.10363447). arXiv:[2310.03003](https://arxiv.org/abs/2310.03003).
+176. Luccioni, A. S., Jernite, Y., & Strubell, E. (2024). Power Hungry Processing: Watts Driving the Cost of AI Deployment? *ACM Conference on Fairness, Accountability, and Transparency (FAccT '24)*, 85-99. DOI: [10.1145/3630106.3658542](https://doi.org/10.1145/3630106.3658542). arXiv:[2311.16863](https://arxiv.org/abs/2311.16863).
+177. Yang, H., Zhu, Y., & Liu, J. (2019). Energy-Constrained Compression for Deep Neural Networks via Weighted Sparse Projection and Layer Input Masking. *International Conference on Learning Representations (ICLR)*. arXiv:[1806.04321](https://arxiv.org/abs/1806.04321).
 
 ### Dual-phase perception / TinyML transducers (§11.1)
 
