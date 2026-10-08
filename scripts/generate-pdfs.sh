@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
-# Generate study PDFs into public/pdfs/ using weasyprint.
+# Generate study PDFs into public/pdfs/.
 # Pandoc MathML does not draw KaTeX, so each PDF is the built paper
 # article (dist/papers/<id>/index.html) plus the existing paper header.
 # Run pnpm build first.
+#
+# Math layout: the built HTML is KaTeX markup from the katex copy that
+# rehype-katex bundles. Its stylesheet must come from that same copy; a
+# stylesheet from a different KaTeX version misplaces fractions, sub- and
+# superscripts. Pages are printed with headless Google Chrome, which lays
+# out KaTeX HTML (struts, vlists, inline-block alignment) correctly.
+# WeasyPrint is the fallback when Chrome is not installed.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$ROOT/public/pdfs"
@@ -36,7 +43,37 @@ blockquote { border-left: 3px solid #f59e0b; margin: 0.75rem 0; padding: 0.15rem
   margin: 0.75rem 0 1.25rem; font-size: 0.88rem;
 }
 hr { border: 0; border-top: 1px solid #e5e7eb; margin: 1.2rem 0; }
+html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.katex-display { margin: 0.7rem 0; overflow: visible; page-break-inside: avoid; break-inside: avoid; }
+.katex { font-size: 1.1em; }
+table .katex { font-size: 1em; }
+p, li, td, th, blockquote { overflow-wrap: break-word; }
+code, a { overflow-wrap: anywhere; }
+td, th { hyphens: auto; -webkit-hyphens: auto; }
+code, pre, a, .katex { hyphens: manual; -webkit-hyphens: manual; }
+table:has(th:nth-child(6)) { font-size: 0.8em; }
+img, svg, video { max-width: 100%; height: auto; }
 CSS
+
+CHROME="${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
+
+# KaTeX stylesheet matching the katex version rehype-katex renders with.
+KATEX_CSS="$(python3 - "$ROOT" << 'PY'
+import os, sys
+from pathlib import Path
+root = Path(sys.argv[1])
+cands = []
+rk = root / "node_modules" / "rehype-katex"
+if rk.exists():
+    cands.append(Path(os.path.realpath(rk)).parent / "katex" / "dist" / "katex.min.css")
+cands.append(root / "node_modules" / "katex" / "dist" / "katex.min.css")
+for c in cands:
+    if c.is_file():
+        print(c)
+        break
+PY
+)"
+echo "KaTeX stylesheet: $KATEX_CSS"
 
 gen_one() {
   local id="$1"
@@ -44,7 +81,7 @@ gen_one() {
   local built="$ROOT/dist/papers/${id}/index.html"
   local html="$ROOT/.pdf-build/${id}.html"
   local pdf="$OUT/${id}.pdf"
-  local katex_css="$ROOT/node_modules/katex/dist/katex.min.css"
+  local katex_css="$KATEX_CSS"
 
   if [[ ! -f "$built" ]]; then
     echo "missing built page $built; run pnpm build first" >&2
@@ -141,8 +178,8 @@ header = (
 doc = (
     "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\"/>\n<title>"
     + html_lib.escape(title)
-    + "</title>\n<link rel=\"stylesheet\" href=\"" + css + "\"/>\n"
-    + "<link rel=\"stylesheet\" href=\"" + katex_css + "\"/>\n</head>\n<body>\n"
+    + "</title>\n<link rel=\"stylesheet\" href=\"" + katex_css + "\"/>\n"
+    + "<link rel=\"stylesheet\" href=\"" + css + "\"/>\n</head>\n<body>\n"
     + header
     + body
     + "\n</body>\n</html>\n"
@@ -151,7 +188,15 @@ Path(out).write_text(doc)
 print("prepared " + out)
 PY
 
-  /opt/homebrew/bin/weasyprint "$html" "$pdf"
+  if [[ -x "$CHROME" ]]; then
+    "$CHROME" --headless=new --disable-gpu --no-pdf-header-footer \
+      --allow-file-access-from-files --run-all-compositor-stages-before-draw \
+      --virtual-time-budget=15000 --print-to-pdf="$pdf" "file://$html" \
+      2> "$ROOT/.pdf-build/${id}.chrome.log" || { cat "$ROOT/.pdf-build/${id}.chrome.log" >&2; exit 1; }
+  else
+    echo "Chrome not found at $CHROME; falling back to weasyprint" >&2
+    /opt/homebrew/bin/weasyprint "$html" "$pdf"
+  fi
   ls -la "$pdf"
   file "$pdf"
 }

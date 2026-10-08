@@ -60,7 +60,9 @@ For a system $S$, an act $a$ and an episode budget $B$ in joules, eligibility $E
 
 Physics already prices clauses 1 to 3. The second law with feedback [3, 4] and the measurement and erasure bound [5] give, for one bath at temperature $T$:
 
-$$W_{\mathrm{ext}} \le -\Delta F + k_B T\, I, \qquad W_{\mathrm{meas}} + W_{\mathrm{erase}} \ge k_B T\, I$$
+$$
+W_{\mathrm{ext}} \le -\Delta F + k_B T\, I, \qquad W_{\mathrm{meas}} + W_{\mathrm{erase}} \ge k_B T\, I
+$$
 
 Here $I$ is the mutual information the act's comparison acquires. An acceptor that compares and then resets pays at least $k_B T \ln 2$ per bit over a closed cycle [6, 7]. The law is physical from its first clause.
 
@@ -70,7 +72,9 @@ Cumulative joules are $J(t) = \int_0^t P(t')\,dt'$, with $P$ the metered power.
 
 Agency displacement counts bits of confirmed, coupled change:
 
-$$X(t) = \sum_{k:\,t_k \le t} E_k\, m_k\, I(\mathrm{do}(a_k); W'_k)$$
+$$
+X(t) = \sum_{k:\,t_k \le t} E_k\, m_k\, I(\mathrm{do}(a_k); W'_k)
+$$
 
 Velocity per second is $v_t = dX/dt$. Velocity per joule is $v_J = dX/dJ$. Acceleration per joule is $\alpha_J = d^2X/dJ^2$. The budget is $J(T) \le B$.
 
@@ -78,13 +82,17 @@ The kinematic laws are the bounds on these quantities.
 
 **K1. Landauer floor, closed cycle.** Each confirmed bit is recorded and later erased to reset the acceptor. So
 
-$$v_J \le \frac{1}{k_B T \ln 2}.$$
+$$
+v_J \le \frac{1}{k_B T \ln 2}.
+$$
 
 At $T = 300$ K, $k_B T \ln 2 \approx 2.87 \times 10^{-21}$ J, computed from the SI constants. That is about $3.5 \times 10^{20}$ bits per joule.
 
 **K2. Classical speed limit.** Shiraishi, Funo and Saito proved this bound for a Markov jump process with local detailed balance [8]:
 
-$$\tau \;\ge\; \frac{L\big(p(0),p(\tau)\big)^2}{2\,\Sigma_{\mathrm{tot}}\,\langle A\rangle_\tau}$$
+$$
+\tau \;\ge\; \frac{L\big(p(0),p(\tau)\big)^2}{2\,\Sigma_{\mathrm{tot}}\,\langle A\rangle_\tau}
+$$
 
 - $L(p,p') = \sum_i |p_i - p'_i|$ is the full $L_1$ distance between two probability distributions. There is no factor of 1/2. With total variation distance $d_{TV} = L/2$, the same bound reads $\tau \ge 2 d_{TV}^2/(\Sigma_{\mathrm{tot}}\langle A\rangle_\tau)$.
 - $\Sigma_{\mathrm{tot}} = \int_0^\tau \dot\Sigma\,dt$ is total entropy production, system plus baths, in units of $k_B$.
@@ -94,7 +102,9 @@ Rearranged, $\Sigma_{\mathrm{tot}} \ge L^2/(2\tau\langle A\rangle_\tau)$. Moving
 
 **Joule form.** For one bath, $k_B T\,\Sigma_{\mathrm{tot}} = W - \Delta F_{\mathrm{neq}}$, with $F_{\mathrm{neq}}$ the nonequilibrium free energy [9]. So the dissipated work obeys
 
-$$W_{\mathrm{diss}} \;\ge\; \frac{k_B T\, L^2}{2\,\tau\,\langle A\rangle_\tau}.$$
+$$
+W_{\mathrm{diss}} \;\ge\; \frac{k_B T\, L^2}{2\,\tau\,\langle A\rangle_\tau}.
+$$
 
 **Stationary currents.** The same paper gives $\tau \ge c^* L^2 / (2\,\Sigma_{HS}\,\langle A\rangle_\tau)$, with $c^* = 0.896\ldots$ and $\Sigma_{HS}$ the Hatano-Sasa, or excess, entropy production [8].
 
