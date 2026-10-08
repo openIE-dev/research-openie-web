@@ -426,6 +426,248 @@ Publish all receipts, raw meter traces, idle baselines and analysis code with th
 - **Notational Intelligence** is the receipt format in Section 8.5.
 - **Mixture of Limits** is the philosophy and the rival rule in arm 2.
 
+## 9. Who else is working on this
+
+This pass looked for the people, groups and programs working on any part of the order. That covers a law or formal definition of agency, the thermodynamics of agents, joules per decision, and intelligence as a rate. Results are organized by method and class of result. Language is metadata only. Each entry says what it gives the law, the kinematics or the calculus, and where it stops.
+
+### 9.1 Formal definitions of agency
+
+- Kenton, Kumar, Farquhar, Richens, MacDermott and Everitt gave a causal definition of agents: systems that would adapt their policy if their actions influenced the world in a different way. From it they derived an algorithm that discovers agents from interventional data [227]. Method: causal modeling, definition and algorithm. This is clauses 2 and 3 in causal form. It has no joule term and no receipt.
+- Richens and Everitt proved that any agent that meets a regret bound under a large set of distributional shifts has learned an approximate causal model of the process that generates its data [228]. Richens, Abel, Bellot and Everitt proved that any agent that generalizes to multi-step goal-directed tasks has learned a predictive model of its environment, and that the model can be extracted from the policy [229]. Method: theorem. These are modern good-regulator results [22]. They support clause 1: a capable agent carries a prediction. They have no joules.
+- MacDermott, Fox, Belardinelli and Everitt defined maximum entropy goal-directedness (MEG), a measure computed from causal models [230]. Method: definition with proofs. It scores how goal-directed a policy is. It does not gate an act or price it.
+- Orseau, McGregor McGill and Legg define agent and device relative to an observer, by Bayesian comparison of two descriptions of the same behavior [231]. Method: formal definition. The label depends on the observer's priors. The law needs a test with no observer in it (Section 10, G1).
+- Biehl and Virgo call a system an agent when it can be interpreted as solving a POMDP (partially observable Markov decision process): its states map to beliefs that update by Bayes' theorem, and its actions are optimal for those beliefs [232]. Virgo, Biehl and McGregor gave the consistency conditions for reading a system as a Bayesian reasoner [233]. Both build on McGregor's Bayesian stance [234]. Method: formal definition, with category theory. This is the closest formal account of clause 1. It has no physical floor.
+- Barzegar, Margoni and Oriti give a minimalist, scalable account of agency in physics. It sits between strong accounts, such as Tononi's, and weak accounts, such as Rovelli's [235]. Method: philosophy of physics.
+- Bartlett, Eckford, Egbert, Lingam, Kolchinsky, Frank and colleagues make goal-directed information processing, measured by semantic information, the distinctive feature of living systems [236]. Method: perspective built on Kolchinsky and Wolpert [35]. It points at the law. It stops before kinematics.
+- Crutchfield and Jurgens built information theory for memoryful agents that interpret structured environments in real time [237]. Method: theorem. It describes the information series a receipt would carry. It has no joules.
+- De Bari, Dixon, Kondepudi and Vaidya ground goal-directed behavior in thermodynamics, with experiments on driven dissipative systems [238]. Perunov, Marsland and England derived how driven matter adapts through dissipation [239]. Method: theory and experiment. Both tie purpose to energy flow. Neither has a prediction clause.
+- Levin's TAME (Technological Approach to Mind Everywhere) treats agency as a graded property that experiments can test at every scale [240]. Lyon, Keijzer, Arendt and Levin set out the basal cognition program [241]. Method: framework with experiments in development and regeneration. It is the largest experimental program on minimal agency. It does not meter joules per act.
+- Barandiaran and Almendros tested large language models against the individuality, normativity and interactional asymmetry conditions. They conclude that a model fails the first two and partly fails the third, so it is not an autonomous agent in that sense [242]. Method: philosophy. This is a gate applied before any agency claim, as clauses 1 to 4 are.
+
+### 9.2 Who is the agent: boundaries and interpretation
+
+- Bruineberg, Dołęga, Dewhurst and Baltieri separate two uses of the Markov blanket: a tool for Bayesian inference, and a claim about the physical boundary between an agent and its world. The second use needs assumptions the first does not [243]. Method: conceptual analysis.
+- Aguilera, Millidge, Tschantz and Buckley tested the FEP (free energy principle) in the simplest case, weakly coupled linear stochastic systems. The Markov blanket condition and the restrictions the FEP needs hold only in a narrow range of parameters [244]. Method: derivation and computation.
+- Biehl, Pollock and Kanai showed that the definitions of Markov blanket used across the FEP literature are not equivalent. They gave counterexamples to the original free energy lemma [245]. Method: proof by counterexample.
+- The FEP side states its case in [246, 247, 248, 249]. Method: theory. Its boundary is statistical, and its free energy is not joules [85].
+- Rosas, Mediano, Biehl, Chandaria and Polani defined causal blankets, which are found from data with no steady-state or Markov assumption. They proved that every bipartite stochastic process has one [250]. Method: theorem and algorithm. It is the most usable boundary tool for receipts.
+- Krakauer, Bertschinger, Olbrich, Flack and Ay define individuals as aggregates that propagate information from their past into their future [251]. Bertschinger, Olbrich, Ay and Jost gave an information-theoretic account of autonomy [252]. Method: information theory on graphical models. The boundary is found, not drawn.
+- IIT 4.0 (integrated information theory) takes as the system the set of elements with maximal integrated cause-effect power [253]. Hoel, Albantakis and Tononi showed that a macro description can carry more causal power than the micro one [254]. Method: theory. The boundary comes from a maximum. It has no joules.
+- Adams and Aizawa argue that cognition stays inside the organism and does not extend into its tools [255]. Seth and Tsakiris ground selfhood in predictive regulation of the body [256]. Sterling defines allostasis as predictive regulation [257]. Method: philosophy and physiology. These place the boundary at the body. Clause 3 places it at the system that bears the consequence.
+
+### 9.3 Coupling: causal and information measures
+
+- Ay and Polani defined causal information flow through interventions [258]. For one act it is the mutual information between the intervened act and the outcome, which is $I(\mathrm{do}(a); W')$ in clause 2. Empowerment is its maximum over act distributions [159]. Method: definition with proofs.
+- Janzing, Balduzzi, Grosse-Wentrup and Schölkopf derived a measure of causal strength from postulates [259]. Method: theorem.
+- James, Barnett and Crutchfield showed by example that transfer entropy does not measure information flow [260]. Lizier and Prokopenko separated information transfer from causal effect [261]. Transfer entropy [140] is a rate of prediction, not of coupling. Clause 2 is written in the interventional measure.
+- Albantakis, Marshall, Hoel and Tononi gave a quantitative account of actual causation for single transitions [262]. Juel, Comolatti, Tononi and Albantakis traced how much of an agent's action is caused from within [263]. Albantakis compared measures of autonomy [264]. Marshall and colleagues used causal analysis to find autonomy in biological network models [265]. Albantakis and colleagues analyzed a macro agent and its actions [266]. Method: theory and simulation. Actual causation is computed per act. So is the receipt.
+
+### 9.4 Thermodynamics of agents, feedback and learning
+
+- Fiderer, Barth, Smith and Briegel defined the work capacity of an environment channel: the maximum rate at which any agent can expect to extract work in a percept-action loop. Work-efficient agents must balance prediction against forgetting [267]. Method: theorem. It is the closest existing result to a kinematic law of agency in a closed loop. Its numerator is extracted work, not confirmed coupled bits.
+- Hartle, Wolpert, Stier, Kempes and Manzano priced feedback with noisy measurements, limited memory and a limited repertoire of protocols. The benefit of feedback over random action can exceed the information gain by orders of magnitude [268]. Method: theory.
+- Kamijima, Funo and Sagawa derived the finite-time costs of information processing and the trade-offs between measurement and feedback, using Pareto optimization and the Wasserstein distance [269]. Method: theorem.
+- Kolchinsky and Wolpert showed how constraints on the available protocols limit extractable work and the value of information [270]. Wolpert and colleagues set out a program for the energy costs of real computers [271]. Results cover stochastic halting times [272], uncertain thermodynamic parameters [273] and circuits [274]. Method: theorem. These price computation. They do not gate acts.
+- Sandberg, Delvenne, Newton and Mitter bounded work extraction by nonequilibrium demons, implementation costs included [275]. Horowitz and Sandberg compared the second-law inequalities that carry information [276]. Still gave information theory for interactive learning [277] and for curiosity-driven learning [278]. Method: theorem.
+- Fields, Goldstein and Sandved-Smith separated thermodynamic free energy, in joules, from variational free energy in active inference agents, and stated the trade-off between them [279]. Method: theory. This brings joules into active inference.
+- Goerlich, Hoek, Chor, Rahav and Roichman reviewed information engine experiments and the next steps: active, many-body and inertial systems, and optimal control [280]. Cocconi and Chen analyzed an autonomous information engine on a single active particle [281]. Method: review and theory.
+- Goldt and Seifert bounded the thermodynamic efficiency of learning a rule [282]. Tkachenko showed, for physical neural networks, that quasi-static inference needs no work and that finite-speed work is bounded below by a transport distance [283]. Method: theorem, preprint. Inference has no floor at zero speed and a floor at finite speed. That is the shape of Layer 2.
+- Tatikonda and Mitter [284] and Nair and Evans [285] proved the data-rate theorem: holding an unstable linear system needs a channel rate above the sum of the base-2 logarithms of its unstable eigenvalue magnitudes. Nair, Fagnani, Zampieri and Evans reviewed the field [286]. Method: theorem. It is a floor in bits per step for holding a goal against an unstable world. With Landauer it becomes a candidate floor in joules (Section 10, G6).
+
+### 9.5 Kinematics since the first pass
+
+- **Feedback TUR.** Van Vu and Hasegawa derived TURs under arbitrary control protocols [287]. Tanogami, Van Vu and Saito extended the TUR to a subsystem, with information flow beside entropy production, and derived trade-offs between power and efficiency for information engines [288]. Honma and Van Vu derived a finite-time TUR for open quantum systems under continuous monitoring and Markovian feedback, in terms of entropy production and quantum mutual information [289]. Kumasaki, Tojo, Sagawa and Funo derived a TUR for feedback cooling [290]. Hasegawa gave a quantum TUR for continuous measurement [291]. Method: theorem. The feedback TUR now exists in classical and quantum form. Writing it in the receipt's variables is P4.
+- **Speed limits.** Hasegawa unified the speed limit, the TUR and the Heisenberg principle [292]. Van Vu and Hasegawa bounded irreversibility by a modified Wasserstein distance [293]. Delvenne and Falasco bounded entropy production by kinetic statistics [294]. Method: theorem.
+- **Finite-time Landauer.** Lee, Lee, Kwon and Park found a tight finite-time Landauer bound [295]. Van Vu and Saito added quantum coherence [296]. Rolandi and Perarnau-Llobet went beyond weak coupling [297]. Dago and Bellon measured the overhead of fast erasure and modeled where it comes from [298]. Fujimoto and Ito found the minimum entropy productions of interacting subsystems by a game-theoretic method [299]. Method: theorem and experiment.
+- **First passage.** Gingrich and Horowitz [300] and Garrahan [301] bounded first-passage-time fluctuations by dissipation. Neri, Roldán and Jülicher gave the statistics of stopping times of entropy production [302]. Method: theorem. $J^*(X_{\mathrm{req}})$ is a first-passage quantity, so these bounds apply to it.
+
+### 9.6 Collective agency
+
+- Wolpert bounded the minimal entropy production rate of interacting subsystems by their network of dependencies [303]. He gave uncertainty relations and fluctuation theorems for Bayes nets [304]. Tasnim and Wolpert extended the theory to co-evolving systems [305]. Method: theorem.
+- Rolandi, Abiuso and Perarnau-Llobet showed that collective protocols can sharply reduce the dissipated work of an N-body system [306]. Method: theorem. A collective act can cost less per member.
+- Crosato and colleagues [307] and Chen and Prokopenko [308] found that thermodynamic efficiency, the predictability gained per unit of energy cost, peaks near criticality in models of collective behavior. Method: theory and simulation. This is the closest collective analog of $\iota$.
+
+### 9.7 Quantum agents
+
+- Adlam, McQueen and Waegell argue that a purely quantum system cannot be an agent. Building a world model and deliberating need copying, which the no-cloning theorem forbids, so agency needs classical resources [309]. Method: argument from theorems, preprint. Clause 3 already requires a classical record of $m$.
+- Elliott, Gu, Garner and Thompson showed that quantum adaptive agents can need far less memory than classical ones [310]. Saggio and colleagues demonstrated a quantum speed-up for learning agents in a photonic experiment [311]. Method: theorem and experiment.
+- Guryanova, Friis and Huber proved that ideal projective measurements need infinite resources [312]. Danageozian, Wilde and Buscemi gave a three-way thermodynamic trade-off for quantum information gain and error correction [313]. Jacobs [314] and Funo, Watanabe and Ueda [315] gave the second law and fluctuation theorems under quantum feedback. Linpeng and colleagues measured the energetic cost of measurement with quantum, coherent and thermal light [316]. Marín Guzmán and colleagues set criteria for useful autonomous quantum machines [317]. Lipka-Bartosik, Perarnau-Llobet and Brunner computed with autonomous quantum thermal machines [318]. Method: theorem and experiment.
+
+### 9.8 Joules per decision in living systems
+
+- Mattingly, Kamino, Machta and Emonet measured how fast E. coli acquires information during chemotaxis. Cells decide with much less than one bit, yet climb gradients within a factor of two of the bound set by their information rate [319]. Method: experiment and theory. This measures bits per decision.
+- Tjalma and colleagues showed that the bits of the past that best predict the future are prohibitively costly for cellular networks [320]. Bryant and Machta bounded the energy of sending a bit through the physical channels of a cell, in $k_B T$ per bit [321]. Method: theorem.
+- Padamsey, Katsanevaki, Dupuy and Rochefort found that food restriction cut synaptic ATP (adenosine triphosphate) use in mouse visual cortex by 29% and broadened orientation tuning by 32% [322]. Method: experiment. Fewer joules bought less precision, measured.
+- Plaçais and Preat showed that starved flies disable costly aversive long-term memory. Forcing it back restored the memory and reduced survival [323]. Plaçais and colleagues found that long-term memory formation needs raised energy flux in the mushroom body [324]. Mery and Kawecki found that forming long-term memory lowered flies' resistance to desiccation [325]. Method: experiment. Learning has a measured metabolic price.
+- Hechler, de Lange and Riedl measured cortical oxygen consumption during predictable and unpredictable visual input. Confident prediction saved up to 12% of cortical energy [326]. Method: metabolic imaging, preprint. Prediction saves joules.
+- Levy and Calvert audited the energy of the human cortex: communication costs 35 times as much as computation [327]. Harris, Jolivet and Attwell budgeted synaptic energy [328]. In the visual pathway, synapse size maximizes information per unit energy, not information [329]. Niven and Laughlin [330], Balasubramanian, Kimber and Berry [331], and Sterling and Laughlin [332] set energy as the design constraint. Malkin and colleagues derived signatures of Bayesian inference from energy-efficient synapses [333]. Li and van Rossum showed that naive synaptic plasticity costs extreme energy and proposed synaptic caching [334]. Method: experiment and theory.
+- Lynn and colleagues measured broken detailed balance in the human brain from neuroimaging. It rises with physical and cognitive exertion [335]. Lynn, Holmes, Bialek and Schwab decomposed the local arrow of time in interacting systems [336]. Method: inference from recordings. This entropy production is informational and coarse-grained. It is not a joule meter.
+
+### 9.9 Joules per inference in machines
+
+- NeuroBench is a common framework for benchmarking neuromorphic algorithms and systems [337]. Davies and colleagues surveyed results on the Loihi neuromorphic chip [338]. Method: benchmark and measurement.
+- Samsi and colleagues benchmarked the energy of LLM inference [339]. Elsworth and colleagues report a median of 0.24 Wh per Gemini Apps text prompt, counting accelerators, hosts, idle capacity and data-center overhead [340]. Method: operator instrumentation. It is a figure the operator reported. It is not `measured_j` under this track's meter rules.
+- Melanson and colleagues built a small thermodynamic computer of 8 coupled RLC (resistor, inductor, capacitor) cells for sampling and linear algebra [341]. Stern and Murugan reviewed learning in physical systems without neurons [342]. Dillavou and colleagues demonstrated decentralized physics-driven learning [343]. Stern and colleagues measured a trade-off between power and error in self-learning circuits [344]. Method: hardware experiment.
+
+### 9.10 Intelligence as a rate or an efficiency
+
+- Hernández-Orallo and Dowe proposed an anytime intelligence test that adapts to the time available [345]. Method: formal measure.
+- Chollet and colleagues report the ARC Prize 2024 competition [346] and the ARC-AGI-2 benchmark [347]. The ARC Prize leaderboard plots cost per task against score and calls it a key measure of efficiency [348]. The cost is in dollars. A joule meter would make it a calculus-of-agency benchmark.
+- Chaisson proposes energy rate density, power per unit mass, as a complexity metric across cosmic evolution [349]. It is a rate in watts per kilogram, not joules per confirmed bit.
+- Sims applies rate-distortion theory to perception [350]. Gottwald and Braun separate the two kinds of free energy [351]. Zénon, Solopchuk and Pezzulo cast the cost of cognition as information [352]. Ortega, Braun, Dyer, Kim and Tishby set out information-theoretic bounded rationality [353]. Method: theory. Their currency is information. Landauer converts it to joules.
+
+### 9.11 Programs and groups
+
+- The John Templeton Foundation program Agency, Directionality, and Function: Foundations for a Science of Purpose ran from 2021 to 2024 with 24 teams [354, 355]. Its successor, the Consortium for Advancing a Science of Purpose, runs from April 2026 to March 2031 [356]. Method: funded research program on formal models of agency and measures of goal-directedness.
+- Groups, by method. Causal definitions of agents: Everitt, Richens, MacDermott, Kenton. Interpretation maps and blankets: Biehl, Virgo, McGregor, Rosas, Polani. Thermodynamics of computation and constrained feedback: Wolpert, Kolchinsky, Manzano, Korbel, Tasnim, Hartle. Percept-action thermodynamics: Briegel, Fiderer, Barth. Actual causation and autonomy: Albantakis, Tononi, Marshall. Basal cognition: Levin. Feedback TUR and speed limits: Sagawa, Funo, Ito, Van Vu, Hasegawa, Saito. Finite-time erasure: Bechhoefer, Bellon, Perarnau-Llobet. Cellular information and energy: Machta, Emonet, ten Wolde. Neural energy: Attwell, Laughlin, Rochefort, Preat, Levy, Balasubramanian. Machine joules: the NeuroBench, MLPerf Power [182] and ML.ENERGY [183] efforts. Intelligence as efficiency: Chollet, Hernández-Orallo.
+
+### 9.12 Where the field stops
+
+Every group above holds a piece of the order. Formal definitions of agency have no joules. Thermodynamics of feedback has no eligibility gate. Joule metering has no confirmed coupled bits. Rate measures count dollars, time or information. No group reads intelligence as $dX/dJ$ off a gated, completed receipt. The order of law, kinematics and calculus is David's.
+
+**Search note.** This pass searched in English, Japanese, Chinese, Russian, German, French, Spanish, Korean, Persian, Turkish and Hebrew. Japanese and Korean searches surfaced the finite-time and game-theoretic information thermodynamics [269, 299]. Russian and German searches surfaced the minimalist account and the thermodynamics of behavior [235, 238]. Spanish searches surfaced autonomous quantum machines [317, 318]. Persian, Turkish and Hebrew searches returned theses, reviews and work already listed, with no new primary research. Portuguese, Italian, Polish, Hindi and Arabic were covered in the first pass (Section 6).
+
+## 10. Gaps in our understanding
+
+Each gap is stated as a result the order needs. For each: what is known, who is closest, the result that closes it, and whether that result is a proof or an experiment. They are ranked by how much of the order rests on them. Links to the open problems in Section 7 are given as P and D numbers.
+
+| ID | Gap | Closing result | Type |
+|---|---|---|---|
+| G1 | Where the agent ends | A boundary theorem in the law's own terms | Proof |
+| G2 | Which coupling measure | A uniqueness theorem for causal information flow | Proof |
+| G3 | When $dX/dJ$ exists | A crediting rule plus the Radon-Nikodym theorem | Proof |
+| G4 | Precision law for agents | A feedback TUR for the act-counting current | Proof, then experiment |
+| G5 | Finite-time cost of one act | A bound on the joules of a full predict, compare and reset cycle | Proof, then experiment |
+| G6 | Standing power to hold a goal | The data-rate theorem converted to joules | Proof, then experiment |
+| G7 | Measured $\iota$ in a living agent | Bits and joules per decision in one preparation | Experiment |
+| G8 | Collective agency | A composition theorem for $X$ and $J$ | Proof |
+| G9 | Quantum agents | The Landauer floor for an agent with finite-resource quantum measurement | Proof, then experiment |
+| G10 | Joule cost of prediction first | A theorem pricing clause 1 | Proof |
+
+### G1. Where the agent ends
+
+**Known.** $X$ needs an agent and a world. The Markov blanket boundary holds only in narrow conditions [244]. Its definitions differ across papers [245]. The inference tool is not a physical boundary [243]. One definition makes agency relative to an observer [231]. Rules that find a boundary exist: maximal integrated cause-effect power [253], information propagated from past to future [251], causal blankets found from data [250], and causal discovery of agents from interventions [227].
+
+**Closest.** Rosas and colleagues, and Krakauer and colleagues.
+
+**Closing result.** A boundary theorem in the law's own terms. Take as the agent the partition that maximizes confirmed coupled bits per joule over a run, among partitions in which the confirmation $m$ is recorded inside the agent (clause 3). Prove that the maximizer exists and is unique up to a stated equivalence, or state which coarse-grainings leave $X$ unchanged. Then run the rule on receipts.
+
+**Type.** Proof, then an algorithm.
+
+### G2. Which coupling measure
+
+**Known.** $I(\mathrm{do}(a); W')$ is the causal information flow of Ay and Polani [258]. Empowerment is its maximum over act distributions [159], so
+
+$$
+I(\mathrm{do}(a); W') \;\le\; \max_{p(a)} I(\mathrm{do}(a); W') = \mathfrak{E}
+$$
+
+where $\mathfrak{E}$ is empowerment. Transfer entropy does not measure flow [260, 261]. Causal strength from postulates [259], actual causation per transition [262] and semantic information by scrambling interventions [35] are the other candidates.
+
+**Closest.** Ay and Polani, and Janzing and colleagues.
+
+**Closing result.** A uniqueness theorem. Fix the axioms: the measure is interventional and nonnegative, adds over independent acts, obeys data processing, and is priced by the measurement and erasure bound [5]. Prove that causal information flow is the only measure that meets them, up to units. Add the single-act form that credits act $k$ alone, linked to actual causation.
+
+**Type.** Proof.
+
+### G3. When $dX/dJ$ exists
+
+**Known.** $X$ never decreases, so it is differentiable almost everywhere (P1). Acts are discrete. If each act's bits are credited at one instant, $dX$ is a sum of point masses. Metered joules have no point masses when power is finite. Then $dX$ is singular with respect to $dJ$, and $\iota$ exists only as a long-run ratio. Stochastic halting times are priced [272]. First-passage bounds exist [300, 301, 302].
+
+**Closest.** Manzano and colleagues, for computations that stop at random times.
+
+**Closing result.** Fix the crediting rule. Spread each act's credited bits over the joules metered during that act. Then K1, applied act by act, gives for every interval $A$ of the run
+
+$$
+X(A) \;\le\; \frac{J(A)}{k_B T \ln 2}
+$$
+
+So the measure $dX$ is absolutely continuous with respect to $dJ$. The Radon-Nikodym theorem then gives $\iota = dX/dJ$ as a function defined for almost every joule, with $0 \le \iota \le 1/(k_B T \ln 2)$. What remains: K1 per act (P2), a joule attribution rule for acts that overlap in time, convergence of the sampled $\iota_k$ as the meter refines (P1), and first-passage bounds on the spread of $J^*$.
+
+**Type.** Proof. This is the gap closest to closure.
+
+### G4. Precision law for agents
+
+**Known.** The standard TUR fails for feedback agents in experiment [12]. Feedback forms exist: with measurement and feedback [13], under arbitrary protocols [287], for subsystems with information flow [288], for feedback cooling [290], and for quantum feedback [289].
+
+**Closest.** Tanogami, Van Vu and Saito, and Honma and Van Vu.
+
+**Closing result.** Write $X$ as a counting current over confirmed acts. Prove a lower bound on $\mathrm{Var}(X)/\langle X\rangle^2$ in terms of entropy production and the information flow used by feedback (P4). Test it on a feedback-trap information engine that counts confirmed acts.
+
+**Type.** Proof, then experiment.
+
+### G5. Finite-time cost of one act
+
+**Known.** Finite-time erasure has tight bounds [14, 118, 119, 295], with quantum coherence [296] and beyond weak coupling [297]. The overhead of fast erasure is measured [45, 298]. Measurement and feedback trade against each other in finite time [269].
+
+**Closest.** Kamijima, Funo and Sagawa, and Lee and colleagues.
+
+**Closing result.** A bound on the joules of one complete act of duration $\tau_k$ that confirms $b_k$ bits. The target form is
+
+$$
+J_k \;\ge\; b_k\, k_B T \ln 2 \;+\; \frac{\mathcal{L}_k^2}{\tau_k}
+$$
+
+with $\mathcal{L}_k$ the thermodynamic length of the act's predict, compare and reset protocol in the sense of [15]. This turns K1 into a curve $v_J(\tau)$ for whole acts (P2, P3). Measure it on a feedback trap or a micro-cantilever that runs full act cycles.
+
+**Type.** Proof, then experiment.
+
+### G6. Standing power to hold a goal
+
+**Known.** Holding an unstable linear system needs a channel rate above $\sum_i \log_2|\lambda_i|$ bits per step, summed over the unstable eigenvalues [284, 285, 286]. The entropy a controller removes is bounded by its mutual information with the system [23, 24]. Demons pay implementation costs [275].
+
+**Closest.** Sandberg, Delvenne, Newton and Mitter.
+
+**Closing result.** Prove that under closed-cycle accounting each channel bit the controller uses is recorded and later erased in its memory. Then each control step costs at least
+
+$$
+E_{\mathrm{step}} \;\ge\; k_B T \ln 2 \sum_{i:\,|\lambda_i| \ge 1} \log_2 |\lambda_i|
+$$
+
+This would be a new kinematic law: the minimum standing joules for an agent to hold a goal against an unstable world. Demonstrate it on a metered controller holding an unstable system.
+
+**Type.** Proof, then experiment.
+
+### G7. Measured $\iota$ in a living agent
+
+**Known.** Bits per decision are measured in E. coli [319]. Energy per bit is measured in fly photoreceptors [175]. ATP saved by lowered precision is measured in mouse cortex [322]. The metabolic price of memory is measured in flies [325, 323, 324]. Oxygen saved by prediction is measured in humans [326]. Entropy production is inferred from neuroimaging [335].
+
+**Closest.** Mattingly and colleagues for bits, and Padamsey and colleagues for joules.
+
+**Closing result.** Bits and joules per decision measured act by act in one preparation. Candidates: E. coli chemotaxis with information rate measured as in [319] and per-cell energy use measured alongside; mouse visual discrimination with ATP imaging as in [322] and information per trial; fly learning with energy flux imaging as in [324] per learned association. The output is a measured $\iota$ in a living agent.
+
+**Type.** Experiment.
+
+### G8. Collective agency
+
+**Known.** Dependency networks set a floor on entropy production [303, 305]. Subsystems obey their own uncertainty relations [304] and trade minimum entropy productions [299]. Collective protocols reduce dissipation [306]. Efficiency peaks near criticality [307, 308]. Individuals can be found from information [251].
+
+**Closest.** Wolpert and Tasnim, and Rolandi and colleagues.
+
+**Closing result.** A composition theorem for $X$ and $J$. It states when the confirmed coupled bits of a group exceed the sum of its members', at what joule floor, and when the group meets clauses 1 to 4 as one agent (with G1).
+
+**Type.** Proof, with simulation.
+
+### G9. Quantum agents
+
+**Known.** A purely quantum agent is argued impossible [309]. Quantum agents can need less memory [310] and learn faster [311]. Ideal measurement needs infinite resources [312]. Information gain, error correction and thermodynamic cost trade three ways [313]. The second law, fluctuation theorems and the TUR hold under quantum feedback [314, 315, 289]. The energy of measurement is measured [316]. Quantum demons have run on spins and circuits [51, 52, 53, 54, 55].
+
+**Closest.** Guryanova, Friis and Huber, and Danageozian, Wilde and Buscemi.
+
+**Closing result.** K1 for an agent whose comparison $m$ is written to a classical record by a quantum measurement with finite resources. The bound must count measurement cost in the joules per confirmed bit. Then demonstrate it in NMR or a superconducting circuit.
+
+**Type.** Proof, then experiment.
+
+### G10. Joule cost of prediction first
+
+**Known.** Memory that does not predict costs dissipation [34]. Memory has a cost and a benefit [164]. In a percept-action loop, work-efficient agents balance prediction against forgetting [267]. Confident prediction saved cortical energy in humans [326]. The most predictive bits are costly in cells [320].
+
+**Closest.** Fiderer, Barth, Smith and Briegel.
+
+**Closing result.** A theorem that prices clause 1: the joules to hold $R^*(a)$ fixed from $t_0$ to the act, against the joules it saves at the act. It gives the condition under which prediction first raises $\iota$ (P5, P8). Then test it in the D-series runs of Section 7.2.
+
+**Type.** Proof.
+
 ## References
 
 Entries marked "preprint" are cited by their arXiv posting. Entries published in a language other than English say so.
@@ -656,3 +898,133 @@ Entries marked "preprint" are cited by their arXiv posting. Entries published in
 224. Vityaev, E. E. and Demin, A. V. (2018). Cognitive architecture based on the functional systems theory. *Procedia Computer Science* 145:623-628. https://doi.org/10.1016/j.procs.2018.11.072
 225. Vityaev, E., Kolonin, A., Kurpatov, A., Molchanov, A. et al. (2022). Brain principles programming. arXiv:2202.12710 (preprint).
 226. Potapov, A., Belikov, A., Bogdanov, V., Scherbatiy, A. et al. (2019). Differentiable probabilistic logic networks. arXiv:1907.04592 (preprint).
+227. Kenton, Z., Kumar, R., Farquhar, S., Richens, J. et al. (2023). Discovering agents. *Artificial Intelligence* 322:103963. https://doi.org/10.1016/j.artint.2023.103963
+228. Richens, J. and Everitt, T. (2024). Robust agents learn causal world models. arXiv:2402.10877 (preprint).
+229. Richens, J., Abel, D., Bellot, A. and Everitt, T. (2025). General agents contain world models. arXiv:2506.01622 (preprint).
+230. MacDermott, M., Fox, J., Belardinelli, F. and Everitt, T. (2024). Measuring goal-directedness. arXiv:2412.04758 (preprint).
+231. Orseau, L., McGregor McGill, S. and Legg, S. (2018). Agents and devices: a relative definition of agency. arXiv:1805.12387 (preprint).
+232. Biehl, M. and Virgo, N. (2023). Interpreting systems as solving POMDPs: a step towards a formal understanding of agency. In *Active Inference: IWAI 2022*, Communications in Computer and Information Science 1721, Springer, pp. 16-31. https://doi.org/10.1007/978-3-031-28719-0_2
+233. Virgo, N., Biehl, M. and McGregor, S. (2021). Interpreting dynamical systems as Bayesian reasoners. In *Machine Learning and Principles and Practice of Knowledge Discovery in Databases* (ECML PKDD 2021 workshops), Communications in Computer and Information Science, Springer, pp. 726-762. https://doi.org/10.1007/978-3-030-93736-2_52
+234. McGregor, S. (2017). The Bayesian stance: equations for 'as-if' sensorimotor agency. *Adaptive Behavior* 25:72-82. https://doi.org/10.1177/1059712317700501
+235. Barzegar, A., Margoni, E. and Oriti, D. (2025). A minimalist account of agency in physics. *Studies in History and Philosophy of Science* 112:112-122. https://doi.org/10.1016/j.shpsa.2025.06.004
+236. Bartlett, S., Eckford, A. W., Egbert, M., Lingam, M. et al. (2025). Physics of life: exploring information as a distinctive feature of living systems. *PRX Life* 3:037003. https://doi.org/10.1103/rsx4-8x5f
+237. Crutchfield, J. P. and Jurgens, A. (2025). Agentic information theory: ergodicity and intrinsic semantics of information processes. arXiv:2505.19275 (preprint).
+238. De Bari, B., Dixon, J., Kondepudi, D. and Vaidya, A. (2023). Thermodynamics, organisms and behaviour. *Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences* 381:20220278. https://doi.org/10.1098/rsta.2022.0278
+239. Perunov, N., Marsland, R. A. and England, J. L. (2016). Statistical physics of adaptation. *Physical Review X* 6:021036. https://doi.org/10.1103/PhysRevX.6.021036
+240. Levin, M. (2022). Technological approach to mind everywhere: an experimentally-grounded framework for understanding diverse bodies and minds. *Frontiers in Systems Neuroscience* 16:768201. https://doi.org/10.3389/fnsys.2022.768201
+241. Lyon, P., Keijzer, F., Arendt, D. and Levin, M. (2021). Reframing cognition: getting down to biological basics. *Philosophical Transactions of the Royal Society B: Biological Sciences* 376:20190750. https://doi.org/10.1098/rstb.2019.0750
+242. Barandiaran, X. E. and Almendros, L. S. (2024). Transforming agency: on the mode of existence of large language models. arXiv:2407.10735 (preprint).
+243. Bruineberg, J., Dołęga, K., Dewhurst, J. and Baltieri, M. (2022). The emperor's new Markov blankets. *Behavioral and Brain Sciences* 45:e183. https://doi.org/10.1017/S0140525X21002351
+244. Aguilera, M., Millidge, B., Tschantz, A. and Buckley, C. L. (2022). How particular is the physics of the free energy principle? *Physics of Life Reviews* 40:24-50. https://doi.org/10.1016/j.plrev.2021.11.001
+245. Biehl, M., Pollock, F. A. and Kanai, R. (2021). A technical critique of some parts of the free energy principle. *Entropy* 23:293. https://doi.org/10.3390/e23030293
+246. Kirchhoff, M., Parr, T., Palacios, E., Friston, K. and Kiverstein, J. (2018). The Markov blankets of life: autonomy, active inference and the free energy principle. *Journal of The Royal Society Interface* 15:20170792. https://doi.org/10.1098/rsif.2017.0792
+247. Da Costa, L., Friston, K., Heins, C. and Pavliotis, G. A. (2021). Bayesian mechanics for stationary processes. *Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences* 477:20210518. https://doi.org/10.1098/rspa.2021.0518
+248. Ramstead, M. J. D., Sakthivadivel, D. A. R., Heins, C., Koudahl, M. et al. (2023). On Bayesian mechanics: a physics of and by beliefs. *Interface Focus* 13:20220029. https://doi.org/10.1098/rsfs.2022.0029
+249. Friston, K., Da Costa, L., Sajid, N., Heins, C. et al. (2023). The free energy principle made simpler but not too simple. *Physics Reports* 1024:1-29. https://doi.org/10.1016/j.physrep.2023.07.001
+250. Rosas, F. E., Mediano, P. A. M., Biehl, M., Chandaria, S. and Polani, D. (2020). Causal blankets: theory and algorithmic framework. In *Active Inference: IWAI 2020*, Communications in Computer and Information Science, Springer, pp. 187-198. https://doi.org/10.1007/978-3-030-64919-7_19
+251. Krakauer, D., Bertschinger, N., Olbrich, E., Flack, J. C. and Ay, N. (2020). The information theory of individuality. *Theory in Biosciences* 139:209-223. https://doi.org/10.1007/s12064-020-00313-7
+252. Bertschinger, N., Olbrich, E., Ay, N. and Jost, J. (2008). Autonomy: an information theoretic perspective. *Biosystems* 91:331-345. https://doi.org/10.1016/j.biosystems.2007.05.018
+253. Albantakis, L., Barbosa, L., Findlay, G., Grasso, M. et al. (2023). Integrated information theory (IIT) 4.0: formulating the properties of phenomenal existence in physical terms. *PLOS Computational Biology* 19:e1011465. https://doi.org/10.1371/journal.pcbi.1011465
+254. Hoel, E. P., Albantakis, L. and Tononi, G. (2013). Quantifying causal emergence shows that macro can beat micro. *Proceedings of the National Academy of Sciences* 110:19790-19795. https://doi.org/10.1073/pnas.1314922110
+255. Adams, F. and Aizawa, K. (2010). *The Bounds of Cognition*. Wiley-Blackwell. https://doi.org/10.1002/9781444391718
+256. Seth, A. K. and Tsakiris, M. (2018). Being a beast machine: the somatic basis of selfhood. *Trends in Cognitive Sciences* 22:969-981. https://doi.org/10.1016/j.tics.2018.08.008
+257. Sterling, P. (2012). Allostasis: a model of predictive regulation. *Physiology & Behavior* 106:5-15. https://doi.org/10.1016/j.physbeh.2011.06.004
+258. Ay, N. and Polani, D. (2008). Information flows in causal networks. *Advances in Complex Systems* 11:17-41. https://doi.org/10.1142/S0219525908001465
+259. Janzing, D., Balduzzi, D., Grosse-Wentrup, M. and Schölkopf, B. (2013). Quantifying causal influences. *The Annals of Statistics* 41. https://doi.org/10.1214/13-AOS1145
+260. James, R. G., Barnett, N. and Crutchfield, J. P. (2016). Information flows? A critique of transfer entropies. *Physical Review Letters* 116:238701. https://doi.org/10.1103/PhysRevLett.116.238701
+261. Lizier, J. T. and Prokopenko, M. (2010). Differentiating information transfer and causal effect. *The European Physical Journal B* 73:605-615. https://doi.org/10.1140/epjb/e2010-00034-5
+262. Albantakis, L., Marshall, W., Hoel, E. and Tononi, G. (2019). What caused what? A quantitative account of actual causation using dynamical causal networks. *Entropy* 21:459. https://doi.org/10.3390/e21050459
+263. Juel, B. E., Comolatti, R., Tononi, G. and Albantakis, L. (2019). When is an action caused from within? Quantifying the causal chain leading to actions in simulated agents. arXiv:1904.02995 (preprint).
+264. Albantakis, L. (2021). Quantifying the autonomy of structurally diverse automata: a comparison of candidate measures. *Entropy* 23:1415. https://doi.org/10.3390/e23111415
+265. Marshall, W., Kim, H., Walker, S. I., Tononi, G. and Albantakis, L. (2017). How causal analysis can reveal autonomy in models of biological systems. *Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences* 375:20160358. https://doi.org/10.1098/rsta.2016.0358
+266. Albantakis, L., Massari, F., Beheler-Amass, M. and Tononi, G. (2021). A macro agent and its actions. In *Top-Down Causation and Emergence*, Synthese Library, Springer, pp. 135-155. https://doi.org/10.1007/978-3-030-71899-2_7
+267. Fiderer, L. J., Barth, P. C., Smith, I. D. and Briegel, H. J. (2025). Information thermodynamics of agents: the work capacity of channels with memory. arXiv:2504.06209 (preprint).
+268. Hartle, H., Wolpert, D., Stier, A., Kempes, C. P. and Manzano, G. (2024). Work extraction with feedback control using limited resources. arXiv:2407.05507 (preprint).
+269. Kamijima, T., Funo, K. and Sagawa, T. (2024). Finite-time thermodynamic bounds and tradeoff relations for information processing. arXiv:2409.08606 (preprint).
+270. Kolchinsky, A. and Wolpert, D. H. (2021). Work, entropy production, and thermodynamics of information under protocol constraints. *Physical Review X* 11:041024. https://doi.org/10.1103/PhysRevX.11.041024
+271. Wolpert, D. H., Korbel, J., Lynn, C. W., Tasnim, F. et al. (2024). Is stochastic thermodynamics the key to understanding the energy costs of computation? *Proceedings of the National Academy of Sciences* 121:e2321112121. https://doi.org/10.1073/pnas.2321112121
+272. Manzano, G., Kardeş, G., Roldán, É. and Wolpert, D. H. (2024). Thermodynamics of computations with absolute irreversibility, unidirectional transitions, and stochastic computation times. *Physical Review X* 14:021026. https://doi.org/10.1103/PhysRevX.14.021026
+273. Korbel, J. and Wolpert, D. H. (2024). Nonequilibrium thermodynamics of uncertain stochastic processes. *Physical Review Research* 6:013021. https://doi.org/10.1103/PhysRevResearch.6.013021
+274. Wolpert, D. H. and Kolchinsky, A. (2020). Thermodynamics of computing with circuits. *New Journal of Physics* 22:063047. https://doi.org/10.1088/1367-2630/ab82b8
+275. Sandberg, H., Delvenne, J.-C., Newton, N. J. and Mitter, S. K. (2014). Maximum work extraction and implementation costs for nonequilibrium Maxwell's demons. *Physical Review E* 90:042119. https://doi.org/10.1103/PhysRevE.90.042119
+276. Horowitz, J. M. and Sandberg, H. (2014). Second-law-like inequalities with information and their interpretations. *New Journal of Physics* 16:125007. https://doi.org/10.1088/1367-2630/16/12/125007
+277. Still, S. (2009). Information-theoretic approach to interactive learning. *EPL* 85:28005. https://doi.org/10.1209/0295-5075/85/28005
+278. Still, S. and Precup, D. (2012). An information-theoretic approach to curiosity-driven reinforcement learning. *Theory in Biosciences* 131:139-148. https://doi.org/10.1007/s12064-011-0142-z
+279. Fields, C., Goldstein, A. and Sandved-Smith, L. (2024). Making the thermodynamic cost of active inference explicit. *Entropy* 26:622. https://doi.org/10.3390/e26080622
+280. Goerlich, R., Hoek, L., Chor, O., Rahav, S. and Roichman, Y. (2025). Experimental realizations of information engines: beyond proof of concept. *Europhysics Letters* 149:61001. https://doi.org/10.1209/0295-5075/adbb17
+281. Cocconi, L. and Chen, L. (2024). Efficiency of an autonomous, dynamic information engine operating on a single active particle. *Physical Review E* 110:014602. https://doi.org/10.1103/PhysRevE.110.014602
+282. Goldt, S. and Seifert, U. (2017). Thermodynamic efficiency of learning a rule in neural networks. *New Journal of Physics* 19:113001. https://doi.org/10.1088/1367-2630/aa89ff
+283. Tkachenko, A. V. (2025). Thermodynamic cost of inference and learning in physical neural networks. arXiv:2503.09980 (preprint). Title of the current arXiv version.
+284. Tatikonda, S. and Mitter, S. (2004). Control under communication constraints. *IEEE Transactions on Automatic Control* 49:1056-1068. https://doi.org/10.1109/TAC.2004.831187
+285. Nair, G. N. and Evans, R. J. (2004). Stabilizability of stochastic linear systems with finite feedback data rates. *SIAM Journal on Control and Optimization* 43:413-436. https://doi.org/10.1137/S0363012902402116
+286. Nair, G. N., Fagnani, F., Zampieri, S. and Evans, R. J. (2007). Feedback control under data rate constraints: an overview. *Proceedings of the IEEE* 95:108-137. https://doi.org/10.1109/JPROC.2006.887294
+287. Van Vu, T. and Hasegawa, Y. (2020). Thermodynamic uncertainty relations under arbitrary control protocols. *Physical Review Research* 2:013060. https://doi.org/10.1103/PhysRevResearch.2.013060
+288. Tanogami, T., Van Vu, T. and Saito, K. (2023). Universal bounds on the performance of information-thermodynamic engine. *Physical Review Research* 5:043280. https://doi.org/10.1103/PhysRevResearch.5.043280
+289. Honma, R. and Van Vu, T. (2026). Thermodynamic uncertainty relation with quantum feedback. *Physical Review Letters*. https://doi.org/10.1103/6d8l-94pv. Preprint: arXiv:2602.22651.
+290. Kumasaki, K., Tojo, K., Sagawa, T. and Funo, K. (2026). Thermodynamic uncertainty relation for feedback cooling. *Physical Review E* 113:024134. https://doi.org/10.1103/4pq6-7djm
+291. Hasegawa, Y. (2020). Quantum thermodynamic uncertainty relation for continuous measurement. *Physical Review Letters* 125:050601. https://doi.org/10.1103/PhysRevLett.125.050601
+292. Hasegawa, Y. (2023). Unifying speed limit, thermodynamic uncertainty relation and Heisenberg principle via bulk-boundary correspondence. *Nature Communications* 14:2828. https://doi.org/10.1038/s41467-023-38074-8
+293. Van Vu, T. and Hasegawa, Y. (2021). Geometrical bounds of the irreversibility in Markovian systems. *Physical Review Letters* 126:010601. https://doi.org/10.1103/PhysRevLett.126.010601
+294. Delvenne, J.-C. and Falasco, G. (2024). Thermokinetic relations. *Physical Review E* 109:014109. https://doi.org/10.1103/PhysRevE.109.014109
+295. Lee, J. S., Lee, S., Kwon, H. and Park, H. (2022). Speed limit for a highly irreversible process and tight finite-time Landauer's bound. *Physical Review Letters* 129:120603. https://doi.org/10.1103/PhysRevLett.129.120603
+296. Van Vu, T. and Saito, K. (2022). Finite-time quantum Landauer principle and quantum coherence. *Physical Review Letters* 128:010602. https://doi.org/10.1103/PhysRevLett.128.010602
+297. Rolandi, A. and Perarnau-Llobet, M. (2023). Finite-time Landauer principle beyond weak coupling. *Quantum* 7:1161. https://doi.org/10.22331/q-2023-11-03-1161
+298. Dago, S. and Bellon, L. (2022). Dynamics of information erasure and extension of Landauer's bound to fast processes. *Physical Review Letters* 128:070604. https://doi.org/10.1103/PhysRevLett.128.070604
+299. Fujimoto, Y. and Ito, S. (2024). Game-theoretical approach to minimum entropy productions in information thermodynamics. *Physical Review Research* 6:013023. https://doi.org/10.1103/PhysRevResearch.6.013023
+300. Gingrich, T. R. and Horowitz, J. M. (2017). Fundamental bounds on first passage time fluctuations for currents. *Physical Review Letters* 119:170601. https://doi.org/10.1103/PhysRevLett.119.170601
+301. Garrahan, J. P. (2017). Simple bounds on fluctuations and uncertainty relations for first-passage times of counting observables. *Physical Review E* 95:032134. https://doi.org/10.1103/PhysRevE.95.032134
+302. Neri, I., Roldán, É. and Jülicher, F. (2017). Statistics of infima and stopping times of entropy production and applications to active molecular processes. *Physical Review X* 7:011019. https://doi.org/10.1103/PhysRevX.7.011019
+303. Wolpert, D. H. (2020). Minimal entropy production rate of interacting systems. *New Journal of Physics* 22:113013. https://doi.org/10.1088/1367-2630/abc5c6
+304. Wolpert, D. H. (2020). Uncertainty relations and fluctuation theorems for Bayes nets. *Physical Review Letters* 125:200602. https://doi.org/10.1103/PhysRevLett.125.200602
+305. Tasnim, F. and Wolpert, D. H. (2023). Stochastic thermodynamics of multiple co-evolving systems: beyond multipartite processes. *Entropy* 25:1078. https://doi.org/10.3390/e25071078
+306. Rolandi, A., Abiuso, P. and Perarnau-Llobet, M. (2023). Collective advantages in finite-time thermodynamics. *Physical Review Letters* 131:210401. https://doi.org/10.1103/PhysRevLett.131.210401
+307. Crosato, E., Spinney, R. E., Nigmatullin, R., Lizier, J. T. and Prokopenko, M. (2018). Thermodynamics and computation during collective motion near criticality. *Physical Review E* 97:012120. https://doi.org/10.1103/PhysRevE.97.012120
+308. Chen, Q. and Prokopenko, M. (2025). Why collective behaviours self-organize to criticality: a primer on information-theoretic and thermodynamic utility measures. *Royal Society Open Science* 12:241655. https://doi.org/10.1098/rsos.241655
+309. Adlam, E. C., McQueen, K. J. and Waegell, M. (2025). Agency cannot be a purely quantum phenomenon. arXiv:2510.13247 (preprint).
+310. Elliott, T. J., Gu, M., Garner, A. J. P. and Thompson, J. (2022). Quantum adaptive agents with efficient long-term memories. *Physical Review X* 12:011007. https://doi.org/10.1103/PhysRevX.12.011007
+311. Saggio, V., Asenbeck, B. E., Hamann, A., Strömberg, T. et al. (2021). Experimental quantum speed-up in reinforcement learning agents. *Nature* 591:229-233. https://doi.org/10.1038/s41586-021-03242-7
+312. Guryanova, Y., Friis, N. and Huber, M. (2020). Ideal projective measurements have infinite resource costs. *Quantum* 4:222. https://doi.org/10.22331/q-2020-01-13-222
+313. Danageozian, A., Wilde, M. M. and Buscemi, F. (2022). Thermodynamic constraints on quantum information gain and error correction: a triple trade-off. *PRX Quantum* 3:020318. https://doi.org/10.1103/PRXQuantum.3.020318
+314. Jacobs, K. (2009). Second law of thermodynamics and quantum feedback control: Maxwell's demon with weak measurements. *Physical Review A* 80:012322. https://doi.org/10.1103/PhysRevA.80.012322
+315. Funo, K., Watanabe, Y. and Ueda, M. (2013). Integral quantum fluctuation theorems under measurement and feedback control. *Physical Review E* 88:052121. https://doi.org/10.1103/PhysRevE.88.052121
+316. Linpeng, X., Bresque, L., Maffei, M., Jordan, A. N. et al. (2022). Energetic cost of measurements using quantum, coherent, and thermal light. *Physical Review Letters* 128:220506. https://doi.org/10.1103/PhysRevLett.128.220506
+317. Marín Guzmán, J. A., Erker, P., Gasparinetti, S., Huber, M. and Yunger Halpern, N. (2024). Key issues review: useful autonomous quantum machines. *Reports on Progress in Physics* 87:122001. https://doi.org/10.1088/1361-6633/ad8803
+318. Lipka-Bartosik, P., Perarnau-Llobet, M. and Brunner, N. (2024). Thermodynamic computing via autonomous quantum thermal machines. *Science Advances* 10:eadm8792. https://doi.org/10.1126/sciadv.adm8792
+319. Mattingly, H. H., Kamino, K., Machta, B. B. and Emonet, T. (2021). *Escherichia coli* chemotaxis is information limited. *Nature Physics* 17:1426-1431. https://doi.org/10.1038/s41567-021-01380-3
+320. Tjalma, A. J., Galstyan, V., Goedhart, J., Slim, L. et al. (2023). Trade-offs between cost and information in cellular prediction. *Proceedings of the National Academy of Sciences* 120:e2303078120. https://doi.org/10.1073/pnas.2303078120
+321. Bryant, S. J. and Machta, B. B. (2023). Physical constraints in intracellular signaling: the cost of sending a bit. *Physical Review Letters* 131:068401. https://doi.org/10.1103/PhysRevLett.131.068401
+322. Padamsey, Z., Katsanevaki, D., Dupuy, N. and Rochefort, N. L. (2022). Neocortex saves energy by reducing coding precision during food scarcity. *Neuron* 110:280-296.e10. https://doi.org/10.1016/j.neuron.2021.10.024
+323. Plaçais, P.-Y. and Preat, T. (2013). To favor survival under food shortage, the brain disables costly memory. *Science* 339:440-442. https://doi.org/10.1126/science.1226018
+324. Plaçais, P.-Y., de Tredern, É., Scheunemann, L., Trannoy, S. et al. (2017). Upregulated energy metabolism in the *Drosophila* mushroom body is the trigger for long-term memory. *Nature Communications* 8:15510. https://doi.org/10.1038/ncomms15510
+325. Mery, F. and Kawecki, T. J. (2005). A cost of long-term memory in *Drosophila*. *Science* 308:1148. https://doi.org/10.1126/science.1111331
+326. Hechler, A., de Lange, F. P. and Riedl, V. (2023). The energy metabolic footprint of predictive processing in the human brain. bioRxiv preprint, version 2 posted 2024. https://doi.org/10.1101/2023.12.08.570804
+327. Levy, W. B. and Calvert, V. G. (2021). Communication consumes 35 times more energy than computation in the human cortex, but both costs are needed to predict synapse number. *Proceedings of the National Academy of Sciences* 118:e2008173118. https://doi.org/10.1073/pnas.2008173118
+328. Harris, J. J., Jolivet, R. and Attwell, D. (2012). Synaptic energy use and supply. *Neuron* 75:762-777. https://doi.org/10.1016/j.neuron.2012.08.019
+329. Harris, J. J., Jolivet, R., Engl, E. and Attwell, D. (2015). Energy-efficient information transfer by visual pathway synapses. *Current Biology* 25:3151-3160. https://doi.org/10.1016/j.cub.2015.10.063
+330. Niven, J. E. and Laughlin, S. B. (2008). Energy limitation as a selective pressure on the evolution of sensory systems. *Journal of Experimental Biology* 211:1792-1804. https://doi.org/10.1242/jeb.017574
+331. Balasubramanian, V., Kimber, D. and Berry, M. J., II (2001). Metabolically efficient information processing. *Neural Computation* 13:799-815. https://doi.org/10.1162/089976601300014358
+332. Sterling, P. and Laughlin, S. (2015). *Principles of Neural Design*. MIT Press. https://doi.org/10.7551/mitpress/9780262028707.001.0001
+333. Malkin, J., O'Donnell, C., Houghton, C. J. and Aitchison, L. (2024). Signatures of Bayesian inference emerge from energy-efficient synapses. *eLife* 12:RP92595. https://doi.org/10.7554/eLife.92595
+334. Li, H. L. and van Rossum, M. C. W. (2020). Energy efficient synaptic plasticity. *eLife* 9:e50804. https://doi.org/10.7554/eLife.50804
+335. Lynn, C. W., Cornblath, E. J., Papadopoulos, L., Bertolero, M. A. and Bassett, D. S. (2021). Broken detailed balance and entropy production in the human brain. *Proceedings of the National Academy of Sciences* 118:e2109889118. https://doi.org/10.1073/pnas.2109889118
+336. Lynn, C. W., Holmes, C. M., Bialek, W. and Schwab, D. J. (2022). Decomposing the local arrow of time in interacting systems. *Physical Review Letters* 129:118101. https://doi.org/10.1103/PhysRevLett.129.118101
+337. Yik, J., Van den Berghe, K., den Blanken, D., Bouhadjar, Y. et al. (2025). The NeuroBench framework for benchmarking neuromorphic computing algorithms and systems. *Nature Communications* 16:1545. https://doi.org/10.1038/s41467-025-56739-4
+338. Davies, M., Wild, A., Orchard, G., Sandamirskaya, Y. et al. (2021). Advancing neuromorphic computing with Loihi: a survey of results and outlook. *Proceedings of the IEEE* 109:911-934. https://doi.org/10.1109/JPROC.2021.3067593
+339. Samsi, S., Zhao, D., McDonald, J., Li, B. et al. (2023). From words to watts: benchmarking the energy costs of large language model inference. *2023 IEEE High Performance Extreme Computing Conference (HPEC)*, pp. 1-9. https://doi.org/10.1109/HPEC58863.2023.10363447
+340. Elsworth, C., Huang, K., Patterson, D., Schneider, I. et al. (2025). Measuring the environmental impact of delivering AI at Google scale. arXiv:2508.15734 (preprint).
+341. Melanson, D., Abu Khater, M., Aifer, M., Donatella, K. et al. (2025). Thermodynamic computing system for AI applications. *Nature Communications* 16:3757. https://doi.org/10.1038/s41467-025-59011-x
+342. Stern, M. and Murugan, A. (2023). Learning without neurons in physical systems. *Annual Review of Condensed Matter Physics* 14:417-441. https://doi.org/10.1146/annurev-conmatphys-040821-113439
+343. Dillavou, S., Stern, M., Liu, A. J. and Durian, D. J. (2022). Demonstration of decentralized physics-driven learning. *Physical Review Applied* 18:014040. https://doi.org/10.1103/PhysRevApplied.18.014040
+344. Stern, M., Dillavou, S., Jayaraman, D., Durian, D. J. and Liu, A. J. (2024). Training self-learning circuits for power-efficient solutions. *APL Machine Learning* 2:016114. https://doi.org/10.1063/5.0181382
+345. Hernández-Orallo, J. and Dowe, D. L. (2010). Measuring universal intelligence: towards an anytime intelligence test. *Artificial Intelligence* 174:1508-1539. https://doi.org/10.1016/j.artint.2010.09.006
+346. Chollet, F., Knoop, M., Kamradt, G. and Landers, B. (2024). ARC Prize 2024: technical report. arXiv:2412.04604 (preprint).
+347. Chollet, F., Knoop, M., Kamradt, G., Landers, B. and Pinkard, H. (2025). ARC-AGI-2: a new challenge for frontier AI reasoning systems. arXiv:2505.11831 (preprint).
+348. ARC Prize Foundation. ARC-AGI leaderboard. https://arcprize.org/leaderboard (accessed 8 October 2026).
+349. Chaisson, E. J. (2011). Energy rate density as a complexity metric and evolutionary driver. *Complexity* 16:27-40. https://doi.org/10.1002/cplx.20323
+350. Sims, C. R. (2016). Rate-distortion theory and human perception. *Cognition* 152:181-198. https://doi.org/10.1016/j.cognition.2016.03.020
+351. Gottwald, S. and Braun, D. A. (2020). The two kinds of free energy and the Bayesian revolution. *PLOS Computational Biology* 16:e1008420. https://doi.org/10.1371/journal.pcbi.1008420
+352. Zénon, A., Solopchuk, O. and Pezzulo, G. (2019). An information-theoretic perspective on the costs of cognition. *Neuropsychologia* 123:5-18. https://doi.org/10.1016/j.neuropsychologia.2018.09.013
+353. Ortega, P. A., Braun, D. A., Dyer, J., Kim, K.-E. and Tishby, N. (2015). Information-theoretic bounded rationality. arXiv:1512.06789 (preprint).
+354. John Templeton Foundation. Agency, Directionality, and Function: Foundations for a Science of Purpose (grant page). https://www.templeton.org/grant/agency-directionality-and-function-foundations-for-a-science-of-purpose
+355. Consortium for Advancing a Science of Purpose. History. https://www.biologicalpurpose.org/history
+356. Minnesota Center for Philosophy of Science (2026). Announcing the Consortium for Advancing a Science of Purpose. https://cla.umn.edu/mcps/news-events/news/announcing-consortium-advancing-science-purpose
