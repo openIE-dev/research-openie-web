@@ -431,7 +431,7 @@ Additional hunt rows (AtomAgents/SciAgents, KeplerAgent/NewtonBench, AI-Descarte
 
 ### 8.3 What Mixture of Limits adds
 
-Tier A systems recover or verify formulas. Classical IT already priced bits, VoI, and erasure. Mixture of Limits names the **navigation law** that decides *when* Lookup/Formula/Solver suffice, *when* to refuse, and *how* receipts label estimated vs measured joules, then implements a clean-room soft-ref close loop. Soft-ref constructive existence is software constructive existence under those floors—not a materials breakthrough or a new physics corpus.
+Tier A systems recover or verify formulas. Classical IT already priced bits, VoI, and erasure. Mixture of Limits names the **navigation law** that decides *when* Lookup/Formula/Solver suffice, *when* to refuse, and *how* receipts label estimated vs measured joules, then implements a clean-room soft-ref close loop. Soft-ref constructive existence is software constructive existence under those floors—not a materials breakthrough or a new physics corpus. The [Universal Law of Agency](/papers/agency/) research track places Mixture of Limits as the optimum operator: the cheapest sufficient gear is the argmin over joules.
 
 
 ### 8.4 Latent space: depth buys compression, not freedom from floors

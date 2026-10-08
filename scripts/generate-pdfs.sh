@@ -111,6 +111,14 @@ body = re.sub(r"\s*<h1\b[^>]*>.*?</h1>", "", body, count=1, flags=re.S)
 
 if id_ == "spellcheck":
     measure = ""
+elif id_ == "agency":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research track, not a journal final.\n"
+        "Theorems, experiments and positions are cited from their sources. Estimates are never measured_j.\n"
+        "No board power is claimed. No fabricated citations.\n"
+        "</div>\n"
+    )
 else:
     measure = (
         '<div class="measurement">\n'
@@ -155,4 +163,5 @@ gen_one mol
 gen_one mei
 gen_one spellcheck
 gen_one jouleos
+gen_one agency
 echo 'PDF generation complete'

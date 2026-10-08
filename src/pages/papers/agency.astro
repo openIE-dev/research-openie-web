@@ -1,0 +1,21 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/agency.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description={`The Universal Law of Agency: OpenIE research track. Law first, kinematics second, intelligence as the calculus of agency in joules. Proven, demonstrated and opinion sources by layer, global findings by method, open problems and an experiment plan with a real meter. Estimates are never measured_j. board_synth_claimed=false.`}
+  headings={headings}
+  paperId={frontmatter.id}
+  genre="Research track · law, kinematics, calculus"
+>
+  <Content />
+</PaperLayout>
