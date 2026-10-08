@@ -10,7 +10,7 @@ These notes explain preregistered outcomes. They change no outcome.
 
 ## Package cross-check could not resolve the agent
 
-powermetrics read about 12.1 W CPU and 12.6 W GPU with the agent idle, from other work on the machine. The agent added about 0.6 W (17.5 to 17.9 reported joules per 30 s window, per-process meter). Background CPU power moved by about 0.5 W between windows, so idle-subtracted package joules came out negative. The per-process meter is the run's meter. A wall meter on an otherwise idle machine is needed for measured_j.
+powermetrics read about 12.1 W CPU and 13.6 W GPU (window means) with the agent idle, from other work on the machine. The agent added about 0.6 W (17.5 to 17.9 reported joules per 30 s window, per-process meter). Background CPU power moved by about 0.5 W between windows, so idle-subtracted package joules came out negative. The per-process meter is the run's meter. A wall meter on an otherwise idle machine is needed for measured_j.
 
 ## Selectors
 

@@ -42,6 +42,8 @@ No source is excluded for its method. Each source is placed by what it gives the
 - **Dynamical activity ($A$):** the rate of jumps between states in a stochastic process. It measures how busy the dynamics are.
 - **TUR (thermodynamic uncertainty relation):** a theorem that ties the precision of a current to its entropy production.
 - **NMR (nuclear magnetic resonance):** a method that controls and reads molecular spins.
+- **Instability rate ($\Lambda$):** how fast an uncontrolled world drifts from the goal, in nats per second. For a linear plant run at $f$ steps per second, $\Lambda = f\sum_{|\lambda_i|>1}\ln|\lambda_i|$.
+- **Reset error ($\varepsilon$):** the probability that a reset record is not in its most likely state.
 - **Counting observable:** a quantity of a trajectory that counts selected jumps. It never decreases.
 - **Radon-Nikodym derivative:** the density of one measure with respect to another. It exists when the first measure gives zero mass to every set that the second gives zero mass to.
 - **Mixture of Limits:** the OpenIE philosophy. Use the cheapest gear that is sufficient.
@@ -68,7 +70,7 @@ $$
 W_{\mathrm{ext}} \le -\Delta F + k_B T\, I, \qquad W_{\mathrm{meas}} + W_{\mathrm{erase}} \ge k_B T\, I
 $$
 
-Here $I$ is the mutual information the act's comparison acquires. An acceptor that compares and then resets pays at least $k_B T \ln 2$ per bit over a closed cycle [6, 7]. The law is physical from its first clause.
+Here $I$ is the mutual information the act's comparison acquires, in nats. One bit is $\ln 2$ nats, so each bit costs $k_B T\ln 2$. An acceptor that compares and then resets pays at least $k_B T \ln 2$ per bit over a closed cycle [6, 7]. The law is physical from its first clause.
 
 #### Definition 1. Coupling
 
@@ -131,7 +133,7 @@ $$
 v_J \le \frac{1}{k_B T \ln 2}.
 $$
 
-At $T = 300$ K, $k_B T \ln 2 \approx 2.87 \times 10^{-21}$ J, computed from the SI constants. That is about $3.5 \times 10^{20}$ bits per joule. Proposition 1 proves K1 act by act under stated assumptions on the record.
+At $T = 300$ K, $k_B T \ln 2 \approx 2.87 \times 10^{-21}$ J, computed from the SI constants. That is about $3.5 \times 10^{20}$ bits per joule. Proposition 1 proves K1 act by act, for the mean joules of each act, under stated assumptions on the record.
 
 **K2. Classical speed limit.** Shiraishi, Funo and Saito proved this bound for a Markov jump process with local detailed balance [23]:
 
@@ -161,52 +163,56 @@ $$
 
 #### Proposition 1. Joule floor of one act in finite time
 
-**Setting.** Act $k$ writes its comparison to a record $M_k$ with $N$ states. The system that holds the record is a Markov jump process with local detailed balance, in contact with one bath at temperature $T$. At the end of the act the record is reset to a fixed state in time $\tau_k$. $\langle A\rangle_k$ is the time-averaged dynamical activity of the system during the reset.
+**Setting.** Act $k$ writes its comparison to a record $M_k$ with $N$ states, then resets the record. The record is a Markov jump process with local detailed balance, in contact with one bath at temperature $T$. During the write, the compared outcome $R_k$ is held fixed, and the record's jump rates may depend on it. During the reset, the record's rates depend on nothing else, so the record evolves alone. The reset lasts $\tau_k$. $\langle A\rangle_k$ is the record's time-averaged dynamical activity during the reset. Joules and works are means over the ensemble of act $k$.
 
 **Assumptions.**
 
-- (R1) The record's states have equal energy. During the reset only the record changes. At the start of the reset the record is independent of the rest of the system.
-- (R2) The credited bits do not exceed the record's information about the outcome it compared: $b_k \le I(M_k; R_k)$, in bits. The record is unchanged between the comparison and the reset.
-- (R3) The work of the reset passes through the meter: $J_k \ge W_k^{\mathrm{reset}}$.
+- (R1) The record's states have equal energy. The record shares no interaction energy with $R_k$ at the start or the end of the write. At the start of the act the record is in its ready distribution $q^0$, independent of $R_k$.
+- (R2) The credited bits do not exceed the information the write leaves in the record: $b_k \le I(M_k; R_k)$, in bits, at the end of the write. The record is unchanged between the write and the reset.
+- (R3) The reset returns the record to $q^0$. The reset error is $\varepsilon = 1 - \max_s q^0_s$.
+- (R4) The work of the write and of the reset passes through the meter: $J_k \ge W_k^{\mathrm{write}} + W_k^{\mathrm{reset}}$.
 
 **Statement.**
 
 $$
-J_k \;\ge\; b_k\, k_B T \ln 2 \;+\; \frac{2\, k_B T\, \big[\phi_N^{-1}(b_k)\big]^2}{\tau_k\, \langle A\rangle_k}
+J_k \;\ge\; b_k\, k_B T \ln 2 \;+\; \frac{2\, k_B T\, \big[\big(\phi_N^{-1}(b_k) - \varepsilon\big)_+\big]^2}{\tau_k\, \langle A\rangle_k}
 $$
 
-Here $h_2(x) = -x\log_2 x - (1-x)\log_2(1-x)$ is the binary entropy, and $\phi_N(x) = h_2(x) + x\log_2(N-1)$. On $[0, 1 - 1/N]$, $\phi_N$ increases from 0 to $\log_2 N$, so its inverse is defined on $[0, \log_2 N]$. For a one-bit record that confirms one bit, $\phi_2^{-1}(1) = 1/2$ and
+Here $(x)_+ = \max(x, 0)$, $h_2(x) = -x\log_2 x - (1-x)\log_2(1-x)$ is the binary entropy, and $\phi_N(x) = h_2(x) + x\log_2(N-1)$. On $[0, 1 - 1/N]$, $\phi_N$ increases from 0 to $\log_2 N$, so its inverse is defined on $[0, \log_2 N]$. For a one-bit record that confirms one bit, $\phi_2^{-1}(1) = 1/2$ and
 
 $$
-J_k \;\ge\; k_B T \ln 2 \;+\; \frac{k_B T}{2\, \tau_k\, \langle A\rangle_k}
+J_k \;\ge\; k_B T \ln 2 \;+\; \frac{2\, k_B T\, \big[(1/2 - \varepsilon)_+\big]^2}{\tau_k\, \langle A\rangle_k}
 $$
+
+As $\varepsilon \to 0$ this tends to $k_B T\ln 2 + k_B T/(2\tau_k\langle A\rangle_k)$.
 
 **Proof.**
 
-1. For an isothermal Markov jump process, $W = \Delta F_{\mathrm{neq}} + k_B T\, \Sigma_{\mathrm{tot}}$, with $F_{\mathrm{neq}} = \langle E\rangle - k_B T\, S$ and $S$ the Shannon entropy of the system in nats [24].
-2. By (R1), $\langle E\rangle$ does not change. The record starts independent of the rest, ends in a fixed state, and the rest does not change. So the system's Shannon entropy falls by exactly the record's entropy $H(M_k)$, and $\Delta F_{\mathrm{neq}} = k_B T \ln 2\, H(M_k)$, with $H$ in bits.
-3. The classical speed limit gives $\Sigma_{\mathrm{tot}} \ge L^2/(2\tau_k\langle A\rangle_k)$, with $L$ the $L_1$ distance between the system's initial and final distributions [23]. Marginalizing never increases an $L_1$ distance. The record's marginal $q$ moves to a point mass on one state $s$. So $L \ge 2(1 - q_s) \ge 2(1 - q_{\max})$.
-4. Fano's inequality, with the most likely state as the guess, gives $H(q) \le h_2(1-q_{\max}) + (1-q_{\max})\log_2(N-1) = \phi_N(1 - q_{\max})$. Since $1 - q_{\max} \le 1 - 1/N$ and $\phi_N$ increases there, $1 - q_{\max} \ge \phi_N^{-1}(H(q))$.
-5. By (R2), $b_k \le I(M_k;R_k) \le H(M_k) = H(q)$. Since $\phi_N^{-1}$ increases, $L \ge 2\phi_N^{-1}(b_k)$, and $\Delta F_{\mathrm{neq}} \ge b_k\, k_B T \ln 2$.
-6. Steps 1 to 5 and (R3) give $J_k \ge W_k^{\mathrm{reset}} \ge b_k\, k_B T\ln 2 + k_B T\,\big[2\phi_N^{-1}(b_k)\big]^2/(2\tau_k\langle A\rangle_k)$. $\blacksquare$
+1. For an isothermal Markov jump process with local detailed balance, $W = \Delta F_{\mathrm{neq}} + k_B T\, \Sigma_{\mathrm{tot}}$ with $\Sigma_{\mathrm{tot}} \ge 0$. Here $F_{\mathrm{neq}} = \langle E\rangle - k_B T\, S$, with $S$ the Shannon entropy in nats [24].
+2. The write. Apply step 1 to the pair $(M_k, R_k)$ with $R_k$ fixed. By (R1) the mean energy does not change and the pair starts independent. The entropy of $R_k$ does not change. So the joint entropy changes by $H(q') - I - H(q^0)$, where $q'$ is the record's distribution after the write and $I = I(M_k; R_k)$, all in nats. So $W_k^{\mathrm{write}} \ge k_B T\,[\,I - H(q') + H(q^0)\,]$.
+3. The reset. The record evolves alone, so step 1 applies to the record. Its energy does not change. By (R2) and (R3) its entropy goes from $H(q')$ to $H(q^0)$. So $W_k^{\mathrm{reset}} = k_B T\,[\,H(q') - H(q^0)\,] + k_B T\, \Sigma^{\mathrm{reset}}$.
+4. Steps 2 and 3 and (R4) give $J_k \ge k_B T\, I + k_B T\, \Sigma^{\mathrm{reset}}$. The record's entropies cancel over the cycle. In bits, $k_B T\, I = k_B T\ln 2\; I(M_k;R_k) \ge b_k\, k_B T\ln 2$ by (R2). This is the measurement and erasure bound of Sagawa and Ueda [5], here for any ready distribution.
+5. The classical speed limit gives $\Sigma^{\mathrm{reset}} \ge L^2/(2\tau_k\langle A\rangle_k)$, with $L = \sum_s \lvert q'_s - q^0_s\rvert$ [23]. Take $s$ with $q^0_s = \max q^0 = 1 - \varepsilon$. The other states carry the opposite change in total, so $L \ge 2(q^0_s - q'_s) \ge 2\,[(1 - q'_{\max}) - \varepsilon]$.
+6. Fano's inequality, with no side information and the most likely state as the guess, gives $H(q') \le h_2(1-q'_{\max}) + (1-q'_{\max})\log_2(N-1) = \phi_N(1 - q'_{\max})$, in bits. Since $1 - q'_{\max} \le 1 - 1/N$ and $\phi_N$ increases there, $1 - q'_{\max} \ge \phi_N^{-1}(H(q'))$. By (R2), $H(q') \ge I(M_k;R_k) \ge b_k$, and $\phi_N^{-1}$ increases. So $L \ge 2\big(\phi_N^{-1}(b_k) - \varepsilon\big)_+$.
+7. Steps 4 to 6 give the statement. $\blacksquare$
 
-**Reading.** At finite $\tau_k$, every confirmed bit costs strictly more than $k_B T \ln 2$. K1 is reached only as $\tau_k \langle A\rangle_k \to \infty$. The finite-time term grows with the confirmed bits through $\phi_N^{-1}$. K1, K2 and K4 become one floor for a whole act, written in confirmed bits. Tighter erasure bounds for particular dynamics are also lower bounds on the same reset (Section 4.1). Per act, the velocity per joule is
+**Reading.** The floor is a sum of two prices. The information price is $k_B T\ln 2$ per confirmed bit, paid over the closed cycle whatever the ready state. The speed price belongs to the reset. A reset with finite rates never reaches a single state in finite time, so $\varepsilon > 0$ at every finite $\tau_k$, and the speed price carries that error. K1 holds act by act at every $\tau_k$. Tighter erasure bounds for particular dynamics are also lower bounds on the same reset (Section 4.1). Per act, the velocity per joule is
 
 $$
-v_{J,k} = \frac{b_k}{J_k} \;\le\; \frac{b_k}{b_k\, k_B T \ln 2 + 2 k_B T\,\big[\phi_N^{-1}(b_k)\big]^2/(\tau_k\langle A\rangle_k)} \;<\; \frac{1}{k_B T \ln 2}
+v_{J,k} = \frac{b_k}{J_k} \;\le\; \frac{b_k}{b_k\, k_B T \ln 2 + 2 k_B T\,\big[\big(\phi_N^{-1}(b_k) - \varepsilon\big)_+\big]^2/(\tau_k\langle A\rangle_k)} \;\le\; \frac{1}{k_B T \ln 2}
 $$
 
-for every $b_k > 0$ at finite $\tau_k\langle A\rangle_k$.
+The last inequality is strict whenever $\phi_N^{-1}(b_k) > \varepsilon$ at finite $\tau_k\langle A\rangle_k$.
 
 #### Proposition 2. Standing joules to hold a goal
 
-**Setting.** The world is a linear plant $x_{t+1} = A x_t + B u_t + w_t$, with $x_t \in \mathbb{R}^n$. At step $t$ the agent writes a finite-valued record $c_t$ of the plant. Its memory is $z_t = (z_{t-1}, c_t)$, with $z_0$ finite-valued, and its act $u_t$ is a function of $z_t$. The goal is to hold the plant: $\sup_t \mathbb{E}\|x_t\|^2 < \infty$.
+**Setting.** The world is a linear plant $x_{t+1} = A x_t + B u_t + w_t$, with $x_t \in \mathbb{R}^n$. At step $t$ the agent writes a finite-valued record $c_t$ of the plant. Its memory $s_t$ is a finite-valued function of $(s_{t-1}, c_t)$, with $s_0$ fixed, and its act $u_t$ is a function of $s_t$. Keeping every record, $s_t = (s_{t-1}, c_t)$, is one such memory. The goal is to hold the plant: $\sup_t \mathbb{E}\|x_t\|^2 < \infty$.
 
 **Assumptions.**
 
-- (C1) The noise $w_t$ is independent of $(x_t, z_t)$.
-- (C2) $x_0$ has a density with finite differential entropy.
-- (C3) Closed-cycle accounting per step. The joules $J_t$ metered to acquire the record $c_t$ and later erase it are at least $k_B T\, I(x_t; c_t \mid z_{t-1})$, with the information in nats. This is the measurement and erasure bound [5] applied at each value of the memory $z_{t-1}$.
+- (C1) The noise $w_t$ is independent of $(x_t, s_t)$.
+- (C2) $x_0$ has a density with finite differential entropy and a finite second moment.
+- (C3) Closed-cycle accounting per step. $J_t$ is the mean joules attributed to the record $c_t$: its write and its later erasure, whenever they are paid. $J_t \ge k_B T\, I(x_t; c_t \mid s_{t-1})$, with the information in nats. This is Proposition 1, steps 1 to 4, at each value of the memory $s_{t-1}$, with a fresh record in its ready state and $x_t$ held fixed during the write [5]. A memory of bounded size erases each record within a bounded number of steps, so the attributed joules fall inside the run up to a boundary term.
 
 **Statement.** Let $\lambda_1, \dots, \lambda_n$ be the eigenvalues of $A$. Then
 
@@ -216,18 +222,18 @@ $$
 
 **Proof.**
 
-1. Choose real coordinates in which $A = \mathrm{diag}(A_u, A_s)$, with $A_u$ carrying exactly the eigenvalues of modulus above 1. Let $y_t$ be the unstable block of $x_t$. Then $y_{t+1} = A_u y_t + v_t + e_t$, where $v_t$ is a function of $z_t$ and $e_t$ is independent of $(y_t, z_t)$ by (C1).
-2. Let $D_t = h(y_t \mid z_t)$, a conditional differential entropy in nats. Adding independent noise does not lower a conditional entropy. Shifting by a function of $z_t$ does not change it. The linear map $A_u$ adds $\ln|\det A_u|$. So $h(y_{t+1} \mid z_t) \ge D_t + \ln|\det A_u|$.
-3. Writing the record $c_{t+1}$ lowers that entropy by the information the record carries: $D_{t+1} = h(y_{t+1}\mid z_t) - I(y_{t+1}; c_{t+1} \mid z_t)$. Since $y$ is a function of $x$, $I(y_{t+1}; c_{t+1}\mid z_t) \le I(x_{t+1}; c_{t+1}\mid z_t)$. This is the closed-loop inequality of Touchette and Lloyd [32, 33].
-4. Steps 2 and 3 give $I(x_{t+1}; c_{t+1}\mid z_t) \ge \ln|\det A_u| - (D_{t+1} - D_t)$. Summing over $N$ steps, $\sum_{t=1}^{N} I(x_t; c_t\mid z_{t-1}) \ge N \ln|\det A_u| - (D_N - D_0)$.
-5. Each record is finite-valued, so each information term is finite and each $D_t$ is finite, starting from (C2). $D_N \le h(y_N)$, and a Gaussian has the largest entropy for a given covariance, so the bounded second moment bounds $D_N$ above. Dividing by $N$, the average information per step is at least $\ln|\det A_u| = \sum_{|\lambda_i|>1}\ln|\lambda_i|$ in the limit.
+1. Choose real coordinates in which $A = \mathrm{diag}(A_u, A_s)$, with $A_u$ carrying exactly the eigenvalues of modulus above 1. Let $y_t$ be the unstable block of $x_t$. Then $y_{t+1} = A_u y_t + v_t + e_t$, where $v_t$ is a function of $s_t$ and $e_t$ is independent of $(y_t, s_t)$ by (C1). A linear change of coordinates shifts differential entropies by a constant, so finiteness is unchanged.
+2. Let $D_t = h(y_t \mid s_t)$, a conditional differential entropy in nats. Adding independent noise does not lower a conditional entropy. Shifting by a function of $s_t$ does not change it. The linear map $A_u$ adds $\ln|\det A_u|$. So $h(y_{t+1} \mid s_t) \ge D_t + \ln|\det A_u|$.
+3. $s_{t+1}$ is a function of $(s_t, c_{t+1})$, and conditioning on less never lowers entropy. So $D_{t+1} \ge h(y_{t+1}\mid s_t, c_{t+1}) = h(y_{t+1}\mid s_t) - I(y_{t+1}; c_{t+1} \mid s_t)$. Since $y$ is a function of $x$, $I(y_{t+1}; c_{t+1}\mid s_t) \le I(x_{t+1}; c_{t+1}\mid s_t)$. This is the closed-loop inequality of Touchette and Lloyd [32, 33].
+4. Steps 2 and 3 give $I(x_{t+1}; c_{t+1}\mid s_t) \ge \ln|\det A_u| - (D_{t+1} - D_t)$. Summing over $N$ steps, $\sum_{t=1}^{N} I(x_t; c_t\mid s_{t-1}) \ge N \ln|\det A_u| - (D_N - D_0)$.
+5. Each record is finite-valued, so each information term is finite. $D_0 = h(y_0)$ is finite: the second moment bounds it above, and $h(x_0) \le h(y_0) + h(x^{\mathrm{s}}_0)$, with $x^{\mathrm{s}}_0$ the stable block, bounds it below, by (C2). $D_N \le h(y_N)$, and a Gaussian has the largest entropy for a given covariance, so the bounded second moment bounds $D_N$ above. Dividing by $N$, the average information per step is at least $\ln|\det A_u| = \sum_{|\lambda_i|>1}\ln|\lambda_i|$ in the limit.
 6. (C3) prices each nat at $k_B T$, which is $k_B T\ln 2$ per bit. $\blacksquare$
 
 **Reading.** An agent that holds a goal against an unstable world pays a standing power of at least $f\, k_B T\ln 2\sum_{|\lambda_i|>1}\log_2|\lambda_i|$ at $f$ control steps per second. One unstable mode with $|\lambda| = 2$ needs one bit per step, which is $k_B T\ln 2 \approx 2.87\times10^{-21}$ J per step at 300 K. The record's bits per step bound its information from above, so the proof also gives a non-strict, averaged form of the data-rate theorem (Section 4.1). This is a new kinematic law: the minimum standing joules to hold a goal.
 
 #### Proposition 3. Precision of confirmed agency
 
-**Setting.** The agent, its world and its feedback form one time-homogeneous Markov jump process in its stationary state. Each confirmed act is one jump of a marked kind. $N(t)$ counts confirmed acts in $[0,t]$. $\langle K\rangle$ is the mean number of jumps of all kinds in $[0,t]$, and $\langle k\rangle = \langle K\rangle/t$ is the mean jump rate.
+**Setting.** The agent, its world and its feedback form one time-homogeneous, irreducible Markov jump process on finitely many states, in its stationary state. Each confirmed act is one jump of a marked kind. $N(t)$ counts confirmed acts in $[0,t]$. $\langle K\rangle$ is the mean number of jumps of all kinds in $[0,t]$, and $\langle k\rangle = \langle K\rangle/t$ is the mean jump rate.
 
 **Statement.**
 
@@ -241,19 +247,25 @@ $$
 
 When the backward experiment equals the forward one, this reads $\mathrm{Var}(X)/\langle X\rangle^2 \ge 2/\big(e^{\langle\sigma_I\rangle} - 1\big)$.
 
-**Proof.** $N$ is a counting observable: it counts a subset of jumps and never decreases. Garrahan proved parts 1 and 2 for counting observables in stationary Markov jump processes [34]. Scaling by $b$ leaves a relative variance unchanged. Part 3 is the uncertainty relation that Potts and Samuelsson derived from any fluctuation relation, measurement and feedback included [28], applied with $X$ as the observable. $\blacksquare$
+**Proof.** $N$ is a counting observable: it counts a subset of jumps and never decreases. Garrahan proved parts 1 and 2 for counting observables in stationary Markov jump processes [34]. Part 1 is his bound on the variance of a counting observable by the mean activity. Part 2 is his first-passage bound, stated for counts whose jump weights are 0 or 1, which holds here because $N$ counts one marked kind of jump. Scaling by $b$ leaves a relative variance unchanged. Part 3 is the uncertainty relation that Potts and Samuelsson derived from any fluctuation relation, measurement and feedback included [28], applied with $X$ as the observable. $\blacksquare$
 
 **Reading.** Part 1 needs no time-reversal property and no model of the feedback. The precision of confirmed agency is bought with activity. Part 3 is the dissipation price, and it holds under feedback because it rests on the feedback fluctuation relation. The standard TUR does not bind feedback engines in experiment [27]. That is why the agent form carries the information term.
 
 #### Proposition 4. Quantum agents keep the floor
 
-**Setting.** The comparison $m_k$ comes from a quantum measurement and is written to a classical register, the record of clause 3. The reset of that register meets the setting and assumptions (R1) to (R3) of Proposition 1.
+**Setting.** The comparison $m_k$ comes from a quantum measurement and is written to a classical register, the record of clause 3. The register's reset meets the setting of Proposition 1 and (R2) and (R3), with $I(M_k;R_k)$ the quantum-classical mutual information of the measurement. The reset's work passes through the meter: $J_k \ge W_k^{\mathrm{reset}}$.
 
-**Statement.** The floor of Proposition 1 holds unchanged. In particular, $J_k \ge b_k\, k_B T\ln 2$ for every act.
+**Statement.**
 
-**Proof.** The proof of Proposition 1 uses only the register's distribution, the jump dynamics of the reset and the meter. It does not use how the record was produced. $\blacksquare$
+$$
+J_k \;\ge\; k_B T\ln 2\,\big[\,b_k - \phi_N(\varepsilon)\,\big] \;+\; \frac{2\, k_B T\, \big[\big(\phi_N^{-1}(b_k) - \varepsilon\big)_+\big]^2}{\tau_k\, \langle A\rangle_k}
+$$
 
-**Reading.** Quantum resources change what an agent can do per act. They do not lower the price of its record. The measurement that writes the record carries its own price, given in Section 4.1.
+As $\varepsilon \to 0$ this is the floor of Proposition 1. When the write is metered as well, the measurement and erasure bound of Sagawa and Ueda gives $J_k \ge b_k\, k_B T\ln 2$ at every $\varepsilon$, under the additional assumption they state for quantum measurement [5].
+
+**Proof.** Step 3 of Proposition 1 uses only the register and its reset dynamics. It gives $W_k^{\mathrm{reset}} = k_B T\ln 2\,[H(q') - H(q^0)] + k_B T\,\Sigma^{\mathrm{reset}}$, with entropies in bits. The quantum-classical mutual information is at most the entropy of the outcomes [5], so $H(q') \ge b_k$. Fano's inequality gives $H(q^0) \le \phi_N(\varepsilon)$, since $\varepsilon \le 1 - 1/N$. Steps 5 and 6 of Proposition 1 bound $\Sigma^{\mathrm{reset}}$. $\blacksquare$
+
+**Reading.** Quantum resources change what an agent can do per act. They do not lower the price of its record. The record costs $k_B T\ln 2$ per bit, less a residue $\phi_N(\varepsilon)$ that vanishes as the reset becomes exact. The measurement that writes the record carries its own price, given in Section 4.1.
 
 ### 2.3 Layer 3. Calculus: intelligence as a derivative, read in hindsight
 
@@ -279,7 +291,7 @@ $$
 dX = \sum_k \frac{b_k}{J_k}\, P_k\, dt
 $$
 
-**Assumption (K1 per act).** $b_k\, k_B T \ln 2 \le J_k$ for every $k$. Proposition 1 gives it under (R1) to (R3).
+**Assumption (K1 per act).** $b_k\, k_B T \ln 2 \le J_k$ for every $k$. Proposition 1 gives it under (R1) to (R4) for the mean joules of each act, so the statement holds for the mean run. On a single run it holds whenever each act draws more than $b_k\, k_B T\ln 2$. Every confirmed act in the run of Section 8.11 drew more than $3 \times 10^{14}$ times that.
 
 **Statement.**
 
@@ -343,6 +355,39 @@ The right side tends to 0 at every Lebesgue point of $g'$, and almost every $j$ 
 4. Proposition 5 needs only the run, the meter and K1 per act. Apply it at the group's wall. $\blacksquare$
 
 **Reading.** Joules add, with the group's links on top. Coupled bits from independent members add at least, and some exist only at the group level. A group raises $\iota_G$ when it gains more coupled bits than its members hold alone, or spends fewer joules acting together than its members spend acting apart. Section 4.1 gives the theorems that price both terms.
+
+#### Prediction 1. The optimal act time of an agent that holds a goal
+
+**Setting.** A closed-cycle acceptor runs one act after another. Each act writes a record with $N$ states and credits $b$ bits when confirmed. The comparison, made before the reset, confirms with probability $p$. Each reset meets Proposition 1, with duration $\tau$, mean activity $\langle A\rangle$ and reset error $\varepsilon$. Throughout, the agent holds a goal against a world with instability rate $\Lambda$, through a separate register. Every joule is metered at the agent's wall (Definition 2).
+
+**Derivation.** Each act lasts at least $\tau$. Proposition 2 prices the holding at $k_B T\,\Lambda$ per second, in the long run. Proposition 1 prices the act. The two registers are distinct, so their metered joules add. Per act, in the mean,
+
+$$
+J(\tau) \;\ge\; b\,k_B T\ln 2 \;+\; \frac{\kappa}{\tau} \;+\; k_B T\,\Lambda\,\tau, \qquad \kappa = \frac{2k_B T\,\big[\big(\phi_N^{-1}(b) - \varepsilon\big)_+\big]^2}{\langle A\rangle}
+$$
+
+By Proposition 5, the run's intelligence is confirmed bits per joule, $\iota(\tau) = p\,b/J(\tau)$. The right side of the bound on $J$ is least at $\tau^* = \sqrt{\kappa/(k_B T\Lambda)}$, where it equals $b\,k_B T\ln 2 + 2\sqrt{\kappa\,k_B T\Lambda}$. For a one-bit record and an exact reset, this gives two numbers:
+
+$$
+\tau^* = \frac{1}{\sqrt{2\,\langle A\rangle\,\Lambda}}, \qquad \iota(\tau) \;\le\; \frac{p}{k_B T\,\big[\ln 2 + \sqrt{2\Lambda/\langle A\rangle}\big]}
+$$
+
+**Prediction 1.**
+
+1. **Ceiling.** No acceptor that holds a goal at instability rate $\Lambda$ while it acts reaches $\iota$ above $p/\big(k_B T[\ln 2 + \sqrt{2\Lambda/\langle A\rangle}]\big)$ for one-bit acts, at any act time. The general ceiling is $p\,b/\big(b\,k_B T\ln 2 + 2\sqrt{\kappa\,k_B T\Lambda}\big)$. It depends only on $T$, $p$, $b$, $N$, $\varepsilon$ and the ratio $\Lambda/\langle A\rangle$.
+2. **Optimal act time.** Let an acceptor's measured joules per act follow $J(\tau) = J_0 + a/\tau + s\,\tau$. Measure $a$ and $J_0$ from a sweep of $\tau$ with no goal held, and the standing power $s$ from the goal held with no acts. Then the measured $\iota(\tau)$ peaks at $\tau^* = \sqrt{a/s}$, at the value $p\,b/(J_0 + 2\sqrt{a s})$, with $a \ge \kappa$ and $s \ge k_B T\Lambda$. The error band is
+
+$$
+\frac{\delta\tau^*}{\tau^*} = \frac{1}{2}\sqrt{\Big(\frac{\delta a}{a}\Big)^2 + \Big(\frac{\delta s}{s}\Big)^2}
+$$
+
+3. **Scaling.** Across a sweep of the instability rate, $\ln\tau^*$ falls against $\ln s$ with slope $-1/2$.
+
+**Falsifier.** The measured maximizer of $\iota(\tau)$ lies outside $\tau^* \pm 2\,\delta\tau^*$, or the fitted slope of $\ln\tau^*$ against $\ln s$ over at least one decade of $s$ lies outside $-1/2$ by more than two standard errors. Either defeats the claim that act joules and standing joules add on one meter, with $\iota$ read as their density. A measured $\iota$ above the ceiling defeats the accounting of that run (F12, Section 8.7).
+
+**What is new.** The finite-time Landauer bound prices the memory alone and falls toward $k_B T\ln 2$ as $\tau$ grows [29]. There, the slowest reset is the cheapest. The data-rate theorem prices holding alone, per second (Section 4.1). Neither gives an interior optimum. The law meters the whole agent, counts confirmed bits only, and reads $\iota$ as a density on the joule axis. Then holding a goal makes slowness expensive, and the best act time is the geometric mean of the jump time $1/\langle A\rangle$ and the drift time $1/\Lambda$, up to the factor $1/\sqrt{2}$. The controller's own costs enter the joules in the same way in the work of Ehrich, Still and Sivak (Section 5.1).
+
+**Where to test it.** A colloidal feedback trap imposes virtual potentials in software and computes work from trajectories at the $k_B T$ scale (Section 3.2). One coordinate runs a one-bit act cycle in a virtual double well with reset time $\tau$. The other is held at the top of a virtual inverted well of rate $\Lambda$. A single-electron box with a charge detector runs the same act cycle with every jump counted, so $\langle A\rangle$ is measured (Section 3.2). Section 8.8 gives the protocol.
 
 ### 2.4 Where the studies sit
 
@@ -449,6 +494,8 @@ Intelligence is the derivative of gated agency in joules, read off a completed r
 
 **Machines.** Memory access costs far more energy than arithmetic [258]. Parameter count matters only through the joules it makes you move. Intelligence per watt measures task accuracy per unit power on local accelerators [259]. Its numerator is benchmark accuracy, not gated agency. MLPerf Power standardizes power measurement from microwatts to megawatts [260]. ML.ENERGY measures inference energy automatically [261]. TokenPowerBench benchmarks the power of large language model (LLM) inference [262]. Jin, Wei and Brooks analyze the energy of test-time compute [263]. General-purpose models cost much more energy per task than task-specific ones [264]. The cheapest sufficient model wins in joules. That is Mixture of Limits, measured. Samsi and colleagues measured the energy of large language model inference on GPUs (graphics processing units) [265]. Dillavou and colleagues demonstrated decentralized learning in a physical circuit, with no processor [266]. Stern and colleagues trained self-learning circuits for power-efficient solutions and measured the trade between power and error [267]. Saggio and colleagues demonstrated a quantum speed-up for learning agents in a photonic experiment [268]. Fewer interactions to learn is fewer acts to close.
 
+**A metered acceptor.** Section 8.11 reports a preregistered run of an acceptor agent on a laptop, with prediction first, comparison, refusal and binding joule budgets. $\iota$ was read off 4,940 receipts. The median confirmed act gave $1.5 \times 10^5$ bits per reported joule, about $2 \times 10^{15}$ times the joules per bit of the floor. Under a binding budget the σ-law selector closed more tasks than the Mixture of Limits rule. Integrated $\iota$ ranked a goal-blind agent first on a loose budget, while $J^*$ ranked it last.
+
 **Groups simulated.** Crosato and colleagues computed the thermodynamic quantities of simulated collective motion across its critical point [269]. Chen and Prokopenko compared thermodynamic efficiency with purely informational utilities as explanations of collective behavior near criticality [270]. $\iota_G$ in Proposition 7 is the gated, metered form of such a ratio.
 
 **Meters.** RAPL (Running Average Power Limit) is the set of on-die energy counters in Intel and AMD processors. Its readings were validated against external measurement [271]. DRAM (dynamic random-access memory) readings were validated separately [272]. Meter quality depends on the processor generation [273]. Apple's powermetrics manual states that its average power values "are estimated and may be inaccurate" and should not be used to compare devices [274]. On Apple silicon, powermetrics readings are reported values. Measured joules for that machine come from an external wall meter.
@@ -476,7 +523,8 @@ Each position is placed against the definition: intelligence is the derivative o
 
 - **Proven:** learning, memory, prediction and control each have a joule price with a ceiling.
 - **Demonstrated:** joules per bit are measured in brains. Joules per task are measured in machines. Meters can be validated.
-- **Proven here:** $\iota$ is a bounded density on the joule axis under joule-proportional crediting (Proposition 5). Sampled $\iota$ converges to it (Proposition 6). Groups compose by Proposition 7.
+- **Proven here:** $\iota$ is a bounded density on the joule axis under joule-proportional crediting (Proposition 5). Sampled $\iota$ converges to it (Proposition 6). Groups compose by Proposition 7. Holding a goal sets an optimal act time and a ceiling on $\iota$ (Prediction 1).
+- **Demonstrated here:** $\iota$ and $J^*$ read off the receipts of a metered acceptor, with falsifiers fixed in advance (Section 8.11). $J^*$ ranks agents. Integrated $\iota$ does not.
 - **Missing everywhere:** no source reads intelligence as $dX/dJ$ off a gated, completed run. That is David's contribution and the work of this track.
 
 ## 6. Global findings, by method
@@ -528,7 +576,7 @@ Rovelli's physics of agency surfaced through German [115]. Jaeger and Azadi comp
 
 ### 6.7 Searches with no primary research
 
-Hindi and Arabic searches returned no primary research in those languages. English follow-ups surfaced work from Indian institutions, listed above by method. Persian, Turkish and Hebrew searches returned theses, reviews and work already cited, with no new primary research.
+Hindi and Arabic searches returned no primary research in those languages. English follow-ups surfaced further work, listed above by method. Persian, Turkish and Hebrew searches returned theses, reviews and work already cited, with no new primary research.
 
 ## 7. Open problems
 
@@ -538,7 +586,7 @@ Hindi and Arabic searches returned no primary research in those languages. Engli
 
 **P2. Agency-gated Landauer bound.** Under closed-cycle accounting, each confirmed coupled bit costs at least $k_B T \ln 2$, so $v_J \le 1/(k_B T \ln 2)$. In hand: measurement plus erasure work is at least $k_B T I$ [5], and erasure costs at least $k_B T \ln 2$ per bit [6, 7]. Missing: a data-processing step showing that the coupled bits credited in $X$ cannot exceed the bits recorded in the acceptor's memory during the comparison. Clause 3 already requires the confirmation $m$ to come from a physical record. Proposition 1 proves the per-act floor with this step taken as assumption (R2).
 
-**P3. Agency speed limit.** Proven for acts whose record meets (R1) to (R3). Proposition 1 bounds the joules of act $k$ below by $b_k k_B T\ln 2$ plus a finite-time term in $\tau_k$, $\langle A\rangle_k$ and the confirmed bits, through Fano's inequality.
+**P3. Agency speed limit.** Proven for acts whose record meets (R1) to (R4). Proposition 1 bounds the mean joules of act $k$ below by $b_k k_B T\ln 2$ plus a finite-time term in $\tau_k$, $\langle A\rangle_k$, the reset error $\varepsilon$ and the confirmed bits, through Fano's inequality. Prediction 1 adds the standing joules of holding a goal and gives the optimal act time.
 
 **P4. Precision law for agents.** Proven. Proposition 3 bounds the relative variance of confirmed agency by dynamical activity for the count of confirmed acts, and by entropy production with the information term under feedback.
 
@@ -560,6 +608,9 @@ Hindi and Arabic searches returned no primary research in those languages. Engli
 | D4 | $\iota$ is read off receipts and is stable across seeds | Per-run $\iota_k$ series with spread within a preset bound |
 | D5 | Estimates do not substitute for measurement | Rank agreement between `est_j` and `measured_j`, reported, never merged |
 | D6 | The physical floor is respected and the gap is known | Measured joules per confirmed bit divided by $k_B T \ln 2$ |
+| D7 | Prediction 1: the optimal act time and the ceiling of an agent that holds a goal | A $\tau$ sweep at two or more instability rates, with act and standing joules metered separately and together |
+
+Section 8.11 reports the first run against D2 to D6, on reported joules.
 
 ## 8. Experiment plan
 
@@ -648,11 +699,12 @@ trajectory_j {tau, activity, work}    # physical runs only, Section 8.8
 | F4 | Kendall's correlation between `est_j` and `measured_j` is below 0.8 | Use of that estimator for any ranking |
 | F5 | The coefficient of variation of mean $\iota$ across seeds exceeds 0.25 on a task | Reading $\iota$ at that task's granularity |
 | F6 | The fitted $\alpha_J$ is not positive with 95% confidence on the compounding stratum | Compounding on those tasks |
-| F7 | Any act shows measured joules per confirmed bit below $k_B T \ln 2$ | The accounting itself: a meter or bookkeeping fault, fixed before any other result is reported |
+| F7 | The mean measured joules per confirmed bit over a run fall below $k_B T \ln 2$, or any act of a macroscopic machine does | The accounting itself: a meter or bookkeeping fault, fixed before any other result is reported |
 | F8 | M1 and M0 disagree on a calibration workload by more than the error bound in P6 | That RAPL domain as a measured source on that machine |
 | F9 | A physical act cycle shows work below the Proposition 1 floor at its logged $\tau$ and $\langle A\rangle$ | The accounting of that run: a missed jump channel, a miscalibrated potential or an unmetered work source |
 | F10 | A stationary run shows $\mathrm{Var}(N)/\langle N\rangle^2$ below $1/\langle K\rangle$ beyond its confidence interval | The jump count of that run: some jumps went uncounted |
 | F11 | A controller holds the plant with measured joules per step below $k_B T\ln 2 \log_2\lvert\lambda\rvert$ | The meter or the plant model of that run |
+| F12 | The maximizer of measured $\iota(\tau)$ lies outside $\tau^* \pm 2\delta\tau^*$ of Prediction 1, or the slope of $\ln\tau^*$ against $\ln s$ lies outside $-1/2$ by more than two standard errors; or a run's $\iota$ exceeds the ceiling of Prediction 1 | Additivity of act and standing joules on one meter, with $\iota$ as their density; for the ceiling, the accounting of that run |
 
 ### 8.8 Physical act cycles
 
@@ -660,6 +712,7 @@ These runs test Propositions 1 to 4 at the physical floor. Work is computed from
 
 - **Act cycle on a charge register (Propositions 1 and 4).** A single-electron box or quantum dot holds a one-bit record, as in [68, 70, 71]. Each cycle writes the comparison, acts, and resets the record in time $\tau$. A charge detector counts every tunneling jump, so $\langle A\rangle$ is measured. Sweep $\tau$ over at least two decades. Result form: work per cycle against $k_B T\ln 2 + k_B T/(2\tau\langle A\rangle)$, the floor of Proposition 1 for $N = 2$ and $b = 1$.
 - **Counting confirmed acts (Proposition 3).** On the same register, cycling in steady state, count confirmed acts $N$ and all jumps $K$ over repeated windows of equal length. Result form: $\mathrm{Var}(N)/\langle N\rangle^2$ against $1/\langle K\rangle$, and the spread of $T_n$ against $1/(\langle T_n\rangle\langle k\rangle)$. On a feedback-trap information engine as in [27], run the forward and the backward experiment, compute $\sigma_I$ from the measured trajectories, and test part 3.
+- **The optimal act time (Prediction 1).** On a feedback trap, run the one-bit act cycle on one coordinate and hold the other on a virtual inverted well of rate $\Lambda$. First sweep $\tau$ over two decades with no goal held, and fit $J_0$ and $a$. Then hold the goal with no acts, and read the standing power $s$. Then run both together and record $\iota(\tau)$. Repeat at three or more values of $\Lambda$ spanning a decade. All work is computed from trajectories and filed as `trajectory_j`. Result form: the measured maximizer of $\iota(\tau)$ against $\sqrt{a/s}$, with its band, and the slope of $\ln\tau^*$ against $\ln s$.
 - **Holding an unstable plant (Proposition 2).** A digital controller holds a plant with one unstable mode of fixed $|\lambda|$ per step, at $f$ steps per second. Meter the controller with M0 and M1. Log the record's bits per step. Result form: measured joules per step divided by $k_B T\ln 2\log_2|\lambda|$, reported as distance to floor. Sweep $|\lambda|$ and $f$.
 
 ### 8.9 Living agents: measured ι
@@ -678,11 +731,62 @@ Protocol. Fix tasks, gears, predicates and budgets. Vary $w$ over a preset grid.
 
 Evidence in hand: confident prediction lowered human cortical oxygen use by up to 12%, measured by metabolic imaging (preprint) [254]. In cellular networks, the bits of the past that best predict the future are prohibitively costly [198]. In percept-action loops, work-efficient agents balance prediction against forgetting [234].
 
-### 8.11 Reporting
+### 8.11 First run: a metered acceptor on a laptop
+
+This run applies Sections 8.1 to 8.7 to one task class on one machine. Code, task sets, receipts and analysis are in the site repository under `experiments/agency-run`. The preregistration and its falsifiers were committed first (e830bff). The pilot and the locked calibration came next (5828420), and then the main run (35c967a).
+
+**Method.**
+
+- **Agent and task.** A Python process closes Sudoku puzzles. The completeness predicate $C(z)$ passes when the grid is full, every row, column and box holds 1 to 9, and every given is kept. A confirmed task credits $b = n_{\mathrm{empty}}\log_2 9$ bits, the number of fills the act chooses among. That is the capacity bound of Definition 1. The test set holds 30 puzzles, 10 per stratum (easy, medium, hard), generated from a fixed seed. A separate set of 30 calibrates the selectors.
+- **Gears.** g0 fills naked singles. g1 adds hidden singles. g2 adds depth-first search.
+- **Arms.** The σ-law selector takes $a^* = \arg\max[H(a) - \lambda J(a)]$, with $H(a)$ the calibrated pass probability given the gears already tried, times $b$, and $\lambda = b/B$. The Mixture of Limits rule takes the cheapest gear whose calibrated pass probability is at least 0.5. Both fix $R^*$ before each act, hash it with SHA-256 (Secure Hash Algorithm, 256-bit) and timestamp it. Both compare after the act and refuse with a receipt when no act fits the budget. The goal-blind baseline draws one gear at random, with no prediction, no comparison, no escalation and no refusal. The budget cuts it off.
+- **Budgets and seeds.** Per task, $B \in \{0.5, 1.0, 2.0\} \times J_{g2}(q)$, the pilot median of g2 alone. Levels 0.5 and 1.0 bind: 98% and 40% of pilot runs exceed them. Level 2.0 does not (0.7%). There are 20 seeds per condition, in a seeded interleaved order. In all, 5,400 episodes ran, with 4,940 acts.
+- **Energy label.** Every joule is `reported_j`: the kernel's per-process energy estimate for the agent (`ri_energy_nj` from `proc_pid_rusage`), read before and after each act, with no privileges. The process is the agent's wall. `measured_j` is empty, because no wall meter was attached. `est_j` is cycles times $4.20 \times 10^{-10}$ J, the pilot's median ratio.
+
+**Results.** Mean ± standard deviation over 20 seeds. A run is one arm at one budget level over all 30 tasks. CV is the coefficient of variation, standard deviation over mean.
+
+| Arm | $B/J_{g2}$ | Tasks closed of 30 | $X$ (bits) | $J$ (reported, mJ) | $\iota$ (bits per reported joule) | CV of $\iota$ | Refusals | Cuts | Overspends |
+|---|---|---|---|---|---|---|---|---|---|
+| σ-law | 0.5 | 0.60 ± 0.50 | 108 ± 91 | 20.8 ± 0.3 | 5,254 ± 4,402 | 0.84 | 29.40 | 0 | 0 |
+| σ-law | 1.0 | 9.10 ± 1.86 | 1,479 ± 316 | 43.8 ± 4.0 | 34,454 ± 10,007 | 0.29 | 20.90 | 0 | 9 |
+| σ-law | 2.0 | 28.40 ± 0.60 | 4,823 ± 105 | 66.2 ± 5.8 | 73,345 ± 6,443 | 0.09 | 1.60 | 0 | 0 |
+| Mixture of Limits | 0.5 | 0.70 ± 0.47 | 126 ± 85 | 18.8 ± 0.3 | 6,801 ± 4,569 | 0.67 | 29.30 | 0 | 0 |
+| Mixture of Limits | 1.0 | 6.45 ± 1.50 | 1,047 ± 254 | 44.7 ± 3.6 | 23,804 ± 7,067 | 0.30 | 23.55 | 0 | 7 |
+| Mixture of Limits | 2.0 | 27.50 ± 0.51 | 4,668 ± 92 | 67.0 ± 6.7 | 70,418 ± 7,766 | 0.11 | 2.50 | 0 | 0 |
+| Goal-blind | 0.5 | 0.25 ± 0.44 | 45 ± 80 | 14.1 ± 3.1 | 2,775 ± 4,999 | 1.80 | 0 | 20.35 | 20 |
+| Goal-blind | 1.0 | 3.85 ± 1.84 | 623 ± 301 | 26.6 ± 5.7 | 24,153 ± 13,364 | 0.55 | 0 | 17.45 | 0 |
+| Goal-blind | 2.0 | 18.25 ± 2.71 | 3,034 ± 471 | 34.1 ± 9.7 | 92,724 ± 15,690 | 0.17 | 0 | 1.35 | 0 |
+
+- **Per act.** 1,902 acts were confirmed. The median act $\iota$ was $1.53 \times 10^5$ bits per reported joule, with interquartile range $8.3 \times 10^4$ to $4.7 \times 10^5$. Joules per confirmed bit were at least $3.8 \times 10^{14}$ times $k_B T\ln 2$ at 300 K, with median $2.3 \times 10^{15}$ times. The floor allows $3.5 \times 10^{20}$ bits per joule.
+- **Joules per closed task.** The median over arms was 0.34 to 0.38 mJ for easy tasks, 1.58 to 1.70 mJ for medium and 4.05 to 4.28 mJ for hard.
+- **Selectors, paired by seed.** This analysis was chosen after the run. At $B = 1.0\,J_{g2}$ the σ-law selector closed 2.65 more tasks per run than the Mixture of Limits rule (95% bootstrap interval 1.5 to 3.8). Its run $\iota$ was higher by 10,650 bits per joule (4,747 to 16,592). At $B = 2.0\,J_{g2}$ it closed 0.9 more (0.55 to 1.25). The σ-law rule goes straight to the gear that suffices, so the joules of failed light attempts stay in the budget.
+- **Package cross-check.** powermetrics, run non-interactively over 30 s windows, read about 12.1 W of CPU power and 13.6 W of GPU power from other work on the machine while the agent slept. The agent added about 0.6 W on its own meter. Background CPU power moved by about 0.5 W between windows, so idle-subtracted package joules came out negative. The per-process meter is the run's meter. D1 and D5 need a wall meter on an otherwise idle machine.
+
+**Falsifier outcomes.** All were fixed before the run.
+
+| ID | Observation | Outcome |
+|---|---|---|
+| R-F1 | 95% interval of the paired per-task difference in median $J^*$, σ-law minus Mixture of Limits, includes zero at every binding level | Fired. At $B = 1.0$, 4 tasks closed by both: interval $-7.9$ to $+15.5$ µJ. At $B = 0.5$, no task closed by both. On tasks both close, the joules are equal |
+| R-F2 | Any episode ends above its budget | Fired. 36 of 5,400. σ-law 9 and Mixture of Limits 7 at $B = 1.0$, 0.07% to 3.6% over, when the final comparison ran outside the guard. Goal-blind 20 at $B = 0.5$, up to 33% over, on budgets a few meter checks wide |
+| R-F3 | Refusal recall below 0.9 on infeasible task levels, or over 10% of refusals on task levels some arm closes in half the seeds | Fired. Recall 1.00 on 41 infeasible task levels. 13.1% of refusals fell on task levels some arm closed |
+| R-F4 | Kendall's tau-b between `est_j` and `reported_j` per act below 0.8 | Held. 0.96 on 4,000 acts |
+| R-F5 | CV of run $\iota$ above 0.25 in any condition | Fired at binding levels (0.29 to 1.80). Held at $B = 2.0$ (0.09, 0.11, 0.17) |
+| R-F6 | Ranking by $J^*$ differs from ranking by integrated $\iota$ | Fired. At $B = 2.0$, $J^*$ ranks σ-law, Mixture of Limits, goal-blind. Integrated $\iota$ ranks goal-blind first. At $B = 1.0$ the last two swap |
+| R-F7 | A confirmed act below $k_B T\ln 2$ per bit | Held. The lowest act sat $3.8 \times 10^{14}$ times above |
+| R-F8 | Goal-blind run $\iota$ at least the better selector's at a binding level | Held. 2,775 against 6,801 at $B = 0.5$. 24,153 against 34,454 at $B = 1.0$ |
+
+**What the run settles.**
+
+- $\iota$ is read off receipts, act by act and run by run, as Propositions 5 and 6 require. On a loose budget it is stable across seeds.
+- $J^*$ is the ranking, and integrated $\iota$ is not. The goal-blind agent had the highest run $\iota$ on the loose budget, closing 18 of 30 tasks against 28. Its failures were cheap. $J^*$ is gated by $C(z)$, so it ranks that agent last. This is why Section 2.3 ranks by $J^*$, with $X_{\mathrm{req}}$ as a gate.
+- Under a binding budget, the σ-law selector closes more tasks than the Mixture of Limits rule. The gain lies in which tasks fit the budget, not in a cheaper closure of the same task.
+- Two implementation fixes come before the next run. The comparison and the receipt write move inside the guarded region. A measured closing cost is charged before each act.
+
+### 8.12 Reporting
 
 Publish all receipts, raw meter traces, idle baselines and analysis code with the result. Report measured, reported and estimated joules in separate columns. Never sum across tiers. State which falsifiers fired, with the same prominence as those that passed.
 
-### 8.12 Where the products sit
+### 8.13 Where the products sit
 
 - **Klere** is the hardware that meters $J$. M0 and M1 stand in for it until Klere meters are on the bench.
 - **Metabolic Intelligence** runs the arms on any fabric and computes $\iota$ from receipts.
