@@ -52,7 +52,7 @@ const toc = [
           <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-dark bg-brand-amber px-2.5 py-1 rounded">
             {status}
           </span>
-          <span class="font-mono text-[10px] text-brand-gray">FPGA board not synthesized or metered</span>
+          <span class="font-mono text-[10px] text-brand-gray">{paperId === 'ni' ? 'KV260 board metered: WCA gate and seed fabrics (board level)' : 'No FPGA board result in this paper'}</span>
         </div>
 
         <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-brand-white max-w-[22ch] md:max-w-none">
