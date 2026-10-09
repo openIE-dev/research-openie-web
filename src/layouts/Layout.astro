@@ -10,8 +10,10 @@ interface Props {
 
 const {
   title,
-  description = "OpenIE Research: research studies with downloadable PDFs and interactive figures. Draft status · board_synth_claimed=false.",
+  description = "OpenIE Research: research studies by David Charlot at Open Interface Engineering, each with a web edition, a PDF, and interactive figures.",
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.openie.dev').href;
 ---
 
 <!DOCTYPE html>
@@ -30,10 +32,16 @@ const {
     <meta property="og:title" content={`${title} | OpenIE Research`} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://research.openie.dev" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="OpenIE Research" />
+    <link rel="canonical" href={canonical} />
+    <meta name="author" content="David Charlot" />
+    <link rel="describedby" type="text/markdown" href="/llms.txt" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={`${title} | OpenIE Research`} />
     <meta name="twitter:description" content={description} />
+    <script is:inline src="/webmcp-tools.js" defer></script>
+    <slot name="head" />
 
     <script is:inline>
       (function(){

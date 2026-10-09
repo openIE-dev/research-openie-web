@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import homeJsonLd from '../data/home-jsonld.json';
 
 const projects = [
   {
@@ -83,6 +84,7 @@ const projects = [
 ---
 
 <Layout title="Research catalog" description="Five OpenIE research studies: Mixture of Limits, Notational Intelligence, Satiation, Metabolic Intelligence, and The Search for JouleOS. Spell Check is Global is the economic opinion. The Universal Law of Agency is the research track.">
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(homeJsonLd)} />
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-12 max-w-7xl mx-auto">
     <p class="section-label mb-4">research.openie.dev</p>
     <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-brand-white max-w-3xl">

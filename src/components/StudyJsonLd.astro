@@ -1,0 +1,43 @@
+---
+// Draft for src/components/StudyJsonLd.astro. Renders ScholarlyArticle JSON-LD for one study.
+// Reads src/data/studies.json (a copy of research/studies-index.json), the same data the
+// WebMCP tools and llms.txt use. Output matches research/jsonld/<id>.json.
+import studies from '../data/studies.json';
+
+interface Props { id: string }
+const { id } = Astro.props;
+const s = studies.studies.find((x) => x.id === id);
+if (!s) throw new Error(`StudyJsonLd: unknown study id ${id}`);
+
+const BASE = 'https://research.openie.dev';
+const DRAFT = ['mol', 'ni', 'satiation', 'mei'];
+const headline = s.title.length > 110 ? s.title.split(':')[0].trim() : s.title;
+const doc = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ScholarlyArticle',
+      '@id': `${s.url}#article`,
+      headline,
+      name: s.title,
+      abstract: s.summary,
+      genre: s.kind,
+      author: { '@id': `${BASE}/#david-charlot` },
+      publisher: { '@id': 'https://openie.dev/#org' },
+      isPartOf: { '@id': `${BASE}/#site` },
+      url: s.url,
+      mainEntityOfPage: s.url,
+      inLanguage: 'en',
+      keywords: s.keywords.join(', '),
+      ...(DRAFT.includes(s.id) ? { creativeWorkStatus: 'Draft' } : {}),
+      isAccessibleForFree: true,
+      encoding: { '@type': 'MediaObject', contentUrl: s.pdf, encodingFormat: 'application/pdf' },
+      subjectOf: { '@type': 'WebPage', url: s.about, name: `About ${s.title.split(':')[0].trim()}` },
+    },
+    { '@type': 'Person', '@id': `${BASE}/#david-charlot`, name: 'David Charlot', affiliation: { '@id': 'https://openie.dev/#org' } },
+    { '@type': 'Organization', '@id': 'https://openie.dev/#org', name: 'Open Interface Engineering, Inc.', alternateName: 'OpenIE', url: 'https://openie.dev' },
+    { '@type': 'WebSite', '@id': `${BASE}/#site`, name: 'OpenIE Research', url: `${BASE}/`, publisher: { '@id': 'https://openie.dev/#org' }, inLanguage: 'en' },
+  ],
+};
+---
+<script type="application/ld+json" is:inline set:html={JSON.stringify(doc)} />

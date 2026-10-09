@@ -1,5 +1,6 @@
 ---
 import Layout from './Layout.astro';
+import StudyJsonLd from '../components/StudyJsonLd.astro';
 import 'katex/dist/katex.min.css';
 
 interface Props {
@@ -43,6 +44,7 @@ const toc = [
 ---
 
 <Layout title={title} description={description ?? deck}>
+  {paperId && <StudyJsonLd slot="head" id={paperId} />}
   <article class="px-6 md:px-10 pt-16 md:pt-20 pb-24">
     <div class="max-w-6xl mx-auto grid lg:grid-cols-[minmax(0,1fr)_220px] gap-10 lg:gap-14">
       <div class="min-w-0">

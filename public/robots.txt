@@ -1,0 +1,5 @@
+# research.openie.dev
+User-agent: *
+Allow: /
+
+Sitemap: https://research.openie.dev/sitemap.xml

@@ -1,0 +1,124 @@
+{
+  "catalog": "https://research.openie.dev/",
+  "glossary": "https://research.openie.dev/glossary/",
+  "studies": [
+    {
+      "id": "mol",
+      "title": "Mixture of Limits: Navigation Law for Computer Intelligence",
+      "kind": "Research study",
+      "url": "https://research.openie.dev/papers/mol/",
+      "pdf": "https://research.openie.dev/pdfs/mol.pdf",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Mixture of Limits is the philosophy. It names floors past which more tokens, parameters, or joules stop buying verifiable progress on a task. Compression into predictive formulas beats excess enumeration. The neural network is a residual leaf, off by default. The reference path runs in software, and its energy figures are labeled estimates.",
+      "about": "https://research.openie.dev/about/mol/",
+      "keywords": [
+        "Mixture of Limits",
+        "value of information",
+        "Landauer limit",
+        "navigation law",
+        "computer intelligence"
+      ]
+    },
+    {
+      "id": "ni",
+      "title": "Notational Intelligence as Commit Law",
+      "kind": "Research study",
+      "url": "https://research.openie.dev/papers/ni/",
+      "pdf": "https://research.openie.dev/pdfs/ni.pdf",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Notational Intelligence treats permission to act as a formal object. A proposal may not authorize itself. The software reference, Wise Computer Automation (WCA), commits or refuses at irreversible actions and records each decision under a fixed schema. Energy is analytical accounting, not board power.",
+      "about": "https://research.openie.dev/about/ni/",
+      "keywords": [
+        "Notational Intelligence",
+        "commit law",
+        "refusal",
+        "irreversible actions",
+        "Wise Computer Automation"
+      ]
+    },
+    {
+      "id": "satiation",
+      "title": "Satiation and Scarcity after Free AI",
+      "kind": "Research study",
+      "url": "https://research.openie.dev/papers/satiation/",
+      "pdf": "https://research.openie.dev/pdfs/satiation.pdf",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Satiation defines when a loop of work or care is done. Once a stated completeness test holds, further calls add no value, and calls that undo it are harm. Falling inference prices do not mean free energy, free actuation, or unbounded value after a chore is complete.",
+      "about": "https://research.openie.dev/about/satiation/",
+      "keywords": [
+        "satiation",
+        "scarcity",
+        "bliss point",
+        "inference pricing",
+        "completeness"
+      ]
+    },
+    {
+      "id": "mei",
+      "title": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus",
+      "kind": "Research study",
+      "url": "https://research.openie.dev/papers/mei/",
+      "pdf": "https://research.openie.dev/pdfs/mei.pdf",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Metabolic Intelligence is the AI product class. A fixed energy budget is the physical condition of the best answer, not a cheaper one. Work that would break the budget is refused or deferred. It spans coin-cell tags at the edge to a resource-optimized central datacenter. It runs on any compute fabric, and its product home is Klere (klere.ai), the maker of the Energy Processing Unit (EPU).",
+      "about": "https://research.openie.dev/about/mei/",
+      "keywords": [
+        "Metabolic Intelligence",
+        "energy budget",
+        "edge AI",
+        "Klere",
+        "Energy Processing Unit"
+      ]
+    },
+    {
+      "id": "jouleos",
+      "title": "The Search for JouleOS",
+      "kind": "Research study (review and design guide)",
+      "url": "https://research.openie.dev/papers/jouleos/",
+      "pdf": "https://research.openie.dev/pdfs/jouleos.pdf",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Existing compute fabric treats the floor as fixed, and agents are wrapped on top of it. Energy to run is not yet the condition of a commit. Secure compute requires one law, one meter, and one refusal. That requirement is the search for a design like JouleOS, built on one intent stream and a WebAssembly runtime.",
+      "about": "https://research.openie.dev/about/jouleos/",
+      "keywords": [
+        "JouleOS",
+        "secure compute",
+        "WebAssembly",
+        "energy metering",
+        "operating systems"
+      ]
+    },
+    {
+      "id": "spellcheck",
+      "title": "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)",
+      "kind": "Economic opinion",
+      "url": "https://research.openie.dev/papers/spellcheck/",
+      "pdf": "https://research.openie.dev/pdfs/spellcheck.pdf",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "People used to pay a premium for spell check. Now it is free and bundled into the editor, the browser, and the phone. That is what happens when technology is built for global access, for more than 7 billion people, instead of priced by scarcity for fewer than 500 million. Energy to run is what remains.",
+      "about": "https://research.openie.dev/about/spellcheck/",
+      "keywords": [
+        "spell check",
+        "global access",
+        "commoditization",
+        "economics of AI"
+      ]
+    },
+    {
+      "id": "agency",
+      "title": "The Universal Law of Agency",
+      "kind": "Research track",
+      "url": "https://research.openie.dev/papers/agency/",
+      "pdf": "https://research.openie.dev/pdfs/agency.pdf",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Law first, kinematics second. Nothing is an agent until the Universal Law of Agency is met. The kinematic laws bound how fast agency moves per joule. Intelligence is the calculus of agency: a derivative read in hindsight off a completed run, written as iota = dX/dJ. Energy to run is the only true metric of computer intelligence.",
+      "about": "https://research.openie.dev/about/agency/",
+      "keywords": [
+        "Universal Law of Agency",
+        "kinematics of agency",
+        "intelligence",
+        "thermodynamics of computation",
+        "joules"
+      ]
+    }
+  ]
+}
