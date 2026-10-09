@@ -33,9 +33,9 @@
       Shannon, Landauer, Howard, Kolmogorov and related floors already name those bounds as settled theory. The remaining bottleneck is applied math and hardware embodiment.
       Study §8.4-§8.14: SOTA at the plateau under Mixture of Limits—once VoI is zero past the floor, optimize energy/compute (Lookup → Formula → Solver → Model LAST). Latents, Logical Intelligence (EBM + LLM + latent), World Labs, test-time, SSM/MoE efficiency, and plateau techniques (YOCO, DeepSeek-V4.1-Flash, HySparse2 / MiMo, Qwen, Kimi, Sarvam, …) are implementation options for plateau spend; floors still bind. Field KV bytes and API prices ≠ soft-ref measured_j.
       Study §11: dual-phase front door (bounded TinyML/transducer → typed AST, then cascade). Perception is a front gear; Model LAST stays last. Measurement tiers 0/1/2; only Metered populates measured_j; board_synth_claimed=false.
-      Catalog triad (Navigation / Commit / Economic Reality of Satiation): <a href="/papers/mol/">Mixture of Limits</a>, <a href="/papers/ni/">Notational Intelligence as Commit Law</a>, <a href="/papers/satiation/">Satiation and Scarcity after Free AI</a>. See <a href="/#companion-laws">catalog triad</a>. OpenIE map (named in the study intro): <a href="https://stack.openie.dev">stack</a>, <a href="https://compute.openie.dev">compute</a>, <a href="https://knowledge.openie.dev">knowledge</a>, <a href="https://synthesis.openie.dev">synthesis</a>, <a href="https://research.openie.dev">research</a>—Mixture of Limits is the navigation law across that family.</p>
+      Catalog triad (Navigation / Commit / Economic Reality of Satiation): <a href="/papers/gates/#part-ii-the-cascade-mixture-of-limits">Mixture of Limits</a>, <a href="/papers/gates/">Notational Intelligence as Commit Law</a>, <a href="/papers/satiation/">Satiation and Scarcity after Free AI</a>. See <a href="/#companion-laws">catalog triad</a>. OpenIE map (named in the study intro): <a href="https://stack.openie.dev">stack</a>, <a href="https://compute.openie.dev">compute</a>, <a href="https://knowledge.openie.dev">knowledge</a>, <a href="https://synthesis.openie.dev">synthesis</a>, <a href="https://research.openie.dev">research</a>—Mixture of Limits is the navigation law across that family.</p>
   </div>
-  <p class="subtitle">Read the study at <a href="/papers/mol/">/papers/mol/</a>.
+  <p class="subtitle">Read the study at <a href="/papers/gates/#part-ii-the-cascade-mixture-of-limits">/papers/gates/#part-ii-the-cascade-mixture-of-limits</a>.
     Companion commit figures: <a href="../fpga-sim/">/living/fpga-sim/</a> (NI Stage B/C; energy rules unchanged).</p>
 
   <nav class="toc" aria-label="Figure TOC">
@@ -67,7 +67,7 @@
 
   <section id="mol-diag-01" class="figure-block">
     <h2><span class="id">mol-diag-01</span> How the cascade works</h2>
-    <p class="subtitle">Supports the Mixture of Limits cascade claim in <a href="/papers/mol/#2-law-floors-where-more-bits-stop-buying-outcomes">/papers/mol/</a> §2 and §4.</p>
+    <p class="subtitle">Supports the Mixture of Limits cascade claim in <a href="/papers/gates/#2-law-floors-where-more-bits-stop-buying-outcomes">/papers/gates/#part-ii-the-cascade-mixture-of-limits</a> §2 and §4.</p>
     <pre class="mono">Lookup → Formula → Solver/settle → Model LAST</pre>
     <p>When the grammar covers the request, the system stops before opening the model.</p>
 
@@ -83,7 +83,7 @@
 
   <section id="mol-diag-02" class="figure-block">
     <h2><span class="id">mol-diag-02</span> Named floors</h2>
-    <p class="subtitle">Supports the named-floors table in <a href="/papers/mol/">/papers/mol/</a> (VoI, grammar, energy, certificate, settle-refuse).</p>
+    <p class="subtitle">Supports the named-floors table in <a href="/papers/gates/#part-ii-the-cascade-mixture-of-limits">/papers/gates/#part-ii-the-cascade-mixture-of-limits</a> (VoI, grammar, energy, certificate, settle-refuse).</p>
     <p>VoI stop. Grammar coverage. Energy (Landauer estimate). <code>efa_certificate</code>. <code>settle_refuse</code>. <code>primitive_gap</code>.</p>
 
     <figure class="living-media" data-fig="mol-diag-02">
@@ -98,7 +98,7 @@
 
   <section id="mol-diag-03" class="figure-block">
     <h2><span class="id">mol-diag-03</span> Commit or refuse, then issue a receipt</h2>
-    <p class="subtitle">Supports close shape shared with <a href="/papers/ni/">Notational Intelligence</a>; navigation side in <a href="/papers/mol/">/papers/mol/</a>.</p>
+    <p class="subtitle">Supports close shape shared with <a href="/papers/gates/">Notational Intelligence</a>; navigation side in <a href="/papers/gates/#part-ii-the-cascade-mixture-of-limits">/papers/gates/#part-ii-the-cascade-mixture-of-limits</a>.</p>
     <pre class="mono">propose → certify → commit|refuse → receipt
 claim.* / act.* / close.* / receipt.*
 ModelGenerated is not Deterministic evidence
@@ -117,7 +117,7 @@ refuse = lawful success + receipt</pre>
 
   <section id="mol-tab-01" class="figure-block">
     <h2><span class="id">mol-tab-01</span> How Mixture of Limits differs from MoE</h2>
-    <p>Short contrast from paper <a href="/papers/mol/#9-mixture-of-limits-is-not-moe-and-the-model-to-model-sota-table">§9</a>. Field systems optimize which neural generator runs. Mixture of Limits differs from Mixture-of-Experts (MoE) in the decision it makes: it asks whether generation should run at all. The full model-to-model SOTA table and verified cites live in the study. No board joules are asserted here.</p>
+    <p>Short contrast from paper <a href="/papers/gates/#9-mixture-of-limits-is-not-moe-and-the-model-to-model-sota-table">§9</a>. Field systems optimize which neural generator runs. Mixture of Limits differs from Mixture-of-Experts (MoE) in the decision it makes: it asks whether generation should run at all. The full model-to-model SOTA table and verified cites live in the study. No board joules are asserted here.</p>
 
     <figure class="living-media" data-fig="mol-tab-01">
       <video autoplay muted loop playsinline controls poster="media/mol-tab-01-not-moe.gif"
@@ -125,7 +125,7 @@ refuse = lawful success + receipt</pre>
         <source src="media/mol-tab-01-not-moe.webm" type="video/webm"/>
         <source src="media/mol-tab-01-not-moe.mp4" type="video/mp4"/>
       </video>
-      <figcaption class="caption">Illustrative Manim figure. <code>estimated_j</code> is labeled. Soft-ref keeps <code>measured_j=None</code>. <code>board_synth_claimed=false</code>. No meter reading is reported here. See the table below and <a href="/papers/mol/#9-mixture-of-limits-is-not-moe-and-the-model-to-model-sota-table">/papers/mol/ §9</a>.</figcaption>
+      <figcaption class="caption">Illustrative Manim figure. <code>estimated_j</code> is labeled. Soft-ref keeps <code>measured_j=None</code>. <code>board_synth_claimed=false</code>. No meter reading is reported here. See the table below and <a href="/papers/gates/#9-mixture-of-limits-is-not-moe-and-the-model-to-model-sota-table">/papers/gates/#part-ii-the-cascade-mixture-of-limits §9</a>.</figcaption>
     </figure>
     <table>
       <thead>
@@ -139,12 +139,12 @@ refuse = lawful success + receipt</pre>
         <tr><td>Success metric</td><td>Tokens/s, cost@quality, speculative speedup</td><td>Certified commit + typed ReplayClass + receipt</td></tr>
       </tbody>
     </table>
-    <p class="caption">Analytical and catalog estimates are not board power. No meter reading is reported here. See <a href="/papers/mol/#9-mixture-of-limits-is-not-moe-and-the-model-to-model-sota-table">/papers/mol/ §9</a>.</p>
+    <p class="caption">Analytical and catalog estimates are not board power. No meter reading is reported here. See <a href="/papers/gates/#9-mixture-of-limits-is-not-moe-and-the-model-to-model-sota-table">/papers/gates/#part-ii-the-cascade-mixture-of-limits §9</a>.</p>
   </section>
 
   <section id="mol-tab-02" class="figure-block">
     <h2><span class="id">mol-tab-02</span> How proof status maps to claims</h2>
-    <p>Soft-ref <code>mol prove</code> stamps <code>VERIFIED</code> onto paper <code>claim.*</code> ids (see study <a href="/papers/mol/#6-prove--claim-map">§6</a>). Soft-ref-only residuals stay on the roadmap. Do not escalate them to measured results.</p>
+    <p>Soft-ref <code>mol prove</code> stamps <code>VERIFIED</code> onto paper <code>claim.*</code> ids (see study <a href="/papers/gates/#6-prove--claim-map">§6</a>). Soft-ref-only residuals stay on the roadmap. Do not escalate them to measured results.</p>
     <ul>
       <li><strong>Proven path:</strong> Unmetered (plus Estimated where μ, Landauer, or fuel appear); <code>board_synth_claimed=false</code></li>
       <li><strong>Soft-ref only (pointer):</strong> live RAPL/NVML as default close; live wgpu presence; Ferric / BMI loop; klere-vm FPGA pJ; full Periodic Stack 258 + μ calib; trained Model leaf. See §6.3</li>
@@ -175,7 +175,7 @@ refuse = lawful success + receipt</pre>
   </section>
 </main>
 <footer class="site-footer">
-  <p>OpenIE Research · living figures · not the paper · <a href="/papers/mol/">/papers/mol/</a></p>
+  <p>OpenIE Research · living figures · not the paper · <a href="/papers/gates/#part-ii-the-cascade-mixture-of-limits">/papers/gates/#part-ii-the-cascade-mixture-of-limits</a></p>
 </footer>
 </body>
 </html>

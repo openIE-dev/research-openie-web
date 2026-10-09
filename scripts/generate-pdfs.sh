@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Generate study PDFs into public/pdfs/.
 # Pandoc MathML does not draw KaTeX, so each PDF is the built paper
-# article (dist/papers/<id>/index.html) plus the existing paper header.
+# article (dist/papers/<id>/index.html, or dist/products/<id>/ for the
+# product white papers) plus the existing paper header.
 # Run pnpm build first.
 #
 # Math layout: the built HTML is KaTeX markup from the katex copy that
@@ -77,8 +78,9 @@ echo "KaTeX stylesheet: $KATEX_CSS"
 
 gen_one() {
   local id="$1"
-  local src="$ROOT/src/content/papers/${id}.md"
-  local built="$ROOT/dist/papers/${id}/index.html"
+  local dir="${2:-papers}"
+  local src="$ROOT/src/content/${dir}/${id}.md"
+  local built="$ROOT/dist/${dir}/${id}/index.html"
   local html="$ROOT/.pdf-build/${id}.html"
   local pdf="$OUT/${id}.pdf"
   local katex_css="$KATEX_CSS"
@@ -92,13 +94,13 @@ gen_one() {
     exit 1
   fi
 
-  python3 - "$src" "$built" "$html" "$id" "$CSS" "$katex_css" << 'PY'
+  python3 - "$src" "$built" "$html" "$id" "$CSS" "$katex_css" "$dir" << 'PY'
 import html as html_lib
 import re
 import sys
 from pathlib import Path
 
-src, built, out, id_, css, katex_css = sys.argv[1:]
+src, built, out, id_, css, katex_css, dir_ = sys.argv[1:]
 raw = Path(src).read_text()
 fm = ""
 if raw.startswith("---"):
@@ -151,15 +153,31 @@ if id_ == "spellcheck":
 elif id_ == "agency":
     measure = (
         '<div class="measurement">\n'
-        "<strong>Measurement.</strong> Research track, not a journal final.\n"
+        "<strong>Measurement.</strong> Research paper, not a journal final.\n"
         "Theorems, experiments and positions are cited from their sources. Estimates are never measured_j.\n"
         "No board power is claimed. No fabricated citations.\n"
+        "</div>\n"
+    )
+elif id_ == "gates":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research paper, not a journal final.\n"
+        "One board result: AMD Kria KV260 readings from the onboard INA260, board level, not core rail (Section I.3.7).\n"
+        "All other energy figures are OpCounter analytical estimates, not board power. No fabricated citations.\n"
+        "</div>\n"
+    )
+elif dir_ == "products":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Product white paper, kept apart from the research catalog. Not a journal final.\n"
+        "Energy figures from the software reference are OpCounter analytical estimates, not board power.\n"
+        "We have not synthesized or metered an FPGA board for this white paper. No fabricated citations.\n"
         "</div>\n"
     )
 else:
     measure = (
         '<div class="measurement">\n'
-        "<strong>Measurement.</strong> Research study, not a journal final.\n"
+        "<strong>Measurement.</strong> Research paper, not a journal final.\n"
         "Energy figures from the software reference are OpCounter analytical estimates, not board power.\n"
         "We have not synthesized or metered an FPGA board. No fabricated citations.\n"
         "</div>\n"
@@ -169,7 +187,7 @@ header = (
     "<h1>" + html_lib.escape(title) + "</h1>\n"
     '<div class="meta">\n<strong>' + html_lib.escape(author) + "</strong><br/>\n"
     + html_lib.escape(status) + " · OpenIE research.openie.dev<br/>\n"
-    + "https://research.openie.dev/papers/" + html_lib.escape(id_) + "/ · PDF https://research.openie.dev/pdfs/" + html_lib.escape(id_) + ".pdf\n"
+    + "https://research.openie.dev/" + dir_ + "/" + html_lib.escape(id_) + "/ · PDF https://research.openie.dev/pdfs/" + html_lib.escape(id_) + ".pdf\n"
     + "</div>\n"
     + measure
     + "<blockquote>" + html_lib.escape(deck) + "</blockquote>\n"
@@ -202,11 +220,13 @@ PY
 }
 
 
-gen_one ni
-gen_one satiation
-gen_one mol
-gen_one mei
-gen_one spellcheck
-gen_one jouleos
 gen_one agency
+gen_one gates
+gen_one satiation
+gen_one spellcheck
+gen_one mei products
+gen_one jouleos products
+# Earlier addresses: Notational Intelligence and Mixture of Limits are Parts I and II of gates.
+cp "$OUT/gates.pdf" "$OUT/ni.pdf"
+cp "$OUT/gates.pdf" "$OUT/mol.pdf"
 echo 'PDF generation complete'
