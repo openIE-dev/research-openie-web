@@ -21,7 +21,10 @@ import run2                                              # pilot procedure and r
 from agency_run.agents2 import Calib2, episode2
 
 ARMS, LEVELS, SEEDS = run2.ARMS, run2.LEVELS, run2.SEEDS
-P, R = 'pilot_jetson', 'results_jetson'
+PART = os.environ.get('JETSON_PART', 'A')              # A: RAPL per read; B: RAPL-calibrated cycles (amendment 1)
+P, R = ('pilot_jetson', 'results_jetson') if PART == 'A' else ('pilot_jetson_cyc', 'results_jetson_cyc')
+if PART == 'B':
+    meter.MODE = 'cyc'
 AGENT_CPU = 4
 QUIET_OTHERS_CORES = 0.5          # other processes' busy CPU, in cores
 GATE_MAX_S, BASE_S = 5.0, 2.0     # per-block quiet gate (max wait) and idle baseline
@@ -146,6 +149,10 @@ def pilot():
            'freq': freq_state(), 'avg_freq_agent_cpu_khz_before': avg_freq()}
     env['gate'] = gate(); base = window(10.0); env['idle_baseline'] = base
     meter.set_baseline(base['package_w'])
+    if PART == 'B':
+        env['calibration'] = calibrate()
+        meter.C_J_PER_CYCLE = env['calibration']['c_j_per_cycle']
+        env['calibration']['idle_after'] = window(10.0)
     run2.P, run2.R, run2.PsSampler = P, R, _NoPs
     t0 = time.time(); run2.pilot2(); env['pilot_s'] = time.time() - t0
     env['avg_freq_agent_cpu_khz_after'] = avg_freq()
@@ -153,13 +160,49 @@ def pilot():
     json.dump(env, open(f'{P}/env.json', 'w'), indent=1, default=str)
 
 
+def calibrate(base_w=None, rounds=8, idle_s=2.0, active_s=3.0, tries=3):
+    """Part B: c = sum over rounds of (package joules - P_idle x T) / sum of agent cycles.
+    Rounds alternate idle (agent sleeping) and active (every gear on every calibration
+    puzzle in a loop); P_idle for an active segment is the mean of the idle segments
+    before and after it, which cancels linear drift of other load. Up to 3 tries if
+    the summed net is not positive."""
+    from agency_run.sudoku import GEARS, ORDER
+    calib = run2.load('calib'); rng = random.Random(7)
+    for attempt in range(tries):
+        idle = [window(idle_s)]; segs = []
+        for k in range(rounds):
+            L = Load(); a = meter.read_all(); c0 = meter._cycles(); n = 0
+            t_end = time.perf_counter() + active_s
+            while time.perf_counter() < t_end:
+                for t in calib:
+                    for g in ORDER:
+                        GEARS[g](t['grid'], rng=rng); n += 1
+            c1 = meter._cycles(); b = meter.read_all(); d = meter.diff_all(a, b); oc = L.others_cores()
+            idle.append(window(idle_s))
+            pw = (idle[-2]['package_w'] + idle[-1]['package_w']) / 2
+            segs.append({'seconds': d['seconds'], 'package_gross_j': d['package-0_j'], 'core_gross_j': d.get('core_j'),
+                         'idle_w': pw, 'net_j': d['package-0_j'] - pw * d['seconds'], 'cycles': c1 - c0,
+                         'gear_runs': n, 'others_cores': oc})
+        net = sum(x['net_j'] for x in segs); cyc = sum(x['cycles'] for x in segs)
+        out = {'attempt': attempt + 1, 'rounds': segs, 'idle_w': [x['package_w'] for x in idle],
+               'idle_others_cores': [x['others_cores'] for x in idle],
+               'package_net_j': net, 'cycles': cyc, 'c_j_per_cycle': net / cyc,
+               'agent_net_w': net / sum(x['seconds'] for x in segs)}
+        if out['c_j_per_cycle'] > 0:
+            return out
+    raise SystemExit('calibration failed: net package joules not positive in 3 tries')
+
+
 # ---------- main
 def main(quiet_flag='unknown'):
     os.makedirs(R, exist_ok=True)
     locked = json.load(open(f'{P}/locked.json')); calib = Calib2(locked); test = run2.load('test')
+    if PART == 'B':
+        meter.C_J_PER_CYCLE = json.load(open(f'{P}/env.json'))['calibration']['c_j_per_cycle']
     G = {'step_floor': locked['step_floor'], 'close_reserve': locked['close_reserve']}
     env = {'affinity': sorted(os.sched_getaffinity(0)), 'cycles_source': meter.CYCLES_SOURCE, 'meter': meter.METER,
-           'freq': freq_state(), 'quiet_window': quiet_flag}
+           'freq': freq_state(), 'quiet_window': quiet_flag, 'part': PART, 'meter_mode': meter.MODE,
+           'c_j_per_cycle': meter.C_J_PER_CYCLE}
     env['idle_pre'] = window(60.0)
     meter.set_baseline(env['idle_pre']['package_w'])
     warm = random.Random(0)
@@ -219,3 +262,5 @@ if __name__ == '__main__':
         main(sys.argv[2] if len(sys.argv) > 2 else 'unknown')
     elif m == 'ps':
         os.makedirs(R, exist_ok=True); ps_loop(f'{R}/load_ps.jsonl')
+    elif m == 'calibcheck':                 # print the calibration a pilot would use (no files)
+        c = calibrate(rounds=3); c.pop('rounds'); print(json.dumps(c))

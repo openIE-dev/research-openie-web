@@ -3,8 +3,10 @@
 # 1 save frequency settings, pin (turbo off, min = max = base on every CPU), trap restores on exit
 # 2 load sampler as its own process on CPU 19; probes for a quiet window (others <= 0.5 cores),
 #   every 90 s, at most MAXP probes, then runs anyway with quiet_window=no
-# 3 pilot on CPU 4; waits for pilot_jetson/COMMITTED (written after the pilot is committed in git)
-# 4 main run on CPU 4; analysis; frequency restored; files chowned to dcharlot
+# 3 part A (RAPL per read): pilot on CPU 4; waits for pilot_jetson/COMMITTED (written after the pilot is
+#   committed in git); main run on CPU 4; analysis
+# 4 part B (amendment 1, RAPL-calibrated cycle meter): same, pilot_jetson_cyc/, results_jetson_cyc/
+# 5 frequency restored; files chowned to dcharlot
 # Never stops, pauses or renices another process.
 set -u
 cd "$(dirname "$0")"
@@ -15,7 +17,7 @@ mkdir -p results_jetson pilot_jetson
 restore() {
   python3 run2_jetson.py freqrestore results_jetson/freq_orig.json > results_jetson/freq_restored.json
   touch results_jetson/STOP_PS; sleep 1; kill "${PSPID:-0}" 2>/dev/null
-  chown -R "$OWNER": results_jetson pilot_jetson
+  chown -R "$OWNER": results_jetson pilot_jetson results_jetson_cyc pilot_jetson_cyc 2>/dev/null
   echo "RESTORED $(date '+%H:%M:%S')"
 }
 trap restore EXIT
@@ -31,15 +33,23 @@ for i in $(seq 1 "$MAXP"); do
 done
 echo "QUIET=$QUIET start $(date '+%Y-%m-%d %H:%M:%S')"
 echo "$QUIET" > results_jetson/quiet_window.txt
-if [ ! -f pilot_jetson/locked.json ]; then
-  taskset -c 4 python3 run2_jetson.py pilot > results_jetson/pilot.log 2>&1 || { echo PILOT_FAILED; exit 1; }
-fi
-chown -R "$OWNER": pilot_jetson
-echo "PILOT_DONE $(date '+%H:%M:%S')"
-for i in $(seq 1 180); do [ -f pilot_jetson/COMMITTED ] && break; sleep 10; done
-[ -f pilot_jetson/COMMITTED ] || { echo NO_PILOT_COMMIT; exit 1; }
-echo "PILOT_COMMIT $(cat pilot_jetson/COMMITTED)"
-taskset -c 4 python3 run2_jetson.py main "$QUIET" > results_jetson/main.log 2>&1 || { echo MAIN_FAILED; exit 1; }
-echo "MAIN_DONE $(date '+%H:%M:%S')"
-taskset -c 19 python3 analyze2_jetson.py > results_jetson/analyze.log 2>&1 || echo ANALYZE_FAILED
+run_part() {  # $1 = A or B, $2 = pilot dir, $3 = results dir
+  export JETSON_PART=$1; mkdir -p "$3" "$2"
+  if [ ! -f "$2/locked.json" ]; then
+    taskset -c 4 python3 run2_jetson.py pilot > "$3/pilot.log" 2>&1 || { echo "PILOT_FAILED $1"; return 1; }
+  fi
+  chown -R "$OWNER": "$2" "$3"
+  echo "PILOT_DONE $1 $(date '+%H:%M:%S')"
+  for i in $(seq 1 180); do [ -f "$2/COMMITTED" ] && break; sleep 10; done
+  [ -f "$2/COMMITTED" ] || { echo "NO_PILOT_COMMIT $1"; return 1; }
+  echo "PILOT_COMMIT $1 $(cat "$2/COMMITTED")"
+  if [ ! -f "$3/env_main.json" ]; then
+    taskset -c 4 python3 run2_jetson.py main "$QUIET" > "$3/main.log" 2>&1 || { echo "MAIN_FAILED $1"; return 1; }
+  fi
+  echo "MAIN_DONE $1 $(date '+%H:%M:%S')"
+  taskset -c 19 python3 analyze2_jetson.py > "$3/analyze.log" 2>&1 || echo "ANALYZE_FAILED $1"
+  chown -R "$OWNER": "$2" "$3"
+}
+run_part A pilot_jetson results_jetson || exit 1
+run_part B pilot_jetson_cyc results_jetson_cyc || exit 1
 echo "DONE QUIET=$QUIET $(date '+%Y-%m-%d %H:%M:%S')"

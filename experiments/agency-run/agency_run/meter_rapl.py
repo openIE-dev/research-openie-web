@@ -43,6 +43,10 @@ for _n in ('intel-rapl:0:0', 'intel-rapl:0:1', 'intel-rapl:1'):
 _state = {'raw': None, 'acc': 0, 'sub_raw': {}, 'sub_acc': {}}
 P_IDLE_W = 0.0                      # set per block by set_baseline()
 PINNED_HZ = None
+# Part B of the jetson addendum (amendment 1): MODE = 'cyc' makes read()/joules()
+# return est_j = cycles x C_J_PER_CYCLE, C calibrated on RAPL over a long window.
+MODE = 'rapl'
+C_J_PER_CYCLE = None
 
 
 def set_baseline(watts):
@@ -90,13 +94,19 @@ def _cycles():
 
 
 def read():
-    """Return (package energy_nj accumulated, cycles, 0, t_ns)."""
+    """Return (energy_nj, cycles, 0, t_ns). rapl: accumulated package energy.
+    cyc: cycles x C_J_PER_CYCLE (est_j, RAPL-calibrated)."""
+    if MODE == 'cyc':
+        c = _cycles()
+        return (c * C_J_PER_CYCLE * 1e9, c, 0, time.perf_counter_ns())
     e = _energy_uj()
     return (e * 1000, _cycles(), 0, time.perf_counter_ns())
 
 
 def joules(a, b):
-    """Idle-subtracted package joules between two reads (reported_j)."""
+    """rapl: idle-subtracted package joules (reported_j). cyc: est_j."""
+    if MODE == 'cyc':
+        return (b[0] - a[0]) / 1e9
     return (b[0] - a[0]) / 1e9 - P_IDLE_W * (b[3] - a[3]) / 1e9
 
 

@@ -9,10 +9,14 @@ a side-by-side with Mac run 1. All joules are reported_j (RAPL on-chip
 model/sensor, package-0, idle-subtracted). measured_j is empty."""
 import json, math, statistics as st
 from collections import defaultdict
+import os
 import analyze2 as A
 
-A.P, A.RES = 'pilot_jetson', 'results_jetson'
+PART = os.environ.get('JETSON_PART', 'A')
+A.P, A.RES = ('pilot_jetson', 'results_jetson') if PART == 'A' else ('pilot_jetson_cyc', 'results_jetson_cyc')
 P, R = A.P, A.RES
+LABEL = {'A': 'Energy label: reported_j (Intel RAPL package-0 on-chip energy model/sensor, idle baseline power x time subtracted, agent pinned to CPU 4, one episode at a time).',
+         'B': 'Energy label: est_j (agent user cycles x c, c calibrated on Intel RAPL package-0 net of idle over a 20 s window in the pilot); the column says J reported for code reuse but every value is est_j. RAPL validates at block level below.'}[PART]
 
 
 def qs(v):
@@ -31,7 +35,7 @@ def main():
     env = json.load(open(f'{R}/env_main.json'))
     penv = json.load(open(f'{P}/env.json'))
     locked = json.load(open(f'{P}/locked.json'))
-    probes = [json.loads(l) for l in open(f'{R}/load_probe.jsonl')] if True else []
+    probes = [json.loads(l) for l in open('results_jetson/load_probe.jsonl')]
     J = {}
     # setup
     pin = env['freq']['cpus']
@@ -113,13 +117,25 @@ def main():
                           for k in out['conditions']}
     except FileNotFoundError:
         J['vs_mac_v1'] = None
+    if PART == 'B':
+        # R-F4 in part B (amendment 1): Kendall tau-b between episode est_j and the episode's RAPL
+        # package net (harness reads around the episode, minus block baseline x seconds), threshold 0.8.
+        xs = [(e['reported_j'], e['harness']['pkg_gross_j'] - e['harness']['base_w'] * e['harness']['seconds']) for e in eps]
+        import random as _r
+        sub = xs if len(xs) <= 4000 else _r.Random(3).sample(xs, 4000)
+        tau = A.kendall_tau_b([x[0] for x in sub], [x[1] for x in sub])
+        J['R-F4_part_B'] = {'tau_b_episode_est_vs_rapl_net': tau, 'n': len(sub), 'fired': tau < 0.8,
+                            'note': 'replaces analyze2 R-F4, which is identically 1 when reported_j is itself the cycle model'}
+        out['falsifiers']['R-F4'] = {'fired': tau < 0.8, 'claim': 'cycle-count est_j model usable for ranking (episode est_j vs RAPL net)', 'tau': tau}
+        J['calibration'] = penv.get('calibration')
     out['jetson'] = J
     json.dump(out, open(f'{R}/summary.json', 'w'), indent=1, default=str)
     md = open(f'{R}/summary.md').read().replace(
-        'Energy label: reported_j (macOS per-process kernel energy model).',
-        'Energy label: reported_j (Intel RAPL package-0 on-chip energy model/sensor, idle baseline power x time subtracted, agent pinned to CPU 4, one episode at a time).')
-    md = md.replace('# Summary', '# Summary: jetson-hub (second fabric), v2 protocol', 1)
-    md += '\n## Jetson additions (reported, fire nothing)\n\n```json\n' + json.dumps(J, indent=1, default=str) + '\n```\n'
+        'Energy label: reported_j (macOS per-process kernel energy model).', LABEL)
+    md = md.replace('# Summary', f'# Summary: jetson-hub (second fabric), v2 protocol, part {PART}', 1)
+    if PART == 'B':
+        md = md.replace(f"- R-F4: v2 fired=", f"- R-F4 (part B: episode est_j vs RAPL net, tau={J['R-F4_part_B']['tau_b_episode_est_vs_rapl_net']:.3f}, fired={J['R-F4_part_B']['fired']}); analyze2 value: fired=")
+    md += '\n## Jetson additions (reported; only R-F4_part_B fires, part B only)\n\n```json\n' + json.dumps(J, indent=1, default=str) + '\n```\n'
     open(f'{R}/summary.md', 'w').write(md)
     print(json.dumps({k: J[k] for k in ('crosscheck', 'per_act', 'rapl_quantisation')}, indent=1, default=str))
 

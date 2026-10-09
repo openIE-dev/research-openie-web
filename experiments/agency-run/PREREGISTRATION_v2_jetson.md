@@ -63,3 +63,18 @@ Per-act joules (all acts and confirmed acts), joules per bit and multiples of k_
 ## Prediction 1
 
 Not run, for the reasons in `PREREGISTRATION_v2.md`.
+
+## Amendment 1 (committed before any jetson pilot): part B, a RAPL-calibrated cycle meter
+
+Added after the commit above and before any pilot or run. Reason: a software test of the harness (scratch directory `/tmp/agency-smoke` on jetson-hub, unpinned frequency, CI load present, two seeds; its numbers are discarded and used for nothing below) showed that on this machine a gear act lasts about 0.01 to 6 ms (median episode about 0.07 ms) while RAPL package-0 updates about every 1 ms in steps of about 5 to 60 mJ. Two thirds of episodes saw no counter update. The per-read design above (now **part A**) therefore cannot resolve single acts: idle-subtracted pilot medians for J_g2 come out near zero or negative, the guard's open threshold exceeds most budgets, and R-F2 is expected to fire from quantisation alone. Part A runs exactly as written above; its outcome is reported as the meter-resolution result it is.
+
+**Part B** runs the same protocol a second time with a different agent meter, so the selection comparison is tested on this fabric at all:
+
+- The agent's meter (guard, budgets, J*, iota, every falsifier) is `est_j` = the agent thread's user cycles (perf, cpu_core 0x3c) x c. Selection code is unchanged; only the bound meter differs (`meter_rapl.MODE = 'cyc'`).
+- c is calibrated on RAPL in the part B pilot, before the gear pilot: 8 rounds of 3 s active (every gear on every calibration puzzle in a loop, agent pinned to CPU 4) alternating with 2 s idle; c = sum over rounds of (package joules minus the mean of the idle power before and after the round x seconds) / sum of cycles. Up to 3 tries if the sum is not positive; else part B stops. c is locked with the part B pilot (`pilot_jetson_cyc/env.json`) and committed before its main run.
+- Labels: every part B joule figure is `est_j` (RAPL-calibrated cycle model), not `reported_j`. RAPL figures logged per episode and per block stay `reported_j`. `measured_j` stays empty.
+- R-F4 in part B: analyze2's act-level test would compare the cycle model with itself, so it is replaced by Kendall's tau-b between each episode's est_j and the same episode's RAPL package net (harness reads around the episode minus that block's idle baseline x seconds), same threshold 0.8. All other falsifiers, thresholds and the paired-by-seed analysis are unchanged.
+- Block-level validation: sum of a block's episode est_j against the block's RAPL package net (idle-subtracted), and core net over package net.
+- Outputs: `pilot_jetson_cyc/`, `results_jetson_cyc/`. Same 40 seeds, budgets method (B in {0.5, 1, 2} x the part B pilot median g2 est_j per test puzzle), per-block gate and 2 s baseline, frequency pinning.
+
+Order: probes, part A pilot, part A pilot commit, part A main run, part B pilot, part B pilot commit, part B main run, frequency restored. The load sampler of both parts writes to `results_jetson/load_ps.jsonl`; the quiet-window probes are taken once, before part A.
