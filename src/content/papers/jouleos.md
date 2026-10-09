@@ -33,11 +33,11 @@ The OpenIE thesis is stated once and held for the rest of the file. Energy to ru
 
 ### Terms used here
 
-Soft-ref means the software reference path that proves a study law without board synthesis or package metering. Periodic Stack, replay class, value of information, evidence classes, and `board_synth_claimed` are defined on the shared [glossary](/glossary/). Working notes named below are unpublished unless a public URL is given. They are not proof by private path.
+Soft-ref means the software reference path that proves a study law without board synthesis or package metering. Periodic Stack, replay class, value of information, evidence classes, and `board_synth_claimed` are defined on the shared [glossary](/glossary/). Where a statement rests on the author's unpublished analysis, the text says so. It is a definition or a reading, not proof by private path.
 
-The review depends on an internal working note that drew the unsettled stack before any destination was named: `the OpenIE stack working note`, with the sift in `the OpenIE convergence working note`. Those files are working notes. They are not published papers. Where a fact lives only there, the working note is the source.
+The teaching order and the six contracts come from the author's unpublished analysis of the stack, drawn before any destination was named. Every placement of a named system rests on that system's own public page, cited where it appears.
 
-The standards that name the schedule, the law, the commit, and the isolation ladder are the Transaction Science page sources and the JouleContract draft: the `*-transaction-science-web` trees, and `JouleContract draft 0.3`. JouleOS is named where a solution of that kind is the answer the problems require.
+The standards that name the schedule, the law, the commit, and the isolation ladder are the public Transaction Science pages: [eoc.transaction.science](https://eoc.transaction.science/), [jcp.transaction.science](https://jcp.transaction.science/), [joulecontract.transaction.science](https://joulecontract.transaction.science/) and [sandbox.transaction.science](https://sandbox.transaction.science/). JouleOS is named where a solution of that kind is the answer the problems require.
 
 ---
 
@@ -67,7 +67,7 @@ OpenShell and OpenHuman are not the only members of the class. They are two name
 
 ## 3. The teaching line: silicon to human interface
 
-Before any product name, teach the line. The working note calls it the gospel stack. It is a teaching order, not a census of products. Bottom to top:
+Before any product name, teach the line. The author calls it the gospel stack. It is a teaching order, not a census of products. Bottom to top:
 
 1. Silicon
 2. Chip
@@ -84,7 +84,7 @@ Silicon is the material. The chip is that circuit as a part. The board is the ch
 
 Firmware is the first software written for that board. It brings the board up and talks to the devices on it. It is applied engineering. It is not a layer of the silicon.
 
-The instruction set is the contract the chip offers. It names the operations the chip will perform and the rules for registers, memory, and traps. Assembly sits beside that contract. It is text that names the chip's operations directly. On a host computer a compiler usually emits it. On a microcontroller it is often where the software product stops. The teaching line does not invent an eleventh numbered rung for assembly. The figure in the working note marks assembly beside the instruction set.
+The instruction set is the contract the chip offers. It names the operations the chip will perform and the rules for registers, memory, and traps. Assembly sits beside that contract. It is text that names the chip's operations directly. On a host computer a compiler usually emits it. On a microcontroller it is often where the software product stops. The teaching line does not invent an eleventh numbered rung for assembly. Assembly sits beside the instruction set.
 
 Hardware abstraction is software that hides board and chip differences from the software above it. Vendor documents do not all place it on a free-floating rung under the operating system. Microsoft's driver documentation places a hardware abstraction layer inside Windows. CMSIS and a vendor HAL such as the STM32CubeF4 HAL are libraries, not operating systems. The teaching line keeps David's order. The later contracts refuse to promote hardware abstraction into a seventh kind of thing.
 
@@ -96,7 +96,7 @@ Programs are the work. An agent is a program. It occupies this rung. It is not a
 
 The human interface is where a person meets that work: a screen, a keyboard, a pointer, a voice path, or a serial console. The teaching line ends at a person. Agents, sensors, and other machines are real clients of that computer. They are not rungs above the person. They are other stacks, or guests of a stack.
 
-Source for the ten-rung order and the placements above: `the OpenIE stack working note` sections 2, 3, and 7, with figures `01-gospel-stack` and `02-where-machines-stop`.
+Source for the ten-rung order: the author's unpublished stack analysis, sections 2, 3 and 7. Named systems are placed by their own public pages.
 
 ---
 
@@ -116,7 +116,7 @@ Assembly and a compiler are not two names for one rung. On the microcontroller l
 
 Firmware brings a particular board up. Hardware abstraction hides differences. An operating system manages the computer for other programs. One product can contain all three. Collapsing them is how the ten rooms look finished when they are not.
 
-Source: `the OpenIE stack working note` section 3.
+Source: the author's unpublished stack analysis, section 3. Named systems are placed by their own public pages.
 
 ---
 
@@ -172,7 +172,7 @@ Linux is a kernel. A Linux distribution is a packaged system around that kernel.
 
 Anyone who says "the operating system" and means all of those at once is using one rung for many jobs.
 
-Source: `the OpenIE stack working note` sections 4, 8, 9, 10, and 11, and figure `03-os-is-not-one-thing`.
+Source: the author's unpublished stack analysis, sections 4, 8, 9, 10, and 11. Named systems are placed by their own public pages.
 
 ### 5.12 Three names that stay unresolved
 
@@ -192,7 +192,7 @@ Extensions grow a family from inside: Intel AVX-512 is an extension of the Intel
 
 Translation sits between contracts. Rosetta, QEMU's Tiny Code Generator, box64, and FEX are that layer. Translation does not make two contracts the same. WebAssembly is a binary instruction format for a stack-based virtual machine. It is not the instruction set of a chip. WASI is a system interface for software compiled to WebAssembly. It is not an operating system.
 
-Source: `the OpenIE stack working note` sections 5, 8, and 11, and figure `04-isa-moves`.
+Source: the author's unpublished stack analysis, sections 5, 8, and 11. Named systems are placed by their own public pages.
 
 ---
 
@@ -202,7 +202,7 @@ The CUDA and PyTorch install documents a person is handed first lead with a deve
 
 Set that starting point against the earlier sections. The microcontroller column is a computer. seL4 is a kernel that can host Linux as a guest. ROS 2 is middleware. Teaching kernels keep being made. Instruction sets keep being revised. The AI install guide starts after those facts have been declared finished for the purpose of getting a toolchain running.
 
-Source: `the OpenIE stack working note` section 6 and figure `05-ai-treats-it-as-fixed`.
+Source: the author's unpublished stack analysis, section 6. Named systems are placed by their own public pages.
 
 ---
 
@@ -212,9 +212,9 @@ The working study drew the other ways, academia and research, another look, and 
 
 Jobs already separated include: host operating system, kernel, real-time kernel, verified or separation kernel, hypervisor, unikernel or library operating system, instruction-set contract, accelerator contract, translation layer, build system, distribution, middleware, hardware-abstraction library, teaching kernel, research kernel, human surface.
 
-Fame is not a source. A name appears because a project page, vendor page, university page, or standards page returned and said the job. Organizing by country or laboratory would invent a geography this study refuses. Critiques of a placement are class mechanisms: wrong job label, collapsed build into kernel, middleware called an operating system, guest drawn as if it owned silicon. We do not have gaps. We have class mechanisms that misname the work.
+Fame is not a source. A name appears because a project page, vendor page, university page, or standards page returned and said the job. Organizing by country or laboratory would invent a geography this study refuses. Critiques of a placement are class mechanisms: wrong job label, collapsed build into kernel, middleware called an operating system, guest drawn as if it owned silicon. 
 
-Source: `the OpenIE stack working note` sections 8 through 11 and figures `06-other-ways` through `09-loose-ends`.
+Source: the author's unpublished stack analysis, sections 8 through 11. Named systems are placed by their own public pages.
 
 ---
 
@@ -250,7 +250,7 @@ The teaching line ends where a person meets the work. That is a contract with a 
 
 Middleware is a conversation among programs. ROS 2 sits on an operating system. Hardware abstraction, in the Windows documents, sits inside the operating system; CMSIS and vendor HALs are libraries. Firmware is the first software on a particular board. A distribution is a packaging of the build and the law. None of these is a seventh contract you translate a chip into.
 
-Source: `the OpenIE convergence working note` and figure `10-convergence`.
+Source: the author's unpublished convergence analysis.
 
 ---
 
@@ -264,7 +264,7 @@ The energy budget is the envelope of the best answer, not a cheaper-answer trade
 
 All other factors collapse to zero. A new kernel that does not change what may run, what may commit, or what the meter records is a new name. The review is full of those names.
 
-Source: `the OpenIE convergence working note` sections 2 and 3.
+Source: the author's unpublished convergence analysis, sections 2 and 3.
 
 ---
 
@@ -276,29 +276,32 @@ A safety schema that does not speak these is another patch on a fixed floor. Tea
 
 Energy-Oriented Computing, written in full on first use and shortened to EOC only after that teaching, is the schedule. The page source states a four-stage pipeline: state-construct, retrieve, refine, check. The work is typed, grounded, done, and validated. A large language model is one refine operator among several, ordered last, reached when nothing cheaper has produced an answer that survives the check. The schedule is not tokens. The specification addendum states non-goals that include token economics: EOC does not denominate, bill, or reason in tokens.
 
-Source: unpublished working note (EOC Transaction Science page sources: Pipeline and Spec). Not a public URL in this study.
+Source: [eoc.transaction.science](https://eoc.transaction.science/), the pipeline and specification pages.
 
 ### 11.2 The Joule Context Protocol is the law
 
 The Joule Context Protocol, shortened to JCP only after this sentence, is the law for agentic action. A Grant binds a subject to a capability and a joule budget in one signed object. Child grants only narrow: less capability, less budget, sooner expiry, accumulated caveats. Tool output is data, never instructions. Authorization is decided by the runtime outside the model. Every decision seals as a signed JCR-1 receipt. A capability you cannot pay for is denied. An expenditure you are not capable of is denied. One check, made outside the model, sealed in a receipt.
 
-Source: unpublished working note (Joule Context Protocol Transaction Science page source). Not a public URL in this study.
+Source: [jcp.transaction.science](https://jcp.transaction.science/).
 
 ### 11.3 JouleContract is the commit
 
 JouleContract is the commit. The Transaction Science page source states the core object as precondition, postcondition, invariant, frame, and joule ceiling. The frame is the declared mutable footprint: everything the transition may touch. Everything outside it is implicitly invariant. The draft specification text at version 0.3.0 states precondition, postcondition, invariant, and joule ceiling as the four obligations in its core-object section, and inherits functional-safety, energy-management, and AI-governance canons into one receipt. The ceiling is an energy performance indicator against a declared baseline. Provenance tags travel with every joule figure. Estimator and unaccounted categories are not promoted into measured joules.
 
-Sources: unpublished working note (JouleContract Transaction Science page source); `JouleContract draft 0.3`. Not a public URL in this study.
+Source: [joulecontract.transaction.science](https://joulecontract.transaction.science/). The version 0.3.0 draft text is not yet published.
 
 ### 11.4 The sandbox standard is the S0 to S7 ladder
 
 The sandbox Transaction Science page defines an isolation ladder from S0 to S7: Bare, Capability, Sandbox, Partition, Unikernel, MicroVM, Confidential, Sovereign. The rule is the lowest rung that satisfies the work. Escalation is the escape hatch, not the entry point. Every resource a unit touches is explicitly granted. Every run emits a signed energy receipt with readings tagged HwShunt, ModelBased, or Estimator. Attestation states what image ran, at what tier, under what grants, on what hardware, for what cost. At confidential and sovereign rungs, hardware attestation and audit-chain links enter the statement.
 
-Source: unpublished working note (sandbox Transaction Science page source). Not a public URL in this study.
+Source: [sandbox.transaction.science](https://sandbox.transaction.science/).
 
 ### 11.5 Why a patch that omits these is still a patch
 
 OpenShell can sandbox, supervise, prove policy, and add BlueField Sentry without speaking EOC's schedule, JCP's metered grant, JouleContract's commit clauses, or the S0 to S7 ladder with honest meter tags. OpenHuman can jail tools and leave elevated operations on the host without making energy to run the refusal condition. Those are class mechanisms of patch-on-fixed-floor. They are useful engineering. They are not the destination this study is walking toward.
+
+**Energy as an operating system resource is not new.** ECOSystem made energy a first-class resource: it allocated a unit called currentcy to each task and stopped a task whose currentcy ran out (Zeng, Ellis, Lebeck and Vahdat, ASPLOS 2002, DOI:[10.1145/605397.605411](https://doi.org/10.1145/605397.605411)). Cinder gave every principal an energy reserve, fed by taps, and let reserves be delegated and subdivided like capabilities (Roy et al., EuroSys 2011, DOI:[10.1145/1966445.1966459](https://doi.org/10.1145/1966445.1966459)). Odyssey lowered the fidelity of an application's data to meet a battery goal (Flinn and Satyanarayanan, SOSP 1999, DOI:[10.1145/319151.319155](https://doi.org/10.1145/319151.319155)). EnerJ typed data as precise or approximate so the approximate part could run on cheaper hardware (Sampson et al., PLDI 2011, DOI:[10.1145/1993498.1993518](https://doi.org/10.1145/1993498.1993518)). Barroso and Hölzle asked servers to draw power in proportion to work done (*Computer* 40(12), 2007, DOI:[10.1109/MC.2007.443](https://doi.org/10.1109/MC.2007.443)). Linux places tasks by an energy model of the processor (Energy Aware Scheduling, [kernel docs](https://docs.kernel.org/scheduler/sched-energy.html)) and caps power through the powercap framework. Each of these budgets or reduces energy. None of them makes a commit conditional on a certified result under a metered joule bound. ECOSystem and Cinder stop a task when its budget is gone. JouleContract refuses the commit when the certificate fails or the ceiling would be crossed, and seals the refusal in a receipt. That pairing of correctness gate and joule ceiling, decided outside the program, is what the standards above add.
+
 
 ---
 
@@ -313,9 +316,9 @@ A solution like JouleOS is what those problems require. Hardware, runtime, langu
 
 JouleOS is described in its README as the Unified Design Architecture runtime realized on commodity hardware. Hardware, runtime, language, and surface are one co-designed artifact in the thesis. The project does not own the silicon, so the runtime measures where it is and lowers accordingly: one intent intermediate representation, specialized at boot against a control vector.
 
-The tree is Rust. The trusted computing base is the `joule-os-kernel` crate under a stated line-count ceiling in THEOREM. Ahead-of-time interpretation ships in the trusted computing base. Just-in-time compilation via Cranelift is a sibling crate outside that base. Cranelift requires the standard library, so it cannot link into the bare-metal `no_std` kernel by construction. That link refusal is the structural proof, not a policy memo.
+The tree is Rust. The trusted computing base is the `joule-os-kernel` crate under a stated line-count ceiling in THEOREM. Ahead-of-time interpretation ships in the trusted computing base. Just-in-time compilation via Cranelift is a sibling crate outside that base. Cranelift requires the standard library, so it cannot link into the bare-metal `no_std` kernel by construction. That link refusal is the structural proof, not a policy memo. It is a proof of separation by the linker. It is not a machine-checked proof of the kernel. The seL4 proof covers functional correctness of the kernel's C code against its specification (Klein et al., SOSP 2009, DOI:[10.1145/1629575.1629596](https://doi.org/10.1145/1629575.1629596)). It says nothing about energy. No kernel today carries a proof about joules.
 
-Source: `the JouleOS development tree/README.md`; `the JouleOS development tree/docs/ARCHITECTURE.md`; `the JouleOS development tree/os-notes/THEOREM.md`.
+Source: [jos.transaction.science](https://jos.transaction.science/) and the JouleOS project documentation (README, architecture notes, kernel theorem notes). The source tree is not public. Statements here are project claims.
 
 ### 12.2 Single-level store
 
@@ -325,13 +328,15 @@ The in-memory bytes are the durable bytes. There is no serialize and deserialize
 
 A cascade of refine families is cost-ordered cheapest first per EOC version 0.2. The README places Lawful near one microjoule and LlmInLoop near five millijoules, with intermediate families between them. The dispatcher picks the cheapest family that can satisfy. Check is deterministic: schema, constraint evaluation, provenance verify. There is no large-language-model-as-judge. The project's own README claims a roughly one-hundred-thousand-fold lower joules-per-work ratio against an LLM-everything corpus. That figure is a **project claim** from the JouleOS README. It is not a measurement of this study. This study does not supply a methodology, baseline workload, hardware, or task-complexity normalization for that ratio. Soft-ref path: estimates are not `measured_j`.
 
+A runtime can bound work without a meter. Wasmtime's fuel counts executed WebAssembly operations and traps when the fuel is spent ([Wasmtime docs](https://docs.wasmtime.dev/examples-interrupting-wasm.html)). Fuel is an instruction count. It is not joules. One unit of fuel can cost very different energy depending on memory traffic, frequency and the fabric it runs on. A joule ceiling needs a meter, or an estimate labeled as one.
+
 ### 12.4 Capability ledger
 
 Capabilities are unforgeable by construction. Only the kernel's ledger issues a typed capability. Delegation is intersection. Revocation is constructive via generation. THEOREM states axioms and invariants the conformance suite enforces. Eight typed capability classes gate I/O paths. Authority is not ambient.
 
 ### 12.5 Energy oracle with provenance
 
-The energy oracle reads where the platform exposes a counter: Apple silicon process energy interfaces on M-class hardware, RAPL on Linux, and an estimator elsewhere. The heads-up display tags the source. Estimator tags are not measured joules. Work classes for joules-per-work are defined per class and are not summed across classes. That non-fungibility is an invariant in the project's notes.
+The energy oracle reads where the platform exposes a counter: Apple silicon process energy interfaces on M-class hardware, RAPL on Linux, and an estimator elsewhere. The heads-up display tags the source. Estimator tags are not measured joules. RAPL itself is part model on some processors. Schöne and colleagues found that RAPL on AMD Zen 2 is modeled, not measured. It misses the effect of operand values, and they judge it unsuitable for optimizing total energy (arXiv:[2108.00808](https://arxiv.org/abs/2108.00808)). So a RAPL reading carries its processor family in the provenance tag. Work classes for joules-per-work are defined per class and are not summed across classes. That non-fungibility is an invariant in the project's notes.
 
 ### 12.6 Unified Design Architecture, and the runtime that is seen
 
@@ -341,7 +346,7 @@ WebAssembly, defined above, is a binary instruction format for a stack-based vir
 
 The bare-metal kernel is the coordinate where the law is native. The trusted computing base links without the host standard library. The just-in-time compiler stays outside that base. The kernel is not a second product. The fabric is other machines. The seen artifact is one module, one receipt, and one refuse.
 
-Source: `os-notes/UDA.md`, `os-notes/LOWERING.md`, and `crates/joule-os-wasm/Cargo.toml` in the JouleOS tree.
+Source: [jos.transaction.science](https://jos.transaction.science/) and the JouleOS project documentation on Unified Design Architecture, lowering, and the WebAssembly runtime crate. The source tree is not public.
 
 ---
 
@@ -366,31 +371,33 @@ Energy to run is the only true metric of computer intelligence. All other factor
 
 ## 14. Claim ledger
 
-Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file says it), Project claim (the named project's own figure or status), OpenIE thesis, Working-note fact (stated in the internal stack study or convergence note).
+Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file says it), Project claim (the named project's own figure or status), OpenIE thesis, Author's analysis (stated in the author's unpublished stack or convergence analysis).
 
 | Claim | Kind | Source |
 | --- | --- | --- |
-| Computers are hardware. Software is applied engineering under constraints. | Definition | Brief; `the OpenIE stack working note` §1 |
-| Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. | OpenIE thesis | Brief; `the OpenIE convergence working note` |
-| Mixture of Limits is the schedule, the meter, and the refusal. | Definition | `the OpenIE convergence working note` §2 |
-| Metabolic Intelligence is the envelope of the best answer inside the hardware energy budget, not a cheaper-answer trade, and has no offload-to-server rule. | Definition | `the OpenIE convergence working note` §2 |
-| Gospel order: silicon, chip, board, firmware, instruction set, hardware abstraction, operating system, compiler and runtime, programs, human interface. | Definition | `the OpenIE stack working note` §2 |
-| Assembly sits beside the instruction set, not as an eleventh numbered rung. | Definition | `the OpenIE stack working note` §2 |
-| Yocto is a build system; the kernel inside its images is Linux. | Working-note fact | `the OpenIE stack working note` §4 |
-| ROS 2 is middleware, not an operating system. | Working-note fact | `the OpenIE stack working note` §4 |
-| seL4 is a verified microkernel; kernel code is privileged-mode code. | Working-note fact | `the OpenIE stack working note` §4 |
-| Linux, XNU, and the Windows kernel are kernels (Windows named as on Microsoft's driver docs). | Working-note fact | `the OpenIE stack working note` §4 |
-| Six contracts: instruction, machine's law, build, guest, translation, human surface. Middleware, HAL, firmware, distribution are not a seventh. | Working-note fact | `the OpenIE convergence working note` |
-| Commercial HarmonyOS kernel, WeensyOS, and Taos remain unresolved. | Working-note fact | `the OpenIE stack working note` §11; `CONVERGENCE.md` §4 |
+| Computers are hardware. Software is applied engineering under constraints. | Definition | Author's definition |
+| Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. | OpenIE thesis | Author's thesis |
+| Mixture of Limits is the schedule, the meter, and the refusal. | Definition | Author's convergence analysis §2 |
+| Metabolic Intelligence is the envelope of the best answer inside the hardware energy budget, not a cheaper-answer trade, and has no offload-to-server rule. | Definition | Author's convergence analysis §2 |
+| Gospel order: silicon, chip, board, firmware, instruction set, hardware abstraction, operating system, compiler and runtime, programs, human interface. | Definition | Stack analysis §2 |
+| Assembly sits beside the instruction set, not as an eleventh numbered rung. | Definition | Stack analysis §2 |
+| Yocto is a build system; the kernel inside its images is Linux. | Author's analysis | Stack analysis §4 |
+| ROS 2 is middleware, not an operating system. | Author's analysis | Stack analysis §4 |
+| seL4 is a verified microkernel; kernel code is privileged-mode code. | Author's analysis | Stack analysis §4 |
+| Linux, XNU, and the Windows kernel are kernels (Windows named as on Microsoft's driver docs). | Author's analysis | Stack analysis §4 |
+| Six contracts: instruction, machine's law, build, guest, translation, human surface. Middleware, HAL, firmware, distribution are not a seventh. | Author's analysis | Convergence analysis |
+| Commercial HarmonyOS kernel, WeensyOS, and Taos remain unresolved. | Author's analysis | Stack analysis §11; convergence analysis §4 |
 | NVIDIA Open Agent Safety Platform / OpenShell announced 28 September 2026; sandbox, supervisor, policy, optional BlueField Sentry. | Sourced fact | https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell/ ; https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Launches-Open-Agent-Safety-Platform-to-Secure-Agents-From-Testing-to-Deployment/default.aspx |
 | OpenHuman is Rust, GPL-3.0, early beta; core on host; sandbox backends None / Local / Docker; ReadOnly resolves to None for jail enforcement; elevated tools leave the jail; README density figures are memory. | Sourced fact / Project claim | https://github.com/tinyhumansai/openhuman ; https://github.com/tinyhumansai/openhuman/pull/3261 |
-| EOC pipeline is state-construct, retrieve, refine, check; not tokens. | Working-note fact | unpublished EOC Transaction Science page sources |
-| JCP Grant binds capability to joule budget; child grants narrow; tool output is data; check outside the model; JCR-1 receipts. | Working-note fact | unpublished JCP Transaction Science page source |
-| JouleContract commit object includes pre, post, invariant, frame, joule ceiling (page source); v0.3 draft text states pre, post, inv, ceiling in §3. | Working-note fact | unpublished JouleContract page source; `JouleContract draft 0.3` |
-| Sandbox ladder S0 to S7; lowest rung that satisfies; meter tags HwShunt / ModelBased / Estimator; attestation. | Working-note fact | unpublished sandbox Transaction Science page source |
-| JouleOS: single-level store, EOC cascade, capability ledger, energy oracle with provenance, Rust, small TCB, AOT in TCB and JIT out, bare-metal vs hosted. | Project claim / Sourced fact | `the JouleOS development tree/README.md`, `docs/ARCHITECTURE.md`, `os-notes/THEOREM.md` |
-| JouleOS README Lawful ~1 µJ, LlmInLoop ~5 mJ, ~10^5× vs LLM-everything on a corpus. | Project claim (README only; not this study's measurement) | joule-os README |
-| Unified Design Architecture is one artifact lowered per measured coordinate. The WebAssembly runtime is the surface that is seen. A virtual machine or a container is a coordinate. The bare-metal kernel is where the law is native, not a second product. | Definition / design reading of the tree | joule-os `os-notes/UDA.md`, `os-notes/LOWERING.md`, `crates/joule-os-wasm/Cargo.toml` |
+| EOC pipeline is state-construct, retrieve, refine, check; not tokens. | Sourced fact | [eoc.transaction.science](https://eoc.transaction.science/) |
+| JCP Grant binds capability to joule budget; child grants narrow; tool output is data; check outside the model; JCR-1 receipts. | Sourced fact | [jcp.transaction.science](https://jcp.transaction.science/) |
+| JouleContract commit object includes pre, post, invariant, frame, joule ceiling (page source); v0.3 draft text states pre, post, inv, ceiling in §3. | Sourced fact | [joulecontract.transaction.science](https://joulecontract.transaction.science/); v0.3.0 draft text unpublished |
+| Sandbox ladder S0 to S7; lowest rung that satisfies; meter tags HwShunt / ModelBased / Estimator; attestation. | Sourced fact | [sandbox.transaction.science](https://sandbox.transaction.science/) |
+| JouleOS: single-level store, EOC cascade, capability ledger, energy oracle with provenance, Rust, small TCB, AOT in TCB and JIT out, bare-metal vs hosted. | Project claim / Sourced fact | [jos.transaction.science](https://jos.transaction.science/); project documentation (tree not public) |
+| Energy as an OS resource: ECOSystem currentcy, Cinder reserves and taps, Odyssey fidelity, EnerJ approximate types, energy proportionality, Linux EAS. None gates a commit on a certified result under a joule bound. | Sourced fact / reading | DOIs in Section 11.5 |
+| Wasmtime fuel counts operations, not joules. RAPL on AMD Zen is modeled. seL4's proof is functional correctness, not energy. | Sourced fact | Sections 12.1, 12.3, 12.5 |
+| JouleOS README Lawful ~1 µJ, LlmInLoop ~5 mJ, ~10^5× vs LLM-everything on a corpus. | Project claim (README only; not this study's measurement) | [jos.transaction.science](https://jos.transaction.science/); project README |
+| Unified Design Architecture is one artifact lowered per measured coordinate. The WebAssembly runtime is the surface that is seen. A virtual machine or a container is a coordinate. The bare-metal kernel is where the law is native, not a second product. | Definition / design reading of the tree | Project documentation (tree not public) |
 
 ---
 
