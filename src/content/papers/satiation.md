@@ -15,6 +15,8 @@ board_synth_claimed: false
 
 Many planning models treat demand for machine intelligence as if it had no finish line. Consumer theory already contains the opposite object. Satiation, and the related bliss point, is the region in which further units of a good do not raise utility and may lower it (Andersen, 2001). This paper defines an operational cousin for work and care: a loop is Economic Reality of Satiation when a stated completeness predicate holds, further calls do not flip any clause of that predicate from false to true, and calls that undo the predicate are harm, not value. Engagement time, token count, and seat count are different variables. They can rise after completeness.
 
+Two claims must be kept apart. Task-level satiation holds by definition: once a task's completeness predicate is true, more synthesis on that task buys nothing. Aggregate satiation is a claim about total demand, and it is not implied. Cheaper synthesis can open new tasks (Acemoglu and Restrepo, 2019) and raise total use, as cheaper coal raised total coal use (Jevons, 1865). Each chore can be satiated while total demand for chores grows without bound. This rebound is the central identification problem for the paper. Section 5.1 states two testable hypotheses and the data that would identify them.
+
 A second fact is about price, not physics. Epoch AI reports large declines in the price of a fixed inference performance (Epoch AI, 2025; Emberson and Roodman, 2026). This paper calls the resulting situation free at the margin for digital chores whose output is information and whose completeness test is finite. The phrase does not mean that joules are free, that a plant may move without a certificate, or that care labor has been automated away. Landauer's bound is a lower bound on erasure, not a description of current accelerators (Landauer, 1961; Horowitz, 2014).
 
 The paper does not report a randomized trial, a done-detector error rate, or a split between energy spent before completeness and energy spent after it. Those measurements are specified and absent. What the software reference does provide is a place to put the stop: Wise Computer Automation (WCA) can refuse on a policy or budget reason, or on a physical predicate (look-up table allow and an energy check, optional control barrier function). The companion paper measures the physical predicate on toy plants. This paper states the economic predicate and the evidence that is actually published.
@@ -86,6 +88,8 @@ Andersen (2001) treats satiation inside an evolutionary model of structural chan
 
 The operational translation requires a predicate the model does not know unless someone states it. Let `C(z) = 1` when the written completeness test for episode `z` holds, else 0. Satiation on that episode means there exists a time `t*` such that `C` is 1 at `t*` and, for all later calls, no clause of `C` flips from false to true. Calls that undo `C` are harm, not value. Section 3.1 states the same rule. The internal event **economic done** is when `C` becomes 1; this paper names that layer Economic Reality of Satiation. This is a definition. It becomes an empirical claim only with a labeled set of episodes and a detector whose errors are counted. Section 4 does not contain that count.
 
+Keynes drew the same line in 1930. He split needs into absolute needs, felt whatever others have, and relative needs, felt because satisfying them lifts us above others. He argued the absolute needs could be met. The completeness predicate is the absolute need of one task, written down. Relative and open-ended wants have no such predicate, and Section 5.2 keeps them out of the claim.
+
 ### 2.2 Tasks, displacement, and cost disease
 
 Baumol (1967) analyzes unbalanced growth. If one sector's productivity rises and another's does not, the relative cost of the stagnant sector rises, and it can dominate expenditure even when its quantity grows slowly. Health care, education, and live performance are the usual examples. Later health-economics papers dispute magnitudes and mechanisms. This paper uses Baumol for a negative instruction: do not infer, from a fall in token price, that care has become a software good. Care remains dependent on time, trust, and liability in the ordinary institutional sense. A documentation model can increase recorded activity, which is a Baumol-relevant ambiguity: measured output can move while the care predicate does not.
@@ -112,7 +116,7 @@ The digital-chore row is the one this paper defends with a price series rather t
 
 Epoch AI (2025), "LLM inference price trends," https://epoch.ai/data-insights/llm-inference-price-trends, reports price declines at fixed performance on the order of 9 to 900 times per year across benchmarks in that note. Emberson and Roodman for Epoch AI (2026), "The plunging price of thought," https://epoch.ai/publications/the-plunging-price-of-thought, report about a 47 percent decline per quarter in the cost of a given performance since about 2023, summarized as about 13 times per year, faster near the frontier. These are the authors' summaries of their data. This paper does not re-estimate the index. The economic reading is narrow: the money price of synthesis for a fixed measured performance has been falling fast. A falling supply price shifts quantity demanded if demand is elastic. It does not create a new completeness predicate, and it does not set the energy price to zero.
 
-System One-class tools are relevant as a mechanism for a further price cut on decision problems with a known option set. The Laya product page describes that product class. It is not a completeness evaluation.
+System One-class tools are relevant as a mechanism for a further price cut on decision problems with a known option set. A System One model returns a typed answer and a probability for each allowed option in one forward pass, with no free-form text. TypeSafe AI named the category with its hosted Jev model (15 September 2026). Open models followed, among them Laya from Convai Innovations. A System One model proposes. It is not a completeness evaluation.
 
 A planning rule of thumb that frontier competence reaches cheaper devices in about six months is not a measured constant in this archive. Distillation, quantization, and table-lookup inference (Ma et al., 2024; Wei et al., 2024) are published mechanisms by which a given competence can move to cheaper hardware. The speed is an empirical question per model pair.
 
@@ -196,6 +200,8 @@ Cover and Thomas (2006) is the textbook path into rate-distortion if a reader wa
 ### 2.9 Rebound taxonomy, without a new estimate
 
 The rebound survey of Gillingham, Rapson, and Wagner separates channels that a single slogan collapses. Direct rebound is additional use of the same service when its effective cost falls. Indirect rebound is spending of saved resources on other services. Economy-wide rebound runs through prices and growth. The survey's policy domain is energy efficiency, not tokens. The taxonomy still transfers as a warning about identification. A measured fall in `p_t` (claim S-2) identifies none of the three channels by itself. Direct rebound on a chore with `C` already true requires that buyers still pay for calls that do not change `C`. Indirect and economy-wide channels can be large when new tasks appear (Acemoglu and Restrepo, 2019). A paper that reported one elasticity and called it "the rebound" would be under-specified. This paper reports no elasticity.
+
+The pattern is old. Jevons argued in 1865 that more efficient steam engines would raise, not lower, Britain's total coal use. Alcott traces that argument and the debate that followed (*Ecological Economics* 54(1), 2005). Nordhaus measured the price of computation over more than a century and found it falling by many orders of magnitude while total computation rose (*Journal of Economic History* 67(1), 2007). Agent workloads already show the use side. Anthropic's engineering team reported, for its own system, that agents use about 4 times the tokens of a chat interaction and multi-agent systems about 15 times (13 June 2025). That figure is operator-reported, not audited. It is consistent with per-task appetite rising as tasks change shape, which is exactly what the split account in Section 3.3 must separate from post-completion waste.
 
 ### 2.10 Scarce joules and the economic stop (2025–2026 peers)
 
@@ -323,9 +329,16 @@ For cross-reading only, the companion reports a seed-1 pendulum simulation: 1 co
 
 ## 5. Discussion
 
-### 5.1 Rebound
+### 5.1 Rebound: the central identification problem
 
 Gillingham, Rapson, and Wagner survey rebound from energy-efficiency policy. The mechanism is residual demand elasticity. If the money price of synthesis falls, use rises where buyers still value another unit. At a bliss point for a closed chore, the direct derivative of value with respect to more synthesis on that chore is not positive, so direct rebound on that chore is not implied. Indirect rebound, new tasks, and attention shifting can remain. Acemoglu and Restrepo's new-task margin is one place quantity can reappear. Claim S-2 therefore does not imply a global cap on compute. It implies a cap only relative to a stated `C`. Denying global rebound would require the split in Section 3.3 and a demand system. This paper does not deny global rebound. It refuses to treat "Jevons" as a reason to avoid writing `C`.
+
+Two hypotheses make the question testable.
+
+- **H1. Post-completion spend.** The fraction of agent compute spent after `C(z) = 1`, joules or calls with `t > t*` over all joules or calls in the episode, is measurably above zero. H1 is the direct waste the completeness stop removes. It is estimable from agent logs with a labeled `t*` per episode (Section 3.3, item 1).
+- **H2. Jevons in tasks.** When the price of synthesis falls, the elasticity of the number of tasks run exceeds the fall in spend per task. Then total spend rises even though each task is satiated. H2 is aggregate rebound.
+
+**Identification.** H1 needs no price variation: a labeled corpus, the detector error rates of Section 3.3 item 2, and the split account. H2 needs exogenous price changes. Provider price cuts at fixed model quality, announced on a known date, are natural experiments. The design is a panel of accounts with price paid, tasks opened, calls per task and a completeness label per episode, before and after each cut. Comparing accounts on a repriced model with accounts on models whose price did not move gives a difference-in-differences estimate of the task-count elasticity and the per-task spend response separately. Spend per task can fall while task count rises. Both numbers are needed. The completeness stop is a claim about the first. Jevons is a claim about the second. Neither was estimated here.
 
 ### 5.2 Status and creative goods
 
@@ -417,7 +430,17 @@ Emberson, L., and Roodman, D. / Epoch AI. The plunging price of thought. 22 Sept
 
 Epoch AI. LLM inference price trends. 12 March 2025. https://epoch.ai/data-insights/llm-inference-price-trends
 
-Gillingham, K., Rapson, D., and Wagner, G. The rebound effect and energy efficiency policy. Review of Environmental Economics and Policy. Working text: https://gwagner.com/wp-content/uploads/Gillingham-Rapson-Wagner-2015-Rebound-Effect.pdf
+Gillingham, K., Rapson, D., and Wagner, G. The rebound effect and energy efficiency policy. Review of Environmental Economics and Policy 10(1), 68-88, 2016. https://doi.org/10.1093/reep/rev017 Working text: https://gwagner.com/wp-content/uploads/Gillingham-Rapson-Wagner-2015-Rebound-Effect.pdf
+
+Alcott, B. Jevons' paradox. Ecological Economics 54(1), 9-21, 2005. https://doi.org/10.1016/j.ecolecon.2005.03.020
+
+Anthropic. How we built our multi-agent research system. 13 June 2025. https://www.anthropic.com/engineering/multi-agent-research-system
+
+Jevons, W. S. The Coal Question. London: Macmillan, 1865.
+
+Keynes, J. M. Economic possibilities for our grandchildren. 1930. Reprinted in Essays in Persuasion, 1931.
+
+Nordhaus, W. D. Two centuries of productivity growth in computing. Journal of Economic History 67(1), 128-159, 2007. https://doi.org/10.1017/S0022050707000058
 
 Goldman Sachs. Gen AI: too much spend, too little benefit? https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit
 
@@ -425,7 +448,11 @@ Horowitz, M. Computing's energy problem (and what we can do about it). ISSCC 201
 
 Landauer, R. Irreversibility and heat generation in the computing process. IBM Journal of Research and Development, 1961. https://doi.org/10.1147/rd.53.0183
 
-Laya. System One models. https://laya-ai.com/system-one-models
+Laya. System One models and typed decision engines (comparison table, checked 2 October 2026). https://laya-ai.com/system-one-models
+
+Convai Innovations. Laya model card. https://huggingface.co/convaiinnovations/laya
+
+TypeSafe AI. Introducing System One Models and Jev. 15 September 2026. https://typesafe.ai/blog/introducing-system-one-models-and-jev
 
 Ma, S., et al. The era of 1-bit LLMs. arXiv:2402.17764.
 
