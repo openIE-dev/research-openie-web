@@ -12,6 +12,7 @@ interface Props {
   pdfHref: string;
   description?: string;
   paperId?: string;
+  basePath?: string;
   genre?: string;
   headings?: { depth: number; slug: string; text: string }[];
 }
@@ -25,11 +26,12 @@ const {
   pdfHref,
   description,
   paperId,
+  basePath = '/papers/',
   genre,
   headings = [],
 } = Astro.props;
 
-const citeUrl = paperId ? `https://research.openie.dev/papers/${paperId}/` : 'https://research.openie.dev/';
+const citeUrl = paperId ? `https://research.openie.dev${basePath}${paperId}/` : 'https://research.openie.dev/';
 const pdfUrl = paperId ? `https://research.openie.dev/pdfs/${paperId}.pdf` : pdfHref;
 
 // Prefer every H2 as a top-level sibling in the outline (never drop §§9+ under a 40-cap).
@@ -52,7 +54,7 @@ const toc = [
           <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-dark bg-brand-amber px-2.5 py-1 rounded">
             {status}
           </span>
-          <span class="font-mono text-[10px] text-brand-gray">{paperId === 'ni' ? 'KV260 board metered: WCA gate and seed fabrics (board level)' : 'No FPGA board result in this paper'}</span>
+          <span class="font-mono text-[10px] text-brand-gray">{paperId === 'gates' ? 'KV260 board metered: WCA gate and seed fabrics (board level)' : 'No FPGA board result in this paper'}</span>
         </div>
 
         <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-brand-white max-w-[22ch] md:max-w-none">

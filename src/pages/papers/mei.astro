@@ -1,21 +1,5 @@
 ---
-import PaperLayout from '../../layouts/PaperLayout.astro';
-import { Content, getHeadings, frontmatter } from '../../content/papers/mei.md';
-
-const headings = getHeadings();
+import Redirect from '../../components/Redirect.astro';
+const map = {};
 ---
-
-<PaperLayout
-  title={frontmatter.title}
-  deck={frontmatter.deck}
-  status={frontmatter.status}
-  author={frontmatter.author}
-  figuresHref={frontmatter.figures}
-  pdfHref={frontmatter.pdf}
-  description="Metabolic Intelligence treats a fixed energy budget as the condition of the best answer. Edge to central datacenter. Designed for Klere."
-  headings={headings}
-  paperId={frontmatter.id}
-  genre="Research study · budget-native class"
->
-  <Content />
-</PaperLayout>
+<Redirect target="/products/mei/" map={map} title="Moved to the Metabolic Intelligence white paper" />

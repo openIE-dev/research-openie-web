@@ -1,21 +1,5 @@
 ---
-import PaperLayout from '../../layouts/PaperLayout.astro';
-import { Content, getHeadings, frontmatter } from '../../content/papers/jouleos.md';
-
-const headings = getHeadings();
+import Redirect from '../../components/Redirect.astro';
+const map = {};
 ---
-
-<PaperLayout
-  title={frontmatter.title}
-  deck={frontmatter.deck}
-  status={frontmatter.status}
-  author={frontmatter.author}
-  figuresHref={frontmatter.figures}
-  pdfHref={frontmatter.pdf}
-  description="Secure compute requires one law, one meter, and one refusal. A review and design guide for an operating system built on energy to run."
-  headings={headings}
-  paperId={frontmatter.id}
-  genre="Review and design guide"
->
-  <Content />
-</PaperLayout>
+<Redirect target="/products/jouleos/" map={map} title="Moved to The Search for JouleOS white paper" />

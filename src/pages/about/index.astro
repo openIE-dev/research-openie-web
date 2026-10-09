@@ -3,75 +3,74 @@ import Layout from '../../layouts/Layout.astro';
 
 const aboutPages = [
   {
-    id: 'mol',
-    title: 'Mixture of Limits',
-    href: '/about/mol',
-    paper: '/papers/mol/',
-    deck: 'Navigation law for computer intelligence. Floors where more bits stop buying outcomes.',
+    "id": "agency",
+    "kind": "Research paper",
+    "title": "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents",
+    "href": "/about/agency/",
+    "paper": "/papers/agency/",
+    "deck": "The proposed Universal Law of Agency, stated as a definition plus a gate. Agency comes first: a prediction fixed before the act, coupling to the world through intervention, consequence borne, and a joule budget with refusal on a receipt. Kinematic bounds say how fast agency moves per second and per joule. Intelligence is the derivative of agency in joules, read in hindsight off a completed run. Prediction 1 gives an optimal act time for an agent that holds a goal, with a lab protocol to test it. Energy to run is the only true metric of computer intelligence."
   },
   {
-    id: 'ni',
-    title: 'Notational Intelligence as Commit Law',
-    href: '/about/ni',
-    paper: '/papers/ni/',
-    deck: 'System One decides in software. WCA decides whether the machine is allowed to move.',
+    "id": "gates",
+    "kind": "Research paper",
+    "title": "Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems",
+    "href": "/about/gates/",
+    "paper": "/papers/gates/",
+    "deck": "Notational Intelligence and Mixture of Limits in one systems paper. A proposal may not authorize itself: an irreversible act runs only behind a certificate, and every decision is written to a receipt. The cheapest sufficient gear runs first, Lookup, then Formula, then Solver, then Model, and the cascade stops when the task completion predicate holds. Systems are ranked by the joules needed to reach a correct completion. A KV260 board reading gives 11,428 pJ per gate cycle at board level."
   },
   {
-    id: 'satiation',
-    title: 'Satiation and Scarcity after Free AI',
-    href: '/about/satiation',
-    paper: '/papers/satiation/',
-    deck: 'Capability scales. Appetite per task does not. Design to done.',
+    "id": "satiation",
+    "kind": "Research paper",
+    "title": "Task Satiation vs. Aggregate Rebound in AI Demand",
+    "href": "/about/satiation/",
+    "paper": "/papers/satiation/",
+    "deck": "Task-level satiation holds by definition once a task completion predicate is true: more synthesis on that task buys nothing. Aggregate demand can still grow, because cheaper synthesis opens new tasks and raises total use. The paper separates the two, states hypotheses H1 (spend after completion) and H2 (Jevons in tasks), and gives the data design that would identify them. Capability scales. Appetite per task does not."
   },
   {
-    id: 'mei',
-    title: 'Metabolic Intelligence',
-    href: '/about/mei',
-    paper: '/papers/mei/',
-    deck: 'Energy binds. Metabolic Intelligence is the AI product class. Klere is hardware and the product home.',
+    "id": "spellcheck",
+    "kind": "History essay",
+    "title": "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)",
+    "href": "/about/spellcheck/",
+    "paper": "/papers/spellcheck/",
+    "deck": "People used to pay a premium for spell check. Now it is free and bundled into the editor, the browser, and the phone. A history of that path, from dated prices to the local library in every editor. Technology built for global access reaches more than 7 billion people. Scarcity pricing keeps a capability with fewer than 500 million. Energy to run is what remains."
   },
   {
-    id: 'jouleos',
-    title: 'The Search for JouleOS',
-    href: '/about/jouleos',
-    paper: '/papers/jouleos/',
-    deck: 'Review and design guide. One law, one meter, and one refusal.',
+    "id": "mei",
+    "kind": "Product white paper",
+    "title": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus",
+    "href": "/products/mei/",
+    "paper": "/products/mei/",
+    "deck": "Metabolic Intelligence is the AI product. A fixed energy budget is the physical condition of the best answer. Work that would break the budget is refused or deferred. It spans coin-cell tags at the edge to a resource-optimized central datacenter and runs on any compute fabric. Klere (klere.ai) is the hardware that builds the Energy Processing Unit (EPU)."
   },
   {
-    id: 'spellcheck',
-    title: 'Spell Check is Global',
-    href: '/about/spellcheck',
-    paper: '/papers/spellcheck/',
-    deck: 'Economic opinion. Global access for more than 7 billion people. Scarcity pricing for fewer than 500 million people.',
-  },
-  {
-    id: 'agency',
-    title: 'The Universal Law of Agency',
-    href: '/about/agency',
-    paper: '/papers/agency/',
-    deck: 'Research track. Law first, kinematics second, intelligence as the calculus of agency in joules.',
-  },
+    "id": "jouleos",
+    "kind": "Product white paper (review and design guide)",
+    "title": "The Search for JouleOS",
+    "href": "/products/jouleos/",
+    "paper": "/products/jouleos/",
+    "deck": "A review of how secure compute is composed today and a design guide for what a machine must speak if an agent is to be scheduled, metered, and refused. It places the energy-as-resource operating systems that came before, names what they lack, and describes JouleOS: one intent stream lowered onto the coordinate the runtime measured."
+  }
 ];
 ---
 
 <Layout
-  title="About the studies"
-  description="Index of OpenIE research about pages. Each entry links the about note and the readable paper."
+  title="About the papers"
+  description="Index of OpenIE research about pages. Three research papers, one history essay, and two product white papers kept apart."
 >
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
     <p class="section-label mb-4">research.openie.dev</p>
     <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
-      About the studies
+      About the papers
     </h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
-      Short about notes for each catalog entry. These pages list what already exists on this site.
+      Short about notes for each research paper and the essay. The two product white papers carry their own notes. These pages list what already exists on this site.
       They do not invent studies. Shared terms live on the <a href="/glossary/" class="text-brand-cyan">glossary</a>.
     </p>
 
     <ul class="mt-10 space-y-4 list-none p-0 m-0">
       {aboutPages.map((p) => (
         <li class="glass-card p-5 md:p-6">
-          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-2">{p.id}</p>
+          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-2">{p.kind}</p>
           <h2 class="text-xl text-brand-white mb-2">{p.title}</h2>
           <p class="font-body text-sm text-brand-slate leading-relaxed mb-4">{p.deck}</p>
           <div class="flex flex-wrap gap-3">

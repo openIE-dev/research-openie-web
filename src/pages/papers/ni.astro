@@ -1,21 +1,5 @@
 ---
-import PaperLayout from '../../layouts/PaperLayout.astro';
-import { Content, getHeadings, frontmatter } from '../../content/papers/ni.md';
-
-const headings = getHeadings();
+import Redirect from '../../components/Redirect.astro';
+const map = {"notational-intelligence-as-commit-law": "part-i-the-commit-gate-notational-intelligence"};
 ---
-
-<PaperLayout
-  title={frontmatter.title}
-  deck={frontmatter.deck}
-  status={frontmatter.status}
-  author={frontmatter.author}
-  figuresHref={frontmatter.figures}
-  pdfHref={frontmatter.pdf}
-  description="Notational Intelligence treats permission to act as a formal object. A proposal may not authorize itself. Commit or refuse before irreversible work."
-  headings={headings}
-  paperId={frontmatter.id}
-  genre="Research study · reference implementation"
->
-  <Content />
-</PaperLayout>
+<Redirect target="/papers/gates/" map={map} title="Moved to Metered Commit Gates" />

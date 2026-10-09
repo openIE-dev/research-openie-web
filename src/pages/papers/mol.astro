@@ -1,21 +1,5 @@
 ---
-import PaperLayout from '../../layouts/PaperLayout.astro';
-import { Content, getHeadings, frontmatter } from '../../content/papers/mol.md';
-
-const headings = getHeadings();
+import Redirect from '../../components/Redirect.astro';
+const map = {"references": "mol-references", "companion-laws": "mol-companion-laws", "terms-used-here": "mol-terms-used-here", "abstract": "mol-abstract", "mixture-of-limits-navigation-law-for-computer-intelligence": "part-ii-the-cascade-mixture-of-limits"};
 ---
-
-<PaperLayout
-  title={frontmatter.title}
-  deck={frontmatter.deck}
-  status={frontmatter.status}
-  author={frontmatter.author}
-  figuresHref={frontmatter.figures}
-  pdfHref={frontmatter.pdf}
-  description="Mixture of Limits names the floors past which more tokens, parameters, or joules stop buying progress. Compression beats enumeration."
-  headings={headings}
-  paperId={frontmatter.id}
-  genre="Research study · navigation law / soft-ref reference"
->
-  <Content />
-</PaperLayout>
+<Redirect target="/papers/gates/#part-ii-the-cascade-mixture-of-limits" map={map} title="Moved to Metered Commit Gates" />

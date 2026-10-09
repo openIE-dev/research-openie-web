@@ -3,35 +3,31 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Satiation"
-  description="About: Satiation and Scarcity after Free AI. OpenIE research study. Readable paper, PDF, and interactive figures."
+  title="Task Satiation vs. Aggregate Rebound in AI Demand"
+  description="About: Task Satiation vs. Aggregate Rebound in AI Demand. Research paper in the OpenIE research catalog."
 >
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
-    <p class="section-label mb-4">Paper 2 · about</p>
+    <p class="section-label mb-4">Research paper · about</p>
     <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
-      Satiation &amp; Scarcity after Free AI
+      Task Satiation vs. Aggregate Rebound in AI Demand
     </h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
-      The study defines satiation as a stop on a written completeness predicate.
-      Published inference-price series are cited. No board energy is reported.
-      Extra synthesis after completeness is a hypothesis until a labeled corpus exists.
+      Task-level satiation holds by definition: once a task completion predicate is true, more synthesis on that task buys nothing, and calls that undo it are harm. Aggregate satiation is a different claim. Cheaper synthesis opens new tasks and raises total use, as cheaper coal raised total coal use. The paper makes that rebound its central identification problem.
     </p>
     <p class="mt-4 font-body text-sm text-brand-gray leading-relaxed">
-      Status: research study, not a journal final. Figures under /living/satiation/ are companions.
-      The FPGA board has not been synthesized or metered.
+      Hypotheses H1 (spend after completion) and H2 (Jevons in tasks) are stated with the data design that would identify them. No demand system or rebound estimate is reported. Capability scales. Appetite per task does not.
     </p>
 
     <div class="mt-8 glass-card p-6 space-y-2" id="companion-laws">
-      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray">Companion laws</p>
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray">Companion papers</p>
       <p class="font-body text-sm text-brand-slate leading-relaxed">
-        Catalog triad: <a href="/papers/mol/" class="text-brand-cyan">Navigation</a> (Mixture of Limits) ·
-        <a href="/papers/ni/" class="text-brand-cyan">Commit</a> (Notational Intelligence as Commit Law) ·
-        <strong class="text-brand-white">Economic Reality of Satiation</strong> (this study).
-        See <a href="/#companion-laws" class="text-brand-cyan">catalog triad</a>.
-        Fifth study: <a href="/papers/jouleos/" class="text-brand-cyan">The Search for JouleOS</a>. Spell Check is Global is the economic opinion.
+        Research papers: <a href="/papers/agency/" class="text-brand-cyan">Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents</a> ·
+        <a href="/papers/gates/" class="text-brand-cyan">Metered Commit Gates</a> ·
+        <a href="/papers/satiation/" class="text-brand-cyan">Task Satiation vs. Aggregate Rebound</a>.
+        Essay: <a href="/papers/spellcheck/" class="text-brand-cyan">Spell Check is Global</a>.
+        Product white papers, kept apart: <a href="/products/mei/" class="text-brand-cyan">Metabolic Intelligence</a> · <a href="/products/jouleos/" class="text-brand-cyan">The Search for JouleOS</a>.
       </p>
     </div>
-
 
     <div class="mt-10 flex flex-wrap gap-3">
       <a href="/papers/satiation/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
@@ -46,13 +42,6 @@ import Layout from '../../layouts/Layout.astro';
       <a href="/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">
         ← Catalog
       </a>
-    </div>
-
-    <div class="mt-12 glass-card p-6 space-y-3">
-      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray">Paths</p>
-      <p class="font-mono text-xs text-brand-slate"><span class="text-brand-cyan">/papers/satiation/</span> → study prose</p>
-      <p class="font-mono text-xs text-brand-slate"><span class="text-brand-cyan">/pdfs/satiation.pdf</span> → downloadable study PDF</p>
-      <p class="font-mono text-xs text-brand-slate"><span class="text-brand-cyan">/living/satiation/</span> → interactive figures (not the paper)</p>
     </div>
   </section>
 </Layout>

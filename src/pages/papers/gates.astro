@@ -1,6 +1,6 @@
 ---
 import PaperLayout from '../../layouts/PaperLayout.astro';
-import { Content, getHeadings, frontmatter } from '../../content/papers/satiation.md';
+import { Content, getHeadings, frontmatter } from '../../content/papers/gates.md';
 
 const headings = getHeadings();
 ---
@@ -12,11 +12,11 @@ const headings = getHeadings();
   author={frontmatter.author}
   figuresHref={frontmatter.figures}
   pdfHref={frontmatter.pdf}
-  description="Task-level satiation holds once a task is complete. Aggregate demand can still grow. Jevons rebound is the identification problem."
+  description="A proposal may not authorize itself. The cheapest sufficient gear runs first. Systems are ranked by the joules needed to reach a correct completion."
   headings={headings}
   paperId={frontmatter.id}
   basePath="/papers/"
-  genre="Research paper · economics"
+  genre="Research paper · systems"
 >
   <Content />
 </PaperLayout>
