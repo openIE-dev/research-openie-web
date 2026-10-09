@@ -58,7 +58,7 @@ No source is excluded for its method. Each source is placed by what it gives the
 - **Reset error ($\varepsilon$):** the probability that a reset record is not in its most likely state.
 - **Counting observable:** a quantity of a trajectory that counts selected jumps. It never decreases.
 - **Radon-Nikodym derivative:** the density of one measure with respect to another. It exists when the first measure gives zero mass to every set that the second gives zero mass to.
-- **Mixture of Limits:** the OpenIE philosophy. Use the cheapest gear that is sufficient.
+- **Mixture of Limits:** the OpenIE philosophy. Use the cheapest gear that is sufficient. There exist floors past which additional tokens, parameters, or joules do not purchase verifiable progress. Spend past the floor is waste. That floor is the plateau (threshold convergence). Mixture of Limits is not one fixed cascade. A fixed cascade order is one instance of it. The σ-law selector is another.
 - **Notational Intelligence:** the OpenIE receipt study. Every act carries its prediction, its outcome and its joules.
 
 ## 2. Formal framework
@@ -468,11 +468,11 @@ $$
 2. Light first costs $c_L + (1-q_L)\,c_H$, because the heavy gear runs only when the light one fails and then passes. Heavy alone costs $c_H$. The first is smaller if and only if $c_L < q_L\,c_H$.
 3. A failed light attempt leaves $B - c_L < c_H$, so the heavy gear cannot run. $\blacksquare$
 
-**Reading.** The Mixture of Limits rule, cheapest sufficient first, is optimal when cheap gears pass often enough to pay for their failures: $q_L c_H > c_L$ at each step of a nested cascade, or rising cost matched by falling $p/c$ among independent gears. When the condition fails, going straight to the heavier gear wins, and under a binding budget it can be the only way to close. That is the mechanism of the selector result in Section 8.11. The σ-law selector estimates the ratio with calibrated pass probabilities. It is a value-of-computation rule with joules as the cost, in the sense of Russell and Wefald and of Horvitz (Section 5.1). P7 keeps one open part: a regret bound when pass probabilities are estimated, and the nested case with more than two gears, which is a dynamic program over increasing subsequences of gears.
+**Reading.** The fixed cascade, cheapest sufficient first in a fixed order, is optimal when cheap gears pass often enough to pay for their failures: $q_L c_H > c_L$ at each step of a nested cascade, or rising cost matched by falling $p/c$ among independent gears. When the condition fails, going straight to the heavier gear wins, and under a binding budget it can be the only way to close. That is the mechanism of the selector result in Section 8.11. The σ-law selector estimates the ratio with calibrated pass probabilities. It is a value-of-computation rule with joules as the cost, in the sense of Russell and Wefald and of Horvitz (Section 5.1). It stops when the next act no longer pays for its joules. Both rules stop at the floor past which more joules buy no verifiable progress, so both are Mixture of Limits instances. P7 keeps one open part: a regret bound when pass probabilities are estimated, and the nested case with more than two gears, which is a dynamic program over increasing subsequences of gears.
 
 ### 2.4 Where the studies sit
 
-- **Mixture of Limits** is the optimum operator. The cheapest sufficient gear is the argmin over joules.
+- **Mixture of Limits** is the optimum operator. The cheapest sufficient gear is the argmin over joules. It is a philosophy, not one fixed order: spend stops at the plateau, where more is waste.
 - **Notational Intelligence** is the receipt. It carries $R^*$, $R$, $m$ and $J$ for every act.
 
 Both are developed in the companion paper, [Metered Commit Gates](/papers/gates/). Product placement is not part of this physics paper. It is kept in the [Metabolic Intelligence white paper](/products/mei/#where-the-products-sit).
@@ -579,7 +579,7 @@ Intelligence is the derivative of gated agency in joules, read off a completed r
 
 **Machines.** Memory access costs far more energy than arithmetic [258]. Parameter count matters only through the joules it makes you move. Intelligence per watt measures task accuracy per unit power on local accelerators [259]. Its numerator is benchmark accuracy, not gated agency. MLPerf Power standardizes power measurement from microwatts to megawatts, with each result gated by an accuracy target [260]. That gate is the form of $J^*$. FrugalGPT cascades language models and stops when a scorer accepts the answer [321]. RouteLLM learns to send each query to a strong or a weak model under a cost target [322]. Their cost is dollars per query and their gate is a quality threshold. Read with metered joules and $C(z)$ as the gate, both are cascades in the sense of Proposition 9. ML.ENERGY measures inference energy automatically [261]. TokenPowerBench benchmarks the power of large language model (LLM) inference [262]. Jin, Wei and Brooks analyze the energy of test-time compute [263]. General-purpose models cost much more energy per task than task-specific ones [264]. The cheapest sufficient model wins in joules. That is Mixture of Limits, measured. Samsi and colleagues measured the energy of large language model inference on GPUs (graphics processing units) [265]. Dillavou and colleagues demonstrated decentralized learning in a physical circuit, with no processor [266]. Stern and colleagues trained self-learning circuits for power-efficient solutions and measured the trade between power and error [267]. Saggio and colleagues demonstrated a quantum speed-up for learning agents in a photonic experiment [268]. Fewer interactions to learn is fewer acts to close.
 
-**A metered acceptor.** Section 8.11 reports a preregistered run of an acceptor agent on a laptop, with prediction first, comparison, refusal and binding joule budgets. $\iota$ was read off 4,940 receipts. The median confirmed act gave $1.5 \times 10^5$ bits per reported joule, about $2 \times 10^{15}$ times the joules per bit of the floor. Under a binding budget the σ-law selector closed more tasks than the Mixture of Limits rule. Integrated $\iota$ ranked a goal-blind agent first on a loose budget, while $J^*$ ranked it last.
+**A metered acceptor.** Section 8.11 reports a preregistered run of an acceptor agent on a laptop, with prediction first, comparison, refusal and binding joule budgets. $\iota$ was read off 4,940 receipts. The median confirmed act gave $1.5 \times 10^5$ bits per reported joule, about $2 \times 10^{15}$ times the joules per bit of the floor. Under a binding budget the σ-law selector closed more tasks than the fixed cascade, one Mixture of Limits instance. Integrated $\iota$ ranked a goal-blind agent first on a loose budget, while $J^*$ ranked it last.
 
 **Groups simulated.** Crosato and colleagues computed the thermodynamic quantities of simulated collective motion across its critical point [269]. Chen and Prokopenko compared thermodynamic efficiency with purely informational utilities as explanations of collective behavior near criticality [270]. $\iota_G$ in Proposition 7 is the gated, metered form of such a ratio.
 
@@ -679,7 +679,7 @@ Hindi and Arabic searches returned no primary research in those languages. Engli
 
 **P6. Ranking survives meter error.** Proven. Proposition 8, part 3: if $(1+\epsilon)J^*_{S_1}(q) < (1-\epsilon)J^*_{S_2}(q)$, with $\epsilon$ the meter's relative error bound, then $S_1 \succ_q S_2$ under any reading within that error. Missing: validated $\epsilon$ for each meter [271].
 
-**P7. Mixture of Limits optimality.** Partly proven. Proposition 9 gives the exact conditions for independent gears and for two nested gears, and the budget mechanism. The cheapest-sufficient rule tries gears from cheapest up, stops at the first gear whose output passes $C(z)$, and refuses with a receipt if the next gear would break the budget. It achieves the joule minimum up to the cost of failed attempts. In hand: if sufficiency is monotone in gear order and gear costs rise with order, the first sufficient gear is the cheapest sufficient gear. Missing: a regret bound when sufficiency is not monotone, and the conditions under which this rule and the σ-law selector, $a^* = \arg\max[H(a) - \lambda J(a)]$ subject to $J \le B$, choose the same act.
+**P7. Mixture of Limits optimality.** Partly proven. Proposition 9 gives the exact conditions for independent gears and for two nested gears, and the budget mechanism. The fixed cascade instance tries gears from cheapest up, stops at the first gear whose output passes $C(z)$, and refuses with a receipt if the next gear would break the budget. It achieves the joule minimum up to the cost of failed attempts. In hand: if sufficiency is monotone in gear order and gear costs rise with order, the first sufficient gear is the cheapest sufficient gear. Missing: a regret bound when sufficiency is not monotone, and the conditions under which this rule and the σ-law selector, $a^* = \arg\max[H(a) - \lambda J(a)]$ subject to $J \le B$, choose the same act.
 
 **P8. When agency compounds.** Conditions under which $\alpha_J > 0$ over a run, so that earlier receipts lower the joules of later closures. In hand: an earlier OpenIE toy run found $\alpha_J \le 0$ on near-optimal tasks. Missing: a model of reuse in which stored receipts cut later $J$ by more than the storage and lookup joules. Still gives the memory cost side [225]. Section 8.10 measures the template's share of each act's joules.
 
@@ -688,7 +688,7 @@ Hindi and Arabic searches returned no primary research in those languages. Engli
 | ID | Claim | Evidence required |
 |---|---|---|
 | D1 | $J^*$ per task is measured, not estimated, on at least two fabrics | `measured_j` from RAPL on x86 Linux and an external wall meter on Apple silicon |
-| D2 | The σ-law selector closes tasks in fewer measured joules than the Mixture of Limits rule under binding budgets | Paired runs with the same tasks, gears, predicates, budgets and meters |
+| D2 | The σ-law selector closes tasks in fewer measured joules than the fixed cascade under binding budgets | Paired runs with the same tasks, gears, predicates, budgets and meters |
 | D3 | Refuse with a receipt works | Zero overspends, refusals on infeasible tasks, few refusals on feasible ones |
 | D4 | $\iota$ is read off receipts and is stable across seeds | Per-run $\iota_k$ series with spread within a preset bound |
 | D5 | Estimates do not substitute for measurement | Rank agreement between `est_j` and `measured_j`, reported, never merged |
@@ -726,9 +726,11 @@ Each task has a machine-checkable completeness predicate $C(z)$: unit tests for 
 All arms share the gears, the predicate, the budget, the meters and a randomized interleaved run order.
 
 1. **σ-law selector:** $a^* = \arg\max[H(a) - \lambda J(a)]$ subject to $J \le B$, with refusal on a receipt.
-2. **Mixture of Limits cheapest-sufficient rule:** the fair rival. Same information, gears, budget and refusal right. Only the selection rule differs.
+2. **Fixed cascade (one Mixture of Limits instance):** the cheapest-sufficient rule, with gears tried in a fixed order from cheapest up. The fair rival. Same information, gears, budget and refusal right. Only the selection rule differs.
 3. **Largest gear always:** reference ceiling.
 4. **Smallest gear always:** reference floor, with refusal when it fails.
+
+Both selectors are Mixture of Limits instances. The philosophy is to use the cheapest gear that is sufficient, because past the floor additional joules do not purchase verifiable progress. The fixed cascade applies it in a fixed order. The σ-law selector stops when the next act no longer pays for its joules. That is a threshold-convergence rule, so it is a Mixture of Limits instance too. The comparison is between two instances of one philosophy. In code and data files the fixed cascade is the arm `mol` and the σ-law selector is the arm `sigma`.
 
 ### 8.4 Budgets, seeds and statistics
 
@@ -780,7 +782,7 @@ trajectory_j {tau, activity, work}    # physical runs only, Section 8.8
 
 | ID | Observation | Claim defeated |
 |---|---|---|
-| F1 | The 95% interval for the paired difference in median $J^*$, σ-law minus Mixture of Limits, includes or exceeds zero at every binding budget | The σ-law selector beats its fair rival in joules |
+| F1 | The 95% interval for the paired difference in median $J^*$, σ-law minus fixed cascade, includes or exceeds zero at every binding budget | The σ-law selector beats its fair rival in joules |
 | F2 | Any arm records an overspend | That arm's refusal implementation |
 | F3 | Refusal recall on infeasible tasks is below 0.9, or more than 10% of refusals fall on tasks another arm closed within $B$ | Refusal correctness |
 | F4 | Kendall's correlation between `est_j` and `measured_j` is below 0.8 | Use of that estimator for any ranking |
@@ -834,7 +836,7 @@ This run applies Sections 8.1 to 8.7 to one task class on one machine. Code, tas
 
 - **Agent and task.** A Python process closes Sudoku puzzles. The completeness predicate $C(z)$ passes when the grid is full, every row, column and box holds 1 to 9, and every given is kept. A confirmed task credits $b = n_{\mathrm{empty}}\log_2 9$ bits, the number of fills the act chooses among. That is the capacity bound of Definition 1. The test set holds 30 puzzles, 10 per stratum (easy, medium, hard), generated from a fixed seed. A separate set of 30 calibrates the selectors.
 - **Gears.** g0 fills naked singles. g1 adds hidden singles. g2 adds depth-first search.
-- **Arms.** The σ-law selector takes $a^* = \arg\max[H(a) - \lambda J(a)]$, with $H(a)$ the calibrated pass probability given the gears already tried, times $b$, and $\lambda = b/B$. The Mixture of Limits rule takes the cheapest gear whose calibrated pass probability is at least 0.5. Both fix $R^*$ before each act, hash it with SHA-256 (Secure Hash Algorithm, 256-bit) and timestamp it. Both compare after the act and refuse with a receipt when no act fits the budget. The goal-blind baseline draws one gear at random, with no prediction, no comparison, no escalation and no refusal. The budget cuts it off.
+- **Arms.** The σ-law selector takes $a^* = \arg\max[H(a) - \lambda J(a)]$, with $H(a)$ the calibrated pass probability given the gears already tried, times $b$, and $\lambda = b/B$. The fixed cascade (one Mixture of Limits instance) takes the cheapest gear whose calibrated pass probability is at least 0.5. Both fix $R^*$ before each act, hash it with SHA-256 (Secure Hash Algorithm, 256-bit) and timestamp it. Both compare after the act and refuse with a receipt when no act fits the budget. The goal-blind baseline draws one gear at random, with no prediction, no comparison, no escalation and no refusal. The budget cuts it off.
 - **Budgets and seeds.** Per task, $B \in \{0.5, 1.0, 2.0\} \times J_{g2}(q)$, the pilot median of g2 alone. Levels 0.5 and 1.0 bind: 98% and 40% of pilot runs exceed them. Level 2.0 does not (0.7%). There are 20 seeds per condition, in a seeded interleaved order. In all, 5,400 episodes ran, with 4,940 acts.
 - **Energy label.** Every joule is `reported_j`: the kernel's per-process energy estimate for the agent (`ri_energy_nj` from `proc_pid_rusage`), read before and after each act, with no privileges. The process is the agent's wall. `measured_j` is empty, because no wall meter was attached. `est_j` is cycles times $4.20 \times 10^{-10}$ J, the pilot's median ratio.
 
@@ -845,28 +847,28 @@ This run applies Sections 8.1 to 8.7 to one task class on one machine. Code, tas
 | σ-law | 0.5 | 0.60 ± 0.50 | 108 ± 91 | 20.8 ± 0.3 | 5,254 ± 4,402 | 0.84 | 29.40 | 0 | 0 |
 | σ-law | 1.0 | 9.10 ± 1.86 | 1,479 ± 316 | 43.8 ± 4.0 | 34,454 ± 10,007 | 0.29 | 20.90 | 0 | 9 |
 | σ-law | 2.0 | 28.40 ± 0.60 | 4,823 ± 105 | 66.2 ± 5.8 | 73,345 ± 6,443 | 0.09 | 1.60 | 0 | 0 |
-| Mixture of Limits | 0.5 | 0.70 ± 0.47 | 126 ± 85 | 18.8 ± 0.3 | 6,801 ± 4,569 | 0.67 | 29.30 | 0 | 0 |
-| Mixture of Limits | 1.0 | 6.45 ± 1.50 | 1,047 ± 254 | 44.7 ± 3.6 | 23,804 ± 7,067 | 0.30 | 23.55 | 0 | 7 |
-| Mixture of Limits | 2.0 | 27.50 ± 0.51 | 4,668 ± 92 | 67.0 ± 6.7 | 70,418 ± 7,766 | 0.11 | 2.50 | 0 | 0 |
+| Fixed cascade (one Mixture of Limits instance) | 0.5 | 0.70 ± 0.47 | 126 ± 85 | 18.8 ± 0.3 | 6,801 ± 4,569 | 0.67 | 29.30 | 0 | 0 |
+| Fixed cascade (one Mixture of Limits instance) | 1.0 | 6.45 ± 1.50 | 1,047 ± 254 | 44.7 ± 3.6 | 23,804 ± 7,067 | 0.30 | 23.55 | 0 | 7 |
+| Fixed cascade (one Mixture of Limits instance) | 2.0 | 27.50 ± 0.51 | 4,668 ± 92 | 67.0 ± 6.7 | 70,418 ± 7,766 | 0.11 | 2.50 | 0 | 0 |
 | Goal-blind | 0.5 | 0.25 ± 0.44 | 45 ± 80 | 14.1 ± 3.1 | 2,775 ± 4,999 | 1.80 | 0 | 20.35 | 20 |
 | Goal-blind | 1.0 | 3.85 ± 1.84 | 623 ± 301 | 26.6 ± 5.7 | 24,153 ± 13,364 | 0.55 | 0 | 17.45 | 0 |
 | Goal-blind | 2.0 | 18.25 ± 2.71 | 3,034 ± 471 | 34.1 ± 9.7 | 92,724 ± 15,690 | 0.17 | 0 | 1.35 | 0 |
 
 - **Per act.** 1,902 acts were confirmed. The median act $\iota$ was $1.53 \times 10^5$ bits per reported joule, with interquartile range $8.3 \times 10^4$ to $4.7 \times 10^5$. Joules per confirmed bit were at least $3.8 \times 10^{14}$ times $k_B T\ln 2$ at 300 K, with median $2.3 \times 10^{15}$ times. The floor allows $3.5 \times 10^{20}$ bits per joule.
 - **Joules per closed task.** The median over arms was 0.34 to 0.38 mJ for easy tasks, 1.58 to 1.70 mJ for medium and 4.05 to 4.28 mJ for hard.
-- **Selectors, paired by seed.** This analysis was chosen after the run. At $B = 1.0\,J_{g2}$ the σ-law selector closed 2.65 more tasks per run than the Mixture of Limits rule (95% bootstrap interval 1.5 to 3.8). Its run $\iota$ was higher by 10,650 bits per joule (4,747 to 16,592). At $B = 2.0\,J_{g2}$ it closed 0.9 more (0.55 to 1.25). The σ-law rule goes straight to the gear that suffices, so the joules of failed light attempts stay in the budget.
+- **Selectors, paired by seed.** This analysis was chosen after the run. At $B = 1.0\,J_{g2}$ the σ-law selector closed 2.65 more tasks per run than the fixed cascade (95% bootstrap interval 1.5 to 3.8). Its run $\iota$ was higher by 10,650 bits per joule (4,747 to 16,592). At $B = 2.0\,J_{g2}$ it closed 0.9 more (0.55 to 1.25). The σ-law rule goes straight to the gear that suffices, so the joules of failed light attempts stay in the budget.
 - **Package cross-check.** powermetrics, run non-interactively over 30 s windows, read about 12.1 W of CPU power and 13.6 W of GPU power from other work on the machine while the agent slept. The agent added about 0.6 W on its own meter. Background CPU power moved by about 0.5 W between windows, so idle-subtracted package joules came out negative. The per-process meter is the run's meter. D1 and D5 need a wall meter on an otherwise idle machine.
 
 **Falsifier outcomes.** All were fixed before the run.
 
 | ID | Observation | Outcome |
 |---|---|---|
-| R-F1 | 95% interval of the paired per-task difference in median $J^*$, σ-law minus Mixture of Limits, includes zero at every binding level | Fired. At $B = 1.0$, 4 tasks closed by both: interval $-7.9$ to $+15.5$ µJ. At $B = 0.5$, no task closed by both. On tasks both close, the joules are equal |
-| R-F2 | Any episode ends above its budget | Fired. 36 of 5,400. σ-law 9 and Mixture of Limits 7 at $B = 1.0$, 0.07% to 3.6% over, when the final comparison ran outside the guard. Goal-blind 20 at $B = 0.5$, up to 33% over, on budgets a few meter checks wide |
+| R-F1 | 95% interval of the paired per-task difference in median $J^*$, σ-law minus fixed cascade, includes zero at every binding level | Fired. At $B = 1.0$, 4 tasks closed by both: interval $-7.9$ to $+15.5$ µJ. At $B = 0.5$, no task closed by both. On tasks both close, the joules are equal |
+| R-F2 | Any episode ends above its budget | Fired. 36 of 5,400. σ-law 9 and fixed cascade 7 at $B = 1.0$, 0.07% to 3.6% over, when the final comparison ran outside the guard. Goal-blind 20 at $B = 0.5$, up to 33% over, on budgets a few meter checks wide |
 | R-F3 | Refusal recall below 0.9 on infeasible task levels, or over 10% of refusals on task levels some arm closes in half the seeds | Fired. Recall 1.00 on 41 infeasible task levels. 13.1% of refusals fell on task levels some arm closed |
 | R-F4 | Kendall's tau-b between `est_j` and `reported_j` per act below 0.8 | Held. 0.96 on 4,000 acts |
 | R-F5 | CV of run $\iota$ above 0.25 in any condition | Fired at binding levels (0.29 to 1.80). Held at $B = 2.0$ (0.09, 0.11, 0.17) |
-| R-F6 | Ranking by $J^*$ differs from ranking by integrated $\iota$ | Fired. At $B = 2.0$, $J^*$ ranks σ-law, Mixture of Limits, goal-blind. Integrated $\iota$ ranks goal-blind first. At $B = 1.0$ the last two swap |
+| R-F6 | Ranking by $J^*$ differs from ranking by integrated $\iota$ | Fired. At $B = 2.0$, $J^*$ ranks σ-law, fixed cascade, goal-blind. Integrated $\iota$ ranks goal-blind first. At $B = 1.0$ the last two swap |
 | R-F7 | A confirmed act below $k_B T\ln 2$ per bit | Held. The lowest act sat $3.8 \times 10^{14}$ times above |
 | R-F8 | Goal-blind run $\iota$ at least the better selector's at a binding level | Held. 2,775 against 6,801 at $B = 0.5$. 24,153 against 34,454 at $B = 1.0$ |
 
@@ -874,7 +876,7 @@ This run applies Sections 8.1 to 8.7 to one task class on one machine. Code, tas
 
 - $\iota$ is read off receipts, act by act and run by run, as Propositions 5 and 6 require. On a loose budget it is stable across seeds.
 - $J^*$ is the ranking, and integrated $\iota$ is not. The goal-blind agent had the highest run $\iota$ on the loose budget, closing 18 of 30 tasks against 28. Its failures were cheap. $J^*$ is gated by $C(z)$, so it ranks that agent last. This is why Section 2.3 ranks by $J^*$, with $X_{\mathrm{req}}$ as a gate.
-- Under a binding budget, the σ-law selector closes more tasks than the Mixture of Limits rule. The gain lies in which tasks fit the budget, not in a cheaper closure of the same task.
+- Under a binding budget, the σ-law selector closes more tasks than the fixed cascade. The gain lies in which tasks fit the budget, not in a cheaper closure of the same task.
 - Two implementation fixes come before the next run. The comparison and the receipt write move inside the guarded region. A measured closing cost is charged before each act.
 
 ### 8.11.1 Second run: guarded acceptor, 40 seeds
@@ -897,9 +899,9 @@ This run is the same task class, the same gears and the same three arms as Secti
 | σ-law | 0.5 | 0.62 ± 0.49 | 113 ± 89 | 59.5 ± 2.0 | 1,942 ± 1,525 | 0.785 | 29.38 | 0 | 0 |
 | σ-law | 1.0 | 2.90 ± 1.74 | 523 ± 314 | 133.7 ± 13.8 | 4,150 ± 2,892 | 0.697 | 27.10 | 0 | 0 |
 | σ-law | 2.0 | 22.73 ± 1.30 | 3,980 ± 206 | 197.3 ± 18.2 | 20,359 ± 2,388 | 0.117 | 7.28 | 0 | 0 |
-| Mixture of Limits | 0.5 | 0.57 ± 0.50 | 104 ± 90 | 60.1 ± 2.1 | 1,777 ± 1,548 | 0.871 | 29.43 | 0 | 0 |
-| Mixture of Limits | 1.0 | 2.67 ± 1.25 | 483 ± 226 | 140.3 ± 13.5 | 3,593 ± 1,948 | 0.542 | 27.32 | 0 | 0 |
-| Mixture of Limits | 2.0 | 19.93 ± 1.42 | 3,509 ± 227 | 201.2 ± 20.4 | 17,684 ± 2,909 | 0.164 | 10.07 | 0 | 0 |
+| Fixed cascade (one Mixture of Limits instance) | 0.5 | 0.57 ± 0.50 | 104 ± 90 | 60.1 ± 2.1 | 1,777 ± 1,548 | 0.871 | 29.43 | 0 | 0 |
+| Fixed cascade (one Mixture of Limits instance) | 1.0 | 2.67 ± 1.25 | 483 ± 226 | 140.3 ± 13.5 | 3,593 ± 1,948 | 0.542 | 27.32 | 0 | 0 |
+| Fixed cascade (one Mixture of Limits instance) | 2.0 | 19.93 ± 1.42 | 3,509 ± 227 | 201.2 ± 20.4 | 17,684 ± 2,909 | 0.164 | 10.07 | 0 | 0 |
 | Goal-blind | 0.5 | 0.12 ± 0.33 | 23 ± 61 | 35.4 ± 11.6 | 513 ± 1,397 | 2.723 | 0 | 22.85 | 0 |
 | Goal-blind | 1.0 | 1.00 ± 0.93 | 181 ± 169 | 72.0 ± 19.5 | 2,661 ± 2,579 | 0.969 | 0 | 20.00 | 0 |
 | Goal-blind | 2.0 | 10.65 ± 2.27 | 1,859 ± 400 | 97.3 ± 30.1 | 20,302 ± 5,766 | 0.284 | 0 | 8.70 | 0 |
@@ -907,18 +909,18 @@ This run is the same task class, the same gears and the same three arms as Secti
 - **Per act.** 7,960 acts ran. 2,448 were confirmed. Kendall's tau-b between `est_j` and `reported_j` was 0.942 on 4,000 acts. The median act $\iota$ was about $3.11 \times 10^{4}$ bits per reported joule. Every confirmed act sat far above $k_B T\ln 2$ per bit: the lowest was about $6.4 \times 10^{14}$ times that floor.
 - **Refusal.** Recall was 1.0 on 49 infeasible pairs. There were 5,223 refusals. The share on tasks closed by some arm was about 0.081.
 - **Overspends.** Zero episodes ended above budget. The maximum overspend fraction was $-0.03684$: every episode finished under budget.
-- **Selectors, paired by seed.** This analysis was declared in the preregistration. At $B = 2.0\,J_{g2}$ the σ-law selector closed 2.8 more tasks per run than the Mixture of Limits rule (95% bootstrap interval 2.3 to 3.275). Its run $\iota$ was higher by 2,674 bits per joule (1,831 to 3,504). On 39 of 40 seeds the σ-law selector closed more. At $B = 0.5$ and $B = 1.0$ the intervals for the closed-task difference include zero. These results fire no falsifier.
+- **Selectors, paired by seed.** This analysis was declared in the preregistration. At $B = 2.0\,J_{g2}$ the σ-law selector closed 2.8 more tasks per run than the fixed cascade (95% bootstrap interval 2.3 to 3.275). Its run $\iota$ was higher by 2,674 bits per joule (1,831 to 3,504). On 39 of 40 seeds the σ-law selector closed more. At $B = 0.5$ and $B = 1.0$ the intervals for the closed-task difference include zero. These results fire no falsifier.
 
 **Falsifier outcomes.** All were fixed before the run. The table states the second-run outcome beside the first-run outcome.
 
 | ID | Observation | Run 2 | Run 1 |
 |---|---|---|---|
-| R-F1 | At every binding level, the 95% interval of the paired per-task difference in median $J^*$, σ-law minus Mixture of Limits, includes or exceeds zero | Held. At $B = 1.0$, no task closed by both. At $B = 0.5$, one task closed by both. Shared-task joules still do not show a clear σ-law saving | Fired |
+| R-F1 | At every binding level, the 95% interval of the paired per-task difference in median $J^*$, σ-law minus fixed cascade, includes or exceeds zero | Held. At $B = 1.0$, no task closed by both. At $B = 0.5$, one task closed by both. Shared-task joules still do not show a clear σ-law saving | Fired |
 | R-F2 | Any episode ends above its budget | Held. 0 of 10,800. The guard charges comparison, receipt and final read | Fired |
 | R-F3 | Refusal recall below 0.9 on infeasible pairs, or over 10% of refusals on pairs some arm closes | Held. Recall 1.0 on 49 infeasible pairs. Share on tasks closed by some arm about 0.081. The $r$-quantile refusal threshold is the change from Run 1 | Fired |
 | R-F4 | Kendall's tau-b between `est_j` and `reported_j` per act below 0.8 | Held. 0.942 on 4,000 acts | Held |
 | R-F5 | CV of run $\iota$ above 0.25 in any condition | Fired at binding levels (0.54 to 2.72). Held for both law arms at $B = 2.0$ (0.117, 0.164) | Fired |
-| R-F6 | Ranking by $J^*$ differs from ranking by integrated $\iota$ | Fired. At $B = 2.0$, $J^*$ ranks σ-law, Mixture of Limits, goal-blind. Integrated $\iota$ ranks σ-law, goal-blind, Mixture of Limits | Fired |
+| R-F6 | Ranking by $J^*$ differs from ranking by integrated $\iota$ | Fired. At $B = 2.0$, $J^*$ ranks σ-law, fixed cascade, goal-blind. Integrated $\iota$ ranks σ-law, goal-blind, fixed cascade | Fired |
 | R-F7 | A confirmed act below $k_B T\ln 2$ per bit | Held. The lowest act sat about $6.4 \times 10^{14}$ times above | Held |
 | R-F8 | Goal-blind run $\iota$ at least the better selector's at a binding level | Held. 513 against 1,942 at $B = 0.5$. 2,661 against 4,150 at $B = 1.0$ | Held |
 
@@ -928,7 +930,93 @@ This run is the same task class, the same gears and the same three arms as Secti
 - The refusal quantile closes R-F3. Recall stays 1.0 and the share of refusals on closable tasks falls under 10%.
 - $J^*$ remains the ranking. Integrated $\iota$ still disagrees with it on the loose budget (R-F6).
 - Run $\iota$ is still unstable across seeds at binding budgets (R-F5).
-- On shared closed tasks the σ-law selector still does not show fewer joules than Mixture of Limits in the sense that would defeat R-F1's observation at every binding level. The paired-by-seed gain at $B = 2.0$ is more closed tasks, not cheaper closures of the same tasks.
+- On shared closed tasks the σ-law selector still does not show fewer joules than the fixed cascade in the sense that would defeat R-F1's observation at every binding level. The paired-by-seed gain at $B = 2.0$ is more closed tasks, not cheaper closures of the same tasks.
+
+### 8.11.2 Second machine: a replication with a package energy counter
+
+This run repeats the second-run protocol of Section 8.11.1 on a second machine with a different energy counter. It is a replication of the selector comparison, not a measurement of energy. Code, receipts and summaries are in `experiments/agency-run`: `PREREGISTRATION_v2_jetson.md` and its Amendment 1, `results_jetson/summary.md` (part A) and `results_jetson_cyc/summary.md` (part B). The preregistration addendum was committed first (cb059f0), then the meter backend and harness (1938577), then Amendment 1 (7703822). The part A pilot (6ddd086) and main run (a652503) came next, then the part B pilot (3fde1fb) and main run (1bb2444).
+
+**Method.**
+
+- **Machine.** A Linux laptop with a 14-core x86 processor: 6 performance cores with 2 threads each and 8 efficiency cores. Turbo was off. Every core was pinned to its base frequency: 2.6 GHz on performance cores and 1.9 GHz on efficiency cores. The agent ran pinned to one performance-core thread, one episode at a time. The median agent-core frequency during blocks was 2.6 GHz. The original settings were restored after the run.
+- **Unchanged.** Tasks, predicate, coupled bits, gears g0 to g2, the three arms, the guard, the refusal replay, the budget levels $B \in \{0.5, 1.0, 2.0\} \times J_{g2}(q)$, 40 seeds and 10,800 episodes per part, falsifiers R-F1 to R-F8 and the paired-by-seed analysis are those of Section 8.11.1.
+- **Energy counter.** RAPL (Running Average Power Limit) is the processor's on-chip package energy counter. Every interval was charged the package joules minus the idle baseline power of that block times the interval's seconds. RAPL is a model and sensor inside the chip, not a wall meter. It counts every process on the package.
+- **Quiet window.** Quiet was not achieved: `quiet_window = no`. A CI (continuous integration) runner built Rust code on the machine throughout. The 40 probes before the start saw other processes using from 1.0 to 20.0 cores and package power from 2.3 to 28.7 W. The per-block gate was met before 180 of 360 blocks in part A and 244 of 360 in part B. 98 and 208 blocks were quiet for their whole length.
+- **Part A.** The agent's meter is RAPL read before and after each act. Every figure is `reported_j`.
+- **Part B.** Amendment 1 added this part before any pilot, because a harness test showed that acts last about 0.01 to 6 ms while RAPL updates about every 1 ms in steps of about 5 to 60 mJ. The agent's meter is `est_j`: the agent thread's user cycles times $c$. $c$ was calibrated on RAPL in the part B pilot, net of idle, over 8 rounds of 3 s, on the second attempt: $c = 6.576 \times 10^{-10}$ J per cycle, from 41.11 J of net package energy over 62,516,635,701 cycles. Every part B joule figure is `est_j`. RAPL figures logged beside it stay `reported_j`.
+- **Labels.** `measured_j` is empty in both parts. No wall meter or shunt meter was attached.
+- **Arm names.** Arm names and their code fields follow Section 8.3. The goal-blind baseline is `blind`.
+
+**Part A results: RAPL read per act.** Mean ± standard deviation over 40 seeds. $J$ is `reported_j` in joules, as in the summary. Levels 0.5, 1.0 and 2.0 all bind: 0.647, 0.40 and 0.353 of pilot g2 runs exceed them.
+
+| Arm | $B/J_{g2}$ | Tasks closed of 30 | $X$ (bits) | $J$ (reported, J) | $\iota$ (bits per reported joule) | CV of $\iota$ | Refusals | Cuts | Overspends |
+|---|---|---|---|---|---|---|---|---|---|
+| σ-law | 0.5 | 0.00 | 0 | 0.0018 | 0 | n/a | 30.00 | 0.00 | 323 |
+| σ-law | 1.0 | 0.00 | 0 | 0.0002 | 0 | n/a | 30.00 | 0.00 | 322 |
+| σ-law | 2.0 | 1.00 ± 0.39 | 181 ± 71 | 0.0018 ± 0.0336 | 14,427 ± 18,680 | 1.295 | 29.00 | 0.00 | 322 |
+| Fixed cascade (one Mixture of Limits instance) | 0.5 | 0.00 | 0 | -0.0008 | 0 | n/a | 30.00 | 0.00 | 326 |
+| Fixed cascade (one Mixture of Limits instance) | 1.0 | 0.00 | 0 | -0.0005 | 0 | n/a | 30.00 | 0.00 | 324 |
+| Fixed cascade (one Mixture of Limits instance) | 2.0 | 1.00 ± 0.51 | 181 ± 91 | 0.0107 ± 0.0286 | 15,451 ± 23,767 | 1.538 | 29.00 | 0.00 | 320 |
+| Goal-blind | 0.5 | 0.00 | 0 | 0.0026 | 0 | n/a | 0.00 | 30.00 | 327 |
+| Goal-blind | 1.0 | 0.00 | 0 | 0.0009 | 0 | n/a | 0.00 | 30.00 | 323 |
+| Goal-blind | 2.0 | 0.28 ± 0.45 | 50 ± 82 | 0.0019 ± 0.0180 | 3,801 ± 13,749 | 3.618 | 0.00 | 28.90 | 321 |
+
+- **Counter resolution.** The median episode lasted about 0.04 ms. 10,075 of 10,800 episodes saw no change in the package counter. 10,549 had `reported_j` at or below zero after idle subtraction.
+- **Budgets.** Pilot medians of $J_{g2}$ ranged from $-0.0110$ to $0.0914$ J, median $0.0097$ J. The guard's open threshold was 0.117 J. Budgets fell below it for 30, 30 and 28 of 30 tasks at the three levels, so the law arms refused nearly every task.
+- **Overspends.** Every condition recorded 320 to 327 overspends. The maximum overspend fraction was 10.86. A charge that reads zero for most acts and one whole counter step for a few cannot hold a budget of a few millijoules.
+- **Per act.** 137 acts ran. 91 were confirmed. 44 acts read zero. 26 confirmed acts read zero or less. Kendall's tau-b between `est_j` and `reported_j` was 0.368 on 93 acts.
+- **Cross-check.** Block package net was 3.445 J against 2.737 J summed over episodes, a ratio of 0.794. Idle package power was 4.01 W before the run and 5.55 W after. The cross-check is declared not achievable.
+- **Selectors, paired by seed.** At $B = 2.0\,J_{g2}$ the closed-task difference was 0 (95% bootstrap interval $-0.15$ to $0.15$). The run $\iota$ difference was 1,328 bits per reported joule ($-8,971$ to $12,581$). 30 of 40 seeds tied. At 0.5 and 1.0 no arm closed a task.
+
+**Part B results: cycle count times a RAPL-calibrated constant.** Mean ± standard deviation over 40 seeds. $J$ is `est_j` in joules, as in the summary. Levels 0.5 and 1.0 bind: 0.98 and 0.40 of pilot g2 runs exceed them. Level 2.0 does not (0.0).
+
+| Arm | $B/J_{g2}$ | Tasks closed of 30 | $X$ (bits) | $J$ (estimated, J) | $\iota$ (bits per estimated joule) | CV of $\iota$ | Refusals | Cuts | Overspends |
+|---|---|---|---|---|---|---|---|---|---|
+| σ-law | 0.5 | 1.10 ± 0.98 | 200 ± 178 | 0.0345 ± 0.0017 | 6,027 ± 5,458 | 0.906 | 28.90 | 0.00 | 0 |
+| σ-law | 1.0 | 8.75 ± 3.14 | 1,574 ± 565 | 0.0805 ± 0.0098 | 20,519 ± 8,516 | 0.415 | 21.25 | 0.00 | 0 |
+| σ-law | 2.0 | 28.60 ± 0.98 | 4,882 ± 154 | 0.1008 ± 0.0234 | 50,667 ± 10,088 | 0.199 | 1.40 | 0.00 | 0 |
+| Fixed cascade (one Mixture of Limits instance) | 0.5 | 1.15 ± 0.92 | 208 ± 167 | 0.0366 ± 0.0013 | 5,833 ± 4,757 | 0.816 | 28.85 | 0.00 | 0 |
+| Fixed cascade (one Mixture of Limits instance) | 1.0 | 9.22 ± 3.07 | 1,660 ± 551 | 0.0813 ± 0.0106 | 21,412 ± 8,130 | 0.380 | 20.77 | 0.00 | 0 |
+| Fixed cascade (one Mixture of Limits instance) | 2.0 | 27.77 ± 2.30 | 4,745 ± 377 | 0.1099 ± 0.0339 | 47,108 ± 13,216 | 0.281 | 2.23 | 0.00 | 0 |
+| Goal-blind | 0.5 | 0.20 ± 0.46 | 36 ± 84 | 0.0210 ± 0.0055 | 1,722 ± 3,927 | 2.280 | 0.00 | 21.50 | 0 |
+| Goal-blind | 1.0 | 3.73 ± 2.12 | 667 ± 381 | 0.0436 ± 0.0140 | 16,393 ± 9,246 | 0.564 | 0.00 | 16.68 | 0 |
+| Goal-blind | 2.0 | 15.65 ± 2.50 | 2,662 ± 433 | 0.0499 ± 0.0160 | 57,266 ± 14,596 | 0.255 | 0.00 | 4.17 | 0 |
+
+- **Per act.** 7,800 acts ran. 3,847 were confirmed. The median act $\iota$ was 69,892 bits per estimated joule, with interquartile range 35,759 to 146,697. Every confirmed act sat far above $k_B T\ln 2$ per bit: the lowest was about $3.6 \times 10^{14}$ times that floor, the median about $5.0 \times 10^{15}$ times.
+- **Refusal.** Recall was 1.0 on 45 infeasible pairs. There were 4,136 refusals. The share on tasks closed by some arm was about 0.071.
+- **Overspends.** Zero episodes ended above budget. The maximum overspend fraction was $-0.03977$.
+- **Shared tasks.** At $B = 1.0$, 9 tasks closed by both selectors. The paired per-task difference in median $J^*$, σ-law minus fixed cascade, had mean $1.02 \times 10^{-4}$ J (95% interval $-5.23 \times 10^{-4}$ to $6.03 \times 10^{-4}$, Wilcoxon $p = 0.214$). At $B = 0.5$ one task closed by both, with difference $-6.68 \times 10^{-6}$ J. At $B = 2.0$, 29 tasks closed by both, with mean difference $-2.65 \times 10^{-4}$ J ($-6.63 \times 10^{-4}$ to $5.67 \times 10^{-5}$, $p = 0.358$).
+- **Selectors, paired by seed.** At $B = 2.0\,J_{g2}$ the σ-law selector closed 0.825 more tasks per run than the fixed cascade (95% bootstrap interval 0.125 to 1.575). Its run $\iota$ was higher by 3,559 bits per estimated joule ($-1,068$ to $8,320$). 9 of 40 seeds favored the σ-law selector and 27 tied. At $B = 0.5$ the closed-task difference was $-0.05$ ($-0.45$ to $0.35$). At $B = 1.0$ it was $-0.475$ ($-1.8$ to $0.775$).
+- **The estimate against the counter.** Kendall's tau-b between each episode's `est_j` and the same episode's RAPL package net was $-0.037$ on 4,000 episodes. 5,258 of 10,800 episodes saw no change in the package counter. Summed over blocks, `est_j` was 23.23 J against 17.14 J of RAPL package net, a ratio of 1.355. Idle package power was 9.37 W before the run and 3.17 W after. The cross-check is declared not achievable.
+
+**Falsifier outcomes.** All were fixed before the run. Part B replaces R-F4 with the episode test against RAPL, as Amendment 1 states. In Run 2 and in the two parts here, "Held" means the observation did not occur.
+
+| ID | Observation | Part A (RAPL per act) | Part B (cycle model) | Run 2 |
+|---|---|---|---|---|
+| R-F1 | At every binding level, the 95% interval of the paired per-task difference in median $J^*$, σ-law minus fixed cascade, includes or exceeds zero | Held. One task closed by both, at $B = 2.0$, with difference $-0.0052$ J. No task at the other levels | Held. At $B = 1.0$ the interval includes zero. At $B = 0.5$ the single shared task gives $-6.68 \times 10^{-6}$ J | Held |
+| R-F2 | Any episode ends above its budget | Fired. 320 to 327 per condition | Held. 0 of 10,800 | Held |
+| R-F3 | Refusal recall below 0.9 on infeasible pairs, or over 10% of refusals on pairs some arm closes | Held. Recall 1.0 on 88 pairs. Share 0.0011 | Held. Recall 1.0 on 45 pairs. Share 0.071 | Held |
+| R-F4 | Part A: Kendall's tau-b between `est_j` and `reported_j` per act below 0.8. Part B: tau-b between episode `est_j` and episode RAPL net below 0.8 | Fired. 0.368 on 93 acts | Fired. $-0.037$ on 4,000 episodes | Held |
+| R-F5 | CV of run $\iota$ above 0.25 in any condition | Fired (1.295 to 3.618) | Fired. 0.380 to 2.280 at binding levels. At $B = 2.0$: σ-law 0.199, fixed cascade 0.281, goal-blind 0.255 | Fired |
+| R-F6 | Ranking by $J^*$ differs from ranking by integrated $\iota$ | Fired. At $B = 2.0$, $J^*$ ranks σ-law, fixed cascade, goal-blind. Integrated $\iota$ ranks fixed cascade first | Fired. At $B = 2.0$, $J^*$ ranks σ-law, fixed cascade, goal-blind. Integrated $\iota$ ranks goal-blind, σ-law, fixed cascade | Fired |
+| R-F7 | A confirmed act below $k_B T\ln 2$ per bit | Fired. 26 confirmed acts read zero or less, which places them below the floor. That is counter quantization | Held. The lowest act sat about $3.6 \times 10^{14}$ times above | Held |
+| R-F8 | Goal-blind run $\iota$ at least the better selector's at a binding level | Fired. At $B = 0.5$ and $1.0$ every arm reads 0 | Held. 1,722 against 6,027 at $B = 0.5$. 16,393 against 21,412 at $B = 1.0$ | Held |
+
+**What the replication settles.**
+
+- Per-act RAPL cannot meter acts shorter than one millisecond. Most episodes saw no counter update, so the guard refused or overspent from quantization alone. Part A is a meter-resolution result. It says nothing about the selectors.
+- With a cycle meter, the selection result has the same sign as Run 2 at $B = 2.0$: the σ-law selector closed more tasks per run. The gain is smaller (0.825 against 2.8), and level 2.0 did not bind on this machine. At the binding levels the intervals include zero.
+- The cycle model did not track the package counter episode by episode (tau-b $-0.037$), and its block total was 1.355 times the counter's net. Part B joules rank acts by cycles. They are not energy readings.
+- Shared-task joules show no σ-law saving here either. Where the σ-law selector gains, it gains in tasks closed, not in cheaper closure of the same task.
+- No figure in this section is `measured_j`.
+
+**Measurement protocol for the next run.** Both parts fail at the meter, so the protocol changes before the selectors are tested again.
+
+1. **Idle machine.** Stop nothing that belongs to someone else. Wait for a quiet window, or schedule one: other processes at or below 0.5 cores for the whole run, with `quiet_window = yes` recorded. If quiet is not reached, the run does not start.
+2. **Wall or shunt meter.** Attach a wall power meter, or a shunt meter on the supply rail, sampled faster than one act. Only its readings fill `measured_j`.
+3. **Resolution check first.** Before the pilot, record the meter's update interval and step size against the median act length. If the meter cannot resolve one act, meter blocks of acts and attribute by count, and say so in the preregistration.
+4. **Calibrate the estimate on the meter.** Fit `est_j` on the wall or shunt meter at block level, and require R-F4 to hold before `est_j` drives the guard.
+5. **Pin and record.** Pin frequency, record idle baselines before and after, report drift, and keep the package counter as a labeled cross-check.
 
 ### 8.12 Reporting
 
@@ -937,7 +1025,7 @@ Publish all receipts, raw meter traces, idle baselines and analysis code with th
 ### 8.13 Where the products sit
 
 - **Notational Intelligence** is the receipt format in Section 8.5.
-- **Mixture of Limits** is the rival rule in arm 2.
+- **Mixture of Limits** is the philosophy both selectors instantiate. Arm 2 is its fixed cascade instance.
 
 Hardware and product placement moved to the [Metabolic Intelligence white paper](/products/mei/#where-the-products-sit). The meters of this plan are M0 and M1 in Section 8.1.
 
