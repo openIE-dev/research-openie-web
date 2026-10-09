@@ -11,7 +11,7 @@ const papers = defineCollection({
     author: z.string(),
     figures: z.string(),
     pdf: z.string(),
-    board_synth_claimed: z.boolean().default(false),
+    board_metered: z.boolean().default(false),
   }),
 });
 
@@ -25,7 +25,7 @@ const products = defineCollection({
     author: z.string(),
     figures: z.string(),
     pdf: z.string(),
-    board_synth_claimed: z.boolean().default(false),
+    board_metered: z.boolean().default(false),
   }),
 });
 

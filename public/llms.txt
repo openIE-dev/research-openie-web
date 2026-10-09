@@ -1,6 +1,6 @@
 # OpenIE Research
 
-> Research by David Charlot at Open Interface Engineering, Inc. The thesis is that energy to run is the only true metric of computer intelligence. Each paper has a web edition and a PDF. Energy figures are labeled as estimates unless a named meter measured them.
+> Research by David Charlot at Open Interface Engineering, Inc. The thesis: Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate, and among systems that pass it, joules alone order them. Each paper has a web edition and a PDF. Energy figures are labeled as estimates unless a named meter measured them.
 
 The catalog holds three research papers and one history essay. Two product white papers are kept apart from the research catalog. The flagship paper states the proposed Universal Law of Agency as a definition plus a gate: agency first, kinematic bounds second, and intelligence as the derivative of agency in joules. Mixture of Limits is the philosophy: use the cheapest gear that is sufficient, because past the floor (the plateau) more spend does not purchase verifiable progress. A fixed cascade is one instance of it, and so is the σ-law selector. Metabolic Intelligence is the AI product. Klere (klere.ai) is the hardware that builds the Energy Processing Unit (EPU).
 

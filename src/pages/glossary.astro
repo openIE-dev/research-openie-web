@@ -23,8 +23,8 @@ const terms = [
     def: 'Modeled means a stated formula. Simulated means a program or Verilog run. Board-measured means a named meter on a stated device and workload. Estimates are not measured_j.',
   },
   {
-    term: 'board-result flag (board_synth_claimed)',
-    def: 'Repository honesty flag. False means this site has not claimed a synthesized, metered FPGA board result for the study. It stays false until a synthesis log and a meter reading exist.',
+    term: 'board-result flag (board_metered)',
+    def: 'Repository honesty flag. True only when a labeled meter returned an FPGA board energy reading for the study: the KV260 rungs in Metered Commit Gates. A board that is programmed without a meter, such as the Alchitry Pt V2, leaves it false.',
   },
   {
     term: 'measured_j',
