@@ -120,6 +120,8 @@ Consequences:
 4. Proof / energy law: $E(x) \ge \theta(D)\cdot\mu(S,V)$ with labeled joule receipts; Landauer labeled as estimate.
 5. **Available devices / multi-fabric**: after a cascade gear closes, pick the cheapest sufficient device class; not one accelerator by default.
 
+**Where the model sits.** Model last is an order of trial. It is not a verdict on what models can do. Snell, Lee, Xu and Kumar showed that a compute-optimal schedule of test-time compute beats a best-of-N baseline by more than 4x in efficiency, and that on some problems test-time compute can stand in for a larger model (arXiv:[2408.03314](https://arxiv.org/abs/2408.03314)). That result is about the schedule inside the model gear. Mixture of Limits prices that schedule in joules like any other gear. The model gear opens whenever the cheaper gears cannot close $C(z)$, and it opens first when they pass too rarely to pay for their failures. Proposition 9 of the [agency track](https://research.openie.dev/papers/agency/) states that condition exactly.
+
 ### Named floors
 
 | Limit id | Kind | Meaning |
@@ -148,7 +150,7 @@ Mixture of Limits navigates the OpenIE **Periodic Stack of Computation** at [com
 | Experts live *inside* a model; gate selects parameters | Limits live *outside* generation; floors stop escalation |
 | More experts → more capacity for the same generative act | More named floors → sharper refuse / cheaper close |
 | Success = next-token likelihood | Success = closed grammar + certified commit + joule receipt |
-| Model is the substrate | Model is a **demoted residual leaf** |
+| Model is the substrate | Model is a **residual leaf**: the last gear tried, opened when cheaper gears cannot close $C(z)$ |
 
 Clean-room policy: Mixture of Limits is law + runtime, not a wrapper on MoE, and not a path-dependent fork of sibling OpenIE trees for the proven path.
 
@@ -164,6 +166,8 @@ $$
 
 where $E(x)$ is path energy for closing act x, $\theta(D)$ scales with decision / difficulty structure D, and $\mu(S,V)$ is an impedance factor for stack coordinate S and view V. Soft-ref receipts stamp catalog μ with `mu_source=catalog` and a `landauer_floor_ratio`. The product is an **analytical / catalog estimate**, not a package joule reading.
 
+**Status of the spine.** $\theta$ and $\mu$ are catalog constants. So the inequality is a cost model with stated constants. It prices a gear before any joule is spent. It is not derived from physics. The physical floor under it is Landauer's, below. What ranks a closed act is the metered joules on its receipt, behind the gate $C(z)$ (Proposition 8 of the [agency track](https://research.openie.dev/papers/agency/)).
+
 **Landauer (estimate only).** For irreversible erasure of n bits at temperature T,
 
 $$
@@ -172,9 +176,9 @@ $$
 
 Receipts may annotate `landauer_floor_J` from this formula. That annotation is **estimate ≠ measured**. Soft-ref closes keep `measured_j=None`. Optional OS meter features (RAPL / IOReport / powermetrics), when present and successful, may populate `measured_j` only under a labeled `MeasureSource`; failure or VM stays `unavailable`. Soft-ref prove criteria do not require those meters.
 
-**Historical rhyme.** Kepler did not need every future observation once the three laws closed the grammar of planetary motion for the epoch. Newton did not need a larger ephemeris table to predict a new orbit once F=ma and inverse-square gravitation covered the coordinate. Shannon did not need infinite samples to bound channel capacity. Landauer did not need a particular chip to state a thermodynamic lower bound. Mixture of Limits spine is the same move for CI: bind a floor, close cheapest-sufficient, refuse when the floor says stop.
+**Historical rhyme.** Kepler did not need every future observation once the three laws closed the grammar of planetary motion for the epoch. Newton did not need a larger ephemeris table to predict a new orbit once F=ma and inverse-square gravitation covered the coordinate. Shannon did not need infinite samples to bound channel capacity. Landauer did not need a particular chip to state a thermodynamic lower bound. Mixture of Limits spine is the same move for CI: bind a floor, close cheapest-sufficient, refuse when the floor says stop. This is an analogy, offered to teach. The evidence is the receipts and the propositions.
 
-**Constructive existence (software).** Soft-ref `cargo run -p mol-cli -- prove` prints VERIFIED per criterion and exits 0 (~29 soft-ref criteria spanning deterministic close, formula/lookup without model, VoI refuse, settle commit+refuse, certificate refuse, capability default-deny, receipt labels, replay-class coercion deny, Periodic Stack subset navigation, μ catalog, transcript replay, Z2 cite / Z1 compose, agent mailbox, bitemporal memory, fabric routing, desktop headless shell, OS meter labels, WASM capsule, Agent Lane, multi-fabric receipts, ecosystem e2e certify; see PLAN.md in the Mixture of Limits workspace). That is constructive existence **in software**—a runtime fact, not a board energy measurement. Prove↔claim mapping is Leapfrog-owned (§6).
+**Constructive existence (software).** Soft-ref `cargo run -p mol-cli -- prove` prints VERIFIED per criterion and exits 0 (~29 soft-ref criteria spanning deterministic close, formula/lookup without model, VoI refuse, settle commit+refuse, certificate refuse, capability default-deny, receipt labels, replay-class coercion deny, Periodic Stack subset navigation, μ catalog, transcript replay, Z2 cite / Z1 compose, agent mailbox, bitemporal memory, fabric routing, desktop headless shell, OS meter labels, WASM capsule, Agent Lane, multi-fabric receipts, ecosystem e2e certify; see PLAN.md in the Mixture of Limits workspace). That is constructive existence **in software**: an implementation exists and passes every stated criterion. It is not the proof of a theorem, and it is not a board energy measurement. Prove↔claim mapping is Leapfrog-owned (§6).
 
 ---
 
@@ -222,6 +226,8 @@ Rules stamped on every soft-ref close:
 4. **Refuse = lawful success + receipt**. VoI / settle_refuse / certificate / capability denies still close the ledger.
 
 Multi-fabric soft-ref: after tier selection, route cheapest sufficient `DeviceKind` (Cpu always present; Gpu*/Wasm/ThermoSettle/… optional). Detection ≠ joules.
+
+**When the order is optimal.** A fixed order from cheapest up is optimal in expected joules when each cheap gear passes often enough to pay for its failures. For a light gear L ahead of a heavy gear H that always passes, light first wins if and only if $q_L c_H > c_L$, where $q_L$ is the light gear's pass probability and $c$ is joules. For independent gears the optimal order sorts by pass probability per joule, $p/c$ (Simon and Kadane 1975, DOI:[10.1016/0004-3702(75)90002-8](https://doi.org/10.1016/0004-3702(75)90002-8)). Proposition 9 of the [agency track](https://research.openie.dev/papers/agency/) proves both. When the condition fails, the cascade starts at the heavier gear. Under a binding joule budget, the joules of failed light attempts stay spent, and a selector that prices pass probability against joules can close tasks the fixed order cannot. Section 8.11 of the [agency track](https://research.openie.dev/papers/agency/) reports a first metered comparison.
 
 ---
 
@@ -810,6 +816,10 @@ Mixture of Experts (MoE) places experts **inside** a generative corridor: a gate
 | Success metric | Tokens/s, cost@quality, speculative speedup | Certified commit + typed ReplayClass + receipt |
 
 RouteLLM, GreenServ, and HCSpec optimize **which neural generator runs** (cost, Wh, or decode speedup inside the generative corridor). Mixture of Limits asks whether a generator should run at all.
+
+**Cascades and metareasoning.** The cascade is a classical form. Viola and Jones ran a cascade of boosted classifiers: cheap stages reject most inputs, and only hard inputs reach costly stages (CVPR 2001, DOI:[10.1109/CVPR.2001.990517](https://doi.org/10.1109/CVPR.2001.990517)). Russell and Wefald priced each computation by its expected value to the decision, net of its cost, and stopped when no computation had positive net value (*Artificial Intelligence* 49, 1991, DOI:[10.1016/0004-3702(91)90015-C](https://doi.org/10.1016/0004-3702(91)90015-C)). Horvitz set the same trade for reasoning under bounded resources (UAI 1987, arXiv:[1304.2759](https://arxiv.org/abs/1304.2759)). FrugalGPT cascades language models and stops when a learned scorer accepts the answer (Chen, Zaharia and Zou 2023, arXiv:[2305.05176](https://arxiv.org/abs/2305.05176)). Mixture of Limits is this lineage with three changes. The stages include non-neural gears, lookup, formula and solver, ahead of any model. The stop test is the completeness predicate $C(z)$, not a learned score. The cost is metered joules on a receipt, not dollars or latency. The order is optimal under the condition above and not otherwise.
+
+**Baselines.** A cascade claim is tested on a cost-quality frontier: joules per task against closure rate, on one typed task set. The arms are always-large model, always-small model, a learned router in the style of RouteLLM, a FrugalGPT-style scored cascade, the σ-law selector, and an oracle that knows the cheapest sufficient gear for each task. Mixture of Limits claims the frontier only where its curve lies below every arm.
 
 ### 9.2 Field SOTA (all model↔model routing / speculation / constrained generation)
 
