@@ -412,6 +412,8 @@ Klere is the product home of Metabolic Intelligence. Public klere.ai, as the com
 
 More than 7 billion people, and fewer than 500 million people. The opinion is what happens when technology is built for global access instead of priced by scarcity. Class: opinion.
 
+The two numbers frame a choice. They are not a census. The 500 million line is not derived from any table in this study. Use of frontier chat is already past it. On 6 October 2025 Sam Altman said: "More than 800 million people use ChatGPT every week" [61]. That reach came through a free tier. A free tier is a bundle in the sense of this paper: the capability ships without a separate price, paid for by other products and other buyers [62, 63]. So the 800 million figure is the mechanism of this paper at work, not a counterexample to it. What stays scarce is the capability held back for those who pay: the frontier tier, the rate limit, the datacenter rental. The few are the people a scarcity price still reaches.
+
 
 ### 4.13 What would be a result and is not
 
@@ -495,6 +497,8 @@ Metabolic Intelligence states the law: energy binds, and the envelope is how the
 ### 5.6 What would count against the thesis
 
 The thesis fails if the spelling capability that reached ordinary writing required a rented frontier datacenter. Section 2 shows the opposite for nonword detection and isolated-word correction. A leaderboard on which a large model beats Hunspell at context-sensitive grammar names a residual gear. That gear counters the path only if it cannot run on hardware people already have or on a resource-optimized central fabric they can use. That measurement is not in this study. The condition is the test.
+
+**Bundling explains the price. It does not rank the machine.** Bakos and Brynjolfsson showed that bundling many information goods lets a seller price near the average valuation and capture more of total value than selling each good alone, because bundled valuations are more predictable [62]. Shapiro and Varian set out the same economics for goods with high fixed and near-zero marginal cost [63]. Spell check's lost price is that economics. The joules that remain are what this study ranks. Not every capability went the way of spell check. Computer-aided design suites, electronic design automation tools and the Bloomberg terminal stayed premium. Each holds a scarce complement: certified libraries, foundry process data, proprietary data feeds, liability, a network of users. A capability whose value lies in such a complement can keep its price. A capability that is a procedure on hardware people already have cannot. Ordinary computer intelligence is the second kind when it closes on a local gear. That is the prediction, and the premium survivors are where it would fail.
 
 ## 6. Limits and threats to validity
 
@@ -650,6 +654,12 @@ The machines in Section 2.10 are the reach of each choice. Phones, PCs, consumer
 59. IC Insights. Microcontrollers Get a Lift From Automotive After 2021 Rebound. 29 March 2022. 30.9 billion microcontroller units delivered in 2021. Forecast of 35.8 billion units in 2026 is not used as a current count. https://www.icinsights.com/news/bulletins/microcontrollers-get-a-lift-from-automotive-after-2021-rebound/
 
 60. Canalys, now part of Omdia. Data dated 25 February 2025, reported 7 March 2025. 15.4 million AI-capable PCs in the fourth quarter of 2024, 23 percent of PC shipments that quarter. Full year 2024: 17 percent, unit total not printed. Definition: a dedicated chipset or block for on-device AI workloads. https://telecomreseller.com/2025/03/07/ai-capable-pc-shipment-share-rises-to-23-in-q4-2024/
+
+61. TechCrunch. Bellan, R. Sam Altman says ChatGPT has hit 800M weekly active users. 6 October 2025. Altman at OpenAI DevDay: "More than 800 million people use ChatGPT every week." https://techcrunch.com/2025/10/06/sam-altman-says-chatgpt-has-hit-800m-weekly-active-users/
+
+62. Bakos, Y., and Brynjolfsson, E. Bundling information goods: pricing, profits, and efficiency. *Management Science* 45(12), 1613-1630, 1999. https://doi.org/10.1287/mnsc.45.12.1613
+
+63. Shapiro, C., and Varian, H. R. *Information Rules: A Strategic Guide to the Network Economy*. Harvard Business School Press, 1998.
 
 ## Appendix A. Claim map
 
