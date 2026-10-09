@@ -6,14 +6,14 @@ status: "History essay"
 author: "David Charlot, Open Interface Engineering"
 figures: "/living/spellcheck/"
 pdf: "/pdfs/spellcheck.pdf"
-board_synth_claimed: false
+board_metered: false
 ---
 
 # Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)
 
 ## Abstract
 
-This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are fewer than 500 million people. Spell check is the finished case.
+This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are fewer than 500 million people. Spell check is the finished case. Its cause is marginal cost and complementarity: the routine's marginal cost fell to about zero, and it complemented an editor everyone already had, so bundling it beat selling it [62, 63].
 
 People used to pay for spell check, and they paid a premium. WordCheck listed at \$200.00 in January 1981. Grammatik II was \$89 in 1988. Grammatik III was \$99 in 1989. WordPerfect 3.0 was \$495 in October 1983, and it included a spell-check command. Word 1.0 was \$395 and did not include spell check. The checker was added in Word 2.0, and it was a checker the firm purchased. Ordinary calculation was sold the same way. The Anita Mk 8 was £335 in December 1961. The HP 9100A was \$4,900. The Bowmar 901B was \$240 in September 1971. The HP-35 was \$395. Lotus 1-2-3 was fixed at \$495 before it went on sale.
 
@@ -58,13 +58,15 @@ The many (more than 7 billion people) and the few (fewer than 500 million people
 
 ## 1. Introduction
 
-This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are fewer than 500 million people. Spell check is the finished case.
+This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are fewer than 500 million people. Spell check is the finished case. Its cause is marginal cost and complementarity: the routine's marginal cost fell to about zero, and it complemented an editor everyone already had, so bundling it beat selling it [62, 63].
 
 People paid a premium. Then the thing could not be sold. It is free, and it is bundled into something else. The prices in Section 2.11 are that fact. The names in Section 2.9 come after it.
 
 The calculator's separate invoice is a dated series, from the Anita advertisements through the HP-35 and the TI-2500 to VisiCalc. Spell check's separate invoice ends inside the word processor and then the operating system. The dollars that the sources do not print stay unprinted.
 
-Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees collapse to zero by commoditization. What remains is joules. Spell check shows the collapse. The routine is in the editor. The joules are still spent.
+<!-- include: companion-thesis -->
+
+For spell check the price trend is complete. The routine is bundled into the editor at zero price. The joules are still spent.
 
 The choice is the price. Scarcity pricing holds a capability back and sells the hold. It reaches the people who can pay, fewer than 500 million people. Global access is the other choice. The capability is built to run on the machine a person already has, and the separate charge ends. That reaches more than 7 billion people.
 
@@ -86,7 +88,7 @@ This study is the automation path. The catalog triad stays intact. Metabolic Int
 | **Commit** | [Metered Commit Gates, Part I (Notational Intelligence)](/papers/gates/) | propose, then certify, then commit or refuse, then a receipt. A spelling suggestion is a proposal. |
 | **Task completion** | [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) | Stop when value of information is zero on a stated completeness predicate, or when budget or policy refuse fires. |
 | **Energy budget** | [Metabolic Intelligence](/products/mei/) | The envelope is the physical condition of the best answer. Not a cheaper answer. Edge and a resource-optimized central datacenter. Klere is the product home, not a prison. |
-| **Automation path** | This paper | Spell check is the existence proof that computer intelligence becomes ordinary when it is cheap, local, and paired to hardware people already have. |
+| **Automation path** | This paper | An existence proof that some computer intelligence commoditizes to bundled zero price: spell check's marginal cost fell to about zero, and it complemented hardware and editors people already have. |
 
 Navigation chooses the gear. Commit records the irreversible branch. Satiation says when to stop. Metabolic Intelligence says the envelope obtains the best answer. This paper says where that stack has to live if computer intelligence is to follow the path the rest of computer automation already took.
 
@@ -248,7 +250,7 @@ Consumer GPUs: the September 2026 Steam survey, cited above. RTX 5090 at 0.40 pe
 
 Datacenter accelerators: NVIDIA's fiscal 2026 release compares Blackwell with Hopper and does not give the installed count of Hopper cards still in service. Nadella said software continues to run current models on the aging fleet. That is the datacenter form of the same fact, and the fleet is still a rental. No installed-base unit count is invented here.
 
-The OpenIE claim, for this row and for the six before it: software written for the globally accessible generation has the largest impact. The accessible generation is the one in hand, and the sources above show that it is not the same object as the latest die. Spell check was written for the minicomputer in service, then for the editor, then for the phone. Energy to run is the only true metric once the separate money price is gone. A newer die does not replace that metric with a license.
+The OpenIE claim, for this row and for the six before it: software written for the globally accessible generation has the largest impact. The accessible generation is the one in hand, and the sources above show that it is not the same object as the latest die. Spell check was written for the minicomputer in service, then for the editor, then for the phone. Once the separate money price is gone, energy to run is what remains. A newer die does not replace that metric with a license.
 
 The on-device theses line up with that claim, and they do not replace the shipment record. Hooker (2020; 2021) says an idea wins by fitting the hardware that exists. Apple's report fits an approximately 3 billion parameter model to Apple silicon and leaves the larger model on Private Cloud Compute. Liquid AI's LFM2 report searches architectures under measured latency and memory on a phone CPU and a laptop CPU, and ships the weights for those runtimes. PrismML's public claim is that a ternary model is the artifact that fits a local device, at the ratios the firm states. Spell check remains the finished example. The dictionary probe needed none of these models. It needed the machine that already held the text.
 
@@ -323,7 +325,7 @@ Wikipedia, History of Microsoft Word. Word 1.0, released October 1983, costing \
 The elimination already stated in Section 2.9 is the last price on this tape. Hunspell's license price as a library is zero under the tri-license the README states. The README does not publish a prior retail schedule. Apple's system-wide checker, described in the spell-check article as the operating system taking over spelling fixes, has no separate price in that article. The duration of "no separate price" begins, on that article's wording, by the mid-1980s for the incorporated word-processor checkers. The operating-system checker is not dated to a day in the article.
 
 
-The companion papers build the rest of the path. Spell check is the existence proof. Mixture of Limits keeps Model last and demands a fabric that is available, accessible, and capable. Notational Intelligence makes the suggestion a proposal until commit. Satiation stops when the token is kept. Metabolic Intelligence keeps the envelope as the condition of the best answer, on the edge and in a resource-optimized central fabric, and refuses the trade that would worsen the answer to make it cheap. Klere is where that class has a product home. Spell check already ran the path elsewhere. The home is not a prison.
+The companion papers build the rest of the path. Spell check is an existence proof that some computer intelligence commoditizes to bundled zero price. Mixture of Limits keeps Model last and demands a fabric that is available, accessible, and capable. Notational Intelligence makes the suggestion a proposal until commit. Satiation stops when the token is kept. Metabolic Intelligence keeps the envelope as the condition of the best answer, on the edge and in a resource-optimized central fabric, and refuses the trade that would worsen the answer to make it cheap. Klere is where that class has a product home. Spell check already ran the path elsewhere. The home is not a prison.
 
 ## 3. Definitions and methods
 
@@ -341,7 +343,7 @@ Spell check, in the form that shipped inside editors and keyboards, meets the fi
 
 ### 3.2 Existence proof
 
-An analogy says "X is like Y" and then talks about X. An existence proof exhibits Y. Here Y is spell check. The procedures in Section 2 are Y. The products that call a local library are Y. The claim about the future of computer intelligence is a claim that the same path is the one to build, because this instance already finished. Where the instance is narrow, the paper says so. Nonword detection and isolated-word correction finished the path. Context-dependent correction is the residual gear, and it is not finished until it is local in the same sense.
+An analogy says "X is like Y" and then talks about X. An existence proof exhibits Y. Here Y is spell check. The procedures in Section 2 are Y. The products that call a local library are Y. Spell check is an existence proof that some computer intelligence commoditizes to bundled zero price. It does not show that every capability takes that path. Which capabilities take it is set by cost structure: marginal cost near zero, and complementarity with a surface people already have [62, 63]. The claim about the future of computer intelligence is that builders should engineer those two conditions, because this instance already finished. Where the instance is narrow, the paper says so. Nonword detection and isolated-word correction finished the path. Context-dependent correction is the residual gear, and it is not finished until it is local in the same sense.
 
 ### 3.3 The people
 
@@ -524,11 +526,11 @@ The June 1968 Anita Mk 9 amount is still absent. The model pages transcribe Mk 1
 
 ## 7. Conclusion
 
-This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are fewer than 500 million people. Spell check is the finished case.
+This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are fewer than 500 million people. Spell check is the finished case. Its cause is marginal cost and complementarity: the routine's marginal cost fell to about zero, and it complemented an editor everyone already had, so bundling it beat selling it [62, 63].
 
 Scarcity pricing holds the capability for fewer than 500 million people. Global access gives it to more than 7 billion people. Spell check took the second choice. People paid a premium. The checker cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone.
 
-It finished because the routine was cheap, local, and paired to hardware people already had. McIlroy fit the list to the minicomputer. Hunspell sits inside ordinary editors as a local library. The phone exposes the check as a call on the text it already holds. A capability that answers only inside a rented datacenter has not taken that choice. It is still priced by scarcity.
+It finished because the routine was cheap, local, and paired to hardware people already had. In cost terms, its marginal cost fell to about zero and it complemented a surface people already had [62, 63]. McIlroy fit the list to the minicomputer. Hunspell sits inside ordinary editors as a local library. The phone exposes the check as a call on the text it already holds. A capability that answers only inside a rented datacenter has not taken that choice. It is still priced by scarcity.
 
 The machines in Section 2.10 are the reach of each choice. Phones, PCs, consumer GPUs, datacenter accelerators, microcontrollers, shipping NPUs, and the prior generation still in hand each have their own source. Software written for the machine people already run is global access. A price that requires the rental is scarcity. Energy to run is the only true metric of computer intelligence once the separate charge is gone. Token price, parameter count, moat rent, and access fees go with that charge. What remains is joules.
 

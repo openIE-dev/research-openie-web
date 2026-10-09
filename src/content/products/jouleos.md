@@ -6,7 +6,7 @@ status: "Product white paper (review and design guide)"
 author: "David Charlot, Open Interface Engineering"
 figures: "/living/"
 pdf: "/pdfs/jouleos.pdf"
-board_synth_claimed: false
+board_metered: false
 ---
 
 # The Search for JouleOS
@@ -21,7 +21,9 @@ Existing compute fabric treats the floor as fixed. Kernels, builds, guests, and 
 
 OpenIE research study five. Written 3 October 2026 (ET).
 
-Computers are hardware. Software is applied engineering written for that hardware under constraints. Energy to run is the only true metric of computer intelligence. All other factors collapse to zero.
+Computers are hardware. Software is applied engineering written for that hardware under constraints.
+
+<!-- include: companion-thesis -->
 
 ---
 
@@ -367,7 +369,7 @@ A design guide ends in requirements a reader can check, not in a brand preferenc
 9. Require Mixture of Limits as schedule, meter, and refusal on the machine, and Metabolic Intelligence as the best answer inside the energy envelope, with no offload-to-server rule pretending to be thrift.
 10. Require a solution of the JouleOS kind: one intent stream lowered per measured coordinate, the WebAssembly runtime as the operating system that is seen, and the bare-metal kernel as the coordinate where the law is native.
 
-Energy to run is the only true metric of computer intelligence. All other factors collapse to zero.
+Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate, and among systems that pass it, joules alone order them.
 
 ---
 
@@ -420,4 +422,4 @@ The meter reads the counter the platform exposes and names the source. On Apple 
 
 The bare-metal kernel is the coordinate where this law is native. Its trusted computing base is small and links without the host standard library. Just-in-time compilation stays outside that base. On every other coordinate the same runtime is what runs. The kernel is not a second product.
 
-Energy to run is the only true metric of computer intelligence. All other factors collapse to zero.
+Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate, and among systems that pass it, joules alone order them.

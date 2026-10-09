@@ -6,7 +6,7 @@ status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
 figures: "/living/ni/"
 pdf: "/pdfs/gates.pdf"
-board_synth_claimed: true
+board_metered: true
 ---
 
 <div id="notational-intelligence-as-commit-law" class="anchor-alias" aria-hidden="true"></div>
@@ -15,7 +15,7 @@ board_synth_claimed: true
 
 ## 0. Overview
 
-This paper joins two earlier studies into one systems paper. Part I is the commit gate. A proposal may not authorize itself. An irreversible act runs only behind a certificate, and every decision is written to a receipt. Part II is the cascade. The cheapest sufficient gear runs first: Lookup, then Formula, then Solver, then Model. The cascade stops when the task completion predicate $C(z)$ holds, and it refuses with a receipt when the next gear would break the budget. Both parts meter one quantity: the joules needed to reach a correct completion.
+This paper joins two earlier studies into one systems paper. Part I is the commit gate. A proposal may not authorize itself. An irreversible act runs only behind a certificate, and every decision is written to a receipt. Part II is Mixture of Limits: use the cheapest gear that is sufficient. Its standard instance is a cascade. The cheapest sufficient gear runs first: Lookup, then Formula, then Solver, then Model. The cascade stops when the task completion predicate $C(z)$ holds, and it refuses with a receipt when the next gear would break the budget. Both parts rank by one quantity: the joules needed to reach a correct completion.
 
 One board measurement anchors the gate fabric. On an AMD Kria KV260, the onboard INA260 read board-level A/B/A differences of 11,428 pJ per gate cycle (standard error 129 pJ, N = 4) for the WCA gate fabric, and 98.0 pJ per seed cycle (standard error 30.8 pJ, N = 4) for the seed fabric. These are board level, not core rail (Section I.3.7).
 
@@ -54,7 +54,7 @@ Agents propose actions. Irreversible work begins only when an action is allowed 
 
 Energy numbers in this paper are products of operation counts and analytical energy constants (an OpCounter model). They are not board power. Field-programmable gate array (FPGA) behavior has three classes here. Icarus Verilog simulation checks the emitted register-transfer logic. An Alchitry Pt V2 runs the closed-loop gate and agrees with the software on every decision. It has no meter, so its energy is unmetered. An AMD Kria KV260 runs the gate fabric under its onboard INA260 power monitor. Halting and running the same bitstream, interleaved A/B/A, gives a board-level metered difference of 11,428 pJ per gate cycle (standard error 129 pJ, N = 4) for eight parallel evaluations of LUT allow, energy predicate and barrier at 25 MHz. The smaller seed fabric gives 98.0 pJ per seed cycle (standard error 30.8 pJ, N = 4). These are `measured_j` at board level. They are not core-rail readings and not a closed-loop plant joule cost (Section 3.7). Stage B is available as a browser instrument at https://research.openie.dev/living/fpga-sim/. It compiles the same Rust gate to WebAssembly (WASM) and shows LUT state and commit traces through the WebGPU API. That instrument is an emulation. It is not a device-under-test (DUT) measurement and it is not Alchitry board power.
 
-The measured software results are bounded. On a 16-step pendulum episode with seed 1, the reference commits 1 step and refuses 15. The analytical episode energy is 8.6795e-10 joule. On the reported Safe fixed-point port-Hamiltonian check, false allows against a continuous energy oracle are 0 on the stated grids. A Model Context Protocol (MCP) demo refuses an irreversible tool call without invoking the executor. A toy comparison with an energy-set barrier and a discrete shield shows disagreement across safety definitions. None of these results is a claim of silicon energy leadership, of industrial control performance, or of a completed board measurement.
+The measured software results are bounded. On a 16-step pendulum episode with seed 1, the reference commits 1 step and refuses 15. The analytical episode energy is 8.6795e-10 joule. On the reported Safe fixed-point port-Hamiltonian check, false allows against the continuous energy oracle `Vdot <= epsilon` are 0 on the stated grids, and the price is 79 false refuses in 209,261 decisions (Section I.4.3). That is the safety and liveness pair on that test set (Section I.4.10). A Model Context Protocol (MCP) demo refuses an irreversible tool call without invoking the executor. A toy comparison with an energy-set barrier and a discrete shield shows disagreement across safety definitions. None of these results is a claim of silicon energy leadership, of industrial control performance, or of a core-rail measurement.
 
 <div id="notation" class="anchor-alias" aria-hidden="true"></div>
 
@@ -81,10 +81,10 @@ Terms are defined at first scientific use below and collected here so later sect
 | Port-Hamiltonian | A structured energy model used here for a passivity-style check on toy plants. |
 | Runtime verification (RV) | Checking a property on an executing trace. Related, not identical, to the commit record. |
 | Device under test (DUT) | Hardware measured under a stated workload with a stated meter. No DUT result is reported. |
-| Field-programmable gate array (FPGA) | Reconfigurable logic. This paper reports simulation of Verilog, not a board. |
+| Field-programmable gate array (FPGA) | Reconfigurable logic. This paper reports Verilog simulation, a programmed Alchitry Pt V2 with unmetered energy, and board-level KV260 meter readings (Section I.3.7). |
 | WebAssembly (WASM) | A portable compilation target for the browser. The Stage B WASM FPGA emulator is shipped at https://research.openie.dev/living/fpga-sim/. |
 | WebGPU | The browser GPU API named as the display and grid-evaluation path for that emulator. |
-| Alchitry Pt V2 | The intended later board: vendor documentation identifies a Xilinx Artix-7 XC7A100T. Not synthesized here. |
+| Alchitry Pt V2 | Vendor documentation identifies a Xilinx Artix-7 XC7A100T. FPGA programmed (SRAM-loaded) with the closed-loop commit gate; energy unmetered (Section I.3.7). |
 | DiffLogic | Differentiable logic gate networks trained toward Boolean structure (Petersen et al., 2022). |
 | Analytical energy estimate | `J = sum_op count_op * E_op` with named constants. Not board power. |
 | Modeled | A quantity obtained from a stated formula or fitted structure. |
@@ -132,9 +132,11 @@ This study is the **Commit** law in the research catalog triad.
 | **Commit** | This paper | propose → certify → commit\|refuse → receipt. Notational Intelligence owns irreversible commit. |
 | **Task completion** | [Task Satiation vs. Aggregate Rebound in AI Demand](https://research.openie.dev/papers/satiation/) | Completeness predicate / budget stop on the same refuse taxonomy. |
 | **Energy budget** | [Metabolic Intelligence](https://research.openie.dev/products/mei/) | Budget envelope and actuators that make floors bind at tag and campus scale. |
-| **Automation path** | [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) | Existence proof: computer intelligence that became ordinary because it was cheap, local, and paired to hardware people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
+| **Automation path** | [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) | An existence proof that some computer intelligence commoditizes to bundled zero price: spell check's marginal cost fell to about zero, and it complemented hardware and editors people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
 
-Navigation chooses the gear. This paper records the irreversible branch. Satiation supplies the economic stop. Estimates remain estimates; package `measured_j` only when Metered. [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) is the existence proof of the automation path these laws are for: a suggestion is a proposal until the writer commits it. Energy to run is the only true metric of computer intelligence: token price, parameter count, moat rent, and access fees collapse to zero by commoditization, and what remains is joules. Estimates are not `measured_j`.
+Navigation chooses the gear. This paper records the irreversible branch. Satiation supplies the economic stop. Estimates remain estimates; package `measured_j` only when Metered. In [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) a suggestion is a proposal until the writer commits it.
+
+<!-- include: companion-thesis -->
 
 <div id="2-related-work" class="anchor-alias" aria-hidden="true"></div>
 
@@ -522,7 +524,7 @@ Falsifiers. NI-2 is false if the stated command on the stated crate revision doe
 
 ## I.7. Conclusion
 
-The paper defined a commit decision as a conjunctive certificate over a LUT allow bit and an energy predicate, with an optional barrier, and showed a software reference that emits the decision before an irreversible effect. On the reported pendulum tests, the Safe fixed-point rule has zero false allows against its continuous oracle, at the cost of a measured false-refuse count. On the reported comparisons, that oracle is not the same as set invariance. Analytical episode energy for the seed-1 run is 8.6795e-10 joule under published constants. Tool refuse in the MCP demo does not call the executor. Verilog checks are simulation. The browser WASM and WebGPU instrument is available at https://research.openie.dev/living/fpga-sim/ so that the same decision can be inspected without a board. It remains a simulation, not a DUT result. The Alchitry Pt V2 agrees with the software on every decision of seed 1 and stays unmetered. The KV260 meters the gate fabric at board level: 11,428 pJ per eight-lane gate cycle at 25 MHz. The reference is a measured software artifact and a board-metered fabric. The closed-loop chip joule is the next measurement.
+The paper defined a commit decision as a conjunctive certificate over a LUT allow bit and an energy predicate, with an optional barrier, and showed a software reference that emits the decision before an irreversible effect. On the reported pendulum tests, the Safe fixed-point rule has zero false allows against its continuous oracle `Vdot <= epsilon` on the stated test set, at the cost of 79 false refuses in 209,261 decisions. On the reported comparisons, that oracle is not the same as set invariance. Analytical episode energy for the seed-1 run is 8.6795e-10 joule under published constants. Tool refuse in the MCP demo does not call the executor. Verilog checks are simulation. The browser WASM and WebGPU instrument is available at https://research.openie.dev/living/fpga-sim/ so that the same decision can be inspected without a board. It remains a simulation, not a DUT result. The Alchitry Pt V2 agrees with the software on every decision of seed 1 and stays unmetered. The KV260 meters the gate fabric at board level: 11,428 pJ per eight-lane gate cycle at 25 MHz. The reference is a measured software artifact and a board-metered fabric. The closed-loop chip joule is the next measurement.
 
 <div id="references" class="anchor-alias" aria-hidden="true"></div>
 
@@ -739,7 +741,7 @@ The industry default escalates Mixture-of-Experts (MoE) capacity *inside* a gene
 
 ### II. Terms used here
 
-**Software reference** has one meaning in this paper: the software reference path that proves the navigation rule without board synthesis or package metering. Receipts on that path label energy as estimate and leave `measured_j` unset until a named meter returns. Software reference is not a second, looser evidence class for live silicon. Periodic Stack, replay class, value of information, evidence classes, and the board-result flag are defined on the shared [glossary](/glossary/).
+**Software reference** has one meaning in this paper: the software reference path that implements the navigation rule and verifies it against its specification, without board synthesis or package metering. Receipts on that path label energy as estimate and leave `measured_j` unset until a named meter returns. Software reference is not a second, looser evidence class for live silicon. Periodic Stack, replay class, value of information, evidence classes, and the board-result flag are defined on the shared [glossary](/glossary/).
 
 **Model leaf (one sentence).** The model gear is a conditionally available residual: off by default (`allow_model=false`), opened only when cheaper gears miss, and never coercible to Deterministic (`ModelGenerated` cannot be rewritten as `Deterministic`).
 
@@ -751,7 +753,7 @@ The industry default escalates Mixture-of-Experts (MoE) capacity *inside* a gene
 
 Lookup → Formula → Solver → Model last. That order is one instance of the philosophy in Section II.2. Floors stop escalation when more bits stop buying outcomes: VoI, grammar, energy estimate, certificate, settle-refuse. Close is propose → certify → commit|refuse → receipt. Section 8 is a survey of plateau options under that law. It is not the law.
 
-Each class of embodiment reaches a limit. A decision model stops at a typed probability. A bounded ask stops at a typed value or at not-sure. A statechart stops at a legal transition. An energy-based settle stops at a low-energy configuration. A visual editor stops at the chart a person can audit. None of them is the whole intelligence. The convergence is hybrid interplay: the chart is the door, the decision model may fill a proposal, the energy settle may score a configuration, and something outside the model still commits or refuses. Mixture of Limits is the navigation rule of that interplay. Refuse is success. Energy to run is the only true metric. All other factors collapse to zero. §8.5.1 places the public instances under that law. It does not replace the law.
+Each class of embodiment reaches a limit. A decision model stops at a typed probability. A bounded ask stops at a typed value or at not-sure. A statechart stops at a legal transition. An energy-based settle stops at a low-energy configuration. A visual editor stops at the chart a person can audit. None of them is the whole intelligence. The convergence is hybrid interplay: the chart is the door, the decision model may fill a proposal, the energy settle may score a configuration, and something outside the model still commits or refuses. Mixture of Limits is the navigation rule of that interplay. Refuse is success. Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate, and among systems that pass it, joules alone order them. §8.5.1 places the public instances under that law. It does not replace the law.
 
 ---
 
@@ -781,7 +783,7 @@ Three studies on this catalog form one stack: **Navigation**, **Commit**, and **
 | **Commit** | [Metered Commit Gates, Part I (Notational Intelligence)](https://research.openie.dev/papers/gates/) | Irreversible close shape: propose → certify → commit\|refuse → receipt. Notational Intelligence owns the commit record. Analytical joules here are estimates; package `measured_j` only when Metered. |
 | **Task completion** | [Task Satiation vs. Aggregate Rebound in AI Demand](https://research.openie.dev/papers/satiation/) | Stop when VoI is zero on a stated completeness predicate, or when budget / policy refuse fires. Free at the margin for digital inference is not free joules and not free actuation. |
 | **Energy budget / metabolic embodiment** | [Metabolic Intelligence](https://research.openie.dev/products/mei/) | Budget envelope and actuators: binding classifiers, $J(m \mid q)$ obtain-router, OpenADR/MQTT campus service. Software reference path: no FPGA board result claimed. |
-| **Automation path** | [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) | Existence proof: computer intelligence that became ordinary because it was cheap, local, and paired to hardware people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
+| **Automation path** | [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) | An existence proof that some computer intelligence commoditizes to bundled zero price: spell check's marginal cost fell to about zero, and it complemented hardware and editors people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
 
 ```
 ┌──────────────────────────────────────────────────────────┐
@@ -812,7 +814,7 @@ flowchart TB
   NAV --> COM --> ECO
 ```
 
-Mixture of Limits owns *which gear closes* and *when refuse is success*. Notational Intelligence owns the irreversible commit shape. Satiation owns task completion. [Spell Check is Global](/papers/spellcheck/) is the existence proof of the path: the nonword gear is Lookup, then a short edit, on hardware that is available, accessible, and capable. Software reference path: no FPGA board result claimed; estimates ≠ `measured_j`. Energy to run is the only true metric of computer intelligence: token price, parameter count, moat rent, and access fees collapse to zero by commoditization, and what remains is joules. Estimates are not `measured_j`.
+Mixture of Limits owns *which gear closes* and *when refuse is success*. Notational Intelligence owns the irreversible commit shape. Satiation owns task completion. In [Spell Check is Global](/papers/spellcheck/) the nonword gear is Lookup, then a short edit, on hardware that is available, accessible, and capable. Software reference path: no FPGA board result claimed; estimates ≠ `measured_j`. The shared thesis and its gate form are stated once, in [Part I, Companion papers](#i-companion-papers).
 
 <div id="openie-map-no-prior-literacy-assumed" class="anchor-alias" aria-hidden="true"></div>
 
@@ -824,7 +826,7 @@ This study lives inside the OpenIE family of sites. Readers do not need those si
 |---|---|---|---|
 | **Research** (this hub) | [research.openie.dev](https://research.openie.dev) | Readable studies, PDFs, and living figures. This paper is `/papers/gates/#part-ii-the-cascade-mixture-of-limits`; companions are Notational Intelligence (`/papers/gates/`), Satiation (`/papers/satiation/`), Metabolic Intelligence (`/products/mei/`), and Spell Check is Global (`/papers/spellcheck/`). | Publishes the navigation-rule study prose and software reference measurement bounds. |
 | **Stack** | [stack.openie.dev](https://stack.openie.dev) | Teaching map of the family: information theory, game theory, and mechanism design as one substrate; directory of the eight periodic stacks. | Orientation layer. Mixture of Limits is not "another stack card"; it is the **navigation rule** that chooses cheapest-sufficient close across stack coordinates. |
-| **Compute** | [compute.openie.dev](https://compute.openie.dev) | Periodic Stack of Computation: **258 primitives / 33 families**, thermodynamic floor every sibling inherits. | The primitive table Mixture of Limits **navigates**. Software reference proves the full live catalog (**258 Present / 258 live** Lookup/Formula/Solver/Navigate gears) plus honest HW Gap cells; HW Gaps software reference sims ×8 (`physical_settle`…`photonic_mzi`) + Ferric/Stage C inventories are in proof with Gap cells retained. μ calib + silicon meters remain outside software reference proof. Empty HW cells → `primitive_gap`. estimates≠measured_j; `stage_c_measured=false` until meters. |
+| **Compute** | [compute.openie.dev](https://compute.openie.dev) | Periodic Stack of Computation: **258 primitives / 33 families**, thermodynamic floor every sibling inherits. | The primitive table Mixture of Limits **navigates**. Software reference verifies, against its specification, the full live catalog (**258 Present / 258 live** Lookup/Formula/Solver/Navigate gears) plus honest HW Gap cells; HW Gaps software reference sims ×8 (`physical_settle`…`photonic_mzi`) + Ferric/Stage C inventories are in proof with Gap cells retained. μ calib + silicon meters remain outside software reference proof. Empty HW cells → `primitive_gap`. estimates≠measured_j; `stage_c_measured=false` until meters. |
 | **Knowledge** | [knowledge.openie.dev](https://knowledge.openie.dev) | Working definition of a claim as seven axes ⟨valid time, transaction time, reference time, granularity, scope, certainty, provenance⟩. | Typed claims and cite/compose leaves (Z2 cite / Z1 compose in software reference) bind to this object shape. Mixture of Limits does not redefine knowledge; it refuses escalation when grammar and VoI say the claim coordinate is already covered. |
 | **Synthesis** | [synthesis.openie.dev](https://synthesis.openie.dev) | Periodic Stack of Digital Information Synthesis: AI as software; zones Z₁/Z₂/Z₃; cost surface $E(x) = \sum \theta(p)\cdot\mu(p,H)$. | Plateau spend and cascade order rhyme with synthesis zones (closed-form → constrained → unbounded). Mixture of Limits owns **floors outside generation** (VoI, grammar, energy estimate, certify, settle-refuse), so Z₃-style generation stays the last cascade stage. |
 | **Verify** | [proof.openie.dev](https://proof.openie.dev) | Periodic Stack of Verification: cheapest-sufficient solver under $E(x) \ge \theta(D)\cdot\mu(S,V)$. | Cousin energy law. Mixture of Limits uses the same spine form for path energy; Verify maps verified artifacts; Mixture of Limits maps which gear closes before commit. |
@@ -832,7 +834,7 @@ This study lives inside the OpenIE family of sites. Readers do not need those si
 
 **One paragraph.** Stack teaches the family map. Compute names the permitted-act primitives. Knowledge defines the claim object those primitives carry. Synthesis places digital information synthesis on a cost surface and zone grammar. Verify prices verified artifacts under a related energy inequality. Research hosts the studies. Klere ([klere.ai](https://klere.ai)) is the product home (MEI designed for Klere; thin public site; no invented features). **Mixture of Limits is the navigation rule across that family:** Lookup → Formula → Solver → Model, with named floors that stop escalation when more bits stop buying outcomes. It is not a rebrand of Mixture-of-Experts, not a substitute for the Periodic Stack pages, and not a claim that software reference software measures board package joules.
 
-Other names this paper uses without treating them as assumed literacy: **MathGround** denotes the OpenIE cascade / replay-class discipline that enforces Lookup → Formula → Solver → Model; **WCA** denotes capability / certify refuse adapters (live MCP path remains software reference roadmap); **leapfrog / `openie-path`** denotes ask-bridge adapters (stubs on the proven path). Living companions for this study: [/living/mol/](/living/mol/). FPGA commit figures for NI: [/living/fpga-sim/](/living/fpga-sim/).
+Other names this paper uses without treating them as assumed literacy: **MathGround** denotes the OpenIE cascade / replay-class discipline that enforces Lookup → Formula → Solver → Model; **WCA** denotes capability / certify refuse adapters (live MCP path remains software reference roadmap); **leapfrog / `openie-path`** denotes ask-bridge adapters (stubs on the verified path). Living companions for this study: [/living/mol/](/living/mol/). FPGA commit figures for NI: [/living/fpga-sim/](/living/fpga-sim/).
 
 Scope. Companion papers (Navigation / Commit / task completion) and the OpenIE map above name the catalog triad and stack / compute / knowledge / synthesis / verify / research before any later allusion. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine $E(x) \ge \theta(D)\cdot\mu(S,V)$. Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (energy-based model / large language model / latent hybrid), the hybrid-interplay convergence of embodiment-class limits (§8.5.1), World Labs (spatial world models), and **SOTA at the plateau** (§8.7): once VoI is zero past the floor, plateau spend is the only work: test-time compute, super learning, live SOTA methods (SSMs, MoE, RAG, speculative decode, …), SSM hybrids / MoE / implementation efficiency (including Jamba-class, DeepSeek, GLM as options), hardware economics (including edge / neuromorphic software reference), plateau techniques for transmission / gearing / cascade / memory-context / test-time (§8.13), industry gap levers (Mixture-of-Depths, AWQ/GPTQ/FP8, vLLM/SGLang; §8.10.1), and the cross-field **race to plateau floors** table (§8.14: RLHF, diffusion, GNNs, multimodal, federated/continual, pruning/KD/NAS, Bayesian/conformal/causal/active, GraphRAG, agent memory, structured generation, CUDA Graphs). Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits. Section 11 states engineering gaps to close (dual-phase front-door perception, O(1) meta-routing, Primitive Distillation for open grammars, Tier 0/1/2 measurement realism, and a declarative DX roadmap) as plateau work under the same floors, not apologies.
 
@@ -894,7 +896,7 @@ Mixture of Limits navigates the OpenIE **Periodic Stack of Computation** at [com
 | Success = next-token likelihood | Success = closed grammar + certified commit + joule receipt |
 | Model is the substrate | Model is a **residual leaf**: the last gear tried, opened when cheaper gears cannot close $C(z)$ |
 
-Clean-room policy: Mixture of Limits is a rule plus a runtime, not a wrapper on MoE, and not a path-dependent fork of sibling OpenIE trees for the proven path.
+Clean-room policy: Mixture of Limits is a rule plus a runtime, not a wrapper on MoE, and not a path-dependent fork of sibling OpenIE trees for the verified path.
 
 ---
 
@@ -975,7 +977,7 @@ Rules stamped on every software reference close:
 
 Multi-fabric software reference: after tier selection, route cheapest sufficient `DeviceKind` (Cpu always present; Gpu*/Wasm/ThermoSettle/… optional). Detection ≠ joules.
 
-**When the order is optimal.** A fixed order from cheapest up is optimal in expected joules when each cheap gear passes often enough to pay for its failures. For a light gear L ahead of a heavy gear H that always passes, light first wins if and only if $q_L c_H > c_L$, where $q_L$ is the light gear's pass probability and $c$ is joules. For independent gears the optimal order sorts by pass probability per joule, $p/c$ (Simon and Kadane 1975, DOI:[10.1016/0004-3702(75)90002-8](https://doi.org/10.1016/0004-3702(75)90002-8)). Proposition 9 of the [agency track](https://research.openie.dev/papers/agency/) proves both. When the condition fails, the cascade starts at the heavier gear. Under a binding joule budget, the joules of failed light attempts stay spent, and a selector that prices pass probability against joules can close tasks the fixed order cannot. Section 8.11 of the [agency track](https://research.openie.dev/papers/agency/) reports a first metered comparison.
+**When the order is optimal.** A fixed order from cheapest up is optimal in expected joules when each cheap gear passes often enough to pay for its failures. For a light gear L ahead of a heavy gear H that always passes, light first wins if and only if $q_L c_H > c_L$, where $q_L$ is the light gear's pass probability and $c$ is joules. For independent gears the optimal order sorts by pass probability per joule, $p/c$ (Simon and Kadane 1975, DOI:[10.1016/0004-3702(75)90002-8](https://doi.org/10.1016/0004-3702(75)90002-8)). Proposition 9 of the [agency track](https://research.openie.dev/papers/agency/) proves both. When the condition fails, the cascade starts at the heavier gear. Under a binding joule budget, the joules of failed light attempts stay spent, and a selector that prices pass probability against joules can close tasks the fixed order cannot. Section 8.11 of the [agency track](https://research.openie.dev/papers/agency/) reports a first kernel-reported comparison.
 
 ---
 
@@ -995,7 +997,7 @@ Satiation owns task completion and its price tables; NI owns the commit record; 
 
 The Mixture of Limits constructive prove is not a leaderboard stunt. It is an **information-theoretic** close rule rooted in **physics**: the same historical arc that took astronomy from excess epicycles to Kepler/Newton predictive floors, and that takes computation from Shannon → Landauer → complexity / VoI toward named energy floors. Global academia already holds those proof points; the bottleneck is **applied math × materials (hardware) embodiment**, not awareness of the slogans. This section only maps what `mol prove` actually stamps `VERIFIED` onto paper `claim.*` ids: embodiment of known floors, not invention of new physics.
 
-A claim is **proven** only when the in-tree harness prints `VERIFIED` for the named criterion and exits 0. A claim is **software reference only** when PLAN §6 marks it OUT OF PROOF SCOPE, or when the criterion itself stamps software reference / fixture / feature-gated behavior rather than live silicon. Proven-path rows keep `measured_j=None` (or Metered only when a probe returns) and no FPGA board result claimed.
+A claim is **implemented and verified against its specification** when the in-tree harness prints `VERIFIED` for the named criterion and exits 0. That is software existence. It is not a theorem, and it is not independent replication. A claim is **software reference only** when PLAN §6 marks it OUT OF PROOF SCOPE, or when the criterion itself stamps software reference / fixture / feature-gated behavior rather than live silicon. Verified-path rows keep `measured_j=None` (or Metered only when a probe returns) and no FPGA board result claimed.
 
 
 Measurement labels used below (OpenIE measurement grammar):
@@ -1006,7 +1008,7 @@ Measurement labels used below (OpenIE measurement grammar):
 | **Estimated** | Catalog / Landauer / fuel / μ surrogate with explicit `EstimateKind` or `mu_source=catalog` |
 | **Metered** | Optional live probe (`energy-meter`) returned numbers (not required for prove) |
 
-Default close path for all proven claims: **Unmetered** (+ **Estimated** where μ / Landauer / fuel appear). No FPGA board result claimed everywhere in the proven path.
+Default close path for all verified claims: **Unmetered** (+ **Estimated** where μ / Landauer / fuel appear). No FPGA board result claimed everywhere in the verified path.
 
 <div id="61-harness-meta" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1014,12 +1016,14 @@ Default close path for all proven claims: **Unmetered** (+ **Estimated** where �
 
 | Prove # | Criterion (PLAN) | Paper claim id | Status | Measurement |
 |---|---|---|---|---|
-| P0 | `cargo test --workspace` green | `claim.mol.ci_workspace` | Proven (CI / operator; not printed by `mol prove`) | - |
-| P1 | `cargo run -p mol-cli -- prove` exits 0 | `claim.mol.prove_harness` | Proven (prints `VERIFIED` per row below) | Unmetered |
+| P0 | `cargo test --workspace` green | `claim.mol.ci_workspace` | Verified against specification (CI / operator; not printed by `mol prove`) | - |
+| P1 | `cargo run -p mol-cli -- prove` exits 0 | `claim.mol.prove_harness` | Verified against specification (prints `VERIFIED` per row below) | Unmetered |
 
 <div id="62-proven-claims-p2-p24" class="anchor-alias" aria-hidden="true"></div>
 
-### II.6.2 Proven claims (P2-P24)
+<div id="ii62-proven-claims-p2-p24" class="anchor-alias" aria-hidden="true"></div>
+
+### II.6.2 Verified claims (P2-P24)
 
 | Prove # | Criterion (PLAN) | Paper claim id | Claim (one sentence) | Software reference / scope note | Measurement |
 |---|---|---|---|---|---|
@@ -1083,12 +1087,14 @@ In-tree `ClaimStore` seeds used by P14/P15 (retrieve/compose), distinct from the
 
 <div id="65-measurement-scope-of-the-proven-map" class="anchor-alias" aria-hidden="true"></div>
 
-### II.6.5 Measurement scope of the proven map
+<div id="ii65-measurement-scope-of-the-proven-map" class="anchor-alias" aria-hidden="true"></div>
+
+### II.6.5 Measurement scope of the verified map
 
 - Software reference prove path: `measured_j=None` (Unmetered); Metered only when a live probe returns.
-- no FPGA board result claimed on the proven path.
+- no FPGA board result claimed on the verified path.
 - Software reference v0.1 prove is software constructive existence, not board / FPGA watt leadership.
-- Software reference roadmap items (§6.3) stay roadmap; they are not escalated to proven claims.
+- Software reference roadmap items (§6.3) stay roadmap; they are not escalated to verified claims.
 
 ---
 
@@ -1249,7 +1255,7 @@ Representation is not law. A deeper latent does not erase the floors Mixture of 
 - **Aleph** is their orchestration / agentic layer that coordinates Kona, LLMs, and other tools. Public positioning: LLMs handle natural-language interface and candidate generation; the EBM layer evaluates and repairs under constraints. Aleph is also described as delivering verified / formal-reasoning workflows today (benchmark claims such as PutnamBench appear on their site; treat score numbers as **author-reported** unless independently reproduced here).
 - Product framing on the Kona page: Kona is not marketed as a chatbot. Language models express and explore; Kona is positioned to evaluate what is valid or permissible before irreversible action in high-stakes domains (company examples include energy, manufacturing, semiconductor verification, robotics). Kona 1.0 was announced for partner pilots (company and press materials, Jan 2026). Leadership publicly listed includes founder and CEO Eve Bodnia and Yann LeCun as founding chair of a technical research board (company site / press).
 
-**Classical EBM backdrop (settled ML architecture).** Energy-based models treat inference as finding low-energy configurations under a learned energy function. That framing is older than any one product; LeCun and others have long argued that reasoning can be cast as optimization over an energy landscape. Logical Intelligence's public thesis is that discrete, locally scored, autoregressive LLM traces scale poorly for long-horizon constraint satisfaction, and that continuous, globally scored EBM traces address that gap when paired with LLMs for interface.
+**Classical EBM backdrop (established ML architecture).** Energy-based models treat inference as finding low-energy configurations under a learned energy function. That framing is older than any one product; LeCun and others have long argued that reasoning can be cast as optimization over an energy landscape. Logical Intelligence's public thesis is that discrete, locally scored, autoregressive LLM traces scale poorly for long-horizon constraint satisfaction, and that continuous, globally scored EBM traces address that gap when paired with LLMs for interface.
 
 **Mixture of Limits reading (cascade map, not a product endorsement).**
 
@@ -1278,7 +1284,7 @@ A **visual statechart editor** stops at the chart a person can audit. The editor
 
 An **energy-based settle**, already placed in §8.5, stops at a low-energy configuration. Constraint energy is not `measured_j`. A low-energy configuration is not an irreversible act.
 
-None of these classes is the whole intelligence. The convergence is hybrid interplay. The chart is the door. The decision model may fill a proposal. The bounded ask may return a typed value or not-sure. The energy settle may score a configuration. Something outside the model still commits or refuses. Mixture of Limits is the navigation rule of that interplay: Lookup → Formula → Solver → Model last. Refuse is success. Energy to run is the only true metric. All other factors collapse to zero. Constraint energy remains a score on a configuration. It is not that metric.
+None of these classes is the whole intelligence. The convergence is hybrid interplay. The chart is the door. The decision model may fill a proposal. The bounded ask may return a typed value or not-sure. The energy settle may score a configuration. Something outside the model still commits or refuses. Mixture of Limits is the navigation rule of that interplay: Lookup → Formula → Solver → Model last. Refuse is success. Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate, and among systems that pass it, joules alone order them. Constraint energy remains a score on a configuration. It is not that metric.
 
 A shared request shape is not shared authority. Two typed answers still do not commit. These stops are not plateau knobs inside one generator (§8.7). Stacking classes does not produce a commit. Software reference path: no FPGA board result claimed. Nothing in the class map is a measurement of this study.
 
@@ -1635,7 +1641,7 @@ Depth over encyclopedia: one verified cite per row; author-reported speedups and
 
 ### II.9.0 Spine (history + mathematics; SOTA at the plateau)
 
-Mixture of Limits is proven as an **information-theoretic** approach rooted in **physics**: formula/law discovery in the Newton-Kepler lineage, not excess generation. Academia already has Shannon → Landauer → complexity/VoI → symbolic and energy floors; Mixture of Limits **embodies** those floors in a commit|refuse cascade. The remaining bottleneck is applied math × materials (hardware), not an awareness gap. The industry race is a **race to the plateau floors**, not unbounded scale. The table below situates field systems so readers see what they optimize (**which neural generator runs**). For latent depth, Logical Intelligence EBM hybrids, World Labs world models, and **SOTA at the plateau** (§8.7: test-time, super learning, live SOTA methods, SSM/MoE/implementation efficiency, hardware economics, transmission/gearing/cascade/memory-context/test-time techniques, and the cross-field floors table in §8.14), see §8.4-§8.14: once VoI is zero past the floor, those methods are plateau spend options under Lookup → Formula → Solver → Model. Mixture of Limits asks whether a generator should run at all, then how little energy to spend on the plateau, converging to VoI/floors the way physics converged to predictive laws.
+Mixture of Limits is an **information-theoretic** approach rooted in **physics**: formula/law discovery in the Newton-Kepler lineage, not excess generation. Academia already has Shannon → Landauer → complexity/VoI → symbolic and energy floors; Mixture of Limits **embodies** those floors in a commit|refuse cascade. The remaining bottleneck is applied math × materials (hardware), not an awareness gap. The industry race is a **race to the plateau floors**, not unbounded scale. The table below situates field systems so readers see what they optimize (**which neural generator runs**). For latent depth, Logical Intelligence EBM hybrids, World Labs world models, and **SOTA at the plateau** (§8.7: test-time, super learning, live SOTA methods, SSM/MoE/implementation efficiency, hardware economics, transmission/gearing/cascade/memory-context/test-time techniques, and the cross-field floors table in §8.14), see §8.4-§8.14: once VoI is zero past the floor, those methods are plateau spend options under Lookup → Formula → Solver → Model. Mixture of Limits asks whether a generator should run at all, then how little energy to spend on the plateau, converging to VoI/floors the way physics converged to predictive laws.
 
 <div id="91-law-contrast-not-a-rebrand" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1688,7 +1694,7 @@ From PLAN prove (see §6):
 
 1. **Cascade order is law**, not a heuristic over LLMs: Lookup → Formula → Solver/settle → Model.
 2. **Refuse-to-commit** is typed and receipted (`voi`, `settle_refuse`, `efa_certificate`, `primitive_gap`, `fabric_unavailable`, `claim_unknown`, …).
-3. **Receipt labels** on the proven path: `measured_j=None` (Unmetered), estimates labeled (**Estimated**), no FPGA board result claimed.
+3. **Receipt labels** on the verified path: `measured_j=None` (Unmetered), estimates labeled (**Estimated**), no FPGA board result claimed.
 4. **ReplayClass** cannot strengthen: `ModelGenerated` ↛ `Deterministic`.
 5. Software reference multi-fabric routing chooses `DeviceKind` after tier close; still not “pick GPT-4 vs Mixtral.”
 
@@ -1720,7 +1726,7 @@ Mixture of Limits says CI should navigate those floors explicitly: Lookup and Fo
 **Open questions**
 
 - Calibrated μ corpora and silicon HW meters (live catalog 258 Present / 258 live gears + HW Gaps software reference sims ×8 + Ferric/Stage C inventories are in software reference proof; Gap cells retained; estimates≠measured_j; `stage_c_measured=false` until meters).
-- Live WCA MCP / System One pre-gate and leapfrog `openie-path` ask (adapters remain stubs on the proven path).
+- Live WCA MCP / System One pre-gate and leapfrog `openie-path` ask (adapters remain stubs on the verified path).
 - Materials / device paths that make Formula+LUT coin-cell closes dominate generative spend, with Metered probes when package joules are claimed.
 - When a Metered `measured_j` path is published beside software reference estimates without laundering estimate as board watts.
 - How VoI thresholds should be set per domain without smuggling engagement metrics as completeness (see Satiation).
@@ -1873,7 +1879,7 @@ Uncertified proposals never become Lookup. Distilled entries carry provenance: s
 
 ### II.11.4.1 Public documents, by what they measure
 
-Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. An estimator, a label, a specification, a programme, a technical report, or a facility reporting duty is not a joule on a commit. Mixture of Limits leaves `measured_j` unset until a Metered probe returns. The documents below are ordered by what each page says the document measures or claims. The critique is the common mechanism: estimator versus a meter. Estimates are not measured joules.
+Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate, and among systems that pass it, joules alone order them. An estimator, a label, a specification, a programme, a technical report, or a facility reporting duty is not a joule on a commit. Mixture of Limits leaves `measured_j` unset until a Metered probe returns. The documents below are ordered by what each page says the document measures or claims. The critique is the common mechanism: estimator versus a meter. Estimates are not measured joules.
 
 **Claim regime.** AFNOR SPEC 2314, *Référentiel général pour l'IA frugale*, AFNOR, June 2024. The shop record is 100 pages, with free consultation authorized by AFNOR. The specification states that it was drawn from January 2024 to June 2024, from successive contributions of more than one hundred members of the participating organizations. The ministry press release of 28 June 2024 states 150 contributors and calls the référentiel a first at international level, of voluntary application. The AFNOR news page of 12 July 2024 states a working group of about forty actors and 31 practice sheets. The text contains practice sheets BP 01 through BP 31. Section 4 states what to specify when communicating on the frugal character of an AI service. Annex 1 compares tools that may be used and says the list is not exhaustive. In the column headed measurement of consumption it names CodeCarbon and CarbonTracker, lists direct measurement as an advantage, and lists as a limit that direct measurement is not always possible and that the tools make choices that are not always explicit, for example the emission factor. Practice sheet BP 21 says to record the estimate supplied by those tools (printed there as Code Carbon, Green Algorithms, Carbon Tracker, and MLCO2Impact), then the real consumption of the training. Practice sheet BP 23 is an a priori estimate of model consumption and names CodeCarbon, TensorFlox Profiler, and nvidia-smi as tools that can be used to estimate and to measure. The specification does not require a meter on the commit.
 
@@ -1893,7 +1899,7 @@ Energy to run is the only true metric of computer intelligence. All other factor
 
 ### II.11.4.2 Research that treats energy as the condition
 
-Public standards have no firm requirement to be energy first and energy bound. Mixture of Limits treats energy to run as the foundation. The Klere energy processing unit is the hardware that can hold a run to that bound. A standard that leaves the meter optional does not. The works below treat energy, power, or a physical bound as a condition of the computation. Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. A number below is that paper's bound or that paper's measurement. It is not package `measured_j`.
+Public standards have no firm requirement to be energy first and energy bound. Mixture of Limits treats energy to run as the foundation. The Klere energy processing unit is the hardware that can hold a run to that bound. A standard that leaves the meter optional does not. The works below treat energy, power, or a physical bound as a condition of the computation. Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate, and among systems that pass it, joules alone order them. A number below is that paper's bound or that paper's measurement. It is not package `measured_j`.
 
 **Speed bound from energy.** Margolus and Levitin (1998) bound the minimum time for an isolated system to reach an orthogonal state by the average energy above the ground state, $\tau_{\perp} \ge h/(4E)$. Their abstract states that adding one joule of energy cannot raise the processing rate by more than about $3 \times 10^{33}$ operations per second. Class: physical bound.
 
@@ -1915,7 +1921,7 @@ Jun, Gavrilov, and Bechhoefer (2014) erase one bit with a colloidal particle in 
 
 ### II.11.4.3 Neuromorphic substrates and measured-run energy
 
-Mixture of Limits treats energy to run as the foundation. The works below state energy or power of a computation as a physical quantity on a named platform, or they stop under an energy or accuracy-energy bound. They are ordered by method class, not by region. Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. A number below is that paper's own measurement or that paper's own bound. It is not package `measured_j`. Estimates are not `measured_j`.
+Mixture of Limits treats energy to run as the foundation. The works below state energy or power of a computation as a physical quantity on a named platform, or they stop under an energy or accuracy-energy bound. They are ordered by method class, not by region. Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate, and among systems that pass it, joules alone order them. A number below is that paper's own measurement or that paper's own bound. It is not package `measured_j`. Estimates are not `measured_j`.
 
 **Physical quantity of a neuromorphic substrate.** Merolla, Arthur, Alvarez-Icaza, Cassidy, Sawada, Akopyan, Jackson, Imam, Guo, Nakamura, Brezzo, Vo, Esser, Appuswamy, Taba, Amir, Flickner, Risk, Manohar, and Modha (2014) build TrueNorth: 4096 neurosynaptic cores, 1 million programmable spiking neurons, and 256 million configurable synapses. With 400-by-240 video at 30 frames per second, the chip consumes 63 mW. Class: physical quantity of a neuromorphic substrate. That 63 mW is their measurement.
 
@@ -2005,7 +2011,7 @@ Hamerly, Bernstein, Sludds, Soljačić, and Englund (2019) propose a photonic ac
 
 ### II.11.5 Developer experience roadmap (not shipped product)
 
-**Gap.** Software reference `mol prove` is a clean-room existence proof. Operators still need a declarative surface, local develop loop, and an honest benchmark story versus MoE routers, without claiming a shipped product that does not exist.
+**Gap.** Software reference `mol prove` is clean-room software existence: implemented and verified against its specification. Operators still need a declarative surface, local develop loop, and an honest benchmark story versus MoE routers, without claiming a shipped product that does not exist.
 
 **Close.** Roadmap only (not claimed shipped):
 

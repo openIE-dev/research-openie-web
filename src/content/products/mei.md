@@ -6,7 +6,7 @@ status: "Product white paper"
 author: "David Charlot, Open Interface Engineering"
 figures: "/living/mei/"
 pdf: "/pdfs/mei.pdf"
-board_synth_claimed: false
+board_metered: false
 ---
 
 # Metabolic Intelligence: Budget-Native Compute from Tag to Campus
@@ -17,7 +17,7 @@ board_synth_claimed: false
 
 **Metabolic Intelligence** is a budget-native class of computer intelligence. The envelope is the physical condition under which the best answer is obtained. It is not a Faustian choice, and it is not the cheapest answer. Answers that were thought impossible become reachable by metabolic information science: budget-native obtain, binding classifiers, physics-informed features, and test-time close. Grid levers and routing do not degrade the certified answer. They refuse or defer work that would violate the envelope. The answer that commits is the best one. The class is not a transformer update. It sits with Logical Intelligence (energy-based settle), World Labs (spatial world models), and other post-transformer programs as a next wave: intelligence whose first coordinate is the joule envelope, not the next-token corridor.
 
-**Designed for Klere.** Metabolic Intelligence is designed for **Klere** ([klere.ai](https://klere.ai)), Open Interface Engineering's product home for the MEI class. This research study owns the law and class definition. Klere owns the product embodiment. As of this writing the public site is a thin access / energy-efficient AI framing; it is not a shipped feature catalog. Tag, campus, and obtain-stack surfaces named below are **Klere roadmap** unless this study labels them as a **proven pack**. Product thesis in one line: sell **edge** and **resource-optimized central** under an explicit joule envelope (not an uncapped transformer hyperscale campus), and keep proven-pack evidence separate from roadmap packaging. No invented meters, board `measured_j`, or liters of water saved.
+**Designed for Klere.** Metabolic Intelligence is designed for **Klere** ([klere.ai](https://klere.ai)), Open Interface Engineering's product home for the MEI class. This research study owns the law and class definition. Klere owns the product embodiment. As of this writing the public site is a thin access / energy-efficient AI framing; it is not a shipped feature catalog. Tag, campus, and obtain-stack surfaces named below are **Klere roadmap** unless this study labels them as a **evidence pack**. Product thesis in one line: sell **edge** and **resource-optimized central** under an explicit joule envelope (not an uncapped transformer hyperscale campus), and keep evidence-pack items separate from roadmap packaging. No invented meters, board `measured_j`, or liters of water saved.
 
 **Deployment class.** MEI is designed for the **edge** and for the **resource-optimized central datacenter** (a lean, grid-following, budget-capped plant), **not** for the uncapped hyperscale campus that presupposes dedicated cooling loops, dedicated generation, and large ecosystem water/power uptake. At the energy budgets this class targets, those hyperscale support plants are **not required**: that is a **design consequence** of budget-native operation, grounded in pack evidence (µW-class tags under a metabolic schedule; grid-following lean campus with ordered levers). It is **not** a claim of measured liters of water saved, nor a board `measured_j` reading. Estimates remain estimates; software reference path: no FPGA board result claimed.
 
@@ -38,7 +38,7 @@ Dual-scale proof in this study (edge + resource-optimized central, not uncapped 
 
 Hardware dual-map: the class runs today on GPUs and MCUs (von Neumann), and points at post-von Neumann substrates (neuromorphic, analog / in-memory, photonic, reversible / adiabatic) where energy-based and latent settle map natively. Estimates remain estimates. Software reference path: no FPGA board result claimed; package `measured_j` only when Metered.
 
-**The pair.** Current fields map AGI to the algorithm and not to paired hardware and software. Metabolic Intelligence refuses that split. Computers are hardware. Software is applied engineering written for that hardware. AGI-grade reliability is the pair. The hardware lottery (Hooker, 2020) is settled: ideas look like progress because they fit available chips. Mixture of Limits navigates gears that a fabric can host. The argument is [The pair, not the algorithm](#the-pair-not-the-algorithm).
+**The pair.** Current fields map AGI to the algorithm and not to paired hardware and software. Metabolic Intelligence refuses that split. Computers are hardware. Software is applied engineering written for that hardware. AGI-grade reliability is the pair. The hardware lottery (Hooker, 2020) is a documented pattern: ideas look like progress because they fit available chips. Mixture of Limits navigates gears that a fabric can host. The argument is [The pair, not the algorithm](#the-pair-not-the-algorithm).
 
 ---
 
@@ -56,7 +56,7 @@ Current AI fields map AGI to the algorithm. They do not map it to paired hardwar
 
 ### The hardware lottery
 
-Sara Hooker (2020) named this fact in *The Hardware Lottery* ([arXiv:2009.06489](https://arxiv.org/abs/2009.06489); later *Communications of the ACM* 64(12), 2021, [doi:10.1145/3467017](https://doi.org/10.1145/3467017)). A research idea wins because it is suited to the available software and hardware, not because it is superior to alternative directions. The lottery is which ideas look like progress because they fit the chips that already exist. Domain-specialized hardware raises the cost of any direction that does not fit those chips. The field then writes the winner down as an algorithmic result. The winner was the fit. That observation is settled. This study does not reopen it.
+Sara Hooker (2020) named this fact in *The Hardware Lottery* ([arXiv:2009.06489](https://arxiv.org/abs/2009.06489); later *Communications of the ACM* 64(12), 2021, [doi:10.1145/3467017](https://doi.org/10.1145/3467017)). A research idea wins because it is suited to the available software and hardware, not because it is superior to alternative directions. The lottery is which ideas look like progress because they fit the chips that already exist. Domain-specialized hardware raises the cost of any direction that does not fit those chips. The field then writes the winner down as an algorithmic result. The winner was the fit. That observation is documented. This study does not reopen it.
 
 The instance in front of every datacenter is exact attention written as a GPU kernel. Dao, Fu, Ermon, Rudra, and Ré (2022) made attention IO-aware: tile Q, K, and V so the $N \times N$ matrix is not materialized in high-bandwidth memory, and fuse the steps into one CUDA kernel that uses on-chip SRAM (*FlashAttention*, [arXiv:2205.14135](https://arxiv.org/abs/2205.14135)). The algorithm changed because the memory hierarchy of the chip demanded it. Their wall-clock figures stay theirs. They are not this pack's `measured_j`. The mechanism is the point. Attention looked like the path of progress because that kernel was written for the GPU already in the rack.
 
@@ -117,7 +117,7 @@ Lookup is first because addressable memory is the available, accessible, capable
 
 Klere ([klere.ai](https://klere.ai)) is the designed home because that order is the runtime, not a translation into someone else's stack. The interface tax is lowest there. It is not zero: data movement still costs joules. Metabolic Intelligence is not confined to Klere. The same gears run on the GPU fleet, the Cortex-M tag, the CPU and Wasm host, the accelerator card, and the substrates just cited. The host changes $\mu(p,H)$ and the tax. It does not change the utility of what commits. A host that can only return a worse answer is not used.
 
-The envelope B is physics. It is the condition under which the best answer is obtained. It is not a cheaper answer. Work that would violate B is refused or deferred. The answer that commits is the best one, in the measured sense of Section 2.6. Deployment of every host above is the edge and the resource-optimized central, not an uncapped hyperscale campus. Dedicated water, power, and hyperscale cooling plants are not required by design. That is a design consequence of the envelope plus pack evidence. It is not a measured liter count.
+The envelope B is physics. It is the condition under which the best answer is obtained. It is not a cheaper answer. Work that would violate B is refused or deferred. The answer that commits is the best one, in the measured sense of Section 2.6. Deployment of every host above is the edge and the resource-optimized central, not an uncapped hyperscale campus. Dedicated water, power, and hyperscale cooling plants are not required by design for the workloads this class serves within its envelope. Workload equivalence with uncapped operation is not claimed. That is a design consequence of the envelope plus pack evidence. It is not a measured liter count.
 
 [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) navigates. [Notational Intelligence](/papers/gates/) owns certify-before-commit. [Satiation](/papers/satiation/) owns the stop when Value of Information is zero or budget refuse fires. This study owns the envelope and the actuators those locks spend. Research owns the class. Klere owns the product. Estimates stay estimates. No FPGA board result claimed. Package `measured_j` is written when a labeled meter returns.
 
@@ -137,7 +137,7 @@ Field peers now publish the same pairing lesson on other axes. Chen et al. (*Nat
 
 ## Why this is the future
 
-The pair above is the map this future refuses. Industry and academic messaging still treats transformer scale, plus the hyperscale power and water plant that scale presupposes, as the default future of computer intelligence. That default can be answered. It cannot be answered by a slogan. A skeptic who wants to set Metabolic Intelligence aside has to deny settled physics (Shannon, Landauer, or Value of Information), deny a labeled measurement from this pack, or deny an explicit roadmap this study already separates from proven pack. This section states the argument. Appendix F answers the dismissals that usually follow. Living diagram: [/living/mei/#mei-arg-01](/living/mei/#mei-arg-01).
+The pair above is the map this future refuses. Industry and academic messaging still treats transformer scale, plus the hyperscale power and water plant that scale presupposes, as the default future of computer intelligence. That default can be answered. It cannot be answered by a slogan. A skeptic who wants to set Metabolic Intelligence aside has to deny settled physics (Shannon, Landauer, or Value of Information), deny a labeled measurement from this pack, or deny an explicit roadmap this study already separates from evidence pack. This section states the argument. Appendix F answers the dismissals that usually follow. Living diagram: [/living/mei/#mei-arg-01](/living/mei/#mei-arg-01).
 
 **Energy is the binding constraint.** Shannon (1948) gives bits a rate-distortion structure: past a fidelity point, more bits buy little additional fidelity. Howard's Value of Information (1966) prices an observation by the improvement it makes in decision utility, net of cost. When that value is zero on a stated completeness predicate, further spend does not raise the written objective. Landauer (1961) prices irreversible bit erasure at $k_B T \ln 2$ per bit in the ideal model. On a receipt that quantity is a labeled estimate, not a wattmeter. Horowitz (2014) shows that practical CMOS energy is dominated by moving data, far above that ideal. These are settled coordinates. They are not Open Interface Engineering inventions. A future whose first coordinate is uncapped watts has to say which of them fails.
 
@@ -147,7 +147,7 @@ The pair above is the map this future refuses. Industry and academic messaging s
 
 **Dual deployment removes the hyperscale water and power prerequisite.** The class is designed for two plants, not for an uncapped hyperscale campus. At the edge, the plant is a coin cell: a metabolic heating schedule on a cold-chain gas tag, datasheet plus schedule model, about 10 µW class, with MCU sleep dominating heater average power on that schedule (Proposition 3). Instruction counts are emulator-measured (1,723 for enzyme families with early exit versus 2,451 for an int8 MLP at matched accuracy). Sequential learning on SmellNet is a real dataset protocol (enzymes 77.7% versus an MLP at 18.4% across 50 foods, five groups, no revisit). At the resource-optimized central, the plant is a budget-capped, grid-following lean campus: real OpenADR 3.1 and a real MQTT DSX Flex broker, with a plant model for the watts. With node sleep available, the closed scenario set records zero time over the grid cap (Proposition 5). Because those envelopes are the design, dedicated water plants, dedicated power plants, and hyperscale cooling loops are not required. That is a design consequence of the class plus pack evidence. It is not a measured liter count. It is not a board `measured_j`. No workload-equivalence measurement exists yet. The protocol is fixed here. Take one task set with its completeness predicate and deadlines. Serve it once on the lean campus under its import cap and once on an uncapped reference deployment. Report, for both, the fraction closed inside the deadline, joules per closed task, peak import, and water per closed task from the site's own metering. The claim that hyperscale plants are not required holds where the capped campus matches the reference on closure and deadline at its cap. Until that run, it is a design target.
 
-**Klere is the product home.** This study owns the law and the class definition. Klere ([klere.ai](https://klere.ai)) owns product embodiment. As of this writing the public site is thin access framing, not a shipped feature catalog. Tag, lean-campus, and obtain-stack surfaces are Klere roadmap unless this study labels them proven pack (Appendix E). Computers are hardware. Software is applied engineering under the envelope. Method is the claim axis. Geography is not.
+**Klere is the product home.** This study owns the law and the class definition. Klere ([klere.ai](https://klere.ai)) owns product embodiment. As of this writing the public site is thin access framing, not a shipped feature catalog. Tag, lean-campus, and obtain-stack surfaces are Klere roadmap unless this study labels them evidence pack (Appendix E). Computers are hardware. Software is applied engineering under the envelope. Method is the claim axis. Geography is not.
 
 A reader who grants Shannon, Landauer, and Value of Information, and who grants the pack labels above, still has to name a future in which uncapped hyperscale import is required for the next useful answer. Appendix F is the set of ways that denial is usually phrased, and the evidence class of each reply. Software reference path: no FPGA board result claimed.
 
@@ -155,7 +155,7 @@ A reader who grants Shannon, Landauer, and Value of Information, and who grants 
 
 People should not have to fight over energy to eat or to use AI. That civic sentence is the design brief. Cold-chain tags that watch food should last years on a coin cell. Central plants that serve answers should follow the grid when the grid asks them to cut, without inventing false board joules or collapsing every research law into one paper.
 
-Uncapped hyperscale campuses pull dedicated cooling, dedicated generation, and large ecosystem water and power. Metabolic Intelligence is **not** that deployment class. It is designed for the **edge** and for the **resource-optimized central datacenter**: a lean, budget-capped, grid-following plant. Because the class runs at lower energy budgets by construction, dedicated water plants, dedicated power plants, and hyperscale cooling loops are **not required**. This is stated as a **design consequence** of the budget-native envelope, with pack evidence at both ends (µW tags under a metabolic schedule; OpenADR/DSX lean-campus levers). Do **not** invent liters of water saved or board `measured_j` from that consequence. Software reference path: no FPGA board result claimed.
+Uncapped hyperscale campuses pull dedicated cooling, dedicated generation, and large ecosystem water and power. Metabolic Intelligence is **not** that deployment class. It is designed for the **edge** and for the **resource-optimized central datacenter**: a lean, budget-capped, grid-following plant. Because the class runs at lower energy budgets by construction, dedicated water plants, dedicated power plants, and hyperscale cooling loops are **not required** for the workloads this class serves within its envelope; workload equivalence with uncapped operation is not claimed. This is stated as a **design consequence** of the budget-native envelope, with pack evidence at both ends (µW tags under a metabolic schedule; OpenADR/DSX lean-campus levers). Do **not** invent liters of water saved or board `measured_j` from that consequence. Software reference path: no FPGA board result claimed.
 
 The dominant construction for computer intelligence still treats the transformer corridor as the substrate: pretrain a large generative model, then spend tokens and watts at serve time. That corridor has produced real products. It is not the only class. **Logical Intelligence** casts reasoning as energy minimization over constraints (Business Wire, 20 Jan 2026). **World Labs** casts spatial intelligence as world models that predict views and dynamics (Atlas, 1 Sep 2026). **Metabolic Intelligence** casts intelligence as **budget-native obtain and actuate**: the envelope is the physical condition under which the best answer is obtained. It is not the cheapest answer. The class is designed for **Klere** ([klere.ai](https://klere.ai)): research owns the law; Klere owns the product embodiment. Do not read the thin public landing page as live product features.
 
@@ -249,7 +249,7 @@ Method is the claim axis. Geography is not. What this class absorbs is stated as
 **Absorbed (not citations).** Four objects are Metabolic Intelligence.
 
 1. **Physics envelope.** B is joules on a tag episode or watts on a lean-campus import cap. Energy budget is physics: the condition under which the answer is obtained. It is not a discount on the answer, and it is not a Faustian cheaper-answer trade.
-2. **Best answer.** Levers and routing refuse or defer work that would violate B. They do not degrade the certified answer. The answer that commits is the best one. Best has a measured form. Fix a task set, a completeness predicate $C(z)$ and a deadline per task. For each system, plot the fraction of tasks closed with $C(z) = 1$ inside the deadline against joules per task. Refusals and deferrals count as misses on that curve. They are not hidden. A system is best at envelope B when no other system closes more tasks inside the deadline at the same joules. That frontier is the test. A claim of superiority that does not place a point on it is not yet a result. Budget-native obtain, binding classifiers, physics-informed features, and test-time close are how answers that were thought impossible become reachable. That reach is inside the envelope.
+2. **Best answer.** Levers and routing refuse or defer work that would violate B. They do not degrade the certified answer. The answer that commits is the best one. Best has a measured form. Fix a task set, a completeness predicate $C(z)$ and a deadline per task. For each system, plot the fraction of tasks closed with $C(z) = 1$ inside the deadline against joules per task. Refusals and deferrals count as misses on that curve. They are not hidden. The campus scenario table gives the measured cost of the envelope in those terms: interactive share served falls from 100% to 52.6% at today's speeds under a 90/95% cut, to 13% under a 90% cut for 10 h, and to 1% without node sleep. A system is best at envelope B when no other system closes more tasks inside the deadline at the same joules. That frontier is the test. A claim of superiority that does not place a point on it is not yet a result. Budget-native obtain, binding classifiers, physics-informed features, and test-time close are how answers that were thought impossible become reachable. That reach is inside the envelope.
 3. **Binding classifiers.** Binding site, product, allosteric context, abundance as learned weight, a cost on every binding check, early exit. The unit is this study (§5): emulator-measured Cortex-M4 counts and the SmellNet sequential protocol. Tsetlin machines and hyperdimensional computing, cited below, are edge cousins. They are not the enzyme.
 4. **Dual hardware map.** The class runs today on GPUs and MCUs. It points at neuromorphic, analog in-memory, photonic, and adiabatic substrates where energy-based and latent settle can map (Appendix B). The map is operational. A substrate paper is not a second definition of the class. Deployment is the edge and the resource-optimized central. Hyperscale water, power, and cooling plants are not required by design. The interface tax of hosting the class on each existing fabric is §12. Klere is the designed home. The class is not confined to it.
 
@@ -290,7 +290,9 @@ No FPGA board result claimed is sticky. Package `measured_j` appears only when a
 
 ## 3. Companion papers and OpenIE map
 
-Four studies on this catalog compose. They do not collapse into one paper. A fifth study, [Spell Check is Global](/papers/spellcheck/), is the existence proof of the automation path: computer intelligence that became ordinary because it was cheap, local, and paired to hardware people already have. The envelope obtains that answer. It does not discount it. Klere is the product home of this class, not a prison. Energy to run is the only true metric of computer intelligence: token price, parameter count, moat rent, and access fees collapse to zero by commoditization, and what remains is joules. Estimates are not `measured_j`.
+Four studies on this catalog compose. They do not collapse into one paper. A fifth study, [Spell Check is Global](/papers/spellcheck/), is the automation path. The envelope obtains that answer. It does not discount it. Klere is the product home of this class, not a prison.
+
+<!-- include: companion-thesis -->
 
 | Role | Study | Owns |
 |---|---|---|
@@ -298,7 +300,7 @@ Four studies on this catalog compose. They do not collapse into one paper. A fif
 | **Commit** | [Metered Commit Gates, Part I (Notational Intelligence)](/papers/gates/) | propose → certify → commit\|refuse → receipt. |
 | **Task completion** | [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) | Stop when VoI is zero on completeness C(z), or when budget / policy refuse fires. |
 | **Energy budget / metabolic embodiment** | This paper (Metabolic Intelligence) | Budget envelope and actuators: tag sleep/heater; campus OpenADR/MQTT levers; $J(m \mid q)$ obtain-router. |
-| **Automation path** | [Spell Check is Global](/papers/spellcheck/) | Existence proof: computer intelligence that became ordinary because it was cheap, local, and paired to hardware people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
+| **Automation path** | [Spell Check is Global](/papers/spellcheck/) | An existence proof that some computer intelligence commoditizes to bundled zero price: spell check's marginal cost fell to about zero, and it complemented hardware and editors people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
 
 ```mermaid
 flowchart TB
@@ -370,7 +372,7 @@ $$
 | λ | Joules at stake in the decision | Decision scale (one request; campus-year) |
 | $\sigma_m$, $\kappa_q$, $t$, $p_m$ | Uncertainty, staleness rate, age, zone-misjudge chance | Looked-up spread, derivation, or labeled guess |
 
-What falls out as law of the function, not as slogan:
+What falls out of the function, not as slogan:
 
 - Lookups dominate when they measure the same quantity.
 - Cheap crude options win when $\lambda S_q^2$ is small.
@@ -507,6 +509,8 @@ Architecture (`datacenter/service/`):
 
 In every run: no actuator call failed; VTN accepted all OpenADR reports; no DSX message rejected. Headline: **zero time over the grid cap whenever node sleep is available**. Correction honesty: "100% served through a 90/95% cut" assumed a fast campus and one curve; with per-pool curves it is about 94%, from today's speeds about 53%. The **cap held** in all of them.
 
+**The measured cost of the envelope.** Committed answers keep their certificate in every scenario. The envelope's cost is availability and deferral, and the table measures it in the plant model under real protocols. Interactive share served is 100% in scenarios A to D, O and Q. It is 52.6% at today's looked-up speeds under a 90/95% cut (L to M), 13% under a 90% cut for 10 h (R), and 1% without node sleep (E), with 96 min over the cap. Deferred and refused work is counted, not hidden.
+
 AEMA (Emerald AI, Google, NVIDIA; 16 Sep 2026) is a field alliance; **no published AEMA protocol spec** as of the 1 Oct 2026 radar. Dynamo 1.5 power-aware scaling (18 Sep 2026) is a deployment annotation, not obtain-routing. OpenIE wires those actuators *inside* Mixture of Limits intelligence.
 
 ---
@@ -531,7 +535,7 @@ Metabolic Intelligence accepts that money-price collapse and asks the physical q
 
 People should not have to fight over energy to eat or to use AI. The civic framing is not marketing copy. It is the reason tags that watch food must last years on a coin cell, and lean centrals that serve answers must shed watts when the grid asks, without lying about meters.
 
-**Design consequence (not a liters-saved claim).** Metabolic Intelligence targets energy budgets so low that dedicated water plants, dedicated power plants, and hyperscale cooling loops are **not required**. Evidence in this pack is the envelope itself: ~10 µW tag schedules (datasheet + schedule model) and a grid-following lean campus under OpenADR/DSX (real protocols; plant model). Do **not** invent gallons or liters of water saved, nor upgrade the claim to board `measured_j`. The statement is class design + pack evidence, not a field water meter. Software reference path: no FPGA board result claimed.
+**Design consequence (not a liters-saved claim).** Metabolic Intelligence targets energy budgets so low that dedicated water plants, dedicated power plants, and hyperscale cooling loops are **not required** for the workloads this class serves within its envelope; workload equivalence with uncapped operation is not claimed. Evidence in this pack is the envelope itself: ~10 µW tag schedules (datasheet + schedule model) and a grid-following lean campus under OpenADR/DSX (real protocols; plant model). Do **not** invent gallons or liters of water saved, nor upgrade the claim to board `measured_j`. The statement is class design + pack evidence, not a field water meter. Software reference path: no FPGA board result claimed.
 
 ### 9.3 Work-per-MW and Wh/answer as estimates with bands
 
@@ -585,11 +589,11 @@ The same standing rule threads all four layers. Software reference path keeps ev
 
 | Deployment | Energy budget posture | Ecosystem support presupposed | MEI stance |
 |---|---|---|---|
-| **Edge (tag)** | µW continuous; coin-cell life | None beyond the cell and board | **In scope**: proven pack for schedule / enzyme evidence |
-| **Resource-optimized central** | MW import **cap**; grid-following levers | Shared grid; no private uncapped cooling/power campus required by class design | **In scope**: proven pack for OpenADR/DSX + scenarios |
+| **Edge (tag)** | µW continuous; coin-cell life | None beyond the cell and board | **In scope**: evidence pack for schedule / enzyme evidence |
+| **Resource-optimized central** | MW import **cap**; grid-following levers | Shared grid; no private uncapped cooling/power campus required by class design | **In scope**: evidence pack for OpenADR/DSX + scenarios |
 | **Uncapped hyperscale campus** | Unlimited import until interconnection / cooling bind | Dedicated cooling, dedicated generation, large water uptake | **Out of class**: not the MEI design target |
 
-The market value of the class is not "we save *N* liters." It is: buyers who need answers under an explicit envelope get a deployment that **does not require** the hyperscale support plant. That is settled voice for the economic argument: design consequence + pack evidence; estimates ≠ `measured_j`.
+The market value of the class is not "we save *N* liters." It is: buyers who need answers under an explicit envelope get a deployment that **does not require** the hyperscale support plant. That is the plain voice for the economic argument: design consequence + pack evidence; estimates ≠ `measured_j`.
 
 ---
 
@@ -607,9 +611,9 @@ The market value of the class is not "we save *N* liters." It is: buyers who nee
 
 ### 10.2 Product slices (honest scope)
 
-Label each slice as **proven pack** (evidence in this study) or **Klere roadmap** (product packaging not claimed shipped). Klere is the vehicle; this paper is not a SKU sheet.
+Label each slice as **evidence pack** (evidence in this study) or **Klere roadmap** (product packaging not claimed shipped). Klere is the vehicle; this paper is not a SKU sheet.
 
-| Slice | What it is | Proven pack (this study) | Klere roadmap (not claimed shipped) | Ecosystem posture |
+| Slice | What it is | Evidence pack (this study) | Klere roadmap (not claimed shipped) | Ecosystem posture |
 |---|---|---|---|---|
 | **Edge / cold-chain tags** | Enzyme recognition + metabolic heater schedule on coin-cell MCUs | MCU instruction table; SmellNet sequential protocol; tag budget script (~10 µW class, datasheet + schedule model) | Commercial tag SKU / field install / device ops | µW envelope → dedicated cooling/water plants **not in design** |
 | **Resource-optimized central** | Grid-following lean campus under import cap | OpenADR 3.1 VTN + DSX Flex MQTT demos; scenario table A to R; ordered levers | Commercial flexibility / operator product | Shared grid; **no** private uncapped cooling/power campus required by class design |
@@ -634,20 +638,20 @@ Label each slice as **proven pack** (evidence in this study) or **Klere roadmap*
 | **Dynamo / DSX / AEMA** | Power and grid actuators | Actuators **inside** Mixture of Limits intelligence; AEMA has no published spec yet |
 | **Tsetlin / HDC** | Efficient propositional / hypervector silicon | Edge cousins; measured Tsetlin ASIC 8.6 nJ/MNIST frame (Tunheim et al., Jan 2025); lack campus thesis |
 
-**Honest roadmap vs proven pack.** If a buyer asks "what works today?", answer with the pack rows (emulator instructions; OpenADR/MQTT demos; schedule model; ledger bands). If they ask "what does Klere ship?", answer roadmap and do not upgrade evidence class. Software reference path: no FPGA board result claimed.
+**Honest roadmap vs evidence pack.** If a buyer asks "what works today?", answer with the pack rows (emulator instructions; OpenADR/MQTT demos; schedule model; ledger bands). If they ask "what does Klere ship?", answer roadmap and do not upgrade evidence class. Software reference path: no FPGA board result claimed.
 
 ---
 
 
 ### 10.4 Buyer journeys (three packs)
 
-Vehicle for all three journeys: **Klere** ([klere.ai](https://klere.ai)). Research study = class + evidence; Klere = product embodiment. Proven pack vs roadmap is labeled per journey.
+Vehicle for all three journeys: **Klere** ([klere.ai](https://klere.ai)). Research study = class + evidence; Klere = product embodiment. Evidence pack vs roadmap is labeled per journey.
 
-**Journey A: Cold-chain operator (Klere edge / tags surface).** Problem: FSMA 204 / PPWR timing raises the cost of blind legs in the chain; coin-cell tags must last years. Offer via Klere: metabolic schedule (~10 µW class on Oct 2026 parts, datasheet + model) + enzyme recognition with sequential learning for new SKUs without full MLP retrain. **Proven pack:** MCU instruction table; SmellNet sequential protocol; tag budget script. **Klere roadmap:** commercial tag SKU / field install packaging. Not offered: Anwar chicken accuracy; neuromorphic gas nJ; board `measured_j`.
+**Journey A: Cold-chain operator (Klere edge / tags surface).** Problem: FSMA 204 / PPWR timing raises the cost of blind legs in the chain; coin-cell tags must last years. Offer via Klere: metabolic schedule (~10 µW class on Oct 2026 parts, datasheet + model) + enzyme recognition with sequential learning for new SKUs without full MLP retrain. **Evidence pack:** MCU instruction table; SmellNet sequential protocol; tag budget script. **Klere roadmap:** commercial tag SKU / field install packaging. Not offered: Anwar chicken accuracy; neuromorphic gas nJ; board `measured_j`.
 
-**Journey B: Resource-optimized central / lean campus energy lead (Klere campus surface).** Problem: interconnection and peak stress; AEMA / DSX language is rising; operators need levers that preserve interactive work **without** building an uncapped hyperscale cooling/power campus. Offer via Klere: OpenADR 3.1 VEN + DSX Flex MQTT backstop + ordered levers with scenario pack (zero time over cap with node sleep). Ecosystem-resource avoidance (water / dedicated power / hyperscale cooling) is a design consequence of the envelope, not a liters-saved pitch. **Proven pack:** real VTN / broker tests; scenario table A to R; recovery-ramp redesign note. **Klere roadmap:** commercial flexibility product and operator SKU. Not offered: AEMA latency/ramp numbers; plant watts as meter readings; invented water liters; "100% served through 90% cut" as universal.
+**Journey B: Resource-optimized central / lean campus energy lead (Klere campus surface).** Problem: interconnection and peak stress; AEMA / DSX language is rising; operators need levers that preserve interactive work **without** building an uncapped hyperscale cooling/power campus. Offer via Klere: OpenADR 3.1 VEN + DSX Flex MQTT backstop + ordered levers with scenario pack (zero time over cap with node sleep). Ecosystem-resource avoidance (water / dedicated power / hyperscale cooling) is a design consequence of the envelope, not a liters-saved pitch. **Evidence pack:** real VTN / broker tests; scenario table A to R; recovery-ramp redesign note. **Klere roadmap:** commercial flexibility product and operator SKU. Not offered: AEMA latency/ramp numbers; plant watts as meter readings; invented water liters; "100% served through 90% cut" as universal.
 
-**Journey C: Platform / stack buyer (Klere stack surface).** Problem: serving stacks route models but do not price obtain zones; transformers stay default. Offer via Klere: $J(m|q)$ router + metabolic gateway (`x-consumer` speed tiers, route, effort) under the Mixture of Limits product path, embodied as Klere stack surfaces. **Proven pack:** synthesis ledger bands; efficiency pack work-per-MW ranges; standing obtain rule; software reference companions. **Klere roadmap:** packaged gateway / DX productization beyond `mol.yaml` / `mol run`. Not offered: Wh/answer as `measured_j`; "routing costs no quality."
+**Journey C: Platform / stack buyer (Klere stack surface).** Problem: serving stacks route models but do not price obtain zones; transformers stay default. Offer via Klere: $J(m|q)$ router + metabolic gateway (`x-consumer` speed tiers, route, effort) under the Mixture of Limits product path, embodied as Klere stack surfaces. **Evidence pack:** synthesis ledger bands; efficiency pack work-per-MW ranges; standing obtain rule; software reference companions. **Klere roadmap:** packaged gateway / DX productization beyond `mol.yaml` / `mol run`. Not offered: Wh/answer as `measured_j`; "routing costs no quality."
 
 ### 10.5 Pricing and packaging honesty
 
@@ -658,14 +662,14 @@ Vehicle for all three journeys: **Klere** ([klere.ai](https://klere.ai)). Resear
 | Campus flexibility | "0 time over cap with node sleep in closed scenarios (plant model + real protocols)" | "Guaranteed 0 over any grid event" |
 | Work per MW | "1.92× point, 1.19 to 2.93 band (ledger)" | "2× guaranteed on your fleet" |
 | Differentiation vs LI | "joule envelope + dual scale vs constraint energy" | "we beat Kona on proofs" |
-| Ecosystem resources | "dedicated water/power/hyperscale cooling not required by design (µW tags; lean grid-following central)" | "saves X liters / MW of cooling water" without a meter |
+| Ecosystem resources | "dedicated water/power/hyperscale cooling not required by design for the workloads served within the envelope (µW tags; lean grid-following central)" | "saves X liters / MW of cooling water" without a meter |
 
 ### 10.6 Go-to-market sequencing (engineering, not hype)
 
 Sequencing is for **Klere** as product home; this paper remains the class publication.
 
 1. **Publish the class** (this paper + SOTA brief) with software reference honesty; point product inquiries to [klere.ai](https://klere.ai) without overclaiming the thin public site.
-2. **Ship protocol demos** (OpenADR/DSX test harness) as interoperability evidence (proven pack → Klere campus roadmap).
+2. **Ship protocol demos** (OpenADR/DSX test harness) as interoperability evidence (evidence pack → Klere campus roadmap).
 3. **Meter one pool** (highest VoI ledger item) before any Wh/answer sales claim upgrades evidence class.
 4. **Licence edge pack** into Klere packaging and seek chicken-dataset permission only if publish is required. Until then, keep Anwar numbers internal.
 5. **Wire Dynamo 1.5 / DPS** as live actuators when vendor hooks are available; until then keep them noted, not claimed live.
@@ -775,7 +779,7 @@ The **interface tax** is what a host charges for not being that home. Five terms
 4. **Latency.** The host's clock: tokens per second, an instruction path, a sandbox call, a pipeline fill, a settle time. It is not a licence to commit early with a worse answer.
 5. **Meter honesty.** What the host will report as joules. Curves, datasheets, vendor watts, and other groups' silicon figures keep their evidence class. Package `measured_j` is written when a meter on this pack returns. No FPGA board result claimed.
 
-Deployment on every row is the edge and the resource-optimized central. An existing GPU fleet is a budget-capped host. It is not an uncapped hyperscale campus. Dedicated water, power, and hyperscale cooling plants are not required by design. That is a design consequence of the envelope. It is not a measured liter count.
+Deployment on every row is the edge and the resource-optimized central. An existing GPU fleet is a budget-capped host. It is not an uncapped hyperscale campus. Dedicated water, power, and hyperscale cooling plants are not required by design for the workloads this class serves within its envelope. Workload equivalence with uncapped operation is not claimed. That is a design consequence of the envelope. It is not a measured liter count.
 
 | Fabric | What runs there | Interface tax | Versus Klere-native | Path to the state of the art on that fabric |
 |---|---|---|---|---|
@@ -790,7 +794,7 @@ Deployment on every row is the edge and the resource-optimized central. An exist
 
 Klere is the designed home. The interface tax is the lowest of the six, and it is not zero. Data movement still costs joules. The home does not delete $E_{\mathrm{mem}}$. It refuses to hide that term inside a FLOP count or a token price.
 
-Binding classifiers are the recognition leaf: binding site, product, allosteric context, abundance as the learned weight, a cost on every binding check, early exit. The proven pack under that leaf is the Cortex-M4 emulator count and the SmellNet sequential protocol (§5). Klere packaging of a tag SKU is roadmap (Appendix E). The law and the pack are not waiting on the SKU. The public site is thin access framing. It is not a feature catalog, and it is not a shim. Research owns the class. Klere owns the embodiment.
+Binding classifiers are the recognition leaf: binding site, product, allosteric context, abundance as the learned weight, a cost on every binding check, early exit. The evidence pack under that leaf is the Cortex-M4 emulator count and the SmellNet sequential protocol (§5). Klere packaging of a tag SKU is roadmap (Appendix E). The law and the pack are not waiting on the SKU. The public site is thin access framing. It is not a feature catalog, and it is not a shim. Research owns the class. Klere owns the embodiment.
 
 The obtain-router is native. $J(m|q)$ runs before spend. Lookup and Formula close a covered coordinate. Solver is next. Model is last. The estimator of J is itself Lookup or Formula. If that estimate exceeds the cap, the router takes the default gear and does not run a heavy estimator. SLA-bounded levers are native on both plants: the metabolic schedule on the edge, and the ordered grid levers inside the contract on the resource-optimized central. Notational Intelligence remains the commit gate. Satiation remains the stop. They are companions. They are not translation layers.
 
@@ -814,7 +818,7 @@ The path to the state of the art on this fabric is the order above. Price $J(m|q
 
 ### 12.3 MCU and Cortex-M class edge
 
-Cold-chain tags are Cortex-M class parts. This is where the proven pack measures the enzyme, and where a bare image still pays an interface tax if it is not the Klere schedule.
+Cold-chain tags are Cortex-M class parts. This is where the evidence pack measures the enzyme, and where a bare image still pays an interface tax if it is not the Klere schedule.
 
 The binding classifier maps directly. On a Cortex-M4, emulator-measured, 12 features: enzyme families with early exit take 1,723 instructions per decision; an int8 MLP takes 2,451 at matched accuracy. On SmellNet, 50 foods, five sequential groups, no revisit, enzymes hold 77.7% where the MLP falls to 18.4%. That protocol is the sequential-learning property under a fixed budget (Proposition 2). It is not a universal end of catastrophic forgetting. Physics-informed features are part of the same leaf. The bit-enzyme variant uses no multiplies.
 
@@ -850,7 +854,7 @@ A bit-enzyme uses no multiplies. Lookup is a table. A binding check with early e
 
 $E_{\mathrm{mem}} + E_{\mathrm{compute}}$ on a card is, until a meter says otherwise, the host link plus on-card memory movement. PCIe or on-board DMA can exceed the on-fabric operation. Count that crossing in J or do not call the card. The interface tax is that link, the vendor toolchain, and the driver runtime. Fixed-point width is chosen so the contract holds. Pipeline fill is the latency term. Early exit pays only when the card can return before the full pipeline. This study did not measure that return. Meter honesty is the empty field. A programmed part elsewhere in the catalog is not a Metabolic Intelligence joule.
 
-Against Klere-native the gain, when a card is already in the rack, is a deterministic leaf for a binding check or a lookup, without launching a GPU kernel for a covered coordinate. The loss is the designed schedule, the proven pack (Cortex-M emulator and real protocols, not a card), and any right to quote card watts. Hyperscale support plants are still not required. A card in a lean host does not create a water plant.
+Against Klere-native the gain, when a card is already in the rack, is a deterministic leaf for a binding check or a lookup, without launching a GPU kernel for a covered coordinate. The loss is the designed schedule, the evidence pack (Cortex-M emulator and real protocols, not a card), and any right to quote card watts. Hyperscale support plants are still not required. A card in a lean host does not create a water plant.
 
 The path to the state of the art on this fabric: keep the router and the contract on Klere or on the CPU gateway that obeys the same law; place only a leaf the card executes without lowering precision; refuse the call when link energy would violate B; leave `measured_j` empty until a labeled meter returns. That is the metabolic state of the art on accelerator cards that already exist. It is not a placed-and-routed energy claim.
 
@@ -1139,7 +1143,7 @@ Chung, J.-W., Wu, R., Ma, J. J., and Chowdhury, M. (2026). Where Do the Joules G
 2. **Metabolic Intelligence** means: the energy envelope is the physical condition of the best answer. It is not the cheapest answer. Levers refuse or defer work that would break the envelope. The answer that commits is the best one.
 3. On a food tag (the **edge**), that means years on a coin cell and smart heating, not a giant model in the package.
 4. On a **resource-optimized central** plant, that means following the grid when asked, keeping interactive work alive, and stopping when the chore is done, not building an uncapped hyperscale campus with its own cooling and power plants.
-5. At those lower budgets, dedicated water, power, and hyperscale cooling are **not required by design**. We do not invent liters saved; we show the envelope and the pack evidence.
+5. At those lower budgets, dedicated water, power, and hyperscale cooling are **not required by design** for the workloads this class serves within its envelope. Workload equivalence with uncapped operation is not claimed. We do not invent liters saved; we show the envelope and the pack evidence.
 6. We label every number: measured, datasheet, model, or estimate. We do not invent board joules.
 7. People should not have to fight over energy to eat or to use AI.
 8. Product home: **Klere** ([klere.ai](https://klere.ai)). Research owns the class; Klere owns embodiment.
@@ -1152,7 +1156,7 @@ Spell-outs and working definitions used in this study. First use in the body als
 | Term | Definition |
 |---|---|
 | **Metabolic Intelligence (MEI)** | Budget-native class. The metabolic envelope is the physical condition under which the best answer is obtained, at the edge and the resource-optimized central. Not a cheaper answer. Not a Faustian trade. |
-| **Klere** | Product home of the MEI class ([klere.ai](https://klere.ai)). Research owns the law/class; Klere owns embodiment. Public site is thin access framing unless a feature is labeled proven pack. |
+| **Klere** | Product home of the MEI class ([klere.ai](https://klere.ai)). Research owns the law/class; Klere owns embodiment. Public site is thin access framing unless a feature is labeled evidence pack. |
 | **Budget envelope B** | Explicit joule or power condition under which the best answer is obtained. Not a quality discount. |
 | **Binding classifier** | Silicon recognition unit with binding site, product, allosteric context switch, Hill cooperativity, abundance as learned weight, and a cost for every binding check. Bit-enzyme variant uses no multiplies. |
 | **Metabolic schedule** | Duty cycle for sensing and heating that meets a monitoring objective while minimizing average power (heater + sleep + radio). |
@@ -1162,31 +1166,35 @@ Spell-outs and working definitions used in this study. First use in the body als
 | **Resource-optimized central** | Budget-capped, grid-following lean campus. Not an uncapped hyperscale plant with dedicated water/power/cooling as design defaults. |
 | **Edge / tag** | Microwatt-class cold-chain or similar sensing node under coin-cell physics. |
 | **Evidence class** | Label on a number: real protocol, emulator-measured, datasheet, measured-kernel model, looked-up, calculation, plant model, estimate (pack radar M/C/V/R/D/S/P). |
-| **Proven pack** | Evidence artifact present in the OpenIE metabolic handoff pack and cited with its class in this study. |
-| **Klere roadmap** | Product packaging / SKU / operator surface not yet shipped as a live Klere feature; may reuse proven pack under separate evidence class. |
+| **Evidence pack** | Evidence artifact present in the OpenIE metabolic handoff pack and cited with its class in this study. |
+| **Klere roadmap** | Product packaging / SKU / operator surface not yet shipped as a live Klere feature; may reuse evidence pack under separate evidence class. |
 | **Estimate** | Number that is modeled, looked-up, or curve-derived and not a board package meter. |
 | **Software reference path** | No FPGA board result claimed; estimates ≠ package `measured_j`. |
 | **Value of Information (VoI)** | Howard (1966): expected improvement in decision utility from an observation, net of cost. |
 | **Satiation** | Companion law: stop when VoI is zero or budget refuse fires (task completion). |
 | **Mixture of Limits** | Companion navigation rule: Lookup → Formula → Solver → Model. Each gear is hosted by a fabric that is available, accessible, and capable. Not a software-only order. |
-| **Hardware lottery** | Hooker (2020): a research idea wins because it fits available software and hardware, not because it is the superior direction. In this study the lottery is which ideas look like progress because they fit available chips. Settled observation. |
+| **Hardware lottery** | Hooker (2020): a research idea wins because it fits available software and hardware, not because it is the superior direction. In this study the lottery is which ideas look like progress because they fit available chips. Documented observation (Hooker, 2020). |
 | **Hardware-software pair** | AGI-grade reliability is the algorithm together with the device it runs on. Computers are hardware. Software is applied engineering written for that hardware. |
 | **Notational Intelligence** | Companion commit gate: certify-before-commit. |
 | **OpenADR** | Open Automated Demand Response protocol (3.1 VTN used in pack demos). |
 | **DSX Flex** | Emerald / NVIDIA-shaped campus flexibility MQTT service used as peer actuator shape in pack demos. |
 | **AEMA** | AI Energy Management Alliance (Emerald AI, Google, NVIDIA). No published protocol spec as of 1 Oct 2026 radar. |
 | **Interface tax** | What a host charges to run Metabolic Intelligence when that host is not the designed home: data movement, API or runtime shim, precision conversion, added latency, and meter honesty. Klere pays the lowest tax. The tax is not permission to commit a worse answer. |
-| **board_synth_claimed** | Repository honesty flag. False means no FPGA board synthesis/meter claim. |
+| **board_metered** | Repository honesty flag. True only when a labeled meter returned an FPGA board energy reading for the study. False here. |
 | **measured_j** | Package joule field populated only when a labeled meter returns a reading (Metered). |
 | **Dual ledger** | Compile-time synthesis energy and serve-time envelope, both counted. Tag µW is serve-time. Offline synthesis is compile-time. |
 | **Contract invariant** | Declared bound on levers (`never_lower_precision`, `max_deferral`). Grid follow stays inside it. Shed is outside it and last. |
 | **Primitive distillation** | Extraction of grammars and formulas from traces into Lookup, Formula, or enzyme. |
 
-## Appendix E. Claim ledger (proven pack vs roadmap vs estimate)
+<div id="appendix-e-claim-ledger-proven-pack-vs-roadmap-vs-estimate" class="anchor-alias" aria-hidden="true"></div>
+
+## Appendix E. Claim ledger (evidence pack vs roadmap vs estimate)
 
 Sell these as **separate evidence classes**. Do not upgrade a row without changing its class and citation.
 
-### E.1 Proven pack (cite in sales as pack evidence)
+<div id="e1-proven-pack-cite-in-sales-as-pack-evidence" class="anchor-alias" aria-hidden="true"></div>
+
+### E.1 Evidence pack (cite in sales as pack evidence)
 
 | Claim | Evidence pointer | Class |
 |---|---|---|
@@ -1201,7 +1209,7 @@ Sell these as **separate evidence classes**. Do not upgrade a row without changi
 
 ### E.2 Klere roadmap (not invented shipped features)
 
-| Surface | What is proven underneath | What is still roadmap |
+| Surface | What is verified underneath | What is still roadmap |
 |---|---|---|
 | Edge / tag SKU | Enzyme + schedule pack evidence | Klere packaging, ops licence, field SKU |
 | Lean-campus operator product | OpenADR/DSX demos + scenario table; contract invariants are class law (§13.5) | Operator console and multi-site packaging |
@@ -1216,7 +1224,7 @@ Sell these as **separate evidence classes**. Do not upgrade a row without changi
 | CR2032 lifetime years | Capacity model from datasheet ÷ average µW → **Estimate** |
 | Campus plant watts / time-over-cap charts | Plant model (protocols real) → **Model** |
 | Landauer $k_B T \ln 2$ on receipts | Labeled thermodynamic lower-bound **estimate** |
-| Water / power / cooling “not required by design” | Design consequence of envelope + pack evidence, **not** measured liters saved |
+| Water / power / cooling “not required by design” | Design consequence of envelope + pack evidence for the workloads served within it, **not** measured liters saved; workload equivalence with uncapped operation not claimed |
 | AEMA latency / ramp | **Forbidden**: no published protocol spec |
 | Anwar chicken-spoilage accuracy | **Internal only**: no licence; not published |
 
@@ -1224,7 +1232,7 @@ Sell these as **separate evidence classes**. Do not upgrade a row without changi
 
 ### E.4 Software reference lock
 
-No FPGA board result claimed. Package `measured_j` only when Metered. Investor/partner prose must keep proven pack, product packaging, and estimate on separate lines. No FPGA board result claimed names the meter instrument. It does not weaken the class.
+No FPGA board result claimed. Package `measured_j` only when Metered. Investor/partner prose must keep evidence pack, product packaging, and estimate on separate lines. No FPGA board result claimed names the meter instrument. It does not weaken the class.
 
 ### E.5 Mechanisms of the class (design law)
 
@@ -1273,7 +1281,7 @@ V-JEPA 2 and V-JEPA 2-AC (Assran et al., 11 Jun 2025) are a strong zero-shot pla
 
 ### F.6 "There is no market."
 
-The market claim in this study is a buyer and a clock, not a total addressable market. Cold-chain operators face a rules clock: FDA's FSMA 204 move is proposed, and Congress barred enforcement before 20 Jul 2028; EU PPWR has applied since 12 Aug 2026 (evidence class **R**). Lean-campus energy leads already sit in OpenADR and DSX Flex language; the AI Energy Management Alliance has no published protocol spec as of the 1 Oct 2026 radar, so this study does not sell alliance latency. Platform buyers already route models and still do not price obtain zones. Klere is the commercial vehicle. Proven pack is what can be shown now (emulator counts, SmellNet protocol, schedule model, OpenADR and MQTT demos, router math). Klere roadmap is packaging, not a shipped catalog invented from a thin landing page. Evidence class: **rules** for timing, **proven pack** for the offer, **roadmap** kept separate. No invented revenue.
+The market claim in this study is a buyer and a clock, not a total addressable market. Cold-chain operators face a rules clock: FDA's FSMA 204 move is proposed, and Congress barred enforcement before 20 Jul 2028; EU PPWR has applied since 12 Aug 2026 (evidence class **R**). Lean-campus energy leads already sit in OpenADR and DSX Flex language; the AI Energy Management Alliance has no published protocol spec as of the 1 Oct 2026 radar, so this study does not sell alliance latency. Platform buyers already route models and still do not price obtain zones. Klere is the commercial vehicle. Evidence pack is what can be shown now (emulator counts, SmellNet protocol, schedule model, OpenADR and MQTT demos, router math). Klere roadmap is packaging, not a shipped catalog invented from a thin landing page. Evidence class: **rules** for timing, **evidence pack** for the offer, **roadmap** kept separate. No invented revenue.
 
 ### F.7 "Estimates are not watts."
 

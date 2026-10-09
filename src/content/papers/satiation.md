@@ -6,7 +6,7 @@ status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
 figures: "/living/satiation/"
 pdf: "/pdfs/satiation.pdf"
-board_synth_claimed: false
+board_metered: false
 ---
 
 <div id="satiation-and-scarcity-after-free-ai" class="anchor-alias" aria-hidden="true"></div>
@@ -80,9 +80,11 @@ This study is the **task completion** stop in the research catalog triad.
 | **Commit** | [Metered Commit Gates, Part I (Notational Intelligence)](https://research.openie.dev/papers/gates/) | propose → certify → commit\|refuse → receipt; physical permit on the gate. |
 | **Task completion** | This paper | Completeness predicate `C(z)`; stop when VoI is zero on that predicate, or when budget / policy refuse fires. |
 | **Energy budget** | [Metabolic Intelligence](https://research.openie.dev/products/mei/) | Budget envelope / actuators at tag and campus. |
-| **Automation path** | [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) | Existence proof: computer intelligence that became ordinary because it was cheap, local, and paired to hardware people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
+| **Automation path** | [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) | An existence proof that some computer intelligence commoditizes to bundled zero price: spell check's marginal cost fell to about zero, and it complemented hardware and editors people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
 
-Mixture of Limits navigates. Notational Intelligence owns irreversible commit. This paper owns task completion after free-at-the-margin digital inference. [Metabolic Intelligence](/products/mei/) owns the energy-budget envelope and actuators. [Spell Check is Global](/papers/spellcheck/) is the existence proof of the path: once a token is kept, further spelling candidates have zero value of information on that predicate. Free at the margin is not free joules. Estimates ≠ board-measured `measured_j`. Energy to run is the only true metric of computer intelligence: token price, parameter count, moat rent, and access fees collapse to zero by commoditization, and what remains is joules. Estimates are not `measured_j`.
+Mixture of Limits navigates. Notational Intelligence owns irreversible commit. This paper owns task completion after free-at-the-margin digital inference. [Metabolic Intelligence](/products/mei/) owns the energy-budget envelope and actuators. In [Spell Check is Global](/papers/spellcheck/), once a token is kept, further spelling candidates have zero value of information on that predicate. Free at the margin is not free joules.
+
+<!-- include: companion-thesis -->
 
 ## 2. Related work
 
@@ -330,7 +332,7 @@ The right-hand column is the list of inferences this paper refuses. Each left-ha
 
 ### 4.13 Companion quantities that stay in the companion
 
-For cross-reading only, the companion reports a seed-1 pendulum simulation: 1 commit, 15 refuses, analytical energy 8.6795e-10 joule, and a Safe check with zero false allows on its stated grid. Those quantities answer a control question. They are simulated. They use the analytical constants in the companion. They are listed here so a reader does not import them as S-claims. Satiation would use them only inside the unexecuted split of Section 3.3, and only with the measurement class written beside the number.
+For cross-reading only, the companion reports a seed-1 pendulum simulation: 1 commit, 15 refuses, analytical energy 8.6795e-10 joule, and a Safe check with zero false allows against the oracle `Vdot <= epsilon` on its stated grid, at a cost of 79 false refuses in 209,261 decisions. Those quantities answer a control question. They are simulated. They use the analytical constants in the companion. They are listed here so a reader does not import them as S-claims. Satiation would use them only inside the unexecuted split of Section 3.3, and only with the measurement class written beside the number.
 
 
 ## 5. Discussion
