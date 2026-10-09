@@ -6,7 +6,7 @@ status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
 figures: "/living/"
 pdf: "/pdfs/agency.pdf"
-board_synth_claimed: false
+board_metered: false
 ---
 <div id="the-universal-law-of-agency" class="anchor-alias" aria-hidden="true"></div>
 
@@ -24,7 +24,7 @@ The proposal has three layers, and the order is fixed.
 2. **The kinematic bounds of agency follow from the definition.** They say how fast agency can move, per second and per joule, and what it must pay to move.
 3. **Intelligence is the calculus of agency.** Intelligence is a hindsight characteristic. It is read off a completed run, the way velocity is read off a recorded path. It is therefore a derivative of agency: $\iota = dX/dJ$, where $X$ is confirmed agency and $J$ is joules.
 
-The thesis: energy to run is the only true metric of computer intelligence. All other factors collapse to zero.
+The thesis: Energy to run is the only true metric of computer intelligence. All other factors collapse to zero.
 
 The thesis has an exact form. Correctness is a gate. Joules are the ranking. For a task $q$ with completeness predicate $C(z)$, the joules to correct completion of system $S$ are
 
@@ -255,7 +255,7 @@ The last inequality is strict whenever $\phi_N^{-1}(b_k) > \varepsilon$ at finit
 - (C2) $x_0$ has a density with finite differential entropy and a finite second moment.
 - (C3) Closed-cycle accounting per step. $J_t$ is the mean joules attributed to the record $c_t$: its write and its later erasure, whenever they are paid. $J_t \ge k_B T\, I(x_t; c_t \mid s_{t-1})$, with the information in nats. This is Proposition 1, steps 1 to 4, at each value of the memory $s_{t-1}$, with a fresh record in its ready state and $x_t$ held fixed during the write [5]. A memory of bounded size erases each record within a bounded number of steps, so the attributed joules fall inside the run up to a boundary term.
 
-**Statement.** Let $\lambda_1, \dots, \lambda_n$ be the eigenvalues of $A$. Then
+**Statement.** This is a joule-priced corollary of the data-rate theorem of Tatikonda and Mitter [169] and of Nair and Evans [170]. The closed-loop inequality of Touchette and Lloyd [32, 33] carries the rate to the record, and Landauer's erasure price [6] converts each bit to $k_B T\ln 2$ joules. It is new only as that composition. Let $\lambda_1, \dots, \lambda_n$ be the eigenvalues of $A$. Then
 
 $$
 \liminf_{N\to\infty} \frac{1}{N}\sum_{t=1}^{N} J_t \;\ge\; k_B T \ln 2 \sum_{i:\,|\lambda_i| > 1} \log_2 |\lambda_i|
@@ -477,6 +477,8 @@ $$
 
 Both are developed in the companion paper, [Metered Commit Gates](/papers/gates/). Product placement is not part of this physics paper. It is kept in the [Metabolic Intelligence white paper](/products/mei/#where-the-products-sit).
 
+<!-- include: companion-thesis -->
+
 <div id="3-layer-1-the-universal-law-of-agency" class="anchor-alias" aria-hidden="true"></div>
 
 ## 3. Layer 1. The proposed Universal Law of Agency: a definition plus a gate
@@ -535,7 +537,7 @@ Once an act is eligible, physics bounds how fast agency moves per second and per
 
 **Finite-time costs.** Schmiedl and Seifert found optimal finite-time protocols, with jumps at the ends [155]. The optimal act at finite speed is not the slow act. Sivak and Crooks bounded excess work by the squared thermodynamic length over the duration [30]. Proesmans, Ehrich and Bechhoefer found the minimal cost of erasing a bit in time $\tau$ [29, 156]. The Layer 1 floor becomes a Layer 2 curve. Zhen and colleagues stated a universal finite-time bound on reset energy [157]. Speed and efficiency trade against each other by theorem: efficiency at maximum power [158, 159], finite power forbidding Carnot efficiency [160], a three-way trade among power, efficiency and constancy [161], and a universal constraint for low-dissipation engines [162]. Tsirlin and colleagues found minimal dissipation at a fixed rate [163]. Lee, Lee, Kwon and Park tightened the speed limit for highly irreversible processes and obtained a tight finite-time Landauer bound [164]. Van Vu and Saito derived the finite-time quantum Landauer principle and the role of coherence in it [165]. Rolandi and Perarnau-Llobet derived the finite-time Landauer principle beyond weak coupling [166]. Kamijima, Funo and Sagawa derived the finite-time trade-offs between measurement and feedback [167]. Tkachenko showed for physical neural networks that quasi-static inference needs no work, while finite-speed inference costs at least a transport distance (preprint) [168]. Inference has no floor that survives slow operation. The reset does. Proposition 1 prices it.
 
-**Holding a goal.** Tatikonda and Mitter [169] and Nair and Evans [170] proved the data-rate theorem: holding an unstable linear system needs a channel rate above the sum of the base-2 logarithms of its unstable eigenvalue magnitudes. Nair, Fagnani, Zampieri and Evans reviewed the field [171]. Sandberg, Delvenne, Newton and Mitter found the maximum work a continuously measuring demon extracts in finite time, and showed that any implementation needs an external power source [172]. Horowitz and Sandberg showed that the information terms in second-law inequalities form a hierarchy, each the minimum cost of acquiring that information by a distinct measurement [173]. Proposition 2 turns the bit count into a joule floor per step.
+**Holding a goal.** Tatikonda and Mitter [169] and Nair and Evans [170] proved the data-rate theorem: holding an unstable linear system needs a channel rate above the sum of the base-2 logarithms of its unstable eigenvalue magnitudes. Nair, Fagnani, Zampieri and Evans reviewed the field [171]. Sandberg, Delvenne, Newton and Mitter found the maximum work a continuously measuring demon extracts in finite time, and showed that any implementation needs an external power source [172]. Horowitz and Sandberg showed that the information terms in second-law inequalities form a hierarchy, each the minimum cost of acquiring that information by a distinct measurement [173]. Proposition 2 turns the bit count into a joule floor per step. It is a joule-priced corollary of the data-rate theorem, not a new law.
 
 **Quantum feedback and measurement.** The feedback second law holds for quantum systems [3]. Jacobs extended it to weak measurements [174]. Funo, Watanabe and Ueda derived integral fluctuation theorems under quantum measurement and feedback [175]. Guryanova, Friis and Huber proved that ideal projective measurements need infinite resources, and gave the energy cost of a pointer that reproduces the system's statistics [176]. Danageozian, Wilde and Buscemi bounded the measurement heat of error identification by the Groenewold information gain [177]. These price the measurement that writes a record. Proposition 4 keeps the floor of the record itself.
 
@@ -579,7 +581,7 @@ Intelligence is the derivative of gated agency in joules, read off a completed r
 
 **Machines.** Memory access costs far more energy than arithmetic [258]. Parameter count matters only through the joules it makes you move. Intelligence per watt measures task accuracy per unit power on local accelerators [259]. Its numerator is benchmark accuracy, not gated agency. MLPerf Power standardizes power measurement from microwatts to megawatts, with each result gated by an accuracy target [260]. That gate is the form of $J^*$. FrugalGPT cascades language models and stops when a scorer accepts the answer [321]. RouteLLM learns to send each query to a strong or a weak model under a cost target [322]. Their cost is dollars per query and their gate is a quality threshold. Read with metered joules and $C(z)$ as the gate, both are cascades in the sense of Proposition 9. ML.ENERGY measures inference energy automatically [261]. TokenPowerBench benchmarks the power of large language model (LLM) inference [262]. Jin, Wei and Brooks analyze the energy of test-time compute [263]. General-purpose models cost much more energy per task than task-specific ones [264]. The cheapest sufficient model wins in joules. That is Mixture of Limits, measured. Samsi and colleagues measured the energy of large language model inference on GPUs (graphics processing units) [265]. Dillavou and colleagues demonstrated decentralized learning in a physical circuit, with no processor [266]. Stern and colleagues trained self-learning circuits for power-efficient solutions and measured the trade between power and error [267]. Saggio and colleagues demonstrated a quantum speed-up for learning agents in a photonic experiment [268]. Fewer interactions to learn is fewer acts to close.
 
-**A metered acceptor.** Section 8.11 reports a preregistered run of an acceptor agent on a laptop, with prediction first, comparison, refusal and binding joule budgets. $\iota$ was read off 4,940 receipts. The median confirmed act gave $1.5 \times 10^5$ bits per reported joule, about $2 \times 10^{15}$ times the joules per bit of the floor. Under a binding budget the σ-law selector closed more tasks than the fixed cascade, one Mixture of Limits instance. Integrated $\iota$ ranked a goal-blind agent first on a loose budget, while $J^*$ ranked it last.
+**A kernel-reported acceptor.** Section 8.11 reports a preregistered run of an acceptor agent on a laptop, with prediction first, comparison, refusal and binding joule budgets. $\iota$ was read off 4,940 receipts. The median confirmed act gave $1.5 \times 10^5$ bits per reported joule, about $2 \times 10^{15}$ times the joules per bit of the floor. Under a binding budget the σ-law selector closed more tasks than the fixed cascade, one Mixture of Limits instance. That comparison was chosen after the run, so it is exploratory, and joules per closed task were equal. The preregistered second run and a second machine repeated the gain at the loosest budget only (Section 8.11.2). Integrated $\iota$ ranked a goal-blind agent first on a loose budget, while $J^*$ ranked it last.
 
 **Groups simulated.** Crosato and colleagues computed the thermodynamic quantities of simulated collective motion across its critical point [269]. Chen and Prokopenko compared thermodynamic efficiency with purely informational utilities as explanations of collective behavior near criticality [270]. $\iota_G$ in Proposition 7 is the gated, metered form of such a ratio.
 
@@ -609,7 +611,7 @@ Each position is placed against the definition: intelligence is the derivative o
 - **Proven:** learning, memory, prediction and control each have a joule price with a ceiling.
 - **Demonstrated:** joules per bit are measured in brains. Joules per task are measured in machines. Meters can be validated.
 - **Proven here:** $\iota$ is a bounded density on the joule axis under joule-proportional crediting (Proposition 5). Sampled $\iota$ converges to it (Proposition 6). Groups compose by Proposition 7. Holding a goal sets an optimal act time and a ceiling on $\iota$ (Prediction 1).
-- **Demonstrated here:** $\iota$ and $J^*$ read off the receipts of a metered acceptor, with falsifiers fixed in advance (Section 8.11). $J^*$ ranks agents. Integrated $\iota$ does not.
+- **Demonstrated here:** $\iota$ and $J^*$ read off the receipts of a kernel-reported acceptor, with falsifiers fixed in advance (Section 8.11). $J^*$ ranks agents. Integrated $\iota$ does not.
 - **Added by this track:** intelligence read as $dX/dJ$ off a gated, completed run, with $J^*$ as the ranking. Takahashi and Hayashi come closest, with bits-per-joule ratios under explicit accounting [239]. This track adds the eligibility gate, the realized flow in place of capacity, the gated ranking and its proof (Proposition 8), and the optimal act time (Prediction 1).
 
 ## 6. Global findings, by method
@@ -828,7 +830,9 @@ Protocol. Fix tasks, gears, predicates and budgets. Vary $w$ over a preset grid.
 
 Evidence in hand: confident prediction lowered human cortical oxygen use by up to 12%, measured by metabolic imaging (preprint) [254]. In cellular networks, the bits of the past that best predict the future are prohibitively costly [198]. In percept-action loops, work-efficient agents balance prediction against forgetting [234].
 
-### 8.11 First run: a metered acceptor on a laptop
+<div id="811-first-run-a-metered-acceptor-on-a-laptop" class="anchor-alias" aria-hidden="true"></div>
+
+### 8.11 First run: a kernel-reported acceptor on a laptop
 
 This run applies Sections 8.1 to 8.7 to one task class on one machine. Code, task sets, receipts and analysis are in the site repository under `experiments/agency-run`. The preregistration and its falsifiers were committed first (e830bff). The pilot and the locked calibration came next (5828420), and then the main run (35c967a).
 
@@ -856,7 +860,7 @@ This run applies Sections 8.1 to 8.7 to one task class on one machine. Code, tas
 
 - **Per act.** 1,902 acts were confirmed. The median act $\iota$ was $1.53 \times 10^5$ bits per reported joule, with interquartile range $8.3 \times 10^4$ to $4.7 \times 10^5$. Joules per confirmed bit were at least $3.8 \times 10^{14}$ times $k_B T\ln 2$ at 300 K, with median $2.3 \times 10^{15}$ times. The floor allows $3.5 \times 10^{20}$ bits per joule.
 - **Joules per closed task.** The median over arms was 0.34 to 0.38 mJ for easy tasks, 1.58 to 1.70 mJ for medium and 4.05 to 4.28 mJ for hard.
-- **Selectors, paired by seed.** This analysis was chosen after the run. At $B = 1.0\,J_{g2}$ the σ-law selector closed 2.65 more tasks per run than the fixed cascade (95% bootstrap interval 1.5 to 3.8). Its run $\iota$ was higher by 10,650 bits per joule (4,747 to 16,592). At $B = 2.0\,J_{g2}$ it closed 0.9 more (0.55 to 1.25). The σ-law rule goes straight to the gear that suffices, so the joules of failed light attempts stay in the budget.
+- **Selectors, paired by seed (exploratory, post hoc).** This analysis was chosen after the run, so it is exploratory. At $B = 1.0\,J_{g2}$ the σ-law selector closed 2.65 more tasks per run than the fixed cascade (95% bootstrap interval 1.5 to 3.8). Its run $\iota$ was higher by 10,650 bits per joule (4,747 to 16,592). At $B = 2.0\,J_{g2}$ it closed 0.9 more (0.55 to 1.25). The σ-law rule goes straight to the gear that suffices, so the joules of failed light attempts stay in the budget. Joules per closed task were equal: on the 4 tasks both arms closed at $B = 1.0\,J_{g2}$, the paired interval ran from $-7.9$ to $+15.5$ µJ (R-F1).
 - **Package cross-check.** powermetrics, run non-interactively over 30 s windows, read about 12.1 W of CPU power and 13.6 W of GPU power from other work on the machine while the agent slept. The agent added about 0.6 W on its own meter. Background CPU power moved by about 0.5 W between windows, so idle-subtracted package joules came out negative. The per-process meter is the run's meter. D1 and D5 need a wall meter on an otherwise idle machine.
 
 **Falsifier outcomes.** All were fixed before the run.
@@ -876,7 +880,7 @@ This run applies Sections 8.1 to 8.7 to one task class on one machine. Code, tas
 
 - $\iota$ is read off receipts, act by act and run by run, as Propositions 5 and 6 require. On a loose budget it is stable across seeds.
 - $J^*$ is the ranking, and integrated $\iota$ is not. The goal-blind agent had the highest run $\iota$ on the loose budget, closing 18 of 30 tasks against 28. Its failures were cheap. $J^*$ is gated by $C(z)$, so it ranks that agent last. This is why Section 2.3 ranks by $J^*$, with $X_{\mathrm{req}}$ as a gate.
-- Under a binding budget, the σ-law selector closes more tasks than the fixed cascade. The gain lies in which tasks fit the budget, not in a cheaper closure of the same task.
+- Exploratory, post hoc: under a binding budget the σ-law selector closed more tasks than the fixed cascade, and joules per closed task were equal. The gain lies in which tasks fit the budget, not in a cheaper closure of the same task. Section 8.11.2 states what the later runs replicate.
 - Two implementation fixes come before the next run. The comparison and the receipt write move inside the guarded region. A measured closing cost is charged before each act.
 
 ### 8.11.1 Second run: guarded acceptor, 40 seeds
@@ -1010,6 +1014,16 @@ This run repeats the second-run protocol of Section 8.11.1 on a second machine w
 - Shared-task joules show no σ-law saving here either. Where the σ-law selector gains, it gains in tasks closed, not in cheaper closure of the same task.
 - No figure in this section is `measured_j`.
 
+**What replicates, and what does not.** The run 1 selector result was exploratory. Two later runs tested it under preregistration.
+
+| Claim from run 1 (exploratory) | Run 2 (preregistered) | Second machine, part B (preregistered) |
+|---|---|---|
+| More tasks closed at $B = 1.0\,J_{g2}$: +2.65 (1.5 to 3.8) | Not replicated. The interval includes zero | Not replicated. $-0.475$ ($-1.8$ to $0.775$) |
+| More tasks closed at $B = 2.0\,J_{g2}$: +0.9 (0.55 to 1.25) | Replicated. +2.8 (2.3 to 3.275) | Replicated. +0.825 (0.125 to 1.575) |
+| Joules per closed task | Equal. No shared-task saving | Equal. Shared-task intervals include zero |
+
+The replicated result is narrow. At the loosest budget level the σ-law selector closes more tasks than the fixed cascade, on two machines. No run shows fewer joules for the same closed task, and the binding-budget gain of run 1 did not replicate. Part A is a meter-resolution result and tests neither claim.
+
 **Measurement protocol for the next run.** Both parts fail at the meter, so the protocol changes before the selectors are tested again.
 
 1. **Idle machine.** Stop nothing that belongs to someone else. Wait for a quiet window, or schedule one: other processes at or below 0.5 cores for the whole run, with `quiet_window = yes` recorded. If quiet is not reached, the run does not start.
@@ -1017,6 +1031,7 @@ This run repeats the second-run protocol of Section 8.11.1 on a second machine w
 3. **Resolution check first.** Before the pilot, record the meter's update interval and step size against the median act length. If the meter cannot resolve one act, meter blocks of acts and attribute by count, and say so in the preregistration.
 4. **Calibrate the estimate on the meter.** Fit `est_j` on the wall or shunt meter at block level, and require R-F4 to hold before `est_j` drives the guard.
 5. **Pin and record.** Pin frequency, record idle baselines before and after, report drift, and keep the package counter as a labeled cross-check.
+6. **Task closure is primary.** The next run's preregistration makes task closure the primary endpoint: the paired-by-seed difference in tasks closed, σ-law minus fixed cascade, at each budget level, with the Holm step-down correction across levels. Shared-task joules (R-F1) are secondary.
 
 ### 8.12 Reporting
 
