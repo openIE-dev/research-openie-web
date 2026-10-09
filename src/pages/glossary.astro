@@ -15,43 +15,51 @@ const terms = [
     def: 'The expected gain in a stated benefit from one more observation or call, minus its cost. When VoI is zero past a named floor, further spend on that coordinate is refuse success.',
   },
   {
-    term: 'soft-ref',
-    def: 'The software reference path that proves a study law without board synthesis or package metering. Receipts on that path label energy as estimate and leave measured_j unset until a named meter returns. This is the one meaning taken from the Mixture of Limits paper and used across the catalog.',
+    term: 'software reference implementation',
+    def: 'The software path that tests a study claim without board synthesis or package metering. Receipts on that path label energy as estimate and leave measured_j unset until a named meter returns. Earlier drafts called it soft-ref. This is the one meaning used across the catalog.',
   },
   {
     term: 'evidence classes',
     def: 'Modeled means a stated formula. Simulated means a program or Verilog run. Board-measured means a named meter on a stated device and workload. Estimates are not measured_j.',
   },
   {
-    term: 'board_synth_claimed',
+    term: 'board-result flag (board_synth_claimed)',
     def: 'Repository honesty flag. False means this site has not claimed a synthesized, metered FPGA board result for the study. It stays false until a synthesis log and a meter reading exist.',
   },
   {
     term: 'measured_j',
-    def: 'Package field for a joule reading from a named meter. Soft-ref closes leave it unset. Catalog and OpCounter figures are estimates, not measured_j.',
+    def: 'Package field for a joule reading from a named meter. Closes on the software reference implementation leave it unset. Catalog and OpCounter figures are estimates, not measured_j.',
   },
   {
     term: 'Klere',
-    def: 'Hardware and the product home for Metabolic Intelligence (klere.ai). Metabolic Intelligence is the AI product class and runs on any compute fabric. Klere is not the research claim being sold as the paper.',
+    def: 'Hardware and the product home for Metabolic Intelligence (klere.ai). Metabolic Intelligence is the AI product class and runs on any compute fabric. Klere is not the research claim being sold as the paper. Its material sits in the product white papers, apart from the research catalog.',
   },
   {
     term: 'Metabolic Intelligence',
-    def: 'Budget-native computer intelligence. The envelope is the physical condition of the superior answer. Research owns the class. Klere owns the product embodiment.',
+    def: 'Budget-native computer intelligence. A fixed energy budget is the physical condition of the best answer. Research owns the class. Klere owns the product embodiment.',
+  },
+  {
+    term: 'commit gate',
+    def: 'A check that runs before an irreversible act. A proposal may not authorize itself. The gate commits or refuses and writes a receipt. Metered Commit Gates, Part I.',
+  },
+  {
+    term: 'energy to correct completion (J*)',
+    def: 'The joules a system spends to reach a correct completion of a stated task. Correctness is the constraint. Among systems that pass, J* orders them. Metered Commit Gates, Section 0.2.',
   },
   {
     term: 'Mixture of Limits',
-    def: 'Navigation law of hybrid interplay among embodiment classes: Lookup, then Formula, then Solver, then Model last, with named floors that stop escalation when more bits stop buying outcomes.',
+    def: 'The philosophy and the cascade of hybrid interplay among embodiment classes: Lookup, then Formula, then Solver, then Model, with named floors that stop escalation when more bits stop buying outcomes.',
   },
   {
     term: 'Notational Intelligence',
-    def: 'Commit law: propose, then certify, then commit or refuse, then a receipt. The proposer does not authorize itself.',
+    def: 'The commit gate: propose, then certify, then commit or refuse, then a receipt. The proposer does not authorize itself.',
   },
 ];
 ---
 
 <Layout
   title="Glossary"
-  description="Shared terms used across the OpenIE research catalog: Periodic Stack, replay class, value of information, soft-ref, and evidence classes, including whether a result was measured on synthesized hardware."
+  description="Shared terms used across the OpenIE research catalog: Periodic Stack, replay class, value of information, the software reference implementation, and evidence classes, including whether a result was measured on synthesized hardware."
 >
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
     <p class="section-label mb-4">research.openie.dev</p>
@@ -60,7 +68,7 @@ const terms = [
     </h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
       Terms the papers use. Each paper also keeps a short terms note for the words it needs on the page.
-      Soft-ref has one meaning, taken from Mixture of Limits and applied consistently here.
+      The software reference implementation has one meaning, applied consistently here.
     </p>
 
     <dl class="mt-10 space-y-6">

@@ -6,7 +6,7 @@
       "@id": "https://research.openie.dev/#catalog",
       "name": "OpenIE Research catalog",
       "url": "https://research.openie.dev/",
-      "description": "Research studies by David Charlot at Open Interface Engineering. Five studies, one economic opinion, and one research track, each with a web edition and a PDF.",
+      "description": "Research by David Charlot at Open Interface Engineering. Three research papers and one history essay, each with a web edition and a PDF. Two product white papers are kept apart from the research catalog.",
       "isPartOf": {
         "@id": "https://research.openie.dev/#site"
       },
@@ -16,44 +16,38 @@
           {
             "@type": "ListItem",
             "position": 1,
-            "url": "https://research.openie.dev/papers/mol/",
-            "name": "Mixture of Limits: Navigation Law for Computer Intelligence"
+            "url": "https://research.openie.dev/papers/agency/",
+            "name": "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents"
           },
           {
             "@type": "ListItem",
             "position": 2,
-            "url": "https://research.openie.dev/papers/ni/",
-            "name": "Notational Intelligence as Commit Law"
+            "url": "https://research.openie.dev/papers/gates/",
+            "name": "Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "url": "https://research.openie.dev/papers/satiation/",
-            "name": "Satiation and Scarcity after Free AI"
+            "name": "Task Satiation vs. Aggregate Rebound in AI Demand"
           },
           {
             "@type": "ListItem",
             "position": 4,
-            "url": "https://research.openie.dev/papers/mei/",
-            "name": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus"
-          },
-          {
-            "@type": "ListItem",
-            "position": 5,
-            "url": "https://research.openie.dev/papers/jouleos/",
-            "name": "The Search for JouleOS"
-          },
-          {
-            "@type": "ListItem",
-            "position": 6,
             "url": "https://research.openie.dev/papers/spellcheck/",
             "name": "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)"
           },
           {
             "@type": "ListItem",
-            "position": 7,
-            "url": "https://research.openie.dev/papers/agency/",
-            "name": "The Universal Law of Agency"
+            "position": 5,
+            "url": "https://research.openie.dev/products/mei/",
+            "name": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "url": "https://research.openie.dev/products/jouleos/",
+            "name": "The Search for JouleOS"
           }
         ]
       }

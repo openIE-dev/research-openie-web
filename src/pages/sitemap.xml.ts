@@ -8,9 +8,11 @@ const STATIC = ['/', '/about/', '/glossary/', '/living/'];
 export const GET: APIRoute = async ({ site }) => {
   const base = site ?? new URL('https://research.openie.dev');
   const papers = await getCollection('papers');
+  const products = await getCollection('products');
   const routes = [
     ...STATIC,
     ...papers.flatMap((p) => [`/papers/${p.data.id}/`, `/about/${p.data.id}/`, p.data.pdf]),
+    ...products.flatMap((p) => [`/products/${p.data.id}/`, `/about/${p.data.id}/`, p.data.pdf]),
   ];
   const body =
     `<?xml version="1.0" encoding="UTF-8"?>\n` +

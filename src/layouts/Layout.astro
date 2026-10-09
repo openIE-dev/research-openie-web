@@ -69,13 +69,11 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
         <a href="/#catalog" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Catalog</a>
         <a href="/about/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">About</a>
         <a href="/glossary/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Glossary</a>
-        <a href="/papers/mol/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Mixture of Limits</a>
-        <a href="/papers/ni/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Notational Intelligence</a>
+        <a href="/papers/agency/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Agency</a>
+        <a href="/papers/gates/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Commit Gates</a>
         <a href="/papers/satiation/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Satiation</a>
-        <a href="/papers/mei/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Metabolic Intelligence</a>
-        <a href="/papers/jouleos/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">The Search for JouleOS</a>
-        <a href="/papers/spellcheck/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Spell Check is Global</a>
-        <a href="/papers/agency/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Law of Agency</a>
+        <a href="/papers/spellcheck/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Spell Check (essay)</a>
+        <a href="/#products" class="font-body text-[12px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">White papers</a>
         <a href="/living/" class="font-body text-[12px] max-md:text-lg font-medium text-brand-amber no-underline hover:text-brand-gold transition-colors">Figures</a>
         <a href="https://openie.dev" class="font-mono text-xs max-md:text-sm text-brand-cyan border border-brand-cyan/30 px-4 py-1.5 rounded-md no-underline hover:bg-brand-cyan/10 hover:border-brand-cyan transition-all">
           openie.dev
@@ -97,7 +95,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
             Open<span class="text-brand-cyan">IE</span> Research
           </div>
           <p class="font-body text-[12px] text-brand-gray max-w-[320px] leading-relaxed">
-            Research studies hub for Open Interface Engineering, Inc.<br>
+            Research papers hub for Open Interface Engineering, Inc.<br>
             Papers + PDFs · figures under /living · no paid services
           </p>
         </div>
@@ -105,13 +103,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
           <div>
             <div class="font-mono text-[10px] text-brand-gray tracking-[2px] uppercase mb-3">Papers</div>
             <div class="space-y-2">
-              <a href="/papers/mol/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Mixture of Limits</a>
-              <a href="/papers/ni/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Notational Intelligence</a>
-              <a href="/papers/satiation/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Satiation</a>
-              <a href="/papers/mei/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Metabolic Intelligence</a>
-              <a href="/papers/jouleos/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Search for JouleOS</a>
-              <a href="/papers/spellcheck/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Spell Check is Global</a>
-              <a href="/papers/agency/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Universal Law of Agency</a>
+              <a href="/papers/agency/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Thermodynamic Bounds and an Optimal Tempo</a>
+              <a href="/papers/gates/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Metered Commit Gates</a>
+              <a href="/papers/satiation/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Task Satiation vs. Aggregate Rebound</a>
+              <a href="/papers/spellcheck/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Spell Check is Global (essay)</a>
+              <a href="/products/mei/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Metabolic Intelligence (product)</a>
+              <a href="/products/jouleos/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Search for JouleOS (product)</a>
               <a href="/living/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Figures</a>
               <a href="/about/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">About</a>
               <a href="/glossary/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Glossary</a>
@@ -120,13 +117,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
           <div>
             <div class="font-mono text-[10px] text-brand-gray tracking-[2px] uppercase mb-3">PDFs</div>
             <div class="space-y-2">
-              <a href="/pdfs/mol.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Mixture of Limits</a>
-              <a href="/pdfs/ni.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Notational Intelligence</a>
-              <a href="/pdfs/satiation.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Satiation</a>
+              <a href="/pdfs/agency.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Thermodynamic Bounds</a>
+              <a href="/pdfs/gates.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Metered Commit Gates</a>
+              <a href="/pdfs/satiation.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Task Satiation</a>
+              <a href="/pdfs/spellcheck.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Spell Check is Global</a>
               <a href="/pdfs/mei.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Metabolic Intelligence</a>
               <a href="/pdfs/jouleos.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Search for JouleOS</a>
-              <a href="/pdfs/spellcheck.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Spell Check is Global</a>
-              <a href="/pdfs/agency.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Universal Law of Agency</a>
             </div>
           </div>
           <div>

@@ -11,7 +11,7 @@
  * Every tool is read-only. It searches a static index of the catalog that ships in this file
  * and returns text and URLs. No network request, no navigation, no form, no visitor data.
  *
- * Keep STUDIES in step with src/content/papers/*.md frontmatter. The patch plan offers a
+ * Keep STUDIES in step with src/content/papers/*.md and src/content/products/*.md frontmatter. The patch plan offers a
  * build-time variant that generates this index from the content collection instead.
  */
 (function () {
@@ -30,68 +30,123 @@
 
   var STUDIES = [
     {
-      id: 'mol',
-      title: 'Mixture of Limits: Navigation Law for Computer Intelligence',
-      short_title: 'Mixture of Limits',
-      kind: 'Research study',
-      summary: 'Mixture of Limits is the philosophy. It names floors past which more tokens, parameters, or joules stop buying verifiable progress on a task. Compression into predictive formulas beats excess enumeration. The neural network is a residual leaf, off by default. The reference path runs in software, and its energy figures are labeled estimates.',
-      keywords: ['mixture of limits', 'floors', 'value of information', 'VoI', 'Landauer', 'compression', 'navigation law', 'cheapest sufficient', 'soft-ref']
+      "id": "agency",
+      "title": "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents",
+      "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+      "kind": "Research paper",
+      "path": "/papers/agency/",
+      "pdf_path": "/pdfs/agency.pdf",
+      "about_path": "/about/agency/",
+      "summary": "The proposed Universal Law of Agency, stated as a definition plus a gate. Agency comes first: a prediction fixed before the act, coupling to the world through intervention, consequence borne, and a joule budget with refusal on a receipt. Kinematic bounds say how fast agency moves per second and per joule. Intelligence is the derivative of agency in joules, read in hindsight off a completed run. Prediction 1 gives an optimal act time for an agent that holds a goal, with a lab protocol to test it. Energy to run is the only true metric of computer intelligence.",
+      "keywords": [
+        "Universal Law of Agency",
+        "agency",
+        "kinematic bounds",
+        "optimal tempo",
+        "intelligence as a derivative",
+        "thermodynamics of computation",
+        "joules",
+        "Landauer",
+        "experiment"
+      ]
     },
     {
-      id: 'ni',
-      title: 'Notational Intelligence as Commit Law',
-      short_title: 'Notational Intelligence',
-      kind: 'Research study',
-      summary: 'Notational Intelligence treats permission to act as a formal object. A proposal may not authorize itself. The software reference, Wise Computer Automation (WCA), commits or refuses at irreversible actions and records each decision under a fixed schema. Energy is analytical accounting, not board power.',
-      keywords: ['notational intelligence', 'commit law', 'refuse', 'certificate', 'receipt', 'Wise Computer Automation', 'WCA', 'irreversible action', 'MCP gate', 'FPGA simulation']
+      "id": "gates",
+      "title": "Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems",
+      "short_title": "Metered Commit Gates",
+      "kind": "Research paper",
+      "path": "/papers/gates/",
+      "pdf_path": "/pdfs/gates.pdf",
+      "about_path": "/about/gates/",
+      "summary": "Notational Intelligence and Mixture of Limits in one systems paper. A proposal may not authorize itself: an irreversible act runs only behind a certificate, and every decision is written to a receipt. The cheapest sufficient gear runs first, Lookup, then Formula, then Solver, then Model, and the cascade stops when the task completion predicate holds. Systems are ranked by the joules needed to reach a correct completion. A KV260 board reading gives 11,428 pJ per gate cycle at board level.",
+      "keywords": [
+        "commit gate",
+        "energy to correct completion",
+        "Notational Intelligence",
+        "Mixture of Limits",
+        "cascade",
+        "receipts",
+        "refusal",
+        "Wise Computer Automation",
+        "KV260"
+      ]
     },
     {
-      id: 'satiation',
-      title: 'Satiation and Scarcity after Free AI',
-      short_title: 'Satiation',
-      kind: 'Research study',
-      summary: 'Satiation defines when a loop of work or care is done. Once a stated completeness test holds, further calls add no value, and calls that undo it are harm. Falling inference prices do not mean free energy, free actuation, or unbounded value after a chore is complete.',
-      keywords: ['satiation', 'scarcity', 'bliss point', 'free AI', 'completeness', 'design to done', 'inference price']
+      "id": "satiation",
+      "title": "Task Satiation vs. Aggregate Rebound in AI Demand",
+      "short_title": "Task Satiation vs. Aggregate Rebound",
+      "kind": "Research paper",
+      "path": "/papers/satiation/",
+      "pdf_path": "/pdfs/satiation.pdf",
+      "about_path": "/about/satiation/",
+      "summary": "Task-level satiation holds by definition once a task completion predicate is true: more synthesis on that task buys nothing. Aggregate demand can still grow, because cheaper synthesis opens new tasks and raises total use. The paper separates the two, states hypotheses H1 (spend after completion) and H2 (Jevons in tasks), and gives the data design that would identify them. Capability scales. Appetite per task does not.",
+      "keywords": [
+        "satiation",
+        "task completion",
+        "rebound",
+        "Jevons",
+        "inference pricing",
+        "economics of AI"
+      ]
     },
     {
-      id: 'mei',
-      title: 'Metabolic Intelligence: Budget-Native Compute from Tag to Campus',
-      short_title: 'Metabolic Intelligence',
-      kind: 'Research study',
-      summary: 'Metabolic Intelligence is the AI product class. A fixed energy budget is the physical condition of the best answer, not a cheaper one. Work that would break the budget is refused or deferred. It spans coin-cell tags at the edge to a resource-optimized central datacenter. It runs on any compute fabric, and its product home is Klere (klere.ai), the maker of the Energy Processing Unit (EPU).',
-      keywords: ['metabolic intelligence', 'MEI', 'Klere', 'EPU', 'energy processing unit', 'budget-native', 'edge', 'tags', 'digital enzymes', 'datacenter', 'OpenADR', 'joule envelope']
+      "id": "spellcheck",
+      "title": "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)",
+      "short_title": "Spell Check is Global",
+      "kind": "History essay",
+      "path": "/papers/spellcheck/",
+      "pdf_path": "/pdfs/spellcheck.pdf",
+      "about_path": "/about/spellcheck/",
+      "summary": "People used to pay a premium for spell check. Now it is free and bundled into the editor, the browser, and the phone. A history of that path, from dated prices to the local library in every editor. Technology built for global access reaches more than 7 billion people. Scarcity pricing keeps a capability with fewer than 500 million. Energy to run is what remains.",
+      "keywords": [
+        "spell check",
+        "history of computing",
+        "bundling",
+        "global access",
+        "economics of AI"
+      ]
     },
     {
-      id: 'jouleos',
-      title: 'The Search for JouleOS',
-      short_title: 'The Search for JouleOS',
-      kind: 'Research study (review and design guide)',
-      summary: 'Existing compute fabric treats the floor as fixed, and agents are wrapped on top of it. Energy to run is not yet the condition of a commit. Secure compute requires one law, one meter, and one refusal. That requirement is the search for a design like JouleOS, built on one intent stream and a WebAssembly runtime.',
-      keywords: ['JouleOS', 'operating system', 'secure compute', 'WebAssembly', 'Wasm', 'meter', 'refusal', 'kernel', 'design guide']
+      "id": "mei",
+      "title": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus",
+      "short_title": "Metabolic Intelligence",
+      "kind": "Product white paper",
+      "path": "/products/mei/",
+      "pdf_path": "/pdfs/mei.pdf",
+      "about_path": "/products/mei/",
+      "summary": "Metabolic Intelligence is the AI product. A fixed energy budget is the physical condition of the best answer. Work that would break the budget is refused or deferred. It spans coin-cell tags at the edge to a resource-optimized central datacenter and runs on any compute fabric. Klere (klere.ai) is the hardware that builds the Energy Processing Unit (EPU).",
+      "keywords": [
+        "Metabolic Intelligence",
+        "energy budget",
+        "edge AI",
+        "Klere",
+        "Energy Processing Unit"
+      ]
     },
     {
-      id: 'spellcheck',
-      title: 'Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)',
-      short_title: 'Spell Check is Global',
-      kind: 'Economic opinion',
-      summary: 'People used to pay a premium for spell check. Now it is free and bundled into the editor, the browser, and the phone. That is what happens when technology is built for global access, for more than 7 billion people, instead of priced by scarcity for fewer than 500 million. Energy to run is what remains.',
-      keywords: ['spell check', 'global access', 'the many', 'pricing', 'commoditization', 'automation path', 'economics', 'local']
-    },
-    {
-      id: 'agency',
-      title: 'The Universal Law of Agency',
-      short_title: 'The Universal Law of Agency',
-      kind: 'Research track',
-      summary: 'Law first, kinematics second. Nothing is an agent until the Universal Law of Agency is met. The kinematic laws bound how fast agency moves per joule. Intelligence is the calculus of agency: a derivative read in hindsight off a completed run, written as iota = dX/dJ. Energy to run is the only true metric of computer intelligence.',
-      keywords: ['agency', 'universal law of agency', 'kinematics', 'calculus', 'intelligence', 'derivative', 'joules', 'Landauer', 'thermodynamics', 'acceptor', 'Anokhin', 'empowerment', 'experiment']
+      "id": "jouleos",
+      "title": "The Search for JouleOS",
+      "short_title": "The Search for JouleOS",
+      "kind": "Product white paper (review and design guide)",
+      "path": "/products/jouleos/",
+      "pdf_path": "/pdfs/jouleos.pdf",
+      "about_path": "/products/jouleos/",
+      "summary": "A review of how secure compute is composed today and a design guide for what a machine must speak if an agent is to be scheduled, metered, and refused. It places the energy-as-resource operating systems that came before, names what they lack, and describes JouleOS: one intent stream lowered onto the coordinate the runtime measured.",
+      "keywords": [
+        "JouleOS",
+        "secure compute",
+        "WebAssembly",
+        "energy metering",
+        "operating systems"
+      ]
     }
   ];
 
   STUDIES.forEach(function (s) {
     s.author = AUTHOR;
-    s.url = BASE + '/papers/' + s.id + '/';
-    s.pdf = BASE + '/pdfs/' + s.id + '.pdf';
-    s.about = BASE + '/about/' + s.id + '/';
+    s.url = BASE + s.path;
+    s.pdf = BASE + s.pdf_path;
+    s.about = BASE + s.about_path;
   });
 
   var IDS = STUDIES.map(function (s) { return s.id; });
@@ -101,7 +156,7 @@
       id: {
         type: 'string',
         enum: IDS,
-        description: 'Study id. mol is Mixture of Limits, ni is Notational Intelligence, satiation is Satiation, mei is Metabolic Intelligence, jouleos is The Search for JouleOS, spellcheck is Spell Check is Global, agency is The Universal Law of Agency.'
+        description: 'Paper id. agency is Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, gates is Metered Commit Gates, satiation is Task Satiation vs. Aggregate Rebound in AI Demand, spellcheck is the Spell Check is Global essay, mei and jouleos are product white papers.'
       }
     },
     required: ['id'],
@@ -110,6 +165,8 @@
 
   function find(id) {
     var key = String(id || '').trim().toLowerCase();
+    var OLD = { ni: 'gates', mol: 'gates' };
+    if (OLD[key]) key = OLD[key];
     for (var i = 0; i < STUDIES.length; i++) {
       var s = STUDIES[i];
       if (s.id === key || s.short_title.toLowerCase() === key || s.title.toLowerCase() === key) return s;
@@ -129,7 +186,7 @@
     {
       name: 'list_studies',
       title: 'List research studies',
-      description: 'Lists every study in the OpenIE research catalog with id, title, kind (research study, research track, or economic opinion), web URL, and PDF URL. Read-only.',
+      description: 'Lists every study in the OpenIE research catalog with id, title, kind (research paper, history essay, or product white paper), web URL, and PDF URL. Read-only.',
       inputSchema: { type: 'object', properties: {}, additionalProperties: false },
       execute: function () {
         return { catalog: BASE + '/', glossary: BASE + '/glossary/', studies: STUDIES.map(card) };

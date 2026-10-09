@@ -10,13 +10,13 @@ const s = studies.studies.find((x) => x.id === id);
 if (!s) throw new Error(`StudyJsonLd: unknown study id ${id}`);
 
 const BASE = 'https://research.openie.dev';
-const DRAFT = ['mol', 'ni', 'satiation', 'mei'];
+const DRAFT = ['gates', 'satiation', 'mei'];
 const headline = s.title.length > 110 ? s.title.split(':')[0].trim() : s.title;
 const doc = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'ScholarlyArticle',
+      '@type': s.group === 'product' ? 'TechArticle' : 'ScholarlyArticle',
       '@id': `${s.url}#article`,
       headline,
       name: s.title,
