@@ -695,7 +695,7 @@ Hindi and Arabic searches returned no primary research in those languages. Engli
 | D6 | The physical floor is respected and the gap is known | Measured joules per confirmed bit divided by $k_B T \ln 2$ |
 | D7 | Prediction 1: the optimal act time and the ceiling of an agent that holds a goal | A $\tau$ sweep at two or more instability rates, with act and standing joules metered separately and together |
 
-Section 8.11 reports the first run against D2 to D6, on reported joules.
+Section 8.11 reports the first run against D2 to D6, on reported joules. Section 8.11.1 reports the second run on the same machine, with the guard and refusal fixes.
 
 ## 8. Experiment plan
 
@@ -876,6 +876,59 @@ This run applies Sections 8.1 to 8.7 to one task class on one machine. Code, tas
 - $J^*$ is the ranking, and integrated $\iota$ is not. The goal-blind agent had the highest run $\iota$ on the loose budget, closing 18 of 30 tasks against 28. Its failures were cheap. $J^*$ is gated by $C(z)$, so it ranks that agent last. This is why Section 2.3 ranks by $J^*$, with $X_{\mathrm{req}}$ as a gate.
 - Under a binding budget, the σ-law selector closes more tasks than the Mixture of Limits rule. The gain lies in which tasks fit the budget, not in a cheaper closure of the same task.
 - Two implementation fixes come before the next run. The comparison and the receipt write move inside the guarded region. A measured closing cost is charged before each act.
+
+### 8.11.1 Second run: guarded acceptor, 40 seeds
+
+This run is the same task class, the same gears and the same three arms as Section 8.11, on the same laptop. The preregistration for the second run was committed first (610dd4c). The pilot and the locked calibration came next (c88511f), and then the main run (920d7e2). Prediction 1 has no software analogue in this run: the agent has no declared act cost that falls with act time and no standing cost it controls, so the preregistration states that the dose-response design is not run.
+
+**Method.**
+
+- **Guard.** Every joule of an episode is charged inside the guard: selection, hash, gear steps, comparison, receipt and final read. The opening check uses spent $= 0$. The law arms refuse when the guard fails. The goal-blind arm is cut.
+- **Refusal threshold.** Both selectors use the $r$-quantile of calibration costs for budget-fit tests. $r$ was locked from calibration replay before the main run: $r = 0.1$, with recall 1.0 and precision about 0.976 on the calibration split.
+- **Budgets and seeds.** Per task, $B \in \{0.5, 1.0, 2.0\} \times J_{g2}(q)$, the pilot median of g2 alone. Levels 0.5 and 1.0 bind: pilot fractions exceeding them are 0.98 and 0.4. Level 2.0 does not (0.0067). There are 40 seeds per condition. In all, 10,800 episodes ran.
+- **Quiet window.** Quiet was not achieved. Probes ran until the limit. The last probe before the start, at 21:46 local time, recorded other-process CPU near 621% of one core, with mediaanalysisd and editor helpers at the top. Baseline package power was about 21.4 W. Package power in the main window was about 22.7 W. The run records `quiet_window = no`.
+- **Energy label.** Every joule is `reported_j`: the kernel's per-process energy estimate for the agent (`ri_energy_nj` from `proc_pid_rusage`), with package figures from powermetrics where used for the cross-check. `est_j` is cycles times $1.7826647100706183 \times 10^{-9}$ J, locked in the pilot. `measured_j` is empty: no wall meter was attached.
+- **Package cross-check.** In the main window the process meter read 42.35 J. Net package joules were 121.81 J, a ratio of about 2.88 to the process. Baseline package drift was about $-0.082$ W. Because `quiet_window = no`, the cross-check is declared not achievable. The per-process meter remains the run's meter.
+
+**Results.** Mean ± standard deviation over 40 seeds. A run is one arm at one budget level over all 30 tasks. CV is the coefficient of variation, standard deviation over mean. $J$ is reported in millijoules for comparison with Section 8.11.
+
+| Arm | $B/J_{g2}$ | Tasks closed of 30 | $X$ (bits) | $J$ (reported, mJ) | $\iota$ (bits per reported joule) | CV of $\iota$ | Refusals | Cuts | Overspends |
+|---|---|---|---|---|---|---|---|---|---|
+| σ-law | 0.5 | 0.62 ± 0.49 | 113 ± 89 | 59.5 ± 2.0 | 1,942 ± 1,525 | 0.785 | 29.38 | 0 | 0 |
+| σ-law | 1.0 | 2.90 ± 1.74 | 523 ± 314 | 133.7 ± 13.8 | 4,150 ± 2,892 | 0.697 | 27.10 | 0 | 0 |
+| σ-law | 2.0 | 22.73 ± 1.30 | 3,980 ± 206 | 197.3 ± 18.2 | 20,359 ± 2,388 | 0.117 | 7.28 | 0 | 0 |
+| Mixture of Limits | 0.5 | 0.57 ± 0.50 | 104 ± 90 | 60.1 ± 2.1 | 1,777 ± 1,548 | 0.871 | 29.43 | 0 | 0 |
+| Mixture of Limits | 1.0 | 2.67 ± 1.25 | 483 ± 226 | 140.3 ± 13.5 | 3,593 ± 1,948 | 0.542 | 27.32 | 0 | 0 |
+| Mixture of Limits | 2.0 | 19.93 ± 1.42 | 3,509 ± 227 | 201.2 ± 20.4 | 17,684 ± 2,909 | 0.164 | 10.07 | 0 | 0 |
+| Goal-blind | 0.5 | 0.12 ± 0.33 | 23 ± 61 | 35.4 ± 11.6 | 513 ± 1,397 | 2.723 | 0 | 22.85 | 0 |
+| Goal-blind | 1.0 | 1.00 ± 0.93 | 181 ± 169 | 72.0 ± 19.5 | 2,661 ± 2,579 | 0.969 | 0 | 20.00 | 0 |
+| Goal-blind | 2.0 | 10.65 ± 2.27 | 1,859 ± 400 | 97.3 ± 30.1 | 20,302 ± 5,766 | 0.284 | 0 | 8.70 | 0 |
+
+- **Per act.** 7,960 acts ran. 2,448 were confirmed. Kendall's tau-b between `est_j` and `reported_j` was 0.942 on 4,000 acts. The median act $\iota$ was about $3.11 \times 10^{4}$ bits per reported joule. Every confirmed act sat far above $k_B T\ln 2$ per bit: the lowest was about $6.4 \times 10^{14}$ times that floor.
+- **Refusal.** Recall was 1.0 on 49 infeasible pairs. There were 5,223 refusals. The share on tasks closed by some arm was about 0.081.
+- **Overspends.** Zero episodes ended above budget. The maximum overspend fraction was $-0.03684$: every episode finished under budget.
+- **Selectors, paired by seed.** This analysis was declared in the preregistration. At $B = 2.0\,J_{g2}$ the σ-law selector closed 2.8 more tasks per run than the Mixture of Limits rule (95% bootstrap interval 2.3 to 3.275). Its run $\iota$ was higher by 2,674 bits per joule (1,831 to 3,504). On 39 of 40 seeds the σ-law selector closed more. At $B = 0.5$ and $B = 1.0$ the intervals for the closed-task difference include zero. These results fire no falsifier.
+
+**Falsifier outcomes.** All were fixed before the run. The table states the second-run outcome beside the first-run outcome.
+
+| ID | Observation | Run 2 | Run 1 |
+|---|---|---|---|
+| R-F1 | At every binding level, the 95% interval of the paired per-task difference in median $J^*$, σ-law minus Mixture of Limits, includes or exceeds zero | Held. At $B = 1.0$, no task closed by both. At $B = 0.5$, one task closed by both. Shared-task joules still do not show a clear σ-law saving | Fired |
+| R-F2 | Any episode ends above its budget | Held. 0 of 10,800. The guard charges comparison, receipt and final read | Fired |
+| R-F3 | Refusal recall below 0.9 on infeasible pairs, or over 10% of refusals on pairs some arm closes | Held. Recall 1.0 on 49 infeasible pairs. Share on tasks closed by some arm about 0.081. The $r$-quantile refusal threshold is the change from Run 1 | Fired |
+| R-F4 | Kendall's tau-b between `est_j` and `reported_j` per act below 0.8 | Held. 0.942 on 4,000 acts | Held |
+| R-F5 | CV of run $\iota$ above 0.25 in any condition | Fired at binding levels (0.54 to 2.72). Held for both law arms at $B = 2.0$ (0.117, 0.164) | Fired |
+| R-F6 | Ranking by $J^*$ differs from ranking by integrated $\iota$ | Fired. At $B = 2.0$, $J^*$ ranks σ-law, Mixture of Limits, goal-blind. Integrated $\iota$ ranks σ-law, goal-blind, Mixture of Limits | Fired |
+| R-F7 | A confirmed act below $k_B T\ln 2$ per bit | Held. The lowest act sat about $6.4 \times 10^{14}$ times above | Held |
+| R-F8 | Goal-blind run $\iota$ at least the better selector's at a binding level | Held. 513 against 1,942 at $B = 0.5$. 2,661 against 4,150 at $B = 1.0$ | Held |
+
+**What the run settles.**
+
+- The guard closes R-F2. Zero overspends.
+- The refusal quantile closes R-F3. Recall stays 1.0 and the share of refusals on closable tasks falls under 10%.
+- $J^*$ remains the ranking. Integrated $\iota$ still disagrees with it on the loose budget (R-F6).
+- Run $\iota$ is still unstable across seeds at binding budgets (R-F5).
+- On shared closed tasks the σ-law selector still does not show fewer joules than Mixture of Limits in the sense that would defeat R-F1's observation at every binding level. The paired-by-seed gain at $B = 2.0$ is more closed tasks, not cheaper closures of the same tasks.
 
 ### 8.12 Reporting
 
