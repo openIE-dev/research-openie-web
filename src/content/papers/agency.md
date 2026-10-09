@@ -2,7 +2,7 @@
 title: "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents"
 deck: "Agency first, kinematics second. The proposed Universal Law of Agency is a definition plus a gate, and it is required before anything counts as an agent. The kinematic bounds say how fast agency moves per second and per joule. Intelligence is the calculus of agency: a derivative read in hindsight off a completed run, ι = dX/dJ. Energy to run is the only true metric of computer intelligence. Estimates are never measured_j."
 id: agency
-status: "Research track"
+status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
 figures: "/living/"
 pdf: "/pdfs/agency.pdf"

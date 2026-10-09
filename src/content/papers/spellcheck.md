@@ -2,7 +2,7 @@
 title: "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)"
 deck: "People used to pay a premium for spell check. It cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. That is what happens when a technology is built for global access, for the many (7B+ people), instead of priced by scarcity for the few (under 500M people). Energy to run is what remains."
 id: spellcheck
-status: "Economic opinion"
+status: "History essay"
 author: "David Charlot, Open Interface Engineering"
 figures: "/living/spellcheck/"
 pdf: "/pdfs/spellcheck.pdf"
@@ -27,7 +27,7 @@ The path is a sequence. A procedure starts in a specialist bureau. It then becom
 
 The future of computer intelligence is that pattern. The many are more than 7 billion people. The few are fewer than 500 million people. Scarcity pricing holds the capability for the few. Global access gives it to the many. Spell check already did the second.
 
-The four companion studies say how a capability should behave once it is on that path. [Mixture of Limits](/papers/mol/) chooses the gear, and the gear has to sit on hardware that is available, accessible, and capable. [Notational Intelligence as Commit Law](/papers/ni/) owns the commit: a suggestion is a proposal until it is accepted. [Satiation and Scarcity after Free AI](/papers/satiation/) owns the stop: once the token is kept, further candidates do not change the written predicate. [Metabolic Intelligence](/papers/mei/) owns the envelope: the envelope is the physical condition of the superior answer, not a cheaper answer purchased by degrading the result. Klere ([klere.ai](https://klere.ai)) is the product home of that class. It is not a prison. Spell check already finished the path in editors that are not Klere.
+The four companion studies say how a capability should behave once it is on that path. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) chooses the gear, and the gear has to sit on hardware that is available, accessible, and capable. [Metered Commit Gates, Part I (Notational Intelligence)](/papers/gates/) owns the commit: a suggestion is a proposal until it is accepted. [Satiation and Scarcity after Free AI](/papers/satiation/) owns the stop: once the token is kept, further candidates do not change the written predicate. [Metabolic Intelligence](/products/mei/) owns the envelope: the envelope is the physical condition of the best answer, not a cheaper answer purchased by degrading the result. Klere ([klere.ai](https://klere.ai)) is the product home of that class. It is not a prison. Spell check already finished the path in editors that are not Klere.
 
 This paper reports published procedures, a local library, and on-device APIs. The opinion is economic. The prices are the prices the sources print.
 
@@ -54,7 +54,7 @@ This paper reports published procedures, a local library, and on-device APIs. Th
 
 ### Terms used here
 
-The many (more than 7 billion people) and the few (fewer than 500 million people) are people, not a census disclaimer. Soft-ref, value of information, Mixture of Limits gears, and `board_synth_claimed` are on the shared [glossary](/glossary/). Living companions: [/living/spellcheck/](/living/spellcheck/).
+The many (more than 7 billion people) and the few (fewer than 500 million people) are people, not a census disclaimer. Software reference, value of information, Mixture of Limits gears, and the board-result flag are on the shared [glossary](/glossary/). Living companions: [/living/spellcheck/](/living/spellcheck/).
 
 ## 1. Introduction
 
@@ -74,19 +74,21 @@ The second choice finishes only when the routine is cheap enough to run beside t
 
 Section 2.11 is the premium, dated. Section 2.10 is who holds a machine the finished capability can run on, and who holds only a rental. Software written for the machine people already run is how access reaches the many. A price that requires the rental is how scarcity keeps the few.
 
-### Companion laws
+<div id="companion-laws" class="anchor-alias" aria-hidden="true"></div>
+
+### Companion papers
 
 This study is the automation path. The catalog triad stays intact. Metabolic Intelligence stays the energy budget.
 
 | Role | Study | Owns |
 |---|---|---|
-| **Navigation** | [Mixture of Limits](/papers/mol/) | Which gear closes: Lookup, then Formula, then Solver, then Model last. Each gear needs a fabric that is available, accessible, and capable. |
-| **Commit** | [Notational Intelligence as Commit Law](/papers/ni/) | propose, then certify, then commit or refuse, then a receipt. A spelling suggestion is a proposal. |
-| **Economic Reality of Satiation** | [Satiation and Scarcity after Free AI](/papers/satiation/) | Stop when value of information is zero on a stated completeness predicate, or when budget or policy refuse fires. |
-| **Energy budget** | [Metabolic Intelligence](/papers/mei/) | The envelope is the physical condition of the superior answer. Not a cheaper answer. Edge and a resource-optimized central datacenter. Klere is the product home, not a prison. |
+| **Navigation** | [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) | Which gear closes: Lookup, then Formula, then Solver, then Model last. Each gear needs a fabric that is available, accessible, and capable. |
+| **Commit** | [Metered Commit Gates, Part I (Notational Intelligence)](/papers/gates/) | propose, then certify, then commit or refuse, then a receipt. A spelling suggestion is a proposal. |
+| **Task completion** | [Satiation and Scarcity after Free AI](/papers/satiation/) | Stop when value of information is zero on a stated completeness predicate, or when budget or policy refuse fires. |
+| **Energy budget** | [Metabolic Intelligence](/products/mei/) | The envelope is the physical condition of the best answer. Not a cheaper answer. Edge and a resource-optimized central datacenter. Klere is the product home, not a prison. |
 | **Automation path** | This paper | Spell check is the existence proof that computer intelligence becomes ordinary when it is cheap, local, and paired to hardware people already have. |
 
-Navigation chooses the gear. Commit records the irreversible branch. Satiation says when to stop. Metabolic Intelligence says the envelope obtains the superior answer. This paper says where that stack has to live if computer intelligence is to follow the path the rest of computer automation already took.
+Navigation chooses the gear. Commit records the irreversible branch. Satiation says when to stop. Metabolic Intelligence says the envelope obtains the best answer. This paper says where that stack has to live if computer intelligence is to follow the path the rest of computer automation already took.
 
 ### A token, taught in order
 
@@ -97,7 +99,7 @@ Norvig (2007) documents a local corrector and the call `correction('speling')`, 
 3. A formula builds strings at edit distance one: a deletion, a transposition, a replacement, or an insertion. The known word `spelling` is in that set.
 4. The suggestion is a proposal. The document changes only when a person accepts it, or when a stated policy accepts it. That is the commit.
 5. Once `spelling` is kept, further candidates do not change the predicate "this token is the word we are keeping." That is the stop.
-6. Opening a frontier model for this token does not obtain a better close. The lookup-plus-edit gear already closed it. Refusing the larger spend is not a discount. It is the superior answer for this job.
+6. Opening a frontier model for this token does not obtain a better close. The lookup-plus-edit gear already closed it. Refusing the larger spend is not a discount. It is the best answer for this job.
 
 The same essay shows the case the local token cannot close. `correction('where')` stays `where` when a test pair expected `were`. The single word does not carry the decision. Kukich (1992) named this the third problem, context-dependent correction. A larger model can be the right gear there. The path is not finished for that gear until the gear runs on hardware the writer already has, or on a resource-optimized central fabric that person can actually use. A rented frontier pass that the writer cannot invoke is still the bureau.
 
@@ -170,7 +172,7 @@ Three regimes name how a computer-automation tool is priced. Section 2.11 is the
 
 Context-dependent correction is not that finished case. Kukich (1992) named it as the third problem: a token that is a real word and still the wrong word. A larger model can be the right gear there. The gear has taken the access choice only when it runs on hardware the person already has, or on a resource-optimized central fabric that person can use. A scarce rental is the scarcity choice, even when the model is more accurate on a benchmark. The ordinary nonword job does not move back onto that rental because the context job is unfinished. No joule table comparing a dictionary probe, a local model, and a datacenter call is printed here. None of those joules was metered for this paper.
 
-What remains is the energy to run the comparison. A local dictionary probe spends joules on the device that holds the document. No joules are metered here. No analytical total is computed. Package `measured_j` stays unset. A companion joule figure is `measured_j` only when that study's meter returned the reading. [Metabolic Intelligence](/papers/mei/) owns the envelope: the joules are the physical condition of the superior answer, not a discount that buys a worse word. [Satiation](/papers/satiation/) owns the stop: free at the money price is not free joules, and further candidates after the token is kept spend energy on a predicate that has already fired. The papers stay distinct. This one owns the money-price path. They own the stop and the envelope.
+What remains is the energy to run the comparison. A local dictionary probe spends joules on the device that holds the document. No joules are metered here. No analytical total is computed. Package `measured_j` stays unset. A companion joule figure is `measured_j` only when that study's meter returned the reading. [Metabolic Intelligence](/products/mei/) owns the envelope: the joules are the physical condition of the best answer, not a discount that buys a worse word. [Satiation](/papers/satiation/) owns the stop: free at the money price is not free joules, and further candidates after the token is kept spend energy on a predicate that has already fired. The papers stay distinct. This one owns the money-price path. They own the stop and the envelope.
 
 The prediction follows from the regimes, not from a regression. Ordinary computer-intelligence tasks follow spell check. Their token prices, parameter-count premia, moat rents, and access fees are competed away by bundling onto hardware people already have and by methods whose license price is zero. The end state is for more than 7 billion people, not for fewer than 500 million people who can pay a scarcity price. The prediction fails if an ordinary task, of the kind spell check already closes, keeps a lasting separate money price after a local routine of equal result is in the hands of the people who hold the document. A frontier benchmark that still carries a premium is not that failure. It is the moat stage, which Epoch's notes already show getting cheaper, and which spell check shows how to leave.
 
@@ -321,7 +323,7 @@ Wikipedia, History of Microsoft Word. Word 1.0, released October 1983, costing \
 The elimination already stated in Section 2.9 is the last price on this tape. Hunspell's license price as a library is zero under the tri-license the README states. The README does not publish a prior retail schedule. Apple's system-wide checker, described in the spell-check article as the operating system taking over spelling fixes, has no separate price in that article. The duration of "no separate price" begins, on that article's wording, by the mid-1980s for the incorporated word-processor checkers. The operating-system checker is not dated to a day in the article.
 
 
-The companion laws build the rest of the path. Spell check is the existence proof. Mixture of Limits keeps Model last and demands a fabric that is available, accessible, and capable. Notational Intelligence makes the suggestion a proposal until commit. Satiation stops when the token is kept. Metabolic Intelligence keeps the envelope as the condition of the superior answer, on the edge and in a resource-optimized central fabric, and refuses the trade that would worsen the answer to make it cheap. Klere is where that class has a product home. Spell check already ran the path elsewhere. The home is not a prison.
+The companion papers build the rest of the path. Spell check is the existence proof. Mixture of Limits keeps Model last and demands a fabric that is available, accessible, and capable. Notational Intelligence makes the suggestion a proposal until commit. Satiation stops when the token is kept. Metabolic Intelligence keeps the envelope as the condition of the best answer, on the edge and in a resource-optimized central fabric, and refuses the trade that would worsen the answer to make it cheap. Klere is where that class has a product home. Spell check already ran the path elsewhere. The home is not a prison.
 
 ## 3. Definitions and methods
 
@@ -347,7 +349,7 @@ The many are more than 7 billion people. The few are fewer than 500 million peop
 
 ### 3.4 What was done
 
-The method is a reading of the primary sources in Section 2, plus a mapping onto the four companion laws.
+The method is a reading of the primary sources in Section 2, plus a mapping onto the four companion papers.
 
 Evidence classes used below:
 
@@ -388,11 +390,11 @@ Hard et al. (2018) train a next-word model on the phone and aggregate updates wi
 
 ### 4.7 Claim SC-7. The gear that shipped is Lookup, then a formula
 
-For a nonword, the shipped routine probes a word list and proposes a small edit. That is Lookup, then Formula, in the sense of [Mixture of Limits](/papers/mol/). Model is the residual gear for Kukich's third problem, and Norvig's own error analysis says context is what a higher accuracy needs. Model last is the navigation law, not a ban on context. The fabric that hosts whichever gear closes still has to be available, accessible, and capable. A frontier model that the writer cannot run fails that test even if its accuracy on a benchmark is higher. Class: design, grounded in SC-1 through SC-5.
+For a nonword, the shipped routine probes a word list and proposes a small edit. That is Lookup, then Formula, in the sense of [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits). Model is the residual gear for Kukich's third problem, and Norvig's own error analysis says context is what a higher accuracy needs. Model last is the navigation rule, not a ban on context. The fabric that hosts whichever gear closes still has to be available, accessible, and capable. A frontier model that the writer cannot run fails that test even if its accuracy on a benchmark is higher. Class: design, grounded in SC-1 through SC-5.
 
 ### 4.8 Claim SC-8. A suggestion is not yet a commit
 
-The red underline proposes. The document changes when the writer accepts a candidate, or when an automatic policy replaces the token. [Notational Intelligence](/papers/ni/) owns that distinction. An automatic replacement with no stated policy is an uncertified commit. This paper does not claim that every shipped auto-correct policy is a good commit law. It claims the right shape is visible in the ordinary interface: show the proposal, record the acceptance. Class: design.
+The red underline proposes. The document changes when the writer accepts a candidate, or when an automatic policy replaces the token. [Notational Intelligence](/papers/gates/) owns that distinction. An automatic replacement with no stated policy is an uncertified commit. This paper does not claim that every shipped auto-correct policy is a good commit gate. It claims the right shape is visible in the ordinary interface: show the proposal, record the acceptance. Class: design.
 
 ### 4.9 Claim SC-9. Further candidates stop when the token is kept
 
@@ -402,7 +404,7 @@ Once the writer keeps `spelling`, more strings at edit distance two do not chang
 
 The Faustian reading says that reaching everyone means accepting a worse answer. Spell check does not support that reading for the job it actually closes. For `speling`, the dictionary-plus-edit answer is `spelling`. A larger model that also says `spelling` has not produced a superior token. It has produced the same token at a higher cost. Refusing the extra spend keeps the answer. It does not cheapen it.
 
-Where the local toy is wrong, the repair Norvig names is a better language model, a better error model, and context. Those repairs are still judged by whether they obtain the right word. [Metabolic Intelligence](/papers/mei/) is the claim that the envelope is the physical condition under which that superior answer is obtained, on the edge and in a resource-optimized central fabric, not an uncapped hyperscale campus. The spell-check record is the existence proof that a computer-intelligence routine can sit inside an ordinary envelope and still be the right routine. Class: design. No joules are computed in this section. The companion paper owns the envelope's measurements, and its soft-reference path still has `board_synth_claimed=false`.
+Where the local toy is wrong, the repair Norvig names is a better language model, a better error model, and context. Those repairs are still judged by whether they obtain the right word. [Metabolic Intelligence](/products/mei/) is the claim that the envelope is the physical condition under which that best answer is obtained, on the edge and in a resource-optimized central fabric, not an uncapped hyperscale campus. The spell-check record is the existence proof that a computer-intelligence routine can sit inside an ordinary envelope and still be the right routine. Class: design. No joules are computed in this section. The companion paper owns the envelope's measurements, and its software reference path still has no FPGA board result claimed.
 
 ### 4.11 Claim SC-11. Klere can host the class. The class is not confined to Klere
 
@@ -429,7 +431,7 @@ People paid a premium for a spelling checker. That product cannot be sold anymor
 
 ### 4.16 Claim SC-15. What remains is joules
 
-After the separate money price is gone, the energy to run the routine remains. Class: design, tied to [Satiation](/papers/satiation/) for the money-versus-joule split and to [Metabolic Intelligence](/papers/mei/) for the envelope.
+After the separate money price is gone, the energy to run the routine remains. Class: design, tied to [Satiation](/papers/satiation/) for the money-versus-joule split and to [Metabolic Intelligence](/products/mei/) for the envelope.
 
 ### 4.17 Claim SC-16. Phones are an annual shipment plus a subscriber base
 
@@ -484,15 +486,15 @@ A large model behind an API is a specialist bureau with a short queue. The autom
 
 ### 5.3 Available, accessible, capable
 
-Mixture of Limits refuses a software-only reading of the cascade. A gear counts only if a fabric can host it, and the fabric has to be available, accessible, and capable. Spell check makes the three words concrete. The word list was available because it fit a minicomputer and, later, a phone. It was accessible because the writer invoked it by typing, not by booking a bureau. It was capable because edit distance one covers the single-error classes Damerau defined, which is the bulk of the isolated-word job Kukich surveys. A fabric that is capable on a benchmark and available only as a scarce rental fails the middle word. The navigation law fails with it.
+Mixture of Limits refuses a software-only reading of the cascade. A gear counts only if a fabric can host it, and the fabric has to be available, accessible, and capable. Spell check makes the three words concrete. The word list was available because it fit a minicomputer and, later, a phone. It was accessible because the writer invoked it by typing, not by booking a bureau. It was capable because edit distance one covers the single-error classes Damerau defined, which is the bulk of the isolated-word job Kukich surveys. A fabric that is capable on a benchmark and available only as a scarce rental fails the middle word. The navigation rule fails with it.
 
 ### 5.4 Commit and stop are why the ordinary interface is the right one
 
-The interface that underlines a word and waits is a commit law a person can see. The interface that silently replaces a word is a commit that happened without a receipt the writer inspected. Notational Intelligence prefers the first shape whenever the replacement is hard to undo, and a sent message is hard to undo. Satiation prefers the first shape for a different reason: the completeness predicate should be the writer's acceptance or an explicit policy, not an unbounded search for a prettier token. The two laws agree on the underline. They are not the same law.
+The interface that underlines a word and waits is a commit gate a person can see. The interface that silently replaces a word is a commit that happened without a receipt the writer inspected. Notational Intelligence prefers the first shape whenever the replacement is hard to undo, and a sent message is hard to undo. Satiation prefers the first shape for a different reason: the completeness predicate should be the writer's acceptance or an explicit policy, not an unbounded search for a prettier token. The two laws agree on the underline. They are not the same law.
 
 ### 5.5 The envelope obtains the answer
 
-Metabolic Intelligence states the law: energy binds, and the envelope is how the superior answer is obtained. A nonword at edit distance one closes on the small gear. A real word that is the wrong word closes on context. The envelope admits the gear that obtains the right token. A wrong token is refused even when it is cheap. Edge devices host the gear that already fits. A resource-optimized central fabric hosts a context gear that does not fit the phone. An uncapped hyperscale campus is outside the design of a dictionary probe. No water or power figure is added here.
+Metabolic Intelligence states the law: energy binds, and the envelope is how the best answer is obtained. A nonword at edit distance one closes on the small gear. A real word that is the wrong word closes on context. The envelope admits the gear that obtains the right token. A wrong token is refused even when it is cheap. Edge devices host the gear that already fits. A resource-optimized central fabric hosts a context gear that does not fit the phone. An uncapped hyperscale campus is outside the design of a dictionary probe. No water or power figure is added here.
 
 ### 5.6 What would count against the thesis
 
@@ -555,13 +557,13 @@ The machines in Section 2.10 are the reach of each choice. Phones, PCs, consumer
 
 11. Hooker, S. The hardware lottery. arXiv:2009.06489, 2020. Communications of the ACM, 64(12), 58-65, 2021. https://doi.org/10.1145/3467017
 
-12. Charlot, D. Mixture of Limits: Navigation Law for Computer Intelligence. https://research.openie.dev/papers/mol/
+12. Charlot, D. Metered Commit Gates, Part II (Mixture of Limits). https://research.openie.dev/papers/gates/#part-ii-the-cascade-mixture-of-limits
 
-13. Charlot, D. Notational Intelligence as Commit Law. https://research.openie.dev/papers/ni/
+13. Charlot, D. Metered Commit Gates, Part I (Notational Intelligence). https://research.openie.dev/papers/gates/
 
 14. Charlot, D. Satiation and Scarcity after Free AI. https://research.openie.dev/papers/satiation/
 
-15. Charlot, D. Metabolic Intelligence: Budget-Native Compute from Tag to Campus. https://research.openie.dev/papers/mei/
+15. Charlot, D. Metabolic Intelligence: Budget-Native Compute from Tag to Campus. https://research.openie.dev/products/mei/
 
 16. Nordhaus, W. D. Two centuries of productivity growth in computing. The Journal of Economic History, 2007. Reported computation prices are his, from around \$500 per million computations per second for manual work to around $6 \times 10^{-11}$ by 2006, in 2006 prices. https://www.cambridge.org/core/journals/journal-of-economic-history/article/two-centuries-of-productivity-growth-in-computing/856EC5947A5857296D3328FA154BA3A3
 
@@ -707,7 +709,7 @@ Spell check is the worked instance.
 - No new spelling-accuracy experiment.
 - No derivation of 7B+ or <500M from the hardware table. Subscribers, handsets, PCs, GPUs, and accelerator revenue stay in their own rows.
 - No invented accelerator unit counts, no invented microcontroller census, and no Steam shares added into a generation total.
-- No board power, no `measured_j`, no `board_synth_claimed`.
+- No board power, no `measured_j`, no the board-result flag.
 - No claim that the 2007 toy matches industrial accuracy.
 - No claim that every language has a finished local checker.
 - No claim that a cloud grammar service is impossible or useless. The claim is that it is not the routine that made spell check ordinary.
