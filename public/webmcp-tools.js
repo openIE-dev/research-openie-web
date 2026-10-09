@@ -58,7 +58,7 @@
       "path": "/papers/gates/",
       "pdf_path": "/pdfs/gates.pdf",
       "about_path": "/about/gates/",
-      "summary": "Notational Intelligence and Mixture of Limits in one systems paper. A proposal may not authorize itself: an irreversible act runs only behind a certificate, and every decision is written to a receipt. The cheapest sufficient gear runs first, Lookup, then Formula, then Solver, then Model, and the cascade stops when the task completion predicate holds. Systems are ranked by the joules needed to reach a correct completion. A KV260 board reading gives 11,428 pJ per gate cycle at board level.",
+      "summary": "Notational Intelligence and Mixture of Limits in one systems paper. A proposal may not authorize itself: an irreversible act runs only behind a certificate, and every decision is written to a receipt. Mixture of Limits is the philosophy: use the cheapest gear that is sufficient, because past the floor additional tokens, parameters, or joules do not purchase verifiable progress. Lookup, then Formula, then Solver, then Model is one instance. Systems are ranked by the joules needed to reach a correct completion. A KV260 board reading gives 11,428 pJ per gate cycle at board level.",
       "keywords": [
         "commit gate",
         "energy to correct completion",
