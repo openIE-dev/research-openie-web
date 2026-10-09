@@ -296,7 +296,7 @@ Four studies on this catalog compose. They do not collapse into one paper. A fif
 |---|---|---|
 | **Navigation** | [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) | Which gear closes: Lookup → Formula → Solver → Model. Floors: VoI, grammar, energy estimate, certificate, settle-refuse. |
 | **Commit** | [Metered Commit Gates, Part I (Notational Intelligence)](/papers/gates/) | propose → certify → commit\|refuse → receipt. |
-| **Task completion** | [Satiation and Scarcity after Free AI](/papers/satiation/) | Stop when VoI is zero on completeness C(z), or when budget / policy refuse fires. |
+| **Task completion** | [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) | Stop when VoI is zero on completeness C(z), or when budget / policy refuse fires. |
 | **Energy budget / metabolic embodiment** | This paper (Metabolic Intelligence) | Budget envelope and actuators: tag sleep/heater; campus OpenADR/MQTT levers; $J(m \mid q)$ obtain-router. |
 | **Automation path** | [Spell Check is Global](/papers/spellcheck/) | Existence proof: computer intelligence that became ordinary because it was cheap, local, and paired to hardware people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
 
@@ -1004,7 +1004,7 @@ This section holds the product placement that the physics paper no longer carrie
 - **Klere** is the hardware that meters $J$.
 - **Klere** is the hardware that meters $J$. M0 and M1 stand in for it until Klere meters are on the bench.
 - **Metabolic Intelligence** runs the arms on any fabric and computes $\iota$ from receipts.
-- **Mixture of Limits** is the philosophy and the rival rule in arm 2.
+- **Mixture of Limits** is the philosophy. Both selectors in the agency runs are instances of it. Arm 2 is its fixed cascade instance.
 
 ## References
 
@@ -1018,7 +1018,7 @@ This section holds the product placement that the physics paper no longer carrie
 4. Horowitz, M. (2014). Computing's Energy Problem (and what we can do about it). ISSCC. **Historical** CMOS energy floor relative to Landauer.
 5. Charlot, D. Mixture of Limits. [research.openie.dev/papers/gates/#part-ii-the-cascade-mixture-of-limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits).
 6. Charlot, D. Metered Commit Gates, Part I (Notational Intelligence). [research.openie.dev/papers/gates/](/papers/gates/).
-7. Charlot, D. Satiation and Scarcity after Free AI. [research.openie.dev/papers/satiation/](/papers/satiation/).
+7. Charlot, D. Task Satiation vs. Aggregate Rebound in AI Demand. [research.openie.dev/papers/satiation/](/papers/satiation/).
 8. OpenIE Synthesis cost surface. [synthesis.openie.dev](https://synthesis.openie.dev).
 
 ### Post-transformer class peers (prefer May 2026+; older labeled)
