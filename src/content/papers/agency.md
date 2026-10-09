@@ -14,13 +14,21 @@ board_synth_claimed: false
 
 ## 1. Thesis
 
-This is David Charlot's proposal. It has three layers, and the order is fixed.
+The proposal has three layers, and the order is fixed.
 
 1. **The Universal Law of Agency comes first, and it is required.** Nothing is an agent until the law is met. Nothing downstream is defined without it.
 2. **The kinematic laws of agency follow from the law.** They say how fast agency can move, per second and per joule, and what it must pay to move.
 3. **Intelligence is the calculus of agency.** Intelligence is a hindsight characteristic. It is read off a completed run, the way velocity is read off a recorded path. It is therefore a derivative of agency: $\iota = dX/dJ$, where $X$ is confirmed agency and $J$ is joules.
 
-In David's words: energy to run is the only true metric of computer intelligence. All other factors collapse to zero.
+The thesis: energy to run is the only true metric of computer intelligence. All other factors collapse to zero.
+
+The thesis has an exact form. Correctness is a gate. Joules are the ranking. For a task $q$ with completeness predicate $C(z)$, the joules to correct completion of system $S$ are
+
+$$
+J^*_S(q) = \min_{\pi} \mathbb{E}[J_\pi] \quad \text{subject to} \quad \Pr[C(z) = 1] \ge 1 - \delta
+$$
+
+The minimum runs over the policies $\pi$ that $S$ can execute, and $\delta$ is the failure rate the task allows. A deadline, when the task has one, is written into $C(z)$: an answer after its deadline fails the predicate. So correctness, deadlines and task size appear in the formulas of this track, and each appears as a constraint. None appears as a score. Among systems that pass the gate, joules alone order them. Parameters, tokens, benchmark scores and prices carry zero weight in that order. That is what "collapse to zero" means. Correctness becomes the constraint, and energy becomes the only metric. That is the thesis. Energy-to-solution in high-performance computing and the accuracy-gated measurements of MLPerf Power have the same form [260]. This track puts an eligibility law in front of the gate and reads the joules as a metered density. Section 2.3 states the ranking. Proposition 8 proves that it is a total order on systems that survives bounded meter error, and that integrated $\iota$ is not.
 
 The order matters. A derivative needs a path. A path needs something that moves. The law says what moves. The kinematics say how it can move. Intelligence is read off the path afterward.
 
@@ -88,6 +96,10 @@ $$
 
 Here $\mathcal{A}$ is the set of available acts. Klyubin, Polani and Nehaniv defined empowerment as this capacity, with the agent's own future sensors in place of $W'$ [9]. Clause 2 takes the world side, so editing a sensor adds nothing [2].
 
+**Realized, not capacity.** The quantity credited to an act is the realized flow under the policy the agent ran: $I(\mathrm{do}(a); W')$ at that $p(a)$. The capacity is an upper bound and is never credited. A system is not credited for coupling it could have made and did not.
+
+**Estimation.** The flow is estimated from receipts. The agent's randomized policy assigns acts, so the receipt's joint counts of $(a, w)$ are interventional samples. The plug-in mutual information of those counts is biased upward by about $(|\mathcal{A}|-1)(|\mathcal{W}|-1)/(2n)$ nats for $n$ samples, with $\mathcal{W}$ the set of distinguishable world outcomes. That Miller-Madow term is subtracted, and a bootstrap interval is reported [315]. Where the policy is deterministic in a context, acts are not randomized there, and the flow is not identified from that run. The receipt then records the capacity bound in its own column, labeled as a bound, and $X$ for that context is reported as an upper bound. The run of Section 8.11 credited the capacity bound $b = n_{\mathrm{empty}}\log_2 9$. Its $X$ and its $\iota$ are upper bounds on realized coupling and realized intelligence. Its $J^*$ ranking does not use $X$, so it stands.
+
 Why this measure:
 
 - **It is interventional.** Pearl's do-calculus gives the operator [1]. Kenton, Kumar, Farquhar, Richens, MacDermott and Everitt define agents as systems that would adapt their policy if their acts influenced the world in a different way, and they discover agents from interventional data [10]. A receipt is interventional by construction. The agent sets its acts, and the outcome is read from the world.
@@ -103,6 +115,29 @@ Let the physical system be a finite set $V$ of components, each behind a metered
 **The agent is a candidate that maximizes $X_S / J_S$.**
 
 $V$ is finite, so there are finitely many candidates. A maximizer exists whenever some candidate has $J_S > 0$. The receipt names the maximizer and records any tie.
+
+**Act-closed metering.** Clause 4 charges an act's joules to the agent that acts. So a candidate credited with the coupling of an act is charged every joule that realizes it: the joules of the actuator that executes the act and of the link that carries the command. $J_S$ in Definition 2 is read under this rule. Takahashi and Hayashi show why the rule is needed. With an open boundary, information gain and in-boundary dissipation decouple, and bits per joule can be made as large as one likes [239].
+
+#### Lemma 1. The maximizing boundary contains the actuator
+
+**Setting.** A component $\alpha \in V$, the actuator, is a cut between the rest of $V$ and the world: every causal path from a component of $V \setminus \{\alpha\}$ to $W'$ passes through the output $a$ of $\alpha$. A candidate $S$ with $\alpha \notin S$ acts on $W'$ only through a command $c$ that it sends to $\alpha$. Walls are disjoint, as in Proposition 7, so $J_{S \cup \{\alpha\}} = J_S + J_\alpha + J_0$, with link joules $J_0 \ge 0$.
+
+**Assumptions.**
+
+- (B1) Cut. For a candidate without $\alpha$, $c \to a \to W'$ is a Markov chain under intervention on $c$.
+- (B2) Act-closed metering. A candidate without $\alpha$ that is credited coupling through $\alpha$ is charged $J_S + J_\alpha + J_0$.
+- (B3) A tie between candidates goes to the larger by inclusion.
+
+**Statement.** For every candidate $S$ with $\alpha \notin S$ and positive charged joules, $X_S / (J_S + J_\alpha + J_0) \le X_{S\cup\{\alpha\}} / J_{S\cup\{\alpha\}}$. So some maximizer of Definition 2 contains $\alpha$, and under (B3) the named maximizer does. The inequality is strict whenever the actuator adds coupling, $X_S < X_{S\cup\{\alpha\}}$.
+
+**Proof.**
+
+1. Fix an act. Both candidates hold the same comparison records, because $S$ holds every record (Definition 2) and $S \cup \{\alpha\}$ contains $S$. So $E_k$ and $m_k$ are the same for both. By (B1) and the data-processing inequality, applied to the interventional joint distribution, $I(\mathrm{do}(c); W') \le I(\mathrm{do}(a); W')$. Summing over acts, $X_S \le X_{S\cup\{\alpha\}}$.
+2. By (B2) and the composition of walls (Proposition 7, part 1), the joules charged to $S$ equal $J_{S\cup\{\alpha\}}$.
+3. Step 1 over the common denominator of step 2 gives the inequality. It is strict when $X_S < X_{S\cup\{\alpha\}}$.
+4. $V$ is finite, so a maximizer $S^*$ exists. If $\alpha \notin S^*$, step 3 makes $S^* \cup \{\alpha\}$ a maximizer too, and (B3) names it. $\blacksquare$
+
+**Reading.** Without (B2), Definition 2 is degenerate. A small subset that holds the records and leaves the actuator's draw outside its wall reports the same coupled bits on fewer joules. Act-closed metering removes that, at no cost in practice, because the actuator's joules are already on the receipt under clause 4. Components off the causal path are still removed by the ratio: dropping one leaves $X$ unchanged and lowers $J$. The search does not run over all $2^{|V|}$ subsets. It runs over candidates that hold the records and contain the actuator. On a host those are few: processor, accelerator, memory, actuator. One meter suffices when its domains attribute power to those components (Section 8.1).
 
 Why this boundary:
 
@@ -122,6 +157,8 @@ Agency displacement counts bits of confirmed, coupled change:
 $$
 X(t) = \sum_{k:\,t_k \le t} E_k\, m_k\, I(\mathrm{do}(a_k); W'_k)
 $$
+
+Per act, $I(\mathrm{do}(a_k); W'_k)$ is the realized flow of the policy that chose $a_k$, estimated over the run's acts in the same context (Definition 1).
 
 Velocity per second is $v_t = dX/dt$. Velocity per joule is $v_J = dX/dJ$. Acceleration per joule is $\alpha_J = d^2X/dJ^2$. The budget is $J(T) \le B$.
 
@@ -229,7 +266,7 @@ $$
 5. Each record is finite-valued, so each information term is finite. $D_0 = h(y_0)$ is finite: the second moment bounds it above, and $h(x_0) \le h(y_0) + h(x^{\mathrm{s}}_0)$, with $x^{\mathrm{s}}_0$ the stable block, bounds it below, by (C2). $D_N \le h(y_N)$, and a Gaussian has the largest entropy for a given covariance, so the bounded second moment bounds $D_N$ above. Dividing by $N$, the average information per step is at least $\ln|\det A_u| = \sum_{|\lambda_i|>1}\ln|\lambda_i|$ in the limit.
 6. (C3) prices each nat at $k_B T$, which is $k_B T\ln 2$ per bit. $\blacksquare$
 
-**Reading.** An agent that holds a goal against an unstable world pays a standing power of at least $f\, k_B T\ln 2\sum_{|\lambda_i|>1}\log_2|\lambda_i|$ at $f$ control steps per second. One unstable mode with $|\lambda| = 2$ needs one bit per step, which is $k_B T\ln 2 \approx 2.87\times10^{-21}$ J per step at 300 K. The record's bits per step bound its information from above, so the proof also gives a non-strict, averaged form of the data-rate theorem (Section 4.1). This is a new kinematic law: the minimum standing joules to hold a goal.
+**Reading.** An agent that holds a goal against an unstable world pays a standing power of at least $f\, k_B T\ln 2\sum_{|\lambda_i|>1}\log_2|\lambda_i|$ at $f$ control steps per second. One unstable mode with $|\lambda| = 2$ needs one bit per step, which is $k_B T\ln 2 \approx 2.87\times10^{-21}$ J per step at 300 K. The record's bits per step bound its information from above, so the proof also gives a non-strict, averaged form of the data-rate theorem (Section 4.1). The composition is short. It is the data-rate theorem of Tatikonda and Mitter and of Nair and Evans [169, 170], priced at $k_B T\ln 2$ per bit through Touchette and Lloyd [32, 33]. What it adds is the price in joules, which is the floor Prediction 1 needs.
 
 #### Proposition 3. Precision of confirmed agency
 
@@ -316,6 +353,8 @@ Where $P > 0$, $\iota = \sum_k (b_k/J_k)(P_k/P)$. For acts that do not overlap, 
 
 **Reading.** Hindsight intelligence is a well-defined density on the joule axis once each act's bits are spread over the joules that act used. The crediting rule is what makes $dX/dJ$ exist. Point crediting puts all agency on a set of zero joules. Overlapping acts are handled by any attribution that never assigns more joules than the meter read. Each $b_k$ is known only after act $k$ closes, so $\iota$ is read off the completed run.
 
+Proposition 5 holds by construction. The crediting rule makes $X$ absolutely continuous with respect to $J$, so the density exists by definition. Its content is the choice of rule: part 4 shows that the other natural rule, point crediting, leaves no density at all.
+
 #### Proposition 6. Sampled intelligence converges
 
 **Setting.** The meter is read at cumulative joules $0 = j_0 < j_1 < \dots < j_M = J(T)$, with mesh $\delta = \max_i (j_{i+1} - j_i)$. On $[j_i, j_{i+1})$ the sampled intelligence is
@@ -388,6 +427,44 @@ $$
 **What is new.** The finite-time Landauer bound prices the memory alone and falls toward $k_B T\ln 2$ as $\tau$ grows [29]. There, the slowest reset is the cheapest. The data-rate theorem prices holding alone, per second (Section 4.1). Neither gives an interior optimum. The law meters the whole agent, counts confirmed bits only, and reads $\iota$ as a density on the joule axis. Then holding a goal makes slowness expensive, and the best act time is the geometric mean of the jump time $1/\langle A\rangle$ and the drift time $1/\Lambda$, up to the factor $1/\sqrt{2}$. The controller's own costs enter the joules in the same way in the work of Ehrich, Still and Sivak (Section 5.1).
 
 **Where to test it.** A colloidal feedback trap imposes virtual potentials in software and computes work from trajectories at the $k_B T$ scale (Section 3.2). One coordinate runs a one-bit act cycle in a virtual double well with reset time $\tau$. The other is held at the top of a virtual inverted well of rate $\Lambda$. A single-electron box with a charge detector runs the same act cycle with every jump counted, so $\langle A\rangle$ is measured (Section 3.2). Section 8.8 gives the protocol.
+
+#### Proposition 8. The gated ranking
+
+**Setting.** Fix a task $q$, its predicate $C(z)$ and its allowed failure rate $\delta$. For each system $S$, $J^*_S(q) \in (0, \infty]$ is the joules to correct completion of Section 1, with $J^*_S(q) = \infty$ when no policy of $S$ passes the gate. Define $S_1 \preceq_q S_2$ when $J^*_{S_1}(q) \le J^*_{S_2}(q)$.
+
+**Statement.**
+
+1. $\preceq_q$ is a total preorder on systems: reflexive, transitive and total. The ranking $\succ_q$ of Section 2.3 is its strict part.
+2. Every system that passes the gate ranks above every system that fails it.
+3. Let every reading of a policy's mean joules carry relative error at most $\epsilon < 1$. If $(1+\epsilon)\,J^*_{S_1}(q) < (1-\epsilon)\,J^*_{S_2}(q)$, then $S_1$ ranks above $S_2$ under every admissible reading.
+4. Integrated $\iota$ does not induce this order. There are systems with $\iota_{S_1} > \iota_{S_2}$ and $S_2 \succ_q S_1$.
+
+**Proof.**
+
+1. $\preceq_q$ is the pullback of the total order $\le$ on $(0, \infty]$ by the map $S \mapsto J^*_S(q)$. A pullback of a total order is a total preorder. Its strict part is $J^*_{S_1} < J^*_{S_2}$, which is the ranking of Section 2.3.
+2. Every finite value is below $\infty$.
+3. Each policy's reading lies in $[(1-\epsilon)J_\pi, (1+\epsilon)J_\pi]$, so the minimum of the readings over the feasible policies lies in $[(1-\epsilon)J^*, (1+\epsilon)J^*]$. Then $\hat J^*_{S_1} \le (1+\epsilon)J^*_{S_1} < (1-\epsilon)J^*_{S_2} \le \hat J^*_{S_2}$.
+4. Let $S_1$ make one attempt per task at 0.1 J that passes with probability 1/2 and never retries. Let $S_2$ make one attempt at 1 J that always passes. Each pass credits $b$ bits. Then $\iota_{S_1} = (b/2)/0.1 = 5b$ bits per joule and $\iota_{S_2} = b$ bits per joule. For any $\delta < 1/2$, $S_1$ never meets the gate, so $J^*_{S_1} = \infty$, while $J^*_{S_2} = 1$ J. $\blacksquare$
+
+**Reading.** Part 4 is the mechanism of R-F6 in Section 8.11: cheap failures raise integrated $\iota$ and leave $J^*$ unchanged or infinite. That is why $\iota$ is read as a density inside a run and $J^*$ is the ranking across systems. Part 3 closes P6 up to a validated $\epsilon$ for each meter.
+
+#### Proposition 9. When cheapest first is optimal
+
+**Setting.** A task has gears $g_1, \dots, g_n$. An attempt with gear $g_i$ costs $c_i > 0$ joules, paid in full, and passes $C(z)$ with probability $p_i$. A policy tries gears in some order, stops at the first pass, and refuses after the last. Two structures are treated. Independent: passes of different gears are independent events. Nested: if $g_i$ passes then every later gear passes, with pass probabilities $q_1 \le \dots \le q_n$.
+
+**Statement.**
+
+1. Independent gears. The expected joules of an order are least when gears are tried in decreasing order of $p_i/c_i$. Cheapest first is optimal exactly when the order of rising cost is also an order of falling $p_i/c_i$.
+2. Nested gears, two of them, with the heavy gear sufficient ($q_H = 1$). Trying the light gear first lowers the expected joules if and only if $q_L\,c_H > c_L$.
+3. Budget. Under a hard budget $B$ with $c_H \le B < c_L + c_H$, light first closes the task with probability $q_L$. Heavy alone closes it with probability 1.
+
+**Proof.**
+
+1. The expected joules of an order $\sigma$ are $\sum_k c_{\sigma(k)} \prod_{j<k}(1 - p_{\sigma(j)})$. Swap two adjacent gears $i$ then $j$ that follow a prefix with survival probability $P$. Their contribution changes from $P[c_i + (1-p_i)c_j]$ to $P[c_j + (1-p_j)c_i]$, and nothing else changes. So $i$ first is no worse if and only if $p_i c_j \ge p_j c_i$, that is $p_i/c_i \ge p_j/c_j$. Any order not sorted by this ratio has an adjacent pair out of order, and swapping it does not raise the expected joules. Finitely many swaps sort the order. This is the ratio rule of Simon and Kadane for search with all-or-none solutions [318].
+2. Light first costs $c_L + (1-q_L)\,c_H$, because the heavy gear runs only when the light one fails and then passes. Heavy alone costs $c_H$. The first is smaller if and only if $c_L < q_L\,c_H$.
+3. A failed light attempt leaves $B - c_L < c_H$, so the heavy gear cannot run. $\blacksquare$
+
+**Reading.** The Mixture of Limits rule, cheapest sufficient first, is optimal when cheap gears pass often enough to pay for their failures: $q_L c_H > c_L$ at each step of a nested cascade, or rising cost matched by falling $p/c$ among independent gears. When the condition fails, going straight to the heavier gear wins, and under a binding budget it can be the only way to close. That is the mechanism of the selector result in Section 8.11. The σ-law selector estimates the ratio with calibrated pass probabilities. It is a value-of-computation rule with joules as the cost, in the sense of Russell and Wefald and of Horvitz (Section 5.1). P7 keeps one open part: a regret bound when pass probabilities are estimated, and the nested case with more than two gears, which is a dynamic program over increasing subsequences of gears.
 
 ### 2.4 Where the studies sit
 
@@ -484,15 +561,15 @@ Intelligence is the derivative of gated agency in joules, read off a completed r
 
 ### 5.1 Proven
 
-**Learning and prediction priced in joules.** Goldt and Seifert bounded the information a learning network acquires by the entropy it produces [224]. Learning efficiency is at most one. This is $\iota$ for the learning part of an act, with a ceiling. Still showed that optimal memory keeps only predictive information [225]. The marginal joule spent on memory must buy prediction. Boyd, Crutchfield and Gu proved that the agent that extracts the most work from data has the maximum-likelihood model of that data [226]. Better models yield more work per joule. Boyd, Crutchfield, Gu and Binder stated overfitting and generalization as energetics [227]. Generalization appears as joules. Ehrich, Still and Sivak priced the controller itself, beyond the information it uses [228]. So $J$ must be metered at the wall of the whole system. Ehrich and Sivak gave the ledger of energy and information flows in autonomous machines [229]. Wolpert reviewed computation costs beyond Landauer [230]. Levy and Baxter showed that neural codes that maximize bits per unit energy differ from codes that maximize bits [231]. The right objective for a brain is information per joule. Balasubramanian, Kimber and Berry set the objective for an exploratory regime as transmission rate per unit power [232]. That is bits per joule. Goldt and Seifert bounded the information a network learns about a rule by the thermodynamic cost of learning, for batch and online learning [233]. Fiderer, Barth, Smith and Briegel defined the work capacity of an environment channel, the maximum rate at which any agent can expect to extract work in a percept-action loop. Work-efficient agents balance prediction against forgetting (preprint) [234]. Elliott, Gu, Garner and Thompson showed that quantum adaptive agents can need far less memory than memory-minimal classical agents [235]. Less memory to reset is a lower floor to pay.
+**Learning and prediction priced in joules.** Goldt and Seifert bounded the information a learning network acquires by the entropy it produces [224]. Learning efficiency is at most one. This is $\iota$ for the learning part of an act, with a ceiling. Still showed that optimal memory keeps only predictive information [225]. The marginal joule spent on memory must buy prediction. Boyd, Crutchfield and Gu proved that the agent that extracts the most work from data has the maximum-likelihood model of that data [226]. Better models yield more work per joule. Boyd, Crutchfield, Gu and Binder stated overfitting and generalization as energetics [227]. Generalization appears as joules. Ehrich, Still and Sivak priced the controller itself, beyond the information it uses [228]. So $J$ must be metered at the wall of the whole system. Ehrich and Sivak gave the ledger of energy and information flows in autonomous machines [229]. Wolpert reviewed computation costs beyond Landauer [230]. Wolpert and colleagues set out the open problems for the energy costs of computation in stochastic thermodynamics [320]. Levy and Baxter showed that neural codes that maximize bits per unit energy differ from codes that maximize bits [231]. The right objective for a brain is information per joule. Balasubramanian, Kimber and Berry set the objective for an exploratory regime as transmission rate per unit power [232]. That is bits per joule. Goldt and Seifert bounded the information a network learns about a rule by the thermodynamic cost of learning, for batch and online learning [233]. Fiderer, Barth, Smith and Briegel defined the work capacity of an environment channel, the maximum rate at which any agent can expect to extract work in a percept-action loop. Work-efficient agents balance prediction against forgetting (preprint) [234]. Elliott, Gu, Garner and Thompson showed that quantum adaptive agents can need far less memory than memory-minimal classical agents [235]. Less memory to reset is a lower floor to pay.
 
-**Decisions and bounded optimality.** Russell and Subramanian defined bounded optimality: the best program for a given machine and environment [236]. Here the resource is joules, and the optimum is $\arg\min J$ subject to $X \ge X_{\mathrm{req}}$. Genewein and colleagues derived abstraction and hierarchy from utility minus information cost [237]. Mixture of Limits gears are such a hierarchy. Legg and Hutter defined intelligence as complexity-weighted expected reward over all computable environments [238]. It is an integral, but over reward, without energy, and uncomputable. The derivative in joules replaces reward with confirmed coupled bits and the measure with metered joules. Takahashi and Hayashi define empowerment per joule from stochastic thermodynamics [239]. It is the closest existing calculus in joules. It has no law gate in front of it. Ortega, Braun, Dyer, Kim and Tishby set out information-theoretic bounded rationality [240]. Zénon, Solopchuk and Pezzulo cast the cost of cognition as information [241]. Sims applied rate-distortion theory to perception [242]. Their currency is bits. Landauer converts bits to joules at the reset.
+**Decisions and bounded optimality.** Russell and Subramanian defined bounded optimality: the best program for a given machine and environment [236]. Here the resource is joules, and the optimum is $\arg\min J$ subject to $X \ge X_{\mathrm{req}}$. Russell and Wefald priced each computation by its expected effect on the decision, net of its cost, and stopped deliberation when no computation had positive net value [316]. Horvitz framed the same trade for reasoning under resource constraints [317]. The σ-law selector is that rule with the cost in metered joules. Proposition 9 gives its exact form for a cascade. Genewein and colleagues derived abstraction and hierarchy from utility minus information cost [237]. Mixture of Limits gears are such a hierarchy. Legg and Hutter defined intelligence as complexity-weighted expected reward over all computable environments [238]. It is an integral, but over reward, without energy, and uncomputable. The derivative in joules replaces reward with confirmed coupled bits and the measure with metered joules. Takahashi and Hayashi give the closest existing calculus in joules [239]. They define two ratios under explicit accounting conventions. Thermodynamic epiplexity per joule is $I(W^{\mathrm{post}}; Z \mid W^{\mathrm{pre}})/E_{\mathrm{cons}}$: new bits about an environment variable $Z$ retained in the agent's state, per joule consumed inside a stated boundary. Empowerment per joule is the capacity of the channel from acts to observations per unit expected energetic cost, the capacity-per-unit-cost of Verdú. They prove a closed-cycle Landauer benchmark by joining a thermodynamic learning inequality with data processing, and they show by a reversible copying construction that, with an open boundary and fresh memory brought in free, information gain and in-boundary dissipation decouple. They close with a reporting checklist: boundary, energy balance, baseline, coarse-graining, horizon and reset, throughput, estimator. This track takes four things from that work. Their closed-cycle benchmark is K1 for learning. Their decoupling construction is the reason for act-closed metering in Definition 2 (Lemma 1). Their checklist is adopted in Section 8.12. Their advice to report bits per joule beside bits per second is the variable Prediction 1 optimizes. The law differs from their metrics in four exact ways. Empowerment per joule is a capacity, a supremum over act distributions; the law credits the realized flow of the policy that ran (Definition 1), with capacity as its bound. Their numbers are benchmark-relative efficiency reports, by their own statement; this track ranks systems by $J^*$ behind a correctness gate (Proposition 8). They have no prediction fixed before the act, no consequence clause and no refusal; the law requires all three before any bit counts. They give no kinematics of time; Prediction 1 derives an optimal act time and a ceiling from the same joule accounting. Ortega, Braun, Dyer, Kim and Tishby set out information-theoretic bounded rationality [240]. Zénon, Solopchuk and Pezzulo cast the cost of cognition as information [241]. Sims applied rate-distortion theory to perception [242]. Their currency is bits. Landauer converts bits to joules at the reset.
 
 ### 5.2 Demonstrated
 
 **Brains.** Laughlin, de Ruyter van Steveninck and Anderson measured the energy cost per bit in blowfly photoreceptors and interneurons [243]. Higher information rates cost more per bit. That is a measured $\iota$ in a living agent and a measured diminishing return, $\alpha_J < 0$ in sensing. Attwell and Laughlin built the energy budget of grey matter by process [244]. Lennie showed that energy limits how many cortical neurons can be active at once [245]. Energy is the constraint, and the rest adapts. Energy per action potential differs widely across neuron types [246]. Same function, different joules. Neural design follows energy efficiency [247]. Levy and Calvert audited the human cortex. Communication costs 35 times as much as computation, and a neuron's computation sits a factor of $10^8$ from the best possible bits per joule [248]. That is a distance to the floor. Harris and colleagues found that a visual pathway synapse is sized to maximize information per unit energy, not information [249]. The objective is bits per joule, measured at one synapse. Padamsey, Katsanevaki, Dupuy and Rochefort found that food restriction cut synaptic ATP (adenosine triphosphate) use in mouse visual cortex by 29% and broadened orientation tuning by 32% [250]. Fewer joules bought less precision. Plaçais and Preat showed that starved flies switch off costly aversive long-term memory, and forcing it back reduced survival [251]. Plaçais and colleagues found that raised energy flux in the mushroom body triggers long-term memory [252]. Mery and Kawecki found that forming long-term memory lowered flies' resistance to desiccation [253]. Learning has a measured metabolic price. Hechler, de Lange and Riedl measured lower cortical oxygen use during confident prediction, by up to 12% (preprint) [254]. Prediction first can save joules. Malkin and colleagues gave synapses an energy cost for reliability in trained networks and found signatures of Bayesian inference in the optimum [255]. Li and van Rossum showed that naive synaptic plasticity costs extreme energy and that caching changes before consolidation saves it [256]. Lynn and colleagues inferred broken detailed balance in the human brain from neuroimaging, rising with physical and cognitive exertion [257]. That entropy production is coarse-grained and informational. It is not a joule meter.
 
-**Machines.** Memory access costs far more energy than arithmetic [258]. Parameter count matters only through the joules it makes you move. Intelligence per watt measures task accuracy per unit power on local accelerators [259]. Its numerator is benchmark accuracy, not gated agency. MLPerf Power standardizes power measurement from microwatts to megawatts [260]. ML.ENERGY measures inference energy automatically [261]. TokenPowerBench benchmarks the power of large language model (LLM) inference [262]. Jin, Wei and Brooks analyze the energy of test-time compute [263]. General-purpose models cost much more energy per task than task-specific ones [264]. The cheapest sufficient model wins in joules. That is Mixture of Limits, measured. Samsi and colleagues measured the energy of large language model inference on GPUs (graphics processing units) [265]. Dillavou and colleagues demonstrated decentralized learning in a physical circuit, with no processor [266]. Stern and colleagues trained self-learning circuits for power-efficient solutions and measured the trade between power and error [267]. Saggio and colleagues demonstrated a quantum speed-up for learning agents in a photonic experiment [268]. Fewer interactions to learn is fewer acts to close.
+**Machines.** Memory access costs far more energy than arithmetic [258]. Parameter count matters only through the joules it makes you move. Intelligence per watt measures task accuracy per unit power on local accelerators [259]. Its numerator is benchmark accuracy, not gated agency. MLPerf Power standardizes power measurement from microwatts to megawatts, with each result gated by an accuracy target [260]. That gate is the form of $J^*$. FrugalGPT cascades language models and stops when a scorer accepts the answer [321]. RouteLLM learns to send each query to a strong or a weak model under a cost target [322]. Their cost is dollars per query and their gate is a quality threshold. Read with metered joules and $C(z)$ as the gate, both are cascades in the sense of Proposition 9. ML.ENERGY measures inference energy automatically [261]. TokenPowerBench benchmarks the power of large language model (LLM) inference [262]. Jin, Wei and Brooks analyze the energy of test-time compute [263]. General-purpose models cost much more energy per task than task-specific ones [264]. The cheapest sufficient model wins in joules. That is Mixture of Limits, measured. Samsi and colleagues measured the energy of large language model inference on GPUs (graphics processing units) [265]. Dillavou and colleagues demonstrated decentralized learning in a physical circuit, with no processor [266]. Stern and colleagues trained self-learning circuits for power-efficient solutions and measured the trade between power and error [267]. Saggio and colleagues demonstrated a quantum speed-up for learning agents in a photonic experiment [268]. Fewer interactions to learn is fewer acts to close.
 
 **A metered acceptor.** Section 8.11 reports a preregistered run of an acceptor agent on a laptop, with prediction first, comparison, refusal and binding joule budgets. $\iota$ was read off 4,940 receipts. The median confirmed act gave $1.5 \times 10^5$ bits per reported joule, about $2 \times 10^{15}$ times the joules per bit of the floor. Under a binding budget the σ-law selector closed more tasks than the Mixture of Limits rule. Integrated $\iota$ ranked a goal-blind agent first on a loose budget, while $J^*$ ranked it last.
 
@@ -525,7 +602,7 @@ Each position is placed against the definition: intelligence is the derivative o
 - **Demonstrated:** joules per bit are measured in brains. Joules per task are measured in machines. Meters can be validated.
 - **Proven here:** $\iota$ is a bounded density on the joule axis under joule-proportional crediting (Proposition 5). Sampled $\iota$ converges to it (Proposition 6). Groups compose by Proposition 7. Holding a goal sets an optimal act time and a ceiling on $\iota$ (Prediction 1).
 - **Demonstrated here:** $\iota$ and $J^*$ read off the receipts of a metered acceptor, with falsifiers fixed in advance (Section 8.11). $J^*$ ranks agents. Integrated $\iota$ does not.
-- **Missing everywhere:** no source reads intelligence as $dX/dJ$ off a gated, completed run. That is David's contribution and the work of this track.
+- **Added by this track:** intelligence read as $dX/dJ$ off a gated, completed run, with $J^*$ as the ranking. Takahashi and Hayashi come closest, with bits-per-joule ratios under explicit accounting [239]. This track adds the eligibility gate, the realized flow in place of capacity, the gated ranking and its proof (Proposition 8), and the optimal act time (Prediction 1).
 
 ## 6. Global findings, by method
 
@@ -592,9 +669,9 @@ Hindi and Arabic searches returned no primary research in those languages. Engli
 
 **P5. Hindsight theorem.** $\iota$ is a function of the completed receipt only. No pre-run quantity fixes it. In hand: each $m_k$ compares an outcome to a prediction fixed before the act, so $m_k$ is unknown before act $k$ closes. Missing: a construction of two worlds that agree on everything a pre-run predictor sees and differ in some $m_k$. With P1, this makes "intelligence is read off the completed run" a theorem.
 
-**P6. Ranking survives meter error.** If $J^*_{S_1}(q) < J^*_{S_2}(q)\,(1-\epsilon)/(1+\epsilon)$, with $\epsilon$ the meter's relative error bound, then $S_1 \succ_q S_2$ under any reading within that error. In hand: direct from the definition. Missing: validated $\epsilon$ for each meter [271].
+**P6. Ranking survives meter error.** Proven. Proposition 8, part 3: if $(1+\epsilon)J^*_{S_1}(q) < (1-\epsilon)J^*_{S_2}(q)$, with $\epsilon$ the meter's relative error bound, then $S_1 \succ_q S_2$ under any reading within that error. Missing: validated $\epsilon$ for each meter [271].
 
-**P7. Mixture of Limits optimality.** The cheapest-sufficient rule tries gears from cheapest up, stops at the first gear whose output passes $C(z)$, and refuses with a receipt if the next gear would break the budget. It achieves the joule minimum up to the cost of failed attempts. In hand: if sufficiency is monotone in gear order and gear costs rise with order, the first sufficient gear is the cheapest sufficient gear. Missing: a regret bound when sufficiency is not monotone, and the conditions under which this rule and the σ-law selector, $a^* = \arg\max[H(a) - \lambda J(a)]$ subject to $J \le B$, choose the same act.
+**P7. Mixture of Limits optimality.** Partly proven. Proposition 9 gives the exact conditions for independent gears and for two nested gears, and the budget mechanism. The cheapest-sufficient rule tries gears from cheapest up, stops at the first gear whose output passes $C(z)$, and refuses with a receipt if the next gear would break the budget. It achieves the joule minimum up to the cost of failed attempts. In hand: if sufficiency is monotone in gear order and gear costs rise with order, the first sufficient gear is the cheapest sufficient gear. Missing: a regret bound when sufficiency is not monotone, and the conditions under which this rule and the σ-law selector, $a^* = \arg\max[H(a) - \lambda J(a)]$ subject to $J \le B$, choose the same act.
 
 **P8. When agency compounds.** Conditions under which $\alpha_J > 0$ over a run, so that earlier receipts lower the joules of later closures. In hand: an earlier OpenIE toy run found $\alpha_J \le 0$ on near-optimal tasks. Missing: a model of reuse in which stored receipts cut later $J$ by more than the storage and lookup joules. Still gives the memory cost side [225]. Section 8.10 measures the template's share of each act's joules.
 
@@ -651,6 +728,7 @@ All arms share the gears, the predicate, the budget, the meters and a randomized
 - Budget levels are $B \in \{0.25, 0.5, 0.75, 1.0\} \times \tilde J_q$, plus unconstrained. A level binds only if at least 20% of tasks exceed it in the pilot. Levels that do not bind are reported and excluded from the D2 test.
 - At least 10 seeds per arm, task and budget. More if the pilot shows 10 cannot resolve a 10% difference in median $J^*$ at 95% confidence.
 - Report mean, median, standard deviation and a 95% bootstrap confidence interval of $J^*$ per task. Compare arms 1 and 2 with a Wilcoxon signed-rank test on per-task median $J^*$, with effect size.
+- The preregistration names the primary endpoints. Secondary comparisons are corrected with the Holm step-down procedure. An analysis chosen after a run is labeled post hoc wherever it appears, in summaries included, and it is never the headline result. It becomes a primary endpoint only in the preregistration of the next run.
 
 ### 8.5 Receipt schema
 
@@ -661,7 +739,8 @@ act_id, run_id, task_id, arm, seed, budget_j, gear
 prediction_hash, prediction_ts        # R*, fixed before the act
 outcome_hash, outcome_ts              # R
 m                                     # 1, mu, or 0
-coupled_bits_est                      # estimate of I(do(a); W')
+coupled_bits_est                      # realized I(do(a); W'), bias-corrected, with interval
+coupled_bits_bound                    # capacity bound, never credited as X
 t_start, t_end
 measured_j   {meter, domains, gross_j, idle_w, idle_subtracted_j}
 reported_j   {meter, cpu_j, gpu_j, ane_j}    # powermetrics only
@@ -712,7 +791,15 @@ These runs test Propositions 1 to 4 at the physical floor. Work is computed from
 
 - **Act cycle on a charge register (Propositions 1 and 4).** A single-electron box or quantum dot holds a one-bit record, as in [68, 70, 71]. Each cycle writes the comparison, acts, and resets the record in time $\tau$. A charge detector counts every tunneling jump, so $\langle A\rangle$ is measured. Sweep $\tau$ over at least two decades. Result form: work per cycle against $k_B T\ln 2 + k_B T/(2\tau\langle A\rangle)$, the floor of Proposition 1 for $N = 2$ and $b = 1$.
 - **Counting confirmed acts (Proposition 3).** On the same register, cycling in steady state, count confirmed acts $N$ and all jumps $K$ over repeated windows of equal length. Result form: $\mathrm{Var}(N)/\langle N\rangle^2$ against $1/\langle K\rangle$, and the spread of $T_n$ against $1/(\langle T_n\rangle\langle k\rangle)$. On a feedback-trap information engine as in [27], run the forward and the backward experiment, compute $\sigma_I$ from the measured trajectories, and test part 3.
-- **The optimal act time (Prediction 1).** On a feedback trap, run the one-bit act cycle on one coordinate and hold the other on a virtual inverted well of rate $\Lambda$. First sweep $\tau$ over two decades with no goal held, and fit $J_0$ and $a$. Then hold the goal with no acts, and read the standing power $s$. Then run both together and record $\iota(\tau)$. Repeat at three or more values of $\Lambda$ spanning a decade. All work is computed from trajectories and filed as `trajectory_j`. Result form: the measured maximizer of $\iota(\tau)$ against $\sqrt{a/s}$, with its band, and the slope of $\ln\tau^*$ against $\ln s$.
+- **The optimal act time (Prediction 1).** This is the lab test.
+  - *Setup.* A colloidal bead in water at temperature $T$ sits in a feedback trap [61]. Its position is read every $\Delta t$, and a feedback force imposes a virtual potential $U(x, t)$. Work is computed from the trajectory by stochastic energetics, $W = \sum_t \partial_t U(x_t, t)\,\Delta t$ [319]. One coordinate runs the one-bit act cycle in a virtual double well, reset in time $\tau$. The other is held at the top of a virtual inverted well, $U = -\tfrac{1}{2}k x^2$, whose instability rate $\Lambda$ is set by $k$ and the bead's mobility.
+  - *Blocks.* For each value of $\Lambda$, three blocks run interleaved in randomized order. Block A: acts with no goal held, at nine or more log-spaced values of $\tau$ over at least two decades; it fits $J_0$ and $a$. Block B: the goal held with no acts; it gives the standing power $s$. Block C: both together, at the same values of $\tau$; it gives $\iota(\tau)$. At least 200 cycles per point.
+  - *Sweep of $s$.* At least four values of $\Lambda$ spanning at least one decade, so $s$ spans at least one decade.
+  - *Fit.* Fit $J(\tau) = J_0 + a/\tau + s\tau$ to block C by weighted least squares. Read the measured $\tau^*$ at the maximum of $\iota(\tau)$ by a local quadratic fit in $\ln\tau$. Compute $\sqrt{a/s}$ and its band $\delta\tau^*$ from blocks A and B. Regress $\ln\tau^*$ on $\ln s$ by least squares and report the slope with its standard error.
+  - *Falsification.* The claim fails if the slope lies outside $-1/2$ by more than two standard errors, or a measured $\tau^*$ lies outside $\sqrt{a/s} \pm 2\delta\tau^*$, or block C's joules per act differ from the sum of blocks A and B beyond their combined 95% interval. The last test is additivity on one meter, the physical content of the prediction.
+  - *Power.* The slope's standard error must be below 0.1. Otherwise the run is reported as inconclusive and the sweep is extended. An inconclusive run is not a pass.
+  - *Second substrate.* A single-electron box with a charge detector repeats the protocol, with $\langle A\rangle$ counted jump by jump [70]. Agreement on two substrates is the test.
+  - All work is computed from trajectories and filed as `trajectory_j`.
 - **Holding an unstable plant (Proposition 2).** A digital controller holds a plant with one unstable mode of fixed $|\lambda|$ per step, at $f$ steps per second. Meter the controller with M0 and M1. Log the record's bits per step. Result form: measured joules per step divided by $k_B T\ln 2\log_2|\lambda|$, reported as distance to floor. Sweep $|\lambda|$ and $f$.
 
 ### 8.9 Living agents: measured ι
@@ -784,7 +871,7 @@ This run applies Sections 8.1 to 8.7 to one task class on one machine. Code, tas
 
 ### 8.12 Reporting
 
-Publish all receipts, raw meter traces, idle baselines and analysis code with the result. Report measured, reported and estimated joules in separate columns. Never sum across tiers. State which falsifiers fired, with the same prominence as those that passed.
+Publish all receipts, raw meter traces, idle baselines and analysis code with the result. Report measured, reported and estimated joules in separate columns. Never sum across tiers. State which falsifiers fired, with the same prominence as those that passed. Every run also answers the checklist of Takahashi and Hayashi [239]: the accounting boundary; the energy balance terms (stored energy and exported work, or a statement that they are negligible); the baseline and whether joules are total or incremental; the coarse-graining of outcomes; the horizon and reset protocol; wall-clock time and mean power beside bits per joule; and the estimator of coupled bits with its bias correction.
 
 ### 8.13 Where the products sit
 
@@ -838,7 +925,7 @@ Entries marked "preprint" are cited by their arXiv posting. Entries published in
 39. Parrondo, J. M. R., Horowitz, J. M. and Sagawa, T. (2015). Thermodynamics of information. *Nature Physics* 11:131-139. https://doi.org/10.1038/nphys3230
 40. Seifert, U. (2012). Stochastic thermodynamics, fluctuation theorems and molecular machines. *Reports on Progress in Physics* 75:126001. https://doi.org/10.1088/0034-4885/75/12/126001
 41. Conant, R. C. and Ashby, W. R. (1970). Every good regulator of a system must be a model of that system. *International Journal of Systems Science* 1:89-97. https://doi.org/10.1080/00207727008920220
-42. Richens, J. and Everitt, T. (2024). Robust agents learn causal world models. arXiv:2402.10877 (preprint).
+42. Richens, J. and Everitt, T. (2024). Robust agents learn causal world models. *International Conference on Learning Representations (ICLR 2024)*, oral, honorable mention. arXiv:2402.10877.
 43. Richens, J., Abel, D., Bellot, A. and Everitt, T. (2025). General agents contain world models. arXiv:2506.01622 (preprint).
 44. Horowitz, J. M. and Esposito, M. (2014). Thermodynamics with continuous information flow. *Physical Review X* 4:031015. https://doi.org/10.1103/PhysRevX.4.031015
 45. Ito, S. and Sagawa, T. (2013). Information thermodynamics on causal networks. *Physical Review Letters* 111:180603. https://doi.org/10.1103/PhysRevLett.111.180603
@@ -1035,7 +1122,7 @@ Entries marked "preprint" are cited by their arXiv posting. Entries published in
 236. Russell, S. J. and Subramanian, D. (1995). Provably bounded-optimal agents. *Journal of Artificial Intelligence Research* 2:575-609. https://doi.org/10.1613/jair.133
 237. Genewein, T., Leibfried, F., Grau-Moya, J. and Braun, D. A. (2015). Bounded rationality, abstraction, and hierarchical decision-making: an information-theoretic optimality principle. *Frontiers in Robotics and AI* 2:27. https://doi.org/10.3389/frobt.2015.00027
 238. Legg, S. and Hutter, M. (2007). Universal intelligence: a definition of machine intelligence. *Minds and Machines* 17:391-444. https://doi.org/10.1007/s11023-007-9079-x
-239. Takahashi, K. and Hayashi, Y. (2026). Thermodynamic limits of physical intelligence. arXiv:2602.05463 (preprint).
+239. Takahashi, K. and Hayashi, Y. (2026). Thermodynamic limits of physical intelligence. In *Artificial General Intelligence: 19th International Conference, AGI 2026, Proceedings, Part II*, Lecture Notes in Computer Science. Springer. https://doi.org/10.1007/978-3-032-33195-3_24. arXiv:2602.05463.
 240. Ortega, P. A., Braun, D. A., Dyer, J., Kim, K.-E. and Tishby, N. (2015). Information-theoretic bounded rationality. arXiv:1512.06789 (preprint).
 241. Zénon, A., Solopchuk, O. and Pezzulo, G. (2019). An information-theoretic perspective on the costs of cognition. *Neuropsychologia* 123:5-18. https://doi.org/10.1016/j.neuropsychologia.2018.09.013
 242. Sims, C. R. (2016). Rate-distortion theory and human perception. *Cognition* 152:181-198. https://doi.org/10.1016/j.cognition.2016.03.020
@@ -1056,7 +1143,7 @@ Entries marked "preprint" are cited by their arXiv posting. Entries published in
 257. Lynn, C. W., Cornblath, E. J., Papadopoulos, L., Bertolero, M. A. and Bassett, D. S. (2021). Broken detailed balance and entropy production in the human brain. *Proceedings of the National Academy of Sciences* 118:e2109889118. https://doi.org/10.1073/pnas.2109889118
 258. Horowitz, M. (2014). Computing's energy problem (and what we can do about it). *2014 IEEE International Solid-State Circuits Conference*, pp. 10-14. https://doi.org/10.1109/ISSCC.2014.6757323
 259. Saad-Falcon, J., Narayan, A., Akengin, H. O., Griffin, J. W. et al. (2025). Intelligence per watt: measuring intelligence efficiency of local AI. arXiv:2511.07885 (preprint).
-260. Tschand, A., Rajan, A. T. R., Idgunji, S., Ghosh, A. et al. (2024). MLPerf Power: benchmarking the energy efficiency of machine learning systems from microwatts to megawatts. arXiv:2410.12032 (preprint).
+260. Tschand, A., Rajan, A. T. R., Idgunji, S., Ghosh, A. et al. (2025). MLPerf Power: benchmarking the energy efficiency of machine learning systems from μWatts to MWatts for sustainable AI. *2025 IEEE International Symposium on High Performance Computer Architecture (HPCA)*, 1201-1216. https://doi.org/10.1109/HPCA61900.2025.00092. arXiv:2410.12032.
 261. Chung, J.-W., Ma, J. J., Wu, R., Liu, J. et al. (2025). The ML.ENERGY benchmark: toward automated inference energy measurement and optimization. arXiv:2505.06371 (preprint).
 262. Niu, C., Zhang, W., Li, J., Zhao, Y. et al. (2025). TokenPowerBench: benchmarking the power consumption of LLM inference. arXiv:2512.03024 (preprint).
 263. Jin, Y., Wei, G.-Y. and Brooks, D. (2025). The energy cost of reasoning: analyzing energy usage in LLMs with test-time compute. arXiv:2505.14733 (preprint).
@@ -1111,3 +1198,11 @@ Entries marked "preprint" are cited by their arXiv posting. Entries published in
 312. Vityaev, E. E. and Demin, A. V. (2018). Cognitive architecture based on the functional systems theory. *Procedia Computer Science* 145:623-628. https://doi.org/10.1016/j.procs.2018.11.072
 313. Vityaev, E., Kolonin, A., Kurpatov, A., Molchanov, A. et al. (2022). Brain principles programming. arXiv:2202.12710 (preprint).
 314. Potapov, A., Belikov, A., Bogdanov, V., Scherbatiy, A. et al. (2019). Differentiable probabilistic logic networks. arXiv:1907.04592 (preprint).
+315. Paninski, L. (2003). Estimation of entropy and mutual information. *Neural Computation* 15:1191-1253. https://doi.org/10.1162/089976603321780272
+316. Russell, S. and Wefald, E. (1991). Principles of metareasoning. *Artificial Intelligence* 49:361-395. https://doi.org/10.1016/0004-3702(91)90015-C
+317. Horvitz, E. J. (1987). Reasoning about beliefs and actions under computational resource constraints. *Proceedings of the Third Conference on Uncertainty in Artificial Intelligence (UAI 1987)*, 429-447. arXiv:1304.2759.
+318. Simon, H. A. and Kadane, J. B. (1975). Optimal problem-solving search: all-or-none solutions. *Artificial Intelligence* 6:235-247. https://doi.org/10.1016/0004-3702(75)90002-8
+319. Sekimoto, K. (1998). Langevin equation and thermodynamics. *Progress of Theoretical Physics Supplement* 130:17-27. https://doi.org/10.1143/PTPS.130.17
+320. Wolpert, D. H., Korbel, J., Lynn, C. W., Tasnim, F., Grochow, J. A., Kardeş, G. et al. (2024). Is stochastic thermodynamics the key to understanding the energy costs of computation? *PNAS* 121:e2321112121. https://doi.org/10.1073/pnas.2321112121
+321. Chen, L., Zaharia, M. and Zou, J. (2023). FrugalGPT: how to use large language models while reducing cost and improving performance. arXiv:2305.05176 (preprint).
+322. Ong, I., Almahairi, A., Wu, V., Chiang, W.-L. et al. (2024). RouteLLM: learning to route LLMs with preference data. arXiv:2406.18665 (preprint).
