@@ -2,7 +2,7 @@
 title: "The Search for JouleOS"
 deck: "Existing compute fabric treats the floor as fixed. Kernels, builds, guests, and instruction contracts are collapsed into one rung. Agents are wrapped on top of that settlement. Energy to run is not the condition of a commit. Secure compute requires one law, one meter, and one refusal. That requirement is the search for a solution like JouleOS."
 id: jouleos
-status: "Research study"
+status: "Product white paper (review and design guide)"
 author: "David Charlot, Open Interface Engineering"
 figures: "/living/"
 pdf: "/pdfs/jouleos.pdf"
@@ -10,6 +10,8 @@ board_synth_claimed: false
 ---
 
 # The Search for JouleOS
+
+*Product white paper. It is kept apart from the research catalog.*
 
 ## Abstract
 
@@ -33,7 +35,7 @@ The OpenIE thesis is stated once and held for the rest of the file. Energy to ru
 
 ### Terms used here
 
-Soft-ref means the software reference path that proves a study law without board synthesis or package metering. Periodic Stack, replay class, value of information, evidence classes, and `board_synth_claimed` are defined on the shared [glossary](/glossary/). Where a statement rests on the author's unpublished analysis, the text says so. It is a definition or a reading, not proof by private path.
+The software reference implementation is the software path that tests a study claim without board synthesis or package metering. Periodic Stack, replay class, value of information, evidence classes, and the board-result flag are defined on the shared [glossary](/glossary/). Where a statement rests on the author's unpublished analysis, the text says so. It is a definition or a reading, not proof by private path.
 
 The teaching order and the six contracts come from the author's unpublished analysis of the stack, drawn before any destination was named. Every placement of a named system rests on that system's own public page, cited where it appears.
 
@@ -47,7 +49,7 @@ Many projects make a view of the agent-safety problem while assuming a layer und
 
 ### 2.1 NVIDIA OpenShell on top of an existing agent
 
-On 28 September 2026 NVIDIA announced the Open Agent Safety Platform. OpenShell is the open-source secure runtime in that platform. The public technical blog and investor release describe a sandbox, a supervisor outside the agent workload, policy controls, and an optional out-of-band watchdog named Sentry that can run on BlueField data processing units. The agent remains a child. The host operating system and its privileged law remain the floor. OpenShell sets boundaries for agents running on central processors. Sentry adds monitoring and quarantine from a separate silicon domain when BlueField hardware is present. OpenShell can run without that hardware. The class mechanism is clear: safety is a runtime layered onto an existing agent stack, not a rewrite of the machine's law.
+On 28 September 2026 NVIDIA announced the Open Agent Safety Platform. OpenShell is the open-source secure runtime in that platform. The public technical blog and investor release describe a sandbox, a supervisor outside the agent workload, policy controls, and an optional out-of-band watchdog named Sentry that can run on BlueField data processing units. The agent remains a child. The host operating system and its privileged law remain the floor. OpenShell sets boundaries for agents running on central processors. Sentry adds monitoring and quarantine from a separate silicon domain when BlueField hardware is present. OpenShell can run without that hardware. The common mechanism is clear: safety is a runtime layered onto an existing agent stack, not a rewrite of the machine's law.
 
 Sources for this placement: NVIDIA Technical Blog, "Add Runtime Controls to AI Agents with NVIDIA OpenShell," 28 September 2026 (https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell/); NVIDIA investor press release dated 28 September 2026 (https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Launches-Open-Agent-Safety-Platform-to-Secure-Agents-From-Testing-to-Deployment/default.aspx); NVIDIA OpenShell documentation on how the gateway, supervisor, and sandbox split control and enforcement (https://docs.nvidia.com/openshell/dev/about/how-it-works).
 
@@ -55,19 +57,19 @@ Sources for this placement: NVIDIA Technical Blog, "Add Runtime Controls to AI A
 
 OpenHuman is an open-source agent harness with a Rust core, licensed under GPL-3.0, and described by its README as early beta (https://github.com/tinyhumansai/openhuman). The same core runs a desktop app, a browser UI, a terminal client, and an embeddable library. The density figures in that README are memory measurements from the project's own fleet sweeps and cold-start timings.
 
-The sandbox design in the project's own pull requests and security docs is the class mechanism that matters here. Sandbox backends are named None, Local, and Docker. Local uses Landlock on Linux, Seatbelt on macOS, or AppContainer on Windows, with a documented no-op fallback where the host provides no jail. Docker runs ephemeral containers with hardened defaults when that path is selected. ReadOnly resolves to None for execution enforcement: it does not add a jail. Elevated tools such as git, install, docker management, and process operations are defined to leave the jail and run on the host path. The core always runs on the host. The agent is confined where the harness chooses to confine tool execution. The host kernel and process model remain the floor.
+The sandbox design in the project's own pull requests and security docs is the common mechanism that matters here. Sandbox backends are named None, Local, and Docker. Local uses Landlock on Linux, Seatbelt on macOS, or AppContainer on Windows, with a documented no-op fallback where the host provides no jail. Docker runs ephemeral containers with hardened defaults when that path is selected. ReadOnly resolves to None for execution enforcement: it does not add a jail. Elevated tools such as git, install, docker management, and process operations are defined to leave the jail and run on the host path. The core always runs on the host. The agent is confined where the harness chooses to confine tool execution. The host kernel and process model remain the floor.
 
 Sources: OpenHuman README (https://raw.githubusercontent.com/tinyhumansai/openhuman/main/README.md); OpenHuman pull request 3261 describing sandbox backends and the elevated path (https://github.com/tinyhumansai/openhuman/pull/3261); OpenHuman security architecture page (https://tinyhumans.gitbook.io/openhuman/developing/architecture/security).
 
 ### 2.3 The class, not the brand
 
-OpenShell and OpenHuman are not the only members of the class. They are two named instances. The class mechanism is the same. A view of agent safety is built while the privileged software under the agent is treated as settled. Mixture of Limits cannot be only a supervisor beside that settlement. Metabolic Intelligence cannot be only a cheaper model behind the same install path. The floor has to be part of the review.
+OpenShell and OpenHuman are not the only members of the class. They are two named instances. The common mechanism is the same. A view of agent safety is built while the privileged software under the agent is treated as settled. Mixture of Limits cannot be only a supervisor beside that settlement. Metabolic Intelligence cannot be only a cheaper model behind the same install path. The floor has to be part of the review.
 
 ---
 
 ## 3. The teaching line: silicon to human interface
 
-Before any product name, teach the line. The author calls it the gospel stack. It is a teaching order, not a census of products. Bottom to top:
+Before any product name, teach the line. The author calls it the teaching stack. It is a teaching order, not a census of products. Bottom to top:
 
 1. Silicon
 2. Chip
@@ -122,7 +124,7 @@ Source: the author's unpublished stack analysis, section 3. Named systems are pl
 
 ## 5. Operating systems are not one thing
 
-The gospel rung named "operating system" collects software that does not share a job. Organize by job. Do not rank. Do not sort by country or laboratory.
+The teaching-stack rung named "operating system" collects software that does not share a job. Organize by job. Do not rank. Do not sort by country or laboratory.
 
 ### 5.1 Kernel
 
@@ -212,7 +214,7 @@ The working study drew the other ways, academia and research, another look, and 
 
 Jobs already separated include: host operating system, kernel, real-time kernel, verified or separation kernel, hypervisor, unikernel or library operating system, instruction-set contract, accelerator contract, translation layer, build system, distribution, middleware, hardware-abstraction library, teaching kernel, research kernel, human surface.
 
-Fame is not a source. A name appears because a project page, vendor page, university page, or standards page returned and said the job. Organizing by country or laboratory would invent a geography this study refuses. Critiques of a placement are class mechanisms: wrong job label, collapsed build into kernel, middleware called an operating system, guest drawn as if it owned silicon. 
+Fame is not a source. A name appears because a project page, vendor page, university page, or standards page returned and said the job. Organizing by country or laboratory would invent a geography this study refuses. Critiques of a placement name common mechanisms: wrong job label, collapsed build into kernel, middleware called an operating system, guest drawn as if it owned silicon. 
 
 Source: the author's unpublished stack analysis, sections 8 through 11. Named systems are placed by their own public pages.
 
@@ -298,7 +300,7 @@ Source: [sandbox.transaction.science](https://sandbox.transaction.science/).
 
 ### 11.5 Why a patch that omits these is still a patch
 
-OpenShell can sandbox, supervise, prove policy, and add BlueField Sentry without speaking EOC's schedule, JCP's metered grant, JouleContract's commit clauses, or the S0 to S7 ladder with honest meter tags. OpenHuman can jail tools and leave elevated operations on the host without making energy to run the refusal condition. Those are class mechanisms of patch-on-fixed-floor. They are useful engineering. They are not the destination this study is walking toward.
+OpenShell can sandbox, supervise, prove policy, and add BlueField Sentry without speaking EOC's schedule, JCP's metered grant, JouleContract's commit clauses, or the S0 to S7 ladder with honest meter tags. OpenHuman can jail tools and leave elevated operations on the host without making energy to run the refusal condition. Those are common mechanisms of patch-on-fixed-floor. They are useful engineering. They are not the destination this study is walking toward.
 
 **Energy as an operating system resource is not new.** ECOSystem made energy a first-class resource: it allocated a unit called currentcy to each task and stopped a task whose currentcy ran out (Zeng, Ellis, Lebeck and Vahdat, ASPLOS 2002, DOI:[10.1145/605397.605411](https://doi.org/10.1145/605397.605411)). Cinder gave every principal an energy reserve, fed by taps, and let reserves be delegated and subdivided like capabilities (Roy et al., EuroSys 2011, DOI:[10.1145/1966445.1966459](https://doi.org/10.1145/1966445.1966459)). Odyssey lowered the fidelity of an application's data to meet a battery goal (Flinn and Satyanarayanan, SOSP 1999, DOI:[10.1145/319151.319155](https://doi.org/10.1145/319151.319155)). EnerJ typed data as precise or approximate so the approximate part could run on cheaper hardware (Sampson et al., PLDI 2011, DOI:[10.1145/1993498.1993518](https://doi.org/10.1145/1993498.1993518)). Barroso and Hölzle asked servers to draw power in proportion to work done (*Computer* 40(12), 2007, DOI:[10.1109/MC.2007.443](https://doi.org/10.1109/MC.2007.443)). Linux places tasks by an energy model of the processor (Energy Aware Scheduling, [kernel docs](https://docs.kernel.org/scheduler/sched-energy.html)) and caps power through the powercap framework. Each of these budgets or reduces energy. None of them makes a commit conditional on a certified result under a metered joule bound. ECOSystem and Cinder stop a task when its budget is gone. JouleContract refuses the commit when the certificate fails or the ceiling would be crossed, and seals the refusal in a receipt. That pairing of correctness gate and joule ceiling, decided outside the program, is what the standards above add.
 
@@ -326,7 +328,7 @@ The in-memory bytes are the durable bytes. There is no serialize and deserialize
 
 ### 12.3 Cascade under Energy-Oriented Computing
 
-A cascade of refine families is cost-ordered cheapest first per EOC version 0.2. The README places Lawful near one microjoule and LlmInLoop near five millijoules, with intermediate families between them. The dispatcher picks the cheapest family that can satisfy. Check is deterministic: schema, constraint evaluation, provenance verify. There is no large-language-model-as-judge. The project's own README claims a roughly one-hundred-thousand-fold lower joules-per-work ratio against an LLM-everything corpus. That figure is a **project claim** from the JouleOS README. It is not a measurement of this study. This study does not supply a methodology, baseline workload, hardware, or task-complexity normalization for that ratio. Soft-ref path: estimates are not `measured_j`.
+A cascade of refine families is cost-ordered cheapest first per EOC version 0.2. The README places Lawful near one microjoule and LlmInLoop near five millijoules, with intermediate families between them. The dispatcher picks the cheapest family that can satisfy. Check is deterministic: schema, constraint evaluation, provenance verify. There is no large-language-model-as-judge. The project's own README claims a roughly one-hundred-thousand-fold lower joules-per-work ratio against an LLM-everything corpus. That figure is a **project claim** from the JouleOS README. It is not a measurement of this study. This study does not supply a methodology, baseline workload, hardware, or task-complexity normalization for that ratio. Software reference path: estimates are not `measured_j`.
 
 A runtime can bound work without a meter. Wasmtime's fuel counts executed WebAssembly operations and traps when the fuel is spent ([Wasmtime docs](https://docs.wasmtime.dev/examples-interrupting-wasm.html)). Fuel is an instruction count. It is not joules. One unit of fuel can cost very different energy depending on memory traffic, frequency and the fabric it runs on. A joule ceiling needs a meter, or an estimate labeled as one.
 
@@ -379,7 +381,7 @@ Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file s
 | Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. | OpenIE thesis | Author's thesis |
 | Mixture of Limits is the schedule, the meter, and the refusal. | Definition | Author's convergence analysis §2 |
 | Metabolic Intelligence is the envelope of the best answer inside the hardware energy budget, not a cheaper-answer trade, and has no offload-to-server rule. | Definition | Author's convergence analysis §2 |
-| Gospel order: silicon, chip, board, firmware, instruction set, hardware abstraction, operating system, compiler and runtime, programs, human interface. | Definition | Stack analysis §2 |
+| Teaching order: silicon, chip, board, firmware, instruction set, hardware abstraction, operating system, compiler and runtime, programs, human interface. | Definition | Stack analysis §2 |
 | Assembly sits beside the instruction set, not as an eleventh numbered rung. | Definition | Stack analysis §2 |
 | Yocto is a build system; the kernel inside its images is Linux. | Author's analysis | Stack analysis §4 |
 | ROS 2 is middleware, not an operating system. | Author's analysis | Stack analysis §4 |
