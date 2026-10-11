@@ -12,7 +12,7 @@ board_metered: false
 
 # The Promised Trillion Dollar AI-Coding Market
 
-*Version 1.1, 11 October 2026.*
+*Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#economics).*
 
 
 *The economics companion to [The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding](/papers/rce/). The research paper holds the engineering, the theory and the measurements. This essay is where the theory and the economics meet.*

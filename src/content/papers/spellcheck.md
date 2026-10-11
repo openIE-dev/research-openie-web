@@ -11,7 +11,7 @@ board_metered: false
 
 # Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few
 
-*Version 1.1, 11 October 2026.*
+*Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#economics).*
 
 ## Abstract
 

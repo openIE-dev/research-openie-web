@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+const R = 'https://github.com/openIE-dev/openie-research-experiments/tree/main/';
+const groups = [
+  { id: 'agency', title: 'Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents', paper: '/papers/agency/', rows: [
+    ['§8.11 preregistered acceptor run', 'agency-run/', 'Preregistrations v1, v2 and second machine; agents, meters, tasks, analysis; episodes and receipts'],
+    ['§8.11 results, run 1', 'agency-run/results/', 'Episode rows and receipts'],
+    ['§8.11.1 and §8.11.2 results', 'agency-run/results2/', 'Second run; the second machine is in results_jetson/ and results_jetson_cyc/'],
+  ]},
+  { id: 'rce', title: 'The Reality Code Engine', paper: '/papers/rce/', rows: [
+    ['§2.3 per-rung ladder', 'rce/bench/ladder/', 'LADDER.md, PREREG.json, RESULTS.md, report.py, results'],
+    ['§4.5 and §5.1 Form compiler, five-target differential test', 'rce/bench/forms/', 'Harness and recorded traces; test in rce/tests/form_targets.rs'],
+    ['§6.1 Track A, development corpus', 'rce/bench/track-a/', 'Task directories per registration, preregistrations with SHA-256, patches, reports'],
+    ['§6.2 Track B, RAPL energy', 'rce/bench/track-b/', 'results.jsonl with raw and idle-subtracted joules, method, report'],
+    ['§6.3 and §6.4 soaks', 'rce/bench/results/', 'Track C runs; SOAK_RESULTS.md and SOAK_ENERGY.md at rce/'],
+    ['§8.1 Defects4J', 'rce/bench/defects4j/', 'Harness, TBar port comparison, REVIEW.md, results'],
+  ]},
+  { id: 'gates', title: 'Metered Commit Gates', paper: '/papers/gates/', rows: [
+    ['Part I and II', null, 'The gate and cascade use the WCA reference implementation described in the paper. Its board logs are cited in the paper\'s Appendix A.'],
+  ]},
+  { id: 'economics', title: 'Economics companions: AI-Coding Market, Task Satiation, Spell Check', paper: '/papers/ai-coding-market/', rows: [
+    ['Measurements cited', 'rce/', 'The essay\'s measured rows come from RCE §6; the projections cite public sources in each paper\'s references.'],
+  ]},
+];
+---
+<Layout title="Data and code | OpenIE Research" description="Where each paper's results live in the public experiments repository.">
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    <h1 class="font-display text-3xl text-brand-white">Data and code</h1>
+    <p class="mt-4 font-body text-sm text-brand-slate leading-relaxed">The reproducible material for these papers is in <a href="https://github.com/openIE-dev/openie-research-experiments">github.com/openIE-dev/openie-research-experiments</a>: preregistrations with their SHA-256, scripts, results, receipts, a checksum file for every file, and pinned references for large corpora (CORPORA.md). Code is MIT and data is CC BY 4.0. Energy labels: est_j is an estimate, reported_j an operating-system or on-chip counter, measured_j a wall or shunt meter, empty in every result.</p>
+    {groups.map((g) => (
+      <section id={g.id} class="mt-10">
+        <h2 class="font-display text-xl text-brand-white"><a href={g.paper}>{g.title}</a></h2>
+        <table class="mt-3 w-full font-body text-sm text-brand-slate">
+          <thead><tr><th class="text-left pr-4">Result</th><th class="text-left pr-4">Repository path</th><th class="text-left">Contents</th></tr></thead>
+          <tbody>{g.rows.map(([r, p, c]) => (<tr><td class="pr-4 py-1 align-top">{r}</td><td class="pr-4 py-1 align-top">{p ? <a href={R + p}><code>{p}</code></a> : 'n/a'}</td><td class="py-1 align-top">{c}</td></tr>))}</tbody>
+        </table>
+      </section>
+    ))}
+  </main>
+</Layout>
