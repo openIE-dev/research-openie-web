@@ -10,5 +10,5 @@ States: abstract = title and abstract only (complete: false); full = whole text 
 | agency | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | ai-coding-market | stale | stale | stale | stale | stale | stale | stale | stale |
 | gates | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| satiation | abstract | full | abstract | full | abstract | abstract | abstract | abstract |
+| satiation | abstract | full | full | full | abstract | abstract | abstract | abstract |
 | spellcheck | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
