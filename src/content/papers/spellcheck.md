@@ -27,7 +27,7 @@ Energy to run is the only true metric of computer intelligence. Token price, par
 
 The path is a sequence. A procedure starts in a specialist bureau. It then becomes a routine on the machine that already holds the work. It then becomes ordinary, because it is cheap, local, and paired to hardware people already have. Spell check finished that sequence. Detection of a nonword and proposal of a correction are computer intelligence. They are not a metaphor for some later system. The capability reached ordinary writing: the editor, the browser, the phone keyboard. It did not stay as a service only a lab could rent.
 
-The future of computer intelligence is that pattern. The many are more than 7 billion people. The few are those who can pay a scarcity price. Scarcity pricing holds the capability for the few. Global access gives it to the many. Spell check already did the second.
+The future of computer intelligence is that pattern. Scarcity pricing holds a capability for the few; global access gives it to the many, and spell check already took the second path.
 
 The four companion studies say how a capability should behave once it is on that path. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) chooses the gear, and the gear has to sit on hardware that is available, accessible, and capable. [Metered Commit Gates, Part I (Notational Intelligence)](/papers/gates/) owns the commit: a suggestion is a proposal until it is accepted. [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) owns the stop: once the token is kept, further candidates do not change the written predicate. [Metabolic Intelligence](/products/mei/) owns the envelope: the envelope is the physical condition of the best answer, not a cheaper answer purchased by degrading the result. Klere ([klere.ai](https://klere.ai)) is the product home of that class. It is not a prison. Spell check already finished the path in editors that are not Klere.
 
@@ -60,7 +60,7 @@ The many (more than 7 billion people) and the few (those who can pay a scarcity 
 
 ## 1. Introduction
 
-This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are those who can pay a scarcity price. Spell check is the finished case. Its cause is marginal cost and complementarity: the routine's marginal cost fell to about zero, and it complemented an editor everyone already had, so bundling it beat selling it [62, 63].
+Spell check is a capability people once bought as a separate product and now receive inside tools they already own. This paper follows that change through dated prices, the papers that built the procedure, the libraries that ship it and the machines that run it, and asks what it implies for computer intelligence in general.
 
 People paid a premium. Then the thing could not be sold. It is free, and it is bundled into something else. The prices in Section 2.11 are that fact. The names in Section 2.9 come after it.
 
@@ -538,11 +538,11 @@ The June 1968 Anita Mk 9 amount is still absent. The model pages transcribe Mk 1
 
 ## 7. Conclusion
 
-This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are those who can pay a scarcity price. Spell check is the finished case. Its cause is marginal cost and complementarity: the routine's marginal cost fell to about zero, and it complemented an editor everyone already had, so bundling it beat selling it [62, 63].
+Spell check shows what happens when a technology is built for global access instead of priced by scarcity. Its cause is marginal cost and complementarity: the routine's marginal cost fell to about zero, and it complemented an editor everyone already had, so bundling it beat selling it [62, 63].
 
-Scarcity pricing holds the capability for the few who can pay. Global access gives it to more than 7 billion people. Spell check took the second choice. People paid a premium. The checker cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone.
+People paid a premium for it, as Figure 1 records. The checker cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone.
 
-It finished because the routine was cheap, local, and paired to hardware people already had. In cost terms, its marginal cost fell to about zero and it complemented a surface people already had [62, 63]. McIlroy fit the list to the minicomputer. Hunspell sits inside ordinary editors as a local library. The phone exposes the check as a call on the text it already holds. A capability that answers only inside a rented datacenter has not taken that choice. It is still priced by scarcity.
+It finished because the routine was cheap, local, and paired to hardware people already had. McIlroy fit the list to the minicomputer. Hunspell sits inside ordinary editors as a local library. The phone exposes the check as a call on the text it already holds. A capability that answers only inside a rented datacenter has not taken that choice. It is still priced by scarcity.
 
 The machines in Section 2.10 are the reach of each choice. Phones, PCs, consumer GPUs, datacenter accelerators, microcontrollers, shipping NPUs, and the prior generation still in hand each have their own source. Software written for the machine people already run is global access. A price that requires the rental is scarcity. Energy to run is the only true metric of computer intelligence once the separate charge is gone. Token price, parameter count, moat rent, and access fees go with that charge. What remains is joules.
 
