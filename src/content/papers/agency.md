@@ -71,6 +71,12 @@ No source is excluded for its method. Each source is placed by what it gives the
 
 Definitions fix the terms. Propositions are proven from cited theorems, with their assumptions stated.
 
+Figure 1 shows how the three layers stack.
+
+![Diagram of three stacked layers. Bottom, layer 1: the definition and gate, eligibility, a goal held against the world with a completeness predicate. Middle, layer 2: kinematics, how fast agency moves per second and per joule, bounded by the Landauer floor, speed limits, the thermodynamic uncertainty relation and the data-rate theorem. Top, layer 3: calculus, intelligence iota equals dX over dJ, read in hindsight.](/figures/agency/three-layers.svg)
+
+*Figure 1. Agency in three layers. Diagram of Sections 2.1 to 2.3: the definition and gate, the kinematic bounds, and intelligence as the calculus of agency. A [PNG copy](/figures/agency/three-layers.png) is provided.*
+
 <div id="21-layer-1-the-law-eligibility" class="anchor-alias" aria-hidden="true"></div>
 
 ### 2.1 Layer 1. The definition and its gate: eligibility
@@ -435,6 +441,12 @@ $$
 
 **Falsifier.** The measured maximizer of $\iota(\tau)$ lies outside $\tau^* \pm 2\,\delta\tau^*$, or the fitted slope of $\ln\tau^*$ against $\ln s$ over at least one decade of $s$ lies outside $-1/2$ by more than two standard errors. Either defeats the claim that act joules and standing joules add on one meter, with $\iota$ read as their density. A measured $\iota$ above the ceiling defeats the accounting of that run (F12, Section 8.7).
 
+Figure 2 draws the curve of Prediction 1.
+
+![Model illustration of Prediction 1. Relative intelligence iota of tau is plotted against act time tau on a log axis for J of tau equal to J zero plus a over tau plus s tau. With s equal to 1 the peak is at tau star equal to 1; with s equal to 4 the peak moves to 0.5 and is lower, showing the slope of minus one half.](/figures/agency/act-time.svg)
+
+*Figure 2. An optimal act time. Model illustration, not a measurement: $J(\tau) = J_0 + a/\tau + s\,\tau$ with $J_0 = a = 1$ and $s \in \{1, 4\}$ in normalized units. Quadrupling the standing cost halves $\tau^*$, the slope of $-1/2$ that the falsifier tests. A [PNG copy](/figures/agency/act-time.png) is provided.*
+
 **Against the closest work.** A finite optimal cycle time is not new by itself. Paneru and colleagues measured a power-optimal cycle time in a Brownian information engine [330]. Panizon derives optimal measurement schedules as a function of measurement cost [331], and Rolandi and colleagues bound an energy, time and accuracy trade-off in thermodynamic computing [332]. What Prediction 1 adds is the source of the interior optimum, a standing cost of holding a goal against drift, and its scaling: $\tau^*$ falls as $\Lambda^{-1/2}$. The slope test is the distinctive falsifier.
 
 **What is new.** The finite-time Landauer bound prices the memory alone and falls toward $k_B T\ln 2$ as $\tau$ grows [29]. There, the slowest reset is the cheapest. The data-rate theorem prices holding alone, per second (Section 4.1). Neither gives an interior optimum. The definition meters the whole agent, counts confirmed bits only, and reads $\iota$ as a density on the joule axis. Then holding a goal makes slowness expensive, and the best act time is the geometric mean of the jump time $1/\langle A\rangle$ and the drift time $1/\Lambda$, up to the factor $1/\sqrt{2}$. The controller's own costs enter the joules in the same way in the work of Ehrich, Still and Sivak (Section 5.1).
@@ -561,6 +573,12 @@ Once an act is eligible, physics bounds how fast agency moves per second and per
 **Living sensors.** Energy dissipation, adaptation speed and accuracy are bound together in bacterial chemotaxis [185]. Learning about the environment requires energy [186], and inference accuracy is tied to dissipation [187]. Sensing precision is limited by receptors, time and energy, with an optimal allocation among them [188]. No resource can be skipped. That fits Mixture of Limits. Erasure inside adaptation has a cost [189]. Information acquired per energy dissipated is the nearest existing quantity to $v_J$ in living sensors [190, 191]. Copying information costs energy [192]. Writing the receipt has a price. Accurate and synchronized biochemical clocks cost free energy [193, 194], and so does reducing noise at high sensitivity [195]. Holding a system away from equilibrium has a minimum power [196]. That is the standing cost of an agent ready to act. Bryant and Machta bounded the energy of sending a bit through a cell's physical channels, in $k_B T$ per bit, as a function of size, distance and latency, and found it many orders of magnitude above unity [197]. Tjalma and colleagues showed that the bits of the past that best predict the future are prohibitively costly for cellular networks [198].
 
 **Information gained by selection.** Selection also writes bits, and its rate is bounded. Kimura measured the information that natural selection accumulates in a genome by the substitutional load and, with the load values he took as representative, estimated about 0.29 bits per generation [341]. Worden bounded the rate at which selection can add information to a genome in terms of the selection applied per generation [342]. Hledík, Barton and Tkačik showed that, in stochastic populations, the rate is bounded by the population size times the cost of selection, across Wright-Fisher, Moran and diffusion models [343]. Every such bound is a rate per generation. A generation lengthens as an organism grows, so a carrier that learns only through selection gains coupled bits ever more slowly per second. Nervous systems write bits within a lifetime, and cultural records write them across lifetimes. The kinematics of Section 2.2 apply to each carrier. What changes from one carrier to the next is the time per written bit, which is the reason agency moves from genomes to brains to tools when the world changes faster than generations turn over.
+
+Figure 3 orders the three carriers.
+
+![Qualitative diagram placing three carriers of coupled bits on an axis of writing speed per second: the genome, through selection per generation, at about 0.29 bits per generation by Kimura; the brain, through learning within a lifetime; and tools and records, through culture across lifetimes.](/figures/agency/carriers.svg)
+
+*Figure 3. Where coupled bits are written. Qualitative diagram; the one number is Kimura’s estimate [341]. Bounds: Worden [342]; Hledík, Barton and Tkačik [343]. A [PNG copy](/figures/agency/carriers.png) is provided.*
 
 **Information rates without joules.** Schreiber defined transfer entropy, directed information flow per step [199]. It is per time, not per joule, and it has no eligibility gate. Tishby and Polani charged information per step in a Bellman recursion [200]. Landauer converts those bits to joules. Stratonovich bounded the maximal gain from a given amount of information [201]. That is a ceiling on value per coupled bit.
 
@@ -901,6 +919,12 @@ This run applies Sections 8.1 to 8.7 to one task class on one machine. Code, tas
 - Exploratory, post hoc: under a binding budget the σ-law selector closed more tasks than the fixed cascade, and joules per closed task were equal. The gain lies in which tasks fit the budget, not in a cheaper closure of the same task. Section 8.11.2 states what the later runs replicate.
 - Two implementation fixes come before the next run. The comparison and the receipt write move inside the guarded region. A measured closing cost is charged before each act.
 
+Figure 4 sets the gate beside the measured ranking at the loose budget.
+
+![Diagram and data. Candidate runs pass through the gate C of z, X at least X required. Those that pass are ranked by J star, the least joules to correct completion; those that fail are not ranked. Below, Run 1 at budget 2.0: σ-law closed 28.40 of 30 tasks with run iota 73,345 bits per joule; fixed cascade 27.50 with 70,418; goal-blind 18.25 with 92,724. Integrated iota alone would rank the goal-blind agent first.](/figures/agency/gate-then-rank.svg)
+
+*Figure 4. Gate first, then rank by joules. Diagram with Run 1 data at $B = 2.0\,J_{g2}$, means over 20 seeds from the results table above; integrated $\iota$ alone would rank the goal-blind agent first (R-F6). Source: `experiments/agency-run/results`. A [PNG copy](/figures/agency/gate-then-rank.png) is provided.*
+
 ### 8.11.1 Second run: guarded acceptor, 40 seeds
 
 This run is the same task class, the same gears and the same three arms as Section 8.11, on the same laptop. The preregistration for the second run was committed first (610dd4c). The pilot and the locked calibration came next (c88511f), and then the main run (920d7e2). Prediction 1 has no software analogue in this run: the agent has no declared act cost that falls with act time and no standing cost it controls, so the preregistration states that the dose-response design is not run.
@@ -1031,6 +1055,12 @@ This run repeats the second-run protocol of Section 8.11.1 on a second machine w
 - The cycle model did not track the package counter episode by episode (tau-b $-0.037$), and its block total was 1.355 times the counter's net. Part B joules rank acts by cycles. They are not energy readings.
 - Shared-task joules show no σ-law saving here either. Where the σ-law selector gains, it gains in tasks closed, not in cheaper closure of the same task.
 - No figure in this section is `measured_j`.
+
+Figure 5 sets the closed-task results of the three runs side by side.
+
+![Three bar-chart panels of tasks closed of 30 by arm and budget level for Run 1, Run 2 and the second-machine part B. At the loose level 2.0 the σ-law selector closed 28.40, 22.73 and 28.60; the fixed cascade 27.50, 19.93 and 27.77; the goal-blind baseline 18.25, 10.65 and 15.65. Error bars show one standard deviation.](/figures/agency/run-results.svg)
+
+*Figure 5. Tasks closed of 30 in three preregistered runs. Data figure: mean ± one standard deviation over seeds, from the results tables of Sections 8.11, 8.11.1 and 8.11.2 (part B). Sources: `experiments/agency-run/results`, `results2` and `results_jetson_cyc`. A [PNG copy](/figures/agency/run-results.png) is provided.*
 
 **What replicates, and what does not.** The run 1 selector result was exploratory. Two later runs tested it under preregistration.
 

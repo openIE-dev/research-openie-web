@@ -61,6 +61,12 @@ Energy figures are labeled by source. `est_j` is an analytical estimate. `report
 
 Approaches differ by degree on each axis, and the axes interact: reuse lowers energy and the entropy left to resolve, and strong verification is what makes reuse safe. RCE writes the meaning once, in one canonical Form. Every surface language is a projection of that Form, checked to match it. Among equivalent forms, the cheapest correct one runs.
 
+Figure 2 draws the five axes and places the main classes of approach on them.
+
+![Radar chart with five axes: energy per correct result, determinism, verification strength, reuse and compounding, and independence from models. Five approach classes are drawn as polygons. A model on every task sits near the centre on all axes. An agent loop gated by tests is higher on verification. A model with retrieval and caching is higher on reuse. Classical synthesis and repair is high on determinism and model independence. RCE, marked with stars, sits at or near the outer ring on all five axes. Placements are qualitative.](/figures/rce/design-space.svg)
+
+*Figure 2. The design space of autonomous coding. Qualitative diagram: each class of approach is placed by the paper’s reading of Section 2 on ordinal levels, not by measurement. Model reliance is drawn as independence from models so that outward is better on every axis. A [PNG copy](/figures/rce/design-space.png) is provided.*
+
 ### 2.1 Programming is coding theory
 
 The thesis of this section is David Charlot's: all of programming is coding theory. A programmer converts intent along a gradient between two entropic regimes. Intent is high entropy, a distribution over meanings. Code is low entropy, one deterministic transition per state. Every step of software work, from a requirement to a register, is a step of that conversion. The literature has said so in pieces for seventy years, in many languages. This section assembles the pieces into one argument and places each RCE gear on it.
@@ -112,6 +118,12 @@ The claim of [§1](#1-thesis) is measured directly. The benchmark was preregiste
 | Gate at entry, inputs | Five malformed payload kinds (wrong type, null, missing field, empty, nested) all refused, no accepted outcome | 10,000 | 10,000 | 0 |
 | Gate at entry, specifications | A specification with a flow to an undeclared node is refused before compile | 10,000 | 10,000 | 0 |
 
+Figure 3 shows the same counts.
+
+![Horizontal bar chart of five checks on 10,000 Forms. Lossless encoding, deterministic projection, gate at entry on malformed inputs and gate at entry on specifications each hold on 10,000 of 10,000. The Python trace replay holds on 9,999 of 10,000. Zero model calls.](/figures/rce/ecosystem-checks.svg)
+
+*Figure 3. The ecosystem at large N. Data figure: the five checks of the table above on 10,000 preregistered Forms, frozen engine at commit `a079967`, 0 model calls, with Wilson 95% intervals computed from the counts. Source: [`bench/ecosystem`](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ecosystem/). A [PNG copy](/figures/rce/ecosystem-checks.png) is provided.*
+
 The one Python miss is counted as a miss; the same Form and events replay identically under 32 hash seeds in the regression test `tests/form_ecosystem_regress.rs`. Energy here is `est_j` only; the whole run took 393 s of CPU time on one core. The generated Forms are small, so this table measures the encoding, the projections and the gate. Lifted Forms from real programs are measured under the protocol of [§8.7](#87-lift-coverage-across-languages).
 
 ### 2.4 Gated, verified recursive self-improvement
@@ -123,6 +135,12 @@ RCE takes the structure of the Gödel machine and the library of Voyager, with t
 **Proposition R1 (monotone correctness).** If every promoted change passes the check of its boundary, and the checks of the other boundaries are unchanged, then every property established by those checks before the promotion still holds after it.
 
 **Proposition R2 (compounding).** Let a workload be a multiset of tasks and let a promoted handler close every task of its shape. Then the number of escalations in round t is nonincreasing in t, and a correction promoted before round 1 lowers the cumulative escalations of every horizon by the escalations it closes in each later round. In the playground's reference workload, cumulative escalations over eight rounds fall from 21 to 15 with one correction at the sinks, and reach zero in the last round in both cases, with every task closed correctly and no promotion refused.
+
+Figure 4 draws the mechanism of Propositions R1 and R2 with the reference workload’s totals.
+
+![Diagram of the RCE stack as six levels from intent at the top through Form, gate, projections and runtime to hardware and energy. A correction promoted at the runtime level after passing its boundary check is shown with arrows rising through every level above it. A small bar chart beside it gives cumulative escalations over eight rounds on the playground reference workload: 21 with no correction and 15 with one correction at the sinks.](/figures/rce/stack-compounding.svg)
+
+*Figure 4. Corrections compound upward. Diagram of the stack, with a data inset: cumulative escalations over eight rounds of the playground’s reference workload, 21 with no correction and 15 with one correction at the sinks (Proposition R2; [RCE Playground](/playground/rce/#compounding)). A [PNG copy](/figures/rce/stack-compounding.png) is provided.*
 
 **Proposition R3 (falling cost).** Since a promoted handler is executed in place of a model call, and its cost is the op count of the handler priced by the substrate table, the energy of a round falls toward the energy of the handlers alone as escalations fall toward zero.
 
@@ -297,6 +315,12 @@ A failed check locates the break at the boundary where it occurs. The correction
 
 `tests/form_targets.rs` drives an eleven-operator arithmetic specification with 29 edge events plus 500 seeded random edge values. The generated Rust, Python, WASM, XState and SCXML targets print the reference trace byte for byte, including the arithmetic edges. This is differential testing in the line of McKeeman and of Csmith [86]: agreement among independent implementations on a stated input set. It is not translation validation [85] and not a verified compiler. It covers the eleven operators and the 529 events in the test, and it says nothing about inputs outside them. The Z3 and Kani results below are the verification.
 
+Figure 5 shows the five projections of one Form and the round trip of the two statechart targets.
+
+![Diagram: one Form, made of state, events and a pure total transition, is projected by deterministic compiles to five targets: Rust, Python, WASM, XState and SCXML. Solid arrows run from the Form to each target. Dashed arrows run back from XState and SCXML to the Form, showing the round trip to byte-identical bytes and the same shape hash. Rust, Python and WASM replay the reference trace byte for byte.](/figures/rce/form-projections.svg)
+
+*Figure 5. One Form, many projections. Diagram: deterministic projection to five targets ([§4.5](#45-the-form-compiler)); the XState and SCXML projections decode back to byte-identical bytes ([§2.3](#23-the-ecosystem-at-large-n)); all five targets print the reference trace byte for byte on the 529 events of `tests/form_targets.rs`. A [PNG copy](/figures/rce/form-projections.png) is provided.*
+
 ### 5.2 Rewrites proved in Z3
 
 Verified rewrite rules have a lineage. Ruler infers and checks rewrite rules by equality saturation with no model in the loop [87]. The 3 of 16 model-proposed rules admitted in Section 5.5 are therefore a statement about the gate, which refused 13, and not a claim that a model is the best rule source.
@@ -352,6 +376,12 @@ A coding task is measured here by the **intent bits** it needs: the bits that mu
 | L1 one statement, Java | ManySStuBs4J 2.0 single-hunk fixes [107] | 24,072 | 9,288 | 0.386 | 0.380 to 0.392 | 3.5 | 0 |
 | L1 one statement, Java, full file | ManySStuBs4J 2.0 [107], parent-commit file with the project method and guard indexes | 21,320 | 13,586 | 0.637 | 0.631 to 0.644 | 4.8 | 0 |
 | L1 one statement, Python | TSSB-3M v1.0.0, shards 14 and 15 [108] | 157,089 | 27,266 | 0.174 | 0.172 to 0.175 | 4.8 | 0 |
+
+Figure 6 plots the rows of the table with their intervals.
+
+![Bar chart of solve rates on held-out code with Wilson 95 percent intervals. L0 one token on nine repositories: 99.95 percent of 520,821. L0 one token on four repositories never tuned on: 100 percent of 23,015. L1 Java whole file: 63.7 percent of 21,320. L1 Java hunk only: 38.6 percent of 24,072. L1 Python hunk only: 17.4 percent of 157,089. Zero model calls.](/figures/rce/lift-ladder.svg)
+
+*Figure 6. The repair ladder on lifted code. Data figure: held-out test split, frozen engine, location given, token identity gate, 0 model calls; Wilson 95% intervals computed from the counts. Sources: PIT-style mutants [109], ManySStuBs4J 2.0 [107], TSSB-3M v1.0.0 [108]; per-task rows in [`bench/ladder`](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/). A [PNG copy](/figures/rce/lift-ladder.png) is provided.*
 
 L2 to L4 are measured on the Defects4J held-out set of 288 bugs ([Section 8.1](#81-defects4j)). L5 to L7 follow the protocols of [Section 8.2](#82-swe-bench-lite-offline). The method, the gate and the energy of each row follow.
 

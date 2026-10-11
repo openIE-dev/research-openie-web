@@ -273,6 +273,12 @@ for a chore whose constructed maximum is at four calls. Then `U(0) = -16`, `U(4)
 
 Token price can be attached without confusing units. Suppose a call costs `p` in money and the buyer pays `p * x` while value follows `U`. The buyer's surplus proxy `U(x) - p x` still has a finite maximizer for any `p >= 0`. A fall in `p` moves the maximizer, which is the rebound logic on this toy, and the maximizer remains finite. The toy does not say where the maximizer sits for any real buyer. It blocks the inference that a lower `p` removes the maximum.
 
+Figure 1 draws the toy and the separate aggregate claim.
+
+![Left: model illustration of a bliss point. Value U of x equals minus x minus 4 squared, with surplus U minus p x at prices 0, 2 and 4; the maximizers are 4, 3 and 2 calls, finite at every price. Right: a schematic of aggregate rebound, where lower prices open more tasks, each of which still stops at its own predicate.](/figures/satiation/satiation-rebound.svg)
+
+*Figure 1. Task satiation and aggregate rebound. Model illustration of the toy in this section, not a fit: the maximizer of $U(x) - p\,x$ is $x = 4 - p/2$, finite at every price. The right panel is a schematic; this paper estimates no rebound. A [PNG copy](/figures/satiation/satiation-rebound.png) is provided.*
+
 <div id="38-reason-codes-as-a-partition-not-a-welfare-function" class="anchor-alias" aria-hidden="true"></div>
 
 ### 3.11 Reason codes as a partition, not a welfare function

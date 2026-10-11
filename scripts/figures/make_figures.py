@@ -305,7 +305,7 @@ def agency_gate_rank():
         s.r(240, y, 380*closed/30, 34, col, 'none', 4, op=.85); s.t(250+380*closed/30, y+24, f'{closed:.2f} of 30 closed', 15, 700)
         s.r(760, y, 380*iota/100000, 34, col, 'none', 4, op=.4); s.t(770+380*iota/100000 if iota < 80000 else 750+380*iota/100000, y+24, f'{iota:,}', 15, 700, INK, 'start' if iota < 80000 else 'end')
     s.t(240, 612, 'tasks closed (the gate)', 14, 600, MUTED); s.t(760, 612, 'run \u03b9, bits per reported joule', 14, 600, MUTED)
-    s.save('agency', 'gate-then-rank', 'Diagram and data. Candidate runs pass through the gate C of z, X at least X required. Those that pass are ranked by J star, the least joules to correct completion; those that fail are not ranked. Below, Run 1 at budget 2.0: sigma-law closed 28.40 of 30 tasks with run iota 73,345 bits per joule; fixed cascade 27.50 with 70,418; goal-blind 18.25 with 92,724. Integrated iota alone would rank the goal-blind agent first.')
+    s.save('agency', 'gate-then-rank', 'Diagram and data. Candidate runs pass through the gate C of z, X at least X required. Those that pass are ranked by J star, the least joules to correct completion; those that fail are not ranked. Below, Run 1 at budget 2.0: σ-law closed 28.40 of 30 tasks with run iota 73,345 bits per joule; fixed cascade 27.50 with 70,418; goal-blind 18.25 with 92,724. Integrated iota alone would rank the goal-blind agent first.')
 
 def agency_carriers():
     s = S(1200, 520, 'Where coupled bits are written', 'Carriers ordered by the time each needs per written bit. Positions are qualitative.', 'QUALITATIVE')
@@ -362,7 +362,7 @@ def agency_runs():
                 s.l(bx+13, Y(min(30, m+sd)), bx+13, Y(max(0, m-sd)), INK, 2)
     s.t(600, y0+h+52, 'budget level B/J_g2', 15, 600, MUTED, 'middle')
     legend(s, 300, 650, [(k, v, 's') for k, v in cols.items()], 230)
-    s.save('agency', 'run-results', 'Three bar-chart panels of tasks closed of 30 by arm and budget level for Run 1, Run 2 and the second-machine part B. At the loose level 2.0 the sigma-law selector closed 28.40, 22.73 and 28.60; the fixed cascade 27.50, 19.93 and 27.77; the goal-blind baseline 18.25, 10.65 and 15.65. Error bars show one standard deviation.')
+    s.save('agency', 'run-results', 'Three bar-chart panels of tasks closed of 30 by arm and budget level for Run 1, Run 2 and the second-machine part B. At the loose level 2.0 the σ-law selector closed 28.40, 22.73 and 28.60; the fixed cascade 27.50, 19.93 and 27.77; the goal-blind baseline 18.25, 10.65 and 15.65. Error bars show one standard deviation.')
 
 # ---------------- Gates ----------------
 def gates_plateau():

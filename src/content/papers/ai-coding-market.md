@@ -81,6 +81,12 @@ The revenue the market reports today is in the billions. The trillion is the val
 
 Anthropic states that the round funds "infrastructure expansions" [6]. Revenue, valuation and compute are one bet.
 
+Figure 1 sets the dollar figures of Sections 2.1 to 2.3 and 2.6 on one axis, marked by the label each source carries.
+
+![Log-scale dot chart of dollar figures from the essay tables. Projections: developer contribution about 3 trillion dollars, generative AI value 2.6 to 4.4 trillion, worldwide AI spending 1.5 trillion, AI code tools market 9.35 billion in 2026 and 29.96 billion in 2031. Estimate: capex over 400 billion. Survey estimates: enterprise generative AI spend 37 billion and AI coding tool spend 4.0 billion. Company-reported: Claude Code run-rate over 2.5 billion and Cursor over 1 billion.](/figures/ai-coding-market/spend-by-label.svg)
+
+*Figure 1. Dollar figures by label. Data figure, log scale. Sources: Appenzeller and Li [1], Menlo Ventures [2], Mordor Intelligence [3], Cursor [5], Anthropic [6], IEA [10], McKinsey [15], Gartner [24]. A [PNG copy](/figures/ai-coding-market/spend-by-label.png) is provided.*
+
 ### 2.4 Inference, tokens and unit economics
 
 | Claim | Number | Label | Source |
@@ -94,6 +100,12 @@ Anthropic states that the round funds "infrastructure expansions" [6]. Revenue, 
 
 Two lines in the sources state the economics plainly. Pichai: "many companies are already blowing through their annual token budgets, and it's only May" [8]. Appenzeller and Li: "For decades, software development cost was almost purely people's cost, but now LLMs add a substantial opex component" [1].
 
+Figure 2 plots the token series.
+
+![Log-scale line chart of Google tokens processed per month: 9.7 trillion in 2024, about 480 trillion in 2025 and over 3.2 quadrillion in May 2026, company-reported.](/figures/ai-coding-market/tokens.svg)
+
+*Figure 2. Tokens processed per month at Google. Data figure, company-reported, log scale. Source: Pichai [8]; the note on token use is from Bai, Huang and Wang [9]. A [PNG copy](/figures/ai-coding-market/tokens.png) is provided.*
+
 ### 2.5 Price per token
 
 | Claim | Number | Label | Source |
@@ -104,6 +116,12 @@ Two lines in the sources state the economics plainly. Pichai: "many companies ar
 | DeepSeek API price cut, 29 September 2025 | developers' cost "lowered by more than 50%" | Company-reported | DeepSeek [21] |
 
 The 13 times a year of [4] is one point in a wide range [34]. The fall is driven by competition and open weights, as the DeepSeek cut shows [21]. It needs no energy accounting. That is the first decline of Section 6. Reuse adds a different one: calls per task.
+
+Figure 3 draws the two price series.
+
+![Log-scale chart of price per million tokens at fixed capability. An a16z estimate falls from 60 dollars in 2021 to 0.06 dollars in 2024, about ten times a year. A dashed Epoch AI slope of about thirteen times a year since 2023 is drawn indexed to ten dollars in 2023.](/figures/ai-coding-market/price-trend.svg)
+
+*Figure 3. Price of a fixed level of capability. Data figure, log scale: the a16z endpoints are as printed [20]; the Epoch AI line is the stated rate of about 13 times a year since 2023 [4], indexed to an arbitrary start to show slope only. The range by milestone is from Epoch AI [34]. A [PNG copy](/figures/ai-coding-market/price-trend.png) is provided.*
 
 ### 2.6 Energy and capital
 
@@ -121,6 +139,12 @@ The 13 times a year of [4] is one point in a wide range [34]. The fall is driven
 | Revenue the capex must earn back | "AI's $600B question" | Analysis | Sequoia Capital [23] |
 
 The rent that must be serviced is hardware rent. Capex and commitments of this size are paid back through usage priced above its energy. That is the base that reuse removes on covered tasks.
+
+Figure 4 places the projected grid electricity beside the measured joules of a task.
+
+![Two panels. Panel a: data-centre electricity, 415 TWh in 2024 by IEA estimate, a 485 to 950 TWh range for 2025 to 2030, and 945 TWh projected for 2030. Panel b, log scale: one median text prompt measured by its operator at 0.24 Wh or 864 joules; RCE solved repair tasks at 0.10 to 0.40 joules estimated and 0.026 to 0.056 joules on a RAPL package counter.](/figures/ai-coding-market/energy.svg)
+
+*Figure 4. Energy at the grid and at the task. Data figure. Panel a: IEA estimate and projection [10, 11]. Panel b, log scale: one median text prompt, 0.24 Wh measured by the operator [12]; RCE solved repair tasks, `est_j` and `reported_j` ([RCE §6.3](/papers/rce/#63-energy)). The two panels are different units and are not converted into each other. A [PNG copy](/figures/ai-coding-market/energy.png) is provided.*
 
 ### 2.7 Productivity evidence
 
