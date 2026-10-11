@@ -1,6 +1,6 @@
 ---
 title: "The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding"
-deck: "There are two paths to autonomous computer automation. One spends high energy on high entropy. The other converges on a low-entropy floor. A program is a database functional state machine: one Form, many fits. The Reality Code Engine (RCE) retrieves, adapts and proves fits instead of generating them. Correctness is the gate. Joules are the ranking. On held-out test splits with the engine frozen and 0 model calls, it repairs 520,541 of 520,821 one-token faults in nine real repositories (0.9995, 95% interval 0.9994 to 0.9995), 23,015 of 23,015 in four repositories never used for tuning, 38.6% of 24,072 single-statement Java bugs from ManySStuBs4J from the hunk alone (63.7% of 21,320 with the whole file) and 17.4% of 157,089 Python bugs from TSSB-3M."
+deck: "RCE is one uniform code ecosystem. Intent is written once as a Form: state, events and pure transitions. The Form is a lossless encoding, every target language is a faithful projection of it, and invalid states cannot be written, so the gate refuses a wrong program at entry and nothing is left to diff or track afterwards. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input is refused at entry, and the Python projection replays the reference trace byte for byte on 9,999. Code from other languages enters by lift; repair of legacy code is that entry path, not the product."
 id: rce
 status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
@@ -24,6 +24,8 @@ There are two paths to autonomous computer automation. They are told apart by tw
 The first path generates. A large language model (LLM), a statistical text model, writes each change from the prompt. Every task pays for generation again, and every output is a fresh sample from a high-entropy distribution.
 
 The second path converges. People have already coded most of what will ever be coded. A program is a database functional state machine: one Form, many fits. Human intent is high entropy. The machine floor is low entropy. Code converges by design, so most of the work is to retrieve a fit that exists, adapt it, and prove it. The Reality Code Engine (RCE) is built on the second path.
+
+**The core claim.** RCE is a uniform, complete code ecosystem with a lossless encoding of intent. Intent is written once, as a Form: a state, a set of events and a pure, total transition. Every target (statechart, Rust, Python, XState, SCXML, WASM) is a projection of that Form, and each projection is checked to replay the Form's trace byte for byte. A state the Form does not declare cannot be written, and an input outside its contract is refused at entry. A program in the ecosystem therefore cannot drift from its intent the way a program in a common language drifts from its comments, its tests or its other implementations, and it needs no after-the-fact diffing or error tracking. Code written elsewhere enters by lift ([§6](#6-importing-legacy-code-from-other-languages)). Reuse compounds as the ecosystem grows ([§2.4](#24-gated-verified-recursive-self-improvement)).
 
 Both paths face the same gate. The gate is correctness: a task's completeness predicate $C(z)$, here the task's tests, a proof or an agreement trace. Among runs that pass the gate, systems are ranked by joules to completion, $J^*$. Correctness is a constraint, not a score.
 
@@ -95,21 +97,20 @@ Read as coding theory, a task arrives as a message whose remaining uncertainty i
 
 The two paths of the table in Section 2 differ in where the conversion is paid. The generation path samples the full distribution of the prompt on every task, so it pays the high-entropy side again each time. The convergence path pays only for the residual, and only once. The economic reading of that difference is in [The Promised Trillion Dollar AI-Coding Market, Section 4](/papers/ai-coding-market/#4-the-theory-that-prices-the-task). The stop rule behind the gear order is [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits), and the per-task stop is [Task Satiation](/papers/satiation/).
 
-### 2.3 Per-rung ladder results
+### 2.3 The ecosystem at large N
 
-A coding task is measured here by the **intent bits** it needs: the bits that must be supplied from outside what the engine already holds (the program around the edit, the libraries, the tests, the index of known fixes). Writing $H_{task}$ for the bits that pin the target artifact down and $H_{corpus}$ for the bits the corpus already fixes, the supplied bits are $I = H_{task} - H_{corpus}$. A gear that ranks the right edit at rank $r$ among its candidates has supplied $\log_2 r$ bits of search, and the gate supplies the rest. The ladder orders tasks by edit size, an objective proxy for $I$: one token (L0), one statement (L1), one hunk (L2), several hunks in one file (L3), several files (L4), a function from a specification or tests (L5), an issue-level change (L6) and a program from a specification (L7). The rungs, corpora, splits and hypotheses were preregistered before the full runs; the files are in the [public repository](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
+The claim of [§1](#1-thesis) is measured directly. The benchmark was preregistered before the run ([`bench/ecosystem/PREREG.json`](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ecosystem/)). A seeded generator writes 10,000 Forms, each a source, a rule whose body is a random arithmetic term of depth up to 3 over eight operators, and a sink. The engine is frozen at commit `a079967`, and no model is called.
 
-| Rung | Held-out test corpus | N | Solved | Rate | Wilson 95% CI | Median search bits | Model calls |
-|---|---|---|---|---|---|---|---|
-| L0 one token | PIT-style mutants [109] of 9 real repositories at pinned commits (Java: commons-math, commons-collections, jsoup, joda-time, gson; Python: click, attrs, pydantic, sympy) | 520,821 | 520,541 | 0.9995 | 0.9994 to 0.9995 | 2.3 | 0 |
-| L0 one token, repositories never tuned on | commons-text, commons-io, more-itertools, httpx | 23,015 | 23,015 | 1.0000 | 0.9998 to 1.0000 | 2.0 | 0 |
-| L1 one statement, Java | ManySStuBs4J 2.0 single-hunk fixes [107] | 24,072 | 9,288 | 0.386 | 0.380 to 0.392 | 3.5 | 0 |
-| L1 one statement, Java, full file | ManySStuBs4J 2.0 [107], parent-commit file with the project method and guard indexes | 21,320 | 13,586 | 0.637 | 0.631 to 0.644 | 4.8 | 0 |
-| L1 one statement, Python | TSSB-3M v1.0.0, shards 14 and 15 [108] | 157,089 | 27,266 | 0.174 | 0.172 to 0.175 | 4.8 | 0 |
+| Property | What is checked per Form | N | Holds | Model calls |
+|---|---|---|---|---|
+| Lossless encoding | Form IR to canonical JSON to Form IR to canonical JSON is the identity | 10,000 | 10,000 | 0 |
+| Deterministic projection | Two compiles give the same bytes; XState and SCXML projections of the original and of the round tripped Form are byte identical | 10,000 | 10,000 | 0 |
+| Faithful projection, Python | The emitted Python module prints the reference trace byte for byte on 40 seeded events | 10,000 | 9,999 | 0 |
+| Gate at entry, inputs | Five malformed payload kinds (wrong type, null, missing field, empty, nested) all refused, no accepted outcome | 10,000 | 10,000 | 0 |
+| Gate at entry, specifications | A specification with a flow to an undeclared node is refused before compile | 10,000 | 10,000 | 0 |
+| Faithful projection, Rust native, WASM, XState, SCXML | Every target prints the reference trace on the edge set and 500 seeded events ([§5.1](#51-differential-testing-across-five-targets)) | 1 Form, 11 operators, 521 events | all | 0 |
 
-L2 to L4 are measured on the Defects4J held-out set of 288 bugs ([Section 8.1](#81-defects4j)). L5 to L7 follow the protocols of [Section 8.2](#82-swe-bench-lite-offline). Section 6 gives the method, the gate and the energy of each row.
-
-The rates read as intent bits. At L0 the missing bits are almost all on the line, and a prior-ordered single-token neighbourhood supplies them in a median of 2.3 bits. At L1 the engine sees only the 7-line hunk. It closes the categories whose bits are inside the hunk (Java: changed operator 91%, swapped boolean literal 84%, swapped arguments 82%; Python: changed boolean literal 98.8%, swapped arguments 99.4%) and leaves open those whose bits are outside it: method names (22%) and identifiers (37%) need the file and its types, and new conjuncts (3% to 7%) and whole-statement rewrites (Python, 1.2% of a category that is 34% of the corpus) are new intent. New intent is what a supplier (a specification, a test, a person or a local model) provides once, after which the fit is in the index.
+The one Python miss did not recur when the same Form and events were run again, and it is counted as a miss. Energy here is `est_j` only; the whole run took 393 s of CPU time on one core. The generated Forms are small, so this table measures the encoding and the gate, not the reach of the Form over real programs; that is the protocol of [§8.7](#87-coverage-of-real-programs-across-languages).
 
 ### 2.4 Gated, verified recursive self-improvement
 Good (1965) [111] defined the ultraintelligent machine as one that could design better machines, so that improvement would recurse. Yudkowsky (2013) [113] cast the question as one of returns: whether each unit of improvement makes the next unit cheaper or dearer. Schmidhuber's Gödel machine (2007) [112] gave the first formal answer with a guarantee: a program rewrites any part of itself, including its own search, only after proving that the rewrite improves its expected utility. Löb's theorem (1955) [114] is the obstacle a self-trusting prover meets, which Yudkowsky and Herreshoff (2013) [115] named the Löbian obstacle: a system cannot in general prove the soundness of a successor that uses its own proof system. Recent systems drop the proof requirement and select by measured score: STOP Zelikman et al., 2023 [116] improves the scaffold that improves code, the Darwin Gödel Machine Zhang et al., 2025 [117] keeps an archive of self-modified coding agents chosen by benchmark score, AlphaEvolve Novikov et al., 2025 [118] evolves programs under automatic evaluators, and Voyager Wang et al., 2023 [119] grows a library of verified skills that later tasks reuse.
@@ -198,6 +199,24 @@ A finite relational structure is a database instance, so a Gurevich state is a d
 | E-graph | The equivalence class of the fit | Which equivalent fit runs |
 
 The statechart and the graph describe one fit. The e-graph describes every fit equivalent to it. Extraction chooses among them by joules.
+
+### 3.6 One ecosystem, lossless, and the universality thesis
+
+**Lossless by construction.** Shannon's source coding theorem fixes the floor for a lossless code at the entropy of the source [40]. A Form is a lossless code for intent in a narrow sense that can be checked: the canonical serialization of the Form is injective, so two Forms that differ in any state, event or transition have different shape hashes, and decoding the serialization gives back the same Form. Each projection to a target is a function of the Form alone. Bidirectional transformations make the round trip precise. Foster, Greenwald, Moore, Pierce and Schmitt define a lens as a pair of get and put functions with round trip conditions that make a view and its source agree [122], Hofmann, Pierce and Wagner extend the conditions to symmetric lenses [123], and Czarnecki and colleagues survey the same consistency conditions across model engineering, databases and programming languages [124]. RCE's round trip condition is the GetPut condition at the level of the whole program: lift a projection back and the shape hash is unchanged.
+
+**Correct by construction.** Dijkstra proposed in 1968 that a program and its proof be developed together, so that correctness is designed in rather than tested for [125]. Hall and Chapman carried the approach into a commercial secure system with formal specification and refinement at every step [126]. Minsky's rule for typed functional programming, make illegal states unrepresentable, says the same at the type level: a type that cannot hold a bad value removes the need to check for it [127]. Turner's total functional programming requires every function to terminate on every input, so that a program denotes a mathematical function with no hidden failure [128]. RCE's Form is total in Turner's sense, its contract types make undeclared states unrepresentable in Minsky's sense, and the refinement chain of [§2.1](#21-programming-is-coding-theory) ends in it in Dijkstra's sense. The consequence is the one stated in [§1](#1-thesis): an error is refused at entry, so there is nothing to diff or track after the fact.
+
+**The universality thesis.** The thesis is David Charlot's: RCE, and any language built on the RCE framework (flowG is the first), replaces the need for any other language. Stated in theory terms, there is one universal Form, and every existing language is reachable from it as a faithful projection or enters it losslessly by lift. Gurevich's thesis gives the ground: every sequential algorithm is captured, step for step, by an Abstract State Machine at its own level of abstraction [2], and parallel algorithms likewise [3]. A Form is such a machine over a database state.
+
+**Proposition U1 (capture).** If a program in language $L$ is a sequential or parallel algorithm in Gurevich's sense, then there is a Form whose transition simulates it step for step at the program's level of abstraction [2, 3].
+
+**Proposition U2 (faithful projection).** If the projection $\pi_L$ of a Form to $L$ preserves the Form's trace on every input in the contract, then the Form and its projection are interchangeable for every observer of the trace, and $L$ adds nothing the Form lacks.
+
+**Proposition U3 (lossless lift).** If a lift $\lambda_L$ from $L$ to Forms satisfies $\pi_L(\lambda_L(p)) \equiv p$ on behavior and $\lambda_L(\pi_L(F)) = F$ on shape hash, then the pair is a lens in the sense of [122], and a program in $L$ can be held as a Form with no loss.
+
+**Proposition U4 (replacement).** If U2 and U3 hold for language $L$ over a class of programs, then for that class no program needs to be written in $L$: it can be written once as a Form and emitted as $L$ where a platform requires it.
+
+The conditions are the content of the thesis. U1 is a theorem. U2 is checked per target by differential testing ([§5.1](#51-differential-testing-across-five-targets)) and at large N in [§2.3](#23-the-ecosystem-at-large-n). U3 is the open condition: the share of real programs in each language whose lift round trips with identical behavior is an empirical quantity, and [§8.7](#87-coverage-of-real-programs-across-languages) fixes its protocol. The thesis is falsified for a language by a class of real programs that admits no lift satisfying U3, such as programs whose behavior depends on unspecified evaluation order or undefined behavior that no single trace captures. Claims about adoption are in the [companion essay](/papers/ai-coding-market/).
 
 ## 4. The engine: gears, gate and receipts
 
@@ -311,7 +330,31 @@ A model may propose equivalences. It may not admit them. With a local 1.5-billio
 
 The lift reads the same order machine from Rust, Python, TypeScript and Go fixtures, runs the original code on 40 seeded sequences of 30 calls, and agrees on all 1,200 calls per language. A frozen benchmark, preregistered before any result, re-expressed three existing sales-outreach programs as Forms. The Forms agree with the original code on 4,500 of 4,500 recorded inputs, and extraction lowers `est_j` on each (for example $1.69 \times 10^{-8}$ J to $1.49 \times 10^{-8}$ J).
 
-## 6. Results
+## 6. Importing legacy code from other languages
+
+<div id="6-results" class="anchor-alias" aria-hidden="true"></div>
+
+Code written in other languages enters the ecosystem by lift. A lifted program carries the faults of its source, so the entry path includes repair. This section measures that entry path on public bug corpora. It is not the value proposition: inside the ecosystem the faults measured here cannot be written.
+
+### 6.0 The import ladder
+
+<div id="23-per-rung-ladder-results" class="anchor-alias" aria-hidden="true"></div>
+
+A coding task is measured here by the **intent bits** it needs: the bits that must be supplied from outside what the engine already holds (the program around the edit, the libraries, the tests, the index of known fixes). Writing $H_{task}$ for the bits that pin the target artifact down and $H_{corpus}$ for the bits the corpus already fixes, the supplied bits are $I = H_{task} - H_{corpus}$. A gear that ranks the right edit at rank $r$ among its candidates has supplied $\log_2 r$ bits of search, and the gate supplies the rest. The ladder orders tasks by edit size, an objective proxy for $I$: one token (L0), one statement (L1), one hunk (L2), several hunks in one file (L3), several files (L4), a function from a specification or tests (L5), an issue-level change (L6) and a program from a specification (L7). The rungs, corpora, splits and hypotheses were preregistered before the full runs; the files are in the [public repository](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
+
+| Rung | Held-out test corpus | N | Solved | Rate | Wilson 95% CI | Median search bits | Model calls |
+|---|---|---|---|---|---|---|---|
+| L0 one token | PIT-style mutants [109] of 9 real repositories at pinned commits (Java: commons-math, commons-collections, jsoup, joda-time, gson; Python: click, attrs, pydantic, sympy) | 520,821 | 520,541 | 0.9995 | 0.9994 to 0.9995 | 2.3 | 0 |
+| L0 one token, repositories never tuned on | commons-text, commons-io, more-itertools, httpx | 23,015 | 23,015 | 1.0000 | 0.9998 to 1.0000 | 2.0 | 0 |
+| L1 one statement, Java | ManySStuBs4J 2.0 single-hunk fixes [107] | 24,072 | 9,288 | 0.386 | 0.380 to 0.392 | 3.5 | 0 |
+| L1 one statement, Java, full file | ManySStuBs4J 2.0 [107], parent-commit file with the project method and guard indexes | 21,320 | 13,586 | 0.637 | 0.631 to 0.644 | 4.8 | 0 |
+| L1 one statement, Python | TSSB-3M v1.0.0, shards 14 and 15 [108] | 157,089 | 27,266 | 0.174 | 0.172 to 0.175 | 4.8 | 0 |
+
+L2 to L4 are measured on the Defects4J held-out set of 288 bugs ([Section 8.1](#81-defects4j)). L5 to L7 follow the protocols of [Section 8.2](#82-swe-bench-lite-offline). Section 6 gives the method, the gate and the energy of each row.
+
+The rates read as intent bits. At L0 the missing bits are almost all on the line, and a prior-ordered single-token neighbourhood supplies them in a median of 2.3 bits. At L1 the engine sees only the 7-line hunk. It closes the categories whose bits are inside the hunk (Java: changed operator 91%, swapped boolean literal 84%, swapped arguments 82%; Python: changed boolean literal 98.8%, swapped arguments 99.4%) and leaves open those whose bits are outside it: method names (22%) and identifiers (37%) need the file and its types, and new conjuncts (3% to 7%) and whole-statement rewrites (Python, 1.2% of a category that is 34% of the corpus) are new intent. New intent is what a supplier (a specification, a test, a person or a local model) provides once, after which the fit is in the index.
+
+
 
 **Method.** Each corpus is shuffled with a fixed seed. The first 2,000 positions of each shuffle, and for L0 three whole repositories (commons-lang, requests, flask), form the development split, on which the gears may be tuned; development results are not reported. Every remaining task is in the test split. Before a test run the engine is committed and its binary hash recorded, and no gear changes during the run. Every row in this section is a frozen-engine result on test tasks only, with 0 model calls. The preregistration (`PREREG.json`), the per-task rows and the report script are in the [public repository](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
 
@@ -424,6 +467,10 @@ Promotion is the mechanism by which the model leaves the loop: a resolver is pai
 
 **Proposition 8 (floor approach).** As G0 and G1 coverage grows, joules per solved task approach the gold floor of applying a known fix and running the tests. The ladder rungs and the Defects4J held-out set under the wall meter test it.
 
+### 8.7 Coverage of real programs across languages
+
+The measured quantity is coverage: for language $L$, the share of programs in a fixed public sample whose lift round trips with identical behavior, that is, $\pi_L(\lambda_L(p))$ passes the program's own tests and replays its recorded traces byte for byte, and $\lambda_L(\pi_L(\lambda_L(p)))$ has the same shape hash as $\lambda_L(p)$. The sample is at least 10,000 programs per language for at least ten languages, drawn with a fixed seed from pinned public corpora, with the lifter frozen and its binary hash recorded before the run, and 0 model calls in the main arm. Every refusal is classified by cause (unsupported construct, undefined behavior, nondeterminism, external effect). Coverage is reported with a Wilson 95% interval per language and per cause. A language with coverage below 0.5 after the lifter is frozen counts against Proposition U4 for that language.
+
 ## 9. Ties to the companion papers
 
 **Mixture of Limits.** [Metered Commit Gates, Part II](/papers/gates/#part-ii-the-cascade-mixture-of-limits) states the philosophy: a minimal amount of anything is needed to accomplish a task, and any more is waste. RCE applies it three times. The gear order runs the cheapest sufficient gear first. Promotion pays a resolver once per new case, after which every repeat call would be waste. Extraction keeps the least-joule fit among equivalent fits (Proposition 3).
@@ -458,7 +505,7 @@ Each item is open work with its protocol named.
 
 ## 12. Conclusion
 
-A program is a database functional state machine, and RCE treats coding as a conversion from high-entropy intent to that low-entropy Form. Correctness is the gate and joules are the ranking. On held-out test splits with a frozen engine and no model call, the gears repair 99.95% of 520,821 one-token faults and all 23,015 in repositories never tuned on, 38.6% of 24,072 single-statement Java bugs from the hunk alone (63.7% of 21,320 with the whole file) and 17.4% of 157,089 Python bugs, at hundredths of a reported joule per solved task on a package counter. The verification layer proves the rewrites in Z3 and the kernel in Kani, and differential testing ties five targets to one trace. What remains is the upper rungs, convergence at large N, baselines in the same table, and a wall meter. Those protocols are fixed in Sections 8.3 to 8.6 and the falsifiers in Section 10.
+RCE is one uniform code ecosystem. Intent is written once as a Form, a lossless encoding of state, events and pure transitions, and every target language is a faithful projection of it. Invalid states cannot be written and malformed inputs are refused at entry, so a program in the ecosystem cannot drift from its intent and needs no after-the-fact diffing or error tracking. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input and specification is refused at entry, and the Python projection replays the reference trace on 9,999. Reuse compounds under a gate, and code from other languages enters by lift; on that entry path the engine repairs 99.95% of 520,821 one-token faults and 63.7% of 21,320 single-statement Java bugs. The universality thesis, that one Form replaces the need for any other language, holds for a language exactly when its programs lift losslessly, and Section 8.7 fixes the large N protocol that measures it.
 
 ## References
 
@@ -703,3 +750,17 @@ A program is a database functional state machine, and RCE treats coding as a con
 [120] Y. Futamura, "Partial Evaluation of Computation Process: An Approach to a Compiler-Compiler," *Higher-Order and Symbolic Computation* 12(4), 1999 (first published 1971). doi:10.1023/A:1010095604496
 
 [121] V. F. Turchin, "The Concept of a Supercompiler," *ACM Transactions on Programming Languages and Systems* 8(3), 1986. doi:10.1145/5956.5957
+
+[122] J. N. Foster, M. B. Greenwald, J. T. Moore, B. C. Pierce and A. Schmitt, "Combinators for Bidirectional Tree Transformations: A Linguistic Approach to the View-Update Problem," *ACM Transactions on Programming Languages and Systems* 29(3), 2007. doi:10.1145/1232420.1232424
+
+[123] M. Hofmann, B. Pierce and D. Wagner, "Symmetric Lenses," *POPL*, 2011. doi:10.1145/1926385.1926428
+
+[124] K. Czarnecki, J. N. Foster, Z. Hu, R. Lämmel, A. Schürr and J. F. Terwilliger, "Bidirectional Transformations: A Cross-Discipline Perspective," *ICMT*, LNCS 5563, 2009. doi:10.1007/978-3-642-02408-5_19
+
+[125] E. W. Dijkstra, "A Constructive Approach to the Problem of Program Correctness," *BIT* 8(3), 1968. doi:10.1007/BF01933419
+
+[126] A. Hall and R. Chapman, "Correctness by Construction: Developing a Commercial Secure System," *IEEE Software* 19(1), 2002. doi:10.1109/52.976937
+
+[127] Y. Minsky, "OCaml for the Masses," *Communications of the ACM* 54(11), 2011. doi:10.1145/2018396.2018413
+
+[128] D. A. Turner, "Total Functional Programming," *Journal of Universal Computer Science* 10(7), 2004. doi:10.3217/jucs-010-07-0751

@@ -1,6 +1,6 @@
 ---
 title: "The Promised Trillion Dollar AI-Coding Market"
-deck: "Who projects the AI coding market, what they project, and what every projection assumes: one path to autonomous computer automation, with high energy, high compute, per-token rent and the model in the loop forever. The Reality Code Engine (RCE) measures a second path. With correctness as the gate and joules as the ranking, on held-out test splits with a frozen engine and 0 model calls it repaired 520,541 of 520,821 one-token faults and 63.7% of 21,320 real single-statement Java bugs with the whole file. Where that path covers a task, the marginal cost falls toward the energy to run it, and the projections lose their base."
+deck: "Who projects the AI coding market, what they project, and what every projection assumes: one path to autonomous computer automation, with high energy, high compute, per-token rent and the model in the loop forever. The Reality Code Engine (RCE) measures a second path. With correctness as the gate and joules as the ranking, intent is written once as a lossless Form and every target is a faithful projection; on 10,000 preregistered Forms with 0 model calls every Form round trips to identical bytes and every malformed input is refused at entry, and legacy code enters by lift. Where that path covers a task, the marginal cost falls toward the energy to run it, and the projections lose their base."
 id: ai-coding-market
 status: "Economics essay"
 author: "David Charlot, Open Interface Engineering"
@@ -161,10 +161,13 @@ Mixture of Limits is the philosophy behind the proposition: there is a minimal a
 
 ## 5. The measurements
 
-These are measurements, labeled as RCE labels them. They come from the [RCE research paper](/papers/rce/).
+These are measurements, labeled as RCE labels them. They come from the [RCE research paper](/papers/rce/). The first rows measure the ecosystem itself; the rows after them measure the import of legacy code from other languages ([RCE §6](/papers/rce/#6-importing-legacy-code-from-other-languages)).
 
 | Measurement | Result | Label | Where |
 |---|---|---|---|
+| Form ecosystem, 10,000 preregistered Forms, lossless round trip and deterministic projection | 10,000 of 10,000, 0 model calls | Measured counts | [RCE §2.3](/papers/rce/#23-the-ecosystem-at-large-n) |
+| Form ecosystem, malformed inputs and specifications refused at entry | 10,000 of 10,000, 0 model calls | Measured counts | [RCE §2.3](/papers/rce/#23-the-ecosystem-at-large-n) |
+| Form ecosystem, Python projection replays the reference trace byte for byte | 9,999 of 10,000, 0 model calls | Measured counts | [RCE §2.3](/papers/rce/#23-the-ecosystem-at-large-n) |
 | L0 one-token faults, 9 real repositories, held-out test split | 520,541 of 520,821 (0.9995, 95% CI 0.9994 to 0.9995), 0 model calls | Measured counts | [RCE §6.1](/papers/rce/#61-l0-one-token-faults) |
 | L0, 4 repositories never used for tuning | 23,015 of 23,015 (95% CI 0.9998 to 1.0000), 0 model calls | Measured counts | [RCE §6.1](/papers/rce/#61-l0-one-token-faults) |
 | L1 Java, ManySStuBs4J 2.0, held-out | 9,288 of 24,072 (0.386, 0.380 to 0.392), 0 model calls, hunk only | Measured counts | [RCE §6.2](/papers/rce/#62-l1-one-statement-bugs-from-real-histories) |
