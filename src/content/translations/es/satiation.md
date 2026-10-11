@@ -24,7 +24,7 @@ Un segundo hecho se refiere al precio, no a la física. Epoch AI informa de gran
 
 El artículo no presenta un ensayo aleatorizado, ni una tasa de error de un detector de terminado, ni un reparto entre la energía gastada antes de la completitud y la gastada después. Esas mediciones están especificadas y ausentes. Lo que sí ofrece la referencia de software es un lugar donde poner la parada: Wise Computer Automation (WCA) puede rechazar por un motivo de política o de presupuesto, o por un predicado físico (permiso de una tabla de búsqueda y una comprobación de energía, con una función de barrera de control opcional). El artículo compañero mide el predicado físico en plantas de juguete. Este artículo enuncia el predicado económico y la evidencia que realmente está publicada.
 
-Para este estudio no se ha sintetizado ni medido ninguna matriz de puertas programable en campo (FPGA). Una Alchitry Pt V2 es el dispositivo bajo prueba (DUT) previsto para más adelante. Un instrumento de navegador que compila la compuerta a WebAssembly (WASM) y la muestra con WebGPU se ha publicado como Etapa B en https://research.openie.dev/living/fpga-sim/ (véase el artículo compañero). Es una simulación, no un resultado en placa, y aquí no es una medición de saciedad. Los julios analíticos del OpCounter del compañero no son potencia de placa ni evidencia de saciedad.
+En este estudio ninguna matriz de puertas programable en campo (FPGA) lleva un medidor de energía; la placa del compañero está programada y su energía no se ha medido. Una Alchitry Pt V2 es el dispositivo bajo prueba (DUT) previsto para más adelante. Un instrumento de navegador que compila la compuerta a WebAssembly (WASM) y la muestra con WebGPU se ha publicado como Etapa B en https://research.openie.dev/living/fpga-sim/ (véase el artículo compañero). Es una simulación, no un resultado en placa, y aquí no es una medición de saciedad. Los julios analíticos del OpCounter del compañero no son potencia de placa ni evidencia de saciedad.
 
 <div id="notation" class="anchor-alias" aria-hidden="true"></div>
 
@@ -127,7 +127,7 @@ El libro de Wu «The Attention Merchants» (página de la editorial: https://www
 
 Los mercados tecnológicos muestran a menudo una fase especulativa, una fase de uso y una fase posterior de mercancía. La evidencia es desigual.
 
-Quinn (2019), «Technological revolutions and speculative finance: evidence from the British Bicycle Mania», Cambridge Journal of Economics 43(2), 271-294, https://doi.org/10.1093/cje/bey029, estudia los precios de las acciones de empresas de bicicletas de 1895 a 1900. Los precios subieron más del 200 por ciento y luego cayeron más del 75 por ciento. El resultado del artículo trata de la financiación especulativa y los fundamentos, no de un predicado medido de «bicicleta suficiente» para los hogares. Usarlo como imagen de la financiación en la fase de carrera está respaldado. Usarlo como prueba de saciedad en el transporte no lo está. Notas anteriores de este proyecto decían a veces «Quinn y Turner» para este episodio. El artículo verificado arriba es Quinn (2019). Otro artículo de Quinn sobre el riesgo de acaparamiento agradece a John Turner en los agradecimientos. Eso no es coautoría del artículo del Cambridge Journal. Este artículo cita el artículo que se comprobó.
+Quinn (2019), «Technological revolutions and speculative finance: evidence from the British Bicycle Mania», Cambridge Journal of Economics 43(2), 271-294, https://doi.org/10.1093/cje/bey029, estudia los precios de las acciones de empresas de bicicletas de 1895 a 1900. Los precios subieron más del 200 por ciento y luego cayeron más del 75 por ciento. El resultado del artículo trata de la financiación especulativa y los fundamentos, no de un predicado medido de «bicicleta suficiente» para los hogares. Usarlo como imagen de la financiación en la fase de carrera está respaldado. Usarlo como prueba de saciedad en el transporte no lo está.
 
 Los automóviles, la aviación regular y la televisión tienen mercados de tipo mercancía en el sentido cotidiano: vehículos usados, asientos gestionados por rendimiento y paneles vendidos como insumos para contenidos. Las filas sirven de orientación histórica. No son regresiones. La gestión del rendimiento de las aerolíneas tras la desregulación es una institución de precios para un asiento, lo cual es evidencia de un mercado de mercancía en asientos, no evidencia de que la demanda de viajes de los pasajeros esté saciada a escala global.
 
@@ -151,7 +151,7 @@ Una regla empírica de planificación según la cual la competencia de frontera 
 
 Landauer (1961) acota el borrado. Bennett (1973) muestra que el cómputo reversible puede evitar esa cota en teoría. Horowitz (2014) es el enunciado práctico para CMOS: la energía por operación y la energía del movimiento de datos fijan la restricción de diseño, muchos órdenes de magnitud por encima de `kT ln 2` para la lógica CMOS irreversible. El OpCounter del artículo compañero implementa `J = sum count * E` con constantes como `E_LUT_READ = 1e-12` julios. Esas constantes son un modelo. El compañero da el total analítico de la semilla 1, 8.6795e-10 julios, para un episodio de juguete. Importar ese número a un artículo sobre demanda no mostraría que el gasto posterior al terminado sea grande. Solo mostraría que el modelo de la compuerta de juguete devolvió ese total. Por eso este artículo no trata el julio del compañero como una medición de saciedad.
 
-Goldman Sachs publicó una nota de análisis titulada «Gen AI: Too Much Spend, Too Little Benefit?» (https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit). La existencia de una nota importante del lado vendedor que cuestiona el gasto en infraestructura en relación con el beneficio es un hecho documental. Las cifras en dólares de la nota no se citan aquí. No se volvieron a leer del PDF primario para este texto, y las estimaciones del lado vendedor no son una contabilidad científica de la energía.
+Goldman Sachs publicó una nota de análisis titulada «Gen AI: Too Much Spend, Too Little Benefit?» (https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit). La existencia de una nota importante del lado vendedor que cuestiona el gasto en infraestructura en relación con el beneficio es un hecho documental. Las cifras en dólares de la nota no se citan aquí, porque las estimaciones del lado vendedor no son una contabilidad científica de la energía.
 
 <div id="27-commit-records-as-the-interface-not-the-demand-estimate" class="anchor-alias" aria-hidden="true"></div>
 
@@ -193,7 +193,7 @@ La unión de conjuntos, en palabras, es: el entorno de ejecución rechaza si se 
 
 Este estudio es una lectura estructurada. Las fuentes son la columna de citas comprobada en el proyecto del 29 al 30 de septiembre de 2026, las notas sobre saciedad y el registro de software del compañero. La Sección 3.3 nombra las mediciones que harían empírica la definición operativa.
 
-Las reglas de diseño de la Sección 4.4 son recomendaciones condicionadas a las definiciones. No son efectos de tratamiento estimados. Un lector puede rechazar una regla sin rechazar la serie de precios de Epoch, y puede aceptar la serie de precios sin aceptar una recomendación de producto.
+Las reglas de diseño de la Sección 4.10 son recomendaciones condicionadas a las definiciones. No son efectos de tratamiento estimados. Un lector puede rechazar una regla sin rechazar la serie de precios de Epoch, y puede aceptar la serie de precios sin aceptar una recomendación de producto.
 
 <div id="33-measurements-specified-and-not-taken" class="anchor-alias" aria-hidden="true"></div>
 
@@ -235,7 +235,7 @@ Etapa B, publicada: compilación a WASM del núcleo de decisión y una vista Web
 
 Etapa C: placa programada para la demostración de la compuerta de confirmación del compañero (péndulo en lazo cerrado con permiso de LUT, Safe PH y CBF del conjunto de energía de Ames); la energía sigue sin medirse. La Alchitry Pt V2 no tiene un medidor de julios integrado. La concordancia de decisiones por UART no es una lectura en vatios. Las especificaciones del fabricante en la página de SparkFun (XC7A100T-2FGG84I, 101,440 celdas lógicas, 240 slices DSP48E1, 4,860 Kb de block RAM, 256 MB de DDR3L) no son resultados de energía de un DUT. Métodos de medición: guía del compañero [/living/fpga-sim/alchitry/#energy](https://research.openie.dev/living/fpga-sim/alchitry/#energy).
 
-Este artículo añade una correspondencia, no una cuarta etapa. La finalización de la tarea, si se codifica como `policy` o `budget_exceeded`, debería aparecer en la misma traza que `energy_veto`, de modo que una división futura (Sección 3.3) pueda agrupar los códigos de motivo. La vista del navegador haría legible esa agrupación. No crearía el corpus que falta. No hemos sintetizado ni medido la placa FPGA.
+Este artículo añade una correspondencia, no una cuarta etapa. La finalización de la tarea, si se codifica como `policy` o `budget_exceeded`, debería aparecer en la misma traza que `energy_veto`, de modo que una división futura (Sección 3.3) pueda agrupar los códigos de motivo. La vista del navegador haría legible esa agrupación. No crearía el corpus que falta, y la energía de la placa sigue sin medirse.
 
 
 <div id="28-fidelity-criteria-and-stop-rules" class="anchor-alias" aria-hidden="true"></div>
@@ -272,7 +272,7 @@ Las series de precios de Epoch (S-2) muestran que la síntesis se abarata en din
 
 Chung, Wu, Ma y Chowdhury (arXiv:[2601.22076](https://arxiv.org/abs/2601.22076), 2026) diagnostican la energía de la inferencia en 1,858 configuraciones: el tipo de tarea por sí solo puede mover la energía de un LLM por respuesta unas 25×; la generación de vídeo puede superar la energía de una imagen en dos órdenes de magnitud. El artículo de *Joule* «Energy use of AI inference, efficiency pathways, and test-time scaling» ([cell.com/joule/fulltext/S2542-4351(26)00114-5](https://www.cell.com/joule/fulltext/S2542-4351(26)00114-5), en línea el 22 de abr. de 2026) estima consultas optimizadas a escala de frontera en un rango mediano por debajo del vatio-hora, a la vez que informa de que el razonamiento largo y las consultas agénticas pueden elevar la energía en más de un orden de magnitud; las ganancias de eficiencia de 8 a 20× están a la vista, no son julios gratuitos. Luccioni, Strubell y Crawford (FAccT 2025) ([doi:10.1145/3715275.3732007](https://doi.org/10.1145/3715275.3732007)) advierten de que la eficiencia sin una parada puede amplificar el gasto total (Jevons). La visión general sobre energía de Epoch AI ([epoch.ai/publications/ai-energy](https://epoch.ai/publications/ai-energy), actualizada en jul. de 2026) separa los modestos costes por consulta de la potencia agregada de los centros de datos, que se duplica con rapidez.
 
-**Lectura para este artículo.** Gratuito en el margen es un enunciado sobre el precio monetario. Los julios escasos son un enunciado físico. La parada operativa es la finalización de la tarea: cuando `C(z) = 1`, más síntesis no eleva el objetivo escrito, y un rechazo `policy` / `budget_exceeded` es un éxito. [Notational Intelligence](/papers/gates/) se ocupa del certificado físico. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) navega los engranajes suficientes más baratos. [Metabolic Intelligence](/products/mei/) se ocupa de los actuadores de la envolvente. Estimaciones ≠ `measured_j` medido en placa.
+**Lectura para este artículo.** Gratuito en el margen es un enunciado sobre el precio monetario. Los julios escasos son un enunciado físico. La parada operativa es la finalización de la tarea: cuando `C(z) = 1`, más síntesis no eleva el objetivo escrito, y un rechazo `policy` / `budget_exceeded` es un éxito. [Notational Intelligence](/papers/gates/) se ocupa del certificado físico. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) navega los engranajes suficientes más baratos. [Metabolic Intelligence](/products/mei/) se ocupa de los actuadores de la envolvente. Las estimaciones no son `measured_j` medido en placa.
 
 <div id="36-protocol-for-a-done-detector-study-not-executed" class="anchor-alias" aria-hidden="true"></div>
 
@@ -427,7 +427,7 @@ Sea `x` el número de llamadas, `s` la duración de la sesión, `J_pre` y `J_pos
 | la posesión de teléfonos es alta (S-5) | el valor marginal de otra llamada al modelo es cero |
 | los precios de las acciones de bicicletas tuvieron auge y caída (S-4) | los hogares alcanzaron un punto de dicha en el transporte |
 
-La columna de la derecha es la lista de inferencias que este artículo rechaza. Cada observación de la izquierda es una cita de la Sección 4 o una variable de la Sección 3. La tabla es la discusión comprimida en una comprobación. Un texto que afirma una frase de la derecha ha abandonado la evidencia.
+La columna de la derecha es la lista de inferencias que este artículo rechaza. Cada observación de la izquierda es una cita de la Sección 4 o una variable de la Sección 3. La tabla es la discusión comprimida en una comprobación. Una frase que afirma una afirmación de la derecha ha abandonado la evidencia.
 
 <div id="413-companion-quantities-that-stay-in-the-companion" class="anchor-alias" aria-hidden="true"></div>
 
@@ -483,7 +483,7 @@ Un modelo que redacta una nota más deprisa puede elevar el rendimiento en notas
 
 ### 5.6 La síntesis gratuita no es actuación gratuita
 
-Los julios de la etapa A son modelados. La etapa B se simularía en un navegador. La etapa C se mediría en placa y es futura. Una orden a un actuador es el bit de confirmación del compañero. Los precios de Epoch están en un eje distinto de los tres. Fundirlos en «IA gratuita» borra la clase de medición. La vía WASM y WebGPU es útil porque permite a un tercero reproducir la traza de decisiones sin poseer la placa Alchitry. Ser útil como réplica no es un vatio.
+Los julios de la etapa A son modelados. La etapa B se simula en un navegador. La etapa C programa la placa, y un medidor sobre ella es una medición posterior. Una orden a un actuador es el bit de confirmación del compañero. Los precios de Epoch están en un eje distinto de los tres. Fundirlos en «IA gratuita» borra la clase de medición. La vía WASM y WebGPU es útil porque permite a un tercero reproducir la traza de decisiones sin poseer la placa Alchitry. Ser útil como réplica no es un vatio.
 
 <div id="57-confidence-is-not-a-certificate" class="anchor-alias" aria-hidden="true"></div>
 
@@ -533,7 +533,7 @@ Falsadores. S-1 falla si la teoría citada no contiene una región de utilidad m
 
 
 
-La misma disciplina se aplica a las especificaciones de FPGA del fabricante. SparkFun enumera celdas lógicas, slices DSP, block RAM y capacidad de DRAM para la Alchitry Pt V2. Esas magnitudes describen una pieza de catálogo. No describen la actividad de conmutación, la potencia estática ni la energía de una traza de confirmación. Un informe posterior de DUT tiene que nombrar el bitstream, el reloj, la carga de trabajo, el medidor y la duración. Mientras no exista ese informe, la placa es un instrumento planificado, y el emulador del navegador es una réplica planificada de la decisión de software, no un adelanto del medidor.
+La misma disciplina se aplica a las especificaciones de FPGA del fabricante. SparkFun enumera celdas lógicas, slices DSP, block RAM y capacidad de DRAM para la Alchitry Pt V2. Esas magnitudes describen una pieza de catálogo. No describen la actividad de conmutación, la potencia estática ni la energía de una traza de confirmación. Un informe posterior de DUT tiene que nombrar el bitstream, el reloj, la carga de trabajo, el medidor y la duración. Mientras no exista ese informe, la placa es un instrumento sin medir, y el emulador del navegador es una réplica de la decisión de software, no un adelanto del medidor.
 
 <div id="7-conclusion" class="anchor-alias" aria-hidden="true"></div>
 
@@ -569,7 +569,7 @@ Los artículos de teoría clasifican por julios hasta la finalización correcta 
 
 ### 8.4 La tendencia de precios en la tesis compartida
 
-*De la tesis compartida, que ahora enuncia solo la forma de la compuerta.* Una tendencia de precios es una afirmación aparte, etiquetada como tal. Epoch AI informa de que el coste de un nivel dado de rendimiento de IA ha caído alrededor del 47 por ciento por trimestre desde 2023, unas 13 veces por año (Emberson y Roodman, *The plunging price of thought*, 22 de septiembre de 2026). Si esa tendencia continúa, la energía se convierte en el coste marginal dominante de la inferencia. Es una tendencia citada con una condición, no un colapso medido. [La corrección ortográfica es global](/papers/spellcheck/) es una prueba de existencia de que cierta inteligencia computacional se convierte en mercancía a precio cero incluido en un paquete.
+*De la tesis compartida.* Una tendencia de precios es una afirmación aparte, etiquetada como tal. Epoch AI informa de que el coste de un nivel dado de rendimiento de IA ha caído alrededor del 47 por ciento por trimestre desde 2023, unas 13 veces por año (Emberson y Roodman, *The plunging price of thought*, 22 de septiembre de 2026). Si esa tendencia continúa, la energía se convierte en el coste marginal dominante de la inferencia. Es una tendencia citada con una condición, no un colapso medido. [La corrección ortográfica es global](/papers/spellcheck/) es una prueba de existencia de que cierta inteligencia computacional se convierte en mercancía a precio cero incluido en un paquete.
 
 <div id="85-cache-hit-pricing" class="anchor-alias" aria-hidden="true"></div>
 
@@ -712,7 +712,7 @@ cargo run --release --bin wca-soc-loop -- \
 
 Se espera, según los registros grabados del compañero: rechazo en la demostración con 0 llamadas al ejecutor; semilla 1 con 1 confirmado, 15 rechazados, energía analítica 8.6795e-10 julios. Esas salidas no estiman la saciedad.
 
-Instrumento de navegador, publicado como Etapa B en https://research.openie.dev/living/fpga-sim/, compartido con el Apéndice B del compañero. El núcleo de decisión se ejecuta en WASM. WebGPU pinta la imagen de la LUT y la traza de confirmación. Comparar la traza con el JSON de Rust. No convertir las marcas de tiempo de la GPU en julios. No marcar la Alchitry Pt V2 como medida. Página del fabricante: https://www.sparkfun.com/alchitry-pt-v2.html. La síntesis más un medidor es la Etapa C, un estudio posterior.
+Instrumento de navegador, publicado como Etapa B en https://research.openie.dev/living/fpga-sim/, compartido con el Apéndice B del compañero. El núcleo de decisión se ejecuta en WASM. WebGPU pinta la imagen de la LUT y la traza de confirmación. Comparar la traza con el JSON de Rust. No convertir las marcas de tiempo de la GPU en julios. No marcar la Alchitry Pt V2 como medida. Página del fabricante: https://www.sparkfun.com/alchitry-pt-v2.html. Un medidor sobre la placa programada de la Etapa C es un estudio posterior.
 
 Indicador factual del repositorio: no se reivindica ningún resultado en placa FPGA.
 

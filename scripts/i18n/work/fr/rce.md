@@ -6,15 +6,13 @@ La lecture économique de cet article se trouve dans son compagnon, [Le marché 
 
 ## 1. Thèse
 
-Il existe deux voies vers l'automatisation informatique autonome. Deux grandeurs les distinguent : l'énergie dépensée par résultat correct, et l'entropie que le système doit résoudre à l'exécution.
+L'automatisation informatique autonome est un espace de conception qui compte de nombreux points. Chaque approche se situe quelque part le long de cinq axes continus : l'énergie dépensée par résultat correct ; l'entropie que le système doit résoudre à l'exécution et, avec elle, le degré de déterminisme de sa sortie ; la solidité de la vérification qui accepte un résultat ; la mesure dans laquelle chaque résultat accepté est réutilisé et se cumule ; et le degré de dépendance de l'approche envers un modèle. Un grand modèle de langage (LLM), modèle statistique de texte, qui écrit chaque modification à partir de l'invite se situe près d'un coin de cet espace : il dépend du modèle pour chaque tâche, tire à chaque fois un nouvel échantillon d'une distribution à forte entropie et paie de nouveau la génération à chaque tâche. La recherche documentaire, les règles, la synthèse, la vérification et le cache occupent de nombreux autres points, et les systèmes réels les combinent.
 
-La première voie génère. Un grand modèle de langage (LLM), modèle statistique de texte, écrit chaque modification à partir de l'invite. Chaque tâche paie de nouveau la génération, et chaque sortie est un nouvel échantillon d'une distribution à forte entropie.
-
-La seconde voie converge. Les humains ont déjà programmé l'essentiel de ce qui sera jamais programmé. Un programme est une machine à états fonctionnelle de base de données : une Forme, de nombreux ajustements. L'intention humaine est à forte entropie. Le plancher de la machine est à faible entropie. Le code converge par construction, si bien que l'essentiel du travail consiste à retrouver un ajustement existant, à l'adapter et à le prouver. Le Reality Code Engine (RCE) est construit sur la seconde voie.
+Le Reality Code Engine (RCE) est un point de cet espace, choisi pour optimiser les cinq axes à la fois. Les humains ont déjà programmé l'essentiel de ce qui sera jamais programmé. Un programme est une machine à états fonctionnelle de base de données : une Forme, de nombreux ajustements. L'intention humaine est à forte entropie. Le plancher de la machine est à faible entropie. Le code converge par construction, si bien que l'essentiel du travail consiste à retrouver un ajustement existant, à l'adapter et à le prouver, et un modèle n'est appelé que lorsque rien de moins cher ne clôt la tâche.
 
 **L'affirmation centrale.** RCE est un écosystème de code complet dans lequel les programmes sont écrits nativement à partir de l'intention. L'intention est écrite une fois, comme une Forme : un état, un ensemble d'événements et une transition pure et totale. La Forme est un codage sans perte de cette intention. Chaque cible (statechart, Rust, Python, XState, SCXML, WASM) est une projection de la Forme, et chaque projection rejoue la trace de la Forme octet pour octet. Un état que la Forme ne déclare pas ne peut pas être écrit, et une entrée hors de son contrat est refusée dès l'entrée. Un programme de l'écosystème ne peut donc pas dériver de son intention comme un programme dans un langage courant dérive de ses commentaires, de ses tests ou de ses autres implémentations, et il n'a besoin d'aucune comparaison de différences ni d'aucun suivi d'erreurs après coup. Chaque ajustement qui franchit la porte est stocké et réutilisé, si bien que l'écosystème se capitalise à mesure qu'il croît ([§2.4](#24-gated-verified-recursive-self-improvement)). Le code écrit dans d'autres langages est une porte d'accès : il entre par élévation ([§6](#6-lift-entering-the-ecosystem-from-other-languages)).
 
-Les deux voies font face à la même porte. La porte est la correction : le prédicat de complétude d'une tâche, $C(z)$, ici les tests de la tâche, une preuve ou une trace d'accord. Parmi les exécutions qui franchissent la porte, les systèmes sont classés par les joules jusqu'à l'achèvement, $J^*$. La correction est une contrainte, pas un score.
+Chaque point de l'espace fait face à la même porte. La porte est la correction : le prédicat de complétude d'une tâche, $C(z)$, ici les tests de la tâche, une preuve ou une trace d'accord. Parmi les exécutions qui franchissent la porte, les systèmes sont classés par les joules jusqu'à l'achèvement, $J^*$. La correction est une contrainte, pas un score.
 
 Mixture of Limits (mélange de limites) est la philosophie : il existe une quantité minimale de toute chose pour accomplir une tâche, et tout surplus est du gaspillage ([Portes de validation mesurées, Partie II](/papers/gates/#part-ii-the-cascade-mixture-of-limits)). RCE est une instance de Mixture of Limits. Ses engrenages s'exécutent du moins cher au plus cher, et le premier engrenage qui franchit la porte clôt la tâche.
 
@@ -22,7 +20,9 @@ flowG est un projet de langage autonome. RCE en est la première démonstration 
 
 Les chiffres d'énergie sont étiquetés selon leur source. `est_j` est une estimation analytique. `reported_j` est un compteur du système d'exploitation ou de la puce. `measured_j` est réservé à un compteur mural et il est vide dans tous les résultats présentés ici.
 
-## 2. Deux voies vers l'autonomie
+<div id="2-two-paths-to-autonomy" class="anchor-alias" aria-hidden="true"></div>
+
+## 2. L'espace de conception de la programmation autonome
 
 ![Une phrase en entrée. Un plancher en sortie. L'intention humaine est à forte entropie ; un entonnoir de conversions de l'intention vers la spécification, vers 626 langages de surface, vers une représentation intermédiaire et vers le code machine perd de l'information à chaque frontière ; tout code aboutit à quelques formes machine ; RCE écrit le sens une seule fois dans une Forme canonique, traite chaque surface comme une projection et laisse gagner la forme correcte la moins chère.](/figures/rce/intent-entropy.svg)
 
@@ -36,18 +36,27 @@ Les chiffres d'énergie sont étiquetés selon leur source. `est_j` est une esti
 
 **Les frontières sont là où le sens diverge.** La même ligne donne des réponses différentes aux bords. En Python, `-3 % 2` vaut 1 et `-7 / 2` vaut -3.5. En C, `-3 % 2` vaut -1, `-7 / 2` vaut -3, et le dépassement signé est indéfini. Un système qui régénère du code à chaque frontière devine à chaque frontière.
 
-**Les deux voies, énoncées comme grandeurs.**
+**Les axes, énoncés comme grandeurs.**
 
-| Voie | Ce qui s'exécute par tâche | Entropie résolue à l'exécution | Énergie par résultat correct |
+| Axe | Une extrémité | L'autre extrémité | Où se situe RCE |
 |---|---|---|---|
-| Générer | Un modèle échantillonne une nouvelle modification | La distribution complète de l'invite | Payée de nouveau à chaque tâche |
-| Converger (RCE) | Recherche, règle, solveur ; un modèle seulement en dernier | Seulement le résidu qu'aucun ajustement stocké ne couvre | Payée une fois par cas nouveau ; ensuite, le plancher du gestionnaire |
+| Énergie par résultat correct | Payée de nouveau en entier à chaque tâche | Payée une fois par cas nouveau ; ensuite, le plancher du gestionnaire | Au plancher sur les tâches couvertes |
+| Entropie résolue à l'exécution, et déterminisme | La distribution complète de l'invite, un nouvel échantillon à chaque fois | Seulement le résidu qu'aucun ajustement stocké ne couvre, une sortie déterministe | Le résidu seulement ; chaque projection est déterministe |
+| Solidité de la vérification | Sortie acceptée après inspection | Tests, couverture et certificat de preuve | La porte complète sur chaque résultat |
+| Réutilisation et cumul | Chaque résultat utilisé une seule fois | Chaque ajustement accepté stocké et réutilisé | Chaque ajustement qui franchit la porte est stocké |
+| Dépendance envers un modèle | Un modèle à chaque tâche | Aucun modèle | Un modèle seulement comme dernier engrenage |
 
-RCE écrit le sens une seule fois, dans une Forme canonique. Chaque langage de surface est une projection de cette Forme, vérifiée pour lui correspondre. Parmi les formes équivalentes, c'est la correcte la moins chère qui s'exécute.
+Les approches diffèrent par degrés sur chaque axe, et les axes interagissent : la réutilisation abaisse l'énergie et l'entropie qui reste à résoudre, et une vérification solide est ce qui rend la réutilisation sûre. RCE écrit le sens une seule fois, dans une Forme canonique. Chaque langage de surface est une projection de cette Forme, vérifiée pour lui correspondre. Parmi les formes équivalentes, c'est la correcte la moins chère qui s'exécute.
+
+La Figure 2 trace les cinq axes et y place les principales classes d'approche.
+
+![Diagramme radar à cinq axes : énergie par résultat correct, déterminisme, solidité de la vérification, réutilisation et cumul, et indépendance envers les modèles. Cinq classes d'approche sont tracées comme des polygones. Un modèle à chaque tâche se situe près du centre sur tous les axes. Une boucle d'agent soumise à une porte de tests est plus haute en vérification. Un modèle avec recherche documentaire et cache est plus haut en réutilisation. La synthèse et la réparation classiques sont hautes en déterminisme et en indépendance envers les modèles. RCE, marqué d'étoiles, se situe sur l'anneau extérieur ou près de lui sur les cinq axes. Les placements sont qualitatifs.](/figures/rce/design-space.svg)
+
+*Figure 2. L'espace de conception de la programmation autonome. Diagramme qualitatif : chaque classe d'approche est placée selon la lecture que fait l'article de la Section 2, sur des niveaux ordinaux, et non par mesure. La dépendance envers un modèle est tracée comme indépendance envers les modèles, de sorte que vers l'extérieur soit mieux sur chaque axe. Une [copie PNG](/figures/rce/design-space.png) est fournie.*
 
 ### 2.1 Programmer, c'est de la théorie du codage
 
-La thèse de cette section est celle de David Charlot : toute la programmation est de la théorie du codage. Un programmeur convertit l'intention entre deux régimes entropiques. L'intention est à forte entropie, une distribution sur des sens. Le code est à faible entropie, une transition déterministe par état. Chaque étape du travail logiciel, d'une exigence à un registre, est une étape de cette conversion. La littérature l'a dit par morceaux depuis soixante-dix ans, dans de nombreuses langues. Cette section assemble les morceaux en un seul argument et y place chaque engrenage de RCE.
+La thèse de cette section est celle de David Charlot : toute la programmation est de la théorie du codage. Un programmeur convertit l'intention le long d'un gradient entre deux régimes entropiques. L'intention est à forte entropie, une distribution sur des sens. Le code est à faible entropie, une transition déterministe par état. Chaque étape du travail logiciel, d'une exigence à un registre, est une étape de cette conversion. La littérature l'a dit par morceaux depuis soixante-dix ans, dans de nombreuses langues. Cette section assemble les morceaux en un seul argument et y place chaque engrenage de RCE.
 
 **La mesure.** Shannon a défini l'entropie d'une source et la capacité d'un canal [40], et mesuré l'anglais imprimé à environ 0,6 à 1,3 bit par lettre [1]. Kolmogorov, écrivant en russe dans *Problemy Peredachi Informatsii* en 1965, a donné trois approches de la quantité d'information et fait de l'approche algorithmique la première : l'information d'un objet est la longueur du plus court programme qui le produit [41]. Solomonoff avait atteint le même objet comme théorie de l'inférence inductive [42], et Chaitin a montré que la taille des programmes obéit à des identités formellement identiques à celles de Shannon [43]. Rissanen a fait de l'idée une règle de choix de modèles, la longueur de description minimale [44]. Ensemble, ils disent qu'un programme est un mot de code : une description d'un comportement, et la plus courte description correcte est le plancher. La règle d'extraction de RCE, garder l'ajustement de moindres joules parmi les ajustements équivalents (Proposition 3), est cette règle avec des joules à la place des bits.
 
@@ -82,7 +91,7 @@ Lue comme théorie du codage, une tâche arrive comme un message dont l'incertit
 | Porte | N'accepte un candidat qu'avec des tests, une couverture et un certificat de preuve | Logique de Hoare [54] ; Curry-Howard [18, 72] |
 | Promotion | Stocke l'ajustement accepté, de sorte que le même résidu coûte G0 la fois suivante | Longueur de description minimale [44] ; effacement de Landauer payé une fois [65] |
 
-Les deux voies du tableau de la Section 2 diffèrent par l'endroit où la conversion est payée. La voie de génération échantillonne la distribution complète de l'invite à chaque tâche, et paie donc à chaque fois le côté à forte entropie. La voie de convergence ne paie que pour le résidu, et une seule fois. La lecture économique de cette différence se trouve dans [Le marché promis à mille milliards de dollars de la programmation par IA, Section 4](/papers/ai-coding-market/#4-the-theory-that-prices-the-task). La règle d'arrêt derrière l'ordre des engrenages est [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits), et l'arrêt par tâche est la [satiété de la tâche](/papers/satiation/).
+Les positions sur les axes de la Section 2 diffèrent par l'endroit où la conversion est payée. Une approche qui échantillonne la distribution complète de l'invite à chaque tâche paie à chaque fois le côté à forte entropie. Une approche qui stocke et réutilise les ajustements acceptés ne paie que pour le résidu, et une seule fois. La plupart des systèmes se situent entre ces extrémités, et RCE se situe à l'extrémité de la réutilisation. La lecture économique de cette différence se trouve dans [Le marché promis à mille milliards de dollars de la programmation par IA, Section 4](/papers/ai-coding-market/#4-the-theory-that-prices-the-task). La règle d'arrêt derrière l'ordre des engrenages est [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits), et l'arrêt par tâche est la [satiété de la tâche](/papers/satiation/).
 
 ### 2.3 L'écosystème à grand N
 
@@ -96,6 +105,12 @@ L'affirmation du [§1](#1-thesis) est mesurée directement. Le banc a été pré
 | Porte à l'entrée, entrées | Cinq types de charge malformée (mauvais type, null, champ manquant, vide, imbriqué) tous refusés, sans aucun résultat accepté | 10 000 | 10 000 | 0 |
 | Porte à l'entrée, spécifications | Une spécification avec un flux vers un nœud non déclaré est refusée avant la compilation | 10 000 | 10 000 | 0 |
 
+La Figure 3 montre les mêmes décomptes.
+
+![Diagramme en barres horizontales de cinq vérifications sur 10 000 Formes. L'encodage sans perte, la projection déterministe, la porte d'entrée sur les entrées mal formées et la porte d'entrée sur les spécifications tiennent chacune sur 10 000 de 10 000. La relecture de la trace Python tient sur 9 999 de 10 000. Zéro appel de modèle.](/figures/rce/ecosystem-checks.svg)
+
+*Figure 3. L'écosystème à grand N. Figure de données : les cinq vérifications du tableau ci-dessus sur 10 000 Formes préenregistrées, moteur gelé au commit `a079967`, 0 appel de modèle, avec des intervalles de Wilson à 95 % calculés à partir des décomptes. Source : [`bench/ecosystem`](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ecosystem/). Une [copie PNG](/figures/rce/ecosystem-checks.png) est fournie.*
+
 L'unique échec Python est compté comme un échec ; la même Forme et les mêmes événements se rejouent à l'identique sous 32 graines de hachage dans le test de régression `tests/form_ecosystem_regress.rs`. L'énergie est ici `est_j` seulement ; toute l'exécution a pris 393 s de temps CPU sur un cœur. Les Formes générées sont petites, si bien que ce tableau mesure le codage, les projections et la porte. Les Formes élevées à partir de programmes réels sont mesurées selon le protocole du [§8.7](#87-lift-coverage-across-languages).
 
 ### 2.4 Auto-amélioration récursive, sous porte et vérifiée
@@ -107,6 +122,12 @@ RCE reprend la structure de la machine de Gödel et la bibliothèque de Voyager,
 **Proposition R1 (correction monotone).** Si chaque changement promu passe la vérification de sa frontière, et si les vérifications des autres frontières sont inchangées, alors toute propriété établie par ces vérifications avant la promotion tient encore après elle.
 
 **Proposition R2 (cumul).** Soit une charge de travail, multiensemble de tâches, et soit un gestionnaire promu qui clôt toute tâche de sa forme. Alors le nombre d'escalades au tour t est non croissant en t, et une correction promue avant le tour 1 abaisse les escalades cumulées de tout horizon du nombre d'escalades qu'elle clôt à chaque tour ultérieur. Dans la charge de travail de référence du playground, les escalades cumulées sur huit tours passent de 21 à 15 avec une correction aux puits, et atteignent zéro au dernier tour dans les deux cas, chaque tâche étant close correctement et aucune promotion refusée.
+
+La Figure 4 trace le mécanisme des Propositions R1 et R2 avec les totaux de la charge de travail de référence.
+
+![Diagramme de la pile de RCE en six niveaux, de l'intention en haut, en passant par la Forme, la porte, les projections et l'environnement d'exécution, jusqu'au matériel et à l'énergie. Une correction promue au niveau de l'environnement d'exécution après avoir passé sa vérification de frontière est représentée par des flèches qui montent à travers chaque niveau au-dessus d'elle. Un petit diagramme en barres à côté donne les escalades cumulées sur huit tours de la charge de travail de référence du playground : 21 sans correction et 15 avec une correction aux puits.](/figures/rce/stack-compounding.svg)
+
+*Figure 4. Les corrections se cumulent vers le haut. Diagramme de la pile, avec un encart de données : escalades cumulées sur huit tours de la charge de travail de référence du playground, 21 sans correction et 15 avec une correction aux puits (Proposition R2 ; [RCE Playground](/playground/rce/#compounding)). Une [copie PNG](/figures/rce/stack-compounding.png) est fournie.*
 
 **Proposition R3 (coût décroissant).** Puisqu'un gestionnaire promu est exécuté à la place d'un appel de modèle, et que son coût est le nombre d'opérations du gestionnaire tarifé par la table du substrat, l'énergie d'un tour descend vers l'énergie des seuls gestionnaires à mesure que les escalades descendent vers zéro.
 
@@ -280,6 +301,12 @@ Une vérification qui échoue localise la rupture à la frontière où elle se p
 
 `tests/form_targets.rs` pilote une spécification arithmétique à onze opérateurs avec 29 événements de bord plus 500 valeurs de bord aléatoires avec graine. Les cibles générées en Rust, Python, WASM, XState et SCXML impriment la trace de référence octet par octet, y compris les bords arithmétiques. C'est du test différentiel dans la lignée de McKeeman et de Csmith [86] : l'accord entre implémentations indépendantes sur un ensemble d'entrées déclaré. Ce n'est ni de la validation de traduction [85] ni un compilateur vérifié. Il couvre les onze opérateurs et les 529 événements du test, et ne dit rien des entrées hors de ceux-ci. Les résultats Z3 et Kani ci-dessous sont la vérification.
 
+La Figure 5 montre les cinq projections d'une Forme et l'aller-retour des deux cibles en diagramme d'états.
+
+![Diagramme : une Forme, faite d'un état, d'événements et d'une transition pure et totale, est projetée par des compilations déterministes vers cinq cibles : Rust, Python, WASM, XState et SCXML. Des flèches pleines vont de la Forme à chaque cible. Des flèches en pointillés reviennent de XState et SCXML vers la Forme, et montrent l'aller-retour à des octets identiques et le même hachage de forme. Rust, Python et WASM rejouent la trace de référence octet pour octet.](/figures/rce/form-projections.svg)
+
+*Figure 5. Une Forme, de nombreuses projections. Diagramme : projection déterministe vers cinq cibles ([§4.5](#45-the-form-compiler)) ; les projections XState et SCXML se décodent en octets identiques ([§2.3](#23-the-ecosystem-at-large-n)) ; les cinq cibles impriment la trace de référence octet pour octet sur les 529 événements de `tests/form_targets.rs`. Une [copie PNG](/figures/rce/form-projections.png) est fournie.*
+
 ### 5.2 Réécritures prouvées dans Z3
 
 Les règles de réécriture vérifiées ont une filiation. Ruler infère et vérifie des règles de réécriture par saturation d'égalités sans modèle dans la boucle [87]. Les 3 règles sur 16 proposées par le modèle et admises en Section 5.5 sont donc un énoncé sur la porte, qui en a refusé 13, et non une affirmation qu'un modèle serait la meilleure source de règles.
@@ -335,6 +362,12 @@ Une tâche de programmation est mesurée ici par les **bits d'intention** dont e
 | L1 une instruction, Java, fichier entier | ManySStuBs4J 2.0 [107], fichier du commit parent avec les index des méthodes et des gardes du projet | 21 320 | 13 586 | 0,637 | 0,631 à 0,644 | 4,8 | 0 |
 | L1 une instruction, Python | TSSB-3M v1.0.0, fragments 14 et 15 [108] | 157 089 | 27 266 | 0,174 | 0,172 à 0,175 | 4,8 | 0 |
 
+La Figure 6 représente les lignes du tableau avec leurs intervalles.
+
+![Diagramme en barres des taux de résolution sur du code réservé, avec des intervalles de Wilson à 95 pour cent. L0 un token sur neuf dépôts : 99,95 pour cent de 520 821. L0 un token sur quatre dépôts jamais réglés : 100 pour cent de 23 015. L1 Java fichier entier : 63,7 pour cent de 21 320. L1 Java fragment seul : 38,6 pour cent de 24 072. L1 Python fragment seul : 17,4 pour cent de 157 089. Zéro appel de modèle.](/figures/rce/lift-ladder.svg)
+
+*Figure 6. L'échelle de réparation sur le code élevé. Figure de données : partition de test réservée, moteur gelé, emplacement donné, porte d'identité des tokens, 0 appel de modèle ; intervalles de Wilson à 95 % calculés à partir des décomptes. Sources : mutants de type PIT [109], ManySStuBs4J 2.0 [107], TSSB-3M v1.0.0 [108] ; lignes par tâche dans [`bench/ladder`](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/). Une [copie PNG](/figures/rce/lift-ladder.png) est fournie.*
+
 L2 à L4 sont mesurés sur l'ensemble réservé Defects4J de 288 bogues ([Section 8.1](#81-defects4j)). L5 à L7 suivent les protocoles de la [Section 8.2](#82-swe-bench-lite-offline). La méthode, la porte et l'énergie de chaque ligne suivent.
 
 Les taux se lisent comme des bits d'intention. En L0, les bits manquants sont presque tous sur la ligne, et un voisinage à un token ordonné par un a priori les fournit avec une médiane de 2,3 bits. Sur la ligne L1 à bloc seul, le moteur ne voit que le bloc de 7 lignes. Il clôt les catégories dont les bits sont dans le bloc (Java : opérateur changé 91 %, littéral booléen inversé 84 %, arguments permutés 82 % ; Python : littéral booléen changé 98,8 %, arguments permutés 99,4 %) et laisse ouvertes celles dont les bits sont hors du bloc : les noms de méthodes (22 %) et les identifiants (37 %) exigent le fichier et ses types, et les nouvelles conjonctions (3 % à 7 %) et les réécritures d'instructions entières (Python, 1,2 % d'une catégorie qui représente 34 % du corpus) sont une intention nouvelle. L'intention nouvelle est ce qu'un fournisseur (une spécification, un test, une personne ou un modèle local) apporte une fois, après quoi l'ajustement est dans l'index.
@@ -364,7 +397,7 @@ Le sous-échantillon L1 construit son index de projet à partir de ses seules 2 
 
 ## 7. Preuves de réutilisation
 
-La seconde voie repose sur un fait d'ingénierie : le code est réutilisé à toutes les échelles. Chaque méthode ci-dessous le mesure différemment.
+La position de RCE sur l'axe de la réutilisation repose sur un fait d'ingénierie : le code est réutilisé à toutes les échelles. Chaque méthode ci-dessous le mesure différemment.
 
 | Méthode | Source | Constat |
 |---|---|---|
@@ -461,10 +494,10 @@ Fixés avant les exécutions qu'ils mettent à l'épreuve.
 
 | ID | Observation | Réfute |
 |---|---|---|
+| RCE-F0 | Sur une exécution préenregistrée d'au moins 10 000 Formes, une projection imprime une trace qui diffère de la trace de référence de la Forme, ou une entrée malformée est acceptée | L'affirmation que les projections sont fidèles et que la porte refuse dès l'entrée |
 | RCE-F1 | Sur la tranche réservée, G0 à G2 à règles figées résolvent moins de 10 % des tâches avec 0 appel de modèle | L'affirmation que la plupart des ajustements existent déjà pour la réparation à cette échelle |
 | RCE-F2 | Les correctifs identiques octet pour octet ou équivalents représentent moins de la moitié des tâches réservées résolues | La lecture de la porte comme plus que de la plausibilité sur les tâches couvertes |
-| RCE-F3 | Sous le compteur mural, les joules bruts par tâche résolue du solveur RCE dépassent ceux de la référence à modèle la moins chère sur les tâches que tous deux résolvent | L'avantage en joules de la seconde voie sur les tâches couvertes |
-| RCE-F0 | Sur une exécution préenregistrée d'au moins 10 000 Formes, une projection imprime une trace qui diffère de la trace de référence de la Forme, ou une entrée malformée est acceptée | L'affirmation que les projections sont fidèles et que la porte refuse dès l'entrée |
+| RCE-F3 | Sous le compteur mural, les joules bruts par tâche résolue du solveur RCE dépassent ceux de la référence à modèle la moins chère sur les tâches que tous deux résolvent | L'avantage en joules de RCE sur les tâches couvertes |
 | RCE-F4 | Dans le protocole de convergence de la Section 8.6, moins de la moitié des spécifications sans entrée bloquée atteignent un tour à zéro appel de modèle en 20 tours | Compiler le modèle hors de la boucle |
 
 ## 11. Travail à terminer

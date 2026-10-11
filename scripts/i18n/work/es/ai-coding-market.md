@@ -8,9 +8,9 @@
 
 El mercado billonario de la programación con IA es la afirmación hiperbólica e informada de David Charlot, y las proyecciones reales confirman su escala. Una estimación de capital riesgo sitúa el valor de los desarrolladores de software del mundo en unos 3 billones de dólares al año y llama a la programación con IA un mercado capaz de sostener "incluso a un gigante de un billón de dólares" [1]. Dos empresas de programación con IA declararon más de 1.000 millones y más de 2.500 millones de dólares de ingresos anualizados con un año de diferencia [5, 6]. Un laboratorio de frontera está valorado en 380.000 millones de dólares, y su producto de programación es su escaparate [6]. El volumen de tokens de un proveedor pasó de 9,7 billones a más de 3,2 mil billones de tokens al mes en dos años [8]. La inversión de capital de las mayores empresas tecnológicas superó los 400.000 millones de dólares en 2025 [10].
 
-Todas estas proyecciones suponen lo mismo. Existe un solo camino hacia la automatización informática autónoma. Es de alta energía, alto cómputo, alta entropía y desorden. Un modelo está en el bucle de cada tarea, y cada tarea paga una renta por token.
+Todas estas proyecciones suponen lo mismo: que el espacio de la automatización informática autónoma tiene una sola dirección. A lo largo de ella, la energía, el cómputo y la entropía suben juntos, un modelo está en el bucle de cada tarea y cada tarea paga una renta por token. El espacio tiene más direcciones que esa. Los enfoques se sitúan a lo largo de ejes continuos: la energía por tarea, la entropía y el determinismo, la solidez de la verificación, la reutilización y la acumulación, y la dependencia del modelo. Existen muchas combinaciones, y los sistemas reales mezclan varias. El error del relato no es ningún enfoque concreto. Es el supuesto de que el espacio tiene una sola dirección.
 
-El [artículo de investigación de RCE](/papers/rce/) mide un segundo camino. RCE es un ecosistema de código nativo. Un programa se escribe una sola vez, a partir de la intención, como una Forma, una codificación sin pérdidas del estado, los eventos y las transiciones puras, y cada lenguaje de destino es una proyección fiel de ella. Un estado que la Forma no declara no puede escribirse, de modo que un programa erróneo se rechaza en el punto de entrada en lugar de encontrarse y corregirse después. Cada ajuste que pasa la compuerta se almacena y se reutiliza, de modo que el ecosistema crece de forma acumulativa. En 10.000 Formas prerregistradas, con un motor congelado y 0 llamadas a modelos, cada Forma hace el viaje de ida y vuelta a bytes idénticos, cada proyección es determinista, cada entrada malformada se rechaza en el punto de entrada y la proyección en Python reproduce la traza de referencia en 9.999 ([RCE §2.3](/papers/rce/#23-the-ecosystem-at-large-n)). El código de otros lenguajes entra por elevación, y en el código elevado los engranajes de reparación restauran 520.541 de 520.821 fallos de un token y el 63,7% de 21.320 errores de una sentencia en Java con 0 llamadas a modelos ([RCE §6](/papers/rce/#6-lift-entering-the-ecosystem-from-other-languages)). Donde ese camino cubre una tarea, el coste marginal de la tarea cae hacia la energía necesaria para ejecutarla, y un mercado con precios basados en la generación pierde su base en esa tarea. Este ensayo separa las proyecciones de las mediciones, nombra lo que supone cada proyección y señala dónde se rompe.
+El [artículo de investigación de RCE](/papers/rce/) mide un punto de ese espacio, elegido para optimizar los cinco ejes a la vez. RCE es un ecosistema de código nativo. Un programa se escribe una sola vez, a partir de la intención, como una Forma, una codificación sin pérdidas del estado, los eventos y las transiciones puras, y cada lenguaje de destino es una proyección fiel de ella. Un estado que la Forma no declara no puede escribirse, de modo que un programa erróneo se rechaza en el punto de entrada en lugar de encontrarse y corregirse después. Cada ajuste que pasa la compuerta se almacena y se reutiliza, de modo que el ecosistema crece de forma acumulativa. En 10.000 Formas prerregistradas, con un motor congelado y 0 llamadas a modelos, cada Forma hace el viaje de ida y vuelta a bytes idénticos, cada proyección es determinista, cada entrada malformada se rechaza en el punto de entrada y la proyección en Python reproduce la traza de referencia en 9.999 ([RCE §2.3](/papers/rce/#23-the-ecosystem-at-large-n)). El código de otros lenguajes entra por elevación, y en el código elevado los engranajes de reparación restauran 520.541 de 520.821 fallos de un token y el 63,7% de 21.320 errores de una sentencia en Java con 0 llamadas a modelos ([RCE §6](/papers/rce/#6-lift-entering-the-ecosystem-from-other-languages)). Donde RCE cubre una tarea, el coste marginal de la tarea cae hacia la energía necesaria para ejecutarla, y un mercado con precios basados en la generación pierde su base en esa tarea. Este ensayo separa las proyecciones de las mediciones, nombra lo que supone cada proyección y señala dónde se rompe.
 
 **Tesis compartida, enunciada una vez para todos los artículos.** La energía para ejecutar es la única métrica verdadera de la inteligencia computacional. Todos los demás factores se reducen a cero. La forma de compuerta define lo que eso significa. Entre las ejecuciones que cumplen el predicado de completitud de la tarea $C(z)$ dentro del presupuesto y el plazo declarados, los sistemas se clasifican por julios hasta la finalización, $J^*$. La corrección, los plazos y el tamaño de la tarea son la compuerta, no términos de la puntuación. Los parámetros, los tokens, las puntuaciones en benchmarks y los precios tienen peso cero en la clasificación ([Agencia, Sección 1](/papers/agency/#1-thesis)). Las estimaciones nunca son `measured_j`.
 
@@ -70,6 +70,12 @@ Los ingresos que el mercado declara hoy están en los miles de millones. El bill
 
 Anthropic declara que la ronda financia "ampliaciones de infraestructura" [6]. Ingresos, valoración y cómputo son una sola apuesta.
 
+La Figura 1 sitúa en un solo eje las cifras en dólares de las Secciones 2.1 a 2.3 y 2.6, marcadas con la etiqueta que lleva cada fuente.
+
+![Gráfico de puntos en escala logarítmica de las cifras en dólares de las tablas del ensayo. Proyecciones: contribución de los desarrolladores, unos 3 billones de dólares; valor de la IA generativa, de 2,6 a 4,4 billones; gasto mundial en IA, 1,5 billones; mercado de herramientas de código con IA, 9,35 mil millones en 2026 y 29,96 mil millones en 2031. Estimación: inversión de capital de más de 400 mil millones. Estimaciones de encuesta: gasto empresarial en IA generativa, 37 mil millones, y gasto en herramientas de programación con IA, 4,0 mil millones. Datos comunicados por las empresas: ingresos anualizados de Claude Code de más de 2,5 mil millones y de Cursor de más de 1 mil millones.](/figures/ai-coding-market/spend-by-label.svg)
+
+*Figura 1. Cifras en dólares por etiqueta. Figura de datos, escala logarítmica. Fuentes: Appenzeller y Li [1], Menlo Ventures [2], Mordor Intelligence [3], Cursor [5], Anthropic [6], IEA [10], McKinsey [15], Gartner [24]. Se ofrece una [copia PNG](/figures/ai-coding-market/spend-by-label.png).*
+
 ### 2.4 Inferencia, tokens y economía unitaria
 
 | Afirmación | Número | Etiqueta | Fuente |
@@ -83,6 +89,12 @@ Anthropic declara que la ronda financia "ampliaciones de infraestructura" [6]. I
 
 Dos frases de las fuentes enuncian la economía sin rodeos. Pichai: "muchas empresas ya están agotando sus presupuestos anuales de tokens, y solo estamos en mayo" [8]. Appenzeller y Li: "Durante décadas, el coste del desarrollo de software fue casi exclusivamente coste de personas, pero ahora los LLM añaden un componente sustancial de gasto operativo" [1].
 
+La Figura 2 representa la serie de tokens.
+
+![Gráfico de líneas en escala logarítmica de los tokens procesados por mes en Google: 9,7 billones en 2024, unos 480 billones en 2025 y más de 3,2 mil billones en mayo de 2026, según la empresa.](/figures/ai-coding-market/tokens.svg)
+
+*Figura 2. Tokens procesados por mes en Google. Figura de datos, comunicada por la empresa, escala logarítmica. Fuente: Pichai [8]; la nota sobre el uso de tokens es de Bai, Huang y Wang [9]. Se ofrece una [copia PNG](/figures/ai-coding-market/tokens.png).*
+
 ### 2.5 Precio por token
 
 | Afirmación | Número | Etiqueta | Fuente |
@@ -92,7 +104,13 @@ Dos frases de las fuentes enuncian la economía sin rodeos. Pichai: "muchas empr
 | Coste de inferencia a rendimiento equivalente | baja unas 10 veces al año: de 60 dólares por millón de tokens en 2021 a 0,06 dólares | Estimación | Appenzeller, a16z [20] |
 | Rebaja del precio de la API de DeepSeek, 29 de septiembre de 2025 | coste para los desarrolladores "reducido en más del 50%" | Declarado por la empresa | DeepSeek [21] |
 
-Las 13 veces al año de [4] son un punto dentro de un rango amplio [34]. La caída la impulsan la competencia y los pesos abiertos, como muestra la rebaja de DeepSeek [21]. No necesita ninguna contabilidad energética. Es el primer descenso de la sección 6. El segundo camino añade otro distinto: las llamadas por tarea.
+Las 13 veces al año de [4] son un punto dentro de un rango amplio [34]. La caída la impulsan la competencia y los pesos abiertos, como muestra la rebaja de DeepSeek [21]. No necesita ninguna contabilidad energética. Es el primer descenso de la sección 6. La reutilización añade otro distinto: las llamadas por tarea.
+
+La Figura 3 dibuja las dos series de precios.
+
+![Gráfico en escala logarítmica del precio por millón de tokens a capacidad fija. Una estimación de a16z cae de 60 dólares en 2021 a 0,06 dólares en 2024, unas diez veces al año. Una pendiente discontinua de Epoch AI de unas trece veces al año desde 2023 se dibuja indexada a diez dólares en 2023.](/figures/ai-coding-market/price-trend.svg)
+
+*Figura 3. Precio de un nivel fijo de capacidad. Figura de datos, escala logarítmica: los extremos de a16z son los publicados [20]; la línea de Epoch AI es la tasa declarada de unas 13 veces al año desde 2023 [4], indexada a un inicio arbitrario solo para mostrar la pendiente. El rango por hito procede de Epoch AI [34]. Se ofrece una [copia PNG](/figures/ai-coding-market/price-trend.png).*
 
 ### 2.6 Energía y capital
 
@@ -100,7 +118,7 @@ Las 13 veces al año de [4] son un punto dentro de un rango amplio [34]. La caí
 |---|---|---|---|
 | Electricidad de centros de datos, 2024 | unos 415 TWh, alrededor del 1,5% de la electricidad mundial | Estimación | IEA, *Energy and AI* [11] |
 | Electricidad de centros de datos, 2030 | unos 945 TWh, escenario base | Proyección | [11] |
-| Actualización: de 2025 a 2030 | de 485 TWh a 950 TWh, alrededor del 3% de la demanda mundial | Estimación y proyección | IEA, *Key Questions on Energy and AI* [10] |
+| Electricidad de centros de datos, de 2025 a 2030 | de 485 TWh a 950 TWh, alrededor del 3% de la demanda mundial | Estimación y proyección | IEA, *Key Questions on Energy and AI* [10] |
 | Inversión de capital de las mayores empresas tecnológicas | más de 400.000 millones de dólares en 2025, con un aumento previsto de otro 75% en 2026 | Declarado y proyectado | [10] |
 | Inversión de capital de Alphabet | 31.000 millones de dólares en 2022; entre 180.000 y 190.000 millones previstos en 2026 | Declarado por la empresa y previsión | Pichai [8] |
 | Energía por tarea | baja al menos un orden de magnitud al año; las tareas de razonamiento y agénticas usan "cientos o miles de veces más energía por consulta que la generación de texto simple" | Estimación | [10] |
@@ -109,7 +127,13 @@ Las 13 veces al año de [4] son un punto dentro de un rango amplio [34]. La caí
 | Gasto mundial en IA, 2025 | alrededor de 1,5 billones de dólares | Proyección | Gartner [24] |
 | Ingresos que la inversión de capital debe recuperar | "AI's $600B question" | Análisis | Sequoia Capital [23] |
 
-La renta que hay que servir es renta de hardware. Inversiones y compromisos de este tamaño se amortizan mediante un uso con precio superior a su energía. Esa es la base que el segundo camino elimina en las tareas cubiertas.
+La renta que hay que servir es renta de hardware. Inversiones y compromisos de este tamaño se amortizan mediante un uso con precio superior a su energía. Esa es la base que la reutilización elimina en las tareas cubiertas.
+
+La Figura 4 sitúa la electricidad proyectada de la red junto a los julios medidos de una tarea.
+
+![Dos paneles. Panel a: electricidad de centros de datos, 415 TWh en 2024 según la estimación de la IEA, un rango de 485 a 950 TWh para 2025 a 2030 y 945 TWh proyectados para 2030. Panel b, escala logarítmica: una instrucción de texto mediana medida por su operador en 0,24 Wh, o 864 julios; tareas de reparación resueltas por RCE a 0,10 a 0,40 julios estimados y 0,026 a 0,056 julios en un contador de paquete RAPL.](/figures/ai-coding-market/energy.svg)
+
+*Figura 4. Energía en la red y en la tarea. Figura de datos. Panel a: estimación y proyección de la IEA [10, 11]. Panel b, escala logarítmica: una instrucción de texto mediana, 0,24 Wh medidos por el operador [12]; tareas de reparación resueltas por RCE, `est_j` y `reported_j` ([RCE §6.3](/papers/rce/#63-energy)). Los dos paneles están en unidades distintas y no se convierten entre sí. Se ofrece una [copia PNG](/figures/ai-coding-market/energy.png).*
 
 ### 2.7 Evidencia de productividad
 
@@ -121,13 +145,13 @@ La renta que hay que servir es renta de hardware. Inversiones y compromisos de e
 | METR, principios de 2025 | 16 desarrolladores experimentados de código abierto, 246 tareas | Ensayo controlado aleatorizado | 19% más lentos con IA | Becker et al. [25] |
 | METR, actualización de 2026 | nueva cohorte | Ensayo controlado aleatorizado | los autores llaman a los nuevos datos "una señal poco fiable" | METR [26] |
 
-Los efectos medidos van de una ralentización del 19% a una aceleración del 56% en una tarea de juguete. Los dos factores de la estimación de valor, el recuento de desarrolladores y el múltiplo de productividad, son blandos. Eso debilita el billón. También debilita cualquier afirmación de que el valor que libera el segundo camino sea un número conocido.
+Los efectos medidos van de una ralentización del 19% a una aceleración del 56% en una tarea de juguete. Los dos factores de la estimación de valor, el recuento de desarrolladores y el múltiplo de productividad, son blandos. Eso debilita el billón. También debilita cualquier afirmación de que el valor que libera la reutilización sea un número conocido.
 
 ## 3. Lo que suponen las proyecciones
 
-Leídas en conjunto, las proyecciones descansan sobre cuatro supuestos. Cada uno es un enunciado sobre el camino, no sobre el valor del software.
+Leídas en conjunto, las proyecciones descansan sobre cuatro supuestos. Cada uno es un enunciado sobre una dirección del espacio de diseño, no sobre el valor del software.
 
-1. **Un solo camino: la generación.** Cada cambio lo escribe un modelo. La estimación de valor escala la productividad por el modelo, y la ilustración de costes pone precio a cada consulta [1].
+1. **Una sola dirección: la generación.** Cada cambio lo escribe un modelo. La estimación de valor escala la productividad por el modelo, y la ilustración de costes pone precio a cada consulta [1].
 2. **Alta energía y alto cómputo.** Se proyecta que el volumen de tokens, la electricidad de los centros de datos y la inversión de capital crezcan juntos [8, 10, 11]. La energía por consulta cae, y los tokens por tarea suben más deprisa [9, 10].
 3. **Renta por token.** Los ingresos se facturan por token o por puesto cuyo coste son tokens. Se proyecta que el coste anual en tokens de un desarrollador alcance la escala de un salario [1].
 4. **La IA en el bucle para siempre.** La tarea 10.000 cuesta lo que cuesta la tarea 1, porque nada de lo que el modelo aprendió en la tarea 1 se ejecuta sin el modelo en la tarea 10.000.
@@ -188,18 +212,18 @@ Son mediciones, etiquetadas como las etiqueta RCE. Proceden del [artículo de in
 
 ## 7. Demanda
 
-Tareas más baratas pueden aumentar la demanda total. El ensayo de capital riesgo lo espera: "creemos que en este caso se cumple la paradoja de Jevons" [1]. [Saciedad de la tarea frente al rebote agregado en la demanda de IA](/papers/satiation/) separa los dos efectos. El apetito por tarea se detiene en el predicado de completitud. El uso agregado aún puede crecer, porque una síntesis más barata abre tareas nuevas. El segundo camino cambia el primer efecto y deja abierto el segundo. Un mercado mayor de tareas cubiertas es un mercado cuyo coste marginal es el suelo, no la frontera. La única elasticidad publicada es pequeña. Entre tareas de la muestra de la API de Anthropic, cada aumento del 1% en el coste se asocia con una disminución del 0,29% en la frecuencia de uso [29]. Es una relación transversal entre tareas, no un cambio de precio en el tiempo. Leída tal cual, la demanda es inelástica: las bajadas de precio reducen los ingresos sobre un conjunto fijo de tareas, lo que respalda la lectura de la renta que hace este ensayo, y por sí solas no hacen que la programación se use mucho más.
+Tareas más baratas pueden aumentar la demanda total. El ensayo de capital riesgo lo espera: "creemos que en este caso se cumple la paradoja de Jevons" [1]. [Saciedad de la tarea frente al rebote agregado en la demanda de IA](/papers/satiation/) separa los dos efectos. El apetito por tarea se detiene en el predicado de completitud. El uso agregado aún puede crecer, porque una síntesis más barata abre tareas nuevas. La reutilización cambia el primer efecto y deja abierto el segundo. Un mercado mayor de tareas cubiertas es un mercado cuyo coste marginal es el suelo, no la frontera. La única elasticidad publicada es pequeña. Entre tareas de la muestra de la API de Anthropic, cada aumento del 1% en el coste se asocia con una disminución del 0,29% en la frecuencia de uso [29]. Es una relación transversal entre tareas, no un cambio de precio en el tiempo. Leída tal cual, la demanda es inelástica: las bajadas de precio reducen los ingresos sobre un conjunto fijo de tareas, lo que respalda la lectura de la renta que hace este ensayo, y por sí solas no hacen que la programación se use mucho más.
 
 ## 8. Proposiciones y protocolos
 
-**Proposición E1 (las curvas de coste se cruzan).** Para un flujo de tareas en un repositorio, el coste acumulado por tarea resuelta del segundo camino cae por debajo del de un agente de generación tras un número finito de tareas. *Protocolo:* ejecutar el [Protocolo 8.3 de RCE](/papers/rce/#83-a-wall-meter) y un agente de generación simple sobre el mismo flujo de incidencias bajo un medidor de pared. Informar de `measured_j` y de los dólares por tarea resuelta según el índice de la tarea, y del índice de cruce.
+**Proposición E1 (las curvas de coste se cruzan).** Para un flujo de tareas en un repositorio, el coste acumulado por tarea resuelta de RCE cae por debajo del de un agente de generación tras un número finito de tareas. *Protocolo:* ejecutar el [Protocolo 8.3 de RCE](/papers/rce/#83-a-wall-meter) y un agente de generación simple sobre el mismo flujo de incidencias bajo un medidor de pared. Informar de `measured_j` y de los dólares por tarea resuelta según el índice de la tarea, y del índice de cruce.
 
 **Proposición E2 (el precio sigue al suelo).** Donde una capacidad de programación está cubierta por recuperación y reglas, su precio de mercado cae hacia la energía para ejecutarla más el coste de la demostración. *Protocolo:* seguir en el tiempo los precios de lista de una clase de capacidad cubierta frente a su energía de ejecución medida, a la manera de la serie de precios del corrector ortográfico.
 
-**Proposición E3 (la escala de cómputo no es un foso en las tareas cubiertas).** En las tareas que cubre el segundo camino, la tasa de resolución no aumenta con el cómputo del último engranaje. *Protocolo:* ejecutar el [Protocolo 8.2 de RCE](/papers/rce/#82-swe-bench-lite-offline) sin modelo, con un modelo local pequeño y con un modelo de frontera como último engranaje. Comparar las tasas de resolución en las tareas cerradas antes del último engranaje.
+**Proposición E3 (la escala de cómputo no es un foso en las tareas cubiertas).** En las tareas que cubre RCE, la tasa de resolución no aumenta con el cómputo del último engranaje. *Protocolo:* ejecutar el [Protocolo 8.2 de RCE](/papers/rce/#82-swe-bench-lite-offline) sin modelo, con un modelo local pequeño y con un modelo de frontera como último engranaje. Comparar las tasas de resolución en las tareas cerradas antes del último engranaje.
 
 **Proposición E4 (la parte de los tokens en los ingresos).** En un repositorio donde la cobertura crece, la parte del coste de la tarea pagada en tokens cae con la cobertura. *Protocolo:* registrar tokens, julios y dólares por tarea cerrada y por ronda en el protocolo de convergencia de RCE con un resolutor de modelo con precio ([RCE §8.6](/papers/rce/#86-convergence-of-model-calls-at-large-n)), etiquetados, e informar de la parte de los tokens en el coste por ronda.
 
-**Proposición E5 (cobertura).** La proporción del volumen real de tareas de programación que cae en clases cubiertas por el segundo camino es medible. *Protocolo:* extraer una muestra aleatoria de pull requests fusionadas de repositorios públicos (GitHub informa de 518,7 millones fusionadas en un año [17]), clasificar cada una según si los engranajes congelados G0 a G2 producen un parche que pasa la compuerta, e informar de la fracción cubierta con un intervalo del 95%. Hasta que exista ese número, la Proposición E0 se aplica a una proporción no medida.
+**Proposición E5 (cobertura).** La proporción del volumen real de tareas de programación que cae en clases cubiertas por RCE es medible. *Protocolo:* extraer una muestra aleatoria de pull requests fusionadas de repositorios públicos (GitHub informa de 518,7 millones fusionadas en un año [17]), clasificar cada una según si los engranajes congelados G0 a G2 producen un parche que pasa la compuerta, e informar de la fracción cubierta con un intervalo del 95%. Hasta que exista ese número, la Proposición E0 se aplica a una proporción no medida.
 
 ## Referencias

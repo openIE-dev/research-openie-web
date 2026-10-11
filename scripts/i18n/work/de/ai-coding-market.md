@@ -8,9 +8,9 @@
 
 Der Billionen-Dollar-Markt für KI-Programmierung ist David Charlots fundierte hyperbolische Behauptung, und die realen Projektionen bestätigen seine Größenordnung. Eine Risikokapitalschätzung beziffert den Wert der Softwareentwickler der Welt auf etwa 3 Billionen Dollar pro Jahr und nennt KI-Programmierung einen Markt, der "sogar einen Billionen-Dollar-Riesen" tragen kann [1]. Zwei Unternehmen für KI-Programmierung meldeten im Abstand von einem Jahr mehr als 1 Milliarde und mehr als 2.5 Milliarden Dollar annualisierten Umsatz [5, 6]. Ein Frontier-Labor wird mit 380 Milliarden Dollar bewertet, und sein Programmierprodukt ist sein Aushängeschild [6]. Das Tokenvolumen eines Anbieters wuchs in zwei Jahren von 9.7 Billionen auf über 3.2 Billiarden Tokens pro Monat [8]. Die Investitionsausgaben der größten Technologieunternehmen überstiegen 2025 die Marke von 400 Milliarden Dollar [10].
 
-Jede dieser Projektionen setzt dasselbe voraus. Es gibt nur einen Weg zur autonomen Computerautomatisierung. Er ist energiereich, rechenintensiv, hochentropisch und ungeordnet. Ein Modell sitzt bei jeder Aufgabe in der Schleife, und jede Aufgabe zahlt Miete pro Token.
+Jede dieser Projektionen setzt dasselbe voraus: dass der Raum der autonomen Computerautomatisierung nur eine Richtung hat. Entlang dieser Richtung steigen Energie, Rechenleistung und Entropie gemeinsam, ein Modell sitzt bei jeder Aufgabe in der Schleife, und jede Aufgabe zahlt Miete pro Token. Der Raum hat mehr Richtungen als diese. Ansätze werden entlang stetiger Achsen eingeordnet: Energie pro Aufgabe, Entropie und Determinismus, Stärke der Verifikation, Wiederverwendung und Kumulation sowie Abhängigkeit vom Modell. Es gibt viele Kombinationen, und reale Systeme mischen mehrere. Der Fehler der Erzählung ist kein einzelner Ansatz. Er ist die Annahme, dass der Raum nur eine Richtung hat.
 
-Das [RCE-Forschungspapier](/papers/rce/) misst einen zweiten Weg. RCE ist ein natives Code-Ökosystem. Ein Programm wird einmal, aus der Absicht, als Form geschrieben, als verlustfreie Kodierung von Zustand, Ereignissen und reinen Übergängen, und jede Zielsprache ist eine getreue Projektion davon. Ein Zustand, den die Form nicht deklariert, kann nicht geschrieben werden, sodass ein falsches Programm am Eingang abgewiesen wird, statt später gefunden und behoben zu werden. Jede Passung, die das Tor passiert, wird gespeichert und wiederverwendet, sodass das Ökosystem kumulativ zulegt. Auf 10,000 vorregistrierten Formen mit eingefrorener Engine und 0 Modellaufrufen durchläuft jede Form die Rundreise zu identischen Bytes, jede Projektion ist deterministisch, jede fehlerhafte Eingabe wird am Eingang abgewiesen, und die Python-Projektion spielt die Referenzspur bei 9,999 nach ([RCE §2.3](/papers/rce/#23-the-ecosystem-at-large-n)). Code aus anderen Sprachen tritt durch Hebung ein, und auf gehobenem Code stellen die Reparaturstufen 520,541 von 520,821 Ein-Token-Fehlern und 63.7% von 21,320 Java-Fehlern in einer Anweisung mit 0 Modellaufrufen wieder her ([RCE §6](/papers/rce/#6-lift-entering-the-ecosystem-from-other-languages)). Wo dieser Weg eine Aufgabe abdeckt, fallen die Grenzkosten der Aufgabe gegen die Energie, sie auszuführen, und ein Markt, der auf Generierung bepreist ist, verliert bei dieser Aufgabe seine Grundlage. Dieser Essay trennt die Projektionen von den Messungen, benennt, was jede Projektion voraussetzt, und zeigt, wo sie bricht.
+Das [RCE-Forschungspapier](/papers/rce/) misst einen Punkt in diesem Raum, gewählt, um alle fünf Achsen zugleich zu optimieren. RCE ist ein natives Code-Ökosystem. Ein Programm wird einmal, aus der Absicht, als Form geschrieben, als verlustfreie Kodierung von Zustand, Ereignissen und reinen Übergängen, und jede Zielsprache ist eine getreue Projektion davon. Ein Zustand, den die Form nicht deklariert, kann nicht geschrieben werden, sodass ein falsches Programm am Eingang abgewiesen wird, statt später gefunden und behoben zu werden. Jede Passung, die das Tor passiert, wird gespeichert und wiederverwendet, sodass das Ökosystem kumulativ zulegt. Auf 10,000 vorregistrierten Formen mit eingefrorener Engine und 0 Modellaufrufen durchläuft jede Form die Rundreise zu identischen Bytes, jede Projektion ist deterministisch, jede fehlerhafte Eingabe wird am Eingang abgewiesen, und die Python-Projektion spielt die Referenzspur bei 9,999 nach ([RCE §2.3](/papers/rce/#23-the-ecosystem-at-large-n)). Code aus anderen Sprachen tritt durch Hebung ein, und auf gehobenem Code stellen die Reparaturgänge 520,541 von 520,821 Ein-Token-Fehlern und 63.7% von 21,320 Java-Fehlern in einer Anweisung mit 0 Modellaufrufen wieder her ([RCE §6](/papers/rce/#6-lift-entering-the-ecosystem-from-other-languages)). Wo RCE eine Aufgabe abdeckt, fallen die Grenzkosten der Aufgabe gegen die Energie, sie auszuführen, und ein Markt, der auf Generierung bepreist ist, verliert bei dieser Aufgabe seine Grundlage. Dieser Essay trennt die Projektionen von den Messungen, benennt, was jede Projektion voraussetzt, und zeigt, wo sie bricht.
 
 **Gemeinsame These, einmal für alle Papiere formuliert.** Die Energie zum Ausführen ist die einzige wahre Metrik maschineller Intelligenz. Alle anderen Faktoren fallen auf null. Die Torform legt fest, was das bedeutet. Unter den Läufen, die das Vollständigkeitsprädikat $C(z)$ der Aufgabe innerhalb des angegebenen Budgets und der Frist erfüllen, werden Systeme nach Joule bis zur Fertigstellung, $J^*$, gereiht. Korrektheit, Fristen und Aufgabengröße sind das Tor, keine Terme in der Bewertung. Parameter, Tokens, Benchmarkwerte und Preise haben in der Rangfolge das Gewicht null ([Handlungsfähigkeit, Abschnitt 1](/papers/agency/#1-thesis)). Schätzungen sind nie `measured_j`.
 
@@ -70,6 +70,12 @@ Der Umsatz, den der Markt heute meldet, liegt im Milliardenbereich. Die Billion 
 
 Anthropic erklärt, dass die Runde "Infrastrukturerweiterungen" finanziert [6]. Umsatz, Bewertung und Rechenleistung sind eine einzige Wette.
 
+Abbildung 1 setzt die Dollarbeträge der Abschnitte 2.1 bis 2.3 und 2.6 auf eine Achse, markiert mit der Kennzeichnung, die jede Quelle trägt.
+
+![Punktdiagramm auf logarithmischer Skala der Dollarbeträge aus den Tabellen des Essays. Projektionen: Beitrag der Entwickler etwa 3 Billionen Dollar, Wert generativer KI 2.6 bis 4.4 Billionen, weltweite KI-Ausgaben 1.5 Billionen, Markt für KI-Code-Werkzeuge 9.35 Milliarden im Jahr 2026 und 29.96 Milliarden im Jahr 2031. Schätzung: Investitionen über 400 Milliarden. Umfrageschätzungen: Unternehmensausgaben für generative KI 37 Milliarden und Ausgaben für KI-Programmierwerkzeuge 4.0 Milliarden. Von Unternehmen gemeldet: Jahresumsatzrate von Claude Code über 2.5 Milliarden und von Cursor über 1 Milliarde.](/figures/ai-coding-market/spend-by-label.svg)
+
+*Abbildung 1. Dollarbeträge nach Kennzeichnung. Datenabbildung, logarithmische Skala. Quellen: Appenzeller und Li [1], Menlo Ventures [2], Mordor Intelligence [3], Cursor [5], Anthropic [6], IEA [10], McKinsey [15], Gartner [24]. Eine [PNG-Kopie](/figures/ai-coding-market/spend-by-label.png) ist verfügbar.*
+
 ### 2.4 Inferenz, Tokens und Stückkosten
 
 | Behauptung | Zahl | Kennzeichnung | Quelle |
@@ -83,6 +89,12 @@ Anthropic erklärt, dass die Runde "Infrastrukturerweiterungen" finanziert [6]. 
 
 Zwei Sätze in den Quellen benennen die Ökonomie unverblümt. Pichai: "viele Unternehmen sprengen bereits ihre jährlichen Tokenbudgets, und es ist erst Mai" [8]. Appenzeller und Li: "Jahrzehntelang waren die Kosten der Softwareentwicklung fast reine Personalkosten, doch jetzt fügen LLMs einen erheblichen Anteil an Betriebskosten hinzu" [1].
 
+Abbildung 2 trägt die Token-Reihe auf.
+
+![Liniendiagramm auf logarithmischer Skala der bei Google pro Monat verarbeiteten Token: 9.7 Billionen im Jahr 2024, etwa 480 Billionen im Jahr 2025 und über 3.2 Billiarden im Mai 2026, vom Unternehmen gemeldet.](/figures/ai-coding-market/tokens.svg)
+
+*Abbildung 2. Bei Google pro Monat verarbeitete Token. Datenabbildung, vom Unternehmen gemeldet, logarithmische Skala. Quelle: Pichai [8]; der Hinweis zur Token-Nutzung stammt von Bai, Huang und Wang [9]. Eine [PNG-Kopie](/figures/ai-coding-market/tokens.png) ist verfügbar.*
+
 ### 2.5 Preis pro Token
 
 | Behauptung | Zahl | Kennzeichnung | Quelle |
@@ -92,7 +104,13 @@ Zwei Sätze in den Quellen benennen die Ökonomie unverblümt. Pichai: "viele Un
 | Inferenzkosten bei gleichwertiger Leistung | etwa um das 10-Fache pro Jahr gesunken: von 60 Dollar pro Million Tokens 2021 auf 0.06 Dollar | Schätzung | Appenzeller, a16z [20] |
 | Preissenkung der DeepSeek-API, 29. September 2025 | Kosten der Entwickler "um mehr als 50% gesenkt" | Vom Unternehmen gemeldet | DeepSeek [21] |
 
-Das 13-Fache pro Jahr aus [4] ist ein Punkt in einer weiten Spanne [34]. Der Rückgang wird von Wettbewerb und offenen Gewichten getrieben, wie die Preissenkung von DeepSeek zeigt [21]. Er braucht keine Energiebilanz. Das ist der erste Rückgang aus Abschnitt 6. Der zweite Weg fügt einen anderen hinzu: Aufrufe pro Aufgabe.
+Das 13-Fache pro Jahr aus [4] ist ein Punkt in einer weiten Spanne [34]. Der Rückgang wird von Wettbewerb und offenen Gewichten getrieben, wie die Preissenkung von DeepSeek zeigt [21]. Er braucht keine Energiebilanz. Das ist der erste Rückgang aus Abschnitt 6. Wiederverwendung fügt einen anderen hinzu: Aufrufe pro Aufgabe.
+
+Abbildung 3 zeichnet die beiden Preisreihen.
+
+![Diagramm auf logarithmischer Skala des Preises pro Million Token bei fester Fähigkeit. Eine Schätzung von a16z fällt von 60 Dollar im Jahr 2021 auf 0.06 Dollar im Jahr 2024, etwa um das Zehnfache pro Jahr. Eine gestrichelte Steigung von Epoch AI von etwa dem Dreizehnfachen pro Jahr seit 2023 ist auf zehn Dollar im Jahr 2023 indexiert gezeichnet.](/figures/ai-coding-market/price-trend.svg)
+
+*Abbildung 3. Preis einer festen Fähigkeitsstufe. Datenabbildung, logarithmische Skala: Die Endpunkte von a16z sind wie gedruckt [20]; die Linie von Epoch AI ist die angegebene Rate von etwa dem 13-Fachen pro Jahr seit 2023 [4], auf einen beliebigen Start indexiert, um nur die Steigung zu zeigen. Die Spanne nach Meilenstein stammt von Epoch AI [34]. Eine [PNG-Kopie](/figures/ai-coding-market/price-trend.png) ist verfügbar.*
 
 ### 2.6 Energie und Kapital
 
@@ -100,7 +118,7 @@ Das 13-Fache pro Jahr aus [4] ist ein Punkt in einer weiten Spanne [34]. Der Rü
 |---|---|---|---|
 | Strom für Rechenzentren, 2024 | etwa 415 TWh, etwa 1.5% des weltweiten Stroms | Schätzung | IEA, *Energy and AI* [11] |
 | Strom für Rechenzentren, 2030 | etwa 945 TWh, Basisszenario | Projektion | [11] |
-| Aktualisiert: 2025 bis 2030 | 485 TWh bis 950 TWh, etwa 3% der weltweiten Nachfrage | Schätzung und Projektion | IEA, *Key Questions on Energy and AI* [10] |
+| Strom für Rechenzentren, 2025 bis 2030 | 485 TWh bis 950 TWh, etwa 3% der weltweiten Nachfrage | Schätzung und Projektion | IEA, *Key Questions on Energy and AI* [10] |
 | Investitionsausgaben der größten Technologieunternehmen | über 400 Milliarden Dollar 2025, für 2026 ein weiterer Anstieg um 75% erwartet | Gemeldet und projiziert | [10] |
 | Investitionsausgaben von Alphabet | 31 Milliarden Dollar 2022; für 2026 etwa 180 bis 190 Milliarden Dollar erwartet | Vom Unternehmen gemeldet und Prognose | Pichai [8] |
 | Energie pro Aufgabe | um mindestens eine Größenordnung pro Jahr gesunken; Reasoning und agentische Aufgaben verbrauchen "Hunderte oder Tausende Male mehr Energie pro Anfrage als einfache Textgenerierung" | Schätzung | [10] |
@@ -109,7 +127,13 @@ Das 13-Fache pro Jahr aus [4] ist ein Punkt in einer weiten Spanne [34]. Der Rü
 | Weltweite KI-Ausgaben, 2025 | etwa 1.5 Billionen Dollar | Projektion | Gartner [24] |
 | Umsatz, den die Investitionen wieder einspielen müssen | "AI's $600B question" | Analyse | Sequoia Capital [23] |
 
-Die Miete, die bedient werden muss, ist Hardwaremiete. Investitionen und Verpflichtungen dieser Größe werden über Nutzung zurückgezahlt, deren Preis über ihrer Energie liegt. Das ist die Grundlage, die der zweite Weg bei abgedeckten Aufgaben beseitigt.
+Die Miete, die bedient werden muss, ist Hardwaremiete. Investitionen und Verpflichtungen dieser Größe werden über Nutzung zurückgezahlt, deren Preis über ihrer Energie liegt. Das ist die Grundlage, die Wiederverwendung bei abgedeckten Aufgaben beseitigt.
+
+Abbildung 4 stellt den projizierten Netzstrom neben die gemessenen Joule einer Aufgabe.
+
+![Zwei Felder. Feld a: Strom für Rechenzentren, 415 TWh im Jahr 2024 nach Schätzung der IEA, eine Spanne von 485 bis 950 TWh für 2025 bis 2030 und 945 TWh projiziert für 2030. Feld b, logarithmische Skala: ein mittlerer Text-Prompt, von seinem Betreiber mit 0.24 Wh oder 864 Joule gemessen; von RCE gelöste Reparaturaufgaben mit 0.10 bis 0.40 Joule geschätzt und 0.026 bis 0.056 Joule auf einem RAPL-Paketzähler.](/figures/ai-coding-market/energy.svg)
+
+*Abbildung 4. Energie am Netz und bei der Aufgabe. Datenabbildung. Feld a: Schätzung und Projektion der IEA [10, 11]. Feld b, logarithmische Skala: ein mittlerer Text-Prompt, 0.24 Wh vom Betreiber gemessen [12]; von RCE gelöste Reparaturaufgaben, `est_j` und `reported_j` ([RCE §6.3](/papers/rce/#63-energy)). Die beiden Felder haben verschiedene Einheiten und werden nicht ineinander umgerechnet. Eine [PNG-Kopie](/figures/ai-coding-market/energy.png) ist verfügbar.*
 
 ### 2.7 Belege zur Produktivität
 
@@ -121,13 +145,13 @@ Die Miete, die bedient werden muss, ist Hardwaremiete. Investitionen und Verpfli
 | METR, Anfang 2025 | 16 erfahrene Open-Source-Entwickler, 246 Aufgaben | Randomisierte kontrollierte Studie | 19% langsamer mit KI | Becker et al. [25] |
 | METR, Aktualisierung 2026 | neue Kohorte | Randomisierte kontrollierte Studie | die Autoren nennen die neuen Daten "ein unzuverlässiges Signal" | METR [26] |
 
-Die gemessenen Effekte reichen von einer Verlangsamung um 19% bis zu einer Beschleunigung um 56% bei einer Spielzeugaufgabe. Beide Faktoren der Wertschätzung, die Entwicklerzahl und der Produktivitätsfaktor, sind weich. Das schwächt die Billion. Es schwächt auch jede Behauptung, der Wert, den der zweite Weg freisetzt, sei eine bekannte Zahl.
+Die gemessenen Effekte reichen von einer Verlangsamung um 19% bis zu einer Beschleunigung um 56% bei einer Spielzeugaufgabe. Beide Faktoren der Wertschätzung, die Entwicklerzahl und der Produktivitätsfaktor, sind weich. Das schwächt die Billion. Es schwächt auch jede Behauptung, der Wert, den Wiederverwendung freisetzt, sei eine bekannte Zahl.
 
 ## 3. Was die Projektionen voraussetzen
 
-Zusammen gelesen ruhen die Projektionen auf vier Annahmen. Jede ist eine Aussage über den Weg, nicht über den Wert von Software.
+Zusammen gelesen ruhen die Projektionen auf vier Annahmen. Jede ist eine Aussage über eine Richtung im Entwurfsraum, nicht über den Wert von Software.
 
-1. **Ein Weg: Generierung.** Jede Änderung wird von einem Modell geschrieben. Die Wertschätzung skaliert die Produktivität mit dem Modell, und die Kostenveranschaulichung bepreist jede Anfrage [1].
+1. **Eine Richtung: Generierung.** Jede Änderung wird von einem Modell geschrieben. Die Wertschätzung skaliert die Produktivität mit dem Modell, und die Kostenveranschaulichung bepreist jede Anfrage [1].
 2. **Hohe Energie und hohe Rechenleistung.** Tokenvolumen, Strom für Rechenzentren und Investitionsausgaben sollen gemeinsam wachsen [8, 10, 11]. Die Energie pro Anfrage sinkt, und die Tokens pro Aufgabe steigen schneller [9, 10].
 3. **Miete pro Token.** Umsatz wird pro Token abgerechnet oder pro Arbeitsplatz, dessen Kosten Tokens sind. Die jährlichen Tokenkosten eines Entwicklers werden in der Größenordnung eines Gehalts projiziert [1].
 4. **KI für immer in der Schleife.** Aufgabe 10,000 kostet so viel wie Aufgabe 1, weil nichts, was das Modell bei Aufgabe 1 gelernt hat, bei Aufgabe 10,000 ohne das Modell läuft.
@@ -188,18 +212,18 @@ Dies sind Messungen, so gekennzeichnet, wie RCE sie kennzeichnet. Sie stammen au
 
 ## 7. Nachfrage
 
-Billigere Aufgaben können die Gesamtnachfrage erhöhen. Der Risikokapitalessay erwartet das: "wir glauben, dass Jevons Paradoxon in diesem Fall gilt" [1]. [Aufgabensättigung versus aggregierter Rebound in der KI-Nachfrage](/papers/satiation/) trennt die beiden Effekte. Der Appetit pro Aufgabe endet am Vollständigkeitsprädikat. Die Gesamtnutzung kann dennoch wachsen, weil billigere Synthese neue Aufgaben eröffnet. Der zweite Weg verändert den ersten Effekt und lässt den zweiten offen. Ein größerer Markt abgedeckter Aufgaben ist ein Markt, dessen Grenzkosten die Untergrenze sind, nicht die Grenze des technisch Machbaren. Die einzige veröffentlichte Elastizität ist klein. Über die Aufgaben in Anthropics API-Stichprobe hinweg geht jede Kostensteigerung um 1% mit einem Rückgang der Nutzungshäufigkeit um 0.29% einher [29]. Das ist ein Querschnitt über Aufgaben, keine Preisänderung über die Zeit. So gelesen, wie sie dasteht, ist die Nachfrage unelastisch: Preisrückgänge lassen den Umsatz auf einer festen Aufgabenmenge schrumpfen, was die Lesart dieses Essays von der Miete stützt, und sie führen für sich genommen nicht dazu, dass Programmieren weit mehr genutzt wird.
+Billigere Aufgaben können die Gesamtnachfrage erhöhen. Der Risikokapitalessay erwartet das: "wir glauben, dass Jevons Paradoxon in diesem Fall gilt" [1]. [Aufgabensättigung versus aggregierter Rebound in der KI-Nachfrage](/papers/satiation/) trennt die beiden Effekte. Der Appetit pro Aufgabe endet am Vollständigkeitsprädikat. Die Gesamtnutzung kann dennoch wachsen, weil billigere Synthese neue Aufgaben eröffnet. Wiederverwendung verändert den ersten Effekt und lässt den zweiten offen. Ein größerer Markt abgedeckter Aufgaben ist ein Markt, dessen Grenzkosten die Untergrenze sind, nicht die Grenze des technisch Machbaren. Die einzige veröffentlichte Elastizität ist klein. Über die Aufgaben in Anthropics API-Stichprobe hinweg geht jede Kostensteigerung um 1% mit einem Rückgang der Nutzungshäufigkeit um 0.29% einher [29]. Das ist ein Querschnitt über Aufgaben, keine Preisänderung über die Zeit. So gelesen, wie sie dasteht, ist die Nachfrage unelastisch: Preisrückgänge lassen den Umsatz auf einer festen Aufgabenmenge schrumpfen, was die Lesart dieses Essays von der Miete stützt, und sie führen für sich genommen nicht dazu, dass Programmieren weit mehr genutzt wird.
 
 ## 8. Propositionen und Protokolle
 
-**Proposition E1 (die Kostenkurven kreuzen sich).** Für einen Strom von Aufgaben in einem Repository fallen die kumulierten Kosten pro gelöster Aufgabe des zweiten Weges nach endlich vielen Aufgaben unter die eines Generierungsagenten. *Protokoll:* [RCE-Protokoll 8.3](/papers/rce/#83-a-wall-meter) und einen einfachen Generierungsagenten auf demselben Issue-Strom unter einem Wandmessgerät ausführen. `measured_j` und Dollar pro gelöster Aufgabe nach Aufgabenindex berichten, dazu den Kreuzungsindex.
+**Proposition E1 (die Kostenkurven kreuzen sich).** Für einen Strom von Aufgaben in einem Repository fallen die kumulierten Kosten pro gelöster Aufgabe von RCE nach endlich vielen Aufgaben unter die eines Generierungsagenten. *Protokoll:* [RCE-Protokoll 8.3](/papers/rce/#83-a-wall-meter) und einen einfachen Generierungsagenten auf demselben Issue-Strom unter einem Wandmessgerät ausführen. `measured_j` und Dollar pro gelöster Aufgabe nach Aufgabenindex berichten, dazu den Kreuzungsindex.
 
 **Proposition E2 (der Preis folgt der Untergrenze).** Wo eine Programmierfähigkeit durch Abruf und Regeln abgedeckt ist, fällt ihr Marktpreis gegen die Energie, sie auszuführen, plus die Kosten des Beweises. *Protokoll:* die Listenpreise einer abgedeckten Fähigkeitsklasse über die Zeit gegen ihre gemessene Laufenergie verfolgen, nach dem Vorbild der Preisreihe der Rechtschreibprüfung.
 
-**Proposition E3 (Rechenskala ist bei abgedeckten Aufgaben kein Burggraben).** Bei Aufgaben, die der zweite Weg abdeckt, steigt die Lösungsrate nicht mit der Rechenleistung des letzten Gangs. *Protokoll:* [RCE-Protokoll 8.2](/papers/rce/#82-swe-bench-lite-offline) ohne Modell, mit einem kleinen lokalen Modell und mit einem Frontier-Modell als letztem Gang ausführen. Die Lösungsraten auf den Aufgaben vergleichen, die vor dem letzten Gang geschlossen wurden.
+**Proposition E3 (Rechenskala ist bei abgedeckten Aufgaben kein Burggraben).** Bei Aufgaben, die RCE abdeckt, steigt die Lösungsrate nicht mit der Rechenleistung des letzten Gangs. *Protokoll:* [RCE-Protokoll 8.2](/papers/rce/#82-swe-bench-lite-offline) ohne Modell, mit einem kleinen lokalen Modell und mit einem Frontier-Modell als letztem Gang ausführen. Die Lösungsraten auf den Aufgaben vergleichen, die vor dem letzten Gang geschlossen wurden.
 
 **Proposition E4 (der Tokenanteil am Umsatz).** In einem Repository mit wachsender Abdeckung fällt der Anteil der Aufgabenkosten, der als Tokens bezahlt wird, mit der Abdeckung. *Protokoll:* Tokens, Joule und Dollar pro geschlossener Aufgabe nach Runde im RCE-Konvergenzprotokoll mit einem bepreisten Modellauflöser protokollieren ([RCE §8.6](/papers/rce/#86-convergence-of-model-calls-at-large-n)), gekennzeichnet, und den Tokenanteil an den Kosten nach Runde berichten.
 
-**Proposition E5 (Abdeckung).** Der Anteil des realen Volumens an Programmieraufgaben, der in Klassen fällt, die der zweite Weg abdeckt, ist messbar. *Protokoll:* eine Zufallsstichprobe zusammengeführter Pull Requests aus öffentlichen Repositories ziehen (GitHub meldet 518.7 Millionen zusammengeführte in einem Jahr [17]), jeden danach klassifizieren, ob die eingefrorenen Gänge G0 bis G2 einen Patch erzeugen, der das Tor passiert, und den abgedeckten Anteil mit einem 95%-Intervall berichten. Solange diese Zahl nicht existiert, gilt Proposition E0 für einen ungemessenen Anteil.
+**Proposition E5 (Abdeckung).** Der Anteil des realen Volumens an Programmieraufgaben, der in Klassen fällt, die RCE abdeckt, ist messbar. *Protokoll:* eine Zufallsstichprobe zusammengeführter Pull Requests aus öffentlichen Repositories ziehen (GitHub meldet 518.7 Millionen zusammengeführte in einem Jahr [17]), jeden danach klassifizieren, ob die eingefrorenen Gänge G0 bis G2 einen Patch erzeugen, der das Tor passiert, und den abgedeckten Anteil mit einem 95%-Intervall berichten. Solange diese Zahl nicht existiert, gilt Proposition E0 für einen ungemessenen Anteil.
 
 ## Literatur

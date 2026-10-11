@@ -24,7 +24,7 @@ Un second fait concerne le prix, pas la physique. Epoch AI fait état de fortes 
 
 L'article ne présente ni essai randomisé, ni taux d'erreur d'un détecteur de fin, ni répartition entre l'énergie dépensée avant la complétude et l'énergie dépensée après. Ces mesures sont spécifiées et absentes. Ce que la référence logicielle fournit, c'est un endroit où placer l'arrêt : Wise Computer Automation (WCA) peut refuser pour un motif de politique ou de budget, ou sur un prédicat physique (autorisation par une table de correspondance et une vérification d'énergie, avec une fonction barrière de contrôle facultative). L'article compagnon mesure le prédicat physique sur des installations jouets. Cet article énonce le prédicat économique et les éléments de preuve effectivement publiés.
 
-Aucun réseau de portes programmables in situ (FPGA) n'a été synthétisé ou mesuré pour cette étude. Une Alchitry Pt V2 est le dispositif sous test (DUT) prévu ultérieurement. Un instrument de navigateur qui compile la porte en WebAssembly (WASM) et l'affiche avec WebGPU est livré comme Étape B à https://research.openie.dev/living/fpga-sim/ (voir l'article compagnon). C'est une simulation, pas un résultat sur carte, et ce n'est pas ici une mesure de satiété. Les joules analytiques de l'OpCounter du compagnon ne sont pas une puissance mesurée sur carte et ne sont pas une preuve de satiété.
+Aucun réseau de portes programmables in situ (FPGA) ne porte de compteur d'énergie dans cette étude ; la carte du compagnon est programmée et son énergie n'est pas mesurée. Une Alchitry Pt V2 est le dispositif sous test (DUT) prévu ultérieurement. Un instrument de navigateur qui compile la porte en WebAssembly (WASM) et l'affiche avec WebGPU est livré comme Étape B à https://research.openie.dev/living/fpga-sim/ (voir l'article compagnon). C'est une simulation, pas un résultat sur carte, et ce n'est pas ici une mesure de satiété. Les joules analytiques de l'OpCounter du compagnon ne sont pas une puissance mesurée sur carte et ne sont pas une preuve de satiété.
 
 <div id="notation" class="anchor-alias" aria-hidden="true"></div>
 
@@ -127,7 +127,7 @@ Le livre de Wu « The Attention Merchants » (page de l'éditeur : https://www.p
 
 Les marchés technologiques montrent souvent une phase spéculative, une phase d'usage et une phase ultérieure de banalisation. Les éléments sont inégaux.
 
-Quinn (2019), « Technological revolutions and speculative finance: evidence from the British Bicycle Mania », Cambridge Journal of Economics 43(2), 271-294, https://doi.org/10.1093/cje/bey029, étudie les cours des actions de fabricants de bicyclettes de 1895 à 1900. Les cours ont monté de plus de 200 pour cent puis baissé de plus de 75 pour cent. Le résultat de l'article porte sur la finance spéculative et les fondamentaux, pas sur un prédicat mesuré de « bicyclette suffisante » pour les ménages. L'utiliser comme image de la finance en phase de course est fondé. L'utiliser comme preuve d'une satiété dans le transport ne l'est pas. Des notes antérieures de ce projet indiquaient parfois « Quinn et Turner » pour cet épisode. L'article vérifié ci-dessus est Quinn (2019). Un autre article de Quinn sur le risque d'accaparement remercie John Turner dans les remerciements. Ce n'est pas une cosignature de l'article du Cambridge Journal. Cet article cite l'article qui a été vérifié.
+Quinn (2019), « Technological revolutions and speculative finance: evidence from the British Bicycle Mania », Cambridge Journal of Economics 43(2), 271-294, https://doi.org/10.1093/cje/bey029, étudie les cours des actions de fabricants de bicyclettes de 1895 à 1900. Les cours ont monté de plus de 200 pour cent puis baissé de plus de 75 pour cent. Le résultat de l'article porte sur la finance spéculative et les fondamentaux, pas sur un prédicat mesuré de « bicyclette suffisante » pour les ménages. L'utiliser comme image de la finance en phase de course est fondé. L'utiliser comme preuve d'une satiété dans le transport ne l'est pas.
 
 Les voitures, l'aviation régulière et la télévision ont des marchés de type marchandise au sens courant : véhicules d'occasion, sièges gérés par le yield management et panneaux vendus comme intrants pour le contenu. Les lignes servent d'orientation historique. Ce ne sont pas des régressions. Le yield management des compagnies aériennes après la déréglementation est une institution de tarification d'un siège, ce qui prouve l'existence d'un marché de marchandise pour les sièges, pas que la demande de voyage des passagers soit globalement rassasiée.
 
@@ -151,7 +151,7 @@ Une règle empirique de planification selon laquelle la compétence de frontièr
 
 Landauer (1961) borne l'effacement. Bennett (1973) montre que le calcul réversible peut éviter cette borne en théorie. Horowitz (2014) est l'énoncé pratique pour le CMOS : l'énergie par opération et l'énergie du déplacement des données fixent la contrainte de conception, à de nombreux ordres de grandeur au-dessus de `kT ln 2` pour la logique CMOS irréversible. L'OpCounter de l'article compagnon implémente `J = sum count * E` avec des constantes comme `E_LUT_READ = 1e-12` joule. Ces constantes sont un modèle. Le compagnon donne le total analytique de la graine 1, 8.6795e-10 joule, pour un épisode jouet. Importer ce nombre dans un article sur la demande ne montrerait pas que la dépense après la fin est grande. Cela montrerait seulement que le modèle de la porte jouet a renvoyé ce total. Cet article ne traite donc pas le joule du compagnon comme une mesure de satiété.
 
-Goldman Sachs a publié une note de recherche intitulée « Gen AI: Too Much Spend, Too Little Benefit? » (https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit). L'existence d'une note importante du côté vendeur qui interroge la dépense d'infrastructure au regard du bénéfice est un fait documentaire. Les montants en dollars de la note ne sont pas cités ici. Ils n'ont pas été relus dans le PDF primaire pour ce texte, et les estimations du côté vendeur ne sont pas une comptabilité scientifique de l'énergie.
+Goldman Sachs a publié une note de recherche intitulée « Gen AI: Too Much Spend, Too Little Benefit? » (https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit). L'existence d'une note importante du côté vendeur qui interroge la dépense d'infrastructure au regard du bénéfice est un fait documentaire. Les montants en dollars de la note ne sont pas cités ici, car les estimations du côté vendeur ne sont pas une comptabilité scientifique de l'énergie.
 
 <div id="27-commit-records-as-the-interface-not-the-demand-estimate" class="anchor-alias" aria-hidden="true"></div>
 
@@ -193,7 +193,7 @@ L'union d'ensembles, en mots : l'environnement d'exécution refuse si la règle 
 
 Cette étude est une lecture structurée. Les sources sont la colonne de citations vérifiée dans le projet du 29 au 30 septembre 2026, les notes sur la satiété et le registre logiciel du compagnon. La Section 3.3 nomme les mesures qui rendraient empirique la définition opérationnelle.
 
-Les règles de conception de la Section 4.4 sont des recommandations conditionnelles aux définitions. Ce ne sont pas des effets de traitement estimés. Un lecteur peut rejeter une règle sans rejeter la série de prix d'Epoch, et accepter la série de prix sans accepter une recommandation de produit.
+Les règles de conception de la Section 4.10 sont des recommandations conditionnelles aux définitions. Ce ne sont pas des effets de traitement estimés. Un lecteur peut rejeter une règle sans rejeter la série de prix d'Epoch, et accepter la série de prix sans accepter une recommandation de produit.
 
 <div id="33-measurements-specified-and-not-taken" class="anchor-alias" aria-hidden="true"></div>
 
@@ -235,7 +235,7 @@ Lorsqu'une affirmation porte sur des joules, la classe de mesure doit être nomm
 
 Étape C : carte programmée pour la démonstration de porte de validation du compagnon (pendule en boucle fermée avec autorisation par LUT, Safe PH et CBF de l'ensemble d'énergie d'Ames) ; énergie toujours non mesurée. L'Alchitry Pt V2 n'a pas de joulemètre embarqué. L'accord des décisions par UART n'est pas une lecture en watts. Les spécifications du fabricant sur la page de SparkFun (XC7A100T-2FGG84I, 101,440 cellules logiques, 240 tranches DSP48E1, 4,860 Kb de block RAM, 256 MB de DDR3L) ne sont pas des résultats d'énergie d'un DUT. Méthodes de mesure : guide du compagnon [/living/fpga-sim/alchitry/#energy](https://research.openie.dev/living/fpga-sim/alchitry/#energy).
 
-Cet article ajoute une correspondance, pas une quatrième étape. L'achèvement de la tâche, s'il est codé comme `policy` ou `budget_exceeded`, devrait apparaître dans la même trace que `energy_veto`, afin qu'une scission future (Section 3.3) puisse regrouper les codes de motif. La vue du navigateur rendrait ce regroupement lisible. Elle ne créerait pas le corpus manquant. Nous n'avons ni synthétisé ni mesuré la carte FPGA.
+Cet article ajoute une correspondance, pas une quatrième étape. L'achèvement de la tâche, s'il est codé comme `policy` ou `budget_exceeded`, devrait apparaître dans la même trace que `energy_veto`, afin qu'une scission future (Section 3.3) puisse regrouper les codes de motif. La vue du navigateur rendrait ce regroupement lisible. Elle ne créerait pas le corpus manquant, et l'énergie de la carte reste non mesurée.
 
 
 <div id="28-fidelity-criteria-and-stop-rules" class="anchor-alias" aria-hidden="true"></div>
@@ -272,7 +272,7 @@ Les séries de prix d'Epoch (S-2) montrent que la synthèse devient moins chère
 
 Chung, Wu, Ma et Chowdhury (arXiv:[2601.22076](https://arxiv.org/abs/2601.22076), 2026) diagnostiquent l'énergie d'inférence sur 1,858 configurations : le type de tâche à lui seul peut faire varier l'énergie d'un LLM par réponse d'environ 25× ; la génération vidéo peut dépasser l'énergie de l'image de deux ordres de grandeur. L'article de *Joule* « Energy use of AI inference, efficiency pathways, and test-time scaling » ([cell.com/joule/fulltext/S2542-4351(26)00114-5](https://www.cell.com/joule/fulltext/S2542-4351(26)00114-5), en ligne le 22 avr. 2026) estime les requêtes optimisées à l'échelle de la frontière dans une plage médiane inférieure au wattheure, tout en rapportant que le raisonnement long et les requêtes agentiques peuvent augmenter l'énergie de plus d'un ordre de grandeur ; des gains d'efficacité de 8 à 20× sont en vue, ce ne sont pas des joules gratuits. Luccioni, Strubell et Crawford (FAccT 2025) ([doi:10.1145/3715275.3732007](https://doi.org/10.1145/3715275.3732007)) avertissent que l'efficacité sans arrêt peut amplifier la dépense totale (Jevons). La présentation de l'énergie par Epoch AI ([epoch.ai/publications/ai-energy](https://epoch.ai/publications/ai-energy), mise à jour en juil. 2026) sépare des coûts par requête modestes d'une puissance agrégée des centres de données qui double rapidement.
 
-**Lecture pour cet article.** Gratuit à la marge est un énoncé sur le prix monétaire. Les joules rares sont un énoncé physique. L'arrêt opérationnel est l'achèvement de la tâche : lorsque `C(z) = 1`, davantage de synthèse n'élève pas l'objectif écrit, et un refus `policy` / `budget_exceeded` est un succès. [Notational Intelligence](/papers/gates/) est responsable du certificat physique. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) navigue parmi les engrenages suffisants les moins chers. [Metabolic Intelligence](/products/mei/) est responsable des actionneurs de l'enveloppe. Estimations ≠ `measured_j` mesuré sur carte.
+**Lecture pour cet article.** Gratuit à la marge est un énoncé sur le prix monétaire. Les joules rares sont un énoncé physique. L'arrêt opérationnel est l'achèvement de la tâche : lorsque `C(z) = 1`, davantage de synthèse n'élève pas l'objectif écrit, et un refus `policy` / `budget_exceeded` est un succès. [Notational Intelligence](/papers/gates/) est responsable du certificat physique. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) navigue parmi les engrenages suffisants les moins chers. [Metabolic Intelligence](/products/mei/) est responsable des actionneurs de l'enveloppe. Les estimations ne sont pas un `measured_j` mesuré sur carte.
 
 <div id="36-protocol-for-a-done-detector-study-not-executed" class="anchor-alias" aria-hidden="true"></div>
 
@@ -427,7 +427,7 @@ Soit `x` le nombre d'appels, `s` la durée de session, `J_pre` et `J_post` l'én
 | la possession de téléphones est élevée (S-5) | la valeur marginale d'un autre appel de modèle est nulle |
 | les cours des actions de bicyclettes ont flambé puis chuté (S-4) | les ménages ont atteint un point de félicité dans le transport |
 
-La colonne de droite est la liste des inférences que cet article refuse. Chaque observation de gauche est soit une citation de la Section 4, soit une variable de la Section 3. Le tableau est la discussion comprimée en une vérification. Un texte qui affirme une phrase de droite a quitté les éléments de preuve.
+La colonne de droite est la liste des inférences que cet article refuse. Chaque observation de gauche est soit une citation de la Section 4, soit une variable de la Section 3. Le tableau est la discussion comprimée en une vérification. Une phrase qui avance une affirmation de droite a quitté les éléments de preuve.
 
 <div id="413-companion-quantities-that-stay-in-the-companion" class="anchor-alias" aria-hidden="true"></div>
 
@@ -483,7 +483,7 @@ Un modèle qui rédige une note plus vite peut augmenter le débit de notes et l
 
 ### 5.6 La synthèse gratuite n'est pas un actionnement gratuit
 
-Les joules de l'étape A sont modélisés. L'étape B serait simulée dans un navigateur. L'étape C serait mesurée sur carte et relève de l'avenir. Une commande d'actionneur est le bit de validation du compagnon. Les prix d'Epoch se situent sur un autre axe que les trois. Les fondre dans une « IA gratuite » supprime la classe de mesure. La voie WASM et WebGPU est utile parce qu'elle permet à un tiers de rejouer la trace de décision sans posséder la carte Alchitry. L'utilité en tant que réplique n'est pas un watt.
+Les joules de l'étape A sont modélisés. L'étape B est simulée dans un navigateur. L'étape C programme la carte, et un compteur sur celle-ci est une mesure ultérieure. Une commande d'actionneur est le bit de validation du compagnon. Les prix d'Epoch se situent sur un autre axe que les trois. Les fondre dans une « IA gratuite » supprime la classe de mesure. La voie WASM et WebGPU est utile parce qu'elle permet à un tiers de rejouer la trace de décision sans posséder la carte Alchitry. L'utilité en tant que réplique n'est pas un watt.
 
 <div id="57-confidence-is-not-a-certificate" class="anchor-alias" aria-hidden="true"></div>
 
@@ -533,7 +533,7 @@ Réfutateurs. S-1 échoue si la théorie citée ne contient pas de région d'uti
 
 
 
-La même discipline s'applique aux spécifications de FPGA du fabricant. SparkFun liste les cellules logiques, les tranches DSP, la block RAM et la capacité de DRAM de l'Alchitry Pt V2. Ces grandeurs décrivent une pièce de catalogue. Elles ne décrivent ni l'activité de commutation, ni la puissance statique, ni l'énergie d'une trace de validation. Un rapport ultérieur sur le DUT doit nommer le bitstream, l'horloge, la charge de travail, le compteur et la durée. Tant que ce rapport n'existe pas, la carte est un instrument prévu, et l'émulateur du navigateur est une réplique prévue de la décision logicielle, pas un aperçu du compteur.
+La même discipline s'applique aux spécifications de FPGA du fabricant. SparkFun liste les cellules logiques, les tranches DSP, la block RAM et la capacité de DRAM de l'Alchitry Pt V2. Ces grandeurs décrivent une pièce de catalogue. Elles ne décrivent ni l'activité de commutation, ni la puissance statique, ni l'énergie d'une trace de validation. Un rapport ultérieur sur le DUT doit nommer le bitstream, l'horloge, la charge de travail, le compteur et la durée. Tant que ce rapport n'existe pas, la carte est un instrument non mesuré, et l'émulateur du navigateur est une réplique de la décision logicielle, pas un aperçu du compteur.
 
 <div id="7-conclusion" class="anchor-alias" aria-hidden="true"></div>
 
@@ -569,7 +569,7 @@ Les articles de théorie classent par joules jusqu'à l'achèvement correct et g
 
 ### 8.4 La tendance des prix dans la thèse commune
 
-*Tiré de la thèse commune, qui n'énonce plus que la forme de la porte.* Une tendance des prix est une affirmation distincte, étiquetée comme telle. Epoch AI rapporte que le coût d'un niveau donné de performance de l'IA a baissé d'environ 47 pour cent par trimestre depuis 2023, soit environ 13 fois par an (Emberson et Roodman, *The plunging price of thought*, 22 septembre 2026). Si cette tendance se poursuit, l'énergie devient le coût marginal dominant de l'inférence. C'est une tendance citée assortie d'une condition, pas un effondrement mesuré. [La correction orthographique est mondiale](/papers/spellcheck/) est une preuve d'existence qu'une partie de l'intelligence informatique se banalise jusqu'à un prix nul groupé.
+*Tiré de la thèse commune.* Une tendance des prix est une affirmation distincte, étiquetée comme telle. Epoch AI rapporte que le coût d'un niveau donné de performance de l'IA a baissé d'environ 47 pour cent par trimestre depuis 2023, soit environ 13 fois par an (Emberson et Roodman, *The plunging price of thought*, 22 septembre 2026). Si cette tendance se poursuit, l'énergie devient le coût marginal dominant de l'inférence. C'est une tendance citée assortie d'une condition, pas un effondrement mesuré. [La correction orthographique est mondiale](/papers/spellcheck/) est une preuve d'existence qu'une partie de l'intelligence informatique se banalise jusqu'à un prix nul groupé.
 
 <div id="85-cache-hit-pricing" class="anchor-alias" aria-hidden="true"></div>
 
@@ -712,7 +712,7 @@ cargo run --release --bin wca-soc-loop -- \
 
 Résultat attendu, d'après les journaux enregistrés du compagnon : refus de la démonstration avec 0 appel à l'exécutant ; graine 1 avec 1 validé, 15 refusés, énergie analytique 8.6795e-10 joule. Ces sorties n'estiment pas la satiété.
 
-Instrument de navigateur, livré comme Étape B à https://research.openie.dev/living/fpga-sim/, partagé avec l'Annexe B du compagnon. Le cœur de décision s'exécute en WASM. WebGPU peint l'image de la LUT et la trace de validation. Comparer la trace au JSON de Rust. Ne pas convertir les horodatages GPU en joules. Ne pas marquer l'Alchitry Pt V2 comme mesurée. Page du fabricant : https://www.sparkfun.com/alchitry-pt-v2.html. La synthèse plus un compteur constitue l'Étape C, une étude ultérieure.
+Instrument de navigateur, livré comme Étape B à https://research.openie.dev/living/fpga-sim/, partagé avec l'Annexe B du compagnon. Le cœur de décision s'exécute en WASM. WebGPU peint l'image de la LUT et la trace de validation. Comparer la trace au JSON de Rust. Ne pas convertir les horodatages GPU en joules. Ne pas marquer l'Alchitry Pt V2 comme mesurée. Page du fabricant : https://www.sparkfun.com/alchitry-pt-v2.html. Un compteur sur la carte programmée de l'Étape C est une étude ultérieure.
 
 Indicateur factuel du dépôt : aucun résultat sur carte FPGA revendiqué.
 

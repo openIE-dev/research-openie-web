@@ -14,7 +14,7 @@ Eine zweite Tatsache betrifft den Preis, nicht die Physik. Epoch AI berichtet st
 
 Das Papier berichtet keine randomisierte Studie, keine Fehlerrate eines Fertig-Detektors und keine Aufteilung zwischen der Energie vor und der Energie nach der Vollständigkeit. Diese Messungen sind spezifiziert und fehlen. Was die Software-Referenz liefert, ist ein Ort für den Halt: Wise Computer Automation (WCA) kann aus einem Richtlinien- oder Budgetgrund ablehnen oder aufgrund eines physikalischen Prädikats (Freigabe durch eine Nachschlagetabelle und eine Energieprüfung, optional eine Control-Barrier-Funktion). Das Begleitpapier misst das physikalische Prädikat an Spielzeuganlagen. Dieses Papier formuliert das ökonomische Prädikat und die tatsächlich veröffentlichte Evidenz.
 
-Für diese Studie wurde kein Field-Programmable Gate Array (FPGA) synthetisiert oder gemessen. Ein Alchitry Pt V2 ist der vorgesehene spätere Prüfling (Device under Test, DUT). Ein Browser-Instrument, das das Tor zu WebAssembly (WASM) kompiliert und mit WebGPU darstellt, ist als Stufe B unter https://research.openie.dev/living/fpga-sim/ ausgeliefert (siehe Begleitpapier). Es ist eine Simulation, kein Platinenergebnis, und hier keine Sättigungsmessung. Analytische Joule aus dem OpCounter des Begleitpapiers sind keine Platinenleistung und keine Evidenz für Sättigung.
+In dieser Studie trägt kein Field-Programmable Gate Array (FPGA) ein Energiemessgerät; die Platine des Begleitpapiers ist programmiert, und ihre Energie ist ungemessen. Ein Alchitry Pt V2 ist der vorgesehene spätere Prüfling (Device under Test, DUT). Ein Browser-Instrument, das das Tor zu WebAssembly (WASM) kompiliert und mit WebGPU darstellt, ist als Stufe B unter https://research.openie.dev/living/fpga-sim/ ausgeliefert (siehe Begleitpapier). Es ist eine Simulation, kein Platinenergebnis, und hier keine Sättigungsmessung. Analytische Joule aus dem OpCounter des Begleitpapiers sind keine Platinenleistung und keine Evidenz für Sättigung.
 
 ## Notation
 
@@ -81,7 +81,7 @@ Mixture of Limits navigiert. Notational Intelligence ist für den irreversiblen 
 
 Andersen (2001) behandelt Sättigung innerhalb eines evolutorischen Modells des Strukturwandels, nicht als verbale Präferenz. Das tragfähige Element für dieses Papier ist das ökonomische: Die Grenzbewertung eines Gutes kann null erreichen. Lehrbuch-Bliss-Punkte machen die Geometrie explizit. Für ein Bündel `x*` steigt der Nutzen in einer Koordinate jenseits von `x*` nicht, und eine glatte Darstellung kann dort einen negativen Grenznutzen haben. Ein quadratisches Beispiel, `U(x) = -a (x - x*)^2` für `a > 0`, hat ein Maximum bei `x*` und jenseits davon eine negative Ableitung. Diese Funktion ist ein Modell, mit dem die Definition gelehrt wird. Sie wird in dieser Studie nicht an Agentenprotokolle angepasst. Kein Koeffizient `a` wird berichtet.
 
-Die operationale Übersetzung erfordert ein Prädikat, das das Modell nicht kennt, solange es niemand formuliert. Sei `C(z) = 1`, wenn der schriftliche Vollständigkeitstest für die Episode `z` gilt, sonst 0. Sättigung in dieser Episode bedeutet, dass es einen Zeitpunkt `t*` gibt, zu dem `C` gleich 1 ist und für alle späteren Aufrufe keine Klausel von `C` von falsch auf wahr umschaltet. Aufrufe, die `C` rückgängig machen, sind Schaden, kein Wert. Abschnitt 3.1 formuliert dieselbe Regel. Das interne Ereignis **ökonomisch fertig** tritt ein, wenn `C` zu 1 wird; dieses Papier nennt dieses Ereignis Aufgabenabschluss. Das ist eine Definition. Zu einer empirischen Behauptung wird sie erst mit einer gelabelten Menge von Episoden und einem Detektor, dessen Fehler gezählt werden. Abschnitt 4 enthält diese Zählung nicht.
+Die operationale Übersetzung erfordert ein Prädikat, das das Modell nicht kennt, solange es niemand formuliert. Sei `C(z) = 1`, wenn der schriftliche Vollständigkeitstest für die Episode `z` gilt, sonst 0. Sättigung in dieser Episode bedeutet, dass es einen Zeitpunkt `t*` gibt, zu dem `C` bei `t*` gleich 1 ist und für alle späteren Aufrufe keine Klausel von `C` von falsch auf wahr umschaltet. Aufrufe, die `C` rückgängig machen, sind Schaden, kein Wert. Abschnitt 3.1 formuliert dieselbe Regel. Das interne Ereignis **ökonomisch fertig** tritt ein, wenn `C` zu 1 wird; dieses Papier nennt dieses Ereignis Aufgabenabschluss. Das ist eine Definition. Zu einer empirischen Behauptung wird sie erst mit einer gelabelten Menge von Episoden und einem Detektor, dessen Fehler gezählt werden. Abschnitt 4 enthält diese Zählung nicht.
 
 Keynes zog 1930 dieselbe Linie. Er teilte Bedürfnisse in absolute Bedürfnisse, die man empfindet, was immer andere haben, und relative Bedürfnisse, die man empfindet, weil ihre Befriedigung uns über andere erhebt. Er argumentierte, dass die absoluten Bedürfnisse erfüllt werden könnten. Das Vollständigkeitsprädikat ist das absolute Bedürfnis einer Aufgabe, aufgeschrieben. Relative und offene Wünsche haben kein solches Prädikat, und Abschnitt 5.2 hält sie aus der Behauptung heraus.
 
@@ -99,7 +99,7 @@ Wus Buch „The Attention Merchants“ (Verlagsseite: https://www.penguinrandomh
 
 Technologiemärkte zeigen oft eine spekulative Phase, eine Nutzungsphase und eine spätere Phase der Massenware. Die Evidenz ist ungleichmäßig.
 
-Quinn (2019), „Technological revolutions and speculative finance: evidence from the British Bicycle Mania“, Cambridge Journal of Economics 43(2), 271-294, https://doi.org/10.1093/cje/bey029, untersucht Aktienkurse von Fahrradunternehmen von 1895 bis 1900. Die Kurse stiegen um über 200 Prozent und fielen dann um mehr als 75 Prozent. Das Ergebnis des Papiers betrifft spekulative Finanzierung und Fundamentaldaten, nicht ein gemessenes Prädikat „genug Fahrrad“ für Haushalte. Es als Bild der Finanzierung in der Wettlaufphase zu verwenden, ist gestützt. Es als Beweis einer Sättigung im Verkehr zu verwenden, ist es nicht. Frühere Notizen in diesem Projekt nannten für diese Episode manchmal „Quinn und Turner“. Der oben verifizierte Artikel ist Quinn (2019). Ein anderer Artikel von Quinn über Cornering-Risiken dankt John Turner in der Danksagung. Das ist keine Koautorschaft des Papiers im Cambridge Journal. Dieses Papier zitiert den Artikel, der geprüft wurde.
+Quinn (2019), „Technological revolutions and speculative finance: evidence from the British Bicycle Mania“, Cambridge Journal of Economics 43(2), 271-294, https://doi.org/10.1093/cje/bey029, untersucht Aktienkurse von Fahrradunternehmen von 1895 bis 1900. Die Kurse stiegen um über 200 Prozent und fielen dann um mehr als 75 Prozent. Das Ergebnis des Papiers betrifft spekulative Finanzierung und Fundamentaldaten, nicht ein gemessenes Prädikat „genug Fahrrad“ für Haushalte. Es als Bild der Finanzierung in der Wettlaufphase zu verwenden, ist gestützt. Es als Beweis einer Sättigung im Verkehr zu verwenden, ist es nicht.
 
 Autos, Linienflugverkehr und Fernsehen haben Märkte mit Massenwarencharakter im alltäglichen Sinn: Gebrauchtfahrzeuge, ertragsgesteuerte Sitzplätze und Panels, die als Vorleistungen für Inhalte verkauft werden. Die Zeilen dienen der historischen Orientierung. Sie sind keine Regressionen. Das Ertragsmanagement der Fluggesellschaften nach der Deregulierung ist eine Preisinstitution für einen Sitzplatz, was Evidenz für einen Massenwarenmarkt für Sitzplätze ist, nicht Evidenz dafür, dass die Reisenachfrage der Passagiere global gesättigt ist.
 
@@ -119,7 +119,7 @@ Eine Faustregel der Planung, nach der Frontier-Kompetenz in etwa sechs Monaten b
 
 Landauer (1961) beschränkt das Löschen. Bennett (1973) zeigt, dass reversible Berechnung diese Schranke theoretisch vermeiden kann. Horowitz (2014) ist die praktische Aussage für CMOS: Energie pro Operation und Energie der Datenbewegung setzen die Entwurfsgrenze, viele Größenordnungen oberhalb von `kT ln 2` für irreversible CMOS-Logik. Der OpCounter des Begleitpapiers implementiert `J = sum count * E` mit Konstanten wie `E_LUT_READ = 1e-12` Joule. Diese Konstanten sind ein Modell. Das Begleitpapier gibt für eine Spielzeugepisode die analytische Gesamtsumme von Seed 1 an, 8.6795e-10 Joule. Diese Zahl in ein Nachfragepapier zu übernehmen, würde nicht zeigen, dass die Ausgaben nach dem Fertigsein groß sind. Es würde nur zeigen, dass das Modell des Spielzeugtors diese Summe geliefert hat. Dieses Papier behandelt das Joule des Begleitpapiers deshalb nicht als Sättigungsmessung.
 
-Goldman Sachs veröffentlichte eine Research-Notiz mit dem Titel „Gen AI: Too Much Spend, Too Little Benefit?“ (https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit). Dass eine bedeutende Sell-Side-Notiz existiert, die Infrastrukturausgaben im Verhältnis zum Nutzen infrage stellt, ist eine Dokumententatsache. Dollarbeträge aus der Notiz werden hier nicht zitiert. Sie wurden für diesen Text nicht erneut aus dem primären PDF gelesen, und Sell-Side-Schätzungen sind keine wissenschaftliche Energiebilanz.
+Goldman Sachs veröffentlichte eine Research-Notiz mit dem Titel „Gen AI: Too Much Spend, Too Little Benefit?“ (https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit). Dass eine bedeutende Sell-Side-Notiz existiert, die Infrastrukturausgaben im Verhältnis zum Nutzen infrage stellt, ist eine Dokumententatsache. Dollarbeträge aus der Notiz werden hier nicht zitiert, weil Sell-Side-Schätzungen keine wissenschaftliche Energiebilanz sind.
 
 ### 2.7 Commit-Datensätze als Schnittstelle, nicht als Nachfrageschätzung
 
@@ -153,7 +153,7 @@ Die Mengenvereinigung in Worten lautet: Die Laufzeit lehnt ab, wenn die ökonomi
 
 Diese Studie ist eine strukturierte Lektüre. Quellen sind das am 29. bis 30. September 2026 im Projekt geprüfte Zitationsgerüst, die Notizen zur Sättigung und der Softwaredatensatz des Begleitpapiers. Abschnitt 3.3 nennt die Messungen, die die operationale Definition empirisch machen würden.
 
-Die Gestaltungsregeln in Abschnitt 4.4 sind Empfehlungen unter der Bedingung der Definitionen. Sie sind keine geschätzten Behandlungseffekte. Man kann eine Regel ablehnen, ohne die Preisreihe von Epoch abzulehnen, und die Preisreihe annehmen, ohne eine Produktempfehlung anzunehmen.
+Die Gestaltungsregeln in Abschnitt 4.10 sind Empfehlungen unter der Bedingung der Definitionen. Sie sind keine geschätzten Behandlungseffekte. Man kann eine Regel ablehnen, ohne die Preisreihe von Epoch abzulehnen, und die Preisreihe annehmen, ohne eine Produktempfehlung anzunehmen.
 
 ### 3.3 Spezifizierte, nicht durchgeführte Messungen
 
@@ -189,7 +189,7 @@ Stufe B, ausgeliefert: WASM-Kompilierung des Entscheidungskerns und eine WebGPU-
 
 Stufe C: Platine für die Commit-Tor-Demo des Begleitpapiers programmiert (Pendel im geschlossenen Regelkreis mit LUT-Freigabe, Safe PH und Ames-Energiemengen-CBF); Energie weiterhin ungemessen. Der Alchitry Pt V2 hat keinen eingebauten Joule-Messer. Übereinstimmung der Entscheidungen über UART ist keine Wattablesung. Herstellerangaben auf der Seite von SparkFun (XC7A100T-2FGG84I, 101,440 Logikzellen, 240 DSP48E1-Slices, 4,860 Kb Block-RAM, 256 MB DDR3L) sind keine Energieergebnisse eines Prüflings. Messmethoden: Leitfaden des Begleitpapiers [/living/fpga-sim/alchitry/#energy](https://research.openie.dev/living/fpga-sim/alchitry/#energy).
 
-Dieses Papier fügt eine Zuordnung hinzu, keine vierte Stufe. Der Aufgabenabschluss sollte, wenn er als `policy` oder `budget_exceeded` codiert ist, in derselben Spur erscheinen wie `energy_veto`, damit eine künftige Aufteilung (Abschnitt 3.3) Begründungscodes gruppieren kann. Die Browseransicht würde diese Gruppierung lesbar machen. Sie würde den fehlenden Korpus nicht erzeugen. Wir haben die FPGA-Platine weder synthetisiert noch gemessen.
+Dieses Papier fügt eine Zuordnung hinzu, keine vierte Stufe. Der Aufgabenabschluss sollte, wenn er als `policy` oder `budget_exceeded` codiert ist, in derselben Spur erscheinen wie `energy_veto`, damit eine künftige Aufteilung (Abschnitt 3.3) Begründungscodes gruppieren kann. Die Browseransicht würde diese Gruppierung lesbar machen. Sie würde den fehlenden Korpus nicht erzeugen, und die Energie der Platine bleibt ungemessen.
 
 
 <div id="28-fidelity-criteria-and-stop-rules" class="anchor-alias" aria-hidden="true"></div>
@@ -220,7 +220,7 @@ Die Preisreihen von Epoch (S-2) zeigen, dass Synthese in Geld billiger wird. Neu
 
 Chung, Wu, Ma und Chowdhury (arXiv:[2601.22076](https://arxiv.org/abs/2601.22076), 2026) diagnostizieren die Inferenzenergie über 1,858 Konfigurationen: Der Aufgabentyp allein kann die LLM-Energie pro Antwort um etwa 25× verschieben; Videogenerierung kann die Energie für Bilder um zwei Größenordnungen übertreffen. Der *Joule*-Artikel „Energy use of AI inference, efficiency pathways, and test-time scaling“ ([cell.com/joule/fulltext/S2542-4351(26)00114-5](https://www.cell.com/joule/fulltext/S2542-4351(26)00114-5), online am 22. Apr. 2026) schätzt optimierte Anfragen im Frontier-Maßstab im Medianbereich unter einer Wattstunde und berichtet zugleich, dass lange Reasoning- und agentische Anfragen die Energie um mehr als eine Größenordnung erhöhen können; Effizienzgewinne von 8 bis 20× sind absehbar, keine kostenlosen Joule. Luccioni, Strubell und Crawford (FAccT 2025) ([doi:10.1145/3715275.3732007](https://doi.org/10.1145/3715275.3732007)) warnen, dass Effizienz ohne Halt die Gesamtausgaben verstärken kann (Jevons). Der Energieüberblick von Epoch AI ([epoch.ai/publications/ai-energy](https://epoch.ai/publications/ai-energy), aktualisiert im Juli 2026) trennt moderate Kosten pro Anfrage von der sich rasch verdoppelnden aggregierten Leistung der Rechenzentren.
 
-**Lesart für dieses Papier.** An der Grenze kostenlos ist eine Aussage über den Geldpreis. Knappe Joule sind eine physikalische Aussage. Der operationale Halt ist der Aufgabenabschluss: Wenn `C(z) = 1`, erhöht weitere Synthese das schriftliche Ziel nicht, und eine Ablehnung mit `policy` / `budget_exceeded` ist ein Erfolg. [Notational Intelligence](/papers/gates/) ist für das physikalische Zertifikat zuständig. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) navigiert die billigsten ausreichenden Gänge. [Metabolic Intelligence](/products/mei/) ist für die Aktoren der Hülle zuständig. Schätzungen ≠ auf der Platine gemessenes `measured_j`.
+**Lesart für dieses Papier.** An der Grenze kostenlos ist eine Aussage über den Geldpreis. Knappe Joule sind eine physikalische Aussage. Der operationale Halt ist der Aufgabenabschluss: Wenn `C(z) = 1`, erhöht weitere Synthese das schriftliche Ziel nicht, und eine Ablehnung mit `policy` / `budget_exceeded` ist ein Erfolg. [Notational Intelligence](/papers/gates/) ist für das physikalische Zertifikat zuständig. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) navigiert die billigsten ausreichenden Gänge. [Metabolic Intelligence](/products/mei/) ist für die Aktoren der Hülle zuständig. Schätzungen sind kein auf der Platine gemessenes `measured_j`.
 
 <div id="36-protocol-for-a-done-detector-study-not-executed" class="anchor-alias" aria-hidden="true"></div>
 
@@ -257,6 +257,12 @@ U(x) = -(x - 4)^2
 für eine Routineaufgabe, deren konstruiertes Maximum bei vier Aufrufen liegt. Dann gilt `U(0) = -16`, `U(4) = 0`, `U(8) = -16`. Der Grenznutzen ist `dU/dx = -2(x - 4)`, positiv vor 4, null bei 4 und negativ danach. Das Beispiel verwendet ganze Zahlen, damit der Vorzeichenwechsel ohne Anpassung sichtbar ist. Kein Datensatz wurde zur Wahl von 4 verwendet. Ersetzt man 4 durch eine andere ganze Zahl, verschiebt sich der Gipfel, die Definition ändert sich nicht. Eine Produktmetrik gleich `x` stuft `x = 8` über `x = 4` ein. Eine Produktmetrik gleich `U` tut das Umgekehrte. Behauptung S-3 ist diese Nichtidentität, hier in einer vollständig spezifizierten Spielzeugfunktion und in Abschnitt 3.4 in konstruierten Episoden. Keines von beiden ist eine Wohlfahrtsschätzung für ein Unternehmen.
 
 Ein Tokenpreis lässt sich anfügen, ohne Einheiten zu verwechseln. Angenommen, ein Aufruf kostet `p` in Geld und der Käufer zahlt `p * x`, während der Wert `U` folgt. Der Näherungswert für die Käuferrente `U(x) - p x` hat für jedes `p >= 0` weiterhin einen endlichen Maximierer. Ein Fall von `p` verschiebt den Maximierer, das ist die Rebound-Logik an diesem Spielzeug, und der Maximierer bleibt endlich. Das Spielzeug sagt nicht, wo der Maximierer für einen realen Käufer liegt. Es blockiert den Schluss, dass ein niedrigeres `p` das Maximum beseitigt.
+
+Abbildung 1 zeichnet das Spielzeugmodell und die gesonderte Aussage zum Aggregat.
+
+![Links: Modellillustration eines Bliss-Punkts. Der Wert U von x ist minus x minus 4 zum Quadrat, mit dem Überschuss U minus p x bei den Preisen 0, 2 und 4; die Maximierer sind 4, 3 und 2 Aufrufe, endlich bei jedem Preis. Rechts: ein Schema des aggregierten Rebounds, bei dem niedrigere Preise mehr Aufgaben eröffnen, von denen jede dennoch an ihrem eigenen Prädikat endet.](/figures/satiation/satiation-rebound.svg)
+
+*Abbildung 1. Aufgabensättigung und aggregierter Rebound. Modellillustration des Spielzeugmodells dieses Abschnitts, keine Anpassung: Der Maximierer von $U(x) - p\,x$ ist $x = 4 - p/2$, endlich bei jedem Preis. Das rechte Feld ist ein Schema; dieses Papier schätzt keinen Rebound. Eine [PNG-Kopie](/figures/satiation/satiation-rebound.png) ist verfügbar.*
 
 <div id="38-reason-codes-as-a-partition-not-a-welfare-function" class="anchor-alias" aria-hidden="true"></div>
 
@@ -337,7 +343,7 @@ Eine Tabelle der Raten von falschem Fertig und falschem Weiter. Eine Zeitreihe d
 | Besitz von Telefonen ist hoch (S-5) | der Grenzwert eines weiteren Modellaufrufs ist null |
 | Kurse der Fahrradaktien boomten und brachen ein (S-4) | Haushalte erreichten einen Bliss-Punkt im Verkehr |
 
-Die rechte Spalte ist die Liste der Schlüsse, die dieses Papier verweigert. Jede Beobachtung links ist entweder ein Zitat in Abschnitt 4 oder eine Variable in Abschnitt 3. Die Tabelle ist die Diskussion, verdichtet zu einer Prüfung. Ein Text, der einen Satz der rechten Spalte behauptet, hat die Evidenz verlassen.
+Die rechte Spalte ist die Liste der Schlüsse, die dieses Papier verweigert. Jede Beobachtung links ist entweder ein Zitat in Abschnitt 4 oder eine Variable in Abschnitt 3. Die Tabelle ist die Diskussion, verdichtet zu einer Prüfung. Ein Satz, der eine Behauptung der rechten Spalte aufstellt, hat die Evidenz verlassen.
 
 ### 4.13 Größen des Begleitpapiers, die im Begleitpapier bleiben
 
@@ -377,7 +383,7 @@ Ein Modell, das eine Notiz schneller entwirft, kann den Durchsatz an Notizen erh
 
 ### 5.6 Kostenlose Synthese ist keine kostenlose Aktuierung
 
-Joule der Stufe A sind modelliert. Stufe B wäre im Browser simuliert. Stufe C wäre auf der Platine gemessen und liegt in der Zukunft. Ein Aktorbefehl ist das Commit-Bit des Begleitpapiers. Die Preise von Epoch liegen auf einer anderen Achse als alle drei. Sie zu „kostenloser KI“ zusammenzufassen, streicht die Messklasse. Der Pfad über WASM und WebGPU ist nützlich, weil er Dritten erlaubt, die Entscheidungsspur nachzuspielen, ohne die Alchitry-Platine zu besitzen. Nützlichkeit als Nachbildung ist kein Watt.
+Joule der Stufe A sind modelliert. Stufe B ist im Browser simuliert. Stufe C programmiert die Platine, und ein Messgerät daran ist eine spätere Messung. Ein Aktorbefehl ist das Commit-Bit des Begleitpapiers. Die Preise von Epoch liegen auf einer anderen Achse als alle drei. Sie zu „kostenloser KI“ zusammenzufassen, streicht die Messklasse. Der Pfad über WASM und WebGPU ist nützlich, weil er Dritten erlaubt, die Entscheidungsspur nachzuspielen, ohne die Alchitry-Platine zu besitzen. Nützlichkeit als Nachbildung ist kein Watt.
 
 ### 5.7 Konfidenz ist kein Zertifikat
 
@@ -417,7 +423,7 @@ Falsifikatoren. S-1 scheitert, wenn die zitierte Theorie keinen Bereich mit Gren
 
 
 
-Dieselbe Disziplin gilt für Herstellerangaben zu FPGAs. SparkFun listet Logikzellen, DSP-Slices, Block-RAM und DRAM-Kapazität für den Alchitry Pt V2 auf. Diese Größen beschreiben ein Katalogteil. Sie beschreiben weder Schaltaktivität noch statische Leistung noch die Energie einer Commit-Spur. Ein späterer Bericht zum Prüfling muss den Bitstream, den Takt, die Last, das Messgerät und die Dauer nennen. Solange dieser Bericht nicht existiert, ist die Platine ein geplantes Instrument und der Browser-Emulator eine geplante Nachbildung der Softwareentscheidung, keine Vorschau auf das Messgerät.
+Dieselbe Disziplin gilt für Herstellerangaben zu FPGAs. SparkFun listet Logikzellen, DSP-Slices, Block-RAM und DRAM-Kapazität für den Alchitry Pt V2 auf. Diese Größen beschreiben ein Katalogteil. Sie beschreiben weder Schaltaktivität noch statische Leistung noch die Energie einer Commit-Spur. Ein späterer Bericht zum Prüfling muss den Bitstream, den Takt, die Last, das Messgerät und die Dauer nennen. Solange dieser Bericht nicht existiert, ist die Platine ein ungemessenes Instrument und der Browser-Emulator eine Nachbildung der Softwareentscheidung, keine Vorschau auf das Messgerät.
 
 ## 7. Schluss
 
@@ -441,7 +447,7 @@ Die Theoriepapiere ordnen nach Joule bis zur korrekten Fertigstellung und halten
 
 ### 8.4 Der Preistrend in der gemeinsamen These
 
-*Aus der gemeinsamen These, die die Torform allein formuliert.* Ein Preistrend ist eine eigene Behauptung und als solche gekennzeichnet. Epoch AI berichtet, dass die Kosten eines gegebenen Niveaus an KI-Leistung seit 2023 um etwa 47 Prozent pro Quartal gefallen sind, etwa um das 13-Fache pro Jahr (Emberson und Roodman, *The plunging price of thought*, 22. September 2026). Setzt sich dieser Trend fort, wird Energie zu den dominierenden Grenzkosten der Inferenz. Das ist ein zitierter Trend mit einer Bedingung, kein gemessener Zusammenbruch. [Rechtschreibprüfung ist global](/papers/spellcheck/) ist ein Existenzbeweis, dass manche Computerintelligenz zu einem gebündelten Nullpreis zur Massenware wird.
+*Aus der gemeinsamen These.* Ein Preistrend ist eine eigene Behauptung und als solche gekennzeichnet. Epoch AI berichtet, dass die Kosten eines gegebenen Niveaus an KI-Leistung seit 2023 um etwa 47 Prozent pro Quartal gefallen sind, etwa um das 13-Fache pro Jahr (Emberson und Roodman, *The plunging price of thought*, 22. September 2026). Setzt sich dieser Trend fort, wird Energie zu den dominierenden Grenzkosten der Inferenz. Das ist ein zitierter Trend mit einer Bedingung, kein gemessener Zusammenbruch. [Rechtschreibprüfung ist global](/papers/spellcheck/) ist ein Existenzbeweis, dass manche Computerintelligenz zu einem gebündelten Nullpreis zur Massenware wird.
 
 ### 8.5 Preise bei Cache-Treffern
 
@@ -476,7 +482,7 @@ cargo run --release --bin wca-soc-loop -- \
 
 Zu erwarten, nach den aufgezeichneten Protokollen des Begleitpapiers: Demo-Ablehnung mit 0 Aufrufen des Ausführenden; Seed 1 mit 1 Commit, 15 Ablehnungen, analytische Energie 8.6795e-10 Joule. Diese Ausgaben schätzen keine Sättigung.
 
-Browser-Instrument, als Stufe B unter https://research.openie.dev/living/fpga-sim/ ausgeliefert, gemeinsam mit Anhang B des Begleitpapiers. Der Entscheidungskern läuft in WASM. WebGPU zeichnet das LUT-Bild und die Commit-Spur. Die Spur gegen das Rust-JSON diffen. GPU-Zeitstempel nicht in Joule umrechnen. Den Alchitry Pt V2 nicht als gemessen markieren. Herstellerseite: https://www.sparkfun.com/alchitry-pt-v2.html. Synthese plus Messgerät ist Stufe C, eine spätere Studie.
+Browser-Instrument, als Stufe B unter https://research.openie.dev/living/fpga-sim/ ausgeliefert, gemeinsam mit Anhang B des Begleitpapiers. Der Entscheidungskern läuft in WASM. WebGPU zeichnet das LUT-Bild und die Commit-Spur. Die Spur gegen das Rust-JSON diffen. GPU-Zeitstempel nicht in Joule umrechnen. Den Alchitry Pt V2 nicht als gemessen markieren. Herstellerseite: https://www.sparkfun.com/alchitry-pt-v2.html. Ein Messgerät an der programmierten Platine der Stufe C ist eine spätere Studie.
 
 Sachliches Kennzeichen des Repositorys: kein FPGA-Platinenergebnis beansprucht.
 

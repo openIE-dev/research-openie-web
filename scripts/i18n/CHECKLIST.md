@@ -6,9 +6,9 @@ States: abstract = title and abstract only (complete: false); full = whole text 
 
 | paper | zh-Hans | es | fr | de | ja | pt | hi | ar |
 |---|---|---|---|---|---|---|---|---|
-| rce | stale | stale | stale | stale | stale | stale | stale | stale |
+| rce | full | full | full | full | full | full | full | full |
 | agency | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| ai-coding-market | stale | stale | stale | stale | stale | stale | stale | stale |
+| ai-coding-market | full | full | full | full | full | full | full | full |
 | gates | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | satiation | abstract | full | full | full | abstract | abstract | abstract | abstract |
 | spellcheck | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |

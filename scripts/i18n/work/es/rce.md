@@ -6,15 +6,13 @@ La lectura económica de este artículo está en su compañero, [El prometido me
 
 ## 1. Tesis
 
-Hay dos caminos hacia la automatización autónoma de la computación. Se distinguen por dos cantidades: la energía gastada por resultado correcto y la entropía que el sistema debe resolver en tiempo de ejecución.
+La automatización autónoma de la computación es un espacio de diseño con muchos puntos. Cada enfoque se sitúa en algún lugar a lo largo de cinco ejes continuos: la energía gastada por resultado correcto; la entropía que el sistema debe resolver en tiempo de ejecución y, con ella, cuán determinista es su salida; la solidez de la verificación que acepta un resultado; en qué medida cada resultado aceptado se reutiliza y se acumula; y cuánto depende el enfoque de un modelo. Un modelo de lenguaje grande (LLM), un modelo estadístico de texto, que escribe cada cambio a partir de la instrucción se sitúa cerca de una esquina de ese espacio: depende del modelo en cada tarea, extrae cada vez una muestra nueva de una distribución de alta entropía y vuelve a pagar la generación en cada tarea. La recuperación, las reglas, la síntesis, la verificación y la caché ocupan muchos otros puntos, y los sistemas reales los combinan.
 
-El primer camino genera. Un modelo de lenguaje grande (LLM), un modelo estadístico de texto, escribe cada cambio a partir de la instrucción. Cada tarea vuelve a pagar la generación, y cada salida es una muestra nueva de una distribución de alta entropía.
-
-El segundo camino converge. La gente ya ha programado la mayor parte de lo que se programará jamás. Un programa es una máquina de estados funcional de base de datos: una Forma, muchos ajustes. La intención humana es de alta entropía. El piso de la máquina es de baja entropía. El código converge por diseño, así que la mayor parte del trabajo consiste en recuperar un ajuste que ya existe, adaptarlo y demostrarlo. El Reality Code Engine (RCE) se construye sobre el segundo camino.
+El Reality Code Engine (RCE) es un punto del espacio, elegido para optimizar los cinco ejes a la vez. La gente ya ha programado la mayor parte de lo que se programará jamás. Un programa es una máquina de estados funcional de base de datos: una Forma, muchos ajustes. La intención humana es de alta entropía. El piso de la máquina es de baja entropía. El código converge por diseño, así que la mayor parte del trabajo consiste en recuperar un ajuste que ya existe, adaptarlo y demostrarlo, y solo se llama a un modelo cuando nada más barato cierra la tarea.
 
 **La afirmación central.** RCE es un ecosistema de código completo en el que los programas se escriben de forma nativa a partir de la intención. La intención se escribe una vez, como una Forma: un estado, un conjunto de eventos y una transición pura y total. La Forma es una codificación sin pérdida de esa intención. Cada destino (diagrama de estados, Rust, Python, XState, SCXML, WASM) es una proyección de la Forma, y cada proyección reproduce la traza de la Forma byte a byte. Un estado que la Forma no declara no puede escribirse, y una entrada fuera de su contrato se rechaza en el punto de entrada. Por tanto, un programa del ecosistema no puede desviarse de su intención como un programa en un lenguaje común se desvía de sus comentarios, de sus pruebas o de sus otras implementaciones, y no necesita comparación de diferencias ni seguimiento de errores a posteriori. Cada ajuste que pasa la compuerta se almacena y se reutiliza, así que el ecosistema crece de forma acumulativa ([§2.4](#24-gated-verified-recursive-self-improvement)). El código escrito en otros lenguajes es una puerta de entrada: entra por elevación ([§6](#6-lift-entering-the-ecosystem-from-other-languages)).
 
-Ambos caminos enfrentan la misma compuerta. La compuerta es la corrección: el predicado de completitud de una tarea, $C(z)$, aquí las pruebas de la tarea, una demostración o una traza de concordancia. Entre las ejecuciones que pasan la compuerta, los sistemas se clasifican por los julios hasta la finalización, $J^*$. La corrección es una restricción, no una puntuación.
+Cada punto del espacio enfrenta la misma compuerta. La compuerta es la corrección: el predicado de completitud de una tarea, $C(z)$, aquí las pruebas de la tarea, una demostración o una traza de concordancia. Entre las ejecuciones que pasan la compuerta, los sistemas se clasifican por los julios hasta la finalización, $J^*$. La corrección es una restricción, no una puntuación.
 
 Mixture of Limits (mezcla de límites) es la filosofía: hay una cantidad mínima de cualquier cosa para cumplir una tarea, y cualquier exceso es desperdicio ([Compuertas de confirmación medidas, Parte II](/papers/gates/#part-ii-the-cascade-mixture-of-limits)). RCE es una instancia de Mixture of Limits. Sus engranajes se ejecutan del más barato al más caro, y el primer engranaje que pasa la compuerta cierra la tarea.
 
@@ -22,7 +20,9 @@ flowG es un proyecto de lenguaje independiente. RCE es su primera demostración 
 
 Las cifras de energía se etiquetan según su fuente. `est_j` es una estimación analítica. `reported_j` es un contador del sistema operativo o del propio chip. `measured_j` se reserva para un medidor de pared y está vacío en todos los resultados de este artículo.
 
-## 2. Dos caminos hacia la autonomía
+<div id="2-two-paths-to-autonomy" class="anchor-alias" aria-hidden="true"></div>
+
+## 2. El espacio de diseño de la programación autónoma
 
 ![Entra una frase. Sale un piso. La intención humana es de alta entropía; un embudo de conversiones de la intención a la especificación, a 626 lenguajes de superficie, a una representación intermedia y al código máquina pierde información en cada frontera; todo el código llega a unas pocas formas de máquina; RCE escribe el significado una vez en una Forma canónica, trata cada superficie como una proyección y deja que gane la forma correcta más barata.](/figures/rce/intent-entropy.svg)
 
@@ -36,18 +36,27 @@ Las cifras de energía se etiquetan según su fuente. `est_j` es una estimación
 
 **Las fronteras son donde el significado diverge.** La misma línea da respuestas distintas en los bordes. En Python, `-3 % 2` es 1 y `-7 / 2` es -3.5. En C, `-3 % 2` es -1, `-7 / 2` es -3 y el desbordamiento con signo es indefinido. Un sistema que regenera código en cada frontera adivina en cada frontera.
 
-**Los dos caminos, expresados como cantidades.**
+**Los ejes, expresados como cantidades.**
 
-| Camino | Qué se ejecuta por tarea | Entropía resuelta en ejecución | Energía por resultado correcto |
+| Eje | Un extremo | El otro extremo | Dónde se sitúa RCE |
 |---|---|---|---|
-| Generar | Un modelo muestrea un cambio nuevo | La distribución completa de la instrucción | Se paga de nuevo en cada tarea |
-| Converger (RCE) | Búsqueda, regla, solucionador; un modelo solo al final | Solo el residuo que ningún ajuste almacenado cubre | Se paga una vez por caso nuevo; después, el piso del manejador |
+| Energía por resultado correcto | Se paga de nuevo por completo en cada tarea | Se paga una vez por caso nuevo; después, el piso del manejador | En el piso en las tareas cubiertas |
+| Entropía resuelta en ejecución, y determinismo | La distribución completa de la instrucción, una muestra nueva cada vez | Solo el residuo que ningún ajuste almacenado cubre, una salida determinista | Solo el residuo; cada proyección es determinista |
+| Solidez de la verificación | La salida se acepta tras inspeccionarla | Pruebas, cobertura y un certificado de prueba formal | La compuerta completa en cada resultado |
+| Reutilización y acumulación | Cada resultado se usa una vez | Cada ajuste aceptado se almacena y se reutiliza | Se almacena cada ajuste que pasa la compuerta |
+| Dependencia del modelo | Un modelo en cada tarea | Ningún modelo | Un modelo solo como último engranaje |
 
-RCE escribe el significado una vez, en una Forma canónica. Cada lenguaje de superficie es una proyección de esa Forma, verificada para coincidir con ella. Entre formas equivalentes, se ejecuta la correcta más barata.
+Los enfoques difieren en grado en cada eje, y los ejes interactúan: la reutilización reduce la energía y la entropía que queda por resolver, y una verificación sólida es lo que hace segura la reutilización. RCE escribe el significado una vez, en una Forma canónica. Cada lenguaje de superficie es una proyección de esa Forma, verificada para coincidir con ella. Entre formas equivalentes, se ejecuta la correcta más barata.
+
+La Figura 2 dibuja los cinco ejes y sitúa en ellos las principales clases de enfoque.
+
+![Gráfico de radar con cinco ejes: energía por resultado correcto, determinismo, solidez de la verificación, reutilización y acumulación, e independencia de los modelos. Cinco clases de enfoque se dibujan como polígonos. Un modelo en cada tarea se sitúa cerca del centro en todos los ejes. Un bucle de agente con compuerta de pruebas está más alto en verificación. Un modelo con recuperación y caché está más alto en reutilización. La síntesis y reparación clásicas están altas en determinismo e independencia de los modelos. RCE, marcado con estrellas, se sitúa en el anillo exterior o cerca de él en los cinco ejes. Las posiciones son cualitativas.](/figures/rce/design-space.svg)
+
+*Figura 2. El espacio de diseño de la programación autónoma. Diagrama cualitativo: cada clase de enfoque se sitúa según la lectura que hace el artículo de la Sección 2 en niveles ordinales, no por medición. La dependencia del modelo se dibuja como independencia de los modelos para que hacia fuera sea mejor en todos los ejes. Se ofrece una [copia PNG](/figures/rce/design-space.png).*
 
 ### 2.1 Programar es teoría de la codificación
 
-La tesis de esta sección es de David Charlot: toda la programación es teoría de la codificación. Un programador convierte la intención entre dos regímenes entrópicos. La intención es de alta entropía, una distribución sobre significados. El código es de baja entropía, una transición determinista por estado. Cada paso del trabajo de software, de un requisito a un registro, es un paso de esa conversión. La literatura lo ha dicho por partes durante setenta años, en muchas lenguas. Esta sección reúne las partes en un solo argumento y sitúa en él cada engranaje de RCE.
+La tesis de esta sección es de David Charlot: toda la programación es teoría de la codificación. Un programador convierte la intención a lo largo de un gradiente entre dos regímenes entrópicos. La intención es de alta entropía, una distribución sobre significados. El código es de baja entropía, una transición determinista por estado. Cada paso del trabajo de software, de un requisito a un registro, es un paso de esa conversión. La literatura lo ha dicho por partes durante setenta años, en muchas lenguas. Esta sección reúne las partes en un solo argumento y sitúa en él cada engranaje de RCE.
 
 **La medida.** Shannon definió la entropía de una fuente y la capacidad de un canal [40], y midió el inglés impreso en unos 0,6 a 1,3 bits por letra [1]. Kolmogórov, escribiendo en ruso en *Problemy Peredachi Informatsii* en 1965, dio tres enfoques de la cantidad de información e hizo primario el algorítmico: la información de un objeto es la longitud del programa más corto que lo produce [41]. Solomonoff había llegado al mismo objeto como teoría de la inferencia inductiva [42], y Chaitin mostró que el tamaño de los programas obedece identidades formalmente idénticas a las de Shannon [43]. Rissanen convirtió la idea en una regla para elegir modelos, la longitud mínima de descripción [44]. Juntos dicen que un programa es una palabra de código: una descripción de un comportamiento, y la más corta correcta es el piso. La regla de extracción de RCE, conservar el ajuste de menos julios entre ajustes equivalentes (Proposición 3), es esa regla con julios en lugar de bits.
 
@@ -82,7 +91,7 @@ Leída como teoría de la codificación, una tarea llega como un mensaje cuya in
 | Compuerta | Acepta un candidato solo con pruebas, cobertura y un certificado de demostración | Lógica de Hoare [54]; Curry-Howard [18, 72] |
 | Promoción | Almacena el ajuste aceptado, de modo que el mismo residuo cueste G0 la próxima vez | Longitud mínima de descripción [44]; borrado de Landauer pagado una vez [65] |
 
-Los dos caminos de la tabla de la Sección 2 difieren en dónde se paga la conversión. El camino de generación muestrea la distribución completa de la instrucción en cada tarea, así que paga el lado de alta entropía cada vez. El camino de convergencia paga solo por el residuo, y solo una vez. La lectura económica de esa diferencia está en [El prometido mercado billonario de la programación con IA, Sección 4](/papers/ai-coding-market/#4-the-theory-that-prices-the-task). La regla de parada detrás del orden de los engranajes es [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits), y la parada por tarea es la [saciedad de la tarea](/papers/satiation/).
+Las posiciones en los ejes de la Sección 2 difieren en dónde se paga la conversión. Un enfoque que muestrea la distribución completa de la instrucción en cada tarea paga el lado de alta entropía cada vez. Un enfoque que almacena y reutiliza los ajustes aceptados paga solo por el residuo, y solo una vez. La mayoría de los sistemas se sitúan entre esos extremos, y RCE se sitúa en el extremo de la reutilización. La lectura económica de esa diferencia está en [El prometido mercado billonario de la programación con IA, Sección 4](/papers/ai-coding-market/#4-the-theory-that-prices-the-task). La regla de parada detrás del orden de los engranajes es [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits), y la parada por tarea es la [saciedad de la tarea](/papers/satiation/).
 
 ### 2.3 El ecosistema con N grande
 
@@ -96,6 +105,12 @@ La afirmación de la [§1](#1-thesis) se mide directamente. El banco de pruebas 
 | Compuerta en la entrada, entradas | Cinco tipos de carga mal formada (tipo erróneo, null, campo ausente, vacío, anidado) rechazados todos, sin ningún resultado aceptado | 10.000 | 10.000 | 0 |
 | Compuerta en la entrada, especificaciones | Una especificación con un flujo hacia un nodo no declarado se rechaza antes de compilar | 10.000 | 10.000 | 0 |
 
+La Figura 3 muestra los mismos recuentos.
+
+![Gráfico de barras horizontales de cinco comprobaciones sobre 10.000 Formas. La codificación sin pérdidas, la proyección determinista, la compuerta de entrada ante entradas mal formadas y la compuerta de entrada ante especificaciones se cumplen cada una en 10.000 de 10.000. La reproducción de la traza en Python se cumple en 9.999 de 10.000. Cero llamadas a modelos.](/figures/rce/ecosystem-checks.svg)
+
+*Figura 3. El ecosistema a gran N. Figura de datos: las cinco comprobaciones de la tabla anterior sobre 10.000 Formas prerregistradas, motor congelado en el commit `a079967`, 0 llamadas a modelos, con intervalos de Wilson del 95% calculados a partir de los recuentos. Fuente: [`bench/ecosystem`](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ecosystem/). Se ofrece una [copia PNG](/figures/rce/ecosystem-checks.png).*
+
 El único fallo de Python se cuenta como fallo; la misma Forma y los mismos eventos se reproducen de forma idéntica bajo 32 semillas de hash en la prueba de regresión `tests/form_ecosystem_regress.rs`. La energía aquí es solo `est_j`; toda la ejecución tomó 393 s de tiempo de CPU en un núcleo. Las Formas generadas son pequeñas, así que esta tabla mide la codificación, las proyecciones y la compuerta. Las Formas elevadas a partir de programas reales se miden con el protocolo de la [§8.7](#87-lift-coverage-across-languages).
 
 ### 2.4 Automejora recursiva con compuerta y verificada
@@ -107,6 +122,12 @@ RCE toma la estructura de la máquina de Gödel y la biblioteca de Voyager, con 
 **Proposición R1 (corrección monótona).** Si cada cambio promovido pasa la comprobación de su frontera, y las comprobaciones de las demás fronteras no cambian, entonces toda propiedad establecida por esas comprobaciones antes de la promoción sigue valiendo después de ella.
 
 **Proposición R2 (acumulación).** Sea una carga de trabajo un multiconjunto de tareas y sea un manejador promovido que cierra toda tarea de su forma. Entonces el número de escaladas en la ronda t es no creciente en t, y una corrección promovida antes de la ronda 1 reduce las escaladas acumuladas de todo horizonte en las escaladas que cierra en cada ronda posterior. En la carga de trabajo de referencia del playground, las escaladas acumuladas a lo largo de ocho rondas bajan de 21 a 15 con una corrección en los sumideros, y llegan a cero en la última ronda en ambos casos, con cada tarea cerrada correctamente y ninguna promoción rechazada.
+
+La Figura 4 dibuja el mecanismo de las Proposiciones R1 y R2 con los totales de la carga de trabajo de referencia.
+
+![Diagrama de la pila de RCE en seis niveles, desde la intención en la parte superior, pasando por la Forma, la compuerta, las proyecciones y el entorno de ejecución, hasta el hardware y la energía. Una corrección promovida en el nivel del entorno de ejecución tras pasar su comprobación de frontera se muestra con flechas que suben por cada nivel situado por encima. Un pequeño gráfico de barras al lado da las escaladas acumuladas en ocho rondas sobre la carga de trabajo de referencia del playground: 21 sin corrección y 15 con una corrección en los sumideros.](/figures/rce/stack-compounding.svg)
+
+*Figura 4. Las correcciones se acumulan hacia arriba. Diagrama de la pila, con un recuadro de datos: escaladas acumuladas en ocho rondas de la carga de trabajo de referencia del playground, 21 sin corrección y 15 con una corrección en los sumideros (Proposición R2; [RCE Playground](/playground/rce/#compounding)). Se ofrece una [copia PNG](/figures/rce/stack-compounding.png).*
 
 **Proposición R3 (coste decreciente).** Como un manejador promovido se ejecuta en lugar de una llamada a un modelo, y su coste es el número de operaciones del manejador valorado con la tabla del sustrato, la energía de una ronda desciende hacia la energía de los manejadores solos a medida que las escaladas descienden hacia cero.
 
@@ -280,6 +301,12 @@ Una comprobación fallida localiza la ruptura en la frontera donde ocurre. La co
 
 `tests/form_targets.rs` ejercita una especificación aritmética de once operadores con 29 eventos de borde más 500 valores de borde aleatorios con semilla. Los destinos generados en Rust, Python, WASM, XState y SCXML imprimen la traza de referencia byte a byte, incluidos los bordes aritméticos. Esto es prueba diferencial en la línea de McKeeman y de Csmith [86]: concordancia entre implementaciones independientes sobre un conjunto de entradas declarado. No es validación de traducción [85] ni un compilador verificado. Cubre los once operadores y los 529 eventos de la prueba, y no dice nada sobre entradas fuera de ellos. Los resultados de Z3 y Kani que siguen son la verificación.
 
+La Figura 5 muestra las cinco proyecciones de una Forma y el viaje de ida y vuelta de los dos destinos de diagrama de estados.
+
+![Diagrama: una Forma, hecha de estado, eventos y una transición pura y total, se proyecta mediante compilaciones deterministas a cinco destinos: Rust, Python, WASM, XState y SCXML. Flechas continuas van de la Forma a cada destino. Flechas discontinuas vuelven de XState y SCXML a la Forma, y muestran el viaje de ida y vuelta a bytes idénticos y el mismo hash de forma. Rust, Python y WASM reproducen la traza de referencia byte a byte.](/figures/rce/form-projections.svg)
+
+*Figura 5. Una Forma, muchas proyecciones. Diagrama: proyección determinista a cinco destinos ([§4.5](#45-the-form-compiler)); las proyecciones XState y SCXML se decodifican de vuelta a bytes idénticos ([§2.3](#23-the-ecosystem-at-large-n)); los cinco destinos imprimen la traza de referencia byte a byte en los 529 eventos de `tests/form_targets.rs`. Se ofrece una [copia PNG](/figures/rce/form-projections.png).*
+
 ### 5.2 Reescrituras demostradas en Z3
 
 Las reglas de reescritura verificadas tienen un linaje. Ruler infiere y comprueba reglas de reescritura por saturación de igualdades sin ningún modelo en el bucle [87]. Las 3 de 16 reglas propuestas por el modelo admitidas en la Sección 5.5 son, por tanto, un enunciado sobre la compuerta, que rechazó 13, y no una afirmación de que un modelo sea la mejor fuente de reglas.
@@ -335,6 +362,12 @@ Aquí una tarea de programación se mide por los **bits de intención** que nece
 | L1 una sentencia, Java, archivo completo | ManySStuBs4J 2.0 [107], archivo del commit padre con los índices de métodos y de guardas del proyecto | 21.320 | 13.586 | 0,637 | 0,631 a 0,644 | 4,8 | 0 |
 | L1 una sentencia, Python | TSSB-3M v1.0.0, fragmentos 14 y 15 [108] | 157.089 | 27.266 | 0,174 | 0,172 a 0,175 | 4,8 | 0 |
 
+La Figura 6 representa las filas de la tabla con sus intervalos.
+
+![Gráfico de barras de tasas de resolución en código reservado con intervalos de Wilson del 95 por ciento. L0 un token en nueve repositorios: 99,95 por ciento de 520.821. L0 un token en cuatro repositorios nunca ajustados: 100 por ciento de 23.015. L1 Java archivo completo: 63,7 por ciento de 21.320. L1 Java solo el fragmento: 38,6 por ciento de 24.072. L1 Python solo el fragmento: 17,4 por ciento de 157.089. Cero llamadas a modelos.](/figures/rce/lift-ladder.svg)
+
+*Figura 6. La escalera de reparación en código elevado. Figura de datos: partición de prueba reservada, motor congelado, ubicación dada, compuerta de identidad de tokens, 0 llamadas a modelos; intervalos de Wilson del 95% calculados a partir de los recuentos. Fuentes: mutantes al estilo PIT [109], ManySStuBs4J 2.0 [107], TSSB-3M v1.0.0 [108]; filas por tarea en [`bench/ladder`](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/). Se ofrece una [copia PNG](/figures/rce/lift-ladder.png).*
+
 L2 a L4 se miden en el conjunto reservado de Defects4J de 288 errores ([Sección 8.1](#81-defects4j)). L5 a L7 siguen los protocolos de la [Sección 8.2](#82-swe-bench-lite-offline). A continuación se dan el método, la compuerta y la energía de cada fila.
 
 Las tasas se leen como bits de intención. En L0 los bits que faltan están casi todos en la línea, y un vecindario de un solo token ordenado por una distribución previa los aporta con una mediana de 2,3 bits. En la fila L1 de solo bloque el motor ve solo el bloque de 7 líneas. Cierra las categorías cuyos bits están dentro del bloque (Java: operador cambiado 91 %, literal booleano intercambiado 84 %, argumentos intercambiados 82 %; Python: literal booleano cambiado 98,8 %, argumentos intercambiados 99,4 %) y deja abiertas aquellas cuyos bits están fuera: los nombres de métodos (22 %) y los identificadores (37 %) necesitan el archivo y sus tipos, y las conjunciones nuevas (3 % a 7 %) y las reescrituras de sentencias completas (Python, 1,2 % de una categoría que es el 34 % del corpus) son intención nueva. La intención nueva es lo que un proveedor (una especificación, una prueba, una persona o un modelo local) aporta una vez, tras lo cual el ajuste está en el índice.
@@ -364,7 +397,7 @@ La submuestra L1 construye su índice del proyecto solo a partir de sus 2.000 ta
 
 ## 7. Evidencia de reutilización
 
-El segundo camino descansa en un hecho de ingeniería: el código se reutiliza a toda escala. Cada método siguiente lo mide de forma distinta.
+La posición de RCE en el eje de reutilización descansa en un hecho de ingeniería: el código se reutiliza a toda escala. Cada método siguiente lo mide de forma distinta.
 
 | Método | Fuente | Hallazgo |
 |---|---|---|
@@ -461,10 +494,10 @@ Fijados antes de las ejecuciones que ponen a prueba.
 
 | ID | Observación | Refuta |
 |---|---|---|
+| RCE-F0 | En una ejecución preregistrada de al menos 10.000 Formas, alguna proyección imprime una traza que difiere de la traza de referencia de la Forma, o se acepta alguna entrada mal formada | La afirmación de que las proyecciones son fieles y de que la compuerta rechaza en el punto de entrada |
 | RCE-F1 | En el segmento reservado, G0 a G2 con reglas congeladas resuelven menos del 10 % de las tareas con 0 llamadas a modelos | La afirmación de que la mayoría de los ajustes ya existen para la reparación a esta escala |
 | RCE-F2 | Los parches idénticos byte a byte o equivalentes son menos de la mitad de las tareas reservadas resueltas | La lectura de la compuerta como algo más que plausibilidad en las tareas cubiertas |
-| RCE-F3 | Bajo el medidor de pared, los julios brutos por tarea resuelta del solucionador RCE superan a los de la línea base con modelo más barata en las tareas que ambos resuelven | La ventaja en julios del segundo camino en las tareas cubiertas |
-| RCE-F0 | En una ejecución preregistrada de al menos 10.000 Formas, alguna proyección imprime una traza que difiere de la traza de referencia de la Forma, o se acepta alguna entrada mal formada | La afirmación de que las proyecciones son fieles y de que la compuerta rechaza en el punto de entrada |
+| RCE-F3 | Bajo el medidor de pared, los julios brutos por tarea resuelta del solucionador RCE superan a los de la línea base con modelo más barata en las tareas que ambos resuelven | La ventaja en julios de RCE en las tareas cubiertas |
 | RCE-F4 | En el protocolo de convergencia de la Sección 8.6, menos de la mitad de las especificaciones sin entrada atascada alcanzan una ronda con cero llamadas a modelos en 20 rondas | Compilar el modelo fuera del bucle |
 
 ## 11. Trabajo por terminar
