@@ -12,7 +12,7 @@ board_metered: false
 
 # Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents
 
-*Version 1.1, revised 11 October 2026. Changes in this revision are listed in the site changelog at [/changelog/](/changelog/).*
+*Version 1.1, 11 October 2026.*
 
 *The proposed Universal Law of Agency, stated as a definition plus a gate.*
 

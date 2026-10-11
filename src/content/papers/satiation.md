@@ -13,7 +13,7 @@ board_metered: false
 
 # Task Satiation vs. Aggregate Rebound in AI Demand
 
-*Version 1.1, revised 11 October 2026. Changes in this revision are listed in the site changelog at [/changelog/](/changelog/).*
+*Version 1.1, 11 October 2026.*
 
 *The economics companion to [Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents](/papers/agency/) and [Metered Commit Gates](/papers/gates/). The theory it uses stays there: the gate form and $J^*$ in [Agency, Section 1](/papers/agency/#1-thesis), the machine stop in [Metered Commit Gates, Section II.5](/papers/gates/#ii5-stop-bridge-satiation), and the commit record in [Part I](/papers/gates/#part-i-the-commit-gate-notational-intelligence). The market and price readings of those papers are collected in Section 8. Its coding instance is [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/).*
 

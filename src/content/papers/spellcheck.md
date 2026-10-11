@@ -11,7 +11,7 @@ board_metered: false
 
 # Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few
 
-*Version 1.1, revised 11 October 2026. Changes in this revision are listed in the site changelog at [/changelog/](/changelog/).*
+*Version 1.1, 11 October 2026.*
 
 ## Abstract
 
@@ -422,7 +422,7 @@ Klere is the product home of Metabolic Intelligence. Public klere.ai, as the com
 
 More than 7 billion people, and the few who can pay a scarcity price. The opinion is what happens when technology is built for global access instead of priced by scarcity. Class: opinion.
 
-The two numbers frame a choice. They are not a census. An earlier draft gave the few a number, under 500 million. That line was never derived from a table, and frontier chat use passed it in 2025, so this revision states the few as a price class. Use of frontier chat is already past it. On 6 October 2025 Sam Altman said: "More than 800 million people use ChatGPT every week" [61]. That reach came through a free tier. A free tier is a bundle in the sense of this paper: the capability ships without a separate price, paid for by other products and other buyers [62, 63]. So the 800 million figure is the mechanism of this paper at work, not a counterexample to it. What stays scarce is the capability held back for those who pay: the frontier tier, the rate limit, the datacenter rental. The few are the people a scarcity price still reaches.
+The two numbers frame a choice. They are not a census. The few are a price class, not a headcount. Use of frontier chat is already past it. On 6 October 2025 Sam Altman said: "More than 800 million people use ChatGPT every week" [61]. That reach came through a free tier. A free tier is a bundle in the sense of this paper: the capability ships without a separate price, paid for by other products and other buyers [62, 63]. So the 800 million figure is the mechanism of this paper at work, not a counterexample to it. What stays scarce is the capability held back for those who pay: the frontier tier, the rate limit, the datacenter rental. The few are the people a scarcity price still reaches.
 
 
 ### 4.13 What would be a result and is not

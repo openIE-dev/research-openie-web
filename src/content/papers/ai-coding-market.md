@@ -12,7 +12,7 @@ board_metered: false
 
 # The Promised Trillion Dollar AI-Coding Market
 
-*Version 1.1, revised 11 October 2026. Changes in this revision are listed in the site changelog at [/changelog/](/changelog/).*
+*Version 1.1, 11 October 2026.*
 
 
 *The economics companion to [The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding](/papers/rce/). The research paper holds the engineering, the theory and the measurements. This essay is where the theory and the economics meet.*
@@ -23,7 +23,7 @@ The trillion-dollar AI coding market is David Charlot's informed hyperbolic clai
 
 Every one of these projections assumes the same thing. There is only one path to autonomous computer automation. It is high energy, high compute, high entropy and disorder. A model sits in the loop for every task, and every task pays rent per token.
 
-The [RCE research paper](/papers/rce/) measures a second path. A program is a database functional state machine: one Form, many fits. Most fits already exist. Correctness is the gate, and joules are the ranking. On a 20-task development corpus, RCE resolved 20 of 20 with 0 model calls ([RCE §6.1](/papers/rce/#61-track-a-a-frozen-repair-corpus)). Where that path covers a task, the marginal cost of the task falls toward the energy to run it, and a market priced on generation loses its base on that task. This essay separates the projections from the measurements, names what each projection assumes, and states where it breaks.
+The [RCE research paper](/papers/rce/) measures a second path. A program is a database functional state machine: one Form, many fits. Most fits already exist. Correctness is the gate, and joules are the ranking. On a 20-task development corpus, RCE resolved 20 of 20 with 0 model calls ([RCE §6.1](/papers/rce/#61-track-a-a-development-repair-corpus)). Where that path covers a task, the marginal cost of the task falls toward the energy to run it, and a market priced on generation loses its base on that task. This essay separates the projections from the measurements, names what each projection assumes, and states where it breaks.
 
 <!-- include: economics-thesis -->
 
@@ -165,10 +165,10 @@ These are measurements, labeled as RCE labels them. They come from the [RCE rese
 
 | Measurement | Result | Label | Where |
 |---|---|---|---|
-| 20-task development corpus (rules written after the corpus froze; n = 20) | 20 of 20 resolved, 0 model calls; 18 fixes byte-identical to the human fix, 2 equivalent | Measured counts | [RCE §6.1](/papers/rce/#61-track-a-a-frozen-repair-corpus) |
-| The same corpus, earlier solver | 10 of 20, 3.10 model calls per resolved task | Measured counts | [RCE §6.1](/papers/rce/#61-track-a-a-frozen-repair-corpus) |
-| Energy per solved task, new solver | 84.2 J, 20 of 20, 154 s | `reported_j` (RAPL package counter less a stated idle baseline) | [RCE §6.2](/papers/rce/#62-track-b-joules-per-solved-task-on-jetson-hub) |
-| Energy per solved task, earlier solver | 712.4 J, 11 of 20, 29 model calls, 695 s | `reported_j` | [RCE §6.2](/papers/rce/#62-track-b-joules-per-solved-task-on-jetson-hub) |
+| 20-task development corpus (rules written after the corpus froze; n = 20) | 20 of 20 resolved, 0 model calls; 18 fixes byte-identical to the human fix, 2 equivalent | Measured counts | [RCE §6.1](/papers/rce/#61-track-a-a-development-repair-corpus) |
+| The same corpus, solver A (small rule set, local model last) | 10 of 20, 3.10 model calls per resolved task | Measured counts | [RCE §6.1](/papers/rce/#61-track-a-a-development-repair-corpus) |
+| Energy per solved task, solver B | 84.2 J, 20 of 20, 154 s | `reported_j` (RAPL package counter less a stated idle baseline) | [RCE §6.2](/papers/rce/#62-track-b-joules-per-solved-task-on-jetson-hub) |
+| Energy per solved task, solver A | 712.4 J, 11 of 20, 29 model calls, 695 s | `reported_j` | [RCE §6.2](/papers/rce/#62-track-b-joules-per-solved-task-on-jetson-hub) |
 | Energy to apply the known fix and test it (gold) | 2.0 J per task | `reported_j` | [RCE §6.2](/papers/rce/#62-track-b-joules-per-solved-task-on-jetson-hub) |
 | First soak with a production model resolver | 10 model calls in round 1, then 0 in rounds 2 to 5; 50 if the model ran every round | Measured counts | [RCE §6.4](/papers/rce/#64-model-calls-in-the-first-soak) |
 | Soaks on live traffic | all 12 runs reach a round with zero new escalations before round 20 | Measured counts; energy `est_j` | [RCE §6.3](/papers/rce/#63-the-soaks-converge) |
@@ -177,13 +177,13 @@ These are measurements, labeled as RCE labels them. They come from the [RCE rese
 
 ## 6. Where the projections break
 
-**Per-token rent breaks on covered tasks.** In the frozen corpus, a covered repair bought 0 tokens. Between the earlier and the new solver, model calls per resolved task went from 3.10 to 0 and reported joules per solved task fell 8.5 times, from 712.4 to 84.2 [RCE §6.1, §6.2]. A revenue line priced per token earns nothing on a task that needs no token.
+**Per-token rent breaks on covered tasks.** In the development corpus, a covered repair bought 0 tokens. Between solver A and solver B, model calls per resolved task went from 3.10 to 0 and reported joules per solved task fell 8.5 times, from 712.4 to 84.2 [RCE §6.1, §6.2]. A revenue line priced per token earns nothing on a task that needs no token.
 
 **AI in the loop forever breaks at promotion.** In the first soak the model was called 10 times in round 1 and never again for the same cases [RCE §6.4]. The model compiled itself out of the loop. Task 10,000 does not cost what task 1 cost.
 
 **High energy is not required for a correct result.** The gate passed at 84.2 J per task with no model, and the floor of the same corpus is 2.0 J [RCE §6.2]. One median text prompt to a production assistant is measured at 0.24 Wh, or 864 J [12]. An agentic coding task uses many prompts, and the IEA puts agentic queries at hundreds or thousands of times the energy of a simple one [10]. These are different tasks on different machines, so they are not a ratio. They are an order of magnitude to test, under Protocol E1.
 
-**The evidence is at pilot scale.** The 20-task corpus is a development set: its rules were written after it froze ([RCE §6.1](/papers/rce/#61-track-a-a-frozen-repair-corpus)). What it shows is that a covered repair can need no token. What share of real task volume is covered is not yet measured; Proposition E5 measures it. The soak result, 10 model calls and then 0, is about amortization on live traffic and is the stronger evidence here.
+**The evidence is at pilot scale.** The 20-task corpus is a development set ([RCE §6.1](/papers/rce/#61-track-a-a-development-repair-corpus)). What it shows is that a covered repair can need no token. What share of real task volume is covered is not yet measured; Proposition E5 measures it. The soak result, 10 model calls and then 0, is about amortization on live traffic and is the stronger evidence here.
 
 **Two declines multiply.** The price per call falls 9 to 900 times a year at fixed performance, depending on the task [4, 34]. Promotion drives calls per task to zero on covered cases [RCE §6.4]. The cost per task is the product of the two. A projection that extrapolates token volume prices only the first.
 
@@ -191,7 +191,7 @@ These are measurements, labeled as RCE labels them. They come from the [RCE rese
 
 **Bundling by the platform owner.** The Spell Check pattern has an owner. The bundle is made by whoever owns the editor, the repository or the cloud. Spolsky named the tactic: commoditize your complement [31]. Nalebuff showed that a bundle can bar entry [32], and Adams and Yellen that it discriminates on price [33]. It is happening: GitHub moved Copilot's individual plans to usage-based billing from 1 June 2026 [30], and Cursor moved Pro from request limits to pass-through API pricing in 2025 [18]. A platform can give the model layer away and keep the rent in the IDE and the cloud. An energy-priced engine competes with a zero-priced bundle only where the gate is open to it: where the tests, the proof and the receipt are the buyer's, not the platform's.
 
-**What survives.** The value estimate of section 2.1 can hold. Developers can produce more. What breaks is the claim that the value is captured as rent on generation. The conclusion is conditional. Where coverage is high and the platform does not bundle, value created at a falling marginal cost goes to whoever holds the gate, the proof and the low-entropy floor, and much of it goes to the buyer. Where the platform bundles, the evidence so far says the gate-holder is the platform.
+**What survives.** The value estimate of section 2.1 can hold. Developers can produce more. What breaks is the claim that the value is captured as rent on generation. The conclusion is conditional. Where coverage is high and the platform does not bundle, value created at a falling marginal cost goes to whoever holds the gate, the proof and the low-entropy floor, and much of it goes to the buyer. Where the platform bundles, the evidence says the gate-holder is the platform.
 
 ## 7. Demand
 

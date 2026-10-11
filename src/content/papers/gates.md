@@ -13,7 +13,7 @@ board_metered: true
 
 # Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems
 
-*Version 1.1, revised 11 October 2026. Changes in this revision are listed in the site changelog at [/changelog/](/changelog/).*
+*Version 1.1, 11 October 2026.*
 
 ## 0. Overview
 

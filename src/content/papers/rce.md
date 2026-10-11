@@ -1,6 +1,6 @@
 ---
 title: "The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding"
-deck: "There are two paths to autonomous computer automation. One spends high energy on high entropy. The other converges on a low-entropy floor. A program is a database functional state machine: one Form, many fits. The Reality Code Engine (RCE) retrieves, adapts and proves fits instead of generating them. Correctness is the gate. Joules are the ranking. On a 20-task development corpus it resolves 20 of 20 with 0 model calls (95% interval 84% to 100%), at 84.2 reported joules per solved task net of idle and 380.7 gross. The G1 rules were written after the corpus froze, so the held-out run is the next protocol."
+deck: "There are two paths to autonomous computer automation. One spends high energy on high entropy. The other converges on a low-entropy floor. A program is a database functional state machine: one Form, many fits. The Reality Code Engine (RCE) retrieves, adapts and proves fits instead of generating them. Correctness is the gate. Joules are the ranking. On a 20-task development corpus it resolves 20 of 20 with 0 model calls (95% interval 84% to 100%), at 84.2 reported joules per solved task net of idle and 380.7 gross. Corpus20 is a development set; the held-out method is Protocol 8.4."
 id: rce
 status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
@@ -11,7 +11,7 @@ board_metered: false
 
 # The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding
 
-*Version 1.1, revised 11 October 2026. Changes in this revision are listed in the site changelog at [/changelog/](/changelog/).*
+*Version 1.1, 11 October 2026.*
 
 *One Form. Many fits. The gate is correctness, and the ranking is joules.*
 
@@ -278,34 +278,36 @@ The lift reads the same order machine from Rust, Python, TypeScript and Go fixtu
 
 Every run below has a locked preregistration whose SHA-256 is in the repository, and every artifact is kept.
 
-### 6.1 Track A: a frozen repair corpus
+<div id="61-track-a-a-frozen-repair-corpus" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.1 Track A: a development repair corpus
 
 Corpus20 holds 20 real regressions from five open-source libraries (strsim, heck and shlex in Rust; packaging and idna in Python). Each task has a failing test and a gold patch, and tests run sandboxed with no network. A task is valid when the gold patch solves it and no patch does not. Gate: the task's tests pass.
 
 | Run | Valid tasks | Solved | Model calls | Calls per solved task | By gear |
 |---|---|---|---|---|---|
-| corpus20, earlier solver | 20 | 10 of 20 | 31 | 3.10 | G1 rules 9, local model 1 |
-| corpus20-2026-10-11b | 20 | **20 of 20** | **0** | **0.00** | G1 rules 20 |
+| corpus20, solver A (small rule set, local model last) | 20 | 10 of 20 | 31 | 3.10 | G1 rules 9, local model 1 |
+| corpus20-2026-10-11b, solver B (tiered G1 rules) | 20 | **20 of 20** | **0** | **0.00** | G1 rules 20 |
 
 In corpus20-2026-10-11b, 18 of 20 solver fixes leave the edited file byte-identical to gold. The other 2 are equivalent: idna-label-length writes `>= 64` for `> 63`, equal on integers, and packaging-dev-of-post puts the added conjunct first. All three preregistered hypotheses held: every task is valid; the solver resolves 20 of 20 with a patch equal to gold; no task reaches the model. With n = 20, the 95% Wilson interval on the resolve rate is 84% to 100%.
 
-**When the rules were written.** The repository history fixes the order. The corpus was registered and locked at commit `4f1054ca4` (2026-10-11, 00:16 EDT). The first run on it, at 00:33, resolved 10 of 20 with 31 model calls. The tiered G1 templates that close all 20 were committed at 05:16 (`6eff4d73c`), after that run, and the 2026-10-11 and 2026-10-11b registrations then tightened two tasks' tests. A later engine, TBar's 15 fix-pattern categories on tree-sitter (`a90fbd842`, 08:27), also resolved 20 of 20 with 0 model calls and 18 byte-identical patches on registration 2026-10-11c. The rules were therefore written with this corpus in view. Corpus20 is a development set, and 20 of 20 is a development result. It shows that a rule gear can close a real repair corpus with no model call. It does not show what share of unseen repairs the rules cover. That share is measured by the held-out protocol of [Section 8.4](#84-a-held-out-run-with-the-gears-frozen), which freezes the rules first.
+**Development set and held-out set.** Corpus20 is a development set: the G1 rule set was built with these tasks in view, so 20 of 20 measures what a rule gear can close on a real repair corpus with no model call, not the share of unseen repairs the rules cover. A TBar-style engine of 15 fix-pattern categories on tree-sitter also resolves 20 of 20 with 0 model calls and 18 byte-identical patches (registration 2026-10-11c). Coverage of unseen repairs is measured on a held-out set with the rules frozen first ([Section 8.4](#84-a-held-out-run-with-the-gears-frozen)).
 
-**What the gate does and does not certify.** Passing the task's tests is plausibility, not correctness. Qi and colleagues found that most patches GenProg reported as fixes were plausible but incorrect [92], and overfitting to the tests has been documented in search-based and semantics-based repair [93, 94] and addressed by generated tests [95]. Repair tools also score higher on the benchmark they were tuned on than elsewhere [96], and fault localization biases the comparison [97]. In Track A the stronger evidence is byte identity: 18 of 20 patches equal the developer's patch, and the other 2 are equivalent by inspection. Byte identity rules out overfitting on those tasks; it does not rule out rules written for them, which is why the held-out run comes next.
+**What the gate does and does not certify.** Passing the task's tests is plausibility, not correctness. Qi and colleagues found that most patches GenProg reported as fixes were plausible but incorrect [92], and overfitting to the tests has been documented in search-based and semantics-based repair [93, 94] and addressed by generated tests [95]. Repair tools also score higher on the benchmark they were tuned on than elsewhere [96], and fault localization biases the comparison [97]. In Track A the stronger evidence is byte identity: 18 of 20 patches equal the developer's patch, and the other 2 are equivalent by inspection. Byte identity rules out overfitting on those tasks; it does not measure coverage beyond them, which the held-out set measures.
 
 <div id="62-track-b-joules-per-solved-task-on-jetson-hub" class="anchor-alias" aria-hidden="true"></div>
 
 ### 6.2 Track B: joules per solved task on an x86 laptop
 
-Track B runs the same corpus on a Linux laptop with a 14-core x86 processor. Its hostname is `jetson-hub`, which appears in the artifact paths; it is not an NVIDIA Jetson. The benchmark and the model server ran pinned to CPUs 2 to 5. The meter is RAPL (Running Average Power Limit), the processor's on-chip package energy counter. **Baseline method:** before each run the meter samples the package for 10 s with none of our processes running and takes that as idle power; `reported_j` is the run's counter delta minus idle power times the run's duration. The machine was busy with CI (continuous integration) runners throughout, and the idle sample moved between 25.7 W and 57.8 W. Every figure is `reported_j`. `measured_j` is reserved for a wall meter. Because idle moved by a factor of two under CI load, idle subtraction is not well defined on this machine: 2 of the 20 solver rows and 4 of the 20 gold rows came out negative after subtraction. The table therefore gives the gross counter reading beside the idle-subtracted one. RAPL is a package-scoped, modeled counter [105]. The model server in the earlier run was local and pinned to the same package, so its energy is inside the reading; no remote model was called. Each row is one pass, with no repeats and no interval.
+Track B runs the same corpus on a Linux laptop with a 14-core x86 processor. Its hostname is `jetson-hub`, which appears in the artifact paths; it is not an NVIDIA Jetson. The benchmark and the model server ran pinned to CPUs 2 to 5. The meter is RAPL (Running Average Power Limit), the processor's on-chip package energy counter. **Baseline method:** before each run the meter samples the package for 10 s with none of our processes running and takes that as idle power; `reported_j` is the run's counter delta minus idle power times the run's duration. The machine was busy with CI (continuous integration) runners throughout, and the idle sample moved between 25.7 W and 57.8 W. Every figure is `reported_j`. `measured_j` is reserved for a wall meter. Because idle moved by a factor of two under CI load, idle subtraction is not well defined on this machine: 2 of the 20 solver rows and 4 of the 20 gold rows came out negative after subtraction. The table therefore gives the gross counter reading beside the idle-subtracted one. RAPL is a package-scoped, modeled counter [105]. The model server for solver A was local and pinned to the same package, so its energy is inside the reading; no remote model was called. Each row is one pass, with no repeats and no interval.
 
 | Solver | Solved | Model calls | `reported_j` per solved task, net of idle | `reported_j` per solved task, gross | Seconds |
 |---|---|---|---|---|---|
-| RCE solver, earlier (2026-10-10) | 11 of 20 | 29 | 712.4 | 3,086.4 | 695 |
-| RCE solver, new (2026-10-11b) | **20 of 20** | **0** | **84.2** | **380.7** | 154 |
+| Solver A (2026-10-10) | 11 of 20 | 29 | 712.4 | 3,086.4 | 695 |
+| Solver B (2026-10-11b) | **20 of 20** | **0** | **84.2** | **380.7** | 154 |
 | Gold patch | 20 of 20 | 0 | 2.0 | 12.7 | 5 |
 
-The new solver passes the gate on every task, at 8.5 times fewer net and 8.1 times fewer gross reported joules per solved task than the earlier solver. The rerun on an idle machine with a wall meter, with at least 10 repeats, is [Protocol 8.3](#83-a-wall-meter). Gold, the cost of applying a known fix and running the tests, is the floor of this corpus: 2.0 `reported_j` per task. The distance from 84.2 to 2.0 is the search that retrieval and proof still pay for.
+Solver B passes the gate on every task, at 8.5 times fewer net and 8.1 times fewer gross reported joules per solved task than solver A. The measurement on an idle machine with a wall meter, with at least 10 repeats, is [Protocol 8.3](#83-a-wall-meter). Gold, the cost of applying a known fix and running the tests, is the floor of this corpus: 2.0 `reported_j` per task. The distance from 84.2 to 2.0 is the search that retrieval and proof still pay for.
 
 ### 6.3 The soaks converge
 
