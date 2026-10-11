@@ -1,13 +1,13 @@
 ---
 title: "O Reality Code Engine: uma Forma, muitos ajustes e o caminho de baixa entropia para a programação autônoma"
-deck: "Há dois caminhos para a automação computacional autônoma. Um gasta muita energia em alta entropia. O outro converge para um piso de baixa entropia. Um programa é uma máquina de estados funcional de banco de dados: uma Forma, muitos ajustes. O Reality Code Engine (RCE) recupera, adapta e prova ajustes em vez de gerá-los. A correção é o portão. Os joules são a classificação. Em partições de teste reservadas, com o motor congelado e 0 chamadas de modelo, ele corrige 520.541 de 520.821 falhas de um único token em nove repositórios reais (0,9995; intervalo de 95% de 0,9994 a 0,9995), 23.015 de 23.015 em quatro repositórios nunca usados para ajuste, 38,6% de 24.072 bugs Java de uma única instrução do ManySStuBs4J e 17,4% de 157.089 bugs Python do TSSB-3M."
+deck: "Há dois caminhos para a automação computacional autônoma. Um gasta muita energia em alta entropia. O outro converge para um piso de baixa entropia. Um programa é uma máquina de estados funcional de banco de dados: uma Forma, muitos ajustes. O Reality Code Engine (RCE) recupera, adapta e prova ajustes em vez de gerá-los. A correção é o portão. Os joules são a classificação. Em partições de teste reservadas, com o motor congelado e 0 chamadas de modelo, ele corrige 520.541 de 520.821 falhas de um único token em nove repositórios reais (0,9995; intervalo de 95% de 0,9994 a 0,9995), 23.015 de 23.015 em quatro repositórios nunca usados para ajuste, 38,6% de 24.072 bugs Java de uma única instrução do ManySStuBs4J só com o hunk (63,7% de 21.320 com o arquivo inteiro) e 17,4% de 157.089 bugs Python do TSSB-3M."
 lang: "pt"
 source: "rce"
 complete: true
 ---
 
 
-*Versão 1.1, 11 de outubro de 2026. Dados e código: [research.openie.dev/data/](/data/#rce). PDF em LaTeX: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([fonte](/pdfs/latex/rce.tex)).*
+*Versão 1.1, 11 de outubro de 2026. Dados e código: [research.openie.dev/data/](/data/#rce). Playground: [/playground/rce/](/playground/rce/). PDF em LaTeX: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([fonte](/pdfs/latex/rce.tex)).*
 
 *Uma Forma. Muitos preenchimentos. A porta é a correção, e a classificação é em joules.*
 
@@ -110,11 +110,28 @@ Uma tarefa de programação é medida aqui pelos **bits de intenção** de que p
 | L0 um token | Mutantes no estilo PIT [109] de 9 repositórios reais em commits fixados (Java: commons-math, commons-collections, jsoup, joda-time, gson; Python: click, attrs, pydantic, sympy) | 520,821 | 520,541 | 0.9995 | 0.9994 a 0.9995 | 2.3 | 0 |
 | L0 um token, repositórios nunca usados no ajuste | commons-text, commons-io, more-itertools, httpx | 23,015 | 23,015 | 1.0000 | 0.9998 a 1.0000 | 2.0 | 0 |
 | L1 uma instrução, Java | ManySStuBs4J 2.0, correções de um só hunk [107] | 24,072 | 9,288 | 0.386 | 0.380 a 0.392 | 3.5 | 0 |
+| L1 uma instrução, Java, arquivo inteiro | ManySStuBs4J 2.0 [107], arquivo do commit pai com os índices de métodos e de guardas do projeto | 21,320 | 13,586 | 0.637 | 0.631 a 0.644 | 4.8 | 0 |
 | L1 uma instrução, Python | TSSB-3M v1.0.0, shards 14 e 15 [108] | 157,089 | 27,266 | 0.174 | 0.172 a 0.175 | 4.8 | 0 |
 
 L2 a L4 são medidos no conjunto reservado do Defects4J, com 288 defeitos ([Seção 8.1](#81-defects4j)). L5 a L7 seguem os protocolos da [Seção 8.2](#82-swe-bench-lite-offline). A Seção 6 dá o método, a porta e a energia de cada linha.
 
 As taxas se leem como bits de intenção. Em L0 os bits que faltam estão quase todos na linha, e uma vizinhança de um token ordenada por prioridade os fornece com uma mediana de 2.3 bits. Em L1 o motor vê apenas o hunk de 7 linhas. Ele fecha as categorias cujos bits estão dentro do hunk (Java: operador alterado 91%, literal booleano trocado 84%, argumentos trocados 82%; Python: literal booleano alterado 98.8%, argumentos trocados 99.4%) e deixa em aberto aquelas cujos bits estão fora dele: nomes de métodos (22%) e identificadores (37%) precisam do arquivo e dos seus tipos, e novas conjunções (3% a 7%) e reescritas de instruções inteiras (Python, 1.2% de uma categoria que é 34% do corpus) são intenção nova. Intenção nova é o que um fornecedor (uma especificação, um teste, uma pessoa ou um modelo local) fornece uma vez, e depois disso o preenchimento está no índice.
+
+<div id="24-gated-verified-recursive-self-improvement" class="anchor-alias" aria-hidden="true"></div>
+
+### 2.4 Automelhoria recursiva com porta e verificada
+
+Good (1965) [111] definiu a máquina ultrainteligente como uma capaz de projetar máquinas melhores, de modo que a melhoria se tornaria recursiva. Yudkowsky (2013) [113] formulou a questão como uma questão de retornos: se cada unidade de melhoria torna a próxima mais barata ou mais cara. A máquina de Gödel de Schmidhuber (2007) [112] deu a primeira resposta formal com garantia: um programa reescreve qualquer parte de si mesmo, inclusive sua própria busca, somente depois de provar que a reescrita melhora sua utilidade esperada. O teorema de Löb (1955) [114] é o obstáculo que um provador que confia em si mesmo encontra, que Yudkowsky e Herreshoff (2013) [115] chamaram de obstáculo de Löb: um sistema não pode, em geral, provar a solidez de um sucessor que usa seu próprio sistema de prova. Sistemas recentes abandonam a exigência de prova e selecionam por pontuação medida: STOP (Zelikman et al., 2023) [116] melhora o andaime que melhora o código, a Darwin Gödel Machine (Zhang et al., 2025) [117] mantém um arquivo de agentes de programação automodificados escolhidos pela pontuação em benchmark, AlphaEvolve (Novikov et al., 2025) [118] faz evoluir programas sob avaliadores automáticos, e Voyager (Wang et al., 2023) [119] faz crescer uma biblioteca de habilidades verificadas que tarefas posteriores reutilizam.
+
+O RCE toma a estrutura da máquina de Gödel e a biblioteca do Voyager, com duas diferenças que removem o obstáculo. Primeiro, o objeto que melhora não é o provador. O RCE promove handlers, reescritas e engrenagens, e cada um é verificado contra um núcleo fixo e certificado à parte: os harnesses do Kani e a codificação SMT nunca mudam com a promoção, então nenhum passo precisa confiar no sistema de prova de um sucessor. Segundo, a porta é uma prova de correção na fronteira, não uma pontuação. Uma pontuação pode subir enquanto uma suposição de interface se rompe; uma prova na fronteira não pode ser atravessada por uma mudança que a rompe.
+
+**Proposição R1 (correção monótona).** Se toda mudança promovida passa na verificação de sua fronteira, e as verificações das demais fronteiras não mudam, então toda propriedade estabelecida por essas verificações antes da promoção continua valendo depois dela.
+
+**Proposição R2 (acúmulo).** Seja uma carga de trabalho um multiconjunto de tarefas e seja um handler promovido que fecha toda tarefa do seu formato. Então o número de escaladas na rodada t é não crescente em t, e uma correção promovida antes da rodada 1 reduz as escaladas acumuladas de todo horizonte pelas escaladas que ela fecha em cada rodada posterior. Na carga de trabalho de referência do playground, as escaladas acumuladas ao longo de oito rodadas caem de 21 para 15 com uma correção nos sumidouros, e chegam a zero na última rodada nos dois casos, com toda tarefa fechada corretamente e nenhuma promoção recusada.
+
+**Proposição R3 (custo decrescente).** Como um handler promovido é executado no lugar de uma chamada a modelo, e seu custo é a contagem de operações do handler precificada pela tabela do substrato, a energia de uma rodada cai em direção à energia dos handlers sozinhos à medida que as escaladas caem em direção a zero.
+
+As projeções de Futamura (1971, republicadas em 1999) [120] e a supercompilação de Turchin (1986) [121] dão o limite desse processo. Especializar um interpretador para um programa produz um programa compilado; especializar o especializador produz um compilador. As promoções do RCE especializam o caminho geral de escalada para os formatos que de fato ocorrem, de modo que o motor converge para o programa residual de sua carga de trabalho: a parte da computação que um modelo ou uma pessoa ainda precisa fornecer. A automelhoria recursiva sob uma porta é essa convergência, feita com passos verificados. A camada Compounding do [RCE Playground](/playground/rce/#compounding) executa essa carga de trabalho no navegador.
 
 <div id="3-the-form" class="anchor-alias" aria-hidden="true"></div>
 
@@ -268,6 +285,23 @@ A IR fixa um comportamento em cada borda numérica: o estouro verificado de inte
 
 Um handler de processo, HTTP ou closure não tem termo, então seus resultados registrados são compilados num oráculo gravado, indexado pelo SHA-256 da entrada canônica. `rce scan DIR --form` eleva código Rust, Python, TypeScript e Go existente ao esquema da Forma, e cada elemento elevado é rotulado como elevação sintática.
 
+<div id="46-method-the-whole-stack-evaluated-every-interface-assumption-explicit" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.6 Método: a pilha inteira avaliada, cada suposição de interface explícita
+
+Um programa é uma pilha de níveis: tokens e instruções; handlers; a Forma, uma única função de passo δ sobre um estado de banco de dados de relações tipadas, regiões de controle e um relógio; o log que registra cada evento com o hash do estado que ele produziu; as reescritas que transformam a Forma; e o substrato que a executa. Cada nível se apoia em suposições sobre o nível abaixo. O RCE não trata nenhum nível como fixo. Ele avalia a pilha inteira, escreve cada suposição de interface como um enunciado verificável e a verifica em toda execução.
+
+| Fronteira | Suposição | Verificação |
+|---|---|---|
+| fonte para handler | uma entrada satisfaz seu contrato de fonte | a verificação do contrato no evento de entrada de δ |
+| handler para sumidouro | toda saída Ok satisfaz o esquema de saída | prova do handler (verify::handler_proof), total e determinística pelo avaliador do núcleo verificado com Kani |
+| log para estado | cada entrada carrega o hash do estado que produziu | dobra do núcleo, que recusa a primeira entrada cujo hash não confere (harness do Kani `fold_rejects_wrong_state`) |
+| reescrita para Forma | uma reescrita preserva a saída para toda entrada | verificação aleatorizada, depois uma prova SMT com Z3 |
+| stub para capataz | um handler que não consegue decidir escala em vez de adivinhar | handlers stub emitem escaladas; resoluções são promovidas só pelo caminho de promoção |
+| Forma para alvo | todo alvo emitido calcula a mesma δ | todo alvo carrega o mesmo traço de referência |
+
+Uma verificação que falha localiza a ruptura na fronteira onde ela ocorre. A correção é feita naquele nível, passa pela verificação daquela fronteira e é promovida. Todo nível acima do corrigido herda a correção sem mais mudanças, porque cada nível acima consome o nível corrigido apenas pela interface cuja suposição agora é verificada. É nesse sentido que as correções sobem e se acumulam. O [RCE Playground](/playground/rce/) executa isso no navegador sobre o núcleo do RCE compilado para WebAssembly: sua camada Interfaces rompe cada suposição e mostra a verificação que a detecta, e sua camada Compounding mostra a correção se propagando para cada rodada posterior.
+
 <div id="5-verification" class="anchor-alias" aria-hidden="true"></div>
 
 ## 5. Verificação
@@ -349,7 +383,7 @@ O corpus L0 é todo mutante no estilo PIT [109] com um token de substituição v
 
 ### 6.2 L1: defeitos de uma instrução de históricos reais
 
-L1 usa dois conjuntos de dados públicos de correções reais de uma única instrução, extraídas de históricos de código aberto. O ManySStuBs4J 2.0 [107] dá 24,072 tarefas de teste em Java; o motor (commit `f2701b7`) resolve 9,288, uma taxa de 0.386 (0.380 a 0.392). O TSSB-3M v1.0.0 [108] dá 157,089 tarefas de teste em Python dos shards 14 e 15; o mesmo motor resolve 27,266, uma taxa de 0.174 (0.172 a 0.175). O motor recebe apenas o hunk de 7 linhas, então a taxa em Java é um resultado só com o hunk; o resultado com o arquivo inteiro é a próxima linha desta tabela. As taxas por categoria estão na Seção 2.3 e as tabelas completas por estrato estão no repositório. Esses conjuntos de dados não têm ranking de reparo publicado sob esta porta (só o hunk, identidade de tokens, localização dada), então nenhum número de reparo aprendido é posto ao lado deles; o Defects4J, que tem um, é comparado com o TBar na Seção 8.1.
+L1 usa dois conjuntos de dados públicos de correções reais de uma única instrução, extraídas de históricos de código aberto. O ManySStuBs4J 2.0 [107] dá 24,072 tarefas de teste em Java; o motor (commit `f2701b7`) resolve 9,288, uma taxa de 0.386 (0.380 a 0.392). O TSSB-3M v1.0.0 [108] dá 157,089 tarefas de teste em Python dos shards 14 e 15; o mesmo motor resolve 27,266, uma taxa de 0.174 (0.172 a 0.175). O motor recebe apenas o hunk de 7 linhas, então essa taxa em Java é um resultado só com o hunk. Com o arquivo inteiro no commit pai, com índices dos métodos e das condições de guarda do projeto e com as engrenagens para nomes de método alterados, argumentos adicionados, condições de guarda, throws e modificadores (commit `62fb7a0`, prefixo sha256 do binário `3682c6515acdf722`, pré-registrado antes da execução), o motor resolve 13,586 das 21,320 tarefas de teste em Java cujo arquivo e instrução defeituosa puderam ser localizados, uma taxa de 0.637 (0.631 a 0.644). Por categoria, ele fecha operadores alterados (95.9%), operandos alterados (92.1%), chamadores errados (87.9%), literais booleanos trocados (88.4%), argumentos removidos (85.1%) e argumentos trocados (83.3%); nomes de método alterados chegam a 61.4% e argumentos adicionados a 51.4%, e condições novas ou estreitadas (43.5% e 51.7%) continuam sendo a principal intenção em aberto. As taxas por categoria estão na Seção 2.3 e as tabelas completas por estrato estão no repositório. Esses conjuntos de dados não têm ranking de reparo publicado sob esta porta (só o hunk, identidade de tokens, localização dada), então nenhum número de reparo aprendido é posto ao lado deles; o Defects4J, que tem um, é comparado com o TBar na Seção 8.1.
 
 <div id="63-energy" class="anchor-alias" aria-hidden="true"></div>
 
@@ -497,16 +531,15 @@ Cada item é trabalho em aberto com o seu protocolo nomeado.
 1. Resultados reservados em L2 a L4, o conjunto Defects4J de 288 defeitos (Seção 8.1), e em L5 a L7 (Seção 8.2).
 2. Linhas de base numa tabela, cost-of-pass em joules e dólares (Seção 8.5).
 3. O primeiro `measured_j`: um medidor de parede num host ocioso, pelo menos 10 repetições, bruto e líquido lado a lado (Seção 8.3).
-4. O resultado de L1 em Java com o arquivo inteiro, com um índice de APIs indexado por tipo como próxima engrenagem (Seção 6.2).
-5. O levantamento das 626 linguagens publicado com o seu método (Figura 1).
-6. Novos corpora reservados com as engrenagens congeladas: Multi-SWE-bench e BugsInPy (Seção 8.4).
-7. Convergência das chamadas a modelo em pelo menos 1,000 especificações (Seção 8.6).
+4. O levantamento das 626 linguagens publicado com o seu método (Figura 1).
+5. Novos corpora reservados com as engrenagens congeladas: Multi-SWE-bench e BugsInPy (Seção 8.4).
+6. Convergência das chamadas a modelo em pelo menos 1,000 especificações (Seção 8.6).
 
 <div id="12-conclusion" class="anchor-alias" aria-hidden="true"></div>
 
 ## 12. Conclusão
 
-Um programa é uma máquina de estados funcional de banco de dados, e o RCE trata a programação como uma conversão de intenção de alta entropia nessa Forma de baixa entropia. A correção é a porta e os joules são a classificação. Em partições de teste reservadas, com o motor congelado e nenhuma chamada a modelo, as engrenagens reparam 99.95% de 520,821 falhas de um token e todas as 23,015 em repositórios nunca usados no ajuste, 38.6% de 24,072 defeitos Java de uma instrução e 17.4% de 157,089 defeitos Python, com centésimos de um joule relatado por tarefa resolvida num contador de pacote. A camada de verificação prova as reescritas em Z3 e o núcleo em Kani, e o teste diferencial amarra cinco alvos a um traço. O que resta são os degraus superiores, a convergência com N grande, as linhas de base na mesma tabela e um medidor de parede. Esses protocolos estão fixados nas Seções 8.3 a 8.6, e os falseadores na Seção 10.
+Um programa é uma máquina de estados funcional de banco de dados, e o RCE trata a programação como uma conversão de intenção de alta entropia nessa Forma de baixa entropia. A correção é a porta e os joules são a classificação. Em partições de teste reservadas, com o motor congelado e nenhuma chamada a modelo, as engrenagens reparam 99.95% de 520,821 falhas de um token e todas as 23,015 em repositórios nunca usados no ajuste, 38.6% de 24,072 defeitos Java de uma instrução só com o hunk (63.7% de 21,320 com o arquivo inteiro) e 17.4% de 157,089 defeitos Python, com centésimos de um joule relatado por tarefa resolvida num contador de pacote. A camada de verificação prova as reescritas em Z3 e o núcleo em Kani, e o teste diferencial amarra cinco alvos a um traço. O que resta são os degraus superiores, a convergência com N grande, as linhas de base na mesma tabela e um medidor de parede. Esses protocolos estão fixados nas Seções 8.3 a 8.6, e os falseadores na Seção 10.
 
 <div id="references" class="anchor-alias" aria-hidden="true"></div>
 
@@ -731,3 +764,25 @@ Um programa é uma máquina de estados funcional de banco de dados, e o RCE trat
 [109] H. Coles, T. Laurent, C. Henard, M. Papadakis and A. Ventresque, "PIT: a practical mutation testing tool for Java," ISSTA 2016. doi:10.1145/2931037.2948707
 
 [110] R. Just, D. Jalali, L. Inozemtseva, M. D. Ernst, R. Holmes and G. Fraser, "Are mutants a valid substitute for real faults in software testing?" FSE 2014. doi:10.1145/2635868.2635929
+
+[111] I. J. Good, "Speculations Concerning the First Ultraintelligent Machine," *Advances in Computers* 6, 1965. doi:10.1016/S0065-2458(08)60418-0
+
+[112] J. Schmidhuber, "Gödel Machines: Fully Self-referential Optimal Universal Self-improvers," in *Artificial General Intelligence*, Springer, 2007. doi:10.1007/978-3-540-68677-4_7
+
+[113] E. Yudkowsky, "Intelligence Explosion Microeconomics," Technical report 2013-1, Machine Intelligence Research Institute, 2013. https://intelligence.org/files/IEM.pdf
+
+[114] M. H. Löb, "Solution of a Problem of Leon Henkin," *Journal of Symbolic Logic* 20(2), 1955. doi:10.2307/2266895
+
+[115] E. Yudkowsky and M. Herreshoff, "Tiling Agents for Self-Modifying AI, and the Löbian Obstacle," Machine Intelligence Research Institute, 2013. https://intelligence.org/files/TilingAgentsDraft.pdf
+
+[116] E. Zelikman, E. Lorch, L. Mackey and A. T. Kalai, "Self-Taught Optimizer (STOP): Recursively Self-Improving Code Generation," 2023. doi:10.48550/arXiv.2310.02304
+
+[117] J. Zhang, S. Hu, C. Lu, R. Lange and J. Clune, "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents," 2025. doi:10.48550/arXiv.2505.22954
+
+[118] A. Novikov et al., "AlphaEvolve: A coding agent for scientific and algorithmic discovery," 2025. doi:10.48550/arXiv.2506.13131
+
+[119] G. Wang, Y. Xie, Y. Jiang, A. Mandlekar, C. Xiao, Y. Zhu, L. Fan and A. Anandkumar, "Voyager: An Open-Ended Embodied Agent with Large Language Models," 2023. doi:10.48550/arXiv.2305.16291
+
+[120] Y. Futamura, "Partial Evaluation of Computation Process: An Approach to a Compiler-Compiler," *Higher-Order and Symbolic Computation* 12(4), 1999 (first published 1971). doi:10.1023/A:1010095604496
+
+[121] V. F. Turchin, "The Concept of a Supercompiler," *ACM Transactions on Programming Languages and Systems* 8(3), 1986. doi:10.1145/5956.5957
