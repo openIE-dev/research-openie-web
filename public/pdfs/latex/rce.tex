@@ -144,21 +144,26 @@ the theory only.
 
 \subsection{1. Thesis}\label{thesis}
 
-There are two paths to autonomous computer automation. They are told
-apart by two quantities: the energy spent per correct result, and the
-entropy the system must resolve at run time.
+Autonomous computer automation is a design space with many points in it.
+Every approach sits somewhere along five continuous axes: the energy
+spent per correct result; the entropy the system must resolve at run
+time, and with it how deterministic its output is; the strength of the
+verification that accepts a result; how far each accepted result is
+reused and compounds; and how much the approach relies on a model. A
+large language model (LLM), a statistical text model, that writes each
+change from the prompt sits near one corner of that space: it relies on
+the model for every task, draws a fresh sample from a high-entropy
+distribution each time, and pays for generation again on every task.
+Retrieval, rules, synthesis, verification and caching occupy many other
+points, and real systems combine them.
 
-The first path generates. A large language model (LLM), a statistical
-text model, writes each change from the prompt. Every task pays for
-generation again, and every output is a fresh sample from a high-entropy
-distribution.
-
-The second path converges. People have already coded most of what will
-ever be coded. A program is a database functional state machine: one
-Form, many fits. Human intent is high entropy. The machine floor is low
-entropy. Code converges by design, so most of the work is to retrieve a
-fit that exists, adapt it, and prove it. The Reality Code Engine (RCE)
-is built on the second path.
+The Reality Code Engine (RCE) is one point in the space, chosen to
+optimize all five axes together. People have already coded most of what
+will ever be coded. A program is a database functional state machine:
+one Form, many fits. Human intent is high entropy. The machine floor is
+low entropy. Code converges by design, so most of the work is to
+retrieve a fit that exists, adapt it and prove it, and a model is called
+only when nothing cheaper closes the task.
 
 \textbf{The core claim.} RCE is a complete code ecosystem in which
 programs are authored natively from intent. Intent is written once, as a
@@ -176,10 +181,11 @@ is stored and reused, so the ecosystem compounds as it grows
 Code written in other languages is one door in: it enters by lift
 (\href{https://research.openie.dev/papers/rce/\#6-lift-entering-the-ecosystem-from-other-languages}{§6}).
 
-Both paths face the same gate. The gate is correctness: a task's
-completeness predicate \(C(z)\), here the task's tests, a proof or an
-agreement trace. Among runs that pass the gate, systems are ranked by
-joules to completion, \(J^*\). Correctness is a constraint, not a score.
+Every point in the space faces the same gate. The gate is correctness: a
+task's completeness predicate \(C(z)\), here the task's tests, a proof
+or an agreement trace. Among runs that pass the gate, systems are ranked
+by joules to completion, \(J^*\). Correctness is a constraint, not a
+score.
 
 Mixture of Limits is the philosophy: there is a minimal amount of
 anything to accomplish a task, and any more is waste
@@ -196,7 +202,8 @@ estimate. \texttt{reported\_j} is an operating-system or on-chip
 counter. \texttt{measured\_j} is reserved for a wall meter and is empty
 in every result here.
 
-\subsection{2. Two paths to autonomy}\label{two-paths-to-autonomy}
+\subsection{2. The design space of autonomous
+coding}\label{the-design-space-of-autonomous-coding}
 
 \begin{figure}
 \centering
@@ -247,7 +254,7 @@ different answers at the edges. In Python, \texttt{-3\ \%\ 2} is 1 and
 \texttt{-7\ /\ 2} is -3, and signed overflow is undefined. A system that
 regenerates code at every boundary guesses at every boundary.
 
-\textbf{The two paths, stated as quantities.}
+\textbf{The axes, stated as quantities.}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -257,40 +264,49 @@ regenerates code at every boundary guesses at every boundary.
   >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
-Path
+Axis
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-What runs per task
+One end
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Entropy resolved at run time
+Other end
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Energy per correct result
+Where RCE sits
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Generate & A model samples a new change & The full distribution of the
-prompt & Paid again on every task \\
-Converge (RCE) & Lookup, rule, solver; a model only last & Only the
-residual that no stored fit covers & Paid once per new case; then the
-handler floor \\
+Energy per correct result & Paid again in full on every task & Paid once
+per new case, then the handler floor & At the floor on covered tasks \\
+Entropy resolved at run time, and determinism & The full distribution of
+the prompt, a fresh sample each time & Only the residual no stored fit
+covers, one deterministic output & The residual only; every projection
+deterministic \\
+Verification strength & Output accepted on inspection & Tests, coverage
+and a proof certificate & The full gate on every result \\
+Reuse and compounding & Each result used once & Each accepted fit stored
+and reused & Every fit that passes the gate is stored \\
+Model reliance & A model on every task & No model & A model only as the
+last gear \\
 \end{longtable}
 }
 
-RCE writes the meaning once, in one canonical Form. Every surface
-language is a projection of that Form, checked to match it. Among
-equivalent forms, the cheapest correct one runs.
+Approaches differ by degree on each axis, and the axes interact: reuse
+lowers energy and the entropy left to resolve, and strong verification
+is what makes reuse safe. RCE writes the meaning once, in one canonical
+Form. Every surface language is a projection of that Form, checked to
+match it. Among equivalent forms, the cheapest correct one runs.
 
 \subsubsection{2.1 Programming is coding
 theory}\label{programming-is-coding-theory}
 
 The thesis of this section is David Charlot's: all of programming is
-coding theory. A programmer converts intent across two entropic regimes.
-Intent is high entropy, a distribution over meanings. Code is low
-entropy, one deterministic transition per state. Every step of software
-work, from a requirement to a register, is a step of that conversion.
-The literature has said so in pieces for seventy years, in many
-languages. This section assembles the pieces into one argument and
+coding theory. A programmer converts intent along a gradient between two
+entropic regimes. Intent is high entropy, a distribution over meanings.
+Code is low entropy, one deterministic transition per state. Every step
+of software work, from a requirement to a register, is a step of that
+conversion. The literature has said so in pieces for seventy years, in
+many languages. This section assembles the pieces into one argument and
 places each RCE gear on it.
 
 \textbf{The measure.} Shannon defined the entropy of a source and the
@@ -491,11 +507,12 @@ time & Minimum description length {[}44{]}; Landauer erasure paid once
 \end{longtable}
 }
 
-The two paths of the table in Section 2 differ in where the conversion
-is paid. The generation path samples the full distribution of the prompt
-on every task, so it pays the high-entropy side again each time. The
-convergence path pays only for the residual, and only once. The economic
-reading of that difference is in
+Positions on the axes of Section 2 differ in where the conversion is
+paid. An approach that samples the full distribution of the prompt on
+every task pays the high-entropy side again each time. An approach that
+stores and reuses accepted fits pays only for the residual, and only
+once. Most systems sit between those ends, and RCE sits at the reuse
+end. The economic reading of that difference is in
 \href{https://research.openie.dev/papers/ai-coding-market/\#4-the-theory-that-prices-the-task}{The
 Promised Trillion Dollar AI-Coding Market, Section 4}. The stop rule
 behind the gear order is
@@ -1455,8 +1472,8 @@ Section 8.3.
 
 \subsection{7. Reuse evidence}\label{reuse-evidence}
 
-The second path rests on an engineering fact: code is reused at every
-scale. Each method below measures it differently.
+RCE's position on the reuse axis rests on an engineering fact: code is
+reused at every scale. Each method below measures it differently.
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -1760,7 +1777,7 @@ resolved held-out tasks & The reading of the gate as more than
 plausibility on the covered tasks \\
 RCE-F3 & Under the wall meter, gross joules per solved task of the RCE
 solver exceed those of the cheapest model baseline on the tasks both
-solve & The second path's joule advantage on covered tasks \\
+solve & RCE's joule advantage on covered tasks \\
 RCE-F0 & On a preregistered run of at least 10,000 Forms, any projection
 prints a trace that differs from the Form's reference trace, or any
 malformed input is accepted & The claim that projections are faithful

@@ -19,15 +19,13 @@ The economic reading of this paper is in its companion, [The Promised Trillion D
 
 ## 1. Thesis
 
-There are two paths to autonomous computer automation. They are told apart by two quantities: the energy spent per correct result, and the entropy the system must resolve at run time.
+Autonomous computer automation is a design space with many points in it. Every approach sits somewhere along five continuous axes: the energy spent per correct result; the entropy the system must resolve at run time, and with it how deterministic its output is; the strength of the verification that accepts a result; how far each accepted result is reused and compounds; and how much the approach relies on a model. A large language model (LLM), a statistical text model, that writes each change from the prompt sits near one corner of that space: it relies on the model for every task, draws a fresh sample from a high-entropy distribution each time, and pays for generation again on every task. Retrieval, rules, synthesis, verification and caching occupy many other points, and real systems combine them.
 
-The first path generates. A large language model (LLM), a statistical text model, writes each change from the prompt. Every task pays for generation again, and every output is a fresh sample from a high-entropy distribution.
-
-The second path converges. People have already coded most of what will ever be coded. A program is a database functional state machine: one Form, many fits. Human intent is high entropy. The machine floor is low entropy. Code converges by design, so most of the work is to retrieve a fit that exists, adapt it, and prove it. The Reality Code Engine (RCE) is built on the second path.
+The Reality Code Engine (RCE) is one point in the space, chosen to optimize all five axes together. People have already coded most of what will ever be coded. A program is a database functional state machine: one Form, many fits. Human intent is high entropy. The machine floor is low entropy. Code converges by design, so most of the work is to retrieve a fit that exists, adapt it and prove it, and a model is called only when nothing cheaper closes the task.
 
 **The core claim.** RCE is a complete code ecosystem in which programs are authored natively from intent. Intent is written once, as a Form: a state, a set of events and a pure, total transition. The Form is a lossless encoding of that intent. Every target (statechart, Rust, Python, XState, SCXML, WASM) is a projection of the Form, and each projection replays the Form's trace byte for byte. A state the Form does not declare cannot be written, and an input outside its contract is refused at entry. A program in the ecosystem therefore cannot drift from its intent the way a program in a common language drifts from its comments, its tests or its other implementations, and it needs no after-the-fact diffing or error tracking. Every fit that passes the gate is stored and reused, so the ecosystem compounds as it grows ([§2.4](#24-gated-verified-recursive-self-improvement)). Code written in other languages is one door in: it enters by lift ([§6](#6-lift-entering-the-ecosystem-from-other-languages)).
 
-Both paths face the same gate. The gate is correctness: a task's completeness predicate $C(z)$, here the task's tests, a proof or an agreement trace. Among runs that pass the gate, systems are ranked by joules to completion, $J^*$. Correctness is a constraint, not a score.
+Every point in the space faces the same gate. The gate is correctness: a task's completeness predicate $C(z)$, here the task's tests, a proof or an agreement trace. Among runs that pass the gate, systems are ranked by joules to completion, $J^*$. Correctness is a constraint, not a score.
 
 Mixture of Limits is the philosophy: there is a minimal amount of anything to accomplish a task, and any more is waste ([Metered Commit Gates, Part II](/papers/gates/#part-ii-the-cascade-mixture-of-limits)). RCE is a Mixture of Limits instance. Its gears run cheapest first, and the first gear that passes the gate closes the task.
 
@@ -35,7 +33,9 @@ flowG is a stand-alone language project. RCE is its academic first-pass demonstr
 
 Energy figures are labeled by source. `est_j` is an analytical estimate. `reported_j` is an operating-system or on-chip counter. `measured_j` is reserved for a wall meter and is empty in every result here.
 
-## 2. Two paths to autonomy
+<div id="2-two-paths-to-autonomy" class="anchor-alias" aria-hidden="true"></div>
+
+## 2. The design space of autonomous coding
 
 ![One sentence in. One floor out. Human intent is high entropy; a funnel of conversions from intent to spec to 626 surface languages to an intermediate representation to machine code loses information at each boundary; all code reaches a few machine shapes; RCE writes the meaning once in one canonical Form, treats every surface as a projection, and lets the cheapest correct form win.](/figures/rce/intent-entropy.svg)
 
@@ -49,18 +49,21 @@ Energy figures are labeled by source. `est_j` is an analytical estimate. `report
 
 **Boundaries are where meaning diverges.** The same line gives different answers at the edges. In Python, `-3 % 2` is 1 and `-7 / 2` is -3.5. In C, `-3 % 2` is -1, `-7 / 2` is -3, and signed overflow is undefined. A system that regenerates code at every boundary guesses at every boundary.
 
-**The two paths, stated as quantities.**
+**The axes, stated as quantities.**
 
-| Path | What runs per task | Entropy resolved at run time | Energy per correct result |
+| Axis | One end | Other end | Where RCE sits |
 |---|---|---|---|
-| Generate | A model samples a new change | The full distribution of the prompt | Paid again on every task |
-| Converge (RCE) | Lookup, rule, solver; a model only last | Only the residual that no stored fit covers | Paid once per new case; then the handler floor |
+| Energy per correct result | Paid again in full on every task | Paid once per new case, then the handler floor | At the floor on covered tasks |
+| Entropy resolved at run time, and determinism | The full distribution of the prompt, a fresh sample each time | Only the residual no stored fit covers, one deterministic output | The residual only; every projection deterministic |
+| Verification strength | Output accepted on inspection | Tests, coverage and a proof certificate | The full gate on every result |
+| Reuse and compounding | Each result used once | Each accepted fit stored and reused | Every fit that passes the gate is stored |
+| Model reliance | A model on every task | No model | A model only as the last gear |
 
-RCE writes the meaning once, in one canonical Form. Every surface language is a projection of that Form, checked to match it. Among equivalent forms, the cheapest correct one runs.
+Approaches differ by degree on each axis, and the axes interact: reuse lowers energy and the entropy left to resolve, and strong verification is what makes reuse safe. RCE writes the meaning once, in one canonical Form. Every surface language is a projection of that Form, checked to match it. Among equivalent forms, the cheapest correct one runs.
 
 ### 2.1 Programming is coding theory
 
-The thesis of this section is David Charlot's: all of programming is coding theory. A programmer converts intent across two entropic regimes. Intent is high entropy, a distribution over meanings. Code is low entropy, one deterministic transition per state. Every step of software work, from a requirement to a register, is a step of that conversion. The literature has said so in pieces for seventy years, in many languages. This section assembles the pieces into one argument and places each RCE gear on it.
+The thesis of this section is David Charlot's: all of programming is coding theory. A programmer converts intent along a gradient between two entropic regimes. Intent is high entropy, a distribution over meanings. Code is low entropy, one deterministic transition per state. Every step of software work, from a requirement to a register, is a step of that conversion. The literature has said so in pieces for seventy years, in many languages. This section assembles the pieces into one argument and places each RCE gear on it.
 
 **The measure.** Shannon defined the entropy of a source and the capacity of a channel [40], and measured printed English at about 0.6 to 1.3 bits per letter [1]. Kolmogorov, writing in Russian in *Problemy Peredachi Informatsii* in 1965, gave three approaches to the quantity of information and made the algorithmic one primary: the information in an object is the length of the shortest program that produces it [41]. Solomonoff had reached the same object as a theory of inductive inference [42], and Chaitin showed that program size obeys identities formally identical to Shannon's [43]. Rissanen turned the idea into a rule for choosing models, the minimum description length [44]. Together they say that a program is a code word: a description of a behavior, and the shortest correct one is the floor. RCE's extraction rule, keep the least-joule fit among equivalent fits (Proposition 3), is that rule with joules in place of bits.
 
@@ -95,7 +98,7 @@ Read as coding theory, a task arrives as a message whose remaining uncertainty i
 | Gate | Accepts a candidate only with tests, coverage and a proof certificate | Hoare logic [54]; Curry-Howard [18, 72] |
 | Promotion | Stores the accepted fit, so the same residual costs G0 next time | Minimum description length [44]; Landauer erasure paid once [65] |
 
-The two paths of the table in Section 2 differ in where the conversion is paid. The generation path samples the full distribution of the prompt on every task, so it pays the high-entropy side again each time. The convergence path pays only for the residual, and only once. The economic reading of that difference is in [The Promised Trillion Dollar AI-Coding Market, Section 4](/papers/ai-coding-market/#4-the-theory-that-prices-the-task). The stop rule behind the gear order is [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits), and the per-task stop is [Task Satiation](/papers/satiation/).
+Positions on the axes of Section 2 differ in where the conversion is paid. An approach that samples the full distribution of the prompt on every task pays the high-entropy side again each time. An approach that stores and reuses accepted fits pays only for the residual, and only once. Most systems sit between those ends, and RCE sits at the reuse end. The economic reading of that difference is in [The Promised Trillion Dollar AI-Coding Market, Section 4](/papers/ai-coding-market/#4-the-theory-that-prices-the-task). The stop rule behind the gear order is [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits), and the per-task stop is [Task Satiation](/papers/satiation/).
 
 ### 2.3 The ecosystem at large N
 
@@ -379,7 +382,7 @@ The L1 subsample builds its project index from its 2,000 tasks only, so its solv
 
 ## 7. Reuse evidence
 
-The second path rests on an engineering fact: code is reused at every scale. Each method below measures it differently.
+RCE's position on the reuse axis rests on an engineering fact: code is reused at every scale. Each method below measures it differently.
 
 | Method | Source | Finding |
 |---|---|---|
@@ -478,7 +481,7 @@ Fixed before the runs they test.
 |---|---|---|
 | RCE-F1 | On the held-out slice, G0 to G2 with frozen rules resolve under 10% of tasks with 0 model calls | The claim that most fits already exist for repair at this scale |
 | RCE-F2 | Byte-identical or equivalent patches are under half of the resolved held-out tasks | The reading of the gate as more than plausibility on the covered tasks |
-| RCE-F3 | Under the wall meter, gross joules per solved task of the RCE solver exceed those of the cheapest model baseline on the tasks both solve | The second path's joule advantage on covered tasks |
+| RCE-F3 | Under the wall meter, gross joules per solved task of the RCE solver exceed those of the cheapest model baseline on the tasks both solve | RCE's joule advantage on covered tasks |
 | RCE-F0 | On a preregistered run of at least 10,000 Forms, any projection prints a trace that differs from the Form's reference trace, or any malformed input is accepted | The claim that projections are faithful and the gate refuses at entry |
 | RCE-F4 | In the convergence protocol of Section 8.6, fewer than half of the specifications without a stuck input reach a round with zero model calls within 20 rounds | Compiling the model out of the loop |
 

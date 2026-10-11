@@ -1,6 +1,6 @@
 ---
 title: "The Promised Trillion Dollar AI-Coding Market"
-deck: "Who projects the AI coding market, what they project, and what every projection assumes: one path to autonomous computer automation, with high energy, high compute, per-token rent and the model in the loop forever. The Reality Code Engine (RCE) measures a second path: a native code ecosystem in which a program is authored once, from intent, as a lossless Form and every target language is a faithful projection of it. On 10,000 preregistered Forms with 0 model calls, every Form round trips to identical bytes and every malformed input is refused at entry. Every fit that passes the gate is reused, so the marginal cost of a covered task falls toward the energy to run it, and the projections lose their base."
+deck: "Who projects the AI coding market, what they project, and what every projection assumes: that autonomous computer automation moves in one direction, toward high energy, high compute, per-token rent and the model in the loop forever. Autonomous coding is a design space with several continuous axes, and the Reality Code Engine (RCE) measures one point in it that optimizes them: a native code ecosystem in which a program is authored once, from intent, as a lossless Form and every target language is a faithful projection of it. On 10,000 preregistered Forms with 0 model calls, every Form round trips to identical bytes and every malformed input is refused at entry. Every fit that passes the gate is reused, so the marginal cost of a covered task falls toward the energy to run it, and the projections lose their base."
 id: ai-coding-market
 status: "Economics essay"
 author: "David Charlot, Open Interface Engineering"
@@ -21,9 +21,9 @@ board_metered: false
 
 The trillion-dollar AI coding market is David Charlot's informed hyperbolic claim, and the real projections bear out its scale. A venture estimate puts the value of the world's software developers at about $3 trillion a year and calls AI coding a market that can support "even a trillion-dollar giant" [1]. Two AI coding companies reported over $1 billion and over $2.5 billion in annualized revenue within a year of each other [5, 6]. One frontier lab is valued at $380 billion, and its coding product is its showcase [6]. One provider's token volume grew from 9.7 trillion to over 3.2 quadrillion tokens a month in two years [8]. Capital expenditure by the largest technology companies exceeded $400 billion in 2025 [10].
 
-Every one of these projections assumes the same thing. There is only one path to autonomous computer automation. It is high energy, high compute, high entropy and disorder. A model sits in the loop for every task, and every task pays rent per token.
+Every one of these projections assumes the same thing: that the space of autonomous computer automation has one direction. Along it, energy, compute and entropy rise together, a model sits in the loop for every task, and every task pays rent per token. The space has more directions than that. Approaches are placed along continuous axes: energy per task, entropy and determinism, verification strength, reuse and compounding, and model reliance. Many combinations exist, and real systems mix several. The error in the narrative is not any one approach. It is the assumption that the space has only one direction.
 
-The [RCE research paper](/papers/rce/) measures a second path. RCE is a native code ecosystem. A program is authored once, from intent, as a Form, a lossless encoding of state, events and pure transitions, and every target language is a faithful projection of it. A state the Form does not declare cannot be written, so a wrong program is refused at entry rather than found and fixed later. Every fit that passes the gate is stored and reused, so the ecosystem compounds. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input is refused at entry, and the Python projection replays the reference trace on 9,999 ([RCE §2.3](/papers/rce/#23-the-ecosystem-at-large-n)). Code from other languages enters by lift, and on lifted code the repair gears restore 520,541 of 520,821 one-token faults and 63.7% of 21,320 single-statement Java bugs with 0 model calls ([RCE §6](/papers/rce/#6-lift-entering-the-ecosystem-from-other-languages)). Where that path covers a task, the marginal cost of the task falls toward the energy to run it, and a market priced on generation loses its base on that task. This essay separates the projections from the measurements, names what each projection assumes, and states where it breaks.
+The [RCE research paper](/papers/rce/) measures one point in that space, chosen to optimize all five axes together. RCE is a native code ecosystem. A program is authored once, from intent, as a Form, a lossless encoding of state, events and pure transitions, and every target language is a faithful projection of it. A state the Form does not declare cannot be written, so a wrong program is refused at entry rather than found and fixed later. Every fit that passes the gate is stored and reused, so the ecosystem compounds. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input is refused at entry, and the Python projection replays the reference trace on 9,999 ([RCE §2.3](/papers/rce/#23-the-ecosystem-at-large-n)). Code from other languages enters by lift, and on lifted code the repair gears restore 520,541 of 520,821 one-token faults and 63.7% of 21,320 single-statement Java bugs with 0 model calls ([RCE §6](/papers/rce/#6-lift-entering-the-ecosystem-from-other-languages)). Where RCE covers a task, the marginal cost of the task falls toward the energy to run it, and a market priced on generation loses its base on that task. This essay separates the projections from the measurements, names what each projection assumes, and states where it breaks.
 
 <!-- include: economics-thesis -->
 
@@ -103,7 +103,7 @@ Two lines in the sources state the economics plainly. Pichai: "many companies ar
 | Inference cost at equivalent performance | down about 10 times a year: $60 per million tokens in 2021 to $0.06 | Estimate | Appenzeller, a16z [20] |
 | DeepSeek API price cut, 29 September 2025 | developers' cost "lowered by more than 50%" | Company-reported | DeepSeek [21] |
 
-The 13 times a year of [4] is one point in a wide range [34]. The fall is driven by competition and open weights, as the DeepSeek cut shows [21]. It needs no energy accounting. That is the first decline of Section 6. The second path adds a different one: calls per task.
+The 13 times a year of [4] is one point in a wide range [34]. The fall is driven by competition and open weights, as the DeepSeek cut shows [21]. It needs no energy accounting. That is the first decline of Section 6. Reuse adds a different one: calls per task.
 
 ### 2.6 Energy and capital
 
@@ -120,7 +120,7 @@ The 13 times a year of [4] is one point in a wide range [34]. The fall is driven
 | Worldwide AI spending, 2025 | about $1.5 trillion | Projection | Gartner [24] |
 | Revenue the capex must earn back | "AI's $600B question" | Analysis | Sequoia Capital [23] |
 
-The rent that must be serviced is hardware rent. Capex and commitments of this size are paid back through usage priced above its energy. That is the base the second path removes on covered tasks.
+The rent that must be serviced is hardware rent. Capex and commitments of this size are paid back through usage priced above its energy. That is the base that reuse removes on covered tasks.
 
 ### 2.7 Productivity evidence
 
@@ -132,13 +132,13 @@ The rent that must be serviced is hardware rent. Capex and commitments of this s
 | METR, early 2025 | 16 experienced open-source developers, 246 tasks | Randomized controlled trial | 19% slower with AI | Becker et al. [25] |
 | METR, 2026 update | new cohort | Randomized controlled trial | the authors call the new data "an unreliable signal" | METR [26] |
 
-The measured effects range from a 19% slowdown to a 56% speed-up on a toy task. Both factors of the value estimate, the developer count and the productivity multiple, are soft. That weakens the trillion. It also weakens any claim that the value the second path frees is a known number.
+The measured effects range from a 19% slowdown to a 56% speed-up on a toy task. Both factors of the value estimate, the developer count and the productivity multiple, are soft. That weakens the trillion. It also weakens any claim that the value reuse frees is a known number.
 
 ## 3. What the projections assume
 
-Read together, the projections rest on four assumptions. Each is a statement about the path, not about the value of software.
+Read together, the projections rest on four assumptions. Each is a statement about one direction in the design space, not about the value of software.
 
-1. **One path: generation.** Every change is written by a model. The value estimate scales productivity by the model, and the cost illustration prices every query [1].
+1. **One direction: generation.** Every change is written by a model. The value estimate scales productivity by the model, and the cost illustration prices every query [1].
 2. **High energy and high compute.** Token volume, data-centre electricity and capex are projected to grow together [8, 10, 11]. The energy per query falls, and the tokens per task rise faster [9, 10].
 3. **Per-token rent.** Revenue is billed per token or per seat whose cost is tokens. A developer's annual token cost is projected at the scale of a salary [1].
 4. **AI in the loop forever.** Task 10,000 costs what task 1 costs, because nothing the model learned on task 1 runs without the model on task 10,000.
@@ -199,19 +199,19 @@ These are measurements, labeled as RCE labels them. They come from the [RCE rese
 
 ## 7. Demand
 
-Cheaper tasks can raise total demand. The venture essay expects it: "we believe Jevon's Paradox in this case holds" [1]. [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) separates the two effects. Per-task appetite stops at the completion predicate. Aggregate use can still grow, because cheaper synthesis opens new tasks. The second path changes the first effect and leaves the second open. A larger market of covered tasks is a market whose marginal cost is the floor, not the frontier. The one published elasticity is small. Across tasks in Anthropic's API sample, each 1% increase in cost is associated with a 0.29% decrease in usage frequency [29]. That is cross-sectional across tasks, not a price change over time. Read as it stands, demand is inelastic: price declines shrink revenue on a fixed task set, which supports the essay's reading of rent, and they do not by themselves make coding used far more.
+Cheaper tasks can raise total demand. The venture essay expects it: "we believe Jevon's Paradox in this case holds" [1]. [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) separates the two effects. Per-task appetite stops at the completion predicate. Aggregate use can still grow, because cheaper synthesis opens new tasks. Reuse changes the first effect and leaves the second open. A larger market of covered tasks is a market whose marginal cost is the floor, not the frontier. The one published elasticity is small. Across tasks in Anthropic's API sample, each 1% increase in cost is associated with a 0.29% decrease in usage frequency [29]. That is cross-sectional across tasks, not a price change over time. Read as it stands, demand is inelastic: price declines shrink revenue on a fixed task set, which supports the essay's reading of rent, and they do not by themselves make coding used far more.
 
 ## 8. Propositions and protocols
 
-**Proposition E1 (the cost curves cross).** For a stream of tasks in one repository, the cumulative cost per resolved task of the second path falls below that of a generation agent after a finite number of tasks. *Protocol:* run [RCE Protocol 8.3](/papers/rce/#83-a-wall-meter) and a plain generation agent on the same issue stream under a wall meter. Report `measured_j` and dollars per resolved task by task index, and the crossing index.
+**Proposition E1 (the cost curves cross).** For a stream of tasks in one repository, the cumulative cost per resolved task of RCE falls below that of a generation agent after a finite number of tasks. *Protocol:* run [RCE Protocol 8.3](/papers/rce/#83-a-wall-meter) and a plain generation agent on the same issue stream under a wall meter. Report `measured_j` and dollars per resolved task by task index, and the crossing index.
 
 **Proposition E2 (price follows the floor).** Where a coding capability is covered by retrieval and rules, its market price falls toward the energy to run it plus the cost of the proof. *Protocol:* track list prices of a covered capability class against its measured run energy over time, in the manner of the Spell Check price series.
 
-**Proposition E3 (compute scale is not a moat on covered tasks).** On tasks the second path covers, the resolve rate does not rise with the compute of the last gear. *Protocol:* run [RCE Protocol 8.2](/papers/rce/#82-swe-bench-lite-offline) with no model, a small local model and a frontier model as the last gear. Compare resolve rates on the tasks closed before the last gear.
+**Proposition E3 (compute scale is not a moat on covered tasks).** On tasks RCE covers, the resolve rate does not rise with the compute of the last gear. *Protocol:* run [RCE Protocol 8.2](/papers/rce/#82-swe-bench-lite-offline) with no model, a small local model and a frontier model as the last gear. Compare resolve rates on the tasks closed before the last gear.
 
 **Proposition E4 (the token share of revenue).** In a repository where coverage grows, the share of task cost paid as tokens falls with coverage. *Protocol:* log tokens, joules and dollars per closed task by round in the RCE convergence protocol with a priced model resolver ([RCE §8.6](/papers/rce/#86-convergence-of-model-calls-at-large-n)), labeled, and report the token share of cost by round.
 
-**Proposition E5 (coverage).** The share of real coding task volume that falls in classes the second path covers is measurable. *Protocol:* draw a random sample of merged pull requests from public repositories (GitHub reports 518.7 million merged in a year [17]), classify each by whether frozen G0 to G2 gears produce a gate-passing patch, and report the covered fraction with a 95% interval. Until that number exists, Proposition E0 applies to an unmeasured share.
+**Proposition E5 (coverage).** The share of real coding task volume that falls in classes RCE covers is measurable. *Protocol:* draw a random sample of merged pull requests from public repositories (GitHub reports 518.7 million merged in a year [17]), classify each by whether frozen G0 to G2 gears produce a gate-passing patch, and report the covered fraction with a 95% interval. Until that number exists, Proposition E0 applies to an unmeasured share.
 
 ## References
 

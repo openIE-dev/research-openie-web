@@ -136,28 +136,34 @@ volume grew from 9.7 trillion to over 3.2 quadrillion tokens a month in
 two years {[}8{]}. Capital expenditure by the largest technology
 companies exceeded \$400 billion in 2025 {[}10{]}.
 
-Every one of these projections assumes the same thing. There is only one
-path to autonomous computer automation. It is high energy, high compute,
-high entropy and disorder. A model sits in the loop for every task, and
-every task pays rent per token.
+Every one of these projections assumes the same thing: that the space of
+autonomous computer automation has one direction. Along it, energy,
+compute and entropy rise together, a model sits in the loop for every
+task, and every task pays rent per token. The space has more directions
+than that. Approaches are placed along continuous axes: energy per task,
+entropy and determinism, verification strength, reuse and compounding,
+and model reliance. Many combinations exist, and real systems mix
+several. The error in the narrative is not any one approach. It is the
+assumption that the space has only one direction.
 
 The \href{https://research.openie.dev/papers/rce/}{RCE research paper}
-measures a second path. RCE is a native code ecosystem. A program is
-authored once, from intent, as a Form, a lossless encoding of state,
-events and pure transitions, and every target language is a faithful
-projection of it. A state the Form does not declare cannot be written,
-so a wrong program is refused at entry rather than found and fixed
-later. Every fit that passes the gate is stored and reused, so the
-ecosystem compounds. On 10,000 preregistered Forms with a frozen engine
-and 0 model calls, every Form round trips to identical bytes, every
-projection is deterministic, every malformed input is refused at entry,
-and the Python projection replays the reference trace on 9,999
+measures one point in that space, chosen to optimize all five axes
+together. RCE is a native code ecosystem. A program is authored once,
+from intent, as a Form, a lossless encoding of state, events and pure
+transitions, and every target language is a faithful projection of it. A
+state the Form does not declare cannot be written, so a wrong program is
+refused at entry rather than found and fixed later. Every fit that
+passes the gate is stored and reused, so the ecosystem compounds. On
+10,000 preregistered Forms with a frozen engine and 0 model calls, every
+Form round trips to identical bytes, every projection is deterministic,
+every malformed input is refused at entry, and the Python projection
+replays the reference trace on 9,999
 (\href{https://research.openie.dev/papers/rce/\#23-the-ecosystem-at-large-n}{RCE
 §2.3}). Code from other languages enters by lift, and on lifted code the
 repair gears restore 520,541 of 520,821 one-token faults and 63.7\% of
 21,320 single-statement Java bugs with 0 model calls
 (\href{https://research.openie.dev/papers/rce/\#6-lift-entering-the-ecosystem-from-other-languages}{RCE
-§6}). Where that path covers a task, the marginal cost of the task falls
+§6}). Where RCE covers a task, the marginal cost of the task falls
 toward the energy to run it, and a market priced on generation loses its
 base on that task. This essay separates the projections from the
 measurements, names what each projection assumes, and states where it
@@ -453,7 +459,7 @@ by more than 50\%'' & Company-reported & DeepSeek {[}21{]} \\
 The 13 times a year of {[}4{]} is one point in a wide range {[}34{]}.
 The fall is driven by competition and open weights, as the DeepSeek cut
 shows {[}21{]}. It needs no energy accounting. That is the first decline
-of Section 6. The second path adds a different one: calls per task.
+of Section 6. Reuse adds a different one: calls per task.
 
 \subsubsection{2.6 Energy and capital}\label{energy-and-capital}
 
@@ -505,7 +511,7 @@ Sequoia Capital {[}23{]} \\
 
 The rent that must be serviced is hardware rent. Capex and commitments
 of this size are paid back through usage priced above its energy. That
-is the base the second path removes on covered tasks.
+is the base that reuse removes on covered tasks.
 
 \subsubsection{2.7 Productivity evidence}\label{productivity-evidence}
 
@@ -549,22 +555,22 @@ authors call the new data ``an unreliable signal'' & METR {[}26{]} \\
 The measured effects range from a 19\% slowdown to a 56\% speed-up on a
 toy task. Both factors of the value estimate, the developer count and
 the productivity multiple, are soft. That weakens the trillion. It also
-weakens any claim that the value the second path frees is a known
-number.
+weakens any claim that the value reuse frees is a known number.
 
 \subsection{3. What the projections
 assume}\label{what-the-projections-assume}
 
 Read together, the projections rest on four assumptions. Each is a
-statement about the path, not about the value of software.
+statement about one direction in the design space, not about the value
+of software.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{One path: generation.} Every change is written by a model. The
-  value estimate scales productivity by the model, and the cost
-  illustration prices every query {[}1{]}.
+  \textbf{One direction: generation.} Every change is written by a
+  model. The value estimate scales productivity by the model, and the
+  cost illustration prices every query {[}1{]}.
 \item
   \textbf{High energy and high compute.} Token volume, data-centre
   electricity and capex are projected to grow together {[}8, 10, 11{]}.
@@ -802,24 +808,23 @@ believe Jevon's Paradox in this case holds'' {[}1{]}.
 \href{https://research.openie.dev/papers/satiation/}{Task Satiation
 vs.~Aggregate Rebound in AI Demand} separates the two effects. Per-task
 appetite stops at the completion predicate. Aggregate use can still
-grow, because cheaper synthesis opens new tasks. The second path changes
-the first effect and leaves the second open. A larger market of covered
-tasks is a market whose marginal cost is the floor, not the frontier.
-The one published elasticity is small. Across tasks in Anthropic's API
-sample, each 1\% increase in cost is associated with a 0.29\% decrease
-in usage frequency {[}29{]}. That is cross-sectional across tasks, not a
-price change over time. Read as it stands, demand is inelastic: price
-declines shrink revenue on a fixed task set, which supports the essay's
-reading of rent, and they do not by themselves make coding used far
-more.
+grow, because cheaper synthesis opens new tasks. Reuse changes the first
+effect and leaves the second open. A larger market of covered tasks is a
+market whose marginal cost is the floor, not the frontier. The one
+published elasticity is small. Across tasks in Anthropic's API sample,
+each 1\% increase in cost is associated with a 0.29\% decrease in usage
+frequency {[}29{]}. That is cross-sectional across tasks, not a price
+change over time. Read as it stands, demand is inelastic: price declines
+shrink revenue on a fixed task set, which supports the essay's reading
+of rent, and they do not by themselves make coding used far more.
 
 \subsection{8. Propositions and
 protocols}\label{propositions-and-protocols}
 
 \textbf{Proposition E1 (the cost curves cross).} For a stream of tasks
-in one repository, the cumulative cost per resolved task of the second
-path falls below that of a generation agent after a finite number of
-tasks. \emph{Protocol:} run
+in one repository, the cumulative cost per resolved task of RCE falls
+below that of a generation agent after a finite number of tasks.
+\emph{Protocol:} run
 \href{https://research.openie.dev/papers/rce/\#83-a-wall-meter}{RCE
 Protocol 8.3} and a plain generation agent on the same issue stream
 under a wall meter. Report \texttt{measured\_j} and dollars per resolved
@@ -832,8 +837,8 @@ track list prices of a covered capability class against its measured run
 energy over time, in the manner of the Spell Check price series.
 
 \textbf{Proposition E3 (compute scale is not a moat on covered tasks).}
-On tasks the second path covers, the resolve rate does not rise with the
-compute of the last gear. \emph{Protocol:} run
+On tasks RCE covers, the resolve rate does not rise with the compute of
+the last gear. \emph{Protocol:} run
 \href{https://research.openie.dev/papers/rce/\#82-swe-bench-lite-offline}{RCE
 Protocol 8.2} with no model, a small local model and a frontier model as
 the last gear. Compare resolve rates on the tasks closed before the last
@@ -848,13 +853,12 @@ resolver
 §8.6}), labeled, and report the token share of cost by round.
 
 \textbf{Proposition E5 (coverage).} The share of real coding task volume
-that falls in classes the second path covers is measurable.
-\emph{Protocol:} draw a random sample of merged pull requests from
-public repositories (GitHub reports 518.7 million merged in a year
-{[}17{]}), classify each by whether frozen G0 to G2 gears produce a
-gate-passing patch, and report the covered fraction with a 95\%
-interval. Until that number exists, Proposition E0 applies to an
-unmeasured share.
+that falls in classes RCE covers is measurable. \emph{Protocol:} draw a
+random sample of merged pull requests from public repositories (GitHub
+reports 518.7 million merged in a year {[}17{]}), classify each by
+whether frozen G0 to G2 gears produce a gate-passing patch, and report
+the covered fraction with a 95\% interval. Until that number exists,
+Proposition E0 applies to an unmeasured share.
 
 \subsection{References}\label{references}
 
