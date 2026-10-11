@@ -90,11 +90,11 @@ Les revenus que le marché déclare aujourd'hui se comptent en milliards. Les mi
 
 Anthropic indique que le tour finance des « extensions d'infrastructure » [6]. Revenus, valorisation et calcul forment un seul pari.
 
-La Figure 1 place sur un seul axe les montants en dollars des Sections 2.1 à 2.3 et 2.6, marqués par l'étiquette de chaque source.
+La Figure 1 place sur un seul axe les montants en dollars des Sections 2.1 à 2.3 et 2.6, marqués par l'étiquette que porte chaque source.
 
-![Graphique à points en échelle logarithmique de montants en dollars, d'environ un milliard à environ trois mille milliards, colorés comme projection, estimation, estimation d'enquête ou chiffre déclaré par l'entreprise.](/figures/ai-coding-market/spend-by-label.svg)
+![Diagramme en points, en échelle logarithmique, des montants en dollars des tableaux de l'essai. Projections : contribution des développeurs d'environ 3 billions de dollars, valeur de l'IA générative de 2,6 à 4,4 billions, dépenses mondiales en IA de 1,5 billion, marché des outils de code par IA de 9,35 milliards en 2026 et 29,96 milliards en 2031. Estimation : investissements de plus de 400 milliards. Estimations d'enquête : dépenses des entreprises en IA générative de 37 milliards et dépenses en outils de programmation par IA de 4,0 milliards. Données publiées par les entreprises : revenu annualisé de Claude Code de plus de 2,5 milliards et de Cursor de plus de 1 milliard.](/figures/ai-coding-market/spend-by-label.svg)
 
-*Figure 1. Montants en dollars par étiquette. Figure de données, échelle logarithmique. Sources : [1], [2], [3], [5], [6], [10], [15], [24]. Une [copie PNG](/figures/ai-coding-market/spend-by-label.png) est fournie.*
+*Figure 1. Montants en dollars par étiquette. Figure de données, échelle logarithmique. Sources : Appenzeller et Li [1], Menlo Ventures [2], Mordor Intelligence [3], Cursor [5], Anthropic [6], IEA [10], McKinsey [15], Gartner [24]. Une [copie PNG](/figures/ai-coding-market/spend-by-label.png) est fournie.*
 
 <div id="24-inference-tokens-and-unit-economics" class="anchor-alias" aria-hidden="true"></div>
 
@@ -111,11 +111,11 @@ La Figure 1 place sur un seul axe les montants en dollars des Sections 2.1 à 2.
 
 Deux phrases des sources énoncent l'économie sans détour. Pichai : « de nombreuses entreprises épuisent déjà leurs budgets annuels de tokens, et nous ne sommes qu'en mai » [8]. Appenzeller et Li : « Pendant des décennies, le coût du développement logiciel était presque uniquement un coût humain, mais les LLM y ajoutent désormais une composante substantielle de dépenses d'exploitation » [1].
 
-La Figure 2 représente la série de tokens.
+La Figure 2 représente la série des tokens.
 
-![Courbe en échelle logarithmique des tokens traités par mois chez Google : 9.7 billions en 2024, environ 480 billions en 2025 et plus de 3.2 billiards en mai 2026.](/figures/ai-coding-market/tokens.svg)
+![Graphique linéaire, en échelle logarithmique, des tokens traités par mois chez Google : 9,7 billions en 2024, environ 480 billions en 2025 et plus de 3,2 billiards en mai 2026, selon l'entreprise.](/figures/ai-coding-market/tokens.svg)
 
-*Figure 2. Tokens traités par mois chez Google. Figure de données, déclarée par l'entreprise, échelle logarithmique. Source : Pichai [8] ; la remarque sur l'usage des tokens vient de Bai, Huang et Wang [9]. Une [copie PNG](/figures/ai-coding-market/tokens.png) est fournie.*
+*Figure 2. Tokens traités par mois chez Google. Figure de données, publiée par l'entreprise, échelle logarithmique. Source : Pichai [8] ; la note sur l'usage des tokens est de Bai, Huang et Wang [9]. Une [copie PNG](/figures/ai-coding-market/tokens.png) est fournie.*
 
 <div id="25-price-per-token" class="anchor-alias" aria-hidden="true"></div>
 
@@ -132,9 +132,9 @@ Les 13 fois par an de [4] ne sont qu'un point dans une large fourchette [34]. La
 
 La Figure 3 trace les deux séries de prix.
 
-![Graphique logarithmique du prix par million de tokens à capacité fixe : de 60 dollars en 2021 à 0.06 dollar en 2024, et une pente d'environ 13 fois par an depuis 2023.](/figures/ai-coding-market/price-trend.svg)
+![Graphique en échelle logarithmique du prix par million de tokens à capacité fixe. Une estimation d'a16z tombe de 60 dollars en 2021 à 0,06 dollar en 2024, environ dix fois par an. Une pente en pointillés d'Epoch AI d'environ treize fois par an depuis 2023 est tracée, indexée à dix dollars en 2023.](/figures/ai-coding-market/price-trend.svg)
 
-*Figure 3. Prix d'un niveau de capacité fixe. Figure de données, échelle logarithmique : les extrémités d'a16z sont celles publiées [20] ; la droite d'Epoch AI est le taux annoncé d'environ 13 fois par an depuis 2023 [4], indexée pour montrer la pente seulement. La fourchette par jalon vient d'Epoch AI [34]. Une [copie PNG](/figures/ai-coding-market/price-trend.png) est fournie.*
+*Figure 3. Prix d'un niveau fixe de capacité. Figure de données, échelle logarithmique : les extrémités d'a16z sont celles publiées [20] ; la droite d'Epoch AI est le taux annoncé d'environ 13 fois par an depuis 2023 [4], indexée à un départ arbitraire pour montrer seulement la pente. La fourchette par jalon provient d'Epoch AI [34]. Une [copie PNG](/figures/ai-coding-market/price-trend.png) est fournie.*
 
 <div id="26-energy-and-capital" class="anchor-alias" aria-hidden="true"></div>
 
@@ -157,9 +157,9 @@ La rente à servir est une rente matérielle. Des investissements et des engagem
 
 La Figure 4 place l'électricité projetée du réseau à côté des joules mesurés d'une tâche.
 
-![Deux panneaux : électricité des centres de données, 415 TWh en 2024 et 945 TWh projetés pour 2030 ; et en échelle logarithmique, une requête texte médiane de 864 joules face à des tâches de réparation résolues par RCE de 0.026 à 0.40 joule.](/figures/ai-coding-market/energy.svg)
+![Deux panneaux. Panneau a : électricité des centres de données, 415 TWh en 2024 selon l'estimation de l'IEA, une fourchette de 485 à 950 TWh pour 2025 à 2030, et 945 TWh projetés pour 2030. Panneau b, échelle logarithmique : une invite textuelle médiane mesurée par son opérateur à 0,24 Wh, soit 864 joules ; des tâches de réparation résolues par RCE à 0,10 à 0,40 joule estimés et 0,026 à 0,056 joule sur un compteur de paquet RAPL.](/figures/ai-coding-market/energy.svg)
 
-*Figure 4. L'énergie au réseau et à la tâche. Figure de données. Panneau a : estimation et projection de l'AIE [10, 11]. Panneau b, échelle logarithmique : une requête texte médiane, 0.24 Wh mesurés par l'opérateur [12] ; tâches de réparation résolues par RCE, `est_j` et `reported_j`. Les deux panneaux sont dans des unités différentes et ne sont pas convertis l'un en l'autre. Une [copie PNG](/figures/ai-coding-market/energy.png) est fournie.*
+*Figure 4. L'énergie au réseau et à la tâche. Figure de données. Panneau a : estimation et projection de l'IEA [10, 11]. Panneau b, échelle logarithmique : une invite textuelle médiane, 0,24 Wh mesurés par l'opérateur [12] ; tâches de réparation résolues par RCE, `est_j` et `reported_j` ([RCE §6.3](/papers/rce/#63-energy)). Les deux panneaux sont dans des unités différentes et ne sont pas convertis l'un dans l'autre. Une [copie PNG](/figures/ai-coding-market/energy.png) est fournie.*
 
 <div id="27-productivity-evidence" class="anchor-alias" aria-hidden="true"></div>
 

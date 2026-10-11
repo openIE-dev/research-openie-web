@@ -90,11 +90,11 @@ Los ingresos que el mercado declara hoy están en los miles de millones. El bill
 
 Anthropic declara que la ronda financia "ampliaciones de infraestructura" [6]. Ingresos, valoración y cómputo son una sola apuesta.
 
-La Figura 1 sitúa en un solo eje las cifras en dólares de las Secciones 2.1 a 2.3 y 2.6, marcadas por la etiqueta de cada fuente.
+La Figura 1 sitúa en un solo eje las cifras en dólares de las Secciones 2.1 a 2.3 y 2.6, marcadas con la etiqueta que lleva cada fuente.
 
-![Gráfico de puntos en escala logarítmica de cifras en dólares, de unos mil millones a unos tres billones, coloreadas como proyección, estimación, estimación de encuesta o cifra declarada por la empresa.](/figures/ai-coding-market/spend-by-label.svg)
+![Gráfico de puntos en escala logarítmica de las cifras en dólares de las tablas del ensayo. Proyecciones: contribución de los desarrolladores, unos 3 billones de dólares; valor de la IA generativa, de 2,6 a 4,4 billones; gasto mundial en IA, 1,5 billones; mercado de herramientas de código con IA, 9,35 mil millones en 2026 y 29,96 mil millones en 2031. Estimación: inversión de capital de más de 400 mil millones. Estimaciones de encuesta: gasto empresarial en IA generativa, 37 mil millones, y gasto en herramientas de programación con IA, 4,0 mil millones. Datos comunicados por las empresas: ingresos anualizados de Claude Code de más de 2,5 mil millones y de Cursor de más de 1 mil millones.](/figures/ai-coding-market/spend-by-label.svg)
 
-*Figura 1. Cifras en dólares por etiqueta. Figura de datos, escala logarítmica. Fuentes: [1], [2], [3], [5], [6], [10], [15], [24]. Se ofrece una [copia PNG](/figures/ai-coding-market/spend-by-label.png).*
+*Figura 1. Cifras en dólares por etiqueta. Figura de datos, escala logarítmica. Fuentes: Appenzeller y Li [1], Menlo Ventures [2], Mordor Intelligence [3], Cursor [5], Anthropic [6], IEA [10], McKinsey [15], Gartner [24]. Se ofrece una [copia PNG](/figures/ai-coding-market/spend-by-label.png).*
 
 <div id="24-inference-tokens-and-unit-economics" class="anchor-alias" aria-hidden="true"></div>
 
@@ -113,9 +113,9 @@ Dos frases de las fuentes enuncian la economía sin rodeos. Pichai: "muchas empr
 
 La Figura 2 representa la serie de tokens.
 
-![Línea en escala logarítmica de tokens procesados al mes por Google: 9.7 billones en 2024, unos 480 billones en 2025 y más de 3.2 trillones en mayo de 2026.](/figures/ai-coding-market/tokens.svg)
+![Gráfico de líneas en escala logarítmica de los tokens procesados por mes en Google: 9,7 billones en 2024, unos 480 billones en 2025 y más de 3,2 mil billones en mayo de 2026, según la empresa.](/figures/ai-coding-market/tokens.svg)
 
-*Figura 2. Tokens procesados al mes en Google. Figura de datos, declarada por la empresa, escala logarítmica. Fuente: Pichai [8]; la nota sobre el uso de tokens es de Bai, Huang y Wang [9]. Se ofrece una [copia PNG](/figures/ai-coding-market/tokens.png).*
+*Figura 2. Tokens procesados por mes en Google. Figura de datos, comunicada por la empresa, escala logarítmica. Fuente: Pichai [8]; la nota sobre el uso de tokens es de Bai, Huang y Wang [9]. Se ofrece una [copia PNG](/figures/ai-coding-market/tokens.png).*
 
 <div id="25-price-per-token" class="anchor-alias" aria-hidden="true"></div>
 
@@ -132,9 +132,9 @@ Las 13 veces al año de [4] son un punto dentro de un rango amplio [34]. La caí
 
 La Figura 3 dibuja las dos series de precios.
 
-![Gráfico logarítmico del precio por millón de tokens a capacidad fija: de 60 dólares en 2021 a 0.06 dólares en 2024, y una pendiente de unas 13 veces al año desde 2023.](/figures/ai-coding-market/price-trend.svg)
+![Gráfico en escala logarítmica del precio por millón de tokens a capacidad fija. Una estimación de a16z cae de 60 dólares en 2021 a 0,06 dólares en 2024, unas diez veces al año. Una pendiente discontinua de Epoch AI de unas trece veces al año desde 2023 se dibuja indexada a diez dólares en 2023.](/figures/ai-coding-market/price-trend.svg)
 
-*Figura 3. Precio de un nivel fijo de capacidad. Figura de datos, escala logarítmica: los extremos de a16z son los publicados [20]; la línea de Epoch AI es la tasa declarada de unas 13 veces al año desde 2023 [4], indexada solo para mostrar la pendiente. El rango por hito es de Epoch AI [34]. Se ofrece una [copia PNG](/figures/ai-coding-market/price-trend.png).*
+*Figura 3. Precio de un nivel fijo de capacidad. Figura de datos, escala logarítmica: los extremos de a16z son los publicados [20]; la línea de Epoch AI es la tasa declarada de unas 13 veces al año desde 2023 [4], indexada a un inicio arbitrario solo para mostrar la pendiente. El rango por hito procede de Epoch AI [34]. Se ofrece una [copia PNG](/figures/ai-coding-market/price-trend.png).*
 
 <div id="26-energy-and-capital" class="anchor-alias" aria-hidden="true"></div>
 
@@ -157,9 +157,9 @@ La renta que hay que servir es renta de hardware. Inversiones y compromisos de e
 
 La Figura 4 sitúa la electricidad proyectada de la red junto a los julios medidos de una tarea.
 
-![Dos paneles: electricidad de centros de datos, 415 TWh en 2024 y 945 TWh proyectados para 2030; y en escala logarítmica, una consulta de texto mediana de 864 julios frente a tareas de reparación resueltas por RCE de 0.026 a 0.40 julios.](/figures/ai-coding-market/energy.svg)
+![Dos paneles. Panel a: electricidad de centros de datos, 415 TWh en 2024 según la estimación de la IEA, un rango de 485 a 950 TWh para 2025 a 2030 y 945 TWh proyectados para 2030. Panel b, escala logarítmica: una instrucción de texto mediana medida por su operador en 0,24 Wh, o 864 julios; tareas de reparación resueltas por RCE a 0,10 a 0,40 julios estimados y 0,026 a 0,056 julios en un contador de paquete RAPL.](/figures/ai-coding-market/energy.svg)
 
-*Figura 4. Energía en la red y en la tarea. Figura de datos. Panel a: estimación y proyección de la IEA [10, 11]. Panel b, escala logarítmica: una consulta de texto mediana, 0.24 Wh medidos por el operador [12]; tareas de reparación resueltas por RCE, `est_j` y `reported_j`. Los dos paneles tienen unidades distintas y no se convierten entre sí. Se ofrece una [copia PNG](/figures/ai-coding-market/energy.png).*
+*Figura 4. Energía en la red y en la tarea. Figura de datos. Panel a: estimación y proyección de la IEA [10, 11]. Panel b, escala logarítmica: una instrucción de texto mediana, 0,24 Wh medidos por el operador [12]; tareas de reparación resueltas por RCE, `est_j` y `reported_j` ([RCE §6.3](/papers/rce/#63-energy)). Los dos paneles están en unidades distintas y no se convierten entre sí. Se ofrece una [copia PNG](/figures/ai-coding-market/energy.png).*
 
 <div id="27-productivity-evidence" class="anchor-alias" aria-hidden="true"></div>
 

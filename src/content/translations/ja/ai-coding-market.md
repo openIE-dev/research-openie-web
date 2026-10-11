@@ -90,11 +90,11 @@ complete: true
 
 Anthropic は、この資金調達が「インフラの拡張」に充てられると述べている [6]。収益、評価額、計算資源は一つの賭けである。
 
-図1は第2.1節から第2.3節と第2.6節のドル額を、各出典の区分ごとに一本の軸に並べる。
+図1は、第2.1節から第2.3節と第2.6節のドルの数値を一本の軸に置き、各出典が付けているラベルで区別する。
 
-![対数目盛の点グラフ：ドル額は約10億から約3兆まで。予測、推定値、調査による推定、企業の自己申告で色分けしている。](/figures/ai-coding-market/spend-by-label.svg)
+![本エッセイの表にあるドルの数値の対数目盛のドットチャート。予測：開発者の貢献は約 3 兆ドル、生成 AI の価値は 2.6 兆から 4.4 兆、世界の AI 支出は 1.5 兆、AI コードツール市場は 2026 年に 93.5 億、2031 年に 299.6 億。推計：設備投資は 4,000 億超。調査による推計：企業の生成 AI 支出は 370 億、AI コーディングツール支出は 40 億。企業の報告：Claude Code の年換算収益は 25 億超、Cursor は 10 億超。](/figures/ai-coding-market/spend-by-label.svg)
 
-*図1. 区分別のドル額。データ図、対数目盛。出典：[1]、[2]、[3]、[5]、[6]、[10]、[15]、[24]。 [PNG 版](/figures/ai-coding-market/spend-by-label.png)も用意している。*
+*図1. ラベル別のドルの数値。データ図、対数目盛。出典：Appenzeller と Li [1]、Menlo Ventures [2]、Mordor Intelligence [3]、Cursor [5]、Anthropic [6]、IEA [10]、McKinsey [15]、Gartner [24]。[PNG 版](/figures/ai-coding-market/spend-by-label.png)も用意している。*
 
 <div id="24-inference-tokens-and-unit-economics" class="anchor-alias" aria-hidden="true"></div>
 
@@ -113,9 +113,9 @@ Anthropic は、この資金調達が「インフラの拡張」に充てられ�
 
 図2はトークンの系列を描く。
 
-![Google が月に処理するトークンの対数目盛の折れ線：2024年に 9.7 兆、2025年に約 480 兆、2026年5月に 3.2 京超。](/figures/ai-coding-market/tokens.svg)
+![Google が1か月に処理したトークン数の対数目盛の折れ線グラフ：2024 年に 9.7 兆、2025 年に約 480 兆、2026 年 5 月に 3.2 京超。いずれも企業の報告。](/figures/ai-coding-market/tokens.svg)
 
-*図2. Google が月に処理するトークン。データ図、企業の自己申告、対数目盛。出典：Pichai [8]。トークン使用量に関する注記は Bai、Huang、Wang [9] による。 [PNG 版](/figures/ai-coding-market/tokens.png)も用意している。*
+*図2. Google で1か月に処理されたトークン。データ図、企業の報告、対数目盛。出典：Pichai [8]。トークン使用についての注記は Bai、Huang、Wang [9] による。[PNG 版](/figures/ai-coding-market/tokens.png)も用意している。*
 
 <div id="25-price-per-token" class="anchor-alias" aria-hidden="true"></div>
 
@@ -132,9 +132,9 @@ Anthropic は、この資金調達が「インフラの拡張」に充てられ�
 
 図3は二つの価格系列を描く。
 
-![固定能力での100万トークンあたり価格の対数グラフ：2021年の 60 ドルから2024年の 0.06 ドルへ。2023年以降の年約13倍の傾きも示す。](/figures/ai-coding-market/price-trend.svg)
+![一定の能力における100万トークンあたり価格の対数目盛のグラフ。a16z の推計は 2021 年の 60 ドルから 2024 年の 0.06 ドルへ下がり、年に約10分の1である。2023 年以来の年約13分の1という Epoch AI の傾きが、2023 年の10ドルを起点として破線で描かれている。](/figures/ai-coding-market/price-trend.svg)
 
-*図3. 一定水準の能力の価格。データ図、対数目盛：a16z の端点は公表どおり [20]。Epoch AI の直線は2023年以降の年約13倍という公表値 [4] で、傾きを示すためだけに指数化している。マイルストーン別の幅は Epoch AI [34] による。 [PNG 版](/figures/ai-coding-market/price-trend.png)も用意している。*
+*図3. 一定の能力水準の価格。データ図、対数目盛：a16z の端点は印刷されたとおり [20]。Epoch AI の線は 2023 年以来の年約13分の1という公表された速度 [4] で、傾きだけを示すために任意の起点に合わせている。マイルストーン別の範囲は Epoch AI [34] による。[PNG 版](/figures/ai-coding-market/price-trend.png)も用意している。*
 
 <div id="26-energy-and-capital" class="anchor-alias" aria-hidden="true"></div>
 
@@ -155,11 +155,11 @@ Anthropic は、この資金調達が「インフラの拡張」に充てられ�
 
 支払わねばならない賃料はハードウェアの賃料である。この規模の設備投資と契約は、エネルギーを上回る価格がつけられた利用を通じて回収される。それが、再利用が覆われたタスクで取り除く基盤である。
 
-図4は送電網での予測電力と、タスクで測定したジュールを並べる。
+図4は、予測される電力網の電力とタスク一つの測定ジュールを並べる。
 
-![二つのパネル：データセンターの電力、2024年に 415 TWh、2030年予測 945 TWh。対数目盛で、中央値のテキスト要求一回 864 ジュールと、RCE が解いた修復タスク 0.026 から 0.40 ジュール。](/figures/ai-coding-market/energy.svg)
+![二つのパネル。パネル a：データセンターの電力。IEA の推計で 2024 年に 415 TWh、2025 年から 2030 年に 485 から 950 TWh の範囲、2030 年の予測で 945 TWh。パネル b、対数目盛：運営者が測定した中央値のテキストプロンプト一つで 0.24 Wh、すなわち 864 ジュール。RCE が解いた修復タスクは推定で 0.10 から 0.40 ジュール、RAPL パッケージカウンタで 0.026 から 0.056 ジュール。](/figures/ai-coding-market/energy.svg)
 
-*図4. 送電網とタスクでのエネルギー。データ図。パネル a：IEA の推定値と予測 [10, 11]。パネル b、対数目盛：中央値のテキスト要求一回、運営者の測定で 0.24 Wh [12]。RCE が解いた修復タスク、`est_j` と `reported_j`。二つのパネルは単位が異なり、互いに換算しない。 [PNG 版](/figures/ai-coding-market/energy.png)も用意している。*
+*図4. 電力網とタスクにおけるエネルギー。データ図。パネル a：IEA の推計と予測 [10, 11]。パネル b、対数目盛：中央値のテキストプロンプト一つ、運営者が測定した 0.24 Wh [12]。RCE が解いた修復タスク、`est_j` と `reported_j`（[RCE §6.3](/papers/rce/#63-energy)）。二つのパネルは単位が異なり、互いに換算しない。[PNG 版](/figures/ai-coding-market/energy.png)も用意している。*
 
 <div id="27-productivity-evidence" class="anchor-alias" aria-hidden="true"></div>
 

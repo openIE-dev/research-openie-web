@@ -60,11 +60,11 @@ Os valores de energia são rotulados pela fonte. `est_j` é uma estimativa anal�
 
 As abordagens diferem em grau em cada eixo, e os eixos interagem: a reutilização reduz a energia e a entropia que resta resolver, e uma verificação forte é o que torna a reutilização segura. O RCE escreve o significado uma vez, numa Forma canônica. Cada linguagem de superfície é uma projeção dessa Forma, verificada para coincidir com ela. Entre formas equivalentes, roda a correta mais barata.
 
-A Figura 2 traça os cinco eixos e situa neles as principais classes de abordagem.
+A Figura 2 desenha os cinco eixos e situa neles as principais classes de abordagem.
 
-![Gráfico de radar com cinco eixos: energia por resultado correto, determinismo, força de verificação, reutilização e composição, e independência de modelos. RCE, marcado com estrelas, fica no anel externo ou perto dele nos cinco eixos; um modelo em cada tarefa fica perto do centro.](/figures/rce/design-space.svg)
+![Gráfico de radar com cinco eixos: energia por resultado correto, determinismo, força da verificação, reutilização e acumulação, e independência de modelos. Cinco classes de abordagem são desenhadas como polígonos. Um modelo em cada tarefa fica perto do centro em todos os eixos. Um laço de agente com porta de testes fica mais alto em verificação. Um modelo com recuperação e cache fica mais alto em reutilização. A síntese e o reparo clássicos ficam altos em determinismo e em independência de modelos. O RCE, marcado com estrelas, fica no anel externo ou perto dele nos cinco eixos. As posições são qualitativas.](/figures/rce/design-space.svg)
 
-*Figura 2. O espaço de projeto da programação autônoma. Diagrama qualitativo: cada classe de abordagem é situada em níveis ordinais segundo a leitura da Seção 2, não por medição. A dependência de modelos é desenhada como independência de modelos, de modo que para fora é melhor em cada eixo. Há uma [cópia em PNG](/figures/rce/design-space.png).*
+*Figura 2. O espaço de projeto da programação autônoma. Diagrama qualitativo: cada classe de abordagem é situada pela leitura que o artigo faz da Seção 2, em níveis ordinais, não por medição. A dependência de modelo é desenhada como independência de modelos, de modo que para fora seja melhor em todos os eixos. Há uma [cópia em PNG](/figures/rce/design-space.png).*
 
 <div id="21-programming-is-coding-theory" class="anchor-alias" aria-hidden="true"></div>
 
@@ -123,13 +123,13 @@ A afirmação da [§1](#1-thesis) é medida diretamente. O benchmark foi pré-re
 | Porta no ponto de entrada, entradas | Cinco cargas malformadas (tipo errado, nulo, campo ausente, vazio, aninhado) são todas rejeitadas, e nenhuma resulta aceita | 10,000 | 10,000 | 0 |
 | Porta no ponto de entrada, especificações | Uma especificação com um fluxo para um nó não declarado é rejeitada antes da compilação | 10,000 | 10,000 | 0 |
 
-A única divergência em Python é contada como divergência; a mesma Forma e os mesmos eventos se reproduzem de forma idêntica sob 32 sementes de hash no teste de regressão `tests/form_ecosystem_regress.rs`. A energia aqui é apenas `est_j`; a execução completa levou 393 s de CPU em um núcleo. As Formas geradas são pequenas, então a tabela mede a codificação, as projeções e a porta; as Formas elevadas de programas reais são medidas pelo protocolo da [§8.7](#87-lift-coverage-across-languages).
-
 A Figura 3 mostra as mesmas contagens.
 
-![Gráfico de barras de cinco verificações em 10,000 Formas: quatro valem em 10,000 de 10,000 e a reprodução em Python em 9,999 de 10,000, com 0 chamadas a modelo.](/figures/rce/ecosystem-checks.svg)
+![Gráfico de barras horizontais de cinco verificações em 10,000 Formas. A codificação sem perdas, a projeção determinística, a porta de entrada para entradas malformadas e a porta de entrada para especificações valem cada uma em 10,000 de 10,000. A reprodução do traço em Python vale em 9,999 de 10,000. Zero chamadas a modelo.](/figures/rce/ecosystem-checks.svg)
 
-*Figura 3. O ecossistema em grande N. Figura de dados: as cinco verificações em 10,000 Formas pré-registradas, motor congelado, 0 chamadas a modelo, com intervalos de Wilson de 95%. Há uma [cópia em PNG](/figures/rce/ecosystem-checks.png).*
+*Figura 3. O ecossistema em N grande. Figura de dados: as cinco verificações da tabela acima em 10,000 Formas pré-registradas, motor congelado no commit `a079967`, 0 chamadas a modelo, com intervalos de Wilson de 95% calculados a partir das contagens. Fonte: [`bench/ecosystem`](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ecosystem/). Há uma [cópia em PNG](/figures/rce/ecosystem-checks.png).*
+
+A única divergência em Python é contada como divergência; a mesma Forma e os mesmos eventos se reproduzem de forma idêntica sob 32 sementes de hash no teste de regressão `tests/form_ecosystem_regress.rs`. A energia aqui é apenas `est_j`; a execução completa levou 393 s de CPU em um núcleo. As Formas geradas são pequenas, então a tabela mede a codificação, as projeções e a porta; as Formas elevadas de programas reais são medidas pelo protocolo da [§8.7](#87-lift-coverage-across-languages).
 
 <div id="24-gated-verified-recursive-self-improvement" class="anchor-alias" aria-hidden="true"></div>
 
@@ -143,15 +143,15 @@ O RCE toma a estrutura da máquina de Gödel e a biblioteca do Voyager, com duas
 
 **Proposição R2 (acúmulo).** Seja uma carga de trabalho um multiconjunto de tarefas e seja um handler promovido que fecha toda tarefa do seu formato. Então o número de escaladas na rodada t é não crescente em t, e uma correção promovida antes da rodada 1 reduz as escaladas acumuladas de todo horizonte pelas escaladas que ela fecha em cada rodada posterior. Na carga de trabalho de referência do playground, as escaladas acumuladas ao longo de oito rodadas caem de 21 para 15 com uma correção nos sumidouros, e chegam a zero na última rodada nos dois casos, com toda tarefa fechada corretamente e nenhuma promoção recusada.
 
+A Figura 4 desenha o mecanismo das Proposições R1 e R2 com os totais da carga de trabalho de referência.
+
+![Diagrama da pilha do RCE em seis níveis, da intenção no topo, passando pela Forma, pela porta, pelas projeções e pelo runtime, até o hardware e a energia. Uma correção promovida no nível do runtime depois de passar em sua verificação de fronteira é mostrada com setas que sobem por todos os níveis acima dela. Um pequeno gráfico de barras ao lado dá as escaladas acumuladas em oito rodadas da carga de trabalho de referência do playground: 21 sem correção e 15 com uma correção nos sumidouros.](/figures/rce/stack-compounding.svg)
+
+*Figura 4. As correções se acumulam para cima. Diagrama da pilha, com um quadro de dados: escaladas acumuladas em oito rodadas da carga de trabalho de referência do playground, 21 sem correção e 15 com uma correção nos sumidouros (Proposição R2; [RCE Playground](/playground/rce/#compounding)). Há uma [cópia em PNG](/figures/rce/stack-compounding.png).*
+
 **Proposição R3 (custo decrescente).** Como um handler promovido é executado no lugar de uma chamada a modelo, e seu custo é a contagem de operações do handler precificada pela tabela do substrato, a energia de uma rodada cai em direção à energia dos handlers sozinhos à medida que as escaladas caem em direção a zero.
 
 As projeções de Futamura (1971, republicadas em 1999) [120] e a supercompilação de Turchin (1986) [121] dão o limite desse processo. Especializar um interpretador para um programa produz um programa compilado; especializar o especializador produz um compilador. As promoções do RCE especializam o caminho geral de escalada para os formatos que de fato ocorrem, de modo que o motor converge para o programa residual de sua carga de trabalho: a parte da computação que um modelo ou uma pessoa ainda precisa fornecer. A automelhoria recursiva sob uma porta é essa convergência, feita com passos verificados. A camada Compounding do [RCE Playground](/playground/rce/#compounding) executa essa carga de trabalho no navegador.
-
-A Figura 4 desenha o mecanismo das Proposições R1 e R2 com os totais da carga de referência.
-
-![Diagrama da pilha de RCE em seis níveis; uma correção promovida no nível de execução sobe por todos os níveis acima. Escalonamentos acumulados em oito rodadas: 21 sem correção e 15 com uma correção.](/figures/rce/stack-compounding.svg)
-
-*Figura 4. As correções se acumulam para cima. Diagrama da pilha com um quadro de dados: escalonamentos acumulados em oito rodadas da carga de referência do playground, 21 sem correção e 15 com uma correção nos sumidouros (Proposição R2). Há uma [cópia em PNG](/figures/rce/stack-compounding.png).*
 
 <div id="3-the-form" class="anchor-alias" aria-hidden="true"></div>
 
@@ -355,9 +355,9 @@ Uma verificação que falha localiza a ruptura na fronteira onde ela ocorre. A c
 
 A Figura 5 mostra as cinco projeções de uma Forma e a ida e volta dos dois destinos de statechart.
 
-![Diagrama: uma Forma é projetada para Rust, Python, WASM, XState e SCXML; XState e SCXML voltam à Forma com bytes idênticos.](/figures/rce/form-projections.svg)
+![Diagrama: uma Forma, feita de estado, eventos e uma transição pura e total, é projetada por compilações determinísticas em cinco destinos: Rust, Python, WASM, XState e SCXML. Setas contínuas vão da Forma a cada destino. Setas tracejadas voltam de XState e SCXML para a Forma, mostrando a ida e volta para bytes idênticos e o mesmo hash de forma. Rust, Python e WASM reproduzem o traço de referência byte a byte.](/figures/rce/form-projections.svg)
 
-*Figura 5. Uma Forma, muitas projeções. Diagrama: projeção determinística para cinco destinos; as projeções XState e SCXML são decodificadas de volta para bytes idênticos; os cinco destinos imprimem o traço de referência byte a byte em 529 eventos. Há uma [cópia em PNG](/figures/rce/form-projections.png).*
+*Figura 5. Uma Forma, muitas projeções. Diagrama: projeção determinística em cinco destinos ([§4.5](#45-the-form-compiler)); as projeções XState e SCXML decodificam de volta para bytes idênticos ([§2.3](#23-the-ecosystem-at-large-n)); os cinco destinos imprimem o traço de referência byte a byte nos 529 eventos de `tests/form_targets.rs`. Há uma [cópia em PNG](/figures/rce/form-projections.png).*
 
 <div id="52-rewrites-proved-in-z3" class="anchor-alias" aria-hidden="true"></div>
 
@@ -428,6 +428,12 @@ Uma tarefa de programação é medida aqui pelos **bits de intenção** de que p
 | L1 uma instrução, Java, arquivo inteiro | ManySStuBs4J 2.0 [107], arquivo do commit pai com os índices de métodos e de guardas do projeto | 21,320 | 13,586 | 0.637 | 0.631 a 0.644 | 4.8 | 0 |
 | L1 uma instrução, Python | TSSB-3M v1.0.0, shards 14 e 15 [108] | 157,089 | 27,266 | 0.174 | 0.172 a 0.175 | 4.8 | 0 |
 
+A Figura 6 traça as linhas da tabela com seus intervalos.
+
+![Gráfico de barras das taxas de resolução em código reservado, com intervalos de Wilson de 95 por cento. L0 um token em nove repositórios: 99.95 por cento de 520,821. L0 um token em quatro repositórios nunca ajustados: 100 por cento de 23,015. L1 Java arquivo inteiro: 63.7 por cento de 21,320. L1 Java só o trecho: 38.6 por cento de 24,072. L1 Python só o trecho: 17.4 por cento de 157,089. Zero chamadas a modelo.](/figures/rce/lift-ladder.svg)
+
+*Figura 6. A escada de reparo no código elevado. Figura de dados: divisão de teste reservada, motor congelado, localização dada, porta de identidade de token, 0 chamadas a modelo; intervalos de Wilson de 95% calculados a partir das contagens. Fontes: mutantes no estilo PIT [109], ManySStuBs4J 2.0 [107], TSSB-3M v1.0.0 [108]; linhas por tarefa em [`bench/ladder`](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/). Há uma [cópia em PNG](/figures/rce/lift-ladder.png).*
+
 L2 a L4 são medidos no conjunto reservado do Defects4J, com 288 defeitos ([Seção 8.1](#81-defects4j)). L5 a L7 seguem os protocolos da [Seção 8.2](#82-swe-bench-lite-offline). O método, a porta e a energia de cada linha vêm a seguir.
 
 As taxas se leem como bits de intenção. Em L0 os bits que faltam estão quase todos na linha, e uma vizinhança de um token ordenada por prioridade os fornece com uma mediana de 2.3 bits. Na linha L1 só com o hunk, o motor vê apenas o hunk de 7 linhas. Ele fecha as categorias cujos bits estão dentro do hunk (Java: operador alterado 91%, literal booleano trocado 84%, argumentos trocados 82%; Python: literal booleano alterado 98.8%, argumentos trocados 99.4%) e deixa em aberto aquelas cujos bits estão fora dele: nomes de métodos (22%) e identificadores (37%) precisam do arquivo e dos seus tipos, e novas conjunções (3% a 7%) e reescritas de instruções inteiras (Python, 1.2% de uma categoria que é 34% do corpus) são intenção nova. Intenção nova é o que um fornecedor (uma especificação, um teste, uma pessoa ou um modelo local) fornece uma vez, e depois disso o ajuste está no índice.
@@ -435,12 +441,6 @@ As taxas se leem como bits de intenção. Em L0 os bits que faltam estão quase 
 **Método.** Cada corpus é embaralhado com uma semente fixa. As primeiras 2,000 posições de cada embaralhamento, e para L0 três repositórios inteiros (commons-lang, requests, flask), formam a partição de desenvolvimento, na qual as engrenagens podem ser ajustadas; resultados de desenvolvimento não são relatados. Toda tarefa restante está na partição de teste. Antes de uma execução de teste, o motor recebe commit e seu hash binário é registrado, e nenhuma engrenagem muda durante a execução. Cada linha desta seção é um resultado do motor congelado apenas em tarefas de teste, com 0 chamadas a modelo. O pré-registro (`PREREG.json`), as linhas por tarefa e o script do relatório estão no [repositório público](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
 
 **Porta.** Em L0 e L1 a localização é dada e a porta é a identidade de tokens: a linha ou instrução reparada deve ser igual à do desenvolvedor, token por token. Isso é mais estrito do que passar nos testes, porque um patch pode passar numa suíte de testes fraca e ainda assim estar errado. Qi e colegas descobriram que a maioria dos patches que o GenProg relatou como correções eram plausíveis, mas incorretos [92]; o sobreajuste aos testes está documentado no reparo baseado em busca e no baseado em semântica [93, 94] e é tratado com testes gerados [95]; as ferramentas pontuam mais alto no benchmark em que foram ajustadas [96]; e a localização de falhas enviesa as comparações [97]. A identidade de tokens elimina a lacuna de plausibilidade nesses degraus, e dar a localização elimina o termo de localização, de modo que a taxa mede apenas as engrenagens de reparo. De L2 para cima, os testes são a porta e as contagens de plausíveis e corretos são relatadas separadamente (Seção 8.1).
-
-A Figura 6 representa as linhas da tabela com seus intervalos.
-
-![Gráfico de barras das taxas de resolução reservadas com intervalos de Wilson: L0 99.95% e 100%, L1 Java arquivo inteiro 63.7%, L1 Java só o trecho 38.6%, L1 Python 17.4%, com 0 chamadas a modelo.](/figures/rce/lift-ladder.svg)
-
-*Figura 6. A escada de reparo no código elevado. Figura de dados: partição de teste reservada, motor congelado, local dado, porta de identidade de tokens, 0 chamadas a modelo; intervalos de Wilson de 95%. Fontes: [107], [108], [109]. Há uma [cópia em PNG](/figures/rce/lift-ladder.png).*
 
 <div id="61-l0-one-token-faults" class="anchor-alias" aria-hidden="true"></div>
 

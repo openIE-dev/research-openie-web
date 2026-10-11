@@ -90,11 +90,11 @@ complete: true
 
 Anthropic 表示，该轮融资用于"基础设施扩张" [6]。收入、估值与算力是同一个赌注。
 
-图 1 把第 2.1 至 2.3 节和第 2.6 节的美元数字放在同一条轴上，并按各来源的标签标记。
+图 1 把第 2.1 至 2.3 节和第 2.6 节的美元数字放在同一条轴上，并以各来源所带的标签标注。
 
-![对数刻度点图：美元数字从约十亿到约三万亿，按预测、估计值、调查估计或公司自报着色。](/figures/ai-coding-market/spend-by-label.svg)
+![本文各表中美元数字的对数坐标点图。预测：开发者贡献约 3 万亿美元，生成式 AI 价值 2.6 万亿至 4.4 万亿，全球 AI 支出 1.5 万亿，AI 代码工具市场 2026 年 93.5 亿、2031 年 299.6 亿。估计：资本支出超过 4,000 亿。调查估计：企业生成式 AI 支出 370 亿，AI 编程工具支出 40 亿。公司报告：Claude Code 年化收入超过 25 亿，Cursor 超过 10 亿。](/figures/ai-coding-market/spend-by-label.svg)
 
-*图 1. 按标签分列的美元数字。数据图，对数刻度。来源：[1]、[2]、[3]、[5]、[6]、[10]、[15]、[24]。 另提供 [PNG 副本](/figures/ai-coding-market/spend-by-label.png)。*
+*图 1. 按标签划分的美元数字。数据图，对数坐标。来源：Appenzeller 与 Li [1]、Menlo Ventures [2]、Mordor Intelligence [3]、Cursor [5]、Anthropic [6]、IEA [10]、McKinsey [15]、Gartner [24]。另提供 [PNG 副本](/figures/ai-coding-market/spend-by-label.png)。*
 
 <div id="24-inference-tokens-and-unit-economics" class="anchor-alias" aria-hidden="true"></div>
 
@@ -113,9 +113,9 @@ Anthropic 表示，该轮融资用于"基础设施扩张" [6]。收入、估值�
 
 图 2 画出词元序列。
 
-![对数刻度折线：Google 每月处理的词元，2024 年 9.7 万亿，2025 年约 480 万亿，2026 年 5 月超过 3.2 千万亿。](/figures/ai-coding-market/tokens.svg)
+![Google 每月处理词元数的对数坐标折线图：2024 年 9.7 万亿，2025 年约 480 万亿，2026 年 5 月超过 3.2 千万亿，均为公司报告。](/figures/ai-coding-market/tokens.svg)
 
-*图 2. Google 每月处理的词元。数据图，公司自报，对数刻度。来源：Pichai [8]；关于词元用量的说明来自 Bai、Huang 和 Wang [9]。 另提供 [PNG 副本](/figures/ai-coding-market/tokens.png)。*
+*图 2. Google 每月处理的词元。数据图，公司报告，对数坐标。来源：Pichai [8]；关于词元用量的说明来自 Bai、Huang 与 Wang [9]。另提供 [PNG 副本](/figures/ai-coding-market/tokens.png)。*
 
 <div id="25-price-per-token" class="anchor-alias" aria-hidden="true"></div>
 
@@ -132,9 +132,9 @@ Anthropic 表示，该轮融资用于"基础设施扩张" [6]。收入、估值�
 
 图 3 画出两条价格序列。
 
-![固定能力下每百万词元价格的对数图：从 2021 年的 60 美元降到 2024 年的 0.06 美元，以及 2023 年以来每年约 13 倍的斜率。](/figures/ai-coding-market/price-trend.svg)
+![固定能力下每百万词元价格的对数坐标图。a16z 的一项估计从 2021 年的 60 美元降到 2024 年的 0.06 美元，约每年十倍。一条虚线表示 Epoch AI 自 2023 年以来约每年十三倍的斜率，以 2023 年的十美元为指数起点。](/figures/ai-coding-market/price-trend.svg)
 
-*图 3. 固定能力水平的价格。数据图，对数刻度：a16z 的端点按原文 [20]；Epoch AI 的直线是 2023 年以来每年约 13 倍的公布速率 [4]，经过指数化，仅示斜率。按里程碑的范围来自 Epoch AI [34]。 另提供 [PNG 副本](/figures/ai-coding-market/price-trend.png)。*
+*图 3. 固定能力水平的价格。数据图，对数坐标：a16z 的端点按原文所印 [20]；Epoch AI 线是自 2023 年以来约每年 13 倍的所述速率 [4]，以任意起点为指数，只用于显示斜率。按里程碑的区间来自 Epoch AI [34]。另提供 [PNG 副本](/figures/ai-coding-market/price-trend.png)。*
 
 <div id="26-energy-and-capital" class="anchor-alias" aria-hidden="true"></div>
 
@@ -155,11 +155,11 @@ Anthropic 表示，该轮融资用于"基础设施扩张" [6]。收入、估值�
 
 必须偿付的租金是硬件租金。这种规模的资本支出与承诺，要靠定价高于其能量成本的使用来回收。这正是复用在被覆盖任务上所移除的基础。
 
-图 4 把电网的预测用电与一个任务实测的焦耳放在一起。
+图 4 把预测的电网用电与一个任务的实测焦耳并列。
 
-![两个面板：数据中心用电，2024 年 415 TWh，2030 年预测 945 TWh；以及对数刻度下，一次中位数文本请求 864 焦耳，对比 RCE 求解的修复任务 0.026 至 0.40 焦耳。](/figures/ai-coding-market/energy.svg)
+![两个面板。面板 a：数据中心用电，IEA 估计 2024 年为 415 TWh，2025 年至 2030 年为 485 至 950 TWh 的区间，2030 年预测为 945 TWh。面板 b，对数坐标：一个中位数文本提示，由其运营方测得 0.24 Wh，即 864 焦耳；RCE 已解决的修复任务，估计为 0.10 至 0.40 焦耳，在 RAPL 封装计数器上为 0.026 至 0.056 焦耳。](/figures/ai-coding-market/energy.svg)
 
-*图 4. 电网与任务层面的能量。数据图。面板 a：IEA 的估计值与预测 [10, 11]。面板 b，对数刻度：一次中位数文本请求，运营方实测 0.24 Wh [12]；RCE 求解的修复任务，`est_j` 与 `reported_j`。两个面板单位不同，互不换算。 另提供 [PNG 副本](/figures/ai-coding-market/energy.png)。*
+*图 4. 电网处与任务处的能量。数据图。面板 a：IEA 的估计与预测 [10, 11]。面板 b，对数坐标：一个中位数文本提示，运营方测得 0.24 Wh [12]；RCE 已解决的修复任务，`est_j` 与 `reported_j`（[RCE §6.3](/papers/rce/#63-energy)）。两个面板单位不同，彼此不作换算。另提供 [PNG 副本](/figures/ai-coding-market/energy.png)。*
 
 <div id="27-productivity-evidence" class="anchor-alias" aria-hidden="true"></div>
 

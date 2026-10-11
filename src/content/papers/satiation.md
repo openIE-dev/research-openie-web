@@ -27,7 +27,7 @@ A second fact is about price, not physics. Epoch AI reports large declines in th
 
 The paper does not report a randomized trial, a done-detector error rate, or a split between energy spent before completeness and energy spent after it. Those measurements are specified and absent. What the software reference does provide is a place to put the stop: Wise Computer Automation (WCA) can refuse on a policy or budget reason, or on a physical predicate (look-up table allow and an energy check, optional control barrier function). The companion paper measures the physical predicate on toy plants. This paper states the economic predicate and the evidence that is actually published.
 
-No field-programmable gate array (FPGA) has been metered for this study; the companion's board is programmed and its energy is unmetered. An Alchitry Pt V2 is the intended later device under test (DUT). A browser instrument that compiles the gate to WebAssembly (WASM) and displays it with WebGPU is shipped as Stage B at https://research.openie.dev/living/fpga-sim/ (see companion paper). It is a simulation, not a board result, and it is not a satiation measurement here. Analytical joules from the companion's OpCounter are not board power and are not evidence of satiation.
+No field-programmable gate array (FPGA) carries an energy meter in this study; the companion's board is programmed and its energy is unmetered. An Alchitry Pt V2 is the intended later device under test (DUT). A browser instrument that compiles the gate to WebAssembly (WASM) and displays it with WebGPU is shipped as Stage B at https://research.openie.dev/living/fpga-sim/ (see companion paper). It is a simulation, not a board result, and it is not a satiation measurement here. Analytical joules from the companion's OpCounter are not board power and are not evidence of satiation.
 
 ## Notation
 
@@ -204,7 +204,7 @@ Stage B, shipped: WASM compilation of the decision core and a WebGPU view of the
 
 Stage C, board programmed for the companion's commit-gate demo (closed-loop pendulum with LUT allow, Safe PH, and Ames energy-set CBF); energy still unmetered. The Alchitry Pt V2 has no onboard joule meter. UART decision agreement is not a watt reading. Vendor specifications on SparkFun's page (XC7A100T-2FGG84I, 101,440 logic cells, 240 DSP48E1 slices, 4,860 Kb block RAM, 256 MB DDR3L) are not DUT energy results. Metering methods: companion guide [/living/fpga-sim/alchitry/#energy](https://research.openie.dev/living/fpga-sim/alchitry/#energy).
 
-This paper adds a mapping, not a fourth stage. Task completion, if encoded as `policy` or `budget_exceeded`, should appear in the same trace as `energy_veto`, so a future split (Section 3.3) can group reason codes. The browser view would make that grouping readable. It would not create the missing corpus. No board energy has been metered for this study.
+This paper adds a mapping, not a fourth stage. Task completion, if encoded as `policy` or `budget_exceeded`, should appear in the same trace as `energy_veto`, so a future split (Section 3.3) can group reason codes. The browser view would make that grouping readable. It would not create the missing corpus, and the board energy stays unmetered.
 
 
 <div id="28-fidelity-criteria-and-stop-rules" class="anchor-alias" aria-hidden="true"></div>

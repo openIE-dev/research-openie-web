@@ -62,9 +62,9 @@ Ansätze unterscheiden sich auf jeder Achse dem Grad nach, und die Achsen wirken
 
 Abbildung 2 zeichnet die fünf Achsen und ordnet die wichtigsten Klassen von Ansätzen darauf ein.
 
-![Netzdiagramm mit fünf Achsen: Energie pro korrektem Ergebnis, Determinismus, Stärke der Verifikation, Wiederverwendung und Kumulierung sowie Unabhängigkeit von Modellen. RCE, mit Sternen markiert, liegt auf allen fünf Achsen am äußeren Ring oder nahe daran; ein Modell bei jeder Aufgabe liegt nahe der Mitte.](/figures/rce/design-space.svg)
+![Netzdiagramm mit fünf Achsen: Energie pro korrektem Ergebnis, Determinismus, Stärke der Verifikation, Wiederverwendung und Kumulation sowie Unabhängigkeit von Modellen. Fünf Klassen von Ansätzen sind als Polygone gezeichnet. Ein Modell bei jeder Aufgabe liegt auf allen Achsen nahe der Mitte. Eine durch Tests gesicherte Agentenschleife liegt bei der Verifikation höher. Ein Modell mit Retrieval und Caching liegt bei der Wiederverwendung höher. Klassische Synthese und Reparatur liegen hoch bei Determinismus und Modellunabhängigkeit. RCE, mit Sternen markiert, liegt auf allen fünf Achsen am äußeren Ring oder nahe daran. Die Einordnungen sind qualitativ.](/figures/rce/design-space.svg)
 
-*Abbildung 2. Der Entwurfsraum des autonomen Programmierens. Qualitatives Diagramm: Jede Klasse von Ansätzen ist nach der Lesart von Abschnitt 2 auf ordinalen Stufen eingeordnet, nicht gemessen. Die Abhängigkeit von Modellen ist als Unabhängigkeit von Modellen gezeichnet, sodass außen auf jeder Achse besser ist. Eine [PNG-Kopie](/figures/rce/design-space.png) ist verfügbar.*
+*Abbildung 2. Der Entwurfsraum des autonomen Programmierens. Qualitatives Diagramm: Jede Klasse von Ansätzen ist nach der Lesart dieses Papiers zu Abschnitt 2 auf ordinalen Stufen eingeordnet, nicht nach Messung. Die Abhängigkeit vom Modell ist als Unabhängigkeit von Modellen gezeichnet, sodass außen auf jeder Achse besser ist. Eine [PNG-Kopie](/figures/rce/design-space.png) ist verfügbar.*
 
 <div id="21-programming-is-coding-theory" class="anchor-alias" aria-hidden="true"></div>
 
@@ -123,13 +123,13 @@ Die Aussage von [§1](#1-thesis) wird direkt gemessen. Der Benchmark wurde vor d
 | Tor am Eingang, Eingaben | Fünf Arten fehlerhafter Nutzdaten (falscher Typ, null, fehlendes Feld, leer, verschachtelt) werden alle abgewiesen, ohne angenommenes Ergebnis | 10,000 | 10,000 | 0 |
 | Tor am Eingang, Spezifikationen | Eine Spezifikation mit einem Fluss zu einem nicht deklarierten Knoten wird vor dem Kompilieren abgewiesen | 10,000 | 10,000 | 0 |
 
-Der eine Python-Fehlschlag wird als Fehlschlag gezählt; dieselbe Form und dieselben Ereignisse spielen sich im Regressionstest `tests/form_ecosystem_regress.rs` unter 32 Hash-Seeds identisch ab. Die Energie ist hier nur `est_j`; der ganze Lauf brauchte 393 s CPU-Zeit auf einem Kern. Die erzeugten Formen sind klein, daher misst diese Tabelle die Codierung, die Projektionen und das Tor. Gehobene Formen aus realen Programmen werden nach dem Protokoll von [§8.7](#87-lift-coverage-across-languages) gemessen.
-
 Abbildung 3 zeigt dieselben Zählungen.
 
-![Balkendiagramm von fünf Prüfungen an 10,000 Formen: vier halten bei 10,000 von 10,000, die Python-Wiedergabe bei 9,999 von 10,000, mit 0 Modellaufrufen.](/figures/rce/ecosystem-checks.svg)
+![Horizontales Balkendiagramm von fünf Prüfungen auf 10,000 Formen. Verlustfreie Codierung, deterministische Projektion, Tor am Eingang bei fehlerhaften Eingaben und Tor am Eingang bei Spezifikationen gelten jeweils bei 10,000 von 10,000. Das Nachspielen der Python-Spur gilt bei 9,999 von 10,000. Null Modellaufrufe.](/figures/rce/ecosystem-checks.svg)
 
-*Abbildung 3. Das Ökosystem bei großem N. Datenabbildung: die fünf Prüfungen an 10,000 vorregistrierten Formen, eingefrorene Engine, 0 Modellaufrufe, mit Wilson-Intervallen zu 95 %. Eine [PNG-Kopie](/figures/rce/ecosystem-checks.png) ist verfügbar.*
+*Abbildung 3. Das Ökosystem bei großem N. Datenabbildung: die fünf Prüfungen der Tabelle oben auf 10,000 präregistrierten Formen, Engine eingefroren bei Commit `a079967`, 0 Modellaufrufe, mit Wilson-95%-Intervallen, berechnet aus den Zählungen. Quelle: [`bench/ecosystem`](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ecosystem/). Eine [PNG-Kopie](/figures/rce/ecosystem-checks.png) ist verfügbar.*
+
+Der eine Python-Fehlschlag wird als Fehlschlag gezählt; dieselbe Form und dieselben Ereignisse spielen sich im Regressionstest `tests/form_ecosystem_regress.rs` unter 32 Hash-Seeds identisch ab. Die Energie ist hier nur `est_j`; der ganze Lauf brauchte 393 s CPU-Zeit auf einem Kern. Die erzeugten Formen sind klein, daher misst diese Tabelle die Codierung, die Projektionen und das Tor. Gehobene Formen aus realen Programmen werden nach dem Protokoll von [§8.7](#87-lift-coverage-across-languages) gemessen.
 
 <div id="24-gated-verified-recursive-self-improvement" class="anchor-alias" aria-hidden="true"></div>
 
@@ -143,15 +143,15 @@ RCE übernimmt die Struktur der Gödel-Maschine und die Bibliothek von Voyager, 
 
 **Proposition R2 (Kumulation).** Eine Arbeitslast sei eine Multimenge von Aufgaben, und ein beförderter Handler schließe jede Aufgabe seiner Gestalt. Dann ist die Zahl der Eskalationen in Runde t in t nicht steigend, und eine vor Runde 1 beförderte Korrektur senkt die kumulierten Eskalationen jedes Horizonts um die Eskalationen, die sie in jeder späteren Runde schließt. In der Referenzarbeitslast des Playgrounds fallen die kumulierten Eskalationen über acht Runden mit einer Korrektur an den Senken von 21 auf 15 und erreichen in beiden Fällen in der letzten Runde null, wobei jede Aufgabe korrekt geschlossen und keine Beförderung abgelehnt wird.
 
+Abbildung 4 zeichnet den Mechanismus der Propositionen R1 und R2 mit den Summen der Referenzarbeitslast.
+
+![Diagramm des RCE-Stapels in sechs Ebenen, von der Absicht oben über Form, Tor, Projektionen und Laufzeit bis zu Hardware und Energie. Eine Korrektur, die auf der Laufzeitebene nach bestandener Grenzprüfung befördert wird, ist mit Pfeilen dargestellt, die durch jede Ebene darüber aufsteigen. Ein kleines Balkendiagramm daneben gibt die kumulierten Eskalationen über acht Runden der Referenzarbeitslast des Playgrounds an: 21 ohne Korrektur und 15 mit einer Korrektur an den Senken.](/figures/rce/stack-compounding.svg)
+
+*Abbildung 4. Korrekturen kumulieren nach oben. Diagramm des Stapels mit einem Dateneinschub: kumulierte Eskalationen über acht Runden der Referenzarbeitslast des Playgrounds, 21 ohne Korrektur und 15 mit einer Korrektur an den Senken (Proposition R2; [RCE Playground](/playground/rce/#compounding)). Eine [PNG-Kopie](/figures/rce/stack-compounding.png) ist verfügbar.*
+
 **Proposition R3 (fallende Kosten).** Da ein beförderter Handler anstelle eines Modellaufrufs ausgeführt wird und seine Kosten die Operationszahl des Handlers sind, bepreist mit der Substrattabelle, fällt die Energie einer Runde gegen die Energie der Handler allein, während die Eskalationen gegen null fallen.
 
 Futamuras Projektionen (1971, neu veröffentlicht 1999) [120] und Turchins Superkompilation (1986) [121] geben den Grenzwert dieses Prozesses an. Einen Interpreter auf ein Programm zu spezialisieren ergibt ein kompiliertes Programm; den Spezialisierer zu spezialisieren ergibt einen Compiler. Die Beförderungen von RCE spezialisieren den allgemeinen Eskalationspfad auf die Gestalten, die tatsächlich vorkommen, sodass die Engine gegen das Restprogramm ihrer Arbeitslast konvergiert: den Teil der Berechnung, den ein Modell oder ein Mensch noch liefern muss. Rekursive Selbstverbesserung unter einem Tor ist diese Konvergenz, vollzogen in geprüften Schritten. Die Compounding-Ebene des [RCE Playground](/playground/rce/#compounding) führt diese Arbeitslast im Browser aus.
-
-Abbildung 4 zeichnet den Mechanismus der Propositionen R1 und R2 mit den Summen der Referenzlast.
-
-![Diagramm des RCE-Stacks in sechs Ebenen; eine auf der Laufzeitebene übernommene Korrektur steigt durch alle höheren Ebenen auf. Kumulierte Eskalationen über acht Runden: 21 ohne Korrektur und 15 mit einer Korrektur.](/figures/rce/stack-compounding.svg)
-
-*Abbildung 4. Korrekturen kumulieren nach oben. Diagramm des Stacks mit einem Dateneinschub: kumulierte Eskalationen über acht Runden der Referenzlast des Playgrounds, 21 ohne Korrektur und 15 mit einer Korrektur an den Senken (Proposition R2). Eine [PNG-Kopie](/figures/rce/stack-compounding.png) ist verfügbar.*
 
 <div id="3-the-form" class="anchor-alias" aria-hidden="true"></div>
 
@@ -355,9 +355,9 @@ Eine fehlgeschlagene Prüfung verortet den Bruch an der Grenze, an der er auftri
 
 Abbildung 5 zeigt die fünf Projektionen einer Form und die Rundreise der beiden Statechart-Ziele.
 
-![Diagramm: Eine Form wird nach Rust, Python, WASM, XState und SCXML projiziert; XState und SCXML kehren mit identischen Bytes zur Form zurück.](/figures/rce/form-projections.svg)
+![Diagramm: Eine Form aus Zustand, Ereignissen und einem reinen, totalen Übergang wird durch deterministische Kompilierung auf fünf Ziele projiziert: Rust, Python, WASM, XState und SCXML. Durchgezogene Pfeile führen von der Form zu jedem Ziel. Gestrichelte Pfeile führen von XState und SCXML zurück zur Form und zeigen die Rundreise zu byteidentischen Bytes und demselben Gestalt-Hash. Rust, Python und WASM spielen die Referenzspur Byte für Byte nach.](/figures/rce/form-projections.svg)
 
-*Abbildung 5. Eine Form, viele Projektionen. Diagramm: deterministische Projektion auf fünf Ziele; die XState- und SCXML-Projektionen werden zu identischen Bytes zurückdekodiert; alle fünf Ziele geben die Referenzspur auf 529 Ereignissen Byte für Byte aus. Eine [PNG-Kopie](/figures/rce/form-projections.png) ist verfügbar.*
+*Abbildung 5. Eine Form, viele Projektionen. Diagramm: deterministische Projektion auf fünf Ziele ([§4.5](#45-the-form-compiler)); die XState- und SCXML-Projektionen decodieren zurück zu byteidentischen Bytes ([§2.3](#23-the-ecosystem-at-large-n)); alle fünf Ziele geben die Referenzspur Byte für Byte auf den 529 Ereignissen von `tests/form_targets.rs` aus. Eine [PNG-Kopie](/figures/rce/form-projections.png) ist verfügbar.*
 
 <div id="52-rewrites-proved-in-z3" class="anchor-alias" aria-hidden="true"></div>
 
@@ -428,6 +428,12 @@ Eine Programmieraufgabe wird hier an den **Absichtsbits** gemessen, die sie brau
 | L1 eine Anweisung, Java, ganze Datei | ManySStuBs4J 2.0 [107], Datei am Eltern-Commit mit den Methoden- und Wächterindizes des Projekts | 21,320 | 13,586 | 0.637 | 0.631 bis 0.644 | 4.8 | 0 |
 | L1 eine Anweisung, Python | TSSB-3M v1.0.0, Shards 14 und 15 [108] | 157,089 | 27,266 | 0.174 | 0.172 bis 0.175 | 4.8 | 0 |
 
+Abbildung 6 trägt die Zeilen der Tabelle mit ihren Intervallen auf.
+
+![Balkendiagramm der Lösungsraten auf zurückgehaltenem Code mit Wilson-Intervallen von 95 Prozent. L0 ein Token auf neun Repositories: 99.95 Prozent von 520,821. L0 ein Token auf vier nie abgestimmten Repositories: 100 Prozent von 23,015. L1 Java ganze Datei: 63.7 Prozent von 21,320. L1 Java nur Hunk: 38.6 Prozent von 24,072. L1 Python nur Hunk: 17.4 Prozent von 157,089. Null Modellaufrufe.](/figures/rce/lift-ladder.svg)
+
+*Abbildung 6. Die Reparaturleiter auf gehobenem Code. Datenabbildung: zurückgehaltene Testaufteilung, eingefrorene Engine, Ort gegeben, Tor der Token-Identität, 0 Modellaufrufe; Wilson-95%-Intervalle, berechnet aus den Zählungen. Quellen: Mutanten im PIT-Stil [109], ManySStuBs4J 2.0 [107], TSSB-3M v1.0.0 [108]; Zeilen pro Aufgabe in [`bench/ladder`](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/). Eine [PNG-Kopie](/figures/rce/lift-ladder.png) ist verfügbar.*
+
 L2 bis L4 werden auf dem zurückgehaltenen Defects4J-Satz von 288 Fehlern gemessen ([Abschnitt 8.1](#81-defects4j)). L5 bis L7 folgen den Protokollen von [Abschnitt 8.2](#82-swe-bench-lite-offline). Methode, Tor und Energie jeder Zeile folgen.
 
 Die Raten lesen sich als Absichtsbits. Bei L0 liegen die fehlenden Bits fast alle auf der Zeile, und eine nach Priorität geordnete Ein-Token-Nachbarschaft liefert sie im Median mit 2.3 Bit. In der L1-Zeile mit nur dem Hunk sieht die Engine nur den 7-zeiligen Hunk. Sie schließt die Kategorien, deren Bits im Hunk liegen (Java: geänderter Operator 91%, vertauschtes boolesches Literal 84%, vertauschte Argumente 82%; Python: geändertes boolesches Literal 98.8%, vertauschte Argumente 99.4%), und lässt jene offen, deren Bits außerhalb liegen: Methodennamen (22%) und Bezeichner (37%) brauchen die Datei und ihre Typen, und neue Konjunkte (3% bis 7%) sowie Umschreibungen ganzer Anweisungen (Python, 1.2% einer Kategorie, die 34% des Korpus ausmacht) sind neue Absicht. Neue Absicht ist das, was ein Lieferant (eine Spezifikation, ein Test, ein Mensch oder ein lokales Modell) einmal bereitstellt, danach steht die Passung im Index.
@@ -435,12 +441,6 @@ Die Raten lesen sich als Absichtsbits. Bei L0 liegen die fehlenden Bits fast all
 **Methode.** Jeder Korpus wird mit einem festen Seed gemischt. Die ersten 2,000 Positionen jeder Mischung, und für L0 drei ganze Repositories (commons-lang, requests, flask), bilden die Entwicklungsaufteilung, auf der die Gänge abgestimmt werden dürfen; Entwicklungsergebnisse werden nicht berichtet. Jede übrige Aufgabe gehört zur Testaufteilung. Vor einem Testlauf wird die Engine committet und ihr Binärhash aufgezeichnet, und während des Laufs ändert sich kein Gang. Jede Zeile dieses Abschnitts ist ein Ergebnis der eingefrorenen Engine nur auf Testaufgaben, mit 0 Modellaufrufen. Die Präregistrierung (`PREREG.json`), die Zeilen pro Aufgabe und das Berichtsskript liegen im [öffentlichen Repository](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
 
 **Tor.** Bei L0 und L1 ist der Ort gegeben, und das Tor ist Token-Identität: Die reparierte Zeile oder Anweisung muss Token für Token der des Entwicklers gleichen. Das ist strenger als das Bestehen der Tests, weil ein Patch eine schwache Testsuite bestehen und trotzdem falsch sein kann. Qi und Kollegen fanden, dass die meisten Patches, die GenProg als Korrekturen meldete, plausibel, aber falsch waren [92]; Überanpassung an Tests ist in suchbasierter und semantikbasierter Reparatur dokumentiert [93, 94] und wird mit generierten Tests angegangen [95]; Werkzeuge schneiden auf dem Benchmark besser ab, auf den sie abgestimmt wurden [96]; und Fehlerlokalisierung verzerrt Vergleiche [97]. Token-Identität beseitigt auf diesen Sprossen die Plausibilitätslücke, und die Angabe des Orts entfernt den Lokalisierungsterm, sodass die Rate allein die Reparaturgänge misst. L2 und darüber verwenden die Tests als Tor und berichten plausible und korrekte Zahlen getrennt (Abschnitt 8.1).
-
-Abbildung 6 stellt die Zeilen der Tabelle mit ihren Intervallen dar.
-
-![Balkendiagramm zurückgehaltener Lösungsraten mit Wilson-Intervallen: L0 99.95 % und 100 %, L1 Java ganze Datei 63.7 %, L1 Java nur Hunk 38.6 %, L1 Python 17.4 %, mit 0 Modellaufrufen.](/figures/rce/lift-ladder.svg)
-
-*Abbildung 6. Die Reparaturleiter auf gehobenem Code. Datenabbildung: zurückgehaltener Testteil, eingefrorene Engine, Ort gegeben, Tor der Token-Identität, 0 Modellaufrufe; Wilson-Intervalle zu 95 %. Quellen: [107], [108], [109]. Eine [PNG-Kopie](/figures/rce/lift-ladder.png) ist verfügbar.*
 
 <div id="61-l0-one-token-faults" class="anchor-alias" aria-hidden="true"></div>
 

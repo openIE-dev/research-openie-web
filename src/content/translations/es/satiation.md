@@ -314,11 +314,11 @@ para un quehacer cuyo máximo construido está en cuatro llamadas. Entonces `U(0
 
 Puede añadirse un precio del token sin confundir unidades. Supongamos que una llamada cuesta `p` en dinero y que el comprador paga `p * x` mientras el valor sigue a `U`. El indicador aproximado del excedente del comprador `U(x) - p x` sigue teniendo un maximizador finito para cualquier `p >= 0`. Una caída de `p` desplaza el maximizador, que es la lógica del rebote en este juguete, y el maximizador sigue siendo finito. El juguete no dice dónde está el maximizador para ningún comprador real. Bloquea la inferencia de que un `p` menor elimina el máximo.
 
-La Figura 1 dibuja el ejemplo y la afirmación agregada separada.
+La Figura 1 dibuja el modelo de juguete y la afirmación agregada, que es aparte.
 
-![Izquierda: el punto de dicha U(x), con el excedente U menos p por x a precios 0, 2 y 4; los maximizadores son 4, 3 y 2 llamadas. Derecha: esquema del rebote agregado.](/figures/satiation/satiation-rebound.svg)
+![Izquierda: ilustración de modelo de un punto de dicha. El valor U de x es igual a menos x menos 4 al cuadrado, con excedente U menos p x a precios 0, 2 y 4; los maximizadores son 4, 3 y 2 llamadas, finitos a todo precio. Derecha: un esquema del rebote agregado, en el que precios más bajos abren más tareas, cada una de las cuales sigue deteniéndose en su propio predicado.](/figures/satiation/satiation-rebound.svg)
 
-*Figura 1. Saciedad de la tarea y rebote agregado. Ilustración de modelo del ejemplo de esta sección, no un ajuste: el maximizador de $U(x) - p\,x$ es $x = 4 - p/2$, finito a cualquier precio. El panel derecho es un esquema; este artículo no estima ningún rebote. Se ofrece una [copia PNG](/figures/satiation/satiation-rebound.png).*
+*Figura 1. Saciedad de la tarea y rebote agregado. Ilustración de modelo del ejemplo de juguete de esta sección, no un ajuste estadístico: el maximizador de $U(x) - p\,x$ es $x = 4 - p/2$, finito a todo precio. El panel derecho es un esquema; este artículo no estima ningún rebote. Se ofrece una [copia PNG](/figures/satiation/satiation-rebound.png).*
 
 <div id="38-reason-codes-as-a-partition-not-a-welfare-function" class="anchor-alias" aria-hidden="true"></div>
 
