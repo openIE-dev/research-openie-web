@@ -16,10 +16,7 @@ assert not miss, ('broken in-page', miss[:5]); assert not lost, ('english ids lo
 assert 'katex-error' not in tr
 print('checks ok', len(ids))
 PY
-sed -i '' -E "/^\| $S \|/{
-s/\| [a-z]+ \|/\| X \|/$(python3 -c "import sys;print(['zh-Hans','es','fr','de','ja','pt','hi','ar'].index('$L')+2)")
-s/\| X \|/| full |/
-}" scripts/i18n/CHECKLIST.md
+python3 scripts/i18n/mark.py "$L" "$S" full
 (cd ../site-ops/deploy && ./deploy.sh research 2>&1 | tail -1)
 curl -s -o /dev/null -w "live %{http_code} https://research.openie.dev/$L/papers/$S/\n" https://research.openie.dev/$L/papers/$S/
 git add src/content/translations/$L/$S.md scripts/i18n src/content/papers >/dev/null
