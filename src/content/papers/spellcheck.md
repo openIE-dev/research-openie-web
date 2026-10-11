@@ -64,7 +64,9 @@ People paid a premium. Then the thing could not be sold. It is free, and it is b
 
 The calculator's separate invoice is a dated series, from the Anita advertisements through the HP-35 and the TI-2500 to VisiCalc. Spell check's separate invoice ends inside the word processor and then the operating system. The dollars that the sources do not print stay unprinted.
 
-<!-- include: companion-thesis -->
+<!-- include: economics-thesis -->
+
+The coding instance of this pattern is [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/), the economics companion to [The Reality Code Engine](/papers/rce/).
 
 For spell check the price trend is complete. The routine is bundled into the editor at zero price. The joules are still spent.
 

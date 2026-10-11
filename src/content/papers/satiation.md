@@ -2,7 +2,7 @@
 title: "Task Satiation vs. Aggregate Rebound in AI Demand"
 deck: "Published price collapse for digital inference does not identify free energy, free actuation, or unbounded value after a chore is complete."
 id: satiation
-status: "Research paper"
+status: "Economics companion paper"
 author: "David Charlot, Open Interface Engineering"
 figures: "/living/satiation/"
 pdf: "/pdfs/satiation.pdf"
@@ -12,6 +12,8 @@ board_metered: false
 <div id="satiation-and-scarcity-after-free-ai" class="anchor-alias" aria-hidden="true"></div>
 
 # Task Satiation vs. Aggregate Rebound in AI Demand
+
+*The economics companion to [Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents](/papers/agency/) and [Metered Commit Gates](/papers/gates/). The theory it uses stays there: the gate form and $J^*$ in [Agency, Section 1](/papers/agency/#1-thesis), the machine stop in [Metered Commit Gates, Section II.5](/papers/gates/#ii5-stop-bridge-satiation), and the commit record in [Part I](/papers/gates/#part-i-the-commit-gate-notational-intelligence). The market and price readings of those papers are collected in Section 8. Its coding instance is [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/).*
 
 ## Abstract
 
@@ -84,7 +86,7 @@ This study is the **task completion** stop in the research catalog triad.
 
 Mixture of Limits navigates. Notational Intelligence owns irreversible commit. This paper owns task completion after free-at-the-margin digital inference. [Metabolic Intelligence](/products/mei/) owns the energy-budget envelope and actuators. In [Spell Check is Global](/papers/spellcheck/), once a token is kept, further spelling candidates have zero value of information on that predicate. Free at the margin is not free joules.
 
-<!-- include: companion-thesis -->
+<!-- include: economics-thesis -->
 
 ## 2. Related work
 
@@ -411,6 +413,26 @@ The same discipline applies to vendor FPGA specifications. SparkFun lists logic 
 ## 7. Conclusion
 
 Satiation is a standard object in the theory cited, and it has a narrow operational form: a written completeness predicate that extra synthesis does not advance. Epoch's published series document a sharp fall in the money price of fixed-performance inference. That fall supports a free-at-the-margin description of digital chores and does not support free joules, free plant motion, or the end of care's cost structure. Bicycle share prices, smartphone diffusion, and attention markets are weaker and stronger in the specific ways Section 4 states. The commit reference can store an economic refuse and a physical refuse as different reasons. The physical side is simulated in the companion and is not board-measured. A WASM and WebGPU emulator replicates the trace in a browser at https://research.openie.dev/living/fpga-sim/ and remains a simulation. An Alchitry Pt V2 meter would be a different, later measurement. The missing scientific objects are a labeled done detector, a pre-done versus post-done energy split, and a demand estimate that can see rebound. Until they exist, the paper's empirical content is the cited record, and its formal content is the predicate.
+
+## 8. Prices and markets from the theory papers
+
+The theory papers rank by joules to correct completion and keep prices out of the ranking. Their market and price readings are collected here, with the original sections kept as anchors there.
+
+### 8.1 Price series
+
+*From [Metered Commit Gates, Section I.2.3](/papers/gates/#i23-scale-and-hardware-fit).* Epoch AI (2025) reports inference price drops on the order of 9 to 900 times per year at fixed benchmark performance, depending on the benchmark. Emberson and Roodman (2026) report about a 47 percent quarterly decline in the cost of a given performance since about 2023, which they summarize as about 13 times per year, with a faster decline near the frontier. Those are Epoch's published summaries. They are evidence about price. They are not evidence that joules or irreversible commits have become free. Metered Commit Gates uses them only to separate proposal cost from permission. This paper uses the same series for the demand argument of Sections 2.5 and 4.2.
+
+### 8.2 The economic stop
+
+*From [Metered Commit Gates, Section II.5](/papers/gates/#ii5-stop-bridge-satiation).* Digital inference prices can fall toward free-at-margin without implying free energy, free actuation, or unbounded value after a chore is complete. This paper defines satiation as a stop on a written completeness predicate and cites the published price series. Mixture of Limits supplies the machine stop that matches that economic intuition.
+
+### 8.3 Plateau spend and the device-dollar
+
+*From [Metered Commit Gates, Section II.8.12](/papers/gates/#ii812-hardware-plateau-spend-on-real-devices).* Software is human applied engineering under economic and survival motivation, not a realm detached from cost, yield, and joules. Markets reward plateau spend that extracts more work per device-dollar: optimized algorithms, mixture-of-experts routing, training-systems co-design, and inference tricks on older or cheaper accelerators. Mixture of Limits is the navigation rule that binds that spend to floors when more work buys nothing.
+
+### 8.4 The price trend in the shared thesis
+
+*From the shared thesis, which now states the gate form only.* A price trend is a separate claim, labeled as one. Epoch AI reports that the cost of a given level of AI performance has fallen about 47 percent per quarter since 2023, about 13 times per year (Emberson and Roodman, *The plunging price of thought*, 22 September 2026). If that trend continues, energy becomes the dominant marginal cost of inference. That is a cited trend with a condition, not a measured collapse. [Spell Check is Global](/papers/spellcheck/) is an existence proof that some computer intelligence commoditizes to bundled zero price.
 
 ## References
 

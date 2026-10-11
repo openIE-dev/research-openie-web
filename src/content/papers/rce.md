@@ -13,7 +13,7 @@ board_metered: false
 
 *One Form. Many fits. The gate is correctness, and the ranking is joules.*
 
-The economic reading of this paper is in its companion, [The One-Path Error: The Economics of Autonomous Coding](/papers/rce-economics/). This paper holds the engineering and the theory only.
+The economic reading of this paper is in its companion, [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/). This paper holds the engineering and the theory only.
 
 ## 1. Thesis
 
@@ -249,6 +249,12 @@ The new solver passes the gate on every task, at 8.5 times fewer reported joules
 
 Track C runs the five example specifications under two resolvers for 20 rounds each and reports `est_j` per closed task. In the 2026-10-09 run, every specification reaches a round with zero new escalations, in round 4 to 7 for both resolvers, and from that round the all-in `est_j` per closed task equals the handler floor: about 2 to 5 nanojoules per task. The gear stack resolved every case from G0 and G1, with zero model calls. In the 2026-10-10 live2 run, on live traffic only, all 12 runs reach a quiet round before round 20 (web-api 4, joule-db-core 7, follow-bible-ingest 6, follow-bible-ingest-schemas 8, ask-server 5, soak-g2-schemas 5), and every run closes tasks through the gate. `measured_j` is empty in every row.
 
+### 6.4 Model calls in the first soak
+
+The first end-to-end soak ran `rce auto examples/web-api.rce --foreman federated --rounds 5` on 2026-04-25, with a federated model resolver over 12 providers and auto-approval. Each round pumps 5 traffic events into the source nodes, ticks, resolves every escalation and approves the queued mutations. Round 1 had 10 new escalations, 10 promotions and 10 model calls. Rounds 2 to 5 had 0 of each, and the log integrity check passed. That is 10 model calls in 5 rounds, against 50 if the model were called every round. The counts are as printed in `SOAK_RESULTS.md` in the crate. No energy was read in this run.
+
+The same file reports a re-run over three specifications. Two converged: web-api in 10 model calls and joule-db-core in 5, over 5 rounds. The third, follow-bible-ingest, held at 5 escalations a round from one stub dependency, 115 model calls over 20 rounds. With stuck-input deferral, a repeated input shape is deferred to a human queue without a model call, and the same 20 rounds took 20 model calls.
+
 ## 7. Reuse evidence
 
 The second path rests on an engineering fact: code is reused at every scale. Each method below measures it differently.
@@ -308,7 +314,7 @@ SWE-bench Lite is a 300-task subset of real GitHub issues resolved by hidden tes
 
 **The Universal Law of Agency.** [The agency paper](/papers/agency/) defines intelligence as the derivative of agency in joules, $\iota = dX/dJ$, read in hindsight. The RCE log is that hindsight record: $X$ is tasks through the gate and $J$ is their joules, labeled. A deferral with a receipt is the refusal clause of the gate.
 
-**Task Satiation.** [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) says that once a task's completion predicate is true, more synthesis on that task buys nothing. RCE is per-task satiation inside one system: once a handler covers a case, further inference on that case is zero. The aggregate demand question belongs to that paper and to the [economics companion](/papers/rce-economics/).
+**Task Satiation.** [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) says that once a task's completion predicate is true, more synthesis on that task buys nothing. RCE is per-task satiation inside one system: once a handler covers a case, further inference on that case is zero. The aggregate demand question belongs to that paper and to the [economics companion](/papers/ai-coding-market/).
 
 ## References
 

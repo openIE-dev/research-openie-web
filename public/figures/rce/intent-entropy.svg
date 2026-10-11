@@ -165,7 +165,7 @@
 <text x="603" y="1807" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle" >2</text>
 <text x="635" y="1808" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="23" font-weight="800" fill="#0f172a" text-anchor="start" >Every surface is a projection</text>
 <text x="635" y="1842" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Python, Rust, WASM, XState.</text>
-<text x="635" y="1868" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Each one proven to match the form.</text>
+<text x="635" y="1868" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Each prints byte-identical traces.</text>
 <circle cx="1068" cy="1800" r="18" fill="#059669"/>
 <text x="1068" y="1807" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle" >3</text>
 <text x="1100" y="1808" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="23" font-weight="800" fill="#0f172a" text-anchor="start" >Cheapest correct form wins</text>

@@ -132,7 +132,7 @@ This study is the **Commit** law in the research catalog triad.
 | **Commit** | This paper | propose → certify → commit\|refuse → receipt. Notational Intelligence owns irreversible commit. |
 | **Task completion** | [Task Satiation vs. Aggregate Rebound in AI Demand](https://research.openie.dev/papers/satiation/) | Completeness predicate / budget stop on the same refuse taxonomy. |
 | **Energy budget** | [Metabolic Intelligence](https://research.openie.dev/products/mei/) | Budget envelope and actuators that make floors bind at tag and campus scale. |
-| **A coding instance** | [The Reality Code Engine](https://research.openie.dev/papers/rce/) | Mixture of Limits applied to code: gears run cheapest first, a resolver is paid once per new case, and extraction keeps the least-joule fit among equivalent fits. Correctness is the gate; joules are the ranking. Its economics companion is [The One-Path Error](https://research.openie.dev/papers/rce-economics/). |
+| **A coding instance** | [The Reality Code Engine](https://research.openie.dev/papers/rce/) | Mixture of Limits applied to code: gears run cheapest first, a resolver is paid once per new case, and extraction keeps the least-joule fit among equivalent fits. Correctness is the gate; joules are the ranking. Its economics companion is [The Promised Trillion Dollar AI-Coding Market](https://research.openie.dev/papers/ai-coding-market/). |
 | **Automation path** | [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) | An existence proof that some computer intelligence commoditizes to bundled zero price: spell check's marginal cost fell to about zero, and it complemented hardware and editors people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
 
 Navigation chooses the gear. This paper records the irreversible branch. Satiation supplies the economic stop. Estimates remain estimates; package `measured_j` only when Metered. In [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) a suggestion is a proposal until the writer commits it.
@@ -165,11 +165,13 @@ Landauer (1961) proves a lower bound: logically irreversible erasure dissipates 
 
 <div id="23-scale-hardware-fit-and-price" class="anchor-alias" aria-hidden="true"></div>
 
-### I.2.3 Scale, hardware fit, and price
+<div id="i23-scale-hardware-fit-and-price" class="anchor-alias" aria-hidden="true"></div>
+
+### I.2.3 Scale and hardware fit
 
 Hestness et al. (2017), Kaplan et al. (2020), and Hoffmann et al. (2022) document empirical scaling of deep learning loss. Amodei and Hernandez (2018), an OpenAI blog post, describe rapid growth in training compute for landmark results. The page is a vendor essay. This paper does not depend on a specific doubling time from it. Sutton (2019) argues that general methods which use computation have beaten systems that encode the contents of human knowledge as fixed features. The essay is not an argument against every constraint. A commit predicate is a constraint on action, not a hand-built chess feature. Hooker (2021) explains why alternatives lose when the installed base of chips and libraries rewards dense matrix multiplication.
 
-Epoch AI (2025) reports inference price drops on the order of 9 to 900 times per year at fixed benchmark performance, depending on the benchmark. Emberson and Roodman (2026) report about a 47 percent quarterly decline in the cost of a given performance since about 2023, which they summarize as about 13 times per year, with a faster decline near the frontier. Those are Epoch's published summaries. They are evidence about price. They are not evidence that joules or irreversible commits have become free. The companion paper on satiation uses the same price series for a demand argument. This paper uses them only to separate proposal cost from permission.
+Inference price series, and what they do and do not imply, are economics. They are in the economics companion, [Task Satiation, Section 8.1](/papers/satiation/#81-price-series). This paper ranks by joules to correct completion and separates proposal cost from permission. A price is not a term in either.
 
 <div id="24-lut-networks-ternary-lookup-and-differentiable-logic" class="anchor-alias" aria-hidden="true"></div>
 
@@ -784,7 +786,7 @@ Three studies on this catalog form one stack: **Navigation**, **Commit**, and **
 | **Commit** | [Metered Commit Gates, Part I (Notational Intelligence)](https://research.openie.dev/papers/gates/) | Irreversible close shape: propose → certify → commit\|refuse → receipt. Notational Intelligence owns the commit record. Analytical joules here are estimates; package `measured_j` only when Metered. |
 | **Task completion** | [Task Satiation vs. Aggregate Rebound in AI Demand](https://research.openie.dev/papers/satiation/) | Stop when VoI is zero on a stated completeness predicate, or when budget / policy refuse fires. Free at the margin for digital inference is not free joules and not free actuation. |
 | **Energy budget / metabolic embodiment** | [Metabolic Intelligence](https://research.openie.dev/products/mei/) | Budget envelope and actuators: binding classifiers, $J(m \mid q)$ obtain-router, OpenADR/MQTT campus service. Software reference path: no FPGA board result claimed. |
-| **A coding instance** | [The Reality Code Engine](https://research.openie.dev/papers/rce/) | Mixture of Limits applied to code: gears run cheapest first, a resolver is paid once per new case, and extraction keeps the least-joule fit among equivalent fits. Correctness is the gate; joules are the ranking. Its economics companion is [The One-Path Error](https://research.openie.dev/papers/rce-economics/). |
+| **A coding instance** | [The Reality Code Engine](https://research.openie.dev/papers/rce/) | Mixture of Limits applied to code: gears run cheapest first, a resolver is paid once per new case, and extraction keeps the least-joule fit among equivalent fits. Correctness is the gate; joules are the ranking. Its economics companion is [The Promised Trillion Dollar AI-Coding Market](https://research.openie.dev/papers/ai-coding-market/). |
 | **Automation path** | [Spell Check is Global](https://research.openie.dev/papers/spellcheck/) | An existence proof that some computer intelligence commoditizes to bundled zero price: spell check's marginal cost fell to about zero, and it complemented hardware and editors people already have. Access framing, not a census: the many (7B+), not the few who rent frontier datacenters (<500M). |
 
 ```
@@ -985,9 +987,11 @@ Multi-fabric software reference: after tier selection, route cheapest sufficient
 
 <div id="5-econ-bridge-satiation" class="anchor-alias" aria-hidden="true"></div>
 
-## II.5. Econ bridge: Satiation
+<div id="ii5-econ-bridge-satiation" class="anchor-alias" aria-hidden="true"></div>
 
-Digital inference prices can fall toward free-at-margin without implying free energy, free actuation, or unbounded value after a chore is complete. The companion study **[Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/)** defines satiation as a stop on a written completeness predicate and cites published inference-price series. Mixture of Limits supplies the *machine* stop that matches that economic intuition: VoI and grammar floors refuse excess generation once benefit is covered; commit/refuse receipts (NI) record the irreversible boundary.
+## II.5. Stop bridge: Satiation
+
+Mixture of Limits supplies the *machine* stop: VoI and grammar floors refuse excess generation once benefit is covered; commit/refuse receipts (NI) record the irreversible boundary. The economics companion **[Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/)** defines satiation as a stop on a written completeness predicate. Its reading of falling inference prices is in [Satiation, Section 8.2](/papers/satiation/#82-the-economic-stop).
 
 Satiation owns task completion and its price tables; NI owns the commit record; Mixture of Limits owns navigation floors that make "done" and "unsafe" executable without opening the model leaf.
 
@@ -1480,20 +1484,22 @@ Related plateau levers (quantization, speculative decoding, training-systems ove
 
 <div id="812-hardware-economics-plateau-spend-on-real-devices" class="anchor-alias" aria-hidden="true"></div>
 
-### II.8.12 Hardware economics: plateau spend on real devices
+<div id="ii812-hardware-economics-plateau-spend-on-real-devices" class="anchor-alias" aria-hidden="true"></div>
+
+### II.8.12 Hardware: plateau spend on real devices
 
 **State as the study's claim (David Charlot / OpenIE framing), grounded in the sections above.**
 
 1. **Computers are hardware.** Every program runs on materials and devices: gates, memory, interconnects, power delivery, cooling. There is no software that escapes physics.
-2. **Software is written for hardware.** Instruction sets, memory hierarchies, batch sizes, and quantization schemes exist because of devices. Software is **human applied engineering** under constraints and under economic / survival motivation. It is not a separate rocket-science realm detached from cost, yield, and joules.
-3. **Plateau efficiency margins remain.** Inefficient deployment on the newest hardware leaves room. Optimized algorithms, MoE routing, training-systems co-design, and inference tricks on older or cheaper accelerators extract more work per device-dollar on the plateau. DeepSeek / GLM-class implementation efficiency (§8.11) and speculative decoding / quantization stacks (§8.10) are instances. Treat vendor scoreboards as field reports, not OpenIE meters.
+2. **Software is written for hardware.** Instruction sets, memory hierarchies, batch sizes, and quantization schemes exist because of devices. Software is **human applied engineering** under constraints. It is not a separate realm detached from devices, yield, and joules.
+3. **Plateau efficiency margins remain.** Inefficient deployment on the newest hardware leaves room. Optimized algorithms, MoE routing, training-systems co-design, and inference tricks on older or cheaper accelerators extract more work per device on the plateau. DeepSeek / GLM-class implementation efficiency (§8.11) and speculative decoding / quantization stacks (§8.10) are instances. Treat vendor scoreboards as field reports, not OpenIE meters.
 4. **Mixture of Limits reading.** Plateau options (SSM hybrids, mixture of experts, test-time compute, diffusion language models, linear attention, retrieval-augmented generation, world models, energy-based hybrids) do not retire floors. The bottleneck remains **applied mathematics embodied in materials and devices**, plus labeled joule accounting. Algorithmic efficiency is real and is exactly why floors matter: once VoI is zero past the floor, cheaper implementations are the remaining work, and they still stop when VoI, grammar, or energy says stop. Estimates (`estimated_j`, Landauer as labeled estimate) are not board package energy. Software reference path: `measured_j=None`; no FPGA board result claimed.
 
 **Edge / TinyML floors (verified cites).** Coin-cell and MCU closes are not tiny transformers by default. MCUNet co-designs TinyNAS + TinyEngine for ImageNet-class inference on microcontrollers (Lin et al., NeurIPS 2020, arXiv:2007.10319). T-MAC accelerates low-bit LLM matmul on edge CPUs via table lookup without dequantization (Wei et al., arXiv:2407.00088). Mixture of Limits reading: Formula+LUT refuse under device SRAM/Flash is the lawful edge close; a quantized residual Model leaf is still the last cascade stage.
 
 **Neuromorphic / thermodynamic materials options (field / software reference).** Loihi-2 neuromorphic mapping of a MatMul-free LLM reports author-estimated throughput and mJ/token vs edge-GPU transformers (Abreu et al., arXiv:2503.18002). These are field silicon results, not software reference `measured_j`. Digital thermodynamic-computer proposals for generative sampling (e.g. CN101, arXiv:2608.00754) and company thermodynamic platforms rhyme conceptually with software reference `ThermoSettle` DeviceKind; package joules stay software reference until Metered. Bennett reversible computing remains settled theory (§8.0); product reversible ASICs are out of software reference prove scope.
 
-**Bridge.** §8.0.1 already stated that awareness of floors is not the gap; embodiment is. §8.12 adds the economic corollary: markets reward plateau spend that extracts more work per device-dollar, and Mixture of Limits is the navigation rule that binds that spend to floors when more work buys nothing. §8.13 surveys public transmission / gearing / cascade / memory-context / test-time techniques as plateau options. They are still generators until refuse is law.
+**Bridge.** §8.0.1 already stated that awareness of floors is not the gap; embodiment is. §8.12 adds the hardware corollary: plateau spend extracts more work per device, and Mixture of Limits is the navigation rule that binds that spend to floors when more work buys nothing. The market reading is in [Task Satiation, Section 8.3](/papers/satiation/#83-plateau-spend-and-the-device-dollar). §8.13 surveys public transmission / gearing / cascade / memory-context / test-time techniques as plateau options. They are still generators until refuse is law.
 
 <div id="8121-hardware-paired-navigation-20252026-peers" class="anchor-alias" aria-hidden="true"></div>
 
