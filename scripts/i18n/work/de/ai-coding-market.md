@@ -2,7 +2,7 @@
 
 *Version 1.1, 11. Oktober 2026. Daten und Code: [research.openie.dev/data/](/data/#economics). LaTeX-PDF: [/pdfs/latex/ai-coding-market.pdf](/pdfs/latex/ai-coding-market.pdf) ([Quelltext](/pdfs/latex/ai-coding-market.tex)).*
 
-*Der ökonomische Begleittext zum Papier [Die Reality Code Engine: eine Form, viele Passungen und der niederentropische Weg zum autonomen Programmieren](/papers/rce/). Das Forschungspapier enthält die Technik, die Theorie und die Messungen. Dieser Essay ist der Ort, an dem Theorie und Ökonomie zusammentreffen.*
+*Der ökonomische Begleittext zum Papier [Die Reality Code Engine: eine verlustfreie Form für natives, verifiziertes und energiesparendes Programmieren](/papers/rce/). Das Forschungspapier enthält die Technik, die Theorie und die Messungen. Dieser Essay ist der Ort, an dem Theorie und Ökonomie zusammentreffen.*
 
 ## Zusammenfassung
 

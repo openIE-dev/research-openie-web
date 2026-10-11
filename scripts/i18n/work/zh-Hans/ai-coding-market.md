@@ -2,7 +2,7 @@
 
 *版本 1.1，2026 年 10 月 11 日。数据与代码：[research.openie.dev/data/](/data/#economics)。LaTeX PDF：[/pdfs/latex/ai-coding-market.pdf](/pdfs/latex/ai-coding-market.pdf)（[源文件](/pdfs/latex/ai-coding-market.tex)）。*
 
-*本文是 [《Reality Code Engine：一个形式、多种契合，以及通往自主编程的低熵路径》](/papers/rce/) 的经济学姊妹篇。研究论文承载工程、理论与测量。本文是理论与经济学交汇之处。*
+*本文是 [《Reality Code Engine：一个无损形式，用于原生、可验证、低能耗的编程》](/papers/rce/) 的经济学姊妹篇。研究论文承载工程、理论与测量。本文是理论与经济学交汇之处。*
 
 ## 摘要
 

@@ -2,7 +2,7 @@
 
 *Versión 1.1, 11 de octubre de 2026. Datos y código: [research.openie.dev/data/](/data/#economics). PDF en LaTeX: [/pdfs/latex/ai-coding-market.pdf](/pdfs/latex/ai-coding-market.pdf) ([fuente](/pdfs/latex/ai-coding-market.tex)).*
 
-*Compañero económico del artículo [El Reality Code Engine: una Forma, muchos ajustes y el camino de baja entropía hacia la programación autónoma](/papers/rce/). El artículo de investigación contiene la ingeniería, la teoría y las mediciones. Este ensayo es el lugar donde se encuentran la teoría y la economía.*
+*Compañero económico del artículo [El Reality Code Engine: una Forma sin pérdida para una programación nativa, verificada y de bajo consumo energético](/papers/rce/). El artículo de investigación contiene la ingeniería, la teoría y las mediciones. Este ensayo es el lugar donde se encuentran la teoría y la economía.*
 
 ## Resumen
 
