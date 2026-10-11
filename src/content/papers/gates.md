@@ -13,7 +13,7 @@ board_metered: true
 
 # Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems
 
-*Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#gates).*
+*Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#gates). LaTeX PDF: [/pdfs/latex/gates.pdf](/pdfs/latex/gates.pdf) ([source](/pdfs/latex/gates.tex)).*
 
 ## 0. Overview
 

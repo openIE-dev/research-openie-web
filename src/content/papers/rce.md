@@ -11,7 +11,7 @@ board_metered: false
 
 # The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding
 
-*Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#rce).*
+*Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#rce). LaTeX PDF: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
 
 *One Form. Many fits. The gate is correctness, and the ranking is joules.*
 
