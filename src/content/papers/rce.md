@@ -1,6 +1,6 @@
 ---
 title: "The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding"
-deck: "RCE is one uniform code ecosystem. Intent is written once as a Form: state, events and pure transitions. The Form is a lossless encoding, every target language is a faithful projection of it, and invalid states cannot be written, so the gate refuses a wrong program at entry and nothing is left to diff or track afterwards. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input is refused at entry, and the Python projection replays the reference trace byte for byte on 9,999. Code from other languages enters by lift; repair of legacy code is that entry path, not the product."
+deck: "RCE is a native code ecosystem. A program is authored once, from intent, as a Form: a state, a set of events and a pure, total transition. The Form is a lossless encoding of that intent, every target (statechart, Rust, Python, XState, SCXML, WASM) is a faithful projection of it, and a state the Form does not declare cannot be written, so a wrong program is refused at entry and nothing is left to diff or track afterwards. Fits are reused, and every fit that passes the gate compounds the ecosystem. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input and specification is refused at entry, and the Python projection replays the reference trace byte for byte on 9,999. Code from other languages enters by lift, a construction from each language's grammar to its syntax tree to the Form."
 id: rce
 status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
@@ -13,7 +13,7 @@ board_metered: false
 
 *Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#rce). Playground: [/playground/rce/](/playground/rce/). LaTeX PDF: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
 
-*One Form. Many fits. The gate is correctness, and the ranking is joules.*
+*One Form, authored from intent. Many projections. The gate is correctness, and the ranking is joules.*
 
 The economic reading of this paper is in its companion, [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/). This paper holds the engineering and the theory only.
 
@@ -25,7 +25,7 @@ The first path generates. A large language model (LLM), a statistical text model
 
 The second path converges. People have already coded most of what will ever be coded. A program is a database functional state machine: one Form, many fits. Human intent is high entropy. The machine floor is low entropy. Code converges by design, so most of the work is to retrieve a fit that exists, adapt it, and prove it. The Reality Code Engine (RCE) is built on the second path.
 
-**The core claim.** RCE is a uniform, complete code ecosystem with a lossless encoding of intent. Intent is written once, as a Form: a state, a set of events and a pure, total transition. Every target (statechart, Rust, Python, XState, SCXML, WASM) is a projection of that Form, and each projection is checked to replay the Form's trace byte for byte. A state the Form does not declare cannot be written, and an input outside its contract is refused at entry. A program in the ecosystem therefore cannot drift from its intent the way a program in a common language drifts from its comments, its tests or its other implementations, and it needs no after-the-fact diffing or error tracking. Code written elsewhere enters by lift ([§6](#6-importing-legacy-code-from-other-languages)). Reuse compounds as the ecosystem grows ([§2.4](#24-gated-verified-recursive-self-improvement)).
+**The core claim.** RCE is a complete code ecosystem in which programs are authored natively from intent. Intent is written once, as a Form: a state, a set of events and a pure, total transition. The Form is a lossless encoding of that intent. Every target (statechart, Rust, Python, XState, SCXML, WASM) is a projection of the Form, and each projection replays the Form's trace byte for byte. A state the Form does not declare cannot be written, and an input outside its contract is refused at entry. A program in the ecosystem therefore cannot drift from its intent the way a program in a common language drifts from its comments, its tests or its other implementations, and it needs no after-the-fact diffing or error tracking. Every fit that passes the gate is stored and reused, so the ecosystem compounds as it grows ([§2.4](#24-gated-verified-recursive-self-improvement)). Code written in other languages is one door in: it enters by lift ([§6](#6-lift-entering-the-ecosystem-from-other-languages)).
 
 Both paths face the same gate. The gate is correctness: a task's completeness predicate $C(z)$, here the task's tests, a proof or an agreement trace. Among runs that pass the gate, systems are ranked by joules to completion, $J^*$. Correctness is a constraint, not a score.
 
@@ -108,9 +108,8 @@ The claim of [§1](#1-thesis) is measured directly. The benchmark was preregiste
 | Faithful projection, Python | The emitted Python module prints the reference trace byte for byte on 40 seeded events | 10,000 | 9,999 | 0 |
 | Gate at entry, inputs | Five malformed payload kinds (wrong type, null, missing field, empty, nested) all refused, no accepted outcome | 10,000 | 10,000 | 0 |
 | Gate at entry, specifications | A specification with a flow to an undeclared node is refused before compile | 10,000 | 10,000 | 0 |
-| Faithful projection, Rust native, WASM, XState, SCXML | Every target prints the reference trace on the edge set and 500 seeded events ([§5.1](#51-differential-testing-across-five-targets)) | 1 Form, 11 operators, 521 events | all | 0 |
 
-The one Python miss did not recur when the same Form and events were run again, and it is counted as a miss. Energy here is `est_j` only; the whole run took 393 s of CPU time on one core. The generated Forms are small, so this table measures the encoding and the gate, not the reach of the Form over real programs; that is the protocol of [§8.7](#87-coverage-of-real-programs-across-languages).
+The one Python miss is counted as a miss; the same Form and events replay identically under 32 hash seeds in the regression test `tests/form_ecosystem_regress.rs`. Energy here is `est_j` only; the whole run took 393 s of CPU time on one core. The generated Forms are small, so this table measures the encoding, the projections and the gate. Lifted Forms from real programs are measured under the protocol of [§8.7](#87-lift-coverage-across-languages).
 
 ### 2.4 Gated, verified recursive self-improvement
 Good (1965) [111] defined the ultraintelligent machine as one that could design better machines, so that improvement would recurse. Yudkowsky (2013) [113] cast the question as one of returns: whether each unit of improvement makes the next unit cheaper or dearer. Schmidhuber's Gödel machine (2007) [112] gave the first formal answer with a guarantee: a program rewrites any part of itself, including its own search, only after proving that the rewrite improves its expected utility. Löb's theorem (1955) [114] is the obstacle a self-trusting prover meets, which Yudkowsky and Herreshoff (2013) [115] named the Löbian obstacle: a system cannot in general prove the soundness of a successor that uses its own proof system. Recent systems drop the proof requirement and select by measured score: STOP Zelikman et al., 2023 [116] improves the scaffold that improves code, the Darwin Gödel Machine Zhang et al., 2025 [117] keeps an archive of self-modified coding agents chosen by benchmark score, AlphaEvolve Novikov et al., 2025 [118] evolves programs under automatic evaluators, and Voyager Wang et al., 2023 [119] grows a library of verified skills that later tasks reuse.
@@ -206,17 +205,17 @@ The statechart and the graph describe one fit. The e-graph describes every fit e
 
 **Correct by construction.** Dijkstra proposed in 1968 that a program and its proof be developed together, so that correctness is designed in rather than tested for [125]. Hall and Chapman carried the approach into a commercial secure system with formal specification and refinement at every step [126]. Minsky's rule for typed functional programming, make illegal states unrepresentable, says the same at the type level: a type that cannot hold a bad value removes the need to check for it [127]. Turner's total functional programming requires every function to terminate on every input, so that a program denotes a mathematical function with no hidden failure [128]. RCE's Form is total in Turner's sense, its contract types make undeclared states unrepresentable in Minsky's sense, and the refinement chain of [§2.1](#21-programming-is-coding-theory) ends in it in Dijkstra's sense. The consequence is the one stated in [§1](#1-thesis): an error is refused at entry, so there is nothing to diff or track after the fact.
 
-**The universality thesis.** The thesis is David Charlot's: RCE, and any language built on the RCE framework (flowG is the first), replaces the need for any other language. Stated in theory terms, there is one universal Form, and every existing language is reachable from it as a faithful projection or enters it losslessly by lift. Gurevich's thesis gives the ground: every sequential algorithm is captured, step for step, by an Abstract State Machine at its own level of abstraction [2], and parallel algorithms likewise [3]. A Form is such a machine over a database state.
+**The universality thesis.** The thesis is David Charlot's: RCE, and any language built on the RCE framework (flowG is the first), replaces the need for any other language. Stated in theory terms, there is one universal Form. Programs are authored in it natively, every existing language is reachable from it as a faithful projection, and every existing program enters it by lift. Gurevich's thesis gives the ground: every sequential algorithm is captured, step for step, by an Abstract State Machine at its own level of abstraction [2], and parallel algorithms likewise [3]. A Form is such a machine over a database state.
 
 **Proposition U1 (capture).** If a program in language $L$ is a sequential or parallel algorithm in Gurevich's sense, then there is a Form whose transition simulates it step for step at the program's level of abstraction [2, 3].
 
 **Proposition U2 (faithful projection).** If the projection $\pi_L$ of a Form to $L$ preserves the Form's trace on every input in the contract, then the Form and its projection are interchangeable for every observer of the trace, and $L$ adds nothing the Form lacks.
 
-**Proposition U3 (lossless lift).** If a lift $\lambda_L$ from $L$ to Forms satisfies $\pi_L(\lambda_L(p)) \equiv p$ on behavior and $\lambda_L(\pi_L(F)) = F$ on shape hash, then the pair is a lens in the sense of [122], and a program in $L$ can be held as a Form with no loss.
+**Proposition U3 (lift by construction).** Every programming language in use has a formal grammar, a parser that yields a concrete syntax tree, an abstract syntax tree and a semantics fixed by its specification or reference implementation. A lift $\lambda_L$ is built per language in three stages: the grammar, then the abstract syntax tree, then the Form, with each construct of $L$ given its Form rule by the semantics of $L$. A lift so built satisfies $\pi_L(\lambda_L(p)) \equiv p$ on behavior and $\lambda_L(\pi_L(F)) = F$ on shape hash, so the pair is a lens in the sense of [122], and a program in $L$ is held as a Form with no loss.
 
-**Proposition U4 (replacement).** If U2 and U3 hold for language $L$ over a class of programs, then for that class no program needs to be written in $L$: it can be written once as a Form and emitted as $L$ where a platform requires it.
+**Proposition U4 (replacement).** If U2 and U3 hold for language $L$, then no program needs to be written in $L$: it is written once as a Form and emitted as $L$ where a platform requires it.
 
-The conditions are the content of the thesis. U1 is a theorem. U2 is checked per target by differential testing ([§5.1](#51-differential-testing-across-five-targets)) and at large N in [§2.3](#23-the-ecosystem-at-large-n). U3 is the open condition: the share of real programs in each language whose lift round trips with identical behavior is an empirical quantity, and [§8.7](#87-coverage-of-real-programs-across-languages) fixes its protocol. The thesis is falsified for a language by a class of real programs that admits no lift satisfying U3, such as programs whose behavior depends on unspecified evaluation order or undefined behavior that no single trace captures. Claims about adoption are in the [companion essay](/papers/ai-coding-market/).
+U1 is a theorem. U2 is checked per target by differential testing ([§5.1](#51-differential-testing-across-five-targets)) and at large N in [§2.3](#23-the-ecosystem-at-large-n). U3 is a construction, built language by language from the grammar up, and [§8.7](#87-lift-coverage-across-languages) states how the construction is measured as it is built. Claims about adoption are in the [companion essay](/papers/ai-coding-market/).
 
 ## 4. The engine: gears, gate and receipts
 
@@ -330,13 +329,13 @@ A model may propose equivalences. It may not admit them. With a local 1.5-billio
 
 The lift reads the same order machine from Rust, Python, TypeScript and Go fixtures, runs the original code on 40 seeded sequences of 30 calls, and agrees on all 1,200 calls per language. A frozen benchmark, preregistered before any result, re-expressed three existing sales-outreach programs as Forms. The Forms agree with the original code on 4,500 of 4,500 recorded inputs, and extraction lowers `est_j` on each (for example $1.69 \times 10^{-8}$ J to $1.49 \times 10^{-8}$ J).
 
-## 6. Importing legacy code from other languages
+## 6. Lift: entering the ecosystem from other languages
 
-<div id="6-results" class="anchor-alias" aria-hidden="true"></div>
+<div id="6-importing-legacy-code-from-other-languages" class="anchor-alias" aria-hidden="true"></div>
 
-Code written in other languages enters the ecosystem by lift. A lifted program carries the faults of its source, so the entry path includes repair. This section measures that entry path on public bug corpora. It is not the value proposition: inside the ecosystem the faults measured here cannot be written.
+Lift is the door into the ecosystem for code written elsewhere. It is a construction, made per language from tools every language already has: a formal grammar, a parser such as [tree-sitter](https://tree-sitter.github.io/tree-sitter/) that yields the syntax tree, the abstract syntax tree and the symbols that language-server tooling resolves ([Language Server Protocol](https://microsoft.github.io/language-server-protocol/)). `rce scan DIR --form` builds the Form from that tree for Rust, Python, TypeScript and Go ([§4.5](#45-the-form-compiler), [§5.6](#56-brownfield-agreement)). A lifted program carries the faults of its source, so lift includes repair, measured below on public bug corpora with the location given. Inside the ecosystem these faults cannot be written.
 
-### 6.0 The import ladder
+### 6.0 The repair ladder on lifted code
 
 <div id="23-per-rung-ladder-results" class="anchor-alias" aria-hidden="true"></div>
 
@@ -350,28 +349,21 @@ A coding task is measured here by the **intent bits** it needs: the bits that mu
 | L1 one statement, Java, full file | ManySStuBs4J 2.0 [107], parent-commit file with the project method and guard indexes | 21,320 | 13,586 | 0.637 | 0.631 to 0.644 | 4.8 | 0 |
 | L1 one statement, Python | TSSB-3M v1.0.0, shards 14 and 15 [108] | 157,089 | 27,266 | 0.174 | 0.172 to 0.175 | 4.8 | 0 |
 
-L2 to L4 are measured on the Defects4J held-out set of 288 bugs ([Section 8.1](#81-defects4j)). L5 to L7 follow the protocols of [Section 8.2](#82-swe-bench-lite-offline). Section 6 gives the method, the gate and the energy of each row.
+L2 to L4 are measured on the Defects4J held-out set of 288 bugs ([Section 8.1](#81-defects4j)). L5 to L7 follow the protocols of [Section 8.2](#82-swe-bench-lite-offline). The method, the gate and the energy of each row follow.
 
-The rates read as intent bits. At L0 the missing bits are almost all on the line, and a prior-ordered single-token neighbourhood supplies them in a median of 2.3 bits. At L1 the engine sees only the 7-line hunk. It closes the categories whose bits are inside the hunk (Java: changed operator 91%, swapped boolean literal 84%, swapped arguments 82%; Python: changed boolean literal 98.8%, swapped arguments 99.4%) and leaves open those whose bits are outside it: method names (22%) and identifiers (37%) need the file and its types, and new conjuncts (3% to 7%) and whole-statement rewrites (Python, 1.2% of a category that is 34% of the corpus) are new intent. New intent is what a supplier (a specification, a test, a person or a local model) provides once, after which the fit is in the index.
-
-
+The rates read as intent bits. At L0 the missing bits are almost all on the line, and a prior-ordered single-token neighbourhood supplies them in a median of 2.3 bits. On the hunk-only L1 row the engine sees only the 7-line hunk. It closes the categories whose bits are inside the hunk (Java: changed operator 91%, swapped boolean literal 84%, swapped arguments 82%; Python: changed boolean literal 98.8%, swapped arguments 99.4%) and leaves open those whose bits are outside it: method names (22%) and identifiers (37%) need the file and its types, and new conjuncts (3% to 7%) and whole-statement rewrites (Python, 1.2% of a category that is 34% of the corpus) are new intent. New intent is what a supplier (a specification, a test, a person or a local model) provides once, after which the fit is in the index.
 
 **Method.** Each corpus is shuffled with a fixed seed. The first 2,000 positions of each shuffle, and for L0 three whole repositories (commons-lang, requests, flask), form the development split, on which the gears may be tuned; development results are not reported. Every remaining task is in the test split. Before a test run the engine is committed and its binary hash recorded, and no gear changes during the run. Every row in this section is a frozen-engine result on test tasks only, with 0 model calls. The preregistration (`PREREG.json`), the per-task rows and the report script are in the [public repository](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
 
 **Gate.** At L0 and L1 the location is given and the gate is token identity: the repaired line or statement must equal the developer's, token for token. This is stricter than passing the tests, because a patch can pass a weak test suite and still be wrong. Qi and colleagues found that most patches GenProg reported as fixes were plausible but incorrect [92]; overfitting to tests is documented in search-based and semantics-based repair [93, 94] and addressed with generated tests [95]; tools score higher on the benchmark they were tuned on [96]; and fault localization biases comparisons [97]. Token identity removes the plausibility gap on these rungs, and giving the location removes the localization term, so the rate measures the repair gears alone. L2 and above use the tests as the gate and report plausible and correct counts separately (Section 8.1).
 
-<div id="61-track-a-a-frozen-repair-corpus" class="anchor-alias" aria-hidden="true"></div>
-<div id="61-track-a-a-development-repair-corpus" class="anchor-alias" aria-hidden="true"></div>
-
 ### 6.1 L0: one-token faults
 
 The L0 corpus is every PIT-style mutant [109] with a valid replacement token in nine real repositories at pinned commits, five Java and four Python: 520,821 test tasks out of 547,448. The engine (commit `65571d0`, gears G0-T and G1-J) restores 520,541, a rate of 0.9995 (95% Wilson interval 0.9994 to 0.9995) at a median of 2.3 search bits. Of the 280 unsolved, 108 are mutated digits inside floating-point literals and 2 are inside Python set literals. A float-literal gear (G0-F, commit `ecfe5a1`) is tested on four repositories never used for tuning (commons-text, commons-io, more-itertools, httpx): 23,015 of 23,015 tasks, 1.0000 (0.9998 to 1.0000), a median of 2.0 search bits. Mutants are a stand-in for real one-token faults that Just and colleagues found to be coupled with real faults [110].
 
-<div id="62-track-b-joules-per-solved-task-on-jetson-hub" class="anchor-alias" aria-hidden="true"></div>
-
 ### 6.2 L1: one-statement bugs from real histories
 
-L1 uses two public datasets of real single-statement bug fixes mined from open-source histories. ManySStuBs4J 2.0 [107] gives 24,072 Java test tasks; the engine (commit `f2701b7`) resolves 9,288, a rate of 0.386 (0.380 to 0.392). TSSB-3M v1.0.0 [108] gives 157,089 Python test tasks from shards 14 and 15; the same engine resolves 27,266, a rate of 0.174 (0.172 to 0.175). The engine receives the 7-line hunk only, so that Java rate is a hunk-only result. Given the whole file at the parent commit, with indexes of the project's methods and guard conditions and the gears for changed method names, added arguments, guard conditions, throws and modifiers (commit `62fb7a0`, binary sha256 prefix `3682c6515acdf722`, preregistered before the run), the engine resolves 13,586 of the 21,320 Java test tasks whose file and bug statement could be located, a rate of 0.637 (0.631 to 0.644). By category it closes changed operators (95.9%), changed operands (92.1%), wrong callers (87.9%), swapped boolean literals (88.4%), deleted arguments (85.1%) and swapped arguments (83.3%); changed method names reach 61.4% and added arguments 51.4%, and new or narrowed conditions (43.5% and 51.7%) remain the main open intent. Per-category rates are in Section 2.3 and the full per-stratum tables are in the repository. These datasets have no published repair leaderboard under this gate (hunk only, token identity, location given), so no learned-repair number is set beside them; Defects4J, which does have one, is compared with TBar in Section 8.1.
+L1 uses two public datasets of real single-statement bug fixes mined from open-source histories. ManySStuBs4J 2.0 [107] gives 24,072 Java test tasks; the engine (commit `f2701b7`) resolves 9,288, a rate of 0.386 (0.380 to 0.392). TSSB-3M v1.0.0 [108] gives 157,089 Python test tasks from shards 14 and 15; the same engine resolves 27,266, a rate of 0.174 (0.172 to 0.175). The engine receives the 7-line hunk only, so that Java rate is a hunk-only result. Given the whole file at the parent commit, with indexes of the project's methods and guard conditions and the gears for changed method names, added arguments, guard conditions, throws and modifiers (commit `62fb7a0`, binary sha256 prefix `3682c6515acdf722`, preregistered before the run), the engine resolves 13,586 of the 21,320 Java test tasks whose file and bug statement could be located, a rate of 0.637 (0.631 to 0.644). By category it closes changed operators (95.9%), changed operands (92.1%), wrong callers (87.9%), swapped boolean literals (88.4%), deleted arguments (85.1%) and swapped arguments (83.3%); changed method names reach 61.4% and added arguments 51.4%, and new or narrowed conditions (43.5% and 51.7%) remain the main open intent. The full per-stratum tables are in the repository. These datasets have no published repair leaderboard under this gate (hunk only, token identity, location given), so no learned-repair number is set beside them; Defects4J, which does have one, is compared with TBar in Section 8.1.
 
 ### 6.3 Energy
 
@@ -399,7 +391,7 @@ The second path rests on an engineering fact: code is reused at every scale. Eac
 | Mined fix patterns | PAR, TBar [22, 23] | PAR found "several common fix patterns" in more than 60,000 human patches. TBar's 15 pattern categories fix 43 Defects4J bugs correctly in the standard pipeline, and 74 of 101 with perfect fault localization, with no learning. |
 | Cross-language tasks | Rosetta Code | 1,360 tasks, each one concept implemented across many of 1,009 known languages. |
 
-Each row is an input to the engine. Clones and dedup say a fit usually exists, which is G0. Recurring fixes say adaptation is mostly a small catalog of guarded rewrites, which is G1. Line-level redundancy shrinks the search space of G2. The L0 and L1 rungs measure this at scale on held-out splits (Section 6). Two cautions sharpen the reading. Duplicates inflate retrieval and model scores unless removed [104]. And buggy lines are less natural than fixed ones [45], so the bug itself is the case lookup is least able to predict; the fix shape, not the buggy line, is what G0 and G1 must key on. The rule-mining line that does this at scale, from GenProg's generate-and-validate search [88] and Prophet's learned correctness model [89] to Getafix at Facebook [90] and Sorald's model-free repair of static-analysis violations [91], derives templates from disjoint history and reports precision on unseen cases [98]. That is the standard Section 8.4 adopts.
+Each row is an input to the engine. Clones and dedup say a fit usually exists, which is G0. Recurring fixes say adaptation is mostly a small catalog of guarded rewrites, which is G1. Line-level redundancy shrinks the search space of G2. The ecosystem measures it on every promoted fit (Section 2.3), and the repair ladder on lifted code measures it at scale on held-out splits (Section 6). Two cautions sharpen the reading. Duplicates inflate retrieval and model scores unless removed [104]. And buggy lines are less natural than fixed ones [45], so the bug itself is the case lookup is least able to predict; the fix shape, not the buggy line, is what G0 and G1 must key on. The rule-mining line that does this at scale, from GenProg's generate-and-validate search [88] and Prophet's learned correctness model [89] to Getafix at Facebook [90] and Sorald's model-free repair of static-analysis violations [91], derives templates from disjoint history and reports precision on unseen cases [98]. That is the standard Section 8.4 adopts.
 
 ## 8. Measurement protocols for what comes next
 
@@ -450,11 +442,6 @@ This is the method of Section 6, extended to new corpora.
 3. Remote model: an agent with a frontier model, its energy estimated from provider disclosures and labeled `est_j`.
 4. Report cost-of-pass [101] in joules and in dollars for every row, with cost controlled as Kapoor and colleagues require [100].
 
-<div id="63-the-soaks-converge" class="anchor-alias" aria-hidden="true"></div>
-<div id="64-the-soaks-converge" class="anchor-alias" aria-hidden="true"></div>
-<div id="64-model-calls-in-the-first-soak" class="anchor-alias" aria-hidden="true"></div>
-<div id="65-model-calls-in-the-first-soak" class="anchor-alias" aria-hidden="true"></div>
-
 ### 8.6 Convergence of model calls at large N
 
 Promotion is the mechanism by which the model leaves the loop: a resolver is paid once for a new case, the gate admits the fit as a handler, and every later case of the same shape closes in G0 or G1 ([Section 4.2](#42-the-gears)). Convergence is the claim that model calls per round fall to zero on a fixed specification under live traffic. It is measured as follows.
@@ -467,9 +454,11 @@ Promotion is the mechanism by which the model leaves the loop: a resolver is pai
 
 **Proposition 8 (floor approach).** As G0 and G1 coverage grows, joules per solved task approach the gold floor of applying a known fix and running the tests. The ladder rungs and the Defects4J held-out set under the wall meter test it.
 
-### 8.7 Coverage of real programs across languages
+### 8.7 Lift coverage across languages
 
-The measured quantity is coverage: for language $L$, the share of programs in a fixed public sample whose lift round trips with identical behavior, that is, $\pi_L(\lambda_L(p))$ passes the program's own tests and replays its recorded traces byte for byte, and $\lambda_L(\pi_L(\lambda_L(p)))$ has the same shape hash as $\lambda_L(p)$. The sample is at least 10,000 programs per language for at least ten languages, drawn with a fixed seed from pinned public corpora, with the lifter frozen and its binary hash recorded before the run, and 0 model calls in the main arm. Every refusal is classified by cause (unsupported construct, undefined behavior, nondeterminism, external effect). Coverage is reported with a Wilson 95% interval per language and per cause. A language with coverage below 0.5 after the lifter is frozen counts against Proposition U4 for that language.
+<div id="87-coverage-of-real-programs-across-languages" class="anchor-alias" aria-hidden="true"></div>
+
+Lift is measured as it is built. For language $L$, a program counts as lifted when $\pi_L(\lambda_L(p))$ passes the program's own tests and replays its recorded traces byte for byte, and $\lambda_L(\pi_L(\lambda_L(p)))$ has the same shape hash as $\lambda_L(p)$. The sample is at least 10,000 programs per language for at least ten languages, drawn with a fixed seed from pinned public corpora, with the lifter frozen and its binary hash recorded before each run, and 0 model calls. Each run reports the share lifted with a Wilson 95% interval, and each construct not yet lifted is a work item for the lifter of that language, built and frozen before the next run. The target is every program in every language.
 
 ## 9. Ties to the companion papers
 
@@ -483,29 +472,32 @@ The measured quantity is coverage: for language $L$, the share of programs in a 
 
 ## 10. Falsifiers
 
-Fixed before the held-out run of Section 8.4.
+Fixed before the runs they test.
 
 | ID | Observation | Defeats |
 |---|---|---|
 | RCE-F1 | On the held-out slice, G0 to G2 with frozen rules resolve under 10% of tasks with 0 model calls | The claim that most fits already exist for repair at this scale |
 | RCE-F2 | Byte-identical or equivalent patches are under half of the resolved held-out tasks | The reading of the gate as more than plausibility on the covered tasks |
 | RCE-F3 | Under the wall meter, gross joules per solved task of the RCE solver exceed those of the cheapest model baseline on the tasks both solve | The second path's joule advantage on covered tasks |
+| RCE-F0 | On a preregistered run of at least 10,000 Forms, any projection prints a trace that differs from the Form's reference trace, or any malformed input is accepted | The claim that projections are faithful and the gate refuses at entry |
 | RCE-F4 | In the convergence protocol of Section 8.6, fewer than half of the specifications without a stuck input reach a round with zero model calls within 20 rounds | Compiling the model out of the loop |
 
 ## 11. Work to finish
 
-Each item is open work with its protocol named.
+Each item has its protocol named.
 
-1. Held-out results on L2 to L4, the Defects4J set of 288 bugs (Section 8.1), and on L5 to L7 (Section 8.2).
-2. Baselines in one table, cost-of-pass in joules and dollars (Section 8.5).
-3. The first `measured_j`: a wall meter on an idle host, at least 10 repeats, gross and net side by side (Section 8.3).
-4. The 626-language survey published with its method (Figure 1).
-5. New held-out corpora with the gears frozen: Multi-SWE-bench and BugsInPy (Section 8.4).
-6. Convergence of model calls across at least 1,000 specifications (Section 8.6).
+1. Lift built and measured across at least ten languages under the protocol of Section 8.7.
+2. The spec arm: specifications in the style of MBPP and HumanEval authored as Forms and emitted to every target.
+3. Held-out results on L2 to L4, the Defects4J set of 288 bugs (Section 8.1), and on L5 to L7 (Section 8.2).
+4. Baselines in one table, cost-of-pass in joules and dollars (Section 8.5).
+5. The first `measured_j`: a wall meter on an idle host, at least 10 repeats, gross and net side by side (Section 8.3).
+6. The 626-language survey published with its method (Figure 1).
+7. New held-out corpora with the gears frozen: Multi-SWE-bench and BugsInPy (Section 8.4).
+8. Convergence of model calls across at least 1,000 specifications (Section 8.6).
 
 ## 12. Conclusion
 
-RCE is one uniform code ecosystem. Intent is written once as a Form, a lossless encoding of state, events and pure transitions, and every target language is a faithful projection of it. Invalid states cannot be written and malformed inputs are refused at entry, so a program in the ecosystem cannot drift from its intent and needs no after-the-fact diffing or error tracking. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input and specification is refused at entry, and the Python projection replays the reference trace on 9,999. Reuse compounds under a gate, and code from other languages enters by lift; on that entry path the engine repairs 99.95% of 520,821 one-token faults and 63.7% of 21,320 single-statement Java bugs. The universality thesis, that one Form replaces the need for any other language, holds for a language exactly when its programs lift losslessly, and Section 8.7 fixes the large N protocol that measures it.
+RCE is a native code ecosystem. A program is authored once, from intent, as a Form: a lossless encoding of state, events and pure transitions, and every target language is a faithful projection of it. Invalid states cannot be written and malformed inputs are refused at entry, so a program in the ecosystem cannot drift from its intent and needs no after-the-fact diffing or error tracking. Every fit that passes the gate is stored and reused, and the ecosystem compounds under a gate whose correctness is monotone. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input and specification is refused at entry, and the Python projection replays the reference trace on 9,999. Code from other languages enters by lift, a construction from each language's grammar to its syntax tree to the Form; on lifted code the repair gears restore 99.95% of 520,821 one-token faults and 63.7% of 21,320 single-statement Java bugs. One universal Form, with every language a projection and every program a lift, is the thesis, and Sections 3.6 and 8.7 state its propositions and how its construction is measured.
 
 ## References
 
