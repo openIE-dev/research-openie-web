@@ -8,7 +8,7 @@ States: abstract = title and abstract only (complete: false); full = whole text 
 |---|---|---|---|---|---|---|---|---|
 | rce | full | full | full | full | full | full | full | full |
 | agency | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| ai-coding-market | full | full | abstract | abstract | abstract | abstract | abstract | abstract |
+| ai-coding-market | full | full | full | abstract | abstract | abstract | abstract | abstract |
 | gates | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | satiation | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | spellcheck | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
