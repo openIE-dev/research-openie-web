@@ -1,4 +1,4 @@
-*Versión 1.1, 11 de octubre de 2026. Datos y código: [research.openie.dev/data/](/data/#rce). PDF en LaTeX: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([fuente](/pdfs/latex/rce.tex)).*
+*Versión 1.1, 11 de octubre de 2026. Datos y código: [research.openie.dev/data/](/data/#rce). Playground: [/playground/rce/](/playground/rce/). PDF en LaTeX: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([fuente](/pdfs/latex/rce.tex)).*
 
 *Una Forma. Muchos ajustes. La compuerta es la corrección, y la clasificación son los julios.*
 
@@ -91,11 +91,26 @@ Aquí una tarea de programación se mide por los **bits de intención** que nece
 | L0 un token | Mutantes al estilo PIT [109] de 9 repositorios reales en commits fijados (Java: commons-math, commons-collections, jsoup, joda-time, gson; Python: click, attrs, pydantic, sympy) | 520.821 | 520.541 | 0,9995 | 0,9994 a 0,9995 | 2,3 | 0 |
 | L0 un token, repositorios nunca usados para ajuste | commons-text, commons-io, more-itertools, httpx | 23.015 | 23.015 | 1,0000 | 0,9998 a 1,0000 | 2,0 | 0 |
 | L1 una sentencia, Java | Correcciones de un solo bloque de ManySStuBs4J 2.0 [107] | 24.072 | 9.288 | 0,386 | 0,380 a 0,392 | 3,5 | 0 |
+| L1 una sentencia, Java, archivo completo | ManySStuBs4J 2.0 [107], archivo del commit padre con los índices de métodos y de guardas del proyecto | 21.320 | 13.586 | 0,637 | 0,631 a 0,644 | 4,8 | 0 |
 | L1 una sentencia, Python | TSSB-3M v1.0.0, fragmentos 14 y 15 [108] | 157.089 | 27.266 | 0,174 | 0,172 a 0,175 | 4,8 | 0 |
 
 L2 a L4 se miden en el conjunto reservado de Defects4J de 288 errores ([Sección 8.1](#81-defects4j)). L5 a L7 siguen los protocolos de la [Sección 8.2](#82-swe-bench-lite-offline). La Sección 6 da el método, la compuerta y la energía de cada fila.
 
 Las tasas se leen como bits de intención. En L0 los bits que faltan están casi todos en la línea, y un vecindario de un solo token ordenado por una distribución previa los aporta con una mediana de 2,3 bits. En L1 el motor ve solo el bloque de 7 líneas. Cierra las categorías cuyos bits están dentro del bloque (Java: operador cambiado 91 %, literal booleano intercambiado 84 %, argumentos intercambiados 82 %; Python: literal booleano cambiado 98,8 %, argumentos intercambiados 99,4 %) y deja abiertas aquellas cuyos bits están fuera: los nombres de métodos (22 %) y los identificadores (37 %) necesitan el archivo y sus tipos, y las conjunciones nuevas (3 % a 7 %) y las reescrituras de sentencias completas (Python, 1,2 % de una categoría que es el 34 % del corpus) son intención nueva. La intención nueva es lo que un proveedor (una especificación, una prueba, una persona o un modelo local) aporta una vez, tras lo cual el ajuste está en el índice.
+
+### 2.4 Automejora recursiva con compuerta y verificada
+
+Good (1965) [111] definió la máquina ultrainteligente como una capaz de diseñar máquinas mejores, de modo que la mejora se volvería recursiva. Yudkowsky (2013) [113] planteó la cuestión como una de rendimientos: si cada unidad de mejora abarata o encarece la siguiente. La máquina de Gödel de Schmidhuber (2007) [112] dio la primera respuesta formal con garantía: un programa reescribe cualquier parte de sí mismo, incluida su propia búsqueda, solo después de demostrar que la reescritura mejora su utilidad esperada. El teorema de Löb (1955) [114] es el obstáculo que encuentra un demostrador que confía en sí mismo, al que Yudkowsky y Herreshoff (2013) [115] llamaron el obstáculo de Löb: un sistema no puede, en general, demostrar la solidez de un sucesor que usa su propio sistema de demostración. Los sistemas recientes abandonan el requisito de demostración y seleccionan por puntuación medida: STOP (Zelikman et al., 2023) [116] mejora el andamiaje que mejora el código, la Darwin Gödel Machine (Zhang et al., 2025) [117] mantiene un archivo de agentes de programación automodificados elegidos por su puntuación en un banco de pruebas, AlphaEvolve (Novikov et al., 2025) [118] hace evolucionar programas bajo evaluadores automáticos, y Voyager (Wang et al., 2023) [119] hace crecer una biblioteca de habilidades verificadas que las tareas posteriores reutilizan.
+
+RCE toma la estructura de la máquina de Gödel y la biblioteca de Voyager, con dos diferencias que eliminan el obstáculo. Primera, el objeto que mejora no es el demostrador. RCE promueve manejadores, reescrituras y engranajes, y cada uno se comprueba frente a un núcleo fijo y certificado por separado: los arneses de Kani y la codificación SMT nunca cambian a través de la promoción, así que ningún paso necesita confiar en el sistema de demostración de un sucesor. Segunda, la compuerta es una demostración de corrección en la frontera, no una puntuación. Una puntuación puede subir mientras se rompe un supuesto de interfaz; una demostración en la frontera no puede superarla un cambio que la rompe.
+
+**Proposición R1 (corrección monótona).** Si cada cambio promovido pasa la comprobación de su frontera, y las comprobaciones de las demás fronteras no cambian, entonces toda propiedad establecida por esas comprobaciones antes de la promoción sigue valiendo después de ella.
+
+**Proposición R2 (acumulación).** Sea una carga de trabajo un multiconjunto de tareas y sea un manejador promovido que cierra toda tarea de su forma. Entonces el número de escaladas en la ronda t es no creciente en t, y una corrección promovida antes de la ronda 1 reduce las escaladas acumuladas de todo horizonte en las escaladas que cierra en cada ronda posterior. En la carga de trabajo de referencia del playground, las escaladas acumuladas a lo largo de ocho rondas bajan de 21 a 15 con una corrección en los sumideros, y llegan a cero en la última ronda en ambos casos, con cada tarea cerrada correctamente y ninguna promoción rechazada.
+
+**Proposición R3 (coste decreciente).** Como un manejador promovido se ejecuta en lugar de una llamada a un modelo, y su coste es el número de operaciones del manejador valorado con la tabla del sustrato, la energía de una ronda desciende hacia la energía de los manejadores solos a medida que las escaladas descienden hacia cero.
+
+Las proyecciones de Futamura (1971, republicadas en 1999) [120] y la supercompilación de Turchin (1986) [121] dan el límite de este proceso. Especializar un intérprete a un programa produce un programa compilado; especializar el especializador produce un compilador. Las promociones de RCE especializan la vía general de escalada a las formas que realmente ocurren, de modo que el motor converge hacia el programa residual de su carga de trabajo: la parte del cómputo que un modelo o una persona aún debe aportar. La automejora recursiva bajo una compuerta es esa convergencia, hecha con pasos comprobados. La capa Compounding del [RCE Playground](/playground/rce/#compounding) ejecuta esta carga de trabajo en el navegador.
 
 ## 3. La Forma
 
@@ -224,6 +239,21 @@ La IR fija un comportamiento en cada borde numérico: el desbordamiento comproba
 
 Un manejador de proceso, HTTP o clausura no tiene término, así que sus resultados registrados se compilan en un oráculo registrado indexado por el SHA-256 de la entrada canónica. `rce scan DIR --form` eleva Rust, Python, TypeScript y Go existentes al esquema de la Forma, y cada elemento elevado se etiqueta como elevación sintáctica.
 
+### 4.6 Método: toda la pila evaluada, cada supuesto de interfaz explícito
+
+Un programa es una pila de niveles: tokens y sentencias; manejadores; la Forma, una única función de paso δ sobre un estado de base de datos de relaciones tipadas, regiones de control y un reloj; el registro que anota cada evento con el hash del estado que produjo; las reescrituras que transforman la Forma; y el sustrato que la ejecuta. Cada nivel descansa sobre supuestos acerca del nivel inferior. RCE no trata ningún nivel como fijo. Evalúa toda la pila, escribe cada supuesto de interfaz como un enunciado comprobable y lo comprueba en cada ejecución.
+
+| Frontera | Supuesto | Comprobación |
+|---|---|---|
+| fuente a manejador | una entrada satisface su contrato de fuente | la comprobación del contrato en el evento de entrada de δ |
+| manejador a sumidero | toda salida Ok satisface el esquema de salida | demostración del manejador (verify::handler_proof), total y determinista por el evaluador del núcleo comprobado con Kani |
+| registro a estado | cada entrada lleva el hash del estado que produjo | plegado del núcleo, que rechaza la primera entrada cuyo hash no coincide (arnés de Kani `fold_rejects_wrong_state`) |
+| reescritura a Forma | una reescritura conserva la salida para toda entrada | comprobación aleatorizada, y después una demostración SMT con Z3 |
+| stub a capataz | un manejador que no puede decidir escala en lugar de adivinar | los manejadores stub emiten escaladas; las resoluciones se promueven solo por la vía de promoción |
+| Forma a destino | todo destino emitido calcula la misma δ | todo destino lleva la misma traza de referencia |
+
+Una comprobación fallida localiza la ruptura en la frontera donde ocurre. La corrección se hace en ese nivel, pasa por la comprobación de esa frontera y se promueve. Todo nivel por encima del corregido hereda la corrección sin más cambios, porque cada nivel superior consume el nivel corregido solo a través de la interfaz cuyo supuesto ahora se comprueba. Este es el sentido en que las correcciones se propagan hacia arriba y se acumulan. El [RCE Playground](/playground/rce/) lo ejecuta en el navegador sobre el núcleo de RCE compilado a WebAssembly: su capa Interfaces rompe cada supuesto y muestra la comprobación que lo detecta, y su capa Compounding muestra la corrección propagándose a cada ronda posterior.
+
 ## 5. Verificación
 
 <div id="51-five-targets-one-trace" class="anchor-alias" aria-hidden="true"></div>
@@ -284,7 +314,7 @@ El corpus L0 es cada mutante al estilo PIT [109] con un token de reemplazo váli
 
 ### 6.2 L1: errores de una sola sentencia de historiales reales
 
-L1 usa dos conjuntos de datos públicos de correcciones reales de errores de una sola sentencia, extraídos de historiales de código abierto. ManySStuBs4J 2.0 [107] da 24.072 tareas de prueba en Java; el motor (commit `f2701b7`) resuelve 9.288, una tasa de 0,386 (0,380 a 0,392). TSSB-3M v1.0.0 [108] da 157.089 tareas de prueba en Python de los fragmentos 14 y 15; el mismo motor resuelve 27.266, una tasa de 0,174 (0,172 a 0,175). El motor recibe solo el bloque de 7 líneas, así que la tasa de Java es un resultado de solo bloque; el resultado con el archivo completo es la siguiente fila de esta tabla. Las tasas por categoría están en la Sección 2.3 y las tablas completas por estrato en el repositorio. Estos conjuntos de datos no tienen una clasificación publicada de reparación con esta compuerta (solo bloque, identidad de tokens, ubicación dada), así que no se coloca a su lado ninguna cifra de reparación aprendida; Defects4J, que sí la tiene, se compara con TBar en la Sección 8.1.
+L1 usa dos conjuntos de datos públicos de correcciones reales de errores de una sola sentencia, extraídos de historiales de código abierto. ManySStuBs4J 2.0 [107] da 24.072 tareas de prueba en Java; el motor (commit `f2701b7`) resuelve 9.288, una tasa de 0,386 (0,380 a 0,392). TSSB-3M v1.0.0 [108] da 157.089 tareas de prueba en Python de los fragmentos 14 y 15; el mismo motor resuelve 27.266, una tasa de 0,174 (0,172 a 0,175). El motor recibe solo el bloque de 7 líneas, así que esa tasa de Java es un resultado de solo bloque. Con el archivo completo en el commit padre, con índices de los métodos y de las condiciones de guarda del proyecto y con los engranajes para nombres de método cambiados, argumentos añadidos, condiciones de guarda, throws y modificadores (commit `62fb7a0`, prefijo sha256 del binario `3682c6515acdf722`, preregistrado antes de la ejecución), el motor resuelve 13.586 de las 21.320 tareas de prueba en Java cuyo archivo y sentencia errónea pudieron localizarse, una tasa de 0,637 (0,631 a 0,644). Por categoría cierra operadores cambiados (95,9 %), operandos cambiados (92,1 %), llamadores erróneos (87,9 %), literales booleanos intercambiados (88,4 %), argumentos eliminados (85,1 %) y argumentos intercambiados (83,3 %); los nombres de método cambiados alcanzan el 61,4 % y los argumentos añadidos el 51,4 %, y las condiciones nuevas o estrechadas (43,5 % y 51,7 %) siguen siendo la principal intención abierta. Las tasas por categoría están en la Sección 2.3 y las tablas completas por estrato en el repositorio. Estos conjuntos de datos no tienen una clasificación publicada de reparación con esta compuerta (solo bloque, identidad de tokens, ubicación dada), así que no se coloca a su lado ninguna cifra de reparación aprendida; Defects4J, que sí la tiene, se compara con TBar en la Sección 8.1.
 
 ### 6.3 Energía
 
@@ -407,13 +437,12 @@ Cada punto es trabajo abierto con su protocolo nombrado.
 1. Resultados reservados en L2 a L4, el conjunto de Defects4J de 288 errores (Sección 8.1), y en L5 a L7 (Sección 8.2).
 2. Líneas base en una sola tabla, coste por acierto en julios y en dólares (Sección 8.5).
 3. El primer `measured_j`: un medidor de pared en un anfitrión en reposo, al menos 10 repeticiones, bruto y neto lado a lado (Sección 8.3).
-4. El resultado L1 de Java con el archivo completo, con un índice de API indexado por tipos como siguiente engranaje (Sección 6.2).
-5. El estudio de 626 lenguajes publicado con su método (Figura 1).
-6. Nuevos corpus reservados con los engranajes congelados: Multi-SWE-bench y BugsInPy (Sección 8.4).
-7. Convergencia de las llamadas a modelos en al menos 1.000 especificaciones (Sección 8.6).
+4. El estudio de 626 lenguajes publicado con su método (Figura 1).
+5. Nuevos corpus reservados con los engranajes congelados: Multi-SWE-bench y BugsInPy (Sección 8.4).
+6. Convergencia de las llamadas a modelos en al menos 1.000 especificaciones (Sección 8.6).
 
 ## 12. Conclusión
 
-Un programa es una máquina de estados funcional de base de datos, y RCE trata la programación como una conversión de una intención de alta entropía a esa Forma de baja entropía. La corrección es la compuerta y los julios son la clasificación. En particiones de prueba reservadas, con el motor congelado y sin llamadas a modelos, los engranajes reparan el 99,95 % de 520.821 fallos de un solo token y los 23.015 de los repositorios nunca usados para ajuste, el 38,6 % de 24.072 errores Java de una sola sentencia y el 17,4 % de 157.089 errores Python, con centésimas de julio informado por tarea resuelta en un contador de paquete. La capa de verificación demuestra las reescrituras en Z3 y el núcleo en Kani, y las pruebas diferenciales atan cinco destinos a una traza. Lo que queda son los peldaños superiores, la convergencia con N grande, las líneas base en la misma tabla y un medidor de pared. Esos protocolos están fijados en las Secciones 8.3 a 8.6 y los falsadores en la Sección 10.
+Un programa es una máquina de estados funcional de base de datos, y RCE trata la programación como una conversión de una intención de alta entropía a esa Forma de baja entropía. La corrección es la compuerta y los julios son la clasificación. En particiones de prueba reservadas, con el motor congelado y sin llamadas a modelos, los engranajes reparan el 99,95 % de 520.821 fallos de un solo token y los 23.015 de los repositorios nunca usados para ajuste, el 38,6 % de 24.072 errores Java de una sola sentencia a partir del bloque solo (el 63,7 % de 21.320 con el archivo completo) y el 17,4 % de 157.089 errores Python, con centésimas de julio informado por tarea resuelta en un contador de paquete. La capa de verificación demuestra las reescrituras en Z3 y el núcleo en Kani, y las pruebas diferenciales atan cinco destinos a una traza. Lo que queda son los peldaños superiores, la convergencia con N grande, las líneas base en la misma tabla y un medidor de pared. Esos protocolos están fijados en las Secciones 8.3 a 8.6 y los falsadores en la Sección 10.
 
 ## Referencias
