@@ -10,9 +10,9 @@
 <link rel="icon" href="data:,">
 <link rel="modulepreload" href="./pkg/rce_core.js">
 <script>try{const t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t}catch(e){}</script>
-  <script type="module" crossorigin src="./assets/index-Dn_TgHbs.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/util-l0D49U-C.js">
-  <link rel="stylesheet" crossorigin href="./assets/index-3SU3k-bL.css">
+  <script type="module" crossorigin src="./assets/index-5O_y7pHI.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/util-DVUqxZc1.js">
+  <link rel="stylesheet" crossorigin href="./assets/index-BE32ENHN.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the playground</a>
@@ -28,7 +28,7 @@
     <p class="eyebrow">RCE playground · WebAssembly · 0 model calls</p>
     <h1 id="h1">The stack is not fixed.</h1>
     <p class="lede">RCE is a uniform, complete code ecosystem. Intent is encoded losslessly as a Form, and Rust, Python, XState and WebAssembly are faithful projections of it, so intent cannot be mistranslated on the way down. Ill formed input is refused at entry. Every proven handler joins the ecosystem and serves everywhere after: recursive self improvement under a gate.</p>
-    <p class="hint">Select a level to see what it guarantees and watch the guarantee carry upward. Select Form to add a proven handler and watch the ecosystem grow. Open a level to explore it.</p>
+    <p class="hint">Select a level to see what it guarantees and watch the guarantee carry upward. Every level's correction is recomputed through the engine and redraws the curves. Open a level to explore it.</p>
     <div class="hero-kpi" aria-live="polite">
       <div><b id="hk-shape">computing</b><span>Form shape hash</span></div><div><b id="hk-corr">0</b><span>proven handlers added</span></div>
       <div><b id="hk-esc">none yet</b><span>escalations saved over 8 rounds</span></div>
@@ -37,7 +37,7 @@
   </div>
   <div class="hero-viz">
     <svg id="stack" viewBox="0 0 520 470" role="group" aria-label="The RCE stack. Each level is a button."></svg>
-    <figure class="rsi"><figcaption>Ecosystem growth: cumulative escalations per round, computed live by <code>engine_rounds</code> in your browser</figcaption><svg id="rsi" viewBox="0 0 520 170" role="img" aria-label="Recursive self improvement curves"></svg></figure>
+    <figure class="rsi"><figcaption>Ecosystem growth: cumulative escalations per round, computed live by <code>engine_rounds</code> in your browser</figcaption><svg id="rsi" viewBox="0 0 520 170" role="img" aria-label="Cumulative escalations per round"></svg><svg id="rsi-e" viewBox="0 0 520 170" role="img" aria-label="Cumulative estimated handler joules per round" hidden></svg><p id="rsi-note" class="hint" aria-live="polite"></p></figure>
   </div>
 </section>
 <nav id="tabs" aria-label="Layers"></nav>
