@@ -1041,6 +1041,7 @@ Publish all receipts, raw meter traces, idle baselines and analysis code with th
 
 - **Notational Intelligence** is the receipt format in Section 8.5.
 - **Mixture of Limits** is the philosophy both selectors instantiate. Arm 2 is its fixed cascade instance.
+- **The Reality Code Engine** reads $\iota = dX/dJ$ in hindsight from its hash-chained log, with $X$ the coding tasks through the gate and $J$ their labeled joules ([The Reality Code Engine, Section 9](/papers/rce/#9-ties-to-the-companion-papers)).
 
 Hardware and product placement moved to the [Metabolic Intelligence white paper](/products/mei/#where-the-products-sit). The meters of this plan are M0 and M1 in Section 8.1.
 

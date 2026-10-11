@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2000" viewBox="0 0 1600 2000"><rect width="1600" height="2000" fill="#f8fafc"/>
+<defs><linearGradient id="ent" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ea580c"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+<linearGradient id="fun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fed7aa"/><stop offset="1" stop-color="#bfdbfe"/></linearGradient></defs>
+<text x="80" y="110" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="64" font-weight="800" fill="#0f172a" text-anchor="start" >One sentence in. One floor out.</text>
+<text x="80" y="160" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="26" font-weight="400" fill="#64748b" text-anchor="start" >How human intent becomes something a computer can run, and why it loses meaning on the way.</text>
+<rect x="80" y="200" width="1440" height="330" rx="24" fill="#fff7ed" stroke="#fed7aa" stroke-width="2" opacity="1"/>
+<text x="120" y="255" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="700" fill="#ea580c" text-anchor="start" letter-spacing="2">1. HUMAN INTENT IS HIGH ENTROPY</text>
+<text x="120" y="330" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="46" font-weight="700" fill="#0f172a" text-anchor="start" >“Make the checkout faster.”</text>
+<path d="M 360 345 C 380 373, 400 377, 430 377" stroke="#ea580c" stroke-width="2" fill="none" opacity="0.6"/>
+<text x="440" y="385" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="21" font-weight="500" fill="#9a3412" text-anchor="start" >Cut page load time?</text>
+<path d="M 360 345 C 380 403, 400 407, 430 407" stroke="#ea580c" stroke-width="2" fill="none" opacity="0.6"/>
+<text x="440" y="415" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="21" font-weight="500" fill="#9a3412" text-anchor="start" >Fewer steps for the buyer?</text>
+<path d="M 360 345 C 380 433, 400 437, 430 437" stroke="#ea580c" stroke-width="2" fill="none" opacity="0.6"/>
+<text x="440" y="445" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="21" font-weight="500" fill="#9a3412" text-anchor="start" >Faster card approval?</text>
+<path d="M 360 345 C 380 463, 400 467, 430 467" stroke="#ea580c" stroke-width="2" fill="none" opacity="0.6"/>
+<text x="440" y="475" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="21" font-weight="500" fill="#9a3412" text-anchor="start" >Cache the cart?</text>
+<path d="M 360 345 C 380 493, 400 497, 430 497" stroke="#ea580c" stroke-width="2" fill="none" opacity="0.6"/>
+<text x="440" y="505" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="21" font-weight="500" fill="#9a3412" text-anchor="start" >Faster for whom: phone or desktop?</text>
+<text x="900" y="300" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="24" font-weight="700" fill="#0f172a" text-anchor="start" >Many meanings live in one sentence.</text>
+<text x="900" y="335" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="24" font-weight="400" fill="#0f172a" text-anchor="start" >Context is implied, never written.</text>
+<text x="900" y="370" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="24" font-weight="400" fill="#0f172a" text-anchor="start" >The listener fills the gap.</text>
+<text x="900" y="405" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="24" font-weight="700" fill="#ea580c" text-anchor="start" >A computer cannot.</text>
+<text x="900" y="465" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="19" font-weight="400" fill="#64748b" text-anchor="start" >Shannon measured English at 0.6 to 1.3 bits per letter.</text>
+<text x="900" y="492" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="19" font-weight="600" fill="#64748b" text-anchor="start" >The letters are predictable. The meaning is not.</text>
+<rect x="80" y="580" width="14" height="850" rx="7" fill="url(#ent)"/>
+<text x="110" y="600" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="700" fill="#ea580c" text-anchor="start" letter-spacing="1.5">HIGH ENTROPY</text>
+<text x="110" y="1425" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="700" fill="#2563eb" text-anchor="start" letter-spacing="1.5">LOW ENTROPY</text>
+<text x="110" y="622" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="400" fill="#64748b" text-anchor="start" >many meanings</text>
+<text x="110" y="1402" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="400" fill="#64748b" text-anchor="start" >few shapes</text>
+<text x="250" y="575" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="700" fill="#2563eb" text-anchor="start" letter-spacing="2">2. THE FUNNEL OF CONVERSIONS</text>
+<path d="M 240 600 L 960 600 L 920 700 L 280 700 Z" fill="url(#fun)" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="600" y="642" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="28" font-weight="800" fill="#0f172a" text-anchor="middle" >Intent</text>
+<text x="600" y="672" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="middle" >what you want</text>
+<text x="600" y="720" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#dc2626" text-anchor="middle" >LOST: context, tone, the unsaid</text>
+<path d="M 290 722 L 910 722 L 870 822 L 330 822 Z" fill="url(#fun)" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="600" y="764" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="28" font-weight="800" fill="#0f172a" text-anchor="middle" >Spec</text>
+<text x="600" y="794" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="middle" >what you wrote down</text>
+<text x="600" y="842" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#dc2626" text-anchor="middle" >LOST: alternatives, edge cases</text>
+<path d="M 600 862 C 600 942, 170.0 935, 170.0 1001" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<path d="M 170.0 1029 C 170.0 1095, 600 1095, 600 1175" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<circle cx="170.0" cy="1015" r="6" fill="#2563eb"/>
+<text x="170.0" y="993" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle" >Python</text>
+<path d="M 600 862 C 600 942, 248.1818181818182 935, 248.1818181818182 1001" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<path d="M 248.1818181818182 1029 C 248.1818181818182 1095, 600 1095, 600 1175" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<circle cx="248.1818181818182" cy="1015" r="6" fill="#2563eb"/>
+<text x="248.1818181818182" y="1049" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle" >C</text>
+<path d="M 600 862 C 600 942, 326.3636363636364 935, 326.3636363636364 1001" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<path d="M 326.3636363636364 1029 C 326.3636363636364 1095, 600 1095, 600 1175" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<circle cx="326.3636363636364" cy="1015" r="6" fill="#2563eb"/>
+<text x="326.3636363636364" y="993" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle" >Rust</text>
+<path d="M 600 862 C 600 942, 404.54545454545456 935, 404.54545454545456 1001" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<path d="M 404.54545454545456 1029 C 404.54545454545456 1095, 600 1095, 600 1175" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<circle cx="404.54545454545456" cy="1015" r="6" fill="#2563eb"/>
+<text x="404.54545454545456" y="1049" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle" >Go</text>
+<path d="M 600 862 C 600 942, 482.72727272727275 935, 482.72727272727275 1001" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<path d="M 482.72727272727275 1029 C 482.72727272727275 1095, 600 1095, 600 1175" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<circle cx="482.72727272727275" cy="1015" r="6" fill="#2563eb"/>
+<text x="482.72727272727275" y="993" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle" >JavaScript</text>
+<path d="M 600 862 C 600 942, 560.909090909091 935, 560.909090909091 1001" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<path d="M 560.909090909091 1029 C 560.909090909091 1095, 600 1095, 600 1175" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<circle cx="560.909090909091" cy="1015" r="6" fill="#2563eb"/>
+<text x="560.909090909091" y="1049" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle" >Java</text>
+<path d="M 600 862 C 600 942, 639.0909090909091 935, 639.0909090909091 1001" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<path d="M 639.0909090909091 1029 C 639.0909090909091 1095, 600 1095, 600 1175" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<circle cx="639.0909090909091" cy="1015" r="6" fill="#2563eb"/>
+<text x="639.0909090909091" y="993" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle" >C#</text>
+<path d="M 600 862 C 600 942, 717.2727272727273 935, 717.2727272727273 1001" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<path d="M 717.2727272727273 1029 C 717.2727272727273 1095, 600 1095, 600 1175" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<circle cx="717.2727272727273" cy="1015" r="6" fill="#2563eb"/>
+<text x="717.2727272727273" y="1049" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle" >Swift</text>
+<path d="M 600 862 C 600 942, 795.4545454545455 935, 795.4545454545455 1001" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<path d="M 795.4545454545455 1029 C 795.4545454545455 1095, 600 1095, 600 1175" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<circle cx="795.4545454545455" cy="1015" r="6" fill="#2563eb"/>
+<text x="795.4545454545455" y="993" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle" >Kotlin</text>
+<path d="M 600 862 C 600 942, 873.6363636363637 935, 873.6363636363637 1001" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<path d="M 873.6363636363637 1029 C 873.6363636363637 1095, 600 1095, 600 1175" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<circle cx="873.6363636363637" cy="1015" r="6" fill="#2563eb"/>
+<text x="873.6363636363637" y="1049" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle" >Haskell</text>
+<path d="M 600 862 C 600 942, 951.8181818181819 935, 951.8181818181819 1001" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<path d="M 951.8181818181819 1029 C 951.8181818181819 1095, 600 1095, 600 1175" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<circle cx="951.8181818181819" cy="1015" r="6" fill="#2563eb"/>
+<text x="951.8181818181819" y="993" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle" >Lua</text>
+<path d="M 600 862 C 600 942, 1030.0 935, 1030.0 1001" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<path d="M 1030.0 1029 C 1030.0 1095, 600 1095, 600 1175" stroke="#2563eb" stroke-width="1.6" fill="none" opacity="0.45"/>
+<circle cx="1030.0" cy="1015" r="6" fill="#2563eb"/>
+<text x="1030.0" y="1049" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle" >Zig</text>
+<circle cx="600" cy="862" r="8" fill="#0f172a"/><circle cx="600" cy="1175" r="8" fill="#0f172a"/>
+<rect x="425" y="905" width="350" height="40" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.5" opacity="1"/>
+<text x="600" y="932" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="800" fill="#2563eb" text-anchor="middle" >626 surface languages</text>
+<text x="600" y="1097" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="17" font-weight="500" fill="#334155" text-anchor="middle" >Fan out to 626 ways of writing it. Re-converge.</text>
+<text x="600" y="1197" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#dc2626" text-anchor="middle" >LOST: names, style, the author’s reasons</text>
+<path d="M 350 1200 L 850 1200 L 800 1300 L 400 1300 Z" fill="url(#fun)" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="600" y="1242" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="28" font-weight="800" fill="#0f172a" text-anchor="middle" >IR</text>
+<text x="600" y="1272" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="middle" >one graph the compiler can reason about</text>
+<text x="600" y="1320" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="600" fill="#dc2626" text-anchor="middle" >LOST: types become sizes, loops become jumps</text>
+<path d="M 410 1322 L 790 1322 L 740 1422 L 460 1422 Z" fill="#bfdbfe" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="600" y="1364" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="28" font-weight="800" fill="#0f172a" text-anchor="middle" >Machine code</text>
+<text x="600" y="1394" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="middle" >bytes the CPU decodes</text>
+<rect x="80" y="1450" width="1000" height="150" rx="22" fill="#0f172a" stroke="none" stroke-width="0" opacity="1"/>
+<text x="130" y="1515" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="34" font-weight="800" fill="#ffffff" text-anchor="start" >3. It all gets to assembly.</text>
+<rect x="130" y="1540" width="96" height="38" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="1"/>
+<text x="178" y="1566" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="19" font-weight="500" fill="#93c5fd" text-anchor="middle" >mov</text>
+<rect x="242" y="1540" width="96" height="38" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="1"/>
+<text x="290" y="1566" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="19" font-weight="500" fill="#93c5fd" text-anchor="middle" >add</text>
+<rect x="354" y="1540" width="96" height="38" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="1"/>
+<text x="402" y="1566" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="19" font-weight="500" fill="#93c5fd" text-anchor="middle" >cmp</text>
+<rect x="466" y="1540" width="96" height="38" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="1"/>
+<text x="514" y="1566" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="19" font-weight="500" fill="#93c5fd" text-anchor="middle" >jmp</text>
+<rect x="578" y="1540" width="96" height="38" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="1"/>
+<text x="626" y="1566" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="19" font-weight="500" fill="#93c5fd" text-anchor="middle" >load</text>
+<rect x="690" y="1540" width="96" height="38" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="1"/>
+<text x="738" y="1566" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="19" font-weight="500" fill="#93c5fd" text-anchor="middle" >store</text>
+<rect x="802" y="1540" width="96" height="38" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="1"/>
+<text x="850" y="1566" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="19" font-weight="500" fill="#93c5fd" text-anchor="middle" >call</text>
+<rect x="914" y="1540" width="96" height="38" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="1"/>
+<text x="962" y="1566" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="19" font-weight="500" fill="#93c5fd" text-anchor="middle" >ret</text>
+<rect x="1130" y="560" width="390" height="520" rx="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" opacity="1"/>
+<text x="1160" y="605" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="700" fill="#dc2626" text-anchor="start" letter-spacing="1.5">5. WHERE THE LOSS HAPPENS</text>
+<text x="1160" y="645" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="24" font-weight="800" fill="#0f172a" text-anchor="start" >Same line. Different answer.</text>
+<text x="1160" y="675" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="17" font-weight="400" fill="#64748b" text-anchor="start" >Operators agree on easy inputs.</text>
+<text x="1160" y="698" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="17" font-weight="400" fill="#64748b" text-anchor="start" >They split at the edges.</text>
+<text x="1160" y="745" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="700" fill="#64748b" text-anchor="start" >expression</text>
+<text x="1325" y="745" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="700" fill="#64748b" text-anchor="start" >Python</text>
+<text x="1420" y="745" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="700" fill="#64748b" text-anchor="start" >C</text>
+<rect x="1150" y="756" width="350" height="50" rx="10" fill="#f1f5f9" stroke="none" stroke-width="0" opacity="1"/>
+<text x="1164" y="790" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="20" font-weight="600" fill="#0f172a" text-anchor="start" >-3 % 2</text>
+<text x="1325" y="790" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="18" font-weight="600" fill="#ea580c" text-anchor="start" >1</text>
+<text x="1420" y="790" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="18" font-weight="600" fill="#2563eb" text-anchor="start" >-1</text>
+<rect x="1150" y="818" width="350" height="50" rx="10" fill="#f1f5f9" stroke="none" stroke-width="0" opacity="1"/>
+<text x="1164" y="852" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="20" font-weight="600" fill="#0f172a" text-anchor="start" >-7 / 2</text>
+<text x="1325" y="852" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="18" font-weight="600" fill="#ea580c" text-anchor="start" >-3.5</text>
+<text x="1420" y="852" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="18" font-weight="600" fill="#2563eb" text-anchor="start" >-3</text>
+<rect x="1150" y="880" width="350" height="50" rx="10" fill="#f1f5f9" stroke="none" stroke-width="0" opacity="1"/>
+<text x="1164" y="914" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="20" font-weight="600" fill="#0f172a" text-anchor="start" >MAX + 1</text>
+<text x="1325" y="914" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="18" font-weight="600" fill="#ea580c" text-anchor="start" >grows</text>
+<text x="1420" y="914" font-family="'DM Mono', 'DejaVu Sans Mono', monospace" font-size="18" font-weight="600" fill="#2563eb" text-anchor="start" >undefined</text>
+<text x="1160" y="1000" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="19" font-weight="700" fill="#0f172a" text-anchor="start" >Every boundary is a guess</text>
+<text x="1160" y="1026" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="19" font-weight="700" fill="#0f172a" text-anchor="start" >about what you meant.</text>
+<text x="1160" y="1056" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="400" fill="#64748b" text-anchor="start" >Most guesses are right. Bugs live in the rest.</text>
+<rect x="1130" y="1100" width="390" height="500" rx="22" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2" opacity="1"/>
+<text x="1160" y="1145" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="700" fill="#2563eb" text-anchor="start" letter-spacing="1.5">4. WHY ALL CODE</text>
+<text x="1160" y="1170" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="700" fill="#2563eb" text-anchor="start" letter-spacing="1.5">STARTS TO LOOK THE SAME</text>
+<text x="1160" y="1215" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start" >The destination has room</text>
+<text x="1160" y="1243" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start" >for only a few shapes.</text>
+<text x="1160" y="1290" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="17" font-weight="400" fill="#334155" text-anchor="start" >Every program ends as loads,</text>
+<text x="1160" y="1314" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="17" font-weight="400" fill="#334155" text-anchor="start" >stores, math and jumps.</text>
+<text x="1160" y="1338" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="17" font-weight="400" fill="#334155" text-anchor="start" >So code bends toward those shapes.</text>
+<text x="1160" y="1376" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="19" font-weight="700" fill="#2563eb" text-anchor="start" >Convergence is by design.</text>
+<text x="1160" y="1400" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="19" font-weight="700" fill="#2563eb" text-anchor="start" >Not by laziness.</text>
+<text x="1160" y="1490" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="58" font-weight="800" fill="#2563eb" text-anchor="start" >70%</text>
+<text x="1310" y="1462" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="17" font-weight="600" fill="#0f172a" text-anchor="start" >of code on GitHub</text>
+<text x="1310" y="1486" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="17" font-weight="600" fill="#0f172a" text-anchor="start" >is clones.</text>
+<text x="1310" y="1510" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="15" font-weight="400" fill="#64748b" text-anchor="start" >428M files, 85M unique.</text>
+<text x="1160" y="1570" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="13" font-weight="400" fill="#64748b" text-anchor="start" >DéjàVu, Lopes et al., OOPSLA 2017</text>
+<rect x="80" y="1640" width="1440" height="270" rx="24" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="2" opacity="1"/>
+<text x="120" y="1690" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="700" fill="#059669" text-anchor="start" letter-spacing="2">6. THE FIX: RCE</text>
+<text x="120" y="1740" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="36" font-weight="800" fill="#0f172a" text-anchor="start" >Stop guessing at every boundary.</text>
+<circle cx="138" cy="1800" r="18" fill="#059669"/>
+<text x="138" y="1807" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle" >1</text>
+<text x="170" y="1808" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="23" font-weight="800" fill="#0f172a" text-anchor="start" >One canonical form</text>
+<text x="170" y="1842" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Write the meaning once.</text>
+<text x="170" y="1868" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >One structure holds the intent.</text>
+<circle cx="603" cy="1800" r="18" fill="#059669"/>
+<text x="603" y="1807" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle" >2</text>
+<text x="635" y="1808" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="23" font-weight="800" fill="#0f172a" text-anchor="start" >Every surface is a projection</text>
+<text x="635" y="1842" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Python, Rust, WASM, XState.</text>
+<text x="635" y="1868" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Each one proven to match the form.</text>
+<circle cx="1068" cy="1800" r="18" fill="#059669"/>
+<text x="1068" y="1807" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle" >3</text>
+<text x="1100" y="1808" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="23" font-weight="800" fill="#0f172a" text-anchor="start" >Cheapest correct form wins</text>
+<text x="1100" y="1842" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Equivalent forms, ranked by joules.</text>
+<text x="1100" y="1868" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Pick the one that costs least.</text>
+<text x="80" y="1950" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="14" font-weight="400" fill="#64748b" text-anchor="start" >Sources: Shannon, “Prediction and Entropy of Printed English,” Bell System Technical Journal, 1951. Lopes et al., “DéjàVu: A Map of Code Duplicates on GitHub,” OOPSLA 2017.</text>
+<text x="80" y="1974" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="14" font-weight="400" fill="#64748b" text-anchor="start" >626 languages: David Charlot’s lowering-path survey. Python and C results are language spec behavior. C signed overflow is undefined behavior.</text></svg>
