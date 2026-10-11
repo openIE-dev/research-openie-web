@@ -12,6 +12,9 @@ board_metered: false
 
 # The Promised Trillion Dollar AI-Coding Market
 
+*Version 1.1, revised 11 October 2026. Changes in this revision are listed in the site changelog at [/changelog/](/changelog/).*
+
+
 *The economics companion to [The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding](/papers/rce/). The research paper holds the engineering, the theory and the measurements. This essay is where the theory and the economics meet.*
 
 ## Abstract
@@ -20,7 +23,7 @@ The trillion-dollar AI coding market is David Charlot's informed hyperbolic clai
 
 Every one of these projections assumes the same thing. There is only one path to autonomous computer automation. It is high energy, high compute, high entropy and disorder. A model sits in the loop for every task, and every task pays rent per token.
 
-The [RCE research paper](/papers/rce/) measures a second path. A program is a database functional state machine: one Form, many fits. Most fits already exist. Correctness is the gate, and joules are the ranking. On a frozen 20-task repair corpus, RCE resolved 20 of 20 with 0 model calls ([RCE §6.1](/papers/rce/#61-track-a-a-frozen-repair-corpus)). Where that path covers a task, the marginal cost of the task falls toward the energy to run it, and a market priced on generation loses its base on that task. This essay separates the projections from the measurements, names what each projection assumes, and states where it breaks.
+The [RCE research paper](/papers/rce/) measures a second path. A program is a database functional state machine: one Form, many fits. Most fits already exist. Correctness is the gate, and joules are the ranking. On a 20-task development corpus, RCE resolved 20 of 20 with 0 model calls ([RCE §6.1](/papers/rce/#61-track-a-a-frozen-repair-corpus)). Where that path covers a task, the marginal cost of the task falls toward the energy to run it, and a market priced on generation loses its base on that task. This essay separates the projections from the measurements, names what each projection assumes, and states where it breaks.
 
 <!-- include: economics-thesis -->
 
@@ -47,10 +50,13 @@ Only the last row is evidence about the cost of a correct result. The others are
 | Software developers worldwide | about 30 million (27 million to 47 million by estimate) | Projection input | Appenzeller and Li [1] |
 | Value per developer per year | $100,000 (assumed) | Projection input | [1] |
 | Annual economic contribution | about $3 trillion | Projection | [1] |
+| Developers on GitHub | 180 million plus; 518.7 million pull requests merged in the year | Company-reported | GitHub Octoverse 2025 [17] |
+| Value of generative AI across 63 use cases | $2.6 trillion to $4.4 trillion a year; software engineering productivity 20% to 45% of current annual function spend | Projection | McKinsey [15] |
+| Global GDP effect of generative AI | 7% over a ten-year period | Projection | Goldman Sachs [16] |
 | Productivity gain from a simple assistant | about 20% | Estimate from interviews | [1] |
 | Productivity gain from a best-of-breed deployment | "at least double" | Estimate "based on anecdotal evidence" | [1] |
 
-The same essay says the AI coding ecosystem can "support dozens of billion-dollar companies and even a trillion-dollar giant" [1]. That sentence is the trillion. It is a value estimate. It is not a revenue forecast.
+The developer count is soft: 30 million is a professional estimate, and GitHub alone counts six times that many accounts that build on it [17]. The per-developer value and the productivity multiple are soft too (Section 2.7). McKinsey's 2023 estimate is the original trillion of this market, and it is a value estimate across all functions [15]. The same venture essay says the AI coding ecosystem can "support dozens of billion-dollar companies and even a trillion-dollar giant" [1]. That sentence is the trillion. It is a value estimate. It is not a revenue forecast.
 
 ### 2.2 Tool revenue and enterprise spend
 
@@ -67,6 +73,7 @@ The revenue the market reports today is in the billions. The trillion is the val
 | Company claim | Number | Date | Label | Source |
 |---|---|---|---|---|
 | Cursor annualized revenue | over $1 billion | 13 November 2025 | Company-reported | Cursor [5] |
+| Cursor Pro repriced | from request limits to "$20 of frontier model usage per month at API pricing", with refunds for the change | June to July 2025 | Company-reported | Cursor [18] |
 | Cursor Series D | $2.3 billion at $29.3 billion post-money | 13 November 2025 | Company-reported | [5] |
 | Anthropic run-rate revenue | $14 billion | 12 February 2026 | Company-reported | Anthropic [6] |
 | Claude Code run-rate revenue | over $2.5 billion | 12 February 2026 | Company-reported | [6] |
@@ -83,7 +90,7 @@ Anthropic states that the round funds "infrastructure expansions" [6]. Revenue, 
 | Cost of one agentic coding query at list prices | $2.50: a 100,000-token context and 10,000 output tokens at $15 and $75 per million tokens | Illustration | Appenzeller and Li [1] |
 | The same at 3 queries an hour, 7 hours a day, 200 days | about $10,000 a year per developer | Illustration | [1] |
 | Tokens in agentic coding against code reasoning and code chat | about 1,000 times more; runs of one task differ by up to 30 times; higher token use "does not translate into higher accuracy" | Measured (eight models, SWE-bench Verified) | Bai, Huang and Wang [9] |
-| Net losses from Microsoft's investment in OpenAI, quarter ended 30 September 2025 | $4.1 billion, primarily its equity-method share | Filed | Microsoft Form 10-Q [7] |
+| Net losses from Microsoft's investment in OpenAI, quarter ended 30 September 2025 | $4.1 billion pre-tax, its equity-method share, in other expense; a $3.1 billion reduction in net income ($0.41 per diluted share) | Filed and company-reported | Microsoft Form 10-Q [7]; Microsoft FY26 Q1 performance [19] |
 
 Two lines in the sources state the economics plainly. Pichai: "many companies are already blowing through their annual token budgets, and it's only May" [8]. Appenzeller and Li: "For decades, software development cost was almost purely people's cost, but now LLMs add a substantial opex component" [1].
 
@@ -92,6 +99,11 @@ Two lines in the sources state the economics plainly. Pichai: "many companies ar
 | Claim | Number | Label | Source |
 |---|---|---|---|
 | Cost of a fixed level of AI performance | down about 47% per quarter, about 13 times per year, since 2023 | Measured price series (five benchmarks) | Epoch AI [4] |
+| Price to reach a fixed benchmark score | falls 9 to 900 times a year, depending on the milestone; fastest drops most recent and least certain to persist | Measured price series (log-linear fits) | Epoch AI [34] |
+| Inference cost at equivalent performance | down about 10 times a year: $60 per million tokens in 2021 to $0.06 | Estimate | Appenzeller, a16z [20] |
+| DeepSeek API price cut, 29 September 2025 | developers' cost "lowered by more than 50%" | Company-reported | DeepSeek [21] |
+
+The 13 times a year of [4] is one point in a wide range [34]. The fall is driven by competition and open weights, as the DeepSeek cut shows [21]. It needs no energy accounting. That is the first decline of Section 6. The second path adds a different one: calls per task.
 
 ### 2.6 Energy and capital
 
@@ -104,6 +116,23 @@ Two lines in the sources state the economics plainly. Pichai: "many companies ar
 | Alphabet capex | $31 billion in 2022; about $180 to $190 billion expected in 2026 | Company-reported and guidance | Pichai [8] |
 | Energy per task | down by at least an order of magnitude a year; reasoning and agentic tasks use "hundreds or thousands of times more energy per query than simple text generation" | Estimate | [10] |
 | One median text prompt to a production assistant | 0.24 Wh | Measured by the operator | Elsworth et al. [12] |
+| Stargate | $500 billion over four years for AI infrastructure for one lab, $100 billion deployed at once | Company-announced | OpenAI [22] |
+| Worldwide AI spending, 2025 | about $1.5 trillion | Projection | Gartner [24] |
+| Revenue the capex must earn back | "AI's $600B question" | Analysis | Sequoia Capital [23] |
+
+The rent that must be serviced is hardware rent. Capex and commitments of this size are paid back through usage priced above its energy. That is the base the second path removes on covered tasks.
+
+### 2.7 Productivity evidence
+
+| Study | n | Design | Effect | Source |
+|---|---|---|---|---|
+| a16z essay | interviews | Estimate | about 20% for a simple assistant; "at least double" best of breed | [1] |
+| GitHub Copilot, HTTP server task | recruited developers | Controlled experiment | 55.8% faster on one toy task | Peng et al. [27] |
+| Google enterprise trial | 96 engineers | Randomized controlled trial | about 21% less time on task | Paradis et al. [28] |
+| METR, early 2025 | 16 experienced open-source developers, 246 tasks | Randomized controlled trial | 19% slower with AI | Becker et al. [25] |
+| METR, 2026 update | new cohort | Randomized controlled trial | the authors call the new data "an unreliable signal" | METR [26] |
+
+The measured effects range from a 19% slowdown to a 56% speed-up on a toy task. Both factors of the value estimate, the developer count and the productivity multiple, are soft. That weakens the trillion. It also weakens any claim that the value the second path frees is a known number.
 
 ## 3. What the projections assume
 
@@ -136,7 +165,7 @@ These are measurements, labeled as RCE labels them. They come from the [RCE rese
 
 | Measurement | Result | Label | Where |
 |---|---|---|---|
-| Frozen 20-task repair corpus | 20 of 20 resolved, 0 model calls; 18 fixes byte-identical to the human fix, 2 equivalent | Measured counts | [RCE §6.1](/papers/rce/#61-track-a-a-frozen-repair-corpus) |
+| 20-task development corpus (rules written after the corpus froze; n = 20) | 20 of 20 resolved, 0 model calls; 18 fixes byte-identical to the human fix, 2 equivalent | Measured counts | [RCE §6.1](/papers/rce/#61-track-a-a-frozen-repair-corpus) |
 | The same corpus, earlier solver | 10 of 20, 3.10 model calls per resolved task | Measured counts | [RCE §6.1](/papers/rce/#61-track-a-a-frozen-repair-corpus) |
 | Energy per solved task, new solver | 84.2 J, 20 of 20, 154 s | `reported_j` (RAPL package counter less a stated idle baseline) | [RCE §6.2](/papers/rce/#62-track-b-joules-per-solved-task-on-jetson-hub) |
 | Energy per solved task, earlier solver | 712.4 J, 11 of 20, 29 model calls, 695 s | `reported_j` | [RCE §6.2](/papers/rce/#62-track-b-joules-per-solved-task-on-jetson-hub) |
@@ -154,15 +183,19 @@ These are measurements, labeled as RCE labels them. They come from the [RCE rese
 
 **High energy is not required for a correct result.** The gate passed at 84.2 J per task with no model, and the floor of the same corpus is 2.0 J [RCE §6.2]. One median text prompt to a production assistant is measured at 0.24 Wh, or 864 J [12]. An agentic coding task uses many prompts, and the IEA puts agentic queries at hundreds or thousands of times the energy of a simple one [10]. These are different tasks on different machines, so they are not a ratio. They are an order of magnitude to test, under Protocol E1.
 
-**Two declines multiply.** The price per call falls about 13 times a year at fixed performance [4]. Promotion drives calls per task to zero on covered cases [RCE §6.4]. The cost per task is the product of the two. A projection that extrapolates token volume prices only the first.
+**The evidence is at pilot scale.** The 20-task corpus is a development set: its rules were written after it froze ([RCE §6.1](/papers/rce/#61-track-a-a-frozen-repair-corpus)). What it shows is that a covered repair can need no token. What share of real task volume is covered is not yet measured; Proposition E5 measures it. The soak result, 10 model calls and then 0, is about amortization on live traffic and is the stronger evidence here.
+
+**Two declines multiply.** The price per call falls 9 to 900 times a year at fixed performance, depending on the task [4, 34]. Promotion drives calls per task to zero on covered cases [RCE §6.4]. The cost per task is the product of the two. A projection that extrapolates token volume prices only the first.
 
 **The Spell Check pattern.** [Spell Check is Global](/papers/spellcheck/) records a capability whose marginal cost fell to about zero and that complemented a tool everyone already had. It was bundled into the editor and its separate price disappeared, as bundling economics predicts [13, 14]. A covered coding task has the same two properties: its marginal cost falls to the handler floor, and it complements editors and repositories people already have. The prediction is the same: the covered task is bundled, and what stays priced is the uncovered case and the proof.
 
-**What survives.** The value estimate of section 2.1 can hold. Developers can produce more. What breaks is the claim that the value is captured as rent on generation. Value created at a falling marginal cost is captured by whoever holds the gate, the proof and the low-entropy floor, and much of it goes to the buyer.
+**Bundling by the platform owner.** The Spell Check pattern has an owner. The bundle is made by whoever owns the editor, the repository or the cloud. Spolsky named the tactic: commoditize your complement [31]. Nalebuff showed that a bundle can bar entry [32], and Adams and Yellen that it discriminates on price [33]. It is happening: GitHub moved Copilot's individual plans to usage-based billing from 1 June 2026 [30], and Cursor moved Pro from request limits to pass-through API pricing in 2025 [18]. A platform can give the model layer away and keep the rent in the IDE and the cloud. An energy-priced engine competes with a zero-priced bundle only where the gate is open to it: where the tests, the proof and the receipt are the buyer's, not the platform's.
+
+**What survives.** The value estimate of section 2.1 can hold. Developers can produce more. What breaks is the claim that the value is captured as rent on generation. The conclusion is conditional. Where coverage is high and the platform does not bundle, value created at a falling marginal cost goes to whoever holds the gate, the proof and the low-entropy floor, and much of it goes to the buyer. Where the platform bundles, the evidence so far says the gate-holder is the platform.
 
 ## 7. Demand
 
-Cheaper tasks can raise total demand. The venture essay expects it: "we believe Jevon's Paradox in this case holds" [1]. [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) separates the two effects. Per-task appetite stops at the completion predicate. Aggregate use can still grow, because cheaper synthesis opens new tasks. The second path changes the first effect and leaves the second open. A larger market of covered tasks is a market whose marginal cost is the floor, not the frontier.
+Cheaper tasks can raise total demand. The venture essay expects it: "we believe Jevon's Paradox in this case holds" [1]. [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) separates the two effects. Per-task appetite stops at the completion predicate. Aggregate use can still grow, because cheaper synthesis opens new tasks. The second path changes the first effect and leaves the second open. A larger market of covered tasks is a market whose marginal cost is the floor, not the frontier. The one published elasticity is small. Across tasks in Anthropic's API sample, each 1% increase in cost is associated with a 0.29% decrease in usage frequency [29]. That is cross-sectional across tasks, not a price change over time. Read as it stands, demand is inelastic: price declines shrink revenue on a fixed task set, which supports the essay's reading of rent, and they do not by themselves make coding used far more.
 
 ## 8. Propositions and protocols
 
@@ -173,6 +206,8 @@ Cheaper tasks can raise total demand. The venture essay expects it: "we believe 
 **Proposition E3 (compute scale is not a moat on covered tasks).** On tasks the second path covers, the resolve rate does not rise with the compute of the last gear. *Protocol:* run [RCE Protocol 8.2](/papers/rce/#82-swe-bench-lite-offline) with no model, a small local model and a frontier model as the last gear. Compare resolve rates on the tasks closed before the last gear.
 
 **Proposition E4 (the token share of revenue).** In a repository where coverage grows, the share of task cost paid as tokens falls with coverage. *Protocol:* log tokens, joules and dollars per closed task by round in the RCE soak with a priced model resolver, labeled, and report the token share of cost by round.
+
+**Proposition E5 (coverage).** The share of real coding task volume that falls in classes the second path covers is measurable. *Protocol:* draw a random sample of merged pull requests from public repositories (GitHub reports 518.7 million merged in a year [17]), classify each by whether frozen G0 to G2 gears produce a gate-passing patch, and report the covered fraction with a 95% interval. Until that number exists, Proposition E0 applies to an unmeasured share.
 
 ## References
 
@@ -203,3 +238,43 @@ Cheaper tasks can raise total demand. The venture essay expects it: "we believe 
 [13] Y. Bakos and E. Brynjolfsson, "Bundling Information Goods: Pricing, Profits, and Efficiency," *Management Science* 45(12), 1999. doi:10.1287/mnsc.45.12.1613
 
 [14] C. Shapiro and H. R. Varian, *Information Rules: A Strategic Guide to the Network Economy*, Harvard Business School Press, 1998.
+
+[15] McKinsey & Company, "The economic potential of generative AI: The next productivity frontier," June 2023. https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier
+
+[16] Goldman Sachs, "Generative AI could raise global GDP by 7%," April 2023. https://www.goldmansachs.com/intelligence/pages/generative-ai-could-raise-global-gdp-by-7-percent.html
+
+[17] GitHub, "Octoverse: A new developer joins GitHub every second as AI leads TypeScript to #1," 2025. https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/
+
+[18] Cursor, "Clarifying our pricing," June 2025 pricing post. https://cursor.com/blog/june-2025-pricing
+
+[19] Microsoft Investor Relations, FY26 Q1 Performance. https://www.microsoft.com/en-us/investor/earnings/fy-2026-q1/performance
+
+[20] G. Appenzeller, "Welcome to LLMflation: LLM inference cost is going down fast," a16z, November 2024. https://a16z.com/llmflation-llm-inference-cost/
+
+[21] DeepSeek, DeepSeek-V3.2-Exp release and API price reduction, 29 September 2025 (in Chinese). https://api-docs.deepseek.com/zh-cn/news/news250929
+
+[22] OpenAI, "Announcing The Stargate Project," 21 January 2025. https://openai.com/index/announcing-the-stargate-project/
+
+[23] D. Cahn, "AI's $600B Question," Sequoia Capital, 2024. https://www.sequoiacap.com/article/ais-600b-question/
+
+[24] Gartner, "Gartner Says Worldwide AI Spending Will Total $1.5 Trillion in 2025," 17 September 2025. https://www.gartner.com/en/newsroom/press-releases/2025-09-17-gartner-says-worldwide-ai-spending-will-total-1-point-5-trillion-in-2025
+
+[25] J. Becker, N. Rush, E. Barnes and D. Rein, "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity," METR, 2025. arXiv:2507.09089. https://arxiv.org/abs/2507.09089
+
+[26] METR, uplift study update, 24 February 2026. https://metr.org/blog/2026-02-24-uplift-update/
+
+[27] S. Peng, E. Kalliamvakou, P. Cihon and M. Demirer, "The Impact of AI on Developer Productivity: Evidence from GitHub Copilot," 2023. arXiv:2302.06590. https://arxiv.org/abs/2302.06590
+
+[28] E. Paradis, K. Grey, Q. Madison et al., "How much does AI impact development speed? An enterprise-based randomized controlled trial," 2024. arXiv:2410.12944. https://arxiv.org/abs/2410.12944
+
+[29] Anthropic, "Anthropic Economic Index report: Uneven geographic and enterprise AI adoption," September 2025. https://www.anthropic.com/research/anthropic-economic-index-september-2025-report
+
+[30] GitHub Japan blog, "GitHub Copilotの個人向けプラン: ProとPro+へのフレックス枠追加と新しいMaxプランのご紹介," 15 May 2026 (in Japanese). https://github.blog/jp/2026-05-15-github-copilot-individual-plans-introducing-flex-allotments-in-pro-and-pro-and-a-new-max-plan/
+
+[31] J. Spolsky, "Strategy Letter V," Joel on Software, 12 June 2002. https://www.joelonsoftware.com/2002/06/12/strategy-letter-v/
+
+[32] B. Nalebuff, "Bundling as an Entry Barrier," *Quarterly Journal of Economics* 119(1), 2004. doi:10.1162/003355304772839551
+
+[33] W. J. Adams and J. L. Yellen, "Commodity Bundling and the Burden of Monopoly," *Quarterly Journal of Economics* 90(3), 1976. doi:10.2307/1886045
+
+[34] Epoch AI, "LLM inference prices have fallen rapidly but unequally across tasks," data insight. https://epoch.ai/data-insights/llm-inference-price-trends

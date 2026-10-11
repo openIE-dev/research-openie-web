@@ -13,11 +13,13 @@ board_metered: true
 
 # Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems
 
+*Version 1.1, revised 11 October 2026. Changes in this revision are listed in the site changelog at [/changelog/](/changelog/).*
+
 ## 0. Overview
 
 This paper joins two earlier studies into one systems paper. Part I is the commit gate. A proposal may not authorize itself. An irreversible act runs only behind a certificate, and every decision is written to a receipt. Part II is Mixture of Limits: use the cheapest gear that is sufficient. Its standard instance is a cascade. The cheapest sufficient gear runs first: Lookup, then Formula, then Solver, then Model. The cascade stops when the task completion predicate $C(z)$ holds, and it refuses with a receipt when the next gear would break the budget. Both parts rank by one quantity: the joules needed to reach a correct completion.
 
-One board measurement anchors the gate fabric. On an AMD Kria KV260, the onboard INA260 read board-level A/B/A differences of 11,428 pJ per gate cycle (standard error 129 pJ, N = 4) for the WCA gate fabric, and 98.0 pJ per seed cycle (standard error 30.8 pJ, N = 4) for the seed fabric. These are board level, not core rail (Section I.3.7).
+One board measurement anchors the gate fabric. On an AMD Kria KV260, the onboard INA260 read SOM-level A/B/A differences of 11,428 pJ per gate cycle (standard error 129 pJ, N = 4) for the WCA gate fabric, and 98.0 pJ per seed cycle (standard error 30.8 pJ, N = 4) for the seed fabric. The INA260 sits on `VCC_SOM`, which feeds the processing system, the programmable logic, DDR memory and the module regulators ([KV260 device tree, `ina260@40`](https://gbmc.googlesource.com/linux/+/ccd1cdca5cd433c8a5dff78b69a79b31d9b77ee1/arch/arm64/boot/dts/xilinx/zynqmp-sck-kv-g-revB.dtso)), so these are whole-module differences, not a core-rail or PL-only figure (Section I.3.7). The seed-fabric difference is about 1 mW at 5 V, near the part's 1.25 mA current resolution, and is reported as inconclusive until a PL-rail meter and at least 10 passes are run.
 
 ### 0.1 Contributions
 
@@ -218,6 +220,10 @@ Shi et al., **Progent** (arXiv:[2504.11703](https://arxiv.org/abs/2504.11703)), 
 **What this paper owns.** Those peers are policy, shield, or certificate-repair objects. This reference ships a four-field commit envelope (`proposal` → `certificate` → `commit|refuse` → receipt) with a conjunctive LUT allow bit and an energy predicate, typed refuse reasons, and analytical joules kept distinct from board power. Transport (MCP) remains proposal. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) chooses the gear on available fabric. [Satiation](/papers/satiation/) supplies the economic stop. [Metabolic Intelligence](/products/mei/) supplies the budget envelope. Board joules exist only for the KV260 runs in Section 3.7, at board level.
 
 <div id="3-definitions-and-methods" class="anchor-alias" aria-hidden="true"></div>
+
+**Runtime enforcement.** The gate is a security automaton. Schneider showed that execution monitors enforce exactly the safety properties [Schneider 2000](https://doi.org/10.1145/353323.353382), and Ligatti, Bauer and Walker extended the monitor to edit automata that suppress or insert actions [Ligatti et al. 2005](https://doi.org/10.1007/s10207-004-0046-8). Falcone set out when to enforce rather than verify [Falcone 2010](https://doi.org/10.1007/978-3-642-16612-9_9), and Bauer, Leucker and Schallhart gave runtime verdicts three values [Bauer et al. 2011](https://doi.org/10.1145/2000799.2000800), which map onto allow, refuse and `settle_refuse`. What this paper adds to that line is the energy predicate in the certificate and the receipt. Agent guards of 2024 to 2026 have the same shape, a check between a proposed tool call and its effect: GuardAgent [arXiv:2406.09187](https://arxiv.org/abs/2406.09187) and AgentSpec [arXiv:2503.18666](https://arxiv.org/abs/2503.18666). PolicyGuide argues that a check on each action cannot steer a multi-step workflow [arXiv:2608.19861](https://arxiv.org/abs/2608.19861); that is why Part II puts the stop on the task predicate $C(z)$ rather than on the single act. Multi-step irreversible work also needs compensation, which sagas supply [Garcia-Molina and Salem 1987](https://doi.org/10.1145/38713.38742), and "a proposal may not authorize itself" is the reference-monitor principle that capability kernels such as seL4 enforce by proof [Klein et al. 2009](https://doi.org/10.1145/1629575.1629596). The 0-false-allow scan of Section I.4 is a test over a grid, not a proof; Section I.6 states that limit, and it applies to every summary of the result.
+
+**Reference points for the board figure.** An FPGA implementation of a function is expected to cost more energy than an ASIC; Kuon and Rose measured the dynamic power gap [Kuon and Rose 2007](https://doi.org/10.1109/TCAD.2006.884574), and Horowitz gives the CMOS energy per operation that frames such figures [Horowitz 2014](https://doi.org/10.1109/ISSCC.2014.6757323). A vendor power estimate for the same bitstream beside the SOM reading is part of the PL-rail protocol.
 
 ## I.3. Definitions and methods
 
@@ -436,8 +442,8 @@ On the hard multi-seed gate benchmark in `RESULTS.md`, after threshold calibrati
 | Rung | Fabric | Clock | Difference (W) | Operation | Joules per operation | Label |
 |---|---|---|---|---|---|---|
 | 1 | Seed freerun vs board baseline | n/a | −0.8212 (SE 0.0024) | none | none | `measured_j`, watts only |
-| 2 | Seed, halt vs run | about 100 MHz | +0.0098 (SE 0.0031) | one seed cycle | 98.0 pJ (SE 30.8) | `measured_j`, INA260, board |
-| 3 | Gate, 8 lanes, halt vs run | 25 MHz | +0.2857 (SE 0.0032) | one gate cycle, 8 decisions | 11,428 pJ (SE 129) | `measured_j`, INA260, board |
+| 2 | Seed, halt vs run | about 100 MHz | +0.0098 (SE 0.0031) | one seed cycle | 98.0 pJ (SE 30.8) | `measured_j`, INA260, SOM rail (`VCC_SOM`) |
+| 3 | Gate, 8 lanes, halt vs run | 25 MHz | +0.2857 (SE 0.0032) | one gate cycle, 8 decisions | 11,428 pJ (SE 129) | `measured_j`, INA260, SOM rail (`VCC_SOM`) |
 
 N = 4 interleaved A/B/A passes per rung. Rung 1's negative sign means the seed bitstream draws less than the board's baseline bitstream. It does not mean the seed is free. Section 3.7 gives the limits of a board-level reading.
 
@@ -840,7 +846,7 @@ This study lives inside the OpenIE family of sites. Readers do not need those si
 
 Other names this paper uses without treating them as assumed literacy: **MathGround** denotes the OpenIE cascade / replay-class discipline that enforces Lookup → Formula → Solver → Model; **WCA** denotes capability / certify refuse adapters (live MCP path remains software reference roadmap); **leapfrog / `openie-path`** denotes ask-bridge adapters (stubs on the verified path). Living companions for this study: [/living/mol/](/living/mol/). FPGA commit figures for NI: [/living/fpga-sim/](/living/fpga-sim/).
 
-Scope. Companion papers (Navigation / Commit / task completion) and the OpenIE map above name the catalog triad and stack / compute / knowledge / synthesis / verify / research before any later allusion. Section 2 states the law and Periodic Stack navigation. Section 3 states the proof spine $E(x) \ge \theta(D)\cdot\mu(S,V)$. Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (energy-based model / large language model / latent hybrid), the hybrid-interplay convergence of embodiment-class limits (§8.5.1), World Labs (spatial world models), and **SOTA at the plateau** (§8.7): once VoI is zero past the floor, plateau spend is the only work: test-time compute, super learning, live SOTA methods (SSMs, MoE, RAG, speculative decode, …), SSM hybrids / MoE / implementation efficiency (including Jamba-class, DeepSeek, GLM as options), hardware economics (including edge / neuromorphic software reference), plateau techniques for transmission / gearing / cascade / memory-context / test-time (§8.13), industry gap levers (Mixture-of-Depths, AWQ/GPTQ/FP8, vLLM/SGLang; §8.10.1), and the cross-field **race to plateau floors** table (§8.14: RLHF, diffusion, GNNs, multimodal, federated/continual, pruning/KD/NAS, Bayesian/conformal/causal/active, GraphRAG, agent memory, structured generation, CUDA Graphs). Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits. Section 11 states engineering gaps to close (dual-phase front-door perception, O(1) meta-routing, Primitive Distillation for open grammars, Tier 0/1/2 measurement realism, and a declarative DX roadmap) as plateau work under the same floors, not apologies.
+Scope. Companion papers (Navigation / Commit / task completion) and the OpenIE map above name the catalog triad and stack / compute / knowledge / synthesis / verify / research before any later allusion. Section 2 states the law and Periodic Stack navigation. Section 3 states the cost model $E(x) \ge \theta(D)\cdot\mu(S,V)$. Section 4 describes the cascade and close/receipt bind. Section 5 bridges to Satiation without rewriting it. Section 6 maps prove↔claim. Section 7 sketches VoI, grammar, and settle-refuse mathematics. Section 8 places related work as a verified citation chain (historical→recent proof points) plus Tier A formula/mechanism systems, then teaches latent space, Logical Intelligence (energy-based model / large language model / latent hybrid), the hybrid-interplay convergence of embodiment-class limits (§8.5.1), World Labs (spatial world models), and **SOTA at the plateau** (§8.7): once VoI is zero past the floor, plateau spend is the only work: test-time compute, super learning, live SOTA methods (SSMs, MoE, RAG, speculative decode, …), SSM hybrids / MoE / implementation efficiency (including Jamba-class, DeepSeek, GLM as options), hardware economics (including edge / neuromorphic software reference), plateau techniques for transmission / gearing / cascade / memory-context / test-time (§8.13), industry gap levers (Mixture-of-Depths, AWQ/GPTQ/FP8, vLLM/SGLang; §8.10.1), and the cross-field **race to plateau floors** table (§8.14: RLHF, diffusion, GNNs, multimodal, federated/continual, pruning/KD/NAS, Bayesian/conformal/causal/active, GraphRAG, agent memory, structured generation, CUDA Graphs). Section 9 contrasts Mixture of Limits with Mixture-of-Experts and situates model-to-model field systems. Section 10 opens toward AGI via limits. Section 11 states engineering gaps to close (dual-phase front-door perception, O(1) meta-routing, Primitive Distillation for open grammars, Tier 0/1/2 measurement realism, and a declarative DX roadmap) as plateau work under the same floors, not apologies.
 
 ---
 
@@ -891,6 +897,10 @@ Mixture of Limits navigates the OpenIE **Periodic Stack of Computation** at [com
 
 <div id="mixture-of-limits-is-not-moe" class="anchor-alias" aria-hidden="true"></div>
 
+### II. The cascade lineage
+
+Mixture of Limits is threshold convergence: spend until the next unit no longer buys verifiable progress, then stop. Its parts have a lineage. Anytime algorithms and their performance profiles trade computation for quality with an interruptible stop ([Dean and Boddy 1988](https://cdn.aaai.org/AAAI/1988/AAAI88-009.pdf)). Attentional cascades reject easy cases with cheap stages first ([Viola and Jones 2001](https://doi.org/10.1109/CVPR.2001.990517)). Model cascading sends an input to a larger model only when a smaller one is unsure ([Varshney and Baral 2022](https://doi.org/10.18653/v1/2022.emnlp-main.756)); speculative decoding lets a small model draft and a large one verify ([Leviathan et al. 2023](https://proceedings.mlr.press/v202/leviathan23a.html)); Mixture-of-Depths allocates compute per token inside one model ([Raposo et al. 2024](https://arxiv.org/abs/2404.02258)). The plateau is measured: reasoning models spend tokens after the first correct answer that do not change it ([Chen et al. 2024](https://arxiv.org/abs/2412.21187)), and a survey of efficient reasoning collects the methods that stop earlier ([Sui et al. 2025](https://arxiv.org/abs/2503.16419)). Mixture of Limits takes the stop from these works, puts it on the task predicate $C(z)$ and prices it in joules. Proposition 9 of the [agency paper](/papers/agency/#proposition-9-when-cheapest-first-is-optimal) is the condition under which the cheapest-first order is optimal.
+
 ### II. Mixture of Limits is not MoE
 
 | MoE (generative corridor) | Mixture of Limits (navigation rule) |
@@ -905,8 +915,9 @@ Clean-room policy: Mixture of Limits is a rule plus a runtime, not a wrapper on 
 ---
 
 <div id="3-proof-spine-ex--θdμsv" class="anchor-alias" aria-hidden="true"></div>
+<div id="ii3-proof-spine-ex--θdμsv" class="anchor-alias" aria-hidden="true"></div>
 
-## II.3. Proof spine: E(x) ≥ θ(D)·μ(S,V)
+## II.3. Cost model: E(x) ≥ θ(D)·μ(S,V)
 
 The energy / impedance cost model used throughout Mixture of Limits is:
 

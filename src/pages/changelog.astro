@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+const entries = [
+  { v: '1.1', date: '11 October 2026', items: [
+    'All papers: version and revision date under the title.',
+    'The Reality Code Engine: rule-authoring timeline against the corpus freeze (corpus20 is a development set); n and a 95% interval on the headline result; gross beside idle-subtracted RAPL joules; host described as an x86 laptop; Section 5.1 renamed to differential testing; scope of the ASM theorem stated, with the Form as a modelling choice; repair, overfitting and benchmark-bias lineage; held-out and baseline protocols (8.4, 8.5); Falsifiers, Work to finish and Conclusion sections.',
+    'The Promised Trillion Dollar AI-Coding Market: McKinsey, Goldman Sachs, GitHub, Gartner, Sequoia and Stargate rows; productivity evidence table; Microsoft pre-tax and net figures; Cursor repricing; the 9 to 900 times price range, LLMflation and the DeepSeek cut; bundling by the platform owner; the price elasticity; coverage proposition E5; conditional conclusion.',
+    'Thermodynamic Bounds (agency): the thesis read through its gate, against Burnell, Zhou, Laber and existing gated metrics; objections to the floor (Section 3.0); Koyuk and Seifert for driven acts; Jordan on Margolus-Levitin; the estimator replacement; falsifier outcomes in Section 5.2; the Sudoku grid stated as inside the agent wall.',
+    'Metered Commit Gates: KV260 figures relabeled SOM-level with the rail cited, seed-fabric result marked inconclusive; runtime-enforcement lineage; cascade lineage; II.3 renamed cost model.',
+    'Task Satiation: sections renumbered (old 2.8 to 2.10 and 3.6 to 3.8 are now 3.6 to 3.11, with the old anchors kept); rebound canon; predicate endogeneity; H1 from public trajectories; tokens and joules; identification limits.',
+    'Spell Check is Global: title tidied; the few stated as a price class; connected reach from ITU; premium tier moved up a layer; bundling economics; grammatical error correction and the energy trade-off.',
+    'Site: navigation and footer list every paper and PDF; one measured_j definition; nine glossary terms; one Notational Intelligence definition; About count; catalog hero wording.',
+  ]},
+];
+---
+<Layout title="Changelog | OpenIE Research" description="Dated revisions of the OpenIE research papers.">
+  <main class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="font-display text-3xl text-brand-white">Changelog</h1>
+    {entries.map((e) => (
+      <section class="mt-8">
+        <h2 class="font-display text-xl text-brand-white">Version {e.v}, {e.date}</h2>
+        <ul class="mt-3 list-disc pl-6 font-body text-sm text-brand-slate leading-relaxed">
+          {e.items.map((i) => <li class="mt-2">{i}</li>)}
+        </ul>
+      </section>
+    ))}
+  </main>
+</Layout>

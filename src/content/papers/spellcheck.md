@@ -1,6 +1,6 @@
 ---
-title: "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)"
-deck: "People used to pay a premium for spell check. It cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. That is what happens when a technology is built for global access, for the many (7B+ people), instead of priced by scarcity for the few (under 500M people). Energy to run is what remains."
+title: "Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few"
+deck: "People used to pay a premium for spell check. Its base layer cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. That is what happens when a technology is built for global access, for the many (7B+ people), instead of priced by scarcity for the few who can pay a scarcity price. Energy to run is what remains."
 id: spellcheck
 status: "History essay"
 author: "David Charlot, Open Interface Engineering"
@@ -9,23 +9,25 @@ pdf: "/pdfs/spellcheck.pdf"
 board_metered: false
 ---
 
-# Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)
+# Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few
+
+*Version 1.1, revised 11 October 2026. Changes in this revision are listed in the site changelog at [/changelog/](/changelog/).*
 
 ## Abstract
 
-This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are fewer than 500 million people. Spell check is the finished case. Its cause is marginal cost and complementarity: the routine's marginal cost fell to about zero, and it complemented an editor everyone already had, so bundling it beat selling it [62, 63].
+This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are those who can pay a scarcity price. Spell check is the finished case. Its cause is marginal cost and complementarity: the routine's marginal cost fell to about zero, and it complemented an editor everyone already had, so bundling it beat selling it [62, 63].
 
 People used to pay for spell check, and they paid a premium. WordCheck listed at \$200.00 in January 1981. Grammatik II was \$89 in 1988. Grammatik III was \$99 in 1989. WordPerfect 3.0 was \$495 in October 1983, and it included a spell-check command. Word 1.0 was \$395 and did not include spell check. The checker was added in Word 2.0, and it was a checker the firm purchased. Ordinary calculation was sold the same way. The Anita Mk 8 was £335 in December 1961. The HP 9100A was \$4,900. The Bowmar 901B was \$240 in September 1971. The HP-35 was \$395. Lotus 1-2-3 was fixed at \$495 before it went on sale.
 
-Spell check cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Hunspell's license price is zero. Ordinary calculation went the same way: the job is a function of the phone and the computer, not a separate premium sale. The thing people paid for is still there. The sale is not.
+Spell check as a base-layer product cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Hunspell's license price is zero. Ordinary calculation went the same way: the job is a function of the phone and the computer, not a separate premium sale. The thing people paid for is still there. The sale is not.
 
-Price a capability by scarcity and it stays with fewer than 500 million people. Build it for global access and it reaches more than 7 billion people. Spell check is the second choice, finished. The separate price is gone. The capability is bundled into the tool people already have.
+Price a capability by scarcity and it stays with the few who can pay. Build it for global access and it reaches more than 7 billion people. Spell check is the second choice, finished. The separate price is gone. The capability is bundled into the tool people already have.
 
 Energy to run is the only true metric of computer intelligence. Token price, parameter count, moat rent, and access fees are charges of the kind that used to be the product. Commoditization removes the separate charge. What remains is joules. The joules to compare a word to a local list are still spent.
 
 The path is a sequence. A procedure starts in a specialist bureau. It then becomes a routine on the machine that already holds the work. It then becomes ordinary, because it is cheap, local, and paired to hardware people already have. Spell check finished that sequence. Detection of a nonword and proposal of a correction are computer intelligence. They are not a metaphor for some later system. The capability reached ordinary writing: the editor, the browser, the phone keyboard. It did not stay as a service only a lab could rent.
 
-The future of computer intelligence is that pattern. The many are more than 7 billion people. The few are fewer than 500 million people. Scarcity pricing holds the capability for the few. Global access gives it to the many. Spell check already did the second.
+The future of computer intelligence is that pattern. The many are more than 7 billion people. The few are those who can pay a scarcity price. Scarcity pricing holds the capability for the few. Global access gives it to the many. Spell check already did the second.
 
 The four companion studies say how a capability should behave once it is on that path. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) chooses the gear, and the gear has to sit on hardware that is available, accessible, and capable. [Metered Commit Gates, Part I (Notational Intelligence)](/papers/gates/) owns the commit: a suggestion is a proposal until it is accepted. [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) owns the stop: once the token is kept, further candidates do not change the written predicate. [Metabolic Intelligence](/products/mei/) owns the envelope: the envelope is the physical condition of the best answer, not a cheaper answer purchased by degrading the result. Klere ([klere.ai](https://klere.ai)) is the product home of that class. It is not a prison. Spell check already finished the path in editors that are not Klere.
 
@@ -43,7 +45,7 @@ This paper reports published procedures, a local library, and on-device APIs. Th
 | Accessible | The person can invoke the capability on that fabric without sending the job to a specialist bureau. |
 | Capable | The fabric can run the gear that closes the job. |
 | The many (7B+) | More than 7 billion people. The people global access is for. |
-| The few (under 500M) | Fewer than 500 million people. The people a scarcity price can still reach. |
+| The few | The people a scarcity price can still reach. This is a price class, not a headcount: frontier chat alone passed 800 million weekly users in October 2025 [61]. |
 | Proposal | A spelling suggestion. The document has not changed yet. |
 | Commit | The replacement is written. Notational Intelligence owns this shape. |
 | Completeness | The token is kept: it was known, or a candidate was accepted. Further search then has zero value of information on that predicate. |
@@ -54,11 +56,11 @@ This paper reports published procedures, a local library, and on-device APIs. Th
 
 ### Terms used here
 
-The many (more than 7 billion people) and the few (fewer than 500 million people) are people, not a census disclaimer. Software reference, value of information, Mixture of Limits gears, and the board-result flag are on the shared [glossary](/glossary/). Living companions: [/living/spellcheck/](/living/spellcheck/).
+The many (more than 7 billion people) and the few (those who can pay a scarcity price) are people, not a census disclaimer. Software reference, value of information, Mixture of Limits gears, and the board-result flag are on the shared [glossary](/glossary/). Living companions: [/living/spellcheck/](/living/spellcheck/).
 
 ## 1. Introduction
 
-This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are fewer than 500 million people. Spell check is the finished case. Its cause is marginal cost and complementarity: the routine's marginal cost fell to about zero, and it complemented an editor everyone already had, so bundling it beat selling it [62, 63].
+This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are those who can pay a scarcity price. Spell check is the finished case. Its cause is marginal cost and complementarity: the routine's marginal cost fell to about zero, and it complemented an editor everyone already had, so bundling it beat selling it [62, 63].
 
 People paid a premium. Then the thing could not be sold. It is free, and it is bundled into something else. The prices in Section 2.11 are that fact. The names in Section 2.9 come after it.
 
@@ -70,11 +72,11 @@ The coding instance of this pattern is [The Promised Trillion Dollar AI-Coding M
 
 For spell check the price trend is complete. The routine is bundled into the editor at zero price. The joules are still spent.
 
-The choice is the price. Scarcity pricing holds a capability back and sells the hold. It reaches the people who can pay, fewer than 500 million people. Global access is the other choice. The capability is built to run on the machine a person already has, and the separate charge ends. That reaches more than 7 billion people.
+The choice is the price. Scarcity pricing holds a capability back and sells the hold. It reaches the people who can pay, the few. Global access is the other choice. The capability is built to run on the machine a person already has, and the separate charge ends. That reaches more than 7 billion people.
 
 Spell check is that second choice, finished. The job is to decide whether a written token is a word, and if it is not, to propose the word the writer meant. Kukich (1992) splits the job into nonword detection, isolated-word correction, and context-dependent correction. The first two became ordinary. They run inside programs people already use to write. They are computer intelligence, not a story told in order to talk about a different system.
 
-The second choice finishes only when the routine is cheap enough to run beside the document, local to the machine that holds the file, and paired to hardware people already have. McIlroy (1982) states the constraint in the first sentences of the UNIX spelling-list paper. The checker may be used on minicomputers, so the list has to be compact. That is global access as engineering. A frontier model that answers only inside a rented datacenter is scarcity pricing still in force. It can be capable and still stay with the fewer than 500 million people who can rent it.
+The second choice finishes only when the routine is cheap enough to run beside the document, local to the machine that holds the file, and paired to hardware people already have. McIlroy (1982) states the constraint in the first sentences of the UNIX spelling-list paper. The checker may be used on minicomputers, so the list has to be compact. That is global access as engineering. A frontier model that answers only inside a rented datacenter is scarcity pricing still in force. It can be capable and still stay with the few who can rent it.
 
 Section 2.11 is the premium, dated. Section 2.10 is who holds a machine the finished capability can run on, and who holds only a rental. Software written for the machine people already run is how access reaches the many. A price that requires the rental is how scarcity keeps the few.
 
@@ -155,14 +157,14 @@ Hooker (2020; 2021) names the hardware lottery: a research idea wins because it 
 
 ### 2.8 What this literature is not asked to prove
 
-None of the spelling sources above is a population table. When a spelling number appears in Section 4, it is the source's own count: dictionary words, test-set size, words per second, or a published identification rate. Section 2.10 adds a different class. Each hardware number is the publisher's shipment, subscriber, revenue, or survey figure, with the year attached. More than 7 billion people, and fewer than 500 million people, are the two classes in the opinion. They are not a sum of those rows.
+None of the spelling sources above is a population table. When a spelling number appears in Section 4, it is the source's own count: dictionary words, test-set size, words per second, or a published identification rate. Section 2.10 adds a different class. Each hardware number is the publisher's shipment, subscriber, revenue, or survey figure, with the year attached. More than 7 billion people, and the few who can pay a scarcity price, are the two classes in the opinion. They are not a sum of those rows.
 
 
 ### 2.9 How computer automation is priced
 
 Energy to run is the only true metric of computer intelligence. History and the recent price notes are the evidence. A cited rate stays inside the paper that published it. No curve is fit here. No slope, half-life, or zero-price year is stated.
 
-In plain words, before the names. People used to pay a premium for spell check and for ordinary calculation. Spell check cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Ordinary calculation is bundled into the phone and the computer. The names below are only labels for that sequence.
+In plain words, before the names. People used to pay a premium for spell check and for ordinary calculation. Spell check as a base-layer product cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Ordinary calculation is bundled into the phone and the computer. The names below are only labels for that sequence.
 
 Three regimes name how a computer-automation tool is priced. Section 2.11 is the dated tape for the calculator and for spell check. Each price is a source's price. No curve is fit through them.
 
@@ -172,13 +174,13 @@ Three regimes name how a computer-automation tool is priced. Section 2.11 is the
 
 **Pricing elimination.** Commoditization is the end of the separate charge. The capability remains. The invoice line does not. Spell check is the completed example. Hunspell is a free spell-checking library under a tri-license (LGPL, GPL, and MPL). The project states that LibreOffice, Firefox, Chrome, Linux distributions, and macOS call it, and that a check reads a local dictionary (Hunspell README). The buyer of those editors does not pay a token price for a nonword, does not pay an access fee to a spelling bureau, and does not shop a parameter count. The method's money price as a separate good is zero. That is pricing elimination. It is not a claim that the editor itself is free, and it is not a claim that the phone was free. It is a claim that spelling correction is no longer priced as its own good.
 
-**The moat can move onto the machine.** Ending the separate software price does not end every scarcity price. A platform can put a newer capability on a newer device and charge for the device. Yusuf Mehdi, 20 May 2024, defined a Copilot+ PC by a neural processing unit of 40 or more TOPS. The first wave uses Snapdragon, the small model runs on that unit, and large models stay on Azure. Apple's 9 June 2025 account puts an on-device model of about 3 billion parameters on Apple silicon and leaves the larger model on Private Cloud Compute. Those are prices for a later gear and for the machine that holds it. They are not a revived invoice for spell check. The checker already runs on the editor, the browser, and the phone people have, including the prior generation still in hand. A refresh that asks someone to buy a new class of computer in order to receive a check the old machine already performs is scarcity pricing of the hardware. It reaches the people who buy that class. Fewer than 500 million people can be that class. It does not undo the access already finished for more than 7 billion people.
+**The moat can move onto the machine.** Ending the separate software price does not end every scarcity price. A platform can put a newer capability on a newer device and charge for the device. Yusuf Mehdi, 20 May 2024, defined a Copilot+ PC by a neural processing unit of 40 or more TOPS. The first wave uses Snapdragon, the small model runs on that unit, and large models stay on Azure. Apple's 9 June 2025 account puts an on-device model of about 3 billion parameters on Apple silicon and leaves the larger model on Private Cloud Compute. Those are prices for a later gear and for the machine that holds it. They are not a revived invoice for spell check. The checker already runs on the editor, the browser, and the phone people have, including the prior generation still in hand. A refresh that asks someone to buy a new class of computer in order to receive a check the old machine already performs is scarcity pricing of the hardware. It reaches the people who buy that class. Only the few can be that class. It does not undo the access already finished for more than 7 billion people.
 
-Context-dependent correction is not that finished case. Kukich (1992) named it as the third problem: a token that is a real word and still the wrong word. A larger model can be the right gear there. The gear has taken the access choice only when it runs on hardware the person already has, or on a resource-optimized central fabric that person can use. A scarce rental is the scarcity choice, even when the model is more accurate on a benchmark. The ordinary nonword job does not move back onto that rental because the context job is unfinished. No joule table comparing a dictionary probe, a local model, and a datacenter call is printed here. None of those joules was metered for this paper.
+Context-dependent correction is not that finished case. Kukich (1992) named it as the third problem: a token that is a real word and still the wrong word. A larger model can be the right gear there. On grammatical error correction, larger and better trained models do correct better: GECToR [71] and an 11-billion-parameter multilingual model [72] set the state of the art in their time. The trade-off is energy: Luccioni, Jernite and Strubell measure generative tasks as far more energy-intensive than classification tasks per inference [73]. The isolated-word case of Section 4.10 is the case where the extra spend buys no different token. The gear has taken the access choice only when it runs on hardware the person already has, or on a resource-optimized central fabric that person can use. A scarce rental is the scarcity choice, even when the model is more accurate on a benchmark. The ordinary nonword job does not move back onto that rental because the context job is unfinished. No joule table comparing a dictionary probe, a local model, and a datacenter call is printed here. None of those joules was metered for this paper.
 
 What remains is the energy to run the comparison. A local dictionary probe spends joules on the device that holds the document. No joules are metered here. No analytical total is computed. Package `measured_j` stays unset. A companion joule figure is `measured_j` only when that study's meter returned the reading. [Metabolic Intelligence](/products/mei/) owns the envelope: the joules are the physical condition of the best answer, not a discount that buys a worse word. [Satiation](/papers/satiation/) owns the stop: free at the money price is not free joules, and further candidates after the token is kept spend energy on a predicate that has already fired. The papers stay distinct. This one owns the money-price path. They own the stop and the envelope.
 
-The prediction follows from the regimes, not from a regression. Ordinary computer-intelligence tasks follow spell check. Their token prices, parameter-count premia, moat rents, and access fees are competed away by bundling onto hardware people already have and by methods whose license price is zero. The end state is for more than 7 billion people, not for fewer than 500 million people who can pay a scarcity price. The prediction fails if an ordinary task, of the kind spell check already closes, keeps a lasting separate money price after a local routine of equal result is in the hands of the people who hold the document. A frontier benchmark that still carries a premium is not that failure. It is the moat stage, which Epoch's notes already show getting cheaper, and which spell check shows how to leave.
+The prediction follows from the regimes, not from a regression. Ordinary computer-intelligence tasks follow spell check. Their token prices, parameter-count premia, moat rents, and access fees are competed away by bundling onto hardware people already have and by methods whose license price is zero. The end state is for more than 7 billion people, not for the few who can pay a scarcity price. The prediction fails if an ordinary task, of the kind spell check already closes, keeps a lasting separate money price after a local routine of equal result is in the hands of the people who hold the document. A frontier benchmark that still carries a premium is not that failure. It is the moat stage, which Epoch's notes already show getting cheaper, and which spell check shows how to leave.
 
 
 The same regimes are drawn in the living companion [sc-anim-01](/living/spellcheck/#sc-anim-01). Two dots are Nordhaus's reported endpoints. The dashed connector joins those two endpoints. No rate is estimated. Epoch's 9-to-900 range and about-13-times summary sit in a callout. They stay their summaries. The spell-check panel is the completed regime: the separate money price is gone, and the joules remain unmetered.
@@ -193,6 +195,8 @@ flowchart LR
 ```
 
 Landauer (1961) sets a physical floor on erasing a bit. Horowitz (2014) is the practical CMOS statement the companion satiation study already uses: data movement dominates, far above that ideal bound. A dictionary probe moves bits. Commoditization can zero the invoice and still leave that motion. No joule total for spell check is computed from either citation.
+
+**Bundling as strategy.** The bundling literature reads the same history as strategy as well as access. Adams and Yellen show that a bundle is a tool of price discrimination [68]. Nalebuff shows that a bundle can bar entry to a rival that sells one good [69]. Spolsky named the tactic for software: commoditize your complement, so the product you sell is worth more [70]. Each reading agrees on the observable this essay uses: the separate price of the bundled layer goes to zero. They differ on who keeps the rent. That difference is why this essay tracks who holds the platform as well as the price.
 
 ### 2.10 Hardware access, category by category
 
@@ -349,7 +353,7 @@ An analogy says "X is like Y" and then talks about X. An existence proof exhibit
 
 ### 3.3 The people
 
-The many are more than 7 billion people. The few are fewer than 500 million people. This opinion is about what happens when technology is built for the first group instead of priced, by scarcity, for the second. Spell check is the finished case. A scarcity price kept calculation and spelling as products. Global access ended the separate sale and bundled the capability into tools people already have. Section 2.10 records who holds which machines. Those rows are not added up into either number of people. A capability only the smaller group can rent has not finished the path, whatever its benchmark score.
+The many are more than 7 billion people. The connected reach of a bundled checker today is smaller: the ITU estimates 5.5 billion people online in 2024 [64], and GSMA counts 4.7 billion mobile internet users [21]. Global access is the direction; the connected 5 billion are where it stands. The few are those who can pay a scarcity price. This opinion is about what happens when technology is built for the first group instead of priced, by scarcity, for the second. Spell check is the finished case. A scarcity price kept calculation and spelling as products. Global access ended the separate sale and bundled the capability into tools people already have. Section 2.10 records who holds which machines. Those rows are not added up into either number of people. A capability only the smaller group can rent has not finished the path, whatever its benchmark score.
 
 ### 3.4 What was done
 
@@ -363,7 +367,7 @@ Evidence classes used below:
 | **Project statement** | A project README describing where its library is used. Not a census. |
 | **API** | Vendor documentation of a call that runs against text the device already holds. Not a joule measurement. |
 | **Design** | A mapping from that record onto Mixture of Limits, Notational Intelligence, Satiation, or Metabolic Intelligence. Marked as design. |
-| **People** | More than 7 billion people, and fewer than 500 million people. |
+| **People** | More than 7 billion people, and the few who can pay a scarcity price. |
 | **Shipment or installed base** | A publisher's own count: units, subscribers, revenue, or a named survey. Not a count of the people. |
 
 ## 4. Evidence
@@ -416,14 +420,14 @@ Klere is the product home of Metabolic Intelligence. Public klere.ai, as the com
 
 ### 4.12 Claim SC-12. The many and the few are people
 
-More than 7 billion people, and fewer than 500 million people. The opinion is what happens when technology is built for global access instead of priced by scarcity. Class: opinion.
+More than 7 billion people, and the few who can pay a scarcity price. The opinion is what happens when technology is built for global access instead of priced by scarcity. Class: opinion.
 
-The two numbers frame a choice. They are not a census. The 500 million line is not derived from any table in this study. Use of frontier chat is already past it. On 6 October 2025 Sam Altman said: "More than 800 million people use ChatGPT every week" [61]. That reach came through a free tier. A free tier is a bundle in the sense of this paper: the capability ships without a separate price, paid for by other products and other buyers [62, 63]. So the 800 million figure is the mechanism of this paper at work, not a counterexample to it. What stays scarce is the capability held back for those who pay: the frontier tier, the rate limit, the datacenter rental. The few are the people a scarcity price still reaches.
+The two numbers frame a choice. They are not a census. An earlier draft gave the few a number, under 500 million. That line was never derived from a table, and frontier chat use passed it in 2025, so this revision states the few as a price class. Use of frontier chat is already past it. On 6 October 2025 Sam Altman said: "More than 800 million people use ChatGPT every week" [61]. That reach came through a free tier. A free tier is a bundle in the sense of this paper: the capability ships without a separate price, paid for by other products and other buyers [62, 63]. So the 800 million figure is the mechanism of this paper at work, not a counterexample to it. What stays scarce is the capability held back for those who pay: the frontier tier, the rate limit, the datacenter rental. The few are the people a scarcity price still reaches.
 
 
 ### 4.13 What would be a result and is not
 
-No fraction of written words, no language-coverage survey, no energy per suggestion, and no headcount of frontier-datacenter renters is reported. The category figures in Section 2.10 are the publishers' figures. They are not that headcount, and they are not a derivation of 7B+ or <500M. Those measurements of renters belong to a different study.
+No fraction of written words, no language-coverage survey, no energy per suggestion, and no headcount of frontier-datacenter renters is reported. The category figures in Section 2.10 are the publishers' figures. They are not that headcount, and they are not a derivation of 7B+ or of the few. Those measurements of renters belong to a different study.
 
 ### 4.14 Claim SC-13. The money prices are in a race. They are not the metric
 
@@ -431,7 +435,7 @@ Epoch AI (2025) and Emberson and Roodman (2026) report rapid declines in the mon
 
 ### 4.15 Claim SC-14. Spell check has already eliminated the separate price
 
-People paid a premium for a spelling checker. That product cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone. Hunspell's license price is zero, and the check runs as a local library inside ordinary editors (Hunspell README; Section 2.5 and Section 4.4). There is no residual token price for the nonword case the local gear closes. Class: project statement plus design. This is the completed automation example. It is not an illustration of a different product.
+People paid a premium for a spelling checker. That base-layer product cannot be sold anymore. The premium tier moved up a layer, to grammar, style and the input method, and it is still sold: Grammarly sells a paid plan [65], Druide sells Antidote by subscription [66], and JustSystems has sold the ATOK input method since 1983 [67]. The base layer is global; the premium moved up a layer. It is free, and it is bundled into the editor, the browser, and the phone. Hunspell's license price is zero, and the check runs as a local library inside ordinary editors (Hunspell README; Section 2.5 and Section 4.4). There is no residual token price for the nonword case the local gear closes. Class: project statement plus design. This is the completed automation example. It is not an illustration of a different product.
 
 ### 4.16 Claim SC-15. What remains is joules
 
@@ -518,7 +522,7 @@ The Hunspell README is a project statement about adopters. It is not an audit of
 
 Auto-correct policies differ. Some commit without asking. SC-8 states the law: propose, then commit. Vendors are not audited here.
 
-More than 7 billion people, and fewer than 500 million people. Section 2.10 does not add its rows into either number.
+More than 7 billion people, and the few who can pay a scarcity price. Section 2.10 does not add its rows into either number.
 
 IDC totals are preliminary and the next release restates the prior year. The Steam survey is participants who reported hardware. Gartner's 77.8 million AI PCs is a forecast dated 28 August 2025. NVIDIA and AMD do not disclose accelerator unit shipments in the releases cited. Arm's more than 310 billion chips are cumulative across markets. PrismML's memory, speed, and energy factors are the vendor's figures. Apple's 2.35 billion active devices are all product categories as of 30 January 2025, not iPhones and not Neural Engines. No row is a joule measurement.
 
@@ -528,9 +532,9 @@ The June 1968 Anita Mk 9 amount is still absent. The model pages transcribe Mk 1
 
 ## 7. Conclusion
 
-This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are fewer than 500 million people. Spell check is the finished case. Its cause is marginal cost and complementarity: the routine's marginal cost fell to about zero, and it complemented an editor everyone already had, so bundling it beat selling it [62, 63].
+This article is about what happens when technology is built for global access instead of priced by scarcity. The many are more than 7 billion people. The few are those who can pay a scarcity price. Spell check is the finished case. Its cause is marginal cost and complementarity: the routine's marginal cost fell to about zero, and it complemented an editor everyone already had, so bundling it beat selling it [62, 63].
 
-Scarcity pricing holds the capability for fewer than 500 million people. Global access gives it to more than 7 billion people. Spell check took the second choice. People paid a premium. The checker cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone.
+Scarcity pricing holds the capability for the few who can pay. Global access gives it to more than 7 billion people. Spell check took the second choice. People paid a premium. The checker cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone.
 
 It finished because the routine was cheap, local, and paired to hardware people already had. In cost terms, its marginal cost fell to about zero and it complemented a surface people already had [62, 63]. McIlroy fit the list to the minicomputer. Hunspell sits inside ordinary editors as a local library. The phone exposes the check as a call on the text it already holds. A capability that answers only inside a rented datacenter has not taken that choice. It is still priced by scarcity.
 
@@ -667,6 +671,17 @@ The machines in Section 2.10 are the reach of each choice. Phones, PCs, consumer
 
 63. Shapiro, C., and Varian, H. R. *Information Rules: A Strategic Guide to the Network Economy*. Harvard Business School Press, 1998.
 
+64. International Telecommunication Union. Facts and Figures 2024, press release, 27 November 2024: an estimated 5.5 billion people online in 2024. https://www.itu.int/en/mediacentre/Pages/PR-2024-11-27-facts-and-figures.aspx
+65. Grammarly. Plans. https://www.grammarly.com/plans (checked 11 October 2026).
+66. Druide informatique. Antidote store. https://www.antidote.info/en/store (checked 11 October 2026).
+67. ATOK. Wikipedia. https://en.wikipedia.org/wiki/ATOK (checked 11 October 2026).
+68. Adams, W. J., and Yellen, J. L. Commodity bundling and the burden of monopoly. *Quarterly Journal of Economics* 90(3), 475-498, 1976. https://doi.org/10.2307/1886045
+69. Nalebuff, B. Bundling as an entry barrier. *Quarterly Journal of Economics* 119(1), 159-187, 2004. https://doi.org/10.1162/003355304772839551
+70. Spolsky, J. Strategy Letter V. Joel on Software, 12 June 2002. https://www.joelonsoftware.com/2002/06/12/strategy-letter-v/
+71. Omelianchuk, K., Atrasevych, V., Chernodub, A., and Skurzhanskyi, O. GECToR: grammatical error correction: tag, not rewrite. BEA 2020. https://doi.org/10.18653/v1/2020.bea-1.16
+72. Rothe, S., Mallinson, J., Malmi, E., Krause, S., and Severyn, A. A simple recipe for multilingual grammatical error correction. ACL 2021. https://doi.org/10.18653/v1/2021.acl-short.89
+73. Luccioni, A. S., Jernite, Y., and Strubell, E. Power hungry processing: watts driving the cost of AI deployment? FAccT 2024. arXiv:2311.16863. https://arxiv.org/abs/2311.16863
+
 ## Appendix A. Claim map
 
 | Claim | Statement | Class |
@@ -682,7 +697,7 @@ The machines in Section 2.10 are the reach of each choice. Phones, PCs, consumer
 | SC-9 | Further candidates stop when the token is kept. | Design |
 | SC-10 | The envelope obtains the correction. It does not discount it. | Design |
 | SC-11 | Klere may host the class. The class is not confined to Klere. | Design |
-| SC-12 | More than 7 billion people, against fewer than 500 million people. Access against scarcity pricing. | Opinion |
+| SC-12 | More than 7 billion people, against the few who can pay a scarcity price. Access against scarcity pricing. | Opinion |
 | SC-13 | Cited money prices fell. They are not the metric, and no curve is fit here. | Literature |
 | SC-14 | Spell check's separate money price is already gone. | Project statement and design |
 | SC-15 | What remains is joules. | Opinion |
@@ -711,7 +726,7 @@ Spell check is the worked instance.
 ## Appendix C. What is not claimed
 
 - No new spelling-accuracy experiment.
-- No derivation of 7B+ or <500M from the hardware table. Subscribers, handsets, PCs, GPUs, and accelerator revenue stay in their own rows.
+- No derivation of 7B+ or of the few from the hardware table. Subscribers, handsets, PCs, GPUs, and accelerator revenue stay in their own rows.
 - No invented accelerator unit counts, no invented microcontroller census, and no Steam shares added into a generation total.
 - No board power, no `measured_j`, no the board-result flag.
 - No claim that the 2007 toy matches industrial accuracy.

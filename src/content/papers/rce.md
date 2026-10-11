@@ -1,6 +1,6 @@
 ---
 title: "The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding"
-deck: "There are two paths to autonomous computer automation. One spends high energy on high entropy. The other converges on a low-entropy floor. A program is a database functional state machine: one Form, many fits. The Reality Code Engine (RCE) retrieves, adapts and proves fits instead of generating them. Correctness is the gate. Joules are the ranking. On a frozen 20-task repair corpus it resolves 20 of 20 with 0 model calls, at 84.2 reported joules per solved task."
+deck: "There are two paths to autonomous computer automation. One spends high energy on high entropy. The other converges on a low-entropy floor. A program is a database functional state machine: one Form, many fits. The Reality Code Engine (RCE) retrieves, adapts and proves fits instead of generating them. Correctness is the gate. Joules are the ranking. On a 20-task development corpus it resolves 20 of 20 with 0 model calls (95% interval 84% to 100%), at 84.2 reported joules per solved task net of idle and 380.7 gross. The G1 rules were written after the corpus froze, so the held-out run is the next protocol."
 id: rce
 status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
@@ -10,6 +10,8 @@ board_metered: false
 ---
 
 # The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding
+
+*Version 1.1, revised 11 October 2026. Changes in this revision are listed in the site changelog at [/changelog/](/changelog/).*
 
 *One Form. Many fits. The gate is correctness, and the ranking is joules.*
 
@@ -35,7 +37,7 @@ Energy figures are labeled by source. `est_j` is an analytical estimate. `report
 
 ![One sentence in. One floor out. Human intent is high entropy; a funnel of conversions from intent to spec to 626 surface languages to an intermediate representation to machine code loses information at each boundary; all code reaches a few machine shapes; RCE writes the meaning once in one canonical Form, treats every surface as a projection, and lets the cheapest correct form win.](/figures/rce/intent-entropy.svg)
 
-*Figure 1. Intent entropy and the machine floor. A [PNG copy](/figures/rce/intent-entropy.png) is provided. Sources: Shannon (1951); Lopes et al. (2017); the 626-language count is David Charlot's lowering-path survey. The Python and C results are language specification behavior; C signed overflow is undefined behavior.*
+*Figure 1. Intent entropy and the machine floor. A [PNG copy](/figures/rce/intent-entropy.png) is provided. Sources: Shannon (1951); Lopes et al. (2017); the 626-language count is David Charlot's lowering-path survey, which is unpublished; its list and method are to be published with this paper's data, and until then the count is the author's. The Python and C results are language specification behavior; C signed overflow is undefined behavior.*
 
 **Intent is high entropy.** "Make the checkout faster" carries many meanings: shorter page load, fewer steps, faster card approval, a cached cart, or faster on one device class. Context is implied and never written. Shannon measured printed English at about 0.6 to 1.3 bits per letter [1]. The letters are predictable. The meaning is not.
 
@@ -103,6 +105,9 @@ The two paths of the table in Section 2 differ in where the conversion is paid. 
 ## 3. The Form
 
 ### 3.1 The strongest formal statement of "same form"
+
+The scope of the theorem is stated first. Gurevich's sequential postulates cover sequential algorithms; parallel and interactive algorithms need the further postulates of Blass and Gurevich [3]. Blass, Dershowitz and Gurevich argue that no single equivalence relation on algorithms fits every purpose [79], and Moschovakis and Vardi set out the debate over what an algorithm is [80, 81]. A web handler that does input and output sits outside the sequential theorem. The Form handles interaction the way the interactive line does: each input is an event in $E$, and the state machine steps on it. So "one Form" is a modelling choice grounded in the sequential theorem and extended by convention, with production precedents in the Elm architecture [83], durable workflow event histories [84] and stream semantics such as Flo [82]. The propositions of Section 3.4 are stated for that choice.
+
 
 Gurevich's Abstract State Machine (ASM) theorem is the strongest formal statement that every algorithm has one shape [2]. An abstract state machine is a machine whose states are first-order structures and whose step is a finite set of guarded updates. Gurevich states three postulates. Sequential Time: an algorithm has states, initial states and a one-step map $\tau$. Abstract State: states are first-order structures over one fixed vocabulary, closed under isomorphism. Bounded Exploration: a finite set of terms decides each step. His Main Theorem (Theorem 6.13) reads: "For every sequential algorithm A, there exists an equivalent sequential abstract state machine B." Blass and Gurevich extend it to parallel algorithms [3]. Dershowitz and Gurevich add a fourth axiom, that initial operations are computable, and from it derive Church's thesis [4].
 
@@ -227,11 +232,16 @@ A process, HTTP or closure handler has no term, so its logged results compile to
 
 ## 5. Verification
 
-### 5.1 Five targets, one trace
+<div id="51-five-targets-one-trace" class="anchor-alias" aria-hidden="true"></div>
 
-`tests/form_targets.rs` drives an eleven-operator arithmetic specification with 29 edge events plus 500 seeded random edge values. The generated Rust, Python, WASM, XState and SCXML targets print the reference trace byte for byte, including the arithmetic edges.
+### 5.1 Differential testing across five targets
+
+`tests/form_targets.rs` drives an eleven-operator arithmetic specification with 29 edge events plus 500 seeded random edge values. The generated Rust, Python, WASM, XState and SCXML targets print the reference trace byte for byte, including the arithmetic edges. This is differential testing in the line of McKeeman and of Csmith [86]: agreement among independent implementations on a stated input set. It is not translation validation [85] and not a verified compiler. It covers the eleven operators and the 529 events in the test, and it says nothing about inputs outside them. The Z3 and Kani results below are the verification.
 
 ### 5.2 Rewrites proved in Z3
+
+Verified rewrite rules have a lineage. Ruler infers and checks rewrite rules by equality saturation with no model in the loop [87]. The 3 of 16 model-proposed rules admitted in Section 5.5 are therefore a statement about the gate, which refused 13, and not a claim that a model is the best rule source.
+
 
 Every built-in e-graph rewrite is proved in the Z3 SMT solver (satisfiability modulo theories) [31] against a quantifier-free encoding of the Form's term evaluation and arithmetic: values as a datatype, 64-bit bit-vectors with checked overflow, signed division and remainder with the dividend's sign, and binary64 floats. A rewrite that changes overflow, escalation order or a message gets no proof. A proposed equivalence enters the e-graph only with a proof.
 
@@ -277,19 +287,25 @@ Corpus20 holds 20 real regressions from five open-source libraries (strsim, heck
 | corpus20, earlier solver | 20 | 10 of 20 | 31 | 3.10 | G1 rules 9, local model 1 |
 | corpus20-2026-10-11b | 20 | **20 of 20** | **0** | **0.00** | G1 rules 20 |
 
-In corpus20-2026-10-11b, 18 of 20 solver fixes leave the edited file byte-identical to gold. The other 2 are equivalent: idna-label-length writes `>= 64` for `> 63`, equal on integers, and packaging-dev-of-post puts the added conjunct first. All three preregistered hypotheses held: every task is valid; the solver resolves 20 of 20 with a patch equal to gold; no task reaches the model.
+In corpus20-2026-10-11b, 18 of 20 solver fixes leave the edited file byte-identical to gold. The other 2 are equivalent: idna-label-length writes `>= 64` for `> 63`, equal on integers, and packaging-dev-of-post puts the added conjunct first. All three preregistered hypotheses held: every task is valid; the solver resolves 20 of 20 with a patch equal to gold; no task reaches the model. With n = 20, the 95% Wilson interval on the resolve rate is 84% to 100%.
 
-### 6.2 Track B: joules per solved task on jetson-hub
+**When the rules were written.** The repository history fixes the order. The corpus was registered and locked at commit `4f1054ca4` (2026-10-11, 00:16 EDT). The first run on it, at 00:33, resolved 10 of 20 with 31 model calls. The tiered G1 templates that close all 20 were committed at 05:16 (`6eff4d73c`), after that run, and the 2026-10-11 and 2026-10-11b registrations then tightened two tasks' tests. A later engine, TBar's 15 fix-pattern categories on tree-sitter (`a90fbd842`, 08:27), also resolved 20 of 20 with 0 model calls and 18 byte-identical patches on registration 2026-10-11c. The rules were therefore written with this corpus in view. Corpus20 is a development set, and 20 of 20 is a development result. It shows that a rule gear can close a real repair corpus with no model call. It does not show what share of unseen repairs the rules cover. That share is measured by the held-out protocol of [Section 8.4](#84-a-held-out-run-with-the-gears-frozen), which freezes the rules first.
 
-Track B runs the same corpus on jetson-hub, a Linux laptop with a 14-core x86 processor. The benchmark and the model server ran pinned to CPUs 2 to 5. The meter is RAPL (Running Average Power Limit), the processor's on-chip package energy counter. **Baseline method:** before each run the meter samples the package for 10 s with none of our processes running and takes that as idle power; `reported_j` is the run's counter delta minus idle power times the run's duration. The machine was busy with CI (continuous integration) runners throughout, and the idle sample moved between 25.7 W and 57.8 W. Every figure is `reported_j`. `measured_j` is reserved for a wall meter.
+**What the gate does and does not certify.** Passing the task's tests is plausibility, not correctness. Qi and colleagues found that most patches GenProg reported as fixes were plausible but incorrect [92], and overfitting to the tests has been documented in search-based and semantics-based repair [93, 94] and addressed by generated tests [95]. Repair tools also score higher on the benchmark they were tuned on than elsewhere [96], and fault localization biases the comparison [97]. In Track A the stronger evidence is byte identity: 18 of 20 patches equal the developer's patch, and the other 2 are equivalent by inspection. Byte identity rules out overfitting on those tasks; it does not rule out rules written for them, which is why the held-out run comes next.
 
-| Solver | Solved | Model calls | `reported_j` per solved task | Seconds |
-|---|---|---|---|---|
-| RCE solver, earlier (2026-10-10) | 11 of 20 | 29 | 712.4 | 695 |
-| RCE solver, new (2026-10-11b) | **20 of 20** | **0** | **84.2** | 154 |
-| Gold patch | 20 of 20 | 0 | 2.0 | 5 |
+<div id="62-track-b-joules-per-solved-task-on-jetson-hub" class="anchor-alias" aria-hidden="true"></div>
 
-The new solver passes the gate on every task, at 8.5 times fewer reported joules per solved task than the earlier solver. Gold, the cost of applying a known fix and running the tests, is the floor of this corpus: 2.0 `reported_j` per task. The distance from 84.2 to 2.0 is the search that retrieval and proof still pay for.
+### 6.2 Track B: joules per solved task on an x86 laptop
+
+Track B runs the same corpus on a Linux laptop with a 14-core x86 processor. Its hostname is `jetson-hub`, which appears in the artifact paths; it is not an NVIDIA Jetson. The benchmark and the model server ran pinned to CPUs 2 to 5. The meter is RAPL (Running Average Power Limit), the processor's on-chip package energy counter. **Baseline method:** before each run the meter samples the package for 10 s with none of our processes running and takes that as idle power; `reported_j` is the run's counter delta minus idle power times the run's duration. The machine was busy with CI (continuous integration) runners throughout, and the idle sample moved between 25.7 W and 57.8 W. Every figure is `reported_j`. `measured_j` is reserved for a wall meter. Because idle moved by a factor of two under CI load, idle subtraction is not well defined on this machine: 2 of the 20 solver rows and 4 of the 20 gold rows came out negative after subtraction. The table therefore gives the gross counter reading beside the idle-subtracted one. RAPL is a package-scoped, modeled counter [105]. The model server in the earlier run was local and pinned to the same package, so its energy is inside the reading; no remote model was called. Each row is one pass, with no repeats and no interval.
+
+| Solver | Solved | Model calls | `reported_j` per solved task, net of idle | `reported_j` per solved task, gross | Seconds |
+|---|---|---|---|---|---|
+| RCE solver, earlier (2026-10-10) | 11 of 20 | 29 | 712.4 | 3,086.4 | 695 |
+| RCE solver, new (2026-10-11b) | **20 of 20** | **0** | **84.2** | **380.7** | 154 |
+| Gold patch | 20 of 20 | 0 | 2.0 | 12.7 | 5 |
+
+The new solver passes the gate on every task, at 8.5 times fewer net and 8.1 times fewer gross reported joules per solved task than the earlier solver. The rerun on an idle machine with a wall meter, with at least 10 repeats, is [Protocol 8.3](#83-a-wall-meter). Gold, the cost of applying a known fix and running the tests, is the floor of this corpus: 2.0 `reported_j` per task. The distance from 84.2 to 2.0 is the search that retrieval and proof still pay for.
 
 ### 6.3 The soaks converge
 
@@ -315,7 +331,7 @@ The second path rests on an engineering fact: code is reused at every scale. Eac
 | Mined fix patterns | PAR, TBar [22, 23] | PAR found "several common fix patterns" in more than 60,000 human patches. TBar's 15 pattern categories fix 43 Defects4J bugs correctly in the standard pipeline, and 74 of 101 with perfect fault localization, with no learning. |
 | Cross-language tasks | Rosetta Code | 1,360 tasks, each one concept implemented across many of 1,009 known languages. |
 
-Each row is an input to the engine. Clones and dedup say a fit usually exists, which is G0. Recurring fixes say adaptation is mostly a small catalog of guarded rewrites, which is G1. Line-level redundancy shrinks the search space of G2. Track A is this evidence at small scale: every fix came from G1 rules, and 18 of 20 match the human fix byte for byte.
+Each row is an input to the engine. Clones and dedup say a fit usually exists, which is G0. Recurring fixes say adaptation is mostly a small catalog of guarded rewrites, which is G1. Line-level redundancy shrinks the search space of G2. Track A is this evidence at small scale: every fix came from G1 rules, and 18 of 20 match the human fix byte for byte. Two cautions sharpen the reading. Duplicates inflate retrieval and model scores unless removed [104]. And buggy lines are less natural than fixed ones [45], so the bug itself is the case lookup is least able to predict; the fix shape, not the buggy line, is what G0 and G1 must key on. The rule-mining line that does this at scale, from GenProg's generate-and-validate search [88] and Prophet's learned correctness model [89] to Getafix at Facebook [90] and Sorald's model-free repair of static-analysis violations [91], derives templates from disjoint history and reports precision on unseen cases [98]. That is the standard Section 8.4 adopts.
 
 ## 8. Measurement protocols for what comes next
 
@@ -350,6 +366,20 @@ SWE-bench Lite is a 300-task subset of real GitHub issues resolved by hidden tes
 4. Fill `measured_j` from the meter alone. Report `reported_j` (RAPL) and `est_j` beside it in separate columns. Never sum across labels.
 5. Repeat Track B on corpus20, then on the Defects4J subset.
 
+### 8.4 A held-out run with the gears frozen
+
+1. Freeze G0, G1 and G2 at a tagged commit and publish the rule set with its authoring timestamps and a rules by tasks coverage matrix for corpus20.
+2. Draw a disjoint held-out slice: the Rust and Python instances of Multi-SWE-bench [102] and BugsInPy [103], de-duplicated against G0's index [104].
+3. Preregister the slice, the seeds and the hypotheses before the first run.
+4. Report resolved, plausible and byte-identical counts separately, each with a 95% interval.
+
+### 8.5 Baselines in the same table
+
+1. Model-free: `cargo fix` and clippy [106], and Sorald or a TBar port [91].
+2. Cheap model: Agentless with a local model [99].
+3. Remote model: an agent with a frontier model, its energy estimated from provider disclosures and labeled `est_j`.
+4. Report cost-of-pass [101] in joules and in dollars for every row, with cost controlled as Kapoor and colleagues require [100].
+
 **Proposition 8 (floor approach).** As G0 and G1 coverage grows, joules per solved task approach the gold floor of applying a known fix and running the tests. Tracks A and B on the Defects4J subset under the wall meter test it.
 
 ## 9. Ties to the companion papers
@@ -361,6 +391,32 @@ SWE-bench Lite is a 300-task subset of real GitHub issues resolved by hidden tes
 **The Universal Law of Agency.** [The agency paper](/papers/agency/) defines intelligence as the derivative of agency in joules, $\iota = dX/dJ$, read in hindsight. The RCE log is that hindsight record: $X$ is tasks through the gate and $J$ is their joules, labeled. A deferral with a receipt is the refusal clause of the gate.
 
 **Task Satiation.** [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) says that once a task's completion predicate is true, more synthesis on that task buys nothing. RCE is per-task satiation inside one system: once a handler covers a case, further inference on that case is zero. The aggregate demand question belongs to that paper and to the [economics companion](/papers/ai-coding-market/).
+
+## 10. Falsifiers
+
+Fixed before the held-out run of Section 8.4.
+
+| ID | Observation | Defeats |
+|---|---|---|
+| RCE-F1 | On the held-out slice, G0 to G2 with frozen rules resolve under 10% of tasks with 0 model calls | The claim that most fits already exist for repair at this scale |
+| RCE-F2 | Byte-identical or equivalent patches are under half of the resolved held-out tasks | The reading of the gate as more than plausibility on the covered tasks |
+| RCE-F3 | Under the wall meter, gross joules per solved task of the RCE solver exceed those of the cheapest model baseline on the tasks both solve | The second path's joule advantage on covered tasks |
+| RCE-F4 | In a soak with a priced model resolver, model calls per round do not reach 0 within 20 rounds on any specification without a stuck input | Compiling the model out of the loop |
+
+## 11. Work to finish
+
+Each item is open work with its protocol named.
+
+1. The held-out run with frozen rules and published authoring dates (Section 8.4).
+2. Baselines in one table, cost-of-pass in joules and dollars (Section 8.5).
+3. The first `measured_j`: a wall meter on an idle host, at least 10 repeats, gross and net side by side (Section 8.3).
+4. The per-rung ladder results (Section 2.3).
+5. The 626-language survey published with its method (Figure 1).
+6. A public data release of the corpus, the preregistrations and the receipts.
+
+## 12. Conclusion
+
+A program is a database functional state machine, and RCE treats coding as a conversion from high-entropy intent to that low-entropy Form. Correctness is the gate and joules are the ranking. On a 20-task development corpus, rule gears closed every task with no model call at 84.2 net and 380.7 gross reported joules per solved task, and in the first soak the model was called 10 times in round 1 and not again. The verification layer proves the rewrites in Z3 and the kernel in Kani, and differential testing ties five targets to one trace. What remains is to show coverage on unseen tasks with the rules frozen, against baselines, under a wall meter. Those protocols are fixed in Sections 8.3 to 8.5 and the falsifiers in Section 10.
 
 ## References
 
@@ -519,3 +575,59 @@ SWE-bench Lite is a 300-task subset of real GitHub issues resolved by hidden tes
 [77] M. Rahman, D. Palani and P. C. Rigby, "Natural Software Revisited," ICSE 2019. doi:10.1109/ICSE.2019.00022
 
 [78] A. Torres, S. Baltes, C. Treude and M. Wagner, "Applying Information Theory to Software Evolution," NLBSE 2023. doi:10.1109/NLBSE59153.2023.00017
+
+[79] A. Blass, N. Dershowitz and Y. Gurevich, "When are two algorithms the same?," *Bulletin of Symbolic Logic* 15(2), 2009. arXiv:0811.0811. https://arxiv.org/abs/0811.0811
+
+[80] Y. N. Moschovakis, "What is an algorithm?," in *Mathematics Unlimited: 2001 and Beyond*, Springer, 2001. https://www.math.ucla.edu/~ynm/papers/eng.pdf
+
+[81] M. Y. Vardi, "What is an algorithm?," *Communications of the ACM* 55(3), 2012. doi:10.1145/2093548.2093549
+
+[82] S. Laddad, A. Cheung, J. M. Hellerstein and M. Milano, "Flo: a Semantic Foundation for Progressive Stream Processing," POPL 2025. arXiv:2411.08274. https://arxiv.org/abs/2411.08274
+
+[83] The Elm Architecture, Elm guide. https://guide.elm-lang.org/architecture/
+
+[84] Temporal, "Workflows" (event history), documentation. https://docs.temporal.io/workflows
+
+[85] A. Pnueli, M. Siegel and E. Singerman, "Translation validation," TACAS 1998. doi:10.1007/BFb0054170
+
+[86] X. Yang, Y. Chen, E. Eide and J. Regehr, "Finding and understanding bugs in C compilers," PLDI 2011. doi:10.1145/1993498.1993532
+
+[87] C. Nandi, M. Willsey, A. Zhu et al., "Rewrite Rule Inference Using Equality Saturation," OOPSLA 2021. arXiv:2108.10436. https://arxiv.org/abs/2108.10436
+
+[88] C. Le Goues, T. Nguyen, S. Forrest and W. Weimer, "GenProg: A Generic Method for Automatic Software Repair," *IEEE TSE* 38(1), 2012. doi:10.1109/TSE.2011.104
+
+[89] F. Long and M. Rinard, "Automatic patch generation by learning correct code," POPL 2016. doi:10.1145/2837614.2837617
+
+[90] J. Bader, A. Scott, M. Pradel and S. Chandra, "Getafix: Learning to Fix Bugs Automatically," OOPSLA 2019. arXiv:1902.06111. https://arxiv.org/abs/1902.06111
+
+[91] K. Etemadi, N. Harrand, S. Larsen et al., "Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations," *IEEE TDSC*, 2022. arXiv:2103.12033. https://arxiv.org/abs/2103.12033
+
+[92] Z. Qi, F. Long, S. Achour and M. Rinard, "An analysis of patch plausibility and correctness for generate-and-validate patch generation systems," ISSTA 2015. doi:10.1145/2771783.2771791
+
+[93] E. K. Smith, E. T. Barr, C. Le Goues and Y. Brun, "Is the cure worse than the disease? Overfitting in automated program repair," ESEC/FSE 2015. doi:10.1145/2786805.2786825
+
+[94] X.-B. D. Le, F. Thung, D. Lo and C. Le Goues, "Overfitting in semantics-based automated program repair," *Empirical Software Engineering* 23, 2018. doi:10.1007/s10664-017-9577-2
+
+[95] Y. Xiong, X. Liu, M. Zeng, L. Zhang and G. Huang, "Identifying patch correctness in test-based program repair," ICSE 2018. doi:10.1145/3180155.3180182
+
+[96] T. Durieux, F. Madeiral, M. Martinez and R. Abreu, "Empirical Review of Java Program Repair Tools: A Large-Scale Experiment on 2,141 Bugs and 23,551 Repair Attempts," ESEC/FSE 2019. arXiv:1905.11973. https://arxiv.org/abs/1905.11973
+
+[97] K. Liu, A. Koyuncu, T. F. Bissyandé et al., "You Cannot Fix What You Cannot Find! An Investigation of Fault Localization Bias in Benchmarking Automated Program Repair Systems," ICST 2019. arXiv:1812.07283. https://arxiv.org/abs/1812.07283
+
+[98] M. Monperrus, "Automatic Software Repair: A Bibliography," *ACM Computing Surveys* 51(1), 2018. doi:10.1145/3105906
+
+[99] C. S. Xia, Y. Deng, S. Dunn and L. Zhang, "Agentless: Demystifying LLM-based Software Engineering Agents," 2024. arXiv:2407.01489. https://arxiv.org/abs/2407.01489
+
+[100] S. Kapoor, B. Stroebl, Z. S. Siegel, N. Nadgir and A. Narayanan, "AI Agents That Matter," 2024. arXiv:2407.01502. https://arxiv.org/abs/2407.01502
+
+[101] M. H. Erol, B. El, M. Suzgun, M. Yuksekgonul and J. Zou, "Cost-of-Pass: An Economic Framework for Evaluating Language Models," 2025. arXiv:2504.13359. https://arxiv.org/abs/2504.13359
+
+[102] D. Zan, Z. Huang, W. Liu et al., "Multi-SWE-bench: A Multilingual Benchmark for Issue Resolving," 2025. arXiv:2504.02605. https://arxiv.org/abs/2504.02605
+
+[103] R. Widyasari, S. Q. Sim, C. Lok et al., "BugsInPy: a database of existing bugs in Python programs to enable controlled testing and debugging studies," ESEC/FSE 2020. doi:10.1145/3368089.3417943
+
+[104] M. Allamanis, "The Adverse Effects of Code Duplication in Machine Learning Models of Code," Onward! 2019. arXiv:1812.06469. https://arxiv.org/abs/1812.06469
+
+[105] K. N. Khan, M. Hirki, T. Niemi, J. K. Nurminen and Z. Ou, "RAPL in Action: Experiences in Using RAPL for Power Measurements," *ACM TOMPECS* 3(2), 2018. doi:10.1145/3177754
+
+[106] The Rust project, rustfix and `cargo fix`. https://github.com/rust-lang/rustfix

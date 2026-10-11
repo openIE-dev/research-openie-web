@@ -3,6 +3,42 @@ import Layout from '../layouts/Layout.astro';
 
 const terms = [
   {
+    term: 'est_j',
+    def: 'An analytical energy estimate: operation counts times stated energy constants. It is never measured_j or reported_j.',
+  },
+  {
+    term: 'trajectory_j',
+    def: 'Work computed from measured physical trajectories and a calibrated potential, for physical act cycles at the k_B T scale (agency paper, Section 8.8). Never merged with the other labels.',
+  },
+  {
+    term: 'σ-law selector',
+    def: 'A Mixture of Limits instance that picks the next act by its ratio of pass probability to joule cost and stops when the next act no longer pays for its joules (agency paper).',
+  },
+  {
+    term: 'WCA (Wise Computer Automation)',
+    def: 'The Rust software reference implementation of the commit envelope in Metered Commit Gates, Part I.',
+  },
+  {
+    term: 'EPU (Energy Processing Unit)',
+    def: 'The hardware product class named on the product pages. A product term, not a research result.',
+  },
+  {
+    term: 'MathGround',
+    def: 'The OpenIE cascade order with type-enforced replay classes named in Metered Commit Gates, Part II.',
+  },
+  {
+    term: 'flowG',
+    def: 'A stand-alone language project. The Reality Code Engine is its academic first-pass demonstration; the two stay separate.',
+  },
+  {
+    term: 'task completion',
+    def: 'The stop: a task is complete when its completeness predicate C(z) holds. Further synthesis on that task buys nothing (Task Satiation).',
+  },
+  {
+    term: 'Universal Law of Agency (proposed)',
+    def: 'The proposed definition plus gate for an agent, from the agency paper. It is a proposal, and every mention carries that status.',
+  },
+  {
     term: 'Periodic Stack',
     def: 'An OpenIE teaching table of allowed acts on a named surface (for example Computation at compute.openie.dev). Mixture of Limits navigates that table. It does not replace it.',
   },
@@ -28,7 +64,7 @@ const terms = [
   },
   {
     term: 'measured_j',
-    def: 'Package field for a joule reading from a named meter. Closes on the software reference implementation leave it unset. Catalog and OpCounter figures are estimates, not measured_j.',
+    def: 'A joule reading from a wall or shunt meter on a named rail, with its calibration stated. It is the only label for a joule read from such a meter, and it is never summed with reported_j, est_j or trajectory_j. Closes on the software reference implementation leave it unset. No paper on this site has a measured_j figure yet.',
   },
   {
     term: 'Klere',
@@ -56,7 +92,7 @@ const terms = [
   },
   {
     term: 'Notational Intelligence',
-    def: 'The commit gate: propose, then certify, then commit or refuse, then a receipt. The proposer does not authorize itself.',
+    def: 'The commit gate and its receipt: propose, then certify, then commit or refuse, then write a receipt. The proposer does not authorize itself. Metered Commit Gates states the gate; the agency paper reads the receipts.',
   },
   {
     term: 'Reality Code Engine (RCE)',
@@ -68,7 +104,7 @@ const terms = [
   },
   {
     term: 'reported_j',
-    def: 'An energy figure read from an operating-system or on-chip counter, such as RAPL (Running Average Power Limit) package energy minus a stated idle baseline. It is not measured_j, which is reserved for a wall meter or shunt meter.',
+    def: 'An energy figure read from an operating-system or on-chip counter, such as RAPL (Running Average Power Limit) package energy minus a stated idle baseline. It is not measured_j (see that entry).',
   },
   {
     term: 'one-path assumption',

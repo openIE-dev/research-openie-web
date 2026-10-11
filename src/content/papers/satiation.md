@@ -13,6 +13,8 @@ board_metered: false
 
 # Task Satiation vs. Aggregate Rebound in AI Demand
 
+*Version 1.1, revised 11 October 2026. Changes in this revision are listed in the site changelog at [/changelog/](/changelog/).*
+
 *The economics companion to [Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents](/papers/agency/) and [Metered Commit Gates](/papers/gates/). The theory it uses stays there: the gate form and $J^*$ in [Agency, Section 1](/papers/agency/#1-thesis), the machine stop in [Metered Commit Gates, Section II.5](/papers/gates/#ii5-stop-bridge-satiation), and the commit record in [Part I](/papers/gates/#part-i-the-commit-gate-notational-intelligence). The market and price readings of those papers are collected in Section 8. Its coding instance is [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/).*
 
 ## Abstract
@@ -170,6 +172,12 @@ Design rules in Section 4.4 are recommendations conditional on the definitions. 
 
 ### 3.3 Measurements specified and not taken
 
+**The predicate is endogenous.** Witt (2001) argues that wants are learned, so the completeness predicate $C(z)$ can ratchet as price falls. A study of satiation across a price change must therefore freeze $C(z)$ in its preregistration before the change and report any change of predicate as a separate treatment.
+
+**H1 can be read from public data now.** Chen and colleagues (2024) measure tokens spent after the first correct answer; Cuadron and colleagues (2025) score overthinking in agent trajectories; Bai, Huang and Wang (2026) find that same-task token use in agentic coding varies up to 30 times across runs. Applying this paper's $C(z)$ post hoc to those trajectories gives an exploratory H1 estimate, labeled exploratory. It is the next measurement.
+
+**Tokens and joules.** H1 and H2 are stated in tokens; the thesis is in joules. Masanet and colleagues (2020) found that data-centre compute grew about sixfold from 2010 to 2018 while energy rose far less, so a token elasticity is not an energy elasticity. Each hypothesis is to be reported in both units, with the unit the data identify named.
+
 1. Split account. For each episode, sum analytical or, later, board-measured energy on calls with `t <= t*` and on calls with `t > t*`. Direct rebound on that chore is visible only if the post-done integral is estimated. The repository does not contain this split.
 2. Detector errors. On a labeled corpus, false done (predicate declared true when a clause is false) and false continue (`C` true and the system keeps calling). No rates are published here.
 3. Care handoff. Time to safe state and a handoff checklist, contrasted with session length. Not measured.
@@ -199,13 +207,19 @@ Stage C, board programmed for the companion's commit-gate demo (closed-loop pend
 This paper adds a mapping, not a fourth stage. Task completion, if encoded as `policy` or `budget_exceeded`, should appear in the same trace as `energy_veto`, so a future split (Section 3.3) can group reason codes. The browser view would make that grouping readable. It would not create the missing corpus. We have not synthesized or metered the FPGA board.
 
 
-### 2.8 Fidelity criteria and stop rules
+<div id="28-fidelity-criteria-and-stop-rules" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.6 Fidelity criteria and stop rules
 
 Shannon (1959) defines a rate-distortion function: the least description rate that holds expected distortion at or below a chosen fidelity. The object is communication under a constraint the user states. It is not a demand curve for intelligence. The resemblance to this paper is only structural. A completeness predicate `C` is a hard fidelity: either the stated clauses hold, or they do not. A language-model loss is closer to an average distortion on a training distribution. Falling loss, and falling price at a fixed benchmark, can be read as movement along a rate-resource curve of the kind Kaplan et al. (2020) and Hoffmann et al. (2022) estimate for training. That movement does not choose `C` for a particular chore. Confusing benchmark distortion with chore completeness is the category error behind unbounded-seat plans for closed work.
 
 Cover and Thomas (2006) is the textbook path into rate-distortion if a reader wants the formal development. It uses the existence of the fidelity concept to keep two numbers apart: a score that can always be improved by a fraction, and a predicate that is already true.
 
-### 2.9 Rebound taxonomy, without a new estimate
+<div id="29-rebound-taxonomy-without-a-new-estimate" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.7 Rebound taxonomy, without a new estimate
+
+The rebound canon is the frame for H2. Khazzoom (1980) showed that mandated efficiency can raise use of the service, Brookes (1990) argued the same at the level of the economy, and Saunders (1992) derived the conditions in neoclassical growth. Sorrell and Dimitropoulos (2008) gave the microeconomic definitions and their limits. Brockway, Sorrell, Semieniuk, Heun and Court (2021) reviewed the evidence and found that economy-wide rebound may erode more than half of the expected energy savings. Task satiation does not contradict that finding. It is a per-task stop, and the aggregate rebound of H2 is where the canon's evidence applies. Lighting is the historical case to test it against: Fouquet and Pearson (2006) trace seven centuries of the price and use of light in the United Kingdom, and Tsao and colleagues (2010) find that use of light rose with efficiency, a satiable service with large rebound.
 
 The rebound survey of Gillingham, Rapson, and Wagner separates channels that a single slogan collapses. Direct rebound is additional use of the same service when its effective cost falls. Indirect rebound is spending of saved resources on other services. Economy-wide rebound runs through prices and growth. The survey's policy domain is energy efficiency, not tokens. The taxonomy still transfers as a warning about identification. A measured fall in `p_t` (claim S-2) identifies none of the three channels by itself. Direct rebound on a chore with `C` already true requires that buyers still pay for calls that do not change `C`. Indirect and economy-wide channels can be large when new tasks appear (Acemoglu and Restrepo, 2019). A paper that reported one elasticity and called it "the rebound" would be under-specified. This paper reports no elasticity.
 
@@ -213,7 +227,9 @@ The pattern is old. Jevons argued in 1865 that more efficient steam engines woul
 
 <div id="210-scarce-joules-and-the-economic-stop-20252026-peers" class="anchor-alias" aria-hidden="true"></div>
 
-### 2.10 Scarce joules and the economic stop (2025 to 2026 peers)
+<div id="210-scarce-joules-and-the-economic-stop-2025-to-2026-peers" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.8 Scarce joules and the economic stop (2025 to 2026 peers)
 
 Epoch's price series (S-2) show synthesis getting cheaper in money. Recent energy publications show joules remaining scarce, and often growing in the aggregate.
 
@@ -221,7 +237,9 @@ Chung, Wu, Ma, and Chowdhury (arXiv:[2601.22076](https://arxiv.org/abs/2601.2207
 
 **Reading for this paper.** Free at the margin is a money-price statement. Scarce joules are a physical statement. The operational stop is task completion: when `C(z) = 1`, further synthesis does not raise the written objective, and `policy` / `budget_exceeded` refuse is success. [Notational Intelligence](/papers/gates/) owns the physical certificate. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) navigates cheapest-sufficient gears. [Metabolic Intelligence](/products/mei/) owns the envelope actuators. Estimates ≠ board-measured `measured_j`.
 
-## 3.6 Protocol for a done-detector study (not executed)
+<div id="36-protocol-for-a-done-detector-study-not-executed" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.9 Protocol for a done-detector study (not executed)
 
 The following protocol is a method for a future measurement. No step has been run. It is written so the missing result has an exit criterion rather than a slogan.
 
@@ -241,7 +259,9 @@ Exclusion. Episodes with no written `C` are not labeled "unsatiated." They are o
 
 Failure of the protocol. If annotators cannot agree on clauses, the predicate was not written. If the system has no declare-done event, false continue is not identified. Publishing a model leaderboard instead of the two rates would not execute this protocol.
 
-### 3.7 A numerical illustration of a bliss point (model, not a fit)
+<div id="37-a-numerical-illustration-of-a-bliss-point-model-not-a-fit" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.10 A numerical illustration of a bliss point (model, not a fit)
 
 Let one coordinate `x` be the count of model calls on a single chore, and set
 
@@ -253,7 +273,9 @@ for a chore whose constructed maximum is at four calls. Then `U(0) = -16`, `U(4)
 
 Token price can be attached without confusing units. Suppose a call costs `p` in money and the buyer pays `p * x` while value follows `U`. The buyer's surplus proxy `U(x) - p x` still has a finite maximizer for any `p >= 0`. A fall in `p` moves the maximizer, which is the rebound logic on this toy, and the maximizer remains finite. The toy does not say where the maximizer sits for any real buyer. It blocks the inference that a lower `p` removes the maximum.
 
-### 3.8 Reason codes as a partition, not a welfare function
+<div id="38-reason-codes-as-a-partition-not-a-welfare-function" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.11 Reason codes as a partition, not a welfare function
 
 Let `R` be the set of refuse codes on a trace. Partition `R` into `R_econ = {policy, budget_exceeded}` and `R_phys = {lut_veto, energy_veto, cbf_veto}`, matching the schema's taxonomy. Other codes, if added later, have to be assigned in writing before they are counted. A trace interval contributes to post-done economic refuse only if `C` is already 1 and the code is in `R_econ`. It contributes to physical refuse if the code is in `R_phys`, whether or not `C` is 1. An unsafe action after done is in both stories and should be counted in both columns, not averaged. The MCP demo's irreversible refuse is a physical example: energy and barrier codes, executor calls 0. It is not an `R_econ` example. A future episode with `policy` after a merged patch would be the economic example. The repository does not include that episode. The partition is how it would be scored.
 
@@ -341,12 +363,14 @@ For cross-reading only, the companion reports a seed-1 pendulum simulation: 1 co
 
 ### 5.1 Rebound: the central identification problem
 
+Three results limit the natural experiment. Gundlach and colleagues (2025) find that prices at fixed benchmark performance fall fast while frontier prices do not, and Du (2026) finds a structural break and a reasoning premium in price evolution, so price cuts arrive bundled with model changes. Anthropic's Economic Index (September 2025) reports that across tasks each 1% increase in cost is associated with a 0.29% decrease in usage frequency, an inelastic cross-sectional figure, not a price change over time. A provider-level design cannot identify market-level rebound; the design needs market-level prices and quantities.
+
 Gillingham, Rapson, and Wagner survey rebound from energy-efficiency policy. The mechanism is residual demand elasticity. If the money price of synthesis falls, use rises where buyers still value another unit. At a bliss point for a closed chore, the direct derivative of value with respect to more synthesis on that chore is not positive, so direct rebound on that chore is not implied. Indirect rebound, new tasks, and attention shifting can remain. Acemoglu and Restrepo's new-task margin is one place quantity can reappear. Claim S-2 therefore does not imply a global cap on compute. It implies a cap only relative to a stated `C`. Denying global rebound would require the split in Section 3.3 and a demand system. This paper does not deny global rebound. It refuses to treat "Jevons" as a reason to avoid writing `C`.
 
 Two hypotheses make the question testable.
 
 - **H1. Post-completion spend.** The fraction of agent compute spent after `C(z) = 1`, joules or calls with `t > t*` over all joules or calls in the episode, is measurably above zero. H1 is the direct waste the completeness stop removes. It is estimable from agent logs with a labeled `t*` per episode (Section 3.3, item 1).
-- **H2. Jevons in tasks.** When the price of synthesis falls, the elasticity of the number of tasks run exceeds the fall in spend per task. Then total spend rises even though each task is satiated. H2 is aggregate rebound.
+- **H2. Jevons in tasks.** H2 is the direct-rebound elasticity of Khazzoom (1980), stated for tasks. When the price of synthesis falls, the elasticity of the number of tasks run exceeds the fall in spend per task. Then total spend rises even though each task is satiated. H2 is aggregate rebound.
 
 **Identification.** H1 needs no price variation: a labeled corpus, the detector error rates of Section 3.3 item 2, and the split account. H2 needs exogenous price changes. Provider price cuts at fixed model quality, announced on a known date, are natural experiments. The design is a panel of accounts with price paid, tasks opened, calls per task and a completeness label per episode, before and after each cut. Comparing accounts on a repriced model with accounts on models whose price did not move gives a difference-in-differences estimate of the task-count elasticity and the per-task spend response separately. Spend per task can fall while task count rises. Both numbers are needed. The completeness stop is a claim about the first. Jevons is a claim about the second. Neither was estimated here.
 
@@ -381,7 +405,7 @@ S-7 prevents a literature review from ignoring a major public doubt about spend 
 
 ### 5.9 What a structural demand estimate would require
 
-S-2 is a supply-price fact from secondary published series. A demand estimate is a different regression. At minimum it needs a quantity (calls, tasks closed, or both), a price, and a way to separate movement along a demand curve from movement of the curve. Epoch's benchmark price is not a firm-level invoice, and a firm's invoice is not `C`. Linking them requires a panel this study does not have: accounts that record price paid, calls made, and an adjudicated completeness label on the same episode. Without that panel, the slope of demand after `t*` is not identified. The toy surplus in Section 3.7 shows only that a quadratic bliss point keeps a finite optimum as `p` falls. It is not the missing regression.
+S-2 is a supply-price fact from secondary published series. A demand estimate is a different regression. At minimum it needs a quantity (calls, tasks closed, or both), a price, and a way to separate movement along a demand curve from movement of the curve. Epoch's benchmark price is not a firm-level invoice, and a firm's invoice is not `C`. Linking them requires a panel this study does not have: accounts that record price paid, calls made, and an adjudicated completeness label on the same episode. Without that panel, the slope of demand after `t*` is not identified. The toy surplus in Section 3.10 shows only that a quadratic bliss point keeps a finite optimum as `p` falls. It is not the missing regression.
 
 Segmentation belongs in the same design. Code each product as finite-`C` or open-ended before pooling. Pooling a ticket desk with an open research tool averages two demand regimes and can manufacture an appearance of unbounded appetite. The military exclusion in Section 5.3 is the same rule applied to a domain where the opponent's objective prevents a local bliss point. A table with those codes, even with no prices yet, would be more informative than a single total-addressable-market number. The table was not built.
 
@@ -509,6 +533,36 @@ Luccioni, A. S., Strubell, E., and Crawford, K. From efficiency gains to rebound
 Ostrovsky, N. / Epoch AI. What you need to know about AI energy use. Updated 14 July 2026. https://epoch.ai/publications/ai-energy
 
 Companion measurement record: Charlot, "Metered Commit Gates, Part I (Notational Intelligence)," this repository. Software logs: `artifacts/RESULTS.md`, `artifacts/mcp_gate_demo.json`, `artifacts/schemas/wca.commit.v1/`.
+
+Anthropic. Anthropic Economic Index report: uneven geographic and enterprise AI adoption. September 2025. https://www.anthropic.com/research/anthropic-economic-index-september-2025-report
+
+Bai, L., Huang, Z., Wang, X., et al. How do AI agents spend your money? Analyzing and predicting token consumption in agentic coding. arXiv:2604.22750, 2026. https://arxiv.org/abs/2604.22750
+
+Brockway, P. E., Sorrell, S., Semieniuk, G., Heun, M. K., and Court, V. Energy efficiency and economy-wide rebound effects: a review of the evidence and its implications. Renewable and Sustainable Energy Reviews 141, 110781, 2021. https://doi.org/10.1016/j.rser.2021.110781
+
+Brookes, L. The greenhouse effect: the fallacies in the energy efficiency solution. Energy Policy 18(2), 199-201, 1990. https://doi.org/10.1016/0301-4215(90)90145-T
+
+Chen, X., Xu, J., Liang, T., et al. Do NOT think that much for 2+3=? On the overthinking of o1-like LLMs. arXiv:2412.21187, 2024. https://arxiv.org/abs/2412.21187
+
+Cuadron, A., Li, D., Ma, W., et al. The danger of overthinking: examining the reasoning-action dilemma in agentic tasks. arXiv:2502.08235, 2025. https://arxiv.org/abs/2502.08235
+
+Du, M. Tiered super-Moore's law: price evolution, production frontiers, and market competition in large language models. arXiv:2603.28576, 2026. https://arxiv.org/abs/2603.28576
+
+Fouquet, R., and Pearson, P. J. G. Seven centuries of energy services: the price and use of light in the United Kingdom (1300-2000). The Energy Journal 27(1), 2006. https://doi.org/10.5547/ISSN0195-6574-EJ-Vol27-No1-8
+
+Gundlach, H., Lynch, J., Mertens, M., et al. The price of progress: price performance and the future of AI. arXiv:2511.23455, 2025. https://arxiv.org/abs/2511.23455
+
+Khazzoom, J. D. Economic implications of mandated efficiency in standards for household appliances. The Energy Journal 1(4), 1980. https://doi.org/10.5547/ISSN0195-6574-EJ-Vol1-No4-2
+
+Masanet, E., Shehabi, A., Lei, N., Smith, S., and Koomey, J. Recalibrating global data center energy-use estimates. Science 367(6481), 984-986, 2020. https://doi.org/10.1126/science.aba3758
+
+Saunders, H. D. The Khazzoom-Brookes postulate and neoclassical growth. The Energy Journal 13(4), 1992. https://doi.org/10.5547/ISSN0195-6574-EJ-Vol13-No4-7
+
+Sorrell, S., and Dimitropoulos, J. The rebound effect: microeconomic definitions, limitations and extensions. Ecological Economics 65(3), 636-649, 2008. https://doi.org/10.1016/j.ecolecon.2007.08.013
+
+Tsao, J. Y., Saunders, H. D., Creighton, J. R., Coltrin, M. E., and Simmons, J. A. Solid-state lighting: an energy-economics perspective. Journal of Physics D: Applied Physics 43(35), 354001, 2010. https://doi.org/10.1088/0022-3727/43/35/354001
+
+Witt, U. Learning to consume: a theory of wants and the growth of demand. Journal of Evolutionary Economics 11(1), 23-36, 2001. https://doi.org/10.1007/PL00003851
 
 ## Appendix A. Decision rules and non-results
 

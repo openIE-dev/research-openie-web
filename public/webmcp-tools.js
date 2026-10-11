@@ -114,13 +114,13 @@
     },
     {
       "id": "spellcheck",
-      "title": "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)",
+      "title": "Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few",
       "short_title": "Spell Check is Global",
       "kind": "History essay",
       "path": "/papers/spellcheck/",
       "pdf_path": "/pdfs/spellcheck.pdf",
       "about_path": "/about/spellcheck/",
-      "summary": "People used to pay a premium for spell check. Now it is free and bundled into the editor, the browser, and the phone. A history of that path, from dated prices to the local library in every editor. Technology built for global access reaches more than 7 billion people. Scarcity pricing keeps a capability with fewer than 500 million. Energy to run is what remains.",
+      "summary": "People used to pay a premium for spell check. Now it is free and bundled into the editor, the browser, and the phone. A history of that path, from dated prices to the local library in every editor. Technology built for global access reaches more than 7 billion people. Scarcity pricing keeps a capability with the few who can pay. Energy to run is what remains.",
       "keywords": [
         "spell check",
         "history of computing",
