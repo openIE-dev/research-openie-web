@@ -63,7 +63,7 @@
   {
    "id": "ref-titles",
    "status": "reference title",
-   "pattern": "Scaling [Ll]aws for [Nn]eural [Ll]anguage [Mm]odels|Second[- ]law(?:-like)? (?:of thermodynamics|inequalities|and Landauer)[^.]*|second-law-like inequalities",
+   "pattern": "Scaling [Ll]aws for [Nn]eural [Ll]anguage [Mm]odels|Second[- ]law(?:-like)? (?:of thermodynamics|inequalities|and Landauer)[^.]*|second-law-like inequalities|[Pp]rograms, life cycles, and laws of software evolution",
    "note": "Titles of cited works."
   },
   {
