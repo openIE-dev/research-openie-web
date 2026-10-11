@@ -10,7 +10,7 @@ complete: true
 
 *バージョン 1.1、2026年10月11日。データとコード：[research.openie.dev/data/](/data/#economics)。LaTeX PDF：[/pdfs/latex/ai-coding-market.pdf](/pdfs/latex/ai-coding-market.pdf)（[ソース](/pdfs/latex/ai-coding-market.tex)）。*
 
-*[『Reality Code Engine：ひとつの形式、多くの適合、そして自律的コーディングへの低エントロピーの道』](/papers/rce/) の経済学の姉妹編。研究論文は工学、理論、測定を扱う。本エッセイは理論と経済学が出会う場所である。*
+*[『Reality Code Engine：ネイティブで検証済み、低エネルギーなプログラミングのためのひとつの可逆な形式』](/papers/rce/) の経済学の姉妹編。研究論文は工学、理論、測定を扱う。本エッセイは理論と経済学が出会う場所である。*
 
 <div id="abstract" class="anchor-alias" aria-hidden="true"></div>
 

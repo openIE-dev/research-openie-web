@@ -10,7 +10,7 @@ complete: true
 
 *संस्करण 1.1, 11 अक्टूबर 2026। डेटा और कोड: [research.openie.dev/data/](/data/#economics)। LaTeX PDF: [/pdfs/latex/ai-coding-market.pdf](/pdfs/latex/ai-coding-market.pdf) ([स्रोत](/pdfs/latex/ai-coding-market.tex))।*
 
-*[Reality Code Engine: एक Form, अनेक फ़िट, और स्वायत्त कोडिंग का निम्न-एंट्रॉपी मार्ग](/papers/rce/) का अर्थशास्त्रीय सहचर। शोध पत्र में इंजीनियरिंग, सिद्धांत और माप हैं। यह निबंध वह जगह है जहाँ सिद्धांत और अर्थशास्त्र मिलते हैं।*
+*[Reality Code Engine: मूल, सत्यापित और कम ऊर्जा वाली प्रोग्रामिंग के लिए एक हानिरहित Form](/papers/rce/) का अर्थशास्त्रीय सहचर। शोध पत्र में इंजीनियरिंग, सिद्धांत और माप हैं। यह निबंध वह जगह है जहाँ सिद्धांत और अर्थशास्त्र मिलते हैं।*
 
 <div id="abstract" class="anchor-alias" aria-hidden="true"></div>
 

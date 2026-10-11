@@ -91,7 +91,7 @@
     },
     {
       "id": "rce",
-      "title": "The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding",
+      "title": "The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming",
       "short_title": "The Reality Code Engine",
       "kind": "Research paper",
       "path": "/papers/rce/",

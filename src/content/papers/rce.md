@@ -1,5 +1,5 @@
 ---
-title: "The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding"
+title: "The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming"
 deck: "RCE is a native code ecosystem. A program is authored once, from intent, as a Form: a state, a set of events and a pure, total transition. The Form is a lossless encoding of that intent, every target (statechart, Rust, Python, XState, SCXML, WASM) is a faithful projection of it, and a state the Form does not declare cannot be written, so a wrong program is refused at entry and nothing is left to diff or track afterwards. Fits are reused, and every fit that passes the gate compounds the ecosystem. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input and specification is refused at entry, and the Python projection replays the reference trace byte for byte on 9,999. Code from other languages enters by lift, a construction from each language's grammar to its syntax tree to the Form."
 id: rce
 status: "Research paper"
@@ -9,7 +9,7 @@ pdf: "/pdfs/rce.pdf"
 board_metered: false
 ---
 
-# The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding
+# The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming
 
 *Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#rce). Playground: [/playground/rce/](/playground/rce/). LaTeX PDF: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
 
@@ -115,7 +115,8 @@ The claim of [§1](#1-thesis) is measured directly. The benchmark was preregiste
 The one Python miss is counted as a miss; the same Form and events replay identically under 32 hash seeds in the regression test `tests/form_ecosystem_regress.rs`. Energy here is `est_j` only; the whole run took 393 s of CPU time on one core. The generated Forms are small, so this table measures the encoding, the projections and the gate. Lifted Forms from real programs are measured under the protocol of [§8.7](#87-lift-coverage-across-languages).
 
 ### 2.4 Gated, verified recursive self-improvement
-Good (1965) [111] defined the ultraintelligent machine as one that could design better machines, so that improvement would recurse. Yudkowsky (2013) [113] cast the question as one of returns: whether each unit of improvement makes the next unit cheaper or dearer. Schmidhuber's Gödel machine (2007) [112] gave the first formal answer with a guarantee: a program rewrites any part of itself, including its own search, only after proving that the rewrite improves its expected utility. Löb's theorem (1955) [114] is the obstacle a self-trusting prover meets, which Yudkowsky and Herreshoff (2013) [115] named the Löbian obstacle: a system cannot in general prove the soundness of a successor that uses its own proof system. Recent systems drop the proof requirement and select by measured score: STOP Zelikman et al., 2023 [116] improves the scaffold that improves code, the Darwin Gödel Machine Zhang et al., 2025 [117] keeps an archive of self-modified coding agents chosen by benchmark score, AlphaEvolve Novikov et al., 2025 [118] evolves programs under automatic evaluators, and Voyager Wang et al., 2023 [119] grows a library of verified skills that later tasks reuse.
+
+Good (1965) [111] defined the ultraintelligent machine as one that could design better machines, so that improvement would recurse. Yudkowsky (2013) [113] cast the question as one of returns: whether each unit of improvement makes the next unit cheaper or dearer. Schmidhuber's Gödel machine (2007) [112] gave the first formal answer with a guarantee: a program rewrites any part of itself, including its own search, only after proving that the rewrite improves its expected utility. Löb's theorem (1955) [114] is the obstacle a self-trusting prover meets, which Yudkowsky and Herreshoff (2013) [115] named the Löbian obstacle: a system cannot in general prove the soundness of a successor that uses its own proof system. Recent systems drop the proof requirement and select by measured score: STOP (Zelikman et al., 2023) [116] improves the scaffold that improves code, the Darwin Gödel Machine (Zhang et al., 2025) [117] keeps an archive of self-modified coding agents chosen by benchmark score, AlphaEvolve (Novikov et al., 2025) [118] evolves programs under automatic evaluators, and Voyager (Wang et al., 2023) [119] grows a library of verified skills that later tasks reuse.
 
 RCE takes the structure of the Gödel machine and the library of Voyager, with two differences that remove the obstacle. First, the object that improves is not the prover. RCE promotes handlers, rewrites and gears, and each is checked against a fixed, separately certified kernel: the Kani harnesses and the SMT encoding never change through promotion, so no step needs to trust a successor's proof system. Second, the gate is a proof of correctness at the boundary, not a score. A score can rise while an interface assumption breaks; a proof at the boundary cannot be passed by a change that breaks it.
 
@@ -479,10 +480,10 @@ Fixed before the runs they test.
 
 | ID | Observation | Defeats |
 |---|---|---|
+| RCE-F0 | On a preregistered run of at least 10,000 Forms, any projection prints a trace that differs from the Form's reference trace, or any malformed input is accepted | The claim that projections are faithful and the gate refuses at entry |
 | RCE-F1 | On the held-out slice, G0 to G2 with frozen rules resolve under 10% of tasks with 0 model calls | The claim that most fits already exist for repair at this scale |
 | RCE-F2 | Byte-identical or equivalent patches are under half of the resolved held-out tasks | The reading of the gate as more than plausibility on the covered tasks |
 | RCE-F3 | Under the wall meter, gross joules per solved task of the RCE solver exceed those of the cheapest model baseline on the tasks both solve | RCE's joule advantage on covered tasks |
-| RCE-F0 | On a preregistered run of at least 10,000 Forms, any projection prints a trace that differs from the Form's reference trace, or any malformed input is accepted | The claim that projections are faithful and the gate refuses at entry |
 | RCE-F4 | In the convergence protocol of Section 8.6, fewer than half of the specifications without a stuck input reach a round with zero model calls within 20 rounds | Compiling the model out of the loop |
 
 ## 11. Work to finish

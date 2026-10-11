@@ -15,7 +15,7 @@ board_metered: false
 *Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#economics). LaTeX PDF: [/pdfs/latex/ai-coding-market.pdf](/pdfs/latex/ai-coding-market.pdf) ([source](/pdfs/latex/ai-coding-market.tex)).*
 
 
-*The economics companion to [The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding](/papers/rce/). The research paper holds the engineering, the theory and the measurements. This essay is where the theory and the economics meet.*
+*The economics companion to [The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming](/papers/rce/). The research paper holds the engineering, the theory and the measurements. This essay is where the theory and the economics meet.*
 
 ## Abstract
 

@@ -10,7 +10,7 @@ complete: true
 
 *الإصدار 1.1، 11 أكتوبر 2026. البيانات والشيفرة: [research.openie.dev/data/](/data/#economics). ملف LaTeX PDF: [/pdfs/latex/ai-coding-market.pdf](/pdfs/latex/ai-coding-market.pdf) ([المصدر](/pdfs/latex/ai-coding-market.tex)).*
 
-*الرفيق الاقتصادي لورقة [Reality Code Engine: شكل واحد، ملاءمات كثيرة، والمسار منخفض الإنتروبيا نحو البرمجة الذاتية](/papers/rce/). تحمل الورقة البحثية الهندسة والنظرية والقياسات. وهذا المقال هو الموضع الذي تلتقي فيه النظرية بالاقتصاد.*
+*الرفيق الاقتصادي لورقة [Reality Code Engine: شكل واحد بلا فقد لبرمجة أصلية ومُتحقَّق منها ومنخفضة الطاقة](/papers/rce/). تحمل الورقة البحثية الهندسة والنظرية والقياسات. وهذا المقال هو الموضع الذي تلتقي فيه النظرية بالاقتصاد.*
 
 <div id="abstract" class="anchor-alias" aria-hidden="true"></div>
 
