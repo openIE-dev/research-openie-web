@@ -142,21 +142,26 @@ high entropy and disorder. A model sits in the loop for every task, and
 every task pays rent per token.
 
 The \href{https://research.openie.dev/papers/rce/}{RCE research paper}
-measures a second path. A program is a database functional state
-machine: one Form, many fits. Most fits already exist. Correctness is
-the gate, and joules are the ranking. On held-out test splits with the
-engine frozen and 0 model calls, RCE repaired 520,541 of 520,821
-one-token faults in nine real repositories and 23,015 of 23,015 in four
-never used for tuning
-(\href{https://research.openie.dev/papers/rce/\#61-l0-one-token-faults}{RCE
-§6.1}), and 38.6\% of 24,072 Java and 17.4\% of 157,089 Python
-single-statement bugs from real histories
-(\href{https://research.openie.dev/papers/rce/\#62-l1-one-statement-bugs-from-real-histories}{RCE
-§6.2}). Where that path covers a task, the marginal cost of the task
-falls toward the energy to run it, and a market priced on generation
-loses its base on that task. This essay separates the projections from
-the measurements, names what each projection assumes, and states where
-it breaks.
+measures a second path. RCE is a native code ecosystem. A program is
+authored once, from intent, as a Form, a lossless encoding of state,
+events and pure transitions, and every target language is a faithful
+projection of it. A state the Form does not declare cannot be written,
+so a wrong program is refused at entry rather than found and fixed
+later. Every fit that passes the gate is stored and reused, so the
+ecosystem compounds. On 10,000 preregistered Forms with a frozen engine
+and 0 model calls, every Form round trips to identical bytes, every
+projection is deterministic, every malformed input is refused at entry,
+and the Python projection replays the reference trace on 9,999
+(\href{https://research.openie.dev/papers/rce/\#23-the-ecosystem-at-large-n}{RCE
+§2.3}). Code from other languages enters by lift, and on lifted code the
+repair gears restore 520,541 of 520,821 one-token faults and 63.7\% of
+21,320 single-statement Java bugs with 0 model calls
+(\href{https://research.openie.dev/papers/rce/\#6-lift-entering-the-ecosystem-from-other-languages}{RCE
+§6}). Where that path covers a task, the marginal cost of the task falls
+toward the energy to run it, and a market priced on generation loses its
+base on that task. This essay separates the projections from the
+measurements, names what each projection assumes, and states where it
+breaks.
 
 \textbf{Shared thesis, stated once for every paper.} Energy to run is
 the only true metric of computer intelligence. All other factors
@@ -600,7 +605,12 @@ one with the fewest joules to completion, \(J^*\), wins
 on cost, and the cost floor of a task is the energy to complete it plus
 the price of the proof.
 
-\textbf{The Form makes most fits reusable.} A program is a tuple
+\textbf{The Form is authored once and reused.} A program in the
+ecosystem is written once, from intent, as a Form, and every target is a
+projection of it, so the cost of a fit is paid once and every later use
+runs at the handler floor
+(\href{https://research.openie.dev/papers/rce/\#1-thesis}{RCE §1}).
+\textbf{Most fits already exist.} A program is a tuple
 \(P = (S, E, \delta, D, \lambda)\), and by Gurevich's Abstract State
 Machine theorem every sequential algorithm has that shape
 (\href{https://research.openie.dev/papers/rce/\#3-the-form}{RCE §3}).
@@ -626,7 +636,11 @@ Commit Gates, Part II}). Per-token rent past the floor bills for waste.
 \subsection{5. The measurements}\label{the-measurements}
 
 These are measurements, labeled as RCE labels them. They come from the
-\href{https://research.openie.dev/papers/rce/}{RCE research paper}.
+\href{https://research.openie.dev/papers/rce/}{RCE research paper}. The
+first rows measure the ecosystem itself; the rows after them measure
+repair of code lifted from other languages
+(\href{https://research.openie.dev/papers/rce/\#6-lift-entering-the-ecosystem-from-other-languages}{RCE
+§6}).
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -648,21 +662,35 @@ Where
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-L0 one-token faults, 9 real repositories, held-out test split & 520,541
-of 520,821 (0.9995, 95\% CI 0.9994 to 0.9995), 0 model calls & Measured
+Form ecosystem, 10,000 preregistered Forms, lossless round trip and
+deterministic projection & 10,000 of 10,000, 0 model calls & Measured
 counts &
+\href{https://research.openie.dev/papers/rce/\#23-the-ecosystem-at-large-n}{RCE
+§2.3} \\
+Form ecosystem, malformed inputs and specifications refused at entry &
+10,000 of 10,000, 0 model calls & Measured counts &
+\href{https://research.openie.dev/papers/rce/\#23-the-ecosystem-at-large-n}{RCE
+§2.3} \\
+Form ecosystem, Python projection replays the reference trace byte for
+byte & 9,999 of 10,000, 0 model calls & Measured counts &
+\href{https://research.openie.dev/papers/rce/\#23-the-ecosystem-at-large-n}{RCE
+§2.3} \\
+Lifted code, L0 one-token faults, 9 real repositories, held-out test
+split & 520,541 of 520,821 (0.9995, 95\% CI 0.9994 to 0.9995), 0 model
+calls & Measured counts &
 \href{https://research.openie.dev/papers/rce/\#61-l0-one-token-faults}{RCE
 §6.1} \\
-L0, 4 repositories never used for tuning & 23,015 of 23,015 (95\% CI
-0.9998 to 1.0000), 0 model calls & Measured counts &
+Lifted code, L0, 4 repositories never used for tuning & 23,015 of 23,015
+(95\% CI 0.9998 to 1.0000), 0 model calls & Measured counts &
 \href{https://research.openie.dev/papers/rce/\#61-l0-one-token-faults}{RCE
 §6.1} \\
-L1 Java, ManySStuBs4J 2.0, held-out & 9,288 of 24,072 (0.386, 0.380 to
-0.392), 0 model calls, hunk only & Measured counts &
+Lifted code, L1 Java, ManySStuBs4J 2.0, held-out, whole file & 13,586 of
+21,320 (0.637, 0.631 to 0.644), 0 model calls; 9,288 of 24,072 (0.386)
+from the hunk alone & Measured counts &
 \href{https://research.openie.dev/papers/rce/\#62-l1-one-statement-bugs-from-real-histories}{RCE
 §6.2} \\
-L1 Python, TSSB-3M v1.0.0, held-out & 27,266 of 157,089 (0.174, 0.172 to
-0.175), 0 model calls & Measured counts &
+Lifted code, L1 Python, TSSB-3M v1.0.0, held-out & 27,266 of 157,089
+(0.174, 0.172 to 0.175), 0 model calls & Measured counts &
 \href{https://research.openie.dev/papers/rce/\#62-l1-one-statement-bugs-from-real-histories}{RCE
 §6.2} \\
 Energy per solved task, all rungs & 0.10 J to 0.40 J & \texttt{est\_j}
@@ -681,11 +709,13 @@ row.
 \subsection{6. Where the projections
 break}\label{where-the-projections-break}
 
-\textbf{Per-token rent breaks on covered tasks.} On the held-out rungs,
-every covered repair bought 0 tokens: 520,541 one-token repairs and
-36,554 single-statement repairs from real histories {[}RCE §6.1,
-§6.2{]}. A revenue line priced per token earns nothing on a task that
-needs no token.
+\textbf{Per-token rent breaks on covered tasks.} A program authored as a
+Form is compiled to every target with 0 tokens: 10,000 of 10,000
+preregistered Forms compiled, projected and gated with no model call
+{[}RCE §2.3{]}. On lifted code, every covered repair also bought 0
+tokens: 520,541 one-token repairs and 40,852 single-statement repairs
+from real histories {[}RCE §6.1, §6.2{]}. A revenue line priced per
+token earns nothing on a task that needs no token.
 
 \textbf{AI in the loop forever breaks at promotion.} The model is paid
 once for a new case; the gate admits the fit as a handler, and later
@@ -708,11 +738,12 @@ are not a ratio. They are an order of magnitude to test, under Protocol
 E1.
 
 \textbf{Coverage is measured per class.} The rungs give coverage within
-classes of task: nearly all one-token faults, and 38.6\% (Java) and
-17.4\% (Python) of single-statement bugs, where the open cases are the
-ones whose intent bits lie outside the hunk or are new
-(\href{https://research.openie.dev/papers/rce/\#23-per-rung-ladder-results}{RCE
-§2.3}). The share of all real coding volume that falls in covered
+classes of task: nearly all one-token faults, and 63.7\% (Java, whole
+file; 38.6\% from the hunk alone) and 17.4\% (Python) of
+single-statement bugs, where the open cases are the ones whose intent
+bits lie outside the hunk or are new
+(\href{https://research.openie.dev/papers/rce/\#60-the-repair-ladder-on-lifted-code}{RCE
+§6.0}). The share of all real coding volume that falls in covered
 classes is Proposition E5.
 
 \textbf{Two declines multiply.} The price per call falls 9 to 900 times
@@ -744,6 +775,17 @@ the model layer away and keep the rent in the IDE and the cloud. An
 energy-priced engine competes with a zero-priced bundle only where the
 gate is open to it: where the tests, the proof and the receipt are the
 buyer's, not the platform's.
+
+\textbf{One Form in place of many languages.} The RCE paper states the
+thesis that one universal Form, with every language a projection and
+every program a lift, replaces the need for any other language
+(\href{https://research.openie.dev/papers/rce/\#36-one-ecosystem-lossless-and-the-universality-thesis}{RCE
+§3.6}). The market reading is this. Much of the spend the projections
+count is translation between languages, frameworks and their versions,
+and the reconciliation of implementations that drift. In an ecosystem
+where a program is written once and every target is emitted, that spend
+has no task to buy. Adoption is the open quantity, and it is a market
+question, not a theorem.
 
 \textbf{What survives.} The value estimate of section 2.1 can hold.
 Developers can produce more. What breaks is the claim that the value is
