@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="t d"><title id="t">Dollar figures, by what kind of number they are</title><desc id="d">Log-scale dot chart of dollar figures from the essay tables. Projections: developer contribution about 3 trillion dollars, generative AI value 2.6 to 4.4 trillion, worldwide AI spending 1.5 trillion, AI code tools market 9.35 billion in 2026 and 29.96 billion in 2031. Estimate: capex over 400 billion. Survey estimates: enterprise generative AI spend 37 billion and AI coding tool spend 4.0 billion. Company-reported: Claude Code run-rate over 2.5 billion and Cursor over 1 billion.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="758" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Dollar figures, by what kind of number they are</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Log scale. Colour and marker give the label each source carries (Section 2).</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<line x1="470.0" y1="125.0" x2="470.0" y2="640.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="470.0" y="664.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">$1B</text>
+<line x1="632.5" y1="125.0" x2="632.5" y2="640.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="632.5" y="664.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">$10B</text>
+<line x1="795.0" y1="125.0" x2="795.0" y2="640.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="795.0" y="664.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">$100B</text>
+<line x1="957.5" y1="125.0" x2="957.5" y2="640.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="957.5" y="664.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">$1T</text>
+<line x1="1120.0" y1="125.0" x2="1120.0" y2="640.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1120.0" y="664.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">$10T</text>
+<text x="454.0" y="156.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="end">Developer economic contribution [1]</text>
+<line x1="470.0" y1="150.0" x2="1035.0" y2="150.0" stroke="#e2e8f0" stroke-width="2"/>
+<circle cx="1035.0" cy="150.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="454.0" y="205.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="end">Generative AI value, 63 use cases [15]</text>
+<line x1="470.0" y1="199.0" x2="1062.1" y2="199.0" stroke="#e2e8f0" stroke-width="2"/>
+<line x1="1024.9" y1="199.0" x2="1062.1" y2="199.0" stroke="#D55E00" stroke-width="6"/>
+<circle cx="1024.9" cy="199.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<circle cx="1062.1" cy="199.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="454.0" y="254.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="end">Worldwide AI spending, 2025 [24]</text>
+<line x1="470.0" y1="248.0" x2="986.1" y2="248.0" stroke="#e2e8f0" stroke-width="2"/>
+<circle cx="986.1" cy="248.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="454.0" y="303.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="end">Capex, largest technology firms, 2025 [10]</text>
+<line x1="470.0" y1="297.0" x2="892.8" y2="297.0" stroke="#e2e8f0" stroke-width="2"/>
+<path d="M892.8347485907939 285.3 L902.7347485907939 297 L892.8347485907939 308.7 L882.9347485907939 297 Z" stroke="#ffffff" stroke-width="2" fill="#CC79A7" fill-opacity="1" stroke-linejoin="round"/>
+<text x="454.0" y="352.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="end">Enterprise generative AI spend, 2025 [2]</text>
+<line x1="470.0" y1="346.0" x2="724.8" y2="346.0" stroke="#e2e8f0" stroke-width="2"/>
+<path d="M724.8327801608866 335.2 L734.7327801608866 353.2 L714.9327801608866 353.2 Z" stroke="#ffffff" stroke-width="2" fill="#E69F00" fill-opacity="1" stroke-linejoin="round"/>
+<text x="454.0" y="401.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="end">AI code tools market, 2031 [3]</text>
+<line x1="470.0" y1="395.0" x2="709.9" y2="395.0" stroke="#e2e8f0" stroke-width="2"/>
+<circle cx="709.9" cy="395.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="454.0" y="450.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="end">AI code tools market, 2026 [3]</text>
+<line x1="470.0" y1="444.0" x2="627.8" y2="444.0" stroke="#e2e8f0" stroke-width="2"/>
+<circle cx="627.8" cy="444.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="454.0" y="499.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="end">Enterprise AI coding tool spend, 2025 [2]</text>
+<line x1="470.0" y1="493.0" x2="567.8" y2="493.0" stroke="#e2e8f0" stroke-width="2"/>
+<path d="M567.8347485907939 482.2 L577.7347485907939 500.2 L557.9347485907939 500.2 Z" stroke="#ffffff" stroke-width="2" fill="#E69F00" fill-opacity="1" stroke-linejoin="round"/>
+<text x="454.0" y="548.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="end">Claude Code run-rate revenue [6]</text>
+<line x1="470.0" y1="542.0" x2="534.7" y2="542.0" stroke="#e2e8f0" stroke-width="2"/>
+<rect x="525.7" y="533.0" width="18.0" height="18.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<text x="454.0" y="597.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="end">Cursor annualized revenue [5]</text>
+<line x1="470.0" y1="591.0" x2="470.0" y2="591.0" stroke="#e2e8f0" stroke-width="2"/>
+<rect x="461.0" y="582.0" width="18.0" height="18.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<circle cx="80.0" cy="694.0" r="8" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="96.0" y="700.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">Projection</text>
+<path d="M340 683.6 L348.8 694 L340 704.4 L331.2 694 Z" stroke="#ffffff" stroke-width="2" fill="#CC79A7" fill-opacity="1" stroke-linejoin="round"/>
+<text x="356.0" y="700.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">Estimate</text>
+<path d="M600 684.4 L608.8 700.4 L591.2 700.4 Z" stroke="#ffffff" stroke-width="2" fill="#E69F00" fill-opacity="1" stroke-linejoin="round"/>
+<text x="616.0" y="700.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">Survey estimate</text>
+<rect x="852.0" y="686.0" width="16.0" height="16.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<text x="876.0" y="700.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">Company-reported</text>
+<text x="80.0" y="735.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">No row is a measured outcome of AI coding; the measured rows of this essay are counts and joules (Figure 4).</text></svg>

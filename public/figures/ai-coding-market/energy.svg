@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="t d"><title id="t">Energy: projected at the grid, measured at the task</title><desc id="d">Two panels. Panel a: data-centre electricity, 415 TWh in 2024 by IEA estimate, a 485 to 950 TWh range for 2025 to 2030, and 945 TWh projected for 2030. Panel b, log scale: one median text prompt measured by its operator at 0.24 Wh or 864 joules; RCE solved repair tasks at 0.10 to 0.40 joules estimated and 0.026 to 0.056 joules on a RAPL package counter.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="698" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Energy: projected at the grid, measured at the task</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Two different objects on two panels; neither is converted into the other.</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<text x="60.0" y="140.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">a. Data-centre electricity, TWh per year (IEA [10, 11])</text>
+<line x1="120.0" y1="500.0" x2="560.0" y2="500.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="110.0" y="505.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">0</text>
+<line x1="120.0" y1="417.5" x2="560.0" y2="417.5" stroke="#e2e8f0" stroke-width="1"/>
+<text x="110.0" y="422.5" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">250</text>
+<line x1="120.0" y1="335.0" x2="560.0" y2="335.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="110.0" y="340.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">500</text>
+<line x1="120.0" y1="252.5" x2="560.0" y2="252.5" stroke="#e2e8f0" stroke-width="1"/>
+<text x="110.0" y="257.5" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">750</text>
+<line x1="120.0" y1="170.0" x2="560.0" y2="170.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="110.0" y="175.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">1000</text>
+<path d="M208.0 339.95 L501.3333333333333 186.5 L501.3333333333333 186.5" stroke="#CC79A7" stroke-width="3" fill="none" fill-opacity="1" stroke-dasharray="8 6" stroke-linejoin="round"/>
+<path d="M149.33333333333334 350.05 L160.33333333333334 363.05 L149.33333333333334 376.05 L138.33333333333334 363.05 Z" stroke="#ffffff" stroke-width="2" fill="#CC79A7" fill-opacity="1" stroke-linejoin="round"/>
+<text x="163.3" y="387.1" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">415 (2024, estimate)</text>
+<path d="M208.0 329.55 L216.8 339.95 L208.0 350.34999999999997 L199.2 339.95 Z" stroke="#ffffff" stroke-width="2" fill="#CC79A7" fill-opacity="1" stroke-linejoin="round"/>
+<text x="222.0" y="345.9" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#0f172a" text-anchor="start">485 (2025)</text>
+<circle cx="501.3" cy="188.1" r="10" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="487.3" y="218.1" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="end">945 (2030, projection)</text>
+<text x="149.3" y="526.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2024</text>
+<text x="266.7" y="526.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2026</text>
+<text x="384.0" y="526.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2028</text>
+<text x="501.3" y="526.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2030</text>
+<text x="640.0" y="140.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">b. Joules per unit of work, log scale</text>
+<line x1="660.0" y1="190.0" x2="660.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="660.0" y="494.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">0.01 J</text>
+<line x1="756.0" y1="190.0" x2="756.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="756.0" y="494.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">0.1 J</text>
+<line x1="852.0" y1="190.0" x2="852.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="852.0" y="494.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">1 J</text>
+<line x1="948.0" y1="190.0" x2="948.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="948.0" y="494.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">10 J</text>
+<line x1="1044.0" y1="190.0" x2="1044.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1044.0" y="494.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">100 J</text>
+<line x1="1140.0" y1="190.0" x2="1140.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1140.0" y="494.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">1 kJ</text>
+<text x="660.0" y="216.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">One median text prompt, production assistant [12]</text>
+<text x="660.0" y="260.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start">operator-measured 0.24 Wh</text>
+<path d="M1133.9053192779738 216.5 L1137.9553192779738 225.95 L1147.4053192779738 226.4 L1140.2053192779738 232.7 L1142.4553192779738 242.6 L1133.9053192779738 236.75 L1125.3553192779739 242.6 L1127.6053192779739 232.7 L1120.4053192779738 226.4 L1129.8553192779739 225.95 Z" stroke="#ffffff" stroke-width="2" fill="#0072B2" fill-opacity="1" stroke-linejoin="round"/>
+<text x="660.0" y="301.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">RCE, solved repair task, est_j</text>
+<text x="660.0" y="345.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start">CPU seconds times 10 W</text>
+<line x1="756.0" y1="315.0" x2="813.8" y2="315.0" stroke="#CC79A7" stroke-width="8"/>
+<path d="M756.0 303.3 L765.9 315 L756.0 326.7 L746.1 315 Z" stroke="#ffffff" stroke-width="2" fill="#CC79A7" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M813.7977591674844 303.3 L823.6977591674844 315 L813.7977591674844 326.7 L803.8977591674844 315 Z" stroke="#ffffff" stroke-width="2" fill="#CC79A7" fill-opacity="1" stroke-linejoin="round"/>
+<text x="660.0" y="386.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">RCE, solved repair task, reported_j</text>
+<text x="660.0" y="430.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start">RAPL package counter</text>
+<line x1="699.8" y1="400.0" x2="731.8" y2="400.0" stroke="#0072B2" stroke-width="8"/>
+<path d="M699.8374414051985 386.5 L703.8874414051985 395.95 L713.3374414051985 396.4 L706.1374414051985 402.7 L708.3874414051985 412.6 L699.8374414051985 406.75 L691.2874414051986 412.6 L693.5374414051986 402.7 L686.3374414051985 396.4 L695.7874414051986 395.95 Z" stroke="#ffffff" stroke-width="2" fill="#0072B2" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M731.8260505925953 386.5 L735.8760505925952 395.95 L745.3260505925953 396.4 L738.1260505925952 402.7 L740.3760505925952 412.6 L731.8260505925953 406.75 L723.2760505925953 412.6 L725.5260505925953 402.7 L718.3260505925953 396.4 L727.7760505925953 395.95 Z" stroke="#ffffff" stroke-width="2" fill="#0072B2" fill-opacity="1" stroke-linejoin="round"/>
+<text x="60.0" y="610.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">A prompt and a solved repair task are different units; panel b places them on one axis for scale, not as a like-for-like comparison.</text>
+<text x="60.0" y="635.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">RCE rows: RCE §6.3, est_j 0.10 to 0.40 J across rungs; reported_j 0.026 J (L1) and 0.056 J (L0) on RAPL subsamples.</text>
+<path d="M60 657.0 L63.6 665.4 L72.0 665.8 L65.6 671.4 L67.6 680.2 L60 675.0 L52.4 680.2 L54.4 671.4 L48.0 665.8 L56.4 665.4 Z" stroke="#ffffff" stroke-width="2" fill="#0072B2" fill-opacity="1" stroke-linejoin="round"/>
+<text x="76.0" y="675.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">Measured</text>
+<path d="M260 658.6 L268.8 669 L260 679.4 L251.2 669 Z" stroke="#ffffff" stroke-width="2" fill="#CC79A7" fill-opacity="1" stroke-linejoin="round"/>
+<text x="276.0" y="675.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">Estimate</text>
+<circle cx="460.0" cy="669.0" r="8" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="476.0" y="675.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">Projection</text></svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="t d"><title id="t">Gate first, then rank by joules</title><desc id="d">Diagram and data. Candidate runs pass through the gate C of z, X at least X required. Those that pass are ranked by J star, the least joules to correct completion; those that fail are not ranked. Below, Run 1 at budget 2.0: sigma-law closed 28.40 of 30 tasks with run iota 73,345 bits per joule; fixed cascade 27.50 with 70,418; goal-blind 18.25 with 92,724. Integrated iota alone would rank the goal-blind agent first.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="638" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Gate first, then rank by joules</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Correctness is the gate; joules are the ranking among what passes. Run 1 at the loose budget (Section 8.11).</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<rect x="60.0" y="170.0" width="250.0" height="120.0" rx="14" fill="#f8fafc" stroke="#0f172a" stroke-width="3" opacity="1"/>
+<text x="185.0" y="200.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Candidate runs</text>
+<text x="185.0" y="226.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">each with X and J</text>
+<rect x="400.0" y="170.0" width="260.0" height="120.0" rx="14" fill="#f8fafc" stroke="#D55E00" stroke-width="3" opacity="1"/>
+<text x="530.0" y="200.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Gate C(z)</text>
+<text x="530.0" y="226.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">X ≥ X_req</text>
+<text x="530.0" y="248.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">task closed or refused</text>
+<rect x="760.0" y="140.0" width="360.0" height="100.0" rx="14" fill="#f8fafc" stroke="#009E73" stroke-width="3" opacity="1"/>
+<text x="940.0" y="170.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Pass: rank by J*</text>
+<text x="940.0" y="196.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">least joules to correct completion</text>
+<rect x="760.0" y="280.0" width="360.0" height="80.0" rx="14" fill="#f8fafc" stroke="#94a3b8" stroke-width="3" opacity="1"/>
+<text x="940.0" y="310.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Fail: not ranked</text>
+<text x="940.0" y="336.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">cheap failures earn nothing</text>
+<path d="M310 230 L395 230" stroke="#0f172a" stroke-width="3" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M660 210 L755 190" stroke="#009E73" stroke-width="3" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M660 250 L755 320" stroke="#94a3b8" stroke-width="3" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<text x="60.0" y="410.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">Measured, B = 2.0 J_g2, 20 seeds: integrated ι alone ranks the wrong agent first</text>
+<text x="220.0" y="474.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="end">σ-law</text>
+<rect x="240.0" y="450.0" width="359.7" height="34.0" rx="4" fill="#0072B2" stroke="none" stroke-width="2" opacity="0.85"/>
+<text x="609.7" y="474.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">28.40 of 30 closed</text>
+<rect x="760.0" y="450.0" width="278.7" height="34.0" rx="4" fill="#0072B2" stroke="none" stroke-width="2" opacity="0.4"/>
+<text x="1048.7" y="474.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">73,345</text>
+<text x="220.0" y="526.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="end">Fixed cascade</text>
+<rect x="240.0" y="502.0" width="348.3" height="34.0" rx="4" fill="#009E73" stroke="none" stroke-width="2" opacity="0.85"/>
+<text x="598.3" y="526.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">27.50 of 30 closed</text>
+<rect x="760.0" y="502.0" width="267.6" height="34.0" rx="4" fill="#009E73" stroke="none" stroke-width="2" opacity="0.4"/>
+<text x="1037.6" y="526.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">70,418</text>
+<text x="220.0" y="578.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="end">Goal-blind</text>
+<rect x="240.0" y="554.0" width="231.2" height="34.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="0.85"/>
+<text x="481.2" y="578.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">18.25 of 30 closed</text>
+<rect x="760.0" y="554.0" width="352.4" height="34.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="0.4"/>
+<text x="1102.4" y="578.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="end">92,724</text>
+<text x="240.0" y="612.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#475569" text-anchor="start">tasks closed (the gate)</text>
+<text x="760.0" y="612.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#475569" text-anchor="start">run ι, bits per reported joule</text></svg>

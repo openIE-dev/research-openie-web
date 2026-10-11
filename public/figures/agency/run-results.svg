@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="t d"><title id="t">Tasks closed of 30, three preregistered runs</title><desc id="d">Three bar-chart panels of tasks closed of 30 by arm and budget level for Run 1, Run 2 and the second-machine part B. At the loose level 2.0 the sigma-law selector closed 28.40, 22.73 and 28.60; the fixed cascade 27.50, 19.93 and 27.77; the goal-blind baseline 18.25, 10.65 and 15.65. Error bars show one standard deviation.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="698" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Tasks closed of 30, three preregistered runs</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Mean ± one standard deviation over seeds, by arm and budget level B/J_g2 (Sections 8.11 to 8.11.2).</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<text x="80.0" y="134.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a" text-anchor="start">Run 1, laptop, 20 seeds, reported_j</text>
+<line x1="80.0" y1="550.0" x2="420.0" y2="550.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="74.0" y="555.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="end">0</text>
+<line x1="80.0" y1="416.7" x2="420.0" y2="416.7" stroke="#e2e8f0" stroke-width="1"/>
+<text x="74.0" y="421.7" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="end">10</text>
+<line x1="80.0" y1="283.3" x2="420.0" y2="283.3" stroke="#e2e8f0" stroke-width="1"/>
+<text x="74.0" y="288.3" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="end">20</text>
+<line x1="80.0" y1="150.0" x2="420.0" y2="150.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="74.0" y="155.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="end">30</text>
+<text x="145.0" y="574.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#475569" text-anchor="middle">0.5</text>
+<rect x="100.0" y="542.0" width="26.0" height="8.0" rx="2" fill="#0072B2" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="113.0" y1="535.3" x2="113.0" y2="548.7" stroke="#0f172a" stroke-width="2"/>
+<rect x="130.0" y="540.7" width="26.0" height="9.3" rx="2" fill="#009E73" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="143.0" y1="534.4" x2="143.0" y2="546.9" stroke="#0f172a" stroke-width="2"/>
+<rect x="160.0" y="546.7" width="26.0" height="3.3" rx="2" fill="#D55E00" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="173.0" y1="540.8" x2="173.0" y2="550.0" stroke="#0f172a" stroke-width="2"/>
+<text x="251.7" y="574.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#475569" text-anchor="middle">1.0</text>
+<rect x="206.7" y="428.7" width="26.0" height="121.3" rx="2" fill="#0072B2" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="219.7" y1="403.9" x2="219.7" y2="453.5" stroke="#0f172a" stroke-width="2"/>
+<rect x="236.7" y="464.0" width="26.0" height="86.0" rx="2" fill="#009E73" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="249.7" y1="444.0" x2="249.7" y2="484.0" stroke="#0f172a" stroke-width="2"/>
+<rect x="266.7" y="498.7" width="26.0" height="51.3" rx="2" fill="#D55E00" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="279.7" y1="474.1" x2="279.7" y2="523.2" stroke="#0f172a" stroke-width="2"/>
+<text x="358.3" y="574.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#475569" text-anchor="middle">2.0</text>
+<rect x="313.3" y="171.3" width="26.0" height="378.7" rx="2" fill="#0072B2" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="326.3" y1="163.3" x2="326.3" y2="179.3" stroke="#0f172a" stroke-width="2"/>
+<rect x="343.3" y="183.3" width="26.0" height="366.7" rx="2" fill="#009E73" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="356.3" y1="176.5" x2="356.3" y2="190.1" stroke="#0f172a" stroke-width="2"/>
+<rect x="373.3" y="306.7" width="26.0" height="243.3" rx="2" fill="#D55E00" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="386.3" y1="270.5" x2="386.3" y2="342.8" stroke="#0f172a" stroke-width="2"/>
+<text x="465.0" y="134.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a" text-anchor="start">Run 2, guarded, 40 seeds, reported_j</text>
+<line x1="465.0" y1="550.0" x2="805.0" y2="550.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="459.0" y="555.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="end">0</text>
+<line x1="465.0" y1="416.7" x2="805.0" y2="416.7" stroke="#e2e8f0" stroke-width="1"/>
+<text x="459.0" y="421.7" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="end">10</text>
+<line x1="465.0" y1="283.3" x2="805.0" y2="283.3" stroke="#e2e8f0" stroke-width="1"/>
+<text x="459.0" y="288.3" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="end">20</text>
+<line x1="465.0" y1="150.0" x2="805.0" y2="150.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="459.0" y="155.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="end">30</text>
+<text x="530.0" y="574.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#475569" text-anchor="middle">0.5</text>
+<rect x="485.0" y="541.7" width="26.0" height="8.3" rx="2" fill="#0072B2" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="498.0" y1="535.2" x2="498.0" y2="548.3" stroke="#0f172a" stroke-width="2"/>
+<rect x="515.0" y="542.4" width="26.0" height="7.6" rx="2" fill="#009E73" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="528.0" y1="535.7" x2="528.0" y2="549.1" stroke="#0f172a" stroke-width="2"/>
+<rect x="545.0" y="548.4" width="26.0" height="1.6" rx="2" fill="#D55E00" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="558.0" y1="544.0" x2="558.0" y2="550.0" stroke="#0f172a" stroke-width="2"/>
+<text x="636.7" y="574.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#475569" text-anchor="middle">1.0</text>
+<rect x="591.7" y="511.3" width="26.0" height="38.7" rx="2" fill="#0072B2" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="604.7" y1="488.1" x2="604.7" y2="534.5" stroke="#0f172a" stroke-width="2"/>
+<rect x="621.7" y="514.4" width="26.0" height="35.6" rx="2" fill="#009E73" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="634.7" y1="497.7" x2="634.7" y2="531.1" stroke="#0f172a" stroke-width="2"/>
+<rect x="651.7" y="536.7" width="26.0" height="13.3" rx="2" fill="#D55E00" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="664.7" y1="524.3" x2="664.7" y2="549.1" stroke="#0f172a" stroke-width="2"/>
+<text x="743.3" y="574.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#475569" text-anchor="middle">2.0</text>
+<rect x="698.3" y="246.9" width="26.0" height="303.1" rx="2" fill="#0072B2" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="711.3" y1="229.6" x2="711.3" y2="264.3" stroke="#0f172a" stroke-width="2"/>
+<rect x="728.3" y="284.3" width="26.0" height="265.7" rx="2" fill="#009E73" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="741.3" y1="265.3" x2="741.3" y2="303.2" stroke="#0f172a" stroke-width="2"/>
+<rect x="758.3" y="408.0" width="26.0" height="142.0" rx="2" fill="#D55E00" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="771.3" y1="377.7" x2="771.3" y2="438.3" stroke="#0f172a" stroke-width="2"/>
+<text x="850.0" y="134.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a" text-anchor="start">Second machine, part B, 40 seeds, est_j</text>
+<line x1="850.0" y1="550.0" x2="1190.0" y2="550.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="844.0" y="555.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="end">0</text>
+<line x1="850.0" y1="416.7" x2="1190.0" y2="416.7" stroke="#e2e8f0" stroke-width="1"/>
+<text x="844.0" y="421.7" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="end">10</text>
+<line x1="850.0" y1="283.3" x2="1190.0" y2="283.3" stroke="#e2e8f0" stroke-width="1"/>
+<text x="844.0" y="288.3" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="end">20</text>
+<line x1="850.0" y1="150.0" x2="1190.0" y2="150.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="844.0" y="155.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="end">30</text>
+<text x="915.0" y="574.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#475569" text-anchor="middle">0.5</text>
+<rect x="870.0" y="535.3" width="26.0" height="14.7" rx="2" fill="#0072B2" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="883.0" y1="522.3" x2="883.0" y2="548.4" stroke="#0f172a" stroke-width="2"/>
+<rect x="900.0" y="534.7" width="26.0" height="15.3" rx="2" fill="#009E73" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="913.0" y1="522.4" x2="913.0" y2="546.9" stroke="#0f172a" stroke-width="2"/>
+<rect x="930.0" y="547.3" width="26.0" height="2.7" rx="2" fill="#D55E00" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="943.0" y1="541.2" x2="943.0" y2="550.0" stroke="#0f172a" stroke-width="2"/>
+<text x="1021.7" y="574.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#475569" text-anchor="middle">1.0</text>
+<rect x="976.7" y="433.3" width="26.0" height="116.7" rx="2" fill="#0072B2" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="989.7" y1="391.5" x2="989.7" y2="475.2" stroke="#0f172a" stroke-width="2"/>
+<rect x="1006.7" y="427.1" width="26.0" height="122.9" rx="2" fill="#009E73" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="1019.7" y1="386.1" x2="1019.7" y2="468.0" stroke="#0f172a" stroke-width="2"/>
+<rect x="1036.7" y="500.3" width="26.0" height="49.7" rx="2" fill="#D55E00" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="1049.7" y1="472.0" x2="1049.7" y2="528.5" stroke="#0f172a" stroke-width="2"/>
+<text x="1128.3" y="574.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#475569" text-anchor="middle">2.0</text>
+<rect x="1083.3" y="168.7" width="26.0" height="381.3" rx="2" fill="#0072B2" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="1096.3" y1="155.6" x2="1096.3" y2="181.7" stroke="#0f172a" stroke-width="2"/>
+<rect x="1113.3" y="179.7" width="26.0" height="370.3" rx="2" fill="#009E73" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="1126.3" y1="150.0" x2="1126.3" y2="210.4" stroke="#0f172a" stroke-width="2"/>
+<rect x="1143.3" y="341.3" width="26.0" height="208.7" rx="2" fill="#D55E00" stroke="none" stroke-width="2" opacity="0.85"/>
+<line x1="1156.3" y1="308.0" x2="1156.3" y2="374.7" stroke="#0f172a" stroke-width="2"/>
+<text x="600.0" y="602.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#475569" text-anchor="middle">budget level B/J_g2</text>
+<rect x="292.0" y="636.0" width="16.0" height="16.0" rx="0" fill="#0072B2" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<text x="316.0" y="650.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">σ-law</text>
+<rect x="522.0" y="636.0" width="16.0" height="16.0" rx="0" fill="#009E73" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<text x="546.0" y="650.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">Fixed cascade</text>
+<rect x="752.0" y="636.0" width="16.0" height="16.0" rx="0" fill="#D55E00" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<text x="776.0" y="650.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">Goal-blind</text></svg>

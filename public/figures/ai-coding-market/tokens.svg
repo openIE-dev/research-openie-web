@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="t d"><title id="t">Tokens processed per month at Google</title><desc id="d">Log-scale line chart of Google tokens processed per month: 9.7 trillion in 2024, about 480 trillion in 2025 and over 3.2 quadrillion in May 2026, company-reported.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="598" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Tokens processed per month at Google</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Company-reported, log scale (Pichai [8]).</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<line x1="160.0" y1="480.0" x2="1060.0" y2="480.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="148.0" y="485.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">1T</text>
+<line x1="160.0" y1="395.0" x2="1060.0" y2="395.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="148.0" y="400.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">10T</text>
+<line x1="160.0" y1="310.0" x2="1060.0" y2="310.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="148.0" y="315.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">100T</text>
+<line x1="160.0" y1="225.0" x2="1060.0" y2="225.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="148.0" y="230.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">1Q</text>
+<line x1="160.0" y1="140.0" x2="1060.0" y2="140.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="148.0" y="145.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">10Q</text>
+<text x="222.1" y="508.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">2024</text>
+<text x="532.4" y="508.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">2025</text>
+<text x="842.8" y="508.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">2026</text>
+<path d="M222.1 396.1 L532.4 252.1 L960.7 182.1" stroke="#56B4E9" stroke-width="4" fill="none" fill-opacity="1" stroke-linejoin="round"/>
+<rect x="212.1" y="386.1" width="20.0" height="20.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<text x="238.1" y="380.1" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">9.7 trillion</text>
+<rect x="522.4" y="242.1" width="20.0" height="20.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<text x="548.4" y="236.1" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">about 480 trillion</text>
+<rect x="950.7" y="172.1" width="20.0" height="20.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<text x="946.7" y="166.1" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="end">over 3.2 quadrillion (May)</text>
+<text x="160.0" y="545.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Volume is not value: Bai, Huang and Wang [9] find about 1,000 times more tokens in agentic coding than in code chat,</text>
+<text x="160.0" y="567.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">and that higher token use does not translate into higher accuracy.</text></svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="t d"><title id="t">The commit gate</title><desc id="d">Flow diagram: propose, then certify against the predicate and certificate, then either commit an act on the world or refuse with no act. Both outcomes write a receipt with a hash, joules and a reason.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="418" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">The commit gate</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">A proposal becomes an act only through certify and commit; refuse is a lawful outcome. Both write a receipt.</text>
+<rect x="1072.5" y="26" width="87.5" height="34" rx="17" fill="none" stroke="#CC79A7" stroke-width="2"/>
+<text x="1116.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#CC79A7" text-anchor="middle">Diagram</text>
+<rect x="50.0" y="150.0" width="220.0" height="110.0" rx="14" fill="#f8fafc" stroke="#0f172a" stroke-width="3" opacity="1"/>
+<text x="160.0" y="180.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Propose</text>
+<text x="160.0" y="206.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">model, solver or rule</text>
+<rect x="340.0" y="150.0" width="240.0" height="110.0" rx="14" fill="#f8fafc" stroke="#E69F00" stroke-width="3" opacity="1"/>
+<text x="460.0" y="180.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Certify</text>
+<text x="460.0" y="206.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">predicate and certificate</text>
+<text x="460.0" y="228.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">checked on the plant</text>
+<rect x="660.0" y="100.0" width="220.0" height="90.0" rx="14" fill="#f8fafc" stroke="#009E73" stroke-width="3" opacity="1"/>
+<text x="770.0" y="130.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Commit</text>
+<text x="770.0" y="156.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">act on the world</text>
+<rect x="660.0" y="230.0" width="220.0" height="90.0" rx="14" fill="#f8fafc" stroke="#D55E00" stroke-width="3" opacity="1"/>
+<text x="770.0" y="260.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Refuse</text>
+<text x="770.0" y="286.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">no act; lawful stop</text>
+<rect x="960.0" y="150.0" width="200.0" height="110.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="1060.0" y="180.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Receipt</text>
+<text x="1060.0" y="206.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">hash, joules, reason</text>
+<path d="M270 205 L335 205" stroke="#0f172a" stroke-width="3" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M580 185 L655 150" stroke="#009E73" stroke-width="3" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M580 230 L655 270" stroke="#D55E00" stroke-width="3" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M880 145 L955 190" stroke="#0f172a" stroke-width="3" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M880 275 L955 225" stroke="#0f172a" stroke-width="3" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<text x="600.0" y="380.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="middle" font-style="italic">Natural language and tool calls are transport and proposal; they never commit on their own (Section I.5.2).</text></svg>

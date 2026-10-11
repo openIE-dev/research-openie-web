@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="t d"><title id="t">Corrections compound upward</title><desc id="d">Diagram of the RCE stack as six levels from intent at the top through Form, gate, projections and runtime to hardware and energy. A correction promoted at the runtime level after passing its boundary check is shown with arrows rising through every level above it. A small bar chart beside it gives cumulative escalations over eight rounds on the playground reference workload: 21 with no correction and 15 with one correction at the sinks.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="818" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Corrections compound upward</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">A correction promoted at any level is inherited by every level above it, under the gate.</text>
+<rect x="1072.5" y="26" width="87.5" height="34" rx="17" fill="none" stroke="#CC79A7" stroke-width="2"/>
+<text x="1116.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#CC79A7" text-anchor="middle">Diagram</text>
+<rect x="70.0" y="130.0" width="520.0" height="92.0" rx="12" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="94.0" y="170.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start">Intent</text>
+<text x="94.0" y="198.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="start">what the person means</text>
+<rect x="70.0" y="235.0" width="520.0" height="92.0" rx="12" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="94.0" y="275.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start">Form</text>
+<text x="94.0" y="303.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="start">state, events, transition</text>
+<rect x="70.0" y="340.0" width="520.0" height="92.0" rx="12" fill="#f8fafc" stroke="#D55E00" stroke-width="3" opacity="1"/>
+<text x="94.0" y="380.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start">Gate</text>
+<text x="94.0" y="408.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="start">tests, coverage, proof certificate</text>
+<rect x="70.0" y="445.0" width="520.0" height="92.0" rx="12" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="94.0" y="485.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start">Projections</text>
+<text x="94.0" y="513.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="start">Rust, Python, WASM, XState, SCXML</text>
+<rect x="70.0" y="550.0" width="520.0" height="92.0" rx="12" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="94.0" y="590.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start">Runtime</text>
+<text x="94.0" y="618.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="start">handlers, gears G0 to G5</text>
+<rect x="70.0" y="655.0" width="520.0" height="92.0" rx="12" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="94.0" y="695.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start">Hardware and energy</text>
+<text x="94.0" y="723.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="start">op counts priced in joules</text>
+<circle cx="550.0" cy="596.0" r="18" fill="#009E73" stroke="#ffffff" stroke-width="2"/>
+<text x="550.0" y="603.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="26" font-weight="800" fill="#ffffff" text-anchor="middle">+</text>
+<text x="610.0" y="590.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#009E73" text-anchor="start">correction promoted here</text>
+<text x="610.0" y="612.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">after it passes its boundary check</text>
+<path d="M550 570 L550 500" stroke="#009E73" stroke-width="4" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M550 465 L550 395" stroke="#009E73" stroke-width="4" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M550 360 L550 290" stroke="#009E73" stroke-width="4" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M550 255 L550 185" stroke="#009E73" stroke-width="4" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<text x="610.0" y="180.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#009E73" text-anchor="start">every level above inherits it</text>
+<text x="610.0" y="202.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">(Propositions R1 and R2)</text>
+<text x="700.0" y="270.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">Cumulative escalations, eight rounds</text>
+<text x="700.0" y="292.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">playground reference workload, RCE §2.4</text>
+<rect x="700.0" y="340.0" width="380.0" height="54.0" rx="6" fill="#94a3b8" stroke="none" stroke-width="2" opacity="1"/>
+<text x="1090.0" y="376.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#0f172a" text-anchor="start">21</text>
+<text x="700.0" y="332.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0f172a" text-anchor="start">No correction</text>
+<rect x="700.0" y="440.0" width="271.4" height="54.0" rx="6" fill="#009E73" stroke="none" stroke-width="2" opacity="1"/>
+<text x="981.4" y="476.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#0f172a" text-anchor="start">15</text>
+<text x="700.0" y="432.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0f172a" text-anchor="start">One correction at the sinks</text>
+<text x="700.0" y="530.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Both reach zero escalations in the last round;</text>
+<text x="700.0" y="550.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">no promotion was refused.</text></svg>
