@@ -171,8 +171,6 @@ These are measurements, labeled as RCE labels them. They come from the [RCE rese
 | L1 Python, TSSB-3M v1.0.0, held-out | 27,266 of 157,089 (0.174, 0.172 to 0.175), 0 model calls | Measured counts | [RCE §6.2](/papers/rce/#62-l1-one-statement-bugs-from-real-histories) |
 | Energy per solved task, all rungs | 0.10 J to 0.40 J | `est_j` (CPU seconds × 10 W) | [RCE §6.3](/papers/rce/#63-energy) |
 | Energy per solved task, RAPL subsample | 0.056 J (L0, 3,000 tasks), 0.026 J (L1, 690 solved of 2,000); ±10 J on run totals | `reported_j` (package counter less a stated idle baseline) | [RCE §6.3](/papers/rce/#63-energy) |
-| First soak with a production model resolver | 10 model calls in round 1, then 0 in rounds 2 to 5; 50 if the model ran every round | Measured counts | [RCE §6.5](/papers/rce/#65-model-calls-in-the-first-soak) |
-| Soaks on live traffic | all 12 runs reach a round with zero new escalations before round 20 | Measured counts; energy `est_j` | [RCE §6.4](/papers/rce/#64-the-soaks-converge) |
 
 `measured_j` is reserved for a wall meter and is empty in every row.
 
@@ -180,13 +178,13 @@ These are measurements, labeled as RCE labels them. They come from the [RCE rese
 
 **Per-token rent breaks on covered tasks.** On the held-out rungs, every covered repair bought 0 tokens: 520,541 one-token repairs and 36,554 single-statement repairs from real histories [RCE §6.1, §6.2]. A revenue line priced per token earns nothing on a task that needs no token.
 
-**AI in the loop forever breaks at promotion.** In the first soak the model was called 10 times in round 1 and never again for the same cases [RCE §6.5]. The model compiled itself out of the loop. Task 10,000 does not cost what task 1 cost.
+**AI in the loop forever breaks at promotion.** The model is paid once for a new case; the gate admits the fit as a handler, and later cases of the same shape close without it ([RCE §4.2](/papers/rce/#42-the-gears)). Where that holds, task 10,000 does not cost what task 1 cost. Whether model calls per round reach zero across real specifications is measured at large N by [RCE §8.6](/papers/rce/#86-convergence-of-model-calls-at-large-n).
 
 **High energy is not required for a correct result.** A held-out repair passed the gate at 0.026 to 0.056 reported joules per solved task on a package counter, with no model [RCE §6.3]. One median text prompt to a production assistant is measured at 0.24 Wh, or 864 J [12]. An agentic coding task uses many prompts, and the IEA puts agentic queries at hundreds or thousands of times the energy of a simple one [10]. These are different tasks on different machines, so they are not a ratio. They are an order of magnitude to test, under Protocol E1.
 
-**Coverage is measured per class.** The rungs give coverage within classes of task: nearly all one-token faults, and 38.6% (Java) and 17.4% (Python) of single-statement bugs, where the open cases are the ones whose intent bits lie outside the hunk or are new ([RCE §2.3](/papers/rce/#23-per-rung-ladder-results)). The share of all real coding volume that falls in covered classes is Proposition E5. The soak result, 10 model calls and then 0, is about amortization on live traffic.
+**Coverage is measured per class.** The rungs give coverage within classes of task: nearly all one-token faults, and 38.6% (Java) and 17.4% (Python) of single-statement bugs, where the open cases are the ones whose intent bits lie outside the hunk or are new ([RCE §2.3](/papers/rce/#23-per-rung-ladder-results)). The share of all real coding volume that falls in covered classes is Proposition E5.
 
-**Two declines multiply.** The price per call falls 9 to 900 times a year at fixed performance, depending on the task [4, 34]. Promotion drives calls per task to zero on covered cases [RCE §6.5]. The cost per task is the product of the two. A projection that extrapolates token volume prices only the first.
+**Two declines multiply.** The price per call falls 9 to 900 times a year at fixed performance, depending on the task [4, 34]. Promotion drives calls per task to zero on covered cases [RCE §8.6]. The cost per task is the product of the two. A projection that extrapolates token volume prices only the first.
 
 **The Spell Check pattern.** [Spell Check is Global](/papers/spellcheck/) records a capability whose marginal cost fell to about zero and that complemented a tool everyone already had. It was bundled into the editor and its separate price disappeared, as bundling economics predicts [13, 14]. A covered coding task has the same two properties: its marginal cost falls to the handler floor, and it complements editors and repositories people already have. The prediction is the same: the covered task is bundled, and what stays priced is the uncovered case and the proof.
 
@@ -206,7 +204,7 @@ Cheaper tasks can raise total demand. The venture essay expects it: "we believe 
 
 **Proposition E3 (compute scale is not a moat on covered tasks).** On tasks the second path covers, the resolve rate does not rise with the compute of the last gear. *Protocol:* run [RCE Protocol 8.2](/papers/rce/#82-swe-bench-lite-offline) with no model, a small local model and a frontier model as the last gear. Compare resolve rates on the tasks closed before the last gear.
 
-**Proposition E4 (the token share of revenue).** In a repository where coverage grows, the share of task cost paid as tokens falls with coverage. *Protocol:* log tokens, joules and dollars per closed task by round in the RCE soak with a priced model resolver, labeled, and report the token share of cost by round.
+**Proposition E4 (the token share of revenue).** In a repository where coverage grows, the share of task cost paid as tokens falls with coverage. *Protocol:* log tokens, joules and dollars per closed task by round in the RCE convergence protocol with a priced model resolver ([RCE §8.6](/papers/rce/#86-convergence-of-model-calls-at-large-n)), labeled, and report the token share of cost by round.
 
 **Proposition E5 (coverage).** The share of real coding task volume that falls in classes the second path covers is measurable. *Protocol:* draw a random sample of merged pull requests from public repositories (GitHub reports 518.7 million merged in a year [17]), classify each by whether frozen G0 to G2 gears produce a gate-passing patch, and report the covered fraction with a 95% interval. Until that number exists, Proposition E0 applies to an unmeasured share.
 

@@ -312,19 +312,6 @@ Every row carries `est_j`, an estimate of CPU seconds times 10 W: 0.40 J per sol
 
 The L1 subsample builds its project index from its 2,000 tasks only, so its solve rate (34.5%) is below the full run's. `measured_j`, a wall meter on a named rail, is empty in every row; its protocol is Section 8.3.
 
-<div id="63-the-soaks-converge" class="anchor-alias" aria-hidden="true"></div>
-
-### 6.4 The soaks converge
-
-The soak runs the five example specifications under two resolvers for 20 rounds each and reports `est_j` per closed task. In the 2026-10-09 run, every specification reaches a round with zero new escalations, in round 4 to 7 for both resolvers, and from that round the all-in `est_j` per closed task equals the handler floor: about 2 to 5 nanojoules per task. The gear stack resolved every case from G0 and G1, with zero model calls. In the 2026-10-10 live2 run, on live traffic only, all 12 runs reach a quiet round before round 20 (web-api 4, joule-db-core 7, follow-bible-ingest 6, follow-bible-ingest-schemas 8, ask-server 5, soak-g2-schemas 5), and every run closes tasks through the gate. `measured_j` is empty in every row.
-
-<div id="64-model-calls-in-the-first-soak" class="anchor-alias" aria-hidden="true"></div>
-
-### 6.5 Model calls in the first soak
-
-The first end-to-end soak ran `rce auto examples/web-api.rce --foreman federated --rounds 5` on 2026-04-25, with a federated model resolver over 12 providers and auto-approval. Each round pumps 5 traffic events into the source nodes, ticks, resolves every escalation and approves the queued mutations. Round 1 had 10 new escalations, 10 promotions and 10 model calls. Rounds 2 to 5 had 0 of each, and the log integrity check passed. That is 10 model calls in 5 rounds, against 50 if the model were called every round. The counts are as printed in `SOAK_RESULTS.md` in the crate. No energy was read in this run.
-
-The same file reports a re-run over three specifications. Two converged: web-api in 10 model calls and joule-db-core in 5, over 5 rounds. The third, follow-bible-ingest, held at 5 escalations a round from one stub dependency, 115 model calls over 20 rounds. With stuck-input deferral, a repeated input shape is deferred to a human queue without a model call, and the same 20 rounds took 20 model calls.
 
 ## 7. Reuse evidence
 
@@ -391,6 +378,21 @@ This is the method of Section 6, extended to new corpora.
 3. Remote model: an agent with a frontier model, its energy estimated from provider disclosures and labeled `est_j`.
 4. Report cost-of-pass [101] in joules and in dollars for every row, with cost controlled as Kapoor and colleagues require [100].
 
+<div id="63-the-soaks-converge" class="anchor-alias" aria-hidden="true"></div>
+<div id="64-the-soaks-converge" class="anchor-alias" aria-hidden="true"></div>
+<div id="64-model-calls-in-the-first-soak" class="anchor-alias" aria-hidden="true"></div>
+<div id="65-model-calls-in-the-first-soak" class="anchor-alias" aria-hidden="true"></div>
+
+### 8.6 Convergence of model calls at large N
+
+Promotion is the mechanism by which the model leaves the loop: a resolver is paid once for a new case, the gate admits the fit as a handler, and every later case of the same shape closes in G0 or G1 ([Section 4.2](#42-the-gears)). Convergence is the claim that model calls per round fall to zero on a fixed specification under live traffic. It is measured as follows.
+
+1. Draw at least 1,000 specifications from public repositories, stratified by language and size, and freeze the engine and the resolver before the first round.
+2. Replay recorded production traffic, at least 10,000 events per specification, in rounds of fixed size.
+3. Record per round: new escalations, model calls, promotions, deferrals and joules per closed task, each labeled (`est_j`, `reported_j`, `measured_j`).
+4. Primary endpoint: the share of specifications reaching a round with zero model calls within 20 rounds, with a 95% Wilson interval. Secondary: model calls per closed task by round, and the round of the last model call.
+5. Report specifications that never converge with their cause (a stuck input, a missing dependency, new intent), and run stuck-input deferral as a preregistered arm.
+
 **Proposition 8 (floor approach).** As G0 and G1 coverage grows, joules per solved task approach the gold floor of applying a known fix and running the tests. The ladder rungs and the Defects4J held-out set under the wall meter test it.
 
 ## 9. Ties to the companion papers
@@ -412,7 +414,7 @@ Fixed before the held-out run of Section 8.4.
 | RCE-F1 | On the held-out slice, G0 to G2 with frozen rules resolve under 10% of tasks with 0 model calls | The claim that most fits already exist for repair at this scale |
 | RCE-F2 | Byte-identical or equivalent patches are under half of the resolved held-out tasks | The reading of the gate as more than plausibility on the covered tasks |
 | RCE-F3 | Under the wall meter, gross joules per solved task of the RCE solver exceed those of the cheapest model baseline on the tasks both solve | The second path's joule advantage on covered tasks |
-| RCE-F4 | In a soak with a priced model resolver, model calls per round do not reach 0 within 20 rounds on any specification without a stuck input | Compiling the model out of the loop |
+| RCE-F4 | In the convergence protocol of Section 8.6, fewer than half of the specifications without a stuck input reach a round with zero model calls within 20 rounds | Compiling the model out of the loop |
 
 ## 11. Work to finish
 
@@ -422,12 +424,13 @@ Each item is open work with its protocol named.
 2. Baselines in one table, cost-of-pass in joules and dollars (Section 8.5).
 3. The first `measured_j`: a wall meter on an idle host, at least 10 repeats, gross and net side by side (Section 8.3).
 4. The full-file L1 Java result, with a type-indexed API index as the next gear (Section 6.2).
+7. Convergence of model calls across at least 1,000 specifications (Section 8.6).
 5. The 626-language survey published with its method (Figure 1).
 6. New held-out corpora with the gears frozen: Multi-SWE-bench and BugsInPy (Section 8.4).
 
 ## 12. Conclusion
 
-A program is a database functional state machine, and RCE treats coding as a conversion from high-entropy intent to that low-entropy Form. Correctness is the gate and joules are the ranking. On held-out test splits with a frozen engine and no model call, the gears repair 99.95% of 520,821 one-token faults and all 23,015 in repositories never tuned on, 38.6% of 24,072 single-statement Java bugs and 17.4% of 157,089 Python bugs, at hundredths of a reported joule per solved task on a package counter; in the first soak the model was called 10 times in round 1 and not again. The verification layer proves the rewrites in Z3 and the kernel in Kani, and differential testing ties five targets to one trace. What remains is the upper rungs, baselines in the same table, and a wall meter. Those protocols are fixed in Sections 8.3 to 8.5 and the falsifiers in Section 10.
+A program is a database functional state machine, and RCE treats coding as a conversion from high-entropy intent to that low-entropy Form. Correctness is the gate and joules are the ranking. On held-out test splits with a frozen engine and no model call, the gears repair 99.95% of 520,821 one-token faults and all 23,015 in repositories never tuned on, 38.6% of 24,072 single-statement Java bugs and 17.4% of 157,089 Python bugs, at hundredths of a reported joule per solved task on a package counter. The verification layer proves the rewrites in Z3 and the kernel in Kani, and differential testing ties five targets to one trace. What remains is the upper rungs, convergence at large N, baselines in the same table, and a wall meter. Those protocols are fixed in Sections 8.3 to 8.5 and the falsifiers in Section 10.
 
 ## References
 
