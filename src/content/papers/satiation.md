@@ -27,7 +27,7 @@ A second fact is about price, not physics. Epoch AI reports large declines in th
 
 The paper does not report a randomized trial, a done-detector error rate, or a split between energy spent before completeness and energy spent after it. Those measurements are specified and absent. What the software reference does provide is a place to put the stop: Wise Computer Automation (WCA) can refuse on a policy or budget reason, or on a physical predicate (look-up table allow and an energy check, optional control barrier function). The companion paper measures the physical predicate on toy plants. This paper states the economic predicate and the evidence that is actually published.
 
-No field-programmable gate array (FPGA) has been synthesized or metered for this study. An Alchitry Pt V2 is the intended later device under test (DUT). A browser instrument that compiles the gate to WebAssembly (WASM) and displays it with WebGPU is shipped as Stage B at https://research.openie.dev/living/fpga-sim/ (see companion paper). It is a simulation, not a board result, and it is not a satiation measurement here. Analytical joules from the companion's OpCounter are not board power and are not evidence of satiation.
+No field-programmable gate array (FPGA) has been metered for this study; the companion's board is programmed and its energy is unmetered. An Alchitry Pt V2 is the intended later device under test (DUT). A browser instrument that compiles the gate to WebAssembly (WASM) and displays it with WebGPU is shipped as Stage B at https://research.openie.dev/living/fpga-sim/ (see companion paper). It is a simulation, not a board result, and it is not a satiation measurement here. Analytical joules from the companion's OpCounter are not board power and are not evidence of satiation.
 
 ## Notation
 
@@ -114,7 +114,7 @@ Wu's book "The Attention Merchants" (publisher page: https://www.penguinrandomho
 
 Technology markets often show a speculative phase, a use phase, and a later commodity phase. The evidence is uneven.
 
-Quinn (2019), "Technological revolutions and speculative finance: evidence from the British Bicycle Mania," Cambridge Journal of Economics 43(2), 271-294, https://doi.org/10.1093/cje/bey029, studies cycle-share prices from 1895 to 1900. Prices rose by over 200 percent and then fell by more than 75 percent. The paper's result is about speculative finance and fundamentals, not about a measured "enough bicycle" predicate for households. Using it as a picture of race-phase finance is supported. Using it as a proof of transport satiation is not. Earlier notes in this project sometimes said "Quinn and Turner" for this episode. The verified article above is Quinn (2019). A different Quinn article on cornering risk thanks John Turner in the acknowledgments. That is not coauthorship of the Cambridge Journal paper. This paper cites the article that was checked.
+Quinn (2019), "Technological revolutions and speculative finance: evidence from the British Bicycle Mania," Cambridge Journal of Economics 43(2), 271-294, https://doi.org/10.1093/cje/bey029, studies cycle-share prices from 1895 to 1900. Prices rose by over 200 percent and then fell by more than 75 percent. The paper's result is about speculative finance and fundamentals, not about a measured "enough bicycle" predicate for households. Using it as a picture of race-phase finance is supported. Using it as a proof of transport satiation is not.
 
 Cars, scheduled aviation, and television have commodity-like markets in the everyday sense: used vehicles, yield-managed seats, and panels sold as inputs to content. The rows are historical orientation. They are not regressions. Airline yield management after deregulation is a pricing institution for a seat, which is evidence of a commodity market in seats, not evidence that passengers' demand for travel is globally satiated.
 
@@ -134,7 +134,7 @@ A planning rule of thumb that frontier competence reaches cheaper devices in abo
 
 Landauer (1961) bounds erasure. Bennett (1973) shows reversible computation can avoid that bound in theory. Horowitz (2014) is the practical CMOS statement: energy per operation and energy of data movement set the design constraint, at many orders of magnitude above `kT ln 2` for irreversible CMOS logic. The companion paper's OpCounter implements `J = sum count * E` with constants such as `E_LUT_READ = 1e-12` joule. Those constants are a model. The companion states the seed-1 analytical total, 8.6795e-10 joule, for a toy episode. Importing that number into a demand paper would not show that post-done spend is large. It would show only that the toy gate's model returned that total. This paper therefore does not treat the companion's joule as a satiation measurement.
 
-Goldman Sachs published a research note titled "Gen AI: Too Much Spend, Too Little Benefit?" (https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit). The existence of a major sell-side note that questions infrastructure spend relative to benefit is a document fact. Dollar figures inside the note are not quoted here. They were not re-read from the primary PDF for this draft, and sell-side estimates are not a scientific energy account.
+Goldman Sachs published a research note titled "Gen AI: Too Much Spend, Too Little Benefit?" (https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit). The existence of a major sell-side note that questions infrastructure spend relative to benefit is a document fact. Dollar figures inside the note are not quoted here, because sell-side estimates are not a scientific energy account.
 
 ### 2.7 Commit records as the interface, not the demand estimate
 
@@ -168,7 +168,7 @@ The set-union in words is: the runtime refuses if the economic rule fires or the
 
 This study is a structured reading. Sources are the citation spine checked in the project on 29 to 30 September 2026, the satiation notes, and the companion's software record. Section 3.3 names the measurements that would make the operational definition empirical.
 
-Design rules in Section 4.4 are recommendations conditional on the definitions. They are not estimated treatment effects. A reader can reject a rule without rejecting Epoch's price series, and can accept the price series without accepting a product recommendation.
+Design rules in Section 4.10 are recommendations conditional on the definitions. They are not estimated treatment effects. A reader can reject a rule without rejecting Epoch's price series, and can accept the price series without accepting a product recommendation.
 
 ### 3.3 Measurements specified and not taken
 
@@ -204,7 +204,7 @@ Stage B, shipped: WASM compilation of the decision core and a WebGPU view of the
 
 Stage C, board programmed for the companion's commit-gate demo (closed-loop pendulum with LUT allow, Safe PH, and Ames energy-set CBF); energy still unmetered. The Alchitry Pt V2 has no onboard joule meter. UART decision agreement is not a watt reading. Vendor specifications on SparkFun's page (XC7A100T-2FGG84I, 101,440 logic cells, 240 DSP48E1 slices, 4,860 Kb block RAM, 256 MB DDR3L) are not DUT energy results. Metering methods: companion guide [/living/fpga-sim/alchitry/#energy](https://research.openie.dev/living/fpga-sim/alchitry/#energy).
 
-This paper adds a mapping, not a fourth stage. Task completion, if encoded as `policy` or `budget_exceeded`, should appear in the same trace as `energy_veto`, so a future split (Section 3.3) can group reason codes. The browser view would make that grouping readable. It would not create the missing corpus. We have not synthesized or metered the FPGA board.
+This paper adds a mapping, not a fourth stage. Task completion, if encoded as `policy` or `budget_exceeded`, should appear in the same trace as `energy_veto`, so a future split (Section 3.3) can group reason codes. The browser view would make that grouping readable. It would not create the missing corpus. No board energy has been metered for this study.
 
 
 <div id="28-fidelity-criteria-and-stop-rules" class="anchor-alias" aria-hidden="true"></div>
@@ -235,7 +235,7 @@ Epoch's price series (S-2) show synthesis getting cheaper in money. Recent energ
 
 Chung, Wu, Ma, and Chowdhury (arXiv:[2601.22076](https://arxiv.org/abs/2601.22076), 2026) diagnose inference energy across 1,858 configurations: task type alone can move LLM energy per response by about 25×; video generation can exceed image energy by two orders of magnitude. The *Joule* article "Energy use of AI inference, efficiency pathways, and test-time scaling" ([cell.com/joule/fulltext/S2542-4351(26)00114-5](https://www.cell.com/joule/fulltext/S2542-4351(26)00114-5), online 22 Apr 2026) estimates optimized frontier-scale queries in the sub-watt-hour median range while reporting that long reasoning and agentic queries can raise energy by more than an order of magnitude; efficiency gains of 8 to 20× are line-of-sight, not free joules. Luccioni, Strubell, and Crawford (FAccT 2025) ([doi:10.1145/3715275.3732007](https://doi.org/10.1145/3715275.3732007)) warn that efficiency without a stop can amplify total spend (Jevons). Epoch AI's energy overview ([epoch.ai/publications/ai-energy](https://epoch.ai/publications/ai-energy), updated Jul 2026) separates modest per-query costs from rapidly doubling aggregate data-center power.
 
-**Reading for this paper.** Free at the margin is a money-price statement. Scarce joules are a physical statement. The operational stop is task completion: when `C(z) = 1`, further synthesis does not raise the written objective, and `policy` / `budget_exceeded` refuse is success. [Notational Intelligence](/papers/gates/) owns the physical certificate. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) navigates cheapest-sufficient gears. [Metabolic Intelligence](/products/mei/) owns the envelope actuators. Estimates ≠ board-measured `measured_j`.
+**Reading for this paper.** Free at the margin is a money-price statement. Scarce joules are a physical statement. The operational stop is task completion: when `C(z) = 1`, further synthesis does not raise the written objective, and `policy` / `budget_exceeded` refuse is success. [Notational Intelligence](/papers/gates/) owns the physical certificate. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) navigates cheapest-sufficient gears. [Metabolic Intelligence](/products/mei/) owns the envelope actuators. Estimates are not board-measured `measured_j`.
 
 <div id="36-protocol-for-a-done-detector-study-not-executed" class="anchor-alias" aria-hidden="true"></div>
 
@@ -275,7 +275,7 @@ Token price can be attached without confusing units. Suppose a call costs `p` in
 
 Figure 1 draws the toy and the separate aggregate claim.
 
-![Left: model illustration of a bliss point. Value U of x equals minus x minus 4 squared, with surplus U minus p x at prices 0, 2 and 4; the maximizers are 4, 3 and 2 calls, finite at every price. Right: a schematic of aggregate rebound, where lower prices open more tasks, each of which still stops at its own predicate.](/figures/satiation/satiation-rebound.svg)
+![Left: model illustration of a bliss point. Value U(x) is the negative of (x minus 4) squared, plotted with the surplus U minus p times x at prices 0, 2 and 4; the maximizers are 4, 3 and 2 calls, finite at every price. Right: a schematic of aggregate rebound, where lower prices open more tasks, each of which still stops at its own predicate.](/figures/satiation/satiation-rebound.svg)
 
 *Figure 1. Task satiation and aggregate rebound. Model illustration of the toy in this section, not a fit: the maximizer of $U(x) - p\,x$ is $x = 4 - p/2$, finite at every price. The right panel is a schematic; this paper estimates no rebound. A [PNG copy](/figures/satiation/satiation-rebound.png) is provided.*
 
@@ -358,7 +358,7 @@ Let `x` be call count, `s` session length, `J_pre` and `J_post` energy before an
 | ownership of phones is high (S-5) | marginal value of another model call is zero |
 | cycle-share prices boomed and busted (S-4) | households reached a transport bliss point |
 
-The right-hand column is the list of inferences this paper refuses. Each left-hand observation is either a citation in Section 4 or a variable in Section 3. The table is the discussion compressed into a check. A draft that asserts a right-hand sentence has left the evidence.
+The right-hand column is the list of inferences this paper refuses. Each left-hand observation is either a citation in Section 4 or a variable in Section 3. The table is the discussion compressed into a check. A sentence that asserts a right-hand claim has left the evidence.
 
 ### 4.13 Companion quantities that stay in the companion
 
@@ -398,7 +398,7 @@ A model that drafts a note faster can raise throughput of notes and leave examin
 
 ### 5.6 Free synthesis is not free actuation
 
-Stage A joules are modeled. Stage B would be simulated in a browser. Stage C would be board-measured and is future. An actuator command is the companion's commit bit. Epoch prices sit on a different axis from all three. Collapsing them into "free AI" deletes the measurement class. The WASM and WebGPU path is useful because it lets a third party replay the decision trace without owning the Alchitry board. Usefulness as a replica is not a watt.
+Stage A joules are modeled. Stage B is simulated in a browser. Stage C programs the board, and a meter on it is a later measurement. An actuator command is the companion's commit bit. Epoch prices sit on a different axis from all three. Collapsing them into "free AI" deletes the measurement class. The WASM and WebGPU path is useful because it lets a third party replay the decision trace without owning the Alchitry board. Usefulness as a replica is not a watt.
 
 ### 5.7 Confidence is not a certificate
 
@@ -438,7 +438,7 @@ Falsifiers. S-1 fails if the cited theory does not contain a zero marginal-utili
 
 
 
-The same discipline applies to vendor FPGA specifications. SparkFun lists logic cells, DSP slices, block RAM, and DRAM capacity for the Alchitry Pt V2. Those quantities describe a catalog part. They do not describe switching activity, static power, or the energy of a commit trace. A later DUT report has to name the bitstream, the clock, the workload, the meter, and the duration. Until that report exists, the board is a planned instrument, and the browser emulator is a planned replica of the software decision, not a preview of the meter.
+The same discipline applies to vendor FPGA specifications. SparkFun lists logic cells, DSP slices, block RAM, and DRAM capacity for the Alchitry Pt V2. Those quantities describe a catalog part. They do not describe switching activity, static power, or the energy of a commit trace. A later DUT report has to name the bitstream, the clock, the workload, the meter, and the duration. Until that report exists, the board is an unmetered instrument, and the browser emulator is a replica of the software decision, not a preview of the meter.
 
 ## 7. Conclusion
 
@@ -462,7 +462,7 @@ The theory papers rank by joules to correct completion and keep prices out of th
 
 ### 8.4 The price trend in the shared thesis
 
-*From the shared thesis, which now states the gate form only.* A price trend is a separate claim, labeled as one. Epoch AI reports that the cost of a given level of AI performance has fallen about 47 percent per quarter since 2023, about 13 times per year (Emberson and Roodman, *The plunging price of thought*, 22 September 2026). If that trend continues, energy becomes the dominant marginal cost of inference. That is a cited trend with a condition, not a measured collapse. [Spell Check is Global](/papers/spellcheck/) is an existence proof that some computer intelligence commoditizes to bundled zero price.
+*From the shared thesis.* A price trend is a separate claim, labeled as one. Epoch AI reports that the cost of a given level of AI performance has fallen about 47 percent per quarter since 2023, about 13 times per year (Emberson and Roodman, *The plunging price of thought*, 22 September 2026). If that trend continues, energy becomes the dominant marginal cost of inference. That is a cited trend with a condition, not a measured collapse. [Spell Check is Global](/papers/spellcheck/) is an existence proof that some computer intelligence commoditizes to bundled zero price.
 
 ### 8.5 Cache-hit pricing
 
@@ -597,7 +597,7 @@ cargo run --release --bin wca-soc-loop -- \
 
 Expect, from the companion's recorded logs: demo refuse with executor calls 0; seed-1 committed 1, refused 15, analytical energy 8.6795e-10 joule. Those outputs do not estimate satiation.
 
-Browser instrument, shipped as Stage B at https://research.openie.dev/living/fpga-sim/, shared with the companion's Appendix B. The decision core runs in WASM. WebGPU paints the LUT image and the commit trace. Diff the trace against the Rust JSON. Do not convert GPU timestamps to joules. Do not mark the Alchitry Pt V2 as measured. Vendor page: https://www.sparkfun.com/alchitry-pt-v2.html. Synthesis plus a meter is Stage C, a later study.
+Browser instrument, shipped as Stage B at https://research.openie.dev/living/fpga-sim/, shared with the companion's Appendix B. The decision core runs in WASM. WebGPU paints the LUT image and the commit trace. Diff the trace against the Rust JSON. Do not convert GPU timestamps to joules. Do not mark the Alchitry Pt V2 as measured. Vendor page: https://www.sparkfun.com/alchitry-pt-v2.html. A meter on the programmed Stage C board is a later study.
 
 Factual repository flag: no FPGA board result claimed.
 

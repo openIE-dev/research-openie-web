@@ -414,7 +414,7 @@ def satiation_curve():
         hh = 30 + i*18
         s.r(810 + i*55, 500 - hh, 40, hh, GREEN, 'none', 3, op=.35 + i*.1)
     s.t(800, 530, 'tasks opened as p falls (schematic)', 14, 600, MUTED)
-    s.save('satiation', 'satiation-rebound', 'Left: model illustration of a bliss point. Value U of x equals minus x minus 4 squared, with surplus U minus p x at prices 0, 2 and 4; the maximizers are 4, 3 and 2 calls, finite at every price. Right: a schematic of aggregate rebound, where lower prices open more tasks, each of which still stops at its own predicate.')
+    s.save('satiation', 'satiation-rebound', 'Left: model illustration of a bliss point. Value U(x) is the negative of (x minus 4) squared, plotted with the surplus U minus p times x at prices 0, 2 and 4; the maximizers are 4, 3 and 2 calls, finite at every price. Right: a schematic of aggregate rebound, where lower prices open more tasks, each of which still stops at its own predicate.')
 
 # ---------------- Spell check ----------------
 def spell_timeline():
