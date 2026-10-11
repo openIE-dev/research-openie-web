@@ -9,9 +9,11 @@ export const GET: APIRoute = async ({ site }) => {
   const base = site ?? new URL('https://research.openie.dev');
   const papers = await getCollection('papers');
   const products = await getCollection('products');
+  const translations = await getCollection('translations');
   const routes = [
     ...STATIC,
     ...papers.flatMap((p) => [`/papers/${p.data.id}/`, `/about/${p.data.id}/`, p.data.pdf]),
+    ...translations.map((t) => `/${t.data.lang}/papers/${t.data.source}/`),
     ...products.flatMap((p) => [`/products/${p.data.id}/`, `/about/${p.data.id}/`, p.data.pdf]),
   ];
   const body =

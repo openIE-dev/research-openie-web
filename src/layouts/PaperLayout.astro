@@ -2,6 +2,8 @@
 import Layout from './Layout.astro';
 import StudyJsonLd from '../components/StudyJsonLd.astro';
 import 'katex/dist/katex.min.css';
+import { getCollection } from 'astro:content';
+import { LANGS } from '../i18n';
 
 interface Props {
   title: string;
@@ -15,6 +17,7 @@ interface Props {
   basePath?: string;
   genre?: string;
   headings?: { depth: number; slug: string; text: string }[];
+  lang?: string;
 }
 
 const {
@@ -29,7 +32,14 @@ const {
   basePath = '/papers/',
   genre,
   headings = [],
+  lang = 'en',
 } = Astro.props;
+const L = lang === 'en' ? null : (LANGS as any)[lang];
+const dir = L ? L.dir : 'ltr';
+const SITE = 'https://research.openie.dev';
+const avail = paperId ? (await getCollection('translations')).filter((t) => t.data.source === paperId).map((t) => t.data.lang).sort() : [];
+const enPath = `${basePath}${paperId}/`;
+const alternates = avail.length ? [{ hreflang: 'en', href: SITE + enPath }, ...avail.map((l) => ({ hreflang: l, href: `${SITE}/${l}/papers/${paperId}/` })), { hreflang: 'x-default', href: SITE + enPath }] : [];
 
 const citeUrl = paperId ? `https://research.openie.dev${basePath}${paperId}/` : 'https://research.openie.dev/';
 const pdfUrl = paperId ? `https://research.openie.dev/pdfs/${paperId}.pdf` : pdfHref;
@@ -45,7 +55,7 @@ const toc = [
 ].sort((a, b) => headings.indexOf(a) - headings.indexOf(b));
 ---
 
-<Layout title={title} description={description ?? deck}>
+<Layout title={title} description={description ?? deck} lang={lang} dir={dir} alternates={alternates}>
   {paperId && <StudyJsonLd slot="head" id={paperId} />}
   <article class="px-6 md:px-10 pt-16 md:pt-20 pb-24">
     <div class="max-w-6xl mx-auto grid lg:grid-cols-[minmax(0,1fr)_220px] gap-10 lg:gap-14">
@@ -64,6 +74,16 @@ const toc = [
           {deck}
         </p>
         <p class="mt-3 font-mono text-[11px] text-brand-gray">{author}</p>
+        {avail.length > 0 && (
+          <nav class="mt-4 flex flex-wrap gap-2 items-center" aria-label="Languages">
+            <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray">{L ? L.languages : 'Languages'}</span>
+            <a href={enPath} hreflang="en" lang="en" class={`font-body text-xs no-underline ${lang === 'en' ? 'text-brand-amber' : 'text-brand-cyan hover:underline'}`}>English</a>
+            {avail.map((l) => <a href={`/${l}/papers/${paperId}/`} hreflang={l} lang={l} class={`font-body text-xs no-underline ${lang === l ? 'text-brand-amber' : 'text-brand-cyan hover:underline'}`}>{(LANGS as any)[l].name}</a>)}
+          </nav>
+        )}
+        {L && (
+          <p class="mt-4 glass-card p-3 font-body text-xs text-brand-slate max-w-[70ch]">{L.banner} <a href={enPath} hreflang="en" lang="en" class="text-brand-cyan">{L.original}</a>.</p>
+        )}
 
         <div class="mt-8 flex flex-wrap gap-3">
           <a

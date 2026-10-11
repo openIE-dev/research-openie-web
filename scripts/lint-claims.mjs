@@ -18,6 +18,7 @@ const TARGETS = [
 const EXT = /\.(md|astro|json|txt|js|ts)$/;
 
 function walk(p, out) {
+  if (p.startsWith('src/content/translations')) return; // translations follow the English source, which is linted
   const abs = path.join(ROOT, p);
   if (!fs.existsSync(abs)) return;
   const st = fs.statSync(abs);

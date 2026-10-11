@@ -29,4 +29,15 @@ const products = defineCollection({
   }),
 });
 
-export const collections = { papers, products };
+const translations = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/translations' }),
+  schema: z.object({
+    title: z.string(),
+    deck: z.string(),
+    lang: z.string(),
+    source: z.string(),
+    complete: z.boolean().default(false),
+  }),
+});
+
+export const collections = { papers, products, translations };

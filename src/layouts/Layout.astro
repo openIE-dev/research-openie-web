@@ -6,18 +6,24 @@ import ThemeToggle from '../components/ThemeToggle.astro';
 interface Props {
   title: string;
   description?: string;
+  lang?: string;
+  dir?: string;
+  alternates?: { hreflang: string; href: string }[];
 }
 
 const {
   title,
   description = "OpenIE Research: research studies by David Charlot at Open Interface Engineering, each with a web edition, a PDF, and interactive figures.",
+  lang = 'en',
+  dir = 'ltr',
+  alternates = [],
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.openie.dev').href;
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang={lang} dir={dir} data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,6 +41,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="OpenIE Research" />
     <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
     <meta name="author" content="David Charlot" />
     <link rel="describedby" type="text/markdown" href="/llms.txt" />
     <meta name="twitter:card" content="summary" />

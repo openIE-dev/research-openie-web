@@ -1,0 +1,31 @@
+---
+import PaperLayout from '../../../layouts/PaperLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { LANGS } from '../../../i18n';
+
+export async function getStaticPaths() {
+  const ts = await getCollection('translations');
+  const papers = await getCollection('papers');
+  return ts.map((t) => ({ params: { lang: t.data.lang, slug: t.data.source }, props: { t, en: papers.find((p) => p.data.id === t.data.source) } }));
+}
+const { t, en } = Astro.props as any;
+const { Content, headings } = await render(t);
+const L = (LANGS as any)[t.data.lang];
+---
+<PaperLayout
+  title={t.data.title}
+  deck={t.data.deck}
+  status={en.data.status}
+  author={en.data.author}
+  figuresHref={en.data.figures}
+  pdfHref={en.data.pdf}
+  headings={headings}
+  paperId={t.data.source}
+  basePath="/papers/"
+  lang={t.data.lang}
+>
+  {!t.data.complete && (
+    <p><em>{L.partial} <a href={`/papers/${t.data.source}/`} hreflang="en" lang="en">{`https://research.openie.dev/papers/${t.data.source}/`}</a></em></p>
+  )}
+  <Content />
+</PaperLayout>

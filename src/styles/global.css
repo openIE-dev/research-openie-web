@@ -178,3 +178,5 @@ section:not(:first-of-type) { content-visibility: auto; contain-intrinsic-size: 
   overflow-y: hidden;
   margin: 0.75rem 0;
 }
+
+[dir="rtl"] .katex, [dir="rtl"] pre, [dir="rtl"] code { direction: ltr; unicode-bidi: isolate; }

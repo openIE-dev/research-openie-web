@@ -35,3 +35,7 @@ The catalog holds three research papers, an economics companion paper and two es
 
 - [Klere](https://klere.ai/): The hardware. Builds the Energy Processing Unit (EPU).
 - [OpenIE](https://openie.dev/): Open Interface Engineering, Inc.
+
+## Translations
+
+Each paper has translated editions, marked as translations of the English version, which prevails. Pages with only a translated title and abstract say so and link the English full text. URL pattern: https://research.openie.dev/<lang>/papers/<slug>/ with lang in zh-Hans (Chinese (Simplified)), es (Spanish), fr (French), de (German), ja (Japanese), pt (Portuguese), hi (Hindi), ar (Arabic). Example: https://research.openie.dev/ja/papers/rce/
