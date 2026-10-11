@@ -1,22 +1,5 @@
 ---
-import PaperLayout from '../../layouts/PaperLayout.astro';
-import { Content, getHeadings, frontmatter } from '../../content/papers/rce-economics.md';
-
-const headings = getHeadings();
+import Redirect from '../../components/Redirect.astro';
+const map = {};
 ---
-
-<PaperLayout
-  title={frontmatter.title}
-  deck={frontmatter.deck}
-  status={frontmatter.status}
-  author={frontmatter.author}
-  figuresHref={frontmatter.figures}
-  pdfHref={frontmatter.pdf}
-  description="The economics companion to the Reality Code Engine paper: the one-path assumption behind the trillion-dollar AI coding race, as an economic error."
-  headings={headings}
-  paperId={frontmatter.id}
-  basePath="/papers/"
-  genre="Economics essay"
->
-  <Content />
-</PaperLayout>
+<Redirect target="/papers/ai-coding-market/" map={map} title="Moved to The Promised Trillion Dollar AI-Coding Market" />

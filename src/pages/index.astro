@@ -42,7 +42,7 @@ const projects = [
     "id": "satiation",
     "title": "Task Satiation vs. Aggregate Rebound in AI Demand",
     "deck": "Task-level satiation holds by definition once a task completion predicate is true: more synthesis on that task buys nothing. Aggregate demand can still grow, because cheaper synthesis opens new tasks and raises total use. The paper separates the two, states hypotheses H1 (spend after completion) and H2 (Jevons in tasks), and gives the data design that would identify them. Capability scales. Appetite per task does not.",
-    "status": "Research paper",
+    "status": "Economics companion paper",
     "group": "research",
     "about": "/about/satiation/",
     "paper": "/papers/satiation/",
@@ -90,14 +90,14 @@ const projects = [
     ]
   },
   {
-    "id": "rce-economics",
-    "title": "The One-Path Error: The Economics of Autonomous Coding",
-    "deck": "The economics companion to the RCE research paper. The race to own the projected trillion-dollar AI coding industry assumes one path to autonomous computer automation: high energy, high compute, high entropy and disorder. That is an economic error. A second path retrieves and proves code that already exists and pays for generation once per new case, so the marginal cost of a covered task falls toward the energy to run it. Price per call and calls per task are two declines that multiply.",
+    "id": "ai-coding-market",
+    "title": "The Promised Trillion Dollar AI-Coding Market",
+    "deck": "The economics companion to the RCE research paper, where the theory and the economics meet. It sets out who projects the AI coding market and what they project: about $3 trillion a year in developer value, company-reported revenue and valuations, token volume, losses, capex and data-centre energy, each with its source and its label. Every projection assumes one path: high energy, high compute, per-token rent and the model in the loop forever. With correctness as the gate and joules as the ranking, RCE measured 20 of 20 repairs with 0 model calls, 84.2 against 712.4 reported joules per solved task, and 10 then 0 model calls in a soak. Where that path covers a task, its price falls toward the energy to run it, as Spell Check fell to a bundled zero price.",
     "status": "Economics essay",
     "group": "essay",
-    "about": "/about/rce-economics/",
-    "paper": "/papers/rce-economics/",
-    "pdf": "/pdfs/rce-economics.pdf",
+    "about": "/about/ai-coding-market/",
+    "paper": "/papers/ai-coding-market/",
+    "pdf": "/pdfs/ai-coding-market.pdf",
     "figures": "/figures/rce/intent-entropy.svg",
     "tags": [
       "economics companion",
@@ -144,7 +144,7 @@ const research = projects.filter((p) => p.group !== 'product');
 const products = projects.filter((p) => p.group === 'product');
 ---
 
-<Layout title="Research catalog" description="OpenIE research: four research papers and two essays. Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, Metered Commit Gates, Task Satiation vs. Aggregate Rebound in AI Demand, The Reality Code Engine, Spell Check is Global, and The One-Path Error. Two product white papers are kept apart.">
+<Layout title="Research catalog" description="OpenIE research: three research papers, an economics companion paper and two essays. Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, Metered Commit Gates, Task Satiation vs. Aggregate Rebound in AI Demand, The Reality Code Engine, Spell Check is Global, and The Promised Trillion Dollar AI-Coding Market. Two product white papers are kept apart.">
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(homeJsonLd)} />
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-12 max-w-7xl mx-auto">
     <p class="section-label mb-4">research.openie.dev</p>
@@ -152,7 +152,7 @@ const products = projects.filter((p) => p.group === 'product');
       Research catalog
     </h1>
     <p class="mt-6 font-body text-base md:text-lg text-brand-slate max-w-2xl leading-relaxed">
-      Four research papers and two essays. The flagship states the proposed Universal Law of Agency as a definition plus a gate: agency first, kinematic bounds second, and intelligence as the derivative of agency in joules.
+      Three research papers, an economics companion paper and two essays. The flagship states the proposed Universal Law of Agency as a definition plus a gate: agency first, kinematic bounds second, and intelligence as the derivative of agency in joules.
       Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate: among systems that pass it, joules alone order them.
       Two product white papers sit apart from the research catalog.
     </p>
@@ -231,7 +231,7 @@ const products = projects.filter((p) => p.group === 'product');
           <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/gates/</p>
         </a>
         <a href="/papers/satiation/" class="block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-gold/50 transition-colors">
-          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gold mb-2">Stop</p>
+          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gold mb-2">Stop · economics companion</p>
           <p class="text-brand-white text-sm font-semibold mb-2">Task Satiation vs. Aggregate Rebound in AI Demand</p>
           <p class="font-body text-xs text-brand-slate leading-relaxed">Task completion stops spend on a task. Cheaper synthesis can still raise total use. Jevons rebound is the identification problem.</p>
           <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/satiation/</p>
@@ -254,11 +254,11 @@ const products = projects.filter((p) => p.group === 'product');
           <p class="font-body text-xs text-brand-slate leading-relaxed">P = (S, E, δ, D, λ). Gears cheapest first, one Mixture of Limits instance. 20 of 20 repairs with 0 model calls; 84.2 reported_j per solved task. measured_j is reserved for a wall meter.</p>
           <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/rce/</p>
         </a>
-        <a href="/papers/rce-economics/" class="block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-gold/50 transition-colors">
+        <a href="/papers/ai-coding-market/" class="block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-gold/50 transition-colors">
           <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gold mb-2">Economics essay</p>
-          <p class="text-brand-white text-sm font-semibold mb-2">The One-Path Error: The Economics of Autonomous Coding</p>
-          <p class="font-body text-xs text-brand-slate leading-relaxed">A second path pays for generation once per new case. The marginal cost of a covered task falls toward the energy to run it.</p>
-          <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/rce-economics/</p>
+          <p class="text-brand-white text-sm font-semibold mb-2">The Promised Trillion Dollar AI-Coding Market</p>
+          <p class="font-body text-xs text-brand-slate leading-relaxed">Who projects the trillion and what it assumes: one path, per-token rent, the model in the loop forever. 20 of 20 repairs with 0 model calls breaks it on covered tasks.</p>
+          <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/ai-coding-market/</p>
         </a>
       </div>
     </div>

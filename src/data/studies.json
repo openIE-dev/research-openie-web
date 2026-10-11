@@ -49,7 +49,7 @@
     {
       "id": "satiation",
       "title": "Task Satiation vs. Aggregate Rebound in AI Demand",
-      "kind": "Research paper",
+      "kind": "Economics companion paper",
       "group": "research",
       "url": "https://research.openie.dev/papers/satiation/",
       "pdf": "https://research.openie.dev/pdfs/satiation.pdf",
@@ -108,15 +108,15 @@
       ]
     },
     {
-      "id": "rce-economics",
-      "title": "The One-Path Error: The Economics of Autonomous Coding",
+      "id": "ai-coding-market",
+      "title": "The Promised Trillion Dollar AI-Coding Market",
       "kind": "Economics essay",
       "group": "essay",
-      "url": "https://research.openie.dev/papers/rce-economics/",
-      "pdf": "https://research.openie.dev/pdfs/rce-economics.pdf",
+      "url": "https://research.openie.dev/papers/ai-coding-market/",
+      "pdf": "https://research.openie.dev/pdfs/ai-coding-market.pdf",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "The economics companion to the RCE research paper. The race to own the projected trillion-dollar AI coding industry assumes one path to autonomous computer automation: high energy, high compute, high entropy and disorder. That is an economic error. A second path retrieves and proves code that already exists and pays for generation once per new case, so the marginal cost of a covered task falls toward the energy to run it. Price per call and calls per task are two declines that multiply.",
-      "about": "https://research.openie.dev/about/rce-economics/",
+      "summary": "The economics companion to the RCE research paper, where the theory and the economics meet. It sets out who projects the AI coding market and what they project: about $3 trillion a year in developer value, company-reported revenue and valuations, token volume, losses, capex and data-centre energy, each with its source and its label. Every projection assumes one path: high energy, high compute, per-token rent and the model in the loop forever. With correctness as the gate and joules as the ranking, RCE measured 20 of 20 repairs with 0 model calls, 84.2 against 712.4 reported joules per solved task, and 10 then 0 model calls in a soak. Where that path covers a task, its price falls toward the energy to run it, as Spell Check fell to a bundled zero price.",
+      "about": "https://research.openie.dev/about/ai-coding-market/",
       "keywords": [
         "economics of AI",
         "AI coding",

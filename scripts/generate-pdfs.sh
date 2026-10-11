@@ -150,7 +150,7 @@ body = re.sub(r"\s*<h1\b[^>]*>.*?</h1>", "", body, count=1, flags=re.S)
 # Root-relative images (figures) resolve against public/ for the print.
 body = body.replace('src="/', 'src="file://' + str(Path(src).resolve().parents[3] / "public") + '/')
 
-if id_ in ("spellcheck", "rce-economics"):
+if id_ in ("spellcheck", "ai-coding-market"):
     measure = ""
 elif id_ == "rce":
     measure = (
@@ -235,7 +235,8 @@ gen_one gates
 gen_one satiation
 gen_one spellcheck
 gen_one rce
-gen_one rce-economics
+gen_one ai-coding-market
+cp public/pdfs/ai-coding-market.pdf public/pdfs/rce-economics.pdf
 gen_one mei products
 gen_one jouleos products
 # Earlier addresses: Notational Intelligence and Mixture of Limits are Parts I and II of gates.

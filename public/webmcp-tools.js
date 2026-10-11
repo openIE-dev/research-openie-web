@@ -75,7 +75,7 @@
       "id": "satiation",
       "title": "Task Satiation vs. Aggregate Rebound in AI Demand",
       "short_title": "Task Satiation vs. Aggregate Rebound",
-      "kind": "Research paper",
+      "kind": "Economics companion paper",
       "path": "/papers/satiation/",
       "pdf_path": "/pdfs/satiation.pdf",
       "about_path": "/about/satiation/",
@@ -130,14 +130,14 @@
       ]
     },
     {
-      "id": "rce-economics",
-      "title": "The One-Path Error: The Economics of Autonomous Coding",
-      "short_title": "The One-Path Error",
+      "id": "ai-coding-market",
+      "title": "The Promised Trillion Dollar AI-Coding Market",
+      "short_title": "The Promised Trillion Dollar AI-Coding Market",
       "kind": "Economics essay",
-      "path": "/papers/rce-economics/",
-      "pdf_path": "/pdfs/rce-economics.pdf",
-      "about_path": "/about/rce-economics/",
-      "summary": "The economics companion to the RCE research paper. The race to own the projected trillion-dollar AI coding industry assumes one path to autonomous computer automation: high energy, high compute, high entropy and disorder. That is an economic error. A second path retrieves and proves code that already exists and pays for generation once per new case, so the marginal cost of a covered task falls toward the energy to run it. Price per call and calls per task are two declines that multiply.",
+      "path": "/papers/ai-coding-market/",
+      "pdf_path": "/pdfs/ai-coding-market.pdf",
+      "about_path": "/about/ai-coding-market/",
+      "summary": "The economics companion to the RCE research paper, where the theory and the economics meet. It sets out who projects the AI coding market and what they project: about $3 trillion a year in developer value, company-reported revenue and valuations, token volume, losses, capex and data-centre energy, each with its source and its label. Every projection assumes one path: high energy, high compute, per-token rent and the model in the loop forever. With correctness as the gate and joules as the ranking, RCE measured 20 of 20 repairs with 0 model calls, 84.2 against 712.4 reported joules per solved task, and 10 then 0 model calls in a soak. Where that path covers a task, its price falls toward the energy to run it, as Spell Check fell to a bundled zero price.",
       "keywords": [
         "economics of AI",
         "AI coding",
@@ -198,7 +198,7 @@
       id: {
         type: 'string',
         enum: IDS,
-        description: 'Paper id. agency is Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, gates is Metered Commit Gates, satiation is Task Satiation vs. Aggregate Rebound in AI Demand, rce is The Reality Code Engine research paper, rce-economics is its economics companion essay, spellcheck is the Spell Check is Global essay, mei and jouleos are product white papers.'
+        description: 'Paper id. agency is Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, gates is Metered Commit Gates, satiation is Task Satiation vs. Aggregate Rebound in AI Demand, rce is The Reality Code Engine research paper, ai-coding-market is its economics companion essay, The Promised Trillion Dollar AI-Coding Market, spellcheck is the Spell Check is Global essay, mei and jouleos are product white papers.'
       }
     },
     required: ['id'],
