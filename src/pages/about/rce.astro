@@ -18,7 +18,7 @@ import Layout from '../../layouts/Layout.astro';
       A program is a database functional state machine: one Form, P = (S, E, δ, D, λ), and many fits. Gurevich's Abstract State Machine theorem grounds the Form. Human intent is high entropy, the machine floor is low entropy, and code converges by design. The engine runs its gears cheapest first, as one Mixture of Limits instance: there is a minimal amount of anything to accomplish a task, and any more is waste. Correctness is the gate. Joules are the ranking.
     </p>
     <p class="mt-4 font-body text-sm text-brand-gray leading-relaxed">
-      Measured on held-out test splits with a frozen engine and 0 model calls: 520,541 of 520,821 one-token faults (0.9995, 95% CI 0.9994 to 0.9995) and 23,015 of 23,015 in repositories never tuned on; 9,288 of 24,072 ManySStuBs4J Java bugs (38.6%) and 27,266 of 157,089 TSSB-3M Python bugs (17.4%); est_j of 0.10 to 0.40 J per solved task and a RAPL subsample of 0.026 to 0.056 reported_j; byte-identical traces across Rust, Python, WASM, XState and SCXML; Z3 proofs of every built-in rewrite and 10 Kani harnesses on the kernel. measured_j is reserved for a wall meter. flowG is the stand-alone language project; RCE is its academic first-pass demonstration.
+      Measured on held-out test splits with a frozen engine and 0 model calls: 520,541 of 520,821 one-token faults (0.9995, 95% CI 0.9994 to 0.9995) and 23,015 of 23,015 in repositories never tuned on; 9,288 of 24,072 ManySStuBs4J Java bugs from the hunk alone (38.6%) and 13,586 of 21,320 with the whole file (63.7%) and 27,266 of 157,089 TSSB-3M Python bugs (17.4%); est_j of 0.10 to 0.40 J per solved task and a RAPL subsample of 0.026 to 0.056 reported_j; byte-identical traces across Rust, Python, WASM, XState and SCXML; Z3 proofs of every built-in rewrite and 10 Kani harnesses on the kernel. measured_j is reserved for a wall meter. flowG is the stand-alone language project; RCE is its academic first-pass demonstration.
     </p>
 
     <div class="mt-8 glass-card p-6 space-y-2" id="companion">
@@ -32,6 +32,9 @@ import Layout from '../../layouts/Layout.astro';
       </a>
       <a href="/pdfs/rce.pdf" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors" download>
         Download PDF
+      </a>
+      <a href="/playground/rce/" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/30 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
+        Playground (in the browser)
       </a>
       <a href="/figures/rce/intent-entropy.svg" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/30 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
         Figure: intent and entropy
