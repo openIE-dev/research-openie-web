@@ -227,10 +227,11 @@ control barrier function). The companion paper measures the physical
 predicate on toy plants. This paper states the economic predicate and
 the evidence that is actually published.
 
-No field-programmable gate array (FPGA) has been synthesized or metered
-for this study. An Alchitry Pt V2 is the intended later device under
-test (DUT). A browser instrument that compiles the gate to WebAssembly
-(WASM) and displays it with WebGPU is shipped as Stage B at
+No field-programmable gate array (FPGA) carries an energy meter in this
+study; the companion's board is programmed and its energy is unmetered.
+An Alchitry Pt V2 is the intended later device under test (DUT). A
+browser instrument that compiles the gate to WebAssembly (WASM) and
+displays it with WebGPU is shipped as Stage B at
 https://research.openie.dev/living/fpga-sim/ (see companion paper). It
 is a simulation, not a board result, and it is not a satiation
 measurement here. Analytical joules from the companion's OpCounter are
@@ -530,11 +531,6 @@ and then fell by more than 75 percent. The paper's result is about
 speculative finance and fundamentals, not about a measured ``enough
 bicycle'' predicate for households. Using it as a picture of race-phase
 finance is supported. Using it as a proof of transport satiation is not.
-Earlier notes in this project sometimes said ``Quinn and Turner'' for
-this episode. The verified article above is Quinn (2019). A different
-Quinn article on cornering risk thanks John Turner in the
-acknowledgments. That is not coauthorship of the Cambridge Journal
-paper. This paper cites the article that was checked.
 
 Cars, scheduled aviation, and television have commodity-like markets in
 the everyday sense: used vehicles, yield-managed seats, and panels sold
@@ -609,8 +605,8 @@ Too Little Benefit?''
 (https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit).
 The existence of a major sell-side note that questions infrastructure
 spend relative to benefit is a document fact. Dollar figures inside the
-note are not quoted here. They were not re-read from the primary PDF for
-this draft, and sell-side estimates are not a scientific energy account.
+note are not quoted here, because sell-side estimates are not a
+scientific energy account.
 
 \subsubsection{2.7 Commit records as the interface, not the demand
 estimate}\label{commit-records-as-the-interface-not-the-demand-estimate}
@@ -689,7 +685,7 @@ checked in the project on 29 to 30 September 2026, the satiation notes,
 and the companion's software record. Section 3.3 names the measurements
 that would make the operational definition empirical.
 
-Design rules in Section 4.4 are recommendations conditional on the
+Design rules in Section 4.10 are recommendations conditional on the
 definitions. They are not estimated treatment effects. A reader can
 reject a rule without rejecting Epoch's price series, and can accept the
 price series without accepting a product recommendation.
@@ -792,8 +788,8 @@ This paper adds a mapping, not a fourth stage. Task completion, if
 encoded as \texttt{policy} or \texttt{budget\_exceeded}, should appear
 in the same trace as \texttt{energy\_veto}, so a future split (Section
 3.3) can group reason codes. The browser view would make that grouping
-readable. It would not create the missing corpus. We have not
-synthesized or metered the FPGA board.
+readable. It would not create the missing corpus, and the board energy
+stays unmetered.
 
 \subsubsection{3.6 Fidelity criteria and stop
 rules}\label{fidelity-criteria-and-stop-rules}
@@ -900,7 +896,7 @@ Intelligence} owns the physical certificate.
 \href{https://research.openie.dev/papers/gates/\#part-ii-the-cascade-mixture-of-limits}{Mixture
 of Limits} navigates cheapest-sufficient gears.
 \href{https://research.openie.dev/products/mei/}{Metabolic Intelligence}
-owns the envelope actuators. Estimates ≠ board-measured
+owns the envelope actuators. Estimates are not board-measured
 \texttt{measured\_j}.
 
 \subsubsection{3.9 Protocol for a done-detector study (not
@@ -1186,8 +1182,8 @@ transport bliss point \\
 
 The right-hand column is the list of inferences this paper refuses. Each
 left-hand observation is either a citation in Section 4 or a variable in
-Section 3. The table is the discussion compressed into a check. A draft
-that asserts a right-hand sentence has left the evidence.
+Section 3. The table is the discussion compressed into a check. A
+sentence that asserts a right-hand claim has left the evidence.
 
 \subsubsection{4.13 Companion quantities that stay in the
 companion}\label{companion-quantities-that-stay-in-the-companion}
@@ -1304,13 +1300,13 @@ bibliography does not contain. The permitted statement is S-6.
 \subsubsection{5.6 Free synthesis is not free
 actuation}\label{free-synthesis-is-not-free-actuation}
 
-Stage A joules are modeled. Stage B would be simulated in a browser.
-Stage C would be board-measured and is future. An actuator command is
-the companion's commit bit. Epoch prices sit on a different axis from
-all three. Collapsing them into ``free AI'' deletes the measurement
-class. The WASM and WebGPU path is useful because it lets a third party
-replay the decision trace without owning the Alchitry board. Usefulness
-as a replica is not a watt.
+Stage A joules are modeled. Stage B is simulated in a browser. Stage C
+programs the board, and a meter on it is a later measurement. An
+actuator command is the companion's commit bit. Epoch prices sit on a
+different axis from all three. Collapsing them into ``free AI'' deletes
+the measurement class. The WASM and WebGPU path is useful because it
+lets a third party replay the decision trace without owning the Alchitry
+board. Usefulness as a replica is not a watt.
 
 \subsubsection{5.7 Confidence is not a
 certificate}\label{confidence-is-not-a-certificate}
@@ -1423,8 +1419,8 @@ Alchitry Pt V2. Those quantities describe a catalog part. They do not
 describe switching activity, static power, or the energy of a commit
 trace. A later DUT report has to name the bitstream, the clock, the
 workload, the meter, and the duration. Until that report exists, the
-board is a planned instrument, and the browser emulator is a planned
-replica of the software decision, not a preview of the meter.
+board is an unmetered instrument, and the browser emulator is a replica
+of the software decision, not a preview of the meter.
 
 \subsection{7. Conclusion}\label{conclusion}
 
@@ -1496,13 +1492,13 @@ spend to floors when more work buys nothing.
 \subsubsection{8.4 The price trend in the shared
 thesis}\label{the-price-trend-in-the-shared-thesis}
 
-\emph{From the shared thesis, which now states the gate form only.} A
-price trend is a separate claim, labeled as one. Epoch AI reports that
-the cost of a given level of AI performance has fallen about 47 percent
-per quarter since 2023, about 13 times per year (Emberson and Roodman,
-\emph{The plunging price of thought}, 22 September 2026). If that trend
-continues, energy becomes the dominant marginal cost of inference. That
-is a cited trend with a condition, not a measured collapse.
+\emph{From the shared thesis.} A price trend is a separate claim,
+labeled as one. Epoch AI reports that the cost of a given level of AI
+performance has fallen about 47 percent per quarter since 2023, about 13
+times per year (Emberson and Roodman, \emph{The plunging price of
+thought}, 22 September 2026). If that trend continues, energy becomes
+the dominant marginal cost of inference. That is a cited trend with a
+condition, not a measured collapse.
 \href{https://research.openie.dev/papers/spellcheck/}{Spell Check is
 Global} is an existence proof that some computer intelligence
 commoditizes to bundled zero price.
@@ -1771,8 +1767,8 @@ companion's Appendix B. The decision core runs in WASM. WebGPU paints
 the LUT image and the commit trace. Diff the trace against the Rust
 JSON. Do not convert GPU timestamps to joules. Do not mark the Alchitry
 Pt V2 as measured. Vendor page:
-https://www.sparkfun.com/alchitry-pt-v2.html. Synthesis plus a meter is
-Stage C, a later study.
+https://www.sparkfun.com/alchitry-pt-v2.html. A meter on the programmed
+Stage C board is a later study.
 
 Factual repository flag: no FPGA board result claimed.
 
