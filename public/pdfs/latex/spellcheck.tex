@@ -87,6 +87,21 @@
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -1320,6 +1335,18 @@ has no separate price in that article. The duration of ``no separate
 price'' begins, on that article's wording, by the mid-1980s for the
 incorporated word-processor checkers. The operating-system checker is
 not dated to a day in the article.
+
+Figure 1 places the dated prices of this section on one axis.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/price-to-zero.png}
+
+\emph{Figure 1. Spell check from a separate price to bundled zero. Data
+figure, log scale: prices and dates as printed by the sources of this
+section (Compute!, January 1981; Mendelson, WPDOS; InfoWorld via
+Wikipedia; Chicago Tribune, 10 April 1988; START, November 1989; Brodie,
+2015; the Hunspell README). A
+\href{https://research.openie.dev/figures/spellcheck/price-to-zero.png}{PNG
+copy} is provided.}
 
 The companion papers build the rest of the path. Spell check is an
 existence proof that some computer intelligence commoditizes to bundled

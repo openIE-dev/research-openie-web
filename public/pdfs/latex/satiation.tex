@@ -87,6 +87,21 @@
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -972,6 +987,17 @@ maximizer, which is the rebound logic on this toy, and the maximizer
 remains finite. The toy does not say where the maximizer sits for any
 real buyer. It blocks the inference that a lower \texttt{p} removes the
 maximum.
+
+Figure 1 draws the toy and the separate aggregate claim.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/satiation-rebound.png}
+
+\emph{Figure 1. Task satiation and aggregate rebound. Model illustration
+of the toy in this section, not a fit: the maximizer of \(U(x) - p\,x\)
+is \(x = 4 - p/2\), finite at every price. The right panel is a
+schematic; this paper estimates no rebound. A
+\href{https://research.openie.dev/figures/satiation/satiation-rebound.png}{PNG
+copy} is provided.}
 
 \subsubsection{3.11 Reason codes as a partition, not a welfare
 function}\label{reason-codes-as-a-partition-not-a-welfare-function}

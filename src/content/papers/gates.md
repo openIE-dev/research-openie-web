@@ -122,13 +122,13 @@ This paper's contribution is a software reference for that predicate, plus a rep
 
 Three measurement statements constrain every later number. First, joules computed by the OpCounter are analytical estimates. Second, Verilog results are simulation. Third, the only board joules are the KV260 board-level differences of Section 3.7, filed as `measured_j` with the meter named. The board-result flag is true for those KV260 runs alone. The Pt V2 stays unmetered. Those sentences replace any badge-style labeling. A reader should be able to tell modeled, simulated, and board-measured apart from the method clause attached to the number.
 
-<div id="companion-laws" class="anchor-alias" aria-hidden="true"></div>
-
 Figure 1 draws the commit gate.
 
 ![Flow diagram: propose, then certify against the predicate and certificate, then either commit an act on the world or refuse with no act. Both outcomes write a receipt with a hash, joules and a reason.](/figures/gates/commit-gate.svg)
 
 *Figure 1. The commit gate. Diagram of propose, certify, commit or refuse, and receipt, as defined in Section I.3. A [PNG copy](/figures/gates/commit-gate.png) is provided.*
+
+<div id="companion-laws" class="anchor-alias" aria-hidden="true"></div>
 
 ### I. Companion papers
 
@@ -874,13 +874,13 @@ Consequences:
 
 **Where the model sits.** Model last is an order of trial. It is not a verdict on what models can do. Snell, Lee, Xu and Kumar showed that a compute-optimal schedule of test-time compute beats a best-of-N baseline by more than 4x in efficiency, and that on some problems test-time compute can stand in for a larger model (arXiv:[2408.03314](https://arxiv.org/abs/2408.03314)). That result is about the schedule inside the model gear. Mixture of Limits prices that schedule in joules like any other gear. The model gear opens whenever the cheaper gears cannot close $C(z)$, and it opens first when they pass too rarely to pay for their failures. Proposition 9 of the [agency track](https://research.openie.dev/papers/agency/) states that condition exactly.
 
-<div id="named-floors" class="anchor-alias" aria-hidden="true"></div>
-
 Figure 2 draws the floor and the plateau for one task.
 
 ![Diagram of verified progress against spend for one task. Progress rises in steps as the cascade escalates from Lookup to Formula to Solver; the Solver closes the task, marking the floor. Past the floor the Model stage adds spend with no further verified progress, the plateau where value of information is zero.](/figures/gates/mol-plateau.svg)
 
 *Figure 2. Mixture of Limits on one task. Diagram, not a measurement: verified progress rises in steps through the cascade until the floor, and spend past the floor buys no verified progress (Section II.8.7). A [PNG copy](/figures/gates/mol-plateau.png) is provided.*
+
+<div id="named-floors" class="anchor-alias" aria-hidden="true"></div>
 
 ### II. Named floors
 

@@ -87,6 +87,21 @@
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -454,6 +469,15 @@ alone. The Pt V2 stays unmetered. Those sentences replace any
 badge-style labeling. A reader should be able to tell modeled,
 simulated, and board-measured apart from the method clause attached to
 the number.
+
+Figure 1 draws the commit gate.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/commit-gate.png}
+
+\emph{Figure 1. The commit gate. Diagram of propose, certify, commit or
+refuse, and receipt, as defined in Section I.3. A
+\href{https://research.openie.dev/figures/gates/commit-gate.png}{PNG
+copy} is provided.}
 
 \subsubsection{I. Companion papers}\label{i.-companion-papers}
 
@@ -2343,6 +2367,17 @@ whenever the cheaper gears cannot close \(C(z)\), and it opens first
 when they pass too rarely to pay for their failures. Proposition 9 of
 the \href{https://research.openie.dev/papers/agency/}{agency track}
 states that condition exactly.
+
+Figure 2 draws the floor and the plateau for one task.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/mol-plateau.png}
+
+\emph{Figure 2. Mixture of Limits on one task. Diagram, not a
+measurement: verified progress rises in steps through the cascade until
+the floor, and spend past the floor buys no verified progress (Section
+II.8.7). A
+\href{https://research.openie.dev/figures/gates/mol-plateau.png}{PNG
+copy} is provided.}
 
 \subsubsection{II. Named floors}\label{ii.-named-floors}
 

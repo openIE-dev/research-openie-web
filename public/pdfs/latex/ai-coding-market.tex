@@ -49,6 +49,21 @@
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -367,6 +382,18 @@ February 2026 & Company-reported & {[}6{]} \\
 Anthropic states that the round funds ``infrastructure expansions''
 {[}6{]}. Revenue, valuation and compute are one bet.
 
+Figure 1 sets the dollar figures of Sections 2.1 to 2.3 and 2.6 on one
+axis, marked by the label each source carries.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/spend-by-label.png}
+
+\emph{Figure 1. Dollar figures by label. Data figure, log scale.
+Sources: Appenzeller and Li {[}1{]}, Menlo Ventures {[}2{]}, Mordor
+Intelligence {[}3{]}, Cursor {[}5{]}, Anthropic {[}6{]}, IEA {[}10{]},
+McKinsey {[}15{]}, Gartner {[}24{]}. A
+\href{https://research.openie.dev/figures/ai-coding-market/spend-by-label.png}{PNG
+copy} is provided.}
+
 \subsubsection{2.4 Inference, tokens and unit
 economics}\label{inference-tokens-and-unit-economics}
 
@@ -419,6 +446,16 @@ it's only May'' {[}8{]}. Appenzeller and Li: ``For decades, software
 development cost was almost purely people's cost, but now LLMs add a
 substantial opex component'' {[}1{]}.
 
+Figure 2 plots the token series.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/tokens.png}
+
+\emph{Figure 2. Tokens processed per month at Google. Data figure,
+company-reported, log scale. Source: Pichai {[}8{]}; the note on token
+use is from Bai, Huang and Wang {[}9{]}. A
+\href{https://research.openie.dev/figures/ai-coding-market/tokens.png}{PNG
+copy} is provided.}
+
 \subsubsection{2.5 Price per token}\label{price-per-token}
 
 {\def\LTcaptype{none} % do not increment counter
@@ -460,6 +497,18 @@ The 13 times a year of {[}4{]} is one point in a wide range {[}34{]}.
 The fall is driven by competition and open weights, as the DeepSeek cut
 shows {[}21{]}. It needs no energy accounting. That is the first decline
 of Section 6. Reuse adds a different one: calls per task.
+
+Figure 3 draws the two price series.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/price-trend.png}
+
+\emph{Figure 3. Price of a fixed level of capability. Data figure, log
+scale: the a16z endpoints are as printed {[}20{]}; the Epoch AI line is
+the stated rate of about 13 times a year since 2023 {[}4{]}, indexed to
+an arbitrary start to show slope only. The range by milestone is from
+Epoch AI {[}34{]}. A
+\href{https://research.openie.dev/figures/ai-coding-market/price-trend.png}{PNG
+copy} is provided.}
 
 \subsubsection{2.6 Energy and capital}\label{energy-and-capital}
 
@@ -512,6 +561,21 @@ Sequoia Capital {[}23{]} \\
 The rent that must be serviced is hardware rent. Capex and commitments
 of this size are paid back through usage priced above its energy. That
 is the base that reuse removes on covered tasks.
+
+Figure 4 places the projected grid electricity beside the measured
+joules of a task.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/energy.png}
+
+\emph{Figure 4. Energy at the grid and at the task. Data figure. Panel
+a: IEA estimate and projection {[}10, 11{]}. Panel b, log scale: one
+median text prompt, 0.24 Wh measured by the operator {[}12{]}; RCE
+solved repair tasks, \texttt{est\_j} and \texttt{reported\_j}
+(\href{https://research.openie.dev/papers/rce/\#63-energy}{RCE §6.3}).
+The two panels are different units and are not converted into each
+other. A
+\href{https://research.openie.dev/figures/ai-coding-market/energy.png}{PNG
+copy} is provided.}
 
 \subsubsection{2.7 Productivity evidence}\label{productivity-evidence}
 

@@ -205,22 +205,7 @@ in every result here.
 \subsection{2. The design space of autonomous
 coding}\label{the-design-space-of-autonomous-coding}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={One
-sentence in. One floor out. Human intent is high entropy; a funnel of
-conversions from intent to spec to 626 surface languages to an
-intermediate representation to machine code loses information at each
-boundary; all code reaches a few machine shapes; RCE writes the meaning
-once in one canonical Form, treats every surface as a projection, and
-lets the cheapest correct form win.}]{fig/intent-entropy.png}
-\caption{One sentence in. One floor out. Human intent is high entropy; a
-funnel of conversions from intent to spec to 626 surface languages to an
-intermediate representation to machine code loses information at each
-boundary; all code reaches a few machine shapes; RCE writes the meaning
-once in one canonical Form, treats every surface as a projection, and
-lets the cheapest correct form win.}
-\end{figure}
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/intent-entropy.png}
 
 \emph{Figure 1. Intent entropy and the machine floor. A
 \href{https://research.openie.dev/figures/rce/intent-entropy.png}{PNG
@@ -296,6 +281,18 @@ lowers energy and the entropy left to resolve, and strong verification
 is what makes reuse safe. RCE writes the meaning once, in one canonical
 Form. Every surface language is a projection of that Form, checked to
 match it. Among equivalent forms, the cheapest correct one runs.
+
+Figure 2 draws the five axes and places the main classes of approach on
+them.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/design-space.png}
+
+\emph{Figure 2. The design space of autonomous coding. Qualitative
+diagram: each class of approach is placed by the paper's reading of
+Section 2 on ordinal levels, not by measurement. Model reliance is drawn
+as independence from models so that outward is better on every axis. A
+\href{https://research.openie.dev/figures/rce/design-space.png}{PNG
+copy} is provided.}
 
 \subsubsection{2.1 Programming is coding
 theory}\label{programming-is-coding-theory}
@@ -571,6 +568,19 @@ undeclared node is refused before compile & 10,000 & 10,000 & 0 \\
 \end{longtable}
 }
 
+Figure 3 shows the same counts.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/ecosystem-checks.png}
+
+\emph{Figure 3. The ecosystem at large N. Data figure: the five checks
+of the table above on 10,000 preregistered Forms, frozen engine at
+commit \texttt{a079967}, 0 model calls, with Wilson 95\% intervals
+computed from the counts. Source:
+\href{https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ecosystem/}{\texttt{bench/ecosystem}}.
+A
+\href{https://research.openie.dev/figures/rce/ecosystem-checks.png}{PNG
+copy} is provided.}
+
 The one Python miss is counted as a miss; the same Form and events
 replay identically under 32 hash seeds in the regression test
 \texttt{tests/form\_ecosystem\_regress.rs}. Energy here is
@@ -626,6 +636,20 @@ playground's reference workload, cumulative escalations over eight
 rounds fall from 21 to 15 with one correction at the sinks, and reach
 zero in the last round in both cases, with every task closed correctly
 and no promotion refused.
+
+Figure 4 draws the mechanism of Propositions R1 and R2 with the
+reference workload's totals.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/stack-compounding.png}
+
+\emph{Figure 4. Corrections compound upward. Diagram of the stack, with
+a data inset: cumulative escalations over eight rounds of the
+playground's reference workload, 21 with no correction and 15 with one
+correction at the sinks (Proposition R2;
+\href{https://research.openie.dev/playground/rce/\#compounding}{RCE
+Playground}). A
+\href{https://research.openie.dev/figures/rce/stack-compounding.png}{PNG
+copy} is provided.}
 
 \textbf{Proposition R3 (falling cost).} Since a promoted handler is
 executed in place of a model call, and its cost is the op count of the
@@ -1155,6 +1179,21 @@ covers the eleven operators and the 529 events in the test, and it says
 nothing about inputs outside them. The Z3 and Kani results below are the
 verification.
 
+Figure 5 shows the five projections of one Form and the round trip of
+the two statechart targets.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/form-projections.png}
+
+\emph{Figure 5. One Form, many projections. Diagram: deterministic
+projection to five targets
+(\href{https://research.openie.dev/papers/rce/\#45-the-form-compiler}{§4.5});
+the XState and SCXML projections decode back to byte-identical bytes
+(\href{https://research.openie.dev/papers/rce/\#23-the-ecosystem-at-large-n}{§2.3});
+all five targets print the reference trace byte for byte on the 529
+events of \texttt{tests/form\_targets.rs}. A
+\href{https://research.openie.dev/figures/rce/form-projections.png}{PNG
+copy} is provided.}
+
 \subsubsection{5.2 Rewrites proved in Z3}\label{rewrites-proved-in-z3}
 
 Verified rewrite rules have a lineage. Ruler infers and checks rewrite
@@ -1329,6 +1368,19 @@ L1 one statement, Python & TSSB-3M v1.0.0, shards 14 and 15 {[}108{]} &
 157,089 & 27,266 & 0.174 & 0.172 to 0.175 & 4.8 & 0 \\
 \end{longtable}
 }
+
+Figure 6 plots the rows of the table with their intervals.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/lift-ladder.png}
+
+\emph{Figure 6. The repair ladder on lifted code. Data figure: held-out
+test split, frozen engine, location given, token identity gate, 0 model
+calls; Wilson 95\% intervals computed from the counts. Sources:
+PIT-style mutants {[}109{]}, ManySStuBs4J 2.0 {[}107{]}, TSSB-3M v1.0.0
+{[}108{]}; per-task rows in
+\href{https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/}{\texttt{bench/ladder}}.
+A \href{https://research.openie.dev/figures/rce/lift-ladder.png}{PNG
+copy} is provided.}
 
 L2 to L4 are measured on the Defects4J held-out set of 288 bugs
 (\href{https://research.openie.dev/papers/rce/\#81-defects4j}{Section

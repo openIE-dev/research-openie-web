@@ -331,13 +331,13 @@ Wikipedia, History of Microsoft Word. Word 1.0, released October 1983, costing \
 The elimination already stated in Section 2.9 is the last price on this tape. Hunspell's license price as a library is zero under the tri-license the README states. The README does not publish a prior retail schedule. Apple's system-wide checker, described in the spell-check article as the operating system taking over spelling fixes, has no separate price in that article. The duration of "no separate price" begins, on that article's wording, by the mid-1980s for the incorporated word-processor checkers. The operating-system checker is not dated to a day in the article.
 
 
-The companion papers build the rest of the path. Spell check is an existence proof that some computer intelligence commoditizes to bundled zero price. Mixture of Limits keeps Model last and demands a fabric that is available, accessible, and capable. Notational Intelligence makes the suggestion a proposal until commit. Satiation stops when the token is kept. Metabolic Intelligence keeps the envelope as the condition of the best answer, on the edge and in a resource-optimized central fabric, and refuses the trade that would worsen the answer to make it cheap. Klere is where that class has a product home. Spell check already ran the path elsewhere. The home is not a prison.
-
 Figure 1 places the dated prices of this section on one axis.
 
 ![Timeline on a log price axis. WordCheck sold as a standalone checker at 200 dollars in January 1981. WordPerfect 3.0 with a spell command was 495 dollars in October 1983, and Word 1.0 without a checker 395 dollars. Grammatik II was 89 dollars in 1988 and Grammatik III 99 dollars in 1989. Below, a band of items with no separate price: Word 2.0 bundling a purchased checker, WordPerfect 5.2 including Grammatik 5 in 1992, and the Hunspell library at a licence price of zero.](/figures/spellcheck/price-to-zero.svg)
 
 *Figure 1. Spell check from a separate price to bundled zero. Data figure, log scale: prices and dates as printed by the sources of this section (Compute!, January 1981; Mendelson, WPDOS; InfoWorld via Wikipedia; Chicago Tribune, 10 April 1988; START, November 1989; Brodie, 2015; the Hunspell README). A [PNG copy](/figures/spellcheck/price-to-zero.png) is provided.*
+
+The companion papers build the rest of the path. Spell check is an existence proof that some computer intelligence commoditizes to bundled zero price. Mixture of Limits keeps Model last and demands a fabric that is available, accessible, and capable. Notational Intelligence makes the suggestion a proposal until commit. Satiation stops when the token is kept. Metabolic Intelligence keeps the envelope as the condition of the best answer, on the edge and in a resource-optimized central fabric, and refuses the trade that would worsen the answer to make it cheap. Klere is where that class has a product home. Spell check already ran the path elsewhere. The home is not a prison.
 
 ## 3. Definitions and methods
 

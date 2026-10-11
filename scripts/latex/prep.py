@@ -21,7 +21,9 @@ def img(m):
     else:
         png = f'{figdir}/{os.path.basename(src)}'; subprocess.run(['cp', p, png], check=True)
     p = 'fig/' + os.path.basename(png)
-    return f'![{alt}]({p}){{width=95%}}'
+    alt = alt.replace('"', "'")
+    # caption comes from the italic 'Figure N.' line that follows; the alt text stays as fig-alt
+    return f'![]({p}){{width=95% fig-alt="{alt}"}}'
 s = re.sub(r'!\[([^\]]*)\]\((/[^)\s]+)\)', img, s)
 s = re.sub(r'\]\((/[^)]*)\)', r'](https://research.openie.dev\1)', s)
 s = re.sub(r'\]\(#', r'](https://research.openie.dev/papers/%s/#' % slug, s)
