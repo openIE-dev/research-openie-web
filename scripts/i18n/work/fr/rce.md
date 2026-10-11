@@ -1,6 +1,6 @@
 *Version 1.1, 11 octobre 2026. Données et code : [research.openie.dev/data/](/data/#rce). Playground : [/playground/rce/](/playground/rce/). PDF LaTeX : [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
 
-*Une Forme. De nombreux ajustements. La porte est la correction, et le classement, ce sont les joules.*
+*Une Forme, écrite à partir de l'intention. De nombreuses projections. La porte est la correction, et le classement, ce sont les joules.*
 
 La lecture économique de cet article se trouve dans son compagnon, [Le marché promis à mille milliards de dollars de la programmation par IA](/papers/ai-coding-market/). Cet article ne contient que l'ingénierie et la théorie.
 
@@ -11,6 +11,8 @@ Il existe deux voies vers l'automatisation informatique autonome. Deux grandeurs
 La première voie génère. Un grand modèle de langage (LLM), modèle statistique de texte, écrit chaque modification à partir de l'invite. Chaque tâche paie de nouveau la génération, et chaque sortie est un nouvel échantillon d'une distribution à forte entropie.
 
 La seconde voie converge. Les humains ont déjà programmé l'essentiel de ce qui sera jamais programmé. Un programme est une machine à états fonctionnelle de base de données : une Forme, de nombreux ajustements. L'intention humaine est à forte entropie. Le plancher de la machine est à faible entropie. Le code converge par construction, si bien que l'essentiel du travail consiste à retrouver un ajustement existant, à l'adapter et à le prouver. Le Reality Code Engine (RCE) est construit sur la seconde voie.
+
+**L'affirmation centrale.** RCE est un écosystème de code complet dans lequel les programmes sont écrits nativement à partir de l'intention. L'intention est écrite une fois, comme une Forme : un état, un ensemble d'événements et une transition pure et totale. La Forme est un codage sans perte de cette intention. Chaque cible (statechart, Rust, Python, XState, SCXML, WASM) est une projection de la Forme, et chaque projection rejoue la trace de la Forme octet pour octet. Un état que la Forme ne déclare pas ne peut pas être écrit, et une entrée hors de son contrat est refusée dès l'entrée. Un programme de l'écosystème ne peut donc pas dériver de son intention comme un programme dans un langage courant dérive de ses commentaires, de ses tests ou de ses autres implémentations, et il n'a besoin d'aucune comparaison de différences ni d'aucun suivi d'erreurs après coup. Chaque ajustement qui franchit la porte est stocké et réutilisé, si bien que l'écosystème se capitalise à mesure qu'il croît ([§2.4](#24-gated-verified-recursive-self-improvement)). Le code écrit dans d'autres langages est une porte d'accès : il entre par élévation ([§6](#6-lift-entering-the-ecosystem-from-other-languages)).
 
 Les deux voies font face à la même porte. La porte est la correction : le prédicat de complétude d'une tâche, $C(z)$, ici les tests de la tâche, une preuve ou une trace d'accord. Parmi les exécutions qui franchissent la porte, les systèmes sont classés par les joules jusqu'à l'achèvement, $J^*$. La correction est une contrainte, pas un score.
 
@@ -82,21 +84,19 @@ Lue comme théorie du codage, une tâche arrive comme un message dont l'incertit
 
 Les deux voies du tableau de la Section 2 diffèrent par l'endroit où la conversion est payée. La voie de génération échantillonne la distribution complète de l'invite à chaque tâche, et paie donc à chaque fois le côté à forte entropie. La voie de convergence ne paie que pour le résidu, et une seule fois. La lecture économique de cette différence se trouve dans [Le marché promis à mille milliards de dollars de la programmation par IA, Section 4](/papers/ai-coding-market/#4-the-theory-that-prices-the-task). La règle d'arrêt derrière l'ordre des engrenages est [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits), et l'arrêt par tâche est la [satiété de la tâche](/papers/satiation/).
 
-### 2.3 Résultats par échelon de l'échelle
+### 2.3 L'écosystème à grand N
 
-Une tâche de programmation est mesurée ici par les **bits d'intention** dont elle a besoin : les bits à fournir de l'extérieur de ce que le moteur détient déjà (le programme autour de la modification, les bibliothèques, les tests, l'index des corrections connues). En notant $H_{task}$ les bits qui déterminent l'artefact cible et $H_{corpus}$ les bits que le corpus fixe déjà, les bits fournis sont $I = H_{task} - H_{corpus}$. Un engrenage qui classe la bonne modification au rang $r$ parmi ses candidats a fourni $\log_2 r$ bits de recherche, et la porte fournit le reste. L'échelle ordonne les tâches par taille de modification, indicateur objectif de $I$ : un jeton (L0), une instruction (L1), un bloc (L2), plusieurs blocs dans un fichier (L3), plusieurs fichiers (L4), une fonction à partir d'une spécification ou de tests (L5), une modification au niveau d'un ticket (L6) et un programme à partir d'une spécification (L7). Les échelons, corpus, partitions et hypothèses ont été préenregistrés avant les exécutions complètes ; les fichiers sont dans le [dépôt public](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
+L'affirmation du [§1](#1-thesis) est mesurée directement. Le banc a été préenregistré avant l'exécution ([`bench/ecosystem/PREREG.json`](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ecosystem/)). Un générateur à graine écrit 10 000 Formes, chacune composée d'une source, d'une règle dont le corps est un terme arithmétique aléatoire de profondeur au plus 3 sur huit opérateurs, et d'un puits. Le moteur est figé au commit `a079967`, et aucun modèle n'est appelé.
 
-| Échelon | Corpus de test réservé | N | Résolues | Taux | IC de Wilson à 95 % | Médiane des bits de recherche | Appels de modèle |
-|---|---|---|---|---|---|---|---|
-| L0 un jeton | Mutants de type PIT [109] de 9 dépôts réels à des commits fixés (Java : commons-math, commons-collections, jsoup, joda-time, gson ; Python : click, attrs, pydantic, sympy) | 520 821 | 520 541 | 0,9995 | 0,9994 à 0,9995 | 2,3 | 0 |
-| L0 un jeton, dépôts jamais utilisés pour le réglage | commons-text, commons-io, more-itertools, httpx | 23 015 | 23 015 | 1,0000 | 0,9998 à 1,0000 | 2,0 | 0 |
-| L1 une instruction, Java | Corrections à bloc unique de ManySStuBs4J 2.0 [107] | 24 072 | 9 288 | 0,386 | 0,380 à 0,392 | 3,5 | 0 |
-| L1 une instruction, Java, fichier entier | ManySStuBs4J 2.0 [107], fichier du commit parent avec les index des méthodes et des gardes du projet | 21 320 | 13 586 | 0,637 | 0,631 à 0,644 | 4,8 | 0 |
-| L1 une instruction, Python | TSSB-3M v1.0.0, fragments 14 et 15 [108] | 157 089 | 27 266 | 0,174 | 0,172 à 0,175 | 4,8 | 0 |
+| Propriété | Ce qui est vérifié par Forme | N | Vérifiée | Appels de modèle |
+|---|---|---|---|---|
+| Codage sans perte | Form IR vers JSON canonique vers Form IR vers JSON canonique est l'identité | 10 000 | 10 000 | 0 |
+| Projection déterministe | Deux compilations donnent les mêmes octets ; les projections XState et SCXML de la Forme d'origine et de la Forme après aller-retour sont identiques octet pour octet | 10 000 | 10 000 | 0 |
+| Projection fidèle, Python | Le module Python émis imprime la trace de référence octet pour octet sur 40 événements à graine | 10 000 | 9 999 | 0 |
+| Porte à l'entrée, entrées | Cinq types de charge malformée (mauvais type, null, champ manquant, vide, imbriqué) tous refusés, sans aucun résultat accepté | 10 000 | 10 000 | 0 |
+| Porte à l'entrée, spécifications | Une spécification avec un flux vers un nœud non déclaré est refusée avant la compilation | 10 000 | 10 000 | 0 |
 
-L2 à L4 sont mesurés sur l'ensemble réservé Defects4J de 288 bogues ([Section 8.1](#81-defects4j)). L5 à L7 suivent les protocoles de la [Section 8.2](#82-swe-bench-lite-offline). La Section 6 donne la méthode, la porte et l'énergie de chaque ligne.
-
-Les taux se lisent comme des bits d'intention. En L0, les bits manquants sont presque tous sur la ligne, et un voisinage à un jeton ordonné par un a priori les fournit avec une médiane de 2,3 bits. En L1, le moteur ne voit que le bloc de 7 lignes. Il clôt les catégories dont les bits sont dans le bloc (Java : opérateur changé 91 %, littéral booléen inversé 84 %, arguments permutés 82 % ; Python : littéral booléen changé 98,8 %, arguments permutés 99,4 %) et laisse ouvertes celles dont les bits sont hors du bloc : les noms de méthodes (22 %) et les identifiants (37 %) exigent le fichier et ses types, et les nouvelles conjonctions (3 % à 7 %) et les réécritures d'instructions entières (Python, 1,2 % d'une catégorie qui représente 34 % du corpus) sont une intention nouvelle. L'intention nouvelle est ce qu'un fournisseur (une spécification, un test, une personne ou un modèle local) apporte une fois, après quoi l'ajustement est dans l'index.
+L'unique échec Python est compté comme un échec ; la même Forme et les mêmes événements se rejouent à l'identique sous 32 graines de hachage dans le test de régression `tests/form_ecosystem_regress.rs`. L'énergie est ici `est_j` seulement ; toute l'exécution a pris 393 s de temps CPU sur un cœur. Les Formes générées sont petites, si bien que ce tableau mesure le codage, les projections et la porte. Les Formes élevées à partir de programmes réels sont mesurées selon le protocole du [§8.7](#87-lift-coverage-across-languages).
 
 ### 2.4 Auto-amélioration récursive, sous porte et vérifiée
 
@@ -185,6 +185,24 @@ Une structure relationnelle finie est une instance de base de données, si bien 
 | E-graphe | La classe d'équivalence de l'ajustement | Quel ajustement équivalent s'exécute |
 
 Le statechart et le graphe décrivent un ajustement. L'e-graphe décrit tout ajustement qui lui est équivalent. L'extraction choisit parmi eux par les joules.
+
+### 3.6 Un écosystème, sans perte, et la thèse d'universalité
+
+**Sans perte par construction.** Le théorème de codage de source de Shannon fixe le plancher d'un code sans perte à l'entropie de la source [40]. Une Forme est un code sans perte pour l'intention en un sens étroit et vérifiable : la sérialisation canonique de la Forme est injective, si bien que deux Formes qui diffèrent par un état, un événement ou une transition ont des empreintes de forme différentes, et le décodage de la sérialisation redonne la même Forme. Chaque projection vers une cible est une fonction de la seule Forme. Les transformations bidirectionnelles rendent l'aller-retour précis. Foster, Greenwald, Moore, Pierce et Schmitt définissent une lentille comme une paire de fonctions get et put dotée de conditions d'aller-retour qui accordent une vue et sa source [122], Hofmann, Pierce et Wagner étendent ces conditions aux lentilles symétriques [123], et Czarnecki et ses collègues passent en revue les mêmes conditions de cohérence en ingénierie des modèles, en bases de données et en langages de programmation [124]. La condition d'aller-retour de RCE est la condition GetPut au niveau du programme entier : si l'on élève à nouveau une projection, l'empreinte de forme ne change pas.
+
+**Correct par construction.** Dijkstra a proposé en 1968 qu'un programme et sa preuve soient développés ensemble, afin que la correction soit conçue dès le départ plutôt que vérifiée par des tests [125]. Hall et Chapman ont porté l'approche dans un système sécurisé commercial, avec spécification formelle et raffinement à chaque étape [126]. La règle de Minsky pour la programmation fonctionnelle typée, rendre les états illégaux non représentables, dit la même chose au niveau des types : un type qui ne peut pas contenir une mauvaise valeur dispense de la vérifier [127]. La programmation fonctionnelle totale de Turner exige que chaque fonction termine sur chaque entrée, afin qu'un programme dénote une fonction mathématique sans échec caché [128]. La Forme de RCE est totale au sens de Turner, ses types de contrat rendent les états non déclarés non représentables au sens de Minsky, et la chaîne de raffinement du [§2.1](#21-programming-is-coding-theory) s'achève en elle au sens de Dijkstra. La conséquence est celle qu'énonce le [§1](#1-thesis) : une erreur est refusée dès l'entrée, si bien qu'il ne reste rien à comparer ni à suivre après coup.
+
+**La thèse d'universalité.** La thèse est celle de David Charlot : RCE, et tout langage construit sur le cadre de RCE (flowG est le premier), remplace le besoin de tout autre langage. En termes théoriques, il existe une Forme universelle. Les programmes y sont écrits nativement, tout langage existant est accessible depuis elle comme projection fidèle, et tout programme existant y entre par élévation. La thèse de Gurevich en donne le fondement : tout algorithme séquentiel est capturé, pas à pas, par une machine à états abstraite à son propre niveau d'abstraction [2], et il en va de même des algorithmes parallèles [3]. Une Forme est une telle machine sur un état de base de données.
+
+**Proposition U1 (capture).** Si un programme dans le langage $L$ est un algorithme séquentiel ou parallèle au sens de Gurevich, alors il existe une Forme dont la transition le simule pas à pas au niveau d'abstraction du programme [2, 3].
+
+**Proposition U2 (projection fidèle).** Si la projection $\pi_L$ d'une Forme vers $L$ préserve la trace de la Forme sur toute entrée du contrat, alors la Forme et sa projection sont interchangeables pour tout observateur de la trace, et $L$ n'ajoute rien qui manque à la Forme.
+
+**Proposition U3 (élévation par construction).** Tout langage de programmation en usage possède une grammaire formelle, un analyseur qui produit un arbre de syntaxe concrète, un arbre de syntaxe abstraite et une sémantique fixée par sa spécification ou son implémentation de référence. Une élévation $\lambda_L$ est construite par langage en trois étapes : la grammaire, puis l'arbre de syntaxe abstraite, puis la Forme, chaque construction de $L$ recevant sa règle de Forme d'après la sémantique de $L$. Une élévation ainsi construite satisfait $\pi_L(\lambda_L(p)) \equiv p$ en comportement et $\lambda_L(\pi_L(F)) = F$ en empreinte de forme, si bien que la paire est une lentille au sens de [122], et qu'un programme en $L$ est conservé comme Forme sans perte.
+
+**Proposition U4 (remplacement).** Si U2 et U3 valent pour le langage $L$, alors aucun programme n'a besoin d'être écrit en $L$ : il est écrit une fois comme Forme et émis en $L$ là où une plateforme l'exige.
+
+U1 est un théorème. U2 est vérifiée par cible au moyen de tests différentiels ([§5.1](#51-differential-testing-across-five-targets)) et à grand N au [§2.3](#23-the-ecosystem-at-large-n). U3 est une construction, bâtie langage par langage à partir de la grammaire, et le [§8.7](#87-lift-coverage-across-languages) indique comment la construction est mesurée à mesure qu'elle est bâtie. Les affirmations sur l'adoption figurent dans l'[essai compagnon](/papers/ai-coding-market/).
 
 ## 4. Le moteur : engrenages, porte et reçus
 
@@ -297,24 +315,41 @@ Un modèle peut proposer des équivalences. Il ne peut pas les admettre. Avec un
 
 L'élévation lit la même machine de commande à partir de fixtures Rust, Python, TypeScript et Go, exécute le code d'origine sur 40 séquences avec graine de 30 appels, et s'accorde sur les 1 200 appels par langage. Un banc d'essai figé, préenregistré avant tout résultat, a réexprimé trois programmes existants de prospection commerciale sous forme de Formes. Les Formes s'accordent avec le code d'origine sur 4 500 des 4 500 entrées enregistrées, et l'extraction abaisse `est_j` sur chacune (par exemple de $1.69 \times 10^{-8}$ J à $1.49 \times 10^{-8}$ J).
 
-## 6. Résultats
+## 6. Élévation : entrer dans l'écosystème depuis d'autres langages
+
+<div id="6-importing-legacy-code-from-other-languages" class="anchor-alias" aria-hidden="true"></div>
+
+L'élévation est la porte d'entrée de l'écosystème pour le code écrit ailleurs. C'est une construction, réalisée par langage avec des outils que tout langage possède déjà : une grammaire formelle, un analyseur tel que [tree-sitter](https://tree-sitter.github.io/tree-sitter/) qui produit l'arbre syntaxique, l'arbre de syntaxe abstraite et les symboles que résolvent les outils de serveur de langage ([Language Server Protocol](https://microsoft.github.io/language-server-protocol/)). `rce scan DIR --form` construit la Forme à partir de cet arbre pour Rust, Python, TypeScript et Go ([§4.5](#45-the-form-compiler), [§5.6](#56-brownfield-agreement)). Un programme élevé porte les fautes de sa source, si bien que l'élévation inclut la réparation, mesurée ci-dessous sur des corpus publics de bogues avec l'emplacement donné. Dans l'écosystème, ces fautes ne peuvent pas être écrites.
+
+### 6.0 L'échelle de réparation sur le code élevé
+
+<div id="23-per-rung-ladder-results" class="anchor-alias" aria-hidden="true"></div>
+
+Une tâche de programmation est mesurée ici par les **bits d'intention** dont elle a besoin : les bits à fournir de l'extérieur de ce que le moteur détient déjà (le programme autour de la modification, les bibliothèques, les tests, l'index des corrections connues). En notant $H_{task}$ les bits qui déterminent l'artefact cible et $H_{corpus}$ les bits que le corpus fixe déjà, les bits fournis sont $I = H_{task} - H_{corpus}$. Un engrenage qui classe la bonne modification au rang $r$ parmi ses candidats a fourni $\log_2 r$ bits de recherche, et la porte fournit le reste. L'échelle ordonne les tâches par taille de modification, indicateur objectif de $I$ : un jeton (L0), une instruction (L1), un bloc (L2), plusieurs blocs dans un fichier (L3), plusieurs fichiers (L4), une fonction à partir d'une spécification ou de tests (L5), une modification au niveau d'un ticket (L6) et un programme à partir d'une spécification (L7). Les échelons, corpus, partitions et hypothèses ont été préenregistrés avant les exécutions complètes ; les fichiers sont dans le [dépôt public](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
+
+| Échelon | Corpus de test réservé | N | Résolues | Taux | IC de Wilson à 95 % | Médiane des bits de recherche | Appels de modèle |
+|---|---|---|---|---|---|---|---|
+| L0 un jeton | Mutants de type PIT [109] de 9 dépôts réels à des commits fixés (Java : commons-math, commons-collections, jsoup, joda-time, gson ; Python : click, attrs, pydantic, sympy) | 520 821 | 520 541 | 0,9995 | 0,9994 à 0,9995 | 2,3 | 0 |
+| L0 un jeton, dépôts jamais utilisés pour le réglage | commons-text, commons-io, more-itertools, httpx | 23 015 | 23 015 | 1,0000 | 0,9998 à 1,0000 | 2,0 | 0 |
+| L1 une instruction, Java | Corrections à bloc unique de ManySStuBs4J 2.0 [107] | 24 072 | 9 288 | 0,386 | 0,380 à 0,392 | 3,5 | 0 |
+| L1 une instruction, Java, fichier entier | ManySStuBs4J 2.0 [107], fichier du commit parent avec les index des méthodes et des gardes du projet | 21 320 | 13 586 | 0,637 | 0,631 à 0,644 | 4,8 | 0 |
+| L1 une instruction, Python | TSSB-3M v1.0.0, fragments 14 et 15 [108] | 157 089 | 27 266 | 0,174 | 0,172 à 0,175 | 4,8 | 0 |
+
+L2 à L4 sont mesurés sur l'ensemble réservé Defects4J de 288 bogues ([Section 8.1](#81-defects4j)). L5 à L7 suivent les protocoles de la [Section 8.2](#82-swe-bench-lite-offline). La méthode, la porte et l'énergie de chaque ligne suivent.
+
+Les taux se lisent comme des bits d'intention. En L0, les bits manquants sont presque tous sur la ligne, et un voisinage à un jeton ordonné par un a priori les fournit avec une médiane de 2,3 bits. Sur la ligne L1 à bloc seul, le moteur ne voit que le bloc de 7 lignes. Il clôt les catégories dont les bits sont dans le bloc (Java : opérateur changé 91 %, littéral booléen inversé 84 %, arguments permutés 82 % ; Python : littéral booléen changé 98,8 %, arguments permutés 99,4 %) et laisse ouvertes celles dont les bits sont hors du bloc : les noms de méthodes (22 %) et les identifiants (37 %) exigent le fichier et ses types, et les nouvelles conjonctions (3 % à 7 %) et les réécritures d'instructions entières (Python, 1,2 % d'une catégorie qui représente 34 % du corpus) sont une intention nouvelle. L'intention nouvelle est ce qu'un fournisseur (une spécification, un test, une personne ou un modèle local) apporte une fois, après quoi l'ajustement est dans l'index.
 
 **Méthode.** Chaque corpus est mélangé avec une graine fixe. Les 2 000 premières positions de chaque mélange, et pour L0 trois dépôts entiers (commons-lang, requests, flask), forment la partition de développement, sur laquelle les engrenages peuvent être réglés ; les résultats de développement ne sont pas rapportés. Toute tâche restante est dans la partition de test. Avant une exécution de test, le moteur est validé dans le dépôt et son empreinte binaire enregistrée, et aucun engrenage ne change pendant l'exécution. Chaque ligne de cette section est un résultat à moteur figé sur les seules tâches de test, avec 0 appel de modèle. Le préenregistrement (`PREREG.json`), les lignes par tâche et le script de rapport sont dans le [dépôt public](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
 
 **Porte.** En L0 et L1, l'emplacement est donné et la porte est l'identité des jetons : la ligne ou l'instruction réparée doit être égale à celle du développeur, jeton pour jeton. C'est plus strict que de réussir les tests, car un correctif peut réussir une suite de tests faible et rester faux. Qi et ses collègues ont trouvé que la plupart des correctifs que GenProg annonçait comme corrections étaient plausibles mais incorrects [92] ; le surajustement aux tests est documenté dans la réparation par recherche et par sémantique [93, 94] et traité par des tests générés [95] ; les outils obtiennent de meilleurs scores sur le banc sur lequel ils ont été réglés [96] ; et la localisation des fautes biaise les comparaisons [97]. L'identité des jetons supprime l'écart de plausibilité sur ces échelons, et donner l'emplacement supprime le terme de localisation, si bien que le taux ne mesure que les engrenages de réparation. L2 et au-delà utilisent les tests comme porte et rapportent séparément les comptes plausibles et corrects (Section 8.1).
 
-<div id="61-track-a-a-frozen-repair-corpus" class="anchor-alias" aria-hidden="true"></div>
-<div id="61-track-a-a-development-repair-corpus" class="anchor-alias" aria-hidden="true"></div>
-
 ### 6.1 L0 : fautes à un seul jeton
 
 Le corpus L0 est l'ensemble des mutants de type PIT [109] ayant un jeton de remplacement valide dans neuf dépôts réels à des commits fixés, cinq en Java et quatre en Python : 520 821 tâches de test sur 547 448. Le moteur (commit `65571d0`, engrenages G0-T et G1-J) en restaure 520 541, un taux de 0,9995 (intervalle de Wilson à 95 % de 0,9994 à 0,9995) pour une médiane de 2,3 bits de recherche. Sur les 280 non résolues, 108 sont des chiffres mutés dans des littéraux à virgule flottante et 2 se trouvent dans des littéraux d'ensemble Python. Un engrenage pour les littéraux flottants (G0-F, commit `ecfe5a1`) est testé sur quatre dépôts jamais utilisés pour le réglage (commons-text, commons-io, more-itertools, httpx) : 23 015 tâches sur 23 015, 1,0000 (0,9998 à 1,0000), pour une médiane de 2,0 bits de recherche. Les mutants tiennent lieu de fautes réelles à un seul jeton, et Just et ses collègues ont trouvé qu'ils sont couplés aux fautes réelles [110].
 
-<div id="62-track-b-joules-per-solved-task-on-jetson-hub" class="anchor-alias" aria-hidden="true"></div>
-
 ### 6.2 L1 : bogues à une seule instruction issus d'historiques réels
 
-L1 utilise deux jeux de données publics de corrections réelles de bogues à une seule instruction, extraites d'historiques open source. ManySStuBs4J 2.0 [107] donne 24 072 tâches de test en Java ; le moteur (commit `f2701b7`) en résout 9 288, un taux de 0,386 (0,380 à 0,392). TSSB-3M v1.0.0 [108] donne 157 089 tâches de test en Python issues des fragments 14 et 15 ; le même moteur en résout 27 266, un taux de 0,174 (0,172 à 0,175). Le moteur ne reçoit que le bloc de 7 lignes, si bien que ce taux Java est un résultat sur bloc seul. Avec le fichier entier au commit parent, des index des méthodes et des conditions de garde du projet, et les engrenages pour les noms de méthode changés, les arguments ajoutés, les conditions de garde, les throws et les modificateurs (commit `62fb7a0`, préfixe sha256 du binaire `3682c6515acdf722`, préenregistré avant l'exécution), le moteur résout 13 586 des 21 320 tâches de test Java dont le fichier et l'instruction fautive ont pu être localisés, un taux de 0,637 (0,631 à 0,644). Par catégorie, il clôt les opérateurs changés (95,9 %), les opérandes changés (92,1 %), les appelants erronés (87,9 %), les littéraux booléens permutés (88,4 %), les arguments supprimés (85,1 %) et les arguments permutés (83,3 %) ; les noms de méthode changés atteignent 61,4 % et les arguments ajoutés 51,4 %, et les conditions nouvelles ou resserrées (43,5 % et 51,7 %) restent la principale intention ouverte. Les taux par catégorie sont en Section 2.3 et les tableaux complets par strate dans le dépôt. Ces jeux de données n'ont pas de classement publié de réparation sous cette porte (bloc seul, identité des jetons, emplacement donné), donc aucun chiffre de réparation apprise n'est placé à côté ; Defects4J, qui en a un, est comparé à TBar en Section 8.1.
+L1 utilise deux jeux de données publics de corrections réelles de bogues à une seule instruction, extraites d'historiques open source. ManySStuBs4J 2.0 [107] donne 24 072 tâches de test en Java ; le moteur (commit `f2701b7`) en résout 9 288, un taux de 0,386 (0,380 à 0,392). TSSB-3M v1.0.0 [108] donne 157 089 tâches de test en Python issues des fragments 14 et 15 ; le même moteur en résout 27 266, un taux de 0,174 (0,172 à 0,175). Le moteur ne reçoit que le bloc de 7 lignes, si bien que ce taux Java est un résultat sur bloc seul. Avec le fichier entier au commit parent, des index des méthodes et des conditions de garde du projet, et les engrenages pour les noms de méthode changés, les arguments ajoutés, les conditions de garde, les throws et les modificateurs (commit `62fb7a0`, préfixe sha256 du binaire `3682c6515acdf722`, préenregistré avant l'exécution), le moteur résout 13 586 des 21 320 tâches de test Java dont le fichier et l'instruction fautive ont pu être localisés, un taux de 0,637 (0,631 à 0,644). Par catégorie, il clôt les opérateurs changés (95,9 %), les opérandes changés (92,1 %), les appelants erronés (87,9 %), les littéraux booléens permutés (88,4 %), les arguments supprimés (85,1 %) et les arguments permutés (83,3 %) ; les noms de méthode changés atteignent 61,4 % et les arguments ajoutés 51,4 %, et les conditions nouvelles ou resserrées (43,5 % et 51,7 %) restent la principale intention ouverte. Les tableaux complets par strate sont dans le dépôt. Ces jeux de données n'ont pas de classement publié de réparation sous cette porte (bloc seul, identité des jetons, emplacement donné), donc aucun chiffre de réparation apprise n'est placé à côté ; Defects4J, qui en a un, est comparé à TBar en Section 8.1.
 
 ### 6.3 Énergie
 
@@ -341,7 +376,7 @@ La seconde voie repose sur un fait d'ingénierie : le code est réutilisé à to
 | Motifs de correction extraits | PAR, TBar [22, 23] | PAR a trouvé « plusieurs motifs de correction courants » dans plus de 60 000 correctifs humains. Les 15 catégories de motifs de TBar corrigent correctement 43 bogues de Defects4J dans la chaîne standard, et 74 sur 101 avec une localisation parfaite des fautes, sans apprentissage. |
 | Tâches multilingues | Rosetta Code | 1 360 tâches, chacune un concept implémenté dans un grand nombre de 1 009 langages connus. |
 
-Chaque ligne est une entrée du moteur. Les clones et la déduplication disent qu'un ajustement existe généralement, c'est G0. Les corrections récurrentes disent que l'adaptation est surtout un petit catalogue de réécritures gardées, c'est G1. La redondance au niveau ligne réduit l'espace de recherche de G2. Les échelons L0 et L1 le mesurent à grande échelle sur des partitions réservées (Section 6). Deux mises en garde affinent la lecture. Les doublons gonflent les scores de récupération et des modèles s'ils ne sont pas retirés [104]. Et les lignes boguées sont moins naturelles que les lignes corrigées [45], si bien que le bogue lui-même est le cas que la recherche peut le moins prédire ; c'est la forme de la correction, non la ligne boguée, que G0 et G1 doivent indexer. La lignée d'extraction de règles qui le fait à grande échelle, de la recherche générer-et-valider de GenProg [88] et du modèle de correction appris de Prophet [89] à Getafix chez Facebook [90] et à la réparation sans modèle des violations d'analyse statique par Sorald [91], dérive des modèles d'un historique disjoint et rapporte la précision sur des cas non vus [98]. C'est le standard qu'adopte la Section 8.4.
+Chaque ligne est une entrée du moteur. Les clones et la déduplication disent qu'un ajustement existe généralement, c'est G0. Les corrections récurrentes disent que l'adaptation est surtout un petit catalogue de réécritures gardées, c'est G1. La redondance au niveau ligne réduit l'espace de recherche de G2. L'écosystème le mesure sur chaque ajustement promu (Section 2.3), et l'échelle de réparation sur le code élevé le mesure à grande échelle sur des partitions réservées (Section 6). Deux mises en garde affinent la lecture. Les doublons gonflent les scores de récupération et des modèles s'ils ne sont pas retirés [104]. Et les lignes boguées sont moins naturelles que les lignes corrigées [45], si bien que le bogue lui-même est le cas que la recherche peut le moins prédire ; c'est la forme de la correction, non la ligne boguée, que G0 et G1 doivent indexer. La lignée d'extraction de règles qui le fait à grande échelle, de la recherche générer-et-valider de GenProg [88] et du modèle de correction appris de Prophet [89] à Getafix chez Facebook [90] et à la réparation sans modèle des violations d'analyse statique par Sorald [91], dérive des modèles d'un historique disjoint et rapporte la précision sur des cas non vus [98]. C'est le standard qu'adopte la Section 8.4.
 
 ## 8. Protocoles de mesure pour la suite
 
@@ -392,11 +427,6 @@ C'est la méthode de la Section 6, étendue à de nouveaux corpus.
 3. Modèle distant : un agent avec un modèle de pointe, son énergie estimée à partir des déclarations du fournisseur et étiquetée `est_j`.
 4. Rapporter le coût par réussite [101] en joules et en dollars pour chaque ligne, avec le coût contrôlé comme l'exigent Kapoor et ses collègues [100].
 
-<div id="63-the-soaks-converge" class="anchor-alias" aria-hidden="true"></div>
-<div id="64-the-soaks-converge" class="anchor-alias" aria-hidden="true"></div>
-<div id="64-model-calls-in-the-first-soak" class="anchor-alias" aria-hidden="true"></div>
-<div id="65-model-calls-in-the-first-soak" class="anchor-alias" aria-hidden="true"></div>
-
 ### 8.6 Convergence des appels de modèle à grand N
 
 La promotion est le mécanisme par lequel le modèle quitte la boucle : un résolveur est payé une fois pour un cas nouveau, la porte admet l'ajustement comme gestionnaire, et tout cas ultérieur de même forme se clôt en G0 ou G1 ([Section 4.2](#42-the-gears)). La convergence est l'affirmation que les appels de modèle par tour tombent à zéro sur une spécification fixe sous un trafic réel. Elle se mesure ainsi.
@@ -408,6 +438,12 @@ La promotion est le mécanisme par lequel le modèle quitte la boucle : un réso
 5. Rapporter les spécifications qui ne convergent jamais avec leur cause (une entrée bloquée, une dépendance manquante, une intention nouvelle), et exécuter le report des entrées bloquées comme bras préenregistré.
 
 **Proposition 8 (approche du plancher).** À mesure que la couverture de G0 et G1 croît, les joules par tâche résolue s'approchent du plancher de référence consistant à appliquer une correction connue et à exécuter les tests. Les échelons de l'échelle et l'ensemble réservé de Defects4J sous le compteur mural la mettent à l'épreuve.
+
+### 8.7 Couverture de l'élévation à travers les langages
+
+<div id="87-coverage-of-real-programs-across-languages" class="anchor-alias" aria-hidden="true"></div>
+
+L'élévation est mesurée à mesure qu'elle est construite. Pour le langage $L$, un programme compte comme élevé lorsque $\pi_L(\lambda_L(p))$ réussit les tests propres du programme et rejoue ses traces enregistrées octet pour octet, et que $\lambda_L(\pi_L(\lambda_L(p)))$ a la même empreinte de forme que $\lambda_L(p)$. L'échantillon compte au moins 10 000 programmes par langage pour au moins dix langages, tirés avec une graine fixe de corpus publics figés, avec l'élévateur figé et son empreinte binaire enregistrée avant chaque exécution, et 0 appel de modèle. Chaque exécution rapporte la part élevée avec un intervalle de Wilson à 95 %, et chaque construction pas encore élevée est un élément de travail pour l'élévateur de ce langage, construit et figé avant l'exécution suivante. La cible est tout programme dans tout langage.
 
 ## 9. Liens avec les articles compagnons
 
@@ -421,28 +457,31 @@ La promotion est le mécanisme par lequel le modèle quitte la boucle : un réso
 
 ## 10. Réfutateurs
 
-Fixés avant l'exécution réservée de la Section 8.4.
+Fixés avant les exécutions qu'ils mettent à l'épreuve.
 
 | ID | Observation | Réfute |
 |---|---|---|
 | RCE-F1 | Sur la tranche réservée, G0 à G2 à règles figées résolvent moins de 10 % des tâches avec 0 appel de modèle | L'affirmation que la plupart des ajustements existent déjà pour la réparation à cette échelle |
 | RCE-F2 | Les correctifs identiques octet pour octet ou équivalents représentent moins de la moitié des tâches réservées résolues | La lecture de la porte comme plus que de la plausibilité sur les tâches couvertes |
 | RCE-F3 | Sous le compteur mural, les joules bruts par tâche résolue du solveur RCE dépassent ceux de la référence à modèle la moins chère sur les tâches que tous deux résolvent | L'avantage en joules de la seconde voie sur les tâches couvertes |
+| RCE-F0 | Sur une exécution préenregistrée d'au moins 10 000 Formes, une projection imprime une trace qui diffère de la trace de référence de la Forme, ou une entrée malformée est acceptée | L'affirmation que les projections sont fidèles et que la porte refuse dès l'entrée |
 | RCE-F4 | Dans le protocole de convergence de la Section 8.6, moins de la moitié des spécifications sans entrée bloquée atteignent un tour à zéro appel de modèle en 20 tours | Compiler le modèle hors de la boucle |
 
 ## 11. Travail à terminer
 
-Chaque point est un travail ouvert avec son protocole nommé.
+Chaque point a son protocole nommé.
 
-1. Résultats réservés sur L2 à L4, l'ensemble Defects4J de 288 bogues (Section 8.1), et sur L5 à L7 (Section 8.2).
-2. Références de base dans un seul tableau, coût par réussite en joules et en dollars (Section 8.5).
-3. Le premier `measured_j` : un compteur mural sur un hôte au repos, au moins 10 répétitions, brut et net côte à côte (Section 8.3).
-4. L'étude des 626 langages publiée avec sa méthode (Figure 1).
-5. De nouveaux corpus réservés à engrenages figés : Multi-SWE-bench et BugsInPy (Section 8.4).
-6. La convergence des appels de modèle sur au moins 1 000 spécifications (Section 8.6).
+1. L'élévation construite et mesurée sur au moins dix langages selon le protocole de la Section 8.7.
+2. Le bras des spécifications : des spécifications dans le style de MBPP et HumanEval écrites comme Formes et émises vers toutes les cibles.
+3. Résultats réservés sur L2 à L4, l'ensemble Defects4J de 288 bogues (Section 8.1), et sur L5 à L7 (Section 8.2).
+4. Références de base dans un seul tableau, coût par réussite en joules et en dollars (Section 8.5).
+5. Le premier `measured_j` : un compteur mural sur un hôte au repos, au moins 10 répétitions, brut et net côte à côte (Section 8.3).
+6. L'étude des 626 langages publiée avec sa méthode (Figure 1).
+7. De nouveaux corpus réservés à engrenages figés : Multi-SWE-bench et BugsInPy (Section 8.4).
+8. La convergence des appels de modèle sur au moins 1 000 spécifications (Section 8.6).
 
 ## 12. Conclusion
 
-Un programme est une machine à états fonctionnelle de base de données, et RCE traite la programmation comme une conversion d'une intention à forte entropie vers cette Forme à faible entropie. La correction est la porte et les joules sont le classement. Sur des partitions de test réservées, moteur figé et sans appel de modèle, les engrenages réparent 99,95 % de 520 821 fautes à un seul jeton et la totalité des 23 015 dans des dépôts jamais utilisés pour le réglage, 38,6 % de 24 072 bogues Java à une seule instruction à partir du bloc seul (63,7 % de 21 320 avec le fichier entier) et 17,4 % de 157 089 bogues Python, pour quelques centièmes de joule rapporté par tâche résolue sur un compteur de boîtier. La couche de vérification prouve les réécritures dans Z3 et le noyau dans Kani, et les tests différentiels lient cinq cibles à une trace. Il reste les échelons supérieurs, la convergence à grand N, les références de base dans le même tableau et un compteur mural. Ces protocoles sont fixés aux Sections 8.3 à 8.6 et les réfutateurs à la Section 10.
+RCE est un écosystème de code natif. Un programme est écrit une fois, à partir de l'intention, comme une Forme : un codage sans perte de l'état, des événements et des transitions pures, et chaque langage cible en est une projection fidèle. Les états invalides ne peuvent pas être écrits et les entrées malformées sont refusées dès l'entrée, si bien qu'un programme de l'écosystème ne peut pas dériver de son intention et n'a besoin d'aucune comparaison de différences ni d'aucun suivi d'erreurs après coup. Chaque ajustement qui franchit la porte est stocké et réutilisé, et l'écosystème se capitalise sous une porte dont la correction est monotone. Sur 10 000 Formes préenregistrées, moteur figé et 0 appel de modèle, chaque Forme fait l'aller-retour vers des octets identiques, chaque projection est déterministe, chaque entrée et chaque spécification malformée est refusée dès l'entrée, et la projection Python rejoue la trace de référence sur 9 999. Le code d'autres langages entre par élévation, une construction qui va de la grammaire de chaque langage à son arbre syntaxique puis à la Forme ; sur le code élevé, les engrenages de réparation restaurent 99,95 % de 520 821 fautes à un seul jeton et 63,7 % de 21 320 bogues Java à une seule instruction. Une Forme universelle, avec chaque langage pour projection et chaque programme pour élévation, est la thèse, et les Sections 3.6 et 8.7 en énoncent les propositions et la manière dont sa construction est mesurée.
 
 ## Références
