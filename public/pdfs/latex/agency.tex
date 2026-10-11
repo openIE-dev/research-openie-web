@@ -168,6 +168,19 @@ intelligence per watt ranks local models by accuracy per unit power
 with a refusal clause and a hindsight derivative, not the idea of
 ranking by cost under correctness.
 
+The gate and the ranking separate two things that are often merged:
+capability and intelligence. Capability is passing \(C(z)\) at all.
+Intelligence is how few joules the pass takes. Krakauer, Mitchell and
+Krakauer draw the same line from complexity science: impressive
+capabilities are not mistaken for intelligence, which is reserved for
+solving problems ``quickly and parsimoniously, with a minimal
+expenditure of energy'' {[}340{]}. Two systems that hand over the same
+correct answer, one directly and one after a long detour, are equally
+capable. Only the first is the more intelligent, and \(J^*\) is the
+quantity that tells them apart. A system can be made more capable by
+spending more. It is made more intelligent only by spending less for the
+same pass.
+
 The thesis has an exact form. Correctness is a gate. Joules are the
 ranking. For a task \(q\) with completeness predicate \(C(z)\), the
 joules to correct completion of system \(S\) are
@@ -523,6 +536,22 @@ Why this boundary:
   \textbf{Coarse-grainings count.} Hoel, Albantakis and Tononi showed
   that a macro description can carry more causal power than the micro
   one {[}21{]}.
+\item
+  \textbf{Tools move the boundary.} When a person uses a tool, the
+  candidates include the person alone, the tool alone and the pair.
+  Definition 2 credits the coupling to whichever candidate maximizes
+  \(X_S/J_S\), with every joule of the act charged to it. Krakauer
+  models the person, the tool and the task as one dynamical system in
+  which retained competence and reliance co-evolve. Above a critical
+  availability of the tool, competence collapses to a dependent floor,
+  and under an uncertain goal agency itself can pass to the tool
+  {[}341{]}. In that model, a tool whose working the user can
+  reconstruct, such as an abacus, leaves competence with the person
+  after the tool is removed, while satellite navigation lies in the
+  region where competence diminishes with use {[}341{]}. The ratio of
+  Definition 2 makes this transfer measurable: test the person without
+  the tool, and the confirmed bits that remain are the ones the person
+  holds.
 \item
   \textbf{Every candidate has an interface.} Rosas, Mediano, Biehl,
   Chandaria and Polani proved that every bipartite stochastic process
@@ -1862,6 +1891,24 @@ distance and latency, and found it many orders of magnitude above unity
 best predict the future are prohibitively costly for cellular networks
 {[}198{]}.
 
+\textbf{Information gained by selection.} Selection also writes bits,
+and its rate is bounded. Kimura measured the information that natural
+selection accumulates in a genome by the substitutional load and, with
+the load values he took as representative, estimated about 0.29 bits per
+generation {[}342{]}. Worden bounded the rate at which selection can add
+information to a genome in terms of the selection applied per generation
+{[}343{]}. Hledík, Barton and Tkačik showed that, in stochastic
+populations, the rate is bounded by the population size times the cost
+of selection, across Wright-Fisher, Moran and diffusion models
+{[}344{]}. Every such bound is a rate per generation. A generation
+lengthens as an organism grows, so a carrier that learns only through
+selection gains coupled bits ever more slowly per second. Nervous
+systems write bits within a lifetime, and cultural records write them
+across lifetimes. The kinematics of Section 2.2 apply to each carrier.
+What changes from one carrier to the next is the time per written bit,
+which is the reason agency moves from genomes to brains to tools when
+the world changes faster than generations turn over.
+
 \textbf{Information rates without joules.} Schreiber defined transfer
 entropy, directed information flow per step {[}199{]}. It is per time,
 not per joule, and it has no eligibility gate. Tishby and Polani charged
@@ -2157,6 +2204,16 @@ derivative of gated agency in joules, read off a completed run.
   is the closest precedent for intelligence as a derivative read from a
   run. Its variable is compression, not joules.
 \item
+  Krakauer, Mitchell and Krakauer define intelligence as an emergent
+  property expressed in ever cheaper and faster uses of emergent
+  capabilities to solve problems, summarized as ``less is more''
+  {[}340{]}. They conclude that large language models show emergent
+  capability at most, not emergent intelligence. Their definition is the
+  closest in words to \(\iota = dX/dJ\). It names energy as the
+  denominator and does not meter it. The calculus supplies the meter,
+  the gate that separates capability from intelligence (Section 1), and
+  the derivative read off the run.
+\item
   Chollet defines intelligence as skill-acquisition efficiency over
   priors and experience, with the ARC (Abstraction and Reasoning Corpus)
   benchmark {[}283{]}. It is a ratio. Its denominator is information and
@@ -2197,6 +2254,15 @@ derivative of gated agency in joules, read off a completed run.
   complexity metric across cosmic evolution {[}294{]}. It is a rate in
   watts per kilogram. The calculus divides confirmed bits by joules.
 \end{itemize}
+
+The scope of \(\iota\) follows from its numerator. \(X\) counts
+confirmed coupling to the world, so \(\iota\) measures how cheaply an
+agent changes the world as it predicted. It does not measure
+understanding. Krakauer, Mitchell and Krakauer tie intelligence to
+compact, communicable representations {[}340{]}. A compact
+representation enters the calculus through its effect: an agent that
+holds one closes later tasks in fewer joules. Understanding that never
+changes an act is outside what \(\iota\) reads.
 
 \subsubsection{5.4 Where the calculus
 stands}\label{where-the-calculus-stands}
@@ -3798,7 +3864,7 @@ sit}\label{where-the-products-sit}
   Reality Code Engine, Section 9}).
 \end{itemize}
 
-Hardware and product placement moved to the
+Hardware and product placement are in the
 \href{https://research.openie.dev/products/mei/\#where-the-products-sit}{Metabolic
 Intelligence white paper}. The meters of this plan are M0 and M1 in
 Section 8.1.
@@ -5297,6 +5363,26 @@ published in a language other than English say so.
 \item
   Standard Performance Evaluation Corporation. SPECpower\_ssj2008.
   https://www.spec.org/power\_ssj2008/
+\item
+  Krakauer, D. C., Mitchell, M. and Krakauer, J. W. (2026). Large
+  language models and emergence: a complex systems perspective.
+  \emph{Philosophical Transactions of the Royal Society A} 384:20250014.
+  https://doi.org/10.1098/rsta.2025.0014. arXiv:2506.11135.
+\item
+  Krakauer, D. C. (2026). Competitive and complementary tools.
+  arXiv:2607.18460 (preprint). https://arxiv.org/abs/2607.18460
+\item
+  Kimura, M. (1961). Natural selection as the process of accumulating
+  genetic information in adaptive evolution. \emph{Genetical Research}
+  2:127-140. https://doi.org/10.1017/S0016672300000616
+\item
+  Worden, R. P. (1995). A speed limit for evolution. \emph{Journal of
+  Theoretical Biology} 176:137-152.
+  https://doi.org/10.1006/jtbi.1995.0183
+\item
+  Hledík, M., Barton, N. and Tkačik, G. (2022). Accumulation and
+  maintenance of information in evolution. \emph{PNAS} 119:e2123152119.
+  https://doi.org/10.1073/pnas.2123152119
 \end{enumerate}
 
 \end{document}

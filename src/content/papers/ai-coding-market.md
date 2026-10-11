@@ -111,7 +111,7 @@ The 13 times a year of [4] is one point in a wide range [34]. The fall is driven
 |---|---|---|---|
 | Data-centre electricity, 2024 | about 415 TWh, about 1.5% of world electricity | Estimate | IEA, *Energy and AI* [11] |
 | Data-centre electricity, 2030 | about 945 TWh, Base Case | Projection | [11] |
-| Updated: 2025 to 2030 | 485 TWh to 950 TWh, about 3% of world demand | Estimate and projection | IEA, *Key Questions on Energy and AI* [10] |
+| Data-centre electricity, 2025 to 2030 | 485 TWh to 950 TWh, about 3% of world demand | Estimate and projection | IEA, *Key Questions on Energy and AI* [10] |
 | Capex of the largest technology companies | over $400 billion in 2025, expected up another 75% in 2026 | Reported and projected | [10] |
 | Alphabet capex | $31 billion in 2022; about $180 to $190 billion expected in 2026 | Company-reported and guidance | Pichai [8] |
 | Energy per task | down by at least an order of magnitude a year; reasoning and agentic tasks use "hundreds or thousands of times more energy per query than simple text generation" | Estimate | [10] |
