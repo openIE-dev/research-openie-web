@@ -33,19 +33,31 @@
           },
           {
             "@type": "ListItem",
-            "position": 4,
+            "url": "https://research.openie.dev/papers/rce/",
+            "name": "The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding",
+            "position": 4
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
             "url": "https://research.openie.dev/papers/spellcheck/",
             "name": "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)"
           },
           {
             "@type": "ListItem",
-            "position": 5,
+            "url": "https://research.openie.dev/papers/rce-economics/",
+            "name": "The One-Path Error: The Economics of Autonomous Coding",
+            "position": 6
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
             "url": "https://research.openie.dev/products/mei/",
             "name": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus"
           },
           {
             "@type": "ListItem",
-            "position": 6,
+            "position": 8,
             "url": "https://research.openie.dev/products/jouleos/",
             "name": "The Search for JouleOS"
           }

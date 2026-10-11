@@ -66,6 +66,30 @@
       ]
     },
     {
+      "id": "rce",
+      "title": "The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding",
+      "kind": "Research paper",
+      "group": "research",
+      "url": "https://research.openie.dev/papers/rce/",
+      "pdf": "https://research.openie.dev/pdfs/rce.pdf",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Engineering and theory. There are two paths to autonomous computer automation, told apart by energy and entropy. A program is a database functional state machine: one Form, P = (S, E, δ, D, λ), and many fits, grounded in Gurevich's Abstract State Machine theorem. The Reality Code Engine (RCE) retrieves, adapts and proves fits, cheapest gear first, as one Mixture of Limits instance. Correctness is the gate and joules are the ranking. Five generated targets give byte-identical traces, rewrites are proved in Z3 and the kernel in Kani. On a frozen 20-task repair corpus it resolves 20 of 20 with 0 model calls, at 84.2 reported_j per solved task on a package counter; measured_j is reserved for a wall meter.",
+      "about": "https://research.openie.dev/about/rce/",
+      "keywords": [
+        "Reality Code Engine",
+        "RCE",
+        "program form and fit",
+        "Abstract State Machine",
+        "e-graph",
+        "formal verification",
+        "Kani",
+        "Z3",
+        "program repair",
+        "Mixture of Limits",
+        "joules per solved task"
+      ]
+    },
+    {
       "id": "spellcheck",
       "title": "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)",
       "kind": "History essay",
@@ -81,6 +105,26 @@
         "bundling",
         "global access",
         "economics of AI"
+      ]
+    },
+    {
+      "id": "rce-economics",
+      "title": "The One-Path Error: The Economics of Autonomous Coding",
+      "kind": "Economics essay",
+      "group": "essay",
+      "url": "https://research.openie.dev/papers/rce-economics/",
+      "pdf": "https://research.openie.dev/pdfs/rce-economics.pdf",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "The economics companion to the RCE research paper. The race to own the projected trillion-dollar AI coding industry assumes one path to autonomous computer automation: high energy, high compute, high entropy and disorder. That is an economic error. A second path retrieves and proves code that already exists and pays for generation once per new case, so the marginal cost of a covered task falls toward the energy to run it. Price per call and calls per task are two declines that multiply.",
+      "about": "https://research.openie.dev/about/rce-economics/",
+      "keywords": [
+        "economics of AI",
+        "AI coding",
+        "one-path assumption",
+        "marginal cost",
+        "pricing",
+        "code reuse",
+        "Mixture of Limits"
       ]
     },
     {

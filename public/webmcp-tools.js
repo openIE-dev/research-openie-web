@@ -90,6 +90,29 @@
       ]
     },
     {
+      "id": "rce",
+      "title": "The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding",
+      "short_title": "The Reality Code Engine",
+      "kind": "Research paper",
+      "path": "/papers/rce/",
+      "pdf_path": "/pdfs/rce.pdf",
+      "about_path": "/about/rce/",
+      "summary": "Engineering and theory. There are two paths to autonomous computer automation, told apart by energy and entropy. A program is a database functional state machine: one Form, P = (S, E, δ, D, λ), and many fits, grounded in Gurevich's Abstract State Machine theorem. The Reality Code Engine (RCE) retrieves, adapts and proves fits, cheapest gear first, as one Mixture of Limits instance. Correctness is the gate and joules are the ranking. Five generated targets give byte-identical traces, rewrites are proved in Z3 and the kernel in Kani. On a frozen 20-task repair corpus it resolves 20 of 20 with 0 model calls, at 84.2 reported_j per solved task on a package counter; measured_j is reserved for a wall meter.",
+      "keywords": [
+        "Reality Code Engine",
+        "RCE",
+        "program form and fit",
+        "Abstract State Machine",
+        "e-graph",
+        "formal verification",
+        "Kani",
+        "Z3",
+        "program repair",
+        "Mixture of Limits",
+        "joules per solved task"
+      ]
+    },
+    {
       "id": "spellcheck",
       "title": "Spell Check is Global : The Future of Computer Intelligence in the hands of the many (7B+) and not the few (under 500M)",
       "short_title": "Spell Check is Global",
@@ -104,6 +127,25 @@
         "bundling",
         "global access",
         "economics of AI"
+      ]
+    },
+    {
+      "id": "rce-economics",
+      "title": "The One-Path Error: The Economics of Autonomous Coding",
+      "short_title": "The One-Path Error",
+      "kind": "Economics essay",
+      "path": "/papers/rce-economics/",
+      "pdf_path": "/pdfs/rce-economics.pdf",
+      "about_path": "/about/rce-economics/",
+      "summary": "The economics companion to the RCE research paper. The race to own the projected trillion-dollar AI coding industry assumes one path to autonomous computer automation: high energy, high compute, high entropy and disorder. That is an economic error. A second path retrieves and proves code that already exists and pays for generation once per new case, so the marginal cost of a covered task falls toward the energy to run it. Price per call and calls per task are two declines that multiply.",
+      "keywords": [
+        "economics of AI",
+        "AI coding",
+        "one-path assumption",
+        "marginal cost",
+        "pricing",
+        "code reuse",
+        "Mixture of Limits"
       ]
     },
     {
@@ -156,7 +198,7 @@
       id: {
         type: 'string',
         enum: IDS,
-        description: 'Paper id. agency is Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, gates is Metered Commit Gates, satiation is Task Satiation vs. Aggregate Rebound in AI Demand, spellcheck is the Spell Check is Global essay, mei and jouleos are product white papers.'
+        description: 'Paper id. agency is Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, gates is Metered Commit Gates, satiation is Task Satiation vs. Aggregate Rebound in AI Demand, rce is The Reality Code Engine research paper, rce-economics is its economics companion essay, spellcheck is the Spell Check is Global essay, mei and jouleos are product white papers.'
       }
     },
     required: ['id'],
