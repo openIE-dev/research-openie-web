@@ -1,6 +1,6 @@
 ---
 title: "Le marché promis à mille milliards de dollars de la programmation par IA"
-deck: "Qui projette le marché de la programmation par IA, ce qu'il projette, et ce que suppose chaque projection : une seule voie vers l'automatisation informatique autonome, avec une forte énergie, un fort calcul, une rente par jeton et le modèle dans la boucle pour toujours. Le Reality Code Engine (RCE) mesure une seconde voie : un écosystème de code natif dans lequel un programme est écrit une seule fois, à partir de l'intention, comme une Forme sans perte, et chaque langage cible en est une projection fidèle. Sur 10 000 Formes préenregistrées avec 0 appel de modèle, chaque Forme fait l'aller-retour à des octets identiques et chaque entrée mal formée est refusée dès l'entrée. Chaque ajustement qui franchit la porte est réutilisé, si bien que le coût marginal d'une tâche couverte tombe vers l'énergie nécessaire pour l'exécuter, et les projections perdent leur base."
+deck: "Qui projette le marché de la programmation par IA, ce qu'il projette, et ce que suppose chaque projection : que l'automatisation informatique autonome n'avance que dans une seule direction, vers une forte énergie, un fort calcul, une rente par token et le modèle dans la boucle pour toujours. La programmation autonome est un espace de conception doté de plusieurs axes continus, et le Reality Code Engine (RCE) en mesure un point qui les optimise : un écosystème de code natif dans lequel un programme est écrit une seule fois, à partir de l'intention, comme une Forme sans perte, et chaque langage cible en est une projection fidèle. Sur 10 000 Formes préenregistrées avec 0 appel de modèle, chaque Forme fait l'aller-retour à des octets identiques et chaque entrée mal formée est refusée dès l'entrée. Chaque ajustement qui franchit la porte est réutilisé, si bien que le coût marginal d'une tâche couverte tombe vers l'énergie nécessaire pour l'exécuter, et les projections perdent leur base."
 lang: "fr"
 source: "ai-coding-market"
 complete: true
@@ -18,9 +18,9 @@ complete: true
 
 Le marché du codage par IA à mille milliards de dollars est l'affirmation hyperbolique et informée de David Charlot, et les projections réelles en confirment l'échelle. Une estimation de capital-risque évalue la valeur des développeurs de logiciels du monde à environ 3 000 milliards de dollars par an et qualifie le codage par IA de marché capable de soutenir « même un géant à mille milliards de dollars » [1]. Deux entreprises de codage par IA ont déclaré plus de 1 milliard et plus de 2,5 milliards de dollars de revenus annualisés à un an d'intervalle [5, 6]. Un laboratoire de pointe est valorisé à 380 milliards de dollars, et son produit de codage est sa vitrine [6]. Le volume de tokens d'un fournisseur est passé de 9 700 milliards à plus de 3,2 millions de milliards de tokens par mois en deux ans [8]. Les dépenses d'investissement des plus grandes entreprises technologiques ont dépassé 400 milliards de dollars en 2025 [10].
 
-Toutes ces projections supposent la même chose. Il n'existe qu'une seule voie vers l'automatisation informatique autonome. Elle est à haute énergie, à fort calcul, à haute entropie et désordre. Un modèle est dans la boucle de chaque tâche, et chaque tâche paie une rente par token.
+Toutes ces projections supposent la même chose : que l'espace de l'automatisation informatique autonome n'a qu'une seule direction. Le long de celle-ci, l'énergie, le calcul et l'entropie augmentent ensemble, un modèle est dans la boucle de chaque tâche, et chaque tâche paie une rente par token. L'espace a plus de directions que cela. Les approches se placent le long d'axes continus : l'énergie par tâche, l'entropie et le déterminisme, la solidité de la vérification, la réutilisation et le cumul, et la dépendance envers un modèle. De nombreuses combinaisons existent, et les systèmes réels en mêlent plusieurs. L'erreur du récit ne tient à aucune approche en particulier. Elle tient à l'hypothèse que l'espace n'a qu'une seule direction.
 
-L'[article de recherche sur RCE](/papers/rce/) mesure une seconde voie. RCE est un écosystème de code natif. Un programme est écrit une seule fois, à partir de l'intention, comme une Forme, un encodage sans perte de l'état, des événements et des transitions pures, et chaque langage cible en est une projection fidèle. Un état que la Forme ne déclare pas ne peut pas être écrit, si bien qu'un programme erroné est refusé dès l'entrée au lieu d'être trouvé et corrigé plus tard. Chaque ajustement qui franchit la porte est stocké et réutilisé, si bien que l'écosystème se renforce de façon cumulative. Sur 10 000 Formes préenregistrées, moteur gelé et 0 appel de modèle, chaque Forme fait l'aller-retour à des octets identiques, chaque projection est déterministe, chaque entrée mal formée est refusée dès l'entrée, et la projection Python rejoue la trace de référence sur 9 999 d'entre elles ([RCE §2.3](/papers/rce/#23-the-ecosystem-at-large-n)). Le code d'autres langages entre par élévation, et sur le code élevé les engrenages de réparation rétablissent 520 541 des 520 821 fautes d'un token et 63,7 % de 21 320 bogues Java d'une seule instruction, avec 0 appel de modèle ([RCE §6](/papers/rce/#6-lift-entering-the-ecosystem-from-other-languages)). Là où cette voie couvre une tâche, le coût marginal de la tâche tombe vers l'énergie nécessaire pour l'exécuter, et un marché dont les prix reposent sur la génération perd sa base sur cette tâche. Cet essai sépare les projections des mesures, nomme ce que suppose chaque projection et indique où elle se rompt.
+L'[article de recherche sur RCE](/papers/rce/) mesure un point de cet espace, choisi pour optimiser les cinq axes à la fois. RCE est un écosystème de code natif. Un programme est écrit une seule fois, à partir de l'intention, comme une Forme, un encodage sans perte de l'état, des événements et des transitions pures, et chaque langage cible en est une projection fidèle. Un état que la Forme ne déclare pas ne peut pas être écrit, si bien qu'un programme erroné est refusé dès l'entrée au lieu d'être trouvé et corrigé plus tard. Chaque ajustement qui franchit la porte est stocké et réutilisé, si bien que l'écosystème se renforce de façon cumulative. Sur 10 000 Formes préenregistrées, moteur gelé et 0 appel de modèle, chaque Forme fait l'aller-retour à des octets identiques, chaque projection est déterministe, chaque entrée mal formée est refusée dès l'entrée, et la projection Python rejoue la trace de référence sur 9 999 d'entre elles ([RCE §2.3](/papers/rce/#23-the-ecosystem-at-large-n)). Le code d'autres langages entre par élévation, et sur le code élevé les engrenages de réparation rétablissent 520 541 des 520 821 fautes d'un token et 63,7 % de 21 320 bogues Java d'une seule instruction, avec 0 appel de modèle ([RCE §6](/papers/rce/#6-lift-entering-the-ecosystem-from-other-languages)). Là où RCE couvre une tâche, le coût marginal de la tâche tombe vers l'énergie nécessaire pour l'exécuter, et un marché dont les prix reposent sur la génération perd sa base sur cette tâche. Cet essai sépare les projections des mesures, nomme ce que suppose chaque projection et indique où elle se rompt.
 
 **Thèse commune, énoncée une fois pour tous les articles.** L'énergie d'exécution est la seule vraie métrique de l'intelligence computationnelle. Tous les autres facteurs se réduisent à zéro. La forme de porte définit ce que cela signifie. Parmi les exécutions qui satisfont le prédicat de complétude de la tâche $C(z)$ dans le budget et le délai annoncés, les systèmes sont classés par joules jusqu'à l'achèvement, $J^*$. La correction, les délais et la taille de la tâche constituent la porte, et non des termes du score. Les paramètres, les tokens, les scores de benchmark et les prix ont un poids nul dans le classement ([Agentivité, Section 1](/papers/agency/#1-thesis)). Les estimations ne sont jamais `measured_j`.
 
@@ -90,6 +90,12 @@ Les revenus que le marché déclare aujourd'hui se comptent en milliards. Les mi
 
 Anthropic indique que le tour finance des « extensions d'infrastructure » [6]. Revenus, valorisation et calcul forment un seul pari.
 
+La Figure 1 place sur un seul axe les montants en dollars des Sections 2.1 à 2.3 et 2.6, marqués par l'étiquette de chaque source.
+
+![Graphique à points en échelle logarithmique de montants en dollars, d'environ un milliard à environ trois mille milliards, colorés comme projection, estimation, estimation d'enquête ou chiffre déclaré par l'entreprise.](/figures/ai-coding-market/spend-by-label.svg)
+
+*Figure 1. Montants en dollars par étiquette. Figure de données, échelle logarithmique. Sources : [1], [2], [3], [5], [6], [10], [15], [24]. Une [copie PNG](/figures/ai-coding-market/spend-by-label.png) est fournie.*
+
 <div id="24-inference-tokens-and-unit-economics" class="anchor-alias" aria-hidden="true"></div>
 
 ### 2.4 Inférence, tokens et économie unitaire
@@ -105,6 +111,12 @@ Anthropic indique que le tour finance des « extensions d'infrastructure » [6].
 
 Deux phrases des sources énoncent l'économie sans détour. Pichai : « de nombreuses entreprises épuisent déjà leurs budgets annuels de tokens, et nous ne sommes qu'en mai » [8]. Appenzeller et Li : « Pendant des décennies, le coût du développement logiciel était presque uniquement un coût humain, mais les LLM y ajoutent désormais une composante substantielle de dépenses d'exploitation » [1].
 
+La Figure 2 représente la série de tokens.
+
+![Courbe en échelle logarithmique des tokens traités par mois chez Google : 9.7 billions en 2024, environ 480 billions en 2025 et plus de 3.2 billiards en mai 2026.](/figures/ai-coding-market/tokens.svg)
+
+*Figure 2. Tokens traités par mois chez Google. Figure de données, déclarée par l'entreprise, échelle logarithmique. Source : Pichai [8] ; la remarque sur l'usage des tokens vient de Bai, Huang et Wang [9]. Une [copie PNG](/figures/ai-coding-market/tokens.png) est fournie.*
+
 <div id="25-price-per-token" class="anchor-alias" aria-hidden="true"></div>
 
 ### 2.5 Prix par token
@@ -116,7 +128,13 @@ Deux phrases des sources énoncent l'économie sans détour. Pichai : « de nomb
 | Coût d'inférence à performance équivalente | en baisse d'environ 10 fois par an : de 60 dollars par million de tokens en 2021 à 0,06 dollar | Estimation | Appenzeller, a16z [20] |
 | Baisse de prix de l'API DeepSeek, 29 septembre 2025 | coût pour les développeurs « réduit de plus de 50 % » | Déclaré par l'entreprise | DeepSeek [21] |
 
-Les 13 fois par an de [4] ne sont qu'un point dans une large fourchette [34]. La baisse est portée par la concurrence et les poids ouverts, comme le montre la baisse de DeepSeek [21]. Elle n'exige aucune comptabilité énergétique. C'est le premier déclin de la section 6. La seconde voie en ajoute un autre : les appels par tâche.
+Les 13 fois par an de [4] ne sont qu'un point dans une large fourchette [34]. La baisse est portée par la concurrence et les poids ouverts, comme le montre la baisse de DeepSeek [21]. Elle n'exige aucune comptabilité énergétique. C'est le premier déclin de la section 6. La réutilisation en ajoute un autre : les appels par tâche.
+
+La Figure 3 trace les deux séries de prix.
+
+![Graphique logarithmique du prix par million de tokens à capacité fixe : de 60 dollars en 2021 à 0.06 dollar en 2024, et une pente d'environ 13 fois par an depuis 2023.](/figures/ai-coding-market/price-trend.svg)
+
+*Figure 3. Prix d'un niveau de capacité fixe. Figure de données, échelle logarithmique : les extrémités d'a16z sont celles publiées [20] ; la droite d'Epoch AI est le taux annoncé d'environ 13 fois par an depuis 2023 [4], indexée pour montrer la pente seulement. La fourchette par jalon vient d'Epoch AI [34]. Une [copie PNG](/figures/ai-coding-market/price-trend.png) est fournie.*
 
 <div id="26-energy-and-capital" class="anchor-alias" aria-hidden="true"></div>
 
@@ -126,7 +144,7 @@ Les 13 fois par an de [4] ne sont qu'un point dans une large fourchette [34]. La
 |---|---|---|---|
 | Électricité des centres de données, 2024 | environ 415 TWh, environ 1,5 % de l'électricité mondiale | Estimation | IEA, *Energy and AI* [11] |
 | Électricité des centres de données, 2030 | environ 945 TWh, scénario de base | Projection | [11] |
-| Mise à jour : 2025 à 2030 | de 485 TWh à 950 TWh, environ 3 % de la demande mondiale | Estimation et projection | IEA, *Key Questions on Energy and AI* [10] |
+| Électricité des centres de données, 2025 à 2030 | de 485 TWh à 950 TWh, environ 3 % de la demande mondiale | Estimation et projection | IEA, *Key Questions on Energy and AI* [10] |
 | Dépenses d'investissement des plus grandes entreprises technologiques | plus de 400 milliards de dollars en 2025, avec une hausse attendue de 75 % supplémentaires en 2026 | Déclaré et projeté | [10] |
 | Dépenses d'investissement d'Alphabet | 31 milliards de dollars en 2022 ; environ 180 à 190 milliards attendus en 2026 | Déclaré par l'entreprise et prévision | Pichai [8] |
 | Énergie par tâche | en baisse d'au moins un ordre de grandeur par an ; les tâches de raisonnement et agentiques consomment « des centaines ou des milliers de fois plus d'énergie par requête que la simple génération de texte » | Estimation | [10] |
@@ -135,7 +153,13 @@ Les 13 fois par an de [4] ne sont qu'un point dans une large fourchette [34]. La
 | Dépenses mondiales en IA, 2025 | environ 1 500 milliards de dollars | Projection | Gartner [24] |
 | Revenus que les dépenses d'investissement doivent rapporter | « AI's $600B question » | Analyse | Sequoia Capital [23] |
 
-La rente à servir est une rente matérielle. Des investissements et des engagements de cette taille se remboursent par un usage facturé au-dessus de son énergie. C'est la base que la seconde voie supprime sur les tâches couvertes.
+La rente à servir est une rente matérielle. Des investissements et des engagements de cette taille se remboursent par un usage facturé au-dessus de son énergie. C'est la base que la réutilisation supprime sur les tâches couvertes.
+
+La Figure 4 place l'électricité projetée du réseau à côté des joules mesurés d'une tâche.
+
+![Deux panneaux : électricité des centres de données, 415 TWh en 2024 et 945 TWh projetés pour 2030 ; et en échelle logarithmique, une requête texte médiane de 864 joules face à des tâches de réparation résolues par RCE de 0.026 à 0.40 joule.](/figures/ai-coding-market/energy.svg)
+
+*Figure 4. L'énergie au réseau et à la tâche. Figure de données. Panneau a : estimation et projection de l'AIE [10, 11]. Panneau b, échelle logarithmique : une requête texte médiane, 0.24 Wh mesurés par l'opérateur [12] ; tâches de réparation résolues par RCE, `est_j` et `reported_j`. Les deux panneaux sont dans des unités différentes et ne sont pas convertis l'un en l'autre. Une [copie PNG](/figures/ai-coding-market/energy.png) est fournie.*
 
 <div id="27-productivity-evidence" class="anchor-alias" aria-hidden="true"></div>
 
@@ -149,15 +173,15 @@ La rente à servir est une rente matérielle. Des investissements et des engagem
 | METR, début 2025 | 16 développeurs open source expérimentés, 246 tâches | Essai contrôlé randomisé | 19 % plus lents avec l'IA | Becker et al. [25] |
 | METR, mise à jour 2026 | nouvelle cohorte | Essai contrôlé randomisé | les auteurs qualifient les nouvelles données de « signal peu fiable » | METR [26] |
 
-Les effets mesurés vont d'un ralentissement de 19 % à une accélération de 56 % sur une tâche jouet. Les deux facteurs de l'estimation de valeur, le nombre de développeurs et le multiple de productivité, sont fragiles. Cela affaiblit les mille milliards. Cela affaiblit aussi toute affirmation selon laquelle la valeur libérée par la seconde voie serait un nombre connu.
+Les effets mesurés vont d'un ralentissement de 19 % à une accélération de 56 % sur une tâche jouet. Les deux facteurs de l'estimation de valeur, le nombre de développeurs et le multiple de productivité, sont fragiles. Cela affaiblit les mille milliards. Cela affaiblit aussi toute affirmation selon laquelle la valeur libérée par la réutilisation serait un nombre connu.
 
 <div id="3-what-the-projections-assume" class="anchor-alias" aria-hidden="true"></div>
 
 ## 3. Ce que supposent les projections
 
-Lues ensemble, les projections reposent sur quatre hypothèses. Chacune est un énoncé sur la voie, non sur la valeur du logiciel.
+Lues ensemble, les projections reposent sur quatre hypothèses. Chacune est un énoncé sur une direction de l'espace de conception, non sur la valeur du logiciel.
 
-1. **Une seule voie : la génération.** Chaque changement est écrit par un modèle. L'estimation de valeur fait croître la productivité grâce au modèle, et l'illustration des coûts facture chaque requête [1].
+1. **Une seule direction : la génération.** Chaque changement est écrit par un modèle. L'estimation de valeur fait croître la productivité grâce au modèle, et l'illustration des coûts facture chaque requête [1].
 2. **Haute énergie et fort calcul.** Le volume de tokens, l'électricité des centres de données et les dépenses d'investissement sont projetés en croissance conjointe [8, 10, 11]. L'énergie par requête baisse, et les tokens par tâche augmentent plus vite [9, 10].
 3. **Rente par token.** Les revenus sont facturés au token ou au siège dont le coût est en tokens. Le coût annuel en tokens d'un développeur est projeté à l'échelle d'un salaire [1].
 4. **L'IA dans la boucle pour toujours.** La tâche 10 000 coûte ce que coûte la tâche 1, car rien de ce que le modèle a appris sur la tâche 1 ne s'exécute sans le modèle sur la tâche 10 000.
@@ -226,21 +250,21 @@ Ce sont des mesures, étiquetées comme RCE les étiquette. Elles proviennent de
 
 ## 7. Demande
 
-Des tâches moins chères peuvent accroître la demande totale. L'essai de capital-risque s'y attend : « nous pensons que le paradoxe de Jevons tient dans ce cas » [1]. [Satiété de la tâche contre effet rebond agrégé dans la demande d'IA](/papers/satiation/) sépare les deux effets. L'appétit par tâche s'arrête au prédicat de complétude. L'usage agrégé peut encore croître, car une synthèse moins chère ouvre de nouvelles tâches. La seconde voie modifie le premier effet et laisse le second ouvert. Un marché plus grand de tâches couvertes est un marché dont le coût marginal est le plancher, non la frontière. La seule élasticité publiée est faible. Entre les tâches de l'échantillon de l'API d'Anthropic, chaque hausse de 1 % du coût est associée à une baisse de 0,29 % de la fréquence d'utilisation [29]. C'est une relation transversale entre tâches, non un changement de prix dans le temps. Prise telle quelle, la demande est inélastique : les baisses de prix réduisent les revenus sur un ensemble fixe de tâches, ce qui appuie la lecture de la rente faite par cet essai, et elles ne font pas à elles seules que le codage soit beaucoup plus utilisé.
+Des tâches moins chères peuvent accroître la demande totale. L'essai de capital-risque s'y attend : « nous pensons que le paradoxe de Jevons tient dans ce cas » [1]. [Satiété de la tâche contre effet rebond agrégé dans la demande d'IA](/papers/satiation/) sépare les deux effets. L'appétit par tâche s'arrête au prédicat de complétude. L'usage agrégé peut encore croître, car une synthèse moins chère ouvre de nouvelles tâches. La réutilisation modifie le premier effet et laisse le second ouvert. Un marché plus grand de tâches couvertes est un marché dont le coût marginal est le plancher, non la frontière. La seule élasticité publiée est faible. Entre les tâches de l'échantillon de l'API d'Anthropic, chaque hausse de 1 % du coût est associée à une baisse de 0,29 % de la fréquence d'utilisation [29]. C'est une relation transversale entre tâches, non un changement de prix dans le temps. Prise telle quelle, la demande est inélastique : les baisses de prix réduisent les revenus sur un ensemble fixe de tâches, ce qui appuie la lecture de la rente faite par cet essai, et elles ne font pas à elles seules que le codage soit beaucoup plus utilisé.
 
 <div id="8-propositions-and-protocols" class="anchor-alias" aria-hidden="true"></div>
 
 ## 8. Propositions et protocoles
 
-**Proposition E1 (les courbes de coût se croisent).** Pour un flux de tâches dans un dépôt, le coût cumulé par tâche résolue de la seconde voie passe sous celui d'un agent de génération après un nombre fini de tâches. *Protocole :* exécuter le [Protocole 8.3 de RCE](/papers/rce/#83-a-wall-meter) et un agent de génération simple sur le même flux de tickets sous un wattmètre mural. Rapporter `measured_j` et les dollars par tâche résolue selon l'indice de la tâche, ainsi que l'indice de croisement.
+**Proposition E1 (les courbes de coût se croisent).** Pour un flux de tâches dans un dépôt, le coût cumulé par tâche résolue de RCE passe sous celui d'un agent de génération après un nombre fini de tâches. *Protocole :* exécuter le [Protocole 8.3 de RCE](/papers/rce/#83-a-wall-meter) et un agent de génération simple sur le même flux de tickets sous un wattmètre mural. Rapporter `measured_j` et les dollars par tâche résolue selon l'indice de la tâche, ainsi que l'indice de croisement.
 
 **Proposition E2 (le prix suit le plancher).** Là où une capacité de codage est couverte par la récupération et les règles, son prix de marché baisse vers l'énergie nécessaire pour l'exécuter plus le coût de la preuve. *Protocole :* suivre dans le temps les prix catalogue d'une classe de capacités couverte face à son énergie d'exécution mesurée, à la manière de la série de prix du correcteur orthographique.
 
-**Proposition E3 (l'échelle de calcul n'est pas un rempart sur les tâches couvertes).** Sur les tâches que couvre la seconde voie, le taux de résolution n'augmente pas avec le calcul du dernier engrenage. *Protocole :* exécuter le [Protocole 8.2 de RCE](/papers/rce/#82-swe-bench-lite-offline) sans modèle, avec un petit modèle local et avec un modèle de pointe comme dernier engrenage. Comparer les taux de résolution sur les tâches fermées avant le dernier engrenage.
+**Proposition E3 (l'échelle de calcul n'est pas un rempart sur les tâches couvertes).** Sur les tâches que couvre RCE, le taux de résolution n'augmente pas avec le calcul du dernier engrenage. *Protocole :* exécuter le [Protocole 8.2 de RCE](/papers/rce/#82-swe-bench-lite-offline) sans modèle, avec un petit modèle local et avec un modèle de pointe comme dernier engrenage. Comparer les taux de résolution sur les tâches fermées avant le dernier engrenage.
 
 **Proposition E4 (la part des tokens dans les revenus).** Dans un dépôt où la couverture croît, la part du coût des tâches payée en tokens baisse avec la couverture. *Protocole :* consigner les tokens, joules et dollars par tâche fermée et par tour dans le protocole de convergence de RCE avec un résolveur à modèle tarifé ([RCE §8.6](/papers/rce/#86-convergence-of-model-calls-at-large-n)), étiquetés, et rapporter la part des tokens dans le coût par tour.
 
-**Proposition E5 (couverture).** La part du volume réel de tâches de codage qui tombe dans des classes couvertes par la seconde voie est mesurable. *Protocole :* tirer un échantillon aléatoire de pull requests fusionnées dans des dépôts publics (GitHub en rapporte 518,7 millions fusionnées en un an [17]), classer chacune selon que les engrenages gelés G0 à G2 produisent ou non un correctif qui franchit la porte, et rapporter la fraction couverte avec un intervalle à 95 %. Tant que ce nombre n'existe pas, la Proposition E0 s'applique à une part non mesurée.
+**Proposition E5 (couverture).** La part du volume réel de tâches de codage qui tombe dans des classes couvertes par RCE est mesurable. *Protocole :* tirer un échantillon aléatoire de pull requests fusionnées dans des dépôts publics (GitHub en rapporte 518,7 millions fusionnées en un an [17]), classer chacune selon que les engrenages gelés G0 à G2 produisent ou non un correctif qui franchit la porte, et rapporter la fraction couverte avec un intervalle à 95 %. Tant que ce nombre n'existe pas, la Proposition E0 s'applique à une part non mesurée.
 
 <div id="references" class="anchor-alias" aria-hidden="true"></div>
 

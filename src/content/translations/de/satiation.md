@@ -314,6 +314,12 @@ für eine Routineaufgabe, deren konstruiertes Maximum bei vier Aufrufen liegt. D
 
 Ein Tokenpreis lässt sich anfügen, ohne Einheiten zu verwechseln. Angenommen, ein Aufruf kostet `p` in Geld und der Käufer zahlt `p * x`, während der Wert `U` folgt. Der Näherungswert für die Käuferrente `U(x) - p x` hat für jedes `p >= 0` weiterhin einen endlichen Maximierer. Ein Fall von `p` verschiebt den Maximierer, das ist die Rebound-Logik an diesem Spielzeug, und der Maximierer bleibt endlich. Das Spielzeug sagt nicht, wo der Maximierer für einen realen Käufer liegt. Es blockiert den Schluss, dass ein niedrigeres `p` das Maximum beseitigt.
 
+Abbildung 1 zeichnet das Beispiel und die davon getrennte aggregierte Behauptung.
+
+![Links: der Bliss-Punkt U(x) mit dem Überschuss U minus p mal x zu den Preisen 0, 2 und 4; die Maximierer sind 4, 3 und 2 Aufrufe. Rechts: Schema des aggregierten Rebounds.](/figures/satiation/satiation-rebound.svg)
+
+*Abbildung 1. Aufgabensättigung und aggregierter Rebound. Modellillustration des Beispiels dieses Abschnitts, keine Anpassung: Der Maximierer von $U(x) - p\,x$ ist $x = 4 - p/2$, bei jedem Preis endlich. Das rechte Feld ist ein Schema; dieses Papier schätzt keinen Rebound. Eine [PNG-Kopie](/figures/satiation/satiation-rebound.png) ist verfügbar.*
+
 <div id="38-reason-codes-as-a-partition-not-a-welfare-function" class="anchor-alias" aria-hidden="true"></div>
 
 <div id="311-reason-codes-as-a-partition-not-a-welfare-function" class="anchor-alias" aria-hidden="true"></div>

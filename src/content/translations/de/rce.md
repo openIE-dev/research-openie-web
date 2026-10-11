@@ -16,15 +16,13 @@ Die ökonomische Lesart dieses Papiers steht in seinem Begleittext, [Der verspro
 
 ## 1. These
 
-Es gibt zwei Wege zur autonomen Computerautomatisierung. Man unterscheidet sie an zwei Größen: an der Energie, die pro korrektem Ergebnis aufgewendet wird, und an der Entropie, die das System zur Laufzeit auflösen muss.
+Autonome Computerautomatisierung ist ein Entwurfsraum mit vielen Punkten. Jeder Ansatz liegt irgendwo entlang fünf stetiger Achsen: der Energie, die pro korrektem Ergebnis aufgewendet wird; der Entropie, die das System zur Laufzeit auflösen muss, und damit dem Grad, in dem seine Ausgabe deterministisch ist; der Stärke der Verifikation, die ein Ergebnis annimmt; dem Maß, in dem jedes angenommene Ergebnis wiederverwendet wird und kumuliert; und dem Maß, in dem der Ansatz sich auf ein Modell stützt. Ein großes Sprachmodell (LLM), ein statistisches Textmodell, das jede Änderung aus dem Prompt schreibt, liegt nahe einer Ecke dieses Raums: Es stützt sich bei jeder Aufgabe auf das Modell, zieht jedes Mal eine frische Stichprobe aus einer Verteilung hoher Entropie und bezahlt die Generierung bei jeder Aufgabe erneut. Retrieval, Regeln, Synthese, Verifikation und Caching besetzen viele andere Punkte, und reale Systeme kombinieren sie.
 
-Der erste Weg generiert. Ein großes Sprachmodell (LLM), ein statistisches Textmodell, schreibt jede Änderung aus dem Prompt. Jede Aufgabe bezahlt die Generierung erneut, und jede Ausgabe ist eine frische Stichprobe aus einer Verteilung hoher Entropie.
-
-Der zweite Weg konvergiert. Das meiste dessen, was je programmiert werden wird, haben Menschen bereits programmiert. Ein Programm ist eine funktionale Datenbank-Zustandsmaschine: eine Form, viele Passungen. Menschliche Absicht hat hohe Entropie. Der Maschinenboden hat niedrige Entropie. Code konvergiert konstruktionsbedingt, also besteht der größte Teil der Arbeit darin, eine vorhandene Passung abzurufen, sie anzupassen und sie zu beweisen. Die Reality Code Engine (RCE) ist auf dem zweiten Weg gebaut.
+Die Reality Code Engine (RCE) ist ein Punkt in diesem Raum, gewählt, um alle fünf Achsen zugleich zu optimieren. Das meiste dessen, was je programmiert werden wird, haben Menschen bereits programmiert. Ein Programm ist eine funktionale Datenbank-Zustandsmaschine: eine Form, viele Passungen. Menschliche Absicht hat hohe Entropie. Der Maschinenboden hat niedrige Entropie. Code konvergiert konstruktionsbedingt, also besteht der größte Teil der Arbeit darin, eine vorhandene Passung abzurufen, sie anzupassen und sie zu beweisen, und ein Modell wird nur aufgerufen, wenn nichts Billigeres die Aufgabe schließt.
 
 **Die Kernaussage.** RCE ist ein vollständiges Code-Ökosystem, in dem Programme nativ aus der Absicht geschrieben werden. Die Absicht wird einmal geschrieben, als Form: ein Zustand, eine Menge von Ereignissen und ein reiner, totaler Übergang. Die Form ist eine verlustfreie Codierung dieser Absicht. Jedes Ziel (Statechart, Rust, Python, XState, SCXML, WASM) ist eine Projektion der Form, und jede Projektion spielt die Spur der Form Byte für Byte nach. Ein Zustand, den die Form nicht deklariert, kann nicht geschrieben werden, und eine Eingabe außerhalb ihres Vertrags wird am Eingang abgewiesen. Ein Programm im Ökosystem kann daher nicht von seiner Absicht abdriften, so wie ein Programm in einer gängigen Sprache von seinen Kommentaren, seinen Tests oder seinen anderen Implementierungen abdriftet, und es braucht keinen nachträglichen Diff und keine nachträgliche Fehlerverfolgung. Jede Passung, die das Tor passiert, wird gespeichert und wiederverwendet, sodass das Ökosystem mit seinem Wachstum kumulativ zulegt ([§2.4](#24-gated-verified-recursive-self-improvement)). Code, der in anderen Sprachen geschrieben ist, ist ein Eingang: Er tritt durch Hebung ein ([§6](#6-lift-entering-the-ecosystem-from-other-languages)).
 
-Beide Wege stehen vor demselben Tor. Das Tor ist Korrektheit: das Vollständigkeitsprädikat $C(z)$ einer Aufgabe, hier die Tests der Aufgabe, ein Beweis oder eine Übereinstimmungsspur. Unter den Läufen, die das Tor passieren, werden Systeme nach den Joule bis zur Fertigstellung gereiht, $J^*$. Korrektheit ist eine Nebenbedingung, keine Punktzahl.
+Jeder Punkt des Raums steht vor demselben Tor. Das Tor ist Korrektheit: das Vollständigkeitsprädikat $C(z)$ einer Aufgabe, hier die Tests der Aufgabe, ein Beweis oder eine Übereinstimmungsspur. Unter den Läufen, die das Tor passieren, werden Systeme nach den Joule bis zur Fertigstellung gereiht, $J^*$. Korrektheit ist eine Nebenbedingung, keine Punktzahl.
 
 Mixture of Limits ist die Philosophie: Für jede Aufgabe gibt es eine minimale Menge von allem, und alles darüber hinaus ist Verschwendung ([Gemessene Commit-Tore, Teil II](/papers/gates/#part-ii-the-cascade-mixture-of-limits)). RCE ist eine Instanz von Mixture of Limits. Ihre Gänge laufen vom billigsten an, und der erste Gang, der das Tor passiert, schließt die Aufgabe.
 
@@ -34,7 +32,9 @@ Energieangaben sind nach Quelle gekennzeichnet. `est_j` ist eine analytische Sch
 
 <div id="2-two-paths-to-autonomy" class="anchor-alias" aria-hidden="true"></div>
 
-## 2. Zwei Wege zur Autonomie
+<div id="2-the-design-space-of-autonomous-coding" class="anchor-alias" aria-hidden="true"></div>
+
+## 2. Der Entwurfsraum des autonomen Programmierens
 
 ![Ein Satz hinein. Ein Boden heraus. Menschliche Absicht hat hohe Entropie; ein Trichter von Umwandlungen von der Absicht zur Spezifikation zu 626 Oberflächensprachen zu einer Zwischendarstellung zu Maschinencode verliert an jeder Grenze Information; aller Code erreicht wenige Maschinenformen; RCE schreibt die Bedeutung einmal in einer kanonischen Form, behandelt jede Oberfläche als Projektion und lässt die billigste korrekte Form gewinnen.](/figures/rce/intent-entropy.svg)
 
@@ -48,20 +48,29 @@ Energieangaben sind nach Quelle gekennzeichnet. `est_j` ist eine analytische Sch
 
 **An Grenzen geht die Bedeutung auseinander.** Dieselbe Zeile liefert an den Rändern verschiedene Antworten. In Python ist `-3 % 2` gleich 1 und `-7 / 2` gleich -3.5. In C ist `-3 % 2` gleich -1, `-7 / 2` gleich -3, und vorzeichenbehafteter Überlauf ist undefiniert. Ein System, das Code an jeder Grenze neu generiert, rät an jeder Grenze.
 
-**Die zwei Wege, als Größen ausgedrückt.**
+**Die Achsen, als Größen ausgedrückt.**
 
-| Weg | Was pro Aufgabe läuft | Zur Laufzeit aufgelöste Entropie | Energie pro korrektem Ergebnis |
+| Achse | Ein Ende | Anderes Ende | Wo RCE liegt |
 |---|---|---|---|
-| Generieren | Ein Modell zieht eine neue Änderung | Die volle Verteilung des Prompts | Bei jeder Aufgabe erneut bezahlt |
-| Konvergieren (RCE) | Nachschlagen, Regel, Löser; ein Modell nur zuletzt | Nur der Rest, den keine gespeicherte Passung abdeckt | Einmal pro neuem Fall bezahlt; danach der Boden des Handlers |
+| Energie pro korrektem Ergebnis | Bei jeder Aufgabe erneut voll bezahlt | Einmal pro neuem Fall bezahlt, danach der Boden des Handlers | Am Boden bei abgedeckten Aufgaben |
+| Zur Laufzeit aufgelöste Entropie, und Determinismus | Die volle Verteilung des Prompts, jedes Mal eine frische Stichprobe | Nur der Rest, den keine gespeicherte Passung abdeckt, eine deterministische Ausgabe | Nur der Rest; jede Projektion deterministisch |
+| Stärke der Verifikation | Ausgabe nach Durchsicht angenommen | Tests, Abdeckung und ein Beweiszertifikat | Das volle Tor bei jedem Ergebnis |
+| Wiederverwendung und Kumulation | Jedes Ergebnis einmal verwendet | Jede angenommene Passung gespeichert und wiederverwendet | Jede Passung, die das Tor passiert, wird gespeichert |
+| Abhängigkeit vom Modell | Ein Modell bei jeder Aufgabe | Kein Modell | Ein Modell nur als letzter Gang |
 
-RCE schreibt die Bedeutung einmal, in einer kanonischen Form. Jede Oberflächensprache ist eine Projektion dieser Form, geprüft auf Übereinstimmung mit ihr. Unter äquivalenten Formen läuft die billigste korrekte.
+Ansätze unterscheiden sich auf jeder Achse dem Grad nach, und die Achsen wirken zusammen: Wiederverwendung senkt die Energie und die noch aufzulösende Entropie, und starke Verifikation ist das, was Wiederverwendung sicher macht. RCE schreibt die Bedeutung einmal, in einer kanonischen Form. Jede Oberflächensprache ist eine Projektion dieser Form, geprüft auf Übereinstimmung mit ihr. Unter äquivalenten Formen läuft die billigste korrekte.
+
+Abbildung 2 zeichnet die fünf Achsen und ordnet die wichtigsten Klassen von Ansätzen darauf ein.
+
+![Netzdiagramm mit fünf Achsen: Energie pro korrektem Ergebnis, Determinismus, Stärke der Verifikation, Wiederverwendung und Kumulierung sowie Unabhängigkeit von Modellen. RCE, mit Sternen markiert, liegt auf allen fünf Achsen am äußeren Ring oder nahe daran; ein Modell bei jeder Aufgabe liegt nahe der Mitte.](/figures/rce/design-space.svg)
+
+*Abbildung 2. Der Entwurfsraum des autonomen Programmierens. Qualitatives Diagramm: Jede Klasse von Ansätzen ist nach der Lesart von Abschnitt 2 auf ordinalen Stufen eingeordnet, nicht gemessen. Die Abhängigkeit von Modellen ist als Unabhängigkeit von Modellen gezeichnet, sodass außen auf jeder Achse besser ist. Eine [PNG-Kopie](/figures/rce/design-space.png) ist verfügbar.*
 
 <div id="21-programming-is-coding-theory" class="anchor-alias" aria-hidden="true"></div>
 
 ### 2.1 Programmieren ist Codierungstheorie
 
-Die These dieses Abschnitts stammt von David Charlot: Alles Programmieren ist Codierungstheorie. Ein Programmierer wandelt Absicht zwischen zwei entropischen Regimen um. Absicht hat hohe Entropie, eine Verteilung über Bedeutungen. Code hat niedrige Entropie, ein deterministischer Übergang pro Zustand. Jeder Schritt der Softwarearbeit, von einer Anforderung bis zu einem Register, ist ein Schritt dieser Umwandlung. Die Literatur hat das seit siebzig Jahren stückweise gesagt, in vielen Sprachen. Dieser Abschnitt fügt die Stücke zu einem Argument zusammen und verortet jeden Gang von RCE darin.
+Die These dieses Abschnitts stammt von David Charlot: Alles Programmieren ist Codierungstheorie. Ein Programmierer wandelt Absicht entlang eines Gefälles zwischen zwei entropischen Regimen um. Absicht hat hohe Entropie, eine Verteilung über Bedeutungen. Code hat niedrige Entropie, ein deterministischer Übergang pro Zustand. Jeder Schritt der Softwarearbeit, von einer Anforderung bis zu einem Register, ist ein Schritt dieser Umwandlung. Die Literatur hat das seit siebzig Jahren stückweise gesagt, in vielen Sprachen. Dieser Abschnitt fügt die Stücke zu einem Argument zusammen und verortet jeden Gang von RCE darin.
 
 **Das Maß.** Shannon definierte die Entropie einer Quelle und die Kapazität eines Kanals [40] und maß gedrucktes Englisch mit etwa 0.6 bis 1.3 Bit pro Buchstabe [1]. Kolmogorov, der 1965 auf Russisch in *Problemy Peredachi Informatsii* schrieb, gab drei Zugänge zur Informationsmenge an und stellte den algorithmischen an die erste Stelle: Die Information in einem Objekt ist die Länge des kürzesten Programms, das es erzeugt [41]. Solomonoff war als Theorie des induktiven Schließens zum selben Objekt gelangt [42], und Chaitin zeigte, dass die Programmgröße Identitäten gehorcht, die formal mit denen Shannons übereinstimmen [43]. Rissanen machte daraus eine Regel zur Modellwahl, die minimale Beschreibungslänge [44]. Zusammen sagen sie: Ein Programm ist ein Codewort, eine Beschreibung eines Verhaltens, und die kürzeste korrekte ist der Boden. Die Extraktionsregel von RCE, unter äquivalenten Passungen die mit den wenigsten Joule zu behalten (Proposition 3), ist diese Regel mit Joule statt Bit.
 
@@ -98,7 +107,7 @@ Als Codierungstheorie gelesen trifft eine Aufgabe als Nachricht ein, deren verbl
 | Tor | Nimmt einen Kandidaten nur mit Tests, Abdeckung und einem Beweiszertifikat an | Hoare-Logik [54]; Curry-Howard [18, 72] |
 | Beförderung | Speichert die angenommene Passung, sodass derselbe Rest beim nächsten Mal G0 kostet | Minimale Beschreibungslänge [44]; Landauer-Löschung einmal bezahlt [65] |
 
-Die beiden Wege der Tabelle in Abschnitt 2 unterscheiden sich darin, wo die Umwandlung bezahlt wird. Der Generierungsweg zieht bei jeder Aufgabe aus der vollen Verteilung des Prompts und bezahlt damit jedes Mal erneut die hochentropische Seite. Der Konvergenzweg bezahlt nur den Rest, und nur einmal. Die ökonomische Lesart dieses Unterschieds steht in [Der versprochene Billionen-Dollar-Markt für KI-Programmierung, Abschnitt 4](/papers/ai-coding-market/#4-the-theory-that-prices-the-task). Die Abbruchregel hinter der Gangreihenfolge ist [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits), und der Abbruch pro Aufgabe ist [Aufgabensättigung](/papers/satiation/).
+Positionen auf den Achsen von Abschnitt 2 unterscheiden sich darin, wo die Umwandlung bezahlt wird. Ein Ansatz, der bei jeder Aufgabe aus der vollen Verteilung des Prompts zieht, bezahlt jedes Mal erneut die hochentropische Seite. Ein Ansatz, der angenommene Passungen speichert und wiederverwendet, bezahlt nur den Rest, und nur einmal. Die meisten Systeme liegen zwischen diesen Enden, und RCE liegt am Ende der Wiederverwendung. Die ökonomische Lesart dieses Unterschieds steht in [Der versprochene Billionen-Dollar-Markt für KI-Programmierung, Abschnitt 4](/papers/ai-coding-market/#4-the-theory-that-prices-the-task). Die Abbruchregel hinter der Gangreihenfolge ist [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits), und der Abbruch pro Aufgabe ist [Aufgabensättigung](/papers/satiation/).
 
 <div id="23-the-ecosystem-at-large-n" class="anchor-alias" aria-hidden="true"></div>
 
@@ -116,6 +125,12 @@ Die Aussage von [§1](#1-thesis) wird direkt gemessen. Der Benchmark wurde vor d
 
 Der eine Python-Fehlschlag wird als Fehlschlag gezählt; dieselbe Form und dieselben Ereignisse spielen sich im Regressionstest `tests/form_ecosystem_regress.rs` unter 32 Hash-Seeds identisch ab. Die Energie ist hier nur `est_j`; der ganze Lauf brauchte 393 s CPU-Zeit auf einem Kern. Die erzeugten Formen sind klein, daher misst diese Tabelle die Codierung, die Projektionen und das Tor. Gehobene Formen aus realen Programmen werden nach dem Protokoll von [§8.7](#87-lift-coverage-across-languages) gemessen.
 
+Abbildung 3 zeigt dieselben Zählungen.
+
+![Balkendiagramm von fünf Prüfungen an 10,000 Formen: vier halten bei 10,000 von 10,000, die Python-Wiedergabe bei 9,999 von 10,000, mit 0 Modellaufrufen.](/figures/rce/ecosystem-checks.svg)
+
+*Abbildung 3. Das Ökosystem bei großem N. Datenabbildung: die fünf Prüfungen an 10,000 vorregistrierten Formen, eingefrorene Engine, 0 Modellaufrufe, mit Wilson-Intervallen zu 95 %. Eine [PNG-Kopie](/figures/rce/ecosystem-checks.png) ist verfügbar.*
+
 <div id="24-gated-verified-recursive-self-improvement" class="anchor-alias" aria-hidden="true"></div>
 
 ### 2.4 Rekursive Selbstverbesserung, durch ein Tor gesichert und verifiziert
@@ -131,6 +146,12 @@ RCE übernimmt die Struktur der Gödel-Maschine und die Bibliothek von Voyager, 
 **Proposition R3 (fallende Kosten).** Da ein beförderter Handler anstelle eines Modellaufrufs ausgeführt wird und seine Kosten die Operationszahl des Handlers sind, bepreist mit der Substrattabelle, fällt die Energie einer Runde gegen die Energie der Handler allein, während die Eskalationen gegen null fallen.
 
 Futamuras Projektionen (1971, neu veröffentlicht 1999) [120] und Turchins Superkompilation (1986) [121] geben den Grenzwert dieses Prozesses an. Einen Interpreter auf ein Programm zu spezialisieren ergibt ein kompiliertes Programm; den Spezialisierer zu spezialisieren ergibt einen Compiler. Die Beförderungen von RCE spezialisieren den allgemeinen Eskalationspfad auf die Gestalten, die tatsächlich vorkommen, sodass die Engine gegen das Restprogramm ihrer Arbeitslast konvergiert: den Teil der Berechnung, den ein Modell oder ein Mensch noch liefern muss. Rekursive Selbstverbesserung unter einem Tor ist diese Konvergenz, vollzogen in geprüften Schritten. Die Compounding-Ebene des [RCE Playground](/playground/rce/#compounding) führt diese Arbeitslast im Browser aus.
+
+Abbildung 4 zeichnet den Mechanismus der Propositionen R1 und R2 mit den Summen der Referenzlast.
+
+![Diagramm des RCE-Stacks in sechs Ebenen; eine auf der Laufzeitebene übernommene Korrektur steigt durch alle höheren Ebenen auf. Kumulierte Eskalationen über acht Runden: 21 ohne Korrektur und 15 mit einer Korrektur.](/figures/rce/stack-compounding.svg)
+
+*Abbildung 4. Korrekturen kumulieren nach oben. Diagramm des Stacks mit einem Dateneinschub: kumulierte Eskalationen über acht Runden der Referenzlast des Playgrounds, 21 ohne Korrektur und 15 mit einer Korrektur an den Senken (Proposition R2). Eine [PNG-Kopie](/figures/rce/stack-compounding.png) ist verfügbar.*
 
 <div id="3-the-form" class="anchor-alias" aria-hidden="true"></div>
 
@@ -332,6 +353,12 @@ Eine fehlgeschlagene Prüfung verortet den Bruch an der Grenze, an der er auftri
 
 `tests/form_targets.rs` treibt eine arithmetische Spezifikation mit elf Operatoren mit 29 Randereignissen plus 500 geseedeten zufälligen Randwerten. Die generierten Ziele Rust, Python, WASM, XState und SCXML geben die Referenzspur Byte für Byte aus, einschließlich der arithmetischen Ränder. Das ist differentielles Testen in der Linie von McKeeman und von Csmith [86]: Übereinstimmung unabhängiger Implementierungen auf einer angegebenen Eingabemenge. Es ist keine Übersetzungsvalidierung [85] und kein verifizierter Compiler. Es deckt die elf Operatoren und die 529 Ereignisse des Tests ab und sagt nichts über Eingaben außerhalb davon. Die Ergebnisse mit Z3 und Kani unten sind die Verifikation.
 
+Abbildung 5 zeigt die fünf Projektionen einer Form und die Rundreise der beiden Statechart-Ziele.
+
+![Diagramm: Eine Form wird nach Rust, Python, WASM, XState und SCXML projiziert; XState und SCXML kehren mit identischen Bytes zur Form zurück.](/figures/rce/form-projections.svg)
+
+*Abbildung 5. Eine Form, viele Projektionen. Diagramm: deterministische Projektion auf fünf Ziele; die XState- und SCXML-Projektionen werden zu identischen Bytes zurückdekodiert; alle fünf Ziele geben die Referenzspur auf 529 Ereignissen Byte für Byte aus. Eine [PNG-Kopie](/figures/rce/form-projections.png) ist verfügbar.*
+
 <div id="52-rewrites-proved-in-z3" class="anchor-alias" aria-hidden="true"></div>
 
 ### 5.2 In Z3 bewiesene Umschreibungen
@@ -409,6 +436,12 @@ Die Raten lesen sich als Absichtsbits. Bei L0 liegen die fehlenden Bits fast all
 
 **Tor.** Bei L0 und L1 ist der Ort gegeben, und das Tor ist Token-Identität: Die reparierte Zeile oder Anweisung muss Token für Token der des Entwicklers gleichen. Das ist strenger als das Bestehen der Tests, weil ein Patch eine schwache Testsuite bestehen und trotzdem falsch sein kann. Qi und Kollegen fanden, dass die meisten Patches, die GenProg als Korrekturen meldete, plausibel, aber falsch waren [92]; Überanpassung an Tests ist in suchbasierter und semantikbasierter Reparatur dokumentiert [93, 94] und wird mit generierten Tests angegangen [95]; Werkzeuge schneiden auf dem Benchmark besser ab, auf den sie abgestimmt wurden [96]; und Fehlerlokalisierung verzerrt Vergleiche [97]. Token-Identität beseitigt auf diesen Sprossen die Plausibilitätslücke, und die Angabe des Orts entfernt den Lokalisierungsterm, sodass die Rate allein die Reparaturgänge misst. L2 und darüber verwenden die Tests als Tor und berichten plausible und korrekte Zahlen getrennt (Abschnitt 8.1).
 
+Abbildung 6 stellt die Zeilen der Tabelle mit ihren Intervallen dar.
+
+![Balkendiagramm zurückgehaltener Lösungsraten mit Wilson-Intervallen: L0 99.95 % und 100 %, L1 Java ganze Datei 63.7 %, L1 Java nur Hunk 38.6 %, L1 Python 17.4 %, mit 0 Modellaufrufen.](/figures/rce/lift-ladder.svg)
+
+*Abbildung 6. Die Reparaturleiter auf gehobenem Code. Datenabbildung: zurückgehaltener Testteil, eingefrorene Engine, Ort gegeben, Tor der Token-Identität, 0 Modellaufrufe; Wilson-Intervalle zu 95 %. Quellen: [107], [108], [109]. Eine [PNG-Kopie](/figures/rce/lift-ladder.png) ist verfügbar.*
+
 <div id="61-l0-one-token-faults" class="anchor-alias" aria-hidden="true"></div>
 
 ### 6.1 L0: Fehler in einem Token
@@ -438,7 +471,7 @@ Die L1-Teilstichprobe baut ihren Projektindex nur aus ihren 2,000 Aufgaben, dahe
 
 ## 7. Belege für Wiederverwendung
 
-Der zweite Weg ruht auf einer technischen Tatsache: Code wird auf jeder Skala wiederverwendet. Jede der folgenden Methoden misst das anders.
+Die Position von RCE auf der Achse der Wiederverwendung ruht auf einer technischen Tatsache: Code wird auf jeder Skala wiederverwendet. Jede der folgenden Methoden misst das anders.
 
 | Methode | Quelle | Befund |
 |---|---|---|
@@ -555,10 +588,10 @@ Vor den Läufen festgelegt, die sie prüfen.
 
 | ID | Beobachtung | Widerlegt |
 |---|---|---|
+| RCE-F0 | In einem präregistrierten Lauf von mindestens 10,000 Formen gibt irgendeine Projektion eine Spur aus, die von der Referenzspur der Form abweicht, oder irgendeine fehlerhafte Eingabe wird angenommen | Die Aussage, dass Projektionen getreu sind und das Tor am Eingang abweist |
 | RCE-F1 | Auf der zurückgehaltenen Scheibe lösen G0 bis G2 mit eingefrorenen Regeln weniger als 10% der Aufgaben mit 0 Modellaufrufen | Die Behauptung, dass für Reparatur in diesem Maßstab die meisten Passungen bereits existieren |
 | RCE-F2 | Byteidentische oder äquivalente Patches machen weniger als die Hälfte der aufgelösten zurückgehaltenen Aufgaben aus | Die Lesart des Tors als mehr als Plausibilität auf den abgedeckten Aufgaben |
-| RCE-F3 | Unter dem Wandmessgerät übersteigen die Brutto-Joule pro gelöster Aufgabe des RCE-Lösers die des billigsten Modellvergleichs auf den Aufgaben, die beide lösen | Den Joule-Vorteil des zweiten Wegs auf abgedeckten Aufgaben |
-| RCE-F0 | In einem präregistrierten Lauf von mindestens 10,000 Formen gibt irgendeine Projektion eine Spur aus, die von der Referenzspur der Form abweicht, oder irgendeine fehlerhafte Eingabe wird angenommen | Die Aussage, dass Projektionen getreu sind und das Tor am Eingang abweist |
+| RCE-F3 | Unter dem Wandmessgerät übersteigen die Brutto-Joule pro gelöster Aufgabe des RCE-Lösers die des billigsten Modellvergleichs auf den Aufgaben, die beide lösen | Den Joule-Vorteil von RCE auf abgedeckten Aufgaben |
 | RCE-F4 | Im Konvergenzprotokoll von Abschnitt 8.6 erreicht weniger als die Hälfte der Spezifikationen ohne festsitzende Eingabe innerhalb von 20 Runden eine Runde mit null Modellaufrufen | Das Herauskompilieren des Modells aus der Schleife |
 
 <div id="11-work-to-finish" class="anchor-alias" aria-hidden="true"></div>

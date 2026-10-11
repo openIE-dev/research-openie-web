@@ -314,6 +314,12 @@ pour une corvée dont le maximum construit est à quatre appels. Alors `U(0) = -
 
 Un prix du token peut être ajouté sans confondre les unités. Supposons qu'un appel coûte `p` en argent et que l'acheteur paie `p * x` tandis que la valeur suit `U`. L'indicateur du surplus de l'acheteur `U(x) - p x` a encore un maximiseur fini pour tout `p >= 0`. Une baisse de `p` déplace le maximiseur, c'est la logique de l'effet rebond sur ce jouet, et le maximiseur reste fini. Le jouet ne dit pas où se situe le maximiseur pour un acheteur réel. Il bloque l'inférence selon laquelle un `p` plus bas supprime le maximum.
 
+La Figure 1 dessine l'exemple et l'affirmation agrégée distincte.
+
+![À gauche : le point de félicité U(x), avec le surplus U moins p fois x aux prix 0, 2 et 4 ; les maximiseurs sont 4, 3 et 2 appels. À droite : schéma de l'effet rebond agrégé.](/figures/satiation/satiation-rebound.svg)
+
+*Figure 1. Satiété de la tâche et effet rebond agrégé. Illustration de modèle de l'exemple de cette section, pas un ajustement : le maximiseur de $U(x) - p\,x$ est $x = 4 - p/2$, fini à tout prix. Le panneau de droite est un schéma ; cet article n'estime aucun rebond. Une [copie PNG](/figures/satiation/satiation-rebound.png) est fournie.*
+
 <div id="38-reason-codes-as-a-partition-not-a-welfare-function" class="anchor-alias" aria-hidden="true"></div>
 
 <div id="311-reason-codes-as-a-partition-not-a-welfare-function" class="anchor-alias" aria-hidden="true"></div>

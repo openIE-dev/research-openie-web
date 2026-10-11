@@ -73,7 +73,7 @@ Definitions fix the terms. Propositions are proven from cited theorems, with the
 
 Figure 1 shows how the three layers stack.
 
-![Diagram of three stacked layers. Bottom, layer 1: the definition and gate, eligibility, a goal held against the world with a completeness predicate. Middle, layer 2: kinematics, how fast agency moves per second and per joule, bounded by the Landauer floor, speed limits, the thermodynamic uncertainty relation and the data-rate theorem. Top, layer 3: calculus, intelligence iota equals dX over dJ, read in hindsight.](/figures/agency/three-layers.svg)
+![Diagram of three stacked layers. Bottom, layer 1: the definition and gate, eligibility, with four clauses: prediction first, coupling to the world, consequence borne, and the joule budget. Middle, layer 2: kinematics, how fast agency moves per second and per joule, bounded by the Landauer floor, speed limits, the thermodynamic uncertainty relation and the data-rate theorem. Top, layer 3: calculus, intelligence iota equals dX over dJ, read in hindsight.](/figures/agency/three-layers.svg)
 
 *Figure 1. Agency in three layers. Diagram of Sections 2.1 to 2.3: the definition and gate, the kinematic bounds, and intelligence as the calculus of agency. A [PNG copy](/figures/agency/three-layers.png) is provided.*
 

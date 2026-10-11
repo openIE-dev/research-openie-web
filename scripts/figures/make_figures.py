@@ -280,14 +280,14 @@ def essay_price():
 # ---------------- Agency ----------------
 def agency_layers():
     s = S(1200, 600, 'Agency in three layers', 'Each layer presupposes the one below it.', 'DIAGRAM')
-    L = [('Layer 1. Definition and gate', 'eligibility: what counts as an agent', 'a goal held against the world, a completeness predicate C(z)', BLUE),
+    L = [('Layer 1. Definition and gate', 'eligibility: what counts as an agent', 'four clauses: prediction first, coupling to the world, consequence borne, J(a) \u2264 B', BLUE),
          ('Layer 2. Kinematics', 'how fast agency moves, per second and per joule', 'Landauer floor, speed limits, TUR, data-rate theorem', GREEN),
          ('Layer 3. Calculus', 'intelligence read in hindsight', '\u03b9 = dX/dJ, confirmed bits per joule along a run', ORANGE)]
     for i, (a, b, c, col) in enumerate(L):
         y = 440 - i*140; x = 80 + i*60; w = 1040 - i*120
         s.r(x, y, w, 110, '#f8fafc', col, 14, 4)
         s.t(x+30, y+40, a, 22, 800); s.t(x+30, y+68, b, 17, 500, MUTED); s.t(x+30, y+94, c, 16, 600, col)
-    s.save('agency', 'three-layers', 'Diagram of three stacked layers. Bottom, layer 1: the definition and gate, eligibility, a goal held against the world with a completeness predicate. Middle, layer 2: kinematics, how fast agency moves per second and per joule, bounded by the Landauer floor, speed limits, the thermodynamic uncertainty relation and the data-rate theorem. Top, layer 3: calculus, intelligence iota equals dX over dJ, read in hindsight.')
+    s.save('agency', 'three-layers', 'Diagram of three stacked layers. Bottom, layer 1: the definition and gate, eligibility, with four clauses: prediction first, coupling to the world, consequence borne, and the joule budget. Middle, layer 2: kinematics, how fast agency moves per second and per joule, bounded by the Landauer floor, speed limits, the thermodynamic uncertainty relation and the data-rate theorem. Top, layer 3: calculus, intelligence iota equals dX over dJ, read in hindsight.')
 
 def agency_gate_rank():
     s = S(1200, 640, 'Gate first, then rank by joules', 'Correctness is the gate; joules are the ranking among what passes. Run 1 at the loose budget (Section 8.11).', 'DATA')
