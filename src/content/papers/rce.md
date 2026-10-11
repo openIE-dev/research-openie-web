@@ -424,13 +424,13 @@ Each item is open work with its protocol named.
 2. Baselines in one table, cost-of-pass in joules and dollars (Section 8.5).
 3. The first `measured_j`: a wall meter on an idle host, at least 10 repeats, gross and net side by side (Section 8.3).
 4. The full-file L1 Java result, with a type-indexed API index as the next gear (Section 6.2).
-7. Convergence of model calls across at least 1,000 specifications (Section 8.6).
 5. The 626-language survey published with its method (Figure 1).
 6. New held-out corpora with the gears frozen: Multi-SWE-bench and BugsInPy (Section 8.4).
+7. Convergence of model calls across at least 1,000 specifications (Section 8.6).
 
 ## 12. Conclusion
 
-A program is a database functional state machine, and RCE treats coding as a conversion from high-entropy intent to that low-entropy Form. Correctness is the gate and joules are the ranking. On held-out test splits with a frozen engine and no model call, the gears repair 99.95% of 520,821 one-token faults and all 23,015 in repositories never tuned on, 38.6% of 24,072 single-statement Java bugs and 17.4% of 157,089 Python bugs, at hundredths of a reported joule per solved task on a package counter. The verification layer proves the rewrites in Z3 and the kernel in Kani, and differential testing ties five targets to one trace. What remains is the upper rungs, convergence at large N, baselines in the same table, and a wall meter. Those protocols are fixed in Sections 8.3 to 8.5 and the falsifiers in Section 10.
+A program is a database functional state machine, and RCE treats coding as a conversion from high-entropy intent to that low-entropy Form. Correctness is the gate and joules are the ranking. On held-out test splits with a frozen engine and no model call, the gears repair 99.95% of 520,821 one-token faults and all 23,015 in repositories never tuned on, 38.6% of 24,072 single-statement Java bugs and 17.4% of 157,089 Python bugs, at hundredths of a reported joule per solved task on a package counter. The verification layer proves the rewrites in Z3 and the kernel in Kani, and differential testing ties five targets to one trace. What remains is the upper rungs, convergence at large N, baselines in the same table, and a wall meter. Those protocols are fixed in Sections 8.3 to 8.6 and the falsifiers in Section 10.
 
 ## References
 
