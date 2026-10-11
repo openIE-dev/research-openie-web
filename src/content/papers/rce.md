@@ -1,6 +1,6 @@
 ---
 title: "The Reality Code Engine: One Form, Many Fits, and the Low-Entropy Path to Autonomous Coding"
-deck: "There are two paths to autonomous computer automation. One spends high energy on high entropy. The other converges on a low-entropy floor. A program is a database functional state machine: one Form, many fits. The Reality Code Engine (RCE) retrieves, adapts and proves fits instead of generating them. Correctness is the gate. Joules are the ranking. On a 20-task development corpus it resolves 20 of 20 with 0 model calls (95% interval 84% to 100%), at 84.2 reported joules per solved task net of idle and 380.7 gross. Corpus20 is a development set; the held-out method is Protocol 8.4."
+deck: "There are two paths to autonomous computer automation. One spends high energy on high entropy. The other converges on a low-entropy floor. A program is a database functional state machine: one Form, many fits. The Reality Code Engine (RCE) retrieves, adapts and proves fits instead of generating them. Correctness is the gate. Joules are the ranking. On held-out test splits with the engine frozen and 0 model calls, it repairs 520,541 of 520,821 one-token faults in nine real repositories (0.9995, 95% interval 0.9994 to 0.9995), 23,015 of 23,015 in four repositories never used for tuning, 38.6% of 24,072 single-statement Java bugs from ManySStuBs4J and 17.4% of 157,089 Python bugs from TSSB-3M."
 id: rce
 status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
@@ -97,10 +97,18 @@ The two paths of the table in Section 2 differ in where the conversion is paid. 
 
 ### 2.3 Per-rung ladder results
 
-<!-- LADDER-RESULTS: per-rung results for G0 through G5 slot in here. Each rung reports tasks closed, model calls and joules with their label (est_j, reported_j or measured_j). -->
+A coding task is measured here by the **intent bits** it needs: the bits that must be supplied from outside what the engine already holds (the program around the edit, the libraries, the tests, the index of known fixes). Writing $H_{task}$ for the bits that pin the target artifact down and $H_{corpus}$ for the bits the corpus already fixes, the supplied bits are $I = H_{task} - H_{corpus}$. A gear that ranks the right edit at rank $r$ among its candidates has supplied $\log_2 r$ bits of search, and the gate supplies the rest. The ladder orders tasks by edit size, an objective proxy for $I$: one token (L0), one statement (L1), one hunk (L2), several hunks in one file (L3), several files (L4), a function from a specification or tests (L5), an issue-level change (L6) and a program from a specification (L7). The rungs, corpora, splits and hypotheses were preregistered before the full runs; the files are in the [public repository](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
 
-> **Placeholder.** Per-rung ladder results, one row per gear from G0 to G5, are being produced by a separate run and will be added here with their energy labels. Until then, the totals in [Section 6](#6-results) are the measured results of this paper.
+| Rung | Held-out test corpus | N | Solved | Rate | Wilson 95% CI | Median search bits | Model calls |
+|---|---|---|---|---|---|---|---|
+| L0 one token | PIT-style mutants [109] of 9 real repositories at pinned commits (Java: commons-math, commons-collections, jsoup, joda-time, gson; Python: click, attrs, pydantic, sympy) | 520,821 | 520,541 | 0.9995 | 0.9994 to 0.9995 | 2.3 | 0 |
+| L0 one token, repositories never tuned on | commons-text, commons-io, more-itertools, httpx | 23,015 | 23,015 | 1.0000 | 0.9998 to 1.0000 | 2.0 | 0 |
+| L1 one statement, Java | ManySStuBs4J 2.0 single-hunk fixes [107] | 24,072 | 9,288 | 0.386 | 0.380 to 0.392 | 3.5 | 0 |
+| L1 one statement, Python | TSSB-3M v1.0.0, shards 14 and 15 [108] | 157,089 | 27,266 | 0.174 | 0.172 to 0.175 | 4.8 | 0 |
 
+L2 to L4 are measured on the Defects4J held-out set of 288 bugs ([Section 8.1](#81-defects4j)). L5 to L7 follow the protocols of [Section 8.2](#82-swe-bench-lite-offline). Section 6 gives the method, the gate and the energy of each row.
+
+The rates read as intent bits. At L0 the missing bits are almost all on the line, and a prior-ordered single-token neighbourhood supplies them in a median of 2.3 bits. At L1 the engine sees only the 7-line hunk. It closes the categories whose bits are inside the hunk (Java: changed operator 91%, swapped boolean literal 84%, swapped arguments 82%; Python: changed boolean literal 98.8%, swapped arguments 99.4%) and leaves open those whose bits are outside it: method names (22%) and identifiers (37%) need the file and its types, and new conjuncts (3% to 7%) and whole-statement rewrites (Python, 1.2% of a category that is 34% of the corpus) are new intent. New intent is what a supplier (a specification, a test, a person or a local model) provides once, after which the fit is in the index.
 
 ## 3. The Form
 
@@ -209,7 +217,7 @@ A candidate is promoted only when it passes the gate. The gate replays the node'
 
 ### 4.4 Receipts
 
-Every promotion, refusal, deferral and install is a mutation in an append-only log chained with SHA-256, so tampering with any past entry breaks the chain [29, 30]. Each handler's cost is priced from interpreter operation counts with the host cost table of FGIR, the native-code backend of flowG, and labeled `est_j`. Each foreman call carries its receipt. Track B adds a package energy counter, labeled `reported_j`.
+Every promotion, refusal, deferral and install is a mutation in an append-only log chained with SHA-256, so tampering with any past entry breaks the chain [29, 30]. Each handler's cost is priced from interpreter operation counts with the host cost table of FGIR, the native-code backend of flowG, and labeled `est_j`. Each foreman call carries its receipt. The ladder runs add a package energy counter on a subsample, labeled `reported_j`.
 
 ### 4.5 The Form compiler
 
@@ -276,44 +284,43 @@ The lift reads the same order machine from Rust, Python, TypeScript and Go fixtu
 
 ## 6. Results
 
-Every run below has a locked preregistration whose SHA-256 is in the repository, and every artifact is kept.
+**Method.** Each corpus is shuffled with a fixed seed. The first 2,000 positions of each shuffle, and for L0 three whole repositories (commons-lang, requests, flask), form the development split, on which the gears may be tuned; development results are not reported. Every remaining task is in the test split. Before a test run the engine is committed and its binary hash recorded, and no gear changes during the run. Every row in this section is a frozen-engine result on test tasks only, with 0 model calls. The preregistration (`PREREG.json`), the per-task rows and the report script are in the [public repository](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
+
+**Gate.** At L0 and L1 the location is given and the gate is token identity: the repaired line or statement must equal the developer's, token for token. This is stricter than passing the tests, because a patch can pass a weak test suite and still be wrong. Qi and colleagues found that most patches GenProg reported as fixes were plausible but incorrect [92]; overfitting to tests is documented in search-based and semantics-based repair [93, 94] and addressed with generated tests [95]; tools score higher on the benchmark they were tuned on [96]; and fault localization biases comparisons [97]. Token identity removes the plausibility gap on these rungs, and giving the location removes the localization term, so the rate measures the repair gears alone. L2 and above use the tests as the gate and report plausible and correct counts separately (Section 8.1).
 
 <div id="61-track-a-a-frozen-repair-corpus" class="anchor-alias" aria-hidden="true"></div>
+<div id="61-track-a-a-development-repair-corpus" class="anchor-alias" aria-hidden="true"></div>
 
-### 6.1 Track A: a development repair corpus
+### 6.1 L0: one-token faults
 
-Corpus20 holds 20 real regressions from five open-source libraries (strsim, heck and shlex in Rust; packaging and idna in Python). Each task has a failing test and a gold patch, and tests run sandboxed with no network. A task is valid when the gold patch solves it and no patch does not. Gate: the task's tests pass.
-
-| Run | Valid tasks | Solved | Model calls | Calls per solved task | By gear |
-|---|---|---|---|---|---|
-| corpus20, solver A (small rule set, local model last) | 20 | 10 of 20 | 31 | 3.10 | G1 rules 9, local model 1 |
-| corpus20-2026-10-11b, solver B (tiered G1 rules) | 20 | **20 of 20** | **0** | **0.00** | G1 rules 20 |
-
-In corpus20-2026-10-11b, 18 of 20 solver fixes leave the edited file byte-identical to gold. The other 2 are equivalent: idna-label-length writes `>= 64` for `> 63`, equal on integers, and packaging-dev-of-post puts the added conjunct first. All three preregistered hypotheses held: every task is valid; the solver resolves 20 of 20 with a patch equal to gold; no task reaches the model. With n = 20, the 95% Wilson interval on the resolve rate is 84% to 100%.
-
-**Development set and held-out set.** Corpus20 is a development set: the G1 rule set was built with these tasks in view, so 20 of 20 measures what a rule gear can close on a real repair corpus with no model call, not the share of unseen repairs the rules cover. A TBar-style engine of 15 fix-pattern categories on tree-sitter also resolves 20 of 20 with 0 model calls and 18 byte-identical patches (registration 2026-10-11c). Coverage of unseen repairs is measured on a held-out set with the rules frozen first ([Section 8.4](#84-a-held-out-run-with-the-gears-frozen)).
-
-**What the gate does and does not certify.** Passing the task's tests is plausibility, not correctness. Qi and colleagues found that most patches GenProg reported as fixes were plausible but incorrect [92], and overfitting to the tests has been documented in search-based and semantics-based repair [93, 94] and addressed by generated tests [95]. Repair tools also score higher on the benchmark they were tuned on than elsewhere [96], and fault localization biases the comparison [97]. In Track A the stronger evidence is byte identity: 18 of 20 patches equal the developer's patch, and the other 2 are equivalent by inspection. Byte identity rules out overfitting on those tasks; it does not measure coverage beyond them, which the held-out set measures.
+The L0 corpus is every PIT-style mutant [109] with a valid replacement token in nine real repositories at pinned commits, five Java and four Python: 520,821 test tasks out of 547,448. The engine (commit `65571d0`, gears G0-T and G1-J) restores 520,541, a rate of 0.9995 (95% Wilson interval 0.9994 to 0.9995) at a median of 2.3 search bits. Of the 280 unsolved, 108 are mutated digits inside floating-point literals and 2 are inside Python set literals. A float-literal gear (G0-F, commit `ecfe5a1`) is tested on four repositories never used for tuning (commons-text, commons-io, more-itertools, httpx): 23,015 of 23,015 tasks, 1.0000 (0.9998 to 1.0000), a median of 2.0 search bits. Mutants are a stand-in for real one-token faults that Just and colleagues found to be coupled with real faults [110].
 
 <div id="62-track-b-joules-per-solved-task-on-jetson-hub" class="anchor-alias" aria-hidden="true"></div>
 
-### 6.2 Track B: joules per solved task on an x86 laptop
+### 6.2 L1: one-statement bugs from real histories
 
-Track B runs the same corpus on a Linux laptop with a 14-core x86 processor. Its hostname is `jetson-hub`, which appears in the artifact paths; it is not an NVIDIA Jetson. The benchmark and the model server ran pinned to CPUs 2 to 5. The meter is RAPL (Running Average Power Limit), the processor's on-chip package energy counter. **Baseline method:** before each run the meter samples the package for 10 s with none of our processes running and takes that as idle power; `reported_j` is the run's counter delta minus idle power times the run's duration. The machine was busy with CI (continuous integration) runners throughout, and the idle sample moved between 25.7 W and 57.8 W. Every figure is `reported_j`. `measured_j` is reserved for a wall meter. Because idle moved by a factor of two under CI load, idle subtraction is not well defined on this machine: 2 of the 20 solver rows and 4 of the 20 gold rows came out negative after subtraction. The table therefore gives the gross counter reading beside the idle-subtracted one. RAPL is a package-scoped, modeled counter [105]. The model server for solver A was local and pinned to the same package, so its energy is inside the reading; no remote model was called. Each row is one pass, with no repeats and no interval.
+L1 uses two public datasets of real single-statement bug fixes mined from open-source histories. ManySStuBs4J 2.0 [107] gives 24,072 Java test tasks; the engine (commit `f2701b7`) resolves 9,288, a rate of 0.386 (0.380 to 0.392). TSSB-3M v1.0.0 [108] gives 157,089 Python test tasks from shards 14 and 15; the same engine resolves 27,266, a rate of 0.174 (0.172 to 0.175). The engine receives the 7-line hunk only, so the Java rate is a hunk-only result; the full-file result is the next row of this table. Per-category rates are in Section 2.3 and the full per-stratum tables are in the repository. These datasets have no published repair leaderboard under this gate (hunk only, token identity, location given), so no learned-repair number is set beside them; Defects4J, which does have one, is compared with TBar in Section 8.1.
 
-| Solver | Solved | Model calls | `reported_j` per solved task, net of idle | `reported_j` per solved task, gross | Seconds |
-|---|---|---|---|---|---|
-| Solver A (2026-10-10) | 11 of 20 | 29 | 712.4 | 3,086.4 | 695 |
-| Solver B (2026-10-11b) | **20 of 20** | **0** | **84.2** | **380.7** | 154 |
-| Gold patch | 20 of 20 | 0 | 2.0 | 12.7 | 5 |
+### 6.3 Energy
 
-Solver B passes the gate on every task, at 8.5 times fewer net and 8.1 times fewer gross reported joules per solved task than solver A. The measurement on an idle machine with a wall meter, with at least 10 repeats, is [Protocol 8.3](#83-a-wall-meter). Gold, the cost of applying a known fix and running the tests, is the floor of this corpus: 2.0 `reported_j` per task. The distance from 84.2 to 2.0 is the search that retrieval and proof still pay for.
+Every row carries `est_j`, an estimate of CPU seconds times 10 W: 0.40 J per solved task at L0, 0.13 on the fresh repositories, 0.10 on ManySStuBs4J and 0.27 on TSSB-3M. A subsample was read on RAPL [105], the processor's on-chip package counter, on a Linux laptop with an Intel i9-13900H (hostname `jetson-hub`; not an NVIDIA Jetson). The harness ran on 4 pinned CPUs, and `reported_j` is the package delta over the whole run, Python driver included, less idle power from a 10 s sample taken just before, times the run's duration. Continuous-integration runners were up, so idle was 40 W to 44 W and the uncertainty is about ±1 W times the duration, ±10 J on these totals.
 
-### 6.3 The soaks converge
+| Subsample (test split) | Tasks | Solved | Raw J | `reported_j` | `reported_j` per solved task | Seconds |
+|---|---|---|---|---|---|---|
+| L0, gson mutants (seeded, first 3,000) | 3,000 | 3,000 | 648.3 | 167.5 | 0.056 | 11.8 |
+| L1, ManySStuBs4J positions 2,000 to 3,999 | 2,000 | 690 | 377.2 | 17.9 | 0.026 | 8.2 |
 
-Track C runs the five example specifications under two resolvers for 20 rounds each and reports `est_j` per closed task. In the 2026-10-09 run, every specification reaches a round with zero new escalations, in round 4 to 7 for both resolvers, and from that round the all-in `est_j` per closed task equals the handler floor: about 2 to 5 nanojoules per task. The gear stack resolved every case from G0 and G1, with zero model calls. In the 2026-10-10 live2 run, on live traffic only, all 12 runs reach a quiet round before round 20 (web-api 4, joule-db-core 7, follow-bible-ingest 6, follow-bible-ingest-schemas 8, ask-server 5, soak-g2-schemas 5), and every run closes tasks through the gate. `measured_j` is empty in every row.
+The L1 subsample builds its project index from its 2,000 tasks only, so its solve rate (34.5%) is below the full run's. `measured_j`, a wall meter on a named rail, is empty in every row; its protocol is Section 8.3.
 
-### 6.4 Model calls in the first soak
+<div id="63-the-soaks-converge" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.4 The soaks converge
+
+The soak runs the five example specifications under two resolvers for 20 rounds each and reports `est_j` per closed task. In the 2026-10-09 run, every specification reaches a round with zero new escalations, in round 4 to 7 for both resolvers, and from that round the all-in `est_j` per closed task equals the handler floor: about 2 to 5 nanojoules per task. The gear stack resolved every case from G0 and G1, with zero model calls. In the 2026-10-10 live2 run, on live traffic only, all 12 runs reach a quiet round before round 20 (web-api 4, joule-db-core 7, follow-bible-ingest 6, follow-bible-ingest-schemas 8, ask-server 5, soak-g2-schemas 5), and every run closes tasks through the gate. `measured_j` is empty in every row.
+
+<div id="64-model-calls-in-the-first-soak" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.5 Model calls in the first soak
 
 The first end-to-end soak ran `rce auto examples/web-api.rce --foreman federated --rounds 5` on 2026-04-25, with a federated model resolver over 12 providers and auto-approval. Each round pumps 5 traffic events into the source nodes, ticks, resolves every escalation and approves the queued mutations. Round 1 had 10 new escalations, 10 promotions and 10 model calls. Rounds 2 to 5 had 0 of each, and the log integrity check passed. That is 10 model calls in 5 rounds, against 50 if the model were called every round. The counts are as printed in `SOAK_RESULTS.md` in the crate. No energy was read in this run.
 
@@ -333,7 +340,7 @@ The second path rests on an engineering fact: code is reused at every scale. Eac
 | Mined fix patterns | PAR, TBar [22, 23] | PAR found "several common fix patterns" in more than 60,000 human patches. TBar's 15 pattern categories fix 43 Defects4J bugs correctly in the standard pipeline, and 74 of 101 with perfect fault localization, with no learning. |
 | Cross-language tasks | Rosetta Code | 1,360 tasks, each one concept implemented across many of 1,009 known languages. |
 
-Each row is an input to the engine. Clones and dedup say a fit usually exists, which is G0. Recurring fixes say adaptation is mostly a small catalog of guarded rewrites, which is G1. Line-level redundancy shrinks the search space of G2. Track A is this evidence at small scale: every fix came from G1 rules, and 18 of 20 match the human fix byte for byte. Two cautions sharpen the reading. Duplicates inflate retrieval and model scores unless removed [104]. And buggy lines are less natural than fixed ones [45], so the bug itself is the case lookup is least able to predict; the fix shape, not the buggy line, is what G0 and G1 must key on. The rule-mining line that does this at scale, from GenProg's generate-and-validate search [88] and Prophet's learned correctness model [89] to Getafix at Facebook [90] and Sorald's model-free repair of static-analysis violations [91], derives templates from disjoint history and reports precision on unseen cases [98]. That is the standard Section 8.4 adopts.
+Each row is an input to the engine. Clones and dedup say a fit usually exists, which is G0. Recurring fixes say adaptation is mostly a small catalog of guarded rewrites, which is G1. Line-level redundancy shrinks the search space of G2. The L0 and L1 rungs measure this at scale on held-out splits (Section 6). Two cautions sharpen the reading. Duplicates inflate retrieval and model scores unless removed [104]. And buggy lines are less natural than fixed ones [45], so the bug itself is the case lookup is least able to predict; the fix shape, not the buggy line, is what G0 and G1 must key on. The rule-mining line that does this at scale, from GenProg's generate-and-validate search [88] and Prophet's learned correctness model [89] to Getafix at Facebook [90] and Sorald's model-free repair of static-analysis violations [91], derives templates from disjoint history and reports precision on unseen cases [98]. That is the standard Section 8.4 adopts.
 
 ## 8. Measurement protocols for what comes next
 
@@ -343,7 +350,7 @@ Each protocol is fixed before its run: preregistration committed, seeds and solv
 
 Defects4J holds 854 active real Java bugs, each with reproducing tests [37].
 
-1. Run a 100-bug subset first, offline, through `defects4j checkout`.
+1. Develop on a 100-bug subset, offline, through `defects4j checkout`; report held-out results only, on a disjoint set of 288 bugs frozen before the run (`FROZEN-heldout-v1`).
 2. Run G0, then G1, then G2, then a local model last. Record the gear that closed each bug.
 3. Gate: the triggering tests and the full suite pass. Report plausible and correct counts separately; correct means equivalent to the developer patch on review.
 4. Report model calls per correct fix and joules per correct fix, labeled.
@@ -366,11 +373,13 @@ SWE-bench Lite is a 300-task subset of real GitHub issues resolved by hidden tes
 2. Idle machine: CI runners and other builds stopped, and a quiet window gate checked before each block and recorded.
 3. Subtract a measured idle baseline, and state the method.
 4. Fill `measured_j` from the meter alone. Report `reported_j` (RAPL) and `est_j` beside it in separate columns. Never sum across labels.
-5. Repeat Track B on corpus20, then on the Defects4J subset.
+5. Repeat the RAPL subsamples of Section 6.3 under the meter, then the Defects4J held-out set.
 
 ### 8.4 A held-out run with the gears frozen
 
-1. Freeze G0, G1 and G2 at a tagged commit and publish the rule set with its authoring timestamps and a rules by tasks coverage matrix for corpus20.
+This is the method of Section 6, extended to new corpora.
+
+1. Freeze G0, G1 and G2 at a tagged commit, record the binary hash, and publish the rule set with its authoring timestamps.
 2. Draw a disjoint held-out slice: the Rust and Python instances of Multi-SWE-bench [102] and BugsInPy [103], de-duplicated against G0's index [104].
 3. Preregister the slice, the seeds and the hypotheses before the first run.
 4. Report resolved, plausible and byte-identical counts separately, each with a 95% interval.
@@ -382,7 +391,7 @@ SWE-bench Lite is a 300-task subset of real GitHub issues resolved by hidden tes
 3. Remote model: an agent with a frontier model, its energy estimated from provider disclosures and labeled `est_j`.
 4. Report cost-of-pass [101] in joules and in dollars for every row, with cost controlled as Kapoor and colleagues require [100].
 
-**Proposition 8 (floor approach).** As G0 and G1 coverage grows, joules per solved task approach the gold floor of applying a known fix and running the tests. Tracks A and B on the Defects4J subset under the wall meter test it.
+**Proposition 8 (floor approach).** As G0 and G1 coverage grows, joules per solved task approach the gold floor of applying a known fix and running the tests. The ladder rungs and the Defects4J held-out set under the wall meter test it.
 
 ## 9. Ties to the companion papers
 
@@ -409,16 +418,16 @@ Fixed before the held-out run of Section 8.4.
 
 Each item is open work with its protocol named.
 
-1. The held-out run with frozen rules and published authoring dates (Section 8.4).
+1. Held-out results on L2 to L4, the Defects4J set of 288 bugs (Section 8.1), and on L5 to L7 (Section 8.2).
 2. Baselines in one table, cost-of-pass in joules and dollars (Section 8.5).
 3. The first `measured_j`: a wall meter on an idle host, at least 10 repeats, gross and net side by side (Section 8.3).
-4. The per-rung ladder results (Section 2.3).
+4. The full-file L1 Java result, with a type-indexed API index as the next gear (Section 6.2).
 5. The 626-language survey published with its method (Figure 1).
-6. A public data release of the corpus, the preregistrations and the receipts.
+6. New held-out corpora with the gears frozen: Multi-SWE-bench and BugsInPy (Section 8.4).
 
 ## 12. Conclusion
 
-A program is a database functional state machine, and RCE treats coding as a conversion from high-entropy intent to that low-entropy Form. Correctness is the gate and joules are the ranking. On a 20-task development corpus, rule gears closed every task with no model call at 84.2 net and 380.7 gross reported joules per solved task, and in the first soak the model was called 10 times in round 1 and not again. The verification layer proves the rewrites in Z3 and the kernel in Kani, and differential testing ties five targets to one trace. What remains is to show coverage on unseen tasks with the rules frozen, against baselines, under a wall meter. Those protocols are fixed in Sections 8.3 to 8.5 and the falsifiers in Section 10.
+A program is a database functional state machine, and RCE treats coding as a conversion from high-entropy intent to that low-entropy Form. Correctness is the gate and joules are the ranking. On held-out test splits with a frozen engine and no model call, the gears repair 99.95% of 520,821 one-token faults and all 23,015 in repositories never tuned on, 38.6% of 24,072 single-statement Java bugs and 17.4% of 157,089 Python bugs, at hundredths of a reported joule per solved task on a package counter; in the first soak the model was called 10 times in round 1 and not again. The verification layer proves the rewrites in Z3 and the kernel in Kani, and differential testing ties five targets to one trace. What remains is the upper rungs, baselines in the same table, and a wall meter. Those protocols are fixed in Sections 8.3 to 8.5 and the falsifiers in Section 10.
 
 ## References
 
@@ -633,3 +642,11 @@ A program is a database functional state machine, and RCE treats coding as a con
 [105] K. N. Khan, M. Hirki, T. Niemi, J. K. Nurminen and Z. Ou, "RAPL in Action: Experiences in Using RAPL for Power Measurements," *ACM TOMPECS* 3(2), 2018. doi:10.1145/3177754
 
 [106] The Rust project, rustfix and `cargo fix`. https://github.com/rust-lang/rustfix
+
+[107] R.-M. Karampatsis and C. Sutton, "How Often Do Single-Statement Bugs Occur? The ManySStuBs4J Dataset," MSR 2020. doi:10.1145/3379597.3387491
+
+[108] C. Richter and H. Wehrheim, "TSSB-3M: Mining single statement bugs at massive scale," MSR 2022. doi:10.1145/3524842.3528505
+
+[109] H. Coles, T. Laurent, C. Henard, M. Papadakis and A. Ventresque, "PIT: a practical mutation testing tool for Java," ISSTA 2016. doi:10.1145/2931037.2948707
+
+[110] R. Just, D. Jalali, L. Inozemtseva, M. D. Ernst, R. Holmes and G. Fraser, "Are mutants a valid substitute for real faults in software testing?" FSE 2014. doi:10.1145/2635868.2635929

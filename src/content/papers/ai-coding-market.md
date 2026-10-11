@@ -1,6 +1,6 @@
 ---
 title: "The Promised Trillion Dollar AI-Coding Market"
-deck: "Who projects the AI coding market, what they project, and what every projection assumes: one path to autonomous computer automation, with high energy, high compute, per-token rent and the model in the loop forever. The Reality Code Engine (RCE) measures a second path. With correctness as the gate and joules as the ranking, it resolved 20 of 20 repair tasks with 0 model calls. Where that path covers a task, the marginal cost falls toward the energy to run it, and the projections lose their base."
+deck: "Who projects the AI coding market, what they project, and what every projection assumes: one path to autonomous computer automation, with high energy, high compute, per-token rent and the model in the loop forever. The Reality Code Engine (RCE) measures a second path. With correctness as the gate and joules as the ranking, on held-out test splits with a frozen engine and 0 model calls it repaired 520,541 of 520,821 one-token faults and 38.6% of 24,072 real single-statement Java bugs. Where that path covers a task, the marginal cost falls toward the energy to run it, and the projections lose their base."
 id: ai-coding-market
 status: "Economics essay"
 author: "David Charlot, Open Interface Engineering"
@@ -23,7 +23,7 @@ The trillion-dollar AI coding market is David Charlot's informed hyperbolic clai
 
 Every one of these projections assumes the same thing. There is only one path to autonomous computer automation. It is high energy, high compute, high entropy and disorder. A model sits in the loop for every task, and every task pays rent per token.
 
-The [RCE research paper](/papers/rce/) measures a second path. A program is a database functional state machine: one Form, many fits. Most fits already exist. Correctness is the gate, and joules are the ranking. On a 20-task development corpus, RCE resolved 20 of 20 with 0 model calls ([RCE §6.1](/papers/rce/#61-track-a-a-development-repair-corpus)). Where that path covers a task, the marginal cost of the task falls toward the energy to run it, and a market priced on generation loses its base on that task. This essay separates the projections from the measurements, names what each projection assumes, and states where it breaks.
+The [RCE research paper](/papers/rce/) measures a second path. A program is a database functional state machine: one Form, many fits. Most fits already exist. Correctness is the gate, and joules are the ranking. On held-out test splits with the engine frozen and 0 model calls, RCE repaired 520,541 of 520,821 one-token faults in nine real repositories and 23,015 of 23,015 in four never used for tuning ([RCE §6.1](/papers/rce/#61-l0-one-token-faults)), and 38.6% of 24,072 Java and 17.4% of 157,089 Python single-statement bugs from real histories ([RCE §6.2](/papers/rce/#62-l1-one-statement-bugs-from-real-histories)). Where that path covers a task, the marginal cost of the task falls toward the energy to run it, and a market priced on generation loses its base on that task. This essay separates the projections from the measurements, names what each projection assumes, and states where it breaks.
 
 <!-- include: economics-thesis -->
 
@@ -165,27 +165,28 @@ These are measurements, labeled as RCE labels them. They come from the [RCE rese
 
 | Measurement | Result | Label | Where |
 |---|---|---|---|
-| 20-task development corpus (rules written after the corpus froze; n = 20) | 20 of 20 resolved, 0 model calls; 18 fixes byte-identical to the human fix, 2 equivalent | Measured counts | [RCE §6.1](/papers/rce/#61-track-a-a-development-repair-corpus) |
-| The same corpus, solver A (small rule set, local model last) | 10 of 20, 3.10 model calls per resolved task | Measured counts | [RCE §6.1](/papers/rce/#61-track-a-a-development-repair-corpus) |
-| Energy per solved task, solver B | 84.2 J, 20 of 20, 154 s | `reported_j` (RAPL package counter less a stated idle baseline) | [RCE §6.2](/papers/rce/#62-track-b-joules-per-solved-task-on-jetson-hub) |
-| Energy per solved task, solver A | 712.4 J, 11 of 20, 29 model calls, 695 s | `reported_j` | [RCE §6.2](/papers/rce/#62-track-b-joules-per-solved-task-on-jetson-hub) |
-| Energy to apply the known fix and test it (gold) | 2.0 J per task | `reported_j` | [RCE §6.2](/papers/rce/#62-track-b-joules-per-solved-task-on-jetson-hub) |
-| First soak with a production model resolver | 10 model calls in round 1, then 0 in rounds 2 to 5; 50 if the model ran every round | Measured counts | [RCE §6.4](/papers/rce/#64-model-calls-in-the-first-soak) |
-| Soaks on live traffic | all 12 runs reach a round with zero new escalations before round 20 | Measured counts; energy `est_j` | [RCE §6.3](/papers/rce/#63-the-soaks-converge) |
+| L0 one-token faults, 9 real repositories, held-out test split | 520,541 of 520,821 (0.9995, 95% CI 0.9994 to 0.9995), 0 model calls | Measured counts | [RCE §6.1](/papers/rce/#61-l0-one-token-faults) |
+| L0, 4 repositories never used for tuning | 23,015 of 23,015 (95% CI 0.9998 to 1.0000), 0 model calls | Measured counts | [RCE §6.1](/papers/rce/#61-l0-one-token-faults) |
+| L1 Java, ManySStuBs4J 2.0, held-out | 9,288 of 24,072 (0.386, 0.380 to 0.392), 0 model calls, hunk only | Measured counts | [RCE §6.2](/papers/rce/#62-l1-one-statement-bugs-from-real-histories) |
+| L1 Python, TSSB-3M v1.0.0, held-out | 27,266 of 157,089 (0.174, 0.172 to 0.175), 0 model calls | Measured counts | [RCE §6.2](/papers/rce/#62-l1-one-statement-bugs-from-real-histories) |
+| Energy per solved task, all rungs | 0.10 J to 0.40 J | `est_j` (CPU seconds × 10 W) | [RCE §6.3](/papers/rce/#63-energy) |
+| Energy per solved task, RAPL subsample | 0.056 J (L0, 3,000 tasks), 0.026 J (L1, 690 solved of 2,000); ±10 J on run totals | `reported_j` (package counter less a stated idle baseline) | [RCE §6.3](/papers/rce/#63-energy) |
+| First soak with a production model resolver | 10 model calls in round 1, then 0 in rounds 2 to 5; 50 if the model ran every round | Measured counts | [RCE §6.5](/papers/rce/#65-model-calls-in-the-first-soak) |
+| Soaks on live traffic | all 12 runs reach a round with zero new escalations before round 20 | Measured counts; energy `est_j` | [RCE §6.4](/papers/rce/#64-the-soaks-converge) |
 
 `measured_j` is reserved for a wall meter and is empty in every row.
 
 ## 6. Where the projections break
 
-**Per-token rent breaks on covered tasks.** In the development corpus, a covered repair bought 0 tokens. Between solver A and solver B, model calls per resolved task went from 3.10 to 0 and reported joules per solved task fell 8.5 times, from 712.4 to 84.2 [RCE §6.1, §6.2]. A revenue line priced per token earns nothing on a task that needs no token.
+**Per-token rent breaks on covered tasks.** On the held-out rungs, every covered repair bought 0 tokens: 520,541 one-token repairs and 36,554 single-statement repairs from real histories [RCE §6.1, §6.2]. A revenue line priced per token earns nothing on a task that needs no token.
 
-**AI in the loop forever breaks at promotion.** In the first soak the model was called 10 times in round 1 and never again for the same cases [RCE §6.4]. The model compiled itself out of the loop. Task 10,000 does not cost what task 1 cost.
+**AI in the loop forever breaks at promotion.** In the first soak the model was called 10 times in round 1 and never again for the same cases [RCE §6.5]. The model compiled itself out of the loop. Task 10,000 does not cost what task 1 cost.
 
-**High energy is not required for a correct result.** The gate passed at 84.2 J per task with no model, and the floor of the same corpus is 2.0 J [RCE §6.2]. One median text prompt to a production assistant is measured at 0.24 Wh, or 864 J [12]. An agentic coding task uses many prompts, and the IEA puts agentic queries at hundreds or thousands of times the energy of a simple one [10]. These are different tasks on different machines, so they are not a ratio. They are an order of magnitude to test, under Protocol E1.
+**High energy is not required for a correct result.** A held-out repair passed the gate at 0.026 to 0.056 reported joules per solved task on a package counter, with no model [RCE §6.3]. One median text prompt to a production assistant is measured at 0.24 Wh, or 864 J [12]. An agentic coding task uses many prompts, and the IEA puts agentic queries at hundreds or thousands of times the energy of a simple one [10]. These are different tasks on different machines, so they are not a ratio. They are an order of magnitude to test, under Protocol E1.
 
-**The evidence is at pilot scale.** The 20-task corpus is a development set ([RCE §6.1](/papers/rce/#61-track-a-a-development-repair-corpus)). What it shows is that a covered repair can need no token. What share of real task volume is covered is not yet measured; Proposition E5 measures it. The soak result, 10 model calls and then 0, is about amortization on live traffic and is the stronger evidence here.
+**Coverage is measured per class.** The rungs give coverage within classes of task: nearly all one-token faults, and 38.6% (Java) and 17.4% (Python) of single-statement bugs, where the open cases are the ones whose intent bits lie outside the hunk or are new ([RCE §2.3](/papers/rce/#23-per-rung-ladder-results)). The share of all real coding volume that falls in covered classes is Proposition E5. The soak result, 10 model calls and then 0, is about amortization on live traffic.
 
-**Two declines multiply.** The price per call falls 9 to 900 times a year at fixed performance, depending on the task [4, 34]. Promotion drives calls per task to zero on covered cases [RCE §6.4]. The cost per task is the product of the two. A projection that extrapolates token volume prices only the first.
+**Two declines multiply.** The price per call falls 9 to 900 times a year at fixed performance, depending on the task [4, 34]. Promotion drives calls per task to zero on covered cases [RCE §6.5]. The cost per task is the product of the two. A projection that extrapolates token volume prices only the first.
 
 **The Spell Check pattern.** [Spell Check is Global](/papers/spellcheck/) records a capability whose marginal cost fell to about zero and that complemented a tool everyone already had. It was bundled into the editor and its separate price disappeared, as bundling economics predicts [13, 14]. A covered coding task has the same two properties: its marginal cost falls to the handler floor, and it complements editors and repositories people already have. The prediction is the same: the covered task is bundled, and what stays priced is the uncovered case and the proof.
 
