@@ -83,10 +83,10 @@ Figure 1 shows how the three layers stack.
 
 For a system $S$, an act $a$ and an episode budget $B$ in joules, eligibility $E(S,a) \in \{0,1\}$ equals 1 only when all four clauses hold.
 
-1. **Prediction first.** A result template $R^*(a)$ is fixed at time $t_0$, before the act, and it discriminates: $D(R^*(a)) \ge \delta$.
+1. **Prediction first.** A result template $R^*(a)$ is fixed at time $t_0$, before the act, and it discriminates: $D(R^*(a)) \ge d_0$. Here $D$ is the probability that the template rejects an outcome drawn without the act, and $d_0 > 0$ is fixed with the template. A template that accepts every outcome predicts nothing.
 2. **Coupling to the world.** $I(\mathrm{do}(a); W') > 0$. Here $W'$ is the world state downstream of the actuator, and $\mathrm{do}(a)$ is Pearl's intervention operator [1]. The coupling must survive changes to the system's own inputs. Editing your own sensors does not count [2].
 3. **Consequence borne.** The comparison $m = M(R, R^*(a)) \in \{1, \mu, 0\}$ (match, partial, mismatch) changes the system: $s_{t+1} = f(s_t, m)$.
-4. **Physical floor.** $J(a) \le B$. If no act meets clauses 1 to 4, the act is refusal, with a receipt.
+4. **Physical floor: the joule budget.** $J(a) \le B$. If no act meets clauses 1 to 4, the act is refusal, with a receipt.
 
 Physics already prices clauses 1 to 3. The second law with feedback [3, 4] and the measurement and erasure bound [5] give, for one bath at temperature $T$:
 
@@ -213,7 +213,7 @@ $$
 
 **K4. Finite-time cost.** Erasing a bit in finite time $\tau$ costs more than $k_B T \ln 2$. The excess grows as $\tau$ shrinks [29]. Near equilibrium, the excess work along a protocol is bounded below by the squared thermodynamic length over the duration [30]. Proposition 1 gives the floor for a whole act.
 
-**K5. Quantum ceiling on rate.** A system with mean energy $\langle E\rangle$ above its ground state makes at most $2\langle E\rangle/(\pi\hbar)$ orthogonal transitions per second [31]. That is about $6.04 \times 10^{33}$ transitions per second per joule, computed from the constants. A figure of about $3 \times 10^{33}$ matches $2E/h$, not $2E/(\pi\hbar)$.
+**K5. Quantum ceiling on rate.** A system with mean energy $\langle E\rangle$ above its ground state makes at most $2\langle E\rangle/(\pi\hbar)$ orthogonal transitions per second [31]. That is about $6.04 \times 10^{33}$ transitions per second per joule, computed from the constants. The figure of about $3 \times 10^{33}$ sometimes quoted is $2E/h$, half the Margolus-Levitin rate, since $2E/(\pi\hbar) = 4E/h$.
 
 #### Proposition 1. Joule floor of one act in finite time
 
@@ -374,7 +374,7 @@ Proposition 5 holds by construction. The crediting rule makes $X$ absolutely con
 
 #### Proposition 6. Sampled intelligence converges
 
-**Setting.** The meter is read at cumulative joules $0 = j_0 < j_1 < \dots < j_M = J(T)$, with mesh $\delta = \max_i (j_{i+1} - j_i)$. On $[j_i, j_{i+1})$ the sampled intelligence is
+**Setting.** The meter is read at cumulative joules $0 = j_0 < j_1 < \dots < j_M = J(T)$, with mesh $\Delta = \max_i (j_{i+1} - j_i)$. On $[j_i, j_{i+1})$ the sampled intelligence is
 
 $$
 \hat\iota = \frac{g(j_{i+1}) - g(j_i)}{j_{i+1} - j_i}
@@ -382,9 +382,9 @@ $$
 
 Time samples refine joule samples, because $J$ is continuous.
 
-**Statement.** Under the setting of Proposition 5, $\hat\iota(j) \to g'(j)$ at almost every joule $j$ as $\delta \to 0$, and $0 \le \hat\iota \le 1/(k_BT\ln 2)$ at every mesh. If the meter's reading of each sampled interval has relative error at most $\epsilon < 1$, the reported ratio lies in $[\hat\iota/(1+\epsilon),\, \hat\iota/(1-\epsilon)]$.
+**Statement.** Under the setting of Proposition 5, $\hat\iota(j) \to g'(j)$ at almost every joule $j$ as $\Delta \to 0$, and $0 \le \hat\iota \le 1/(k_BT\ln 2)$ at every mesh. If the meter's reading of each sampled interval has relative error at most $\epsilon < 1$, the reported ratio lies in $[\hat\iota/(1+\epsilon),\, \hat\iota/(1-\epsilon)]$.
 
-**Proof.** $\hat\iota(j)$ is the average of $g'$ over a sampled interval $I \ni j$ of length $h \le \delta$. Since $I \subseteq [j - h, j + h]$,
+**Proof.** $\hat\iota(j)$ is the average of $g'$ over a sampled interval $I \ni j$ of length $h \le \Delta$. Since $I \subseteq [j - h, j + h]$,
 
 $$
 \big|\hat\iota(j) - g'(j)\big| \;\le\; \frac{1}{h}\int_{j-h}^{j+h}\big|g'(u) - g'(j)\big|\,du
@@ -471,7 +471,7 @@ Figure 2 draws the curve of Prediction 1.
 3. Each policy's reading lies in $[(1-\epsilon)J_\pi, (1+\epsilon)J_\pi]$, so the minimum of the readings over the feasible policies lies in $[(1-\epsilon)J^*, (1+\epsilon)J^*]$. Then $\hat J^*_{S_1} \le (1+\epsilon)J^*_{S_1} < (1-\epsilon)J^*_{S_2} \le \hat J^*_{S_2}$.
 4. Let $S_1$ make one attempt per task at 0.1 J that passes with probability 1/2 and never retries. Let $S_2$ make one attempt at 1 J that always passes. Each pass credits $b$ bits. Then $\iota_{S_1} = (b/2)/0.1 = 5b$ bits per joule and $\iota_{S_2} = b$ bits per joule. For any $\delta < 1/2$, $S_1$ never meets the gate, so $J^*_{S_1} = \infty$, while $J^*_{S_2} = 1$ J. $\blacksquare$
 
-**Reading.** Part 4 is the mechanism of R-F6 in Section 8.11: cheap failures raise integrated $\iota$ and leave $J^*$ unchanged or infinite. That is why $\iota$ is read as a density inside a run and $J^*$ is the ranking across systems. Part 3 closes P6 up to a validated $\epsilon$ for each meter.
+**Reading.** Part 4 is the mechanism of R-F6 in Section 8.11: cheap failures raise integrated $\iota$ and leave $J^*$ unchanged or infinite. That is why $\iota$ is read as a density inside a run and $J^*$ is the ranking across systems. Part 3 settles P6 up to a validated $\epsilon$ for each meter.
 
 #### Proposition 9. When cheapest first is optimal
 
@@ -489,7 +489,7 @@ Figure 2 draws the curve of Prediction 1.
 2. Light first costs $c_L + (1-q_L)\,c_H$, because the heavy gear runs only when the light one fails and then passes. Heavy alone costs $c_H$. The first is smaller if and only if $c_L < q_L\,c_H$.
 3. A failed light attempt leaves $B - c_L < c_H$, so the heavy gear cannot run. $\blacksquare$
 
-**Reading.** The fixed cascade, cheapest sufficient first in a fixed order, is optimal when cheap gears pass often enough to pay for their failures: $q_L c_H > c_L$ at each step of a nested cascade, or rising cost matched by falling $p/c$ among independent gears. When the condition fails, going straight to the heavier gear wins, and under a binding budget it can be the only way to close. That is the mechanism of the selector result in Section 8.11. The σ-law selector estimates the ratio with calibrated pass probabilities. It is a value-of-computation rule with joules as the cost, in the sense of Russell and Wefald and of Horvitz (Section 5.1). It stops when the next act no longer pays for its joules. Both rules stop at the floor past which more joules buy no verifiable progress, so both are Mixture of Limits instances. P7 keeps one open part: a regret bound when pass probabilities are estimated, and the nested case with more than two gears, which is a dynamic program over increasing subsequences of gears.
+**Reading.** The fixed cascade, cheapest sufficient first in a fixed order, is optimal when cheap gears pass often enough to pay for their failures: $q_L c_H > c_L$ at each step of a nested cascade, or rising cost matched by falling $p/c$ among independent gears. When the condition fails, going straight to the heavier gear wins, and under a binding budget it can be the only way to close. That is the mechanism of the selector result in Section 8.11. The σ-law selector estimates the ratio with calibrated pass probabilities. It is a value-of-computation rule with joules as the cost, in the sense of Russell and Wefald and of Horvitz (Section 5.1). It stops when the next act no longer pays for its joules. Both rules stop at the floor past which more joules buy no verifiable progress, so both are Mixture of Limits instances. P7 (Section 7.1) lists what remains open: a regret bound when pass probabilities are estimated or sufficiency is not monotone, and the nested case with more than two gears, which is a dynamic program over increasing subsequences of gears.
 
 ### 2.4 Where the studies sit
 
@@ -508,7 +508,7 @@ The definition has four clauses: prediction fixed before the act, coupling to th
 
 ### 3.0 Objections to the floor
 
-The floor used here is contested, and the assumptions (R1) to (R4) of Proposition 1 are where the objections are met. Norton argues that Landauer's principle holds only for protocols with a thermodynamically irreversible step [326]. Maroney and Sagawa separate logical from thermodynamic irreversibility: $k_B T\ln 2$ prices the entropy change of a memory, not a bit as such [327, 328]. López-Suárez, Neri and Gammaitoni operated an irreversible logic gate below $k_B T$ [329]. Wolpert and colleagues argue that the costs of real computers are dominated by mismatch, modularity and clocking rather than by erasure [320]. Each objection narrows the claim rather than reverses it. Proposition 1 is stated only for a record that meets (R1) to (R4), a reset to a fixed state with equal-energy states and no shared interaction energy, which is the case in which the bound holds; the floor is a lower bound, and the measured runs sit 14 or more orders of magnitude above it (Section 8.11). K5 has a similar scope: Jordan shows that the Margolus-Levitin bound does not limit the rate of computation by energy without an assumption on information density [324], so K5 is read as a bound on orthogonal state changes, not on clock speed.
+The floor used here is contested, and the assumptions (R1) to (R4) of Proposition 1 are where the objections are met. Norton argues that Landauer's principle holds only for protocols with a thermodynamically irreversible step [326]. Maroney and Sagawa separate logical from thermodynamic irreversibility: $k_B T\ln 2$ prices the entropy change of a memory, not a bit as such [327, 328]. López-Suárez, Neri and Gammaitoni operated an irreversible logic gate below $k_B T$ [329]. Wolpert and colleagues argue that the costs of real computers are dominated by mismatch, modularity and clocking rather than by erasure [320]. Each objection narrows the claim rather than reverses it. Proposition 1 is stated only for a record that meets (R1) to (R4), a reset to a fixed state with equal-energy states and no shared interaction energy, which is the case in which the bound holds; the floor is a lower bound, and every confirmed act of the runs in Section 8.11 that the meter resolved sits more than 14 orders of magnitude above it. K5 has a similar scope: Jordan shows that the Margolus-Levitin bound does not limit the rate of computation by energy without an assumption on information density [324], so K5 is read as a bound on orthogonal state changes, not on clock speed.
 
 ### 3.1 Proven
 
@@ -614,7 +614,7 @@ Intelligence is the derivative of gated agency in joules, read off a completed r
 
 **Machines.** Memory access costs far more energy than arithmetic [258]. Parameter count matters only through the joules it makes you move. Intelligence per watt measures task accuracy per unit power on local accelerators [259]. Its numerator is benchmark accuracy, not gated agency. MLPerf Power standardizes power measurement from microwatts to megawatts, with each result gated by an accuracy target [260]. That gate is the form of $J^*$. FrugalGPT cascades language models and stops when a scorer accepts the answer [321]. RouteLLM learns to send each query to a strong or a weak model under a cost target [322]. Their cost is dollars per query and their gate is a quality threshold. Read with metered joules and $C(z)$ as the gate, both are cascades in the sense of Proposition 9. ML.ENERGY measures inference energy automatically [261]. TokenPowerBench benchmarks the power of large language model (LLM) inference [262]. Jin, Wei and Brooks analyze the energy of test-time compute [263]. General-purpose models cost much more energy per task than task-specific ones [264]. The cheapest sufficient model wins in joules. That is Mixture of Limits, measured. Samsi and colleagues measured the energy of large language model inference on GPUs (graphics processing units) [265]. Dillavou and colleagues demonstrated decentralized learning in a physical circuit, with no processor [266]. Stern and colleagues trained self-learning circuits for power-efficient solutions and measured the trade between power and error [267]. Saggio and colleagues demonstrated a quantum speed-up for learning agents in a photonic experiment [268]. Fewer interactions to learn is fewer acts to close.
 
-**A kernel-reported acceptor.** Section 8.11 reports a preregistered run of an acceptor agent on a laptop, with prediction first, comparison, refusal and binding joule budgets. Falsifiers were fixed before the run, and several fired: R-F1 (the selectors' joules on shared tasks are not distinguishable), R-F2 (36 of 5,400 episodes overspent, 9 for the σ-law arm and 7 for the fixed cascade at $B = 1.0$), R-F3, R-F5 and R-F6 (Section 8.11). $\iota$ was read off 4,940 receipts. The median confirmed act gave $1.5 \times 10^5$ bits per reported joule, about $2 \times 10^{15}$ times the joules per bit of the floor. Under a binding budget the σ-law selector closed more tasks than the fixed cascade, one Mixture of Limits instance. That comparison was chosen after the run, so it is exploratory, and joules per closed task were equal. The preregistered second run and a second machine repeated the gain at the loosest budget only (Section 8.11.2). Integrated $\iota$ ranked a goal-blind agent first on a loose budget, while $J^*$ ranked it last.
+**A kernel-reported acceptor.** Section 8.11 reports a preregistered run of an acceptor agent on a laptop, with prediction first, comparison, refusal and binding joule budgets. Falsifiers were fixed before the run, and several fired: R-F1 (the selectors' joules on shared tasks are not distinguishable), R-F2 (36 of 5,400 episodes overspent: 9 for the σ-law arm and 7 for the fixed cascade at $B = 1.0$, and 20 for the goal-blind baseline at $B = 0.5$), R-F3, R-F5 and R-F6 (Section 8.11). $\iota$ was read off 4,940 receipts. The median confirmed act gave $1.5 \times 10^5$ bits per reported joule, about $2 \times 10^{15}$ times the joules per bit of the floor. Under a binding budget the σ-law selector closed more tasks than the fixed cascade, one Mixture of Limits instance. That comparison was chosen after the run, so it is exploratory, and joules per closed task were equal. The preregistered second run and a second machine repeated the gain at the loosest budget only (Section 8.11.2). Integrated $\iota$ ranked a goal-blind agent first on a loose budget, while $J^*$ ranked it last.
 
 **Groups simulated.** Crosato and colleagues computed the thermodynamic quantities of simulated collective motion across its critical point [269]. Chen and Prokopenko compared thermodynamic efficiency with purely informational utilities as explanations of collective behavior near criticality [270]. $\iota_G$ in Proposition 7 is the gated, metered form of such a ratio.
 
@@ -717,7 +717,7 @@ Hindi and Arabic searches returned no primary research in those languages. Engli
 
 **P6. Ranking survives meter error.** Proven. Proposition 8, part 3: if $(1+\epsilon)J^*_{S_1}(q) < (1-\epsilon)J^*_{S_2}(q)$, with $\epsilon$ the meter's relative error bound, then $S_1 \succ_q S_2$ under any reading within that error. Missing: validated $\epsilon$ for each meter [271].
 
-**P7. Mixture of Limits optimality.** Partly proven. Proposition 9 gives the exact conditions for independent gears and for two nested gears, and the budget mechanism. The fixed cascade instance tries gears from cheapest up, stops at the first gear whose output passes $C(z)$, and refuses with a receipt if the next gear would break the budget. It achieves the joule minimum up to the cost of failed attempts. In hand: if sufficiency is monotone in gear order and gear costs rise with order, the first sufficient gear is the cheapest sufficient gear. Missing: a regret bound when sufficiency is not monotone, and the conditions under which this rule and the σ-law selector, $a^* = \arg\max[H(a) - \lambda J(a)]$ subject to $J \le B$, choose the same act.
+**P7. Mixture of Limits optimality.** Partly proven. Proposition 9 gives the exact conditions for independent gears and for two nested gears, and the budget mechanism. The fixed cascade instance tries gears from cheapest up, stops at the first gear whose output passes $C(z)$, and refuses with a receipt if the next gear would break the budget. It achieves the joule minimum up to the cost of failed attempts. In hand: if sufficiency is monotone in gear order and gear costs rise with order, the first sufficient gear is the cheapest sufficient gear. Missing: a regret bound when pass probabilities are estimated or sufficiency is not monotone, the nested case with more than two gears, and the conditions under which this rule and the σ-law selector, $a^* = \arg\max[H(a) - \lambda J(a)]$ subject to $J \le B$, choose the same act.
 
 **P8. When agency compounds.** Conditions under which $\alpha_J > 0$ over a run, so that earlier receipts lower the joules of later closures. In hand: an earlier OpenIE toy run found $\alpha_J \le 0$ on near-optimal tasks. Missing: a model of reuse in which stored receipts cut later $J$ by more than the storage and lookup joules. Still gives the memory cost side [225]. Section 8.10 measures the template's share of each act's joules.
 
@@ -733,7 +733,7 @@ Hindi and Arabic searches returned no primary research in those languages. Engli
 | D6 | The physical floor is respected and the gap is known | Measured joules per confirmed bit divided by $k_B T \ln 2$ |
 | D7 | Prediction 1: the optimal act time and the ceiling of an agent that holds a goal | A $\tau$ sweep at two or more instability rates, with act and standing joules metered separately and together |
 
-Section 8.11 reports the first run against D2 to D6, on reported joules. Section 8.11.1 reports the second run on the same machine, with the guard and refusal fixes.
+Section 8.11 reports the first run against D2 to D6, on reported joules. Section 8.11.1 reports the second run on the same machine, with the guard and refusal fixes, and Section 8.11.2 repeats it on a second machine.
 
 ## 8. Experiment plan
 
@@ -764,7 +764,7 @@ Each task has a machine-checkable completeness predicate $C(z)$: unit tests for 
 All arms share the gears, the predicate, the budget, the meters and a randomized interleaved run order.
 
 1. **σ-law selector:** $a^* = \arg\max[H(a) - \lambda J(a)]$ subject to $J \le B$, with refusal on a receipt.
-2. **Fixed cascade (one Mixture of Limits instance):** the cheapest-sufficient rule, with gears tried in a fixed order from cheapest up. The fair rival. Same information, gears, budget and refusal right. Only the selection rule differs.
+2. **Fixed cascade (one Mixture of Limits instance):** the cheapest-sufficient rule, with gears tried in a fixed order from cheapest up. It is the matched comparison: same information, gears, budget and refusal right. Only the selection rule differs.
 3. **Largest gear always:** reference ceiling.
 4. **Smallest gear always:** reference floor, with refusal when it fails.
 
@@ -935,7 +935,7 @@ This run is the same task class, the same gears and the same three arms as Secti
 - **Refusal threshold.** Both selectors use the $r$-quantile of calibration costs for budget-fit tests. $r$ was locked from calibration replay before the main run: $r = 0.1$, with recall 1.0 and precision about 0.976 on the calibration split.
 - **Budgets and seeds.** Per task, $B \in \{0.5, 1.0, 2.0\} \times J_{g2}(q)$, the pilot median of g2 alone. Levels 0.5 and 1.0 bind: pilot fractions exceeding them are 0.98 and 0.4. Level 2.0 does not (0.0067). There are 40 seeds per condition. In all, 10,800 episodes ran.
 - **Quiet window.** Quiet was not achieved. Probes ran until the limit. The last probe before the start, at 21:46 local time, recorded other-process CPU near 621% of one core, with mediaanalysisd and editor helpers at the top. Baseline package power was about 21.4 W. Package power in the main window was about 22.7 W. The run records `quiet_window = no`.
-- **Energy label.** Every joule is `reported_j`: the kernel's per-process energy estimate for the agent (`ri_energy_nj` from `proc_pid_rusage`), with package figures from powermetrics where used for the cross-check. `est_j` is cycles times $1.7826647100706183 \times 10^{-9}$ J, locked in the pilot. `measured_j` is empty: no wall meter was attached.
+- **Energy label.** Every joule is `reported_j`: the kernel's per-process energy estimate for the agent (`ri_energy_nj` from `proc_pid_rusage`), with package figures from powermetrics where used for the cross-check. `est_j` is cycles times $1.783 \times 10^{-9}$ J, locked in the pilot. `measured_j` is empty: no wall meter was attached.
 - **Package cross-check.** In the main window the process meter read 42.35 J. Net package joules were 121.81 J, a ratio of about 2.88 to the process. Baseline package drift was about $-0.082$ W. Because `quiet_window = no`, the cross-check is declared not achievable. The per-process meter remains the run's meter.
 
 **Results.** Mean ± standard deviation over 40 seeds. A run is one arm at one budget level over all 30 tasks. CV is the coefficient of variation, standard deviation over mean. $J$ is reported in millijoules for comparison with Section 8.11.
@@ -961,11 +961,11 @@ This run is the same task class, the same gears and the same three arms as Secti
 
 | ID | Observation | Run 2 | Run 1 |
 |---|---|---|---|
-| R-F1 | At every binding level, the 95% interval of the paired per-task difference in median $J^*$, σ-law minus fixed cascade, includes or exceeds zero | Held. At $B = 1.0$, no task closed by both. At $B = 0.5$, one task closed by both. Shared-task joules still do not show a clear σ-law saving | Fired |
+| R-F1 | At every binding level, the 95% interval of the paired per-task difference in median $J^*$, σ-law minus fixed cascade, includes or exceeds zero | Held, because no interval could be formed: at $B = 1.0$ no task closed by both, and at $B = 0.5$ one did. Shared-task joules show no σ-law saving | Fired |
 | R-F2 | Any episode ends above its budget | Held. 0 of 10,800. The guard charges comparison, receipt and final read | Fired |
 | R-F3 | Refusal recall below 0.9 on infeasible pairs, or over 10% of refusals on pairs some arm closes | Held. Recall 1.0 on 49 infeasible pairs. Share on tasks closed by some arm about 0.081. The $r$-quantile refusal threshold is the change from Run 1 | Fired |
 | R-F4 | Kendall's tau-b between `est_j` and `reported_j` per act below 0.8 | Held. 0.942 on 4,000 acts | Held |
-| R-F5 | CV of run $\iota$ above 0.25 in any condition | Fired at binding levels (0.54 to 2.72). Held for both law arms at $B = 2.0$ (0.117, 0.164) | Fired |
+| R-F5 | CV of run $\iota$ above 0.25 in any condition | Fired at binding levels (0.54 to 2.72) and for the goal-blind arm at $B = 2.0$ (0.284). Held for both selectors at $B = 2.0$ (0.117, 0.164) | Fired |
 | R-F6 | Ranking by $J^*$ differs from ranking by integrated $\iota$ | Fired. At $B = 2.0$, $J^*$ ranks σ-law, fixed cascade, goal-blind. Integrated $\iota$ ranks σ-law, goal-blind, fixed cascade | Fired |
 | R-F7 | A confirmed act below $k_B T\ln 2$ per bit | Held. The lowest act sat about $6.4 \times 10^{14}$ times above | Held |
 | R-F8 | Goal-blind run $\iota$ at least the better selector's at a binding level | Held. 513 against 1,942 at $B = 0.5$. 2,661 against 4,150 at $B = 1.0$ | Held |
@@ -976,7 +976,7 @@ This run is the same task class, the same gears and the same three arms as Secti
 - The refusal quantile closes R-F3. Recall stays 1.0 and the share of refusals on closable tasks falls under 10%.
 - $J^*$ remains the ranking. Integrated $\iota$ still disagrees with it on the loose budget (R-F6).
 - Run $\iota$ is still unstable across seeds at binding budgets (R-F5).
-- On shared closed tasks the σ-law selector still does not show fewer joules than the fixed cascade in the sense that would defeat R-F1's observation at every binding level. The paired-by-seed gain at $B = 2.0$ is more closed tasks, not cheaper closures of the same tasks.
+- R-F1 held only because too few tasks were closed by both selectors to form an interval. No run shows the σ-law selector closing a shared task in fewer joules. The paired-by-seed gain at $B = 2.0$ is more closed tasks, not cheaper closures of the same tasks.
 
 ### 8.11.2 Second machine: a replication with a package energy counter
 
@@ -1039,7 +1039,7 @@ This run repeats the second-run protocol of Section 8.11.1 on a second machine w
 
 | ID | Observation | Part A (RAPL per act) | Part B (cycle model) | Run 2 |
 |---|---|---|---|---|
-| R-F1 | At every binding level, the 95% interval of the paired per-task difference in median $J^*$, σ-law minus fixed cascade, includes or exceeds zero | Held. One task closed by both, at $B = 2.0$, with difference $-0.0052$ J. No task at the other levels | Held. At $B = 1.0$ the interval includes zero. At $B = 0.5$ the single shared task gives $-6.68 \times 10^{-6}$ J | Held |
+| R-F1 | At every binding level, the 95% interval of the paired per-task difference in median $J^*$, σ-law minus fixed cascade, includes or exceeds zero | Held, because no interval could be formed: one task closed by both, at $B = 2.0$, with difference $-0.0052$ J, and none at the other levels | Held, because the observation needs every binding level and $B = 0.5$ has a single shared task ($-6.68 \times 10^{-6}$ J) and no interval. At $B = 1.0$ the interval includes zero | Held |
 | R-F2 | Any episode ends above its budget | Fired. 320 to 327 per condition | Held. 0 of 10,800 | Held |
 | R-F3 | Refusal recall below 0.9 on infeasible pairs, or over 10% of refusals on pairs some arm closes | Held. Recall 1.0 on 88 pairs. Share 0.0011 | Held. Recall 1.0 on 45 pairs. Share 0.071 | Held |
 | R-F4 | Part A: Kendall's tau-b between `est_j` and `reported_j` per act below 0.8. Part B: tau-b between episode `est_j` and episode RAPL net below 0.8 | Fired. 0.368 on 93 acts | Fired. $-0.037$ on 4,000 episodes | Held |
