@@ -25,7 +25,7 @@ This paper defines a gate that lets a machine act only after a check passes, and
 2. It should try the cheapest way to finish a job first and use a big AI model only if nothing cheaper works.
 3. Every decision is written down with the energy it used, so anyone can check it later.
 
-This paper has two parts that share one rule: correctness is the gate, and joules are the ranking. Part I is the commit gate. A proposal may not authorize itself. An irreversible act runs only behind a certificate, and every decision, commit or refuse, is written to a receipt. Part II is Mixture of Limits, which is threshold convergence: a task needs a minimal amount of computation to close, and computation spent past that threshold buys no verified progress, so it is waste. Its standard instance is a cascade that tries the cheapest gear first: Lookup, then Formula, then Solver, then Model. The cascade stops as soon as the task completion predicate $C(z)$ holds, and it refuses with a receipt when the next gear would break the budget. Among systems that complete the task correctly, the one that needs fewer joules ranks higher.
+This paper has two parts that share one rule: correctness is the gate, and joules are the ranking. Part I is the commit gate. A proposal may not authorize itself. An irreversible act runs only behind a certificate, and every decision, commit or refuse, is written to a receipt. Part II is Mixture of Limits: a task needs a minimal expected energy to close, and energy spent after the task is complete buys no verified progress. Its standard instance is a cascade that tries the cheapest gear first: Lookup, then Formula, then Solver, then Model. The cascade stops as soon as the task completion predicate $C(z)$ holds, and it refuses with a receipt when the next gear would break the budget. Among systems that complete the task correctly, the one that needs fewer joules ranks higher.
 
 One board measurement anchors the gate fabric. On an AMD Kria KV260, the onboard INA260 read SOM-level A/B/A differences of 11,428 pJ per gate cycle (standard error 129 pJ, N = 4) for the WCA gate fabric, and 98.0 pJ per seed cycle (standard error 30.8 pJ, N = 4) for the seed fabric. The INA260 sits on `VCC_SOM`, which feeds the processing system, the programmable logic, DDR memory and the module regulators ([KV260 device tree, `ina260@40`](https://gbmc.googlesource.com/linux/+/ccd1cdca5cd433c8a5dff78b69a79b31d9b77ee1/arch/arm64/boot/dts/xilinx/zynqmp-sck-kv-g-revB.dtso)), so these are whole-module differences, not a core-rail or PL-only figure (Section I.3.7). The seed-fabric difference is about 1 mW at 5 V, near the part's 1.25 mA current resolution, and is reported as inconclusive until a PL-rail meter and at least 10 passes are run.
 
@@ -34,7 +34,7 @@ One board measurement anchors the gate fabric. On an AMD Kria KV260, the onboard
 1. A commit envelope: proposal, then certificate, then commit or refuse, then receipt. The certificate is conjunctive: look-up allow AND an energy predicate, optionally AND a control barrier function. Refusal reasons are typed. A Rust software reference implementation, Wise Computer Automation (WCA), runs it (Part I).
 2. A typed provenance invariant. Output labeled `ModelGenerated` can never be promoted to `Deterministic` (Parts I and II).
 3. A cascade with named refusals, and the condition under which cheapest first is optimal in expected joules, which follows from Simon and Kadane's ordering result for sequential search: try gears in decreasing order of $p_i / c_i$, where $p_i$ is the probability that gear $i$ closes the task and $c_i$ its expected energy in joules (Simon and Kadane, 1975) (Part II).
-4. Energy to correct completion as the ranking, defined in Section I.0.2.
+4. Energy to correct completion as the ranking, defined in Section 0.2.
 5. Receipts as an instrument. Each receipt holds the prediction hash and its timestamp before the act, the outcome, the match, the joules by tier (measured, reported, estimated, never summed) and the refusal reason.
 
 ### 0.2 Energy to correct completion
@@ -49,11 +49,11 @@ Correctness and deadlines are constraints. Among systems that pass the gate, jou
 
 ### 0.3 How to read this paper
 
-Sections in Part I are numbered I.n and sections in Part II are numbered II.n, so Section I.3.7 and §II.8.5 both point inside this paper. Each part has its own reference list. Two figures carry the main ideas: Figure 1 (Section I.1) draws the commit gate, and Figure 2 (Section II.2) draws the floor and the plateau of Mixture of Limits. Prices and demand are not argued here.
+Sections in Part I are numbered I.n and sections in Part II are numbered II.n. Each part has its own reference list. Two figures carry the main ideas: Figure 1 (Section I.1) draws the commit gate, and Figure 2 (Section II.1) draws the floor and the plateau of Mixture of Limits. Prices and demand are not argued here.
 
 <div id="part-i" class="anchor-alias" aria-hidden="true"></div>
 
-## Part I. The commit gate (Notational Intelligence)
+## Part I. The commit gate
 
 
 <div id="abstract" class="anchor-alias" aria-hidden="true"></div>
@@ -107,7 +107,7 @@ Terms are defined at first scientific use below and collected here so later sect
 
 ### I. Terms used here
 
-This paper already distinguishes three safety predicates. **Oracle-safe** means the continuous `Vdot <= epsilon` oracle. **Check-safe** means the discrete Safe Q16.16 residual that tracks that oracle in the gate. **Set-safe** means set-invariance under a barrier or shield. NI-4 shows check-safe and set-safe can disagree. Software reference, evidence classes, and the board-result flag are on the shared [glossary](/glossary/).
+This paper already distinguishes three safety predicates. **Oracle-safe** means the continuous `Vdot <= epsilon` oracle. **Check-safe** means the discrete Safe Q16.16 residual that tracks that oracle in the gate. **Set-safe** means set-invariance under a barrier or shield. NI-4 shows check-safe and set-safe can disagree. The software reference is the Rust implementation that produces every simulated result here. Evidence classes are defined in the Notation table: modeled, simulated, board-measured. The page flag `board_metered` is true because of the KV260 readings alone.
 
 **Analytical constants.** `E_LUT_READ = 1e-12` J and the other OpCounter constants in Section I.3.4 are engineering stand-ins for relative comparison inside this model. They are not calibrated board measurements. Do not read them as silicon joules. The zero-false-allows counts against the named oracle stay as reported.
 
@@ -125,7 +125,7 @@ Lee (2022) states a prior claim cleanly. Notation is not decoration. A notation 
 
 The industrial center of recent artificial intelligence is scale. Kaplan et al. (2020) and Hoffmann et al. (2022) report loss scaling with parameters, data, and compute. Hooker (2021) argues that ideas spread when they fit available hardware and kernels. Those results describe how the capability of a proposer grows with the resources spent on it. They do not define a commit predicate.
 
-This paper's contribution is a software reference for that predicate, plus a report of what the reference actually does on toy plants. The contribution is compositional. Boolean LUT shields, energy certificates, ternary table lookup, and tool transports each exist in prior work. The reference wires them as one auditable decision: proposal, then certificate, then typed refuse or commit. The scan recorded in the project state-of-the-art note did not find a published product that ships that exact composition as one boundary. A scan is not a proof of absence. Private systems can exist. The claim is the existence and behavior of this reference, not a global first.
+This paper's contribution is a software reference for that predicate, plus a report of what the reference actually does on toy plants. The contribution is compositional. Boolean LUT shields, energy certificates, ternary table lookup, and tool transports each exist in prior work. The reference wires them as one auditable decision: proposal, then certificate, then typed refuse or commit. The claim is the existence and behavior of this reference, not priority.
 
 Three measurement statements constrain every later number. First, joules computed by the OpCounter are analytical estimates. Second, Verilog results are simulation. Third, the only board joules are the KV260 board-level differences of Section I.3.7, filed as `measured_j` with the meter named. The board-result flag is true for those KV260 runs alone. The Pt V2 stays unmetered. A reader should be able to tell modeled, simulated, and board-measured apart from the method clause attached to the number.
 
@@ -153,7 +153,7 @@ Chollet (2019) defines intelligence as skill-acquisition efficiency and grounds 
 
 Shannon (1948) defines entropy and channel capacity. Shannon (1959) defines rate-distortion: how much description is required for a stated fidelity. Kolmogorov (1965) defines description length by program size. Solomonoff (1964) defines inductive inference by a mixture over programs. Chaitin (1977) develops program-size complexity. Cover and Thomas (2006) is the textbook spine. Jaynes (1957) uses maximum entropy as a rule for distributions under constraints. Brillouin (1956) connects information to physical negentropy in the Maxwell-demon line.
 
-Cross-entropy training of a language model is an information-theoretic objective on a data distribution. Sutskever's 2023 Simons Institute talk, which is a talk and not a paper, discusses unsupervised learning as compression. That fact does not yield a Kolmogorov certificate for a particular string, and it does not yield a commit bit. The distinction is the one drawn in the project citation spine: statistical compression of a training measure is not the same object as a runtime allow set under a plant constraint.
+Cross-entropy training of a language model is an information-theoretic objective on a data distribution. Sutskever's 2023 Simons Institute talk, which is a talk and not a paper, discusses unsupervised learning as compression. That fact does not yield a Kolmogorov certificate for a particular string, and it does not yield a commit bit. Statistical compression of a training distribution is not the same object as a runtime allow set under a plant constraint.
 
 Landauer (1961) proves a lower bound: logically irreversible erasure dissipates at least `kT ln 2` per bit in the ideal model. Bennett (1973) shows that logically reversible computation can avoid that erasure cost in the limit. Horowitz (2014) reports practical CMOS energy at picojoule scales for operations and memory movement, far above the Landauer bound, and treats energy rather than transistor count as the constraint. Mead (1990) is the neuromorphic argument for analog efficiency. Sandberg (2016) warns that a brain power near 20 watt does not bound the energy of an engineered system trained from scratch. A cortical partitioning preprint (arXiv:2102.06273) further warns against treating all of that biological power as comparable compute. This paper uses Landauer and Horowitz as bounds and practice tables. It does not claim that any model in the reference operates near `kT ln 2`.
 
@@ -191,7 +191,7 @@ The reference does not replace that mathematics. The Safe path is a conservative
 
 Ha and Schmidhuber (2018) and Hafner et al. (DreamerV3, arXiv:2301.04104) show that learned models can propose actions from imagined trajectories. LeCun's JEPA essays (Meta research blog) argue for predictive world models. LeCun et al. (2006) is the earlier energy-based learning tutorial. Prediction error is not identically zero in these systems. A predictor can sit upstream of a gate. It cannot replace the gate unless its predictions are perfect and the plant model is the plant. This paper does not compete with those systems on prediction benchmarks.
 
-System One models return a typed answer and a probability for each allowed option in one forward pass, with no free-form text. TypeSafe AI named the category with its hosted Jev model (15 September 2026). Open models followed, among them Laya from Convai Innovations, an encoder with decision heads. They collapse generation cost when the option set is typed and known. Anthropic's Model Context Protocol announcement specifies discovery and transport for tools. Transport delivers a call. It does not evaluate `Vdot`. The reference's MCP adapter is a beachhead: irreversible tools require a certificate before the executor runs. That is an engineering claim about this adapter, tested by the demo in Section I.4, not a claim about every MCP server in production.
+System One models return a typed answer and a probability for each allowed option in one forward pass, with no free-form text. TypeSafe AI named the category with its hosted Jev model (15 September 2026). Open models followed, among them Laya from Convai Innovations, an encoder with decision heads. They collapse generation cost when the option set is typed and known. Anthropic's Model Context Protocol announcement specifies discovery and transport for tools. Transport delivers a call. It does not evaluate `Vdot`. In the reference's MCP adapter, irreversible tools require a certificate before the executor runs. That is an engineering claim about this adapter, tested by the demo in Section I.4, not a claim about every MCP server in production.
 
 <div id="27-what-the-composition-adds" class="anchor-alias" aria-hidden="true"></div>
 
@@ -205,7 +205,7 @@ Shields refuse unsafe actions but are not, in the cited papers, exported as the 
 
 ### I.2.8 Certify / commit peers (2025 to 2026)
 
-Peer systems now enforce a decision **before** an irreversible tool runs. That strengthens the commit-gate thesis; it does not duplicate this reference's record.
+Several recent systems enforce a decision before an irreversible tool runs.
 
 Shi et al., **Progent** (arXiv:[2504.11703](https://arxiv.org/abs/2504.11703)), check every tool call against symbolic least-privilege rules and use an SMT solver so privilege can only narrow without approval (monotonic confinement). Chen, Kang, and Li, **ShieldAgent** (ICML 2025; [proceedings.mlr.press/v267/chen25ae.html](https://proceedings.mlr.press/v267/chen25ae.html)), enforce verifiable safety-policy circuits over agent action trajectories before shielding. Yu, Žikelić, and Henzinger (AAAI 2025; [doi:10.1609/aaai.v39i25.34840](https://doi.org/10.1609/aaai.v39i25.34840)) repair neural certificates via runtime monitoring. A companion line verifies ReLU control-barrier certificates online over a lookahead region (arXiv:[2507.11987](https://arxiv.org/abs/2507.11987)).
 
@@ -261,7 +261,7 @@ if commit then plant_action = u else plant_action = 0
 
 with the certificate attached. The executor for an irreversible tool is called only in the first branch.
 
-Worked record. File `artifacts/schemas/wca.commit.v1/examples/commit_decision_refuse.json` stores a refuse in which `lut_allow` is true and `energy_ok` is false. The reason code is `energy_veto`. The fixed-point detail string is `Vdot_q=1461 > eps_q=13`. `plant_action` is `[0.0]`. The record sets the board-result flag to false. One true conjunct does not commit. That is the content of the conjunction, not a slogan.
+Worked record. File `artifacts/schemas/wca.commit.v1/examples/commit_decision_refuse.json` stores a refuse in which `lut_allow` is true and `energy_ok` is false. The reason code is `energy_veto`. The fixed-point detail string is `Vdot_q=1461 > eps_q=13`. `plant_action` is `[0.0]`. The record sets the board-result flag to false. One true conjunct does not commit.
 
 <div id="32-plants-and-oracles" class="anchor-alias" aria-hidden="true"></div>
 
@@ -453,9 +453,9 @@ Zero false allows is safety. A gate that refuses everything is also safe, and us
 
 <div id="411-what-the-scan-supports" class="anchor-alias" aria-hidden="true"></div>
 
-### I.4.11 What the scan supports
+### I.4.11 What the literature search supports
 
-The state-of-the-art note dated with the September 2026 scans records no published system found that composes a learned Boolean allow LUT, a port-Hamiltonian or Lyapunov energy predicate, and a ternary LUT proposal as one commit boundary with bit-exact RTL simulation and an analytical joule account. Nearest neighbors are named there: shields, energy-aware barrier filters, logic networks as the whole model, and TLMM designs without an energy certificate. The scan supports a gap statement about the literature that was searched. It does not support a priority claim over unpublished work, and it does not support an energy-leadership claim.
+A literature search in September 2026 (Sections I.2.4 to I.2.9) found no published system that composes a learned Boolean allow LUT, a port-Hamiltonian or Lyapunov energy predicate, and a ternary LUT proposal as one commit boundary with bit-exact RTL simulation and an analytical joule account. The nearest neighbors are shields, energy-aware barrier filters, logic networks as the whole model, and TLMM designs without an energy certificate. The search supports a gap statement about the literature that was searched. It does not support a priority claim over unpublished work, and it does not support an energy-leadership claim.
 
 <div id="5-discussion" class="anchor-alias" aria-hidden="true"></div>
 
@@ -505,9 +505,9 @@ World models reduce some prediction error and leave a residual. Specialized infe
 
 <div id="58-analytical-joules-are-not-a-costume-for-watts" class="anchor-alias" aria-hidden="true"></div>
 
-### I.5.8 Analytical joules are not a costume for watts
+### I.5.8 Analytical joules are not watts
 
-The constants in Section I.3.4 are chosen engineering numbers. They make counts comparable inside the repo. They are not calibrated to an Artix-7 rail. Selling them as board watts would be a false measurement report. The correct report is the one given: operation counts are computed; analytical joules are modeled; board joules come only from the KV260 meter and are filed apart. Stage B of Section I.3.7 makes the same model inspectable in a browser at https://research.openie.dev/living/fpga-sim/. It does not change the measurement class. The KV260 rungs do, for the fabric they ran.
+The constants in Section I.3.4 are chosen engineering numbers. They make counts comparable inside the repo. They are not calibrated to an Artix-7 rail. Reporting them as board watts would be a false measurement report. The correct report is the one given: operation counts are computed; analytical joules are modeled; board joules come only from the KV260 meter and are filed apart. Stage B of Section I.3.7 makes the same model inspectable in a browser at https://research.openie.dev/living/fpga-sim/. It does not change the measurement class. The KV260 rungs do, for the fabric they ran.
 
 <div id="6-limits-and-threats-to-validity" class="anchor-alias" aria-hidden="true"></div>
 
@@ -523,7 +523,7 @@ Measurement validity. Analytical constants can be edited to any scale. Compariso
 
 Statistical reporting. Where `RESULTS.md` gives a mean and a standard deviation, this paper copies them. It does not add confidence intervals that were not computed. Multi-seed coverage is five seeds on the bake-offs and the hard gate benchmark's reported spreads. That is not a large-sample claim.
 
-Claim hygiene. The following are not results: silicon joule leadership; operation near the Landauer bound; brain-equivalent power; a win over System One on latency; a win over world-model benchmarks; strong linguistic determinism; identification of "intelligence" with commit count.
+Not claimed. The following are not results: silicon joule leadership; operation near the Landauer bound; brain-equivalent power; a win over System One on latency; a win over world-model benchmarks; strong linguistic determinism; identification of "intelligence" with commit count.
 
 Falsifiers. NI-2 is false if the stated command on the stated crate revision does not print those counts. NI-3 is false if the Safe v2 test reports a false allow on the stated grid. NI-6 is false if the refuse case in the demo file executes. NI-1 is false if the schema and the runtime diverge. A stage B emulator that disagrees with stage A on seed 1 fails its own acceptance test. A future meter that assigns board energy to the analytical number without a calibration study does not confirm the analytical model.
 
@@ -704,7 +704,7 @@ cargo run --release --bin wca-tlmm-scale -- --out artifacts/tlmm_scale_report.js
 
 Icarus Verilog was version 12.0 in the environment note in `RESULTS.md`. RTL checks are simulation. Do not read analytical joules as board power.
 
-Repository flag, factual, not a result: FPGA board result claimed for the KV260 Stage C rungs 1 to 3 only (Section I.3.7), at board level. Every other result in this paper is simulation or analytical.
+The board-result flag is true for the KV260 Stage C rungs 1 to 3 only (Section I.3.7), at board level. Every other result in this paper is simulation or analytical.
 
 <div id="appendix-b-browser-fpga-emulator-architecture-to-build" class="anchor-alias" aria-hidden="true"></div>
 
@@ -729,7 +729,7 @@ Acceptance tests. The seed-1 test passes (Section I.3.7). The others are the spe
 
 Physical follow-on for board **joules**. Stage C already programmed a closed-loop commit-gate on the Alchitry Pt V2 with UART decision agreement; the board still has no onboard joule meter. A USB inline power meter or a shunt-plus-scope on the 5 V rail, on a stated workload, is what would support a board-measured joule. Vivado / post-PAR estimates are not that meter. Vendor logic-cell and memory figures stay vendor figures. See [/living/fpga-sim/alchitry/#energy](https://research.openie.dev/living/fpga-sim/alchitry/#energy).
 
-Out of scope for the emulator: training DiffLogic in the browser, claiming Artix-7 dynamic power from a shader, and flipping the board-result flag to true.
+Out of scope for the emulator: training DiffLogic in the browser and estimating Artix-7 dynamic power from a shader.
 
 <div id="part-ii" class="anchor-alias" aria-hidden="true"></div>
 
@@ -737,265 +737,116 @@ Out of scope for the emulator: training DiffLogic in the browser, claiming Artix
 
 ## Part II. The cascade (Mixture of Limits)
 
-
 <div id="mol-abstract" class="anchor-alias" aria-hidden="true"></div>
 
-## II. Abstract
+## II.1. The rule
 
-Mixture of Limits is a navigation rule for computer intelligence, and it is threshold convergence. For a task there is a **floor**: the minimal spend that closes it. Tokens, parameters, or joules spent past the floor buy no verified progress on the task, so they are waste. The rule rests on information theory and physics, and it has a long history in science. Compression into predictive formulas and invariants has repeatedly done more with less than enumeration of cases: Kepler's laws over Tycho's tables, Newton's closed forms, Shannon's accounting of bits, and Landauer's thermodynamic floor on irreversible erasure. Mixture of Limits states that lineage as a rule a machine can run. Its standard instance is **Lookup → Formula → Solver → Model**, and it closes through Part I's record: propose → certify → commit or refuse → receipt.
+A task is given by a completeness predicate $C(z) \in \{0, 1\}$ over its state $z$. A **gear** is a mechanism that may close the task: Lookup (read a stored, verified value), Formula (evaluate a closed form), Solver (run a search, optimizer or settle with a certificate), or Model (run a learned generator). Gear $i$ has a pass probability $p_i$, the probability that it reaches $C(z) = 1$ on the task class, and an expected energy $c_i$ in joules (J).
 
-Mixture-of-Experts (MoE) routing works inside a generative model and decides which parameters run. Mixture of Limits works around any gear, including a model, and decides whether to spend at all. It names its floors explicitly: value of information (VoI), grammar coverage, energy, certificate, and settle refuse. The two compose: an MoE model can be the Model gear of a Mixture of Limits cascade. Past the floor, the remaining engineering is to reach the same verified result with fewer joules, which is the subject of §II.8. The software reference `mol prove` shows that the rule and its runtime exist in software. Catalog and Landauer figures on its receipts are **estimates**, and `measured_j` is set only when a labeled meter returns a reading.
+The **floor** of a task is the least expected energy at which some policy over gears reaches $C(z) = 1$ with failure probability at most $\delta$. It equals $J^*$ of Section 0.2. The **plateau** is the region of spend beyond the floor: once $C(z) = 1$, no further computation can raise $C$, so further joules buy nothing on the stated objective.
 
-<div id="mol-terms-used-here" class="anchor-alias" aria-hidden="true"></div>
+**Mixture of Limits** is the rule: try gears in an order that minimizes expected energy to the first close, stop at the first gear that closes $C(z)$, and refuse with a receipt when the next gear would exceed the budget or cannot change the decision. Lookup → Formula → Solver → Model is the standard order. It is optimal only under the condition derived in Section II.2. Every close passes through Part I's record: propose, certify, commit or refuse, receipt.
 
-### II. Terms used here
-
-**Software reference** has one meaning in this paper: the software reference path that implements the navigation rule and verifies it against its specification, without board synthesis or package metering. Receipts on that path label energy as estimate and leave `measured_j` unset until a named meter returns. Software reference is not a second, looser evidence class for live silicon. Periodic Stack, replay class, value of information, evidence classes, and the board-result flag are defined on the shared [glossary](/glossary/).
-
-**Model leaf.** The model gear is a conditionally available residual: off by default (`allow_model=false`), opened only when cheaper gears miss, and never coercible to Deterministic (`ModelGenerated` cannot be rewritten as `Deterministic`).
-
-**Living figures for claims on this page.** Cascade: [/living/mol/#mol-diag-01](/living/mol/#mol-diag-01). Named floors: [/living/mol/#mol-diag-02](/living/mol/#mol-diag-02). Commit or refuse then receipt: [/living/mol/#mol-diag-03](/living/mol/#mol-diag-03). MoE contrast: [/living/mol/#mol-tab-01](/living/mol/#mol-tab-01).
-
-<div id="the-law-before-the-survey" class="anchor-alias" aria-hidden="true"></div>
-
-### II. The rule before the survey
-
-Lookup → Formula → Solver → Model is the default order of trial. It is one instance of the rule in Section II.2. Floors stop escalation when more bits stop buying outcomes: VoI, grammar, energy estimate, certificate, settle refuse. Every close goes through propose → certify → commit or refuse → receipt. Section II.8 surveys ways to spend less once the floor is reached. It is a survey under the rule, not the rule itself.
-
-
----
-
-<div id="1-introduction-pursuit-of-limits-toward-agi" class="anchor-alias" aria-hidden="true"></div>
-
-## II.1. Introduction: the pursuit of limits
-
-The dominant construction for computer intelligence (CI) treats the neural net as the substrate and excess tokens as the growth variable. That construction diverges from the historical method that produced reliable science. When Brahe enumerated planetary positions, the tables were necessary but not the law. Kepler compressed years of positions into three predictive relations. Newton further compressed those relations into invariants and closed forms that travel across domains. The same pattern recurs wherever a grammar of nature is covered: a short formula outruns an infinite ledger of cases.
-
-Information theory gives the modern accounting of that pattern. Shannon (1948) measures information in bits. Value of Information (VoI) prices whether another observation is worth its cost for a decision. Landauer (1961) prices irreversible bit erasure in joules at temperature T: $E_{\min} = k_B T \ln 2$ per bit erased in the ideal model. That Landauer quantity is a thermodynamic lower bound and, on Mixture of Limits receipts, a **labeled estimate**, not a wattmeter reading. Together they imply floors: past a point, more bits stop buying outcomes that matter for a stated benefit.
-
-**Thesis.** Reliable computer intelligence comes from finding the floor for each task and stopping there. Adding tokens, parameters, or experts past the floor does not raise the value of information for the stated benefit. Mixture of Limits is the executable navigation rule that binds the named floors: VoI, grammar coverage, energy as a labeled estimate, certificate, and settle refuse. Once VoI is zero past a floor, more spend buys nothing verifiable on that coordinate, and the remaining work is to reach the same result with fewer joules.
-
-The floors themselves are established theory: Shannon, Landauer, Kolmogorov, Solomonoff, Chaitin, and Howard's value of information state them, and formula-first science keeps confirming them.
-
-Many current techniques serve that remaining work: deeper latents, energy-based hybrids, world models, test-time compute, super learning, state-space hybrids, mixture of experts, and the cache, routing, and decode methods of §II.8.13 and §II.8.14. Each is a way to spend less once the floor is known. None of them removes a floor. §II.8.12 places that spend on real devices.
-
-This paper's contribution for Part II is the statement of the rule, grounded in the clean-room `mixture-of-limits` software reference (Apache-2.0 OR MIT). Part I supplies the commit record. Mixture of Limits decides *which gear closes* and *when refuse is success*.
-
-Three measurement facts constrain every later number in Part II. First, joules from catalog surrogates and OpCounter-style analytics are **estimates**, not board power. Second, Landauer annotations are **estimates**, distinct from RAPL, NVML, or `measured_j`. Third, the Mixture of Limits reference makes no board measurement: `measured_j` is set only when a labeled probe returns a reading. The only board joules in this paper are Part I's KV260 readings.
-
-**Scope of Part II.** Section II.2 states the rule and its floors. Section II.3 states the cost model $E(x) \ge \theta(D)\cdot\mu(S,V)$. Section II.4 describes the cascade, the close, and when cheapest first is optimal. Section II.5 connects to the stop on task completion. Section II.6 maps each verified criterion of the software reference to its claim. Section II.7 sketches the mathematics of the VoI stop, grammar coverage, and settle refuse. Section II.8 surveys related work: the established results that state the floors, the historical lineage, formula and mechanism systems, and the techniques that reduce spend once the floor is reached (§II.8.7 to §II.8.14). Section II.9 sets Mixture of Limits beside MoE and model-to-model routing, and states the baselines a cascade claim must beat.
-
----
-
-<div id="2-law-floors-where-more-bits-stop-buying-outcomes" class="anchor-alias" aria-hidden="true"></div>
-
-## II.2. Floors where more bits stop buying outcomes
-
-**Mixture of Limits** asserts that for a task coordinate there is a floor past which additional tokens, parameters, or joules do not purchase verifiable progress. Intelligence is then a **navigation rule** over a structured stack of primitives: spend what the task needs, then stop.
-
-**A rule, not one cascade.** The floor is the least spend that closes the task. Spend past it is waste: if Lookup, Formula, or Solver already covers the coordinate, opening a generator is waste. The plateau is the region past the floor, where VoI is zero and more spend changes nothing verified. That is threshold convergence: converge on the minimal amount needed, and treat more as waste. Mixture of Limits is that philosophy. It is not one fixed cascade or one selector. Lookup → Formula → Solver → Model is one instance. Any selector that stops where additional joules no longer purchase verifiable progress is another.
-
-Consequences:
-
-1. **Mathematical compression / formulas beat excess tokens** when the grammar is covered.
-2. **Neural nets are a conditionally available residual leaf** (off by default; never coercible to Deterministic), not the default substrate of CI.
-3. Routing is **cheapest-sufficient**: escalate only on miss; refuse when escalation is unsafe or VoI-negative.
-4. Proof / energy cost model: $E(x) \ge \theta(D)\cdot\mu(S,V)$ with labeled joule receipts; Landauer labeled as estimate.
-5. **Available devices / multi-fabric**: after a cascade gear closes, pick the cheapest sufficient device class; not one accelerator by default.
-
-**Where the model sits.** Model last is an order of trial. It is not a verdict on what models can do. Snell, Lee, Xu and Kumar showed that a compute-optimal schedule of test-time compute beats a best-of-N baseline by more than 4x in efficiency, and that on some problems test-time compute can stand in for a larger model (arXiv:[2408.03314](https://arxiv.org/abs/2408.03314)). That result is about the schedule inside the model gear. Mixture of Limits prices that schedule in joules like any other gear. The model gear opens whenever the cheaper gears cannot close $C(z)$, and it opens first when they pass too rarely to pay for their failures. Simon and Kadane (1975) give the ordering condition: with $p_i$ the probability that gear $i$ closes the task and $c_i$ its expected energy in joules, trying gears in decreasing order of $p_i / c_i$ minimizes expected energy to the first close.
+**Where the model sits.** Model last is an order of trial, not a verdict on what models can do. Snell et al. (2024) showed that a compute-optimal schedule of test-time compute beats best-of-N by more than 4× in efficiency, and that on some problems test-time compute can substitute for a larger model. That result concerns the schedule inside the Model gear, which is priced in joules like any other gear. The Model gear opens whenever cheaper gears cannot close $C(z)$, and it opens first when they pass too rarely to pay for their failures.
 
 Figure 2 draws the floor and the plateau for one task.
 
 ![Diagram of verified progress against spend for one task. Progress rises in steps as the cascade escalates from Lookup to Formula to Solver; the Solver closes the task, marking the floor. Past the floor the Model stage adds spend with no further verified progress, the plateau where value of information is zero.](/figures/gates/mol-plateau.svg)
 
-*Figure 2. Mixture of Limits on one task. Diagram, not a measurement: verified progress rises in steps through the cascade until the floor, and spend past the floor buys no verified progress (Section II.8.7). A [PNG copy](/figures/gates/mol-plateau.png) is provided.*
+*Figure 2. Mixture of Limits on one task. Diagram, not a measurement. A [PNG copy](/figures/gates/mol-plateau.png) is provided.*
 
-<div id="named-floors" class="anchor-alias" aria-hidden="true"></div>
+**Mixture of Limits is not Mixture of Experts.** Mixture-of-Experts (MoE) routing selects parameters inside one generative model (Shazeer et al., 2017; Fedus et al., 2022). Mixture of Limits selects whether and where to spend across gears, and an MoE model can serve as its Model gear.
 
-### II. Named floors
-
-| Limit id | Kind | Meaning |
+| | MoE | Mixture of Limits |
 |---|---|---|
-| `voi` | ValueOfInformation | Marginal bits worthless under budget. **stop** |
-| `grammar` | GrammarCoverage | Covered by Lookup/Formula/Solver; or refuse unknown |
-| `energy` | Energy | Joule budget floor; Landauer-aware **estimates** |
-| `efa_certificate` | Certificate | Diverge / fail certify → refuse before commit |
-| `settle_refuse` | SettleRefuse | Ternary / energy-landscape settle will not settle → refuse |
-| `primitive_gap` | PrimitiveGap | Missing Periodic Stack primitive; surface the gap |
-| `safety` / `wca_refuse` | Safety / WCA | Capability deny; WCA certify refuse |
-| `information` / `latency` | Information / Latency | Sufficiency and soft wall-clock ceilings |
+| Where the choice is made | Inside one model | Across gears, before any model runs |
+| Object chosen | Which parameters run | Which gear closes, or refuse |
+| Success | Next-token likelihood | $C(z) = 1$, a certified commit, and a receipt |
+| Refusal | Not a native outcome | A typed outcome with a receipt |
 
-<div id="neural-net-demotion" class="anchor-alias" aria-hidden="true"></div>
+## II.2. Expected energy of a cascade and the optimal order
 
-### II. Neural net demotion
+**Two gears.** Let a light gear L with pass probability $q_L$ and energy $c_L$ precede a heavy gear H that always passes, with energy $c_H$. Trying L first costs $c_L + (1 - q_L)\,c_H$ in expectation. Trying H first costs $c_H$. So L first is cheaper if and only if
 
-The model gear is a conditionally available residual: off by default (`allow_model=false`), opened only when cheaper gears miss, and never coercible to Deterministic (`ModelGenerated` cannot be rewritten as `Deterministic`). It may propose residual content; it never bypasses certify-before-commit. On a coin cell or an edge device, the default close is a constant-time formula plus a LUT refuse, not a small transformer.
+$$
+c_L + (1 - q_L)\,c_H < c_H \iff c_L < q_L\, c_H .
+$$
 
-### II. Periodic Stack
+For example, a lookup costing $c_L = 10^{-9}$ J that passes on $q_L = 0.3$ of tasks ahead of a model call costing $c_H = 10$ J saves $q_L c_H - c_L \approx 3$ J per task in expectation. If $q_L$ falls below $c_L / c_H = 10^{-10}$, the order reverses.
 
-The reference's catalog of computation primitives, grouped into families, is called the Periodic Stack in this paper. Each cell is either Present (an implemented primitive) or Gap (none yet).
+**Many gears.** For $n$ gears tried in sequence until the first pass, with independent outcomes, the expected energy of order $\sigma$ is
 
-<div id="mixture-of-limits-is-not-moe" class="anchor-alias" aria-hidden="true"></div>
+$$
+\mathbb{E}[J_\sigma] = \sum_{k=1}^{n} c_{\sigma(k)} \prod_{j<k} \bigl(1 - p_{\sigma(j)}\bigr).
+$$
 
-### II. The cascade lineage
+Swapping two adjacent gears $a$ then $b$ changes this sum by a factor common to both terms times $(c_a + (1-p_a)c_b) - (c_b + (1-p_b)c_a) = c_a p_b - c_b p_a$. So $a$ should precede $b$ if and only if $p_a / c_a > p_b / c_b$, and the optimal order sorts gears by decreasing $p_i / c_i$ (Simon and Kadane, 1975). Cheapest first is optimal exactly when cheaper gears also have the higher pass probability per joule. When that fails, the cascade starts at a heavier gear. Under a binding budget the joules of failed light attempts stay spent, so a selector that estimates $p_i / c_i$ per task can close tasks that a fixed order cannot.
 
-Mixture of Limits is threshold convergence: spend until the next unit no longer buys verifiable progress, then stop. Its parts have a lineage. Anytime algorithms and their performance profiles trade computation for quality with an interruptible stop ([Dean and Boddy 1988](https://cdn.aaai.org/AAAI/1988/AAAI88-009.pdf)). Attentional cascades reject easy cases with cheap stages first ([Viola and Jones 2001](https://doi.org/10.1109/CVPR.2001.990517)). Model cascading sends an input to a larger model only when a smaller one is unsure ([Varshney and Baral 2022](https://doi.org/10.18653/v1/2022.emnlp-main.756)); speculative decoding lets a small model draft and a large one verify ([Leviathan et al. 2023](https://proceedings.mlr.press/v202/leviathan23a.html)); Mixture-of-Depths allocates compute per token inside one model ([Raposo et al. 2024](https://arxiv.org/abs/2404.02258)). The plateau is measured: reasoning models spend tokens after the first correct answer that do not change it ([Chen et al. 2024](https://arxiv.org/abs/2412.21187)), and a survey of efficient reasoning collects the methods that stop earlier ([Sui et al. 2025](https://arxiv.org/abs/2503.16419)). Mixture of Limits takes the stop from these works, puts it on the task predicate $C(z)$ and prices it in joules.
+**Physical floor.** Any gear that erases $n$ bits irreversibly at temperature $T$ dissipates at least
 
-### II. Mixture of Limits is not MoE
+$$
+E_{\text{Landauer}}(n, T) = n\, k_B T \ln 2, \qquad k_B = 1.380649 \times 10^{-23}\ \text{J/K},
+$$
 
-The names are similar and the objects differ. MoE chooses parameters inside one model. Mixture of Limits chooses whether and where to spend across gears, and an MoE model can serve as its Model gear.
+which is $2.87 \times 10^{-21}$ J per bit at 300 K (Landauer, 1961; Bennett, 1973, for the reversible limit). Measured CMOS operations cost about 0.9 pJ for a 32-bit floating-point add and about 640 pJ for a 32-bit DRAM read at 45 nm (Horowitz, 2014), eight to eleven orders of magnitude above that floor. The Landauer figure on a receipt is therefore a labeled lower bound, never a measurement.
 
-| MoE (inside a generative model) | Mixture of Limits (navigation rule) |
+**Catalog cost model.** Before a gear runs, the software reference prices it as
+
+$$
+E_{\text{est}}(x) = \theta(D)\,\mu(S, V),
+$$
+
+where $\theta(D)$ (dimensionless) scales with the difficulty class $D$ of act $x$ and $\mu(S, V)$ (J) is a catalog energy for primitive $S$ on hardware view $V$. Both are stated catalog constants, so $E_{\text{est}}$ is an estimate used to order gears. It is not derived from physics, and it is never reported as a measurement. Ranking among systems that close the task uses metered joules (Section 0.2).
+
+## II.3. Stopping conditions
+
+**Value of information.** Let $B$ be the payoff of a decision, $x$ the current information state, $y$ a further observation or computation, $c(y)$ its energy, and $\lambda$ the exchange rate between payoff and joules. The net value is
+
+$$
+\Delta(x, y) = \mathbb{E}[B \mid x, y] - \mathbb{E}[B \mid x] - \lambda\, c(y)
+$$
+
+(Howard, 1966; Russell and Wefald, 1991). The rule refuses escalation when $\Delta \le 0$. Once $C(z) = 1$, the first two terms are equal for any further $y$ on the task, so $\Delta = -\lambda c(y) < 0$ and the stop follows.
+
+**Grammar coverage.** Let $G$ be the set of verified derivations available to Lookup, Formula and Solver. A query $q$ is covered when a derivation $q \vdash_G a$ exists. When $q$ is covered, the Model gear is not opened, because a covered gear passes with probability 1 at lower energy than the Model gear, so by the two-gear inequality of Section II.2 it goes first and closes the task. When $q$ is not covered and policy forbids the Model gear, the rule refuses.
+
+**Settle refusal.** A Solver gear that searches for a low-energy configuration either reaches a certified fixed point (commit) or reports that it will not settle within its budget (refuse).
+
+Named refusal reasons in the software reference:
+
+| Reason | Condition |
 |---|---|
-| Experts live *inside* a model; gate selects parameters | Limits live *outside* generation; floors stop escalation |
-| More experts → more capacity for the same generative act | More named floors → sharper refuse / cheaper close |
-| Success = next-token likelihood | Success = closed grammar + certified commit + joule receipt |
-| Model is the substrate | Model is a **residual leaf**: the last gear tried, opened when cheaper gears cannot close $C(z)$ |
+| `voi` | $\Delta \le 0$ for every available next step |
+| `grammar` | Not covered and the Model gear is not allowed |
+| `energy` | The next gear's estimate exceeds the remaining budget |
+| `efa_certificate` | The certificate check fails before commit |
+| `settle_refuse` | The Solver does not settle within its budget |
+| `primitive_gap` | A required primitive is absent from the catalog |
+| `safety` | A capability check denies the action |
 
-Mixture of Limits is a rule plus a runtime, written clean-room. It is not a wrapper on MoE.
+## II.4. Provenance and receipts
 
----
+Every answer carries a replay class stating how it was produced: `Deterministic` (Lookup, Formula, or a certified Solver), `RetrievedCited`, `Composed`, or `ModelGenerated`. The type system forbids strengthening a class: `ModelGenerated` cannot be rewritten as `Deterministic`. Energy on a receipt carries one of three labels: **Estimated** (catalog, Landauer or instruction-fuel figure), **Unmetered** (no reading), or **Metered** (a named meter returned a reading). The software reference leaves `measured_j` unset unless a meter returns. The catalog of primitives the reference navigates, grouped into families, is called the Periodic Stack in this paper; each cell is Present (implemented) or Gap (absent).
 
-<div id="3-proof-spine-ex--θdμsv" class="anchor-alias" aria-hidden="true"></div>
-<div id="ii3-proof-spine-ex--θdμsv" class="anchor-alias" aria-hidden="true"></div>
+## II.5. Software reference
 
-## II.3. Cost model: E(x) ≥ θ(D)·μ(S,V)
-
-The energy / impedance cost model used throughout Mixture of Limits is:
-
-$$
-E(x) \ge \theta(D)\cdot\mu(S,V)
-$$
-
-where $E(x)$ is path energy for closing act x, $\theta(D)$ scales with decision / difficulty structure D, and $\mu(S,V)$ is an impedance factor for stack coordinate S and view V. Reference receipts stamp catalog μ with `mu_source=catalog` and a `landauer_floor_ratio`. The product is an **analytical / catalog estimate**, not a package joule reading.
-
-**Status of the spine.** $\theta$ and $\mu$ are catalog constants. So the inequality is a cost model with stated constants. It prices a gear before any joule is spent. It is not derived from physics. The physical floor under it is Landauer's, below. What ranks a closed act is the metered joules on its receipt, behind the gate $C(z)$ (Proposition 8 of the [agency track](https://research.openie.dev/papers/agency/)).
-
-**Landauer (estimate only).** For irreversible erasure of n bits at temperature T,
-
-$$
-E_{\mathrm{Landauer}}(n,T) = n k_B T \ln 2
-$$
-
-Receipts may annotate `landauer_floor_J` from this formula. That annotation is **estimate ≠ measured**. Reference closes keep `measured_j=None`. Optional OS meter features (RAPL / IOReport / powermetrics), when present and successful, may populate `measured_j` only under a labeled `MeasureSource`; failure or VM stays `unavailable`. Software reference prove criteria do not require those meters.
-
-**Historical rhyme.** Kepler did not need every future observation once the three laws closed the grammar of planetary motion for the epoch. Newton did not need a larger ephemeris table to predict a new orbit once F=ma and inverse-square gravitation covered the coordinate. Shannon did not need infinite samples to bound channel capacity. Landauer did not need a particular chip to state a thermodynamic lower bound. Mixture of Limits makes the same move for computer intelligence: bind a floor, close with the cheapest sufficient gear, and refuse when the floor says stop. This is an analogy, offered to teach. The evidence is the receipts and the propositions.
-
-**Constructive existence (software).** `cargo run -p mol-cli -- prove` prints VERIFIED per criterion and exits 0 (about 29 criteria spanning deterministic close, formula/lookup without model, VoI refuse, settle commit+refuse, certificate refuse, capability default-deny, receipt labels, replay-class coercion deny, Periodic Stack subset navigation, μ catalog, transcript replay, Z2 cite / Z1 compose, agent mailbox, bitemporal memory, fabric routing, desktop headless shell, OS meter labels, WASM capsule, Agent Lane, multi-fabric receipts, ecosystem e2e certify; see PLAN.md in the Mixture of Limits workspace). That is constructive existence **in software**: an implementation exists and passes every stated criterion. It is not the proof of a theorem, and it is not a board energy measurement. Section II.6 maps each criterion to its claim.
-
----
-
-<div id="4-cascade-and-close-lookup--formula--solver--model-last" class="anchor-alias" aria-hidden="true"></div>
-
-## II.4. Cascade and close: Lookup → Formula → Solver → Model
-
-Cascade order, with replay classes enforced by type:
-
-```text
-Lookup → Formula (closed-form) → Solver / settle → Model
-```
-
-| Mixture of Limits tier | Role | Replay class (typical) |
-|---|---|---|
-| Lookup | LUT / allow-table / registry hit | `Deterministic` |
-| Formula | Closed identity / unit convert / law instance | `Deterministic` |
-| Solver | Sparse solve / ternary settle | `Deterministic` or compose under Solver |
-| Model | Stochastic residual only | `ModelGenerated` |
-
-**Invariant:** `ModelGenerated` ↛ `Deterministic`. Typed answers refuse coercion.
-
-Automation / close loop:
-
-```text
-sense → classify grammar → cheapest sufficient → certify → commit|refuse → receipt
-```
-
-Mixture of Limits **owns close**. Refuse over escalate when unsafe or VoI-negative. Refuse is a **lawful success** and still emits a receipt.
-
-<div id="co0-bind-sketch-namespaces" class="anchor-alias" aria-hidden="true"></div>
-
-### II. co/0 bind sketch (namespaces)
-
-Reference receipt labels bind act namespaces (a sketch):
-
-| Namespace | Role |
-|---|---|
-| `claim.*` | Seeded / retrieved knowledge claims (Z2); unknown → refuse, no invent |
-| `act.*` | Capability-gated acts; Mutate/External default-deny |
-| `close.*` | Route + certify gate; commit or refuse |
-| `receipt.*` | `estimated_j` labeled; `measured_j` only if Metered probe returned |
-
-Rules stamped on every reference close:
-
-1. **Certify-before-commit**; no irreversible side effect without certificate pass.
-2. **`ModelGenerated` ↛ `Deterministic`**; sealed replay markers.
-3. **`measured_j` only if Metered**; otherwise `None` / unavailable.
-4. **Refuse = lawful success + receipt**. VoI / settle_refuse / certificate / capability denies still close the ledger.
-
-Multi-fabric routing: after tier selection, the reference routes to the cheapest sufficient `DeviceKind` (Cpu always present; Gpu, Wasm, and ThermoSettle optional). Detecting a device is not measuring its joules.
-
-**When the order is optimal.** A fixed order from cheapest up is optimal in expected joules when each cheap gear passes often enough to pay for its failures. For a light gear L ahead of a heavy gear H that always passes, light first wins if and only if $q_L c_H > c_L$, where $q_L$ is the light gear's pass probability and $c$ is joules. For independent gears the optimal order sorts by pass probability per joule, $p/c$ (Simon and Kadane 1975, DOI:[10.1016/0004-3702(75)90002-8](https://doi.org/10.1016/0004-3702(75)90002-8)). Proposition 9 of the [agency track](https://research.openie.dev/papers/agency/) proves both. When the condition fails, the cascade starts at the heavier gear. Under a binding joule budget, the joules of failed light attempts stay spent, and a selector that prices pass probability against joules can close tasks the fixed order cannot. Section 8.11 of the [agency paper](https://research.openie.dev/papers/agency/) reports a first kernel-reported comparison.
-
----
-
-<div id="5-econ-bridge-satiation" class="anchor-alias" aria-hidden="true"></div>
-
-<div id="ii5-econ-bridge-satiation" class="anchor-alias" aria-hidden="true"></div>
-
-## II.5. Stop bridge: task completion
-
-Mixture of Limits supplies the *machine* stop: VoI and grammar floors refuse excess generation once benefit is covered, and Part I's commit and refuse receipts record the irreversible boundary.
-
-The task-completion stop is a written completeness predicate $C(z) \in \{0,1\}$: once $C = 1$, further computation on the task cannot raise it. Part I owns the commit record; Mixture of Limits owns navigation floors that make "done" and "unsafe" executable without opening the model leaf.
-
----
+The software reference `mixture-of-limits` (Apache-2.0 or MIT) has a harness, `cargo run -p mol-cli -- prove`, that prints `VERIFIED` for each criterion and exits 0. The workspace test suite (`cargo test --workspace`) passes (P0), and the harness exits 0 (P1). A criterion marked verified means that an implementation exists and passes its stated specification. It is not a theorem, not an independent replication and not an energy measurement.
 
 <div id="6-prove--claim-map" class="anchor-alias" aria-hidden="true"></div>
 
-## II.6. Prove ↔ claim map
-
-The Mixture of Limits harness `mol prove` checks a close rule that rests on information theory and physics. This section maps only what `mol prove` actually stamps `VERIFIED` onto the paper's `claim.*` ids. The mapping shows known floors embodied in software. It does not claim new physics.
-
-A claim is **implemented and verified against its specification** when the in-tree harness prints `VERIFIED` for the named criterion and exits 0. That is software existence. It is not a theorem, and it is not independent replication. A claim is **software reference only** when PLAN §6 marks it OUT OF PROOF SCOPE, or when the criterion itself stamps software reference / fixture / feature-gated behavior rather than live silicon. Verified-path rows keep `measured_j=None` unless a Metered probe returns, and make no board measurement.
-
-
-Measurement labels used below:
-
-| Label | Meaning |
-|---|---|
-| **Unmetered** | Reference path; `measured_j=None`; estimate may be labeled |
-| **Estimated** | Catalog / Landauer / fuel / μ surrogate with explicit `EstimateKind` or `mu_source=catalog` |
-| **Metered** | Optional live probe (`energy-meter`) returned numbers (not required for prove) |
-
-Default close path for all verified claims: **Unmetered**, plus **Estimated** where μ, Landauer, or fuel figures appear. The verified path makes no board measurement.
-
-<div id="61-harness-meta" class="anchor-alias" aria-hidden="true"></div>
-
-### II.6.1 Harness meta
-
-| Prove # | Criterion (PLAN) | Paper claim id | Status | Measurement |
-|---|---|---|---|---|
-| P0 | `cargo test --workspace` green | `claim.mol.ci_workspace` | Verified against specification (CI / operator; not printed by `mol prove`) | none |
-| P1 | `cargo run -p mol-cli -- prove` exits 0 | `claim.mol.prove_harness` | Verified against specification (prints `VERIFIED` per row below) | Unmetered |
-
-<div id="62-proven-claims-p2-p24" class="anchor-alias" aria-hidden="true"></div>
-
-<div id="ii62-proven-claims-p2-p24" class="anchor-alias" aria-hidden="true"></div>
-
-### II.6.2 Verified claims (P2-P24)
-
+| Prove # | Criterion | Claim id | Claim | Scope note | Measurement |
+|---|---|---|---|---|---|
 | Prove # | Criterion (PLAN) | Paper claim id | Claim (one sentence) | Software reference / scope note | Measurement |
 |---|---|---|---|---|---|
 | P2 | Deterministic close (double-run) | `claim.mol.deterministic_close` | Same asks yield the same commit/refuse + limit id. | none | Unmetered |
 | P3 | Formula/lookup close without model | `claim.mol.formula_lookup_no_model` | Landauer / unit-convert closes COMMIT at Lookup or Formula; model never answered. | none | Unmetered / Estimated (Landauer floor on receipt) |
 | P4 | VoI refuse when `!allow_model` | `claim.mol.voi_refuse` | Free-form ask → REFUSE `voi`. | none | Unmetered |
 | P5 | Settle commit + settle refuse | `claim.mol.settle_ternary` | Ternary settle → COMMIT; `will not settle` → REFUSE `settle_refuse`. | Software-ref settle stub; no VM / FPGA | Unmetered |
-| P6 | Certificate refuse on diverge | `claim.mol.efa_certificate_refuse` | Formula + `diverge` → REFUSE `efa_certificate`. | In-tree EFA-style cert; Ferric / live BMI loop software reference | Unmetered |
+| P6 | Certificate refuse on diverge | `claim.mol.efa_certificate_refuse` | Formula + `diverge` → REFUSE `efa_certificate`. | In-tree certificate | Unmetered |
 | P7 | Capability default-deny mutate | `claim.mol.capability_deny_mutate` | `AutomateGate::default().gate(Mutate)` → Refuse. | none | Unmetered |
 | P8 | Receipt labels | `claim.mol.receipt_honesty` | Software-ref: `measured_j=None`, estimate labeled (`EstimateKind`). | Live RAPL/NVML default close OUT OF SCOPE | Unmetered / Estimated |
 | P9 | `ModelGenerated` ↛ `Deterministic` | `claim.mol.replay_no_strengthen` | `TypedAnswer::weaken_to` returns `ReplayCoercion`. | none | none |
-| P10 | Periodic Stack live catalog navigation | `claim.mol.stack_live_catalog` | Family + present + scale → COMMIT at Lookup; 258 live Lookup/Formula/Solver/Navigate gears; note cites 258/33. | μ calib + silicon HW OUT OF SCOPE; software reference Gap sims in proof | Unmetered |
+| P10 | Periodic Stack live catalog navigation | `claim.mol.stack_live_catalog` | Family + present + scale → COMMIT at Lookup; 258 live Lookup/Formula/Solver/Navigate gears. | μ calib + silicon HW OUT OF SCOPE; software reference Gap sims in proof | Unmetered |
 | P11 | `primitive_gap` via registry probe | `claim.mol.primitive_gap` | Gap marker `physical_settle` + absent name → REFUSE `primitive_gap` (not string-only). | none | Unmetered |
 | P12 | μ / impedance catalog | `claim.mol.mu_catalog` | Receipts stamp `mu_source=catalog`, `mu`, `landauer_floor_ratio`; `E≈θ·μ` (catalog estimate, not RAPL/`measured_j`). | μ **calib corpus** OUT OF SCOPE | Estimated |
 | P13 | Receipt transcript replay | `claim.mol.receipt_replay` | JSONL/in-memory replay reproduces commit/refuse + limit id; model never answered. | none | Unmetered |
@@ -1008,785 +859,114 @@ Default close path for all verified claims: **Unmetered**, plus **Estimated** wh
 | P20 | OS meter labels | `claim.mol.os_meter_honesty` | Feature off / VM / no permission → `measured_j=None`, empty components, `measure_source=unavailable`; fixtures stamp labeled sources; default close stays unmetered. | Live probe optional (`energy-meter`) | Unmetered (default) / Metered only when probe returns |
 | P21 | WASM capsule certify | `claim.mol.wasm_capsule` | `add.wasm` under stub runtime; fuel → estimated_j only; FS/net grant / fuel exceed / host-share → REFUSE; close stamps capsule. | Optional `wasmtime` feature | Unmetered / Estimated (fuel) |
 | P22 | Agent Lane session path | `claim.mol.agent_lane` | Lane partitions; `host_invoke` without provenance refuses; keyword confirm insufficient; need `GrantReceipt`; allow stamps `AgentLaneReceipt`. | none | Unmetered |
-| P23 | Multi-fabric compute receipt | `claim.mol.fabric_compute_receipt` | Software reference inventory; `ComputeFabric` / `ScheduleDecision` / `ComputeStepReceipt` with `fabric_id`; cascade stamps `fabric:route`; CPU Formula COMMIT; Model residual may `fabric_unavailable`; `measured_j=None` on software reference path. | Ferric not path-dep'd | Unmetered |
+| P23 | Multi-fabric compute receipt | `claim.mol.fabric_compute_receipt` | Software reference inventory; `ComputeFabric` / `ScheduleDecision` / `ComputeStepReceipt` with `fabric_id`; cascade stamps `fabric:route`; CPU Formula COMMIT; Model residual may `fabric_unavailable`; `measured_j=None` on software reference path. | none | Unmetered |
 | P23b | Live fabric soft | `claim.mol.fabric_live_soft` | Feature off stays software_ref; mock/live Metal can stamp `gpu_metal`; Formula stays Cpu; missing Gpu* fail-closed; prove does not require a GPU; `measured_j=None` unless Metered. | Soft / optional detect | Unmetered |
 | P23c | wgpu / Metal tiny kernel | `claim.mol.kernel_vector_add` | Clean-room WGSL vector-add; soft stub offline (same checksum); Gpu* stamps `kernel:vector_add` + `execution_proof`; optional overlapping meter may stamp package `measured_j` with `energy_honesty=measured` (field name); no rail-sum package joules. | Live Metal optional; fixture OK for prove | Unmetered (default) / Metered only if meter returns |
 | P24 | Ecosystem e2e certify (one receipt) | `claim.mol.ecosystem_e2e` | Lane → fabric (Cpu software reference) → WASM → energy labels (estimated fuel; optional meter_sample) → host invoke only with `GrantReceipt` → commit\|refuse on **one** receipt; refuse-without-grant → `grant_receipt_required`. | none | Unmetered / Estimated |
 
-<div id="63-soft-ref-only" class="anchor-alias" aria-hidden="true"></div>
+Outside the harness: live energy counters (RAPL, NVML) as the default close, live GPU detection, on-device certificate hardware, trained model weights, and silicon meters for Gap cells. None is claimed.
 
-### II.6.3 Software reference only
+## II.6. Related work
 
-These are PLAN §6 residuals. Citing them is allowed as roadmap / reference semantics. Treating them as measured results is not.
+**Cascades and metareasoning.** Viola and Jones (2001) ran a cascade of boosted classifiers in which cheap stages reject most inputs. Russell and Wefald (1991) priced each computation by its expected value to the decision net of its cost and stopped when none had positive net value. Horvitz (1987) set the same trade for bounded reasoning. Anytime algorithms trade computation for quality with an interruptible stop (Dean and Boddy, 1988; Zilberstein, 1996). Model cascading sends an input to a larger model only when a smaller one is unsure (Varshney and Baral, 2022), and FrugalGPT stops when a learned scorer accepts the answer (Chen, Zaharia and Zou, 2023). Mixture of Limits differs in three respects: the gears include non-neural mechanisms ahead of any model; the stop is the predicate $C(z)$, not a learned score; and cost is joules on a receipt, not dollars or latency.
 
-| Software reference item | Why software reference | Related prove row (if any) |
-|---|---|---|
-| Live silicon RAPL / NVML as **default** close | Optional `energy-meter`; `mol prove` stays `measured_j=None` | P8, P20 |
-| Live wgpu adapter presence | Feature `fabric-detect`; the offline inventory remains the default for `mol prove` | P18, P23b, P23c |
-| Ferric / on-device EFA (BMI hardware loop) | Reference semantics only; not path-dep'd | P6, P18, P23* |
-| VM WASM / FPGA meter (real pJ) | Software-ref `StubKlereSettle` | P5 |
-| Live `openie-path` / leapfrog ask bridge | Adapter port | none |
-| Live WCA MCP / `wca-lut-edge` in-proc certify | Adapter port | none |
-| μ calib corpus + silicon HW (physical_settle / reversible / ising / adiabatic / ferric / quantum / analog / photonic Gap cells) | Live catalog (258 Present / 258 live gears) + Gap + tier μ catalog + Stage C/Ferric software reference inventories + HW Gaps software reference sims ×8 (`stage_c_measured=false`; Gap cells retained) are in proof; silicon meters OUT | P10, P12 |
-| Trained weights / candle / tract Model leaf | Model stays demoted stub | P3, P4, P16 |
+**Spend past the answer.** Reasoning models spend tokens after their first correct answer without changing it (Chen et al., 2024), and a survey collects methods that stop earlier (Sui et al., 2025). Speculative decoding (Leviathan et al., 2023), Mixture-of-Depths (Raposo et al., 2024), quantization (Frantar et al., 2022; Lin et al., 2024) and paged KV caches (Kwon et al., 2023) lower the energy of a Model gear once it runs. They do not decide whether it runs.
 
-<div id="64-seeded-knowledge-claims-z2-corpus-not-the-prove-map" class="anchor-alias" aria-hidden="true"></div>
+**Formula recovery.** AI Feynman (Udrescu and Tegmark, 2020), SINDy (Brunton et al., 2016) and PySR (Cranmer, 2023) recover closed forms from data; AlphaGeometry (Trinh et al., 2024) and AlphaProof (Hubert et al., 2025) pair a proposer with a symbolic or Lean verifier. Each produces Formula or certified Solver gears that close covered tasks at lower energy than a generator.
 
-### II.6.4 Seeded knowledge claims (Z2 corpus; not the prove map)
+**Routing among models.** These systems choose which model answers. None tries a non-neural gear first or refuses with a typed reason.
 
-In-tree `ClaimStore` seeds used by P14/P15 (retrieve/compose), distinct from the paper claim ids above:
-
-- `claim:landauer.principle`
-- `claim:mol.law`
-- `claim:mol.proof_law`
-- `claim:mol.cascade`
-- `claim:stack.scale`
-- `claim:honesty.no_fake_rapl`
-- `claim:replay.retrieved_cited`
-- `claim:openie.z2`
-
-<div id="65-measurement-scope-of-the-proven-map" class="anchor-alias" aria-hidden="true"></div>
-
-<div id="ii65-measurement-scope-of-the-proven-map" class="anchor-alias" aria-hidden="true"></div>
-
-### II.6.5 Measurement scope of the verified map
-
-- The `mol prove` path: `measured_j=None` (Unmetered); Metered only when a live probe returns.
-- The verified path makes no board measurement.
-- Version 0.1 of `mol prove` is constructive existence in software, not a board energy result.
-- Roadmap items (§II.6.3) stay roadmap; they are not escalated to verified claims.
-
----
-
-<div id="7-math-sketches-voi-stop-grammar-coverage-settle-refuse" class="anchor-alias" aria-hidden="true"></div>
-
-## II.7. Math sketches: VoI stop, grammar coverage, settle-refuse
-
-<div id="71-voi-stop" class="anchor-alias" aria-hidden="true"></div>
-
-### II.7.1 VoI stop
-
-Let B be a benefit functional for a decision, x the current information state, and c the cost (bits, latency, or estimated joules) of acquiring observation y. A simple stop rule:
-
-$$
-\Delta(x,y) = \mathbb{E}[B \mid x,y] - \mathbb{E}[B \mid x] - \lambda\, c(y)
-$$
-
-Refuse escalation when $\Delta(x,y) \le 0$ (or $\le \tau$ for a configured threshold). The reference encodes this as floor `voi` with `allow_model=false` by default: free-form asks that would only open the model leaf refuse rather than spend. This is the Shannon/decision-theoretic cousin of Kepler stopping new naked-eye points once the law predicts within tolerance. Domain-calibrated Bayesian VoI tables remain a deployment parameter, not a software reference prove deliverable. Classical cousins: **anytime algorithms** allocate deliberation under a utility-of-computation schedule (Zilberstein, 1996); the **information bottleneck** prices compressed representations that keep task-relevant bits (Tishby, Pereira, and Bialek, 1999; Tishby and Zaslavsky, 2015, arXiv:1503.02406). The reference encodes the stop as named floors rather than importing those libraries as prove deliverables.
-
-<div id="72-grammar-coverage" class="anchor-alias" aria-hidden="true"></div>
-
-### II.7.2 Grammar coverage
-
-Let G be the covered grammar (Lookup registry ∪ Formula identities ∪ Solver settle programs). A query q is **covered** if a deterministic derivation $q \vdash_G a$ exists with replay class not `ModelGenerated`. Cascade order tries Lookup, then Formula, then Solver. If covered, **do not open the model**. If uncovered and policy forbids model escalation, refuse (`grammar` / `voi` / `primitive_gap` as applicable). Historical analog: once Newton's grammar covers orbital mechanics for the force law at hand, one does not re-enumerate Brahe's table to answer a new initial-condition query.
-
-<div id="73-settle-refuse" class="anchor-alias" aria-hidden="true"></div>
-
-### II.7.3 Settle-refuse
-
-Under Solver, a ternary / energy-landscape settle either reaches a certified fixed point (commit) or signals will-not-settle (refuse `settle_refuse`). The reference implements this as real in-tree settle logic plus certificate diverge tags (`efa_certificate`). Thermodynamic-settle inspiration is conceptual: software reference v0.1 has no annealer drivers and no adiabatic wall joules. Landauer appears as a labeled estimate on receipts.
-
-<div id="74-bound-sketch-tying-shannon-and-landauer" class="anchor-alias" aria-hidden="true"></div>
-
-### II.7.4 Bound sketch tying Shannon and Landauer
-
-For n irreversible erasures on a path that closes a decision,
-
-$$
-E_{\mathrm{path}} \ge E_{\mathrm{Landauer}}(n,T) = n k_B T \ln 2
-$$
-
-and the Mixture of Limits catalog estimate further requires $E_{\mathrm{est}}(x) \ge \theta(D)\cdot\mu(S,V)$. `measured_j` requires a Metered probe. Excess tokens that do not change B fail the VoI test even when joule budgets remain; the information floor binds first.
-
----
-
-<div id="8-related-work-proof-points-lineage-and-tier-a" class="anchor-alias" aria-hidden="true"></div>
-
-## II.8. Related work: proof points, lineage, and Tier A
-
-<div id="80-academic-proof-points-top-minds-already-named-the-floors" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.0 Established results that state the floors
-
-Mixture of Limits is an executable navigation rule over floors that information theorists, physicists, and decision theorists already stated as settled theory, and that formula-first work in AI keeps finding again in modern form. Below is a citation chain from historical to recent results, each with its DOI or arXiv identifier. Together they show that compression, floors, and formulas close covered tasks with less spend than enumeration.
-
-**Information, complexity, and physical cost**
-
-| Proof point | Who / when | What they already said | Cite (verified) |
-|---|---|---|---|
-| Bits under uncertainty | Shannon (1948) | Quantitative communication limits; entropy as missing information | [10.1002/j.1538-7305.1948.tb01338.x](https://doi.org/10.1002/j.1538-7305.1948.tb01338.x) (Part I); Part II [10.1002/j.1538-7305.1948.tb00917.x](https://doi.org/10.1002/j.1538-7305.1948.tb00917.x) |
-| Irreversible erasure costs heat | Landauer (1961) | Logical irreversibility ⇒ minimal heat ~kT per irreversible function | [10.1147/rd.53.0183](https://doi.org/10.1147/rd.53.0183) |
-| Reversible computing | Bennett (1973) | Computation can be logically reversible; Landauer cost is about erasure, not "computing" per se | [10.1147/rd.176.0525](https://doi.org/10.1147/rd.176.0525) |
-| Algorithmic complexity | Kolmogorov (1965/1968) | Quantity of information as shortest program length; compression as definition | Russian original *Probl. Peredachi Inf.* 1(1):3-11 (1965), no DOI; English transl. [10.1080/00207166808803030](https://doi.org/10.1080/00207166808803030); IEEE note [10.1109/TIT.1968.1054210](https://doi.org/10.1109/TIT.1968.1054210) |
-| Algorithmic probability / induction | Solomonoff (1964) | Prefer short programs; universal prior over computable regularities | Part I [10.1016/S0019-9958(64)90223-2](https://doi.org/10.1016/S0019-9958(64)90223-2) |
-| Algorithmic incompleteness | Chaitin (1977) | Algorithmic information bounds what finitely axiomatized theories can prove | [10.1147/rd.214.0350](https://doi.org/10.1147/rd.214.0350) |
-| Probability as extended logic | Jaynes (2003 book; earlier papers) | Maximum-entropy / logic-of-science discipline against ad-hoc excess modeling | [10.1017/CBO9780511790423](https://doi.org/10.1017/CBO9780511790423) |
-| Textbook IT + decision links | Cover & Thomas | Canonical Elements of Information Theory (2nd ed.) | Wiley book DOI [10.1002/047174882X](https://doi.org/10.1002/047174882X) |
-| Value of Information | Howard (1966) | Shannon bits ≠ decision value; VoI joins probability with economic consequence; stop when information is worthless for the decision | [10.1109/TSSC.1966.300074](https://doi.org/10.1109/TSSC.1966.300074) |
-| Physics of computation lectures | Feynman (pub. Hey/Allen eds.) | Physical limits of computing, reversible/thermo themes in lecture form | Anniversary ed. [10.1201/9781003358817](https://doi.org/10.1201/9781003358817); 1996 Addison-Wesley ISBN 0-201-48991-0 |
-
-**Historical mathematical physics.** §II.8.1 follows Brahe, Kepler, and Newton: the history before information theory in which tables yield to laws.
-
-**Recent formula, mechanism, and certify systems (Tier A)**, from the Mixture of Limits workspace survey of 30 September 2026:
-
-| Proof point | Who | Mixture of Limits reading | Cite (verified) |
-|---|---|---|---|
-| AI Feynman | Udrescu & Tegmark | NN decomposes; closed form is the commit | [10.1126/sciadv.aay2631](https://doi.org/10.1126/sciadv.aay2631) |
-| SINDy | Brunton / Proctor / Kutz | Sparse grammar; reject dense residual fits | [10.1073/pnas.1517384113](https://doi.org/10.1073/pnas.1517384113) |
-| PySR | Cranmer | Production symbolic regression | arXiv:[2305.01582](https://arxiv.org/abs/2305.01582) |
-| AI-Newton | Fang et al. | Concept library + general laws across experiments | arXiv:[2504.01538](https://arxiv.org/abs/2504.01538) |
-| AlphaGeometry / AlphaProof | Trinh et al.; Hubert et al. (Google DeepMind) | Propose → symbolic or Lean certify (hard floor) | Nature [10.1038/s41586-023-06747-5](https://doi.org/10.1038/s41586-023-06747-5); Nature [10.1038/s41586-025-09833-y](https://doi.org/10.1038/s41586-025-09833-y) |
-| LeanDojo / ReProver | Yang et al. | Retrieval-augmented Lean proving; tool interaction with proof state | arXiv: [2306.15626](https://arxiv.org/abs/2306.15626) |
-| Mechanistic World Models | Posner / Lei / Schölkopf | Reusable mechanisms as the unit of explanation, rather than predictive modules | arXiv:[2607.12474](https://arxiv.org/abs/2607.12474) |
-| Automated basis generation for SINDy | Basiri & Nicholson | PySR → library → SINDy | arXiv:[2605.09696](https://arxiv.org/abs/2605.09696) |
-
-<div id="801-the-gap-is-embodiment-not-awareness" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.1 Historical lineage: compression beats enumeration
-
-**Tycho Brahe → Kepler.** Brahe's program was high-fidelity enumeration. Kepler's three laws compressed those tables into predictive relations. Enumeration was necessary input; the law was the compressible object that stopped needing every future observation.
-
-**Kepler → Newton.** Newton folded planetary regularities into invariants and closed forms (F=ma; universal gravitation). Predictive power migrated from case tables to formulas that travel. AI-Newton (Fang et al., arXiv:2504.01538) is a contemporary soft echo: concept libraries and general laws across many noisy mechanics experiments. There the network proposes and the law is the result.
-
-**Invariants and closed forms.** Symmetry → conservation (Noether tradition), Hamiltonian/Lagrangian reduction, and integrals of motion are the mathematical-physics statement of "formula wins when grammar is covered." The Formula gear of Mixture of Limits is that tradition in a machine.
-
-**Information theory and physical cost.** Shannon, Howard (VoI), Landauer, Bennett, Kolmogorov/Solomonoff/Chaitin, and Cover & Thomas form the chain of information, decision, and thermodynamic results in §II.8.0. Mixture of Limits binds them as named floors and labeled estimates. Landauer stamps on receipts are lower-bound estimates, not claims that silicon runs near the bound.
-
-**Notational intelligence.** Lee's notational-intelligence claim is the frame for executable predicates; see [Part I](#part-i-the-commit-gate-notational-intelligence).
-
-<div id="82-tier-a-detail-formula--mechanism--executable-physics" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.2 Tier A detail: formula / mechanism / executable physics
-
-From the workspace survey of 30 September 2026. Short readings:
-
-1. **AI Feynman (+ 2.0):** Physics-inspired symbolic regression; NN for symmetries/separability, then recursive formula recovery. Canonical *Formula* gear.
-2. **SINDy:** Sparse identification of nonlinear dynamics; explicit grammar + sparsity floor.
-3. **PySR:** Evolutionary symbolic regression; distill NNs → closed forms.
-4. **AI-Newton:** Concept-driven law discovery across noisy mechanics experiments.
-5. **AlphaGeometry / AlphaProof:** LM proposes; verifier is the hard floor (propose → certify → commit|refuse template).
-6. **Mechanistic World Models:** A related philosophy: reusable mechanisms are the unit of explanation.
-
-Other systems in the survey (AtomAgents and SciAgents, KeplerAgent and NewtonBench, AI-Descartes, DreamCoder, Robot Scientist) are hybrids or mechanism libraries of the same kind.
-
-**Mixture of Limits reading of Tier A.** Where a recovered formula or an executable mechanism covers the task, it closes with less spend than escalating tokens. That is a statement about cost on covered tasks. It is not a ranking of methods in general.
-
-<div id="83-what-mixture-of-limits-adds" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.4 Latent space: depth buys compression, not freedom from floors
-
-A **latent space** is a compressed coordinate system for states that matter to a task: continuous vectors (dense embeddings), discrete codes (VQ / codebook indices), or hybrids. Depth in a latent buys what Shannon and Kolmogorov already price: a shorter description of structure that would otherwise be enumerated as raw observations, pixels, tokens, or traces. Autoencoders, VAEs, diffusion latents, and continuous reasoning traces are modern instances of that move. The representation can make Lookup hits cheaper, Formula edits local, and Solver landscapes smoother.
-
-Representation is not law. A deeper latent does not erase the floors Mixture of Limits names:
-
-1. **Value of Information (VoI).** Extra latent dimensions, longer continuous traces, or denser codebooks are more bits under a budget. When marginal latent bits do not change the decision benefit B, VoI says stop. Excess latent enumeration is the same failure mode as excess token enumeration, only in a different alphabet.
-2. **Grammar coverage.** If Lookup, Formula, or Solver already covers the coordinate, opening a latent generator is waste. Covered grammar closes before Model. A latent that rediscovers a closed form is still Model residual when a Formula leaf was available.
-3. **Energy / Landauer.** Encoding, decoding, denoising, and gradient edits on latents erase and rewrite information. Landauer prices irreversible erasure as a thermodynamic lower bound and appears on receipts as a **labeled estimate**. Catalog or OpCounter estimates for latent paths remain **Estimated** / **Unmetered** on the software reference path (`measured_j=None`).
-4. **Certify-before-commit.** A low-energy latent state is a proposal until a certificate, settle, or typed refuse closes the act. The reference close still binds propose → certify → commit|refuse → receipt. Latent score ≠ irreversible commit.
-
-**Teach-first takeaway.** Latent depth is a compression technology and a plateau option when Model is open. Mixture of Limits navigates whether that compression is cheapest-sufficient for the task, or whether refuse is the lawful success. See §II.8.7 (SOTA at the plateau) and §II.9: the question is whether a generator should run at all, then how little energy to spend on the plateau.
-
-<div id="85-logical-intelligence-energy-based-reasoning-with-llms-and-latents" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.5 Logical Intelligence: energy-based reasoning with LLMs and latents
-
-**Logical Intelligence** (logicalintelligence.com) is a company building energy-based reasoning systems for constraint-heavy and mission-critical settings. Public materials (company blog and product pages, January 2026) teach a hybrid stack rather than a single chatbot:
-
-- **Kona** is their core **energy-based model (EBM)** for reasoning (sometimes called an energy-based reasoning model, EBRM). An EBM assigns a scalar **energy** to a candidate state: low energy means more consistent with constraints and objectives; high energy means something is broken. Per their technical blog (Bodnia and Hanin, 21 Jan 2026), Kona is non-autoregressive at the *trace* level, globally scored over partial and complete traces, and reasons in a **continuous latent space** with dense vector tokens so local gradient-style edits can reduce constraint violations without regenerating an entire discrete prefix.
-- **Aleph** is their orchestration / agentic layer that coordinates Kona, LLMs, and other tools. Public positioning: LLMs handle natural-language interface and candidate generation; the EBM layer evaluates and repairs under constraints. Aleph is also described as delivering verified / formal-reasoning workflows today (benchmark claims such as PutnamBench appear on their site; treat score numbers as **author-reported** unless independently reproduced here).
-- Product framing on the Kona page: Kona is not marketed as a chatbot. Language models express and explore; Kona is positioned to evaluate what is valid or permissible before irreversible action in high-stakes domains (company examples include energy, manufacturing, semiconductor verification, robotics). Kona 1.0 was announced for partner pilots (company and press materials, Jan 2026). Leadership publicly listed includes founder and CEO Eve Bodnia and Yann LeCun as founding chair of a technical research board (company site / press).
-
-**Classical EBM backdrop (established ML architecture).** Energy-based models treat inference as finding low-energy configurations under a learned energy function. That framing is older than any one product; LeCun and others have long argued that reasoning can be cast as optimization over an energy landscape. Logical Intelligence's public thesis is that discrete, locally scored, autoregressive LLM traces scale poorly for long-horizon constraint satisfaction, and that continuous, globally scored EBM traces address that gap when paired with LLMs for interface.
-
-**Mixture of Limits reading (cascade map, not a product endorsement).**
-
-| Logical Intelligence public piece | Cascade rhyme | Floor that still binds |
-|---|---|---|
-| Continuous latent trace + energy score | Soft rhyme with **Solver / settle**: optimize / repair under constraints | `settle_refuse`, VoI, energy estimate; low energy ≠ board joules |
-| LLM for language / candidates | **Model** residual for expression and proposal | The last cascade stage; `ModelGenerated` ↛ `Deterministic` |
-| Aleph orchestration among tools | Cheapest-sufficient routing among gears | Grammar coverage first; refuse when escalation is VoI-negative or unsafe |
-| Constraint / proof-oriented close | Certify-before-commit spirit | Certificate / typed refuse before irreversible act |
-
-Verified here: the public architecture story and the cascade map: energy-based settle can rhyme with Solver; LLM residual stays the last cascade stage; latents do not erase VoI or Landauer floors. Author-reported latency and Sudoku figures stay field results (not Mixture of Limits `measured_j`). Internal training details, unpublished energy functions, and claims about general intelligence are outside this paper.
-
-<div id="851-embodiment-classes-the-convergence-is-hybrid-interplay" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.6 World Labs: spatial intelligence and world models
-
-**World Labs** (worldlabs.ai) is a frontier research and product company focused on **spatial intelligence**: models that perceive, generate, reason about, and interact with virtual and physical worlds across space and time. Co-founders publicly include Fei-Fei Li, Justin Johnson, Ben Mildenhall, and Christoph Lassner (company About page).
-
-**Teach the products and architecture first (public sources).**
-
-- **Marble** is their first product: generative 3D world models that create spatially coherent, persistent 3D worlds from images, video, text, and 3D layouts (company About).
-- **Atlas** (company blog, 1 Sep 2026) is described as an omni **world model** pretrained to operate on text, images, video, and 3D. Architecture: a **multimodal autoregressive diffusion transformer**. Inputs are grounded in 3D to form a shared **spatial context**; the model generates what comes next while aiming for 3D consistency with what it has seen, and imagining what lies beyond. Public capability claims include camera-controlled video generation, sparse-view spatial reconstruction (including explicit 3D such as point clouds / Gaussian splats), space-time simulation for Real-to-Sim robotics workflows, and image / 360 generation. Atlas is positioned to power future Marble versions and is in early access with select partners. Author-reported benchmarks on camera-conditioned generation and 3D reconstruction appear on the Atlas post; cite the architecture and task list here, not those numbers as OpenIE measurements.
-
-Fei-Fei's public spatial-intelligence framing (including the "from words to worlds" thesis) states that world models must handle semantic, physical, geometric, and dynamic complexity beyond today's LLM text corridor. That is a generator-class ambition: better world generators and simulators.
-
-**Mixture of Limits reading: world models meet the same floors.**
-
-1. **Grammar coverage.** Faithful reconstruction from enough views is not the same as a closed predictive law for a task. When a Formula or Lookup already answers the coordinate, generating a world is excess. Imagination that fills unseen regions is generative residual, not Deterministic commit.
-2. **Certify-before-commit.** A spatially consistent video or splat is a proposal about geometry and appearance. Irreversible acts (robot motion, financial or safety-critical side effects) still require certify → commit|refuse → receipt. ReplayClass typing still applies: generative world output does not launder into Deterministic without a certificate path.
-3. **VoI and energy.** Longer videos, denser 3D contexts, more denoising steps, and Real-to-Sim rollouts spend bits and joules. VoI stops when extra world detail does not change the decision benefit. Landauer bounds irreversible erasure as a labeled estimate; Atlas / Marble training or inference joules are field / author-reported, not Mixture of Limits `measured_j`.
-
-World Labs systems optimize **which world generator / simulator runs** and how well it tracks space. Mixture of Limits asks whether that generator should run for the stated benefit, and which named floor closes first. See §II.9 for the comparison with MoE.
-
-<div id="87-sota-at-the-plateau-voi-zero-past-the-floor" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.7 SOTA at the plateau: VoI zero past the floor
-
-**Plateau thesis.** Once the floor is known and Value of Information is zero past it, additional tokens, parameters, latent depth, or thinking steps do not purchase verifiable progress on the task coordinate. The only remaining work is **optimize energy and compute on that plateau**: cheapest-sufficient Lookup → Formula → Solver/settle → Model, with refuse as lawful success when escalation is VoI-negative or unsafe.
-
-Latent compression, EBM settle hybrids (Logical Intelligence), spatial world models (World Labs), test-time compute, super learning, SSM hybrids, mixture of experts, speculative decode, RAG, transmission / gearing / cascade / memory-context methods, and the cross-field plateau moves of §II.8.14 can each be projected as superior *inside* a generative or hybrid corridor for their stated jobs. Superiority on the plateau does not cancel Shannon pricing of bits, Howard pricing of VoI, Landauer pricing of irreversible erasure, or certify-before-commit. Those methods are **implementation options for plateau spend**: how to spend less energy or move fewer bits once Model is the residual leaf. They are not a ranking of brands. The useful race is toward the floors.
-
-Mixture of Limits is the **navigation rule** that names the floors, finds the plateau, and binds the cascade. `mol prove` remains constructive existence **in software**. No figure in this survey, whether from Logical Intelligence, World Labs, or OpenIE, sets `measured_j` on a Mixture of Limits receipt.
-
-
-<div id="88-test-time-compute-as-plateau-spend" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.8 Test-time compute as plateau spend
-
-**Teach first.** **Test-time inference** (also called **test-time compute**) means spending additional computation *after* training, when answering a query: longer **chain-of-thought** (CoT) traces, search over candidate solutions, **majority vote** across samples, verifier-guided selection, or **process reward** scoring of intermediate steps. OpenAI's o1 / o3-style systems popularized sequential scaling of reasoning traces at inference (OpenAI, "Learning to reason with LLMs," 2024). Related process supervision trains reward models on step-level labels rather than only final answers (Lightman et al., "Let's Verify Step by Step," arXiv:2305.20050; ICLR 2024). Parallel strategies sample many short traces and aggregate; sequential strategies extend one long trace. Surveys of inference-time scaling for complex tasks document both families and their dependence on verifier quality (e.g. arXiv:2504.00294).
-
-Extra thinking tokens are treated as a new scaling axis parallel to training tokens and parameters. That axis is real as *engineering*: longer verified search can raise accuracy on hard problems when the verifier is good and the budget is spent on the right difficulty band. Empirical work on o1-like models also shows diminishing returns, overthinking, and cases where longer CoTs degrade accuracy or where parallel majority-style methods scale better than unbounded sequential length (e.g. ACL 2025 findings on o1-like test-time scaling; related overthinking analyses).
-
-**Mixture of Limits reading.** Extra inference tokens are still bits under a budget.
-
-1. **Value of Information (VoI).** Another thinking step is another observation about an internal search state. When the marginal step does not change the decision benefit B, VoI says stop. Majority vote that re-samples without changing B fails the same test.
-2. **Grammar coverage.** If Lookup, Formula, or Solver already covers the coordinate, opening a long CoT generator is waste. Covered grammar closes before Model.
-3. **Energy / Landauer.** Every additional sampled token and every verifier forward pass erases and rewrites information. Landauer prices irreversible erasure as a thermodynamic lower bound and appears on receipts as a **labeled estimate**. Catalog or OpCounter estimates for test-time paths remain **Estimated** / **Unmetered** on the software reference path (`measured_j=None`).
-4. **Certify-before-commit.** A process-reward score or majority winner is a proposal until certify → commit|refuse → receipt. ReplayClass typing still applies: a long reasoning trace does not launder into `Deterministic` without a certificate path.
-
-**Teach-first takeaway.** Test-time compute is a plateau spend knob inside the generative corridor. Mixture of Limits navigates whether that budget should open at all, then how little thinking to spend once VoI is zero past the floor. More thinking steps are not free of VoI, grammar, energy, or certify floors.
-
-<div id="89-super-learning-as-plateau-ensemble-spend" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.9 Super learning as plateau ensemble spend
-
-**Teach first (academic term).** **Super learning** (also called the **super learner**) is a cross-validated ensemble / stacking method from targeted learning: fit a library of candidate algorithms, collect out-of-fold predictions, then learn a meta-learner that combines them to minimize cross-validated risk (van der Laan, Polley, and Hubbard, 2007; Polley and van der Laan, "Super Learner In Prediction," U.C. Berkeley Biostatistics Working Paper 266). It is related to stacking as introduced by Wolpert (1992) and adapted by Breiman (1996). A discrete super learner selects the single best candidate by cross-validated risk; an ensemble super learner learns weights (often non-negative and summing to one) over candidates. The oracle results for cross-validation selectors underwrite asymptotic optimality *relative to the library*, not freedom from information or energy floors.
-
-**A note on the name.** Super learning is the van der Laan estimator: a cross-validated stack. It is unrelated to talk of "superintelligence."
-
-**Mixture of Limits reading.** Ensembles and stacks are still Model-class residual when they generate; when they combine deterministic candidates they still face VoI and certify limits.
-
-1. **VoI.** Another base learner or another fold is another observation. When the meta-learner cannot change B, stop.
-2. **Grammar.** If Formula or Lookup covers the coordinate, stacking neural candidates is excess enumeration under a different name.
-3. **Energy labels.** Training and evaluating a library multiplies forward passes. Estimates remain estimates; reference ensembles keep `measured_j=None`.
-4. **Certify.** A stacked prediction is still a proposal until a certificate or typed refuse closes the act. Oracle optimality inside a library does not coerce `ModelGenerated` to `Deterministic`.
-
-**Teach-first takeaway.** Super learning is cross-validated ensemble selection, a plateau option for combining residual leaves. Mixture of Limits maps it onto floors: better combination on the plateau does not retire VoI, grammar, energy, or certify.
-
-<div id="810-live-sota-methods-for-plateau-energycompute-20252026" class="anchor-alias" aria-hidden="true"></div>
-
-<div id="ii810-live-sota-methods-for-plateau-energycompute-20252026" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.10 Live SOTA methods for plateau energy/compute (2025 to 2026)
-
-Each row is a verified **implementation option for plateau spend**: teach the technique once with a cite, then one Mixture of Limits floor sentence. Author-reported speedups and benchmark scores are **field results**, distinct from OpenIE software reference measurements.
-
-| Approach | What it is (teach once) | Verified cite | Floor that still binds |
-|---|---|---|---|
-| **Speculative decoding** | A small **drafter** proposes several tokens; the large **target** model verifies them in parallel, preserving the target distribution while cutting serial decode steps | Leviathan, Kalman, and Matias, "Fast Inference from Transformers via Speculative Decoding," ICML 2023 (PMLR); Li et al., **EAGLE**, ICML 2024 (arXiv:2401.15077); see also §II.9 HCSpec / CAS-Spec | Speeds generation; does not refuse generation when VoI or grammar says stop |
-| **Mixture-of-Depths (MoD)** | Per-layer top-$k$ routing so only a budgeted subset of tokens enter attention/MLP at each depth; residual skip for the rest (static compute graph, dynamic token compute) | Raposo et al., "Mixture-of-Depths: Dynamically allocating compute in transformer-based language models," arXiv:2404.02258 (2024) | Adaptive depth *inside* the generator; not Lookup→Formula→Solver refuse outside generation |
-| **Weight / activation quantization** | Post-training low-bit weights (and sometimes activations): **GPTQ** (second-order PTQ), **AWQ** (activation-aware weight scaling), **FP8** / INT8 / INT4 serving formats | Frantar et al., GPTQ, arXiv:2210.17323; Lin et al., AWQ, MLSys 2024 (arXiv:2306.00978); Micikevicius et al., FP8 formats (NVIDIA, 2022) | Cheaper plateau bits per weight; does not invent VoI stop or certify-before-commit |
-| **Inference engines (KV systems)** | Serving runtimes that page and reuse KV cache: **vLLM** / PagedAttention; **SGLang** / RadixAttention for structured LM programs and prefix reuse | Kwon et al., "Efficient Memory Management for Large Language Model Serving with PagedAttention," arXiv:2309.06180 (vLLM); Zheng et al., SGLang, arXiv:2312.07104 | Systems efficiency on the plateau; still serves generators; floors decide whether to open decode |
-| **Mixture of experts (MoE)** | Sparse gating routes each token to a few expert feed-forward modules so total parameters grow faster than active compute | Shazeer et al., "Outrageously Large Neural Networks," ICLR 2017 (arXiv:1701.06538); Lepikhin et al., GShard, 2020 (arXiv:2006.16668); Fedus et al., Switch Transformers, JMLR 2022 | Capacity *inside* the generative corridor; Mixture of Limits floors live *outside* generation (§II.2, §II.9) |
-| **State-space models (SSMs)** | Sequence models with a compact recurrent state and near-linear scaling in context (selective SSM / **Mamba**) as an alternative or complement to attention | Gu and Dao, "Mamba: Linear-Time Sequence Modeling with Selective State Spaces," arXiv:2312.00752 (2023); Gu, Goel, and Ré, S4, ICLR 2022 | Efficient sequence leaf; still the last cascade stage when used as generator; VoI and certify unchanged |
-| **Retrieval-augmented generation (RAG)** | Retrieve documents from an external index, then condition the generator on those passages so knowledge need not live only in weights | Lewis et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks," NeurIPS 2020 (arXiv:2005.11401) | Retrieval can rhyme with Lookup when the hit is certified; uncertified retrieved text remains proposal, not Deterministic commit |
-| **Reasoning models / CoT scaling** | Models trained or prompted to emit long intermediate reasoning (o1/o3-style, DeepSeek-R1, QwQ, and cousins) | OpenAI o1 public writeup (2024); DeepSeek-AI et al., DeepSeek-R1 technical report (2025); §II.8.8 | Extra reasoning tokens still hit VoI and energy floors; longer is not always better |
-| **Diffusion language models** | Discrete or continuous **diffusion** denoising over tokens or latents rather than purely left-to-right next-token prediction (e.g. score-entropy discrete diffusion) | Lou, Meng, and Ermon, "Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution" (SEDD), ICML 2024 (PMLR v235) | Denoising steps spend bits and joules; Landauer remains a labeled estimate only; certify before commit |
-| **Linear attention / retention variants** | Attention alternatives with linear or chunkwise cost for long context (e.g. **Retentive Network / RetNet** multi-scale retention) | Sun et al., "Retentive Network: A Successor to Transformer for Large Language Models," arXiv:2307.08621 (2023) | Cheaper long context is algorithmic efficiency; floors still stop when VoI or grammar is covered |
-
-**Teach-first takeaway.** Every live SOTA method above optimizes *how* a generator runs or *which* parameters activate on the plateau. Mixture of Limits asks whether the generator should run for the stated benefit, which named floor closes first, and, once VoI is zero past that floor, how to spend least energy/compute on the plateau (Lookup → Formula → Solver → Model).
-
-<div id="8101-adaptive-depth-precision-and-serving-as-plateau-levers" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.10.1 Adaptive depth, precision, and serving as plateau levers
-
-Three complementary plateau levers sit beside MoE and speculative decode:
-
-1. **Mixture-of-Depths** (Raposo et al., arXiv:2404.02258) learns which tokens need full block compute and which may residual-skip under a fixed FLOP budget. That is generator-internal cheapest-sufficient *depth*, a rhyme with Mixture of Limits cascade, not a substitute for floors outside generation.
-2. **Quantization** (GPTQ, AWQ, FP8/INT families) moves fewer bits per weight and raises arithmetic intensity on memory-bound decode. Author-reported speedups and perplexity deltas are field results; software reference receipts keep Landauer as a labeled estimate and `measured_j=None` unless Metered.
-3. **Inference engines** (vLLM PagedAttention; SGLang RadixAttention) refuse waste of fragmented KV and repeated prefix compute. That is transmission / memory economics at the serving layer (§II.8.13), still under the last cascade stage when the cascade opens the generator.
-
-**Floor bind.** Adaptive depth, lower precision, and better KV paging optimize plateau spend. They do not retire VoI, grammar coverage, certificate, or settle-refuse.
-
-<div id="811-ssm-hybrids-moe-and-implementation-efficiency-on-the-plateau" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.11 SSM hybrids, MoE, and implementation efficiency on the plateau
-
-**Plateau options (verified methods, not a brand race).** Once Model is the residual leaf and VoI is zero past the floor, SOTA at the plateau means spend less energy and move fewer bits for the same certified benefit. The following are implementation options:
-
-- **State-space models (SSMs) / Mamba.** Selective state-space sequence models with linear-time scaling in context (Gu and Dao, 2023; Gu, Goel, and Ré, S4, ICLR 2022). Plateau use: cheaper long-context sequence leaf under the last cascade stage.
-- **SSM + attention + MoE hybrids (Jamba-class).** Interleaved Transformer attention and Mamba layers, plus mixture-of-experts on some MLPs, aimed at high throughput and a smaller key-value cache on long contexts (Lieber et al., "Jamba: A Hybrid Transformer-Mamba Language Model," arXiv:2403.19887; Jamba-1.5, arXiv:2408.12570). Plateau use: cut memory and raise throughput for long generative contexts. Author-reported benchmark and throughput numbers are **field results**, not Mixture of Limits `measured_j`.
-- **Fine-grained MoE + systems co-design (DeepSeek-class).** DeepSeekMoE (Dai et al., ACL 2024) and DeepSeek-V3 (DeepSeek-AI, arXiv:2412.19437) combine fine-grained MoE, multi-head latent attention, and systems co-design (including reported FP8 mixed-precision training and pipeline overlap). DeepSeek-R1 applies large-scale reinforcement learning for reasoning traces on that efficient base. Plateau use: lower active compute and training/inference cost per benefit. Treat GPU-hour and benchmark figures as **author-reported**, not software reference meters.
-- **MoE reasoning / agentic releases (GLM-class).** GLM-4.5 and related Zhipu / Z.ai releases (arXiv:2508.06471) use large total parameter counts with smaller active counts per token, plus agentic / reasoning post-training. Plateau use: active-parameter efficiency on available silicon. Scores and active-parameter claims are field/author-reported.
-
-Related plateau levers (quantization, speculative decoding, training-systems overlap) appear again in §II.8.10 and §II.8.13. Vendor ranking is out of scope.
-
-**Mixture of Limits reading.**
-
-1. SSM hybrids and MoE routing are legitimate plateau efficiency leaves. They remain generators. Floors still bind.
-2. **Implementation efficiency** (algorithms, precision, routing, RL post-training) lowers device-dollar and joule cost on the plateau. That is applied engineering, not a repeal of Shannon, Howard, or Landauer.
-3. No architecture announcement retires VoI, grammar coverage, labeled energy estimates, or certify-before-commit. Jamba / DeepSeek / GLM joules remain field / author-reported.
-
-**Teach-first takeaway.** SOTA at the plateau is optimize energy/compute with cheapest-sufficient cascade. SSM hybrids, MoE, and systems co-design are how field stacks spend less once the floor is known, not a narrative about which brand won.
-
-<div id="812-hardware-economics-plateau-spend-on-real-devices" class="anchor-alias" aria-hidden="true"></div>
-
-<div id="ii812-hardware-economics-plateau-spend-on-real-devices" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.12 Hardware: plateau spend on real devices
-
-**The hardware premise of this study.**
-
-1. **Computers are hardware.** Every program runs on materials and devices: gates, memory, interconnects, power delivery, cooling. There is no software that escapes physics.
-2. **Software is written for hardware.** Instruction sets, memory hierarchies, batch sizes, and quantization schemes exist because of devices. Software is **human applied engineering** under constraints. It is not a separate realm detached from devices, yield, and joules.
-3. **Plateau efficiency margins remain.** Inefficient deployment on the newest hardware leaves room. Optimized algorithms, MoE routing, training-systems co-design, and inference tricks on older or cheaper accelerators extract more work per device on the plateau. DeepSeek / GLM-class implementation efficiency (§II.8.11) and speculative decoding / quantization stacks (§II.8.10) are instances. Vendor scoreboards are field reports, not OpenIE meters.
-4. **Mixture of Limits reading.** Plateau options (SSM hybrids, mixture of experts, test-time compute, diffusion language models, linear attention, retrieval-augmented generation, world models, energy-based hybrids) do not retire floors. The hard part remains **applied mathematics embodied in materials and devices**, plus labeled joule accounting. Algorithmic efficiency is real, and it is why floors matter: once VoI is zero past the floor, cheaper implementations are the remaining work, and they still stop when VoI, grammar, or energy says stop. Estimates (`estimated_j`, Landauer as a labeled estimate) are not board energy.
-
-**Edge / TinyML floors (verified cites).** Coin-cell and MCU closes are not tiny transformers by default. MCUNet co-designs TinyNAS + TinyEngine for ImageNet-class inference on microcontrollers (Lin et al., NeurIPS 2020, arXiv:2007.10319). T-MAC accelerates low-bit LLM matmul on edge CPUs via table lookup without dequantization (Wei et al., arXiv:2407.00088). Mixture of Limits reading: Formula+LUT refuse under device SRAM/Flash is the lawful edge close; a quantized residual Model leaf is still the last cascade stage.
-
-**Neuromorphic and thermodynamic substrates.** Loihi-2 neuromorphic mapping of a MatMul-free LLM reports author-estimated throughput and mJ/token vs edge-GPU transformers (Abreu et al., arXiv:2503.18002). These are field silicon results, not Mixture of Limits `measured_j`. Digital thermodynamic computers for generative sampling (for example CN101, Holdijk et al., arXiv:2608.00754) correspond to the reference's `ThermoSettle` device kind; their joules stay field results until a meter is attached. Bennett's reversible computing is settled theory (§II.8.0); reversible ASIC products are outside the scope of `mol prove`.
-
-**Bridge.** §II.8.12 adds the hardware corollary: plateau techniques extract more work per device, and Mixture of Limits binds that spend to floors when more work buys nothing. They make a generator cheaper to run; they do not decide whether it should run.
-
-<div id="8121-hardware-paired-navigation-20252026-peers" class="anchor-alias" aria-hidden="true"></div>
-
-<div id="ii8121-hardware-paired-navigation-20252026-peers" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.12.1 Hardware-paired navigation (2025 to 2026 peers)
-
-Mixture of Limits is not a software-only order. Navigation is Lookup → Formula → Solver → Model **on hardware that is available, accessible, and capable**. Hooker's hardware lottery remains an established result: ideas look like progress when they fit installed chips and kernels (Hooker, 2021; [doi:10.1145/3467017](https://doi.org/10.1145/3467017)).
-
-Recent field work strengthens the pairing without replacing the navigation rule. Huang et al. (arXiv:2507.19142, Jul 2025), **A3D-MoE**, co-design MoE routing with 3D heterogeneous integration, score-aware HBM access, and attention-MoE fusion; author-reported energy cuts of about 2× to 4× are **their** architecture result, not a `measured_j` reading of this paper. Chung, Wu, Ma, and Chowdhury (arXiv:2601.22076, 2026), **Where Do the Joules Go?**, measure 1,858 inference configurations on H100/B200 and map energy to latent factors across algorithm, software, and hardware layers. Task type alone can swing LLM energy per response by about 25×. That is plateau diagnosis of spend on available fabric. It is not Lookup → Formula → Solver refuse.
-
-
-
-
-<div id="813-plateau-techniques-transmission-gearing-cascade-memorycontext-test-time" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.13 Plateau techniques: transmission, gearing, cascade, memory/context, test-time
-
-**Thesis of this section (SOTA at the plateau).** Public research programs optimize **transmission** (how bits move through attention, KV cache, and interconnect), **gearing / MoE routing** (which expert / path / attention mode fires), **cascade** (early-exit prefill, self-decoder then cross-decoder; Lookup→Formula→Solver→Model as OpenIE order), **memory/context** (long-horizon KV, conditional memory, hybrid attention windows), and **test-time** (reasoning budgets, multi-token prediction, speculative decode) under hardware and economic constraints. That is **plateau spend**: algorithmic efficiency on available silicon once Model is open. These programs approach Mixture of Limits ideas, such as using the cheapest sufficient compute and refusing waste of HBM, SSD, or prefill FLOPs, without stating a floor outside the model. Author-reported FLOPs and cache bytes are **field results**, not Mixture of Limits `measured_j`. Labs are cited by method, as sources of plateau techniques.
-
-Teach the shared primitives before the technique sections:
-
-| Primitive | Meaning in this survey | Floor bind |
-|---|---|---|
-| **YOCO** (You Only Cache Once) | Decoder-decoder layout: a self-decoder builds shared global KV once; a cross-decoder reuses it via cross-attention; prefill can early-exit after the self-decoder (Sun et al., NeurIPS 2024; arXiv:2405.05254) | Cuts KV memory and prefill work; still a generator architecture; VoI / grammar / certify floors remain |
-| **HySparse2** | Hybrid sparse attention with two-level KV sharing: outer KV Bridging (YOCO-style self-/cross-decoder, full-attention layers only) plus inner KV Reuse (sparse layers reuse full-attention KV and token-level top-k); prefill exits after the self-decoder (Wei, Gao, …, Luo / Xiaomi LLM-Core; arXiv:2609.26368) | Compresses long-context transmission cost; does not invent a refuse floor outside generation |
-| **CSA2 / CED** | DeepSeek-V4.1-Flash: Causal Encoder-Decoder (CED, YOCO-inspired) plus Compressed Sparse Attention 2 (Full / Reindex / Reuse modes, hierarchical sparse indexer, FP4 main KV) | Extreme KV and prefill compression for agents; still MoE generation |
-| **MoE routing** | Gate selects a small active expert set per token (DeepSeekMoE, Qwen MoE, Kimi, Sarvam, Solar, …) | Gearing inside the generative corridor: cheaper than dense, not Mixture of Limits floors |
-| **MTP / speculative path** | Multi-token prediction or draft modules densify training and accelerate decode | Test-time / decode gearing; energy and VoI floors still bind |
-| **Prefix-cache reuse** | A session that keeps its prompt prefix reuses cached KV instead of recomputing prefill; a session that breaks reuse recomputes it. | Cheapest-sufficient transmission; a broken prefix is escalated generative work, not a certified refuse |
-
-<div id="8131-transmission-attention-kv-cache-and-interconnect-cost" class="anchor-alias" aria-hidden="true"></div>
-
-#### II.8.13.1 Transmission: attention, KV cache, and interconnect cost
-
-**YOCO → CED / CSA2 (DeepSeek-V4.1-Flash).** YOCO showed that caching global KV once and early-exiting prefill after a self-decoder cuts memory and latency by orders of magnitude on long contexts (Sun et al., 2024; arXiv:2405.05254). DeepSeek-V4.1-Flash pushes that lineage into agent workloads: a multimodal MoE with 552B backbone parameters, up to **1M** context, Causal Encoder-Decoder (CED) activating **8B** parameters per token in prefill and **16B** in decode, Compressed Sparse Attention 2 (CSA2) with Full / Reindex / Reuse modes, FP4 main KV, SWA Bounded Replay, Engram conditional memory, and DSpark speculative decoding (DeepSeek-AI, arXiv:2609.19969; weights at [huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)). Author-reported global KV footprint is **890 bytes/token** (~1/4 of V4-Flash); persistent KV with SWA Bounded Replay ~1/8 of V4-Flash. That is **transmission** law under HBM/SSD constraints, not a board joule claim.
-
-**HySparse2 (Xiaomi LLM-Core).** HySparse2 (Wei, Gao, …, Cao, Luo / Xiaomi LLM-Core, arXiv:2609.26368) teaches two-level KV sharing for long-horizon agents: KV Bridging (YOCO-style) so prefill can exit after the self-decoder, plus KV Reuse with **token-level** sparse selection and a forced local window (no separate SWA branch in sparse layers). On matched 80B-A3B MoE ablations, author-reported 1M-token prefill FLOPs drop ~2.92× vs HySparse and ~5.02× vs Hybrid SWA; KV cache ~2.69 GB vs 6.72 / 12.09 GB. Transmission compression under device memory. It is still a generator stack.
-
-**Prefix-cache reuse.** Reusing a cached prompt prefix is cheapest-sufficient transmission: the KV for the prefix is read, not recomputed. When reuse breaks, prefill is recomputed, and that spend is still generative corridor work, not a certified refuse.
-
-**Interconnect locality (Huawei LocMoE / PanGu-Σ).** LocMoE reduces MoE communication overhead on Ascend clusters (IJCAI 2024; arXiv:2401.13920). PanGu-Σ targets sparse trillion-scale sparse heterogeneous compute (arXiv:2303.10845). **Floor bind:** routing locality as transmission cost on available accelerators: hardware economics, not software reference joules.
-
-<div id="8132-gearing--moe-routing-which-expert-or-path-fires" class="anchor-alias" aria-hidden="true"></div>
-
-#### II.8.13.2 Gearing / MoE routing: which expert or path fires
-
-**DeepSeekMoE / V3.** DeepSeek-V3 is a Mixture-of-Experts (MoE) language model with 671B total parameters and 37B activated per token, using Multi-head Latent Attention (MLA), DeepSeekMoE routing, auxiliary-loss-free load balancing, and a Multi-Token Prediction (MTP) training objective that can also support speculative decoding (DeepSeek-AI, arXiv:2412.19437; earlier DeepSeekMoE at ACL 2024). That is **gearing**: only a sparse expert path runs per token. It approaches cheapest-sufficient *inside* generation.
-
-**Xiaomi MiMo (hybrid attention + MoE).** Xiaomi's public LLM line is **MiMo**. MiMo-7B is a dense reasoning model pretrained on ~25T tokens with MTP and RL post-training (Xiaomi LLM-Core, arXiv:2505.07608). MiMo-V2-Flash is a 309B-total / 15B-active MoE with hybrid Sliding-Window Attention (SWA) and global attention (5:1, 128-token window), MTP reused as speculative draft, native context extended to 256K (arXiv:2601.02780). Public reporting attributes MiMo V3’s intended architecture to HySparse2 under Xiaomi MiMo lead Fuli Luo (team materials / TechNode 2026-09-24; HySparse2 paper authorship). V3 product status is a field announcement until a full V3 technical report is published; the routing, staging, and transmission claims here rest on the HySparse2 paper. **Floor bind:** Xiaomi compresses long-context transmission and prefill cascade under device memory (cheapest-sufficient, adjacent to Mixture of Limits) while remaining MoE/hybrid-generator first.
-
-**Qwen / Alibaba.** Qwen3 MoE uses fine-grained expert segmentation (e.g. 128 experts, 8 active; no shared experts in the Qwen3 MoE design) plus a unified thinking / non-thinking mode and thinking-budget control (Qwen Team, arXiv:2505.09388). Qwen3-Next further sparsifies (public Alibaba materials: hybrid attention, highly sparse MoE, MTP). **Floor bind:** gearing + test-time budget, still generative; budget is not VoI refuse outside the model.
-
-**GLM / Zhipu.** Already in §II.8.11: GLM-4.5 MoE reasoning / agentic releases (arXiv:2508.06471). **Floor bind:** active-parameter efficiency on silicon; floors outside generation remain Mixture of Limits law.
-
-**Moonshot / Kimi.** Kimi K2 is a ~1.04T-total / ~32B-active MoE with MLA-class attention and MuonClip training (MoonshotAI, arXiv:2507.20534). **Floor bind:** extreme sparse gearing; agentic length still hits energy/VoI.
-
-**Sarvam.** Sarvam-30B is a public MoE (≈30B total / ≈2.4B active; 128 sparse experts + shared expert; top-6 routing; GQA) aimed at multilingual / Indic-language reasoning with efficient deployment (Sarvam model card / docs; Hugging Face `sarvamai/sarvam-30b` config). **Floor bind:** expert gearing for multilingual benefit under smaller active FLOPs.
-
-**Other sourced MoE / efficiency lines (routing-relevant only).**
-- **Baichuan.** Baichuan 2 public report is dense 7B/13B training systems work (arXiv:2309.10305). Include it only as efficiency-under-hardware, not as MoE routing. **Floor bind:** systems gearing ≠ Mixture of Limits cascade.
-- **ByteDance Seed.** Public Seed / Doubao lines emphasize long-context and agent products. Where MoE or sparse attention is documented, bind as generative gearing under §II.8.12 economics.
-- **SB Intuitions (SoftBank group).** Sarashina2-8×70B is a Japanese MoE upcycled from Sarashina2-70B (8 experts, top-2 active; public SB Intuitions release 2024). **Floor bind:** sparse gearing under language-local silicon economics.
-- **Upstage.** Solar Open / Solar Open 2 public MoE lines (e.g. ~100B-class with ~12B active; later ~250B / ~15B active with hundreds of routed experts; arXiv:2601.07022 and Upstage blogs). **Floor bind:** MoE gearing on constrained GPU budgets.
-- **Krutrim.** Public Krutrim LLM technical report describes a dense multilingual foundational model (arXiv:2502.09642). It is **not** an MoE routing paper.
-- **AI4Bharat.** Strong open Indic datasets and benchmarks (e.g. IndicXTREME / related suites) that other systems evaluate against. They are infrastructure for grammar coverage of Indic languages, not a MoE router itself.
-
-<div id="8133-cascade-early-exit-prefill-and-staged-decode-paths" class="anchor-alias" aria-hidden="true"></div>
-
-#### II.8.13.3 Cascade: early-exit prefill and staged decode paths
-
-Cascade here means staged work: finish a cheaper stage, then optionally open a costlier one: self-decoder then cross-decoder; prefill then decode; or Lookup→Formula→Solver→Model.
-
-- **YOCO / CED early-exit.** Prefill can exit after the self-decoder once global KV is built (Sun et al., 2024; DeepSeek-V4.1-Flash CED). That is a generator-internal cascade that refuses *waste of prefill FLOPs*, not a VoI refuse outside generation.
-- **HySparse2 prefill exit.** Same YOCO-style exit after KV Bridging; author-reported 1M-token prefill FLOPs compressions above (§II.8.13.1).
-- **CED active-parameter schedule.** DeepSeek-V4.1-Flash activates **8B** per token in prefill and **16B** in decode: a cascade of capacity with stage, still MoE generation.
-- **Contrast.** Mixture of Limits cascade is Lookup → Formula → Solver/settle → Model with typed refuse. Field cascades above densify or sparsify *generation*; they do not certify commit|refuse before irreversible effect.
-
-<div id="8134-memory--context-long-horizon-kv-and-conditional-memory" class="anchor-alias" aria-hidden="true"></div>
-
-#### II.8.13.4 Memory / context: long-horizon KV and conditional memory
-
-- **DeepSeek-V4.1-Flash.** 1M context; FP4 main KV; **890 bytes/token** global KV; SWA Bounded Replay; Engram conditional memory (arXiv:2609.19969). Memory/context is becoming first-class; settle-refuse and VoI outside generation are not.
-- **Xiaomi MiMo / HySparse2.** MiMo-V2-Flash native context to 256K with hybrid SWA/global attention; HySparse2 author-reported KV cache ~2.69 GB at 1M tokens on the matched MoE ablation (vs 6.72 / 12.09 GB baselines).
-- **NAVER HyperCLOVA.** HyperCLOVA X THINK technical materials emphasize reasoning / long context (arXiv:2506.22403). Include them as a context / test-time path, not as MoE gearing unless a MoE card is cited.
-- **Floor bind.** Compressing KV and extending context refuses waste of HBM/SSD under silicon constraints (adjacent to Mixture of Limits on transmission). The decision to open the generator still sits outside these designs.
-
-<div id="8135-test-time-reasoning-budgets-and-speculative-paths" class="anchor-alias" aria-hidden="true"></div>
-
-#### II.8.13.5 Test-time: reasoning budgets and speculative paths
-
-**DeepSeek-R1 (test-time reasoning path).** DeepSeek-R1 incentivizes reasoning via large-scale reinforcement learning (RL), with R1-Zero showing emergent reflection/verification behaviors and R1 adding cold-start data plus multi-stage training; public report arXiv:2501.12948, with a Nature paper (Guo et al., 2025, DOI [10.1038/s41586-025-09422-z](https://doi.org/10.1038/s41586-025-09422-z)). R1 dynamically allocates more reasoning tokens to harder problems (a test-time cascade) while still overthinking on easy items. Mixture of Limits reading: longer chains are not free of VoI or energy floors (§II.8.8).
-
-**MTP / speculative decode.** DeepSeek-V3 MTP and DeepSeek-V4.1-Flash DSpark; MiMo MTP reused as speculative draft; Qwen3-Next MTP. All are decode gearing inside the generative corridor.
-
-**Qwen thinking budget.** Unified thinking / non-thinking mode with thinking-budget control (arXiv:2505.09388): a test-time spend knob, not VoI refuse outside the model.
-
-**HyperCLOVA X THINK.** Reasoning / long-context materials (arXiv:2506.22403): a test-time / context path as above.
-
-**Floor bind (DeepSeek, across releases).** DeepSeek repeatedly removes *waste of KV, prefill, and active parameters* while total MoE capacity keeps growing. Memory and context are becoming first-class; settle refuse and VoI outside generation are not.
-
-**Section close.** Across these sources, the convergent plateau move is: move fewer bits (YOCO / CED / HySparse2 / FP4 KV), fire fewer experts (MoE), and spend test-time tokens where difficulty rises (R1 / thinking budgets). These are SOTA energy/compute options on available silicon. That converges toward the Mixture of Limits **floors** (stop waste; cheapest sufficient Lookup → Formula → Solver → Model) without stating VoI, grammar, certificate, or settle refuse as rules. Author-reported KV bytes are field reports, not `measured_j`.
-
-
-
-<div id="814-race-to-the-plateau-floors-across-aiml-fields" class="anchor-alias" aria-hidden="true"></div>
-
-<div id="ii814-race-to-the-saturation-points-across-aiml-fields" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.14 Race to the plateau floors across AI/ML fields
-
-**Thesis.** AI progress is often described as growth in scale: more parameters, more tokens, more experts. Mixture of Limits reads the same progress as movement toward floors. Across every major AI/ML field below, the plateau move is real engineering (cheaper bits, fewer steps, better uncertainty, better routing). The floor that binds is still VoI, grammar coverage, labeled energy, certificate, or settle-refuse. Once VoI is zero past that floor, optimize energy/compute there (Lookup → Formula → Solver → Model) rather than escalate generation.
-
-One cited source per row. Author-reported speedups and scores are **field results**, not Mixture of Limits `measured_j`.
-
-| Field | Plateau move | Floor that binds | Cite |
-|---|---|---|---|
-| **RL / RLHF / process reward** | Preference reward models + PPO (or process reward on steps) reshape the generative policy toward preferred traces | Reward shaping is still proposal until certify; extra RL / CoT tokens hit VoI and energy once B is covered (§II.8.8) | Ouyang et al., InstructGPT / RLHF, NeurIPS 2022, arXiv:2203.02155; Lightman et al., process supervision, arXiv:2305.20050 |
-| **Diffusion (image/video) + distillation** | Latent diffusion + step distillation cut denoising compute while preserving sample quality | Denoising steps spend bits/joules; Landauer stays a labeled estimate; certify before commit of generated media | Rombach et al., Latent Diffusion, CVPR 2022; Salimans & Ho, Progressive Distillation, ICLR 2022, arXiv:2202.00512; Blattmann et al., Stable Video Diffusion, arXiv:2311.15127 |
-| **Graph neural nets** | Message-passing GCNs / cousins compress relational structure into local updates | Graph message passes remain Model-class when generative; structure that is Lookup/Formula-covered closes before GNN | Kipf & Welling, GCN, ICLR 2017, arXiv:1609.02907 |
-| **Multimodal fusion** | Contrastive image-text alignment (CLIP-class) shares a joint embedding for zero-shot transfer | Aligned latents do not invent VoI stop; multimodal generation still the last cascade stage under certify | Radford et al., CLIP, ICML 2021 (PMLR v139) |
-| **Federated learning** | FedAvg aggregates client updates without centralizing raw data; communication rounds become the scarce resource | Comm rounds are plateau cost; VoI still prices whether another round changes B; energy labels stay Estimated unless Metered | McMahan et al., FedAvg, AISTATS 2017 (PMLR v54) |
-| **Continual learning** | Elastic Weight Consolidation (and cousins) protect important weights against catastrophic forgetting across tasks | Retaining old tasks is plateau memory economics; does not retire grammar coverage or settle-refuse on the new coordinate | Kirkpatrick et al., EWC, *PNAS* 2017. DOI: 10.1073/pnas.1611835114 |
-| **Pruning / sparsity (beyond MoD)** | Lottery-ticket iterative magnitude pruning finds sparse trainable subnetworks that match dense accuracy | Sparse generators still generate; floors outside generation decide whether to open decode (§II.8.10 MoD for token-depth sparsity) | Frankle & Carbin, Lottery Ticket, ICLR 2019, arXiv:1803.03635 |
-| **Knowledge distillation** | Teacher→student soft-target transfer compresses ensemble or large-model behavior into a cheaper deployable student | Distilled student is cheaper plateau leaf; VoI/grammar still stop escalation when covered | Hinton, Vinyals & Dean, Distilling the Knowledge in a Neural Network, arXiv:1503.02531 (2015) |
-| **NAS / hardware-aware NAS** | Search (RL or supernet) for architectures; Once-for-All specializes one trained net to device latency without retraining | Architecture search optimizes plateau spend on silicon; does not name refuse outside generation | Zoph & Le, NAS with RL, ICLR 2017, arXiv:1611.01578; Cai et al., Once-for-All, ICLR 2020, arXiv:1908.09791 |
-| **Bayesian deep learning / uncertainty** | MC dropout (and variational cousins) approximate posterior predictive uncertainty at test time | Uncertainty scores are proposals for refuse thresholds, not automatic Mixture of Limits receipts until typed certify | Gal & Ghahramani, Dropout as Bayesian Approximation, ICML 2016 (PMLR v48), arXiv:1506.02142 |
-| **Conformal prediction** | Distribution-free prediction sets with finite-sample coverage under exchangeability; abstention when the set is too large | Closest formal cousin to typed refuse: coverage-calibrated abstain rhymes with settle-refuse / VoI stop | Angelopoulos & Bates, Conformal Prediction: A Gentle Introduction, arXiv:2107.07511; Vovk, Gammerman & Shafer, *Algorithmic Learning in a Random World* (2nd ed., 2022) |
-| **Causal ML** | Structural causal models / do-calculus separate intervention from association | Causal identification is Formula/Solver grammar when the graph is known; associative generators stay the last cascade stage | Pearl, *Causality* (2nd ed.); Pearl, Causal inference in statistics: An overview, *Stat. Surv.* 2009 |
-| **Active learning (VoI cousin)** | Query the label that most reduces expected risk / uncertainty under a labeling budget | Settles-class active selection **is** Howard VoI operationalized for labels; stop when marginal label VoI ≤ cost | Settles, Active Learning Literature Survey, U. Wisconsin TR 1648 (2009); Howard (1966) VoI (§II.7.1) |
-| **Compression / distillation cascades** | Progressive or multi-stage distill (diffusion steps; teacher→student chains) compound plateau compression | Cascaded distill remains generative efficiency; OpenIE cascade is Lookup→Formula→Solver→Model with typed refuse | Salimans & Ho (2022); Hinton et al. (2015); §II.8.13.3 field early-exit cascades |
-| **CUDA Graphs / kernel fusion** | Capture static GPU work as a replayable graph; fuse kernels to cut launch and memory traffic | Systems plateau spend on the device; still serves generators; floors decide whether work runs | NVIDIA CUDA Programming Guide (CUDA Graphs); PyTorch CUDA Graphs / `torch.compile` reduce-overhead notes |
-| **Agent memory systems** | OS-inspired paging of agent context (main vs external memory; MemGPT-class) under fixed context windows | Memory hierarchy is transmission/context economics (§II.8.13.4); unbounded agent loops still hit VoI/energy; certify before irreversible tool effects | Packer et al., MemGPT, arXiv:2310.08560 (2023) |
-| **RAG variants (GraphRAG)** | Build entity/community graph summaries; map-reduce over communities for global corpus questions | Graph index can rhyme with Lookup when certified; uncertified community text remains proposal (§II.8.10 RAG row) | Edge et al., GraphRAG, arXiv:2404.16130 (2024) |
-| **Structured generation (beyond GCD/CRANE)** | FSM / regex / CFG-guided decoding (Outlines-class) masks illegal tokens at sample time | Constrains **tokens**; Mixture of Limits constrains **commit** (§II.9 GCD/CRANE). Grammar coverage can close at Formula without an LLM | Willard & Louf, Efficient Guided Generation for LLMs (Outlines), arXiv:2307.09702 (2023) |
-
-**Teach-first takeaway.** Every row moves toward a cheaper or safer plateau. None removes a floor. Across AI/ML the work is to **find the floor, then reach it with the fewest joules**.
-
-**Scope of the table.** Exhaustive taxonomies of RL algorithms, video products without a public methods paper, and surveys organized by region are left out, so that each row can be read against a floor. Formal theorem proving in the LeanDojo class is cited in the reference list as a relative of the Solver gear.
-
-
-<div id="9-mixture-of-limits-is-not-moe-and-the-model-to-model-sota-table" class="anchor-alias" aria-hidden="true"></div>
-
-## II.9. Mixture of Limits beside MoE and model-to-model routing
-
-<div id="90-spine-history--mathematics-sota-at-the-plateau" class="anchor-alias" aria-hidden="true"></div>
-
-### II.9.0 Where this section sits
-
-Mixture of Limits rests on information theory and physics: the Kepler and Newton lineage of law discovery, then Shannon, Landauer, algorithmic complexity, and value of information. The systems in this section mostly decide **which neural generator runs** and how fast. §II.8.4 to §II.8.14 already place those techniques as ways to spend less past the floor. Mixture of Limits asks first whether a generator should run at all, and then how little energy reaches the verified result.
-
-<div id="91-law-contrast-not-a-rebrand" class="anchor-alias" aria-hidden="true"></div>
-
-### II.9.1 Law contrast (not a rebrand)
-
-Mixture of Experts (MoE) places experts **inside** a generative corridor: a gate selects parameters; success is next-token likelihood; capacity grows by adding experts to the same act. Mixture of Limits places named **floors outside** generation: Lookup → Formula → Solver/settle → **Model**; success is closed grammar + certified commit or refuse + joule receipt; the model is a residual leaf, off by default (`allow_model=false`). The two work at different levels and compose.
-
-| Axis | MoE / model↔model field | Mixture of Limits |
-|---|---|---|
-| Where the mixture lives | Inside the model (experts, draft/target pairs, strong/weak LLMs) | Outside generation (named floors + cascade gears) |
-| Routing object | Which **model** (or draft head) answers | Which **tier** closes: Lookup / Formula / Solver / Model |
-| Refuse | Rare; usually escalate to a larger model | First-class: VoI, grammar, settle, certificate, primitive_gap, fabric_unavailable, … |
-| Energy labels | Often latency/cost proxies; some papers meter GPU energy for **LLM** serving | Receipts: `estimated_j` labeled; `measured_j=None` unless a meter returns |
-| Success metric | Tokens/s, cost@quality, speculative speedup | Certified commit + typed ReplayClass + receipt |
-
-RouteLLM, GreenServ, and HCSpec optimize **which neural generator runs** (cost, Wh, or decode speedup inside the generative corridor). Mixture of Limits asks whether a generator should run at all.
-
-**Cascades and metareasoning.** The cascade is a classical form. Viola and Jones ran a cascade of boosted classifiers: cheap stages reject most inputs, and only hard inputs reach costly stages (CVPR 2001, DOI:[10.1109/CVPR.2001.990517](https://doi.org/10.1109/CVPR.2001.990517)). Russell and Wefald priced each computation by its expected value to the decision, net of its cost, and stopped when no computation had positive net value (*Artificial Intelligence* 49, 1991, DOI:[10.1016/0004-3702(91)90015-C](https://doi.org/10.1016/0004-3702(91)90015-C)). Horvitz set the same trade for reasoning under bounded resources (UAI 1987, arXiv:[1304.2759](https://arxiv.org/abs/1304.2759)). FrugalGPT cascades language models and stops when a learned scorer accepts the answer (Chen, Zaharia and Zou 2023, arXiv:[2305.05176](https://arxiv.org/abs/2305.05176)). Mixture of Limits is this lineage with three changes. The stages include non-neural gears, lookup, formula and solver, ahead of any model. The stop test is the completeness predicate $C(z)$, not a learned score. The cost is metered joules on a receipt, not dollars or latency. The order is optimal under the condition above and not otherwise.
-
-**Baselines.** A cascade claim is tested on a cost-quality frontier: joules per task against closure rate, on one typed task set. The arms are always-large model, always-small model, a learned router in the style of RouteLLM, a FrugalGPT-style scored cascade, the σ-law selector (itself a Mixture of Limits instance), and an oracle that knows the cheapest sufficient gear for each task. The fixed Lookup → Formula → Solver → Model cascade claims the frontier only where its curve lies below every arm.
-
-<div id="92-field-sota-all-modelmodel-routing--speculation--constrained-generation" class="anchor-alias" aria-hidden="true"></div>
-
-### II.9.2 Field SOTA (all model↔model routing / speculation / constrained generation)
-
-Every row below is **model↔model**: routers choose among LLMs; speculative methods draft-then-verify with draft/target models; constrained decoding still samples from an LLM under a grammar. None implements Lookup→Formula→Solver→Model with refuse-to-commit as the close rule.
-
-Measurement labels: **Metered**, **Estimated**, **Unmetered**; each paper's own method section sets its label. Field joules stay field results. The `mol prove` path is **Unmetered**.
-
-| System | Title (verified) | ID | Class | What it routes / accelerates | Energy / cost as reported by authors | Vs Mixture of Limits |
+| System | Title | ID | Class | What it routes or accelerates | Energy or cost as reported | Difference |
 |---|---|---|---|---|---|---|
-| **RouteLLM** | *RouteLLM: Learning to Route LLMs with Preference Data* (arXiv); ICLR 2025 venue title uses *from Preference Data* | arXiv:[2406.18665](https://arxiv.org/abs/2406.18665) · ICLR 2025 | Preference router (strong↔weak LLM) | Query → strong or weak LLM | Cost / quality (API \$); not Mixture of Limits Landauer receipts | Model↔model; no Lookup/Formula floor; no typed refuse-to-commit |
-| **PEARL** (routing) | *PEARL: Performance and energy aware routing for LLMs* | DOI:[10.1016/j.future.2025.108218](https://doi.org/10.1016/j.future.2025.108218) · FGCS 176:108218 | Energy-aware multi-LLM router | Query → LLM under energy cap (EMM predicts energy) | Authors report energy-aware routing (GPU/infra); **not** imported as Mixture of Limits `measured_j` | Still picks a model; Mixture of Limits may refuse before any model |
-| **GreenServ** | *GreenServ: Energy-Efficient Context-Aware Dynamic Routing for Multi-Model LLM Inference* | arXiv:[2601.17551](https://arxiv.org/abs/2601.17551) · ICPE 2026 | Contextual bandit multi-LLM router | Query features → LLM; accuracy vs **measured GPU energy** (Zeus) | **Metered** (authors’ GPU Wh via Zeus) on their LLM pool (field result, not Mixture of Limits board synth) | Model pool routing; Mixture of Limits cascade is non-neural first |
+| **RouteLLM** | *RouteLLM: Learning to Route LLMs with Preference Data* (arXiv); ICLR 2025 venue title uses *from Preference Data* | arXiv:[2406.18665](https://arxiv.org/abs/2406.18665) · ICLR 2025 | Preference router (strong↔weak LLM) | Query → strong or weak LLM | Cost / quality (API \$); reported by the authors | Model↔model; no Lookup/Formula floor; no typed refuse-to-commit |
+| **PEARL** (routing) | *PEARL: Performance and energy aware routing for LLMs* | DOI:[10.1016/j.future.2025.108218](https://doi.org/10.1016/j.future.2025.108218) · FGCS 176:108218 | Energy-aware multi-LLM router | Query → LLM under energy cap (EMM predicts energy) | Authors report energy-aware routing (GPU/infra) | Still picks a model; Mixture of Limits may refuse before any model |
+| **GreenServ** | *GreenServ: Energy-Efficient Context-Aware Dynamic Routing for Multi-Model LLM Inference* | arXiv:[2601.17551](https://arxiv.org/abs/2601.17551) · ICPE 2026 | Contextual bandit multi-LLM router | Query features → LLM; accuracy vs **measured GPU energy** (Zeus) | **Metered** (authors’ GPU Wh via Zeus) on their LLM pool | Model pool routing; Mixture of Limits cascade is non-neural first |
 | **VoltanaLLM** | *VoltanaLLM: Energy-Efficient and SLO-Aware Disaggregated LLM Serving via Adaptive Frequency Control and State-Space Routing* | arXiv:[2509.04827](https://arxiv.org/abs/2509.04827) | P/D-disagg serving + frequency + state-space route | Prefill/decode instances + GPU frequency under TTFT/ITL SLOs | **Metered** (authors; pyNVML on A100/GH200) up to ~36.3% E2E GPU energy vs max-freq baseline (field serving result) | Routes **instances of the same generative stack**; Mixture of Limits may never open decode |
-| **HCSpec** | *HCSpec: Two-Tier Horizontal Cascade Speculative Decoding for High-Efficiency Large Language Model Inference* | DOI:[10.18653/v1/2026.acl-long.353](https://doi.org/10.18653/v1/2026.acl-long.353) · ACL 2026 | Speculative decoding (draft↔target) | Position-specialized draft cascade → target verify | Latency speedup (vs EAGLE-3 / AR); energy not Mixture of Limits claim | Speeds generation; does not refuse generation on floors |
+| **HCSpec** | *HCSpec: Two-Tier Horizontal Cascade Speculative Decoding for High-Efficiency Large Language Model Inference* | DOI:[10.18653/v1/2026.acl-long.353](https://doi.org/10.18653/v1/2026.acl-long.353) · ACL 2026 | Speculative decoding (draft↔target) | Position-specialized draft cascade → target verify | Latency speedup (vs EAGLE-3 / AR) | Speeds generation; does not refuse generation on floors |
 | **CAS-Spec** | *CAS-Spec: Cascade Adaptive Self-Speculative Decoding for On-the-Fly Lossless Inference Acceleration of LLMs* | arXiv:[2510.26843](https://arxiv.org/abs/2510.26843) · NeurIPS 2025 | Self-speculative cascade (DSIA drafts) | Draft stages from target (sparsity/quant) + DyTC | Latency speedup ~1.1×-2.3× AR (authors); lossless tokens | Model-internal draft hierarchy ≠ Mixture of Limits floors |
 | **GCD** | *Grammar-Constrained Decoding for Structured NLP Tasks without Finetuning* | arXiv:[2305.13971](https://arxiv.org/abs/2305.13971) · DOI:[10.18653/v1/2023.emnlp-main.674](https://doi.org/10.18653/v1/2023.emnlp-main.674) · EMNLP 2023 | Grammar-constrained LLM decoding | Mask logits to CFG | Unmetered / quality metrics | Constrains **tokens**; Mixture of Limits constrains **commit** |
-| **CRANE** | *CRANE: Reasoning with constrained LLM generation* | arXiv:[2502.09061](https://arxiv.org/abs/2502.09061) · ICML 2025 (PMLR v267) | Reasoning-augmented constrained decoding | Alternate unconstrained reason ↔ constrained answer | Accuracy on GSM-symbolic / FOLIO; not Mixture of Limits joules | Still LLM generation under grammar; Mixture of Limits can close at Formula without an LLM |
-| **Constitutional AI** | *Constitutional AI: Harmlessness from AI Feedback* | arXiv:[2212.08073](https://arxiv.org/abs/2212.08073) | Principle-trained refuse / RLAIF | Critique→revise under a written constitution; RL from AI feedback | Alignment quality / human prefs; not Mixture of Limits joules | **Trained** textual refuse inside the generator; Mixture of Limits **typed** certify-before-commit + receipted floors outside generation |
-| **Toolformer / ReAct** | Toolformer (NeurIPS 2023); *ReAct: Synergizing Reasoning and Acting in Language Models* | Toolformer arXiv:[2302.04761](https://arxiv.org/abs/2302.04761) · ReAct arXiv:[2210.03629](https://arxiv.org/abs/2210.03629) | Tool-use / agent loop | LM decides when to call APIs / act↔observe | Task accuracy; not Mixture of Limits Landauer receipts | Agent routing among **tools still opens a model**; Mixture of Limits may close at Lookup/Formula before any tool or model |
 
-**Name collision (do not conflate):** ICLR 2025 also has *PEARL: Parallel Speculative Decoding with Adaptive Draft Length* (arXiv:[2408.11850](https://arxiv.org/abs/2408.11850)); speculative, not the FGCS energy router. §II.9’s PEARL row is the **routing** paper (DOI 10.1016/j.future.2025.108218). Speculative PEARL sits in the same model↔model bucket as HCSpec/CAS-Spec if cited later.
+## II.7. Baselines and falsifiers
 
-<div id="93-what-mixture-of-limits-claims-instead" class="anchor-alias" aria-hidden="true"></div>
+A cascade claim is tested on one typed task set as a frontier of joules per task against closure rate. The arms are: always the large model; always the small model; a learned router (Ong et al., 2024); a scored cascade (Chen, Zaharia and Zou, 2023); a selector that estimates $p_i / c_i$ per task; and an oracle that knows the cheapest sufficient gear for each task. The fixed Lookup → Formula → Solver → Model order claims the frontier only where its curve lies below every arm. The order is falsified on a task class where measured $p_i / c_i$ is not decreasing along it, by the derivation of Section II.2. The harness claims are falsified if `mol prove` does not exit 0 on the stated revision.
 
-### II.9.3 What Mixture of Limits claims instead
+## II.8. Limits
 
-From PLAN prove (see §II.6):
-
-1. **The cascade order is the default policy**, optimal in expected joules under the condition of Section II.4, and not a heuristic over LLMs: Lookup → Formula → Solver/settle → Model.
-2. **Refuse-to-commit** is typed and receipted (`voi`, `settle_refuse`, `efa_certificate`, `primitive_gap`, `fabric_unavailable`, `claim_unknown`, …).
-3. **Receipt labels** on the verified path: `measured_j=None` (Unmetered), estimates labeled (**Estimated**), no board measurement.
-4. **ReplayClass** cannot strengthen: `ModelGenerated` ↛ `Deterministic`.
-5. Multi-fabric routing chooses a `DeviceKind` after the tier closes; it does not choose among language models.
-
-<div id="94-measurement-bounds" class="anchor-alias" aria-hidden="true"></div>
-
-### II.9.4 Measurement bounds
-
-| Bound | Allowed |
-|---|---|
-| `measured_j` on the `mol prove` path | `measured_j=None` unless a Metered probe returns |
-| Board-result flag without a meter and a synthesis log | Not set |
-| GreenServ or VoltanaLLM watt-hours as Mixture of Limits energy | Cited as **field** results with their own Metered labels |
-| Tokens per joule against HCSpec | Not claimed; a cascade claim is joules per task against closure rate (Baselines, §II.9.1) |
-
-The field systems above route **model to model**. The contribution of Mixture of Limits is not a better router among generators. It is a navigation rule that embodies known information and energy floors, with a harness that keeps the model off by default and refuse first-class.
-
----
-
-<div id="10-toward-agi-via-limits-open-questions-and-companions" class="anchor-alias" aria-hidden="true"></div>
+The harness is constructive existence in software. No Part II figure is a meter reading: catalog and Landauer energies are estimates, and `measured_j` is unset on the harness path. The optimal-order result assumes independent gear outcomes; correlated failures change the expected energy and require the full sum of Section II.2 with conditional probabilities. Pass probabilities $p_i$ must be estimated per task class, and estimation error moves the order. The frontier comparison of Section II.7 has not been run.
 
 ## II. References
 
-Entries are numbered in one sequence and grouped by the section that cites them; the text cites by author and year. Primary workspace sources, which are not peer-reviewed publications: the `mixture-of-limits` README.md, BLUEPRINT.md, and PLAN.md, and the workspace survey documents (author: David Charlot, OpenIE).
+Bennett, C. H. (1973). Logical reversibility of computation. *IBM Journal of Research and Development* 17(6):525-532. https://doi.org/10.1147/rd.176.0525
 
-<div id="information-theory--decision--thermo--complexity" class="anchor-alias" aria-hidden="true"></div>
+Brunton, S. L., Proctor, J. L., and Kutz, J. N. (2016). Discovering governing equations from data by sparse identification of nonlinear dynamical systems. *PNAS* 113(15):3932-3937. https://doi.org/10.1073/pnas.1517384113
 
-### II. Information theory / decision / thermo / complexity
+Chen, L., Zaharia, M., and Zou, J. (2023). FrugalGPT. arXiv:2305.05176.
 
-1. Shannon, C. E. (1948). A mathematical theory of communication. *Bell System Technical Journal*, 27(3), 379-423. DOI: [10.1002/j.1538-7305.1948.tb01338.x](https://doi.org/10.1002/j.1538-7305.1948.tb01338.x). Part II: 27(4), 623-656. DOI: [10.1002/j.1538-7305.1948.tb00917.x](https://doi.org/10.1002/j.1538-7305.1948.tb00917.x).
-2. Landauer, R. (1961). Irreversibility and heat generation in the computing process. *IBM Journal of Research and Development*, 5(3), 183-191. DOI: [10.1147/rd.53.0183](https://doi.org/10.1147/rd.53.0183).
-3. Bennett, C. H. (1973). Logical reversibility of computation. *IBM Journal of Research and Development*, 17(6), 525-532. DOI: [10.1147/rd.176.0525](https://doi.org/10.1147/rd.176.0525).
-4. Kolmogorov, A. N. (1965). Three approaches to the definition of the concept “quantity of information.” *Problemy Peredachi Informatsii*, 1(1), 3-11 (no DOI). English transl. (1968): *International Journal of Computer Mathematics*, 2(1-4), 157-168. DOI: [10.1080/00207166808803030](https://doi.org/10.1080/00207166808803030). See also IEEE *Trans. Inf. Theory* note DOI: [10.1109/TIT.1968.1054210](https://doi.org/10.1109/TIT.1968.1054210).
-5. Solomonoff, R. J. (1964). A formal theory of inductive inference, Part I. *Information and Control*, 7(1), 1-22. DOI: [10.1016/S0019-9958(64)90223-2](https://doi.org/10.1016/S0019-9958(64)90223-2).
-6. Chaitin, G. J. (1977). Algorithmic information theory. *IBM Journal of Research and Development*, 21(4), 350-359. DOI: [10.1147/rd.214.0350](https://doi.org/10.1147/rd.214.0350).
-7. Howard, R. A. (1966). Information value theory. *IEEE Transactions on Systems Science and Cybernetics*, 2(1), 22-26. DOI: [10.1109/TSSC.1966.300074](https://doi.org/10.1109/TSSC.1966.300074).
-8. Cover, T. M., & Thomas, J. A. *Elements of Information Theory* (2nd ed.). Wiley. Book DOI: [10.1002/047174882X](https://doi.org/10.1002/047174882X).
-9. Jaynes, E. T. (2003). *Probability Theory: The Logic of Science* (G. L. Bretthorst, Ed.). Cambridge University Press. DOI: [10.1017/CBO9780511790423](https://doi.org/10.1017/CBO9780511790423).
-10. Feynman, R. P. *Feynman Lectures on Computation* (A. J. G. Hey & R. W. Allen, Eds.). Anniversary edition DOI: [10.1201/9781003358817](https://doi.org/10.1201/9781003358817); 1996 Addison-Wesley ISBN 0-201-48991-0.
+Chen, X., et al. (2024). Do NOT Think That Much for 2+3=? On the Overthinking of o1-Like LLMs. arXiv:2412.21187.
 
-<div id="formula--mechanism-systems-tier-a" class="anchor-alias" aria-hidden="true"></div>
+CAS-Spec (2025). Cascade Adaptive Self-Speculative Decoding. NeurIPS. arXiv:2510.26843.
 
-### II. Formula / mechanism systems (Tier A)
+Cranmer, M. (2023). Interpretable Machine Learning for Science with PySR and SymbolicRegression.jl. arXiv:2305.01582.
 
-11. Udrescu, S.-M., & Tegmark, M. AI Feynman. *Science Advances*. DOI: [10.1126/sciadv.aay2631](https://doi.org/10.1126/sciadv.aay2631).
-12. Brunton, S. L., Proctor, J. L., & Kutz, J. N. SINDy. *PNAS*. DOI: [10.1073/pnas.1517384113](https://doi.org/10.1073/pnas.1517384113).
-13. Cranmer, M. (2023). Interpretable Machine Learning for Science with PySR and SymbolicRegression.jl. arXiv:[2305.01582](https://arxiv.org/abs/2305.01582).
-14. Fang, Y.-L., Jian, D.-S., Li, X., & Ma, Y.-Q. AI-Newton. arXiv:[2504.01538](https://arxiv.org/abs/2504.01538).
-15. Posner, I., Lei, A., & Schölkopf, B. (2026). From Observation to Insight: Mechanistic World Models and the Quest for Autonomous Discovery. arXiv:[2607.12474](https://arxiv.org/abs/2607.12474).
-16. Hubert, T., Mehta, R., Sartran, L., et al. (2025). Olympiad-level formal mathematical reasoning with reinforcement learning (AlphaProof). *Nature*. DOI: [10.1038/s41586-025-09833-y](https://doi.org/10.1038/s41586-025-09833-y).
-17. Trinh, T. H., Wu, Y., Le, Q. V., et al. (2024). Solving olympiad geometry without human demonstrations (AlphaGeometry). *Nature*, 625, 476-482. DOI: [10.1038/s41586-023-06747-5](https://doi.org/10.1038/s41586-023-06747-5).
-18. Basiri, M. A., & Nicholson, C. (2026). Discovery of Nonlinear Dynamics with Automated Basis Function Generation. arXiv:[2605.09696](https://arxiv.org/abs/2605.09696).
+Dean, T., and Boddy, M. (1988). An analysis of time-dependent planning. AAAI-88, 49-54.
 
-<div id="latent--ebm-hybrid--spatial-world-models--sota-at-the-plateau-84-87-continued-in-88-813" class="anchor-alias" aria-hidden="true"></div>
+Fedus, W., Zoph, B., and Shazeer, N. (2022). Switch Transformers. *JMLR* 23(120).
 
-### II. Latent / EBM hybrid / spatial world models / SOTA at the plateau (§II.8.4 to §II.8.7; continued in §II.8.8 to §II.8.13)
+Frantar, E., et al. (2022). GPTQ. arXiv:2210.17323.
 
-19. Bodnia, E., & Hanin, B. (21 Jan 2026). Energy-Based Models for Reasoning, LLMs for the Interface: Scaling Reasoning with Agentic AI. Logical Intelligence blog. https://logicalintelligence.com/blog/energy-based-models-for-reasoning
-20. Logical Intelligence. Kona 1.0 product page. https://logicalintelligence.com/kona-ebms-energy-based-models (accessed 2026-10-01).
-21. Logical Intelligence. Company site (Aleph / leadership / latent reasoning positioning). https://logicalintelligence.com/ (accessed 2026-10-01).
-22. Logical Intelligence. What Sudoku Reveals About AI Reasoning Architectures (Kona demo writeup). https://logicalintelligence.com/blog/energy-based-model-sudoku-demo (accessed 2026-10-01). Author-reported Sudoku latency/accuracy figures are field results, not Mixture of Limits `measured_j`.
+Geng, S., et al. (2023). Grammar-Constrained Decoding for Structured NLP Tasks without Finetuning. EMNLP. https://doi.org/10.18653/v1/2023.emnlp-main.674
 
-<div id="embodiment-class-limits-851" class="anchor-alias" aria-hidden="true"></div>
+GreenServ (2026). Energy-Efficient Context-Aware Dynamic Routing for Multi-Model LLM Inference. ICPE. arXiv:2601.17551.
 
-### II. Cascades, stopping, and routing (§II.2, §II.4, §II.9)
+HCSpec (2026). Two-Tier Horizontal Cascade Speculative Decoding. ACL. https://doi.org/10.18653/v1/2026.acl-long.353
 
-80. Simon, H. A., & Kadane, J. B. (1975). Optimal problem-solving search: all-or-none solutions. *Artificial Intelligence*, 6(3), 235-247. DOI: [10.1016/0004-3702(75)90002-8](https://doi.org/10.1016/0004-3702(75)90002-8).
-81. Dean, T., & Boddy, M. (1988). An analysis of time-dependent planning. *AAAI-88*, 49-54. https://cdn.aaai.org/AAAI/1988/AAAI88-009.pdf
-82. Horvitz, E. J. (1987). Reasoning about beliefs and actions under computational resource constraints. *UAI 1987*. arXiv:[1304.2759](https://arxiv.org/abs/1304.2759).
-83. Russell, S., & Wefald, E. (1991). Principles of metareasoning. *Artificial Intelligence*, 49, 361-395. DOI: [10.1016/0004-3702(91)90015-C](https://doi.org/10.1016/0004-3702(91)90015-C).
-84. Viola, P., & Jones, M. (2001). Rapid object detection using a boosted cascade of simple features. *CVPR 2001*. DOI: [10.1109/CVPR.2001.990517](https://doi.org/10.1109/CVPR.2001.990517).
-85. Varshney, N., & Baral, C. (2022). Model cascading: towards jointly improving efficiency and accuracy of NLP systems. *EMNLP 2022*. DOI: [10.18653/v1/2022.emnlp-main.756](https://doi.org/10.18653/v1/2022.emnlp-main.756).
-86. Chen, L., Zaharia, M., & Zou, J. (2023). FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance. arXiv:[2305.05176](https://arxiv.org/abs/2305.05176).
-87. Snell, C., Lee, J., Xu, K., & Kumar, A. (2024). Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters. arXiv:[2408.03314](https://arxiv.org/abs/2408.03314).
-88. Chen, X., Xu, J., Liang, T., He, Z., et al. (2024). Do NOT Think That Much for 2+3=? On the Overthinking of o1-Like LLMs. arXiv:[2412.21187](https://arxiv.org/abs/2412.21187).
-89. Sui, Y., Chuang, Y.-N., Wang, G., Zhang, J., et al. (2025). Stop Overthinking: A Survey on Efficient Reasoning for Large Language Models. arXiv:[2503.16419](https://arxiv.org/abs/2503.16419).
-90. Micikevicius, P., et al. (2022). FP8 Formats for Deep Learning. arXiv:[2209.05433](https://arxiv.org/abs/2209.05433).
-91. Ong, I., et al. (2024). RouteLLM: Learning to Route LLMs with Preference Data. arXiv:[2406.18665](https://arxiv.org/abs/2406.18665).
-92. PEARL: Performance and energy aware routing for LLMs. *Future Generation Computer Systems*, 176, 108218 (2025). DOI: [10.1016/j.future.2025.108218](https://doi.org/10.1016/j.future.2025.108218).
-93. GreenServ: Energy-Efficient Context-Aware Dynamic Routing for Multi-Model LLM Inference. ICPE 2026. arXiv:[2601.17551](https://arxiv.org/abs/2601.17551).
-94. VoltanaLLM: Energy-Efficient and SLO-Aware Disaggregated LLM Serving via Adaptive Frequency Control and State-Space Routing. arXiv:[2509.04827](https://arxiv.org/abs/2509.04827).
-95. HCSpec: Two-Tier Horizontal Cascade Speculative Decoding for High-Efficiency Large Language Model Inference. ACL 2026. DOI: [10.18653/v1/2026.acl-long.353](https://doi.org/10.18653/v1/2026.acl-long.353).
-96. CAS-Spec: Cascade Adaptive Self-Speculative Decoding for On-the-Fly Lossless Inference Acceleration of LLMs. NeurIPS 2025. arXiv:[2510.26843](https://arxiv.org/abs/2510.26843).
-97. Geng, S., Josifoski, M., Peyrard, M., & West, R. (2023). Grammar-Constrained Decoding for Structured NLP Tasks without Finetuning. EMNLP 2023. DOI: [10.18653/v1/2023.emnlp-main.674](https://doi.org/10.18653/v1/2023.emnlp-main.674).
-98. CRANE: Reasoning with constrained LLM generation. ICML 2025. arXiv:[2502.09061](https://arxiv.org/abs/2502.09061).
-99. PEARL: Parallel Speculative Decoding with Adaptive Draft Length. ICLR 2025. arXiv:[2408.11850](https://arxiv.org/abs/2408.11850).
+Horowitz, M. (2014). Computing's energy problem (and what we can do about it). ISSCC. https://doi.org/10.1109/ISSCC.2014.6757323
 
-<div id="test-time-compute--process-reward--reasoning-models-88" class="anchor-alias" aria-hidden="true"></div>
+Horvitz, E. J. (1987). Reasoning about beliefs and actions under computational resource constraints. UAI. arXiv:1304.2759.
 
-### II. Test-time compute / process reward / reasoning models (§II.8.8)
+Howard, R. A. (1966). Information value theory. *IEEE Transactions on Systems Science and Cybernetics* 2(1):22-26. https://doi.org/10.1109/TSSC.1966.300074
 
-100. OpenAI (2024). Learning to reason with LLMs (o1 public writeup). https://openai.com/index/learning-to-reason-with-llms/
-101. Lightman, H., et al. (2023). Let's Verify Step by Step. arXiv:[2305.20050](https://arxiv.org/abs/2305.20050). ICLR 2024.
-102. Balachandran, V., Chen, J., Chen, L., Garg, S., et al. (2025). Inference-Time Scaling for Complex Tasks: Where We Stand and What Lies Ahead. arXiv:[2504.00294](https://arxiv.org/abs/2504.00294).
-103. Zeng, Z., et al. (2025). Revisiting the Test-Time Scaling of o1-like Models: Do They Truly Possess Test-Time Scaling Capabilities? ACL 2025. https://aclanthology.org/2025.acl-long.232.pdf
+Hubert, T., et al. (2025). Olympiad-level formal mathematical reasoning with reinforcement learning. *Nature*. https://doi.org/10.1038/s41586-025-09833-y
 
-<div id="super-learning-89" class="anchor-alias" aria-hidden="true"></div>
+Kwon, W., et al. (2023). Efficient Memory Management for Large Language Model Serving with PagedAttention. arXiv:2309.06180.
 
-### II. Super learning (§II.8.9)
+Landauer, R. (1961). Irreversibility and heat generation in the computing process. *IBM Journal of Research and Development* 5(3):183-191. https://doi.org/10.1147/rd.53.0183
 
-104. van der Laan, M. J., Polley, E. C., & Hubbard, A. E. (2007). Super Learner. *Statistical Applications in Genetics and Molecular Biology*, 6(1). Related working paper: Polley & van der Laan, Super Learner In Prediction, U.C. Berkeley Biostatistics Working Paper 266. https://biostats.bepress.com/ucbbiostat/paper266/
-105. Wolpert, D. H. (1992). Stacked generalization. *Neural Networks*, 5(2), 241-259.
-106. Breiman, L. (1996). Stacked regressions. *Machine Learning*, 24, 49-64.
+Leviathan, Y., Kalman, M., and Matias, Y. (2023). Fast Inference from Transformers via Speculative Decoding. ICML.
 
-<div id="hardware-paired-navigation-peers-8121" class="anchor-alias" aria-hidden="true"></div>
+Lin, J., et al. (2024). AWQ. MLSys. arXiv:2306.00978.
 
-### II. Hardware-paired navigation peers (§II.8.12.1)
+Ong, I., et al. (2024). RouteLLM: Learning to Route LLMs with Preference Data. arXiv:2406.18665.
 
-107. Hooker, S. (2021). The hardware lottery. *Communications of the ACM*. [doi:10.1145/3467017](https://doi.org/10.1145/3467017); arXiv:[2009.06489](https://arxiv.org/abs/2009.06489).
-108. Huang, W.-H., Sharda, J., Shih, C.-J., et al. (2025). A3D-MoE: Acceleration of Large Language Models with Mixture of Experts via 3D Heterogeneous Integration. arXiv:[2507.19142](https://arxiv.org/abs/2507.19142).
-109. Chung, J.-W., Wu, R., Ma, J. J., & Chowdhury, M. (2026). Where Do the Joules Go? Diagnosing Inference Energy Consumption. arXiv:[2601.22076](https://arxiv.org/abs/2601.22076).
+PEARL (2025). Performance and energy aware routing for LLMs. *Future Generation Computer Systems* 176:108218. https://doi.org/10.1016/j.future.2025.108218
 
-<div id="live-sota-methods-for-plateau-spend-810" class="anchor-alias" aria-hidden="true"></div>
+Raposo, D., et al. (2024). Mixture-of-Depths. arXiv:2404.02258.
 
-### II. Live SOTA methods for plateau spend (§II.8.10)
+Russell, S., and Wefald, E. (1991). Principles of metareasoning. *Artificial Intelligence* 49:361-395. https://doi.org/10.1016/0004-3702(91)90015-C
 
-110. Leviathan, Y., Kalman, M., & Matias, Y. (2023). Fast Inference from Transformers via Speculative Decoding. *ICML* (PMLR). https://proceedings.mlr.press/v202/leviathan23a.html
-111. Shazeer, N., et al. (2017). Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer. ICLR. arXiv:[1701.06538](https://arxiv.org/abs/1701.06538).
-112. Lepikhin, D., et al. (2020). GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding. arXiv:[2006.16668](https://arxiv.org/abs/2006.16668).
-113. Fedus, W., Zoph, B., & Shazeer, N. (2022). Switch Transformers. *JMLR*, 23(120).
-114. Gu, A., & Dao, T. (2023). Mamba: Linear-Time Sequence Modeling with Selective State Spaces. arXiv:[2312.00752](https://arxiv.org/abs/2312.00752).
-115. Gu, A., Goel, K., & Ré, C. (2022). Efficiently Modeling Long Sequences with Structured State Spaces (S4). ICLR.
-116. Lewis, P., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. *NeurIPS*. arXiv:[2005.11401](https://arxiv.org/abs/2005.11401).
-117. Lou, A., Meng, C., & Ermon, S. (2024). Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution (SEDD). *ICML* (PMLR v235). https://proceedings.mlr.press/v235/lou24a.html
-118. Sun, Y., et al. (2023). Retentive Network: A Successor to Transformer for Large Language Models. arXiv:[2307.08621](https://arxiv.org/abs/2307.08621).
+Shazeer, N., et al. (2017). Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer. ICLR. arXiv:1701.06538.
 
-<div id="ssm-hybrids--moe--implementation-efficiency-on-the-plateau-811" class="anchor-alias" aria-hidden="true"></div>
+Simon, H. A., and Kadane, J. B. (1975). Optimal problem-solving search: all-or-none solutions. *Artificial Intelligence* 6(3):235-247. https://doi.org/10.1016/0004-3702(75)90002-8
 
-### II. SSM hybrids / MoE / implementation efficiency on the plateau (§II.8.11)
+Snell, C., Lee, J., Xu, K., and Kumar, A. (2024). Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters. arXiv:2408.03314.
 
-119. Lieber, O., et al. (2024). Jamba: A Hybrid Transformer-Mamba Language Model. arXiv:[2403.19887](https://arxiv.org/abs/2403.19887). AI21 announcement: https://www.ai21.com/blog/announcing-jamba/
-120. Team Jamba / AI21 (2024). Jamba-1.5: Hybrid Transformer-Mamba Models at Scale. arXiv:[2408.12570](https://arxiv.org/abs/2408.12570).
-121. Dai, D., et al. (2024). DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models. *ACL*. https://aclanthology.org/2024.acl-long.70.pdf
-122. DeepSeek-AI (2024). DeepSeek-V3 Technical Report. arXiv:[2412.19437](https://arxiv.org/abs/2412.19437).
-123. Guo, D., Yang, D., Zhang, H., et al. / DeepSeek-AI (2025). DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning. arXiv:[2501.12948](https://arxiv.org/abs/2501.12948). Nature version: Guo et al., *Nature* 645, 633-638 (2025). DOI: [10.1038/s41586-025-09422-z](https://doi.org/10.1038/s41586-025-09422-z).
-124. GLM-4.5 Team / Zhipu AI (2025). GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models. arXiv:[2508.06471](https://arxiv.org/abs/2508.06471).
-125. GLM Team (2024). ChatGLM: A Family of Large Language Models from GLM-130B to GLM-4 All Tools. arXiv:[2406.12793](https://arxiv.org/abs/2406.12793).
+Sui, Y., et al. (2025). Stop Overthinking: A Survey on Efficient Reasoning for Large Language Models. arXiv:2503.16419.
 
+Trinh, T. H., et al. (2024). Solving olympiad geometry without human demonstrations. *Nature* 625:476-482. https://doi.org/10.1038/s41586-023-06747-5
 
-<div id="plateau-techniques-transmission--gearing--cascade--memory-context--test-time-813" class="anchor-alias" aria-hidden="true"></div>
+Udrescu, S.-M., and Tegmark, M. (2020). AI Feynman. *Science Advances* 6(16). https://doi.org/10.1126/sciadv.aay2631
 
-### II. Plateau techniques: transmission / gearing / cascade / memory-context / test-time (§II.8.13)
+Varshney, N., and Baral, C. (2022). Model cascading. EMNLP. https://doi.org/10.18653/v1/2022.emnlp-main.756
 
-126. Sun, Y., Dong, L., Zhu, Y., et al. (2024). You Only Cache Once: Decoder-Decoder Architectures for Language Models (YOCO). *NeurIPS*. arXiv:[2405.05254](https://arxiv.org/abs/2405.05254).
-127. DeepSeek-AI (2026). DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression. arXiv:[2609.19969](https://arxiv.org/abs/2609.19969). Model card: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash.
-128. Wei, J., Gao, Y., Zhang, Q., et al. / Xiaomi LLM-Core (2026). HySparse2: Hybrid Sparse Attention with Two-Level KV Sharing. arXiv:[2609.26368](https://arxiv.org/abs/2609.26368).
-129. Xiaomi LLM-Core (2025). MiMo: Unlocking the Reasoning Potential of Language Model: From Pretraining to Posttraining. arXiv:[2505.07608](https://arxiv.org/abs/2505.07608).
-130. Xiaomi Team / LLM-Core (2026). MiMo-V2-Flash Technical Report. arXiv:[2601.02780](https://arxiv.org/abs/2601.02780).
-131. Qwen Team (2025). Qwen3 Technical Report. arXiv:[2505.09388](https://arxiv.org/abs/2505.09388).
-132. MoonshotAI / Team Kimi (2025). Kimi K2: Open Agentic Intelligence. arXiv:[2507.20534](https://arxiv.org/abs/2507.20534).
-133. Yang, A., et al. (2023). Baichuan 2: Open Large-scale Language Models. arXiv:[2309.10305](https://arxiv.org/abs/2309.10305).
-134. Ren, X., et al. (2023). PanGu-Σ: Towards Trillion Parameter Language Model with Sparse Heterogeneous Computing. arXiv:[2303.10845](https://arxiv.org/abs/2303.10845).
-135. Li, J., et al. (2024). LocMoE: A Low-Overhead MoE for Large Language Model Training. *IJCAI*. arXiv:[2401.13920](https://arxiv.org/abs/2401.13920).
-136. Sarvam AI (2025 to 2026). Sarvam-30B MoE model card / docs (≈30B total / ≈2.4B active; 128 experts + shared; top-6). https://huggingface.co/sarvamai/sarvam-30b ; https://docs.sarvam.ai/
-137. Kallappa, A., et al. / Krutrim Team (2025). Krutrim LLM: Multilingual Foundational Model for over a Billion People. arXiv:[2502.09642](https://arxiv.org/abs/2502.09642).
-138. SB Intuitions (2024). Sarashina2-8x70B MoE release notes / tech blog (8 experts, top-2). https://www.sbintuitions.co.jp/
-139. Upstage (2026). Solar Open Technical Report. arXiv:[2601.07022](https://arxiv.org/abs/2601.07022). Solar Open 2 product materials: https://www.upstage.ai/
-140. NAVER Cloud / HyperCLOVA (2025). HyperCLOVA X THINK. arXiv:[2506.22403](https://arxiv.org/abs/2506.22403).
+Viola, P., and Jones, M. (2001). Rapid object detection using a boosted cascade of simple features. CVPR. https://doi.org/10.1109/CVPR.2001.990517
 
-<div id="plateau-levers-added-in-industry-gap-pass-quantization--engines--mod--edge--neuromorphic--refuse--tools--formal" class="anchor-alias" aria-hidden="true"></div>
+VoltanaLLM (2025). Energy-Efficient and SLO-Aware Disaggregated LLM Serving. arXiv:2509.04827.
 
-### II. Quantization, serving, adaptive depth, edge and neuromorphic hardware, agents, and formal tools
+Zilberstein, S. (1996). Using anytime algorithms in intelligent systems. *AI Magazine* 17(3).
 
-141. Frantar, E., Ashkboos, S., Hoefler, T., & Alistarh, D. (2022). GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers. arXiv: 2210.17323.
-142. Lin, J., Tang, J., Tang, H., et al. (2024). AWQ: Activation-aware Weight Quantization for On-Device LLM Compression and Acceleration. MLSys. arXiv: 2306.00978.
-143. Kwon, W., Li, Z., Zhuang, S., et al. (2023). Efficient Memory Management for Large Language Model Serving with PagedAttention (vLLM). arXiv: 2309.06180.
-144. Zheng, L., Yin, L., Xie, Z., et al. (2023/2024). SGLang: Efficient Execution of Structured Language Model Programs. arXiv: 2312.07104.
-145. Raposo, D., Ritter, S., Richards, B., et al. (2024). Mixture-of-Depths: Dynamically allocating compute in transformer-based language models. arXiv: 2404.02258.
-146. Li, Y., Wei, F., Zhang, C., & Zhang, H. (2024). EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty. ICML (PMLR). arXiv: 2401.15077.
-147. Bai, Y., Kadavath, S., Kundu, S., et al. (2022). Constitutional AI: Harmlessness from AI Feedback. arXiv: 2212.08073.
-148. Schick, T., Dwivedi-Yu, J., Dessì, R., et al. (2023). Toolformer: Language Models Can Teach Themselves to Use Tools. NeurIPS. arXiv: 2302.04761.
-149. Yao, S., Zhao, J., Yu, D., et al. (2023). ReAct: Synergizing Reasoning and Acting in Language Models. ICLR. arXiv: 2210.03629.
-150. Yang, K., Swope, A., Gu, A., et al. (2023). LeanDojo: Theorem Proving with Retrieval-Augmented Language Models. NeurIPS. arXiv: 2306.15626.
-151. Lin, J., Chen, W.-M., Lin, Y., et al. (2020). MCUNet: Tiny Deep Learning on IoT Devices. NeurIPS. arXiv: 2007.10319.
-152. Wei, J., et al. (2024). T-MAC: CPU Renaissance via Table Lookup for Low-Bit LLM Deployment on Edge. arXiv: 2407.00088.
-153. Abreu, S., Shrestha, S. B., Zhu, R.-J., & Eshraghian, J. (2025). Neuromorphic Principles for Efficient Large Language Models on Intel Loihi 2. arXiv: 2503.18002.
-154. Holdijk, L., Melanson, D., Mensch, Z., Birchall, B., et al. (2026). CN101: A Digital Thermodynamic Computer for Generative AI. arXiv: 2608.00754.
-155. Zilberstein, S. (1996). Using Anytime Algorithms in Intelligent Systems. *AI Magazine*, 17(3).
-156. Tishby, N., Pereira, F. C., & Bialek, W. (1999). The information bottleneck method. Allerton / arXiv physics:0004057. Tishby & Zaslavsky (2015), Deep Learning and the Information Bottleneck Principle, arXiv: 1503.02406.
-
-<div id="race-to-plateau-floors-across-aiml-fields-814" class="anchor-alias" aria-hidden="true"></div>
-
-<div id="ii-race-to-saturation-points-across-aiml-fields-814" class="anchor-alias" aria-hidden="true"></div>
-
-### II. Race to plateau floors across AI/ML fields (§II.8.14)
-
-157. Ouyang, L., Wu, J., Jiang, X., et al. (2022). Training language models to follow instructions with human feedback (InstructGPT / RLHF). *NeurIPS*. arXiv:[2203.02155](https://arxiv.org/abs/2203.02155).
-158. Rombach, R., Blattmann, A., Lorenz, D., Esser, P., & Ommer, B. (2022). High-Resolution Image Synthesis with Latent Diffusion Models. *CVPR*. arXiv:[2112.10752](https://arxiv.org/abs/2112.10752).
-159. Salimans, T., & Ho, J. (2022). Progressive Distillation for Fast Sampling of Diffusion Models. *ICLR*. arXiv:[2202.00512](https://arxiv.org/abs/2202.00512).
-160. Blattmann, A., et al. (2023). Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets. arXiv:[2311.15127](https://arxiv.org/abs/2311.15127).
-161. Kipf, T. N., & Welling, M. (2017). Semi-Supervised Classification with Graph Convolutional Networks. *ICLR*. arXiv:[1609.02907](https://arxiv.org/abs/1609.02907).
-162. Radford, A., et al. (2021). Learning Transferable Visual Models From Natural Language Supervision (CLIP). *ICML* (PMLR v139).
-163. McMahan, H. B., Moore, E., Ramage, D., Hampson, S., & Agüera y Arcas, B. (2017). Communication-Efficient Learning of Deep Networks from Decentralized Data (FedAvg). *AISTATS* (PMLR v54).
-164. Kirkpatrick, J., et al. (2017). Overcoming catastrophic forgetting in neural networks (EWC). *PNAS*. DOI: [10.1073/pnas.1611835114](https://doi.org/10.1073/pnas.1611835114).
-165. Frankle, J., & Carbin, M. (2019). The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks. *ICLR*. arXiv:[1803.03635](https://arxiv.org/abs/1803.03635).
-166. Hinton, G., Vinyals, O., & Dean, J. (2015). Distilling the Knowledge in a Neural Network. arXiv:[1503.02531](https://arxiv.org/abs/1503.02531).
-167. Zoph, B., & Le, Q. V. (2017). Neural Architecture Search with Reinforcement Learning. *ICLR*. arXiv:[1611.01578](https://arxiv.org/abs/1611.01578).
-168. Cai, H., Gan, C., Wang, T., Zhang, Z., & Han, S. (2020). Once-for-All: Train One Network and Specialize it for Efficient Deployment. *ICLR*. arXiv:[1908.09791](https://arxiv.org/abs/1908.09791).
-169. Gal, Y., & Ghahramani, Z. (2016). Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning. *ICML* (PMLR v48). arXiv:[1506.02142](https://arxiv.org/abs/1506.02142).
-170. Angelopoulos, A. N., & Bates, S. (2021/2023). A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification. arXiv:[2107.07511](https://arxiv.org/abs/2107.07511); *Foundations and Trends in Machine Learning*.
-171. Vovk, V., Gammerman, A., & Shafer, G. (2022). *Algorithmic Learning in a Random World* (2nd ed.). Springer. DOI: [10.1007/978-3-031-06649-8](https://doi.org/10.1007/978-3-031-06649-8).
-172. Pearl, J. (2009). Causal inference in statistics: An overview. *Statistics Surveys*, 3, 96-146. See also Pearl, *Causality* (2nd ed.).
-173. Settles, B. (2009). Active Learning Literature Survey. University of Wisconsin-Madison Computer Sciences Technical Report 1648.
-174. NVIDIA. CUDA Programming Guide: CUDA Graphs (documentation). https://docs.nvidia.com/cuda/cuda-programming-guide/ (accessed 2026-10-02). PyTorch CUDA Graphs / `torch.compile` reduce-overhead notes: https://pytorch.org/docs/stable/notes/cuda.html
-175. Packer, C., et al. (2023). MemGPT: Towards LLMs as Operating Systems. arXiv:[2310.08560](https://arxiv.org/abs/2310.08560).
-176. Edge, D., et al. (2024). From Local to Global: A GraphRAG Approach to Query-Focused Summarization. arXiv:[2404.16130](https://arxiv.org/abs/2404.16130).
-177. Willard, B. T., & Louf, R. (2023). Efficient Guided Generation for Large Language Models (Outlines). arXiv:[2307.09702](https://arxiv.org/abs/2307.09702).
-
-<div id="claim-regimes-labels-and-facility-duties-1141" class="anchor-alias" aria-hidden="true"></div>
-
-## II. Appendix A. Measurement bounds
-
-- The `mol prove` path makes no board measurement; `measured_j=None` unless a Metered probe returns.
-- Landauer figures on receipts are labeled thermodynamic lower-bound estimates.
-- Analytical and catalog `estimated_j` is not board power.
-- About 29 `VERIFIED` criteria from `mol prove` are constructive existence in **software**.
-- Mixture of Limits is a clean-room rule plus runtime, not an MoE wrapper.
-- §II.8.4 to §II.8.14 place latents, energy-based hybrids, world models, test-time compute, super learning, quantization, serving engines, state-space and MoE efficiency, edge and neuromorphic hardware, and cross-field techniques as ways to spend less past the floor. Author-reported joules, KV bytes, and scores stay field results.
-
-<div id="appendix-b-reproducibility-pointers" class="anchor-alias" aria-hidden="true"></div>
-
-## II. Appendix B. Reproducibility pointers
+## II. Appendix. Reproducibility
 
 ```bash
-# On a machine with the mixture-of-limits workspace:
 cargo test --workspace
 cargo run -p mol-cli -- prove   # expect VERIFIED lines, exit 0
 ```
-
-Site preview for this study (research-openie-web):
-
-```bash
-# From the research-openie-web checkout root:
-pnpm install
-pnpm dev
-# open /papers/gates/#part-ii-the-cascade-mixture-of-limits , /about/gates/ , /living/mol/
-```
-
-LaTeX PDF of this paper: `scripts/latex/build.sh gates` (needs pandoc and tectonic).
