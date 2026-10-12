@@ -81,7 +81,7 @@ Code produced by an automated generator crosses the same boundaries as hand-writ
 
 *Protocol.* Take a public incident corpus with cost fields, such as agency mishap reports or regulatory filings. Two coders classify each cause as interface or internal using the definitions in the Abstract, blind to cost. Report the cost-weighted interface share with a bootstrap interval and the coders' agreement.
 
-**Proposition E2 (checks pay).** For a fixed workload, the cost of adding an explicit check at an interface is lower than the expected cost of the failures it refuses, summed over every level the failure would otherwise reach.
+**Proposition E2 (checks pay).** For a fixed workload, the cost of adding an explicit check at an interface is lower than the expected cost of the failures it refuses, summed over every level the failure would otherwise reach. Formally, for an interface crossed $N$ times, let $c$ be the cost of one check in dollars, $\pi$ the probability that a crossing violates the assumption, and $L_m$ the cost in dollars that an uncaught violation imposes at level $m$ of the $M$ levels it reaches. The check pays when $N c < N \pi \sum_{m=1}^{M} L_m$, that is, when $c < \pi \sum_m L_m$. The two accounted cases of Section 2 have $\sum_m L_m$ of order $10^8$ dollars, so the condition holds for any check costing less than $10^8 \pi$ dollars per crossing.
 
 *Protocol.* On a system whose levels have known operating costs, inject a violation of each recorded interface assumption on a fixed seed set, recording the cost of each check and the cost of each uncaught violation where it lands. Report both in joules and in dollars at a stated price.
 

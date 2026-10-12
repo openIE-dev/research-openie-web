@@ -534,8 +534,6 @@ Abbildung 2 zeichnet die Kurve von Vorhersage 1.
 
 Beide werden im Begleitpapier [Gemessene Commit-Tore](/papers/gates/) entwickelt. Die Produktplatzierung ist nicht Teil dieses Physikpapiers. Sie steht im [Whitepaper zu Metabolic Intelligence](/products/mei/#where-the-products-sit).
 
-**Gemeinsame These, einmal für alle Papiere formuliert.** Die Energie zum Ausführen ist die einzige wahre Metrik der Computerintelligenz. Alle anderen Faktoren fallen auf null. Die Torform legt fest, was das bedeutet. Unter den Läufen, die das Vollständigkeitsprädikat $C(z)$ der Aufgabe innerhalb des angegebenen Budgets und der angegebenen Frist erfüllen, werden Systeme nach den Joule bis zur Fertigstellung, $J^*$, geordnet. Korrektheit, Fristen und Aufgabengröße sind das Tor, keine Terme der Bewertung. Parameter, Token, Benchmark-Punktzahlen und Preise haben in der Rangordnung das Gewicht null ([Handlungsfähigkeit, Abschnitt 1](/papers/agency/#1-thesis)). Schätzungen sind nie `measured_j`. Preise und Märkte sind Ökonomie. Sie stehen in den ökonomischen Begleittexten: [Aufgabensättigung](/papers/satiation/), [Rechtschreibprüfung ist global](/papers/spellcheck/) und [Der versprochene Billionen-Dollar-Markt für KI-Programmierung](/papers/ai-coding-market/).
-
 <div id="3-layer-1-the-universal-law-of-agency" class="anchor-alias" aria-hidden="true"></div>
 
 <div id="3-layer-1-the-proposed-universal-law-of-agency-a-definition-plus-a-gate" class="anchor-alias" aria-hidden="true"></div>
