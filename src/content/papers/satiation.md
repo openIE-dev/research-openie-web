@@ -352,7 +352,7 @@ Segmentation belongs in the same design. Code each product as finite-`C` or open
 
 ### 5.10 Why no multiple of `kT ln 2` is stated
 
-Landauer's result is an inequality for an idealized erasure at temperature `T`. Horowitz (2014) reports energies for particular CMOS operations and for memory traffic, in picojoules, under the assumptions of that tutorial. Dividing one by the other produces a number only after someone chooses the operation, the activity factor, the temperature, and the device. None of those choices was measured on an OpenIE workload. The companion's constants, beginning at `1e-12` joule per LUT read, are not Horowitz's numbers and are not a count of erased bits. Stating a fold above the Landauer bound would pretend those choices had been made. The scientific statement is the inequality direction: practical irreversible CMOS in Horowitz's account sits far above the bound, and a price index does not move a device onto the bound.
+Landauer's result is an inequality for an idealized erasure at temperature `T`. Horowitz (2014) reports energies for particular CMOS operations and for memory traffic, in picojoules, under the assumptions of that tutorial. Dividing one by the other produces a number only after someone chooses the operation, the activity factor, the temperature, and the device. None of those choices is measured in this paper. Stating a fold above the Landauer bound would pretend those choices had been made. The scientific statement is the inequality direction: practical irreversible CMOS in Horowitz's account sits far above the bound, and a price index does not move a device onto the bound.
 
 
 ## 6. Limits and threats to validity
