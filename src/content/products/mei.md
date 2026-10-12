@@ -292,8 +292,6 @@ No FPGA board result claimed is sticky. Package `measured_j` appears only when a
 
 Four studies on this catalog compose. They do not collapse into one paper. A fifth study, [Spell Check is Global](/papers/spellcheck/), is the automation path. The envelope obtains that answer. It does not discount it. Klere is the product home of this class, not a prison.
 
-<!-- include: companion-thesis -->
-
 | Role | Study | Owns |
 |---|---|---|
 | **Navigation** | [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) | Which gear closes: Lookup → Formula → Solver → Model. Floors: VoI, grammar, energy estimate, certificate, settle-refuse. |

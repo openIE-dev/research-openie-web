@@ -1,6 +1,6 @@
 ---
 title: "The Pursuit of AGI Resolves the Three-Body Problem in Computing"
-deck: "Computing has three bodies: the theorists who state what a system should do, the makers who build it, and the users who run it. Each body is stable on its own. The instability lives in the interfaces between them, where each side assumes the handoff is absent or belongs to someone else, so the assumption is never written down or checked. Voltage mismatches, unit errors, API drift, reused software outside its envelope and integration failures are the predictable result. This paper uses the three-body problem of celestial mechanics carefully, separating what is analogy from what is mechanism, and states the interface thesis as definitions, propositions and protocols. A system that aims at general intelligence must act across all three bodies and every level of the stack, so it cannot leave any interface assumption implicit. Pursued seriously, that aim forces every assumption to be made explicit and checked, and a stack whose interfaces are all checked behaves like the special stable configurations of the three-body problem: corrections stay where they are made and carry upward. The Reality Code Engine's whole-stack interface checks are the first evidence."
+deck: "Computing systems fail most often at the handoffs between the people who specify, build and use them. Checking every assumption at every handoff gives a stack in which a correction stays where it is made."
 id: three-body
 status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
@@ -11,11 +11,17 @@ board_metered: false
 
 # The Pursuit of AGI Resolves the Three-Body Problem in Computing
 
-*Version 1.0, 11 October 2026. LaTeX PDF: [/pdfs/latex/three-body.pdf](/pdfs/latex/three-body.pdf) ([source](/pdfs/latex/three-body.tex)). Companion research papers: [The Reality Code Engine](/papers/rce/), [Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents](/papers/agency/) and [Metered Commit Gates](/papers/gates/).*
+*Version 1.0, 11 October 2026. LaTeX PDF: [/pdfs/latex/three-body.pdf](/pdfs/latex/three-body.pdf) ([source](/pdfs/latex/three-body.tex))..*
 
-*Interfaces are where systems fail. Make every interface assumption explicit, check it, and the orbit holds.*
+## Abstract
 
-This paper holds the engineering and the theory only. The economics of interface failure, with every cost estimate labeled by kind, is in its companion essay, [The Price of the Unexamined Interface](/papers/interface-economics/), which also ties the argument to [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/).
+Large engineering failures often start where one group hands work to another and an assumption is never written down. This paper defines those handoffs, states when checking them makes a system stable, and gives tests that could prove it wrong.
+
+**In plain words**
+
+1. Most big computer failures happen at the handoff between teams or parts, not inside them.
+2. The cause is usually a guess nobody wrote down, like which units a number is in.
+3. If every such guess is written down and checked by a machine, a fix made in one place stays fixed and does not break anything above it.
 
 ## 1. Thesis
 
@@ -23,11 +29,11 @@ In Liu Cixin's novel *The Three-Body Problem* [1], a civilization lives on a pla
 
 Computing has three bodies. **Theorists** state what a system should do: the mathematics, the specification, the algorithm, the physical model. **Makers** build it: the chip designers, the compiler and kernel writers, the library authors, the integrators. **Users** run it: the operators, the downstream programs, the people and the machines that depend on its output. Each body is competent and internally coherent. A theorem holds. A chip meets its datasheet. A user follows the documentation.
 
-The trouble lives between them. Every handoff from one body to another carries assumptions: about units, voltages, ranges, timing, memory, encodings, versions, operating envelopes and intent. When each body assumes that the handoff is not there, or that it is somebody else's job, the assumption is never written down, and an assumption that is never written down is never checked. That is the sense of the phrase David Charlot uses for Open Interface Engineering's work: the chaos comes from people assuming the interfaces are not there, and operating as if they need not be resolved.
+The trouble lives between them. Every handoff from one body to another carries assumptions: about units, voltages, ranges, timing, memory, encodings, versions, operating envelopes and intent. When each body assumes that the handoff is not there, or that it is somebody else's job, the assumption is never written down, and an assumption that is never written down is never checked.
 
 **The core claim.** The instability of computing systems is located at their unexamined interfaces, not in the bodies. Pursuing artificial general intelligence (AGI) seriously, as a system that must act correctly across every body and every level of the stack, forces every interface assumption to be made explicit and checked. A stack whose interface assumptions are all explicit and checked is stable in a precise sense: a correction made at one level stays correct at that level and carries into every level above it. That is the resolution the title names.
 
-The claim is engineering and theory. It is stated with definitions in [Section 5](#5-definitions-and-propositions), it rests on the interface literature reviewed in [Section 4](#4-the-interface-literature), its first evidence is the Reality Code Engine's whole-stack interface method ([Section 6](#6-the-stabilized-configuration)), and it carries protocols and falsifiers that can defeat it ([Section 8](#8-protocols) and [Section 9](#9-falsifiers)).
+The claim is engineering and theory. It is stated with definitions in [Section 5](#5-definitions-and-propositions), it rests on the interface literature reviewed in [Section 4](#4-the-interface-literature), its evidence comes from independently tested verified systems ([Section 6](#6-the-stabilized-configuration)), and it carries protocols and falsifiers that can defeat it ([Section 8](#8-protocols) and [Section 9](#9-falsifiers)).
 
 ## 2. The three-body problem, and what the analogy carries
 
@@ -132,55 +138,54 @@ The thesis is not new in its parts. Its contribution is to assemble them into on
 
 **Proposition 3 (the stabilized configuration).** In a stack where every interface assumption is explicit and checked, a correction made at level $k$ that passes the check of its own boundary leaves every property established by the checks of the other boundaries intact, and every level above $k$ inherits the correction without change.
 
-*Sketch.* This is Proposition R1 of the RCE paper ([RCE §2.4](/papers/rce/#24-gated-verified-recursive-self-improvement)) applied to a stack of bodies. Each level above $k$ consumes $L_k$ only through a checked interface, so if the corrected $L_k$ satisfies that interface, the consumers see a correct input. ∎
+*Sketch.* The checks at the other boundaries evaluate predicates over the values that cross those boundaries. The corrected $L_k$ changes only values that cross the boundaries of $L_k$, and its outgoing values satisfy the checked assumption of the boundary above it. Each level above $k$ consumes $L_k$ only through a checked interface, so if the corrected $L_k$ satisfies that interface, the consumers see a correct input. ∎
 
 **Proposition 4 (the pursuit of AGI forces explicitness).** Let a general agent in the sense of Definition 6 be required to pass a correctness gate on tasks drawn across all three bodies and all levels of the stack. Then for every interface the task distribution crosses, either the agent makes the interface assumption explicit and checks it, or there is a task on which the agent's success depends on an unchecked guess about that assumption.
 
-*Argument.* A narrow system can rely on the convention of its one environment: a fixed unit system, a fixed instruction set, a fixed version. A general agent faces environments in which those conventions differ, by construction of generality. An assumption that holds in one environment and fails in another must be detected to be handled, and detecting it is checking it. Under a correctness gate, as in the agency paper's gate-then-rank structure ([Agency, §2.1](/papers/agency/#21-layer-1-the-definition-and-its-gate-eligibility)), a guess that happens to be wrong is a failed task, not partial credit. So the pursuit of generality under a gate is a pressure toward explicit, checked interfaces at every boundary the agent touches. The proposition does not say that any current system meets this standard. It says what the target requires.
+*Argument.* A narrow system can rely on the convention of its one environment: a fixed unit system, a fixed instruction set, a fixed version. A general agent faces environments in which those conventions differ, by construction of generality. An assumption that holds in one environment and fails in another must be detected to be handled, and detecting it is checking it. A correctness gate is a test that a run either passes or fails, with no partial credit. Under such a gate, a guess that happens to be wrong is a failed task, not partial credit. So the pursuit of generality under a gate is a pressure toward explicit, checked interfaces at every boundary the agent touches. The proposition does not say that any current system meets this standard. It says what the target requires.
 
 **Proposition 5 (joules rank the stable configurations).** Among stacks that pass the gate, the one that resolves each interface with the least energy to completion is preferred, and an explicit check spent once at an interface is cheaper over a workload than a failure rediscovered at every level above it.
 
-*Sketch.* This is the gate-then-rank ordering of the companion papers: correctness is the constraint and joules to completion order the passing runs ([Gates, §0.2](/papers/gates/#02-energy-to-correct-completion)). A check at the boundary has a fixed cost per crossing. An unexamined mismatch has a cost at every level it reaches, and that cost recurs on every run until the mismatch is found.
+*Sketch.* The ordering is gate then rank: correctness is a constraint every candidate must satisfy, and energy to completion, in joules, orders only the candidates that satisfy it, as in constrained optimization where the objective is compared only over the feasible set. A check at the boundary has a fixed cost per crossing. An unexamined mismatch has a cost at every level it reaches, and that cost recurs on every run until the mismatch is found.
 
 ## 6. The stabilized configuration
 
-![Diagram of the same three bodies, now arranged at the corners of an equilateral triangle inside a rotating frame, in the manner of the Lagrange configuration. Each interface band is solid and carries a check mark and a short label: the specification as a Form, the gate at entry, and the trace and receipt that return to the theorist. At the centre sits a shared frame labeled one Form, one gate, joules as the ranking.](/figures/three-body/stabilized.svg)
+![Diagram of the same three bodies, now arranged at the corners of an equilateral triangle inside a rotating frame, in the manner of the Lagrange configuration. Each interface band is solid and carries a check mark and a short label: the specification written once, the gate at entry, and the trace and receipt that return to the theorist. At the centre sits a shared frame labeled one specification, one gate, joules as the ranking.](/figures/three-body/stabilized.svg)
 
-*Figure 2. The stabilized configuration. Diagram. In the physics, three bodies keep their relative positions in a frame that rotates with them. In computing, the shared frame is an explicit representation of intent with every interface assumption checked, so the three bodies keep their relations as the system changes. A [PNG copy](/figures/three-body/stabilized.png) is provided.*
+*Figure 2. The stabilized configuration. Diagram. In the physics, three bodies keep their relative positions in a frame that rotates with them. In computing, the shared frame is an explicit, machine-checkable statement of intent with every interface assumption checked, so the three bodies keep their relations as the system changes. A [PNG copy](/figures/three-body/stabilized.png) is provided.*
 
 ### 6.1 The shared frame
 
-Lagrange's configurations are stable only in a frame that moves with the bodies. The computing counterpart is a shared representation that all three bodies read and write, in which every interface assumption is a checkable statement. The Reality Code Engine supplies one. A program is authored once, from intent, as a Form: a state, a set of events and a pure, total transition. Every target language and runtime is a projection of the Form, and a state the Form does not declare cannot be written ([RCE §1](/papers/rce/#1-thesis)). The theorist's statement, the maker's implementation and the user's trace are three views of one object, so the handoffs between them are checks rather than translations.
+Lagrange's configurations are stable only in a frame that moves with the bodies. The computing counterpart is a shared representation that all three bodies read and write, in which every interface assumption is a checkable statement: a formal specification, a machine-checked contract, or a type. When the theorist's statement, the maker's implementation and the user's observed behavior are related by checks against one such representation, the handoffs between them are checks rather than translations.
 
 ### 6.2 Every interface assumption explicit
 
-The RCE paper's whole-stack method ([RCE §4.6](/papers/rce/#46-method-the-whole-stack-evaluated-every-interface-assumption-explicit)) lists the boundaries of its own stack, from source to handler, handler to sink, log to state, rewrite to Form, stub to escalation and Form to target, and states for each the assumption it makes and the mechanism that checks it on every run. A failed check locates the break at the boundary where it occurs. The correction is made at that level, passed through that boundary's check and promoted, and every level above inherits it.
+![Diagram of a stack with six levels from intent at the top through specification, gate, projections and runtime to hardware and energy. Between each pair of adjacent levels sits an interface drawn as a small gate with its assumption and its check written beside it. A correction made at the runtime level is drawn with arrows rising through each checked interface to the levels above.](/figures/three-body/stack-checks.svg)
 
-![Diagram of a stack with six levels from intent at the top through Form, gate, projections and runtime to hardware and energy. Between each pair of adjacent levels sits an interface drawn as a small gate with its assumption and its check written beside it. A correction made at the runtime level is drawn with arrows rising through each checked interface to the levels above.](/figures/three-body/stack-checks.svg)
+*Figure 3. The stack with every interface checked. Diagram. A [PNG copy](/figures/three-body/stack-checks.png) is provided.*
 
-*Figure 3. The stack with every interface checked. Diagram after RCE §4.6. A [PNG copy](/figures/three-body/stack-checks.png) is provided.*
+The method has three steps. List every boundary of the stack. For each, write the assumption the receiving side relies on as a predicate, and name the mechanism that evaluates it on every crossing. When a check fails, the break is located at that boundary; the correction is made at that level, passed through that boundary's check, and inherited by the levels above.
 
-### 6.3 The evidence so far
+### 6.3 Evidence from verified systems
 
-The first evidence comes from RCE's own measurements, reported in its paper and summarized here without new claims.
+The existence of stabilized configurations, in the sense of Proposition 3, is supported by systems built and tested by independent groups.
 
-- **Lossless round trips and refusal at entry.** On 10,000 preregistered Forms with a frozen engine and zero model calls, every Form round trips to identical bytes, every projection is deterministic, and every malformed input and malformed specification is refused at entry ([RCE §2.3](/papers/rce/#23-the-ecosystem-at-large-n)). In the terms of this paper, the interfaces between the theorist's Form, the maker's projections and the user's inputs hold on every crossing in that run.
-- **Corrections carry upward.** In the RCE playground's reference workload, one correction promoted at the sinks lowers cumulative escalations over eight rounds from 21 to 15, with every task closed correctly and no promotion refused ([RCE §2.4](/papers/rce/#24-gated-verified-recursive-self-improvement), [playground](/playground/rce/#compounding)). This is Proposition 3 on a small workload.
-- **Break and catch.** The playground's Interfaces layer breaks each listed assumption in turn and shows the check that detects it ([playground](/playground/rce/)).
+- **A verified compiler under random testing.** CompCert is a C compiler whose optimizing middle and back end carry a machine-checked proof that the generated code preserves the semantics of the source [39]. Yang, Chen, Eide and Regehr ran Csmith, a random program generator, against CompCert and many other compilers. They reported hundreds of previously unknown bugs in the other compilers. In CompCert they found no wrong-code errors in the verified middle end. The defects they did find sat in parts outside the proof, such as the front end and an unverified assumption about the target [40]. Failures appeared where an assumption was left unchecked, as Propositions 1 and 2 predict, and not across checked boundaries.
+- **A verified kernel boundary.** seL4's proof relates its C implementation to an abstract specification, so that between specification and code nothing is assumed [36]. The proof is stated relative to explicit assumptions about the compiler, the assembly code and the hardware, which shows the method of Section 6.2 in practice: the residual assumptions are written down as the remaining interfaces.
+- **Specifications in industrial practice.** Newcombe and colleagues report that engineers at Amazon Web Services wrote TLA+ specifications for core distributed systems, and that model checking found subtle design bugs, some needing long event sequences, that review and testing had missed [41].
+- **Units as a checked interface.** Kennedy's dimension types make the unit of a quantity part of its type, so that a pound-force-second value cannot be passed where a newton-second value is expected without an explicit conversion [42]. The interface assumption behind the Mars Climate Orbiter loss [12] becomes a refusal at compile time.
 
-The gates paper supplies the same structure at the boundary between a proposal and an action: a commit gate that refuses a commit whose certificate does not hold, with energy accounted for each decision ([Gates, Part I](/papers/gates/#part-i-the-commit-gate-notational-intelligence)). The agency paper supplies it for agents in general: eligibility is a gate, and among eligible runs intelligence is read as progress per joule ([Agency, §2.3](/papers/agency/#23-layer-3-calculus-intelligence-as-a-derivative-read-in-hindsight)).
-
-This evidence is about one stack built for the purpose. It shows that the stabilized configuration exists and can be operated at large N. It does not yet show that the configuration extends to stacks that span several organizations. The protocols of Section 8 are written to test that.
+This evidence comes from single systems, each built with checks in mind. It shows that the stabilized configuration exists and can be maintained. It does not show that the configuration extends to stacks that span several organizations. The protocols of Section 8 are written to test that.
 
 ## 7. The hardware side
 
 The hardware boundary is where interface assumptions become physical: a supply voltage, a thermal envelope, a memory model, an instruction contract. Section 3.2 gave the instruction contract as an example of a maker's interface that is revised over time [17, 18]. A stack that treats the hardware as fixed has an unexamined interface at its lowest level, and Proposition 2 says that a mismatch there can reach every level above.
 
-Open Interface Engineering's public site describes its thesis in these terms, with interfaces as the place where systems fail, and lists ThermoEdge as a subsidiary building a heterogeneous compute fabric aimed at removing most of the energy bill of computation [39]. No ThermoEdge design, measurement or product result is public, and this paper reports none. Within this paper, the hardware side is a set of interfaces to be made explicit, and any future hardware result enters under the same gate and the same joule ranking as the software.
+Within this paper, the hardware side is a set of interfaces to be made explicit, and a hardware result enters under the same gate and the same energy ranking as software.
 
 ## 8. Protocols
 
-Each protocol is fixed before its run. Energy figures follow the companion papers' labels: `est_j` for an analytical estimate, `reported_j` for an operating system or on-chip counter, and `measured_j` reserved for a wall meter.
+Each protocol is fixed before its run. Energy figures carry one of three labels: `est_j` for an analytical estimate, `reported_j` for a reading from an operating system or on-chip counter, and `measured_j` for a reading from an external power meter.
 
 ### 8.1 Interface inventory
 
@@ -222,16 +227,9 @@ The physics enters as structure. It supplies the vocabulary of bodies, relations
 
 Explicitness is maintained, not declared. Assumptions surface as a system meets new environments, and the world a program serves keeps moving [35]. The method therefore treats each discovered assumption as a new interface to close: written as a predicate, given a check, and kept checked under Proposition 3. The stabilized configuration is held the way a spacecraft near a Lagrange point is held, by continuing station keeping.
 
-The unit of analysis is the handoff between roles. One person can be theorist, maker and user in an afternoon, so the method applies wherever a handoff occurs, inside one team or across organizations. Every approach to building systems, from formal methods to large models with tests to hand-written code with review, is placed by the same measure: the fraction of its interface assumptions that are explicit and checked, read from the inventory protocol of Section 8.1. RCE is one configuration in that space, and it checks all of its own.
+The unit of analysis is the handoff between roles. One person can be theorist, maker and user in an afternoon, so the method applies wherever a handoff occurs, inside one team or across organizations. Every approach to building systems, from formal methods to large models with tests to hand-written code with review, is placed by the same measure: the fraction of its interface assumptions that are explicit and checked, read from the inventory protocol of Section 8.1.
 
-## 11. Ties to the companion papers
-
-- [The Reality Code Engine](/papers/rce/) is the stabilized configuration built for code: one Form, faithful projections, refusal at entry, and the whole-stack interface method of its §4.6.
-- [Metered Commit Gates](/papers/gates/) gives the gate at the boundary between proposal and action, and the Mixture of Limits principle that the cheapest sufficient mechanism should close each task.
-- [Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents](/papers/agency/) gives the gate-then-rank structure for agents and the reading of intelligence as progress per joule, which Proposition 5 applies to interfaces.
-- [The Price of the Unexamined Interface](/papers/interface-economics/) is the economics companion: the documented costs of interface failure, labeled as accounted costs or model estimates, read through technical debt and standards economics, and tied to [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/).
-
-## 12. Conclusion
+## 11. Conclusion
 
 The three-body problem taught physics that instability can come from the relations between simple parts, and that stability, where it exists, is a special arrangement of those relations in a shared frame. Computing has three bodies of its own, theorists, makers and users, and its instability comes from the interfaces between them, where assumptions cross unwritten and unchecked. A system that aims at general intelligence has to act across all three bodies and every level of the stack, so it cannot leave those assumptions implicit. Taking that aim seriously means writing every interface assumption down and checking it on every crossing. In a stack built that way, a correction stays where it is made and carries upward, and the system holds its shape as it changes. That is how the pursuit of AGI resolves the three-body problem in computing.
 
@@ -313,4 +311,10 @@ The three-body problem taught physics that instability can come from the relatio
 
 [38] M. R. Morris, J. Sohl-Dickstein, N. Fiedel, T. Warkentin, A. Dafoe, A. Faust, C. Farabet and S. Legg, "Levels of AGI for Operationalizing Progress on the Path to AGI," *Proceedings of the 41st International Conference on Machine Learning*, 2024. arXiv:2311.02462
 
-[39] Open Interface Engineering, homepage, accessed 11 October 2026. https://openie.dev/
+[39] X. Leroy, "Formal verification of a realistic compiler," *Communications of the ACM* 52(7), 2009, pp. 107 to 115. doi:10.1145/1538788.1538814
+
+[40] X. Yang, Y. Chen, E. Eide and J. Regehr, "Finding and understanding bugs in C compilers," *Proceedings of the 32nd ACM SIGPLAN Conference on Programming Language Design and Implementation*, 2011, pp. 283 to 294. doi:10.1145/1993498.1993532
+
+[41] C. Newcombe, T. Rath, F. Zhang, B. Munteanu, M. Brooker and M. Deardeuff, "How Amazon Web Services uses formal methods," *Communications of the ACM* 58(4), 2015, pp. 66 to 73. doi:10.1145/2699417
+
+[42] A. Kennedy, "Types for Units-of-Measure: Theory and Practice," in *Central European Functional Programming School*, Lecture Notes in Computer Science 6299, Springer, 2010, pp. 268 to 305. doi:10.1007/978-3-642-17685-2_8

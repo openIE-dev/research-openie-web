@@ -145,8 +145,6 @@ Part I is the commit role and Part II is the navigation role of a small family o
 
 Part II chooses the gear. Part I records the irreversible branch. Satiation supplies the stop on task completion. Estimates remain estimates, and `measured_j` is set only when a named meter returns a reading.
 
-<!-- include: companion-thesis -->
-
 <div id="2-related-work" class="anchor-alias" aria-hidden="true"></div>
 
 ## I.2. Related work

@@ -498,8 +498,6 @@ Figure 2 draws the curve of Prediction 1.
 
 Both are developed in the companion paper, [Metered Commit Gates](/papers/gates/). Product placement is not part of this physics paper. It is kept in the [Metabolic Intelligence white paper](/products/mei/#where-the-products-sit).
 
-<!-- include: companion-thesis -->
-
 <div id="3-layer-1-the-universal-law-of-agency" class="anchor-alias" aria-hidden="true"></div>
 
 ## 3. Layer 1. The proposed Universal Law of Agency: a definition plus a gate

@@ -23,8 +23,6 @@ OpenIE research study five. Written 3 October 2026 (ET).
 
 Computers are hardware. Software is applied engineering written for that hardware under constraints.
 
-<!-- include: companion-thesis -->
-
 ---
 
 ## 1. What this study is

@@ -88,8 +88,6 @@ This study is the **task completion** stop in the research catalog triad.
 
 Mixture of Limits navigates. Notational Intelligence owns irreversible commit. This paper owns task completion after free-at-the-margin digital inference. [Metabolic Intelligence](/products/mei/) owns the energy-budget envelope and actuators. In [Spell Check is Global](/papers/spellcheck/), once a token is kept, further spelling candidates have zero value of information on that predicate. Free at the margin is not free joules.
 
-<!-- include: economics-thesis -->
-
 ## 2. Related work
 
 ### 2.1 Satiation and bliss points

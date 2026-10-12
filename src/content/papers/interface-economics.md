@@ -1,6 +1,6 @@
 ---
 title: "The Price of the Unexamined Interface"
-deck: "The economics companion to The Pursuit of AGI Resolves the Three-Body Problem in Computing. What does it cost when theorists, makers and users leave the assumptions between them unwritten and unchecked? This essay gathers the primary estimates and labels each one by kind: accounted costs of single failures such as Mars Climate Orbiter and the Cluster payload lost on Ariane 501, model estimates such as NIST's studies of inadequate software testing ($59.5 billion a year) and of inadequate interoperability in capital facilities ($15.8 billion a year), and the CISQ estimate of the cost of poor software quality in the United States (at least $2.41 trillion in 2022, with technical debt of about $1.52 trillion). No primary source isolates the cost of interface failure as one total, and this essay does not invent one. It reads the documented costs through standards economics and technical debt, and ties them to the AI coding market, which prices generation and leaves the interfaces unpriced."
+deck: "What interface failures cost, using only figures a primary source states, each labeled as an accounted cost, a model estimate or a survey estimate."
 id: interface-economics
 status: "Economics essay"
 author: "David Charlot, Open Interface Engineering"
@@ -13,25 +13,33 @@ board_metered: false
 
 *Version 1.0, 11 October 2026. LaTeX PDF: [/pdfs/latex/interface-economics.pdf](/pdfs/latex/interface-economics.pdf) ([source](/pdfs/latex/interface-economics.tex)).*
 
-*The economics companion to [The Pursuit of AGI Resolves the Three-Body Problem in Computing](/papers/three-body/). The research paper holds the engineering and the theory. This essay is where the interface thesis meets prices, budgets and markets.*
-
 ## Abstract
 
-The research paper argues that the instability of computing systems lives in the interfaces between three bodies, theorists, makers and users, where assumptions cross unwritten and unchecked. This essay asks what that instability costs, and answers only with figures that a primary source states. Each figure is labeled by kind. An **accounted cost** is what an agency or firm reports it actually spent or lost. A **model estimate** is a figure produced by a stated method from surveys, interviews or secondary data. A **projection** is a statement about the future. The three kinds are not added together.
+This essay collects the published costs of failures that happen at the handoffs between parts of a system, and labels each figure by how it was produced. It does not add them into one total.
+
+**In plain words**
+
+1. Some failures at handoffs have exact price tags, like a lost Mars probe that cost hundreds of millions of dollars.
+2. The bigger national numbers are estimates from surveys and models, and none of them counts handoff failures alone.
+3. Writing down and checking what each side assumes is cheap, but the person who does it pays while everyone benefits, so it tends not to get done.
+
+## 0. Definitions and scope
+
+An **interface** is a handoff across which one party's output becomes another party's input: from the people who state what a system should do (theorists), to those who build it (makers), to those who run it (users), or between two levels of a software and hardware stack. An **interface assumption** is a condition on the values that cross a handoff which the receiving side relies on for its own correctness, such as a unit, a range, a type, a version or an operating envelope. An assumption is **unexamined** when it is relied on but neither written down nor checked. A long engineering literature, from Garlan, Allen and Ockerbloom on architectural mismatch to Leveson on accidents as interaction failures, locates many system failures at such assumptions [19, 20]. This essay asks what those failures cost, and answers only with figures that a primary source states. Each figure is labeled by kind. An **accounted cost** is what an agency or firm reports it actually spent or lost. A **model estimate** is a figure produced by a stated method from surveys, interviews or secondary data. A **projection** is a statement about the future. The three kinds are not added together.
 
 The accounted costs of single interface failures are large and specific: the Mars Surveyor 1998 project, which included Mars Climate Orbiter, cost \$327.6 million [1], and ESA approved 214 million ECU to recover the Cluster mission lost on the first Ariane 5 [4]. The model estimates are larger and broader: NIST put the annual cost of an inadequate software testing infrastructure in the United States at \$59.5 billion [6], and the cost of inadequate interoperability in the US capital facilities industry at \$15.8 billion a year [7]. CISQ estimated the cost of poor software quality in the United States at no less than \$2.41 trillion in 2022 and accumulated technical debt at about \$1.52 trillion [8]. None of these measures interface failure alone. Each contains it.
 
 ## 1. Kinds of number
 
-Economic claims about software failure travel in three forms that look alike and are not. A project budget is an accounting record. A national cost estimate is the output of a model whose inputs are surveys, case studies and assumptions about scale. A forecast is neither. The [AI-coding-market essay](/papers/ai-coding-market/#1-projections-and-measurements-are-different-objects) makes the same separation for the AI coding market, and this essay follows its rule: every figure carries its kind, its source and what it actually counts.
+Economic claims about software failure travel in three forms that look alike and are not. A project budget is an accounting record. A national cost estimate is the output of a model whose inputs are surveys, case studies and assumptions about scale. A forecast is neither. This essay follows one rule: every figure carries its kind, its source and what it actually counts.
 
-Open Interface Engineering's public site states that more than \$1 trillion is lost annually to interface and integration failures [17]. That sentence is a headline, not a primary estimate, and the site gives no method for it. The nearest primary estimates are listed in Section 3. None of them isolates interfaces, so this essay does not map them onto that figure or onto any single total.
+Figures for the cost of "interface failure" as a single annual total circulate without a stated method. None of the primary estimates in Section 3 isolates interfaces, so this essay does not map them onto any single total.
 
 ## 2. Single failures, accounted
 
 **Mars Climate Orbiter.** The interface was a unit: thruster impulse data in pound-force seconds read as newton seconds [2]. NASA's project fact sheet gives the cost of the Mars Surveyor 1998 project as \$327.6 million for the orbiter and the Mars Polar Lander together: \$193.1 million for spacecraft development, \$91.7 million for launch and \$42.8 million for operations [1]. Contemporary reports gave the orbiter alone as a \$125 million spacecraft [3]. Kind: accounted cost of the project, with a reported figure for the one spacecraft.
 
-**Ariane 501 and Cluster.** The interface was an envelope: software reused from Ariane 4 assumed a range of horizontal velocity that the new launcher exceeded [5]. The four Cluster satellites were lost. ESA's account of the recovery records the options its Science Programme Committee priced in 1996, including 351 million accounting units to rebuild the four satellites to the original design, and ESA approved a recovery mission, Cluster II, for 214 million ECU in 1997 [4, 18]. Kind: accounted cost of the recovery that ESA chose, which is a lower bound on the loss, not the value of the satellites or of the delayed science.
+**Ariane 501 and Cluster.** The interface was an envelope: software reused from Ariane 4 assumed a range of horizontal velocity that the new launcher exceeded [5]. The four Cluster satellites were lost. ESA's account of the recovery records the options its Science Programme Committee priced in 1996, including 351 million accounting units to rebuild the four satellites to the original design, and ESA approved a recovery mission, Cluster II, for 214 million ECU in 1997 [4, 17]. Kind: accounted cost of the recovery that ESA chose, which is a lower bound on the loss, not the value of the satellites or of the delayed science.
 
 These two cases fix the shape of the problem. In each, every body did its own work, and the cost landed at the interface. In each, the check that would have caught the mismatch was cheap relative to the loss. Neither case can be scaled up to a national figure, because single accidents are not a sample.
 
@@ -43,49 +51,47 @@ These two cases fix the shape of the problem. In each, every body did its own wo
 
 **Software testing, NIST 2002.** RTI International, for NIST, estimated that an inadequate infrastructure for software testing cost the US economy \$22.2 billion to \$59.5 billion a year, with the upper figure as the total cost and the lower figure as the part that feasible improvements could remove [6]. The method combined surveys of developers and users in two sectors, transportation manufacturing and financial services, with an extrapolation to the national economy. Kind: model estimate.
 
-**Interoperability, NIST 2004.** Gallaher and colleagues, for NIST, estimated the cost of inadequate interoperability in the US capital facilities industry at \$15.8 billion a year, from interviews and surveys of owners, operators, architects, engineers and contractors [7]. Interoperability here is the ability to exchange and use design and operating data across software systems, which is an interface in exactly the paper's sense. The report states that its figure omits costs it could not quantify. Kind: model estimate, one industry, presented as conservative.
+**Interoperability, NIST 2004.** Gallaher and colleagues, for NIST, estimated the cost of inadequate interoperability in the US capital facilities industry at \$15.8 billion a year, from interviews and surveys of owners, operators, architects, engineers and contractors [7]. Interoperability here is the ability to exchange and use design and operating data across software systems, which is an interface in the sense defined in the Abstract. The report states that its figure omits costs it could not quantify. Kind: model estimate, one industry, presented as conservative.
 
 **Poor software quality, CISQ 2022.** The Consortium for Information and Software Quality estimated that the cost of poor software quality in the United States had grown to at least \$2.41 trillion in 2022, and that accumulated technical debt had grown to about \$1.52 trillion [8]. The report builds the total from categories, operational failures, unsuccessful projects, legacy system problems and cybercrime losses attributed to software vulnerabilities, and draws much of its input from secondary sources; its cybercrime component apportions a global forecast to the United States [8]. Kind: model estimate built partly on other estimates. It is the largest documented figure in this area, and it is a figure for software quality as a whole, not for interfaces.
 
 **Developer time, Stripe 2018.** A Stripe survey conducted with Harris Poll reported that developers spend about 17.3 hours a week on maintenance work such as debugging and refactoring, and about four hours a week on "bad code," which the report values at nearly \$85 billion a year worldwide [9]. Kind: survey-based estimate.
 
-What these figures share is a structure, not a total. Each counts the cost of an assumption that was relied on and not checked: an untested path, a data format that does not carry across, a vulnerability at a boundary, a legacy system whose contracts no one can restate. The research paper's [Proposition 2](/papers/three-body/#52-propositions) explains why such costs show up far from their cause, which is also why national estimates must be modeled rather than counted.
+What these figures share is a structure, not a total. Each counts the cost of an assumption that was relied on and not checked: an untested path, a data format that does not carry across, a vulnerability at a boundary, a legacy system whose contracts no one can restate. A mismatch that is not checked where it arises passes as well-formed input to every level above it, so its cost appears far from its cause, as in the Mars Climate Orbiter navigation solution, which was internally consistent and wrong [2]. That is also why national estimates must be modeled rather than counted.
 
 ## 4. Technical debt is an interface account
 
-Cunningham introduced technical debt in 1992 as the cost of shipping code whose structure does not yet match what the team has learned, with interest paid on every later change until the debt is repaid [10]. Sculley and colleagues showed that in machine learning systems most of that debt sits outside the model, in glue code, configuration, data dependencies and undeclared consumers [11]. Read through the research paper, technical debt is the balance of unexamined interface assumptions carried on the books. Its interest is Proposition 2: an unchecked mismatch charges every level above it, on every run.
+Cunningham introduced technical debt in 1992 as the cost of shipping code whose structure does not yet match what the team has learned, with interest paid on every later change until the debt is repaid [10]. Sculley and colleagues showed that in machine learning systems most of that debt sits outside the model, in glue code, configuration, data dependencies and undeclared consumers [11]. In the terms defined above, much of technical debt is a balance of unexamined interface assumptions carried on the books, and its interest is the cost an unchecked mismatch charges every level above it, on every run.
 
-CISQ's estimate of about \$1.52 trillion of accumulated technical debt in the United States is a stock, measured in the cost to fix [8]. The annual figures in Section 3 are flows. The research paper's Proposition 5 states the economic consequence in the units of the companion papers: a check paid once at a boundary costs less over a workload than a failure paid again at every level, and the difference compounds with use.
+CISQ's estimate of about \$1.52 trillion of accumulated technical debt in the United States is a stock, measured in the cost to fix [8]. The annual figures in Section 3 are flows. The economic consequence is a hypothesis, tested in Section 7: a check paid once at a boundary may cost less over a workload than a failure paid again at every level it reaches.
 
 ## 5. Standards are how markets close interfaces
 
 Economists have studied the interface problem for decades under another name: compatibility. Katz and Shapiro showed that when a product's value rises with the number of users it can work with, firms' incentives to be compatible depend on their size and position, and the market can deliver too little compatibility [12]. Farrell and Saloner showed that a market can stay stuck on an old standard, or move to a new one too fast, because each user's choice depends on what others choose [13]. David's history of the QWERTY keyboard made path dependence concrete [14]. Baldwin and Clark showed that design rules, visible interfaces fixed in advance, are what let modular industries form at all [15]. Swann's review for the UK government summarized evidence that standards contribute to productivity and trade [16].
 
-The common thread is that an interface is a public good with private costs. Writing an assumption down and checking it benefits every party that crosses the boundary, but it is paid for by whoever does the writing. That is the economic form of the research paper's observation that each body assumes the handoff is someone else's job. Standards bodies, regulators and dominant platforms are the institutions that have historically paid that cost. A representation in which every interface assumption is explicit and checked by construction, as in the [Reality Code Engine](/papers/rce/), lowers the private cost of closing an interface toward the cost of running its check.
+The common thread is that an interface is a public good with private costs. Writing an assumption down and checking it benefits every party that crosses the boundary, but it is paid for by whoever does the writing. Each party has a reason to treat the handoff as someone else's job. Standards bodies, regulators and platform owners are the institutions that have historically paid that cost. Machine-checked representations, such as types that carry units of measure or formal specifications checked by a model checker [21, 22], lower the private cost of closing an interface toward the cost of running its check.
 
-## 6. Ties to the AI coding market
+## 6. Generated code crosses the same interfaces
 
-The [AI-coding-market essay](/papers/ai-coding-market/) sets out the projections for AI coding: about \$3 trillion a year in developer value, company revenue, token volume and capital spending, each labeled by kind. Those projections price the generation of code. They do not price its interfaces. Every generated change crosses the same boundaries as hand-written code, between a specification and an implementation, between a library and its users, between software and the instruction contract beneath it, and each crossing carries assumptions that the generator does not check.
-
-The figures in Section 3 suggest where the value of verification sits. If the cost of poor software quality is of the order CISQ estimates, and a large share of it is the cost of unchecked assumptions at boundaries, then a method that closes interfaces is worth more than a method that writes code faster. That is a proposition about where value lies, not a measurement. The protocols of the research paper ([Section 8](/papers/three-body/#8-protocols)) and of the AI-coding-market essay are the way to measure it.
+Code produced by an automated generator crosses the same boundaries as hand-written code: between a specification and an implementation, between a library and its users, between software and the instruction contract beneath it. Each crossing carries assumptions that a generator does not check unless it is built to. The figures in Section 3 therefore bear on automated code generation too. If a large share of the cost of poor software quality is the cost of unchecked assumptions at boundaries, then the value of closing interfaces may exceed the value of writing code faster. That is a hypothesis about where value lies, not a measurement. The protocols in Section 7 are the way to measure it.
 
 ## 7. Propositions and protocols
 
-**Proposition E1 (the interface share).** In a population of software failures with accounted costs, the share of cost whose cause is a violated interface assumption, in the sense of the research paper's Definition 3, exceeds the share whose cause lies wholly inside one body.
+**Proposition E1 (the interface share).** In a population of software failures with accounted costs, the share of cost whose cause is a violated interface assumption, as defined in the Abstract, exceeds the share whose cause lies wholly inside one body.
 
-*Protocol.* Take a public incident corpus with cost fields, such as agency mishap reports or regulatory filings. Two coders classify each cause as interface or internal using the paper's definitions, blind to cost. Report the cost-weighted interface share with a bootstrap interval and the coders' agreement.
+*Protocol.* Take a public incident corpus with cost fields, such as agency mishap reports or regulatory filings. Two coders classify each cause as interface or internal using the definitions in the Abstract, blind to cost. Report the cost-weighted interface share with a bootstrap interval and the coders' agreement.
 
 **Proposition E2 (checks pay).** For a fixed workload, the cost of adding an explicit check at an interface is lower than the expected cost of the failures it refuses, summed over every level the failure would otherwise reach.
 
-*Protocol.* Run the research paper's break and catch protocol ([§8.2](/papers/three-body/#82-break-and-catch)) on a system with priced levels, recording the cost of each check and the cost of each uncaught violation where it lands. Report both in joules and in dollars at a stated price.
+*Protocol.* On a system whose levels have known operating costs, inject a violation of each recorded interface assumption on a fixed seed set, recording the cost of each check and the cost of each uncaught violation where it lands. Report both in joules and in dollars at a stated price.
 
 **Proposition E3 (closing an interface lowers its private cost).** When the interface assumption is part of a shared representation and checked by construction, the cost to a single party of closing it falls toward the cost of running the check.
 
-*Protocol.* The cross-body handoff protocol of the research paper ([§8.4](/papers/three-body/#84-cross-body-handoff)), with labor hours recorded on each side of the handoff in both arms.
+*Protocol.* Choose a real handoff between organizations, such as a specification passed to an implementer. Carry it in one arm as prose documentation and in the other as a machine-checked representation. Record labor hours on each side of the handoff and the failures located at the interface in each arm, with Wilson 95% intervals.
 
 ## 8. Conclusion
 
-The cost of unexamined interfaces is real, large and badly measured. Single failures can be priced exactly, and they show that the loss lands at a boundary every body thought belonged to someone else. National estimates are models, and the largest of them describe software quality as a whole. No primary source states the cost of interface failure by itself, and this essay does not supply one. What the evidence supports is a structure: costs that arise at boundaries, propagate upward and compound as debt, in markets that underprovide the public good of a checked interface. The research paper gives that structure its theory and its tests.
+The cost of unexamined interfaces is real, large and badly measured. Single failures can be priced exactly, and they show that the loss lands at a boundary every body thought belonged to someone else. National estimates are models, and the largest of them describe software quality as a whole. No primary source states the cost of interface failure by itself, and this essay does not supply one. What the evidence supports is a structure: costs that arise at boundaries, propagate upward and compound as debt, in markets that underprovide the public good of a checked interface. The propositions of Section 7 state how that structure can be tested.
 
 ## References
 
@@ -121,6 +127,12 @@ The cost of unexamined interfaces is real, large and badly measured. Single fail
 
 [16] G. M. P. Swann, *The Economics of Standardization: An Update*. Report for the UK Department for Business, Innovation and Skills, 2010. https://www.gov.uk/government/publications/economics-of-standardisation-update-to-report
 
-[17] Open Interface Engineering, homepage, accessed 11 October 2026. https://openie.dev/
+[17] European Space Agency, "The Resurrection of the Cluster Scientific Mission," *ESA Bulletin* 91, 1997. https://www.esa.int/esapub/bulletin/bullet91/b91cred.htm
 
-[18] European Space Agency, "The Resurrection of the Cluster Scientific Mission," *ESA Bulletin* 91, 1997. https://www.esa.int/esapub/bulletin/bullet91/b91cred.htm
+[19] D. Garlan, R. Allen and J. Ockerbloom, "Architectural mismatch: why reuse is so hard," *IEEE Software* 12(6), 1995, pp. 17 to 26. doi:10.1109/52.469757
+
+[20] N. G. Leveson, *Engineering a Safer World: Systems Thinking Applied to Safety*. MIT Press, 2012. doi:10.7551/mitpress/8179.001.0001
+
+[21] A. Kennedy, "Types for Units-of-Measure: Theory and Practice," in *Central European Functional Programming School*, Lecture Notes in Computer Science 6299, Springer, 2010, pp. 268 to 305. doi:10.1007/978-3-642-17685-2_8
+
+[22] C. Newcombe, T. Rath, F. Zhang, B. Munteanu, M. Brooker and M. Deardeuff, "How Amazon Web Services uses formal methods," *Communications of the ACM* 58(4), 2015, pp. 66 to 73. doi:10.1145/2699417
