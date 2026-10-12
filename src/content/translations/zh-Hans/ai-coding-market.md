@@ -151,7 +151,7 @@ Anthropic 表示，该轮融资用于"基础设施扩张" [6]。收入、估值�
 | 向生产环境助手发出的一次中位文本提示 | 0.24 Wh | 运营方测量 | Elsworth et al. [12] |
 | Stargate | 四年 5,000 亿美元，用于一家实验室的 AI 基础设施，其中 1,000 亿美元立即部署 | 公司公告 | OpenAI [22] |
 | 2025 年全球 AI 支出 | 约 1.5 万亿美元 | 预测 | Gartner [24] |
-| 资本支出必须赚回的收入 | "AI's $600B question" | 分析 | Sequoia Capital [23] |
+| 资本支出必须赚回的收入 | "AI's \$600B question" | 分析 | Sequoia Capital [23] |
 
 必须偿付的租金是硬件租金。这种规模的资本支出与承诺，要靠定价高于其能量成本的使用来回收。这正是复用在被覆盖任务上所移除的基础。
 
@@ -280,7 +280,7 @@ Mixture of Limits 是该命题背后的哲学：完成一个任务所需的任�
 
 [5] Cursor, "Past, Present, and Future" (Series D announcement), 13 November 2025. https://cursor.com/blog/series-d
 
-[6] Anthropic, "Anthropic raises $30 billion in Series G funding at $380 billion post-money valuation," 12 February 2026. https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation
+[6] Anthropic, "Anthropic raises \$30 billion in Series G funding at \$380 billion post-money valuation," 12 February 2026. https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation
 
 [7] Microsoft Corporation, Form 10-Q for the quarter ended 30 September 2025, Note 3 and Item 2. https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm
 
@@ -314,9 +314,9 @@ Mixture of Limits 是该命题背后的哲学：完成一个任务所需的任�
 
 [22] OpenAI, "Announcing The Stargate Project," 21 January 2025. https://openai.com/index/announcing-the-stargate-project/
 
-[23] D. Cahn, "AI's $600B Question," Sequoia Capital, 2024. https://www.sequoiacap.com/article/ais-600b-question/
+[23] D. Cahn, "AI's \$600B Question," Sequoia Capital, 2024. https://www.sequoiacap.com/article/ais-600b-question/
 
-[24] Gartner, "Gartner Says Worldwide AI Spending Will Total $1.5 Trillion in 2025," 17 September 2025. https://www.gartner.com/en/newsroom/press-releases/2025-09-17-gartner-says-worldwide-ai-spending-will-total-1-point-5-trillion-in-2025
+[24] Gartner, "Gartner Says Worldwide AI Spending Will Total \$1.5 Trillion in 2025," 17 September 2025. https://www.gartner.com/en/newsroom/press-releases/2025-09-17-gartner-says-worldwide-ai-spending-will-total-1-point-5-trillion-in-2025
 
 [25] J. Becker, N. Rush, E. Barnes and D. Rein, "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity," METR, 2025. arXiv:2507.09089. https://arxiv.org/abs/2507.09089
 

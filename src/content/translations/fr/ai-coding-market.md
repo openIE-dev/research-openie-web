@@ -151,7 +151,7 @@ La Figure 3 trace les deux séries de prix.
 | Une invite textuelle médiane à un assistant en production | 0,24 Wh | Mesuré par l'opérateur | Elsworth et al. [12] |
 | Stargate | 500 milliards de dollars sur quatre ans pour l'infrastructure d'IA d'un laboratoire, dont 100 milliards déployés immédiatement | Annoncé par l'entreprise | OpenAI [22] |
 | Dépenses mondiales en IA, 2025 | environ 1 500 milliards de dollars | Projection | Gartner [24] |
-| Revenus que les dépenses d'investissement doivent rapporter | « AI's $600B question » | Analyse | Sequoia Capital [23] |
+| Revenus que les dépenses d'investissement doivent rapporter | « AI's \$600B question » | Analyse | Sequoia Capital [23] |
 
 La rente à servir est une rente matérielle. Des investissements et des engagements de cette taille se remboursent par un usage facturé au-dessus de son énergie. C'est la base que la réutilisation supprime sur les tâches couvertes.
 
@@ -280,7 +280,7 @@ Des tâches moins chères peuvent accroître la demande totale. L'essai de capit
 
 [5] Cursor, "Past, Present, and Future" (Series D announcement), 13 November 2025. https://cursor.com/blog/series-d
 
-[6] Anthropic, "Anthropic raises $30 billion in Series G funding at $380 billion post-money valuation," 12 February 2026. https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation
+[6] Anthropic, "Anthropic raises \$30 billion in Series G funding at \$380 billion post-money valuation," 12 February 2026. https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation
 
 [7] Microsoft Corporation, Form 10-Q for the quarter ended 30 September 2025, Note 3 and Item 2. https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm
 
@@ -314,9 +314,9 @@ Des tâches moins chères peuvent accroître la demande totale. L'essai de capit
 
 [22] OpenAI, "Announcing The Stargate Project," 21 January 2025. https://openai.com/index/announcing-the-stargate-project/
 
-[23] D. Cahn, "AI's $600B Question," Sequoia Capital, 2024. https://www.sequoiacap.com/article/ais-600b-question/
+[23] D. Cahn, "AI's \$600B Question," Sequoia Capital, 2024. https://www.sequoiacap.com/article/ais-600b-question/
 
-[24] Gartner, "Gartner Says Worldwide AI Spending Will Total $1.5 Trillion in 2025," 17 September 2025. https://www.gartner.com/en/newsroom/press-releases/2025-09-17-gartner-says-worldwide-ai-spending-will-total-1-point-5-trillion-in-2025
+[24] Gartner, "Gartner Says Worldwide AI Spending Will Total \$1.5 Trillion in 2025," 17 September 2025. https://www.gartner.com/en/newsroom/press-releases/2025-09-17-gartner-says-worldwide-ai-spending-will-total-1-point-5-trillion-in-2025
 
 [25] J. Becker, N. Rush, E. Barnes and D. Rein, "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity," METR, 2025. arXiv:2507.09089. https://arxiv.org/abs/2507.09089
 

@@ -19,7 +19,7 @@ board_metered: false
 
 ## Abstract
 
-The trillion-dollar AI coding market is David Charlot's informed hyperbolic claim, and the real projections bear out its scale. A venture estimate puts the value of the world's software developers at about $3 trillion a year and calls AI coding a market that can support "even a trillion-dollar giant" [1]. Two AI coding companies reported over $1 billion and over $2.5 billion in annualized revenue within a year of each other [5, 6]. One frontier lab is valued at $380 billion, and its coding product is its showcase [6]. One provider's token volume grew from 9.7 trillion to over 3.2 quadrillion tokens a month in two years [8]. Capital expenditure by the largest technology companies exceeded $400 billion in 2025 [10].
+The trillion-dollar AI coding market is David Charlot's informed hyperbolic claim, and the real projections bear out its scale. A venture estimate puts the value of the world's software developers at about \$3 trillion a year and calls AI coding a market that can support "even a trillion-dollar giant" [1]. Two AI coding companies reported over \$1 billion and over \$2.5 billion in annualized revenue within a year of each other [5, 6]. One frontier lab is valued at \$380 billion, and its coding product is its showcase [6]. One provider's token volume grew from 9.7 trillion to over 3.2 quadrillion tokens a month in two years [8]. Capital expenditure by the largest technology companies exceeded \$400 billion in 2025 [10].
 
 Every one of these projections assumes the same thing: that the space of autonomous computer automation has one direction. Along it, energy, compute and entropy rise together, a model sits in the loop for every task, and every task pays rent per token. The space has more directions than that. Approaches are placed along continuous axes: energy per task, entropy and determinism, verification strength, reuse and compounding, and model reliance. Many combinations exist, and real systems mix several. The error in the narrative is not any one approach. It is the assumption that the space has only one direction.
 
@@ -48,10 +48,10 @@ Only the last row is evidence about the cost of a correct result. The others are
 | Claim | Number | Label | Source |
 |---|---|---|---|
 | Software developers worldwide | about 30 million (27 million to 47 million by estimate) | Projection input | Appenzeller and Li [1] |
-| Value per developer per year | $100,000 (assumed) | Projection input | [1] |
-| Annual economic contribution | about $3 trillion | Projection | [1] |
+| Value per developer per year | \$100,000 (assumed) | Projection input | [1] |
+| Annual economic contribution | about \$3 trillion | Projection | [1] |
 | Developers on GitHub | 180 million plus; 518.7 million pull requests merged in the year | Company-reported | GitHub Octoverse 2025 [17] |
-| Value of generative AI across 63 use cases | $2.6 trillion to $4.4 trillion a year; software engineering productivity 20% to 45% of current annual function spend | Projection | McKinsey [15] |
+| Value of generative AI across 63 use cases | \$2.6 trillion to \$4.4 trillion a year; software engineering productivity 20% to 45% of current annual function spend | Projection | McKinsey [15] |
 | Global GDP effect of generative AI | 7% over a ten-year period | Projection | Goldman Sachs [16] |
 | Productivity gain from a simple assistant | about 20% | Estimate from interviews | [1] |
 | Productivity gain from a best-of-breed deployment | "at least double" | Estimate "based on anecdotal evidence" | [1] |
@@ -62,9 +62,9 @@ The developer count is soft: 30 million is a professional estimate, and GitHub a
 
 | Claim | Number | Label | Source |
 |---|---|---|---|
-| Enterprise spend on AI coding tools, 2025 | $4.0 billion, 55% of departmental AI spend | Survey estimate | Menlo Ventures [2] |
-| Enterprise generative AI spend, 2025 | $37 billion | Survey estimate | [2] |
-| AI code tools market, 2026 | $9.35 billion, to $29.96 billion by 2031 | Projection | Mordor Intelligence [3] |
+| Enterprise spend on AI coding tools, 2025 | \$4.0 billion, 55% of departmental AI spend | Survey estimate | Menlo Ventures [2] |
+| Enterprise generative AI spend, 2025 | \$37 billion | Survey estimate | [2] |
+| AI code tools market, 2026 | \$9.35 billion, to \$29.96 billion by 2031 | Projection | Mordor Intelligence [3] |
 
 The revenue the market reports today is in the billions. The trillion is the value the market hopes to capture.
 
@@ -72,12 +72,12 @@ The revenue the market reports today is in the billions. The trillion is the val
 
 | Company claim | Number | Date | Label | Source |
 |---|---|---|---|---|
-| Cursor annualized revenue | over $1 billion | 13 November 2025 | Company-reported | Cursor [5] |
-| Cursor Pro repriced | from request limits to "$20 of frontier model usage per month at API pricing", with refunds for the change | June to July 2025 | Company-reported | Cursor [18] |
-| Cursor Series D | $2.3 billion at $29.3 billion post-money | 13 November 2025 | Company-reported | [5] |
-| Anthropic run-rate revenue | $14 billion | 12 February 2026 | Company-reported | Anthropic [6] |
-| Claude Code run-rate revenue | over $2.5 billion | 12 February 2026 | Company-reported | [6] |
-| Anthropic Series G | $30 billion at $380 billion post-money | 12 February 2026 | Company-reported | [6] |
+| Cursor annualized revenue | over \$1 billion | 13 November 2025 | Company-reported | Cursor [5] |
+| Cursor Pro repriced | from request limits to "\$20 of frontier model usage per month at API pricing", with refunds for the change | June to July 2025 | Company-reported | Cursor [18] |
+| Cursor Series D | \$2.3 billion at \$29.3 billion post-money | 13 November 2025 | Company-reported | [5] |
+| Anthropic run-rate revenue | \$14 billion | 12 February 2026 | Company-reported | Anthropic [6] |
+| Claude Code run-rate revenue | over \$2.5 billion | 12 February 2026 | Company-reported | [6] |
+| Anthropic Series G | \$30 billion at \$380 billion post-money | 12 February 2026 | Company-reported | [6] |
 
 Anthropic states that the round funds "infrastructure expansions" [6]. Revenue, valuation and compute are one bet.
 
@@ -93,10 +93,10 @@ Figure 1 sets the dollar figures of Sections 2.1 to 2.3 and 2.6 on one axis, mar
 |---|---|---|---|
 | Google tokens processed per month | 9.7 trillion (2024), about 480 trillion (2025), over 3.2 quadrillion (May 2026) | Company-reported | Pichai [8] |
 | Google internal AI developer tools | half a trillion tokens a day in March 2026, more than three trillion a day in May | Company-reported | [8] |
-| Cost of one agentic coding query at list prices | $2.50: a 100,000-token context and 10,000 output tokens at $15 and $75 per million tokens | Illustration | Appenzeller and Li [1] |
-| The same at 3 queries an hour, 7 hours a day, 200 days | about $10,000 a year per developer | Illustration | [1] |
+| Cost of one agentic coding query at list prices | \$2.50: a 100,000-token context and 10,000 output tokens at \$15 and \$75 per million tokens | Illustration | Appenzeller and Li [1] |
+| The same at 3 queries an hour, 7 hours a day, 200 days | about \$10,000 a year per developer | Illustration | [1] |
 | Tokens in agentic coding against code reasoning and code chat | about 1,000 times more; runs of one task differ by up to 30 times; higher token use "does not translate into higher accuracy" | Measured (eight models, SWE-bench Verified) | Bai, Huang and Wang [9] |
-| Net losses from Microsoft's investment in OpenAI, quarter ended 30 September 2025 | $4.1 billion pre-tax, its equity-method share, in other expense; a $3.1 billion reduction in net income ($0.41 per diluted share) | Filed and company-reported | Microsoft Form 10-Q [7]; Microsoft FY26 Q1 performance [19] |
+| Net losses from Microsoft's investment in OpenAI, quarter ended 30 September 2025 | \$4.1 billion pre-tax, its equity-method share, in other expense; a \$3.1 billion reduction in net income (\$0.41 per diluted share) | Filed and company-reported | Microsoft Form 10-Q [7]; Microsoft FY26 Q1 performance [19] |
 
 Two lines in the sources state the economics plainly. Pichai: "many companies are already blowing through their annual token budgets, and it's only May" [8]. Appenzeller and Li: "For decades, software development cost was almost purely people's cost, but now LLMs add a substantial opex component" [1].
 
@@ -112,7 +112,7 @@ Figure 2 plots the token series.
 |---|---|---|---|
 | Cost of a fixed level of AI performance | down about 47% per quarter, about 13 times per year, since 2023 | Measured price series (five benchmarks) | Epoch AI [4] |
 | Price to reach a fixed benchmark score | falls 9 to 900 times a year, depending on the milestone; fastest drops most recent and least certain to persist | Measured price series (log-linear fits) | Epoch AI [34] |
-| Inference cost at equivalent performance | down about 10 times a year: $60 per million tokens in 2021 to $0.06 | Estimate | Appenzeller, a16z [20] |
+| Inference cost at equivalent performance | down about 10 times a year: \$60 per million tokens in 2021 to \$0.06 | Estimate | Appenzeller, a16z [20] |
 | DeepSeek API price cut, 29 September 2025 | developers' cost "lowered by more than 50%" | Company-reported | DeepSeek [21] |
 
 The 13 times a year of [4] is one point in a wide range [34]. The fall is driven by competition and open weights, as the DeepSeek cut shows [21]. It needs no energy accounting. That is the first decline of Section 6. Reuse adds a different one: calls per task.
@@ -130,13 +130,13 @@ Figure 3 draws the two price series.
 | Data-centre electricity, 2024 | about 415 TWh, about 1.5% of world electricity | Estimate | IEA, *Energy and AI* [11] |
 | Data-centre electricity, 2030 | about 945 TWh, Base Case | Projection | [11] |
 | Data-centre electricity, 2025 to 2030 | 485 TWh to 950 TWh, about 3% of world demand | Estimate and projection | IEA, *Key Questions on Energy and AI* [10] |
-| Capex of the largest technology companies | over $400 billion in 2025, expected up another 75% in 2026 | Reported and projected | [10] |
-| Alphabet capex | $31 billion in 2022; about $180 to $190 billion expected in 2026 | Company-reported and guidance | Pichai [8] |
+| Capex of the largest technology companies | over \$400 billion in 2025, expected up another 75% in 2026 | Reported and projected | [10] |
+| Alphabet capex | \$31 billion in 2022; about \$180 to \$190 billion expected in 2026 | Company-reported and guidance | Pichai [8] |
 | Energy per task | down by at least an order of magnitude a year; reasoning and agentic tasks use "hundreds or thousands of times more energy per query than simple text generation" | Estimate | [10] |
 | One median text prompt to a production assistant | 0.24 Wh | Measured by the operator | Elsworth et al. [12] |
-| Stargate | $500 billion over four years for AI infrastructure for one lab, $100 billion deployed at once | Company-announced | OpenAI [22] |
-| Worldwide AI spending, 2025 | about $1.5 trillion | Projection | Gartner [24] |
-| Revenue the capex must earn back | "AI's $600B question" | Analysis | Sequoia Capital [23] |
+| Stargate | \$500 billion over four years for AI infrastructure for one lab, \$100 billion deployed at once | Company-announced | OpenAI [22] |
+| Worldwide AI spending, 2025 | about \$1.5 trillion | Projection | Gartner [24] |
+| Revenue the capex must earn back | "AI's \$600B question" | Analysis | Sequoia Capital [23] |
 
 The rent that must be serviced is hardware rent. Capex and commitments of this size are paid back through usage priced above its energy. That is the base that reuse removes on covered tasks.
 
@@ -249,7 +249,7 @@ Cheaper tasks can raise total demand. The venture essay expects it: "we believe 
 
 [5] Cursor, "Past, Present, and Future" (Series D announcement), 13 November 2025. https://cursor.com/blog/series-d
 
-[6] Anthropic, "Anthropic raises $30 billion in Series G funding at $380 billion post-money valuation," 12 February 2026. https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation
+[6] Anthropic, "Anthropic raises \$30 billion in Series G funding at \$380 billion post-money valuation," 12 February 2026. https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation
 
 [7] Microsoft Corporation, Form 10-Q for the quarter ended 30 September 2025, Note 3 and Item 2. https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm
 
@@ -283,9 +283,9 @@ Cheaper tasks can raise total demand. The venture essay expects it: "we believe 
 
 [22] OpenAI, "Announcing The Stargate Project," 21 January 2025. https://openai.com/index/announcing-the-stargate-project/
 
-[23] D. Cahn, "AI's $600B Question," Sequoia Capital, 2024. https://www.sequoiacap.com/article/ais-600b-question/
+[23] D. Cahn, "AI's \$600B Question," Sequoia Capital, 2024. https://www.sequoiacap.com/article/ais-600b-question/
 
-[24] Gartner, "Gartner Says Worldwide AI Spending Will Total $1.5 Trillion in 2025," 17 September 2025. https://www.gartner.com/en/newsroom/press-releases/2025-09-17-gartner-says-worldwide-ai-spending-will-total-1-point-5-trillion-in-2025
+[24] Gartner, "Gartner Says Worldwide AI Spending Will Total \$1.5 Trillion in 2025," 17 September 2025. https://www.gartner.com/en/newsroom/press-releases/2025-09-17-gartner-says-worldwide-ai-spending-will-total-1-point-5-trillion-in-2025
 
 [25] J. Becker, N. Rush, E. Barnes and D. Rein, "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity," METR, 2025. arXiv:2507.09089. https://arxiv.org/abs/2507.09089
 
