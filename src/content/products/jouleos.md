@@ -1,6 +1,6 @@
 ---
 title: "The Search for JouleOS"
-deck: "Existing compute fabric treats the floor as fixed. Kernels, builds, guests, and instruction contracts are collapsed into one rung. Agents are wrapped on top of that settlement. Energy to run is not the condition of a commit. Secure compute requires one law, one meter, and one refusal. That requirement is the search for a solution like JouleOS."
+deck: "A review of how operating systems, instruction sets and agent sandboxes are composed today, and the requirements a machine must meet to schedule, meter and refuse an agent under an energy budget."
 id: jouleos
 status: "Product white paper (review and design guide)"
 author: "David Charlot, Open Interface Engineering"
@@ -11,15 +11,15 @@ board_metered: false
 
 # The Search for JouleOS
 
-*Product white paper. It is kept apart from the research catalog.*
-
 ## Abstract
 
-Genre: review and design guide.
+This study reviews how kernels, builds, guests and instruction sets are composed today, shows that none of them makes energy a condition of an agent's action, and lists checkable requirements for a machine that would.
 
-Existing compute fabric treats the floor as fixed. Kernels, builds, guests, and instruction contracts are collapsed into one rung. Agents are wrapped on top of that settlement. Energy to run is not the condition of a commit. Secure compute requires one law, one meter, and one refusal. That requirement is the search for a solution like JouleOS.
+**In plain words**
 
-OpenIE research study five. Written 3 October 2026 (ET).
+1. Today's computers stack many separate layers, and AI agents are added on top without changing what is underneath.
+2. None of those layers asks, before an agent acts, how much energy the action will use or whether it is allowed.
+3. A machine built for agents should measure energy, give each agent a strict budget, and refuse anything that breaks it.
 
 Computers are hardware. Software is applied engineering written for that hardware under constraints.
 
@@ -31,15 +31,15 @@ This study is the account of existing compute fabric and the software written fo
 
 It is a review of how secure compute is composed today. It is a design guide for what a machine must speak if an agent is to be scheduled, metered, and refused under law. It is not a ranking of kernels. It is not a slogan about green computing.
 
-The OpenIE thesis is stated once and held for the rest of the file. Energy to run is the only true metric of computer intelligence. Latency, token counts, accuracy benches, and brand names are not the unit that decides whether a commit is allowed. They collapse when the meter and the refusal are real. Mixture of Limits is the schedule, the meter, and the refusal on that machine. Metabolic Intelligence is the envelope of the best answer that fits the energy the hardware can spend. Neither name is abbreviated.
+The ranking rule used throughout is stated once. Among systems that pass a task's correctness test, systems are ordered by energy to completion, in joules. Latency, token counts and benchmark scores are not the unit that decides whether an action is allowed.
 
 ### Terms used here
 
-The software reference implementation is the software path that tests a study claim without board synthesis or package metering. Periodic Stack, replay class, value of information, evidence classes, and the board-result flag are defined on the shared [glossary](/glossary/). Where a statement rests on the author's unpublished analysis, the text says so. It is a definition or a reading, not proof by private path.
+The software reference implementation is the software path that tests a study claim without board synthesis or package metering. Value of information is the expected gain in a decision's payoff from observing a quantity before deciding (R. A. Howard, "Information Value Theory," IEEE Transactions on Systems Science and Cybernetics 2(1), 1966, doi:10.1109/TSSC.1966.300074). Where a statement rests on the author's unpublished analysis, the text says so. It is a definition or a reading, not proof by private path.
 
 The teaching order and the six contracts come from the author's unpublished analysis of the stack, drawn before any destination was named. Every placement of a named system rests on that system's own public page, cited where it appears.
 
-The standards that name the schedule, the law, the commit, and the isolation ladder are the public Transaction Science pages: [eoc.transaction.science](https://eoc.transaction.science/), [jcp.transaction.science](https://jcp.transaction.science/), [joulecontract.transaction.science](https://joulecontract.transaction.science/) and [sandbox.transaction.science](https://sandbox.transaction.science/). JouleOS is named where a solution of that kind is the answer the problems require.
+The standards that name the schedule, the law, the commit, and the isolation ladder are public draft specifications at transaction.science: [eoc.transaction.science](https://eoc.transaction.science/), [jcp.transaction.science](https://jcp.transaction.science/), [joulecontract.transaction.science](https://joulecontract.transaction.science/) and [sandbox.transaction.science](https://sandbox.transaction.science/). JouleOS is named where a solution of that kind is the answer the problems require.
 
 ---
 
@@ -260,15 +260,9 @@ Source: the author's unpublished convergence analysis.
 
 An agent is a program. It is a guest: it runs under a law it does not write, on hardware it does not own. It does not get a new rung. The calls it makes to other programs, sensors, and machines leave the single line. They do not create a layer above the person.
 
-Mixture of Limits is the schedule, the meter, and the refusal. The schedule is the machine's law deciding what may run. The meter is energy to run, read from the machine, not estimated to make a story. The refusal is that same law declining a commit that is not certified. Mixture of Limits is not a new kernel brand and not a new instruction set. A verified kernel in the review is evidence that a refusal can be a proof. It is not a license to rename the law.
+The schedule is the machine's law deciding what may run. The meter is energy to run, read from the machine and labeled by source. The refusal is that same law declining an action that is not certified. A verified kernel in the review is evidence that a refusal can be a proof (Section 5.6).
 
-The energy budget is the envelope of the best answer, not a cheaper-answer trade. Metabolic Intelligence is not a Faustian bargain. There is no offload-to-server rule. The envelope is the energy the hardware can spend. The best answer is the one that fits inside it. A worse answer is not justified by having spent less. A better answer is not forbidden for being the one the meter allowed.
-
-All other factors collapse to zero. A new kernel that does not change what may run, what may commit, or what the meter records is a new name. The review is full of those names.
-
-Source: the author's unpublished convergence analysis, sections 2 and 3.
-
----
+The energy budget is the energy the hardware can spend. The best answer is the one that fits inside it and passes the correctness test. A worse answer is not justified by having spent less.
 
 ## 11. The standards that speak the schedule, the law, the commit, and the ladder
 
@@ -364,23 +358,19 @@ A design guide ends in requirements a reader can check, not in a brand preferenc
 6. Require a law that binds capability to a joule budget, narrows on delegation, treats tool output as data, checks outside the model, and seals JCR-1 receipts: the Joule Context Protocol.
 7. Require a commit with precondition, postcondition, invariant, frame, and joule ceiling: JouleContract.
 8. Require the lowest S0 to S7 rung that satisfies, with grants, meter tags HwShunt or ModelBased or Estimator, and attestation: the sandbox standard.
-9. Require Mixture of Limits as schedule, meter, and refusal on the machine, and Metabolic Intelligence as the best answer inside the energy envelope, with no offload-to-server rule pretending to be thrift.
-10. Require a solution of the JouleOS kind: one intent stream lowered per measured coordinate, the WebAssembly runtime as the operating system that is seen, and the bare-metal kernel as the coordinate where the law is native.
+9. Require that the schedule, the meter and the refusal run on the machine itself, and that every energy reading name its source.
+10. Require one intent stream lowered per measured coordinate, the WebAssembly runtime as the operating system that is seen, and the bare-metal kernel as the coordinate where the law is native.
 
-Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate, and among systems that pass it, joules alone order them.
 
 ---
 
 ## 14. Claim ledger
 
-Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file says it), Project claim (the named project's own figure or status), OpenIE thesis, Author's analysis (stated in the author's unpublished stack or convergence analysis).
+Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file says it), Project claim (the named project's own figure or status), Author's analysis (stated in the author's unpublished stack or convergence analysis).
 
 | Claim | Kind | Source |
 | --- | --- | --- |
 | Computers are hardware. Software is applied engineering under constraints. | Definition | Author's definition |
-| Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. | OpenIE thesis | Author's thesis |
-| Mixture of Limits is the schedule, the meter, and the refusal. | Definition | Author's convergence analysis §2 |
-| Metabolic Intelligence is the envelope of the best answer inside the hardware energy budget, not a cheaper-answer trade, and has no offload-to-server rule. | Definition | Author's convergence analysis §2 |
 | Teaching order: silicon, chip, board, firmware, instruction set, hardware abstraction, operating system, compiler and runtime, programs, human interface. | Definition | Stack analysis §2 |
 | Assembly sits beside the instruction set, not as an eleventh numbered rung. | Definition | Stack analysis §2 |
 | Yocto is a build system; the kernel inside its images is Linux. | Author's analysis | Stack analysis §4 |
@@ -406,7 +396,7 @@ Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file s
 
 ## 15. JouleOS
 
-JouleOS is the operating system the problems in this study require. Hardware, runtime, language, and surface are one artifact. The name of that arrangement is Unified Design Architecture.
+JouleOS is one design, by the author, that is built to meet the requirements of Section 13. It is described here as an object of study, not as evidence for those requirements. Hardware, runtime, language, and surface are one artifact. The name of that arrangement is Unified Design Architecture.
 
 The runtime measures the coordinate it occupies and lowers one intent stream onto that coordinate. A coordinate is a browser, a hosted process, a virtual machine, a container, or bare metal. WebAssembly is a binary instruction format for a stack-based virtual machine. It is not the instruction set of a chip. The WebAssembly runtime is the operating system that is seen. The same module has the same semantics on every coordinate. If the coordinate cannot honor the capability or the energy guarantee, the intent refuses.
 
@@ -414,10 +404,9 @@ The machine's law is a capability ledger. Only the kernel issues a typed capabil
 
 Persistence is a single-level store. The bytes in memory are the durable bytes. Each mutation commits or rolls back at an instruction boundary.
 
-The schedule is Energy-Oriented Computing. Refine families run cheapest first. The check is deterministic. A large language model is not the judge. The project states Lawful near one microjoule and LlmInLoop near five millijoules. The project's own README also claims about a hundred-thousand-fold lower joules per unit of work than a corpus that sends every step through a large language model. That ratio remains a project claim, not a result of this review.
+The schedule is Energy-Oriented Computing. Refine families run cheapest first. The check is deterministic. A large language model is not the judge. The project states Lawful near one microjoule and LlmInLoop near five millijoules.
 
 The meter reads the counter the platform exposes and names the source. On Apple silicon that source is the process energy interface. On Linux it is RAPL. Elsewhere the source is an estimator, and an estimator is not a measured joule. Work classes are not added together.
 
 The bare-metal kernel is the coordinate where this law is native. Its trusted computing base is small and links without the host standard library. Just-in-time compilation stays outside that base. On every other coordinate the same runtime is what runs. The kernel is not a second product.
 
-Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate, and among systems that pass it, joules alone order them.
