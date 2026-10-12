@@ -1,6 +1,6 @@
 ---
 title: "Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems"
-deck: "A proposal may not authorize itself. An irreversible act runs only behind a certificate, the cheapest sufficient gear runs first, and every decision is written to a receipt with its joules. Systems are ranked by the joules needed to reach a correct completion."
+deck: "A gate that lets an agent act only after a check passes, a cascade that tries the cheapest method first, and the energy measurements of both, labeled by how each was obtained."
 id: gates
 status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
@@ -17,6 +17,14 @@ board_metered: true
 
 ## 0. Overview
 
+This paper defines a gate that lets a machine act only after a check passes, and a rule that tries the cheapest method first. It reports software results and one board-level energy measurement, each labeled by how it was obtained.
+
+**In plain words**
+
+1. A computer should not take an action that cannot be undone until a simple check says it is safe.
+2. It should try the cheapest way to finish a job first and use a big AI model only if nothing cheaper works.
+3. Every decision is written down with the energy it used, so anyone can check it later.
+
 This paper has two parts that share one rule: correctness is the gate, and joules are the ranking. Part I is the commit gate. A proposal may not authorize itself. An irreversible act runs only behind a certificate, and every decision, commit or refuse, is written to a receipt. Part II is Mixture of Limits, which is threshold convergence: a task needs a minimal amount of computation to close, and computation spent past that threshold buys no verified progress, so it is waste. Its standard instance is a cascade that tries the cheapest gear first: Lookup, then Formula, then Solver, then Model. The cascade stops as soon as the task completion predicate $C(z)$ holds, and it refuses with a receipt when the next gear would break the budget. Among systems that complete the task correctly, the one that needs fewer joules ranks higher.
 
 One board measurement anchors the gate fabric. On an AMD Kria KV260, the onboard INA260 read SOM-level A/B/A differences of 11,428 pJ per gate cycle (standard error 129 pJ, N = 4) for the WCA gate fabric, and 98.0 pJ per seed cycle (standard error 30.8 pJ, N = 4) for the seed fabric. The INA260 sits on `VCC_SOM`, which feeds the processing system, the programmable logic, DDR memory and the module regulators ([KV260 device tree, `ina260@40`](https://gbmc.googlesource.com/linux/+/ccd1cdca5cd433c8a5dff78b69a79b31d9b77ee1/arch/arm64/boot/dts/xilinx/zynqmp-sck-kv-g-revB.dtso)), so these are whole-module differences, not a core-rail or PL-only figure (Section I.3.7). The seed-fabric difference is about 1 mW at 5 V, near the part's 1.25 mA current resolution, and is reported as inconclusive until a PL-rail meter and at least 10 passes are run.
@@ -25,7 +33,7 @@ One board measurement anchors the gate fabric. On an AMD Kria KV260, the onboard
 
 1. A commit envelope: proposal, then certificate, then commit or refuse, then receipt. The certificate is conjunctive: look-up allow AND an energy predicate, optionally AND a control barrier function. Refusal reasons are typed. A Rust software reference implementation, Wise Computer Automation (WCA), runs it (Part I).
 2. A typed provenance invariant. Output labeled `ModelGenerated` can never be promoted to `Deterministic` (Parts I and II).
-3. A cascade with named refusals, and the exact condition under which cheapest first is optimal in expected joules (Part II, and Proposition 9 of the [companion physics paper](/papers/agency/#proposition-9-when-cheapest-first-is-optimal)).
+3. A cascade with named refusals, and the condition under which cheapest first is optimal in expected joules, which follows from Simon and Kadane's ordering result for sequential search: try gears in decreasing order of $p_i / c_i$, where $p_i$ is the probability that gear $i$ closes the task and $c_i$ its expected energy in joules (Simon and Kadane, 1975) (Part II).
 4. Energy to correct completion as the ranking, defined in Section I.0.2.
 5. Receipts as an instrument. Each receipt holds the prediction hash and its timestamp before the act, the outcome, the match, the joules by tier (measured, reported, estimated, never summed) and the refusal reason.
 
@@ -37,11 +45,11 @@ $$
 J^*(S) = \min_{\pi} \; \mathbb{E}[J_\pi] \quad \text{subject to} \quad \Pr[C(z) = 1] \ge 1 - \delta .
 $$
 
-Correctness and deadlines are constraints. Among systems that pass the gate, joules alone order them. Proposition 8 of the [companion physics paper](/papers/agency/#proposition-8-the-gated-ranking) proves that this order is a total preorder and that it survives bounded meter error. MLPerf Power gates every power result behind an accuracy target. $J^*$ has the same form.
+Correctness and deadlines are constraints. Among systems that pass the gate, joules alone order them. Ordering systems by the real number $J^*$ is a total preorder, since any two reals compare. If each reading carries meter error at most $\epsilon$ joules, two systems whose $J^*$ differ by more than $2\epsilon$ keep their order. MLPerf Power gates every power result behind an accuracy target. $J^*$ has the same form.
 
 ### 0.3 How to read this paper
 
-Sections in Part I are numbered I.n and sections in Part II are numbered II.n, so Section I.3.7 and §II.8.5 both point inside this paper. Each part has its own reference list. Two figures carry the main ideas: Figure 1 (Section I.1) draws the commit gate, and Figure 2 (Section II.2) draws the floor and the plateau of Mixture of Limits. Economic readings of these results, such as prices and demand, belong to the companion papers named in Section I.1 and are not argued here.
+Sections in Part I are numbered I.n and sections in Part II are numbered II.n, so Section I.3.7 and §II.8.5 both point inside this paper. Each part has its own reference list. Two figures carry the main ideas: Figure 1 (Section I.1) draws the commit gate, and Figure 2 (Section II.2) draws the floor and the plateau of Mixture of Limits. Prices and demand are not argued here.
 
 <div id="part-i" class="anchor-alias" aria-hidden="true"></div>
 
@@ -66,7 +74,6 @@ Terms are defined at first scientific use below and collected here so later sect
 
 | Term | Definition in this paper |
 |------|--------------------------|
-| Open Interface Engineering (OpenIE) | The organization that maintains the software reference and this study. |
 | Notational intelligence | Lee's claim that better notations can raise what a person or system can reliably do, beyond adding tools alone. |
 | Commit gate | A runtime rule that either applies a proposed action or refuses it. The proposer does not get a second, informal channel. |
 | Wise Computer Automation (WCA) | The software reference that implements the commit gate at the boundary between a proposal and an irreversible effect. |
@@ -128,25 +135,6 @@ Figure 1 draws the commit gate.
 
 *Figure 1. The commit gate. Diagram of propose, certify, commit or refuse, and receipt, as defined in Section I.3. A [PNG copy](/figures/gates/commit-gate.png) is provided.*
 
-<div id="companion-laws" class="anchor-alias" aria-hidden="true"></div>
-
-### I. Companion papers
-
-Part I is the commit role and Part II is the navigation role of a small family of papers. Each paper owns one question, and the papers compose.
-
-| Role | Where | Owns |
-|---|---|---|
-| **Navigation** | [Part II of this paper, Mixture of Limits](#part-ii-the-cascade-mixture-of-limits) | Which gear closes: Lookup → Formula → Solver → Model, stopped by named floors (value of information, grammar coverage, energy, certificate, settle refuse). |
-| **Commit** | Part I of this paper | Propose → certify → commit or refuse → receipt on the irreversible branch. |
-| **Task completion** | [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) | The completeness predicate and the budget stop, on the same refuse taxonomy. The economic readings of inference prices live there. |
-| **Energy budget** | [Metabolic Intelligence](/products/mei/) | The budget envelope and the actuators that make floors bind at tag and campus scale. |
-| **A coding instance** | [The Reality Code Engine](/papers/rce/) | Mixture of Limits applied to code: gears run cheapest first, a resolver is paid once per new case, and extraction keeps the least-joule fit among equivalent fits. Its economics are in [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/). |
-| **A proposal in daily use** | [Spell Check is Global](/papers/spellcheck/) | A spelling suggestion is a proposal until the writer accepts it; acceptance is the commit. |
-
-Part II chooses the gear. Part I records the irreversible branch. Satiation supplies the stop on task completion. Estimates remain estimates, and `measured_j` is set only when a named meter returns a reading.
-
-<div id="2-related-work" class="anchor-alias" aria-hidden="true"></div>
-
 ## I.2. Related work
 
 <div id="21-notation-and-tools-for-thought" class="anchor-alias" aria-hidden="true"></div>
@@ -177,7 +165,7 @@ Landauer (1961) proves a lower bound: logically irreversible erasure dissipates 
 
 Hestness et al. (2017), Kaplan et al. (2020), and Hoffmann et al. (2022) document empirical scaling of deep learning loss. Amodei and Hernandez (2018), an OpenAI blog post, describe rapid growth in training compute for landmark results. The page is a vendor essay. This paper does not depend on a specific doubling time from it. Sutton (2019) argues that general methods which use computation have beaten systems that encode the contents of human knowledge as fixed features. The essay is not an argument against every constraint. A commit predicate is a constraint on action, not a hand-built chess feature. Hooker (2021) explains why alternatives lose when the installed base of chips and libraries rewards dense matrix multiplication.
 
-Inference price series, and what they do and do not imply, are economics. They are in the economics companion, [Task Satiation, Section 8.1](/papers/satiation/#81-price-series). This paper ranks by joules to correct completion and separates proposal cost from permission. A price is not a term in either.
+This paper ranks by joules to correct completion and separates proposal cost from permission. A price is not a term in either.
 
 <div id="24-lut-networks-ternary-lookup-and-differentiable-logic" class="anchor-alias" aria-hidden="true"></div>
 
@@ -352,7 +340,7 @@ The scientific reason for stage B is replication and inspection, not a new physi
 
 ### I.3.8 What is not a method of this paper
 
-No human-subject study. No claim about linguistic relativity beyond the rejection in Section I.5. No training-compute extrapolation. No identification of economic satiation, which belongs to the companion paper. No optimization against Groq, Etched, or Taalas throughput. No world-model benchmark.
+No human-subject study. No claim about linguistic relativity beyond the rejection in Section I.5. No training-compute extrapolation. No identification of economic satiation. No optimization against Groq, Etched, or Taalas throughput. No world-model benchmark.
 
 <div id="4-results" class="anchor-alias" aria-hidden="true"></div>
 
@@ -549,6 +537,8 @@ The paper defined a commit decision as a conjunctive certificate over a LUT allo
 
 ## I. References
 
+Simon, H. A., and Kadane, J. B. Optimal problem-solving search: all-or-none solutions. Artificial Intelligence 6(3), 235-247, 1975. https://doi.org/10.1016/0004-3702(75)90002-8
+
 Alshiekh, M., Bloem, R., Ehlers, R., Konighofer, B., Niekum, S., and Topcu, U. Safe reinforcement learning via shielding. arXiv:1708.08611.
 
 Ames, A. D., Coogan, S., Egerstedt, M., Notomista, G., Sreenath, K., and Tabuada, P. Control barrier functions: theory and applications. European Control Conference, 2019. https://doi.org/10.23919/ECC.2019.8796030
@@ -741,18 +731,6 @@ Physical follow-on for board **joules**. Stage C already programmed a closed-loo
 
 Out of scope for the emulator: training DiffLogic in the browser, claiming Artix-7 dynamic power from a shader, and flipping the board-result flag to true.
 
-<div id="appendix-c-relation-to-the-companion-studies" class="anchor-alias" aria-hidden="true"></div>
-
-## I. Appendix C. Relation to the companion studies
-
-Part I is the commit role, Part II is the navigation role, and Satiation is the task-completion role.
-
-"Task Satiation vs. Aggregate Rebound in AI Demand" uses the same commit record for a different predicate: stop when a stated work or care loop is complete. The shared sentence is compositional. Refuse if the chore is already complete, or if the physical predicate fails. This paper supplies the physical predicate and the measurement classes. It does not estimate a demand curve.
-
-Part II, Mixture of Limits, is the navigation rule: spend the minimal amount that closes the task, with named floors that say when refuse is success. Lookup → Formula → Solver → Model is its standard instance. It feeds the commit record defined in Part I and does not replace it.
-
-"Spell Check is Global" gives an everyday instance. A spelling suggestion is a proposal. Acceptance is the commit.
-
 <div id="part-ii" class="anchor-alias" aria-hidden="true"></div>
 
 <div id="mixture-of-limits-navigation-law-for-computer-intelligence" class="anchor-alias" aria-hidden="true"></div>
@@ -802,35 +780,9 @@ The floors themselves are established theory: Shannon, Landauer, Kolmogorov, Sol
 
 Many current techniques serve that remaining work: deeper latents, energy-based hybrids, world models, test-time compute, super learning, state-space hybrids, mixture of experts, and the cache, routing, and decode methods of §II.8.13 and §II.8.14. Each is a way to spend less once the floor is known. None of them removes a floor. §II.8.5.1 makes a separate point: each class of embodiment stops at its own object, and the classes work together under this rule. §II.8.12 places that spend on real devices.
 
-This paper's contribution for Part II is the statement of the rule, grounded in the clean-room `mixture-of-limits` software reference (Apache-2.0 OR MIT). Part I supplies the commit record. [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) supplies the stop on task completion. Mixture of Limits decides *which gear closes* and *when refuse is success*.
+This paper's contribution for Part II is the statement of the rule, grounded in the clean-room `mixture-of-limits` software reference (Apache-2.0 OR MIT). Part I supplies the commit record. Mixture of Limits decides *which gear closes* and *when refuse is success*.
 
 Three measurement facts constrain every later number in Part II. First, joules from catalog surrogates and OpCounter-style analytics are **estimates**, not board power. Second, Landauer annotations are **estimates**, distinct from RAPL, NVML, or `measured_j`. Third, the Mixture of Limits reference makes no board measurement: `measured_j` is set only when a labeled probe returns a reading. The only board joules in this paper are Part I's KV260 readings.
-
-<div id="mol-companion-laws" class="anchor-alias" aria-hidden="true"></div>
-
-### II. Companion papers
-
-The companion papers and the role each owns are listed once, in [Part I, Companion papers](#i-companion-papers). In short, Mixture of Limits owns *which gear closes* and *when refuse is success*, Part I owns the irreversible commit, and Satiation owns task completion. In [Spell Check is Global](/papers/spellcheck/) the nonword gear is Lookup, then a short edit, on hardware that is available, accessible, and capable.
-
-<div id="openie-map-no-prior-literacy-assumed" class="anchor-alias" aria-hidden="true"></div>
-
-### II. OpenIE map (no prior literacy assumed)
-
-This study lives inside the OpenIE family of sites. Readers do not need those sites memorized; the map below states what each surface is and where Mixture of Limits sits.
-
-| Surface | URL | What it is | Relation to Mixture of Limits |
-|---|---|---|---|
-| **Research** (this hub) | [research.openie.dev](https://research.openie.dev) | Readable studies, PDFs, and living figures. Part II of this paper is `/papers/gates/#part-ii-the-cascade-mixture-of-limits`; companions are Satiation (`/papers/satiation/`), Metabolic Intelligence (`/products/mei/`), and Spell Check is Global (`/papers/spellcheck/`). | Publishes the navigation-rule study prose and software reference measurement bounds. |
-| **Stack** | [stack.openie.dev](https://stack.openie.dev) | Teaching map of the family: information theory, game theory, and mechanism design as one substrate; directory of the eight periodic stacks. | Orientation layer. Mixture of Limits is not "another stack card"; it is the **navigation rule** that chooses cheapest-sufficient close across stack coordinates. |
-| **Compute** | [compute.openie.dev](https://compute.openie.dev) | Periodic Stack of Computation: **258 primitives / 33 families**, thermodynamic floor every sibling inherits. | The primitive table Mixture of Limits **navigates**. The software reference verifies, against its specification, the full live catalog (**258 Present** cells, all live Lookup, Formula, Solver, or Navigate gears). Hardware cells without a device are kept as Gap cells; eight of them have software simulations (`physical_settle` through `photonic_mzi`). Calibration of μ and silicon meters are outside the proof. An empty hardware cell refuses with `primitive_gap`. |
-| **Knowledge** | [knowledge.openie.dev](https://knowledge.openie.dev) | Working definition of a claim as seven axes ⟨valid time, transaction time, reference time, granularity, scope, certainty, provenance⟩. | Typed claims and cite/compose leaves (Z2 cite / Z1 compose in software reference) bind to this object shape. Mixture of Limits does not redefine knowledge; it refuses escalation when grammar and VoI say the claim coordinate is already covered. |
-| **Synthesis** | [synthesis.openie.dev](https://synthesis.openie.dev) | Periodic Stack of Digital Information Synthesis: AI as software; zones Z₁/Z₂/Z₃; cost surface $E(x) = \sum \theta(p)\cdot\mu(p,H)$. | Plateau spend and cascade order rhyme with synthesis zones (closed-form → constrained → unbounded). Mixture of Limits owns **floors outside generation** (VoI, grammar, energy estimate, certify, settle-refuse), so Z₃-style generation stays the last cascade stage. |
-| **Verify** | [proof.openie.dev](https://proof.openie.dev) | Periodic Stack of Verification: cheapest-sufficient solver under $E(x) \ge \theta(D)\cdot\mu(S,V)$. | Cousin energy law. Mixture of Limits uses the same spine form for path energy; Verify maps verified artifacts; Mixture of Limits maps which gear closes before commit. |
-| **Product** | [klere.ai](https://klere.ai) | **Klere**: OpenIE product home. [Metabolic Intelligence](/products/mei/) is designed for Klere (research owns the law/class; Klere owns product embodiment). The public site describes access and energy-efficient AI; it is not a feature catalog. | The MEI envelope and Mixture of Limits navigation feed Klere's product design. The developer surface today is the reference's `mol` command line (§II.11.5). |
-
-**One paragraph.** Stack teaches the family map. Compute names the permitted-act primitives. Knowledge defines the claim object those primitives carry. Synthesis places digital information synthesis on a cost surface and zone grammar. Verify prices verified artifacts under a related energy inequality. Research hosts the studies. Klere ([klere.ai](https://klere.ai)) is the product home, and Metabolic Intelligence is designed for it. **Mixture of Limits is the navigation rule across that family:** Lookup → Formula → Solver → Model, with named floors that stop escalation when more bits stop buying outcomes. It is not a rebrand of Mixture-of-Experts, not a substitute for the Periodic Stack pages, and not a claim that the software reference measures board joules.
-
-Other names this paper uses without treating them as assumed literacy: **MathGround** denotes the OpenIE cascade / replay-class discipline that enforces Lookup → Formula → Solver → Model; **WCA** denotes the commit gate of Part I, used here through capability and certify adapters (the live MCP path is on the roadmap); **leapfrog / `openie-path`** denotes ask-bridge adapters (stubs on the verified path). Living figures for Part II: [/living/mol/](/living/mol/). The FPGA instrument for Part I: [/living/fpga-sim/](/living/fpga-sim/).
 
 **Scope of Part II.** Section II.2 states the rule and its floors. Section II.3 states the cost model $E(x) \ge \theta(D)\cdot\mu(S,V)$. Section II.4 describes the cascade, the close, and when cheapest first is optimal. Section II.5 connects to the stop on task completion. Section II.6 maps each verified criterion of the software reference to its claim. Section II.7 sketches the mathematics of the VoI stop, grammar coverage, and settle refuse. Section II.8 surveys related work: the established results that state the floors, the historical lineage, formula and mechanism systems, the limit of each embodiment class (§II.8.5.1), and the techniques that reduce spend once the floor is reached (§II.8.7 to §II.8.14). Section II.9 sets Mixture of Limits beside MoE and model-to-model routing, and states the baselines a cascade claim must beat. Section II.10 lists open questions. Section II.11 states the engineering work that remains: a front gear for unstructured input, cheap routing checks, growing the stack in open domains, measurement tiers, and the developer surface.
 
@@ -881,11 +833,9 @@ Figure 2 draws the floor and the plateau for one task.
 
 The model gear is a conditionally available residual: off by default (`allow_model=false`), opened only when cheaper gears miss, and never coercible to Deterministic (`ModelGenerated` cannot be rewritten as `Deterministic`). It may propose residual content; it never bypasses certify-before-commit. On a coin cell or an edge device, the default close is a constant-time formula plus a LUT refuse, not a small transformer.
 
-<div id="periodic-stack" class="anchor-alias" aria-hidden="true"></div>
-
 ### II. Periodic Stack
 
-Mixture of Limits navigates the OpenIE **Periodic Stack of Computation** at [compute.openie.dev](https://compute.openie.dev) (**258 primitives / 33 families**). Sibling maps: [stack.openie.dev](https://stack.openie.dev) (family directory), [knowledge.openie.dev](https://knowledge.openie.dev) (seven-axis claim), [synthesis.openie.dev](https://synthesis.openie.dev) (synthesis zones / cost surface). The software reference verifies an in-tree **live catalog** navigator with 258 Present cells, all live Lookup, Formula, Solver, or Navigate gears, plus Gap markers for hardware cells without a device. Eight Gap cells have software simulations, and their hardware stays unmeasured (`stage_c_measured=false`). Calibration corpora for μ and silicon meters are outside the proof. An empty cell refuses with `primitive_gap`.
+The reference's catalog of computation primitives, grouped into families, is called the Periodic Stack in this paper. Each cell is either Present (an implemented primitive) or Gap (none yet).
 
 <div id="mixture-of-limits-is-not-moe" class="anchor-alias" aria-hidden="true"></div>
 
@@ -941,7 +891,7 @@ Receipts may annotate `landauer_floor_J` from this formula. That annotation is *
 
 ## II.4. Cascade and close: Lookup → Formula → Solver → Model
 
-MathGround / OpenIE cascade order (type-enforced replay classes; synthesis zones and compute primitives on [synthesis.openie.dev](https://synthesis.openie.dev) and [compute.openie.dev](https://compute.openie.dev)):
+Cascade order, with replay classes enforced by type:
 
 ```text
 Lookup → Formula (closed-form) → Solver / settle → Model
@@ -968,7 +918,7 @@ Mixture of Limits **owns close**. Refuse over escalate when unsafe or VoI-negati
 
 ### II. co/0 bind sketch (namespaces)
 
-Reference receipt labels bind act namespaces in the style of OpenIE co/0 receipts (a sketch):
+Reference receipt labels bind act namespaces (a sketch):
 
 | Namespace | Role |
 |---|---|
@@ -994,11 +944,11 @@ Multi-fabric routing: after tier selection, the reference routes to the cheapest
 
 <div id="ii5-econ-bridge-satiation" class="anchor-alias" aria-hidden="true"></div>
 
-## II.5. Stop bridge: Satiation
+## II.5. Stop bridge: task completion
 
-Mixture of Limits supplies the *machine* stop: VoI and grammar floors refuse excess generation once benefit is covered, and Part I's commit and refuse receipts record the irreversible boundary. The economics companion **[Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/)** defines satiation as a stop on a written completeness predicate. Its reading of falling inference prices is in [Satiation, Section 8.2](/papers/satiation/#82-the-economic-stop).
+Mixture of Limits supplies the *machine* stop: VoI and grammar floors refuse excess generation once benefit is covered, and Part I's commit and refuse receipts record the irreversible boundary.
 
-Satiation owns task completion and its economic reading; Part I owns the commit record; Mixture of Limits owns navigation floors that make "done" and "unsafe" executable without opening the model leaf.
+The task-completion stop is a written completeness predicate $C(z) \in \{0,1\}$: once $C = 1$, further computation on the task cannot raise it. Part I owns the commit record; Mixture of Limits owns navigation floors that make "done" and "unsafe" executable without opening the model leaf.
 
 ---
 
@@ -1011,7 +961,7 @@ The Mixture of Limits harness `mol prove` checks a close rule that rests on info
 A claim is **implemented and verified against its specification** when the in-tree harness prints `VERIFIED` for the named criterion and exits 0. That is software existence. It is not a theorem, and it is not independent replication. A claim is **software reference only** when PLAN §6 marks it OUT OF PROOF SCOPE, or when the criterion itself stamps software reference / fixture / feature-gated behavior rather than live silicon. Verified-path rows keep `measured_j=None` unless a Metered probe returns, and make no board measurement.
 
 
-Measurement labels used below (OpenIE measurement grammar):
+Measurement labels used below:
 
 | Label | Meaning |
 |---|---|
@@ -1041,7 +991,7 @@ Default close path for all verified claims: **Unmetered**, plus **Estimated** wh
 | P2 | Deterministic close (double-run) | `claim.mol.deterministic_close` | Same asks yield the same commit/refuse + limit id. | none | Unmetered |
 | P3 | Formula/lookup close without model | `claim.mol.formula_lookup_no_model` | Landauer / unit-convert closes COMMIT at Lookup or Formula; model never answered. | none | Unmetered / Estimated (Landauer floor on receipt) |
 | P4 | VoI refuse when `!allow_model` | `claim.mol.voi_refuse` | Free-form ask → REFUSE `voi`. | none | Unmetered |
-| P5 | Settle commit + settle refuse | `claim.mol.settle_ternary` | Ternary settle → COMMIT; `will not settle` → REFUSE `settle_refuse`. | Software-ref settle stub; no klere-vm / FPGA | Unmetered |
+| P5 | Settle commit + settle refuse | `claim.mol.settle_ternary` | Ternary settle → COMMIT; `will not settle` → REFUSE `settle_refuse`. | Software-ref settle stub; no VM / FPGA | Unmetered |
 | P6 | Certificate refuse on diverge | `claim.mol.efa_certificate_refuse` | Formula + `diverge` → REFUSE `efa_certificate`. | In-tree EFA-style cert; Ferric / live BMI loop software reference | Unmetered |
 | P7 | Capability default-deny mutate | `claim.mol.capability_deny_mutate` | `AutomateGate::default().gate(Mutate)` → Refuse. | none | Unmetered |
 | P8 | Receipt labels | `claim.mol.receipt_honesty` | Software-ref: `measured_j=None`, estimate labeled (`EstimateKind`). | Live RAPL/NVML default close OUT OF SCOPE | Unmetered / Estimated |
@@ -1075,7 +1025,7 @@ These are PLAN §6 residuals. Citing them is allowed as roadmap / reference sema
 | Live silicon RAPL / NVML as **default** close | Optional `energy-meter`; `mol prove` stays `measured_j=None` | P8, P20 |
 | Live wgpu adapter presence | Feature `fabric-detect`; the offline inventory remains the default for `mol prove` | P18, P23b, P23c |
 | Ferric / on-device EFA (BMI hardware loop) | Reference semantics only; not path-dep'd | P6, P18, P23* |
-| klere-vm WASM / FPGA meter (real pJ) | Software-ref `StubKlereSettle` | P5 |
+| VM WASM / FPGA meter (real pJ) | Software-ref `StubKlereSettle` | P5 |
 | Live `openie-path` / leapfrog ask bridge | Adapter port | none |
 | Live WCA MCP / `wca-lut-edge` in-proc certify | Adapter port | none |
 | μ calib corpus + silicon HW (physical_settle / reversible / ising / adiabatic / ferric / quantum / analog / photonic Gap cells) | Live catalog (258 Present / 258 live gears) + Gap + tier μ catalog + Stage C/Ferric software reference inventories + HW Gaps software reference sims ×8 (`stage_c_measured=false`; Gap cells retained) are in proof; silicon meters OUT | P10, P12 |
@@ -1508,11 +1458,11 @@ Related plateau levers (quantization, speculative decoding, training-systems ove
 
 ### II.8.12.1 Hardware-paired navigation (2025 to 2026 peers)
 
-Mixture of Limits is not a software-only order. Navigation is Lookup → Formula → Solver → Model **on hardware that is available, accessible, and capable** ([Metabolic Intelligence](/products/mei/) states the three tests). Hooker's hardware lottery remains an established result: ideas look like progress when they fit installed chips and kernels (Hooker, 2021; [doi:10.1145/3467017](https://doi.org/10.1145/3467017)).
+Mixture of Limits is not a software-only order. Navigation is Lookup → Formula → Solver → Model **on hardware that is available, accessible, and capable**. Hooker's hardware lottery remains an established result: ideas look like progress when they fit installed chips and kernels (Hooker, 2021; [doi:10.1145/3467017](https://doi.org/10.1145/3467017)).
 
-Recent field work strengthens the pairing without replacing the navigation rule. Huang et al. (arXiv:2507.19142, Jul 2025), **A3D-MoE**, co-design MoE routing with 3D heterogeneous integration, score-aware HBM access, and attention-MoE fusion; author-reported energy cuts of about 2× to 4× are **their** architecture result, not OpenIE `measured_j`. Chung, Wu, Ma, and Chowdhury (arXiv:2601.22076, 2026), **Where Do the Joules Go?**, measure 1,858 inference configurations on H100/B200 and map energy to latent factors across algorithm, software, and hardware layers. Task type alone can swing LLM energy per response by about 25×. That is plateau diagnosis of spend on available fabric. It is not Lookup → Formula → Solver refuse.
+Recent field work strengthens the pairing without replacing the navigation rule. Huang et al. (arXiv:2507.19142, Jul 2025), **A3D-MoE**, co-design MoE routing with 3D heterogeneous integration, score-aware HBM access, and attention-MoE fusion; author-reported energy cuts of about 2× to 4× are **their** architecture result, not a `measured_j` reading of this paper. Chung, Wu, Ma, and Chowdhury (arXiv:2601.22076, 2026), **Where Do the Joules Go?**, measure 1,858 inference configurations on H100/B200 and map energy to latent factors across algorithm, software, and hardware layers. Task type alone can swing LLM energy per response by about 25×. That is plateau diagnosis of spend on available fabric. It is not Lookup → Formula → Solver refuse.
 
-**Cross-links.** [Part I](#part-i-the-commit-gate-notational-intelligence) owns certify before commit on the irreversible branch. [Satiation](/papers/satiation/) owns the stop when completeness holds or the joule budget binds. [Metabolic Intelligence](/products/mei/) owns the envelope and the cost of the interface to each fabric.
+
 
 
 <div id="813-plateau-techniques-transmission-gearing-cascade-memorycontext-test-time" class="anchor-alias" aria-hidden="true"></div>
@@ -1530,7 +1480,7 @@ Teach the shared primitives before the technique sections:
 | **CSA2 / CED** | DeepSeek-V4.1-Flash: Causal Encoder-Decoder (CED, YOCO-inspired) plus Compressed Sparse Attention 2 (Full / Reindex / Reuse modes, hierarchical sparse indexer, FP4 main KV) | Extreme KV and prefill compression for agents; still MoE generation |
 | **MoE routing** | Gate selects a small active expert set per token (DeepSeekMoE, Qwen MoE, Kimi, Sarvam, Solar, …) | Gearing inside the generative corridor: cheaper than dense, not Mixture of Limits floors |
 | **MTP / speculative path** | Multi-token prediction or draft modules densify training and accelerate decode | Test-time / decode gearing; energy and VoI floors still bind |
-| **Prefix-cache reuse** | A session that keeps its prompt prefix reuses cached KV instead of recomputing prefill; a session that breaks reuse recomputes it. The price reading is in [Task Satiation, Section 8.5](/papers/satiation/#85-cache-hit-pricing) | Cheapest-sufficient transmission; a broken prefix is escalated generative work, not a certified refuse |
+| **Prefix-cache reuse** | A session that keeps its prompt prefix reuses cached KV instead of recomputing prefill; a session that breaks reuse recomputes it. | Cheapest-sufficient transmission; a broken prefix is escalated generative work, not a certified refuse |
 
 <div id="8131-transmission-attention-kv-cache-and-interconnect-cost" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1572,12 +1522,12 @@ Teach the shared primitives before the technique sections:
 
 #### II.8.13.3 Cascade: early-exit prefill and staged decode paths
 
-Cascade here means staged work: finish a cheaper stage, then optionally open a costlier one: self-decoder then cross-decoder; prefill then decode; or OpenIE Lookup→Formula→Solver→Model.
+Cascade here means staged work: finish a cheaper stage, then optionally open a costlier one: self-decoder then cross-decoder; prefill then decode; or Lookup→Formula→Solver→Model.
 
 - **YOCO / CED early-exit.** Prefill can exit after the self-decoder once global KV is built (Sun et al., 2024; DeepSeek-V4.1-Flash CED). That is a generator-internal cascade that refuses *waste of prefill FLOPs*, not a VoI refuse outside generation.
 - **HySparse2 prefill exit.** Same YOCO-style exit after KV Bridging; author-reported 1M-token prefill FLOPs compressions above (§II.8.13.1).
 - **CED active-parameter schedule.** DeepSeek-V4.1-Flash activates **8B** per token in prefill and **16B** in decode: a cascade of capacity with stage, still MoE generation.
-- **OpenIE contrast.** Mixture of Limits cascade is Lookup → Formula → Solver/settle → Model with typed refuse. Field cascades above densify or sparsify *generation*; they do not certify commit|refuse before irreversible effect.
+- **Contrast.** Mixture of Limits cascade is Lookup → Formula → Solver/settle → Model with typed refuse. Field cascades above densify or sparsify *generation*; they do not certify commit|refuse before irreversible effect.
 
 <div id="8134-memory--context-long-horizon-kv-and-conditional-memory" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1724,11 +1674,11 @@ The field systems above route **model to model**. The contribution of Mixture of
 
 <div id="10-toward-agi-via-limits-open-questions-and-companions" class="anchor-alias" aria-hidden="true"></div>
 
-## II.10. Open questions and companions
+## II.10. Open questions
 
 If reliable computer intelligence means closing tasks with certificates, receipts, and known floors, then the historical method already points the way. Kepler and Newton pursued limits: the shortest predictive law that covered the grammar. Shannon measured information; Howard priced it for decisions; Landauer and Bennett priced irreversible erasure; Kolmogorov, Solomonoff, and Chaitin priced compression and incompleteness. Recent formula and mechanism systems (AI Feynman, SINDy, PySR, AI-Newton, AlphaGeometry, mechanistic world models) show the same pattern in modern form.
 
-The ideas are in place. The open work is embodiment (§II.8.0.1): devices, fabrics, and meters that make the cheapest sufficient close real at the edge, with estimates kept apart from measured watts. Mixture of Limits navigates the floors explicitly: Lookup and Formula first, Solver when a settle is the right physics, Model when the cheaper gears cannot close, and refuse when VoI or safety says stop. `mol prove` shows the rule is constructive in software. Part I and Satiation supply the commit record and the stop on task completion.
+The ideas are in place. The open work is embodiment (§II.8.0.1): devices, fabrics, and meters that make the cheapest sufficient close real at the edge, with estimates kept apart from measured watts. Mixture of Limits navigates the floors explicitly: Lookup and Formula first, Solver when a settle is the right physics, Model when the cheaper gears cannot close, and refuse when VoI or safety says stop. `mol prove` shows the rule is constructive in software. Part I supplies the commit record.
 
 **Open questions**
 
@@ -1736,7 +1686,7 @@ The ideas are in place. The open work is embodiment (§II.8.0.1): devices, fabri
 - Live WCA MCP / System One pre-gate and leapfrog `openie-path` ask (adapters remain stubs on the verified path).
 - Materials and devices that make Formula plus LUT closes on a coin cell cheaper than generative spend, with Metered probes whenever package joules are claimed.
 - When a Metered `measured_j` path is published beside the reference's estimates, with the two kept apart.
-- How VoI thresholds should be set per domain without smuggling engagement metrics as completeness (see Satiation).
+- How VoI thresholds should be set per domain without smuggling engagement metrics as completeness.
 - Whether mechanism libraries (MWM cousins; AI-Newton concept base) should be imported as typed Lookup entries without breaking clean-room prove.
 - How to bind third-party EBM settle scores (e.g. Logical Intelligence-style energies) and world-model proposals (e.g. World Labs Atlas/Marble) into certify-before-commit without laundering generative output as Deterministic.
 - How to price test-time compute budgets under VoI so adaptive thinking stops when marginal CoT tokens do not change B, without treating longer traces as automatic progress.
@@ -1753,13 +1703,6 @@ The ideas are in place. The open work is embodiment (§II.8.0.1): devices, fabri
 - How Primitive Distillation (§II.11.3) certifies the last cascade stage proposals into new Lookup/Formula entries without laundering uncertified proposals as Deterministic.
 - When Tier-2 shunt meters (§II.11.4) publish package `measured_j` beside Tier-0 analytical and Tier-1 OS telemetry without mixing estimate classes on a receipt.
 - How the claim regime, the test-system label, the multi-indicator specification, the metrology programme, the technical report, and the facility reporting duty in §II.11.4.1 stay off the receipt until a Metered probe returns a joule for the run.
-
-**Companions on this site**
-
-- [Part I of this paper](#part-i-the-commit-gate-notational-intelligence): the commit and refuse record, analytical energy, and measurement bounds.
-- [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/): the stop on task completion.
-- [Metabolic Intelligence](/products/mei/): the energy budget from tag to campus.
-- Living figures: [/living/mol/](/living/mol/).
 
 **Closing.** The pursuit of limits, meaning compression into predictive law, priced information, and thermodynamic accounting, runs from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits states that line as a navigation rule for computer intelligence: spend the minimal amount that closes the task, and treat more as waste. Correctness is the gate, and joules are the ranking. The techniques of §II.8.4 to §II.8.14 are ways to reach the floor with fewer joules; they do not remove it. Embodying the rule in materials and devices is the hard problem, and Section II.11 names the next engineering steps.
 
@@ -2402,17 +2345,6 @@ Entries are numbered in one sequence and grouped by the section that cites them;
 ### II. Dual-phase perception / TinyML transducers (§II.11.1)
 
 235. Zhang, Y., Sun, S., & Ma, L. (2021). Tiny Transducer: A Highly-Efficient Speech Recognition Model on Edge Devices. *ICASSP*. arXiv:[2101.06856](https://arxiv.org/abs/2101.06856). DOI: [10.1109/ICASSP39728.2021.9413854](https://doi.org/10.1109/ICASSP39728.2021.9413854).
-
-<div id="openie-companions" class="anchor-alias" aria-hidden="true"></div>
-
-### II. OpenIE companions
-
-236. Charlot, D. Task Satiation vs. Aggregate Rebound in AI Demand. [research.openie.dev/papers/satiation/](https://research.openie.dev/papers/satiation/).
-237. OpenIE Periodic Stack of Computation; [compute.openie.dev](https://compute.openie.dev) (258 primitives / 33 families).
-238. OpenIE Stack (family map); [stack.openie.dev](https://stack.openie.dev).
-239. OpenIE Knowledge (seven-axis claim); [knowledge.openie.dev](https://knowledge.openie.dev).
-240. OpenIE Synthesis (DIS / zones / cost surface); [synthesis.openie.dev](https://synthesis.openie.dev).
-241. OpenIE Verify (verification stack); [proof.openie.dev](https://proof.openie.dev).
 
 Kepler's laws, Newton's *Principia*, and Brahe's observational program are treated as historical common knowledge in §II.8.1. Details about Logical Intelligence beyond its company blog are company-reported. Author-reported GPU-hours, throughput, KV bytes per token, prefill FLOPs, and benchmark scores for Jamba, DeepSeek (including V4.1-Flash), GLM, Xiaomi MiMo and HySparse2, Qwen, Kimi, Sarvam, Solar, speculative decoding, and test-time scaling papers are **field results**, not Mixture of Limits `measured_j`.
 
