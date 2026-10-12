@@ -6,7 +6,7 @@ const projects = [
   {
     "id": "agency",
     "title": "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents",
-    "deck": "The proposed Universal Law of Agency, stated as a definition plus a gate. Agency comes first: a prediction fixed before the act, coupling to the world through intervention, consequence borne, and a joule budget with refusal on a receipt. Kinematic bounds say how fast agency moves per second and per joule. Intelligence is the derivative of agency in joules, read in hindsight off a completed run. Prediction 1 gives an optimal act time for an agent that holds a goal, with a lab protocol to test it. Energy to run is the only true metric of computer intelligence.",
+    "deck": "Defines an agent as a system that holds a goal under an energy budget, derives physical bounds on how fast it can act per second and per joule, and reads intelligence as progress per joule on a completed run. Plain words: to count as an agent, a system must aim at a goal, act, and stay within an energy budget; physics sets a minimum energy cost for every decision; among systems that finish a job correctly, the one that used less energy ranks higher.",
     "status": "Research paper",
     "group": "research",
     "about": "/about/agency/",
@@ -23,7 +23,7 @@ const projects = [
   {
     "id": "gates",
     "title": "Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems",
-    "deck": "Notational Intelligence and Mixture of Limits in one systems paper. A proposal may not authorize itself: an irreversible act runs only behind a certificate, and every decision is written to a receipt. Mixture of Limits is the philosophy: use the cheapest gear that is sufficient, because past the floor additional tokens, parameters, or joules do not purchase verifiable progress. Lookup, then Formula, then Solver, then Model is one instance. Systems are ranked by the joules needed to reach a correct completion. A KV260 board reading gives 11,428 pJ per gate cycle at board level.",
+    "deck": "A gate that lets a machine act only after a check passes, and a cascade that tries the cheapest method first, with software results and one board-level energy reading (11,428 pJ per gate cycle, whole module, KV260). Plain words: do not take an action that cannot be undone until a check says it is safe; try the cheapest way first; write every decision down with its energy.",
     "status": "Research paper",
     "group": "research",
     "about": "/about/gates/",
@@ -41,8 +41,8 @@ const projects = [
   {
     "id": "satiation",
     "title": "Task Satiation vs. Aggregate Rebound in AI Demand",
-    "deck": "Task-level satiation holds by definition once a task completion predicate is true: more synthesis on that task buys nothing. Aggregate demand can still grow, because cheaper synthesis opens new tasks and raises total use. The paper separates the two, states hypotheses H1 (spend after completion) and H2 (Jevons in tasks), and gives the data design that would identify them. Capability scales. Appetite per task does not.",
-    "status": "Economics companion paper",
+    "deck": "Defines the stop at which more machine work on a finished task adds nothing, and separates it from growth in total demand. Plain words: every job has a finish line; cheaper work can still create more jobs; AI prices fall but its electricity is never free.",
+    "status": "Economics paper",
     "group": "research",
     "about": "/about/satiation/",
     "paper": "/papers/satiation/",
@@ -58,7 +58,7 @@ const projects = [
   {
     "id": "rce",
     "title": "The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming",
-    "deck": "Engineering and theory. Autonomous coding is a design space: approaches sit along continuous axes of energy per task, entropy and determinism, verification strength, reuse and compounding, and model reliance, and RCE is one point that optimizes them. A program is a database functional state machine: one Form, P = (S, E, δ, D, λ), and many fits, grounded in Gurevich's Abstract State Machine theorem. The Reality Code Engine (RCE) retrieves, adapts and proves fits, cheapest gear first, as one Mixture of Limits instance. Correctness is the gate and joules are the ranking. RCE is one uniform code ecosystem: intent is written once as a Form, a lossless encoding, and every target is a faithful projection, so invalid states cannot be written and the gate refuses errors at entry. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input is refused at entry, and the Python projection replays the reference trace on 9,999. Code from other languages enters by lift, with repair as that entry path (63.7% of 21,320 single-statement Java bugs). The universality thesis, one Form in place of any other language, is stated as propositions with a large N coverage protocol.",
+    "deck": "A system in which a program is written once as a state machine and code in other languages is generated from it, with measurements on 10,000 Forms and public bug datasets and falsifiers fixed in advance. Plain words: write a program once and generate it in many languages; reject broken input at the door; save checked fixes so the same problem is not paid for twice.",
     "status": "Research paper",
     "group": "research",
     "about": "/about/rce/",
@@ -75,7 +75,7 @@ const projects = [
   {
     "id": "three-body",
     "title": "The Pursuit of AGI Resolves the Three-Body Problem in Computing",
-    "deck": "Engineering and theory. Computing has three bodies: theorists, makers and users. Each is coherent alone; the instability lives in the unexamined interfaces between them, where assumptions about units, voltages, versions, envelopes and intent cross unwritten and unchecked. The paper uses the three-body problem of celestial mechanics carefully, separating analogy from mechanism, states the interface thesis as definitions, five propositions, protocols and falsifiers, and argues that pursuing AGI seriously forces every interface assumption to be made explicit and checked. A stack whose interfaces are all checked holds a correction where it is made and carries it upward, like the special stable configurations of the three-body problem. RCE's whole-stack interface checks are the first evidence.",
+    "deck": "Locates many computing failures at handoffs between the people who specify, build and use systems, states when checking every handoff assumption makes a stack stable, and supports it with independently tested verified systems (CompCert, seL4, TLA+ at AWS, unit types). Plain words: most big failures happen at handoffs; the cause is usually an unwritten guess; if every guess is written down and machine-checked, a fix stays fixed.",
     "status": "Research paper",
     "group": "research",
     "about": "/about/three-body/",
@@ -92,7 +92,7 @@ const projects = [
   {
     "id": "spellcheck",
     "title": "Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few",
-    "deck": "People used to pay a premium for spell check. Now it is free and bundled into the editor, the browser, and the phone. A history of that path, from dated prices to the local library in every editor. Technology built for global access reaches more than 7 billion people. Scarcity pricing keeps a capability with the few who can pay. Energy to run is what remains.",
+    "deck": "Documents with dated prices how spell check went from a premium product to a free built-in feature, and explains it by marginal cost and bundling. Plain words: spell check used to cost a lot and is now free; it became free because it costs almost nothing to run and is most useful inside tools people have; other computer skills can follow.",
     "status": "History essay",
     "group": "essay",
     "about": "/about/spellcheck/",
@@ -109,7 +109,7 @@ const projects = [
   {
     "id": "ai-coding-market",
     "title": "The Promised Trillion Dollar AI-Coding Market",
-    "deck": "The economics companion to the RCE research paper, where the theory and the economics meet. It sets out who projects the AI coding market and what they project: about $3 trillion a year in developer value, company-reported revenue and valuations, token volume, losses, capex and data-centre energy, each with its source and its label. Every projection assumes the space of autonomous coding has one direction: high energy, high compute, per-token rent and the model in the loop forever. With correctness as the gate and joules as the ranking, RCE measured, on held-out test splits with 0 model calls, 520,541 of 520,821 one-token repairs and 63.7% of 21,320 real single-statement Java bugs with the whole file, at hundredths of a reported joule per solved task. Where RCE covers a task, its price falls toward the energy to run it, as Spell Check fell to a bundled zero price.",
+    "deck": "Lists who projects a trillion-dollar AI coding market, labels each number by kind, and names the shared assumptions about energy, tokens and reuse, with testable propositions. Plain words: the big numbers are mostly forecasts; they assume a large model is paid for every piece of code forever; reuse would lower the cost of repeated work toward the cost of electricity.",
     "status": "Economics essay",
     "group": "essay",
     "about": "/about/ai-coding-market/",
@@ -117,7 +117,6 @@ const projects = [
     "pdf": "/pdfs/ai-coding-market.pdf",
     "figures": "/figures/rce/intent-entropy.svg",
     "tags": [
-      "economics companion",
       "one-direction assumption",
       "marginal cost",
       "two declines"
@@ -126,7 +125,7 @@ const projects = [
   {
     "id": "interface-economics",
     "title": "The Price of the Unexamined Interface",
-    "deck": "The economics companion to The Pursuit of AGI Resolves the Three-Body Problem in Computing. It gathers the primary estimates of what unexamined interfaces cost and labels each by kind: accounted costs of single failures such as Mars Climate Orbiter and the Cluster payload lost on Ariane 501, NIST model estimates of inadequate software testing ($59.5 billion a year) and inadequate interoperability in capital facilities ($15.8 billion a year), and CISQ's estimate of the cost of poor software quality in the United States (at least $2.41 trillion in 2022, with about $1.52 trillion of technical debt). No primary source isolates interface failure as one total, and the essay does not invent one. It reads the costs through technical debt and standards economics and ties them to the AI coding market, which prices generation and leaves interfaces unpriced.",
+    "deck": "Published costs of failures at handoffs, labeled as accounted costs, model estimates or survey estimates and never added into one total. Plain words: some handoff failures have exact price tags; national totals are estimates; checking assumptions is cheap but the one who does it pays while everyone benefits.",
     "status": "Economics essay",
     "group": "essay",
     "about": "/about/interface-economics/",
@@ -143,7 +142,7 @@ const projects = [
   {
     "id": "mei",
     "title": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus",
-    "deck": "Metabolic Intelligence is the AI product. A fixed energy budget is the physical condition of the best answer. Work that would break the budget is refused or deferred. It spans coin-cell tags at the edge to a resource-optimized central datacenter and runs on any compute fabric. Klere (klere.ai) is the hardware that builds the Energy Processing Unit (EPU).",
+    "deck": "Computer intelligence designed to run inside a fixed energy budget, with emulator and datasheet results on a cold-chain sensor tag and a protocol test of a grid-following data center. Plain words: give a computer a fixed energy budget and design it for the best answer inside it; a food sensor tag can then run about eight years on a coin battery; a data center can cut power when the grid asks without giving wrong answers.",
     "status": "Product white paper",
     "group": "product",
     "about": "/products/mei/",
@@ -153,14 +152,13 @@ const projects = [
     "tags": [
       "product white paper",
       "energy budget",
-      "Klere",
       "edge and central"
     ]
   },
   {
     "id": "jouleos",
     "title": "The Search for JouleOS",
-    "deck": "A review of how secure compute is composed today and a design guide for what a machine must speak if an agent is to be scheduled, metered, and refused. It places the energy-as-resource operating systems that came before, names what they lack, and describes JouleOS: one intent stream lowered onto the coordinate the runtime measured.",
+    "deck": "A review of how operating systems, instruction sets and agent sandboxes are composed today, and checkable requirements for a machine that schedules, meters and refuses an agent under an energy budget. Plain words: AI agents are added on top of old layers; none of them checks energy before an agent acts; a machine for agents should measure energy, budget it, and refuse what breaks the budget.",
     "status": "Product white paper (review and design guide)",
     "group": "product",
     "about": "/products/jouleos/",
@@ -178,7 +176,7 @@ const research = projects.filter((p) => p.group !== 'product');
 const products = projects.filter((p) => p.group === 'product');
 ---
 
-<Layout title="Research catalog" description="OpenIE research: four research papers, an economics companion paper and three essays. Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, Metered Commit Gates, Task Satiation vs. Aggregate Rebound in AI Demand, The Reality Code Engine, The Pursuit of AGI Resolves the Three-Body Problem in Computing, Spell Check is Global, The Promised Trillion Dollar AI-Coding Market, and The Price of the Unexamined Interface. Two product white papers are kept apart.">
+<Layout title="Research catalog" description="OpenIE research, free to read and reuse: four research papers, four economics papers and essays, and two white papers. Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, Metered Commit Gates, Task Satiation vs. Aggregate Rebound in AI Demand, The Reality Code Engine, The Pursuit of AGI Resolves the Three-Body Problem in Computing, Spell Check is Global, The Promised Trillion Dollar AI-Coding Market, and The Price of the Unexamined Interface.>
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(homeJsonLd)} />
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-12 max-w-7xl mx-auto">
     <p class="section-label mb-4">research.openie.dev</p>
@@ -186,9 +184,8 @@ const products = projects.filter((p) => p.group === 'product');
       Research catalog
     </h1>
     <p class="mt-6 font-body text-base md:text-lg text-brand-slate max-w-2xl leading-relaxed">
-      Four research papers, an economics companion paper and three essays. The flagship states the proposed Universal Law of Agency as a definition plus a gate: agency first, kinematic bounds second, and intelligence as the derivative of agency in joules.
-      Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate: among systems that pass it, joules alone order them.
-      Two product white papers sit apart from the research catalog.
+      Four research papers, four economics papers and essays, and two white papers, published free so anyone can read, check and reuse them.
+      Each paper stands alone, defines its own terms, and opens with three points in plain words. Energy figures are labeled by how they were obtained.
     </p>
     <div class="mt-8 flex flex-wrap gap-3">
       <a href="/papers/agency/" class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
@@ -210,7 +207,7 @@ const products = projects.filter((p) => p.group === 'product');
         Spell Check is Global (essay)
       </a>
       <a href="/#products" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        Product white papers
+        White papers
       </a>
       <a href="/playground/rce/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
         RCE Playground
@@ -226,119 +223,6 @@ const products = projects.filter((p) => p.group === 'product');
       </a>
       <a href="/living/fpga-sim/alchitry/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
         Alchitry guide
-      </a>
-    </div>
-  </section>
-
-  <section id="universal-law-of-agency" class="px-6 md:px-10 pb-12 max-w-7xl mx-auto">
-    <div class="glass-card p-6 md:p-8">
-      <p class="section-label mb-3">Research paper · definition, kinematic bounds, calculus</p>
-      <h2 class="text-xl md:text-2xl text-brand-white mb-3">Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents</h2>
-      <p class="font-body text-sm text-brand-slate leading-relaxed max-w-3xl mb-5">
-        David Charlot's proposal, the Universal Law of Agency, in order. Agency comes first, and its definition is required. In form it is a definition plus a gate: a prediction fixed before the act, coupling to the world through intervention, consequence borne, and a joule budget with refusal on a receipt.
-        The kinematic bounds follow. They say how fast agency moves per second and per joule.
-        Intelligence is the calculus of agency. It is read in hindsight off a completed run, as the derivative of agency in joules.
-        Mixture of Limits is the philosophy. Notational Intelligence is the receipt. Metabolic Intelligence is the product on any fabric.
-      </p>
-      <a href="/papers/agency/" class="block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-amber/50 transition-colors max-w-xl">
-        <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-amber mb-2">Flagship research paper</p>
-        <p class="text-brand-white text-sm font-semibold mb-2">The proposed Universal Law of Agency</p>
-        <p class="font-body text-xs text-brand-slate leading-relaxed">Proven, demonstrated and opinion sources for each layer. Findings organized by method. Prediction 1, an optimal act time, with a lab protocol written for a real meter. Estimates are never measured_j.</p>
-        <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/agency/</p>
-      </a>
-    </div>
-  </section>
-
-  <section id="companion-laws" class="px-6 md:px-10 pb-12 max-w-7xl mx-auto">
-    <div class="glass-card p-6 md:p-8">
-      <p class="section-label mb-3">How the papers fit</p>
-      <h2 class="text-xl md:text-2xl text-brand-white mb-3">Definition, gate and cascade, stop</h2>
-      <p class="font-body text-sm text-brand-slate leading-relaxed max-w-3xl mb-5">
-        The flagship defines agency and bounds its motion. Metered Commit Gates builds the machine: a proposal may not authorize itself, and the cheapest sufficient gear runs first. Task satiation names the stop: once a task is complete, more synthesis on it buys nothing. Analytical estimates are not board power. Package <code class="text-brand-cyan">measured_j</code> is set only when a named meter reads it.
-      </p>
-      <div class="grid md:grid-cols-3 gap-4">
-        <a href="/papers/agency/" class="block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-amber/50 transition-colors">
-          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-amber mb-2">Definition and bounds</p>
-          <p class="text-brand-white text-sm font-semibold mb-2">Thermodynamic Bounds and an Optimal Tempo</p>
-          <p class="font-body text-xs text-brand-slate leading-relaxed">The proposed Universal Law of Agency as a definition plus a gate. Kinematic bounds per second and per joule. Intelligence as the derivative of agency in joules.</p>
-          <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/agency/</p>
-        </a>
-        <a href="/papers/gates/" class="block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-cyan/50 transition-colors">
-          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-cyan mb-2">Gate and cascade</p>
-          <p class="text-brand-white text-sm font-semibold mb-2">Metered Commit Gates</p>
-          <p class="font-body text-xs text-brand-slate leading-relaxed">Part I, Notational Intelligence: propose, certify, commit or refuse, receipt. Part II, Mixture of Limits: use the cheapest gear that is sufficient; past the plateau, more is waste. Lookup → Formula → Solver → Model is one instance. Ranked by energy to correct completion.</p>
-          <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/gates/</p>
-        </a>
-        <a href="/papers/satiation/" class="block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-gold/50 transition-colors">
-          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gold mb-2">Stop · economics companion</p>
-          <p class="text-brand-white text-sm font-semibold mb-2">Task Satiation vs. Aggregate Rebound in AI Demand</p>
-          <p class="font-body text-xs text-brand-slate leading-relaxed">Task completion stops spend on a task. Cheaper synthesis can still raise total use. Jevons rebound is the identification problem.</p>
-          <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/satiation/</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="reality-code-engine" class="px-6 md:px-10 pb-12 max-w-7xl mx-auto">
-    <div class="glass-card p-6 md:p-8">
-      <p class="section-label mb-3">Research paper and economics companion</p>
-      <h2 class="text-xl md:text-2xl text-brand-white mb-3">The Reality Code Engine</h2>
-      <p class="font-body text-sm text-brand-slate leading-relaxed max-w-3xl mb-5">
-        Two papers, split the way Spell Check is split from the research. The research paper holds the engineering and theory: autonomous coding as a design space along continuous axes, with RCE as one point that optimizes them, one Form with many fits, the gate and the gears, verification and measured results. The economics essay holds the market argument: the trillion-dollar AI coding race assumes the design space has one direction, and that assumption is the economic error.
-      </p>
-      <div class="grid md:grid-cols-2 gap-4">
-        <a href="/papers/rce/" class="block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-cyan/50 transition-colors">
-          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-cyan mb-2">Research paper</p>
-          <p class="text-brand-white text-sm font-semibold mb-2">One Lossless Form for Native, Verified, Low-Energy Programming</p>
-          <p class="font-body text-xs text-brand-slate leading-relaxed">P = (S, E, δ, D, λ). Gears cheapest first, one Mixture of Limits instance. One uniform ecosystem: a lossless Form, faithful projections, errors refused at entry. 10,000 preregistered Forms: lossless round trip on all, Python replay on 9,999, 0 model calls. Legacy code enters by lift.</p>
-          <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/rce/</p>
-        </a>
-        <a href="/papers/ai-coding-market/" class="block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-gold/50 transition-colors">
-          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gold mb-2">Economics essay</p>
-          <p class="text-brand-white text-sm font-semibold mb-2">The Promised Trillion Dollar AI-Coding Market</p>
-          <p class="font-body text-xs text-brand-slate leading-relaxed">Who projects the trillion and what it assumes: one direction, per-token rent, the model in the loop forever. Half a million held-out repairs with 0 model calls break it on covered tasks.</p>
-          <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/ai-coding-market/</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="three-body" class="px-6 md:px-10 pb-12 max-w-7xl mx-auto">
-    <div class="glass-card p-6 md:p-8">
-      <p class="section-label mb-3">Research paper and economics companion · interfaces</p>
-      <h2 class="text-xl md:text-2xl text-brand-white mb-3">The Pursuit of AGI Resolves the Three-Body Problem in Computing</h2>
-      <p class="font-body text-sm text-brand-slate leading-relaxed max-w-3xl mb-5">
-        Theorists, makers and users are each coherent alone. The instability of computing lives in the interfaces between them, where assumptions cross unwritten and unchecked. A system that aims at general intelligence must act across all three, so it must make every interface assumption explicit and check it. A stack built that way holds a correction where it is made and carries it upward.
-      </p>
-      <a href="/papers/three-body/" class="block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-cyan/50 transition-colors max-w-xl">
-        <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-cyan mb-2">Research paper</p>
-        <p class="text-brand-white text-sm font-semibold mb-2">The Three-Body Problem in Computing</p>
-        <p class="font-body text-xs text-brand-slate leading-relaxed">Poincaré, Lagrange and the interface literature, five propositions, break and catch protocols and falsifiers. RCE's whole-stack interface checks are the first evidence.</p>
-        <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/three-body/</p>
-      </a>
-      <a href="/papers/interface-economics/" class="mt-4 block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-gold/50 transition-colors max-w-xl">
-        <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gold mb-2">Economics essay</p>
-        <p class="text-brand-white text-sm font-semibold mb-2">The Price of the Unexamined Interface</p>
-        <p class="font-body text-xs text-brand-slate leading-relaxed">What unexamined interfaces cost, with every figure labeled as an accounted cost or a model estimate: Mars Climate Orbiter, Ariane 501, NIST, CISQ. Technical debt and standards economics, tied to the AI coding market.</p>
-        <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/interface-economics/</p>
-      </a>
-    </div>
-  </section>
-
-  <section id="spell-check" class="px-6 md:px-10 pb-12 max-w-7xl mx-auto">
-    <div class="glass-card p-6 md:p-8">
-      <p class="section-label mb-3">History essay</p>
-      <h2 class="text-xl md:text-2xl text-brand-white mb-3">Spell Check is Global</h2>
-      <p class="font-body text-sm text-brand-slate leading-relaxed max-w-3xl mb-5">
-        People used to pay a premium for spell check. It cannot be sold anymore. It is free, and it is bundled into the editor, the browser, and the phone.
-        That is what happens when a technology is built for global access instead of priced by scarcity. Its marginal cost fell to about zero, and it complemented an editor people already had, so bundling beat selling it.
-        Global access is for more than 7 billion people. Scarcity pricing keeps a capability with the few who can pay.
-      </p>
-      <a href="/papers/spellcheck/" class="block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-gold/50 transition-colors max-w-xl">
-        <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gold mb-2">Essay</p>
-        <p class="text-brand-white text-sm font-semibold mb-2">Spell Check is Global</p>
-        <p class="font-body text-xs text-brand-slate leading-relaxed">Lookup, then a short edit, on the machine that already holds the word. A suggestion is a proposal until commit. Further candidates stop when the token is kept.</p>
-        <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/spellcheck/</p>
       </a>
     </div>
   </section>
@@ -378,9 +262,9 @@ const products = projects.filter((p) => p.group === 'product');
 
   <section id="products" class="px-6 md:px-10 pb-12 max-w-7xl mx-auto">
     <div class="mb-8">
-      <p class="section-label mb-2">Product white papers</p>
-      <h2 class="text-2xl md:text-3xl text-brand-white">Kept apart from the research catalog</h2>
-      <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed max-w-3xl">These describe products. Metabolic Intelligence is the AI product. Klere (klere.ai) is the hardware that builds the Energy Processing Unit (EPU). JouleOS is the operating system design. Research owns the claims. The products embody them.</p>
+      <p class="section-label mb-2">White papers</p>
+      <h2 class="text-2xl md:text-3xl text-brand-white">Designs, with their data</h2>
+      <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed max-w-3xl">Two white papers describe designs by the author as objects of study, with their data and their limits stated.</p>
     </div>
     <div id="metabolic-intelligence" class="mb-6"></div>
     <div id="jouleos"></div>
@@ -415,8 +299,8 @@ const products = projects.filter((p) => p.group === 'product');
       <h2 class="text-xl text-brand-white mb-3">Research papers, not journal finals</h2>
       <ul class="space-y-2 font-body text-sm text-brand-slate leading-relaxed list-disc pl-5">
         <li>Prose lives at <code class="text-brand-cyan">/papers/</code> and <code class="text-brand-cyan">/products/</code>; real PDFs at <code class="text-brand-cyan">/pdfs/</code>.</li>
-        <li>Shared terms: <a href="/glossary/" class="text-brand-cyan no-underline hover:text-brand-teal">/glossary/</a>. About index: <a href="/about/" class="text-brand-cyan no-underline hover:text-brand-teal">/about/</a>.</li>
-        <li>Interactive figures stay under <code class="text-brand-cyan">/living/</code>. They are companions, not papers.</li>
+        <li>Site glossary: <a href="/glossary/" class="text-brand-cyan no-underline hover:text-brand-teal">/glossary/</a>. About index: <a href="/about/" class="text-brand-cyan no-underline hover:text-brand-teal">/about/</a>.</li>
+        <li>Interactive figures stay under <code class="text-brand-cyan">/living/</code>. They are figures, not papers.</li>
         <li>No Notion AI, Elicit, Consensus, or other paid research services in the runtime.</li>
         <li>Claim ledgers bind web, PDF, Medium, demos, and metadata. Forbidden claims stay off the UI.</li>
         <li>Stage C programmed an Alchitry Pt V2 (SRAM; energy still unmetered on Pt V2). AMD Kria KV260 with its onboard INA260: board-level metered A/B/A differences for the WCA gate fabric (11,428 pJ per gate cycle, standard error 129 pJ, N = 4) and the seed fabric (98.0 pJ per seed cycle, standard error 30.8 pJ, N = 4). Board level, not core rail. Not a closed-loop plant joule cost. OpCounter joules elsewhere are analytical estimates, not board power. Guide: <a href="/living/fpga-sim/alchitry/#energy" class="text-brand-cyan no-underline hover:text-brand-teal">/living/fpga-sim/alchitry/#energy</a>.</li>

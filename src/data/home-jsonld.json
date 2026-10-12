@@ -6,7 +6,7 @@
       "@id": "https://research.openie.dev/#catalog",
       "name": "OpenIE Research catalog",
       "url": "https://research.openie.dev/",
-      "description": "Research by David Charlot at Open Interface Engineering. Three research papers and one history essay, each with a web edition and a PDF. Two product white papers are kept apart from the research catalog.",
+      "description": "Research by David Charlot at Open Interface Engineering, free to read and reuse. Four research papers, four economics papers and essays, and two white papers, each with a web edition and a PDF.",
       "isPartOf": {
         "@id": "https://research.openie.dev/#site"
       },

@@ -37,7 +37,7 @@
       "path": "/papers/agency/",
       "pdf_path": "/pdfs/agency.pdf",
       "about_path": "/about/agency/",
-      "summary": "The proposed Universal Law of Agency, stated as a definition plus a gate. Agency comes first: a prediction fixed before the act, coupling to the world through intervention, consequence borne, and a joule budget with refusal on a receipt. Kinematic bounds say how fast agency moves per second and per joule. Intelligence is the derivative of agency in joules, read in hindsight off a completed run. Prediction 1 gives an optimal act time for an agent that holds a goal, with a lab protocol to test it. Energy to run is the only true metric of computer intelligence.",
+      "summary": "Defines an agent as a system that holds a goal under an energy budget, derives physical bounds on how fast it can act per second and per joule, and reads intelligence as progress per joule on a completed run. Plain words: to count as an agent, a system must aim at a goal, act, and stay within an energy budget; physics sets a minimum energy cost for every decision; among systems that finish a job correctly, the one that used less energy ranks higher.",
       "keywords": [
         "Universal Law of Agency",
         "agency",
@@ -58,7 +58,7 @@
       "path": "/papers/gates/",
       "pdf_path": "/pdfs/gates.pdf",
       "about_path": "/about/gates/",
-      "summary": "Notational Intelligence and Mixture of Limits in one systems paper. A proposal may not authorize itself: an irreversible act runs only behind a certificate, and every decision is written to a receipt. Mixture of Limits is the philosophy: use the cheapest gear that is sufficient, because past the floor additional tokens, parameters, or joules do not purchase verifiable progress. Lookup, then Formula, then Solver, then Model is one instance. Systems are ranked by the joules needed to reach a correct completion. A KV260 board reading gives 11,428 pJ per gate cycle at board level.",
+      "summary": "A gate that lets a machine act only after a check passes, and a cascade that tries the cheapest method first, with software results and one board-level energy reading (11,428 pJ per gate cycle, whole module, KV260). Plain words: do not take an action that cannot be undone until a check says it is safe; try the cheapest way first; write every decision down with its energy.",
       "keywords": [
         "commit gate",
         "energy to correct completion",
@@ -75,11 +75,11 @@
       "id": "satiation",
       "title": "Task Satiation vs. Aggregate Rebound in AI Demand",
       "short_title": "Task Satiation vs. Aggregate Rebound",
-      "kind": "Economics companion paper",
+      "kind": "Economics paper",
       "path": "/papers/satiation/",
       "pdf_path": "/pdfs/satiation.pdf",
       "about_path": "/about/satiation/",
-      "summary": "Task-level satiation holds by definition once a task completion predicate is true: more synthesis on that task buys nothing. Aggregate demand can still grow, because cheaper synthesis opens new tasks and raises total use. The paper separates the two, states hypotheses H1 (spend after completion) and H2 (Jevons in tasks), and gives the data design that would identify them. Capability scales. Appetite per task does not.",
+      "summary": "Defines the stop at which more machine work on a finished task adds nothing, and separates it from growth in total demand. Plain words: every job has a finish line; cheaper work can still create more jobs; AI prices fall but its electricity is never free.",
       "keywords": [
         "satiation",
         "task completion",
@@ -98,7 +98,7 @@
       "pdf_path": "/pdfs/rce.pdf",
       "about_path": "/about/rce/",
       "playground_path": "/playground/rce/",
-      "summary": "Engineering and theory. Autonomous coding is a design space: approaches sit along continuous axes of energy per task, entropy and determinism, verification strength, reuse and compounding, and model reliance, and RCE is one point that optimizes them. A program is a database functional state machine: one Form, P = (S, E, δ, D, λ), and many fits, grounded in Gurevich's Abstract State Machine theorem. The Reality Code Engine (RCE) retrieves, adapts and proves fits, cheapest gear first, as one Mixture of Limits instance. Correctness is the gate and joules are the ranking. RCE is one uniform code ecosystem: intent is written once as a Form, a lossless encoding, and every target is a faithful projection, so invalid states cannot be written and the gate refuses errors at entry. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input is refused at entry, and the Python projection replays the reference trace on 9,999. Code from other languages enters by lift, with repair as that entry path (63.7% of 21,320 single-statement Java bugs). The universality thesis, one Form in place of any other language, is stated as propositions with a large N coverage protocol.",
+      "summary": "A system in which a program is written once as a state machine and code in other languages is generated from it, with measurements on 10,000 Forms and public bug datasets and falsifiers fixed in advance. Plain words: write a program once and generate it in many languages; reject broken input at the door; save checked fixes so the same problem is not paid for twice.",
       "keywords": [
         "Reality Code Engine",
         "RCE",
@@ -121,7 +121,7 @@
       "path": "/papers/three-body/",
       "pdf_path": "/pdfs/three-body.pdf",
       "about_path": "/about/three-body/",
-      "summary": "Engineering and theory. Computing has three bodies: theorists, makers and users. Each is coherent alone; the instability lives in the unexamined interfaces between them, where assumptions about units, voltages, versions, envelopes and intent cross unwritten and unchecked. The paper uses the three-body problem of celestial mechanics carefully, separating analogy from mechanism, states the interface thesis as definitions, five propositions, protocols and falsifiers, and argues that pursuing AGI seriously forces every interface assumption to be made explicit and checked. A stack whose interfaces are all checked holds a correction where it is made and carries it upward, like the special stable configurations of the three-body problem. RCE's whole-stack interface checks are the first evidence.",
+      "summary": "Locates many computing failures at handoffs between the people who specify, build and use systems, states when checking every handoff assumption makes a stack stable, and supports it with independently tested verified systems (CompCert, seL4, TLA+ at AWS, unit types). Plain words: most big failures happen at handoffs; the cause is usually an unwritten guess; if every guess is written down and machine-checked, a fix stays fixed.",
       "keywords": [
         "three-body problem",
         "interfaces",
@@ -142,7 +142,7 @@
       "path": "/papers/spellcheck/",
       "pdf_path": "/pdfs/spellcheck.pdf",
       "about_path": "/about/spellcheck/",
-      "summary": "People used to pay a premium for spell check. Now it is free and bundled into the editor, the browser, and the phone. A history of that path, from dated prices to the local library in every editor. Technology built for global access reaches more than 7 billion people. Scarcity pricing keeps a capability with the few who can pay. Energy to run is what remains.",
+      "summary": "Documents with dated prices how spell check went from a premium product to a free built-in feature, and explains it by marginal cost and bundling. Plain words: spell check used to cost a lot and is now free; it became free because it costs almost nothing to run and is most useful inside tools people have; other computer skills can follow.",
       "keywords": [
         "spell check",
         "history of computing",
@@ -159,7 +159,7 @@
       "path": "/papers/ai-coding-market/",
       "pdf_path": "/pdfs/ai-coding-market.pdf",
       "about_path": "/about/ai-coding-market/",
-      "summary": "The economics companion to the RCE research paper, where the theory and the economics meet. It sets out who projects the AI coding market and what they project: about $3 trillion a year in developer value, company-reported revenue and valuations, token volume, losses, capex and data-centre energy, each with its source and its label. Every projection assumes the space of autonomous coding has one direction: high energy, high compute, per-token rent and the model in the loop forever. With correctness as the gate and joules as the ranking, RCE measured, on held-out test splits with 0 model calls, 520,541 of 520,821 one-token repairs and 63.7% of 21,320 real single-statement Java bugs with the whole file, at hundredths of a reported joule per solved task. Where RCE covers a task, its price falls toward the energy to run it, as Spell Check fell to a bundled zero price.",
+      "summary": "Lists who projects a trillion-dollar AI coding market, labels each number by kind, and names the shared assumptions about energy, tokens and reuse, with testable propositions. Plain words: the big numbers are mostly forecasts; they assume a large model is paid for every piece of code forever; reuse would lower the cost of repeated work toward the cost of electricity.",
       "keywords": [
         "economics of AI",
         "AI coding",
@@ -178,7 +178,7 @@
       "path": "/papers/interface-economics/",
       "pdf_path": "/pdfs/interface-economics.pdf",
       "about_path": "/about/interface-economics/",
-      "summary": "The economics companion to The Pursuit of AGI Resolves the Three-Body Problem in Computing. It gathers the primary estimates of what unexamined interfaces cost and labels each by kind: accounted costs of single failures such as Mars Climate Orbiter and the Cluster payload lost on Ariane 501, NIST model estimates of inadequate software testing ($59.5 billion a year) and inadequate interoperability in capital facilities ($15.8 billion a year), and CISQ's estimate of the cost of poor software quality in the United States (at least $2.41 trillion in 2022, with about $1.52 trillion of technical debt). No primary source isolates interface failure as one total, and the essay does not invent one. It reads the costs through technical debt and standards economics and ties them to the AI coding market, which prices generation and leaves interfaces unpriced.",
+      "summary": "Published costs of failures at handoffs, labeled as accounted costs, model estimates or survey estimates and never added into one total. Plain words: some handoff failures have exact price tags; national totals are estimates; checking assumptions is cheap but the one who does it pays while everyone benefits.",
       "keywords": [
         "economics of interfaces",
         "integration failure",
@@ -198,12 +198,11 @@
       "path": "/products/mei/",
       "pdf_path": "/pdfs/mei.pdf",
       "about_path": "/products/mei/",
-      "summary": "Metabolic Intelligence is the AI product. A fixed energy budget is the physical condition of the best answer. Work that would break the budget is refused or deferred. It spans coin-cell tags at the edge to a resource-optimized central datacenter and runs on any compute fabric. Klere (klere.ai) is the hardware that builds the Energy Processing Unit (EPU).",
+      "summary": "Computer intelligence designed to run inside a fixed energy budget, with emulator and datasheet results on a cold-chain sensor tag and a protocol test of a grid-following data center. Plain words: give a computer a fixed energy budget and design it for the best answer inside it; a food sensor tag can then run about eight years on a coin battery; a data center can cut power when the grid asks without giving wrong answers.",
       "keywords": [
         "Metabolic Intelligence",
         "energy budget",
         "edge AI",
-        "Klere",
         "Energy Processing Unit"
       ]
     },
@@ -215,7 +214,7 @@
       "path": "/products/jouleos/",
       "pdf_path": "/pdfs/jouleos.pdf",
       "about_path": "/products/jouleos/",
-      "summary": "A review of how secure compute is composed today and a design guide for what a machine must speak if an agent is to be scheduled, metered, and refused. It places the energy-as-resource operating systems that came before, names what they lack, and describes JouleOS: one intent stream lowered onto the coordinate the runtime measured.",
+      "summary": "A review of how operating systems, instruction sets and agent sandboxes are composed today, and checkable requirements for a machine that schedules, meters and refuses an agent under an energy budget. Plain words: AI agents are added on top of old layers; none of them checks energy before an agent acts; a machine for agents should measure energy, budget it, and refuse what breaks the budget.",
       "keywords": [
         "JouleOS",
         "secure compute",
@@ -316,11 +315,11 @@
     {
       name: 'search_studies',
       title: 'Search research studies',
-      description: 'Searches the titles, summaries, and keywords of the OpenIE research catalog for a word or phrase, such as energy, agency, Klere, or refusal. Returns matching studies ranked by match count. Read-only.',
+      description: 'Searches the titles, summaries, and keywords of the OpenIE research catalog for a word or phrase, such as energy, agency, or refusal. Returns matching studies ranked by match count. Read-only.',
       inputSchema: {
         type: 'object',
         properties: {
-          query: { type: 'string', minLength: 1, maxLength: 200, description: 'Words to look for, for example "joules per decision" or "Klere".' }
+          query: { type: 'string', minLength: 1, maxLength: 200, description: 'Words to look for, for example "joules per decision" or "refusal".' }
         },
         required: ['query'],
         additionalProperties: false
