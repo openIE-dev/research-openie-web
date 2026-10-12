@@ -1,6 +1,6 @@
 ---
 title: "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents"
-deck: "Agency first, kinematics second. The proposed Universal Law of Agency is a definition plus a gate, and it is required before anything counts as an agent. The kinematic bounds say how fast agency moves per second and per joule. Intelligence is the calculus of agency: a derivative read in hindsight off a completed run, ι = dX/dJ. Energy to run is the only true metric of computer intelligence. Estimates are never measured_j."
+deck: "A definition of an agent with an energy budget, the physical bounds on how fast such an agent can act per second and per joule, and a reading of intelligence as progress per joule on a completed run."
 id: agency
 status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
@@ -14,9 +14,15 @@ board_metered: false
 
 *Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#agency). LaTeX PDF: [/pdfs/latex/agency.pdf](/pdfs/latex/agency.pdf) ([source](/pdfs/latex/agency.tex)).*
 
-*The proposed Universal Law of Agency, stated as a definition plus a gate.*
+## Abstract
 
-*Agency first. Kinematics second. Intelligence is the calculus of agency, read in joules.*
+This paper defines an agent as a system that holds a goal under an energy budget, derives physical limits on how fast it can act per second and per joule, and measures intelligence as progress per joule after a run is complete.
+
+**In plain words**
+
+1. To count as an agent, a system must aim at a goal, act on the world, and stay within an energy budget.
+2. Physics sets a minimum energy cost for every decision, so no agent can act faster or cheaper than that limit.
+3. Among systems that get the job done correctly, the smarter one is the one that used less energy.
 
 ## 1. Thesis
 
@@ -26,7 +32,7 @@ The proposal has three layers, and the order is fixed.
 2. **The kinematic bounds of agency follow from the definition.** They say how fast agency can move, per second and per joule, and what it must pay to move.
 3. **Intelligence is the calculus of agency.** Intelligence is a hindsight characteristic. It is read off a completed run, the way velocity is read off a recorded path. It is therefore a derivative of agency: $\iota = dX/dJ$, where $X$ is confirmed agency and $J$ is joules.
 
-The thesis: Energy to run is the only true metric of computer intelligence. All other factors collapse to zero.
+The thesis: among systems that pass a task's correctness test, the ranking is by energy to completion, in joules.
 
 The thesis is read through its gate. Capability is not discarded: it is the gate. Burnell and colleagues ask that evaluation report results by instance rather than one aggregate [333], and Zhou and colleagues and Laber and colleagues find that capability and efficiency vary independently across models and inference budgets [334, 335]. Those findings are about systems that do not all pass the same predicate. Once a predicate $C(z)$ and a failure rate are fixed, every factor other than joules has already been spent in passing the gate, and that is the sense of the thesis' second sentence. The gated ranking is also practice: SPECpower ranks server work per watt at stated load [338], cost-of-pass ranks models by the cost of a correct answer [336], and intelligence per watt ranks local models by accuracy per unit power [337]. This paper's contribution is the joule form of that ranking with a refusal clause and a hindsight derivative, not the idea of ranking by cost under correctness.
 
@@ -64,8 +70,8 @@ No source is excluded for its method. Each source is placed by what it gives the
 - **Reset error ($\varepsilon$):** the probability that a reset record is not in its most likely state.
 - **Counting observable:** a quantity of a trajectory that counts selected jumps. It never decreases.
 - **Radon-Nikodym derivative:** the density of one measure with respect to another. It exists when the first measure gives zero mass to every set that the second gives zero mass to.
-- **Mixture of Limits:** the OpenIE philosophy. Use the cheapest gear that is sufficient. There exist floors past which additional tokens, parameters, or joules do not purchase verifiable progress. Spend past the floor is waste. That floor is the plateau (threshold convergence). Mixture of Limits is not one fixed cascade. A fixed cascade order is one instance of it. The σ-law selector is another.
-- **Notational Intelligence:** the OpenIE receipt study. Every act carries its prediction, its outcome and its joules.
+- **Mixture of Limits:** the rule of using the cheapest mechanism (gear) that is sufficient. There exist floors past which additional tokens, parameters, or joules do not purchase verifiable progress. Spend past the floor is waste. That floor is the plateau (threshold convergence). Mixture of Limits is not one fixed cascade. A fixed cascade order is one instance of it. The σ-law selector is another.
+- **Receipt:** a record attached to every act, holding its prediction, its outcome and its joules.
 
 ## 2. Formal framework
 
@@ -494,9 +500,9 @@ Figure 2 draws the curve of Prediction 1.
 ### 2.4 Where the studies sit
 
 - **Mixture of Limits** is the optimum operator. The cheapest sufficient gear is the argmin over joules. It is a philosophy, not one fixed order: spend stops at the plateau, where more is waste.
-- **Notational Intelligence** is the receipt. It carries $R^*$, $R$, $m$ and $J$ for every act.
+- **The receipt** carries $R^*$, $R$, $m$ and $J$ for every act.
 
-Both are developed in the companion paper, [Metered Commit Gates](/papers/gates/). Product placement is not part of this physics paper. It is kept in the [Metabolic Intelligence white paper](/products/mei/#where-the-products-sit).
+
 
 <div id="3-layer-1-the-universal-law-of-agency" class="anchor-alias" aria-hidden="true"></div>
 
@@ -717,7 +723,7 @@ Hindi and Arabic searches returned no primary research in those languages. Engli
 
 **P7. Mixture of Limits optimality.** Partly proven. Proposition 9 gives the exact conditions for independent gears and for two nested gears, and the budget mechanism. The fixed cascade instance tries gears from cheapest up, stops at the first gear whose output passes $C(z)$, and refuses with a receipt if the next gear would break the budget. It achieves the joule minimum up to the cost of failed attempts. In hand: if sufficiency is monotone in gear order and gear costs rise with order, the first sufficient gear is the cheapest sufficient gear. Missing: a regret bound when pass probabilities are estimated or sufficiency is not monotone, the nested case with more than two gears, and the conditions under which this rule and the σ-law selector, $a^* = \arg\max[H(a) - \lambda J(a)]$ subject to $J \le B$, choose the same act.
 
-**P8. When agency compounds.** Conditions under which $\alpha_J > 0$ over a run, so that earlier receipts lower the joules of later closures. In hand: an earlier OpenIE toy run found $\alpha_J \le 0$ on near-optimal tasks. Missing: a model of reuse in which stored receipts cut later $J$ by more than the storage and lookup joules. Still gives the memory cost side [225]. Section 8.10 measures the template's share of each act's joules.
+**P8. When agency compounds.** Conditions under which $\alpha_J > 0$ over a run, so that earlier receipts lower the joules of later closures. Missing: a model of reuse in which stored receipts cut later $J$ by more than the storage and lookup joules. Still gives the memory cost side [225]. Section 8.10 measures the template's share of each act's joules.
 
 ### 7.2 What must be demonstrated
 
@@ -762,7 +768,7 @@ Each task has a machine-checkable completeness predicate $C(z)$: unit tests for 
 All arms share the gears, the predicate, the budget, the meters and a randomized interleaved run order.
 
 1. **σ-law selector:** $a^* = \arg\max[H(a) - \lambda J(a)]$ subject to $J \le B$, with refusal on a receipt.
-2. **Fixed cascade (one Mixture of Limits instance):** the cheapest-sufficient rule, with gears tried in a fixed order from cheapest up. It is the matched comparison: same information, gears, budget and refusal right. Only the selection rule differs.
+2. **Fixed cascade (cheapest first):** the cheapest-sufficient rule, with gears tried in a fixed order from cheapest up. It is the matched comparison: same information, gears, budget and refusal right. Only the selection rule differs.
 3. **Largest gear always:** reference ceiling.
 4. **Smallest gear always:** reference floor, with refusal when it fails.
 
@@ -778,7 +784,7 @@ Both selectors are Mixture of Limits instances. The philosophy is to use the che
 
 ### 8.5 Receipt schema
 
-The receipt is the Notational Intelligence record of the run. One record per act:
+The receipt is the record of the run. One record per act:
 
 ```
 act_id, run_id, task_id, arm, seed, budget_j, gear
@@ -874,7 +880,7 @@ This run applies Sections 8.1 to 8.7 to one task class on one machine. Code, tas
 
 - **Agent and task.** A Python process closes Sudoku puzzles. The completeness predicate $C(z)$ passes when the grid is full, every row, column and box holds 1 to 9, and every given is kept. A confirmed task credits $b = n_{\mathrm{empty}}\log_2 9$ bits, the number of fills the act chooses among. That is the capacity bound of Definition 1. The test set holds 30 puzzles, 10 per stratum (easy, medium, hard), generated from a fixed seed. A separate set of 30 calibrates the selectors.
 - **Gears.** g0 fills naked singles. g1 adds hidden singles. g2 adds depth-first search.
-- **Arms.** The σ-law selector takes $a^* = \arg\max[H(a) - \lambda J(a)]$, with $H(a)$ the calibrated pass probability given the gears already tried, times $b$, and $\lambda = b/B$. The fixed cascade (one Mixture of Limits instance) takes the cheapest gear whose calibrated pass probability is at least 0.5. Both fix $R^*$ before each act, hash it with SHA-256 (Secure Hash Algorithm, 256-bit) and timestamp it. Both compare after the act and refuse with a receipt when no act fits the budget. The goal-blind baseline draws one gear at random, with no prediction, no comparison, no escalation and no refusal. The budget cuts it off.
+- **Arms.** The σ-law selector takes $a^* = \arg\max[H(a) - \lambda J(a)]$, with $H(a)$ the calibrated pass probability given the gears already tried, times $b$, and $\lambda = b/B$. The fixed cascade (cheapest first) takes the cheapest gear whose calibrated pass probability is at least 0.5. Both fix $R^*$ before each act, hash it with SHA-256 (Secure Hash Algorithm, 256-bit) and timestamp it. Both compare after the act and refuse with a receipt when no act fits the budget. The goal-blind baseline draws one gear at random, with no prediction, no comparison, no escalation and no refusal. The budget cuts it off.
 - **Budgets and seeds.** Per task, $B \in \{0.5, 1.0, 2.0\} \times J_{g2}(q)$, the pilot median of g2 alone. Levels 0.5 and 1.0 bind: 98% and 40% of pilot runs exceed them. Level 2.0 does not (0.7%). There are 20 seeds per condition, in a seeded interleaved order. In all, 5,400 episodes ran, with 4,940 acts.
 - **Energy label.** Every joule is `reported_j`: the kernel's per-process energy estimate for the agent (`ri_energy_nj` from `proc_pid_rusage`), read before and after each act, with no privileges. The process is the agent's wall. The Sudoku grid is held inside that process, so the world $W'$ is not outside $S$ as Definition 2 requires. This run tests the kinematics and the gated ranking, not the definition. The run that tests the definition holds the grid in a second process behind a socket, or on a microcontroller. `measured_j` is empty, because no wall meter was attached. `est_j` is cycles times $4.20 \times 10^{-10}$ J, the pilot's median ratio.
 
@@ -885,9 +891,9 @@ This run applies Sections 8.1 to 8.7 to one task class on one machine. Code, tas
 | σ-law | 0.5 | 0.60 ± 0.50 | 108 ± 91 | 20.8 ± 0.3 | 5,254 ± 4,402 | 0.84 | 29.40 | 0 | 0 |
 | σ-law | 1.0 | 9.10 ± 1.86 | 1,479 ± 316 | 43.8 ± 4.0 | 34,454 ± 10,007 | 0.29 | 20.90 | 0 | 9 |
 | σ-law | 2.0 | 28.40 ± 0.60 | 4,823 ± 105 | 66.2 ± 5.8 | 73,345 ± 6,443 | 0.09 | 1.60 | 0 | 0 |
-| Fixed cascade (one Mixture of Limits instance) | 0.5 | 0.70 ± 0.47 | 126 ± 85 | 18.8 ± 0.3 | 6,801 ± 4,569 | 0.67 | 29.30 | 0 | 0 |
-| Fixed cascade (one Mixture of Limits instance) | 1.0 | 6.45 ± 1.50 | 1,047 ± 254 | 44.7 ± 3.6 | 23,804 ± 7,067 | 0.30 | 23.55 | 0 | 7 |
-| Fixed cascade (one Mixture of Limits instance) | 2.0 | 27.50 ± 0.51 | 4,668 ± 92 | 67.0 ± 6.7 | 70,418 ± 7,766 | 0.11 | 2.50 | 0 | 0 |
+| Fixed cascade (cheapest first) | 0.5 | 0.70 ± 0.47 | 126 ± 85 | 18.8 ± 0.3 | 6,801 ± 4,569 | 0.67 | 29.30 | 0 | 0 |
+| Fixed cascade (cheapest first) | 1.0 | 6.45 ± 1.50 | 1,047 ± 254 | 44.7 ± 3.6 | 23,804 ± 7,067 | 0.30 | 23.55 | 0 | 7 |
+| Fixed cascade (cheapest first) | 2.0 | 27.50 ± 0.51 | 4,668 ± 92 | 67.0 ± 6.7 | 70,418 ± 7,766 | 0.11 | 2.50 | 0 | 0 |
 | Goal-blind | 0.5 | 0.25 ± 0.44 | 45 ± 80 | 14.1 ± 3.1 | 2,775 ± 4,999 | 1.80 | 0 | 20.35 | 20 |
 | Goal-blind | 1.0 | 3.85 ± 1.84 | 623 ± 301 | 26.6 ± 5.7 | 24,153 ± 13,364 | 0.55 | 0 | 17.45 | 0 |
 | Goal-blind | 2.0 | 18.25 ± 2.71 | 3,034 ± 471 | 34.1 ± 9.7 | 92,724 ± 15,690 | 0.17 | 0 | 1.35 | 0 |
@@ -943,9 +949,9 @@ This run is the same task class, the same gears and the same three arms as Secti
 | σ-law | 0.5 | 0.62 ± 0.49 | 113 ± 89 | 59.5 ± 2.0 | 1,942 ± 1,525 | 0.785 | 29.38 | 0 | 0 |
 | σ-law | 1.0 | 2.90 ± 1.74 | 523 ± 314 | 133.7 ± 13.8 | 4,150 ± 2,892 | 0.697 | 27.10 | 0 | 0 |
 | σ-law | 2.0 | 22.73 ± 1.30 | 3,980 ± 206 | 197.3 ± 18.2 | 20,359 ± 2,388 | 0.117 | 7.28 | 0 | 0 |
-| Fixed cascade (one Mixture of Limits instance) | 0.5 | 0.57 ± 0.50 | 104 ± 90 | 60.1 ± 2.1 | 1,777 ± 1,548 | 0.871 | 29.43 | 0 | 0 |
-| Fixed cascade (one Mixture of Limits instance) | 1.0 | 2.67 ± 1.25 | 483 ± 226 | 140.3 ± 13.5 | 3,593 ± 1,948 | 0.542 | 27.32 | 0 | 0 |
-| Fixed cascade (one Mixture of Limits instance) | 2.0 | 19.93 ± 1.42 | 3,509 ± 227 | 201.2 ± 20.4 | 17,684 ± 2,909 | 0.164 | 10.07 | 0 | 0 |
+| Fixed cascade (cheapest first) | 0.5 | 0.57 ± 0.50 | 104 ± 90 | 60.1 ± 2.1 | 1,777 ± 1,548 | 0.871 | 29.43 | 0 | 0 |
+| Fixed cascade (cheapest first) | 1.0 | 2.67 ± 1.25 | 483 ± 226 | 140.3 ± 13.5 | 3,593 ± 1,948 | 0.542 | 27.32 | 0 | 0 |
+| Fixed cascade (cheapest first) | 2.0 | 19.93 ± 1.42 | 3,509 ± 227 | 201.2 ± 20.4 | 17,684 ± 2,909 | 0.164 | 10.07 | 0 | 0 |
 | Goal-blind | 0.5 | 0.12 ± 0.33 | 23 ± 61 | 35.4 ± 11.6 | 513 ± 1,397 | 2.723 | 0 | 22.85 | 0 |
 | Goal-blind | 1.0 | 1.00 ± 0.93 | 181 ± 169 | 72.0 ± 19.5 | 2,661 ± 2,579 | 0.969 | 0 | 20.00 | 0 |
 | Goal-blind | 2.0 | 10.65 ± 2.27 | 1,859 ± 400 | 97.3 ± 30.1 | 20,302 ± 5,766 | 0.284 | 0 | 8.70 | 0 |
@@ -998,9 +1004,9 @@ This run repeats the second-run protocol of Section 8.11.1 on a second machine w
 | σ-law | 0.5 | 0.00 | 0 | 0.0018 | 0 | n/a | 30.00 | 0.00 | 323 |
 | σ-law | 1.0 | 0.00 | 0 | 0.0002 | 0 | n/a | 30.00 | 0.00 | 322 |
 | σ-law | 2.0 | 1.00 ± 0.39 | 181 ± 71 | 0.0018 ± 0.0336 | 14,427 ± 18,680 | 1.295 | 29.00 | 0.00 | 322 |
-| Fixed cascade (one Mixture of Limits instance) | 0.5 | 0.00 | 0 | -0.0008 | 0 | n/a | 30.00 | 0.00 | 326 |
-| Fixed cascade (one Mixture of Limits instance) | 1.0 | 0.00 | 0 | -0.0005 | 0 | n/a | 30.00 | 0.00 | 324 |
-| Fixed cascade (one Mixture of Limits instance) | 2.0 | 1.00 ± 0.51 | 181 ± 91 | 0.0107 ± 0.0286 | 15,451 ± 23,767 | 1.538 | 29.00 | 0.00 | 320 |
+| Fixed cascade (cheapest first) | 0.5 | 0.00 | 0 | -0.0008 | 0 | n/a | 30.00 | 0.00 | 326 |
+| Fixed cascade (cheapest first) | 1.0 | 0.00 | 0 | -0.0005 | 0 | n/a | 30.00 | 0.00 | 324 |
+| Fixed cascade (cheapest first) | 2.0 | 1.00 ± 0.51 | 181 ± 91 | 0.0107 ± 0.0286 | 15,451 ± 23,767 | 1.538 | 29.00 | 0.00 | 320 |
 | Goal-blind | 0.5 | 0.00 | 0 | 0.0026 | 0 | n/a | 0.00 | 30.00 | 327 |
 | Goal-blind | 1.0 | 0.00 | 0 | 0.0009 | 0 | n/a | 0.00 | 30.00 | 323 |
 | Goal-blind | 2.0 | 0.28 ± 0.45 | 50 ± 82 | 0.0019 ± 0.0180 | 3,801 ± 13,749 | 3.618 | 0.00 | 28.90 | 321 |
@@ -1019,9 +1025,9 @@ This run repeats the second-run protocol of Section 8.11.1 on a second machine w
 | σ-law | 0.5 | 1.10 ± 0.98 | 200 ± 178 | 0.0345 ± 0.0017 | 6,027 ± 5,458 | 0.906 | 28.90 | 0.00 | 0 |
 | σ-law | 1.0 | 8.75 ± 3.14 | 1,574 ± 565 | 0.0805 ± 0.0098 | 20,519 ± 8,516 | 0.415 | 21.25 | 0.00 | 0 |
 | σ-law | 2.0 | 28.60 ± 0.98 | 4,882 ± 154 | 0.1008 ± 0.0234 | 50,667 ± 10,088 | 0.199 | 1.40 | 0.00 | 0 |
-| Fixed cascade (one Mixture of Limits instance) | 0.5 | 1.15 ± 0.92 | 208 ± 167 | 0.0366 ± 0.0013 | 5,833 ± 4,757 | 0.816 | 28.85 | 0.00 | 0 |
-| Fixed cascade (one Mixture of Limits instance) | 1.0 | 9.22 ± 3.07 | 1,660 ± 551 | 0.0813 ± 0.0106 | 21,412 ± 8,130 | 0.380 | 20.77 | 0.00 | 0 |
-| Fixed cascade (one Mixture of Limits instance) | 2.0 | 27.77 ± 2.30 | 4,745 ± 377 | 0.1099 ± 0.0339 | 47,108 ± 13,216 | 0.281 | 2.23 | 0.00 | 0 |
+| Fixed cascade (cheapest first) | 0.5 | 1.15 ± 0.92 | 208 ± 167 | 0.0366 ± 0.0013 | 5,833 ± 4,757 | 0.816 | 28.85 | 0.00 | 0 |
+| Fixed cascade (cheapest first) | 1.0 | 9.22 ± 3.07 | 1,660 ± 551 | 0.0813 ± 0.0106 | 21,412 ± 8,130 | 0.380 | 20.77 | 0.00 | 0 |
+| Fixed cascade (cheapest first) | 2.0 | 27.77 ± 2.30 | 4,745 ± 377 | 0.1099 ± 0.0339 | 47,108 ± 13,216 | 0.281 | 2.23 | 0.00 | 0 |
 | Goal-blind | 0.5 | 0.20 ± 0.46 | 36 ± 84 | 0.0210 ± 0.0055 | 1,722 ± 3,927 | 2.280 | 0.00 | 21.50 | 0 |
 | Goal-blind | 1.0 | 3.73 ± 2.12 | 667 ± 381 | 0.0436 ± 0.0140 | 16,393 ± 9,246 | 0.564 | 0.00 | 16.68 | 0 |
 | Goal-blind | 2.0 | 15.65 ± 2.50 | 2,662 ± 433 | 0.0499 ± 0.0160 | 57,266 ± 14,596 | 0.255 | 0.00 | 4.17 | 0 |
@@ -1082,14 +1088,6 @@ The replicated result is narrow. At the loosest budget level the σ-law selector
 ### 8.12 Reporting
 
 Publish all receipts, raw meter traces, idle baselines and analysis code with the result. Report measured, reported and estimated joules in separate columns. Never sum across tiers. State which falsifiers fired, with the same prominence as those that passed. Every run also answers the checklist of Takahashi and Hayashi [239]: the accounting boundary; the energy balance terms (stored energy and exported work, or a statement that they are negligible); the baseline and whether joules are total or incremental; the coarse-graining of outcomes; the horizon and reset protocol; wall-clock time and mean power beside bits per joule; and the estimator of coupled bits with its bias correction.
-
-### 8.13 Where the products sit
-
-- **Notational Intelligence** is the receipt format in Section 8.5.
-- **Mixture of Limits** is the philosophy both selectors instantiate. Arm 2 is its fixed cascade instance.
-- **The Reality Code Engine** reads $\iota = dX/dJ$ in hindsight from its hash-chained log, with $X$ the coding tasks through the gate and $J$ their labeled joules ([The Reality Code Engine, Section 9](/papers/rce/#9-ties-to-the-companion-papers)).
-
-Hardware and product placement are in the [Metabolic Intelligence white paper](/products/mei/#where-the-products-sit). The meters of this plan are M0 and M1 in Section 8.1.
 
 ## References
 
