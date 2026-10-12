@@ -100,30 +100,12 @@
    ]
   },
   {
-   "id": "settled-forbidden",
-   "status": "forbidden-claim mention",
-   "pattern": "\"compliance moved to 20 Jul 2028\" as settled",
-   "note": "Listed as a withdrawn wording.",
-   "files": [
-    "src/content/products/mei.md"
-   ]
-  },
-  {
    "id": "proven-theorems",
    "status": "theorem",
    "pattern": "### \\d\\.1 Proven|\\*\\*Proven(?: here)?:\\*\\*|\\*\\* Proven(?: for acts whose)?|\\*\\*\\s*Proven|Partly proven|Propositions are proven from cited theorems|What must be proven|clause 1, proven for modern agents|Proven(?:\\.| for acts whose)",
    "note": "Theorems with proofs, or theorems proved in cited work.",
    "files": [
     "src/content/papers/agency.md"
-   ]
-  },
-  {
-   "id": "proven-agency-card",
-   "status": "theorem",
-   "pattern": "Proven, demonstrated and opinion sources",
-   "note": "The agency paper's source classes; Proven means theorems.",
-   "files": [
-    "src/pages/index.astro"
    ]
   },
   {

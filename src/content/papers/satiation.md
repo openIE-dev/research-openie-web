@@ -363,7 +363,7 @@ Internal validity of the price claim. S-2 inherits whatever identification Epoch
 
 External validity. Work and care, as defined, exclude military rivalry and may exclude research. Phone ownership does not transfer to agent products. Bicycle share prices do not transfer to software margins. The constructed episodes are not a sample.
 
-Measurement validity. No split joules, no detector confusion matrix no metered device. Vendor hardware specifications are not energy measurements.
+Measurement validity. No split joules, no detector confusion matrix, and no energy meter on any device. Vendor hardware specifications are not energy measurements.
 
 Omitted variable. New tasks can absorb spending released by cheap synthesis. Section 5.1 states this. A roadmap that treats per-chore satiation as a forecast of aggregate compute demand is not licensed by this paper.
 
