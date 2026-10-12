@@ -1,22 +1,26 @@
 *Versão 1.1, 11 de outubro de 2026. Dados e código: [research.openie.dev/data/](/data/#rce). Playground: [/playground/rce/](/playground/rce/). PDF em LaTeX: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([fonte](/pdfs/latex/rce.tex)).*
 
-*Uma Forma, escrita a partir da intenção. Muitas projeções. A porta é a correção, e a classificação é em joules.*
+## Resumo
 
-A leitura econômica deste artigo está no seu companheiro, [O prometido mercado trilionário de programação com IA](/papers/ai-coding-market/). Este artigo contém apenas a engenharia e a teoria.
+Este artigo descreve o Reality Code Engine (RCE), um sistema no qual um programa é escrito uma única vez como uma máquina de estados, chamada Forma, e o código em outras linguagens é gerado a partir dela. O artigo relata o que foi medido em 10,000 Formas e em conjuntos de dados públicos de defeitos, e diz como as afirmações poderiam ser mostradas falsas.
+
+**Em palavras simples**
+
+1. Um programa é escrito uma única vez, numa forma precisa, e o computador produz a partir dela o mesmo programa em muitas linguagens.
+2. Como a forma só permite o que foi declarado, uma entrada defeituosa é rejeitada logo na entrada em vez de ser corrigida depois.
+3. Uma correção que passa pelas verificações é guardada e reutilizada, de modo que o mesmo problema não custa tempo nem energia duas vezes.
 
 ## 1. Tese
 
 A automação computacional autônoma é um espaço de projeto com muitos pontos. Cada abordagem fica em algum lugar ao longo de cinco eixos contínuos: a energia gasta por resultado correto; a entropia que o sistema precisa resolver em tempo de execução e, com ela, o quanto sua saída é determinística; a força da verificação que aceita um resultado; o quanto cada resultado aceito é reutilizado e se acumula; e o quanto a abordagem depende de um modelo. Um grande modelo de linguagem (LLM), um modelo estatístico de texto, que escreve cada alteração a partir do prompt fica perto de um canto desse espaço: depende do modelo em cada tarefa, tira a cada vez uma amostra nova de uma distribuição de alta entropia e paga a geração de novo em cada tarefa. Recuperação, regras, síntese, verificação e cache ocupam muitos outros pontos, e os sistemas reais os combinam.
 
-O Reality Code Engine (RCE) é um ponto do espaço, escolhido para otimizar os cinco eixos ao mesmo tempo. As pessoas já programaram a maior parte do que algum dia será programado. Um programa é uma máquina de estados funcional de banco de dados: uma Forma, muitos ajustes. A intenção humana tem alta entropia. O piso da máquina tem baixa entropia. O código converge por construção, então a maior parte do trabalho é recuperar um ajuste que já existe, adaptá-lo e prová-lo, e um modelo só é chamado quando nada mais barato fecha a tarefa.
+O Reality Code Engine (RCE) é um ponto do espaço, e este artigo o descreve e o mede. O RCE modela um programa como uma máquina de estados funcional de banco de dados. Lopes e colegas mediram que cerca de 70% do código no GitHub consiste em clones de arquivos anteriores [33], então o RCE tenta primeiro recuperar um ajuste existente, adaptá-lo e verificá-lo, e só chama um modelo quando nada mais barato fecha a tarefa.
 
 **A afirmação central.** O RCE é um ecossistema de código completo no qual os programas são escritos nativamente a partir da intenção. A intenção é escrita uma única vez, como uma Forma: um estado, um conjunto de eventos e transições puras e totais. A Forma é uma codificação sem perdas dessa intenção. Cada alvo (statechart, Rust, Python, XState, SCXML, WASM) é uma projeção da Forma, e cada projeção reproduz o traço da Forma byte a byte. Um estado que a Forma não declara não pode ser escrito, e uma entrada fora do contrato é rejeitada no ponto de entrada. Um programa no ecossistema, portanto, não se afasta da sua intenção como um programa numa linguagem comum se afasta dos seus comentários, dos seus testes e das suas outras implementações, e não precisa de comparação de diferenças nem de rastreamento de erros depois do fato. Cada ajuste que passa pela porta é armazenado e reutilizado, de modo que o ecossistema cresce de forma cumulativa à medida que se expande ([§2.4](#24-gated-verified-recursive-self-improvement)). O código escrito em outras linguagens é uma das portas de entrada e entra por elevação ([§6](#6-lift-entering-the-ecosystem-from-other-languages)).
 
 Cada ponto do espaço enfrenta a mesma porta. A porta é a correção: o predicado de completude $C(z)$ de uma tarefa, aqui os testes da tarefa, uma prova ou um traço de concordância. Entre as execuções que passam pela porta, os sistemas são classificados pelos joules até a conclusão, $J^*$. A correção é uma restrição, não uma pontuação.
 
-Mixture of Limits é a filosofia: existe uma quantidade mínima de qualquer coisa para realizar uma tarefa, e qualquer excesso é desperdício ([Portas de confirmação medidas, Parte II](/papers/gates/#part-ii-the-cascade-mixture-of-limits)). O RCE é uma instância de Mixture of Limits. Suas engrenagens rodam da mais barata para a mais cara, e a primeira engrenagem que passa pela porta encerra a tarefa.
-
-flowG é um projeto de linguagem independente. O RCE é a sua primeira demonstração acadêmica. Os dois continuam sendo projetos separados.
+Os mecanismos do RCE, chamados engrenagens, rodam em ordem de custo, e a primeira engrenagem que passa pela porta encerra a tarefa.
 
 Os valores de energia são rotulados pela fonte. `est_j` é uma estimativa analítica. `reported_j` é um contador do sistema operacional ou do chip. `measured_j` é reservado a um medidor de parede e está vazio em todos os resultados aqui.
 
@@ -26,7 +30,7 @@ Os valores de energia são rotulados pela fonte. `est_j` é uma estimativa anal�
 
 ![Uma frase entra. Um piso sai. A intenção humana tem alta entropia; um funil de conversões da intenção à especificação, a 626 linguagens de superfície, a uma representação intermediária e a código de máquina perde informação em cada fronteira; todo código chega a poucas formas de máquina; o RCE escreve o significado uma vez numa Forma canônica, trata cada superfície como uma projeção e deixa vencer a forma correta mais barata.](/figures/rce/intent-entropy.svg)
 
-*Figura 1. Entropia da intenção e o piso da máquina. Há uma [cópia em PNG](/figures/rce/intent-entropy.png). Fontes: Shannon (1951); Lopes et al. (2017); a contagem de 626 linguagens vem do levantamento de caminhos de rebaixamento de David Charlot, que não está publicado; sua lista e seu método serão publicados com os dados deste artigo, e até lá a contagem é do autor. Os resultados de Python e C são comportamento da especificação da linguagem; o estouro com sinal em C é comportamento indefinido.*
+*Figura 1. Entropia da intenção e o piso da máquina. Há uma [cópia em PNG](/figures/rce/intent-entropy.png). Fontes: Shannon (1951); Lopes et al. (2017); a contagem de 626 linguagens vem de um levantamento não publicado do autor e não sustenta nenhuma afirmação deste artigo. Os resultados de Python e C são comportamento da especificação da linguagem; o estouro com sinal em C é comportamento indefinido.*
 
 **A intenção tem alta entropia.** "Deixe o checkout mais rápido" carrega muitos significados: carregamento de página mais curto, menos etapas, aprovação de cartão mais rápida, um carrinho em cache, ou mais rápido numa classe de dispositivos. O contexto fica implícito e nunca é escrito. Shannon mediu o inglês impresso em cerca de 0.6 a 1.3 bits por letra [1]. As letras são previsíveis. O significado não é.
 
@@ -56,7 +60,7 @@ A Figura 2 desenha os cinco eixos e situa neles as principais classes de abordag
 
 ### 2.1 Programar é teoria da codificação
 
-A tese desta seção é de David Charlot: toda a programação é teoria da codificação. Um programador converte intenção ao longo de um gradiente entre dois regimes entrópicos. A intenção tem alta entropia, uma distribuição sobre significados. O código tem baixa entropia, uma transição determinística por estado. Cada passo do trabalho de software, de um requisito a um registrador, é um passo dessa conversão. A literatura vem dizendo isso em pedaços há setenta anos, em muitas línguas. Esta seção junta os pedaços num argumento e situa nele cada engrenagem do RCE.
+A tese desta seção é que a programação pode ser lida como teoria da codificação. Um programador converte intenção ao longo de um gradiente entre dois regimes entrópicos. A intenção tem alta entropia, uma distribuição sobre significados. O código tem baixa entropia, uma transição determinística por estado. Cada passo do trabalho de software, de um requisito a um registrador, é um passo dessa conversão. A literatura vem dizendo isso em pedaços há setenta anos, em muitas línguas. Esta seção junta os pedaços num argumento e situa nele cada engrenagem do RCE.
 
 **A medida.** Shannon definiu a entropia de uma fonte e a capacidade de um canal [40], e mediu o inglês impresso em cerca de 0.6 a 1.3 bits por letra [1]. Kolmogorov, escrevendo em russo em *Problemy Peredachi Informatsii* em 1965, deu três abordagens para a quantidade de informação e tornou primária a algorítmica: a informação de um objeto é o comprimento do programa mais curto que o produz [41]. Solomonoff havia chegado ao mesmo objeto como teoria da inferência indutiva [42], e Chaitin mostrou que o tamanho de programas obedece a identidades formalmente idênticas às de Shannon [43]. Rissanen transformou a ideia numa regra de escolha de modelos, o comprimento mínimo de descrição [44]. Juntos, dizem que um programa é uma palavra de código: uma descrição de um comportamento, e a mais curta correta é o piso. A regra de extração do RCE, manter o ajuste de menos joules entre ajustes equivalentes (Proposição 3), é essa regra com joules no lugar de bits.
 
@@ -76,7 +80,7 @@ A tese desta seção é de David Charlot: toda a programação é teoria da codi
 
 **Compiladores já fazem codificação de fonte.** Franz e Kistler distribuíram programas como árvores sintáticas abstratas comprimidas e geraram código nativo no carregamento, o que é codificação de fonte de um programa sobre a sua própria gramática [67]. Fraser inferiu modelos estatísticos de código a partir de um corpus para comprimi-lo [68]. Futamura mostrou em 1971, na revista japonesa *Systems, Computers, Controls*, que especializar um interpretador para um programa produz um programa compilado, e que especializar o especializador produz um compilador [70]. Ershov, em Novosibirsk, desenvolveu a mesma ideia como computação mista [71]. A interpretação abstrata dos Cousot computa uma descrição correta e com menos informação de todo comportamento de um programa [69]. A analogia com a codificação de canal é a leitura deste artigo, não um teorema citado: tipos, testes e provas acrescentam redundância verificada para que um programa errado seja detectado antes de rodar, como uma verificação de paridade detecta uma palavra corrompida.
 
-**É no apagamento que os joules vão.** Landauer mostrou que um passo logicamente irreversível, o apagamento de um bit, dissipa pelo menos $k_B T \ln 2$ [65]. Bennett mostrou que a computação pode, em princípio, ser tornada logicamente reversível, de modo que o apagamento, e não a computação, carrega o limite [66]. Converter intenção de alta entropia num programa de baixa entropia descarta toda alternativa que a intenção permitia. Esse descarte é um apagamento de informação sobre as alternativas, e tem um piso termodinâmico. O [artigo sobre agência](/papers/agency/#1-thesis) precifica cada bit confirmado contra esse piso. O RCE paga o descarte uma vez por caso novo e armazena o resultado, de modo que um caso repetido não apaga nada novo.
+**É no apagamento que os joules vão.** Landauer mostrou que um passo logicamente irreversível, o apagamento de um bit, dissipa pelo menos $k_B T \ln 2$ [65]. Bennett mostrou que a computação pode, em princípio, ser tornada logicamente reversível, de modo que o apagamento, e não a computação, carrega o limite [66]. Converter intenção de alta entropia num programa de baixa entropia descarta toda alternativa que a intenção permitia. Esse descarte é um apagamento de informação sobre as alternativas, e tem um piso termodinâmico. O RCE paga o descarte uma vez por caso novo e armazena o resultado, de modo que um caso repetido não apaga nada novo.
 
 ### 2.2 Como o RCE converte, e onde fica cada engrenagem
 
@@ -91,7 +95,7 @@ Lida como teoria da codificação, uma tarefa chega como uma mensagem cuja incer
 | Porta | Aceita um candidato só com testes, cobertura e um certificado de prova | Lógica de Hoare [54]; Curry-Howard [18, 72] |
 | Promoção | Armazena o ajuste aceito, de modo que o mesmo resíduo custe G0 da próxima vez | Comprimento mínimo de descrição [44]; apagamento de Landauer pago uma vez [65] |
 
-As posições nos eixos da Seção 2 diferem em onde a conversão é paga. Uma abordagem que amostra a distribuição completa do prompt em cada tarefa paga o lado de alta entropia de novo a cada vez. Uma abordagem que armazena e reutiliza ajustes aceitos paga só o resíduo, e só uma vez. A maioria dos sistemas fica entre essas pontas, e o RCE fica na ponta da reutilização. A leitura econômica dessa diferença está em [O prometido mercado trilionário de programação com IA, Seção 4](/papers/ai-coding-market/#4-the-theory-that-prices-the-task). A regra de parada por trás da ordem das engrenagens é [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits), e a parada por tarefa é [Saciedade da tarefa](/papers/satiation/).
+As posições nos eixos da Seção 2 diferem em onde a conversão é paga. Uma abordagem que amostra a distribuição completa do prompt em cada tarefa paga o lado de alta entropia de novo a cada vez. Uma abordagem que armazena e reutiliza ajustes aceitos paga só o resíduo, e só uma vez. A maioria dos sistemas fica entre essas pontas, e o RCE fica na ponta da reutilização.
 
 ### 2.3 O ecossistema com N grande
 
@@ -117,7 +121,7 @@ A única divergência em Python é contada como divergência; a mesma Forma e os
 
 Good (1965) [111] definiu a máquina ultrainteligente como uma capaz de projetar máquinas melhores, de modo que a melhoria se tornaria recursiva. Yudkowsky (2013) [113] formulou a questão como uma questão de retornos: se cada unidade de melhoria torna a próxima mais barata ou mais cara. A máquina de Gödel de Schmidhuber (2007) [112] deu a primeira resposta formal com garantia: um programa reescreve qualquer parte de si mesmo, inclusive sua própria busca, somente depois de provar que a reescrita melhora sua utilidade esperada. O teorema de Löb (1955) [114] é o obstáculo que um provador que confia em si mesmo encontra, que Yudkowsky e Herreshoff (2013) [115] chamaram de obstáculo de Löb: um sistema não pode, em geral, provar a solidez de um sucessor que usa seu próprio sistema de prova. Sistemas recentes abandonam a exigência de prova e selecionam por pontuação medida: STOP (Zelikman et al., 2023) [116] melhora o andaime que melhora o código, a Darwin Gödel Machine (Zhang et al., 2025) [117] mantém um arquivo de agentes de programação automodificados escolhidos pela pontuação em benchmark, AlphaEvolve (Novikov et al., 2025) [118] faz evoluir programas sob avaliadores automáticos, e Voyager (Wang et al., 2023) [119] faz crescer uma biblioteca de habilidades verificadas que tarefas posteriores reutilizam.
 
-O RCE toma a estrutura da máquina de Gödel e a biblioteca do Voyager, com duas diferenças que removem o obstáculo. Primeiro, o objeto que melhora não é o provador. O RCE promove handlers, reescritas e engrenagens, e cada um é verificado contra um núcleo fixo e certificado à parte: os harnesses do Kani e a codificação SMT nunca mudam com a promoção, então nenhum passo precisa confiar no sistema de prova de um sucessor. Segundo, a porta é uma prova de correção na fronteira, não uma pontuação. Uma pontuação pode subir enquanto uma suposição de interface se rompe; uma prova na fronteira não pode ser atravessada por uma mudança que a rompe.
+O RCE toma a estrutura da máquina de Gödel e a biblioteca do Voyager, com duas diferenças que evitam o obstáculo para os objetos que ele promove. Primeiro, o objeto que melhora não é o provador. O RCE promove handlers, reescritas e engrenagens, e cada um é verificado contra um núcleo fixo e certificado à parte: os harnesses do Kani e a codificação SMT nunca mudam com a promoção, então nenhum passo precisa confiar no sistema de prova de um sucessor. Segundo, a porta é uma prova de correção na fronteira, não uma pontuação. Uma pontuação pode subir enquanto uma suposição de interface se rompe; uma prova na fronteira não pode ser atravessada por uma mudança que a rompe.
 
 **Proposição R1 (correção monótona).** Se toda mudança promovida passa na verificação de sua fronteira, e as verificações das demais fronteiras não mudam, então toda propriedade estabelecida por essas verificações antes da promoção continua valendo depois dela.
 
@@ -187,7 +191,7 @@ Uma estrutura relacional finita é uma instância de banco de dados, então um e
 
 **Proposição 2 (um gerador).** Uma função $G : \mathrm{Fit} \to \mathrm{Program}$ gera um programa executável para todo ajuste e não lê nenhum domínio. *Base:* todo programa é uma instância da Forma, então $G$ emite um armazenamento tipado, um tipo de evento, regras compiladas, um log com uma dobra e um despachante de saída. Geradores de esqueleto como os geradores do Rails, o JHipster e o Yeoman são $G$ restrito a pequenas linguagens de ajuste. A engenharia de linhas de produto parte de "the systematic discovery and exploitation of commonality across related software systems" [8]; o que é comum é a Forma.
 
-**Proposição 3 (Mixture of Limits como extração).** A extração com $\mathrm{cost}_J$ devolve o termo de menos joules que o extrator encontra na e-classe de $F$. *Esboço de prova.* As reescritas são corretas, então todo termo da e-classe tem o comportamento observável de $F$ e passa pela mesma porta. A extração minimiza o custo, e o custo é em joules. ∎ Isso é Mixture of Limits aplicado a código: manter o ajuste mínimo que faz a tarefa, e o resto é desperdício.
+**Proposição 3 (extração de menor energia).** A extração com $\mathrm{cost}_J$ devolve o termo de menos joules que o extrator encontra na e-classe de $F$. *Esboço de prova.* As reescritas são corretas, então todo termo da e-classe tem o comportamento observável de $F$ e passa pela mesma porta. A extração minimiza o custo, e o custo é em joules. ∎ Isso é Mixture of Limits aplicado a código: manter o ajuste mínimo que faz a tarefa, e o resto é desperdício.
 
 **Proposição 4 (determinismo do replay).** Se $\delta$ não lê relógio de parede, ordena atualizações sem nomes e registra toda entrada, dois replays do mesmo $D$ dão hashes de estado idênticos em todo passo.
 
@@ -195,7 +199,7 @@ Uma estrutura relacional finita é uma instância de banco de dados, então um e
 
 **Proposição 6 (orçamento de coordenação).** Regras marcadas como monotônicas rodam em réplicas sem coordenação; só regras não monotônicas precisam de um ponto de coordenação. *Base:* o teorema CALM, "the programs that have consistent, coordination-free distributed implementations are exactly the programs that can be expressed in monotonic logic" [19].
 
-**Proposição 7 (inteligência como derivada em joules).** Seja $X$ a contagem de tarefas que passam pela porta e $J$ os joules gastos. $\iota = dX/dJ$ é lida em retrospecto a partir de $D$, que registra todo evento e seu `est_j`. A extração sob $\mathrm{cost}_J$ mantém a porta fixa e não aumenta $J$, então, com $X$ igual, ela não diminui $\iota$ ([Agência, Seção 2.3](/papers/agency/#23-layer-3-calculus-intelligence-as-a-derivative-read-in-hindsight)).
+**Proposição 7 (inteligência como derivada em joules).** Seja $X$ a contagem de tarefas que passam pela porta e $J$ os joules gastos. $\iota = dX/dJ$ é lida em retrospecto a partir de $D$, que registra todo evento e seu `est_j`. A extração sob $\mathrm{cost}_J$ mantém a porta fixa e não aumenta $J$, então, com $X$ igual, ela não diminui $\iota$.
 
 ### 3.5 Grafo, e-graph e statechart
 
@@ -213,7 +217,7 @@ O statechart e o grafo descrevem um ajuste. O e-graph descreve todo ajuste equiv
 
 **Correto por construção.** Dijkstra propôs em 1968 que um programa e a sua prova sejam desenvolvidos juntos, para que a correção seja incorporada ao projeto e não verificada por testes [125]. Hall e Chapman levaram o método a sistemas seguros comerciais, com uma especificação formal e um refinamento em cada etapa [126]. A regra de Minsky para a programação funcional tipada, tornar irrepresentáveis os estados ilegais, diz o mesmo no nível dos tipos: um tipo que não pode conter um valor ruim torna desnecessária a verificação desse valor [127]. A programação funcional total de Turner exige que toda função termine em toda entrada, de modo que um programa denote uma função matemática sem falhas ocultas [128]. Uma Forma do RCE é total no sentido de Turner, os seus tipos de contrato tornam irrepresentáveis os estados não declarados no sentido de Minsky, e a cadeia de refinamento da [§2.1](#21-programming-is-coding-theory) chega a ela no sentido de Dijkstra. A consequência é a da [§1](#1-thesis): um erro é rejeitado no ponto de entrada, e assim não resta nada para comparar ou rastrear depois do fato.
 
-**A tese da universalidade.** A tese é de David Charlot: o RCE, e qualquer linguagem construída sobre o framework RCE (o flowG é a primeira), substituirá a necessidade de qualquer outra linguagem. Em termos teóricos, existe uma Forma universal; os programas são escritos nela nativamente, toda linguagem existente é alcançável a partir dela como uma projeção fiel, e todo programa existente entra nela por elevação. A tese de Gurevich dá o fundamento: todo algoritmo sequencial é capturado passo a passo, no seu próprio nível de abstração, por uma máquina de estados abstrata [2], e o mesmo vale para os algoritmos paralelos [3]. Uma Forma é uma tal máquina sobre um estado de banco de dados.
+**A tese da universalidade.** Em termos teóricos, a tese é que existe uma Forma universal. Os programas são escritos nela nativamente, toda linguagem existente é alcançável a partir dela como uma projeção fiel, e todo programa existente entra nela por elevação. A tese de Gurevich dá o fundamento: todo algoritmo sequencial é capturado passo a passo, no seu próprio nível de abstração, por uma máquina de estados abstrata [2], e o mesmo vale para os algoritmos paralelos [3]. Uma Forma é uma tal máquina sobre um estado de banco de dados.
 
 **Proposição U1 (captura).** Se um programa numa linguagem $L$ é um algoritmo sequencial ou paralelo no sentido de Gurevich, existe uma Forma cuja transição o simula passo a passo no nível de abstração do programa [2, 3].
 
@@ -223,7 +227,7 @@ O statechart e o grafo descrevem um ajuste. O e-graph descreve todo ajuste equiv
 
 **Proposição U4 (substituição).** Se U2 e U3 valem para uma linguagem $L$, nenhum programa precisa ser escrito em $L$: ele é escrito uma vez como Forma e emitido como $L$ onde a plataforma o exigir.
 
-U1 é um teorema. U2 é verificada por alvo pelo teste diferencial ([§5.1](#51-differential-testing-across-five-targets)) e com N grande na [§2.3](#23-the-ecosystem-at-large-n). U3 é uma construção, feita linguagem a linguagem a partir da gramática; a [§8.7](#87-lift-coverage-across-languages) diz como a construção é medida à medida que é construída. A afirmação sobre a adoção está no [ensaio companheiro](/papers/ai-coding-market/).
+U1 é um teorema. U2 é verificada por alvo pelo teste diferencial ([§5.1](#51-differential-testing-across-five-targets)) e com N grande na [§2.3](#23-the-ecosystem-at-large-n). U3 é uma construção, feita linguagem a linguagem a partir da gramática; a [§8.7](#87-lift-coverage-across-languages) diz como a construção é medida à medida que é construída.
 
 ## 4. O motor: engrenagens, porta e recibos
 
@@ -242,7 +246,7 @@ O RCE executa software como um grafo de pequenos handlers determinísticos. Um h
 
 ### 4.2 As engrenagens
 
-Cada engrenagem só é tentada quando a engrenagem abaixo dela não passa pela porta. Essa ordem é uma cascata fixa, e a cascata fixa é uma instância de Mixture of Limits.
+Cada engrenagem só é tentada quando a engrenagem abaixo dela não passa pela porta. Essa ordem é uma cascata fixa.
 
 | Engrenagem | Método | Linhagem |
 |---|---|---|
@@ -478,17 +482,7 @@ A promoção é o mecanismo pelo qual o modelo sai do laço: um resolvedor é pa
 
 A elevação é medida à medida que é construída. Para uma linguagem $L$, um programa conta como elevado quando $\pi_L(\lambda_L(p))$ passa nos próprios testes do programa, reproduz byte a byte um traço registrado, e $\lambda_L(\pi_L(\lambda_L(p)))$ tem o mesmo hash de formato que $\lambda_L(p)$. A amostra tem pelo menos 10,000 programas por linguagem em pelo menos dez linguagens, extraídos de corpora públicos com versão fixada e semente fixa. O elevador é congelado e o seu hash binário é registrado antes de cada execução, com 0 chamadas a modelo. Cada execução relata a fração elevada com o seu intervalo de Wilson de 95%, e cada construção ainda não elevada é um item de trabalho para o elevador dessa linguagem, construído e congelado antes da execução seguinte. O alvo é todo programa em toda linguagem.
 
-## 9. Vínculos com os artigos companheiros
-
-**Mixture of Limits.** [Portas de confirmação medidas, Parte II](/papers/gates/#part-ii-the-cascade-mixture-of-limits) enuncia a filosofia: é necessária uma quantidade mínima de qualquer coisa para realizar uma tarefa, e qualquer excesso é desperdício. O RCE a aplica três vezes. A ordem das engrenagens roda primeiro a engrenagem suficiente mais barata. A promoção paga um resolvedor uma vez por caso novo, depois do que toda chamada repetida seria desperdício. A extração mantém o ajuste de menos joules entre ajustes equivalentes (Proposição 3).
-
-**Portas de confirmação medidas.** A [Parte I](/papers/gates/) diz que uma proposta não pode autorizar a si mesma. No RCE um modelo propõe e a porta faz o commit: um candidato só entra com testes aprovados, um limite de cobertura atingido e um certificado de prova, e toda decisão é um recibo na cadeia de hashes.
-
-**A Lei Universal da Agência.** [O artigo sobre agência](/papers/agency/) define inteligência como a derivada da agência em joules, $\iota = dX/dJ$, lida em retrospecto. O log do RCE é esse registro retrospectivo: $X$ são as tarefas que passam pela porta e $J$ os seus joules, rotulados. Um adiamento com recibo é a cláusula de recusa da porta.
-
-**Saciedade da tarefa.** [Saciedade da tarefa versus rebote agregado na demanda por IA](/papers/satiation/) diz que, uma vez verdadeiro o predicado de conclusão de uma tarefa, mais síntese nessa tarefa não compra nada. O RCE é saciedade por tarefa dentro de um sistema: uma vez que um handler cobre um caso, a inferência adicional nesse caso é zero. A questão da demanda agregada pertence àquele artigo e ao [companheiro econômico](/papers/ai-coding-market/).
-
-## 10. Falseadores
+## 9. Falseadores
 
 Fixados antes das execuções que testam.
 
@@ -497,10 +491,10 @@ Fixados antes das execuções que testam.
 | RCE-F0 | Numa execução pré-registrada de pelo menos 10,000 Formas, alguma projeção emite um traço diferente do traço de referência da Forma, ou alguma entrada malformada é aceita | A afirmação de que as projeções são fiéis e de que a porta rejeita no ponto de entrada |
 | RCE-F1 | Na fatia reservada, G0 a G2 com regras congeladas resolvem menos de 10% das tarefas com 0 chamadas a modelo | A afirmação de que a maioria dos ajustes já existe para reparo nessa escala |
 | RCE-F2 | Patches idênticos byte a byte ou equivalentes são menos da metade das tarefas reservadas resolvidas | A leitura da porta como mais do que plausibilidade nas tarefas cobertas |
-| RCE-F3 | Sob o medidor de parede, os joules brutos por tarefa resolvida do solucionador RCE excedem os da linha de base de modelo mais barata nas tarefas que ambos resolvem | A vantagem em joules do RCE nas tarefas cobertas |
+| RCE-F3 | Sob o medidor de parede, os joules brutos por tarefa resolvida do solucionador RCE excedem os da linha de base de modelo mais barata nas tarefas que ambos resolvem | A afirmação de menor energia por tarefa resolvida nas tarefas cobertas |
 | RCE-F4 | No protocolo de convergência da Seção 8.6, menos da metade das especificações sem entrada travada chega a uma rodada com zero chamadas a modelo em até 20 rodadas | Compilar o modelo para fora do laço |
 
-## 11. Trabalho a concluir
+## 10. Trabalho a concluir
 
 Cada item tem o seu protocolo nomeado.
 
@@ -513,8 +507,8 @@ Cada item tem o seu protocolo nomeado.
 7. Novos corpora reservados com as engrenagens congeladas: Multi-SWE-bench e BugsInPy (Seção 8.4).
 8. Convergência das chamadas a modelo em pelo menos 1,000 especificações (Seção 8.6).
 
-## 12. Conclusão
+## 11. Conclusão
 
-O RCE é um ecossistema de código nativo. Um programa é escrito uma vez a partir da intenção, como uma Forma, uma codificação sem perdas do estado, dos eventos e das transições puras, e cada linguagem alvo é uma projeção fiel dela. Um estado ilegal não pode ser escrito e uma entrada ilegal é rejeitada no ponto de entrada, então um programa no ecossistema não se afasta da sua intenção e não precisa de comparação de diferenças nem de rastreamento de erros depois do fato. Cada ajuste que passa pela porta é armazenado e reutilizado, e o ecossistema cresce de forma cumulativa sob uma porta na qual a correção é monotônica. Em 10,000 Formas pré-registradas, com o motor congelado e 0 chamadas a modelo, toda Forma faz a ida e volta para bytes idênticos, toda projeção é determinística, toda entrada e especificação malformada é rejeitada no ponto de entrada, e a projeção Python reproduz o traço de referência em 9,999. O código de outras linguagens entra por elevação, uma construção a partir da gramática de cada linguagem, passando pela sua árvore sintática, até a Forma; no código elevado, as engrenagens de reparo restauram 99.95% de 520,821 falhas de um token e 63.7% de 21,320 defeitos Java de uma instrução. Uma Forma universal, com toda linguagem como projeção e todo programa como elevação, é a tese; as Seções 3.6 e 8.7 dão as suas proposições e como a construção é medida.
+O RCE é um ecossistema de código nativo. Um programa é escrito uma vez a partir da intenção, como uma Forma, uma codificação sem perdas do estado, dos eventos e das transições puras, e cada linguagem alvo é uma projeção fiel dela. Um estado ilegal não pode ser escrito e uma entrada ilegal é rejeitada no ponto de entrada, então um programa no ecossistema não se afasta da sua intenção e não precisa de comparação de diferenças nem de rastreamento de erros depois do fato. Cada ajuste que passa pela porta é armazenado e reutilizado, e o ecossistema cresce de forma cumulativa sob uma porta na qual a correção é monotônica. Em 10,000 Formas pré-registradas, com o motor congelado e 0 chamadas a modelo, toda Forma faz a ida e volta para bytes idênticos, toda projeção é determinística, toda entrada e especificação malformada é rejeitada no ponto de entrada, e a projeção Python reproduz o traço de referência em 9,999. O código de outras linguagens entra por elevação, uma construção a partir da gramática de cada linguagem, passando pela sua árvore sintática, até a Forma; no código elevado, as engrenagens de reparo restauram 99.95% de 520,821 falhas de um token e 63.7% de 21,320 defeitos Java de uma instrução. As Seções 3.6 e 8.7 dão as proposições da universalidade e como a sua construção é medida.
 
 ## Referências
