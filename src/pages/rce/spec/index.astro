@@ -1,0 +1,29 @@
+---
+import Shell from '../../../components/RceSpecShell.astro';
+import data from '../../../../spec-src/rce/spec.json';
+const ov = data.chapters[0];
+const total = data.examples.reduce((a: number, g: any) => a + g.items.length, 0);
+---
+<Shell title="RCE language specification" description="The RCE language specification as an interactive notebook: plain-language introductions, formal grammar and typing rules, and runnable example programs checked in the browser." current="">
+  <h1>RCE language specification</h1>
+  <div class="rs-bar">
+    <button type="button" class="tts-btn" data-target="rs-ov" aria-pressed="false"><span aria-hidden="true">▶ </span><span class="tts-l">Listen to the overview</span></button>
+    <span class="tts-status" role="status"></span>
+  </div>
+  <div id="rs-ov" class="tts-text rs-intro" set:html={ov.sections[0].html} />
+  <h2>Chapters</h2>
+  <p class="rs-prose">Read them in order. Each chapter opens in plain words, then gives the exact rules. Formal grammar and typing rules sit in cells you can open and close. Every code cell can be edited and run.</p>
+  <ol class="rs-cards">
+    {data.chapters.map((c: any) => (
+      <li>
+        <a href={`/rce/spec/${c.slug}/`}><span class="rs-num">{c.num}</span>{c.title}</a>
+        <p>{c.question}</p>
+      </li>
+    ))}
+  </ol>
+  <h2>Programs and the reading record</h2>
+  <ul class="rs-prose">
+    <li><a href="/rce/spec/examples/">All {total} example programs</a>: the accepted ones, and every syntax reject, ill-typed and inadmissible program with its expected refusal.</li>
+    <li><a href="/rce/spec/read-protocol/">Read protocol</a>: how a reader, human or AI agent, shows it read each chapter, using the chapter fingerprints and read-receipt questions.</li>
+  </ul>
+</Shell>

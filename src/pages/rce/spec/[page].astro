@@ -1,0 +1,97 @@
+---
+import Shell from '../../../components/RceSpecShell.astro';
+import data from '../../../../spec-src/rce/spec.json';
+
+export function getStaticPaths() {
+  const chs = data.chapters.map((c: any, i: number) => ({ params: { page: c.slug }, props: { kind: 'chapter', i } }));
+  return [...chs, { params: { page: 'examples' }, props: { kind: 'examples', i: -1 } }, { params: { page: 'read-protocol' }, props: { kind: 'protocol', i: -1 } }];
+}
+const { kind, i } = Astro.props as { kind: string; i: number };
+const ch: any = kind === 'chapter' ? data.chapters[i] : kind === 'protocol' ? data.protocol : null;
+const prev = kind === 'chapter' && i > 0 ? data.chapters[i - 1] : null;
+const next = kind === 'chapter' && i + 1 < data.chapters.length ? data.chapters[i + 1] : null;
+const isRules = ch && ch.slug === 'wellformedness';
+const allItems = data.examples.flatMap((g: any) => g.items);
+const ruleGroups = isRules
+  ? Object.entries(data.byRule as Record<string, string[]>).sort(([a], [b]) => a.localeCompare(b)).map(([r, ps]) => ({ rule: r, items: ps.map((p) => allItems.find((x: any) => x.path === p)) }))
+  : [];
+const title = kind === 'examples' ? 'RCE example programs' : ch.title.replace(/^\d+(\s*\(continued\))?\.\s*/, '');
+const sections = kind === 'examples'
+  ? data.examples.map((g: any) => ({ id: g.id, title: g.title }))
+  : [...ch.sections.map((s: any) => ({ id: s.id, title: s.title })), ...(isRules ? [{ id: 'refused-examples', title: 'Refused examples by rule' }] : [])];
+const desc = kind === 'examples'
+  ? 'Every example program of the RCE spec, editable and checked in the browser by the reference checker, with the expected result of each.'
+  : `RCE language specification: ${title}. Plain-language introduction, formal rules and runnable examples.`;
+---
+<Shell title={`RCE spec: ${title}`} description={desc} current={kind === 'examples' ? 'examples' : kind === 'protocol' ? 'read-protocol' : ch.slug}>
+  {kind === 'examples' ? (
+    <>
+      <h1>Example programs</h1>
+      <p class="rs-prose">These are the programs in <code>spec/examples/</code>. Each cell shows the result the reference checker gives for it. Edit any program and press Run, or Ctrl+Enter, to check your version. In a code cell, Tab inserts four spaces; press Escape and then Tab to leave the cell.</p>
+      {data.examples.map((g: any) => (
+        <section class="rs-sec" id={g.id} aria-labelledby={g.id + '-h'}>
+          <h2 id={g.id + '-h'}>{g.title} ({g.items.length})</h2>
+          <p class="rs-prose">{g.note}</p>
+          {g.items.map((x: any) => <Fragment set:html={x.html} />)}
+        </section>
+      ))}
+    </>
+  ) : (
+    <>
+      <h1>{ch.title}</h1>
+      <div class="rs-bar">
+        <button type="button" class="tts-btn" data-target="rs-page" aria-pressed="false"><span aria-hidden="true">▶ </span><span class="tts-l">Listen to this page</span></button>
+        <button type="button" class="rs-btn" id="nb-expand" aria-pressed="false">Expand formal cells</button>
+        <span class="tts-status" role="status" id="tts-status"></span>
+      </div>
+      <div id="rs-page">
+        {ch.sections.map((s: any, k: number) => s.title ? (
+          <section class="rs-sec" id={s.id} aria-labelledby={s.id + '-h'}>
+            <div class="rs-sec-head">
+              <h2 id={s.id + '-h'}>{s.title}</h2>
+              <button type="button" class="tts-btn" data-target={s.id + '-b'} aria-pressed="false" aria-label={`Listen to section ${s.title}`}><span aria-hidden="true">▶ </span><span class="tts-l">Listen</span></button>
+              <span class="tts-status" role="status"></span>
+            </div>
+            <div id={s.id + '-b'} class="tts-text" set:html={s.html} />
+          </section>
+        ) : (
+          <section id="intro" aria-label="Introduction">
+            <div class="tts-text rs-intro" set:html={s.html} />
+          </section>
+        ))}
+        {isRules && (
+          <section class="rs-sec" id="refused-examples" aria-labelledby="refused-examples-h">
+            <h2 id="refused-examples-h">Refused examples by rule</h2>
+            <p class="rs-prose">Each program below breaks the rule named above it. Run it to see the refusal, or edit it until it is accepted.</p>
+            {ruleGroups.map((g) => (
+              <>
+                <h3 id={'rule-' + g.rule}><code>{g.rule}</code> ({g.items.length})</h3>
+                {g.items.map((x: any) => <Fragment set:html={x.html} />)}
+              </>
+            ))}
+          </section>
+        )}
+      </div>
+      {ch.question && (
+        <aside class="nb-receipt" aria-label="Read receipt">
+          <p><strong>Read receipt.</strong> {ch.question}</p>
+          <p>Chapter fingerprint (SHA-256 of the chapter body in <code>spec/book/{ch.file}</code>): <code>{ch.hash}</code></p>
+          <p>To record that you read this chapter, follow the <a href="/rce/spec/read-protocol/">read protocol</a>.</p>
+        </aside>
+      )}
+      {kind === 'protocol' && (
+        <aside class="nb-receipt" aria-label="Fingerprint">
+          <p>Fingerprint of <code>spec/book/READ-PROTOCOL.md</code>: <code>{ch.hash}</code></p>
+          <table>
+            <thead><tr><th scope="col">Chapter</th><th scope="col">Fingerprint (SHA-256)</th><th scope="col">Read-receipt question</th></tr></thead>
+            <tbody>{data.chapters.map((c: any) => <tr><td><a href={`/rce/spec/${c.slug}/`}>{c.file}</a></td><td><code>{c.hash}</code></td><td>{c.question}</td></tr>)}</tbody>
+          </table>
+        </aside>
+      )}
+      <nav class="rs-pager" aria-label="Chapter navigation">
+        {prev ? <a href={`/rce/spec/${prev.slug}/`}>Previous: {prev.title}</a> : <span />}
+        {next ? <a href={`/rce/spec/${next.slug}/`}>Next: {next.title}</a> : <a href="/rce/spec/examples/">Next: all example programs</a>}
+      </nav>
+    </>
+  )}
+</Shell>
