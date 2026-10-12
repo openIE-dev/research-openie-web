@@ -5,7 +5,60 @@ const KW = new Set(JSON.parse(document.getElementById('rce-keywords')?.textConte
 const TYPES = new Set(['bool','i8','i16','i32','i64','u8','u16','u32','u64','usize','f64','f32','text','List','Map','Set','Box']);
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+// Highlighting: the RCE tree-sitter grammar compiled to WebAssembly (web-tree-sitter).
+// Until it has loaded, or if it cannot load, a keyword tokenizer is used.
+let tsParser = null;
+const tsReady = (async () => {
+  try {
+    const { Parser, Language } = await import(BASE + 'ts/web-tree-sitter.js');
+    await Parser.init({ locateFile: () => BASE + 'ts/web-tree-sitter.wasm' });
+    const lang = await Language.load(BASE + 'ts/tree-sitter-rce.wasm');
+    const p = new Parser();
+    p.setLanguage(lang);
+    tsParser = p;
+    return true;
+  } catch (e) {
+    console.warn('tree-sitter highlighter unavailable, using the keyword tokenizer', e);
+    return false;
+  }
+})();
+function gapHtml(t) {
+  return t.split(/(#[^\n]*)/).map((x, i) => (i % 2 ? `<span class="t-com">${esc(x)}</span>` : esc(x))).join('');
+}
+function tsHighlight(src) {
+  // The tree-sitter port's scanner needs a final newline (the spec's layout pass adds one at end of file, 2.6).
+  const tree = tsParser.parse(src.endsWith('\n') ? src : src + '\n');
+  const leaves = [];
+  const walk = (n, inErr) => {
+    const err = inErr || n.type === 'ERROR' || n.isMissing;
+    if (n.childCount === 0) { leaves.push([n, err]); return; }
+    for (let i = 0; i < n.childCount; i++) walk(n.child(i), err);
+  };
+  walk(tree.rootNode, false);
+  let out = '', pos = 0;
+  for (const [n, err] of leaves) {
+    if (n.startIndex < pos || n.endIndex <= n.startIndex) continue;
+    out += gapHtml(src.slice(pos, n.startIndex));
+    const text = src.slice(n.startIndex, n.endIndex);
+    const par = n.parent?.type || '', gp = n.parent?.parent?.type || '';
+    let cls = '';
+    if (n.type === 'STRING') cls = 't-str';
+    else if (n.type === 'INT' || n.type === 'FLOAT') cls = 't-num';
+    else if (n.type === 'NAME') cls = par === 'path' && /type/.test(gp) ? 't-ty' : TYPES.has(text) ? 't-ty' : /^[A-Z]/.test(text) ? 't-name' : '';
+    else if (/^[a-z_]+$/.test(n.type) || /^[A-Z]+$/.test(n.type) && n.type !== 'NAME') cls = /^[a-z]/.test(text) ? 't-kw' : '';
+    if (err) cls += ' t-err';
+    out += cls.trim() ? `<span class="${cls.trim()}">${esc(text)}</span>` : esc(text);
+    pos = n.endIndex;
+  }
+  out += gapHtml(src.slice(pos));
+  tree.delete();
+  return out;
+}
 function highlight(src) {
+  if (tsParser) { try { return tsHighlight(src); } catch (e) { /* fall through */ } }
+  return kwHighlight(src);
+}
+function kwHighlight(src) {
   const re = /(#[^\n]*)|("(?:\\.|[^"\\\n])*"?)|(\b0x[0-9a-fA-F_]+\b|\b0b[01_]+\b|\b\d[\d_]*(?:\.\d+)?(?:e[+-]?\d+)?\b)|([A-Za-z_][A-Za-z0-9_]*)|([^A-Za-z_0-9#"]+)/g;
   let out = '', m;
   while ((m = re.exec(src))) {
@@ -54,7 +107,10 @@ function renderResult(cell, r) {
       }
       h += '</tbody></table>';
     }
-    h += `<details class="nb-json"><summary>State JSON</summary><pre>${esc(JSON.stringify(r.examples, null, 2))}</pre></details></div>`;
+    h += '</div>';
+  }
+  if (r.form) {
+    h += `<details class="nb-json nb-form"><summary>Form JSON: P = (S, E, δ, D, λ) of this program (spec 6.1)</summary><pre>${esc(JSON.stringify(r.form, null, 2))}</pre></details>`;
   }
   cell.querySelector('.nb-out').innerHTML = h;
 }
@@ -98,6 +154,14 @@ for (const cell of document.querySelectorAll('.nb-code')) {
   cell.querySelector('.nb-reset').addEventListener('click', () => { ta.value = ta.defaultValue; sync(); cell.querySelector('.nb-out').innerHTML = ''; });
 }
 
+tsReady.then((ok) => {
+  if (!ok) return;
+  for (const cell of document.querySelectorAll('.nb-code')) {
+    cell.querySelector('.nb-hl code').innerHTML = highlight(cell.querySelector('textarea').value) + '\n';
+    cell.dataset.hl = 'tree-sitter';
+  }
+});
+
 document.getElementById('nb-expand')?.addEventListener('click', (e) => {
   const open = e.currentTarget.getAttribute('aria-pressed') !== 'true';
   e.currentTarget.setAttribute('aria-pressed', String(open));
@@ -114,12 +178,16 @@ function ttsCall(text) {
     worker.onmessage = (e) => { const p = pending.get(e.data.id); pending.delete(e.data.id); if (!p) return; e.data.error ? p.rej(new Error(e.data.error)) : p.res(e.data); };
   }
   const id = ++reqN;
-  return new Promise((res, rej) => { pending.set(id, { res, rej }); worker.postMessage({ id, base: location.origin + BASE, text }); });
+  return new Promise((res, rej) => { pending.set(id, { res, rej }); worker.postMessage({ id, base: location.origin + BASE, text, force: new URLSearchParams(location.search).get('tts') || undefined }); });
 }
-let ready = false;
+let ready = false, ttsInfo = null;
 async function tts(status) {
-  if (!ready) { status('Loading the Kokoro-82M voice model (about 90 MB, first time only)...'); await ttsCall(null); ready = true; }
-  return { generate: (t) => ttsCall(t).then((r) => ({ audio: r.audio, sampling_rate: r.rate })) };
+  if (!ready) {
+    status('Loading the Kokoro-82M voice model (first time only: about 330 MB with WebGPU, 90 MB without)...');
+    const r = await ttsCall(null);
+    ttsInfo = r.info; ready = true;
+  }
+  return { info: ttsInfo, generate: (t) => ttsCall(t).then((r) => ({ audio: r.audio, sampling_rate: r.rate, ms: r.ms })) };
 }
 
 function speakable(root) {
@@ -166,7 +234,7 @@ async function speak(btn) {
     for (let i = 0; i < chunks.length && !stopped; i++) {
       status(i === 0 ? 'Generating speech...' : `Reading ${i + 1} of ${chunks.length}`);
       const audio = await next;
-      status(`Reading ${i + 1} of ${chunks.length}`);
+      status(`Reading ${i + 1} of ${chunks.length} (${model.info.device === 'webgpu' ? 'WebGPU' : 'WebAssembly' + (model.info.threads > 1 ? ', ' + model.info.threads + ' threads' : '')})`);
       if (i + 1 < chunks.length) next = model.generate(chunks[i + 1]);
       if (stopped) break;
       const buf = ctx.createBuffer(1, audio.audio.length, audio.sampling_rate);

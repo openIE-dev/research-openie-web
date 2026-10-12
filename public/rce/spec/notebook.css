@@ -85,3 +85,4 @@ html[data-theme="light"] .nb-badge.bad, html[data-theme="light"] .nb-match.bad {
 .rs-cards p { font-size: 0.86rem; margin: 0.3rem 0 0; color: var(--color-brand-slate); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.t-err { text-decoration: underline wavy #e5484d; text-underline-offset: 3px; }

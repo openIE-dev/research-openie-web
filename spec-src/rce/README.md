@@ -20,3 +20,14 @@ set to this site. Speech is generated in `public/rce/spec/tts-worker.js`, off
 the main thread. The model, voice and ONNX Runtime files
 are not in git; `scripts/fetch-kokoro.sh` downloads them into
 `public/rce/spec/tts/`.
+
+Read-aloud backends: WebGPU with the fp32 model when the browser has a WebGPU
+adapter, otherwise WebAssembly with the q8 model, using threads when the page
+is cross-origin isolated. Caddy sends `Cross-Origin-Opener-Policy: same-origin`
+and `Cross-Origin-Embedder-Policy: credentialless` on `/rce/spec*` only. Add
+`?tts=wasm` or `?tts=fp16` to a page URL to force a backend or weight file.
+
+Highlighting: `public/rce/spec/ts/tree-sitter-rce.wasm` is the RCE tree-sitter
+grammar (`crates/rce/spec/tree-sitter/`) built with `tree-sitter build --wasm`
+(CLI 0.27.1), loaded with web-tree-sitter 0.27.1. Code cells also show the
+program's Form JSON (spec 6.1), produced by the checker.
