@@ -1,6 +1,6 @@
 ---
 title: "Le Reality Code Engine : une Forme sans perte pour une programmation native, vérifiée et sobre en énergie"
-deck: "RCE est un écosystème de code natif. Un programme est écrit une fois, à partir de l'intention, comme une Forme : un état, un ensemble d'événements et une transition pure et totale. La Forme est un codage sans perte de cette intention, chaque cible (statechart, Rust, Python, XState, SCXML, WASM) en est une projection fidèle, et un état que la Forme ne déclare pas ne peut pas être écrit, si bien qu'un programme faux est refusé dès l'entrée et qu'il ne reste rien à comparer ni à suivre ensuite. Les ajustements sont réutilisés, et chaque ajustement qui franchit la porte capitalise l'écosystème. Sur 10 000 Formes préenregistrées, moteur figé et 0 appel de modèle, chaque Forme fait l'aller-retour vers des octets identiques, chaque projection est déterministe, chaque entrée et chaque spécification malformée est refusée dès l'entrée, et la projection Python rejoue la trace de référence octet pour octet sur 9 999. Le code d'autres langages entre par élévation, une construction qui va de la grammaire de chaque langage à son arbre syntaxique puis à la Forme."
+deck: "Un système de programmation dans lequel un programme est écrit une fois comme une machine à états et chaque langage cible en est généré, avec des mesures des allers-retours, du refus des entrées malformées et de la réparation du code élevé."
 lang: "fr"
 source: "rce"
 complete: true

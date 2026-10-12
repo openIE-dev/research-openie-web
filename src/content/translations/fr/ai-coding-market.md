@@ -1,6 +1,6 @@
 ---
 title: "Le marché promis à mille milliards de dollars de la programmation par IA"
-deck: "Qui projette le marché de la programmation par IA, ce qu'il projette, et ce que suppose chaque projection : que l'automatisation informatique autonome n'avance que dans une seule direction, vers une forte énergie, un fort calcul, une rente par token et le modèle dans la boucle pour toujours. La programmation autonome est un espace de conception doté de plusieurs axes continus, et le Reality Code Engine (RCE) en mesure un point qui les optimise : un écosystème de code natif dans lequel un programme est écrit une seule fois, à partir de l'intention, comme une Forme sans perte, et chaque langage cible en est une projection fidèle. Sur 10 000 Formes préenregistrées avec 0 appel de modèle, chaque Forme fait l'aller-retour à des octets identiques et chaque entrée mal formée est refusée dès l'entrée. Chaque ajustement qui franchit la porte est réutilisé, si bien que le coût marginal d'une tâche couverte tombe vers l'énergie nécessaire pour l'exécuter, et les projections perdent leur base."
+deck: "Qui projette un marché de mille milliards de dollars pour la programmation par IA, ce que compte chaque projection, et ce que chacune suppose sur l'énergie, les jetons et la réutilisation."
 lang: "fr"
 source: "ai-coding-market"
 complete: true

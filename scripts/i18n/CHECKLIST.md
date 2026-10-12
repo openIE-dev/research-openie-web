@@ -6,11 +6,11 @@ States: abstract = title and abstract only (complete: false); full = whole text 
 
 | paper | zh-Hans | es | fr | de | ja | pt | hi | ar |
 |---|---|---|---|---|---|---|---|---|
-| rce | full | full | full | full | full | full | full | full |
-| agency | abstract | full | full | full | abstract | abstract | abstract | abstract |
-| ai-coding-market | full | full | full | full | full | full | full | full |
+| rce | stale | stale | stale | stale | stale | stale | stale | stale |
+| agency | abstract | stale | stale | stale | abstract | abstract | abstract | abstract |
+| ai-coding-market | stale | stale | stale | stale | stale | stale | stale | stale |
 | interface-economics | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | gates | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| satiation | full | full | full | full | full | full | full | full |
+| satiation | stale | stale | stale | stale | stale | stale | stale | stale |
 | three-body | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | spellcheck | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |

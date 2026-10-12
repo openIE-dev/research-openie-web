@@ -1,6 +1,6 @@
 ---
 title: "Thermodynamische Schranken und ein optimales Tempo für zielhaltende Agenten"
-deck: "Erst Handlungsfähigkeit, dann Kinematik. Das vorgeschlagene Universelle Gesetz der Handlungsfähigkeit ist eine Definition plus ein Tor, und es muss erfüllt sein, bevor etwas als Agent zählt. Die kinematischen Schranken sagen, wie schnell sich Handlungsfähigkeit pro Sekunde und pro Joule bewegt. Intelligenz ist der Kalkül der Handlungsfähigkeit: eine Ableitung, in der Rückschau an einem abgeschlossenen Lauf abgelesen, ι = dX/dJ. Die Energie zum Ausführen ist die einzige wahre Metrik der Computerintelligenz. Schätzungen sind nie measured_j."
+deck: "Eine Definition eines Agenten mit Energiebudget, die physikalischen Schranken, wie schnell ein solcher Agent pro Sekunde und pro Joule handeln kann, und eine Lesart von Intelligenz als Fortschritt pro Joule auf einem abgeschlossenen Lauf."
 lang: "de"
 source: "agency"
 complete: true

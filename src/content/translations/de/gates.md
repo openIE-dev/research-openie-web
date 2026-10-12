@@ -1,6 +1,6 @@
 ---
 title: "Gemessene Commit-Tore: Energie bis zur korrekten Fertigstellung für agentische Systeme"
-deck: "Ein Vorschlag darf sich nicht selbst autorisieren. Eine irreversible Handlung läuft nur hinter einem Zertifikat, der billigste ausreichende Gang läuft zuerst, und jede Entscheidung wird mit ihren Joule auf einen Beleg geschrieben. Systeme werden nach den Joule gereiht, die sie bis zu einer korrekten Fertigstellung brauchen."
+deck: "Ein Tor, das einen Agenten erst handeln lässt, nachdem eine Prüfung bestanden ist, eine Kaskade, die die billigste Methode zuerst versucht, und die Energiemessungen beider, jeweils danach gekennzeichnet, wie sie gewonnen wurden."
 lang: "de"
 source: "gates"
 complete: false

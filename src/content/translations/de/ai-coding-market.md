@@ -1,6 +1,6 @@
 ---
 title: "Der versprochene Billionen-Dollar-Markt für KI-Programmierung"
-deck: "Wer den Markt für KI-Programmierung prognostiziert, was prognostiziert wird und was jede Prognose annimmt: dass sich autonome Computerautomatisierung nur in eine Richtung bewegt, hin zu hoher Energie, hoher Rechenleistung, Miete pro Token und dem Modell für immer in der Schleife. Autonomes Programmieren ist ein Entwurfsraum mit mehreren stetigen Achsen, und die Reality Code Engine (RCE) misst einen Punkt darin, der sie optimiert: ein natives Code-Ökosystem, in dem ein Programm einmal, aus der Absicht, als verlustfreie Form geschrieben wird und jede Zielsprache eine getreue Projektion davon ist. Auf 10.000 vorregistrierten Formen mit 0 Modellaufrufen übersteht jede Form die Rundreise zu identischen Bytes, und jede fehlerhafte Eingabe wird am Eingang abgewiesen. Jede Passung, die das Tor passiert, wird wiederverwendet, sodass die Grenzkosten einer abgedeckten Aufgabe gegen die Energie fallen, sie auszuführen, und die Prognosen ihre Grundlage verlieren."
+deck: "Wer einen Billionen-Dollar-Markt für KI-Programmierung prognostiziert, was jede Prognose zählt und was jede über Energie, Tokens und Wiederverwendung annimmt."
 lang: "de"
 source: "ai-coding-market"
 complete: true
