@@ -3,8 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout
-  title="The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming"
-  description="About: The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming. Research paper in the OpenIE research catalog."
+  title={"The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming"}
+  description={"About: The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming. This paper describes the Reality Code Engine (RCE), a system in which a program is written once as a state machine, called a Form, and code in other languages is generated from it."}
 >
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
     <p class="section-label mb-4">Research paper · about</p>
@@ -12,32 +12,23 @@ import Layout from '../../layouts/Layout.astro';
       The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming
     </h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
-      The engineering and theory paper for the Reality Code Engine (RCE). Autonomous coding is a design space. Approaches sit along continuous axes: energy per task, entropy and determinism, verification strength, reuse and compounding, and model reliance. Generating every change with a model sits near one corner. RCE is one point chosen to optimize all five axes: people have already coded most of what will ever be coded, so the work is to retrieve a fit that exists, adapt it and prove it.
+      This paper describes the Reality Code Engine (RCE), a system in which a program is written once as a state machine, called a Form, and code in other languages is generated from it. It reports what was measured on 10,000 Forms and on public bug datasets, and states how the claims could be shown false.
     </p>
-    <p class="mt-4 font-body text-base text-brand-slate leading-relaxed">
-      A program is a database functional state machine: one Form, P = (S, E, δ, D, λ), and many fits. Gurevich's Abstract State Machine theorem grounds the Form. Human intent is high entropy, the machine floor is low entropy, and code converges by design. The engine runs its gears cheapest first, as one Mixture of Limits instance: there is a minimal amount of anything to accomplish a task, and any more is waste. Correctness is the gate. Joules are the ranking.
-    </p>
-    <p class="mt-4 font-body text-sm text-brand-gray leading-relaxed">
-      RCE is one uniform code ecosystem with a lossless encoding of intent. Measured on 10,000 preregistered Forms with a frozen engine and 0 model calls: the Form round trips to identical bytes and every projection is deterministic on all 10,000, every malformed input and specification is refused at entry on all 10,000, and the Python projection replays the reference trace byte for byte on 9,999; Rust, WASM, XState and SCXML print the same trace in differential tests. Code from other languages enters by lift: on that entry path the engine repairs 520,541 of 520,821 one-token faults and 13,586 of 21,320 single-statement Java bugs (63.7%). The universality thesis, that one Form replaces the need for any other language, is stated as propositions: programs are authored natively as Forms, every language is a projection, and lift is built language by language from each grammar. measured_j is reserved for a wall meter.
-    </p>
-
-    <div class="mt-8 glass-card p-6 space-y-2" id="companion">
-      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray">Companion paper</p>
-      <p class="font-body text-sm text-brand-slate leading-relaxed">The market and pricing argument is in the economics companion, <a href="/papers/ai-coding-market/" class="text-brand-cyan">The Promised Trillion Dollar AI-Coding Market</a> (<a href="/about/ai-coding-market/" class="text-brand-cyan">about</a>).</p>
+    <div class="mt-8 glass-card p-6">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">In plain words</p>
+      <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
+        <li>A program is written once, in one precise form, and the computer produces the same program in many languages from it.</li>
+        <li>Because the form only allows what was declared, broken input is rejected at the door instead of being fixed later.</li>
+        <li>A fix that passes the checks is saved and reused, so the same problem does not cost time or energy twice.</li>
+      </ol>
     </div>
 
     <div class="mt-10 flex flex-wrap gap-3">
       <a href="/papers/rce/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
-        Read paper → /papers/rce/
+        Read → /papers/rce/
       </a>
       <a href="/pdfs/rce.pdf" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors" download>
         Download PDF
-      </a>
-      <a href="/playground/rce/" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/30 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        Playground (in the browser)
-      </a>
-      <a href="/figures/rce/intent-entropy.svg" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/30 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        Figure: intent and entropy
       </a>
       <a href="/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">
         ← Catalog

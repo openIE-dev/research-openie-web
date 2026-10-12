@@ -339,7 +339,7 @@ AEMA (Emerald AI, Google, NVIDIA; 16 Sep 2026) is a field alliance; **no publish
 
 Epoch AI reports that the money price of a fixed inference performance has fallen sharply (Epoch AI, 2025). For digital chores whose output is information and whose completeness test is finite, synthesis can be **free at the margin** in money terms. That phrase does **not** mean joules are free, that a plant may move without a certificate, or that care labor has been automated away.
 
-Metabolic Intelligence accepts that money-price collapse and asks the physical question Satiation leaves to the envelope paper: *who spends which joules after the chore is done, and who is refused?*
+Metabolic Intelligence accepts that money-price collapse and asks the physical question: *who spends which joules after the chore is done, and who is refused?*
 
 <div id="92-two-scarcities--and-the-ecosystem-that-uncapped-campuses-pull" class="anchor-alias" aria-hidden="true"></div>
 
@@ -740,7 +740,7 @@ Sell these as **separate evidence classes**. Do not upgrade a row without changi
 
 ### E.4 Software reference lock
 
-No FPGA board result claimed. Package `measured_j` only when Metered. Investor/partner prose must keep evidence pack, product packaging, and estimate on separate lines. No FPGA board result claimed names the meter instrument. It does not weaken the class.
+No FPGA board result claimed. Package `measured_j` only when Metered. No FPGA board result claimed names the meter instrument. It does not weaken the class.
 
 ### E.5 Mechanisms of the class (design law)
 
