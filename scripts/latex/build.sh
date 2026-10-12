@@ -3,7 +3,7 @@
 set -e
 cd "$(dirname "$0")/../.."
 OUT=$(mktemp -d); DEST=public/pdfs/latex; mkdir -p $DEST
-for slug in "${@:-agency gates rce ai-coding-market satiation spellcheck three-body}"; do
+for slug in "${@:-agency gates rce ai-coding-market satiation spellcheck three-body interface-economics}"; do
   for p in $slug; do
     python3 scripts/latex/prep.py $p $OUT
     pandoc $OUT/$p.md -f markdown+tex_math_dollars+pipe_tables-implicit_figures+implicit_figures -s -o $OUT/$p.tex \

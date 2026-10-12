@@ -15,7 +15,7 @@ board_metered: false
 
 *Interfaces are where systems fail. Make every interface assumption explicit, check it, and the orbit holds.*
 
-This paper holds the engineering and the theory only. Economic readings of interface failure, including cost estimates, belong to the economics companions, beginning with [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/), and are not argued here.
+This paper holds the engineering and the theory only. The economics of interface failure, with every cost estimate labeled by kind, is in its companion essay, [The Price of the Unexamined Interface](/papers/interface-economics/), which also ties the argument to [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/).
 
 ## 1. Thesis
 
@@ -74,7 +74,7 @@ The loss of Mars Climate Orbiter in 1999 is the textbook case. The Mishap Invest
 
 A maker publishes an interface and a user depends on it. The documentation states some of the contract. The rest is whatever the implementation happens to do. Hyrum's observation states the consequence: with enough users of an API, every observable behavior of the system will be depended on by somebody, whatever the contract promises [13]. Spolsky's essay on leaky abstractions makes the complementary point: every nontrivial abstraction exposes, to some degree, what it was built to hide [14].
 
-The first flight of Ariane 5 in 1996 shows how a maker's assumption crosses to a new user. The inquiry board found that the inertial reference software reused from Ariane 4 converted a 64-bit floating point value related to horizontal velocity into a 16-bit signed integer; on the faster Ariane 5 trajectory the value exceeded the range, the conversion raised an exception, both reference units shut down, and the launcher was destroyed about 40 seconds after liftoff [15]. The software was correct for the envelope it was written for. The envelope was an interface assumption that traveled with the code without being restated or checked [15, 16].
+The first flight of Ariane 5 in 1996 shows how a maker's assumption crosses to a new user. The inquiry board found that the inertial reference software reused from Ariane 4 converted a 64-bit floating point value related to horizontal velocity into a 16-bit signed integer; on the faster Ariane 5 trajectory the value exceeded the range, the conversion raised an exception, both reference units shut down, and the launcher broke up about 40 seconds after the start of the flight sequence [15]. The software was correct for the envelope it was written for. The envelope was an interface assumption that traveled with the code without being restated or checked [15, 16].
 
 The same pattern appears at the hardware boundary. An instruction set is a contract that vendors revise. RISC-V's unprivileged specification lists several ratified bases and a long and growing list of ratified extensions [17]. Apple moved the Mac from Intel processors to Apple silicon, announced in 2020, and supplies Rosetta as a translation layer for applications built for the earlier contract; Apple's page also states that from macOS 28 Rosetta will remain only for certain older games [18]. The translation layer is itself an interface with a published end. Software written as if the instruction contract were fixed meets a revision it did not expect, and the remedy is another interface layer.
 
@@ -214,20 +214,22 @@ Fixed before the runs they test.
 | TBP-F4 | In the generality protocol, agents that assume defaults pass the varied tasks at a rate no lower than agents that check, at matched default performance | Proposition 4 |
 | TBP-F5 | An interface inventory of a working system finds failures whose cause cannot be assigned to any interface assumption, with every body correct to its own model | The interface account of instability |
 
-## 10. Limits of the argument
+<div id="10-limits-of-the-argument" class="anchor-alias" aria-hidden="true"></div>
 
-The physics is used for structure, not for dynamics. Computing has no equations of motion, so claims about chaos are claims about sensitivity of outcomes to unexamined mismatches, measured statistically, not about Lyapunov exponents.
+## 10. Scope and method
 
-Making every assumption explicit is a target, not a finished state. Some assumptions are discovered only when they fail, and Lehman's observations say that the world a program serves keeps moving [35]. The stabilized configuration is maintained, the way a spacecraft near a Lagrange point uses station keeping. What the propositions guarantee is that each discovered assumption, once written and checked, stays checked.
+The physics enters as structure. It supplies the vocabulary of bodies, relations and stable configurations, and every proposition is stated and tested in computing's own terms. Claims about sensitivity are claims about how outcomes depend on unexamined mismatches, and they are measured statistically at large N, in the manner of Stone and Leigh [7].
 
-The three bodies are roles, not tribes. One person can be theorist, maker and user in an afternoon. The argument is about the handoffs between roles, wherever they sit, and every approach to building systems, from formal methods to large models with tests to hand-written code with reviews, can be placed by how many of its interfaces are explicit and checked. RCE is one configuration in that space that checks all of its own.
+Explicitness is maintained, not declared. Assumptions surface as a system meets new environments, and the world a program serves keeps moving [35]. The method therefore treats each discovered assumption as a new interface to close: written as a predicate, given a check, and kept checked under Proposition 3. The stabilized configuration is held the way a spacecraft near a Lagrange point is held, by continuing station keeping.
+
+The unit of analysis is the handoff between roles. One person can be theorist, maker and user in an afternoon, so the method applies wherever a handoff occurs, inside one team or across organizations. Every approach to building systems, from formal methods to large models with tests to hand-written code with review, is placed by the same measure: the fraction of its interface assumptions that are explicit and checked, read from the inventory protocol of Section 8.1. RCE is one configuration in that space, and it checks all of its own.
 
 ## 11. Ties to the companion papers
 
 - [The Reality Code Engine](/papers/rce/) is the stabilized configuration built for code: one Form, faithful projections, refusal at entry, and the whole-stack interface method of its §4.6.
 - [Metered Commit Gates](/papers/gates/) gives the gate at the boundary between proposal and action, and the Mixture of Limits principle that the cheapest sufficient mechanism should close each task.
 - [Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents](/papers/agency/) gives the gate-then-rank structure for agents and the reading of intelligence as progress per joule, which Proposition 5 applies to interfaces.
-- Economic readings of interface failure belong to the economics companions, beginning with [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/).
+- [The Price of the Unexamined Interface](/papers/interface-economics/) is the economics companion: the documented costs of interface failure, labeled as accounted costs or model estimates, read through technical debt and standards economics, and tied to [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/).
 
 ## 12. Conclusion
 

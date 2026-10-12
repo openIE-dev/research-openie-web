@@ -503,8 +503,32 @@ def tbp_stack():
         s.t(870, yr-10+i*22, ln, 15, 700 if i == 0 else 400, GREEN)
     s.save('three-body', 'stack-checks', 'Diagram of a stack with six levels from intent at the top through Form, gate, projections and runtime to hardware and energy. Between each pair of adjacent levels sits an interface drawn as a small gate with its assumption and its check written beside it. A correction made at the runtime level is drawn with arrows rising through each checked interface to the levels above.')
 
+def ie_estimates():
+    s = S(1200, 700, 'Primary estimates, by kind', 'Log scale, US dollars except where noted. Not additive: categories overlap, and a stock sits beside annual flows.', 'DATA')
+    rows = [('Mars Surveyor 1998 project (orbiter and lander)', 327.6e6, 'accounted', '$327.6 M'),
+            ('Cluster II recovery, ESA 1997', 214e6, 'accounted', '214 MECU'),
+            ('NIST 2004: inadequate interoperability, capital facilities', 15.8e9, 'model', '$15.8 B / yr'),
+            ('NIST 2002: inadequate software testing infrastructure', 59.5e9, 'model', '$59.5 B / yr'),
+            ('Stripe 2018: developer time on bad code (survey)', 85e9, 'model', '~$85 B / yr'),
+            ('CISQ 2022: accumulated technical debt (stock)', 1.52e12, 'model', '~$1.52 T'),
+            ('CISQ 2022: cost of poor software quality, US', 2.41e12, 'model', '\u2265 $2.41 T / yr')]
+    x0, w, lo, hi = 560, 520, 8, 13
+    X = lambda v: x0 + (math.log10(v) - lo) / (hi - lo) * w
+    for e in range(lo, hi + 1):
+        s.l(X(10**e), 130, X(10**e), 590, GRID, 1)
+        s.t(X(10**e), 612, {8: '$100 M', 9: '$1 B', 10: '$10 B', 11: '$100 B', 12: '$1 T', 13: '$10 T'}[e], 15, 500, MUTED, 'middle')
+    for i, (lab, v, k, txt) in enumerate(rows):
+        y = 150 + i * 62
+        col = GREEN if k == 'accounted' else BLUE
+        s.t(x0 - 14, y + 26, lab, 15, 500, INK, 'end')
+        s.r(x0, y + 8, X(v) - x0, 30, col, 'none', 4)
+        s.t(X(v) + 8, y + 29, txt, 15, 700)
+    s.r(70, 640, 22, 16, GREEN, 'none', 3); s.t(100, 654, 'accounted cost (single failure)', 15, 500)
+    s.r(420, 640, 22, 16, BLUE, 'none', 3); s.t(450, 654, 'model or survey estimate', 15, 500)
+    s.save('interface-economics', 'estimates-by-kind', 'Bar chart on a logarithmic dollar axis of the primary estimates cited in this essay, colored by kind. Accounted costs: the Mars Surveyor 1998 project at 327.6 million dollars and the Cluster II recovery at 214 million ECU. Model estimates: NIST 2004 inadequate interoperability in US capital facilities at 15.8 billion dollars a year; NIST 2002 inadequate software testing infrastructure at 59.5 billion dollars a year; Stripe 2018 developer time on bad code at about 85 billion dollars a year; CISQ 2022 technical debt at about 1.52 trillion dollars accumulated; CISQ 2022 cost of poor software quality in the US at least 2.41 trillion dollars in 2022.')
+
 if __name__ == '__main__':
     for f in [rce_design_space, rce_form_projections, rce_stack, rce_ecosystem, rce_ladder, essay_spend, essay_tokens, essay_energy, essay_price,
               agency_layers, agency_gate_rank, agency_carriers, agency_tempo, agency_runs, gates_plateau, gates_commit, satiation_curve, spell_timeline,
-              tbp_bodies, tbp_stable, tbp_stack]:
+              tbp_bodies, tbp_stable, tbp_stack, ie_estimates]:
         f()

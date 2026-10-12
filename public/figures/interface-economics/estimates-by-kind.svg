@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="t d"><title id="t">Primary estimates, by kind</title><desc id="d">Bar chart on a logarithmic dollar axis of the primary estimates cited in this essay, colored by kind. Accounted costs: the Mars Surveyor 1998 project at 327.6 million dollars and the Cluster II recovery at 214 million ECU. Model estimates: NIST 2004 inadequate interoperability in US capital facilities at 15.8 billion dollars a year; NIST 2002 inadequate software testing infrastructure at 59.5 billion dollars a year; Stripe 2018 developer time on bad code at about 85 billion dollars a year; CISQ 2022 technical debt at about 1.52 trillion dollars accumulated; CISQ 2022 cost of poor software quality in the US at least 2.41 trillion dollars in 2022.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="698" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Primary estimates, by kind</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Log scale, US dollars except where noted. Not additive: categories overlap, and a stock sits beside annual flows.</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<line x1="560.0" y1="130.0" x2="560.0" y2="590.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="560.0" y="612.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">$100 M</text>
+<line x1="664.0" y1="130.0" x2="664.0" y2="590.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="664.0" y="612.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">$1 B</text>
+<line x1="768.0" y1="130.0" x2="768.0" y2="590.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="768.0" y="612.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">$10 B</text>
+<line x1="872.0" y1="130.0" x2="872.0" y2="590.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="872.0" y="612.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">$100 B</text>
+<line x1="976.0" y1="130.0" x2="976.0" y2="590.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="976.0" y="612.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">$1 T</text>
+<line x1="1080.0" y1="130.0" x2="1080.0" y2="590.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1080.0" y="612.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">$10 T</text>
+<text x="546.0" y="176.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="end">Mars Surveyor 1998 project (orbiter and lander)</text>
+<rect x="560.0" y="158.0" width="53.6" height="30.0" rx="4" fill="#009E73" stroke="none" stroke-width="2" opacity="1"/>
+<text x="621.6" y="179.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">$327.6 M</text>
+<text x="546.0" y="238.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="end">Cluster II recovery, ESA 1997</text>
+<rect x="560.0" y="220.0" width="34.4" height="30.0" rx="4" fill="#009E73" stroke="none" stroke-width="2" opacity="1"/>
+<text x="602.4" y="241.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">214 MECU</text>
+<text x="546.0" y="300.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="end">NIST 2004: inadequate interoperability, capital facilities</text>
+<rect x="560.0" y="282.0" width="228.7" height="30.0" rx="4" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="796.7" y="303.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">$15.8 B / yr</text>
+<text x="546.0" y="362.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="end">NIST 2002: inadequate software testing infrastructure</text>
+<rect x="560.0" y="344.0" width="288.5" height="30.0" rx="4" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="856.5" y="365.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">$59.5 B / yr</text>
+<text x="546.0" y="424.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="end">Stripe 2018: developer time on bad code (survey)</text>
+<rect x="560.0" y="406.0" width="304.7" height="30.0" rx="4" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="872.7" y="427.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">~$85 B / yr</text>
+<text x="546.0" y="486.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="end">CISQ 2022: accumulated technical debt (stock)</text>
+<rect x="560.0" y="468.0" width="434.9" height="30.0" rx="4" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="1002.9" y="489.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">~$1.52 T</text>
+<text x="546.0" y="548.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="end">CISQ 2022: cost of poor software quality, US</text>
+<rect x="560.0" y="530.0" width="455.7" height="30.0" rx="4" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="1023.7" y="551.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">≥ $2.41 T / yr</text>
+<rect x="70.0" y="640.0" width="22.0" height="16.0" rx="3" fill="#009E73" stroke="none" stroke-width="2" opacity="1"/>
+<text x="100.0" y="654.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start">accounted cost (single failure)</text>
+<rect x="420.0" y="640.0" width="22.0" height="16.0" rx="3" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="450.0" y="654.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start">model or survey estimate</text></svg>

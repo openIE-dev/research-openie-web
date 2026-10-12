@@ -124,6 +124,23 @@ const projects = [
     ]
   },
   {
+    "id": "interface-economics",
+    "title": "The Price of the Unexamined Interface",
+    "deck": "The economics companion to The Pursuit of AGI Resolves the Three-Body Problem in Computing. It gathers the primary estimates of what unexamined interfaces cost and labels each by kind: accounted costs of single failures such as Mars Climate Orbiter and the Cluster payload lost on Ariane 501, NIST model estimates of inadequate software testing ($59.5 billion a year) and inadequate interoperability in capital facilities ($15.8 billion a year), and CISQ's estimate of the cost of poor software quality in the United States (at least $2.41 trillion in 2022, with about $1.52 trillion of technical debt). No primary source isolates interface failure as one total, and the essay does not invent one. It reads the costs through technical debt and standards economics and ties them to the AI coding market, which prices generation and leaves interfaces unpriced.",
+    "status": "Economics essay",
+    "group": "essay",
+    "about": "/about/interface-economics/",
+    "paper": "/papers/interface-economics/",
+    "pdf": "/pdfs/interface-economics.pdf",
+    "figures": "/figures/interface-economics/estimates-by-kind.svg",
+    "tags": [
+      "economics of interfaces",
+      "technical debt",
+      "standards economics",
+      "estimates labeled by kind"
+    ]
+  },
+  {
     "id": "mei",
     "title": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus",
     "deck": "Metabolic Intelligence is the AI product. A fixed energy budget is the physical condition of the best answer. Work that would break the budget is refused or deferred. It spans coin-cell tags at the edge to a resource-optimized central datacenter and runs on any compute fabric. Klere (klere.ai) is the hardware that builds the Energy Processing Unit (EPU).",
@@ -161,7 +178,7 @@ const research = projects.filter((p) => p.group !== 'product');
 const products = projects.filter((p) => p.group === 'product');
 ---
 
-<Layout title="Research catalog" description="OpenIE research: four research papers, an economics companion paper and two essays. Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, Metered Commit Gates, Task Satiation vs. Aggregate Rebound in AI Demand, The Reality Code Engine, The Pursuit of AGI Resolves the Three-Body Problem in Computing, Spell Check is Global, and The Promised Trillion Dollar AI-Coding Market. Two product white papers are kept apart.">
+<Layout title="Research catalog" description="OpenIE research: four research papers, an economics companion paper and three essays. Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, Metered Commit Gates, Task Satiation vs. Aggregate Rebound in AI Demand, The Reality Code Engine, The Pursuit of AGI Resolves the Three-Body Problem in Computing, Spell Check is Global, The Promised Trillion Dollar AI-Coding Market, and The Price of the Unexamined Interface. Two product white papers are kept apart.">
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(homeJsonLd)} />
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-12 max-w-7xl mx-auto">
     <p class="section-label mb-4">research.openie.dev</p>
@@ -169,7 +186,7 @@ const products = projects.filter((p) => p.group === 'product');
       Research catalog
     </h1>
     <p class="mt-6 font-body text-base md:text-lg text-brand-slate max-w-2xl leading-relaxed">
-      Four research papers, an economics companion paper and two essays. The flagship states the proposed Universal Law of Agency as a definition plus a gate: agency first, kinematic bounds second, and intelligence as the derivative of agency in joules.
+      Four research papers, an economics companion paper and three essays. The flagship states the proposed Universal Law of Agency as a definition plus a gate: agency first, kinematic bounds second, and intelligence as the derivative of agency in joules.
       Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. Correctness is the gate: among systems that pass it, joules alone order them.
       Two product white papers sit apart from the research catalog.
     </p>
@@ -288,7 +305,7 @@ const products = projects.filter((p) => p.group === 'product');
 
   <section id="three-body" class="px-6 md:px-10 pb-12 max-w-7xl mx-auto">
     <div class="glass-card p-6 md:p-8">
-      <p class="section-label mb-3">Research paper · interfaces</p>
+      <p class="section-label mb-3">Research paper and economics companion · interfaces</p>
       <h2 class="text-xl md:text-2xl text-brand-white mb-3">The Pursuit of AGI Resolves the Three-Body Problem in Computing</h2>
       <p class="font-body text-sm text-brand-slate leading-relaxed max-w-3xl mb-5">
         Theorists, makers and users are each coherent alone. The instability of computing lives in the interfaces between them, where assumptions cross unwritten and unchecked. A system that aims at general intelligence must act across all three, so it must make every interface assumption explicit and check it. A stack built that way holds a correction where it is made and carries it upward.
@@ -298,6 +315,12 @@ const products = projects.filter((p) => p.group === 'product');
         <p class="text-brand-white text-sm font-semibold mb-2">The Three-Body Problem in Computing</p>
         <p class="font-body text-xs text-brand-slate leading-relaxed">Poincaré, Lagrange and the interface literature, five propositions, break and catch protocols and falsifiers. RCE's whole-stack interface checks are the first evidence.</p>
         <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/three-body/</p>
+      </a>
+      <a href="/papers/interface-economics/" class="mt-4 block rounded-lg border border-brand-border p-4 no-underline hover:border-brand-gold/50 transition-colors max-w-xl">
+        <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gold mb-2">Economics essay</p>
+        <p class="text-brand-white text-sm font-semibold mb-2">The Price of the Unexamined Interface</p>
+        <p class="font-body text-xs text-brand-slate leading-relaxed">What unexamined interfaces cost, with every figure labeled as an accounted cost or a model estimate: Mars Climate Orbiter, Ariane 501, NIST, CISQ. Technical debt and standards economics, tied to the AI coding market.</p>
+        <p class="font-mono text-[10px] text-brand-gray mt-3">/papers/interface-economics/</p>
       </a>
     </div>
   </section>

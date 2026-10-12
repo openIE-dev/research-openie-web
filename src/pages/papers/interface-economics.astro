@@ -1,0 +1,22 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/interface-economics.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description="The economics companion to the three-body paper: what unexamined interfaces cost, with every estimate labeled as an accounted cost or a model estimate."
+  headings={headings}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Economics essay"
+>
+  <Content />
+</PaperLayout>

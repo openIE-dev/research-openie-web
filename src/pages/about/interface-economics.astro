@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="The Price of the Unexamined Interface"
+  description="About: The Price of the Unexamined Interface. Research paper in the OpenIE research catalog."
+>
+  <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
+    <p class="section-label mb-4">Research paper · about</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
+      The Price of the Unexamined Interface
+    </h1>
+    <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
+      The economics companion to <a href="/papers/three-body/" class="text-brand-cyan">The Pursuit of AGI Resolves the Three-Body Problem in Computing</a>. It asks what unexamined interfaces cost and answers only with figures a primary source states, each labeled as an accounted cost of a single failure or a model estimate.
+    </p>
+    <p class="mt-4 font-body text-base text-brand-slate leading-relaxed">
+      Mars Climate Orbiter and the Cluster payload lost on Ariane 501 give accounted costs. NIST's studies of software testing and interoperability, CISQ's estimate of the cost of poor software quality, and a developer survey give model estimates. No primary source isolates interface failure as one total, and the essay does not invent one.
+    </p>
+    <p class="mt-4 font-body text-base text-brand-slate leading-relaxed">
+      It reads the costs through technical debt and standards economics, where a checked interface is a public good with private costs, and ties them to the AI coding market, which prices generation and leaves the interfaces unpriced.
+    </p>
+
+    <div class="mt-8 glass-card p-6 space-y-2" id="companion-papers">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray">Companion papers</p>
+      <p class="font-body text-sm text-brand-slate leading-relaxed">
+        Research paper: <a href="/papers/three-body/" class="text-brand-cyan">The Pursuit of AGI Resolves the Three-Body Problem in Computing</a> · <a href="/papers/rce/" class="text-brand-cyan">The Reality Code Engine</a> ·
+        <a href="/papers/agency/" class="text-brand-cyan">Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents</a> ·
+        <a href="/papers/gates/" class="text-brand-cyan">Metered Commit Gates</a>.
+        Economics companion: <a href="/papers/ai-coding-market/" class="text-brand-cyan">The Promised Trillion Dollar AI-Coding Market</a>.
+      </p>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/papers/interface-economics/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
+        Read essay → /papers/interface-economics/
+      </a>
+      <a href="/pdfs/interface-economics.pdf" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors" download>
+        Download PDF
+      </a>
+      <a href="/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">
+        ← Catalog
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -171,6 +171,26 @@
       ]
     },
     {
+      "id": "interface-economics",
+      "title": "The Price of the Unexamined Interface",
+      "short_title": "The Price of the Unexamined Interface",
+      "kind": "Economics essay",
+      "path": "/papers/interface-economics/",
+      "pdf_path": "/pdfs/interface-economics.pdf",
+      "about_path": "/about/interface-economics/",
+      "summary": "The economics companion to The Pursuit of AGI Resolves the Three-Body Problem in Computing. It gathers the primary estimates of what unexamined interfaces cost and labels each by kind: accounted costs of single failures such as Mars Climate Orbiter and the Cluster payload lost on Ariane 501, NIST model estimates of inadequate software testing ($59.5 billion a year) and inadequate interoperability in capital facilities ($15.8 billion a year), and CISQ's estimate of the cost of poor software quality in the United States (at least $2.41 trillion in 2022, with about $1.52 trillion of technical debt). No primary source isolates interface failure as one total, and the essay does not invent one. It reads the costs through technical debt and standards economics and ties them to the AI coding market, which prices generation and leaves interfaces unpriced.",
+      "keywords": [
+        "economics of interfaces",
+        "integration failure",
+        "technical debt",
+        "interoperability",
+        "standards economics",
+        "cost of poor software quality",
+        "Mars Climate Orbiter",
+        "Ariane 501"
+      ]
+    },
+    {
       "id": "mei",
       "title": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus",
       "short_title": "Metabolic Intelligence",
@@ -220,7 +240,7 @@
       id: {
         type: 'string',
         enum: IDS,
-        description: 'Paper id. agency is Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, gates is Metered Commit Gates, satiation is Task Satiation vs. Aggregate Rebound in AI Demand, rce is The Reality Code Engine research paper, three-body is The Pursuit of AGI Resolves the Three-Body Problem in Computing, ai-coding-market is its economics companion essay, The Promised Trillion Dollar AI-Coding Market, spellcheck is the Spell Check is Global essay, mei and jouleos are product white papers.'
+        description: 'Paper id. agency is Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, gates is Metered Commit Gates, satiation is Task Satiation vs. Aggregate Rebound in AI Demand, rce is The Reality Code Engine research paper, three-body is The Pursuit of AGI Resolves the Three-Body Problem in Computing, interface-economics is its economics companion essay, The Price of the Unexamined Interface, ai-coding-market is its economics companion essay, The Promised Trillion Dollar AI-Coding Market, spellcheck is the Spell Check is Global essay, mei and jouleos are product white papers.'
       }
     },
     required: ['id'],

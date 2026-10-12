@@ -58,12 +58,18 @@
           {
             "@type": "ListItem",
             "position": 8,
+            "url": "https://research.openie.dev/papers/interface-economics/",
+            "name": "The Price of the Unexamined Interface"
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
             "url": "https://research.openie.dev/products/mei/",
             "name": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus"
           },
           {
             "@type": "ListItem",
-            "position": 9,
+            "position": 10,
             "url": "https://research.openie.dev/products/jouleos/",
             "name": "The Search for JouleOS"
           }
