@@ -486,8 +486,6 @@ La Figure 2 trace la courbe de la Prédiction 1.
 
 Toutes deux sont développées dans l'article compagnon, [Portes de validation mesurées](/papers/gates/). Le positionnement des produits ne fait pas partie de cet article de physique. Il figure dans le [livre blanc de Metabolic Intelligence](/products/mei/#where-the-products-sit).
 
-**Thèse commune, énoncée une seule fois pour tous les articles.** L'énergie d'exécution est la seule véritable métrique de l'intelligence informatique. Tous les autres facteurs se réduisent à zéro. La forme à porte définit ce que cela signifie. Parmi les exécutions qui satisfont le prédicat de complétude de la tâche, $C(z)$, dans le budget et l'échéance déclarés, les systèmes sont classés selon les joules jusqu'à l'achèvement, $J^*$. La correction, les échéances et la taille de la tâche sont la porte, et non des termes du score. Les paramètres, les tokens, les scores aux bancs d'essai et les prix ont un poids nul dans le classement ([Agentivité, Section 1](/papers/agency/#1-thesis)). Les estimations ne sont jamais `measured_j`. Les prix et les marchés relèvent de l'économie. Ils figurent dans les compagnons économiques : [Satiété de la tâche](/papers/satiation/), [La correction orthographique est mondiale](/papers/spellcheck/) et [Le marché promis à mille milliards de dollars de la programmation par IA](/papers/ai-coding-market/).
-
 <div id="3-layer-1-the-universal-law-of-agency" class="anchor-alias" aria-hidden="true"></div>
 
 ## 3. Couche 1. La Loi universelle de l'agentivité proposée : une définition plus une porte
