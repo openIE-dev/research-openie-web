@@ -438,7 +438,73 @@ def spell_timeline():
     s.t(120, 600, 'Word 2.0 is placed by Brodie\u2019s account (Section 2.11); its year is not printed on that tape. Hunspell is placed at the right edge, undated; its README publishes no prior retail schedule.', 14, 400, MUTED, italic=True)
     s.save('spellcheck', 'price-to-zero', 'Timeline on a log price axis. WordCheck sold as a standalone checker at 200 dollars in January 1981. WordPerfect 3.0 with a spell command was 495 dollars in October 1983, and Word 1.0 without a checker 395 dollars. Grammatik II was 89 dollars in 1988 and Grammatik III 99 dollars in 1989. Below, a band of items with no separate price: Word 2.0 bundling a purchased checker, WordPerfect 5.2 including Grammatik 5 in 1992, and the Hunspell library at a licence price of zero.')
 
+# ---------------- Three-body ----------------
+def _tri(s, cx, cy, R):
+    return [(cx, cy-R), (cx+R*0.866, cy+R*0.5), (cx-R*0.866, cy+R*0.5)]
+
+def tbp_bodies():
+    s = S(1200, 860, 'Three bodies, three interfaces', 'Each body is coherent alone. Failures originate on the edges, where assumptions cross unwritten.', 'DIAGRAM')
+    pts = _tri(s, 600, 500, 270)
+    names = [('Theorists', 'state what it should do', BLUE), ('Makers', 'build it', ORANGE), ('Users', 'run it', GREEN)]
+    edges = [(0, 1, ['specification, units,', 'operating envelope']), (1, 2, ['API, version,', 'voltage and timing limits']), (2, 0, ['actual use, failures,', 'intent never written'])]
+    for a, b, lab in edges:
+        (x1, y1), (x2, y2) = pts[a], pts[b]
+        s.l(x1, y1, x2, y2, '#94a3b8', 26)
+        mx, my = (x1+x2)/2, (y1+y2)/2
+        s.l(x1+(x2-x1)*0.35, y1+(y2-y1)*0.35, x1+(x2-x1)*0.65, y1+(y2-y1)*0.65, VERM, 6, '12 9')
+        ox, oy = mx-600, my-500; n = math.hypot(ox, oy); ox, oy = ox/n, oy/n
+        tx, ty = mx+ox*95, my+oy*70
+        for i, ln in enumerate(lab): s.t(tx, ty+i*22, ln, 16, 600 if i == 0 else 400, INK if i == 0 else MUTED, 'middle')
+    for (x, y), (n, d, col) in zip(pts, names):
+        s.c(x, y, 72, col, CARD, 4); s.t(x, y+2, n, 21, 800, CARD, 'middle'); s.t(x, y+24, d, 13, 500, CARD, 'middle')
+    s.l(70, 820, 120, 820, VERM, 6, '12 9'); s.t(132, 826, 'unexamined assumption: relied on, never written down or checked', 16, 500)
+    s.save('three-body', 'three-bodies', 'Diagram of three bodies, theorists, makers and users, drawn as circles at the corners of a triangle. Each edge between two bodies is an interface drawn as a band, labeled with the assumptions that cross it: theorist to maker carries the specification, its units and its operating envelope; maker to user carries the API, the version and the voltage and timing limits; user to theorist carries the actual use, the observed failures and the intent that was never written. Dashed portions of each band mark assumptions that no body writes down or checks.')
+
+def tbp_stable():
+    s = S(1200, 860, 'The stabilized configuration', 'Like the Lagrange triangle, stability is a property of the relations, held in a shared frame.', 'DIAGRAM')
+    cx, cy = 600, 500
+    s.c(cx, cy, 300, 'none', '#cbd5e1', 2)
+    s.p(f'M{cx+300*math.cos(-0.5):.1f} {cy+300*math.sin(-0.5):.1f} A300 300 0 0 1 {cx+300*math.cos(0.2):.1f} {cy+300*math.sin(0.2):.1f}', MUTED, 3, arrow=True)
+    s.t(cx+330, cy-60, 'rotating frame', 15, 500, MUTED)
+    pts = _tri(s, cx, cy, 270)
+    names = [('Theorists', BLUE), ('Makers', ORANGE), ('Users', GREEN)]
+    labs = [['Form: intent written once'], ['gate at entry'], ['trace and receipt return']]
+    for i, (a, b) in enumerate([(0, 1), (1, 2), (2, 0)]):
+        (x1, y1), (x2, y2) = pts[a], pts[b]
+        s.l(x1, y1, x2, y2, GREEN, 10)
+        mx, my = (x1+x2)/2, (y1+y2)/2
+        s.c(mx, my, 20, CARD, GREEN, 4); s.p(f'M{mx-9} {my} L{mx-2} {my+8} L{mx+10} {my-8}', GREEN, 4)
+        ox, oy = mx-cx, my-cy; n = math.hypot(ox, oy); ox, oy = ox/n, oy/n
+        s.t(mx+ox*175, my+oy*95+6, labs[i][0], 17, 700, INK, 'middle')
+    for (x, y), (n, col) in zip(pts, names):
+        s.c(x, y, 66, col, CARD, 4); s.t(x, y+7, n, 21, 800, CARD, 'middle')
+    s.r(cx-150, cy-10, 300, 96, '#f8fafc', INK, 14, 2)
+    s.t(cx, cy+22, 'shared frame', 18, 800, INK, 'middle'); s.t(cx, cy+46, 'one Form, one gate,', 15, 400, MUTED, 'middle'); s.t(cx, cy+68, 'joules as the ranking', 15, 400, MUTED, 'middle')
+    s.save('three-body', 'stabilized', 'Diagram of the same three bodies, now arranged at the corners of an equilateral triangle inside a rotating frame, in the manner of the Lagrange configuration. Each interface band is solid and carries a check mark and a short label: the specification as a Form, the gate at entry, and the trace and receipt that return to the theorist. At the centre sits a shared frame labeled one Form, one gate, joules as the ranking.')
+
+def tbp_stack():
+    s = S(1200, 900, 'The stack with every interface checked', 'Each boundary states its assumption and the check that refuses a crossing when it fails (after RCE \u00a74.6).', 'DIAGRAM')
+    layers = ['Intent', 'Form', 'Gate', 'Projections', 'Runtime', 'Hardware and energy']
+    checks = [('intent to Form', 'state not declared cannot be written'), ('Form to gate', 'input satisfies its source contract'), ('gate to projections', 'every target computes the same \u03b4'), ('projections to runtime', 'Ok outputs satisfy the output schema'), ('runtime to hardware', 'instruction contract and envelope stated')]
+    x, w, h = 70, 440, 82
+    for i, n in enumerate(layers):
+        y = 130 + i*125
+        s.r(x, y, w, h, '#f8fafc', BLUE, 12, 3); s.t(x+24, y+50, n, 22, 800)
+        if i < len(checks):
+            gy = y + h + 21
+            s.r(x+w/2-34, gy-12, 68, 24, CARD, GREEN, 12, 3); s.p(f'M{x+w/2-8} {gy} L{x+w/2-2} {gy+6} L{x+w/2+9} {gy-6}', GREEN, 3)
+            s.t(x+w+40, gy-4, checks[i][0], 16, 700); s.t(x+w+40, gy+16, checks[i][1], 15, 400, MUTED)
+    yr = 130 + 4*125
+    s.c(x+w-40, yr+41, 18, GREEN); s.t(x+w-40, yr+49, '+', 26, 800, CARD, 'middle')
+    for i in range(4):
+        y0 = yr - i*125
+        s.p(f'M{x+w-40} {y0+18} L{x+w-40} {y0-60}', GREEN, 4, arrow=True)
+    for i, ln in enumerate(['a correction at the runtime', 'passes its own check, and', 'every level above inherits it', '(Proposition 3)']):
+        s.t(870, yr-10+i*22, ln, 15, 700 if i == 0 else 400, GREEN)
+    s.save('three-body', 'stack-checks', 'Diagram of a stack with six levels from intent at the top through Form, gate, projections and runtime to hardware and energy. Between each pair of adjacent levels sits an interface drawn as a small gate with its assumption and its check written beside it. A correction made at the runtime level is drawn with arrows rising through each checked interface to the levels above.')
+
 if __name__ == '__main__':
     for f in [rce_design_space, rce_form_projections, rce_stack, rce_ecosystem, rce_ladder, essay_spend, essay_tokens, essay_energy, essay_price,
-              agency_layers, agency_gate_rank, agency_carriers, agency_tempo, agency_runs, gates_plateau, gates_commit, satiation_curve, spell_timeline]:
+              agency_layers, agency_gate_rank, agency_carriers, agency_tempo, agency_runs, gates_plateau, gates_commit, satiation_curve, spell_timeline,
+              tbp_bodies, tbp_stable, tbp_stack]:
         f()

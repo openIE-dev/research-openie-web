@@ -114,6 +114,27 @@
       ]
     },
     {
+      "id": "three-body",
+      "title": "The Pursuit of AGI Resolves the Three-Body Problem in Computing",
+      "short_title": "The Three-Body Problem in Computing",
+      "kind": "Research paper",
+      "path": "/papers/three-body/",
+      "pdf_path": "/pdfs/three-body.pdf",
+      "about_path": "/about/three-body/",
+      "summary": "Engineering and theory. Computing has three bodies: theorists, makers and users. Each is coherent alone; the instability lives in the unexamined interfaces between them, where assumptions about units, voltages, versions, envelopes and intent cross unwritten and unchecked. The paper uses the three-body problem of celestial mechanics carefully, separating analogy from mechanism, states the interface thesis as definitions, five propositions, protocols and falsifiers, and argues that pursuing AGI seriously forces every interface assumption to be made explicit and checked. A stack whose interfaces are all checked holds a correction where it is made and carries it upward, like the special stable configurations of the three-body problem. RCE's whole-stack interface checks are the first evidence.",
+      "keywords": [
+        "three-body problem",
+        "interfaces",
+        "interface assumptions",
+        "systems integration",
+        "Conway's thesis",
+        "information hiding",
+        "end-to-end argument",
+        "AGI",
+        "Reality Code Engine"
+      ]
+    },
+    {
       "id": "spellcheck",
       "title": "Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few",
       "short_title": "Spell Check is Global",
@@ -199,7 +220,7 @@
       id: {
         type: 'string',
         enum: IDS,
-        description: 'Paper id. agency is Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, gates is Metered Commit Gates, satiation is Task Satiation vs. Aggregate Rebound in AI Demand, rce is The Reality Code Engine research paper, ai-coding-market is its economics companion essay, The Promised Trillion Dollar AI-Coding Market, spellcheck is the Spell Check is Global essay, mei and jouleos are product white papers.'
+        description: 'Paper id. agency is Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, gates is Metered Commit Gates, satiation is Task Satiation vs. Aggregate Rebound in AI Demand, rce is The Reality Code Engine research paper, three-body is The Pursuit of AGI Resolves the Three-Body Problem in Computing, ai-coding-market is its economics companion essay, The Promised Trillion Dollar AI-Coding Market, spellcheck is the Spell Check is Global essay, mei and jouleos are product white papers.'
       }
     },
     required: ['id'],

@@ -11,4 +11,5 @@ States: abstract = title and abstract only (complete: false); full = whole text 
 | ai-coding-market | full | full | full | full | full | full | full | full |
 | gates | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | satiation | full | full | full | full | full | full | full | full |
+| three-body | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | spellcheck | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |

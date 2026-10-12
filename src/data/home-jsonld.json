@@ -40,6 +40,12 @@
           {
             "@type": "ListItem",
             "position": 5,
+            "url": "https://research.openie.dev/papers/three-body/",
+            "name": "The Pursuit of AGI Resolves the Three-Body Problem in Computing"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
             "url": "https://research.openie.dev/papers/spellcheck/",
             "name": "Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few"
           },
@@ -47,17 +53,17 @@
             "@type": "ListItem",
             "url": "https://research.openie.dev/papers/ai-coding-market/",
             "name": "The Promised Trillion Dollar AI-Coding Market",
-            "position": 6
+            "position": 7
           },
           {
             "@type": "ListItem",
-            "position": 7,
+            "position": 8,
             "url": "https://research.openie.dev/products/mei/",
             "name": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus"
           },
           {
             "@type": "ListItem",
-            "position": 8,
+            "position": 9,
             "url": "https://research.openie.dev/products/jouleos/",
             "name": "The Search for JouleOS"
           }

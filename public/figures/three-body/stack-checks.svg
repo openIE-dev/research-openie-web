@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="t d"><title id="t">The stack with every interface checked</title><desc id="d">Diagram of a stack with six levels from intent at the top through Form, gate, projections and runtime to hardware and energy. Between each pair of adjacent levels sits an interface drawn as a small gate with its assumption and its check written beside it. A correction made at the runtime level is drawn with arrows rising through each checked interface to the levels above.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="898" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">The stack with every interface checked</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Each boundary states its assumption and the check that refuses a crossing when it fails (after RCE §4.6).</text>
+<rect x="1072.5" y="26" width="87.5" height="34" rx="17" fill="none" stroke="#CC79A7" stroke-width="2"/>
+<text x="1116.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#CC79A7" text-anchor="middle">Diagram</text>
+<rect x="70.0" y="130.0" width="440.0" height="82.0" rx="12" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="94.0" y="180.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start">Intent</text>
+<rect x="256.0" y="221.0" width="68.0" height="24.0" rx="12" fill="#ffffff" stroke="#009E73" stroke-width="3" opacity="1"/>
+<path d="M282.0 233 L288.0 239 L299.0 227" stroke="#009E73" stroke-width="3" fill="none" fill-opacity="1" stroke-linejoin="round"/>
+<text x="550.0" y="229.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">intent to Form</text>
+<text x="550.0" y="249.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">state not declared cannot be written</text>
+<rect x="70.0" y="255.0" width="440.0" height="82.0" rx="12" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="94.0" y="305.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start">Form</text>
+<rect x="256.0" y="346.0" width="68.0" height="24.0" rx="12" fill="#ffffff" stroke="#009E73" stroke-width="3" opacity="1"/>
+<path d="M282.0 358 L288.0 364 L299.0 352" stroke="#009E73" stroke-width="3" fill="none" fill-opacity="1" stroke-linejoin="round"/>
+<text x="550.0" y="354.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">Form to gate</text>
+<text x="550.0" y="374.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">input satisfies its source contract</text>
+<rect x="70.0" y="380.0" width="440.0" height="82.0" rx="12" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="94.0" y="430.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start">Gate</text>
+<rect x="256.0" y="471.0" width="68.0" height="24.0" rx="12" fill="#ffffff" stroke="#009E73" stroke-width="3" opacity="1"/>
+<path d="M282.0 483 L288.0 489 L299.0 477" stroke="#009E73" stroke-width="3" fill="none" fill-opacity="1" stroke-linejoin="round"/>
+<text x="550.0" y="479.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">gate to projections</text>
+<text x="550.0" y="499.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">every target computes the same δ</text>
+<rect x="70.0" y="505.0" width="440.0" height="82.0" rx="12" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="94.0" y="555.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start">Projections</text>
+<rect x="256.0" y="596.0" width="68.0" height="24.0" rx="12" fill="#ffffff" stroke="#009E73" stroke-width="3" opacity="1"/>
+<path d="M282.0 608 L288.0 614 L299.0 602" stroke="#009E73" stroke-width="3" fill="none" fill-opacity="1" stroke-linejoin="round"/>
+<text x="550.0" y="604.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">projections to runtime</text>
+<text x="550.0" y="624.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Ok outputs satisfy the output schema</text>
+<rect x="70.0" y="630.0" width="440.0" height="82.0" rx="12" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="94.0" y="680.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start">Runtime</text>
+<rect x="256.0" y="721.0" width="68.0" height="24.0" rx="12" fill="#ffffff" stroke="#009E73" stroke-width="3" opacity="1"/>
+<path d="M282.0 733 L288.0 739 L299.0 727" stroke="#009E73" stroke-width="3" fill="none" fill-opacity="1" stroke-linejoin="round"/>
+<text x="550.0" y="729.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">runtime to hardware</text>
+<text x="550.0" y="749.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">instruction contract and envelope stated</text>
+<rect x="70.0" y="755.0" width="440.0" height="82.0" rx="12" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="94.0" y="805.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#0f172a" text-anchor="start">Hardware and energy</text>
+<circle cx="470.0" cy="671.0" r="18" fill="#009E73" stroke="#ffffff" stroke-width="2"/>
+<text x="470.0" y="679.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="26" font-weight="800" fill="#ffffff" text-anchor="middle">+</text>
+<path d="M470 648 L470 570" stroke="#009E73" stroke-width="4" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M470 523 L470 445" stroke="#009E73" stroke-width="4" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M470 398 L470 320" stroke="#009E73" stroke-width="4" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M470 273 L470 195" stroke="#009E73" stroke-width="4" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<text x="870.0" y="620.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#009E73" text-anchor="start">a correction at the runtime</text>
+<text x="870.0" y="642.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#009E73" text-anchor="start">passes its own check, and</text>
+<text x="870.0" y="664.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#009E73" text-anchor="start">every level above inherits it</text>
+<text x="870.0" y="686.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#009E73" text-anchor="start">(Proposition 3)</text></svg>

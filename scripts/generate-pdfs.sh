@@ -176,6 +176,14 @@ elif id_ == "gates":
         "All other energy figures are OpCounter analytical estimates, not board power. No fabricated citations.\n"
         "</div>\n"
     )
+elif id_ == "three-body":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research paper, not a journal final.\n"
+        "Theory, propositions and protocols. No new energy figure is reported; RCE results are cited from the RCE paper.\n"
+        "No hardware result is claimed. No fabricated citations.\n"
+        "</div>\n"
+    )
 elif dir_ == "products":
     measure = (
         '<div class="measurement">\n'
@@ -235,6 +243,7 @@ gen_one gates
 gen_one satiation
 gen_one spellcheck
 gen_one rce
+gen_one three-body
 gen_one ai-coding-market
 cp public/pdfs/ai-coding-market.pdf public/pdfs/rce-economics.pdf
 gen_one mei products

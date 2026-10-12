@@ -181,6 +181,15 @@
     "src/content/products/jouleos.md",
     "src/pages/about/jouleos.astro"
    ]
+  },
+  {
+   "id": "ref-titles-three-body",
+   "status": "reference title",
+   "files": [
+    "src/content/papers/three-body.md"
+   ],
+   "pattern": "Hyrum's Law|The Law of Leaky Abstractions|hyrumslaw|the-law-of-leaky-abstractions",
+   "note": "Titles of cited works in the three-body paper."
   }
  ]
 }
