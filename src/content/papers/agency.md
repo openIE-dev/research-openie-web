@@ -544,7 +544,7 @@ Classical engines measured the price at full scale. An optical tweezer engine co
 
 **Functional-system agents built and run.** A simulated nematode with an acceptor of action results learned locomotion and chemotaxis [90]. A physical mobile robot ran the same functional-system controller [91]. Clauses 1 and 3 run in software and on a body. Neither meters joules.
 
-### 3.3 Opinion
+### 3.3 Positions in the literature
 
 **Purposive systems and anticipation.** Rosenblueth, Wiener and Bigelow defined purposeful behavior through negative feedback toward a goal [92]. It has no energy term. Anokhin's functional system has afferent synthesis, decision, an acceptor of action results fixed before the act, action, and comparison [93, 94]. This is clauses 1 and 3 in their first systematic form, built on animal experiments. Sudakov stated the result as the system-forming factor [95]. The prediction clause is the organizing principle. Shvyrkov showed from single-neuron recordings that the goal organizes neural activity [96]. Rosen defined an anticipatory system as one that contains a predictive model of itself and its world and acts on the prediction [97]. None of these sets a joule floor. Sterling defines allostasis as regulation by prediction [98]. Physiology puts the prediction before the act. Virgo, Biehl and McGregor gave conditions under which a system's states can be read as beliefs updated by Bayes' theorem [99]. Biehl and Virgo call a system an agent when it can be read as solving a POMDP (partially observable Markov decision process) [100]. Both are formal definitions. Clause 1 asks for less and fixes more: one template, fixed at $t_0$, hashed on the receipt.
 
@@ -598,7 +598,7 @@ Figure 3 orders the three carriers.
 
 **Empowerment in simulation.** Klyubin, Polani and Nehaniv defined empowerment, the channel capacity from actions to future sensors [9]. It was computed for continuous control [220] and reviewed [221]. It measures how much an agent can move the world, in bits. It is not a rate per joule.
 
-### 4.3 Opinion
+### 4.3 Positions in the literature
 
 Kinematics is mostly theorem and experiment. The opinions here concern which variable is right. Seifert holds that inference from fluctuations is the route to hidden costs [137]. Rovelli and Wissner-Gross and Freer both propose entropic kinematics [115, 118]. Kolchinsky shows that dissipation alone does not bound how fast replicators grow or decay [222]. Rates are bounded by dissipation together with activity. That is the form of the speed limit, where $\langle A\rangle$ sits beside $\Sigma$. Adlam, McQueen and Waegell argue that a purely quantum system cannot be an agent, because building a world model and deliberating need copying, which the no-cloning theorem forbids (preprint) [223]. Clause 3 already asks for a classical record of $m$.
 
@@ -628,7 +628,7 @@ Intelligence is the derivative of gated agency in joules, read off a completed r
 
 **Estimates.** These sources are valuable, and their joule figures are modeled, extrapolated or computed. They sit beside measured joules, never in their place. Estimates are never `measured_j`. Strubell, Ganesh and McCallum sampled power for short runs and extrapolated to full training of natural language processing models [276]. Patterson and colleagues computed training energy from reported hardware, runtime and data-center data [277]. Lacoste and colleagues built a calculator from hardware type, runtime and region [278]. The BLOOM footprint mixes metered and modeled inputs [279]. Carbontracker reads on-device counters and predicts full-run totals [280]. Its predictions are estimates. Elsworth and colleagues report a median of 0.24 Wh per Gemini Apps text prompt, counting accelerators, hosts, idle capacity and data-center overhead [281]. It is an operator-reported figure, filed as `reported_j`.
 
-### 5.3 Opinion
+### 5.3 Positions in the literature
 
 Each position is placed against the definition: intelligence is the derivative of gated agency in joules, read off a completed run.
 

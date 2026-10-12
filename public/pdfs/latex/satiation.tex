@@ -169,22 +169,27 @@ LaTeX PDF:
 \href{https://research.openie.dev/pdfs/latex/satiation.pdf}{/pdfs/latex/satiation.pdf}
 (\href{https://research.openie.dev/pdfs/latex/satiation.tex}{source}).}
 
-\emph{The economics companion to
-\href{https://research.openie.dev/papers/agency/}{Thermodynamic Bounds
-and an Optimal Tempo for Goal-Holding Agents} and
-\href{https://research.openie.dev/papers/gates/}{Metered Commit Gates}.
-The theory it uses stays there: the gate form and \(J^*\) in
-\href{https://research.openie.dev/papers/agency/\#1-thesis}{Agency,
-Section 1}, the machine stop in
-\href{https://research.openie.dev/papers/gates/\#ii5-stop-bridge-satiation}{Metered
-Commit Gates, Section II.5}, and the commit record in
-\href{https://research.openie.dev/papers/gates/\#part-i-the-commit-gate-notational-intelligence}{Part
-I}. The market and price readings of those papers are collected in
-Section 8. Its coding instance is
-\href{https://research.openie.dev/papers/ai-coding-market/}{The Promised
-Trillion Dollar AI-Coding Market}.}
-
 \subsection{Abstract}\label{abstract}
+
+Once a task is done, more machine effort on that task adds nothing. This
+paper defines that stop precisely and separates it from the separate
+question of whether total demand for machine work keeps growing.
+
+\textbf{In plain words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Every job has a finish line. After it, more computer work on that job
+  is waste.
+\item
+  Cheaper computer work can still make people start many more jobs, so
+  total use can keep rising.
+\item
+  Money prices for AI are falling fast, but the electricity it uses is
+  never free.
+\end{enumerate}
 
 Many planning models treat demand for machine intelligence as if it had
 no finish line. Consumer theory already contains the opposite object.
@@ -219,23 +224,8 @@ Horowitz, 2014).
 
 The paper does not report a randomized trial, a done-detector error
 rate, or a split between energy spent before completeness and energy
-spent after it. Those measurements are specified and absent. What the
-software reference does provide is a place to put the stop: Wise
-Computer Automation (WCA) can refuse on a policy or budget reason, or on
-a physical predicate (look-up table allow and an energy check, optional
-control barrier function). The companion paper measures the physical
-predicate on toy plants. This paper states the economic predicate and
-the evidence that is actually published.
-
-No field-programmable gate array (FPGA) carries an energy meter in this
-study; the companion's board is programmed and its energy is unmetered.
-An Alchitry Pt V2 is the intended later device under test (DUT). A
-browser instrument that compiles the gate to WebAssembly (WASM) and
-displays it with WebGPU is shipped as Stage B at
-https://research.openie.dev/living/fpga-sim/ (see companion paper). It
-is a simulation, not a board result, and it is not a satiation
-measurement here. Analytical joules from the companion's OpCounter are
-not board power and are not evidence of satiation.
+spent after it. Those measurements are specified in Section 3.3 and are
+absent.
 
 \subsection{Notation}\label{notation}
 
@@ -253,8 +243,6 @@ Definition in this paper
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Open Interface Engineering (OpenIE) & The organization maintaining the
-software reference and these two studies. \\
 Satiation & In the cited theory, a fall of marginal utility to zero or
 below. In this paper's operational clause, after completeness, further
 calls do not flip any clause of \texttt{C} from false to true; calls
@@ -271,31 +259,8 @@ equivalent written test. \\
 Free at the margin & Marginal price of a digital synthesis step trends
 toward bundled or negligible money price. Joules and commits stay
 costly. \\
-Wise Computer Automation (WCA) & The commit-and-refuse reference defined
-in the companion paper. \\
-Energy-First Architecture (EFA) & The choice to keep an energy predicate
-inside permission. \\
-Look-up table (LUT) & Discrete allow map used by the reference gate. \\
-Control barrier function (CBF) & Set-invariance certificate, optional
-conjunct (Ames et al., 2019). \\
-Model Context Protocol (MCP) & Tool transport. Not a detector of task
-completion. \\
-System One & Typed software decisions for known option sets. A proposer,
-not a completeness proof. \\
 Artificial general intelligence (AGI) & A broad capability target. Not a
 price observation and not a result of this paper. \\
-Device under test (DUT) & Metered hardware under a stated workload. None
-reported. \\
-Field-programmable gate array (FPGA) & Reconfigurable logic. Not
-synthesized here. \\
-WebAssembly (WASM) & Browser compilation target for the shipped Stage B
-emulator of the gate (https://research.openie.dev/living/fpga-sim/). \\
-WebGPU & Browser GPU API named for display of that emulator. Not a power
-meter. \\
-Alchitry Pt V2 & Intended later board (vendor: Artix-7 XC7A100T). Not
-measured. \\
-Analytical energy estimate & Operation count times a named constant.
-Modeled. Not board-measured. \\
 Direct rebound & Extra use of a service when its effective price falls,
 on the same service (Gillingham, Rapson, and Wagner). \\
 Modeled / simulated / board-measured & Formula, program execution, or
@@ -304,22 +269,12 @@ content is citation of published series and documents. \\
 \end{longtable}
 }
 
-\subsubsection{Terms used here}\label{terms-used-here}
-
-Completeness predicate \texttt{C}, task completion, free at the margin,
-and refuse reason codes are defined in the table above and in Section
-3.1. Software reference, value of information, evidence classes, and the
-board-result flag are on the shared
-\href{https://research.openie.dev/glossary/}{glossary}.
-
 Scope. Section 2 reviews satiation theory, task automation, attention
 markets, technology-cycle evidence, and inference prices. Section 3
 writes predicates and says which were not estimated. Section 4 lists
-claims that rest on citations or on the companion's software demo, and
-separates them from design rules. Section 5 answers rebound, care costs,
-and military demand. Section 6 lists threats to validity. The commit
-mechanics and toy measurements live in the companion paper, ``Metered
-Commit Gates, Part I (Notational Intelligence).''
+claims that rest on citations, and separates them from design rules.
+Section 5 answers rebound, care costs, and military demand. Section 6
+lists threats to validity.
 
 \subsection{1. Introduction}\label{introduction}
 
@@ -353,93 +308,11 @@ is not a sufficient description of value.
 
 This paper's positive claim is definitional and bibliographic. Satiation
 is a coherent object. Published prices for inference have fallen
-sharply. Engagement metrics are not completeness metrics. The software
-reference can represent a refuse for ``do not spend'' and a refuse for
-``do not move'' as different reason codes on one decision. The negative
-claim is equally important. This paper does not identify a structural
-demand system, does not estimate rebound, and does not report board
-energy.
-
-\subsubsection{Companion papers}\label{companion-papers}
-
-This study is the \textbf{task completion} stop in the research catalog
-triad.
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Role
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Study
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Owns
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\textbf{Navigation} &
-\href{https://research.openie.dev/papers/gates/\#part-ii-the-cascade-mixture-of-limits}{Mixture
-of Limits} & Lookup → Formula → Solver → Model; floors including Value
-of Information (VoI). \\
-\textbf{Commit} &
-\href{https://research.openie.dev/papers/gates/}{Metered Commit Gates,
-Part I (Notational Intelligence)} & propose → certify →
-commit\textbar refuse → receipt; physical permit on the gate. \\
-\textbf{Task completion} & This paper & Completeness predicate
-\texttt{C(z)}; stop when VoI is zero on that predicate, or when budget /
-policy refuse fires. \\
-\textbf{Energy budget} &
-\href{https://research.openie.dev/products/mei/}{Metabolic Intelligence}
-& Budget envelope / actuators at tag and campus. \\
-\textbf{Automation path} &
-\href{https://research.openie.dev/papers/spellcheck/}{Spell Check is
-Global} & An existence proof that some computer intelligence
-commoditizes to bundled zero price: spell check's marginal cost fell to
-about zero, and it complemented hardware and editors people already
-have. Access framing, not a census: the many (7B+), not the few who rent
-frontier datacenters (\textless500M). \\
-\end{longtable}
-}
-
-Mixture of Limits navigates. Notational Intelligence owns irreversible
-commit. This paper owns task completion after free-at-the-margin digital
-inference. \href{https://research.openie.dev/products/mei/}{Metabolic
-Intelligence} owns the energy-budget envelope and actuators. In
-\href{https://research.openie.dev/papers/spellcheck/}{Spell Check is
-Global}, once a token is kept, further spelling candidates have zero
-value of information on that predicate. Free at the margin is not free
-joules.
-
-\textbf{Shared thesis, stated once for every paper.} Energy to run is
-the only true metric of computer intelligence. All other factors
-collapse to zero. The gate form defines what that means. Among runs that
-pass the task's completeness predicate \(C(z)\) within the stated budget
-and deadline, systems are ranked by joules to completion, \(J^*\).
-Correctness, deadlines and task size are the gate, not terms in the
-score. Parameters, tokens, benchmark scores and prices carry zero weight
-in the ranking
-(\href{https://research.openie.dev/papers/agency/\#1-thesis}{Agency,
-Section 1}). Estimates are never \texttt{measured\_j}.
-
-\textbf{Price, a separate claim, for the economics companions.} A price
-trend is a separate claim, labeled as one. Epoch AI reports that the
-cost of a given level of AI performance has fallen about 47 percent per
-quarter since 2023, about 13 times per year (Emberson and Roodman,
-\emph{The plunging price of thought}, 22 September 2026). If that trend
-continues, energy becomes the dominant marginal cost of inference. That
-is a cited trend with a condition, not a measured collapse.
-\href{https://research.openie.dev/papers/spellcheck/}{Spell Check is
-Global} is an existence proof that some computer intelligence
-commoditizes to bundled zero price. The theory these companions use is
-in \href{https://research.openie.dev/papers/agency/}{the agency paper},
-\href{https://research.openie.dev/papers/gates/}{Metered Commit Gates}
-and \href{https://research.openie.dev/papers/rce/}{The Reality Code
-Engine}.
+sharply. Engagement metrics are not completeness metrics. A stop for
+``do not spend'' and a stop for ``do not move'' are different
+predicates. The negative claim is equally important. This paper does not
+identify a structural demand system, does not estimate rebound, and does
+not report measured energy.
 
 \subsection{2. Related work}\label{related-work}
 
@@ -579,11 +452,11 @@ among them Laya from Convai Innovations. A System One model proposes. It
 is not a completeness evaluation.
 
 A planning rule of thumb that frontier competence reaches cheaper
-devices in about six months is not a measured constant in this archive.
-Distillation, quantization, and table-lookup inference (Ma et al., 2024;
-Wei et al., 2024) are published mechanisms by which a given competence
-can move to cheaper hardware. The speed is an empirical question per
-model pair.
+devices in about six months is not a measured constant in any source
+cited here. Distillation, quantization, and table-lookup inference (Ma
+et al., 2024; Wei et al., 2024) are published mechanisms by which a
+given competence can move to cheaper hardware. The speed is an empirical
+question per model pair.
 
 \subsubsection{2.6 Physical cost}\label{physical-cost}
 
@@ -591,14 +464,9 @@ Landauer (1961) bounds erasure. Bennett (1973) shows reversible
 computation can avoid that bound in theory. Horowitz (2014) is the
 practical CMOS statement: energy per operation and energy of data
 movement set the design constraint, at many orders of magnitude above
-\texttt{kT\ ln\ 2} for irreversible CMOS logic. The companion paper's
-OpCounter implements \texttt{J\ =\ sum\ count\ *\ E} with constants such
-as \texttt{E\_LUT\_READ\ =\ 1e-12} joule. Those constants are a model.
-The companion states the seed-1 analytical total, 8.6795e-10 joule, for
-a toy episode. Importing that number into a demand paper would not show
-that post-done spend is large. It would show only that the toy gate's
-model returned that total. This paper therefore does not treat the
-companion's joule as a satiation measurement.
+\texttt{kT\ ln\ 2} for irreversible CMOS logic. At \(T = 300\) K the
+bound is \(k_B T \ln 2 \approx 2.87 \times 10^{-21}\) J per erased bit,
+with \(k_B = 1.380649 \times 10^{-23}\) J/K.
 
 Goldman Sachs published a research note titled ``Gen AI: Too Much Spend,
 Too Little Benefit?''
@@ -607,18 +475,6 @@ The existence of a major sell-side note that questions infrastructure
 spend relative to benefit is a document fact. Dollar figures inside the
 note are not quoted here, because sell-side estimates are not a
 scientific energy account.
-
-\subsubsection{2.7 Commit records as the interface, not the demand
-estimate}\label{commit-records-as-the-interface-not-the-demand-estimate}
-
-The companion paper specifies proposal, certificate, refuse reason, and
-commit decision. Compose modes include LUT allow and energy, with an
-optional CBF. Refuse reasons include \texttt{policy} and
-\texttt{budget\_exceeded} as well as \texttt{energy\_veto}. That
-taxonomy can represent task completion and physical refusal as different
-codes. Representation is not identification. A code that fires does not
-prove that a human was at a bliss point. It proves that the runtime
-classified the step under a rule someone installed.
 
 \subsection{3. Definitions and methods}\label{definitions-and-methods}
 
@@ -663,27 +519,18 @@ margin means \texttt{p\_t} is low enough that a seat license is a weak
 explanation of cost for that chore. It does not mean the integral of
 power over time is zero.
 
-Refuse reasons in the reference:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{physical:  lut\_veto, energy\_veto, cbf\_veto}
-\NormalTok{economic:  budget\_exceeded, policy}
-\end{Highlighting}
-\end{Shaded}
-
-The set-union in words is: the runtime refuses if the economic rule
-fires or the physical rule fires. The implementation is a certificate,
-not a sentence. Details of the physical conjunct are in the companion,
-including the seed-1 simulation and the Safe fixed-point residual.
+A stop rule can therefore have two kinds of reason, economic (the
+predicate holds, or a budget or policy limit is reached) and physical (a
+safety or energy limit is reached). The two kinds are different
+predicates and should be recorded as different reasons.
 
 \subsubsection{3.2 What was done in this
 study}\label{what-was-done-in-this-study}
 
 This study is a structured reading. Sources are the citation spine
-checked in the project on 29 to 30 September 2026, the satiation notes,
-and the companion's software record. Section 3.3 names the measurements
-that would make the operational definition empirical.
+checked in the project on 29 to 30 September 2026, and the satiation
+notes. Section 3.3 names the measurements that would make the
+operational definition empirical.
 
 Design rules in Section 4.10 are recommendations conditional on the
 definitions. They are not estimated treatment effects. A reader can
@@ -735,7 +582,8 @@ be reported in both units, with the unit the data identify named.
   case is excluded from the satiation claim in Section 5 rather than
   forced into it.
 \item
-  Board energy. Stage C in Appendix B. Not done.
+  Measured energy. An external power meter on a stated workload. Not
+  done.
 \end{enumerate}
 
 Until those exist, sentences about ``overkill joules'' are hypotheses.
@@ -757,39 +605,7 @@ dataset was analyzed.
 
 Coding chore. Completeness: the artifact matches a written oracle
 (tests, or a bit-exact check). Regenerating a passing artifact does not
-raise \texttt{C}. The companion's LUT check is an instance of a written
-oracle for a gate, not an instance of economic satiation.
-
-\subsubsection{3.5 Instrument path for the physical
-residual}\label{instrument-path-for-the-physical-residual}
-
-When a claim is about joules, the measurement class has to be named. The
-companion defines three stages.
-
-Stage A, existing: Rust simulation and Icarus Verilog simulation.
-Analytical energy only.
-
-Stage B, shipped: WASM compilation of the decision core and a WebGPU
-view of the LUT and the commit trace, at
-https://research.openie.dev/living/fpga-sim/. WebGPU time is not energy.
-Acceptance is agreement with stage A on published episodes (seed-1:
-committed 1, refused 15, analytical J 8.6795e-10).
-
-Stage C, board programmed for the companion's commit-gate demo
-(closed-loop pendulum with LUT allow, Safe PH, and Ames energy-set CBF);
-energy still unmetered. The Alchitry Pt V2 has no onboard joule meter.
-UART decision agreement is not a watt reading. Vendor specifications on
-SparkFun's page (XC7A100T-2FGG84I, 101,440 logic cells, 240 DSP48E1
-slices, 4,860 Kb block RAM, 256 MB DDR3L) are not DUT energy results.
-Metering methods: companion guide
-\href{https://research.openie.dev/living/fpga-sim/alchitry/\#energy}{/living/fpga-sim/alchitry/\#energy}.
-
-This paper adds a mapping, not a fourth stage. Task completion, if
-encoded as \texttt{policy} or \texttt{budget\_exceeded}, should appear
-in the same trace as \texttt{energy\_veto}, so a future split (Section
-3.3) can group reason codes. The browser view would make that grouping
-readable. It would not create the missing corpus, and the board energy
-stays unmetered.
+raise \texttt{C}.
 
 \subsubsection{3.6 Fidelity criteria and stop
 rules}\label{fidelity-criteria-and-stop-rules}
@@ -889,15 +705,8 @@ aggregate data-center power.
 \textbf{Reading for this paper.} Free at the margin is a money-price
 statement. Scarce joules are a physical statement. The operational stop
 is task completion: when \texttt{C(z)\ =\ 1}, further synthesis does not
-raise the written objective, and \texttt{policy} /
-\texttt{budget\_exceeded} refuse is success.
-\href{https://research.openie.dev/papers/gates/}{Notational
-Intelligence} owns the physical certificate.
-\href{https://research.openie.dev/papers/gates/\#part-ii-the-cascade-mixture-of-limits}{Mixture
-of Limits} navigates cheapest-sufficient gears.
-\href{https://research.openie.dev/products/mei/}{Metabolic Intelligence}
-owns the envelope actuators. Estimates are not board-measured
-\texttt{measured\_j}.
+raise the written objective, and a stop on budget or policy grounds is
+success. Estimates are not measured energy.
 
 \subsubsection{3.9 Protocol for a done-detector study (not
 executed)}\label{protocol-for-a-done-detector-study-not-executed}
@@ -1079,25 +888,12 @@ benefit}\label{claim-s-7.-a-sell-side-note-questions-spend-versus-benefit}
 The Goldman Sachs page named in Section 2.6 exists and frames the
 question in its title.
 
-\subsubsection{4.8 Claim S-8. The reference can encode both stop
-types}\label{claim-s-8.-the-reference-can-encode-both-stop-types}
-
-Schema and demo evidence are in the companion. \texttt{policy} and
-\texttt{budget\_exceeded} are reason codes in the refuse taxonomy.
-\texttt{energy\_veto} is demonstrated in
-\texttt{artifacts/mcp\_gate\_demo.json} and in
-\texttt{commit\_decision\_refuse.json}, where a true LUT allow still
-refuses and sets plant action to zero. The MCP refuse case does not call
-the executor. Those are software facts about the reference. They do not
-show that any firm has reduced post-done spend.
-
 \subsubsection{4.9 Claim S-9. Physical law is not priced to zero by
 Epoch}\label{claim-s-9.-physical-law-is-not-priced-to-zero-by-epoch}
 
 Landauer (1961) and Horowitz (2014) support a permanent gap between an
-ideal erasure bound and CMOS practice. The companion's analytical model
-is a third object, neither the bound nor a board. S-9 says only that a
-citation of Epoch does not discharge a citation of Landauer.
+ideal erasure bound and CMOS practice. S-9 says only that a citation of
+Epoch does not discharge a citation of Landauer.
 
 \subsubsection{4.10 Design rules, marked as
 design}\label{design-rules-marked-as-design}
@@ -1111,17 +907,16 @@ that optimizes \texttt{C} rather than tokens. They are not effects.
 \item
   Write \texttt{C} before adding model capacity.
 \item
-  Treat a synthesis price moat as temporary when Epoch-type series and
-  open weights apply to that chore.
+  Treat a synthesis price premium as temporary when Epoch-type series
+  and open weights apply to that chore.
 \item
-  Do not describe stage A analytical joules, stage B WASM traces, or an
-  unmetered FPGA as free energy.
+  Do not describe modeled or simulated energy as measured energy.
 \item
   Prefer a detector of \texttt{C} with an error table over an unlabeled
   increase in model size, once the chore is the product.
 \item
-  Keep physical permission on the certificate defined in the companion
-  whenever the call is irreversible.
+  Require a separate physical safety check before any irreversible
+  action.
 \item
   Report pre-done and post-done energy separately when the split exists.
   It does not exist yet.
@@ -1143,9 +938,9 @@ deletes joules; an agent loop with no \texttt{C}.
 not}\label{what-would-be-a-result-and-is-not}
 
 A table of false-done and false-continue rates. A time series of calls
-after \texttt{t*}. A meter reading on the Alchitry Pt V2. A structural
-rebound estimate. An AGI price premium estimated on a satiated chore.
-None of these appear in Section 4's supported claims.
+after \texttt{t*}. A meter reading of energy on a stated workload. A
+structural rebound estimate. An AGI price premium estimated on a
+satiated chore. None of these appear in Section 4's supported claims.
 
 \subsubsection{4.12 Non-identity, stated as a comparison of
 objectives}\label{non-identity-stated-as-a-comparison-of-objectives}
@@ -1172,7 +967,6 @@ Does not imply
 \texttt{s} increased & welfare increased \\
 \texttt{p} fell (S-2) & \texttt{J\_post\ =\ 0} \\
 \texttt{C\ =\ 1} & the detector's error rate is known \\
-physical refuse fired (S-8) & the completeness predicate held \\
 ownership of phones is high (S-5) & marginal value of another model call
 is zero \\
 cycle-share prices boomed and busted (S-4) & households reached a
@@ -1184,20 +978,6 @@ The right-hand column is the list of inferences this paper refuses. Each
 left-hand observation is either a citation in Section 4 or a variable in
 Section 3. The table is the discussion compressed into a check. A
 sentence that asserts a right-hand claim has left the evidence.
-
-\subsubsection{4.13 Companion quantities that stay in the
-companion}\label{companion-quantities-that-stay-in-the-companion}
-
-For cross-reading only, the companion reports a seed-1 pendulum
-simulation: 1 commit, 15 refuses, analytical energy 8.6795e-10 joule,
-and a Safe check with zero false allows against the oracle
-\texttt{Vdot\ \textless{}=\ epsilon} on its stated grid, at a cost of 79
-false refuses in 209,261 decisions. Those quantities answer a control
-question. They are simulated. They use the analytical constants in the
-companion. They are listed here so a reader does not import them as
-S-claims. Satiation would use them only inside the unexecuted split of
-Section 3.3, and only with the measurement class written beside the
-number.
 
 \subsection{5. Discussion}\label{discussion}
 
@@ -1300,22 +1080,19 @@ bibliography does not contain. The permitted statement is S-6.
 \subsubsection{5.6 Free synthesis is not free
 actuation}\label{free-synthesis-is-not-free-actuation}
 
-Stage A joules are modeled. Stage B is simulated in a browser. Stage C
-programs the board, and a meter on it is a later measurement. An
-actuator command is the companion's commit bit. Epoch prices sit on a
-different axis from all three. Collapsing them into ``free AI'' deletes
-the measurement class. The WASM and WebGPU path is useful because it
-lets a third party replay the decision trace without owning the Alchitry
-board. Usefulness as a replica is not a watt.
+A falling money price for inference says nothing about the energy of
+moving a physical system. Moving a mass \(m\) through a speed change
+\(\Delta v\) from rest takes at least \(\tfrac12 m (\Delta v)^2\) joules
+of work, whatever the price of the instruction that commanded it. Epoch
+prices sit on a different axis from that work. Collapsing them into
+``free AI'' deletes the measurement class.
 
 \subsubsection{5.7 Confidence is not a
 certificate}\label{confidence-is-not-a-certificate}
 
-A high score can order proposals. The companion's refuse examples show a
-passing LUT bit with a failing energy predicate and a plant action of
-zero. That is the physical half of the union. The economic half is a
-\texttt{policy} or budget reason when \texttt{C} is already 1. Neither
-half is a softmax entry.
+A high model score can order proposals. It is not a completeness
+predicate: a score needs a threshold and an error table (false and true
+positive rates against a labeled set) before it decides \texttt{C}.
 
 \subsubsection{5.8 Sell-side skepticism is not a
 measurement}\label{sell-side-skepticism-is-not-a-measurement}
@@ -1358,14 +1135,12 @@ temperature \texttt{T}. Horowitz (2014) reports energies for particular
 CMOS operations and for memory traffic, in picojoules, under the
 assumptions of that tutorial. Dividing one by the other produces a
 number only after someone chooses the operation, the activity factor,
-the temperature, and the device. None of those choices was measured on
-an OpenIE workload. The companion's constants, beginning at
-\texttt{1e-12} joule per LUT read, are not Horowitz's numbers and are
-not a count of erased bits. Stating a fold above the Landauer bound
-would pretend those choices had been made. The scientific statement is
-the inequality direction: practical irreversible CMOS in Horowitz's
-account sits far above the bound, and a price index does not move a
-device onto the bound.
+the temperature, and the device. None of those choices is measured in
+this paper. Stating a fold above the Landauer bound would pretend those
+choices had been made. The scientific statement is the inequality
+direction: practical irreversible CMOS in Horowitz's account sits far
+above the bound, and a price index does not move a device onto the
+bound.
 
 \subsection{6. Limits and threats to
 validity}\label{limits-and-threats-to-validity}
@@ -1388,10 +1163,9 @@ and may exclude research. Phone ownership does not transfer to agent
 products. Bicycle share prices do not transfer to software margins. The
 constructed episodes are not a sample.
 
-Measurement validity. No split joules, no detector confusion matrix, no
-DUT. The companion's false-allow counts are about a pendulum oracle, not
-about task completion. Importing them as evidence of satiation would be
-a category error. Vendor FPGA specifications are not energy.
+Measurement validity. No split joules, no detector confusion matrix, and
+no energy meter on any device. Vendor hardware specifications are not
+energy measurements.
 
 Omitted variable. New tasks can absorb spending released by cheap
 synthesis. Section 5.1 states this. A roadmap that treats per-chore
@@ -1406,21 +1180,15 @@ is an attempt to keep those sentences from being averaged into a mood.
 
 Falsifiers. S-1 fails if the cited theory does not contain a zero
 marginal-utility region. It does. S-2 fails if the primary Epoch pages
-do not report declines of that kind. S-8 fails if the schema has no
-economic reason codes or if the cited JSON does not refuse. A future
-labeled corpus in which extra calls after a correct \texttt{C}
-systematically raise an independently specified value would falsify
-satiation for that corpus. One such corpus would not falsify the
-definition. It would bound its domain.
+do not report declines of that kind. A future labeled corpus in which
+extra calls after a correct \texttt{C} systematically raise an
+independently specified value would falsify satiation for that corpus.
+One such corpus would not falsify the definition. It would bound its
+domain.
 
-The same discipline applies to vendor FPGA specifications. SparkFun
-lists logic cells, DSP slices, block RAM, and DRAM capacity for the
-Alchitry Pt V2. Those quantities describe a catalog part. They do not
-describe switching activity, static power, or the energy of a commit
-trace. A later DUT report has to name the bitstream, the clock, the
-workload, the meter, and the duration. Until that report exists, the
-board is an unmetered instrument, and the browser emulator is a replica
-of the software decision, not a preview of the meter.
+Vendor hardware specifications list capacities, not switching activity,
+static power or the energy of a workload. An energy report has to name
+the hardware, the clock, the workload, the meter and the duration.
 
 \subsection{7. Conclusion}\label{conclusion}
 
@@ -1431,98 +1199,11 @@ money price of fixed-performance inference. That fall supports a
 free-at-the-margin description of digital chores and does not support
 free joules, free plant motion, or the end of care's cost structure.
 Bicycle share prices, smartphone diffusion, and attention markets are
-weaker and stronger in the specific ways Section 4 states. The commit
-reference can store an economic refuse and a physical refuse as
-different reasons. The physical side is simulated in the companion and
-is not board-measured. A WASM and WebGPU emulator replicates the trace
-in a browser at https://research.openie.dev/living/fpga-sim/ and remains
-a simulation. An Alchitry Pt V2 meter would be a different, later
-measurement. The missing scientific objects are a labeled done detector,
-a pre-done versus post-done energy split, and a demand estimate that can
-see rebound. Until they exist, the paper's empirical content is the
-cited record, and its formal content is the predicate.
-
-\subsection{8. Prices and markets from the theory
-papers}\label{prices-and-markets-from-the-theory-papers}
-
-The theory papers rank by joules to correct completion and keep prices
-out of the ranking. Their market and price readings are collected here,
-with the original sections kept as anchors there.
-
-\subsubsection{8.1 Price series}\label{price-series}
-
-\emph{From
-\href{https://research.openie.dev/papers/gates/\#i23-scale-and-hardware-fit}{Metered
-Commit Gates, Section I.2.3}.} Epoch AI (2025) reports inference price
-drops on the order of 9 to 900 times per year at fixed benchmark
-performance, depending on the benchmark. Emberson and Roodman (2026)
-report about a 47 percent quarterly decline in the cost of a given
-performance since about 2023, which they summarize as about 13 times per
-year, with a faster decline near the frontier. Those are Epoch's
-published summaries. They are evidence about price. They are not
-evidence that joules or irreversible commits have become free. Metered
-Commit Gates uses them only to separate proposal cost from permission.
-This paper uses the same series for the demand argument of Sections 2.5
-and 4.2.
-
-\subsubsection{8.2 The economic stop}\label{the-economic-stop}
-
-\emph{From
-\href{https://research.openie.dev/papers/gates/\#ii5-stop-bridge-satiation}{Metered
-Commit Gates, Section II.5}.} Digital inference prices can fall toward
-free-at-margin without implying free energy, free actuation, or
-unbounded value after a chore is complete. This paper defines satiation
-as a stop on a written completeness predicate and cites the published
-price series. Mixture of Limits supplies the machine stop that matches
-that economic intuition.
-
-\subsubsection{8.3 Plateau spend and the
-device-dollar}\label{plateau-spend-and-the-device-dollar}
-
-\emph{From
-\href{https://research.openie.dev/papers/gates/\#ii812-hardware-plateau-spend-on-real-devices}{Metered
-Commit Gates, Section II.8.12}.} Software is human applied engineering
-under economic and survival motivation, not a realm detached from cost,
-yield, and joules. Markets reward plateau spend that extracts more work
-per device-dollar: optimized algorithms, mixture-of-experts routing,
-training-systems co-design, and inference tricks on older or cheaper
-accelerators. Mixture of Limits is the navigation rule that binds that
-spend to floors when more work buys nothing.
-
-\subsubsection{8.4 The price trend in the shared
-thesis}\label{the-price-trend-in-the-shared-thesis}
-
-\emph{From the shared thesis.} A price trend is a separate claim,
-labeled as one. Epoch AI reports that the cost of a given level of AI
-performance has fallen about 47 percent per quarter since 2023, about 13
-times per year (Emberson and Roodman, \emph{The plunging price of
-thought}, 22 September 2026). If that trend continues, energy becomes
-the dominant marginal cost of inference. That is a cited trend with a
-condition, not a measured collapse.
-\href{https://research.openie.dev/papers/spellcheck/}{Spell Check is
-Global} is an existence proof that some computer intelligence
-commoditizes to bundled zero price.
-
-\subsubsection{8.5 Cache-hit pricing}\label{cache-hit-pricing}
-
-\emph{From
-\href{https://research.openie.dev/papers/gates/\#ii8131-transmission-attention-kv-cache-and-interconnect-cost}{Metered
-Commit Gates, Section II.8.13.1}.} DeepSeek's public API prices
-\texttt{deepseek-flash} (served as DeepSeek-V4.1-Flash) with a large gap
-between cache-hit and cache-miss input (e.g.~peak cache-hit \$0.006 vs
-cache-miss \$0.3 per 1M input tokens;
-\href{https://api-docs.deepseek.com/quick_start/pricing}{api-docs.deepseek.com/quick\_start/pricing}).
-Field discussion on Hacker News notes sessions that lose prefix cache
-around \textasciitilde60\% of a context window and suddenly pay
-\textasciitilde50× more
-(\href{https://news.ycombinator.com/item?id=49735410}{news.ycombinator.com/item?id=49735410}).
-That is an operator anecdote, not an OpenIE meter. Mixture of Limits
-bind: cheap cache reuse is cheapest-sufficient transmission; when reuse
-breaks, escalated spend is still generative corridor cost, not a
-certified refuse. A long session is priced by whether its prefix
-survives, not by whether its task is complete. The price can jump while
-the completeness predicate stays false, and it buys nothing once the
-predicate is true.
+weaker and stronger in the specific ways Section 4 states. The missing
+scientific objects are a labeled done detector, a pre-done versus
+post-done energy split, and a demand estimate that can see rebound.
+Until they exist, the paper's empirical content is the cited record, and
+its formal content is the predicate.
 
 \subsection{References}\label{references}
 
@@ -1613,8 +1294,6 @@ Quinn, W. Technological revolutions and speculative finance: evidence
 from the British Bicycle Mania. Cambridge Journal of Economics 43(2),
 271-294, 2019. https://doi.org/10.1093/cje/bey029
 
-SparkFun. Alchitry Pt V2. https://www.sparkfun.com/alchitry-pt-v2.html
-
 Wei, J., et al.~T-MAC. arXiv:2407.00088.
 
 Wu, T. The Attention Merchants. Knopf.
@@ -1635,11 +1314,6 @@ https://doi.org/10.1145/3715275.3732007
 
 Ostrovsky, N. / Epoch AI. What you need to know about AI energy use.
 Updated 14 July 2026. https://epoch.ai/publications/ai-energy
-
-Companion measurement record: Charlot, ``Metered Commit Gates, Part I
-(Notational Intelligence),'' this repository. Software logs:
-\texttt{artifacts/RESULTS.md}, \texttt{artifacts/mcp\_gate\_demo.json},
-\texttt{artifacts/schemas/wca.commit.v1/}.
 
 Anthropic. Anthropic Economic Index report: uneven geographic and
 enterprise AI adoption. September 2025.
@@ -1726,12 +1400,12 @@ Class
 \endlastfoot
 R1 & Write the completeness predicate before adding capacity. &
 Design \\
-R2 & Expect synthesis price moats to erode where Epoch-type evidence
+R2 & Expect synthesis price premia to erode where Epoch-type evidence
 applies. & Design, conditional on S-2 \\
 R3 & Do not claim free energy or free actuation. & Constraint from
 S-9 \\
-R4 & Separate economic reason codes from physical reason codes. &
-Software fact, S-8, plus design \\
+R4 & Separate economic stop reasons from physical stop reasons. &
+Design \\
 R5 & Publish detector error rates before treating a stop as accurate. &
 Not yet a result \\
 R6 & Split energy before and after done. & Not yet a result \\
@@ -1740,37 +1414,6 @@ R8 & Re-read Pew and Epoch primaries before quoting a finer magnitude. &
 Method \\
 \end{longtable}
 }
-
-No row above is a board measurement.
-
-\subsection{Appendix B. Reproducibility and the
-emulator}\label{appendix-b.-reproducibility-and-the-emulator}
-
-This paper has no independent binary. Reproduction of cited software
-facts:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{cargo run {-}{-}release {-}{-}bin wca{-}mcp{-}gate {-}{-} {-}{-}demo}
-\NormalTok{cargo run {-}{-}release {-}{-}bin wca{-}soc{-}loop {-}{-} \textbackslash{}}
-\NormalTok{  {-}{-}steps 16 {-}{-}init{-}theta 1.5 {-}{-}init{-}omega 3.0 {-}{-}seed 1}
-\end{Highlighting}
-\end{Shaded}
-
-Expect, from the companion's recorded logs: demo refuse with executor
-calls 0; seed-1 committed 1, refused 15, analytical energy 8.6795e-10
-joule. Those outputs do not estimate satiation.
-
-Browser instrument, shipped as Stage B at
-https://research.openie.dev/living/fpga-sim/, shared with the
-companion's Appendix B. The decision core runs in WASM. WebGPU paints
-the LUT image and the commit trace. Diff the trace against the Rust
-JSON. Do not convert GPU timestamps to joules. Do not mark the Alchitry
-Pt V2 as measured. Vendor page:
-https://www.sparkfun.com/alchitry-pt-v2.html. A meter on the programmed
-Stage C board is a later study.
-
-Factual repository flag: no FPGA board result claimed.
 
 \subsection{Appendix C. Claim map}\label{appendix-c.-claim-map}
 

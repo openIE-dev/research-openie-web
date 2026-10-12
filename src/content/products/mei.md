@@ -34,7 +34,7 @@ People should not have to fight over energy to eat or to use AI. That civic sent
 
 Uncapped hyperscale campuses pull dedicated cooling, dedicated generation, and large ecosystem water and power. Metabolic Intelligence is **not** that deployment class. It is designed for the **edge** and for the **resource-optimized central datacenter**: a lean, budget-capped, grid-following plant. Because the class runs at lower energy budgets by construction, dedicated water plants, dedicated power plants, and hyperscale cooling loops are **not required** for the workloads this class serves within its envelope; workload equivalence with uncapped operation is not claimed. This is stated as a **design consequence** of the budget-native envelope, with pack evidence at both ends (µW tags under a metabolic schedule; OpenADR/DSX lean-campus levers). Do **not** invent liters of water saved or board `measured_j` from that consequence. Software reference path: no FPGA board result claimed.
 
-The dominant construction for computer intelligence still treats the transformer corridor as the substrate: pretrain a large generative model, then spend tokens and watts at serve time. That corridor has produced real products. It is not the only class. **Logical Intelligence** casts reasoning as energy minimization over constraints (Business Wire, 20 Jan 2026). **World Labs** casts spatial intelligence as world models that predict views and dynamics (Atlas, 1 Sep 2026). **Metabolic Intelligence** casts intelligence as **budget-native obtain and actuate**: the envelope is the physical condition under which the best answer is obtained. It is not the cheapest answer. The class is designed for **Klere** ([klere.ai](https://klere.ai)): research owns the law; Klere owns the product embodiment. Do not read the thin public landing page as live product features.
+The dominant construction for computer intelligence still treats the transformer corridor as the substrate: pretrain a large generative model, then spend tokens and watts at serve time. That corridor has produced real products. It is not the only class. **Logical Intelligence** casts reasoning as energy minimization over constraints (Business Wire, 20 Jan 2026). **World Labs** casts spatial intelligence as world models that predict views and dynamics (Atlas, 1 Sep 2026). **Metabolic Intelligence** casts intelligence as **budget-native obtain and actuate**: the envelope is the physical condition under which the best answer is obtained. It is not the cheapest answer. Do not read the thin public landing page as live product features.
 
 Shannon (1948) prices bits under uncertainty as established results. Howard's Value of Information (1966) prices whether another observation is worth its cost for a decision. Landauer (1961) prices irreversible bit erasure in joules at temperature T: $E_{\min} = k_B T \ln 2$ per bit erased in the ideal model. On receipts that Landauer quantity is a **labeled estimate**, not a wattmeter reading. Together they imply floors: past a point, more bits stop buying outcomes that matter for a stated benefit. Metabolic Intelligence embodies those floors as **schedules and actuators** at the edge of a tag and at the meter of a lean central plant.
 
@@ -128,7 +128,7 @@ Method is the claim axis. Geography is not. What this class absorbs is stated as
 1. **Physics envelope.** B is joules on a tag episode or watts on a lean-campus import cap. Energy budget is physics: the condition under which the answer is obtained. It is not a discount on the answer, and it is not a Faustian cheaper-answer trade.
 2. **Best answer.** Levers and routing refuse or defer work that would violate B. They do not degrade the certified answer. The answer that commits is the best one. Best has a measured form. Fix a task set, a completeness predicate $C(z)$ and a deadline per task. For each system, plot the fraction of tasks closed with $C(z) = 1$ inside the deadline against joules per task. Refusals and deferrals count as misses on that curve. They are not hidden. The campus scenario table gives the measured cost of the envelope in those terms: interactive share served falls from 100% to 52.6% at today's speeds under a 90/95% cut, to 13% under a 90% cut for 10 h, and to 1% without node sleep. A system is best at envelope B when no other system closes more tasks inside the deadline at the same joules. That frontier is the test. A claim of superiority that does not place a point on it is not yet a result. Budget-native obtain, binding classifiers, physics-informed features, and test-time close are how answers that were thought impossible become reachable. That reach is inside the envelope.
 3. **Binding classifiers.** Binding site, product, allosteric context, abundance as learned weight, a cost on every binding check, early exit. The unit is this study (§5): emulator-measured Cortex-M4 counts and the SmellNet sequential protocol. Tsetlin machines and hyperdimensional computing, cited below, are edge cousins. They are not the enzyme.
-4. **Dual hardware map.** The class runs today on GPUs and MCUs. It points at neuromorphic, analog in-memory, photonic, and adiabatic substrates where energy-based and latent settle can map (Appendix B). The map is operational. A substrate paper is not a second definition of the class. Deployment is the edge and the resource-optimized central. Hyperscale water, power, and cooling plants are not required by design. The interface tax of hosting the class on each existing fabric is §12. Klere is the designed home. The class is not confined to it.
+4. **Dual hardware map.** The class runs today on GPUs and MCUs. It points at neuromorphic, analog in-memory, photonic, and adiabatic substrates where energy-based and latent settle can map (Appendix B). The map is operational. A substrate paper is not a second definition of the class. Deployment is the edge and the resource-optimized central. Hyperscale water, power, and cooling plants are not required by design.
 
 **Cited only.**
 
@@ -225,7 +225,7 @@ flowchart LR
 
 ## 5. Binding classifiers
 
-A **binding classifier** (earlier drafts said "digital enzyme"; tables keep the short label "enzymes") is a silicon recognition unit with a binding site, a product, an allosteric context switch, Hill cooperativity, an abundance that acts as the learned weight, and a cost for every binding check. A bit-enzyme variant uses no multiplies. The unit is algorithmic compute under a local energy cost, not a smaller transformer.
+A **binding classifier** (short label in tables: "enzyme") is a silicon recognition unit with a binding site, a product, an allosteric context switch, Hill cooperativity, an abundance that acts as the learned weight, and a cost for every binding check. A bit-enzyme variant uses no multiplies. The unit is algorithmic compute under a local energy cost, not a smaller transformer.
 
 | Result | Number | Evidence class | Where |
 |---|---|---|---|
@@ -265,11 +265,9 @@ Metabolic schedule (about 9.6 readings/day), October 2026 parts:
 
 Derating. The cell holds about 235 mAh × 3.0 V, about 2.54 kJ, rated at 21°C [65]. At 9.9 µW the tag uses about 312 J a year, so 8.1 years spends the whole rated capacity. With about 1% per year self-discharge, the life is about 7.5 years. A cold-chain tag lives below 21°C, where lithium coin cells deliver less. That derating is not in the model and must be measured at the cold-chain temperature. The 3.0 µW heater average implies a very low duty cycle for a metal-oxide gas sensor that draws milliwatts when on. Whether sensing response holds at that duty is a measurement to make, not a datasheet fact.
 
-Correction (honesty): earlier prose said "the heater is the cost." True for frequent readings. On the metabolic schedule the **MCU sleep floor** is the larger term. Choose the MCU for sleep current. Innatera Pulsar-class neuromorphic parts publish audio/radar milliwatts, not gas-tag microwatt schedules; they are peers on the post-von Neumann map, not drop-in tag winners today.
+The heater dominates at frequent readings. On the metabolic schedule the **MCU sleep floor** is the larger term (6.9 µW against 3.0 µW). Choose the MCU for sleep current. Innatera Pulsar-class neuromorphic parts publish audio/radar milliwatts, not gas-tag microwatt schedules; they are peers on the post-von Neumann map, not drop-in tag winners today.
 
-Drift upload is a scheduled act inside that same sleep and heater discipline, inside the CR2032 envelope. It is not an extra drain beside the envelope. Heater duty is thermal feedback inside the same metabolic control. The published ~10 µW class figure stays datasheet plus schedule model.
 
-Regulatory dates: FDA proposed FSMA 204 compliance move to 20 Jul 2028; Congress barred earlier enforcement. EU PPWR applies since 12 Aug 2026. These dates bear on cold-chain observability buyers, not a product launch slogan.
 
 ---
 
@@ -343,18 +341,6 @@ Metabolic Intelligence accepts that money-price collapse and asks the physical q
 
 <div id="92-two-scarcities--and-the-ecosystem-that-uncapped-campuses-pull" class="anchor-alias" aria-hidden="true"></div>
 
-### 9.2 Two scarcities, and the ecosystem that uncapped campuses pull
-
-| Scarcity | What binds | Who feels it |
-|---|---|---|
-| **Money price of tokens** | Collapsing for fixed benchmarks | Buyers of API seats; can look "free" |
-| **Grid / actuation joules** | Import caps, interconnection queues, heater mJ, battery cycles | Ratepayers, farms, cold-chain operators, campus neighbors |
-| **Ecosystem support (water, dedicated power, hyperscale cooling)** | Uncapped campus design that presupposes private cooling loops and generation | Shared basins, ratepayers, neighbors of hyperscale builds |
-
-People should not have to fight over energy to eat or to use AI. The civic framing is not marketing copy. It is the reason tags that watch food must last years on a coin cell, and lean centrals that serve answers must shed watts when the grid asks, without lying about meters.
-
-**Design consequence (not a liters-saved claim).** Metabolic Intelligence targets energy budgets so low that dedicated water plants, dedicated power plants, and hyperscale cooling loops are **not required** for the workloads this class serves within its envelope; workload equivalence with uncapped operation is not claimed. Evidence in this pack is the envelope itself: ~10 µW tag schedules (datasheet + schedule model) and a grid-following lean campus under OpenADR/DSX (real protocols; plant model). Do **not** invent gallons or liters of water saved, nor upgrade the claim to board `measured_j`. The statement is class design + pack evidence, not a field water meter. Software reference path: no FPGA board result claimed.
-
 ### 9.3 Work-per-MW and Wh/answer as estimates with bands
 
 | Quantity | Point | Band | Evidence | Do not claim |
@@ -384,12 +370,6 @@ Landauer's $k_B T \ln 2$ appears on analytical receipts as a **labeled estimate*
 ---
 
 
-### 9.6 Rebound, care, and the civic bound
-
-Direct rebound (Gillingham, Rapson, and Wagner) is the extra use of a service when its effective price falls. Free-at-margin tokens invite rebound in engagement metrics. Metabolic Intelligence does not estimate a structural rebound parameter. It installs **hard stops**: completeness refuse, budget refuse, and grid cap. Those stops are design rules, not fitted elasticities.
-
-Care and food are not software goods. Baumol-style cost disease (cited in Satiation) warns that sectors with weak productivity growth absorb expenditure even when token prices fall. Cold-chain tags exist so food loss and food energy are measured under a coin-cell envelope, not so a generative model can narrate spoilage without a sensor. Lean centrals that shed watts on OpenADR signals exist so ratepayers are not forced into a false choice between "AI" and "keep the lights on," and so shared water and power ecosystems are not presupposed as private hyperscale plants. The civic bound is: **eat and compute under shared joules, with meters and schedules, without invented board claims or invented liters saved.**
-
 ### 9.7 Cost surface from synthesis to metabolic spend
 
 The cost model prices an answer as $E(x) = \sum \theta(p)\cdot\mu(p,H)$. Metabolic Intelligence adds:
@@ -402,16 +382,6 @@ The cost model prices an answer as $E(x) = \sum \theta(p)\cdot\mu(p,H)$. Metabol
 | Lean campus service | Ordered levers under $P_{\mathrm{cap}}$ | MW import (capped); interactive served |
 
 The same standing rule threads all four layers. Software reference path keeps every layer's joules labeled until Metered.
-
-### 9.8 Resource-optimized deployment vs uncapped hyperscale
-
-| Deployment | Energy budget posture | Ecosystem support presupposed | MEI stance |
-|---|---|---|---|
-| **Edge (tag)** | µW continuous; coin-cell life | None beyond the cell and board | **In scope**: evidence pack for schedule / enzyme evidence |
-| **Resource-optimized central** | MW import **cap**; grid-following levers | Shared grid; no private uncapped cooling/power campus required by class design | **In scope**: evidence pack for OpenADR/DSX + scenarios |
-| **Uncapped hyperscale campus** | Unlimited import until interconnection / cooling bind | Dedicated cooling, dedicated generation, large water uptake | **Out of class**: not the MEI design target |
-
----
 
 ## 11. SOTA at the metabolic frontier
 
@@ -468,63 +438,11 @@ Software reference path: no FPGA board result claimed; estimates ≠ `measured_j
 
 ---
 
-## 13. Review answered by construction
-
-The envelope is the physical condition under which the best answer is obtained. The points below are mechanisms of that class, stated as a rule. Pack numbers stay in their evidence class: emulator counts, datasheet schedules, protocol tests, plant models, calculations. No FPGA board result claimed because meters are the measurement instrument of the solution. Package `measured_j` is written when a meter returns. No shunt joules are invented. Chicken-spoilage Anwar numbers are not published.
-
-### 13.1 A priori difficulty
-
-The obtain router prices cost before spend. $J(m|q)$ is that estimate. The estimator is a Lookup or Formula gear. Its compute is capped so meta-compute cannot eat B. If the estimate of the estimator exceeds the cap, the router takes the default gear and does not run a heavy estimator.
-
-### 13.2 Enzyme capacity
-
-Family index, early exit, and abundance decay are the capacity control. The sequential learning bound is part of the enzyme. Garbage collection is decay of abundance. Cortex-M4 counts in §5 are emulator-measured instructions for the family-index path. They are the compute term of that control.
-
-### 13.3 Non-monotonic utility
-
-Levers do not assume a smooth utility of energy. Certified and interactive work runs to close or to refuse. Deferrable work is what pauses. A breakthrough task is not aborted because a linear spend line was crossed. The answer that commits is the best one. The envelope is not a Faustian discount.
-
-### 13.4 Two ledgers
-
-Compile-time synthesis energy and the serve-time envelope are both counted. Tag microwatts (§6, datasheet plus schedule model) are the serve-time envelope. Offline synthesis sits on the compile ledger $E(x)$. Dual accounting is the law. Compile joules stay on the compile ledger. Serve joules stay on the serve ledger.
-
-### 13.5 Contract-bounded levers
-
-A contract declares invariants: `never_lower_precision`, `max_deferral`. Grid follow happens inside the contract. Shed is last, and only outside the invariant. The ordered levers in §8 are that law on the lean campus. They refuse or defer work that would violate the envelope. They do not degrade the certified answer.
-
-### 13.6 Edge sync inside the envelope
-
-Drift upload is a scheduled act inside the metabolic budget, under the same sleep and heater discipline as the rest of the tag. It is inside the CR2032 envelope. The published schedule (about 10 µW, datasheet plus schedule model) is the envelope those acts share. This study does not add a separate radio joule.
-
-### 13.7 Energy is memory plus compute
-
-The energy metric is $E_{\mathrm{mem}} + E_{\mathrm{compute}}$. Instruction counts are a compute term only. Memory movement is in the budget. Horowitz (2014) places practical CMOS energy in data movement: on the order of 10 pJ for an internal cache access or a functional operation, and 1 to 2 nJ for a DRAM access, in that plenary's technology frame. Those are literature orders for the physics of moving data. They are not this pack's `measured_j`.
-
-### 13.8 Thermal and process loop
-
-The control loop is live. On the campus service, power-model bias is learned (plant model: +5 MW on a hot day). On the edge, the metabolic schedule includes thermal feedback: heater duty follows the thermal state, inside the same envelope. That loop is metabolic control.
-
-<div id="139-open-entropy-is-model-last" class="anchor-alias" aria-hidden="true"></div>
-
-### 13.9 Open entropy is the last cascade stage
-
-A bounded domain is the class. Work covered by Lookup, Formula, or Solver closes there. Open entropy goes to the last cascade stage. That order is the architecture.
-
-### 13.10 Primitive distillation
-
-Grammars and formulas are extracted from traces and installed as Lookup, Formula, or enzyme. Human craft of those leaves is not the long-term path. Sutton's Bitter Lesson (2019) says general methods that scale with compute overtake hand-built features. This class answers that lesson by distillation into Lookup, Formula, and enzyme. It does not answer it with uncapped pretrain.
-
-### 13.11 Tier meters
-
-Energy is reported by tier. When a meter returns, the package field `measured_j` is that reading. Until then the row stays an estimate, a datasheet, an emulator count, a protocol test, or a plant model. Estimates stay estimates.
-
----
-
 ## 15. Measurement classes
 
 Evidence classes used in this study: **real protocol**, **emulator-measured**, **datasheet**, **measured-kernel model**, **looked-up**, **calculation**, **plant model**, **estimate**. Estimates ≠ `measured_j`. Software reference path: no FPGA board result claimed.
 
-Tier meters are how the solution reports energy (§13.11). Package `measured_j` is written when a meter returns. Until then the row stays in the class below. Stake order on the synthesis ledger, for the next meter readings:
+Package `measured_j` is written when a meter returns. Until then the row stays in the class below. Stake order on the synthesis ledger, for the next meter readings:
 
 1. One GB300 pool for a day (energy-per-answer band; campus-scale value of the meter).
 2. Vera Rubin chat curve from a metered pool or AISimulate once Rubin-supported.
@@ -659,17 +577,6 @@ Chung, J.-W., Wu, R., Ma, J. J., and Chowdhury, M. (2026). Where Do the Joules G
 | Latent / EBM optional leaf | GPU ViT / Lean | Analog DenseAM / memristor Hopfield | Cited peers; not meters of this study |
 | Photonic / adiabatic | Lab claims | Joule-floor substrates | Cited; not MEI software class |
 
-## Appendix C. Civic one-pager (for non-specialists)
-
-1. AI answers are getting cheaper in money. Electricity, water, and food cold-chains are not free.
-2. **Metabolic Intelligence** means: the energy envelope is the physical condition of the best answer. It is not the cheapest answer. Levers refuse or defer work that would break the envelope. The answer that commits is the best one.
-3. On a food tag (the **edge**), that means years on a coin cell and smart heating, not a giant model in the package.
-4. On a **resource-optimized central** plant, that means following the grid when asked, keeping interactive work alive, and stopping when the chore is done, not building an uncapped hyperscale campus with its own cooling and power plants.
-5. At those lower budgets, dedicated water, power, and hyperscale cooling are **not required by design** for the workloads this class serves within its envelope. Workload equivalence with uncapped operation is not claimed. We do not invent liters saved; we show the envelope and the pack evidence.
-6. We label every number: measured, datasheet, model, or estimate. We do not invent board joules.
-7. People should not have to fight over energy to eat or to use AI.
-
-
 ## Appendix D. Glossary of definitions
 
 Spell-outs and working definitions used in this study. First use in the body also carries a short gloss; this appendix is the lookup table.
@@ -741,21 +648,3 @@ Sell these as **separate evidence classes**. Do not upgrade a row without changi
 ### E.4 Software reference lock
 
 No FPGA board result claimed. Package `measured_j` only when Metered. No FPGA board result claimed names the meter instrument. It does not weaken the class.
-
-### E.5 Mechanisms of the class (design law)
-
-These rows are the construction in §13. They are not open work. Evidence class on any number stays with the pack row that measured it.
-
-| Mechanism | Law |
-|---|---|
-| A priori obtain | $J(m \mid q)$ before spend. Estimator is Lookup or Formula, capped. Over cap: default gear. |
-| Enzyme capacity | Family index + early exit + abundance decay. Decay is garbage collection. |
-| Non-monotonic utility | Certified and interactive work closes or refuses. Deferrable work pauses. No abort of a breakthrough by linear spend. |
-| Dual ledger | Compile-time synthesis and serve-time envelope are both counted. Tag µW is serve-time. |
-| Contract levers | Invariants `never_lower_precision`, `max_deferral`. Shed last, only outside the invariant. |
-| Edge sync | Drift upload is inside the metabolic budget and the CR2032 envelope. No separate radio joule published. |
-| $E_{\mathrm{mem}}+E_{\mathrm{compute}}$ | Instruction counts are the compute term. Memory movement is in the budget. Horowitz orders are literature physics, not `measured_j`. |
-| Thermal loop | Campus bias learning (plant model) and edge heater feedback are the control. |
-| Model stage, last in the cascade | Open entropy goes to the last cascade stage. That is the architecture. |
-| Primitive distillation | Traces yield Lookup, Formula, and enzyme. Not uncapped pretrain. |
-| Tier meters | `measured_j` when a meter returns. Estimates stay estimates. |

@@ -127,23 +127,30 @@ https://research.openie.dev/papers/three-body/}
 }
 \emph{Version 1.0, 11 October 2026. LaTeX PDF:
 \href{https://research.openie.dev/pdfs/latex/three-body.pdf}{/pdfs/latex/three-body.pdf}
-(\href{https://research.openie.dev/pdfs/latex/three-body.tex}{source}).
-Companion research papers:
-\href{https://research.openie.dev/papers/rce/}{The Reality Code Engine},
-\href{https://research.openie.dev/papers/agency/}{Thermodynamic Bounds
-and an Optimal Tempo for Goal-Holding Agents} and
-\href{https://research.openie.dev/papers/gates/}{Metered Commit Gates}.}
+(\href{https://research.openie.dev/pdfs/latex/three-body.tex}{source})..}
 
-\emph{Interfaces are where systems fail. Make every interface assumption
-explicit, check it, and the orbit holds.}
+\subsection{Abstract}\label{abstract}
 
-This paper holds the engineering and the theory only. The economics of
-interface failure, with every cost estimate labeled by kind, is in its
-companion essay,
-\href{https://research.openie.dev/papers/interface-economics/}{The Price
-of the Unexamined Interface}, which also ties the argument to
-\href{https://research.openie.dev/papers/ai-coding-market/}{The Promised
-Trillion Dollar AI-Coding Market}.
+Large engineering failures often start where one group hands work to
+another and an assumption is never written down. This paper defines
+those handoffs, states when checking them makes a system stable, and
+gives tests that could prove it wrong.
+
+\textbf{In plain words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Most big computer failures happen at the handoff between teams or
+  parts, not inside them.
+\item
+  The cause is usually a guess nobody wrote down, like which units a
+  number is in.
+\item
+  If every such guess is written down and checked by a machine, a fix
+  made in one place stays fixed and does not break anything above it.
+\end{enumerate}
 
 \subsection{1. Thesis}\label{thesis}
 
@@ -168,10 +175,7 @@ carries assumptions: about units, voltages, ranges, timing, memory,
 encodings, versions, operating envelopes and intent. When each body
 assumes that the handoff is not there, or that it is somebody else's
 job, the assumption is never written down, and an assumption that is
-never written down is never checked. That is the sense of the phrase
-David Charlot uses for Open Interface Engineering's work: the chaos
-comes from people assuming the interfaces are not there, and operating
-as if they need not be resolved.
+never written down is never checked.
 
 \textbf{The core claim.} The instability of computing systems is located
 at their unexamined interfaces, not in the bodies. Pursuing artificial
@@ -187,8 +191,7 @@ The claim is engineering and theory. It is stated with definitions in
 \href{https://research.openie.dev/papers/three-body/\#5-definitions-and-propositions}{Section
 5}, it rests on the interface literature reviewed in
 \href{https://research.openie.dev/papers/three-body/\#4-the-interface-literature}{Section
-4}, its first evidence is the Reality Code Engine's whole-stack
-interface method
+4}, its evidence comes from independently tested verified systems
 (\href{https://research.openie.dev/papers/three-body/\#6-the-stabilized-configuration}{Section
 6}), and it carries protocols and falsifiers that can defeat it
 (\href{https://research.openie.dev/papers/three-body/\#8-protocols}{Section
@@ -518,11 +521,13 @@ level \(k\) that passes the check of its own boundary leaves every
 property established by the checks of the other boundaries intact, and
 every level above \(k\) inherits the correction without change.
 
-\emph{Sketch.} This is Proposition R1 of the RCE paper
-(\href{https://research.openie.dev/papers/rce/\#24-gated-verified-recursive-self-improvement}{RCE
-§2.4}) applied to a stack of bodies. Each level above \(k\) consumes
-\(L_k\) only through a checked interface, so if the corrected \(L_k\)
-satisfies that interface, the consumers see a correct input. ∎
+\emph{Sketch.} The checks at the other boundaries evaluate predicates
+over the values that cross those boundaries. The corrected \(L_k\)
+changes only values that cross the boundaries of \(L_k\), and its
+outgoing values satisfy the checked assumption of the boundary above it.
+Each level above \(k\) consumes \(L_k\) only through a checked
+interface, so if the corrected \(L_k\) satisfies that interface, the
+consumers see a correct input. ∎
 
 \textbf{Proposition 4 (the pursuit of AGI forces explicitness).} Let a
 general agent in the sense of Definition 6 be required to pass a
@@ -537,14 +542,13 @@ environment: a fixed unit system, a fixed instruction set, a fixed
 version. A general agent faces environments in which those conventions
 differ, by construction of generality. An assumption that holds in one
 environment and fails in another must be detected to be handled, and
-detecting it is checking it. Under a correctness gate, as in the agency
-paper's gate-then-rank structure
-(\href{https://research.openie.dev/papers/agency/\#21-layer-1-the-definition-and-its-gate-eligibility}{Agency,
-§2.1}), a guess that happens to be wrong is a failed task, not partial
-credit. So the pursuit of generality under a gate is a pressure toward
-explicit, checked interfaces at every boundary the agent touches. The
-proposition does not say that any current system meets this standard. It
-says what the target requires.
+detecting it is checking it. A correctness gate is a test that a run
+either passes or fails, with no partial credit. Under such a gate, a
+guess that happens to be wrong is a failed task, not partial credit. So
+the pursuit of generality under a gate is a pressure toward explicit,
+checked interfaces at every boundary the agent touches. The proposition
+does not say that any current system meets this standard. It says what
+the target requires.
 
 \textbf{Proposition 5 (joules rank the stable configurations).} Among
 stacks that pass the gate, the one that resolves each interface with the
@@ -552,13 +556,13 @@ least energy to completion is preferred, and an explicit check spent
 once at an interface is cheaper over a workload than a failure
 rediscovered at every level above it.
 
-\emph{Sketch.} This is the gate-then-rank ordering of the companion
-papers: correctness is the constraint and joules to completion order the
-passing runs
-(\href{https://research.openie.dev/papers/gates/\#02-energy-to-correct-completion}{Gates,
-§0.2}). A check at the boundary has a fixed cost per crossing. An
-unexamined mismatch has a cost at every level it reaches, and that cost
-recurs on every run until the mismatch is found.
+\emph{Sketch.} The ordering is gate then rank: correctness is a
+constraint every candidate must satisfy, and energy to completion, in
+joules, orders only the candidates that satisfy it, as in constrained
+optimization where the objective is compared only over the feasible set.
+A check at the boundary has a fixed cost per crossing. An unexamined
+mismatch has a cost at every level it reaches, and that cost recurs on
+every run until the mismatch is found.
 
 \subsection{6. The stabilized
 configuration}\label{the-stabilized-configuration}
@@ -567,9 +571,9 @@ configuration}\label{the-stabilized-configuration}
 
 \emph{Figure 2. The stabilized configuration. Diagram. In the physics,
 three bodies keep their relative positions in a frame that rotates with
-them. In computing, the shared frame is an explicit representation of
-intent with every interface assumption checked, so the three bodies keep
-their relations as the system changes. A
+them. In computing, the shared frame is an explicit, machine-checkable
+statement of intent with every interface assumption checked, so the
+three bodies keep their relations as the system changes. A
 \href{https://research.openie.dev/figures/three-body/stabilized.png}{PNG
 copy} is provided.}
 
@@ -578,80 +582,73 @@ copy} is provided.}
 Lagrange's configurations are stable only in a frame that moves with the
 bodies. The computing counterpart is a shared representation that all
 three bodies read and write, in which every interface assumption is a
-checkable statement. The Reality Code Engine supplies one. A program is
-authored once, from intent, as a Form: a state, a set of events and a
-pure, total transition. Every target language and runtime is a
-projection of the Form, and a state the Form does not declare cannot be
-written (\href{https://research.openie.dev/papers/rce/\#1-thesis}{RCE
-§1}). The theorist's statement, the maker's implementation and the
-user's trace are three views of one object, so the handoffs between them
-are checks rather than translations.
+checkable statement: a formal specification, a machine-checked contract,
+or a type. When the theorist's statement, the maker's implementation and
+the user's observed behavior are related by checks against one such
+representation, the handoffs between them are checks rather than
+translations.
 
 \subsubsection{6.2 Every interface assumption
 explicit}\label{every-interface-assumption-explicit}
 
-The RCE paper's whole-stack method
-(\href{https://research.openie.dev/papers/rce/\#46-method-the-whole-stack-evaluated-every-interface-assumption-explicit}{RCE
-§4.6}) lists the boundaries of its own stack, from source to handler,
-handler to sink, log to state, rewrite to Form, stub to escalation and
-Form to target, and states for each the assumption it makes and the
-mechanism that checks it on every run. A failed check locates the break
-at the boundary where it occurs. The correction is made at that level,
-passed through that boundary's check and promoted, and every level above
-inherits it.
-
 \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/stack-checks.png}
 
-\emph{Figure 3. The stack with every interface checked. Diagram after
-RCE §4.6. A
+\emph{Figure 3. The stack with every interface checked. Diagram. A
 \href{https://research.openie.dev/figures/three-body/stack-checks.png}{PNG
 copy} is provided.}
 
-\subsubsection{6.3 The evidence so far}\label{the-evidence-so-far}
+The method has three steps. List every boundary of the stack. For each,
+write the assumption the receiving side relies on as a predicate, and
+name the mechanism that evaluates it on every crossing. When a check
+fails, the break is located at that boundary; the correction is made at
+that level, passed through that boundary's check, and inherited by the
+levels above.
 
-The first evidence comes from RCE's own measurements, reported in its
-paper and summarized here without new claims.
+\subsubsection{6.3 Evidence from verified
+systems}\label{evidence-from-verified-systems}
+
+The existence of stabilized configurations, in the sense of Proposition
+3, is supported by systems built and tested by independent groups.
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Lossless round trips and refusal at entry.} On 10,000
-  preregistered Forms with a frozen engine and zero model calls, every
-  Form round trips to identical bytes, every projection is
-  deterministic, and every malformed input and malformed specification
-  is refused at entry
-  (\href{https://research.openie.dev/papers/rce/\#23-the-ecosystem-at-large-n}{RCE
-  §2.3}). In the terms of this paper, the interfaces between the
-  theorist's Form, the maker's projections and the user's inputs hold on
-  every crossing in that run.
+  \textbf{A verified compiler under random testing.} CompCert is a C
+  compiler whose optimizing middle and back end carry a machine-checked
+  proof that the generated code preserves the semantics of the source
+  {[}39{]}. Yang, Chen, Eide and Regehr ran Csmith, a random program
+  generator, against CompCert and many other compilers. They reported
+  hundreds of previously unknown bugs in the other compilers. In
+  CompCert they found no wrong-code errors in the verified middle end.
+  The defects they did find sat in parts outside the proof, such as the
+  front end and an unverified assumption about the target {[}40{]}.
+  Failures appeared where an assumption was left unchecked, as
+  Propositions 1 and 2 predict, and not across checked boundaries.
 \item
-  \textbf{Corrections carry upward.} In the RCE playground's reference
-  workload, one correction promoted at the sinks lowers cumulative
-  escalations over eight rounds from 21 to 15, with every task closed
-  correctly and no promotion refused
-  (\href{https://research.openie.dev/papers/rce/\#24-gated-verified-recursive-self-improvement}{RCE
-  §2.4},
-  \href{https://research.openie.dev/playground/rce/\#compounding}{playground}).
-  This is Proposition 3 on a small workload.
+  \textbf{A verified kernel boundary.} seL4's proof relates its C
+  implementation to an abstract specification, so that between
+  specification and code nothing is assumed {[}36{]}. The proof is
+  stated relative to explicit assumptions about the compiler, the
+  assembly code and the hardware, which shows the method of Section 6.2
+  in practice: the residual assumptions are written down as the
+  remaining interfaces.
 \item
-  \textbf{Break and catch.} The playground's Interfaces layer breaks
-  each listed assumption in turn and shows the check that detects it
-  (\href{https://research.openie.dev/playground/rce/}{playground}).
+  \textbf{Specifications in industrial practice.} Newcombe and
+  colleagues report that engineers at Amazon Web Services wrote TLA+
+  specifications for core distributed systems, and that model checking
+  found subtle design bugs, some needing long event sequences, that
+  review and testing had missed {[}41{]}.
+\item
+  \textbf{Units as a checked interface.} Kennedy's dimension types make
+  the unit of a quantity part of its type, so that a pound-force-second
+  value cannot be passed where a newton-second value is expected without
+  an explicit conversion {[}42{]}. The interface assumption behind the
+  Mars Climate Orbiter loss {[}12{]} becomes a refusal at compile time.
 \end{itemize}
 
-The gates paper supplies the same structure at the boundary between a
-proposal and an action: a commit gate that refuses a commit whose
-certificate does not hold, with energy accounted for each decision
-(\href{https://research.openie.dev/papers/gates/\#part-i-the-commit-gate-notational-intelligence}{Gates,
-Part I}). The agency paper supplies it for agents in general:
-eligibility is a gate, and among eligible runs intelligence is read as
-progress per joule
-(\href{https://research.openie.dev/papers/agency/\#23-layer-3-calculus-intelligence-as-a-derivative-read-in-hindsight}{Agency,
-§2.3}).
-
-This evidence is about one stack built for the purpose. It shows that
-the stabilized configuration exists and can be operated at large N. It
-does not yet show that the configuration extends to stacks that span
+This evidence comes from single systems, each built with checks in mind.
+It shows that the stabilized configuration exists and can be maintained.
+It does not show that the configuration extends to stacks that span
 several organizations. The protocols of Section 8 are written to test
 that.
 
@@ -665,21 +662,16 @@ treats the hardware as fixed has an unexamined interface at its lowest
 level, and Proposition 2 says that a mismatch there can reach every
 level above.
 
-Open Interface Engineering's public site describes its thesis in these
-terms, with interfaces as the place where systems fail, and lists
-ThermoEdge as a subsidiary building a heterogeneous compute fabric aimed
-at removing most of the energy bill of computation {[}39{]}. No
-ThermoEdge design, measurement or product result is public, and this
-paper reports none. Within this paper, the hardware side is a set of
-interfaces to be made explicit, and any future hardware result enters
-under the same gate and the same joule ranking as the software.
+Within this paper, the hardware side is a set of interfaces to be made
+explicit, and a hardware result enters under the same gate and the same
+energy ranking as software.
 
 \subsection{8. Protocols}\label{protocols}
 
-Each protocol is fixed before its run. Energy figures follow the
-companion papers' labels: \texttt{est\_j} for an analytical estimate,
-\texttt{reported\_j} for an operating system or on-chip counter, and
-\texttt{measured\_j} reserved for a wall meter.
+Each protocol is fixed before its run. Energy figures carry one of three
+labels: \texttt{est\_j} for an analytical estimate, \texttt{reported\_j}
+for a reading from an operating system or on-chip counter, and
+\texttt{measured\_j} for a reading from an external power meter.
 
 \subsubsection{8.1 Interface inventory}\label{interface-inventory}
 
@@ -790,40 +782,9 @@ a handoff occurs, inside one team or across organizations. Every
 approach to building systems, from formal methods to large models with
 tests to hand-written code with review, is placed by the same measure:
 the fraction of its interface assumptions that are explicit and checked,
-read from the inventory protocol of Section 8.1. RCE is one
-configuration in that space, and it checks all of its own.
+read from the inventory protocol of Section 8.1.
 
-\subsection{11. Ties to the companion
-papers}\label{ties-to-the-companion-papers}
-
-\begin{itemize}
-\tightlist
-\item
-  \href{https://research.openie.dev/papers/rce/}{The Reality Code
-  Engine} is the stabilized configuration built for code: one Form,
-  faithful projections, refusal at entry, and the whole-stack interface
-  method of its §4.6.
-\item
-  \href{https://research.openie.dev/papers/gates/}{Metered Commit Gates}
-  gives the gate at the boundary between proposal and action, and the
-  Mixture of Limits principle that the cheapest sufficient mechanism
-  should close each task.
-\item
-  \href{https://research.openie.dev/papers/agency/}{Thermodynamic Bounds
-  and an Optimal Tempo for Goal-Holding Agents} gives the gate-then-rank
-  structure for agents and the reading of intelligence as progress per
-  joule, which Proposition 5 applies to interfaces.
-\item
-  \href{https://research.openie.dev/papers/interface-economics/}{The
-  Price of the Unexamined Interface} is the economics companion: the
-  documented costs of interface failure, labeled as accounted costs or
-  model estimates, read through technical debt and standards economics,
-  and tied to
-  \href{https://research.openie.dev/papers/ai-coding-market/}{The
-  Promised Trillion Dollar AI-Coding Market}.
-\end{itemize}
-
-\subsection{12. Conclusion}\label{conclusion}
+\subsection{11. Conclusion}\label{conclusion}
 
 The three-body problem taught physics that instability can come from the
 relations between simple parts, and that stability, where it exists, is
@@ -1018,7 +979,24 @@ Operationalizing Progress on the Path to AGI,'' \emph{Proceedings of the
 41st International Conference on Machine Learning}, 2024.
 arXiv:2311.02462
 
-{[}39{]} Open Interface Engineering, homepage, accessed 11 October 2026.
-https://openie.dev/
+{[}39{]} X. Leroy, ``Formal verification of a realistic compiler,''
+\emph{Communications of the ACM} 52(7), 2009, pp.~107 to 115.
+\href{https://doi.org/10.1145/1538788.1538814}{doi:10.1145/1538788.1538814}
+
+{[}40{]} X. Yang, Y. Chen, E. Eide and J. Regehr, ``Finding and
+understanding bugs in C compilers,'' \emph{Proceedings of the 32nd ACM
+SIGPLAN Conference on Programming Language Design and Implementation},
+2011, pp.~283 to 294.
+\href{https://doi.org/10.1145/1993498.1993532}{doi:10.1145/1993498.1993532}
+
+{[}41{]} C. Newcombe, T. Rath, F. Zhang, B. Munteanu, M. Brooker and M.
+Deardeuff, ``How Amazon Web Services uses formal methods,''
+\emph{Communications of the ACM} 58(4), 2015, pp.~66 to 73.
+\href{https://doi.org/10.1145/2699417}{doi:10.1145/2699417}
+
+{[}42{]} A. Kennedy, ``Types for Units-of-Measure: Theory and
+Practice,'' in \emph{Central European Functional Programming School},
+Lecture Notes in Computer Science 6299, Springer, 2010, pp.~268 to 305.
+\href{https://doi.org/10.1007/978-3-642-17685-2_8}{doi:10.1007/978-3-642-17685-2\_8}
 
 \end{document}

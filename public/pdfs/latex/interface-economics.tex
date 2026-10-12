@@ -119,24 +119,49 @@ https://research.openie.dev/papers/interface-economics/}
 \href{https://research.openie.dev/pdfs/latex/interface-economics.pdf}{/pdfs/latex/interface-economics.pdf}
 (\href{https://research.openie.dev/pdfs/latex/interface-economics.tex}{source}).}
 
-\emph{The economics companion to
-\href{https://research.openie.dev/papers/three-body/}{The Pursuit of AGI
-Resolves the Three-Body Problem in Computing}. The research paper holds
-the engineering and the theory. This essay is where the interface thesis
-meets prices, budgets and markets.}
-
 \subsection{Abstract}\label{abstract}
 
-The research paper argues that the instability of computing systems
-lives in the interfaces between three bodies, theorists, makers and
-users, where assumptions cross unwritten and unchecked. This essay asks
-what that instability costs, and answers only with figures that a
-primary source states. Each figure is labeled by kind. An
-\textbf{accounted cost} is what an agency or firm reports it actually
-spent or lost. A \textbf{model estimate} is a figure produced by a
-stated method from surveys, interviews or secondary data. A
-\textbf{projection} is a statement about the future. The three kinds are
-not added together.
+This essay collects the published costs of failures that happen at the
+handoffs between parts of a system, and labels each figure by how it was
+produced. It does not add them into one total.
+
+\textbf{In plain words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Some failures at handoffs have exact price tags, like a lost Mars
+  probe that cost hundreds of millions of dollars.
+\item
+  The bigger national numbers are estimates from surveys and models, and
+  none of them counts handoff failures alone.
+\item
+  Writing down and checking what each side assumes is cheap, but the
+  person who does it pays while everyone benefits, so it tends not to
+  get done.
+\end{enumerate}
+
+\subsection{0. Definitions and scope}\label{definitions-and-scope}
+
+An \textbf{interface} is a handoff across which one party's output
+becomes another party's input: from the people who state what a system
+should do (theorists), to those who build it (makers), to those who run
+it (users), or between two levels of a software and hardware stack. An
+\textbf{interface assumption} is a condition on the values that cross a
+handoff which the receiving side relies on for its own correctness, such
+as a unit, a range, a type, a version or an operating envelope. An
+assumption is \textbf{unexamined} when it is relied on but neither
+written down nor checked. A long engineering literature, from Garlan,
+Allen and Ockerbloom on architectural mismatch to Leveson on accidents
+as interaction failures, locates many system failures at such
+assumptions {[}19, 20{]}. This essay asks what those failures cost, and
+answers only with figures that a primary source states. Each figure is
+labeled by kind. An \textbf{accounted cost} is what an agency or firm
+reports it actually spent or lost. A \textbf{model estimate} is a figure
+produced by a stated method from surveys, interviews or secondary data.
+A \textbf{projection} is a statement about the future. The three kinds
+are not added together.
 
 The accounted costs of single interface failures are large and specific:
 the Mars Surveyor 1998 project, which included Mars Climate Orbiter,
@@ -156,18 +181,14 @@ alone. Each contains it.
 Economic claims about software failure travel in three forms that look
 alike and are not. A project budget is an accounting record. A national
 cost estimate is the output of a model whose inputs are surveys, case
-studies and assumptions about scale. A forecast is neither. The
-\href{https://research.openie.dev/papers/ai-coding-market/\#1-projections-and-measurements-are-different-objects}{AI-coding-market
-essay} makes the same separation for the AI coding market, and this
-essay follows its rule: every figure carries its kind, its source and
-what it actually counts.
+studies and assumptions about scale. A forecast is neither. This essay
+follows one rule: every figure carries its kind, its source and what it
+actually counts.
 
-Open Interface Engineering's public site states that more than \$1
-trillion is lost annually to interface and integration failures
-{[}17{]}. That sentence is a headline, not a primary estimate, and the
-site gives no method for it. The nearest primary estimates are listed in
-Section 3. None of them isolates interfaces, so this essay does not map
-them onto that figure or onto any single total.
+Figures for the cost of ``interface failure'' as a single annual total
+circulate without a stated method. None of the primary estimates in
+Section 3 isolates interfaces, so this essay does not map them onto any
+single total.
 
 \subsection{2. Single failures,
 accounted}\label{single-failures-accounted}
@@ -188,7 +209,7 @@ launcher exceeded {[}5{]}. The four Cluster satellites were lost. ESA's
 account of the recovery records the options its Science Programme
 Committee priced in 1996, including 351 million accounting units to
 rebuild the four satellites to the original design, and ESA approved a
-recovery mission, Cluster II, for 214 million ECU in 1997 {[}4, 18{]}.
+recovery mission, Cluster II, for 214 million ECU in 1997 {[}4, 17{]}.
 Kind: accounted cost of the recovery that ESA chose, which is a lower
 bound on the loss, not the value of the satellites or of the delayed
 science.
@@ -226,10 +247,10 @@ estimated the cost of inadequate interoperability in the US capital
 facilities industry at \$15.8 billion a year, from interviews and
 surveys of owners, operators, architects, engineers and contractors
 {[}7{]}. Interoperability here is the ability to exchange and use design
-and operating data across software systems, which is an interface in
-exactly the paper's sense. The report states that its figure omits costs
-it could not quantify. Kind: model estimate, one industry, presented as
-conservative.
+and operating data across software systems, which is an interface in the
+sense defined in the Abstract. The report states that its figure omits
+costs it could not quantify. Kind: model estimate, one industry,
+presented as conservative.
 
 \textbf{Poor software quality, CISQ 2022.} The Consortium for
 Information and Software Quality estimated that the cost of poor
@@ -253,11 +274,12 @@ year worldwide {[}9{]}. Kind: survey-based estimate.
 What these figures share is a structure, not a total. Each counts the
 cost of an assumption that was relied on and not checked: an untested
 path, a data format that does not carry across, a vulnerability at a
-boundary, a legacy system whose contracts no one can restate. The
-research paper's
-\href{https://research.openie.dev/papers/three-body/\#52-propositions}{Proposition
-2} explains why such costs show up far from their cause, which is also
-why national estimates must be modeled rather than counted.
+boundary, a legacy system whose contracts no one can restate. A mismatch
+that is not checked where it arises passes as well-formed input to every
+level above it, so its cost appears far from its cause, as in the Mars
+Climate Orbiter navigation solution, which was internally consistent and
+wrong {[}2{]}. That is also why national estimates must be modeled
+rather than counted.
 
 \subsection{4. Technical debt is an interface
 account}\label{technical-debt-is-an-interface-account}
@@ -267,18 +289,17 @@ code whose structure does not yet match what the team has learned, with
 interest paid on every later change until the debt is repaid {[}10{]}.
 Sculley and colleagues showed that in machine learning systems most of
 that debt sits outside the model, in glue code, configuration, data
-dependencies and undeclared consumers {[}11{]}. Read through the
-research paper, technical debt is the balance of unexamined interface
-assumptions carried on the books. Its interest is Proposition 2: an
+dependencies and undeclared consumers {[}11{]}. In the terms defined
+above, much of technical debt is a balance of unexamined interface
+assumptions carried on the books, and its interest is the cost an
 unchecked mismatch charges every level above it, on every run.
 
 CISQ's estimate of about \$1.52 trillion of accumulated technical debt
 in the United States is a stock, measured in the cost to fix {[}8{]}.
-The annual figures in Section 3 are flows. The research paper's
-Proposition 5 states the economic consequence in the units of the
-companion papers: a check paid once at a boundary costs less over a
-workload than a failure paid again at every level, and the difference
-compounds with use.
+The annual figures in Section 3 are flows. The economic consequence is a
+hypothesis, tested in Section 7: a check paid once at a boundary may
+cost less over a workload than a failure paid again at every level it
+reaches.
 
 \subsection{5. Standards are how markets close
 interfaces}\label{standards-are-how-markets-close-interfaces}
@@ -299,71 +320,70 @@ contribute to productivity and trade {[}16{]}.
 The common thread is that an interface is a public good with private
 costs. Writing an assumption down and checking it benefits every party
 that crosses the boundary, but it is paid for by whoever does the
-writing. That is the economic form of the research paper's observation
-that each body assumes the handoff is someone else's job. Standards
-bodies, regulators and dominant platforms are the institutions that have
-historically paid that cost. A representation in which every interface
-assumption is explicit and checked by construction, as in the
-\href{https://research.openie.dev/papers/rce/}{Reality Code Engine},
-lowers the private cost of closing an interface toward the cost of
-running its check.
+writing. Each party has a reason to treat the handoff as someone else's
+job. Standards bodies, regulators and platform owners are the
+institutions that have historically paid that cost. Machine-checked
+representations, such as types that carry units of measure or formal
+specifications checked by a model checker {[}21, 22{]}, lower the
+private cost of closing an interface toward the cost of running its
+check.
 
-\subsection{6. Ties to the AI coding
-market}\label{ties-to-the-ai-coding-market}
+\subsection{6. Generated code crosses the same
+interfaces}\label{generated-code-crosses-the-same-interfaces}
 
-The
-\href{https://research.openie.dev/papers/ai-coding-market/}{AI-coding-market
-essay} sets out the projections for AI coding: about \$3 trillion a year
-in developer value, company revenue, token volume and capital spending,
-each labeled by kind. Those projections price the generation of code.
-They do not price its interfaces. Every generated change crosses the
-same boundaries as hand-written code, between a specification and an
-implementation, between a library and its users, between software and
-the instruction contract beneath it, and each crossing carries
-assumptions that the generator does not check.
-
-The figures in Section 3 suggest where the value of verification sits.
-If the cost of poor software quality is of the order CISQ estimates, and
-a large share of it is the cost of unchecked assumptions at boundaries,
-then a method that closes interfaces is worth more than a method that
-writes code faster. That is a proposition about where value lies, not a
-measurement. The protocols of the research paper
-(\href{https://research.openie.dev/papers/three-body/\#8-protocols}{Section
-8}) and of the AI-coding-market essay are the way to measure it.
+Code produced by an automated generator crosses the same boundaries as
+hand-written code: between a specification and an implementation,
+between a library and its users, between software and the instruction
+contract beneath it. Each crossing carries assumptions that a generator
+does not check unless it is built to. The figures in Section 3 therefore
+bear on automated code generation too. If a large share of the cost of
+poor software quality is the cost of unchecked assumptions at
+boundaries, then the value of closing interfaces may exceed the value of
+writing code faster. That is a hypothesis about where value lies, not a
+measurement. The protocols in Section 7 are the way to measure it.
 
 \subsection{7. Propositions and
 protocols}\label{propositions-and-protocols}
 
 \textbf{Proposition E1 (the interface share).} In a population of
 software failures with accounted costs, the share of cost whose cause is
-a violated interface assumption, in the sense of the research paper's
-Definition 3, exceeds the share whose cause lies wholly inside one body.
+a violated interface assumption, as defined in the Abstract, exceeds the
+share whose cause lies wholly inside one body.
 
 \emph{Protocol.} Take a public incident corpus with cost fields, such as
 agency mishap reports or regulatory filings. Two coders classify each
-cause as interface or internal using the paper's definitions, blind to
-cost. Report the cost-weighted interface share with a bootstrap interval
-and the coders' agreement.
+cause as interface or internal using the definitions in the Abstract,
+blind to cost. Report the cost-weighted interface share with a bootstrap
+interval and the coders' agreement.
 
 \textbf{Proposition E2 (checks pay).} For a fixed workload, the cost of
 adding an explicit check at an interface is lower than the expected cost
 of the failures it refuses, summed over every level the failure would
-otherwise reach.
+otherwise reach. Formally, for an interface crossed \(N\) times, let
+\(c\) be the cost of one check in dollars, \(\pi\) the probability that
+a crossing violates the assumption, and \(L_m\) the cost in dollars that
+an uncaught violation imposes at level \(m\) of the \(M\) levels it
+reaches. The check pays when \(N c < N \pi \sum_{m=1}^{M} L_m\), that
+is, when \(c < \pi \sum_m L_m\). The two accounted cases of Section 2
+have \(\sum_m L_m\) of order \(10^8\) dollars, so the condition holds
+for any check costing less than \(10^8 \pi\) dollars per crossing.
 
-\emph{Protocol.} Run the research paper's break and catch protocol
-(\href{https://research.openie.dev/papers/three-body/\#82-break-and-catch}{§8.2})
-on a system with priced levels, recording the cost of each check and the
-cost of each uncaught violation where it lands. Report both in joules
-and in dollars at a stated price.
+\emph{Protocol.} On a system whose levels have known operating costs,
+inject a violation of each recorded interface assumption on a fixed seed
+set, recording the cost of each check and the cost of each uncaught
+violation where it lands. Report both in joules and in dollars at a
+stated price.
 
 \textbf{Proposition E3 (closing an interface lowers its private cost).}
 When the interface assumption is part of a shared representation and
 checked by construction, the cost to a single party of closing it falls
 toward the cost of running the check.
 
-\emph{Protocol.} The cross-body handoff protocol of the research paper
-(\href{https://research.openie.dev/papers/three-body/\#84-cross-body-handoff}{§8.4}),
-with labor hours recorded on each side of the handoff in both arms.
+\emph{Protocol.} Choose a real handoff between organizations, such as a
+specification passed to an implementer. Carry it in one arm as prose
+documentation and in the other as a machine-checked representation.
+Record labor hours on each side of the handoff and the failures located
+at the interface in each arm, with Wilson 95\% intervals.
 
 \subsection{8. Conclusion}\label{conclusion}
 
@@ -375,8 +395,8 @@ as a whole. No primary source states the cost of interface failure by
 itself, and this essay does not supply one. What the evidence supports
 is a structure: costs that arise at boundaries, propagate upward and
 compound as debt, in markets that underprovide the public good of a
-checked interface. The research paper gives that structure its theory
-and its tests.
+checked interface. The propositions of Section 7 state how that
+structure can be tested.
 
 \subsection{References}\label{references}
 
@@ -452,11 +472,27 @@ Update}. Report for the UK Department for Business, Innovation and
 Skills, 2010.
 https://www.gov.uk/government/publications/economics-of-standardisation-update-to-report
 
-{[}17{]} Open Interface Engineering, homepage, accessed 11 October 2026.
-https://openie.dev/
-
-{[}18{]} European Space Agency, ``The Resurrection of the Cluster
+{[}17{]} European Space Agency, ``The Resurrection of the Cluster
 Scientific Mission,'' \emph{ESA Bulletin} 91, 1997.
 https://www.esa.int/esapub/bulletin/bullet91/b91cred.htm
+
+{[}19{]} D. Garlan, R. Allen and J. Ockerbloom, ``Architectural
+mismatch: why reuse is so hard,'' \emph{IEEE Software} 12(6), 1995,
+pp.~17 to 26.
+\href{https://doi.org/10.1109/52.469757}{doi:10.1109/52.469757}
+
+{[}20{]} N. G. Leveson, \emph{Engineering a Safer World: Systems
+Thinking Applied to Safety}. MIT Press, 2012.
+\href{https://doi.org/10.7551/mitpress/8179.001.0001}{doi:10.7551/mitpress/8179.001.0001}
+
+{[}21{]} A. Kennedy, ``Types for Units-of-Measure: Theory and
+Practice,'' in \emph{Central European Functional Programming School},
+Lecture Notes in Computer Science 6299, Springer, 2010, pp.~268 to 305.
+\href{https://doi.org/10.1007/978-3-642-17685-2_8}{doi:10.1007/978-3-642-17685-2\_8}
+
+{[}22{]} C. Newcombe, T. Rath, F. Zhang, B. Munteanu, M. Brooker and M.
+Deardeuff, ``How Amazon Web Services uses formal methods,''
+\emph{Communications of the ACM} 58(4), 2015, pp.~66 to 73.
+\href{https://doi.org/10.1145/2699417}{doi:10.1145/2699417}
 
 \end{document}

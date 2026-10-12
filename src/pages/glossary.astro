@@ -3,119 +3,103 @@ import Layout from '../layouts/Layout.astro';
 
 const terms = [
   {
-    term: 'est_j',
-    def: 'An analytical energy estimate: operation counts times stated energy constants. It is never measured_j or reported_j.',
+    term: "commit gate",
+    def: "A check that runs before an irreversible action. A proposal may not authorize itself. The gate commits or refuses and writes a receipt.",
   },
   {
-    term: 'trajectory_j',
-    def: 'Work computed from measured physical trajectories and a calibrated potential, for physical act cycles at the k_B T scale (agency paper, Section 8.8). Never merged with the other labels.',
+    term: "receipt",
+    def: "A record written for every decision: the prediction and its timestamp before the act, the outcome, the match, the joules by label, and the refusal reason if any.",
   },
   {
-    term: 'σ-law selector',
-    def: 'A Mixture of Limits instance that picks the next act by its ratio of pass probability to joule cost and stops when the next act no longer pays for its joules (agency paper).',
+    term: "completeness predicate C(z)",
+    def: "A written test that maps the state z of a task to 0 or 1, for example tests pass, a proof checks, or an output matches a reference. A task is complete when C(z) = 1.",
   },
   {
-    term: 'WCA (Wise Computer Automation)',
-    def: 'The Rust software reference implementation of the commit envelope in Metered Commit Gates, Part I.',
+    term: "energy to correct completion (J*)",
+    def: "The least expected energy, in joules (J), that a system needs to reach C(z) = 1 with failure probability at most δ. Systems that pass are ordered by J*; ordering by a real number is a total preorder.",
   },
   {
-    term: 'EPU (Energy Processing Unit)',
-    def: 'The hardware product class named on the product pages. A product term, not a research result.',
+    term: "value of information (VoI)",
+    def: "The expected gain in a decision's payoff from observing a quantity before deciding, minus the cost of observing it (Howard, 1966).",
   },
   {
-    term: 'MathGround',
-    def: 'The OpenIE cascade order with type-enforced replay classes named in Metered Commit Gates, Part II.',
+    term: "Landauer bound",
+    def: "The minimum heat dissipated by erasing one bit at temperature T: k_B T ln 2, about 2.87 × 10⁻²¹ J at 300 K (Landauer, 1961).",
   },
   {
-    term: 'flowG',
-    def: 'A stand-alone language project. The Reality Code Engine is its academic first-pass demonstration; the two stay separate.',
+    term: "cheapest-first cascade",
+    def: "An order of mechanisms (gears) tried from lowest to highest expected energy, stopping at the first that passes the check. Expected energy is minimized by trying gears in decreasing order of p_i / c_i, with p_i the pass probability and c_i the expected energy (Simon and Kadane, 1975).",
   },
   {
-    term: 'task completion',
-    def: 'The stop: a task is complete when its completeness predicate C(z) holds. Further synthesis on that task buys nothing (Task Satiation).',
+    term: "Mixture of Limits",
+    def: "The rule of using the cheapest gear that passes the check and stopping when further spend cannot change C(z). The cheapest-first cascade is one instance.",
   },
   {
-    term: 'Universal Law of Agency (proposed)',
-    def: 'The proposed definition plus gate for an agent, from the agency paper. It is a proposal, and every mention carries that status.',
+    term: "σ-law selector",
+    def: "A selector that picks the next act by the ratio of pass probability to energy cost and stops when the next act's expected gain is below its energy cost.",
   },
   {
-    term: 'Periodic Stack',
-    def: 'An OpenIE teaching table of allowed acts on a named surface (for example Computation at compute.openie.dev). Mixture of Limits navigates that table. It does not replace it.',
+    term: "plateau",
+    def: "The least spend that closes a task. Past it, further tokens, parameters or joules cannot change C(z).",
   },
   {
-    term: 'replay class',
-    def: 'A label on a closed answer that states how the answer was produced. Deterministic closes stay Deterministic. ModelGenerated answers cannot be rewritten as Deterministic.',
+    term: "replay class",
+    def: "A label on an answer stating how it was produced. An answer labeled ModelGenerated cannot be relabeled Deterministic.",
   },
   {
-    term: 'value of information (VoI)',
-    def: 'The expected gain in a stated benefit from one more observation or call, minus its cost. When VoI is zero past a named floor, further spend on that coordinate is refuse success.',
+    term: "software reference implementation",
+    def: "The software used to test a claim without board-level metering. Its energy figures are estimates.",
   },
   {
-    term: 'software reference implementation',
-    def: 'The software path that tests a study claim without board synthesis or package metering. Receipts on that path label energy as estimate and leave measured_j unset until a named meter returns. This is the one meaning used across the catalog.',
+    term: "est_j",
+    def: "An analytical energy estimate: operation counts times stated energy constants, in joules.",
   },
   {
-    term: 'evidence classes',
-    def: 'Modeled means a stated formula. Simulated means a program or Verilog run. Board-measured means a named meter on a stated device and workload. Estimates are not measured_j.',
+    term: "reported_j",
+    def: "An energy figure read from an operating-system or on-chip counter, such as RAPL package energy minus a stated idle baseline.",
   },
   {
-    term: 'board-result flag (board_metered)',
-    def: 'Repository honesty flag. True only when a labeled meter returned an FPGA board energy reading for the study: the KV260 rungs in Metered Commit Gates. A board that is programmed without a meter, such as the Alchitry Pt V2, leaves it false.',
+    term: "measured_j",
+    def: "A joule reading from an external wall or shunt meter on a named rail, with its calibration stated. Never summed with reported_j, est_j or trajectory_j.",
   },
   {
-    term: 'measured_j',
-    def: 'A joule reading from a wall or shunt meter on a named rail, with its calibration stated. It is the only label for a joule read from such a meter, and it is never summed with reported_j, est_j or trajectory_j. Closes on the software reference implementation leave it unset. No paper on this site has a measured_j figure yet.',
+    term: "trajectory_j",
+    def: "Work computed from measured physical trajectories and a calibrated potential, for physical act cycles near the k_B T scale.",
   },
   {
-    term: 'Klere',
-    def: 'Hardware and the product home for Metabolic Intelligence (klere.ai). Metabolic Intelligence is the AI product class and runs on any compute fabric. Klere is not the research claim being sold as the paper. Its material sits in the product white papers, apart from the research catalog.',
+    term: "evidence classes",
+    def: "Modeled: a stated formula. Simulated: a program or hardware-description run. Measured: a named meter on a stated device and workload.",
   },
   {
-    term: 'Metabolic Intelligence',
-    def: 'Budget-native computer intelligence. A fixed energy budget is the physical condition of the best answer. Research owns the class. Klere owns the product embodiment.',
+    term: "board_metered",
+    def: "A page flag that is true only when a labeled meter returned a board energy reading for that paper.",
   },
   {
-    term: 'commit gate',
-    def: 'A check that runs before an irreversible act. A proposal may not authorize itself. The gate commits or refuses and writes a receipt. Metered Commit Gates, Part I.',
+    term: "Form and fit",
+    def: "A program written as a state machine P = (S, E, δ, D, λ): states, events, a pure step function, an append-only log whose fold is the state, and outputs. The form is that shape (Gurevich's Abstract State Machine theorem); the fit is a program's vocabulary, rules and initial state.",
   },
   {
-    term: 'energy to correct completion (J*)',
-    def: 'The joules a system spends to reach a correct completion of a stated task. Correctness is the constraint. Among systems that pass, J* orders them. Metered Commit Gates, Section 0.2.',
+    term: "Reality Code Engine (RCE)",
+    def: "A programming system, studied in its own paper, in which a program is written once as a Form and code in other languages is generated from it.",
   },
   {
-    term: 'plateau',
-    def: 'The floor of a task: the least spend that closes it. Past the plateau, additional tokens, parameters, or joules do not purchase verifiable progress. Mixture of Limits stops there.',
+    term: "Metabolic Intelligence",
+    def: "A class of computer intelligence designed to run inside a fixed energy budget B, studied in its own white paper.",
   },
   {
-    term: 'Mixture of Limits',
-    def: 'The OpenIE philosophy. Use the cheapest gear that is sufficient. There exist floors past which additional tokens, parameters, or joules do not purchase verifiable progress; spend past the floor is waste. That floor is the plateau (threshold convergence). Mixture of Limits is not one fixed cascade. Lookup, then Formula, then Solver, then Model is one instance. The σ-law selector of the agency paper is another.',
+    term: "WCA (Wise Computer Automation)",
+    def: "The Rust software implementation of the commit gate studied in Metered Commit Gates, Part I.",
   },
   {
-    term: 'Notational Intelligence',
-    def: 'The commit gate and its receipt: propose, then certify, then commit or refuse, then write a receipt. The proposer does not authorize itself. Metered Commit Gates states the gate; the agency paper reads the receipts.',
-  },
-  {
-    term: 'Reality Code Engine (RCE)',
-    def: 'A coding engine that runs software as deterministic handlers and retrieves, adapts and proves fits instead of generating them. A resolver answers each new case once; the answer is installed as a handler, and the gears run cheapest first. It is one Mixture of Limits instance and the academic first-pass demonstration of the flowG language project. See /papers/rce/.',
-  },
-  {
-    term: 'Form and fit',
-    def: 'A program is a database functional state machine P = (S, E, δ, D, λ): states over a fixed vocabulary, events, a pure step, an append-only log whose fold is the state, and outputs. The form is that shape, the same for every program (Gurevich\'s Abstract State Machine theorem). The fit is the vocabulary, rules and initial data that fill it. One Form, many fits.',
-  },
-  {
-    term: 'reported_j',
-    def: 'An energy figure read from an operating-system or on-chip counter, such as RAPL (Running Average Power Limit) package energy minus a stated idle baseline. It is not measured_j (see that entry).',
-  },
-  {
-    term: 'one-direction assumption',
-    def: 'The economic premise that the design space of autonomous computer automation has one direction, toward high energy, high compute and high entropy, so every task pays for generation again. The space has several continuous axes: energy per task, entropy and determinism, verification strength, reuse and compounding, and model reliance. Every projection in The Promised Trillion Dollar AI-Coding Market rests on the premise: per-token rent and the model in the loop forever. The essay states where it breaks when an approach that optimizes those axes, such as RCE, covers a task. See /papers/ai-coding-market/.',
+    term: "proposed Universal Law of Agency",
+    def: "A proposed definition of an agent with an energy budget and a refusal rule, stated in the agency paper. It is a proposal.",
   },
 ];
 ---
 
 <Layout
   title="Glossary"
-  description="Shared terms used across the OpenIE research catalog: Periodic Stack, replay class, value of information, the software reference implementation, and evidence classes, including whether a result was measured on synthesized hardware."
+  description="Terms used on research.openie.dev, each with its definition, units where they apply, and its source."
 >
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
     <p class="section-label mb-4">research.openie.dev</p>
@@ -123,8 +107,7 @@ const terms = [
       Glossary
     </h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
-      Terms the papers use. Each paper also keeps a short terms note for the words it needs on the page.
-      The software reference implementation has one meaning, applied consistently here.
+      Terms used on this site. Every paper also defines the terms it uses, so no paper depends on this page.
     </p>
 
     <dl class="mt-10 space-y-6">

@@ -131,84 +131,28 @@ LaTeX PDF:
 \href{https://research.openie.dev/pdfs/latex/ai-coding-market.pdf}{/pdfs/latex/ai-coding-market.pdf}
 (\href{https://research.openie.dev/pdfs/latex/ai-coding-market.tex}{source}).}
 
-\emph{The economics companion to
-\href{https://research.openie.dev/papers/rce/}{The Reality Code Engine:
-One Lossless Form for Native, Verified, Low-Energy Programming}. The
-research paper holds the engineering, the theory and the measurements.
-This essay is where the theory and the economics meet.}
-
 \subsection{Abstract}\label{abstract}
 
-The trillion-dollar AI coding market is David Charlot's informed
-hyperbolic claim, and the real projections bear out its scale. A venture
-estimate puts the value of the world's software developers at about \$3
-trillion a year and calls AI coding a market that can support ``even a
-trillion-dollar giant'' {[}1{]}. Two AI coding companies reported over
-\$1 billion and over \$2.5 billion in annualized revenue within a year
-of each other {[}5, 6{]}. One frontier lab is valued at \$380 billion,
-and its coding product is its showcase {[}6{]}. One provider's token
-volume grew from 9.7 trillion to over 3.2 quadrillion tokens a month in
-two years {[}8{]}. Capital expenditure by the largest technology
-companies exceeded \$400 billion in 2025 {[}10{]}.
+Forecasts say AI coding will be worth trillions of dollars a year. This
+essay lists who says so, labels each number by what it is, and names the
+assumptions the forecasts share.
 
-Every one of these projections assumes the same thing: that the space of
-autonomous computer automation has one direction. Along it, energy,
-compute and entropy rise together, a model sits in the loop for every
-task, and every task pays rent per token. The space has more directions
-than that. Approaches are placed along continuous axes: energy per task,
-entropy and determinism, verification strength, reuse and compounding,
-and model reliance. Many combinations exist, and real systems mix
-several. The error in the narrative is not any one approach. It is the
-assumption that the space has only one direction.
+\textbf{In plain words}
 
-The \href{https://research.openie.dev/papers/rce/}{RCE research paper}
-measures one point in that space, chosen to optimize all five axes
-together. RCE is a native code ecosystem. A program is authored once,
-from intent, as a Form, a lossless encoding of state, events and pure
-transitions, and every target language is a faithful projection of it. A
-state the Form does not declare cannot be written, so a wrong program is
-refused at entry rather than found and fixed later. Every fit that
-passes the gate is stored and reused, so the ecosystem compounds. On
-10,000 preregistered Forms with a frozen engine and 0 model calls, every
-Form round trips to identical bytes, every projection is deterministic,
-every malformed input is refused at entry, and the Python projection
-replays the reference trace on 9,999
-(\href{https://research.openie.dev/papers/rce/\#23-the-ecosystem-at-large-n}{RCE
-§2.3}). Code from other languages enters by lift, and on lifted code the
-repair gears restore 520,541 of 520,821 one-token faults and 63.7\% of
-21,320 single-statement Java bugs with 0 model calls
-(\href{https://research.openie.dev/papers/rce/\#6-lift-entering-the-ecosystem-from-other-languages}{RCE
-§6}). Where RCE covers a task, the marginal cost of the task falls
-toward the energy to run it, and a market priced on generation loses its
-base on that task. This essay separates the projections from the
-measurements, names what each projection assumes, and states where it
-breaks.
-
-\textbf{Shared thesis, stated once for every paper.} Energy to run is
-the only true metric of computer intelligence. All other factors
-collapse to zero. The gate form defines what that means. Among runs that
-pass the task's completeness predicate \(C(z)\) within the stated budget
-and deadline, systems are ranked by joules to completion, \(J^*\).
-Correctness, deadlines and task size are the gate, not terms in the
-score. Parameters, tokens, benchmark scores and prices carry zero weight
-in the ranking
-(\href{https://research.openie.dev/papers/agency/\#1-thesis}{Agency,
-Section 1}). Estimates are never \texttt{measured\_j}.
-
-\textbf{Price, a separate claim, for the economics companions.} A price
-trend is a separate claim, labeled as one. Epoch AI reports that the
-cost of a given level of AI performance has fallen about 47 percent per
-quarter since 2023, about 13 times per year (Emberson and Roodman,
-\emph{The plunging price of thought}, 22 September 2026). If that trend
-continues, energy becomes the dominant marginal cost of inference. That
-is a cited trend with a condition, not a measured collapse.
-\href{https://research.openie.dev/papers/spellcheck/}{Spell Check is
-Global} is an existence proof that some computer intelligence
-commoditizes to bundled zero price. The theory these companions use is
-in \href{https://research.openie.dev/papers/agency/}{the agency paper},
-\href{https://research.openie.dev/papers/gates/}{Metered Commit Gates}
-and \href{https://research.openie.dev/papers/rce/}{The Reality Code
-Engine}.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The big numbers about AI coding are mostly guesses about the future,
+  not counts of money already earned.
+\item
+  Almost all of them assume that every new piece of code needs a large
+  AI model, paid by the word, forever.
+\item
+  If working code can be saved and reused, the cost of a repeated job
+  falls toward the cost of the electricity to run it, and those
+  forecasts would be too high.
+\end{enumerate}
 
 \subsection{1. Projections and measurements are different
 objects}\label{projections-and-measurements-are-different-objects}
@@ -238,8 +182,10 @@ funding valuation \\
 buyers \\
 \textbf{Filed} & A figure in a regulatory filing \\
 \textbf{Measured} & A count or an energy reading from a run whose
-artifacts are kept. In RCE, energy carries its own label:
-\texttt{est\_j}, \texttt{reported\_j} or \texttt{measured\_j} \\
+artifacts are kept. Energy readings carry one of three labels:
+\texttt{est\_j} for an analytical estimate, \texttt{reported\_j} for an
+operating system or on-chip counter, \texttt{measured\_j} for an
+external power meter \\
 \end{longtable}
 }
 
@@ -495,8 +441,8 @@ by more than 50\%'' & Company-reported & DeepSeek {[}21{]} \\
 
 The 13 times a year of {[}4{]} is one point in a wide range {[}34{]}.
 The fall is driven by competition and open weights, as the DeepSeek cut
-shows {[}21{]}. It needs no energy accounting. That is the first decline
-of Section 6. Reuse adds a different one: calls per task.
+shows {[}21{]}. It needs no energy accounting. That is the first of the
+two declines in Section 5. Reuse adds a different one: calls per task.
 
 Figure 3 draws the two price series.
 
@@ -559,23 +505,8 @@ Sequoia Capital {[}23{]} \\
 }
 
 The rent that must be serviced is hardware rent. Capex and commitments
-of this size are paid back through usage priced above its energy. That
-is the base that reuse removes on covered tasks.
-
-Figure 4 places the projected grid electricity beside the measured
-joules of a task.
-
-\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/energy.png}
-
-\emph{Figure 4. Energy at the grid and at the task. Data figure. Panel
-a: IEA estimate and projection {[}10, 11{]}. Panel b, log scale: one
-median text prompt, 0.24 Wh measured by the operator {[}12{]}; RCE
-solved repair tasks, \texttt{est\_j} and \texttt{reported\_j}
-(\href{https://research.openie.dev/papers/rce/\#63-energy}{RCE §6.3}).
-The two panels are different units and are not converted into each
-other. A
-\href{https://research.openie.dev/figures/ai-coding-market/energy.png}{PNG
-copy} is provided.}
+of this size are paid back through usage priced above its energy. On
+tasks that can be closed by reuse, that base is smaller.
 
 \subsubsection{2.7 Productivity evidence}\label{productivity-evidence}
 
@@ -619,7 +550,7 @@ authors call the new data ``an unreliable signal'' & METR {[}26{]} \\
 The measured effects range from a 19\% slowdown to a 56\% speed-up on a
 toy task. Both factors of the value estimate, the developer count and
 the productivity multiple, are soft. That weakens the trillion. It also
-weakens any claim that the value reuse frees is a known number.
+means that any value freed by cheaper coding is not a known number.
 
 \subsection{3. What the projections
 assume}\label{what-the-projections-assume}
@@ -656,273 +587,123 @@ good converges to its marginal cost, and so does pricing'' {[}1{]}. This
 essay agrees, and asks what the marginal cost of a correct coding task
 is.
 
-\subsection{4. The theory that prices the
-task}\label{the-theory-that-prices-the-task}
+\subsection{4. What a correct task
+costs}\label{what-a-correct-task-costs}
 
-The \href{https://research.openie.dev/papers/rce/}{RCE research paper}
-supplies three results that turn the question into a quantity.
+Define, for one coding task, \(C \in \{0, 1\}\) the outcome of its
+acceptance check (tests pass, a proof checks, or an output matches a
+reference), \(J\) the energy used to reach \(C = 1\), in joules, \(c_J\)
+the price of energy, in dollars per joule, and \(c_{\text{check}}\) the
+cost of running the check, in dollars. A buyer pays for \(C = 1\), not
+for tokens.
 
-\textbf{Correctness is the gate.} A task is done when its completeness
-predicate \(C(z)\) holds: its tests pass, a proof exists, or an
-agreement trace matches
-(\href{https://research.openie.dev/papers/rce/\#1-thesis}{RCE §1}). A
-buyer pays for \(C(z) = 1\), not for tokens.
+\textbf{Energy bounds marginal cost.} The marginal cost of a run is at
+least \(c_J J\), since the electricity must be bought. Under
+competition, price tends toward marginal cost {[}1, 14{]}.
 
-\textbf{Joules are the ranking.} Among systems that pass the gate, the
-one with the fewest joules to completion, \(J^*\), wins
-(\href{https://research.openie.dev/papers/agency/\#1-thesis}{Agency
-§1}). In a competitive market, sellers that pass the same gate compete
-on cost, and the cost floor of a task is the energy to complete it plus
-the price of the proof.
+\textbf{Much code is reused.} Gurevich proved that every sequential
+algorithm is captured by a sequential abstract state machine: a set of
+states and a transition rule {[}35{]}. Lopes and colleagues measured
+that about 70\% of the code on GitHub consists of clones of previously
+created files {[}36{]}. Where a passing solution already exists, a task
+can be closed by retrieving and checking it rather than generating it
+again.
 
-\textbf{The Form is authored once and reused.} A program in the
-ecosystem is written once, from intent, as a Form, and every target is a
-projection of it, so the cost of a fit is paid once and every later use
-runs at the handler floor
-(\href{https://research.openie.dev/papers/rce/\#1-thesis}{RCE §1}).
-\textbf{Most fits already exist.} A program is a tuple
-\(P = (S, E, \delta, D, \lambda)\), and by Gurevich's Abstract State
-Machine theorem every sequential algorithm has that shape
-(\href{https://research.openie.dev/papers/rce/\#3-the-form}{RCE §3}).
-Programs differ in fit, and most fits exist already: ``70\% of the code
-on GitHub consists of clones of previously created files''
-(\href{https://research.openie.dev/papers/rce/\#7-reuse-evidence}{RCE
-§7}). Equivalent fits pass the same gate, so extraction picks the
-least-joule one (RCE Proposition 3).
+\textbf{Proposition E0 (price of a covered task).} Call a task covered
+when a stored solution passes its check. Let \(J_{\text{floor}}\) be the
+energy to retrieve, apply and check that solution. Under competition
+among sellers whose results pass the same check, the price of a covered
+task tends toward
 
-\textbf{Proposition E0 (price of a covered task).} Let a task be covered
-when a stored fit passes its gate. Among sellers that pass the gate,
-competition drives the price of a covered task toward
-\(c_J \cdot J^*_{\text{floor}} + c_{\text{proof}}\), where \(c_J\) is
-the price of a joule, \(J^*_{\text{floor}}\) is the energy to retrieve,
-apply and check the fit, and \(c_{\text{proof}}\) is the cost of the
-check. Generation enters only on uncovered tasks.
+\[p_{\text{covered}} \to c_J \, J_{\text{floor}} + c_{\text{check}}.\]
 
-Mixture of Limits is the philosophy behind the proposition: there is a
-minimal amount of anything to accomplish a task, and any more is waste
-(\href{https://research.openie.dev/papers/gates/\#part-ii-the-cascade-mixture-of-limits}{Metered
-Commit Gates, Part II}). Per-token rent past the floor bills for waste.
+Generation is needed only on uncovered tasks. For a task stream with
+covered fraction \(f \in [0, 1]\) and mean generation cost
+\(p_{\text{gen}}\) on uncovered tasks, the expected price per task is
+\(\bar p = f \, p_{\text{covered}} + (1 - f) \, p_{\text{gen}}\). The
+fraction \(f\) is not yet measured (Proposition E4).
 
-\subsection{5. The measurements}\label{the-measurements}
+\subsection{5. Where the projections are
+fragile}\label{where-the-projections-are-fragile}
 
-These are measurements, labeled as RCE labels them. They come from the
-\href{https://research.openie.dev/papers/rce/}{RCE research paper}. The
-first rows measure the ecosystem itself; the rows after them measure
-repair of code lifted from other languages
-(\href{https://research.openie.dev/papers/rce/\#6-lift-entering-the-ecosystem-from-other-languages}{RCE
-§6}).
+\textbf{Per-token pricing.} A task closed by reuse needs no tokens, so a
+revenue line priced per token earns nothing on it. Total token revenue
+on a task stream scales with \(1 - f\).
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Measurement
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Result
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Label
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Where
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Form ecosystem, 10,000 preregistered Forms, lossless round trip and
-deterministic projection & 10,000 of 10,000, 0 model calls & Measured
-counts &
-\href{https://research.openie.dev/papers/rce/\#23-the-ecosystem-at-large-n}{RCE
-§2.3} \\
-Form ecosystem, malformed inputs and specifications refused at entry &
-10,000 of 10,000, 0 model calls & Measured counts &
-\href{https://research.openie.dev/papers/rce/\#23-the-ecosystem-at-large-n}{RCE
-§2.3} \\
-Form ecosystem, Python projection replays the reference trace byte for
-byte & 9,999 of 10,000, 0 model calls & Measured counts &
-\href{https://research.openie.dev/papers/rce/\#23-the-ecosystem-at-large-n}{RCE
-§2.3} \\
-Lifted code, L0 one-token faults, 9 real repositories, held-out test
-split & 520,541 of 520,821 (0.9995, 95\% CI 0.9994 to 0.9995), 0 model
-calls & Measured counts &
-\href{https://research.openie.dev/papers/rce/\#61-l0-one-token-faults}{RCE
-§6.1} \\
-Lifted code, L0, 4 repositories never used for tuning & 23,015 of 23,015
-(95\% CI 0.9998 to 1.0000), 0 model calls & Measured counts &
-\href{https://research.openie.dev/papers/rce/\#61-l0-one-token-faults}{RCE
-§6.1} \\
-Lifted code, L1 Java, ManySStuBs4J 2.0, held-out, whole file & 13,586 of
-21,320 (0.637, 0.631 to 0.644), 0 model calls; 9,288 of 24,072 (0.386)
-from the hunk alone & Measured counts &
-\href{https://research.openie.dev/papers/rce/\#62-l1-one-statement-bugs-from-real-histories}{RCE
-§6.2} \\
-Lifted code, L1 Python, TSSB-3M v1.0.0, held-out & 27,266 of 157,089
-(0.174, 0.172 to 0.175), 0 model calls & Measured counts &
-\href{https://research.openie.dev/papers/rce/\#62-l1-one-statement-bugs-from-real-histories}{RCE
-§6.2} \\
-Energy per solved task, all rungs & 0.10 J to 0.40 J & \texttt{est\_j}
-(CPU seconds × 10 W) &
-\href{https://research.openie.dev/papers/rce/\#63-energy}{RCE §6.3} \\
-Energy per solved task, RAPL subsample & 0.056 J (L0, 3,000 tasks),
-0.026 J (L1, 690 solved of 2,000); ±10 J on run totals &
-\texttt{reported\_j} (package counter less a stated idle baseline) &
-\href{https://research.openie.dev/papers/rce/\#63-energy}{RCE §6.3} \\
-\end{longtable}
-}
+\textbf{The model in every loop.} If a solution found once is stored and
+checked, later tasks of the same shape do not need the model, so the
+model calls per task fall as \(f\) grows. Whether they do on real work
+is measured by Proposition E3.
 
-\texttt{measured\_j} is reserved for a wall meter and is empty in every
-row.
+\textbf{Energy per task.} One median text prompt to a production
+assistant is measured by its operator at 0.24 Wh, or 864 J {[}12{]}, and
+the IEA puts reasoning and agentic queries at hundreds or thousands of
+times the energy of a simple one {[}10{]}. No public measurement
+compares generation and retrieval on the same tasks, so no ratio is
+stated here.
 
-\subsection{6. Where the projections
-break}\label{where-the-projections-break}
+\textbf{Two declines multiply.} Write the cost per task as
+\(p = n \cdot q\), with \(n\) model calls per task and \(q\) dollars per
+call. The price per call at fixed performance falls by a factor of 9 to
+900 a year, depending on the task {[}4, 34{]}. Reuse lowers \(n\). A
+projection that extrapolates token volume models only \(q\).
 
-\textbf{Per-token rent breaks on covered tasks.} A program authored as a
-Form is compiled to every target with 0 tokens: 10,000 of 10,000
-preregistered Forms compiled, projected and gated with no model call
-{[}RCE §2.3{]}. On lifted code, every covered repair also bought 0
-tokens: 520,541 one-token repairs and 40,852 single-statement repairs
-from real histories {[}RCE §6.1, §6.2{]}. A revenue line priced per
-token earns nothing on a task that needs no token.
+\textbf{Bundling.} A good whose marginal cost is near zero, and which
+complements a tool people already have, tends to be bundled into that
+tool, and its separate price disappears {[}13, 14{]}. Nalebuff showed
+that a bundle can deter entry {[}32{]}, and Adams and Yellen that it can
+discriminate on price {[}33{]}; Spolsky described the strategy of
+commoditizing a complement {[}31{]}. Pricing changes are visible: GitHub
+moved Copilot's individual plans to usage-based billing from 1 June 2026
+{[}30{]}, and Cursor moved Pro from request limits to pass-through API
+pricing in 2025 {[}18{]}.
 
-\textbf{AI in the loop forever breaks at promotion.} The model is paid
-once for a new case; the gate admits the fit as a handler, and later
-cases of the same shape close without it
-(\href{https://research.openie.dev/papers/rce/\#42-the-gears}{RCE
-§4.2}). Where that holds, task 10,000 does not cost what task 1 cost.
-Whether model calls per round reach zero across real specifications is
-measured at large N by
-\href{https://research.openie.dev/papers/rce/\#86-convergence-of-model-calls-at-large-n}{RCE
-§8.6}.
+\textbf{What survives.} The value estimate of Section 2.1 can hold. What
+is fragile is the assumption that the value is collected as a charge on
+generation, since that charge applies only to the fraction \(1 - f\).
 
-\textbf{High energy is not required for a correct result.} A held-out
-repair passed the gate at 0.026 to 0.056 reported joules per solved task
-on a package counter, with no model {[}RCE §6.3{]}. One median text
-prompt to a production assistant is measured at 0.24 Wh, or 864 J
-{[}12{]}. An agentic coding task uses many prompts, and the IEA puts
-agentic queries at hundreds or thousands of times the energy of a simple
-one {[}10{]}. These are different tasks on different machines, so they
-are not a ratio. They are an order of magnitude to test, under Protocol
-E1.
-
-\textbf{Coverage is measured per class.} The rungs give coverage within
-classes of task: nearly all one-token faults, and 63.7\% (Java, whole
-file; 38.6\% from the hunk alone) and 17.4\% (Python) of
-single-statement bugs, where the open cases are the ones whose intent
-bits lie outside the hunk or are new
-(\href{https://research.openie.dev/papers/rce/\#60-the-repair-ladder-on-lifted-code}{RCE
-§6.0}). The share of all real coding volume that falls in covered
-classes is Proposition E5.
-
-\textbf{Two declines multiply.} The price per call falls 9 to 900 times
-a year at fixed performance, depending on the task {[}4, 34{]}.
-Promotion drives calls per task to zero on covered cases {[}RCE §8.6{]}.
-The cost per task is the product of the two. A projection that
-extrapolates token volume prices only the first.
-
-\textbf{The Spell Check pattern.}
-\href{https://research.openie.dev/papers/spellcheck/}{Spell Check is
-Global} records a capability whose marginal cost fell to about zero and
-that complemented a tool everyone already had. It was bundled into the
-editor and its separate price disappeared, as bundling economics
-predicts {[}13, 14{]}. A covered coding task has the same two
-properties: its marginal cost falls to the handler floor, and it
-complements editors and repositories people already have. The prediction
-is the same: the covered task is bundled, and what stays priced is the
-uncovered case and the proof.
-
-\textbf{Bundling by the platform owner.} The Spell Check pattern has an
-owner. The bundle is made by whoever owns the editor, the repository or
-the cloud. Spolsky named the tactic: commoditize your complement
-{[}31{]}. Nalebuff showed that a bundle can bar entry {[}32{]}, and
-Adams and Yellen that it discriminates on price {[}33{]}. It is
-happening: GitHub moved Copilot's individual plans to usage-based
-billing from 1 June 2026 {[}30{]}, and Cursor moved Pro from request
-limits to pass-through API pricing in 2025 {[}18{]}. A platform can give
-the model layer away and keep the rent in the IDE and the cloud. An
-energy-priced engine competes with a zero-priced bundle only where the
-gate is open to it: where the tests, the proof and the receipt are the
-buyer's, not the platform's.
-
-\textbf{One Form in place of many languages.} The RCE paper states the
-thesis that one universal Form, with every language a projection and
-every program a lift, replaces the need for any other language
-(\href{https://research.openie.dev/papers/rce/\#36-one-ecosystem-lossless-and-the-universality-thesis}{RCE
-§3.6}). The market reading is this. Much of the spend the projections
-count is translation between languages, frameworks and their versions,
-and the reconciliation of implementations that drift. In an ecosystem
-where a program is written once and every target is emitted, that spend
-has no task to buy. Adoption is the open quantity, and it is a market
-question, not a theorem.
-
-\textbf{What survives.} The value estimate of section 2.1 can hold.
-Developers can produce more. What breaks is the claim that the value is
-captured as rent on generation. The conclusion is conditional. Where
-coverage is high and the platform does not bundle, value created at a
-falling marginal cost goes to whoever holds the gate, the proof and the
-low-entropy floor, and much of it goes to the buyer. Where the platform
-bundles, the evidence says the gate-holder is the platform.
-
-\subsection{7. Demand}\label{demand}
+\subsection{6. Demand}\label{demand}
 
 Cheaper tasks can raise total demand. The venture essay expects it: ``we
-believe Jevon's Paradox in this case holds'' {[}1{]}.
-\href{https://research.openie.dev/papers/satiation/}{Task Satiation
-vs.~Aggregate Rebound in AI Demand} separates the two effects. Per-task
-appetite stops at the completion predicate. Aggregate use can still
-grow, because cheaper synthesis opens new tasks. Reuse changes the first
-effect and leaves the second open. A larger market of covered tasks is a
-market whose marginal cost is the floor, not the frontier. The one
-published elasticity is small. Across tasks in Anthropic's API sample,
-each 1\% increase in cost is associated with a 0.29\% decrease in usage
-frequency {[}29{]}. That is cross-sectional across tasks, not a price
-change over time. Read as it stands, demand is inelastic: price declines
-shrink revenue on a fixed task set, which supports the essay's reading
-of rent, and they do not by themselves make coding used far more.
+believe Jevon's Paradox in this case holds'' {[}1{]}. Two effects should
+be separated. Demand for one task stops once \(C = 1\). Total use can
+still grow, because cheaper work opens new tasks. The one published
+elasticity is small. Across tasks in Anthropic's API sample, each 1\%
+increase in cost is associated with a 0.29\% decrease in usage
+frequency, an elasticity of \(\varepsilon \approx -0.29\) {[}29{]}. That
+is cross-sectional across tasks, not a price change over time. With
+\(|\varepsilon| < 1\), a price decline on a fixed task set lowers
+revenue, since revenue \(R = pQ\) changes by
+\(dR/R = (1 + \varepsilon)\, dp/p\).
 
-\subsection{8. Propositions and
+\subsection{7. Propositions and
 protocols}\label{propositions-and-protocols}
 
 \textbf{Proposition E1 (the cost curves cross).} For a stream of tasks
-in one repository, the cumulative cost per resolved task of RCE falls
-below that of a generation agent after a finite number of tasks.
-\emph{Protocol:} run
-\href{https://research.openie.dev/papers/rce/\#83-a-wall-meter}{RCE
-Protocol 8.3} and a plain generation agent on the same issue stream
-under a wall meter. Report \texttt{measured\_j} and dollars per resolved
-task by task index, and the crossing index.
+in one repository, the cumulative cost per resolved task of a method
+that stores and reuses checked solutions falls below that of a method
+that generates every change, after a finite number of tasks.
+\emph{Protocol:} run both on the same issue stream under an external
+power meter. Report \texttt{measured\_j} and dollars per resolved task
+by task index, and the crossing index.
 
 \textbf{Proposition E2 (price follows the floor).} Where a coding
-capability is covered by retrieval and rules, its market price falls
-toward the energy to run it plus the cost of the proof. \emph{Protocol:}
-track list prices of a covered capability class against its measured run
-energy over time, in the manner of the Spell Check price series.
+capability can be closed by retrieval and rules, its list price falls
+toward \(c_J J_{\text{floor}} + c_{\text{check}}\). \emph{Protocol:}
+track list prices of such a capability class against its measured run
+energy over time.
 
-\textbf{Proposition E3 (compute scale is not a moat on covered tasks).}
-On tasks RCE covers, the resolve rate does not rise with the compute of
-the last gear. \emph{Protocol:} run
-\href{https://research.openie.dev/papers/rce/\#82-swe-bench-lite-offline}{RCE
-Protocol 8.2} with no model, a small local model and a frontier model as
-the last gear. Compare resolve rates on the tasks closed before the last
-gear.
+\textbf{Proposition E3 (the token share of cost).} In a repository where
+reuse grows, the share of task cost paid as tokens falls.
+\emph{Protocol:} log tokens, joules and dollars per closed task by
+round, and report the token share of cost by round.
 
-\textbf{Proposition E4 (the token share of revenue).} In a repository
-where coverage grows, the share of task cost paid as tokens falls with
-coverage. \emph{Protocol:} log tokens, joules and dollars per closed
-task by round in the RCE convergence protocol with a priced model
-resolver
-(\href{https://research.openie.dev/papers/rce/\#86-convergence-of-model-calls-at-large-n}{RCE
-§8.6}), labeled, and report the token share of cost by round.
-
-\textbf{Proposition E5 (coverage).} The share of real coding task volume
-that falls in classes RCE covers is measurable. \emph{Protocol:} draw a
-random sample of merged pull requests from public repositories (GitHub
-reports 518.7 million merged in a year {[}17{]}), classify each by
-whether frozen G0 to G2 gears produce a gate-passing patch, and report
-the covered fraction with a 95\% interval. Until that number exists,
-Proposition E0 applies to an unmeasured share.
+\textbf{Proposition E4 (coverage).} The covered fraction \(f\) of real
+coding task volume is measurable. \emph{Protocol:} draw a random sample
+of merged pull requests from public repositories (GitHub reports 518.7
+million merged in a year {[}17{]}), test each for a retrieved solution
+that passes the repository's tests, and report \(f\) with a 95\% Wilson
+interval.
 
 \subsection{References}\label{references}
 
@@ -1056,5 +837,15 @@ Burden of Monopoly,'' \emph{Quarterly Journal of Economics} 90(3), 1976.
 {[}34{]} Epoch AI, ``LLM inference prices have fallen rapidly but
 unequally across tasks,'' data insight.
 https://epoch.ai/data-insights/llm-inference-price-trends
+
+{[}35{]} Y. Gurevich, ``Sequential abstract-state machines capture
+sequential algorithms,'' \emph{ACM Transactions on Computational Logic}
+1(1), 2000, pp.~77 to 111.
+\href{https://doi.org/10.1145/343369.343384}{doi:10.1145/343369.343384}
+
+{[}36{]} C. V. Lopes, P. Maj, P. Martins, V. Saini, D. Yang, J. Zitny,
+H. Sajnani and J. Vitek, ``DéjàVu: a map of code duplicates on GitHub,''
+\emph{Proceedings of the ACM on Programming Languages} 1(OOPSLA), 2017,
+article 84. \href{https://doi.org/10.1145/3133908}{doi:10.1145/3133908}
 
 \end{document}

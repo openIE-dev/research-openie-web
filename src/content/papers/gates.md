@@ -742,7 +742,7 @@ Out of scope for the emulator: training DiffLogic in the browser, claiming Artix
 
 ## II. Abstract
 
-Mixture of Limits is a navigation rule for computer intelligence, and it is threshold convergence. For a task there is a **floor**: the minimal spend that closes it. Tokens, parameters, or joules spent past the floor buy no verified progress on the task, so they are waste. The rule rests on information theory and physics, and it has a long history in science. Compression into predictive formulas and invariants has repeatedly done more with less than enumeration of cases: Kepler's laws over Tycho's tables, Newton's closed forms, Shannon's accounting of bits, and Landauer's thermodynamic floor on irreversible erasure. Mixture of Limits states that lineage as a rule a machine can run. Its standard instance is **Lookup → Formula → Solver → Model**, and it closes through Part I's record: propose → certify → commit or refuse → receipt. Unstructured input such as speech, pixels, or free text gets a bounded front gear first, a small quantized transducer that emits a typed request; the cascade then runs on that request (§II.11.1).
+Mixture of Limits is a navigation rule for computer intelligence, and it is threshold convergence. For a task there is a **floor**: the minimal spend that closes it. Tokens, parameters, or joules spent past the floor buy no verified progress on the task, so they are waste. The rule rests on information theory and physics, and it has a long history in science. Compression into predictive formulas and invariants has repeatedly done more with less than enumeration of cases: Kepler's laws over Tycho's tables, Newton's closed forms, Shannon's accounting of bits, and Landauer's thermodynamic floor on irreversible erasure. Mixture of Limits states that lineage as a rule a machine can run. Its standard instance is **Lookup → Formula → Solver → Model**, and it closes through Part I's record: propose → certify → commit or refuse → receipt.
 
 Mixture-of-Experts (MoE) routing works inside a generative model and decides which parameters run. Mixture of Limits works around any gear, including a model, and decides whether to spend at all. It names its floors explicitly: value of information (VoI), grammar coverage, energy, certificate, and settle refuse. The two compose: an MoE model can be the Model gear of a Mixture of Limits cascade. Past the floor, the remaining engineering is to reach the same verified result with fewer joules, which is the subject of §II.8. The software reference `mol prove` shows that the rule and its runtime exist in software. Catalog and Landauer figures on its receipts are **estimates**, and `measured_j` is set only when a labeled meter returns a reading.
 
@@ -762,7 +762,6 @@ Mixture-of-Experts (MoE) routing works inside a generative model and decides whi
 
 Lookup → Formula → Solver → Model is the default order of trial. It is one instance of the rule in Section II.2. Floors stop escalation when more bits stop buying outcomes: VoI, grammar, energy estimate, certificate, settle refuse. Every close goes through propose → certify → commit or refuse → receipt. Section II.8 surveys ways to spend less once the floor is reached. It is a survey under the rule, not the rule itself.
 
-Each class of embodiment reaches a limit of its own. A decision model stops at a typed probability. A bounded ask stops at a typed value or at not-sure. A statechart stops at a legal transition. An energy-based settle stops at a low-energy configuration. A visual editor stops at the chart a person can audit. None of them is the whole of an intelligent system. They work together: the chart is the door, the decision model may fill a proposal, the energy settle may score a configuration, and something outside the model still commits or refuses. Mixture of Limits is the navigation rule for that interplay, and refuse is a lawful success. The author's thesis is stated here once, with its gate form. Energy to run is the only true metric of computer intelligence. All other factors collapse to zero. In gate form: correctness is the gate, and among systems that pass it, joules alone order them. §II.8.5.1 places public instances of each class under that rule.
 
 ---
 
@@ -776,15 +775,15 @@ Information theory gives the modern accounting of that pattern. Shannon (1948) m
 
 **Thesis.** Reliable computer intelligence comes from finding the floor for each task and stopping there. Adding tokens, parameters, or experts past the floor does not raise the value of information for the stated benefit. Mixture of Limits is the executable navigation rule that binds the named floors: VoI, grammar coverage, energy as a labeled estimate, certificate, and settle refuse. Once VoI is zero past a floor, more spend buys nothing verifiable on that coordinate, and the remaining work is to reach the same result with fewer joules.
 
-The floors themselves are established theory: Shannon, Landauer, Kolmogorov, Solomonoff, Chaitin, and Howard's value of information state them, and formula-first science keeps confirming them. What remains hard is embodiment: applied mathematics built into materials and devices so that the cheap gears are cheap in joules, certificates are enforced before irreversible acts, and meters report what was spent (§II.8.0.1).
+The floors themselves are established theory: Shannon, Landauer, Kolmogorov, Solomonoff, Chaitin, and Howard's value of information state them, and formula-first science keeps confirming them.
 
-Many current techniques serve that remaining work: deeper latents, energy-based hybrids, world models, test-time compute, super learning, state-space hybrids, mixture of experts, and the cache, routing, and decode methods of §II.8.13 and §II.8.14. Each is a way to spend less once the floor is known. None of them removes a floor. §II.8.5.1 makes a separate point: each class of embodiment stops at its own object, and the classes work together under this rule. §II.8.12 places that spend on real devices.
+Many current techniques serve that remaining work: deeper latents, energy-based hybrids, world models, test-time compute, super learning, state-space hybrids, mixture of experts, and the cache, routing, and decode methods of §II.8.13 and §II.8.14. Each is a way to spend less once the floor is known. None of them removes a floor. §II.8.12 places that spend on real devices.
 
 This paper's contribution for Part II is the statement of the rule, grounded in the clean-room `mixture-of-limits` software reference (Apache-2.0 OR MIT). Part I supplies the commit record. Mixture of Limits decides *which gear closes* and *when refuse is success*.
 
 Three measurement facts constrain every later number in Part II. First, joules from catalog surrogates and OpCounter-style analytics are **estimates**, not board power. Second, Landauer annotations are **estimates**, distinct from RAPL, NVML, or `measured_j`. Third, the Mixture of Limits reference makes no board measurement: `measured_j` is set only when a labeled probe returns a reading. The only board joules in this paper are Part I's KV260 readings.
 
-**Scope of Part II.** Section II.2 states the rule and its floors. Section II.3 states the cost model $E(x) \ge \theta(D)\cdot\mu(S,V)$. Section II.4 describes the cascade, the close, and when cheapest first is optimal. Section II.5 connects to the stop on task completion. Section II.6 maps each verified criterion of the software reference to its claim. Section II.7 sketches the mathematics of the VoI stop, grammar coverage, and settle refuse. Section II.8 surveys related work: the established results that state the floors, the historical lineage, formula and mechanism systems, the limit of each embodiment class (§II.8.5.1), and the techniques that reduce spend once the floor is reached (§II.8.7 to §II.8.14). Section II.9 sets Mixture of Limits beside MoE and model-to-model routing, and states the baselines a cascade claim must beat. Section II.10 lists open questions. Section II.11 states the engineering work that remains: a front gear for unstructured input, cheap routing checks, growing the stack in open domains, measurement tiers, and the developer surface.
+**Scope of Part II.** Section II.2 states the rule and its floors. Section II.3 states the cost model $E(x) \ge \theta(D)\cdot\mu(S,V)$. Section II.4 describes the cascade, the close, and when cheapest first is optimal. Section II.5 connects to the stop on task completion. Section II.6 maps each verified criterion of the software reference to its claim. Section II.7 sketches the mathematics of the VoI stop, grammar coverage, and settle refuse. Section II.8 surveys related work: the established results that state the floors, the historical lineage, formula and mechanism systems, and the techniques that reduce spend once the floor is reached (§II.8.7 to §II.8.14). Section II.9 sets Mixture of Limits beside MoE and model-to-model routing, and states the baselines a cascade claim must beat.
 
 ---
 
@@ -1143,14 +1142,6 @@ Mixture of Limits is an executable navigation rule over floors that information 
 
 <div id="801-the-gap-is-embodiment-not-awareness" class="anchor-alias" aria-hidden="true"></div>
 
-### II.8.0.1 The remaining work is embodiment
-
-The floors are known. The table above is the evidence: Shannon measured information; Howard priced information for decisions; Landauer and Bennett priced irreversible erasure; Kolmogorov, Solomonoff, and Chaitin priced shortest programs and incompleteness; Feynman taught the physical limits of computation; SINDy, PySR, AI Feynman, AI-Newton, AlphaGeometry, and mechanistic world models show formulas, sparsity, verification, and mechanisms closing tasks that enumeration handles at greater cost.
-
-What remains hard is **embodying** those floors in real systems: materials and devices that make Lookup, Formula, and Solver cheap in joules, certificates enforced before irreversible acts (Part I), and receipts that keep estimates apart from `measured_j`. `mol prove` shows that the rule and its runtime exist in software. Embodiment in materials and devices is open work.
-
-<div id="81-historical-lineage-compression-beats-enumeration" class="anchor-alias" aria-hidden="true"></div>
-
 ### II.8.1 Historical lineage: compression beats enumeration
 
 **Tycho Brahe → Kepler.** Brahe's program was high-fidelity enumeration. Kepler's three laws compressed those tables into predictive relations. Enumeration was necessary input; the law was the compressible object that stopped needing every future observation.
@@ -1181,13 +1172,6 @@ Other systems in the survey (AtomAgents and SciAgents, KeplerAgent and NewtonBen
 **Mixture of Limits reading of Tier A.** Where a recovered formula or an executable mechanism covers the task, it closes with less spend than escalating tokens. That is a statement about cost on covered tasks. It is not a ranking of methods in general.
 
 <div id="83-what-mixture-of-limits-adds" class="anchor-alias" aria-hidden="true"></div>
-
-### II.8.3 What Mixture of Limits adds
-
-Tier A systems recover or verify formulas. Classical IT already priced bits, VoI, and erasure. Mixture of Limits names the **navigation rule** that decides *when* Lookup/Formula/Solver suffice, *when* to refuse, and *how* receipts label estimated vs measured joules, then implements a clean-room close loop. That loop is constructive existence in software under those floors, not a materials result or new physics.
-
-
-<div id="84-latent-space-depth-buys-compression-not-freedom-from-floors" class="anchor-alias" aria-hidden="true"></div>
 
 ### II.8.4 Latent space: depth buys compression, not freedom from floors
 
@@ -1227,90 +1211,6 @@ Verified here: the public architecture story and the cascade map: energy-based s
 
 <div id="851-embodiment-classes-the-convergence-is-hybrid-interplay" class="anchor-alias" aria-hidden="true"></div>
 
-### II.8.5.1 Embodiment classes: the convergence is hybrid interplay
-
-§II.8.5 already separates the objects inside one public stack. The energy-based settle returns a low-energy configuration. The scalar over a trace, as §II.8.5 cites, is constraint energy. It is not a measured joule. The language model beside it returns candidates. Neither object is the commit. Close remains propose, then certify, then commit or refuse, then a receipt (§II.4). The same separation is the limit of each embodiment class. It is not a feature of one name.
-
-A **decision model** stops at a typed probability. The return is a yes or no, a choice, or a score, each with a probability. Whatever route, escalation, or deferral follows is outside that return. The model does not commit. A probability is not an act.
-
-A **bounded ask** stops at a typed value, or at not-sure. The ask writes no text and takes no action. Not-sure is a refuse object, not a generated answer.
-
-A **statechart** stops at a legal transition. An event changes state only when that state allows it. An illegal event does not transition. The object returned is the next legal state, or no transition. A library transition is not an external commit.
-
-A **visual statechart editor** stops at the chart a person can audit. The editor's object is the chart. The chart is the door: what the chart does not allow does not pass. The editor does not commit the act behind the door.
-
-An **energy-based settle**, already placed in §II.8.5, stops at a low-energy configuration. Constraint energy is not `measured_j`. A low-energy configuration is not an irreversible act.
-
-None of these classes is the whole intelligence. The convergence is hybrid interplay. The chart is the door. The decision model may fill a proposal. The bounded ask may return a typed value or not-sure. The energy settle may score a configuration. Something outside the model still commits or refuses. Mixture of Limits is the navigation rule of that interplay: Lookup → Formula → Solver → Model by default. Refuse is success. Correctness is the gate, and among systems that pass it, joules alone order them. Constraint energy remains a score on a configuration. It is not a joule.
-
-A shared request shape is not shared authority. Two typed answers still do not commit. These stops are not plateau knobs inside one generator (§II.8.7). Stacking classes does not produce a commit. Nothing in the class map is a measurement of this study.
-
-<div id="class-map" class="anchor-alias" aria-hidden="true"></div>
-
-### II. Class map
-
-The class map places each public instance under the object that instance returns. Rows are ordered by class. A project that returns two objects appears twice, once for each object. The map is not a ranking.
-
-| Class | Object returned | Instance |
-|---|---|---|
-| Decision model | Typed probability | [Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) |
-| Decision model | Typed probability | [Clef](https://huggingface.co/Cloudflare/clef) |
-| Decision model | Typed probability | [d1](https://docs.liquid.ai/lfm/models/decision-models) |
-| Decision model | Typed probability | [Solar Decide](https://console.upstage.ai/api/systemone) |
-| Decision model | Typed probability | [pplx-decider](https://huggingface.co/perplexity-ai/pplx-decider-v1-27b) |
-| Decision model | Typed probability | [Kev](https://huggingface.co/jaredpalmer/kev-4b) |
-| Decision model | Typed probability | [Laya](https://huggingface.co/convaiinnovations/laya) |
-| Decision model | Typed probability | [Bespoke Nimble](https://huggingface.co/bespokelabs/Bespoke-Nimble-9B) |
-| Decision model | Typed probability | [OpenThai-SystemOne](https://huggingface.co/iapp/OpenThai-SystemOne) |
-| Decision model | Typed probability | [Decider](https://huggingface.co/Mapika/decider-4b) |
-| Decision model | Typed probability | [OpenJev](https://huggingface.co/openjev/openjev) |
-| Decision model | Typed probability | [Mica](https://huggingface.co/sky7350/Mica-v0.1-4B) |
-| Decision model | Typed probability | [Winnow](https://huggingface.co/EldanRing/Winnow-12B) |
-| Decision model | Typed probability | [CLM](https://huggingface.co/Contrastive-LM/CLM-v0.1-8B) |
-| Decision model | Typed probability | [Julia](https://huggingface.co/SupersonicLabs/Julia-1) |
-| Decision model | Typed probability | [NanoJev](https://huggingface.co/C-Tianyu/NanoJev) |
-| Decision model | Typed probability | [open-jev DeBERTa](https://huggingface.co/com-kotobalabs/open-jev-deberta-v3-large) |
-| Decision model | Typed probability | [fastText](https://fasttext.cc/docs/en/supervised-tutorial.html) |
-| Decision model | Typed probability | [Cloud Natural Language](https://docs.cloud.google.com/natural-language/docs/classifying-text) |
-| Bounded ask | Typed value, or not-sure | [ThinkThen](https://thinkthen.dev/reference/answers/) |
-| Bounded ask | Typed value, or not-sure | [GLiNER2.5-Decide](https://huggingface.co/fastino/GLiNER2.5-Decide) |
-| Statechart | Legal transition | [XState](https://github.com/statelyai/xstate) |
-| Statechart | Legal transition | [Qt State Machine](https://doc.qt.io/qt-6/qtstatemachine-index.html) |
-| Statechart | Legal transition | [Qt SCXML](https://doc.qt.io/qt-6/qtscxml-overview.html) |
-| Statechart | Legal transition | [Boost.Statechart](https://www.boost.org/doc/libs/latest/libs/statechart/doc/index.html) |
-| Statechart | Legal transition | [Boost.MSM](https://www.boost.org/doc/libs/1_86_0/libs/msm/doc/HTML/index.html) |
-| Statechart | Legal transition | [Boost.SML](https://github.com/boost-ext/sml) |
-| Statechart | Legal transition | [Akka FSM](https://doc.akka.io/libraries/akka-core/current/fsm.html) |
-| Statechart | Legal transition | [Spring Statemachine](https://github.com/spring-attic/spring-statemachine) |
-| Statechart | Legal transition | [Apache Commons SCXML](https://commons.apache.org/proper/commons-scxml/index.html) |
-| Statechart | Legal transition | [transitions](https://github.com/pytransitions/transitions) |
-| Statechart | Legal transition | [Sismic](https://sismic.readthedocs.io/en/latest/) |
-| Statechart | Legal transition | [Stateless](https://github.com/dotnet-state-machine/stateless) |
-| Statechart | Legal transition | [QP/C](https://www.state-machine.com/qpc/) |
-| Statechart | Legal transition | [AASM](https://github.com/aasm/aasm) |
-| Statechart | Legal transition | [SCION](https://github.com/jbeard4/SCION) |
-| Statechart | Legal transition | [javascript-state-machine](https://github.com/jakesgordon/javascript-state-machine) |
-| Statechart | Legal transition | [state_machines](https://github.com/state-machines/state_machines) |
-| Statechart | Legal transition | [HFSM2](https://github.com/andrew-gresyk/HFSM2) |
-| Statechart | Legal transition | [uSCXML](https://github.com/tklab-tud/uscxml) |
-| Visual statechart editor | Auditable chart | [Stately](https://stately.ai/) |
-| Visual statechart editor | Auditable chart | [itemis CREATE](https://www.itemis.com/en/products/itemis-create/) |
-| Visual statechart editor | Auditable chart | [QM](https://www.state-machine.com/products/qm) |
-| Visual statechart editor | Auditable chart | [Engineering Rhapsody](https://www.ibm.com/products/engineering-rhapsody) |
-| Visual statechart editor | Auditable chart | [Enterprise Architect](https://sparxsystems.com/resources/tutorials/uml2/state-diagram.html) |
-| Visual statechart editor | Auditable chart | [Papyrus](https://eclipse.dev/papyrus/) |
-| Visual statechart editor | Auditable chart | [StarUML](https://staruml.io/) |
-| Visual statechart editor | Auditable chart | [Visual Paradigm](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-state-machine-diagram/) |
-| Visual statechart editor | Auditable chart | [IAR Visual State](https://www.iar.com/embedded-development-tools) |
-| Visual statechart editor | Auditable chart | [sketch.systems](https://sketch.systems/) |
-| Visual statechart editor | Auditable chart | [Qt Creator](https://doc.qt.io/qtcreator/creator-scxml.html) |
-| Energy-based settle | Low-energy configuration | [Kona](https://logicalintelligence.com/blog/energy-based-models-for-reasoning) |
-| Energy-based settle | Low-energy configuration | [Simulated Bifurcation Machine](https://www.global.toshiba/ww/products-solutions/ai-iot/sbm/intro.html) |
-| Energy-based settle | Low-energy configuration | [Fixstars Amplify AE](https://amplify.fixstars.com/en/engine) |
-| Energy-based settle | Low-energy configuration | [CMOS annealing](https://www.hitachi.com/en/press/articles/2024/06/0606/) |
-
-<div id="86-world-labs-spatial-intelligence-and-world-models" class="anchor-alias" aria-hidden="true"></div>
-
 ### II.8.6 World Labs: spatial intelligence and world models
 
 **World Labs** (worldlabs.ai) is a frontier research and product company focused on **spatial intelligence**: models that perceive, generate, reason about, and interact with virtual and physical worlds across space and time. Co-founders publicly include Fei-Fei Li, Justin Johnson, Ben Mildenhall, and Christoph Lassner (company About page).
@@ -1327,7 +1227,6 @@ Fei-Fei's public spatial-intelligence framing (including the "from words to worl
 1. **Grammar coverage.** Faithful reconstruction from enough views is not the same as a closed predictive law for a task. When a Formula or Lookup already answers the coordinate, generating a world is excess. Imagination that fills unseen regions is generative residual, not Deterministic commit.
 2. **Certify-before-commit.** A spatially consistent video or splat is a proposal about geometry and appearance. Irreversible acts (robot motion, financial or safety-critical side effects) still require certify → commit|refuse → receipt. ReplayClass typing still applies: generative world output does not launder into Deterministic without a certificate path.
 3. **VoI and energy.** Longer videos, denser 3D contexts, more denoising steps, and Real-to-Sim rollouts spend bits and joules. VoI stops when extra world detail does not change the decision benefit. Landauer bounds irreversible erasure as a labeled estimate; Atlas / Marble training or inference joules are field / author-reported, not Mixture of Limits `measured_j`.
-4. **Embodiment.** High-fidelity world models raise the stakes of the embodiment work in §II.8.0.1: sensors, fabrics, and meters that make the cheapest sufficient close real at the edge, with estimates kept apart from measured watts.
 
 World Labs systems optimize **which world generator / simulator runs** and how well it tracks space. Mixture of Limits asks whether that generator should run for the stated benefit, and which named floor closes first. See §II.9 for the comparison with MoE.
 
@@ -1341,7 +1240,6 @@ Latent compression, EBM settle hybrids (Logical Intelligence), spatial world mod
 
 Mixture of Limits is the **navigation rule** that names the floors, finds the plateau, and binds the cascade. `mol prove` remains constructive existence **in software**. No figure in this survey, whether from Logical Intelligence, World Labs, or OpenIE, sets `measured_j` on a Mixture of Limits receipt.
 
-§II.8.5.1 is not an entry in that plateau list. A typed probability, a typed value or not-sure, a legal transition, a low-energy configuration, and an auditable chart are different objects. Hybrid interplay is how Mixture of Limits navigates them. It does not turn any of them into the commit, and it does not turn constraint energy into `measured_j`.
 
 <div id="88-test-time-compute-as-plateau-spend" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1450,7 +1348,7 @@ Related plateau levers (quantization, speculative decoding, training-systems ove
 
 **Neuromorphic and thermodynamic substrates.** Loihi-2 neuromorphic mapping of a MatMul-free LLM reports author-estimated throughput and mJ/token vs edge-GPU transformers (Abreu et al., arXiv:2503.18002). These are field silicon results, not Mixture of Limits `measured_j`. Digital thermodynamic computers for generative sampling (for example CN101, Holdijk et al., arXiv:2608.00754) correspond to the reference's `ThermoSettle` device kind; their joules stay field results until a meter is attached. Bennett's reversible computing is settled theory (§II.8.0); reversible ASIC products are outside the scope of `mol prove`.
 
-**Bridge.** §II.8.0.1 stated that the remaining work is embodiment. §II.8.12 adds the hardware corollary: plateau techniques extract more work per device, and Mixture of Limits binds that spend to floors when more work buys nothing. They make a generator cheaper to run; they do not decide whether it should run.
+**Bridge.** §II.8.12 adds the hardware corollary: plateau techniques extract more work per device, and Mixture of Limits binds that spend to floors when more work buys nothing. They make a generator cheaper to run; they do not decide whether it should run.
 
 <div id="8121-hardware-paired-navigation-20252026-peers" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1674,339 +1572,6 @@ The field systems above route **model to model**. The contribution of Mixture of
 
 <div id="10-toward-agi-via-limits-open-questions-and-companions" class="anchor-alias" aria-hidden="true"></div>
 
-## II.10. Open questions
-
-If reliable computer intelligence means closing tasks with certificates, receipts, and known floors, then the historical method already points the way. Kepler and Newton pursued limits: the shortest predictive law that covered the grammar. Shannon measured information; Howard priced it for decisions; Landauer and Bennett priced irreversible erasure; Kolmogorov, Solomonoff, and Chaitin priced compression and incompleteness. Recent formula and mechanism systems (AI Feynman, SINDy, PySR, AI-Newton, AlphaGeometry, mechanistic world models) show the same pattern in modern form.
-
-The ideas are in place. The open work is embodiment (§II.8.0.1): devices, fabrics, and meters that make the cheapest sufficient close real at the edge, with estimates kept apart from measured watts. Mixture of Limits navigates the floors explicitly: Lookup and Formula first, Solver when a settle is the right physics, Model when the cheaper gears cannot close, and refuse when VoI or safety says stop. `mol prove` shows the rule is constructive in software. Part I supplies the commit record.
-
-**Open questions**
-
-- Calibrated μ corpora and silicon meters for the hardware Gap cells, which today have software simulations only (`stage_c_measured=false`).
-- Live WCA MCP / System One pre-gate and leapfrog `openie-path` ask (adapters remain stubs on the verified path).
-- Materials and devices that make Formula plus LUT closes on a coin cell cheaper than generative spend, with Metered probes whenever package joules are claimed.
-- When a Metered `measured_j` path is published beside the reference's estimates, with the two kept apart.
-- How VoI thresholds should be set per domain without smuggling engagement metrics as completeness.
-- Whether mechanism libraries (MWM cousins; AI-Newton concept base) should be imported as typed Lookup entries without breaking clean-room prove.
-- How to bind third-party EBM settle scores (e.g. Logical Intelligence-style energies) and world-model proposals (e.g. World Labs Atlas/Marble) into certify-before-commit without laundering generative output as Deterministic.
-- How to price test-time compute budgets under VoI so adaptive thinking stops when marginal CoT tokens do not change B, without treating longer traces as automatic progress.
-- Whether super-learner libraries should be imported as typed Solver or ensemble leaves under certify.
-- How to document plateau-efficiency options (DeepSeek / GLM-class MoE and systems co-design; speculative decoding; SSM hybrids; AWQ/GPTQ/FP8; vLLM/SGLang; Mixture-of-Depths) as Estimated field results beside software reference receipts, keeping author GPU-hours distinct from Mixture of Limits `measured_j`.
-- How typed certify-before-commit should bind **Constitutional AI / RLAIF** textual refuse and **tool-use agent** loops (Toolformer / ReAct) without laundering model-emitted refuse as a Mixture of Limits receipt.
-- Whether neuromorphic (Loihi-class) and thermodynamic-compute field stacks should appear as optional `DeviceKind` under multi-fabric routing once Metered probes exist, without escalating author mJ/token estimates to Mixture of Limits `measured_j`.
-- How pause-token and self-paced adaptive compute, relatives of Mixture-of-Depths, map to a typed floor.
-- How to import **conformal abstention** and **Bayesian uncertainty** scores as typed refuse thresholds without laundering model-emitted confidence as a Mixture of Limits receipt.
-- Whether **GraphRAG** community summaries and **MemGPT**-class agent memory pages should bind as Lookup when certified, or remain proposal until certify-before-commit.
-- How **active-learning VoI** budgets (Settles/Howard) should share threshold machinery with test-time CoT VoI (§II.8.8) without smuggling engagement metrics as completeness.
-- How dual-phase perception (§II.11.1) should bound Phase-1 transducer energy so typed AST emission stays cheaper than opening the last cascade stage on unstructured input.
-- How VoI / grammar meta-checks (§II.11.2) stay O(1) Bloom/trie/EBNF relative to the smallest allowed inference leaf.
-- How Primitive Distillation (§II.11.3) certifies the last cascade stage proposals into new Lookup/Formula entries without laundering uncertified proposals as Deterministic.
-- When Tier-2 shunt meters (§II.11.4) publish package `measured_j` beside Tier-0 analytical and Tier-1 OS telemetry without mixing estimate classes on a receipt.
-- How the claim regime, the test-system label, the multi-indicator specification, the metrology programme, the technical report, and the facility reporting duty in §II.11.4.1 stay off the receipt until a Metered probe returns a joule for the run.
-
-**Closing.** The pursuit of limits, meaning compression into predictive law, priced information, and thermodynamic accounting, runs from Kepler and Newton to Shannon, Howard, Landauer, and Kolmogorov. Mixture of Limits states that line as a navigation rule for computer intelligence: spend the minimal amount that closes the task, and treat more as waste. Correctness is the gate, and joules are the ranking. The techniques of §II.8.4 to §II.8.14 are ways to reach the floor with fewer joules; they do not remove it. Embodying the rule in materials and devices is the hard problem, and Section II.11 names the next engineering steps.
-
-<div id="11-closing-the-engineering-gaps-dual-phase-roadmap" class="anchor-alias" aria-hidden="true"></div>
-
-## II.11. Closing the engineering gaps: dual-phase roadmap
-
-Shannon, Landauer, Howard, and formula-first science already name the floors. `mol prove` shows constructive existence in software. What remains is engineering: unstructured input, cheap routing checks, open-ended domains, honest meters, and a usable developer surface.
-
-This section states that work under the same named floors. Each item is a gap to close. Estimates remain estimates, and only Metered paths populate `measured_j`.
-
-<div id="111-front-door-perception-paradox-dual-phase-stack" class="anchor-alias" aria-hidden="true"></div>
-
-### II.11.1 Front-door perception paradox: dual-phase stack
-
-**Gap.** Mixture of Limits cascade assumes a typed task coordinate: Lookup → Formula → Solver → Model. Real front doors arrive unstructured: speech waveforms, pixels, free text. Without a front gear, the system either refuses everything outside grammar or opens the last cascade stage as the parser. Both fail the plateau: refuse wastes covered work; parser-as-model burns residual capacity before floors are checked.
-
-**Close.** A front gear, then the cascade:
-
-```text
-                    ┌─────────────────────────────────────────┐
-  unstructured in → │ Phase 1 · bounded micro-perception      │
-  (audio/pixels/    │ ultra-light quantized transducer / TinyML│
-   free text)       │ → typed AST / schema / task coordinate  │
-                    └──────────────────┬──────────────────────┘
-                                       │ typed request
-                                       ▼
-                    ┌─────────────────────────────────────────┐
-                    │ Phase 2 · Mixture of Limits cascade     │
-                    │ Lookup → Formula → Solver → Model  │
-                    │ floors: VoI · grammar · energy · certify│
-                    └──────────────────┬──────────────────────┘
-                                       │
-                          commit | refuse + receipt
-```
-
-Phase 1 is a **bounded front gear**: fixed vocabulary or schema emitters in the TinyML / quantized-transducer class (MCUNet-class MCU inference; Tiny Transducer-class speech ASR). The clean-room reference includes a **rule AST transducer** path (`phase1.enabled` / `mol phase1`) that emits typed ticket/physics/settle asks; unrecognized input refuses parser-as-model. It does not replace Formula. It does not become the substrate. The last cascade stage remains the residual reasoning leaf inside Phase 2 when grammar and VoI say escalate, not the front-door parser by default.
-
-**Plateau reading.** Perception spend is plateau spend on the front gear. Once the AST is typed, VoI past the grammar floor is still zero for covered coordinates. Dual-phase does not demote Lookup → Formula → Solver → Model; it feeds that cascade.
-
-<div id="112-meta-compute-routing-overhead" class="anchor-alias" aria-hidden="true"></div>
-
-### II.11.2 Meta-compute routing overhead
-
-**Gap.** VoI checks, grammar coverage, and settle-refuse must gate escalation. If those checks cost more than a small inference leaf, the router loses to always-call-model on wall-clock and joules (as estimates). Meta-compute that is heavier than the thing it refuses is not a floor. It is waste on the plateau.
-
-**Close.** Keep routing **strictly cheaper than the smallest allowed inference**:
-
-| Check | Target cost class | Mechanism sketch |
-|---|---|---|
-| Grammar hit / miss | O(1) or O(token) streaming | Trie / Aho-Corasick over typed AST terminals; Bloom filter for negative Lookup |
-| Schema / EBNF accept | linear in input, no model | Deterministic EBNF / PEG parse; reject → refuse or escalate |
-| VoI stop | O(1) threshold table | Precomputed Δ B vs catalog cost; no forward pass |
-| Settle-ready | O(state) local | Ternary / certificate probe before Solver open |
-
-```text
-  request AST
-       │
-       ▼
-  [Bloom / trie Lookup?] --hit--> Lookup close
-       │ miss
-       ▼
-  [EBNF / Formula grammar?] --cover--> Formula / Solver
-       │ uncovered
-       ▼
-  [VoI > 0 AND allow_model?] --yes--> the last cascade stage → certify
-       │ no
-       ▼
-     refuse + receipt
-```
-
-Rule: if a proposed meta-check needs a neural forward pass, it is not a Mixture of Limits floor check. It is another leaf and must be budgeted as such.
-
-<div id="113-static-periodic-stack-vs-open-ended-domains" class="anchor-alias" aria-hidden="true"></div>
-
-### II.11.3 Static Periodic Stack vs open-ended domains
-
-**Gap.** The reference navigates the Periodic Stack catalog (Present/Gap cells; scale notes cite 258 primitives / 33 families). Open-ended domains arrive with undefined grammar. A static stack either silently under-covers or pretends coverage.
-
-**Close.** Two disciplined exits when grammar is undefined:
-
-1. **Refuse or escalate** with an explicit `primitive_gap` / grammar-miss receipt. Refuse is success when VoI or safety says stop. Escalation opens the last cascade stage only under budget and `allow_model`.
-2. **Primitive Distillation Loop** when a residual is worth keeping:
-
-```text
-  the last cascade stage proposal
-         │
-         ▼
-  certify (typed check / proof / settle)
-         │ pass
-         ▼
-  AST compile → new Lookup row or Formula identity
-         │
-         ▼
-  Periodic Stack Present cell (replay class Deterministic)
-```
-
-Uncertified proposals never become Lookup. Distilled entries carry provenance: source receipt, certify method, replay class. This is plateau embodiment of formula-first science: the model proposes; the stack keeps only what certifies.
-
-<div id="114-measurement-realism-tier-0--tier-1--tier-2" class="anchor-alias" aria-hidden="true"></div>
-
-### II.11.4 Measurement realism: Tier 0 / Tier 1 / Tier 2
-
-**Gap.** Readers collapse Landauer annotations, OpCounter analytics, OS telemetry, and board shunt readings into one “joules” number. Mixture of Limits forbids that collapse.
-
-**Close.** Three labeled tiers; only Tier 2 Metered populates package `measured_j`:
-
-| Tier | Source | Receipt fields | What it is not |
-|---|---|---|---|
-| **0 Analytical** | Catalog μ, OpCounter, Landauer $n k_B T \ln 2$ | `estimated_j`, `landauer_floor_J`, `mu_source=catalog` | Board package energy |
-| **1 OS telemetry** | RAPL, NVML, IOReport, powermetrics | Labeled `MeasureSource`; may set `measured_j` only when Metered probe succeeds | Shunt-grade package truth; VM/unavailable stays unset |
-| **2 Shunt / package meter** | Inline current shunt, certified bench meter | `measured_j` under Metered; the board-result flag only when a synthesis and meter path is claimed | The reference's default (no board measurement) |
-
-```text
-  Tier 0  estimated_j / Landauer estimate
-  Tier 1  OS telemetry (RAPL/NVML/…) ──► measured_j only if Metered label
-  Tier 2  shunt / package meter     ──► measured_j (Metered)
-```
-
-**Measurement facts.** The reference makes no board measurement; `measured_j=None` unless a Metered probe returns. Estimates ≠ board joules. Never invent `measured_j` from prove criteria, catalog ratios, or field author GPU-hours.
-
-<div id="1141-public-documents-by-what-they-measure" class="anchor-alias" aria-hidden="true"></div>
-
-### II.11.4.1 Public documents, by what they measure
-
-Correctness is the gate, and among systems that pass it, joules alone order them, so the joules must be measured. An estimator, a label, a specification, a programme, a technical report, or a facility reporting duty is not a joule on a commit. Mixture of Limits leaves `measured_j` unset until a Metered probe returns. The documents below are ordered by what each page says the document measures or claims. The critique is the common mechanism: estimator versus a meter. Estimates are not measured joules.
-
-**Claim regime.** AFNOR SPEC 2314, *Référentiel général pour l'IA frugale*, AFNOR, June 2024. The shop record is 100 pages, with free consultation authorized by AFNOR. The specification states that it was drawn from January 2024 to June 2024, from successive contributions of more than one hundred members of the participating organizations. The ministry press release of 28 June 2024 states 150 contributors and calls the référentiel a first at international level, of voluntary application. The AFNOR news page of 12 July 2024 states a working group of about forty actors and 31 practice sheets. The text contains practice sheets BP 01 through BP 31. Section II.4 states what to specify when communicating on the frugal character of an AI service. Annex 1 compares tools that may be used and says the list is not exhaustive. In the column headed measurement of consumption it names CodeCarbon and CarbonTracker, lists direct measurement as an advantage, and lists as a limit that direct measurement is not always possible and that the tools make choices that are not always explicit, for example the emission factor. Practice sheet BP 21 says to record the estimate supplied by those tools (printed there as Code Carbon, Green Algorithms, Carbon Tracker, and MLCO2Impact), then the real consumption of the training. Practice sheet BP 23 is an a priori estimate of model consumption and names CodeCarbon, TensorFlox Profiler, and nvidia-smi as tools that can be used to estimate and to measure. The specification does not require a meter on the commit.
-
-**Measured-on-a-test-system label.** Umweltzeichen Blauer Engel for ressourcen- und energieeffiziente Softwareprodukte (DE-UZ 215), Umweltbundesamt, edition January 2020, version 6 (July 2026), published by RAL gGmbH. The criteria define the Messsystem as the hardware system on which the product is installed and the measurements are run, including the operating system and its configuration. They also call that system the system under test. For a personal computer or a server, electrical energy demand is determined by integrating electrical power, in watts, over the duration, in seconds, of the standard usage scenario or the long-term test, or by a meter that records electrical work, in watt-seconds, directly. Scenario-test energy is reported net of the electrical baseline, in watt-hours. That is a measurement on a stated test system for a stated usage scenario. It is not the energy of a Mixture of Limits commit.
-
-**Estimator variant in the research report beside that label.** SoftAWERE, Umweltbundesamt TEXTE 71/2026, completion date May 2023. The report defines two methods. SoftAWERE-Light does without measurements and computes an estimate of energy use and environmental impact from mathematical formulas. The report assigns that variant to cloud and virtualized environments where a physical measurement, or a measurement through server interfaces, is not possible. The full SoftAWERE method does without physical measuring devices and uses existing interfaces of the server manufacturer and the operating system. The indicator Operational Primary Energy Consumption is an estimated server energy use over one hour taken from manufacturer data. The report marks that indicator as no measurement. The report also states that energy from unit tests and integration tests is not a consumer environmental label and does not replace the Blue Angel, because those tests have little to do with later use. A formula estimate is not a measured joule. An interface reading is not the shunt tier.
-
-**Multi-indicator specification.** ESPECIFICACION UNE 0086:2025, *Medición del consumo energético, huella de carbono, consumo del agua y rendimiento de sistemas de Inteligencia Artificial*, UNE, edition 8 October 2025, corrected 29 July 2026. The UNE catalog page states that the download is free and is sponsored by the Secretaría de Estado de Digitalización e Inteligencia Artificial. The UNE notice of 10 October 2025 states a working group of over 40 members, including certification bodies, and states that the specification defines indicators of direct energy and water consumption during training and inference. The secretariat press of 9 October 2025 states 35 expert entities in its summary line and more than 40 members in the body. That press states a detailed guide for quantifying environmental impact across the life cycle, especially training and implementation, locally and in the cloud. On the pages that state the requirement, the energy number is an indicator of direct energy consumption during training and inference, inside a specification that also covers carbon, water, and performance. Those pages do not name the instrument.
-
-**Metrology programme.** 《人工智能计量体系和能力建设指引（2026版）》, 市场监管总局 and 国家发展改革委, notice of 28 May 2026. The notice states a goal that AI technical performance be measurable, comparable, and traceable. It sets out six parts: foundational support, general technology, core technology, metrology technical specifications, a metrology services industry, and intelligence applied to metrology. It calls for metrology standard devices covering algorithm models, compute efficiency, and data quality, and for work in 14 fields. The notice is a programme for building that capability. It does not require a joule reading of a run. Traceability on this page is a stated goal for technical performance. It is not a reading tied to a measurement standard on a commit.
-
-**Technical report.** PD CEN/CLC/TR 18145:2025, *Environmentally sustainable Artificial Intelligence*, BSI publication 28 February 2025. A CEN-CENELEC gap analysis dated 18 December 2025 lists the same report, work item JT021010, as published in the JTC 21 column. The published scope describes environmental sustainability issues for those developing or using AI, creates an inventory of impacts and techniques, and states that methods of measuring the environmental sustainability impacts of AI are also quantified. It states that the document is intended to help develop new standards. It states that it is aligned with ISO/IEC TR 20226, whose title on that page is Green and Sustainable AI. A technical report is not a harmonised standard. CEN and CENELEC, in a decision posted 23 October 2025, state that key standards developed under CEN-CLC/JTC 21, requested under standardization request M/593 and amendment M/613, are to be available by Q4 2026. That page does not name TR 18145 among those drafts. It does not say those drafts are already harmonised standards.
-
-**Facility reporting duty.** The Agency for Natural Resources and Energy (資源エネルギー庁), explainer of 20 May 2026, states that new measures under the 省エネ・非化石転換法 took effect in April 2026. From the fiscal year 2026 submission, the periodic report adds data-centre electricity use, PUE, エネルギー消費原単位, and future targets. The page defines PUE as the data centre facility's total energy consumption divided by the IT equipment's energy consumption. The same page sets a benchmark of PUE at or below 1.4 by fiscal year 2030 for designated data-centre operators, and a PUE at or below 1.3 for data centres newly built from fiscal year 2029, assessed from the fiscal year after two years of operation. PUE is facility overhead. It is not the energy of a computation.
-
-<div id="1142-research-that-treats-energy-as-the-condition" class="anchor-alias" aria-hidden="true"></div>
-
-### II.11.4.2 Research that treats energy as the condition
-
-The public documents of §II.11.4.1 leave the meter optional. The works below treat energy, power, or a physical bound as a condition of the computation itself, which is how Mixture of Limits treats energy to run. A number below is that paper's bound or that paper's measurement. It is not package `measured_j`.
-
-**Speed bound from energy.** Margolus and Levitin (1998) bound the minimum time for an isolated system to reach an orthogonal state by the average energy above the ground state, $\tau_{\perp} \ge h/(4E)$. Their abstract states that adding one joule of energy cannot raise the processing rate by more than about $3 \times 10^{33}$ operations per second. Class: physical bound.
-
-**Work bound on measurement and erasure.** Sagawa and Ueda (2009) derive lower bounds on the work of a measurement and on the work of erasure. The sum is bounded below by the mutual information $I$ gained in the measurement, $W_{\mathrm{meas}} + W_{\mathrm{eras}} \ge k_{\mathrm{B}} T I$. For a symmetric memory the erasure bound matches Landauer. For an asymmetric memory the erasure bound can lie below that match. Class: thermodynamic bound.
-
-**Dissipation of nonpredictive memory.** Still, Sivak, Bell, and Crooks (2012) set the instantaneous nonpredictive information equal to the average work dissipated when the driving signal changes, in units of $k_{\mathrm{B}} T$. A system built to keep memory, and built to operate at minimum dissipation, has to be predictive. Class: thermodynamic bound.
-
-**Measured erasure.** Bérut, Arakelyan, Petrosyan, Ciliberto, Dillenschneider, and Lutz (2012) erase one bit stored in a colloidal particle in a modulated double-well trap. They report that the mean dissipated heat saturates at the Landauer bound in the limit of long erasure cycles. Class: measured approach to a thermodynamic bound. That heat is their measurement.
-
-Jun, Gavrilov, and Bechhoefer (2014) erase one bit with a colloidal particle in a feedback trap. Work is computed from the trajectory and the imposed potential. The full-erasure protocol's asymptotic work is compatible with the Landauer bound. The same cycle without phase-space compression is compatible with zero work. Class: measured work of erasure, with a reversible control. That work is their measurement.
-
-**Heat of a Turing-machine realization.** Kolchinsky and Wolpert (2020) assign a heat function to a physical realization of a Turing machine. For the coin-flipping realization of a universal machine, heat on an input is proportional to the excess length of that input over the shortest program for the same output, up to an additive constant. The minimum heat required to produce any chosen output is bounded by a constant. The expected heat on the coin-flipping input distribution is infinite. Class: thermodynamic bound on a computation. The heat function is not package `measured_j`.
-
-**Energy as the training objective.** You, Chung, and Chowdhury (2023) define energy-to-accuracy as average GPU power times time-to-accuracy. GPU power is read with NVML, and the GPU power limit is a training knob. An exploratory run stops when its cost exceeds twice the lowest cost observed so far. The paper reports energy reductions of 15.3% to 75.8% against maximum batch size and maximum power limit, on the GPUs named in the evaluation. Class: energy as the objective of training, with a stop. Those reductions are their NVML measurements.
-
-**Energy schedule under a time bound.** Chung, Gu, Jang, Meng, Bansal, and Chowdhury (2024) define energy bloat as the energy in a large-model training iteration that can be removed without lengthening the critical path. Perseus profiles the time and energy of each forward and backward computation and sets GPU frequency through NVML. The energy-optimal iteration time is the minimum of the minimum-energy iteration time and the straggler iteration time. The paper reports per-iteration energy reductions of up to 30%, with negligible or no slowdown. Class: energy schedule of a training iteration. Those reductions are their measurements.
-
-<div id="1143-neuromorphic-substrates-and-measured-run-energy" class="anchor-alias" aria-hidden="true"></div>
-
-### II.11.4.3 Neuromorphic substrates and measured-run energy
-
-The works below state the energy or power of a computation as a physical quantity on a named platform, or they stop under an energy or accuracy-energy bound. They are ordered by method class, not by region. A number below is that paper's own measurement or that paper's own bound. It is not package `measured_j`. Estimates are not `measured_j`.
-
-**Physical quantity of a neuromorphic substrate.** Merolla, Arthur, Alvarez-Icaza, Cassidy, Sawada, Akopyan, Jackson, Imam, Guo, Nakamura, Brezzo, Vo, Esser, Appuswamy, Taba, Amir, Flickner, Risk, Manohar, and Modha (2014) build TrueNorth: 4096 neurosynaptic cores, 1 million programmable spiking neurons, and 256 million configurable synapses. With 400-by-240 video at 30 frames per second, the chip consumes 63 mW. Class: physical quantity of a neuromorphic substrate. That 63 mW is their measurement.
-
-Frenkel, Lefebvre, Legat, and Bol (2018) build ODIN, a 256-neuron 64k-synapse online-learning digital spiking processor in 28 nm FDSOI. At 0.55 V they report a global energy per synaptic operation of 12.7 pJ at the maximum synaptic-operation rate. With rank-order coding on a single-layer MNIST network after on-chip SDSP learning, they report 15 nJ per inference at 84.5% accuracy. Class: physical quantity of a neuromorphic substrate, and measured energy of a run. Those energies are their measurements.
-
-**Measured energy of a run on a named neuromorphic platform.** Esser, Merolla, Arthur, Cassidy, Appuswamy, Andreopoulos, Berg, McKinstry, Melano, Barch, di Nolfo, Datta, Amir, Taba, Flickner, and Modha (2016) map deep convolutional networks onto TrueNorth. Across eight vision and speech datasets, single-chip networks run at 1200 to 2600 frames per second and use between 25 and 275 mW. Class: measured energy of a run. Those powers and throughputs are their measurements.
-
-Göltz, Kriener, Baumbach, Billaudelle, Breitwieser, Cramer, Dold, Kungl, Senn, Schemmel, Meier, and Petrovici (2021) train hierarchical time-to-first-spike networks of leaky integrate-and-fire neurons and emulate them on BrainScaleS-2. On downsampled MNIST they report 8.4 µJ per classification at 96.9% test accuracy, with chip power measured at 175 mW during runtime. Class: measured energy of a run. That 8.4 µJ is their measurement.
-
-Blouw, Choo, Hunsberger, and Eliasmith (2019) benchmark a keyword spotter on Loihi against CPU, GPU, Jetson TX1, and Movidius. On Loihi they report 0.00027 joules per inference at 296 inferences per second, with idle 0.029 W and running 0.110 W. Classification accuracy on their test set matches the TensorFlow reference. Class: measured energy of a run. Those joules are their measurements.
-
-Gobieski, Lucia, and Beckmann (2019) run deep neural network inference on an intermittent energy-harvesting MSP430 with Sonic and Tails. From their prototype they take inference energy of about 198 mJ for a tiled baseline and about 26 mJ for Tails. Loop continuation keeps each loop iteration idempotent, so a run continues after a power failure. Tails calibrates its tile size to the energy buffer and halves the tile when a tile does not finish before power fails. Class: measured energy of a run under an energy buffer, with a stop and retry at that buffer. Those millijoules are their prototype figures.
-
-**Measured energy of inference on named GPUs.** Samsi, Zhao, McDonald, Li, Michaleas, Jones, Bergeron, Kepner, Tiwari, and Gadepally (2023) measure LLaMA inference energy on named NVIDIA V100 and A100 GPUs with nvidia-smi and DCGM. They report energy per second, per decoded token, and per response for LLaMA 7B, 13B, and 65B on Alpaca and GSM8K, including multi-node sharding up to 32 GPUs. For LLaMA 65B they report about 3 to 4 joules per output token. Class: measured energy of a run. Those joules are their measurements.
-
-Luccioni, Jernite, and Strubell (2024) measure energy and carbon for 1,000 inferences across 88 models, 10 tasks, and 30 datasets on NVIDIA A100 GPUs with CodeCarbon. Mean energy per 1,000 queries ranges from 0.002 kWh for text classification to 2.907 kWh for image generation. Multi-purpose generative models emit orders of magnitude more carbon than task-specific models on the same discriminative tasks. Class: task energy read with Code Carbon. Those kilowatt-hours are their measurements.
-
-**Energy bound with a stop.** Yang, Zhu, and Liu (2019) train deep networks under a quantitative energy budget. The budget is an optimization constraint. Weighted sparse projection and layer input masking enforce it during training. The trained model is designed to meet the budget while maximizing accuracy. Their energy model follows a systolic-array estimate. Class: energy bound on training. That budget is their estimation model. It is not package `measured_j`.
-
-<div id="1144-computing-in-the-physics-analog-in-memory-and-frequency-domain-substrates" class="anchor-alias" aria-hidden="true"></div>
-
-### II.11.4.4 Computing in the physics: analog, in-memory, and frequency-domain substrates
-
-The works below compute with the physics of a device: conductance in a memory array, light through an optical path, the phase of coupled oscillators, the decay of a dynamic memristor. They are ordered by method class, not by region. Each paper reports in its own unit, and the class line names how that number was made. An efficiency ratio stays in with its method named. No number below is package `measured_j`. Estimates are not `measured_j`.
-
-**Analog in-memory computing on phase-change memory.** Ambrogio, Narayanan, Tsai, Shelby, Boybat, di Nolfo, Sidler, Giordano, Bodini, Farinha, Killeen, Cheng, Jaoudi, and Burr (2018) train fully connected networks of up to 204,900 synapses in mixed hardware and software, with long-term weights in phase-change memory and near-linear updates on volatile capacitors. They reach software-equivalent accuracy on MNIST, MNIST-backrand, CIFAR-10, and CIFAR-100, and calculate 28,065 billion operations per second per watt for their implementation. Class: efficiency ratio in operations per second per watt, calculated for the implementation. That figure is their calculation.
-
-Ambrogio, Narayanan, Okazaki, and 21 coauthors (2023) build an analog-AI chip of 35 million phase-change memory devices across 34 tiles that performs matrix-vector multiplication in place. They report up to 12.4 tera-operations per second per watt chip-sustained, software-equivalent accuracy on a keyword-spotting network, and near-software-equivalent accuracy on the MLPerf RNNT, with more than 45 million weights on more than 140 million devices across five chips. Class: efficiency ratio in TOPS per watt, chip-sustained. That ratio is their figure.
-
-Le Gallo, Khaddam-Aljameh, Stanisavljevic, and 27 coauthors (2023) build a 64-core analog in-memory compute chip in 14 nm CMOS with backend-integrated phase-change memory, digital activation functions, and an on-chip network. For 8-bit matrix-vector multiplication they report a maximum of 16.1 or 63.1 tera-operations per second at 2.48 or 9.76 tera-operations per second per watt, in the four-phase or one-phase read mode, with near-software-equivalent accuracy on ResNet and LSTM networks. Class: efficiency ratio in TOPS per watt, on chip. Those ratios are their figures.
-
-**Resistive and memristor crossbars.** Wan, Kubendran, Schaefer, Eryilmaz, Zhang, Wu, Deiss, Raina, Qian, Gao, Joshi, Wu, Wong, and Cauwenberghs (2022) build NeuRRAM, a compute-in-memory chip that runs inference inside resistive RAM. They report 1.6-times to 2.3-times lower energy-delay product than prior RRAM compute-in-memory chips across bit precisions, 99.0% on MNIST, 85.7% on CIFAR-10, and a measured 121 fJ per neuron, or 0.95 fJ per weight, for each noise-injection step of probabilistic sampling. Class: energy-delay product and energy per step, measured on chip. Their expected gain of at least 535 times in energy-delay product from 130 nm to 7 nm is projected from a circuit model.
-
-Yao, Wu, Gao, Tang, Zhang, Zhang, Yang, and Qian (2020) implement a five-layer convolutional network fully in memristor crossbars, eight arrays of 2,048 cells, with hybrid training that absorbs device variation. They report more than 96% accuracy on MNIST and an energy efficiency more than two orders of magnitude greater than state-of-the-art graphics-processing units. Class: efficiency ratio against GPUs. That ratio is their comparison.
-
-**Photonic and optical computing.** Shen, Harris, Skirlo, Prabhu, Baehr-Jones, Hochberg, Sun, Zhao, Larochelle, Englund, and Soljačić (2017) propose a fully optical neural network and demonstrate its core on a programmable nanophotonic processor of 56 Mach-Zehnder interferometers in a silicon photonic circuit, applied to vowel recognition. Their preprint states a promised gain of at least two orders of magnitude in speed and three orders of magnitude in power efficiency over the state of the art. Class: power-efficiency ratio projected from an architecture model. The demonstration is on chip. The ratio is their projection.
-
-Wang, Ma, Wright, Onodera, Richard, and McMahon (2022) compute optical dot products with up to 505,521 scalar multiplications in one pass of light and run a four-layer MNIST network. They report about 99% accuracy at about 3.1 detected photons per multiplication, and about 90% at about 0.66 photons, about $2.5 \times 10^{-19}$ J of optical energy per multiplication. At 99% the detected optical energy per inference is about 107 fJ, and about 230 fJ counting the modulator loss. Class: optical energy measured at the detector. It excludes the electronics, and the authors say so.
-
-Chen, Nazhamaiti, Xu, Meng, Zhou, Li, Fan, Wei, Wu, Qiao, Fang, and Dai (2023) build ACCEL, an all-analog chip in which a diffractive optical encoder feeds photocurrents straight into an analog electronic computing chip, with no analog-to-digital converter. They report a systemic energy efficiency of 74.8 peta-operations per second per watt, 4.6 peta-operations per second, 72 ns latency per frame, and 85.5% on Fashion-MNIST. Class: systemic efficiency ratio in operations per second per watt. That ratio is their figure.
-
-Feldmann, Youngblood, Karpov, Gehring, Li, Stappers, Le Gallo, Fu, Lukashchuk, Raja, Liu, Wright, Sebastian, Kippenberg, Pernice, and Bhaskaran (2021) build an integrated photonic tensor core that performs parallel convolutions with phase-change-material memory arrays and soliton microcomb light sources. They report operation at trillions of multiply-accumulate operations per second and a bandwidth exceeding 14 gigahertz. Class: throughput in operations per second, no energy figure given.
-
-**Frequency-domain and oscillator computing.** Miscuglio, Hu, Li, George, Capanna, Dalir, Bardet, Gupta, and Sorger (2020) compute convolutions as pixelwise multiplications in the Fourier domain. Lenses perform the real-to-Fourier transforms passively at zero static power, and an amplitude mask on about $10^6$ display channels multiplies. They report matrices of about $1000 \times 1000$ in a single time step, 100 µs latency, throughput of peta-operations per second, and 98% on MNIST in a hybrid optical-electronic network. Class: throughput and latency, with zero static power for the transform. The paper gives no energy per operation.
-
-Moy, Ahmed, Chiu, Moy, Sapatnekar, and Kim (2022) build a 1,968-node King's graph array of coupled ring oscillators that settles to the ground state of an Ising problem through phase. They report up to 95% accuracy on randomly generated combinatorial optimization problems, a measured average power of 0.042 W, and fewer than 50 oscillation cycles to resolve. Class: power measured on chip, with settling time in oscillation cycles. That power is their measurement.
-
-Romera, Talatchian, Tsunegi, Abreu Araujo, Cros, Bortolotti, Trastoy, Yakushiji, Fukushima, Kubota, Yuasa, Ernoult, Vodenicarevic, Hirtzlin, Locatelli, Querlioz, and Grollier (2018) train a hardware network of four coupled spin-torque nano-oscillators to recognize seven spoken vowels by tuning their frequencies, with classes read from their synchronization. Their preprint reports recognition rates up to 89% on training data and 88% on testing data, and a cross-validated 84.3% on the testing set. Class: recognition rate on a physical oscillator, no energy figure given.
-
-Torrejon, Riou, Abreu Araujo, Tsunegi, Khalsa, Querlioz, Bortolotti, Cros, Yakushiji, Fukushima, Kubota, Yuasa, Stiles, and Grollier (2017) use a single nanoscale spintronic oscillator, a magnetic tunnel junction, to recognize spoken digits. Their preprint reports recognition rates up to 99.6% with cochlear filtering. Class: recognition rate on a physical oscillator, no energy figure given.
-
-**Reservoir computing on a physical substrate.** Zhong, Tang, Li, Liang, Liu, Li, Xi, Yao, Hao, Gao, Qian, and Wu (2022) build a fully analog reservoir computer: dynamic memristors form the reservoir and non-volatile memristors form the readout. They report real-time spatiotemporal processing with three orders of magnitude lower power consumption than digital hardware, 96.6% on arrhythmia detection, and 97.9% on dynamic gesture recognition. Class: power ratio against digital hardware. That ratio is their comparison.
-
-<div id="1145-the-transform-is-free-passive-reversible-and-frequency-space-computing" class="anchor-alias" aria-hidden="true"></div>
-
-### II.11.4.5 The transform is free: passive, reversible, and frequency-space computing
-
-Physics says where the energy of a computation goes. An ideal passive, linear, reversible transform dissipates no energy in the transform itself. A lens performs a Fourier transform as light crosses it. A diffractive layer, a metasurface, and a conservative or adiabatic gate map inputs to outputs the same way. Moving a transform into passive optics or reversible logic moves its energy cost elsewhere, to three places: the source that makes the signal, the detector that reads it, and the bit that is erased. The erased bit is the Landauer bound already cited, at least $k_B T \ln 2$ per bit. The works below are ordered by method class, not by region. Each class line names how a number was made, or says that the paper gives no energy figure. No work below reports a measured zero, and none sets package `measured_j`. Estimates are not `measured_j`.
-
-**Conservative and reversible logic.** Fredkin and Toffoli (1982) define conservative logic, a model of computation that keeps the reversibility of the dynamical laws and conserves additive quantities, energy among them. They show that it is ideally possible to build sequential circuits with zero internal power dissipation, and they give a model in which elastic collisions of identical balls compute. Class: dissipation bound in an ideal model, no measured energy.
-
-Bennett (1982) reviews the thermodynamics of computation. Ballistic models compute at finite speed with zero energy dissipation in principle, Brownian models dissipate an energy that approaches zero only at zero speed, the enzymatic apparatus of DNA replication, transcription, and translation dissipates $20$ to $100\,kT$ per step, and each merge of computation paths needs a driving force of $kT \ln 2$. The irreversible step is erasure, not measurement. Class: dissipation bound and review, with the paper's own $kT$ figures.
-
-Landauer (1988) states that reversible computers can dissipate arbitrarily small amounts of energy per step if the computation runs slowly enough. In communication and measurement, only the steps that discard information have a lower limit on energy, and those steps can be avoided in transmission. Class: dissipation bound, no energy figure given.
-
-**Adiabatic and superconducting reversible circuits.** Takeuchi, Yamanashi, and Yoshikawa (2013) couple a 5 GHz superconducting resonator to an adiabatic quantum-flux-parametron gate and read the gate's dissipation from the resonator's insertion loss. They report a bit energy of about 10 zJ at 5 GHz. Class: measured dissipation on chip, read through a resonator.
-
-Takeuchi, Yamanashi, and Yoshikawa (2014) build a reversible logic gate from adiabatic quantum-flux-parametron devices and demonstrate its logical and physical reversibility at 4.2 K. Their circuit simulation gives about $1 \times 10^{-21}$ J per cycle for the gate and buffers, 69 gates in all, at a rise and fall time of 10,000 ps, and a bit energy of about $2 \times 10^{-23}$ J per cycle per gate, the same order as $k_B T \ln 2 \approx 4.0 \times 10^{-23}$ J at 4.2 K. Class: reversibility demonstrated on chip, dissipation simulated from a circuit model.
-
-Herr (2025) builds reversible gates in the adiabatic quantum flux parametron by copying the inputs of standard gates and disposing of the copies with a terminate gate that dissipates only $kT \ln 2$. For a chip of $10^9$ devices with realistic fabrication spread, the preprint projects total dissipation of about 7 times the Landauer limit. Class: dissipation projected from a device model.
-
-Frank, Brocato, Tierney, Missert, and Hsia (2020) describe S2LAL, a CMOS logic family that is fully static and fully adiabatic apart from leakage, with one tick of latency per stage and a minimum clock period of 8 ticks on an 8-phase trapezoidal power clock. The preprint argues that in a process built to minimize leakage it should exceed every known semiconductor logic family in energy efficiency. Class: adiabatic circuit design, no energy figure given.
-
-**Passive optical and wave transforms.** Goodman (2017) is the textbook source. A thin lens acts as a phase transformation, a lens Fourier-transforms the field (Chapter 6), and coherent analog optical information processing is built on that property (Chapter 10). Class: passive transform, textbook physics, no energy figure given.
-
-Lin, Rivenson, Yardimci, Veli, Luo, Jarrahi, and Ozcan (2018) design passive diffractive layers with deep learning and 3D-print them as an all-optical diffractive deep neural network. At a terahertz spectrum the layers classify handwritten digits and fashion products and perform the function of an imaging lens. Class: passive transform, no energy figure given.
-
-Silva, Monticone, Castaldi, Galdi, Alù, and Engheta (2014) design metamaterial blocks that perform spatial differentiation, integration, or convolution on the profile of a wave as it propagates through them. The blocks are thinner than lens-based optical processors by several orders of magnitude. Class: passive transform, no energy figure given.
-
-Mohammadi Estakhri, Edwards, and Engheta (2019) inverse-design a metastructure that solves integral equations with monochromatic electromagnetic fields: the input wave is the function and the output field is the solution. They demonstrate it at microwave frequencies. Class: passive transform, no energy figure given.
-
-**The energy floor at the source, the detector, and the wire.** Miller (2017) reviews optoelectronic devices for low-energy processing and interconnect, including sub-femtojoule devices in waveguide, lasers, modulators, LEDs, and integrated photodetectors that reduce or remove receiver circuit energy. The review sets a target of interconnects from about 1 cm to about 10 m at about 10 fJ per bit. Class: device energy floor and target, review.
-
-Hamerly, Bernstein, Sludds, Soljačić, and Englund (2019) propose a photonic accelerator in which the multiplication happens in coherent photoelectric detection. Their preprint reports sub-aJ energies per multiply-and-accumulate and a standard quantum limit, set by photodetector shot noise, as low as 50 zJ per multiply-and-accumulate, below the Landauer limit for digital irreversible computation. Class: detector shot-noise floor projected from a device model.
-
-<div id="115-developer-experience-roadmap-not-shipped-product" class="anchor-alias" aria-hidden="true"></div>
-
-### II.11.5 Developer surface
-
-**Gap.** `mol prove` is clean-room software existence: implemented and verified against its specification. Operators also need a declarative surface, a local development loop, and a benchmark that compares a cascade with other approaches on the same tasks.
-
-**Close.** The declarative file is a sketch; the command line below exists in the clean-room repository.
-
-**Declarative `mol.yaml` sketch**
-
-```yaml
-# Sketch of the declarative surface
-version: 0.1
-task:
-  id: unit.convert.si.length
-  grammar: formula.si_units
-cascade:
-  allow_model: false
-  floors: [voi, grammar, energy, efa_certificate]
-phase1:
-  enabled: false   # typed input assumed; enable for unstructured front doors
-measurement:
-  tier: 0          # 0 analytical | 1 os_telemetry | 2 shunt
-  board_synth_claimed: false
-```
-
-**Command-line loop (in the clean-room repository):** `mol prove` (PLAN + product A1 to A14) → `mol run --chore mol.yaml` → `mol bench` (J/query versus always-model / MoE-sim; **Estimated|Metered** only) → `mol arena` (typed decision / ticket-close / risk head-on versus frontier_sim + system_one_leaf; metrics correct_close, refuse-when-C=1, estimated_j, latency) → `mol phase1` → `mol distill` (Primitive Distillation v1) → `mol dev` (catalog/Stage C/PUBLISH status). A watch view and a receipt diff view are still to be built. Package joules stay Estimated unless Metered.
-
-**Code.** The canonical code and documents are at [`openIE-dev/mixture-of-limits`](https://github.com/openIE-dev/mixture-of-limits), with product notes under `product/`. `mol prove` embeds acceptance criteria A1 to A14, beside `mol run`, `mol bench`, `mol arena`, `mol phase1`, and `mol distill`. Package joules stay Estimated unless Metered.
-
-**Benchmark framing.** Compare joules per query, correct closes, wrong refusals when $C(z)=1$, and certify rate for the cascade and for the other arms of §II.9.1 (always-model, a learned router, a scored cascade, a System One leaf) on the same typed task set (`mol arena`). Report Tier 0, 1, or 2 explicitly. Constructive existence in software is not a board energy score, and `measured_j` is never inferred.
-
-<div id="116-roadmap-summary" class="anchor-alias" aria-hidden="true"></div>
-
-### II.11.6 Roadmap summary
-
-| Gap | Close | Ships when |
-|---|---|---|
-| Unstructured front door | Dual-phase: TinyML/transducer → typed AST → cascade | Phase-1 gear + schema emitters under prove |
-| Expensive meta-routing | O(1) Bloom/trie/EBNF/VoI tables | Criteria in `mol prove` for router cost ≪ leaf cost |
-| Undefined grammar | Refuse/`primitive_gap` or Primitive Distillation | Certify→AST compile→Lookup/Formula path |
-| Joules collapsed | Tier 0 / 1 / 2 labels; Metered-only `measured_j` | Receipt schema + optional shunt path |
-| Developer surface and comparison | `mol.yaml`, `mol prove` A1 to A14, `mol bench`, `mol arena`, `mol distill`, `mol phase1`, `mol dev` | In `openIE-dev/mixture-of-limits`; watch and receipt diff views to come |
-
-Mixture of Limits stays the navigation rule. The front gear, cheap routing checks, distillation, measurement tiers, and the developer surface are how the rule is embodied: Lookup → Formula → Solver → Model, with perception as a bounded front gear and the last cascade stage still last.
-
-The documents in §II.11.4.1 do not set `measured_j`. The works in §II.11.4.2, §II.11.4.3, §II.11.4.4, and §II.11.4.5 do not set it either.
-
-
-<div id="mol-references" class="anchor-alias" aria-hidden="true"></div>
-
 ## II. References
 
 Entries are numbered in one sequence and grouped by the section that cites them; the text cites by author and year. Primary workspace sources, which are not peer-reviewed publications: the `mixture-of-limits` README.md, BLUEPRINT.md, and PLAN.md, and the workspace survey documents (author: David Charlot, OpenIE).
@@ -2049,69 +1614,6 @@ Entries are numbered in one sequence and grouped by the section that cites them;
 22. Logical Intelligence. What Sudoku Reveals About AI Reasoning Architectures (Kona demo writeup). https://logicalintelligence.com/blog/energy-based-model-sudoku-demo (accessed 2026-10-01). Author-reported Sudoku latency/accuracy figures are field results, not Mixture of Limits `measured_j`.
 
 <div id="embodiment-class-limits-851" class="anchor-alias" aria-hidden="true"></div>
-
-### II. Embodiment-class limits (§II.8.5.1)
-
-23. TypeSafe AI (15 Sep 2026). Introducing System One Models and Jev. https://typesafe.ai/blog/introducing-system-one-models-and-jev (accessed 2026-10-04).
-24. Cloudflare. Clef model card. https://huggingface.co/Cloudflare/clef (accessed 2026-10-04).
-25. Liquid AI. Decision Models. https://docs.liquid.ai/lfm/models/decision-models (accessed 2026-10-04).
-26. Upstage. Solar Decide, Structured Decision API. https://console.upstage.ai/api/systemone (accessed 2026-10-04).
-27. Perplexity. pplx-decider-v1-27b model card. https://huggingface.co/perplexity-ai/pplx-decider-v1-27b (accessed 2026-10-04).
-28. Palmer, J. Kev-4B model card. https://huggingface.co/jaredpalmer/kev-4b (accessed 2026-10-04).
-29. Laya model card. https://huggingface.co/convaiinnovations/laya (accessed 2026-10-04).
-30. Bespoke Labs. Bespoke-Nimble-9B model card. https://huggingface.co/bespokelabs/Bespoke-Nimble-9B (accessed 2026-10-04).
-31. iApp Technology. OpenThai-SystemOne model card. https://huggingface.co/iapp/OpenThai-SystemOne (accessed 2026-10-04).
-32. Decider-4B model card. https://huggingface.co/Mapika/decider-4b (accessed 2026-10-04).
-33. OpenJev model card. https://huggingface.co/openjev/openjev (accessed 2026-10-04).
-34. Mica v0.1 4B model card. https://huggingface.co/sky7350/Mica-v0.1-4B (accessed 2026-10-04).
-35. Winnow-12B model card. https://huggingface.co/EldanRing/Winnow-12B (accessed 2026-10-04).
-36. Contrastive-LM. CLM-v0.1-8B model card. https://huggingface.co/Contrastive-LM/CLM-v0.1-8B (accessed 2026-10-04).
-37. Supersonic Labs. Julia 1 model card. https://huggingface.co/SupersonicLabs/Julia-1 (accessed 2026-10-04).
-38. NanoJev model card. https://huggingface.co/C-Tianyu/NanoJev (accessed 2026-10-04).
-39. Kotoba. open-jev-deberta-v3-large model card. https://huggingface.co/com-kotobalabs/open-jev-deberta-v3-large (accessed 2026-10-04).
-40. fastText. Text classification tutorial. https://fasttext.cc/docs/en/supervised-tutorial.html (accessed 2026-10-04).
-41. Google Cloud. Classifying content. https://docs.cloud.google.com/natural-language/docs/classifying-text (accessed 2026-10-04).
-42. ThinkThen. How answers work. https://thinkthen.dev/reference/answers/ (accessed 2026-10-04).
-43. Fastino. GLiNER2.5-Decide model card. https://huggingface.co/fastino/GLiNER2.5-Decide (accessed 2026-10-04).
-44. Stately. XState. https://github.com/statelyai/xstate (accessed 2026-10-04).
-45. Qt Group. Qt State Machine. https://doc.qt.io/qt-6/qtstatemachine-index.html (accessed 2026-10-04).
-46. Qt Group. Qt SCXML Overview. https://doc.qt.io/qt-6/qtscxml-overview.html (accessed 2026-10-04).
-47. Boost.Statechart. https://www.boost.org/doc/libs/latest/libs/statechart/doc/index.html (accessed 2026-10-04).
-48. Boost.MetaStateMachine (Boost 1.86). https://www.boost.org/doc/libs/1_86_0/libs/msm/doc/HTML/index.html (accessed 2026-10-04).
-49. boost-ext. SML. https://github.com/boost-ext/sml (accessed 2026-10-04).
-50. Akka. Classic FSM. https://doc.akka.io/libraries/akka-core/current/fsm.html (accessed 2026-10-04).
-51. Spring Statemachine. https://github.com/spring-attic/spring-statemachine (accessed 2026-10-04).
-52. Apache Commons SCXML. https://commons.apache.org/proper/commons-scxml/index.html (accessed 2026-10-04).
-53. pytransitions. transitions. https://github.com/pytransitions/transitions (accessed 2026-10-04).
-54. Sismic user manual. https://sismic.readthedocs.io/en/latest/ (accessed 2026-10-04).
-55. dotnet-state-machine. Stateless. https://github.com/dotnet-state-machine/stateless (accessed 2026-10-04).
-56. Quantum Leaps. QP/C. https://www.state-machine.com/qpc/ (accessed 2026-10-04).
-57. AASM. https://github.com/aasm/aasm (accessed 2026-10-04).
-58. SCION. https://github.com/jbeard4/SCION (accessed 2026-10-04).
-59. javascript-state-machine. https://github.com/jakesgordon/javascript-state-machine (accessed 2026-10-04).
-60. state_machines. https://github.com/state-machines/state_machines (accessed 2026-10-04).
-61. HFSM2. https://github.com/andrew-gresyk/HFSM2 (accessed 2026-10-04).
-62. uSCXML. https://github.com/tklab-tud/uscxml (accessed 2026-10-04).
-63. Stately. https://stately.ai/ (accessed 2026-10-04).
-64. itemis. itemis CREATE. https://www.itemis.com/en/products/itemis-create/ (accessed 2026-10-04).
-65. Quantum Leaps. QM. https://www.state-machine.com/products/qm (accessed 2026-10-04).
-66. IBM. Engineering Rhapsody. https://www.ibm.com/products/engineering-rhapsody (accessed 2026-10-04).
-67. Sparx Systems. State Machine Diagram, UML 2 Tutorial. https://sparxsystems.com/resources/tutorials/uml2/state-diagram.html (accessed 2026-10-04).
-68. Eclipse Papyrus. https://eclipse.dev/papyrus/ (accessed 2026-10-04).
-69. StarUML. https://staruml.io/ (accessed 2026-10-04).
-70. Visual Paradigm. What is State Machine Diagram? https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-state-machine-diagram/ (accessed 2026-10-04).
-71. IAR. Embedded development tools (IAR Visual State). https://www.iar.com/embedded-development-tools (accessed 2026-10-04).
-72. sketch.systems. https://sketch.systems/ (accessed 2026-10-04).
-73. Qt Group. Editing SCXML state charts in Qt Creator. https://doc.qt.io/qtcreator/creator-scxml.html (accessed 2026-10-04).
-74. Toshiba. Simulated Bifurcation Machine, introduction. https://www.global.toshiba/ww/products-solutions/ai-iot/sbm/intro.html (accessed 2026-10-04).
-75. Fixstars. Amplify annealing machines. https://amplify.fixstars.com/en/engine (accessed 2026-10-04).
-76. Hitachi (6 Jun 2024). CMOS annealing technology "relaxed MA". https://www.hitachi.com/en/press/articles/2024/06/0606/ (accessed 2026-10-04).
-
-77. World Labs. About. https://www.worldlabs.ai/about (accessed 2026-10-01).
-78. World Labs Team (1 Sep 2026). Atlas: A World Model for Spatial Intelligence. World Labs blog. https://www.worldlabs.ai/blog/atlas
-79. Li, F.-F. From Words to Worlds: Spatial Intelligence is AI's Next Frontier (public essay / a16z feature excerpt). https://www.a16z.news/p/from-words-to-worlds-spatial-intelligence (accessed 2026-10-01).
-
-<div id="cascades-stopping-and-routing" class="anchor-alias" aria-hidden="true"></div>
 
 ### II. Cascades, stopping, and routing (§II.2, §II.4, §II.9)
 
@@ -2259,97 +1761,6 @@ Entries are numbered in one sequence and grouped by the section that cites them;
 
 <div id="claim-regimes-labels-and-facility-duties-1141" class="anchor-alias" aria-hidden="true"></div>
 
-### II. Claim regimes, labels, and facility duties (§II.11.4.1)
-
-178. Ministère de la Transition écologique et de la Cohésion des territoires. Publication du référentiel général pour l'IA frugale. Press release, 28 June 2024, updated 20 July 2026. https://www.ecologie.gouv.fr/presse/publication-du-referentiel-general-lia-frugale-sattaquer-limpact-environnemental-lia
-179. AFNOR. Un référentiel pour mesurer et réduire l'impact environnemental de l'IA. 12 July 2024, updated 17 December 2025. https://www.afnor.org/actualites/intelligence-artificielle/referentiel-reduire-impact-environnemental-ia/
-180. AFNOR. AFNOR SPEC 2314, *Référentiel général pour l'IA frugale*. June 2024. 100 pages. Shop record: https://www.boutique.afnor.org/en-gb/standard/afnor-spec-2314/fa208976/421140
-181. Umweltbundesamt (2020). Umweltzeichen Blauer Engel, Ressourcen- und energieeffiziente Softwareprodukte (DE-UZ 215). Ausgabe Januar 2020, Version 6 (July 2026). RAL gGmbH (Hrsg.). https://produktinfo.blauer-engel.de/uploads/criteriafile/de/171/DE-UZ%20215-202001-de%20Kriterien-V6.pdf Product page: https://www.blauer-engel.de/de/produktwelt/software
-182. Schulze, M., Gröger, J., and Behrens, F. SoftAWERE. Umweltbundesamt TEXTE 71/2026. Completion date May 2023. https://www.umweltbundesamt.de/en/publikationen/softawere PDF: https://www.umweltbundesamt.de/system/files/medien/11850/publikationen/2026-05/71_2026_TEXTE.pdf
-183. UNE. ESPECIFICACION UNE 0086:2025, *Medición del consumo energético, huella de carbono, consumo del agua y rendimiento de sistemas de Inteligencia Artificial*. Edition 8 October 2025, corrected 29 July 2026. https://www.une.org/encuentra-tu-norma/busca-tu-norma/norma?c=N0075012
-184. UNE. UNE promotes the first specification to measure the sustainability of Artificial Intelligence. 10 October 2025. https://www.en.une.org/la-asociacion/sala-de-informacion-une/noticias/nueva-especificacion-une-para-medir-la-sostenibilidad-de-la-ia
-185. Secretaría de Estado de Digitalización e Inteligencia Artificial. España crea una pionera especificación UNE que medirá la sostenibilidad de la Inteligencia Artificial. 9 October 2025. https://digital.gob.es/comunicacion/notas-prensa/secretaria-digitalizacion-e-inteligencia-artificial/2025/10/2025-10-09
-186. 市场监管总局 and 国家发展改革委. 《人工智能计量体系和能力建设指引（2026版）》. Notice, 28 May 2026. https://www.samr.gov.cn/xw/zj/art/2026/art_f43aa2c974654d66b91bbad8410d0d71.html
-187. BSI. PD CEN/CLC/TR 18145:2025, *Environmentally sustainable Artificial Intelligence*. Published 28 February 2025. https://knowledge.bsigroup.com/products/environmentally-sustainable-artificial-intelligence
-188. CEN-CENELEC. Gap Analysis of Standards for EU AI Act Compliance for healthcare Artificial Intelligence, Task 2 Mid-Phase Report. 18 December 2025. Lists CEN/CLC/TR 18145:2025 (WI JT021010) as published in the JTC 21 column. https://www.cencenelec.eu/media/CEN-CENELEC/AreasOfWork/CEN%20sectors/Healthcare/cen-clc_sag_healthcarestandards-midphasereportartificialintelligence.pdf
-189. CEN and CENELEC. Update on CEN and CENELEC's Decision to Accelerate the Development of Standards for Artificial Intelligence. Posted 23 October 2025. https://www.cencenelec.eu/news-events/news/2025/brief-news/2025-10-23-ai-standardization/
-190. 資源エネルギー庁. 増加が見込まれるデータセンターの電力需要をどうする？さらなる省エネを進める新たな制度に注目！ Explainer, 20 May 2026, correction noted 4 June 2026. https://www.enecho.meti.go.jp/about/special/johoteikyo/data_center2026.html
-
-<div id="energy-as-the-condition-1142" class="anchor-alias" aria-hidden="true"></div>
-
-### II. Energy as the condition (§II.11.4.2)
-
-191. Margolus, N., & Levitin, L. B. (1998). The maximum speed of dynamical evolution. *Physica D*, 120, 188-195. DOI: [10.1016/S0167-2789(98)00054-2](https://doi.org/10.1016/S0167-2789(98)00054-2). arXiv:[quant-ph/9710043](https://arxiv.org/abs/quant-ph/9710043).
-192. Sagawa, T., & Ueda, M. (2009). Minimal energy cost for thermodynamic information processing: measurement and information erasure. *Physical Review Letters*, 102, 250602. DOI: [10.1103/PhysRevLett.102.250602](https://doi.org/10.1103/PhysRevLett.102.250602). Erratum: *Physical Review Letters*, 106, 189901 (2011).
-193. Still, S., Sivak, D. A., Bell, A. J., & Crooks, G. E. (2012). Thermodynamics of prediction. *Physical Review Letters*, 109, 120604. DOI: [10.1103/PhysRevLett.109.120604](https://doi.org/10.1103/PhysRevLett.109.120604).
-194. Bérut, A., Arakelyan, A., Petrosyan, A., Ciliberto, S., Dillenschneider, R., & Lutz, E. (2012). Experimental verification of Landauer's principle linking information and thermodynamics. *Nature*, 483, 187-189. DOI: [10.1038/nature10872](https://doi.org/10.1038/nature10872).
-195. Jun, Y., Gavrilov, M., & Bechhoefer, J. (2014). High-precision test of Landauer's principle in a feedback trap. *Physical Review Letters*, 113, 190601. DOI: [10.1103/PhysRevLett.113.190601](https://doi.org/10.1103/PhysRevLett.113.190601).
-196. Kolchinsky, A., & Wolpert, D. H. (2020). Thermodynamic costs of Turing machines. *Physical Review Research*, 2, 033312. DOI: [10.1103/PhysRevResearch.2.033312](https://doi.org/10.1103/PhysRevResearch.2.033312).
-197. You, J., Chung, J.-W., & Chowdhury, M. (2023). Zeus: Understanding and Optimizing GPU Energy Consumption of DNN Training. *20th USENIX Symposium on Networked Systems Design and Implementation (NSDI 23)*, 119-139. https://www.usenix.org/conference/nsdi23/presentation/you. arXiv:[2208.06102](https://arxiv.org/abs/2208.06102).
-198. Chung, J.-W., Gu, Y., Jang, I., Meng, L., Bansal, N., & Chowdhury, M. (2024). Reducing Energy Bloat in Large Model Training. *ACM SIGOPS 30th Symposium on Operating Systems Principles (SOSP '24)*. DOI: [10.1145/3694715.3695970](https://doi.org/10.1145/3694715.3695970). arXiv:[2312.06902](https://arxiv.org/abs/2312.06902).
-
-
-<div id="neuromorphic-substrates-and-measured-run-energy-1143" class="anchor-alias" aria-hidden="true"></div>
-
-### II. Neuromorphic substrates and measured-run energy (§II.11.4.3)
-
-199. Merolla, P. A., Arthur, J. V., Alvarez-Icaza, R., Cassidy, A. S., Sawada, J., Akopyan, F., Jackson, B. L., Imam, N., Guo, C., Nakamura, Y., Brezzo, B., Vo, I., Esser, S. K., Appuswamy, R., Taba, B., Amir, A., Flickner, M. D., Risk, W. P., Manohar, R., & Modha, D. S. (2014). A million spiking-neuron integrated circuit with a scalable communication network and interface. *Science*, 345(6197), 668-673. DOI: [10.1126/science.1254642](https://doi.org/10.1126/science.1254642).
-200. Frenkel, C., Lefebvre, M., Legat, J.-D., & Bol, D. (2018). A 0.086-mm² 12.7-pJ/SOP 64k-Synapse 256-Neuron Online-Learning Digital Spiking Neuromorphic Processor in 28nm CMOS. *IEEE Transactions on Biomedical Circuits and Systems*. DOI: [10.1109/TBCAS.2018.2880425](https://doi.org/10.1109/TBCAS.2018.2880425). arXiv:[1804.07858](https://arxiv.org/abs/1804.07858).
-201. Esser, S. K., Merolla, P. A., Arthur, J. V., Cassidy, A. S., Appuswamy, R., Andreopoulos, A., Berg, D. J., McKinstry, J. L., Melano, T., Barch, D. R., di Nolfo, C., Datta, P., Amir, A., Taba, B., Flickner, M. D., & Modha, D. S. (2016). Convolutional networks for fast, energy-efficient neuromorphic computing. *Proceedings of the National Academy of Sciences*, 113(41), 11441-11446. DOI: [10.1073/pnas.1604850113](https://doi.org/10.1073/pnas.1604850113). arXiv:[1603.08270](https://arxiv.org/abs/1603.08270).
-202. Göltz, J., Kriener, L., Baumbach, A., Billaudelle, S., Breitwieser, O., Cramer, B., Dold, D., Kungl, A. F., Senn, W., Schemmel, J., Meier, K., & Petrovici, M. A. (2021). Fast and energy-efficient neuromorphic deep learning with first-spike times. *Nature Machine Intelligence*, 3, 823-835. DOI: [10.1038/s42256-021-00388-x](https://doi.org/10.1038/s42256-021-00388-x). arXiv:[1912.11443](https://arxiv.org/abs/1912.11443).
-203. Blouw, P., Choo, X., Hunsberger, E., & Eliasmith, C. (2019). Benchmarking Keyword Spotting Efficiency on Neuromorphic Hardware. *Proceedings of the 7th Annual Neuro-inspired Computational Elements Workshop (NICE '19)*. DOI: [10.1145/3320288.3320304](https://doi.org/10.1145/3320288.3320304). arXiv:[1812.01739](https://arxiv.org/abs/1812.01739).
-204. Gobieski, G., Lucia, B., & Beckmann, N. (2019). Intelligence Beyond the Edge: Inference on Intermittent Embedded Systems. *Proceedings of the Twenty-Fourth International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS '19)*, 199-213. DOI: [10.1145/3297858.3304011](https://doi.org/10.1145/3297858.3304011). arXiv:[1810.07751](https://arxiv.org/abs/1810.07751).
-205. Samsi, S., Zhao, D., McDonald, J., Li, B., Michaleas, A., Jones, M., Bergeron, W., Kepner, J., Tiwari, D., & Gadepally, V. (2023). From Words to Watts: Benchmarking the Energy Costs of Large Language Model Inference. *2023 IEEE High Performance Extreme Computing Conference (HPEC)*. DOI: [10.1109/HPEC58863.2023.10363447](https://doi.org/10.1109/HPEC58863.2023.10363447). arXiv:[2310.03003](https://arxiv.org/abs/2310.03003).
-206. Luccioni, A. S., Jernite, Y., & Strubell, E. (2024). Power Hungry Processing: Watts Driving the Cost of AI Deployment? *ACM Conference on Fairness, Accountability, and Transparency (FAccT '24)*, 85-99. DOI: [10.1145/3630106.3658542](https://doi.org/10.1145/3630106.3658542). arXiv:[2311.16863](https://arxiv.org/abs/2311.16863).
-207. Yang, H., Zhu, Y., & Liu, J. (2019). Energy-Constrained Compression for Deep Neural Networks via Weighted Sparse Projection and Layer Input Masking. *International Conference on Learning Representations (ICLR)*. arXiv:[1806.04321](https://arxiv.org/abs/1806.04321).
-
-<div id="analog-in-memory-and-frequency-domain-computing-1144" class="anchor-alias" aria-hidden="true"></div>
-
-### II. Analog, in-memory, and frequency-domain computing (§II.11.4.4)
-
-208. Ambrogio, S., Narayanan, P., Tsai, H., Shelby, R. M., Boybat, I., di Nolfo, C., Sidler, S., Giordano, M., Bodini, M., Farinha, N. C. P., Killeen, B., Cheng, C., Jaoudi, Y., & Burr, G. W. (2018). Equivalent-accuracy accelerated neural-network training using analogue memory. *Nature*, 558, 60-67. DOI: [10.1038/s41586-018-0180-5](https://doi.org/10.1038/s41586-018-0180-5).
-209. Ambrogio, S., Narayanan, P., Okazaki, A., Fasoli, A., Mackin, C., Hosokawa, K., Nomura, A., Yasuda, T., Chen, A., Friz, A., Ishii, M., Luquin, J., Kohda, Y., Saulnier, N., Brew, K., Choi, S., Ok, I., Philip, T., Chan, V., Silvestre, C., Ahsan, I., Narayanan, V., Tsai, H., & Burr, G. W. (2023). An analog-AI chip for energy-efficient speech recognition and transcription. *Nature*, 620, 768-775. DOI: [10.1038/s41586-023-06337-5](https://doi.org/10.1038/s41586-023-06337-5).
-210. Le Gallo, M., Khaddam-Aljameh, R., Stanisavljevic, M., Vasilopoulos, A., Kersting, B., Dazzi, M., Karunaratne, G., Brändli, M., Singh, A., Müller, S. M., Büchel, J., Timoneda, X., Joshi, V., Rasch, M. J., Egger, U., Garofalo, A., Petropoulos, A., Antonakopoulos, T., Brew, K., Choi, S., Ok, I., Philip, T., Chan, V., Silvestre, C., Ahsan, I., Saulnier, N., Narayanan, V., Francese, P. A., Eleftheriou, E., & Sebastian, A. (2023). A 64-core mixed-signal in-memory compute chip based on phase-change memory for deep neural network inference. *Nature Electronics*, 6, 680-693. DOI: [10.1038/s41928-023-01010-1](https://doi.org/10.1038/s41928-023-01010-1). arXiv:[2212.02872](https://arxiv.org/abs/2212.02872).
-211. Wan, W., Kubendran, R., Schaefer, C., Eryilmaz, S. B., Zhang, W., Wu, D., Deiss, S., Raina, P., Qian, H., Gao, B., Joshi, S., Wu, H., Wong, H.-S. P., & Cauwenberghs, G. (2022). A compute-in-memory chip based on resistive random-access memory. *Nature*, 608, 504-512. DOI: [10.1038/s41586-022-04992-8](https://doi.org/10.1038/s41586-022-04992-8).
-212. Yao, P., Wu, H., Gao, B., Tang, J., Zhang, Q., Zhang, W., Yang, J. J., & Qian, H. (2020). Fully hardware-implemented memristor convolutional neural network. *Nature*, 577, 641-646. DOI: [10.1038/s41586-020-1942-4](https://doi.org/10.1038/s41586-020-1942-4).
-213. Shen, Y., Harris, N. C., Skirlo, S., Prabhu, M., Baehr-Jones, T., Hochberg, M., Sun, X., Zhao, S., Larochelle, H., Englund, D., & Soljačić, M. (2017). Deep learning with coherent nanophotonic circuits. *Nature Photonics*, 11, 441-446. DOI: [10.1038/nphoton.2017.93](https://doi.org/10.1038/nphoton.2017.93). arXiv:[1610.02365](https://arxiv.org/abs/1610.02365).
-214. Wang, T., Ma, S.-Y., Wright, L. G., Onodera, T., Richard, B. C., & McMahon, P. L. (2022). An optical neural network using less than 1 photon per multiplication. *Nature Communications*, 13, 123. DOI: [10.1038/s41467-021-27774-8](https://doi.org/10.1038/s41467-021-27774-8). arXiv:[2104.13467](https://arxiv.org/abs/2104.13467).
-215. Chen, Y., Nazhamaiti, M., Xu, H., Meng, Y., Zhou, T., Li, G., Fan, J., Wei, Q., Wu, J., Qiao, F., Fang, L., & Dai, Q. (2023). All-analog photoelectronic chip for high-speed vision tasks. *Nature*, 623, 48-57. DOI: [10.1038/s41586-023-06558-8](https://doi.org/10.1038/s41586-023-06558-8).
-216. Feldmann, J., Youngblood, N., Karpov, M., Gehring, H., Li, X., Stappers, M., Le Gallo, M., Fu, X., Lukashchuk, A., Raja, A. S., Liu, J., Wright, C. D., Sebastian, A., Kippenberg, T. J., Pernice, W. H. P., & Bhaskaran, H. (2021). Parallel convolutional processing using an integrated photonic tensor core. *Nature*, 589, 52-58. DOI: [10.1038/s41586-020-03070-1](https://doi.org/10.1038/s41586-020-03070-1).
-217. Miscuglio, M., Hu, Z., Li, S., George, J. K., Capanna, R., Dalir, H., Bardet, P. M., Gupta, P., & Sorger, V. J. (2020). Massively parallel amplitude-only Fourier neural network. *Optica*, 7(12), 1812. DOI: [10.1364/OPTICA.408659](https://doi.org/10.1364/OPTICA.408659). arXiv:[2008.05853](https://arxiv.org/abs/2008.05853).
-218. Moy, W., Ahmed, I., Chiu, P.-W., Moy, J., Sapatnekar, S. S., & Kim, C. H. (2022). A 1,968-node coupled ring oscillator circuit for combinatorial optimization problem solving. *Nature Electronics*, 5, 310-317. DOI: [10.1038/s41928-022-00749-3](https://doi.org/10.1038/s41928-022-00749-3).
-219. Romera, M., Talatchian, P., Tsunegi, S., Abreu Araujo, F., Cros, V., Bortolotti, P., Trastoy, J., Yakushiji, K., Fukushima, A., Kubota, H., Yuasa, S., Ernoult, M., Vodenicarevic, D., Hirtzlin, T., Locatelli, N., Querlioz, D., & Grollier, J. (2018). Vowel recognition with four coupled spin-torque nano-oscillators. *Nature*, 563, 230-234. DOI: [10.1038/s41586-018-0632-y](https://doi.org/10.1038/s41586-018-0632-y). arXiv:[1711.02704](https://arxiv.org/abs/1711.02704).
-220. Torrejon, J., Riou, M., Abreu Araujo, F., Tsunegi, S., Khalsa, G., Querlioz, D., Bortolotti, P., Cros, V., Yakushiji, K., Fukushima, A., Kubota, H., Yuasa, S., Stiles, M. D., & Grollier, J. (2017). Neuromorphic computing with nanoscale spintronic oscillators. *Nature*, 547, 428-431. DOI: [10.1038/nature23011](https://doi.org/10.1038/nature23011). arXiv:[1701.07715](https://arxiv.org/abs/1701.07715).
-221. Zhong, Y., Tang, J., Li, X., Liang, X., Liu, Z., Li, Y., Xi, Y., Yao, P., Hao, Z., Gao, B., Qian, H., & Wu, H. (2022). A memristor-based analogue reservoir computing system for real-time and power-efficient signal processing. *Nature Electronics*, 5, 672-681. DOI: [10.1038/s41928-022-00838-3](https://doi.org/10.1038/s41928-022-00838-3).
-
-<div id="passive-and-reversible-transforms-1145" class="anchor-alias" aria-hidden="true"></div>
-
-### II. Passive and reversible transforms (§II.11.4.5)
-
-222. Fredkin, E., & Toffoli, T. (1982). Conservative logic. *International Journal of Theoretical Physics*, 21, 219-253. DOI: [10.1007/BF01857727](https://doi.org/10.1007/BF01857727).
-223. Bennett, C. H. (1982). The thermodynamics of computation: a review. *International Journal of Theoretical Physics*, 21, 905-940. DOI: [10.1007/BF02084158](https://doi.org/10.1007/BF02084158).
-224. Landauer, R. (1988). Dissipation and noise immunity in computation and communication. *Nature*, 335, 779-784. DOI: [10.1038/335779a0](https://doi.org/10.1038/335779a0).
-225. Takeuchi, N., Yamanashi, Y., & Yoshikawa, N. (2013). Measurement of 10 zJ energy dissipation of adiabatic quantum-flux-parametron logic using a superconducting resonator. *Applied Physics Letters*, 102, 052602. DOI: [10.1063/1.4790276](https://doi.org/10.1063/1.4790276).
-226. Takeuchi, N., Yamanashi, Y., & Yoshikawa, N. (2014). Reversible logic gate using adiabatic superconducting devices. *Scientific Reports*, 4, 6354. DOI: [10.1038/srep06354](https://doi.org/10.1038/srep06354).
-227. Herr, Q. (2025). Landauer-Limited Dissipation in Quantum-Flux-Parametron Logic. arXiv:[2504.04284](https://arxiv.org/abs/2504.04284).
-228. Frank, M. P., Brocato, R. W., Tierney, B. D., Missert, N. A., & Hsia, A. H. (2020). Reversible Computing with Fast, Fully Static, Fully Adiabatic CMOS. arXiv:[2009.00448](https://arxiv.org/abs/2009.00448).
-229. Goodman, J. W. (2017). *Introduction to Fourier Optics* (4th ed.). W. H. Freeman, Macmillan Learning. ISBN 9781319119164. [Publisher page](https://www.macmillanlearning.com/college/us/product/Introduction-to-Fourier-Optics/p/1319119166).
-230. Lin, X., Rivenson, Y., Yardimci, N. T., Veli, M., Luo, Y., Jarrahi, M., & Ozcan, A. (2018). All-optical machine learning using diffractive deep neural networks. *Science*, 361, 1004-1008. DOI: [10.1126/science.aat8084](https://doi.org/10.1126/science.aat8084). arXiv:[1804.08711](https://arxiv.org/abs/1804.08711).
-231. Silva, A., Monticone, F., Castaldi, G., Galdi, V., Alù, A., & Engheta, N. (2014). Performing mathematical operations with metamaterials. *Science*, 343, 160-163. DOI: [10.1126/science.1242818](https://doi.org/10.1126/science.1242818).
-232. Mohammadi Estakhri, N., Edwards, B., & Engheta, N. (2019). Inverse-designed metastructures that solve equations. *Science*, 363, 1333-1338. DOI: [10.1126/science.aaw2498](https://doi.org/10.1126/science.aaw2498).
-233. Miller, D. A. B. (2017). Attojoule optoelectronics for low-energy information processing and communications. *Journal of Lightwave Technology*, 35(3), 346-396. DOI: [10.1109/JLT.2017.2647779](https://doi.org/10.1109/JLT.2017.2647779). arXiv:[1609.05510](https://arxiv.org/abs/1609.05510).
-234. Hamerly, R., Bernstein, L., Sludds, A., Soljačić, M., & Englund, D. (2019). Large-scale optical neural networks based on photoelectric multiplication. *Physical Review X*, 9, 021032. DOI: [10.1103/PhysRevX.9.021032](https://doi.org/10.1103/PhysRevX.9.021032). arXiv:[1812.07614](https://arxiv.org/abs/1812.07614).
-
-<div id="dual-phase-perception--tinyml-transducers-111" class="anchor-alias" aria-hidden="true"></div>
-
-### II. Dual-phase perception / TinyML transducers (§II.11.1)
-
-235. Zhang, Y., Sun, S., & Ma, L. (2021). Tiny Transducer: A Highly-Efficient Speech Recognition Model on Edge Devices. *ICASSP*. arXiv:[2101.06856](https://arxiv.org/abs/2101.06856). DOI: [10.1109/ICASSP39728.2021.9413854](https://doi.org/10.1109/ICASSP39728.2021.9413854).
-
-Kepler's laws, Newton's *Principia*, and Brahe's observational program are treated as historical common knowledge in §II.8.1. Details about Logical Intelligence beyond its company blog are company-reported. Author-reported GPU-hours, throughput, KV bytes per token, prefill FLOPs, and benchmark scores for Jamba, DeepSeek (including V4.1-Flash), GLM, Xiaomi MiMo and HySparse2, Qwen, Kimi, Sarvam, Solar, speculative decoding, and test-time scaling papers are **field results**, not Mixture of Limits `measured_j`.
-
-<div id="appendix-a-measurement-bounds" class="anchor-alias" aria-hidden="true"></div>
-
 ## II. Appendix A. Measurement bounds
 
 - The `mol prove` path makes no board measurement; `measured_j=None` unless a Metered probe returns.
@@ -2357,10 +1768,7 @@ Kepler's laws, Newton's *Principia*, and Brahe's observational program are treat
 - Analytical and catalog `estimated_j` is not board power.
 - About 29 `VERIFIED` criteria from `mol prove` are constructive existence in **software**.
 - Mixture of Limits is a clean-room rule plus runtime, not an MoE wrapper.
-- The floors are established theory; the open work is embodiment in materials and devices (§II.8.0.1).
 - §II.8.4 to §II.8.14 place latents, energy-based hybrids, world models, test-time compute, super learning, quantization, serving engines, state-space and MoE efficiency, edge and neuromorphic hardware, and cross-field techniques as ways to spend less past the floor. Author-reported joules, KV bytes, and scores stay field results.
-- §II.11 states the remaining engineering: the front gear (§II.11.1), cheap routing checks (§II.11.2), Primitive Distillation (§II.11.3), measurement tiers in which only Metered readings populate `measured_j` (§II.11.4), and the developer surface (§II.11.5).
-- The front gear feeds Lookup → Formula → Solver → Model and does not replace any gear.
 
 <div id="appendix-b-reproducibility-pointers" class="anchor-alias" aria-hidden="true"></div>
 

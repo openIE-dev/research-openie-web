@@ -132,11 +132,28 @@ LaTeX PDF:
 \href{https://research.openie.dev/pdfs/latex/agency.pdf}{/pdfs/latex/agency.pdf}
 (\href{https://research.openie.dev/pdfs/latex/agency.tex}{source}).}
 
-\emph{The proposed Universal Law of Agency, stated as a definition plus
-a gate.}
+\subsection{Abstract}\label{abstract}
 
-\emph{Agency first. Kinematics second. Intelligence is the calculus of
-agency, read in joules.}
+This paper defines an agent as a system that holds a goal under an
+energy budget, derives physical limits on how fast it can act per second
+and per joule, and measures intelligence as progress per joule after a
+run is complete.
+
+\textbf{In plain words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  To count as an agent, a system must aim at a goal, act on the world,
+  and stay within an energy budget.
+\item
+  Physics sets a minimum energy cost for every decision, so no agent can
+  act faster or cheaper than that limit.
+\item
+  Among systems that get the job done correctly, the smarter one is the
+  one that used less energy.
+\end{enumerate}
 
 \subsection{1. Thesis}\label{thesis}
 
@@ -164,8 +181,8 @@ The proposal has three layers, and the order is fixed.
   is joules.
 \end{enumerate}
 
-The thesis: Energy to run is the only true metric of computer
-intelligence. All other factors collapse to zero.
+The thesis: among systems that pass a task's correctness test, the
+ranking is by energy to completion, in joules.
 
 The thesis is read through its gate. Capability is not discarded: it is
 the gate. Burnell and colleagues ask that evaluation report results by
@@ -284,15 +301,15 @@ gives the definition, the kinematics or the calculus.
   respect to another. It exists when the first measure gives zero mass
   to every set that the second gives zero mass to.
 \item
-  \textbf{Mixture of Limits:} the OpenIE philosophy. Use the cheapest
-  gear that is sufficient. There exist floors past which additional
+  \textbf{Mixture of Limits:} the rule of using the cheapest mechanism
+  (gear) that is sufficient. There exist floors past which additional
   tokens, parameters, or joules do not purchase verifiable progress.
   Spend past the floor is waste. That floor is the plateau (threshold
   convergence). Mixture of Limits is not one fixed cascade. A fixed
   cascade order is one instance of it. The σ-law selector is another.
 \item
-  \textbf{Notational Intelligence:} the OpenIE receipt study. Every act
-  carries its prediction, its outcome and its joules.
+  \textbf{Receipt:} a record attached to every act, holding its
+  prediction, its outcome and its joules.
 \end{itemize}
 
 \subsection{2. Formal framework}\label{formal-framework}
@@ -1481,32 +1498,9 @@ increasing subsequences of gears.
   sufficient gear is the argmin over joules. It is a philosophy, not one
   fixed order: spend stops at the plateau, where more is waste.
 \item
-  \textbf{Notational Intelligence} is the receipt. It carries \(R^*\),
-  \(R\), \(m\) and \(J\) for every act.
+  \textbf{The receipt} carries \(R^*\), \(R\), \(m\) and \(J\) for every
+  act.
 \end{itemize}
-
-Both are developed in the companion paper,
-\href{https://research.openie.dev/papers/gates/}{Metered Commit Gates}.
-Product placement is not part of this physics paper. It is kept in the
-\href{https://research.openie.dev/products/mei/\#where-the-products-sit}{Metabolic
-Intelligence white paper}.
-
-\textbf{Shared thesis, stated once for every paper.} Energy to run is
-the only true metric of computer intelligence. All other factors
-collapse to zero. The gate form defines what that means. Among runs that
-pass the task's completeness predicate \(C(z)\) within the stated budget
-and deadline, systems are ranked by joules to completion, \(J^*\).
-Correctness, deadlines and task size are the gate, not terms in the
-score. Parameters, tokens, benchmark scores and prices carry zero weight
-in the ranking
-(\href{https://research.openie.dev/papers/agency/\#1-thesis}{Agency,
-Section 1}). Estimates are never \texttt{measured\_j}. Prices and
-markets are economics. They are in the economics companions:
-\href{https://research.openie.dev/papers/satiation/}{Task Satiation},
-\href{https://research.openie.dev/papers/spellcheck/}{Spell Check is
-Global} and
-\href{https://research.openie.dev/papers/ai-coding-market/}{The Promised
-Trillion Dollar AI-Coding Market}.
 
 \subsection{3. Layer 1. The proposed Universal Law of Agency: a
 definition plus a
@@ -1707,7 +1701,8 @@ with an acceptor of action results learned locomotion and chemotaxis
 controller {[}91{]}. Clauses 1 and 3 run in software and on a body.
 Neither meters joules.
 
-\subsubsection{3.3 Opinion}\label{opinion}
+\subsubsection{3.3 Positions in the
+literature}\label{positions-in-the-literature}
 
 \textbf{Purposive systems and anticipation.} Rosenblueth, Wiener and
 Bigelow defined purposeful behavior through negative feedback toward a
@@ -2016,7 +2011,8 @@ empowerment, the channel capacity from actions to future sensors
 {[}221{]}. It measures how much an agent can move the world, in bits. It
 is not a rate per joule.
 
-\subsubsection{4.3 Opinion}\label{opinion-1}
+\subsubsection{4.3 Positions in the
+literature}\label{positions-in-the-literature-1}
 
 Kinematics is mostly theorem and experiment. The opinions here concern
 which variable is right. Seifert holds that inference from fluctuations
@@ -2244,7 +2240,8 @@ report a median of 0.24 Wh per Gemini Apps text prompt, counting
 accelerators, hosts, idle capacity and data-center overhead {[}281{]}.
 It is an operator-reported figure, filed as \texttt{reported\_j}.
 
-\subsubsection{5.3 Opinion}\label{opinion-2}
+\subsubsection{5.3 Positions in the
+literature}\label{positions-in-the-literature-2}
 
 Each position is placed against the definition: intelligence is the
 derivative of gated agency in joules, read off a completed run.
@@ -2560,11 +2557,10 @@ the same act.
 
 \textbf{P8. When agency compounds.} Conditions under which
 \(\alpha_J > 0\) over a run, so that earlier receipts lower the joules
-of later closures. In hand: an earlier OpenIE toy run found
-\(\alpha_J \le 0\) on near-optimal tasks. Missing: a model of reuse in
-which stored receipts cut later \(J\) by more than the storage and
-lookup joules. Still gives the memory cost side {[}225{]}. Section 8.10
-measures the template's share of each act's joules.
+of later closures. Missing: a model of reuse in which stored receipts
+cut later \(J\) by more than the storage and lookup joules. Still gives
+the memory cost side {[}225{]}. Section 8.10 measures the template's
+share of each act's joules.
 
 \subsubsection{7.2 What must be
 demonstrated}\label{what-must-be-demonstrated}
@@ -2699,10 +2695,10 @@ randomized interleaved run order.
   \textbf{σ-law selector:} \(a^* = \arg\max[H(a) - \lambda J(a)]\)
   subject to \(J \le B\), with refusal on a receipt.
 \item
-  \textbf{Fixed cascade (one Mixture of Limits instance):} the
-  cheapest-sufficient rule, with gears tried in a fixed order from
-  cheapest up. It is the matched comparison: same information, gears,
-  budget and refusal right. Only the selection rule differs.
+  \textbf{Fixed cascade (cheapest first):} the cheapest-sufficient rule,
+  with gears tried in a fixed order from cheapest up. It is the matched
+  comparison: same information, gears, budget and refusal right. Only
+  the selection rule differs.
 \item
   \textbf{Largest gear always:} reference ceiling.
 \item
@@ -2751,8 +2747,7 @@ statistics}\label{budgets-seeds-and-statistics}
 
 \subsubsection{8.5 Receipt schema}\label{receipt-schema}
 
-The receipt is the Notational Intelligence record of the run. One record
-per act:
+The receipt is the record of the run. One record per act:
 
 \begin{verbatim}
 act_id, run_id, task_id, arm, seed, budget_j, gear
@@ -3043,11 +3038,11 @@ came next (5828420), and then the main run (35c967a).
   \textbf{Arms.} The σ-law selector takes
   \(a^* = \arg\max[H(a) - \lambda J(a)]\), with \(H(a)\) the calibrated
   pass probability given the gears already tried, times \(b\), and
-  \(\lambda = b/B\). The fixed cascade (one Mixture of Limits instance)
-  takes the cheapest gear whose calibrated pass probability is at least
-  0.5. Both fix \(R^*\) before each act, hash it with SHA-256 (Secure
-  Hash Algorithm, 256-bit) and timestamp it. Both compare after the act
-  and refuse with a receipt when no act fits the budget. The goal-blind
+  \(\lambda = b/B\). The fixed cascade (cheapest first) takes the
+  cheapest gear whose calibrated pass probability is at least 0.5. Both
+  fix \(R^*\) before each act, hash it with SHA-256 (Secure Hash
+  Algorithm, 256-bit) and timestamp it. Both compare after the act and
+  refuse with a receipt when no act fits the budget. The goal-blind
   baseline draws one gear at random, with no prediction, no comparison,
   no escalation and no refusal. The budget cuts it off.
 \item
@@ -3119,12 +3114,12 @@ Overspends
 0.29 & 20.90 & 0 & 9 \\
 σ-law & 2.0 & 28.40 ± 0.60 & 4,823 ± 105 & 66.2 ± 5.8 & 73,345 ± 6,443 &
 0.09 & 1.60 & 0 & 0 \\
-Fixed cascade (one Mixture of Limits instance) & 0.5 & 0.70 ± 0.47 & 126
-± 85 & 18.8 ± 0.3 & 6,801 ± 4,569 & 0.67 & 29.30 & 0 & 0 \\
-Fixed cascade (one Mixture of Limits instance) & 1.0 & 6.45 ± 1.50 &
-1,047 ± 254 & 44.7 ± 3.6 & 23,804 ± 7,067 & 0.30 & 23.55 & 0 & 7 \\
-Fixed cascade (one Mixture of Limits instance) & 2.0 & 27.50 ± 0.51 &
-4,668 ± 92 & 67.0 ± 6.7 & 70,418 ± 7,766 & 0.11 & 2.50 & 0 & 0 \\
+Fixed cascade (cheapest first) & 0.5 & 0.70 ± 0.47 & 126 ± 85 & 18.8 ±
+0.3 & 6,801 ± 4,569 & 0.67 & 29.30 & 0 & 0 \\
+Fixed cascade (cheapest first) & 1.0 & 6.45 ± 1.50 & 1,047 ± 254 & 44.7
+± 3.6 & 23,804 ± 7,067 & 0.30 & 23.55 & 0 & 7 \\
+Fixed cascade (cheapest first) & 2.0 & 27.50 ± 0.51 & 4,668 ± 92 & 67.0
+± 6.7 & 70,418 ± 7,766 & 0.11 & 2.50 & 0 & 0 \\
 Goal-blind & 0.5 & 0.25 ± 0.44 & 45 ± 80 & 14.1 ± 3.1 & 2,775 ± 4,999 &
 1.80 & 0 & 20.35 & 20 \\
 Goal-blind & 1.0 & 3.85 ± 1.84 & 623 ± 301 & 26.6 ± 5.7 & 24,153 ±
@@ -3355,12 +3350,12 @@ Overspends
 0.697 & 27.10 & 0 & 0 \\
 σ-law & 2.0 & 22.73 ± 1.30 & 3,980 ± 206 & 197.3 ± 18.2 & 20,359 ± 2,388
 & 0.117 & 7.28 & 0 & 0 \\
-Fixed cascade (one Mixture of Limits instance) & 0.5 & 0.57 ± 0.50 & 104
-± 90 & 60.1 ± 2.1 & 1,777 ± 1,548 & 0.871 & 29.43 & 0 & 0 \\
-Fixed cascade (one Mixture of Limits instance) & 1.0 & 2.67 ± 1.25 & 483
-± 226 & 140.3 ± 13.5 & 3,593 ± 1,948 & 0.542 & 27.32 & 0 & 0 \\
-Fixed cascade (one Mixture of Limits instance) & 2.0 & 19.93 ± 1.42 &
-3,509 ± 227 & 201.2 ± 20.4 & 17,684 ± 2,909 & 0.164 & 10.07 & 0 & 0 \\
+Fixed cascade (cheapest first) & 0.5 & 0.57 ± 0.50 & 104 ± 90 & 60.1 ±
+2.1 & 1,777 ± 1,548 & 0.871 & 29.43 & 0 & 0 \\
+Fixed cascade (cheapest first) & 1.0 & 2.67 ± 1.25 & 483 ± 226 & 140.3 ±
+13.5 & 3,593 ± 1,948 & 0.542 & 27.32 & 0 & 0 \\
+Fixed cascade (cheapest first) & 2.0 & 19.93 ± 1.42 & 3,509 ± 227 &
+201.2 ± 20.4 & 17,684 ± 2,909 & 0.164 & 10.07 & 0 & 0 \\
 Goal-blind & 0.5 & 0.12 ± 0.33 & 23 ± 61 & 35.4 ± 11.6 & 513 ± 1,397 &
 2.723 & 0 & 22.85 & 0 \\
 Goal-blind & 1.0 & 1.00 ± 0.93 & 181 ± 169 & 72.0 ± 19.5 & 2,661 ± 2,579
@@ -3585,12 +3580,12 @@ Overspends
 σ-law & 1.0 & 0.00 & 0 & 0.0002 & 0 & n/a & 30.00 & 0.00 & 322 \\
 σ-law & 2.0 & 1.00 ± 0.39 & 181 ± 71 & 0.0018 ± 0.0336 & 14,427 ± 18,680
 & 1.295 & 29.00 & 0.00 & 322 \\
-Fixed cascade (one Mixture of Limits instance) & 0.5 & 0.00 & 0 &
--0.0008 & 0 & n/a & 30.00 & 0.00 & 326 \\
-Fixed cascade (one Mixture of Limits instance) & 1.0 & 0.00 & 0 &
--0.0005 & 0 & n/a & 30.00 & 0.00 & 324 \\
-Fixed cascade (one Mixture of Limits instance) & 2.0 & 1.00 ± 0.51 & 181
-± 91 & 0.0107 ± 0.0286 & 15,451 ± 23,767 & 1.538 & 29.00 & 0.00 & 320 \\
+Fixed cascade (cheapest first) & 0.5 & 0.00 & 0 & -0.0008 & 0 & n/a &
+30.00 & 0.00 & 326 \\
+Fixed cascade (cheapest first) & 1.0 & 0.00 & 0 & -0.0005 & 0 & n/a &
+30.00 & 0.00 & 324 \\
+Fixed cascade (cheapest first) & 2.0 & 1.00 ± 0.51 & 181 ± 91 & 0.0107 ±
+0.0286 & 15,451 ± 23,767 & 1.538 & 29.00 & 0.00 & 320 \\
 Goal-blind & 0.5 & 0.00 & 0 & 0.0026 & 0 & n/a & 0.00 & 30.00 & 327 \\
 Goal-blind & 1.0 & 0.00 & 0 & 0.0009 & 0 & n/a & 0.00 & 30.00 & 323 \\
 Goal-blind & 2.0 & 0.28 ± 0.45 & 50 ± 82 & 0.0019 ± 0.0180 & 3,801 ±
@@ -3680,14 +3675,12 @@ Overspends
 8,516 & 0.415 & 21.25 & 0.00 & 0 \\
 σ-law & 2.0 & 28.60 ± 0.98 & 4,882 ± 154 & 0.1008 ± 0.0234 & 50,667 ±
 10,088 & 0.199 & 1.40 & 0.00 & 0 \\
-Fixed cascade (one Mixture of Limits instance) & 0.5 & 1.15 ± 0.92 & 208
-± 167 & 0.0366 ± 0.0013 & 5,833 ± 4,757 & 0.816 & 28.85 & 0.00 & 0 \\
-Fixed cascade (one Mixture of Limits instance) & 1.0 & 9.22 ± 3.07 &
-1,660 ± 551 & 0.0813 ± 0.0106 & 21,412 ± 8,130 & 0.380 & 20.77 & 0.00 &
-0 \\
-Fixed cascade (one Mixture of Limits instance) & 2.0 & 27.77 ± 2.30 &
-4,745 ± 377 & 0.1099 ± 0.0339 & 47,108 ± 13,216 & 0.281 & 2.23 & 0.00 &
-0 \\
+Fixed cascade (cheapest first) & 0.5 & 1.15 ± 0.92 & 208 ± 167 & 0.0366
+± 0.0013 & 5,833 ± 4,757 & 0.816 & 28.85 & 0.00 & 0 \\
+Fixed cascade (cheapest first) & 1.0 & 9.22 ± 3.07 & 1,660 ± 551 &
+0.0813 ± 0.0106 & 21,412 ± 8,130 & 0.380 & 20.77 & 0.00 & 0 \\
+Fixed cascade (cheapest first) & 2.0 & 27.77 ± 2.30 & 4,745 ± 377 &
+0.1099 ± 0.0339 & 47,108 ± 13,216 & 0.281 & 2.23 & 0.00 & 0 \\
 Goal-blind & 0.5 & 0.20 ± 0.46 & 36 ± 84 & 0.0210 ± 0.0055 & 1,722 ±
 3,927 & 2.280 & 0.00 & 21.50 & 0 \\
 Goal-blind & 1.0 & 3.73 ± 2.12 & 667 ± 381 & 0.0436 ± 0.0140 & 16,393 ±
@@ -3923,29 +3916,6 @@ a statement that they are negligible); the baseline and whether joules
 are total or incremental; the coarse-graining of outcomes; the horizon
 and reset protocol; wall-clock time and mean power beside bits per
 joule; and the estimator of coupled bits with its bias correction.
-
-\subsubsection{8.13 Where the products
-sit}\label{where-the-products-sit}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Notational Intelligence} is the receipt format in Section 8.5.
-\item
-  \textbf{Mixture of Limits} is the philosophy both selectors
-  instantiate. Arm 2 is its fixed cascade instance.
-\item
-  \textbf{The Reality Code Engine} reads \(\iota = dX/dJ\) in hindsight
-  from its hash-chained log, with \(X\) the coding tasks through the
-  gate and \(J\) their labeled joules
-  (\href{https://research.openie.dev/papers/rce/\#9-ties-to-the-companion-papers}{The
-  Reality Code Engine, Section 9}).
-\end{itemize}
-
-Hardware and product placement are in the
-\href{https://research.openie.dev/products/mei/\#where-the-products-sit}{Metabolic
-Intelligence white paper}. The meters of this plan are M0 and M1 in
-Section 8.1.
 
 \subsection{References}\label{references}
 
