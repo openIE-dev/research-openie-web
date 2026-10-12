@@ -1,6 +1,6 @@
 ---
 title: "The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming"
-deck: "RCE is a native code ecosystem. A program is authored once, from intent, as a Form: a state, a set of events and a pure, total transition. The Form is a lossless encoding of that intent, every target (statechart, Rust, Python, XState, SCXML, WASM) is a faithful projection of it, and a state the Form does not declare cannot be written, so a wrong program is refused at entry and nothing is left to diff or track afterwards. Fits are reused, and every fit that passes the gate compounds the ecosystem. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input and specification is refused at entry, and the Python projection replays the reference trace byte for byte on 9,999. Code from other languages enters by lift, a construction from each language's grammar to its syntax tree to the Form."
+deck: "A programming system in which a program is written once as a state machine and every target language is generated from it, with measurements of round trips, refusal of malformed input and repair of lifted code."
 id: rce
 status: "Research paper"
 author: "David Charlot, Open Interface Engineering"
@@ -13,23 +13,27 @@ board_metered: false
 
 *Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#rce). Playground: [/playground/rce/](/playground/rce/). LaTeX PDF: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
 
-*One Form, authored from intent. Many projections. The gate is correctness, and the ranking is joules.*
+## Abstract
 
-The economic reading of this paper is in its companion, [The Promised Trillion Dollar AI-Coding Market](/papers/ai-coding-market/). This paper holds the engineering and the theory only.
+This paper describes the Reality Code Engine (RCE), a system in which a program is written once as a state machine, called a Form, and code in other languages is generated from it. It reports what was measured on 10,000 Forms and on public bug datasets, and states how the claims could be shown false.
+
+**In plain words**
+
+1. A program is written once, in one precise form, and the computer produces the same program in many languages from it.
+2. Because the form only allows what was declared, broken input is rejected at the door instead of being fixed later.
+3. A fix that passes the checks is saved and reused, so the same problem does not cost time or energy twice.
 
 ## 1. Thesis
 
 Autonomous computer automation is a design space with many points in it. Every approach sits somewhere along five continuous axes: the energy spent per correct result; the entropy the system must resolve at run time, and with it how deterministic its output is; the strength of the verification that accepts a result; how far each accepted result is reused and compounds; and how much the approach relies on a model. A large language model (LLM), a statistical text model, that writes each change from the prompt sits near one corner of that space: it relies on the model for every task, draws a fresh sample from a high-entropy distribution each time, and pays for generation again on every task. Retrieval, rules, synthesis, verification and caching occupy many other points, and real systems combine them.
 
-The Reality Code Engine (RCE) is one point in the space, chosen to optimize all five axes together. People have already coded most of what will ever be coded. A program is a database functional state machine: one Form, many fits. Human intent is high entropy. The machine floor is low entropy. Code converges by design, so most of the work is to retrieve a fit that exists, adapt it and prove it, and a model is called only when nothing cheaper closes the task.
+The Reality Code Engine (RCE) is one point in the space, and this paper describes and measures it. RCE models a program as a database functional state machine. Lopes and colleagues measured that about 70% of the code on GitHub consists of clones of earlier files [33], so RCE first tries to retrieve an existing fit, adapt it and check it, and calls a model only when nothing cheaper closes the task.
 
 **The core claim.** RCE is a complete code ecosystem in which programs are authored natively from intent. Intent is written once, as a Form: a state, a set of events and a pure, total transition. The Form is a lossless encoding of that intent. Every target (statechart, Rust, Python, XState, SCXML, WASM) is a projection of the Form, and each projection replays the Form's trace byte for byte. A state the Form does not declare cannot be written, and an input outside its contract is refused at entry. A program in the ecosystem therefore cannot drift from its intent the way a program in a common language drifts from its comments, its tests or its other implementations, and it needs no after-the-fact diffing or error tracking. Every fit that passes the gate is stored and reused, so the ecosystem compounds as it grows ([§2.4](#24-gated-verified-recursive-self-improvement)). Code written in other languages is one door in: it enters by lift ([§6](#6-lift-entering-the-ecosystem-from-other-languages)).
 
 Every point in the space faces the same gate. The gate is correctness: a task's completeness predicate $C(z)$, here the task's tests, a proof or an agreement trace. Among runs that pass the gate, systems are ranked by joules to completion, $J^*$. Correctness is a constraint, not a score.
 
-Mixture of Limits is the philosophy: there is a minimal amount of anything to accomplish a task, and any more is waste ([Metered Commit Gates, Part II](/papers/gates/#part-ii-the-cascade-mixture-of-limits)). RCE is a Mixture of Limits instance. Its gears run cheapest first, and the first gear that passes the gate closes the task.
-
-flowG is a stand-alone language project. RCE is its academic first-pass demonstration. The two stay separate projects.
+RCE's mechanisms, called gears, run in order of cost, and the first gear that passes the gate closes the task.
 
 Energy figures are labeled by source. `est_j` is an analytical estimate. `reported_j` is an operating-system or on-chip counter. `measured_j` is reserved for a wall meter and is empty in every result here.
 
@@ -39,7 +43,7 @@ Energy figures are labeled by source. `est_j` is an analytical estimate. `report
 
 ![One sentence in. One floor out. Human intent is high entropy; a funnel of conversions from intent to spec to 626 surface languages to an intermediate representation to machine code loses information at each boundary; all code reaches a few machine shapes; RCE writes the meaning once in one canonical Form, treats every surface as a projection, and lets the cheapest correct form win.](/figures/rce/intent-entropy.svg)
 
-*Figure 1. Intent entropy and the machine floor. A [PNG copy](/figures/rce/intent-entropy.png) is provided. Sources: Shannon (1951); Lopes et al. (2017); the 626-language count is David Charlot's lowering-path survey, which is unpublished; its list and method are to be published with this paper's data, and until then the count is the author's. The Python and C results are language specification behavior; C signed overflow is undefined behavior.*
+*Figure 1. Intent entropy and the machine floor. A [PNG copy](/figures/rce/intent-entropy.png) is provided. Sources: Shannon (1951); Lopes et al. (2017); the 626-language count is an unpublished survey by the author and supports no claim in this paper. The Python and C results are language specification behavior; C signed overflow is undefined behavior.*
 
 **Intent is high entropy.** "Make the checkout faster" carries many meanings: shorter page load, fewer steps, faster card approval, a cached cart, or faster on one device class. Context is implied and never written. Shannon measured printed English at about 0.6 to 1.3 bits per letter [1]. The letters are predictable. The meaning is not.
 
@@ -69,7 +73,7 @@ Figure 2 draws the five axes and places the main classes of approach on them.
 
 ### 2.1 Programming is coding theory
 
-The thesis of this section is David Charlot's: all of programming is coding theory. A programmer converts intent along a gradient between two entropic regimes. Intent is high entropy, a distribution over meanings. Code is low entropy, one deterministic transition per state. Every step of software work, from a requirement to a register, is a step of that conversion. The literature has said so in pieces for seventy years, in many languages. This section assembles the pieces into one argument and places each RCE gear on it.
+The thesis of this section is that programming can be read as coding theory. A programmer converts intent along a gradient between two entropic regimes. Intent is high entropy, a distribution over meanings. Code is low entropy, one deterministic transition per state. Every step of software work, from a requirement to a register, is a step of that conversion. The literature has said so in pieces for seventy years, in many languages. This section assembles the pieces into one argument and places each RCE gear on it.
 
 **The measure.** Shannon defined the entropy of a source and the capacity of a channel [40], and measured printed English at about 0.6 to 1.3 bits per letter [1]. Kolmogorov, writing in Russian in *Problemy Peredachi Informatsii* in 1965, gave three approaches to the quantity of information and made the algorithmic one primary: the information in an object is the length of the shortest program that produces it [41]. Solomonoff had reached the same object as a theory of inductive inference [42], and Chaitin showed that program size obeys identities formally identical to Shannon's [43]. Rissanen turned the idea into a rule for choosing models, the minimum description length [44]. Together they say that a program is a code word: a description of a behavior, and the shortest correct one is the floor. RCE's extraction rule, keep the least-joule fit among equivalent fits (Proposition 3), is that rule with joules in place of bits.
 
@@ -130,7 +134,7 @@ The one Python miss is counted as a miss; the same Form and events replay identi
 
 Good (1965) [111] defined the ultraintelligent machine as one that could design better machines, so that improvement would recurse. Yudkowsky (2013) [113] cast the question as one of returns: whether each unit of improvement makes the next unit cheaper or dearer. Schmidhuber's Gödel machine (2007) [112] gave the first formal answer with a guarantee: a program rewrites any part of itself, including its own search, only after proving that the rewrite improves its expected utility. Löb's theorem (1955) [114] is the obstacle a self-trusting prover meets, which Yudkowsky and Herreshoff (2013) [115] named the Löbian obstacle: a system cannot in general prove the soundness of a successor that uses its own proof system. Recent systems drop the proof requirement and select by measured score: STOP (Zelikman et al., 2023) [116] improves the scaffold that improves code, the Darwin Gödel Machine (Zhang et al., 2025) [117] keeps an archive of self-modified coding agents chosen by benchmark score, AlphaEvolve (Novikov et al., 2025) [118] evolves programs under automatic evaluators, and Voyager (Wang et al., 2023) [119] grows a library of verified skills that later tasks reuse.
 
-RCE takes the structure of the Gödel machine and the library of Voyager, with two differences that remove the obstacle. First, the object that improves is not the prover. RCE promotes handlers, rewrites and gears, and each is checked against a fixed, separately certified kernel: the Kani harnesses and the SMT encoding never change through promotion, so no step needs to trust a successor's proof system. Second, the gate is a proof of correctness at the boundary, not a score. A score can rise while an interface assumption breaks; a proof at the boundary cannot be passed by a change that breaks it.
+RCE takes the structure of the Gödel machine and the library of Voyager, with two differences that avoid the obstacle for the objects it promotes. First, the object that improves is not the prover. RCE promotes handlers, rewrites and gears, and each is checked against a fixed, separately certified kernel: the Kani harnesses and the SMT encoding never change through promotion, so no step needs to trust a successor's proof system. Second, the gate is a proof of correctness at the boundary, not a score. A score can rise while an interface assumption breaks; a proof at the boundary cannot be passed by a change that breaks it.
 
 **Proposition R1 (monotone correctness).** If every promoted change passes the check of its boundary, and the checks of the other boundaries are unchanged, then every property established by those checks before the promotion still holds after it.
 
@@ -201,7 +205,7 @@ A finite relational structure is a database instance, so a Gurevich state is a d
 
 **Proposition 2 (one generator).** One function $G : \mathrm{Fit} \to \mathrm{Program}$ generates a runnable program for every fit and reads no domain. *Basis:* every program is a Form instance, so $G$ emits a typed store, an event type, compiled rules, a log with a fold and an output dispatcher. Scaffolders such as Rails generators, JHipster and Yeoman are $G$ restricted to small fit languages. Product-line engineering starts from "the systematic discovery and exploitation of commonality across related software systems" [8]; the commonality is the Form.
 
-**Proposition 3 (Mixture of Limits as extraction).** Extraction with $\mathrm{cost}_J$ returns the least-joule term the extractor finds in the e-class of $F$. *Proof sketch.* The rewrites are sound, so every term in the e-class has $F$'s observable behavior and passes the same gate. Extraction minimizes the cost, and the cost is joules. ∎ This is Mixture of Limits applied to code: keep the minimal fit that does the task, and the rest is waste.
+**Proposition 3 (least-energy extraction).** Extraction with $\mathrm{cost}_J$ returns the least-joule term the extractor finds in the e-class of $F$. *Proof sketch.* The rewrites are sound, so every term in the e-class has $F$'s observable behavior and passes the same gate. Extraction minimizes the cost, and the cost is joules. ∎ This is Mixture of Limits applied to code: keep the minimal fit that does the task, and the rest is waste.
 
 **Proposition 4 (replay determinism).** If $\delta$ reads no wall clock, orders updates without names and logs every input, two replays of one $D$ give identical state hashes at every step.
 
@@ -227,7 +231,7 @@ The statechart and the graph describe one fit. The e-graph describes every fit e
 
 **Correct by construction.** Dijkstra proposed in 1968 that a program and its proof be developed together, so that correctness is designed in rather than tested for [125]. Hall and Chapman carried the approach into a commercial secure system with formal specification and refinement at every step [126]. Minsky's rule for typed functional programming, make illegal states unrepresentable, says the same at the type level: a type that cannot hold a bad value removes the need to check for it [127]. Turner's total functional programming requires every function to terminate on every input, so that a program denotes a mathematical function with no hidden failure [128]. RCE's Form is total in Turner's sense, its contract types make undeclared states unrepresentable in Minsky's sense, and the refinement chain of [§2.1](#21-programming-is-coding-theory) ends in it in Dijkstra's sense. The consequence is the one stated in [§1](#1-thesis): an error is refused at entry, so there is nothing to diff or track after the fact.
 
-**The universality thesis.** The thesis is David Charlot's: RCE, and any language built on the RCE framework (flowG is the first), replaces the need for any other language. Stated in theory terms, there is one universal Form. Programs are authored in it natively, every existing language is reachable from it as a faithful projection, and every existing program enters it by lift. Gurevich's thesis gives the ground: every sequential algorithm is captured, step for step, by an Abstract State Machine at its own level of abstraction [2], and parallel algorithms likewise [3]. A Form is such a machine over a database state.
+**The universality thesis.** Stated in theory terms, the thesis is that there is one universal Form. Programs are authored in it natively, every existing language is reachable from it as a faithful projection, and every existing program enters it by lift. Gurevich's thesis gives the ground: every sequential algorithm is captured, step for step, by an Abstract State Machine at its own level of abstraction [2], and parallel algorithms likewise [3]. A Form is such a machine over a database state.
 
 **Proposition U1 (capture).** If a program in language $L$ is a sequential or parallel algorithm in Gurevich's sense, then there is a Form whose transition simulates it step for step at the program's level of abstraction [2, 3].
 
@@ -237,7 +241,7 @@ The statechart and the graph describe one fit. The e-graph describes every fit e
 
 **Proposition U4 (replacement).** If U2 and U3 hold for language $L$, then no program needs to be written in $L$: it is written once as a Form and emitted as $L$ where a platform requires it.
 
-U1 is a theorem. U2 is checked per target by differential testing ([§5.1](#51-differential-testing-across-five-targets)) and at large N in [§2.3](#23-the-ecosystem-at-large-n). U3 is a construction, built language by language from the grammar up, and [§8.7](#87-lift-coverage-across-languages) states how the construction is measured as it is built. Claims about adoption are in the [companion essay](/papers/ai-coding-market/).
+U1 is a theorem. U2 is checked per target by differential testing ([§5.1](#51-differential-testing-across-five-targets)) and at large N in [§2.3](#23-the-ecosystem-at-large-n). U3 is a construction, built language by language from the grammar up, and [§8.7](#87-lift-coverage-across-languages) states how the construction is measured as it is built.
 
 ## 4. The engine: gears, gate and receipts
 
@@ -256,7 +260,7 @@ RCE runs software as a graph of small deterministic handlers. A handler that can
 
 ### 4.2 The gears
 
-Each gear is tried only when the gear below it does not pass the gate. That order is one fixed cascade, and the fixed cascade is one Mixture of Limits instance.
+Each gear is tried only when the gear below it does not pass the gate. That order is one fixed cascade.
 
 | Gear | Method | Lineage |
 |---|---|---|
@@ -494,17 +498,7 @@ Promotion is the mechanism by which the model leaves the loop: a resolver is pai
 
 Lift is measured as it is built. For language $L$, a program counts as lifted when $\pi_L(\lambda_L(p))$ passes the program's own tests and replays its recorded traces byte for byte, and $\lambda_L(\pi_L(\lambda_L(p)))$ has the same shape hash as $\lambda_L(p)$. The sample is at least 10,000 programs per language for at least ten languages, drawn with a fixed seed from pinned public corpora, with the lifter frozen and its binary hash recorded before each run, and 0 model calls. Each run reports the share lifted with a Wilson 95% interval, and each construct not yet lifted is a work item for the lifter of that language, built and frozen before the next run. The target is every program in every language.
 
-## 9. Ties to the companion papers
-
-**Mixture of Limits.** [Metered Commit Gates, Part II](/papers/gates/#part-ii-the-cascade-mixture-of-limits) states the philosophy: a minimal amount of anything is needed to accomplish a task, and any more is waste. RCE applies it three times. The gear order runs the cheapest sufficient gear first. Promotion pays a resolver once per new case, after which every repeat call would be waste. Extraction keeps the least-joule fit among equivalent fits (Proposition 3).
-
-**Metered Commit Gates.** [Part I](/papers/gates/) says a proposal may not authorize itself. In RCE a model proposes and the gate commits: a candidate enters only with tests passed, a coverage bound met and a proof certificate, and every decision is a receipt in the hash chain.
-
-**The Universal Law of Agency.** [The agency paper](/papers/agency/) defines intelligence as the derivative of agency in joules, $\iota = dX/dJ$, read in hindsight. The RCE log is that hindsight record: $X$ is tasks through the gate and $J$ is their joules, labeled. A deferral with a receipt is the refusal clause of the gate.
-
-**Task Satiation.** [Task Satiation vs. Aggregate Rebound in AI Demand](/papers/satiation/) says that once a task's completion predicate is true, more synthesis on that task buys nothing. RCE is per-task satiation inside one system: once a handler covers a case, further inference on that case is zero. The aggregate demand question belongs to that paper and to the [economics companion](/papers/ai-coding-market/).
-
-## 10. Falsifiers
+## 9. Falsifiers
 
 Fixed before the runs they test.
 
@@ -513,10 +507,10 @@ Fixed before the runs they test.
 | RCE-F0 | On a preregistered run of at least 10,000 Forms, any projection prints a trace that differs from the Form's reference trace, or any malformed input is accepted | The claim that projections are faithful and the gate refuses at entry |
 | RCE-F1 | On the held-out slice, G0 to G2 with frozen rules resolve under 10% of tasks with 0 model calls | The claim that most fits already exist for repair at this scale |
 | RCE-F2 | Byte-identical or equivalent patches are under half of the resolved held-out tasks | The reading of the gate as more than plausibility on the covered tasks |
-| RCE-F3 | Under the wall meter, gross joules per solved task of the RCE solver exceed those of the cheapest model baseline on the tasks both solve | RCE's joule advantage on covered tasks |
+| RCE-F3 | Under the wall meter, gross joules per solved task of the RCE solver exceed those of the cheapest model baseline on the tasks both solve | The claim of lower energy per solved task on covered tasks |
 | RCE-F4 | In the convergence protocol of Section 8.6, fewer than half of the specifications without a stuck input reach a round with zero model calls within 20 rounds | Compiling the model out of the loop |
 
-## 11. Work to finish
+## 10. Work to finish
 
 Each item has its protocol named.
 
@@ -529,9 +523,9 @@ Each item has its protocol named.
 7. New held-out corpora with the gears frozen: Multi-SWE-bench and BugsInPy (Section 8.4).
 8. Convergence of model calls across at least 1,000 specifications (Section 8.6).
 
-## 12. Conclusion
+## 11. Conclusion
 
-RCE is a native code ecosystem. A program is authored once, from intent, as a Form: a lossless encoding of state, events and pure transitions, and every target language is a faithful projection of it. Invalid states cannot be written and malformed inputs are refused at entry, so a program in the ecosystem cannot drift from its intent and needs no after-the-fact diffing or error tracking. Every fit that passes the gate is stored and reused, and the ecosystem compounds under a gate whose correctness is monotone. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input and specification is refused at entry, and the Python projection replays the reference trace on 9,999. Code from other languages enters by lift, a construction from each language's grammar to its syntax tree to the Form; on lifted code the repair gears restore 99.95% of 520,821 one-token faults and 63.7% of 21,320 single-statement Java bugs. One universal Form, with every language a projection and every program a lift, is the thesis, and Sections 3.6 and 8.7 state its propositions and how its construction is measured.
+RCE is a native code ecosystem. A program is authored once, from intent, as a Form: a lossless encoding of state, events and pure transitions, and every target language is a faithful projection of it. Invalid states cannot be written and malformed inputs are refused at entry, so a program in the ecosystem cannot drift from its intent and needs no after-the-fact diffing or error tracking. Every fit that passes the gate is stored and reused, and the ecosystem compounds under a gate whose correctness is monotone. On 10,000 preregistered Forms with a frozen engine and 0 model calls, every Form round trips to identical bytes, every projection is deterministic, every malformed input and specification is refused at entry, and the Python projection replays the reference trace on 9,999. Code from other languages enters by lift, a construction from each language's grammar to its syntax tree to the Form; on lifted code the repair gears restore 99.95% of 520,821 one-token faults and 63.7% of 21,320 single-statement Java bugs. Sections 3.6 and 8.7 state the universality propositions and how their construction is measured.
 
 ## References
 
