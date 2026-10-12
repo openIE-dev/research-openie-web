@@ -26,8 +26,7 @@ function gapHtml(t) {
   return t.split(/(#[^\n]*)/).map((x, i) => (i % 2 ? `<span class="t-com">${esc(x)}</span>` : esc(x))).join('');
 }
 function tsHighlight(src) {
-  // The tree-sitter port's scanner needs a final newline (the spec's layout pass adds one at end of file, 2.6).
-  const tree = tsParser.parse(src.endsWith('\n') ? src : src + '\n');
+  const tree = tsParser.parse(src);
   const leaves = [];
   const walk = (n, inErr) => {
     const err = inErr || n.type === 'ERROR' || n.isMissing;
