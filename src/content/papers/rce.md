@@ -11,7 +11,7 @@ board_metered: false
 
 # The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming
 
-*Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#rce). Playground: [/playground/rce/](/playground/rce/). LaTeX PDF: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
+*Version 1.2, 13 October 2026. Specification: [draft 0.6](/rce/spec/). Data and code: [research.openie.dev/data/](/data/#rce). Playground: [/playground/rce/](/playground/rce/). LaTeX PDF: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
 
 ## Abstract
 
@@ -132,7 +132,7 @@ The one Python miss is counted as a miss; the same Form and events replay identi
 
 ### 2.4 Gated, verified recursive self-improvement
 
-Good (1965) [111] defined the ultraintelligent machine as one that could design better machines, so that improvement would recurse. Yudkowsky (2013) [113] cast the question as one of returns: whether each unit of improvement makes the next unit cheaper or dearer. Schmidhuber's Gödel machine (2007) [112] gave the first formal answer with a guarantee: a program rewrites any part of itself, including its own search, only after proving that the rewrite improves its expected utility. Löb's theorem (1955) [114] is the obstacle a self-trusting prover meets, which Yudkowsky and Herreshoff (2013) [115] named the Löbian obstacle: a system cannot in general prove the soundness of a successor that uses its own proof system. Recent systems drop the proof requirement and select by measured score: STOP (Zelikman et al., 2023) [116] improves the scaffold that improves code, the Darwin Gödel Machine (Zhang et al., 2025) [117] keeps an archive of self-modified coding agents chosen by benchmark score, AlphaEvolve (Novikov et al., 2025) [118] evolves programs under automatic evaluators, and Voyager (Wang et al., 2023) [119] grows a library of verified skills that later tasks reuse.
+Good (1965) [111] defined the ultraintelligent machine as one that could design better machines, so that improvement would recurse. Yudkowsky (2013) [113] cast the question as one of returns: whether each unit of improvement makes the next unit cheaper or dearer. Schmidhuber's Gödel machine (2007) [112] gave a formal answer with a guarantee: a program rewrites any part of itself, including its own search, only after proving that the rewrite improves its expected utility. Löb's theorem (1955) [114] is the obstacle a self-trusting prover meets, which Yudkowsky and Herreshoff (2013) [115] named the Löbian obstacle: a system cannot in general prove the soundness of a successor that uses its own proof system. Recent systems drop the proof requirement and select by measured score: STOP (Zelikman et al., 2023) [116] improves the scaffold that improves code, the Darwin Gödel Machine (Zhang et al., 2025) [117] keeps an archive of self-modified coding agents chosen by benchmark score, AlphaEvolve (Novikov et al., 2025) [118] evolves programs under automatic evaluators, and Voyager (Wang et al., 2023) [119] grows a library of verified skills that later tasks reuse.
 
 RCE takes the structure of the Gödel machine and the library of Voyager, with two differences that avoid the obstacle for the objects it promotes. First, the object that improves is not the prover. RCE promotes handlers, rewrites and gears, and each is checked against a fixed, separately certified kernel: the Kani harnesses and the SMT encoding never change through promotion, so no step needs to trust a successor's proof system. Second, the gate is a proof of correctness at the boundary, not a score. A score can rise while an interface assumption breaks; a proof at the boundary cannot be passed by a change that breaks it.
 
@@ -165,19 +165,21 @@ Gurevich's Abstract State Machine (ASM) theorem is the strongest formal statemen
 
 $$P = (S, E, \delta, D, \lambda)$$
 
-- $S$, the state space: structures over a fixed vocabulary $\Sigma$. Each state is a database instance in Codd's sense [5].
+- $S = \Sigma_c \times \Sigma_d$, the state space: structures over a fixed vocabulary $\Sigma$, split into control regions $\Sigma_c$ and data $\Sigma_d$. $\Sigma_d$ holds the logical clock, the input count and the typed relations (in the language, also the declared regions). Each state is a database instance in Codd's sense [5].
 - $E$, the event alphabet, including the logical clock tick.
-- $\delta : S \times E \to S$, the transition: total, deterministic and pure, written as a finite set of guarded updates "if $\varphi$ then $f(\bar t) := t_0$", each step reading a bounded set of locations.
-- $D = (s_0, L)$, the durable store: an initial state and an append-only event log $L = e_1, \dots, e_n$.
-- $\lambda : S \times E \to O$, the output map. A Mealy machine reads both arguments [6]; a Moore machine reads the state only [7].
+- $\delta : S \times E \to S \times O^*$, the transition: total, deterministic and pure, written as a finite set of guarded updates "if $\varphi$ then $f(\bar t) := t_0$", each step reading a bounded set of locations. It returns the next state and the outputs of the step. Write $\delta_1 = \pi_1 \circ \delta$ for its state component.
+- $D$, the durable log: a sequence of entries $\{\mathit{seq}, \mathit{event}, \mathit{prev\_hash}, \mathit{state\_hash}, \mathit{hash}\}$, where $\mathit{state\_hash}$ is the SHA-256 of the canonical JSON of the state after the step, $\mathit{hash}$ is the SHA-256 of the canonical JSON of the first four fields, and the first $\mathit{prev\_hash}$ is 64 zeros. The log is a hash chain, so changing any past entry changes every later $\mathit{hash}$.
+- $\lambda = \pi_2 \circ \delta : S \times E \to O^*$, the output map. A Mealy machine reads both arguments [6]; a Moore machine reads the state only [7].
 
 **Definition 2 (Form and fit).** The *form* is the tuple shape with four invariants: $\delta$ is deterministic and pure; exploration is bounded; the vocabulary is fixed; state is the fold of the log,
 
-$$\mathrm{state}(D) = \mathrm{foldl}(\delta, s_0, L).$$
+$$\mathrm{state}(D) = \mathrm{foldl}(\delta_1, s_0, D).$$
+
+A log may also carry each entry's outcome, outputs and state. These are derived: they are not hashed, and they must equal replay (T1 and T3 of [§3.7](#37-the-language-version-06-costs-and-theorem-status)). Two kinds of rejection are distinct. In the engine profile every event is applied, and an input that fails its contract produces a `reject` output and an error row. In the language a refused event leaves the state unchanged (T8) and is recorded as refused.
 
 The *fit* is the data that fills the shape: the vocabulary $\Sigma$, the alphabets $E$ and $O$, the rule program $\Pi$ that defines $\delta$, the output rules that define $\lambda$, and the initial data $s_0$. In Gurevich's terms the fit is the vocabulary, the ASM program and the initial structures. In Codd's terms $\Sigma$ is the schema and $s_0$ is the instance. In product-line terms a fit is a feature selection [8]. In syntax-guided synthesis (SyGuS) terms a fit is a term from a grammar that meets a specification [9].
 
-**Definition 3 (fit equivalence).** Two fits are equivalent when, for every log $L$, their output sequences under $\lambda$ are equal.
+**Definition 3 (fit equivalence).** Two fits are equivalent when, for every event sequence $L$, their output sequences under $\lambda$ are equal.
 
 **Definition 4 (fit language).** A grammar whose terms denote fits. Programming languages, SCXML documents, XState configurations and `.rce` specifications are fit languages. A fit language is complete when every ASM program over $\Sigma$ has a term in it.
 
@@ -213,6 +215,18 @@ A finite relational structure is a database instance, so a Gurevich state is a d
 
 **Proposition 6 (coordination budget).** Rules tagged monotone run on replicas without coordination; only non-monotone rules need a coordination point. *Basis:* the CALM theorem, "the programs that have consistent, coordination-free distributed implementations are exactly the programs that can be expressed in monotonic logic" [19].
 
+The tag is derived from the rule, never declared, and the IR check refuses a Form whose stored tag differs from the derived one (specification, Appendix D.5):
+
+| Rule has | Tag | Reason |
+|---|---|---|
+| no resolve, read, join or scan | monotone | its writes only add keys and grow counters |
+| a resolve | not monotone | it deletes escalation rows |
+| a read of its own sink | not monotone | read, modify, write |
+| a keyed join | not monotone | the joined row may be absent now and present later, or overwritten |
+| a scan | not monotone | it observes the whole relation, including what is absent |
+
+The tag is sound and not complete: a join against an insert-only relation would be monotone, but the profile does not prove that a relation is insert-only, so the tag does not claim it. A Form is coordination-free when every rule is monotone. Every read, join and scan sees the state at the event's entry, so the post-state of an input event does not depend on the order in which rules for different sinks run; only the output order does, and it is fixed by content hash.
+
 **Proposition 7 (intelligence as a joule derivative).** Let $X$ count tasks through the gate and $J$ the joules spent. $\iota = dX/dJ$ is read in hindsight from $D$, which records every event and its `est_j`. Extraction under $\mathrm{cost}_J$ holds the gate fixed and does not raise $J$, so at equal $X$ it does not lower $\iota$.
 
 ### 3.5 Graph, e-graph and statechart
@@ -242,6 +256,57 @@ The statechart and the graph describe one fit. The e-graph describes every fit e
 **Proposition U4 (replacement).** If U2 and U3 hold for language $L$, then no program needs to be written in $L$: it is written once as a Form and emitted as $L$ where a platform requires it.
 
 U1 is a theorem. U2 is checked per target by differential testing ([§5.1](#51-differential-testing-across-five-targets)) and at large N in [§2.3](#23-the-ecosystem-at-large-n). U3 is a construction, built language by language from the grammar up, and [§8.7](#87-lift-coverage-across-languages) states how the construction is measured as it is built.
+
+### 3.7 The language: version 0.6, costs and theorem status
+
+The RCE language is defined by a written specification, now at draft 0.6 ([/rce/spec/](/rce/spec/); source in the [rce repository](https://github.com/openIE-dev/rce)). Each module selects its language version with a first-line comment. A module without it is version 0.5, the language of sections 2 to 10. A module that declares `# rce-version: 0.6` also gets Appendix C: `par`, `for ... par`, `with budget`, workgroups, LVars, sessions and supervisors. Appendix D defines the engine profile, the handler specs and fits that this paper's engine runs. A version 0.5 module never sees Appendix C, so every valid version 0.5 program is accepted unchanged.
+
+**Budgets count work.** A `with budget` block charges each operation a fixed cost from the table of Appendix C.6.4 and traps with `budget` when the count runs out. The count is a proxy for work, not a measurement of time or energy; `est_j` is separate.
+
+| Operation | Cost |
+|---|---|
+| call of a user function or a closure, $c_{call}$ | 4 |
+| standard library method on receiver size $n$, first-argument size $k$ | $4 + w(m, n, k)$ |
+| channel send or receive | 8 |
+| `spawn` | 32 |
+| one `par` branch or `for ... par` chunk | 16 |
+| list or map literal, or comprehension, with $n$ results; `[x; n]` | $4 + n$ |
+| index, slice, member access; unary operators; `and`, `or`; integer, bool and text operators and comparisons | 1 |
+| float `+`, `-`, `*` | 2 |
+| float `/`, `%` | 8 |
+
+Sizes are the UTF-8 byte length of a text, the length of a list and the number of entries of a map; any other value has size 0. The method work $w$ is fixed by the method's complexity class in the reference evaluator: $n + k$ for the linear methods on text, lists and maps (maps are ordered association lists), $n \lceil \log_2 n \rceil$ for `sort` (0 when $n \le 1$), and 0 for the remaining methods. The calls that `map`, `filter` and `fold` make to their function argument are charged as calls in addition. The arithmetic saturates at the largest 128-bit integer, and $w$ never decreases when $n$ or $k$ grows. The reference evaluator and the emitted Rust, Python and JavaScript runtimes compute the same function, and a test checks that the budget trap falls on the same operation in all four.
+
+**Theorem status.** The specification states theorems T1 to T34 and records the status of each exactly. The proofs are in Lean 4 (v4.12.0, no Mathlib) over a core calculus. The words used for the level of a result are these. *Proved* means a Lean proof about the core semantics of the language. *Proved on a semantics* means a Lean proof over a small-step semantics of a core of RCE. *Model* means a Lean proof about an abstract model that is not connected to the RCE semantics or to the reference evaluator. *Vectors* means the reference evaluator's results on generated programs are checked against the model by the Lean kernel, which is a correspondence on samples, not a proof about the evaluator. *Tested* means differential testing on stated inputs. *Checked mechanically* means decided by a program, such as an LALR(1) table builder.
+
+| | Statement | Level |
+|---|---|---|
+| T1 | determinism: one result per state and event; one result per tick of the concurrency semantics | proved |
+| T2 | totality of $\delta$, with an explicit bound on evaluation steps; structural recursion and bound composition along the call graph | proved (the Lean expression core has no user function calls; recursion and composition are proved on separate models) |
+| T3 | the runtime state is $\mathrm{foldl}(\delta_1, s_0, D)$ and replay reproduces every hash and output | proved |
+| T4 | progress, including ticks (some task moves, or the run ends or reports `Deadlock`) | proved |
+| T5 | preservation, including the integer range of every written field | proved |
+| T6 | memory safety, full borrow paths, no mutable sharing between tasks | proved for the ownership core and an instrumented semantics of borrow paths |
+| T7 | name independence of log hashes, ids and select choices | proved |
+| T8 | atomicity: a refused event leaves the state unchanged | proved |
+| T9-F | the Form IR targets (Rust, WASM, Python, XState, SCXML) print the reference trace | tested |
+| T9-L | the program emitters (`rust`, `python`, `js`) agree with the reference evaluator | proved for the Rust emitter on a core, as a verified translation into MiniRust, a deep embedding of the emitted Rust subset; that `rustc` implements MiniRust is trusted and tested; the other emitters tested |
+| T10 | the grammar is unambiguous | checked mechanically (LALR(1), 0 conflicts, for both versions) and sampled by a fuzzer |
+| T11 | select fairness | proved on the rotation model |
+| T12 | a linear handle is consumed exactly once on every path | proved on a statement model |
+| T13 | f32 operations give the same bits on targets that agree on IEEE 754 | proved for multiplication; for addition, subtraction and division the single-rounding property is Figueroa's theorem, cited and not mechanized |
+| T14 | checked u64 arithmetic is exact in range | proved |
+| T15 | iterators end, respect the loop limit and are prefix-consistent | proved |
+| T16 to T31 | version 0.6 concurrency: `par` determinism, commutation, reductions, deadlock freedom, deadlines, workgroups, vector clocks, priorities, scopes, actors, sessions, LVars, atomic batches, replicas | proved on a semantics: T16, T17, T19a, T20, T23; proved on a model of runs: T24; proved on a session calculus: T28; model: T18, T19b, T21, T22, T25, T26, T31; model with vectors: T27, T29, T30. None is a proof about the Rust reference evaluator |
+| T32 | foreign replay: for every oracle, replay of the log equals the live run, and an answer contract holds of every logged answer | proved |
+| T33 | `&mut` write-back: copying out on every outcome equals in-place update; copying out only on success does not | proved |
+| T34 | the order-preserving ANF pass before every emitter gives the same value, store and trace of charges and emits | proved for a core fragment with full ANF; the implementation is tested differentially on every target, including a sweep of budgets across the trap point |
+
+T9 has two target sets because the paper's engine and the language have two compilers. T9-F is the claim about `rce form --emit`, which [§5.1](#51-differential-testing-across-five-targets) measures. T9-L is the claim about the language's program emitters. A target outside these sets has no T9 claim.
+
+**Checks run for this version.** At engine commit `261b5b6`, `lake build` completes over the 31 files of `spec/lean/RCE/` with no `sorry`, and the standing audit reports the axioms of 2,192 RCE theorems as only `propext`, `Quot.sound` and `Classical.choice`. Kani verifies 10 of 10 kernel harnesses ([§5.3](#53-kani-proofs-of-the-kernel)). The engine tests run by `make check` pass 596 tests with 0 failures (2 ignored). The reference checker, built from the public repository as its continuous integration builds it, passes 50 tests in the default build and 106 with the version 0.6 suites enabled, with 0 failures. The specification check builds the LALR(1) tables of both versions with 0 conflicts and parses every example with three parsers, and the WebAssembly build of the checker passes 336 of 336 checks against the example corpora.
+
+**A convergence observation.** The catalogue at [agentlanguages.dev](https://agentlanguages.dev), read on 13 October 2026, lists 42 languages designed for AI agents to author code, grouped by its editors into a syntactic camp, a verification camp and an orchestration camp. Several design choices in this paper, such as mechanically checked contracts, hash-chained logs, deterministic replay and one canonical form per program, appear in its descriptions of other projects that were developed independently. This is an observation that the choices recur. It is not evidence that they are correct, and this paper makes no comparison with those projects.
 
 ## 4. The engine: gears, gate and receipts
 
@@ -275,7 +340,7 @@ A candidate is promoted only when it passes the gate. The gate replays the node'
 
 ### 4.4 Receipts
 
-Every promotion, refusal, deferral and install is a mutation in an append-only log chained with SHA-256, so tampering with any past entry breaks the chain [29, 30]. Each handler's cost is priced from interpreter operation counts with the host cost table of FGIR, the native-code backend of flowG, and labeled `est_j`. Each foreman call carries its receipt. The ladder runs add a package energy counter on a subsample, labeled `reported_j`.
+Every promotion, refusal, deferral and install is a mutation in an append-only log chained with SHA-256, so tampering with any past entry breaks the chain [29, 30]. Each handler's cost is priced from interpreter operation counts with the host cost table of FGIR, the native-code backend of flowG, and labeled `est_j`. Each foreman call carries its receipt. A receipt names the gear, the method of the estimate (`basis`), the candidates tried and whether the gear resolved the escalation. Its `est_j` field is required: it is a finite non-negative number, or null, and null is allowed only when `basis` says `unpriced`, as for a model call with no energy figure. A receipt with the field missing does not parse. An unpriced cost is never read as zero, so a total over receipts reports its priced and unpriced invocations separately, and a saving that depends on an unpriced resolution is reported as unknown. The ladder runs add a package energy counter on a subsample, labeled `reported_j`.
 
 ### 4.5 The Form compiler
 
@@ -298,7 +363,7 @@ A process, HTTP or closure handler has no term, so its logged results compile to
 
 ### 4.6 Method: the whole stack evaluated, every interface assumption explicit
 
-A program is a stack of levels: tokens and statements; handlers; the Form, a single step function δ over a database state of typed relations, control regions and a clock; the log that records every event with the hash of the state it produced; the rewrites that transform the Form; and the substrate that executes it. Each level rests on assumptions about the level below. RCE does not treat any level as fixed. It evaluates the whole stack, writes each interface assumption down as a checkable statement, and checks it on every run.
+A program is a stack of levels: tokens and statements; handlers; the Form, a single step function $\delta : S \times E \to S \times O^*$ over $S = \Sigma_c \times \Sigma_d$ (control regions; data: the clock, the input count and typed relations); the log, a SHA-256 hash chain whose entries record each event, the hash of the state it produced and the hash of the previous entry; the rewrites that transform the Form; and the substrate that executes it. Each level rests on assumptions about the level below. RCE does not treat any level as fixed. It evaluates the whole stack, writes each interface assumption down as a checkable statement, and checks it on every run.
 
 | Boundary | Assumption | Check |
 |---|---|---|
@@ -334,7 +399,7 @@ Every built-in e-graph rewrite is proved in the Z3 SMT solver (satisfiability mo
 
 ### 5.3 Kani proofs of the kernel
 
-The engine's kernel (hash chain, fold, name-free positions and handler evaluation) is checked with the Kani model checker for Rust [32]. Handler evaluation is the fixed point of a non-recursive step, and Kani proves that step total and deterministic per constructor, by structural induction. Ten harnesses are verified, with 0 of 505 checks failed:
+The engine's kernel (hash chain, fold, name-free positions and handler evaluation) is checked with the Kani model checker for Rust [32]. Handler evaluation is the fixed point of a non-recursive step, and Kani proves that step total and deterministic per constructor, by structural induction. Ten harnesses are verified with Kani 0.67.0, with 0 of 7,425 checks failed:
 
 | Harness | Property |
 |---|---|
@@ -518,7 +583,7 @@ Each item has its protocol named.
 2. The spec arm: specifications in the style of MBPP and HumanEval authored as Forms and emitted to every target.
 3. Held-out results on L2 to L4, the Defects4J set of 288 bugs (Section 8.1), and on L5 to L7 (Section 8.2).
 4. Baselines in one table, cost-of-pass in joules and dollars (Section 8.5).
-5. The first `measured_j`: a wall meter on an idle host, at least 10 repeats, gross and net side by side (Section 8.3).
+5. A `measured_j` series: a wall meter on an idle host, at least 10 repeats, gross and net side by side (Section 8.3).
 6. The 626-language survey published with its method (Figure 1).
 7. New held-out corpora with the gears frozen: Multi-SWE-bench and BugsInPy (Section 8.4).
 8. Convergence of model calls across at least 1,000 specifications (Section 8.6).
