@@ -2,9 +2,15 @@
 
 *Version 1.1, 11 octobre 2026. Données et code : [research.openie.dev/data/](/data/#economics). PDF LaTeX : [/pdfs/latex/satiation.pdf](/pdfs/latex/satiation.pdf) ([source](/pdfs/latex/satiation.tex)).*
 
-*Le compagnon économique de [Bornes thermodynamiques et tempo optimal pour des agents qui tiennent un but](/papers/agency/) et de [Portes de validation mesurées](/papers/gates/). La théorie qu'il utilise reste là-bas : la forme de la porte et $J^*$ dans [Agentivité, Section 1](/papers/agency/#1-thesis), l'arrêt machine dans [Portes de validation mesurées, Section II.5](/papers/gates/#ii5-stop-bridge-satiation), et le registre de validation dans la [Partie I](/papers/gates/#part-i-the-commit-gate-notational-intelligence). Les lectures de marché et de prix de ces articles sont rassemblées en Section 8. Son cas d'application à la programmation est [Le marché promis à mille milliards de dollars de la programmation par IA](/papers/ai-coding-market/).*
-
 ## Résumé
+
+Une fois une tâche accomplie, davantage d'effort machine sur cette tâche n'ajoute rien. Cet article définit cet arrêt avec précision et le distingue de la question distincte de savoir si la demande totale de travail machine continue de croître.
+
+**En termes simples**
+
+1. Tout travail a une ligne d'arrivée. Au-delà, davantage de travail informatique sur ce travail est du gaspillage.
+2. Un travail informatique moins cher peut tout de même amener les gens à lancer beaucoup plus de travaux, de sorte que l'usage total peut continuer d'augmenter.
+3. Les prix en argent de l'IA baissent vite, mais l'électricité qu'elle consomme n'est jamais gratuite.
 
 De nombreux modèles de planification traitent la demande d'intelligence artificielle comme si elle n'avait pas de ligne d'arrivée. La théorie du consommateur contient déjà l'objet inverse. La satiété, et le point de félicité qui lui est lié, est la région dans laquelle des unités supplémentaires d'un bien n'augmentent pas l'utilité et peuvent la diminuer (Andersen, 2001). Cet article définit un cousin opérationnel pour le travail et le soin : une boucle atteint l'achèvement de la tâche lorsqu'un prédicat de complétude énoncé est vrai, que les appels suivants ne font passer aucune clause de ce prédicat de faux à vrai, et que les appels qui défont le prédicat sont un dommage, pas une valeur. Le temps d'engagement, le nombre de tokens et le nombre de licences sont des variables différentes. Ils peuvent augmenter après la complétude.
 
@@ -12,42 +18,23 @@ Deux affirmations doivent rester séparées. La satiété au niveau de la tâche
 
 Un second fait concerne le prix, pas la physique. Epoch AI fait état de fortes baisses du prix d'une performance d'inférence fixée (Epoch AI, 2025 ; Emberson et Roodman, 2026). Cet article appelle la situation qui en résulte gratuit à la marge, pour les corvées numériques dont le produit est de l'information et dont le test de complétude est fini. L'expression ne signifie pas que les joules sont gratuits, qu'une installation peut bouger sans certificat, ni que le travail de soin a été automatisé. La borne de Landauer est une borne inférieure sur l'effacement, pas une description des accélérateurs actuels (Landauer, 1961 ; Horowitz, 2014).
 
-L'article ne présente ni essai randomisé, ni taux d'erreur d'un détecteur de fin, ni répartition entre l'énergie dépensée avant la complétude et l'énergie dépensée après. Ces mesures sont spécifiées et absentes. Ce que la référence logicielle fournit, c'est un endroit où placer l'arrêt : Wise Computer Automation (WCA) peut refuser pour un motif de politique ou de budget, ou sur un prédicat physique (autorisation par une table de correspondance et une vérification d'énergie, avec une fonction barrière de contrôle facultative). L'article compagnon mesure le prédicat physique sur des installations jouets. Cet article énonce le prédicat économique et les éléments de preuve effectivement publiés.
-
-Aucun réseau de portes programmables in situ (FPGA) ne porte de compteur d'énergie dans cette étude ; la carte du compagnon est programmée et son énergie n'est pas mesurée. Une Alchitry Pt V2 est le dispositif sous test (DUT) prévu ultérieurement. Un instrument de navigateur qui compile la porte en WebAssembly (WASM) et l'affiche avec WebGPU est livré comme Étape B à https://research.openie.dev/living/fpga-sim/ (voir l'article compagnon). C'est une simulation, pas un résultat sur carte, et ce n'est pas ici une mesure de satiété. Les joules analytiques de l'OpCounter du compagnon ne sont pas une puissance mesurée sur carte et ne sont pas une preuve de satiété.
+L'article ne rapporte ni essai randomisé, ni taux d'erreur du détecteur de fin, ni répartition entre l'énergie dépensée avant la complétude et l'énergie dépensée après. Ces mesures sont spécifiées en Section 3.3 et sont absentes.
 
 ## Notation
 
 | Terme | Définition dans cet article |
 |------|--------------------------|
-| Open Interface Engineering (OpenIE) | L'organisation qui maintient la référence logicielle et ces deux études. |
 | Satiété | Dans la théorie citée, une chute de l'utilité marginale à zéro ou en dessous. Dans la clause opérationnelle de cet article, après la complétude, les appels suivants ne font passer aucune clause de `C` de faux à vrai ; les appels qui défont `C` sont un dommage, pas une valeur (Section 3.1). |
 | Point de félicité | Un panier pour lequel une quantité supplémentaire du bien réduit l'utilité. Un objet de manuel. Non estimé ici. |
 | Achèvement de la tâche | L'événement où le prédicat de complétude devient vrai. Orthogonal à l'échelle du modèle. |
 | Complétude du travail | Un arrêt de travail énoncé : ticket fermé, correctif fusionné, rapport déposé, grand livre rapproché, ou un test écrit équivalent. |
 | Complétude du soin | Un arrêt de soin énoncé : évaluation terminée, traitements rapprochés, partie destinataire informée, personne dans un état sûr, ou un test écrit équivalent. |
 | Gratuit à la marge | Le prix marginal d'une étape de synthèse numérique tend vers un prix monétaire groupé ou négligeable. Les joules et les validations restent coûteux. |
-| Wise Computer Automation (WCA) | La référence de validation et de refus définie dans l'article compagnon. |
-| Energy-First Architecture (EFA) | Le choix de garder un prédicat d'énergie à l'intérieur de l'autorisation. |
-| Table de correspondance (LUT) | Carte discrète d'autorisation utilisée par la porte de référence. |
-| Fonction barrière de contrôle (CBF) | Certificat d'invariance d'ensemble, conjoint facultatif (Ames et al., 2019). |
-| Model Context Protocol (MCP) | Transport d'outils. Pas un détecteur d'achèvement de la tâche. |
-| System One | Décisions logicielles typées pour des ensembles d'options connus. Un proposant, pas une preuve de complétude. |
-| Intelligence artificielle générale (AGI) | Un objectif large de capacité. Ni une observation de prix ni un résultat de cet article. |
-| Dispositif sous test (DUT) | Matériel mesuré sous une charge de travail énoncée. Aucun n'est rapporté. |
-| Réseau de portes programmables in situ (FPGA) | Logique reconfigurable. Non synthétisée ici. |
-| WebAssembly (WASM) | Cible de compilation du navigateur pour l'émulateur de la porte livré en Étape B (https://research.openie.dev/living/fpga-sim/). |
-| WebGPU | API GPU du navigateur, citée pour l'affichage de cet émulateur. Pas un wattmètre. |
-| Alchitry Pt V2 | Carte prévue ultérieurement (fabricant : Artix-7 XC7A100T). Non mesurée. |
-| Estimation analytique de l'énergie | Nombre d'opérations multiplié par une constante nommée. Modélisée. Non mesurée sur carte. |
-| Effet rebond direct | Usage supplémentaire d'un service lorsque son prix effectif baisse, sur le même service (Gillingham, Rapson et Wagner). |
-| Modélisé / simulé / mesuré sur carte | Formule, exécution de programme ou compteur. Les nouveaux chiffres de cet article n'appartiennent à aucune des trois classes ; son contenu empirique est la citation de séries et de documents publiés. |
+| Intelligence artificielle générale (AGI) | Une cible de capacité large. Ni une observation de prix, ni un résultat de cet article. |
+| Effet rebond direct | Usage supplémentaire d'un service lorsque son prix effectif baisse, sur ce même service (Gillingham, Rapson et Wagner). |
+| Modélisé / simulé / mesuré sur carte | Formule, exécution de programme ou compteur. Les nouveaux nombres de cet article ne relèvent d'aucune des trois catégories ; son contenu empirique est la citation de séries et de documents publiés. |
 
-### Termes utilisés ici
-
-Le prédicat de complétude `C`, l'achèvement de la tâche, gratuit à la marge et les codes de motif de refus sont définis dans le tableau ci-dessus et en Section 3.1. La référence logicielle, la valeur de l'information, les classes de preuve et l'indicateur de résultat sur carte figurent dans le [glossaire](/glossary/) commun.
-
-Portée. La Section 2 passe en revue la théorie de la satiété, l'automatisation des tâches, les marchés de l'attention, les éléments sur les cycles technologiques et les prix de l'inférence. La Section 3 écrit les prédicats et indique lesquels n'ont pas été estimés. La Section 4 liste les affirmations qui reposent sur des citations ou sur la démonstration logicielle du compagnon, et les sépare des règles de conception. La Section 5 répond sur l'effet rebond, les coûts du soin et la demande militaire. La Section 6 liste les menaces à la validité. La mécanique de validation et les mesures jouets se trouvent dans l'article compagnon, « Portes de validation mesurées, Partie I (Notational Intelligence) ».
+Portée. La Section 2 passe en revue la théorie de la satiété, l'automatisation des tâches, les marchés de l'attention, les éléments sur les cycles technologiques et les prix de l'inférence. La Section 3 écrit les prédicats et indique lesquels n'ont pas été estimés. La Section 4 liste les affirmations qui reposent sur des citations et les sépare des règles de conception. La Section 5 répond sur l'effet rebond, les coûts du soin et la demande militaire. La Section 6 liste les menaces à la validité.
 
 ## 1. Introduction
 
@@ -57,23 +44,7 @@ Les éléments récents sur les prix vont à l'inverse d'une rareté de la synth
 
 Les contraintes qui ne découlent pas d'une série de prix sont physiques et institutionnelles. Le calcul dissipe de l'énergie. Horowitz (2014) documente que le déplacement des données et la mémoire dominent l'énergie pratique du CMOS, à des échelles bien supérieures à la borne idéale d'effacement de Landauer. Un actionneur n'est pas un token. Une signature, une transmission clinique et un paiement ne s'annulent pas en échantillonnant un paragraphe de plus. Baumol (1967) a montré comment des secteurs à faible croissance de la productivité peuvent absorber une part croissante des dépenses. Acemoglu et Restrepo (2019) modélisent l'automatisation comme un déplacement de tâches plus la création possible de nouvelles tâches. Aucun de ces résultats ne dit qu'un modèle de langage met fin à la maladie des coûts. Ils disent en revanche que « plus de capacité » n'est pas une description suffisante de la valeur.
 
-L'affirmation positive de cet article est définitionnelle et bibliographique. La satiété est un objet cohérent. Les prix publiés de l'inférence ont fortement baissé. Les métriques d'engagement ne sont pas des métriques de complétude. La référence logicielle peut représenter un refus pour « ne pas dépenser » et un refus pour « ne pas bouger » comme des codes de motif différents sur une même décision. L'affirmation négative est tout aussi importante. Cet article n'identifie pas de système de demande structurel, n'estime pas l'effet rebond et ne rapporte pas d'énergie mesurée sur carte.
-
-<div id="companion-laws" class="anchor-alias" aria-hidden="true"></div>
-
-### Articles compagnons
-
-Cette étude est l'arrêt d'**achèvement de la tâche** dans la triade du catalogue de recherche.
-
-| Rôle | Étude | Responsable de |
-|---|---|---|
-| **Navigation** | [Mixture of Limits](https://research.openie.dev/papers/gates/#part-ii-the-cascade-mixture-of-limits) | Recherche → Formule → Solveur → Modèle ; planchers, dont la valeur de l'information (VoI). |
-| **Validation** | [Portes de validation mesurées, Partie I (Notational Intelligence)](https://research.openie.dev/papers/gates/) | proposer → certifier → valider\|refuser → reçu ; autorisation physique sur la porte. |
-| **Achèvement de la tâche** | Cet article | Prédicat de complétude `C(z)` ; arrêt lorsque la VoI est nulle sur ce prédicat, ou lorsqu'un refus de budget ou de politique se déclenche. |
-| **Budget d'énergie** | [Metabolic Intelligence](https://research.openie.dev/products/mei/) | Enveloppe du budget / actionneurs au niveau de l'étiquette et du campus. |
-| **Voie d'automatisation** | [La correction orthographique est mondiale](https://research.openie.dev/papers/spellcheck/) | Une preuve d'existence qu'une partie de l'intelligence informatique se banalise jusqu'à un prix nul groupé : le coût marginal de la correction orthographique est tombé à environ zéro, et elle a complété le matériel et les éditeurs que les gens possèdent déjà. Un cadrage de l'accès, pas un recensement : le plus grand nombre (plus de 7 milliards), pas les quelques-uns qui louent des centres de données de frontière (moins de 500 millions). |
-
-Mixture of Limits navigue. Notational Intelligence est responsable de la validation irréversible. Cet article est responsable de l'achèvement de la tâche après une inférence numérique gratuite à la marge. [Metabolic Intelligence](/products/mei/) est responsable de l'enveloppe du budget d'énergie et des actionneurs. Dans [La correction orthographique est mondiale](/papers/spellcheck/), une fois qu'un token est conservé, les candidats orthographiques supplémentaires ont une valeur de l'information nulle sur ce prédicat. Gratuit à la marge ne veut pas dire joules gratuits.
+L'affirmation positive de cet article est définitionnelle et bibliographique. La satiété est un objet cohérent. Les prix publiés de l'inférence ont fortement baissé. Les métriques d'engagement ne sont pas des métriques de complétude. Un arrêt pour « ne pas dépenser » et un arrêt pour « ne pas bouger » sont des prédicats différents. L'affirmation négative est tout aussi importante. Cet article n'identifie pas de système de demande structurel, n'estime pas l'effet rebond et ne rapporte pas d'énergie mesurée.
 
 ## 2. Travaux connexes
 
@@ -113,17 +84,13 @@ Epoch AI (2025), « LLM inference price trends », https://epoch.ai/data-insight
 
 Les outils de la classe System One sont pertinents comme mécanisme d'une nouvelle baisse de prix sur des problèmes de décision à ensemble d'options connu. Un modèle System One renvoie une réponse typée et une probabilité pour chaque option autorisée en une seule passe avant, sans texte libre. TypeSafe AI a nommé la catégorie avec son modèle hébergé Jev (15 septembre 2026). Des modèles ouverts ont suivi, parmi lesquels Laya de Convai Innovations. Un modèle System One propose. Ce n'est pas une évaluation de complétude.
 
-Une règle empirique de planification selon laquelle la compétence de frontière atteint des appareils moins chers en environ six mois n'est pas une constante mesurée dans cette archive. La distillation, la quantification et l'inférence par consultation de table (Ma et al., 2024 ; Wei et al., 2024) sont des mécanismes publiés par lesquels une compétence donnée peut passer à un matériel moins cher. La vitesse est une question empirique pour chaque paire de modèles.
+Une règle empirique de planification selon laquelle la compétence de frontière atteint des appareils moins chers en environ six mois n'est une constante mesurée dans aucune des sources citées ici. La distillation, la quantification et l'inférence par consultation de table (Ma et al., 2024 ; Wei et al., 2024) sont des mécanismes publiés par lesquels une compétence donnée peut passer à un matériel moins cher. La vitesse est une question empirique pour chaque paire de modèles.
 
 ### 2.6 Coût physique
 
-Landauer (1961) borne l'effacement. Bennett (1973) montre que le calcul réversible peut éviter cette borne en théorie. Horowitz (2014) est l'énoncé pratique pour le CMOS : l'énergie par opération et l'énergie du déplacement des données fixent la contrainte de conception, à de nombreux ordres de grandeur au-dessus de `kT ln 2` pour la logique CMOS irréversible. L'OpCounter de l'article compagnon implémente `J = sum count * E` avec des constantes comme `E_LUT_READ = 1e-12` joule. Ces constantes sont un modèle. Le compagnon donne le total analytique de la graine 1, 8.6795e-10 joule, pour un épisode jouet. Importer ce nombre dans un article sur la demande ne montrerait pas que la dépense après la fin est grande. Cela montrerait seulement que le modèle de la porte jouet a renvoyé ce total. Cet article ne traite donc pas le joule du compagnon comme une mesure de satiété.
+Landauer (1961) borne l'effacement. Bennett (1973) montre que le calcul réversible peut éviter cette borne en théorie. Horowitz (2014) est l'énoncé pratique pour le CMOS : l'énergie par opération et l'énergie du déplacement des données fixent la contrainte de conception, à de nombreux ordres de grandeur au-dessus de `kT ln 2` pour la logique CMOS irréversible. À $T = 300$ K, la borne vaut $k_B T \ln 2 \approx 2.87 \times 10^{-21}$ J par bit effacé, avec $k_B = 1.380649 \times 10^{-23}$ J/K.
 
 Goldman Sachs a publié une note de recherche intitulée « Gen AI: Too Much Spend, Too Little Benefit? » (https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit). L'existence d'une note importante du côté vendeur qui interroge la dépense d'infrastructure au regard du bénéfice est un fait documentaire. Les montants en dollars de la note ne sont pas cités ici, car les estimations du côté vendeur ne sont pas une comptabilité scientifique de l'énergie.
-
-### 2.7 Les registres de validation comme interface, pas comme estimation de la demande
-
-L'article compagnon spécifie la proposition, le certificat, le motif de refus et la décision de validation. Les modes de composition incluent l'autorisation par LUT et l'énergie, avec une CBF facultative. Les motifs de refus incluent `policy` et `budget_exceeded` ainsi que `energy_veto`. Cette taxonomie peut représenter l'achèvement de la tâche et le refus physique comme des codes différents. Représenter n'est pas identifier. Un code qui se déclenche ne prouve pas qu'un humain se trouvait à un point de félicité. Il prouve que l'environnement d'exécution a classé l'étape selon une règle que quelqu'un a installée.
 
 ## 3. Définitions et méthodes
 
@@ -140,18 +107,11 @@ L'événement interne **fini économique** à l'instant `t*` signifie `C = 0` su
 
 Gratuit à la marge est un énoncé sur le prix monétaire. Soit `p_t(q)` le prix du service de synthèse `q` à la date `t`. Les éléments de prix archivés indiquent que `p_t` pour une performance fixée sur un benchmark a baissé aux rythmes rapportés par Epoch. Gratuit à la marge signifie que `p_t` est assez bas pour qu'une licence par poste explique mal le coût de cette corvée. Cela ne signifie pas que l'intégrale de la puissance dans le temps est nulle.
 
-Motifs de refus dans la référence :
-
-```text
-physical:  lut_veto, energy_veto, cbf_veto
-economic:  budget_exceeded, policy
-```
-
-L'union d'ensembles, en mots : l'environnement d'exécution refuse si la règle économique se déclenche ou si la règle physique se déclenche. L'implémentation est un certificat, pas une phrase. Les détails du conjoint physique sont dans le compagnon, y compris la simulation de la graine 1 et le résidu de point fixe de Safe.
+Une règle d'arrêt peut donc avoir deux sortes de raisons, économiques (le prédicat est vrai, ou une limite de budget ou de politique est atteinte) et physiques (une limite de sécurité ou d'énergie est atteinte). Les deux sortes sont des prédicats différents et doivent être enregistrées comme des raisons différentes.
 
 ### 3.2 Ce qui a été fait dans cette étude
 
-Cette étude est une lecture structurée. Les sources sont la colonne de citations vérifiée dans le projet du 29 au 30 septembre 2026, les notes sur la satiété et le registre logiciel du compagnon. La Section 3.3 nomme les mesures qui rendraient empirique la définition opérationnelle.
+Cette étude est une lecture structurée. Les sources sont la colonne de citations vérifiée dans le projet du 29 au 30 septembre 2026 et les notes sur la satiété. La Section 3.3 nomme les mesures qui rendraient empirique la définition opérationnelle.
 
 Les règles de conception de la Section 4.10 sont des recommandations conditionnelles aux définitions. Ce ne sont pas des effets de traitement estimés. Un lecteur peut rejeter une règle sans rejeter la série de prix d'Epoch, et accepter la série de prix sans accepter une recommandation de produit.
 
@@ -167,7 +127,7 @@ Les règles de conception de la Section 4.10 sont des recommandations conditionn
 2. Erreurs du détecteur. Sur un corpus étiqueté, faux terminé (prédicat déclaré vrai alors qu'une clause est fausse) et faux continuer (`C` vrai et le système continue d'appeler). Aucun taux n'est publié ici.
 3. Transmission de soin. Temps jusqu'à l'état sûr et liste de transmission, mis en regard de la durée de session. Non mesuré.
 4. Tableau des segments. Quels produits ont un `C` court et lesquels sont de la recherche ouverte ou des courses adverses. Non estimé. Le cas militaire est exclu de l'affirmation de satiété en Section 5 plutôt que d'y être forcé.
-5. Énergie sur carte. Étape C en Annexe B. Non réalisée.
+5. Énergie mesurée. Un wattmètre externe sur une charge de travail énoncée. Non réalisée.
 
 Tant que ces éléments n'existent pas, les phrases sur les « joules en trop » sont des hypothèses. Les phrases sur les prix d'Epoch sont des citations.
 
@@ -177,20 +137,7 @@ Service d'assistance. Complétude : le problème du client est résolu, la répo
 
 Transmission de soin. Complétude : champs critiques remplis, liste des traitements rapprochée, partie destinataire confirmée, personne dans un état sûr. La durée de la session est une autre variable. L'épisode est construit. Aucun jeu de données hospitalier n'a été analysé.
 
-Corvée de programmation. Complétude : l'artefact correspond à un oracle écrit (des tests, ou une vérification au bit près). Régénérer un artefact qui passe déjà n'augmente pas `C`. La vérification par LUT du compagnon est une instance d'oracle écrit pour une porte, pas une instance de satiété économique.
-
-### 3.5 Chemin instrumental pour le résidu physique
-
-Lorsqu'une affirmation porte sur des joules, la classe de mesure doit être nommée. Le compagnon définit trois étapes.
-
-Étape A, existante : simulation en Rust et simulation Icarus Verilog. Énergie analytique seulement.
-
-Étape B, livrée : compilation WASM du cœur de décision et vue WebGPU de la LUT et de la trace de validation, à https://research.openie.dev/living/fpga-sim/. Le temps WebGPU n'est pas de l'énergie. Le critère d'acceptation est l'accord avec l'étape A sur les épisodes publiés (graine 1 : 1 validé, 15 refusés, J analytique 8.6795e-10).
-
-Étape C : carte programmée pour la démonstration de porte de validation du compagnon (pendule en boucle fermée avec autorisation par LUT, Safe PH et CBF de l'ensemble d'énergie d'Ames) ; énergie toujours non mesurée. L'Alchitry Pt V2 n'a pas de joulemètre embarqué. L'accord des décisions par UART n'est pas une lecture en watts. Les spécifications du fabricant sur la page de SparkFun (XC7A100T-2FGG84I, 101,440 cellules logiques, 240 tranches DSP48E1, 4,860 Kb de block RAM, 256 MB de DDR3L) ne sont pas des résultats d'énergie d'un DUT. Méthodes de mesure : guide du compagnon [/living/fpga-sim/alchitry/#energy](https://research.openie.dev/living/fpga-sim/alchitry/#energy).
-
-Cet article ajoute une correspondance, pas une quatrième étape. L'achèvement de la tâche, s'il est codé comme `policy` ou `budget_exceeded`, devrait apparaître dans la même trace que `energy_veto`, afin qu'une scission future (Section 3.3) puisse regrouper les codes de motif. La vue du navigateur rendrait ce regroupement lisible. Elle ne créerait pas le corpus manquant, et l'énergie de la carte reste non mesurée.
-
+Corvée de programmation. Complétude : l'artefact correspond à un oracle écrit (des tests, ou une vérification exacte au bit près). Régénérer un artefact qui passe n'élève pas `C`.
 
 <div id="28-fidelity-criteria-and-stop-rules" class="anchor-alias" aria-hidden="true"></div>
 
@@ -220,7 +167,7 @@ Les séries de prix d'Epoch (S-2) montrent que la synthèse devient moins chère
 
 Chung, Wu, Ma et Chowdhury (arXiv:[2601.22076](https://arxiv.org/abs/2601.22076), 2026) diagnostiquent l'énergie d'inférence sur 1,858 configurations : le type de tâche à lui seul peut faire varier l'énergie d'un LLM par réponse d'environ 25× ; la génération vidéo peut dépasser l'énergie de l'image de deux ordres de grandeur. L'article de *Joule* « Energy use of AI inference, efficiency pathways, and test-time scaling » ([cell.com/joule/fulltext/S2542-4351(26)00114-5](https://www.cell.com/joule/fulltext/S2542-4351(26)00114-5), en ligne le 22 avr. 2026) estime les requêtes optimisées à l'échelle de la frontière dans une plage médiane inférieure au wattheure, tout en rapportant que le raisonnement long et les requêtes agentiques peuvent augmenter l'énergie de plus d'un ordre de grandeur ; des gains d'efficacité de 8 à 20× sont en vue, ce ne sont pas des joules gratuits. Luccioni, Strubell et Crawford (FAccT 2025) ([doi:10.1145/3715275.3732007](https://doi.org/10.1145/3715275.3732007)) avertissent que l'efficacité sans arrêt peut amplifier la dépense totale (Jevons). La présentation de l'énergie par Epoch AI ([epoch.ai/publications/ai-energy](https://epoch.ai/publications/ai-energy), mise à jour en juil. 2026) sépare des coûts par requête modestes d'une puissance agrégée des centres de données qui double rapidement.
 
-**Lecture pour cet article.** Gratuit à la marge est un énoncé sur le prix monétaire. Les joules rares sont un énoncé physique. L'arrêt opérationnel est l'achèvement de la tâche : lorsque `C(z) = 1`, davantage de synthèse n'élève pas l'objectif écrit, et un refus `policy` / `budget_exceeded` est un succès. [Notational Intelligence](/papers/gates/) est responsable du certificat physique. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) navigue parmi les engrenages suffisants les moins chers. [Metabolic Intelligence](/products/mei/) est responsable des actionneurs de l'enveloppe. Les estimations ne sont pas un `measured_j` mesuré sur carte.
+**Lecture pour cet article.** Gratuit à la marge est un énoncé sur le prix monétaire. Les joules rares sont un énoncé physique. L'arrêt opérationnel est l'achèvement de la tâche : lorsque `C(z) = 1`, davantage de synthèse n'élève pas l'objectif écrit, et un arrêt pour des raisons de budget ou de politique est un succès. Les estimations ne sont pas de l'énergie mesurée.
 
 <div id="36-protocol-for-a-done-detector-study-not-executed" class="anchor-alias" aria-hidden="true"></div>
 
@@ -270,7 +217,6 @@ La Figure 1 trace le modèle jouet et l'affirmation agrégée, qui en est distin
 
 Soit `R` l'ensemble des codes de refus d'une trace. On partitionne `R` en `R_econ = {policy, budget_exceeded}` et `R_phys = {lut_veto, energy_veto, cbf_veto}`, conformément à la taxonomie du schéma. D'autres codes, s'ils sont ajoutés plus tard, doivent être affectés par écrit avant d'être comptés. Un intervalle de la trace contribue au refus économique après la fin seulement si `C` vaut déjà 1 et que le code est dans `R_econ`. Il contribue au refus physique si le code est dans `R_phys`, que `C` vaille 1 ou non. Une action dangereuse après la fin relève des deux récits et devrait être comptée dans les deux colonnes, pas moyennée. Le refus irréversible de la démonstration MCP est un exemple physique : codes d'énergie et de barrière, 0 appel à l'exécutant. Ce n'est pas un exemple de `R_econ`. Un épisode futur avec `policy` après un correctif fusionné serait l'exemple économique. Le dépôt ne contient pas cet épisode. La partition indique comment il serait noté.
 
-
 ## 4. Éléments de preuve
 
 ### 4.1 Affirmation S-1. La satiété est un objet économique défini
@@ -301,23 +247,19 @@ Baumol (1967) fournit le cadre. Acemoglu et Restrepo (2019) fournissent le langa
 
 La page de Goldman Sachs nommée en Section 2.6 existe et pose la question dans son titre.
 
-### 4.8 Affirmation S-8. La référence peut coder les deux types d'arrêt
-
-Les éléments relatifs au schéma et à la démonstration sont dans le compagnon. `policy` et `budget_exceeded` sont des codes de motif de la taxonomie des refus. `energy_veto` est démontré dans `artifacts/mcp_gate_demo.json` et dans `commit_decision_refuse.json`, où une autorisation LUT vraie refuse tout de même et met l'action de l'installation à zéro. Le cas de refus MCP n'appelle pas l'exécutant. Ce sont des faits logiciels sur la référence. Ils ne montrent pas qu'une entreprise ait réduit sa dépense après la fin.
-
 ### 4.9 Affirmation S-9. Epoch ne tarifie pas la loi physique à zéro
 
-Landauer (1961) et Horowitz (2014) étayent un écart permanent entre une borne idéale d'effacement et la pratique CMOS. Le modèle analytique du compagnon est un troisième objet, ni la borne ni une carte. S-9 dit seulement qu'une citation d'Epoch ne dispense pas d'une citation de Landauer.
+Landauer (1961) et Horowitz (2014) étayent un écart permanent entre une borne idéale d'effacement et la pratique CMOS. S-9 dit seulement qu'une citation d'Epoch ne dispense pas d'une citation de Landauer.
 
 ### 4.10 Règles de conception, marquées comme conception
 
 Ces règles découlent des définitions si on les accepte et qu'on veut un produit qui optimise `C` plutôt que les tokens. Ce ne sont pas des effets.
 
 1. Écrire `C` avant d'ajouter de la capacité de modèle.
-2. Traiter comme temporaire un fossé fondé sur le prix de la synthèse lorsque des séries de type Epoch et des poids ouverts s'appliquent à cette corvée.
-3. Ne pas décrire comme énergie gratuite les joules analytiques de l'étape A, les traces WASM de l'étape B ou un FPGA non mesuré.
+2. Traiter comme temporaire une prime de prix sur la synthèse lorsque des séries de type Epoch et des poids ouverts s'appliquent à cette corvée.
+3. Ne pas décrire une énergie modélisée ou simulée comme une énergie mesurée.
 4. Préférer un détecteur de `C` avec une table d'erreurs à une augmentation non étiquetée de la taille du modèle, dès lors que la corvée est le produit.
-5. Garder l'autorisation physique sur le certificat défini dans le compagnon chaque fois que l'appel est irréversible.
+5. Exiger une vérification de sécurité physique distincte avant toute action irréversible.
 6. Rapporter séparément l'énergie avant et après la fin lorsque la scission existe. Elle n'existe pas encore.
 7. Ne pas appliquer le prédicat de satiété aux courses adverses ou militaires (Section 5.3).
 8. Si l'objectif du produit est l'attention, le dire. Les affirmations de complétude ne s'appliquent alors pas.
@@ -326,8 +268,7 @@ Tests éliminatoires pour une feuille de route, également de conception : un pl
 
 ### 4.11 Ce qui serait un résultat et n'en est pas un
 
-Un tableau des taux de faux terminé et de faux continuer. Une série temporelle des appels après `t*`. Une lecture de compteur sur l'Alchitry Pt V2. Une estimation structurelle de l'effet rebond. Une prime de prix de l'AGI estimée sur une corvée rassasiée. Rien de tout cela ne figure parmi les affirmations étayées de la Section 4.
-
+Un tableau des taux de faux terminé et de faux continuer. Une série temporelle des appels après `t*`. Une lecture de compteur de l'énergie sur une charge de travail énoncée. Une estimation structurelle de l'effet rebond. Une prime de prix de l'AGI estimée sur une corvée rassasiée. Rien de tout cela ne figure parmi les affirmations étayées de la Section 4.
 
 ### 4.12 La non-identité, énoncée comme une comparaison d'objectifs
 
@@ -339,16 +280,10 @@ Soit `x` le nombre d'appels, `s` la durée de session, `J_pre` et `J_post` l'én
 | `s` a augmenté | le bien-être a augmenté |
 | `p` a baissé (S-2) | `J_post = 0` |
 | `C = 1` | le taux d'erreur du détecteur est connu |
-| un refus physique s'est déclenché (S-8) | le prédicat de complétude était vrai |
 | la possession de téléphones est élevée (S-5) | la valeur marginale d'un autre appel de modèle est nulle |
 | les cours des actions de bicyclettes ont flambé puis chuté (S-4) | les ménages ont atteint un point de félicité dans le transport |
 
 La colonne de droite est la liste des inférences que cet article refuse. Chaque observation de gauche est soit une citation de la Section 4, soit une variable de la Section 3. Le tableau est la discussion comprimée en une vérification. Une phrase qui avance une affirmation de droite a quitté les éléments de preuve.
-
-### 4.13 Les grandeurs du compagnon qui restent dans le compagnon
-
-Pour la lecture croisée seulement, le compagnon rapporte une simulation de pendule avec la graine 1 : 1 validation, 15 refus, énergie analytique 8.6795e-10 joule, et une vérification Safe avec zéro fausse autorisation face à l'oracle `Vdot <= epsilon` sur sa grille énoncée, au prix de 79 faux refus sur 209,261 décisions. Ces grandeurs répondent à une question de commande. Elles sont simulées. Elles utilisent les constantes analytiques du compagnon. Elles sont listées ici pour qu'un lecteur ne les importe pas comme affirmations S. La satiété ne les utiliserait qu'à l'intérieur de la scission non exécutée de la Section 3.3, et seulement avec la classe de mesure écrite à côté du nombre.
-
 
 ## 5. Discussion
 
@@ -383,16 +318,15 @@ Un modèle qui rédige une note plus vite peut augmenter le débit de notes et l
 
 ### 5.6 La synthèse gratuite n'est pas un actionnement gratuit
 
-Les joules de l'étape A sont modélisés. L'étape B est simulée dans un navigateur. L'étape C programme la carte, et un compteur sur celle-ci est une mesure ultérieure. Une commande d'actionneur est le bit de validation du compagnon. Les prix d'Epoch se situent sur un autre axe que les trois. Les fondre dans une « IA gratuite » supprime la classe de mesure. La voie WASM et WebGPU est utile parce qu'elle permet à un tiers de rejouer la trace de décision sans posséder la carte Alchitry. L'utilité en tant que réplique n'est pas un watt.
+Une baisse du prix monétaire de l'inférence ne dit rien de l'énergie nécessaire pour déplacer un système physique. Faire passer une masse $m$ d'un état de repos à travers une variation de vitesse $\Delta v$ demande au moins $\tfrac12 m (\Delta v)^2$ joules de travail, quel que soit le prix de l'instruction qui l'a commandé. Les prix d'Epoch se situent sur un autre axe que ce travail. Les fondre dans « l'IA gratuite » supprime la classe de mesure.
 
 ### 5.7 La confiance n'est pas un certificat
 
-Un score élevé peut ordonner des propositions. Les exemples de refus du compagnon montrent un bit LUT qui passe avec un prédicat d'énergie qui échoue et une action de l'installation nulle. C'est la moitié physique de l'union. La moitié économique est un motif `policy` ou de budget lorsque `C` vaut déjà 1. Aucune des deux moitiés n'est une entrée de softmax.
+Un score élevé de modèle peut ordonner des propositions. Ce n'est pas un prédicat de complétude : un score a besoin d'un seuil et d'une table d'erreurs (taux de faux et de vrais positifs sur un ensemble étiqueté) avant de décider `C`.
 
 ### 5.8 Le scepticisme du côté vendeur n'est pas une mesure
 
 S-7 empêche une revue de la littérature d'ignorer un doute public majeur sur la dépense et le bénéfice. Elle ne permet pas à une note de recherche de remplacer un compteur ou une estimation de la demande. Si les chiffres de la note sont cités plus tard, le PDF primaire doit être la source, et l'étiquette est estimation du côté vendeur.
-
 
 ### 5.9 Ce qu'exigerait une estimation structurelle de la demande
 
@@ -402,8 +336,7 @@ La segmentation appartient au même dispositif. Coder chaque produit comme `C` f
 
 ### 5.10 Pourquoi aucun multiple de `kT ln 2` n'est énoncé
 
-Le résultat de Landauer est une inégalité pour un effacement idéalisé à la température `T`. Horowitz (2014) rapporte des énergies pour des opérations CMOS particulières et pour le trafic mémoire, en picojoules, sous les hypothèses de ce tutoriel. Diviser l'une par l'autre ne produit un nombre qu'après que quelqu'un a choisi l'opération, le facteur d'activité, la température et le composant. Aucun de ces choix n'a été mesuré sur une charge de travail OpenIE. Les constantes du compagnon, à commencer par `1e-12` joule par lecture de LUT, ne sont pas les nombres de Horowitz et ne sont pas un décompte de bits effacés. Énoncer un multiple au-dessus de la borne de Landauer reviendrait à prétendre que ces choix ont été faits. L'énoncé scientifique est le sens de l'inégalité : le CMOS irréversible pratique, dans le récit de Horowitz, se situe très au-dessus de la borne, et un indice de prix ne déplace aucun composant jusqu'à la borne.
-
+Le résultat de Landauer est une inégalité pour un effacement idéalisé à la température `T`. Horowitz (2014) rapporte des énergies pour des opérations CMOS particulières et pour le trafic mémoire, en picojoules, sous les hypothèses de ce tutoriel. Diviser l'une par l'autre ne produit un nombre qu'après que quelqu'un a choisi l'opération, le facteur d'activité, la température et le composant. Aucun de ces choix n'est mesuré dans cet article. Énoncer un multiple au-dessus de la borne de Landauer reviendrait à prétendre que ces choix ont été faits. L'énoncé scientifique est le sens de l'inégalité : le CMOS irréversible pratique, dans le récit de Horowitz, se situe très au-dessus de la borne, et un indice de prix ne déplace aucun composant jusqu'à la borne.
 
 ## 6. Limites et menaces à la validité
 
@@ -413,45 +346,19 @@ Validité interne de l'affirmation de prix. S-2 hérite de l'identification util
 
 Validité externe. Le travail et le soin, tels que définis, excluent la rivalité militaire et peuvent exclure la recherche. La possession de téléphones ne se transfère pas aux produits d'agents. Les cours des actions de bicyclettes ne se transfèrent pas aux marges du logiciel. Les épisodes construits ne sont pas un échantillon.
 
-Validité de la mesure. Pas de joules scindés, pas de matrice de confusion du détecteur, pas de DUT. Les décomptes de fausses autorisations du compagnon portent sur un oracle de pendule, pas sur l'achèvement de la tâche. Les importer comme preuve de satiété serait une erreur de catégorie. Les spécifications de FPGA du fabricant ne sont pas de l'énergie.
+Validité de la mesure. Aucun joule scindé, aucune matrice de confusion du détecteur et aucun compteur d'énergie sur aucun appareil. Les spécifications matérielles des fabricants ne sont pas des mesures d'énergie.
 
 Variable omise. De nouvelles tâches peuvent absorber la dépense libérée par une synthèse bon marché. La Section 5.1 l'énonce. Une feuille de route qui traite la satiété par corvée comme une prévision de la demande agrégée de calcul n'est pas autorisée par cet article.
 
 Biais de publication et type de document. Wu est un livre. La page de Humane Technology relève du plaidoyer. Goldman Sachs relève du côté vendeur. Quinn, Epoch, Baumol, Acemoglu et Restrepo, Landauer et Horowitz sont les citations porteuses, et elles étayent des phrases différentes. La structure de l'article est une tentative d'empêcher que ces phrases soient moyennées en une humeur.
 
-Réfutateurs. S-1 échoue si la théorie citée ne contient pas de région d'utilité marginale nulle. Elle en contient une. S-2 échoue si les pages primaires d'Epoch ne rapportent pas de baisses de ce type. S-8 échoue si le schéma n'a pas de codes de motif économiques ou si le JSON cité ne refuse pas. Un futur corpus étiqueté dans lequel des appels supplémentaires après un `C` correct élèvent systématiquement une valeur spécifiée indépendamment réfuterait la satiété pour ce corpus. Un tel corpus ne réfuterait pas la définition. Il en bornerait le domaine.
+Réfutateurs. S-1 échoue si la théorie citée ne contient pas de région d'utilité marginale nulle. Elle en contient une. S-2 échoue si les pages primaires d'Epoch ne rapportent pas de baisses de ce type. Un futur corpus étiqueté dans lequel des appels supplémentaires après un `C` correct élèvent systématiquement une valeur spécifiée indépendamment réfuterait la satiété pour ce corpus. Un tel corpus ne réfuterait pas la définition. Il en bornerait le domaine.
 
-
-
-La même discipline s'applique aux spécifications de FPGA du fabricant. SparkFun liste les cellules logiques, les tranches DSP, la block RAM et la capacité de DRAM de l'Alchitry Pt V2. Ces grandeurs décrivent une pièce de catalogue. Elles ne décrivent ni l'activité de commutation, ni la puissance statique, ni l'énergie d'une trace de validation. Un rapport ultérieur sur le DUT doit nommer le bitstream, l'horloge, la charge de travail, le compteur et la durée. Tant que ce rapport n'existe pas, la carte est un instrument non mesuré, et l'émulateur du navigateur est une réplique de la décision logicielle, pas un aperçu du compteur.
+Les spécifications matérielles des fabricants listent des capacités, pas l'activité de commutation, la puissance statique ou l'énergie d'une charge de travail. Un rapport d'énergie doit nommer le matériel, l'horloge, la charge de travail, le compteur et la durée.
 
 ## 7. Conclusion
 
-La satiété est un objet standard dans la théorie citée, et elle a une forme opérationnelle étroite : un prédicat de complétude écrit que la synthèse supplémentaire ne fait pas avancer. Les séries publiées d'Epoch documentent une forte baisse du prix monétaire de l'inférence à performance fixée. Cette baisse étaye une description des corvées numériques comme gratuites à la marge et n'étaye ni des joules gratuits, ni un mouvement gratuit de l'installation, ni la fin de la structure de coûts du soin. Les cours des actions de bicyclettes, la diffusion des smartphones et les marchés de l'attention sont plus faibles et plus forts de la manière précise qu'énonce la Section 4. La référence de validation peut stocker un refus économique et un refus physique comme des motifs différents. Le côté physique est simulé dans le compagnon et n'est pas mesuré sur carte. Un émulateur WASM et WebGPU reproduit la trace dans un navigateur à https://research.openie.dev/living/fpga-sim/ et reste une simulation. Un compteur sur l'Alchitry Pt V2 serait une mesure différente et ultérieure. Les objets scientifiques manquants sont un détecteur de fin étiqueté, une scission de l'énergie avant et après la fin, et une estimation de la demande capable de voir l'effet rebond. Tant qu'ils n'existent pas, le contenu empirique de l'article est le corpus cité, et son contenu formel est le prédicat.
-
-## 8. Prix et marchés tirés des articles de théorie
-
-Les articles de théorie classent par joules jusqu'à l'achèvement correct et gardent les prix hors du classement. Leurs lectures de marché et de prix sont rassemblées ici, et les sections d'origine y restent comme ancres.
-
-### 8.1 Séries de prix
-
-*Tiré de [Portes de validation mesurées, Section I.2.3](/papers/gates/#i23-scale-and-hardware-fit).* Epoch AI (2025) rapporte des baisses du prix de l'inférence de l'ordre de 9 à 900 fois par an à performance fixée sur un benchmark, selon le benchmark. Emberson et Roodman (2026) rapportent une baisse trimestrielle d'environ 47 pour cent du coût d'une performance donnée depuis environ 2023, qu'ils résument comme environ 13 fois par an, avec une baisse plus rapide près de la frontière. Ce sont les résumés publiés d'Epoch. Ce sont des éléments sur le prix. Ce ne sont pas des preuves que les joules ou les validations irréversibles sont devenus gratuits. Portes de validation mesurées les utilise seulement pour séparer le coût de la proposition de l'autorisation. Cet article utilise les mêmes séries pour l'argument de demande des Sections 2.5 et 4.2.
-
-### 8.2 L'arrêt économique
-
-*Tiré de [Portes de validation mesurées, Section II.5](/papers/gates/#ii5-stop-bridge-satiation).* Les prix de l'inférence numérique peuvent tendre vers la gratuité à la marge sans impliquer une énergie gratuite, un actionnement gratuit ou une valeur illimitée une fois une corvée accomplie. Cet article définit la satiété comme un arrêt sur un prédicat de complétude écrit et cite les séries de prix publiées. Mixture of Limits fournit l'arrêt machine qui correspond à cette intuition économique.
-
-### 8.3 Dépense de plateau et dollar par appareil
-
-*Tiré de [Portes de validation mesurées, Section II.8.12](/papers/gates/#ii812-hardware-plateau-spend-on-real-devices).* Le logiciel est de l'ingénierie humaine appliquée sous motivation économique et de survie, pas un domaine détaché du coût, du rendement de fabrication et des joules. Les marchés récompensent la dépense de plateau qui extrait plus de travail par dollar d'appareil : algorithmes optimisés, routage par mélange d'experts, co-conception des systèmes d'entraînement et astuces d'inférence sur des accélérateurs plus anciens ou moins chers. Mixture of Limits est la règle de navigation qui lie cette dépense à des planchers lorsque davantage de travail n'achète rien.
-
-### 8.4 La tendance des prix dans la thèse commune
-
-*Tiré de la thèse commune.* Une tendance des prix est une affirmation distincte, étiquetée comme telle. Epoch AI rapporte que le coût d'un niveau donné de performance de l'IA a baissé d'environ 47 pour cent par trimestre depuis 2023, soit environ 13 fois par an (Emberson et Roodman, *The plunging price of thought*, 22 septembre 2026). Si cette tendance se poursuit, l'énergie devient le coût marginal dominant de l'inférence. C'est une tendance citée assortie d'une condition, pas un effondrement mesuré. [La correction orthographique est mondiale](/papers/spellcheck/) est une preuve d'existence qu'une partie de l'intelligence informatique se banalise jusqu'à un prix nul groupé.
-
-### 8.5 Tarification des succès de cache
-
-*Tiré de [Portes de validation mesurées, Section II.8.13.1](/papers/gates/#ii8131-transmission-attention-kv-cache-and-interconnect-cost).* L'API publique de DeepSeek tarifie `deepseek-flash` (servi en tant que DeepSeek-V4.1-Flash) avec un grand écart entre l'entrée en succès de cache et l'entrée en échec de cache (p. ex. succès de cache en heure de pointe \$0.006 contre échec de cache \$0.3 par 1M de tokens d'entrée ; [api-docs.deepseek.com/quick_start/pricing](https://api-docs.deepseek.com/quick_start/pricing)). Une discussion sur Hacker News relève des sessions qui perdent le cache de préfixe vers ~60% d'une fenêtre de contexte et paient soudain ~50× plus ([news.ycombinator.com/item?id=49735410](https://news.ycombinator.com/item?id=49735410)). C'est une anecdote d'opérateur, pas une mesure OpenIE. Lien avec Mixture of Limits : la réutilisation bon marché du cache est la transmission suffisante la moins chère ; lorsque la réutilisation se rompt, la dépense escaladée reste un coût du corridor génératif, pas un refus certifié. Une longue session est tarifée selon que son préfixe survit, pas selon que sa tâche est achevée. Le prix peut sauter alors que le prédicat de complétude reste faux, et il n'achète rien une fois le prédicat vrai.
+La satiété est un objet standard dans la théorie citée, et elle a une forme opérationnelle étroite : un prédicat de complétude écrit que la synthèse supplémentaire ne fait pas avancer. Les séries publiées d'Epoch documentent une forte baisse du prix monétaire de l'inférence à performance fixée. Cette baisse étaye une description des corvées numériques comme gratuites à la marge et n'étaye ni des joules gratuits, ni un mouvement gratuit de l'installation, ni la fin de la structure de coûts du soin. Les cours des actions de bicyclettes, la diffusion des smartphones et les marchés de l'attention sont plus faibles et plus forts de la manière précise qu'énonce la Section 4. Les objets scientifiques manquants sont un détecteur de fin étiqueté, une scission de l'énergie avant et après la fin, et une estimation de la demande capable de voir l'effet rebond. Tant qu'ils n'existent pas, le contenu empirique de l'article est le corpus cité, et son contenu formel est le prédicat.
 
 ## Références
 
@@ -460,31 +367,13 @@ Les articles de théorie classent par joules jusqu'à l'achèvement correct et g
 | Id | Énoncé | Classe |
 |----|-----------|-------|
 | R1 | Écrire le prédicat de complétude avant d'ajouter de la capacité. | Conception |
-| R2 | S'attendre à ce que les fossés fondés sur le prix de la synthèse s'érodent là où s'appliquent des éléments de type Epoch. | Conception, conditionnelle à S-2 |
+| R2 | S'attendre à ce que les primes de prix sur la synthèse s'érodent là où s'appliquent des éléments de type Epoch. | Conception, conditionnelle à S-2 |
 | R3 | Ne pas revendiquer d'énergie gratuite ni d'actionnement gratuit. | Contrainte tirée de S-9 |
-| R4 | Séparer les codes de motif économiques des codes de motif physiques. | Fait logiciel, S-8, plus conception |
+| R4 | Séparer les raisons d'arrêt économiques des raisons d'arrêt physiques. | Conception |
 | R5 | Publier les taux d'erreur du détecteur avant de traiter un arrêt comme exact. | Pas encore un résultat |
 | R6 | Scinder l'énergie avant et après la fin. | Pas encore un résultat |
 | R7 | Garder les courses adverses hors de l'affirmation de satiété. | Portée |
 | R8 | Relire les sources primaires de Pew et d'Epoch avant de citer un ordre de grandeur plus fin. | Méthode |
-
-Aucune ligne ci-dessus n'est une mesure sur carte.
-
-## Annexe B. Reproductibilité et émulateur
-
-Cet article n'a pas de binaire propre. Reproduction des faits logiciels cités :
-
-```text
-cargo run --release --bin wca-mcp-gate -- --demo
-cargo run --release --bin wca-soc-loop -- \
-  --steps 16 --init-theta 1.5 --init-omega 3.0 --seed 1
-```
-
-Résultat attendu, d'après les journaux enregistrés du compagnon : refus de la démonstration avec 0 appel à l'exécutant ; graine 1 avec 1 validé, 15 refusés, énergie analytique 8.6795e-10 joule. Ces sorties n'estiment pas la satiété.
-
-Instrument de navigateur, livré comme Étape B à https://research.openie.dev/living/fpga-sim/, partagé avec l'Annexe B du compagnon. Le cœur de décision s'exécute en WASM. WebGPU peint l'image de la LUT et la trace de validation. Comparer la trace au JSON de Rust. Ne pas convertir les horodatages GPU en joules. Ne pas marquer l'Alchitry Pt V2 comme mesurée. Page du fabricant : https://www.sparkfun.com/alchitry-pt-v2.html. Un compteur sur la carte programmée de l'Étape C est une étude ultérieure.
-
-Indicateur factuel du dépôt : aucun résultat sur carte FPGA revendiqué.
 
 ## Annexe C. Carte des affirmations
 
