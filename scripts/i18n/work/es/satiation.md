@@ -2,9 +2,15 @@
 
 *Versión 1.1, 11 de octubre de 2026. Datos y código: [research.openie.dev/data/](/data/#economics). PDF en LaTeX: [/pdfs/latex/satiation.pdf](/pdfs/latex/satiation.pdf) ([fuente](/pdfs/latex/satiation.tex)).*
 
-*El compañero económico de [Cotas termodinámicas y un tempo óptimo para agentes que sostienen metas](/papers/agency/) y de [Compuertas de confirmación medidas](/papers/gates/). La teoría que utiliza permanece allí: la forma de la compuerta y $J^*$ en [Agencia, Sección 1](/papers/agency/#1-thesis), la parada de la máquina en [Compuertas de confirmación medidas, Sección II.5](/papers/gates/#ii5-stop-bridge-satiation) y el registro de confirmación en la [Parte I](/papers/gates/#part-i-the-commit-gate-notational-intelligence). Las lecturas de mercado y de precios de esos artículos se reúnen en la Sección 8. Su caso de programación es [El prometido mercado billonario de la programación con IA](/papers/ai-coding-market/).*
-
 ## Resumen
+
+Una vez terminada una tarea, más esfuerzo de máquina sobre esa tarea no añade nada. Este artículo define esa parada con precisión y la separa de la cuestión distinta de si la demanda total de trabajo de máquina sigue creciendo.
+
+**En palabras sencillas**
+
+1. Todo trabajo tiene una línea de meta. Pasada esa línea, más trabajo del ordenador sobre ese trabajo es desperdicio.
+2. Un trabajo de ordenador más barato aún puede hacer que la gente empiece muchos más trabajos, así que el uso total puede seguir subiendo.
+3. Los precios en dinero de la IA están cayendo deprisa, pero la electricidad que consume nunca es gratuita.
 
 Muchos modelos de planificación tratan la demanda de inteligencia artificial como si no tuviera línea de meta. La teoría del consumidor ya contiene el objeto opuesto. La saciedad, y el punto de dicha relacionado con ella, es la región en la que unidades adicionales de un bien no elevan la utilidad y pueden reducirla (Andersen, 2001). Este artículo define un pariente operativo para el trabajo y el cuidado: un bucle alcanza la finalización de la tarea cuando se cumple un predicado de completitud enunciado, las llamadas posteriores no cambian ninguna cláusula de ese predicado de falsa a verdadera, y las llamadas que deshacen el predicado son daño, no valor. El tiempo de interacción, el número de tokens y el número de licencias son variables distintas. Pueden crecer después de la completitud.
 
@@ -12,42 +18,23 @@ Hay que mantener separadas dos afirmaciones. La saciedad a nivel de tarea se cum
 
 Un segundo hecho se refiere al precio, no a la física. Epoch AI informa de grandes descensos en el precio de un rendimiento de inferencia fijo (Epoch AI, 2025; Emberson y Roodman, 2026). Este artículo llama a la situación resultante gratuito en el margen, para quehaceres digitales cuyo resultado es información y cuya prueba de completitud es finita. La expresión no significa que los julios sean gratuitos, que una planta pueda moverse sin un certificado ni que el trabajo de cuidado haya quedado automatizado. La cota de Landauer es una cota inferior del borrado, no una descripción de los aceleradores actuales (Landauer, 1961; Horowitz, 2014).
 
-El artículo no presenta un ensayo aleatorizado, ni una tasa de error de un detector de terminado, ni un reparto entre la energía gastada antes de la completitud y la gastada después. Esas mediciones están especificadas y ausentes. Lo que sí ofrece la referencia de software es un lugar donde poner la parada: Wise Computer Automation (WCA) puede rechazar por un motivo de política o de presupuesto, o por un predicado físico (permiso de una tabla de búsqueda y una comprobación de energía, con una función de barrera de control opcional). El artículo compañero mide el predicado físico en plantas de juguete. Este artículo enuncia el predicado económico y la evidencia que realmente está publicada.
-
-En este estudio ninguna matriz de puertas programable en campo (FPGA) lleva un medidor de energía; la placa del compañero está programada y su energía no se ha medido. Una Alchitry Pt V2 es el dispositivo bajo prueba (DUT) previsto para más adelante. Un instrumento de navegador que compila la compuerta a WebAssembly (WASM) y la muestra con WebGPU se ha publicado como Etapa B en https://research.openie.dev/living/fpga-sim/ (véase el artículo compañero). Es una simulación, no un resultado en placa, y aquí no es una medición de saciedad. Los julios analíticos del OpCounter del compañero no son potencia de placa ni evidencia de saciedad.
+El artículo no presenta un ensayo aleatorizado, ni una tasa de error de un detector de terminado, ni un reparto entre la energía gastada antes de la completitud y la gastada después. Esas mediciones están especificadas en la Sección 3.3 y están ausentes.
 
 ## Notación
 
 | Término | Definición en este artículo |
 |------|--------------------------|
-| Open Interface Engineering (OpenIE) | La organización que mantiene la referencia de software y estos dos estudios. |
 | Saciedad | En la teoría citada, una caída de la utilidad marginal a cero o por debajo. En la cláusula operativa de este artículo, tras la completitud, las llamadas posteriores no cambian ninguna cláusula de `C` de falsa a verdadera; las llamadas que deshacen `C` son daño, no valor (Sección 3.1). |
 | Punto de dicha | Una canasta en la que una cantidad adicional del bien reduce la utilidad. Un objeto de manual. Aquí no se estima. |
 | Finalización de la tarea | El evento en que el predicado de completitud se vuelve verdadero. Ortogonal a la escala del modelo. |
 | Completitud del trabajo | Una parada de trabajo enunciada: ticket cerrado, parche fusionado, informe presentado, libro contable conciliado o una prueba escrita equivalente. |
 | Completitud del cuidado | Una parada de cuidado enunciada: valoración terminada, medicación conciliada, parte receptora notificada, persona en un estado seguro o una prueba escrita equivalente. |
 | Gratuito en el margen | El precio marginal de un paso de síntesis digital tiende a un precio monetario incluido en un paquete o despreciable. Los julios y las confirmaciones siguen siendo costosos. |
-| Wise Computer Automation (WCA) | La referencia de confirmación y rechazo definida en el artículo compañero. |
-| Energy-First Architecture (EFA) | La decisión de mantener un predicado de energía dentro del permiso. |
-| Tabla de búsqueda (LUT) | Mapa discreto de permisos que usa la compuerta de referencia. |
-| Función de barrera de control (CBF) | Certificado de invariancia de conjuntos, conjunción opcional (Ames et al., 2019). |
-| Model Context Protocol (MCP) | Transporte de herramientas. No es un detector de finalización de la tarea. |
-| System One | Decisiones de software tipadas para conjuntos de opciones conocidos. Un proponente, no una prueba de completitud. |
 | Inteligencia artificial general (AGI) | Un objetivo amplio de capacidad. No es una observación de precios ni un resultado de este artículo. |
-| Dispositivo bajo prueba (DUT) | Hardware medido bajo una carga de trabajo enunciada. No se informa de ninguno. |
-| Matriz de puertas programable en campo (FPGA) | Lógica reconfigurable. Aquí no se sintetiza. |
-| WebAssembly (WASM) | Destino de compilación en el navegador para el emulador de la compuerta publicado en la Etapa B (https://research.openie.dev/living/fpga-sim/). |
-| WebGPU | API de GPU del navegador, mencionada para la visualización de ese emulador. No es un medidor de potencia. |
-| Alchitry Pt V2 | Placa prevista para más adelante (fabricante: Artix-7 XC7A100T). No medida. |
-| Estimación analítica de energía | Número de operaciones por una constante nombrada. Modelada. No medida en placa. |
 | Rebote directo | Uso adicional de un servicio cuando cae su precio efectivo, sobre el mismo servicio (Gillingham, Rapson y Wagner). |
 | Modelado / simulado / medido en placa | Fórmula, ejecución de programa o medidor. Las cifras nuevas de este artículo no pertenecen a ninguna de las tres clases; su contenido empírico es la cita de series y documentos publicados. |
 
-### Términos usados aquí
-
-El predicado de completitud `C`, la finalización de la tarea, gratuito en el margen y los códigos de motivo de rechazo se definen en la tabla anterior y en la Sección 3.1. La referencia de software, el valor de la información, las clases de evidencia y el indicador de resultado en placa están en el [glosario](/glossary/) común.
-
-Alcance. La Sección 2 revisa la teoría de la saciedad, la automatización de tareas, los mercados de la atención, la evidencia sobre ciclos tecnológicos y los precios de la inferencia. La Sección 3 escribe los predicados y dice cuáles no se estimaron. La Sección 4 enumera las afirmaciones que se apoyan en citas o en la demostración de software del compañero, y las separa de las reglas de diseño. La Sección 5 responde sobre el rebote, los costes del cuidado y la demanda militar. La Sección 6 enumera las amenazas a la validez. La mecánica de confirmación y las mediciones de juguete están en el artículo compañero, «Compuertas de confirmación medidas, Parte I (Notational Intelligence)».
+Alcance. La Sección 2 revisa la teoría de la saciedad, la automatización de tareas, los mercados de la atención, la evidencia sobre ciclos tecnológicos y los precios de la inferencia. La Sección 3 escribe los predicados y dice cuáles no se estimaron. La Sección 4 enumera las afirmaciones que se apoyan en citas, y las separa de las reglas de diseño. La Sección 5 responde sobre el rebote, los costes del cuidado y la demanda militar. La Sección 6 enumera las amenazas a la validez.
 
 ## 1. Introducción
 
@@ -57,23 +44,7 @@ La evidencia reciente de precios apunta en sentido contrario a la escasez de sí
 
 Las restricciones que no se siguen de una serie de precios son físicas e institucionales. El cómputo disipa energía. Horowitz (2014) documenta que el movimiento de datos y la memoria dominan la energía práctica de CMOS, a escalas muy por encima de la cota ideal de borrado de Landauer. Un actuador no es un token. Una firma, un traspaso clínico y un pago no se revierten muestreando otro párrafo. Baumol (1967) mostró cómo los sectores con un crecimiento débil de la productividad pueden absorber una proporción creciente del gasto. Acemoglu y Restrepo (2019) modelan la automatización como desplazamiento de tareas más la posible creación de tareas nuevas. Ninguno de estos resultados dice que un modelo de lenguaje ponga fin a la enfermedad de los costes. Sí dicen que «más capacidad» no es una descripción suficiente del valor.
 
-La afirmación positiva de este artículo es definicional y bibliográfica. La saciedad es un objeto coherente. Los precios publicados de la inferencia han caído bruscamente. Las métricas de interacción no son métricas de completitud. La referencia de software puede representar un rechazo por «no gastar» y un rechazo por «no mover» como códigos de motivo distintos en una misma decisión. La afirmación negativa es igual de importante. Este artículo no identifica un sistema de demanda estructural, no estima el rebote y no informa de energía medida en placa.
-
-<div id="companion-laws" class="anchor-alias" aria-hidden="true"></div>
-
-### Artículos compañeros
-
-Este estudio es la parada de **finalización de la tarea** en la tríada del catálogo de investigación.
-
-| Papel | Estudio | Se ocupa de |
-|---|---|---|
-| **Navegación** | [Mixture of Limits](https://research.openie.dev/papers/gates/#part-ii-the-cascade-mixture-of-limits) | Búsqueda → Fórmula → Solucionador → Modelo; suelos que incluyen el valor de la información (VoI). |
-| **Confirmación** | [Compuertas de confirmación medidas, Parte I (Notational Intelligence)](https://research.openie.dev/papers/gates/) | proponer → certificar → confirmar\|rechazar → recibo; permiso físico en la compuerta. |
-| **Finalización de la tarea** | Este artículo | Predicado de completitud `C(z)`; parar cuando el VoI es cero sobre ese predicado, o cuando se dispara un rechazo por presupuesto o política. |
-| **Presupuesto de energía** | [Metabolic Intelligence](https://research.openie.dev/products/mei/) | Envolvente del presupuesto / actuadores a nivel de etiqueta y de campus. |
-| **Vía de automatización** | [La corrección ortográfica es global](https://research.openie.dev/papers/spellcheck/) | Una prueba de existencia de que cierta inteligencia computacional se convierte en mercancía a precio cero incluido en un paquete: el coste marginal de la corrección ortográfica cayó a casi cero, y complementó el hardware y los editores que la gente ya tiene. Un encuadre de acceso, no un censo: los muchos (más de 7 000 millones), no los pocos que alquilan centros de datos de frontera (menos de 500 millones). |
-
-Mixture of Limits navega. Notational Intelligence se ocupa de la confirmación irreversible. Este artículo se ocupa de la finalización de la tarea tras una inferencia digital gratuita en el margen. [Metabolic Intelligence](/products/mei/) se ocupa de la envolvente del presupuesto de energía y de los actuadores. En [La corrección ortográfica es global](/papers/spellcheck/), una vez que se conserva un token, los candidatos ortográficos adicionales tienen valor de la información cero sobre ese predicado. Gratuito en el margen no significa julios gratuitos.
+La afirmación positiva de este artículo es definicional y bibliográfica. La saciedad es un objeto coherente. Los precios publicados de la inferencia han caído bruscamente. Las métricas de interacción no son métricas de completitud. Una parada por «no gastar» y una parada por «no mover» son predicados distintos. La afirmación negativa es igual de importante. Este artículo no identifica un sistema de demanda estructural, no estima el rebote y no informa de energía medida.
 
 ## 2. Trabajo relacionado
 
@@ -113,17 +84,13 @@ Epoch AI (2025), «LLM inference price trends», https://epoch.ai/data-insights/
 
 Las herramientas de la clase System One son relevantes como mecanismo de una rebaja adicional del precio en problemas de decisión con un conjunto de opciones conocido. Un modelo System One devuelve una respuesta tipada y una probabilidad para cada opción permitida en una sola pasada hacia delante, sin texto libre. TypeSafe AI dio nombre a la categoría con su modelo alojado Jev (15 de septiembre de 2026). Siguieron modelos abiertos, entre ellos Laya de Convai Innovations. Un modelo System One propone. No es una evaluación de completitud.
 
-Una regla empírica de planificación según la cual la competencia de frontera llega a dispositivos más baratos en unos seis meses no es una constante medida en este archivo. La destilación, la cuantización y la inferencia por consulta de tablas (Ma et al., 2024; Wei et al., 2024) son mecanismos publicados por los que una competencia dada puede trasladarse a hardware más barato. La velocidad es una cuestión empírica para cada par de modelos.
+Una regla empírica de planificación según la cual la competencia de frontera llega a dispositivos más baratos en unos seis meses no es una constante medida en ninguna de las fuentes citadas aquí. La destilación, la cuantización y la inferencia por consulta de tablas (Ma et al., 2024; Wei et al., 2024) son mecanismos publicados por los que una competencia dada puede trasladarse a hardware más barato. La velocidad es una cuestión empírica para cada par de modelos.
 
 ### 2.6 Coste físico
 
-Landauer (1961) acota el borrado. Bennett (1973) muestra que el cómputo reversible puede evitar esa cota en teoría. Horowitz (2014) es el enunciado práctico para CMOS: la energía por operación y la energía del movimiento de datos fijan la restricción de diseño, muchos órdenes de magnitud por encima de `kT ln 2` para la lógica CMOS irreversible. El OpCounter del artículo compañero implementa `J = sum count * E` con constantes como `E_LUT_READ = 1e-12` julios. Esas constantes son un modelo. El compañero da el total analítico de la semilla 1, 8.6795e-10 julios, para un episodio de juguete. Importar ese número a un artículo sobre demanda no mostraría que el gasto posterior al terminado sea grande. Solo mostraría que el modelo de la compuerta de juguete devolvió ese total. Por eso este artículo no trata el julio del compañero como una medición de saciedad.
+Landauer (1961) acota el borrado. Bennett (1973) muestra que el cómputo reversible puede evitar esa cota en teoría. Horowitz (2014) es el enunciado práctico para CMOS: la energía por operación y la energía del movimiento de datos fijan la restricción de diseño, muchos órdenes de magnitud por encima de `kT ln 2` para la lógica CMOS irreversible. A $T = 300$ K la cota es $k_B T \ln 2 \approx 2.87 \times 10^{-21}$ J por bit borrado, con $k_B = 1.380649 \times 10^{-23}$ J/K.
 
 Goldman Sachs publicó una nota de análisis titulada «Gen AI: Too Much Spend, Too Little Benefit?» (https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit). La existencia de una nota importante del lado vendedor que cuestiona el gasto en infraestructura en relación con el beneficio es un hecho documental. Las cifras en dólares de la nota no se citan aquí, porque las estimaciones del lado vendedor no son una contabilidad científica de la energía.
-
-### 2.7 Los registros de confirmación como interfaz, no como estimación de la demanda
-
-El artículo compañero especifica propuesta, certificado, motivo de rechazo y decisión de confirmación. Los modos de composición incluyen permiso de LUT y energía, con una CBF opcional. Los motivos de rechazo incluyen `policy` y `budget_exceeded`, así como `energy_veto`. Esa taxonomía puede representar la finalización de la tarea y el rechazo físico como códigos distintos. Representar no es identificar. Un código que se dispara no prueba que un ser humano estuviera en un punto de dicha. Prueba que el entorno de ejecución clasificó el paso según una regla que alguien instaló.
 
 ## 3. Definiciones y métodos
 
@@ -140,18 +107,11 @@ El evento interno **terminado económico** en el instante `t*` significa `C = 0`
 
 Gratuito en el margen es un enunciado sobre el precio monetario. Sea `p_t(q)` el precio del servicio de síntesis `q` en la fecha `t`. La evidencia de precios archivada es que `p_t` para un rendimiento fijo en un benchmark ha caído a las tasas que informa Epoch. Gratuito en el margen significa que `p_t` es lo bastante bajo para que una licencia por puesto explique débilmente el coste de ese quehacer. No significa que la integral de la potencia en el tiempo sea cero.
 
-Motivos de rechazo en la referencia:
-
-```text
-physical:  lut_veto, energy_veto, cbf_veto
-economic:  budget_exceeded, policy
-```
-
-La unión de conjuntos, en palabras, es: el entorno de ejecución rechaza si se dispara la regla económica o se dispara la regla física. La implementación es un certificado, no una frase. Los detalles de la conjunción física están en el compañero, incluida la simulación de la semilla 1 y el residuo del punto fijo de Safe.
+Por tanto, una regla de parada puede tener dos tipos de motivo: económico (el predicado se cumple, o se alcanza un límite de presupuesto o de política) y físico (se alcanza un límite de seguridad o de energía). Los dos tipos son predicados distintos y deben registrarse como motivos distintos.
 
 ### 3.2 Qué se hizo en este estudio
 
-Este estudio es una lectura estructurada. Las fuentes son la columna de citas comprobada en el proyecto del 29 al 30 de septiembre de 2026, las notas sobre saciedad y el registro de software del compañero. La Sección 3.3 nombra las mediciones que harían empírica la definición operativa.
+Este estudio es una lectura estructurada. Las fuentes son la columna de citas comprobada en el proyecto del 29 al 30 de septiembre de 2026 y las notas sobre saciedad. La Sección 3.3 nombra las mediciones que harían empírica la definición operativa.
 
 Las reglas de diseño de la Sección 4.10 son recomendaciones condicionadas a las definiciones. No son efectos de tratamiento estimados. Un lector puede rechazar una regla sin rechazar la serie de precios de Epoch, y puede aceptar la serie de precios sin aceptar una recomendación de producto.
 
@@ -167,7 +127,7 @@ Las reglas de diseño de la Sección 4.10 son recomendaciones condicionadas a la
 2. Errores del detector. En un corpus etiquetado, falso terminado (predicado declarado verdadero cuando una cláusula es falsa) y falso continuar (`C` verdadero y el sistema sigue llamando). Aquí no se publican tasas.
 3. Traspaso de cuidado. Tiempo hasta el estado seguro y una lista de traspaso, contrastados con la duración de la sesión. No medido.
 4. Tabla de segmentos. Qué productos tienen un `C` corto y cuáles son investigación abierta o carreras adversariales. No estimada. El caso militar se excluye de la afirmación de saciedad en la Sección 5 en lugar de forzarlo dentro de ella.
-5. Energía en placa. Etapa C en el Apéndice B. No realizada.
+5. Energía medida. Un medidor de potencia externo sobre una carga de trabajo enunciada. No realizada.
 
 Mientras no existan, las frases sobre «julios de exceso» son hipótesis. Las frases sobre los precios de Epoch son citas.
 
@@ -177,20 +137,7 @@ Mesa de soporte. Completitud: el problema del cliente está resuelto, la respues
 
 Traspaso de cuidado. Completitud: campos críticos rellenados, lista de medicación conciliada, parte receptora confirmada, persona en un estado seguro. La duración de la sesión es otra variable. El episodio es construido. No se analizó ningún conjunto de datos hospitalario.
 
-Quehacer de programación. Completitud: el artefacto coincide con un oráculo escrito (pruebas, o una comprobación bit a bit). Regenerar un artefacto que ya pasa no eleva `C`. La comprobación de LUT del compañero es una instancia de un oráculo escrito para una compuerta, no una instancia de saciedad económica.
-
-### 3.5 Vía instrumental para el residuo físico
-
-Cuando una afirmación trata de julios, hay que nombrar la clase de medición. El compañero define tres etapas.
-
-Etapa A, existente: simulación en Rust y simulación en Icarus Verilog. Solo energía analítica.
-
-Etapa B, publicada: compilación a WASM del núcleo de decisión y una vista WebGPU de la LUT y de la traza de confirmación, en https://research.openie.dev/living/fpga-sim/. El tiempo de WebGPU no es energía. La aceptación es la concordancia con la etapa A en los episodios publicados (semilla 1: 1 confirmado, 15 rechazados, J analítico 8.6795e-10).
-
-Etapa C: placa programada para la demostración de la compuerta de confirmación del compañero (péndulo en lazo cerrado con permiso de LUT, Safe PH y CBF del conjunto de energía de Ames); la energía sigue sin medirse. La Alchitry Pt V2 no tiene un medidor de julios integrado. La concordancia de decisiones por UART no es una lectura en vatios. Las especificaciones del fabricante en la página de SparkFun (XC7A100T-2FGG84I, 101,440 celdas lógicas, 240 slices DSP48E1, 4,860 Kb de block RAM, 256 MB de DDR3L) no son resultados de energía de un DUT. Métodos de medición: guía del compañero [/living/fpga-sim/alchitry/#energy](https://research.openie.dev/living/fpga-sim/alchitry/#energy).
-
-Este artículo añade una correspondencia, no una cuarta etapa. La finalización de la tarea, si se codifica como `policy` o `budget_exceeded`, debería aparecer en la misma traza que `energy_veto`, de modo que una división futura (Sección 3.3) pueda agrupar los códigos de motivo. La vista del navegador haría legible esa agrupación. No crearía el corpus que falta, y la energía de la placa sigue sin medirse.
-
+Quehacer de programación. Completitud: el artefacto coincide con un oráculo escrito (pruebas, o una comprobación bit a bit). Regenerar un artefacto que ya pasa no eleva `C`.
 
 <div id="28-fidelity-criteria-and-stop-rules" class="anchor-alias" aria-hidden="true"></div>
 
@@ -220,7 +167,7 @@ Las series de precios de Epoch (S-2) muestran que la síntesis se abarata en din
 
 Chung, Wu, Ma y Chowdhury (arXiv:[2601.22076](https://arxiv.org/abs/2601.22076), 2026) diagnostican la energía de la inferencia en 1,858 configuraciones: el tipo de tarea por sí solo puede mover la energía de un LLM por respuesta unas 25×; la generación de vídeo puede superar la energía de una imagen en dos órdenes de magnitud. El artículo de *Joule* «Energy use of AI inference, efficiency pathways, and test-time scaling» ([cell.com/joule/fulltext/S2542-4351(26)00114-5](https://www.cell.com/joule/fulltext/S2542-4351(26)00114-5), en línea el 22 de abr. de 2026) estima consultas optimizadas a escala de frontera en un rango mediano por debajo del vatio-hora, a la vez que informa de que el razonamiento largo y las consultas agénticas pueden elevar la energía en más de un orden de magnitud; las ganancias de eficiencia de 8 a 20× están a la vista, no son julios gratuitos. Luccioni, Strubell y Crawford (FAccT 2025) ([doi:10.1145/3715275.3732007](https://doi.org/10.1145/3715275.3732007)) advierten de que la eficiencia sin una parada puede amplificar el gasto total (Jevons). La visión general sobre energía de Epoch AI ([epoch.ai/publications/ai-energy](https://epoch.ai/publications/ai-energy), actualizada en jul. de 2026) separa los modestos costes por consulta de la potencia agregada de los centros de datos, que se duplica con rapidez.
 
-**Lectura para este artículo.** Gratuito en el margen es un enunciado sobre el precio monetario. Los julios escasos son un enunciado físico. La parada operativa es la finalización de la tarea: cuando `C(z) = 1`, más síntesis no eleva el objetivo escrito, y un rechazo `policy` / `budget_exceeded` es un éxito. [Notational Intelligence](/papers/gates/) se ocupa del certificado físico. [Mixture of Limits](/papers/gates/#part-ii-the-cascade-mixture-of-limits) navega los engranajes suficientes más baratos. [Metabolic Intelligence](/products/mei/) se ocupa de los actuadores de la envolvente. Las estimaciones no son `measured_j` medido en placa.
+**Lectura para este artículo.** Gratuito en el margen es un enunciado sobre el precio monetario. Los julios escasos son un enunciado físico. La parada operativa es la finalización de la tarea: cuando `C(z) = 1`, más síntesis no eleva el objetivo escrito, y una parada por motivos de presupuesto o de política es un éxito. Las estimaciones no son energía medida.
 
 <div id="36-protocol-for-a-done-detector-study-not-executed" class="anchor-alias" aria-hidden="true"></div>
 
@@ -270,7 +217,6 @@ La Figura 1 dibuja el modelo de juguete y la afirmación agregada, que es aparte
 
 Sea `R` el conjunto de códigos de rechazo en una traza. Se particiona `R` en `R_econ = {policy, budget_exceeded}` y `R_phys = {lut_veto, energy_veto, cbf_veto}`, de acuerdo con la taxonomía del esquema. Otros códigos, si se añaden más adelante, deben asignarse por escrito antes de contarse. Un intervalo de la traza contribuye al rechazo económico posterior al terminado solo si `C` ya vale 1 y el código está en `R_econ`. Contribuye al rechazo físico si el código está en `R_phys`, valga o no `C` 1. Una acción insegura después del terminado está en ambas historias y debería contarse en ambas columnas, no promediarse. El rechazo irreversible de la demostración MCP es un ejemplo físico: códigos de energía y de barrera, 0 llamadas al ejecutor. No es un ejemplo de `R_econ`. Un episodio futuro con `policy` después de un parche fusionado sería el ejemplo económico. El repositorio no incluye ese episodio. La partición es la manera en que se puntuaría.
 
-
 ## 4. Evidencia
 
 ### 4.1 Afirmación S-1. La saciedad es un objeto económico definido
@@ -301,23 +247,19 @@ Baumol (1967) aporta el marco. Acemoglu y Restrepo (2019) aportan el lenguaje de
 
 La página de Goldman Sachs mencionada en la Sección 2.6 existe y plantea la pregunta en su título.
 
-### 4.8 Afirmación S-8. La referencia puede codificar ambos tipos de parada
-
-La evidencia del esquema y de la demostración está en el compañero. `policy` y `budget_exceeded` son códigos de motivo en la taxonomía de rechazos. `energy_veto` se demuestra en `artifacts/mcp_gate_demo.json` y en `commit_decision_refuse.json`, donde un permiso de LUT verdadero aun así rechaza y fija en cero la acción de la planta. El caso de rechazo MCP no llama al ejecutor. Son hechos de software sobre la referencia. No muestran que ninguna empresa haya reducido el gasto posterior al terminado.
-
 ### 4.9 Afirmación S-9. Epoch no tasa a cero la ley física
 
-Landauer (1961) y Horowitz (2014) respaldan una brecha permanente entre una cota ideal de borrado y la práctica CMOS. El modelo analítico del compañero es un tercer objeto, ni la cota ni una placa. S-9 dice solo que una cita de Epoch no sustituye a una cita de Landauer.
+Landauer (1961) y Horowitz (2014) respaldan una brecha permanente entre una cota ideal de borrado y la práctica CMOS. S-9 dice solo que una cita de Epoch no sustituye a una cita de Landauer.
 
 ### 4.10 Reglas de diseño, marcadas como diseño
 
 Estas reglas se siguen si se aceptan las definiciones y se quiere un producto que optimice `C` y no los tokens. No son efectos.
 
 1. Escribir `C` antes de añadir capacidad de modelo.
-2. Tratar como temporal un foso basado en el precio de la síntesis cuando las series del tipo de Epoch y los pesos abiertos se aplican a ese quehacer.
-3. No describir como energía gratuita los julios analíticos de la etapa A, las trazas WASM de la etapa B ni una FPGA sin medir.
+2. Tratar como temporal una prima de precio de la síntesis cuando las series del tipo de Epoch y los pesos abiertos se aplican a ese quehacer.
+3. No describir como energía medida la energía modelada o simulada.
 4. Preferir un detector de `C` con una tabla de errores a un aumento sin etiquetar del tamaño del modelo, una vez que el quehacer es el producto.
-5. Mantener el permiso físico en el certificado definido en el compañero siempre que la llamada sea irreversible.
+5. Exigir una comprobación de seguridad física separada antes de cualquier acción irreversible.
 6. Informar por separado de la energía anterior y posterior al terminado cuando exista la división. Todavía no existe.
 7. No aplicar el predicado de saciedad a carreras adversariales o militares (Sección 5.3).
 8. Si el objetivo del producto es la atención, decirlo. Las afirmaciones de completitud no se aplican entonces.
@@ -326,8 +268,7 @@ Pruebas eliminatorias para una hoja de ruta, también de diseño: un plan que su
 
 ### 4.11 Qué sería un resultado y no lo es
 
-Una tabla de tasas de falso terminado y falso continuar. Una serie temporal de llamadas después de `t*`. Una lectura de medidor en la Alchitry Pt V2. Una estimación estructural del rebote. Una prima de precio de AGI estimada sobre un quehacer saciado. Nada de esto aparece entre las afirmaciones respaldadas de la Sección 4.
-
+Una tabla de tasas de falso terminado y falso continuar. Una serie temporal de llamadas después de `t*`. Una lectura de medidor de la energía sobre una carga de trabajo enunciada. Una estimación estructural del rebote. Una prima de precio de AGI estimada sobre un quehacer saciado. Nada de esto aparece entre las afirmaciones respaldadas de la Sección 4.
 
 ### 4.12 La no identidad, enunciada como comparación de objetivos
 
@@ -339,16 +280,10 @@ Sea `x` el número de llamadas, `s` la duración de la sesión, `J_pre` y `J_pos
 | `s` aumentó | el bienestar aumentó |
 | `p` cayó (S-2) | `J_post = 0` |
 | `C = 1` | se conoce la tasa de error del detector |
-| se disparó un rechazo físico (S-8) | se cumplía el predicado de completitud |
 | la posesión de teléfonos es alta (S-5) | el valor marginal de otra llamada al modelo es cero |
 | los precios de las acciones de bicicletas tuvieron auge y caída (S-4) | los hogares alcanzaron un punto de dicha en el transporte |
 
 La columna de la derecha es la lista de inferencias que este artículo rechaza. Cada observación de la izquierda es una cita de la Sección 4 o una variable de la Sección 3. La tabla es la discusión comprimida en una comprobación. Una frase que afirma una afirmación de la derecha ha abandonado la evidencia.
-
-### 4.13 Magnitudes del compañero que se quedan en el compañero
-
-Solo para lectura cruzada, el compañero informa de una simulación de péndulo con la semilla 1: 1 confirmación, 15 rechazos, energía analítica 8.6795e-10 julios y una comprobación Safe con cero falsos permisos frente al oráculo `Vdot <= epsilon` en su rejilla enunciada, al coste de 79 falsos rechazos en 209,261 decisiones. Esas magnitudes responden a una pregunta de control. Son simuladas. Usan las constantes analíticas del compañero. Se enumeran aquí para que el lector no las importe como afirmaciones S. La saciedad solo las usaría dentro de la división no ejecutada de la Sección 3.3, y solo con la clase de medición escrita junto al número.
-
 
 ## 5. Discusión
 
@@ -383,16 +318,15 @@ Un modelo que redacta una nota más deprisa puede elevar el rendimiento en notas
 
 ### 5.6 La síntesis gratuita no es actuación gratuita
 
-Los julios de la etapa A son modelados. La etapa B se simula en un navegador. La etapa C programa la placa, y un medidor sobre ella es una medición posterior. Una orden a un actuador es el bit de confirmación del compañero. Los precios de Epoch están en un eje distinto de los tres. Fundirlos en «IA gratuita» borra la clase de medición. La vía WASM y WebGPU es útil porque permite a un tercero reproducir la traza de decisiones sin poseer la placa Alchitry. Ser útil como réplica no es un vatio.
+Que caiga el precio monetario de la inferencia no dice nada sobre la energía necesaria para mover un sistema físico. Mover una masa $m$ a través de un cambio de velocidad $\Delta v$ desde el reposo requiere al menos $\tfrac12 m (\Delta v)^2$ julios de trabajo, sea cual sea el precio de la instrucción que lo ordenó. Los precios de Epoch están en un eje distinto del de ese trabajo. Fundirlos en «IA gratuita» borra la clase de medición.
 
 ### 5.7 La confianza no es un certificado
 
-Una puntuación alta puede ordenar propuestas. Los ejemplos de rechazo del compañero muestran un bit de LUT que pasa con un predicado de energía que falla y una acción de la planta igual a cero. Esa es la mitad física de la unión. La mitad económica es un motivo `policy` o de presupuesto cuando `C` ya vale 1. Ninguna de las dos mitades es una entrada de softmax.
+Una puntuación alta de un modelo puede ordenar propuestas. No es un predicado de completitud: una puntuación necesita un umbral y una tabla de errores (tasas de falsos y verdaderos positivos frente a un conjunto etiquetado) antes de decidir `C`.
 
 ### 5.8 El escepticismo del lado vendedor no es una medición
 
 S-7 impide que una revisión de la literatura ignore una duda pública importante sobre el gasto y el beneficio. No permite que una nota de análisis sustituya a un medidor o a una estimación de la demanda. Si más adelante se citan las cifras de la nota, la fuente debe ser el PDF primario, y la etiqueta es estimación del lado vendedor.
-
 
 ### 5.9 Qué requeriría una estimación estructural de la demanda
 
@@ -402,8 +336,7 @@ La segmentación pertenece al mismo diseño. Codificar cada producto como `C` fi
 
 ### 5.10 Por qué no se enuncia ningún múltiplo de `kT ln 2`
 
-El resultado de Landauer es una desigualdad para un borrado idealizado a temperatura `T`. Horowitz (2014) informa de energías para operaciones CMOS concretas y para el tráfico de memoria, en picojulios, bajo los supuestos de ese tutorial. Dividir una por otra produce un número solo después de que alguien elija la operación, el factor de actividad, la temperatura y el dispositivo. Ninguna de esas elecciones se midió en una carga de trabajo de OpenIE. Las constantes del compañero, empezando por `1e-12` julios por lectura de LUT, no son los números de Horowitz y no son un recuento de bits borrados. Enunciar un múltiplo por encima de la cota de Landauer fingiría que esas elecciones se hicieron. El enunciado científico es la dirección de la desigualdad: el CMOS irreversible práctico, en el relato de Horowitz, se sitúa muy por encima de la cota, y un índice de precios no lleva a ningún dispositivo hasta la cota.
-
+El resultado de Landauer es una desigualdad para un borrado idealizado a temperatura `T`. Horowitz (2014) informa de energías para operaciones CMOS concretas y para el tráfico de memoria, en picojulios, bajo los supuestos de ese tutorial. Dividir una por otra produce un número solo después de que alguien elija la operación, el factor de actividad, la temperatura y el dispositivo. Ninguna de esas elecciones se mide en este artículo. Enunciar un múltiplo por encima de la cota de Landauer fingiría que esas elecciones se hicieron. El enunciado científico es la dirección de la desigualdad: el CMOS irreversible práctico, en el relato de Horowitz, se sitúa muy por encima de la cota, y un índice de precios no lleva a ningún dispositivo hasta la cota.
 
 ## 6. Límites y amenazas a la validez
 
@@ -413,45 +346,19 @@ Validez interna de la afirmación de precios. S-2 hereda la identificación que 
 
 Validez externa. El trabajo y el cuidado, tal como se definen, excluyen la rivalidad militar y pueden excluir la investigación. La posesión de teléfonos no se transfiere a los productos de agentes. Los precios de las acciones de bicicletas no se transfieren a los márgenes del software. Los episodios construidos no son una muestra.
 
-Validez de la medición. Sin julios divididos, sin matriz de confusión del detector, sin DUT. Los recuentos de falsos permisos del compañero tratan de un oráculo de péndulo, no de la finalización de la tarea. Importarlos como evidencia de saciedad sería un error de categoría. Las especificaciones de FPGA del fabricante no son energía.
+Validez de la medición. Sin julios divididos, sin matriz de confusión del detector y sin medidor de energía en ningún dispositivo. Las especificaciones de hardware del fabricante no son mediciones de energía.
 
 Variable omitida. Las tareas nuevas pueden absorber el gasto liberado por la síntesis barata. La Sección 5.1 lo enuncia. Una hoja de ruta que trate la saciedad por quehacer como una previsión de la demanda agregada de cómputo no está autorizada por este artículo.
 
 Sesgo de publicación y tipo de documento. Wu es un libro. La página de Humane Technology es militancia. Goldman Sachs es lado vendedor. Quinn, Epoch, Baumol, Acemoglu y Restrepo, Landauer y Horowitz son las citas que soportan la carga, y respaldan frases distintas. La estructura del artículo es un intento de impedir que esas frases se promedien hasta convertirse en un estado de ánimo.
 
-Falsadores. S-1 falla si la teoría citada no contiene una región de utilidad marginal cero. La contiene. S-2 falla si las páginas primarias de Epoch no informan de descensos de ese tipo. S-8 falla si el esquema no tiene códigos de motivo económicos o si el JSON citado no rechaza. Un corpus etiquetado futuro en el que las llamadas adicionales después de un `C` correcto eleven sistemáticamente un valor especificado de forma independiente falsaría la saciedad para ese corpus. Un corpus así no falsaría la definición. Acotaría su dominio.
+Falsadores. S-1 falla si la teoría citada no contiene una región de utilidad marginal cero. La contiene. S-2 falla si las páginas primarias de Epoch no informan de descensos de ese tipo. Un corpus etiquetado futuro en el que las llamadas adicionales después de un `C` correcto eleven sistemáticamente un valor especificado de forma independiente falsaría la saciedad para ese corpus. Un corpus así no falsaría la definición. Acotaría su dominio.
 
-
-
-La misma disciplina se aplica a las especificaciones de FPGA del fabricante. SparkFun enumera celdas lógicas, slices DSP, block RAM y capacidad de DRAM para la Alchitry Pt V2. Esas magnitudes describen una pieza de catálogo. No describen la actividad de conmutación, la potencia estática ni la energía de una traza de confirmación. Un informe posterior de DUT tiene que nombrar el bitstream, el reloj, la carga de trabajo, el medidor y la duración. Mientras no exista ese informe, la placa es un instrumento sin medir, y el emulador del navegador es una réplica de la decisión de software, no un adelanto del medidor.
+Las especificaciones de hardware del fabricante enumeran capacidades, no la actividad de conmutación, la potencia estática ni la energía de una carga de trabajo. Un informe de energía tiene que nombrar el hardware, el reloj, la carga de trabajo, el medidor y la duración.
 
 ## 7. Conclusión
 
-La saciedad es un objeto estándar en la teoría citada, y tiene una forma operativa estrecha: un predicado de completitud escrito que la síntesis adicional no hace avanzar. Las series publicadas de Epoch documentan una caída brusca del precio monetario de la inferencia a rendimiento fijo. Esa caída respalda una descripción de los quehaceres digitales como gratuitos en el margen y no respalda julios gratuitos, movimiento gratuito de la planta ni el fin de la estructura de costes del cuidado. Los precios de las acciones de bicicletas, la difusión de los smartphones y los mercados de la atención son más débiles y más fuertes de las maneras concretas que enuncia la Sección 4. La referencia de confirmación puede almacenar un rechazo económico y un rechazo físico como motivos distintos. El lado físico está simulado en el compañero y no está medido en placa. Un emulador WASM y WebGPU replica la traza en un navegador en https://research.openie.dev/living/fpga-sim/ y sigue siendo una simulación. Un medidor en la Alchitry Pt V2 sería una medición distinta y posterior. Los objetos científicos que faltan son un detector de terminado etiquetado, una división de la energía antes y después del terminado y una estimación de la demanda capaz de ver el rebote. Mientras no existan, el contenido empírico del artículo es el registro citado, y su contenido formal es el predicado.
-
-## 8. Precios y mercados en los artículos de teoría
-
-Los artículos de teoría clasifican por julios hasta la finalización correcta y dejan los precios fuera de la clasificación. Sus lecturas de mercado y de precios se reúnen aquí, y las secciones originales se conservan allí como anclas.
-
-### 8.1 Series de precios
-
-*De [Compuertas de confirmación medidas, Sección I.2.3](/papers/gates/#i23-scale-and-hardware-fit).* Epoch AI (2025) informa de caídas del precio de la inferencia del orden de 9 a 900 veces por año a rendimiento fijo en un benchmark, según el benchmark. Emberson y Roodman (2026) informan de un descenso trimestral de alrededor del 47 por ciento en el coste de un rendimiento dado desde aproximadamente 2023, que resumen como unas 13 veces por año, con un descenso más rápido cerca de la frontera. Son los resúmenes publicados de Epoch. Son evidencia sobre el precio. No son evidencia de que los julios o las confirmaciones irreversibles se hayan vuelto gratuitos. Compuertas de confirmación medidas los usa solo para separar el coste de la propuesta del permiso. Este artículo usa las mismas series para el argumento de demanda de las Secciones 2.5 y 4.2.
-
-### 8.2 La parada económica
-
-*De [Compuertas de confirmación medidas, Sección II.5](/papers/gates/#ii5-stop-bridge-satiation).* Los precios de la inferencia digital pueden caer hacia lo gratuito en el margen sin implicar energía gratuita, actuación gratuita ni valor ilimitado una vez completado un quehacer. Este artículo define la saciedad como una parada sobre un predicado de completitud escrito y cita las series de precios publicadas. Mixture of Limits aporta la parada de la máquina que corresponde a esa intuición económica.
-
-### 8.3 Gasto de meseta y el dólar por dispositivo
-
-*De [Compuertas de confirmación medidas, Sección II.8.12](/papers/gates/#ii812-hardware-plateau-spend-on-real-devices).* El software es ingeniería humana aplicada bajo motivación económica y de supervivencia, no un reino desligado del coste, el rendimiento de fabricación y los julios. Los mercados recompensan el gasto de meseta que extrae más trabajo por dólar de dispositivo: algoritmos optimizados, enrutamiento de mezcla de expertos, codiseño de sistemas de entrenamiento y trucos de inferencia en aceleradores más antiguos o más baratos. Mixture of Limits es la regla de navegación que ata ese gasto a suelos cuando más trabajo no compra nada.
-
-### 8.4 La tendencia de precios en la tesis compartida
-
-*De la tesis compartida.* Una tendencia de precios es una afirmación aparte, etiquetada como tal. Epoch AI informa de que el coste de un nivel dado de rendimiento de IA ha caído alrededor del 47 por ciento por trimestre desde 2023, unas 13 veces por año (Emberson y Roodman, *The plunging price of thought*, 22 de septiembre de 2026). Si esa tendencia continúa, la energía se convierte en el coste marginal dominante de la inferencia. Es una tendencia citada con una condición, no un colapso medido. [La corrección ortográfica es global](/papers/spellcheck/) es una prueba de existencia de que cierta inteligencia computacional se convierte en mercancía a precio cero incluido en un paquete.
-
-### 8.5 Precios por acierto de caché
-
-*De [Compuertas de confirmación medidas, Sección II.8.13.1](/papers/gates/#ii8131-transmission-attention-kv-cache-and-interconnect-cost).* La API pública de DeepSeek tasa `deepseek-flash` (servido como DeepSeek-V4.1-Flash) con una gran diferencia entre la entrada con acierto de caché y la entrada con fallo de caché (p. ej., acierto de caché en hora punta \$0.006 frente a fallo de caché \$0.3 por 1M de tokens de entrada; [api-docs.deepseek.com/quick_start/pricing](https://api-docs.deepseek.com/quick_start/pricing)). Una discusión en Hacker News señala sesiones que pierden la caché de prefijo hacia ~60% de una ventana de contexto y de repente pagan ~50× más ([news.ycombinator.com/item?id=49735410](https://news.ycombinator.com/item?id=49735410)). Es una anécdota de operador, no una medición de OpenIE. Vínculo con Mixture of Limits: la reutilización barata de la caché es la transmisión suficiente más barata; cuando la reutilización se rompe, el gasto escalado sigue siendo coste del corredor generativo, no un rechazo certificado. Una sesión larga se tasa según si su prefijo sobrevive, no según si su tarea está completa. El precio puede saltar mientras el predicado de completitud sigue siendo falso, y no compra nada una vez que el predicado es verdadero.
+La saciedad es un objeto estándar en la teoría citada, y tiene una forma operativa estrecha: un predicado de completitud escrito que la síntesis adicional no hace avanzar. Las series publicadas de Epoch documentan una caída brusca del precio monetario de la inferencia a rendimiento fijo. Esa caída respalda una descripción de los quehaceres digitales como gratuitos en el margen y no respalda julios gratuitos, movimiento gratuito de la planta ni el fin de la estructura de costes del cuidado. Los precios de las acciones de bicicletas, la difusión de los smartphones y los mercados de la atención son más débiles y más fuertes de las maneras concretas que enuncia la Sección 4. Los objetos científicos que faltan son un detector de terminado etiquetado, una división de la energía antes y después del terminado y una estimación de la demanda capaz de ver el rebote. Mientras no existan, el contenido empírico del artículo es el registro citado, y su contenido formal es el predicado.
 
 ## Referencias
 
@@ -460,31 +367,13 @@ Los artículos de teoría clasifican por julios hasta la finalización correcta 
 | Id | Enunciado | Clase |
 |----|-----------|-------|
 | R1 | Escribir el predicado de completitud antes de añadir capacidad. | Diseño |
-| R2 | Esperar que los fosos basados en el precio de la síntesis se erosionen donde se aplica evidencia del tipo de Epoch. | Diseño, condicionado a S-2 |
+| R2 | Esperar que las primas de precio de la síntesis se erosionen donde se aplica evidencia del tipo de Epoch. | Diseño, condicionado a S-2 |
 | R3 | No afirmar energía gratuita ni actuación gratuita. | Restricción derivada de S-9 |
-| R4 | Separar los códigos de motivo económicos de los físicos. | Hecho de software, S-8, más diseño |
+| R4 | Separar los motivos de parada económicos de los motivos de parada físicos. | Diseño |
 | R5 | Publicar las tasas de error del detector antes de tratar una parada como precisa. | Todavía no es un resultado |
 | R6 | Dividir la energía antes y después del terminado. | Todavía no es un resultado |
 | R7 | Mantener las carreras adversariales fuera de la afirmación de saciedad. | Alcance |
 | R8 | Releer las fuentes primarias de Pew y Epoch antes de citar una magnitud más fina. | Método |
-
-Ninguna fila de arriba es una medición en placa.
-
-## Apéndice B. Reproducibilidad y el emulador
-
-Este artículo no tiene un binario propio. Reproducción de los hechos de software citados:
-
-```text
-cargo run --release --bin wca-mcp-gate -- --demo
-cargo run --release --bin wca-soc-loop -- \
-  --steps 16 --init-theta 1.5 --init-omega 3.0 --seed 1
-```
-
-Se espera, según los registros grabados del compañero: rechazo en la demostración con 0 llamadas al ejecutor; semilla 1 con 1 confirmado, 15 rechazados, energía analítica 8.6795e-10 julios. Esas salidas no estiman la saciedad.
-
-Instrumento de navegador, publicado como Etapa B en https://research.openie.dev/living/fpga-sim/, compartido con el Apéndice B del compañero. El núcleo de decisión se ejecuta en WASM. WebGPU pinta la imagen de la LUT y la traza de confirmación. Comparar la traza con el JSON de Rust. No convertir las marcas de tiempo de la GPU en julios. No marcar la Alchitry Pt V2 como medida. Página del fabricante: https://www.sparkfun.com/alchitry-pt-v2.html. Un medidor sobre la placa programada de la Etapa C es un estudio posterior.
-
-Indicador factual del repositorio: no se reivindica ningún resultado en placa FPGA.
 
 ## Apéndice C. Mapa de afirmaciones
 
