@@ -90,6 +90,27 @@
       ]
     },
     {
+      "id": "game-engines",
+      "title": "Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins",
+      "kind": "Research study",
+      "group": "research",
+      "url": "https://research.openie.dev/papers/game-engines/",
+      "pdf": "https://research.openie.dev/pdfs/game-engines.pdf",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Asks whether a game can be written once as a checked state machine and projected into several engines and languages, with an IR table, a layer split (simulation, scripting, scene, rendering), a determinism boundary, a falsifier-first test plan on public benchmarks, and infeasibility flags. Plain words: game rules can be replayed exactly if the arithmetic is pinned down; pictures cannot be identical on every graphics card but can be checked within a measured error; the seams between layers are where checking is missing.",
+      "about": "https://research.openie.dev/about/game-engines/",
+      "keywords": [
+        "game engines",
+        "state machines",
+        "determinism",
+        "floating-point reproducibility",
+        "WGSL",
+        "Slang",
+        "entity component system",
+        "Reality Code Engine"
+      ]
+    },
+    {
       "id": "three-body",
       "title": "The Pursuit of AGI Resolves the Three-Body Problem in Computing",
       "kind": "Research paper",

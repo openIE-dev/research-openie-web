@@ -1,0 +1,22 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/game-engines.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description="Can a game be written once as a checked state machine and projected into several engines? Rules and simulation can be exact under strict arithmetic; rendering across GPUs can only agree within a tolerance."
+  headings={headings}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Research study · architecture and test plan"
+>
+  <Content />
+</PaperLayout>

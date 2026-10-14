@@ -87,6 +87,23 @@ const projects = [
     ]
   },
   {
+    "id": "game-engines",
+    "title": "Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins",
+    "deck": "Asks whether a game can be written once as a checked state machine and projected into several engines and languages, with an IR table, a layer split (simulation, scripting, scene, rendering), a determinism boundary, a falsifier-first test plan on public benchmarks, and infeasibility flags. Plain words: game rules can be replayed exactly if the arithmetic is pinned down; pictures cannot be identical on every graphics card but can be checked within a measured error; the seams between layers are where checking is missing.",
+    "status": "Research study",
+    "group": "research",
+    "about": "/about/game-engines/",
+    "paper": "/papers/game-engines/",
+    "pdf": "/pdfs/game-engines.pdf",
+    "figures": "/figures/game-engines/architecture.svg",
+    "tags": [
+      "game engines",
+      "determinism boundary",
+      "state machine Form",
+      "falsifier-first"
+    ]
+  },
+  {
     "id": "three-body",
     "title": "The Pursuit of AGI Resolves the Three-Body Problem in Computing",
     "deck": "Locates many computing failures at handoffs between the people who specify, build and use systems, states when checking every handoff assumption makes a stack stable, and supports it with independently tested verified systems (CompCert, seL4, TLA+ at AWS, unit types). Plain words: most big failures happen at handoffs; the cause is usually an unwritten guess; if every guess is written down and machine-checked, a fix stays fixed.",
@@ -198,7 +215,7 @@ const products = projects.filter((p) => p.group === 'product');
       Research catalog
     </h1>
     <p class="mt-6 font-body text-base md:text-lg text-brand-slate max-w-2xl leading-relaxed">
-      Four research papers, four economics papers and essays, and two white papers, published free so anyone can read, check and reuse them.
+      Four research papers, one research study, four economics papers and essays, and two white papers, published free so anyone can read, check and reuse them.
       Each paper stands alone, defines its own terms, and opens with three points in plain words. Energy figures are labeled by how they were obtained.
     </p>
     <div class="mt-8 flex flex-wrap gap-3">
@@ -213,6 +230,9 @@ const products = projects.filter((p) => p.group === 'product');
       </a>
       <a href="/papers/rce/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
         The Reality Code Engine
+      </a>
+      <a href="/papers/game-engines/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
+        Writing a Game Once
       </a>
       <a href="/papers/three-body/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
         The Three-Body Problem in Computing
