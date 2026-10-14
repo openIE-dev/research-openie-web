@@ -6,7 +6,7 @@ source: "rce"
 complete: true
 ---
 
-*Version 1.1, 11 octobre 2026. Données et code : [research.openie.dev/data/](/data/#rce). Playground : [/playground/rce/](/playground/rce/). PDF LaTeX : [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
+*Version 1.1, 11 octobre 2026. Données et code : [research.openie.dev/data/](/data/#rce). Playground : [/demos/rce-engine/](/demos/rce-engine/). PDF LaTeX : [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
 
 <div id="abstract" class="anchor-alias" aria-hidden="true"></div>
 
@@ -153,11 +153,11 @@ La Figure 4 trace le mécanisme des Propositions R1 et R2 avec les totaux de la 
 
 ![Diagramme de la pile de RCE en six niveaux, de l'intention en haut, en passant par la Forme, la porte, les projections et l'environnement d'exécution, jusqu'au matériel et à l'énergie. Une correction promue au niveau de l'environnement d'exécution après avoir passé sa vérification de frontière est représentée par des flèches qui montent à travers chaque niveau au-dessus d'elle. Un petit diagramme en barres à côté donne les escalades cumulées sur huit tours de la charge de travail de référence du playground : 21 sans correction et 15 avec une correction aux puits.](/figures/rce/stack-compounding.svg)
 
-*Figure 4. Les corrections se cumulent vers le haut. Diagramme de la pile, avec un encart de données : escalades cumulées sur huit tours de la charge de travail de référence du playground, 21 sans correction et 15 avec une correction aux puits (Proposition R2 ; [RCE Playground](/playground/rce/#compounding)). Une [copie PNG](/figures/rce/stack-compounding.png) est fournie.*
+*Figure 4. Les corrections se cumulent vers le haut. Diagramme de la pile, avec un encart de données : escalades cumulées sur huit tours de la charge de travail de référence du playground, 21 sans correction et 15 avec une correction aux puits (Proposition R2 ; [RCE engine demo](/demos/rce-engine/#compounding)). Une [copie PNG](/figures/rce/stack-compounding.png) est fournie.*
 
 **Proposition R3 (coût décroissant).** Puisqu'un gestionnaire promu est exécuté à la place d'un appel de modèle, et que son coût est le nombre d'opérations du gestionnaire tarifé par la table du substrat, l'énergie d'un tour descend vers l'énergie des seuls gestionnaires à mesure que les escalades descendent vers zéro.
 
-Les projections de Futamura (1971, republiées en 1999) [120] et la supercompilation de Turchin (1986) [121] donnent la limite de ce processus. Spécialiser un interpréteur à un programme donne un programme compilé ; spécialiser le spécialiseur donne un compilateur. Les promotions de RCE spécialisent la voie générale d'escalade aux formes qui se présentent réellement, de sorte que le moteur converge vers le programme résiduel de sa charge de travail : la part du calcul qu'un modèle ou une personne doit encore fournir. L'auto-amélioration récursive sous une porte est cette convergence, faite par étapes vérifiées. La couche Compounding du [RCE Playground](/playground/rce/#compounding) exécute cette charge de travail dans le navigateur.
+Les projections de Futamura (1971, republiées en 1999) [120] et la supercompilation de Turchin (1986) [121] donnent la limite de ce processus. Spécialiser un interpréteur à un programme donne un programme compilé ; spécialiser le spécialiseur donne un compilateur. Les promotions de RCE spécialisent la voie générale d'escalade aux formes qui se présentent réellement, de sorte que le moteur converge vers le programme résiduel de sa charge de travail : la part du calcul qu'un modèle ou une personne doit encore fournir. L'auto-amélioration récursive sous une porte est cette convergence, faite par étapes vérifiées. La couche Compounding du [RCE engine demo](/demos/rce-engine/#compounding) exécute cette charge de travail dans le navigateur.
 
 <div id="3-the-form" class="anchor-alias" aria-hidden="true"></div>
 
@@ -345,7 +345,7 @@ Un programme est une pile de niveaux : tokens et instructions ; gestionnaires ; 
 | stub vers contremaître | un gestionnaire qui ne peut pas décider escalade au lieu de deviner | les gestionnaires stub émettent des escalades ; les résolutions ne sont promues que par la voie de promotion |
 | Forme vers cible | toute cible émise calcule la même δ | toute cible porte la même trace de référence |
 
-Une vérification qui échoue localise la rupture à la frontière où elle se produit. La correction est faite à ce niveau, passée par la vérification de cette frontière, puis promue. Chaque niveau au-dessus du niveau corrigé hérite de la correction sans autre changement, car chaque niveau supérieur ne consomme le niveau corrigé qu'à travers l'interface dont l'hypothèse est désormais vérifiée. C'est en ce sens que les corrections remontent et se cumulent. Le [RCE Playground](/playground/rce/) l'exécute dans le navigateur sur le cœur de RCE compilé en WebAssembly : sa couche Interfaces rompt chaque hypothèse et montre la vérification qui la détecte, et sa couche Compounding montre la correction qui se propage à chaque tour ultérieur.
+Une vérification qui échoue localise la rupture à la frontière où elle se produit. La correction est faite à ce niveau, passée par la vérification de cette frontière, puis promue. Chaque niveau au-dessus du niveau corrigé hérite de la correction sans autre changement, car chaque niveau supérieur ne consomme le niveau corrigé qu'à travers l'interface dont l'hypothèse est désormais vérifiée. C'est en ce sens que les corrections remontent et se cumulent. Le [RCE engine demo](/demos/rce-engine/) l'exécute dans le navigateur sur le cœur de RCE compilé en WebAssembly : sa couche Interfaces rompt chaque hypothèse et montre la vérification qui la détecte, et sa couche Compounding montre la correction qui se propage à chaque tour ultérieur.
 
 <div id="5-verification" class="anchor-alias" aria-hidden="true"></div>
 

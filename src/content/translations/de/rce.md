@@ -6,7 +6,7 @@ source: "rce"
 complete: true
 ---
 
-*Version 1.1, 11. Oktober 2026. Daten und Code: [research.openie.dev/data/](/data/#rce). Playground: [/playground/rce/](/playground/rce/). LaTeX-PDF: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([Quelltext](/pdfs/latex/rce.tex)).*
+*Version 1.1, 11. Oktober 2026. Daten und Code: [research.openie.dev/data/](/data/#rce). Playground (reference checker): [openie-dev.github.io/rce](https://openie-dev.github.io/rce/). Engine demo: [/demos/rce-engine/](/demos/rce-engine/). LaTeX-PDF: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([Quelltext](/pdfs/latex/rce.tex)).*
 
 <div id="abstract" class="anchor-alias" aria-hidden="true"></div>
 
@@ -153,11 +153,11 @@ Abbildung 4 zeichnet den Mechanismus der Propositionen R1 und R2 mit den Summen 
 
 ![Diagramm des RCE-Stacks in sechs Ebenen, von der Absicht oben über Form, Tor, Projektionen und Laufzeit bis zu Hardware und Energie. Eine Korrektur, die auf der Laufzeitebene nach bestandener Grenzprüfung befördert wird, ist mit Pfeilen dargestellt, die durch jede Ebene darüber aufsteigen. Ein kleines Balkendiagramm daneben gibt die kumulierten Eskalationen über acht Runden der Referenzarbeitslast des Playgrounds an: 21 ohne Korrektur und 15 mit einer Korrektur an den Senken.](/figures/rce/stack-compounding.svg)
 
-*Abbildung 4. Korrekturen kumulieren nach oben. Diagramm des Stacks mit einem Dateneinschub: kumulierte Eskalationen über acht Runden der Referenzarbeitslast des Playgrounds, 21 ohne Korrektur und 15 mit einer Korrektur an den Senken (Proposition R2; [RCE Playground](/playground/rce/#compounding)). Eine [PNG-Kopie](/figures/rce/stack-compounding.png) ist verfügbar.*
+*Abbildung 4. Korrekturen kumulieren nach oben. Diagramm des Stacks mit einem Dateneinschub: kumulierte Eskalationen über acht Runden der Referenzarbeitslast des Playgrounds, 21 ohne Korrektur und 15 mit einer Korrektur an den Senken (Proposition R2; [RCE engine demo](/demos/rce-engine/#compounding)). Eine [PNG-Kopie](/figures/rce/stack-compounding.png) ist verfügbar.*
 
 **Proposition R3 (fallende Kosten).** Da ein beförderter Handler anstelle eines Modellaufrufs ausgeführt wird und seine Kosten die Operationszahl des Handlers sind, bepreist mit der Substrattabelle, fällt die Energie einer Runde gegen die Energie der Handler allein, während die Eskalationen gegen null fallen.
 
-Futamuras Projektionen (1971, neu veröffentlicht 1999) [120] und Turchins Superkompilation (1986) [121] geben den Grenzwert dieses Prozesses an. Einen Interpreter auf ein Programm zu spezialisieren ergibt ein kompiliertes Programm; den Spezialisierer zu spezialisieren ergibt einen Compiler. Die Beförderungen von RCE spezialisieren den allgemeinen Eskalationspfad auf die Gestalten, die tatsächlich vorkommen, sodass die Engine gegen das Restprogramm ihrer Arbeitslast konvergiert: den Teil der Berechnung, den ein Modell oder ein Mensch noch liefern muss. Rekursive Selbstverbesserung unter einem Tor ist diese Konvergenz, vollzogen in geprüften Schritten. Die Compounding-Ebene des [RCE Playground](/playground/rce/#compounding) führt diese Arbeitslast im Browser aus.
+Futamuras Projektionen (1971, neu veröffentlicht 1999) [120] und Turchins Superkompilation (1986) [121] geben den Grenzwert dieses Prozesses an. Einen Interpreter auf ein Programm zu spezialisieren ergibt ein kompiliertes Programm; den Spezialisierer zu spezialisieren ergibt einen Compiler. Die Beförderungen von RCE spezialisieren den allgemeinen Eskalationspfad auf die Gestalten, die tatsächlich vorkommen, sodass die Engine gegen das Restprogramm ihrer Arbeitslast konvergiert: den Teil der Berechnung, den ein Modell oder ein Mensch noch liefern muss. Rekursive Selbstverbesserung unter einem Tor ist diese Konvergenz, vollzogen in geprüften Schritten. Die Compounding-Ebene des [RCE engine demo](/demos/rce-engine/#compounding) führt diese Arbeitslast im Browser aus.
 
 <div id="3-the-form" class="anchor-alias" aria-hidden="true"></div>
 
@@ -345,7 +345,7 @@ Ein Programm ist ein Stack von Ebenen: Tokens und Anweisungen; Handler; die Form
 | Stub zu Vorarbeiter | ein Handler, der nicht entscheiden kann, eskaliert, statt zu raten | Stub-Handler geben Eskalationen aus; Auflösungen werden nur über den Beförderungspfad befördert |
 | Form zu Ziel | jedes erzeugte Ziel berechnet dasselbe δ | jedes Ziel trägt dieselbe Referenzspur |
 
-Eine fehlgeschlagene Prüfung verortet den Bruch an der Grenze, an der er auftritt. Die Korrektur wird auf dieser Ebene vorgenommen, durch die Prüfung dieser Grenze geführt und befördert. Jede Ebene über der korrigierten erbt die Korrektur ohne weitere Änderung, weil jede höhere Ebene die korrigierte Ebene nur über die Schnittstelle nutzt, deren Annahme nun geprüft wird. In diesem Sinn wandern Korrekturen nach oben und kumulieren sich. Der [RCE Playground](/playground/rce/) führt dies im Browser auf dem nach WebAssembly kompilierten RCE-Kern aus: Seine Interfaces-Ebene bricht jede Annahme und zeigt die Prüfung, die den Bruch erkennt, und seine Compounding-Ebene zeigt, wie die Korrektur in jede spätere Runde übergeht.
+Eine fehlgeschlagene Prüfung verortet den Bruch an der Grenze, an der er auftritt. Die Korrektur wird auf dieser Ebene vorgenommen, durch die Prüfung dieser Grenze geführt und befördert. Jede Ebene über der korrigierten erbt die Korrektur ohne weitere Änderung, weil jede höhere Ebene die korrigierte Ebene nur über die Schnittstelle nutzt, deren Annahme nun geprüft wird. In diesem Sinn wandern Korrekturen nach oben und kumulieren sich. Der [RCE engine demo](/demos/rce-engine/) führt dies im Browser auf dem nach WebAssembly kompilierten RCE-Kern aus: Seine Interfaces-Ebene bricht jede Annahme und zeigt die Prüfung, die den Bruch erkennt, und seine Compounding-Ebene zeigt, wie die Korrektur in jede spätere Runde übergeht.
 
 <div id="5-verification" class="anchor-alias" aria-hidden="true"></div>
 

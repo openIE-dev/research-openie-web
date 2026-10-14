@@ -97,7 +97,8 @@
       "path": "/papers/rce/",
       "pdf_path": "/pdfs/rce.pdf",
       "about_path": "/about/rce/",
-      "playground_path": "/playground/rce/",
+      "playground_url": "https://openie-dev.github.io/rce/",
+      "engine_demo_path": "/demos/rce-engine/",
       "summary": "A system in which a program is written once as a state machine and code in other languages is generated from it, with measurements on 10,000 Forms and public bug datasets and falsifiers fixed in advance. Plain words: write a program once and generate it in many languages; reject broken input at the door; save checked fixes so the same problem is not paid for twice.",
       "keywords": [
         "Reality Code Engine",

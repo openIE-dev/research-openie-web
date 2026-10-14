@@ -144,8 +144,10 @@ the checks are rerun at engine commit \texttt{1eb5f02}. The German
 translation, like the other translations, remains at version 1.1. Data
 and code:
 \href{https://research.openie.dev/data/\#rce}{research.openie.dev/data/}.
-Playground:
-\href{https://research.openie.dev/playground/rce/}{/playground/rce/}.
+Playground (reference checker):
+\href{https://openie-dev.github.io/rce/}{openie-dev.github.io/rce}.
+Engine demo:
+\href{https://research.openie.dev/demos/rce-engine/}{/demos/rce-engine/}.
 LaTeX PDF:
 \href{https://research.openie.dev/pdfs/latex/rce.pdf}{/pdfs/latex/rce.pdf}
 (\href{https://research.openie.dev/pdfs/latex/rce.tex}{source}).}
@@ -646,11 +648,11 @@ the promotion still holds after it.
 tasks and let a promoted handler close every task of its shape. Then the
 number of escalations in round t is nonincreasing in t, and a correction
 promoted before round 1 lowers the cumulative escalations of every
-horizon by the escalations it closes in each later round. In the
-playground's reference workload, cumulative escalations over eight
-rounds fall from 21 to 15 with one correction at the sinks, and reach
-zero in the last round in both cases, with every task closed correctly
-and no promotion refused.
+horizon by the escalations it closes in each later round. In the engine
+demo's reference workload, cumulative escalations over eight rounds fall
+from 21 to 15 with one correction at the sinks, and reach zero in the
+last round in both cases, with every task closed correctly and no
+promotion refused.
 
 Figure 4 draws the mechanism of Propositions R1 and R2 with the
 reference workload's totals.
@@ -658,11 +660,11 @@ reference workload's totals.
 \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/stack-compounding.png}
 
 \emph{Figure 4. Corrections compound upward. Diagram of the stack, with
-a data inset: cumulative escalations over eight rounds of the
-playground's reference workload, 21 with no correction and 15 with one
+a data inset: cumulative escalations over eight rounds of the engine
+demo's reference workload, 21 with no correction and 15 with one
 correction at the sinks (Proposition R2;
-\href{https://research.openie.dev/playground/rce/\#compounding}{RCE
-Playground}). A
+\href{https://research.openie.dev/demos/rce-engine/\#compounding}{RCE
+engine demo}). A
 \href{https://research.openie.dev/figures/rce/stack-compounding.png}{PNG
 copy} is provided.}
 
@@ -680,8 +682,8 @@ occur, so the engine converges toward the residual program of its
 workload: the part of the computation that a model or a person must
 still supply. Recursive self-improvement under a gate is that
 convergence, made with checked steps. The Compounding layer of the
-\href{https://research.openie.dev/playground/rce/\#compounding}{RCE
-Playground} runs this workload in the browser.
+\href{https://research.openie.dev/demos/rce-engine/\#compounding}{RCE
+engine demo} runs this workload in the browser.
 
 \subsection{3. The Form}\label{the-form}
 
@@ -1542,8 +1544,8 @@ boundary, and promoted. Every level above the corrected one inherits the
 correction without further change, because each level above consumes the
 corrected level only through the interface whose assumption is now
 checked. This is the sense in which corrections carry upward and
-compound. The \href{https://research.openie.dev/playground/rce/}{RCE
-Playground} runs this in the browser on the RCE core compiled to
+compound. The \href{https://research.openie.dev/demos/rce-engine/}{RCE
+engine demo} runs this in the browser on the RCE core compiled to
 WebAssembly: its Interfaces layer breaks each assumption and shows the
 check that detects it, and its Compounding layer shows the correction
 carrying into every later round.

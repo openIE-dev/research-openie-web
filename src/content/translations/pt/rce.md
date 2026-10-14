@@ -6,7 +6,7 @@ source: "rce"
 complete: true
 ---
 
-*Versão 1.1, 11 de outubro de 2026. Dados e código: [research.openie.dev/data/](/data/#rce). Playground: [/playground/rce/](/playground/rce/). PDF em LaTeX: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([fonte](/pdfs/latex/rce.tex)).*
+*Versão 1.1, 11 de outubro de 2026. Dados e código: [research.openie.dev/data/](/data/#rce). Playground (reference checker): [openie-dev.github.io/rce](https://openie-dev.github.io/rce/). Engine demo: [/demos/rce-engine/](/demos/rce-engine/). PDF em LaTeX: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([fonte](/pdfs/latex/rce.tex)).*
 
 <div id="abstract" class="anchor-alias" aria-hidden="true"></div>
 
@@ -153,11 +153,11 @@ A Figura 4 desenha o mecanismo das Proposições R1 e R2 com os totais da carga 
 
 ![Diagrama da pilha do RCE em seis níveis, da intenção no topo, passando pela Forma, pela porta, pelas projeções e pelo runtime, até o hardware e a energia. Uma correção promovida no nível do runtime depois de passar em sua verificação de fronteira é mostrada com setas que sobem por todos os níveis acima dela. Um pequeno gráfico de barras ao lado dá as escaladas acumuladas em oito rodadas da carga de trabalho de referência do playground: 21 sem correção e 15 com uma correção nos sumidouros.](/figures/rce/stack-compounding.svg)
 
-*Figura 4. As correções se acumulam para cima. Diagrama da pilha, com um quadro de dados: escaladas acumuladas em oito rodadas da carga de trabalho de referência do playground, 21 sem correção e 15 com uma correção nos sumidouros (Proposição R2; [RCE Playground](/playground/rce/#compounding)). Há uma [cópia em PNG](/figures/rce/stack-compounding.png).*
+*Figura 4. As correções se acumulam para cima. Diagrama da pilha, com um quadro de dados: escaladas acumuladas em oito rodadas da carga de trabalho de referência do playground, 21 sem correção e 15 com uma correção nos sumidouros (Proposição R2; [RCE engine demo](/demos/rce-engine/#compounding)). Há uma [cópia em PNG](/figures/rce/stack-compounding.png).*
 
 **Proposição R3 (custo decrescente).** Como um handler promovido é executado no lugar de uma chamada a modelo, e seu custo é a contagem de operações do handler precificada pela tabela do substrato, a energia de uma rodada cai em direção à energia dos handlers sozinhos à medida que as escaladas caem em direção a zero.
 
-As projeções de Futamura (1971, republicadas em 1999) [120] e a supercompilação de Turchin (1986) [121] dão o limite desse processo. Especializar um interpretador para um programa produz um programa compilado; especializar o especializador produz um compilador. As promoções do RCE especializam o caminho geral de escalada para os formatos que de fato ocorrem, de modo que o motor converge para o programa residual de sua carga de trabalho: a parte da computação que um modelo ou uma pessoa ainda precisa fornecer. A automelhoria recursiva sob uma porta é essa convergência, feita com passos verificados. A camada Compounding do [RCE Playground](/playground/rce/#compounding) executa essa carga de trabalho no navegador.
+As projeções de Futamura (1971, republicadas em 1999) [120] e a supercompilação de Turchin (1986) [121] dão o limite desse processo. Especializar um interpretador para um programa produz um programa compilado; especializar o especializador produz um compilador. As promoções do RCE especializam o caminho geral de escalada para os formatos que de fato ocorrem, de modo que o motor converge para o programa residual de sua carga de trabalho: a parte da computação que um modelo ou uma pessoa ainda precisa fornecer. A automelhoria recursiva sob uma porta é essa convergência, feita com passos verificados. A camada Compounding do [RCE engine demo](/demos/rce-engine/#compounding) executa essa carga de trabalho no navegador.
 
 <div id="3-the-form" class="anchor-alias" aria-hidden="true"></div>
 
@@ -345,7 +345,7 @@ Um programa é uma pilha de níveis: tokens e instruções; handlers; a Forma, u
 | stub para capataz | um handler que não consegue decidir escala em vez de adivinhar | handlers stub emitem escaladas; resoluções são promovidas só pelo caminho de promoção |
 | Forma para alvo | todo alvo emitido calcula a mesma δ | todo alvo carrega o mesmo traço de referência |
 
-Uma verificação que falha localiza a ruptura na fronteira onde ela ocorre. A correção é feita naquele nível, passa pela verificação daquela fronteira e é promovida. Todo nível acima do corrigido herda a correção sem mais mudanças, porque cada nível acima consome o nível corrigido apenas pela interface cuja suposição agora é verificada. É nesse sentido que as correções sobem e se acumulam. O [RCE Playground](/playground/rce/) executa isso no navegador sobre o núcleo do RCE compilado para WebAssembly: sua camada Interfaces rompe cada suposição e mostra a verificação que a detecta, e sua camada Compounding mostra a correção se propagando para cada rodada posterior.
+Uma verificação que falha localiza a ruptura na fronteira onde ela ocorre. A correção é feita naquele nível, passa pela verificação daquela fronteira e é promovida. Todo nível acima do corrigido herda a correção sem mais mudanças, porque cada nível acima consome o nível corrigido apenas pela interface cuja suposição agora é verificada. É nesse sentido que as correções sobem e se acumulam. O [RCE engine demo](/demos/rce-engine/) executa isso no navegador sobre o núcleo do RCE compilado para WebAssembly: sua camada Interfaces rompe cada suposição e mostra a verificação que a detecta, e sua camada Compounding mostra a correção se propagando para cada rodada posterior.
 
 <div id="5-verification" class="anchor-alias" aria-hidden="true"></div>
 

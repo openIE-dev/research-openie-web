@@ -1,51 +1,16 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RCE Playground: intent to Form to every target | research.openie.dev</title>
-<meta name="description" content="A teaching instrument that runs the RCE core in your browser through WebAssembly. Author a program as a Form, project it to Rust, Python, XState, SCXML and WebAssembly, decode it back to the identical shape hash, see ill formed input refused at entry, and watch the ecosystem grow through gated, verified recursive self-improvement with zero model calls.">
-<meta name="theme-color" content="#0A0A0F">
-<link rel="canonical" href="https://research.openie.dev/playground/rce/">
-<link rel="icon" href="data:,">
-<link rel="modulepreload" href="./pkg/rce_core.js">
-<script>try{const t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t}catch(e){}</script>
-  <script type="module" crossorigin src="./assets/index-BVlGAx2i.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/util-DVUqxZc1.js">
-  <link rel="stylesheet" crossorigin href="./assets/index-BE32ENHN.css">
+<title>Moved: RCE engine demo | research.openie.dev</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://research.openie.dev/demos/rce-engine/">
+<meta http-equiv="refresh" content="0; url=/demos/rce-engine/">
+<script>location.replace("/demos/rce-engine/" + location.hash);</script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to the playground</a>
-<header class="top">
-  <a class="home" href="/">research.openie.dev</a>
-  <span class="crumb">/ playground / rce</span>
-  <span class="grow"></span>
-  <span class="badge"><i class="dot"></i><span id="build">loading the RCE core</span></span>
-  <button id="theme" class="icon" aria-label="Switch between dark and light theme" title="Theme">◐</button>
-</header>
-<section class="hero" aria-labelledby="h1">
-  <div class="hero-copy">
-    <p class="eyebrow">RCE playground · WebAssembly · 0 model calls</p>
-    <h1 id="h1">The stack is not fixed.</h1>
-    <p class="lede">RCE is a uniform, complete code ecosystem in which programs are written in the first place. You state intent once, RCE encodes it losslessly as a Form, and Rust, Python, XState, SCXML and WebAssembly are faithful projections of that Form, so intent cannot be mistranslated on the way to any target. Ill formed input is refused at entry. Every proven handler joins the ecosystem and serves every later task, so the ecosystem grows and the gains compound. That is gated, verified recursive self-improvement.</p>
-    <p class="hint">Select a level of the stack to see what it guarantees. Its correction is computed by the engine in your browser and carries upward into every level above it, and the curves redraw. Choose open on a level to explore it in depth.</p>
-    <div class="hero-kpi" aria-live="polite">
-      <div><b id="hk-shape">computing</b><span>Form shape hash</span></div><div><b id="hk-corr">0</b><span>proven handlers added</span></div>
-      <div><b id="hk-esc">none yet</b><span>escalations saved over 8 rounds</span></div>
-      <div><b>0</b><span>model calls</span></div>
-    </div>
-  </div>
-  <div class="hero-viz">
-    <svg id="stack" viewBox="0 0 520 470" role="group" aria-label="The RCE stack. Each level is a button."></svg>
-    <figure class="rsi"><figcaption>Ecosystem growth: cumulative escalations per round, computed live by <code>engine_rounds</code> in your browser</figcaption><svg id="rsi" viewBox="0 0 520 170" role="img" aria-label="Cumulative escalations per round"></svg><svg id="rsi-e" viewBox="0 0 520 170" role="img" aria-label="Cumulative estimated handler joules per round" hidden></svg><p id="rsi-note" class="hint" aria-live="polite"></p></figure>
-  </div>
-</section>
-<nav id="tabs" aria-label="Layers"></nav>
-<div class="progress" aria-hidden="true"><i id="prog"></i></div>
-<div class="anchors" aria-hidden="true"><span id="lesson"></span><span id="concept"></span><span id="translation"></span><span id="gate"></span><span id="proof"></span><span id="interfaces"></span><span id="compounding"></span><span id="theory"></span><span id="energy"></span><span id="code"></span><span id="evidence"></span></div>
-<main id="main" tabindex="-1"></main>
-<footer>
-  <p>Energy figures marked <em>estimate</em> are operation counts priced with a substrate table, or browser time multiplied by a power you choose; they are not meter readings. Measured figures are quoted from <a href="/papers/rce/#63-energy">RCE paper §6.3</a> with their meter named. Every large N figure on this page is quoted from the <a href="/papers/rce/#23-the-ecosystem-at-large-n">RCE paper</a>; the samples you run here illustrate those figures in your browser. Code: Apache-2.0. Data: CC BY 4.0. <a href="https://github.com/openIE-dev/openie-research-experiments">Experiments repository</a> · <a href="/data/#rce">data</a> · <a href="/papers/rce/">RCE paper</a> · <a href="/about/">about</a></p>
-</footer>
+<p>This page moved. The engine demo (intent to Form, gate, proof replay, interfaces, compounding, energy) is at
+<a href="/demos/rce-engine/">/demos/rce-engine/</a>. To write and check RCE programs with the reference checker, use the
+<a href="https://openie-dev.github.io/rce/">RCE playground</a>.</p>
 </body>
 </html>

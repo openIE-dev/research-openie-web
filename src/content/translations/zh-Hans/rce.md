@@ -6,7 +6,7 @@ source: "rce"
 complete: true
 ---
 
-*版本 1.1，2026 年 10 月 11 日。数据与代码：[research.openie.dev/data/](/data/#rce)。演练场：[/playground/rce/](/playground/rce/)。LaTeX PDF：[/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf)（[源文件](/pdfs/latex/rce.tex)）。*
+*版本 1.1，2026 年 10 月 11 日。数据与代码：[research.openie.dev/data/](/data/#rce)。演练场：[/demos/rce-engine/](/demos/rce-engine/)。LaTeX PDF：[/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf)（[源文件](/pdfs/latex/rce.tex)）。*
 
 <div id="abstract" class="anchor-alias" aria-hidden="true"></div>
 
@@ -153,11 +153,11 @@ RCE 采取 Gödel 机的结构与 Voyager 的库，并有两点差异以避免�
 
 ![RCE 栈图，从顶部意图经形式、门槛、投影与运行时到硬件与能量共六层。运行时层在通过其边界检查后晋升的修正，以箭头向上穿过其上每一层。旁侧小条形图给出演练场参考工作负载八轮累计升级：无修正为 21，汇处一次修正为 15。](/figures/rce/stack-compounding.svg)
 
-*图 4. 修正向上复利。栈图，带数据插图：演练场参考工作负载八轮累计升级，无修正为 21，汇处一次修正为 15（命题 R2；[RCE 演练场](/playground/rce/#compounding)）。提供 [PNG 副本](/figures/rce/stack-compounding.png)。*
+*图 4. 修正向上复利。栈图，带数据插图：演练场参考工作负载八轮累计升级，无修正为 21，汇处一次修正为 15（命题 R2；[RCE 演练场](/demos/rce-engine/#compounding)）。提供 [PNG 副本](/figures/rce/stack-compounding.png)。*
 
 **命题 R3（成本下降）。** 由于被晋升的处理器在模型调用之处执行，其成本是按基底表计价的处理器操作计数，因此当升级趋向零时，一轮的能量趋向仅处理器的能量。
 
-Futamura 投影（1971，再版 1999）[120] 与 Turchin 的超编译（1986）[121] 给出该过程的极限。把解释器特化到程序得到编译后的程序；特化特化器得到编译器。RCE 的晋升把一般升级路径特化到实际出现的形状，因此引擎向其工作负载的残差程序收敛：仍须由模型或人提供的计算部分。门槛下的递归自我改进，就是以经检查步骤做出的那种收敛。[RCE 演练场](/playground/rce/#compounding) 的复利层在浏览器中运行该工作负载。
+Futamura 投影（1971，再版 1999）[120] 与 Turchin 的超编译（1986）[121] 给出该过程的极限。把解释器特化到程序得到编译后的程序；特化特化器得到编译器。RCE 的晋升把一般升级路径特化到实际出现的形状，因此引擎向其工作负载的残差程序收敛：仍须由模型或人提供的计算部分。门槛下的递归自我改进，就是以经检查步骤做出的那种收敛。[RCE 演练场](/demos/rce-engine/#compounding) 的复利层在浏览器中运行该工作负载。
 
 <div id="3-the-form" class="anchor-alias" aria-hidden="true"></div>
 
@@ -346,7 +346,7 @@ IR 在每个数值边缘固定一种行为：经检查的 64 位整数溢出是�
 | 存根到工头 | 不能决定的处理器升级而非猜测 | 存根处理器发出升级；决议仅经晋升路径被晋升 |
 | 形式到目标 | 每个发出的目标计算同一 δ | 每个目标携带同一参考迹 |
 
-失败的检查把断裂定位在其发生的边界。修正在该层做出，通过该边界的检查，并被晋升。修正层之上的每一层无需进一步变更即继承修正，因为其上每层仅通过其假设现已检查的接口消费被修正层。这就是修正向上携带并复利的含义。[RCE 演练场](/playground/rce/) 在编译为 WebAssembly 的 RCE 核心上于浏览器中运行它：其接口层打破每个假设并显示检出它的检查，其复利层显示修正进入每一后续轮次。
+失败的检查把断裂定位在其发生的边界。修正在该层做出，通过该边界的检查，并被晋升。修正层之上的每一层无需进一步变更即继承修正，因为其上每层仅通过其假设现已检查的接口消费被修正层。这就是修正向上携带并复利的含义。[RCE 演练场](/demos/rce-engine/) 在编译为 WebAssembly 的 RCE 核心上于浏览器中运行它：其接口层打破每个假设并显示检出它的检查，其复利层显示修正进入每一后续轮次。
 
 <div id="5-verification" class="anchor-alias" aria-hidden="true"></div>
 
