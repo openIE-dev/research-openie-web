@@ -99,7 +99,7 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
     
     <ul>
       <li><strong>Expressiveness ceiling (H6).</strong> If real programs need effects or nondeterminism the Form cannot state, the "all code" premise fails.</li>
-      <li><strong>Intent may be the bottleneck.</strong> A smaller output space does not fix underspecified intent. Signal: H3 fails while H1 and H2 hold.</li>
+      <li><strong>Intent may be the bottleneck.</strong> A smaller output space does not fix underspecified intent. Signal: H1 and H2 hold while H3 fails.</li>
       <li><strong>Spec gaming.</strong> The checker proves a Form is well-formed and meets stated properties, not that it matches what the user meant. Benchmark tasks carry behavioral traces checked by replay; the residual risk is labeled, not solved.</li>
       <li><strong>Corpus scarcity.</strong> Signal: H3 flat as the corpus grows.</li>
       <li><strong>Collapse.</strong> JEPAs need anti-collapse measures, such as the EMA (exponential moving average) target encoder of I-JEPA and V-JEPA 2; LeCun (2022) proposes VICReg-style information maximization instead (Sec. 4.5). A collapsed Form embedding makes H5 fail.</li>
@@ -132,8 +132,8 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
       <li><strong>AUROC</strong> (area under the receiver operating characteristic curve): the probability that a randomly chosen accepted Form gets a lower energy than a randomly chosen rejected one; 0.5 is chance, 1.0 is perfect.</li>
     </ul>
     <p><strong>Argument (opinion, to be tested).</strong> A Form has five typed slots with fixed composition rules. Constraining output to Ω<sub>n</sub> removes most of |V|<sup>L</sup> before the model is consulted, so fewer bits are predicted per program (ρ &gt; 1), the checker gives a definite accept or reject in place of a probabilistic test, and rejections are cheap and structured, so retries are guided rather than blind.</p>
-    <h3>Falsifiable hypotheses</h3>
-    <p>All measured on the benchmark below, same hardware, idle-subtracted joules. Baseline: an next-token code LLM of matched parameter count generating source in a target language, judged by that language's tests plus the RCE spec where translatable.</p>
+    <h3 id="hypotheses">Falsifiable hypotheses H1 to H13</h3>
+    <p>All thirteen hypotheses in numerical order. H1 to H7 test the RCE-JEPA thesis directly, H8 to H10 test the "Laws of Coding" thesis above, and H11 to H13 test the proposer (H3 control and falsifiers RJ-F1 to RJ-F5 in the proposer section above). All measured on the benchmark below, same hardware, idle-subtracted joules. Baseline: an next-token code LLM of matched parameter count generating source in a target language, judged by that language's tests plus the RCE spec where translatable.</p>
     <div class="mt-4 overflow-x-auto"><table class="w-full text-xs border-collapse [&_td]:border [&_th]:border [&_td]:border-brand-border [&_th]:border-brand-border [&_td]:p-2 [&_th]:p-2 [&_th]:text-left [&_th]:text-brand-white">
       <thead><tr><th>ID</th><th>Hypothesis</th><th>Metric</th><th>Supported if</th><th>Disproved if</th></tr></thead>
       <tbody>
@@ -144,6 +144,12 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
         <tr><td>H5</td><td>Energy ranking concentrates mass on valid Forms</td><td>top-1 type-check rate; AUROC of E for accept vs reject</td><td>≥ 0.8 top-1 valid; AUROC ≥ 0.85</td><td>AUROC ≤ 0.6</td></tr>
         <tr><td>H6</td><td>The reference apps are encodable</td><td>share of the 6 reference apps plus RCEdb fully expressed as Forms that pass the checker and replay bit-identically</td><td>7 of 7</td><td>any app requires an escape hatch outside the Form</td></tr>
         <tr><td>H7</td><td>Security is model-independent</td><td>adversarial Forms (fuzzed and model-generated) accepted by the checker that violate a stated invariant</td><td>0</td><td>≥ 1 confirmed</td></tr>
+        <tr><td>H8</td><td>Determinism: every accepted Form replays to a bit-identical trajectory and output</td><td>mismatches over at least 10,000 recorded event streams on at least 3 different machines and operating systems</td><td>0</td><td>a single mismatch</td></tr>
+        <tr><td>H9</td><td>Cost is predicted before execution</td><td>median error of the cost-table prediction against measured energy (J, named meter) for a stated machine, over the test families</td><td>≤ 20%</td><td>&gt; 50%</td></tr>
+        <tr><td>H10</td><td>Learning on the quotient saves data</td><td>training examples a predictor of canonical Forms needs to reach the same test acceptance rate as one of equal size trained on surface code</td><td>at most half (a saving of 2 times or more)</td><td>a saving below 1.25 times</td></tr>
+        <tr><td>H11</td><td>Energy is monotone in edit distance</td><td>Share of test families in which energy E rises with edit distance 1 to k from an accepted fit</td><td>≥ 80% of families</td><td>&lt; 80% of families</td></tr>
+        <tr><td>H12</td><td>The decision head is calibrated on gate outcomes</td><td>ECE per decision type, after 10<sup>4</sup> receipts</td><td>ECE ≤ 0.1 and below a frequency table over shape hashes</td><td>ECE &gt; 0.2, or no better than the frequency table</td></tr>
+        <tr><td>H13</td><td>A discrete latent plans better than a continuous one over long edit sequences</td><td>Planning success at edit-sequence lengths 1, 5 and 20, discrete arm against continuous SIGReg arm</td><td>Discrete arm higher at length 20</td><td>Neither arm reaches the H3 threshold</td></tr>
       </tbody></table></div>
     <p>The thesis is disproved overall if H4 fails (no joule advantage per accepted program) or H6 fails (the Form cannot express the reference apps). Either alone is sufficient.</p>
 

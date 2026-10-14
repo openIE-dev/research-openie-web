@@ -1,6 +1,6 @@
 ---
-// Proposer section of /about/rce-jepa: what exists, the architecture, data, hypotheses H11 to H13,
-// falsifiers RJ-F1 to RJ-F5 and risks. Sources are the [B] list at the end; every one was opened at
+// Proposer section of /about/rce-jepa: what exists, the architecture, data, hypotheses H11 to H13 (stated in the
+// single H1 to H13 table in rce-jepa.astro), falsifiers RJ-F1 to RJ-F5 and risks. Sources are the [B] list at the end; every one was opened at
 // the linked address and checked against the claim it supports (ledger: rce-jepa-blueprint/LEDGER.md).
 import katex from 'katex';
 const m = (s: string) => katex.renderToString(s, { throwOnError: false });
@@ -111,15 +111,8 @@ step Counter on Dec -> try n.checked_sub(1) else Underflow`}</code></pre>
 <h3 id="specification-cost">The specification cost, named</h3>
 <p>The checker guarantees that a Form is valid; it does not guarantee that it is the Form that was meant. In verified LLM-driven synthesis for concept design, invariant-only synthesis "reached verified designs quickly but often produced inconsistent designs across runs", which shows "that invariants alone underconstrain the design task"; scenario-guided synthesis recovered intended designs more consistently than natural-language prompting, although minimal scenarios could overfit [B23, abstract], on 3 applications and 12 variants with one LLM configuration [B23, Sec. 5]. The dominant failures "were not failures of bounded verification, but failures of specification coverage" [B23, Sec. 5.6]. In seL4 the abstract specification took about 4 person-months and the proof about 20 person-years (Klein et al. 2009, Section 2 below). A closed program world makes acceptance exact and search tractable. It moves the uncertainty of intent into <span set:html={m(R`\sigma(\iota)`)} />; it does not remove it. Falsifier RJ-F2 below makes that cost public and measurable.</p>
 
-<h3 id="h11-h13">Hypotheses H11 to H13</h3>
-<p>These extend H1 to H10 (H1 to H7 in Section 5 below, H8 to H10 in the thesis below) with the same conventions: preregistered before the run, frozen engine commit and binary hash recorded, same hardware for every arm.</p>
-<div class="mt-4 overflow-x-auto"><table class={tbl}>
-  <thead><tr><th>ID</th><th>Hypothesis</th><th>Metric</th><th>Supported if</th><th>Disproved if</th></tr></thead>
-  <tbody>
-    <tr><td>H11</td><td>Energy is monotone in edit distance</td><td>Share of test families in which <span set:html={m(R`\mathcal{E}`)} /> rises with edit distance 1 to k from an accepted fit</td><td>≥ 80% of families</td><td>&lt; 80% of families</td></tr>
-    <tr><td>H12</td><td>The decision head is calibrated on gate outcomes</td><td>ECE per decision type, after <span set:html={m(R`10^4`)} /> receipts</td><td>ECE ≤ 0.1 and below a frequency table over shape hashes</td><td>ECE &gt; 0.2, or no better than the frequency table</td></tr>
-    <tr><td>H13</td><td>A discrete latent plans better than a continuous one over long edit sequences</td><td>Planning success at edit-sequence lengths 1, 5 and 20, discrete arm against continuous SIGReg arm</td><td>Discrete arm higher at length 20</td><td>Neither arm reaches the H3 threshold</td></tr>
-  </tbody></table></div>
+<h3 id="h11-h13">Proposer hypotheses</h3>
+<p>The proposer is tested by H11 (monotone energy), H12 (decision-head calibration) and H13 (discrete against continuous latents). All thirteen hypotheses, H1 to H13, are stated in numerical order with their thresholds in one table in Section 5 below, under the same conventions: preregistered before the run, frozen engine commit and binary hash recorded, same hardware for every arm.</p>
 <p>The H3 control is fixed now: the same gate and the same <code>est_j</code> accounting, with Qwen2.5-Coder-1.5B proposing surface code, the arm already run in the RCE paper (Sec. 5.5), where the gate admitted 3 of 16 proposed equivalences.</p>
 
 <h3 id="falsifiers">Falsifiers for the premise itself</h3>
