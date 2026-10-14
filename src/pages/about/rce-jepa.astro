@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import RceJepaThesis from '../../components/RceJepaThesis.astro';
+import RceJepaProposer from '../../components/RceJepaProposer.astro';
 const TITLE = "RCE-JEPA: Autonomous Deterministic Coding using Latent Space";
 const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming system in which every program has one fixed, checkable shape. JEPA is a Joint Embedding Predictive Architecture, a kind of learned model that predicts a compact summary of the answer instead of writing the answer out word by word. Latent space is the space of those learned summaries: a list of numbers that keeps what matters about a program and drops surface detail. This topic asks whether software can be written autonomously by having a learned model propose programs in that closed, deterministic shape while a deterministic checker, not the model, decides what is accepted, with the best performance per clock cycle and per joule as the goal. Its thesis is that coding today resembles mechanics before Newton, rich in observation and craft but without rules that predict behaviour and cost in advance, and that a finite, deterministic, compressed program form makes such rules possible to state and test.";
 ---
@@ -10,6 +11,8 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
     <p class="section-label mb-4">Research topic · open</p>
     <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">{TITLE}</h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed"><a href="https://research.openie.dev/about/rce/">RCE</a>{ABSTRACT.slice(3)}</p>
+
+    <p class="mt-4 font-body text-base text-brand-slate leading-relaxed"><strong>What exists and what is open.</strong> The deciding half is built and measured: the Reality Code Engine's commit gate, exact replay, projection of one Form to five target languages, and energy accounting in <code>est_j</code> (estimated joules, from a published cost table) are reported in <a href="https://research.openie.dev/papers/rce/">the RCE paper</a> as OpenIE's own measured data. This page is about the other half, the proposer: a learned model that steers search over Forms while the engine renders every target. The model steers; the engine renders. Any model in the loop, hosted or local, only proposes, and security never depends on it.</p>
 
     <figure class="mt-10 glass-card p-4 fig-wide">
       <a class="fig-zoom" href="/figures/rce-jepa/pipeline.svg" aria-label="Enlarge figure"><picture><source type="image/svg+xml" srcset="/figures/rce-jepa/pipeline.svg" /><img src="/figures/rce-jepa/pipeline.png" alt="Pipeline: stated intent goes to a learned predictor working in latent space, a decoder proposes candidate program forms ranked by energy score, a deterministic checker accepts or names the broken rule, and accepted forms go to the engine for exact replay, proofs, code in other languages and placement" width="950" height="147" class="fig-img w-full rounded bg-white" loading="lazy" decoding="async" /></picture></a>
@@ -34,7 +37,10 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
       <li>Security never depends on the model.</li>
       <li>No model runs inside the Reality Code Engine's own toolchain loop.</li>
       <li>Every accepted program form is replayable bit for bit.</li>
+      <li>Any decision model, hosted or local, is only a proposer outside the gate.</li>
     </ul>
+
+    <RceJepaProposer />
 
     <RceJepaThesis />
 
@@ -147,14 +153,14 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
       <li><strong>W3. Checker-constrained decoder.</strong> Grammar-constrained candidate Forms ranked by energy and submitted to the checker, rejection diagnostics fed back under a fixed retry budget; the checker is the sole acceptance authority with no bypass path to the engine.</li>
       <li><strong>W4. Intent-to-Form benchmark.</strong> Unit and composite tasks, the reference apps (game engine, text editor, video player, chat app, browser, terminal) and RCEdb; each task has intent, reference Form, replay traces and an equivalent source-language task for the baseline; held-out split.</li>
       <li><strong>W5. Evaluation harness with energy in joules.</strong> Both arms on identical hardware and tasks; pass@1, pass@k, ρ, C<sub>check</sub>, J<sub>acc</sub>, K<sub>acc</sub>, retries per acceptance, energy-ranking AUROC; rootless counters, idle subtracted, raw logs kept, unavailable counters reported rather than estimated.</li>
-      <li><strong>W6. Research article.</strong> This case expanded with results for H1 to H7, including negative results, with figures, tables and reproducibility instructions.</li>
+      <li><strong>W6. Research article.</strong> This case expanded with results for H1 to H13, including negative results, with figures, tables and reproducibility instructions.</li>
       <li><strong>W7. Open artifacts.</strong> Public: the Form specification slice, checker acceptance rules, benchmark tasks and traces, harness, dataset and model cards, and weights where licences allow. Private: engine source, placement logic and emitter internals. Anything needed to reproduce a reported number is public, or the number is reported as non-reproducible.</li>
       <li><strong>W8. Demo.</strong> Stated intent to predicted Form to checker verdict (including a shown rejection) to engine replay and emitted code in two languages, with an on-screen joule reading.</li>
     </ul>
 
     
     <h2>Status</h2>
-    <p>Research topic open. The full research case and the initial experiment are in progress.</p>
+    <p>Research topic open. The gate, replay, projections and energy accounting are built and measured (RCE paper). The proposer, its data engine and the hypotheses H1 to H13 are planned; the phased pilot plan runs from the data engine (Phase 0) to convergence (Phase 5), each phase preregistered with exit criteria.</p>
 
     <h2>References</h2>
     <p>Each source carries a reading label. <strong>Full:</strong> read in full. <strong>Partial:</strong> the full text was retrieved and searched for the quoted passages, which were checked in their surrounding text, but the whole work was not read. <strong>Unavailable:</strong> not obtained. "PDF p." gives the page in the linked copy; Sec. gives the section.</p>

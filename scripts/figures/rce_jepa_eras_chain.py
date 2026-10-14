@@ -41,10 +41,10 @@ save('eras',W,H,b,'Five eras toward "Laws of Computation"')
 
 # chain
 C,Mc,P,N='#0072B2','#009E73','#E69F00','#cbd5e1'
-TAG={'H1':'PL, Coding','H2':'PL','H3':'Coding','H4':'Computation','H5':'Coding','H6':'PL','H7':'PL','H8':'PL, Computation','H9':'Computation','H10':'Coding'}
-rows=[('H1','Form smaller than source','C','MP','N'),('H2','Checker cheap','C','P','P'),('H3','Latent acceptance','C','P','N'),('H4','Energy per accepted falls','C','P','CP'),('H5','Energy ranking','C','P','N'),('H6','Apps encodable','C','P','P'),('H7','Model-independent security','C','P','C'),('H8','Determinism','C','P','CP'),('H9','Cost before execution','C','P','CP'),('H10','Learning on the quotient','C','P','P')]
+TAG={'H1':'PL, Coding','H2':'PL','H3':'Coding','H4':'Computation','H5':'Coding','H6':'PL','H7':'PL','H8':'PL, Computation','H9':'Computation','H10':'Coding','H11':'Coding','H12':'Coding, Computation','H13':'Coding'}
+rows=[('H1','Form smaller than source','C','MP','N'),('H2','Checker cheap','C','P','P'),('H3','Latent acceptance','C','P','N'),('H4','Energy per accepted falls','C','P','CP'),('H5','Energy ranking','C','P','N'),('H6','Apps encodable','C','P','P'),('H7','Model-independent security','C','MP','C'),('H8','Determinism','C','MP','CP'),('H9','Cost before execution','C','P','CP'),('H10','Learning on the quotient','C','P','P'),('H11','Energy monotone in edit distance','C','P','N'),('H12','Decision head calibrated','C','P','P'),('H13','Discrete versus continuous latent','C','P','N')]
 col={'C':C,'M':Mc,'P':P,'N':N}; lab={'C':'cited','M':'measured','P':'planned','N':'n/a'}
-W,H=1200,680; b=[T(40,56,'The provable chain for "Laws of Coding"',28,800),T(40,88,'Hypothesis x layer of law x implementation layer x evidence',17,400,MUTED)]
+W,H=1200,812; b=[T(40,56,'The provable chain for "Laws of Coding"',28,800),T(40,88,'Hypothesis x layer of law x implementation layer x evidence',17,400,MUTED)]
 cx=[420,680,940]; cw=240
 for k,n in enumerate(['Algorithm','Software environment','Hardware']): b.append(T(cx[k]+cw/2,132,n,17,700,INK,'middle'))
 for r,(h,d,*cells) in enumerate(rows):
@@ -54,7 +54,7 @@ for r,(h,d,*cells) in enumerate(rows):
         for q,pc in enumerate(parts):
             b.append(f'<rect x="{cx[k]+q*pw}" y="{y+4}" width="{pw-4}" height="34" rx="7" fill="{col[pc]}" fill-opacity="{0.25 if pc!="N" else 0.5}" stroke="{col[pc]}" stroke-width="1.5"/>')
             b.append(T(cx[k]+q*pw+(pw-4)/2,y+26,lab[pc],13.5,600,INK,'middle'))
-y=148+10*44+26
+y=148+len(rows)*44+26
 b.append(T(40,H-14,'Layer tags: PL = "Laws of Programming Languages"; Coding = "Laws of Coding"; Computation = "Laws of Computation".',13,400,MUTED))
 for q,(k,n) in enumerate([('C','cited literature'),('M','measured data'),('P','planned experiment'),('N','not applicable')]):
     b.append(f'<rect x="{40+q*270}" y="{y}" width="22" height="22" rx="5" fill="{col[k]}" fill-opacity="0.4" stroke="{col[k]}"/>'); b.append(T(70+q*270,y+17,n,15))
