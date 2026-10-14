@@ -1,6 +1,6 @@
 ---
 // Proposer section of /about/rce-jepa: what exists, the architecture, data, hypotheses H11 to H13 (stated in the
-// single H1 to H13 table in rce-jepa.astro), falsifiers RJ-F1 to RJ-F5 and risks. Sources are the [B] list at the end; every one was opened at
+// single H1 to H13 table in rce-jepa.astro), falsifiers RJ-F1 to RJ-F5 (moved to rce-jepa.astro after the H1 to H13 table) and risks. Sources are the [B] list at the end; every one was opened at
 // the linked address and checked against the claim it supports (ledger: rce-jepa-blueprint/LEDGER.md).
 import katex from 'katex';
 const m = (s: string) => katex.renderToString(s, { throwOnError: false });
@@ -115,16 +115,7 @@ step Counter on Dec -> try n.checked_sub(1) else Underflow`}</code></pre>
 <p>The proposer is tested by H11 (monotone energy), H12 (decision-head calibration) and H13 (discrete against continuous latents). All thirteen hypotheses, H1 to H13, are stated in numerical order with their thresholds in one table in Section 5 below, under the same conventions: preregistered before the run, frozen engine commit and binary hash recorded, same hardware for every arm.</p>
 <p>The H3 control is fixed now: the same gate and the same <code>est_j</code> accounting, with Qwen2.5-Coder-1.5B proposing surface code, the arm already run in the RCE paper (Sec. 5.5), where the gate admitted 3 of 16 proposed equivalences.</p>
 
-<h3 id="falsifiers">Falsifiers for the premise itself</h3>
-<div class="mt-4 overflow-x-auto"><table class={tbl}>
-  <thead><tr><th>ID</th><th>Observation</th><th>What it defeats</th></tr></thead>
-  <tbody>
-    <tr><td>RJ-F1</td><td>Lift coverage plateaus below 80% on any of the five target languages after the construct list is exhausted</td><td>The claim that all code can be emitted from RCE, and with it the scope of autonomous coding over Forms</td></tr>
-    <tr><td>RJ-F2</td><td>Writing <span set:html={m(R`\sigma(\iota)`)} /> for the 7 reference applications costs more person-hours than writing their Forms by hand</td><td>The claim that closure removes, rather than moves, the specification cost</td></tr>
-    <tr><td>RJ-F3</td><td>H3 fails while the token arm passes at the same gate</td><td>Latent proposal over Form space; the gate still stands, the JEPA half does not</td></tr>
-    <tr><td>RJ-F4</td><td>H11 fails and search does not reach accepted Forms within the beam budget</td><td>Energy-guided planning in Form space</td></tr>
-    <tr><td>RJ-F5</td><td>The decision head's calibration never beats a frequency table over shape hashes</td><td>The decision-model leg; it adds nothing over promoted-handler statistics</td></tr>
-  </tbody></table></div>
+<p id="falsifiers-moved"><strong>Falsifiers.</strong> The falsifiers for the premise itself, RJ-F1 to RJ-F5, now follow the hypotheses they test, directly after the H1 to H13 table in <a href="#falsifiers">Section 5 below</a>.</p>
 
 <h3 id="risks">Risks and mitigations</h3>
 <div class="mt-4 overflow-x-auto"><table class={tbl}>

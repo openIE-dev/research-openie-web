@@ -41,6 +41,24 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
       <li>Any decision model, hosted or local, is only a proposer outside the gate.</li>
     </ul>
 
+    <h2 id="hypotheses-overview">Hypotheses at a glance</h2>
+    <p>The page tests thirteen hypotheses, H1 to H13, listed here in full before any of them is discussed. Each is stated with its metric and thresholds in one table in <a href="#hypotheses">Section 5</a>, followed by the falsifiers RJ-F1 to RJ-F5.</p>
+    <ol class="list-none pl-0">
+      <li>H1. Form space is much smaller than source space for the same programs.</li>
+      <li>H2. The checker is cheap relative to generation.</li>
+      <li>H3. Prediction in representation space reaches useful acceptance.</li>
+      <li>H4. Energy per accepted program falls.</li>
+      <li>H5. Energy ranking concentrates mass on valid Forms.</li>
+      <li>H6. The reference apps are encodable as Forms.</li>
+      <li>H7. Security does not depend on the model.</li>
+      <li>H8. Every accepted Form replays deterministically.</li>
+      <li>H9. Cost is predicted before execution.</li>
+      <li>H10. Learning on the quotient (canonical Forms) saves training data.</li>
+      <li>H11. Energy is monotone in edit distance.</li>
+      <li>H12. The decision head is calibrated on gate outcomes.</li>
+      <li>H13. A discrete latent plans better than a continuous one over long edit sequences.</li>
+    </ol>
+
     <RceJepaProposer />
 
     <RceJepaThesis />
@@ -133,7 +151,7 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
     </ul>
     <p><strong>Argument (opinion, to be tested).</strong> A Form has five typed slots with fixed composition rules. Constraining output to Ω<sub>n</sub> removes most of |V|<sup>L</sup> before the model is consulted, so fewer bits are predicted per program (ρ &gt; 1), the checker gives a definite accept or reject in place of a probabilistic test, and rejections are cheap and structured, so retries are guided rather than blind.</p>
     <h3 id="hypotheses">Falsifiable hypotheses H1 to H13</h3>
-    <p>All thirteen hypotheses in numerical order. H1 to H7 test the RCE-JEPA thesis directly, H8 to H10 test the "Laws of Coding" thesis above, and H11 to H13 test the proposer (H3 control and falsifiers RJ-F1 to RJ-F5 in the proposer section above). All measured on the benchmark below, same hardware, idle-subtracted joules. Baseline: an next-token code LLM of matched parameter count generating source in a target language, judged by that language's tests plus the RCE spec where translatable.</p>
+    <p>All thirteen hypotheses in numerical order. H1 to H7 test the RCE-JEPA thesis directly, H8 to H10 test the "Laws of Coding" thesis above, and H11 to H13 test the proposer (the H3 control is in the proposer section above; the falsifiers RJ-F1 to RJ-F5 follow this table). All measured on the benchmark below, same hardware, idle-subtracted joules. Baseline: an next-token code LLM of matched parameter count generating source in a target language, judged by that language's tests plus the RCE spec where translatable.</p>
     <div class="mt-4 overflow-x-auto"><table class="w-full text-xs border-collapse [&_td]:border [&_th]:border [&_td]:border-brand-border [&_th]:border-brand-border [&_td]:p-2 [&_th]:p-2 [&_th]:text-left [&_th]:text-brand-white">
       <thead><tr><th>ID</th><th>Hypothesis</th><th>Metric</th><th>Supported if</th><th>Disproved if</th></tr></thead>
       <tbody>
@@ -151,6 +169,18 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
         <tr><td>H12</td><td>The decision head is calibrated on gate outcomes</td><td>ECE per decision type, after 10<sup>4</sup> receipts</td><td>ECE ≤ 0.1 and below a frequency table over shape hashes</td><td>ECE &gt; 0.2, or no better than the frequency table</td></tr>
         <tr><td>H13</td><td>A discrete latent plans better than a continuous one over long edit sequences</td><td>Planning success at edit-sequence lengths 1, 5 and 20, discrete arm against continuous SIGReg arm</td><td>Discrete arm higher at length 20</td><td>Neither arm reaches the H3 threshold</td></tr>
       </tbody></table></div>
+    <h3 id="falsifiers">Falsifiers RJ-F1 to RJ-F5 for the premise itself</h3>
+    <p>Each falsifier is an observation that would defeat part of the premise; several are stated in terms of the hypotheses above (RJ-F3 on H3, RJ-F4 on H11).</p>
+    <div class="mt-4 overflow-x-auto"><table class="w-full text-xs border-collapse [&_td]:border [&_th]:border [&_td]:border-brand-border [&_th]:border-brand-border [&_td]:p-2 [&_th]:p-2 [&_th]:text-left [&_th]:text-brand-white">
+      <thead><tr><th>ID</th><th>Observation</th><th>What it defeats</th></tr></thead>
+      <tbody>
+        <tr><td>RJ-F1</td><td>Lift coverage plateaus below 80% on any of the five target languages after the construct list is exhausted</td><td>The claim that all code can be emitted from RCE, and with it the scope of autonomous coding over Forms</td></tr>
+        <tr><td>RJ-F2</td><td>Writing σ(ι) for the 7 reference applications costs more person-hours than writing their Forms by hand</td><td>The claim that closure removes, rather than moves, the specification cost</td></tr>
+        <tr><td>RJ-F3</td><td>H3 fails while the token arm passes at the same gate</td><td>Latent proposal over Form space; the gate still stands, the JEPA half does not</td></tr>
+        <tr><td>RJ-F4</td><td>H11 fails and search does not reach accepted Forms within the beam budget</td><td>Energy-guided planning in Form space</td></tr>
+        <tr><td>RJ-F5</td><td>The decision head's calibration never beats a frequency table over shape hashes</td><td>The decision-model leg; it adds nothing over promoted-handler statistics</td></tr>
+      </tbody></table></div>
+
     <p>The thesis is disproved overall if H4 fails (no joule advantage per accepted program) or H6 fails (the Form cannot express the reference apps). Either alone is sufficient.</p>
 
     
