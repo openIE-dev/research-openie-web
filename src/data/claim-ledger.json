@@ -167,7 +167,7 @@
       "files": [
         "src/components/RceJepaThesis.astro"
       ],
-      "pattern": "Laws of Programming|[Ff]undamental [Ll]aws of [Cc]omputation|Embracing the laws of physics|set of laws as rich and elegant|algebraic laws for a programming language|empirical laws of software evolution|Lehman's laws of software evolution|computation should have laws of their own|proposing laws for the field|Algebraic laws of correct program construction|Nearly one hundred laws for a small language|benchmarks, no laws|Layer of law tested",
+      "pattern": "Laws of Programming|[Ff]undamental [Ll]aws of [Cc]omputation|Embracing the laws of physics|set of laws as rich and elegant|algebraic laws for a programming language|empirical laws of software evolution|Lehman's laws of software evolution|computation should have laws of their own|proposing laws for the field|Algebraic laws of correct program construction|Nearly one hundred laws for a small language|benchmarks, no laws|Layer of law tested|What then are the laws of programming|unable to quote even a single law",
       "note": "Titles and described content of cited prior work (Hoare et al. 1987, McKee 1995, Carette et al. 2022, Lehman 1980) in the RCE-JEPA convergence section; not claims of ours."
     }
   ]
