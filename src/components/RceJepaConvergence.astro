@@ -1,0 +1,174 @@
+---
+// Convergence by commitment for /about/rce-jepa. Every [C] source was fetched and checked against
+// the claim it supports; the ledger is rce-jepa-blueprint/CONVERGENCE-LEDGER.md (2026-10-14).
+// Items from the same organization as the RCE project are labelled "same house" and are not evidence.
+const tbl = "w-full text-xs border-collapse [&_td]:border [&_th]:border [&_td]:border-brand-border [&_th]:border-brand-border [&_td]:p-2 [&_th]:p-2 [&_th]:text-left [&_th]:text-brand-white [&_td]:align-top";
+---
+<h2 id="convergence-commitments">Convergence by commitment</h2>
+
+<p>The RCE thesis rests on seven commitments. Each has been reached independently, often more than once, by people working for their own reasons. The tables below list projects whose primary sources (paper, official documentation or repository) were opened and checked against the sentence written here. Each row says what the project established and where it stops relative to the commitment. These are convergence observations: agreement in direction, not confirmation of RCE's claims and not a ranking. Items from OpenIE, the organization behind RCE, are marked <em>same house</em> and are never used as evidence.</p>
+
+<p>Acronyms used in this section: RCE, the Reality Code Engine; AST, abstract syntax tree; IR, intermediate representation; LLM, large language model; JSON, JavaScript Object Notation; WASM, WebAssembly; SMT, satisfiability modulo theories (Z3 is an SMT solver); DST, deterministic simulation testing; CEGIS, counterexample-guided inductive synthesis.</p>
+
+<figure class="mt-6 glass-card p-4 fig-wide not-prose">
+  <a class="fig-zoom" href="/figures/rce-jepa/convergence.svg" aria-label="Enlarge figure"><picture><source type="image/svg+xml" srcset="/figures/rce-jepa/convergence.svg" /><img src="/figures/rce-jepa/convergence.png" alt="Grid of seven commitments, canonical form, log and replay, projection, stored intent, deterministic gate, promotion and reuse, and energy or cost, against verified outside projects; a filled dot marks a commitment that the project's own primary source states" width="1400" height="938" class="fig-img w-full rounded bg-white" loading="lazy" decoding="async" /></picture></a>
+  <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Figure C1. Which commitment each verified outside project reaches, according to its own primary source. A dot is a convergence observation, not a score; RCE is not drawn. Select the figure to enlarge it. <span class="fig-links"><a href="/figures/rce-jepa/convergence.svg" target="_blank" rel="noopener">Open full size</a> · <a href="/figures/rce-jepa/convergence.png">PNG</a></span>.</figcaption>
+</figure>
+
+<h3 id="cc1">1. One canonical form; surface text is a view</h3>
+<div class="mt-4 overflow-x-auto"><table class={tbl}>
+  <thead><tr><th>Project</th><th>What it established</th><th>Where it stops</th></tr></thead>
+  <tbody>
+    <tr><td>Intentional Programming, Simonyi, 1995 [C1]</td><td>A program is a tree of nodes, each an instance of an intention; users edit the tree and view it in any notation; computational intent is kept separate from implementation</td><td>A research system at Microsoft; the report describes no determinism or replay model</td></tr>
+    <tr><td>Unison [C2]</td><td>Each definition is identified by a hash of its syntax tree; names are separately stored metadata</td><td>The hash is of structure: two definitions with the same behaviour and different structure have different hashes</td></tr>
+    <tr><td>Equality saturation and egg [C3; C4]</td><td>An e-graph holds many equivalent versions of a program at once; a cost model picks one</td><td>A compiler technique for terms, not a whole-program form</td></tr>
+    <tr><td>Tacit, 2026 [C5]</td><td>The AST is the source of truth; every valid AST has one byte-exact canonical text; definitions are addressed by BLAKE3 hash; malformed code becomes typed Hole nodes</td><td>One target (LLVM); no state-machine semantics stated</td></tr>
+    <tr><td>X07, 2026 [C6]</td><td>Canonical source is a JSON AST, edited with JSON Patch; a 646-code diagnostic catalogue with enforced quickfix coverage</td><td>Canonical bytes, not canonical behaviour</td></tr>
+    <tr><td>Codifide, 2026 [C7]</td><td>The canonical form is a typed hypergraph with a deterministic byte form and SHA-256 hash; surface syntax is a projection; intent is part of a definition's identity</td><td>Described by its authors as a contract-and-dispatch language, not general computation</td></tr>
+    <tr><td>NAIL [C8]</td><td><code>nail canonicalize</code> normalizes any program; <code>nail check --strict</code> rejects non-canonical input</td><td>An RFC 8785-inspired JSON subset that, in its own words, does not claim full RFC 8785 compliance; byte canonicalization only</td></tr>
+    <tr><td>EqNet, Allamanis et al., 2017 [C9]</td><td>Neural representations trained so that semantically equivalent expressions map together</td><td>Algebraic and Boolean expressions, not programs</td></tr>
+  </tbody></table></div>
+
+<h3 id="cc2">2. A program is a deterministic state machine over a log</h3>
+<div class="mt-4 overflow-x-auto"><table class={tbl}>
+  <thead><tr><th>Project</th><th>What it established</th><th>Where it stops</th></tr></thead>
+  <tbody>
+    <tr><td>Abstract State Machines, Gurevich, 2000 [C10]</td><td>The paper's title states the result: sequential abstract state machines capture sequential algorithms</td><td>A theorem, not a system. Not read by the OpenIE authors; listed with its identifier only</td></tr>
+    <tr><td>Event sourcing, Fowler, 2005 [C11]</td><td>"Capture all changes to an application state as a sequence of events"</td><td>A pattern; determinism and projections are left to each implementation</td></tr>
+    <tr><td>The Elm Architecture [C12]</td><td>Model, View, Update: state, a view of the state, and an update from messages</td><td>One language and one target (the browser)</td></tr>
+    <tr><td>Dedalus and the CALM theorem, Hellerstein, Alvaro et al. [C13; C14]</td><td>Datalog with explicit time; programs with consistent, coordination-free distributed implementations are exactly those expressible in monotonic logic</td><td>Research languages; no cross-language emission</td></tr>
+    <tr><td>Durable execution: Temporal, Restate [C15; C16]</td><td>Temporal: workflow code "must be deterministic to support replay". Restate: every step and its result are recorded in a journal</td><td>Replay serves resilience, not program identity</td></tr>
+    <tr><td>TigerBeetle deterministic simulation testing, 2026 [C17]</td><td>Logical determinism (like FoundationDB) plus physical determinism: replicas converge to byte-by-byte identical state; real code runs in a simulator</td><td>One database, built by hand to this discipline</td></tr>
+    <tr><td>AILANG; agent-scroll [C18; C19]</td><td>AILANG: every construct has deterministic semantics, with replayable execution and structured traces. agent-scroll: canonical, byte-deterministic, hash-chained transcripts with a verifier that catches any single-byte change</td><td>AILANG is functional, not a state-machine form; agent-scroll logs conversations, not programs</td></tr>
+  </tbody></table></div>
+
+<h3 id="cc3">3. Every target is a projection: write once, emit many</h3>
+<div class="mt-4 overflow-x-auto"><table class={tbl}>
+  <thead><tr><th>Project</th><th>What it established</th><th>Where it stops</th></tr></thead>
+  <tbody>
+    <tr><td>MLIR [C20]</td><td>A reusable compiler infrastructure spanning levels of abstraction, hardware targets and domains</td><td>Below the source level; it is not where intent is stored</td></tr>
+    <tr><td>Model Driven Architecture, OMG, 2003 [C21]</td><td>Computation-independent, platform-independent and platform-specific viewpoints</td><td>Petre reports, from Forward and Lethbridge, that keeping the model up to date with the code was the biggest perceived problem (68% agreement) [C22]</td></tr>
+    <tr><td>Protocol Buffers; Lumos [C23; C24]</td><td>Define a schema once and generate bindings in many languages (Lumos: Rust and TypeScript for Solana)</td><td>Data shapes, not behaviour</td></tr>
+    <tr><td>Forge, 2026 [C25]</td><td>"Many frontends feed one verified intermediate representation, and that representation feeds many backends"</td><td>Board and peripheral descriptions, not general programs</td></tr>
+    <tr><td>Faber Romanus, 2026 [C26]</td><td>One high-level IR projected to Rust, Go, TypeScript, Swift and Faber, and through a lower IR to LLVM and WASM text, with Metal and CUDA kernels; support is measured and stated per target</td><td>Agreement across targets is measured by corpus coverage, not proved</td></tr>
+    <tr><td>Intent, 2026 [C27]</td><td>One source file compiles to Rust, JavaScript and WASM; contracts are enforced at runtime in every target and optionally checked by Z3</td><td>Three targets</td></tr>
+    <tr><td>NanoLang [C28]</td><td>Core semantics proved in Coq with no axioms; C is the production target</td><td>PTX and RISC-V are experimental; LLVM and WASM are planned</td></tr>
+  </tbody></table></div>
+
+<h3 id="cc4">4. Store intent; derive the implementation</h3>
+<div class="mt-4 overflow-x-auto"><table class={tbl}>
+  <thead><tr><th>Project</th><th>What it established</th><th>Where it stops</th></tr></thead>
+  <tbody>
+    <tr><td>FORTRAN, Backus et al., 1957; deductive synthesis, Manna and Waldinger, 1980 [C29; C30]</td><td>Automatic coding from formulas; programs extracted from constructive proofs</td><td>FORTRAN became a compiler; deductive synthesis had no implementation at the time</td></tr>
+    <tr><td>Spec-driven development, as classified by Böckeler [C31]</td><td>Three levels: spec-first, spec-anchored and spec-as-source, in which "the human never touches the code"; of Kiro, spec-kit and Tessl, only Tessl explores spec-as-source</td><td>The spec is natural language; nothing checks that the code is the spec</td></tr>
+    <tr><td>Vericoding benchmark, 2025 [C32]</td><td>12,504 formal specifications in Dafny, Verus and Lean; off-the-shelf LLMs succeed on 82%, 44% and 27%; adding natural language did not significantly help</td><td>Specification languages are the proof languages; no runtime form or multi-target emission</td></tr>
+    <tr><td>Codifide [C7]</td><td>Every definition carries an intent that compilation never discards</td><td>Contract-and-dispatch scope</td></tr>
+  </tbody></table></div>
+
+<h3 id="cc5">5. The model proposes; a deterministic gate decides</h3>
+<div class="mt-4 overflow-x-auto"><table class={tbl}>
+  <thead><tr><th>Project</th><th>What it established</th><th>Where it stops</th></tr></thead>
+  <tbody>
+    <tr><td>CompCert; seL4 [C33; C34]</td><td>Machine-checked compiler and kernel; CompCert checks an unverified heuristic's output with a verified checker; seL4's proof cost about 20 person-years</td><td>Proof effort per artifact</td></tr>
+    <tr><td>Sketching and CEGIS, Solar-Lezama et al., 2006 [C35]</td><td>A synthesizer proposes, a checker returns a counterexample, and the loop repeats</td><td>Proposers are solvers, not learned models</td></tr>
+    <tr><td>AlphaProof; Clover; AutoVerus [C36; C37; C38]</td><td>A model proposes; Lean, Dafny or Verus checks</td><td>Gate on proofs or code text; no canonical program form</td></tr>
+    <tr><td>Agentic model checking, 2026; LLM-driven verified synthesis for concept design, 2026 [C39; C40]</td><td>"Agents propose, solvers verify"; in the second, invariants alone under-constrained designs, which differed across runs</td><td>Verification of existing code; a warning that validity is not intent</td></tr>
+    <tr><td>Vera, 2026 [C41]</td><td>Mandatory contracts checked by an SMT solver: "The model doesn't need to be right, it needs to be checkable"</td><td>Gate at the function; no replay or promotion</td></tr>
+    <tr><td>Decision models, a class of concept [C42]</td><td>A model whose entire output is a typed, calibrated choice among bounded options</td><td>Needs a closed option set. The RCE project builds its own decision head and uses no outside decision model</td></tr>
+  </tbody></table></div>
+
+<h3 id="cc6">6. Accepted work is promoted and reused</h3>
+<div class="mt-4 overflow-x-auto"><table class={tbl}>
+  <thead><tr><th>Project</th><th>What it established</th><th>Where it stops</th></tr></thead>
+  <tbody>
+    <tr><td>Gödel machine, Schmidhuber; Löbian obstacle, Yudkowsky and Herreshoff [C43; C44]</td><td>Self-rewrite only after a proof that it is useful; a system cannot in general prove the soundness of a successor that uses its own proof system</td><td>Theory</td></tr>
+    <tr><td>Voyager; STOP; Darwin Gödel Machine; AlphaEvolve [C45; C46; C47; C48]</td><td>A growing library of executable skills; scaffolds that improve themselves; archives of self-modified agents; code evolved under automatic evaluators</td><td>Selection by score or evaluator, not by proof at an interface</td></tr>
+    <tr><td>Getafix; Sorald; TBar [C49; C50; C51]</td><td>Fix patterns mined from past fixes or written as templates, reused on new cases without a model; TBar fixes 74 of 101 Defects4J bugs correctly with perfect fault localization</td><td>Patterns are per language and per bug class</td></tr>
+  </tbody></table></div>
+
+<h3 id="cc7">7. Energy or cost is the objective</h3>
+<div class="mt-4 overflow-x-auto"><table class={tbl}>
+  <thead><tr><th>Project</th><th>What it established</th><th>Where it stops</th></tr></thead>
+  <tbody>
+    <tr><td>Landauer, 1961; Bennett, 1973 [C52; C53]</td><td>Erasing a bit has a thermodynamic floor; computation can in principle be made logically reversible</td><td>Physics, not a software objective</td></tr>
+    <tr><td>FrugalGPT, 2023 [C54]</td><td>A cascade of models matched the best single model with up to 98% lower cost on its tasks</td><td>Dollar cost; no deterministic tiers below the models</td></tr>
+    <tr><td>Cost-of-pass, 2025; AI Agents That Matter, 2024 [C55; C56]</td><td>Expected monetary cost of a correct solution; report and jointly optimize cost with accuracy</td><td>Dollars and tokens, not joules</td></tr>
+    <tr><td>Compiler world models, 2026 [C57]</td><td>Predict the quality of a tensor program schedule in latent space before running on hardware</td><td>Tensor schedules only</td></tr>
+    <tr><td>Codifide [C7]</td><td>Selects among satisfied candidates by declared cost</td><td>Declared cost, not measured energy</td></tr>
+    <tr><td>JouleOS (OpenIE) [same house]</td><td>Energy budgets and the <code>est_j</code>, <code>reported_j</code>, <code>measured_j</code> labels</td><td>Same house: listed for disclosure, not as evidence</td></tr>
+  </tbody></table></div>
+
+<h3 id="cc-rce">What the RCE project measured (OpenIE's own data)</h3>
+<p>The following are OpenIE's own results from <a href="https://research.openie.dev/papers/rce/">the RCE paper</a> (version 1.4), checked against the engine repository. They are reported here as the project's data, not as a comparison with the projects above.</p>
+<ul>
+  <li><strong>Round trip.</strong> On 10,000 preregistered generated Forms with a frozen engine and no model calls, Form IR to canonical JSON and back was the identity for 10,000 of 10,000. Two compiles gave the same bytes, and the XState and SCXML (State Chart XML) projections of the original and round-tripped Form were byte identical, in 10,000 of 10,000. The emitted Python printed the reference trace in 9,999 of 10,000.</li>
+  <li><strong>Five targets.</strong> The Rust, WASM, Python, XState and SCXML targets print the reference trace byte for byte on 529 events (29 edge events and 500 seeded random values) of one eleven-operator specification. This is differential testing on that input set, not a proof and not a 10,000-Form result.</li>
+  <li><strong>Canonical form.</strong> The canonical serialization is injective on Forms, so two Forms that differ have different shape hashes. Equivalence of behaviour is defined separately (fit equivalence), and equivalent variants are grouped by sound rewrites in an e-graph; the paper does not claim that equivalent behaviour always yields one canonical form.</li>
+  <li><strong>Proofs.</strong> Determinism, totality, replay as a fold of the log, and atomicity of refused events are proved in Lean 4 on a core calculus. The Rust program emitter is proved on a core as a verified translation into MiniRust, a deep embedding of the emitted Rust subset; that the Rust compiler implements MiniRust is trusted and tested. This proof covers the program emitter, not the Form projection.</li>
+  <li><strong>Repair ladder, with the location given and token identity as the gate, zero model calls.</strong> 520,541 of 520,821 one-token mutants (99.95%) in nine repositories; 13,586 of 21,320 single-statement Java bugs (63.7%) when the whole file and project indexes are supplied, and 9,288 of 24,072 (38.6%) from the seven-line hunk alone.</li>
+  <li><strong>Gate.</strong> Replay of recorded inputs, a shadow run with a coverage bound, an output schema check and a Kani proof certificate; a proposed rewrite also needs a Z3 proof. A local 1.5-billion-parameter model proposed 16 equivalences, of which the gate admitted 3.</li>
+  <li><strong>Energy.</strong> Every receipt carries <code>est_j</code>; an unpriced model call is never read as zero. <code>measured_j</code> (wall meter) is empty in every result so far.</li>
+</ul>
+
+<h3 id="cc-refs">Sources for this section</h3>
+<p>Labels as in the ledger: Full = read in full; Partial = primary source retrieved, abstract or README and every passage behind the claim read in context; Unavailable = not obtained, listed with identifier only and never quoted.</p>
+<ol class="list-decimal pl-5 space-y-1">
+  <li>[C1] C. Simonyi, "The Death of Computer Languages, the Birth of Intentional Programming", Microsoft Research MSR-TR-95-52, 1995. <a href="https://www.microsoft.com/en-us/research/publication/the-death-of-computer-languages-the-birth-of-intentional-programming/">Microsoft Research</a>; <a href="https://uni.r-brause.de/seminare/SemSS07/simonyi95death.pdf">PDF copy</a>. Partial.</li>
+  <li>[C2] Unison, "The big idea". <a href="https://www.unison-lang.org/docs/the-big-idea/">unison-lang.org</a>. Full.</li>
+  <li>[C3] R. Tate, M. Stepp, Z. Tatlock and S. Lerner, "Equality Saturation: A New Approach to Optimization", POPL 2009. <a href="https://arxiv.org/abs/1012.1802">arXiv:1012.1802</a>. Partial.</li>
+  <li>[C4] M. Willsey et al., "egg: Fast and Extensible Equality Saturation", POPL 2021. <a href="https://arxiv.org/abs/2004.03082">arXiv:2004.03082</a>. Partial.</li>
+  <li>[C5] Tacit. <a href="https://github.com/weetster/tacit">github.com/weetster/tacit</a>. Full (README).</li>
+  <li>[C6] X07. <a href="https://github.com/x07lang/x07">github.com/x07lang/x07</a>. Full (README).</li>
+  <li>[C7] Codifide. <a href="https://github.com/codifide/codifide-programming-language">github.com/codifide/codifide-programming-language</a>. Full (README).</li>
+  <li>[C8] NAIL. <a href="https://pypi.org/project/nail-lang/">pypi.org/project/nail-lang</a>. Full (project description).</li>
+  <li>[C9] M. Allamanis, P. Chanthirasegaran, P. Kohli and C. Sutton, "Learning Continuous Semantic Representations of Symbolic Expressions", ICML 2017. <a href="https://arxiv.org/abs/1611.01423">arXiv:1611.01423</a>. Partial.</li>
+  <li>[C10] Y. Gurevich, "Sequential Abstract State Machines Capture Sequential Algorithms", ACM TOCL 1(1), 2000. <a href="https://doi.org/10.1145/343369.343384">doi:10.1145/343369.343384</a>. Unavailable.</li>
+  <li>[C11] M. Fowler, "Event Sourcing", 2005. <a href="https://martinfowler.com/eaaDev/EventSourcing.html">martinfowler.com</a>. Partial.</li>
+  <li>[C12] The Elm Architecture. <a href="https://guide.elm-lang.org/architecture/">guide.elm-lang.org</a>. Full.</li>
+  <li>[C13] P. Alvaro et al., "Dedalus: Datalog in Time and Space", UC Berkeley EECS-2009-173. <a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-173.pdf">PDF</a>. Partial.</li>
+  <li>[C14] J. M. Hellerstein and P. Alvaro, "Keeping CALM: When Distributed Consistency is Easy", 2019. <a href="https://arxiv.org/abs/1901.01930">arXiv:1901.01930</a>. Partial.</li>
+  <li>[C15] Temporal, "Workflow Definition". <a href="https://docs.temporal.io/workflow-definition">docs.temporal.io</a>. Partial.</li>
+  <li>[C16] Restate, "Durable Execution". <a href="https://docs.restate.dev/concepts/durable_execution">docs.restate.dev</a>. Partial.</li>
+  <li>[C17] C. Bhandari, "Protocol-Aware Deterministic Simulation Testing", TigerBeetle, 20 August 2026. <a href="https://tigerbeetle.com/blog/2026-08-20-protocol-aware-dst/">tigerbeetle.com</a>. Partial.</li>
+  <li>[C18] AILANG. <a href="https://github.com/sunholo-data/ailang">github.com/sunholo-data/ailang</a>. Partial (README).</li>
+  <li>[C19] agent-scroll. <a href="https://github.com/p-vbordei/agent-scroll">github.com/p-vbordei/agent-scroll</a>. Full (README).</li>
+  <li>[C20] C. Lattner et al., "MLIR: A Compiler Infrastructure for the End of Moore's Law", 2020. <a href="https://arxiv.org/abs/2002.11054">arXiv:2002.11054</a>. Partial.</li>
+  <li>[C21] OMG, MDA Guide Version 1.0, 2003. <a href="https://www.omg.org/mda/mda_files/MDA_Guide_Version1-0.pdf">PDF</a>. Full.</li>
+  <li>[C22] M. Petre, "UML in practice", ICSE 2013. <a href="https://oro.open.ac.uk/35805/">author copy</a>. Full.</li>
+  <li>[C23] Protocol Buffers overview. <a href="https://protobuf.dev/overview/">protobuf.dev</a>. Partial.</li>
+  <li>[C24] Lumos introduction. <a href="https://docs.lumos-lang.org/getting-started/introduction">docs.lumos-lang.org</a>. Partial.</li>
+  <li>[C25] Forge. <a href="https://github.com/Sanjith-Shan/Forge">github.com/Sanjith-Shan/Forge</a>. Full (README).</li>
+  <li>[C26] Faber Romanus. <a href="https://github.com/faberlang/faber">github.com/faberlang/faber</a>. Full (README).</li>
+  <li>[C27] Intent. <a href="https://github.com/lhaig/intent">github.com/lhaig/intent</a>. Full (README).</li>
+  <li>[C28] NanoLang. <a href="https://github.com/jordanhubbard/nanolang">github.com/jordanhubbard/nanolang</a>. Full (README).</li>
+  <li>[C29] J. W. Backus et al., "The FORTRAN Automatic Coding System", 1957. <a href="https://archive.computerhistory.org/resources/text/Fortran/102663113.05.01.acc.pdf">Computer History Museum copy</a>. Full.</li>
+  <li>[C30] Z. Manna and R. Waldinger, "A Deductive Approach to Program Synthesis", ACM TOPLAS 2(1), 1980. <a href="https://doi.org/10.1145/357084.357090">doi:10.1145/357084.357090</a>. Full.</li>
+  <li>[C31] B. Böckeler, "Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl", martinfowler.com. <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html">martinfowler.com</a>. Partial.</li>
+  <li>[C32] "A benchmark for vericoding: formally verified program synthesis", 2025. <a href="https://arxiv.org/abs/2509.22908">arXiv:2509.22908</a>. Partial.</li>
+  <li>[C33] X. Leroy, "Formal verification of a realistic compiler", CACM, 2009. <a href="https://xavierleroy.org/publi/compcert-CACM.pdf">PDF</a>. Full.</li>
+  <li>[C34] G. Klein et al., "seL4: Formal Verification of an OS Kernel", SOSP 2009. <a href="https://www.sigops.org/s/conferences/sosp/2009/papers/klein-sosp09.pdf">PDF</a>. Full.</li>
+  <li>[C35] A. Solar-Lezama et al., "Combinatorial Sketching for Finite Programs", ASPLOS 2006. <a href="https://people.csail.mit.edu/asolar/papers/asplos06-final.pdf">PDF</a>. Partial.</li>
+  <li>[C36] T. Hubert et al., "Olympiad-level formal mathematical reasoning with reinforcement learning", Nature, 2025. <a href="https://www.nature.com/articles/s41586-025-09833-y">Nature</a>. Full.</li>
+  <li>[C37] C. Sun et al., "Clover: Closed-Loop Verifiable Code Generation". <a href="https://arxiv.org/abs/2310.17807">arXiv:2310.17807</a>. Full.</li>
+  <li>[C38] C. Yang et al., "AutoVerus". <a href="https://arxiv.org/abs/2409.13082">arXiv:2409.13082</a>. Full.</li>
+  <li>[C39] Sun, Liu, Kroening and Xue, agentic model checking, 2026. <a href="https://arxiv.org/abs/2605.21434">arXiv:2605.21434</a>. Partial.</li>
+  <li>[C40] A. Cunha, verified LLM-driven synthesis for concept design, 2026. <a href="https://arxiv.org/abs/2607.15718">arXiv:2607.15718</a>. Partial.</li>
+  <li>[C41] Vera. <a href="https://github.com/aallan/vera">github.com/aallan/vera</a>. Partial (README).</li>
+  <li>[C42] Decision models as a class: see the decision-head section above and its sources [B26; B29; B30].</li>
+  <li>[C43] J. Schmidhuber, "Goedel Machines: Self-Referential Universal Problem Solvers Making Provably Optimal Self-Improvements". <a href="https://arxiv.org/abs/cs/0309048">arXiv:cs/0309048</a>. Partial.</li>
+  <li>[C44] E. Yudkowsky and M. Herreshoff, "Tiling Agents for Self-Modifying AI, and the Löbian Obstacle", 2013. <a href="https://intelligence.org/files/TilingAgentsDraft.pdf">PDF</a>. Partial.</li>
+  <li>[C45] G. Wang et al., "Voyager", 2023. <a href="https://arxiv.org/abs/2305.16291">arXiv:2305.16291</a>. Partial.</li>
+  <li>[C46] E. Zelikman et al., "Self-Taught Optimizer (STOP)", 2023. <a href="https://arxiv.org/abs/2310.02304">arXiv:2310.02304</a>. Partial.</li>
+  <li>[C47] J. Zhang et al., "Darwin Gödel Machine", 2025. <a href="https://arxiv.org/abs/2505.22954">arXiv:2505.22954</a>. Partial.</li>
+  <li>[C48] A. Novikov et al., "AlphaEvolve", 2025. <a href="https://arxiv.org/abs/2506.13131">arXiv:2506.13131</a>. Partial.</li>
+  <li>[C49] J. Bader et al., "Getafix: Learning to Fix Bugs Automatically", 2019. <a href="https://arxiv.org/abs/1902.06111">arXiv:1902.06111</a>. Partial.</li>
+  <li>[C50] K. Etemadi et al., "Sorald", 2021. <a href="https://arxiv.org/abs/2103.12033">arXiv:2103.12033</a>. Partial.</li>
+  <li>[C51] K. Liu et al., "TBar: Revisiting Template-based Automated Program Repair", 2019. <a href="https://arxiv.org/abs/1903.08409">arXiv:1903.08409</a>. Partial.</li>
+  <li>[C52] R. Landauer, "Irreversibility and heat generation in the computing process", 1961. <a href="https://doi.org/10.1147/rd.53.0183">doi:10.1147/rd.53.0183</a>. Full.</li>
+  <li>[C53] C. H. Bennett, "Logical Reversibility of Computation", 1973. <a href="https://doi.org/10.1147/rd.176.0525">doi:10.1147/rd.176.0525</a>. Full.</li>
+  <li>[C54] L. Chen, M. Zaharia and J. Zou, "FrugalGPT", 2023. <a href="https://arxiv.org/abs/2305.05176">arXiv:2305.05176</a>. Partial.</li>
+  <li>[C55] M. H. Erol et al., "Cost-of-Pass: An Economic Framework for Evaluating Language Models", 2025. <a href="https://arxiv.org/abs/2504.13359">arXiv:2504.13359</a>. Partial.</li>
+  <li>[C56] S. Kapoor et al., "AI Agents That Matter", 2024. <a href="https://arxiv.org/abs/2407.01502">arXiv:2407.01502</a>. Partial.</li>
+  <li>[C57] Pan et al., compiler world models for tensor programs, 2026. <a href="https://arxiv.org/abs/2606.09312">arXiv:2606.09312</a>. Partial.</li>
+</ol>
+<p><strong>Not carried over from the survey</strong>, because the primary source was not obtained or did not support the claim: Smalltalk image claims, Darklang hashing, Pantograph and Grove, Codong, Lume, Magpie, Codex (Tedrow), Spec IR, Boruna, musil, d-raft, Sockudo, DBOS, P language compilation to C, UNCOL and ANDF, Thrift and OpenAPI, Pact, Aver, Prove, reqlan, Vow, Thermite, translation validation (Pnueli), SyGuS, Futamura and Turchin, PAR, DéjàVu and Gabel and Su, Simon and Kadane, and the comparative scoreboard.</p>
