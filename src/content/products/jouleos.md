@@ -35,9 +35,9 @@ The ranking rule used throughout is stated once. Among systems that pass a task'
 
 ### Terms used here
 
-The software reference implementation is the software path that tests a study claim without board synthesis or package metering. Value of information is the expected gain in a decision's payoff from observing a quantity before deciding (R. A. Howard, "Information Value Theory," IEEE Transactions on Systems Science and Cybernetics 2(1), 1966, doi:10.1109/TSSC.1966.300074). Where a statement rests on the author's unpublished analysis, the text says so. It is a definition or a reading, not proof by private path.
+The software reference implementation is the software path that tests a study claim without board synthesis or package metering. Value of information is the expected gain in a decision's payoff from observing a quantity before deciding (R. A. Howard, "Information Value Theory," IEEE Transactions on Systems Science and Cybernetics 2(1), 1966, doi:10.1109/TSSC.1966.300074). Where a statement rests on the OpenIE authors' unpublished analysis, the text says so. It is a definition or a reading, not proof by private path.
 
-The teaching order and the six contracts come from the author's unpublished analysis of the stack, drawn before any destination was named. Every placement of a named system rests on that system's own public page, cited where it appears.
+The teaching order and the six contracts come from the OpenIE authors' unpublished analysis of the stack, drawn before any destination was named. Every placement of a named system rests on that system's own public page, cited where it appears.
 
 The standards that name the schedule, the law, the commit, and the isolation ladder are public draft specifications at transaction.science: [eoc.transaction.science](https://eoc.transaction.science/), [jcp.transaction.science](https://jcp.transaction.science/), [joulecontract.transaction.science](https://joulecontract.transaction.science/) and [sandbox.transaction.science](https://sandbox.transaction.science/). JouleOS is named where a solution of that kind is the answer the problems require.
 
@@ -69,7 +69,7 @@ OpenShell and OpenHuman are not the only members of the class. They are two name
 
 ## 3. The teaching line: silicon to human interface
 
-Before any product name, teach the line. The author calls it the teaching stack. It is a teaching order, not a census of products. Bottom to top:
+Before any product name, teach the line. The OpenIE authors call it the teaching stack. It is a teaching order, not a census of products. Bottom to top:
 
 1. Silicon
 2. Chip
@@ -88,7 +88,7 @@ Firmware is the first software written for that board. It brings the board up an
 
 The instruction set is the contract the chip offers. It names the operations the chip will perform and the rules for registers, memory, and traps. Assembly sits beside that contract. It is text that names the chip's operations directly. On a host computer a compiler usually emits it. On a microcontroller it is often where the software product stops. The teaching line does not invent an eleventh numbered rung for assembly. Assembly sits beside the instruction set.
 
-Hardware abstraction is software that hides board and chip differences from the software above it. Vendor documents do not all place it on a free-floating rung under the operating system. Microsoft's driver documentation places a hardware abstraction layer inside Windows. CMSIS and a vendor HAL such as the STM32CubeF4 HAL are libraries, not operating systems. The teaching line keeps David's order. The later contracts refuse to promote hardware abstraction into a seventh kind of thing.
+Hardware abstraction is software that hides board and chip differences from the software above it. Vendor documents do not all place it on a free-floating rung under the operating system. Microsoft's driver documentation places a hardware abstraction layer inside Windows. CMSIS and a vendor HAL such as the STM32CubeF4 HAL are libraries, not operating systems. The teaching line keeps the order from the OpenIE stack analysis. The later contracts refuse to promote hardware abstraction into a seventh kind of thing.
 
 An operating system, on this line, is software that manages the computer for other programs. That rung is not one job. The separation is by job, not by fame.
 
@@ -98,7 +98,7 @@ Programs are the work. An agent is a program. It occupies this rung. It is not a
 
 The human interface is where a person meets that work: a screen, a keyboard, a pointer, a voice path, or a serial console. The teaching line ends at a person. Agents, sensors, and other machines are real clients of that computer. They are not rungs above the person. They are other stacks, or guests of a stack.
 
-Source for the ten-rung order: the author's unpublished stack analysis, sections 2, 3 and 7. Named systems are placed by their own public pages.
+Source for the ten-rung order: the OpenIE authors' unpublished stack analysis, sections 2, 3 and 7. Named systems are placed by their own public pages.
 
 ---
 
@@ -118,7 +118,7 @@ Assembly and a compiler are not two names for one rung. On the microcontroller l
 
 Firmware brings a particular board up. Hardware abstraction hides differences. An operating system manages the computer for other programs. One product can contain all three. Collapsing them is how the ten rooms look finished when they are not.
 
-Source: the author's unpublished stack analysis, section 3. Named systems are placed by their own public pages.
+Source: the OpenIE authors' unpublished stack analysis, section 3. Named systems are placed by their own public pages.
 
 ---
 
@@ -174,7 +174,7 @@ Linux is a kernel. A Linux distribution is a packaged system around that kernel.
 
 Anyone who says "the operating system" and means all of those at once is using one rung for many jobs.
 
-Source: the author's unpublished stack analysis, sections 4, 8, 9, 10, and 11. Named systems are placed by their own public pages.
+Source: the OpenIE authors' unpublished stack analysis, sections 4, 8, 9, 10, and 11. Named systems are placed by their own public pages.
 
 ### 5.12 Three names that stay unresolved
 
@@ -194,7 +194,7 @@ Extensions grow a family from inside: Intel AVX-512 is an extension of the Intel
 
 Translation sits between contracts. Rosetta, QEMU's Tiny Code Generator, box64, and FEX are that layer. Translation does not make two contracts the same. WebAssembly is a binary instruction format for a stack-based virtual machine. It is not the instruction set of a chip. WASI is a system interface for software compiled to WebAssembly. It is not an operating system.
 
-Source: the author's unpublished stack analysis, sections 5, 8, and 11. Named systems are placed by their own public pages.
+Source: the OpenIE authors' unpublished stack analysis, sections 5, 8, and 11. Named systems are placed by their own public pages.
 
 ---
 
@@ -204,7 +204,7 @@ The CUDA and PyTorch install documents a person is handed first lead with a deve
 
 Set that starting point against the earlier sections. The microcontroller column is a computer. seL4 is a kernel that can host Linux as a guest. ROS 2 is middleware. Teaching kernels keep being made. Instruction sets keep being revised. The AI install guide starts after those facts have been declared finished for the purpose of getting a toolchain running.
 
-Source: the author's unpublished stack analysis, section 6. Named systems are placed by their own public pages.
+Source: the OpenIE authors' unpublished stack analysis, section 6. Named systems are placed by their own public pages.
 
 ---
 
@@ -216,7 +216,7 @@ Jobs already separated include: host operating system, kernel, real-time kernel,
 
 Fame is not a source. A name appears because a project page, vendor page, university page, or standards page returned and said the job. Organizing by country or laboratory would invent a geography this study refuses. Critiques of a placement name common mechanisms: wrong job label, collapsed build into kernel, middleware called an operating system, guest drawn as if it owned silicon. 
 
-Source: the author's unpublished stack analysis, sections 8 through 11. Named systems are placed by their own public pages.
+Source: the OpenIE authors' unpublished stack analysis, sections 8 through 11. Named systems are placed by their own public pages.
 
 ---
 
@@ -252,7 +252,7 @@ The teaching line ends where a person meets the work. That is a contract with a 
 
 Middleware is a conversation among programs. ROS 2 sits on an operating system. Hardware abstraction, in the Windows documents, sits inside the operating system; CMSIS and vendor HALs are libraries. Firmware is the first software on a particular board. A distribution is a packaging of the build and the law. None of these is a seventh contract you translate a chip into.
 
-Source: the author's unpublished convergence analysis.
+Source: the OpenIE authors' unpublished convergence analysis.
 
 ---
 
@@ -366,19 +366,19 @@ A design guide ends in requirements a reader can check, not in a brand preferenc
 
 ## 14. Claim ledger
 
-Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file says it), Project claim (the named project's own figure or status), Author's analysis (stated in the author's unpublished stack or convergence analysis).
+Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file says it), Project claim (the named project's own figure or status), OpenIE analysis (stated in the OpenIE authors' unpublished stack or convergence analysis).
 
 | Claim | Kind | Source |
 | --- | --- | --- |
-| Computers are hardware. Software is applied engineering under constraints. | Definition | Author's definition |
+| Computers are hardware. Software is applied engineering under constraints. | Definition | OpenIE definition |
 | Teaching order: silicon, chip, board, firmware, instruction set, hardware abstraction, operating system, compiler and runtime, programs, human interface. | Definition | Stack analysis §2 |
 | Assembly sits beside the instruction set, not as an eleventh numbered rung. | Definition | Stack analysis §2 |
-| Yocto is a build system; the kernel inside its images is Linux. | Author's analysis | Stack analysis §4 |
-| ROS 2 is middleware, not an operating system. | Author's analysis | Stack analysis §4 |
-| seL4 is a verified microkernel; kernel code is privileged-mode code. | Author's analysis | Stack analysis §4 |
-| Linux, XNU, and the Windows kernel are kernels (Windows named as on Microsoft's driver docs). | Author's analysis | Stack analysis §4 |
-| Six contracts: instruction, machine's law, build, guest, translation, human surface. Middleware, HAL, firmware, distribution are not a seventh. | Author's analysis | Convergence analysis |
-| Commercial HarmonyOS kernel, WeensyOS, and Taos remain unresolved. | Author's analysis | Stack analysis §11; convergence analysis §4 |
+| Yocto is a build system; the kernel inside its images is Linux. | OpenIE analysis | Stack analysis §4 |
+| ROS 2 is middleware, not an operating system. | OpenIE analysis | Stack analysis §4 |
+| seL4 is a verified microkernel; kernel code is privileged-mode code. | OpenIE analysis | Stack analysis §4 |
+| Linux, XNU, and the Windows kernel are kernels (Windows named as on Microsoft's driver docs). | OpenIE analysis | Stack analysis §4 |
+| Six contracts: instruction, machine's law, build, guest, translation, human surface. Middleware, HAL, firmware, distribution are not a seventh. | OpenIE analysis | Convergence analysis |
+| Commercial HarmonyOS kernel, WeensyOS, and Taos remain unresolved. | OpenIE analysis | Stack analysis §11; convergence analysis §4 |
 | NVIDIA Open Agent Safety Platform / OpenShell announced 28 September 2026; sandbox, supervisor, policy, optional BlueField Sentry. | Sourced fact | https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell/ ; https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Launches-Open-Agent-Safety-Platform-to-Secure-Agents-From-Testing-to-Deployment/default.aspx |
 | OpenHuman is Rust, GPL-3.0, early beta; core on host; sandbox backends None / Local / Docker; ReadOnly resolves to None for jail enforcement; elevated tools leave the jail; README density figures are memory. | Sourced fact / Project claim | https://github.com/tinyhumansai/openhuman ; https://github.com/tinyhumansai/openhuman/pull/3261 |
 | EOC pipeline is state-construct, retrieve, refine, check; not tokens. | Sourced fact | [eoc.transaction.science](https://eoc.transaction.science/) |
@@ -396,7 +396,7 @@ Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file s
 
 ## 15. JouleOS
 
-JouleOS is one design, by the author, that is built to meet the requirements of Section 13. It is described here as an object of study, not as evidence for those requirements. Hardware, runtime, language, and surface are one artifact. The name of that arrangement is Unified Design Architecture.
+JouleOS is one design, by the OpenIE authors, that is built to meet the requirements of Section 13. It is described here as an object of study, not as evidence for those requirements. Hardware, runtime, language, and surface are one artifact. The name of that arrangement is Unified Design Architecture.
 
 The runtime measures the coordinate it occupies and lowers one intent stream onto that coordinate. A coordinate is a browser, a hosted process, a virtual machine, a container, or bare metal. WebAssembly is a binary instruction format for a stack-based virtual machine. It is not the instruction set of a chip. The WebAssembly runtime is the operating system that is seen. The same module has the same semantics on every coordinate. If the coordinate cannot honor the capability or the energy guarantee, the intent refuses.
 

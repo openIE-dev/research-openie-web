@@ -61,3 +61,7 @@ Figure shells often originate from `wca-lut-edge/artifacts/living/` → `public/
 ## Writing rule: define before use
 
 Readers read top to bottom, so nothing on a page may be referenced before it is introduced. Labelled items (H#, RJ-F#, Part #, Phase #, W#, Section #, Figure #) must ascend as a reader meets them; [B#], [C#] and [T#] citations are numbered in order of first citation; every acronym is expanded at first use or listed in the page's terms list (id="terms") before it is used. `node scripts/lint-order.mjs` checks this on the built HTML (currently /about/rce-jepa/) and runs at the end of `pnpm build`.
+
+## Writing rule: no narrated author
+
+Running prose names the work or group ("the RCE-JEPA proposal", "the RCE project", "this article", "the OpenIE authors"), never the author as a narrated person ("David Charlot's proposal", "the author's analysis", "his"), and uses no vague "we". Bylines, metadata and citation author lists are unchanged. `scripts/lint-claims.mjs` flags author names in running prose.

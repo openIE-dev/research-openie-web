@@ -67,6 +67,28 @@ for (const f of files) {
     }
   });
 }
+// Author-in-prose check: running prose names the work or group ("the RCE-JEPA proposal",
+// "the RCE project", "this article", "the OpenIE authors"), never the author as a narrated
+// person. Bylines, metadata and citation author lists are allowed.
+const AUTHOR_PROSE = /\bDavid\b|\bCharlot\b|\bthe author's unpublished\b|\bby the author\b|\b[Tt]he author (?:calls|says|argues|proposes|believes|thinks|holds)\b|\bAuthor's (?:analysis|definition)\b/g;
+const AUTHOR_ALLOWED_FILES = /^(src\/data\/studies\.json|src\/data\/home-jsonld\.json|src\/components\/StudyJsonLd\.astro|src\/layouts\/[^/]+\.astro)$/;
+const AUTHOR_ALLOWED_LINE = /^\s*author:|"author":|<meta name="author"|var AUTHOR = |^> Research by David Charlot at |P\. A\. David|David Autor|David's history of the QWERTY/;
+let authorBad = 0;
+for (const f of files) {
+  if (AUTHOR_ALLOWED_FILES.test(f)) continue;
+  fs.readFileSync(path.join(ROOT, f), 'utf8').split('\n').forEach((line, i) => {
+    if (AUTHOR_ALLOWED_LINE.test(line)) return;
+    for (const m of line.matchAll(AUTHOR_PROSE)) {
+      authorBad++;
+      const ctx = line.slice(Math.max(0, m.index - 60), m.index + m[0].length + 60).trim();
+      console.error(`${f}:${i + 1}: author named in running prose "${m[0]}"  …${ctx}…  (name the work or group instead)`);
+    }
+  });
+}
+if (authorBad) {
+  console.error(`claim lint: ${authorBad} author mention(s) in running prose`);
+  process.exit(1);
+}
 const unused = entries.filter((e) => !used.has(e.id)).map((e) => e.id);
 if (unused.length) console.warn(`claim lint: ledger entries with no match: ${unused.join(', ')}`);
 if (bad) {

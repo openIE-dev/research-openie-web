@@ -12,8 +12,8 @@
     "name": "Proper name",
     "identifier": "Slug, id or code",
     "reference title": "Title of a cited work",
-    "author-thesis": "David Charlot's thesis, verbatim, with its gate form",
-    "author-proposal": "David Charlot's proposal, framed as such",
+    "author-thesis": "The OpenIE authors' thesis, verbatim, with its gate form",
+    "author-proposal": "The OpenIE authors' proposal, framed as such",
     "ordinary-sense": "Ordinary English sense",
     "forbidden-claim mention": "Quoted as withdrawn"
   },
@@ -28,7 +28,7 @@
       "id": "name-ula",
       "status": "author-proposal",
       "pattern": "Universal Law of Agency",
-      "note": "David Charlot's proposal; every use names it as his proposal or 'the proposed'."
+      "note": "The OpenIE authors' proposal; every use names it as the OpenIE authors' proposal or 'the proposed'."
     },
     {
       "id": "name-sigma-law",
@@ -61,7 +61,7 @@
       "id": "thesis",
       "status": "author-thesis",
       "pattern": "Energy to run is the only true metric of computer intelligence|All other factors collapse to zero|That is what \"collapse to zero\" means",
-      "note": "David Charlot's thesis, verbatim. Each use is followed by, or sits beside, its gate form: correctness is the gate and joules order the systems that pass it. Shortened or price-sense variants are not licensed."
+      "note": "The OpenIE authors' thesis, verbatim. Each use is followed by, or sits beside, its gate form: correctness is the gate and joules order the systems that pass it. Shortened or price-sense variants are not licensed."
     },
     {
       "id": "physics-second-law",
@@ -136,7 +136,7 @@
       "id": "law-author-framing",
       "status": "author-proposal",
       "pattern": "(?:the |a |this |that |one |same |machine's |runtime |Commit\\*\\* |companion |Companion |Cousin energy |class |design |obtain |transmission\\*\\* |research |under |naming the |rename the |replace the |hedge on the |is the |owns the |states the |records the |is that |are that |as |is |not |Protocol is the )+laws?\\b|\\blaw\\+runtime|\\*law\\+runtime\\*|laws? (?:is native|sits in front|deciding|declining|with a partition|written so|with a proof|runs on|gets embodied|for agentic action|and the pack|and class|and the class|/class|; Klere|, one meter|, the commit|, keeps B|, named in|, not as|, the build|in the hardware|as four objects|as published|before the survey|contrast|it does not|are for|agree on the underline|of this law)|The machine's law|The law (?:and|sits|is)|Mixture of Limits law|Representation is not law|Cascade order is law|order is law|refuse is law|settle-refuse as law|agent under law|refused under law|unit convert / law instance|one law|every research law|Require a law|require a law|requires one law|under a law|that same law|this law|that law|the law|same laws|two laws|those laws|these laws|the laws|\\| Mechanism \\| Law \\||Law contrast",
-      "note": "Author framing: these papers use 'law' for David Charlot's proposed runtime rules (commit before act, energy envelope, machine contract). Status: proposal, not an empirical regularity. Listed for review.",
+      "note": "Author framing: these papers use 'law' for the OpenIE authors' proposed runtime rules (commit before act, energy envelope, machine contract). Status: proposal, not an empirical regularity. Listed for review.",
       "files": [
         "src/content/papers/gates.md",
         "src/content/papers/spellcheck.md",
@@ -159,7 +159,7 @@
       "id": "laws-of-coding-proposal",
       "status": "author-proposal",
       "pattern": "Laws of Coding|Laws of Computation|Laws of Programming Languages|Laws of Programming|layers of law|layer of law|axioms of motion|physical law|equation of motion",
-      "note": "David Charlot's proposal 'Laws of Coding', framed as conjecture in the RCE-JEPA thesis; 'axioms of motion' and 'equation of motion' refer to Newton as history. 'Laws of Computation' is framed as an open problem, not yet formalized. Four distinct named layers: \"Laws of Computation\", \"Laws of Programming Languages\", \"Laws of Programming\" (Hoare et al. 1987), \"Laws of Coding\"."
+      "note": "The RCE-JEPA proposal 'Laws of Coding', framed as conjecture in the RCE-JEPA thesis; 'axioms of motion' and 'equation of motion' refer to Newton as history. 'Laws of Computation' is framed as an open problem, not yet formalized. Four distinct named layers: \"Laws of Computation\", \"Laws of Programming Languages\", \"Laws of Programming\" (Hoare et al. 1987), \"Laws of Coding\"."
     },
     {
       "id": "rce-jepa-convergence-laws",

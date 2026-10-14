@@ -43,7 +43,7 @@ Energy figures are labeled by source. `est_j` is an analytical estimate. `report
 
 ![One sentence in. One floor out. Human intent is high entropy; a funnel of conversions from intent to spec to 626 surface languages to an intermediate representation to machine code loses information at each boundary; all code reaches a few machine shapes; RCE writes the meaning once in one canonical Form, treats every surface as a projection, and lets the cheapest correct form win.](/figures/rce/intent-entropy.svg)
 
-*Figure 1. Intent entropy and the machine floor. A [PNG copy](/figures/rce/intent-entropy.png) is provided. Sources: Shannon (1951); Lopes et al. (2017); the 626-language count is an unpublished survey by the author and supports no claim in this paper. The Python and C results are language specification behavior; C signed overflow is undefined behavior.*
+*Figure 1. Intent entropy and the machine floor. A [PNG copy](/figures/rce/intent-entropy.png) is provided. Sources: Shannon (1951); Lopes et al. (2017); the 626-language count is an unpublished survey by the OpenIE authors and supports no claim in this paper. The Python and C results are language specification behavior; C signed overflow is undefined behavior.*
 
 **Intent is high entropy.** "Make the checkout faster" carries many meanings: shorter page load, fewer steps, faster card approval, a cached cart, or faster on one device class. Context is implied and never written. Shannon measured printed English at about 0.6 to 1.3 bits per letter [1]. The letters are predictable. The meaning is not.
 
