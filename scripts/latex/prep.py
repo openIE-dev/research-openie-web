@@ -29,6 +29,8 @@ s = re.sub(r'\]\((/[^)]*)\)', r'](https://research.openie.dev\1)', s)
 s = re.sub(r'\]\(#', r'](https://research.openie.dev/papers/%s/#' % slug, s)
 s = re.sub(r'(?<![\w/])doi:(10\.\S+?)([.,;]?)(\s|$)', r'[doi:\1](https://doi.org/\1)\2\3', s)
 title = meta.get('title', slug).replace('\\"', '"')
+vm = re.search(r'^\*(Version [0-9.]+, [^.]+?\d{4})\.', s, re.M)
+ver = vm.group(1) if vm else 'Version 1.1, 11 October 2026'
 head = (f'---\ntitle: "{title}"\nauthor: "{meta.get("author","David Charlot")}"\n'
-        f'date: "Version 1.1, 11 October 2026. HTML: https://research.openie.dev/papers/{slug}/"\n---\n\n')
+        f'date: "{ver}. HTML: https://research.openie.dev/papers/{slug}/"\n---\n\n')
 open(f'{out}/{slug}.md', 'w').write(head + s)

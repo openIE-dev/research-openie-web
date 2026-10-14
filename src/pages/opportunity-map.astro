@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+const boards = [
+  {
+    file: '02_two_forms_of_intelligence',
+    title: 'Two forms of intelligence',
+    caption: 'The bolt-on keeps intelligence in weights re-run every time; the rebuild keeps it in a verified library paid for once. Qualitative: shapes of the argument, not measurements.',
+    alt: 'Schematic comparison of two approaches. A five-axis radar shows the rebuild drawn larger than a model on every task on energy per correct result, determinism, verification strength, reuse and compounding, and independence from models; no values are plotted. A line chart shows bolt-on cost per task flat each round while rebuild cost falls to a handler floor. A second chart shows model weights as a sawtooth that resets each release while a library of promoted fits climbs in steps. A table contrasts where intelligence lives, how it grows, what a task costs, what trust rests on, and what intelligence is. A references block at the bottom gives sources; unreferenced wording is labelled informed opinion.',
+    refs: [
+      "[1] OpenAI API deprecations page (platform.openai.com/docs/deprecations), read 2026-10-13: generally available models get at least 6 months' notice; gpt-5-2025-08-07 is set to shut down 2026-12-11 and gpt-4o-2024-05-13 is set to shut down 2026-10-23. Other table rows and both diagrams: informed opinion.",
+    ],
+  },
+  {
+    file: '03_the_stack_interface_by_interface',
+    title: 'The stack, interface by interface',
+    caption: 'For each of eleven interfaces, what the bolt-on reconstructs by inference and what the rebuild declares, with order of work. Row wording without a reference marker is informed opinion.',
+    alt: 'Table of eleven stack interfaces. For each: what the bolt-on reconstructs by inference, what the rebuild declares, and an order-of-work number from 1 to 4. A references block at the bottom gives sources; unreferenced wording is labelled informed opinion.',
+    refs: [
+      '[1] K. Natarajan, H. Hanson, S. W. Keckler, C. R. Moore and D. Burger, "Microprocessor Pipeline Energy Analysis: Speculation and Over-Provisioning," UT Austin TR-2003-20 (ISLPED 2003), doi:10.1145/871506.871577: simulated Alpha 21264, flushed instructions about 6% of dynamic power.',
+      '[2] J. L. Aragón, J. González and A. González, "Power-Aware Control Speculation through Selective Throttling," HPCA 2003: Wattch, 0.18 µm, 8-wide core, the 8 SPEC benchmarks with highest misprediction; 27.9% of power on mis-speculated instructions.',
+      '[3] Chatzopoulos et al., "Energy-Efficiency Analysis of RISC-V OoO CPUs," ISPASS 2024: SonicBOOM RTL power estimate, ASAP7 7 nm predictive PDK; TAGE predictor 18.8% to 28.8% of tile power.',
+      '[4] M. Horowitz, "Computing\'s Energy Problem (and what we can do about it)," ISSCC 2014, doi:10.1109/ISSCC.2014.6757323: in-order core, 45 nm, 70 pJ per instruction vs a few pJ for an operation.',
+      '[5] Linux kernel documentation, Power Capping Framework (powercap, Intel RAPL): package, core and uncore energy counters; no instantaneous power value.',
+      '[6] NVIDIA NVML, nvmlDeviceGetPowerUsage: GPU and associated circuitry; averaged over 1 s on Ampere (except GA100) and newer.',
+      '[7] C. Elsworth et al. (Google), "Measuring the environmental impact of delivering AI at Google scale," arXiv:2508.15734, 2025: median Gemini Apps text prompt 0.24 Wh, fleet power allocated per prompt.',
+      '[8] C. V. Lopes et al., "DéjàVu: A Map of Code Duplicates on GitHub," OOPSLA 2017, doi:10.1145/3133908: file-hash duplication, 85 million unique of over 428 million files.',
+    ],
+  },
+  {
+    file: '04_envelopes_and_who_pays_once',
+    title: 'Envelopes, and who pays once',
+    caption: 'Power envelopes from microwatts to gigawatts, with the 1 W to 50 kW target range, and who pays once instead of forever. Targets, not measurements; opinions are labelled.',
+    alt: 'Log-scale power axis from microwatts to gigawatts. TinyML sensors sit at the low end, GPU racks and hyperscale at the high end, and a dashed target range from 1 W to 50 kW in the middle, with dots for sensor, wearable, robot, edge server, server and rack. A second row marks published reference points: Jetson Orin Nano 7 to 25 W, typical racks 4 to 6 kW, DGX B200 14.3 kW, GB200 NVL72 rack about 120 kW, and planned 1 GW and 5 GW campuses. Below, a list of who would pay once instead of forever, and a paragraph describing the asset: a library of verified fits licensed as a commons. Opinions are labelled; references [1] to [6] at the bottom.',
+    refs: [
+      '[1] NVIDIA Jetson Linux Developer Guide r39.2.1, Orin power modes: Orin Nano power budgets 7 W, 10 W, 15 W, 25 W.',
+      '[2] Uptime Institute Global Data Center Survey 2024: average rack density below 8 kW; 4 to 6 kW racks most commonly deployed.',
+      '[3] NVIDIA DGX B200 user guide: system power about 14.3 kW maximum.',
+      '[4] NVIDIA DGX GB rack-scale user guide: NVL72 rack about 120 kW.',
+      '[5] Meta (M. Zuckerberg, 14 July 2025, as reported by DatacenterDynamics, S. Moss): Prometheus, multi-GW, online 2026; Hyperion to scale to 5 GW over several years. Plans, not measured load.',
+      '[6] ITU Facts and Figures 2025: 74% of the world online in 2025; more than a quarter offline; 23% online in low-income countries.',
+    ],
+  },
+];
+---
+<Layout title="Opportunity map | OpenIE Research" description="Three boards on where intelligence lives, the stack interface by interface, and power envelopes, each with its sources.">
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    <h1 class="font-display text-3xl text-brand-white">Opportunity map</h1>
+    <p class="mt-4 font-body text-sm text-brand-slate leading-relaxed">Three boards, 13 October 2026. They are qualitative: positions and shapes state an argument, not a measurement. A claim carries a reference marker where a source supports it; wording without one is labelled informed opinion on the board. The sources are listed under each board. Related paper: <a href="/papers/rce/">The Reality Code Engine</a>.</p>
+    {boards.map((b, i) => (
+      <section class="mt-12" id={b.file.slice(3).replace(/_/g, '-')}>
+        <h2 class="font-display text-xl text-brand-white">Board {i + 1}. {b.title}</h2>
+        <a href={`/figures/opportunity-map/${b.file}.png`}><img src={`/figures/opportunity-map/${b.file}.svg`} alt={b.alt} class="mt-4 w-full rounded-lg bg-white" loading="lazy" /></a>
+        <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed"><em>{b.caption} A <a href={`/figures/opportunity-map/${b.file}.png`}>PNG copy</a> is provided.</em></p>
+        <h3 class="mt-4 font-display text-base text-brand-white">Sources</h3>
+        <ul class="mt-2 list-none pl-0 font-body text-xs text-brand-slate leading-relaxed">
+          {b.refs.map((r) => <li class="mt-1">{r}</li>)}
+        </ul>
+      </section>
+    ))}
+  </main>
+</Layout>

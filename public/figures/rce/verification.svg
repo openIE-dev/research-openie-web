@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="950" viewBox="0 0 1200 950" role="img" aria-labelledby="t d"><title id="t">Verification at a glance</title><desc id="d">Summary of verification results. Engine tests at commit 1eb5f02: 589 pass, 0 fail, 2 ignored; make check prints 596 because it runs 7 proof tests twice. Lean 4: 2,192 theorems over 31 files with no sorry and only the axioms propext, Quot.sound and Classical.choice. WebAssembly checker: 401 of 401 checks. Bar chart of Kani 0.67.0: 10 of 10 kernel harnesses verified with 0 of 7,425 checks failed; checks per harness range from 216 for position_is_name_independent to 962 for handler_core_validate. Specification check: LALR(1) tables with 0 conflicts for version 0.5 (932 states) and versions 0.6 and 0.7 (1,110 states); 51 of 51 valid examples accepted, 12 of 12 syntax rejects and 64 of 64 ill-typed or inadmissible programs refused.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="948" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Verification at a glance</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Engine commit 1eb5f02; spec, Lean and WebAssembly checks at rce ac95172, with the same Lean, book and checker sources.</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<rect x="40.0" y="120.0" width="360.0" height="200.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="60.0" y="152.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">Engine tests (cargo test --release)</text>
+<text x="60.0" y="204.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="40" font-weight="800" fill="#0072B2" text-anchor="start">589 pass</text>
+<text x="60.0" y="234.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">0 failed, 2 ignored</text>
+<text x="60.0" y="256.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">make check prints 596: it runs 7 proof</text>
+<text x="60.0" y="278.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">tests twice (scripts/proofs.sh)</text>
+<rect x="420.0" y="120.0" width="360.0" height="200.0" rx="14" fill="#f8fafc" stroke="#009E73" stroke-width="3" opacity="1"/>
+<text x="440.0" y="152.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">Lean 4 (v4.12.0, no Mathlib)</text>
+<text x="440.0" y="204.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="40" font-weight="800" fill="#009E73" text-anchor="start">2,192 theorems</text>
+<text x="440.0" y="234.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">31 files, lake build, no sorry</text>
+<text x="440.0" y="256.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">axioms: propext, Quot.sound,</text>
+<text x="440.0" y="278.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">Classical.choice only</text>
+<rect x="800.0" y="120.0" width="360.0" height="200.0" rx="14" fill="#f8fafc" stroke="#E69F00" stroke-width="3" opacity="1"/>
+<text x="820.0" y="152.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">WebAssembly checker (wasm-test)</text>
+<text x="820.0" y="204.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="40" font-weight="800" fill="#E69F00" text-anchor="start">401 / 401</text>
+<text x="820.0" y="234.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">committed browser builds checked</text>
+<text x="820.0" y="256.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">against the example corpora</text>
+<text x="820.0" y="278.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">(tree-sitter wasm + checker-wasm)</text>
+<text x="40.0" y="360.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="start">Kani 0.67.0: 10 of 10 kernel harnesses verified, 0 of 7,425 checks failed</text>
+<text x="40.0" y="384.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">checks per harness (all passed)</text>
+<line x1="400.0" y1="400.0" x2="400.0" y2="704.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="400.0" y="722.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="middle">0</text>
+<line x1="560.0" y1="400.0" x2="560.0" y2="704.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="560.0" y="722.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="middle">250</text>
+<line x1="720.0" y1="400.0" x2="720.0" y2="704.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="720.0" y="722.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="middle">500</text>
+<line x1="880.0" y1="400.0" x2="880.0" y2="704.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="880.0" y="722.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="middle">750</text>
+<line x1="1040.0" y1="400.0" x2="1040.0" y2="704.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1040.0" y="722.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="middle">1,000</text>
+<text x="388.0" y="421.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="end" xml:space="preserve">fold_rejects_wrong_state</text>
+<rect x="400.0" y="404.0" width="467.2" height="22.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="875.2" y="421.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">730</text>
+<text x="388.0" y="451.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="end" xml:space="preserve">fold_equals_replay</text>
+<rect x="400.0" y="434.0" width="506.2" height="22.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="914.2" y="451.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">791</text>
+<text x="388.0" y="481.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="end" xml:space="preserve">handler_core_ifhas</text>
+<rect x="400.0" y="464.0" width="605.4" height="22.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="1013.4" y="481.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">946</text>
+<text x="388.0" y="511.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="end" xml:space="preserve">handler_core_pipeline</text>
+<rect x="400.0" y="494.0" width="613.8" height="22.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="1021.8" y="511.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">959</text>
+<text x="388.0" y="541.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="end" xml:space="preserve">handler_core_validate</text>
+<rect x="400.0" y="524.0" width="615.7" height="22.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="1023.7" y="541.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">962</text>
+<text x="388.0" y="571.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="end" xml:space="preserve">handler_core_leaves</text>
+<rect x="400.0" y="554.0" width="601.0" height="22.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="1009.0" y="571.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">939</text>
+<text x="388.0" y="601.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="end" xml:space="preserve">reason_tokens_are_name_independent</text>
+<rect x="400.0" y="584.0" width="433.3" height="22.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="841.3" y="601.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">677</text>
+<text x="388.0" y="631.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="end" xml:space="preserve">position_is_name_independent</text>
+<rect x="400.0" y="614.0" width="138.2" height="22.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="546.2" y="631.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">216</text>
+<text x="388.0" y="661.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="end" xml:space="preserve">chain_detects_tampering</text>
+<rect x="400.0" y="644.0" width="436.5" height="22.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="844.5" y="661.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">682</text>
+<text x="388.0" y="691.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="end" xml:space="preserve">chain_appended_verifies</text>
+<rect x="400.0" y="674.0" width="334.7" height="22.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="742.7" y="691.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">523</text>
+<line x1="40.0" y1="746.0" x2="1160.0" y2="746.0" stroke="#e2e8f0" stroke-width="2"/>
+<text x="40.0" y="774.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="start">Specification check (rce-spec-check, default build)</text>
+<text x="40.0" y="810.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">LALR(1), version 0.5:</text>
+<text x="310.0" y="810.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#CC79A7" text-anchor="start">932 states, 0 conflicts</text>
+<text x="610.0" y="810.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">LALR(1), versions 0.6 and 0.7:</text>
+<text x="880.0" y="810.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#CC79A7" text-anchor="start">1,110 states, 0 conflicts</text>
+<text x="40.0" y="840.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">valid examples accepted:</text>
+<text x="310.0" y="840.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">51 of 51 (0.5); 51 of 51 (0.6 cases)</text>
+<text x="610.0" y="840.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">syntax rejects refused:</text>
+<text x="880.0" y="840.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">12 of 12 (0.5); 17 of 17 (0.6)</text>
+<text x="40.0" y="870.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">ill-typed or inadmissible refused:</text>
+<text x="310.0" y="870.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">64 of 64 (16 inadmissible)</text>
+<text x="40.0" y="930.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">Tree-sitter cross-checks need the tree-sitter CLI and were not rerun here.</text></svg>

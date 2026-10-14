@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="920" viewBox="0 0 1200 920" role="img" aria-labelledby="t d"><title id="t">Version gates: the first line fixes the meaning</title><desc id="d">Diagram. Three version cards. Version 0.5, no declaration: the language of sections 2 to 10, with no budgets. Version 0.6, first line # rce-version: 0.6: version 0.5 plus Appendix C, where 23 words become keywords and par, for par, with budget, workgroups, LVars, sessions and supervisors are added; a standard library method costs c_call, 4. Version 0.7, first line # rce-version: 0.7: the syntax and rules of 0.6 with one difference, method cost 4 plus work(m, n, k). Errata apply to every version. Below, the per-call-site rule: a 0.6 module under a budget calls a function in a 0.7 module that sorts 8 elements; the sort is charged 4 plus 24 because it is written in the 0.7 module, so the call costs 24 more than the same call into a 0.6 function.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="918" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Version gates: the first line fixes the meaning</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Each module declares its version (spec 2.7, C.15). A change of meaning gets a new version, never a silent change.</text>
+<rect x="1072.5" y="26" width="87.5" height="34" rx="17" fill="none" stroke="#CC79A7" stroke-width="2"/>
+<text x="1116.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#CC79A7" text-anchor="middle">Diagram</text>
+<rect x="40.0" y="130.0" width="350.0" height="340.0" rx="14" fill="#f8fafc" stroke="#94a3b8" stroke-width="3" opacity="1"/>
+<text x="60.0" y="170.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#0f172a" text-anchor="start">version 0.5</text>
+<rect x="60.0" y="188.0" width="310.0" height="34.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" opacity="1"/>
+<text x="70.0" y="211.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve">(none)</text>
+<text x="60.0" y="258.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start">the language of</text>
+<text x="60.0" y="282.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start">sections 2 to 10</text>
+<text x="60.0" y="306.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start"></text>
+<text x="60.0" y="330.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start">no budgets</text>
+<line x1="60.0" y1="392.0" x2="370.0" y2="392.0" stroke="#e2e8f0" stroke-width="2"/>
+<text x="60.0" y="420.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#475569" text-anchor="start">standard library method cost</text>
+<text x="60.0" y="448.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#475569" text-anchor="start">no budget to charge</text>
+<line x1="392.0" y1="300.0" x2="418.0" y2="300.0" stroke="#0f172a" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="420.0" y="130.0" width="350.0" height="340.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="440.0" y="170.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#0f172a" text-anchor="start">version 0.6</text>
+<rect x="440.0" y="188.0" width="310.0" height="34.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" opacity="1"/>
+<text x="450.0" y="211.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve"># rce-version: 0.6</text>
+<text x="440.0" y="258.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start">0.5 plus Appendix C:</text>
+<text x="440.0" y="282.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start">23 words become keywords;</text>
+<text x="440.0" y="306.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start">par, for … par, with budget,</text>
+<text x="440.0" y="330.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start">workgroups, LVars,</text>
+<text x="440.0" y="354.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start">sessions, supervisors</text>
+<line x1="440.0" y1="392.0" x2="750.0" y2="392.0" stroke="#e2e8f0" stroke-width="2"/>
+<text x="440.0" y="420.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#475569" text-anchor="start">standard library method cost</text>
+<text x="440.0" y="448.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="18" font-weight="800" fill="#0072B2" text-anchor="start" xml:space="preserve">c_call = 4</text>
+<line x1="772.0" y1="300.0" x2="798.0" y2="300.0" stroke="#0f172a" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="800.0" y="130.0" width="350.0" height="340.0" rx="14" fill="#f8fafc" stroke="#D55E00" stroke-width="3" opacity="1"/>
+<text x="820.0" y="170.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#0f172a" text-anchor="start">version 0.7</text>
+<rect x="820.0" y="188.0" width="310.0" height="34.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" opacity="1"/>
+<text x="830.0" y="211.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve"># rce-version: 0.7</text>
+<text x="820.0" y="258.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start">syntax and rules of 0.6;</text>
+<text x="820.0" y="282.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start">the one difference:</text>
+<text x="820.0" y="306.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start">size-scaled method costs</text>
+<text x="820.0" y="330.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="start">(C.6.4)</text>
+<line x1="820.0" y1="392.0" x2="1130.0" y2="392.0" stroke="#e2e8f0" stroke-width="2"/>
+<text x="820.0" y="420.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#475569" text-anchor="start">standard library method cost</text>
+<text x="820.0" y="448.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="18" font-weight="800" fill="#D55E00" text-anchor="start" xml:space="preserve">4 + work(m, n, k)</text>
+<text x="40.0" y="500.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Errata apply to every version: saturating budget arithmetic; closed standard library; &amp;mut write-back on fail (T33);</text>
+<text x="40.0" y="522.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">u64 at or above 2^63 exact; literal typing in fallible returns. Not part of any program’s meaning: the hash-chained log format, est_j receipts.</text>
+<line x1="40.0" y1="556.0" x2="1160.0" y2="556.0" stroke="#e2e8f0" stroke-width="2"/>
+<text x="40.0" y="590.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="start">Which version governs a cost: the module that contains the call expression</text>
+<rect x="40.0" y="614.0" width="520.0" height="190.0" rx="12" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="60.0" y="642.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start" xml:space="preserve">main.rce</text>
+<text x="60.0" y="668.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#0072B2" text-anchor="start" xml:space="preserve"># rce-version: 0.6</text>
+<text x="60.0" y="692.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">use costs.lib</text>
+<text x="60.0" y="716.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">fn go() -&gt; i64</text>
+<text x="60.0" y="740.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">    with budget B</text>
+<text x="60.0" y="764.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">        r = lib.sorted(1)</text>
+<rect x="620.0" y="614.0" width="540.0" height="190.0" rx="12" fill="#f8fafc" stroke="#D55E00" stroke-width="3" opacity="1"/>
+<text x="640.0" y="642.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start" xml:space="preserve">lib.rce</text>
+<text x="640.0" y="668.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="13.5" font-weight="600" fill="#D55E00" text-anchor="start" xml:space="preserve"># rce-version: 0.7</text>
+<text x="640.0" y="692.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="13.5" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">module costs.lib</text>
+<text x="640.0" y="716.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="13.5" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">pub fn sorted(n: i64) -&gt; i64</text>
+<text x="640.0" y="740.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="13.5" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">    var xs: List[i64] = [5, 3, 9, 1, 7, 2, 8, 4]</text>
+<text x="640.0" y="764.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="13.5" font-weight="600" fill="#D55E00" text-anchor="start" xml:space="preserve">    xs.sort()   # 4 + 8·⌈log₂ 8⌉ = 4 + 24</text>
+<path d="M562 764 C 590 764, 590 740, 616 740" stroke="#0f172a" stroke-width="2.5" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<text x="40.0" y="840.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">Result (C.15 example): the budget is charged 24 more than the same call into an identical function declared in a 0.6 module.</text>
+<text x="40.0" y="864.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">The rule is lexical, closures included, so linking modules changes no cost. Checked in the reference evaluator and the emitted</text>
+<text x="40.0" y="886.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Rust, Python and JavaScript programs. Listings abridged from spec/checker/tests/call_site_cost.rs.</text></svg>

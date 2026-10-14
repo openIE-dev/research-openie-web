@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="840" viewBox="0 0 1200 840" role="img" aria-labelledby="t d"><title id="t">One Form, five targets, one reference trace</title><desc id="d">Diagram in two lanes. Top lane, the engine compiler rce form: a .rce handler spec and its fit are lowered, saturated and extracted by est_j into the Form IR, which is projected to five targets: a Rust crate, WASM, Python, XState v5 and SCXML run by SCION. All five print the reference trace byte for byte on 529 events in tests/form_targets.rs; this is claim T9-F, established by differential testing. Bottom lane, the language command rce emit: a checked .rce module is emitted as form JSON, Rust, Python or JavaScript; claim T9-L, proved for the Rust emitter on a core as a verified translation into MiniRust, and tested for Python and JavaScript.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="838" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">One Form, five targets, one reference trace</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Two compilers, two claims: rce form projects the Form IR (T9-F); rce emit translates a checked module (T9-L).</text>
+<rect x="1072.5" y="26" width="87.5" height="34" rx="17" fill="none" stroke="#CC79A7" stroke-width="2"/>
+<text x="1116.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#CC79A7" text-anchor="middle">Diagram</text>
+<text x="40.0" y="140.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0072B2" text-anchor="start">Engine: rce form</text>
+<text x="240.0" y="140.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#D55E00" text-anchor="start">T9-F, tested</text>
+<rect x="40.0" y="170.0" width="250.0" height="110.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="165.0" y="200.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">.rce spec + fit</text>
+<text x="165.0" y="226.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">handler spec and</text>
+<text x="165.0" y="248.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">the fit that fills it</text>
+<rect x="40.0" y="360.0" width="250.0" height="130.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="165.0" y="390.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#0f172a" text-anchor="middle">Form IR</text>
+<text x="165.0" y="416.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">state, events,</text>
+<text x="165.0" y="438.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">pure total δ,</text>
+<text x="165.0" y="460.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">SHA-256 rule ids</text>
+<line x1="165.0" y1="282.0" x2="165.0" y2="352.0" stroke="#0f172a" stroke-width="3" marker-end="url(#ah)"/>
+<text x="180.0" y="322.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">lower, saturate,</text>
+<text x="180.0" y="340.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">extract by est_j</text>
+<rect x="420.0" y="150.0" width="300.0" height="60.0" rx="12" fill="#f8fafc" stroke="#009E73" stroke-width="3" opacity="1"/>
+<text x="570.0" y="187.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">Rust crate</text>
+<path d="M292 425 C 360 425, 360 180, 414 180" stroke="#0f172a" stroke-width="2.5" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<line x1="724.0" y1="180.0" x2="770.0" y2="180.0" stroke="#009E73" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="420.0" y="230.0" width="300.0" height="60.0" rx="12" fill="#f8fafc" stroke="#009E73" stroke-width="3" opacity="1"/>
+<text x="570.0" y="267.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">WASM (wasm32-wasip1)</text>
+<path d="M292 425 C 360 425, 360 260, 414 260" stroke="#0f172a" stroke-width="2.5" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<line x1="724.0" y1="260.0" x2="770.0" y2="260.0" stroke="#009E73" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="420.0" y="310.0" width="300.0" height="60.0" rx="12" fill="#f8fafc" stroke="#009E73" stroke-width="3" opacity="1"/>
+<text x="570.0" y="347.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">Python (standard library only)</text>
+<path d="M292 425 C 360 425, 360 340, 414 340" stroke="#0f172a" stroke-width="2.5" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<line x1="724.0" y1="340.0" x2="770.0" y2="340.0" stroke="#009E73" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="420.0" y="390.0" width="300.0" height="60.0" rx="12" fill="#f8fafc" stroke="#009E73" stroke-width="3" opacity="1"/>
+<text x="570.0" y="427.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">XState v5</text>
+<path d="M292 425 C 360 425, 360 420, 414 420" stroke="#0f172a" stroke-width="2.5" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<line x1="724.0" y1="420.0" x2="770.0" y2="420.0" stroke="#009E73" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="420.0" y="470.0" width="300.0" height="60.0" rx="12" fill="#f8fafc" stroke="#009E73" stroke-width="3" opacity="1"/>
+<text x="570.0" y="507.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="middle">SCXML (run by SCION)</text>
+<path d="M292 425 C 360 425, 360 500, 414 500" stroke="#0f172a" stroke-width="2.5" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<line x1="724.0" y1="500.0" x2="770.0" y2="500.0" stroke="#009E73" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="780.0" y="150.0" width="380.0" height="380.0" rx="14" fill="#ffffff" stroke="#009E73" stroke-width="3" opacity="1" stroke-dasharray="8 6"/>
+<text x="970.0" y="190.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#009E73" text-anchor="middle">Same reference trace</text>
+<text x="970.0" y="226.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="middle">All five print the Form’s</text>
+<text x="970.0" y="252.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="middle">reference trace byte for byte</text>
+<text x="970.0" y="278.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="middle">on 529 events: 29 edge events</text>
+<text x="970.0" y="304.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="middle">plus 500 seeded edge values,</text>
+<text x="970.0" y="330.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="middle">eleven-operator specification</text>
+<text x="970.0" y="356.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#0f172a" text-anchor="middle">(tests/form_targets.rs).</text>
+<text x="970.0" y="382.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle"></text>
+<text x="970.0" y="408.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">Differential testing on that</text>
+<text x="970.0" y="434.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">input set; not a verified</text>
+<text x="970.0" y="460.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">compiler.</text>
+<line x1="40.0" y1="560.0" x2="1160.0" y2="560.0" stroke="#e2e8f0" stroke-width="2"/>
+<text x="40.0" y="600.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0072B2" text-anchor="start">Language: rce emit TARGET FILE</text>
+<text x="400.0" y="600.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#D55E00" text-anchor="start">T9-L</text>
+<rect x="40.0" y="630.0" width="250.0" height="110.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="165.0" y="660.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">.rce module</text>
+<text x="165.0" y="686.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">passes rce check</text>
+<text x="165.0" y="708.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">on its own</text>
+<rect x="360.0" y="630.0" width="180.0" height="110.0" rx="12" fill="#f8fafc" stroke="#CC79A7" stroke-width="3" opacity="1"/>
+<text x="450.0" y="662.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle" xml:space="preserve">form</text>
+<text x="450.0" y="688.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">Form as canonical JSON</text>
+<rect x="560.0" y="630.0" width="180.0" height="110.0" rx="12" fill="#f8fafc" stroke="#56B4E9" stroke-width="3" opacity="1"/>
+<text x="650.0" y="662.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle" xml:space="preserve">rust</text>
+<text x="650.0" y="688.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">Rust 2024 source</text>
+<text x="650.0" y="720.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">proved on a core (MiniRust)</text>
+<rect x="760.0" y="630.0" width="180.0" height="110.0" rx="12" fill="#f8fafc" stroke="#D55E00" stroke-width="3" opacity="1"/>
+<text x="850.0" y="662.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle" xml:space="preserve">python</text>
+<text x="850.0" y="688.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">Python 3 source</text>
+<text x="850.0" y="720.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">tested</text>
+<rect x="960.0" y="630.0" width="180.0" height="110.0" rx="12" fill="#f8fafc" stroke="#D55E00" stroke-width="3" opacity="1"/>
+<text x="1050.0" y="662.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle" xml:space="preserve">js</text>
+<text x="1050.0" y="688.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">JavaScript module, Node</text>
+<text x="1050.0" y="720.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">tested</text>
+<path d="M292 685 L354 685" stroke="#0f172a" stroke-width="2.5" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<text x="40.0" y="780.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">rust, python and js translate the checked module (not the Form) and agree with the reference evaluator.</text>
+<text x="40.0" y="802.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Rust: verified translation into MiniRust on a core; that rustc implements MiniRust is trusted and tested. A target outside these sets has no T9 claim.</text>
+<text x="40.0" y="840.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Box colour: green = trace checked by test; sky = proof on a core; vermilion = tested; pink = serialization.</text></svg>
