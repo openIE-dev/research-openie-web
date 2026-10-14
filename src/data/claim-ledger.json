@@ -158,8 +158,17 @@
     {
       "id": "laws-of-coding-proposal",
       "status": "author-proposal",
-      "pattern": "Laws of Coding|axioms of motion|physical law|equation of motion",
-      "note": "David Charlot's proposal 'Laws of Coding', framed as conjecture in the RCE-JEPA thesis; 'axioms of motion' and 'equation of motion' refer to Newton as history."
+      "pattern": "Laws of Coding|Laws of Computation|Laws of Programming Languages|Laws of Programming|layers of law|layer of law|axioms of motion|physical law|equation of motion",
+      "note": "David Charlot's proposal 'Laws of Coding', framed as conjecture in the RCE-JEPA thesis; 'axioms of motion' and 'equation of motion' refer to Newton as history. 'Laws of Computation' is framed as an open problem, not yet formalized. Four distinct named layers: \"Laws of Computation\", \"Laws of Programming Languages\", \"Laws of Programming\" (Hoare et al. 1987), \"Laws of Coding\"."
+    },
+    {
+      "id": "rce-jepa-convergence-laws",
+      "status": "reference title",
+      "files": [
+        "src/components/RceJepaThesis.astro"
+      ],
+      "pattern": "Laws of Programming|[Ff]undamental [Ll]aws of [Cc]omputation|Embracing the laws of physics|set of laws as rich and elegant|algebraic laws for a programming language|empirical laws of software evolution|Lehman's laws of software evolution|computation should have laws of their own|proposing laws for the field|Algebraic laws of correct program construction|Nearly one hundred laws for a small language|benchmarks, no laws|Layer of law tested",
+      "note": "Titles and described content of cited prior work (Hoare et al. 1987, McKee 1995, Carette et al. 2022, Lehman 1980) in the RCE-JEPA convergence section; not claims of ours."
     }
   ]
 }
