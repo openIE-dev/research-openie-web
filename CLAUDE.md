@@ -57,3 +57,7 @@ Production: Tailscale `100.64.224.0` (Mac Studio) via Cloudflare Tunnel → Cadd
 Authoritative study prose often originates from `wca-lut-edge/artifacts/*_STUDY.md`.
 Copy/clean into `src/content/papers/` then regenerate PDFs.
 Figure shells often originate from `wca-lut-edge/artifacts/living/` → `public/living/`.
+
+## Writing rule: define before use
+
+Readers read top to bottom, so nothing on a page may be referenced before it is introduced. Labelled items (H#, RJ-F#, Part #, Phase #, W#, Section #, Figure #) must ascend as a reader meets them; [B#], [C#] and [T#] citations are numbered in order of first citation; every acronym is expanded at first use or listed in the page's terms list (id="terms") before it is used. `node scripts/lint-order.mjs` checks this on the built HTML (currently /about/rce-jepa/) and runs at the end of `pnpm build`.

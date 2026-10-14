@@ -24,7 +24,7 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
       <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">In plain words</p>
       <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
         <li>People have tried for seventy years to get computers to write programs from a description. Each attempt fixed one part of the problem and left another part manual.</li>
-        <li>Today's AI writes code one word piece at a time, in any shape, and often gets it wrong. A fixed program shape plus a strict checker turns "write anything" into "fill in a known shape, then get a yes or no".</li>
+        <li>Today's AI (artificial intelligence) writes code one word piece at a time, in any shape, and often gets it wrong. A fixed program shape plus a strict checker turns "write anything" into "fill in a known shape, then get a yes or no".</li>
         <li>The AI only proposes; the checker decides. So safety does not depend on the AI being right, and the cost that counts is the electricity spent per program that actually passes.</li>
         <li>Before Newton, people could watch the planets but not predict them from a few rules. AI coding is in that position now. A program that always does the same thing from the same start, in a compact standard form, could be predicted, and its energy cost counted, before it runs. That is a conjecture, and the tests are listed below.</li>
       </ol>
@@ -40,6 +40,69 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
       <li>Every accepted program form is replayable bit for bit.</li>
       <li>Any decision model, hosted or local, is only a proposer outside the gate.</li>
     </ul>
+
+    <h2 id="terms-heading">Terms and acronyms used on this page</h2>
+    <p>Listed here so that each is defined before it is used. Acronyms that appear only inside reference entries (venues, report series) are not listed.</p>
+    <ul id="terms" class="list-none pl-0">
+      <li>AGX: NVIDIA's Jetson AGX line of embedded computers</li>
+      <li>AILANG: a programming language for AI-written code (a project name)</li>
+      <li>AIXI: Hutter's theoretical model of a universally intelligent agent</li>
+      <li>ANDF: Architecture Neutral Distribution Format</li>
+      <li>BLAKE3: a cryptographic hash function</li>
+      <li>BLEU: bilingual evaluation understudy, a text-overlap score</li>
+      <li>CALM: consistency as logical monotonicity</li>
+      <li>CEGIS: counterexample-guided inductive synthesis</li>
+      <li>CPU: central processing unit</li>
+      <li>CUDA: NVIDIA's GPU programming platform</li>
+      <li>DBOS: a durable-execution system (a project name)</li>
+      <li>DIR: a directory path given to a command</li>
+      <li>EB-JEPA: an energy-based JEPA library (a project name)</li>
+      <li>EWD: the numbered manuscript series of Edsger W. Dijkstra</li>
+      <li>ESBMC: efficient SMT-based bounded model checker</li>
+      <li>FAIR: Meta's Fundamental AI Research group</li>
+      <li>GPT: generative pre-trained transformer, OpenAI's model family</li>
+      <li>GPU: graphics processing unit</li>
+      <li>IBM: International Business Machines</li>
+      <li>ICOT: Institute for New Generation Computer Technology (Japan)</li>
+      <li>IEEE: Institute of Electrical and Electronics Engineers</li>
+      <li>JACM: Journal of the ACM (Association for Computing Machinery)</li>
+      <li>MDE: model-driven engineering</li>
+      <li>MLIPS: million logical inferences per second</li>
+      <li>MLIR: multi-level intermediate representation</li>
+      <li>NAIL: a canonical-form programming language (a project name)</li>
+      <li>NVIDIA: a maker of GPUs</li>
+      <li>OMG: Object Management Group</li>
+      <li>PAR: pattern-based automatic program repair</li>
+      <li>PTX: NVIDIA's parallel thread execution instruction set</li>
+      <li>RAND RM: a RAND Corporation research memorandum</li>
+      <li>RAPL: Intel's running average power limit energy counters</li>
+      <li>README: a repository's front-page documentation file</li>
+      <li>RFC: request for comments, an Internet standards document</li>
+      <li>RISC-V: an open reduced instruction set computer architecture</li>
+      <li>RJ-F: label of a falsifier of the RCE-JEPA premise</li>
+      <li>SAT: Boolean satisfiability</li>
+      <li>SHA-256: secure hash algorithm with a 256-bit digest</li>
+      <li>STAN-CS: Stanford computer science technical report series</li>
+      <li>STOP: self-taught optimizer</li>
+      <li>TOPLAS: ACM Transactions on Programming Languages and Systems</li>
+      <li>UNCOL: universal computer-oriented language</li>
+      <li>VAX: Digital Equipment Corporation's virtual address extension computers</li>
+      <li>XML: extensible markup language</li>
+    </ul>
+
+    <h2 id="outline">How this page is organized</h2>
+    <p>The page is meant to be read top to bottom. After the hypotheses and falsifiers at a glance, it has these parts, in this order:</p>
+    <ol class="list-none pl-0">
+      <li>What already exists, and what this page is about (the proposer section)</li>
+      <li>The thesis, in five parts: Part 1, computation as a finite information system; Part 2, compression into Form and template; Part 3, kinematics; Part 4, a world model whose physics is known exactly; Part 5, consequences as testable predictions</li>
+      <li>Convergence by commitment</li>
+      <li>Section 1. History: seventy years of "say what you want, get the program"</li>
+      <li>Section 2. Why the earlier attempts stalled</li>
+      <li>Section 3. Current attempts</li>
+      <li>Section 4. Why now</li>
+      <li>Section 5. One concrete instance: the Reality Code Engine, with the hypotheses table and the falsifiers</li>
+      <li>Status and references</li>
+    </ol>
 
     <h2 id="hypotheses-overview">Hypotheses at a glance</h2>
     <p>The page tests thirteen hypotheses, H1 to H13, listed here in full before any of them is discussed. Each is stated with its metric and thresholds in one table in <a href="#hypotheses">Section 5</a>, followed by the falsifiers RJ-F1 to RJ-F5.</p>
@@ -59,6 +122,16 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
       <li>H13. A discrete latent plans better than a continuous one over long edit sequences.</li>
     </ol>
 
+    <h2 id="falsifiers-overview">Falsifiers at a glance</h2>
+    <p>Five observations that would defeat part of the premise, stated in full in Section 5 after the hypotheses they test.</p>
+    <ol class="list-none pl-0">
+      <li>RJ-F1. Lift coverage plateaus below 80% on any of the five target languages.</li>
+      <li>RJ-F2. Writing the intent specifications for the reference applications costs more than writing their Forms by hand.</li>
+      <li>RJ-F3. H3 fails while the token arm passes at the same gate.</li>
+      <li>RJ-F4. H11 fails and search does not reach accepted Forms within the beam budget.</li>
+      <li>RJ-F5. The decision head's calibration never beats a frequency table over shape hashes.</li>
+    </ol>
+
     <RceJepaProposer />
 
     <RceJepaThesis />
@@ -69,7 +142,7 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
     <p>The wish behind this topic is old. What has changed is which parts of it are now cheap. The timeline below lists the main attempts; the text after it says what each one achieved and where it stopped.</p>
     <figure class="mt-6 glass-card p-4 fig-wide not-prose">
       <a class="fig-zoom" href="/figures/rce-jepa/timeline.svg" aria-label="Enlarge figure"><picture><source type="image/svg+xml" srcset="/figures/rce-jepa/timeline.svg" /><img src="/figures/rce-jepa/timeline.png" alt="Timeline from FORTRAN in 1954 through deductive synthesis, program derivation, fourth-generation languages and CASE tools, the Fifth Generation project, No Silver Bullet, refinement methods and Model Driven Architecture, verified systems CompCert and seL4, large language model code generation, constrained decoding and verifier loops, to the open question of learned proposers with deterministic checkers" width="632" height="534" class="fig-img w-full rounded bg-white" loading="lazy" decoding="async" /></picture></a>
-      <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Figure 2. Attempts to turn a statement of intent into a working program. CASE means computer-aided software engineering; UML means Unified Modeling Language; Z, B and VDM (Vienna Development Method) are mathematical specification methods; Coq is a proof assistant. Green: machine-checked systems. Amber: learned models. Blue: the question this topic studies. <span class="fig-links"><a href="/figures/rce-jepa/timeline.svg" target="_blank" rel="noopener">Open full size</a> · <a href="/figures/rce-jepa/timeline.png">PNG</a></span>.</figcaption>
+      <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Figure 9. Attempts to turn a statement of intent into a working program. CASE means computer-aided software engineering; UML means Unified Modeling Language; Z, B and VDM (Vienna Development Method) are mathematical specification methods; Coq is a proof assistant. Green: machine-checked systems. Amber: learned models. Blue: the question this topic studies. <span class="fig-links"><a href="/figures/rce-jepa/timeline.svg" target="_blank" rel="noopener">Open full size</a> · <a href="/figures/rce-jepa/timeline.png">PNG</a></span>.</figcaption>
     </figure>
     <ul>
       <li><strong>Automatic programming, 1950s.</strong> FORTRAN (FORmula TRANslation) was presented as "The FORTRAN Automatic Coding System". Its authors wrote that its purpose was to let the IBM 704 "code problems for itself and produce as good programs as human coders (but without the errors)" (Backus et al., 1957, p. 188; PDF p. 2). Example: a scientist wrote a formula; the system wrote the machine code. Today that is called a compiler, not automatic programming.</li>
@@ -203,7 +276,7 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
 
     <h2>References</h2>
     <p>Each source carries a reading label. <strong>Full:</strong> read in full. <strong>Partial:</strong> the full text was retrieved and searched for the quoted passages, which were checked in their surrounding text, but the whole work was not read. <strong>Unavailable:</strong> not obtained. "PDF p." gives the page in the linked copy; Sec. gives the section.</p>
-    <ul>
+    <ul data-refs>
       <li>Assran et al. 2023. Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture. CVPR. <a href="https://arxiv.org/abs/2301.08243">arXiv:2301.08243</a>. Full.</li>
       <li>Assran et al. 2025. V-JEPA 2. <a href="https://arxiv.org/abs/2506.09985">arXiv:2506.09985</a>. Full.</li>
       <li>Backus et al. 1957. The FORTRAN Automatic Coding System. Western Joint Computer Conference. <a href="https://archive.computerhistory.org/resources/text/Fortran/102663113.05.01.acc.pdf">Computer History Museum copy</a>. Full.</li>

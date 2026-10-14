@@ -4,8 +4,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/lint-claims.mjs && astro build --force",
+    "build": "node scripts/lint-claims.mjs && astro build --force && node scripts/lint-order.mjs",
     "lint:claims": "node scripts/lint-claims.mjs",
+    "lint:order": "node scripts/lint-order.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
