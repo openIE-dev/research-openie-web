@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 938" width="1400" height="938" font-family="Inter, Helvetica, Arial, sans-serif">
-<rect width="1400" height="938" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1010" width="1400" height="1010" font-family="Inter, Helvetica, Arial, sans-serif">
+<rect width="1400" height="1010" fill="#ffffff"/>
 <text x="20" y="34" font-size="22" font-weight="700" fill="#111">Convergence by commitment: verified outside projects</text>
 <text x="20" y="58" font-size="14" fill="#444">A dot marks a commitment the project's own primary source states. Observation, not a score. RCE is not drawn.</text>
 <text x="405.0" y="106" font-size="13" font-weight="600" fill="#222" text-anchor="middle">1 Canonical form</text>
@@ -112,7 +112,7 @@
 <circle cx="1155.0" cy="396.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="396.0" r="2" fill="#bbb"/>
 <rect x="10" y="408" width="1380" height="24" fill="#f3f4f6"/>
-<text x="20" y="424" font-size="13" fill="#111">AILANG</text>
+<text x="20" y="424" font-size="13" fill="#111">FoundationDB simulation</text>
 <circle cx="405.0" cy="420.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="420.0" r="7" fill="#b45309"/>
 <circle cx="705.0" cy="420.0" r="2" fill="#bbb"/>
@@ -120,7 +120,7 @@
 <circle cx="1005.0" cy="420.0" r="2" fill="#bbb"/>
 <circle cx="1155.0" cy="420.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="420.0" r="2" fill="#bbb"/>
-<text x="20" y="448" font-size="13" fill="#111">agent-scroll</text>
+<text x="20" y="448" font-size="13" fill="#111">musil</text>
 <circle cx="405.0" cy="444.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="444.0" r="7" fill="#b45309"/>
 <circle cx="705.0" cy="444.0" r="2" fill="#bbb"/>
@@ -129,24 +129,24 @@
 <circle cx="1155.0" cy="444.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="444.0" r="2" fill="#bbb"/>
 <rect x="10" y="456" width="1380" height="24" fill="#f3f4f6"/>
-<text x="20" y="472" font-size="13" fill="#111">MLIR</text>
+<text x="20" y="472" font-size="13" fill="#111">AILANG</text>
 <circle cx="405.0" cy="468.0" r="2" fill="#bbb"/>
-<circle cx="555.0" cy="468.0" r="2" fill="#bbb"/>
-<circle cx="705.0" cy="468.0" r="7" fill="#b45309"/>
+<circle cx="555.0" cy="468.0" r="7" fill="#b45309"/>
+<circle cx="705.0" cy="468.0" r="2" fill="#bbb"/>
 <circle cx="855.0" cy="468.0" r="2" fill="#bbb"/>
 <circle cx="1005.0" cy="468.0" r="2" fill="#bbb"/>
 <circle cx="1155.0" cy="468.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="468.0" r="2" fill="#bbb"/>
-<text x="20" y="496" font-size="13" fill="#111">Model Driven Architecture</text>
+<text x="20" y="496" font-size="13" fill="#111">agent-scroll</text>
 <circle cx="405.0" cy="492.0" r="2" fill="#bbb"/>
-<circle cx="555.0" cy="492.0" r="2" fill="#bbb"/>
-<circle cx="705.0" cy="492.0" r="7" fill="#b45309"/>
-<circle cx="855.0" cy="492.0" r="7" fill="#b45309"/>
+<circle cx="555.0" cy="492.0" r="7" fill="#b45309"/>
+<circle cx="705.0" cy="492.0" r="2" fill="#bbb"/>
+<circle cx="855.0" cy="492.0" r="2" fill="#bbb"/>
 <circle cx="1005.0" cy="492.0" r="2" fill="#bbb"/>
 <circle cx="1155.0" cy="492.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="492.0" r="2" fill="#bbb"/>
 <rect x="10" y="504" width="1380" height="24" fill="#f3f4f6"/>
-<text x="20" y="520" font-size="13" fill="#111">Protocol Buffers, Lumos</text>
+<text x="20" y="520" font-size="13" fill="#111">MLIR</text>
 <circle cx="405.0" cy="516.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="516.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="516.0" r="7" fill="#b45309"/>
@@ -154,16 +154,16 @@
 <circle cx="1005.0" cy="516.0" r="2" fill="#bbb"/>
 <circle cx="1155.0" cy="516.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="516.0" r="2" fill="#bbb"/>
-<text x="20" y="544" font-size="13" fill="#111">Forge (2026)</text>
+<text x="20" y="544" font-size="13" fill="#111">Model Driven Architecture</text>
 <circle cx="405.0" cy="540.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="540.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="540.0" r="7" fill="#b45309"/>
-<circle cx="855.0" cy="540.0" r="2" fill="#bbb"/>
-<circle cx="1005.0" cy="540.0" r="7" fill="#b45309"/>
+<circle cx="855.0" cy="540.0" r="7" fill="#b45309"/>
+<circle cx="1005.0" cy="540.0" r="2" fill="#bbb"/>
 <circle cx="1155.0" cy="540.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="540.0" r="2" fill="#bbb"/>
 <rect x="10" y="552" width="1380" height="24" fill="#f3f4f6"/>
-<text x="20" y="568" font-size="13" fill="#111">Faber Romanus (2026)</text>
+<text x="20" y="568" font-size="13" fill="#111">Protocol Buffers, Lumos</text>
 <circle cx="405.0" cy="564.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="564.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="564.0" r="7" fill="#b45309"/>
@@ -171,16 +171,16 @@
 <circle cx="1005.0" cy="564.0" r="2" fill="#bbb"/>
 <circle cx="1155.0" cy="564.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="564.0" r="2" fill="#bbb"/>
-<text x="20" y="592" font-size="13" fill="#111">Intent (2026)</text>
+<text x="20" y="592" font-size="13" fill="#111">Forge (2026)</text>
 <circle cx="405.0" cy="588.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="588.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="588.0" r="7" fill="#b45309"/>
-<circle cx="855.0" cy="588.0" r="7" fill="#b45309"/>
+<circle cx="855.0" cy="588.0" r="2" fill="#bbb"/>
 <circle cx="1005.0" cy="588.0" r="7" fill="#b45309"/>
 <circle cx="1155.0" cy="588.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="588.0" r="2" fill="#bbb"/>
 <rect x="10" y="600" width="1380" height="24" fill="#f3f4f6"/>
-<text x="20" y="616" font-size="13" fill="#111">NanoLang</text>
+<text x="20" y="616" font-size="13" fill="#111">Faber Romanus (2026)</text>
 <circle cx="405.0" cy="612.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="612.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="612.0" r="7" fill="#b45309"/>
@@ -188,41 +188,41 @@
 <circle cx="1005.0" cy="612.0" r="2" fill="#bbb"/>
 <circle cx="1155.0" cy="612.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="612.0" r="2" fill="#bbb"/>
-<text x="20" y="640" font-size="13" fill="#111">Spec-driven development</text>
+<text x="20" y="640" font-size="13" fill="#111">Intent (2026)</text>
 <circle cx="405.0" cy="636.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="636.0" r="2" fill="#bbb"/>
-<circle cx="705.0" cy="636.0" r="2" fill="#bbb"/>
+<circle cx="705.0" cy="636.0" r="7" fill="#b45309"/>
 <circle cx="855.0" cy="636.0" r="7" fill="#b45309"/>
-<circle cx="1005.0" cy="636.0" r="2" fill="#bbb"/>
+<circle cx="1005.0" cy="636.0" r="7" fill="#b45309"/>
 <circle cx="1155.0" cy="636.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="636.0" r="2" fill="#bbb"/>
 <rect x="10" y="648" width="1380" height="24" fill="#f3f4f6"/>
-<text x="20" y="664" font-size="13" fill="#111">Vericoding benchmark</text>
+<text x="20" y="664" font-size="13" fill="#111">NanoLang</text>
 <circle cx="405.0" cy="660.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="660.0" r="2" fill="#bbb"/>
-<circle cx="705.0" cy="660.0" r="2" fill="#bbb"/>
-<circle cx="855.0" cy="660.0" r="7" fill="#b45309"/>
-<circle cx="1005.0" cy="660.0" r="7" fill="#b45309"/>
+<circle cx="705.0" cy="660.0" r="7" fill="#b45309"/>
+<circle cx="855.0" cy="660.0" r="2" fill="#bbb"/>
+<circle cx="1005.0" cy="660.0" r="2" fill="#bbb"/>
 <circle cx="1155.0" cy="660.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="660.0" r="2" fill="#bbb"/>
-<text x="20" y="688" font-size="13" fill="#111">CompCert, seL4</text>
+<text x="20" y="688" font-size="13" fill="#111">Spec-driven development</text>
 <circle cx="405.0" cy="684.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="684.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="684.0" r="2" fill="#bbb"/>
-<circle cx="855.0" cy="684.0" r="2" fill="#bbb"/>
-<circle cx="1005.0" cy="684.0" r="7" fill="#b45309"/>
+<circle cx="855.0" cy="684.0" r="7" fill="#b45309"/>
+<circle cx="1005.0" cy="684.0" r="2" fill="#bbb"/>
 <circle cx="1155.0" cy="684.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="684.0" r="2" fill="#bbb"/>
 <rect x="10" y="696" width="1380" height="24" fill="#f3f4f6"/>
-<text x="20" y="712" font-size="13" fill="#111">Sketching, CEGIS</text>
+<text x="20" y="712" font-size="13" fill="#111">Vericoding benchmark</text>
 <circle cx="405.0" cy="708.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="708.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="708.0" r="2" fill="#bbb"/>
-<circle cx="855.0" cy="708.0" r="2" fill="#bbb"/>
+<circle cx="855.0" cy="708.0" r="7" fill="#b45309"/>
 <circle cx="1005.0" cy="708.0" r="7" fill="#b45309"/>
 <circle cx="1155.0" cy="708.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="708.0" r="2" fill="#bbb"/>
-<text x="20" y="736" font-size="13" fill="#111">AlphaProof, Clover, AutoVerus</text>
+<text x="20" y="736" font-size="13" fill="#111">CompCert, seL4</text>
 <circle cx="405.0" cy="732.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="732.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="732.0" r="2" fill="#bbb"/>
@@ -231,7 +231,7 @@
 <circle cx="1155.0" cy="732.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="732.0" r="2" fill="#bbb"/>
 <rect x="10" y="744" width="1380" height="24" fill="#f3f4f6"/>
-<text x="20" y="760" font-size="13" fill="#111">Vera (2026)</text>
+<text x="20" y="760" font-size="13" fill="#111">Sketching, CEGIS</text>
 <circle cx="405.0" cy="756.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="756.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="756.0" r="2" fill="#bbb"/>
@@ -239,47 +239,73 @@
 <circle cx="1005.0" cy="756.0" r="7" fill="#b45309"/>
 <circle cx="1155.0" cy="756.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="756.0" r="2" fill="#bbb"/>
-<text x="20" y="784" font-size="13" fill="#111">Voyager, STOP, DGM</text>
+<text x="20" y="784" font-size="13" fill="#111">AlphaProof, Clover, AutoVerus</text>
 <circle cx="405.0" cy="780.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="780.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="780.0" r="2" fill="#bbb"/>
 <circle cx="855.0" cy="780.0" r="2" fill="#bbb"/>
-<circle cx="1005.0" cy="780.0" r="2" fill="#bbb"/>
-<circle cx="1155.0" cy="780.0" r="7" fill="#b45309"/>
+<circle cx="1005.0" cy="780.0" r="7" fill="#b45309"/>
+<circle cx="1155.0" cy="780.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="780.0" r="2" fill="#bbb"/>
 <rect x="10" y="792" width="1380" height="24" fill="#f3f4f6"/>
-<text x="20" y="808" font-size="13" fill="#111">AlphaEvolve</text>
+<text x="20" y="808" font-size="13" fill="#111">Vera (2026)</text>
 <circle cx="405.0" cy="804.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="804.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="804.0" r="2" fill="#bbb"/>
 <circle cx="855.0" cy="804.0" r="2" fill="#bbb"/>
 <circle cx="1005.0" cy="804.0" r="7" fill="#b45309"/>
-<circle cx="1155.0" cy="804.0" r="7" fill="#b45309"/>
+<circle cx="1155.0" cy="804.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="804.0" r="2" fill="#bbb"/>
-<text x="20" y="832" font-size="13" fill="#111">Getafix, Sorald, TBar</text>
+<text x="20" y="832" font-size="13" fill="#111">Vow, Thermite</text>
 <circle cx="405.0" cy="828.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="828.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="828.0" r="2" fill="#bbb"/>
 <circle cx="855.0" cy="828.0" r="2" fill="#bbb"/>
-<circle cx="1005.0" cy="828.0" r="2" fill="#bbb"/>
-<circle cx="1155.0" cy="828.0" r="7" fill="#b45309"/>
+<circle cx="1005.0" cy="828.0" r="7" fill="#b45309"/>
+<circle cx="1155.0" cy="828.0" r="2" fill="#bbb"/>
 <circle cx="1305.0" cy="828.0" r="2" fill="#bbb"/>
 <rect x="10" y="840" width="1380" height="24" fill="#f3f4f6"/>
-<text x="20" y="856" font-size="13" fill="#111">FrugalGPT, cost-of-pass</text>
+<text x="20" y="856" font-size="13" fill="#111">Voyager, STOP, DGM</text>
 <circle cx="405.0" cy="852.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="852.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="852.0" r="2" fill="#bbb"/>
 <circle cx="855.0" cy="852.0" r="2" fill="#bbb"/>
 <circle cx="1005.0" cy="852.0" r="2" fill="#bbb"/>
-<circle cx="1155.0" cy="852.0" r="2" fill="#bbb"/>
-<circle cx="1305.0" cy="852.0" r="7" fill="#b45309"/>
-<text x="20" y="880" font-size="13" fill="#111">Compiler world models</text>
+<circle cx="1155.0" cy="852.0" r="7" fill="#b45309"/>
+<circle cx="1305.0" cy="852.0" r="2" fill="#bbb"/>
+<text x="20" y="880" font-size="13" fill="#111">AlphaEvolve</text>
 <circle cx="405.0" cy="876.0" r="2" fill="#bbb"/>
 <circle cx="555.0" cy="876.0" r="2" fill="#bbb"/>
 <circle cx="705.0" cy="876.0" r="2" fill="#bbb"/>
 <circle cx="855.0" cy="876.0" r="2" fill="#bbb"/>
-<circle cx="1005.0" cy="876.0" r="2" fill="#bbb"/>
-<circle cx="1155.0" cy="876.0" r="2" fill="#bbb"/>
-<circle cx="1305.0" cy="876.0" r="7" fill="#b45309"/>
-<text x="20" y="920" font-size="12" fill="#555">Sources [C1] to [C57] on research.openie.dev/about/rce-jepa/. OpenIE items (same house) are excluded.</text>
+<circle cx="1005.0" cy="876.0" r="7" fill="#b45309"/>
+<circle cx="1155.0" cy="876.0" r="7" fill="#b45309"/>
+<circle cx="1305.0" cy="876.0" r="2" fill="#bbb"/>
+<rect x="10" y="888" width="1380" height="24" fill="#f3f4f6"/>
+<text x="20" y="904" font-size="13" fill="#111">Getafix, Sorald, TBar</text>
+<circle cx="405.0" cy="900.0" r="2" fill="#bbb"/>
+<circle cx="555.0" cy="900.0" r="2" fill="#bbb"/>
+<circle cx="705.0" cy="900.0" r="2" fill="#bbb"/>
+<circle cx="855.0" cy="900.0" r="2" fill="#bbb"/>
+<circle cx="1005.0" cy="900.0" r="2" fill="#bbb"/>
+<circle cx="1155.0" cy="900.0" r="7" fill="#b45309"/>
+<circle cx="1305.0" cy="900.0" r="2" fill="#bbb"/>
+<text x="20" y="928" font-size="13" fill="#111">FrugalGPT, cost-of-pass</text>
+<circle cx="405.0" cy="924.0" r="2" fill="#bbb"/>
+<circle cx="555.0" cy="924.0" r="2" fill="#bbb"/>
+<circle cx="705.0" cy="924.0" r="2" fill="#bbb"/>
+<circle cx="855.0" cy="924.0" r="2" fill="#bbb"/>
+<circle cx="1005.0" cy="924.0" r="2" fill="#bbb"/>
+<circle cx="1155.0" cy="924.0" r="2" fill="#bbb"/>
+<circle cx="1305.0" cy="924.0" r="7" fill="#b45309"/>
+<rect x="10" y="936" width="1380" height="24" fill="#f3f4f6"/>
+<text x="20" y="952" font-size="13" fill="#111">Compiler world models</text>
+<circle cx="405.0" cy="948.0" r="2" fill="#bbb"/>
+<circle cx="555.0" cy="948.0" r="2" fill="#bbb"/>
+<circle cx="705.0" cy="948.0" r="2" fill="#bbb"/>
+<circle cx="855.0" cy="948.0" r="2" fill="#bbb"/>
+<circle cx="1005.0" cy="948.0" r="2" fill="#bbb"/>
+<circle cx="1155.0" cy="948.0" r="2" fill="#bbb"/>
+<circle cx="1305.0" cy="948.0" r="7" fill="#b45309"/>
+<text x="20" y="992" font-size="12" fill="#555">Sources [C1] to [C61] on research.openie.dev/about/rce-jepa/. OpenIE items (same house) are excluded.</text>
 </svg>
