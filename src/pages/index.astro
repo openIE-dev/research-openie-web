@@ -73,6 +73,20 @@ const projects = [
     ]
   },
   {
+    "id": "rce-jepa",
+    "title": "RCE-JEPA: Decoding Intent into an RCE Form",
+    "deck": "Intent decoding: a JEPA-style model turns stated intent into an RCE Form P = (S, E, δ, D, λ), and RCE's checker decides; RCE handles checking, proofs, derivation, emission and placement, aiming at the best performance per clock cycle and per joule. Plain words: say what you want and a model writes one precise plan; a strict checker accepts it or says what is wrong; the accepted plan is built with the least time and electricity.",
+    "status": "Research topic",
+    "group": "research",
+    "about": "/about/rce-jepa/",
+    "figures": "/figures/rce-jepa/pipeline.svg",
+    "tags": [
+      "intent to Form",
+      "model proposes, checker decides",
+      "per clock cycle and per joule"
+    ]
+  },
+  {
     "id": "three-body",
     "title": "The Pursuit of AGI Resolves the Three-Body Problem in Computing",
     "deck": "Locates many computing failures at handoffs between the people who specify, build and use systems, states when checking every handoff assumption makes a stack stable, and supports it with independently tested verified systems (CompCert, seL4, TLA+ at AWS, unit types). Plain words: most big failures happen at handoffs; the cause is usually an unwritten guess; if every guess is written down and machine-checked, a fix stays fixed.",
@@ -253,8 +267,8 @@ const products = projects.filter((p) => p.group === 'product');
             ))}
           </div>
           <div class="flex flex-wrap gap-3">
-            <a href={p.paper} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">Read →</a>
-            <a href={p.pdf} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors" download>Download PDF</a>
+            {p.paper && <a href={p.paper} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">Read →</a>}
+            {p.pdf && <a href={p.pdf} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors" download>Download PDF</a>}
             <a href={p.figures} class="font-mono text-xs text-brand-slate no-underline hover:text-brand-white transition-colors">Figures</a>
             <a href={p.about} class="font-mono text-xs text-brand-gray no-underline hover:text-brand-white transition-colors">About</a>
           </div>

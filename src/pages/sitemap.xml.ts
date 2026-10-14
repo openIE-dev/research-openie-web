@@ -3,7 +3,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
-const STATIC = ['/', '/about/', '/glossary/', '/living/', '/opportunity-map/'];
+const STATIC = ['/', '/about/', '/glossary/', '/living/', '/opportunity-map/', '/about/rce-jepa/'];
 
 export const GET: APIRoute = async ({ site }) => {
   const base = site ?? new URL('https://research.openie.dev');
