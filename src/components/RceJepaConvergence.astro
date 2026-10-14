@@ -33,7 +33,7 @@ const tbl = "w-full text-xs border-collapse [&_td]:border [&_th]:border [&_td]:b
 <div class="mt-4 overflow-x-auto"><table class={tbl}>
   <thead><tr><th>Project</th><th>What it established</th><th>Where it stops</th></tr></thead>
   <tbody>
-    <tr><td>Abstract State Machines, Gurevich, 2000 [C10]</td><td>The paper's title states the result: sequential abstract state machines capture sequential algorithms</td><td>A theorem, not a system. Not read by the OpenIE authors; listed with its identifier only</td></tr>
+    <tr><td>Abstract State Machines, Gurevich, 2000 [C10]</td><td>The paper's title states the result: sequential abstract state machines capture sequential algorithms</td><td>A theorem, not a system: every sequential algorithm can be simulated step for step by a sequential abstract state machine (Main Theorem 6.13)</td></tr>
     <tr><td>Event sourcing, Fowler, 2005 [C11]</td><td>"Capture all changes to an application state as a sequence of events"</td><td>A pattern; determinism and projections are left to each implementation</td></tr>
     <tr><td>The Elm Architecture [C12]</td><td>Model, View, Update: state, a view of the state, and an update from messages</td><td>One language and one target (the browser)</td></tr>
     <tr><td>Dedalus and the CALM theorem, Hellerstein, Alvaro et al. [C13; C14]</td><td>Datalog with explicit time; programs with consistent, coordination-free distributed implementations are exactly those expressible in monotonic logic</td><td>Research languages; no cross-language emission</td></tr>
@@ -83,7 +83,7 @@ const tbl = "w-full text-xs border-collapse [&_td]:border [&_th]:border [&_td]:b
   <tbody>
     <tr><td>Gödel machine, Schmidhuber; Löbian obstacle, Yudkowsky and Herreshoff [C43; C44]</td><td>Self-rewrite only after a proof that it is useful; a system cannot in general prove the soundness of a successor that uses its own proof system</td><td>Theory</td></tr>
     <tr><td>Voyager; STOP; Darwin Gödel Machine; AlphaEvolve [C45; C46; C47; C48]</td><td>A growing library of executable skills; scaffolds that improve themselves; archives of self-modified agents; code evolved under automatic evaluators</td><td>Selection by score or evaluator, not by proof at an interface</td></tr>
-    <tr><td>Getafix; Sorald; TBar [C49; C50; C51]</td><td>Fix patterns mined from past fixes or written as templates, reused on new cases without a model; TBar fixes 74 of 101 Defects4J bugs correctly with perfect fault localization</td><td>Patterns are per language and per bug class</td></tr>
+    <tr><td>Getafix; Sorald; TBar [C49; C50; C51]</td><td>Fix patterns mined from past fixes or written as templates, reused on new cases without a model; with perfect fault localization TBar correctly fixes 74 of 395 Defects4J bugs (plausible patches for 101), and 43 with standard fault localization</td><td>Patterns are per language and per bug class</td></tr>
   </tbody></table></div>
 
 <h3 id="cc7">7. Energy or cost is the objective</h3>
@@ -122,7 +122,7 @@ const tbl = "w-full text-xs border-collapse [&_td]:border [&_th]:border [&_td]:b
   <li>[C7] Codifide. <a href="https://github.com/codifide/codifide-programming-language">github.com/codifide/codifide-programming-language</a>. Full (README).</li>
   <li>[C8] NAIL. <a href="https://pypi.org/project/nail-lang/">pypi.org/project/nail-lang</a>. Full (project description).</li>
   <li>[C9] M. Allamanis, P. Chanthirasegaran, P. Kohli and C. Sutton, "Learning Continuous Semantic Representations of Symbolic Expressions", ICML 2017. <a href="https://arxiv.org/abs/1611.01423">arXiv:1611.01423</a>. Partial.</li>
-  <li>[C10] Y. Gurevich, "Sequential Abstract State Machines Capture Sequential Algorithms", ACM TOCL 1(1), 2000. <a href="https://doi.org/10.1145/343369.343384">doi:10.1145/343369.343384</a>. Unavailable.</li>
+  <li>[C10] Y. Gurevich, "Sequential Abstract State Machines Capture Sequential Algorithms", ACM TOCL 1(1), 2000. <a href="https://doi.org/10.1145/343369.343384">doi:10.1145/343369.343384</a>; <a href="https://www.cs.tau.ac.il/~nachumd/models/gurevich.pdf">PDF copy</a>. Partial.</li>
   <li>[C11] M. Fowler, "Event Sourcing", 2005. <a href="https://martinfowler.com/eaaDev/EventSourcing.html">martinfowler.com</a>. Partial.</li>
   <li>[C12] The Elm Architecture. <a href="https://guide.elm-lang.org/architecture/">guide.elm-lang.org</a>. Full.</li>
   <li>[C13] P. Alvaro et al., "Dedalus: Datalog in Time and Space", UC Berkeley EECS-2009-173. <a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-173.pdf">PDF</a>. Partial.</li>
@@ -163,7 +163,7 @@ const tbl = "w-full text-xs border-collapse [&_td]:border [&_th]:border [&_td]:b
   <li>[C48] A. Novikov et al., "AlphaEvolve", 2025. <a href="https://arxiv.org/abs/2506.13131">arXiv:2506.13131</a>. Partial.</li>
   <li>[C49] J. Bader et al., "Getafix: Learning to Fix Bugs Automatically", 2019. <a href="https://arxiv.org/abs/1902.06111">arXiv:1902.06111</a>. Partial.</li>
   <li>[C50] K. Etemadi et al., "Sorald", 2021. <a href="https://arxiv.org/abs/2103.12033">arXiv:2103.12033</a>. Partial.</li>
-  <li>[C51] K. Liu et al., "TBar: Revisiting Template-based Automated Program Repair", 2019. <a href="https://arxiv.org/abs/1903.08409">arXiv:1903.08409</a>. Partial.</li>
+  <li>[C51] K. Liu et al., "TBar: Revisiting Template-based Automated Program Repair", 2019. <a href="https://arxiv.org/abs/1903.08409">arXiv:1903.08409</a>. Full.</li>
   <li>[C52] R. Landauer, "Irreversibility and heat generation in the computing process", 1961. <a href="https://doi.org/10.1147/rd.53.0183">doi:10.1147/rd.53.0183</a>. Full.</li>
   <li>[C53] C. H. Bennett, "Logical Reversibility of Computation", 1973. <a href="https://doi.org/10.1147/rd.176.0525">doi:10.1147/rd.176.0525</a>. Full.</li>
   <li>[C54] L. Chen, M. Zaharia and J. Zou, "FrugalGPT", 2023. <a href="https://arxiv.org/abs/2305.05176">arXiv:2305.05176</a>. Partial.</li>
