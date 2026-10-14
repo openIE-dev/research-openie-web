@@ -43,19 +43,21 @@ const boards = [
 ];
 ---
 <Layout title="Opportunity map | OpenIE Research" description="Three boards on where intelligence lives, the stack interface by interface, and power envelopes, each with its sources.">
-  <main class="max-w-4xl mx-auto px-6 py-16">
+  <div class="max-w-4xl mx-auto px-6 py-16">
     <h1 class="font-display text-3xl text-brand-white">Opportunity map</h1>
     <p class="mt-4 font-body text-sm text-brand-slate leading-relaxed">Three boards, 13 October 2026. They are qualitative: positions and shapes state an argument, not a measurement. A claim carries a reference marker where a source supports it; wording without one is labelled informed opinion on the board. The sources are listed under each board. Related paper: <a href="/papers/rce/">The Reality Code Engine</a>.</p>
     {boards.map((b, i) => (
       <section class="mt-12" id={b.file.slice(3).replace(/_/g, '-')}>
         <h2 class="font-display text-xl text-brand-white">Board {i + 1}. {b.title}</h2>
-        <a href={`/figures/opportunity-map/${b.file}.png`}><img src={`/figures/opportunity-map/${b.file}.svg`} alt={b.alt} class="mt-4 w-full rounded-lg bg-white" loading="lazy" /></a>
-        <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed"><em>{b.caption} A <a href={`/figures/opportunity-map/${b.file}.png`}>PNG copy</a> is provided.</em></p>
+        <figure class="mt-4 fig-wide">
+          <a class="fig-zoom" href={`/figures/opportunity-map/${b.file}.svg`} aria-label="Enlarge figure"><picture><source type="image/svg+xml" srcset={`/figures/opportunity-map/${b.file}.svg`} /><img src={`/figures/opportunity-map/${b.file}.png`} alt={b.alt} class="fig-img w-full rounded-lg bg-white" loading="lazy" decoding="async" /></picture></a>
+          <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">{b.caption} <span class="fig-links"><a href={`/figures/opportunity-map/${b.file}.svg`} target="_blank" rel="noopener">Open full size</a> · <a href={`/figures/opportunity-map/${b.file}.png`}>PNG</a></span></figcaption>
+        </figure>
         <h3 class="mt-4 font-display text-base text-brand-white">Sources</h3>
         <ul class="mt-2 list-none pl-0 font-body text-xs text-brand-slate leading-relaxed">
           {b.refs.map((r) => <li class="mt-1">{r}</li>)}
         </ul>
       </section>
     ))}
-  </main>
+  </div>
 </Layout>
