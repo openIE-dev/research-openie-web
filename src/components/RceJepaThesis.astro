@@ -1,0 +1,169 @@
+---
+// Core thesis section of /about/rce-jepa. Math is rendered at build time with KaTeX.
+import katex from 'katex';
+const m = (s: string) => katex.renderToString(s, { throwOnError: false });
+const M = (s: string) => katex.renderToString(s, { throwOnError: false, displayMode: true });
+const R = String.raw;
+---
+<h2 id="thesis">The thesis: we are pre-Laws of Coding</h2>
+
+<p>Picture Europe in the 1660s. Kepler had published two regularities of planetary motion in <em>Astronomia nova</em> (1609) and a third in <em>Harmonice mundi</em> (1619) [T2]. Galileo and Huygens had shown how to derive testable consequences from hypotheses about falling and swinging bodies [T1, Sec. 1]. Gunners, millwrights and shipwrights built by rule of thumb and long apprenticeship. The sky had been watched with enormous care for two thousand years, and yet prediction was a patchwork. Newton, by the account of George Smith, "was familiar with seven different approaches to calculating planetary orbits, all at roughly the same accuracy", and calculated positions "were sometimes off by as much as a fourth of the width of the Moon" [T1, Sec. 2]. There were many good tables and no single account of why the tables worked.</p>
+
+<p>Then, in 1687, came the <em>Principia</em>. A handful of axioms of motion and one inverse-square force, and from them trajectories that could be computed in advance, costs that could be reckoned before the cannon was cast, and errors that pointed to new bodies rather than to bad luck. Smith summarizes the change: after the <em>Principia</em>, "physical theory gained primacy over observation for purposes of answering specific questions about the world" [T1, Sec. 1]. Kepler's regularities and Galileo's falling bodies did not disappear; they became limit cases of the new account [T1, Sec. 1].</p>
+
+<p>Our premise, in plain words: <strong>we are pre-Laws of Coding.</strong> AI coding today lives in the 1660s. We have careful observation: benchmarks such as pass@k (the chance that at least one of k sampled programs passes the tests) and SWE-bench (a set of real repository issues), both described in Section 3 below. We have craft: prompt wording, retries, and trial and error. Outputs are samples from a probability distribution, so the same request can give a different program tomorrow. There is no agreed conserved quantity for a program, no equation of motion that a code generator obeys, and cost is measured after the fact, in tokens and in electricity, rather than computed before the work begins.</p>
+
+<p>By <em>Laws of Coding</em> we mean David Charlot's proposal, stated here as conjecture: a small set of rules from which the behaviour and the cost of a program can be computed before it runs. The candidates are (L1) a deterministic transition rule, (L2) an account of information and energy per transition, (L3) a canonical Form for every program, which is compression, and (L4) a composition rule under which L1 to L3 survive when programs are joined. The Reality Code Engine (RCE) proposes candidates for each; hypotheses H1 to H10 below are the tests. Nothing in this section is a measured result unless it carries a number and a source.</p>
+
+<p>The analogy has limits, and we state them. Newton described a world nobody designed; programs are made by people, so their rules are partly chosen rather than discovered. Mechanics has continuous quantities and exact conservation of energy; a program's state is discrete and finite, and the energy a chip spends depends on the hardware, not only on the program. Rice's theorem [T20] says that no general procedure decides any non-trivial property of what an arbitrary program computes, and the halting problem [T19] is the best-known case; RCE avoids these limits only by working in a restricted language whose programs carry termination bounds, and that restriction has a price in what can be expressed. Finally, even the <em>Principia</em> was not the "clockwork universe": Smith notes that aspect "was added by Laplace" [T1, Sec. 1], and "Newtonian theory is now seen to hold only to high approximation in limited circumstances" [T1, Sec. 1]. We claim an analogy, not an equivalence.</p>
+
+<h3>Symbols used in this section</h3>
+<ul>
+  <li>{/* */}<span set:html={m(R`P=(S,E,\delta,D,\lambda)`)} />: a program as a functional state machine. <span set:html={m('S')} /> is a finite set of states; <span set:html={m('E')} /> a finite set of events (inputs); <span set:html={m(R`\delta: S\times E\to S`)} /> the transition function; <span set:html={m('D')} /> the set of derivations, values computed from a state by pure functions; <span set:html={m(R`\lambda: S\times E\to O`)} /> the output function into a finite output set <span set:html={m('O')} />.</li>
+  <li><span set:html={m(R`\Omega_n`)} />: the set of canonical Forms of size at most <span set:html={m('n')} /> symbols. A Form is the checker-accepted canonical representation of a program in RCE (Section 5).</li>
+  <li><span set:html={m('X')} />: the set of surface programs (the text people or models write). <span set:html={m(R`\kappa: X\to\Omega`)} />: the canonicalization map from surface program to Form.</li>
+  <li><span set:html={m(R`H(\cdot)`)} />: Shannon entropy in bits [T5]. <span set:html={m(R`K(x)`)} />: Kolmogorov complexity, the length in bits of the shortest program that outputs <span set:html={m('x')} /> on a fixed universal machine [T3, T4].</li>
+  <li><span set:html={m(R`k_B=1.380649\times10^{-23}\ \mathrm{J\,K^{-1}}`)} />: Boltzmann's constant. <span set:html={m('T')} />: temperature in kelvin (K). J: joule.</li>
+  <li>JEPA: Joint Embedding Predictive Architecture [LeCun 2022, cited above]. MDL: minimum description length [T6]. EBM: energy-based model.</li>
+</ul>
+
+<h3>T1. Computation as a finite information system</h3>
+
+<p>Strip a program of its syntax, its comments, its indentation and its author's habits, and what remains is a machine that moves from one state to the next, one event at a time. That machine is finite, and a finite thing can be counted.</p>
+
+<p><strong>Definition.</strong> A program is a deterministic functional state machine <span set:html={m(R`P=(S,E,\delta,D,\lambda)`)} /> with <span set:html={m('S')} /> and <span set:html={m('E')} /> finite and <span set:html={m(R`\delta`)} /> a total function. Determinism means <span set:html={m(R`\delta`)} /> is a function, not a relation: one state and one event give exactly one next state.</p>
+
+<p><strong>Bound on information content.</strong> If a Form is drawn from <span set:html={m(R`\Omega_n`)} /> by any distribution, its entropy is at most that of the uniform distribution [T5]:</p>
+<div set:html={M(R`H(P)\;\le\;\log_2\lvert\Omega_n\rvert\ \text{bits}.`)} />
+<p>For an alphabet of <span set:html={m(R`a`)} /> symbols, <span set:html={m(R`\lvert\Omega_n\rvert\le\sum_{k\le n}a^k`)} />, so <span set:html={m(R`H(P)\le n\log_2 a+1`)} /> bits. Every Form, however long its behaviour, is a finite message.</p>
+
+<p><strong>Compression and understanding.</strong> Kolmogorov complexity <span set:html={m('K(x)')} /> [T3, T4] measures the shortest description of an object; Solomonoff's induction [T3] and Rissanen's MDL [T6] turn "prefer the shortest description" into a rule for prediction and model choice. The bridge to learning is Shannon's source coding theorem [T5]: an optimal code spends <span set:html={m(R`-\log_2 p(x)`)} /> bits on <span set:html={m('x')} />, so a better predictor is a better compressor. Delétang et al. state it directly: "maximizing the log2-likelihood (of the data) is equivalent to minimizing the number of bits required per message" [T7, Sec. 1]. <span set:html={m('K')} /> itself is not computable; Schmidhuber notes "there is no general way of finding the shortest program computing any given data" [T8, Sec. 1]. In a restricted language with a canonical Form, the Form length is a computable upper bound on <span set:html={m('K')} /> up to an additive constant.</p>
+
+<h3>T2. Compression into Form and template</h3>
+
+<p>Ask a hundred programmers to write a shopping cart and you will get a hundred programs. Underneath the hundred there are perhaps three or four ideas. The surface is a crowd; the Form is the face it shares.</p>
+
+<p><strong>Equivalence classes.</strong> Define <span set:html={m(R`x\sim y \iff \kappa(x)=\kappa(y)`)} />. Each Form <span set:html={m(R`f\in\Omega`)} /> is the representative of the class <span set:html={m(R`[f]=\kappa^{-1}(f)`)} /> of <span set:html={m(R`m_f=\lvert[f]\rvert`)} /> surface programs. Because <span set:html={m(R`\kappa`)} /> is a function, the chain rule of entropy [T5] gives</p>
+<div set:html={M(R`H(X)\;=\;H(\kappa(X))\;+\;H\big(X\mid\kappa(X)\big).`)} />
+<p>A predictor that outputs the Form rather than the surface text is spared the second term. If surface variants within a class are equally likely, the saving per Form is</p>
+<div set:html={M(R`\Delta H_f=\log_2 m_f\ \text{bits},\qquad \rho_f=\frac{\lvert x\rvert}{\lvert f\rvert}\quad(\text{bytes of surface code per byte of Form}).`)} />
+<p>This is why the predictor works on the quotient space <span set:html={m(R`X/\!\sim\;\cong\;\Omega`)} />: it learns a smaller, cleaner target, and every point in it is something the checker can judge.</p>
+
+<p><strong>Templates as low-dimensional manifolds.</strong> A template or a no-code schema is a Form with holes. If a template has <span set:html={m('h')} /> holes each taking one of <span set:html={m('v')} /> values, it covers <span set:html={m(R`v^h`)} /> Forms and is addressed by <span set:html={m(R`h\log_2 v`)} /> bits, typically far fewer than <span set:html={m(R`\log_2\lvert\Omega_n\rvert`)} />. Program space is vast; the programs people actually want lie on thin sheets within it. This is a conjecture, consistent with the observation that code is more predictable than natural language [T15] and with learned code embeddings in which "semantically similar objects are mapped to close vectors" [T16, Sec. 1].</p>
+
+<p><strong>RCE corpus numbers.</strong> The path named in the brief (<code>/workspace/rce-jepa/exp</code>) was not reachable; the same experiment bundle was read from the owner's machine. It holds 83 program families (66 train, 17 test), 32,030 bytes of source in total, median 278 bytes per family (minimum 48, maximum 1,340). Of these, 39 families have hand-written surface variants, a mean of 3.00 surface programs per family (maximum 7), giving a mean <span set:html={m(R`\Delta H=1.48`)} /> bits per Form under the equal-likelihood assumption. A generic compressor (xz) reduces the 32,030 bytes to 10,236 bytes, a ratio of 3.13. That ratio is a baseline, not <span set:html={m(R`\rho`)} />: the canonical Form serialization was not available to us, and the variants were not machine-checked as equivalent. The corpus is small; these numbers set no thresholds.</p>
+
+<h3>T3. Kinematics: a Newtonian form of computing</h3>
+
+<p>Throw a stone and, given where it starts, how fast, and what pushes on it, Newton tells you where it lands. A deterministic program has the same character, and more strictly: no air, no wind, no rounding of the world. Given where it starts and what events arrive, its entire future is fixed.</p>
+
+<p><strong>Trajectory.</strong> For initial state <span set:html={m('s_0')} /> and event stream <span set:html={m(R`e_0,e_1,\dots,e_{T-1}`)} />,</p>
+<div set:html={M(R`s_{t+1}=\delta(s_t,e_t),\qquad t=0,\dots,T-1.`)} />
+<p>The correspondence we propose, as analogy:</p>
+<ul>
+  <li>state <span set:html={m('s_t')} /> plays the part of position;</li>
+  <li>an event <span set:html={m('e_t')} /> plays the part of an applied impulse;</li>
+  <li><span set:html={m(R`\delta`)} /> plays the part of the equation of motion;</li>
+  <li>the event log is a record from which the trajectory can be replayed exactly, which is reversibility in the record even when <span set:html={m(R`\delta`)} /> discards information; Bennett shows that "it is possible to reprogram any deterministic computation as a sequence of logically reversible steps, provided the computation is allowed to save a copy of its input" [T10];</li>
+  <li>step count or fuel <span set:html={m('t')} /> plays the part of time;</li>
+  <li>energy per transition, in joules, is the cost.</li>
+</ul>
+
+<p><strong>Energy floor.</strong> Landauer's principle [T9], as Bennett restates it, holds that a logically irreversible operation such as erasure "must be accompanied by a corresponding entropy increase" in the environment [T10, abstract]. The floor per erased bit is</p>
+<div set:html={M(R`E_{\min}=k_B T\ln 2\approx 2.87\times10^{-21}\ \mathrm{J}\quad\text{at } T=300\ \mathrm{K}.`)} />
+<p>If transition <span set:html={m('t')} /> erases <span set:html={m('b_t')} /> bits, then <span set:html={m(R`E_{\text{total}}\ge k_B T\ln 2\sum_t b_t`)} />. Lloyd adds an upper limit on speed: "the speed with which a physical device can process information is limited by its energy" [T11, Sec. 1], at most <span set:html={m(R`2E/\pi\hbar`)} /> operations per second for energy <span set:html={m('E')} />, where <span set:html={m(R`\hbar=1.0546\times10^{-34}\ \mathrm{J\,s}`)} /> is the reduced Planck constant. Real chips spend many orders of magnitude above the Landauer floor per operation; we have no measured joules-per-operation figure for RCE at the time of writing, and H9 below is how we will get one. Wolpert notes, as a caution, that "different implementations of the same computation (input to output) can have radically different thermodynamic consequences" [T12, Sec. I.2]: energy belongs to the program and the machine together.</p>
+
+<p><strong>Definition (kinematic program).</strong> <span set:html={m('P')} /> is kinematic if, for every <span set:html={m('s_0')} /> and every finite event stream,</p>
+<div set:html={M(R`\text{(i)}\ \operatorname{Var}[s_T]=0,\qquad \text{(ii)}\ E_{\text{total}}=\sum_{t=0}^{T-1}c(s_t,e_t)\ \le\ c_{\max}\,F`)} />
+<p>where <span set:html={m(R`c: S\times E\to\mathbb{R}_{\ge0}`)} /> is a cost table in joules for a stated machine, <span set:html={m(R`c_{\max}`)} /> its largest entry, and <span set:html={m('F')} /> the fuel bound (maximum steps) from the termination proof. Condition (i) says the trajectory has zero variance; condition (ii) says its cost can be computed, or at least bounded, before it runs.</p>
+
+<p><strong>Contrast.</strong> A stochastic generator returns a sample <span set:html={m(R`x\sim p_\theta(x\mid\text{prompt})`)} /> from a model with parameters <span set:html={m(R`\theta`)} />. Its output is a distribution, its correctness is a probability, and its cost is known only after sampling. RCE-JEPA keeps the generator stochastic but makes the thing it generates kinematic, and puts a deterministic checker between them.</p>
+
+<h3>T4. A world model whose physics is known exactly</h3>
+
+<p>Most world models are built in fog. A robot learns physics from blurry cameras; a game agent infers rules it cannot read. Code is the rare world where the rules are written down.</p>
+
+<p><strong>World model.</strong> In the JEPA sense [LeCun 2022, cited above], a world model is a predictor <span set:html={m(R`\hat z_{t+1}=g_\phi(z_t,a_t)`)} /> of the next latent representation <span set:html={m(R`z_{t+1}=\mathrm{enc}(s_{t+1})`)} /> from the current one and an action <span set:html={m('a_t')} />, with learned parameters <span set:html={m(R`\phi`)} />. For code the world is the Form's state space and the action is an event, so the target is computed exactly by <span set:html={m(R`\delta`)} />:</p>
+<div set:html={M(R`\mathcal{L}(\phi)=\mathbb{E}\,\big\lVert g_\phi\big(\mathrm{enc}(s_t),e_t\big)-\mathrm{enc}\big(\delta(s_t,e_t)\big)\big\rVert^2 .`)} />
+<p>There is no aleatoric (irreducible) noise in the target. MuZero learned a model where "planning algorithms all rely on knowledge of the environment's dynamics, such as the rules of the game or an accurate simulator" [T13, Sec. 1]; for code, those rules are <span set:html={m(R`\delta`)} />, available in full.</p>
+
+<p><strong>Intent decoding as an inverse problem.</strong> Given an intent <span set:html={m(R`\iota`)} /> stated as constraints, find a Form whose trajectories satisfy it. We write this as energy minimization in the sense of energy-based models [T17, T18]:</p>
+<div set:html={M(R`\mathcal{E}(\iota,f)=\alpha\,V(f)+\beta\,d\big(\tau(f),\sigma(\iota)\big)+\gamma\,C(f),\qquad z^\star=\arg\min_{z}\ \mathcal{E}\big(\iota,\mathrm{dec}(z)\big).`)} />
+<p>Here <span set:html={m('V(f)')} /> is the number of checker violations (dimensionless); <span set:html={m(R`\tau(f)`)} /> the set of trajectories of <span set:html={m('f')} /> on the intent's example events; <span set:html={m(R`\sigma(\iota)`)} /> the trajectories the intent requires; <span set:html={m('d')} /> a distance between them (dimensionless count of mismatched states); <span set:html={m('C(f)')} /> the predicted energy per run in joules; <span set:html={m(R`\alpha,\beta\ge0`)} /> dimensionless weights and <span set:html={m(R`\gamma\ge0`)} /> in <span set:html={m(R`\mathrm{J}^{-1}`)} />; <span set:html={m(R`\mathrm{dec}`)} /> the decoder from latent point to Form. The minimizer is decoded, then checked; the checker, not <span set:html={m(R`\mathcal{E}`)} />, decides acceptance. Du and Mordatch observe that "summation of two or more energies corresponds to satisfying all their goals or constraints" [T17, Sec. 1], which is why the three terms can be added.</p>
+
+<h3>T5. Consequences as testable predictions</h3>
+
+<p>A thesis that cannot lose is not a thesis. Each part above maps to a test that could prove it wrong.</p>
+<ul>
+  <li>T1 and T2 (compression into Form) are tested by H1 and H3 above, and by H10.</li>
+  <li>T3 (kinematics, energy accounting) is tested by H2 and H4 above, and by H8 and H9.</li>
+  <li>T4 (world model, inverse problem) is tested by H5 to H7 above.</li>
+  <li><strong>H8 (determinism).</strong> Every accepted Form replays to a bit-identical trajectory and output on at least 3 different machines and operating systems for at least 10,000 recorded event streams. Refuted by a single mismatch.</li>
+  <li><strong>H9 (cost predicted before execution).</strong> For a stated machine, the cost-table prediction <span set:html={m(R`\sum_t c(s_t,e_t)`)} /> is within 20% of measured energy (J, named meter) in median over the test families. Refuted if the median error exceeds 50%.</li>
+  <li><strong>H10 (learning on the quotient).</strong> A predictor trained to output canonical Forms reaches the same test acceptance rate as one of equal size trained on surface code with at most half the training examples. Refuted if the saving is below 1.25 times.</li>
+</ul>
+
+<figure class="mt-8 glass-card p-4 fig-wide not-prose">
+  <a class="fig-zoom" href="/figures/rce-jepa/thesis.svg" aria-label="Enlarge figure"><picture><source type="image/svg+xml" srcset="/figures/rce-jepa/thesis.svg" /><img src="/figures/rce-jepa/thesis.png" alt="Three panels: a large cloud of surface programs; arrows collapse it onto a thin curved sheet of canonical Forms with the entropy saving log2 m bits; a trajectory of states s0 to s4 under the transition function delta, each step annotated with energy in joules and a total bounded by the fuel bound" width="1200" height="460" class="fig-img w-full rounded bg-white" loading="lazy" decoding="async" /></picture></a>
+  <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Figure T1. Information and kinematics. Left: program space, where many surface programs X express the same behaviour. Middle: canonicalization κ collapses each class onto one Form on a low-dimensional manifold Ω, saving ΔH = log2 m bits for a class of m equally likely variants. Right: a Form moves deterministically, s(t+1) = δ(s(t), e(t)), each transition carrying a cost c in joules, with the total bounded by c_max · F before execution. A conceptual diagram, not data. <span class="fig-links"><a href="/figures/rce-jepa/thesis.svg" target="_blank" rel="noopener">Open full size</a> · <a href="/figures/rce-jepa/thesis.png">PNG</a></span>.</figcaption>
+</figure>
+
+<h3 id="who-holds">Who holds these views and why</h3>
+
+<p>Ideas rarely arrive alone. Each part of the thesis echoes arguments made, for their own reasons, by people who have never heard of RCE. We list them as convergence observations: agreement in direction, never confirmation of our claims. Where we read the source in full we quote it with its section; where we did not, we say so and do not quote.</p>
+
+<p><strong>Compression as understanding (T1, T2).</strong> Solomonoff, Kolmogorov and Chaitin defined complexity as shortest description [T3, T4, T21]; Rissanen made it a model selection rule [T6]; Hutter's prize and AIXI and Sutskever's talks extend it to intelligence (not read here; we do not quote them). Delétang and colleagues at DeepMind argue that "a model that compresses well generalizes well" [T7, Sec. 1] and show large language models compress images and audio. Schmidhuber argues the simplest explanation of data "would be the shortest program that computes it" [T8, Sec. 1]. Disagreement: Delétang et al. warn that "scaling beyond a certain point will deteriorate the compression performance since the model parameters need to be accounted for" [T7, Sec. 1], and Chollet argues that "solely measuring skill at any given task falls short of measuring intelligence" [T22, abstract]; compression of a fixed corpus is not the same as efficient learning of new skills.</p>
+
+<p><strong>Computation as physics (T3).</strong> Landauer [T9] (not read here; known through Bennett), Bennett [T10] and Lloyd [T11] hold that information processing is a physical process with energy costs and limits. Lloyd: "Energy limits speed. Entropy limits memory." [T11, Sec. 1.5]. Wolpert's stochastic thermodynamics treats computation, including finite automata, as non-equilibrium physics [T12, Secs. I to II, partial read]. Fredkin and Toffoli's conservative logic [T23], Feynman's lectures on computation, Wheeler's "it from bit" and Wolfram's computational universe point the same way (not read here). Disagreement: Bennett records objections that Landauer's principle is either redundant with or insufficient beyond standard thermodynamics, and answers them [T10]; the debate is about foundations, not about the size of the floor.</p>
+
+<p><strong>State machines and deterministic semantics (T1, T3).</strong> Turing's machines [T19], Milner's calculus [T24], Harel's statecharts [T25], Lamport's TLA, which treats a program as a set of behaviours over states [T26], the synchronous languages Esterel and Lustre (Berry, Halbwachs) [T27, T28], Elliott's functional reactive programming [T29], the Elm architecture, deterministic simulation testing at FoundationDB and TigerBeetle, and Hoare's and Dijkstra's view of programs as predicates [T30] all treat a program as a state machine with exact semantics. We cite these as history; none were read in full for this section, so none are quoted. Limits: Turing [T19] and Rice [T20] bound what can be decided about arbitrary programs; deterministic semantics is easy to state for a closed language and hard to keep across real hardware, threads and networks.</p>
+
+<p><strong>Programs as data on a low-dimensional manifold (T2).</strong> Hindle et al. found software "natural", more repetitive than English [T15] (not read in full here). Alon et al.'s code2vec maps code to vectors where "semantically similar objects are mapped to close vectors" [T16, Sec. 1]. Sketch-based synthesis (Solar-Lezama), DreamCoder's library learning (Ellis, Tenenbaum, cited in the history above) and Allamanis's survey of machine learning on code point the same way (Solar-Lezama and Allamanis not read here). Disagreement: code2vec's authors report that "when given uninformative, obfuscated or adversarial variable names, the prediction of the label is usually less accurate" [T16, Sec. 7]: learned embeddings can track names rather than meaning, which is the gap a canonical Form is meant to close.</p>
+
+<p><strong>World models and latent prediction (T4).</strong> LeCun's JEPA programme at Meta FAIR (cited above), Ha and Schmidhuber, who "learn a compressed spatial and temporal representation of the environment" [T14, abstract], MuZero [T13], physics-informed neural networks, where prior physical knowledge "can act as a regularization agent that constrains the space of admissible solutions to a manageable size" [T31, Sec. 1], and Hamiltonian neural networks, motivated by models whose simulation "drifts over time to higher or lower energy states" [T32, Sec. 1], all build structure into learned dynamics. Lagrangian networks (Cranmer), Dreamer (Hafner) and Koopman operator learning share the aim (not read here). Disagreement: Ha and Schmidhuber found that a learned world model "will be exploitable by the controller, even if in the actual environment such exploits do not exist" [T14, Sec. 4.5]; Greydanus et al. note their method assumes a conserved quantity and so cannot model friction [T32, Sec. 3.2]. For code, the checker is the guard against exploiting the model's errors.</p>
+
+<p><strong>Energy-based models (T4).</strong> Hopfield [T33] and Hinton [T34] framed learning as shaping an energy surface (not read here); Du and Mordatch [T17] show implicit generation by descending a learned energy, and LeCun (cited above) places energy minimization at the centre of JEPA inference. Disagreement within the field concerns training stability and sampling cost, which Du and Mordatch discuss [T17].</p>
+
+<figure class="mt-8 glass-card p-4 fig-wide not-prose">
+  <a class="fig-zoom" href="/figures/rce-jepa/groups.svg" aria-label="Enlarge figure"><picture><source type="image/svg+xml" srcset="/figures/rce-jepa/groups.svg" /><img src="/figures/rce-jepa/groups.png" alt="Grid mapping six research communities, compression, computation as physics, state machines, programs as data, world models and energy-based models, to thesis parts T1 to T4, with filled dots where a community's argument bears on a part" width="1000" height="420" class="fig-img w-full rounded bg-white" loading="lazy" decoding="async" /></picture></a>
+  <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Figure T2. Which communities bear on which part of the thesis. A filled dot marks a convergence observation, not confirmation. T1: finite information system; T2: compression into Form; T3: kinematics and energy; T4: world model and inverse problem. <span class="fig-links"><a href="/figures/rce-jepa/groups.svg" target="_blank" rel="noopener">Open full size</a> · <a href="/figures/rce-jepa/groups.png">PNG</a></span>.</figcaption>
+</figure>
+
+<h3>Thesis references</h3>
+<p>Ledger: Full = read in full; Partial = read in part; Unavailable = not read (paywalled or not retrieved), listed with identifier only and never quoted.</p>
+<ol class="list-decimal pl-5 space-y-1">
+  <li>[T1] G. E. Smith, "Newton's Philosophiae Naturalis Principia Mathematica", Stanford Encyclopedia of Philosophy. <a href="https://plato.stanford.edu/entries/newton-principia/">plato.stanford.edu</a>. Partial (Secs. 1 to 3).</li>
+  <li>[T2] M. A. Di Liscia, "Johannes Kepler", Stanford Encyclopedia of Philosophy. <a href="https://plato.stanford.edu/entries/kepler/">plato.stanford.edu</a>. Full.</li>
+  <li>[T3] R. J. Solomonoff, "A formal theory of inductive inference, Part I", Information and Control 7 (1964). doi:10.1016/S0019-9958(64)90223-2. Unavailable.</li>
+  <li>[T4] A. N. Kolmogorov, "Three approaches to the quantitative definition of information", Problems of Information Transmission 1 (1965). Unavailable.</li>
+  <li>[T5] C. E. Shannon, "A mathematical theory of communication", Bell System Technical Journal 27 (1948). doi:10.1002/j.1538-7305.1948.tb01338.x. Unavailable.</li>
+  <li>[T6] J. Rissanen, "Modeling by shortest data description", Automatica 14 (1978). doi:10.1016/0005-1098(78)90005-5. Unavailable.</li>
+  <li>[T7] G. Delétang et al., "Language Modeling Is Compression", ICLR 2024. <a href="https://arxiv.org/abs/2309.10668">arXiv:2309.10668</a>. Full.</li>
+  <li>[T8] J. Schmidhuber, "Driven by Compression Progress", 2009. <a href="https://arxiv.org/abs/0812.4360">arXiv:0812.4360</a>. Full.</li>
+  <li>[T9] R. Landauer, "Irreversibility and heat generation in the computing process", IBM J. Res. Dev. 5 (1961). doi:10.1147/rd.53.0183. Unavailable.</li>
+  <li>[T10] C. H. Bennett, "Notes on Landauer's principle, reversible computation, and Maxwell's Demon", 2003. <a href="https://arxiv.org/abs/physics/0210005">arXiv:physics/0210005</a>. Full.</li>
+  <li>[T11] S. Lloyd, "Ultimate physical limits to computation", Nature 406 (2000). <a href="https://arxiv.org/abs/quant-ph/9908043">arXiv:quant-ph/9908043</a>. Full.</li>
+  <li>[T12] D. H. Wolpert, "The stochastic thermodynamics of computation", J. Phys. A 52 (2019). <a href="https://arxiv.org/abs/1905.05669">arXiv:1905.05669</a>. Partial.</li>
+  <li>[T13] J. Schrittwieser et al., "Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model", Nature 588 (2020). <a href="https://arxiv.org/abs/1911.08265">arXiv:1911.08265</a>. Full.</li>
+  <li>[T14] D. Ha and J. Schmidhuber, "World Models", 2018. <a href="https://arxiv.org/abs/1803.10122">arXiv:1803.10122</a>. Full.</li>
+  <li>[T15] A. Hindle et al., "On the naturalness of software", ICSE 2012. doi:10.1109/ICSE.2012.6227135. Unavailable.</li>
+  <li>[T16] U. Alon et al., "code2vec: Learning Distributed Representations of Code", POPL 2019. <a href="https://arxiv.org/abs/1803.09473">arXiv:1803.09473</a>. Partial (Secs. 1 to 7).</li>
+  <li>[T17] Y. Du and I. Mordatch, "Implicit Generation and Modeling with Energy-Based Models", NeurIPS 2019. <a href="https://arxiv.org/abs/1903.08689">arXiv:1903.08689</a>. Full.</li>
+  <li>[T18] Y. LeCun et al., "A tutorial on energy-based learning", 2006. Unavailable.</li>
+  <li>[T19] A. M. Turing, "On computable numbers", Proc. London Math. Soc. 42 (1936). doi:10.1112/plms/s2-42.1.230. Unavailable.</li>
+  <li>[T20] H. G. Rice, "Classes of recursively enumerable sets and their decision problems", Trans. AMS 74 (1953). doi:10.1090/S0002-9947-1953-0053041-6. Unavailable.</li>
+  <li>[T21] G. J. Chaitin, "On the length of programs for computing finite binary sequences", J. ACM 13 (1966). doi:10.1145/321356.321363. Unavailable.</li>
+  <li>[T22] F. Chollet, "On the Measure of Intelligence", 2019. <a href="https://arxiv.org/abs/1911.01547">arXiv:1911.01547</a>. Partial.</li>
+  <li>[T23] E. Fredkin and T. Toffoli, "Conservative logic", Int. J. Theor. Phys. 21 (1982). doi:10.1007/BF01857727. Unavailable.</li>
+  <li>[T24] R. Milner, A Calculus of Communicating Systems, LNCS 92 (1980). doi:10.1007/3-540-10235-3. Unavailable.</li>
+  <li>[T25] D. Harel, "Statecharts: a visual formalism for complex systems", Sci. Comput. Program. 8 (1987). doi:10.1016/0167-6423(87)90035-9. Unavailable.</li>
+  <li>[T26] L. Lamport, "The temporal logic of actions", ACM TOPLAS 16 (1994). doi:10.1145/177492.177726. Unavailable.</li>
+  <li>[T27] G. Berry and G. Gonthier, "The Esterel synchronous programming language", Sci. Comput. Program. 19 (1992). doi:10.1016/0167-6423(92)90005-V. Unavailable.</li>
+  <li>[T28] N. Halbwachs et al., "The synchronous data flow programming language LUSTRE", Proc. IEEE 79 (1991). doi:10.1109/5.97300. Unavailable.</li>
+  <li>[T29] C. Elliott and P. Hudak, "Functional reactive animation", ICFP 1997. doi:10.1145/258948.258973. Unavailable.</li>
+  <li>[T30] C. A. R. Hoare, "An axiomatic basis for computer programming", CACM 12 (1969). doi:10.1145/363235.363259. Unavailable.</li>
+  <li>[T31] M. Raissi, P. Perdikaris and G. E. Karniadakis, "Physics Informed Deep Learning (Part I)", 2017. <a href="https://arxiv.org/abs/1711.10561">arXiv:1711.10561</a>. Full.</li>
+  <li>[T32] S. Greydanus, M. Dzamba and J. Yosinski, "Hamiltonian Neural Networks", NeurIPS 2019. <a href="https://arxiv.org/abs/1906.01563">arXiv:1906.01563</a>. Full.</li>
+  <li>[T33] J. J. Hopfield, "Neural networks and physical systems with emergent collective computational abilities", PNAS 79 (1982). doi:10.1073/pnas.79.8.2554. Unavailable.</li>
+  <li>[T34] G. E. Hinton, "Training products of experts by minimizing contrastive divergence", Neural Computation 14 (2002). doi:10.1162/089976602760128018. Unavailable.</li>
+</ol>

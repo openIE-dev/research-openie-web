@@ -1,7 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import RceJepaThesis from '../../components/RceJepaThesis.astro';
 const TITLE = "RCE-JEPA: Autonomous Deterministic Coding using Latent Space";
-const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming system in which every program has one fixed, checkable shape. JEPA is a Joint Embedding Predictive Architecture, a kind of learned model that predicts a compact summary of the answer instead of writing the answer out word by word. Latent space is the space of those learned summaries: a list of numbers that keeps what matters about a program and drops surface detail. This topic asks whether software can be written autonomously by having a learned model propose programs in that closed, deterministic shape while a deterministic checker, not the model, decides what is accepted, with the best performance per clock cycle and per joule as the goal.";
+const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming system in which every program has one fixed, checkable shape. JEPA is a Joint Embedding Predictive Architecture, a kind of learned model that predicts a compact summary of the answer instead of writing the answer out word by word. Latent space is the space of those learned summaries: a list of numbers that keeps what matters about a program and drops surface detail. This topic asks whether software can be written autonomously by having a learned model propose programs in that closed, deterministic shape while a deterministic checker, not the model, decides what is accepted, with the best performance per clock cycle and per joule as the goal. Its thesis is that coding today resembles mechanics before Newton, rich in observation and craft but without rules that predict behaviour and cost in advance, and that a finite, deterministic, compressed program form makes such rules possible to state and test.";
 ---
 
 <Layout title={TITLE} description={ABSTRACT}>
@@ -21,6 +22,7 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
         <li>People have tried for seventy years to get computers to write programs from a description. Each attempt fixed one part of the problem and left another part manual.</li>
         <li>Today's AI writes code one word piece at a time, in any shape, and often gets it wrong. A fixed program shape plus a strict checker turns "write anything" into "fill in a known shape, then get a yes or no".</li>
         <li>The AI only proposes; the checker decides. So safety does not depend on the AI being right, and the cost that counts is the electricity spent per program that actually passes.</li>
+        <li>Before Newton, people could watch the planets but not predict them from a few rules. AI coding is in that position now. A program that always does the same thing from the same start, in a compact standard form, could be predicted, and its energy cost counted, before it runs. That is a conjecture, and the tests are listed below.</li>
       </ol>
     </div>
 
@@ -33,6 +35,8 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
       <li>No model runs inside the Reality Code Engine's own toolchain loop.</li>
       <li>Every accepted program form is replayable bit for bit.</li>
     </ul>
+
+    <RceJepaThesis />
 
     <h2>1. History: seventy years of "say what you want, get the program"</h2>
     <p>The wish behind this topic is old. What has changed is which parts of it are now cheap. The timeline below lists the main attempts; the text after it says what each one achieved and where it stopped.</p>

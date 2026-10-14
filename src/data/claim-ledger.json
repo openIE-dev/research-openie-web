@@ -154,6 +154,12 @@
       ],
       "pattern": "Hyrum's Law|The Law of Leaky Abstractions|hyrumslaw|the-law-of-leaky-abstractions",
       "note": "Titles of cited works in the three-body paper."
+    },
+    {
+      "id": "laws-of-coding-proposal",
+      "status": "author-proposal",
+      "pattern": "Laws of Coding|axioms of motion|physical law|equation of motion",
+      "note": "David Charlot's proposal 'Laws of Coding', framed as conjecture in the RCE-JEPA thesis; 'axioms of motion' and 'equation of motion' refer to Newton as history."
     }
   ]
 }
