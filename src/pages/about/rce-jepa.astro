@@ -1,75 +1,126 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-const TITLE = "RCE-JEPA: Decoding Intent into an RCE Form";
-const ABSTRACT = "RCE-JEPA is intent decoding: it turns stated intent into an RCE Form P = (S, E, δ, D, λ), meaning state, events, transition, derivation and output. RCE handles everything after that: checking, proofs, derivation, emission and placement. The goal is the best performance per clock cycle and per joule. If all code can be encoded in RCE's Form, all code can be produced by JEPA-style or energy-based models over that Form.";
+const TITLE = "RCE-JEPA: Autonomous Deterministic Coding using Latent Space";
+const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming system in which every program has one fixed, checkable shape. JEPA is a Joint Embedding Predictive Architecture, a kind of learned model that predicts a compact summary of the answer instead of writing the answer out word by word. Latent space is the space of those learned summaries: a list of numbers that keeps what matters about a program and drops surface detail. This topic asks whether software can be written autonomously by having a learned model propose programs in that closed, deterministic shape while a deterministic checker, not the model, decides what is accepted, with the best performance per clock cycle and per joule as the goal.";
 ---
 
-<Layout title={TITLE} description={"Research topic. " + ABSTRACT}>
+<Layout title={TITLE} description={ABSTRACT}>
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
     <p class="section-label mb-4">Research topic · open</p>
     <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">{TITLE}</h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">{ABSTRACT}</p>
 
     <figure class="mt-10 glass-card p-4">
-      <img src="/figures/rce-jepa/pipeline.svg" alt="Pipeline: stated intent, JEPA predictor in representation space, candidate Form P = (S, E, delta, D, lambda), RCE checker, then RCE engine and emit on accept; on reject the checker names the rule and the predictor proposes again" class="w-full rounded bg-white" loading="lazy" />
-      <figcaption class="mt-3 font-body text-xs text-brand-slate leading-relaxed">RCE-JEPA pipeline. Intent is embedded and a JEPA predictor estimates the Form's embedding; a decoder proposes energy-ranked candidate Forms P = (S, E, δ, D, λ). The deterministic RCE checker accepts or rejects every candidate, and rejections return structured diagnostics for re-ranking. Only accepted Forms reach the RCE engine for bit-for-bit replay, multi-language emission and placement. The dashed line marks the trust boundary: everything left of it is learned and untrusted. Energy is measured across the whole loop to compute joules per accepted Form. <a href="/figures/rce-jepa/pipeline.png">PNG</a>.</figcaption>
+      <img src="/figures/rce-jepa/pipeline.svg" alt="Pipeline: stated intent goes to a learned predictor working in latent space, a decoder proposes candidate program forms ranked by energy score, a deterministic checker accepts or names the broken rule, and accepted forms go to the engine for exact replay, proofs, code in other languages and placement" class="w-full rounded bg-white" loading="lazy" />
+      <figcaption class="mt-3 font-body text-xs text-brand-slate leading-relaxed">Figure 1. The proposed pipeline. A learned predictor maps stated intent to a point in latent space; a decoder turns that point into candidate programs in the fixed shape and ranks them by an energy score (lower means a better fit). A deterministic checker accepts or rejects each candidate and returns the broken rule for re-ranking. Everything inside the dashed box is learned and untrusted; only accepted programs reach the engine. Energy use is measured across the whole loop. <a href="/figures/rce-jepa/pipeline.png">PNG</a>.</figcaption>
     </figure>
 
     <div class="mt-8 glass-card p-6">
       <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">In plain words</p>
       <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
-        <li>You say what you want a program to do, and a model turns that into one precise written plan.</li>
-        <li>A strict checker reads the plan and either accepts it or says exactly what is wrong. The model never gets the final say.</li>
-        <li>Once a plan is accepted, the computer builds the program from it in the way that wastes the least time and electricity.</li>
+        <li>People have tried for seventy years to get computers to write programs from a description. Each attempt fixed one part of the problem and left another part manual.</li>
+        <li>Today's AI writes code one word piece at a time, in any shape, and often gets it wrong. A fixed program shape plus a strict checker turns "write anything" into "fill in a known shape, then get a yes or no".</li>
+        <li>The AI only proposes; the checker decides. So safety does not depend on the AI being right, and the cost that counts is the electricity spent per program that actually passes.</li>
       </ol>
     </div>
 
-    <h2 class="mt-12 text-2xl text-brand-white">Principles</h2>
-    <ul class="mt-4 list-disc pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
+    <div class="mt-4 font-body text-sm text-brand-slate leading-relaxed [&_h2]:mt-12 [&_h2]:text-2xl [&_h2]:text-brand-white [&_h3]:mt-8 [&_h3]:text-lg [&_h3]:text-brand-white [&_p]:mt-4 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mt-2">
+    <h2>Principles</h2>
+    <ul>
       <li>The model only proposes.</li>
-      <li>RCE's checker decides.</li>
+      <li>The checker decides.</li>
       <li>Security never depends on the model.</li>
-      <li>No model runs inside the RCE toolchain loop.</li>
-      <li>Every accepted Form is replayable bit for bit.</li>
+      <li>No model runs inside the Reality Code Engine's own toolchain loop.</li>
+      <li>Every accepted program form is replayable bit for bit.</li>
     </ul>
 
-    <div class="font-body text-sm text-brand-slate leading-relaxed [&_h2]:mt-12 [&_h2]:text-2xl [&_h2]:text-brand-white [&_h3]:mt-6 [&_h3]:text-lg [&_h3]:text-brand-white [&_p]:mt-4 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mt-2">
-    <h2>1. What code generation costs today: measured baselines</h2>
-    <p>These are dated measurements on specific models and hardware, quoted from the cited sources. They serve as baselines, not as statements about any current system.</p>
-    <h3>Error rates</h3>
+    <h2>1. History: seventy years of "say what you want, get the program"</h2>
+    <p>The wish behind this topic is old. What has changed is which parts of it are now cheap. The timeline below lists the main attempts; the text after it says what each one achieved and where it stopped.</p>
+    <figure class="mt-6 glass-card p-4 not-prose">
+      <img src="/figures/rce-jepa/timeline.svg" alt="Timeline from FORTRAN in 1954 through deductive synthesis, program derivation, fourth-generation languages and CASE tools, the Fifth Generation project, No Silver Bullet, refinement methods and Model Driven Architecture, verified systems CompCert and seL4, large language model code generation, constrained decoding and verifier loops, to the open question of learned proposers with deterministic checkers" class="w-full rounded bg-white" loading="lazy" />
+      <figcaption class="mt-3 text-xs text-brand-slate">Figure 2. Attempts to turn a statement of intent into a working program. CASE means computer-aided software engineering; UML means Unified Modeling Language; Z, B and VDM (Vienna Development Method) are mathematical specification methods; Coq is a proof assistant. Green: machine-checked systems. Amber: learned models. Blue: the question this topic studies. <a href="/figures/rce-jepa/timeline.png">PNG</a>.</figcaption>
+    </figure>
     <ul>
-      <li>HumanEval (164 hand-written Python problems, unit-tested): Codex-12B solves 28.8% with one sample; with 100 samples it solves 70.2%, and Codex-S reaches 77.5% "by selecting the sample that passes the unit tests". Selecting by mean log-probability without tests gives 44.5% (Chen et al., 2021, abstract and Fig. 1). Pass rate drops "by roughly a factor of 2-3" per additional chained component in a synthetic docstring (Fig. 11).</li>
-      <li>SWE-bench (2,294 real GitHub issues across 12 Python repositories): with BM25 retrieval, Claude 2 resolves 1.96% and Claude 3 Opus 3.79%; only 43.07% and 46.56% of their patches apply (Jimenez et al., 2024, Table 5). Of applied but unresolved patches, most are "No-Op" or "Regression" (Table 23).</li>
+      <li><strong>Automatic programming, 1950s.</strong> FORTRAN (FORmula TRANslation) was presented as "The FORTRAN Automatic Coding System". Its authors wrote that its purpose was to let the IBM 704 "code problems for itself and produce as good programs as human coders (but without the errors)" (Backus et al., 1957). Example: a scientist wrote a formula; the system wrote the machine code. Today we call that a compiler, not automatic programming.</li>
+      <li><strong>Deductive synthesis, 1960s-80s.</strong> Simon's heuristic compiler (1963) and Manna and Waldinger's deductive approach (1980) treated a program as something extracted from a proof that a specification can be met. Both are listed in the ledger but were not available to read in full here, so no passage from them is quoted.</li>
+      <li><strong>Program derivation, 1975-86.</strong> Dijkstra introduced guarded commands "as a building block" for programs and presented "the formal derivation of programs" from conditions on the final state (Dijkstra, EWD 472). Bird's calculus of lists (the Bird-Meertens formalism) is "used to derive efficient solutions" by rewriting with algebraic identities (Bird, 1986). Example: start from "the maximum sum of any contiguous segment", rewrite step by step, and arrive at a single-pass loop.</li>
+      <li><strong>Fourth-generation languages, CASE tools and expert systems, 1980s.</strong> Report generators, form builders and diagram tools promised programs from screens and pictures. Brooks reviewed graphical programming, automatic programming and expert systems in 1986 and found no order-of-magnitude gain in any of them (Brooks, 1986).</li>
+      <li><strong>Japan's Fifth Generation Computer Systems project, 1982-92.</strong> A national effort built on logic programming in the Prolog family. A 1993 appraisal of the project is listed in the ledger but was not read in full here, so its outcome is not summarized on this page.</li>
+      <li><strong>Refinement and model-driven methods, 1980s-2000s.</strong> Z, B and VDM refine a mathematical specification step by step toward code. The Model Driven Architecture guide of the Object Management Group separates "a platform independent viewpoint and a platform specific" one and maps models between them (OMG, 2003). Example: draw a class diagram once and generate Java and SQL (Structured Query Language) from it.</li>
+      <li><strong>Machine-checked systems, 2008-09.</strong> CompCert is a C compiler whose "proof of semantic preservation" was carried out in the Coq proof assistant (Leroy, 2009). seL4 is a microkernel of "8,700 lines of C code" with a machine-checked "proof of functional correctness"; the proof cost "about 20 py" (person-years) (Klein et al., 2009). Coq can extract a proved function into ordinary OCaml or Haskell code (Letouzey, 2008).</li>
     </ul>
-    <h3>Energy</h3>
-    <ul>
-      <li>LLaMA 65B inference on V100/A100: "about 3-4 Joules for a output token" (Samsi et al., 2023, Sec. IV-C), with node power on the order of 300 W to 1 kW (Sec. IV-B).</li>
-      <li>Across 88 models, text generation averages 0.047 kWh per 1,000 inferences; BLOOMz-7B uses 1.0 × 10<sup>-4</sup> kWh (360 J) per inference (Luccioni et al., 2024, Tables 2 and 5). The authors find "multi-purpose, generative architectures are orders of magnitude more expensive than task-specific systems", and that task structure "accounts for more of the variation than the model size does", attributing part of the gap to decision space: a classifier chooses among a few classes, a generator among "an entire vocabulary".</li>
-    </ul>
-    <p><strong>Opinion.</strong> Taken together these sources suggest the dominant cost of machine-written code is the product of tokens per attempt, joules per token and attempts per accepted program, and that the last factor is large for open-ended generation. The narrower-output-space observation of Luccioni et al. is a convergent observation, not evidence for RCE itself.</p>
 
-    <h2>2. Defined quantities</h2>
+    <h2>2. Why the earlier attempts stalled</h2>
     <ul>
-      <li><strong>Output space.</strong> Free-form generation over vocabulary V with length L has raw space |V|<sup>L</sup>. For RCE, Ω<sub>n</sub> is the set of syntactically valid Forms of size n (Form nodes); Ω<sub>n</sub><sup>✓</sup> ⊆ Ω<sub>n</sub> is the subset that passes the checker. Reported as log<sub>2</sub>|Ω<sub>n</sub>| bits, estimated by grammar counting and sampling.</li>
-      <li><strong>Description length.</strong> b(P) is the bits to encode Form P in the canonical Form encoding; b(code) = tokens × log<sub>2</sub>|V| for the equivalent emitted source. Ratio ρ = b(code) / b(P).</li>
-      <li><strong>Verification cost.</strong> C<sub>check</sub>(P) is the wall time, cycles and joules for the checker to accept or reject P. Unit tests give C<sub>test</sub>, and a passing test is evidence, not proof.</li>
-      <li><strong>Acceptance probability.</strong> a = P(checker accepts and task spec satisfied | intent), measured as pass@1 over the benchmark.</li>
-      <li><strong>Joules per accepted program.</strong> J<sub>acc</sub> = (E<sub>model</sub> + E<sub>check</sub> + E<sub>retry</sub>) / N<sub>accepted</sub>, summed over a benchmark run, energy measured at the device, idle subtracted.</li>
-      <li><strong>Cycles per accepted program.</strong> K<sub>acc</sub>, the same quantity in CPU/GPU cycles where counters are readable.</li>
+      <li><strong>Essential versus accidental complexity.</strong> Brooks separated "essential tasks, the fashioning of the complex conceptual structures", from "accidental tasks" such as fighting hardware limits, and wrote that "automatic programming always has been a euphemism for programming with a higher-level language than was presently available to the programmer" (Brooks, 1986). Example: a better notation for a payroll rule does not decide what the rule should be.</li>
+      <li><strong>Natural language is ambiguous.</strong> Dijkstra argued that formal texts "are an amazingly effective tool for ruling out all sorts of nonsense that, when we use our native tongues, are almost impossible to avoid" (Dijkstra, EWD 667). Example: "sort the users by name and date" has at least two readings.</li>
+      <li><strong>Specification costs as much as the program.</strong> In seL4 the abstract specification took "about 4 person months" and the proof about 20 person-years, against 2.2 person-years for design and implementation including a Haskell prototype (Klein et al., 2009).</li>
+      <li><strong>Combinatorial search.</strong> Searching all programs grows exponentially with program length. DreamCoder addresses this by learning a library of reusable pieces and a neural network "to guide the search for programs" in a "wake-sleep" loop (Ellis et al., 2021); the search problem it attacks is exactly the one that limited deductive synthesis.</li>
+      <li><strong>Brittleness and adoption.</strong> Diagram-to-code tools generated code that was then hand-edited, and the model and the code drifted apart. Adoption studies of CASE and of model-driven engineering are listed in the ledger as not read, so no figures from them are quoted.</li>
+      <li><strong>Opinion.</strong> The common thread is that each approach fixed one cost (notation, proof, generation) while another stayed manual: writing the specification, searching for the program, or checking the result.</li>
     </ul>
-    <p><strong>Argument (opinion, to be tested).</strong> A Form has five typed slots with fixed composition rules. Constraining output to Ω<sub>n</sub> removes most of |V|<sup>L</sup> before the model is consulted, so fewer bits are predicted per program (ρ &gt; 1), the checker gives a definitive accept or reject in place of a probabilistic test, and rejection is cheap and structured, so retries are guided rather than blind.</p>
-    <p><strong>Illustrative arithmetic only, mixing sources.</strong> At 3-4 J/token (Samsi et al.) a 300-token function costs about 0.9-1.2 kJ per sample; at the 28.8% pass@1 of Codex-12B (Chen et al.) that is roughly 3-4 kJ per test-passing function before counting test execution. These numbers come from different models and hardware. RCE-JEPA must beat a properly measured version of this number on the same hardware, not this estimate.</p>
 
-    <h2>3. Why JEPA and energy-based prediction fit</h2>
+    <h2>3. Current attempts</h2>
+    <p>A large language model (LLM) is a neural network trained to predict the next token (a word piece) of text, including program text.</p>
     <ul>
-      <li>I-JEPA predicts "the representations of various target blocks" from a context block; computing the loss in pixel space instead of representation space dropped 1%-ImageNet linear-probe accuracy from 66.9 to 40.7 (Assran et al., 2023, Table 7). A ViT-H/14 was pretrained in under 1,200 GPU hours, reported as over 10× more efficient than MAE.</li>
-      <li>V-JEPA 2 casts planning as minimizing an energy, the L1 distance between a predicted future representation and a goal representation (Eq. 5), and reports 16 s per action versus 4 min for a generative video world model on the same GPU (Assran et al., 2025, Table 3), with an energy landscape described as "relatively smooth and locally convex".</li>
-      <li>The JEPA framing (LeCun, 2022, as described in I-JEPA Sec. 2): low energy for compatible (x, y) pairs and high energy for incompatible ones, with the loss "applied in embedding space, not input space". The position paper itself could not be retrieved, so it is cited only as described there.</li>
+      <li><strong>Error rates.</strong> HumanEval is a set of 164 hand-written Python problems checked by unit tests; pass@k is the share of problems solved by at least one of k samples. Codex-12B solves 28.8% with one sample and 70.2% with 100 samples, and Codex-S reaches 77.5% "by selecting the sample that passes the unit tests"; ranking by mean log-probability without tests gives 44.5% (Chen et al., 2021, abstract and Fig. 1). Pass rate drops "by roughly a factor of 2-3" for each additional chained component in a synthetic task description (Fig. 11). SWE-bench is 2,294 real GitHub issues from 12 Python repositories; with BM25 (a keyword search ranking) retrieval, Claude 2 resolves 1.96% and Claude 3 Opus 3.79%, and only 43.07% and 46.56% of their patches even apply (Jimenez et al., 2024, Table 5). AlphaCode generated a very large number of samples per problem and filtered them "based on program behavior", reaching "top 54.3%" of human contestants on average (Li et al., 2022).</li>
+      <li><strong>Nondeterminism.</strong> Asking ChatGPT the same coding question five times, the share of problems where no two answers gave equal test output was 75.76%, 51.00% and 47.56% on three datasets, and "setting the temperature to 0 does not guarantee determinism" (Ouyang et al., 2023).</li>
+      <li><strong>Constrained decoding.</strong> Restricting each next token to those a grammar allows. Synchromesh's Constrained Semantic Decoding "guarantees that all sampled programs satisfies the implemented constraints", including "syntax, scope, typing rules" (Poesia et al., 2022). Willard and Louf compile regular expressions and context-free grammars into finite-state machines so the restriction "adds little overhead" (Willard and Louf, 2023).</li>
+      <li><strong>Model plus verifier loops.</strong> AlphaProof writes proofs in the Lean proof assistant, which checks each one, and with it the system "solved three out of the five non-geometry problems" at the 2024 International Mathematical Olympiad (Hubert et al., 2025). LeanDojo pairs an LLM prover with premise retrieval in Lean (Yang et al., 2023). For code, Clover checks consistency among Dafny code, documentation and formal annotations and "accepts 87% of the correct examples and rejects 100% of the adversarial incorrect" ones on its benchmark (Sun et al., 2024). AutoVerus uses LLMs to write proofs for Rust code checked by the Verus verifier and "can automatically generate correct proof for more than 90%" of its 150 benchmark tasks (Yang et al., 2024).</li>
+      <li><strong>No-code and low-code tools.</strong> These pair a fixed schema (forms, tables, workflows) with a runtime that interprets it. <em>Opinion:</em> they show that a closed program shape plus a deterministic runtime is practical for a narrow class of applications; their limit is how much the schema can express.</li>
+      <li><strong>Energy-based models.</strong> An energy-based model "capture[s] dependencies between variables by associating a scalar energy to each configuration"; inference means "finding configurations of the remaining variables that minimize the energy", with "no requirement for proper normalization" (LeCun et al., 2006). Low energy means "these fit together".</li>
+      <li><strong>Joint Embedding Predictive Architectures (JEPA).</strong> I-JEPA (the image version) predicts "the representations of various target blocks" from a context block, so that "unnecessary pixel-level details" can be dropped. Computing the loss on raw pixels instead of in latent space dropped one image benchmark score (linear probe on 1% of ImageNet) from 66.9 to 40.7 (Assran et al., 2023, Table 7). V-JEPA 2 (the video version) plans by minimizing an energy, the distance between a predicted future representation and a goal representation (Eq. 5), and reports 16 seconds per action versus 4 minutes for a generative video model on the same GPU (graphics processing unit) (Assran et al., 2025, Table 3). The framing comes from LeCun's 2022 position paper, cited here only as described in I-JEPA Sec. 2, because the paper itself could not be read in full.</li>
     </ul>
-    <p><strong>Mapping (opinion).</strong> Intent is x; the Form is y. A context encoder embeds intent, a target encoder embeds Forms, a predictor maps one to the other, and an energy E(intent, P) ranks candidates in Ω<sub>n</sub>. Details irrelevant to meaning (identifier spelling, formatting, emitter language) are supplied deterministically by RCE's emit stage, so the model need not predict them. The checker, not the energy, is the acceptance criterion.</p>
 
-    <h2>4. Falsifiable hypotheses</h2>
-    <p>All measured on the benchmark below, same hardware, idle-subtracted joules. Baseline: an autoregressive code LLM of matched parameter count generating source in a target language, judged by that language's tests plus the RCE spec where translatable.</p>
+    <h2>4. Why now: the case for closed-form, deterministic, AI-proposed code</h2>
+    <p><strong>This section is opinion, built from the observations above. It is a case to be tested, not a result.</strong></p>
+    <ul>
+      <li><strong>Checkers are cheap and trustworthy where the earlier attempts lacked them.</strong> Using Csmith, a random program generator, the authors found that CompCert was "the only compiler we have tested for which Csmith cannot find wrong-code errors" after "about six CPU-years" of trying (Yang et al., 2011). Machine-checked rules can carry the trust that a generator cannot.</li>
+      <li><strong>Deterministic semantics answer the nondeterminism problem.</strong> If the generator is allowed to vary but the accepted artifact is checked and replayed exactly, run-to-run variation in the model stops mattering for the result.</li>
+      <li><strong>Verifier-in-the-loop evidence exists.</strong> AlphaCode's behavioral filtering, Codex-S's test selection (44.5% to 77.5%), Clover, AutoVerus and AlphaProof all show large gains when a check selects among proposals.</li>
+      <li><strong>Learned predictors now work in latent space.</strong> I-JEPA and V-JEPA 2 show that predicting a summary of the target, rather than every detail, can be both more accurate and far faster for those tasks. In a program, details such as identifier spelling, formatting and target language can be filled in deterministically after the structure is chosen.</li>
+      <li><strong>Token-by-token generation is expensive.</strong> LLaMA 65B inference used "about 3-4 Joules for a output token" (Samsi et al., 2023, Sec. IV-C). Across 88 models, text generation averaged 0.047 kWh (kilowatt-hours) per 1,000 inferences, and "multi-purpose, generative architectures are orders of magnitude more expensive than task-specific systems", partly because a generator chooses among "an entire vocabulary" (Luccioni et al., 2024).</li>
+      <li><strong>Illustrative arithmetic only, mixing sources.</strong> At 3-4 joules per token (Samsi et al.), a 300-token function costs about 0.9-1.2 kJ (kilojoules) per sample; at the 28.8% one-sample pass rate of Codex-12B (Chen et al.) that is roughly 3-4 kJ per test-passing function before counting test execution. These numbers come from different models and hardware. A proper test measures both on the same machine.</li>
+    </ul>
+    <h3>What could still fail</h3>
+    
+    <ul>
+      <li><strong>Expressiveness ceiling (H6).</strong> If real programs need effects or nondeterminism the Form cannot state, the "all code" premise fails.</li>
+      <li><strong>Intent may be the bottleneck.</strong> A smaller output space does not fix underspecified intent. Signal: H3 fails while H1 and H2 hold.</li>
+      <li><strong>Spec gaming.</strong> The checker proves a Form is well-formed and meets stated properties, not that it matches what the user meant. Benchmark tasks carry behavioral traces checked by replay; the residual risk is labeled, not solved.</li>
+      <li><strong>Corpus scarcity.</strong> Signal: H3 flat as the corpus grows.</li>
+      <li><strong>Collapse.</strong> JEPAs need anti-collapse measures (EMA target encoder). A collapsed Form embedding makes H5 fail.</li>
+      <li><strong>Measurement error.</strong> Rootless counters (macmon, RAPL) cover package or SoC, not wall power; both arms use the same meter.</li>
+      <li><strong>Baseline drift.</strong> The quoted figures come from 2021-2025 systems; a fair test re-measures a current baseline on the same hardware.</li>
+    </ul>
+
+    
+
+    <h2>5. One concrete instance: the Reality Code Engine</h2>
+    <p>RCE is one closed program form among possible others; the questions above apply to any language with a small, checkable program shape. In RCE every program is a Form P = (S, E, δ, D, λ):</p>
+    <ul>
+      <li><strong>S, state:</strong> the typed data the program holds, for example the cursor position and text buffer of an editor.</li>
+      <li><strong>E, events:</strong> the inputs it can receive, for example "key pressed" or "file opened".</li>
+      <li><strong>δ (delta), transition function:</strong> the rule giving the next state from the current state and an event.</li>
+      <li><strong>D, derivations:</strong> the recorded, hash-chained history of steps, which makes every run replayable bit for bit.</li>
+      <li><strong>λ (lambda), output:</strong> what the program shows or emits for a given state, for example the visible lines of text.</li>
+    </ul>
+    <p>A checker accepts a Form or names the rule it breaks. Accepted Forms are proved against stated properties, replayed exactly, emitted as code in other languages and run on RCE's own engine, which also places work across hardware. The full description is on the <a href="/about/rce/">RCE topic page</a> and the public specification at <a href="https://github.com/openIE-dev/rce">github.com/openIE-dev/rce</a>; nothing below depends on having read them.</p>
+    <p><strong>RCE-JEPA</strong> is the working name for the task studied here: decoding stated intent into an accepted Form with a joint embedding predictor, leaving checking, proofs, derivation, emission and placement to RCE. The aim is the best performance per clock cycle and per joule. <em>Working hypothesis:</em> if all code can be encoded in the Form, all code can be produced by joint embedding or energy-based models over it. The hypotheses below are designed so that the evidence can refute this.</p>
+
+    <h3>Defined quantities</h3>
+    <ul>
+      <li><strong>Output space.</strong> Free-form generation over vocabulary V with length L has raw space |V|<sup>L</sup>. Ω<sub>n</sub> (omega) is the set of valid Forms of size n (Form nodes); Ω<sub>n</sub><sup>✓</sup> ⊆ Ω<sub>n</sub> is the subset the checker accepts. Reported as log<sub>2</sub>|Ω<sub>n</sub>| bits, estimated by grammar counting and sampling.</li>
+      <li><strong>Description length.</strong> b(P) is the bits to encode Form P canonically; b(code) = tokens × log<sub>2</sub>|V| for the equivalent emitted source. Ratio ρ (rho) = b(code) / b(P).</li>
+      <li><strong>Verification cost.</strong> C<sub>check</sub>(P): wall time, cycles and joules for the checker to decide P. Unit tests give C<sub>test</sub>; a passing test is evidence, not proof.</li>
+      <li><strong>Acceptance probability.</strong> a = P(checker accepts and task specification satisfied | intent), measured as pass@1 over the benchmark.</li>
+      <li><strong>Joules per accepted program.</strong> J<sub>acc</sub> = (E<sub>model</sub> + E<sub>check</sub> + E<sub>retry</sub>) / N<sub>accepted</sub>, summed over a benchmark run, energy measured at the device with idle power subtracted.</li>
+      <li><strong>Cycles per accepted program.</strong> K<sub>acc</sub>, the same in CPU (central processing unit) or GPU cycles where counters are readable.</li>
+      <li><strong>AUROC</strong> (area under the receiver operating characteristic curve): the probability that a randomly chosen accepted Form gets a lower energy than a randomly chosen rejected one; 0.5 is chance, 1.0 is perfect.</li>
+    </ul>
+    <p><strong>Argument (opinion, to be tested).</strong> A Form has five typed slots with fixed composition rules. Constraining output to Ω<sub>n</sub> removes most of |V|<sup>L</sup> before the model is consulted, so fewer bits are predicted per program (ρ &gt; 1), the checker gives a definite accept or reject in place of a probabilistic test, and rejections are cheap and structured, so retries are guided rather than blind.</p>
+    <h3>Falsifiable hypotheses</h3>
+    <p>All measured on the benchmark below, same hardware, idle-subtracted joules. Baseline: an next-token code LLM of matched parameter count generating source in a target language, judged by that language's tests plus the RCE spec where translatable.</p>
     <div class="mt-4 overflow-x-auto"><table class="w-full text-xs border-collapse [&_td]:border [&_th]:border [&_td]:border-brand-border [&_th]:border-brand-border [&_td]:p-2 [&_th]:p-2 [&_th]:text-left [&_th]:text-brand-white">
       <thead><tr><th>ID</th><th>Hypothesis</th><th>Metric</th><th>Supported if</th><th>Disproved if</th></tr></thead>
       <tbody>
@@ -83,18 +134,8 @@ const ABSTRACT = "RCE-JEPA is intent decoding: it turns stated intent into an RC
       </tbody></table></div>
     <p>The thesis is disproved overall if H4 fails (no joule advantage per accepted program) or H6 fails (the Form cannot express the reference apps). Either alone is sufficient.</p>
 
-    <h2>5. Risks</h2>
-    <ul>
-      <li><strong>Expressiveness ceiling (H6).</strong> If real programs need effects or nondeterminism the Form cannot state, the "all code" premise fails.</li>
-      <li><strong>Intent may be the bottleneck.</strong> A smaller output space does not fix underspecified intent. Signal: H3 fails while H1 and H2 hold.</li>
-      <li><strong>Spec gaming.</strong> The checker proves a Form is well-formed and meets stated properties, not that it matches what the user meant. Benchmark tasks carry behavioral traces checked by replay; the residual risk is labeled, not solved.</li>
-      <li><strong>Corpus scarcity.</strong> Signal: H3 flat as the corpus grows.</li>
-      <li><strong>Collapse.</strong> JEPAs need anti-collapse measures (EMA target encoder). A collapsed Form embedding makes H5 fail.</li>
-      <li><strong>Measurement error.</strong> Rootless counters (macmon, RAPL) cover package or SoC, not wall power; both arms use the same meter.</li>
-      <li><strong>Baseline drift.</strong> The quoted figures come from 2021-2025 systems; a fair test re-measures a current baseline on the same hardware.</li>
-    </ul>
-
-    <h2>What will be delivered</h2>
+    
+    <h3>What will be delivered</h3>
     <p>Scope, organised as parallel workstreams that meet at the evaluation harness. Every deliverable either produces Forms, produces models that propose Forms, or measures the result.</p>
     <ul>
       <li><strong>W1. Form corpus and dataset card.</strong> Forms paired with intent statements and checker verdicts, from hand-written Forms, reference-app Forms and checker-verified mutations; the card covers provenance, licence, size distribution, negative generation, known gaps and contamination controls; canonical serialization for H1.</li>
@@ -107,24 +148,46 @@ const ABSTRACT = "RCE-JEPA is intent decoding: it turns stated intent into an RC
       <li><strong>W8. Demo.</strong> Stated intent to predicted Form to checker verdict (including a shown rejection) to engine replay and emitted code in two languages, with an on-screen joule reading.</li>
     </ul>
 
+    
     <h2>Status</h2>
-    <p>Research topic open. The full research case and the initial experiment are in progress. The statement that all code can be produced by models over the Form is a working hypothesis held by OpenIE, not a result.</p>
+    <p>Research topic open. The full research case and the initial experiment are in progress.</p>
 
     <h2>References</h2>
+    <p>Sources marked "read" were read in full from an open copy; only passages from those are quoted. Sources marked "not read" were not available in full (paywalled or not retrieved) and are listed for completeness only.</p>
     <ul>
-      <li>Assran et al. 2023. Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture. CVPR. <a href="https://arxiv.org/abs/2301.08243">arXiv:2301.08243</a>.</li>
-      <li>Assran et al. 2025. V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning. <a href="https://arxiv.org/abs/2506.09985">arXiv:2506.09985</a>.</li>
-      <li>Chen et al. 2021. Evaluating Large Language Models Trained on Code. <a href="https://arxiv.org/abs/2107.03374">arXiv:2107.03374</a>.</li>
-      <li>Jimenez et al. 2024. SWE-bench: Can Language Models Resolve Real-World GitHub Issues? ICLR. <a href="https://arxiv.org/abs/2310.06770">arXiv:2310.06770</a>.</li>
-      <li>Luccioni, Jernite, Strubell 2024. Power Hungry Processing: Watts Driving the Cost of AI Deployment? FAccT. <a href="https://doi.org/10.1145/3630106.3658542">DOI 10.1145/3630106.3658542</a>.</li>
-      <li>Samsi et al. 2023. From Words to Watts: Benchmarking the Energy Costs of Large Language Model Inference. IEEE HPEC. <a href="https://arxiv.org/abs/2310.03003">arXiv:2310.03003</a>.</li>
-      <li>LeCun 2022. A Path Towards Autonomous Machine Intelligence. OpenReview. Not retrieved; cited only as described in Assran et al. 2023.</li>
+      <li>Assran et al. 2023. Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture. CVPR. <a href="https://arxiv.org/abs/2301.08243">arXiv:2301.08243</a>. Read.</li>
+      <li>Assran et al. 2025. V-JEPA 2. <a href="https://arxiv.org/abs/2506.09985">arXiv:2506.09985</a>. Read.</li>
+      <li>Backus et al. 1957. The FORTRAN Automatic Coding System. Western Joint Computer Conference. <a href="https://archive.computerhistory.org/resources/text/Fortran/102663113.05.01.acc.pdf">Computer History Museum copy</a>. Read.</li>
+      <li>Bird 1986. An Introduction to the Theory of Lists. Oxford PRG-56. <a href="https://www.cs.ox.ac.uk/files/3378/PRG56.pdf">PDF</a>. Read.</li>
+      <li>Brooks 1986. No Silver Bullet: Essence and Accident in Software Engineering. <a href="http://www.cs.unc.edu/techreports/86-020.pdf">UNC TR86-020</a>. Read.</li>
+      <li>Chen et al. 2021. Evaluating Large Language Models Trained on Code. <a href="https://arxiv.org/abs/2107.03374">arXiv:2107.03374</a>. Read.</li>
+      <li>Dijkstra. EWD 472, Guarded commands, non-determinacy and formal derivation of programs. <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD04xx/EWD472.html">Transcription</a>. Read.</li>
+      <li>Dijkstra. EWD 667, On the foolishness of "natural language programming". <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html">Transcription</a>. Read.</li>
+      <li>Ellis et al. 2021. DreamCoder. PLDI. <a href="https://arxiv.org/abs/2006.08381">arXiv:2006.08381</a>. Read.</li>
+      <li>Hubert et al. 2025. Olympiad-level formal mathematical reasoning with reinforcement learning (AlphaProof). Nature. <a href="https://www.nature.com/articles/s41586-025-09833-y">Nature</a>. Read.</li>
+      <li>Jimenez et al. 2024. SWE-bench. ICLR. <a href="https://arxiv.org/abs/2310.06770">arXiv:2310.06770</a>. Read.</li>
+      <li>Klein et al. 2009. seL4: Formal Verification of an OS Kernel. SOSP. <a href="https://www.sigops.org/s/conferences/sosp/2009/papers/klein-sosp09.pdf">PDF</a>. Read.</li>
+      <li>LeCun et al. 2006. A Tutorial on Energy-Based Learning. <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf">PDF</a>. Read.</li>
+      <li>Leroy 2009. Formal verification of a realistic compiler. CACM. <a href="https://xavierleroy.org/publi/compcert-CACM.pdf">PDF</a>. Read.</li>
+      <li>Letouzey 2008. Extraction in Coq: an Overview. CiE. <a href="https://www.irif.fr/~letouzey/download/letouzey_extr_cie08.pdf">PDF</a>. Read.</li>
+      <li>Li et al. 2022. Competition-Level Code Generation with AlphaCode. <a href="https://arxiv.org/abs/2203.07814">arXiv:2203.07814</a>. Read.</li>
+      <li>Luccioni, Jernite, Strubell 2024. Power Hungry Processing. FAccT. <a href="https://arxiv.org/abs/2311.16863">arXiv:2311.16863</a>. Read.</li>
+      <li>OMG 2003. MDA Guide Version 1.0. <a href="https://www.omg.org/mda/mda_files/MDA_Guide_Version1-0.pdf">PDF</a>. Read.</li>
+      <li>Ouyang et al. 2023. LLM is Like a Box of Chocolates: the Non-determinism of ChatGPT in Code Generation. <a href="https://arxiv.org/abs/2308.02828">arXiv:2308.02828</a>. Read.</li>
+      <li>Poesia et al. 2022. Synchromesh. ICLR. <a href="https://arxiv.org/abs/2201.11227">arXiv:2201.11227</a>. Read.</li>
+      <li>Samsi et al. 2023. From Words to Watts. IEEE HPEC. <a href="https://arxiv.org/abs/2310.03003">arXiv:2310.03003</a>. Read.</li>
+      <li>Sun et al. 2024. Clover: Closed-Loop Verifiable Code Generation. <a href="https://arxiv.org/abs/2310.17807">arXiv:2310.17807</a>. Read.</li>
+      <li>Willard and Louf 2023. Efficient Guided Generation for Large Language Models. <a href="https://arxiv.org/abs/2307.09702">arXiv:2307.09702</a>. Read.</li>
+      <li>Yang et al. 2011. Finding and Understanding Bugs in C Compilers (Csmith). PLDI. <a href="https://users.cs.utah.edu/~regehr/papers/pldi11-preprint.pdf">PDF</a>. Read.</li>
+      <li>Yang et al. 2023. LeanDojo. NeurIPS. <a href="https://arxiv.org/abs/2306.15626">arXiv:2306.15626</a>. Read.</li>
+      <li>Yang et al. 2024. AutoVerus. <a href="https://arxiv.org/abs/2409.13082">arXiv:2409.13082</a>. Read.</li>
+      <li>Not read: LeCun 2022, A Path Towards Autonomous Machine Intelligence, OpenReview (cited only as described in Assran et al. 2023); Simon 1963, Experiments with a heuristic compiler, JACM, DOI 10.1145/321186.321192; Manna and Waldinger 1980, A deductive approach to program synthesis, TOPLAS, DOI 10.1145/357084.357090; An overview and appraisal of the Fifth Generation Computer System project, Future Generation Computer Systems 1993, DOI 10.1016/0167-739X(93)90002-7; Kemerer 1992, How the learning curve affects CASE tool adoption, IEEE Software, DOI 10.1109/52.136161; Hutchinson et al. 2011, Empirical assessment of MDE in industry, ICSE, DOI 10.1145/1985793.1985858; Petre 2013, UML in practice, ICSE, DOI 10.1109/ICSE.2013.6606618.</li>
     </ul>
     </div>
 
     <div class="mt-10 flex flex-wrap gap-3">
-      <a href="/about/rce/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">RCE topic → /about/rce/</a>
-      <a href="https://github.com/openIE-dev/rce" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">RCE spec: github.com/openIE-dev/rce</a>
+      <a href="/about/rce/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">Reality Code Engine topic → /about/rce/</a>
+      <a href="https://github.com/openIE-dev/rce" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">Specification: github.com/openIE-dev/rce</a>
       <a href="/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">← Catalog</a>
     </div>
   </section>
