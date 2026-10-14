@@ -11,7 +11,7 @@ board_metered: false
 
 # The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming
 
-*Version 1.2, 13 October 2026. Specification: [draft 0.6](/rce/spec/). Data and code: [research.openie.dev/data/](/data/#rce). Playground: [/playground/rce/](/playground/rce/). LaTeX PDF: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
+*Version 1.3, 13 October 2026. Specification: [draft 0.7](/rce/spec/). Changes in 1.3: size-scaled method costs are attributed to language version 0.7 (they were described under 0.6 in 1.2), the per-call-site rule for mixed-version programs is stated, and the checks are rerun at engine commit `1eb5f02`. Data and code: [research.openie.dev/data/](/data/#rce). Playground: [/playground/rce/](/playground/rce/). LaTeX PDF: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
 
 ## Abstract
 
@@ -175,7 +175,7 @@ $$P = (S, E, \delta, D, \lambda)$$
 
 $$\mathrm{state}(D) = \mathrm{foldl}(\delta_1, s_0, D).$$
 
-A log may also carry each entry's outcome, outputs and state. These are derived: they are not hashed, and they must equal replay (T1 and T3 of [§3.7](#37-the-language-version-06-costs-and-theorem-status)). Two kinds of rejection are distinct. In the engine profile every event is applied, and an input that fails its contract produces a `reject` output and an error row. In the language a refused event leaves the state unchanged (T8) and is recorded as refused.
+A log may also carry each entry's outcome, outputs and state. These are derived: they are not hashed, and they must equal replay (T1 and T3 of [§3.7](#37-the-language-versions-06-and-07-costs-and-theorem-status)). Two kinds of rejection are distinct. In the engine profile every event is applied, and an input that fails its contract produces a `reject` output and an error row. In the language a refused event leaves the state unchanged (T8) and is recorded as refused.
 
 The *fit* is the data that fills the shape: the vocabulary $\Sigma$, the alphabets $E$ and $O$, the rule program $\Pi$ that defines $\delta$, the output rules that define $\lambda$, and the initial data $s_0$. In Gurevich's terms the fit is the vocabulary, the ASM program and the initial structures. In Codd's terms $\Sigma$ is the schema and $s_0$ is the instance. In product-line terms a fit is a feature selection [8]. In syntax-guided synthesis (SyGuS) terms a fit is a term from a grammar that meets a specification [9].
 
@@ -257,16 +257,16 @@ The statechart and the graph describe one fit. The e-graph describes every fit e
 
 U1 is a theorem. U2 is checked per target by differential testing ([§5.1](#51-differential-testing-across-five-targets)) and at large N in [§2.3](#23-the-ecosystem-at-large-n). U3 is a construction, built language by language from the grammar up, and [§8.7](#87-lift-coverage-across-languages) states how the construction is measured as it is built.
 
-### 3.7 The language: version 0.6, costs and theorem status
+### 3.7 The language: versions 0.6 and 0.7, costs and theorem status
 
-The RCE language is defined by a written specification, now at draft 0.6 ([/rce/spec/](/rce/spec/); source in the [rce repository](https://github.com/openIE-dev/rce)). Each module selects its language version with a first-line comment. A module without it is version 0.5, the language of sections 2 to 10. A module that declares `# rce-version: 0.6` also gets Appendix C: `par`, `for ... par`, `with budget`, workgroups, LVars, sessions and supervisors. Appendix D defines the engine profile, the handler specs and fits that this paper's engine runs. A version 0.5 module never sees Appendix C, so every valid version 0.5 program is accepted unchanged.
+The RCE language is defined by a written specification, now at draft 0.7 ([/rce/spec/](/rce/spec/); source in the [rce repository](https://github.com/openIE-dev/rce)). Each module selects its language version with a first-line comment. A module without it is version 0.5, the language of sections 2 to 10. A module that declares `# rce-version: 0.6` also gets Appendix C: `par`, `for ... par`, `with budget`, workgroups, LVars, sessions and supervisors. A module that declares `# rce-version: 0.7` has the language of version 0.6 with one difference, the cost of standard library methods below (Appendix C.15). Appendix D defines the engine profile, the handler specs and fits that this paper's engine runs. A version 0.5 module never sees Appendix C, so every valid version 0.5 program is accepted unchanged.
 
 **Budgets count work.** A `with budget` block charges each operation a fixed cost from the table of Appendix C.6.4 and traps with `budget` when the count runs out. The count is a proxy for work, not a measurement of time or energy; `est_j` is separate.
 
 | Operation | Cost |
 |---|---|
 | call of a user function or a closure, $c_{call}$ | 4 |
-| standard library method on receiver size $n$, first-argument size $k$ | $4 + w(m, n, k)$ |
+| standard library method on receiver size $n$, first-argument size $k$ | 4 in version 0.6; $4 + w(m, n, k)$ in version 0.7 |
 | channel send or receive | 8 |
 | `spawn` | 32 |
 | one `par` branch or `for ... par` chunk | 16 |
@@ -276,6 +276,8 @@ The RCE language is defined by a written specification, now at draft 0.6 ([/rce/
 | float `/`, `%` | 8 |
 
 Sizes are the UTF-8 byte length of a text, the length of a list and the number of entries of a map; any other value has size 0. The method work $w$ is fixed by the method's complexity class in the reference evaluator: $n + k$ for the linear methods on text, lists and maps (maps are ordered association lists), $n \lceil \log_2 n \rceil$ for `sort` (0 when $n \le 1$), and 0 for the remaining methods. The calls that `map`, `filter` and `fold` make to their function argument are charged as calls in addition. The arithmetic saturates at the largest 128-bit integer, and $w$ never decreases when $n$ or $k$ grows. The reference evaluator and the emitted Rust, Python and JavaScript runtimes compute the same function, and a test checks that the budget trap falls on the same operation in all four.
+
+**Which version governs a cost.** A program may join modules of different versions. The cost of a method call is fixed by the declared version of the module that contains the call expression, including a call inside a closure written there, and not by the version of the function being run, of its caller or of the program's first module. The rule is lexical, so linking modules changes no cost. Tests check it at the boundary in both directions on the reference evaluator and on the emitted Rust, Python and JavaScript programs: a 0.6 function under `with budget` that calls an imported 0.7 function sorting an 8-element list is charged 24 more than the same call to an identical 0.6 function.
 
 **Theorem status.** The specification states theorems T1 to T34 and records the status of each exactly. The proofs are in Lean 4 (v4.12.0, no Mathlib) over a core calculus. The words used for the level of a result are these. *Proved* means a Lean proof about the core semantics of the language. *Proved on a semantics* means a Lean proof over a small-step semantics of a core of RCE. *Model* means a Lean proof about an abstract model that is not connected to the RCE semantics or to the reference evaluator. *Vectors* means the reference evaluator's results on generated programs are checked against the model by the Lean kernel, which is a correspondence on samples, not a proof about the evaluator. *Tested* means differential testing on stated inputs. *Checked mechanically* means decided by a program, such as an LALR(1) table builder.
 
@@ -304,7 +306,7 @@ Sizes are the UTF-8 byte length of a text, the length of a list and the number o
 
 T9 has two target sets because the paper's engine and the language have two compilers. T9-F is the claim about `rce form --emit`, which [§5.1](#51-differential-testing-across-five-targets) measures. T9-L is the claim about the language's program emitters. A target outside these sets has no T9 claim.
 
-**Checks run for this version.** At engine commit `261b5b6`, `lake build` completes over the 31 files of `spec/lean/RCE/` with no `sorry`, and the standing audit reports the axioms of 2,192 RCE theorems as only `propext`, `Quot.sound` and `Classical.choice`. Kani verifies 10 of 10 kernel harnesses ([§5.3](#53-kani-proofs-of-the-kernel)). The engine tests run by `make check` pass 596 tests with 0 failures (2 ignored). The reference checker, built from the public repository as its continuous integration builds it, passes 50 tests in the default build and 106 with the version 0.6 suites enabled, with 0 failures. The specification check builds the LALR(1) tables of both versions with 0 conflicts and parses every example with three parsers, and the WebAssembly build of the checker passes 336 of 336 checks against the example corpora.
+**Checks run for this version.** At engine commit `1eb5f02`, `lake build` completes over the 31 files of `spec/lean/RCE/` with no `sorry`, and the standing audit reports the axioms of 2,192 RCE theorems as only `propext`, `Quot.sound` and `Classical.choice`. Kani verifies 10 of 10 kernel harnesses ([§5.3](#53-kani-proofs-of-the-kernel)). The engine tests run by `make check` pass 596 tests with 0 failures (2 ignored). The reference checker, built from the public repository as its continuous integration builds it, passes 56 tests in the default build and 112 with the version 0.6 and 0.7 suites enabled, with 0 failures, and 57 with the tree-sitter agreement test. The specification check builds the LALR(1) tables of version 0.5 and of versions 0.6 and 0.7, which share a grammar, with 0 conflicts and parses every example with three parsers, and the WebAssembly build of the checker passes 401 of 401 checks against the example corpora.
 
 **A convergence observation.** The catalogue at [agentlanguages.dev](https://agentlanguages.dev), read on 13 October 2026, lists 42 languages designed for AI agents to author code, grouped by its editors into a syntactic camp, a verification camp and an orchestration camp. Several design choices in this paper, such as mechanically checked contracts, hash-chained logs, deterministic replay and one canonical form per program, appear in its descriptions of other projects that were developed independently. This is an observation that the choices recur. It is not evidence that they are correct, and this paper makes no comparison with those projects.
 
