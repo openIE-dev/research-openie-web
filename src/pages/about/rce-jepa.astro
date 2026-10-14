@@ -79,7 +79,7 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
     <h2>4. Why now: the case for closed-form, deterministic, AI-proposed code</h2>
     <p><strong>This section is opinion, built from the observations above. It is a case to be tested, not a result.</strong></p>
     <ul>
-      <li><strong>Checkers are cheap and trustworthy where the earlier attempts lacked them.</strong> Using Csmith, a random program generator, the authors found that CompCert was "the only compiler we have tested for which Csmith cannot find wrong-code errors" after "about six CPU-years" of trying (Yang et al., 2011, Sec. 3.1, PDF p. 6). Machine-checked rules can carry the trust that a generator cannot.</li>
+      <li><strong>Checkers are cheap and trustworthy where the earlier attempts lacked them.</strong> Using Csmith, a random program generator, the authors found that CompCert was "the only compiler we have tested for which Csmith cannot find wrong-code errors" after "about six CPU-years" of trying (Yang et al., 2011, Sec. 3.1, PDF p. 6). Machine-checked rules can carry the trust that a generator cannot. CompCert itself uses this pattern: its register allocator runs an unverified graph-coloring heuristic and checks each result with a verifier proved correct in Coq, because graph coloring is "easier to validate a posteriori than to directly prove correct" (Leroy, 2009, Sec. 4.2, PDF p. 7).</li>
       <li><strong>Deterministic semantics answer the nondeterminism problem.</strong> If the generator is allowed to vary but the accepted artifact is checked and replayed exactly, run-to-run variation in the model stops mattering for the result.</li>
       <li><strong>Verifier-in-the-loop evidence exists.</strong> AlphaCode's behavioral filtering, Codex-S's test selection (44.5% to 77.5%), Clover, AutoVerus and AlphaProof all show large gains when a check selects among proposals.</li>
       <li><strong>Learned predictors now work in latent space.</strong> I-JEPA and V-JEPA 2 show that predicting a summary of the target, rather than every detail, can be both more accurate and far faster for those tasks. In a program, details such as identifier spelling, formatting and target language can be filled in deterministically after the structure is chosen.</li>
@@ -161,7 +161,7 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
     <ul>
       <li>Assran et al. 2023. Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture. CVPR. <a href="https://arxiv.org/abs/2301.08243">arXiv:2301.08243</a>. Partial.</li>
       <li>Assran et al. 2025. V-JEPA 2. <a href="https://arxiv.org/abs/2506.09985">arXiv:2506.09985</a>. Partial.</li>
-      <li>Backus et al. 1957. The FORTRAN Automatic Coding System. Western Joint Computer Conference. <a href="https://archive.computerhistory.org/resources/text/Fortran/102663113.05.01.acc.pdf">Computer History Museum copy</a>. Partial.</li>
+      <li>Backus et al. 1957. The FORTRAN Automatic Coding System. Western Joint Computer Conference. <a href="https://archive.computerhistory.org/resources/text/Fortran/102663113.05.01.acc.pdf">Computer History Museum copy</a>. Full.</li>
       <li>Bird 1986. An Introduction to the Theory of Lists. Oxford PRG-56. <a href="https://www.cs.ox.ac.uk/files/3378/PRG56.pdf">PDF</a>. Partial.</li>
       <li>Brooks 1986. No Silver Bullet: Essence and Accident in Software Engineering. <a href="https://worrydream.com/refs/Brooks_1986_-_No_Silver_Bullet.pdf">PDF</a> (page numbers refer to this copy). Full.</li>
       <li>Chen et al. 2021. Evaluating Large Language Models Trained on Code. <a href="https://arxiv.org/abs/2107.03374">arXiv:2107.03374</a>. Partial.</li>
@@ -172,7 +172,7 @@ const ABSTRACT = "RCE is the Reality Code Engine, a deterministic programming sy
       <li>Jimenez et al. 2024. SWE-bench. ICLR. <a href="https://arxiv.org/abs/2310.06770">arXiv:2310.06770</a>. Partial.</li>
       <li>Klein et al. 2009. seL4: Formal Verification of an OS Kernel. SOSP. <a href="https://www.sigops.org/s/conferences/sosp/2009/papers/klein-sosp09.pdf">PDF</a>. Partial.</li>
       <li>LeCun et al. 2006. A Tutorial on Energy-Based Learning. <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf">PDF</a>. Partial.</li>
-      <li>Leroy 2009. Formal verification of a realistic compiler. CACM. <a href="https://xavierleroy.org/publi/compcert-CACM.pdf">PDF</a>. Partial.</li>
+      <li>Leroy 2009. Formal verification of a realistic compiler. CACM. <a href="https://xavierleroy.org/publi/compcert-CACM.pdf">PDF</a>. Full.</li>
       <li>Letouzey 2008. Extraction in Coq: an Overview. CiE. <a href="https://www.irif.fr/~letouzey/download/letouzey_extr_cie08.pdf">PDF</a>. Full.</li>
       <li>Li et al. 2022. Competition-Level Code Generation with AlphaCode. <a href="https://arxiv.org/abs/2203.07814">arXiv:2203.07814</a>. Partial.</li>
       <li>Luccioni, Jernite, Strubell 2024. Power Hungry Processing. FAccT. <a href="https://arxiv.org/abs/2311.16863">arXiv:2311.16863</a>. Partial.</li>
