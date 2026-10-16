@@ -2,9 +2,15 @@
 
 *Version 1.1, 11. Oktober 2026. Daten und Code: [research.openie.dev/data/](/data/#agency). LaTeX-PDF: [/pdfs/latex/agency.pdf](/pdfs/latex/agency.pdf) ([Quelltext](/pdfs/latex/agency.tex)).*
 
-*Das vorgeschlagene Universelle Gesetz der Handlungsfähigkeit, formuliert als Definition plus Tor.*
+## Zusammenfassung
 
-*Zuerst die Handlungsfähigkeit. Danach die Kinematik. Intelligenz ist der Kalkül der Handlungsfähigkeit, gelesen in Joule.*
+Dieses Papier definiert einen Agenten als ein System, das unter einem Energiebudget ein Ziel hält, leitet physikalische Grenzen dafür her, wie schnell es pro Sekunde und pro Joule handeln kann, und misst Intelligenz als Fortschritt pro Joule, nachdem ein Lauf abgeschlossen ist.
+
+**In einfachen Worten**
+
+1. Um als Agent zu gelten, muss ein System auf ein Ziel ausgerichtet sein, auf die Welt einwirken und innerhalb eines Energiebudgets bleiben.
+2. Die Physik legt für jede Entscheidung minimale Energiekosten fest, sodass kein Agent schneller oder günstiger handeln kann als diese Grenze.
+3. Unter den Systemen, die die Aufgabe korrekt erledigen, ist dasjenige das intelligentere, das weniger Energie verbraucht hat.
 
 ## 1. These
 
@@ -14,7 +20,7 @@ Der Vorschlag hat drei Schichten, und ihre Reihenfolge ist fest.
 2. **Die kinematischen Schranken der Handlungsfähigkeit folgen aus der Definition.** Sie sagen, wie schnell sich Handlungsfähigkeit bewegen kann, pro Sekunde und pro Joule, und was sie für diese Bewegung zahlen muss.
 3. **Intelligenz ist der Kalkül der Handlungsfähigkeit.** Intelligenz ist eine Eigenschaft der Rückschau. Sie wird an einem abgeschlossenen Lauf abgelesen, so wie eine Geschwindigkeit an einer aufgezeichneten Bahn abgelesen wird. Sie ist daher eine Ableitung der Handlungsfähigkeit: $\iota = dX/dJ$, wobei $X$ die bestätigte Handlungsfähigkeit und $J$ die Joule sind.
 
-Die These: Die Energie zum Ausführen ist die einzige wahre Metrik der Computerintelligenz. Alle anderen Faktoren fallen auf null.
+Die These: Unter den Systemen, die den Korrektheitstest einer Aufgabe bestehen, erfolgt die Rangfolge nach der Energie bis zur Fertigstellung, in Joule.
 
 Die These wird durch ihr Tor gelesen. Leistungsfähigkeit wird nicht verworfen: Sie ist das Tor. Burnell und Kollegen fordern, dass Evaluationen Ergebnisse pro Instanz statt als ein einziges Aggregat berichten [333], und Zhou und Kollegen sowie Laber und Kollegen finden, dass Leistungsfähigkeit und Effizienz über Modelle und Inferenzbudgets hinweg unabhängig voneinander variieren [334, 335]. Diese Befunde betreffen Systeme, die nicht alle dasselbe Prädikat erfüllen. Sobald ein Prädikat $C(z)$ und eine Fehlerrate festgelegt sind, ist jeder Faktor außer den Joule bereits beim Passieren des Tores verbraucht, und das ist der Sinn des zweiten Satzes der These. Die torbedingte Rangordnung ist auch gängige Praxis: SPECpower ordnet Serverarbeit pro Watt bei angegebener Last [338], Cost-of-Pass ordnet Modelle nach den Kosten einer korrekten Antwort [336], und Intelligence per Watt ordnet lokale Modelle nach Genauigkeit pro Leistungseinheit [337]. Der Beitrag dieses Papiers ist die Joule-Form dieser Rangordnung mit einer Ablehnungsklausel und einer Ableitung in der Rückschau, nicht die Idee, unter Korrektheit nach Kosten zu ordnen.
 
@@ -52,8 +58,8 @@ Keine Quelle wird wegen ihrer Methode ausgeschlossen. Jede Quelle wird danach ei
 - **Rücksetzfehler ($\varepsilon$):** die Wahrscheinlichkeit, dass ein zurückgesetzter Datensatz nicht in seinem wahrscheinlichsten Zustand ist.
 - **Zählobservable:** eine Größe einer Trajektorie, die ausgewählte Sprünge zählt. Sie nimmt nie ab.
 - **Radon-Nikodym-Ableitung:** die Dichte eines Maßes bezüglich eines anderen. Sie existiert, wenn das erste Maß jeder Menge die Masse null gibt, der das zweite die Masse null gibt.
-- **Mixture of Limits:** die Philosophie von OpenIE. Verwende den günstigsten Gang, der ausreicht. Es gibt Untergrenzen, jenseits derer zusätzliche Token, Parameter oder Joule keinen überprüfbaren Fortschritt kaufen. Ausgaben jenseits der Untergrenze sind Verschwendung. Diese Untergrenze ist das Plateau (Schwellenkonvergenz). Mixture of Limits ist nicht eine einzelne feste Kaskade. Eine feste Kaskadenreihenfolge ist eine Instanz davon. Der σ-Gesetz-Selektor ist eine andere.
-- **Notational Intelligence:** die Belegstudie von OpenIE. Jeder Akt trägt seine Vorhersage, sein Ergebnis und seine Joule.
+- **Mixture of Limits:** die Regel, den günstigsten Mechanismus (Gang) zu verwenden, der ausreicht. Es gibt Untergrenzen, jenseits derer zusätzliche Token, Parameter oder Joule keinen überprüfbaren Fortschritt kaufen. Ausgaben jenseits der Untergrenze sind Verschwendung. Diese Untergrenze ist das Plateau (Schwellenkonvergenz). Mixture of Limits ist nicht eine einzelne feste Kaskade. Eine feste Kaskadenreihenfolge ist eine Instanz davon. Der σ-Gesetz-Selektor ist eine andere.
+- **Beleg:** ein Datensatz, der jedem Akt beigefügt ist und seine Vorhersage, sein Ergebnis und seine Joule enthält.
 
 ## 2. Formaler Rahmen
 
@@ -482,9 +488,7 @@ Abbildung 2 zeichnet die Kurve von Vorhersage 1.
 ### 2.4 Wo die Studien stehen
 
 - **Mixture of Limits** ist der Optimumsoperator. Der günstigste ausreichende Gang ist das Argmin über die Joule. Es ist eine Philosophie, keine feste Reihenfolge: Die Ausgaben enden am Plateau, wo mehr Verschwendung ist.
-- **Notational Intelligence** ist der Beleg. Er trägt $R^*$, $R$, $m$ und $J$ für jeden Akt.
-
-Beide werden im Begleitpapier [Gemessene Commit-Tore](/papers/gates/) entwickelt. Die Produktplatzierung ist nicht Teil dieses Physikpapiers. Sie steht im [Whitepaper zu Metabolic Intelligence](/products/mei/#where-the-products-sit).
+- **Der Beleg** trägt $R^*$, $R$, $m$ und $J$ für jeden Akt.
 
 <div id="3-layer-1-the-universal-law-of-agency" class="anchor-alias" aria-hidden="true"></div>
 
@@ -526,7 +530,7 @@ Klassische Maschinen maßen den Preis im vollen Maßstab. Eine Maschine mit opti
 
 **Agenten nach der Theorie funktioneller Systeme, gebaut und betrieben.** Ein simulierter Fadenwurm mit einem Akzeptor der Handlungsergebnisse lernte Fortbewegung und Chemotaxis [90]. Ein physischer mobiler Roboter führte denselben Regler nach der Theorie funktioneller Systeme aus [91]. Die Klauseln 1 und 3 laufen in Software und an einem Körper. Keiner von beiden misst Joule.
 
-### 3.3 Meinung
+### 3.3 Positionen in der Literatur
 
 **Zweckgerichtete Systeme und Antizipation.** Rosenblueth, Wiener und Bigelow definierten zweckgerichtetes Verhalten über negative Rückkopplung auf ein Ziel hin [92]. Es hat keinen Energieterm. Anokhins funktionelles System hat afferente Synthese, Entscheidung, einen vor dem Akt festgelegten Akzeptor der Handlungsergebnisse, Handlung und Vergleich [93, 94]. Das sind die Klauseln 1 und 3 in ihrer ersten systematischen Form, gebaut auf Tierexperimenten. Sudakov formulierte das Ergebnis als systembildenden Faktor [95]. Die Vorhersageklausel ist das Organisationsprinzip. Shvyrkov zeigte anhand von Einzelneuronenableitungen, dass das Ziel die neuronale Aktivität organisiert [96]. Rosen definierte ein antizipatorisches System als eines, das ein prädiktives Modell seiner selbst und seiner Welt enthält und auf die Vorhersage hin handelt [97]. Keines davon setzt eine Joule-Untergrenze. Sterling definiert Allostase als Regulation durch Vorhersage [98]. Die Physiologie stellt die Vorhersage vor den Akt. Virgo, Biehl und McGregor gaben Bedingungen an, unter denen die Zustände eines Systems als nach dem Satz von Bayes aktualisierte Überzeugungen gelesen werden können [99]. Biehl und Virgo nennen ein System einen Agenten, wenn es so gelesen werden kann, als löse es ein POMDP (partially observable Markov decision process) [100]. Beides sind formale Definitionen. Klausel 1 verlangt weniger und legt mehr fest: eine Vorlage, festgelegt bei $t_0$, gehasht auf dem Beleg.
 
@@ -580,7 +584,7 @@ Abbildung 3 ordnet die drei Träger.
 
 **Empowerment in der Simulation.** Klyubin, Polani und Nehaniv definierten Empowerment, die Kanalkapazität von Handlungen zu künftigen Sensoren [9]. Es wurde für kontinuierliche Regelung berechnet [220] und in einer Übersicht dargestellt [221]. Es misst, wie stark ein Agent die Welt bewegen kann, in Bits. Es ist keine Rate pro Joule.
 
-### 4.3 Meinung
+### 4.3 Positionen in der Literatur
 
 Kinematik besteht überwiegend aus Theorem und Experiment. Die Meinungen hier betreffen die Frage, welche Variable die richtige ist. Seifert vertritt, dass die Inferenz aus Fluktuationen der Weg zu verborgenen Kosten ist [137]. Rovelli sowie Wissner-Gross und Freer schlagen beide eine entropische Kinematik vor [115, 118]. Kolchinsky zeigt, dass Dissipation allein nicht beschränkt, wie schnell Replikatoren wachsen oder zerfallen [222]. Raten werden durch Dissipation zusammen mit Aktivität beschränkt. Das ist die Form der Geschwindigkeitsgrenze, in der $\langle A\rangle$ neben $\Sigma$ steht. Adlam, McQueen und Waegell argumentieren, dass ein rein quantenmechanisches System kein Agent sein kann, weil der Aufbau eines Weltmodells und das Abwägen Kopieren erfordern, was das No-Cloning-Theorem verbietet (Preprint) [223]. Klausel 3 verlangt bereits einen klassischen Datensatz von $m$.
 
@@ -610,7 +614,7 @@ Intelligenz ist die Ableitung torbedingter Handlungsfähigkeit nach den Joule, a
 
 **Schätzungen.** Diese Quellen sind wertvoll, und ihre Joule-Zahlen sind modelliert, extrapoliert oder berechnet. Sie stehen neben gemessenen Joule, nie an ihrer Stelle. Schätzungen sind nie `measured_j`. Strubell, Ganesh und McCallum tasteten die Leistung für kurze Läufe ab und extrapolierten auf das vollständige Training von Modellen der Verarbeitung natürlicher Sprache [276]. Patterson und Kollegen berechneten die Trainingsenergie aus berichteten Daten zu Hardware, Laufzeit und Rechenzentrum [277]. Lacoste und Kollegen bauten einen Rechner aus Hardwaretyp, Laufzeit und Region [278]. Der Fußabdruck von BLOOM mischt gemessene und modellierte Eingaben [279]. Carbontracker liest Zähler auf dem Gerät und sagt Gesamtwerte für den vollen Lauf voraus [280]. Seine Vorhersagen sind Schätzungen. Elsworth und Kollegen berichten einen Median von 0.24 Wh pro Text-Prompt in Gemini Apps, einschließlich Beschleunigern, Hosts, Leerlaufkapazität und Overhead des Rechenzentrums [281]. Das ist eine vom Betreiber berichtete Zahl, abgelegt als `reported_j`.
 
-### 5.3 Meinung
+### 5.3 Positionen in der Literatur
 
 Jede Position wird an der Definition gemessen: Intelligenz ist die Ableitung torbedingter Handlungsfähigkeit nach den Joule, abgelesen an einem abgeschlossenen Lauf.
 
@@ -705,7 +709,7 @@ Recherchen auf Hindi und Arabisch ergaben keine Primärforschung in diesen Sprac
 
 **P7. Optimalität von Mixture of Limits.** Teilweise bewiesen. Proposition 9 gibt die exakten Bedingungen für unabhängige Gänge und für zwei verschachtelte Gänge an, sowie den Budgetmechanismus. Die Instanz der festen Kaskade probiert die Gänge vom günstigsten aufwärts, hält beim ersten Gang an, dessen Ausgabe $C(z)$ erfüllt, und lehnt mit einem Beleg ab, wenn der nächste Gang das Budget sprengen würde. Sie erreicht das Joule-Minimum bis auf die Kosten gescheiterter Versuche. Vorhanden: Ist die Hinlänglichkeit in der Gangreihenfolge monoton und steigen die Gangkosten mit der Reihenfolge, so ist der erste ausreichende Gang der günstigste ausreichende Gang. Fehlt: eine Regret-Schranke, wenn Erfolgswahrscheinlichkeiten geschätzt werden oder die Hinlänglichkeit nicht monoton ist, der verschachtelte Fall mit mehr als zwei Gängen und die Bedingungen, unter denen diese Regel und der σ-Gesetz-Selektor, $a^* = \arg\max[H(a) - \lambda J(a)]$ unter der Nebenbedingung $J \le B$, denselben Akt wählen.
 
-**P8. Wann sich Handlungsfähigkeit kumuliert.** Bedingungen, unter denen $\alpha_J > 0$ über einen Lauf gilt, sodass frühere Belege die Joule späterer Abschlüsse senken. Vorhanden: Ein früherer Probelauf von OpenIE fand $\alpha_J \le 0$ bei nahezu optimalen Aufgaben. Fehlt: ein Modell der Wiederverwendung, in dem gespeicherte Belege das spätere $J$ um mehr senken als die Joule für Speicherung und Nachschlagen. Still liefert die Kostenseite des Gedächtnisses [225]. Abschnitt 8.10 misst den Anteil der Vorlage an den Joule jedes Aktes.
+**P8. Wann sich Handlungsfähigkeit kumuliert.** Bedingungen, unter denen $\alpha_J > 0$ über einen Lauf gilt, sodass frühere Belege die Joule späterer Abschlüsse senken. Fehlt: ein Modell der Wiederverwendung, in dem gespeicherte Belege das spätere $J$ um mehr senken als die Joule für Speicherung und Nachschlagen. Still liefert die Kostenseite des Gedächtnisses [225]. Abschnitt 8.10 misst den Anteil der Vorlage an den Joule jedes Aktes.
 
 ### 7.2 Was nachgewiesen werden muss
 
@@ -750,7 +754,7 @@ Jede Aufgabe hat ein maschinell prüfbares Vollständigkeitsprädikat $C(z)$: Un
 Alle Arme teilen die Gänge, das Prädikat, das Budget, die Messgeräte und eine randomisierte, verschränkte Laufreihenfolge.
 
 1. **σ-Gesetz-Selektor:** $a^* = \arg\max[H(a) - \lambda J(a)]$ unter der Nebenbedingung $J \le B$, mit Ablehnung auf einen Beleg.
-2. **Feste Kaskade (eine Instanz von Mixture of Limits):** die Regel des günstigsten Ausreichenden, mit Gängen, die in fester Reihenfolge vom günstigsten aufwärts probiert werden. Sie ist der passende Vergleich: gleiche Information, gleiche Gänge, gleiches Budget und gleiches Ablehnungsrecht. Nur die Auswahlregel unterscheidet sich.
+2. **Feste Kaskade (günstigster Gang zuerst):** die Regel des günstigsten Ausreichenden, mit Gängen, die in fester Reihenfolge vom günstigsten aufwärts probiert werden. Sie ist der passende Vergleich: gleiche Information, gleiche Gänge, gleiches Budget und gleiches Ablehnungsrecht. Nur die Auswahlregel unterscheidet sich.
 3. **Immer der größte Gang:** Referenzobergrenze.
 4. **Immer der kleinste Gang:** Referenzuntergrenze, mit Ablehnung bei Scheitern.
 
@@ -766,7 +770,7 @@ Beide Selektoren sind Instanzen von Mixture of Limits. Die Philosophie besteht d
 
 ### 8.5 Belegschema
 
-Der Beleg ist der Notational-Intelligence-Datensatz des Laufs. Ein Datensatz pro Akt:
+Der Beleg ist der Datensatz des Laufs. Ein Datensatz pro Akt:
 
 ```
 act_id, run_id, task_id, arm, seed, budget_j, gear
@@ -862,7 +866,7 @@ Dieser Lauf wendet die Abschnitte 8.1 bis 8.7 auf eine Aufgabenklasse auf einer 
 
 - **Agent und Aufgabe.** Ein Python-Prozess löst Sudoku-Rätsel. Das Vollständigkeitsprädikat $C(z)$ ist erfüllt, wenn das Gitter voll ist, jede Zeile, jede Spalte und jeder Block die Ziffern 1 bis 9 enthält und jede Vorgabe erhalten bleibt. Eine bestätigte Aufgabe schreibt $b = n_{\mathrm{empty}}\log_2 9$ Bits gut, die Zahl der Füllungen, zwischen denen der Akt wählt. Das ist die Kapazitätsschranke aus Definition 1. Die Testmenge umfasst 30 Rätsel, 10 pro Schicht (leicht, mittel, schwer), erzeugt aus einem festen Seed. Eine separate Menge von 30 Rätseln kalibriert die Selektoren.
 - **Gänge.** g0 füllt nackte Einzelne (naked singles). g1 fügt versteckte Einzelne (hidden singles) hinzu. g2 fügt Tiefensuche hinzu.
-- **Arme.** Der σ-Gesetz-Selektor nimmt $a^* = \arg\max[H(a) - \lambda J(a)]$, wobei $H(a)$ die kalibrierte Erfolgswahrscheinlichkeit, gegeben die bereits probierten Gänge, mal $b$ ist, und $\lambda = b/B$. Die feste Kaskade (eine Instanz von Mixture of Limits) nimmt den günstigsten Gang, dessen kalibrierte Erfolgswahrscheinlichkeit mindestens 0.5 beträgt. Beide legen $R^*$ vor jedem Akt fest, hashen es mit SHA-256 (Secure Hash Algorithm, 256 Bit) und versehen es mit einem Zeitstempel. Beide vergleichen nach dem Akt und lehnen mit einem Beleg ab, wenn kein Akt in das Budget passt. Die zielblinde Referenz zieht einen Gang zufällig, ohne Vorhersage, ohne Vergleich, ohne Eskalation und ohne Ablehnung. Das Budget bricht sie ab.
+- **Arme.** Der σ-Gesetz-Selektor nimmt $a^* = \arg\max[H(a) - \lambda J(a)]$, wobei $H(a)$ die kalibrierte Erfolgswahrscheinlichkeit, gegeben die bereits probierten Gänge, mal $b$ ist, und $\lambda = b/B$. Die feste Kaskade (günstigster Gang zuerst) nimmt den günstigsten Gang, dessen kalibrierte Erfolgswahrscheinlichkeit mindestens 0.5 beträgt. Beide legen $R^*$ vor jedem Akt fest, hashen es mit SHA-256 (Secure Hash Algorithm, 256 Bit) und versehen es mit einem Zeitstempel. Beide vergleichen nach dem Akt und lehnen mit einem Beleg ab, wenn kein Akt in das Budget passt. Die zielblinde Referenz zieht einen Gang zufällig, ohne Vorhersage, ohne Vergleich, ohne Eskalation und ohne Ablehnung. Das Budget bricht sie ab.
 - **Budgets und Seeds.** Pro Aufgabe gilt $B \in \{0.5, 1.0, 2.0\} \times J_{g2}(q)$, der Median von g2 allein im Pilotlauf. Die Stufen 0.5 und 1.0 binden: 98% und 40% der Pilotläufe überschreiten sie. Die Stufe 2.0 bindet nicht (0.7%). Es gibt 20 Seeds pro Bedingung, in einer per Seed festgelegten, verschränkten Reihenfolge. Insgesamt liefen 5,400 Episoden mit 4,940 Akten.
 - **Energiekennzeichnung.** Jedes Joule ist `reported_j`: die Energieschätzung des Kernels pro Prozess für den Agenten (`ri_energy_nj` aus `proc_pid_rusage`), vor und nach jedem Akt gelesen, ohne Privilegien. Der Prozess ist die Wand des Agenten. Das Sudoku-Gitter wird innerhalb dieses Prozesses gehalten, sodass die Welt $W'$ nicht, wie Definition 2 es verlangt, außerhalb von $S$ liegt. Dieser Lauf prüft die Kinematik und die torbedingte Rangordnung, nicht die Definition. Der Lauf, der die Definition prüft, hält das Gitter in einem zweiten Prozess hinter einem Socket oder auf einem Mikrocontroller. `measured_j` ist leer, weil kein Wandsteckdosen-Messgerät angeschlossen war. `est_j` ist die Zahl der Zyklen mal $4.20 \times 10^{-10}$ J, das mediane Verhältnis des Pilotlaufs.
 
@@ -873,9 +877,9 @@ Dieser Lauf wendet die Abschnitte 8.1 bis 8.7 auf eine Aufgabenklasse auf einer 
 | σ-Gesetz | 0.5 | 0.60 ± 0.50 | 108 ± 91 | 20.8 ± 0.3 | 5,254 ± 4,402 | 0.84 | 29.40 | 0 | 0 |
 | σ-Gesetz | 1.0 | 9.10 ± 1.86 | 1,479 ± 316 | 43.8 ± 4.0 | 34,454 ± 10,007 | 0.29 | 20.90 | 0 | 9 |
 | σ-Gesetz | 2.0 | 28.40 ± 0.60 | 4,823 ± 105 | 66.2 ± 5.8 | 73,345 ± 6,443 | 0.09 | 1.60 | 0 | 0 |
-| Feste Kaskade (eine Instanz von Mixture of Limits) | 0.5 | 0.70 ± 0.47 | 126 ± 85 | 18.8 ± 0.3 | 6,801 ± 4,569 | 0.67 | 29.30 | 0 | 0 |
-| Feste Kaskade (eine Instanz von Mixture of Limits) | 1.0 | 6.45 ± 1.50 | 1,047 ± 254 | 44.7 ± 3.6 | 23,804 ± 7,067 | 0.30 | 23.55 | 0 | 7 |
-| Feste Kaskade (eine Instanz von Mixture of Limits) | 2.0 | 27.50 ± 0.51 | 4,668 ± 92 | 67.0 ± 6.7 | 70,418 ± 7,766 | 0.11 | 2.50 | 0 | 0 |
+| Feste Kaskade (günstigster Gang zuerst) | 0.5 | 0.70 ± 0.47 | 126 ± 85 | 18.8 ± 0.3 | 6,801 ± 4,569 | 0.67 | 29.30 | 0 | 0 |
+| Feste Kaskade (günstigster Gang zuerst) | 1.0 | 6.45 ± 1.50 | 1,047 ± 254 | 44.7 ± 3.6 | 23,804 ± 7,067 | 0.30 | 23.55 | 0 | 7 |
+| Feste Kaskade (günstigster Gang zuerst) | 2.0 | 27.50 ± 0.51 | 4,668 ± 92 | 67.0 ± 6.7 | 70,418 ± 7,766 | 0.11 | 2.50 | 0 | 0 |
 | Zielblind | 0.5 | 0.25 ± 0.44 | 45 ± 80 | 14.1 ± 3.1 | 2,775 ± 4,999 | 1.80 | 0 | 20.35 | 20 |
 | Zielblind | 1.0 | 3.85 ± 1.84 | 623 ± 301 | 26.6 ± 5.7 | 24,153 ± 13,364 | 0.55 | 0 | 17.45 | 0 |
 | Zielblind | 2.0 | 18.25 ± 2.71 | 3,034 ± 471 | 34.1 ± 9.7 | 92,724 ± 15,690 | 0.17 | 0 | 1.35 | 0 |
@@ -931,9 +935,9 @@ Dieser Lauf verwendet dieselbe Aufgabenklasse, dieselben Gänge und dieselben dr
 | σ-Gesetz | 0.5 | 0.62 ± 0.49 | 113 ± 89 | 59.5 ± 2.0 | 1,942 ± 1,525 | 0.785 | 29.38 | 0 | 0 |
 | σ-Gesetz | 1.0 | 2.90 ± 1.74 | 523 ± 314 | 133.7 ± 13.8 | 4,150 ± 2,892 | 0.697 | 27.10 | 0 | 0 |
 | σ-Gesetz | 2.0 | 22.73 ± 1.30 | 3,980 ± 206 | 197.3 ± 18.2 | 20,359 ± 2,388 | 0.117 | 7.28 | 0 | 0 |
-| Feste Kaskade (eine Instanz von Mixture of Limits) | 0.5 | 0.57 ± 0.50 | 104 ± 90 | 60.1 ± 2.1 | 1,777 ± 1,548 | 0.871 | 29.43 | 0 | 0 |
-| Feste Kaskade (eine Instanz von Mixture of Limits) | 1.0 | 2.67 ± 1.25 | 483 ± 226 | 140.3 ± 13.5 | 3,593 ± 1,948 | 0.542 | 27.32 | 0 | 0 |
-| Feste Kaskade (eine Instanz von Mixture of Limits) | 2.0 | 19.93 ± 1.42 | 3,509 ± 227 | 201.2 ± 20.4 | 17,684 ± 2,909 | 0.164 | 10.07 | 0 | 0 |
+| Feste Kaskade (günstigster Gang zuerst) | 0.5 | 0.57 ± 0.50 | 104 ± 90 | 60.1 ± 2.1 | 1,777 ± 1,548 | 0.871 | 29.43 | 0 | 0 |
+| Feste Kaskade (günstigster Gang zuerst) | 1.0 | 2.67 ± 1.25 | 483 ± 226 | 140.3 ± 13.5 | 3,593 ± 1,948 | 0.542 | 27.32 | 0 | 0 |
+| Feste Kaskade (günstigster Gang zuerst) | 2.0 | 19.93 ± 1.42 | 3,509 ± 227 | 201.2 ± 20.4 | 17,684 ± 2,909 | 0.164 | 10.07 | 0 | 0 |
 | Zielblind | 0.5 | 0.12 ± 0.33 | 23 ± 61 | 35.4 ± 11.6 | 513 ± 1,397 | 2.723 | 0 | 22.85 | 0 |
 | Zielblind | 1.0 | 1.00 ± 0.93 | 181 ± 169 | 72.0 ± 19.5 | 2,661 ± 2,579 | 0.969 | 0 | 20.00 | 0 |
 | Zielblind | 2.0 | 10.65 ± 2.27 | 1,859 ± 400 | 97.3 ± 30.1 | 20,302 ± 5,766 | 0.284 | 0 | 8.70 | 0 |
@@ -986,9 +990,9 @@ Dieser Lauf wiederholt das Protokoll des zweiten Laufs aus Abschnitt 8.11.1 auf 
 | σ-Gesetz | 0.5 | 0.00 | 0 | 0.0018 | 0 | n. v. | 30.00 | 0.00 | 323 |
 | σ-Gesetz | 1.0 | 0.00 | 0 | 0.0002 | 0 | n. v. | 30.00 | 0.00 | 322 |
 | σ-Gesetz | 2.0 | 1.00 ± 0.39 | 181 ± 71 | 0.0018 ± 0.0336 | 14,427 ± 18,680 | 1.295 | 29.00 | 0.00 | 322 |
-| Feste Kaskade (eine Instanz von Mixture of Limits) | 0.5 | 0.00 | 0 | -0.0008 | 0 | n. v. | 30.00 | 0.00 | 326 |
-| Feste Kaskade (eine Instanz von Mixture of Limits) | 1.0 | 0.00 | 0 | -0.0005 | 0 | n. v. | 30.00 | 0.00 | 324 |
-| Feste Kaskade (eine Instanz von Mixture of Limits) | 2.0 | 1.00 ± 0.51 | 181 ± 91 | 0.0107 ± 0.0286 | 15,451 ± 23,767 | 1.538 | 29.00 | 0.00 | 320 |
+| Feste Kaskade (günstigster Gang zuerst) | 0.5 | 0.00 | 0 | -0.0008 | 0 | n. v. | 30.00 | 0.00 | 326 |
+| Feste Kaskade (günstigster Gang zuerst) | 1.0 | 0.00 | 0 | -0.0005 | 0 | n. v. | 30.00 | 0.00 | 324 |
+| Feste Kaskade (günstigster Gang zuerst) | 2.0 | 1.00 ± 0.51 | 181 ± 91 | 0.0107 ± 0.0286 | 15,451 ± 23,767 | 1.538 | 29.00 | 0.00 | 320 |
 | Zielblind | 0.5 | 0.00 | 0 | 0.0026 | 0 | n. v. | 0.00 | 30.00 | 327 |
 | Zielblind | 1.0 | 0.00 | 0 | 0.0009 | 0 | n. v. | 0.00 | 30.00 | 323 |
 | Zielblind | 2.0 | 0.28 ± 0.45 | 50 ± 82 | 0.0019 ± 0.0180 | 3,801 ± 13,749 | 3.618 | 0.00 | 28.90 | 321 |
@@ -1007,9 +1011,9 @@ Dieser Lauf wiederholt das Protokoll des zweiten Laufs aus Abschnitt 8.11.1 auf 
 | σ-Gesetz | 0.5 | 1.10 ± 0.98 | 200 ± 178 | 0.0345 ± 0.0017 | 6,027 ± 5,458 | 0.906 | 28.90 | 0.00 | 0 |
 | σ-Gesetz | 1.0 | 8.75 ± 3.14 | 1,574 ± 565 | 0.0805 ± 0.0098 | 20,519 ± 8,516 | 0.415 | 21.25 | 0.00 | 0 |
 | σ-Gesetz | 2.0 | 28.60 ± 0.98 | 4,882 ± 154 | 0.1008 ± 0.0234 | 50,667 ± 10,088 | 0.199 | 1.40 | 0.00 | 0 |
-| Feste Kaskade (eine Instanz von Mixture of Limits) | 0.5 | 1.15 ± 0.92 | 208 ± 167 | 0.0366 ± 0.0013 | 5,833 ± 4,757 | 0.816 | 28.85 | 0.00 | 0 |
-| Feste Kaskade (eine Instanz von Mixture of Limits) | 1.0 | 9.22 ± 3.07 | 1,660 ± 551 | 0.0813 ± 0.0106 | 21,412 ± 8,130 | 0.380 | 20.77 | 0.00 | 0 |
-| Feste Kaskade (eine Instanz von Mixture of Limits) | 2.0 | 27.77 ± 2.30 | 4,745 ± 377 | 0.1099 ± 0.0339 | 47,108 ± 13,216 | 0.281 | 2.23 | 0.00 | 0 |
+| Feste Kaskade (günstigster Gang zuerst) | 0.5 | 1.15 ± 0.92 | 208 ± 167 | 0.0366 ± 0.0013 | 5,833 ± 4,757 | 0.816 | 28.85 | 0.00 | 0 |
+| Feste Kaskade (günstigster Gang zuerst) | 1.0 | 9.22 ± 3.07 | 1,660 ± 551 | 0.0813 ± 0.0106 | 21,412 ± 8,130 | 0.380 | 20.77 | 0.00 | 0 |
+| Feste Kaskade (günstigster Gang zuerst) | 2.0 | 27.77 ± 2.30 | 4,745 ± 377 | 0.1099 ± 0.0339 | 47,108 ± 13,216 | 0.281 | 2.23 | 0.00 | 0 |
 | Zielblind | 0.5 | 0.20 ± 0.46 | 36 ± 84 | 0.0210 ± 0.0055 | 1,722 ± 3,927 | 2.280 | 0.00 | 21.50 | 0 |
 | Zielblind | 1.0 | 3.73 ± 2.12 | 667 ± 381 | 0.0436 ± 0.0140 | 16,393 ± 9,246 | 0.564 | 0.00 | 16.68 | 0 |
 | Zielblind | 2.0 | 15.65 ± 2.50 | 2,662 ± 433 | 0.0499 ± 0.0160 | 57,266 ± 14,596 | 0.255 | 0.00 | 4.17 | 0 |
@@ -1070,13 +1074,5 @@ Das replizierte Ergebnis ist eng. Bei der lockersten Budgetstufe schließt der �
 ### 8.12 Berichterstattung
 
 Alle Belege, rohen Messgerätespuren, Leerlaufreferenzen und den Analysecode zusammen mit dem Ergebnis veröffentlichen. Gemessene, berichtete und geschätzte Joule in getrennten Spalten berichten. Nie über Stufen hinweg summieren. Angeben, welche Falsifikatoren ausgelöst wurden, mit derselben Sichtbarkeit wie diejenigen, die bestanden. Jeder Lauf beantwortet außerdem die Checkliste von Takahashi und Hayashi [239]: die Abrechnungsgrenze; die Terme der Energiebilanz (gespeicherte Energie und exportierte Arbeit, oder eine Angabe, dass sie vernachlässigbar sind); die Referenz und ob die Joule gesamt oder inkrementell sind; die Vergröberung der Ergebnisse; den Horizont und das Rücksetzprotokoll; die Wanduhrzeit und die mittlere Leistung neben den Bits pro Joule; und den Schätzer der gekoppelten Bits mit seiner Verzerrungskorrektur.
-
-### 8.13 Wo die Produkte stehen
-
-- **Notational Intelligence** ist das Belegformat aus Abschnitt 8.5.
-- **Mixture of Limits** ist die Philosophie, die beide Selektoren instanziieren. Arm 2 ist ihre Instanz als feste Kaskade.
-- **Die Reality Code Engine** liest $\iota = dX/dJ$ in der Rückschau aus ihrem per Hash verketteten Protokoll ab, mit $X$ den Programmieraufgaben, die das Tor passieren, und $J$ ihren gekennzeichneten Joule ([Reality Code Engine, Abschnitt 9](/papers/rce/#9-ties-to-the-companion-papers)).
-
-Die Platzierung von Hardware und Produkten steht im [Whitepaper zu Metabolic Intelligence](/products/mei/#where-the-products-sit). Die Messgeräte dieses Plans sind M0 und M1 aus Abschnitt 8.1.
 
 ## Literatur
