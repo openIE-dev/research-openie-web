@@ -2,9 +2,15 @@
 
 *Versión 1.1, 11 de octubre de 2026. Datos y código: [research.openie.dev/data/](/data/#agency). PDF en LaTeX: [/pdfs/latex/agency.pdf](/pdfs/latex/agency.pdf) ([fuente](/pdfs/latex/agency.tex)).*
 
-*La propuesta Ley Universal de la Agencia, enunciada como una definición más una compuerta.*
+## Resumen
 
-*Primero la agencia. Después la cinemática. La inteligencia es el cálculo de la agencia, leído en julios.*
+Este artículo define un agente como un sistema que sostiene una meta bajo un presupuesto de energía, deriva los límites físicos de cuán rápido puede actuar por segundo y por julio, y mide la inteligencia como progreso por julio una vez completada una ejecución.
+
+**En palabras sencillas**
+
+1. Para contar como agente, un sistema debe apuntar a una meta, actuar sobre el mundo y mantenerse dentro de un presupuesto de energía.
+2. La física fija un coste mínimo de energía para cada decisión, de modo que ningún agente puede actuar más rápido ni más barato que ese límite.
+3. Entre los sistemas que hacen el trabajo correctamente, el más inteligente es el que usó menos energía.
 
 ## 1. Tesis
 
@@ -14,7 +20,7 @@ La propuesta tiene tres capas, y el orden es fijo.
 2. **Las cotas cinemáticas de la agencia se siguen de la definición.** Dicen con qué rapidez puede moverse la agencia, por segundo y por julio, y qué debe pagar para moverse.
 3. **La inteligencia es el cálculo de la agencia.** La inteligencia es una característica que se lee a posteriori. Se lee sobre una ejecución completada, del mismo modo que la velocidad se lee sobre una trayectoria registrada. Es por tanto una derivada de la agencia: $\iota = dX/dJ$, donde $X$ es la agencia confirmada y $J$ son los julios.
 
-La tesis: la energía para ejecutar es la única métrica verdadera de la inteligencia computacional. Todos los demás factores se reducen a cero.
+La tesis: entre los sistemas que superan la prueba de corrección de una tarea, la clasificación es por la energía hasta la finalización, en julios.
 
 La tesis se lee a través de su compuerta. La capacidad no se descarta: es la compuerta. Burnell y sus colegas piden que la evaluación informe los resultados por instancia y no mediante un único agregado [333], y Zhou y sus colegas y Laber y sus colegas encuentran que la capacidad y la eficiencia varían de forma independiente entre modelos y presupuestos de inferencia [334, 335]. Esos hallazgos se refieren a sistemas que no superan todos el mismo predicado. Una vez fijados un predicado $C(z)$ y una tasa de fallo, todo factor distinto de los julios ya se ha gastado en superar la compuerta, y ese es el sentido de la segunda frase de la tesis. La clasificación con compuerta también es práctica establecida: SPECpower clasifica el trabajo de los servidores por vatio a una carga enunciada [338], el coste por acierto clasifica los modelos por el coste de una respuesta correcta [336], y la inteligencia por vatio clasifica los modelos locales por precisión por unidad de potencia [337]. La contribución de este artículo es la forma en julios de esa clasificación, con una cláusula de rechazo y una derivada leída a posteriori, no la idea de clasificar por coste bajo corrección.
 
@@ -52,8 +58,8 @@ Ninguna fuente se excluye por su método. Cada fuente se ubica según lo que apo
 - **Error de reinicio ($\varepsilon$):** la probabilidad de que un registro reiniciado no esté en su estado más probable.
 - **Observable de conteo:** una magnitud de una trayectoria que cuenta saltos seleccionados. Nunca disminuye.
 - **Derivada de Radon-Nikodym:** la densidad de una medida con respecto a otra. Existe cuando la primera medida asigna masa cero a todo conjunto al que la segunda asigna masa cero.
-- **Mixture of Limits (mezcla de límites):** la filosofía de OpenIE. Usar el engranaje más barato que sea suficiente. Existen suelos más allá de los cuales tokens, parámetros o julios adicionales no compran progreso verificable. El gasto más allá del suelo es desperdicio. Ese suelo es la meseta (convergencia de umbral). Mixture of Limits no es una cascada fija. Un orden de cascada fijo es una instancia de ella. El selector de ley σ es otra.
-- **Notational Intelligence:** el estudio de recibos de OpenIE. Cada acto lleva su predicción, su resultado y sus julios.
+- **Mixture of Limits (mezcla de límites):** la regla de usar el mecanismo (engranaje) más barato que sea suficiente. Existen suelos más allá de los cuales tokens, parámetros o julios adicionales no compran progreso verificable. El gasto más allá del suelo es desperdicio. Ese suelo es la meseta (convergencia de umbral). Mixture of Limits no es una cascada fija. Un orden de cascada fijo es una instancia de ella. El selector de ley σ es otra.
+- **Recibo:** un registro adjunto a cada acto, que contiene su predicción, su resultado y sus julios.
 
 ## 2. Marco formal
 
@@ -482,11 +488,7 @@ La Figura 2 dibuja la curva de la Predicción 1.
 ### 2.4 Dónde se sitúan los estudios
 
 - **Mixture of Limits** es el operador del óptimo. El engranaje suficiente más barato es el argmin sobre los julios. Es una filosofía, no un orden fijo: el gasto se detiene en la meseta, donde más es desperdicio.
-- **Notational Intelligence** es el recibo. Contiene $R^*$, $R$, $m$ y $J$ para cada acto.
-
-Ambos se desarrollan en el artículo compañero, [Compuertas de confirmación medidas](/papers/gates/). La ubicación de productos no forma parte de este artículo de física. Se recoge en el [libro blanco de Metabolic Intelligence](/products/mei/#where-the-products-sit).
-
-**Tesis compartida, enunciada una sola vez para todos los artículos.** La energía para ejecutar es la única métrica verdadera de la inteligencia computacional. Todos los demás factores se reducen a cero. La forma de compuerta define qué significa eso. Entre las ejecuciones que superan el predicado de completitud de la tarea, $C(z)$, dentro del presupuesto y el plazo enunciados, los sistemas se clasifican por los julios hasta la finalización, $J^*$. La corrección, los plazos y el tamaño de la tarea son la compuerta, no términos de la puntuación. Los parámetros, los tokens, las puntuaciones en pruebas de referencia y los precios tienen peso cero en la clasificación ([Agencia, Sección 1](/papers/agency/#1-thesis)). Las estimaciones nunca son `measured_j`. Los precios y los mercados son economía. Están en los compañeros económicos: [Saciedad de la tarea](/papers/satiation/), [La corrección ortográfica es global](/papers/spellcheck/) y [El prometido mercado billonario de la programación con IA](/papers/ai-coding-market/).
+- **El recibo** contiene $R^*$, $R$, $m$ y $J$ para cada acto.
 
 <div id="3-layer-1-the-universal-law-of-agency" class="anchor-alias" aria-hidden="true"></div>
 
@@ -528,7 +530,7 @@ Las máquinas clásicas midieron el precio a escala completa. Una máquina de pi
 
 **Agentes de sistemas funcionales construidos y ejecutados.** Un nematodo simulado con un aceptor de resultados de la acción aprendió la locomoción y la quimiotaxis [90]. Un robot móvil físico ejecutó el mismo controlador de sistema funcional [91]. Las cláusulas 1 y 3 funcionan en software y en un cuerpo. Ninguno de los dos mide julios.
 
-### 3.3 Opinión
+### 3.3 Posturas en la literatura
 
 **Sistemas intencionales y anticipación.** Rosenblueth, Wiener y Bigelow definieron el comportamiento intencional mediante retroalimentación negativa hacia una meta [92]. No tiene término de energía. El sistema funcional de Anokhin tiene síntesis aferente, decisión, un aceptor de resultados de la acción fijado antes del acto, acción y comparación [93, 94]. Esto son las cláusulas 1 y 3 en su primera forma sistemática, construida sobre experimentos con animales. Sudakov enunció el resultado como el factor formador del sistema [95]. La cláusula de predicción es el principio organizador. Shvyrkov mostró a partir de registros de neuronas individuales que la meta organiza la actividad neuronal [96]. Rosen definió un sistema anticipatorio como aquel que contiene un modelo predictivo de sí mismo y de su mundo y actúa según la predicción [97]. Ninguno de ellos fija un suelo en julios. Sterling define la alostasis como regulación por predicción [98]. La fisiología pone la predicción antes del acto. Virgo, Biehl y McGregor dieron condiciones bajo las cuales los estados de un sistema pueden leerse como creencias actualizadas por el teorema de Bayes [99]. Biehl y Virgo llaman agente a un sistema cuando puede leerse como la resolución de un POMDP (proceso de decisión de Markov parcialmente observable) [100]. Ambas son definiciones formales. La cláusula 1 pide menos y fija más: una plantilla, fijada en $t_0$, con su hash en el recibo.
 
@@ -582,7 +584,7 @@ La Figura 3 ordena los tres portadores.
 
 **Empoderamiento en simulación.** Klyubin, Polani y Nehaniv definieron el empoderamiento, la capacidad del canal de las acciones a los sensores futuros [9]. Se calculó para el control continuo [220] y se revisó [221]. Mide cuánto puede mover el mundo un agente, en bits. No es una tasa por julio.
 
-### 4.3 Opinión
+### 4.3 Posturas en la literatura
 
 La cinemática es sobre todo teorema y experimento. Las opiniones aquí se refieren a cuál es la variable correcta. Seifert sostiene que la inferencia a partir de las fluctuaciones es la vía hacia los costes ocultos [137]. Rovelli y Wissner-Gross y Freer proponen ambos una cinemática entrópica [115, 118]. Kolchinsky muestra que la disipación sola no acota la rapidez con que crecen o decaen los replicadores [222]. Las tasas están acotadas por la disipación junto con la actividad. Esa es la forma del límite de velocidad, donde $\langle A\rangle$ figura junto a $\Sigma$. Adlam, McQueen y Waegell sostienen que un sistema puramente cuántico no puede ser un agente, porque construir un modelo del mundo y deliberar necesitan copiar, lo que el teorema de no clonación prohíbe (preprint) [223]. La cláusula 3 ya pide un registro clásico de $m$.
 
@@ -612,7 +614,7 @@ La inteligencia es la derivada de la agencia con compuerta en julios, leída sob
 
 **Estimaciones.** Estas fuentes son valiosas, y sus cifras de julios están modeladas, extrapoladas o calculadas. Figuran junto a los julios medidos, nunca en su lugar. Las estimaciones nunca son `measured_j`. Strubell, Ganesh y McCallum muestrearon la potencia en ejecuciones cortas y extrapolaron al entrenamiento completo de modelos de procesamiento del lenguaje natural [276]. Patterson y sus colegas calcularon la energía de entrenamiento a partir de datos informados sobre el hardware, el tiempo de ejecución y el centro de datos [277]. Lacoste y sus colegas construyeron una calculadora a partir del tipo de hardware, el tiempo de ejecución y la región [278]. La huella de BLOOM mezcla entradas medidas y modeladas [279]. Carbontracker lee contadores del dispositivo y predice los totales de la ejecución completa [280]. Sus predicciones son estimaciones. Elsworth y sus colegas informan de una mediana de 0.24 Wh por instrucción de texto de Gemini Apps, contando aceleradores, equipos anfitriones, capacidad ociosa y sobrecarga del centro de datos [281]. Es una cifra informada por el operador, archivada como `reported_j`.
 
-### 5.3 Opinión
+### 5.3 Posturas en la literatura
 
 Cada posición se sitúa frente a la definición: la inteligencia es la derivada de la agencia con compuerta en julios, leída sobre una ejecución completada.
 
@@ -707,7 +709,7 @@ Las búsquedas en hindi y árabe no devolvieron investigación primaria en esas 
 
 **P7. Optimalidad de Mixture of Limits.** Demostrado en parte. La Proposición 9 da las condiciones exactas para engranajes independientes y para dos engranajes anidados, y el mecanismo del presupuesto. La instancia de cascada fija prueba los engranajes desde el más barato hacia arriba, se detiene en el primer engranaje cuya salida supera $C(z)$ y rechaza con un recibo si el siguiente engranaje rompiera el presupuesto. Alcanza el mínimo de julios salvo el coste de los intentos fallidos. Disponible: si la suficiencia es monótona en el orden de los engranajes y los costes de los engranajes crecen con el orden, el primer engranaje suficiente es el engranaje suficiente más barato. Falta: una cota de arrepentimiento cuando las probabilidades de acierto se estiman o la suficiencia no es monótona, el caso anidado con más de dos engranajes y las condiciones bajo las cuales esta regla y el selector de ley σ, $a^* = \arg\max[H(a) - \lambda J(a)]$ sujeto a $J \le B$, eligen el mismo acto.
 
-**P8. Cuándo se acumula la agencia.** Condiciones bajo las cuales $\alpha_J > 0$ a lo largo de una ejecución, de modo que los recibos anteriores reduzcan los julios de los cierres posteriores. Disponible: una ejecución de prueba anterior de OpenIE halló $\alpha_J \le 0$ en tareas casi óptimas. Falta: un modelo de reutilización en el que los recibos almacenados reduzcan el $J$ posterior en más que los julios de almacenamiento y consulta. Still da el lado del coste de la memoria [225]. La Sección 8.10 mide la parte de los julios de cada acto que corresponde a la plantilla.
+**P8. Cuándo se acumula la agencia.** Condiciones bajo las cuales $\alpha_J > 0$ a lo largo de una ejecución, de modo que los recibos anteriores reduzcan los julios de los cierres posteriores. Falta: un modelo de reutilización en el que los recibos almacenados reduzcan el $J$ posterior en más que los julios de almacenamiento y consulta. Still da el lado del coste de la memoria [225]. La Sección 8.10 mide la parte de los julios de cada acto que corresponde a la plantilla.
 
 ### 7.2 Qué debe comprobarse
 
@@ -752,7 +754,7 @@ Cada tarea tiene un predicado de completitud comprobable por máquina, $C(z)$: p
 Todos los brazos comparten los engranajes, el predicado, el presupuesto, los medidores y un orden de ejecución aleatorizado e intercalado.
 
 1. **Selector de ley σ:** $a^* = \arg\max[H(a) - \lambda J(a)]$ sujeto a $J \le B$, con rechazo sobre un recibo.
-2. **Cascada fija (una instancia de Mixture of Limits):** la regla del suficiente más barato, con los engranajes probados en un orden fijo desde el más barato hacia arriba. Es la comparación emparejada: la misma información, los mismos engranajes, el mismo presupuesto y el mismo derecho de rechazo. Solo difiere la regla de selección.
+2. **Cascada fija (el más barato primero):** la regla del suficiente más barato, con los engranajes probados en un orden fijo desde el más barato hacia arriba. Es la comparación emparejada: la misma información, los mismos engranajes, el mismo presupuesto y el mismo derecho de rechazo. Solo difiere la regla de selección.
 3. **Siempre el engranaje más grande:** techo de referencia.
 4. **Siempre el engranaje más pequeño:** suelo de referencia, con rechazo cuando falla.
 
@@ -768,7 +770,7 @@ Ambos selectores son instancias de Mixture of Limits. La filosofía es usar el e
 
 ### 8.5 Esquema del recibo
 
-El recibo es el registro de Notational Intelligence de la ejecución. Un registro por acto:
+El recibo es el registro de la ejecución. Un registro por acto:
 
 ```
 act_id, run_id, task_id, arm, seed, budget_j, gear
@@ -864,7 +866,7 @@ Esta ejecución aplica las Secciones 8.1 a 8.7 a una clase de tareas en una máq
 
 - **Agente y tarea.** Un proceso de Python resuelve sudokus. El predicado de completitud $C(z)$ se cumple cuando la cuadrícula está llena, cada fila, columna y caja contiene del 1 al 9, y se conserva cada número dado. Una tarea confirmada acredita $b = n_{\mathrm{empty}}\log_2 9$ bits, el número de rellenos entre los que elige el acto. Esa es la cota de capacidad de la Definición 1. El conjunto de prueba contiene 30 sudokus, 10 por estrato (fácil, medio, difícil), generados a partir de una semilla fija. Un conjunto separado de 30 calibra los selectores.
 - **Engranajes.** g0 rellena las casillas con candidato único. g1 añade los candidatos únicos ocultos. g2 añade la búsqueda en profundidad.
-- **Brazos.** El selector de ley σ toma $a^* = \arg\max[H(a) - \lambda J(a)]$, siendo $H(a)$ la probabilidad de acierto calibrada dados los engranajes ya probados, multiplicada por $b$, y $\lambda = b/B$. La cascada fija (una instancia de Mixture of Limits) toma el engranaje más barato cuya probabilidad de acierto calibrada sea al menos 0.5. Ambos fijan $R^*$ antes de cada acto, le aplican un hash SHA-256 (Secure Hash Algorithm, 256 bits) y le ponen una marca de tiempo. Ambos comparan después del acto y rechazan con un recibo cuando ningún acto cabe en el presupuesto. La referencia ciega a la meta elige un engranaje al azar, sin predicción, sin comparación, sin escalada y sin rechazo. El presupuesto la corta.
+- **Brazos.** El selector de ley σ toma $a^* = \arg\max[H(a) - \lambda J(a)]$, siendo $H(a)$ la probabilidad de acierto calibrada dados los engranajes ya probados, multiplicada por $b$, y $\lambda = b/B$. La cascada fija (el más barato primero) toma el engranaje más barato cuya probabilidad de acierto calibrada sea al menos 0.5. Ambos fijan $R^*$ antes de cada acto, le aplican un hash SHA-256 (Secure Hash Algorithm, 256 bits) y le ponen una marca de tiempo. Ambos comparan después del acto y rechazan con un recibo cuando ningún acto cabe en el presupuesto. La referencia ciega a la meta elige un engranaje al azar, sin predicción, sin comparación, sin escalada y sin rechazo. El presupuesto la corta.
 - **Presupuestos y semillas.** Por tarea, $B \in \{0.5, 1.0, 2.0\} \times J_{g2}(q)$, la mediana piloto de g2 solo. Los niveles 0.5 y 1.0 restringen: el 98% y el 40% de las ejecuciones piloto los superan. El nivel 2.0 no restringe (0.7%). Hay 20 semillas por condición, en un orden intercalado con semilla. En total se ejecutaron 5,400 episodios, con 4,940 actos.
 - **Etiqueta de energía.** Todo julio es `reported_j`: la estimación de energía por proceso que el kernel hace para el agente (`ri_energy_nj` de `proc_pid_rusage`), leída antes y después de cada acto, sin privilegios. El proceso es la pared del agente. La cuadrícula del sudoku se conserva dentro de ese proceso, de modo que el mundo $W'$ no está fuera de $S$ como exige la Definición 2. Esta ejecución pone a prueba la cinemática y la clasificación con compuerta, no la definición. La ejecución que pone a prueba la definición conserva la cuadrícula en un segundo proceso detrás de un socket, o en un microcontrolador. `measured_j` está vacío, porque no se conectó ningún medidor de pared. `est_j` son los ciclos multiplicados por $4.20 \times 10^{-10}$ J, el cociente mediano del piloto.
 
@@ -875,9 +877,9 @@ Esta ejecución aplica las Secciones 8.1 a 8.7 a una clase de tareas en una máq
 | Ley σ | 0.5 | 0.60 ± 0.50 | 108 ± 91 | 20.8 ± 0.3 | 5,254 ± 4,402 | 0.84 | 29.40 | 0 | 0 |
 | Ley σ | 1.0 | 9.10 ± 1.86 | 1,479 ± 316 | 43.8 ± 4.0 | 34,454 ± 10,007 | 0.29 | 20.90 | 0 | 9 |
 | Ley σ | 2.0 | 28.40 ± 0.60 | 4,823 ± 105 | 66.2 ± 5.8 | 73,345 ± 6,443 | 0.09 | 1.60 | 0 | 0 |
-| Cascada fija (una instancia de Mixture of Limits) | 0.5 | 0.70 ± 0.47 | 126 ± 85 | 18.8 ± 0.3 | 6,801 ± 4,569 | 0.67 | 29.30 | 0 | 0 |
-| Cascada fija (una instancia de Mixture of Limits) | 1.0 | 6.45 ± 1.50 | 1,047 ± 254 | 44.7 ± 3.6 | 23,804 ± 7,067 | 0.30 | 23.55 | 0 | 7 |
-| Cascada fija (una instancia de Mixture of Limits) | 2.0 | 27.50 ± 0.51 | 4,668 ± 92 | 67.0 ± 6.7 | 70,418 ± 7,766 | 0.11 | 2.50 | 0 | 0 |
+| Cascada fija (el más barato primero) | 0.5 | 0.70 ± 0.47 | 126 ± 85 | 18.8 ± 0.3 | 6,801 ± 4,569 | 0.67 | 29.30 | 0 | 0 |
+| Cascada fija (el más barato primero) | 1.0 | 6.45 ± 1.50 | 1,047 ± 254 | 44.7 ± 3.6 | 23,804 ± 7,067 | 0.30 | 23.55 | 0 | 7 |
+| Cascada fija (el más barato primero) | 2.0 | 27.50 ± 0.51 | 4,668 ± 92 | 67.0 ± 6.7 | 70,418 ± 7,766 | 0.11 | 2.50 | 0 | 0 |
 | Ciega a la meta | 0.5 | 0.25 ± 0.44 | 45 ± 80 | 14.1 ± 3.1 | 2,775 ± 4,999 | 1.80 | 0 | 20.35 | 20 |
 | Ciega a la meta | 1.0 | 3.85 ± 1.84 | 623 ± 301 | 26.6 ± 5.7 | 24,153 ± 13,364 | 0.55 | 0 | 17.45 | 0 |
 | Ciega a la meta | 2.0 | 18.25 ± 2.71 | 3,034 ± 471 | 34.1 ± 9.7 | 92,724 ± 15,690 | 0.17 | 0 | 1.35 | 0 |
@@ -933,9 +935,9 @@ Esta ejecución usa la misma clase de tareas, los mismos engranajes y los mismos
 | Ley σ | 0.5 | 0.62 ± 0.49 | 113 ± 89 | 59.5 ± 2.0 | 1,942 ± 1,525 | 0.785 | 29.38 | 0 | 0 |
 | Ley σ | 1.0 | 2.90 ± 1.74 | 523 ± 314 | 133.7 ± 13.8 | 4,150 ± 2,892 | 0.697 | 27.10 | 0 | 0 |
 | Ley σ | 2.0 | 22.73 ± 1.30 | 3,980 ± 206 | 197.3 ± 18.2 | 20,359 ± 2,388 | 0.117 | 7.28 | 0 | 0 |
-| Cascada fija (una instancia de Mixture of Limits) | 0.5 | 0.57 ± 0.50 | 104 ± 90 | 60.1 ± 2.1 | 1,777 ± 1,548 | 0.871 | 29.43 | 0 | 0 |
-| Cascada fija (una instancia de Mixture of Limits) | 1.0 | 2.67 ± 1.25 | 483 ± 226 | 140.3 ± 13.5 | 3,593 ± 1,948 | 0.542 | 27.32 | 0 | 0 |
-| Cascada fija (una instancia de Mixture of Limits) | 2.0 | 19.93 ± 1.42 | 3,509 ± 227 | 201.2 ± 20.4 | 17,684 ± 2,909 | 0.164 | 10.07 | 0 | 0 |
+| Cascada fija (el más barato primero) | 0.5 | 0.57 ± 0.50 | 104 ± 90 | 60.1 ± 2.1 | 1,777 ± 1,548 | 0.871 | 29.43 | 0 | 0 |
+| Cascada fija (el más barato primero) | 1.0 | 2.67 ± 1.25 | 483 ± 226 | 140.3 ± 13.5 | 3,593 ± 1,948 | 0.542 | 27.32 | 0 | 0 |
+| Cascada fija (el más barato primero) | 2.0 | 19.93 ± 1.42 | 3,509 ± 227 | 201.2 ± 20.4 | 17,684 ± 2,909 | 0.164 | 10.07 | 0 | 0 |
 | Ciega a la meta | 0.5 | 0.12 ± 0.33 | 23 ± 61 | 35.4 ± 11.6 | 513 ± 1,397 | 2.723 | 0 | 22.85 | 0 |
 | Ciega a la meta | 1.0 | 1.00 ± 0.93 | 181 ± 169 | 72.0 ± 19.5 | 2,661 ± 2,579 | 0.969 | 0 | 20.00 | 0 |
 | Ciega a la meta | 2.0 | 10.65 ± 2.27 | 1,859 ± 400 | 97.3 ± 30.1 | 20,302 ± 5,766 | 0.284 | 0 | 8.70 | 0 |
@@ -988,9 +990,9 @@ Esta ejecución repite el protocolo de la segunda ejecución de la Sección 8.11
 | Ley σ | 0.5 | 0.00 | 0 | 0.0018 | 0 | n/a | 30.00 | 0.00 | 323 |
 | Ley σ | 1.0 | 0.00 | 0 | 0.0002 | 0 | n/a | 30.00 | 0.00 | 322 |
 | Ley σ | 2.0 | 1.00 ± 0.39 | 181 ± 71 | 0.0018 ± 0.0336 | 14,427 ± 18,680 | 1.295 | 29.00 | 0.00 | 322 |
-| Cascada fija (una instancia de Mixture of Limits) | 0.5 | 0.00 | 0 | -0.0008 | 0 | n/a | 30.00 | 0.00 | 326 |
-| Cascada fija (una instancia de Mixture of Limits) | 1.0 | 0.00 | 0 | -0.0005 | 0 | n/a | 30.00 | 0.00 | 324 |
-| Cascada fija (una instancia de Mixture of Limits) | 2.0 | 1.00 ± 0.51 | 181 ± 91 | 0.0107 ± 0.0286 | 15,451 ± 23,767 | 1.538 | 29.00 | 0.00 | 320 |
+| Cascada fija (el más barato primero) | 0.5 | 0.00 | 0 | -0.0008 | 0 | n/a | 30.00 | 0.00 | 326 |
+| Cascada fija (el más barato primero) | 1.0 | 0.00 | 0 | -0.0005 | 0 | n/a | 30.00 | 0.00 | 324 |
+| Cascada fija (el más barato primero) | 2.0 | 1.00 ± 0.51 | 181 ± 91 | 0.0107 ± 0.0286 | 15,451 ± 23,767 | 1.538 | 29.00 | 0.00 | 320 |
 | Ciega a la meta | 0.5 | 0.00 | 0 | 0.0026 | 0 | n/a | 0.00 | 30.00 | 327 |
 | Ciega a la meta | 1.0 | 0.00 | 0 | 0.0009 | 0 | n/a | 0.00 | 30.00 | 323 |
 | Ciega a la meta | 2.0 | 0.28 ± 0.45 | 50 ± 82 | 0.0019 ± 0.0180 | 3,801 ± 13,749 | 3.618 | 0.00 | 28.90 | 321 |
@@ -1009,9 +1011,9 @@ Esta ejecución repite el protocolo de la segunda ejecución de la Sección 8.11
 | Ley σ | 0.5 | 1.10 ± 0.98 | 200 ± 178 | 0.0345 ± 0.0017 | 6,027 ± 5,458 | 0.906 | 28.90 | 0.00 | 0 |
 | Ley σ | 1.0 | 8.75 ± 3.14 | 1,574 ± 565 | 0.0805 ± 0.0098 | 20,519 ± 8,516 | 0.415 | 21.25 | 0.00 | 0 |
 | Ley σ | 2.0 | 28.60 ± 0.98 | 4,882 ± 154 | 0.1008 ± 0.0234 | 50,667 ± 10,088 | 0.199 | 1.40 | 0.00 | 0 |
-| Cascada fija (una instancia de Mixture of Limits) | 0.5 | 1.15 ± 0.92 | 208 ± 167 | 0.0366 ± 0.0013 | 5,833 ± 4,757 | 0.816 | 28.85 | 0.00 | 0 |
-| Cascada fija (una instancia de Mixture of Limits) | 1.0 | 9.22 ± 3.07 | 1,660 ± 551 | 0.0813 ± 0.0106 | 21,412 ± 8,130 | 0.380 | 20.77 | 0.00 | 0 |
-| Cascada fija (una instancia de Mixture of Limits) | 2.0 | 27.77 ± 2.30 | 4,745 ± 377 | 0.1099 ± 0.0339 | 47,108 ± 13,216 | 0.281 | 2.23 | 0.00 | 0 |
+| Cascada fija (el más barato primero) | 0.5 | 1.15 ± 0.92 | 208 ± 167 | 0.0366 ± 0.0013 | 5,833 ± 4,757 | 0.816 | 28.85 | 0.00 | 0 |
+| Cascada fija (el más barato primero) | 1.0 | 9.22 ± 3.07 | 1,660 ± 551 | 0.0813 ± 0.0106 | 21,412 ± 8,130 | 0.380 | 20.77 | 0.00 | 0 |
+| Cascada fija (el más barato primero) | 2.0 | 27.77 ± 2.30 | 4,745 ± 377 | 0.1099 ± 0.0339 | 47,108 ± 13,216 | 0.281 | 2.23 | 0.00 | 0 |
 | Ciega a la meta | 0.5 | 0.20 ± 0.46 | 36 ± 84 | 0.0210 ± 0.0055 | 1,722 ± 3,927 | 2.280 | 0.00 | 21.50 | 0 |
 | Ciega a la meta | 1.0 | 3.73 ± 2.12 | 667 ± 381 | 0.0436 ± 0.0140 | 16,393 ± 9,246 | 0.564 | 0.00 | 16.68 | 0 |
 | Ciega a la meta | 2.0 | 15.65 ± 2.50 | 2,662 ± 433 | 0.0499 ± 0.0160 | 57,266 ± 14,596 | 0.255 | 0.00 | 4.17 | 0 |
@@ -1072,13 +1074,5 @@ El resultado replicado es estrecho. Con el nivel de presupuesto más holgado, el
 ### 8.12 Presentación de resultados
 
 Publicar todos los recibos, las trazas brutas de los medidores, las referencias en reposo y el código de análisis junto con el resultado. Informar los julios medidos, informados y estimados en columnas separadas. Nunca sumar entre niveles. Indicar qué falsadores se activaron, con la misma visibilidad que los que se superaron. Cada ejecución responde además a la lista de comprobación de Takahashi y Hayashi [239]: la frontera de contabilidad; los términos del balance de energía (energía almacenada y trabajo exportado, o una declaración de que son despreciables); la referencia y si los julios son totales o incrementales; el grano grueso de los resultados; el horizonte y el protocolo de reinicio; el tiempo de reloj y la potencia media junto a los bits por julio; y el estimador de los bits acoplados con su corrección de sesgo.
-
-### 8.13 Dónde se sitúan los productos
-
-- **Notational Intelligence** es el formato de recibo de la Sección 8.5.
-- **Mixture of Limits** es la filosofía que ambos selectores instancian. El brazo 2 es su instancia de cascada fija.
-- **El Reality Code Engine** lee $\iota = dX/dJ$ a posteriori a partir de su registro encadenado por hashes, con $X$ las tareas de programación que pasan la compuerta y $J$ sus julios etiquetados ([El Reality Code Engine, Sección 9](/papers/rce/#9-ties-to-the-companion-papers)).
-
-La ubicación del hardware y de los productos está en el [libro blanco de Metabolic Intelligence](/products/mei/#where-the-products-sit). Los medidores de este plan son M0 y M1 de la Sección 8.1.
 
 ## Referencias
