@@ -2,9 +2,15 @@
 
 *Version 1.1, 11 octobre 2026. Données et code : [research.openie.dev/data/](/data/#agency). PDF LaTeX : [/pdfs/latex/agency.pdf](/pdfs/latex/agency.pdf) ([source](/pdfs/latex/agency.tex)).*
 
-*La Loi universelle de l'agentivité proposée, énoncée comme une définition plus une porte.*
+## Résumé
 
-*D'abord l'agentivité. Ensuite la cinématique. L'intelligence est le calcul de l'agentivité, lu en joules.*
+Cet article définit un agent comme un système qui tient un but sous un budget d'énergie, dérive les limites physiques de la vitesse à laquelle il peut agir par seconde et par joule, et mesure l'intelligence comme le progrès par joule une fois une exécution terminée.
+
+**En termes simples**
+
+1. Pour compter comme agent, un système doit viser un but, agir sur le monde et rester dans un budget d'énergie.
+2. La physique fixe un coût minimal en énergie pour chaque décision, de sorte qu'aucun agent ne peut agir plus vite ni à moindre coût que cette limite.
+3. Parmi les systèmes qui accomplissent correctement le travail, le plus intelligent est celui qui a utilisé le moins d'énergie.
 
 ## 1. Thèse
 
@@ -14,7 +20,7 @@ La proposition comporte trois couches, et l'ordre est fixe.
 2. **Les bornes cinématiques de l'agentivité découlent de la définition.** Elles disent à quelle vitesse l'agentivité peut se déplacer, par seconde et par joule, et ce qu'elle doit payer pour se déplacer.
 3. **L'intelligence est le calcul de l'agentivité.** L'intelligence est une caractéristique lue après coup. Elle se lit sur une exécution achevée, comme la vitesse se lit sur une trajectoire enregistrée. C'est donc une dérivée de l'agentivité : $\iota = dX/dJ$, où $X$ est l'agentivité confirmée et $J$ les joules.
 
-La thèse : l'énergie d'exécution est la seule véritable métrique de l'intelligence informatique. Tous les autres facteurs se réduisent à zéro.
+La thèse : parmi les systèmes qui réussissent le test de correction d'une tâche, le classement se fait par l'énergie jusqu'à l'achèvement, en joules.
 
 La thèse se lit à travers sa porte. La capacité n'est pas écartée : elle est la porte. Burnell et ses collègues demandent que l'évaluation rende compte des résultats par instance plutôt que par un agrégat unique [333], et Zhou et ses collègues ainsi que Laber et ses collègues constatent que la capacité et l'efficacité varient indépendamment selon les modèles et les budgets d'inférence [334, 335]. Ces constats portent sur des systèmes qui ne satisfont pas tous le même prédicat. Une fois fixés un prédicat $C(z)$ et un taux d'échec, tout facteur autre que les joules a déjà été dépensé pour franchir la porte, et c'est le sens de la seconde phrase de la thèse. Le classement avec porte est aussi une pratique établie : SPECpower classe le travail des serveurs par watt à une charge déclarée [338], le coût par réussite classe les modèles selon le coût d'une réponse correcte [336], et l'intelligence par watt classe les modèles locaux selon la précision par unité de puissance [337]. La contribution de cet article est la forme en joules de ce classement, avec une clause de refus et une dérivée lue après coup, et non l'idée de classer par le coût sous contrainte de correction.
 
@@ -52,8 +58,8 @@ Aucune source n'est exclue en raison de sa méthode. Chaque source est placée s
 - **Erreur de réinitialisation ($\varepsilon$) :** la probabilité qu'un registre réinitialisé ne soit pas dans son état le plus probable.
 - **Observable de comptage :** une grandeur d'une trajectoire qui compte des sauts sélectionnés. Elle ne décroît jamais.
 - **Dérivée de Radon-Nikodym :** la densité d'une mesure par rapport à une autre. Elle existe lorsque la première mesure attribue une masse nulle à tout ensemble auquel la seconde attribue une masse nulle.
-- **Mixture of Limits (mélange de limites) :** la philosophie d'OpenIE. Utiliser l'engrenage le moins coûteux qui suffit. Il existe des planchers au-delà desquels des tokens, des paramètres ou des joules supplémentaires n'achètent aucun progrès vérifiable. La dépense au-delà du plancher est du gaspillage. Ce plancher est le plateau (convergence de seuil). Mixture of Limits n'est pas une cascade fixe unique. Un ordre de cascade fixe en est une instance. Le sélecteur de loi σ en est une autre.
-- **Notational Intelligence :** l'étude des reçus d'OpenIE. Chaque acte porte sa prédiction, son résultat et ses joules.
+- **Mixture of Limits (mélange de limites) :** la règle consistant à utiliser le mécanisme (engrenage) le moins coûteux qui suffit. Il existe des planchers au-delà desquels des tokens, des paramètres ou des joules supplémentaires n'achètent aucun progrès vérifiable. La dépense au-delà du plancher est du gaspillage. Ce plancher est le plateau (convergence de seuil). Mixture of Limits n'est pas une cascade fixe unique. Un ordre de cascade fixe en est une instance. Le sélecteur de loi σ en est une autre.
+- **Reçu :** un enregistrement attaché à chaque acte, qui contient sa prédiction, son résultat et ses joules.
 
 ## 2. Cadre formel
 
@@ -482,9 +488,7 @@ La Figure 2 trace la courbe de la Prédiction 1.
 ### 2.4 Où se situent les études
 
 - **Mixture of Limits** est l'opérateur d'optimum. L'engrenage suffisant le moins coûteux est l'argmin sur les joules. C'est une philosophie, pas un ordre fixe unique : la dépense s'arrête au plateau, où davantage est du gaspillage.
-- **Notational Intelligence** est le reçu. Il porte $R^*$, $R$, $m$ et $J$ pour chaque acte.
-
-Toutes deux sont développées dans l'article compagnon, [Portes de validation mesurées](/papers/gates/). Le positionnement des produits ne fait pas partie de cet article de physique. Il figure dans le [livre blanc de Metabolic Intelligence](/products/mei/#where-the-products-sit).
+- **Le reçu** porte $R^*$, $R$, $m$ et $J$ pour chaque acte.
 
 <div id="3-layer-1-the-universal-law-of-agency" class="anchor-alias" aria-hidden="true"></div>
 
@@ -526,7 +530,7 @@ Les machines classiques ont mesuré le prix à pleine échelle. Une machine à p
 
 **Agents à systèmes fonctionnels construits et exécutés.** Un nématode simulé doté d'un accepteur des résultats de l'action a appris la locomotion et la chimiotaxie [90]. Un robot mobile physique a exécuté le même contrôleur à système fonctionnel [91]. Les clauses 1 et 3 fonctionnent en logiciel et sur un corps. Aucun des deux ne mesure de joules.
 
-### 3.3 Opinion
+### 3.3 Positions dans la littérature
 
 **Systèmes finalisés et anticipation.** Rosenblueth, Wiener et Bigelow ont défini le comportement finalisé par une rétroaction négative vers un but [92]. Il n'a pas de terme d'énergie. Le système fonctionnel d'Anokhin comporte une synthèse afférente, une décision, un accepteur des résultats de l'action fixé avant l'acte, l'action et la comparaison [93, 94]. Ce sont les clauses 1 et 3 dans leur première forme systématique, bâtie sur des expériences animales. Sudakov a énoncé le résultat comme le facteur formateur du système [95]. La clause de prédiction est le principe organisateur. Shvyrkov a montré, à partir d'enregistrements de neurones individuels, que le but organise l'activité neuronale [96]. Rosen a défini un système anticipateur comme un système qui contient un modèle prédictif de lui-même et de son monde et agit d'après la prédiction [97]. Aucun d'eux ne fixe de plancher en joules. Sterling définit l'allostasie comme une régulation par prédiction [98]. La physiologie place la prédiction avant l'acte. Virgo, Biehl et McGregor ont donné des conditions sous lesquelles les états d'un système peuvent se lire comme des croyances mises à jour par le théorème de Bayes [99]. Biehl et Virgo appellent un système agent lorsqu'il peut se lire comme la résolution d'un POMDP (processus de décision markovien partiellement observable) [100]. Ce sont deux définitions formelles. La clause 1 demande moins et fixe davantage : un gabarit, fixé à $t_0$, haché sur le reçu.
 
@@ -580,7 +584,7 @@ La Figure 3 ordonne les trois porteurs.
 
 **Empowerment en simulation.** Klyubin, Polani et Nehaniv ont défini l'empowerment, la capacité du canal des actions vers les capteurs futurs [9]. Il a été calculé pour le contrôle continu [220] et passé en revue [221]. Il mesure combien un agent peut déplacer le monde, en bits. Ce n'est pas un taux par joule.
 
-### 4.3 Opinion
+### 4.3 Positions dans la littérature
 
 La cinématique relève surtout du théorème et de l'expérience. Les opinions portent ici sur la bonne variable. Seifert soutient que l'inférence à partir des fluctuations est la voie vers les coûts cachés [137]. Rovelli d'une part, Wissner-Gross et Freer d'autre part, proposent une cinématique entropique [115, 118]. Kolchinsky montre que la dissipation seule ne borne pas la vitesse à laquelle les réplicateurs croissent ou déclinent [222]. Les taux sont bornés par la dissipation conjointement à l'activité. C'est la forme de la limite de vitesse, où $\langle A\rangle$ figure à côté de $\Sigma$. Adlam, McQueen et Waegell soutiennent qu'un système purement quantique ne peut pas être un agent, car construire un modèle du monde et délibérer exigent de copier, ce que le théorème de non-clonage interdit (prépublication) [223]. La clause 3 demande déjà un enregistrement classique de $m$.
 
@@ -610,7 +614,7 @@ L'intelligence est la dérivée en joules de l'agentivité soumise à la porte, 
 
 **Estimations.** Ces sources sont précieuses, et leurs chiffres en joules sont modélisés, extrapolés ou calculés. Ils figurent à côté des joules mesurés, jamais à leur place. Les estimations ne sont jamais `measured_j`. Strubell, Ganesh et McCallum ont échantillonné la puissance sur de courtes exécutions et ont extrapolé à l'entraînement complet de modèles de traitement automatique des langues [276]. Patterson et ses collègues ont calculé l'énergie d'entraînement à partir de données rapportées sur le matériel, la durée d'exécution et le centre de données [277]. Lacoste et ses collègues ont construit un calculateur à partir du type de matériel, de la durée d'exécution et de la région [278]. L'empreinte de BLOOM mélange des entrées mesurées et modélisées [279]. Carbontracker lit des compteurs de l'appareil et prédit les totaux de l'exécution complète [280]. Ses prédictions sont des estimations. Elsworth et ses collègues rapportent une médiane de 0.24 Wh par requête textuelle de Gemini Apps, en comptant les accélérateurs, les hôtes, la capacité inactive et la surcharge du centre de données [281]. C'est un chiffre rapporté par l'exploitant, classé comme `reported_j`.
 
-### 5.3 Opinion
+### 5.3 Positions dans la littérature
 
 Chaque position est confrontée à la définition : l'intelligence est la dérivée en joules de l'agentivité soumise à la porte, lue sur une exécution achevée.
 
@@ -705,7 +709,7 @@ Les recherches en hindi et en arabe n'ont renvoyé aucune recherche primaire dan
 
 **P7. Optimalité de Mixture of Limits.** Partiellement prouvé. La Proposition 9 donne les conditions exactes pour des engrenages indépendants et pour deux engrenages emboîtés, ainsi que le mécanisme du budget. L'instance de cascade fixe essaie les engrenages du moins coûteux vers le haut, s'arrête au premier engrenage dont la sortie satisfait $C(z)$ et refuse avec un reçu si l'engrenage suivant dépassait le budget. Elle atteint le minimum en joules au coût près des tentatives échouées. Acquis : si la suffisance est monotone dans l'ordre des engrenages et que les coûts des engrenages croissent avec l'ordre, le premier engrenage suffisant est l'engrenage suffisant le moins coûteux. Manque : une borne de regret lorsque les probabilités de réussite sont estimées ou que la suffisance n'est pas monotone, le cas emboîté à plus de deux engrenages, et les conditions sous lesquelles cette règle et le sélecteur de loi σ, $a^* = \arg\max[H(a) - \lambda J(a)]$ sous la contrainte $J \le B$, choisissent le même acte.
 
-**P8. Quand l'agentivité se cumule.** Conditions sous lesquelles $\alpha_J > 0$ sur une exécution, de sorte que les reçus antérieurs abaissent les joules des achèvements ultérieurs. Acquis : une exécution d'essai antérieure d'OpenIE a trouvé $\alpha_J \le 0$ sur des tâches quasi optimales. Manque : un modèle de réutilisation dans lequel les reçus stockés réduisent le $J$ ultérieur de plus que les joules de stockage et de consultation. Still donne le côté coût de la mémoire [225]. La Section 8.10 mesure la part du gabarit dans les joules de chaque acte.
+**P8. Quand l'agentivité se cumule.** Conditions sous lesquelles $\alpha_J > 0$ sur une exécution, de sorte que les reçus antérieurs abaissent les joules des achèvements ultérieurs. Manque : un modèle de réutilisation dans lequel les reçus stockés réduisent le $J$ ultérieur de plus que les joules de stockage et de consultation. Still donne le côté coût de la mémoire [225]. La Section 8.10 mesure la part du gabarit dans les joules de chaque acte.
 
 ### 7.2 Ce qui doit être constaté
 
@@ -750,7 +754,7 @@ Chaque tâche a un prédicat de complétude vérifiable par machine, $C(z)$ : te
 Tous les bras partagent les engrenages, le prédicat, le budget, les compteurs et un ordre d'exécution randomisé et entrelacé.
 
 1. **Sélecteur de loi σ :** $a^* = \arg\max[H(a) - \lambda J(a)]$ sous la contrainte $J \le B$, avec refus sur un reçu.
-2. **Cascade fixe (une instance de Mixture of Limits) :** la règle du moins coûteux suffisant, les engrenages étant essayés dans un ordre fixe du moins coûteux vers le haut. C'est la comparaison appariée : même information, mêmes engrenages, même budget et même droit de refus. Seule la règle de sélection diffère.
+2. **Cascade fixe (le moins coûteux d'abord) :** la règle du moins coûteux suffisant, les engrenages étant essayés dans un ordre fixe du moins coûteux vers le haut. C'est la comparaison appariée : même information, mêmes engrenages, même budget et même droit de refus. Seule la règle de sélection diffère.
 3. **Toujours le plus grand engrenage :** plafond de référence.
 4. **Toujours le plus petit engrenage :** plancher de référence, avec refus en cas d'échec.
 
@@ -766,7 +770,7 @@ Les deux sélecteurs sont des instances de Mixture of Limits. La philosophie con
 
 ### 8.5 Schéma du reçu
 
-Le reçu est l'enregistrement Notational Intelligence de l'exécution. Un enregistrement par acte :
+Le reçu est l'enregistrement de l'exécution. Un enregistrement par acte :
 
 ```
 act_id, run_id, task_id, arm, seed, budget_j, gear
@@ -862,7 +866,7 @@ Cette exécution applique les Sections 8.1 à 8.7 à une classe de tâches sur u
 
 - **Agent et tâche.** Un processus Python résout des grilles de Sudoku. Le prédicat de complétude $C(z)$ est satisfait lorsque la grille est pleine, que chaque ligne, colonne et boîte contient les chiffres 1 à 9 et que chaque chiffre donné est conservé. Une tâche confirmée crédite $b = n_{\mathrm{empty}}\log_2 9$ bits, le nombre de remplissages parmi lesquels l'acte choisit. C'est la borne de capacité de la Définition 1. L'ensemble de test comprend 30 grilles, 10 par strate (facile, moyenne, difficile), générées à partir d'une graine fixe. Un ensemble distinct de 30 grilles étalonne les sélecteurs.
 - **Engrenages.** g0 remplit les singletons nus. g1 ajoute les singletons cachés. g2 ajoute la recherche en profondeur.
-- **Bras.** Le sélecteur de loi σ prend $a^* = \arg\max[H(a) - \lambda J(a)]$, avec $H(a)$ la probabilité de réussite étalonnée compte tenu des engrenages déjà essayés, multipliée par $b$, et $\lambda = b/B$. La cascade fixe (une instance de Mixture of Limits) prend l'engrenage le moins coûteux dont la probabilité de réussite étalonnée est d'au moins 0.5. Les deux fixent $R^*$ avant chaque acte, le hachent avec SHA-256 (Secure Hash Algorithm, 256 bits) et l'horodatent. Les deux comparent après l'acte et refusent avec un reçu lorsqu'aucun acte ne tient dans le budget. La référence aveugle au but tire un engrenage au hasard, sans prédiction, sans comparaison, sans escalade et sans refus. Le budget l'interrompt.
+- **Bras.** Le sélecteur de loi σ prend $a^* = \arg\max[H(a) - \lambda J(a)]$, avec $H(a)$ la probabilité de réussite étalonnée compte tenu des engrenages déjà essayés, multipliée par $b$, et $\lambda = b/B$. La cascade fixe (le moins coûteux d'abord) prend l'engrenage le moins coûteux dont la probabilité de réussite étalonnée est d'au moins 0.5. Les deux fixent $R^*$ avant chaque acte, le hachent avec SHA-256 (Secure Hash Algorithm, 256 bits) et l'horodatent. Les deux comparent après l'acte et refusent avec un reçu lorsqu'aucun acte ne tient dans le budget. La référence aveugle au but tire un engrenage au hasard, sans prédiction, sans comparaison, sans escalade et sans refus. Le budget l'interrompt.
 - **Budgets et graines.** Par tâche, $B \in \{0.5, 1.0, 2.0\} \times J_{g2}(q)$, la médiane pilote de g2 seul. Les niveaux 0.5 et 1.0 sont contraignants : 98% et 40% des exécutions pilotes les dépassent. Le niveau 2.0 ne l'est pas (0.7%). Il y a 20 graines par condition, dans un ordre entrelacé déterminé par une graine. Au total, 5,400 épisodes ont été exécutés, avec 4,940 actes.
 - **Étiquette d'énergie.** Chaque joule est `reported_j` : l'estimation de l'énergie par processus que le noyau fournit pour l'agent (`ri_energy_nj` issu de `proc_pid_rusage`), lue avant et après chaque acte, sans privilèges. Le processus est la paroi de l'agent. La grille de Sudoku est tenue à l'intérieur de ce processus, de sorte que le monde $W'$ n'est pas extérieur à $S$ comme l'exige la Définition 2. Cette exécution teste la cinématique et le classement soumis à la porte, non la définition. L'exécution qui teste la définition tient la grille dans un second processus derrière un socket, ou sur un microcontrôleur. `measured_j` est vide, car aucun wattmètre mural n'était branché. `est_j` vaut le nombre de cycles multiplié par $4.20 \times 10^{-10}$ J, le rapport médian du pilote.
 
@@ -873,9 +877,9 @@ Cette exécution applique les Sections 8.1 à 8.7 à une classe de tâches sur u
 | Loi σ | 0.5 | 0.60 ± 0.50 | 108 ± 91 | 20.8 ± 0.3 | 5,254 ± 4,402 | 0.84 | 29.40 | 0 | 0 |
 | Loi σ | 1.0 | 9.10 ± 1.86 | 1,479 ± 316 | 43.8 ± 4.0 | 34,454 ± 10,007 | 0.29 | 20.90 | 0 | 9 |
 | Loi σ | 2.0 | 28.40 ± 0.60 | 4,823 ± 105 | 66.2 ± 5.8 | 73,345 ± 6,443 | 0.09 | 1.60 | 0 | 0 |
-| Cascade fixe (une instance de Mixture of Limits) | 0.5 | 0.70 ± 0.47 | 126 ± 85 | 18.8 ± 0.3 | 6,801 ± 4,569 | 0.67 | 29.30 | 0 | 0 |
-| Cascade fixe (une instance de Mixture of Limits) | 1.0 | 6.45 ± 1.50 | 1,047 ± 254 | 44.7 ± 3.6 | 23,804 ± 7,067 | 0.30 | 23.55 | 0 | 7 |
-| Cascade fixe (une instance de Mixture of Limits) | 2.0 | 27.50 ± 0.51 | 4,668 ± 92 | 67.0 ± 6.7 | 70,418 ± 7,766 | 0.11 | 2.50 | 0 | 0 |
+| Cascade fixe (le moins coûteux d'abord) | 0.5 | 0.70 ± 0.47 | 126 ± 85 | 18.8 ± 0.3 | 6,801 ± 4,569 | 0.67 | 29.30 | 0 | 0 |
+| Cascade fixe (le moins coûteux d'abord) | 1.0 | 6.45 ± 1.50 | 1,047 ± 254 | 44.7 ± 3.6 | 23,804 ± 7,067 | 0.30 | 23.55 | 0 | 7 |
+| Cascade fixe (le moins coûteux d'abord) | 2.0 | 27.50 ± 0.51 | 4,668 ± 92 | 67.0 ± 6.7 | 70,418 ± 7,766 | 0.11 | 2.50 | 0 | 0 |
 | Aveugle au but | 0.5 | 0.25 ± 0.44 | 45 ± 80 | 14.1 ± 3.1 | 2,775 ± 4,999 | 1.80 | 0 | 20.35 | 20 |
 | Aveugle au but | 1.0 | 3.85 ± 1.84 | 623 ± 301 | 26.6 ± 5.7 | 24,153 ± 13,364 | 0.55 | 0 | 17.45 | 0 |
 | Aveugle au but | 2.0 | 18.25 ± 2.71 | 3,034 ± 471 | 34.1 ± 9.7 | 92,724 ± 15,690 | 0.17 | 0 | 1.35 | 0 |
@@ -931,9 +935,9 @@ Cette exécution porte sur la même classe de tâches, les mêmes engrenages et 
 | Loi σ | 0.5 | 0.62 ± 0.49 | 113 ± 89 | 59.5 ± 2.0 | 1,942 ± 1,525 | 0.785 | 29.38 | 0 | 0 |
 | Loi σ | 1.0 | 2.90 ± 1.74 | 523 ± 314 | 133.7 ± 13.8 | 4,150 ± 2,892 | 0.697 | 27.10 | 0 | 0 |
 | Loi σ | 2.0 | 22.73 ± 1.30 | 3,980 ± 206 | 197.3 ± 18.2 | 20,359 ± 2,388 | 0.117 | 7.28 | 0 | 0 |
-| Cascade fixe (une instance de Mixture of Limits) | 0.5 | 0.57 ± 0.50 | 104 ± 90 | 60.1 ± 2.1 | 1,777 ± 1,548 | 0.871 | 29.43 | 0 | 0 |
-| Cascade fixe (une instance de Mixture of Limits) | 1.0 | 2.67 ± 1.25 | 483 ± 226 | 140.3 ± 13.5 | 3,593 ± 1,948 | 0.542 | 27.32 | 0 | 0 |
-| Cascade fixe (une instance de Mixture of Limits) | 2.0 | 19.93 ± 1.42 | 3,509 ± 227 | 201.2 ± 20.4 | 17,684 ± 2,909 | 0.164 | 10.07 | 0 | 0 |
+| Cascade fixe (le moins coûteux d'abord) | 0.5 | 0.57 ± 0.50 | 104 ± 90 | 60.1 ± 2.1 | 1,777 ± 1,548 | 0.871 | 29.43 | 0 | 0 |
+| Cascade fixe (le moins coûteux d'abord) | 1.0 | 2.67 ± 1.25 | 483 ± 226 | 140.3 ± 13.5 | 3,593 ± 1,948 | 0.542 | 27.32 | 0 | 0 |
+| Cascade fixe (le moins coûteux d'abord) | 2.0 | 19.93 ± 1.42 | 3,509 ± 227 | 201.2 ± 20.4 | 17,684 ± 2,909 | 0.164 | 10.07 | 0 | 0 |
 | Aveugle au but | 0.5 | 0.12 ± 0.33 | 23 ± 61 | 35.4 ± 11.6 | 513 ± 1,397 | 2.723 | 0 | 22.85 | 0 |
 | Aveugle au but | 1.0 | 1.00 ± 0.93 | 181 ± 169 | 72.0 ± 19.5 | 2,661 ± 2,579 | 0.969 | 0 | 20.00 | 0 |
 | Aveugle au but | 2.0 | 10.65 ± 2.27 | 1,859 ± 400 | 97.3 ± 30.1 | 20,302 ± 5,766 | 0.284 | 0 | 8.70 | 0 |
@@ -986,9 +990,9 @@ Cette exécution répète le protocole de la deuxième exécution de la Section 
 | Loi σ | 0.5 | 0.00 | 0 | 0.0018 | 0 | s.o. | 30.00 | 0.00 | 323 |
 | Loi σ | 1.0 | 0.00 | 0 | 0.0002 | 0 | s.o. | 30.00 | 0.00 | 322 |
 | Loi σ | 2.0 | 1.00 ± 0.39 | 181 ± 71 | 0.0018 ± 0.0336 | 14,427 ± 18,680 | 1.295 | 29.00 | 0.00 | 322 |
-| Cascade fixe (une instance de Mixture of Limits) | 0.5 | 0.00 | 0 | -0.0008 | 0 | s.o. | 30.00 | 0.00 | 326 |
-| Cascade fixe (une instance de Mixture of Limits) | 1.0 | 0.00 | 0 | -0.0005 | 0 | s.o. | 30.00 | 0.00 | 324 |
-| Cascade fixe (une instance de Mixture of Limits) | 2.0 | 1.00 ± 0.51 | 181 ± 91 | 0.0107 ± 0.0286 | 15,451 ± 23,767 | 1.538 | 29.00 | 0.00 | 320 |
+| Cascade fixe (le moins coûteux d'abord) | 0.5 | 0.00 | 0 | -0.0008 | 0 | s.o. | 30.00 | 0.00 | 326 |
+| Cascade fixe (le moins coûteux d'abord) | 1.0 | 0.00 | 0 | -0.0005 | 0 | s.o. | 30.00 | 0.00 | 324 |
+| Cascade fixe (le moins coûteux d'abord) | 2.0 | 1.00 ± 0.51 | 181 ± 91 | 0.0107 ± 0.0286 | 15,451 ± 23,767 | 1.538 | 29.00 | 0.00 | 320 |
 | Aveugle au but | 0.5 | 0.00 | 0 | 0.0026 | 0 | s.o. | 0.00 | 30.00 | 327 |
 | Aveugle au but | 1.0 | 0.00 | 0 | 0.0009 | 0 | s.o. | 0.00 | 30.00 | 323 |
 | Aveugle au but | 2.0 | 0.28 ± 0.45 | 50 ± 82 | 0.0019 ± 0.0180 | 3,801 ± 13,749 | 3.618 | 0.00 | 28.90 | 321 |
@@ -1007,9 +1011,9 @@ Cette exécution répète le protocole de la deuxième exécution de la Section 
 | Loi σ | 0.5 | 1.10 ± 0.98 | 200 ± 178 | 0.0345 ± 0.0017 | 6,027 ± 5,458 | 0.906 | 28.90 | 0.00 | 0 |
 | Loi σ | 1.0 | 8.75 ± 3.14 | 1,574 ± 565 | 0.0805 ± 0.0098 | 20,519 ± 8,516 | 0.415 | 21.25 | 0.00 | 0 |
 | Loi σ | 2.0 | 28.60 ± 0.98 | 4,882 ± 154 | 0.1008 ± 0.0234 | 50,667 ± 10,088 | 0.199 | 1.40 | 0.00 | 0 |
-| Cascade fixe (une instance de Mixture of Limits) | 0.5 | 1.15 ± 0.92 | 208 ± 167 | 0.0366 ± 0.0013 | 5,833 ± 4,757 | 0.816 | 28.85 | 0.00 | 0 |
-| Cascade fixe (une instance de Mixture of Limits) | 1.0 | 9.22 ± 3.07 | 1,660 ± 551 | 0.0813 ± 0.0106 | 21,412 ± 8,130 | 0.380 | 20.77 | 0.00 | 0 |
-| Cascade fixe (une instance de Mixture of Limits) | 2.0 | 27.77 ± 2.30 | 4,745 ± 377 | 0.1099 ± 0.0339 | 47,108 ± 13,216 | 0.281 | 2.23 | 0.00 | 0 |
+| Cascade fixe (le moins coûteux d'abord) | 0.5 | 1.15 ± 0.92 | 208 ± 167 | 0.0366 ± 0.0013 | 5,833 ± 4,757 | 0.816 | 28.85 | 0.00 | 0 |
+| Cascade fixe (le moins coûteux d'abord) | 1.0 | 9.22 ± 3.07 | 1,660 ± 551 | 0.0813 ± 0.0106 | 21,412 ± 8,130 | 0.380 | 20.77 | 0.00 | 0 |
+| Cascade fixe (le moins coûteux d'abord) | 2.0 | 27.77 ± 2.30 | 4,745 ± 377 | 0.1099 ± 0.0339 | 47,108 ± 13,216 | 0.281 | 2.23 | 0.00 | 0 |
 | Aveugle au but | 0.5 | 0.20 ± 0.46 | 36 ± 84 | 0.0210 ± 0.0055 | 1,722 ± 3,927 | 2.280 | 0.00 | 21.50 | 0 |
 | Aveugle au but | 1.0 | 3.73 ± 2.12 | 667 ± 381 | 0.0436 ± 0.0140 | 16,393 ± 9,246 | 0.564 | 0.00 | 16.68 | 0 |
 | Aveugle au but | 2.0 | 15.65 ± 2.50 | 2,662 ± 433 | 0.0499 ± 0.0160 | 57,266 ± 14,596 | 0.255 | 0.00 | 4.17 | 0 |
@@ -1070,13 +1074,5 @@ Le résultat répliqué est étroit. Au niveau de budget le plus lâche, le sél
 ### 8.12 Présentation des résultats
 
 Publier tous les reçus, les traces brutes des compteurs, les références au repos et le code d'analyse avec le résultat. Rapporter les joules mesurés, rapportés et estimés dans des colonnes distinctes. Ne jamais additionner d'un niveau à l'autre. Indiquer quels réfutateurs se sont déclenchés, avec la même visibilité que ceux qui ont tenu. Chaque exécution répond aussi à la liste de contrôle de Takahashi et Hayashi [239] : la frontière de la comptabilité ; les termes du bilan énergétique (énergie stockée et travail exporté, ou une déclaration qu'ils sont négligeables) ; la référence et le caractère total ou incrémental des joules ; le grain grossier des résultats ; l'horizon et le protocole de réinitialisation ; le temps d'horloge et la puissance moyenne à côté des bits par joule ; et l'estimateur des bits couplés avec sa correction de biais.
-
-### 8.13 Où se situent les produits
-
-- **Notational Intelligence** est le format de reçu de la Section 8.5.
-- **Mixture of Limits** est la philosophie qu'instancient les deux sélecteurs. Le bras 2 en est l'instance de cascade fixe.
-- **Le Reality Code Engine** lit $\iota = dX/dJ$ a posteriori dans son journal chaîné par hachage, avec $X$ les tâches de programmation qui franchissent la porte et $J$ leurs joules étiquetés ([Le Reality Code Engine, Section 9](/papers/rce/#9-ties-to-the-companion-papers)).
-
-Le positionnement du matériel et des produits figure dans le [livre blanc de Metabolic Intelligence](/products/mei/#where-the-products-sit). Les compteurs de ce plan sont M0 et M1 de la Section 8.1.
 
 ## Références
