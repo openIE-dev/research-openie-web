@@ -11,6 +11,6 @@ States: abstract = title and abstract only (complete: false); full = whole text 
 | ai-coding-market | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | interface-economics | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | gates | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| satiation | full | full | full | full | full | full | abstract | abstract |
+| satiation | full | full | full | full | full | full | full | abstract |
 | three-body | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | spellcheck | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
