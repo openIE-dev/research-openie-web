@@ -6,7 +6,7 @@ States: abstract = title and abstract only (complete: false); full = whole text 
 
 | paper | zh-Hans | es | fr | de | ja | pt | hi | ar |
 |---|---|---|---|---|---|---|---|---|
-| rce | full | full | full | full | full | full | full | stale |
+| rce | full | full | full | full | full | full | full | full |
 | agency | abstract | full | full | full | abstract | abstract | abstract | abstract |
 | ai-coding-market | full | full | full | full | full | full | full | full |
 | interface-economics | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
