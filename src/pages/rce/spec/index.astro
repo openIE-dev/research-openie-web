@@ -2,6 +2,7 @@
 import Shell from '../../../components/RceSpecShell.astro';
 import data from '../../../../spec-src/rce/spec.json';
 const ov = data.chapters[0];
+import facts from '../../../data/rce-facts.json';
 const total = data.examples.reduce((a: number, g: any) => a + g.items.length, 0);
 ---
 <Shell title="RCE language specification" description="The RCE language specification as an interactive notebook: plain-language introductions, formal grammar and typing rules, and runnable example programs checked in the browser." current="">
@@ -11,6 +12,7 @@ const total = data.examples.reduce((a: number, g: any) => a + g.items.length, 0)
     <span class="tts-status" role="status"></span>
   </div>
   <div id="rs-ov" class="tts-text rs-intro" set:html={ov.sections[0].html} />
+  <p class="rs-prose"><strong>Which version this is.</strong> This notebook shows specification draft {facts.spec_document_draft}, generated from commit <code>{data.commit}</code> of the RCE source. Public <code>rce</code> main (<code>{facts.commit}</code>) is at the same draft; its reference checker accepts language versions {facts.language_versions_accepted.join(', ')}. The public repository states theorems {facts.theorems_stated}, with {facts.lean_modules} Lean modules and {facts.examples_total} example programs ({facts.reject_examples} syntax rejects, {facts.ill_typed_examples} ill-typed and {facts.inadmissible_examples} inadmissible programs are refused). Where a chapter quotes a count from an earlier draft, such as the draft 0.5 grammar result in the overview, it describes that draft. Later drafts are not described here until they are public. Counts come from <code>src/data/rce-facts.json</code>.</p>
   <h2>Chapters</h2>
   <p class="rs-prose">Read them in order. Each chapter opens in plain words, then gives the exact rules. Formal grammar and typing rules sit in cells you can open and close. Every code cell can be edited and run.</p>
   <ol class="rs-cards">
