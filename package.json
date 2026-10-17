@@ -4,11 +4,13 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/lint-claims.mjs && astro build --force && node scripts/lint-order.mjs",
+    "build": "node scripts/lint-private.mjs src && node scripts/lint-claims.mjs && astro build --force && node scripts/lint-order.mjs && node scripts/lint-private.mjs dist",
     "lint:claims": "node scripts/lint-claims.mjs",
     "lint:order": "node scripts/lint-order.mjs",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint:private": "node scripts/lint-private.mjs src",
+    "test:guard": "node --test scripts/lint-private.test.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
