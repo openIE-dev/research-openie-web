@@ -1,0 +1,47 @@
+## Abstract	## सार
+## 1. Thesis	## 1. प्रतिपाद्य
+## 2. The design space of autonomous coding	## 2. स्वायत्त कोडिंग का डिज़ाइन क्षेत्र
+### 2.1 Programming is coding theory	### 2.1 प्रोग्रामिंग कोडिंग सिद्धांत है
+### 2.2 How RCE converts, and where each gear sits	### 2.2 RCE कैसे रूपांतरित करता है, और हर गियर कहाँ बैठता है
+### 2.3 The ecosystem at large N	### 2.3 बड़े N पर पारिस्थितिकी तंत्र
+### 2.4 Gated, verified recursive self-improvement	### 2.4 द्वार से नियंत्रित, सत्यापित पुनरावर्ती आत्म सुधार
+## 3. The Form	## 3. Form
+### 3.1 The strongest formal statement of "same form"	### 3.1 "एक ही रूप" का सबसे सशक्त औपचारिक कथन
+### 3.2 Definitions	### 3.2 परिभाषाएँ
+### 3.3 Why "database functional state machine"	### 3.3 "डेटाबेस फ़ंक्शनल स्टेट मशीन" क्यों
+### 3.4 Propositions	### 3.4 प्रस्ताव
+### 3.5 Graph, e-graph and statechart	### 3.5 Graph, e-graph और statechart
+### 3.6 One ecosystem, lossless, and the universality thesis	### 3.6 एक पारिस्थितिकी तंत्र, हानिरहित, और सार्वभौमिकता थीसिस
+### 3.7 The language: versions 0.6 and 0.7, costs and theorem status	### 3.7 भाषा: संस्करण 0.6 और 0.7, लागतें और प्रमेय स्थिति
+## 4. The engine: gears, gate and receipts	## 4. इंजन: गियर, द्वार और रसीदें
+### 4.1 The engine is a Form	### 4.1 इंजन एक Form है
+### 4.2 The gears	### 4.2 गियर
+### 4.3 The gate	### 4.3 द्वार
+### 4.4 Receipts	### 4.4 रसीदें
+### 4.5 The Form compiler	### 4.5 Form कंपाइलर
+### 4.6 Method: the whole stack evaluated, every interface assumption explicit	### 4.6 विधि: पूरा stack मूल्यांकित, हर interface धारणा स्पष्ट
+## 5. Verification	## 5. सत्यापन
+### 5.1 Differential testing across five targets	### 5.1 पाँच targets पर differential परीक्षण
+### 5.2 Rewrites proved in Z3	### 5.2 Z3 में सिद्ध पुनर्लेखन
+### 5.3 Kani proofs of the kernel	### 5.3 kernel के Kani प्रमाण
+### 5.4 Promotion gate on the proof certificate	### 5.4 प्रमाण प्रमाणपत्र पर पदोन्नति द्वार
+### 5.5 The model as a proposer behind the check	### 5.5 जाँच के पीछे प्रस्तावक के रूप में मॉडल
+### 5.6 Brownfield agreement	### 5.6 Brownfield सहमति
+## 6. Lift: entering the ecosystem from other languages	## 6. लिफ़्ट: अन्य भाषाओं से पारिस्थितिकी तंत्र में प्रवेश
+### 6.0 The repair ladder on lifted code	### 6.0 लिफ़्ट किए गए कोड पर मरम्मत की सीढ़ी
+### 6.1 L0: one-token faults	### 6.1 L0: एक token के दोष
+### 6.2 L1: one-statement bugs from real histories	### 6.2 L1: वास्तविक इतिहासों से एक कथन के बग
+### 6.3 Energy	### 6.3 ऊर्जा
+## 7. Reuse evidence	## 7. पुनः उपयोग के प्रमाण
+## 8. Measurement protocols for what comes next	## 8. आगे के लिए माप प्रोटोकॉल
+### 8.1 Defects4J	### 8.1 Defects4J
+### 8.2 SWE-bench Lite, offline	### 8.2 SWE-bench Lite, offline
+### 8.3 A wall meter	### 8.3 दीवार मीटर
+### 8.4 A held-out run with the gears frozen	### 8.4 गियर स्थिर करके एक अलग रखा गया रन
+### 8.5 Baselines in the same table	### 8.5 एक ही तालिका में baselines
+### 8.6 Convergence of model calls at large N	### 8.6 बड़े N पर मॉडल कॉल का अभिसरण
+### 8.7 Lift coverage across languages	### 8.7 भाषाओं में लिफ़्ट की coverage
+## 9. Falsifiers	## 9. खंडन कसौटियाँ
+## 10. Work to finish	## 10. पूरा करने का काम
+## 11. Conclusion	## 11. निष्कर्ष
+## References	## संदर्भ

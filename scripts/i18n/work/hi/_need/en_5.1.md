@@ -1,0 +1,15 @@
+### 5.1 Differential testing across five targets
+
+`tests/form_targets.rs` drives an eleven-operator arithmetic specification with 29 edge events plus 500 seeded random edge values. The generated Rust, Python, WASM, XState and SCXML targets print the reference trace byte for byte, including the arithmetic edges. This is differential testing in the line of McKeeman and of Csmith [86]: agreement among independent implementations on a stated input set. It is not translation validation [85] and not a verified compiler. It covers the eleven operators and the 529 events in the test, and it says nothing about inputs outside them. The Z3 and Kani results below are the verification.
+
+Figure 11 shows the five projections of one Form and the round trip of the two statechart targets.
+
+![Diagram: one Form, made of state, events and a pure total transition, is projected by deterministic compiles to five targets: Rust, Python, WASM, XState and SCXML. Solid arrows run from the Form to each target. Dashed arrows run back from XState and SCXML to the Form, showing the round trip to byte-identical bytes and the same shape hash. Rust, Python and WASM replay the reference trace byte for byte.](/figures/rce/form-projections.svg)
+
+*Figure 11. One Form, many projections. Diagram: deterministic projection to five targets ([§4.5](#45-the-form-compiler)); the XState and SCXML projections decode back to byte-identical bytes ([§2.3](#23-the-ecosystem-at-large-n)); all five targets print the reference trace byte for byte on the 529 events of `tests/form_targets.rs`. A [PNG copy](/figures/rce/form-projections.png) is provided.*
+
+![Diagram in two lanes. Top lane, the engine compiler rce form: a .rce handler spec and its fit are lowered, saturated and extracted by est_j into the Form IR, which is projected to five targets: a Rust crate, WASM, Python, XState v5 and SCXML run by SCION. All five print the reference trace byte for byte on 529 events in tests/form_targets.rs; this is claim T9-F, established by differential testing. Bottom lane, the language command rce emit: a checked .rce module is emitted as form JSON, Rust, Python or JavaScript; claim T9-L, proved for the Rust emitter on a core as a verified translation into MiniRust, and tested for Python and JavaScript.](/figures/rce/two-compilers.svg)
+
+*Figure 12. One Form, five targets, one reference trace; two compilers, two claims. Diagram. Top: `rce form` lowers a handler spec and its fit to the Form IR and projects it to a Rust crate, WASM, Python, XState v5 and SCXML; all five print the reference trace byte for byte on 529 events (29 edge events plus 500 seeded edge values of an eleven-operator specification, `tests/form_targets.rs`). This is T9-F, established by differential testing, not a verified compiler. Bottom: `rce emit TARGET FILE` translates a checked module (not the Form) to `form` JSON, `rust`, `python` or `js`; T9-L is proved for the Rust emitter on a core as a verified translation into MiniRust (that rustc implements MiniRust is trusted and tested), and tested for the others. A [PNG copy](/figures/rce/two-compilers.png) is provided.*
+
+

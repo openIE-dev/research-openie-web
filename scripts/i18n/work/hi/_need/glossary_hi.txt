@@ -1,0 +1,72 @@
+Form (RCE program object)	Form
+fit	फ़िट
+One Form, many fits	एक Form, अनेक फ़िट
+gate	द्वार
+commit gate	कमिट द्वार
+Metered Commit Gates (paper)	मापित कमिट द्वार
+commit (noun)	कमिट
+refuse (decision)	अस्वीकार
+reason code	कारण कोड
+certificate	प्रमाणपत्र
+receipt	रसीद
+proposer / proposal	प्रस्तावक / प्रस्ताव
+gear	गियर
+cascade	कैस्केड
+token	टोकन
+joule	जूल
+energy to run	चलाने की ऊर्जा
+energy to correct completion	सही पूर्णता तक ऊर्जा
+correct completion	सही पूर्णता
+Mixture of Limits (gloss)	Mixture of Limits (सीमाओं का मिश्रण)
+Metabolic Intelligence (gloss)	Metabolic Intelligence (चयापचयी बुद्धि)
+projection	प्रक्षेपण
+lift (import from another language)	लिफ़्ट
+intent	मंशा
+entropy	एंट्रॉपी
+lossless	हानिरहित
+round trip	राउंड ट्रिप
+handler	हैंडलर
+held-out	अलग रखा गया
+frozen engine	स्थिर इंजन
+model call	मॉडल कॉल
+rung	पायदान
+complexity ladder	जटिलता की सीढ़ी
+ladder	सीढ़ी
+satiation	तृप्ति
+task satiation	कार्य-तृप्ति
+aggregate rebound	समग्र रिबाउंड
+rebound (direct / indirect / economy-wide)	रिबाउंड (प्रत्यक्ष / अप्रत्यक्ष / अर्थव्यवस्था-व्यापी)
+bliss point	परमानंद बिंदु
+chore	काम
+completeness predicate	पूर्णता विधेय
+task completion	कार्य-पूर्णता
+done detector	पूर्णता डिटेक्टर
+false done / false continue	झूठा पूर्ण / झूठा जारी
+free at the margin	सीमांत पर मुफ़्त
+actuation / actuator	क्रियान्वयन / एक्चुएटर
+inference	इन्फ़रेंस
+estimate	अनुमान
+budget	बजट
+energy envelope	ऊर्जा आवरण
+value of information (VoI)	सूचना का मूल्य
+device under test (DUT)	परीक्षणाधीन उपकरण
+board-measured	बोर्ड पर मापा गया
+agency	एजेंसी
+agent	एजेंट
+Universal Law of Agency	एजेंसी का सार्वभौमिक नियम
+goal-holding agent	लक्ष्य-धारी एजेंट
+kinematic bounds	गतिकीय सीमाएँ
+bound (upper / lower)	सीमा
+threshold	दहलीज़
+tempo	गति
+spell check	वर्तनी जाँच
+Spell Check is Global (paper)	वर्तनी जाँच वैश्विक है
+scarcity	कमी
+base layer	आधार परत
+stack	स्टैक
+verifier	सत्यापक
+Part I / Part II	भाग I / भाग II
+Section n	खंड n
+engine demo (/demos/rce-engine/)	इंजन डेमो
+reference checker	संदर्भ चेकर
+References	संदर्भ
