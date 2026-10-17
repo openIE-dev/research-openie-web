@@ -1,7 +1,7 @@
 ---
 // Proposer section of /about/rce-jepa: what exists, the architecture, data, hypotheses H11 to H13 (stated in the
 // single H1 to H13 table in rce-jepa.astro), falsifiers RJ-F1 to RJ-F5 (moved to rce-jepa.astro after the H1 to H13 table) and risks. Sources are the [B] list at the end; every one was opened at
-// the linked address and checked against the claim it supports (ledger: rce-jepa-blueprint/LEDGER.md).
+// the linked address and checked against the claim it supports (ledger kept with the research notes).
 import katex from 'katex';
 const m = (s: string) => katex.renderToString(s, { throwOnError: false });
 const R = String.raw;
@@ -9,7 +9,7 @@ const tbl = "w-full text-xs border-collapse [&_td]:border [&_th]:border [&_td]:b
 ---
 <h2 id="proposer">What already exists, and what this page is about</h2>
 
-<p>The Reality Code Engine already holds the half of the problem that decides. Its public paper, <a href="https://research.openie.dev/papers/rce/">The Reality Code Engine</a>, reports the following, all of it OpenIE's own measured or proved data, not outside evidence. A commit gate checks every candidate at entry and refused all 10,000 malformed payloads and all 10,000 specifications with a flow to an undeclared node in a preregistered run of 10,000 generated Forms with no model called. Replay is exact: theorem T3 states that the runtime state is a left fold of the transition function over the log, and that replay reproduces every hash and output; theorems T1 (determinism), T2 (totality with a step bound) and T8 (a refused event leaves the state unchanged) are proved in Lean 4, a proof assistant. Projection to other languages is built: T9-F says the Rust, WebAssembly (WASM), Python, XState and SCXML (State Chart XML) targets print the reference trace byte for byte, established by differential testing on 529 events of one eleven-operator specification, and in the 10,000-Form run two compiles gave the same bytes and the XState and SCXML projections of the original and round-tripped Form were byte identical in 10,000 of 10,000 cases, while the emitted Python printed the reference trace in 9,999 of 10,000. T9-L, the Rust program emitter, is proved on a core as a verified translation into MiniRust. Kani, a model checker for Rust, verifies 10 of 10 kernel harnesses, and every built-in rewrite of the e-graph optimizer is proved in Z3, a satisfiability modulo theories (SMT) solver. Every run carries <code>est_j</code>, an estimate in joules from a published cost table, kept apart from counter readings (<code>reported_j</code>) and wall-meter readings (<code>measured_j</code>).</p>
+<p>The Reality Code Engine already holds the half of the problem that decides. Its public paper, <a href="https://research.openie.dev/papers/rce/">The Reality Code Engine</a>, describes the design of that half: a commit gate that checks every candidate at entry, exact replay (the runtime state is a left fold of the transition function over the log), projection of one Form to other languages, and energy accounting in <code>est_j</code>, an estimate in joules from a published cost table, kept apart from counter readings (<code>reported_j</code>) and wall-meter readings (<code>measured_j</code>). Some theorems about it are checked in Lean 4, a proof assistant, and the specification and Lean library are public. The measured runs reported in that paper are not all reproducible from the public repositories yet, so this page quotes no number from them and treats them as design context, not as evidence for any hypothesis below.</p>
 
 <p><strong>This page is about the proposer:</strong> the learned part that suggests which Form to try. The gate, replay, projections and <code>est_j</code> are built and measured; the proposer is not.</p>
 
@@ -44,7 +44,7 @@ step Counter on Dec -> try n.checked_sub(1) else Underflow`}</code></pre>
 
 <figure class="mt-8 glass-card p-4 fig-wide not-prose">
   <a class="fig-zoom" href="/figures/rce-jepa/architecture.svg" aria-label="Enlarge figure"><picture><source type="image/svg+xml" srcset="/figures/rce-jepa/architecture.svg" /><img src="/figures/rce-jepa/architecture.png" alt="Inside a dashed region labelled learned and untrusted: an intent encoder, a proposer acting as an inverse model, an exact rollout by the transition function, a Form encoder with energy, a tree search, and a decision head. Outside it: the gate, which alone admits programs, and the engine, which replays and projects. A rejection arrow returns the broken rule to the search" width="1500" height="760" class="fig-img w-full rounded bg-white" loading="lazy" decoding="async" /></picture></a>
-  <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Figure 2. The model steers, the engine renders. Orange boxes are learned and untrusted; the blue box is the engine's exact rollout, used as a simulator during search; green boxes are built and measured. Only the gate admits. A design diagram, not data. <span class="fig-links"><a href="/figures/rce-jepa/architecture.svg" target="_blank" rel="noopener">Open full size</a> · <a href="/figures/rce-jepa/architecture.png">PNG</a></span>.</figcaption>
+  <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Figure 2. The model steers, the engine renders. Orange boxes are learned and untrusted; the blue box is the engine's exact rollout, used as a simulator during search; green boxes are built (see the RCE paper for their status). Only the gate admits. A design diagram, not data. <span class="fig-links"><a href="/figures/rce-jepa/architecture.svg" target="_blank" rel="noopener">Open full size</a> · <a href="/figures/rce-jepa/architecture.png">PNG</a></span>.</figcaption>
 </figure>
 
 <div class="mt-4 overflow-x-auto"><table class={tbl}>
@@ -81,7 +81,7 @@ step Counter on Dec -> try n.checked_sub(1) else Underflow`}</code></pre>
     <tr><td>Decision receipts</td><td>Every gate decision</td><td>Unbounded, no labelling cost</td><td>The decision head's calibration</td></tr>
     <tr><td>Hard negatives</td><td>Gate rejections with the named broken rule; model-proposed equivalences the gate refused (13 of 16 from Qwen2.5-Coder-1.5B in the RCE paper, Sec. 5.5)</td><td>Grows with every run</td><td>Contrastive signal: valid against invalid, equivalent against not</td></tr>
   </tbody></table></div>
-<p>Near-duplicate Forms are removed by shape hash before any split, and held-out splits are by shape hash, never by surface text. The 83-family corpus quoted under Part 2 of the thesis below is kept as the historical baseline only; it sets no thresholds and trains no model. The lift corpus replaces it as the main evidence as soon as the data engine (Phase 0 of the pilot plan) produces it.</p>
+<p>Near-duplicate Forms are removed by shape hash before any split, and held-out splits are by shape hash, never by surface text. No corpus measurement is reported on this page. The lift corpus is the planned evidence, and it exists only once the data engine (Phase 0 of the pilot plan) produces it.</p>
 
 <h3 id="training">Training, in brief</h3>
 <ul>
