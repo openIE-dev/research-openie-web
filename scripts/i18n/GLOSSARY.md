@@ -83,4 +83,6 @@ Link texts that name a sister paper use the translated title (or its short form 
 | verifier | 验证器 | verificador | vérificateur | Verifizierer | 検証器 | verificador | सत्यापक | المتحقِّق |
 | Part I / Part II | 第一部分 / 第二部分 | Parte I / Parte II | Partie I / Partie II | Teil I / Teil II | 第I部 / 第II部 | Parte I / Parte II | भाग I / भाग II | الجزء الأول / الجزء الثاني |
 | Section n | 第 n 节 | Sección n | Section n | Abschnitt n | 第n節 | Seção n | खंड n | القسم n |
+| engine demo (/demos/rce-engine/) | 引擎演示 | demo del motor | démo du moteur | Engine-Demo | エンジンデモ | demo do motor | इंजन डेमो | العرض التوضيحي للمحرك |
+| reference checker | 参考检查器 | comprobador de referencia | vérificateur de référence | Referenzprüfer | 参照チェッカー | verificador de referência | संदर्भ चेकर | المدقق المرجعي |
 | References | 参考文献 | Referencias | Références | Literatur | 参考文献 | Referências | संदर्भ | المراجع |
