@@ -86,3 +86,7 @@ Link texts that name a sister paper use the translated title (or its short form 
 | engine demo (/demos/rce-engine/) | 引擎演示 | demo del motor | démo du moteur | Engine-Demo | エンジンデモ | demo do motor | इंजन डेमो | العرض التوضيحي للمحرك |
 | reference checker | 参考检查器 | comprobador de referencia | vérificateur de référence | Referenzprüfer | 参照チェッカー | verificador de referência | संदर्भ चेकर | المدقق المرجعي |
 | References | 参考文献 | Referencias | Références | Literatur | 参考文献 | Referências | संदर्भ | المراجع |
+| empowerment (channel capacity from actions to observations) | 赋能 | empoderamiento | empowerment | Empowerment | エンパワーメント | empoderamento | एम्पावरमेंट | التمكين |
+| epiplexity | epiplexity（表观复杂度） | epiplejidad | épiplexité | Epiplexität | エピプレキシティ | epiplexidade | एपिप्लेक्सिटी | الإبيبلكسية |
+| derivation depth / derivation entropy | 推导深度 / 推导熵 | profundidad de derivación / entropía de derivación | profondeur de dérivation / entropie de dérivation | Ableitungstiefe / Ableitungsentropie | 導出深さ / 導出エントロピー | profundidade de derivação / entropia de derivação | व्युत्पत्ति गहराई / व्युत्पत्ति एन्ट्रॉपी | عمق الاشتقاق / إنتروبيا الاشتقاق |
+| watts per intelligence | 每单位智能瓦特数 | vatios por inteligencia | watts par intelligence | Watt pro Intelligenz | 知能あたりワット | watts por inteligência | प्रति बुद्धि वाट | واط لكل وحدة ذكاء |
