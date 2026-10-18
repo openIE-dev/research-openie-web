@@ -113,7 +113,7 @@ def fm_get(key, default=""):
     m = re.search(pattern, fm, re.M)
     if not m:
         return default
-    return m.group(2)
+    return m.group(2).replace('\\"', '"')
 
 title = fm_get("title", id_)
 deck = fm_get("deck", "")
@@ -152,6 +152,13 @@ body = body.replace('src="/', 'src="file://' + str(Path(src).resolve().parents[3
 
 if id_ in ("spellcheck", "ai-coding-market", "interface-economics"):
     measure = ""
+elif id_ == "ai-reads-human":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research topic, work in progress, not a journal final.\n"
+        "Time and token counts are measured on one virtualised machine. No joules were measured; model energy figures are other authors' measurements.\n"
+        "</div>\n"
+    )
 elif id_ == "rce":
     measure = (
         '<div class="measurement">\n'
@@ -247,6 +254,7 @@ gen_one three-body
 gen_one game-engines
 gen_one interface-economics
 gen_one ai-coding-market
+gen_one ai-reads-human
 cp public/pdfs/ai-coding-market.pdf public/pdfs/rce-economics.pdf
 gen_one mei products
 gen_one jouleos products

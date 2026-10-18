@@ -1,0 +1,31 @@
+parse ns/record and ratio to fixed binary via struct.iter_unpack (same Python object materialisation class: tuples vs dict, see caveat in OUTLINE.md)
+json (stdlib)                                           904 ns/rec  x7.8      7.78 ns/B     116 B/rec
+json (orjson)                                           529 ns/rec  x4.6      4.55 ns/B     116 B/rec
+json pretty (stdlib)                                   1015 ns/rec  x8.8      5.51 ns/B     184 B/rec
+jsonl (stdlib, per line)                               2304 ns/rec  x19.9     19.82 ns/B     116 B/rec
+yaml (libyaml C)                                      85300 ns/rec  x735.3    697.63 ns/B     122 B/rec
+yaml (pure python)                                   332062 ns/rec  x2862.6   2715.78 ns/B     122 B/rec
+xml (lxml)                                             2155 ns/rec  x18.6     14.94 ns/B     144 B/rec
+xml (ElementTree)                                      2436 ns/rec  x21.0     16.88 ns/B     144 B/rec
+csv (stdlib)                                            650 ns/rec  x5.6     10.78 ns/B      60 B/rec
+toml (tomllib)                                        22920 ns/rec  x197.6    182.96 ns/B     125 B/rec
+markdown table (markdown-it-py, tokens only)          11478 ns/rec  x98.9    150.48 ns/B      76 B/rec
+markdown list (markdown-it-py, tokens only)           49811 ns/rec  x429.4    517.40 ns/B      96 B/rec
+msgpack                                                 640 ns/rec  x5.5      7.70 ns/B      83 B/rec
+cbor2                                                  1041 ns/rec  x9.0     12.54 ns/B      83 B/rec
+fixed binary (struct.iter_unpack)                       116 ns/rec  x1.0      5.06 ns/B      23 B/rec
+fixed binary (numpy frombuffer, zero copy)                0 ns/rec  x0.0      0.01 ns/B      23 B/rec
+
+tokens per record (cl100k_base) and ratio to CSV
+recs.json                    36.2 tok/rec  x1.58 vs csv
+recs_pretty.json             65.6 tok/rec  x2.86 vs csv
+recs.jsonl                   37.5 tok/rec  x1.64 vs csv
+recs.yaml                    51.4 tok/rec  x2.24 vs csv
+recs.xml                     52.2 tok/rec  x2.28 vs csv
+recs.csv                     22.9 tok/rec  x1.00 vs csv
+recs.toml                    46.6 tok/rec  x2.03 vs csv
+recs_table.md                28.4 tok/rec  x1.24 vs csv
+recs_list.md                 32.4 tok/rec  x1.41 vs csv
+recs.bin as base64           20.3 tok/rec  x0.89 vs csv
+recs.bin as hex              22.7 tok/rec  x0.99 vs csv
+recs.msgpack as base64       76.3 tok/rec  x3.33 vs csv
