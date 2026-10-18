@@ -270,6 +270,25 @@
         "energy metering",
         "operating systems"
       ]
+    },
+    {
+      "id": "latency",
+      "title": "The Gap Between Possible and Deployed: A Cadence Model of Computer Intelligence and the Forcing Function of Automation Tools",
+      "short_title": "The Gap Between Possible and Deployed",
+      "kind": "Research study",
+      "group": "research",
+      "url": "https://research.openie.dev/papers/latency/",
+      "pdf": "https://research.openie.dev/pdfs/latency.pdf",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "A dated survey of methods that lower the cost of computer intelligence, evidence on the gap between publication and deployment, a cadence model in which reporting and funding calendars quantize release decisions, and a forcing-function result for tools that lower the cost of automation. Plain words: cheaper methods are published long before most products use them; part of the wait is engineering, part is calendars; once the work is cheap, what is left to charge for is the cost of switching away.",
+      "about": "https://research.openie.dev/about/latency/",
+      "keywords": [
+        "technology diffusion",
+        "adoption lag",
+        "cadence model",
+        "forcing function",
+        "energy per task"
+      ]
     }
   ]
 }

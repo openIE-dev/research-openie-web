@@ -252,6 +252,7 @@ gen_one spellcheck
 gen_one rce
 gen_one three-body
 gen_one game-engines
+gen_one latency
 gen_one interface-economics
 gen_one ai-coding-market
 gen_one ai-reads-human

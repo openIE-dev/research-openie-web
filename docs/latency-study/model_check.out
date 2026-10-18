@@ -1,0 +1,8 @@
+before tool: K=2.0: NPV threshold c=3.951 at t=4.4 days; gate threshold c=2.594; forced-exit c=2.000; release at c=2.594, t=5.00 months; gate delay=4.85 months
+after tool lowers adoption cost: K=0.1: NPV threshold c=3.998 at t=0.2 days; gate threshold c=3.998; forced-exit c=2.000; release at c=3.998, t=0.01 months; gate delay=0.00 months
+c_e=4.0: price=6.00, price/cost=1.50, profit=8.00, d profit/ds=2.00
+c_e=3.0: price=5.00, price/cost=1.67, profit=10.00, d profit/ds=3.00
+c_e=2.0: price=4.00, price/cost=2.00, profit=12.00, d profit/ds=4.00
+c_e=1.0: price=3.00, price/cost=3.00, profit=14.00, d profit/ds=5.00
+c_e=0.5: price=2.50, price/cost=5.00, profit=15.00, d profit/ds=5.50
+cadence T=0.25: mean wait=0.1250 (T/2=0.125), variance=0.00521 (T^2/12=0.00521), N=200000, seed=7
