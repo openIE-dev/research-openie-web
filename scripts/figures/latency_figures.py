@@ -342,7 +342,7 @@ def timeline():
     s = S(1200, 900, 'Capability releases against deployment and financing', 'Dated items from the sources in the References. Upper lane: public methods and models. Lower lane: product releases, contracts and filings.', 'DATA')
     x0, w = 70, 1060; t0, t1 = 2022, 2026.9
     def X(t): return x0 + w * (t - t0) / (t1 - t0)
-    for t in range(2022, 2027): s.l(X(t), 120, X(t), 400, GRID, 1); s.t(X(t) + 4, 416, str(t), 16, 700, MUTED)
+    for t in range(2022, 2027): s.l(X(t), 120, X(t), 430, GRID, 1); s.t(X(t) + 4, 444, str(t), 16, 700, MUTED)
     s.l(x0, 300, x0 + w, 300, '#94a3b8', 2)
     up = [('2022-03', 'Chinchilla compute-optimal scaling'), ('2022-05', 'FlashAttention'), ('2022-11-30', 'Speculative decoding'), ('2023-12', 'Mamba state-space model'), ('2024-12', 'DeepSeek-V3: 2.788M GPU-hours'), ('2025-01', 'DeepSeek-R1'),
           ('2025-02', 'Native sparse attention'), ('2025-04', 'BitNet b1.58 2B4T (CPU)'), ('2025-06', 'CloudMatrix-Infer (Ascend)')]

@@ -3,16 +3,16 @@
 <text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Dated items from the sources in the References. Upper lane: public methods and models. Lower lane: product releases, contracts and filings.</text>
 <rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
 <text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
-<line x1="70.0" y1="120.0" x2="70.0" y2="400.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="74.0" y="416.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">2022</text>
-<line x1="286.3" y1="120.0" x2="286.3" y2="400.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="290.3" y="416.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">2023</text>
-<line x1="502.7" y1="120.0" x2="502.7" y2="400.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="506.7" y="416.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">2024</text>
-<line x1="719.0" y1="120.0" x2="719.0" y2="400.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="723.0" y="416.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">2025</text>
-<line x1="935.3" y1="120.0" x2="935.3" y2="400.0" stroke="#e2e8f0" stroke-width="1"/>
-<text x="939.3" y="416.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">2026</text>
+<line x1="70.0" y1="120.0" x2="70.0" y2="430.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="74.0" y="444.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">2022</text>
+<line x1="286.3" y1="120.0" x2="286.3" y2="430.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="290.3" y="444.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">2023</text>
+<line x1="502.7" y1="120.0" x2="502.7" y2="430.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="506.7" y="444.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">2024</text>
+<line x1="719.0" y1="120.0" x2="719.0" y2="430.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="723.0" y="444.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">2025</text>
+<line x1="935.3" y1="120.0" x2="935.3" y2="430.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="939.3" y="444.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#475569" text-anchor="start">2026</text>
 <line x1="70.0" y1="300.0" x2="1130.0" y2="300.0" stroke="#94a3b8" stroke-width="2"/>
 <line x1="106.1" y1="260.0" x2="106.1" y2="300.0" stroke="#0072B2" stroke-width="2"/>
 <circle cx="106.1" cy="260.0" r="13" fill="#0072B2" stroke="white" stroke-width="2"/>
