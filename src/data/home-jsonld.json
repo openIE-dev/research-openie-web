@@ -64,12 +64,18 @@
           {
             "@type": "ListItem",
             "position": 9,
+            "url": "https://research.openie.dev/papers/latency/",
+            "name": "The Gap Between Possible and Deployed: A Cadence Model of Computer Intelligence and the Forcing Function of Automation Tools"
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
             "url": "https://research.openie.dev/products/mei/",
             "name": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus"
           },
           {
             "@type": "ListItem",
-            "position": 10,
+            "position": 11,
             "url": "https://research.openie.dev/products/jouleos/",
             "name": "The Search for JouleOS"
           }
