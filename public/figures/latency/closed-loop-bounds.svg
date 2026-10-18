@@ -24,4 +24,4 @@
 <text x="760.0" y="536.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">50%</text>
 <line x1="930.0" y1="140.0" x2="930.0" y2="520.0" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
 <text x="930.0" y="536.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="middle">75%</text>
-<text x="40.0" y="570.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start">A high bound does not show that demand is circular. It shows how much of the loop the documents allow. Counter-evidence is in Figure 2 and Section 7.</text></svg>
+<text x="40.0" y="570.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start">A high bound does not show that demand is circular. It shows how much of the loop the documents allow. Counter-evidence is in Section 11.</text></svg>

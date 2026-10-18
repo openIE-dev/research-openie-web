@@ -2,7 +2,7 @@
 """Figures for the latency study (AI race, infrastructure, parity, geography).
 Reads only the small data files in scripts/figures/latency_data/. Writes public/figures/latency/*.svg and .png.
 Model outputs are drawn with the Model badge. Run from the repo root: python3 scripts/figures/latency_figures.py"""
-import csv, json, math, os, datetime, collections, sys
+import csv, json, math, os, datetime, collections, sys, statistics
 sys.path.insert(0, os.path.dirname(__file__))
 import make_figures as mf
 from make_figures import S, BLUE, ORANGE, GREEN, PINK, SKY, VERM, YELLOW, INK, MUTED, GRID, EDGE, legend
@@ -47,7 +47,7 @@ def flow():
     edge((1105, 300), (1105, 210), '$7.0B cash, Oct 2025', '#8c6d1f', None, .5, 4)
     s.t(600, 700, 'Dashed = purchase commitment or warrant. Solid = capital supplied. Colors: chip makers blue, labs orange, clouds green, neocloud sky, finance brown.', 15, 600, INK, 'middle')
     s.t(600, 724, 'Purchase commitments not drawn: OpenAI to Microsoft Azure $250B (Oct 2025) and to AWS $38B (Nov 2025); Anthropic to Azure $30B (Nov 2025).', 15, 600, INK, 'middle')
-    s.t(600, 748, 'NVIDIA also reports $27B of its own multi-year cloud service commitments and $3.5B of lease guarantees (Jan 2026). Sources: Table 3.', 15, 400, MUTED, 'middle')
+    s.t(600, 748, 'NVIDIA also reports $27B of its own multi-year cloud service commitments and $3.5B of lease guarantees (Jan 2026). Sources: Table 4.', 15, 400, MUTED, 'middle')
     save(s, 'capital-compute-flow', 'Flow graph with ten named parties in columns: finance, chip makers, labs, clouds. Capital arrows run from NVIDIA, SoftBank, Amazon and Microsoft into OpenAI and from NVIDIA and Microsoft into Anthropic; NVIDIA puts 2 billion dollars into CoreWeave; Blue Owl funds put 7 billion dollars cash into a Meta venture. Dashed arrows show purchase commitments from OpenAI and Meta to CoreWeave and a warrant from AMD to OpenAI. Text lists the larger commitments of OpenAI to Microsoft and Amazon.')
 
 # ---------- 2 capex vs OCF small multiples
@@ -89,7 +89,7 @@ def closedloop():
         s.t(x0 - 14, y + 26, lab, 17, 700, INK, 'end'); s.r(x0, y, w, 44, '#f1f5f9'); s.r(x0, y, w * v, 44, c)
         s.t(x0 + w * v + 10, y + 30, f'{v*100:.1f}%', 22, 800, c if c != YELLOW else INK); s.t(x0, y + 72, note, 14, 400, MUTED)
     for v in (0.25, 0.5, 0.75): s.l(x0 + w * v, 140, x0 + w * v, 520, '#94a3b8', 1, '4 4'); s.t(x0 + w * v, 536, f'{int(v*100)}%', 13, 400, MUTED, 'middle')
-    s.t(40, 570, 'A high bound does not show that demand is circular. It shows how much of the loop the documents allow. Counter-evidence is in Figure 2 and Section 7.', 15, 500, INK)
+    s.t(40, 570, 'A high bound does not show that demand is circular. It shows how much of the loop the documents allow. Counter-evidence is in Section 11.', 15, 500, INK)
     save(s, 'closed-loop-bounds', 'Three horizontal bars. NVIDIA alone supplied up to 24.6 percent of OpenAI March 2026 round. NVIDIA plus Amazon at its stated maximum is up to 65.6 percent. Documented NVIDIA capital to customers is at most 19.5 percent of its fiscal 2026 revenue.')
 
 # ---------- 4 concentration
@@ -168,7 +168,7 @@ def hweff():
     s.t(X(2024.2), y0 + 12, 'B100, B200, GB200 NVL2', 12, 500, INK, 'end')
     s.t(x0 + 20, y0 + 30, f"Fit: about {F['growth_per_year']:.2f}x per year (n = {F['n']})", 18, 800, VERM)
     s.t(40, 610, 'Peak specifications are not delivered energy per task. Utilization, memory traffic and software decide the delivered figure.', 14, 400, MUTED)
-    save(s, 'hardware-efficiency', 'Scatter on a log axis of peak tensor operations per watt for twelve NVIDIA accelerators from 2016 to 2024 with a dashed fit of about 1.4 times per year.')
+    save(s, 'hardware-efficiency', 'Scatter on a log axis of peak tensor operations per watt for twelve accelerators from 2016 to 2024 with a dashed fit of about 1.4 times per year.')
 
 # ---------- 9 accelerator-hour cost
 def hourcost():
@@ -247,7 +247,7 @@ def althw():
         s.r(x0, y, w * lo / mx, 32, col[k]); 
         if hi > lo: s.r(x0 + w * lo / mx, y + 8, w * (hi - lo) / mx, 16, col[k], 'none', 0, 2, .45)
         s.t(x0 + w * hi / mx + 10, y + 24, (f'{lo:g} to {hi:g}x' if hi > lo else f'{lo:g}x'), 16, 800)
-    s.r(60, 540, 18, 18, BLUE); s.t(86, 555, 'measured in the paper', 14); s.r(300, 540, 18, 18, ORANGE); s.t(326, 555, 'estimated, not metered', 14); s.r(560, 540, 18, 18, PINK); s.t(586, 555, 'preliminary', 14)
+    s.r(60, 540, 18, 18, BLUE); s.t(86, 555, 'measured in the paper', 14); s.r(300, 540, 18, 18, ORANGE); s.t(326, 555, 'estimated, not measured', 14); s.r(560, 540, 18, 18, PINK); s.t(586, 555, 'preliminary', 14)
     s.t(40, 584, 'IBM analog in-memory chip: 12.4 TOPS/W chip-sustained on small networks, no matched baseline given.', 13, 400, MUTED)
     s.t(40, 604, 'Photonic processor (Nature, 2025): near-electronic precision on ResNet and BERT, no joules in the text read.', 13, 400, MUTED)
     s.t(40, 624, 'Huawei CloudMatrix-Infer on Ascend NPUs: 4.45 tokens/s per TFLOPS in prefill; power not reported, so no joule ratio is drawn.', 13, 400, MUTED)
@@ -318,7 +318,7 @@ def mapprog():
     s = S(1200, 880, 'National compute programs and their stated sizes', 'Official or primary statements, 2024 to 2026. Units differ by country, so no ranking is implied.', 'DATA')
     draw_world(s, 40, 130, 1120, default='#eef2f7')
     cards = [('United States', 'United States of America', 'Frontier sites: 11.9 GW listed (Epoch)', -430, -10, BLUE), ('Brazil', 'Brazil', 'PBIA 2024-2028: R$ 23.03 bn plan', -120, 0, GREEN),
-             ('European Union', 'Germany', 'InvestAI: EUR 20 bn fund, 4 AI gigafactories', -200, -70, SKY), ('Saudi Arabia', 'Saudi Arabia', 'HUMAIN: up to 500 MW over 5 years', -40, 140, ORANGE),
+             ('European Union', 'Germany', 'InvestAI: EUR 200 bn goal, EUR 20 bn gigafactory fund', -200, -70, SKY), ('Saudi Arabia', 'Saudi Arabia', 'HUMAIN: up to 500 MW over 5 years', -40, 140, ORANGE),
              ('UAE', 'United Arab Emirates', 'Stargate UAE 1 GW inside a 5 GW campus', 40, 210, VERM), ('India', 'India', 'IndiaAI: 38,231 GPUs onboarded', -20, 150, PINK),
              ('China', 'China', 'Intelligent compute 1.59 million PFLOPS (FP16), end 2025', -60, -120, '#8c6d1f'), ('South Korea', 'South Korea', '260,000 NVIDIA GPUs secured (Oct 2025)', 10, -70, BLUE),
              ('Japan', 'Japan', 'AI and chips: at least JPY 10 tn public support to FY2030', 80, 10, GREEN)]
@@ -329,7 +329,7 @@ def mapprog():
         s.r(cx, cy, 360, 56, 'white', c, 8, 2.5); s.c(cx + 22, cy + 28, 13, c, 'white', 2); s.t(cx + 22, cy + 33, str(i + 1), 13, 800, 'white', 'middle')
         s.t(cx + 44, cy + 22, lab, 16, 800, INK); s.t(cx + 44, cy + 44, txt, 12, 400, MUTED)
     s.t(40, 850, 'Africa: Cassava Technologies is deploying an NVIDIA-based AI factory in South Africa, with plans for Nigeria, Kenya, Egypt and Morocco (company statement; no capacity figures read).', 13, 400, MUTED)
-    save(s, 'map-national-programs', 'World map with callouts for national compute programs: Brazil R$ 23.03 billion plan, EU 20 billion euro gigafactory fund, Saudi Arabia up to 500 MW, UAE 1 GW Stargate, India 38,231 GPUs, China 1.59 million PFLOPS, South Korea 260,000 GPUs, Japan at least 10 trillion yen to FY2030, United States 11.9 GW of listed frontier sites.')
+    save(s, 'map-national-programs', 'World map with callouts for national compute programs: Brazil R$ 23.03 billion plan, EU 200 billion euro InvestAI goal with a 20 billion euro gigafactory fund, Saudi Arabia up to 500 MW, UAE 1 GW Stargate, India 38,231 GPUs, China 1.59 million PFLOPS, South Korea 260,000 GPUs, Japan at least 10 trillion yen to FY2030, United States 11.9 GW of listed frontier sites.')
 
 # ---------- 17 adoption
 def adopt():
@@ -413,8 +413,8 @@ def multiples():
             hh = h * (v - lo) / (hi - lo); s.r(x0 + i * bw, y0 + h - hh, bw * .8, hh, col)
         s.t(x0, y0 + h + 18, f'min {min(vals):,.0f}', 12, 400, MUTED); s.t(x0 + w, y0 + h + 18, f'max {max(vals):,.0f} {unit}', 12, 400, MUTED, 'end')
     cp = sorted(float(r['usd_per_h100e']) for r in DC); wp = sorted(float(r['watts_per_h100e']) for r in DC)
-    panel(60, 150, 520, 150, f'Capital per H100e, n={len(cp)}, median {cp[len(cp)//2]:,.0f} USD', cp, BLUE, 'USD', 0, max(cp))
-    panel(660, 150, 480, 150, f'Facility W per H100e, median {wp[len(wp)//2]:,.0f}', wp, VERM, 'W', 0, max(wp))
+    panel(60, 150, 520, 150, f'Capital per H100e, n={len(cp)}, median {statistics.median(cp):,.0f} USD', cp, BLUE, 'USD', 0, max(cp))
+    panel(660, 150, 480, 150, f'Facility W per H100e, median {statistics.median(wp):,.0f}', wp, VERM, 'W', 0, max(wp))
     ef = [float(r['flops_per_watt']) / 1e9 for r in H]
     panel(60, 390, 520, 150, 'Peak tensor GFLOP/s per W, release order', ef, GREEN, 'GFLOP/s/W', 0, max(ef))
     R = rd('frontier_dc_by_country.csv')[:6]; pv = [float(r['power_mw']) for r in R]

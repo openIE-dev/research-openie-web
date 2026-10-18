@@ -3,7 +3,7 @@
 <text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Capital and facility watts per H100-equivalent by site; accelerator efficiency; listed power by country.</text>
 <rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
 <text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
-<text x="60.0" y="140.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="start">Capital per H100e, n=74, median 33,319 USD</text>
+<text x="60.0" y="140.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="start">Capital per H100e, n=74, median 33,311 USD</text>
 <line x1="60.0" y1="300.0" x2="580.0" y2="300.0" stroke="#94a3b8" stroke-width="2"/>
 <rect x="60.0" y="285.3" width="5.6" height="14.7" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
 <rect x="67.0" y="283.6" width="5.6" height="16.4" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>

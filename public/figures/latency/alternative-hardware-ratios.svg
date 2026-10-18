@@ -33,7 +33,7 @@
 <rect x="60.0" y="540.0" width="18.0" height="18.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
 <text x="86.0" y="555.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">measured in the paper</text>
 <rect x="300.0" y="540.0" width="18.0" height="18.0" rx="0" fill="#E69F00" stroke="none" stroke-width="2" opacity="1"/>
-<text x="326.0" y="555.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">estimated, not metered</text>
+<text x="326.0" y="555.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">estimated, not measured</text>
 <rect x="560.0" y="540.0" width="18.0" height="18.0" rx="0" fill="#CC79A7" stroke="none" stroke-width="2" opacity="1"/>
 <text x="586.0" y="555.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">preliminary</text>
 <text x="40.0" y="584.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start">IBM analog in-memory chip: 12.4 TOPS/W chip-sustained on small networks, no matched baseline given.</text>
