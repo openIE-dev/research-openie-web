@@ -22,15 +22,15 @@
 <line x1="1120.0" y1="150.0" x2="1120.0" y2="380.0" stroke="#94a3b8" stroke-width="2"/>
 <text x="1120.0" y="404.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#475569" text-anchor="middle">Q1</text>
 <circle cx="366.0" cy="200.0" r="9" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
-<line x1="366.0" y1="200.0" x2="470.0" y2="200.0" stroke="#0072B2" stroke-width="5" marker-end="url(#ah)"/>
+<line x1="366.0" y1="200.0" x2="462.0" y2="200.0" stroke="#0072B2" stroke-width="2.5" marker-end="url(#ah)"/>
 <text x="366.0" y="186.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0072B2" text-anchor="middle">ready</text>
 <text x="418.0" y="226.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0072B2" text-anchor="middle">wait 10 weeks</text>
 <circle cx="704.0" cy="260.0" r="9" fill="#009E73" stroke="#ffffff" stroke-width="2"/>
-<line x1="704.0" y1="260.0" x2="730.0" y2="260.0" stroke="#009E73" stroke-width="5" marker-end="url(#ah)"/>
+<line x1="704.0" y1="260.0" x2="722.0" y2="260.0" stroke="#009E73" stroke-width="2.5" marker-end="url(#ah)"/>
 <text x="704.0" y="246.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#009E73" text-anchor="middle">ready</text>
 <text x="717.0" y="286.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#009E73" text-anchor="middle">wait 3 weeks</text>
 <circle cx="1094.0" cy="310.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
-<line x1="1094.0" y1="310.0" x2="1120.0" y2="310.0" stroke="#D55E00" stroke-width="5" marker-end="url(#ah)"/>
+<line x1="1094.0" y1="310.0" x2="1112.0" y2="310.0" stroke="#D55E00" stroke-width="2.5" marker-end="url(#ah)"/>
 <text x="1094.0" y="296.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#D55E00" text-anchor="middle">ready</text>
 <text x="1107.0" y="336.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#D55E00" text-anchor="middle">wait 3 weeks</text>
 <text x="80.0" y="450.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0f172a" text-anchor="start">Funding cycle for a venture-backed firm: 3 to 5 years between rounds, so the same logic gives 1.5 to 2.5 years on average (Proposition 1).</text>

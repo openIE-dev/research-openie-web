@@ -22,25 +22,23 @@
 <circle cx="272.2" cy="430.9" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
 <text x="272.2" y="416.9" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Google TPU v2</text>
 <circle cx="368.7" cy="355.5" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
-<text x="368.7" y="341.5" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Tesla V100 SXM2 32 GB</text>
+<text x="368.7" y="383.5" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Tesla V100 SXM2 32 GB</text>
 <circle cx="383.9" cy="332.2" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
 <text x="383.9" y="318.2" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Google TPU v3</text>
 <circle cx="556.7" cy="304.9" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
 <text x="556.7" y="290.9" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Google TPU v4i</text>
 <circle cx="649.9" cy="305.8" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
-<text x="649.9" y="291.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">A100 SXM4 80 GB</text>
+<text x="649.9" y="333.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">A100 SXM4 80 GB</text>
 <circle cx="704.4" cy="247.8" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
 <text x="704.4" y="233.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Google TPU v4</text>
 <circle cx="846.7" cy="258.8" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
 <text x="846.7" y="244.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">H100 SXM5 80GB</text>
 <circle cx="947.1" cy="258.8" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
-<text x="947.1" y="244.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Google TPU v5e</text>
+<text x="947.1" y="286.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Google TPU v5e</text>
 <circle cx="1006.1" cy="213.4" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
-<text x="1006.1" y="199.4" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">B100</text>
 <circle cx="1006.1" cy="221.8" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
-<text x="1006.1" y="207.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">B200</text>
 <circle cx="1028.1" cy="228.0" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
-<text x="1028.1" y="214.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">GB200 NVL2</text>
 <path d="M130.0 442.1 L1090.0 192.4" stroke="#D55E00" stroke-width="3" fill="none" fill-opacity="1" stroke-dasharray="8 6" stroke-linejoin="round"/>
+<text x="1004.7" y="152.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="end">B100, B200, GB200 NVL2</text>
 <text x="150.0" y="170.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#D55E00" text-anchor="start">Fit: about 1.42x per year (n = 12)</text>
 <text x="40.0" y="610.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Peak specifications are not delivered energy per task. Utilization, memory traffic and software decide the delivered figure.</text></svg>

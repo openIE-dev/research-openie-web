@@ -53,7 +53,7 @@ def flow():
 # ---------- 2 capex vs OCF small multiples
 def capex():
     R = rd('capex_ocf.csv'); tick = ['MSFT', 'AMZN', 'GOOGL', 'META', 'ORCL', 'CRWV']
-    names = {'MSFT': 'Microsoft (FY ends June)', 'AMZN': 'Amazon', 'GOOGL': 'Alphabet', 'META': 'Meta', 'ORCL': 'Oracle (FY ends May)', 'CRWV': 'CoreWeave'}
+    names = {'MSFT': 'Microsoft (June FY)', 'AMZN': 'Amazon', 'GOOGL': 'Alphabet', 'META': 'Meta', 'ORCL': 'Oracle (May FY)', 'CRWV': 'CoreWeave'}
     s = S(1200, 760, 'Cash capital spending against cash from operations, 2019 to 2026',
           'Annual, USD billions, from SEC XBRL filings. Ratio above 1 means spending exceeded operating cash flow that year.', 'DATA')
     for i, t in enumerate(tick):
@@ -80,9 +80,9 @@ def closedloop():
     M = js('model_outputs.json')
     s = S(1200, 600, 'Closed-loop test: upper bounds from documented figures',
           'Share of a node\'s funding or revenue that could have been supplied by its own counterparties. Bounds, not observations.', 'MODEL')
-    bars = [('OpenAI March 2026 round: NVIDIA only', M['openai_round']['nvidia_only'], BLUE, 'NVIDIA 30 of 122 bn'),
-            ('OpenAI round: NVIDIA plus Amazon at its stated maximum', M['openai_round']['nvidia_plus_amazon_max'], ORANGE, '(30 + 50) of 122 bn; Microsoft share undisclosed'),
-            ('NVIDIA FY2026: customer-directed capital over revenue', M['nvidia_bound']['share'], GREEN, '(30 + 10 + 2) of 215.9 bn, if all spent on its systems within a year')]
+    bars = [('OpenAI round: NVIDIA only', M['openai_round']['nvidia_only'], BLUE, 'NVIDIA 30 of 122 bn'),
+            ('OpenAI round: NVIDIA + Amazon max', M['openai_round']['nvidia_plus_amazon_max'], ORANGE, '(30 + 50) of 122 bn; Microsoft share undisclosed'),
+            ('NVIDIA FY2026: directed capital / revenue', 42 / 215.938, GREEN, '(30 + 10 + 2) of 215.9 bn, if all spent on its systems within a year')]
     x0, w = 420, 680
     for i, (lab, v, c, note) in enumerate(bars):
         y = 160 + i * 130
@@ -116,24 +116,27 @@ def commit():
     for i, (lab, v, c, kind) in enumerate(items):
         y = 140 + i * 54; s.t(x0 - 14, y + 24, lab, 16, 600, INK, 'end'); ww = w * (math.log10(v) - lo) / (hi - lo)
         s.r(x0, y, ww, 34, c); s.t(x0 + ww + 10, y + 25, f'{v:,.1f}'.rstrip('0').rstrip('.'), 18, 800)
-    s.t(40, 576, 'Oracle expects about 13% of its obligations to be recognized within twelve months (quarterly report, Aug 2026). The OpenAI figure for Azure is a contracted purchase, not revenue to Microsoft in one year.', 13, 400, MUTED)
+    s.t(40, 566, 'Oracle expects about 13% of its obligations to be recognized within twelve months (quarterly report, Aug 2026).', 13, 400, MUTED)
+    s.t(40, 586, 'The OpenAI figure for Azure is a contracted purchase, not revenue to Microsoft in one year.', 13, 400, MUTED)
     save(s, 'commitments-vs-revenue', 'Log-scale bars. OpenAI 2025 revenue 13.1 billion dollars against contracted purchases of 250 billion dollars from Microsoft Azure and 38 billion dollars from AWS. CoreWeave revenue 5.1 billion against 60.7 billion obligations. Oracle revenue 67.4 billion against 664 billion obligations.')
 
 # ---------- 6 depreciation lives
 def deprec():
     s = S(1200, 520, 'Stated useful lives for servers and network equipment', 'Years, from annual reports. Longer lives spread cost over more years and raise reported earnings in the near term.', 'DATA')
-    x0, w = 330, 760
-    for k in range(3, 8): xx = x0 + w * (k - 3) / 4; s.l(xx, 130, xx, 420, GRID, 1); s.t(xx, 440, str(k), 14, 400, MUTED, 'middle')
-    def X(v): return x0 + w * (v - 3) / 4
+    x0, w = 250, 560
+    for k in range(1, 8): xx = x0 + w * (k - 1) / 6; s.l(xx, 130, xx, 420, GRID, 1); s.t(xx, 440, str(k), 14, 400, MUTED, 'middle')
+    def X(v): return x0 + w * (v - 1) / 6
     rows = [('CoreWeave', 5, 6, 'Jan 2023: 5 to 6', SKY), ('Amazon (subset)', 6, 5, 'Jan 2025: 6 to 5', GREEN), ('Meta', None, 5.5, 'Jan 2025: set to 5.5', PINK),
             ('Alphabet', None, 6, 'servers and network: 6', ORANGE), ('Microsoft', None, None, 'range 2 to 6', BLUE), ('Oracle', None, None, 'computer and network: 1 to 6', '#8c6d1f')]
+    RANGE = {'Microsoft': (2, 6), 'Oracle': (1, 6)}
     for i, (n, a, b, note, c) in enumerate(rows):
         y = 160 + i * 44; s.t(x0 - 14, y + 6, n, 17, 700, INK, 'end')
-        if a and b: s.l(X(a), y, X(b), y, c, 4, None, True); s.c(X(a), y, 8, 'white', c, 3)
+        if a and b: s.l(X(a) + (9 if b > a else -9), y, X(b) + (-12 if b > a else 12), y, c, 2.5, None, True); s.c(X(a), y, 8, 'white', c, 3)
         elif b: s.c(X(b), y, 9, c)
-        else: s.l(X(2.5 if False else 3), y, X(6), y, c, 8, None); 
-        s.t(X(7) + 20, y + 6, note, 14, 400, MUTED, 'start')
-    s.t(40, 490, 'Hollow circle = prior estimate; arrow points to the new one. Microsoft and Oracle bars show the stated range (clipped at 3). CoreWeave lenders size loans on the depreciable cost of GPU servers.', 14, 400, MUTED)
+        else: s.l(X(RANGE[n][0]), y, X(RANGE[n][1]), y, c, 8, None)
+        s.t(x0 + w + 30, y + 6, note, 14, 400, MUTED, 'start')
+    s.t(40, 480, 'Hollow circle = prior estimate; arrow points to the new one. Microsoft and Oracle bars show the stated range.', 14, 400, MUTED)
+    s.t(40, 502, 'Meta and Alphabet are single stated values. Lives are accounting estimates, not measured service lives.', 14, 400, MUTED)
     save(s, 'depreciation-lives', 'Dot and arrow chart of stated server lives in years. CoreWeave lengthened from 5 to 6 in 2023, Amazon shortened a subset from 6 to 5 in 2025, Meta set 5.5 in 2025, Alphabet uses 6, Microsoft states 2 to 6 and Oracle 1 to 6.')
 
 # ---------- 7 Hyperion stack
@@ -157,9 +160,12 @@ def hweff():
     for e in (11, 12): s.l(x0, Y(10**e), x0 + w, Y(10**e), GRID, 1); s.t(x0 - 10, Y(10**e) + 5, f'1e{e}', 14, 400, MUTED, 'end')
     for t in range(2016, 2026): s.t(X(t), y0 + h + 24, str(t), 14, 400, MUTED, 'middle')
     for r in H:
-        t = yr(r['release_date']); v = float(r['flops_per_watt']); s.c(X(t), Y(v), 8, BLUE); s.t(X(t), Y(v) - 14, r['hardware'].replace('NVIDIA ', '').replace(' (per GPU)', ''), 12, 500, INK, 'middle')
+        t = yr(r['release_date']); v = float(r['flops_per_watt']); s.c(X(t), Y(v), 8, BLUE); nm = r['hardware'].replace('NVIDIA ', '').replace(' (per GPU)', '')
+        if nm in ('B100', 'B200', 'GB200 NVL2'): continue
+        s.t(X(t), Y(v) + (28 if nm in ('A100 SXM4 80 GB', 'Tesla V100 SXM2 32 GB', 'Google TPU v5e') else -14), nm, 12, 500, INK, 'middle')
     a, b = F['intercept_log10_at_2016'], F['slope_log10_per_year']
     s.p(f'M{X(2016):.1f} {Y(10**a):.1f} L{X(2025):.1f} {Y(10**(a+b*9)):.1f}', VERM, 3, 'none', '8 6')
+    s.t(X(2024.2), y0 + 12, 'B100, B200, GB200 NVL2', 12, 500, INK, 'end')
     s.t(x0 + 20, y0 + 30, f"Fit: about {F['growth_per_year']:.2f}x per year (n = {F['n']})", 18, 800, VERM)
     s.t(40, 610, 'Peak specifications are not delivered energy per task. Utilization, memory traffic and software decide the delivered figure.', 14, 400, MUTED)
     save(s, 'hardware-efficiency', 'Scatter on a log axis of peak tensor operations per watt for twelve NVIDIA accelerators from 2016 to 2024 with a dashed fit of about 1.4 times per year.')
@@ -167,8 +173,8 @@ def hweff():
 # ---------- 9 accelerator-hour cost
 def hourcost():
     M = js('model_outputs.json')['accel_hour']
-    s = S(1200, 700, 'What one accelerator-hour costs, and how little of it is energy', 'Model output. Capital 33,311 USD per H100-equivalent and 880 W facility power per H100-equivalent (Epoch AI medians); electricity 0.08 USD/kWh.', 'MODEL')
-    x0, w = 240, 800; mx = 3.4
+    s = S(1200, 700, 'What one accelerator-hour costs, and how little of it is energy', 'Model output. Epoch AI medians: 33,311 USD and 880 W per H100-equivalent; electricity 0.08 USD/kWh.', 'MODEL')
+    x0, w = 240, 800; mx = 2.4
     s.t(x0, 138, 'USD per utilized accelerator-hour', 16, 700, INK)
     for k in (0, 1, 2, 3): xx = x0 + w * k / mx; s.l(xx, 150, xx, 600, GRID, 1); s.t(xx, 620, str(k), 14, 400, MUTED, 'middle')
     rows = [(l, u) for l in (5, 6) for u in (0.4, 0.6, 0.8)]
@@ -208,11 +214,11 @@ def openlag():
         s.c(X(ta), y, 9, VERM)
         if r['first_open_date']:
             to = yr(r['first_open_date']); s.l(X(ta), y, X(to), y, '#94a3b8', 3); s.c(X(to), y, 9, BLUE, 'white', 2)
-            s.t((X(ta) + X(to)) / 2, y - 12, f'{round((to-ta)*12)} months', 15, 800, INK, 'middle')
-        else: s.t(X(ta) + 16, y + 6, 'no open-weight model at this level in the data', 14, 400, MUTED)
-    s.c(260, 535, 8, VERM); s.t(276, 540, 'first notable model, any access', 14); s.c(560, 535, 8, BLUE); s.t(576, 540, 'first open-weight model', 14)
-    s.t(1160, 540, 'Scale of training, not capability. Open models reach many benchmarks with less compute.', 13, 400, MUTED, 'end')
-    save(s, 'open-compute-lag', 'Dumbbell chart for training-compute thresholds from 1e22 to 1e26 FLOP: the first notable model at any access type and the first open-weight model, with the gap in months shrinking from about 31 months at 1e23 to 15 months at 1e25 and no open-weight model yet at 1e26 in the data.')
+            s.t((X(ta) + X(to)) / 2, y - 12, (lambda m: f'{m} month' + ('' if m == 1 else 's'))(round((to-ta)*12)), 15, 800, INK, 'middle')
+        else: s.t(X(ta) + 16, y + 6, 'no open-weight model yet', 14, 400, MUTED)
+    s.c(60, 535, 8, VERM); s.t(76, 540, 'first notable model, any access', 14); s.c(340, 535, 8, BLUE); s.t(356, 540, 'first open-weight model', 14)
+    s.t(40, 566, 'Scale of training, not capability. Open models reach many benchmarks with less compute.', 13, 400, MUTED)
+    save(s, 'open-compute-lag', 'Dumbbell chart for training-compute thresholds from 1e22 to 1e26 FLOP: the first notable model at any access type and the first open-weight model, with the gap in months shrinking from about 30 months at 1e23 to 15 months at 1e25 and no open-weight model yet at 1e26 in the data.')
 
 # ---------- 12 research to product lag
 def prodlag():
@@ -225,11 +231,11 @@ def prodlag():
         y = 170 + i * 80; ta, tb = yr(a), yr(b); s.t(x0 - 14, y + 6, lab, 16, 600, INK, 'end'); s.l(X(ta), y, X(tb), y, '#94a3b8', 4)
         s.c(X(ta), y, 9, BLUE); s.c(X(tb), y, 9, VERM); s.t((X(ta) + X(tb)) / 2, y - 14, f'{round((tb-ta)*12)} months', 17, 800, INK, 'middle')
     s.c(500, 438, 8, BLUE); s.t(516, 443, 'public paper', 14); s.c(660, 438, 8, VERM); s.t(676, 443, 'shipped', 14)
-    save(s, 'research-to-product-lag', 'Three dumbbells showing months between a method paper and a shipped system: FlashAttention to PyTorch 2.0 about 10 months, Mamba to Jamba about 3 months, speculative decoding to Google products about 25 months.')
+    save(s, 'research-to-product-lag', 'Three dumbbells showing months between a method paper and a shipped system: FlashAttention to PyTorch 2.0 about 10 months, Mamba to Jamba about 3 months, speculative decoding to Google products about 24 months.')
 
 # ---------- 13 alternative hardware ratios
 def althw():
-    s = S(1200, 640, 'Alternative designs against a baseline in the same paper', 'Ratio = baseline cost divided by alternative cost, as each paper reports it. Different tasks, so bars are not comparable across rows.', 'DATA')
+    s = S(1200, 660, 'Alternative designs against a baseline in the same paper', 'Ratio = baseline cost divided by alternative cost, as each paper reports it. Different tasks, so bars are not comparable across rows.', 'DATA')
     items = [('BitNet b1.58 2B on CPU, energy per token (estimated by an arithmetic model)', 6.6, 23.2, 'est'), ('BitNet b1.58 2B, memory (non-embedding vs full-model peers)', 3.5, 12.0, 'meas'),
              ('FlightLLM on FPGA vs V100S and A100, energy efficiency', 4.2, 6.0, 'meas'), ('FlightLLM on FPGA vs V100S and A100, cost efficiency', 1.4, 1.8, 'meas'),
              ('MatMul-free LLM on Loihi 2 vs edge GPU, energy (preliminary)', 2.0, 2.0, 'prelim')]
@@ -242,8 +248,9 @@ def althw():
         if hi > lo: s.r(x0 + w * lo / mx, y + 8, w * (hi - lo) / mx, 16, col[k], 'none', 0, 2, .45)
         s.t(x0 + w * hi / mx + 10, y + 24, (f'{lo:g} to {hi:g}x' if hi > lo else f'{lo:g}x'), 16, 800)
     s.r(60, 540, 18, 18, BLUE); s.t(86, 555, 'measured in the paper', 14); s.r(300, 540, 18, 18, ORANGE); s.t(326, 555, 'estimated, not metered', 14); s.r(560, 540, 18, 18, PINK); s.t(586, 555, 'preliminary', 14)
-    s.t(40, 590, 'IBM analog in-memory chip: 12.4 TOPS/W chip-sustained on small networks, no matched baseline given. Photonic processor (Nature, 2025): near-electronic precision on ResNet and BERT, no joules in the text read.', 13, 400, MUTED)
-    s.t(40, 612, 'Huawei CloudMatrix-Infer on Ascend NPUs: 4.45 tokens/s per TFLOPS in prefill, above published H100 and H800 results; power was not reported, so no joule ratio is drawn.', 13, 400, MUTED)
+    s.t(40, 584, 'IBM analog in-memory chip: 12.4 TOPS/W chip-sustained on small networks, no matched baseline given.', 13, 400, MUTED)
+    s.t(40, 604, 'Photonic processor (Nature, 2025): near-electronic precision on ResNet and BERT, no joules in the text read.', 13, 400, MUTED)
+    s.t(40, 624, 'Huawei CloudMatrix-Infer on Ascend NPUs: 4.45 tokens/s per TFLOPS in prefill; power not reported, so no joule ratio is drawn.', 13, 400, MUTED)
     save(s, 'alternative-hardware-ratios', 'Horizontal bars of ratios against a baseline: BitNet on CPU energy 6.6 to 22.7 times lower by estimate, memory 5 to 12 times lower, FlightLLM FPGA 4.2 to 6.0 times energy efficiency and 1.4 to 1.8 times cost efficiency versus two GPUs, Loihi 2 about 2 times less energy preliminary.')
 
 # ---------- maps
@@ -296,7 +303,7 @@ def mapdc():
     save(s, 'map-frontier-datacenters', 'World map with red circles sized by frontier AI data-center power: United States about 11.9 gigawatts, Malaysia 1.1, China 0.7, and small sites in the United Kingdom, Finland, Indonesia, Norway, Australia, Portugal and Iceland.')
 def mapmodels():
     data = {'United States of America': 59, 'China': 35, 'South Korea': 8, 'Canada': 1, 'France': 1, 'United Kingdom': 1, 'Singapore': 1}
-    s = S(1200, 760, 'Where notable AI models came from in 2025', 'Stanford AI Index 2026, number of notable models by national affiliation of the developer. Hong Kong and Singapore (1 each) are too small to draw at this scale.', 'DATA')
+    s = S(1200, 760, 'Where notable AI models came from in 2025', 'Stanford AI Index 2026: notable models by developer nation. Hong Kong and Singapore are too small to draw.', 'DATA')
     def shade(v): return '#0072B2' if v >= 30 else ('#56B4E9' if v >= 5 else '#b7dcf3')
     fills = {k: shade(v) for k, v in data.items()}
     draw_world(s, 40, 130, 1120, fills)
@@ -374,7 +381,7 @@ def cadence():
         x = x0 + w * q / 8; s.l(x, 150, x, 380, '#94a3b8', 2); s.t(x, 404, f'Q{(q % 4) + 1}', 14, 700, MUTED, 'middle')
     for rho, c in ((0.55, BLUE), (1.2, GREEN), (1.95, VERM)):
         x = x0 + w * rho / 2; nxt = math.ceil(rho / 0.25) * 0.25; xn = x0 + w * nxt / 2; y = 200 + (rho > 1) * 60 + (rho > 1.5) * 50
-        s.c(x, y, 9, c); s.l(x, y, xn, y, c, 5, None, True); s.t(x, y - 14, 'ready', 14, 700, c, 'middle'); s.t((x + xn) / 2, y + 26, f'wait {int(round((nxt-rho)*52))} weeks', 14, 700, c, 'middle')
+        s.c(x, y, 9, c); s.l(x, y, xn - 8, y, c, 2.5, None, True); s.t(x, y - 14, 'ready', 14, 700, c, 'middle'); s.t((x + xn) / 2, y + 26, f'wait {int(round((nxt-rho)*52))} weeks', 14, 700, c, 'middle')
     s.t(80, 450, 'Funding cycle for a venture-backed firm: 3 to 5 years between rounds, so the same logic gives 1.5 to 2.5 years on average (Proposition 1).', 16, 600)
     s.t(80, 478, 'The quarter is a property of the reporting calendar, not of the engineering. Readiness phase is modeled, not observed.', 14, 400, MUTED)
     save(s, 'cadence-vs-quarter', 'Timeline of quarterly decision dates with three example readiness times and the weeks each waits until the next date; text states the average wait is half the period.')
@@ -383,16 +390,16 @@ def cadence():
 def forcing():
     A, c0, s_, r = 10, 4, 2, 0.1; T = 0.25; phi, w_ = 1.0, 0.1
     g = lambda c: (c0 - c) * (A - c - s_)
-    s = S(1200, 640, 'The forcing function: how a lower adoption cost removes the gate', 'Model illustration with the Section 7 parameters (A=10, c0=4, s=2, r=0.1, T=0.25). Gain g(c) against the two thresholds.', 'MODEL')
-    x0, y0, W, H = 130, 150, 940, 400; cmin, cmax = 0.5, 4.0; gmax = 14
+    s = S(1200, 650, 'Forcing function: lower cost removes the gate', 'Model illustration with the Section 7 parameters (A=10, c0=4, s=2, r=0.1, T=0.25). Gain g(c) against the two thresholds.', 'MODEL')
+    x0, y0, W, H = 130, 150, 940, 400; cmin, cmax = 0.5, 4.0; gmax = 26
     X = lambda c: x0 + W * (cmax - c) / (cmax - cmin); Y = lambda v: y0 + H - H * v / gmax
     s.l(x0, y0 + H, x0 + W, y0 + H, '#94a3b8', 2); s.l(x0, y0, x0, y0 + H, '#94a3b8', 2)
     pts = [(c, g(c)) for c in [cmin + i * (cmax - cmin) / 100 for i in range(101)]]
     s.p('M' + ' L'.join(f'{X(c):.1f} {Y(v):.1f}' for c, v in pts), BLUE, 4)
     for K, col, lab in ((2.0, VERM, 'before: K = 2'), (0.1, GREEN, 'after: K = 0.1')):
         G = max(r * K, (phi * K - w_) / T); s.l(x0, Y(G), x0 + W, Y(G), col, 3, '8 6'); s.t(x0 + W - 6, Y(G) - 8, f'{lab}: gate level {G:.2f}', 16, 800, col, 'end')
-    s.t(x0 + W / 2, y0 + H + 40, 'Outside cost c falls from 4 toward 0.5 (left to right)', 16, 600, INK, 'middle'); s.t(x0 + 6, y0 + 20, 'gain per period g(c)', 15, 600, INK)
-    s.t(40, 600, 'Release happens where the curve crosses the dashed level. A tool that cuts K lowers the level to r K and the crossing moves earlier (4.85 months to 0).', 14, 500)
+    s.t(x0 + W / 2, y0 + H + 34, 'Outside cost c falls from 4 toward 0.5 (left to right)', 16, 600, INK, 'middle'); s.t(x0 + 6, y0 + 20, 'gain per period g(c)', 15, 600, INK)
+    s.t(40, 612, 'Release happens where the curve crosses the dashed level. A tool that cuts K lowers the level to r K and the crossing moves earlier (4.85 months to 0).', 14, 500)
     save(s, 'forcing-function-threshold', 'A decreasing curve of gain against outside cost with two dashed horizontal levels: a high gate level before a tool and a low level after it. The curve crosses the low level earlier as cost falls.')
 
 # ---------- 21 small multiples: capital vs energy intensity
