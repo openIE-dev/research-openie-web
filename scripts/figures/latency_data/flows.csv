@@ -1,0 +1,17 @@
+id,from,to,kind,amount_usd_bn,date,status,source_key,note
+f1,NVIDIA,OpenAI,equity,30,2026-03-31,documented,cnbc_openai_round,Closed round of 122 bn; earlier letter of intent said up to 100 bn as each GW deploys (NVIDIA release 2025-09-22)
+f2,Amazon,OpenAI,equity up to,50,2026-03-31,documented,cnbc_openai_round,Up to 50 bn; amount contingent on terms not read in full text
+f3,SoftBank,OpenAI,equity,30,2026-03-31,documented,cnbc_openai_round,
+f4,Microsoft,OpenAI,equity,13,2025-10-28,documented,msft10q_openai,Total funding commitments accounted under the equity method; about 27 percent stake
+f5,NVIDIA,Anthropic,equity up to,10,2025-11-18,documented,ms_anthropic,Commitment to invest up to
+f6,Microsoft,Anthropic,equity up to,5,2025-11-18,documented,ms_anthropic,Commitment to invest up to
+f7,NVIDIA,CoreWeave,equity,2,2026-01-01,documented,crwv10k,Class A purchase at 87.20 per share (subsequent event note)
+f8,OpenAI,Microsoft,compute commitment,250,2025-10-28,documented,msft_openai_blog,Incremental Azure services OpenAI contracted to purchase
+f9,OpenAI,Amazon,compute commitment,38,2025-11-03,documented,openai_aws,AWS agreement described as growing over seven years
+f10,OpenAI,CoreWeave,compute commitment up to,6.5,2025-09-01,documented,crwv10k,Order form through 2031-05-31
+f11,Meta,CoreWeave,compute commitment up to,14.2,2025-09-01,documented,crwv10k,Order form through 2031-12
+f12,Anthropic,Microsoft,compute commitment,30,2025-11-18,documented,ms_anthropic,Azure compute capacity
+f13,NVIDIA,Clouds,compute purchase commitment,27,2026-01-25,documented,nvda10k,Multi-year cloud service agreement commitments in the annual report
+f15,AMD,OpenAI,warrant up to 160M shares,,2025-10-05,documented,amd_8k,Strike 0.01 per share; vests with purchases of Instinct GPUs
+f16,NVIDIA,Early-stage partners,lease guarantees,3.5,2026-01-25,documented,nvda10k,Land power and shell guarantees
+f14,Blue Owl funds,Meta Hyperion JV,equity (cash at closing),7.0,2025-10-21,documented,meta10q,80 percent interest in the venture; Meta contributed 4.3 bn of assets and received a 2.6 bn distribution

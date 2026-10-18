@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="t d"><title id="t">When did open-weight models reach each training-compute level?</title><desc id="d">Dumbbell chart for training-compute thresholds from 1e22 to 1e26 FLOP: the first notable model at any access type and the first open-weight model, with the gap in months shrinking from about 30 months at 1e23 to 15 months at 1e25 and no open-weight model yet at 1e26 in the data.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="558" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">When did open-weight models reach each training-compute level?</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Epoch AI notable-models data. First notable model at or above the level, any access type against open weights.</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<line x1="220.0" y1="140.0" x2="220.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="220.0" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2019</text>
+<line x1="348.6" y1="140.0" x2="348.6" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="348.6" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2020</text>
+<line x1="477.1" y1="140.0" x2="477.1" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="477.1" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2021</text>
+<line x1="605.7" y1="140.0" x2="605.7" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="605.7" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2022</text>
+<line x1="734.3" y1="140.0" x2="734.3" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="734.3" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2023</text>
+<line x1="862.9" y1="140.0" x2="862.9" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="862.9" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2024</text>
+<line x1="991.4" y1="140.0" x2="991.4" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="991.4" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2025</text>
+<line x1="1120.0" y1="140.0" x2="1120.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1120.0" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2026</text>
+<text x="206.0" y="176.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="end">1e22 FLOP</text>
+<circle cx="311.4" cy="170.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<line x1="311.4" y1="170.0" x2="324.2" y2="170.0" stroke="#94a3b8" stroke-width="3"/>
+<circle cx="324.2" cy="170.0" r="9" fill="#0072B2" stroke="white" stroke-width="2"/>
+<text x="317.8" y="158.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a" text-anchor="middle">1 month</text>
+<text x="206.0" y="246.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="end">1e23 FLOP</text>
+<circle cx="326.6" cy="240.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<line x1="326.6" y1="240.0" x2="648.9" y2="240.0" stroke="#94a3b8" stroke-width="3"/>
+<circle cx="648.9" cy="240.0" r="9" fill="#0072B2" stroke="white" stroke-width="2"/>
+<text x="487.8" y="228.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a" text-anchor="middle">30 months</text>
+<text x="206.0" y="316.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="end">1e24 FLOP</text>
+<circle cx="563.6" cy="310.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<line x1="563.6" y1="310.0" x2="821.8" y2="310.0" stroke="#94a3b8" stroke-width="3"/>
+<circle cx="821.8" cy="310.0" r="9" fill="#0072B2" stroke="white" stroke-width="2"/>
+<text x="692.7" y="298.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a" text-anchor="middle">24 months</text>
+<text x="206.0" y="386.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="end">1e25 FLOP</text>
+<circle cx="760.6" cy="380.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<line x1="760.6" y1="380.0" x2="921.0" y2="380.0" stroke="#94a3b8" stroke-width="3"/>
+<circle cx="921.0" cy="380.0" r="9" fill="#0072B2" stroke="white" stroke-width="2"/>
+<text x="840.8" y="368.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a" text-anchor="middle">15 months</text>
+<text x="206.0" y="456.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="end">1e26 FLOP</text>
+<circle cx="1007.8" cy="450.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="1023.8" y="456.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">no open-weight model yet</text>
+<circle cx="60.0" cy="535.0" r="8" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="76.0" y="540.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">first notable model, any access</text>
+<circle cx="340.0" cy="535.0" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<text x="356.0" y="540.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">first open-weight model</text>
+<text x="40.0" y="566.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Scale of training, not capability. Open models reach many benchmarks with less compute.</text></svg>

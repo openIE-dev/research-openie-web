@@ -280,14 +280,19 @@
       "url": "https://research.openie.dev/papers/latency/",
       "pdf": "https://research.openie.dev/pdfs/latency.pdf",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "A dated survey of methods that lower the cost of computer intelligence, evidence on the gap between publication and deployment, a cadence model in which reporting and funding calendars quantize release decisions, and a forcing-function result for tools that lower the cost of automation. Plain words: cheaper methods are published long before most products use them; part of the wait is engineering, part is calendars; once the work is cheap, what is left to charge for is the cost of switching away.",
+      "summary": "A dated survey of methods that lower the cost of computer intelligence, evidence on the gap between publication and deployment, and a cadence model in which reporting and funding calendars quantize release decisions, with a forcing-function result for tools that lower the cost of automation. It adds what public filings document about capital flows among labs, clouds and chip makers with a closed-loop test, a cost model in dollars and joules per task, open methods and alternative hardware measured against the incumbent stack, and maps of compute, power and models. Plain words: cheaper methods are published long before most products use them; most of what a task costs is the machine and not the electricity; part of the wait is engineering and part is calendars; once the work is cheap, what is left to charge for is the cost of switching away.",
       "about": "https://research.openie.dev/about/latency/",
       "keywords": [
         "technology diffusion",
         "adoption lag",
         "cadence model",
         "forcing function",
-        "energy per task"
+        "energy per task",
+        "infrastructure cost",
+        "circular financing",
+        "open models",
+        "alternative hardware",
+        "geography of compute"
       ]
     }
   ]
