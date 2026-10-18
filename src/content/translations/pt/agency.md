@@ -788,6 +788,81 @@ A física da agência de Rovelli surgiu em alemão [115]. Jaeger e Azadi complet
 
 As buscas em híndi e árabe não retornaram pesquisa primária nesses idiomas. As buscas complementares em inglês trouxeram outros trabalhos, listados acima por método. As buscas em persa, turco e hebraico retornaram teses, revisões e trabalhos já citados, sem nova pesquisa primária.
 
+<div id="68-convergence-observations-information-energy-and-prediction" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.8 Observações de convergência: informação, energia e previsão
+
+Nove fontes recentes relacionam informação, energia e previsão. Quatro foram lidas na íntegra e são citadas pelo que enunciam: Takahashi e Hayashi [239], Perrier [344], Xu e Li [345] e Still, Sivak, Bell e Crooks [54]. Cinco foram lidas em parte e são citadas apenas pelas passagens indicadas: Wolpert [230], Ortega e Braun [56], Zhang, Zhu, Zhang e Hu [348], Fagan [346] e Kumar [347]. Esta seção registra o que cada uma enuncia e o que não mostra. É uma observação de perguntas que se sobrepõem, não uma comparação de resultados nem uma afirmação de prioridade. Os números de seção e de equação são os das versões indicadas. As citações foram conferidas por script com os textos salvos. Os valores marcados como "recalculado" são aritmética própria deste artigo.
+
+**Em palavras simples**
+
+1. Vários autores escrevem o mesmo tipo de quantidade: a informação obtida ou usada para agir, dividida pela energia gasta (bits por joule), ou seu inverso (watts por unidade de inteligência).
+2. Os resultados firmes são limites inferiores do calor. Eles dizem quão pouca energia é fisicamente necessária, não quanta energia uma máquina real usa.
+3. Nenhuma fonte lida aqui mediu energia em hardware real. Onde aparecem valores de energia, eles são estimados a partir de contagens de FLOP ou de suposições de modelo.
+
+**Unidades.** $k_B = 1.380649\times10^{-23}$ J/K. A $T = 300$ K, $k_B T\ln 2 = 2.871\times10^{-21}$ J por bit (recalculado), e seu inverso é $3.483\times10^{20}$ bit/J (recalculado). Com $\beta = 1/(k_B T)$, a informação em nats se converte em joules multiplicando por $k_B T$, e a informação em bits, multiplicando por $k_B T\ln 2$.
+
+<div id="sources-read-in-full" class="anchor-alias" aria-hidden="true"></div>
+
+#### Fontes lidas na íntegra
+
+**Takahashi e Hayashi, arXiv:2602.05463v2 (20 de julho de 2026) [239].** A versão lida é a publicação no arXiv.
+
+- A epiplexidade por joule é $\eta_E = \Delta I / E_{\mathrm{cons}}$ em bit/J, com $\Delta I = I(W_{\mathrm{post}}; Z \mid W_{\mathrm{pre}})$ (Eqs. 3 e 10, Seç. 2.2). O balanço de energia é $E_{\mathrm{cons}} = Q_{\mathrm{diss}} + \Delta U_{\mathrm{sys}} + W_{\mathrm{out}} + \Delta E_{\mathrm{store}}$ (Eq. 1).
+- O empoderamento por joule é $\eta_C^* = \sup_{p(a)} I(A_{0:\tau-1}; O_\tau) / \mathbb{E}[c(A)]$ em bit/J (Eq. 18, Seç. 3.2), com uma curva restrita pelo custo (Eq. 19). O empoderamento é uma capacidade de canal das ações para as observações posteriores (Eq. 17, Seç. 3.1).
+- O limite de ciclo fechado é $Q_{\mathrm{diss}} \ge k_B T\ln 2\,\Delta I - T\,\Delta S_{\mathrm{sys}}$ (Eq. 15), de modo que $\Delta I / Q_{\mathrm{diss}} \le 1/(k_B T\ln 2)$ quando $\Delta S_{\mathrm{sys}} = 0$ (Eq. 16, Corolário 1). A Eq. 15 decorre da Eq. 14 por rearranjo (verificado). O Corolário 1 precisa das suposições de Markov bipartido e de balanço detalhado local.
+- Os autores dão uma métrica em bits por joule para o aprendizado, outra para o controle, e uma lista de verificação para relatórios: fronteira, energia de linha de base, horizonte, estimador (Seç. 5.1). Sua Proposição 1 é uma construção de desacoplamento que mostra que o limite falha se a fronteira contábil exclui o custo de preparar memória nova.
+- Escopo, como enunciado: "the resulting numbers are benchmark-relative rather than universal". Sobre o teto: "Landauer-scale limits are conceptual yardsticks far beyond current hardware."
+- O exemplo resolvido da Seç. 5 usa perplexidades publicadas, $10^9$ tokens e energia estimada a partir de $6PD$ FLOPs a um valor suposto de $2.5\times10^{11}$ FLOP/J. Recalculado: $\Delta G \approx 4.51\times10^{8}$ bit, $E$ (modelo de 410M) $\approx 2.95\times10^{9}$ J, eficiência marginal $\approx 0.106$ bit/J. Os autores escrevem: "This number is convention-dependent, but it exercises the checklist."
+- Não verificado aqui: o Lema 1 reenuncia uma desigualdade de um trabalho não lido. A Eq. 17 usa $O_\tau$, enquanto o texto da Seç. 3.2 se refere a $I(A;S_\tau)$. A Eq. 20 é sinalizada pelos próprios autores: "This is not claimed as a universal identity without assumptions".
+
+**Perrier, arXiv:2504.05328v2 (16 de junho de 2025) [344].** Apenas as definições são citadas.
+
+- Watts por inteligência é $\Phi(\Sigma) = P(\Sigma)/I(\Sigma) = E(\Sigma)/(\tau\, I(\Sigma))$ (Eq. 7, Seç. 3.3), em que $I$ é uma soma de desempenho ponderada por tarefa (Eq. 2) ou a soma de Legg e Hutter (Eq. 1). As suposições são $E = F N c$ com $c = k_B T\ln 2$ e sobrecarga $F \ge 1$ (Eq. 5), e $I \le \alpha N$ com $\alpha$ não especificado (Eq. 6). O Teorema 1 dá $\Phi \ge cF/(\alpha\tau)$ (Eq. 8).
+- O autor enuncia a premissa abertamente: "Our work assumes a correlation between irreversible computation to intelligence." O artigo não contém nenhuma medição; diz apenas que "In practice, one might measure the actual hardware usage".
+- Erros encontrados (minha leitura, não confirmada com o autor): (1) A Seç. 3.1 define $N$ por unidade de tempo, mas as Eqs. 3 e 5 usam $E$ sobre $[0,\tau]$, o que exige $N$ como total, e então $cF/(\alpha\tau)$ cai a zero à medida que $\tau$ cresce. (2) $\alpha$ é livre, de modo que o Teorema 1 não dá nenhum piso numérico. (3) A prova do Teorema 2 produz um limite da forma $\Delta i_K > -\log(1/\delta)$, que é negativo para $\delta < 1$, mas o texto trata $-\log(1/\delta)$ como positivo. (4) Combinar $I \le \alpha\,\Delta i_K$ com $P \ge \Delta i_K\, k_B T\ln 2/\tau$ dá $I/P \le \alpha\tau/(k_B T\ln 2)$, enquanto a Eq. 14 não tem $\alpha$ nem $k_B T\ln 2$ e tem a dependência oposta em $\tau$. (5) $\Delta i_K = K(y) - K(x)$ pode ser negativo, e o sentido da vinculação de Landauer na Eq. 13 não é argumentado; o Teorema 3 herda isso. (6) A ordenação de hardware $\Phi_{\mathrm{CPU}} > \Phi_{\mathrm{GPU}} > \Phi_{\mathrm{neuro}}$ é afirmada sem valores.
+
+**Xu e Li, arXiv:2511.19156v4 (30 de dezembro de 2025) [345].** Lido na íntegra quanto ao texto salvo; as figuras foram lidas apenas pela legenda e pelos valores impressos. Apenas as definições são citadas.
+
+- Profundidade de derivação $D_d$ (Eq. 10) e entropia de derivação $H_{\mathrm{derive}} = D_d\lambda$ com $\lambda = \ln 2$ nats em um regime clássico enunciado (Eq. 14, Suposição 3). Limites afirmados: $E_{\mathrm{compute}} \ge D_d k_B T\ln 2$ (Proposição 4, Eqs. 98 e 99) e $E_{\mathrm{storage}} \ge |S|\,k_B T\ln 2\,(t/t_{\mathrm{refresh}})$ (Proposição 5, Eq. 100). Uma frequência de consulta de equilíbrio entre recalcular e armazenar é dada em unidades de custo abstratas (Teorema 5, Eq. 32).
+- Os autores chamam seu custo de "information-theoretic proxy for energy consumption". A validação numérica (Seç. VI) usa uma base de conhecimento sintética de 100K átomos e os próprios custos abstratos do artigo, de modo que testa o modelo contra si mesmo. Os valores de aplicação (1000 kWh, redução de 45 por cento) vêm sem método de medição e não são usados aqui.
+- O resumo diz "Our findings suggest that the minimization of Derivation Entropy is a governing principle". Em outro ponto, o texto se recusa a afirmar um resultado nítido: "We deliberately refrain from formalizing" a última observação como um teorema de transição de fase.
+- Erros encontrados (minha leitura, não confirmada com os autores): (1) A Suposição 1 tem $E\tau \ge \kappa$ com $\kappa$ uma ação em J s, enquanto o Corolário 1 faz $\kappa_T = k_B T\ln 2$, uma energia, e descarta $\tau$. (2) A Eq. 98 supõe que todo passo de inferência apaga um bit (Suposição 3), e a Observação 15 do mesmo artigo admite que a computação reversível evita esse custo. (3) No Lema 2, o argumento por contradição nega o limite como $K = o(n\log m)$ e afirma que isso contradiz $H \gg \log m$; não contradiz, pois $n\log m \gg \log m$. O limite inferior, portanto, não está provado, e os Teoremas 4 a 6 e o Corolário 7 dependem dele. (4) O caso (b) do Teorema 6 usa $N = \Omega(L_S)$ onde é necessário $N = O(L_S)$. (5) O armazenamento crítico da Eq. 135 com $H(Q) = 10^{12}$ é recalculado como $1.25\times10^{10}$ (log na base 2), $1.80\times10^{10}$ (ln) ou $4.15\times10^{10}$ (log na base 10), e não o valor impresso $2.5\times10^{11}$. O texto da Tabela II (grau de aperto de 0.50 a 0.93) discorda da tabela (de 0.50 a 0.81, e 0.89 em alta frequência).
+
+**Still, Sivak, Bell e Crooks, arXiv:1203.3271v3 (5 de outubro de 2012) [54].** Foi lida a versão do arXiv; a versão do periódico não foi lida.
+
+- Com estado do sistema $s_t$ e sinal de acionamento $x_t$, $I_{\mathrm{mem}}(t) = I[s_t, x_t]$ e $I_{\mathrm{pred}}(t) = I[s_t, x_{t+1}]$, em nats. Por passo, $\beta\langle W_{\mathrm{diss}}[x_t \to x_{t+1}]\rangle = I_{\mathrm{mem}}(t) - I_{\mathrm{pred}}(t)$ (Eq. 14). No total, $I_{\mathrm{mem}} - I_{\mathrm{pred}} \le \beta\langle W_{\mathrm{diss}}\rangle \le \beta\langle W_{\mathrm{ex}}\rangle$ (Eq. 18). O limite de Landauer refinado é $-\beta\langle Q\rangle \ge I_e + I_{\mathrm{mem}} - I_{\mathrm{pred}}$ (Eq. 21).
+- A memória do sinal que não ajuda a prever seu próximo valor custa trabalho dissipado, a $k_B T$ por nat. A consequência enunciada pelos autores: "any system constructed to keep memory about its environment and to operate with maximal energetic efficiency has to be predictive".
+- Este é um limite inferior da dissipação para sistemas que guardam memória de um sinal de acionamento. Ele não mostra que algum sistema real o atinja, e não é um enunciado sobre agentes em geral. Não há experimento nem dados em joules.
+- Verificado: a nota de rodapé 24 está correta; a Eq. 17 decorre das Eqs. 11, 14 e 15; a Eq. 18 decorre da Eq. 16; a Eq. 21 decorre das Eqs. 19 e 20. $k_B T = 25.9$ meV a 300 K (recalculado; o artigo dá 25 meV). Não verificado: a não negatividade do termo por passo para processos de sinal arbitrários é enunciada, mas não provada no texto, e não é provada aqui.
+
+<div id="sources-read-in-part" class="anchor-alias" aria-hidden="true"></div>
+
+#### Fontes lidas em parte
+
+Cada entrada se limita à passagem indicada. Nenhuma afirmação é feita sobre as partes não lidas.
+
+- **Wolpert, arXiv:1905.05669v3 [230].** Foram lidos a Seç. V (Eqs. 29 a 44, Exemplos 1 a 6), a Seç. XVI, o Apêndice A e o início do Apêndice B. A Seç. V enuncia $Q(p_0) = \sigma(p_0) + S(p_0) - S(\pi p_0)$ (Eq. 29) e o custo de Landauer $L(p,\pi) = S(p) - S(\pi p)$ (Eq. 35), definido apenas para uma distribuição de entrada fixa. Cerca de 70 por cento das 115 páginas não foram lidos, e a Proposição 1 se apoia em um resultado citado que não foi lido.
+- **Ortega e Braun, arXiv:1204.6481v2 [56].** O texto principal (Seç. 1 a 8) foi lido. As provas dos Teoremas 5 a 7 e o Material Suplementar não estavam disponíveis. Citado pela Eq. 9, $p(x) \propto p_0(x)\, e^{\beta U(x)}$, e pela ilustração de uma molécula da Seç. 1.1 (custo $k_B T\ln(1/p)$). Foram encontrados erros impressos na Eq. 5 e no Corolário 3. O ótimo enunciado $M = 35$ na Fig. 4 é recalculado como 33 sob minha leitura da configuração.
+- **Zhang, Zhu, Zhang e Hu, arXiv:2607.24287v1 [348].** Foram lidas as Seç. 4.1 a 4.6 (provas de T1 a T6). Citado pelo enunciado de que o Axioma 1 "is adopted as an empirical postulate rather than derived within the present framework" e de que sua energia é adimensional (nats). As provas de T7 a T10 e as Seç. 4.7 e 4.8 não foram lidas. Uma discrepância na equação de Euler-Lagrange de T5 continua sem solução.
+- **Fagan, arXiv:2601.00021v2 [346].** Foram lidas as Seç. 5.3 a 14 e as referências; as Seç. 1 a 5.2 foram lidas antes e não foram relidas. Citado pela Eq. 116, $\chi = \dot W_{\mathrm{causal}} / \dot I_{\mathrm{irr}}$, e pelo enunciado dos autores de que seus indicadores aproximados "need not coincide numerically across systems". As simulações (Seç. 12) usam indicadores aproximados, não joules, e uma curva da Seç. 12.1 decresce com $\lambda$ por construção.
+- **Kumar, Zenodo 18993403 [347].** Foram lidos o Apêndice A.1 a A.28 e as referências; o texto principal foi lido antes e não foi relido. Os sobrescritos se perdem no texto salvo, de modo que os expoentes impressos em A.26 e A.28 não são citados. Citado por $I \le P/(k_B T\ln 2)$ (Eq. 125), cuja premissa o artigo enuncia como condicional ("If generating useful knowledge requires irreversible information processing"). Recalculado: $6.74\times10^{21}$ bit/s para 20 W a 310 K.
+
+<div id="what-the-nine-sources-show-together" class="anchor-alias" aria-hidden="true"></div>
+
+#### O que as nove fontes mostram em conjunto
+
+| Fonte | O que mostra | O que não mostra | Estado da leitura |
+|---|---|---|---|
+| Takahashi e Hayashi | Duas métricas em bit/J (aprendizado, controle); um teto de ciclo fechado na escala de Landauer sob suposições enunciadas; uma lista de verificação para relatórios | Um joule medido; uma estimativa de epiplexidade ou de empoderamento para um sistema real; um teste do limite | Íntegra (16 pp., sem apêndices) |
+| Perrier | Uma definição $\Phi = P/I$ e um limite que vale apenas dado um vínculo suposto $I \le \alpha N$ | Energia medida; um piso numérico; uma prova correta do Teorema 2 ou 3 | Íntegra (12 pp.); apenas definições citadas |
+| Xu e Li | Definições de profundidade e entropia de derivação; limites condicionais do tipo de Landauer; uma simulação sintética | Energia medida; uma prova correta do Lema 2; validação independente | Íntegra quanto ao texto salvo; apenas definições citadas |
+| Still, Sivak, Bell e Crooks | Um limite inferior da dissipação igual à memória não preditiva, $\beta\langle W_{\mathrm{diss}}\rangle \ge I_{\mathrm{mem}} - I_{\mathrm{pred}}$ | Atingimento por sistemas reais; agentes em geral; um joule medido | Íntegra (5 pp.); versão do periódico não lida |
+
+Em todas as nove fontes, nenhum texto lido relata joules medidos em hardware real. Os valores de energia que aparecem são estimados a partir de contagens de FLOP, de potências nominais ou de suposições de modelo. Onde aparecem limites, eles são limites inferiores da dissipação sob suposições enunciadas, ou definições de razões à espera de medição.
+
+**Limites desta seção.** O texto citado foi verificado contra texto convertido de PDF, e a conversão em duas colunas pode intercalar linhas. Os erros listados vêm da minha leitura e do meu recálculo e não foram enviados aos autores. As diferenças entre versões (v1 a v2) foram comparadas apenas pela estrutura e pelo resumo para Takahashi e Hayashi, Perrier e Xu e Li.
+
 <div id="7-open-problems" class="anchor-alias" aria-hidden="true"></div>
 
 ## 7. Problemas em aberto
@@ -1558,3 +1633,8 @@ Entries marked "preprint" are cited by their arXiv posting. Entries published in
 341. Kimura, M. (1961). Natural selection as the process of accumulating genetic information in adaptive evolution. *Genetical Research* 2:127-140. https://doi.org/10.1017/S0016672300000616
 342. Worden, R. P. (1995). A speed limit for evolution. *Journal of Theoretical Biology* 176:137-152. https://doi.org/10.1006/jtbi.1995.0183
 343. Hledík, M., Barton, N. and Tkačik, G. (2022). Accumulation and maintenance of information in evolution. *PNAS* 119:e2123152119. https://doi.org/10.1073/pnas.2123152119
+344. Perrier, E. (2025). Watts-per-intelligence: Part I (energy efficiency). arXiv:2504.05328 (preprint). https://arxiv.org/abs/2504.05328
+345. Xu, J. and Li, Z. (2025). Information physics of intelligence: unifying derivation depth and entropy under thermodynamic constraints. arXiv:2511.19156 (preprint). https://arxiv.org/abs/2511.19156
+346. Fagan, P. D. (2026). Toward a physical theory of intelligence. arXiv:2601.00021 (preprint). https://arxiv.org/abs/2601.00021
+347. Kumar, S. The Laws of Intelligence: Computation Efficiency and the Physical Scaling Limits of AI Systems. Zenodo 18993403 (preprint, not peer reviewed).
+348. Zhang, J., Zhu, H., Zhang, J. J. and Hu, H. (2026). The semantic least-energy principle: a hypothesis for intelligence. arXiv:2607.24287 (preprint). https://arxiv.org/abs/2607.24287
