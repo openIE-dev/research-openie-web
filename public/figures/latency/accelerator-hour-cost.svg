@@ -15,26 +15,32 @@
 <text x="226.0" y="186.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#0f172a" text-anchor="end">life 5 y, utilization 40%</text>
 <rect x="240.0" y="160.0" width="633.7" height="40.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
 <rect x="873.7" y="160.0" width="23.3" height="40.0" rx="0" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<rect x="903.3" y="171.0" width="201.8" height="22.1" rx="3" fill="#ffffff"/>
 <text x="907.3" y="188.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="800" fill="#0f172a" text-anchor="start">1.97  (energy 3.6%)</text>
 <text x="226.0" y="252.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#0f172a" text-anchor="end">life 5 y, utilization 60%</text>
 <rect x="240.0" y="226.0" width="422.7" height="40.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
 <rect x="662.7" y="226.0" width="23.3" height="40.0" rx="0" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<rect x="692.0" y="237.0" width="201.8" height="22.1" rx="3" fill="#ffffff"/>
 <text x="696.0" y="254.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="800" fill="#0f172a" text-anchor="start">1.34  (energy 5.3%)</text>
 <text x="226.0" y="318.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#0f172a" text-anchor="end">life 5 y, utilization 80%</text>
 <rect x="240.0" y="292.0" width="317.0" height="40.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
 <rect x="557.0" y="292.0" width="23.3" height="40.0" rx="0" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<rect x="586.3" y="303.0" width="201.8" height="22.1" rx="3" fill="#ffffff"/>
 <text x="590.3" y="320.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="800" fill="#0f172a" text-anchor="start">1.02  (energy 6.9%)</text>
 <text x="226.0" y="384.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#0f172a" text-anchor="end">life 6 y, utilization 40%</text>
 <rect x="240.0" y="358.0" width="528.0" height="40.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
 <rect x="768.0" y="358.0" width="23.3" height="40.0" rx="0" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<rect x="797.7" y="369.0" width="201.8" height="22.1" rx="3" fill="#ffffff"/>
 <text x="801.7" y="386.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="800" fill="#0f172a" text-anchor="start">1.66  (energy 4.3%)</text>
 <text x="226.0" y="450.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#0f172a" text-anchor="end">life 6 y, utilization 60%</text>
 <rect x="240.0" y="424.0" width="352.0" height="40.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
 <rect x="592.0" y="424.0" width="23.3" height="40.0" rx="0" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<rect x="621.7" y="435.0" width="201.8" height="22.1" rx="3" fill="#ffffff"/>
 <text x="625.7" y="452.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="800" fill="#0f172a" text-anchor="start">1.13  (energy 6.2%)</text>
 <text x="226.0" y="516.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#0f172a" text-anchor="end">life 6 y, utilization 80%</text>
 <rect x="240.0" y="490.0" width="264.0" height="40.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
 <rect x="504.0" y="490.0" width="23.3" height="40.0" rx="0" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<rect x="533.7" y="501.0" width="201.8" height="22.1" rx="3" fill="#ffffff"/>
 <text x="537.7" y="518.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="800" fill="#0f172a" text-anchor="start">0.86  (energy 8.2%)</text>
 <rect x="40.0" y="660.0" width="18.0" height="18.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
 <text x="66.0" y="675.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#0f172a" text-anchor="start">Capital, straight line</text>

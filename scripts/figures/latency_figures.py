@@ -35,8 +35,8 @@ def flow():
         s.r(mx - w / 2, my - 17, w, 24, '#ffffff', 'none', 4, 0); s.t(mx, my, label, 15, 700, col, 'middle')
     edge((190, 330), (500, 320), '$30B equity, Mar 2026', '#8c6d1f', None, .5, -10)
     edge((395, 210), (500, 300), '$30B, Mar 2026', BLUE, None, .35, -14)
-    edge((300, 210), (520, 470), 'up to $10B', BLUE, None, .72, 0)
-    edge((420, 630), (500, 335), 'warrant, 160M sh', BLUE, '8 6', .62, 0)
+    edge((300, 210), (520, 470), 'up to $10B', BLUE, None, .3, 0)
+    edge((420, 630), (500, 335), 'warrant, 160M sh', BLUE, '8 6', .25, 0)
     edge((420, 165), (830, 165), '$2B equity, Jan 2026', BLUE, None, .5, -12)
     edge((830, 275), (670, 295), 'up to $50B', GREEN, None, .5, -10)
     edge((830, 390), (670, 330), '$13B, ~27%', GREEN, None, .5, 24)
@@ -108,7 +108,7 @@ def conc():
 # ---------- 5 commitments vs revenue
 def commit():
     s = S(1200, 600, 'Contracted commitments against revenue earned', 'USD billions, log scale. Commitments are multi-year and conditional; revenue is one fiscal year.', 'DATA')
-    items = [('OpenAI revenue 2025', 13.1, SKY, 'revenue'), ('OpenAI to Microsoft Azure, incremental', 250, ORANGE, 'commit'), ('OpenAI to AWS, 7 years', 38, ORANGE, 'commit'),
+    items = [('OpenAI revenue 2025', 13.1, SKY, 'revenue'), ('OpenAI to Microsoft Azure, incremental', 250, ORANGE, 'commit'), ('OpenAI to AWS, over 7 years', 38, ORANGE, 'commit'),
              ('CoreWeave revenue 2025', 5.131, SKY, 'revenue'), ('CoreWeave remaining performance obligations', 60.7, ORANGE, 'commit'),
              ('Oracle revenue FY2026', 67.357, SKY, 'revenue'), ('Oracle remaining performance obligations', 664, ORANGE, 'commit')]
     x0, w = 470, 640; lo, hi = math.log10(1), math.log10(1000)
@@ -183,7 +183,7 @@ def hourcost():
         r = [m for m in M if m['life'] == l and m['util'] == u and m['usd_kwh'] == 0.08][0]; y = 160 + i * 66
         s.t(x0 - 14, y + 26, f'life {l} y, utilization {int(u*100)}%', 17, 600, INK, 'end')
         s.r(x0, y, w * r['capital_per_hr'] / mx, 40, BLUE); s.r(x0 + w * r['capital_per_hr'] / mx, y, w * r['energy_per_hr'] / mx, 40, VERM)
-        s.t(x0 + w * r['total'] / mx + 10, y + 28, f"{r['total']:.2f}  (energy {r['energy_share']*100:.1f}%)", 17, 800)
+        s.t(x0 + w * r['total'] / mx + 10, y + 28, f"{r['total']:.2f}  (energy {r['energy_share']*100:.1f}%)", 17, 800, halo=True)
     s.r(40, 660, 18, 18, BLUE); s.t(66, 675, 'Capital, straight line', 15); s.r(260, 660, 18, 18, VERM); s.t(286, 675, 'Electricity', 15)
     s.t(1160, 675, 'Across lives 4 to 6, utilization 40 to 80%, 0.04 to 0.12 USD/kWh: energy is 1.5% to 11.8%.', 14, 400, MUTED, 'end')
     save(s, 'accelerator-hour-cost', 'Horizontal stacked bars of cost per utilized accelerator-hour for lives of 5 and 6 years and utilization of 40, 60 and 80 percent. Capital dominates; electricity is a thin slice. Cost ranges from about 0.96 to 2.2 dollars per hour.')
@@ -191,7 +191,7 @@ def hourcost():
 # ---------- 10 price decomposition
 def decomp():
     M = js('model_outputs.json')['decomp']
-    s = S(1200, 520, 'A 280-fold price fall, and how much hardware can explain', 'GPT-3.5-level inference, Nov 2022 to Oct 2024. Model output from cited annual rates.', 'MODEL')
+    s = S(1200, 548, 'A 280-fold price fall, and how much hardware can explain', 'GPT-3.5-level inference, Nov 2022 to Oct 2024. Model output from cited annual rates.', 'MODEL')
     x0, w = 120, 960; lg = math.log10(280)
     def X(v): return x0 + w * math.log10(v) / lg
     s.r(x0, 200, w, 56, '#f1f5f9'); s.r(x0, 200, X(M['hardware_cost_fold']) - x0, 56, BLUE)
@@ -206,7 +206,7 @@ def decomp():
 # ---------- 11 open compute lag
 def openlag():
     T = rd('compute_threshold_firsts.csv')
-    s = S(1200, 560, 'When did open-weight models reach each training-compute level?', 'Epoch AI notable-models data. First notable model at or above the level, any access type against open weights.', 'DATA')
+    s = S(1200, 592, 'When did open-weight models reach each training-compute level?', 'Epoch AI notable-models data. First notable model at or above the level, any access type against open weights.', 'DATA')
     x0, y0, w = 220, 140, 900; t0, t1 = 2019, 2026
     def X(t): return x0 + w * (t - t0) / (t1 - t0)
     for t in range(t0, t1 + 1): s.l(X(t), y0, X(t), 470, GRID, 1); s.t(X(t), 490, str(t), 14, 400, MUTED, 'middle')
@@ -252,7 +252,7 @@ def althw():
     s.t(40, 584, 'IBM analog in-memory chip: 12.4 TOPS/W chip-sustained on small networks, no matched baseline given.', 13, 400, MUTED)
     s.t(40, 604, 'Photonic processor (Nature, 2025): near-electronic precision on ResNet and BERT, no joules in the text read.', 13, 400, MUTED)
     s.t(40, 624, 'Huawei CloudMatrix-Infer on Ascend NPUs: 4.45 tokens/s per TFLOPS in prefill; power not reported, so no joule ratio is drawn.', 13, 400, MUTED)
-    save(s, 'alternative-hardware-ratios', 'Horizontal bars of ratios against a baseline: BitNet on CPU energy 6.6 to 22.7 times lower by estimate, memory 5 to 12 times lower, FlightLLM FPGA 4.2 to 6.0 times energy efficiency and 1.4 to 1.8 times cost efficiency versus two GPUs, Loihi 2 about 2 times less energy preliminary.')
+    save(s, 'alternative-hardware-ratios', 'Horizontal bars of ratios against a baseline: BitNet on CPU energy 6.6 to 23.2 times lower by estimate, memory 3.5 to 12 times lower, FlightLLM FPGA 4.2 to 6.0 times energy efficiency and 1.4 to 1.8 times cost efficiency versus two GPUs, Loihi 2 about 2 times less energy preliminary.')
 
 # ---------- maps
 GEO = None
@@ -383,7 +383,7 @@ def cadence():
         x = x0 + w * q / 8; s.l(x, 150, x, 380, '#94a3b8', 2); s.t(x, 404, f'Q{(q % 4) + 1}', 14, 700, MUTED, 'middle')
     for rho, c in ((0.55, BLUE), (1.2, GREEN), (1.95, VERM)):
         x = x0 + w * rho / 2; nxt = math.ceil(rho / 0.25) * 0.25; xn = x0 + w * nxt / 2; y = 200 + (rho > 1) * 60 + (rho > 1.5) * 50
-        s.c(x, y, 9, c); s.l(x, y, xn - 8, y, c, 2.5, None, True); s.t(x, y - 14, 'ready', 14, 700, c, 'middle'); s.t((x + xn) / 2, y + 26, f'wait {int(round((nxt-rho)*52))} weeks', 14, 700, c, 'middle')
+        s.c(x, y, 9, c); s.l(x, y, xn - 8, y, c, 2.5, None, True); s.t(x, y - 14, 'ready', 14, 700, c, 'middle', halo=True); s.t((x + xn) / 2, y + 26, f'wait {int(round((nxt-rho)*52))} weeks', 14, 700, c, 'middle', halo=True)
     s.t(80, 450, 'Funding cycle for a venture-backed firm: 3 to 5 years between rounds, so the same logic gives 1.5 to 2.5 years on average (Proposition 1).', 16, 600)
     s.t(80, 478, 'The quarter is a property of the reporting calendar, not of the engineering. Readiness phase is modeled, not observed.', 14, 400, MUTED)
     save(s, 'cadence-vs-quarter', 'Timeline of quarterly decision dates with three example readiness times and the weeks each waits until the next date; text states the average wait is half the period.')

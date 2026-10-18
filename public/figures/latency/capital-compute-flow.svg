@@ -30,11 +30,11 @@
 <rect x="370.8" y="210.5" width="122.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
 <text x="431.8" y="227.5" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0072B2" text-anchor="middle">$30B, Mar 2026</text>
 <line x1="300.0" y1="210.0" x2="520.0" y2="470.0" stroke="#0072B2" stroke-width="2" marker-end="url(#ah)"/>
-<rect x="413.4" y="380.2" width="90.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
-<text x="458.4" y="397.2" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0072B2" text-anchor="middle">up to $10B</text>
+<rect x="321.0" y="271.0" width="90.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="366.0" y="288.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0072B2" text-anchor="middle">up to $10B</text>
 <line x1="420.0" y1="630.0" x2="500.0" y2="335.0" stroke="#0072B2" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ah)"/>
-<rect x="400.6" y="430.1" width="138.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
-<text x="469.6" y="447.1" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0072B2" text-anchor="middle">warrant, 160M sh</text>
+<rect x="371.0" y="539.2" width="138.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="440.0" y="556.2" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0072B2" text-anchor="middle">warrant, 160M sh</text>
 <line x1="420.0" y1="165.0" x2="830.0" y2="165.0" stroke="#0072B2" stroke-width="2" marker-end="url(#ah)"/>
 <rect x="540.0" y="136.0" width="170.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
 <text x="625.0" y="153.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0072B2" text-anchor="middle">$2B equity, Jan 2026</text>

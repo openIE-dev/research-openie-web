@@ -416,7 +416,7 @@ A third description is that groups making hardware by orthogonal processes show 
 | Alternative accelerator stack | Serving on Ascend NPUs [95] | 4.45 tokens per second per TFLOPS in prefill, above published H100 and H800 results | Power not reported, so no joule ratio is drawn |
 | Flexible, non-silicon process | A 32-bit Arm microprocessor on a flexible substrate [98] | That a general processor can be made by a non-silicon process | No machine-learning result and no joules per task |
 
-![Horizontal bars of ratios against a baseline: BitNet on CPU energy 6.6 to 22.7 times lower by estimate, memory 5 to 12 times lower, FlightLLM FPGA 4.2 to 6.0 times energy efficiency and 1.4 to 1.8 times cost efficiency versus two GPUs, Loihi 2 about 2 times less energy preliminary.](/figures/latency/alternative-hardware-ratios.png)
+![Horizontal bars of ratios against a baseline: BitNet on CPU energy 6.6 to 23.2 times lower by estimate, memory 3.5 to 12 times lower, FlightLLM FPGA 4.2 to 6.0 times energy efficiency and 1.4 to 1.8 times cost efficiency versus two GPUs, Loihi 2 about 2 times less energy preliminary.](/figures/latency/alternative-hardware-ratios.png)
 
 *Figure 17. Alternative designs against a baseline in the same paper. Ratio is baseline cost divided by alternative cost, as each paper reports it; tasks differ, so bars are not comparable across rows. Bars show the range reported. Data: ratios in Table 7 [26, 27, 28].*
 

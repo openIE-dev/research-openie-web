@@ -22,10 +22,15 @@ class S:
         s.t(40, 92, sub, 18, 400, MUTED)
         s.badge(w-40, 50, kind)
         s.title, s.desc = title, sub
-    def t(s, x, y, txt, size=18, weight=400, fill=INK, anchor='start', rot=None, italic=False):
+    def t(s, x, y, txt, size=18, weight=400, fill=INK, anchor='start', rot=None, italic=False, halo=False):
+        hl = ''
+        if halo:
+            tw = len(str(txt)) * size * (0.60 if weight >= 600 else 0.54) + 8
+            rx = x - tw / 2 if anchor == 'middle' else (x - tw + 4 if anchor == 'end' else x - 4)
+            s.o.append(f'<rect x="{rx:.1f}" y="{y - size:.1f}" width="{tw:.1f}" height="{size * 1.3:.1f}" rx="3" fill="#ffffff"/>')
         r = f' transform="rotate({rot} {x} {y})"' if rot is not None else ''
         st = ' font-style="italic"' if italic else ''
-        s.o.append(f'<text x="{x:.1f}" y="{y:.1f}" font-family="{FONT}" font-size="{size}" font-weight="{weight}" fill="{fill}" text-anchor="{anchor}"{st}{r}>{escape(str(txt))}</text>')
+        s.o.append(f'<text x="{x:.1f}" y="{y:.1f}" font-family="{FONT}" font-size="{size}" font-weight="{weight}" fill="{fill}" text-anchor="{anchor}"{st}{hl}{r}>{escape(str(txt))}</text>')
     def badge(s, x, y, kind):
         col = {'DATA': BLUE, 'DIAGRAM': PINK, 'MODEL': ORANGE, 'QUALITATIVE': PINK}[kind.split()[0]]
         label = {'DATA': 'Data figure', 'DIAGRAM': 'Diagram', 'MODEL': 'Model illustration', 'QUALITATIVE': 'Qualitative diagram'}[kind.split()[0]]
