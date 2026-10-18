@@ -19,20 +19,6 @@
   },
   "entries": [
     {
-      "id": "latency-evidence-class-label",
-      "status": "evidence-class label",
-      "files": ["src/content/papers/latency.md"],
-      "pattern": "\\*\\*Proven\\.\\*\\*|\\| proven \\||\\(proven\\)",
-      "note": "Latency study evidence class named proven: a theorem with a proof in the cited source, or an exact legal or arithmetic fact. Defined in Section 1; the class is printed per source."
-    },
-    {
-      "id": "latency-reference-title-scaling-laws",
-      "status": "reference title",
-      "files": ["src/content/papers/latency.md"],
-      "pattern": "Language Model Scaling Laws",
-      "note": "Title of a cited work."
-    },
-    {
       "id": "name-gates-title",
       "status": "name",
       "pattern": "Metered Commit Gates",
