@@ -101,7 +101,7 @@ def conc():
     for i, (lab, v, c) in enumerate(items):
         y = 140 + i * 66; s.t(x0 - 14, y + 26, lab, 17, 600, INK, 'end'); s.r(x0, y, w, 38, '#f1f5f9'); s.r(x0, y, w * v / 100, 38, c)
         s.t(x0 + w * v / 100 + 10, y + 28, f'{v}%', 20, 800, INK)
-    s.t(40, 506, 'Backlog diversification, CoreWeave: no single customer above 35% of backlog at end of 2025, against 85% at the start of the year (annual report letter).', 15, 500)
+    s.t(40, 506, 'CoreWeave remaining performance obligations: 60.7 billion dollars at end of 2025, against 15.1 billion a year earlier (annual report).', 15, 500)
     s.t(40, 532, 'NVIDIA states that direct customers include system builders and distributors; indirect customers above 10% of revenue are estimated, not named.', 14, 400, MUTED)
     save(s, 'customer-concentration', 'Horizontal bars of disclosed customer shares: NVIDIA two direct customers at 22 and 14 percent; CoreWeave Microsoft 67 percent in 2025, top two 77 percent in 2024, top three 73 percent in 2023.')
 
@@ -165,7 +165,8 @@ def hweff():
         s.t(X(t), Y(v) + (28 if nm in ('A100 SXM4 80 GB', 'Tesla V100 SXM2 32 GB', 'Google TPU v5e') else -14), nm, 12, 500, INK, 'middle')
     a, b = F['intercept_log10_at_2016'], F['slope_log10_per_year']
     s.p(f'M{X(2016):.1f} {Y(10**a):.1f} L{X(2025):.1f} {Y(10**(a+b*9)):.1f}', VERM, 3, 'none', '8 6')
-    s.t(X(2024.2), y0 + 12, 'B100, B200, GB200 NVL2', 12, 500, INK, 'end')
+    cl = [(yr(r['release_date']), float(r['flops_per_watt'])) for r in H if r['hardware'].replace('NVIDIA ', '').replace(' (per GPU)', '') in ('B100', 'B200', 'GB200 NVL2')]
+    s.t(min(t for t, v in cl) * 0 + X(min(t for t, v in cl)) - 14, Y(max(v for t, v in cl)) - 4, 'B100, B200, GB200 NVL2', 12, 500, INK, 'end')
     s.t(x0 + 20, y0 + 30, f"Fit: about {F['growth_per_year']:.2f}x per year (n = {F['n']})", 18, 800, VERM)
     s.t(40, 610, 'Peak specifications are not delivered energy per task. Utilization, memory traffic and software decide the delivered figure.', 14, 400, MUTED)
     save(s, 'hardware-efficiency', 'Scatter on a log axis of peak tensor operations per watt for twelve accelerators from 2016 to 2024 with a dashed fit of about 1.4 times per year.')
@@ -346,30 +347,31 @@ def adopt():
 
 # ---------- 18 timeline
 def timeline():
-    s = S(1200, 900, 'Capability releases against deployment and financing', 'Dated items from the sources in the References. Upper lane: public methods and models. Lower lane: product releases, contracts and filings.', 'DATA')
+    s = S(1200, 980, 'Capability releases against deployment and financing', 'Dated items from the sources in the References. Upper lane: public methods and models. Lower lane: product releases, contracts and filings.', 'DATA')
     x0, w = 70, 1060; t0, t1 = 2022, 2026.9
     def X(t): return x0 + w * (t - t0) / (t1 - t0)
-    for t in range(2022, 2027): s.l(X(t), 120, X(t), 430, GRID, 1); s.t(X(t) + 4, 444, str(t), 16, 700, MUTED)
+    for t in range(2022, 2027): s.l(X(t), 120, X(t), 520, GRID, 1); s.t(X(t) + 4, 536, str(t), 16, 700, MUTED)
     s.l(x0, 300, x0 + w, 300, '#94a3b8', 2)
     up = [('2022-03', 'Chinchilla compute-optimal scaling'), ('2022-05', 'FlashAttention'), ('2022-11-30', 'Speculative decoding'), ('2023-12', 'Mamba state-space model'), ('2024-12', 'DeepSeek-V3: 2.788M GPU-hours'), ('2025-01', 'DeepSeek-R1'),
           ('2025-02', 'Native sparse attention'), ('2025-04', 'BitNet b1.58 2B4T (CPU)'), ('2025-06', 'CloudMatrix-Infer (Ascend)')]
     dn = [('2023-03-15', 'PyTorch 2.0 attention kernel'), ('2024-03', 'Jamba hybrid released'), ('2024-12', 'Google reports speculative decoding in products'), ('2025-09-22', 'NVIDIA-OpenAI letter of intent'),
           ('2025-10-05', 'AMD warrant to OpenAI'), ('2025-10-21', 'Meta-Blue Owl venture'), ('2025-10-28', 'Microsoft-OpenAI agreement'), ('2025-11-03', 'AWS-OpenAI $38B'),
           ('2025-11-18', 'Anthropic with Microsoft and NVIDIA'), ('2026-01-15', 'NVIDIA $2B into CoreWeave'), ('2026-03-31', 'OpenAI $122B round')]
-    n = 0; last = {}
+    n = 0; last = {}; marks = []
     for lane, items, col in ((1, up, BLUE), (-1, dn, VERM)):
         prev = -99; lvl = 0
         for d, lab in items:
             n += 1; x = X(yr(d))
-            lvl = (lvl + 1) % 3 if x - prev < 34 else 0; prev = x
-            y = 300 - lane * (40 + lvl * 34)
-            s.l(x, y, x, 300, col, 2); s.c(x, y, 13, col, 'white', 2); s.t(x, y + 5, str(n), 13, 800, 'white', 'middle')
+            lvl = (lvl + 1) % 6 if x - prev < 34 else 0; prev = x
+            y = 300 - lane * (40 + lvl * 32)
+            marks.append((x, y, col, n)); s.l(x, y, x, 300, col, 2)
+    for x, y, col, n in marks: s.c(x, y, 13, col, 'white', 2); s.t(x, y + 5, str(n), 13, 800, 'white', 'middle')
     n = 0
     for k, (items, col, x0l, ttl) in enumerate(((up, BLUE, 70, 'Methods and models'), (dn, VERM, 640, 'Deployment, contracts and filings'))):
-        s.t(x0l, 470, ttl, 17, 800, col)
+        s.t(x0l, 580, ttl, 17, 800, col)
         for j, (d, lab) in enumerate(items):
             num = j + 1 + (len(up) if k else 0)
-            yy = 504 + j * 30
+            yy = 614 + j * 30
             s.c(x0l + 12, yy - 5, 11, col, 'white', 2); s.t(x0l + 12, yy, str(num), 12, 800, 'white', 'middle'); s.t(x0l + 32, yy, f'{d[:7]}  {lab}', 15, 600, INK)
     save(s, 'timeline-capability-vs-deployment', 'Two-lane timeline from 2022 to 2026 with numbered markers and a legend. Upper lane lists method and model releases such as Chinchilla, FlashAttention, speculative decoding, Mamba, DeepSeek-V3 and R1, native sparse attention and BitNet. Lower lane lists deployments and financing events from PyTorch 2.0 in March 2023 to the OpenAI 122 billion dollar round in March 2026.')
 

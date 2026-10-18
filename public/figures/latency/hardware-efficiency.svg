@@ -39,6 +39,6 @@
 <circle cx="1006.1" cy="221.8" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
 <circle cx="1028.1" cy="228.0" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
 <path d="M130.0 442.1 L1090.0 192.4" stroke="#D55E00" stroke-width="3" fill="none" fill-opacity="1" stroke-dasharray="8 6" stroke-linejoin="round"/>
-<text x="1004.7" y="152.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="end">B100, B200, GB200 NVL2</text>
+<text x="992.1" y="209.4" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="end">B100, B200, GB200 NVL2</text>
 <text x="150.0" y="170.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#D55E00" text-anchor="start">Fit: about 1.42x per year (n = 12)</text>
 <text x="40.0" y="610.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Peak specifications are not delivered energy per task. Utilization, memory traffic and software decide the delivered figure.</text></svg>
