@@ -11,19 +11,19 @@ board_metered: false
 
 # "AI" Reads Human: Human Language Encoding at Machine Speed and the Energy Cost
 
-*Version 0.1 (work in progress), 18 October 2026. Data, code and read ledger: [research.openie.dev/living/ai-reads-human/](/living/ai-reads-human/). Shared terms: [glossary](/glossary/).*
+*Version 0.2 (work in progress), 18 October 2026. Data, code and read ledger: [research.openie.dev/living/ai-reads-human/](/living/ai-reads-human/). Shared terms: [glossary](/glossary/).*
 
 ## Abstract
 
-Software agents pass data to each other in formats made for people to read, such as JSON, YAML, Markdown, XML and CSV. We name the extra work this causes the impedance tax, define it with units, and measure two parts of it on a reproducible corpus: parse time and token count. Energy is not yet measured; this page says what is planned and why no joule claim is made.
+Software agents pass data to each other in formats made for people to read, such as JSON, YAML, Markdown, XML and CSV. We name the extra work this causes the impedance tax, define it with units, and measure two parts of it on a reproducible corpus: parse time and token count. A first energy attempt on two laptops (section 5b) could not resolve any net energy of parsing, so no joule claim is made; this page says what was tried and what is planned.
 
 **In plain words**
 
 1. Computers and people often use the same written format. That format is easy for people to read, but the computer has to do extra work to read it back.
 2. On our test data, the same records took about 8 times longer to read as JSON (Python's built-in reader), and about 735 times longer as YAML, than as a plain fixed binary layout. Read by an AI model, YAML used about 2.2 times as many tokens as CSV.
-3. We have measured time and token counts only. We have not yet measured energy, so this page makes no claim about how many joules are saved.
+3. We measured time and token counts. We also tried to measure energy on two laptops, but the signal was too small to separate from background power, so this page makes no claim about how many joules are saved.
 
-> **Status: work in progress, and it will grow.** Sections marked *Planned* are not done. Every number on this page is recomputed from files you can download below. Nothing here is a claim about energy.
+> **Status: work in progress, and it will grow.** Sections marked *Planned* are not done. Every number on this page is recomputed from files you can download below. Nothing here is a claim about energy savings; the one energy attempt (section 5b) is a null result.
 
 ## 1. Background: formats written for people
 
@@ -89,13 +89,13 @@ The thermodynamic floor for erasing one bit at temperature T is the Landauer lim
 Energy figures for model inference come from other authors' measurements on their hardware, and are background only, not our measurement:
 
 - Samsi et al., "From Words to Watts: Benchmarking the Energy Costs of Large Language Model Inference" (arXiv:2310.03003), define energy per output token as total GPU energy divided by decoded output tokens, and report about 3 to 4 J per output token for a 65-billion-parameter LLaMA model at a maximum generation length of 512, measured with NVIDIA DCGM on their MIT SuperCloud setup (V100 GPUs for the 8, 16 and 32 shard runs). That paper does not separate prefill from decode energy.
-- Luccioni, Jernite and Strubell, "Power Hungry Processing: Watts Driving the Cost of AI Deployment?" (ACM FAccT 2024, DOI 10.1145/3630106.3658542), measured energy per 1,000 inferences by task with CodeCarbon on an 8-GPU A100 node; their Table 2 reports mean 0.002 kWh for text classification and 0.047 kWh for text generation. **Unverified against the ACM version:** we read the arXiv version (2311.16863v3). The ACM page returned HTTP 403 to us, so we confirmed only the DOI, title and venue (through Crossref) and have not confirmed that the ACM text carries the same table numbers.
+- Luccioni, Jernite and Strubell, "Power Hungry Processing: Watts Driving the Cost of AI Deployment?" (ACM FAccT 2024, DOI 10.1145/3630106.3658542), measured energy per 1,000 inferences by task with CodeCarbon on an 8-GPU A100 node; their Table 2 reports mean 0.002 kWh for text classification and 0.047 kWh for text generation. We checked these numbers against the ACM Corrected Version of Record V1.1 (6 November 2024), which gives the same Table 2 values and the same setup (8 A100 80GB GPUs on AWS, CodeCarbon). Cite V1.1: the paper notes that an earlier version used 0.012 kWh in one comparison. The rest of the paper was read only in part.
 
 A per-word DRAM-read energy figure (a widely quoted 640 pJ per 32-bit read) is **not used on this page**: we have not read its primary source, so it is listed as unverified in section 9.
 
 ## 3. What was measured
 
-All measurements ran on one virtualised Intel Xeon machine (8 vCPU, Linux 6.12, Python 3.13.5). The box has no RAPL energy counters (`/sys/class/powercap` is absent) and `perf stat` reports cycles as unsupported, so **only time and token counts were measured. No joules.** The corpus is synthetic and seeded (`scripts/gen_corpus.py`, seed 20261016): 20,000 records, each with an id, a three-word name, a float score, a boolean, three tags and a 31-bit integer.
+All measurements ran on one virtualised Intel Xeon machine (8 vCPU, Linux 6.12, Python 3.13.5). The box has no RAPL energy counters (`/sys/class/powercap` is absent) and `perf stat` reports cycles as unsupported, so **only time and token counts were measured on this machine. No joules.** Energy attempts on other machines are in section 5b. The corpus is synthetic and seeded (`scripts/gen_corpus.py`, seed 20261016): 20,000 records, each with an id, a three-word name, a float score, a boolean, three tags and a 31-bit integer.
 
 ![One record in five encodings](/living/ai-reads-human/charts/one-record-five-ways.svg)
 
@@ -186,12 +186,25 @@ Nothing in this section is done. It is the order we intend to follow.
 |---|---|---|
 | M1, M2, M3 | Parse time, tokens, tokenizer throughput | Done, time and counts only (this page) |
 | M4 | Prefill energy and decode energy per token against context length, same model, GPU with a hardware energy counter | A machine with NVML or DCGM energy counters |
-| M5 | Parse energy for the M1 workloads by RAPL package energy, with an idle baseline and interleaved formats | A machine where Intel RAPL is readable |
+| M5 | Parse energy for the M1 workloads by RAPL package energy, with an idle baseline and interleaved formats | A machine where Intel RAPL is readable (a macmon attempt on two laptops is in section 5b: null result) |
 | M6 | A second corpus: natural-language documentation and logs against identifier-heavy telemetry | Corpus and scripts |
 | M7 | Task level: tokens an agent needs to answer a fixed question set from a projection of the fields it needs versus the full document | Task set and an agent harness |
 | M8 | Other parsers per format (simdjson, rapidyaml, libxml2 C, pulldown-cmark) to bound language-runtime effects | Scripts |
 
 Each result will be published with its raw files and the idle baseline. A joule claim will be made only from M4 or M5 data.
+
+## 5b. Measured energy: no net effect resolved
+
+*Measured on 2026-10-18 on two Apple M5 Max laptops (48 GB on battery power, 128 GB on AC), macOS 27.0.1, Python 3.13.16, power counter macmon 0.10.0 (48 GB) and 0.9.0 (128 GB), which reads Apple's IOReport and SMC sensors as a normal user (no root). `all_power` is CPU plus GPU plus ANE package power; `sys_power` is whole-system power. Nine parse workloads on the same 20,000 records, each looped for 10 s on one thread, 10 interleaved rounds, with a 10 s idle window before and after every round. Files: `/living/ai-reads-human/data/energy_joules.tsv` and raw samples in `/living/ai-reads-human/data/energy_raw_m5max48/` and `energy_raw_m5max128/`.*
+
+**Result: the net energy of parsing (load power minus idle baseline, times time, divided by records) could not be resolved.** On every machine, power counter and format, the mean net energy per record is smaller than about 1.5 standard errors from zero (largest t value 1.45, 10 rounds), and several means are negative. The cause is that both laptops were running other work during the test (one-minute load average 41 to 68), so the idle baseline moved by 2 to 7 W between the before and after windows, while one parsing thread adds only a watt or two to a package drawing 18 to 32 W.
+
+What can be said, labelled by how obtained:
+- *Measured, upper bound only:* the gross energy per record, which includes all background work on the machine, was about 7e-6 J (48 GB) and 1.1e-5 J (128 GB) for fixed binary, 5.4e-5 J and 9.0e-5 J for stdlib JSON, and 3.6e-3 J and 7.2e-3 J for YAML (libyaml). The true parse energy is no larger than these. Gross energy here is mostly background power times time, so these ratios track the time ratios and are not an independent energy result.
+- *Measured, time:* on these machines JSON took about 7.6 times (48 GB) and 8.9 times (128 GB) as long as fixed binary per record, and YAML about 470 and 750 times.
+- *Not measured:* any statement that one format costs fewer joules than another. The page still makes no such claim.
+
+A valid result needs a quiet machine or an inline USB-C power meter on the charger measured with the machine otherwise idle.
 
 ## 6. Where a canonical machine form fits
 
@@ -224,7 +237,7 @@ The tokenizer vocabularies for GPT-2, Mistral-7B-v0.1 and Qwen2.5-0.5B are downl
 
 ## 8. Threats to validity
 
-- Time is not energy; power differs by workload, so no joule inference from the time ratios is valid.
+- Time is not energy; power differs by workload, so no joule inference from the time ratios is valid. The gross energy figures in section 5b are upper bounds that include background work.
 - Python library overhead dominates some rows (M8 would bound it).
 - One synthetic, identifier-light corpus; natural language is untested (M6).
 - Tokenizers tested are open ones; closed commercial tokenizers are untested.

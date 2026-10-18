@@ -22,4 +22,23 @@ for v, want in [('recs.json', 1.58), ('recs.yaml', 2.24), ('recs_pretty.json', 2
     beta = float(r['bytes_per_record']) / float(c['bytes_per_record']); rho = float(c['cl100k_base:B/tok']) / float(r['cl100k_base:B/tok'])
     chk(f'{v} kappa (2 dp)', round(k, 2), want); chk(f'{v} beta*rho_ratio = kappa', beta * rho, k, 0.005)
     print(f'     {v}: beta={beta:.3f} rho_CSV/rho_F={rho:.3f}')
+
+# ---- energy (data/energy_joules.tsv, written by summarize_energy.py from data/energy_raw_*) ----
+_ep = os.path.join(H, '..', 'data', 'energy_joules.tsv')
+if os.path.exists(_ep):
+    er = [r for r in csv.DictReader([l for l in open(_ep) if not l.startswith('#')], delimiter='\t')]
+    chk('energy rows (2 machines x 2 counters x 9 formats)', len(er), 36)
+    chk('min rounds per energy row (need >= 10)', min(int(r['n_rounds']) for r in er), 10, 0)
+    ap = [r for r in er if r['power_key'] == 'all_power']
+    tmax = max(abs(float(r['net_J_per_record_mean'])) / (float(r['net_J_per_record_sd']) / 10 ** .5) for r in ap)
+    chk('max |t| of net energy, all_power rows (article: 1.45, none resolved)', round(tmax, 2), 1.45, 0.005)
+    g = {(r['host'], r['format']): r for r in ap}
+    chk('48GB gross J/rec fixed binary (article 7e-6)', float(g[('m5max48', 'fixed binary (struct.iter_unpack)')]['gross_J_per_record_mean']), 7.2e-6, 5e-7)
+    chk('48GB gross J/rec json stdlib (article 5.4e-5)', float(g[('m5max48', 'json (stdlib)')]['gross_J_per_record_mean']), 5.4e-5, 5e-7)
+    chk('48GB gross J/rec yaml (article 3.6e-3)', float(g[('m5max48', 'yaml (libyaml C)')]['gross_J_per_record_mean']), 3.6e-3, 5e-5)
+    chk('128GB gross J/rec yaml (article 7.2e-3)', float(g[('m5max128', 'yaml (libyaml C)')]['gross_J_per_record_mean']), 7.2e-3, 5e-5)
+    for h, jw, yw in (('m5max48', 7.6, 470), ('m5max128', 8.9, 750)):
+        b = float(g[(h, 'fixed binary (struct.iter_unpack)')]['records_per_s_mean'])
+        chk(h + ' json/binary time ratio', b / float(g[(h, 'json (stdlib)')]['records_per_s_mean']), jw, 0.06)
+        chk(h + ' yaml/binary time ratio', b / float(g[(h, 'yaml (libyaml C)')]['records_per_s_mean']), yw, 5)
 sys.exit(1 if bad else 0)

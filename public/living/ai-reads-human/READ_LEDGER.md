@@ -18,7 +18,7 @@ HTML sources were read as tag-stripped text; figures in them were not read.
 | OWASP CSV Injection | owasp.org/www-community/attacks/CSV_Injection | FULL | whole page | dossier S80 |
 | tex.web (Knuth) | mirrors.ctan.org/systems/knuth/dist/tex/tex.web | PARTIAL: header (lines 1-154) and bytes 0-19,000 read; remainder read in dossier row S72.3.c1 but cited for nothing here | "Version 0 was released in September 1982" (line 12) | re-read + dossier |
 | Samsi et al., From Words to Watts | arXiv:2310.03003 | re-read PARTIAL (abstract, intro, sec III setup, energy definitions, sec IV-C "about 3-4 Joules for a output token"); text lines 1-478 extracted, sections used read | energy def (DCGM, rank-0 x nodes), 3-4 J/token at length 512 | re-read 2026-10-18, local text extract |
-| Luccioni, Jernite, Strubell, Power Hungry Processing | DOI 10.1145/3630106.3658542, arXiv:2311.16863 | re-read PARTIAL (setup, 8x A100-SXM4-80GB AWS node, CodeCarbon, Table 2) | Table 2: text classification 0.002, text generation 0.047 kWh per 1,000 | re-read 2026-10-18, local text extract (arXiv version only; the ACM page returned HTTP 403, so the ACM text is UNAVAILABLE and the match is unverified; DOI, title and venue confirmed through Crossref) |
+| Luccioni, Jernite, Strubell, Power Hungry Processing | DOI 10.1145/3630106.3658542, arXiv:2311.16863 | Table 2 VERIFIED against the ACM Corrected Version of Record V1.1 (6 November 2024), read for setup, Table 2 and surrounding results; rest of paper PARTIAL | Table 2: text classification 0.002, text generation 0.047 kWh per 1,000 inferences; setup 8x A100-SXM4-80GB on AWS, CodeCarbon; cite V1.1 (an earlier version used 0.012 kWh in one comparison) | read 2026-10-18; the arXiv version gave the same numbers |
 | Physical constant k_B = 1.380649e-23 J/K | physics.nist.gov/cgi-bin/cuu/Value?k (CODATA 2022, exact) | FULL (page) | value of k_B | read 2026-10-18; the SI Brochure itself was not read; Landauer 1961 UNAVAILABLE (paywalled) |
 
 ## UNAVAILABLE / paywalled (listed, not cited for any claim)
@@ -36,4 +36,4 @@ HTML sources were read as tag-stripped text; figures in them were not read.
 | Unicode Standard / UAX #15; ECMA-262 | not fetched |
 
 ## Not measured here (so not claimed)
-Joules of any kind (VM has no RAPL, perf cycles unsupported; data/ENV.txt). Model energy figures above are other authors' measurements on their hardware.
+Joules on the Linux VM (no RAPL, perf cycles unsupported; data/ENV.txt). Energy on two Apple M5 Max laptops was attempted with macmon and gave no resolved net effect (section 5b of the page; data/energy_joules.tsv); only gross upper bounds and time ratios are reported. Model energy figures above are other authors' measurements on their hardware.

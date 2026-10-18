@@ -1,0 +1,24 @@
+{
+ "host": "Davids-MacBook-Pro-M5-Max-48GB-4.local",
+ "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+ "python": "3.13.16 (main, Sep 30 2026, 18:57:20) [Clang 21.0.0 (clang-2100.3.34.2)]",
+ "machine": "arm64",
+ "cpu": "Apple M5 Max",
+ "macmon": "macmon 0.10.0",
+ "pmset": "Now drawing from 'Battery Power'\n -InternalBattery-0 (id=24051811)\t100%; discharging; 2:22 remaining present: true",
+ "powermode": "System-wide power settings:\n SleepDisabled\t\t1\nCurrently in use:\n standby              1\n Sleep On Power Button 1\n hibernatefile        /var/vm/sleepimage\n powernap             1\n networkoversleep     0\n disksleep            10\n sleep                0 (sleep prevented by coreaudiod, powerd, Brave Browser)\n hibernatemode        3\n ttyskeepawake        1\n displaysleep         120 (display sleep prevented by Brave Browser, Brave Browser)\n tcpkeepalive         1\n powermode            0\n womp                 0\n",
+ "rounds": 10,
+ "window_s": 10.0,
+ "files_sha256": {
+  "recs.json": "692ad32e39dd6db5f2bc02cea25964bdc70d6aa940a9597c7d0421dfc6d9b622",
+  "recs_pretty.json": "bdec88369a48bd64f5c501cf8e1de911eeed0100a0fcb66ab1fedfadcc0c4094",
+  "recs.yaml": "d7e3f07702f21dbc51d072db206d4d4a385035486b502a08753ffbee4becece4",
+  "recs.xml": "33a4252af7a1bf4b913cd110f3613ed1fa4e490ab7d31379fbc6c31f17f566f5",
+  "recs.csv": "c5a40f493ae07ce6aced95dadbd3a472c3876d6f09eceea666675e250670eec8",
+  "recs.msgpack": "1f2d67fabe0afb92168bb79b80de952ff1d2ad13342fdcc5473c02237d93c5b6",
+  "recs.cbor": "9511e33f5f4eff4fd99b6ad241211f29d4f73d6c2d67627a1b88cc483ca89cda",
+  "recs.bin": "adc0771a900ebf6400449ee31f7b00a96e382a448c5f4288022e28974134647f"
+ },
+ "start_utc": "2026-10-18T07:24:18.439309+00:00",
+ "end_utc": "2026-10-18T07:43:18.342037+00:00"
+}
