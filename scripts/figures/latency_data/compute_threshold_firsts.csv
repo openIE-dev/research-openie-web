@@ -1,0 +1,6 @@
+threshold_flop,first_any_date,first_any_model,first_open_date,first_open_model
+1e22,2019-09-17,Megatron-BERT,2019-10-23,T5-11B
+1e23,2019-10-30,AlphaStar,2022-05-02,OPT-175B
+1e24,2021-09-03,FLAN 137B,2023-09-06,Falcon-180B
+1e25,2023-03-15,GPT-4 (Mar 2023),2024-06-14,Nemotron-4 340B
+1e26,2025-02-17,Grok 3,,

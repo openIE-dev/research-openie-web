@@ -1,0 +1,293 @@
+{
+ "accel_hour": [
+  {
+   "life": 4,
+   "util": 0.4,
+   "usd_kwh": 0.04,
+   "capital_per_hr": 2.377,
+   "energy_per_hr": 0.035,
+   "total": 2.412,
+   "energy_share": 0.015
+  },
+  {
+   "life": 4,
+   "util": 0.4,
+   "usd_kwh": 0.08,
+   "capital_per_hr": 2.377,
+   "energy_per_hr": 0.07,
+   "total": 2.447,
+   "energy_share": 0.029
+  },
+  {
+   "life": 4,
+   "util": 0.4,
+   "usd_kwh": 0.12,
+   "capital_per_hr": 2.377,
+   "energy_per_hr": 0.106,
+   "total": 2.482,
+   "energy_share": 0.043
+  },
+  {
+   "life": 4,
+   "util": 0.6,
+   "usd_kwh": 0.04,
+   "capital_per_hr": 1.584,
+   "energy_per_hr": 0.035,
+   "total": 1.62,
+   "energy_share": 0.022
+  },
+  {
+   "life": 4,
+   "util": 0.6,
+   "usd_kwh": 0.08,
+   "capital_per_hr": 1.584,
+   "energy_per_hr": 0.07,
+   "total": 1.655,
+   "energy_share": 0.043
+  },
+  {
+   "life": 4,
+   "util": 0.6,
+   "usd_kwh": 0.12,
+   "capital_per_hr": 1.584,
+   "energy_per_hr": 0.106,
+   "total": 1.69,
+   "energy_share": 0.062
+  },
+  {
+   "life": 4,
+   "util": 0.8,
+   "usd_kwh": 0.04,
+   "capital_per_hr": 1.188,
+   "energy_per_hr": 0.035,
+   "total": 1.224,
+   "energy_share": 0.029
+  },
+  {
+   "life": 4,
+   "util": 0.8,
+   "usd_kwh": 0.08,
+   "capital_per_hr": 1.188,
+   "energy_per_hr": 0.07,
+   "total": 1.259,
+   "energy_share": 0.056
+  },
+  {
+   "life": 4,
+   "util": 0.8,
+   "usd_kwh": 0.12,
+   "capital_per_hr": 1.188,
+   "energy_per_hr": 0.106,
+   "total": 1.294,
+   "energy_share": 0.082
+  },
+  {
+   "life": 5,
+   "util": 0.4,
+   "usd_kwh": 0.04,
+   "capital_per_hr": 1.901,
+   "energy_per_hr": 0.035,
+   "total": 1.936,
+   "energy_share": 0.018
+  },
+  {
+   "life": 5,
+   "util": 0.4,
+   "usd_kwh": 0.08,
+   "capital_per_hr": 1.901,
+   "energy_per_hr": 0.07,
+   "total": 1.972,
+   "energy_share": 0.036
+  },
+  {
+   "life": 5,
+   "util": 0.4,
+   "usd_kwh": 0.12,
+   "capital_per_hr": 1.901,
+   "energy_per_hr": 0.106,
+   "total": 2.007,
+   "energy_share": 0.053
+  },
+  {
+   "life": 5,
+   "util": 0.6,
+   "usd_kwh": 0.04,
+   "capital_per_hr": 1.268,
+   "energy_per_hr": 0.035,
+   "total": 1.303,
+   "energy_share": 0.027
+  },
+  {
+   "life": 5,
+   "util": 0.6,
+   "usd_kwh": 0.08,
+   "capital_per_hr": 1.268,
+   "energy_per_hr": 0.07,
+   "total": 1.338,
+   "energy_share": 0.053
+  },
+  {
+   "life": 5,
+   "util": 0.6,
+   "usd_kwh": 0.12,
+   "capital_per_hr": 1.268,
+   "energy_per_hr": 0.106,
+   "total": 1.373,
+   "energy_share": 0.077
+  },
+  {
+   "life": 5,
+   "util": 0.8,
+   "usd_kwh": 0.04,
+   "capital_per_hr": 0.951,
+   "energy_per_hr": 0.035,
+   "total": 0.986,
+   "energy_share": 0.036
+  },
+  {
+   "life": 5,
+   "util": 0.8,
+   "usd_kwh": 0.08,
+   "capital_per_hr": 0.951,
+   "energy_per_hr": 0.07,
+   "total": 1.021,
+   "energy_share": 0.069
+  },
+  {
+   "life": 5,
+   "util": 0.8,
+   "usd_kwh": 0.12,
+   "capital_per_hr": 0.951,
+   "energy_per_hr": 0.106,
+   "total": 1.056,
+   "energy_share": 0.1
+  },
+  {
+   "life": 6,
+   "util": 0.4,
+   "usd_kwh": 0.04,
+   "capital_per_hr": 1.584,
+   "energy_per_hr": 0.035,
+   "total": 1.62,
+   "energy_share": 0.022
+  },
+  {
+   "life": 6,
+   "util": 0.4,
+   "usd_kwh": 0.08,
+   "capital_per_hr": 1.584,
+   "energy_per_hr": 0.07,
+   "total": 1.655,
+   "energy_share": 0.043
+  },
+  {
+   "life": 6,
+   "util": 0.4,
+   "usd_kwh": 0.12,
+   "capital_per_hr": 1.584,
+   "energy_per_hr": 0.106,
+   "total": 1.69,
+   "energy_share": 0.062
+  },
+  {
+   "life": 6,
+   "util": 0.6,
+   "usd_kwh": 0.04,
+   "capital_per_hr": 1.056,
+   "energy_per_hr": 0.035,
+   "total": 1.091,
+   "energy_share": 0.032
+  },
+  {
+   "life": 6,
+   "util": 0.6,
+   "usd_kwh": 0.08,
+   "capital_per_hr": 1.056,
+   "energy_per_hr": 0.07,
+   "total": 1.127,
+   "energy_share": 0.062
+  },
+  {
+   "life": 6,
+   "util": 0.6,
+   "usd_kwh": 0.12,
+   "capital_per_hr": 1.056,
+   "energy_per_hr": 0.106,
+   "total": 1.162,
+   "energy_share": 0.091
+  },
+  {
+   "life": 6,
+   "util": 0.8,
+   "usd_kwh": 0.04,
+   "capital_per_hr": 0.792,
+   "energy_per_hr": 0.035,
+   "total": 0.827,
+   "energy_share": 0.043
+  },
+  {
+   "life": 6,
+   "util": 0.8,
+   "usd_kwh": 0.08,
+   "capital_per_hr": 0.792,
+   "energy_per_hr": 0.07,
+   "total": 0.863,
+   "energy_share": 0.082
+  },
+  {
+   "life": 6,
+   "util": 0.8,
+   "usd_kwh": 0.12,
+   "capital_per_hr": 0.792,
+   "energy_per_hr": 0.106,
+   "total": 0.898,
+   "energy_share": 0.118
+  }
+ ],
+ "decomp": {
+  "years": 1.917,
+  "price_fold": 280,
+  "hardware_cost_fold": 1.98,
+  "hardware_energy_fold": 1.91,
+  "residual_fold": 141.0
+ },
+ "nvidia_bound": {
+  "F": 42.0,
+  "revenue": 215.938,
+  "share": 0.1945
+ },
+ "openai_round": {
+  "total": 122.0,
+  "nvidia_only": 0.246,
+  "nvidia_plus_amazon_max": 0.656
+ },
+ "breakeven": [
+  {
+   "recovery": 0.0,
+   "theta_star": 1.406
+  },
+  {
+   "recovery": 0.25,
+   "theta_star": 1.055
+  },
+  {
+   "recovery": 0.5,
+   "theta_star": 0.703
+  },
+  {
+   "recovery": 0.75,
+   "theta_star": 0.352
+  },
+  {
+   "recovery": 1.0,
+   "theta_star": 0.0
+  }
+ ],
+ "hhi_min": {
+  "nvidia": 0.068,
+  "coreweave": 0.4489
+ },
+ "backlog_cover": {
+  "coreweave_rpo_over_rev": 11.8
+ }
+}

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="t d"><title id="t">Share of firms using AI, from official surveys</title><desc id="d">Horizontal bars of the share of firms using AI in official surveys: South Korea 32.9, Germany 26, Spain 21.1, EU 20.0, United States 18, OECD 13.9, Brazil 13, France 10 percent.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="558" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Share of firms using AI, from official surveys</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Percent of firms; years and definitions differ, so read each row on its own. Japan and China are measured on people, not firms.</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<line x1="460.0" y1="130.0" x2="460.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="460.0" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">0%</text>
+<line x1="615.0" y1="130.0" x2="615.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="615.0" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">10%</text>
+<line x1="770.0" y1="130.0" x2="770.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="770.0" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">20%</text>
+<line x1="925.0" y1="130.0" x2="925.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="925.0" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">30%</text>
+<line x1="1080.0" y1="130.0" x2="1080.0" y2="470.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1080.0" y="490.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">40%</text>
+<text x="446.0" y="160.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="end">South Korea (firms, 2024)</text>
+<rect x="460.0" y="140.0" width="509.9" height="28.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="978.0" y="162.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="start">32.9%</text>
+<text x="446.0" y="202.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="end">Germany (firms 10+, 2025)</text>
+<rect x="460.0" y="182.0" width="403.0" height="28.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="871.0" y="204.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="start">26%</text>
+<text x="446.0" y="244.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="end">Spain (firms 10+, Q1 2025)</text>
+<rect x="460.0" y="224.0" width="327.1" height="28.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="795.0" y="246.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="start">21.1%</text>
+<text x="446.0" y="286.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="end">EU (enterprises 10+, 2025)</text>
+<rect x="460.0" y="266.0" width="310.0" height="28.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="778.0" y="288.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="start">20%</text>
+<text x="446.0" y="328.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="end">United States (firms, Nov 2025 to Jan 2026)</text>
+<rect x="460.0" y="308.0" width="279.0" height="28.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="747.0" y="330.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="start">18%</text>
+<text x="446.0" y="370.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="end">OECD area (2024)</text>
+<rect x="460.0" y="350.0" width="215.4" height="28.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="683.5" y="372.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="start">13.9%</text>
+<text x="446.0" y="412.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="end">Brazil (firms 10+, 2024)</text>
+<rect x="460.0" y="392.0" width="201.5" height="28.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="669.5" y="414.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="start">13%</text>
+<text x="446.0" y="454.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="end">France (firms 10+, 2024)</text>
+<rect x="460.0" y="434.0" width="155.0" height="28.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="623.0" y="456.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="start">10%</text>
+<text x="40.0" y="530.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Japan: 55.2% of surveyed workers used generative AI in some task (US 90.6%, Germany 90.3%, China 95.8%). China: 515 million users, 36.5% of the population.</text></svg>

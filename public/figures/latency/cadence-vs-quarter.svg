@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="t d"><title id="t">Cadence against readiness: how a calendar adds wait</title><desc id="d">Timeline of quarterly decision dates with three example readiness times and the weeks each waits until the next date; text states the average wait is half the period.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="518" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Cadence against readiness: how a calendar adds wait</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Model illustration. Quarterly decision dates with T = 0.25 year; readiness at a uniform random phase waits T/2 on average.</text>
+<rect x="957.0" y="26" width="203.0" height="34" rx="17" fill="none" stroke="#E69F00" stroke-width="2"/>
+<text x="1058.5" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#E69F00" text-anchor="middle">Model illustration</text>
+<line x1="80.0" y1="150.0" x2="80.0" y2="380.0" stroke="#94a3b8" stroke-width="2"/>
+<text x="80.0" y="404.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#475569" text-anchor="middle">Q1</text>
+<line x1="210.0" y1="150.0" x2="210.0" y2="380.0" stroke="#94a3b8" stroke-width="2"/>
+<text x="210.0" y="404.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#475569" text-anchor="middle">Q2</text>
+<line x1="340.0" y1="150.0" x2="340.0" y2="380.0" stroke="#94a3b8" stroke-width="2"/>
+<text x="340.0" y="404.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#475569" text-anchor="middle">Q3</text>
+<line x1="470.0" y1="150.0" x2="470.0" y2="380.0" stroke="#94a3b8" stroke-width="2"/>
+<text x="470.0" y="404.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#475569" text-anchor="middle">Q4</text>
+<line x1="600.0" y1="150.0" x2="600.0" y2="380.0" stroke="#94a3b8" stroke-width="2"/>
+<text x="600.0" y="404.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#475569" text-anchor="middle">Q1</text>
+<line x1="730.0" y1="150.0" x2="730.0" y2="380.0" stroke="#94a3b8" stroke-width="2"/>
+<text x="730.0" y="404.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#475569" text-anchor="middle">Q2</text>
+<line x1="860.0" y1="150.0" x2="860.0" y2="380.0" stroke="#94a3b8" stroke-width="2"/>
+<text x="860.0" y="404.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#475569" text-anchor="middle">Q3</text>
+<line x1="990.0" y1="150.0" x2="990.0" y2="380.0" stroke="#94a3b8" stroke-width="2"/>
+<text x="990.0" y="404.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#475569" text-anchor="middle">Q4</text>
+<line x1="1120.0" y1="150.0" x2="1120.0" y2="380.0" stroke="#94a3b8" stroke-width="2"/>
+<text x="1120.0" y="404.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#475569" text-anchor="middle">Q1</text>
+<circle cx="366.0" cy="200.0" r="9" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<line x1="366.0" y1="200.0" x2="470.0" y2="200.0" stroke="#0072B2" stroke-width="5" marker-end="url(#ah)"/>
+<text x="366.0" y="186.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0072B2" text-anchor="middle">ready</text>
+<text x="418.0" y="226.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0072B2" text-anchor="middle">wait 10 weeks</text>
+<circle cx="704.0" cy="260.0" r="9" fill="#009E73" stroke="#ffffff" stroke-width="2"/>
+<line x1="704.0" y1="260.0" x2="730.0" y2="260.0" stroke="#009E73" stroke-width="5" marker-end="url(#ah)"/>
+<text x="704.0" y="246.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#009E73" text-anchor="middle">ready</text>
+<text x="717.0" y="286.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#009E73" text-anchor="middle">wait 3 weeks</text>
+<circle cx="1094.0" cy="310.0" r="9" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<line x1="1094.0" y1="310.0" x2="1120.0" y2="310.0" stroke="#D55E00" stroke-width="5" marker-end="url(#ah)"/>
+<text x="1094.0" y="296.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#D55E00" text-anchor="middle">ready</text>
+<text x="1107.0" y="336.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#D55E00" text-anchor="middle">wait 3 weeks</text>
+<text x="80.0" y="450.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0f172a" text-anchor="start">Funding cycle for a venture-backed firm: 3 to 5 years between rounds, so the same logic gives 1.5 to 2.5 years on average (Proposition 1).</text>
+<text x="80.0" y="478.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">The quarter is a property of the reporting calendar, not of the engineering. Readiness phase is modeled, not observed.</text></svg>

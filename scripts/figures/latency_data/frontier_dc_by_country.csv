@@ -1,0 +1,13 @@
+country,n_sites,power_mw,h100_equivalents,capital_cost_usd_bn_2025
+United States,77,11851.3,12622038,448.95
+Malaysia,3,1137.7,1285527,43.1
+China,4,731.3,320440,27.7
+United Kingdom,1,88.0,123800,3.33
+Finland,1,75.0,48528,2.84
+Indonesia,1,72.0,84386,2.73
+Norway,2,42.0,50773,1.59
+Australia,1,41.0,46488,1.55
+Portugal,1,33.0,31834,1.25
+Iceland,1,5.1,5821,0.19
+Sweden,1,0,0,0.0
+United Arab Emirates,1,0,0,0.0
