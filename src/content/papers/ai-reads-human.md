@@ -2,7 +2,7 @@
 title: "\"AI\" Reads Human: Human Language Encoding at Machine Speed and the Energy Cost"
 deck: "Work in progress. Why so much of what machines exchange is written for people, what that costs in bytes, tokens and time today, and how the energy cost will be measured."
 id: ai-reads-human
-status: "In preparation"
+status: "Work in progress"
 author: "David Charlot, Open Interface Engineering"
 figures: "/living/ai-reads-human/"
 pdf: "/pdfs/ai-reads-human.pdf"
