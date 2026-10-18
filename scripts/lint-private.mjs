@@ -5,6 +5,7 @@
 // shipped in the RCE-JEPA page because nothing checked for it.
 import fs from 'node:fs';
 import path from 'node:path';
+import { draftIds } from './drafts.mjs';
 
 export const MARKERS = [
   [/\/workspace\//, 'working path /workspace/'],
@@ -56,6 +57,27 @@ export function scanTree(root, rels, exts = SRC_EXT, ignore = null) {
   return { count: files.length, hits };
 }
 
+// Draft studies must not appear anywhere in dist: not as a file name and not inside any text file.
+export function scanDrafts(root, ids) {
+  const hits = [];
+  const dist = path.join(root, 'dist');
+  const walkAll = (d) => {
+    if (!fs.existsSync(d)) return;
+    for (const f of fs.readdirSync(d)) {
+      const p = path.join(d, f), rel = path.relative(dist, p).split(path.sep).join('/');
+      for (const id of ids) if (rel.includes(id)) hits.push({ file: rel, line: 0, label: `draft slug "${id}" in a file name`, ctx: '' });
+      const st = fs.statSync(p);
+      if (st.isDirectory()) walkAll(p);
+      else if (/\.(html|txt|xml|js|json|css|svg|md|tsv)$/.test(f)) {
+        const t = fs.readFileSync(p, 'utf8');
+        for (const id of ids) { const i = t.indexOf(id); if (i >= 0) hits.push({ file: rel, line: 0, label: `draft slug "${id}"`, ctx: t.slice(Math.max(0, i - 30), i + 50).replace(/\s+/g, ' ') }); }
+      }
+    }
+  };
+  walkAll(dist);
+  return hits;
+}
+
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname);
 if (isMain) {
   const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -63,6 +85,7 @@ if (isMain) {
   const r = mode === 'dist'
     ? scanTree(ROOT, ['dist'], /\.html$/)
     : scanTree(ROOT, ['src/content', 'src/pages', 'src/components', 'src/includes', 'src/layouts', 'src/data'], SRC_EXT, /^src\/data\/private-markers-allow\.json$/);
+  if (mode === 'dist') r.hits.push(...scanDrafts(ROOT, draftIds(ROOT)));
   for (const h of r.hits) console.error(`${h.file}:${h.line}: ${h.label}  ...${h.ctx}...`);
   if (r.hits.length) { console.error(`private lint: ${r.hits.length} marker(s) in ${mode}; the build is stopped`); process.exit(1); }
   console.log(`private lint (${mode}): ${r.count} files clean`);

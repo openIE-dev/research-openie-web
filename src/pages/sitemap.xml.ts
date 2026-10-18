@@ -2,15 +2,15 @@
 // so a new study appears here without a hand edit. No <lastmod>, matching the klere.ai rule.
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { studies } from '../data/studyList';
+import { studies, isDraft } from '../data/studyList';
 
 const STATIC = ['/', '/about/', '/glossary/', '/living/', '/opportunity-map/', '/about/rce-jepa/'];
 
 export const GET: APIRoute = async ({ site }) => {
   const base = site ?? new URL('https://research.openie.dev');
-  const papers = await getCollection('papers');
-  const products = await getCollection('products');
-  const translations = await getCollection('translations');
+  const papers = (await getCollection('papers')).filter((p) => !isDraft(p.data.id));
+  const products = (await getCollection('products')).filter((p) => !isDraft(p.data.id));
+  const translations = (await getCollection('translations')).filter((t) => !isDraft(t.data.source));
   const routes = [
     ...STATIC,
     ...studies.flatMap((s) => [s.path, s.aboutPath, s.pdfPath]),

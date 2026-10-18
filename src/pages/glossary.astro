@@ -1,7 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { drafts } from '../data/studyList';
+import studiesData from '../data/studies.json';
+const studiesAll = studiesData.studies;
 
-const terms = [
+const allTerms = [
   {
     term: "commit gate",
     def: "A check that runs before an irreversible action. A proposal may not authorize itself. The gate commits or refuses and writes a receipt.",
@@ -103,6 +106,10 @@ const terms = [
     def: "A proposed definition of an agent with an energy budget and a refusal rule, stated in the agency paper. It is a proposal.",
   },
 ];
+
+// Terms that mention an unpublished draft (by title, short title or slug) are left out of the build.
+const hidden = studiesAll.filter((x) => drafts.includes(x.id)).flatMap((x) => [x.id, x.title, x.short_title]);
+const terms = allTerms.filter((t) => !hidden.some((h) => (t.term + ' ' + t.def).includes(h)));
 ---
 
 <Layout
