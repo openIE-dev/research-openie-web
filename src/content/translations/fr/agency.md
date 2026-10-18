@@ -6,9 +6,10 @@ source: "agency"
 complete: true
 ---
 
-<div id="the-universal-law-of-agency" class="anchor-alias" aria-hidden="true"></div>
+
 
 *Version 1.1, 11 octobre 2026. Données et code : [research.openie.dev/data/](/data/#agency). PDF LaTeX : [/pdfs/latex/agency.pdf](/pdfs/latex/agency.pdf) ([source](/pdfs/latex/agency.tex)).*
+
 
 <div id="abstract" class="anchor-alias" aria-hidden="true"></div>
 
@@ -21,6 +22,7 @@ Cet article définit un agent comme un système qui tient un but sous un budget 
 1. Pour compter comme agent, un système doit viser un but, agir sur le monde et rester dans un budget d'énergie.
 2. La physique fixe un coût minimal en énergie pour chaque décision, de sorte qu'aucun agent ne peut agir plus vite ni à moindre coût que cette limite.
 3. Parmi les systèmes qui accomplissent correctement le travail, le plus intelligent est celui qui a utilisé le moins d'énergie.
+
 
 <div id="1-thesis" class="anchor-alias" aria-hidden="true"></div>
 
@@ -56,6 +58,7 @@ Ce programme confronte cet ordre à la littérature. Il range chaque source dans
 
 Aucune source n'est exclue en raison de sa méthode. Chaque source est placée selon ce qu'elle apporte à la définition, à la cinématique ou au calcul.
 
+
 <div id="terms" class="anchor-alias" aria-hidden="true"></div>
 
 ### Termes
@@ -75,6 +78,7 @@ Aucune source n'est exclue en raison de sa méthode. Chaque source est placée s
 - **Mixture of Limits (mélange de limites) :** la règle consistant à utiliser le mécanisme (engrenage) le moins coûteux qui suffit. Il existe des planchers au-delà desquels des tokens, des paramètres ou des joules supplémentaires n'achètent aucun progrès vérifiable. La dépense au-delà du plancher est du gaspillage. Ce plancher est le plateau (convergence de seuil). Mixture of Limits n'est pas une cascade fixe unique. Un ordre de cascade fixe en est une instance. Le sélecteur de loi σ en est une autre.
 - **Reçu :** un enregistrement attaché à chaque acte, qui contient sa prédiction, son résultat et ses joules.
 
+
 <div id="2-formal-framework" class="anchor-alias" aria-hidden="true"></div>
 
 ## 2. Cadre formel
@@ -87,7 +91,7 @@ La Figure 1 montre comment les trois couches s'empilent.
 
 *Figure 1. L'agentivité en trois couches. Diagramme des Sections 2.1 à 2.3 : la définition et la porte, les bornes cinématiques et l'intelligence comme calcul de l'agentivité. Une [copie PNG](/figures/agency/three-layers.png) est fournie.*
 
-<div id="21-layer-1-the-law-eligibility" class="anchor-alias" aria-hidden="true"></div>
+
 
 <div id="21-layer-1-the-definition-and-its-gate-eligibility" class="anchor-alias" aria-hidden="true"></div>
 
@@ -107,6 +111,7 @@ W_{\mathrm{ext}} \le -\Delta F + k_B T\, I, \qquad W_{\mathrm{meas}} + W_{\mathr
 $$
 
 Ici $I$ est l'information mutuelle qu'acquiert la comparaison de l'acte, en nats. Un bit vaut $\ln 2$ nats, de sorte que chaque bit coûte $k_B T\ln 2$. Un accepteur qui compare puis se réinitialise paie au moins $k_B T \ln 2$ par bit sur un cycle fermé [6, 7]. La définition est physique dès sa première clause.
+
 
 <div id="definition-1-coupling" class="anchor-alias" aria-hidden="true"></div>
 
@@ -138,6 +143,7 @@ Pourquoi cette mesure :
 - **Elle n'a pas besoin de graphe causal.** Janzing, Balduzzi, Grosse-Wentrup et Schölkopf ont dérivé une mesure de l'influence causale à partir de postulats, étant donnés le graphe causal et la distribution jointe [13]. Un reçu contient des actes et des résultats, pas le graphe complet de l'agent. Le flux se calcule directement à partir d'eux.
 - **Le crédit revient à l'acte qui l'a causé.** Lorsque plusieurs actes touchent un même résultat, les bits crédités à l'acte $k$ suivent le traitement de la causalité effective pour des transitions uniques donné par Albantakis, Marshall, Hoel et Tononi [14].
 
+
 <div id="definition-2-agent-boundary" class="anchor-alias" aria-hidden="true"></div>
 
 #### Définition 2. Frontière de l'agent
@@ -149,6 +155,7 @@ Soit le système physique un ensemble fini $V$ de composants, chacun derrière u
 $V$ est fini, il y a donc un nombre fini de candidats. Un maximiseur existe dès qu'un candidat a $J_S > 0$. Le reçu nomme le maximiseur et enregistre toute égalité.
 
 **Mesure fermée sur l'acte.** La clause 4 impute les joules d'un acte à l'agent qui agit. Ainsi, à un candidat crédité du couplage d'un acte est imputé chaque joule qui le réalise : les joules de l'actionneur qui exécute l'acte et ceux de la liaison qui transporte la commande. $J_S$ dans la Définition 2 se lit selon cette règle. Takahashi et Hayashi montrent pourquoi la règle est nécessaire. Avec une frontière ouverte, le gain d'information et la dissipation à l'intérieur de la frontière se découplent, et les bits par joule peuvent être rendus aussi grands que l'on veut [239].
+
 
 <div id="lemma-1-the-maximizing-boundary-contains-the-actuator" class="anchor-alias" aria-hidden="true"></div>
 
@@ -182,6 +189,7 @@ Pourquoi cette frontière :
 - **Les agrégations à gros grain comptent.** Hoel, Albantakis et Tononi ont montré qu'une description macroscopique peut porter davantage de pouvoir causal que la description microscopique [21].
 - **Les outils déplacent la frontière.** Lorsqu'une personne utilise un outil, les candidats comprennent la personne seule, l'outil seul et la paire. La Définition 2 crédite le couplage au candidat qui maximise $X_S/J_S$, chaque joule de l'acte lui étant imputé. Krakauer modélise la personne, l'outil et la tâche comme un seul système dynamique dans lequel la compétence retenue et la dépendance coévoluent. Au-delà d'une disponibilité critique de l'outil, la compétence s'effondre jusqu'à un plancher de dépendance, et sous un but incertain l'agentivité elle-même peut passer à l'outil [340]. Dans ce modèle, un outil dont l'utilisateur peut reconstruire le fonctionnement, comme un boulier, laisse la compétence à la personne une fois l'outil retiré, tandis que la navigation par satellite se situe dans la région où la compétence diminue avec l'usage [340]. Le rapport de la Définition 2 rend ce transfert mesurable : testez la personne sans l'outil, et les bits confirmés qui restent sont ceux que la personne détient.
 - **Chaque candidat a une interface.** Rosas, Mediano, Biehl, Chandaria et Polani ont démontré que tout processus stochastique biparti possède une couverture causale, et ont donné un algorithme qui la trouve à partir de données sans hypothèse d'état stationnaire ni de Markov [22].
+
 
 <div id="22-layer-2-kinematics" class="anchor-alias" aria-hidden="true"></div>
 
@@ -235,6 +243,7 @@ $$
 
 **K5. Plafond quantique du taux.** Un système d'énergie moyenne $\langle E\rangle$ au-dessus de son état fondamental effectue au plus $2\langle E\rangle/(\pi\hbar)$ transitions orthogonales par seconde [31]. Cela fait environ $6.04 \times 10^{33}$ transitions par seconde et par joule, calculé à partir des constantes. Le chiffre d'environ $3 \times 10^{33}$ parfois cité est $2E/h$, la moitié du taux de Margolus-Levitin, puisque $2E/(\pi\hbar) = 4E/h$.
 
+
 <div id="proposition-1-joule-floor-of-one-act-in-finite-time" class="anchor-alias" aria-hidden="true"></div>
 
 #### Proposition 1. Plancher en joules d'un acte en temps fini
@@ -280,6 +289,7 @@ $$
 
 La dernière inégalité est stricte dès que $\phi_N^{-1}(b_k) > \varepsilon$ avec $\tau_k\langle A\rangle_k$ fini.
 
+
 <div id="proposition-2-standing-joules-to-hold-a-goal" class="anchor-alias" aria-hidden="true"></div>
 
 #### Proposition 2. Joules permanents pour tenir un but
@@ -309,6 +319,7 @@ $$
 
 **Lecture.** Un agent qui tient un but face à un monde instable paie une puissance permanente d'au moins $f\, k_B T\ln 2\sum_{|\lambda_i|>1}\log_2|\lambda_i|$ à $f$ pas de commande par seconde. Un mode instable avec $|\lambda| = 2$ demande un bit par pas, soit $k_B T\ln 2 \approx 2.87\times10^{-21}$ J par pas à 300 K. Les bits par pas de l'enregistrement bornent son information par le haut, de sorte que la démonstration donne aussi une forme non stricte et moyennée du théorème du débit de données (Section 4.1). La composition est brève. C'est le théorème du débit de données de Tatikonda et Mitter et de Nair et Evans [169, 170], au prix de $k_B T\ln 2$ par bit via Touchette et Lloyd [32, 33]. Ce qu'elle ajoute, c'est le prix en joules, qui est le plancher dont la Prédiction 1 a besoin.
 
+
 <div id="proposition-3-precision-of-confirmed-agency" class="anchor-alias" aria-hidden="true"></div>
 
 #### Proposition 3. Précision de l'agentivité confirmée
@@ -331,6 +342,7 @@ Lorsque l'expérience inverse est égale à l'expérience directe, ceci s'écrit
 
 **Lecture.** La partie 1 n'a besoin d'aucune propriété de renversement du temps ni d'aucun modèle de la rétroaction. La précision de l'agentivité confirmée s'achète avec de l'activité. La partie 3 est le prix de la dissipation, et elle vaut sous rétroaction parce qu'elle repose sur la relation de fluctuation avec rétroaction. La TUR standard ne contraint pas les machines à rétroaction en expérience [27]. C'est pourquoi la forme pour agents porte le terme d'information.
 
+
 <div id="proposition-4-quantum-agents-keep-the-floor" class="anchor-alias" aria-hidden="true"></div>
 
 #### Proposition 4. Les agents quantiques conservent le plancher
@@ -349,6 +361,7 @@ Lorsque $\varepsilon \to 0$, c'est le plancher de la Proposition 1. Lorsque l'é
 
 **Lecture.** Les ressources quantiques changent ce qu'un agent peut faire par acte. Elles n'abaissent pas le prix de son enregistrement. L'enregistrement coûte $k_B T\ln 2$ par bit, moins un résidu $\phi_N(\varepsilon)$ qui s'annule à mesure que la réinitialisation devient exacte. La mesure qui écrit l'enregistrement a son propre prix, donné à la Section 4.1.
 
+
 <div id="23-layer-3-calculus-intelligence-as-a-derivative-read-in-hindsight" class="anchor-alias" aria-hidden="true"></div>
 
 ### 2.3 Couche 3. Calcul : l'intelligence comme dérivée, lue après coup
@@ -364,6 +377,7 @@ Une exécution produit un reçu : l'enregistrement ordonné $\{(J_k, X_k)\}_{k=0
 $X_{\mathrm{req}}$ est fixé par le prédicat de complétude de la tâche, $C(z)$. C'est une porte, pas un score. Les paramètres, les tokens et les bancs d'essai n'interviennent qu'à travers $J^*$. Tous les autres facteurs se réduisent à zéro.
 
 La lecture après coup est ici littérale. La vitesse se lit sur une trajectoire enregistrée. L'intelligence se lit sur une exécution enregistrée. Le reçu est la trajectoire.
+
 
 <div id="proposition-5-intelligence-exists-as-a-bounded-density-on-the-joule-axis" class="anchor-alias" aria-hidden="true"></div>
 
@@ -404,6 +418,7 @@ Là où $P > 0$, $\iota = \sum_k (b_k/J_k)(P_k/P)$. Pour des actes qui ne se che
 
 La Proposition 5 vaut par construction. La règle de crédit rend $X$ absolument continue par rapport à $J$, de sorte que la densité existe par définition. Son contenu est le choix de la règle : la partie 4 montre que l'autre règle naturelle, le crédit ponctuel, ne laisse aucune densité.
 
+
 <div id="proposition-6-sampled-intelligence-converges" class="anchor-alias" aria-hidden="true"></div>
 
 #### Proposition 6. L'intelligence échantillonnée converge
@@ -426,6 +441,7 @@ $$
 
 Le membre de droite tend vers 0 en tout point de Lebesgue de $g'$, et presque tout $j$ est un point de Lebesgue par le théorème de différentiation de Lebesgue. Les bornes de $\hat\iota$ sont la monotonie et la constante de Lipschitz de $g$. Une lecture $\Delta\hat J \in [(1-\epsilon)\Delta J, (1+\epsilon)\Delta J]$ divise le même $\Delta X$. $\blacksquare$
 
+
 <div id="proposition-7-composition-of-joules-and-coupled-bits" class="anchor-alias" aria-hidden="true"></div>
 
 #### Proposition 7. Composition des joules et des bits couplés
@@ -447,6 +463,7 @@ Le membre de droite tend vers 0 en tout point de Lebesgue de $g'$, et presque to
 4. La Proposition 5 n'a besoin que de l'exécution, du compteur et de K1 par acte. On l'applique à la paroi du groupe. $\blacksquare$
 
 **Lecture.** Les joules s'additionnent, avec par-dessus les liaisons du groupe. Les bits couplés de membres indépendants s'additionnent au moins, et certains n'existent qu'au niveau du groupe. Un groupe élève $\iota_G$ lorsqu'il gagne plus de bits couplés que ses membres n'en détiennent seuls, ou dépense moins de joules en agissant ensemble que ses membres en agissant séparément. La Section 4.1 donne les théorèmes qui attribuent un prix aux deux termes.
+
 
 <div id="prediction-1-the-optimal-act-time-of-an-agent-that-holds-a-goal" class="anchor-alias" aria-hidden="true"></div>
 
@@ -491,6 +508,7 @@ La Figure 2 trace la courbe de la Prédiction 1.
 
 **Où la tester.** Un piège colloïdal à rétroaction impose des potentiels virtuels par logiciel et calcule le travail à partir des trajectoires à l'échelle de $k_B T$ (Section 3.2). Une coordonnée exécute un cycle d'acte d'un bit dans un double puits virtuel avec un temps de réinitialisation $\tau$. L'autre est maintenue au sommet d'un puits virtuel inversé de taux $\Lambda$. Une boîte à un électron munie d'un détecteur de charge exécute le même cycle d'acte en comptant chaque saut, de sorte que $\langle A\rangle$ est mesurée (Section 3.2). La Section 8.8 donne le protocole.
 
+
 <div id="proposition-8-the-gated-ranking" class="anchor-alias" aria-hidden="true"></div>
 
 #### Proposition 8. Le classement avec porte
@@ -513,6 +531,7 @@ La Figure 2 trace la courbe de la Prédiction 1.
 
 **Lecture.** La partie 4 est le mécanisme de R-F6 à la Section 8.11 : les échecs bon marché élèvent la $\iota$ intégrée et laissent $J^*$ inchangé ou infini. C'est pourquoi $\iota$ se lit comme une densité à l'intérieur d'une exécution et $J^*$ est le classement entre systèmes. La partie 3 règle P6 à un $\epsilon$ validé près pour chaque compteur.
 
+
 <div id="proposition-9-when-cheapest-first-is-optimal" class="anchor-alias" aria-hidden="true"></div>
 
 #### Proposition 9. Quand commencer par le moins coûteux est optimal
@@ -533,6 +552,7 @@ La Figure 2 trace la courbe de la Prédiction 1.
 
 **Lecture.** La cascade fixe, le moins coûteux suffisant en premier dans un ordre fixe, est optimale lorsque les engrenages bon marché réussissent assez souvent pour payer leurs échecs : $q_L c_H > c_L$ à chaque étape d'une cascade emboîtée, ou des coûts croissants accompagnés de $p/c$ décroissants parmi des engrenages indépendants. Lorsque la condition échoue, aller directement à l'engrenage plus lourd l'emporte, et sous un budget contraignant ce peut être la seule façon d'achever. C'est le mécanisme du résultat du sélecteur à la Section 8.11. Le sélecteur de loi σ estime le rapport avec des probabilités de réussite calibrées. C'est une règle de valeur du calcul avec les joules comme coût, au sens de Russell et Wefald et de Horvitz (Section 5.1). Il s'arrête lorsque l'acte suivant ne paie plus ses joules. Les deux règles s'arrêtent au plancher au-delà duquel davantage de joules n'achètent aucun progrès vérifiable, de sorte que toutes deux sont des instances de Mixture of Limits. P7 (Section 7.1) énumère ce qui reste ouvert : une borne de regret lorsque les probabilités de réussite sont estimées ou que la suffisance n'est pas monotone, et le cas emboîté à plus de deux engrenages, qui est un programme dynamique sur les sous-suites croissantes d'engrenages.
 
+
 <div id="24-where-the-studies-sit" class="anchor-alias" aria-hidden="true"></div>
 
 ### 2.4 Où se situent les études
@@ -540,7 +560,7 @@ La Figure 2 trace la courbe de la Prédiction 1.
 - **Mixture of Limits** est l'opérateur d'optimum. L'engrenage suffisant le moins coûteux est l'argmin sur les joules. C'est une philosophie, pas un ordre fixe unique : la dépense s'arrête au plateau, où davantage est du gaspillage.
 - **Le reçu** porte $R^*$, $R$, $m$ et $J$ pour chaque acte.
 
-<div id="3-layer-1-the-universal-law-of-agency" class="anchor-alias" aria-hidden="true"></div>
+
 
 <div id="3-layer-1-the-proposed-universal-law-of-agency-a-definition-plus-a-gate" class="anchor-alias" aria-hidden="true"></div>
 
@@ -548,11 +568,13 @@ La Figure 2 trace la courbe de la Prédiction 1.
 
 La définition comporte quatre clauses : une prédiction fixée avant l'acte, un couplage au monde par intervention, une conséquence assumée par le système et un plancher physique en joules avec refus sur un reçu.
 
+
 <div id="30-objections-to-the-floor" class="anchor-alias" aria-hidden="true"></div>
 
 ### 3.0 Objections au plancher
 
 Le plancher utilisé ici est contesté, et les hypothèses (R1) à (R4) de la Proposition 1 sont l'endroit où les objections trouvent leur réponse. Norton soutient que le principe de Landauer ne vaut que pour des protocoles comportant une étape thermodynamiquement irréversible [326]. Maroney et Sagawa distinguent l'irréversibilité logique de l'irréversibilité thermodynamique : $k_B T\ln 2$ est le prix de la variation d'entropie d'une mémoire, non d'un bit en tant que tel [327, 328]. López-Suárez, Neri et Gammaitoni ont fait fonctionner une porte logique irréversible en dessous de $k_B T$ [329]. Wolpert et ses collègues soutiennent que les coûts des ordinateurs réels sont dominés par l'inadéquation, la modularité et l'horloge plutôt que par l'effacement [320]. Chaque objection restreint l'affirmation au lieu de la renverser. La Proposition 1 n'est énoncée que pour un enregistrement qui satisfait (R1) à (R4), une réinitialisation vers un état fixe avec des états de même énergie et sans énergie d'interaction partagée, ce qui est le cas où la borne tient ; le plancher est une borne inférieure, et chaque acte confirmé des exécutions de la Section 8.11 que le compteur a résolu se situe à plus de 14 ordres de grandeur au-dessus. K5 a une portée semblable : Jordan montre que la borne de Margolus-Levitin ne limite pas la vitesse de calcul par l'énergie sans hypothèse sur la densité d'information [324], de sorte que K5 se lit comme une borne sur les changements d'état orthogonaux, et non sur la fréquence d'horloge.
+
 
 <div id="31-proven" class="anchor-alias" aria-hidden="true"></div>
 
@@ -574,6 +596,7 @@ Le plancher utilisé ici est contesté, et les hypothèses (R1) à (R4) de la Pr
 
 **Le couplage et la frontière reposent sur des théorèmes.** Ay et Polani ont défini le flux d'information causal au moyen d'interventions [8]. L'entropie de transfert ne mesure pas ce flux, comme l'a montré un exemple [11]. La condition de couverture de Markov ne tient que dans une plage étroite de paramètres, par dérivation [15], et ses définitions en usage diffèrent, par contre-exemple [16]. Tout processus stochastique biparti possède une couverture causale, par théorème [22]. Les Définitions 1 et 2 reposent sur ces résultats.
 
+
 <div id="32-demonstrated" class="anchor-alias" aria-hidden="true"></div>
 
 ### 3.2 Constaté
@@ -588,6 +611,7 @@ Les machines classiques ont mesuré le prix à pleine échelle. Une machine à p
 
 **Agents à systèmes fonctionnels construits et exécutés.** Un nématode simulé doté d'un accepteur des résultats de l'action a appris la locomotion et la chimiotaxie [90]. Un robot mobile physique a exécuté le même contrôleur à système fonctionnel [91]. Les clauses 1 et 3 fonctionnent en logiciel et sur un corps. Aucun des deux ne mesure de joules.
 
+
 <div id="33-positions-in-the-literature" class="anchor-alias" aria-hidden="true"></div>
 
 ### 3.3 Positions dans la littérature
@@ -598,13 +622,14 @@ Les machines classiques ont mesuré le prix à pleine échelle. Une machine à p
 
 **Énergie libre et physique de l'agentivité.** Friston propose que les agents minimisent l'énergie libre variationnelle [113, 114]. Cette énergie libre est informationnelle, non des joules, et tout système borné y satisfait, de sorte qu'elle ne fixe aucun plancher. Rovelli explique l'agentivité par le gradient d'entropie [115]. L'agentivité est thermodynamique à la racine. Jaeger soutient que l'agentivité exige l'autofabrication et que l'intelligence artificielle actuelle en est dépourvue [116]. C'est l'exigence d'une porte avant toute affirmation d'intelligence. Azadi relie l'agentivité à l'irréductibilité computationnelle [117]. Wissner-Gross et Freer proposent une force vers la diversité des trajectoires futures [118]. Sa température causale n'est pas une température de bain, de sorte que ses unités ne sont pas des joules. Le commentaire de Kappen la critique [119]. Fields, Goldstein et Sandved-Smith distinguent l'énergie libre thermodynamique, en joules, de l'énergie libre variationnelle dans les agents à inférence active, et relient les deux [120]. Seule la grandeur en joules entre dans K1. Bruineberg et ses collègues distinguent la couverture de Markov comme outil d'inférence de la couverture comme frontière physique [17]. La Définition 2 tire la frontière de la définition. Bartlett et ses collègues font du traitement de l'information orienté vers un but, mesuré par l'information sémantique, le trait distinctif des systèmes vivants [121]. Ce sont les clauses 2 et 3 comme critère du vivant.
 
-<div id="4-layer-2-the-kinematic-laws-of-agency" class="anchor-alias" aria-hidden="true"></div>
+
 
 <div id="4-layer-2-the-kinematic-bounds-of-agency" class="anchor-alias" aria-hidden="true"></div>
 
 ## 4. Couche 2. Les bornes cinématiques de l'agentivité
 
 Une fois un acte éligible, la physique borne la vitesse à laquelle l'agentivité se déplace par seconde et par joule, ainsi que le coût de la précision et de la vitesse. Les bornes forment quatre familles : limites de vitesse, TUR, coûts en temps fini et plafonds de taux.
+
 
 <div id="41-proven" class="anchor-alias" aria-hidden="true"></div>
 
@@ -636,6 +661,7 @@ La Figure 3 ordonne les trois porteurs.
 
 **Débits d'information sans joules.** Schreiber a défini l'entropie de transfert, le flux d'information dirigé par pas [199]. Elle est par unité de temps, non par joule, et n'a pas de porte d'éligibilité. Tishby et Polani ont imputé l'information par pas dans une récursion de Bellman [200]. Landauer convertit ces bits en joules. Stratonovich a borné le gain maximal tiré d'une quantité d'information donnée [201]. C'est un plafond sur la valeur par bit couplé.
 
+
 <div id="42-demonstrated" class="anchor-alias" aria-hidden="true"></div>
 
 ### 4.2 Constaté
@@ -650,17 +676,20 @@ La Figure 3 ordonne les trois porteurs.
 
 **Empowerment en simulation.** Klyubin, Polani et Nehaniv ont défini l'empowerment, la capacité du canal des actions vers les capteurs futurs [9]. Il a été calculé pour le contrôle continu [220] et passé en revue [221]. Il mesure combien un agent peut déplacer le monde, en bits. Ce n'est pas un taux par joule.
 
+
 <div id="43-positions-in-the-literature" class="anchor-alias" aria-hidden="true"></div>
 
 ### 4.3 Positions dans la littérature
 
 La cinématique relève surtout du théorème et de l'expérience. Les opinions portent ici sur la bonne variable. Seifert soutient que l'inférence à partir des fluctuations est la voie vers les coûts cachés [137]. Rovelli d'une part, Wissner-Gross et Freer d'autre part, proposent une cinématique entropique [115, 118]. Kolchinsky montre que la dissipation seule ne borne pas la vitesse à laquelle les réplicateurs croissent ou déclinent [222]. Les taux sont bornés par la dissipation conjointement à l'activité. C'est la forme de la limite de vitesse, où $\langle A\rangle$ figure à côté de $\Sigma$. Adlam, McQueen et Waegell soutiennent qu'un système purement quantique ne peut pas être un agent, car construire un modèle du monde et délibérer exigent de copier, ce que le théorème de non-clonage interdit (prépublication) [223]. La clause 3 demande déjà un enregistrement classique de $m$.
 
+
 <div id="5-layer-3-intelligence-as-the-calculus-of-agency" class="anchor-alias" aria-hidden="true"></div>
 
 ## 5. Couche 3. L'intelligence comme calcul de l'agentivité
 
 L'intelligence est la dérivée en joules de l'agentivité soumise à la porte, lue sur une exécution achevée. Cette couche demande trois choses à la littérature : une théorie qui relie l'apprentissage et la décision aux joules, des mesures de joules par unité de travail utile, et des positions sur ce qu'est l'intelligence.
+
 
 <div id="51-proven" class="anchor-alias" aria-hidden="true"></div>
 
@@ -669,6 +698,7 @@ L'intelligence est la dérivée en joules de l'agentivité soumise à la porte, 
 **Apprentissage et prédiction au prix des joules.** Goldt et Seifert ont borné l'information qu'acquiert un réseau qui apprend par l'entropie qu'il produit [224]. L'efficacité de l'apprentissage est au plus égale à un. C'est $\iota$ pour la partie apprentissage d'un acte, avec un plafond. Still a montré que la mémoire optimale ne garde que l'information prédictive [225]. Le joule marginal dépensé en mémoire doit acheter de la prédiction. Boyd, Crutchfield et Gu ont démontré que l'agent qui extrait le plus de travail des données possède le modèle de maximum de vraisemblance de ces données [226]. De meilleurs modèles rapportent plus de travail par joule. Boyd, Crutchfield, Gu et Binder ont énoncé le surapprentissage et la généralisation en termes énergétiques [227]. La généralisation apparaît sous forme de joules. Ehrich, Still et Sivak ont attribué un prix au contrôleur lui-même, au-delà de l'information qu'il utilise [228]. Ainsi $J$ doit être mesuré à la paroi du système entier. Ehrich et Sivak ont donné le bilan des flux d'énergie et d'information dans les machines autonomes [229]. Wolpert a passé en revue les coûts du calcul au-delà de Landauer [230]. Wolpert et ses collègues ont exposé les problèmes ouverts sur les coûts énergétiques du calcul en thermodynamique stochastique [320]. Levy et Baxter ont montré que les codes neuronaux qui maximisent les bits par unité d'énergie diffèrent des codes qui maximisent les bits [231]. Le bon objectif pour un cerveau est l'information par joule. Balasubramanian, Kimber et Berry ont fixé comme objectif d'un régime exploratoire le débit de transmission par unité de puissance [232]. Ce sont des bits par joule. Goldt et Seifert ont borné l'information qu'un réseau apprend sur une règle par le coût thermodynamique de l'apprentissage, pour l'apprentissage par lots et en ligne [233]. Fiderer, Barth, Smith et Briegel ont défini la capacité de travail d'un canal d'environnement, le taux maximal auquel un agent quelconque peut espérer extraire du travail dans une boucle perception-action. Les agents efficaces en travail équilibrent prédiction et oubli (prépublication) [234]. Elliott, Gu, Garner et Thompson ont montré que des agents adaptatifs quantiques peuvent demander beaucoup moins de mémoire que des agents classiques à mémoire minimale [235]. Moins de mémoire à réinitialiser, c'est un plancher plus bas à payer.
 
 **Décisions et optimalité bornée.** Russell et Subramanian ont défini l'optimalité bornée : le meilleur programme pour une machine et un environnement donnés [236]. Ici la ressource est le joule, et l'optimum est $\arg\min J$ sous la contrainte $X \ge X_{\mathrm{req}}$. Russell et Wefald ont attribué à chaque calcul un prix selon son effet espéré sur la décision, net de son coût, et ont arrêté la délibération lorsqu'aucun calcul n'avait de valeur nette positive [316]. Horvitz a posé le même compromis pour le raisonnement sous contraintes de ressources [317]. Le sélecteur de loi σ est cette règle, avec le coût en joules mesurés. La Proposition 9 en donne la forme exacte pour une cascade. Genewein et ses collègues ont dérivé l'abstraction et la hiérarchie de l'utilité moins le coût d'information [237]. Les engrenages de Mixture of Limits forment une telle hiérarchie. Legg et Hutter ont défini l'intelligence comme la récompense espérée pondérée par la complexité sur tous les environnements calculables [238]. C'est une intégrale, mais sur la récompense, sans énergie, et non calculable. La dérivée en joules remplace la récompense par les bits couplés confirmés et la mesure par les joules mesurés. Takahashi et Hayashi donnent le calcul en joules existant le plus proche [239]. Ils définissent deux rapports selon des conventions comptables explicites. L'épiplexité thermodynamique par joule est $I(W^{\mathrm{post}}; Z \mid W^{\mathrm{pre}})/E_{\mathrm{cons}}$ : de nouveaux bits sur une variable d'environnement $Z$ retenus dans l'état de l'agent, par joule consommé à l'intérieur d'une frontière déclarée. L'empowerment par joule est la capacité du canal des actes vers les observations par unité de coût énergétique espéré, la capacité par unité de coût de Verdú. Ils démontrent une référence de Landauer en cycle fermé en joignant une inégalité thermodynamique de l'apprentissage au traitement des données, et montrent, par une construction de copie réversible, qu'avec une frontière ouverte et une mémoire neuve apportée gratuitement, le gain d'information et la dissipation à l'intérieur de la frontière se découplent. Ils concluent par une liste de contrôle pour les rapports : frontière, bilan énergétique, référence, gros grain, horizon et réinitialisation, débit, estimateur. Ce programme retient quatre choses de ces travaux. Leur référence en cycle fermé est K1 pour l'apprentissage. Leur construction de découplage est la raison de la mesure fermée sur l'acte dans la Définition 2 (Lemme 1). Leur liste de contrôle est adoptée à la Section 8.12. Leur conseil de rapporter les bits par joule à côté des bits par seconde est la variable qu'optimise la Prédiction 1. La définition diffère de leurs métriques sur quatre points précis. L'empowerment par joule est une capacité, un supremum sur les distributions d'actes ; la définition crédite le flux réalisé de la politique exécutée (Définition 1), avec la capacité comme borne. Leurs nombres sont, de leur propre aveu, des rapports d'efficacité relatifs à une référence ; ce programme classe les systèmes par $J^*$ derrière une porte de correction (Proposition 8). Ils n'ont pas de prédiction fixée avant l'acte, pas de clause de conséquence ni de refus ; la définition exige les trois avant qu'un bit compte. Ils ne donnent aucune cinématique du temps ; la Prédiction 1 dérive un temps d'acte optimal et un plafond de la même comptabilité en joules. Ortega, Braun, Dyer, Kim et Tishby ont exposé la rationalité limitée en termes de théorie de l'information [240]. Zénon, Solopchuk et Pezzulo ont formulé le coût de la cognition comme de l'information [241]. Sims a appliqué la théorie débit-distorsion à la perception [242]. Leur monnaie est le bit. Landauer convertit les bits en joules à la réinitialisation.
+
 
 <div id="52-demonstrated" class="anchor-alias" aria-hidden="true"></div>
 
@@ -687,6 +717,7 @@ L'intelligence est la dérivée en joules de l'agentivité soumise à la porte, 
 **La compression notée.** Le prix Hutter note la compression sans perte du premier gigaoctet d'un vidage de la Wikipédia anglophone, avec une dotation de 500,000 euros et des limites de temps d'exécution et de mémoire [275]. Il borne le temps et la mémoire, jamais les joules. Un plafond en joules en ferait un banc d'essai du calcul de l'agentivité pour une classe de tâches.
 
 **Estimations.** Ces sources sont précieuses, et leurs chiffres en joules sont modélisés, extrapolés ou calculés. Ils figurent à côté des joules mesurés, jamais à leur place. Les estimations ne sont jamais `measured_j`. Strubell, Ganesh et McCallum ont échantillonné la puissance sur de courtes exécutions et ont extrapolé à l'entraînement complet de modèles de traitement automatique des langues [276]. Patterson et ses collègues ont calculé l'énergie d'entraînement à partir de données rapportées sur le matériel, la durée d'exécution et le centre de données [277]. Lacoste et ses collègues ont construit un calculateur à partir du type de matériel, de la durée d'exécution et de la région [278]. L'empreinte de BLOOM mélange des entrées mesurées et modélisées [279]. Carbontracker lit des compteurs de l'appareil et prédit les totaux de l'exécution complète [280]. Ses prédictions sont des estimations. Elsworth et ses collègues rapportent une médiane de 0.24 Wh par requête textuelle de Gemini Apps, en comptant les accélérateurs, les hôtes, la capacité inactive et la surcharge du centre de données [281]. C'est un chiffre rapporté par l'exploitant, classé comme `reported_j`.
+
 
 <div id="53-positions-in-the-literature" class="anchor-alias" aria-hidden="true"></div>
 
@@ -708,6 +739,7 @@ Chaque position est confrontée à la définition : l'intelligence est la dériv
 
 La portée de $\iota$ découle de son numérateur. $X$ compte le couplage confirmé au monde, de sorte que $\iota$ mesure à quel point un agent change le monde à bon compte, comme il l'avait prédit. Elle ne mesure pas la compréhension. Krakauer, Mitchell et Krakauer relient l'intelligence à des représentations compactes et communicables [339]. Une représentation compacte entre dans le calcul par son effet : un agent qui en détient une achève les tâches ultérieures avec moins de joules. Une compréhension qui ne change jamais un acte est hors de ce que $\iota$ lit.
 
+
 <div id="54-where-the-calculus-stands" class="anchor-alias" aria-hidden="true"></div>
 
 ### 5.4 Où en est le calcul
@@ -718,11 +750,13 @@ La portée de $\iota$ découle de son numérateur. $X$ compte le couplage confir
 - **Constaté ici :** $\iota$ et $J^*$ lus sur les reçus d'un accepteur à énergie rapportée par le noyau, avec des réfutateurs fixés à l'avance (Section 8.11). $J^*$ classe les agents. La $\iota$ intégrée, non.
 - **Apport de ce programme :** l'intelligence lue comme $dX/dJ$ sur une exécution achevée et soumise à la porte, avec $J^*$ comme classement. Takahashi et Hayashi sont les plus proches, avec des rapports de bits par joule sous une comptabilité explicite [239]. Ce programme ajoute la porte d'éligibilité, le flux réalisé à la place de la capacité, le classement avec porte et sa démonstration (Proposition 8), et le temps d'acte optimal (Prédiction 1).
 
+
 <div id="6-global-findings-by-method" class="anchor-alias" aria-hidden="true"></div>
 
 ## 6. Résultats mondiaux, par méthode
 
 La recherche a été menée en russe, chinois, japonais, allemand, français, espagnol, portugais, coréen, italien, polonais, hindi et arabe, avec des compléments en anglais. Un second passage a de nouveau interrogé le japonais, le chinois, le russe, l'allemand, le français, l'espagnol et le coréen, et a ajouté le persan, le turc et l'hébreu. Ses résultats sont intégrés aux Sections 2 à 5 et 8 selon ce qu'ils démontrent, mesurent ou définissent. Les résultats sont organisés par méthode et par classe de résultat. La langue n'est qu'une métadonnée. Aucune entrée n'est classée selon sa provenance.
+
 
 <div id="61-theorems-and-reviews-information-has-a-thermodynamic-price" class="anchor-alias" aria-hidden="true"></div>
 
@@ -737,6 +771,7 @@ La recherche a été menée en russe, chinois, japonais, allemand, français, es
 - La thèse de doctorat de Strasberg teste des hypothèses courantes de la thermodynamique de l'information au moyen de modèles physiques [300]. Écrite en anglais avec un résumé en allemand. Couche : définition.
 - D'autres théorèmes sont apparus lors de recherches en japonais, russe, chinois, coréen, portugais, italien et polonais : limites de vitesse et TUR dans les réseaux chimiques [127, 131, 132], thermodynamique en temps fini [159, 162, 163], TUR de Langevin [143, 144], bornes informationnelles sur la production d'entropie [148, 149] et coûts en travail en tir unique [38].
 
+
 <div id="62-experiments-the-price-measured" class="anchor-alias" aria-hidden="true"></div>
 
 ### 6.2 Expériences : le prix mesuré
@@ -745,6 +780,7 @@ La recherche a été menée en russe, chinois, japonais, allemand, français, es
 - La thèse de doctorat de Lagoin construit des démons de Maxwell macroscopiques, dont une machine de Szilard, à partir d'une ailette dans un gaz granulaire [302]. Écrite en français. Couche : définition. La comptabilité du démon tient hors du régime microscopique.
 - Ciampini et ses collègues ont utilisé le travail extractible comme témoin de corrélations quantiques dans une expérience photonique [303]. Couche : définition.
 - Expériences apparues lors de recherches en coréen, portugais, hindi, italien, espagnol, chinois et japonais : machines d'information [27, 80], démons en RMN [73, 74], la TUR sur des qubits [202], machines à bain actif [217, 218], bornes géométriques [211], brisure de symétrie et cycles de Carnot [215, 216], démons à ions piégés [66, 88], et conversion par rétroaction et transport optimal [69, 76, 209].
+
 
 <div id="63-theory-of-functional-systems-prediction-before-the-act" class="anchor-alias" aria-hidden="true"></div>
 
@@ -761,11 +797,13 @@ L'école d'Anokhin énonce les clauses 1 et 3 en termes physiologiques. Un gabar
 
 **Implémentés et exécutés.** Des architectures cognitives fondées sur la théorie des systèmes fonctionnels forment des gabarits de résultat, comparent et apprennent des sous-buts, en simulation et sur un robot physique [90, 91, 311, 312, 313]. Aucune ne mesure de joules. Ajouter un compteur à l'un de ces agents testerait l'ordre complet définition, cinématique et calcul sur une implémentation existante. Les réseaux logiques probabilistes différentiables sont un outillage de calcul apparenté, non fondé sur les systèmes fonctionnels, sans porte d'éligibilité ni joules [314].
 
+
 <div id="64-autonomy-organization-and-minimal-agency" class="anchor-alias" aria-hidden="true"></div>
 
 ### 6.4 Autonomie, organisation et agentivité minimale
 
 Trouvés par des recherches en espagnol, en français et en allemand. L'agentivité est une organisation qui s'automaintient et régule ses interactions [103, 104, 105, 106, 107, 108]. L'organisation est une clôture de contraintes sur des flux thermodynamiques [109]. L'école de l'autonomie est entrée dans la thermodynamique stochastique [110]. Couche : définition, en tant qu'organisation qui doit exister avant qu'un acte compte.
+
 
 <div id="65-measured-joules-for-machine-intelligence" class="anchor-alias" aria-hidden="true"></div>
 
@@ -773,11 +811,13 @@ Trouvés par des recherches en espagnol, en français et en allemand. L'agentivi
 
 Trouvés par des recherches en chinois sur l'énergie d'inférence : mesure automatisée de l'énergie d'inférence [261], bancs d'essai de puissance par token [262] et énergie du raisonnement au moment du test [263].
 
+
 <div id="66-philosophy-of-agency" class="anchor-alias" aria-hidden="true"></div>
 
 ### 6.6 Philosophie de l'agentivité
 
 La physique de l'agentivité de Rovelli est apparue par l'allemand [115]. Jaeger et Azadi complètent l'ensemble des articles de position [116, 117].
+
 
 <div id="67-searches-with-no-primary-research" class="anchor-alias" aria-hidden="true"></div>
 
@@ -785,9 +825,86 @@ La physique de l'agentivité de Rovelli est apparue par l'allemand [115]. Jaeger
 
 Les recherches en hindi et en arabe n'ont renvoyé aucune recherche primaire dans ces langues. Les compléments en anglais ont fait apparaître d'autres travaux, énumérés ci-dessus par méthode. Les recherches en persan, en turc et en hébreu ont renvoyé des thèses, des revues et des travaux déjà cités, sans nouvelle recherche primaire.
 
+
+<div id="68-convergence-observations-information-energy-and-prediction" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.8 Observations de convergence : information, énergie et prédiction
+
+Neuf sources récentes relient information, énergie et prédiction. Quatre ont été lues en entier et sont citées pour ce qu'elles énoncent : Takahashi et Hayashi [239], Perrier [344], Xu et Li [345] et Still, Sivak, Bell et Crooks [54]. Cinq ont été lues en partie et sont citées uniquement pour les passages nommés : Wolpert [230], Ortega et Braun [56], Zhang, Zhu, Zhang et Hu [348], Fagan [346] et Kumar [347]. Cette section enregistre ce que chacune énonce et ce qu'elle ne montre pas. C'est une observation de questions qui se recoupent, non une comparaison de résultats et non une affirmation de priorité. Les numéros de section et d'équation sont ceux des versions nommées. Les citations ont été vérifiées par script contre les textes sauvegardés. Les valeurs marquées « recalculé » sont l'arithmétique propre de cet article.
+
+**En termes simples**
+
+1. Plusieurs auteurs écrivent le même genre de grandeur : l'information gagnée ou mise en acte, divisée par l'énergie dépensée (bits par joule), ou son inverse (watts par unité d'intelligence).
+2. Les résultats fermes sont des bornes inférieures sur la chaleur. Ils disent combien peu d'énergie est physiquement requise, non combien une machine réelle en utilise.
+3. Aucune source lue ici n'a mesuré l'énergie sur du matériel réel. Là où des chiffres d'énergie apparaissent, ils sont estimés à partir de comptages de FLOP ou d'hypothèses de modèle.
+
+**Unités.** $k_B = 1.380649\times10^{-23}$ J/K. À $T = 300$ K, $k_B T\ln 2 = 2.871\times10^{-21}$ J par bit (recalculé), et son inverse est $3.483\times10^{20}$ bit/J (recalculé). Avec $\beta = 1/(k_B T)$, l'information en nats se convertit en joules en multipliant par $k_B T$, et en bits par $k_B T\ln 2$.
+
+<div id="sources-read-in-full" class="anchor-alias" aria-hidden="true"></div>
+
+#### Sources lues en entier
+
+**Takahashi et Hayashi, arXiv:2602.05463v2 (20 juillet 2026) [239].** La version lue est le dépôt arXiv.
+
+- L'épiplexité par joule est $\eta_E = \Delta I / E_{\mathrm{cons}}$ en bit/J, avec $\Delta I = I(W_{\mathrm{post}}; Z \mid W_{\mathrm{pre}})$ (Éq. 3 et 10, Sec. 2.2). Le bilan d'énergie est $E_{\mathrm{cons}} = Q_{\mathrm{diss}} + \Delta U_{\mathrm{sys}} + W_{\mathrm{out}} + \Delta E_{\mathrm{store}}$ (Éq. 1).
+- L'empowerment par joule est $\eta_C^* = \sup_{p(a)} I(A_{0:\tau-1}; O_\tau) / \mathbb{E}[c(A)]$ en bit/J (Éq. 18, Sec. 3.2), avec une courbe contrainte par le coût (Éq. 19). L'empowerment est une capacité de canal des actions vers les observations ultérieures (Éq. 17, Sec. 3.1).
+- La borne de cycle fermé est $Q_{\mathrm{diss}} \ge k_B T\ln 2\,\Delta I - T\,\Delta S_{\mathrm{sys}}$ (Éq. 15), de sorte que $\Delta I / Q_{\mathrm{diss}} \le 1/(k_B T\ln 2)$ lorsque $\Delta S_{\mathrm{sys}} = 0$ (Éq. 16, Corollaire 1). L'Éq. 15 suit de l'Éq. 14 par réarrangement (vérifié). Le Corollaire 1 exige les hypothèses de Markov biparti et d'équilibre détaillé local.
+- Les auteurs donnent une métrique en bits par joule pour l'apprentissage, une autre pour le contrôle, et une liste de contrôle pour le rapport : frontière, énergie de référence, horizon, estimateur (Sec. 5.1). Leur Proposition 1 est une construction de découplage montrant que la borne échoue si la frontière comptable exclut le coût de préparer une mémoire neuve.
+- Portée telle qu'énoncée : « the resulting numbers are benchmark-relative rather than universal ». Sur le plafond : « Landauer-scale limits are conceptual yardsticks far beyond current hardware. »
+- L'exemple travaillé de la Sec. 5 utilise des perplexités publiées, $10^9$ tokens, et une énergie estimée à partir de $6PD$ FLOPs à un $2.5\times10^{11}$ FLOP/J supposé. Recalculé : $\Delta G \approx 4.51\times10^{8}$ bit, $E$ (modèle 410M) $\approx 2.95\times10^{9}$ J, efficacité marginale $\approx 0.106$ bit/J. Les auteurs écrivent : « This number is convention-dependent, but it exercises the checklist. »
+- Non vérifié ici : le Lemme 1 reformule une inégalité d'un travail non lu. L'Éq. 17 utilise $O_\tau$ tandis que le texte de la Sec. 3.2 se réfère à $I(A;S_\tau)$. L'Éq. 20 est signalée par les auteurs : « This is not claimed as a universal identity without assumptions ».
+
+**Perrier, arXiv:2504.05328v2 (16 juin 2025) [344].** Seules les définitions sont citées.
+
+- Les watts par intelligence sont $\Phi(\Sigma) = P(\Sigma)/I(\Sigma) = E(\Sigma)/(\tau\, I(\Sigma))$ (Éq. 7, Sec. 3.3), où $I$ est une somme de performance pondérée par tâches (Éq. 2) ou la somme de Legg et Hutter (Éq. 1). Les hypothèses sont $E = F N c$ avec $c = k_B T\ln 2$ et un surcoût $F \ge 1$ (Éq. 5), et $I \le \alpha N$ avec $\alpha$ non spécifié (Éq. 6). Le Théorème 1 donne $\Phi \ge cF/(\alpha\tau)$ (Éq. 8).
+- L'auteur énonce la prémisse ouvertement : « Our work assumes a correlation between irreversible computation to intelligence. » L'article ne contient aucune mesure ; il dit seulement que « In practice, one might measure the actual hardware usage ».
+- Erreurs trouvées (ma lecture, non confirmées avec l'auteur) : (1) La Sec. 3.1 définit $N$ par unité de temps, mais les Éq. 3 et 5 utilisent $E$ sur $[0,\tau]$, ce qui exige $N$ comme un total, et alors $cF/(\alpha\tau)$ tombe à zéro lorsque $\tau$ croît. (2) $\alpha$ est libre, de sorte que le Théorème 1 ne donne aucun plancher numérique. (3) La démonstration du Théorème 2 produit une borne de la forme $\Delta i_K > -\log(1/\delta)$, négative pour $\delta < 1$, et pourtant le texte traite $-\log(1/\delta)$ comme positive. (4) Combiner $I \le \alpha\,\Delta i_K$ avec $P \ge \Delta i_K\, k_B T\ln 2/\tau$ donne $I/P \le \alpha\tau/(k_B T\ln 2)$, tandis que l'Éq. 14 n'a ni $\alpha$, ni $k_B T\ln 2$, et la dépendance opposée en $\tau$. (5) $\Delta i_K = K(y) - K(x)$ peut être négative, et la direction de l'attachement de Landauer dans l'Éq. 13 n'est pas argumentée ; le Théorème 3 en hérite. (6) L'ordre matériel $\Phi_{\mathrm{CPU}} > \Phi_{\mathrm{GPU}} > \Phi_{\mathrm{neuro}}$ est affirmé sans valeurs.
+
+**Xu et Li, arXiv:2511.19156v4 (30 décembre 2025) [345].** Lu en entier pour le texte sauvegardé ; les figures ont été lues par légende et valeurs imprimées seulement. Seules les définitions sont citées.
+
+- Profondeur de dérivation $D_d$ (Éq. 10) et entropie de dérivation $H_{\mathrm{derive}} = D_d\lambda$ avec $\lambda = \ln 2$ nats dans un régime classique énoncé (Éq. 14, Hypothèse 3). Bornes affirmées : $E_{\mathrm{compute}} \ge D_d k_B T\ln 2$ (Proposition 4, Éq. 98 et 99) et $E_{\mathrm{storage}} \ge |S|\,k_B T\ln 2\,(t/t_{\mathrm{refresh}})$ (Proposition 5, Éq. 100). Une fréquence de requête à l'équilibre entre recalculer et stocker est donnée en unités de coût abstraites (Théorème 5, Éq. 32).
+- Les auteurs appellent leur coût un « information-theoretic proxy for energy consumption ». La validation numérique (Sec. VI) utilise une base de connaissances synthétique de 100K atomes et les coûts abstraits propres à l'article, de sorte qu'elle teste le modèle contre lui-même. Les chiffres d'application (1000 kWh, réduction de 45 pour cent) arrivent sans méthode de mesure et ne sont pas utilisés ici.
+- Le résumé dit « Our findings suggest that the minimization of Derivation Entropy is a governing principle ». Le texte refuse ailleurs d'affirmer un résultat net : « We deliberately refrain from formalizing » la dernière observation comme un théorème de transition de phase.
+- Erreurs trouvées (ma lecture, non confirmées avec les auteurs) : (1) L'Hypothèse 1 a $E\tau \ge \kappa$ avec $\kappa$ une action en J s, tandis que le Corollaire 1 fixe $\kappa_T = k_B T\ln 2$, une énergie, et supprime $\tau$. (2) L'Éq. 98 suppose que chaque étape d'inférence efface un bit (Hypothèse 3), et la Remarque 15 du même article concède que le calcul réversible évite ce coût. (3) Dans le Lemme 2, l'argument par contradiction nie la borne en $K = o(n\log m)$ et affirme que cela contredit $H \gg \log m$ ; ce n'est pas le cas, puisque $n\log m \gg \log m$. La borne inférieure est donc non prouvée, et les Théorèmes 4 à 6 et le Corollaire 7 en dépendent. (4) Le cas (b) du Théorème 6 utilise $N = \Omega(L_S)$ là où $N = O(L_S)$ est requis. (5) Le stockage critique de l'Éq. 135 avec $H(Q) = 10^{12}$ se recalcule en $1.25\times10^{10}$ (logarithme en base 2), $1.80\times10^{10}$ (ln) ou $4.15\times10^{10}$ (logarithme en base 10), non le $2.5\times10^{11}$ imprimé. Le texte de la Table II (étroitesse 0.50 à 0.93) est en désaccord avec le tableau (0.50 à 0.81, et 0.89 à haute fréquence).
+
+**Still, Sivak, Bell et Crooks, arXiv:1203.3271v3 (5 octobre 2012) [54].** La version arXiv a été lue ; la version de revue ne l'a pas été.
+
+- Avec l'état du système $s_t$ et le signal d'entraînement $x_t$, $I_{\mathrm{mem}}(t) = I[s_t, x_t]$ et $I_{\mathrm{pred}}(t) = I[s_t, x_{t+1}]$, en nats. Par étape, $\beta\langle W_{\mathrm{diss}}[x_t \to x_{t+1}]\rangle = I_{\mathrm{mem}}(t) - I_{\mathrm{pred}}(t)$ (Éq. 14). Au total, $I_{\mathrm{mem}} - I_{\mathrm{pred}} \le \beta\langle W_{\mathrm{diss}}\rangle \le \beta\langle W_{\mathrm{ex}}\rangle$ (Éq. 18). La borne de Landauer raffinée est $-\beta\langle Q\rangle \ge I_e + I_{\mathrm{mem}} - I_{\mathrm{pred}}$ (Éq. 21).
+- La mémoire du signal qui n'aide pas à prédire sa valeur suivante coûte du travail dissipé, à $k_B T$ par nat. La conséquence énoncée par les auteurs : « any system constructed to keep memory about its environment and to operate with maximal energetic efficiency has to be predictive ».
+- C'est une borne inférieure sur la dissipation pour les systèmes qui gardent la mémoire d'un signal d'entraînement. Elle ne montre pas qu'un système réel l'atteint, et ce n'est pas un énoncé sur les agents en général. Il n'y a ni expérience ni données en joules.
+- Vérifié : la note de bas de page 24 est correcte ; l'Éq. 17 suit des Éq. 11, 14 et 15 ; l'Éq. 18 suit de l'Éq. 16 ; l'Éq. 21 suit des Éq. 19 et 20. $k_B T = 25.9$ meV à 300 K (recalculé ; l'article donne 25 meV). Non vérifié : la non-négativité du terme par étape pour des processus de signal arbitraires est énoncée mais non démontrée dans le texte, et elle n'est pas démontrée ici.
+
+<div id="sources-read-in-part" class="anchor-alias" aria-hidden="true"></div>
+
+#### Sources lues en partie
+
+Chaque entrée se limite au passage indiqué. Aucune affirmation n'est faite sur les parties non lues.
+
+- **Wolpert, arXiv:1905.05669v3 [230].** La Sec. V (Éq. 29 à 44, Exemples 1 à 6), la Sec. XVI, l'Annexe A et le début de l'Annexe B ont été lus. La Sec. V énonce $Q(p_0) = \sigma(p_0) + S(p_0) - S(\pi p_0)$ (Éq. 29) et le coût de Landauer $L(p,\pi) = S(p) - S(\pi p)$ (Éq. 35), définis seulement pour une distribution d'entrée fixe. Environ 70 pour cent des 115 pages n'ont pas été lus, et la Proposition 1 repose sur un résultat cité non lu.
+- **Ortega et Braun, arXiv:1204.6481v2 [56].** Le texte principal (Sec. 1 à 8) a été lu. Les démonstrations des Théorèmes 5 à 7 et le Matériel supplémentaire n'étaient pas disponibles. Cité pour l'Éq. 9, $p(x) \propto p_0(x)\, e^{\beta U(x)}$, et pour l'illustration à une molécule de la Sec. 1.1 (coût $k_B T\ln(1/p)$). Des erreurs d'impression ont été trouvées dans l'Éq. 5 et le Corollaire 3. L'optimum énoncé $M = 35$ de la Fig. 4 se recalcule en 33 selon ma lecture du montage.
+- **Zhang, Zhu, Zhang et Hu, arXiv:2607.24287v1 [348].** Les Sec. 4.1 à 4.6 (démonstrations de T1 à T6) ont été lues. Cité pour l'énoncé selon lequel l'Axiome 1 « is adopted as an empirical postulate rather than derived within the present framework » et que son énergie est sans dimension (nats). Les démonstrations de T7 à T10 et les Sec. 4.7 et 4.8 n'ont pas été lues. Un écart dans l'équation d'Euler-Lagrange de T5 reste non résolu.
+- **Fagan, arXiv:2601.00021v2 [346].** Les Sec. 5.3 à 14 et les références ont été lues ; les Sec. 1 à 5.2 avaient été lues plus tôt et n'ont pas été relues. Cité pour l'Éq. 116, $\chi = \dot W_{\mathrm{causal}} / \dot I_{\mathrm{irr}}$, et pour l'énoncé des auteurs selon lequel ses proxies « need not coincide numerically across systems ». Les simulations (Sec. 12) utilisent des proxies, non des joules, et une courbe de la Sec. 12.1 décroît avec $\lambda$ par construction.
+- **Kumar, Zenodo 18993403 [347].** Les Annexes A.1 à A.28 et les références ont été lues ; le texte principal avait été lu plus tôt et n'a pas été relu. Les exposants sont perdus dans le texte sauvegardé, de sorte que les exposants imprimés en A.26 et A.28 ne sont pas cités. Cité pour $I \le P/(k_B T\ln 2)$ (Éq. 125), dont la prémisse est énoncée comme conditionnelle (« If generating useful knowledge requires irreversible information processing »). Recalculé : $6.74\times10^{21}$ bit/s pour 20 W à 310 K.
+
+<div id="what-the-nine-sources-show-together" class="anchor-alias" aria-hidden="true"></div>
+
+#### Ce que montrent ensemble les neuf sources
+
+| Source | Ce qu'elle montre | Ce qu'elle ne montre pas | État de lecture |
+|---|---|---|---|
+| Takahashi et Hayashi | Deux métriques en bit/J (apprentissage, contrôle) ; un plafond de cycle fermé à l'échelle de Landauer sous des hypothèses énoncées ; une liste de contrôle pour le rapport | Un joule mesuré ; une estimation de l'épiplexité ou de l'empowerment pour un système réel ; un test de la borne | Entier (16 p., sans annexes) |
+| Perrier | Une définition $\Phi = P/I$ et une borne qui ne tient que sous un lien supposé $I \le \alpha N$ | Énergie mesurée ; un plancher numérique ; une démonstration correcte du Théorème 2 ou 3 | Entier (12 p.) ; définitions citées seulement |
+| Xu et Li | Définitions de la profondeur et de l'entropie de dérivation ; bornes conditionnelles de type Landauer ; une simulation synthétique | Énergie mesurée ; une démonstration correcte du Lemme 2 ; validation indépendante | Entier pour le texte sauvegardé ; définitions citées seulement |
+| Still, Sivak, Bell et Crooks | Une borne inférieure de dissipation égale à la mémoire non prédictive, $\beta\langle W_{\mathrm{diss}}\rangle \ge I_{\mathrm{mem}} - I_{\mathrm{pred}}$ | L'atteinte par des systèmes réels ; les agents en général ; un joule mesuré | Entier (5 p.) ; version de revue non lue |
+
+Sur les neuf sources, aucun texte lu ne rapporte de joules mesurés sur du matériel réel. Les chiffres d'énergie qui apparaissent sont estimés à partir de comptages de FLOP, de puissances nominales ou d'hypothèses de modèle. Là où des bornes apparaissent, ce sont des bornes inférieures sur la dissipation sous des hypothèses énoncées, ou des définitions de rapports en attente de mesure.
+
+**Limites de cette section.** Le texte cité a été vérifié contre du texte converti depuis PDF, et la conversion à deux colonnes peut entrelacer les lignes. Les erreurs listées viennent de ma lecture et de mon recalcul et n'ont pas été envoyées aux auteurs. Les différences de version (v1 à v2) ont été comparées par structure et résumé seulement pour Takahashi et Hayashi, Perrier et Xu et Li.
+
 <div id="7-open-problems" class="anchor-alias" aria-hidden="true"></div>
 
 ## 7. Problèmes ouverts
+
 
 <div id="71-what-must-be-proven" class="anchor-alias" aria-hidden="true"></div>
 
@@ -809,6 +926,7 @@ Les recherches en hindi et en arabe n'ont renvoyé aucune recherche primaire dan
 
 **P8. Quand l'agentivité se cumule.** Conditions sous lesquelles $\alpha_J > 0$ sur une exécution, de sorte que les reçus antérieurs abaissent les joules des achèvements ultérieurs. Manque : un modèle de réutilisation dans lequel les reçus stockés réduisent le $J$ ultérieur de plus que les joules de stockage et de consultation. Still donne le côté coût de la mémoire [225]. La Section 8.10 mesure la part du gabarit dans les joules de chaque acte.
 
+
 <div id="72-what-must-be-demonstrated" class="anchor-alias" aria-hidden="true"></div>
 
 ### 7.2 Ce qui doit être constaté
@@ -825,11 +943,13 @@ Les recherches en hindi et en arabe n'ont renvoyé aucune recherche primaire dan
 
 La Section 8.11 rapporte la première exécution au regard de D2 à D6, en joules rapportés. La Section 8.11.1 rapporte la deuxième exécution sur la même machine, avec les corrections de la garde et du refus, et la Section 8.11.2 la répète sur une seconde machine.
 
+
 <div id="8-experiment-plan" class="anchor-alias" aria-hidden="true"></div>
 
 ## 8. Plan expérimental
 
 Chaque tableau, reçu et figure de ce plan suit une règle. Les estimations ne sont jamais `measured_j`. Un chiffre modélisé est étiqueté `est_j`. Un chiffre mesuré est étiqueté `measured_j` et nomme son compteur.
+
 
 <div id="81-meters" class="anchor-alias" aria-hidden="true"></div>
 
@@ -849,11 +969,13 @@ Sigles : CPU (processeur central), GPU (processeur graphique), ANE (Apple Neural
 - **Référence au repos.** Enregistrer 120 s de puissance au repos sur chaque compteur avant chaque bloc. Rapporter côte à côte les joules bruts et les joules diminués du repos. Ne jamais rapporter le seul chiffre soustrait.
 - **Contrôle de l'état.** Fixer le gouverneur de fréquence du CPU lorsque le système d'exploitation le permet. Enregistrer la température ambiante et la pression thermique. Fermer les tâches d'arrière-plan. Écarter une exécution de préchauffage par bras.
 
+
 <div id="82-tasks" class="anchor-alias" aria-hidden="true"></div>
 
 ### 8.2 Tâches
 
 Chaque tâche a un prédicat de complétude vérifiable par machine, $C(z)$ : tests unitaires pour le code, correspondance exacte pour l'arithmétique, validation de schéma pour l'extraction, état final vérifié pour l'usage d'outils. Deux strates sont fixées à l'avance. Les tâches quasi optimales sont celles que l'engrenage le moins coûteux achève d'ordinaire. Les tâches cumulatives sont des séquences dans lesquelles des reçus antérieurs peuvent être réutilisés. $X_{\mathrm{req}}$ est fixé par $C(z)$. La réussite est une porte, pas un score.
+
 
 <div id="83-arms" class="anchor-alias" aria-hidden="true"></div>
 
@@ -868,6 +990,7 @@ Tous les bras partagent les engrenages, le prédicat, le budget, les compteurs e
 
 Les deux sélecteurs sont des instances de Mixture of Limits. La philosophie consiste à utiliser l'engrenage le moins coûteux qui suffit, car au-delà du plancher des joules supplémentaires n'achètent aucun progrès vérifiable. La cascade fixe l'applique dans un ordre fixe. Le sélecteur de loi σ s'arrête lorsque l'acte suivant ne paie plus ses joules. C'est une règle de convergence de seuil, et donc aussi une instance de Mixture of Limits. La comparaison oppose deux instances d'une même philosophie. Dans le code et les fichiers de données, la cascade fixe est le bras `mol` et le sélecteur de loi σ est le bras `sigma`.
 
+
 <div id="84-budgets-seeds-and-statistics" class="anchor-alias" aria-hidden="true"></div>
 
 ### 8.4 Budgets, graines et statistiques
@@ -877,6 +1000,7 @@ Les deux sélecteurs sont des instances de Mixture of Limits. La philosophie con
 - Au moins 10 graines par bras, tâche et budget. Davantage si le pilote montre que 10 ne peuvent pas résoudre une différence de 10% de la médiane de $J^*$ avec une confiance de 95%.
 - Rapporter la moyenne, la médiane, l'écart type et un intervalle de confiance bootstrap à 95% de $J^*$ par tâche. Comparer les bras 1 et 2 par un test des rangs signés de Wilcoxon sur la médiane de $J^*$ par tâche, avec la taille d'effet.
 - Le préenregistrement nomme les critères d'évaluation principaux. Les comparaisons secondaires sont corrigées par la procédure descendante de Holm. Une analyse choisie après une exécution est étiquetée post hoc partout où elle apparaît, résumés compris, et n'est jamais le résultat phare. Elle ne devient un critère principal que dans le préenregistrement de l'exécution suivante.
+
 
 <div id="85-receipt-schema" class="anchor-alias" aria-hidden="true"></div>
 
@@ -905,6 +1029,7 @@ template_j   {meter, write_j, hold_j, reset_j}   # joules for R*
 trajectory_j {tau, activity, work}    # physical runs only, Section 8.8
 ```
 
+
 <div id="86-metrics" class="anchor-alias" aria-hidden="true"></div>
 
 ### 8.6 Métriques
@@ -919,6 +1044,7 @@ trajectory_j {tau, activity, work}    # physical runs only, Section 8.8
 - Distance au plancher : joules mesurés par bit couplé confirmé divisés par $k_B T \ln 2$ à la température enregistrée.
 - Intelligence de l'acte : $\iota_k = b_k/J_k$ par acte, égale à la densité de la Proposition 5 sur cet acte.
 - Part du gabarit : $J^{R^*}/J$ par acte et la courbe $\iota(w)$ (Section 8.10).
+
 
 <div id="87-falsifiers-fixed-before-any-run" class="anchor-alias" aria-hidden="true"></div>
 
@@ -939,6 +1065,7 @@ trajectory_j {tau, activity, work}    # physical runs only, Section 8.8
 | F11 | Un contrôleur tient le procédé avec des joules mesurés par pas inférieurs à $k_B T\ln 2 \log_2\lvert\lambda\rvert$ | Le compteur ou le modèle de procédé de cette exécution |
 | F12 | Le maximiseur de la $\iota(\tau)$ mesurée se situe hors de $\tau^* \pm 2\delta\tau^*$ de la Prédiction 1, ou la pente de $\ln\tau^*$ en fonction de $\ln s$ s'écarte de $-1/2$ de plus de deux erreurs types ; ou la $\iota$ d'une exécution dépasse le plafond de la Prédiction 1 | L'additivité des joules d'acte et des joules permanents sur un même compteur, avec $\iota$ comme leur densité ; pour le plafond, la comptabilité de cette exécution |
 
+
 <div id="88-physical-act-cycles" class="anchor-alias" aria-hidden="true"></div>
 
 ### 8.8 Cycles d'acte physiques
@@ -958,6 +1085,7 @@ Ces exécutions testent les Propositions 1 à 4 au plancher physique. Le travail
   - Tout le travail est calculé à partir de trajectoires et classé comme `trajectory_j`.
 - **Tenir un procédé instable (Proposition 2).** Un contrôleur numérique tient un procédé à un mode instable de $|\lambda|$ fixé par pas, à $f$ pas par seconde. Mesurer le contrôleur avec M0 et M1. Enregistrer les bits par pas de l'enregistrement. Forme du résultat : joules mesurés par pas divisés par $k_B T\ln 2\log_2|\lambda|$, rapportés comme distance au plancher. Balayer $|\lambda|$ et $f$.
 
+
 <div id="89-living-agents-measured-ι" class="anchor-alias" aria-hidden="true"></div>
 
 ### 8.9 Agents vivants : ι mesurée
@@ -967,6 +1095,7 @@ Forme du résultat : $\iota$ dans une préparation vivante, en bits par décisio
 - **Chimiotaxie bactérienne.** Le débit d'information à partir du comportement de cellules individuelles dans un gradient défini, tel que Mattingly et ses collègues l'ont mesuré [213]. Les joules à partir de la consommation d'oxygène de la même culture, divisée par le nombre de cellules. Le plancher de comparaison est le coût de l'envoi d'un bit par le canal de signalisation de la cellule, d'après Bryant et Machta [197], à côté de $k_B T\ln 2$.
 - **Cortex visuel de la souris.** L'information d'orientation par essai par imagerie à deux photons, et l'usage synaptique d'ATP par enregistrements en cellule entière, comme Padamsey et ses collègues ont obtenu les deux [250]. La restriction alimentaire déplace les joules. La réponse mesurée de l'information aux joules est le signe et la taille de $dX/dJ$ dans un cortex.
 - **Mémoire de la mouche.** Le flux d'énergie dans les corps pédonculés pendant la formation de la mémoire à long terme, imagé comme l'ont fait Plaçais et ses collègues [252], par association apprise, avec la rétention comme confirmation. La survie sous jeûne et dessiccation est le coût en résultats [251, 253].
+
 
 <div id="810-the-joule-price-of-prediction-first" class="anchor-alias" aria-hidden="true"></div>
 
@@ -978,7 +1107,7 @@ Protocole. Fixer les tâches, les engrenages, les prédicats et les budgets. Fai
 
 Éléments acquis : une prédiction confiante a abaissé jusqu'à 12% la consommation d'oxygène du cortex humain, mesurée par imagerie métabolique (prépublication) [254]. Dans les réseaux cellulaires, les bits du passé qui prédisent le mieux l'avenir sont d'un coût prohibitif [198]. Dans les boucles perception-action, les agents efficaces en travail équilibrent prédiction et oubli [234].
 
-<div id="811-first-run-a-metered-acceptor-on-a-laptop" class="anchor-alias" aria-hidden="true"></div>
+
 
 <div id="811-first-run-a-kernel-reported-acceptor-on-a-laptop" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1039,6 +1168,7 @@ La Figure 4 place la porte à côté du classement mesuré sous le budget lâche
 
 *Figure 4. D'abord la porte, puis le classement par les joules. Schéma avec les données de l'Exécution 1 à $B = 2.0\,J_{g2}$, moyennes sur 20 graines issues du tableau de résultats ci-dessus ; la seule $\iota$ intégrée classerait l'agent aveugle au but en premier (R-F6). Source : `experiments/agency-run/results`. Une [copie PNG](/figures/agency/gate-then-rank.png) est fournie.*
 
+
 <div id="8111-second-run-guarded-acceptor-40-seeds" class="anchor-alias" aria-hidden="true"></div>
 
 ### 8.11.1 Deuxième exécution : accepteur gardé, 40 graines
@@ -1093,6 +1223,7 @@ Cette exécution porte sur la même classe de tâches, les mêmes engrenages et 
 - $J^*$ reste le classement. La $\iota$ intégrée le contredit encore sous le budget lâche (R-F6).
 - La $\iota$ d'exécution reste instable d'une graine à l'autre sous les budgets contraignants (R-F5).
 - R-F1 n'a tenu que parce que trop peu de tâches ont été résolues par les deux sélecteurs pour former un intervalle. Aucune exécution ne montre le sélecteur de loi σ résolvant une tâche commune avec moins de joules. Le gain apparié par graine à $B = 2.0$ consiste en davantage de tâches résolues, non en des résolutions moins coûteuses des mêmes tâches.
+
 
 <div id="8112-second-machine-a-replication-with-a-package-energy-counter" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1199,11 +1330,13 @@ Le résultat répliqué est étroit. Au niveau de budget le plus lâche, le sél
 5. **Fixer et enregistrer.** Fixer la fréquence, enregistrer les références au repos avant et après, rapporter la dérive et conserver le compteur du paquet comme vérification croisée étiquetée.
 6. **La résolution des tâches est le critère principal.** Le préenregistrement de la prochaine exécution fait de la résolution des tâches le critère d'évaluation principal : la différence appariée par graine des tâches résolues, loi σ moins cascade fixe, à chaque niveau de budget, avec la correction descendante de Holm entre les niveaux. Les joules des tâches communes (R-F1) sont secondaires.
 
+
 <div id="812-reporting" class="anchor-alias" aria-hidden="true"></div>
 
 ### 8.12 Présentation des résultats
 
 Publier tous les reçus, les traces brutes des compteurs, les références au repos et le code d'analyse avec le résultat. Rapporter les joules mesurés, rapportés et estimés dans des colonnes distinctes. Ne jamais additionner d'un niveau à l'autre. Indiquer quels réfutateurs se sont déclenchés, avec la même visibilité que ceux qui ont tenu. Chaque exécution répond aussi à la liste de contrôle de Takahashi et Hayashi [239] : la frontière de la comptabilité ; les termes du bilan énergétique (énergie stockée et travail exporté, ou une déclaration qu'ils sont négligeables) ; la référence et le caractère total ou incrémental des joules ; le grain grossier des résultats ; l'horizon et le protocole de réinitialisation ; le temps d'horloge et la puissance moyenne à côté des bits par joule ; et l'estimateur des bits couplés avec sa correction de biais.
+
 
 <div id="references" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1554,3 +1687,8 @@ Entries marked "preprint" are cited by their arXiv posting. Entries published in
 341. Kimura, M. (1961). Natural selection as the process of accumulating genetic information in adaptive evolution. *Genetical Research* 2:127-140. https://doi.org/10.1017/S0016672300000616
 342. Worden, R. P. (1995). A speed limit for evolution. *Journal of Theoretical Biology* 176:137-152. https://doi.org/10.1006/jtbi.1995.0183
 343. Hledík, M., Barton, N. and Tkačik, G. (2022). Accumulation and maintenance of information in evolution. *PNAS* 119:e2123152119. https://doi.org/10.1073/pnas.2123152119
+344. Perrier, E. (2025). Watts-per-intelligence: Part I (energy efficiency). arXiv:2504.05328 (preprint). https://arxiv.org/abs/2504.05328
+345. Xu, J. and Li, Z. (2025). Information physics of intelligence: unifying derivation depth and entropy under thermodynamic constraints. arXiv:2511.19156 (preprint). https://arxiv.org/abs/2511.19156
+346. Fagan, P. D. (2026). Toward a physical theory of intelligence. arXiv:2601.00021 (preprint). https://arxiv.org/abs/2601.00021
+347. Kumar, S. The Laws of Intelligence: Computation Efficiency and the Physical Scaling Limits of AI Systems. Zenodo 18993403 (preprint, not peer reviewed).
+348. Zhang, J., Zhu, H., Zhang, J. J. and Hu, H. (2026). The semantic least-energy principle: a hypothesis for intelligence. arXiv:2607.24287 (preprint). https://arxiv.org/abs/2607.24287
