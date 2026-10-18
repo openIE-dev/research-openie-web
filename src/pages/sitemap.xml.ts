@@ -2,6 +2,7 @@
 // so a new study appears here without a hand edit. No <lastmod>, matching the klere.ai rule.
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { studies } from '../data/studyList';
 
 const STATIC = ['/', '/about/', '/glossary/', '/living/', '/opportunity-map/', '/about/rce-jepa/'];
 
@@ -12,6 +13,7 @@ export const GET: APIRoute = async ({ site }) => {
   const translations = await getCollection('translations');
   const routes = [
     ...STATIC,
+    ...studies.flatMap((s) => [s.path, s.aboutPath, s.pdfPath]),
     ...papers.flatMap((p) => [`/papers/${p.data.id}/`, `/about/${p.data.id}/`, p.data.pdf]),
     ...translations.map((t) => `/${t.data.lang}/papers/${t.data.source}/`),
     ...products.flatMap((p) => [`/products/${p.data.id}/`, `/about/${p.data.id}/`, p.data.pdf]),

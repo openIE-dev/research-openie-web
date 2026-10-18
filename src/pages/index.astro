@@ -1,248 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import homeJsonLd from '../data/home-jsonld.json';
+import { studies } from '../data/studyList';
 
-const projects = [
-  {
-    "id": "agency",
-    "title": "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents",
-    "deck": "Defines an agent as a system that holds a goal under an energy budget, derives physical bounds on how fast it can act per second and per joule, and reads intelligence as progress per joule on a completed run. Plain words: to count as an agent, a system must aim at a goal, act, and stay within an energy budget; physics sets a minimum energy cost for every decision; among systems that finish a job correctly, the one that used less energy ranks higher.",
-    "status": "Research paper",
-    "group": "research",
-    "about": "/about/agency/",
-    "paper": "/papers/agency/",
-    "pdf": "/pdfs/agency.pdf",
-    "figures": "/living/",
-    "tags": [
-      "proposed Universal Law of Agency",
-      "definition plus a gate",
-      "kinematic bounds",
-      "Prediction 1"
-    ]
-  },
-  {
-    "id": "gates",
-    "title": "Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems",
-    "deck": "A gate that lets a machine act only after a check passes, and a cascade that tries the cheapest method first, with software results and one board-level energy reading (11,428 pJ per gate cycle, whole module, KV260). Plain words: do not take an action that cannot be undone until a check says it is safe; try the cheapest way first; write every decision down with its energy.",
-    "status": "Research paper",
-    "group": "research",
-    "about": "/about/gates/",
-    "paper": "/papers/gates/",
-    "pdf": "/pdfs/gates.pdf",
-    "figures": "/living/ni/",
-    "tags": [
-      "commit gate",
-      "cascade",
-      "J*",
-      "receipts",
-      "KV260 board level"
-    ]
-  },
-  {
-    "id": "satiation",
-    "title": "Task Satiation vs. Aggregate Rebound in AI Demand",
-    "deck": "Defines the stop at which more machine work on a finished task adds nothing, and separates it from growth in total demand. Plain words: every job has a finish line; cheaper work can still create more jobs; AI prices fall but its electricity is never free.",
-    "status": "Economics paper",
-    "group": "research",
-    "about": "/about/satiation/",
-    "paper": "/papers/satiation/",
-    "pdf": "/pdfs/satiation.pdf",
-    "figures": "/living/satiation/",
-    "tags": [
-      "task completion",
-      "Jevons rebound",
-      "H1 and H2",
-      "price series"
-    ]
-  },
-  {
-    "id": "rce",
-    "title": "The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming",
-    "deck": "A system in which a program is written once as a state machine and code in other languages is generated from it, with measurements on 10,000 Forms and public bug datasets and falsifiers fixed in advance. Plain words: write a program once and generate it in many languages; reject broken input at the door; save checked fixes so the same problem is not paid for twice.",
-    "status": "Research paper",
-    "group": "research",
-    "about": "/about/rce/",
-    "paper": "/papers/rce/",
-    "pdf": "/pdfs/rce.pdf",
-    "figures": "/figures/rce/intent-entropy.svg",
-    "tags": [
-      "one Form, many fits",
-      "gate and gears",
-      "Z3 and Kani",
-      "10,000 Forms, lossless round trip, 0 model calls"
-    ]
-  },
-  {
-    "id": "rce-jepa",
-    "title": "RCE-JEPA: Autonomous Deterministic Coding using Latent Space",
-    "deck": "Can software be written autonomously by a learned model proposing programs in one closed, deterministic shape while a checker decides? Traces seventy years of specification-to-program attempts, why they stalled, current model-plus-verifier work, and the case for now, then tests it on the Reality Code Engine (RCE) with a Joint Embedding Predictive Architecture (JEPA) predictor in latent space, with hypotheses that could disprove it. Plain words: many have tried to make computers write programs from a description; a fixed shape plus a strict checker makes the job smaller; the AI proposes, the checker decides.",
-    "status": "Research topic",
-    "group": "research",
-    "about": "/about/rce-jepa/",
-    "figures": "/figures/rce-jepa/pipeline.svg",
-    "tags": [
-      "history of program synthesis",
-      "model proposes, checker decides",
-      "per clock cycle and per joule"
-    ]
-  },
-  {
-    "id": "game-engines",
-    "title": "Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins",
-    "deck": "Asks whether a game can be written once as a checked state machine and projected into several engines and languages, with an IR table, a layer split (simulation, scripting, scene, rendering), a determinism boundary, a falsifier-first test plan on public benchmarks, and infeasibility flags. Plain words: game rules can be replayed exactly if the arithmetic is pinned down; pictures cannot be identical on every graphics card but can be checked within a measured error; the seams between layers are where checking is missing.",
-    "status": "Research study",
-    "group": "research",
-    "about": "/about/game-engines/",
-    "paper": "/papers/game-engines/",
-    "pdf": "/pdfs/game-engines.pdf",
-    "figures": "/figures/game-engines/architecture.svg",
-    "tags": [
-      "game engines",
-      "determinism boundary",
-      "state machine Form",
-      "falsifier-first"
-    ]
-  },
-  {
-    "id": "three-body",
-    "title": "The Pursuit of AGI Resolves the Three-Body Problem in Computing",
-    "deck": "Locates many computing failures at handoffs between the people who specify, build and use systems, states when checking every handoff assumption makes a stack stable, and supports it with independently tested verified systems (CompCert, seL4, TLA+ at AWS, unit types). Plain words: most big failures happen at handoffs; the cause is usually an unwritten guess; if every guess is written down and machine-checked, a fix stays fixed.",
-    "status": "Research paper",
-    "group": "research",
-    "about": "/about/three-body/",
-    "paper": "/papers/three-body/",
-    "pdf": "/pdfs/three-body.pdf",
-    "figures": "/figures/three-body/three-bodies.svg",
-    "tags": [
-      "three-body problem",
-      "interfaces",
-      "pursuit of AGI",
-      "stabilized configuration"
-    ]
-  },
-  {
-    "id": "spellcheck",
-    "title": "Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few",
-    "deck": "Documents with dated prices how spell check went from a premium product to a free built-in feature, and explains it by marginal cost and bundling. Plain words: spell check used to cost a lot and is now free; it became free because it costs almost nothing to run and is most useful inside tools people have; other computer skills can follow.",
-    "status": "History essay",
-    "group": "essay",
-    "about": "/about/spellcheck/",
-    "paper": "/papers/spellcheck/",
-    "pdf": "/pdfs/spellcheck.pdf",
-    "figures": "/living/spellcheck/",
-    "tags": [
-      "history essay",
-      "dated prices",
-      "bundling",
-      "the many"
-    ]
-  },
-  {
-    "id": "ai-coding-market",
-    "title": "The Promised Trillion Dollar AI-Coding Market",
-    "deck": "Lists who projects a trillion-dollar AI coding market, labels each number by kind, and names the shared assumptions about energy, tokens and reuse, with testable propositions. Plain words: the big numbers are mostly forecasts; they assume a large model is paid for every piece of code forever; reuse would lower the cost of repeated work toward the cost of electricity.",
-    "status": "Economics essay",
-    "group": "essay",
-    "about": "/about/ai-coding-market/",
-    "paper": "/papers/ai-coding-market/",
-    "pdf": "/pdfs/ai-coding-market.pdf",
-    "figures": "/figures/rce/intent-entropy.svg",
-    "tags": [
-      "one-direction assumption",
-      "marginal cost",
-      "two declines"
-    ]
-  },
-  {
-    "id": "interface-economics",
-    "title": "The Price of the Unexamined Interface",
-    "deck": "Published costs of failures at handoffs, labeled as accounted costs, model estimates or survey estimates and never added into one total. Plain words: some handoff failures have exact price tags; national totals are estimates; checking assumptions is cheap but the one who does it pays while everyone benefits.",
-    "status": "Economics essay",
-    "group": "essay",
-    "about": "/about/interface-economics/",
-    "paper": "/papers/interface-economics/",
-    "pdf": "/pdfs/interface-economics.pdf",
-    "figures": "/figures/interface-economics/estimates-by-kind.svg",
-    "tags": [
-      "economics of interfaces",
-      "technical debt",
-      "standards economics",
-      "estimates labeled by kind"
-    ]
-  },
-  {
-    "id": "mei",
-    "title": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus",
-    "deck": "Computer intelligence designed to run inside a fixed energy budget, with emulator and datasheet results on a cold-chain sensor tag and a protocol test of a grid-following data center. Plain words: give a computer a fixed energy budget and design it for the best answer inside it; a food sensor tag can then run about eight years on a coin battery; a data center can cut power when the grid asks without giving wrong answers.",
-    "status": "Product white paper",
-    "group": "product",
-    "about": "/products/mei/",
-    "paper": "/products/mei/",
-    "pdf": "/pdfs/mei.pdf",
-    "figures": "/living/mei/",
-    "tags": [
-      "product white paper",
-      "energy budget",
-      "edge and central"
-    ]
-  },
-  {
-    "id": "jouleos",
-    "title": "The Search for JouleOS",
-    "deck": "A review of how operating systems, instruction sets and agent sandboxes are composed today, and checkable requirements for a machine that schedules, meters and refuses an agent under an energy budget. Plain words: AI agents are added on top of old layers; none of them checks energy before an agent acts; a machine for agents should measure energy, budget it, and refuse what breaks the budget.",
-    "status": "Product white paper (review and design guide)",
-    "group": "product",
-    "about": "/products/jouleos/",
-    "paper": "/products/jouleos/",
-    "pdf": "/pdfs/jouleos.pdf",
-    "figures": "/living/",
-    "tags": [
-      "product white paper",
-      "secure compute",
-      "WebAssembly"
-    ]
-  }
-];
+const projects = studies.map((s) => ({
+  id: s.id, title: s.title, deck: s.summary, status: s.kind, group: s.group,
+  about: s.aboutPath, paper: s.path, pdf: s.pdfPath, figures: s.figures, tags: s.keywords.slice(0, 4),
+}));
+
+const catalogLd = {
+  ...homeJsonLd,
+  '@graph': homeJsonLd['@graph'].map((g: any) => g['@type'] === 'CollectionPage'
+    ? { ...g, mainEntity: { '@type': 'ItemList', itemListElement: studies.map((s, i) => ({ '@type': 'ListItem', position: i + 1, url: s.url, name: s.title })) } }
+    : g),
+};
 const research = projects.filter((p) => p.group !== 'product');
 const products = projects.filter((p) => p.group === 'product');
 ---
 
-<Layout title="Research catalog" description="OpenIE research, free to read and reuse: four research papers, four economics papers and essays, and two white papers. Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents, Metered Commit Gates, Task Satiation vs. Aggregate Rebound in AI Demand, The Reality Code Engine, The Pursuit of AGI Resolves the Three-Body Problem in Computing, Spell Check is Global, The Promised Trillion Dollar AI-Coding Market, and The Price of the Unexamined Interface.">
-  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(homeJsonLd)} />
+<Layout title="Research catalog" description="OpenIE research, free to read and reuse, with a web edition, a PDF and interactive figures for each paper.">
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(catalogLd)} />
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-12 max-w-7xl mx-auto">
     <p class="section-label mb-4">research.openie.dev</p>
     <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-brand-white max-w-3xl">
       Research catalog
     </h1>
     <p class="mt-6 font-body text-base md:text-lg text-brand-slate max-w-2xl leading-relaxed">
-      Four research papers, one research study, four economics papers and essays, and two white papers, published free so anyone can read, check and reuse them.
+      Research from Open Interface Engineering, published free so anyone can read, check and reuse it.
       Each paper stands alone, defines its own terms, and opens with three points in plain words. Energy figures are labeled by how they were obtained.
     </p>
     <div class="mt-8 flex flex-wrap gap-3">
-      <a href="/papers/agency/" class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
-        Thermodynamic Bounds and an Optimal Tempo
-      </a>
-      <a href="/papers/gates/" class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">
-        Metered Commit Gates
-      </a>
-      <a href="/papers/satiation/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        Task Satiation vs. Aggregate Rebound
-      </a>
-      <a href="/papers/rce/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        The Reality Code Engine
-      </a>
-      <a href="/papers/game-engines/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        Writing a Game Once
-      </a>
-      <a href="/papers/three-body/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        The Three-Body Problem in Computing
-      </a>
-      <a href="/papers/spellcheck/" class="inline-flex items-center font-mono text-xs text-brand-gold border border-brand-gold/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold/10 transition-colors">
-        Spell Check is Global (essay)
-      </a>
-      <a href="/#products" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        White papers
-      </a>
       <a href="https://openie-dev.github.io/rce/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
         RCE Playground
       </a>
@@ -301,7 +88,7 @@ const products = projects.filter((p) => p.group === 'product');
     <div class="mb-8">
       <p class="section-label mb-2">White papers</p>
       <h2 class="text-2xl md:text-3xl text-brand-white">Designs, with their data</h2>
-      <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed max-w-3xl">Two white papers describe designs by the OpenIE authors as objects of study, with their data and their limits stated.</p>
+      <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed max-w-3xl">White papers describe designs by the OpenIE authors as objects of study, with their data and their limits stated.</p>
     </div>
     <div id="metabolic-intelligence" class="mb-6"></div>
     <div id="jouleos"></div>

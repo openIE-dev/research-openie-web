@@ -3,6 +3,7 @@ import '../styles/global.css';
 import 'katex/dist/katex.min.css';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import { LANGS, NAV_EN } from '../i18n';
+import { studies } from '../data/studyList';
 
 interface Props {
   title: string;
@@ -107,16 +108,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
           <div>
             <div class="font-mono text-[10px] text-brand-gray tracking-[2px] uppercase mb-3">Papers</div>
             <div class="space-y-2">
-              <a href="/papers/agency/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Thermodynamic Bounds and an Optimal Tempo</a>
-              <a href="/papers/gates/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Metered Commit Gates</a>
-              <a href="/papers/satiation/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Task Satiation vs. Aggregate Rebound</a>
-              <a href="/papers/spellcheck/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Spell Check is Global (essay)</a>
-              <a href="/papers/rce/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Reality Code Engine</a>
-              <a href="/papers/three-body/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Pursuit of AGI Resolves the Three-Body Problem in Computing</a>
-              <a href="/papers/ai-coding-market/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Promised Trillion Dollar AI-Coding Market</a>
-              <a href="/papers/interface-economics/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Price of the Unexamined Interface</a>
-              <a href="/products/mei/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Metabolic Intelligence (product)</a>
-              <a href="/products/jouleos/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Search for JouleOS (product)</a>
+              {studies.map((s) => <a href={s.path} class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">{s.short_title}</a>)}
               <a href="/rce/download/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">RCE download</a>
               <a href="/living/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Figures</a>
               <a href="/about/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">About</a>
@@ -126,17 +118,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
           <div>
             <div class="font-mono text-[10px] text-brand-gray tracking-[2px] uppercase mb-3">PDFs</div>
             <div class="space-y-2">
-              <a href="/pdfs/agency.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Thermodynamic Bounds</a>
-              <a href="/pdfs/gates.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Metered Commit Gates</a>
-              <a href="/pdfs/satiation.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Task Satiation</a>
-              <a href="/pdfs/spellcheck.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Spell Check is Global</a>
+              {studies.map((s) => <a href={s.pdfPath} class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">{s.short_title}</a>)}
               <a href="/data/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Data and code</a>
-              <a href="/pdfs/rce.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Reality Code Engine</a>
-              <a href="/pdfs/three-body.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Three-Body Problem in Computing</a>
-              <a href="/pdfs/ai-coding-market.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Promised Trillion Dollar AI-Coding Market</a>
-              <a href="/pdfs/interface-economics.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Price of the Unexamined Interface</a>
-              <a href="/pdfs/mei.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Metabolic Intelligence</a>
-              <a href="/pdfs/jouleos.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">The Search for JouleOS</a>
             </div>
           </div>
           <div>

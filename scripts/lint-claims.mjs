@@ -13,7 +13,7 @@ const WORDS = new RegExp(ledger.status_words, 'g');
 
 const TARGETS = [
   'src/content', 'src/includes', 'src/pages', 'src/layouts', 'src/components',
-  'src/data/studies.json', 'public/llms.txt', 'public/webmcp-tools.js',
+  'src/data/studies.json', 'src/data/webmcp-tools.template.js',
 ];
 const EXT = /\.(md|astro|json|txt|js|ts)$/;
 
