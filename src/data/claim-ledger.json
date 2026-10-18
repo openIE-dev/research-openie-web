@@ -178,6 +178,15 @@
       ],
       "pattern": "End of Moore's Law",
       "note": "Title of the cited MLIR paper (Lattner et al. 2020) in the RCE-JEPA convergence-by-commitment section; not a claim of ours."
+    },
+    {
+      "id": "ref-title-kumar-laws-of-intelligence",
+      "status": "reference title",
+      "files": [
+        "src/content/papers/agency.md"
+      ],
+      "pattern": "The Laws of Intelligence: Computation Efficiency and the Physical Scaling Limits of AI Systems",
+      "note": "Title of the cited Kumar preprint (Zenodo 18993403) in Agency section 6.8 reference [347]; not a claim of ours."
     }
   ]
 }
