@@ -830,7 +830,7 @@ Every answer carries a replay class stating how it was produced: `Deterministic`
 
 ## II.5. Software reference
 
-The software reference `mixture-of-limits` (Apache-2.0 or MIT) has a harness, `cargo run -p mol-cli -- prove`, that prints `VERIFIED` for each criterion and exits 0. The workspace test suite (`cargo test --workspace`) passes (P0), and the harness exits 0 (P1). A criterion marked verified means that an implementation exists and passes its stated specification. It is not a theorem, not an independent replication and not an energy measurement.
+The software reference `mixture-of-limits` (Apache-2.0 or MIT) has a harness, `cargo run -p mol-cli -- prove`, that prints `VERIFIED` for each criterion and exits 0. The workspace test suite (`cargo test --workspace`) passes (P0), and the harness exits 0 (P1). A criterion marked verified means that an implementation exists and passes its stated specification. It is not a theorem, not an independent replication and not an energy measurement. As of the 2 October 2026 run the harness prints 43 `VERIFIED` criteria (this replaces the earlier count of about 29); the table below itemises P2 to P24, and II.5.1 to II.5.3 describe the product-gap criteria A11 to A14 that were added after it. The other criteria are not itemised in this paper and are in the software reference's `PLAN.md` and `product/ACCEPTANCE`.
 
 <div id="6-prove--claim-map" class="anchor-alias" aria-hidden="true"></div>
 
@@ -865,6 +865,20 @@ The software reference `mixture-of-limits` (Apache-2.0 or MIT) has a harness, `c
 | P24 | Ecosystem e2e certify (one receipt) | `claim.mol.ecosystem_e2e` | Lane → fabric (Cpu software reference) → WASM → energy labels (estimated fuel; optional meter_sample) → host invoke only with `GrantReceipt` → commit\|refuse on **one** receipt; refuse-without-grant → `grant_receipt_required`. | none | Unmetered / Estimated |
 
 Outside the harness: live energy counters (RAPL, NVML) as the default close, live GPU detection, on-device certificate hardware, trained model weights, and silicon meters for Gap cells. None is claimed.
+
+### II.5.1 Phase-1 micro-perception on the arena (A11, A14)
+
+The arena scores the cascade on typed chores (decision, ticket close, risk) against an always-model baseline and a small leaf baseline. Typed baselines run with `phase1=false`. With `phase1=true`, an unstructured ticket, risk or decision string first goes through the in-tree rule AST transducer (`mol phase1`) and only then enters the cascade; unrecognised input is refused, so the transducer is never used as a model and Model LAST stays last. In the software-reference run of 2 October 2026 (n = 36, America/New_York), the cascade closed 36 of 36 correctly and refused 5 of 5 satiation cases, while the always-model baseline and the leaf baseline each got 28 of 36 and 0 of 5 on satiation. Mean estimated joules were about 2.1e-11 for the cascade, 5.0e-1 for the always-model baseline and 2.5e-4 for the leaf baseline. These are catalog estimates; `measured_j` is not set, and the figures are the reference's own published table, not a re-run for this paper.
+
+### II.5.2 Tier-1 OS meters (A13)
+
+An optional build feature adds package-level probes so that `measured_j` is filled only from a real reading: Linux RAPL (powercap `energy_uj` delta), NVIDIA (`nvidia-smi` power times the window, or an energy-consumed delta, as device-total GPU energy) and macOS (SMC `PSTR` watts times the window, without sudo; the Energy Model package channel is not used and rails are never summed). The harness runs with the feature off, so `measured_j` stays unset there. Criterion A13 stamps RAPL, NVML and SMC fixtures and forbids inventing a value from a utilisation percentage. No Part II figure is a reading from these probes.
+
+### II.5.3 Primitive distillation (A12)
+
+After a certified Model LAST commit, `mol distill` appends a Lookup or Formula entry to a store with deterministic replay; an uncertified proposal is never distilled. A second pass on the distilled pattern then closes at Lookup or Formula without opening Model LAST (A12). Receipts keep `estimated_j` labelled as an estimate.
+
+Reproduce: `cargo run -p mol-cli -- prove` (43 criteria including A1 to A14), `-- arena`, `-- phase1 "please close ticket as R-OK"`, `-- distill "ticket summary" --gear lookup --store product/fixtures/distill_store.json`. Code: [openIE-dev/mixture-of-limits](https://github.com/openIE-dev/mixture-of-limits).
 
 ## II.6. Related work
 
@@ -968,5 +982,6 @@ Zilberstein, S. (1996). Using anytime algorithms in intelligent systems. *AI Mag
 
 ```bash
 cargo test --workspace
-cargo run -p mol-cli -- prove   # expect VERIFIED lines, exit 0
+cargo run -p mol-cli -- prove   # expect 43 VERIFIED lines (A1 to A14 included), exit 0
+cargo run -p mol-cli -- arena   # refresh the arena table from a real run only
 ```
