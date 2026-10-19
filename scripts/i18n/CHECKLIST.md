@@ -10,7 +10,7 @@ States: abstract = title and abstract only (complete: false); full = whole text 
 | agency | full | full | full | full | full | full | full | full |
 | ai-coding-market | full | full | full | full | full | full | full | full |
 | interface-economics | full | full | full | full | full | full | full | full |
-| latency | full | full | full | abstract | abstract | abstract | abstract | abstract |
+| latency | full | full | full | full | abstract | abstract | abstract | abstract |
 | gates | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | satiation | full | full | full | full | full | full | full | full |
 | three-body | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
