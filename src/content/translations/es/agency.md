@@ -1630,7 +1630,7 @@ Entries marked "preprint" are cited by their arXiv posting. Entries published in
 342. Worden, R. P. (1995). A speed limit for evolution. *Journal of Theoretical Biology* 176:137-152. https://doi.org/10.1006/jtbi.1995.0183
 343. Hledík, M., Barton, N. and Tkačik, G. (2022). Accumulation and maintenance of information in evolution. *PNAS* 119:e2123152119. https://doi.org/10.1073/pnas.2123152119
 344. Perrier, E. (2025). Watts-per-intelligence: Part I (energy efficiency). arXiv:2504.05328 (preprint). https://arxiv.org/abs/2504.05328
-345. Xu, J. and Li, Z. (2025). Information physics of intelligence: unifying derivation depth and entropy under thermodynamic constraints. arXiv:2511.19156 (preprint). https://arxiv.org/abs/2511.19156
-346. Fagan, P. D. (2026). Toward a physical theory of intelligence. arXiv:2601.00021 (preprint). https://arxiv.org/abs/2601.00021
-347. Kumar, S. The Laws of Intelligence: Computation Efficiency and the Physical Scaling Limits of AI Systems. Zenodo 18993403 (preprint, not peer reviewed).
+345. Xu, J. and Li, Z. (2025). Information physics of intelligence: unifying derivation depth and entropy under thermodynamic constraints. arXiv:2511.19156v4 (preprint; the arXiv listing title reads "unifying logical depth and entropy"). https://arxiv.org/abs/2511.19156
+346. Fagan, P. D. (2025). Toward a physical theory of intelligence. arXiv:2601.00021v2 (preprint; first submitted 22 December 2025, revised 7 March 2026). https://arxiv.org/abs/2601.00021
+347. Kumar, S. (2026). The Laws of Intelligence: Computation Efficiency and the Physical Scaling Limits of AI Systems. Zenodo (preprint), concept DOI 10.5281/zenodo.18993403, version DOI 10.5281/zenodo.18993404. https://doi.org/10.5281/zenodo.18993404
 348. Zhang, J., Zhu, H., Zhang, J. J. and Hu, H. (2026). The semantic least-energy principle: a hypothesis for intelligence. arXiv:2607.24287 (preprint). https://arxiv.org/abs/2607.24287
