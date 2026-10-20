@@ -2498,17 +2498,19 @@ and work already cited, with no new primary research.
 \subsubsection{6.8 Convergence observations: information, energy and
 prediction}\label{convergence-observations-information-energy-and-prediction}
 
-Nine recent sources relate information, energy and prediction. Four were
-read in full and are cited for what they state: Takahashi and Hayashi
-{[}239{]}, Perrier {[}344{]}, Xu and Li {[}345{]} and Still, Sivak, Bell
-and Crooks {[}54{]}. Five were read in part and are cited only for the
-passages named: Wolpert {[}230{]}, Ortega and Braun {[}56{]}, Zhang,
-Zhu, Zhang and Hu {[}348{]}, Fagan {[}346{]} and Kumar {[}347{]}. This
-section records what each states and what it does not show. It is an
-observation of overlapping questions, not a comparison of results and
-not a claim about priority. Section and equation numbers are those of
-the versions named. Quotations were checked by script against the saved
-texts. Values marked ``recomputed'' are this paper's own arithmetic.
+Eleven recent sources relate information, energy and prediction, or the
+compute spent per generated answer. Four were read in full and are cited
+for what they state: Takahashi and Hayashi {[}239{]}, Perrier {[}344{]},
+Xu and Li {[}345{]} and Still, Sivak, Bell and Crooks {[}54{]}. Seven
+were read in part and are cited only for the passages named: Wolpert
+{[}230{]}, Ortega and Braun {[}56{]}, Zhang, Zhu, Zhang and Hu
+{[}348{]}, Fagan {[}346{]}, Kumar {[}347{]}, Kumbong, Khare and
+colleagues {[}349{]} and Zou and colleagues {[}350{]}. This section
+records what each states and what it does not show. It is an observation
+of overlapping questions, not a comparison of results and not a claim
+about priority. Section and equation numbers are those of the versions
+named. Quotations were checked by script against the saved texts. Values
+marked ``recomputed'' are this paper's own arithmetic.
 
 \textbf{In plain words}
 
@@ -2712,7 +2714,6 @@ Each entry is limited to the passage stated. No claim is made about the
 unread parts.
 
 \begin{itemize}
-\tightlist
 \item
   \textbf{Wolpert, arXiv:1905.05669v3 {[}230{]}.} Sec V (Eqs 29 to 44,
   Examples 1 to 6), Sec XVI, Appendix A and the opening of Appendix B
@@ -2753,10 +2754,52 @@ unread parts.
   125), whose premise the paper states as conditional (``If generating
   useful knowledge requires irreversible information processing'').
   Recomputed: \(6.74\times10^{21}\) bit/s for 20 W at 310 K.
+\item
+  \textbf{Kumbong, Khare and colleagues, arXiv:2610.14162v1 (9 October
+  2026) {[}349{]}.} The main text (pp.~1 to 13) and Appendices A to E, I
+  and J.7 were read; Appendices F to H and the rest of J were read in
+  part. Next-Concept Modeling encodes text as a hierarchy of \(K\)
+  residual-quantized code levels (Eqs 7 and 8) and generates one whole
+  level per pass (Eqs 4 and 5), so a sample costs \(K\) generator calls
+  rather than one per token. Reported results: reconstruction accuracy
+  of 98.79 to 100.00 percent (Table 1); wall-clock speedups over
+  diffusion language models of similar size on one H100 of 21x on LM1B,
+  10x on OpenWebText and 31x on XSum; and 86.1 percent of hard Sudoku
+  boards solved against 1.0 percent for a left-to-right model of similar
+  size and 81.3 percent for the best diffusion baseline (Table 3). It
+  does not show lower energy: the paper reports seconds and training
+  token positions, with no joules, watts or power traces. Translation
+  (WMT14 De-En, BLEU 22.6) trails a diffusion and a left-to-right
+  baseline, intermediate levels do not improve monotonically (Table 12),
+  some baseline quality figures are copied from other papers and some
+  baselines were timed with random weights (App. D.2). No result was
+  reproduced here.
+\item
+  \textbf{Zou and colleagues, arXiv:2610.18861v1 (13 October 2026)
+  {[}350{]}.} The main text (Sec 1 to 9, Tables 1 to 7) and Appendices E
+  and G.2 were read; Appendices A to D, F, H and J were read by keyword
+  only. The agent alternates text and latent modes; in latent mode the
+  hidden state is fed back through a small residual adapter,
+  \(e_{t+1} = h_t + W_2\,\sigma(W_1 h_t)\) (Eq 4). Reported results:
+  35.5 to 54.7 percent fewer tokens, 1.8x to 2.6x faster inference and
+  2.7x to 3.7x lower estimated cost (abstract); decoding compute per
+  question falls from 51.2 to 13.9, 62.5 to 17.2 and 66.9 to 25.1 TFLOP
+  at 4B, 8B and 14B (Table 9). Replacing latent steps with those of
+  another problem lowers MATH500 accuracy from 88.2 to 48.6 (Table 5).
+  It does not show lower energy: the paper reports no joules, and the
+  cost estimate is counted FLOPs times an assumed price at an assumed 10
+  percent utilisation, excluding prefill, attention and tool execution
+  (App. G.2); the dollar ratios recompute to the FLOP ratios
+  (recomputed). Each latent step is charged one full forward pass. On
+  HLE the 14B agent scores 16.0, below three frontier models (28.4 to
+  31.4). Sec 3 describes the latent thoughts as inspectable, while Sec 8
+  states they are readable only through the provider's adapter; a public
+  reply to the announcement objects that unverbalized reasoning weakens
+  monitoring.
 \end{itemize}
 
-\paragraph{What the nine sources show
-together}\label{what-the-nine-sources-show-together}
+\paragraph{What the eleven sources show
+together}\label{what-the-eleven-sources-show-together}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -2795,10 +2838,19 @@ non-predictive memory,
 \(\beta\langle W_{\mathrm{diss}}\rangle \ge I_{\mathrm{mem}} - I_{\mathrm{pred}}\)
 & Attainment by real systems; general agents; a measured joule & Full (5
 pp); journal version not read \\
+Kumbong, Khare and colleagues & Coarse-to-fine generation with a fixed
+number of passes; lower wall-clock time than diffusion baselines on one
+H100; Sudoku results & Measured energy; parity on translation;
+reproduced timings & Part (main text, App. A to E, I, J.7) \\
+Zou and colleagues & Reasoning partly in hidden-state vectors; fewer
+tokens and fewer counted decoding FLOPs; dependence of accuracy on the
+latent steps & Measured energy; a cost figure covering prefill,
+attention and tools; text-level monitoring of latent steps & Part (main
+text, App. E, G.2) \\
 \end{longtable}
 }
 
-Across all nine sources, no text read reports joules measured on real
+Across all eleven sources, no text read reports joules measured on real
 hardware. Energy figures that appear are estimated from FLOP counts,
 nominal power ratings or model assumptions. Where bounds appear, they
 are lower bounds on dissipation under stated assumptions, or definitions
@@ -5765,6 +5817,15 @@ published in a language other than English say so.
   Zhang, J., Zhu, H., Zhang, J. J. and Hu, H. (2026). The semantic
   least-energy principle: a hypothesis for intelligence.
   arXiv:2607.24287 (preprint). https://arxiv.org/abs/2607.24287
+\item
+  Kumbong, H., Khare, I. S., Mlauzi, I., Woen, A., Ding, C., Buchanan,
+  E. K., Arora, S., Mirhoseini, A. and Ré, C. (2026). Next-concept
+  modeling: fast, parallel coarse-to-fine text generation.
+  arXiv:2610.14162v1 (preprint). https://arxiv.org/abs/2610.14162
+\item
+  Zou, J., Qi, Y., Chen, S., Bianchi, F., Zhu, S., Lu, P., He, J. and
+  Zou, J. (2026). Hybrid reasoning agents. arXiv:2610.18861v1
+  (preprint). https://arxiv.org/abs/2610.18861
 \end{enumerate}
 
 \end{document}
