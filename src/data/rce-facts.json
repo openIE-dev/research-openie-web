@@ -1,24 +1,25 @@
 {
   "source": "scripts/claim-counts.py in openIE-dev/rce, run on public main",
   "repo": "https://github.com/openIE-dev/rce",
-  "commit": "e416fd0",
-  "read_on": "2026-10-17",
+  "commit": "dbb8db6",
+  "commit_full": "dbb8db63ca213409a7c1a26e9ec8f984d2d1132c",
+  "read_on": "2026-10-24",
   "spec_document_draft": "0.9",
-  "spec_notebook_draft": "0.7",
-  "spec_notebook_commit": "49fa9af",
-  "note_on_0_9": "Draft 0.9 is on public main since cdae5cf. It specifies Appendix F; the reference checker implements part of it and refuses the rest as reserved, not implemented (F.12). Theorems T42 to T56 are stated and unproved. The interactive notebook on this site (spec-src/rce/spec.json) still shows the draft 0.7 document, generated from commit 49fa9af, and is not yet regenerated from draft 0.9.",
-  "theorems_stated": "T1 to T56",
-  "lean_modules": 58,
-  "lean_theorem_and_lemma_declarations_in_source": 1116,
-  "lean_audit_theorem_constants": 4877,
-  "lean_audit_definition": "The audit (scripts/lean-audit.sh, audit/Audit.lean) counts every theorem constant in the kernel environment, including constants the elaborator generates, so it is larger than the number of theorem and lemma declarations written in source. The paper's 2,192 was the audit count at engine commit 1eb5f02 over 31 modules.",
-  "examples_total": 59,
-  "examples_valid_top_level": 57,
+  "spec_notebook_draft": "0.9",
+  "spec_notebook_commit": "dbb8db6",
+  "note_on_0_9": "Counts from scripts/claim-counts.py at public dbb8db6 (2026-10-24). Spec document draft 0.9. There is one language: the specification at one commit. The standard library is batteries-included and hash-pinned, and it is built into the checker (rce lib). Source is the openIE-dev/rce monorepo. The interactive notebook (spec-src/rce/spec.json) was regenerated from the same commit, including Appendix F. Theorems T1 to T62 are stated. Of the Appendix F obligations T42 to T56, T48, T51 and T53 are proved of models and the other twelve are unproved. T57 is proved for the one-step morphism equation and its uniqueness clause is unproved. T58 is proved. T59 is proved over an explicit finite alphabet and unproved over all of E. T60 is stated and unproved. T61 is tested for renaming only and otherwise unproved. T62 is proved on a model. The Lean kernel audit was not rerun at this commit.",
+  "theorems_stated": "T1 to T62",
+  "lean_modules": 62,
+  "lean_theorem_and_lemma_declarations_in_source": 1152,
+  "lean_audit_theorem_constants": null,
+  "lean_audit_definition": "The audit (scripts/lean-audit.sh, audit/Audit.lean) counts every theorem constant in the kernel environment, including constants the elaborator generates, so it is larger than the number of theorem and lemma declarations written in source. It was not rerun at dbb8db6. The last audit recorded here is 4,877 theorem constants at e416fd0. The paper's 2,192 was the audit count at engine commit 1eb5f02 over 31 modules.",
+  "examples_total": 62,
+  "examples_valid_top_level": 60,
   "examples_in_packages": 2,
   "reject_examples": 12,
   "ill_typed_examples": 48,
   "inadmissible_examples": 16,
-  "checker_test_functions": 385,
+  "checker_test_functions": 435,
   "canonical_json_vectors": 77,
   "emit_targets_in_reference_checker": [
     "rust",
@@ -26,11 +27,34 @@
     "js",
     "scala"
   ],
-  "theorems_stated_unproved_in_0_9": "T42 to T56",
+  "theorems_stated_unproved_in_0_9": "Appendix F: T42 to T56 except T48, T51 and T53 (those three are proved of models). Also unproved, from the theorem index at this commit: T57's uniqueness clause, T59 over all of E, T60, and T61 beyond the renaming tests. T58 is proved. T62 is proved on a model.",
   "grammar_conflicts": {
     "section_3": 0,
-    "versions_0_6_and_0_7": 0
+    "section_3_with_c2": 0,
+    "section_3_with_c2_and_f13": 0,
+    "source": "Quoted from spec/book/00-overview.md at dbb8db6, which says those figures are the printed output of rce-spec-check compared with the text by scripts/claim-counts.py --check. rce-spec-check was not rebuilt for this read."
   },
-  "lean_declaration_and_audit_counts_commit": "e416fd0",
-  "lean_declaration_and_audit_counts_note": "Rerun at public e416fd0 on 17 October 2026: lake build completes over the 58 files of spec/lean/RCE/ (81 with subdirectories), audit reports 4,877 theorem constants with standard axioms only, no sorry. Declarations are the lines starting with theorem or lemma (with optional attributes, private or protected) in all spec/lean .lean files. At 4304048 the same counts were 885 declarations, 2,949 audit constants and 46 modules."
+  "lean_declaration_and_audit_counts_commit": "dbb8db6",
+  "lean_declaration_and_audit_counts_note": "Declaration count at public dbb8db6 on 24 October 2026: 1,152 lines in spec/lean/**/*.lean whose first non-space tokens are an optional private or protected, an optional noncomputable, then theorem or lemma. claim-counts.py reports 62 Lean files directly in spec/lean/RCE/ (85 under that directory, 92 .lean files under spec/lean/). The kernel audit was not rerun. At e416fd0 the same file recorded 1,116 declarations, 4,877 audit constants and 58 modules. At 4304048 the same counts were 885 declarations, 2,949 audit constants and 46 modules.",
+  "prior_reads": [
+    {
+      "commit": "e416fd0",
+      "read_on": "2026-10-17",
+      "spec_document_draft": "0.9",
+      "spec_notebook_draft": "0.7",
+      "spec_notebook_commit": "49fa9af",
+      "theorems_stated": "T1 to T56",
+      "lean_modules": 58,
+      "lean_theorem_and_lemma_declarations_in_source": 1116,
+      "lean_audit_theorem_constants": 4877,
+      "examples_total": 59,
+      "examples_valid_top_level": 57,
+      "examples_in_packages": 2,
+      "reject_examples": 12,
+      "ill_typed_examples": 48,
+      "inadmissible_examples": 16,
+      "checker_test_functions": 385,
+      "canonical_json_vectors": 77
+    }
+  ]
 }

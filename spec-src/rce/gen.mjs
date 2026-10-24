@@ -18,10 +18,20 @@ const wasmPkg = path.join(SPEC, 'checker-wasm/pkg');
 const { default: init, check_with } = await import(path.join(wasmPkg, 'rce_spec_check_wasm.js'));
 await init({ module_or_path: fs.readFileSync(path.join(wasmPkg, 'rce_spec_check_wasm_bg.wasm')) });
 const check = (src, known = '') => JSON.parse(check_with(src, known));
-const commit = execSync('git rev-parse --short HEAD', { cwd: SPEC }).toString().trim();
+const commit = execSync('git rev-parse --short=7 HEAD', { cwd: SPEC }).toString().trim();
 
-// keywords come from the tree-sitter grammar (string literals that are identifiers)
-const grammar = fs.readFileSync(path.join(SPEC, 'tree-sitter/grammar.js'), 'utf8');
+// keywords come from the tree-sitter grammar (string literals that are identifiers).
+// Monorepo tip keeps the grammar at <checkout>/tree-sitter/; older checkouts kept it under the spec dir.
+function grammarPath(specDir) {
+  const candidates = [
+    path.join(specDir, 'tree-sitter/grammar.js'),
+    path.join(specDir, '../tree-sitter/grammar.js'),
+  ];
+  const found = candidates.find((p) => fs.existsSync(p));
+  if (!found) throw new Error(`tree-sitter grammar.js not found (tried ${candidates.join(', ')})`);
+  return found;
+}
+const grammar = fs.readFileSync(grammarPath(SPEC), 'utf8');
 const KEYWORDS = [...new Set([...grammar.matchAll(/'([a-z][a-z_0-9]*)'/g)].map((m) => m[1]))].sort();
 const TOP = /^(module|use|intent|example|check|pub|const|type|struct|kind|trait|fn|actor|state|event|error|step|impl|extern|linear|device|arena)\b/;
 
@@ -186,9 +196,10 @@ function chapter(file) {
   const fm = text.match(/\n<!-- body-sha256: ([0-9a-f]{64}) -->\n?$/);
   const hash = fm ? fm[1] : '';
   text = fm ? text.slice(0, fm.index) : text;
-  const qm = text.match(/\n\*\*Read receipt\.\*\* (.*)\n*$/);
+  // The receipt is usually the last line. Appendix F keeps grammar after it, so match it anywhere and drop only that line.
+  const qm = text.match(/\n\*\*Read receipt\.\*\* (.*)\n/);
   const question = qm ? qm[1].trim() : '';
-  if (qm) text = text.slice(0, qm.index);
+  if (qm) text = text.slice(0, qm.index) + '\n' + text.slice(qm.index + qm[0].length);
   const hm = text.match(/^#{1,2} (.*)\n/);
   const title = hm ? hm[1].trim() : file;
   if (hm) text = text.slice(hm[0].length);
