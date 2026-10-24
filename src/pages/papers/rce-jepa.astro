@@ -1,0 +1,21 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import RceJepaPaper, { HEADINGS } from '../../components/RceJepaPaper.astro';
+import { frontmatter } from '../../content/papers/rce-jepa.md';
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description={frontmatter.deck}
+  headings={HEADINGS}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Research paper · open topic: thesis, hypotheses, falsifiers, phases and the Phase 0 results"
+>
+  <RceJepaPaper />
+</PaperLayout>

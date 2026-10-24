@@ -159,6 +159,13 @@ elif id_ == "ai-reads-human":
         "Time and token counts are measured on one virtualised machine. No joules were measured; model energy figures are other authors' measurements.\n"
         "</div>\n"
     )
+elif id_ == "rce-jepa":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research paper, open topic, not a journal final.\n"
+        "No learned proposer has been trained; the Phase 0 results are checker-only measurements with 0 model calls. No joules were measured.\n"
+        "</div>\n"
+    )
 elif id_ == "rce":
     measure = (
         '<div class="measurement">\n'
@@ -250,6 +257,7 @@ gen_one gates
 gen_one satiation
 gen_one spellcheck
 gen_one rce
+gen_one rce-jepa
 gen_one three-body
 gen_one game-engines
 gen_one latency

@@ -4,14 +4,6 @@ import { studies } from '../../data/studyList';
 
 const aboutPages = [
   ...studies.map((s) => ({ id: s.id, kind: s.kind, title: s.title, href: s.aboutPath, paper: s.path, deck: s.summary })),
-  // Not in studies.json: this topic has an about page but is not listed in the catalog.
-  {
-      "id": "rce-jepa",
-      "kind": "Research topic",
-      "title": "RCE-JEPA: Autonomous Deterministic Coding using Latent Space",
-      "href": "/about/rce-jepa/",
-      "deck": "Can software be written autonomously by a learned model proposing programs in one closed, deterministic shape while a checker decides? Traces seventy years of specification-to-program attempts, why they stalled, current model-plus-verifier work, and the case for now, then tests it on the Reality Code Engine (RCE) with a Joint Embedding Predictive Architecture (JEPA) predictor in latent space, with hypotheses that could disprove it. Plain words: many have tried to make computers write programs from a description; a fixed shape plus a strict checker makes the job smaller; the AI proposes, the checker decides."
-  }
 ];
 
 ---

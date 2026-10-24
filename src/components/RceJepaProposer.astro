@@ -42,7 +42,7 @@ step Counter on Dec -> try n.checked_sub(1) else Underflow`}</code></pre>
 
 <h3 id="architecture">Architecture</h3>
 
-<figure class="mt-8 glass-card p-4 fig-wide not-prose">
+<figure class="mt-8 glass-card p-4 fig not-prose">
   <a class="fig-zoom" href="/figures/rce-jepa/architecture.svg" aria-label="Enlarge figure"><picture><source type="image/svg+xml" srcset="/figures/rce-jepa/architecture.svg" /><img src="/figures/rce-jepa/architecture.png" alt="Inside a dashed region labelled learned and untrusted: an intent encoder, a proposer acting as an inverse model, an exact rollout by the transition function, a Form encoder with energy, a tree search, and a decision head. Outside it: the gate, which alone admits programs, and the engine, which replays and projects. A rejection arrow returns the broken rule to the search" width="1500" height="760" class="fig-img w-full rounded bg-white" loading="lazy" decoding="async" /></picture></a>
   <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Figure 2. The model steers, the engine renders. Orange boxes are learned and untrusted; the blue box is the engine's exact rollout, used as a simulator during search; green boxes are built (see the RCE paper for their status). Only the gate admits. A design diagram, not data. <span class="fig-links"><a href="/figures/rce-jepa/architecture.svg" target="_blank" rel="noopener">Open full size</a> · <a href="/figures/rce-jepa/architecture.png">PNG</a></span>.</figcaption>
 </figure>
