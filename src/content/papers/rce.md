@@ -11,7 +11,7 @@ board_metered: false
 
 # The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming
 
-*Version 1.18, 24 October 2026. Specification: [current draft (draft 0.9)](/rce/spec/), from [openIE-dev/rce](https://github.com/openIE-dev/rce); the counts in the text below are at the commits they name. Data and code: [research.openie.dev/data/](/data/#rce). Playground (reference checker): [openie-dev.github.io/rce](https://openie-dev.github.io/rce/). Engine demo: [/demos/rce-engine/](/demos/rce-engine/). LaTeX PDF: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
+*Version 1.19, 24 October 2026. Specification: [current draft (draft 0.9)](/rce/spec/), from [openIE-dev/rce](https://github.com/openIE-dev/rce); the counts in the text below are at the commits they name. Data and code: [research.openie.dev/data/](/data/#rce). Playground (reference checker): [openie-dev.github.io/rce](https://openie-dev.github.io/rce/). Engine demo: [/demos/rce-engine/](/demos/rce-engine/). LaTeX PDF: [/pdfs/latex/rce.pdf](/pdfs/latex/rce.pdf) ([source](/pdfs/latex/rce.tex)).*
 
 **Provenance of counts and reproducibility.** Every count in this paper comes from [`src/data/rce-facts.json`](https://github.com/openIE-dev/research-openie-web/blob/dcharlot65-openie/src/data/rce-facts.json), produced by `scripts/claim-counts.py` in [openIE-dev/rce](https://github.com/openIE-dev/rce) at the commit each figure or caption names; where a figure names an earlier commit than the text, it describes the repository at that commit. The specification document is draft 0.9; theorems T1 to T56 are stated, T42 to T56 (Appendix F) stated and unproved; there is one language and one text (Section 3.7), and a failed call restores its `&mut` arguments (F.4.4), which is what theorem T33 proves. Two Lean counts exist and are not interchangeable: the source holds 1,116 `theorem` and `lemma` declarations at `e416fd0`, while the audit (`scripts/lean-audit.sh`) counts every theorem constant in the kernel environment, including constants the elaborator generates, and reads 4,877 at `e416fd0` over 58 files with no `sorry` and standard axioms only; the 2,192 quoted in Section 3.7 is the audit count at engine commit `1eb5f02` over 31 modules. Neither number says anything about how many theorems are proved about the Rust evaluator.
 
@@ -739,6 +739,32 @@ The position that follows has four parts. The Form takes order, locality, idiom 
 
 Every language that stayed small replaced the taste of reviewers with a rule about what counts as admissible. Go's process is slanted towards declining, and in one study declined 40.9% of 1,095 proposals with a published set of reasons [175]; Lua's rule of mechanisms rather than policies held its implementation at about 25,000 lines of C; Elm stopped. The regime that grows is also documented by its own chair: the benefit of a feature is private and immediate, its cost diffuse and deferred, and it is easier to summon enthusiasm for something new than for opposing it [175]. The specification repository now states seven rules, each naming the artefact that enforces it. A construct enters the normative grammar only with an accepted and a refused example, a Lean statement of the theorem it relies on linked to the checker by a generated rule table or by test vectors, and no parsing conflicts; anything less is a proposal. A second spelling of something the Form already says is declined on that ground alone. Removal is symmetric with addition: a construct no accepted example needs for two releases, or whose theorem stays unproved for two releases, returns to a proposal. Each interface has one decision locus, because an organisational boundary that runs through an interface is a predicted defect site [174]. The decisions and their reasons are published in a ledger with a fixed set of reasons, so the decline rate is a number anyone can read. The market does not prune, so use is never a reason to keep a construct. And authorship by a model changes the rate, not the rule.
 
+### 12.5 The library and the compute fabric
+
+Whether a language should ship a large library ("batteries included") or a small specified core with a free registry is usually argued as convenience against flexibility. The record shows both positions failing at the same point [193]. A library shipped with the language ties its interface to the language's compatibility promise and loses flexibility [195]. Its modules are removed once an installer exists: Python Enhancement Proposal 594 removed 22 of them, citing maintenance cost and the ease of installing from the registry [194]. A free registry produces deep transitive graphs: half of the dependent packages in Cargo, npm and NuGet have at least 41, 21 and 27 transitive dependencies [196]. A specification with many implementations diverges at its edges, as more than 30 JSON parsers do on one under-specified grammar [197]. Where the record converges, it converges on a curated tier that is delivered and changed as one unit.
+
+The same failure appears across compute fabrics. On graphics processors, single-source models match native code on streaming kernels and lose on reductions: on the dot product, the performance-portability scores of Kokkos, RAJA and SYCL lie between 0.80 and 0.91 [198]. One unchanged source on a field-programmable gate array (FPGA) reaches 0.2% to 47% of the speed of its FPGA-optimised version [199]. Systems that give one meaning in software and in hardware achieve it by restriction (state of statically known size, no heap or recursion in the hardware part, a logical tick), and their proofs cover parts of the chain, not all of it [200]. Portable code formats work where they fix semantics [201]. Bit-identical results cost little when designed in [202]. Soundness results for memory models are pairwise [203]. Placement from measured costs is nondeterministic unless each decision is recorded and replayed [204]. For machine authors the question is also one of knowledge: of the packages named by code that 16 models generated in Python and JavaScript, 19.7% did not exist [205].
+
+Both debates ask where a library's meaning is held: by one implementation, by each registry package, by a specification checked with tolerances, or by a vendor binary for one fabric. The RCE position holds it in the one text.
+
+- **The library is part of the text.** It is written in the language and built into every tool (specification 4.1). It is pinned by the hash of its manifest, which a program names as its one dependency (F.5.3).
+- **It has no platform variant.** It performs I/O only through adapters.
+- **Its cost is the cost of its source on every binary.** An event the reference refuses for fuel is therefore refused by every host (HC-7).
+- **The per-target choice belongs to the engine.** The engine admits a fabric for a class of operations only after a logged bit-exactness probe against the CPU reference (HC-13), and it logs every placement for replay (HC-12).
+- **What is available is a closed list a tool prints.** Whether a function exists becomes a lookup rather than a recollection.
+
+Batteries included and specification-and-free then stop being alternatives: the batteries are part of the specification, and the program is free of any fabric.
+
+The library half of this position holds in the repository. The fabric half is a contract and a reference executor proved to replay, exercised on CPUs and WebAssembly only. The proposal "one library and one Form on every compute fabric" lists what remains [193]:
+
+- placement on every execution path;
+- one reduction tree per construct;
+- calibration runs;
+- integer and binary32 operation classes;
+- bounded Forms as the entry rule for hardware emitters;
+- a host without an operating system;
+- two measurements the record lacks: one kernel's energy across device classes under one boundary, and the share of library functionality that model assistants reuse rather than reimplement.
+
 ## 13. Programme of work and its gates
 
 Two independent reviews of the public repositories in October 2026 reached the same diagnosis. The checker is not itself verified: nothing refines the Lean semantics to the Rust interpreter, the two Lean cores have no theorem relating them, and the conformance suite reports 122 tests passing under the mechanised core and 1,867 unsupported, so about 6% of the language is under the theorem the overview advertises. Emitted code is a dynamic-value runtime per target, four hand-written runtimes of about 2,000 lines each. The energy estimate cannot tell targets apart, so least-joule extraction never chooses one. The lift covers four languages and the universality claim needs ten. And the engine — the gears, the e-graph, the proved rewrites, the verified kernel and the lift — is not public, so the headline numbers of this paper cannot be rebuilt from public code; the note at the head of this paper says which. For a project whose stated reason for working in the open is traceability, that is the largest risk in the programme.
@@ -1145,3 +1171,29 @@ Since the reviews, the six repositories that must agree with the specification �
 [191] W. van Oortmerssen, Goose: a memory-safe systems language with no heap allocator, garbage collector, or lifetime annotations, repository, 2026. https://github.com/aardappel/goose
 
 [192] dawnop, Dawn: a small functional language with effects in the type signature and content-addressed packages, repository, 2026. https://github.com/dawnop/dawn-lang
+
+[193] Open Interface Engineering, "Batteries included or specification and free: what the record says, and one Form on every compute fabric," synthesis of the survey of 24 October 2026, with working notes 7 to 18 and the proposal `spec/proposals/one-library-every-fabric.md` of openIE-dev/rce. https://github.com/openIE-dev/openie-research-experiments/blob/main/rce/surveys/2026-10-24/batteries-specification-and-fabrics.md
+
+[194] C. Heimes and B. Cannon, "PEP 594: Removing dead batteries from the standard library," Python Enhancement Proposals, 2019. https://peps.python.org/pep-0594/
+
+[195] Rust project, "RFC 1242: Policy for rust-lang crates," 2015. https://rust-lang.github.io/rfcs/1242-rust-lang-crates.html
+
+[196] A. Decan, T. Mens and P. Grosjean, "An empirical comparison of dependency network evolution in seven software packaging ecosystems," Empirical Software Engineering 24, 2019. https://doi.org/10.1007/s10664-017-9589-y
+
+[197] N. Seriot, "Parsing JSON is a Minefield," 2016. https://seriot.ch/projects/parsing_json.html
+
+[198] J. H. Davis, P. Sivaraman, J. Kitson, K. Parasyris, H. Menon, I. Minn, G. Georgakoudis and A. Bhatele, "Taking GPU Programming Models to Task for Performance Portability," Proc. ICS 2025. https://doi.org/10.1145/3721145.3730423
+
+[199] C. Weckert, L. Solis-Vasquez, J. Oppermann, A. Koch and O. Sinnen, "Altis-SYCL: Migrating Altis Benchmarking Suite from CUDA to SYCL for GPUs and FPGAs," SC '23 Workshops, 2023. https://doi.org/10.1145/3624062.3624542
+
+[200] T. Bourgeat, C. Pit-Claudel, A. Chlipala and Arvind, "The essence of Bluespec: a core language for rule-based hardware design," Proc. PLDI 2020. https://doi.org/10.1145/3385412.3385965
+
+[201] A. Haas, A. Rossberg, D. L. Schuff, B. L. Titzer, M. Holman, D. Gohman, L. Wagner, A. Zakai and J. F. Bastien, "Bringing the Web up to Speed with WebAssembly," Proc. PLDI 2017. https://doi.org/10.1145/3062341.3062363
+
+[202] A. Arteaga, O. Fuhrer and T. Hoefler, "Designing Bit-Reproducible Portable High-Performance Applications," Proc. IPDPS 2014. https://doi.org/10.1109/IPDPS.2014.127
+
+[203] D. Lustig, S. Sahasrabuddhe and O. Giroux, "A Formal Analysis of the NVIDIA PTX Memory Consistency Model," Proc. ASPLOS 2019. https://doi.org/10.1145/3297858.3304043
+
+[204] StarPU project, StarPU Handbook: performance models and simulation with SimGrid, Inria. https://files.inria.fr/starpu/doc/html/
+
+[205] J. Spracklen, R. Wijewickrama, A. H. M. N. Sakib, A. Maiti, B. Viswanath and M. Jadliwala, "We Have a Package for You! A Comprehensive Analysis of Package Hallucinations by Code Generating LLMs," Proc. USENIX Security 2025.
