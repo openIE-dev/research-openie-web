@@ -4,16 +4,9 @@
   "commit": "e416fd0",
   "read_on": "2026-10-17",
   "spec_document_draft": "0.9",
-  "language_versions_accepted": [
-    "0.5",
-    "0.6",
-    "0.7",
-    "0.8",
-    "0.9"
-  ],
   "spec_notebook_draft": "0.7",
   "spec_notebook_commit": "49fa9af",
-  "note_on_0_9": "Draft 0.9 is on public main since cdae5cf. It specifies Appendix F; the reference checker implements part of it and refuses the rest by version (F.12). Theorems T42 to T56 are stated and unproved. The interactive notebook on this site (spec-src/rce/spec.json) still shows the draft 0.7 document, generated from commit 49fa9af, and is not yet regenerated from draft 0.9.",
+  "note_on_0_9": "Draft 0.9 is on public main since cdae5cf. It specifies Appendix F; the reference checker implements part of it and refuses the rest as reserved, not implemented (F.12). Theorems T42 to T56 are stated and unproved. The interactive notebook on this site (spec-src/rce/spec.json) still shows the draft 0.7 document, generated from commit 49fa9af, and is not yet regenerated from draft 0.9.",
   "theorems_stated": "T1 to T56",
   "lean_modules": 58,
   "lean_theorem_and_lemma_declarations_in_source": 1116,
