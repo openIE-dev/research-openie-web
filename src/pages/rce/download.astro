@@ -1,70 +1,94 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const tag = 'v0.1.3';
-const baseFor = (t) => `https://github.com/openIE-dev/rce-ide/releases/download/${t}/`;
-const base = baseFor('v0.1.3');
-const builds = [
-  { platform: 'macOS, Apple silicon', file: 'rce-ide-0.1.3-aarch64-apple-darwin.tar.gz', size: '16.0 MB', tag: 'v0.1.3', status: 'Ad-hoc signed, not notarized. Binary only.', sha: '6b76de8e19a741c7edabb5f9ab630025e41531fa1d4d72f5f915e2696224310c' },
-  { platform: 'Linux x86_64 (glibc 2.39 or later)', file: 'rce-ide-0.1.3-x86_64-unknown-linux-gnu.tar.gz', size: '19.5 MB', tag: 'v0.1.3', status: 'Binary only.', sha: '4c55b98b02a3cebd8f60444ba3fc73e1596379d3514a7952264e0df22d74dbed' },
-  { platform: 'photon source (MPL-2.0)', file: 'photon-source-mpl-2.0.tar.gz', size: '0.1 MB', tag: 'v0.1.3', status: 'Source of the vendored photon library, offered under its MPL-2.0 license.', sha: 'dee57c47e3f525dde678b2364ad576da60de43e949b7f6ecaa786c6604370c8c' },
-  { platform: 'Linux aarch64 (glibc 2.28+), version 0.1.2', file: 'rce-ide-0.1.2-aarch64-unknown-linux-gnu.tar.gz', size: '11.4 MB', tag: 'v0.1.2', status: 'The last release for this platform. Cross-built. Not yet run on this hardware. Binary only.', sha: '8f23fd7f5f8dcef42c9ce150c56910d15d7018ec9e7b29aa7379889617a165e0' },
-  { platform: 'Windows x86_64, version 0.1.2', file: 'rce-ide-0.1.2-x86_64-pc-windows-gnu.zip', size: '44.4 MB', tag: 'v0.1.2', status: 'The last release for this platform. Cross-built. Not yet run on Windows. Binary only.', sha: 'a66003bce0affb1d84dcb7857d038085e95f3d9fa5fe132fefab9543c10ca1b0' },
-];
-const repos = [
-  { name: 'openIE-dev/rce', href: 'https://github.com/openIE-dev/rce', deck: 'The language specification, the Lean proofs, the reference checker and the browser playground.' },
-  { name: 'openIE-dev/rce-book', href: 'https://github.com/openIE-dev/rce-book', deck: 'A book that teaches RCE step by step.' },
-  { name: 'openIE-dev/rce-examples', href: 'https://github.com/openIE-dev/rce-examples', deck: 'Worked example programs.' },
-  { name: 'openIE-dev/tree-sitter-rce', href: 'https://github.com/openIE-dev/tree-sitter-rce', deck: 'A tree-sitter grammar for syntax highlighting in editors.' },
-  { name: 'openIE-dev/rce-ide', href: 'https://github.com/openIE-dev/rce-ide', deck: 'Source of the RCE IDE agent layer, the language server and the MCP server, as of the 0.1.2 snapshot. Releases from 0.1.3 are binary only.' },
+const legacyTag = 'v0.1.3';
+const legacyBaseFor = (t) => `https://github.com/openIE-dev/rce-ide/releases/download/${t}/`;
+const legacyBase = legacyBaseFor('v0.1.3');
+const legacyBuilds = [
+  { platform: 'macOS, Apple silicon', file: 'rce-ide-0.1.3-aarch64-apple-darwin.tar.gz', size: '16.0 MB', tag: 'v0.1.3', status: 'Legacy snapshot. Ad-hoc signed, not notarized. Binary only.', sha: '6b76de8e19a741c7edabb5f9ab630025e41531fa1d4d72f5f915e2696224310c' },
+  { platform: 'Linux x86_64 (glibc 2.39 or later)', file: 'rce-ide-0.1.3-x86_64-unknown-linux-gnu.tar.gz', size: '19.5 MB', tag: 'v0.1.3', status: 'Legacy snapshot. Binary only.', sha: '4c55b98b02a3cebd8f60444ba3fc73e1596379d3514a7952264e0df22d74dbed' },
+  { platform: 'photon source (MPL-2.0)', file: 'photon-source-mpl-2.0.tar.gz', size: '0.1 MB', tag: 'v0.1.3', status: 'Source of the photon library vendored in these legacy archives, offered under its MPL-2.0 license.', sha: 'dee57c47e3f525dde678b2364ad576da60de43e949b7f6ecaa786c6604370c8c' },
+  { platform: 'Linux aarch64 (glibc 2.28+), version 0.1.2', file: 'rce-ide-0.1.2-aarch64-unknown-linux-gnu.tar.gz', size: '11.4 MB', tag: 'v0.1.2', status: 'Legacy snapshot. The last archive for this platform. Cross-built. Not yet run on this hardware. Binary only.', sha: '8f23fd7f5f8dcef42c9ce150c56910d15d7018ec9e7b29aa7379889617a165e0' },
+  { platform: 'Windows x86_64, version 0.1.2', file: 'rce-ide-0.1.2-x86_64-pc-windows-gnu.zip', size: '44.4 MB', tag: 'v0.1.2', status: 'Legacy snapshot. The last archive for this platform. Cross-built. Not yet run on Windows. Binary only.', sha: 'a66003bce0affb1d84dcb7857d038085e95f3d9fa5fe132fefab9543c10ca1b0' },
 ];
 ---
 
 <Layout
-  title="Download RCE and the RCE IDE"
-  description="Downloads for the RCE IDE 0.1.3 on macOS and Linux x86_64 (0.1.2 for Linux arm64 and Windows), the public RCE repositories, and steps to verify and install. The repository source is licensed MIT OR Apache-2.0; the IDE releases are binary only."
+  title="Download RCE"
+  description="RCE source is the openIE-dev/rce monorepo at draft 0.9: one language at one commit, a batteries-included standard library, and emitters for Rust, Python, JavaScript and Scala. Legacy IDE binaries remain on the archived rce-ide repository."
 >
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
     <p class="section-label mb-4">research.openie.dev / rce</p>
-    <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">Download RCE and the RCE IDE</h1>
+    <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">Download RCE</h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
       RCE (the Reality Code Engine) is a language in which a program is written once as a checked state machine and code in other languages is generated from it.
-      The RCE IDE bundles the editor, the checker, a language server and an MCP server. The specification, the Lean library, the reference checker, the book, the examples and the standard host libraries are public source under MIT OR Apache-2.0. The IDE release archives are prebuilt binaries only: from 0.1.2 on, they are built from a private engine and the source in the rce-ide repository is the 0.1.2 snapshot. The archives are free to download.
+      The reference checker emits Rust, Python, JavaScript and Scala.
+      The specification draft a build implements is printed by <code>rce --version</code>. Public <code>rce</code> main is at <strong>draft 0.9</strong> (commit <code>dbb8db6</code>, read 24 October 2026).
+      There is one language: the specification at one commit. <code># rce-version:</code> labels are not per-module language selection.
+      The standard library is built into the checker (<code>rce lib</code>).
       The research behind it is in <a href="/papers/rce/" class="text-brand-cyan">the RCE paper</a>.
     </p>
     <ul class="mt-6 font-body text-base text-brand-slate leading-relaxed list-disc pl-6 space-y-2">
-      <li>Write a program once and generate it in many languages.</li>
+      <li>Write a program once and generate it in Rust, Python, JavaScript or Scala.</li>
       <li>The checker rejects broken input before anything runs.</li>
-      <li>Download, check the file against its published hash, then unpack and run.</li>
+      <li>Build the checker from the monorepo. The IDE archives further down are legacy snapshots, not the current source.</li>
     </ul>
 
     <h2 class="mt-14 text-2xl text-brand-white">Try it in the browser</h2>
     <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed">
       The <a href="https://openie-dev.github.io/rce/" class="text-brand-cyan">RCE playground</a> runs the reference checker, compiled to WebAssembly, in your browser.
       Type a program and see whether it is accepted, which rule it breaks, and the trace of each <code>example</code>. Nothing is installed and nothing is sent to a server.
+      The book is at <a href="https://openie-dev.github.io/rce/book/" class="text-brand-cyan">openie-dev.github.io/rce/book</a>. Its source is <code>book/</code> in the monorepo.
     </p>
 
-    <h2 class="mt-14 text-2xl text-brand-white">RCE IDE {tag}</h2>
+    <h2 class="mt-14 text-2xl text-brand-white">Source</h2>
+    <ul class="mt-6 space-y-4 list-none p-0 m-0">
+      <li class="glass-card p-5">
+        <a href="https://github.com/openIE-dev/rce" class="font-mono text-sm text-brand-cyan">openIE-dev/rce</a>
+        <p class="mt-2 font-body text-sm text-brand-slate leading-relaxed">
+          Monorepo: specification (draft 0.9), Lean proofs, reference checker, batteries-included standard library, book, examples, conformance suite, tree-sitter grammar, IDE sources and playground.
+          One language at one commit. Paths: <code>spec/</code>, <code>stdlib/</code>, <code>book/</code>, <code>examples/</code>, <code>ide/</code>, <code>playground/</code>, <code>tree-sitter/</code>.
+        </p>
+      </li>
+    </ul>
+    <p class="mt-4 font-body text-sm text-brand-slate leading-relaxed">
+      Build the reference checker from that repository:
+    </p>
+    <pre class="mt-2 p-3 overflow-x-auto font-mono text-xs"><code>git clone https://github.com/openIE-dev/rce
+cd rce/spec/checker
+cargo build --release</code></pre>
+    <p class="mt-4 font-body text-sm text-brand-slate leading-relaxed">
+      IDE sources are in <code>ide/</code> of the same repository and build against <code>spec/checker</code> at that commit.
+      <a href="https://github.com/openIE-dev/rce/releases" class="text-brand-cyan">openIE-dev/rce releases</a> listed no prebuilt artifacts at commit <code>dbb8db6</code> (24 October 2026). Until a release is published there, build from source.
+    </p>
+    <p class="mt-4 font-body text-sm text-brand-slate leading-relaxed">
+      Archived satellites, not install destinations for new work: <code>rce-book</code>, <code>rce-examples</code>, <code>tree-sitter-rce</code> and <code>rce-ide</code>. Their contents live in the monorepo.
+    </p>
+
+    <h2 class="mt-14 text-2xl text-brand-white">Legacy IDE snapshots ({legacyTag})</h2>
     <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed">
+      The archives below are pre-monorepo IDE binaries still hosted on the archived repository
+      <a href="https://github.com/openIE-dev/rce-ide" class="text-brand-cyan">openIE-dev/rce-ide</a>.
+      They are not the install path for current source.
       Release notes: <a href="https://github.com/openIE-dev/rce-ide/releases/tag/v0.1.3" class="text-brand-cyan">github.com/openIE-dev/rce-ide/releases/tag/v0.1.3</a>.
-      Each archive contains <code>rce-ide</code>, <code>rce</code> (the checker), <code>rce-lsp</code>, <code>rce-mcp</code>, the README and the license files.
-      The specification draft a build implements is printed by <code>rce --version</code>. There is one language: the specification at one commit (2.7), with no per-module version selection.
+      Each program archive contains <code>rce-ide</code>, <code>rce</code> (the checker), <code>rce-lsp</code>, <code>rce-mcp</code>, the README and the license files.
+      The monorepo <code>ide/README</code> states that archives from 0.1.3 on are binary only and were built from a private engine, and that the source in <code>ide/</code> is not what those binaries were built from.
     </p>
     <ul class="mt-6 space-y-4 list-none p-0 m-0">
-      {builds.map((b) => (
+      {legacyBuilds.map((b) => (
         <li class="glass-card p-5 md:p-6">
           <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-2">{b.platform} · {b.size}</p>
-          <a href={baseFor(b.tag) + b.file} class="font-mono text-sm text-brand-cyan break-all">{b.file}</a>
+          <a href={legacyBaseFor(b.tag) + b.file} class="font-mono text-sm text-brand-cyan break-all">{b.file}</a>
           <p class="mt-2 font-body text-sm text-brand-slate leading-relaxed">{b.status}</p>
           <p class="mt-2 font-mono text-[11px] text-brand-gray break-all">SHA-256 {b.sha}</p>
         </li>
       ))}
     </ul>
     <p class="mt-4 font-body text-sm text-brand-slate">
-      All hashes for 0.1.3 in one file: <a href={base + 'SHA256SUMS'} class="font-mono text-brand-cyan">SHA256SUMS</a>.
+      All hashes for 0.1.3 in one file: <a href={legacyBase + 'SHA256SUMS'} class="font-mono text-brand-cyan">SHA256SUMS</a>.
     </p>
 
-    <h2 class="mt-14 text-2xl text-brand-white">Verify and install</h2>
+    <h2 class="mt-14 text-2xl text-brand-white">Verify and install a legacy archive</h2>
     <ol class="mt-4 font-body text-sm text-brand-slate leading-relaxed list-decimal pl-6 space-y-3">
       <li>Download the archive for your platform and <code>SHA256SUMS</code> into the same folder.</li>
       <li>Check the hash. If the file was changed or damaged in transit, this step fails.
@@ -73,36 +97,28 @@ shasum -a 256 -c SHA256SUMS --ignore-missing # macOS</code></pre>
         On Windows, run <code>Get-FileHash .\rce-ide-0.1.2-x86_64-pc-windows-gnu.zip</code> in PowerShell and compare the result with the line in <code>SHA256SUMS</code>.
       </li>
       <li>Unpack it: <code>tar xzf rce-ide-&lt;version&gt;-&lt;platform&gt;.tar.gz</code>, or extract the zip on Windows.</li>
-      <li>Run <code>./rce-ide</code> to open the editor, or <code>./rce --version</code> and <code>./rce</code> (the list of commands) for the command-line checker.</li>
+      <li>Run <code>./rce-ide</code> to open the editor, or <code>./rce --version</code> and <code>./rce</code> (the list of commands) for the command-line checker in that snapshot.</li>
       <li>macOS only: the binaries are ad-hoc signed and not notarized by Apple, so Gatekeeper may block them. After checking the hash, clear the quarantine flag in the unpacked folder:
         <pre class="mt-2 p-3 overflow-x-auto font-mono text-xs"><code>xattr -d com.apple.quarantine rce rce-ide rce-lsp rce-mcp</code></pre>
       </li>
     </ol>
 
-    <h2 class="mt-14 text-2xl text-brand-white">Known limits</h2>
+    <h2 class="mt-14 text-2xl text-brand-white">Known limits of the legacy archives</h2>
     <ul class="mt-4 font-body text-sm text-brand-slate leading-relaxed list-disc pl-6 space-y-2">
-      <li>The Linux aarch64 and Windows builds were cross-built and have not been run on that hardware. Reports of success or failure are welcome as GitHub issues.</li>
+      <li>These snapshots are older than public main at draft 0.9. <code>rce --version</code> in an unpacked archive prints the draft that binary implements.</li>
+      <li>A 0.1.3 binary cannot be rebuilt from the public <code>ide/</code> tree. The monorepo <code>ide/README</code> says those binaries were built from a private engine.</li>
+      <li>The Linux aarch64 and Windows builds were cross-built and have not been run on that hardware. Reports of success or failure are welcome as GitHub issues on the monorepo.</li>
       <li>The Linux x86_64 build was smoke-tested without a physical GPU.</li>
       <li>The macOS build is not notarized.</li>
-      <li>The IDE archives are binary only. The source for 0.1.3 is not published, so a 0.1.3 binary cannot be rebuilt from public repositories.</li>
-      <li>The 0.1.2 archives have their own <a href={baseFor('v0.1.2') + 'SHA256SUMS'} class="text-brand-cyan">SHA256SUMS</a>.</li>
-    </ul>
-
-    <h2 class="mt-14 text-2xl text-brand-white">Source repositories</h2>
-    <ul class="mt-6 space-y-4 list-none p-0 m-0">
-      {repos.map((r) => (
-        <li class="glass-card p-5">
-          <a href={r.href} class="font-mono text-sm text-brand-cyan">{r.name}</a>
-          <p class="mt-2 font-body text-sm text-brand-slate leading-relaxed">{r.deck}</p>
-        </li>
-      ))}
+      <li>The 0.1.2 archives have their own <a href={legacyBaseFor('v0.1.2') + 'SHA256SUMS'} class="text-brand-cyan">SHA256SUMS</a>.</li>
     </ul>
 
     <h2 class="mt-14 text-2xl text-brand-white">License</h2>
     <p class="mt-4 font-body text-sm text-brand-slate leading-relaxed">
-      The source in the public RCE repositories and in the rce-ide repository (the 0.1.2 snapshot) is licensed under MIT OR Apache-2.0, at your option. The binary-only IDE archives from 0.1.3 on are built from an engine whose source is not published. Copyright (c) 2026 Open Interface Engineering, Inc (OpenIE).
-      The vendored photon library is MPL-2.0, and its source is the <a href={base + 'photon-source-mpl-2.0.tar.gz'} class="text-brand-cyan">photon source download</a>.
-      webpki-roots is CDLA-Permissive-2.0. Full notices are in <code>THIRD-PARTY-LICENSES.txt</code> inside each archive.
+      Source in <a href="https://github.com/openIE-dev/rce" class="text-brand-cyan">openIE-dev/rce</a> is licensed under MIT OR Apache-2.0, at your option. Copyright (c) 2026 Open Interface Engineering, Inc (OpenIE).
+      The 0.1.3 IDE archives are binary only, as the monorepo <code>ide/README</code> describes.
+      The vendored photon library is MPL-2.0, and its source is the <a href={legacyBase + 'photon-source-mpl-2.0.tar.gz'} class="text-brand-cyan">photon source download</a> on the legacy release.
+      webpki-roots is CDLA-Permissive-2.0. Full notices are in <code>THIRD-PARTY-LICENSES.txt</code> inside each legacy archive.
     </p>
 
     <div class="mt-10 flex flex-wrap gap-3">

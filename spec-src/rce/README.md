@@ -1,16 +1,22 @@
 # RCE spec notebook source
 
 `spec.json` drives the pages under `/rce/spec/`. It is generated from the RCE
-spec book (`crates/rce/spec/book/`, `crates/rce/spec/examples/`) in the
-joulesperbit RCE checkout, using the checker compiled to WebAssembly
-(`crates/rce/spec/checker-wasm/pkg`) to classify code blocks and record the
-expected result of every example program:
+monorepo (`openIE-dev/rce`): the spec book is `<checkout>/spec/book/`, the
+example programs are `<checkout>/spec/examples/`, and the checker compiled to
+WebAssembly is `<checkout>/spec/checker-wasm/pkg`. The tree-sitter grammar
+used for the keyword list is `<checkout>/tree-sitter/grammar.js` (older
+checkouts kept it at `<checkout>/spec/tree-sitter/grammar.js`; `gen.mjs`
+accepts either).
 
-    npm i katex@0.16.47 unified remark-parse remark-gfm remark-rehype rehype-raw rehype-stringify
-    node gen.mjs <checkout>/crates/rce/spec spec.json
+```
+npm i katex@0.16.47 unified remark-parse remark-gfm remark-rehype rehype-raw rehype-stringify
+node gen.mjs <checkout>/spec spec.json
+```
 
-Then copy `checker-wasm/pkg/rce_spec_check_wasm.js` and
-`rce_spec_check_wasm_bg.wasm` into `public/rce/spec/wasm/`.
+Then copy `spec/checker-wasm/pkg/rce_spec_check_wasm.js` and
+`rce_spec_check_wasm_bg.wasm` into `public/rce/spec/wasm/`. The notebook's
+Run button and the expected results in `spec.json` must come from the same
+package.
 
 Read-aloud assets: `public/rce/spec/tts/kokoro.web.js` is kokoro-js 1.2.1's
 web build with two changes: the voice URL reads `globalThis.KOKORO_VOICE_BASE`
@@ -28,6 +34,7 @@ and `Cross-Origin-Embedder-Policy: credentialless` on `/rce/spec*` only. Add
 `?tts=wasm` or `?tts=fp16` to a page URL to force a backend or weight file.
 
 Highlighting: `public/rce/spec/ts/tree-sitter-rce.wasm` is the RCE tree-sitter
-grammar (`crates/rce/spec/tree-sitter/`) built with `tree-sitter build --wasm`
+grammar (`<checkout>/tree-sitter/`) built with `tree-sitter build --wasm`
 (CLI 0.27.1), loaded with web-tree-sitter 0.27.1. Code cells also show the
-program's Form JSON (spec 6.1), produced by the checker.
+program's Form JSON (spec 6.1), produced by the checker. The keyword list in
+`spec.json` is the fallback highlighter until that wasm loads.
