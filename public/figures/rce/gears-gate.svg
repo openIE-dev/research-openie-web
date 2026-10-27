@@ -46,7 +46,7 @@
 <circle cx="540.0" cy="468.0" r="12" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
 <text x="540.0" y="473.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">4</text>
 <text x="562.0" y="473.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">proof certificate:</text>
-<text x="562.0" y="495.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Kani kernel harnesses (proofs/kani.cert)</text>
+<text x="562.0" y="495.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Kani harnesses (Sections 5.3 and 5.4)</text>
 <circle cx="540.0" cy="544.0" r="12" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
 <text x="540.0" y="549.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">5</text>
 <text x="562.0" y="549.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">rewrites:</text>
@@ -68,6 +68,6 @@
 <path d="M1045 156 L1045 120 L230 120 L230 134" stroke="#009E73" stroke-width="2.5" fill="none" fill-opacity="1" stroke-dasharray="4 6" marker-end="url(#ah)" stroke-linejoin="round"/>
 <rect x="560.0" y="108.0" width="220.0" height="24.0" rx="0" fill="#ffffff" stroke="none" stroke-width="2" opacity="1"/>
 <text x="670.0" y="126.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#009E73" text-anchor="middle">promotion feeds G0</text>
-<text x="40.0" y="700.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Every promotion, refusal, deferral and install is an entry in the SHA-256 chained log, with a receipt (Figure 8).</text>
+<text x="40.0" y="700.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Every promotion, refusal, deferral and install is an entry in the SHA-256 chained log, with a receipt (Figure 5).</text>
 <text x="40.0" y="724.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">The Kani harnesses and the SMT encoding are fixed: promotion changes handlers and rewrites, never the checker.</text>
-<text x="40.0" y="748.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Gear names in the engine: G0 library, G1 rules, G2 synthesis, G3 system-one, G4 local-model, G5 remote.</text></svg>
+<text x="40.0" y="748.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Gear names as in Section 4.2: G0 Lookup, G1 Rules, G2 Synthesis, G3 to G5 Models.</text></svg>

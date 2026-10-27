@@ -11,7 +11,7 @@
   "lean_modules": 58,
   "lean_theorem_and_lemma_declarations_in_source": 1116,
   "lean_audit_theorem_constants": 4877,
-  "lean_audit_definition": "The audit (scripts/lean-audit.sh, audit/Audit.lean) counts every theorem constant in the kernel environment, including constants the elaborator generates, so it is larger than the number of theorem and lemma declarations written in source. The paper's 2,192 was the audit count at engine commit 1eb5f02 over 31 modules.",
+  "lean_audit_definition": "The audit (scripts/lean-audit.sh, audit/Audit.lean) counts every theorem constant in the kernel environment, including constants the elaborator generates, so it is larger than the number of theorem and lemma declarations written in source.",
   "examples_total": 59,
   "examples_valid_top_level": 57,
   "examples_in_packages": 2,

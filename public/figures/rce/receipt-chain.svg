@@ -52,16 +52,15 @@
 <text x="60.0" y="556.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">gear</text>
 <text x="220.0" y="556.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve">"G4"</text>
 <text x="60.0" y="584.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">gear_name</text>
-<text x="220.0" y="584.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve">"local-model"</text>
+<text x="220.0" y="584.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve">text</text>
 <text x="60.0" y="612.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">est_j</text>
 <text x="220.0" y="612.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#D55E00" text-anchor="start" xml:space="preserve">null</text>
 <text x="60.0" y="640.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">basis</text>
-<text x="220.0" y="640.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#D55E00" text-anchor="start" xml:space="preserve">"local OpenAI-compatible endpoint;</text>
-<text x="60.0" y="690.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">candidates_tried</text>
-<text x="220.0" y="690.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve">u32</text>
-<text x="60.0" y="718.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">resolved</text>
-<text x="220.0" y="718.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve">bool</text>
-<text x="220.0" y="662.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#D55E00" text-anchor="start" xml:space="preserve"> no energy figure (unpriced)"</text>
+<text x="220.0" y="640.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#D55E00" text-anchor="start" xml:space="preserve">"unpriced"</text>
+<text x="60.0" y="668.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">candidates_tried</text>
+<text x="220.0" y="668.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve">u32</text>
+<text x="60.0" y="696.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">resolved</text>
+<text x="220.0" y="696.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve">bool</text>
 <rect x="600.0" y="502.0" width="560.0" height="200.0" rx="14" fill="#ffffff" stroke="#D55E00" stroke-width="3" opacity="1"/>
 <text x="620.0" y="534.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#D55E00" text-anchor="start">est_j rule (fail closed)</text>
 <text x="620.0" y="564.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">est_j is required: a receipt without the field does not parse.</text>
@@ -72,4 +71,4 @@
 <text x="620.0" y="684.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">unpriced is never read as 0 J.</text>
 <text x="40.0" y="760.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Labels: est_j is an analytical estimate; reported_j is an OS or on-chip counter; measured_j is a wall meter and is empty in every result.</text>
 <text x="40.0" y="784.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">A saving that depends on an unpriced resolution is reported as unknown.</text>
-<text x="40.0" y="820.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">Receipt: field names and the G4 basis string from the engine source (src/foreman/traits.rs, gears.rs at 1eb5f0266); u32 and bool are types, not values.</text></svg>
+<text x="40.0" y="820.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">Receipt: an illustrative receipt with the field names of Section 4.4; text, u32 and bool are types, not values.</text></svg>

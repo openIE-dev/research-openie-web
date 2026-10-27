@@ -25,7 +25,6 @@ ${sections}
 - [About the papers](https://research.openie.dev/about/): One page per paper on what it claims and what it does not.
 - [Figures](https://research.openie.dev/living/): Interactive figures for the papers.
 - [RCE Playground](https://openie-dev.github.io/rce/): the reference checker (checker-wasm) in the browser: write, check and run RCE programs, with the specification examples and shareable links.
-- [RCE engine demo](https://research.openie.dev/demos/rce-engine/): Browser-only demo running the RCE core compiled to WebAssembly, with no server and no model calls. Layers cover code, the state machine view, proof replay, interface checks, compounding, energy estimates, held-out results and translation to Rust, Python, XState and SCXML.
 
 ## Optional
 

@@ -149,6 +149,7 @@ body = page[m.end():end_at]
 body = re.sub(r"\s*<h1\b[^>]*>.*?</h1>", "", body, count=1, flags=re.S)
 # Root-relative images (figures) resolve against public/ for the print.
 body = body.replace('src="/', 'src="file://' + str(Path(src).resolve().parents[3] / "public") + '/')
+body = body.replace('srcset="/', 'srcset="file://' + str(Path(src).resolve().parents[3] / "public") + '/')
 
 if id_ in ("spellcheck", "ai-coding-market", "interface-economics"):
     measure = ""
@@ -170,7 +171,7 @@ elif id_ == "rce":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research paper, not a journal final.\n"
-        "Handler figures are est_j. Track B figures are reported_j from a RAPL package counter less a stated idle baseline. measured_j is reserved for a wall meter and is empty.\n"
+        "No energy figure for RCE is reported. est_j, reported_j and measured_j are defined in Section 1; measured_j is reserved for a wall meter and is empty.\n"
         "No FPGA board result in this paper. No fabricated citations.\n"
         "</div>\n"
     )

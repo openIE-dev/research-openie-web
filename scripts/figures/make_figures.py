@@ -107,89 +107,6 @@ def rce_design_space():
     s.t(600, 880, 'Placements are the paper\u2019s qualitative reading of each class (Section 2), not measurements. Rings mark ordinal levels 1 to 4.', 15, 400, MUTED, 'middle', italic=True)
     s.save('rce', 'design-space', 'Radar chart with five axes: energy per correct result, determinism, verification strength, reuse and compounding, and independence from models. Five approach classes are drawn as polygons. A model on every task sits near the centre on all axes. An agent loop gated by tests is higher on verification. A model with retrieval and caching is higher on reuse. Classical synthesis and repair is high on determinism and model independence. RCE, marked with stars, sits at or near the outer ring on all five axes. Placements are qualitative.')
 
-def rce_form_projections():
-    s = S(1200, 840, 'One Form, many projections', 'Each target is emitted from the same Form IR and checked against it.', 'DIAGRAM')
-    s.box(80, 300, 300, 170, 'Form', ['state', 'events', 'pure, total transition'], BLUE, 28)
-    s.t(230, 500, 'canonical JSON, one shape hash', 15, 600, BLUE, 'middle')
-    tg = [('Rust', 'native binary', GREEN), ('Python', 'module, replays trace', GREEN), ('WASM', 'browser engine', GREEN), ('XState', 'statechart JSON', ORANGE), ('SCXML', 'W3C statechart XML', ORANGE)]
-    for i, (n, d, col) in enumerate(tg):
-        y = 140 + i*115
-        s.box(760, y, 300, 86, n, [d], col, 22)
-        s.p(f'M380 {385} C 560 {385}, 560 {y+30}, 755 {y+30}', INK, 3, arrow=True)
-        if col == ORANGE:
-            s.p(f'M760 {y+60} C 580 {y+70}, 560 {420}, 384 {430}', ORANGE, 3, dash='9 6', arrow=True)
-    s.t(560, 128, 'project (deterministic: two compiles give the same bytes)', 16, 700, INK, 'middle')
-    s.t(1110, 200, 'replay', 16, 700, GREEN, 'middle'); s.t(1110, 222, 'reference', 14, 400, MUTED, 'middle'); s.t(1110, 240, 'trace', 14, 400, MUTED, 'middle')
-    s.t(1110, 545, 'decode', 16, 700, ORANGE, 'middle'); s.t(1110, 567, 'back to', 14, 400, MUTED, 'middle'); s.t(1110, 585, 'the Form', 14, 400, MUTED, 'middle')
-    s.l(60, 730, 100, 730, INK, 3); s.t(110, 736, 'projection', 16)
-    s.l(260, 730, 300, 730, ORANGE, 3, '9 6'); s.t(310, 736, 'round trip: decoded projection is byte identical, same shape hash', 16)
-    s.r(60, 765, 22, 22, '#f8fafc', GREEN, 4, 3); s.t(92, 782, 'target runs the reference trace byte for byte (Section 5.1: 529 events, all five targets)', 16)
-    s.save('rce', 'form-projections', 'Diagram: one Form, made of state, events and a pure total transition, is projected by deterministic compiles to five targets: Rust, Python, WASM, XState and SCXML. Solid arrows run from the Form to each target. Dashed arrows run back from XState and SCXML to the Form, showing the round trip to byte-identical bytes and the same shape hash. Rust, Python and WASM replay the reference trace byte for byte.')
-
-def rce_stack():
-    s = S(1200, 820, 'Corrections compound upward', 'A correction promoted at any level is inherited by every level above it, under the gate.', 'DIAGRAM')
-    layers = [('Intent', 'what the person means'), ('Form', 'state, events, transition'), ('Gate', 'tests, coverage, proof certificate'), ('Projections', 'Rust, Python, WASM, XState, SCXML'), ('Runtime', 'handlers, gears G0 to G5'), ('Hardware and energy', 'op counts priced in joules')]
-    x, w, h = 70, 520, 92
-    for i, (n, d) in enumerate(layers):
-        y = 130 + i*105
-        col = BLUE if i != 2 else VERM
-        s.r(x, y, w, h, '#f8fafc', col, 12, 3); s.t(x+24, y+40, n, 22, 800); s.t(x+24, y+68, d, 16, 400, MUTED)
-    # correction at runtime level
-    yr = 130 + 4*105
-    s.c(x+w-40, yr+46, 18, GREEN); s.t(x+w-40, yr+53, '+', 26, 800, CARD, 'middle')
-    s.t(x+w+20, yr+40, 'correction promoted here', 17, 700, GREEN); s.t(x+w+20, yr+62, 'after it passes its boundary check', 15, 400, MUTED)
-    for i in range(4):
-        y0 = yr - i*105
-        s.p(f'M{x+w-40} {y0+20} L{x+w-40} {y0-50}', GREEN, 4, arrow=True)
-    s.t(x+w+20, 180, 'every level above inherits it', 17, 700, GREEN); s.t(x+w+20, 202, '(Propositions R1 and R2)', 15, 400, MUTED)
-    # chart of escalations per round from the playground reference workload: totals only are in the paper
-    bx, by, bw, bh = 700, 290, 430, 300
-    s.t(bx, by-20, 'Cumulative escalations, eight rounds', 18, 800)
-    s.t(bx, by+2, 'playground reference workload, RCE §2.4', 14, 400, MUTED)
-    vals = [('No correction', 21, '#94a3b8'), ('One correction at the sinks', 15, GREEN)]
-    for i, (lab, v, col) in enumerate(vals):
-        yy = by + 50 + i*100
-        s.r(bx, yy, v/21*380, 54, col, 'none', 6); s.t(bx + v/21*380 + 10, yy+36, str(v), 24, 800)
-        s.t(bx, yy-8, lab, 16, 600)
-    s.t(bx, by+240, 'Both reach zero escalations in the last round;', 15, 400, MUTED)
-    s.t(bx, by+260, 'no promotion was refused.', 15, 400, MUTED)
-    s.save('rce', 'stack-compounding', 'Diagram of the RCE stack as six levels from intent at the top through Form, gate, projections and runtime to hardware and energy. A correction promoted at the runtime level after passing its boundary check is shown with arrows rising through every level above it. A small bar chart beside it gives cumulative escalations over eight rounds on the playground reference workload: 21 with no correction and 15 with one correction at the sinks.')
-
-def rce_ecosystem():
-    s = S(1200, 560, 'The ecosystem at large N', '10,000 preregistered Forms, frozen engine, 0 model calls. Bars show checks that hold.', 'DATA')
-    rows = [('Lossless encoding (round trip identity)', 10000), ('Deterministic projection, XState and SCXML', 10000), ('Faithful projection, Python trace', 9999), ('Gate at entry, malformed inputs', 10000), ('Gate at entry, specifications', 10000)]
-    x0, w = 520, 560
-    for i, (lab, k) in enumerate(rows):
-        y = 140 + i*72
-        s.t(x0-16, y+30, lab, 17, 600, INK, 'end')
-        s.r(x0, y, w, 44, GRID, 'none', 6)
-        s.r(x0, y, w*k/10000, 44, BLUE if k == 10000 else ORANGE, 'none', 6)
-        lo, hi = wilson(k, 10000)
-        s.t(x0+w-12, y+29, f'{k:,} of 10,000', 17, 800, CARD, 'end')
-        s.t(x0, y+64, f'Wilson 95% interval {lo*100:.2f}% to {hi*100:.2f}%', 13, 400, MUTED)
-    s.save('rce', 'ecosystem-checks', 'Horizontal bar chart of five checks on 10,000 Forms. Lossless encoding, deterministic projection, gate at entry on malformed inputs and gate at entry on specifications each hold on 10,000 of 10,000. The Python trace replay holds on 9,999 of 10,000. Zero model calls.')
-
-def rce_ladder():
-    s = S(1200, 700, 'Lift: repair ladder on held-out code', 'Rate solved with Wilson 95% intervals. Frozen engine, location given, token identity gate, 0 model calls.', 'DATA')
-    rows = [('L0 one token, 9 repositories', 520541, 520821), ('L0 one token, never tuned on', 23015, 23015), ('L1 Java, whole file', 13586, 21320), ('L1 Java, hunk only', 9288, 24072), ('L1 Python, hunk only', 27266, 157089)]
-    x0, w = 420, 680
-    for g in range(0, 11):
-        xx = x0 + w*g/10; s.l(xx, 130, xx, 520, GRID, 1)
-        s.t(xx, 545, f'{g*10}%', 14, 400, MUTED, 'middle')
-    for i, (lab, k, n) in enumerate(rows):
-        y = 150 + i*74; p = k/n; lo, hi = wilson(k, n)
-        col = BLUE if lab.startswith('L0') else (GREEN if 'Java' in lab else ORANGE)
-        s.t(x0-16, y+22, lab, 17, 600, INK, 'end'); s.t(x0-16, y+42, f'N = {n:,}', 14, 400, MUTED, 'end')
-        s.r(x0, y, w*p, 40, col, 'none', 4, op=.85)
-        s.l(x0+w*lo, y+20, x0+w*hi, y+20, INK, 3); s.l(x0+w*lo, y+10, x0+w*lo, y+30, INK, 3); s.l(x0+w*hi, y+10, x0+w*hi, y+30, INK, 3)
-        txt = f'{p*100:.2f}%  ({lo*100:.2f} to {hi*100:.2f})' if p > .9 else f'{p*100:.1f}%  ({lo*100:.1f} to {hi*100:.1f})'
-        if p > .6: s.t(x0+w*p-10, y+27, txt, 15, 700, CARD, 'end')
-        else: s.t(x0+w*hi+12, y+27, txt, 15, 700, INK)
-    s.t(x0+w/2, 572, 'tasks solved, held-out test split', 15, 600, MUTED, 'middle')
-    s.t(60, 615, 'L2 to L4 (Defects4J held out) and L5 to L7 (SWE-bench Lite offline) are protocols in Section 8, not yet reported.', 15, 400, MUTED)
-    s.t(60, 640, 'Colour marks the corpus family; intervals are computed from the counts shown.', 15, 400, MUTED)
-    s.save('rce', 'lift-ladder', 'Bar chart of solve rates on held-out code with Wilson 95 percent intervals. L0 one token on nine repositories: 99.95 percent of 520,821. L0 one token on four repositories never tuned on: 100 percent of 23,015. L1 Java whole file: 63.7 percent of 21,320. L1 Java hunk only: 38.6 percent of 24,072. L1 Python hunk only: 17.4 percent of 157,089. Zero model calls.')
-
 # ---------------- Essay ----------------
 LAB = {'Projection': VERM, 'Survey estimate': ORANGE, 'Company-reported': SKY, 'Measured': BLUE, 'Estimate': PINK}
 SH = {'Projection': 'o', 'Survey estimate': '^', 'Company-reported': 's', 'Measured': '*', 'Estimate': 'd'}
@@ -231,37 +148,6 @@ def essay_tokens():
     s.t(x0, 545, 'Volume is not value: Bai, Huang and Wang [9] find about 1,000 times more tokens in agentic coding than in code chat,', 15, 400, MUTED)
     s.t(x0, 567, 'and that higher token use does not translate into higher accuracy.', 15, 400, MUTED)
     s.save('ai-coding-market', 'tokens', 'Log-scale line chart of Google tokens processed per month: 9.7 trillion in 2024, about 480 trillion in 2025 and over 3.2 quadrillion in May 2026, company-reported.')
-
-def essay_energy():
-    s = S(1200, 700, 'Energy: projected at the grid, measured at the task', 'Two different objects on two panels; neither is converted into the other.', 'DATA')
-    # panel a: TWh
-    s.t(60, 140, 'a. Data-centre electricity, TWh per year (IEA [10, 11])', 18, 800)
-    x0, y0, h, w = 120, 170, 330, 440
-    Y = lambda v: y0 + h - h*v/1000
-    for v in range(0, 1001, 250): s.l(x0, Y(v), x0+w, Y(v), GRID, 1); s.t(x0-10, Y(v)+5, str(v), 14, 400, MUTED, 'end')
-    X = lambda t: x0 + w*(t-2023.5)/(2031-2023.5)
-    s.p(f'M{X(2025)} {Y(485)} L{X(2030)} {Y(950)} L{X(2030)} {Y(950)}', PINK, 3, dash='8 6')
-    s.mark(X(2024), Y(415), 'd', PINK, 10); s.t(X(2024)+14, Y(415)+24, '415 (2024, estimate)', 15, 600)
-    s.mark(X(2025), Y(485), 'd', PINK, 8); s.t(X(2025)+14, Y(485)+6, '485 (2025)', 14, 500)
-    s.mark(X(2030), Y(945), 'o', VERM, 10); s.t(X(2030)-14, Y(945)+30, '945 (2030, projection)', 15, 600, INK, 'end')
-    for t in (2024, 2026, 2028, 2030): s.t(X(t), y0+h+26, str(t), 14, 400, MUTED, 'middle')
-    # panel b: J per unit, log
-    s.t(640, 140, 'b. Joules per unit of work, log scale', 18, 800)
-    rows = [('One median text prompt, production assistant [12]', 864, None, 'Measured', 'operator-measured 0.24 Wh'), ('RCE, solved repair task, est_j', 0.10, 0.40, 'Estimate', 'CPU seconds times 10 W'), ('RCE, solved repair task, reported_j', 0.026, 0.056, 'Measured', 'RAPL package counter')]
-    bx, bw, lo, hi = 660, 480, -2, 3
-    logaxis(s, bx, bw, lo, hi, 190, 470, lambda e: {-2: '0.01 J', -1: '0.1 J', 0: '1 J', 1: '10 J', 2: '100 J', 3: '1 kJ'}[e])
-    XX = lambda v: bx + bw*(math.log10(v)-lo)/(hi-lo)
-    for i, (lab, v, v2, kind, note) in enumerate(rows):
-        y = 230 + i*85
-        s.t(bx, y-14, lab, 15, 700); s.t(bx, y+30, note, 13, 400, MUTED)
-        col = BLUE if kind == 'Measured' else PINK
-        if v2: s.l(XX(v), y, XX(v2), y, col, 8)
-        s.mark(XX(v), y, '*' if kind == 'Measured' else 'd', col, 9)
-        if v2: s.mark(XX(v2), y, '*' if kind == 'Measured' else 'd', col, 9)
-    s.t(60, 610, 'A prompt and a solved repair task are different units; panel b places them on one axis for scale, not as a like-for-like comparison.', 15, 400, MUTED, italic=True)
-    s.t(60, 635, 'RCE rows: RCE §6.3, est_j 0.10 to 0.40 J across rungs; reported_j 0.026 J (L1) and 0.056 J (L0) on RAPL subsamples.', 15, 400, MUTED, italic=True)
-    legend(s, 60, 675, [('Measured', BLUE, '*'), ('Estimate', PINK, 'd'), ('Projection', VERM, 'o')], 200)
-    s.save('ai-coding-market', 'energy', 'Two panels. Panel a: data-centre electricity, 415 TWh in 2024 by IEA estimate, a 485 to 950 TWh range for 2025 to 2030, and 945 TWh projected for 2030. Panel b, log scale: one median text prompt measured by its operator at 0.24 Wh or 864 joules; RCE solved repair tasks at 0.10 to 0.40 joules estimated and 0.026 to 0.056 joules on a RAPL package counter.')
 
 def essay_price():
     s = S(1200, 640, 'Price of a fixed level of capability', 'Log scale. Endpoints as printed by the sources; lines are the stated rates, not fitted data.', 'DATA')
@@ -533,7 +419,7 @@ def ie_estimates():
     s.save('interface-economics', 'estimates-by-kind', 'Bar chart on a logarithmic dollar axis of the primary estimates cited in this essay, colored by kind. Accounted costs: the Mars Surveyor 1998 project at 327.6 million dollars and the Cluster II recovery at 214 million ECU. Model estimates: NIST 2004 inadequate interoperability in US capital facilities at 15.8 billion dollars a year; NIST 2002 inadequate software testing infrastructure at 59.5 billion dollars a year; Stripe 2018 developer time on bad code at about 85 billion dollars a year; CISQ 2022 technical debt at about 1.52 trillion dollars accumulated; CISQ 2022 cost of poor software quality in the US at least 2.41 trillion dollars in 2022.')
 
 if __name__ == '__main__':
-    for f in [rce_design_space, rce_form_projections, rce_stack, rce_ecosystem, rce_ladder, essay_spend, essay_tokens, essay_energy, essay_price,
+    for f in [rce_design_space, essay_spend, essay_tokens, essay_price,
               agency_layers, agency_gate_rank, agency_carriers, agency_tempo, agency_runs, gates_plateau, gates_commit, satiation_curve, spell_timeline,
               tbp_bodies, tbp_stable, tbp_stack, ie_estimates]:
         f()

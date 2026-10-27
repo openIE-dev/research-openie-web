@@ -81,7 +81,7 @@
       "pdf": "https://research.openie.dev/pdfs/rce.pdf",
       "figures": "/figures/rce/intent-entropy.svg",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "A system in which a program is written once as a state machine and code in other languages is generated from it, with measurements on 10,000 Forms and public bug datasets and falsifiers fixed in advance. Plain words: write a program once and generate it in many languages; reject broken input at the door; save checked fixes so the same problem is not paid for twice.",
+      "summary": "A system in which a program is written once as a state machine and code in other languages is generated from it: its specification, reference checker and emitters, Lean proofs and registered measurements of program dimension, with protocols and falsifiers fixed in advance. Plain words: a program is written once and generated in many languages; the language requires every input to have a declared outcome; in the engine's design, checked fixes are saved so that the same problem is not paid for twice.",
       "about": "https://research.openie.dev/about/rce/",
       "keywords": [
         "Reality Code Engine",
@@ -90,11 +90,8 @@
         "Abstract State Machine",
         "e-graph",
         "formal verification",
-        "Kani",
         "Z3",
-        "program repair",
-        "Mixture of Limits",
-        "joules per solved task"
+        "Mixture of Limits"
       ]
     },
     {

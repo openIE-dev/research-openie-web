@@ -39,7 +39,7 @@ The [Reality Code Engine (RCE)](https://research.openie.dev/about/rce/) treats a
 - $D$: an append-only log of every step taken;
 - $\lambda$: the output map from state to observable output.
 
-A strict checker either accepts a Form or names the rule it breaks. Emitters then project the accepted Form into Rust, Python, XState (a JavaScript and TypeScript statechart library), SCXML (State Chart XML, a World Wide Web Consortium Recommendation), and WebAssembly (Wasm). Because every step lands in $D$, any run can be replayed.
+A strict checker either accepts a Form or names the rule it breaks. Emitters then project the accepted Form into Rust, Python, JavaScript and Scala. XState (a JavaScript and TypeScript statechart library), SCXML (State Chart XML, a World Wide Web Consortium Recommendation) and WebAssembly (Wasm) are not among the emitters' targets; this study treats them as candidate projections. Because every step lands in $D$, any run can be replayed.
 
 A game engine is a much larger machine. It runs a fixed-step simulation, a scripting layer, a scene description, and a rendering pipeline on a graphics processing unit (GPU). This study asks which of those layers can live inside a Form, which must stay outside as host effects, and where exactness has to give way to tolerance.
 
