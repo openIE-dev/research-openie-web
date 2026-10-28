@@ -155,7 +155,7 @@
 <text x="1160" y="1570" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="13" font-weight="400" fill="#64748b" text-anchor="start" >DéjàVu, Lopes et al., OOPSLA 2017</text>
 <rect x="80" y="1640" width="1440" height="270" rx="24" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="2" opacity="1"/>
 <text x="120" y="1690" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="700" fill="#059669" text-anchor="start" letter-spacing="2">6. THE FIX: RCE</text>
-<text x="120" y="1740" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="36" font-weight="800" fill="#0f172a" text-anchor="start" >Stop guessing at every boundary.</text>
+<text x="120" y="1740" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="36" font-weight="800" fill="#0f172a" text-anchor="start" >Stop losing meaning at every boundary.</text>
 <circle cx="138" cy="1800" r="18" fill="#059669"/>
 <text x="138" y="1807" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle" >1</text>
 <text x="170" y="1808" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="23" font-weight="800" fill="#0f172a" text-anchor="start" >One canonical form</text>
@@ -163,13 +163,13 @@
 <text x="170" y="1868" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >One structure holds the intent.</text>
 <circle cx="603" cy="1800" r="18" fill="#059669"/>
 <text x="603" y="1807" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle" >2</text>
-<text x="635" y="1808" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="23" font-weight="800" fill="#0f172a" text-anchor="start" >Every surface is a projection</text>
-<text x="635" y="1842" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Rust, Python, JavaScript, Scala.</text>
-<text x="635" y="1868" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Each must print the reference trace.</text>
+<text x="635" y="1808" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="23" font-weight="800" fill="#0f172a" text-anchor="start" >Surfaces: projections by design</text>
+<text x="635" y="1842" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Rust, Python, JavaScript pass the</text>
+<text x="635" y="1868" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >conformance suite; Scala not yet.</text>
 <circle cx="1068" cy="1800" r="18" fill="#059669"/>
 <text x="1068" y="1807" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle" >3</text>
-<text x="1100" y="1808" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="23" font-weight="800" fill="#0f172a" text-anchor="start" >Cheapest correct form wins</text>
-<text x="1100" y="1842" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Equivalent forms, ranked by joules.</text>
+<text x="1100" y="1808" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="23" font-weight="800" fill="#0f172a" text-anchor="start" >Cheapest form wins, by design</text>
+<text x="1100" y="1842" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Equivalent forms, by estimated joules.</text>
 <text x="1100" y="1868" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="18" font-weight="400" fill="#334155" text-anchor="start" >Pick the one that costs least.</text>
 <text x="80" y="1950" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="14" font-weight="400" fill="#64748b" text-anchor="start" >Sources: Shannon, “Prediction and Entropy of Printed English,” Bell System Technical Journal, 1951. Lopes et al., “DéjàVu: A Map of Code Duplicates on GitHub,” OOPSLA 2017.</text>
 <text x="80" y="1974" font-family="Inter, 'DejaVu Sans', sans-serif" font-size="14" font-weight="400" fill="#64748b" text-anchor="start" >626 languages: an unpublished survey by the OpenIE authors. Python and C results are language spec behavior. C signed overflow is undefined behavior.</text></svg>

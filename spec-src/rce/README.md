@@ -9,7 +9,14 @@ code blocks and record the expected result of every example program:
     node gen.mjs <checkout>/spec spec.json
 
 Then copy `checker-wasm/pkg/rce_spec_check_wasm.js` and
-`rce_spec_check_wasm_bg.wasm` into `public/rce/spec/wasm/`.
+`rce_spec_check_wasm_bg.wasm` into `public/rce/spec/wasm/`, and copy each
+figure the generator lists from the checkout's `docs/figures/` into
+`public/figures/rce/spec/` (the book links them on raw.githubusercontent.com;
+the generator rewrites those links to this site). Set `spec_notebook_draft`
+and `spec_notebook_commit` in `src/data/rce-facts.json`, and the counts of
+`at_notebook_commit` from `scripts/claim-counts.py` run in the same checkout.
+The checkout must be a clone of its own: the generator runs `git rev-parse`
+in it. The draft 0.9 notebook was generated this way from 2364aa97.
 
 Read-aloud assets: `public/rce/spec/tts/kokoro.web.js` is kokoro-js 1.2.1's
 web build with two changes: the voice URL reads `globalThis.KOKORO_VOICE_BASE`

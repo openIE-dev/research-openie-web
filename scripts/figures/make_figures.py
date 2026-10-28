@@ -79,7 +79,7 @@ def legend(s, x, y, items, dx=230):
 def rce_design_space():
     s = S(1200, 900, 'The design space of autonomous coding', 'Five axes; approach classes placed qualitatively. Outward is better on every axis.', 'QUALITATIVE')
     axes = ['Energy per correct result', 'Determinism', 'Verification strength', 'Reuse and compounding', 'Independence from models']
-    sub = ['outward: paid once, then the handler floor', 'outward: entropy resolved once', 'outward: tests, coverage and proof', 'outward: every accepted fit stored', 'outward: model only as a last gear']
+    sub = ['outward: paid once, then the handler floor', 'outward: entropy resolved once', 'outward: tests, coverage and proof', 'outward: every applied solution stored', 'outward: model only as a last gear']
     cx, cy, R = 600, 470, 250
     ang = [-math.pi/2 + i*2*math.pi/5 for i in range(5)]
     for lev in range(1, 5):

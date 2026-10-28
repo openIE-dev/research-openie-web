@@ -3,6 +3,8 @@ import Shell from '../../../components/RceSpecShell.astro';
 import data from '../../../../spec-src/rce/spec.json';
 const ov = data.chapters[0];
 import facts from '../../../data/rce-facts.json';
+const at = facts.at_notebook_commit;
+const readOn = new Date(at.read_on + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const total = data.examples.reduce((a: number, g: any) => a + g.items.length, 0);
 ---
 <Shell title="RCE language specification" description="The RCE language specification as an interactive notebook: plain-language introductions, formal grammar and typing rules, and runnable example programs checked in the browser." current="">
@@ -12,7 +14,7 @@ const total = data.examples.reduce((a: number, g: any) => a + g.items.length, 0)
     <span class="tts-status" role="status"></span>
   </div>
   <div id="rs-ov" class="tts-text rs-intro" set:html={ov.sections[0].html} />
-  <p class="rs-prose"><strong>Which version this is.</strong> This notebook shows specification draft {facts.spec_notebook_draft}, generated from commit <code>{data.commit}</code> of the RCE source. Public <code>rce</code> main (<code>{facts.commit}</code>) is at draft {facts.spec_document_draft}, which this notebook does not show yet; there is one language, the specification at one commit (2.7). The public repository states theorems {facts.theorems_stated}, with {facts.lean_modules} Lean modules and {facts.examples_total} example programs ({facts.reject_examples} syntax rejects, {facts.ill_typed_examples} ill-typed and {facts.inadmissible_examples} inadmissible programs are refused). Where a chapter quotes a count from an earlier draft, such as the draft 0.5 grammar result in the overview, it describes that draft. Draft {facts.spec_document_draft} is described in the specification in the repository, not in these chapters. Counts come from <code>src/data/rce-facts.json</code>.</p>
+  <p class="rs-prose"><strong>Which version this is.</strong> This notebook shows specification draft {facts.spec_notebook_draft}, generated from commit <code>{data.commit}</code> of public <code>rce</code> main, read on {readOn}; there is one language, the specification at one commit (2.7). At that commit the repository states theorems {at.theorems_stated}, with {at.lean_modules} Lean modules and {at.examples_total} example programs ({at.examples_valid_top_level} at the top level of <code>spec/examples/</code> and {at.examples_in_packages} in its packages); {at.reject_examples} syntax rejects, {at.ill_typed_examples} ill-typed and {at.inadmissible_examples} inadmissible programs are refused. Of theorems T42 to T56 (Appendix F), theorems T48, T51 and T53 are proved of models and the other twelve are unproved, as the theorems chapter states; the status paragraph of the overview still calls all fifteen unproved. Where a chapter quotes a count from an earlier draft, it describes that draft. The counts at <code>{facts.commit}</code> (17 October 2026) that the RCE paper quotes are kept beside these in <code>src/data/rce-facts.json</code>.</p>
   <h2>Chapters</h2>
   <p class="rs-prose">Read them in order. Each chapter opens in plain words, then gives the exact rules. Formal grammar and typing rules sit in cells you can open and close. Every code cell can be edited and run.</p>
   <ol class="rs-cards">
@@ -25,7 +27,7 @@ const total = data.examples.reduce((a: number, g: any) => a + g.items.length, 0)
   </ol>
   <h2>Programs and the reading record</h2>
   <ul class="rs-prose">
-    <li><a href="/rce/spec/examples/">All {total} example programs</a>: the accepted ones, and every syntax reject, ill-typed and inadmissible program with its expected refusal.</li>
+    <li><a href="/rce/spec/examples/">The {total} example programs of the notebook</a>: the {data.examples[0].items.length} accepted at the top level of <code>spec/examples/</code> (the {at.examples_in_packages} files of its package are not shown), and every syntax reject, ill-typed and inadmissible program with its expected refusal.</li>
     <li><a href="/rce/spec/read-protocol/">Read protocol</a>: how a reader, human or AI agent, shows it read each chapter, using the chapter fingerprints and read-receipt questions.</li>
   </ul>
 </Shell>

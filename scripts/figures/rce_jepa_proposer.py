@@ -28,7 +28,7 @@ b+=box(740,330,280,140,Pk,'Decision head',['small decision model trained','on ga
 b.append(T(535,515,'Every box in this region may be wrong. None of them can admit a program.',16,700,'#B07500','middle'))
 b.append(T(535,540,'Security never depends on any model, hosted or local.',16,700,'#B07500','middle'))
 b+=box(1090,160,370,200,G,'GATE (engine design)',['contract check, shadow replay,','schema, Kani certificate,','Z3 proof for rewrites','accept -> promote -> receipt (est_j)','reject -> named broken rule'])
-b+=box(1090,400,370,170,G,'Checker and engine',['replay bit for bit (T3)','projections: Rust, Python,','JavaScript, Scala (T9-L)','design: promoted handler closes the shape'])
+b+=box(1090,400,370,170,G,'Checker and engine',['replay bit for bit (T3)','emitters: Rust, Python, JavaScript (T9-L);','Scala emitted, does not yet agree','design: promoted handler closes the shape'])
 b+=[arrow(360,220,398,220),arrow(700,220,738,220),arrow(880,280,700,360),arrow(400,400,362,400),
     arrow(700,400,738,400),arrow(1020,400,1088,330),arrow(1275,360,1275,398)]
 b.append('<path d="M 1090 345 C 1060 660, 260 660, 210 474" fill="none" stroke="#D55E00" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#a)"/>')

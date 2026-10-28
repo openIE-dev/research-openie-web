@@ -20,8 +20,10 @@ await init({ module_or_path: fs.readFileSync(path.join(wasmPkg, 'rce_spec_check_
 const check = (src, known = '') => JSON.parse(check_with(src, known));
 const commit = execSync('git rev-parse --short HEAD', { cwd: SPEC }).toString().trim();
 
-// keywords come from the tree-sitter grammar (string literals that are identifiers)
-const grammar = fs.readFileSync(path.join(SPEC, 'tree-sitter/grammar.js'), 'utf8');
+// keywords come from the tree-sitter grammar (string literals that are identifiers);
+// the grammar is in spec/tree-sitter/ up to draft 0.7 and in the repository root's tree-sitter/ from draft 0.9
+const grammarJs = [path.join(SPEC, 'tree-sitter/grammar.js'), path.join(SPEC, '../tree-sitter/grammar.js')].find((p) => fs.existsSync(p));
+const grammar = fs.readFileSync(grammarJs, 'utf8');
 const KEYWORDS = [...new Set([...grammar.matchAll(/'([a-z][a-z_0-9]*)'/g)].map((m) => m[1]))].sort();
 const TOP = /^(module|use|intent|example|check|pub|const|type|struct|kind|trait|fn|actor|state|event|error|step|impl|extern|linear|device|arena)\b/;
 
@@ -166,7 +168,9 @@ function remarkCells() {
   };
 }
 const md = unified().use(remarkParse).use(remarkGfm).use(remarkCells).use(remarkRehype, { allowDangerousHtml: true }).use(rehypeRaw).use(rehypeStringify);
-const render = (s) => String(md.processSync(s));
+// the book's figures are served from this site: copy docs/figures/<name> of the checkout to public/figures/rce/spec/<name>
+const figures = new Set();
+const render = (s) => String(md.processSync(s)).replace(/https:\/\/raw\.githubusercontent\.com\/openIE-dev\/rce\/main\/docs\/figures\/([^"]+)/g, (_, f) => { figures.add(f); return '/figures/rce/spec/' + f; });
 
 const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 function splitSections(body) {
@@ -233,3 +237,4 @@ for (const g of groups) {
 const out = { commit, generated: new Date().toISOString(), keywords: KEYWORDS, chapters, protocol, examples, byRule, cells: cellN, katexErrors };
 fs.writeFileSync(OUT, JSON.stringify(out));
 console.log(`chapters ${chapters.length}, cells ${cellN}, examples ${examples.reduce((a, g) => a + g.items.length, 0)}, katex fallbacks ${katexErrors}, commit ${commit}`);
+console.log(`figures to copy from docs/figures/ to public/figures/rce/spec/: ${[...figures].sort().join(', ')}`);

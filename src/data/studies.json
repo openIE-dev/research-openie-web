@@ -81,7 +81,7 @@
       "pdf": "https://research.openie.dev/pdfs/rce.pdf",
       "figures": "/figures/rce/intent-entropy.svg",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "A system in which a program is written once as a state machine and code in other languages is generated from it: its specification, reference checker and emitters, Lean proofs and registered measurements of program dimension, with protocols and falsifiers fixed in advance. Plain words: a program is written once and generated in many languages; the language requires every input to have a declared outcome; in the engine's design, checked fixes are saved so that the same problem is not paid for twice.",
+      "summary": "A system in which a program is written once as a state machine and code in other languages is generated from it: its specification, reference checker and emitters, Lean proofs and registered measurements of program dimension, with protocols and falsifiers fixed in advance. Plain words: a program is written once and generated in Rust, Python and JavaScript today, with every language the design goal; the language requires every input to have a declared outcome; in the engine's design, checked fixes are saved so that the same problem is not paid for twice.",
       "about": "https://research.openie.dev/about/rce/",
       "keywords": [
         "Reality Code Engine",
@@ -174,7 +174,7 @@
       "pdf": "https://research.openie.dev/pdfs/ai-reads-human.pdf",
       "figures": "/living/ai-reads-human/",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "Software agents exchange data in formats made for people to read. This topic names the extra work that causes (the impedance tax), defines it with units, and reports parse time and token counts on a reproducible 20,000-record corpus, with a table of format hazards from cited specifications and tests. No joules were measured; model energy figures are other authors' measurements. Plain words: people and computers share one written format, and the computer pays extra to read it; on our test data YAML took about 735 times as long as a fixed binary layout and about 2.2 times the tokens of CSV; energy is the next measurement and is not yet claimed.",
+      "summary": "Software agents exchange data in formats made for people to read. This topic names the extra work that causes (the impedance tax), defines it with units, and reports parse time and token counts on a reproducible 20,000-record corpus, with a table of format hazards from cited specifications and tests. A first energy attempt on two laptops could not resolve any net energy of parsing, so no joule claim is made; model energy figures are other authors' measurements. Plain words: people and computers share one written format, and the computer pays extra to read it; on the topic's test data, YAML (YAML Ain't Markup Language) took about 735 times as long as a fixed binary layout and about 2.2 times the tokens of CSV (comma-separated values); a valid energy measurement is planned, and no energy saving is claimed.",
       "about": "https://research.openie.dev/about/ai-reads-human/",
       "keywords": [
         "human-readable formats",

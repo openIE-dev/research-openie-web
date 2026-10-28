@@ -18,7 +18,7 @@
 <text x="770.5" y="726.6" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">outward: tests, coverage and proof</text>
 <line x1="600.0" y1="470.0" x2="453.1" y2="672.3" stroke="#94a3b8" stroke-width="2"/>
 <text x="429.5" y="704.6" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a" text-anchor="end">Reuse and compounding</text>
-<text x="429.5" y="726.6" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">outward: every accepted fit stored</text>
+<text x="429.5" y="726.6" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">outward: every applied solution stored</text>
 <line x1="600.0" y1="470.0" x2="362.2" y2="392.7" stroke="#94a3b8" stroke-width="2"/>
 <text x="324.2" y="380.4" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a" text-anchor="end">Independence from models</text>
 <text x="324.2" y="402.4" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">outward: model only as a last gear</text>

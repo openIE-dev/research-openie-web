@@ -4,9 +4,9 @@
   "commit": "e416fd0",
   "read_on": "2026-10-17",
   "spec_document_draft": "0.9",
-  "spec_notebook_draft": "0.7",
-  "spec_notebook_commit": "49fa9af",
-  "note_on_0_9": "Draft 0.9 is on public main since cdae5cf. It specifies Appendix F; the reference checker implements part of it and refuses the rest as reserved, not implemented (F.12). Theorems T42 to T56 are stated and unproved. The interactive notebook on this site (spec-src/rce/spec.json) still shows the draft 0.7 document, generated from commit 49fa9af, and is not yet regenerated from draft 0.9.",
+  "spec_notebook_draft": "0.9",
+  "spec_notebook_commit": "2364aa97",
+  "note_on_0_9": "Draft 0.9 is on public main since cdae5cf. It specifies Appendix F; the reference checker implements part of it and refuses the rest as reserved, not implemented (F.12). At e416fd0 (17 October 2026) theorems T42 to T56 were stated and unproved; at 2364aa97 (28 October 2026) T42 to T56 are stated, T48, T51 and T53 are proved of models (RCE/Discharged.lean, since 73fe1534) and the other twelve are unproved (spec/book/10-theorems.md). The interactive notebook on this site (spec-src/rce/spec.json) shows the draft 0.9 document, generated from commit 2364aa97.",
   "theorems_stated": "T1 to T56",
   "lean_modules": 58,
   "lean_theorem_and_lemma_declarations_in_source": 1116,
@@ -32,5 +32,21 @@
     "versions_0_6_and_0_7": 0
   },
   "lean_declaration_and_audit_counts_commit": "e416fd0",
-  "lean_declaration_and_audit_counts_note": "Rerun at public e416fd0 on 17 October 2026: lake build completes over the 58 files of spec/lean/RCE/ (81 with subdirectories), audit reports 4,877 theorem constants with standard axioms only, no sorry. Declarations are the lines starting with theorem or lemma (with optional attributes, private or protected) in all spec/lean .lean files. At 4304048 the same counts were 885 declarations, 2,949 audit constants and 46 modules."
+  "lean_declaration_and_audit_counts_note": "Rerun at public e416fd0 on 17 October 2026: lake build completes over the 58 files of spec/lean/RCE/ (81 with subdirectories), audit reports 4,877 theorem constants with standard axioms only, no sorry. Declarations are the lines starting with theorem or lemma (with optional attributes, private or protected) in all spec/lean .lean files. At 4304048 the same counts were 885 declarations, 2,949 audit constants and 46 modules.",
+  "at_notebook_commit": {
+    "commit": "2364aa97",
+    "read_on": "2026-10-28",
+    "source": "scripts/claim-counts.py in openIE-dev/rce at 2364aa97 (file counts; rce-spec-check and the Lean audit not run)",
+    "theorems_stated": "T1 to T62",
+    "theorems_42_to_56": "stated; T48, T51 and T53 proved of models, the other twelve unproved",
+    "lean_modules": 62,
+    "examples_total": 62,
+    "examples_valid_top_level": 60,
+    "examples_in_packages": 2,
+    "reject_examples": 12,
+    "ill_typed_examples": 48,
+    "inadmissible_examples": 16,
+    "checker_test_functions": 445,
+    "canonical_json_vectors": 77
+  }
 }
