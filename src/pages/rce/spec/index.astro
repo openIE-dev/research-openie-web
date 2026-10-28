@@ -27,7 +27,7 @@ const total = data.examples.reduce((a: number, g: any) => a + g.items.length, 0)
   </ol>
   <h2>Programs and the reading record</h2>
   <ul class="rs-prose">
-    <li><a href="/rce/spec/examples/">All {total} example programs</a>: the accepted ones, and every syntax reject, ill-typed and inadmissible program with its expected refusal.</li>
+    <li><a href="/rce/spec/examples/">The {total} example programs of the notebook</a>: the {data.examples[0].items.length} accepted at the top level of <code>spec/examples/</code> (the {at.examples_in_packages} files of its package are not shown), and every syntax reject, ill-typed and inadmissible program with its expected refusal.</li>
     <li><a href="/rce/spec/read-protocol/">Read protocol</a>: how a reader, human or AI agent, shows it read each chapter, using the chapter fingerprints and read-receipt questions.</li>
   </ul>
 </Shell>
