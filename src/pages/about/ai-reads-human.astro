@@ -12,14 +12,14 @@ import Layout from '../../layouts/Layout.astro';
       "AI" Reads Human: Human Language Encoding at Machine Speed and the Energy Cost
     </h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
-      Software agents pass data to each other in formats made for people to read, such as JSON, YAML, Markdown, XML and CSV. This topic names the extra work that causes, defines it with units, and measures two parts of it on a reproducible corpus: parse time and token count. Energy is not yet measured.
+      Software agents pass data to each other in formats made for people to read, such as JSON (JavaScript Object Notation), YAML (YAML Ain't Markup Language), Markdown, XML (Extensible Markup Language) and CSV (comma-separated values). This topic names the extra work that causes, defines it with units, and measures two parts of it on a reproducible corpus: parse time and token count. Energy is not yet measured.
     </p>
     <div class="mt-8 glass-card p-6">
       <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">In plain words</p>
       <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
         <li>Computers and people often use the same written format. That format is easy for people to read, but the computer has to do extra work to read it back.</li>
-        <li>On our test data, the same records took about 8 times longer to read as JSON (Python's built-in reader), and about 735 times longer as YAML, than as a plain fixed binary layout. Read by an AI model, YAML used about 2.2 times as many tokens as CSV.</li>
-        <li>We have measured time and token counts only. We have not yet measured energy, so this page makes no claim about how many joules are saved.</li>
+        <li>On the test data of the paper, the same records took about 8 times longer to read as JSON (Python's built-in reader), and about 735 times longer as YAML, than as a plain fixed binary layout. Read by an AI model, YAML used about 2.2 times as many tokens as CSV.</li>
+        <li>The paper measures time and token counts. A first attempt to measure energy on two laptops found the signal too small to separate from background power, so this page makes no claim about how many joules are saved.</li>
       </ol>
     </div>
 

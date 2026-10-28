@@ -35,7 +35,7 @@ The [Reality Code Engine (RCE)](https://research.openie.dev/about/rce/) treats a
 
 - $S$: the set of states;
 - $E$: the set of events (inputs);
-- $\delta : S \times E \to S \times O^*$: the transition function, which returns the next state and the outputs $O^*$ of the step;
+- $\delta : S \times E \to S \times O^*$: the transition function, which returns the next state and the step's outputs, a finite sequence (an element of $O^*$) of outputs from the output set $O$;
 - $D$: an append-only, hash-chained log of every step taken;
 - $\lambda$: the output map, the second part of $\delta$, so an output may depend on the event as well as on the state. This study uses the special case in which the observable scene depends on the state alone, written $\lambda(s)$.
 

@@ -34,7 +34,7 @@ const repos = [
     </p>
     <ul class="mt-6 font-body text-base text-brand-slate leading-relaxed list-disc pl-6 space-y-2">
       <li>Write a program once and generate it in Rust, Python, JavaScript or Scala; the Scala output does not yet agree with the reference.</li>
-      <li>The checker rejects broken input before anything runs.</li>
+      <li>The checker refuses a program that breaks a rule, naming the rule, before it runs. The public reference checker does not yet refuse a malformed event at entry (<a href="/papers/rce/#10-work-to-finish" class="text-brand-cyan">RCE paper, §10, item 15</a>).</li>
       <li>Download, check the file against its published hash, then unpack and run.</li>
     </ul>
 

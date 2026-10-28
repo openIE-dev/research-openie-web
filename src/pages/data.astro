@@ -7,7 +7,7 @@ const groups = [
     ['§8.11 results, run 1', 'agency-run/results/', 'Episode rows and receipts'],
     ['§8.11.1 and §8.11.2 results', 'agency-run/results2/', 'Second run; the second machine is in results_jetson/ and results_jetson_cyc/'],
   ]},
-  { id: 'rce', title: 'The Reality Code Engine', paper: '/papers/rce/', rows: [
+  { id: 'rce', title: 'The Reality Code Engine (RCE)', paper: '/papers/rce/', rows: [
     ['§6 repair ladder protocol (L0 and L1)', 'rce/bench/ladder/', 'LADDER.md, PREREG.json with splits, report.py'],
     ['§5.5 model proposer on the demonstration specification', 'rce/bench/results/', 'llm-proposer-form-demo.form.json: 18 proposals, 13 distinct, 15 refused, one rewrite admitted under three names'],
     ['flowG cross-backend conformance (flowG, the parent project of RCE, named in §3.6 of the RCE paper; no result of the paper rests on this suite)', 'flowg-conformance/', 'Suite, fixtures by tier, recorded 18 of 18 report, CI job'],
@@ -16,7 +16,7 @@ const groups = [
   ]},
   { id: 'rce-jepa', title: 'RCE-JEPA', paper: '/papers/rce-jepa/', rows: [
     ['W1 Form corpus v1 and v2, H1 (Form space against source space), the intent mutation score and the cost of a check', 'rce/bench/form-space/', 'PREREG.json with amendments and hash sidecar, CARD.md (dataset card), RESULTS.md, results/forms.jsonl, results/negatives.jsonl, summary.json; generator scripts/corpus.py in openIE-dev/rce'],
-    ['H7 adversarial Forms, fuzzed arm: 560 accepted mutants against five invariants', 'rce/bench/adversarial/', 'PREREG.json with hash sidecar, run.py, RESULTS.md, results/summary.json and violations.jsonl (empty)'],
+    ['H7 adversarial Forms, fuzzed arm: two runs, 560 and 715 accepted mutants (1,275), 0 violations; all five invariants checked on the 398 with a trace, determinism and re-acceptance on the other 877', 'rce/bench/adversarial/', 'PREREG.json with hash sidecar, run.py, RESULTS.md, results/summary.json and violations.jsonl (empty)'],
     ['H8 determinism: 10,500 streams on six targets', 'rce/bench/determinism/', 'PREREG.json with hash sidecar, RESULTS.md with the workflow run, per-target jobs and limits; generator scripts/xarch-streams.py and the parity workflow in openIE-dev/rce'],
   ]},
   { id: 'gates', title: 'Metered Commit Gates', paper: '/papers/gates/', rows: [
