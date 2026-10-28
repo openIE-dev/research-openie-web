@@ -35,11 +35,11 @@ The [Reality Code Engine (RCE)](https://research.openie.dev/about/rce/) treats a
 
 - $S$: the set of states;
 - $E$: the set of events (inputs);
-- $\delta : S \times E \to S$: the transition function;
-- $D$: an append-only log of every step taken;
-- $\lambda$: the output map from state to observable output.
+- $\delta : S \times E \to S \times O^*$: the transition function, which returns the next state and the outputs $O^*$ of the step;
+- $D$: an append-only, hash-chained log of every step taken;
+- $\lambda$: the output map, the second part of $\delta$, so an output may depend on the event as well as on the state. This study uses the special case in which the observable scene depends on the state alone, written $\lambda(s)$.
 
-A strict checker either accepts a Form or names the rule it breaks. Emitters then project the accepted Form into Rust, Python, JavaScript and Scala. XState (a JavaScript and TypeScript statechart library), SCXML (State Chart XML, a World Wide Web Consortium Recommendation) and WebAssembly (Wasm) are not among the emitters' targets; this study treats them as candidate projections. Because every step lands in $D$, any run can be replayed.
+A strict checker either accepts a Form or names the rule it breaks. The reference checker's emitters then translate the accepted program into Rust, Python and JavaScript, each of which prints the reference trace on the RCE conformance suite, and into Scala, whose output does not yet agree with the reference (52 of 1,832 conformance results pass). The emitters read the checked program, not the Form; projecting every language from the Form is the design goal of the RCE paper. XState (a JavaScript and TypeScript statechart library), SCXML (State Chart XML, a World Wide Web Consortium Recommendation) and WebAssembly (Wasm) are not among the emitters' targets; this study treats them as candidate projections. Because every step lands in $D$, any run can be replayed.
 
 A game engine is a much larger machine. It runs a fixed-step simulation, a scripting layer, a scene description, and a rendering pipeline on a graphics processing unit (GPU). This study asks which of those layers can live inside a Form, which must stay outside as host effects, and where exactness has to give way to tolerance.
 
