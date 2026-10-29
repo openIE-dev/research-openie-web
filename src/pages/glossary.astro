@@ -94,6 +94,14 @@ const allTerms = [
     def: "A programming system, studied in its own paper, in which a program is written once as a Form and code in other languages is generated from it.",
   },
   {
+    term: "requires change (RCE)",
+    def: "The verdict of the RCE checker on code that is not in Form: the checker names the rule the code breaks, for example `requires change FILE: line 1: W-SYN-1 ...`, and nothing runs until the code is changed.",
+  },
+  {
+    term: "kept step (RCE)",
+    def: "A step whose event does not apply in the current state. The step keeps the state, unchanged (theorem T8, atomicity), and is recorded in the log with the error it names.",
+  },
+  {
     term: "Metabolic Intelligence",
     def: "A class of computer intelligence designed to run inside a fixed energy budget B, studied in its own white paper.",
   },

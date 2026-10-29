@@ -18,7 +18,7 @@ const ruleGroups = isRules
 const title = kind === 'examples' ? 'RCE example programs' : ch.title.replace(/^\d+(\s*\(continued\))?\.\s*/, '');
 const sections = kind === 'examples'
   ? data.examples.map((g: any) => ({ id: g.id, title: g.title }))
-  : [...ch.sections.map((s: any) => ({ id: s.id, title: s.title })), ...(isRules ? [{ id: 'refused-examples', title: 'Refused examples by rule' }] : [])];
+  : [...ch.sections.map((s: any) => ({ id: s.id, title: s.title })), ...(isRules ? [{ id: 'requires-change-examples', title: 'Examples that require change, by rule' }] : [])];
 const desc = kind === 'examples'
   ? 'Every example program of the RCE spec, editable and checked in the browser by the reference checker, with the expected result of each.'
   : `RCE language specification: ${title}. Plain-language introduction, formal rules and runnable examples.`;
@@ -60,9 +60,10 @@ const desc = kind === 'examples'
           </section>
         ))}
         {isRules && (
-          <section class="rs-sec" id="refused-examples" aria-labelledby="refused-examples-h">
-            <h2 id="refused-examples-h">Refused examples by rule</h2>
-            <p class="rs-prose">Each program below breaks the rule named above it. Run it to see the refusal, or edit it until it is accepted.</p>
+          <section class="rs-sec" id="requires-change-examples" aria-labelledby="requires-change-examples-h">
+            <div id="refused-examples" class="anchor-alias" aria-hidden="true"></div>
+            <h2 id="requires-change-examples-h">Examples that require change, by rule</h2>
+            <p class="rs-prose">Each program below breaks the rule named above it, so it requires change. Run it to see the rule the checker names, or edit it until it is accepted.</p>
             {ruleGroups.map((g) => (
               <>
                 <h3 id={'rule-' + g.rule}><code>{g.rule}</code> ({g.items.length})</h3>

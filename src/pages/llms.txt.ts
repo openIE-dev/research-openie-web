@@ -22,6 +22,7 @@ ${sections}
 ## Reference
 
 - [Glossary](https://research.openie.dev/glossary/): Terms used on the site. Each paper also defines its own terms.
+- [RCE FAQ](https://research.openie.dev/faq/): what the Reality Code Engine is, why it is needed now, what is built, proposed and measured, how energy is labelled, and ten hard questions, each with its current answer and falsifier. Every number is cited.
 - [About the papers](https://research.openie.dev/about/): One page per paper on what it claims and what it does not.
 - [Figures](https://research.openie.dev/living/): Interactive figures for the papers.
 - [RCE Playground](https://openie-dev.github.io/rce/): the reference checker (checker-wasm) in the browser: write, check and run RCE programs, with the specification examples and shareable links.

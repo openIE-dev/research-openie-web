@@ -24,8 +24,8 @@ import Layout from '../../layouts/Layout.astro';
     </div>
 
     <figure class="mt-10 glass-card p-4 fig">
-      <a class="fig-zoom" href="/figures/rce-jepa/architecture.svg" aria-label="Enlarge figure"><picture><source type="image/svg+xml" srcset="/figures/rce-jepa/architecture.svg" /><img src="/figures/rce-jepa/architecture.png" alt="The proposed RCE-JEPA pipeline: intent to a latent point, decoded to candidate Forms, admitted or refused by the checker." loading="lazy" /></picture></a>
-      <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">The proposed pipeline. A learned predictor maps stated intent to a point in latent space; a decoder turns that point into candidate Forms; the checker admits or refuses each one.</figcaption>
+      <a class="fig-zoom" href="/figures/rce-jepa/architecture.svg" aria-label="Enlarge figure"><picture><source type="image/svg+xml" srcset="/figures/rce-jepa/architecture.svg" /><img src="/figures/rce-jepa/architecture.png" alt="The proposed RCE-JEPA pipeline: intent to a latent point, decoded to candidate Forms, each admitted by the checker or reported as requiring change." loading="lazy" /></picture></a>
+      <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">The proposed pipeline. A learned predictor maps stated intent to a point in latent space; a decoder turns that point into candidate Forms; the checker admits each one or reports that it requires change, naming the rule.</figcaption>
     </figure>
 
     <div class="mt-10 flex flex-wrap gap-3">

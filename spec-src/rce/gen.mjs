@@ -18,10 +18,13 @@ const wasmPkg = path.join(SPEC, 'checker-wasm/pkg');
 const { default: init, check_with } = await import(path.join(wasmPkg, 'rce_spec_check_wasm.js'));
 await init({ module_or_path: fs.readFileSync(path.join(wasmPkg, 'rce_spec_check_wasm_bg.wasm')) });
 const check = (src, known = '') => JSON.parse(check_with(src, known));
-const commit = execSync('git rev-parse --short HEAD', { cwd: SPEC }).toString().trim();
+// RCE_COMMIT names the commit when SPEC is an export (git archive) rather than a checkout.
+const commit = process.env.RCE_COMMIT || execSync('git rev-parse --short HEAD', { cwd: SPEC }).toString().trim();
 
 // keywords come from the tree-sitter grammar (string literals that are identifiers)
-const grammar = fs.readFileSync(path.join(SPEC, 'tree-sitter/grammar.js'), 'utf8');
+// tree-sitter/ moved from spec/ to the repository root; read whichever exists.
+const grammarPath = [path.join(SPEC, 'tree-sitter/grammar.js'), path.join(SPEC, '../tree-sitter/grammar.js')].find((p) => fs.existsSync(p));
+const grammar = fs.readFileSync(grammarPath, 'utf8');
 const KEYWORDS = [...new Set([...grammar.matchAll(/'([a-z][a-z_0-9]*)'/g)].map((m) => m[1]))].sort();
 const TOP = /^(module|use|intent|example|check|pub|const|type|struct|kind|trait|fn|actor|state|event|error|step|impl|extern|linear|device|arena)\b/;
 
@@ -60,10 +63,10 @@ function cell(src, opts = {}) {
   const exp = opts.expect ? summarize(res) : null;
   const attrs = [`id="${id}"`, `class="nb-cell nb-code"`];
   if (opts.known) attrs.push(`data-known="${esc(opts.known)}"`);
-  if (exp) attrs.push(`data-expect="${exp.ok ? 'accepted' : 'refused'}"`, `data-expect-rule="${esc(exp.rule || '')}"`);
+  if (exp) attrs.push(`data-expect="${exp.ok ? 'accepted' : 'requires-change'}"`, `data-expect-rule="${esc(exp.rule || '')}"`);
   const label = opts.label ? `<span class="nb-label">${esc(opts.label)}</span>` : '<span class="nb-label">RCE</span>';
   const expHtml = exp
-    ? `<p class="nb-expect ${exp.ok ? 'is-ok' : 'is-bad'}"><strong>Expected:</strong> ${exp.ok ? 'accepted' : `refused at the ${esc(exp.stage)} stage${exp.rule ? ` by <code>${esc(exp.rule)}</code>` : ''}: ${esc(exp.text)}`}</p>`
+    ? `<p class="nb-expect ${exp.ok ? 'is-ok' : 'is-bad'}"><strong>Expected:</strong> ${exp.ok ? 'accepted' : `requires change at the ${esc(exp.stage)} stage${exp.rule ? `, rule <code>${esc(exp.rule)}</code>` : ''}: ${esc(exp.text)}`}</p>`
     : '';
   const lines = src.split('\n').length;
   return `<div ${attrs.join(' ')}>
@@ -209,13 +212,15 @@ const protocol = chapter('READ-PROTOCOL.md');
 const EX = path.join(SPEC, 'examples');
 const groups = [
   { dir: '', id: 'accepted', title: 'Accepted programs', note: 'Each of these is accepted: it parses, type-checks, and every example and check inside it holds.' },
-  { dir: 'reject', id: 'syntax', title: 'Syntax rejects', note: 'Each of these is not in the language of the grammar and is refused before type checking.' },
-  { dir: 'ill_typed', id: 'ill-typed', title: 'Ill-typed programs', note: 'Each of these parses but breaks a typing, ownership or well-formedness rule.' },
-  { dir: 'inadmissible', id: 'inadmissible', title: 'Inadmissible programs', note: 'Each of these type-checks but fails the admission gate: an example, a check, a comptime block or a constant does not hold when evaluated.' },
+  // openIE-dev/rce #54 moved reject/, ill_typed/ and inadmissible/ to change/syntax, change/types and change/admission.
+  { dir: 'change/syntax', old: 'reject', id: 'syntax', title: 'Syntax: requires change', note: 'Each of these is not in the language of the grammar, so it requires change before type checking; the result names the rule.' },
+  { dir: 'change/types', old: 'ill_typed', id: 'ill-typed', title: 'Ill-typed programs', note: 'Each of these parses but breaks a typing, ownership or well-formedness rule, so it requires change; the result names the rule.' },
+  { dir: 'change/admission', old: 'inadmissible', id: 'inadmissible', title: 'Inadmissible programs', note: 'Each of these type-checks but does not pass admission: an example, a check, a comptime block or a constant does not hold when evaluated, so it requires change.' },
 ];
 const examples = [];
 const byRule = {};
 for (const g of groups) {
+  if (g.old && !fs.existsSync(path.join(EX, g.dir))) g.dir = g.old;
   const d = path.join(EX, g.dir);
   const items = fs.readdirSync(d).filter((f) => f.endsWith('.rce')).sort().map((f) => {
     const src = fs.readFileSync(path.join(d, f), 'utf8').replace(/\n+$/, '');
@@ -227,7 +232,8 @@ for (const g of groups) {
     if (r.rule) (byRule[r.rule] ||= []).push(p);
     return { path: p, name: f, html: cell(src, { expect: true, known, label: p }) };
   });
-  examples.push({ ...g, items });
+  const { old, ...meta } = g;
+  examples.push({ ...meta, items });
 }
 
 const out = { commit, generated: new Date().toISOString(), keywords: KEYWORDS, chapters, protocol, examples, byRule, cells: cellN, katexErrors };

@@ -82,27 +82,30 @@ function checker() {
 function renderResult(cell, r) {
   const want = cell.dataset.expect;
   const wantRule = cell.dataset.expectRule || '';
-  const got = r.ok ? 'accepted' : 'refused';
+  const got = r.ok ? 'accepted' : 'requires-change';
   let h = '';
   if (r.ok) h += `<p class="nb-badge ok">Accepted. It parses, type-checks, and every example and check in it holds.</p>`;
   else {
     const stage = { parse: 'parsing', check: 'type and well-formedness checking', admit: 'admission (examples, checks, comptime and constants are evaluated)' }[r.stage] || r.stage;
-    h += `<p class="nb-badge bad">Refused during ${esc(stage)}.</p><ul class="nb-errs">`;
+    h += `<p class="nb-badge bad">Requires change: found during ${esc(stage)}.</p><ul class="nb-errs">`;
     for (const e of r.errors) h += `<li>${e.rule ? `<code class="nb-rule">${esc(e.rule)}</code> ` : ''}${esc(e.msg)}</li>`;
     h += '</ul>';
   }
   if (want) {
     const firstRule = r.errors[0]?.rule || '';
-    const same = want === got && (want === 'accepted' || !wantRule || wantRule === firstRule);
-    h += `<p class="nb-match ${same ? 'ok' : 'bad'}">${same ? 'Matches the expected result.' : `Differs from the expected result (${esc(want)}${wantRule ? ' by ' + esc(wantRule) : ''}).`}</p>`;
+    const wantNorm = want === 'refused' ? 'requires-change' : want;
+    const same = wantNorm === got && (want === 'accepted' || !wantRule || wantRule === firstRule);
+    h += `<p class="nb-match ${same ? 'ok' : 'bad'}">${same ? 'Matches the expected result.' : `Differs from the expected result (${esc(wantNorm.replace('-', ' '))}${wantRule ? ', rule ' + esc(wantRule) : ''}).`}</p>`;
   }
   if (r.examples?.length) {
     h += '<div class="nb-traces"><p class="nb-sub">Examples evaluated event by event (state after each event):</p>';
     for (const ex of r.examples) {
       h += `<table class="nb-trace"><caption>example on line ${ex.line}</caption><thead><tr><th scope="col">event</th><th scope="col">result</th></tr></thead><tbody>`;
       for (const s of ex.steps) {
-        const st = s.state ? Object.entries(s.state).map(([rg, fs]) => `${esc(rg)} { ${Object.entries(fs).map(([k, v]) => `${esc(k)}: ${esc(v)}`).join(', ')} }`).join('; ') : `refused: ${esc(s.refused)}`;
-        h += `<tr${s.refused ? ' class="refused"' : ''}><td><code>${esc(s.event)}</code></td><td>${st}</td></tr>`;
+        // the checker reports a step whose event does not apply as `kept` (`refused` before openIE-dev/rce #54)
+        const kept = s.kept ?? s.refused;
+        const st = s.state ? Object.entries(s.state).map(([rg, fs]) => `${esc(rg)} { ${Object.entries(fs).map(([k, v]) => `${esc(k)}: ${esc(v)}`).join(', ')} }`).join('; ') : `kept: ${esc(kept)} (the state is unchanged)`;
+        h += `<tr${kept ? ' class="kept"' : ''}><td><code>${esc(s.event)}</code></td><td>${st}</td></tr>`;
       }
       h += '</tbody></table>';
     }

@@ -8,6 +8,19 @@ code blocks and record the expected result of every example program:
     npm i katex@0.16.47 unified remark-parse remark-gfm remark-rehype rehype-raw rehype-stringify
     node gen.mjs <checkout>/spec spec.json
 
+From an export instead of a checkout (no `.git`), name the commit:
+
+    git -C <checkout> archive <commit> spec/book spec/examples spec/checker-wasm/pkg tree-sitter/grammar.js | tar -x -C <dir>
+    RCE_COMMIT=<commit> node gen.mjs <dir>/spec spec.json
+
+`spec.json` is generated from the book and the example programs, not from
+`spec/data/spec-data.json` of openIE-dev/rce. Since openIE-dev/rce #54 the
+programs that require change are in `spec/examples/change/{syntax,types,admission}`
+(earlier `reject/`, `ill_typed/` and `inadmissible/`), `tree-sitter/` is at the
+repository root, and the browser checker reports a step whose event does not
+apply as `kept` (earlier `refused`); `gen.mjs` and `public/rce/spec/notebook.js`
+read both layouts. The current `spec.json` is generated from 8ce91cea.
+
 Then copy `checker-wasm/pkg/rce_spec_check_wasm.js` and
 `rce_spec_check_wasm_bg.wasm` into `public/rce/spec/wasm/`.
 
