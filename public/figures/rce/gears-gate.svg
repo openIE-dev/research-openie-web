@@ -58,7 +58,7 @@
 <text x="1045.0" y="260.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">closes at G0</text>
 <text x="1045.0" y="282.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">next time</text>
 <rect x="930.0" y="410.0" width="230.0" height="190.0" rx="14" fill="#f8fafc" stroke="#D55E00" stroke-width="3" opacity="1"/>
-<text x="1045.0" y="440.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Fail: reject</text>
+<text x="1045.0" y="440.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Fail: requires change</text>
 <text x="1045.0" y="466.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">logged with its</text>
 <text x="1045.0" y="488.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">counterexample;</text>
 <text x="1045.0" y="510.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">escalate to the</text>
@@ -68,6 +68,6 @@
 <path d="M1045 156 L1045 120 L230 120 L230 134" stroke="#009E73" stroke-width="2.5" fill="none" fill-opacity="1" stroke-dasharray="4 6" marker-end="url(#ah)" stroke-linejoin="round"/>
 <rect x="560.0" y="108.0" width="220.0" height="24.0" rx="0" fill="#ffffff" stroke="none" stroke-width="2" opacity="1"/>
 <text x="670.0" y="126.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#009E73" text-anchor="middle">promotion feeds G0</text>
-<text x="40.0" y="700.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Every promotion, refusal, deferral and install is an entry in the SHA-256 chained log, with a receipt (Figure 5).</text>
+<text x="40.0" y="700.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Every promotion, required change, deferral and install is an entry in the SHA-256 chained log, with a receipt (Figure 5).</text>
 <text x="40.0" y="724.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">The Kani harnesses and the SMT encoding are fixed: promotion changes handlers and rewrites, never the checker.</text>
 <text x="40.0" y="748.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Gear names as in Section 4.2: G0 Lookup, G1 Rules, G2 Synthesis, G3 to G5 Models.</text></svg>

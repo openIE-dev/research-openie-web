@@ -41,7 +41,7 @@
 <rect x="40.0" y="419.0" width="46.0" height="32.0" rx="6" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
 <text x="63.0" y="441.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#ffffff" text-anchor="middle">P</text>
 <text x="96.0" y="434.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a" text-anchor="start">T8</text>
-<text x="148.0" y="434.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start">atomicity of refused events</text>
+<text x="148.0" y="434.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start">atomicity: a kept step leaves the state</text>
 <text x="96.0" y="451.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="start"></text>
 <rect x="40.0" y="461.0" width="46.0" height="32.0" rx="6" fill="#56B4E9" stroke="none" stroke-width="2" opacity="1"/>
 <text x="63.0" y="483.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a" text-anchor="middle">P*</text>

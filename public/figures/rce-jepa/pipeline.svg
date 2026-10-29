@@ -69,7 +69,7 @@
 <title>check&#45;&gt;dec</title>
 <path fill="none" stroke="#334155" stroke-dasharray="5,2" d="M546.16,-26.89C540.12,-26.02 534.1,-25.29 528.26,-24.75 499.38,-22.09 491.87,-21.95 463.01,-24.75 460.95,-24.95 458.86,-25.18 456.76,-25.42"/>
 <polygon fill="#334155" stroke="#334155" points="456.37,-21.95 446.92,-26.75 457.3,-28.88 456.37,-21.95"/>
-<text xml:space="preserve" text-anchor="middle" x="495.64" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">reject + reason</text>
+<text xml:space="preserve" text-anchor="middle" x="495.64" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">requires change + rule</text>
 </g>
 <!-- eng -->
 <g id="node5" class="node">

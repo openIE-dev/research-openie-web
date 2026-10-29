@@ -45,7 +45,7 @@
 <path d="M240 333 C 420 330, 370 260, 545 265" stroke="#0072B2" stroke-width="2.5" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
 <path d="M625 333 C 805 330, 755 260, 930 265" stroke="#0072B2" stroke-width="2.5" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
 <text x="40.0" y="410.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start">H(x) = SHA-256 of the canonical JSON of x (keys sorted at every depth). state_hash = H(state after the step); hash = H({event, prev_hash, seq, state_hash}).</text>
-<text x="40.0" y="434.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Change any past entry and every later hash changes; reload recomputes each link and refuses a broken chain.</text>
+<text x="40.0" y="434.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Change any past entry and every later hash changes; reload recomputes each link and does not load a broken chain.</text>
 <text x="40.0" y="456.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">outcome, out and state may be carried beside an entry; they are derived, must equal replay, and are not hashed.</text>
 <line x1="40.0" y1="486.0" x2="1160.0" y2="486.0" stroke="#e2e8f0" stroke-width="2"/>
 <text x="40.0" y="520.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="start">Receipt of one gear on one escalation</text>
