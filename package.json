@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/i18n/guard.mjs src && node scripts/lint-private.mjs src && node scripts/lint-claims.mjs && astro build --force && node scripts/lint-order.mjs && node scripts/lint-private.mjs dist && node scripts/i18n/guard.mjs dist",
+    "build": "node scripts/i18n/guard.mjs src && node scripts/lint-private.mjs src && node scripts/lint-claims.mjs && astro build --force && node scripts/lint-order.mjs && node scripts/lint-private.mjs dist && node scripts/i18n/guard.mjs dist && bash scripts/generate-pdfs.sh --stale",
     "lint:claims": "node scripts/lint-claims.mjs",
     "lint:order": "node scripts/lint-order.mjs",
     "preview": "astro preview",

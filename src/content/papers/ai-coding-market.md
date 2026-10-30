@@ -12,7 +12,7 @@ board_metered: false
 
 # The Promised Trillion Dollar AI-Coding Market
 
-*Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#economics). LaTeX PDF: [/pdfs/latex/ai-coding-market.pdf](/pdfs/latex/ai-coding-market.pdf) ([source](/pdfs/latex/ai-coding-market.tex)).*
+*{{revision}}. Data and code: [research.openie.dev/data/](/data/#economics). LaTeX PDF: [/pdfs/latex/ai-coding-market.pdf](/pdfs/latex/ai-coding-market.pdf) ([source](/pdfs/latex/ai-coding-market.tex)).*
 
 
 ## Abstract

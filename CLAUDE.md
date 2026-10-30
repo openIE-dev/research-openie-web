@@ -33,11 +33,20 @@ Dev:
 pnpm dev
 ```
 
-Regenerate PDFs (Mac; needs pandoc + weasyprint):
+PDFs follow their pages automatically: `pnpm build` ends with
+`scripts/generate-pdfs.sh --stale`, which reprints every PDF whose page changed
+since its stamp in `public/pdfs/stamps.json` (Chrome on the Mac, else a
+Chromium on PATH or under /opt/pw-browsers, else weasyprint) and copies it into
+`dist/pdfs/`. The build fails if a PDF is out of date and nothing can print it.
+Run `./scripts/generate-pdfs.sh` after `pnpm build` to reprint every PDF.
 
-```bash
-./scripts/generate-pdfs.sh
-```
+## Versions are read, not typed
+
+A paper's version line is `{{revision}}` in its Markdown; the build replaces it
+with the last commit that changed the file and its date
+(`src/plugins/remark-revision.mjs`). Pages that cite a paper use
+`paperRevisionText(id)` from `src/lib/revision.mjs`. Do not type a version
+number or date for a paper anywhere.
 
 ## Deploy
 

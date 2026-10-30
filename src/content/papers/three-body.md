@@ -11,7 +11,7 @@ board_metered: false
 
 # The Pursuit of AGI Resolves the Three-Body Problem in Computing
 
-*Version 1.0, 11 October 2026. LaTeX PDF: [/pdfs/latex/three-body.pdf](/pdfs/latex/three-body.pdf) ([source](/pdfs/latex/three-body.tex))..*
+*{{revision}}. LaTeX PDF: [/pdfs/latex/three-body.pdf](/pdfs/latex/three-body.pdf) ([source](/pdfs/latex/three-body.tex))..*
 
 ## Abstract
 
