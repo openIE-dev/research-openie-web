@@ -634,7 +634,7 @@ RCE is a native code ecosystem by design. A program is authored once, from inten
 
 ## 12. The Form against the record
 
-This section places the Form against three bodies of evidence: the theory and tooling of each area the design touches, the history of programming-language design read as a comparison of what each language fixes and what it leaves free, and the measured causes of redundancy in human-written code. Each subsection states what the evidence shows, with its source, and then the position this paper takes and the reason. Where a position is a judgement rather than a measured result, the text says so. The three surveys behind this section were conducted in October 2026; their full texts and working notes are published in the experiments repository ([openie-research-experiments/rce/surveys](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/surveys)).
+This section places the Form against three bodies of evidence: the theory and tooling of each area the design touches, the history of programming-language design read as a comparison of what each language fixes and what it leaves free, and the measured causes of redundancy in human-written code. Each subsection states what the evidence shows, with its source, and then the position this paper takes and the reason. Where a position is a judgement rather than a measured result, the text says so. The three surveys behind this section were conducted in October 2026; their full texts and working notes are published in the experiments repository ([openie-research-experiments/rce/surveys](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/surveys)). The last subsection compares how languages in development plan breaking change with the rule RCE follows; it rests on a shorter web survey made at the end of October 2026, whose sources are cited with it.
 
 ### 12.1 Seven areas of the design
 
@@ -701,6 +701,31 @@ The library half of this position holds in the repository in its main parts: the
 - hardware realisation read from each Form's shape;
 - a host without an operating system;
 - two measurements the record lacks: one kernel's energy across device classes under one boundary, and the share of library functionality that model assistants reuse rather than reimplement.
+
+### 12.6 How languages in development plan breaking change
+
+[§12.4](#124-how-the-language-grows-and-shrinks) states how the Form changes. This subsection sets that rule beside the plans of languages that were changing in 2026, as their roadmaps, release notes and forums describe them. The sources are of mixed weight. Where a claim rests on a single blog or forum post, the text says so, and where secondary sources disagree, the disagreement is reported rather than resolved.
+
+**Rust: editions, and no second major version.** Rust makes breaking changes through editions. An edition is chosen per crate, Rust's unit of compilation and distribution, and crates on different editions still link into one program. Commenters on the Lobsters forum read the editions policy as a stance that there will never be a Rust 2.0 [206]; that reading comes from a forum thread, not from a statement by the project. The current edition is 2024, stabilised in Rust 1.85. A 2027 edition is under discussion on the project's internals forum, where some participants expect it in 2028 instead; ranges are one candidate change, and nothing is decided [207]. The substantive direction for 2026 is the roadmap "The Borrow Checker Within" [208]. It plans to stabilise an alpha of Polonius, the next formulation of the borrow checker, in 2026, and leaves its full flow-sensitive form as future work. It also plans view types, which let a function declare the fields of a value that it touches, so that separate fields can be borrowed at once. A proposed 2026 experiment adds view types to the compiler for trials only, and their syntax is still debated [209]. Progress on these goals is reported on the Rust blog, for example for April 2026 [210]. Pattern types and linear types appear only in secondhand write-ups; the survey found no official 2026 goal for either.
+
+**Go: one compatibility promise.** There is no Go 2. The Go 1 compatibility promise stands, and the language changes inside it. Go 1.26, released in February 2026, brought a rewritten `go fix`, a new garbage collector, an expression form of `new()` and detection of leaked goroutines [211]. Go 1.27, released on 19 August 2026, added generic methods (methods with type parameters of their own), better type inference, a goroutine leak profile and experimental SIMD (single instruction, multiple data) operations [212, 213].
+
+**Zig: no 1.0 before stability can be promised.** Zig has not reached 1.0 and has no date for it. Its input and output were rebuilt around an `Io` interface that is passed in the way allocators are, so that the caller chooses threaded or evented execution, and the `async` and `await` keywords were removed [214, 215]. One blog reports version 0.16, with `std.Io`, in April 2026 [216]; other secondary sources disagree about version numbers, and the project's own site is the place to check them. A Lobsters discussion of the 2026 roadmap reports two pieces of work in progress: an x86 back end of Zig's own for debug builds, in place of LLVM, the compiler infrastructure that its other builds use, and incremental compilation [217]. According to a secondary report, Zig's creator, Andrew Kelley, holds that 1.0 ships when the project can credibly promise stability, and the estimates it collects range from late 2026 to 2027 [218].
+
+**Other languages.** Mojo 1.0 shipped on 11 August 2026 as part of Modular 26.5, and careful breaking changes remain possible after it [219]. One report says the compiler's source followed a week later under the Apache 2.0 licence with the LLVM exception [220]; that claim has a single source. Carbon is experimental and has no working toolchain. Adding a memory-safety design moved its 0.1 release to the end of 2026 at the earliest, a date the project itself calls "very ambitious" [221, 222]. C++26 was finalised in March 2026, according to Herb Sutter's trip report from the committee meeting, a single source for the details that follow: contracts and a hardened standard library shipped, safety profiles moved to C++29, and Safe C++, the proposal to add a borrow checker, was dropped [223]. For Gleam, Roc, Vale and Hylo the survey found only list articles [224], and nothing is drawn from them here.
+
+**Two shared patterns.** Each of these languages adds checked ownership in stages: Rust through Polonius and view types, Carbon through a safety design required before 0.1, and C++ through contracts now and profiles later. And each keeps code written for an earlier release compiling: Rust by editions that link together, Go by the Go 1 promise, Zig by withholding 1.0 until it can promise the same.
+
+**Position.** RCE takes the opposite side of the second pattern, by design, and keeps what the second pattern protects by other means.
+
+- *No edition, no version selection.* There is one language, the text of the specification at one commit (specification 2.7). The `# rce-version:` label selects nothing and is not hashed. A change that gives a valid program of an earlier release a different meaning is a new release with a new label, and a named release is never edited (specification C.15). A program that an earlier commit accepted may require change under a later one when a rule was added; the specification says so in its overview. An edition lets two dialects coexist in one program; the Form admits one.
+- *The change moves with the code it touches.* Instead of keeping old forms alive, a change to the text and every program, example and library module of the repository that it touches move in one commit, with a ledger row saying what changed and why ([§12.4](#124-how-the-language-grows-and-shrinks)).
+- *Compatibility is checked between two artefacts, not promised.* `rce api-diff` classifies every change of an export as compatible or breaking from a closed table (F.4.3); `rce equiv` decides whether two programs have the same behaviour over the explored alphabet ([§3.8](#38-behaviour-equivalence-and-dimension)); and `rce change` combines the two and classifies a change as an erratum, a meaning change or an interface change (specification 10.11, from the proposal `spec/proposals/one-commit-change.md`). The verdict holds to the explored bound, and T59 bounds what agreement to a depth shows.
+- *A program names what it was checked against.* `rce manifest` writes a manifest that pins every module by the hash of its canonical text and the standard library by the hash of its own manifest, and nothing resolves versions (F.5.3). A published definition is immutable; a correction is a new definition with a new hash. A program is therefore never upgraded silently.
+
+The trade is explicit. Go and Rust promise that code they do not own keeps compiling. RCE moves the code it does own and, for a program outside the repository, offers the pin, the release label that names one text, and the classification of each change, not a promise that the program is still accepted. The two designs are not ranked here; nothing in this paper measures the cost of either to the owners of outside programs.
+
+On the first pattern, the Form's position is narrower. The footprint of a statement, the set of place paths it reads and writes, is defined from the statement itself (specification C.3), and the branches of a `par` are admitted only when their footprints are disjoint (W-PAR-1). Rust's view types reach a similar end, separate parts of one value used at once, by a declaration in the function's signature; the Form needs none. Zig's caller-chosen `Io` resembles the Form's division of labour: the step is pure and total, the library performs input and output only through adapters, and the host chooses the fabric and logs each placement for replay ([§12.5](#125-the-library-and-the-compute-fabric)). In the sources surveyed, no roadmap makes a program's behaviour a checked, replayable object or compares two programs by what they do. That is a judgement on the roadmaps read, not a measured result, and it is the gap the equivalence check and replay (theorem T3) are built to fill.
 
 ## 13. Programme of work and its gates
 
@@ -1134,3 +1159,41 @@ Since the reviews, the six repositories that must agree with the specification �
 [204] StarPU project, StarPU Handbook: performance models and simulation with SimGrid, Inria. https://files.inria.fr/starpu/doc/html/
 
 [205] J. Spracklen, R. Wijewickrama, A. H. M. N. Sakib, A. Maiti, B. Viswanath and M. Jadliwala, "We Have a Package for You! A Comprehensive Analysis of Package Hallucinations by Code Generating LLMs," Proc. USENIX Security 2025.
+
+[206] Lobsters, discussion of "Announcing Rust 1.93.0" (forum comments). https://lobste.rs/s/l61c2k/announcing_rust_1_93_0
+
+[207] Rust internals forum, "We have only two years to prepare the Rust 2027 edition" (discussion thread). https://internals.rust-lang.org/t/we-have-only-two-years-to-prepare-the-rust-2027-edition/22494
+
+[208] Rust project goals, "The Borrow Checker Within," 2026 roadmap. https://rust-lang.github.io/rust-project-goals/2026/roadmap-borrow-checker-within.html
+
+[209] Rust project goals, "View types experiment," proposed 2026 goal. https://rust-lang.github.io/rust-project-goals/2026/view-types-experiment.html
+
+[210] Rust project, project goals update for April 2026, Rust Blog, 18 May 2026. https://blog.rust-lang.org/2026/05/18/project-goals-2026-04/
+
+[211] Go project, Go 1.26 release notes, February 2026. https://go.googlesource.com/website/+show/cd9f0a846a136f7b452395772638018114795f37/_content/doc/go1.26.md
+
+[212] Go project, Go 1.27 release announcement, The Go Blog, August 2026. https://go.dev/blog/go1.27
+
+[213] Go project, Go 1.27 release notes, August 2026. https://go.dev/doc/go1.27
+
+[214] Linux Weekly News (LWN.net), article on Zig's new asynchronous input and output design. https://lwn.net/Articles/1046084/
+
+[215] L. Cro, "Zig's New Async I/O," blog post. https://kristoff.it/blog/zig-new-async-io/
+
+[216] bokvi, "Zig in 2026," blog post. https://blog.bokvi.com/blog/zig-in-2026/
+
+[217] Lobsters, discussion of the Zig roadmap for 2026 (forum comments). https://lobste.rs/s/0szaso/zig_roadmap_2026
+
+[218] WebProNews, "Zig's Long Wait for 1.0: Andrew Kelley Demands Perfection Over Speed" (secondary report). https://www.webpronews.com/zigs-long-wait-for-1-0-andrew-kelley-demands-perfection-over-speed/
+
+[219] Modular, "Mojo 1.0 is here," Modular forum, August 2026. https://forum.modular.com/t/mojo-1-0-is-here/3391
+
+[220] iThome, report on the release of the Mojo compiler source, 2026 (single source). https://www.ithome.com.tw/news/178352
+
+[221] Carbon Language project, Roadmap. https://docs.carbon-lang.dev/docs/project/roadmap.html
+
+[222] Carbon Language project, Proposal 4880, "Safety milestones and a 2025 roadmap." https://docs.carbon-lang.dev/proposals/p004880-safety-milestones-and-a-2025-roadmap.html
+
+[223] H. Sutter, trip report on the March 2026 C++ standards meeting, Sutter's Mill, March 2026. https://herbsutter.com/2026/03/
+
+[224] DevPebble, "New programming languages" (list article). https://www.devpebble.com/blog/new-programming-languages/
