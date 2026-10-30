@@ -11,7 +11,7 @@ board_metered: false
 
 # The Price of the Unexamined Interface
 
-*Version 1.0, 11 October 2026. LaTeX PDF: [/pdfs/latex/interface-economics.pdf](/pdfs/latex/interface-economics.pdf) ([source](/pdfs/latex/interface-economics.tex)).*
+*{{revision}}. LaTeX PDF: [/pdfs/latex/interface-economics.pdf](/pdfs/latex/interface-economics.pdf) ([source](/pdfs/latex/interface-economics.tex)).*
 
 ## Abstract
 

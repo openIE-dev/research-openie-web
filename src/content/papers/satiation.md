@@ -13,7 +13,7 @@ board_metered: false
 
 # Task Satiation vs. Aggregate Rebound in AI Demand
 
-*Version 1.1, 11 October 2026. Data and code: [research.openie.dev/data/](/data/#economics). LaTeX PDF: [/pdfs/latex/satiation.pdf](/pdfs/latex/satiation.pdf) ([source](/pdfs/latex/satiation.tex)).*
+*{{revision}}. Data and code: [research.openie.dev/data/](/data/#economics). LaTeX PDF: [/pdfs/latex/satiation.pdf](/pdfs/latex/satiation.pdf) ([source](/pdfs/latex/satiation.tex)).*
 
 ## Abstract
 

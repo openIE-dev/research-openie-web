@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkInclude from './src/plugins/remark-include.mjs';
+import remarkRevision from './src/plugins/remark-revision.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -30,7 +31,7 @@ export default defineConfig({
   site: 'https://research.openie.dev',
   trailingSlash: 'ignore',
   markdown: {
-    remarkPlugins: [remarkInclude, remarkMath],
+    remarkPlugins: [remarkInclude, remarkRevision, remarkMath],
     rehypePlugins: [[rehypeKatex, { output: 'html' }], rehypeFigures],
   },
   vite: {

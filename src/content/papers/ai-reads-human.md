@@ -11,7 +11,7 @@ board_metered: false
 
 # "AI" Reads Human: Human Language Encoding at Machine Speed and the Energy Cost
 
-*Version 0.2 (work in progress), 18 October 2026. Data, code and read ledger: [research.openie.dev/living/ai-reads-human/](/living/ai-reads-human/). Shared terms: [glossary](/glossary/).*
+*Work in progress, {{revision}}. Data, code and read ledger: [research.openie.dev/living/ai-reads-human/](/living/ai-reads-human/). Shared terms: [glossary](/glossary/).*
 
 ## Abstract
 

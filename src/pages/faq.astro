@@ -6,9 +6,10 @@
 // Answers to critiques that are being measured carry a line <!-- RESULT: n --> where the measured
 // result is to be inserted.
 import Layout from '../layouts/Layout.astro';
+import { paperRevisionText } from '../lib/revision.mjs';
 
 const SOURCES: Record<string, string> = {
-  rce: 'The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming, version 1.24, 29 October 2026, research.openie.dev. <a href="/papers/rce/">/papers/rce/</a>',
+  rce: `The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming, ${paperRevisionText('rce')}, research.openie.dev. <a href="/papers/rce/">/papers/rce/</a>`,
   repo: 'openIE-dev/rce, public main at commit <code>8ce91cea</code> (29 October 2026): the specification (draft 0.9), the reference checker <code>rce</code> 0.1.0 and <code>lang/README.md</code>; tool output on this page is from a build of that commit. <a href="https://github.com/openIE-dev/rce">github.com/openIE-dev/rce</a>',
   jepa: 'RCE-JEPA: Autonomous Deterministic Coding using Latent Space, research paper, research.openie.dev, with its Status section of 24 October 2026. <a href="/papers/rce-jepa/">/papers/rce-jepa/</a>',
   bai: 'L. Bai, Z. Huang and X. Wang, "How Do AI Agents Spend Your Money? Analyzing and Predicting Token Consumption in Agentic Coding Tasks," 2026. <a href="https://arxiv.org/abs/2604.22750">arXiv:2604.22750</a>',
@@ -154,7 +155,7 @@ const parts: Part[] = [
 <li><strong>A model as proposer.</strong> A local model with 1.5 billion parameters made 18 proposals of rewrites, 13 of them distinct; the gate did not admit 15, and the 3 it admitted are one rewrite under three names that repeats a rule the engine already had [[rce]].</li>
 </ul>` },
       { id: 'withdrawn', q: 'Which earlier results are withdrawn?', a: `
-<p>Version 1.23 of the RCE paper withdrew every result that only the non-public engine produced, until each is rebuilt on public code with a sealed registration and one command that reproduces it: among them the run on 10,000 generated Forms, the repair rates on the two smallest rungs of the repair ladder, the model checking of the engine's kernel with its check counts, the lift's agreement on four languages, and the test counts at an engine commit [[rce]]. Figures from earlier slides or decks that quote those results are not current claims.</p>` },
+<p>On 27 October 2026 the RCE paper withdrew every result that only the non-public engine produced, until each is rebuilt on public code with a sealed registration and one command that reproduces it: among them the run on 10,000 generated Forms, the repair rates on the two smallest rungs of the repair ladder, the model checking of the engine's kernel with its check counts, the lift's agreement on four languages, and the test counts at an engine commit [[rce]]. Figures from earlier slides or decks that quote those results are not current claims.</p>` },
     ],
   },
   {

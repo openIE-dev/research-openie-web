@@ -2,6 +2,7 @@
 // Convergence by commitment for /about/rce-jepa. Every [C] source was fetched and checked against
 // the claim it supports; the claim ledger is kept with the research notes (2026-10-14).
 // Items from the same organization as the RCE project are labelled "same house" and are not evidence.
+import { paperRevisionText } from '../lib/revision.mjs';
 const tbl = "w-full text-xs border-collapse [&_td]:border [&_th]:border [&_td]:border-brand-border [&_th]:border-brand-border [&_td]:p-2 [&_th]:p-2 [&_th]:text-left [&_th]:text-brand-white [&_td]:align-top";
 ---
 <h2 id="convergence-commitments">Convergence by commitment</h2>
@@ -103,7 +104,7 @@ const tbl = "w-full text-xs border-collapse [&_td]:border [&_th]:border [&_td]:b
   </tbody></table></div>
 
 <h3 id="cc-rce">What the RCE paper states (OpenIE's own work)</h3>
-<p>The following are from <a href="https://research.openie.dev/papers/rce/">the RCE paper</a> (version 1.24). They are listed here as the project's own work, not as a comparison with the projects above.</p>
+<p>The following are from <a href="https://research.openie.dev/papers/rce/">the RCE paper</a> ({paperRevisionText('rce')}). They are listed here as the project's own work, not as a comparison with the projects above.</p>
 <ul>
   <li><strong>Canonical form.</strong> The canonical serialization is injective on Forms, so two Forms that differ have different shape hashes. Equivalence of behaviour is defined separately (fit equivalence), and in the engine's design equivalent variants are grouped by sound rewrites in an e-graph; the paper does not claim that equivalent behaviour always yields one canonical form.</li>
   <li><strong>Proofs.</strong> Determinism, totality, replay as a fold of the log, and atomicity of a kept step (an event that does not apply keeps the state) are proved in Lean 4 on a core calculus. The Rust program emitter is proved on a core as a verified translation into MiniRust, a deep embedding of the emitted Rust subset; that the Rust compiler implements MiniRust is trusted and tested. This proof covers the program emitter, not the Form projection.</li>

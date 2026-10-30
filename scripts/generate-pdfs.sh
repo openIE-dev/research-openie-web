@@ -5,6 +5,12 @@
 # product white papers) plus the existing paper header.
 # Run pnpm build first.
 #
+# Each PDF is stamped in public/pdfs/stamps.json with the SHA-256 of the page
+# it printed. `generate-pdfs.sh --stale` (run at the end of `pnpm build`)
+# prepares every page, regenerates only the PDFs whose page changed since
+# their stamp, and copies them into dist/pdfs/, so a deployed PDF never
+# lags its page. With no browser and no weasyprint it fails, naming them.
+#
 # Math layout: the built HTML is KaTeX markup from the katex copy that
 # rehype-katex bundles. Its stylesheet must come from that same copy; a
 # stylesheet from a different KaTeX version misplaces fractions, sub- and
@@ -56,7 +62,23 @@ table:has(th:nth-child(6)) { font-size: 0.8em; }
 img, svg, video { max-width: 100%; height: auto; }
 CSS
 
-CHROME="${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
+STALE_ONLY=0
+[[ "${1:-}" == "--stale" ]] && STALE_ONLY=1
+STAMPS="$OUT/stamps.json"
+[[ -f "$STAMPS" ]] || echo '{}' > "$STAMPS"
+
+# The browser: $CHROME, else Google Chrome on macOS, else a Chromium on PATH
+# or the Playwright copy under /opt/pw-browsers.
+if [[ -z "${CHROME:-}" ]]; then
+  for c in "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+           "$(command -v google-chrome 2>/dev/null || true)" \
+           "$(command -v chromium 2>/dev/null || true)" \
+           /opt/pw-browsers/chromium-*/chrome-linux/chrome; do
+    if [[ -n "$c" && -x "$c" ]]; then CHROME="$c"; break; fi
+  done
+fi
+CHROME="${CHROME:-}"
+WEASY="$(command -v weasyprint 2>/dev/null || echo /opt/homebrew/bin/weasyprint)"
 
 # KaTeX stylesheet matching the katex version rehype-katex renders with.
 KATEX_CSS="$(python3 - "$ROOT" << 'PY'
@@ -236,23 +258,39 @@ doc = (
     + "\n</body>\n</html>\n"
 )
 Path(out).write_text(doc)
-print("prepared " + out)
+# The stamp: the page as printed, with this checkout's absolute paths removed.
+import hashlib
+root = str(Path(src).resolve().parents[3])
+digest = hashlib.sha256(doc.replace(root, "").replace(str(Path(katex_css).resolve().parent), "").encode()).hexdigest()
+Path(out + ".sha256").write_text(digest)
 PY
 
-  if [[ -x "$CHROME" ]]; then
-    "$CHROME" --headless=new --disable-gpu --no-pdf-header-footer \
+  local digest; digest="$(cat "$html.sha256")"
+  local stamped; stamped="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get(sys.argv[2], ""))' "$STAMPS" "$id")"
+  if [[ "$STALE_ONLY" == 1 && "$digest" == "$stamped" && -f "$pdf" ]]; then
+    return 0
+  fi
+  echo "printing $id.pdf"
+  if [[ -n "$CHROME" && -x "$CHROME" ]]; then
+    "$CHROME" --headless=new --disable-gpu --no-pdf-header-footer $( [[ $EUID == 0 ]] && echo --no-sandbox ) \
       --allow-file-access-from-files --run-all-compositor-stages-before-draw \
       --virtual-time-budget=15000 --print-to-pdf="$pdf" "file://$html" \
       2> "$ROOT/.pdf-build/${id}.chrome.log" || { cat "$ROOT/.pdf-build/${id}.chrome.log" >&2; exit 1; }
   else
-    echo "Chrome not found at $CHROME; falling back to weasyprint" >&2
-    /opt/homebrew/bin/weasyprint "$html" "$pdf"
+    if [[ ! -x "$WEASY" ]]; then
+      echo "$id.pdf is out of date with its page and neither Chrome nor weasyprint is installed" >&2
+      exit 1
+    fi
+    echo "Chrome not found; falling back to weasyprint" >&2
+    "$WEASY" "$html" "$pdf"
   fi
-  ls -la "$pdf"
-  file "$pdf"
+  python3 -c 'import json,sys; p=sys.argv[1]; d=json.load(open(p)); d[sys.argv[2]]=sys.argv[3]; json.dump(d,open(p,"w"),indent=1,sort_keys=True); open(p,"a").write("\n")' "$STAMPS" "$id" "$digest"
+  if [[ -d "$ROOT/dist/pdfs" ]]; then cp "$pdf" "$ROOT/dist/pdfs/"; fi
+  PRINTED="$PRINTED $id"
 }
 
 
+PRINTED=""
 gen_one agency
 gen_one gates
 gen_one satiation
@@ -265,10 +303,13 @@ gen_one latency
 gen_one interface-economics
 gen_one ai-coding-market
 gen_one ai-reads-human
-cp public/pdfs/ai-coding-market.pdf public/pdfs/rce-economics.pdf
+cp "$OUT/ai-coding-market.pdf" "$OUT/rce-economics.pdf"
 gen_one mei products
 gen_one jouleos products
 # Earlier addresses: Notational Intelligence and Mixture of Limits are Parts I and II of gates.
 cp "$OUT/gates.pdf" "$OUT/ni.pdf"
 cp "$OUT/gates.pdf" "$OUT/mol.pdf"
-echo 'PDF generation complete'
+if [[ -d "$ROOT/dist/pdfs" ]]; then
+  cp "$OUT/rce-economics.pdf" "$OUT/ni.pdf" "$OUT/mol.pdf" "$ROOT/dist/pdfs/"
+fi
+echo "PDFs printed:${PRINTED:- none, every PDF matches its page}"

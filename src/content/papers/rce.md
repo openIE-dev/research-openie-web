@@ -11,7 +11,7 @@ board_metered: false
 
 # The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming
 
-*Version 1.24, 29 October 2026. Specification: [current draft (draft 0.9)](/rce/spec/), from [openIE-dev/rce](https://github.com/openIE-dev/rce); the counts of the checks run in [§3.7](#37-the-language-one-text-costs-and-theorem-status) are at the public commits named there, and those at `e416fd0` are recorded in [`src/data/rce-facts.json`](https://github.com/openIE-dev/research-openie-web/blob/dcharlot65-openie/src/data/rce-facts.json). Data and code: [research.openie.dev/data/](/data/#rce). Playground (reference checker): [openie-dev.github.io/rce](https://openie-dev.github.io/rce/).*
+*{{revision}}. Specification: [current draft (draft 0.9)](/rce/spec/), from [openIE-dev/rce](https://github.com/openIE-dev/rce); the counts of the checks run in [§3.7](#37-the-language-one-text-costs-and-theorem-status) are at the public commits named there, and those at `e416fd0` are recorded in [`src/data/rce-facts.json`](https://github.com/openIE-dev/research-openie-web/blob/main/src/data/rce-facts.json). Data and code: [research.openie.dev/data/](/data/#rce). Playground (reference checker): [openie-dev.github.io/rce](https://openie-dev.github.io/rce/).*
 
 ## Abstract
 
