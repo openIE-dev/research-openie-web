@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title={"The Pursuit of AGI Resolves the Three-Body Problem in Computing"}
+  description={"About: The Pursuit of AGI Resolves the Three-Body Problem in Computing. Large engineering failures often start where one group hands work to another and an assumption is never written down."}
+>
+  <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
+    <p class="section-label mb-4">Research paper · about</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
+      The Pursuit of AGI Resolves the Three-Body Problem in Computing
+    </h1>
+    <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
+      AGI means artificial general intelligence, a machine able to do most intellectual work a person can. Large engineering failures often start where one group hands work to another and an assumption is never written down. This paper defines those handoffs, states when checking them makes a system stable, and gives tests that could prove it wrong.
+    </p>
+    <div class="mt-8 glass-card p-6">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">In plain words</p>
+      <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
+        <li>Most big computer failures happen at the handoff between teams or parts, not inside them.</li>
+        <li>The cause is usually a guess nobody wrote down, like which units a number is in.</li>
+        <li>If every such guess is written down and checked by a machine, a fix made in one place stays fixed and does not break anything above it.</li>
+      </ol>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/papers/three-body/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
+        Read → /papers/three-body/
+      </a>
+      <a href="/pdfs/three-body.pdf" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors" download>
+        Download PDF
+      </a>
+      <a href="/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">
+        ← Catalog
+      </a>
+    </div>
+  </section>
+</Layout>

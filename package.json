@@ -4,13 +4,21 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/i18n/guard.mjs src && node scripts/lint-private.mjs src && node scripts/lint-claims.mjs && astro build --force && node scripts/lint-order.mjs && node scripts/lint-private.mjs dist && node scripts/i18n/guard.mjs dist",
+    "lint:claims": "node scripts/lint-claims.mjs",
+    "lint:order": "node scripts/lint-order.mjs",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint:private": "node scripts/lint-private.mjs src",
+    "test:guard": "node --test scripts/lint-private.test.mjs scripts/i18n/guard.test.mjs",
+    "guard:i18n": "node scripts/i18n/guard.mjs src && node scripts/i18n/guard.mjs dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.15",
+    "katex": "0.16.47",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
     "tailwindcss": "^4.1.18"
   },
   "pnpm": {

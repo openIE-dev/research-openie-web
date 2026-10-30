@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="t d"><title id="t">Price of a fixed level of capability</title><desc id="d">Log-scale chart of price per million tokens at fixed capability. An a16z estimate falls from 60 dollars in 2021 to 0.06 dollars in 2024, about ten times a year. A dashed Epoch AI slope of about thirteen times a year since 2023 is drawn indexed to ten dollars in 2023.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="638" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Price of a fixed level of capability</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Log scale. Endpoints as printed by the sources; lines are the stated rates, not fitted data.</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<line x1="150.0" y1="520.0" x2="1050.0" y2="520.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="138.0" y="525.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">$0.01</text>
+<line x1="150.0" y1="425.0" x2="1050.0" y2="425.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="138.0" y="430.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">$0.1</text>
+<line x1="150.0" y1="330.0" x2="1050.0" y2="330.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="138.0" y="335.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">$1</text>
+<line x1="150.0" y1="235.0" x2="1050.0" y2="235.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="138.0" y="240.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">$10</text>
+<line x1="150.0" y1="140.0" x2="1050.0" y2="140.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="138.0" y="145.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">$100</text>
+<text x="208.1" y="548.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">2021</text>
+<text x="353.2" y="548.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">2022</text>
+<text x="498.4" y="548.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">2023</text>
+<text x="643.5" y="548.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">2024</text>
+<text x="788.7" y="548.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">2025</text>
+<text x="933.9" y="548.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#475569" text-anchor="middle">2026</text>
+<text x="40.0" y="120.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#475569" text-anchor="start">dollars per million tokens</text>
+<path d="M208.06451612904505 161.07563121355383 L643.5483870967837 446.07563121355383" stroke="#CC79A7" stroke-width="4" fill="none" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M208.06451612904505 148.07563121355383 L219.06451612904505 161.07563121355383 L208.06451612904505 174.07563121355383 L197.06451612904505 161.07563121355383 Z" stroke="#ffffff" stroke-width="2" fill="#CC79A7" fill-opacity="1" stroke-linejoin="round"/>
+<text x="224.1" y="151.1" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">$60 (2021)</text>
+<path d="M643.5483870967837 433.07563121355383 L654.5483870967837 446.07563121355383 L643.5483870967837 459.07563121355383 L632.5483870967837 446.07563121355383 Z" stroke="#ffffff" stroke-width="2" fill="#CC79A7" fill-opacity="1" stroke-linejoin="round"/>
+<text x="659.5" y="452.1" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">$0.06 at equivalent performance</text>
+<text x="222.6" y="373.3" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#CC79A7" text-anchor="start">about 10 times cheaper a year (a16z [20], estimate)</text>
+<path d="M498.38709677420417 235.0 L889.3260705253512 520.0" stroke="#0072B2" stroke-width="4" fill="none" fill-opacity="1" stroke-dasharray="10 6" stroke-linejoin="round"/>
+<text x="643.5" y="252.7" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0072B2" text-anchor="start">about 13 times a year since 2023 (Epoch AI [4])</text>
+<text x="643.5" y="274.7" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">indexed to $10 in 2023; slope only</text>
+<text x="150.0" y="590.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">Epoch AI [34] finds the fall ranges from 9 to 900 times a year by milestone, fastest where most recent and least certain to persist.</text></svg>

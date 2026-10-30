@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="t d"><title id="t">Peak tensor FLOP/s per watt of leading accelerators</title><desc id="d">Scatter on a log axis of peak tensor operations per watt for twelve accelerators from 2016 to 2024 with a dashed fit of about 1.4 times per year.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="638" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Peak tensor FLOP/s per watt of leading accelerators</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Epoch AI hardware dataset (vendor peak specifications). Log scale. Line = fit to these 12 points.</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<line x1="130.0" y1="468.7" x2="1090.0" y2="468.7" stroke="#e2e8f0" stroke-width="1"/>
+<text x="120.0" y="473.7" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">1e11</text>
+<line x1="130.0" y1="286.1" x2="1090.0" y2="286.1" stroke="#e2e8f0" stroke-width="1"/>
+<text x="120.0" y="291.1" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">1e12</text>
+<text x="130.0" y="584.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2016</text>
+<text x="236.7" y="584.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2017</text>
+<text x="343.3" y="584.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2018</text>
+<text x="450.0" y="584.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2019</text>
+<text x="556.7" y="584.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2020</text>
+<text x="663.3" y="584.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2021</text>
+<text x="770.0" y="584.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2022</text>
+<text x="876.7" y="584.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2023</text>
+<text x="983.3" y="584.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2024</text>
+<text x="1090.0" y="584.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2025</text>
+<circle cx="157.8" cy="491.7" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<text x="157.8" y="477.7" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">P100</text>
+<circle cx="272.2" cy="430.9" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<text x="272.2" y="416.9" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Google TPU v2</text>
+<circle cx="368.7" cy="355.5" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<text x="368.7" y="383.5" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Tesla V100 SXM2 32 GB</text>
+<circle cx="383.9" cy="332.2" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<text x="383.9" y="318.2" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Google TPU v3</text>
+<circle cx="556.7" cy="304.9" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<text x="556.7" y="290.9" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Google TPU v4i</text>
+<circle cx="649.9" cy="305.8" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<text x="649.9" y="333.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">A100 SXM4 80 GB</text>
+<circle cx="704.4" cy="247.8" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<text x="704.4" y="233.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Google TPU v4</text>
+<circle cx="846.7" cy="258.8" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<text x="846.7" y="244.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">H100 SXM5 80GB</text>
+<circle cx="947.1" cy="258.8" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<text x="947.1" y="286.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="middle">Google TPU v5e</text>
+<circle cx="1006.1" cy="213.4" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<circle cx="1006.1" cy="221.8" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<circle cx="1028.1" cy="228.0" r="8" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<path d="M130.0 442.1 L1090.0 192.4" stroke="#D55E00" stroke-width="3" fill="none" fill-opacity="1" stroke-dasharray="8 6" stroke-linejoin="round"/>
+<text x="992.1" y="209.4" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#0f172a" text-anchor="end">B100, B200, GB200 NVL2</text>
+<text x="150.0" y="170.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#D55E00" text-anchor="start">Fit: about 1.42x per year (n = 12)</text>
+<text x="40.0" y="610.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Peak specifications are not delivered energy per task. Utilization, memory traffic and software decide the delivered figure.</text></svg>

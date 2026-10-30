@@ -1,0 +1,75 @@
+name,country,power_mw,h100_equivalents,capital_cost_usd_bn_2025,usd_per_h100e,watts_per_h100e
+Google Kansas City East,United States,105.0,202628,3.978,19630,518
+Google Pryor (North),United States,368.0,636685,13.941,21896,578
+Google Mesa,United States,183.0,289540,6.932,23943,632
+Google Waltham Cross,United Kingdom,88.0,123800,3.334,26927,711
+Google Arcola,United States,77.0,108135,2.917,26975,712
+Google Red Oak,United States,77.0,108135,2.917,26975,712
+Google Lincoln,United States,141.0,197575,5.341,27035,714
+Anthropic Lake Mariner,United States,42.0,58565,1.591,27167,717
+Google Midlothian,United States,103.0,143581,3.902,27175,717
+CoreWeave Ellendale ND,United States,68.0,93482,2.576,27556,727
+Core42 Lake Mariner,United States,58.0,71753,2.197,30621,808
+DayOne Nusajaya,Malaysia,473.0,583837,17.918,30690,810
+QTS Richmond 3,United States,144.0,174836,5.455,31201,824
+CoreWeave Marble NC,United States,65.0,78828,2.462,31237,825
+Meta Rosemount,United States,178.0,215675,6.743,31265,825
+OpenAI Stargate Abilene,United States,421.0,509348,15.948,31311,827
+Vantage TX1,United States,32.0,38706,1.212,31318,827
+CoreWeave Norway,Norway,42.0,50773,1.591,31336,827
+Microsoft Fairwater Atlanta,United States,636.0,768769,24.093,31340,827
+Coreweave Helios,United States,132.0,159552,5.0,31340,827
+Microsoft Fairwater Wisconsin,United States,369.0,445680,13.978,31364,828
+Colossus 2,United States,946.0,1111673,35.836,32236,851
+Oracle Batam,Indonesia,72.0,84386,2.728,32322,853
+CoreWeave Dalton 1 & 2,United States,28.0,32239,1.061,32902,869
+Meta Sarpy,United States,80.0,91966,3.031,32953,870
+Meta Gallatin,United States,87.0,99545,3.296,33108,874
+Meta Los Lunas,United States,87.0,99545,3.296,33108,874
+Meta Huntsville,United States,146.0,166761,5.531,33166,876
+Meta Jeffersonville,United States,178.0,203133,6.743,33195,876
+Meta Montgomery,United States,153.0,174517,5.796,33211,877
+DayOne Kempas,Malaysia,421.7,480639,15.975,33236,877
+Meta Kuna,United States,152.0,173248,5.758,33236,877
+Nscale Keflavik,Iceland,5.1,5821,0.194,33254,878
+Meta Prometheus,United States,471.0,536343,17.842,33267,878
+Google The Dalles,United States,154.0,175341,5.834,33271,878
+Meta Eagle Mountain,United States,133.0,151354,5.038,33288,879
+Meta Temple,United States,178.0,202473,6.743,33303,879
+Meta Cheyenne,United States,152.0,172815,5.758,33319,880
+Microsoft-Nebius New Jersey,United States,50.0,56847,1.894,33319,880
+Meta Aiken,United States,69.0,78322,2.614,33373,881
+Southgate Melbourne,Australia,41.0,46488,1.553,33410,882
+Google Columbus,United States,303.0,331986,11.478,34575,913
+Google Council Bluffs (East),United States,237.0,255685,8.978,35114,927
+CoreWeave Chester VA,United States,82.0,88428,3.106,35128,927
+QTS Richmond 1,United States,238.0,242547,9.016,37172,981
+QTS Richmond 2,United States,180.0,182921,6.819,37277,984
+Microsoft Goodyear,United States,202.0,205154,7.652,37300,985
+Google New Albany,United States,333.0,323901,12.615,38946,1028
+Start Campus Sines Data Campus,Portugal,33.0,31834,1.25,39269,1037
+CoreWeave Denton TX,United States,262.0,252653,9.925,39283,1037
+Microsoft SAT14,United States,47.0,45174,1.78,39413,1040
+Google Lancaster,United States,137.0,130369,5.19,39809,1051
+AWS New Albany,United States,213.0,201112,8.069,40121,1059
+Bridge Data Centres MY06,Malaysia,243.0,221052,9.205,41643,1099
+Google Bristow,United States,238.0,209861,9.016,42961,1134
+Microsoft SAT40,United States,75.0,64679,2.841,43927,1160
+Google Omaha,United States,237.0,198585,8.978,45210,1193
+Google Storey County,United States,161.0,133906,6.099,45547,1202
+Microsoft Project Osmium,United States,190.0,155634,7.198,46247,1221
+Colossus 1,United States,340.0,275796,12.88,46701,1233
+Amazon Madison Mega Site,United States,284.0,214348,10.758,50192,1325
+Anthropic-Amazon New Carlisle,United States,910.0,685912,34.473,50258,1327
+AWS Berwick,United States,108.0,81354,4.091,50289,1328
+Amazon Ridgeland,United States,228.0,171299,8.637,50421,1331
+Stream Phoenix,United States,64.0,46134,2.424,52552,1387
+STACK Infrastructure NVA02,United States,85.0,61142,3.22,52664,1390
+Meta-QTS Hillsboro 2,United States,180.0,123839,6.819,55061,1454
+xAI QTS Atlanta,United States,17.3,11470,0.656,57233,1511
+Nebius Mantsala,Finland,75.0,48528,2.841,58547,1546
+VNET Bayin Ulanqab,China,221.0,122789,8.372,68181,1800
+Huawei Wuhu,China,157.0,76326,5.947,77922,2057
+Huawei Horinger,China,184.3,89439,6.982,78060,2061
+Google Papillion,United States,237.0,100556,8.978,89284,2357
+Alibaba Zhangbei,China,169.0,31885,6.402,200787,5300

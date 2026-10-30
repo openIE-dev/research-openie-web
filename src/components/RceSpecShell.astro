@@ -1,0 +1,58 @@
+---
+// Notebook-style shell for the RCE language spec pages (/rce/spec/).
+// Content comes from spec-src/rce/spec.json, generated from the spec book by
+// spec-src/rce/gen.mjs; this file only lays it out.
+import Layout from '../layouts/Layout.astro';
+import data from '../../spec-src/rce/spec.json';
+import facts from '../data/rce-facts.json';
+
+interface Props {
+  title: string;
+  description: string;
+  current: string;
+  sections?: { id: string; title: string | null }[];
+}
+const { title, description, current, sections = [] } = Astro.props;
+const B = '/rce/spec/';
+const pages = [
+  { slug: '', label: 'Index', num: '' },
+  ...data.chapters.map((c: any) => ({ slug: c.slug, label: c.title.replace(/^\d+(\s*\(continued\))?\.\s*/, ''), num: c.num })),
+  { slug: 'examples', label: 'All example programs', num: '' },
+  { slug: 'read-protocol', label: 'Read protocol', num: '' },
+];
+---
+<Layout title={title} description={description}>
+  <link slot="head" rel="stylesheet" href="/rce/spec/notebook.css" />
+  <script is:inline slot="head" type="application/json" id="rce-keywords" set:html={JSON.stringify(data.keywords)} />
+  <a href="#rs-content" class="sr-only focus:not-sr-only">Skip to content</a>
+  <div class="rs-wrap">
+    <nav class="rs-toc" aria-label="Spec chapters">
+      <details id="rs-toc-d">
+        <summary>Chapters</summary>
+        <ol>
+          {pages.map((p) => (
+            <li>
+              <a href={B + (p.slug ? p.slug + '/' : '')} aria-current={p.slug === current ? 'page' : undefined}>
+                {p.num && <span class="rs-num">{p.num}</span>}{p.label}
+              </a>
+              {p.slug === current && sections.filter((s) => s.title).length > 0 && (
+                <ol aria-label="Sections on this page">
+                  {sections.filter((s) => s.title).map((s) => <li><a href={'#' + s.id}>{s.title}</a></li>)}
+                </ol>
+              )}
+            </li>
+          ))}
+        </ol>
+      </details>
+    </nav>
+    <div class="rs-main" id="rs-content">
+      <p class="rs-kicker">RCE language specification, draft {facts.spec_notebook_draft}</p>
+      <slot />
+      <p class="tts-status" style="margin-top:3rem">
+        Built from spec commit <code>{data.commit}</code>. Code cells run the reference checker <code>rce-check</code>, written in Rust and compiled to WebAssembly, inside your browser; nothing is sent to a server. Read-aloud uses the Kokoro-82M model (Apache-2.0), served from this site and run in your browser.
+      </p>
+    </div>
+  </div>
+  <script is:inline>(function(){var d=document.getElementById("rs-toc-d");if(d&&window.matchMedia("(min-width: 1000px)").matches)d.open=true;})();</script>
+  <script is:inline type="module" src="/rce/spec/notebook.js"></script>
+</Layout>

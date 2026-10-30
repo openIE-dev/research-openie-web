@@ -1,0 +1,22 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/ai-coding-market.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description="The economics companion to the Reality Code Engine paper: who projects the trillion dollar AI coding market, what the projections assume, and where they break when a low-entropy path exists."
+  headings={headings}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Economics essay"
+>
+  <Content />
+</PaperLayout>

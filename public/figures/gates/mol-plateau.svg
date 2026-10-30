@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="t d"><title id="t">Mixture of Limits: escalate to the floor, then stop</title><desc id="d">Diagram of verified progress against spend for one task. Progress rises in steps as the cascade escalates from Lookup to Formula to Solver; the Solver closes the task, marking the floor. Past the floor the Model stage adds spend with no further verified progress, the plateau where value of information is zero.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="618" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Mixture of Limits: escalate to the floor, then stop</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Verified progress against spend for one task. The plateau begins where value of information reaches zero.</text>
+<rect x="1072.5" y="26" width="87.5" height="34" rx="17" fill="none" stroke="#CC79A7" stroke-width="2"/>
+<text x="1116.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#CC79A7" text-anchor="middle">Diagram</text>
+<line x1="120.0" y1="500.0" x2="1080.0" y2="500.0" stroke="#0f172a" stroke-width="3" marker-end="url(#ah)"/>
+<line x1="120.0" y1="500.0" x2="120.0" y2="140.0" stroke="#0f172a" stroke-width="3" marker-end="url(#ah)"/>
+<text x="1080.0" y="534.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="end">spend (joules, log scale)</text>
+<text x="100.0" y="320.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="middle" transform="rotate(-90 100 320.0)">verified progress</text>
+<rect x="120.0" y="486.0" width="160.0" height="14.0" rx="0" fill="#0072B2" stroke="none" stroke-width="2" opacity="0.8"/>
+<text x="200.0" y="476.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="middle">Lookup</text>
+<rect x="280.0" y="486.0" width="170.0" height="14.0" rx="0" fill="#009E73" stroke="none" stroke-width="2" opacity="0.8"/>
+<text x="365.0" y="476.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="middle">Formula</text>
+<rect x="450.0" y="486.0" width="190.0" height="14.0" rx="0" fill="#E69F00" stroke="none" stroke-width="2" opacity="0.8"/>
+<text x="545.0" y="476.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="middle">Solver</text>
+<rect x="640.0" y="486.0" width="440.0" height="14.0" rx="0" fill="#D55E00" stroke="none" stroke-width="2" opacity="0.8"/>
+<text x="860.0" y="476.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="middle">Model</text>
+<path d="M120 500 L120 386.6 L280 386.6 L280 299.12 L450 299.12 L450 176.0 L640 176.0 L640 176.0 L1080 176.0" stroke="#0f172a" stroke-width="4" fill="none" fill-opacity="1" stroke-linejoin="round"/>
+<line x1="640.0" y1="160.0" x2="640.0" y2="500.0" stroke="#D55E00" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="650.0" y="180.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#D55E00" text-anchor="start">floor: least spend that closes the task</text>
+<text x="680.0" y="162.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#475569" text-anchor="start">plateau: VoI zero past the floor; more tokens buy nothing verifiable</text>
+<text x="120.0" y="560.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">Shown for a task the Solver closes; a task Lookup closes stops at the first step. Refuse is a lawful stop when escalation is VoI negative.</text></svg>

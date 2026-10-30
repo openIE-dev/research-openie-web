@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title={"RCE-JEPA: Autonomous Deterministic Coding using Latent Space"}
+  description={"About: RCE-JEPA: Autonomous Deterministic Coding using Latent Space. RCE is the Reality Code Engine, a deterministic programming system in which every program has one fixed, checkable shape. JEPA is a Joint Embedding Predictive Architecture, a kind of learned model that predicts a compact summary of the answer instead of writing the answer out word by word. Latent sp"}
+>
+  <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
+    <p class="section-label mb-4">Research paper · about</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
+      RCE-JEPA: Autonomous Deterministic Coding using Latent Space
+    </h1>
+    <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
+      RCE is the Reality Code Engine, a deterministic programming system in which every program has one fixed, checkable shape. JEPA is a Joint Embedding Predictive Architecture, a kind of learned model that predicts a compact summary of the answer instead of writing the answer out word by word. Latent space is the space of those learned summaries: a list of numbers that keeps what matters about a program and drops surface detail. This topic asks whether software can be written autonomously by having a learned model propose programs in that closed, deterministic shape while a deterministic checker, not the model, decides what is accepted, with the best performance per clock cycle and per joule as the goal. Its thesis is that coding today resembles mechanics before Newton, rich in observation and craft but without rules that predict behaviour and cost in advance, and that a finite, deterministic, compressed program form makes such rules possible to state and test.
+    </p>
+    <div class="mt-8 glass-card p-6">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">What it claims and what it does not</p>
+      <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
+        <li>It states a thesis, thirteen hypotheses (H1 to H13), five falsifiers (RJ-F1 to RJ-F5) and a programme of work in phases 0 to 5, with the Phase 0 results that need no learned proposer: the Form corpus, the name-free Form space, the determinism streams and the adversarial Forms.</li>
+        <li>It reports no result for a learned proposer: no model has been trained and no hypothesis that needs one has been tested.</li>
+        <li>The model only proposes and the checker decides; nothing on the page depends on a model being right.</li>
+      </ol>
+    </div>
+
+    <figure class="mt-10 glass-card p-4 fig">
+      <a class="fig-zoom" href="/figures/rce-jepa/architecture.svg" aria-label="Enlarge figure"><picture><source type="image/svg+xml" srcset="/figures/rce-jepa/architecture.svg" /><img src="/figures/rce-jepa/architecture.png" alt="The proposed RCE-JEPA pipeline: intent to a latent point, decoded to candidate Forms, each admitted by the checker or reported as requiring change." loading="lazy" /></picture></a>
+      <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">The proposed pipeline. A learned predictor maps stated intent to a point in latent space; a decoder turns that point into candidate Forms; the checker admits each one or reports that it requires change, naming the rule.</figcaption>
+    </figure>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/papers/rce-jepa/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
+        Read → /papers/rce-jepa/
+      </a>
+      <a href="/pdfs/rce-jepa.pdf" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors" download>
+        Download PDF
+      </a>
+      <a href="/about/rce/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">
+        Reality Code Engine →
+      </a>
+    </div>
+  </section>
+</Layout>

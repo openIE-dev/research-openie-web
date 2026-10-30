@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1010" viewBox="0 0 1200 1010" role="img" aria-labelledby="t d"><title id="t">Code is reused at every scale</title><desc id="d">Five small panels, each with its own unit. Lopes et al. 2017: of 428 million files in 4.5 million non-fork GitHub projects, 85 million are unique, with the quotation that 70% of the code on GitHub consists of clones of previously created files. Gabel and Su 2010: between 50% and 100% of each project is redundant at about one line, against 420 million lines. The Stack: near-deduplication removes 54.7% of v1, 6.4 TB to 2.9 TB, and 52.4% of v2, 67.5 TB to 32.1 TB. Software Heritage: 30.3 billion unique file contents from 448 million origins, archive counters read 13 October 2026, each stored once by the hash of its bytes. PAR found several common fix patterns in more than 60,000 human patches; TBar fixes 43 Defects4J bugs correctly in the standard pipeline and 74 of 101 with perfect fault localization.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="1008" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Code is reused at every scale</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Five measures from Section 7. Each panel has its own unit and scale; the panels are not comparable with each other.</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<rect x="40.0" y="120.0" width="545.0" height="270.0" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" opacity="1"/>
+<text x="60.0" y="152.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="800" fill="#0f172a" text-anchor="start">File-level clone mapping</text>
+<text x="60.0" y="176.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#475569" text-anchor="start">DéjàVu, Lopes et al. 2017 [33]</text>
+<text x="60.0" y="230.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">all files</text>
+<rect x="170.0" y="206.0" width="275.0" height="34.0" rx="5" fill="#94a3b8" stroke="none" stroke-width="2" opacity="1"/>
+<text x="453.0" y="230.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="start">428 million</text>
+<text x="60.0" y="282.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">unique files</text>
+<rect x="170.0" y="258.0" width="54.6" height="34.0" rx="5" fill="#0072B2" stroke="none" stroke-width="2" opacity="1"/>
+<text x="232.6" y="282.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="start">85 million</text>
+<text x="60.0" y="332.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">in 4.5 million non-fork GitHub projects</text>
+<text x="60.0" y="358.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#0f172a" text-anchor="start" font-style="italic">“70% of the code on GitHub consists of clones</text>
+<text x="60.0" y="376.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#0f172a" text-anchor="start" font-style="italic">of previously created files.”</text>
+<rect x="615.0" y="120.0" width="545.0" height="270.0" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" opacity="1"/>
+<text x="635.0" y="152.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="800" fill="#0f172a" text-anchor="start">Line-level redundancy</text>
+<text x="635.0" y="176.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#475569" text-anchor="start">Gabel and Su 2010 [34]</text>
+<text x="635.0" y="210.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">share of each project that is redundant</text>
+<rect x="635.0" y="228.0" width="485.0" height="34.0" rx="5" fill="#e2e8f0" stroke="none" stroke-width="2" opacity="1"/>
+<rect x="877.5" y="228.0" width="242.5" height="34.0" rx="5" fill="#E69F00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="635.0" y="284.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start">0%</text>
+<text x="877.5" y="284.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">50%</text>
+<text x="1120.0" y="284.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a" text-anchor="end">100%</text>
+<text x="998.8" y="251.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a" text-anchor="middle">between 50% and 100%</text>
+<text x="635.0" y="318.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">measured against 420 million lines,</text>
+<text x="635.0" y="336.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">at about one line of granularity</text>
+<rect x="40.0" y="410.0" width="545.0" height="270.0" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" opacity="1"/>
+<text x="60.0" y="442.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="800" fill="#0f172a" text-anchor="start">Corpus near-deduplication</text>
+<text x="60.0" y="466.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#475569" text-anchor="start">The Stack [36]</text>
+<text x="60.0" y="510.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">The Stack v1</text>
+<rect x="180.0" y="494.0" width="335.0" height="22.0" rx="4" fill="#94a3b8" stroke="none" stroke-width="2" opacity="1"/>
+<text x="523.0" y="511.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">6.4 TB</text>
+<rect x="180.0" y="522.0" width="151.8" height="22.0" rx="4" fill="#009E73" stroke="none" stroke-width="2" opacity="1"/>
+<text x="339.8" y="539.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">2.9 TB kept</text>
+<text x="60.0" y="536.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#D55E00" text-anchor="start">54.7% removed</text>
+<text x="60.0" y="590.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">The Stack v2</text>
+<rect x="180.0" y="574.0" width="335.0" height="22.0" rx="4" fill="#94a3b8" stroke="none" stroke-width="2" opacity="1"/>
+<text x="523.0" y="591.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">67.5 TB</text>
+<rect x="180.0" y="602.0" width="159.3" height="22.0" rx="4" fill="#009E73" stroke="none" stroke-width="2" opacity="1"/>
+<text x="347.3" y="619.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="start">32.1 TB kept</text>
+<text x="60.0" y="616.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#D55E00" text-anchor="start">52.4% removed</text>
+<text x="60.0" y="666.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Bars scaled within each version (v2 is about 10× larger).</text>
+<rect x="615.0" y="410.0" width="545.0" height="270.0" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" opacity="1"/>
+<text x="635.0" y="442.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="800" fill="#0f172a" text-anchor="start">Whole-archive preservation</text>
+<text x="635.0" y="466.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#475569" text-anchor="start">Software Heritage [129, 130]</text>
+<text x="635.0" y="530.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="34" font-weight="800" fill="#0072B2" text-anchor="start">30.3 billion</text>
+<text x="635.0" y="554.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">unique file contents</text>
+<text x="925.0" y="530.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="34" font-weight="800" fill="#0072B2" text-anchor="start">448 million</text>
+<text x="925.0" y="554.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">origins</text>
+<text x="635.0" y="600.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">each file stored once, keyed by the hash of its bytes</text>
+<text x="635.0" y="624.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Archive counters read 2026-10-13.</text>
+<rect x="40.0" y="700.0" width="545.0" height="270.0" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" opacity="1"/>
+<text x="60.0" y="732.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="800" fill="#0f172a" text-anchor="start">Mined fix patterns</text>
+<text x="60.0" y="756.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#475569" text-anchor="start">PAR, TBar [22, 23]</text>
+<text x="60.0" y="794.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#0f172a" text-anchor="start">PAR: “several common fix patterns” in more than 60,000 human patches</text>
+<text x="60.0" y="824.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start">TBar, 15 pattern categories, Defects4J bugs fixed correctly:</text>
+<text x="60.0" y="860.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="500" fill="#475569" text-anchor="start">standard pipeline</text>
+<rect x="240.0" y="842.0" width="146.9" height="26.0" rx="4" fill="#E69F00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="394.9" y="861.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a" text-anchor="start">43</text>
+<text x="60.0" y="906.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="500" fill="#475569" text-anchor="start">perfect fault localization</text>
+<rect x="240.0" y="888.0" width="252.8" height="26.0" rx="4" fill="#D55E00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="500.8" y="907.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a" text-anchor="start">74 of 101</text>
+<text x="60.0" y="950.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Scale: 0 to 101 bugs. TBar uses no learning.</text>
+<rect x="615.0" y="700.0" width="545.0" height="270.0" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" opacity="1" stroke-dasharray="6 6"/>
+<text x="635.0" y="736.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="800" fill="#0f172a" text-anchor="start">How to read this figure</text>
+<text x="635.0" y="760.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start"></text>
+<text x="635.0" y="784.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Files, lines, terabytes, archive objects and</text>
+<text x="635.0" y="808.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">repaired bugs are different quantities.</text>
+<text x="635.0" y="832.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">They are shown side by side, not on one axis.</text>
+<text x="635.0" y="856.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start"></text>
+<text x="635.0" y="880.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Clones and dedup bear on G0 (lookup);</text>
+<text x="635.0" y="904.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">recurring fix patterns bear on G1 (rules).</text>
+<text x="635.0" y="928.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Values as in the paper, Section 7.</text></svg>

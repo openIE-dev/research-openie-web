@@ -1,0 +1,192 @@
+{
+  "version": 1,
+  "status_words": "\\b(?:[Mm]etered|[Pp]roven|[Ll]aws?|[Ss]ettled|collapses? to zero|only true metric)\\b",
+  "statuses": {
+    "theorem": "Proof from stated assumptions, here or in cited work",
+    "settled-physics": "Settled physics or mathematics, replicated",
+    "settled-science": "Established science, cited",
+    "measured": "measured_j with a named meter",
+    "evidence-class label": "The Metered class name used to state its condition",
+    "definition requirement": "Theory that requires metering, not a run result",
+    "negation": "States absence",
+    "name": "Proper name",
+    "identifier": "Slug, id or code",
+    "reference title": "Title of a cited work",
+    "author-thesis": "The OpenIE authors' thesis, verbatim, with its gate form",
+    "author-proposal": "The OpenIE authors' proposal, framed as such",
+    "ordinary-sense": "Ordinary English sense",
+    "forbidden-claim mention": "Quoted as withdrawn"
+  },
+  "entries": [
+    {
+      "id": "name-gates-title",
+      "status": "name",
+      "pattern": "Metered Commit Gates",
+      "note": "Paper title. The paper reports board-level KV260 INA260 readings as measured_j (Section I.3.7)."
+    },
+    {
+      "id": "name-ula",
+      "status": "author-proposal",
+      "pattern": "Universal Law of Agency",
+      "note": "The OpenIE authors' proposal; every use names it as the OpenIE authors' proposal or 'the proposed'."
+    },
+    {
+      "id": "name-sigma-law",
+      "status": "name",
+      "pattern": "σ-law",
+      "note": "Name of the selector in the agency runs."
+    },
+    {
+      "id": "name-law-arms",
+      "status": "name",
+      "pattern": "\\b(?:law|both law) arms\\b",
+      "note": "The two selector arms of the agency runs.",
+      "files": [
+        "src/content/papers/agency.md"
+      ]
+    },
+    {
+      "id": "ident-ids",
+      "status": "identifier",
+      "pattern": "(?:id|map|title)=?\\s*[\"'{][^\"'}]*[\"'}]|\"[a-z0-9-]*(?:law|laws|proven|settled|metered)[a-z0-9-]*\"",
+      "note": "HTML ids, anchor aliases and redirect maps keep old slugs so links do not break."
+    },
+    {
+      "id": "ref-titles",
+      "status": "reference title",
+      "pattern": "Scaling [Ll]aws for [Nn]eural [Ll]anguage [Mm]odels|Second[- ]law(?:-like)? (?:of thermodynamics|inequalities|and Landauer)[^.]*|second-law-like inequalities|[Pp]rograms, life cycles, and laws of software evolution|[Tt]iered super-Moore's law",
+      "note": "Titles of cited works."
+    },
+    {
+      "id": "thesis",
+      "status": "author-thesis",
+      "pattern": "Energy to run is the only true metric of computer intelligence|All other factors collapse to zero|That is what \"collapse to zero\" means",
+      "note": "The OpenIE authors' thesis, verbatim. Each use is followed by, or sits beside, its gate form: correctness is the gate and joules order the systems that pass it. Shortened or price-sense variants are not licensed."
+    },
+    {
+      "id": "physics-second-law",
+      "status": "settled-physics",
+      "pattern": "(?:the |a |generalized |feedback |each subsystem's |enters the |second-|Second )?(?:generalized |feedback )?second[- ]law(?:-like)?|[Ss]econd law",
+      "note": "Thermodynamics."
+    },
+    {
+      "id": "physics-kepler-newton",
+      "status": "settled-science",
+      "pattern": "Kepler's (?:three )?laws|three laws closed|the three laws|force law|dynamical laws|predictive laws?|tables yield to laws|general laws|law discovery|formula/law discovery|power law|Physical law is not priced|[Ss]caling laws hold|a law past their window|law predicts within tolerance|privileged law remain the floor|law was the compressible|shortest predictive law|Newton",
+      "note": "Kepler, Newton, empirical scaling laws and law-discovery systems, as cited."
+    },
+    {
+      "id": "physics-settled-theory",
+      "status": "settled-physics",
+      "pattern": "[Ss]ettled (?:physics|theory|account|coordinates|IT/physics)|are settled coordinates|They are settled coordinates",
+      "note": "Shannon, Landauer, Bennett, Kolmogorov, Solomonoff, Chaitin, Value of Information: settled theory."
+    },
+    {
+      "id": "settled-ordinary",
+      "status": "ordinary-sense",
+      "pattern": "treated as settled",
+      "note": "Ordinary sense: taken as fixed.",
+      "files": [
+        "src/content/products/jouleos.md"
+      ]
+    },
+    {
+      "id": "proven-theorems",
+      "status": "theorem",
+      "pattern": "### \\d\\.1 Proven|\\*\\*Proven(?: here)?:\\*\\*|\\*\\* Proven(?: for acts whose)?|\\*\\*\\s*Proven|Partly proven|Propositions are proven from cited theorems|What must be proven|clause 1, proven for modern agents|Proven(?:\\.| for acts whose)",
+      "note": "Theorems with proofs, or theorems proved in cited work.",
+      "files": [
+        "src/content/papers/agency.md"
+      ]
+    },
+    {
+      "id": "metered-label",
+      "status": "evidence-class label",
+      "pattern": "(?:only (?:when|if)|unless(?: a)?|until(?: a)?|under|requires a|once|Only|only Tier 2|[Oo]nly|or|/|\\(|\\|)\\s*\\**Metered\\**|\\**Metered\\**\\s*(?:probes?|only|\\)|vs|-only|labels?|paths?|populates|\\*\\*|`measured_j`|hardware under a stated workload|Rubin chat curve)|their own Metered labels|Measurement labels: \\*\\*Metered\\*\\*|\\| \\*\\*Metered\\*\\* \\||\\*\\*Metered\\*\\* \\((?:authors|Zeus)",
+      "note": "Metered is the measured evidence class: used only to state when measured_j may be written, or for a cited author's own measurement, or as a next measurement."
+    },
+    {
+      "id": "metered-kv260",
+      "status": "measured",
+      "pattern": "KV260 board metered|board[- ]level metered|board metered\\. An AMD|board-metered fabric",
+      "note": "KV260 INA260 board-level readings, measured_j (Metered Commit Gates, Section I.3.7)."
+    },
+    {
+      "id": "metered-negated",
+      "status": "negation",
+      "pattern": "synthesized or metered|No joules are metered|joules was metered|this pack metered Hala Point|not re-metered|re-metered",
+      "note": "States that something was not metered."
+    },
+    {
+      "id": "metered-theory",
+      "status": "definition requirement",
+      "pattern": "[Mm]etered (?:wall|joules|power|energy|density|form|figure|separately|as well|and modeled|at the agent's wall|at the wall)|joules metered|be metered at|is metered as well|metered at the wall|metered joule bound|metered grant|metered pool|scheduled, metered, and refused|gated, metered form",
+      "note": "Theory and design text: the definition requires joules metered at the agent's wall. Not a claim that a run was metered."
+    },
+    {
+      "id": "law-negated",
+      "status": "negation",
+      "pattern": "not a new law",
+      "note": "Proposition 2 is a corollary, not a new law.",
+      "files": [
+        "src/content/papers/agency.md"
+      ]
+    },
+    {
+      "id": "law-author-framing",
+      "status": "author-proposal",
+      "pattern": "(?:the |a |this |that |one |same |machine's |runtime |Commit\\*\\* |companion |Companion |Cousin energy |class |design |obtain |transmission\\*\\* |research |under |naming the |rename the |replace the |hedge on the |is the |owns the |states the |records the |is that |are that |as |is |not |Protocol is the )+laws?\\b|\\blaw\\+runtime|\\*law\\+runtime\\*|laws? (?:is native|sits in front|deciding|declining|with a partition|written so|with a proof|runs on|gets embodied|for agentic action|and the pack|and class|and the class|/class|; Klere|, one meter|, the commit|, keeps B|, named in|, not as|, the build|in the hardware|as four objects|as published|before the survey|contrast|it does not|are for|agree on the underline|of this law)|The machine's law|The law (?:and|sits|is)|Mixture of Limits law|Representation is not law|Cascade order is law|order is law|refuse is law|settle-refuse as law|agent under law|refused under law|unit convert / law instance|one law|every research law|Require a law|require a law|requires one law|under a law|that same law|this law|that law|the law|same laws|two laws|those laws|these laws|the laws|\\| Mechanism \\| Law \\||Law contrast",
+      "note": "Author framing: these papers use 'law' for the OpenIE authors' proposed runtime rules (commit before act, energy envelope, machine contract). Status: proposal, not an empirical regularity. Listed for review.",
+      "files": [
+        "src/content/papers/gates.md",
+        "src/content/papers/spellcheck.md",
+        "src/content/papers/satiation.md",
+        "src/content/products/mei.md",
+        "src/content/products/jouleos.md",
+        "src/pages/about/jouleos.astro"
+      ]
+    },
+    {
+      "id": "ref-titles-three-body",
+      "status": "reference title",
+      "files": [
+        "src/content/papers/three-body.md"
+      ],
+      "pattern": "Hyrum's Law|The Law of Leaky Abstractions|hyrumslaw|the-law-of-leaky-abstractions",
+      "note": "Titles of cited works in the three-body paper."
+    },
+    {
+      "id": "laws-of-coding-proposal",
+      "status": "author-proposal",
+      "pattern": "Laws of Coding|Laws of Computation|Laws of Programming Languages|Laws of Programming|layers of law|layer of law|axioms of motion|physical law|equation of motion",
+      "note": "The RCE-JEPA proposal 'Laws of Coding', framed as conjecture in the RCE-JEPA thesis; 'axioms of motion' and 'equation of motion' refer to Newton as history. 'Laws of Computation' is framed as an open problem, not yet formalized. Four distinct named layers: \"Laws of Computation\", \"Laws of Programming Languages\", \"Laws of Programming\" (Hoare et al. 1987), \"Laws of Coding\"."
+    },
+    {
+      "id": "rce-jepa-convergence-laws",
+      "status": "reference title",
+      "files": [
+        "src/components/RceJepaThesis.astro"
+      ],
+      "pattern": "Laws of Programming|[Ff]undamental [Ll]aws of [Cc]omputation|Embracing the laws of physics|set of laws as rich and elegant|algebraic laws for a programming language|empirical laws of software evolution|Lehman's laws of software evolution|computation should have laws of their own|proposing laws for the field|Algebraic laws of correct program construction|Nearly one hundred laws for a small language|benchmarks, no laws|Layer of law tested|What then are the laws of programming|unable to quote even a single law",
+      "note": "Titles and described content of cited prior work (Hoare et al. 1987, McKee 1995, Carette et al. 2022, Lehman 1980) in the RCE-JEPA convergence section; not claims of ours."
+    },
+    {
+      "id": "rce-jepa-convergence-commitments-titles",
+      "status": "reference title",
+      "files": [
+        "src/components/RceJepaConvergence.astro"
+      ],
+      "pattern": "End of Moore's Law",
+      "note": "Title of the cited MLIR paper (Lattner et al. 2020) in the RCE-JEPA convergence-by-commitment section; not a claim of ours."
+    },
+    {
+      "id": "ref-title-kumar-laws-of-intelligence",
+      "status": "reference title",
+      "files": [
+        "src/content/papers/agency.md"
+      ],
+      "pattern": "The Laws of Intelligence: Computation Efficiency and the Physical Scaling Limits of AI Systems",
+      "note": "Title of the cited Kumar preprint (Zenodo 18993403) in Agency section 6.8 reference [347]; not a claim of ours."
+    }
+  ]
+}

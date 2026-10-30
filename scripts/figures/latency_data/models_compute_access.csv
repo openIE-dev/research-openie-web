@@ -1,0 +1,444 @@
+date,model,organization,country,training_flop,accessibility,class
+2005-08-07,RankNet,"Microsoft Research,Microsoft","United States of America,Unite",3482081588304.0,Unreleased,closed
+2006-06-17,SVM-CNN,New York University (NYU),United States of America,745200000000000.0,Unreleased,closed
+2008-12-09,GNN,University of Siena,Italy,1614600000.0,Open weights (unrestricted),open
+2009-09-01,Two Stage Feature Extraction (MNIST),New York University (NYU),United States of America,20754000000000.0,Unreleased,closed
+2010-06-13,iCCCP,Massachusetts Institute of Technology (M,United States of America,1080000000000000.0,Unreleased,closed
+2010-09-15,Pooling CNN (Caltech 101),University of Bonn,Germany,1221124128768000.0,Unreleased,closed
+2010-09-15,Pooling CNN (NORB),University of Bonn,Germany,1456277227200000.0,Unreleased,closed
+2011-07-16,High Performance CNN (NORB),"IDSIA,SUPSI","Switzerland,Switzerland",2.57985e+16,Unreleased,closed
+2011-09-18,CNN Committee (MNIST),IDSIA,Switzerland,5.2e+16,Unreleased,closed
+2011-09-18,CNN Committee (NIST),IDSIA,Switzerland,2.6e+16,Unreleased,closed
+2011-10-03,CNN committee (traffic sign),IDSIA,Switzerland,991981425600000.0,Unreleased,closed
+2012-06-03,Dropout (CIFAR),University of Toronto,Canada,4268700000000000.0,Unreleased,closed
+2012-06-03,Dropout (ImageNet),University of Toronto,Canada,2.731968e+17,Unreleased,closed
+2012-06-03,Dropout (MNIST),University of Toronto,Canada,6039370800000000.0,Unreleased,closed
+2012-12-03,DNN EM segmentation,"IDSIA,SUPSI","Switzerland,Switzerland",4.78e+17,Unreleased,closed
+2013-08-01,Hierarchical Scene Labeling (Stanford Background),New York University (NYU),United States of America,2.3774688e+17,Unreleased,closed
+2013-10-01,RNTN,Stanford University,United States of America,1.422e+16,Unreleased,closed
+2014-07-15,ACF-WIDER,Chinese Academy of Sciences,China,76380000000000.0,Unreleased,closed
+2014-09-14,SPN-4+KN5,Singapore University of Technology & Des,"Singapore,Singapore",4.4e+16,Unreleased,closed
+2014-11-29,TA-CNN,Chinese University of Hong Kong (CUHK),Hong Kong,1.0854e+16,Unreleased,closed
+2014-12-22,ADAM (CIFAR-10),"University of Amsterdam,OpenAI,Universit","Netherlands,United States of A",624979800000000.0,Unreleased,closed
+2015-03-17,genCNN + dyn eval,"Chinese Academy of Sciences,Huawei Noah'","China,China,Ireland",3.4153451e+16,Unreleased,closed
+2015-04-06,TC-DNN-BLSTM-DNN,Carnegie Mellon University (CMU),United States of America,1.9410191999999997e+17,Unreleased,closed
+2015-05-18,U-Net,University of Freiburg,Germany,5.0832252e+16,Open weights (unrestricted),open
+2015-08-07,DCNN,"University of Maryland,Rutgers Universit","United States of America,Unite",4.8098691e+17,Unreleased,closed
+2015-10-01,AlphaGo Fan,DeepMind,United Kingdom,3.8e+20,Unreleased,closed
+2015-10-28,SAF R-CNN,"Beijing Institute of Technology,Sun Yat-","China,China,Singapore,Singapor",1.2311081250000001e+19,Unreleased,closed
+2015-12-10,ResNet-101 (ImageNet),Microsoft,United States of America,7.004e+18,Open weights (unrestricted),open
+2015-12-16,"Variational (untied weights, MC) LSTM (Large)",University of Cambridge,United Kingdom,5886144000000000.0,Unreleased,closed
+2016-01-27,AlphaGo Lee,DeepMind,United Kingdom,1.9e+21,Unreleased,closed
+2016-09-17,ResNet-200,Microsoft Research Asia,China,2.9741645e+19,Unreleased,closed
+2016-09-26,GNMT,Google,United States of America,6.620000000001e+21,Hosted access (no API),closed
+2016-09-26,Pointer Sentinel-LSTM (medium),"MetaMind Inc,Salesforce","United States of America,Unite",7490000000000000.0,Unreleased,closed
+2016-10-28,SPIDER2,"Griffith University,University of Iowa,D","Australia,United States of Ame",1.822e+16,Open weights (non-commercial),open
+2016-11-04,VD-LSTM+REAL Large,"Salesforce Research,Stanford University","United States of America,Unite",2.13e+16,Unreleased,closed
+2016-11-05,BIDAF,"University of Washington,Allen Institute","United States of America,Unite",3.4686144e+18,Open weights (unrestricted),open
+2016-11-05,NAS with base 8 and shared embeddings,Google Brain,United States of America,1.05e+16,Unreleased,closed
+2016-11-16,ResNeXt-101 (64×4d),"University of California San Diego,Faceb","United States of America,Unite",1.2e+19,Open weights (unrestricted),open
+2016-12-13,HR-ResNet101,Carnegie Mellon University (CMU),United States of America,7.077e+18,Open weights (unrestricted),open
+2016-12-23,EnhanceNet,Max Planck Institute for Intelligent Sys,Germany,1.3079231999999998e+17,Open weights (unrestricted),open
+2017-01-23,MoE-Multi,"Jagiellonian University,Google Brain","Poland,United States of Americ",9.393905664e+19,Unreleased,closed
+2017-06-12,Transformer,"Google Research,Google Brain","United States of America,Unite",7.4245248e+18,Unreleased,closed
+2017-07-07,DeepLoc,"Technical University of Denmark,Universi","Denmark,Denmark",5.781024e+17,Hosted access (no API),closed
+2017-08-07,AWD-LSTM - 3-layer LSTM (tied) + continuous cache pointer (WT2),Salesforce Research,United States of America,2.97e+17,Unreleased,closed
+2017-08-14,EI-REHN-1000D,Korea Advanced Institute of Science and ,South Korea,1.06e+16,Unreleased,closed
+2017-08-19,Libratus,Carnegie Mellon University (CMU),United States of America,5.51e+20,Unreleased,closed
+2017-08-29,GL-LWGC-AWD-MoS-LSTM + dynamic evaluation (WT2),Ben-Gurion University of the Negev,Israel,4.56e+17,Unreleased,closed
+2017-09-06,PyramidNet,Korea Advanced Institute of Science and ,South Korea,2340000000000000.0,Open weights (unrestricted),open
+2017-09-15,ISS,"Duke University,Microsoft","United States of America,Unite",3400000000000000.0,Unreleased,closed
+2017-09-26,AWD-LSTM+WT+Cache+IOG (WT2),NTT Communication Science Laboratories,Japan,3180000000000000.0,Unreleased,closed
+2017-10-18,AlphaGo Zero,DeepMind,United Kingdom,6.49439910290227e+20,Unreleased,closed
+2017-10-19,AlphaGo Master,DeepMind,United Kingdom,3.4100000001e+20,Unreleased,closed
+2017-10-31,Fraternal dropout + AWD-LSTM 3-layer (WT2),"Jagiellonian University,Mila - Quebec AI","Poland,Canada,Canada",3.06e+17,Unreleased,closed
+2017-11-10,"AWD-LSTM-MoS + dynamic evaluation (WT2, 2017)",Carnegie Mellon University (CMU),United States of America,3.36e+18,Unreleased,closed
+2017-12-05,AlphaZero,DeepMind,United Kingdom,1.0600000001e+20,Unreleased,closed
+2018-02-01,QRNN,Salesforce Research,United States of America,6.8866472e+17,Unreleased,closed
+2018-02-05,IMPALA,DeepMind,United Kingdom,1.68e+20,Unreleased,closed
+2018-03-22,4 layer QRNN (h=2500),Salesforce Research,United States of America,5.9158815e+17,Unreleased,closed
+2018-04-08,YOLOv3,University of Washington,United States of America,1.3416380824e+19,Unreleased,closed
+2018-05-02,ResNeXt-101 32x48d,Facebook,United States of America,8.74395e+21,Open weights (non-commercial),open
+2018-05-03,Dropout-LSTM+Noise(Bernoulli) (WT2),"Columbia University,New York University ","United States of America,Unite",1.27e+17,Unreleased,closed
+2018-05-22,aLSTM(depth-2)+RecurrentPolicy (WT2),"University of Manchester,Alan Turing Ins","United Kingdom,United Kingdom",7.296e+16,Unreleased,closed
+2018-06-01,GPT-1,OpenAI,United States of America,1.7578125e+19,Open weights (unrestricted),open
+2018-07-03,FTW (For The Win),DeepMind,United Kingdom,3.49e+19,Unreleased,closed
+2018-07-10,Big-Little Net,IBM,United States of America,2.46048e+17,Open weights (unrestricted),open
+2018-07-10,Big-Little Net (speech),IBM,United States of America,4.290048e+17,Open weights (unrestricted),open
+2018-08-28,Big Transformer for Back-Translation,"Facebook AI Research,Google Brain","United States of America,Franc",4.7808e+20,Open weights (unrestricted),open
+2018-08-30,(ensemble): AWD-LSTM-DOC (fin) × 5 (WT2),"NTT Communication Science Laboratories,T","Japan,Japan",6.66e+17,Open weights (unrestricted),open
+2018-09-17,Transformer + Simple Recurrent Unit,"ASAPP,Cornell University,Google,Princeto","United States of America,Unite",1.1e+19,Unreleased,closed
+2018-09-24,LSTM+NeuralCache,"KU Leuven,ESAT - PSI,Apple","Belgium,Belgium,United States ",982800000000000.0,Unreleased,closed
+2018-09-28,Transformer (Adaptive Input Embeddings) WT103,Facebook AI Research,"United States of America,Franc",4.47e+19,Open weights (unrestricted),open
+2018-10-11,BERT-Large,Google,United States of America,2.85e+20,Open weights (unrestricted),open
+2018-10-15,TrellisNet,"Carnegie Mellon University (CMU),Bosch C","United States of America,Germa",2.78e+18,Unreleased,closed
+2018-11-05,Mesh-TensorFlow Transformer 2.9B (translation),Google Brain,United States of America,6.84288e+19,Unreleased,closed
+2018-11-05,Mesh-TensorFlow Transformer 4.9B (language),Google Brain,United States of America,1.617408e+20,Unreleased,closed
+2018-11-12,Fine-tuned-AWD-LSTM-DOC (fin),Samsung R&D Institute Russia,Russia,5.188e+16,Unreleased,closed
+2018-11-15,Multi-cell LSTM,University of Hyderabad,India,2006640000000000.0,Unreleased,closed
+2018-12-12,StyleGAN,Nvidia,United States of America,3.93e+16,Open weights (non-commercial),open
+2019-01-09,Transformer-XL (257M),"Carnegie Mellon University (CMU),Google ","United States of America,Unite",3.7832771e+20,Open weights (unrestricted),open
+2019-02-01,Hanabi 4 player,"DeepMind,University of Oxford,Carnegie M","United Kingdom,United Kingdom,",4.3e+18,Unreleased,closed
+2019-02-14,GPT-2 (1.5B),OpenAI,United States of America,1.920000000001e+21,Open weights (unrestricted),open
+2019-02-27,KataGo,Jane Street,United States of America,2.32e+19,Open weights (unrestricted),open
+2019-03-26,SciBERT,Allen Institute for AI,United States of America,8.926848e+19,Open weights (unrestricted),open
+2019-04-04,Cross-lingual alignment,"Tel Aviv University,Massachusetts Instit","Israel,United States of Americ",2.56e+18,Open weights (unrestricted),open
+2019-04-08,WeNet (Penn Treebank),Amazon,United States of America,7.30000001e+17,Unreleased,closed
+2019-04-20,BERT-Large-CAS (PTB+WT2+WT103),Amazon,United States of America,1.5405e+20,Unreleased,closed
+2019-04-25,MuseNet,OpenAI,United States of America,2.208301056e+20,Unreleased,closed
+2019-05-14,AWD-LSTM-DRILL + dynamic evaluation† (WT2),IDIAP,Switzerland,4.08e+17,Open weights (unrestricted),open
+2019-05-31,DLRM-2020,Facebook AI,United States of America,4e+18,Unreleased,closed
+2019-06-01,XLNet,"Carnegie Mellon University (CMU),Google ","United States of America,Unite",6.19e+21,Open weights (unrestricted),open
+2019-06-04,Transformer-XL Large + Phrase Induction,Massachusetts Institute of Technology (M,"United States of America,Unite",3.7848651e+20,Unreleased,closed
+2019-06-10,AWD-LSTM + MoS + Partial Shuffled,University of Texas at Austin,United States of America,3.15e+17,Open weights (non-commercial),open
+2019-07-01,RoBERTa Large,"Facebook,University of Washington","United States of America,Unite",8.5067e+21,Open weights (unrestricted),open
+2019-07-11,Pluribus,Facebook AI Research,"United States of America,Franc",6.6e+16,Unreleased,closed
+2019-08-22,trRosetta,"Nankai University,University of Washingt","China,United States of America",3.8047968e+19,Open weights (unrestricted),open
+2019-09-04,UDSMProt,Fraunhofer Heinrich Hertz Institute,Germany,6.37e+17,Open weights (unrestricted),open
+2019-09-17,Megatron-BERT,Nvidia,United States of America,2.2e+22,Unreleased,closed
+2019-09-17,Megatron-LM (1.2B),Nvidia,United States of America,1.1304e+21,Unreleased,closed
+2019-09-17,Megatron-LM (8.3B),Nvidia,United States of America,9.1e+21,Unreleased,closed
+2019-10-02,AlphaX-1,"Facebook AI Research,Brown University","United States of America,Franc",8.89344e+17,Unreleased,closed
+2019-10-02,DistilBERT,Hugging Face,United States of America,1.24416e+19,Open weights (unrestricted),open
+2019-10-23,T5-11B,Google,United States of America,3.3e+22,Open weights (unrestricted),open
+2019-10-23,T5-3B,Google,United States of America,9.0000000001e+21,Open weights (unrestricted),open
+2019-10-30,AlphaStar,DeepMind,United Kingdom,1.0773400001e+23,Unreleased,closed
+2019-11-01,Base LM + kNN LM + Continuous Cache,"Stanford University,Facebook AI Research","United States of America,Unite",3.05292e+19,Unreleased,closed
+2019-11-05,XLM-RoBERTa,Facebook AI,United States of America,2.076e+22,Open weights (non-commercial),open
+2019-11-10,CamemBERT,"Facebook,INRIA,Sorbonne University","United States of America,Franc",8.3e+20,Open weights (unrestricted),open
+2019-11-10,Sandwich Transformer,"Allen Institute for AI,Facebook AI Resea","United States of America,Unite",2.3504093e+19,Unreleased,closed
+2019-11-11,Noisy Student (L2),"Carnegie Mellon University (CMU),Google","United States of America,Unite",2.612e+22,Unreleased,closed
+2019-11-19,MuZero,DeepMind,United Kingdom,4.8e+19,Unreleased,closed
+2019-11-27,Transformer-XL DeFINE (141M),"University of Washington,Allen Institute","United States of America,Unite",1.74276e+18,Unreleased,closed
+2019-12-05,MMLSTM (PTB),Beijing University of Posts and Telecomm,"China,United Kingdom",5.8298782e+16,Unreleased,closed
+2019-12-05,MMLSTM (WT-2),Beijing University of Posts and Telecomm,"China,United Kingdom",1.938e+17,Unreleased,closed
+2019-12-13,OpenAI Five,OpenAI,United States of America,6.7e+22,Unreleased,closed
+2019-12-13,OpenAI Five Rerun,OpenAI,United States of America,1.3e+22,Unreleased,closed
+2019-12-19,DD-PPO,"Georgia Institute of Technology,Facebook","United States of America,Unite",7.8e+20,Unreleased,closed
+2020-01-15,AlphaFold,DeepMind,United Kingdom,1e+20,Unreleased,closed
+2020-01-19,ContextNet + Noisy Student,Google,United States of America,8.16e+21,Unreleased,closed
+2020-01-28,Meena,Google Brain,United States of America,1.12e+23,Unreleased,closed
+2020-02-08,TaLK Convolution,Carleton University,Canada,2.6990346e+19,Unreleased,closed
+2020-02-09,ALBERT-xxlarge,Toyota Technological Institute at Chicag,"United States of America,Unite",2.39e+21,Open weights (unrestricted),open
+2020-02-13,Turing-NLG,Microsoft,United States of America,1.57e+22,Unreleased,closed
+2020-02-14,FFN SwiGLU,Google,United States of America,3.3687317e+19,Unreleased,closed
+2020-02-21,Feedback Transformer,"LORIA,University of Lorraine,Facebook AI","France,France,United States of",7.690547e+18,Unreleased,closed
+2020-03-11,TransformerXL + spectrum control,University of California Los Angeles (UC,"United States of America,China",2.6289761e+19,Unreleased,closed
+2020-03-17,Tensor-Transformer(1core)+PN (WT103),University of California (UC) Berkeley,United States of America,1.58e+18,Open weights (unrestricted),open
+2020-03-23,ELECTRA,"Stanford University,Google,Google Brain","United States of America,Unite",3.1e+21,Open weights (unrestricted),open
+2020-03-24,MetNet,Google,United States of America,9.510912e+18,Unreleased,closed
+2020-04-29,Once for All,"MIT-IBM Watson AI Lab,Massachusetts Inst","United States of America,Unite",6.237e+20,Open weights (unrestricted),open
+2020-05-02,UnifiedQA,"Allen Institute for AI,University of Was","United States of America,Unite",1.65e+19,Open weights (unrestricted),open
+2020-05-26,DETR,Facebook,United States of America,4e+20,Open weights (unrestricted),open
+2020-05-28,GPT-3 175B (davinci),OpenAI,United States of America,3.14e+23,API access,closed
+2020-06-30,GShard (dense),Google,United States of America,4.765e+22,Unreleased,closed
+2020-08-03,DeLighT,"University of Washington,Allen Institute","United States of America,Unite",3.8016e+18,Unreleased,closed
+2020-08-06,ERNIE-GEN (large),Baidu,China,2e+20,Open weights (non-commercial),open
+2020-09-01,ProBERTa,University of Illinois Urbana-Champaign ,"United States of America,Unite",9.72e+18,Open weights (non-commercial),open
+2020-10-02,LUKE,"University of Washington,National Instit","United States of America,Japan",1.8144e+22,Open weights (unrestricted),open
+2020-10-20,Conformer + Wav2vec 2.0 + Noisy Student,"Google,Google Research,Google Brain","United States of America,Unite",7.6e+21,Unreleased,closed
+2020-10-20,mT5-XXL,"Google,Google Research","United States of America,Unite",8.2e+22,Open weights (unrestricted),open
+2020-10-21,German ELECTRA Large,"deepset,Bayerische Staatsbibliothek Muen","Germany,Germany",1.42829568e+21,Open weights (unrestricted),open
+2020-10-22,ViT-Huge/14,"Google Brain,Google Research","United States of America,Unite",4.262e+21,Open weights (unrestricted),open
+2020-10-22,wave2vec 2.0 LARGE,Facebook,United States of America,3.87072e+21,Open weights (unrestricted),open
+2020-11-23,KEPLER,"Tsinghua University,Mila - Quebec AI (or","China,Canada,France,Canada,Uni",1.66e+21,Unreleased,closed
+2020-11-30,AlphaFold 2,DeepMind,United Kingdom,2.99e+21,Open weights (unrestricted),open
+2020-12-01,CPM-Large,"Tsinghua University,Beijing Academy of A","China,China",2.6052e+20,Open weights (unrestricted),open
+2020-12-15,ESM1b,"Facebook AI Research,New York University","United States of America,Franc",5.1e+21,Open weights (unrestricted),open
+2020-12-23,DensePhrases,"Korea University,Princeton University","South Korea,United States of A",2.09952e+18,Open weights (unrestricted),open
+2020-12-25,CT-MoS (WT2),"Google,National Tsing Hua University","United States of America,Taiwa",5.4e+17,Unreleased,closed
+2020-12-31,ERNIE-Doc (247M),Baidu,China,3.0302798e+19,Open weights (unrestricted),open
+2021-01-05,CLIP (ViT L/14@336px),OpenAI,United States of America,1.05e+22,Open weights (unrestricted),open
+2021-01-05,DALL-E,OpenAI,United States of America,4.7e+22,API access,closed
+2021-01-11,Switch,Google,United States of America,8.22e+22,Open weights (unrestricted),open
+2021-01-15,DeiT-B,"Meta AI,Sorbonne University","United States of America,Franc",7.884e+19,Open weights (unrestricted),open
+2021-02-09,DLWP,"University of Washington,Microsoft Resea","United States of America,Unite",5.6845152e+18,Unreleased,closed
+2021-02-13,MSA Transformer,"Facebook AI Research,University of Calif","United States of America,Franc",5.49e+21,Open weights (unrestricted),open
+2021-02-24,SRU++ Large,ASAPP,United States of America,2.1173704e+19,Open weights (unrestricted),open
+2021-03-01,Meta Pseudo Labels,"Google Brain,Google AI","United States of America,Unite",4.79e+22,Unreleased,closed
+2021-03-05,Generative BST,Facebook AI Research,"United States of America,Franc",1.449e+22,Open weights (unrestricted),open
+2021-03-05,M6-T,Alibaba,China,5.5e+21,Unreleased,closed
+2021-04-19,PLUG,Alibaba,China,3.5997696e+22,Hosted access (no API),closed
+2021-05-04,ProtBERT-BFD,"Technical University of Munich,Nvidia,Se","Germany,United States of Ameri",3.9e+22,Open weights (unrestricted),open
+2021-05-04,ProtT5-XL-U50,"Technical University of Munich,Med AI Te","Germany,China,United States of",1.8704498688e+22,Open weights (non-commercial),open
+2021-05-11,ADM,OpenAI,United States of America,6.2e+21,Open weights (non-commercial),open
+2021-05-20,MedBERT,"Peng Cheng Laboratory,University of Texa","China,United States of America",9.47e+18,Unreleased,closed
+2021-05-26,CogView,"Tsinghua University,Alibaba DAMO Academy","China,China",2.68e+22,Open weights (unrestricted),open
+2021-05-26,Transformer local-attention (NesT-B),"Google Cloud,Google Research","United States of America,Unite",2.40576e+19,Open weights (unrestricted),open
+2021-05-28,ByT5-XXL,"Google,Google Research","United States of America,Unite",8.1e+22,Open weights (unrestricted),open
+2021-06-08,ViT-G/14,"Google Brain,Google Research","United States of America,Unite",5.85e+22,Unreleased,closed
+2021-06-09,CoAtNet,"Google,Google Research,Google Brain","United States of America,Unite",4.27e+22,Unreleased,closed
+2021-06-09,EMDR,Mila - Quebec AI (originally Montreal In,"Canada,Canada,United Kingdom",1.91e+21,Open weights (unrestricted),open
+2021-06-10,DeBERTa,Microsoft,United States of America,2.588e+22,Open weights (unrestricted),open
+2021-06-11,ALIGN,Google Research,United States of America,2.598670000001e+22,Unreleased,closed
+2021-06-11,Denoising Diffusion Probabilistic Models (LSUN Bedroom),University of California (UC) Berkeley,United States of America,7.840125000000001e+19,Open weights (unrestricted),open
+2021-06-21,StyleGAN3-R,"Nvidia,Aalto University","United States of America,Finla",2.42784e+21,Open weights (non-commercial),open
+2021-06-21,StyleGAN3-T,"Nvidia,Aalto University","United States of America,Finla",1.70208e+21,Open weights (non-commercial),open
+2021-06-23,EfficientNetV2-XL,"Google,Google Brain","United States of America,Unite",9.56e+19,Open weights (unrestricted),open
+2021-06-24,Fold2Seq,"IBM,Texas A&M","United States of America,Unite",1.4e+17,Unreleased,closed
+2021-06-28,Adaptive Input Transformer + RD,"Microsoft Research Asia,Soochow Universi","China,Taiwan",8.58e+19,Unreleased,closed
+2021-07-05,ERNIE 3.0,Baidu,China,2.25e+22,Open weights (unrestricted),open
+2021-07-07,Codex,OpenAI,United States of America,7.344e+22,API access,closed
+2021-07-27,GOAT,DeepMind,United Kingdom,2.412e+22,Unreleased,closed
+2021-07-27,HuBERT,Facebook AI Research,"United States of America,Franc",5.54e+21,Open weights (unrestricted),open
+2021-07-29,SEER,"Facebook AI Research,INRIA","United States of America,Franc",1.8e+22,Open weights (non-commercial),open
+2021-08-06,YOLOX-X,Megvii Inc,China,6.34275e+20,Open weights (unrestricted),open
+2021-08-11,Jurassic-1-Jumbo,AI21 Labs,Israel,3.7e+23,API access,closed
+2021-08-11,Zidong Taichu,"Chinese Academy of Sciences,Wuhan AI Com","China,China",8.016e+20,Open weights (unrestricted),open
+2021-08-15,DNABERT,Northeastern University,United States of America,1.07e+20,Open weights (unrestricted),open
+2021-08-17,XLMR-XXL,Facebook AI Research,"United States of America,Franc",3.366e+22,Open weights (unrestricted),open
+2021-09-03,FLAN 137B,Google Research,United States of America,2.047e+24,Unreleased,closed
+2021-09-06,PermuteFormer,Peking University,China,2.775e+18,Unreleased,closed
+2021-09-10,HyperCLOVA 204B,NAVER,South Korea,2.0000000001e+23,Hosted access (no API),closed
+2021-09-20,PLATO-XL,Baidu,China,9.9e+21,Open weights (unrestricted),open
+2021-09-28,Turing ULRv5,Microsoft,United States of America,2.8983951e+22,Hosted access (no API),closed
+2021-10-04,AlphaFold-Multimer,"Google DeepMind,DeepMind","United States of America,Unite",4.35e+21,Open weights (unrestricted),open
+2021-10-11,Megatron-Turing NLG 530B,"Microsoft,Nvidia","United States of America,Unite",8.586e+23,Unreleased,closed
+2021-10-12,Yuan 1.0,Inspur,China,3.5380000000001e+23,API access,closed
+2021-10-17,base LM+GNN+kNN,"Shannon.AI,Nanjing University,Nanyang Te","China,China,Singapore,China",5.2587456e+19,Open weights (unrestricted),open
+2021-10-31,S4,Stanford University,United States of America,7.8328627e+19,Open weights (unrestricted),open
+2021-11-01,CodeT5-base,"Salesforce,Nanyang Technological Univers","United States of America,Singa",1.56e+21,Open weights (unrestricted),open
+2021-11-01,Projected GAN,Heidelberg University,Germany,1.05e+19,Open weights (unrestricted),open
+2021-11-11,Masked Autoencoders ViT-H,Facebook AI Research,"United States of America,Franc",4.6e+20,Open weights (non-commercial),open
+2021-11-18,Swin Transformer V2 (SwinV2-G),Microsoft Research Asia,China,1.1e+21,Open weights (unrestricted),open
+2021-11-19,BASIC-L,Google,United States of America,4.12e+22,Unreleased,closed
+2021-11-22,Florence,Microsoft,United States of America,4.831e+22,Unreleased,closed
+2021-11-24,NÜWA,"Microsoft Research,Peking University","United States of America,China",7.24598784e+21,Unreleased,closed
+2021-12-06,Student of Games,DeepMind,United Kingdom,3.6679273004682866e+22,Unreleased,closed
+2021-12-08,Gopher (280B),DeepMind,United Kingdom,6.31e+23,Unreleased,closed
+2021-12-13,GLaM,Google,United States of America,3.6363112434e+23,Unreleased,closed
+2021-12-16,Contriever,"Meta AI,University College London (UCL),","United States of America,Unite",1.57e+20,Open weights (non-commercial),open
+2021-12-20,XGLM-7.5B,"Meta AI,Facebook AI Research","United States of America,Unite",2.25e+22,Open weights (non-commercial),open
+2021-12-23,ERNIE 3.0 Titan,"Baidu,Peng Cheng Laboratory","China,China",1.0421e+24,Hosted access (no API),closed
+2022-01-07,Detic,"Meta AI,University of Texas at Austin","United States of America,Unite",2.34399744e+19,Open weights (unrestricted),open
+2022-01-27,InstructGPT 175B,OpenAI,United States of America,3.19181e+23,API access,closed
+2022-02-02,AlphaCode,DeepMind,United Kingdom,2.38010000000001e+23,Unreleased,closed
+2022-02-07,RETRO-7B,DeepMind,United Kingdom,1.68e+22,Unreleased,closed
+2022-02-09,GPT-NeoX-20B,EleutherAI,United States of America,9.31627008e+22,Open weights (unrestricted),open
+2022-02-10,LaMDA,Google,United States of America,3.55e+23,Unreleased,closed
+2022-02-10,ProteinBERT,"Hebrew University of Jerusalem,Ben-Gurio","Israel,Israel,United States of",6.5e+19,Open weights (unrestricted),open
+2022-02-17,ST-MoE,"Google,Google Brain,Google Research","United States of America,Unite",2.9e+23,Unreleased,closed
+2022-02-22,FourCastNet,"Nvidia,NERSC, Lawrence Berkeley National","United States of America,Unite",3.4504704e+20,Unreleased,closed
+2022-02-26,PolyCoder,Carnegie Mellon University (CMU),United States of America,1.1e+21,Open weights (unrestricted),open
+2022-03-02,Statement Curriculum Learning,OpenAI,United States of America,1.7901648e+22,API access,closed
+2022-03-10,ViT-G (model soup),"University of Washington,Columbia Univer","United States of America,Unite",3.4e+21,Open weights (non-commercial),open
+2022-03-15,GPT-3.5 (davinci-002),OpenAI,United States of America,2.578e+24,API access,closed
+2022-03-21,"Segatron-XL large, M=384 + HCP","Microsoft Research,University of Waterlo","United States of America,Canad",2.65e+19,Unreleased,closed
+2022-03-24,Make-A-Scene,Meta AI,United States of America,6.4172851e+21,Unreleased,closed
+2022-03-29,Chinchilla,DeepMind,United Kingdom,5.76e+23,Unreleased,closed
+2022-04-04,PaLM (540B),Google Research,United States of America,2.5272e+24,Unreleased,closed
+2022-04-06,DALL·E 2,OpenAI,United States of America,3.3695784e+23,API access,closed
+2022-04-07,BERT-RBP,Waseda University,Japan,1.4e+20,Open weights (non-commercial),open
+2022-04-13,Stable Diffusion (LDM-KL-8-G),"Runway,Ludwig Maximilian University of M","United States of America,Germa",5.0000000000000004e+22,Open weights (unrestricted),open
+2022-04-14,Sparse all-MLP,Meta AI,United States of America,5.32224e+20,Unreleased,closed
+2022-04-29,Flamingo,DeepMind,United Kingdom,2.18972000000001e+23,Unreleased,closed
+2022-05-02,OPT-175B,Meta AI,United States of America,4.3e+23,Open weights (non-commercial),open
+2022-05-10,UL2,"Google Research,Google Brain","United States of America,Unite",1.2e+23,Open weights (unrestricted),open
+2022-05-12,Gato,DeepMind,United Kingdom,4.02e+21,Unreleased,closed
+2022-05-23,Imagen,Google Brain,United States of America,1.46e+22,API access,closed
+2022-05-27,GPT-2 Medium (FlashAttention),"Stanford University,University at Buffal","United States of America,Unite",8.9280922e+20,Open weights (unrestricted),open
+2022-05-27,Tranception,"University of Oxford,Harvard Medical Sch","United Kingdom,United States o",7.24e+21,Open weights (unrestricted),open
+2022-06-06,DITTO,"Tsinghua University,Apple,Westlake Unive","China,United States of America",3.31776e+18,Unreleased,closed
+2022-06-14,CoCa,Google Research,United States of America,7.3e+22,Unreleased,closed
+2022-06-22,Parti,Google Research,United States of America,5.09607936e+23,Unreleased,closed
+2022-06-27,ProGen2-xlarge,"Salesforce Research,Columbia University,","United States of America,Unite",1.35e+22,Open weights (unrestricted),open
+2022-06-29,Minerva (540B),Google,United States of America,2.7415e+24,Unreleased,closed
+2022-07-05,CodeT5-large,Salesforce,United States of America,2.72e+21,Open weights (unrestricted),open
+2022-07-06,NLLB,Meta AI,United States of America,1.751113728e+22,Open weights (unrestricted),open
+2022-07-11,BLOOM-176B,"Hugging Face,BigScience","United States of America,Franc",3.65664e+23,Open weights (restricted use),open
+2022-07-21,ESM2-15B,"Meta AI,New York University (NYU),Stanfo","United States of America,Unite",7.35000000001e+22,Open weights (unrestricted),open
+2022-07-22,OmegaPLM,Massachusetts Institute of Technology (M,"United States of America,China",1.03514112e+22,Unreleased,closed
+2022-08-02,AlexaTM 20B,Amazon,United States of America,2.04374016e+23,API access,closed
+2022-08-04,GLM-130B,Tsinghua University,China,3.5490054945e+23,Open weights (non-commercial),open
+2022-08-10,BlenderBot 3,"McGill University,Meta AI,Mila - Quebec ","Canada,United States of Americ",4.3e+23,Open weights (non-commercial),open
+2022-08-22,BEIT-3,Microsoft,United States of America,7e+19,Open weights (unrestricted),open
+2022-09-14,PaLI,Google,United States of America,1.69e+23,Unreleased,closed
+2022-09-21,Whisper,OpenAI,United States of America,4.2072663e+21,Open weights (unrestricted),open
+2022-10-04,DiffDock,Massachusetts Institute of Technology (M,United States of America,7.2e+19,Open weights (unrestricted),open
+2022-10-05,AlphaTensor,DeepMind,United Kingdom,7.1414784e+20,Unreleased,closed
+2022-10-11,GenSLM,"University of Chicago,Nvidia,Harvard Uni","United States of America,Unite",1.42e+21,Open weights (unrestricted),open
+2022-10-20,Flan-PaLM 540B,Google,United States of America,2.540000000001e+24,Unreleased,closed
+2022-10-20,U-PaLM (540B),Google,United States of America,2.53e+24,Unreleased,closed
+2022-11-02,eDiff-I,Nvidia,United States of America,5.46e+19,Unreleased,closed
+2022-11-03,Mogrifier RLSTM (WT2),DeepMind,United Kingdom,1.4e+17,Unreleased,closed
+2022-11-10,InternImage,"Shanghai AI Lab,Tsinghua University,Nanj","China,China,China,Hong Kong,Ho",2.408e+21,Open weights (unrestricted),open
+2022-11-14,EVA-01,Beijing Academy of Artificial Intelligen,"China,China,China,China",1.501e+22,Open weights (unrestricted),open
+2022-11-16,Galactica,Meta AI,United States of America,3.24e+23,Open weights (non-commercial),open
+2022-11-18,Fusion in Encoder,Samsung,South Korea,1.3e+20,Unreleased,closed
+2022-11-20,AR-LDM,"Alibaba,University of Waterloo,Vector In","China,Canada,Canada",5.1e+20,Unreleased,closed
+2022-11-28,Discriminator Guidance,Korea Advanced Institute of Science and ,"South Korea,South Korea",2.1570000001e+20,Open weights (non-commercial),open
+2022-12-04,Vega v2,"Wuhan University,JD Explore Academy,Shan","China,China,Singapore,United S",7.76e+22,Unreleased,closed
+2022-12-19,CaLM,University of Oxford,United Kingdom,2.9e+19,Unreleased,closed
+2022-12-28,Hybrid H3-2.7B,"Stanford University,University at Buffal","United States of America,Unite",6.48e+21,Open weights (unrestricted),open
+2023-01-05,VALL-E,Microsoft,United States of America,1.01e+19,Unreleased,closed
+2023-01-10,DreamerV3,"DeepMind,University of Toronto","United Kingdom,Canada",2.2032e+20,Unreleased,closed
+2023-01-15,Nucleotide Transformer,"Nvidia,Technical University of Munich,In","United States of America,Germa",8.08e+21,Open weights (non-commercial),open
+2023-01-16,Ankh_large,"Technical University of Munich,Columbia ","Germany,United States of Ameri",6.5e+21,Open weights (non-commercial),open
+2023-01-27,DDPM-IP (CelebA),Utrecht University,Netherlands,3.5e+20,Open weights (unrestricted),open
+2023-01-30,BLIP-2 (Q-Former),Salesforce Research,United States of America,1.20000000001e+21,Open weights (unrestricted),open
+2023-02-10,ViT-22B,Google,United States of America,1.93248e+23,Unreleased,closed
+2023-02-24,LLaMA-65B,Meta AI,United States of America,5.5e+23,Open weights (non-commercial),open
+2023-03-02,DiT-XL/2,"New York University (NYU),University of ","United States of America,Unite",6e+20,Open weights (non-commercial),open
+2023-03-05,AudioGen,"Meta AI,Hebrew University of Jerusalem","United States of America,Israe",9.5e+21,Open weights (non-commercial),open
+2023-03-15,Falcon-40B,Technology Innovation Institute,United Arab Emirates,2.4e+23,Open weights (unrestricted),open
+2023-03-15,GPT-4 (Mar 2023),OpenAI,United States of America,2.1e+25,API access,closed
+2023-03-20,PanGu-Σ,Huawei Noah's Ark Lab,China,4.67e+23,Unreleased,closed
+2023-03-27,SigLIP 400M,Google DeepMind,United States of America,4.9467301e+21,Open weights (unrestricted),open
+2023-03-29,VideoMAE V2,"Nanjing University,Shenzhen Institute of","China,China,China",9.7e+21,Open weights (unrestricted),open
+2023-03-30,BloombergGPT,"Bloomberg,Johns Hopkins University","United States of America,Unite",2.36e+23,Unreleased,closed
+2023-04-05,Segment Anything Model,Meta AI,United States of America,7.8e+21,Open weights (unrestricted),open
+2023-04-09,Incoder-6.7B,"Facebook AI Research,University of Washi","United States of America,Franc",3.00001e+21,Open weights (non-commercial),open
+2023-04-14,DINOv2,"Facebook AI Research,INRIA","United States of America,Franc",7.41851136e+21,Open weights (unrestricted),open
+2023-04-17,LLaVA,"University of Wisconsin Madison,Microsof","United States of America,Unite",7.8049e+22,Open weights (unrestricted),open
+2023-05-09,StarCoder,"Hugging Face,ServiceNow,Northeastern Uni","United States of America,Unite",8.46e+22,Open weights (restricted use),open
+2023-05-10,PaLM 2,Google,United States of America,7.34e+24,API access,closed
+2023-05-11,InstructBLIP,"Salesforce Research,Hong Kong University","United States of America,Hong ",1.94e+20,Open weights (non-commercial),open
+2023-05-18,ONE-PEACE,"Alibaba,Huazhong University of Science a","China,China",1.8e+20,Open weights (unrestricted),open
+2023-05-29,PaLI-X,Google Research,United States of America,5.6e+23,Unreleased,closed
+2023-06-13,GPT-4 (Jun 2023),OpenAI,United States of America,2.1e+25,API access,closed
+2023-06-27,HyenaDNA,"Stanford University,Harvard University,M","United States of America,Unite",1.811e+21,Open weights (restricted use),open
+2023-07-05,Pangu-Weather,Huawei,China,3.98e+22,Open weights (non-commercial),open
+2023-07-06,InternLM,"Shanghai AI Lab,SenseTime","China,Hong Kong",9.984e+23,Unreleased,closed
+2023-07-06,xTrimoPGLM -100B,"Tsinghua University,BioMap Research","China,China",6.2e+23,Unreleased,closed
+2023-07-11,Claude 2,Anthropic,United States of America,3.866e+24,API access,closed
+2023-07-18,Llama 2-70B,Meta AI,United States of America,8.1e+23,Open weights (restricted use),open
+2023-07-18,Llama 2-7B,Meta AI,United States of America,8.4e+22,Open weights (restricted use),open
+2023-07-26,AudioLM,Google Research,United States of America,3.9e+18,Unreleased,closed
+2023-08-05,GGNN,"Westlake University,Tsinghua University,","China,China,United States of A",7.56e+21,Unreleased,closed
+2023-08-28,PeptideBERT,Carnegie Mellon University (CMU),United States of America,4.9e+16,Open weights (unrestricted),open
+2023-08-29,Jais,"Cerebras Systems,Mohamed bin Zayed Unive","United States of America,Unite",4.8946763e+22,Open weights (unrestricted),open
+2023-08-30,Swift,Intel Labs,United States of America,5.337e+16,Unreleased,closed
+2023-09-06,Falcon-180B,Technology Innovation Institute,United Arab Emirates,3.76e+24,Open weights (restricted use),open
+2023-09-28,Amazon Titan,Amazon,United States of America,4.8e+24,API access,closed
+2023-10-07,FinGPT-13B,University of California Los Angeles (UC,"United States of America,Unite",1.6e+23,Open weights (unrestricted),open
+2023-10-09,RoseTTAFold All-Atom (RFAA),"University of Washington,Seoul National ","United States of America,South",2.14e+20,Open weights (unrestricted),open
+2023-10-26,CODEFUSION (Python),"Microsoft,Microsoft Research","United States of America,Unite",7.92e+18,Unreleased,closed
+2023-10-27,ChatGLM3-6B,Z.ai (Zhipu AI),China,5.04e+22,Open weights (restricted use),open
+2023-10-30,Skywork-13B,Kunlun Inc.,China,2.5e+23,Open weights (restricted use),open
+2023-11-02,Yi-34B,01.AI,China,6.1e+23,Open weights (restricted use),open
+2023-11-04,Grok-1,xAI,United States of America,2.90000000001e+24,Open weights (unrestricted),open
+2023-11-05,LLaVA 1.5,"University of Wisconsin Madison,Microsof","United States of America,Unite",7.807e+22,Open weights (restricted use),open
+2023-11-06,CogVLM-17B,"Tsinghua University,Z.ai (Zhipu AI),Beih","China,China,China",6.331e+22,Open weights (restricted use),open
+2023-11-08,MultiBand Diffusion,"Meta AI,Hebrew University of Jerusalem,L","United States of America,Israe",2.6e+19,Open weights (unrestricted),open
+2023-11-08,RoFormer,Zhuiyi Technology,China,2.162688e+18,Unreleased,closed
+2023-11-13,SPHINX (Llama 2 13B),"Shanghai AI Lab,Chinese University of Ho","China,Hong Kong,China",3.04e+22,Open weights (restricted use),open
+2023-11-13,Volcano 13B,"Korea University,Korea Advanced Institut","South Korea,South Korea,South ",4.56e+22,Open weights (non-commercial),open
+2023-11-14,GraphCast,Google DeepMind,United States of America,2.1000000000000002e+22,Open weights (non-commercial),open
+2023-11-15,Nemotron-3-8B,Nvidia,United States of America,1.8e+23,Open weights (restricted use),open
+2023-11-22,Inflection-2,Inflection AI,United States of America,1.001e+25,Hosted access (no API),closed
+2023-11-30,Qwen-72B,Alibaba,China,1.3e+24,Open weights (restricted use),open
+2023-12-06,Gemini 1.0 Ultra,Google DeepMind,United States of America,5.0000000001e+25,API access,closed
+2023-12-07,Llama Guard,Meta AI,United States of America,1.6e+23,Open weights (restricted use),open
+2023-12-11,Mixtral 8x7B,Mistral AI,France,7.74e+23,Open weights (unrestricted),open
+2023-12-12,VILA-13B,"Nvidia,Massachusetts Institute of Techno","United States of America,Unite",2.3003136e+21,Open weights (non-commercial),open
+2023-12-14,CogAgent,"Tsinghua University,Z.ai (Zhipu AI)","China,China",6.707e+22,Open weights (restricted use),open
+2023-12-14,FunSearch,Google DeepMind,United States of America,3.87e+23,Open weights (unrestricted),open
+2023-12-21,nekomata-14b,rinna,Japan,2.5562e+23,Open weights (restricted use),open
+2023-12-23,GQA-8-XXL,Google Research,United States of America,3.4912896e+22,Unreleased,closed
+2024-02-04,Qwen1.5-72B,Alibaba,China,1.3e+24,Open weights (restricted use),open
+2024-02-22,Stable Diffusion 3,Stability AI,United Kingdom,5.0000000000000004e+22,API access,closed
+2024-02-23,MegaScale (Production),"ByteDance,Peking University","China,China",3.9e+24,Unreleased,closed
+2024-03-04,Aramco Metabrain AI,Saudi Aramco,Saudi Arabia,1.05e+25,Unreleased,closed
+2024-03-07,Inflection-2.5,Inflection AI,United States of America,8.000001e+24,Hosted access (no API),closed
+2024-03-14,MM1-30B,Apple,United States of America,4.86e+23,Unreleased,closed
+2024-03-27,DBRX,Databricks,United States of America,2.6e+24,Open weights (restricted use),open
+2024-04-15,Reka Core,Reka AI,United States of America,8.400010000000001e+24,API access,closed
+2024-04-18,Llama 3-70B,Meta AI,United States of America,7.861e+24,Open weights (restricted use),open
+2024-05-01,GenCast,Google DeepMind,United States of America,8.169984e+20,Open weights (non-commercial),open
+2024-05-03,VILA1.5-13B,"Nvidia,Massachusetts Institute of Techno","United States of America,Unite",2.3003136e+21,Open weights (non-commercial),open
+2024-05-08,AlphaFold 3,"Google DeepMind,Isomorphic Labs","United States of America,Unite",4.1405645e+22,Open weights (non-commercial),open
+2024-05-13,Yi-Large,01.AI,China,1.8e+24,API access,closed
+2024-05-20,Octo-Base,"University of California (UC) Berkeley,S","United States of America,Unite",5.85e+20,Open weights (unrestricted),open
+2024-05-21,ALLaM adapted 70B,Saudi Data and Artificial Intelligence A,Saudi Arabia,1.062e+24,Unreleased,closed
+2024-06-07,Qwen2-72B,Alibaba,China,3.02e+24,Open weights (unrestricted),open
+2024-06-13,OpenVLA,"Stanford University,University of Califo","United States of America,Unite",1.1e+23,Open weights (unrestricted),open
+2024-06-14,Nemotron-4 340B,Nvidia,United States of America,1.8e+25,Open weights (unrestricted),open
+2024-06-17,DeepSeek-Coder-V2 236B,DeepSeek,China,1.2852e+24,Open weights (restricted use),open
+2024-06-20,Claude 3.5 Sonnet,Anthropic,United States of America,2.700000000000001e+25,API access,closed
+2024-06-25,ESM3 (98B),"EvolutionaryScale,University of Californ","United States of America,Unite",1.07e+24,Unreleased,closed
+2024-07-23,Llama 3.1-405B,Meta AI,United States of America,3.8e+25,Open weights (restricted use),open
+2024-07-29,AFM-on-device,Apple,United States of America,4.5126e+23,Hosted access (no API),closed
+2024-07-29,AFM-server,Apple,United States of America,4.3e+24,Hosted access (no API),closed
+2024-08-06,LLaVA-OV-72B,"ByteDance,Nanyang Technological Universi","China,Singapore,Hong Kong,Hong",3.036551985824e+24,Open weights (unrestricted),open
+2024-08-13,Grok-2,xAI,United States of America,2.96e+25,API access,closed
+2024-09-06,DeepSeek-V2.5,DeepSeek,China,1.7892e+24,Open weights (restricted use),open
+2024-09-17,Qwen2.5-32B,Alibaba,China,3.51e+24,Open weights (unrestricted),open
+2024-09-19,Qwen2.5 Instruct (72B),Alibaba,China,7.8516e+24,Open weights (restricted use),open
+2024-09-19,Qwen2.5-72B,Alibaba,China,7.8e+24,Open weights (unrestricted),open
+2024-09-20,Telechat2-115B,China Telecom,China,6.9e+24,Open weights (restricted use),open
+2024-09-24,Llama 3.2 11B,Meta AI,United States of America,5.79e+23,Open weights (restricted use),open
+2024-10-04,Movie Gen Video,Meta AI,United States of America,1.65e+24,Unreleased,closed
+2024-10-10,RDT-1B,Tsinghua University,China,4.06e+22,Open weights (unrestricted),open
+2024-10-12,Llama-3.1-Nemotron-70B-Instruct,"Nvidia,Meta AI","United States of America,Unite",7.929e+24,Open weights (restricted use),open
+2024-10-15,CHAI-1,Chai discovery,United States of America,7.7605724e+21,Open weights (non-commercial),open
+2024-10-16,Yi-Lightning,01.AI,China,1.5e+24,API access,closed
+2024-10-22,NVLM-D 72B,Nvidia,United States of America,3.02e+24,Open weights (non-commercial),open
+2024-10-22,NVLM-H 72B,Nvidia,United States of America,3.02e+24,Unreleased,closed
+2024-10-22,NVLM-X 72B,Nvidia,United States of America,3.0398181e+24,Unreleased,closed
+2024-10-28,Doubao-pro,ByteDance,China,2.505e+25,API access,closed
+2024-11-06,Hunyuan-Large,Tencent,China,3.49237e+24,Open weights (restricted use),open
+2024-12-03,Amazon Nova Pro,Amazon,United States of America,6.000010000000001e+24,API access,closed
+2024-12-06,Llama 3.3 70B,Meta AI,United States of America,6.8649768e+24,Open weights (restricted use),open
+2024-12-09,EXAONE 3.5 32B,LG AI Research,South Korea,1.25e+24,Open weights (non-commercial),open
+2024-12-24,DeepSeek-V3,DeepSeek,China,3.3e+24,Open weights (restricted use),open
+2025-01-02,Eurus-2-7B-PRIME,"Tsinghua University,University of Illino","China,United States of America",4.01915904e+20,Open weights (unrestricted),open
+2025-01-20,DeepSeek-R1,DeepSeek,China,3.5e+24,Open weights (unrestricted),open
+2025-01-20,Eagle 2,"Nvidia,Nanjing University,Tsinghua Unive","United States of America,China",4.7156e+22,Open weights (non-commercial),open
+2025-02-17,Grok 3,xAI,United States of America,3.5e+26,API access,closed
+2025-02-24,Claude 3.7 Sonnet,Anthropic,United States of America,3.35e+25,API access,closed
+2025-02-27,GPT-4.5,OpenAI,United States of America,3.8e+26,API access,closed
+2025-03-06,QwQ-32B,Alibaba,China,3.51e+24,Open weights (unrestricted),open
+2025-03-11,Hunyuan-TurboS,Tencent,China,5.4e+24,API access,closed
+2025-03-16,EXAONE Deep 32B,LG AI Research,South Korea,1.26e+24,Open weights (non-commercial),open
+2025-03-24,DeepSeek-V3 (Mar 2025),DeepSeek,China,3.3e+24,Open weights (restricted use),open
+2025-04-05,Llama 4 Behemoth (preview),Meta AI,United States of America,5.18400000000001e+25,Unreleased,closed
+2025-04-05,Llama 4 Maverick,Meta AI,United States of America,2.244000000001e+24,Open weights (restricted use),open
+2025-04-05,Llama 4 Scout,Meta AI,United States of America,4.08e+24,Open weights (restricted use),open
+2025-04-10,Pangu Ultra,Huawei,China,1.0692e+25,Hosted access (no API),closed
+2025-04-29,Qwen3-235B-A22B,Alibaba,China,4.752e+24,Open weights (unrestricted),open
+2025-05-11,Seed1.5-VL,ByteDance,China,1.388556e+24,API access,closed
+2025-05-28,DeepSeek-R1 (May 2025),DeepSeek,China,4.020010000000001e+24,Open weights (unrestricted),open
+2025-06-12,FGN,Google DeepMind,United States of America,9.618950880000001e+21,Unreleased,closed
+2025-07-09,Grok 4,xAI,United States of America,5.0000000000001e+26,API access,closed
+2025-07-11,Kimi K2,Moonshot,China,2.976e+24,Open weights (restricted use),open
+2025-07-15,EXAONE 4.0 (32B),LG AI Research,South Korea,2.69000000000001e+24,Open weights (non-commercial),open
+2025-07-22,Qwen3-Coder-480B-A35B,Alibaba,China,1.575e+24,Open weights (unrestricted),open
+2025-07-25,Qwen3-235B-A22B (Jul 2025),Alibaba,China,4.752e+24,Open weights (unrestricted),open
+2025-07-25,Qwen3-235B-A22B-Thinking (Jul 2025),Alibaba,China,4.752e+24,Open weights (unrestricted),open
+2025-07-28,GLM-4.5,"Z.ai (Zhipu AI),Tsinghua University","China,China",4.42e+24,Open weights (unrestricted),open
+2025-08-05,gpt-oss-120b,OpenAI,United States of America,4.94e+24,Open weights (unrestricted),open
+2025-08-05,gpt-oss-20b,OpenAI,United States of America,5.49e+23,Open weights (unrestricted),open
+2025-08-07,GPT-5,OpenAI,United States of America,6.6e+25,API access,closed
+2025-09-01,LongCat-Flash,Meituan Inc,China,3.726e+24,Open weights (unrestricted),open
+2025-09-05,Qwen3-Max,Alibaba,China,1.512e+25,API access,closed
+2025-09-16,AgentFounder-30B,Alibaba,China,6.5367e+23,Open weights (unrestricted),open
+2025-09-22,Qwen3-Omni-30B-A3B,Alibaba,China,3.6e+22,Open weights (unrestricted),open
+2025-09-30,GLM-4.6,"Z.ai (Zhipu AI),Tsinghua University","China,China",4.42e+24,Open weights (unrestricted),open
+2025-10-10,Ling-1T,Ant Group,China,6.000001e+24,Open weights (unrestricted),open
+2025-11-06,Kimi K2 Thinking,Moonshot,China,4.2e+24,Open weights (restricted use),open
+2025-11-20,Olmo 3,Allen Institute for AI,United States of America,1.1e+24,Open weights (unrestricted),open
+2025-12-15,Nemotron 3-Nano-30B-A3B,Nvidia,United States of America,4.8e+23,Open weights (restricted use),open
+2025-12-22,GLM-4.7,Z.ai (Zhipu AI),China,4.42e+24,Open weights (unrestricted),open
+2025-12-31,K-EXAONE,LG AI Research,South Korea,1.52e+24,Open weights (restricted use),open
+2025-12-31,Solar Open 100B,Upstage,South Korea,1.4e+24,Open weights (restricted use),open
+2026-02-02,Kimi K2.5,Moonshot,China,5.8e+24,Open weights (unrestricted),open
+2026-02-12,GLM-5,Z.ai (Zhipu AI),China,6.84e+24,Open weights (unrestricted),open
+2026-03-19,Composer 2,Cursor,United States of America,2.32e+25,API access,closed
+2026-04-05,MolmoAct 2,"Allen Institute for AI,University of Was","United States of America,Unite",1.1e+22,Open weights (unrestricted),open
+2026-04-09,EXAONE 4.5,LG AI Research,South Korea,3.85e+24,Open weights (restricted use),open
+2026-04-23,MiMo-V2.5-Pro,Xiaomi Corp,China,6.804e+24,Open weights (unrestricted),open
+2026-04-24,DeepSeek-V4-Flash,DeepSeek,China,2.496e+24,Open weights (unrestricted),open
+2026-04-24,DeepSeek-V4-Pro,DeepSeek,China,9.702e+24,Open weights (unrestricted),open
+2026-05-18,Composer 2.5,Cursor,United States of America,3.87e+25,API access,closed
+2026-06-04,Nemotron 3 Ultra,Nvidia,United States of America,6.6e+24,Open weights (unrestricted),open
+2026-06-28,Solar Open2 250B,Upstage,South Korea,1.05e+24,Open weights (unrestricted),open
+2026-06-29,LongCat-2.0,Meituan Inc,China,1.008e+25,Open weights (unrestricted),open
+2026-07-15,Inkling,Thinking Machines,United States of America,1.1e+25,Open weights (unrestricted),open
+2026-07-16,Kimi K3,Moonshot,China,2.0001e+25,Open weights (non-commercial),open
+2026-07-29,A.X K2,SK Telecom,South Korea,1.8e+24,Open weights (unrestricted),open
+2026-07-31,K-EXAONE 2.0,LG AI Research,South Korea,3.55e+24,Open weights (unrestricted),open
+2026-08-07,Motif-3,Motif Technologies,South Korea,1.1e+24,Open weights (unrestricted),open
+2026-08-20,GLM-5.3-Flash,Z.ai (Zhipu AI),China,3.24e+24,Open weights (unrestricted),open
+2026-09-03,GPT-6 Astra,OpenAI,United States of America,9.4e+26,API access,closed
+2026-09-03,WeatherNext 3,"Google DeepMind,Google Research","United States of America,Unite",2.0725198384e+23,Hosted access (no API),closed
+2026-09-09,DeepSeek V4.1 Flash,DeepSeek,China,4.32e+24,Open weights (unrestricted),open

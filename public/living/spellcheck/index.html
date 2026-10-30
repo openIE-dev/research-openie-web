@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Living · Spell Check is Global</title>
+<link rel="stylesheet" href="../css/living.css"/>
+<style>
+  .figure-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem 1.25rem; margin: 1.75rem 0; scroll-margin-top: 4.5rem; }
+  .figure-block h2 { font-family: var(--mono); font-size: 1.05rem; margin: 0 0 0.75rem; color: #f1f5f9; }
+  .figure-block .id { font-family: var(--mono); color: var(--accent); font-size: 0.85em; }
+  .teach { color: #cbd5e1; font-size: 0.92rem; line-height: 1.55; margin: 0.55rem 0 0.85rem; }
+  .teach strong { color: #f1f5f9; }
+  .teach-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 0.75rem 0; }
+  .teach-table th, .teach-table td { border: 1px solid var(--border); padding: 0.4rem 0.55rem; text-align: left; vertical-align: top; }
+  .teach-table th { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); background: #0f172a; }
+  .svg-wrap { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; }
+  .ev-chip { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.15rem 0.45rem; border-radius: 4px; border: 1px solid var(--border); color: var(--warn); background: #1c1917; margin-right: 0.35rem; }
+  .ev-chip.real { color: var(--allow); border-color: #065f46; }
+  .ev-chip.model { color: var(--soft); border-color: #5b21b6; }
+  .lesson { background: #0f172a; border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1rem; margin: 1rem 0 1.5rem; }
+  .lesson h3 { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: #5eead4; margin: 0 0 0.45rem; }
+  .lesson ol { margin: 0; padding-left: 1.2rem; color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; }
+  .toc { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.2rem; }
+  .toc ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+  .toc .id { font-family: var(--mono); color: var(--accent); }
+  .draw { stroke-dasharray: 640; stroke-dashoffset: 640; animation: draw 4.5s ease forwards; }
+  .pulse { animation: pulse 4.5s ease 4.6s infinite; }
+  .stage { opacity: 0.35; }
+  .stage.s1 { animation: stage 9s ease-in-out infinite; }
+  .stage.s2 { animation: stage 9s ease-in-out 3s infinite; }
+  .stage.s3 { animation: stage 9s ease-in-out 6s infinite; }
+  .joule-stay { animation: joule 9s ease-in-out 6s infinite; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+  @keyframes stage { 0%, 8% { opacity: 0.35; } 18%, 40% { opacity: 1; } 55%, 100% { opacity: 0.35; } }
+  @keyframes joule { 0%, 50% { opacity: 0.4; } 70%, 100% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .draw, .pulse, .stage, .joule-stay { animation: none; opacity: 1; stroke-dashoffset: 0; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <div class="brand">P5 · Spell Check is Global</div>
+    <nav class="nav">
+      <a href="../index.html">Hub</a>
+      <a href="../ni/index.html">NI</a>
+      <a href="../satiation/index.html">Satiation</a>
+      <a href="../mol/index.html">Mixture of Limits</a>
+      <a href="../mei/index.html">Metabolic Intelligence</a>
+      <a href="index.html" class="active">Spell check</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="hero">
+    <h1>Spell Check is Global</h1>
+    <p class="deck-line">AI is going to follow the path of all computer automation. Spell check is the completed example. Energy to run is the only true metric. What remains is joules.</p>
+    <p class="subtitle">Teaching figures for <a href="/papers/spellcheck/">/papers/spellcheck/</a>.
+      The curve below is a labeled illustration of cited endpoints. No coefficient is estimated.
+      Estimates are not package <code>measured_j</code>. <code>board_synth_claimed=false</code>.
+      The many (7B+) and the few (under 500M) are an access framing, not a census.</p>
+  </div>
+
+  <div class="lesson" id="how-to-read">
+    <h3>How to read this page</h3>
+    <ol>
+      <li><strong>Three prices.</strong> Bureau, then moat, then the separate price is gone.</li>
+      <li><strong>Two dots, not a fit.</strong> Nordhaus published the endpoints. The dashed line only connects them.</li>
+      <li><strong>The race is cited, not refit.</strong> Epoch's rates stay in Epoch's notes.</li>
+      <li><strong>Spell check finished the money curve.</strong> The joules did not go to zero.</li>
+      <li><strong>Seven hardware records.</strong> Each category has its own source and year. Do not add the rows.</li>
+      <li><strong>The installed generation is the reach.</strong> The latest die is a shipment. Software for the generation in hand has the largest impact.</li>
+    </ol>
+  </div>
+
+  <nav class="toc" aria-label="Figure TOC">
+    <h2>Figure IDs</h2>
+    <ul>
+      <li><a href="#sc-anim-01"><span class="id">sc-anim-01</span> Commoditization illustration</a></li>
+      <li><a href="#sc-reg-01"><span class="id">sc-reg-01</span> Three price regimes</a></li>
+      <li><a href="#sc-tok-01"><span class="id">sc-tok-01</span> One token, taught in order</a></li>
+      <li><a href="#sc-tab-01"><span class="id">sc-tab-01</span> Cited anchors</a></li>
+      <li><a href="#sc-hw-01"><span class="id">sc-hw-01</span> Seven hardware records</a></li>
+      <li><a href="#sc-gen-01"><span class="id">sc-gen-01</span> Prior generation still in hand</a></li>
+      <li><a href="#sc-price-01"><span class="id">sc-price-01</span> Dated prices and how long each lasted</a></li>
+    </ul>
+  </nav>
+
+  <section id="sc-anim-01" class="figure-block">
+    <h2><span class="id">sc-anim-01</span> Commoditization illustration</h2>
+    <p><span class="ev-chip model">Labeled illustration</span> <span class="ev-chip">Not a regression</span> <span class="ev-chip real">Cited endpoints only</span></p>
+    <p class="teach">The dashed connector draws from Nordhaus's manual-era price to his 2006 price. The motion joins two published numbers. No slope is fit. The callout is Epoch's summary of a recent inference-price window. Spell check is the bottom row: the separate money price of a correction is gone. The joule remainder stays lit. Commoditization leaves the physics in place.</p>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 760 460" width="100%" height="auto" role="img" aria-label="Illustration connecting Nordhaus computation-price endpoints, then the spell-check end state">
+        <rect width="760" height="460" fill="#0f172a"/>
+        <text x="24" y="28" fill="#5eead4" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="13">sc-anim-01 · illustration, no coefficient estimated</text>
+        <text x="24" y="52" fill="#94a3b8" font-family="IBM Plex Sans, sans-serif" font-size="13">Log money-price of computation. Axis is qualitative. Only the two dots are Nordhaus's reported endpoints.</text>
+        <line x1="70" y1="250" x2="700" y2="250" stroke="#334155" stroke-width="1"/>
+        <line x1="70" y1="80" x2="70" y2="250" stroke="#334155" stroke-width="1"/>
+        <text x="78" y="78" fill="#94a3b8" font-size="11" font-family="IBM Plex Mono, monospace">higher money price</text>
+        <text x="600" y="268" fill="#94a3b8" font-size="11" font-family="IBM Plex Mono, monospace">2006</text>
+        <text x="70" y="268" fill="#94a3b8" font-size="11" font-family="IBM Plex Mono, monospace">manual era</text>
+        <line class="draw" x1="90" y1="100" x2="660" y2="230" stroke="#5eead4" stroke-width="2" fill="none"/>
+        <circle cx="90" cy="100" r="7" fill="#fbbf24"/>
+        <circle class="pulse" cx="660" cy="230" r="7" fill="#34d399"/>
+        <text x="104" y="96" fill="#fde68a" font-size="12" font-family="IBM Plex Sans, sans-serif">~$500 per MCPS</text>
+        <text x="104" y="112" fill="#94a3b8" font-size="11" font-family="IBM Plex Sans, sans-serif">Nordhaus 2007, 2006 prices</text>
+        <text x="430" y="214" fill="#a7f3d0" font-size="12" font-family="IBM Plex Sans, sans-serif">~$6×10⁻¹¹ per MCPS</text>
+        <text x="430" y="200" fill="#94a3b8" font-size="11" font-family="IBM Plex Sans, sans-serif">factor ~7 trillion, his figure</text>
+        <rect x="400" y="78" width="330" height="78" rx="8" fill="#111827" stroke="#c4b5fd"/>
+        <text x="414" y="98" fill="#c4b5fd" font-size="11" font-family="IBM Plex Mono, monospace">CITED SUMMARY, NOT A FIT</text>
+        <text x="414" y="116" fill="#e2e8f0" font-size="12" font-family="IBM Plex Sans, sans-serif">Epoch 2025: 9× to 900× / year</text>
+        <text x="414" y="134" fill="#e2e8f0" font-size="12" font-family="IBM Plex Sans, sans-serif">Emberson 2026: ~13× / year summary</text>
+        <text x="414" y="148" fill="#94a3b8" font-size="11" font-family="IBM Plex Sans, sans-serif">Their window. Not refit here.</text>
+        <text x="24" y="310" fill="#5eead4" font-family="IBM Plex Mono, monospace" font-size="12">Spell check, the completed money curve</text>
+        <rect class="stage s1" x="24" y="328" width="160" height="64" rx="8" fill="#111827" stroke="#fbbf24"/>
+        <text x="36" y="354" fill="#fbbf24" font-size="12" font-family="IBM Plex Mono, monospace">1 Bureau</text>
+        <text x="36" y="374" fill="#e2e8f0" font-size="12" font-family="IBM Plex Sans, sans-serif">proofreader's price</text>
+        <rect class="stage s2" x="200" y="328" width="180" height="64" rx="8" fill="#111827" stroke="#60a5fa"/>
+        <text x="212" y="354" fill="#60a5fa" font-size="12" font-family="IBM Plex Mono, monospace">2 Moat race</text>
+        <text x="212" y="374" fill="#e2e8f0" font-size="12" font-family="IBM Plex Sans, sans-serif">token, rent, access fee</text>
+        <rect class="stage s3" x="396" y="328" width="180" height="64" rx="8" fill="#111827" stroke="#34d399"/>
+        <text x="408" y="354" fill="#34d399" font-size="12" font-family="IBM Plex Mono, monospace">3 Price gone</text>
+        <text x="408" y="374" fill="#e2e8f0" font-size="12" font-family="IBM Plex Sans, sans-serif">Hunspell, local, free</text>
+        <rect class="joule-stay" x="592" y="328" width="144" height="64" rx="8" fill="#111827" stroke="#fde68a"/>
+        <text x="604" y="354" fill="#fde68a" font-size="12" font-family="IBM Plex Mono, monospace">Remains</text>
+        <text x="604" y="374" fill="#e2e8f0" font-size="12" font-family="IBM Plex Sans, sans-serif">joules, unmetered</text>
+        <text x="24" y="430" fill="#94a3b8" font-size="12" font-family="IBM Plex Sans, sans-serif">7B+ and &lt;500M are an access framing, not a point on this picture. Landauer and Horowitz name why joules remain. No measured_j.</text>
+      </svg>
+    </div>
+    <p class="caption">Sources: Nordhaus, Journal of Economic History, 2007. Epoch AI, 12 March 2025. Emberson and Roodman, 22 September 2026. Hunspell README. Landauer 1961. Horowitz, ISSCC 2014. Study: <a href="/papers/spellcheck/">/papers/spellcheck/</a>.</p>
+  </section>
+
+  <section id="sc-reg-01" class="figure-block">
+    <h2><span class="id">sc-reg-01</span> Three price regimes</h2>
+    <p><span class="ev-chip model">Teaching diagram</span></p>
+    <p class="teach">Read left to right. Moat rent is the signal that invites a rival to bundle the same job into hardware people already have. Spell check is that race after it ends. AI inference, on Epoch's notes, is still in the middle box.</p>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 760 200" width="100%" height="auto" role="img" aria-label="Bureau price, moat rent, and pricing elimination">
+        <rect width="760" height="200" fill="#0f172a"/>
+        <rect x="16" y="36" width="210" height="120" rx="8" fill="#111827" stroke="#fbbf24"/>
+        <text x="28" y="64" fill="#fbbf24" font-family="IBM Plex Mono, monospace" font-size="13">Bureau price</text>
+        <text x="28" y="90" fill="#e2e8f0" font-size="13" font-family="IBM Plex Sans, sans-serif">Scarce procedure.</text>
+        <text x="28" y="110" fill="#e2e8f0" font-size="13" font-family="IBM Plex Sans, sans-serif">A person or a booked</text>
+        <text x="28" y="130" fill="#e2e8f0" font-size="13" font-family="IBM Plex Sans, sans-serif">machine sends a bill.</text>
+        <rect x="250" y="36" width="230" height="120" rx="8" fill="#111827" stroke="#60a5fa"/>
+        <text x="262" y="64" fill="#60a5fa" font-family="IBM Plex Mono, monospace" font-size="13">Moat rent</text>
+        <text x="262" y="90" fill="#e2e8f0" font-size="13" font-family="IBM Plex Sans, sans-serif">Token price, access fee,</text>
+        <text x="262" y="110" fill="#e2e8f0" font-size="13" font-family="IBM Plex Sans, sans-serif">parameter-count premium.</text>
+        <text x="262" y="130" fill="#e2e8f0" font-size="13" font-family="IBM Plex Sans, sans-serif">The rent invites the race.</text>
+        <rect x="504" y="36" width="240" height="120" rx="8" fill="#111827" stroke="#34d399"/>
+        <text x="516" y="64" fill="#34d399" font-family="IBM Plex Mono, monospace" font-size="13">Price eliminated</text>
+        <text x="516" y="90" fill="#e2e8f0" font-size="13" font-family="IBM Plex Sans, sans-serif">Spell check in the editor.</text>
+        <text x="516" y="110" fill="#e2e8f0" font-size="13" font-family="IBM Plex Sans, sans-serif">License price of the</text>
+        <text x="516" y="130" fill="#e2e8f0" font-size="13" font-family="IBM Plex Sans, sans-serif">library is zero. Joules stay.</text>
+      </svg>
+    </div>
+  </section>
+
+  <section id="sc-tok-01" class="figure-block">
+    <h2><span class="id">sc-tok-01</span> One token, taught in order</h2>
+    <p><span class="ev-chip real">Norvig's documented call</span></p>
+    <p class="teach"><code>correction('speling')</code> returns <code>spelling</code> in Norvig's essay. The steps are the companion laws on a finished path. Lookup, then a short edit. The suggestion is a proposal until commit. Further candidates stop when the token is kept. A frontier model that also says "spelling" has not produced a better word. It has produced the same word at a money price commoditization removes. His reported final test, 68 percent of 400 pairs at 35 words per second, is the toy's score, not an industrial claim.</p>
+    <table class="teach-table">
+      <thead><tr><th>Step</th><th>What happens</th><th>Which study</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>The string is already on the machine.</td><td>Automation path</td></tr>
+        <tr><td>2</td><td>Is it in the local list? If not, try edit distance one.</td><td>Mixture of Limits</td></tr>
+        <tr><td>3</td><td>Show the suggestion. Write it only on acceptance.</td><td>Notational Intelligence</td></tr>
+        <tr><td>4</td><td>Once kept, more candidates do not change the predicate.</td><td>Satiation</td></tr>
+        <tr><td>5</td><td>The invoice can be zero. The probe still spends joules.</td><td>Metabolic Intelligence</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="sc-tab-01" class="figure-block">
+    <h2><span class="id">sc-tab-01</span> Cited anchors</h2>
+    <p class="teach">Every number in this table is the source's number. The rightmost column states how this page uses it.</p>
+    <table class="teach-table">
+      <thead><tr><th>Anchor</th><th>What it says</th><th>Use here</th></tr></thead>
+      <tbody>
+        <tr><td>Nordhaus 2007</td><td>Computation price from about $500 per MCPS to about 6×10⁻¹¹ by 2006, in 2006 prices. About seven trillion times.</td><td>Two endpoints. Connector is not a fit.</td></tr>
+        <tr><td>Epoch AI 2025</td><td>Fixed-performance inference prices fell on the order of 9× to 900× per year across that note's benchmarks.</td><td>The race is fast and uneven. Not one slope.</td></tr>
+        <tr><td>Emberson and Roodman 2026</td><td>About 47 percent per quarter, summarized as about 13× per year, since about 2023.</td><td>Their summary. Not extended past their window.</td></tr>
+        <tr><td>Damerau 1964; Kukich 1992</td><td>Single-error correction, then the three-problem map.</td><td>The capability is a published procedure.</td></tr>
+        <tr><td>McIlroy 1982</td><td>30,000-word list squeezed to 26,000 16-bit words so the checker could run on minicomputers.</td><td>Paired to the machine people already had.</td></tr>
+        <tr><td>Norvig 2007</td><td>75% of 270; 68% of 400; 41 and 35 words per second. Written with no network.</td><td>Local gear. Not the industrial ceiling.</td></tr>
+        <tr><td>Hunspell README</td><td>Free library. Local dictionary. Named in ordinary editors.</td><td>Separate money price eliminated.</td></tr>
+        <tr><td>Hard et al. 2018</td><td>1.4 MB on-device next-word model. Raw typing stays on the phone. Their install claim is not our 7B+ framing.</td><td>Pairing, not a spelling score.</td></tr>
+        <tr><td>Landauer 1961; Horowitz 2014</td><td>Erasure has a floor. Practical CMOS cost is mostly moving data.</td><td>Why joules remain. No new total computed.</td></tr>
+        <tr><td>Section 2.10 sources</td><td>Shipments, subscribers, revenue, and one survey. See sc-hw-01.</td><td>Seven records. Not a sum. Not 7B+.</td></tr>
+        <tr><td>Section 2.11 prices</td><td>Anita, HP-35, TI-2500, VisiCalc, Lotus, WordPerfect, Word. See sc-price-01.</td><td>Dated observations. Gaps stay blank. Disagreeing dates are both printed.</td></tr>
+      </tbody>
+    </table>
+    <p class="caption">Klere (klere.ai) is the product home of Metabolic Intelligence, not a prison. Spell check finished this path in editors that are not Klere. PDF: <a href="/pdfs/spellcheck.pdf">/pdfs/spellcheck.pdf</a>.</p>
+  </section>
+</main>
+
+  <section id="sc-hw-01" class="figure-block">
+    <h2><span class="id">sc-hw-01</span> Seven hardware records</h2>
+    <p><span class="ev-chip real">Publisher figures</span> <span class="ev-chip">Not one comparison</span> <span class="ev-chip">Not a census</span></p>
+    <p class="teach">Read down the rows. Do not add them. A subscriber is not a handset. A revenue line is not a unit count. A Steam share is not the world. 7B+ and under 500M are an access framing. They are not the total of this table. Spell check is the finished program for the generation already in hand. Energy to run is the metric. None of these cells is <code>measured_j</code>.</p>
+    <table class="teach-table">
+      <thead><tr><th>Category</th><th>Figure, as published</th><th>Source and year</th><th>Stack, and the frontier interface</th></tr></thead>
+      <tbody>
+        <tr><td>Phones / mobile SoCs</td><td>5.8 billion unique subscribers, end of 2024. 1,260.3 million smartphones shipped in 2025. Arm CPUs in greater than 99 percent of smartphones sold in Arm's fiscal 2025.</td><td>GSMA, Mobile Economy 2025. IDC, 13 January 2026. Arm annual report, year ended 31 March 2025.</td><td>Local checker, Core ML, LiteRT, QNN, ExecuTorch, llama.cpp. Frontier weights stay on a server. Apple's on-device model is about 3 billion parameters.</td></tr>
+        <tr><td>PCs and laptops</td><td>262.7 million PCs in 2024. 284.7 million in 2025. 1 billion Windows 11 users.</td><td>IDC, 9 January 2025 and 12 January 2026. Nadella, 28 January 2026.</td><td>OS, browser, Hunspell. ONNX Runtime, DirectML, llama.cpp on the CPU. An API is a rental. A model that fits is the path.</td></tr>
+        <tr><td>Consumer GPUs</td><td>11.48 million add-in boards in Q4 2025. NVIDIA Gaming revenue $16.0 billion, fiscal 2026. That revenue is not units.</td><td>Jon Peddie Research, 5 March 2026. NVIDIA, 25 February 2026.</td><td>CUDA, ROCm, Vulkan, llama.cpp. The card runs the model that fits. The training system does not fit.</td></tr>
+        <tr><td>Datacenter accelerators</td><td>NVIDIA Data Center revenue $193.7 billion, fiscal 2026. AMD Data Center segment $16.6 billion, calendar 2025, EPYC and Instinct together. The releases do not give units. Huang, 28 October 2025: 6 million Blackwell GPUs in the last four quarters. A stated shipment, not a 10-K line.</td><td>NVIDIA, 25 February 2026. AMD, 3 February 2026. CNBC, 28 October 2025. Microsoft call, 28 January 2026, names Maya 200 and gives no Maya unit count.</td><td>CUDA, ROCm, vLLM, TensorRT-LLM. This row is the frontier stack. Everyone else reaches it by an API or a smaller model.</td></tr>
+        <tr><td>MCUs / tiny / embedded</td><td>More than 310 billion Arm-based chips, cumulative, unsplit. IC Insights: 30.9 billion MCU units delivered in 2021. MLPerf Tiny: networks typically under 100 kB, 70 results, 27 power results. No 2025 MCU census. The 2026 forecast in that note is not used.</td><td>Arm annual report, year ended 31 March 2025. IC Insights, 29 March 2022. MLCommons, 17 September 2025.</td><td>TFLite Micro, CMSIS-NN, vendor kernels. The interface is a task model. A frontier language model does not load.</td></tr>
+        <tr><td>Edge NPUs in shipping devices</td><td>Copilot+ NPU class: 40+ TOPS. First wave stated at 45 TOPS. Canalys: 15.4 million AI-capable PCs in Q4 2024, 23 percent of that quarter. Full-year 2024 share 17 percent, unit total not printed. Gartner forecast: 77.8 million AI PCs in 2025, 31 percent. The forecast is not a closed count.</td><td>Mehdi, 20 May 2024. Canalys, data 25 February 2025. Gartner via Computerworld, 28 August 2025. Apple ML research, 9 June 2025.</td><td>QNN, Copilot Runtime, Core ML, Ryzen AI, ONNX. The small model is on the NPU. The large model stays on the vendor's server.</td></tr>
+        <tr><td>Prior generation vs latest</td><td>See sc-gen-01. Shipment year and installed base are not divided into a share.</td><td>Same sources. Steam survey, September 2026, is the card-level list.</td><td>Software for the generation in hand. Spell check was written for that generation.</td></tr>
+      </tbody>
+    </table>
+    <p class="caption">On-device theses, not remeasured here: Apple, about 3 billion parameters at 2 bits per weight, Private Cloud Compute for the server model. Liquid AI, LFM2, arXiv:2511.23404, 350M to 2.6B dense and 8.3B MoE with 1.5B active, timed on a Galaxy S25 and a Ryzen AI 9 HX 370. PrismML states Ternary Bonsai 2 27B at 5.9 GB and 98.2 percent retention. Those ratios are the vendor's. Study: <a href="/papers/spellcheck/">/papers/spellcheck/</a>.</p>
+  </section>
+
+  <section id="sc-gen-01" class="figure-block">
+    <h2><span class="id">sc-gen-01</span> Prior generation still in hand</h2>
+    <p><span class="ev-chip real">Paired figures</span> <span class="ev-chip">No invented share</span></p>
+    <p class="teach">The latest generation is a shipment. The installed generation is what people still run. Where both numbers exist, they are different objects. This figure does not divide them. Where the installed count is missing, the cell says so.</p>
+    <table class="teach-table">
+      <thead><tr><th>Category</th><th>Latest generation, as published</th><th>What is still in hand</th></tr></thead>
+      <tbody>
+        <tr><td>Phones</td><td>1,260.3 million smartphones shipped in 2025 (IDC, 13 January 2026). Apple 247.8 million of them.</td><td>5.8 billion unique mobile subscribers at the end of 2024 (GSMA). Subscribers are not handsets. Prior handsets remain in use. No generation share is computed.</td></tr>
+        <tr><td>Apple devices</td><td>One product year: 247.8 million iPhones in calendar 2025.</td><td>More than 2.35 billion active devices, all categories, 30 January 2025. 30 October 2025: a new all-time high, no replacement count.</td></tr>
+        <tr><td>PCs</td><td>284.7 million traditional PCs in 2025 (IDC, 12 January 2026).</td><td>1 billion Windows 11 users, Nadella, 28 January 2026. Windows 10 end of support moved 2025 demand. The remaining Windows 10 count is not in the transcript.</td></tr>
+        <tr><td>Consumer GPUs</td><td>Steam, September 2026: RTX 5090 at 0.40 percent of reporting clients. RTX 5070 at 6.15 percent.</td><td>Same survey: RTX 4060 at 3.89 percent, RTX 3060 at 3.66 percent, GTX 1650 at 2.19 percent. Shares are not summed. JPR shipped 11.48 million add-in boards in Q4 2025. That is one quarter, not the installed stock.</td></tr>
+        <tr><td>Datacenter</td><td>NVIDIA fiscal 2026 Data Center revenue $193.7 billion. Units not in that release. Huang, 28 October 2025: 6 million Blackwell GPUs shipped in the last four quarters. A stated shipment, not a 10-K line.</td><td>Hopper is the comparison point in NVIDIA's release. Installed Hopper units are not disclosed. Nadella: current models keep running on the aging fleet. The fleet is a rental.</td></tr>
+        <tr><td>MCUs</td><td>IC Insights: 30.9 billion MCU units delivered in 2021. MLPerf Tiny v1.3 is a benchmark, not that shipment.</td><td>Arm's more than 310 billion chips are cumulative and unsplit. A 2025 MCU unit census is not in the sources used. The 2021 figure is not that census.</td></tr>
+        <tr><td>NPUs</td><td>Canalys: 15.4 million AI-capable PCs in Q4 2024. Copilot+ bar: 40+ TOPS, first wave 45 TOPS. Gartner forecast 77.8 million AI PCs in 2025 stays a forecast.</td><td>PCs and phones shipped before that bar do not have it. Their count is the installed base in the rows above, minus a split the vendors do not publish. The missing split stays missing.</td></tr>
+      </tbody>
+    </table>
+    <p class="caption">OpenIE claim: software written for the globally accessible generation has the largest impact. Spell check is the finished case. Energy to run is the only true metric. The access framing 7B+ and under 500M is not a total of these cells.</p>
+  </section>
+
+
+  <section id="sc-price-01" class="figure-block">
+    <h2><span class="id">sc-price-01</span> Dated prices and how long each lasted</h2>
+    <p><span class="ev-chip real">Source prices only</span> <span class="ev-chip">Duration only where the source gives it</span> <span class="ev-chip">No filled gaps</span></p>
+    <p class="teach">Each row is one price a page prints. A gap between advertisements is not a certificate that the price held. Where two compilers date the same cut differently, both dates are in the table. A blank price means the page named the product and did not state the dollars, or the page was not read.</p>
+    <table class="teach-table">
+      <thead><tr><th>Product</th><th>Dated price</th><th>How long the source supports</th><th>Source and year</th></tr></thead>
+      <tbody>
+        <tr><td>Plus adding machine</td><td>$100</td><td>One advertisement. Duration not stated.</td><td>Anita advertisement index, Autumn 1949 ad.</td></tr>
+        <tr><td>Anita Mk 8</td><td>£335</td><td>Launch review, December 1961. Orders from 1 January 1962. Next priced ad on the index is May 1963 at a different figure. The months between are not an audit.</td><td>Office Magazine, December 1961, pp. 1244-1245.</td></tr>
+        <tr><td>Anita Mk 8</td><td>£355</td><td>May 1963 advertisement. Next Mk 8 price on the index is January 1964.</td><td>Anita advertisement index, May 1963. Comptometer 993s in the same ad: £265.</td></tr>
+        <tr><td>Anita Mk 8</td><td>£365</td><td>January 1964 advertisement. Next Mk 8 price on the index is January 1965, back at £335.</td><td>Anita advertisement index, January 1964. February 1964 Comptometer 993 series: £160 to £330.</td></tr>
+        <tr><td>Anita Mk 9</td><td>£425</td><td>January 1965 and November 1965 advertisements, same price. Two observations, not a monthly audit. November ad: more than 16,000 Anitas in use.</td><td>Anita advertisement index, 1965.</td></tr>
+        <tr><td>Anita Mk 10</td><td>£460</td><td>July 1966 advertisement. Later duration not on a transcribed price.</td><td>Anita advertisement index, July 1966.</td></tr>
+        <tr><td>Anita Mk 10, Mk 11, Mk 12</td><td>£480, £298, £480</td><td>One advertisement, June 1968. The index does not print the amounts. The model pages transcribe these three and quote "Price £480" for the Mk 10. The Mk 9 amount on that ad is not transcribed. It stays blank. July 1966 had the Mk 10 at £460. Two ads, not an audit of the months between.</td><td>"Focus on ANITA," Office Methods and Machines, June 1968, p. 41, as transcribed on the Anita model pages.</td></tr>
+        <tr><td>Anita 1000</td><td>£285</td><td>April 1969 and May 1969 advertisements, same price.</td><td>Anita advertisement index, 1969.</td></tr>
+        <tr><td>Anita 1010</td><td>£320</td><td>July 1969 advertisement. A later model, not a cut in the Mk 8 price.</td><td>Anita advertisement index, July 1969.</td></tr>
+        <tr><td>Anita 1000LSI and 1010LSI</td><td>£192 and £250</td><td>February 1971 advertisement. Later models.</td><td>Anita advertisement index, February 1971.</td></tr>
+        <tr><td>HP-35</td><td>$395</td><td>Introduction price. Museum day-page: 4 January 1972. Datamath: MSRP January 1972, available February 1972. Finseth: $395, introduction date 1 July 1972 or possibly 1 February 1972.</td><td>Computer History Museum, 1972. Datamath HP-35 page. Finseth hpdata.</td></tr>
+        <tr><td>HP-35</td><td>$295</td><td>Finseth: from 1 May 1973 until 1 May 1974. Datamath: MSRP January 1974, with no May 1973 line. Both dates are printed. This table does not pick one.</td><td>Finseth hpdata. Datamath HP-35 page.</td></tr>
+        <tr><td>HP-35</td><td>$225</td><td>Finseth only: 1 May 1974 until 1 February 1975. Datamath does not list this step.</td><td>Finseth hpdata.</td></tr>
+        <tr><td>HP-35</td><td>$195</td><td>Finseth: 1 February 1975, the discontinuation price. Datamath: early 1975, then discontinued. The day is Finseth's, not Datamath's.</td><td>Finseth hpdata. Datamath HP-35 page.</td></tr>
+        <tr><td>HP-65</td><td>$795</td><td>Introduced 19 January 1974. Duration of that price is not on the page.</td><td>Datamath HP-35 page.</td></tr>
+        <tr><td>TI-2500 Datamath</td><td>$149.95</td><td>Announced April 1972. First customers June 1972 in Dallas. Suggested price reduced to $119.95 by the formal introduction on 21 September 1972. The day of the cut is not given. Later cuts after $119.95 are not on the page.</td><td>Datamath, TI-2500 Version 1 page.</td></tr>
+        <tr><td>HP 9100A</td><td>$4900</td><td>1968 brochure. The brochure does not say how long the price lasted. The 1969 catalog page states the same figure. A later cut was not read.</td><td>Computer History Museum, 1968 brochure, collection 102646164. HP Memory Project, 1969 catalog p. 130.</td></tr>
+        <tr><td>Bowmar 901B</td><td>$240</td><td>Introduced September 1971. Suggested retail price $240.00. Duration not on the page. The TI-2500 page names the machine and does not price it.</td><td>Datamath, Bowmar 901B page.</td></tr>
+        <tr><td>VisiCalc</td><td>Under US$100, and a $100 retelling</td><td>Sold from mid-1979 for under $100. Formal introduction scheduled 4 to 7 June 1979. First Apple II copy 17 October 1979. By 1982, Softline (March 1982) is cited for a rise from $100 to $250. The month of the rise is not given.</td><td>Wikipedia, VisiCalc, citing Intelligent Machines Journal 1979, Jennings, and Softline March 1982.</td></tr>
+        <tr><td>Timesharing financial languages</td><td>$20,000</td><td>A bureau price for an earlier class of product, not VisiCalc's invoice. Duration not stated.</td><td>Wikipedia, VisiCalc, citing a UCLA teaching case.</td></tr>
+        <tr><td>Lotus 1-2-3, price fixed before sale</td><td>$495</td><td>December 1982 review of a prerelease copy. Available for the IBM PC sometime next month. Not a receipt dated 26 January 1983. DOS Days still does not print a January price.</td><td>Gregg Williams, Byte, December 1982, pp. 182-198.</td></tr>
+        <tr><td>Lotus 1-2-3 Release 2.2 and Release 3</td><td>$495</td><td>Same price as Excel 2.1 and Quattro Pro at the time of that comparison. How long $495 had already lasted is not on the page. This is not the January 1983 line.</td><td>DOS Days, Lotus 1-2-3.</td></tr>
+        <tr><td>SSI*WP, Data General</td><td>US$5,500 per copy</td><td>March 1980. The chronology does not say this copy included a spelling checker. Duration not stated.</td><td>Mendelson, WPDOS chronology.</td></tr>
+        <tr><td>WordCheck, Commodore</td><td>$200.00</td><td>List price for CBM and PET 32K machines with dual disk drives. The same page prices other programs at $200.00. The WordCheck figure is the sentence on the dual-disk line. Duration not stated.</td><td>Compute!, January 1981, issue 8, p. 119. Micro Computer Industries, Ltd.</td></tr>
+        <tr><td>WordPerfect 3.0 for DOS</td><td>$495</td><td>October 1983, Comdex, on the DOS Days page. Mendelson assigns Alt-F5, with no text selected, to Spellcheck. DOS Days does not name the checker in that paragraph. The $495 is the word processor. The command has no separate price. Version 2.20 is said to have featured a 30,000-word dictionary. That page does not name a spell command for 2.20.</td><td>DOS Days, WordPerfect. Mendelson command list.</td></tr>
+        <tr><td>Microsoft Word 1.0</td><td>$395</td><td>October 1983, citing InfoWorld, 30 May 1983. The $395 is the word processor. Brodie: 1.1 added mail merge, and 2.0 added a purchased spell checker. Version 1.0 did not include the checker. Duration of $395 is not stated.</td><td>Wikipedia, History of Microsoft Word. Brodie interview, October 2008, published 7 November 2015. Necasek, 26 May 2018, on the Word 2.x and 3.x checker.</td></tr>
+        <tr><td>Microsoft Write, Atari ST</td><td>$129.95</td><td>One stated retail price. Duration not given.</td><td>Wikipedia, History of Microsoft Word.</td></tr>
+        <tr><td>Word for Windows</td><td>USD $498</td><td>November 1989. Duration of that price is not in the article. Interactive checking is dated to Word 95, not to this price.</td><td>Wikipedia, History of Microsoft Word. Spell-check article cites Chen, 22 June 2026, for Word 95.</td></tr>
+        <tr><td>Grammatik II and Grammatik III</td><td>$89 and $99</td><td>Grammatik II, 10 April 1988. Grammatik III, November 1989. Both are earlier than the 6 January 1993 acquisition. Neither is a Grammatik 5 standalone price. That price stays blank. Inclusion in WordPerfect 5.2 for Windows is 30 November 1992.</td><td>Chicago Tribune, 10 April 1988. START, vol. 4 no. 4, November 1989. Mendelson chronology.</td></tr>
+        <tr><td>Hunspell, and the system checker</td><td>License price zero for the library. No separate price for the system checker.</td><td>The README states the tri-license and does not publish a prior retail schedule. The spell-check article dates incorporated checkers to the mid-1980s and does not date the Mac OS X system checker to a day.</td><td>Hunspell README. Wikipedia, Spell checker.</td></tr>
+      </tbody>
+    </table>
+    <p class="caption">OpenIE claim: the separate invoice ends. Energy to run remains. These rows are money prices. They are not joules, and they are not measured_j. Hardware access stays the seven records in sc-hw-01.</p>
+  </section>
+
+<footer class="footer">OpenIE research · spell check living figures · illustration, not a meter · not measured_j</footer>
+</body>
+</html>

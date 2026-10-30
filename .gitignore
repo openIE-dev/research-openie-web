@@ -11,3 +11,8 @@ manim/**/media/
 
 __pycache__/
 *.pyc
+
+# RCE spec read-aloud model and runtime (fetched by scripts/fetch-kokoro.sh)
+public/rce/spec/tts/models/
+public/rce/spec/tts/voices/
+public/rce/spec/tts/ort/

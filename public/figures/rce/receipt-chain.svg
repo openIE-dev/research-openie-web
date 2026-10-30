@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="860" viewBox="0 0 1200 860" role="img" aria-labelledby="t d"><title id="t">The log is a hash chain; every cost carries a basis</title><desc id="d">Diagram. Top: three log entries, seq 0, 1 and 2, each with fields seq, event, prev_hash, state_hash and hash. The first prev_hash is 64 zeros; each later prev_hash equals the previous entry's hash, drawn as arrows. state_hash is the SHA-256 of the state after the step; hash is the SHA-256 of the canonical JSON of event, prev_hash, seq and state_hash. Bottom: a gear receipt with fields gear, gear_name, est_j, basis, candidates_tried and resolved, beside the rule that est_j is required and is either a finite non-negative number or null, with null allowed only when basis says unpriced; unpriced cost is never read as zero joules.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="858" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">The log is a hash chain; every cost carries a basis</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Entries of D (spec 6.1) and the receipt rule for est_j (Section 4.4). Hash labels are symbolic.</text>
+<rect x="1072.5" y="26" width="87.5" height="34" rx="17" fill="none" stroke="#CC79A7" stroke-width="2"/>
+<text x="1116.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#CC79A7" text-anchor="middle">Diagram</text>
+<rect x="40.0" y="130.0" width="345.0" height="250.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="60.0" y="164.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="start">entry 0</text>
+<text x="60.0" y="202.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">seq</text>
+<text x="190.0" y="202.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">0</text>
+<text x="60.0" y="236.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">event</text>
+<text x="190.0" y="236.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">IN_source</text>
+<text x="60.0" y="270.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">prev_hash</text>
+<text x="190.0" y="270.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="500" fill="#0072B2" text-anchor="start" xml:space="preserve">000…0 (64 zeros)</text>
+<text x="60.0" y="304.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">state_hash</text>
+<text x="190.0" y="304.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">H(s₀)</text>
+<text x="60.0" y="338.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">hash</text>
+<text x="190.0" y="338.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#0072B2" text-anchor="start" xml:space="preserve">h₀</text>
+<line x1="56.0" y1="316.0" x2="370.0" y2="316.0" stroke="#e2e8f0" stroke-width="2"/>
+<rect x="425.0" y="130.0" width="345.0" height="250.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="445.0" y="164.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="start">entry 1</text>
+<text x="445.0" y="202.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">seq</text>
+<text x="575.0" y="202.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">1</text>
+<text x="445.0" y="236.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">event</text>
+<text x="575.0" y="236.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">TICK</text>
+<text x="445.0" y="270.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">prev_hash</text>
+<text x="575.0" y="270.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="500" fill="#0072B2" text-anchor="start" xml:space="preserve">h₀</text>
+<text x="445.0" y="304.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">state_hash</text>
+<text x="575.0" y="304.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">H(s₁)</text>
+<text x="445.0" y="338.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">hash</text>
+<text x="575.0" y="338.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#0072B2" text-anchor="start" xml:space="preserve">h₁</text>
+<line x1="441.0" y1="316.0" x2="755.0" y2="316.0" stroke="#e2e8f0" stroke-width="2"/>
+<rect x="810.0" y="130.0" width="345.0" height="250.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="830.0" y="164.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="start">entry 2</text>
+<text x="830.0" y="202.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">seq</text>
+<text x="960.0" y="202.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">2</text>
+<text x="830.0" y="236.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">event</text>
+<text x="960.0" y="236.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">RESOLVE_node</text>
+<text x="830.0" y="270.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">prev_hash</text>
+<text x="960.0" y="270.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="500" fill="#0072B2" text-anchor="start" xml:space="preserve">h₁</text>
+<text x="830.0" y="304.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">state_hash</text>
+<text x="960.0" y="304.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="500" fill="#0f172a" text-anchor="start" xml:space="preserve">H(s₂)</text>
+<text x="830.0" y="338.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">hash</text>
+<text x="960.0" y="338.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#0072B2" text-anchor="start" xml:space="preserve">h₂</text>
+<line x1="826.0" y1="316.0" x2="1140.0" y2="316.0" stroke="#e2e8f0" stroke-width="2"/>
+<path d="M240 333 C 420 330, 370 260, 545 265" stroke="#0072B2" stroke-width="2.5" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M625 333 C 805 330, 755 260, 930 265" stroke="#0072B2" stroke-width="2.5" fill="none" fill-opacity="1" marker-end="url(#ah)" stroke-linejoin="round"/>
+<text x="40.0" y="410.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start">H(x) = SHA-256 of the canonical JSON of x (keys sorted at every depth). state_hash = H(state after the step); hash = H({event, prev_hash, seq, state_hash}).</text>
+<text x="40.0" y="434.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Change any past entry and every later hash changes; reload recomputes each link and does not load a broken chain.</text>
+<text x="40.0" y="456.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">outcome, out and state may be carried beside an entry; they are derived, must equal replay, and are not hashed.</text>
+<line x1="40.0" y1="486.0" x2="1160.0" y2="486.0" stroke="#e2e8f0" stroke-width="2"/>
+<text x="40.0" y="520.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="start">Receipt of one gear on one escalation</text>
+<text x="60.0" y="556.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">gear</text>
+<text x="220.0" y="556.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve">"G4"</text>
+<text x="60.0" y="584.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">gear_name</text>
+<text x="220.0" y="584.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve">text</text>
+<text x="60.0" y="612.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">est_j</text>
+<text x="220.0" y="612.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#D55E00" text-anchor="start" xml:space="preserve">null</text>
+<text x="60.0" y="640.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">basis</text>
+<text x="220.0" y="640.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#D55E00" text-anchor="start" xml:space="preserve">"unpriced"</text>
+<text x="60.0" y="668.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">candidates_tried</text>
+<text x="220.0" y="668.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve">u32</text>
+<text x="60.0" y="696.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#475569" text-anchor="start" xml:space="preserve">resolved</text>
+<text x="220.0" y="696.0" font-family="'DejaVu Sans Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#0f172a" text-anchor="start" xml:space="preserve">bool</text>
+<rect x="600.0" y="502.0" width="560.0" height="200.0" rx="14" fill="#ffffff" stroke="#D55E00" stroke-width="3" opacity="1"/>
+<text x="620.0" y="534.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#D55E00" text-anchor="start">est_j rule (fail closed)</text>
+<text x="620.0" y="564.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">est_j is required: a receipt without the field does not parse.</text>
+<text x="620.0" y="588.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#0f172a" text-anchor="start">Either a finite number ≥ 0 (joules, an estimate),</text>
+<text x="620.0" y="612.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#0f172a" text-anchor="start">or null, allowed only when basis says “unpriced”.</text>
+<text x="620.0" y="636.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#0f172a" text-anchor="start">Model-call receipts carry est_uj (microjoules), same rule.</text>
+<text x="620.0" y="660.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#0f172a" text-anchor="start">Totals report priced and unpriced counts separately;</text>
+<text x="620.0" y="684.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">unpriced is never read as 0 J.</text>
+<text x="40.0" y="760.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Labels: est_j is an analytical estimate; reported_j is an OS or on-chip counter; measured_j is a wall meter and is empty in every result.</text>
+<text x="40.0" y="784.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">A saving that depends on an unpriced resolution is reported as unknown.</text>
+<text x="40.0" y="820.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">Receipt: an illustrative receipt with the field names of Section 4.4; text, u32 and bool are types, not values.</text></svg>

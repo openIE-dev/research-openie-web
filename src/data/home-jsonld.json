@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://research.openie.dev/#catalog",
+      "name": "OpenIE Research catalog",
+      "url": "https://research.openie.dev/",
+      "description": "Research by David Charlot at Open Interface Engineering, free to read and reuse, each with a web edition and a PDF.",
+      "isPartOf": {
+        "@id": "https://research.openie.dev/#site"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": []
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://research.openie.dev/#site",
+      "name": "OpenIE Research",
+      "url": "https://research.openie.dev/",
+      "publisher": {
+        "@id": "https://openie.dev/#org"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://openie.dev/#org",
+      "name": "Open Interface Engineering, Inc.",
+      "alternateName": "OpenIE",
+      "url": "https://openie.dev"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://research.openie.dev/#david-charlot",
+      "name": "David Charlot",
+      "affiliation": {
+        "@id": "https://openie.dev/#org"
+      }
+    }
+  ]
+}

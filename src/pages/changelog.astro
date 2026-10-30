@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+const entries = [
+  { v: '1.24 of The Reality Code Engine, with RCE-JEPA and the site', date: '29 October 2026', items: [
+    'Vocabulary of openIE-dev/rce main (8ce91cea, #54 and #55): code that is not in Form requires change, naming the rule; it is no longer said to be refused or rejected. A step whose event does not apply keeps the state, and theorem T8 (atomicity) is stated as such. The decision lists of Section 12.1 say "Not adopted:" for the options the design does not take. Third-party words, survey findings about other languages and the engine profile\'s reject output (D.6) are kept as written.',
+    'The rce dim key counting kept steps is keeps (earlier refuses), as the checker at 8ce91cea prints it; Section 10 item 15 records that rce run at 8ce91cea still drops an undeclared payload field and applies the event.',
+    'RCE-JEPA: the counter program is quoted as it stands at 8ce91cea (example dec -> kept: Underflow); the hypothesis, workstream and figure texts say requires change where they said reject.',
+    '/rce/spec/ regenerated from openIE-dev/rce 8ce91cea (specification draft 0.9, 18 chapters, 136 example programs), with the browser checker built from the same commit; the programs that require change are grouped by rule under "Examples that require change, by rule" (the old #refused-examples anchor still resolves). gen.mjs reads the example directories that #54 moved to spec/examples/change/.',
+    'New page /faq/: what RCE is, why it is needed now, what is built, proposed and measured, how energy is labelled, and ten hard questions with their falsifiers; linked from the navigation, the footer, the sitemap and llms.txt. Glossary: requires change and kept step.',
+  ]},
+  { v: '1.23 of The Reality Code Engine', date: '27 October 2026', items: [
+    'Results that only the engine produced are withdrawn until each is rebuilt on public code; Section 10 lists them with their rebuild tracks. Figures whose content was those results are no longer embedded, and the remaining figures are renumbered 1 to 6.',
+    'Section 5.5: the model-proposer run is reported from its public record (openie-research-experiments, rce/bench/results/llm-proposer-form-demo.form.json): 18 proposals, 13 distinct; 15 not admitted, 12 distinct; the 3 admitted are one rewrite, (pipe pass ?a) => ?a, under three names, which repeats a rule the engine already had.',
+    'The compiled engine demo at /demos/rce-engine/ and the redirect at /playground/rce/ are removed. The playground is the reference checker in the browser at openie-dev.github.io/rce, built from public code.',
+    'The LaTeX PDF and its source are removed until they are regenerated from this version.',
+    'The about page shows the overview figure of openIE-dev/rce (emit targets Rust, Python, JavaScript and Scala) and no longer shows the status figure of Haskell, Julia and editor counts, which that repository removed on 16 October 2026 (78511532) because no public code reproduces them.',
+    'The translations of this paper are marked stale and show the translated title and deck (the one-line summary) until they are redone against version 1.23.',
+  ]},
+  { v: '1.4 of The Reality Code Engine (site)', date: '14 October 2026', items: [
+    'One RCE playground: the reference checker in the browser at openie-dev.github.io/rce is the RCE playground.',
+    'The paper, its translations, the LaTeX PDF, the home page, llms.txt and the WebMCP tools link the playground by this name.',
+  ]},
+  { v: '1.4 of The Reality Code Engine', date: '13 October 2026', items: [
+    'Section 3.7: specification 2.7 now states the per-call-site cost rule of C.15 (openIE-dev/rce ac94a8f); /rce/spec/ regenerated.',
+    'Section 7: Software Heritage and Rosetta Code cited as [129] to [131]; archive counters reread (30.3 billion file contents, 448 million origins).',
+    'Nine figures added (Figures 5 to 10, 12, 13 and 15); earlier Figures 5 and 6 renumbered 11 and 14. Translations, including German, remain at version 1.1.',
+    'Site: new Opportunity map page with three boards and their sources.',
+  ]},
+  { v: '1.1', date: '11 October 2026', items: [
+    'All papers: version and revision date under the title.',
+    'The Reality Code Engine: rule-authoring timeline against the corpus freeze (corpus20 is a development set); n and a 95% interval on the headline result; gross beside idle-subtracted RAPL joules; host described as an x86 laptop; Section 5.1 renamed to differential testing; scope of the ASM theorem stated, with the Form as a modelling choice; repair, overfitting and benchmark-bias lineage; held-out and baseline protocols (8.4, 8.5); Falsifiers, Work to finish and Conclusion sections.',
+    'The Promised Trillion Dollar AI-Coding Market: McKinsey, Goldman Sachs, GitHub, Gartner, Sequoia and Stargate rows; productivity evidence table; Microsoft pre-tax and net figures; Cursor repricing; the 9 to 900 times price range, LLMflation and the DeepSeek cut; bundling by the platform owner; the price elasticity; coverage proposition E5; conditional conclusion.',
+    'Thermodynamic Bounds (agency): the thesis read through its gate, against Burnell, Zhou, Laber and existing gated metrics; objections to the floor (Section 3.0); Koyuk and Seifert for driven acts; Jordan on Margolus-Levitin; the estimator replacement; falsifier outcomes in Section 5.2; the Sudoku grid stated as inside the agent wall.',
+    'Metered Commit Gates: KV260 figures relabeled SOM-level with the rail cited, seed-fabric result marked inconclusive; runtime-enforcement lineage; cascade lineage; II.3 renamed cost model.',
+    'Task Satiation: sections renumbered (old 2.8 to 2.10 and 3.6 to 3.8 are now 3.6 to 3.11, with the old anchors kept); rebound canon; predicate endogeneity; H1 from public trajectories; tokens and joules; identification limits.',
+    'Spell Check is Global: title tidied; the few stated as a price class; connected reach from ITU; premium tier moved up a layer; bundling economics; grammatical error correction and the energy trade-off.',
+    'Site: navigation and footer list every paper and PDF; one measured_j definition; nine glossary terms; one Notational Intelligence definition; About count; catalog hero wording.',
+  ]},
+];
+---
+<Layout title="Changelog | OpenIE Research" description="Dated revisions of the OpenIE research papers.">
+  <main class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="font-display text-3xl text-brand-white">Changelog</h1>
+    {entries.map((e) => (
+      <section class="mt-8">
+        <h2 class="font-display text-xl text-brand-white">Version {e.v}, {e.date}</h2>
+        <ul class="mt-3 list-disc pl-6 font-body text-sm text-brand-slate leading-relaxed">
+          {e.items.map((i) => <li class="mt-2">{i}</li>)}
+        </ul>
+      </section>
+    ))}
+  </main>
+</Layout>

@@ -1,0 +1,329 @@
+---
+// /faq/: questions and answers about the Reality Code Engine (RCE) for a reader new to it.
+// Every number is cited to a paper on this site or an outside source. Citations are written
+// [[key]] or [[key1,key2]] in the answers below and numbered [C1], [C2], ... in order of first
+// citation when the page is built, so the source list stays in reading order (lint-order checks it).
+// Answers to critiques that are being measured carry a line <!-- RESULT: n --> where the measured
+// result is to be inserted.
+import Layout from '../layouts/Layout.astro';
+
+const SOURCES: Record<string, string> = {
+  rce: 'The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming, version 1.24, 29 October 2026, research.openie.dev. <a href="/papers/rce/">/papers/rce/</a>',
+  repo: 'openIE-dev/rce, public main at commit <code>8ce91cea</code> (29 October 2026): the specification (draft 0.9), the reference checker <code>rce</code> 0.1.0 and <code>lang/README.md</code>; tool output on this page is from a build of that commit. <a href="https://github.com/openIE-dev/rce">github.com/openIE-dev/rce</a>',
+  jepa: 'RCE-JEPA: Autonomous Deterministic Coding using Latent Space, research paper, research.openie.dev, with its Status section of 24 October 2026. <a href="/papers/rce-jepa/">/papers/rce-jepa/</a>',
+  bai: 'L. Bai, Z. Huang and X. Wang, "How Do AI Agents Spend Your Money? Analyzing and Predicting Token Consumption in Agentic Coding Tasks," 2026. <a href="https://arxiv.org/abs/2604.22750">arXiv:2604.22750</a>',
+  a16z: 'G. Appenzeller and Y. Li, "The Trillion Dollar AI Software Development Stack," a16z, 9 October 2025. <a href="https://a16z.com/the-trillion-dollar-ai-software-development-stack/">a16z.com</a>',
+  ieaKQ: 'International Energy Agency, <em>Key Questions on Energy and AI</em>, executive summary, 2026. <a href="https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary">iea.org</a>',
+  market: 'The Promised Trillion Dollar AI-Coding Market, economics essay, version 1.1, research.openie.dev. <a href="/papers/ai-coding-market/">/papers/ai-coding-market/</a>',
+  ouyang: 'S. Ouyang, J. M. Zhang, M. Harman and M. Wang, "An Empirical Study of the Non-determinism of ChatGPT in Code Generation," 2023. <a href="https://arxiv.org/abs/2308.02828">arXiv:2308.02828</a>',
+  chen: 'M. Chen et al., "Evaluating Large Language Models Trained on Code," 2021. <a href="https://arxiv.org/abs/2107.03374">arXiv:2107.03374</a>',
+  ieaEAI: 'International Energy Agency, <em>Energy and AI</em>, executive summary, April 2025. <a href="https://www.iea.org/reports/energy-and-ai/executive-summary">iea.org</a>',
+  stargate: 'OpenAI, "Announcing The Stargate Project," 21 January 2025. <a href="https://openai.com/index/announcing-the-stargate-project/">openai.com</a>',
+  sequoia: 'D. Cahn, "AI\'s $600B Question," Sequoia Capital, 2024. <a href="https://www.sequoiacap.com/article/ais-600b-question/">sequoiacap.com</a>',
+  epoch: 'B. Emberson and D. Roodman, "The plunging price of thought," Epoch AI, 22 September 2026. <a href="https://epoch.ai/publications/the-plunging-price-of-thought">epoch.ai</a>',
+  lopes: 'C. V. Lopes et al., "DéjàVu: A Map of Code Duplicates on GitHub," OOPSLA 2017. <a href="https://doi.org/10.1145/3133908">doi:10.1145/3133908</a>',
+  exp: 'openIE-dev/openie-research-experiments: preregistrations with their SHA-256, run scripts and result rows under <code>rce/bench/</code> (<code>form-space/</code>, <code>adversarial/</code>, <code>determinism/</code>, <code>dimension/</code>, <code>results/</code>). <a href="/data/#rce">research.openie.dev/data/</a>',
+  samsi: 'S. Samsi et al., "From Words to Watts: Benchmarking the Energy Costs of Large Language Model Inference," IEEE HPEC 2023. <a href="https://arxiv.org/abs/2310.03003">arXiv:2310.03003</a>',
+  elsworth: 'C. Elsworth et al., "Measuring the environmental impact of delivering AI at Google Scale," 2025. <a href="https://arxiv.org/abs/2508.15734">arXiv:2508.15734</a>',
+  rice: 'H. G. Rice, "Classes of Recursively Enumerable Sets and Their Decision Problems," <em>Transactions of the American Mathematical Society</em> 74, 1953. <a href="https://doi.org/10.1090/S0002-9947-1953-0053041-6">doi:10.1090/S0002-9947-1953-0053041-6</a>',
+  klein: 'G. Klein et al., "seL4: Formal Verification of an OS Kernel," SOSP 2009. <a href="https://doi.org/10.1145/1629575.1629596">doi:10.1145/1629575.1629596</a>',
+  cunha: 'A. Cunha, "Verified LLM-Driven Synthesis for Concept Design," 2026. <a href="https://arxiv.org/abs/2607.15718">arXiv:2607.15718</a>',
+  main2: 'openIE-dev/rce main after the merges of 29 October 2026 (pull requests #56 to #62): the Python lifter, <code>rce fingerprint</code>, rule W-INT-2, the emitter interfaces for embedding and the host fault harness. <a href="https://github.com/openIE-dev/rce">github.com/openIE-dev/rce</a>',
+  bench: 'openIE-dev/openie-research-experiments, registrations committed before each run and results under <code>rce/bench/</code>: <code>behaviour-index/</code>, <code>bounded-programs/</code>, <code>edit-landscape/</code>, <code>table-control/</code>, <code>host-faults/</code>, <code>determinism-cost/</code>, <code>lift-python/</code>, <code>projections-interop/</code> and <code>spec-cost/</code>. <a href="https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench">github.com</a>',
+  anthropic: 'Anthropic, "Anthropic Economic Index report: Uneven geographic and enterprise AI adoption," September 2025. <a href="https://www.anthropic.com/research/anthropic-economic-index-september-2025-report">anthropic.com</a>',
+};
+
+type Item = { id: string; q: string; a: string };
+type Part = { id: string; title: string; lead?: string; items: Item[] };
+
+const intro = `<p>This page answers the questions an engineer, an investor or a policy reader tends to ask on first meeting the Reality Code Engine (RCE), a programming language with a written specification, and RCE-JEPA, a research proposal built on it. It is written to be read top to bottom: each term is defined before it is used, and each number is cited to a paper on this site or to an outside source in the list at the end, numbered in order of first citation.</p>
+<p><strong>Status, 29 October 2026.</strong> Research, in draft. The language, its reference checker, its emitters and its proofs are public code. The engine that would store and reuse checked work, the lift of programs from other languages and the RCE-JEPA proposer are designs, not built. No energy figure about RCE on this page is a wall-meter reading [[rce]].</p>`;
+
+const terms: [string, string][] = [
+  ['AI', 'artificial intelligence; here, the language models used by coding tools'],
+  ['CALM', 'consistency as logical monotonicity, the result that monotone programs need no coordination between replicas'],
+  ['Form', 'the one shape of every RCE program, P = (S, E, δ, D, λ), defined in the first answer'],
+  ['H1 to H13', 'the thirteen hypotheses of the RCE-JEPA paper'],
+  ['IEA', 'International Energy Agency'],
+  ['IEEE 754', 'the floating-point standard of the Institute of Electrical and Electronics Engineers'],
+  ['JEPA', 'joint embedding predictive architecture, a kind of model that predicts a compact summary of an answer instead of writing it out'],
+  ['JSON', 'JavaScript Object Notation, a text format for data'],
+  ['Lean 4', 'a proof assistant: a program that checks mathematical proofs'],
+  ['RAPL', 'running average power limit, the on-chip energy counter of Intel processors'],
+  ['RCE', 'the Reality Code Engine'],
+  ['RCE-F', 'label of a falsifier of the RCE paper, RCE-F0 to RCE-F6'],
+  ['README', 'the front-page documentation file of a repository or directory'],
+  ['RJ-F', 'label of a falsifier of the RCE-JEPA paper, RJ-F1 to RJ-F5'],
+  ['SAT', 'Boolean satisfiability, the problem of finding values that make a logical formula true'],
+  ['SHA-256', 'the Secure Hash Algorithm with a 256-bit digest'],
+  ['TWh', 'terawatt-hour, 3.6 × 10¹⁵ joules'],
+];
+
+const parts: Part[] = [
+  {
+    id: 'what', title: 'What RCE is',
+    items: [
+      { id: 'what-is-rce', q: 'What is RCE, in one paragraph?', a: `
+<p>RCE is a programming language in which every program has one shape, called a Form, and code in other languages is generated from it [[rce]]. A Form is a tuple P = (S, E, δ, D, λ):</p>
+<ul>
+<li><strong>S</strong>, the state the program holds, for example the balance of an account;</li>
+<li><strong>E</strong>, the events it can receive, for example a deposit or a withdrawal;</li>
+<li><strong>δ</strong> (delta), the transition: a pure, total and deterministic function that takes a state and an event to the next state and the outputs of that step;</li>
+<li><strong>D</strong>, the durable log: every step recorded in a hash chain, each entry carrying the SHA-256 of the state it produced and of the entry before it;</li>
+<li><strong>λ</strong> (lambda), the output map: what the program emits for a state and an event.</li>
+</ul>
+<p>One state and one event give exactly one next state, and the state at any time is the fold of δ over the log, so every run can be replayed and checked bit for bit [[rce]]. Four public pieces make up the language today: the written specification, draft 0.9 [[repo]]; a reference checker, <code>rce</code>, that admits a program or names the rule it breaks; emitters that print an admitted program as Rust, Python, JavaScript or Scala; and proofs of the language's theorems in Lean 4 [[rce]].</p>` },
+      { id: 'checker', q: 'What does the checker do with code that is not in Form?', a: `
+<p>It reports that the code <strong>requires change</strong> and names the rule the code breaks. Given a line that puts an assignment inside an expression, the checker at public main prints <code>requires change FILE: line 1: W-SYN-1 expected \`)\` (found \`=\`)</code> [[repo]]. Nothing runs until the code is changed. A module that uses a name it does not declare requires change by rule W-NAME-1; a construct the checker does not implement yet requires change by rule W-RES-1 [[rce]].</p>
+<p>A program that is in Form can still receive an event that does not apply in its current state, such as a decrement of a counter that is at zero. That step <strong>keeps the state</strong>: theorem T8 (atomicity) states, and its Lean proof shows, that the state is unchanged, and the step is recorded in the log with the error it names [[rce]]. <code>rce run</code> prints such a step as <code>kept: Underflow</code> [[repo]].</p>` },
+      { id: 'emitters', q: 'What are the emitters, and how far can their output be trusted?', a: `
+<p><code>rce emit</code>, given a target and a file, prints the Form itself as one line of canonical JSON, or a self-contained program in Rust, Python, JavaScript or Scala [[repo]]. Every emitted program must print the reference trace of every example program byte for byte. For the Rust emitter, agreement with the reference evaluator is proved on a core of the language as a verified translation into MiniRust, a model of the emitted Rust; that the Rust compiler implements MiniRust is trusted and tested. For the Python, JavaScript and Scala emitters the agreement is differential testing on stated inputs, which says nothing about inputs outside the tested set [[rce]].</p>
+<p>Every target keeps one behaviour at every numeric edge: integer division truncates toward zero (−7 / 2 = −3), the remainder takes the sign of the dividend, overflow and division by zero trap, and floating-point numbers are IEEE 754 binary64, rounded once per operator [[rce]].</p>` },
+      { id: 'proofs', q: 'What do the Lean proofs cover, and what do they not?', a: `
+<p>The specification states its theorems and records the level of each one exactly: proved about the core semantics, proved on a semantics of a core, proved about a separate model, checked by test vectors, or tested. Proved about the core are, among others, determinism (theorem T1), totality with an explicit bound on evaluation steps (theorem T2), replay of the log (theorem T3), independence of the log hashes from names (theorem T7) and atomicity (theorem T8). At public commit <code>f2bd7222</code> the Lean audit reads 5,052 theorems that use only the standard axioms, with no unfinished proof [[rce]].</p>
+<p>What is not proved: nothing yet connects the Lean semantics to the Rust checker that a reader runs, and the conformance report for the mechanised core records 210 tests passing, 1 failing and 1,766 unsupported of 1,977, so about a tenth of the suite is under the theorems [[rce]]. A proof about a model is not a proof about the program.</p>` },
+      { id: 'rce-jepa', q: 'What is RCE-JEPA?', a: `
+<p>A research proposal, not a built system [[jepa]]. It asks whether a model of the JEPA kind could propose Forms from a stated intent while the RCE checker alone decides what is admitted, so that nothing depends on the model being right. It states thirteen hypotheses, H1 to H13, five falsifiers, RJ-F1 to RJ-F5, and a programme in phases. No such model has been built, and no hypothesis that needs one has been tested [[jepa]].</p>` },
+    ],
+  },
+  {
+    id: 'why-now', title: 'Why it is needed now',
+    items: [
+      { id: 'cost-today', q: 'How does AI coding spend money and energy today?', a: `
+<p>An AI coding agent works as a loop of model calls: it reads the repository, writes a change, runs the tests, reads the failures and calls the model again. Each call generates text, token by token, on graphics processors in a data centre. Measured on eight models and real software issues, agentic coding used about 1,000 times the tokens of code chat and code reasoning, runs of the same task differed by up to 30 times, and higher token use "does not translate into higher accuracy" [[bai]]. At list prices one agentic query with a 100,000-token context and 10,000 output tokens costs about $2.50, or about $10,000 a year per developer at three queries an hour, seven hours a day, 200 days a year; that is an illustration, not a measurement [[a16z]]. The International Energy Agency puts reasoning and agentic queries at "hundreds or thousands of times more energy per query than simple text generation" [[ieaKQ]].</p>` },
+      { id: 'multipliers', q: 'Why does that cost grow with every task, every retry and every language?', a: `
+<p><strong>Every task.</strong> A tool that generates each change pays for generation again on the next task, even when the same change was made before: what the model produced on the first task does not run without the model on the ten-thousandth [[market]].</p>
+<p><strong>Every retry.</strong> Generated code is not repeatable, so a result is bought by sampling again. Asked the same coding question five times at temperature 0, ChatGPT gave answers that differed on every test for 18% to 44% of the problems, depending on the dataset [[ouyang]]. Codex solved 28.8% of a set of programming problems with one sample and 70.2% with 100 [[chen]].</p>
+<p><strong>Every language.</strong> The same logic shipped in a second language is generated, reviewed and tested a second time, because nothing ties the two versions to one checked source.</p>` },
+      { id: 'infrastructure', q: 'What does the infrastructure underneath cost?', a: `
+<p>Data centres used about 415 TWh of electricity in 2024, about 1.5% of the world's, and the IEA's Base Case projects about 945 TWh in 2030 [[ieaEAI]]. Capital spending by the largest technology companies exceeded $400 billion in 2025 and is expected to rise another 75% in 2026 [[ieaKQ]]. One laboratory's infrastructure project was announced at $500 billion over four years [[stargate]], and Sequoia Capital framed the revenue such spending has to earn back as "AI's $600B question" [[sequoia]].</p>
+<p>The price of a fixed level of model performance is falling fast, about 13 times a year since 2023 by one measured series [[epoch]], but tokens per task are rising: agentic runs use about 1,000 times the tokens of chat [[bai]], and the energy per query falls while the tokens per task rise faster [[market]]. The RCE project reads these sources as one finding: on the current path every new task, retry and language buys more generation, on more of the same hardware, with more power, and the capital and the electricity grow with use rather than being paid down. That is a reading of the cited figures, not a forecast.</p>` },
+    ],
+  },
+  {
+    id: 'change', title: 'Why the answer is a change of representation and of unit',
+    items: [
+      { id: 'not-incremental', q: 'Why not a better model, or cheaper tokens?', a: `
+<p>Write the cost of a task as model calls per task times the price of a call, p = n · q [[market]]. Better models and cheaper tokens lower q. They leave n where it is: each task, each retry and each language still calls the model. n falls only if work that was checked once is used again instead of being generated again, and that needs a representation in which "the same program" can be decided and a checked result stays checked. The work to reuse exists: about 70% of the code on GitHub consists of clones of files written earlier [[lopes]].</p>` },
+      { id: 'representation', q: 'What does RCE change in the representation?', a: `
+<ul>
+<li><strong>One checked Form.</strong> A program is admitted once by the checker; from then on its behaviour is the fold of δ over its log, which replays bit for bit [[rce]].</li>
+<li><strong>One Form, many languages.</strong> The emitters print the Form as Rust, Python, JavaScript and Scala today, and each emitted program must reproduce the Form's trace; no target is written by hand [[rce]]. Further targets are proposed in the specification, not built.</li>
+<li><strong>Verified work reused by identity and by behaviour.</strong> <code>rce hash</code> gives a program and any renaming of it one hash (theorem T7), and <code>rce equiv</code> decides whether two programs behave the same on the events it explores, printing the shortest event sequence that tells them apart when they do not [[rce,repo]].</li>
+</ul>
+<p>In the design of the engine, a result that passes the checks is stored and closes the next task of the same shape with no model call. That engine is not public code yet [[rce]].</p>` },
+      { id: 'unit', q: 'What is the unit of account?', a: `
+<p>Joules to completion. A task's completeness predicate C(z), meaning its tests, a proof or an agreement trace, is a constraint: a result meets it or does not. Among results that meet it, approaches are ranked by the energy spent to reach completion, J*, in joules [[rce]]. Tokens, seats and calls are not the unit, because a reused result spends none of them, while every approach on every machine spends joules.</p>` },
+    ],
+  },
+  {
+    id: 'status', title: 'What is built, proposed and measured',
+    items: [
+      { id: 'built', q: 'What is built today?', a: `
+<p>Public code, at public main <code>8ce91cea</code> [[repo]]:</p>
+<ul>
+<li>the specification, draft 0.9, one text at one commit, readable as a notebook at <a href="/rce/spec/">/rce/spec/</a>;</li>
+<li>the reference checker <code>rce</code> 0.1.0, with commands to check, run, test, trace, emit, format, measure the dimension of a program (<code>rce dim</code>), compare two programs (<code>rce equiv</code>, <code>rce change</code>), hash definitions, run a program on a host runtime and replay its log (<code>rce host run</code>, <code>rce host serve</code>, <code>rce host replay</code>), and an in-process database whose store is the log; the same checker runs in a browser at <a href="https://openie-dev.github.io/rce/">openie-dev.github.io/rce</a>;</li>
+<li>the emitters for Rust, Python, JavaScript and Scala, and the Lean proofs at the levels stated above [[rce]];</li>
+<li>pinned reference implementations and program corpora for a future lift: 99 programs for Go 1.24, 92 for Python 3.13 and 99 for JavaScript on Node.js 22, each with the recorded output of its run [[repo]].</li>
+</ul>` },
+      { id: 'proposed', q: 'What is proposed, and not built?', a: `
+<ul>
+<li><strong>The engine</strong>: gears that try lookup, then rules, then synthesis, then a model, last; one gate of replay, a shadow run, a schema check and a proof certificate; promotion of what passes; and receipts with an energy estimate for every decision. The RCE paper describes it as a design [[rce]].</li>
+<li><strong>Lift</strong>, bringing programs written in other languages into Forms. A first lifter covers a defined subset of Python, measured below under question 8; for other languages one probe lifts one Go pattern [[repo]].</li>
+<li><strong>The RCE-JEPA proposer</strong> and its decision head [[jepa]].</li>
+<li><strong>A calibrated energy model per target</strong>, so that the cheapest correct target can be chosen; today's estimate cannot tell targets apart [[rce]].</li>
+<li><strong>The input contract at entry.</strong> At <code>8ce91cea</code>, <code>rce run</code> still drops a payload field that the event does not declare and applies the event; the RCE paper lists the contract as work to finish [[rce]].</li>
+<li><strong>Idiomatic projections</strong>, emitted code that reads as a person in each language community would write it [[rce]].</li>
+</ul>` },
+      { id: 'measured', q: 'What has been measured?', a: `
+<p>Each run below was registered, with its hypotheses and thresholds, before it ran; the rows are public [[exp]].</p>
+<ul>
+<li><strong>Form space (H1).</strong> Over 185 programs, the median ratio of the description length of the emitted Python to that of the Form is 9.34 (interquartile range 8.45 to 10.81), above the threshold of 5; under gzip compression the ratio is 3.57 [[jepa]].</li>
+<li><strong>Adversarial Forms (H7, fuzzed arm).</strong> 1,275 mutants that the checker admitted were checked against five stated invariants with 0 violations; the arm with model-written Forms does not exist yet [[jepa]].</li>
+<li><strong>Determinism (H8).</strong> 10,500 seeded event streams, traced and hashed on six targets (x86_64, aarch64, big-endian s390x and wasm32, on Linux, macOS and Windows), with 0 mismatching lines [[jepa]].</li>
+<li><strong>Cost of a check.</strong> <code>rce check</code> takes a median of 3.0 ms per program (interquartile range 2.6 to 3.8 ms), about 0.03 J at a stated 10 W, labelled an estimate [[jepa]].</li>
+<li><strong>What a program's own examples catch.</strong> Of the mutants that change a program's behaviour, its example lines catch 317 of 392 (0.81) [[jepa]].</li>
+<li><strong>Dimension.</strong> Four registered runs of <code>rce dim</code> measured how many bits of a program's state change no output. RCE-F6 was triggered on twelve authored two-region programs (median 0.00 bits) and not on the hand-written examples (median 1.29 bits) [[rce]].</li>
+<li><strong>A model as proposer.</strong> A local model with 1.5 billion parameters made 18 proposals of rewrites, 13 of them distinct; the gate did not admit 15, and the 3 it admitted are one rewrite under three names that repeats a rule the engine already had [[rce]].</li>
+</ul>` },
+      { id: 'withdrawn', q: 'Which earlier results are withdrawn?', a: `
+<p>Version 1.23 of the RCE paper withdrew every result that only the non-public engine produced, until each is rebuilt on public code with a sealed registration and one command that reproduces it: among them the run on 10,000 generated Forms, the repair rates on the two smallest rungs of the repair ladder, the model checking of the engine's kernel with its check counts, the lift's agreement on four languages, and the test counts at an engine commit [[rce]]. Figures from earlier slides or decks that quote those results are not current claims.</p>` },
+    ],
+  },
+  {
+    id: 'energy', title: 'How energy is labelled',
+    items: [
+      { id: 'labels', q: 'What do est_j, reported_j and measured_j mean?', a: `
+<ul>
+<li><code>est_j</code>: an analytical estimate, for example processor seconds times a stated 10 W, or operation counts priced by a cost table.</li>
+<li><code>reported_j</code>: a reading of an operating-system or on-chip counter, such as RAPL.</li>
+<li><code>measured_j</code>: a wall or shunt meter on a named supply, logged with the run, with the idle draw subtracted.</li>
+</ul>
+<p>The three are reported in separate columns and never added together, and a cost with no estimate is reported as unpriced, never as zero [[rce]]. <strong>No <code>measured_j</code> exists for RCE:</strong> the field is empty in every result, and every energy figure about RCE on this page is <code>est_j</code> [[rce]].</p>` },
+      { id: 'compare', q: 'How does that compare with model generation?', a: `
+<p>No measurement compares the two on the same machine and the same tasks. Published figures for generation: LLaMA 65B used about 3 to 4 J per output token, counting graphics-processor energy only [[samsi]], and one median text prompt to a production assistant was measured by its operator at 0.24 Wh, or 864 J [[elsworth]]. The 0.03 J estimate for an RCE check is an estimate for a different task, deciding whether a program is in Form, not writing one. The observation that would settle the question is RCE-F3: under a wall meter, gross joules per solved task of the RCE solver against those of the cheapest model baseline on the tasks both solve [[rce]]. It has not been run.</p>` },
+    ],
+  },
+  {
+    id: 'hard', title: 'Hard questions',
+    lead: 'Ten critiques of RCE, each with the current answer and the registered observation that would decide it. Measurements answering all ten were registered before they ran and are reported under the answers they belong to, whether or not they favour RCE.',
+    items: [
+      { id: 'hq-1', q: '1. Rice\'s theorem: a name-free hash finds only programs that are identical up to names. Two different shapes of the same behaviour are not found.', a: `
+<p><strong>Current answer.</strong> Correct about the hash. <code>rce hash</code> and the log hashes are name-free (theorem T7), so a program and its renaming share a hash, and two programs that reach the same behaviour by different steps do not. No tool can decide in general whether two programs behave the same, which is Rice's theorem [[rice]], and RCE does not claim to. What it adds is a check for a given pair: <code>rce equiv</code> compares the behaviour of two programs on the events it explores (theorem T58, bisimulation) and prints a distinguishing sequence when they differ, within its exploration bound. Equality at a hash implies equal behaviour; a different hash implies nothing [[rce]]. Searching a store of programs for one with equal behaviour is part of the engine, which is not built.</p>
+<p><strong>Falsifier.</strong> RCE-F1: frozen lookup, rules and synthesis resolve under 10% of a held-out set of tasks with no model call [[rce]]. H10 asks whether canonical Forms halve the examples a proposer needs [[jepa]].</p>
+<p><strong>Measurement.</strong> Registered and run.</p>
+<p><strong>Measured (behaviour index).</strong> <code>rce fingerprint</code> now hashes a program's name-free outputs over every event sequence up to a stated length, so that two programs <code>rce equiv</code> judges equal always share it. Over 1,079 program texts, 308 could be fingerprinted; the other 771 are mostly commands with no state to explore. Among 86 pairs that behave the same but differ in shape, the name-free hash matched 0 and the fingerprint matched all 86, and all 187 pairs that <code>rce equiv</code> judges equal shared a fingerprint. At depth 4 and above, 2.0% of the pairs sharing a fingerprint were reported different, none with a distinguishing sequence <code>rce equiv</code> could find. The result supports reuse by behaviour for bounded programs, with equality only up to the explored depth [[bench,main2]].</p>` },
+      { id: 'hq-2', q: '2. State explosion: forty independent flags give 2⁴⁰ states.', a: `
+<p><strong>Current answer.</strong> Correct for explicit exploration: 2⁴⁰ is about 1.1 × 10¹² states. <code>rce dim</code> and <code>rce equiv</code> explore states breadth-first up to a fuel bound, about 100,000 states in 10 to 40 seconds, and report a lower bound when the bound is reached [[rce]]. The RCE paper says it plainly: finite state makes every question about behaviour decidable and none of them tractable. The symbolic quotient, which would treat each guard as one predicate instead of enumerating its values, is not implemented, and the minimal-machine theorem (theorem T60) is stated, not proved [[rce]].</p>
+<p><strong>Falsifier.</strong> No registered falsifier bounds the cost of exploration; RCE-F6 concerns redundant state, not scale. The measurement registered for this critique is the first to put a number on it.</p>
+<p><strong>Measurement.</strong> Registered and run.</p>
+<p><strong>Measured (bounded programs).</strong> A checkout with 5 to 80 independent options in one record-typed state: the Form grows linearly, from 12,326 to 113,170 bytes (R² = 0.99996), and <code>rce check</code> takes 5 to 24 ms. The critique holds for exploration: <code>rce dim</code> explores 64 states at 5 options and 4,096 at 10, and reaches its 100,000-state bound at 20 [[bench]].</p>` },
+      { id: 'hq-3', q: '3. Fuel: bounded loops turn non-termination into a step-count failure. What about event loops, schedulers, parsers of arbitrarily nested input and SAT solvers?', a: `
+<p><strong>Current answer.</strong> That is the design. Every step finishes within an explicit bound on evaluation steps (theorem T2); a loop carries a limit, and a <code>with budget</code> block traps with <code>budget</code> when its count runs out [[rce]]. Non-termination inside a step becomes a recorded trap instead of a hang. What runs indefinitely is the sequence of events, not a step: an event loop or a scheduler is a Form that takes one bounded step per event while the host runtime runs the loop (<code>rce host serve</code>) [[repo]]. A parser of arbitrarily nested input and a SAT solver have no bound known in advance; in RCE they run under a declared budget and report a trap when it is spent, which is a defined outcome but not an answer. The RCE paper states the consequence for lift: because every Form finishes, a lift from a Turing-complete language reaches only its terminating fragment, and membership in that fragment is undecidable [[rce]].</p>
+<p><strong>Falsifier.</strong> H6: any of the reference applications needs an escape hatch outside the Form; RJ-F1: lift coverage stops below 80% on any of five target languages [[jepa]].</p>
+<p><strong>Measurement.</strong> Registered and run.</p>
+<p><strong>Measured (bounded programs).</strong> A parser for a subset of JSON with no written bound, no step cap and recursion only on the structure it has parsed returns the right value at every depth from 1 to 4,000 and on every malformed input; the recursive-descent version requires change under W-REC-1. A service of 100,000 events run by the host kept per-block median latency between 3.997 and 4.005 ms, and all 17,766 events that did not apply kept the state, with replay validating all 235,536 log entries. The critique holds for recursion over integers or positions and for backtracking search: a solver for Boolean satisfiability (SAT) by the Davis–Putnam–Logemann–Loveland procedure needs a literal <code>bound 64</code>. Two defects were found: <code>rce test</code> of a deep structural recursion stops with a native stack overflow from depth 807, where the specification promises a defined trap, and moving a value copies it, so the parser's time grows as about depth to the power 2.4 [[bench]].</p>` },
+      { id: 'hq-4', q: '4. Latent search is not smooth: a one-character change flips the verdict, so a search guided by an energy score over edits may not converge.', a: `
+<p><strong>Current answer.</strong> The premise is right: the checker's verdict is discrete, and one character can change it. RCE-JEPA does not assume smoothness; it states it as a hypothesis to be tested. H11 holds if the energy score rises with edit distance from an admitted Form in at least 80% of test families, and RJ-F4 defeats energy-guided planning in Form space if H11 fails and the search does not reach admitted Forms within its beam budget [[jepa]]. Either way the checker remains the only judge. No proposer exists, so neither has been tested on a model.</p>
+<p><strong>Falsifier.</strong> H11 and RJ-F4 [[jepa]].</p>
+<p><strong>Measurement.</strong> Registered and run.</p>
+<p><strong>Measured (edit landscape).</strong> Over 56 programs, 6 chains of 5 typed edits each, with an energy defined before the run as the number of distinct rules broken plus the share of probe traces that differ: 96.1% of single edits to an admitted program require change, and mean energy rises with edit distance (0, 2.82, 3.75, 4.35, 4.74, 5.13). But only 43 of 56 programs (76.8%) rise steadily, below the 80% H11 needs, so <strong>H11 fails, narrowly</strong>; and a greedy descent from three edits away returns to an admitted program of the same behaviour 2.1% of the time against a registered threshold of 50%, so <strong>RJ-F4 is observed</strong>. The energy is defined by hand, not a model's, so the result is about this score [[bench]].</p>` },
+      { id: 'hq-5', q: '5. A valid program with the wrong formula passes, and a completeness predicate made of examples is met by a lookup table.', a: `
+<p><strong>Current answer.</strong> Correct. The checker shows that a Form is well formed and meets its stated examples and checks; it does not show that the Form is what was meant, and a table of the example answers meets the examples. The RCE-JEPA paper lists this risk as specification gaming, labelled and not solved [[jepa]]. One measurement exists: of the mutants that change a program's behaviour, the program's own example lines catch 317 of 392 (0.81, Wilson 95% interval 0.77 to 0.85), and almost all that they miss are a constant moved by one that no example exercises [[jepa]].</p>
+<p><strong>Falsifier.</strong> RJ-F2: writing the intent for the reference applications costs more person-hours than writing their Forms by hand [[jepa]]; RCE-F2: byte-identical or equivalent patches are under half of the resolved held-out tasks [[rce]].</p>
+<p><strong>Measurement.</strong> Registered and run.</p>
+<p><strong>Measured (table control).</strong> Each program with examples was rebuilt as its lookup-table control, equal to the program only on its example event lists. The checker admits all 56 controls, the stated obligations tell none of them from the program, and all 56 differ from it away from the examples. <code>rce check</code> now prints a <em>recommended</em> change, rule W-INT-2, when a module's example lines are its only obligations, without changing the verdict [[bench,main2]].</p>` },
+      { id: 'hq-6', q: '6. Most production faults are at the host boundary: reordering, duplicates, drops and clock skew, outside the pure step.', a: `
+<p><strong>Current answer.</strong> Correct that a pure step does not prevent faults in the network or the clock. What RCE changes is that the boundary is recorded. Every input, tick and external answer is an entry in the log, so replay reproduces exactly the order the host observed (theorems T3 and T32), and <code>rce host replay</code> re-derives every state hash with every adapter disconnected [[rce,repo]]. Time inside a program is the logical clock only, so skew is an input the log records, not a hidden variable [[rce]]. Duplicates and drops remain the host's to handle: the engine's design requires that a full mailbox hold its messages and log the back-pressure instead of dropping them, and rules that are monotone need no coordination between replicas, by the CALM result [[rce]]. Neither has been measured.</p>
+<p><strong>Falsifier.</strong> None is registered. H8 covers the replay of recorded streams, not faults in the world [[jepa]].</p>
+<p><strong>Measurement.</strong> Registered and run.</p>
+<p><strong>Measured (host faults).</strong> A seeded harness drove 9 programs on the real host through 72,000 runs with dropped, duplicated, reordered and lost messages, kills mid-batch and clock steps. The host contract held in every run: replay reproduced the live state exactly, every entry was a step or a kept step, no restart reused an id, and inputs with a source and sequence number were applied exactly once. The programs did not: a duplicated withdrawal was applied twice in 912 of 1,000 runs, a retried delete was answered 404 in 330, and a rate limiter exceeded its true-time limit after a forward clock step in 490. RCE makes these faults replayable and detectable; it does not prevent them, and exactly-once delivery is reachable today only through the embedding interface [[bench,main2]].</p>` },
+      { id: 'hq-7', q: '7. Determinism costs speed: no fused multiply-add, and every step hashed into a log; a claim says 10 to 100 times slower.', a: `
+<p><strong>Current answer.</strong> Part of the cost is real by design. Floating-point numbers are IEEE 754 binary64, rounded once per operator on every target, so a fused multiply-add, which rounds once for two operations, cannot be used where it would change a bit; and every step's state is hashed with SHA-256 into the log [[rce]]. The figure of 10 to 100 times slower is a claim, not a measurement: no RCE paper reports a speed comparison with conventional code. What is measured is the determinism itself: 10,500 event streams on six targets with 0 mismatches [[jepa]].</p>
+<p><strong>Falsifier.</strong> H4: energy per admitted program is not lower than the baseline's [[jepa]]; RCE-F3: under a wall meter, joules per solved task exceed those of the cheapest model baseline [[rce]].</p>
+<p><strong>Measurement.</strong> Registered and run.</p>
+<p><strong>Measured (determinism cost).</strong> Eleven programs, 1,000 events each, processor time: the hash-chained log costs a median 2.55 times the bare step in the checker and 5.35 times in emitted Rust; the rule against fused multiply-add costs about nothing (0.65 to 1.06 times). The claim of 10 to 100 times does not hold for the log as stated. Two costs are larger: emitted Rust is a median 388 times slower than hand-written Rust, because of its value representation rather than determinism, and hashing the full state every step costs a median 1,268 times a native step, so for fast native code the critique understates that cost. Energy for these runs is <code>est_j</code> only [[bench]].</p>` },
+      { id: 'hq-8', q: '8. Lift: real code, with dynamic dispatch, exceptions and unbounded retry loops, cannot be lifted, and no lifter exists today.', a: `
+<p><strong>Current answer.</strong> Correct for most real code. Until 29 October 2026 no lifter existed in public code; at <code>8ce91cea</code> one probe lifts one Go pattern, a struct with one method per event, into a Form, and what is in place is the other side of the comparison: pinned implementations of Go, Python and JavaScript with 99, 92 and 99 programs and the recorded output of each run [[repo]]. The RCE paper bounds what any lift can do: it reaches only the terminating fragment of a language, and how closures, control states and evaluation order are represented are free choices, so a lifted Form is not canonical [[rce]]. Dynamic dispatch, exceptions and unbounded retry loops each need a construction that has not been written.</p>
+<p><strong>Falsifier.</strong> RJ-F1: lift coverage stops below 80% on any of five target languages [[jepa]]; and the lift gate of the RCE programme: coverage under 10% on any of the first four languages after the second registered run [[rce]].</p>
+<p><strong>Measurement.</strong> Registered and run.</p>
+<p><strong>Measured (lift, Python).</strong> The first lifter, for a defined subset of Python 3.13, now exists. On the 92 pinned corpus programs it lifts 6 that reproduce the recorded run, gives 0 wrong results, and reports every other case as requiring change under a named rule (most often unsupported calls, imports, types and exceptions); on the 15 functions of <code>heapq.py</code> it lifts none. Coverage is far below the 80% of RJ-F1; RJ-F1 is judged at a plateau, after the list of constructs is exhausted, which it is not [[bench,main2]].</p>` },
+      { id: 'hq-9', q: '9. Leaky projections: emitted code is not idiomatic and does not interoperate with ecosystem libraries.', a: `
+<p><strong>Current answer.</strong> Correct today. Emitted code is a dynamic-value runtime per target, four hand-written runtimes of about 2,000 lines each, printed so that it reproduces the trace, not so that it reads like code a person in that language community would write [[rce]]. The RCE paper's position, that a projection should render layout and idiom for each community from a structured record of the names and intent, is stated and not built [[rce]]. A step is pure, so an ecosystem library is not called from inside one: effects go through host adapters and declared foreign calls, whose answers are logged so that replay still holds (theorem T32) [[rce]].</p>
+<p><strong>Falsifier.</strong> The encapsulation criterion of the RCE paper: a language on which the Form is strictly worse on any of five coordinates (joules, redundancy, decidability, the round trip, and the cost to reach a program that passes) after two registered runs is not encapsulated [[rce]]. No run exists.</p>
+<p><strong>Measurement.</strong> Registered and run.</p>
+<p><strong>Measured (projections).</strong> At <code>8ce91cea</code> no emitted program could be embedded in another program. After a change of 27 lines to the emitters, eight services embed them, in Python (asyncio, FastAPI, numpy), Rust (tokio) and JavaScript (node:http, React and a host with no Node.js runtime), and each reproduces the trace of <code>rce run</code> byte for byte on 11 of 11 event streams. The critique holds on two points: emitted code is 4.2 to 6.9 times the lines of a hand-written version, and in Rust converting at the boundary takes more than half of each call [[bench,main2]].</p>` },
+      { id: 'hq-10', q: '10. Specification costs as much as the program, and cheaper code raises total demand (the Jevons effect).', a: `
+<p><strong>Current answer.</strong> Specification is where the cost moves, and it can be large. In seL4, a verified operating-system kernel, the abstract specification took about 4 person-months and the proof about 20 person-years, against 2.2 person-years to build the kernel [[klein]]. In a 2026 study of verified synthesis driven by a language model, the dominant failures "were not failures of bounded verification, but failures of specification coverage" [[cunha]]. RCE does not remove this cost; RJ-F2 makes it measurable [[jepa]].</p>
+<p>On demand: cheaper tasks can raise total use. A venture essay expects it ("we believe Jevon's Paradox in this case holds") [[a16z]], and the one published elasticity, across tasks in one provider's sample, is about −0.29, a cross-section rather than a price change over time [[anthropic]]. RCE's claim is about joules per completed task, not total joules: reuse lowers the cost of a repeated task, and whether total energy then rises with new tasks is a question about demand that no RCE result answers [[market]].</p>
+<p><strong>Falsifier.</strong> RJ-F2 for the cost of specification [[jepa]]; for demand, none in the RCE papers.</p>
+<p><strong>Measurement.</strong> Registered and run, for size and sufficiency; RJ-F2 itself, a timed study of authoring in person-hours, was not run.</p>
+<p><strong>Measured (specification cost).</strong> Over the 60 programs of the corpus that state an intent or example lines, all written by the RCE project, the obligations (example, check and contract lines) have a median size of 0.37 of the program body in bytes (interquartile range 0.26 to 0.51), and only 3 exceed it. They are also partial: of 461 single changes to a body that alter its behaviour, judged on the example streams, 64 random streams and <code>rce equiv</code>, the obligations catch 327 (0.709, Wilson 95% interval 0.666 to 0.749); judged on the example streams alone, as in the earlier figure of 0.81, they would appear to catch 0.864. What they miss is mostly a literal or a comparison at a boundary no example exercises. So writing the obligations costs less than writing the code here, and obligations of that size do not pin down behaviour; making them complete would make them larger, which supports the critique in part. No measurement in the RCE papers yet settles the question of demand [[bench]].</p>` },
+    ],
+  },
+];
+
+// Number citations in order of first appearance.
+const order: string[] = [];
+const cite = (html: string) => html.replace(/\[\[([a-zA-Z0-9,]+)\]\]/g, (_, keys: string) => {
+  const ns = keys.split(',').map((k) => {
+    if (!SOURCES[k]) throw new Error(`faq: unknown source ${k}`);
+    if (!order.includes(k)) order.push(k);
+    return `C${order.indexOf(k) + 1}`;
+  });
+  return `[${ns.join(', ')}]`;
+});
+const introHtml = cite(intro);
+const rendered = parts.map((p) => ({ ...p, items: p.items.map((it) => ({ ...it, html: cite(it.a) })) }));
+const unused = Object.keys(SOURCES).filter((k) => !order.includes(k));
+if (unused.length) throw new Error(`faq: sources never cited: ${unused.join(', ')}`);
+
+const plain = (h: string) => h.replace(/<!--[\s\S]*?-->/g, '').replace(/<\/?(?:strong|em|code|a)\b[^>]*>/g, '').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').replace(/ ([,.;:])/g, '$1').trim();
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://research.openie.dev/faq/#faq',
+  name: 'RCE: frequently asked questions',
+  url: 'https://research.openie.dev/faq/',
+  inLanguage: 'en',
+  dateModified: '2026-10-29',
+  publisher: { '@type': 'Organization', '@id': 'https://openie.dev/#org', name: 'Open Interface Engineering, Inc.', url: 'https://openie.dev' },
+  mainEntity: rendered.flatMap((p) => p.items.map((it) => ({
+    '@type': 'Question',
+    name: it.q,
+    url: `https://research.openie.dev/faq/#${it.id}`,
+    acceptedAnswer: { '@type': 'Answer', text: plain(it.html) },
+  }))),
+};
+---
+
+<Layout title="RCE: frequently asked questions" description="What the Reality Code Engine (RCE) is, why a change of program representation and of unit of account is needed now, what is built, proposed and measured, how energy is labelled, and ten hard questions with the falsifier each maps to.">
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(ld)} />
+  <article class="faq px-4 sm:px-6 md:px-10 pt-12 md:pt-24 pb-20 max-w-3xl mx-auto">
+    <p class="section-label mb-4">Reality Code Engine · questions and answers</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">RCE: frequently asked questions</h1>
+    <div class="mt-6 font-body text-base text-brand-slate leading-relaxed space-y-4" set:html={introHtml} />
+
+    <section class="mt-10 glass-card p-5 md:p-6" aria-labelledby="terms-h">
+      <h2 id="terms-h" class="font-mono text-[11px] tracking-[2px] uppercase text-brand-gray mb-3">Terms used on this page</h2>
+      <dl id="terms" class="space-y-2 font-body text-sm text-brand-slate leading-relaxed">
+        {terms.map(([t, d]) => <div><dt class="inline font-semibold text-brand-white">{t}</dt>: <dd class="inline m-0">{d}</dd></div>)}
+      </dl>
+    </section>
+
+    <nav class="mt-8 faq-toc" aria-label="Questions on this page">
+      <p class="font-mono text-[11px] tracking-[2px] uppercase text-brand-gray mb-3">Contents</p>
+      <ol class="list-decimal pl-5 space-y-1 font-body text-sm">
+        {rendered.map((p) => <li><a href={`#${p.id}`}>{p.title}</a></li>)}
+        <li><a href="#sources">Sources</a></li>
+      </ol>
+    </nav>
+
+    <figure class="mt-10 glass-card p-3 md:p-4">
+      <a href="/figures/rce/spec/rce-overview.svg" aria-label="Open the figure full size"><img src="/figures/rce/spec/rce-overview.png" alt="RCE at a glance: source enters the checker, which admits it as a Form P = (S, E, delta, D, lambda) or names the rule it breaks; every step is appended to the hash-chained log D; emitters print the Form as Rust, Python, JavaScript and Scala; a host runs it." width="796" height="436" class="w-full h-auto rounded bg-white" loading="lazy" decoding="async" /></a>
+      <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Figure 1. RCE at a glance, from the openIE-dev/rce repository (<code>docs/figures/rce-overview.svg</code>). The checker admits a program or names the rule it breaks; an admitted program is a Form; every step is appended to the log D; emitters print it in other languages; a host runs it.</figcaption>
+    </figure>
+
+    {rendered.map((p) => (
+      <section id={p.id} class="mt-14" aria-labelledby={`${p.id}-h`}>
+        <h2 id={`${p.id}-h`} class="font-display text-2xl md:text-3xl font-bold text-brand-white tracking-tight">{p.title}</h2>
+        {p.lead && <p class="mt-3 font-body text-base text-brand-slate leading-relaxed">{p.lead}</p>}
+        {p.items.map((it) => (
+          <div id={it.id} class="mt-8 faq-item">
+            <h3 class="font-display text-lg md:text-xl font-semibold text-brand-white leading-snug">{it.q}</h3>
+            <div class="mt-3 faq-a font-body text-[15px] md:text-base text-brand-slate leading-relaxed" set:html={it.html} />
+          </div>
+        ))}
+      </section>
+    ))}
+
+    <section id="sources" class="mt-16" aria-labelledby="sources-h">
+      <h2 id="sources-h" class="font-display text-2xl font-bold text-brand-white tracking-tight">Sources</h2>
+      <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Numbered in order of first citation on this page. Papers on this site state their own sources; the outside figures above were read in the cited work or in the site paper that quotes it with its page.</p>
+      <ol data-refs class="mt-4 space-y-3 font-body text-sm text-brand-slate leading-relaxed list-none pl-0">
+        {order.map((k, i) => <li class="faq-ref">[C{i + 1}] <Fragment set:html={SOURCES[k]} /></li>)}
+      </ol>
+    </section>
+
+    <div class="mt-12 flex flex-wrap gap-3">
+      <a href="/papers/rce/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">Read the RCE paper</a>
+      <a href="/papers/rce-jepa/" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">RCE-JEPA</a>
+      <a href="/rce/spec/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">Specification</a>
+      <a href="/data/#rce" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">Data and code</a>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .faq :global(a) { color: var(--color-brand-amber); }
+  .faq :global(code) { font-family: var(--font-mono); font-size: 0.85em; background: rgba(245,158,11,0.08); color: var(--color-brand-amber); padding: 0.05em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+  .faq-a :global(p) { margin-top: 0.75rem; }
+  .faq-a :global(p:first-child) { margin-top: 0; }
+  .faq-a :global(ul) { list-style: disc; padding-left: 1.25rem; margin-top: 0.75rem; }
+  .faq-a :global(li) { margin-top: 0.4rem; }
+  .faq-a :global(strong) { color: var(--color-brand-white); font-weight: 600; }
+  .faq-item { scroll-margin-top: 5rem; }
+  .faq section { scroll-margin-top: 5rem; }
+  .faq-ref { overflow-wrap: anywhere; }
+</style>

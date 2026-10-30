@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420"><rect width="1000" height="420" fill="#fff"/>
+<text x="500" y="50" font-family="Helvetica,Arial,sans-serif" font-size="18" font-weight="bold" fill="#111" text-anchor="middle">Part 1 finite info</text>
+<text x="635" y="50" font-family="Helvetica,Arial,sans-serif" font-size="18" font-weight="bold" fill="#111" text-anchor="middle">Part 2 Form</text>
+<text x="770" y="50" font-family="Helvetica,Arial,sans-serif" font-size="18" font-weight="bold" fill="#111" text-anchor="middle">Part 3 kinematics</text>
+<text x="905" y="50" font-family="Helvetica,Arial,sans-serif" font-size="18" font-weight="bold" fill="#111" text-anchor="middle">Part 4 world model</text>
+<rect x="20" y="70" width="960" height="52" fill="#f3f5f9"/>
+<text x="40" y="102" font-family="Helvetica,Arial,sans-serif" font-size="19" font-weight="normal" fill="#111" text-anchor="start">Compression as understanding</text>
+<circle cx="500" cy="95" r="12" fill="#2a7ab0" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="635" cy="95" r="12" fill="#2a7ab0" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="770" cy="95" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="905" cy="95" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<text x="40" y="154" font-family="Helvetica,Arial,sans-serif" font-size="19" font-weight="normal" fill="#111" text-anchor="start">Computation as physics</text>
+<circle cx="500" cy="147" r="12" fill="#2a7ab0" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="635" cy="147" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="770" cy="147" r="12" fill="#2a7ab0" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="905" cy="147" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<rect x="20" y="174" width="960" height="52" fill="#f3f5f9"/>
+<text x="40" y="206" font-family="Helvetica,Arial,sans-serif" font-size="19" font-weight="normal" fill="#111" text-anchor="start">State machines, exact semantics</text>
+<circle cx="500" cy="199" r="12" fill="#2a7ab0" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="635" cy="199" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="770" cy="199" r="12" fill="#2a7ab0" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="905" cy="199" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<text x="40" y="258" font-family="Helvetica,Arial,sans-serif" font-size="19" font-weight="normal" fill="#111" text-anchor="start">Programs as data, manifolds</text>
+<circle cx="500" cy="251" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="635" cy="251" r="12" fill="#2a7ab0" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="770" cy="251" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="905" cy="251" r="12" fill="#2a7ab0" stroke="#2a7ab0" stroke-width="2"/>
+<rect x="20" y="278" width="960" height="52" fill="#f3f5f9"/>
+<text x="40" y="310" font-family="Helvetica,Arial,sans-serif" font-size="19" font-weight="normal" fill="#111" text-anchor="start">World models, latent prediction</text>
+<circle cx="500" cy="303" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="635" cy="303" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="770" cy="303" r="12" fill="#2a7ab0" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="905" cy="303" r="12" fill="#2a7ab0" stroke="#2a7ab0" stroke-width="2"/>
+<text x="40" y="362" font-family="Helvetica,Arial,sans-serif" font-size="19" font-weight="normal" fill="#111" text-anchor="start">Energy-based models</text>
+<circle cx="500" cy="355" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="635" cy="355" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="770" cy="355" r="12" fill="none" stroke="#2a7ab0" stroke-width="2"/>
+<circle cx="905" cy="355" r="12" fill="#2a7ab0" stroke="#2a7ab0" stroke-width="2"/>
+<text x="500" y="405" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#111" text-anchor="middle">filled = convergence observation (not confirmation)</text>
+</svg>

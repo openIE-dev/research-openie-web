@@ -49,7 +49,7 @@ Each paper has a Notation section before the acronym is used as a bare token. If
 | System One | typed decision models (Laya / Jev class) |
 | DiffLogic | differentiable logic gate networks |
 
-Also define notational intelligence, commit law, satiation, economic done, and free at the margin in the paper that uses them.
+Also define notational intelligence, commit law, satiation, Economic Reality of Satiation, and free at the margin in the paper that uses them.
 
 ## 3. Prose bans
 

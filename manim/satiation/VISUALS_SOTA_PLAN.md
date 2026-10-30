@@ -92,7 +92,7 @@ ffmpeg -y -i CascadeLast.mp4 -c:v libvpx-vp9 -b:v 0 -crf 35 -an CascadeLast.webm
 
 | Living ID | Visual upgrade | Manim / other | Honesty |
 |-----------|----------------|---------------|---------|
-| `sat-inf-01` | Engagement vs economic-done lenses | Manim split-lens | illustrative |
+| `sat-inf-01` | Engagement vs Economic Reality of Satiation lenses | Manim split-lens | illustrative |
 | `sat-fig-01` | Bliss-point geometry | Manim + existing `sat-3d-01` | modelled (textbook) |
 | `sat-tab-01` | Race→satiation→commodity | Keep table; optional motion | **[SOFT]** historical |
 | `sat-fig-02` | Epoch free-at-margin arc | Cite Epoch; **≠ free joules** badge | no invented series |

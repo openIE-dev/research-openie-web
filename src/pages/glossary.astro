@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { drafts } from '../data/studyList';
+import studiesData from '../data/studies.json';
+const studiesAll = studiesData.studies;
+
+const allTerms = [
+  {
+    term: "commit gate",
+    def: "A check that runs before an irreversible action. A proposal may not authorize itself. The gate commits or refuses and writes a receipt.",
+  },
+  {
+    term: "receipt",
+    def: "A record written for every decision: the prediction and its timestamp before the act, the outcome, the match, the joules by label, and the refusal reason if any.",
+  },
+  {
+    term: "completeness predicate C(z)",
+    def: "A written test that maps the state z of a task to 0 or 1, for example tests pass, a proof checks, or an output matches a reference. A task is complete when C(z) = 1.",
+  },
+  {
+    term: "energy to correct completion (J*)",
+    def: "The least expected energy, in joules (J), that a system needs to reach C(z) = 1 with failure probability at most δ. Systems that pass are ordered by J*; ordering by a real number is a total preorder.",
+  },
+  {
+    term: "value of information (VoI)",
+    def: "The expected gain in a decision's payoff from observing a quantity before deciding, minus the cost of observing it (Howard, 1966).",
+  },
+  {
+    term: "impedance tax",
+    def: "The extra work a machine consumer does because information arrives in a format made for people to read: encode, parse, tokenize and, for a model, read the extra tokens. Defined with units in \"AI\" Reads Human; no joule value is claimed for it yet.",
+  },
+  {
+    term: "token",
+    def: "The unit a language model reads, a piece of text produced by a tokenizer. The same records give different token counts in different formats and under different tokenizers.",
+  },
+  {
+    term: "Landauer bound",
+    def: "The minimum heat dissipated by erasing one bit at temperature T: k_B T ln 2, about 2.87 × 10⁻²¹ J at 300 K (Landauer, 1961).",
+  },
+  {
+    term: "cheapest-first cascade",
+    def: "An order of mechanisms (gears) tried from lowest to highest expected energy, stopping at the first that passes the check. Expected energy is minimized by trying gears in decreasing order of p_i / c_i, with p_i the pass probability and c_i the expected energy (Simon and Kadane, 1975).",
+  },
+  {
+    term: "Mixture of Limits",
+    def: "The rule of using the cheapest gear that passes the check and stopping when further spend cannot change C(z). The cheapest-first cascade is one instance.",
+  },
+  {
+    term: "σ-law selector",
+    def: "A selector that picks the next act by the ratio of pass probability to energy cost and stops when the next act's expected gain is below its energy cost.",
+  },
+  {
+    term: "plateau",
+    def: "The least spend that closes a task. Past it, further tokens, parameters or joules cannot change C(z).",
+  },
+  {
+    term: "replay class",
+    def: "A label on an answer stating how it was produced. An answer labeled ModelGenerated cannot be relabeled Deterministic.",
+  },
+  {
+    term: "software reference implementation",
+    def: "The software used to test a claim without board-level metering. Its energy figures are estimates.",
+  },
+  {
+    term: "est_j",
+    def: "An analytical energy estimate: operation counts times stated energy constants, in joules.",
+  },
+  {
+    term: "reported_j",
+    def: "An energy figure read from an operating-system or on-chip counter, such as RAPL package energy minus a stated idle baseline.",
+  },
+  {
+    term: "measured_j",
+    def: "A joule reading from an external wall or shunt meter on a named rail, with its calibration stated. Never summed with reported_j, est_j or trajectory_j.",
+  },
+  {
+    term: "trajectory_j",
+    def: "Work computed from measured physical trajectories and a calibrated potential, for physical act cycles near the k_B T scale.",
+  },
+  {
+    term: "evidence classes",
+    def: "Modeled: a stated formula. Simulated: a program or hardware-description run. Measured: a named meter on a stated device and workload.",
+  },
+  {
+    term: "board_metered",
+    def: "A page flag that is true only when a labeled meter returned a board energy reading for that paper.",
+  },
+  {
+    term: "Form and fit",
+    def: "A program written as a state machine P = (S, E, δ, D, λ): states, events, a pure step function, an append-only log whose fold is the state, and outputs. The form is that shape (Gurevich's Abstract State Machine theorem); the fit is a program's vocabulary, rules and initial state.",
+  },
+  {
+    term: "Reality Code Engine (RCE)",
+    def: "A programming system, studied in its own paper, in which a program is written once as a Form and code in other languages is generated from it.",
+  },
+  {
+    term: "requires change (RCE)",
+    def: "The verdict of the RCE checker on code that is not in Form: the checker names the rule the code breaks, for example `requires change FILE: line 1: W-SYN-1 ...`, and nothing runs until the code is changed.",
+  },
+  {
+    term: "kept step (RCE)",
+    def: "A step whose event does not apply in the current state. The step keeps the state, unchanged (theorem T8, atomicity), and is recorded in the log with the error it names.",
+  },
+  {
+    term: "Metabolic Intelligence",
+    def: "A class of computer intelligence designed to run inside a fixed energy budget B, studied in its own white paper.",
+  },
+  {
+    term: "WCA (Wise Computer Automation)",
+    def: "The Rust software implementation of the commit gate studied in Metered Commit Gates, Part I.",
+  },
+  {
+    term: "proposed Universal Law of Agency",
+    def: "A proposed definition of an agent with an energy budget and a refusal rule, stated in the agency paper. It is a proposal.",
+  },
+];
+
+// Terms that mention an unpublished draft (by title, short title or slug) are left out of the build.
+const hidden = studiesAll.filter((x) => drafts.includes(x.id)).flatMap((x) => [x.id, x.title, x.short_title]);
+const terms = allTerms.filter((t) => !hidden.some((h) => (t.term + ' ' + t.def).includes(h)));
+---
+
+<Layout
+  title="Glossary"
+  description="Terms used on research.openie.dev, each with its definition, units where they apply, and its source."
+>
+  <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
+    <p class="section-label mb-4">research.openie.dev</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
+      Glossary
+    </h1>
+    <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
+      Terms used on this site. Every paper also defines the terms it uses, so no paper depends on this page.
+    </p>
+
+    <dl class="mt-10 space-y-6">
+      {terms.map((t) => (
+        <div class="glass-card p-5 md:p-6">
+          <dt class="font-mono text-sm text-brand-amber mb-2">{t.term}</dt>
+          <dd class="font-body text-sm text-brand-slate leading-relaxed m-0">{t.def}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white">Catalog</a>
+      <a href="/about/" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10">About index</a>
+    </div>
+  </section>
+</Layout>

@@ -1,20 +1,32 @@
 ---
 import '../styles/global.css';
+import 'katex/dist/katex.min.css';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import { LANGS, NAV_EN } from '../i18n';
+import { studies } from '../data/studyList';
 
 interface Props {
   title: string;
   description?: string;
+  lang?: string;
+  dir?: string;
+  alternates?: { hreflang: string; href: string }[];
 }
 
 const {
   title,
-  description = "OpenIE Research — research studies with downloadable PDFs and interactive figures. Draft status · board_synth_claimed=false.",
+  description = "OpenIE Research: research studies by David Charlot at Open Interface Engineering, each with a web edition, a PDF, and interactive figures.",
+  lang = 'en',
+  dir = 'ltr',
+  alternates = [],
 } = Astro.props;
+
+const N: typeof NAV_EN = (LANGS as any)[lang]?.nav ?? NAV_EN;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.openie.dev').href;
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang={lang} dir={dir} data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,10 +41,17 @@ const {
     <meta property="og:title" content={`${title} | OpenIE Research`} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://research.openie.dev" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="OpenIE Research" />
+    <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    <meta name="author" content="David Charlot" />
+    <link rel="describedby" type="text/markdown" href="/llms.txt" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={`${title} | OpenIE Research`} />
     <meta name="twitter:description" content={description} />
+    <script is:inline src="/webmcp-tools.js" defer></script>
+    <slot name="head" />
 
     <script is:inline>
       (function(){
@@ -50,19 +69,18 @@ const {
         Open<span class="text-brand-cyan">IE</span> <span class="text-brand-amber">Research</span>
       </a>
 
-      <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links" class="md:hidden flex flex-col gap-1.5 p-2 text-brand-slate cursor-pointer bg-transparent border-none">
+      <button id="mobile-menu-btn" aria-label={N.menu} aria-expanded="false" aria-controls="nav-links" class="md:hidden flex flex-col gap-1.5 p-2 text-brand-slate cursor-pointer bg-transparent border-none">
         <span class="block w-5 h-0.5 bg-current transition-transform" id="burger-top"></span>
         <span class="block w-5 h-0.5 bg-current transition-opacity" id="burger-mid"></span>
         <span class="block w-5 h-0.5 bg-current transition-transform" id="burger-bot"></span>
       </button>
 
-      <div id="nav-links" class="hidden md:flex gap-7 items-center max-md:fixed max-md:inset-0 max-md:top-[60px] max-md:bg-brand-dark/95 max-md:backdrop-blur-xl max-md:flex-col max-md:justify-center max-md:gap-8 max-md:z-50">
-        <a href="/#catalog" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Catalog</a>
-        <a href="/about/ni" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">NI Commit Law</a>
-        <a href="/about/satiation" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Satiation</a>
-        <a href="/about/mol" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Mixture of Limits</a>
-        <a href="/papers/ni/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Papers</a>
-        <a href="/living/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-amber no-underline hover:text-brand-gold transition-colors">Figures</a>
+      <div id="nav-links" class="hidden md:flex gap-6 items-center max-md:fixed max-md:inset-0 max-md:top-[60px] max-md:bg-brand-dark/95 max-md:backdrop-blur-xl max-md:flex-col max-md:justify-center max-md:gap-8 max-md:z-50">
+        <a href="/#catalog" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.papers}</a>
+        <a href="/living/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.figures}</a>
+        <a href="/about/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.about}</a>
+        <a href="/glossary/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.glossary}</a>
+        <a href="/faq/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">FAQ</a>
         <a href="https://openie.dev" class="font-mono text-xs max-md:text-sm text-brand-cyan border border-brand-cyan/30 px-4 py-1.5 rounded-md no-underline hover:bg-brand-cyan/10 hover:border-brand-cyan transition-all">
           openie.dev
         </a>
@@ -83,7 +101,7 @@ const {
             Open<span class="text-brand-cyan">IE</span> Research
           </div>
           <p class="font-body text-[12px] text-brand-gray max-w-[320px] leading-relaxed">
-            Research studies hub for Open Interface Engineering, Inc.<br>
+            Research papers hub for Open Interface Engineering, Inc.<br>
             Papers + PDFs · figures under /living · no paid services
           </p>
         </div>
@@ -91,13 +109,19 @@ const {
           <div>
             <div class="font-mono text-[10px] text-brand-gray tracking-[2px] uppercase mb-3">Papers</div>
             <div class="space-y-2">
-              <a href="/papers/ni/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">NI Commit Law</a>
-              <a href="/papers/satiation/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Satiation</a>
-              <a href="/papers/mol/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Mixture of Limits</a>
-              <a href="/pdfs/ni.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">NI PDF</a>
-              <a href="/pdfs/satiation.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Satiation PDF</a>
-              <a href="/pdfs/mol.pdf" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Mixture of Limits PDF</a>
+              {studies.map((s) => <a href={s.path} class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">{s.short_title}</a>)}
+              <a href="/rce/download/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">RCE download</a>
               <a href="/living/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Figures</a>
+              <a href="/about/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">About</a>
+              <a href="/glossary/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Glossary</a>
+              <a href="/faq/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">RCE FAQ</a>
+            </div>
+          </div>
+          <div>
+            <div class="font-mono text-[10px] text-brand-gray tracking-[2px] uppercase mb-3">PDFs</div>
+            <div class="space-y-2">
+              {studies.map((s) => <a href={s.pdfPath} class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">{s.short_title}</a>)}
+              <a href="/data/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Data and code</a>
             </div>
           </div>
           <div>
@@ -111,7 +135,7 @@ const {
           <div>
             <div class="font-mono text-[10px] text-brand-gray tracking-[2px] uppercase mb-3">Contract</div>
             <div class="space-y-2">
-              <span class="block font-body text-[12px] text-brand-slate">board_synth_claimed=false</span>
+              <span class="block font-body text-[12px] text-brand-slate">board_metered=false, except the KV260 rungs in Metered Commit Gates</span>
               <span class="block font-body text-[12px] text-brand-slate">research.openie.dev</span>
             </div>
           </div>
@@ -153,10 +177,13 @@ const {
         });
       });
 
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menuOpen) btn?.click(); });
+
       const nav = document.getElementById('nav');
       window.addEventListener('scroll', () => {
         nav?.classList.toggle('scrolled', window.scrollY > 60);
       });
     </script>
+    <script>import '../scripts/lightbox.js';</script>
   </body>
 </html>

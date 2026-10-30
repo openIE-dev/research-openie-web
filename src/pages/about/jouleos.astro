@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title={"The Search for JouleOS"}
+  description={"About: The Search for JouleOS. This study reviews how kernels, builds, guests and instruction sets are composed today, shows that none of them makes energy a condition of an agent's action, and lists checkable requirements for a machine that would."}
+>
+  <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
+    <p class="section-label mb-4">Product white paper (review and design guide) · about</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
+      The Search for JouleOS
+    </h1>
+    <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
+      This study reviews how kernels, builds, guests and instruction sets are composed today, shows that none of them makes energy a condition of an agent's action, and lists checkable requirements for a machine that would.
+    </p>
+    <div class="mt-8 glass-card p-6">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">In plain words</p>
+      <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
+        <li>Today's computers stack many separate layers, and AI (artificial intelligence) agents are added on top without changing what is underneath.</li>
+        <li>None of those layers asks, before an agent acts, how much energy the action will use or whether it is allowed.</li>
+        <li>A machine built for agents should measure energy, give each agent a strict budget, and refuse anything that breaks it.</li>
+      </ol>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/products/jouleos/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
+        Read → /products/jouleos/
+      </a>
+      <a href="/pdfs/jouleos.pdf" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors" download>
+        Download PDF
+      </a>
+      <a href="/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">
+        ← Catalog
+      </a>
+    </div>
+  </section>
+</Layout>

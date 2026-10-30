@@ -21,12 +21,12 @@
 | `ni-run-03` | P1 | MCP gate demo case table (`mcp_gate_demo.json`) | §5 / §7 |
 | `ni-inf-02` | P1 | Joule tier A/B/C ladder; `board_synth_claimed=false` | §5 / §8 |
 | `ni-3d-01` | P1 | Toy plant 3D orbit stub — static 2D phase snapshot (illustrative / modelled toy) | §5 / Appendix |
-| `sat-inf-01` | P2 | Engagement KPI vs economic-done lenses | §1 / §3 |
+| `sat-inf-01` | P2 | Engagement KPI vs Economic Reality of Satiation lenses | §1 / §3 |
 | `sat-fig-01` | P2 | Bliss-point / indifference ellipses; U modelled textbook | §3 / §4 |
 | `sat-tab-01` | P2 | Race→satiation→commodity cycle; **[SOFT]** historical rows | §2 / §5 |
 | `sat-fig-02` | P2 | Epoch-cited free-at-margin price arc; ≠ free joules | §5 |
 | `sat-inf-02` | P2 | Scarcity map: still scarce vs commodity-heading | §4 / §7 |
-| `sat-diag-01` | P2 | Refuse = economic done ∪ physical unsafe | §4 / §7 |
+| `sat-diag-01` | P2 | Refuse = Economic Reality of Satiation ∪ physical unsafe | §4 / §7 |
 | `sat-tab-02` | P2 | R-S6–R-S12 decision rules (design, not empiric) | §7 |
 | `sat-fig-04` | P2 | Steelman counters (status / creative / military / Jevons) scoped | §6 |
 | `sat-3d-01` | P2 | Bliss utility surface 3D stub — static 2D contour twin (modelled textbook) | §4 |

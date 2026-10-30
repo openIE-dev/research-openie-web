@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="t d"><title id="t">Stated useful lives for servers and network equipment</title><desc id="d">Dot and arrow chart of stated server lives in years. CoreWeave lengthened from 5 to 6 in 2023, Amazon shortened a subset from 6 to 5 in 2025, Meta set 5.5 in 2025, Alphabet uses 6, Microsoft states 2 to 6 and Oracle 1 to 6.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="518" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Stated useful lives for servers and network equipment</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Years, from annual reports. Longer lives spread cost over more years and raise reported earnings in the near term.</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<line x1="250.0" y1="130.0" x2="250.0" y2="420.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="250.0" y="440.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">1</text>
+<line x1="343.3" y1="130.0" x2="343.3" y2="420.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="343.3" y="440.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2</text>
+<line x1="436.7" y1="130.0" x2="436.7" y2="420.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="436.7" y="440.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">3</text>
+<line x1="530.0" y1="130.0" x2="530.0" y2="420.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="530.0" y="440.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">4</text>
+<line x1="623.3" y1="130.0" x2="623.3" y2="420.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="623.3" y="440.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">5</text>
+<line x1="716.7" y1="130.0" x2="716.7" y2="420.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="716.7" y="440.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">6</text>
+<line x1="810.0" y1="130.0" x2="810.0" y2="420.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="810.0" y="440.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">7</text>
+<text x="236.0" y="166.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="end">CoreWeave</text>
+<line x1="632.3" y1="160.0" x2="704.7" y2="160.0" stroke="#56B4E9" stroke-width="2.5" marker-end="url(#ah)"/>
+<circle cx="623.3" cy="160.0" r="8" fill="white" stroke="#56B4E9" stroke-width="3"/>
+<text x="840.0" y="166.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Jan 2023: 5 to 6</text>
+<text x="236.0" y="210.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="end">Amazon (subset)</text>
+<line x1="707.7" y1="204.0" x2="635.3" y2="204.0" stroke="#009E73" stroke-width="2.5" marker-end="url(#ah)"/>
+<circle cx="716.7" cy="204.0" r="8" fill="white" stroke="#009E73" stroke-width="3"/>
+<text x="840.0" y="210.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Jan 2025: 6 to 5</text>
+<text x="236.0" y="254.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="end">Meta</text>
+<circle cx="670.0" cy="248.0" r="9" fill="#CC79A7" stroke="#ffffff" stroke-width="2"/>
+<text x="840.0" y="254.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Jan 2025: set to 5.5</text>
+<text x="236.0" y="298.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="end">Alphabet</text>
+<circle cx="716.7" cy="292.0" r="9" fill="#E69F00" stroke="#ffffff" stroke-width="2"/>
+<text x="840.0" y="298.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">servers and network: 6</text>
+<text x="236.0" y="342.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="end">Microsoft</text>
+<line x1="343.3" y1="336.0" x2="716.7" y2="336.0" stroke="#0072B2" stroke-width="8"/>
+<text x="840.0" y="342.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">range 2 to 6</text>
+<text x="236.0" y="386.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a" text-anchor="end">Oracle</text>
+<line x1="250.0" y1="380.0" x2="716.7" y2="380.0" stroke="#8c6d1f" stroke-width="8"/>
+<text x="840.0" y="386.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">computer and network: 1 to 6</text>
+<text x="40.0" y="480.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Hollow circle = prior estimate; arrow points to the new one. Microsoft and Oracle bars show the stated range.</text>
+<text x="40.0" y="502.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Meta and Alphabet are single stated values. Lives are accounting estimates, not measured service lives.</text></svg>

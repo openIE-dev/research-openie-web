@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="t d"><title id="t">Contracted commitments against revenue earned</title><desc id="d">Log-scale bars. OpenAI 2025 revenue 13.1 billion dollars against contracted purchases of 250 billion dollars from Microsoft Azure and 38 billion dollars from AWS. CoreWeave revenue 5.1 billion against 60.7 billion obligations. Oracle revenue 67.4 billion against 664 billion obligations.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="598" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Contracted commitments against revenue earned</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">USD billions, log scale. Commitments are multi-year and conditional; revenue is one fiscal year.</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<line x1="470.0" y1="130.0" x2="470.0" y2="520.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="470.0" y="540.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">1</text>
+<line x1="683.3" y1="130.0" x2="683.3" y2="520.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="683.3" y="540.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">10</text>
+<line x1="896.7" y1="130.0" x2="896.7" y2="520.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="896.7" y="540.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">100</text>
+<line x1="1110.0" y1="130.0" x2="1110.0" y2="520.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="1110.0" y="540.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">1,000</text>
+<text x="456.0" y="164.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0f172a" text-anchor="end">OpenAI revenue 2025</text>
+<rect x="470.0" y="140.0" width="238.4" height="34.0" rx="0" fill="#56B4E9" stroke="none" stroke-width="2" opacity="1"/>
+<text x="718.4" y="165.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">13.1</text>
+<text x="456.0" y="218.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0f172a" text-anchor="end">OpenAI to Microsoft Azure, incremental</text>
+<rect x="470.0" y="194.0" width="511.6" height="34.0" rx="0" fill="#E69F00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="991.6" y="219.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">250</text>
+<text x="456.0" y="272.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0f172a" text-anchor="end">OpenAI to AWS, over 7 years</text>
+<rect x="470.0" y="248.0" width="337.0" height="34.0" rx="0" fill="#E69F00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="817.0" y="273.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">38</text>
+<text x="456.0" y="326.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0f172a" text-anchor="end">CoreWeave revenue 2025</text>
+<rect x="470.0" y="302.0" width="151.5" height="34.0" rx="0" fill="#56B4E9" stroke="none" stroke-width="2" opacity="1"/>
+<text x="631.5" y="327.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">5.1</text>
+<text x="456.0" y="380.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0f172a" text-anchor="end">CoreWeave remaining performance obligations</text>
+<rect x="470.0" y="356.0" width="380.4" height="34.0" rx="0" fill="#E69F00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="860.4" y="381.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">60.7</text>
+<text x="456.0" y="434.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0f172a" text-anchor="end">Oracle revenue FY2026</text>
+<rect x="470.0" y="410.0" width="390.1" height="34.0" rx="0" fill="#56B4E9" stroke="none" stroke-width="2" opacity="1"/>
+<text x="870.1" y="435.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">67.4</text>
+<text x="456.0" y="488.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0f172a" text-anchor="end">Oracle remaining performance obligations</text>
+<rect x="470.0" y="464.0" width="602.1" height="34.0" rx="0" fill="#E69F00" stroke="none" stroke-width="2" opacity="1"/>
+<text x="1082.1" y="489.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="start">664</text>
+<text x="40.0" y="566.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Oracle expects about 13% of its obligations to be recognized within twelve months (quarterly report, Aug 2026).</text>
+<text x="40.0" y="586.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start">The OpenAI figure for Azure is a contracted purchase, not revenue to Microsoft in one year.</text></svg>

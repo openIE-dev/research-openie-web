@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" font-family="Helvetica,Arial,sans-serif">
+<rect width="1000" height="620" fill="#ffffff"/>
+<text x="500" y="34" font-size="22" text-anchor="middle" font-weight="bold">One game Form, four projections, one determinism boundary</text>
+<rect x="330" y="60" width="340" height="120" rx="10" fill="#e8f0fe" stroke="#1a56db" stroke-width="2"/>
+<text x="500" y="88" font-size="17" text-anchor="middle" font-weight="bold">Game Form  P = (S, E, δ, D, λ)</text>
+<text x="500" y="112" font-size="13" text-anchor="middle">S: fixed-point sim state   E: input/tick events</text>
+<text x="500" y="132" font-size="13" text-anchor="middle">δ: transition   D: append-only log   λ: output map</text>
+<text x="500" y="152" font-size="13" text-anchor="middle">+ typed interface schemas I(layer→layer)</text>
+<text x="500" y="170" font-size="12" text-anchor="middle" fill="#555">strict checker accepts or names the broken rule</text>
+<g font-size="14" text-anchor="middle">
+<rect x="40" y="250" width="200" height="90" rx="8" fill="#e6f4ea" stroke="#137333" stroke-width="2"/><text x="140" y="280" font-weight="bold">Simulation</text><text x="140" y="302">Rust / Wasm / XState</text><text x="140" y="322">SCXML / Python</text>
+<rect x="280" y="250" width="200" height="90" rx="8" fill="#e6f4ea" stroke="#137333" stroke-width="2"/><text x="380" y="280" font-weight="bold">Scripting</text><text x="380" y="302">Rhai / Lua / Luau</text><text x="380" y="322">(calls δ only)</text>
+<rect x="520" y="250" width="200" height="90" rx="8" fill="#fef7e0" stroke="#b06000" stroke-width="2"/><text x="620" y="280" font-weight="bold">Scene</text><text x="620" y="302">BSN-like / glTF / USD</text><text x="620" y="322">(λ: state → scene graph)</text>
+<rect x="760" y="250" width="200" height="90" rx="8" fill="#fce8e6" stroke="#c5221f" stroke-width="2"/><text x="860" y="280" font-weight="bold">Rendering</text><text x="860" y="302">Slang / WGSL / WESL</text><text x="860" y="322">(pure view of λ)</text>
+</g>
+<g stroke="#333" stroke-width="1.6" fill="none" marker-end="url(#a)">
+<path d="M420 180 L140 248"/><path d="M460 180 L380 248"/><path d="M540 180 L620 248"/><path d="M580 180 L860 248"/>
+</g>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 z" fill="#333"/></marker></defs>
+<line x1="500" y1="210" x2="500" y2="600" stroke="#c5221f" stroke-width="3" stroke-dasharray="10,6"/>
+<text x="270" y="390" font-size="15" text-anchor="middle" fill="#137333" font-weight="bold">EXACT ZONE</text>
+<text x="270" y="412" font-size="13" text-anchor="middle">conformance = bitwise state hash per tick</text>
+<text x="270" y="432" font-size="13" text-anchor="middle">H(s_t on target A) = H(s_t on target B)</text>
+<text x="740" y="390" font-size="15" text-anchor="middle" fill="#c5221f" font-weight="bold">TOLERANCE ZONE</text>
+<text x="740" y="412" font-size="13" text-anchor="middle">conformance = per-pixel error ≤ ε, no feedback</text>
+<text x="740" y="432" font-size="13" text-anchor="middle">into S (GPU results never flow back)</text>
+<rect x="40" y="470" width="920" height="110" rx="8" fill="#f1f3f4" stroke="#5f6368"/>
+<text x="500" y="496" font-size="15" text-anchor="middle" font-weight="bold">Host effects (outside the Form, logged in D, replayable)</text>
+<text x="500" y="520" font-size="13" text-anchor="middle">input devices · wall clock · audio out · network packets · asset I/O · GPU draw · third-party physics</text>
+<text x="500" y="544" font-size="13" text-anchor="middle">Each effect enters only as an event e ∈ E with a recorded payload; replay feeds the log, not the device.</text>
+<text x="500" y="566" font-size="12" text-anchor="middle" fill="#555">Cross-layer checker: every edge Sim→Script, Sim→Scene, Scene→Render is a typed schema checked before emission.</text>
+</svg>

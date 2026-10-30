@@ -1,0 +1,32 @@
+---
+import Shell from '../../../components/RceSpecShell.astro';
+import data from '../../../../spec-src/rce/spec.json';
+const ov = data.chapters[0];
+import facts from '../../../data/rce-facts.json';
+const total = data.examples.reduce((a: number, g: any) => a + g.items.length, 0);
+const count = (id: string) => data.examples.find((g: any) => g.id === id)?.items.length ?? 0;
+---
+<Shell title="RCE language specification" description="The RCE language specification as an interactive notebook: plain-language introductions, formal grammar and typing rules, and runnable example programs checked in the browser." current="">
+  <h1>RCE language specification</h1>
+  <div class="rs-bar">
+    <button type="button" class="tts-btn" data-target="rs-ov" aria-pressed="false"><span aria-hidden="true">▶ </span><span class="tts-l">Listen to the overview</span></button>
+    <span class="tts-status" role="status"></span>
+  </div>
+  <div id="rs-ov" class="tts-text rs-intro" set:html={ov.sections[0].html} />
+  <p class="rs-prose"><strong>Which version this is.</strong> This notebook shows specification draft {facts.spec_notebook_draft}, generated from commit <code>{data.commit}</code> of the RCE source, public main on 29 October 2026; there is one language, the specification at one commit (2.7). It holds {total} example programs: {count('accepted')} accepted, and {count('syntax')} syntax, {count('ill-typed')} ill-typed and {count('inadmissible')} inadmissible programs that require change, each with the rule it breaks. The public repository states theorems {facts.theorems_stated}, with {facts.lean_modules} Lean modules, as read at public commit <code>{facts.commit}</code>. Where a chapter quotes a count from an earlier draft, it describes that draft. Counts come from the notebook data and <code>src/data/rce-facts.json</code>.</p>
+  <h2>Chapters</h2>
+  <p class="rs-prose">Read them in order. Each chapter opens in plain words, then gives the exact rules. Formal grammar and typing rules sit in cells you can open and close. Every code cell can be edited and run.</p>
+  <ol class="rs-cards">
+    {data.chapters.map((c: any) => (
+      <li>
+        <a href={`/rce/spec/${c.slug}/`}><span class="rs-num">{c.num}</span>{c.title}</a>
+        <p>{c.question}</p>
+      </li>
+    ))}
+  </ol>
+  <h2>Programs and the reading record</h2>
+  <ul class="rs-prose">
+    <li><a href="/rce/spec/examples/">All {total} example programs</a>: the accepted ones, and every syntax, ill-typed and inadmissible program that requires change, with the rule it breaks.</li>
+    <li><a href="/rce/spec/read-protocol/">Read protocol</a>: how a reader, human or AI agent, shows it read each chapter, using the chapter fingerprints and read-receipt questions.</li>
+  </ul>
+</Shell>

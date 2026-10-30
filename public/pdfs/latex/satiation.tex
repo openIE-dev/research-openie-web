@@ -1,0 +1,1430 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  10pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{caption}
+\captionsetup[table]{skip=6pt}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\setmonofont{Menlo}[Scale=0.85]
+\usepackage{xeCJK}
+\setCJKmainfont{Songti SC}
+\usepackage{microtype}
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\footnotesize}
+\usepackage{xurl}
+\setlength{\emergencystretch}{3em}
+\sloppy
+\setCJKmonofont{Songti SC}
+\usepackage{unicode-math}
+\setmathfont{STIX Two Math}
+\usepackage{newunicodechar}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{≪}{\ensuremath{\ll}}
+\newunicodechar{↛}{\ensuremath{\nrightarrow}}
+\newunicodechar{・}{\textperiodcentered}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{∪}{\ensuremath{\cup}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  pdftitle={Task Satiation vs.~Aggregate Rebound in AI Demand},
+  pdfauthor={David Charlot, Open Interface Engineering},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Task Satiation vs.~Aggregate Rebound in AI Demand}
+\author{David Charlot, Open Interface Engineering}
+\date{Version 1.1, 11 October 2026. HTML:
+https://research.openie.dev/papers/satiation/}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\emph{Version 1.1, 11 October 2026. Data and code:
+\href{https://research.openie.dev/data/\#economics}{research.openie.dev/data/}.
+LaTeX PDF:
+\href{https://research.openie.dev/pdfs/latex/satiation.pdf}{/pdfs/latex/satiation.pdf}
+(\href{https://research.openie.dev/pdfs/latex/satiation.tex}{source}).}
+
+\subsection{Abstract}\label{abstract}
+
+Once a task is done, more machine effort on that task adds nothing. This
+paper defines that stop precisely and separates it from the separate
+question of whether total demand for machine work keeps growing.
+
+\textbf{In plain words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Every job has a finish line. After it, more computer work on that job
+  is waste.
+\item
+  Cheaper computer work can still make people start many more jobs, so
+  total use can keep rising.
+\item
+  Money prices for AI are falling fast, but the electricity it uses is
+  never free.
+\end{enumerate}
+
+Many planning models treat demand for machine intelligence as if it had
+no finish line. Consumer theory already contains the opposite object.
+Satiation, and the related bliss point, is the region in which further
+units of a good do not raise utility and may lower it (Andersen, 2001).
+This paper defines an operational cousin for work and care: a loop
+reaches task completion when a stated completeness predicate holds,
+further calls do not flip any clause of that predicate from false to
+true, and calls that undo the predicate are harm, not value. Engagement
+time, token count, and seat count are different variables. They can rise
+after completeness.
+
+Two claims must be kept apart. Task-level satiation holds by definition:
+once a task's completeness predicate is true, more synthesis on that
+task buys nothing. Aggregate satiation is a claim about total demand,
+and it is not implied. Cheaper synthesis can open new tasks (Acemoglu
+and Restrepo, 2019) and raise total use, as cheaper coal raised total
+coal use (Jevons, 1865). Each chore can be satiated while total demand
+for chores grows without bound. This rebound is the central
+identification problem for the paper. Section 5.1 states two testable
+hypotheses and the data that would identify them.
+
+A second fact is about price, not physics. Epoch AI reports large
+declines in the price of a fixed inference performance (Epoch AI, 2025;
+Emberson and Roodman, 2026). This paper calls the resulting situation
+free at the margin for digital chores whose output is information and
+whose completeness test is finite. The phrase does not mean that joules
+are free, that a plant may move without a certificate, or that care
+labor has been automated away. Landauer's bound is a lower bound on
+erasure, not a description of current accelerators (Landauer, 1961;
+Horowitz, 2014).
+
+The paper does not report a randomized trial, a done-detector error
+rate, or a split between energy spent before completeness and energy
+spent after it. Those measurements are specified in Section 3.3 and are
+absent.
+
+\subsection{Notation}\label{notation}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.8125}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Term
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Definition in this paper
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Satiation & In the cited theory, a fall of marginal utility to zero or
+below. In this paper's operational clause, after completeness, further
+calls do not flip any clause of \texttt{C} from false to true; calls
+that undo \texttt{C} are harm, not value (Section 3.1). \\
+Bliss point & A bundle at which additional quantity of the good reduces
+utility. A textbook object. Not estimated here. \\
+Task completion & The event that the completeness predicate becomes
+true. Orthogonal to model scale. \\
+Work completeness & A stated work stop: ticket closed, patch merged,
+report filed, ledger reconciled, or an equivalent written test. \\
+Care completeness & A stated care stop: assessment finished, medications
+reconciled, receiving party notified, person in a safe state, or an
+equivalent written test. \\
+Free at the margin & Marginal price of a digital synthesis step trends
+toward bundled or negligible money price. Joules and commits stay
+costly. \\
+Artificial general intelligence (AGI) & A broad capability target. Not a
+price observation and not a result of this paper. \\
+Direct rebound & Extra use of a service when its effective price falls,
+on the same service (Gillingham, Rapson, and Wagner). \\
+Modeled / simulated / board-measured & Formula, program execution, or
+meter. This paper's new numbers are none of the three; its empirical
+content is citation of published series and documents. \\
+\end{longtable}
+}
+
+Scope. Section 2 reviews satiation theory, task automation, attention
+markets, technology-cycle evidence, and inference prices. Section 3
+writes predicates and says which were not estimated. Section 4 lists
+claims that rest on citations, and separates them from design rules.
+Section 5 answers rebound, care costs, and military demand. Section 6
+lists threats to validity.
+
+\subsection{1. Introduction}\label{introduction}
+
+A demand curve with constant positive slope in ``intelligence'' will
+recommend more seats, more tokens, and more agents after a job is
+finished. That recommendation is a modeling choice. It is not a theorem
+about work. Standard consumer theory allows marginal utility to decline
+and to cross zero. If a chore has a completeness predicate, the relevant
+question is whether more model output changes that predicate. If it does
+not, extra output is a cost with no increment on the objective that was
+written down.
+
+The recent price evidence points the other way from scarcity of
+synthesis. Epoch's series show the money price of a given benchmark
+performance falling quickly. Open weights and typed decision procedures,
+including System One, are additional routes by which a previously scarce
+generation step becomes cheap. Teams that price a closed chore as if
+synthesis were still scarce are using a stale constraint.
+
+The constraints that do not follow from a price series are physical and
+institutional. Computation dissipates energy. Horowitz (2014) documents
+that data movement and memory dominate practical CMOS energy, at scales
+far above Landauer's ideal erasure bound. An actuator is not a token. A
+signature, a clinical handoff, and a payment are not reversed by
+sampling another paragraph. Baumol (1967) showed how sectors with weak
+productivity growth can absorb a rising share of expenditure. Acemoglu
+and Restrepo (2019) model automation as task displacement plus the
+possible creation of new tasks. None of these results says that a
+language model ends cost disease. They do say that ``more capability''
+is not a sufficient description of value.
+
+This paper's positive claim is definitional and bibliographic. Satiation
+is a coherent object. Published prices for inference have fallen
+sharply. Engagement metrics are not completeness metrics. A stop for
+``do not spend'' and a stop for ``do not move'' are different
+predicates. The negative claim is equally important. This paper does not
+identify a structural demand system, does not estimate rebound, and does
+not report measured energy.
+
+\subsection{2. Related work}\label{related-work}
+
+\subsubsection{2.1 Satiation and bliss
+points}\label{satiation-and-bliss-points}
+
+Andersen (2001) treats satiation inside an evolutionary model of
+structural change, not as a verbal preference. The durable element for
+this paper is the economic one: marginal valuation of a good can reach
+zero. Textbook bliss points make the geometry explicit. For a bundle
+\texttt{x*}, utility does not increase in a coordinate past \texttt{x*},
+and a smooth representation can have negative marginal utility there. A
+quadratic illustration, \texttt{U(x)\ =\ -a\ (x\ -\ x*)\^{}2} for
+\texttt{a\ \textgreater{}\ 0}, has a maximum at \texttt{x*} and a
+negative derivative beyond it. That function is a model used to teach
+the definition. It is not fitted to agent logs in this study. No
+coefficient \texttt{a} is reported.
+
+The operational translation requires a predicate the model does not know
+unless someone states it. Let \texttt{C(z)\ =\ 1} when the written
+completeness test for episode \texttt{z} holds, else 0. Satiation on
+that episode means there exists a time \texttt{t*} such that \texttt{C}
+is 1 at \texttt{t*} and, for all later calls, no clause of \texttt{C}
+flips from false to true. Calls that undo \texttt{C} are harm, not
+value. Section 3.1 states the same rule. The internal event
+\textbf{economic done} is when \texttt{C} becomes 1; this paper calls
+that event task completion. This is a definition. It becomes an
+empirical claim only with a labeled set of episodes and a detector whose
+errors are counted. Section 4 does not contain that count.
+
+Keynes drew the same line in 1930. He split needs into absolute needs,
+felt whatever others have, and relative needs, felt because satisfying
+them lifts us above others. He argued the absolute needs could be met.
+The completeness predicate is the absolute need of one task, written
+down. Relative and open-ended wants have no such predicate, and Section
+5.2 keeps them out of the claim.
+
+\subsubsection{2.2 Tasks, displacement, and cost
+disease}\label{tasks-displacement-and-cost-disease}
+
+Baumol (1967) analyzes unbalanced growth. If one sector's productivity
+rises and another's does not, the relative cost of the stagnant sector
+rises, and it can dominate expenditure even when its quantity grows
+slowly. Health care, education, and live performance are the usual
+examples. Later health-economics papers dispute magnitudes and
+mechanisms. This paper uses Baumol for a negative instruction: do not
+infer, from a fall in token price, that care has become a software good.
+Care remains dependent on time, trust, and liability in the ordinary
+institutional sense. A documentation model can increase recorded
+activity, which is a Baumol-relevant ambiguity: measured output can move
+while the care predicate does not.
+
+The labor literature associated with David Autor decomposes jobs into
+tasks that machines may or may not perform. The pinned statement is
+Acemoglu and Restrepo (2019), ``Automation and New Tasks: How Technology
+Displaces and Reinstates Labor,'' Journal of Economic Perspectives
+33(2), https://www.aeaweb.org/articles?id=10.1257/jep.33.2.3. They argue
+that displacement reduces labor's task share and that new tasks can
+restore it. A completeness-oriented stop is closer to finishing a task
+than to creating a new engagement task. An agent loop with no stop can
+raise activity measures without a productivity gain. That possibility is
+consistent with their warning about weak automation.
+
+\subsubsection{2.3 Attention and
+engagement}\label{attention-and-engagement}
+
+Wu's book ``The Attention Merchants'' (publisher page:
+https://www.penguinrandomhouse.com/books/234876/the-attention-merchants-by-tim-wu/)
+describes businesses that harvest attention and resell it. The Center
+for Humane Technology's overview of the attention economy
+(https://www.humanetech.com/youth/the-attention-economy) is an advocacy
+summary of the same pattern, not a trial. The inference used here is
+limited. If a product's objective is time on task, then a session that
+continues after \texttt{C\ =\ 1} can look successful. If the objective
+is \texttt{C}, the same session is waste or harm. The two objectives are
+not observationally equivalent in a token log. No experiment in this
+paper estimates the welfare gap.
+
+\subsubsection{2.4 Historical cycles}\label{historical-cycles}
+
+Technology markets often show a speculative phase, a use phase, and a
+later commodity phase. The evidence is uneven.
+
+Quinn (2019), ``Technological revolutions and speculative finance:
+evidence from the British Bicycle Mania,'' Cambridge Journal of
+Economics 43(2), 271-294, https://doi.org/10.1093/cje/bey029, studies
+cycle-share prices from 1895 to 1900. Prices rose by over 200 percent
+and then fell by more than 75 percent. The paper's result is about
+speculative finance and fundamentals, not about a measured ``enough
+bicycle'' predicate for households. Using it as a picture of race-phase
+finance is supported. Using it as a proof of transport satiation is not.
+
+Cars, scheduled aviation, and television have commodity-like markets in
+the everyday sense: used vehicles, yield-managed seats, and panels sold
+as inputs to content. The rows are historical orientation. They are not
+regressions. Airline yield management after deregulation is a pricing
+institution for a seat, which is evidence of a commodity market in
+seats, not evidence that passengers' demand for travel is globally
+satiated.
+
+Pew Research Center's mobile fact sheet
+(https://www.pewresearch.org/internet/fact-sheet/mobile/) is the
+saturation source used for phones. The project archive records U.S.
+smartphone ownership near 91 percent in the 2024 and 2025 fact-sheet
+readings. A reader who quotes the figure should open the live sheet,
+because fact sheets are revised. High ownership is evidence of
+diffusion. It is not, by itself, evidence that marginal value of another
+phone camera is zero.
+
+The digital-chore row is the one this paper defends with a price series
+rather than with an analogy. See Section 4.2.
+
+\subsubsection{2.5 Inference prices and open
+weights}\label{inference-prices-and-open-weights}
+
+Epoch AI (2025), ``LLM inference price trends,''
+https://epoch.ai/data-insights/llm-inference-price-trends, reports price
+declines at fixed performance on the order of 9 to 900 times per year
+across benchmarks in that note. Emberson and Roodman for Epoch AI
+(2026), ``The plunging price of thought,''
+https://epoch.ai/publications/the-plunging-price-of-thought, report
+about a 47 percent decline per quarter in the cost of a given
+performance since about 2023, summarized as about 13 times per year,
+faster near the frontier. These are the authors' summaries of their
+data. This paper does not re-estimate the index. The economic reading is
+narrow: the money price of synthesis for a fixed measured performance
+has been falling fast. A falling supply price shifts quantity demanded
+if demand is elastic. It does not create a new completeness predicate,
+and it does not set the energy price to zero.
+
+System One-class tools are relevant as a mechanism for a further price
+cut on decision problems with a known option set. A System One model
+returns a typed answer and a probability for each allowed option in one
+forward pass, with no free-form text. TypeSafe AI named the category
+with its hosted Jev model (15 September 2026). Open models followed,
+among them Laya from Convai Innovations. A System One model proposes. It
+is not a completeness evaluation.
+
+A planning rule of thumb that frontier competence reaches cheaper
+devices in about six months is not a measured constant in any source
+cited here. Distillation, quantization, and table-lookup inference (Ma
+et al., 2024; Wei et al., 2024) are published mechanisms by which a
+given competence can move to cheaper hardware. The speed is an empirical
+question per model pair.
+
+\subsubsection{2.6 Physical cost}\label{physical-cost}
+
+Landauer (1961) bounds erasure. Bennett (1973) shows reversible
+computation can avoid that bound in theory. Horowitz (2014) is the
+practical CMOS statement: energy per operation and energy of data
+movement set the design constraint, at many orders of magnitude above
+\texttt{kT\ ln\ 2} for irreversible CMOS logic. At \(T = 300\) K the
+bound is \(k_B T \ln 2 \approx 2.87 \times 10^{-21}\) J per erased bit,
+with \(k_B = 1.380649 \times 10^{-23}\) J/K.
+
+Goldman Sachs published a research note titled ``Gen AI: Too Much Spend,
+Too Little Benefit?''
+(https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit).
+The existence of a major sell-side note that questions infrastructure
+spend relative to benefit is a document fact. Dollar figures inside the
+note are not quoted here, because sell-side estimates are not a
+scientific energy account.
+
+\subsection{3. Definitions and methods}\label{definitions-and-methods}
+
+\subsubsection{3.1 Predicates}\label{predicates}
+
+Let an episode be a sequence of model or tool calls
+\texttt{z\_1,\ ...,\ z\_T} together with a human-facing state. A
+completeness predicate \texttt{C} maps the episode prefix to
+\texttt{\{0,\ 1\}}. Examples that can be written without a model score:
+
+\begin{itemize}
+\tightlist
+\item
+  Work: tests pass and the change is merged; or the ledger discrepancy
+  is zero; or the required fields of a report are filled and the report
+  is filed.
+\item
+  Care: the medication list matches the source, the receiving clinician
+  has the note, and the safety checklist items that the institution
+  marked critical are true.
+\end{itemize}
+
+\texttt{C} is not a probability. A detector that outputs a score still
+needs a threshold and an error table before it is a predicate in the
+sense of Section 4's missing experiment.
+
+The internal event \textbf{economic done} at time \texttt{t*} means
+\texttt{C\ =\ 0} on the prefix before \texttt{t*} and \texttt{C\ =\ 1}
+at \texttt{t*}, for the chosen test. This paper calls the catalog layer
+\textbf{task completion}. Satiation relative to model calls means that
+for all \texttt{t\ \textgreater{}\ t*}, extra calls do not flip any
+clause of \texttt{C} from false to true. Calls that undo \texttt{C} are
+harm, not value. The definition does not say humans always know
+\texttt{t*}. It says that if no \texttt{C} is written, the satiation
+claim is not yet a statement about that product.
+
+Free at the margin is a statement about money price. Let
+\texttt{p\_t(q)} be the price of synthesis service \texttt{q} at date
+\texttt{t}. The archival price evidence is that \texttt{p\_t} for fixed
+benchmark performance has fallen at the rates Epoch reports. Free at the
+margin means \texttt{p\_t} is low enough that a seat license is a weak
+explanation of cost for that chore. It does not mean the integral of
+power over time is zero.
+
+A stop rule can therefore have two kinds of reason, economic (the
+predicate holds, or a budget or policy limit is reached) and physical (a
+safety or energy limit is reached). The two kinds are different
+predicates and should be recorded as different reasons.
+
+\subsubsection{3.2 What was done in this
+study}\label{what-was-done-in-this-study}
+
+This study is a structured reading. Sources are the citation spine
+checked in the project on 29 to 30 September 2026, and the satiation
+notes. Section 3.3 names the measurements that would make the
+operational definition empirical.
+
+Design rules in Section 4.10 are recommendations conditional on the
+definitions. They are not estimated treatment effects. A reader can
+reject a rule without rejecting Epoch's price series, and can accept the
+price series without accepting a product recommendation.
+
+\subsubsection{3.3 Measurements specified and not
+taken}\label{measurements-specified-and-not-taken}
+
+\textbf{The predicate is endogenous.} Witt (2001) argues that wants are
+learned, so the completeness predicate \(C(z)\) can ratchet as price
+falls. A study of satiation across a price change must therefore freeze
+\(C(z)\) in its preregistration before the change and report any change
+of predicate as a separate treatment.
+
+\textbf{H1 can be read from public data now.} Chen and colleagues (2024)
+measure tokens spent after the first correct answer; Cuadron and
+colleagues (2025) score overthinking in agent trajectories; Bai, Huang
+and Wang (2026) find that same-task token use in agentic coding varies
+up to 30 times across runs. Applying this paper's \(C(z)\) post hoc to
+those trajectories gives an exploratory H1 estimate, labeled
+exploratory. It is the next measurement.
+
+\textbf{Tokens and joules.} H1 and H2 are stated in tokens; the thesis
+is in joules. Masanet and colleagues (2020) found that data-centre
+compute grew about sixfold from 2010 to 2018 while energy rose far less,
+so a token elasticity is not an energy elasticity. Each hypothesis is to
+be reported in both units, with the unit the data identify named.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Split account. For each episode, sum analytical or, later,
+  board-measured energy on calls with \texttt{t\ \textless{}=\ t*} and
+  on calls with \texttt{t\ \textgreater{}\ t*}. Direct rebound on that
+  chore is visible only if the post-done integral is estimated. The
+  repository does not contain this split.
+\item
+  Detector errors. On a labeled corpus, false done (predicate declared
+  true when a clause is false) and false continue (\texttt{C} true and
+  the system keeps calling). No rates are published here.
+\item
+  Care handoff. Time to safe state and a handoff checklist, contrasted
+  with session length. Not measured.
+\item
+  Segment table. Which products have a short \texttt{C} and which are
+  open-ended research or adversarial races. Not estimated. The military
+  case is excluded from the satiation claim in Section 5 rather than
+  forced into it.
+\item
+  Measured energy. An external power meter on a stated workload. Not
+  done.
+\end{enumerate}
+
+Until those exist, sentences about ``overkill joules'' are hypotheses.
+Sentences about Epoch prices are citations.
+
+\subsubsection{3.4 Illustrative episodes, not
+data}\label{illustrative-episodes-not-data}
+
+Support desk. Completeness: the customer's issue is resolved, the reply
+is sent, and the ticket state is Done. Further drafts do not change
+\texttt{C}. A token counter can still increment. The episode is a
+constructed example to show the variables. It is not a sample from a
+help desk.
+
+Care handoff. Completeness: critical fields filled, medication list
+reconciled, receiving party confirmed, person in a safe state. Session
+length is a different variable. The episode is constructed. No hospital
+dataset was analyzed.
+
+Coding chore. Completeness: the artifact matches a written oracle
+(tests, or a bit-exact check). Regenerating a passing artifact does not
+raise \texttt{C}.
+
+\subsubsection{3.6 Fidelity criteria and stop
+rules}\label{fidelity-criteria-and-stop-rules}
+
+Shannon (1959) defines a rate-distortion function: the least description
+rate that holds expected distortion at or below a chosen fidelity. The
+object is communication under a constraint the user states. It is not a
+demand curve for intelligence. The resemblance to this paper is only
+structural. A completeness predicate \texttt{C} is a hard fidelity:
+either the stated clauses hold, or they do not. A language-model loss is
+closer to an average distortion on a training distribution. Falling
+loss, and falling price at a fixed benchmark, can be read as movement
+along a rate-resource curve of the kind Kaplan et al.~(2020) and
+Hoffmann et al.~(2022) estimate for training. That movement does not
+choose \texttt{C} for a particular chore. Confusing benchmark distortion
+with chore completeness is the category error behind unbounded-seat
+plans for closed work.
+
+Cover and Thomas (2006) is the textbook path into rate-distortion if a
+reader wants the formal development. It uses the existence of the
+fidelity concept to keep two numbers apart: a score that can always be
+improved by a fraction, and a predicate that is already true.
+
+\subsubsection{3.7 Rebound taxonomy, without a new
+estimate}\label{rebound-taxonomy-without-a-new-estimate}
+
+The rebound canon is the frame for H2. Khazzoom (1980) showed that
+mandated efficiency can raise use of the service, Brookes (1990) argued
+the same at the level of the economy, and Saunders (1992) derived the
+conditions in neoclassical growth. Sorrell and Dimitropoulos (2008) gave
+the microeconomic definitions and their limits. Brockway, Sorrell,
+Semieniuk, Heun and Court (2021) reviewed the evidence and found that
+economy-wide rebound may erode more than half of the expected energy
+savings. Task satiation does not contradict that finding. It is a
+per-task stop, and the aggregate rebound of H2 is where the canon's
+evidence applies. Lighting is the historical case to test it against:
+Fouquet and Pearson (2006) trace seven centuries of the price and use of
+light in the United Kingdom, and Tsao and colleagues (2010) find that
+use of light rose with efficiency, a satiable service with large
+rebound.
+
+The rebound survey of Gillingham, Rapson, and Wagner separates channels
+that a single slogan collapses. Direct rebound is additional use of the
+same service when its effective cost falls. Indirect rebound is spending
+of saved resources on other services. Economy-wide rebound runs through
+prices and growth. The survey's policy domain is energy efficiency, not
+tokens. The taxonomy still transfers as a warning about identification.
+A measured fall in \texttt{p\_t} (claim S-2) identifies none of the
+three channels by itself. Direct rebound on a chore with \texttt{C}
+already true requires that buyers still pay for calls that do not change
+\texttt{C}. Indirect and economy-wide channels can be large when new
+tasks appear (Acemoglu and Restrepo, 2019). A paper that reported one
+elasticity and called it ``the rebound'' would be under-specified. This
+paper reports no elasticity.
+
+The pattern is old. Jevons argued in 1865 that more efficient steam
+engines would raise, not lower, Britain's total coal use. Alcott traces
+that argument and the debate that followed (\emph{Ecological Economics}
+54(1), 2005). Nordhaus measured the price of computation over more than
+a century and found it falling by many orders of magnitude while total
+computation rose (\emph{Journal of Economic History} 67(1), 2007). Agent
+workloads already show the use side. Anthropic's engineering team
+reported, for its own system, that agents use about 4 times the tokens
+of a chat interaction and multi-agent systems about 15 times (13 June
+2025). That figure is operator-reported, not audited. It is consistent
+with per-task appetite rising as tasks change shape, which is exactly
+what the split account in Section 3.3 must separate from post-completion
+waste.
+
+\subsubsection{3.8 Scarce joules and the economic stop (2025 to 2026
+peers)}\label{scarce-joules-and-the-economic-stop-2025-to-2026-peers}
+
+Epoch's price series (S-2) show synthesis getting cheaper in money.
+Recent energy publications show joules remaining scarce, and often
+growing in the aggregate.
+
+Chung, Wu, Ma, and Chowdhury
+(arXiv:\href{https://arxiv.org/abs/2601.22076}{2601.22076}, 2026)
+diagnose inference energy across 1,858 configurations: task type alone
+can move LLM energy per response by about 25×; video generation can
+exceed image energy by two orders of magnitude. The \emph{Joule} article
+``Energy use of AI inference, efficiency pathways, and test-time
+scaling''
+(\href{https://www.cell.com/joule/fulltext/S2542-4351(26)00114-5}{cell.com/joule/fulltext/S2542-4351(26)00114-5},
+online 22 Apr 2026) estimates optimized frontier-scale queries in the
+sub-watt-hour median range while reporting that long reasoning and
+agentic queries can raise energy by more than an order of magnitude;
+efficiency gains of 8 to 20× are line-of-sight, not free joules.
+Luccioni, Strubell, and Crawford (FAccT 2025)
+(\href{https://doi.org/10.1145/3715275.3732007\%5D(https://doi.org/10.1145/3715275.3732007)}{{[}doi:10.1145/3715275.3732007{]}(https://doi.org/10.1145/3715275.3732007))})
+warn that efficiency without a stop can amplify total spend (Jevons).
+Epoch AI's energy overview
+(\href{https://epoch.ai/publications/ai-energy}{epoch.ai/publications/ai-energy},
+updated Jul 2026) separates modest per-query costs from rapidly doubling
+aggregate data-center power.
+
+\textbf{Reading for this paper.} Free at the margin is a money-price
+statement. Scarce joules are a physical statement. The operational stop
+is task completion: when \texttt{C(z)\ =\ 1}, further synthesis does not
+raise the written objective, and a stop on budget or policy grounds is
+success. Estimates are not measured energy.
+
+\subsubsection{3.9 Protocol for a done-detector study (not
+executed)}\label{protocol-for-a-done-detector-study-not-executed}
+
+The following protocol is a method for a future measurement. No step has
+been run. It is written so the missing result has an exit criterion
+rather than a slogan.
+
+Population. Episodes drawn from one product surface, not a mix of
+open-ended research and ticket closure. Each episode has a written
+\texttt{C} with finitely many clauses, each clause observable by a
+person who did not operate the model. Target size is a design choice;
+this paper does not pretend a power calculation was done. A first usable
+table needs enough positives and negatives that a rate is not a single
+anecdote. The archive does not contain that table.
+
+Label. Two annotators mark each clause true or false at the time the
+system first declares done, and again at the end of the session.
+Disagreements are adjudicated and counted. The detector's decision is
+recorded separately from the label.
+
+Primary rates.
+
+\begin{itemize}
+\tightlist
+\item
+  False done: system declares \texttt{C\ =\ 1} while any critical clause
+  is false.
+\item
+  False continue: all critical clauses are true and the system issues
+  further model or tool calls.
+\item
+  Session length and call count are covariates, not endpoints.
+\end{itemize}
+
+Secondary split, only if an energy account exists. Sum energy,
+analytical or board-measured, on calls before the adjudicated
+\texttt{t*} and after it. State the measurement class in the same
+sentence as the number. An analytical OpCounter total is not a
+substitute for a meter and is not comparable to Horowitz's tables.
+
+Exclusion. Episodes with no written \texttt{C} are not labeled
+``unsatiated.'' They are out of scope. Adversarial episodes are out of
+scope for the satiation endpoint and may still be scored for physical
+refuse if a certificate is present.
+
+Failure of the protocol. If annotators cannot agree on clauses, the
+predicate was not written. If the system has no declare-done event,
+false continue is not identified. Publishing a model leaderboard instead
+of the two rates would not execute this protocol.
+
+\subsubsection{3.10 A numerical illustration of a bliss point (model,
+not a
+fit)}\label{a-numerical-illustration-of-a-bliss-point-model-not-a-fit}
+
+Let one coordinate \texttt{x} be the count of model calls on a single
+chore, and set
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{U(x) = {-}(x {-} 4)\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+for a chore whose constructed maximum is at four calls. Then
+\texttt{U(0)\ =\ -16}, \texttt{U(4)\ =\ 0}, \texttt{U(8)\ =\ -16}.
+Marginal utility is \texttt{dU/dx\ =\ -2(x\ -\ 4)}, which is positive
+before 4, zero at 4, and negative after. The illustration uses integers
+so the sign change is visible without a fit. No dataset was used to
+choose 4. Replacing 4 with another integer moves the peak and does not
+change the definition. A product metric equal to \texttt{x} ranks
+\texttt{x\ =\ 8} above \texttt{x\ =\ 4}. A product metric equal to
+\texttt{U} does the reverse. Claim S-3 is this non-identity, here in a
+fully specified toy function, and in Section 3.4 in constructed
+episodes. Neither is a welfare estimate for a firm.
+
+Token price can be attached without confusing units. Suppose a call
+costs \texttt{p} in money and the buyer pays \texttt{p\ *\ x} while
+value follows \texttt{U}. The buyer's surplus proxy
+\texttt{U(x)\ -\ p\ x} still has a finite maximizer for any
+\texttt{p\ \textgreater{}=\ 0}. A fall in \texttt{p} moves the
+maximizer, which is the rebound logic on this toy, and the maximizer
+remains finite. The toy does not say where the maximizer sits for any
+real buyer. It blocks the inference that a lower \texttt{p} removes the
+maximum.
+
+Figure 1 draws the toy and the separate aggregate claim.
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{fig/satiation-rebound.png}
+
+\emph{Figure 1. Task satiation and aggregate rebound. Model illustration
+of the toy in this section, not a fit: the maximizer of \(U(x) - p\,x\)
+is \(x = 4 - p/2\), finite at every price. The right panel is a
+schematic; this paper estimates no rebound. A
+\href{https://research.openie.dev/figures/satiation/satiation-rebound.png}{PNG
+copy} is provided.}
+
+\subsubsection{3.11 Reason codes as a partition, not a welfare
+function}\label{reason-codes-as-a-partition-not-a-welfare-function}
+
+Let \texttt{R} be the set of refuse codes on a trace. Partition
+\texttt{R} into \texttt{R\_econ\ =\ \{policy,\ budget\_exceeded\}} and
+\texttt{R\_phys\ =\ \{lut\_veto,\ energy\_veto,\ cbf\_veto\}}, matching
+the schema's taxonomy. Other codes, if added later, have to be assigned
+in writing before they are counted. A trace interval contributes to
+post-done economic refuse only if \texttt{C} is already 1 and the code
+is in \texttt{R\_econ}. It contributes to physical refuse if the code is
+in \texttt{R\_phys}, whether or not \texttt{C} is 1. An unsafe action
+after done is in both stories and should be counted in both columns, not
+averaged. The MCP demo's irreversible refuse is a physical example:
+energy and barrier codes, executor calls 0. It is not an
+\texttt{R\_econ} example. A future episode with \texttt{policy} after a
+merged patch would be the economic example. The repository does not
+include that episode. The partition is how it would be scored.
+
+\subsection{4. Evidence}\label{evidence}
+
+\subsubsection{4.1 Claim S-1. Satiation is a defined economic
+object}\label{claim-s-1.-satiation-is-a-defined-economic-object}
+
+Andersen (2001), https://doi.org/10.1007/PL00003852, and the textbook
+bliss construction in Section 2.1 support S-1. The claim is theoretical.
+It is not a measured utility function for any user population in this
+study.
+
+\subsubsection{4.2 Claim S-2. Published inference prices fell sharply at
+fixed
+performance}\label{claim-s-2.-published-inference-prices-fell-sharply-at-fixed-performance}
+
+Supported by Epoch AI (2025) and Emberson and Roodman (2026), with the
+magnitudes those notes state (Section 2.5). The claim is about price
+indices those authors publish. It is not a claim that every
+organization's invoice fell by 13 times, and it is not a claim about
+watts.
+
+\subsubsection{4.3 Claim S-3. Engagement variables are not the
+completeness
+predicate}\label{claim-s-3.-engagement-variables-are-not-the-completeness-predicate}
+
+Supported by the definitions in Section 3.1 and by the attention
+literature's description of time-on-task objectives (Wu; Center for
+Humane Technology overview). No causal estimate of welfare loss is
+claimed. The logical claim is non-identity of the variables: token count
+can increase while \texttt{C} stays constant. The constructed episodes
+in Section 3.4 are illustrations of non-identity, not datasets.
+
+\subsubsection{4.4 Claim S-4. Bicycle-mania prices detached from a
+simple fundamental
+story}\label{claim-s-4.-bicycle-mania-prices-detached-from-a-simple-fundamental-story}
+
+Supported by Quinn (2019): rises over 200 percent and subsequent falls
+over 75 percent in cycle shares, 1895 to 1900, not fully explained by
+fundamentals or by a simple risk shift in that paper's tests. The claim
+stops there. It does not quantify household satiation for bicycles.
+
+\subsubsection{4.5 Claim S-5. U.S. smartphone ownership is high in the
+cited fact
+sheet}\label{claim-s-5.-u.s.-smartphone-ownership-is-high-in-the-cited-fact-sheet}
+
+The project archive's reading of Pew's mobile fact sheet is ownership
+near 91 percent for the 2024 and 2025 rows. The claim used in this paper
+is diffusion at that order, conditional on the live sheet matching the
+archive. It is a saturation fact about ownership, not a bliss-point
+estimate.
+
+\subsubsection{4.6 Claim S-6. Care is not priced as a pure software good
+by the Baumol
+framework}\label{claim-s-6.-care-is-not-priced-as-a-pure-software-good-by-the-baumol-framework}
+
+Baumol (1967) supplies the framework. Acemoglu and Restrepo (2019)
+supply the task language. The claim is that these frameworks do not
+imply an end to care's labor, trust, or liability requirements when
+token prices fall. The claim is not a forecast of health-care
+expenditure.
+
+\subsubsection{4.7 Claim S-7. A sell-side note questions spend versus
+benefit}\label{claim-s-7.-a-sell-side-note-questions-spend-versus-benefit}
+
+The Goldman Sachs page named in Section 2.6 exists and frames the
+question in its title.
+
+\subsubsection{4.9 Claim S-9. Physical law is not priced to zero by
+Epoch}\label{claim-s-9.-physical-law-is-not-priced-to-zero-by-epoch}
+
+Landauer (1961) and Horowitz (2014) support a permanent gap between an
+ideal erasure bound and CMOS practice. S-9 says only that a citation of
+Epoch does not discharge a citation of Landauer.
+
+\subsubsection{4.10 Design rules, marked as
+design}\label{design-rules-marked-as-design}
+
+These rules follow if one accepts the definitions and wants a product
+that optimizes \texttt{C} rather than tokens. They are not effects.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Write \texttt{C} before adding model capacity.
+\item
+  Treat a synthesis price premium as temporary when Epoch-type series
+  and open weights apply to that chore.
+\item
+  Do not describe modeled or simulated energy as measured energy.
+\item
+  Prefer a detector of \texttt{C} with an error table over an unlabeled
+  increase in model size, once the chore is the product.
+\item
+  Require a separate physical safety check before any irreversible
+  action.
+\item
+  Report pre-done and post-done energy separately when the split exists.
+  It does not exist yet.
+\item
+  Do not apply the satiation predicate to adversarial or military races
+  (Section 5.3).
+\item
+  If the product's objective is attention, say so. The completeness
+  claims then do not apply.
+\end{enumerate}
+
+Kill tests for a roadmap, also design: a plan that assumes unbounded
+appetite for a chore with a short \texttt{C}; a price that requires
+permanent synthesis scarcity and no physical or liability wedge; a
+safety story that uses only a confidence string; a ``free'' claim that
+deletes joules; an agent loop with no \texttt{C}.
+
+\subsubsection{4.11 What would be a result and is
+not}\label{what-would-be-a-result-and-is-not}
+
+A table of false-done and false-continue rates. A time series of calls
+after \texttt{t*}. A meter reading of energy on a stated workload. A
+structural rebound estimate. An AGI price premium estimated on a
+satiated chore. None of these appear in Section 4's supported claims.
+
+\subsubsection{4.12 Non-identity, stated as a comparison of
+objectives}\label{non-identity-stated-as-a-comparison-of-objectives}
+
+Let \texttt{x} be call count, \texttt{s} session length, \texttt{J\_pre}
+and \texttt{J\_post} energy before and after adjudicated done, and
+\texttt{C} the predicate. The following implications are definitional.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4483}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5517}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Observation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Does not imply
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{x} increased & \texttt{C} increased \\
+\texttt{s} increased & welfare increased \\
+\texttt{p} fell (S-2) & \texttt{J\_post\ =\ 0} \\
+\texttt{C\ =\ 1} & the detector's error rate is known \\
+ownership of phones is high (S-5) & marginal value of another model call
+is zero \\
+cycle-share prices boomed and busted (S-4) & households reached a
+transport bliss point \\
+\end{longtable}
+}
+
+The right-hand column is the list of inferences this paper refuses. Each
+left-hand observation is either a citation in Section 4 or a variable in
+Section 3. The table is the discussion compressed into a check. A
+sentence that asserts a right-hand claim has left the evidence.
+
+\subsection{5. Discussion}\label{discussion}
+
+\subsubsection{5.1 Rebound: the central identification
+problem}\label{rebound-the-central-identification-problem}
+
+Three results limit the natural experiment. Gundlach and colleagues
+(2025) find that prices at fixed benchmark performance fall fast while
+frontier prices do not, and Du (2026) finds a structural break and a
+reasoning premium in price evolution, so price cuts arrive bundled with
+model changes. Anthropic's Economic Index (September 2025) reports that
+across tasks each 1\% increase in cost is associated with a 0.29\%
+decrease in usage frequency, an inelastic cross-sectional figure, not a
+price change over time. A provider-level design cannot identify
+market-level rebound; the design needs market-level prices and
+quantities.
+
+Gillingham, Rapson, and Wagner survey rebound from energy-efficiency
+policy. The mechanism is residual demand elasticity. If the money price
+of synthesis falls, use rises where buyers still value another unit. At
+a bliss point for a closed chore, the direct derivative of value with
+respect to more synthesis on that chore is not positive, so direct
+rebound on that chore is not implied. Indirect rebound, new tasks, and
+attention shifting can remain. Acemoglu and Restrepo's new-task margin
+is one place quantity can reappear. Claim S-2 therefore does not imply a
+global cap on compute. It implies a cap only relative to a stated
+\texttt{C}. Denying global rebound would require the split in Section
+3.3 and a demand system. This paper does not deny global rebound. It
+refuses to treat ``Jevons'' as a reason to avoid writing \texttt{C}.
+
+Two hypotheses make the question testable.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{H1. Post-completion spend.} The fraction of agent compute
+  spent after \texttt{C(z)\ =\ 1}, joules or calls with
+  \texttt{t\ \textgreater{}\ t*} over all joules or calls in the
+  episode, is measurably above zero. H1 is the direct waste the
+  completeness stop removes. It is estimable from agent logs with a
+  labeled \texttt{t*} per episode (Section 3.3, item 1).
+\item
+  \textbf{H2. Jevons in tasks.} H2 is the direct-rebound elasticity of
+  Khazzoom (1980), stated for tasks. When the price of synthesis falls,
+  the elasticity of the number of tasks run exceeds the fall in spend
+  per task. Then total spend rises even though each task is satiated. H2
+  is aggregate rebound.
+\end{itemize}
+
+\textbf{Identification.} H1 needs no price variation: a labeled corpus,
+the detector error rates of Section 3.3 item 2, and the split account.
+H2 needs exogenous price changes. Provider price cuts at fixed model
+quality, announced on a known date, are natural experiments. The design
+is a panel of accounts with price paid, tasks opened, calls per task and
+a completeness label per episode, before and after each cut. Comparing
+accounts on a repriced model with accounts on models whose price did not
+move gives a difference-in-differences estimate of the task-count
+elasticity and the per-task spend response separately. Spend per task
+can fall while task count rises. Both numbers are needed. The
+completeness stop is a claim about the first. Jevons is a claim about
+the second. Neither was estimated here.
+
+\subsubsection{5.2 Status and creative
+goods}\label{status-and-creative-goods}
+
+Some goods are valued because they are not finished: status, open-ended
+art, research whose \texttt{C} is not a finite checklist. The definition
+in Section 3.1 does not force a bliss point onto those goods. It forces
+a segmentation. A finite chore and an open-ended practice can be sold by
+the same firm and should not share a demand assumption. Pricing a finite
+chore as if it were an open-ended capability race is a category error,
+not a finding about AGI.
+
+\subsubsection{5.3 Adversarial demand}\label{adversarial-demand}
+
+If the other party's gain is this party's loss, ``enough'' is not
+defined by a local checklist. Arms races and some security contests are
+in that class. Physical commit constraints can still apply: an unsafe
+action can be refused while the strategic demand remains open. Scope is
+part of the claim, not a footnote that cancels it.
+
+\subsubsection{5.4 Incomplete knowledge of
+done}\label{incomplete-knowledge-of-done}
+
+People misjudge completion. Detectors will false-done and
+false-continue. That is an argument for measuring detector error, which
+Section 3.3 lists as missing. It is not an argument that session length
+is a substitute for \texttt{C} in a domain where a missed handoff has a
+liable party. Where no predicate can be written, this paper's
+operational claim is silent.
+
+\subsubsection{5.5 Baumol is not solved}\label{baumol-is-not-solved}
+
+A model that drafts a note faster can raise throughput of notes and
+leave examination, judgment, and responsibility with a person.
+Expenditure shares can still move as Baumol described if the human
+residual does not speed up. Saying otherwise would be a forecast this
+bibliography does not contain. The permitted statement is S-6.
+
+\subsubsection{5.6 Free synthesis is not free
+actuation}\label{free-synthesis-is-not-free-actuation}
+
+A falling money price for inference says nothing about the energy of
+moving a physical system. Moving a mass \(m\) through a speed change
+\(\Delta v\) from rest takes at least \(\tfrac12 m (\Delta v)^2\) joules
+of work, whatever the price of the instruction that commanded it. Epoch
+prices sit on a different axis from that work. Collapsing them into
+``free AI'' deletes the measurement class.
+
+\subsubsection{5.7 Confidence is not a
+certificate}\label{confidence-is-not-a-certificate}
+
+A high model score can order proposals. It is not a completeness
+predicate: a score needs a threshold and an error table (false and true
+positive rates against a labeled set) before it decides \texttt{C}.
+
+\subsubsection{5.8 Sell-side skepticism is not a
+measurement}\label{sell-side-skepticism-is-not-a-measurement}
+
+S-7 prevents a literature review from ignoring a major public doubt
+about spend and benefit. It does not let a research note replace a meter
+or a demand estimate. If the note's figures are quoted later, the
+primary PDF has to be the source, and the label is sell-side estimate.
+
+\subsubsection{5.9 What a structural demand estimate would
+require}\label{what-a-structural-demand-estimate-would-require}
+
+S-2 is a supply-price fact from secondary published series. A demand
+estimate is a different regression. At minimum it needs a quantity
+(calls, tasks closed, or both), a price, and a way to separate movement
+along a demand curve from movement of the curve. Epoch's benchmark price
+is not a firm-level invoice, and a firm's invoice is not \texttt{C}.
+Linking them requires a panel this study does not have: accounts that
+record price paid, calls made, and an adjudicated completeness label on
+the same episode. Without that panel, the slope of demand after
+\texttt{t*} is not identified. The toy surplus in Section 3.10 shows
+only that a quadratic bliss point keeps a finite optimum as \texttt{p}
+falls. It is not the missing regression.
+
+Segmentation belongs in the same design. Code each product as
+finite-\texttt{C} or open-ended before pooling. Pooling a ticket desk
+with an open research tool averages two demand regimes and can
+manufacture an appearance of unbounded appetite. The military exclusion
+in Section 5.3 is the same rule applied to a domain where the opponent's
+objective prevents a local bliss point. A table with those codes, even
+with no prices yet, would be more informative than a single
+total-addressable-market number. The table was not built.
+
+\subsubsection{\texorpdfstring{5.10 Why no multiple of
+\texttt{kT\ ln\ 2} is
+stated}{5.10 Why no multiple of kT ln 2 is stated}}\label{why-no-multiple-of-kt-ln-2-is-stated}
+
+Landauer's result is an inequality for an idealized erasure at
+temperature \texttt{T}. Horowitz (2014) reports energies for particular
+CMOS operations and for memory traffic, in picojoules, under the
+assumptions of that tutorial. Dividing one by the other produces a
+number only after someone chooses the operation, the activity factor,
+the temperature, and the device. None of those choices is measured in
+this paper. Stating a fold above the Landauer bound would pretend those
+choices had been made. The scientific statement is the inequality
+direction: practical irreversible CMOS in Horowitz's account sits far
+above the bound, and a price index does not move a device onto the
+bound.
+
+\subsection{6. Limits and threats to
+validity}\label{limits-and-threats-to-validity}
+
+Construct validity. Operational satiation depends on \texttt{C}. A
+hostile or vague \texttt{C} makes the predicate arbitrary. The paper's
+defense is to require \texttt{C} to be written in observable clauses.
+Many real products do not have that writing yet. For those products the
+theory does not yet apply empirically.
+
+Internal validity of the price claim. S-2 inherits whatever
+identification Epoch used (quality adjustment, benchmark choice, posted
+prices versus realized invoices). This paper did not audit the
+microdata. A revision of Epoch's series would revise S-2's magnitudes
+and might not revise the direction. S-2 should be re-read against the
+primary pages before it is used as an executive figure.
+
+External validity. Work and care, as defined, exclude military rivalry
+and may exclude research. Phone ownership does not transfer to agent
+products. Bicycle share prices do not transfer to software margins. The
+constructed episodes are not a sample.
+
+Measurement validity. No split joules, no detector confusion matrix, and
+no energy meter on any device. Vendor hardware specifications are not
+energy measurements.
+
+Omitted variable. New tasks can absorb spending released by cheap
+synthesis. Section 5.1 states this. A roadmap that treats per-chore
+satiation as a forecast of aggregate compute demand is not licensed by
+this paper.
+
+Publication bias and document type. Wu is a book. The Humane Technology
+page is advocacy. Goldman Sachs is sell-side. Quinn and Epoch and Baumol
+and Acemoglu and Restrepo and Landauer and Horowitz are the load-bearing
+citations, and they support different sentences. The paper's structure
+is an attempt to keep those sentences from being averaged into a mood.
+
+Falsifiers. S-1 fails if the cited theory does not contain a zero
+marginal-utility region. It does. S-2 fails if the primary Epoch pages
+do not report declines of that kind. A future labeled corpus in which
+extra calls after a correct \texttt{C} systematically raise an
+independently specified value would falsify satiation for that corpus.
+One such corpus would not falsify the definition. It would bound its
+domain.
+
+Vendor hardware specifications list capacities, not switching activity,
+static power or the energy of a workload. An energy report has to name
+the hardware, the clock, the workload, the meter and the duration.
+
+\subsection{7. Conclusion}\label{conclusion}
+
+Satiation is a standard object in the theory cited, and it has a narrow
+operational form: a written completeness predicate that extra synthesis
+does not advance. Epoch's published series document a sharp fall in the
+money price of fixed-performance inference. That fall supports a
+free-at-the-margin description of digital chores and does not support
+free joules, free plant motion, or the end of care's cost structure.
+Bicycle share prices, smartphone diffusion, and attention markets are
+weaker and stronger in the specific ways Section 4 states. The missing
+scientific objects are a labeled done detector, a pre-done versus
+post-done energy split, and a demand estimate that can see rebound.
+Until they exist, the paper's empirical content is the cited record, and
+its formal content is the predicate.
+
+\subsection{References}\label{references}
+
+Cover, T. M., and Thomas, J. A. Elements of Information Theory, 2nd
+ed.~Wiley, 2006. https://doi.org/10.1002/047174882X
+
+Hoffmann, J., et al.~Training compute-optimal large language models.
+arXiv:2203.15556.
+
+Kaplan, J., et al.~Scaling laws for neural language models.
+arXiv:2001.08361.
+
+Shannon, C. E. Coding theorems for a discrete source with a fidelity
+criterion. IRE National Convention Record, 1959.
+
+Acemoglu, D., and Restrepo, P. Automation and new tasks: how technology
+displaces and reinstates labor. Journal of Economic Perspectives 33(2),
+2019. https://www.aeaweb.org/articles?id=10.1257/jep.33.2.3
+
+Ames, A. D., et al.~Control barrier functions: theory and applications.
+ECC 2019. https://doi.org/10.23919/ECC.2019.8796030
+
+Andersen, E. S. Satiation in an evolutionary model of structural
+economic dynamics. Journal of Evolutionary Economics, 2001.
+https://doi.org/10.1007/PL00003852
+
+Baumol, W. J. Macroeconomics of unbalanced growth: the anatomy of urban
+crisis. American Economic Review 57, 415-426, 1967.
+
+Bennett, C. H. Logical reversibility of computation. IBM Journal of
+Research and Development, 1973. https://doi.org/10.1147/rd.176.0525
+
+Center for Humane Technology. The attention economy.
+https://www.humanetech.com/youth/the-attention-economy
+
+Emberson, L., and Roodman, D. / Epoch AI. The plunging price of thought.
+22 September 2026.
+https://epoch.ai/publications/the-plunging-price-of-thought
+
+Epoch AI. LLM inference price trends. 12 March 2025.
+https://epoch.ai/data-insights/llm-inference-price-trends
+
+Gillingham, K., Rapson, D., and Wagner, G. The rebound effect and energy
+efficiency policy. Review of Environmental Economics and Policy 10(1),
+68-88, 2016. https://doi.org/10.1093/reep/rev017 Working text:
+https://gwagner.com/wp-content/uploads/Gillingham-Rapson-Wagner-2015-Rebound-Effect.pdf
+
+Alcott, B. Jevons' paradox. Ecological Economics 54(1), 9-21, 2005.
+https://doi.org/10.1016/j.ecolecon.2005.03.020
+
+Anthropic. How we built our multi-agent research system. 13 June 2025.
+https://www.anthropic.com/engineering/multi-agent-research-system
+
+Jevons, W. S. The Coal Question. London: Macmillan, 1865.
+
+Keynes, J. M. Economic possibilities for our grandchildren. 1930.
+Reprinted in Essays in Persuasion, 1931.
+
+Nordhaus, W. D. Two centuries of productivity growth in computing.
+Journal of Economic History 67(1), 128-159, 2007.
+https://doi.org/10.1017/S0022050707000058
+
+Goldman Sachs. Gen AI: too much spend, too little benefit?
+https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit
+
+Horowitz, M. Computing's energy problem (and what we can do about it).
+ISSCC 2014. https://doi.org/10.1109/ISSCC.2014.6757323
+
+Landauer, R. Irreversibility and heat generation in the computing
+process. IBM Journal of Research and Development, 1961.
+https://doi.org/10.1147/rd.53.0183
+
+Laya. System One models and typed decision engines (comparison table,
+checked 2 October 2026). https://laya-ai.com/system-one-models
+
+Convai Innovations. Laya model card.
+https://huggingface.co/convaiinnovations/laya
+
+TypeSafe AI. Introducing System One Models and Jev. 15 September 2026.
+https://typesafe.ai/blog/introducing-system-one-models-and-jev
+
+Ma, S., et al.~The era of 1-bit LLMs. arXiv:2402.17764.
+
+Pew Research Center. Mobile fact sheet.
+https://www.pewresearch.org/internet/fact-sheet/mobile/
+
+Quinn, W. Technological revolutions and speculative finance: evidence
+from the British Bicycle Mania. Cambridge Journal of Economics 43(2),
+271-294, 2019. https://doi.org/10.1093/cje/bey029
+
+Wei, J., et al.~T-MAC. arXiv:2407.00088.
+
+Wu, T. The Attention Merchants. Knopf.
+https://www.penguinrandomhouse.com/books/234876/the-attention-merchants-by-tim-wu/
+
+Chung, J.-W., Wu, R., Ma, J. J., and Chowdhury, M. Where Do the Joules
+Go? Diagnosing Inference Energy Consumption. arXiv:2601.22076.
+https://arxiv.org/abs/2601.22076
+
+Energy use of AI inference, efficiency pathways, and test-time scaling.
+\emph{Joule}, 2026.
+https://www.cell.com/joule/fulltext/S2542-4351(26)00114-5
+
+Luccioni, A. S., Strubell, E., and Crawford, K. From efficiency gains to
+rebound effects: the problem of Jevons' Paradox in AI's polarized
+environmental debate. \emph{FAccT} 2025.
+https://doi.org/10.1145/3715275.3732007
+
+Ostrovsky, N. / Epoch AI. What you need to know about AI energy use.
+Updated 14 July 2026. https://epoch.ai/publications/ai-energy
+
+Anthropic. Anthropic Economic Index report: uneven geographic and
+enterprise AI adoption. September 2025.
+https://www.anthropic.com/research/anthropic-economic-index-september-2025-report
+
+Bai, L., Huang, Z., Wang, X., et al.~How do AI agents spend your money?
+Analyzing and predicting token consumption in agentic coding.
+arXiv:2604.22750, 2026. https://arxiv.org/abs/2604.22750
+
+Brockway, P. E., Sorrell, S., Semieniuk, G., Heun, M. K., and Court, V.
+Energy efficiency and economy-wide rebound effects: a review of the
+evidence and its implications. Renewable and Sustainable Energy Reviews
+141, 110781, 2021. https://doi.org/10.1016/j.rser.2021.110781
+
+Brookes, L. The greenhouse effect: the fallacies in the energy
+efficiency solution. Energy Policy 18(2), 199-201, 1990.
+https://doi.org/10.1016/0301-4215(90)90145-T
+
+Chen, X., Xu, J., Liang, T., et al.~Do NOT think that much for 2+3=? On
+the overthinking of o1-like LLMs. arXiv:2412.21187, 2024.
+https://arxiv.org/abs/2412.21187
+
+Cuadron, A., Li, D., Ma, W., et al.~The danger of overthinking:
+examining the reasoning-action dilemma in agentic tasks.
+arXiv:2502.08235, 2025. https://arxiv.org/abs/2502.08235
+
+Du, M. Tiered super-Moore's law: price evolution, production frontiers,
+and market competition in large language models. arXiv:2603.28576, 2026.
+https://arxiv.org/abs/2603.28576
+
+Fouquet, R., and Pearson, P. J. G. Seven centuries of energy services:
+the price and use of light in the United Kingdom (1300-2000). The Energy
+Journal 27(1), 2006.
+https://doi.org/10.5547/ISSN0195-6574-EJ-Vol27-No1-8
+
+Gundlach, H., Lynch, J., Mertens, M., et al.~The price of progress:
+price performance and the future of AI. arXiv:2511.23455, 2025.
+https://arxiv.org/abs/2511.23455
+
+Khazzoom, J. D. Economic implications of mandated efficiency in
+standards for household appliances. The Energy Journal 1(4), 1980.
+https://doi.org/10.5547/ISSN0195-6574-EJ-Vol1-No4-2
+
+Masanet, E., Shehabi, A., Lei, N., Smith, S., and Koomey, J.
+Recalibrating global data center energy-use estimates. Science
+367(6481), 984-986, 2020. https://doi.org/10.1126/science.aba3758
+
+Saunders, H. D. The Khazzoom-Brookes postulate and neoclassical growth.
+The Energy Journal 13(4), 1992.
+https://doi.org/10.5547/ISSN0195-6574-EJ-Vol13-No4-7
+
+Sorrell, S., and Dimitropoulos, J. The rebound effect: microeconomic
+definitions, limitations and extensions. Ecological Economics 65(3),
+636-649, 2008. https://doi.org/10.1016/j.ecolecon.2007.08.013
+
+Tsao, J. Y., Saunders, H. D., Creighton, J. R., Coltrin, M. E., and
+Simmons, J. A. Solid-state lighting: an energy-economics perspective.
+Journal of Physics D: Applied Physics 43(35), 354001, 2010.
+https://doi.org/10.1088/0022-3727/43/35/354001
+
+Witt, U. Learning to consume: a theory of wants and the growth of
+demand. Journal of Evolutionary Economics 11(1), 23-36, 2001.
+https://doi.org/10.1007/PL00003851
+
+\subsection{Appendix A. Decision rules and
+non-results}\label{appendix-a.-decision-rules-and-non-results}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1818}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3182}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Id
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Statement
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Class
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+R1 & Write the completeness predicate before adding capacity. &
+Design \\
+R2 & Expect synthesis price premia to erode where Epoch-type evidence
+applies. & Design, conditional on S-2 \\
+R3 & Do not claim free energy or free actuation. & Constraint from
+S-9 \\
+R4 & Separate economic stop reasons from physical stop reasons. &
+Design \\
+R5 & Publish detector error rates before treating a stop as accurate. &
+Not yet a result \\
+R6 & Split energy before and after done. & Not yet a result \\
+R7 & Keep adversarial races outside the satiation claim. & Scope \\
+R8 & Re-read Pew and Epoch primaries before quoting a finer magnitude. &
+Method \\
+\end{longtable}
+}
+
+\subsection{Appendix C. Claim map}\label{appendix-c.-claim-map}
+
+Supported now: S-1 through S-9, with the scope sentences in Section 4.
+
+Not supported: an end to Baumol cost disease; free plant motion;
+satiation of military demand; a numerical global rebound of zero;
+Landauer-scale operation of a language model; board watts; an AGI price
+as a fact about satiated chores; a universal distillation lag; silicon
+performance leadership.
+
+Open measurements: Section 3.3.
+
+\end{document}

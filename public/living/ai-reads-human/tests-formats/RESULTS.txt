@@ -1,0 +1,102 @@
+##### python3 t_json.py
+python 3.13.5
+T1 dup keys python: {'a': 2}
+T2 python int 2**53+1: 9007199254740993 as float: 9007199254740992.0
+T3 1e400 python: inf
+T4 -0 python: 0 -0.0
+T5 lone surrogate python: '\udead'
+   encode utf-8 -> UnicodeEncodeError
+T6 NaN accepted by python json.loads: nan inf
+T7 dumps default NaN: NaN
+T8 non-canon: equal values, different text: {"b": 1, "a": 2} {"a": 2, "b": 1} True
+T9 deep nesting python: RecursionError (non-total unless caught)
+T10 escaped vs literal key equal: True
+##### python3 t_yaml_xml_csv_toml.py
+PyYAML 6.0.2 (YAML 1.1 resolver)
+Y 'no' -> False
+Y 'NO' -> False
+Y 'yes' -> True
+Y 'on' -> True
+Y 'off' -> False
+Y 'y' -> 'y'
+Y 'n' -> 'n'
+Y '010' -> 8
+Y '0o10' -> '0o10'
+Y '0x1F' -> 31
+Y '1_000' -> 1000
+Y '1e3' -> '1e3'
+Y '1.0e3' -> '1.0e3'
+Y '.inf' -> inf
+Y '~' -> None
+Y 'null' -> None
+Y '2001-12-14' -> datetime.date(2001, 12, 14)
+Y '12:30:45' -> 45045
+Y '1:30' -> 90
+Y 'country: NO' -> {'country': False}
+Y dup keys: {'a': 2}
+Y alias bomb: input bytes 166 -> logical leaves 59049
+ruamel No module named 'ruamel'
+C rows csv.reader: [['a', 'b'], ['x,y', '2'], ['1', 'multi\nline']]
+C naive split lines: [['a', 'b'], ['"x', 'y"', '2'], ['1', '"multi'], ['line"']]
+C quote mid-field: [['a', 'b"c', 'd']]
+C strict: [['a', 'b"c', 'd']]
+C formula injection cell '=cmd|...' is plain data to csv: [['=1+1', '@SUM(A1)']]
+C empty line: [['a'], [], ['b']]
+T datetime: {'d': datetime.datetime(1979, 5, 27, 7, 32, tzinfo=datetime.timezone.utc), 'n': 57005, 'f': inf, 'i': 9223372036854775807}
+T 'a=1\na=2' rejected: Cannot overwrite a value (at end of document)
+T 'i=9223372036854775808' {'i': 9223372036854775808}
+T 'a=010' rejected: Expected newline or end of document after a statement (at line 1, column 4)
+##### python3 t_xml.py
+X input bytes 202
+X stdlib ElementTree expanded text len 10000
+X lxml default expanded len 10000
+X lxml resolve_entities=True reads local file -> '<host>\n'
+X lxml resolve_entities=False -> None
+##### python3 t_unicode_canon.py
+U1 NFC vs NFD keys remain distinct (2 members): 2 ; NFC(a)==NFC(b): True
+U2 sort by code point: ['0xffee', '0x1f600']
+U2 sort by UTF-16 code units (JCS): ['0x1f600', '0xffee']
+U3 same value, different texts: [1, 1.0, 1.0, 1.0, 1.0]
+U3 python types: ['int', 'float', 'float']
+U4 \u0000 in key accepted: {'a\x00b': 1}
+U5 homoglyph keys Latin a vs Cyrillic a distinct: 2
+U6 BOM: json.loads str with BOM: JSONDecodeError
+U6 json.loads bytes with BOM: {}
+##### node t_json.js
+node v20.19.2
+N1 dup keys: {"a":2}
+N2 2^53+1: 9007199254740992
+N3 1e400: Infinity
+N4 -0: true stringify(-0): 0
+N5 lone surrogate: "\udead" len 1
+N6 key order integer-like keys: {"1":1,"2":1,"b":1,"a":1}
+N7 __proto__ key: [ '__proto__' ] undefined
+N9 3.141592653589793238462643383279: 3.141592653589793
+N10 0.1+0.2 stringify: 0.30000000000000004
+##### /tmp/dfv python t_md_bin.py
+M emph '*a **b* c**' -> cm: '<p><em>a <em><em>b</em> c</em></em></p>\n' | mistune: '<p><em>a <em><em>b</em> c</em></em></p>\n'
+M html '<script>alert(1)</script>\n\ntex' -> cm: '<script>alert(1)</script>\n<p>text</p>\n' | mistune: '<script>alert(1)</script>\n\n<p>text</p>\n'
+M link js '[x](javascript:alert(1))' -> cm: '<p>[x](javascript:alert(1))</p>\n' | mistune: '<p><a href="#harmful-link">x</a></p>\n'
+M autolink '<https://a.b/"onmouseover=x>' -> cm: '<p><a href="https://a.b/%22onmouseover=x">https://a.b/&quot;onmouseover=x</a></p>\n' | mistune: '<p><a href="https://a.b/%22onmouseover=x">https://a.b/&quot;onmouseover=x</a></p>\n'
+M setext 'a\n---' -> cm: '<h2>a</h2>\n' | mistune: '<h2>a</h2>\n'
+M indent '    code\n' -> cm: '<pre><code>code\n</code></pre>\n' | mistune: '<pre><code>code</code></pre>\n'
+M nested '> > > > > > > > > > > > > > > ' -> cm: '<blockquote>\n<blockquote>\n<blockquote>\n<blockquote>\n<blockquote>\n<blockquote>\n<blockquote>' | mistune: '<blockquote>\n<blockquote>\n<blockquote>\n<blockquote>\n<blockquote>\n<blockquote>\n<blockquote>'
+M tabs '-\ta\n\t- b' -> cm: '<ul>\n<li>a\n<ul>\n<li>b</li>\n</ul>\n</li>\n</ul>\n' | mistune: '<ul>\n<li>a<ul>\n<li>b</li>\n</ul>\n</li>\n</ul>\n'
+M entity '&#0; &#x110000;' -> cm: '<p>� �</p>\n' | mistune: '<p>� �</p>\n'
+M bq_lazy '> a\nb' -> cm: '<blockquote>\n<p>a\nb</p>\n</blockquote>\n' | mistune: '<blockquote>\n<p>a\nb</p>\n</blockquote>\n'
+M markdown-it(commonmark) html passthrough: <img src=x onerror=alert(1)>
+M markdown-it(default) html: <img src=x onerror=alert(1)>
+M link js in default: <p>[x](javascript:alert(1))</p>
+
+B cbor2 dup map keys:  {'a': 2}
+B cbor2 non-shortest int 1 as 0x1801: 1 canonical 0x01 differs: True
+B cbor2 indefinite array: [1, 2] vs definite 820102
+B cbor2 canonical dumps {b:1,a:2}: a2616102616201 default: a2616201616102
+B cbor2 NaN encodings: f97e00
+B msgpack dup keys: {'a': 2}
+B msgpack int 1 as uint64: 1 vs 01
+B msgpack float32 vs 64 for 1.0: cb3ff0000000000000 ca3f800000
+##### jq
+jq-1.7
+{"a":2}
+100000000000000000000000000001

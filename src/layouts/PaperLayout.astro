@@ -1,5 +1,9 @@
 ---
 import Layout from './Layout.astro';
+import StudyJsonLd from '../components/StudyJsonLd.astro';
+import 'katex/dist/katex.min.css';
+import { getCollection } from 'astro:content';
+import { LANGS } from '../i18n';
 
 interface Props {
   title: string;
@@ -9,7 +13,11 @@ interface Props {
   figuresHref: string;
   pdfHref: string;
   description?: string;
+  paperId?: string;
+  basePath?: string;
+  genre?: string;
   headings?: { depth: number; slug: string; text: string }[];
+  lang?: string;
 }
 
 const {
@@ -20,21 +28,43 @@ const {
   figuresHref,
   pdfHref,
   description,
+  paperId,
+  basePath = '/papers/',
+  genre,
   headings = [],
+  lang = 'en',
 } = Astro.props;
+const L = lang === 'en' ? null : (LANGS as any)[lang];
+const dir = L ? L.dir : 'ltr';
+const SITE = 'https://research.openie.dev';
+const avail = paperId ? (await getCollection('translations')).filter((t) => t.data.source === paperId).map((t) => t.data.lang).sort() : [];
+const enPath = `${basePath}${paperId}/`;
+const alternates = avail.length ? [{ hreflang: 'en', href: SITE + enPath }, ...avail.map((l) => ({ hreflang: l, href: `${SITE}/${l}/papers/${paperId}/` })), { hreflang: 'x-default', href: SITE + enPath }] : [];
 
-const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3).slice(0, 40);
+const citeUrl = paperId ? `https://research.openie.dev${basePath}${paperId}/` : 'https://research.openie.dev/';
+const pdfUrl = paperId ? `https://research.openie.dev/pdfs/${paperId}.pdf` : pdfHref;
+
+// Prefer every H2 as a top-level sibling in the outline (never drop §§9+ under a 40-cap).
+// Fill remaining TOC slots with H3s so later major sections stay visible next to §8.
+const h2s = headings.filter((h) => h.depth === 2);
+const h3s = headings.filter((h) => h.depth === 3);
+const tocBudget = 80;
+const toc = [
+  ...h2s,
+  ...h3s.slice(0, Math.max(0, tocBudget - h2s.length)),
+].sort((a, b) => headings.indexOf(a) - headings.indexOf(b));
 ---
 
-<Layout title={title} description={description ?? deck}>
+<Layout title={title} description={description ?? deck} lang={lang} dir={dir} alternates={alternates}>
+  {paperId && <StudyJsonLd slot="head" id={paperId} />}
   <article class="px-6 md:px-10 pt-16 md:pt-20 pb-24">
     <div class="max-w-6xl mx-auto grid lg:grid-cols-[minmax(0,1fr)_220px] gap-10 lg:gap-14">
-      <div class="min-w-0">
+      <div class="min-w-0 paper-col">
         <div class="flex flex-wrap items-center gap-3 mb-5">
           <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-dark bg-brand-amber px-2.5 py-1 rounded">
             {status}
           </span>
-          <span class="font-mono text-[10px] text-brand-gray">FPGA board not synthesized or metered</span>
+          <span class="font-mono text-[10px] text-brand-gray">{paperId === 'gates' ? 'KV260 board metered (WCA gate and seed fabrics, board level) · Pt V2: FPGA programmed; energy unmetered' : 'No FPGA board result in this paper'}</span>
         </div>
 
         <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-brand-white max-w-[22ch] md:max-w-none">
@@ -44,6 +74,16 @@ const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3).slice(0, 40);
           {deck}
         </p>
         <p class="mt-3 font-mono text-[11px] text-brand-gray">{author}</p>
+        {avail.length > 0 && (
+          <nav class="mt-4 flex flex-wrap gap-2 items-center" aria-label="Languages">
+            <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray">{L ? L.languages : 'Languages'}</span>
+            <a href={enPath} hreflang="en" lang="en" class={`font-body text-xs no-underline ${lang === 'en' ? 'text-brand-amber' : 'text-brand-cyan hover:underline'}`}>English</a>
+            {avail.map((l) => <a href={`/${l}/papers/${paperId}/`} hreflang={l} lang={l} class={`font-body text-xs no-underline ${lang === l ? 'text-brand-amber' : 'text-brand-cyan hover:underline'}`}>{(LANGS as any)[l].name}</a>)}
+          </nav>
+        )}
+        {L && (
+          <p class="mt-4 glass-card p-3 font-body text-xs text-brand-slate max-w-[70ch]">{L.banner} <a href={enPath} hreflang="en" lang="en" class="text-brand-cyan">{L.original}</a>.</p>
+        )}
 
         <div class="mt-8 flex flex-wrap gap-3">
           <a
@@ -69,7 +109,20 @@ const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3).slice(0, 40);
 
         <p class="mt-6 font-body text-xs text-brand-gray leading-relaxed max-w-[70ch]">
           Research studies, not journal finals. Notation is defined in the paper. Analytical energy estimates are not board power. Interactive figures live under <a href={figuresHref} class="text-brand-cyan no-underline hover:underline">/living/</a>.
+          Shared terms: <a href="/glossary/" class="text-brand-cyan no-underline hover:underline">glossary</a>.
         </p>
+
+        <div class="mt-6 glass-card p-4 max-w-[70ch]" id="cite-this">
+          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-2">Cite this</p>
+          {genre && (
+            <p class="font-body text-xs text-brand-slate mb-2">Genre: {genre}</p>
+          )}
+          <p class="font-body text-xs text-brand-slate leading-relaxed">
+            {author}. <em class="text-brand-light">{title}</em>. Open Interface Engineering.
+            Web: <a href={citeUrl} class="text-brand-cyan no-underline hover:underline">{citeUrl}</a>.
+            PDF: <a href={pdfUrl} class="text-brand-cyan no-underline hover:underline">{pdfUrl}</a>.
+          </p>
+        </div>
 
         <div class="paper-prose mt-12 max-w-[70ch]">
           <slot />
@@ -112,8 +165,11 @@ const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3).slice(0, 40);
     font-family: var(--font-body);
     color: var(--color-brand-slate);
     line-height: 1.7;
-    font-size: 0.975rem;
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+    overflow-wrap: break-word;
   }
+  .paper-prose a { overflow-wrap: anywhere; }
+  .paper-prose pre { max-width: 100%; }
   .paper-prose > :first-child { margin-top: 0; }
   .paper-prose h1 {
     font-size: 1.75rem;
@@ -126,6 +182,8 @@ const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3).slice(0, 40);
     padding-top: 0.5rem;
     border-top: 1px solid var(--color-brand-border);
     color: var(--color-brand-white);
+    clear: both;
+    display: block;
   }
   .paper-prose h3 {
     font-size: 1.1rem;
@@ -209,4 +267,11 @@ const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3).slice(0, 40);
     text-transform: uppercase;
   }
   .paper-prose img { max-width: 100%; height: auto; border-radius: 8px; }
+
+  .paper-prose .katex { color: inherit; font-size: 1.05em; }
+  .paper-prose .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 0.85rem 0;
+  }
 </style>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="t d"><title id="t">The design space of autonomous coding</title><desc id="d">Radar chart with five axes: energy per correct result, determinism, verification strength, reuse and compounding, and independence from models. Five approach classes are drawn as polygons. A model on every task sits near the centre on all axes. An agent loop gated by tests is higher on verification. A model with retrieval and caching is higher on reuse. Classical synthesis and repair is high on determinism and model independence. RCE, marked with stars, sits at or near the outer ring on all five axes. Placements are qualitative.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="898" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">The design space of autonomous coding</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Five axes; approach classes placed qualitatively. Outward is better on every axis.</text>
+<rect x="946.5" y="26" width="213.5" height="34" rx="17" fill="none" stroke="#CC79A7" stroke-width="2"/>
+<text x="1053.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#CC79A7" text-anchor="middle">Qualitative diagram</text>
+<polygon points="600.0,407.5 659.4,450.7 636.7,520.6 563.3,520.6 540.6,450.7" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+<polygon points="600.0,345.0 718.9,431.4 673.5,571.1 526.5,571.1 481.1,431.4" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+<polygon points="600.0,282.5 778.3,412.1 710.2,621.7 489.8,621.7 421.7,412.1" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+<polygon points="600.0,220.0 837.8,392.7 746.9,672.3 453.1,672.3 362.2,392.7" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+<line x1="600.0" y1="470.0" x2="600.0" y2="220.0" stroke="#94a3b8" stroke-width="2"/>
+<text x="600.0" y="158.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a" text-anchor="middle">Energy per correct result</text>
+<text x="600.0" y="180.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">outward: paid once, then the handler floor</text>
+<line x1="600.0" y1="470.0" x2="837.8" y2="392.7" stroke="#94a3b8" stroke-width="2"/>
+<text x="875.8" y="380.4" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a" text-anchor="start">Determinism</text>
+<text x="875.8" y="402.4" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">outward: entropy resolved once</text>
+<line x1="600.0" y1="470.0" x2="746.9" y2="672.3" stroke="#94a3b8" stroke-width="2"/>
+<text x="770.5" y="704.6" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a" text-anchor="start">Verification strength</text>
+<text x="770.5" y="726.6" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">outward: tests, coverage and proof</text>
+<line x1="600.0" y1="470.0" x2="453.1" y2="672.3" stroke="#94a3b8" stroke-width="2"/>
+<text x="429.5" y="704.6" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a" text-anchor="end">Reuse and compounding</text>
+<text x="429.5" y="726.6" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">outward: every accepted fit stored</text>
+<line x1="600.0" y1="470.0" x2="362.2" y2="392.7" stroke="#94a3b8" stroke-width="2"/>
+<text x="324.2" y="380.4" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a" text-anchor="end">Independence from models</text>
+<text x="324.2" y="402.4" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">outward: model only as a last gear</text>
+<path d="M600.0 407.5 L659.4 450.7 L636.7 520.6 L595.6 476.1 L592.9 467.7 Z" stroke="#D55E00" stroke-width="3" fill="none" fill-opacity="0.12" stroke-linejoin="round"/>
+<circle cx="600.0" cy="407.5" r="7" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<circle cx="659.4" cy="450.7" r="7" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<circle cx="636.7" cy="520.6" r="7" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<circle cx="595.6" cy="476.1" r="7" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<circle cx="592.9" cy="467.7" r="7" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<path d="M600.0 407.5 L659.4 450.7 L673.5 571.1 L563.3 520.6 L570.3 460.3 Z" stroke="#E69F00" stroke-width="3" fill="none" fill-opacity="0.12" stroke-dasharray="10 6" stroke-linejoin="round"/>
+<path d="M600.0 399.1 L607.7 413.1 L592.3 413.1 Z" stroke="#ffffff" stroke-width="2" fill="#E69F00" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M659.4410322684471 442.28643785156584 L667.1410322684471 456.28643785156584 L651.741032268447 456.28643785156584 Z" stroke="#ffffff" stroke-width="2" fill="#E69F00" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M673.4731565365591 562.7271242968685 L681.1731565365592 576.7271242968685 L665.7731565365591 576.7271242968685 Z" stroke="#ffffff" stroke-width="2" fill="#E69F00" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M563.2634217317204 512.1635621484343 L570.9634217317205 526.1635621484343 L555.5634217317204 526.1635621484343 Z" stroke="#ffffff" stroke-width="2" fill="#E69F00" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M570.2794838657765 451.9432189257829 L577.9794838657765 465.9432189257829 L562.5794838657764 465.9432189257829 Z" stroke="#ffffff" stroke-width="2" fill="#E69F00" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M600.0 345.0 L718.9 431.4 L636.7 520.6 L526.5 571.1 L540.6 450.7 Z" stroke="#56B4E9" stroke-width="3" fill="none" fill-opacity="0.12" stroke-dasharray="4 6" stroke-linejoin="round"/>
+<rect x="593.0" y="338.0" width="14.0" height="14.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<rect x="711.9" y="424.4" width="14.0" height="14.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<rect x="629.7" y="513.6" width="14.0" height="14.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<rect x="519.5" y="564.1" width="14.0" height="14.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<rect x="533.6" y="443.7" width="14.0" height="14.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<path d="M600.0 282.5 L837.8 392.7 L673.5 571.1 L563.3 520.6 L362.2 392.7 Z" stroke="#009E73" stroke-width="3" fill="none" fill-opacity="0.12" stroke-dasharray="14 6 3 6" stroke-linejoin="round"/>
+<path d="M600.0 273.4 L607.7 282.5 L600.0 291.6 L592.3 282.5 Z" stroke="#ffffff" stroke-width="2" fill="#009E73" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M837.7641290737884 383.6457514062631 L845.4641290737884 392.74575140626314 L837.7641290737884 401.84575140626316 L830.0641290737883 392.74575140626314 Z" stroke="#ffffff" stroke-width="2" fill="#009E73" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M673.4731565365591 562.0271242968685 L681.1731565365592 571.1271242968685 L673.4731565365591 580.2271242968685 L665.7731565365591 571.1271242968685 Z" stroke="#ffffff" stroke-width="2" fill="#009E73" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M563.2634217317204 511.4635621484342 L570.9634217317205 520.5635621484342 L563.2634217317204 529.6635621484343 L555.5634217317204 520.5635621484342 Z" stroke="#ffffff" stroke-width="2" fill="#009E73" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M362.2358709262116 383.6457514062632 L369.9358709262116 392.7457514062632 L362.2358709262116 401.8457514062632 L354.5358709262116 392.7457514062632 Z" stroke="#ffffff" stroke-width="2" fill="#009E73" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M600.0 220.0 L837.8 392.7 L746.9 672.3 L453.1 672.3 L421.7 412.1 Z" stroke="#0072B2" stroke-width="5" fill="#0072B2" fill-opacity="0.12" stroke-linejoin="round"/>
+<path d="M600.0 205.0 L604.5 215.5 L615.0 216.0 L607.0 223.0 L609.5 234.0 L600.0 227.5 L590.5 234.0 L593.0 223.0 L585.0 216.0 L595.5 215.5 Z" stroke="#ffffff" stroke-width="2" fill="#0072B2" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M837.7641290737884 377.74575140626314 L842.2641290737884 388.24575140626314 L852.7641290737884 388.74575140626314 L844.7641290737884 395.74575140626314 L847.2641290737884 406.74575140626314 L837.7641290737884 400.24575140626314 L828.2641290737884 406.74575140626314 L830.7641290737884 395.74575140626314 L822.7641290737884 388.74575140626314 L833.2641290737884 388.24575140626314 Z" stroke="#ffffff" stroke-width="2" fill="#0072B2" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M746.9463130731183 657.2542485937369 L751.4463130731183 667.7542485937369 L761.9463130731183 668.2542485937369 L753.9463130731183 675.2542485937369 L756.4463130731183 686.2542485937369 L746.9463130731183 679.7542485937369 L737.4463130731183 686.2542485937369 L739.9463130731183 675.2542485937369 L731.9463130731183 668.2542485937369 L742.4463130731183 667.7542485937369 Z" stroke="#ffffff" stroke-width="2" fill="#0072B2" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M453.0536869268817 657.2542485937369 L457.5536869268817 667.7542485937369 L468.0536869268817 668.2542485937369 L460.0536869268817 675.2542485937369 L462.5536869268817 686.2542485937369 L453.0536869268817 679.7542485937369 L443.5536869268817 686.2542485937369 L446.0536869268817 675.2542485937369 L438.0536869268817 668.2542485937369 L448.5536869268817 667.7542485937369 Z" stroke="#ffffff" stroke-width="2" fill="#0072B2" fill-opacity="1" stroke-linejoin="round"/>
+<path d="M421.6769031946587 397.0593135546974 L426.1769031946587 407.5593135546974 L436.6769031946587 408.0593135546974 L428.6769031946587 415.0593135546974 L431.1769031946587 426.0593135546974 L421.6769031946587 419.5593135546974 L412.1769031946587 426.0593135546974 L414.6769031946587 415.0593135546974 L406.6769031946587 408.0593135546974 L417.1769031946587 407.5593135546974 Z" stroke="#ffffff" stroke-width="2" fill="#0072B2" fill-opacity="1" stroke-linejoin="round"/>
+<circle cx="70.0" cy="799.0" r="8" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="86.0" y="805.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">A model on every task</text>
+<path d="M340 789.4 L348.8 805.4 L331.2 805.4 Z" stroke="#ffffff" stroke-width="2" fill="#E69F00" fill-opacity="1" stroke-linejoin="round"/>
+<text x="356.0" y="805.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">Agent loop gated by tests</text>
+<rect x="602.0" y="791.0" width="16.0" height="16.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<text x="626.0" y="805.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">Model with retrieval and caching</text>
+<path d="M880 788.6 L888.8 799 L880 809.4 L871.2 799 Z" stroke="#ffffff" stroke-width="2" fill="#009E73" fill-opacity="1" stroke-linejoin="round"/>
+<text x="896.0" y="805.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">Classical synthesis and repair</text>
+<path d="M70 817.0 L73.6 825.4 L82.0 825.8 L75.6 831.4 L77.6 840.2 L70 835.0 L62.4 840.2 L64.4 831.4 L58.0 825.8 L66.4 825.4 Z" stroke="#ffffff" stroke-width="2" fill="#0072B2" fill-opacity="1" stroke-linejoin="round"/>
+<text x="86.0" y="835.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="500" fill="#0f172a" text-anchor="start">RCE</text>
+<text x="600.0" y="880.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="middle" font-style="italic">Placements are the paper’s qualitative reading of each class (Section 2), not measurements. Rings mark ordinal levels 1 to 4.</text></svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="t d"><title id="t">Capital and compute commitments, dated</title><desc id="d">Flow graph with ten named parties in columns: finance, chip makers, labs, clouds. Capital arrows run from NVIDIA, SoftBank, Amazon and Microsoft into OpenAI and from NVIDIA and Microsoft into Anthropic; NVIDIA puts 2 billion dollars into CoreWeave; Blue Owl funds put 7 billion dollars cash into a Meta venture. Dashed arrows show purchase commitments from OpenAI and Meta to CoreWeave and a warrant from AMD to OpenAI. Text lists the larger commitments of OpenAI to Microsoft and Amazon.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="798" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Capital and compute commitments, dated</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Amounts as printed in filings and releases, USD. Arrow = direction of money or of the purchase commitment. Not netted.</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<rect x="20.0" y="300.0" width="170.0" height="60.0" rx="14" fill="#f8fafc" stroke="#8c6d1f" stroke-width="3" opacity="1"/>
+<text x="105.0" y="337.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">SoftBank</text>
+<rect x="250.0" y="150.0" width="170.0" height="60.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="335.0" y="187.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">NVIDIA</text>
+<rect x="250.0" y="600.0" width="170.0" height="60.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="335.0" y="637.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">AMD</text>
+<rect x="500.0" y="280.0" width="170.0" height="60.0" rx="14" fill="#f8fafc" stroke="#E69F00" stroke-width="3" opacity="1"/>
+<text x="585.0" y="317.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">OpenAI</text>
+<rect x="500.0" y="470.0" width="170.0" height="60.0" rx="14" fill="#f8fafc" stroke="#E69F00" stroke-width="3" opacity="1"/>
+<text x="585.0" y="507.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Anthropic</text>
+<rect x="830.0" y="150.0" width="170.0" height="60.0" rx="14" fill="#f8fafc" stroke="#56B4E9" stroke-width="3" opacity="1"/>
+<text x="915.0" y="187.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">CoreWeave</text>
+<rect x="830.0" y="250.0" width="170.0" height="60.0" rx="14" fill="#f8fafc" stroke="#009E73" stroke-width="3" opacity="1"/>
+<text x="915.0" y="287.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Amazon</text>
+<rect x="830.0" y="370.0" width="170.0" height="60.0" rx="14" fill="#f8fafc" stroke="#009E73" stroke-width="3" opacity="1"/>
+<text x="915.0" y="407.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Microsoft</text>
+<rect x="1030.0" y="150.0" width="150.0" height="60.0" rx="14" fill="#f8fafc" stroke="#CC79A7" stroke-width="3" opacity="1"/>
+<text x="1105.0" y="187.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="800" fill="#0f172a" text-anchor="middle">Meta</text>
+<rect x="1030.0" y="300.0" width="150.0" height="60.0" rx="14" fill="#f8fafc" stroke="#8c6d1f" stroke-width="3" opacity="1"/>
+<text x="1105.0" y="337.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="800" fill="#0f172a" text-anchor="middle">Blue Owl funds</text>
+<line x1="190.0" y1="330.0" x2="500.0" y2="320.0" stroke="#8c6d1f" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="256.0" y="298.0" width="178.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="345.0" y="315.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#8c6d1f" text-anchor="middle">$30B equity, Mar 2026</text>
+<line x1="395.0" y1="210.0" x2="500.0" y2="300.0" stroke="#0072B2" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="370.8" y="210.5" width="122.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="431.8" y="227.5" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0072B2" text-anchor="middle">$30B, Mar 2026</text>
+<line x1="300.0" y1="210.0" x2="520.0" y2="470.0" stroke="#0072B2" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="321.0" y="271.0" width="90.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="366.0" y="288.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0072B2" text-anchor="middle">up to $10B</text>
+<line x1="420.0" y1="630.0" x2="500.0" y2="335.0" stroke="#0072B2" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ah)"/>
+<rect x="371.0" y="539.2" width="138.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="440.0" y="556.2" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0072B2" text-anchor="middle">warrant, 160M sh</text>
+<line x1="420.0" y1="165.0" x2="830.0" y2="165.0" stroke="#0072B2" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="540.0" y="136.0" width="170.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="625.0" y="153.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0072B2" text-anchor="middle">$2B equity, Jan 2026</text>
+<line x1="830.0" y1="275.0" x2="670.0" y2="295.0" stroke="#009E73" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="705.0" y="258.0" width="90.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="750.0" y="275.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#009E73" text-anchor="middle">up to $50B</text>
+<line x1="830.0" y1="390.0" x2="670.0" y2="330.0" stroke="#009E73" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="705.0" y="367.0" width="90.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="750.0" y="384.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#009E73" text-anchor="middle">$13B, ~27%</text>
+<line x1="830.0" y1="415.0" x2="670.0" y2="495.0" stroke="#009E73" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="709.0" y="464.0" width="82.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="750.0" y="481.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#009E73" text-anchor="middle">up to $5B</text>
+<line x1="585.0" y1="280.0" x2="830.0" y2="190.0" stroke="#E69F00" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ah)"/>
+<rect x="683.0" y="199.0" width="98.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="732.0" y="216.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#E69F00" text-anchor="middle">up to $6.5B</text>
+<line x1="1030.0" y1="180.0" x2="1000.0" y2="180.0" stroke="#CC79A7" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ah)"/>
+<rect x="1010.0" y="163.0" width="10.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="1015.0" y="180.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#CC79A7" text-anchor="middle"></text>
+<text x="960.0" y="135.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#CC79A7" text-anchor="middle">up to $14.2B</text>
+<line x1="1105.0" y1="300.0" x2="1105.0" y2="210.0" stroke="#8c6d1f" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="1020.0" y="242.0" width="170.0" height="24.0" rx="4" fill="#ffffff" stroke="none" stroke-width="0" opacity="1"/>
+<text x="1105.0" y="259.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#8c6d1f" text-anchor="middle">$7.0B cash, Oct 2025</text>
+<text x="600.0" y="700.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="middle">Dashed = purchase commitment or warrant. Solid = capital supplied. Colors: chip makers blue, labs orange, clouds green, neocloud sky, finance brown.</text>
+<text x="600.0" y="724.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="middle">Purchase commitments not drawn: OpenAI to Microsoft Azure $250B (Oct 2025) and to AWS $38B (Nov 2025); Anthropic to Azure $30B (Nov 2025).</text>
+<text x="600.0" y="748.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="middle">NVIDIA also reports $27B of its own multi-year cloud service commitments and $3.5B of lease guarantees (Jan 2026). Sources: Table 4.</text></svg>

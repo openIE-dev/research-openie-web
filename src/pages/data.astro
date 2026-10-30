@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+const R = 'https://github.com/openIE-dev/openie-research-experiments/tree/main/';
+const groups = [
+  { id: 'agency', title: 'Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents', paper: '/papers/agency/', rows: [
+    ['§8.11 preregistered acceptor run', 'agency-run/', 'Preregistrations v1, v2 and second machine; agents, meters, tasks, analysis; episodes and receipts'],
+    ['§8.11 results, run 1', 'agency-run/results/', 'Episode rows and receipts'],
+    ['§8.11.1 and §8.11.2 results', 'agency-run/results2/', 'Second run; the second machine is in results_jetson/ and results_jetson_cyc/'],
+  ]},
+  { id: 'rce', title: 'The Reality Code Engine', paper: '/papers/rce/', rows: [
+    ['§6 repair ladder protocol (L0 and L1)', 'rce/bench/ladder/', 'LADDER.md, PREREG.json with splits, report.py'],
+    ['§5.5 model proposer on the demonstration specification', 'rce/bench/results/', 'llm-proposer-form-demo.form.json: 18 proposals, 13 distinct, 15 not admitted, one rewrite admitted under three names'],
+    ['flowG cross-backend conformance (flowG, a related language project; not cited by the RCE paper)', 'flowg-conformance/', 'Suite, fixtures by tier, recorded 18 of 18 report, CI job'],
+    ['§3.8 dimension runs dim-r2 to dim-r5', 'rce/bench/dimension/', 'PREREG.json with amendments and hash sidecar, RESULTS.md, per-program rows in results/'],
+    ['§3.5, §3.7 and §12.4 surveys of 22, 23 and 24 October 2026', 'rce/surveys/', 'The three design reports, the database survey, the versioning survey (continuous improvement without versions), the new-entrant languages survey (111 languages of 2024 to 2026) and their reading notes'],
+  ]},
+  { id: 'rce-jepa', title: 'RCE-JEPA', paper: '/papers/rce-jepa/', rows: [
+    ['W1 Form corpus v1 and v2, H1 (Form space against source space), the intent mutation score and the cost of a check', 'rce/bench/form-space/', 'PREREG.json with amendments and hash sidecar, CARD.md (dataset card), RESULTS.md, results/forms.jsonl, results/negatives.jsonl, summary.json; generator scripts/corpus.py in openIE-dev/rce'],
+    ['H7 adversarial Forms, fuzzed arm: 560 accepted mutants against five invariants', 'rce/bench/adversarial/', 'PREREG.json with hash sidecar, run.py, RESULTS.md, results/summary.json and violations.jsonl (empty)'],
+    ['H8 determinism: 10,500 streams on six targets', 'rce/bench/determinism/', 'PREREG.json with hash sidecar, RESULTS.md with the workflow run, per-target jobs and limits; generator scripts/xarch-streams.py and the parity workflow in openIE-dev/rce'],
+  ]},
+  { id: 'gates', title: 'Metered Commit Gates', paper: '/papers/gates/', rows: [
+    ['Part I and II', null, 'The gate and cascade use the WCA reference implementation described in the paper. Its board logs are cited in the paper\'s Appendix A.'],
+  ]},
+  { id: 'economics', title: 'Economics companions: AI-Coding Market, Task Satiation, Spell Check', paper: '/papers/ai-coding-market/', rows: [
+    ['Sources', null, 'The projections cite public sources in each paper\'s references.'],
+  ]},
+];
+---
+<Layout title="Data and code | OpenIE Research" description="Where each paper's results live in the public experiments repository.">
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    <h1 class="font-display text-3xl text-brand-white">Data and code</h1>
+    <p class="mt-4 font-body text-sm text-brand-slate leading-relaxed">The reproducible material for these papers is in <a href="https://github.com/openIE-dev/openie-research-experiments">github.com/openIE-dev/openie-research-experiments</a>: preregistrations with their SHA-256, scripts, results, receipts, a checksum file for every file, and pinned references for large corpora (CORPORA.md). Code is Apache-2.0 and data is CC BY 4.0. Energy labels: est_j is an estimate, reported_j an operating-system or on-chip counter, measured_j a wall or shunt meter, empty in every result.</p>
+    {groups.map((g) => (
+      <section id={g.id} class="mt-10">
+        <h2 class="font-display text-xl text-brand-white"><a href={g.paper}>{g.title}</a></h2>
+        <table class="mt-3 w-full font-body text-sm text-brand-slate">
+          <thead><tr><th class="text-left pr-4">Result</th><th class="text-left pr-4">Repository path</th><th class="text-left">Contents</th></tr></thead>
+          <tbody>{g.rows.map(([r, p, c]) => (<tr><td class="pr-4 py-1 align-top">{r}</td><td class="pr-4 py-1 align-top">{p ? <a href={R + p}><code>{p}</code></a> : 'n/a'}</td><td class="py-1 align-top">{c}</td></tr>))}</tbody>
+        </table>
+      </section>
+    ))}
+  </main>
+</Layout>

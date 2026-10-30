@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="t d"><title id="t">Spell check: a separate price, then bundled at zero</title><desc id="d">Timeline on a log price axis. WordCheck sold as a standalone checker at 200 dollars in January 1981. WordPerfect 3.0 with a spell command was 495 dollars in October 1983, and Word 1.0 without a checker 395 dollars. Grammatik II was 89 dollars in 1988 and Grammatik III 99 dollars in 1989. Below, a band of items with no separate price: Word 2.0 bundling a purchased checker, WordPerfect 5.2 including Grammatik 5 in 1992, and the Hunspell library at a licence price of zero.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="638" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Spell check: a separate price, then bundled at zero</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Dated prices as printed by the sources in Section 2.11; log scale. Bundled items have no separate price.</text>
+<rect x="1030.5" y="26" width="129.5" height="34" rx="17" fill="none" stroke="#0072B2" stroke-width="2"/>
+<text x="1095.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#0072B2" text-anchor="middle">Data figure</text>
+<line x1="120.0" y1="440.0" x2="1100.0" y2="440.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="110.0" y="445.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">$10</text>
+<line x1="120.0" y1="368.4" x2="1100.0" y2="368.4" stroke="#e2e8f0" stroke-width="1"/>
+<text x="110.0" y="373.4" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">$30</text>
+<line x1="120.0" y1="290.0" x2="1100.0" y2="290.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="110.0" y="295.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">$100</text>
+<line x1="120.0" y1="218.4" x2="1100.0" y2="218.4" stroke="#e2e8f0" stroke-width="1"/>
+<text x="110.0" y="223.4" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">$300</text>
+<line x1="120.0" y1="140.0" x2="1100.0" y2="140.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="110.0" y="145.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="end">$1000</text>
+<text x="164.5" y="560.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">1980</text>
+<text x="342.7" y="560.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">1984</text>
+<text x="520.9" y="560.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">1988</text>
+<text x="699.1" y="560.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">1992</text>
+<text x="877.3" y="560.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">1996</text>
+<text x="1055.5" y="560.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">2000</text>
+<circle cx="209.1" cy="244.8" r="10" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+<text x="223.1" y="268.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">WordCheck, standalone ($200)</text>
+<rect x="323.8" y="175.8" width="20.0" height="20.0" rx="0" fill="#56B4E9" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<text x="347.8" y="173.8" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">WordPerfect 3.0 with a spell command ($495)</text>
+<rect x="323.8" y="190.5" width="20.0" height="20.0" rx="0" fill="#94a3b8" stroke="#ffffff" stroke-width="2" opacity="1"/>
+<text x="347.8" y="206.5" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">Word 1.0, no checker ($395)</text>
+<circle cx="534.3" cy="297.6" r="10" fill="#E69F00" stroke="#ffffff" stroke-width="2"/>
+<text x="520.3" y="302.6" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="end">Grammatik II ($89)</text>
+<circle cx="605.5" cy="290.7" r="10" fill="#E69F00" stroke="#ffffff" stroke-width="2"/>
+<text x="619.5" y="314.7" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#0f172a" text-anchor="start">Grammatik III ($99)</text>
+<rect x="120.0" y="470.0" width="980.0" height="54.0" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" opacity="1"/>
+<text x="132.0" y="500.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#475569" text-anchor="start">no separate price</text>
+<path d="M409.54545454545456 484.0 L420.54545454545456 497 L409.54545454545456 510.0 L398.54545454545456 497 Z" stroke="#ffffff" stroke-width="2" fill="#009E73" fill-opacity="1" stroke-linejoin="round"/>
+<text x="409.5" y="462.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#009E73" text-anchor="middle">Word 2.0 bundles a purchased checker</text>
+<path d="M739.1818181818222 484.0 L750.1818181818222 497 L739.1818181818222 510.0 L728.1818181818222 497 Z" stroke="#ffffff" stroke-width="2" fill="#009E73" fill-opacity="1" stroke-linejoin="round"/>
+<text x="739.2" y="462.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#009E73" text-anchor="middle">WordPerfect 5.2 includes Grammatik 5</text>
+<path d="M988.6363636363636 484.0 L999.6363636363636 497 L988.6363636363636 510.0 L977.6363636363636 497 Z" stroke="#ffffff" stroke-width="2" fill="#009E73" fill-opacity="1" stroke-linejoin="round"/>
+<text x="988.6" y="462.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#009E73" text-anchor="middle">Hunspell library (undated here), $0</text>
+<text x="120.0" y="600.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">Word 2.0 is placed by Brodie’s account (Section 2.11); its year is not printed on that tape. Hunspell is placed at the right edge, undated; its README publishes no prior retail schedule.</text></svg>

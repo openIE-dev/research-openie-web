@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
-# Generate study PDFs into public/pdfs/ using pandoc + weasyprint.
+# Generate study PDFs into public/pdfs/.
+# Pandoc MathML does not draw KaTeX, so each PDF is the built paper
+# article (dist/papers/<id>/index.html, or dist/products/<id>/ for the
+# product white papers) plus the existing paper header.
+# Run pnpm build first.
+#
+# Math layout: the built HTML is KaTeX markup from the katex copy that
+# rehype-katex bundles. Its stylesheet must come from that same copy; a
+# stylesheet from a different KaTeX version misplaces fractions, sub- and
+# superscripts. Pages are printed with headless Google Chrome, which lays
+# out KaTeX HTML (struts, vlists, inline-block alignment) correctly.
+# WeasyPrint is the fallback when Chrome is not installed.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$ROOT/public/pdfs"
@@ -33,93 +44,231 @@ blockquote { border-left: 3px solid #f59e0b; margin: 0.75rem 0; padding: 0.15rem
   margin: 0.75rem 0 1.25rem; font-size: 0.88rem;
 }
 hr { border: 0; border-top: 1px solid #e5e7eb; margin: 1.2rem 0; }
+html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.katex-display { margin: 0.7rem 0; overflow: visible; page-break-inside: avoid; break-inside: avoid; }
+.katex { font-size: 1.1em; }
+table .katex { font-size: 1em; }
+p, li, td, th, blockquote { overflow-wrap: break-word; }
+code, a { overflow-wrap: anywhere; }
+td, th { hyphens: auto; -webkit-hyphens: auto; }
+code, pre, a, .katex { hyphens: manual; -webkit-hyphens: manual; }
+table:has(th:nth-child(6)) { font-size: 0.8em; }
+img, svg, video { max-width: 100%; height: auto; }
 CSS
+
+CHROME="${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
+
+# KaTeX stylesheet matching the katex version rehype-katex renders with.
+KATEX_CSS="$(python3 - "$ROOT" << 'PY'
+import os, sys
+from pathlib import Path
+root = Path(sys.argv[1])
+cands = []
+rk = root / "node_modules" / "rehype-katex"
+if rk.exists():
+    cands.append(Path(os.path.realpath(rk)).parent / "katex" / "dist" / "katex.min.css")
+cands.append(root / "node_modules" / "katex" / "dist" / "katex.min.css")
+for c in cands:
+    if c.is_file():
+        print(c)
+        break
+PY
+)"
+echo "KaTeX stylesheet: $KATEX_CSS"
 
 gen_one() {
   local id="$1"
-  local src="$ROOT/src/content/papers/${id}.md"
-  local tmp="$ROOT/.pdf-build/${id}.md"
+  local dir="${2:-papers}"
+  local src="$ROOT/src/content/${dir}/${id}.md"
+  local built="$ROOT/dist/${dir}/${id}/index.html"
   local html="$ROOT/.pdf-build/${id}.html"
   local pdf="$OUT/${id}.pdf"
+  local katex_css="$KATEX_CSS"
 
-  python3 - "$src" "$tmp" "$id" << 'PY'
-import sys, re
-src, tmp, id_ = sys.argv[1], sys.argv[2], sys.argv[3]
-raw = open(src).read()
-# strip Astro YAML frontmatter
-if raw.startswith('---'):
-    end = raw.find('\n---', 3)
+  if [[ ! -f "$built" ]]; then
+    echo "missing built page $built; run pnpm build first" >&2
+    exit 1
+  fi
+  if [[ ! -f "$katex_css" ]]; then
+    echo "missing $katex_css" >&2
+    exit 1
+  fi
+
+  python3 - "$src" "$built" "$html" "$id" "$CSS" "$katex_css" "$dir" << 'PY'
+import html as html_lib
+import re
+import sys
+from pathlib import Path
+
+src, built, out, id_, css, katex_css, dir_ = sys.argv[1:]
+raw = Path(src).read_text()
+fm = ""
+if raw.startswith("---"):
+    end = raw.find("\n---", 3)
     if end != -1:
         fm = raw[3:end]
-        body = raw[end+4:].lstrip('\n')
-    else:
-        fm, body = '', raw
-else:
-    fm, body = '', raw
 
-def fm_get(key, default=''):
-    m = re.search(rf'^{re.escape(key)}:\s*("?)(.*?)\1\s*$', fm, re.M)
+def fm_get(key, default=""):
+    pattern = "^" + re.escape(key) + r":\s*(\"?)(.*?)\1\s*$"
+    m = re.search(pattern, fm, re.M)
     if not m:
         return default
-    return m.group(2)
+    return m.group(2).replace('\\"', '"')
 
-title = fm_get('title', id_)
-deck = fm_get('deck', '')
-author = fm_get('author', 'David Charlot · Open Interface Engineering')
-status = fm_get('status', 'Research study · draft')
+title = fm_get("title", id_)
+deck = fm_get("deck", "")
+author = fm_get("author", "David Charlot, Open Interface Engineering")
+status = fm_get("status", "Research study, draft")
 
-header = f'''# {title}
+page = Path(built).read_text()
+m = re.search(r'<div class="paper-prose[^"]*">', page)
+if not m:
+    raise SystemExit("paper-prose not found in " + built)
+void = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+tag_re = re.compile(r"<!--.*?-->|<!\[CDATA\[.*?\]\]>|<[^>]+>", re.S)
+depth = 1
+end_at = None
+for tm in tag_re.finditer(page, m.end()):
+    t = tm.group()
+    if t.startswith("<!--") or t.startswith("<!"):
+        continue
+    mm = re.match(r"</?\s*([a-zA-Z0-9]+)", t)
+    if not mm:
+        continue
+    name = mm.group(1).lower()
+    if t.startswith("</"):
+        depth -= 1
+        if depth == 0:
+            end_at = tm.start()
+            break
+    elif not (t.endswith("/>") or name in void):
+        depth += 1
+if end_at is None:
+    raise SystemExit("paper-prose did not close in " + built)
+body = page[m.end():end_at]
+body = re.sub(r"\s*<h1\b[^>]*>.*?</h1>", "", body, count=1, flags=re.S)
+# Root-relative images (figures) resolve against public/ for the print.
+body = body.replace('src="/', 'src="file://' + str(Path(src).resolve().parents[3] / "public") + '/')
+body = body.replace('srcset="/', 'srcset="file://' + str(Path(src).resolve().parents[3] / "public") + '/')
 
-<div class="meta">
-<strong>{author}</strong><br/>
-{status} · OpenIE research.openie.dev<br/>
-https://research.openie.dev/papers/{id_}/ · PDF https://research.openie.dev/pdfs/{id_}.pdf
-</div>
+if id_ in ("spellcheck", "ai-coding-market", "interface-economics"):
+    measure = ""
+elif id_ == "ai-reads-human":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research topic, work in progress, not a journal final.\n"
+        "Time and token counts are measured on one virtualised machine. No joules were measured; model energy figures are other authors' measurements.\n"
+        "</div>\n"
+    )
+elif id_ == "rce-jepa":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research paper, open topic, not a journal final.\n"
+        "No learned proposer has been trained; the Phase 0 results are checker-only measurements with 0 model calls. No joules were measured.\n"
+        "</div>\n"
+    )
+elif id_ == "rce":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research paper, not a journal final.\n"
+        "No energy figure for RCE is reported. est_j, reported_j and measured_j are defined in Section 1; measured_j is reserved for a wall meter and is empty.\n"
+        "No FPGA board result in this paper. No fabricated citations.\n"
+        "</div>\n"
+    )
+elif id_ == "agency":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research paper, not a journal final.\n"
+        "Theorems, experiments and positions are cited from their sources. Estimates are never measured_j.\n"
+        "No board power is claimed. No fabricated citations.\n"
+        "</div>\n"
+    )
+elif id_ == "gates":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research paper, not a journal final.\n"
+        "One board result: AMD Kria KV260 readings from the onboard INA260, board level, not core rail (Section I.3.7).\n"
+        "All other energy figures are OpCounter analytical estimates, not board power. No fabricated citations.\n"
+        "</div>\n"
+    )
+elif id_ == "three-body":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research paper, not a journal final.\n"
+        "Theory, propositions and protocols. No new energy figure is reported; RCE results are cited from the RCE paper.\n"
+        "No hardware result is claimed. No fabricated citations.\n"
+        "</div>\n"
+    )
+elif dir_ == "products":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Product white paper, kept apart from the research catalog. Not a journal final.\n"
+        "Energy figures from the software reference are OpCounter analytical estimates, not board power.\n"
+        "We have not synthesized or metered an FPGA board for this white paper. No fabricated citations.\n"
+        "</div>\n"
+    )
+else:
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research paper, not a journal final.\n"
+        "Energy figures from the software reference are OpCounter analytical estimates, not board power.\n"
+        "We have not synthesized or metered an FPGA board. No fabricated citations.\n"
+        "</div>\n"
+    )
 
-<div class="measurement">
-<strong>Measurement.</strong> Research study, not a journal final.
-Energy figures from the software reference are OpCounter analytical estimates, not board power.
-We have not synthesized or metered an FPGA board. No fabricated citations.
-</div>
+header = (
+    "<h1>" + html_lib.escape(title) + "</h1>\n"
+    '<div class="meta">\n<strong>' + html_lib.escape(author) + "</strong><br/>\n"
+    + html_lib.escape(status) + " · OpenIE research.openie.dev<br/>\n"
+    + "https://research.openie.dev/" + dir_ + "/" + html_lib.escape(id_) + "/ · PDF https://research.openie.dev/pdfs/" + html_lib.escape(id_) + ".pdf\n"
+    + "</div>\n"
+    + measure
+    + "<blockquote>" + html_lib.escape(deck) + "</blockquote>\n"
+)
 
-> {deck}
-
-'''
-# Drop the study's own H1 if it duplicates title
-body2 = body
-lines = body2.splitlines()
-if lines and lines[0].startswith('# '):
-    body2 = '\n'.join(lines[1:]).lstrip('\n')
-
-open(tmp, 'w').write(header + body2)
-print(f'prepared {tmp}')
+doc = (
+    "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\"/>\n<title>"
+    + html_lib.escape(title)
+    + "</title>\n<link rel=\"stylesheet\" href=\"" + katex_css + "\"/>\n"
+    + "<link rel=\"stylesheet\" href=\"" + css + "\"/>\n</head>\n<body>\n"
+    + header
+    + body
+    + "\n</body>\n</html>\n"
+)
+Path(out).write_text(doc)
+print("prepared " + out)
 PY
 
-  /opt/homebrew/bin/pandoc "$tmp" \
-    -o "$html" \
-    --standalone \
-    --from markdown+pipe_tables+gfm_auto_identifiers \
-    --metadata title="$id" \
-    --css="$CSS" \
-    -V lang=en
-
-  # Inline CSS for weasyprint reliability: pandoc --css links; weasyprint needs file path
-  /opt/homebrew/bin/pandoc "$tmp" \
-    -o "$pdf" \
-    --pdf-engine=weasyprint \
-    --from markdown+pipe_tables \
-    --css="$CSS" \
-    --metadata title="$id" \
-    2>"$ROOT/.pdf-build/${id}.weasy.log" || {
-      echo "weasyprint via pandoc failed for $id; trying HTML→weasyprint"
-      /opt/homebrew/bin/weasyprint "$html" "$pdf" 2>>"$ROOT/.pdf-build/${id}.weasy.log"
-    }
-
+  if [[ -x "$CHROME" ]]; then
+    "$CHROME" --headless=new --disable-gpu --no-pdf-header-footer \
+      --allow-file-access-from-files --run-all-compositor-stages-before-draw \
+      --virtual-time-budget=15000 --print-to-pdf="$pdf" "file://$html" \
+      2> "$ROOT/.pdf-build/${id}.chrome.log" || { cat "$ROOT/.pdf-build/${id}.chrome.log" >&2; exit 1; }
+  else
+    echo "Chrome not found at $CHROME; falling back to weasyprint" >&2
+    /opt/homebrew/bin/weasyprint "$html" "$pdf"
+  fi
   ls -la "$pdf"
   file "$pdf"
 }
 
-gen_one ni
+
+gen_one agency
+gen_one gates
 gen_one satiation
-gen_one mol
+gen_one spellcheck
+gen_one rce
+gen_one rce-jepa
+gen_one three-body
+gen_one game-engines
+gen_one latency
+gen_one interface-economics
+gen_one ai-coding-market
+gen_one ai-reads-human
+cp public/pdfs/ai-coding-market.pdf public/pdfs/rce-economics.pdf
+gen_one mei products
+gen_one jouleos products
+# Earlier addresses: Notational Intelligence and Mixture of Limits are Parts I and II of gates.
+cp "$OUT/gates.pdf" "$OUT/ni.pdf"
+cp "$OUT/gates.pdf" "$OUT/mol.pdf"
 echo 'PDF generation complete'

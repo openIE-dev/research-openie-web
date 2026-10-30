@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="t d"><title id="t">Models propose, checkers decide</title><desc id="d">Diagram. Four gear boxes stacked from cheapest to costliest: G0 Lookup, a shared handler library keyed by SHA-256 shape hash; G1 Rules, guarded repair templates and schema-derived validators; G2 Synthesis, enumeration over the handler grammar, solvers and e-graphs; G3 to G5 Models, a typed decision model, a local small model and a remote model, marked as proposers only. Each gear sends its candidate to one gate with five checks: replay of recorded inputs, a shadow run with a coverage bound, an output schema check, the Kani proof certificate, and for rewrites a randomized check then a Z3 proof. A pass promotes the candidate to a stored handler, which feeds G0; a fail is logged with its counterexample and escalates to the next gear.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/></marker></defs><rect x="1" y="1" width="1198" height="798" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<text x="40.0" y="58.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a" text-anchor="start">Models propose, checkers decide</text>
+<text x="40.0" y="92.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#475569" text-anchor="start">Gears run in order of cost; the first candidate that passes the gate closes the task (Sections 4.2 and 4.3).</text>
+<rect x="1072.5" y="26" width="87.5" height="34" rx="17" fill="none" stroke="#CC79A7" stroke-width="2"/>
+<text x="1116.2" y="49.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#CC79A7" text-anchor="middle">Diagram</text>
+<rect x="40.0" y="140.0" width="380.0" height="100.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="60.0" y="176.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="21" font-weight="800" fill="#0f172a" text-anchor="start">G0  Lookup</text>
+<text x="60.0" y="202.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">shared handler library keyed by SHA-256 shape hash</text>
+<text x="60.0" y="222.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start"></text>
+<line x1="422.0" y1="190.0" x2="500.0" y2="190.0" stroke="#0f172a" stroke-width="3" marker-end="url(#ah)"/>
+<path d="M200 242 L200 268" stroke="#D55E00" stroke-width="3" fill="none" fill-opacity="1" stroke-dasharray="6 5" marker-end="url(#ah)" stroke-linejoin="round"/>
+<text x="212.0" y="260.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#D55E00" text-anchor="start">no pass: next gear</text>
+<rect x="40.0" y="270.0" width="380.0" height="100.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="60.0" y="306.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="21" font-weight="800" fill="#0f172a" text-anchor="start">G1  Rules</text>
+<text x="60.0" y="332.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">guarded repair templates, schema-derived validators</text>
+<text x="60.0" y="352.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start"></text>
+<line x1="422.0" y1="320.0" x2="500.0" y2="320.0" stroke="#0f172a" stroke-width="3" marker-end="url(#ah)"/>
+<path d="M200 372 L200 398" stroke="#D55E00" stroke-width="3" fill="none" fill-opacity="1" stroke-dasharray="6 5" marker-end="url(#ah)" stroke-linejoin="round"/>
+<text x="212.0" y="390.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#D55E00" text-anchor="start">no pass: next gear</text>
+<rect x="40.0" y="400.0" width="380.0" height="100.0" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3" opacity="1"/>
+<text x="60.0" y="436.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="21" font-weight="800" fill="#0f172a" text-anchor="start">G2  Synthesis</text>
+<text x="60.0" y="462.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">enumeration over the handler grammar, solvers</text>
+<text x="60.0" y="482.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">e-graphs</text>
+<line x1="422.0" y1="450.0" x2="500.0" y2="450.0" stroke="#0f172a" stroke-width="3" marker-end="url(#ah)"/>
+<path d="M200 502 L200 528" stroke="#D55E00" stroke-width="3" fill="none" fill-opacity="1" stroke-dasharray="6 5" marker-end="url(#ah)" stroke-linejoin="round"/>
+<text x="212.0" y="520.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#D55E00" text-anchor="start">no pass: next gear</text>
+<rect x="40.0" y="530.0" width="380.0" height="100.0" rx="14" fill="#f8fafc" stroke="#E69F00" stroke-width="3" opacity="1"/>
+<text x="60.0" y="566.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="21" font-weight="800" fill="#0f172a" text-anchor="start">G3 to G5  Models</text>
+<text x="60.0" y="592.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">typed decision model, local small model</text>
+<text x="60.0" y="612.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">remote model, last</text>
+<line x1="422.0" y1="580.0" x2="500.0" y2="580.0" stroke="#0f172a" stroke-width="3" marker-end="url(#ah)"/>
+<text x="240.0" y="650.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#E69F00" text-anchor="middle">proposer only: a model may propose, not admit</text>
+<rect x="510.0" y="140.0" width="340.0" height="490.0" rx="16" fill="#ffffff" stroke="#D55E00" stroke-width="4" opacity="1"/>
+<text x="680.0" y="180.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#D55E00" text-anchor="middle">The gate</text>
+<text x="680.0" y="204.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#475569" text-anchor="middle">same checks for every gear</text>
+<circle cx="540.0" cy="240.0" r="12" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="540.0" y="245.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">1</text>
+<text x="562.0" y="245.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">replay the node's recorded inputs</text>
+<circle cx="540.0" cy="316.0" r="12" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="540.0" y="321.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">2</text>
+<text x="562.0" y="321.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">shadow run on fresh samples with</text>
+<text x="562.0" y="343.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">a coverage bound (rule of three)</text>
+<circle cx="540.0" cy="392.0" r="12" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="540.0" y="397.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">3</text>
+<text x="562.0" y="397.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">output schema check</text>
+<circle cx="540.0" cy="468.0" r="12" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="540.0" y="473.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">4</text>
+<text x="562.0" y="473.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">proof certificate:</text>
+<text x="562.0" y="495.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Kani harnesses (Sections 5.3 and 5.4)</text>
+<circle cx="540.0" cy="544.0" r="12" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+<text x="540.0" y="549.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">5</text>
+<text x="562.0" y="549.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0f172a" text-anchor="start">rewrites:</text>
+<text x="562.0" y="571.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="start">randomized check, then a Z3 proof</text>
+<rect x="930.0" y="160.0" width="230.0" height="190.0" rx="14" fill="#f8fafc" stroke="#009E73" stroke-width="3" opacity="1"/>
+<text x="1045.0" y="190.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Pass: promote</text>
+<text x="1045.0" y="216.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">stored as a handler;</text>
+<text x="1045.0" y="238.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">the same shape</text>
+<text x="1045.0" y="260.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">closes at G0</text>
+<text x="1045.0" y="282.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">next time</text>
+<rect x="930.0" y="410.0" width="230.0" height="190.0" rx="14" fill="#f8fafc" stroke="#D55E00" stroke-width="3" opacity="1"/>
+<text x="1045.0" y="440.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">Fail: requires change</text>
+<text x="1045.0" y="466.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">logged with its</text>
+<text x="1045.0" y="488.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">counterexample;</text>
+<text x="1045.0" y="510.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">escalate to the</text>
+<text x="1045.0" y="532.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">next gear</text>
+<line x1="852.0" y1="255.0" x2="924.0" y2="255.0" stroke="#009E73" stroke-width="3" marker-end="url(#ah)"/>
+<line x1="852.0" y1="505.0" x2="924.0" y2="505.0" stroke="#D55E00" stroke-width="3" marker-end="url(#ah)"/>
+<path d="M1045 156 L1045 120 L230 120 L230 134" stroke="#009E73" stroke-width="2.5" fill="none" fill-opacity="1" stroke-dasharray="4 6" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="560.0" y="108.0" width="220.0" height="24.0" rx="0" fill="#ffffff" stroke="none" stroke-width="2" opacity="1"/>
+<text x="670.0" y="126.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#009E73" text-anchor="middle">promotion feeds G0</text>
+<text x="40.0" y="700.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Every promotion, required change, deferral and install is an entry in the SHA-256 chained log, with a receipt (Figure 5).</text>
+<text x="40.0" y="724.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">The Kani harnesses and the SMT encoding are fixed: promotion changes handlers and rewrites, never the checker.</text>
+<text x="40.0" y="748.0" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="start">Gear names as in Section 4.2: G0 Lookup, G1 Rules, G2 Synthesis, G3 to G5 Models.</text></svg>

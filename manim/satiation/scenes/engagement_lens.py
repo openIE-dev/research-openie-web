@@ -1,4 +1,4 @@
-"""sat-inf-01 — Engagement KPI vs economic-done lenses.
+"""sat-inf-01 — Engagement KPI vs Economic Reality of Satiation lenses.
 
 Two lenses on the same loop. Engagement can rise after completeness.
 Illustrative only. No meters. No Epoch curve points.
@@ -47,7 +47,7 @@ class EngagementVsDone(Scene):
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.18)
         left_lines.next_to(left_h, DOWN, buff=0.35)
 
-        right_h = Text("Economic done", font_size=24, color="#34d399", weight=BOLD)
+        right_h = Text("Economic Reality of Satiation", font_size=24, color="#34d399", weight=BOLD)
         right_h.next_to(right.get_top(), DOWN, buff=0.25)
         right_lines = VGroup(
             Text("written completeness C", font_size=18, color="#e2e8f0"),
