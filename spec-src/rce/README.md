@@ -19,7 +19,10 @@ programs that require change are in `spec/examples/change/{syntax,types,admissio
 (earlier `reject/`, `ill_typed/` and `inadmissible/`), `tree-sitter/` is at the
 repository root, and the browser checker reports a step whose event does not
 apply as `kept` (earlier `refused`); `gen.mjs` and `public/rce/spec/notebook.js`
-read both layouts. The current `spec.json` is generated from 8ce91cea.
+read both layouts. The current `spec.json` is generated from 0c015c43, with
+`checker-wasm/pkg` rebuilt from that commit (`wasm-pack build --release --target web
+--out-dir pkg`, then `wasm-opt -O` from binaryen 117), because the `pkg` committed
+there predates its last checker change.
 
 Then copy `checker-wasm/pkg/rce_spec_check_wasm.js` and
 `rce_spec_check_wasm_bg.wasm` into `public/rce/spec/wasm/`.

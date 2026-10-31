@@ -1,24 +1,24 @@
 {
-  "source": "scripts/claim-counts.py in openIE-dev/rce, run on public main",
+  "source": "scripts/claim-counts.py in openIE-dev/rce, run on public main (with RCE_SPEC_CHECK set to rce-spec-check built from the same commit); the Lean audit is scripts/lean-audit.sh at the same commit",
   "repo": "https://github.com/openIE-dev/rce",
-  "commit": "e416fd0",
-  "read_on": "2026-10-17",
+  "commit": "0c015c43",
+  "read_on": "2026-10-31",
   "spec_document_draft": "0.9",
   "spec_notebook_draft": "0.9",
-  "spec_notebook_commit": "8ce91cea",
-  "note_on_0_9": "Draft 0.9 is on public main since cdae5cf. It specifies Appendix F; the reference checker implements part of it, and a construct it does not implement requires change as reserved, not implemented (W-RES-1, F.12). Theorems T42 to T56 are stated and unproved. The interactive notebook on this site (spec-src/rce/spec.json) shows the draft 0.9 document generated from public main at 8ce91cea on 29 October 2026, with the browser checker built from the same commit; its example counts are read from the notebook data, and the other counts in this file were read at e416fd0.",
-  "theorems_stated": "T1 to T56",
-  "lean_modules": 58,
-  "lean_theorem_and_lemma_declarations_in_source": 1116,
-  "lean_audit_theorem_constants": 4877,
+  "spec_notebook_commit": "0c015c43",
+  "note_on_0_9": "Draft 0.9 is on public main since cdae5cf. It specifies Appendix F; the reference checker implements part of it, and a construct it does not implement requires change as reserved, not implemented (W-RES-1, F.12). Theorems T42 to T56 are stated in Appendix F.9; T48, T51 and T53 are proved of models and the other twelve are unproved. The interactive notebook on this site (spec-src/rce/spec.json) shows the draft 0.9 document generated from public main at 0c015c43 (30 October 2026), with the browser checker built from the same commit; its example counts are read from the notebook data, and the other counts in this file were read at 0c015c43.",
+  "theorems_stated": "T1 to T62",
+  "lean_modules": 62,
+  "lean_theorem_and_lemma_declarations_in_source": 1155,
+  "lean_audit_theorem_constants": 5055,
   "lean_audit_definition": "The audit (scripts/lean-audit.sh, audit/Audit.lean) counts every theorem constant in the kernel environment, including constants the elaborator generates, so it is larger than the number of theorem and lemma declarations written in source.",
-  "examples_total": 59,
-  "examples_valid_top_level": 57,
+  "examples_total": 62,
+  "examples_valid_top_level": 60,
   "examples_in_packages": 2,
   "reject_examples": 12,
-  "ill_typed_examples": 48,
+  "ill_typed_examples": 49,
   "inadmissible_examples": 16,
-  "checker_test_functions": 385,
+  "checker_test_functions": 581,
   "canonical_json_vectors": 77,
   "emit_targets_in_reference_checker": [
     "rust",
@@ -26,11 +26,18 @@
     "js",
     "scala"
   ],
-  "theorems_stated_unproved_in_0_9": "T42 to T56",
+  "theorems_stated_unproved_in_0_9": "T42 to T56 except T48, T51 and T53 (proved of models); also T60, and parts of T57, T59 and T61 (spec/book/10-theorems.md)",
   "grammar_conflicts": {
     "section_3": 0,
     "versions_0_6_and_0_7": 0
   },
-  "lean_declaration_and_audit_counts_commit": "e416fd0",
-  "lean_declaration_and_audit_counts_note": "Rerun at public e416fd0 on 17 October 2026: lake build completes over the 58 files of spec/lean/RCE/ (81 with subdirectories), audit reports 4,877 theorem constants with standard axioms only, no sorry. Declarations are the lines starting with theorem or lemma (with optional attributes, private or protected) in all spec/lean .lean files. At 4304048 the same counts were 885 declarations, 2,949 audit constants and 46 modules."
+  "lean_declaration_and_audit_counts_commit": "0c015c43",
+  "lean_declaration_and_audit_counts_note": "Rerun at public 0c015c43 on 31 October 2026 with Lean 4.12.0: lake build completes over the 62 files of spec/lean/RCE/ (85 with subdirectories), audit reports 5,055 theorem constants with standard axioms only, no sorry. Declarations are the lines starting with theorem or lemma (with optional attributes, private or protected) in all spec/lean .lean files. At e416fd0 the same counts were 1,116 declarations, 4,877 audit constants and 58 modules; at 4304048, 885 declarations, 2,949 audit constants and 46 modules.",
+  "spec_check": {
+    "all_ok": true,
+    "core_grammar": "100 rules, 491 productions, 974 states, 0 conflicts",
+    "grammar_with_appendix_c": "114 rules, 560 productions, 1152 states, 0 conflicts",
+    "grammar_examples": "62/62 valid accepted, 12/12 syntax examples require change",
+    "checker": "62/62 accepted, 12/12 and 65/65 require change (16 of them inadmissible)"
+  }
 }
