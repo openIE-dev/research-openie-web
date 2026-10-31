@@ -43,7 +43,7 @@ const platforms = [
     <pre class="mt-3 p-3 overflow-x-auto font-mono text-xs"><code>curl -fsSL https://raw.githubusercontent.com/openIE-dev/rce/main/scripts/install.sh | sh</code></pre>
     <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed">
       The script downloads the archive for your platform from the release <code>rce-latest</code>, checks it against the release's <code>SHA256SUMS</code> (SHA-256 is the Secure Hash Algorithm with a 256-bit digest) and installs nothing if the hash differs.
-      It installs <code>rce</code> into <code>~/.local/bin</code> (set <code>RCE_INSTALL_DIR</code> to choose another directory) and runs <code>rce --version</code>, which prints the commit the binary was built from.
+      It installs <code>rce</code> into <code>~/.local/bin</code> (set <code>RCE_INSTALL_DIR</code> to choose another directory) and runs <code>rce version</code>, which prints the commit the binary was built from.
       To pin one commit, pass its first 12 hexadecimal digits: <code>sh install.sh 0c015c431031</code>.
     </p>
 
@@ -69,13 +69,13 @@ const platforms = [
     <p class="mt-4 font-body text-sm text-brand-slate leading-relaxed">To check an archive by hand, download it and <code>SHA256SUMS</code> into one folder, then:</p>
     <pre class="mt-2 p-3 overflow-x-auto font-mono text-xs"><code>sha256sum -c SHA256SUMS --ignore-missing     # Linux
 shasum -a 256 -c SHA256SUMS --ignore-missing # macOS
-tar xzf rce-linux-x86_64.tar.gz &amp;&amp; ./rce/rce --version</code></pre>
+tar xzf rce-linux-x86_64.tar.gz &amp;&amp; ./rce/rce version</code></pre>
 
     <h2 class="mt-14 text-2xl text-brand-white">Container image</h2>
     <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed">
       The same release builds a public container image, <code>ghcr.io/openie-dev/rce</code>, tagged <code>latest</code> and with the full commit hash for pinning. It runs <code>rce</code> as an unprivileged user, with the working directory <code>/srv</code> and the volume <code>/data</code>.
     </p>
-    <pre class="mt-3 p-3 overflow-x-auto font-mono text-xs"><code>docker run --rm ghcr.io/openie-dev/rce:latest --version</code></pre>
+    <pre class="mt-3 p-3 overflow-x-auto font-mono text-xs"><code>docker run --rm ghcr.io/openie-dev/rce:latest version</code></pre>
 
     <h2 class="mt-14 text-2xl text-brand-white">Run a program in production</h2>
     <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed">
@@ -91,7 +91,7 @@ tar xzf rce-linux-x86_64.tar.gz &amp;&amp; ./rce/rce --version</code></pre>
     <pre class="mt-3 p-3 overflow-x-auto font-mono text-xs"><code>git clone https://github.com/openIE-dev/rce
 cd rce/spec/checker
 cargo build --release --bin rce
-./target/release/rce --version</code></pre>
+./target/release/rce version</code></pre>
     <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed">
       The repository's README lists the other checks: the specification check (<code>rce-spec-check</code>), the tests, the Lean proofs and the conformance suite.
     </p>
