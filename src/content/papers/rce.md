@@ -367,6 +367,8 @@ Each gear is tried only when the gear below it does not pass the gate. That orde
 | G2 Synthesis | Enumeration over the handler grammar, solvers and e-graphs | Sketching, SyGuS, egg [27, 9, 12] |
 | G3 to G5 Models | A typed decision model, a local small model, then a remote model, last | Model cascades [28] |
 
+The order follows one principle: the first rule of automation is having a manual process that works. A model is worth adding only on top of a manual variant of the task, or a deterministic automated variant, that already works. So the exact gears G0 to G2 run first, and a model acts only on the residual they leave open, proposing edits that the same gate judges. Reducing what a stochastic model is required to do makes its action space smaller, and so easier to master. The public form of this ladder is being built now, on the branch `claude/proposer-ladder` of [openIE-dev/rce](https://github.com/openIE-dev/rce), with its registration under `rce/bench/ladder` in [openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments); no result from it exists yet.
+
 ### 4.3 The gate
 
 A candidate is promoted only when it passes the gate. The gate replays the node's recorded inputs, runs the candidate in shadow on fresh samples with a coverage bound (the rule of three at a declared error budget), checks the output schema, and requires the proof certificate of Section 5. A candidate that does not pass is logged with its counterexample.
@@ -622,8 +624,8 @@ Each item has its protocol named.
 | T9-F: the engine's Form compiler (`rce form`) and its five targets (Rust, WebAssembly, Python, XState, SCXML) printing the reference trace on the edge and seeded events of an eleven-operator specification | §3.7 | A differential test of the public emitters on registered edge and seeded events |
 | The Z3 proofs of the engine's built-in e-graph rewrites, and the deterministic proposer of 87 familiar identities | §5.2 | A public rewrite gate: a reference evaluator of Form IR terms, an SMT-LIB encoding with an unsat result per rewrite and negative controls, and the identities listed in the registration |
 | The Form invariants of §4.1 as checked by named engine tests, the compounding of escalations on the reference workload of Proposition R2, and the browser demonstration of the engine | §2.4, §4.1 | The engine profile, gate, promotion and receipts in public code, built from Appendix D |
-| The one-token repair rates (L0) on nine repositories and on four never tuned on, with the median search bits and the unsolved breakdown | §6, §6.1 | A public repair tool run on the L0 protocol, with the operator-inversion baseline beside it |
-| The one-statement repair rates (L1) on ManySStuBs4J 2.0, hunk only and whole file, and on TSSB-3M, with the rates by category | §6, §6.2 | The L1 gears in the public repair tool, on the L1 protocol |
+| The one-token repair rates (L0) on nine repositories and on four never tuned on, with the median search bits and the unsolved breakdown | §6, §6.1 | The rungs of the public proposer ladder (§4.2: deterministic rungs first, a model only on the residual), run on the L0 protocol, with the operator-inversion baseline beside it |
+| The one-statement repair rates (L1) on ManySStuBs4J 2.0, hunk only and whole file, and on TSSB-3M, with the rates by category | §6, §6.2 | The L1 gears as rungs of the same public ladder, on the L1 protocol |
 | Agreement of the lift with the original code on Rust, Python, TypeScript and Go fixtures | §6 | Public lifts per language, run on freshly written fixtures |
 | Agreement of three sales-outreach programs, re-expressed as Forms, with their recorded inputs, and the `est_j` change under extraction | §6 | The programs written as language modules and replayed against the public recorded inputs |
 | `est_j` per solved task on the ladder, and the RAPL subsample | §6.3 | `est_j` from the rebuilt ladder runs, and `reported_j` on a host with RAPL |
