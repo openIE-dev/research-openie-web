@@ -1,6 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 const entries = [
+  { title: 'The Reality Code Engine, RCE-JEPA and the site', date: '30 and 31 October 2026', items: [
+    'Paper versions are read from git, not typed: each paper\'s version line is the last commit that changed its source and that commit\'s date, and pages that cite a paper read the same revision. From this entry on, the changelog names no paper version number; a paper\'s history is its commit history.',
+    'PDFs reprint automatically: the build reprints every PDF whose page changed since its recorded stamp and fails if one is out of date and cannot be printed. The 1.23 entry below, which removed the LaTeX PDF until it was regenerated, is history; the PDF of each paper now follows its page.',
+    'The Reality Code Engine, Section 12.6: how languages in development plan breaking change, compared with RCE.',
+    'The Reality Code Engine, Section 2.3: the ecosystem claim is checked on every program by named checks in the continuous integration (CI) of openIE-dev/rce, not on a sample of generated Forms, and RCE-F0 is one program whose emitted trace differs or one malformed input that changes the state. The table now states when each check runs: on every push and pull request (tests/form_roundtrip.rs, tests/emit.rs, tests/emit_deterministic.rs, the host contract tests, and the reference and Scala runs of the conformance suite), once a week and on request (the suite\'s Rust run), or not in CI (its Python and JavaScript runs).',
+    'The Reality Code Engine: the check that two emits of one target give the same bytes exists (tests/emit_deterministic.rs of openIE-dev/rce, on every commit), so it is no longer listed as work to finish in Section 10.',
+    'Read at openIE-dev/rce main 0c015c43: /rce/download/ installs rce from the release of every main commit that passed CI (rce-latest and rce-<commit>, five platforms), the container image ghcr.io/openie-dev/rce and docs/DEPLOY.md, builds from source, and points to the IDE source in ide/ (the old IDE releases stay in openIE-dev/rce-ide). The FAQ says what is built at that commit, including the first Python lifter, rule HC-27 (a log is bound to the program that wrote it) and the deterministic-emit check. /rce/spec/ and its browser checker are regenerated from that commit, and src/data/rce-facts.json is recounted there with the counting script of openIE-dev/rce. RCE-JEPA quotes the counter program as it stands there.',
+  ]},
   { v: '1.24 of The Reality Code Engine, with RCE-JEPA and the site', date: '29 October 2026', items: [
     'Vocabulary of openIE-dev/rce main (8ce91cea, #54 and #55): code that is not in Form requires change, naming the rule; it is no longer said to be refused or rejected. A step whose event does not apply keeps the state, and theorem T8 (atomicity) is stated as such. The decision lists of Section 12.1 say "Not adopted:" for the options the design does not take. Third-party words, survey findings about other languages and the engine profile\'s reject output (D.6) are kept as written.',
     'The rce dim key counting kept steps is keeps (earlier refuses), as the checker at 8ce91cea prints it; Section 10 item 15 records that rce run at 8ce91cea still drops an undeclared payload field and applies the event.',
@@ -43,7 +51,7 @@ const entries = [
     <h1 class="font-display text-3xl text-brand-white">Changelog</h1>
     {entries.map((e) => (
       <section class="mt-8">
-        <h2 class="font-display text-xl text-brand-white">Version {e.v}, {e.date}</h2>
+        <h2 class="font-display text-xl text-brand-white">{e.v ? `Version ${e.v}` : e.title}, {e.date}</h2>
         <ul class="mt-3 list-disc pl-6 font-body text-sm text-brand-slate leading-relaxed">
           {e.items.map((i) => <li class="mt-2">{i}</li>)}
         </ul>
