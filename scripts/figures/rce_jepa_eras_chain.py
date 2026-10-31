@@ -41,10 +41,10 @@ save('eras',W,H,b,'Five eras toward "Laws of Computation"')
 
 # chain
 C,Mc,P,N='#0072B2','#009E73','#E69F00','#cbd5e1'
-TAG={'H1':'PL, Coding','H2':'PL','H3':'Coding','H4':'Computation','H5':'Coding','H6':'PL','H7':'PL','H8':'PL, Computation','H9':'Computation','H10':'Coding','H11':'Coding','H12':'Coding, Computation','H13':'Coding'}
-rows=[('H1','Form smaller than source','C','MP','N'),('H2','Checker cheap','C','P','P'),('H3','Latent acceptance','C','P','N'),('H4','Energy per accepted falls','C','P','CP'),('H5','Energy ranking','C','P','N'),('H6','Apps encodable','C','P','P'),('H7','Model-independent security','C','MP','C'),('H8','Determinism','C','MP','CP'),('H9','Cost before execution','C','P','CP'),('H10','Learning on the quotient','C','P','P'),('H11','Energy monotone in edit distance','C','P','N'),('H12','Decision head calibrated','C','P','P'),('H13','Discrete versus continuous latent','C','P','N')]
+TAG={'H1':'PL, Coding','H2':'PL','H3':'Coding','H4':'Computation','H5':'Coding','H6':'PL','H7':'PL','H8':'PL, Computation','H9':'Computation','H10':'Coding','H11':'Coding','H12':'Coding, Computation','H13':'Coding','H14':'Coding'}
+rows=[('H1','Form smaller than source','C','MP','N'),('H2','Checker cheap','C','P','P'),('H3','Latent acceptance','C','P','N'),('H4','Energy per accepted falls','C','P','CP'),('H5','Energy ranking','C','P','N'),('H6','Apps encodable','C','P','P'),('H7','Model-independent security','C','MP','C'),('H8','Determinism','C','MP','CP'),('H9','Cost before execution','C','P','CP'),('H10','Learning on the quotient','C','P','P'),('H11','Energy monotone in edit distance','C','P','N'),('H12','Decision head calibrated','C','P','P'),('H13','Discrete versus continuous latent','C','P','N'),('H14','Deterministic ladder share','C','P','N')]
 col={'C':C,'M':Mc,'P':P,'N':N}; lab={'C':'cited','M':'measured','P':'planned','N':'n/a'}
-W,H=1200,812; b=[T(40,56,'The provable chain for "Laws of Coding"',28,800),T(40,88,'Hypothesis x layer of law x implementation layer x evidence',17,400,MUTED)]
+W,H=1200,856; b=[T(40,56,'The provable chain for "Laws of Coding"',28,800),T(40,88,'Hypothesis x layer of law x implementation layer x evidence',17,400,MUTED)]
 cx=[420,680,940]; cw=240
 for k,n in enumerate(['Algorithm','Software environment','Hardware']): b.append(T(cx[k]+cw/2,132,n,17,700,INK,'middle'))
 for r,(h,d,*cells) in enumerate(rows):
