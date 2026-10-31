@@ -13,7 +13,7 @@ const jepaStatus = revisionOf('src/components/RceJepaPaper.astro');
 
 const SOURCES: Record<string, string> = {
   rce: `The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming, ${paperRevisionText('rce')}, research.openie.dev. <a href="/papers/rce/">/papers/rce/</a>`,
-  repo: 'openIE-dev/rce, public main at commit <code>8ce91cea</code> (29 October 2026): the specification (draft 0.9), the reference checker <code>rce</code> 0.1.0 and <code>lang/README.md</code>; tool output on this page is from a build of that commit. <a href="https://github.com/openIE-dev/rce">github.com/openIE-dev/rce</a>',
+  repo: 'openIE-dev/rce, public main at commit <code>0c015c43</code> (30 October 2026): the specification (draft 0.9), the reference checker <code>rce</code> 0.1.0, <code>lang/README.md</code>, <code>spec/lift/python/</code>, <code>scripts/install.sh</code>, <code>.github/workflows/release.yml</code> and <code>docs/DEPLOY.md</code>; tool output on this page is from a build of that commit. <a href="https://github.com/openIE-dev/rce">github.com/openIE-dev/rce</a>',
   jepa: `RCE-JEPA: Autonomous Deterministic Coding using Latent Space, research paper, research.openie.dev, with its Status section as of revision ${jepaStatus.hash}, ${jepaStatus.date}. <a href="/papers/rce-jepa/">/papers/rce-jepa/</a>`,
   bai: 'L. Bai, Z. Huang and X. Wang, "How Do AI Agents Spend Your Money? Analyzing and Predicting Token Consumption in Agentic Coding Tasks," 2026. <a href="https://arxiv.org/abs/2604.22750">arXiv:2604.22750</a>',
   a16z: 'G. Appenzeller and Y. Li, "The Trillion Dollar AI Software Development Stack," a16z, 9 October 2025. <a href="https://a16z.com/the-trillion-dollar-ai-software-development-stack/">a16z.com</a>',
@@ -130,12 +130,15 @@ const parts: Part[] = [
     id: 'status', title: 'What is built, proposed and measured',
     items: [
       { id: 'built', q: 'What is built today?', a: `
-<p>Public code, at public main <code>8ce91cea</code> [[repo]]:</p>
+<p>Public code, at public main <code>0c015c43</code> [[repo]]:</p>
 <ul>
 <li>the specification, draft 0.9, one text at one commit, readable as a notebook at <a href="/rce/spec/">/rce/spec/</a>;</li>
-<li>the reference checker <code>rce</code> 0.1.0, with commands to check, run, test, trace, emit, format, measure the dimension of a program (<code>rce dim</code>), compare two programs (<code>rce equiv</code>, <code>rce change</code>), hash definitions, run a program on a host runtime and replay its log (<code>rce host run</code>, <code>rce host serve</code>, <code>rce host replay</code>), and an in-process database whose store is the log; the same checker runs in a browser at <a href="https://openie-dev.github.io/rce/">openie-dev.github.io/rce</a>;</li>
-<li>the emitters for Rust, Python, JavaScript and Scala, and the Lean proofs at the levels stated above [[rce]];</li>
-<li>pinned reference implementations and program corpora for a future lift: 99 programs for Go 1.24, 92 for Python 3.13 and 99 for JavaScript on Node.js 22, each with the recorded output of its run [[repo]].</li>
+<li>the reference checker <code>rce</code> 0.1.0, with commands to check, run, test, trace, emit, format, measure the dimension of a program (<code>rce dim</code>), compare two programs (<code>rce equiv</code>, <code>rce change</code>), hash definitions, run a program on a host runtime and replay its log (<code>rce host run</code>, <code>rce host serve</code>, <code>rce host replay</code>), and an in-process database whose store is the log (<code>rce db</code>); <code>rce --version</code> prints the commit the binary was built from; the same checker runs in a browser at <a href="https://openie-dev.github.io/rce/">openie-dev.github.io/rce</a>;</li>
+<li>the host runtime, which keeps the durable log of a program running as a service and binds that log to the program that wrote it (rule HC-27): the program's module hash is kept beside the log, and <code>rce host run</code>, <code>serve</code> and <code>replay</code> refuse a program whose hash differs before the log is opened;</li>
+<li>releases: every commit of main that passes continuous integration is released as <code>rce-&lt;commit&gt;</code> (the 30 newest are kept) and as <code>rce-latest</code>, with archives for Linux on x86_64 and aarch64, macOS on Apple silicon, Windows on x86_64 and WebAssembly (<code>wasm32-wasip1</code>) and a <code>SHA256SUMS</code> file; a one-line install script that checks the archive against it; a public container image, <code>ghcr.io/openie-dev/rce</code>; and a guide to running a program in production, <code>docs/DEPLOY.md</code> (see <a href="/rce/download/">/rce/download/</a>);</li>
+<li>the emitters for Rust, Python, JavaScript and Scala, with a test on every commit that emits every example twice to each target in separate processes and compares the bytes, and the Lean proofs at the levels stated above [[rce]];</li>
+<li>a first lifter, for a subset of Python 3.13 (<code>spec/lift/python/lift_py.py</code>): of the 92 programs of the pinned Python corpus it carries 6 (5 give CPython's recorded output byte for byte, 1 stops at the recursion bound where CPython stops at its recursion limit), and 82 require change with a named rule; for Go, one probe lifts one pattern [[repo]];</li>
+<li>pinned reference implementations and program corpora that a lift is judged against: 99 programs for Go 1.24, 92 for Python 3.13 and 99 for JavaScript on Node.js 22, each with the recorded output of its run [[repo]].</li>
 </ul>` },
       { id: 'proposed', q: 'What is proposed, and not built?', a: `
 <ul>
@@ -143,7 +146,7 @@ const parts: Part[] = [
 <li><strong>Lift</strong>, bringing programs written in other languages into Forms. A first lifter covers a defined subset of Python, measured below under question 8; for other languages one probe lifts one Go pattern [[repo]].</li>
 <li><strong>The RCE-JEPA proposer</strong> and its decision head [[jepa]].</li>
 <li><strong>A calibrated energy model per target</strong>, so that the cheapest correct target can be chosen; today's estimate cannot tell targets apart [[rce]].</li>
-<li><strong>The input contract at entry.</strong> At <code>8ce91cea</code>, <code>rce run</code> still drops a payload field that the event does not declare and applies the event; the RCE paper lists the contract as work to finish [[rce]].</li>
+<li><strong>The input contract at entry.</strong> At <code>0c015c43</code>, <code>rce run</code> still drops a payload field that the event does not declare and applies the event; the RCE paper lists the contract as work to finish [[rce]].</li>
 <li><strong>Idiomatic projections</strong>, emitted code that reads as a person in each language community would write it [[rce]].</li>
 </ul>` },
       { id: 'measured', q: 'What has been measured?', a: `
