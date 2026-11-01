@@ -44,7 +44,7 @@ type Item = { id: string; q: string; a: string };
 type Part = { id: string; title: string; lead?: string; items: Item[] };
 
 const intro = `<p>This page answers the questions an engineer, an investor or a policy reader tends to ask on first meeting the Reality Code Engine (RCE), a programming language with a written specification, and RCE-JEPA, a research proposal built on it. It is written to be read top to bottom: each term is defined before it is used, and each number is cited to a paper on this site or to an outside source in the list at the end, numbered in order of first citation.</p>
-<p><strong>Status, 31 October 2026, at openIE-dev/rce main <code>0c015c43</code>.</strong> Research, in draft. The language, its reference checker, its emitters, its host runtime and its proofs are public code, and every commit of main that passes continuous integration is released as binaries and a container image [[repo]]. The lift of programs from other languages has a first lifter, for a subset of Python, and a probe for one Go pattern [[repo]]. The engine that would store and reuse checked work and the RCE-JEPA proposer are designs, not built. No energy figure about RCE on this page is a wall-meter reading [[rce]].</p>`;
+<p><strong>Status, 31 October 2026, at openIE-dev/rce main <code>0c015c43</code>.</strong> Research, in draft. The language, its reference checker, its emitters, its host runtime and its proofs are public code, and every commit of main that passes continuous integration is released as binaries and a container image [[repo]]. The lift of programs from other languages has a first lifter, for a subset of Python, and a probe for one Go pattern [[repo]]. The engine that would store and reuse checked work and the RCE-JEPA proposer are designs, not built. No energy figure about RCE on this page is a counter or wall-meter reading; each is an estimate [[rce]].</p>`;
 
 const terms: [string, string][] = [
   ['AI', 'artificial intelligence; here, the language models used by coding tools'],
@@ -128,7 +128,7 @@ const parts: Part[] = [
 </ul>
 <p>In the design of the engine, a result that passes the checks is stored and closes the next task of the same shape with no model call. That engine is not public code yet [[rce]].</p>` },
       { id: 'unit', q: 'What is the unit of account?', a: `
-<p>Joules to completion. A task's completeness predicate C(z), meaning its tests, a proof or an agreement trace, is a constraint: a result meets it or does not. Among results that meet it, approaches are ranked by the energy spent to reach completion, J*, in joules [[rce]]. Tokens, seats and calls are not the unit, because a reused result spends none of them, while every approach on every machine spends joules.</p>` },
+<p>Joules to completion. A task's completeness predicate C(z), meaning its tests, a proof or an agreement trace, is a constraint: a result meets it or does not. Among results that meet it, approaches are ranked by the energy spent to reach completion, J*, in joules [[rce]]. Tokens, seats and calls are not the unit, because a reused result spends none of them, while every approach on every machine spends joules. No RCE result is ranked by J* yet: the public checker counts work in integer cost units and fuel per input, which the specification states are not a measurement of time or energy, and no RCE receipt holds an energy reading [[rce,repo]].</p>` },
     ],
   },
   {
@@ -147,10 +147,10 @@ const parts: Part[] = [
 </ul>` },
       { id: 'proposed', q: 'What is proposed, and not built?', a: `
 <ul>
-<li><strong>The engine</strong>: gears that try lookup, then rules, then synthesis, then a model, last; one gate of replay, a shadow run, a schema check and a proof certificate; promotion of what passes; and receipts with an energy estimate for every decision. The RCE paper describes it as a design [[rce]].</li>
+<li><strong>The engine</strong>: gears that try lookup, then rules, then synthesis, then a model, last; one gate of replay, a shadow run, a schema check and a proof certificate; promotion of what passes; and receipts whose energy terms are an estimate (<code>est_j</code>) or marked unpriced, never a reading. The RCE paper describes it as a design [[rce]].</li>
 <li><strong>Lift</strong>, bringing programs written in other languages into Forms. A first lifter covers a defined subset of Python, measured below under question 8; for other languages one probe lifts one Go pattern [[repo]].</li>
 <li><strong>The RCE-JEPA proposer</strong> and its decision head [[jepa]].</li>
-<li><strong>A calibrated energy model per target</strong>, so that the cheapest correct target can be chosen; today's estimate cannot tell targets apart [[rce]].</li>
+<li><strong>A calibrated energy model per target</strong>, so that the cheapest correct target can be chosen; today's estimate cannot tell targets apart [[rce]]. The calibration is a proposal in the specification repository; the specification's <code>host.Calibrated</code> log entry records a fabric's overhead and throughput for placement, not joules [[repo]].</li>
 <li><strong>The input contract at entry.</strong> At <code>0c015c43</code>, <code>rce run</code> still drops a payload field that the event does not declare and applies the event; the RCE paper lists the contract as work to finish [[rce]].</li>
 <li><strong>Idiomatic projections</strong>, emitted code that reads as a person in each language community would write it [[rce]].</li>
 </ul>` },
@@ -178,7 +178,7 @@ const parts: Part[] = [
 <li><code>reported_j</code>: a reading of an operating-system or on-chip counter, such as RAPL.</li>
 <li><code>measured_j</code>: a wall or shunt meter on a named supply, logged with the run, with the idle draw subtracted.</li>
 </ul>
-<p>The three are reported in separate columns and never added together, and a cost with no estimate is reported as unpriced, never as zero [[rce]]. <strong>No <code>measured_j</code> exists for RCE:</strong> the field is empty in every result, and every energy figure about RCE on this page is <code>est_j</code> [[rce]].</p>` },
+<p>The three are reported in separate columns and never added together, and a cost with no estimate is reported as unpriced, never as zero [[rce]]. <strong>No <code>measured_j</code> exists for RCE:</strong> the field is empty in every result, and every energy figure about RCE on this page is <code>est_j</code> [[rce]]. No RCE receipt holds a <code>reported_j</code> reading either. The host-log entry for a counter reading, <code>host.Energy</code>, is defined in the specification, and no public code writes it [[repo]].</p>` },
       { id: 'compare', q: 'How does that compare with model generation?', a: `
 <p>No measurement compares the two on the same machine and the same tasks. Published figures for generation: LLaMA 65B used about 3 to 4 J per output token, counting graphics-processor energy only [[samsi]], and one median text prompt to a production assistant was measured by its operator at 0.24 Wh, or 864 J [[elsworth]]. The 0.03 J estimate for an RCE check is an estimate for a different task, deciding whether a program is in Form, not writing one. The observation that would settle the question is RCE-F3: under a wall meter, gross joules per solved task of the RCE solver against those of the cheapest model baseline on the tasks both solve [[rce]]. It has not been run.</p>` },
     ],
