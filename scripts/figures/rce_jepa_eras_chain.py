@@ -40,10 +40,13 @@ b.append(T(40,H-24,'Sources: Dijkstra EWD 340; Backus et al. 1957; Hennessy and 
 save('eras',W,H,b,'Five eras toward "Laws of Computation"')
 
 # chain
-C,Mc,P,N='#0072B2','#009E73','#E69F00','#cbd5e1'
+C,Mc,X,P,N='#0072B2','#009E73','#D55E00','#E69F00','#cbd5e1'
 TAG={'H1':'PL, Coding','H2':'PL','H3':'Coding','H4':'Computation','H5':'Coding','H6':'PL','H7':'PL','H8':'PL, Computation','H9':'Computation','H10':'Coding','H11':'Coding','H12':'Coding, Computation','H13':'Coding','H14':'Coding'}
-rows=[('H1','Form smaller than source','C','MP','N'),('H2','Checker cheap','C','P','P'),('H3','Latent acceptance','C','P','N'),('H4','Energy per accepted falls','C','P','CP'),('H5','Energy ranking','C','P','N'),('H6','Apps encodable','C','P','P'),('H7','Model-independent security','C','MP','C'),('H8','Determinism','C','MP','CP'),('H9','Cost before execution','C','P','CP'),('H10','Learning on the quotient','C','P','P'),('H11','Energy monotone in edit distance','C','P','N'),('H12','Decision head calibrated','C','P','P'),('H13','Discrete versus continuous latent','C','P','N'),('H14','Deterministic ladder share','C','P','N')]
-col={'C':C,'M':Mc,'P':P,'N':N}; lab={'C':'cited','M':'measured','P':'planned','N':'n/a'}
+rows=[('H1','Form smaller than source','C','MP','N'),('H2','Checker cheap','C','P','P'),('H3','Latent acceptance','C','P','N'),('H4','Energy per accepted falls','C','P','CP'),('H5','Energy ranking','C','P','N'),('H6','Apps encodable','C','P','P'),('H7','Model-independent security','C','MP','C'),('H8','Determinism','C','M','CM'),('H9','Cost before execution','C','P','CP'),('H10','Learning on the quotient','C','P','P'),('H11','Energy monotone in edit distance','C','P','N'),('H12','Decision head calibrated','C','P','P'),('H13','Discrete versus continuous latent','C','P','N'),('H14','Deterministic ladder share','C','X','N')]
+# Marks follow the Status section of /papers/rce-jepa/: M = registered measurement (H1 on the
+# hand-written corpus, H7 fuzzed arm, H8 six targets); X = registered measurement that does not
+# support the hypothesis as intended (H14, runs [B30, B31]); P = not yet run.
+col={'C':C,'M':Mc,'X':X,'P':P,'N':N}; lab={'C':'cited','M':'measured','X':'not supported','P':'planned','N':'n/a'}
 W,H=1200,856; b=[T(40,56,'The provable chain for "Laws of Coding"',28,800),T(40,88,'Hypothesis x layer of law x implementation layer x evidence',17,400,MUTED)]
 cx=[420,680,940]; cw=240
 for k,n in enumerate(['Algorithm','Software environment','Hardware']): b.append(T(cx[k]+cw/2,132,n,17,700,INK,'middle'))
@@ -56,8 +59,9 @@ for r,(h,d,*cells) in enumerate(rows):
             b.append(T(cx[k]+q*pw+(pw-4)/2,y+26,lab[pc],13.5,600,INK,'middle'))
 y=148+len(rows)*44+26
 b.append(T(40,H-14,'Layer tags: PL = "Laws of Programming Languages"; Coding = "Laws of Coding"; Computation = "Laws of Computation".',13,400,MUTED))
-for q,(k,n) in enumerate([('C','cited literature'),('M','measured data'),('P','planned experiment'),('N','not applicable')]):
-    b.append(f'<rect x="{40+q*270}" y="{y}" width="22" height="22" rx="5" fill="{col[k]}" fill-opacity="0.4" stroke="{col[k]}"/>'); b.append(T(70+q*270,y+17,n,15))
+lx=40
+for k,n in [('C','cited literature'),('M','measured data'),('X','measured, not supported'),('P','planned experiment'),('N','not applicable')]:
+    b.append(f'<rect x="{lx}" y="{y}" width="22" height="22" rx="5" fill="{col[k]}" fill-opacity="0.4" stroke="{col[k]}"/>'); b.append(T(lx+30,y+17,n,15)); lx+=30+len(n)*8+40
 save('chain',W,H,b,'The provable chain for "Laws of Coding"')
 print('ok')
 
