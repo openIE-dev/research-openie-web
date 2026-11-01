@@ -5,6 +5,8 @@ const ov = data.chapters[0];
 import facts from '../../../data/rce-facts.json';
 const total = data.examples.reduce((a: number, g: any) => a + g.items.length, 0);
 const count = (id: string) => data.examples.find((g: any) => g.id === id)?.items.length ?? 0;
+// The commit date is read from git by spec-src/rce/gen.mjs, never typed.
+const commitDay = data.commitDate ? new Date(`${data.commitDate}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) : '';
 ---
 <Shell title="RCE language specification" description="The RCE language specification as an interactive notebook: plain-language introductions, formal grammar and typing rules, and runnable example programs checked in the browser." current="">
   <h1>RCE language specification</h1>
@@ -13,7 +15,7 @@ const count = (id: string) => data.examples.find((g: any) => g.id === id)?.items
     <span class="tts-status" role="status"></span>
   </div>
   <div id="rs-ov" class="tts-text rs-intro" set:html={ov.sections[0].html} />
-  <p class="rs-prose"><strong>Which version this is.</strong> This notebook shows specification draft {facts.spec_notebook_draft}, generated from commit <code>{data.commit}</code> of the RCE source, public main on 30 October 2026; there is one language, the specification at one commit (2.7). It holds {total} example programs: {count('accepted')} accepted, and {count('syntax')} syntax, {count('ill-typed')} ill-typed and {count('inadmissible')} inadmissible programs that require change, each with the rule it breaks. The public repository states theorems {facts.theorems_stated}, with {facts.lean_modules} Lean modules, as read at public commit <code>{facts.commit}</code>. Where a chapter quotes a count from an earlier draft, it describes that draft. Counts come from the notebook data and <code>src/data/rce-facts.json</code>.</p>
+  <p class="rs-prose"><strong>Which version this is.</strong> This notebook shows specification draft {data.draft}, generated from commit <code>{data.commit}</code> of the RCE source{commitDay ? `, public main on ${commitDay}` : ''}; there is one language, the specification at one commit (2.7). It holds {total} example programs: {count('accepted')} accepted, and {count('syntax')} syntax, {count('ill-typed')} ill-typed and {count('inadmissible')} inadmissible programs that require change, each with the rule it breaks. The public repository states theorems {facts.theorems_stated}, with {facts.lean_modules} Lean modules, as read at public commit <code>{facts.commit}</code>. Where a chapter quotes a count from an earlier draft, it describes that draft. Counts come from the notebook data and <code>src/data/rce-facts.json</code>.</p>
   <h2>Chapters</h2>
   <p class="rs-prose">Read them in order. Each chapter opens in plain words, then gives the exact rules. Formal grammar and typing rules sit in cells you can open and close. Every code cell can be edited and run.</p>
   <ol class="rs-cards">
