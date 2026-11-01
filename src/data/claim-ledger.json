@@ -187,6 +187,17 @@
       ],
       "pattern": "The Laws of Intelligence: Computation Efficiency and the Physical Scaling Limits of AI Systems",
       "note": "Title of the cited Kumar preprint (Zenodo 18993403) in Agency section 6.8 reference [347]; not a claim of ours."
+    },
+    {
+      "id": "rce-compile-law-under-test",
+      "status": "hypothesis under test",
+      "pattern": "[Ll]aw of [Cc]ompilation|descriptive law|not a law every compiler already obeys|algebraic laws of programming|following from the laws|\"governed by laws\"|a named law|claims a law only for what|The law itself|established compiler law|a compiler law|End of Moore's Law",
+      "note": "RCE Compile tests a candidate 'Law of Compilation' and reports it falsified as a description and restated as a normal form; 'laws of programming' are Hoare, He and Sampaio's algebraic laws (prior work, cited); 'End of Moore's Law' is a cited title. None is a claim that a law holds.",
+      "files": [
+        "src/content/papers/rce-compile.md",
+        "src/pages/about/rce-compile.astro",
+        "src/data/studies.json"
+      ]
     }
   ]
 }
