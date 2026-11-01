@@ -118,6 +118,29 @@
       ]
     },
     {
+      "id": "rce-compile",
+      "title": "RCE Compile: A Law of Compilation, Tested as a Normal Form Against Real Compilers",
+      "short_title": "RCE Compile",
+      "kind": "Research study",
+      "group": "research",
+      "url": "https://research.openie.dev/papers/rce-compile/",
+      "pdf": "https://research.openie.dev/pdfs/rce-compile.pdf",
+      "figures": "/figures/rce-compile/form-evidence.svg",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Asks whether one statement of what compilation is holds for any compiler, independent of the Reality Code Engine. Checked against twelve compiler families, it fails as a description and holds as a normal form: seven parts (representation, lowering, cost, checker, reuse, energy, gate), four equivalence levels, a gate that names its property, linking assumption and trusted base, and a measurable replacement for the Landauer and Kolmogorov bounds. Plain words: real compilers do not all obey one rule, so the rule becomes a standard each compiler can be measured against; none of them tracks energy.",
+      "about": "https://research.openie.dev/about/rce-compile/",
+      "keywords": [
+        "RCE Compile",
+        "compiler correctness",
+        "normal form",
+        "equivalence levels",
+        "reproducible builds",
+        "Landauer limit",
+        "Kolmogorov complexity",
+        "falsifiers"
+      ]
+    },
+    {
       "id": "game-engines",
       "title": "Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins",
       "short_title": "Writing a Game Once",
