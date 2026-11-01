@@ -19,10 +19,17 @@ programs that require change are in `spec/examples/change/{syntax,types,admissio
 (earlier `reject/`, `ill_typed/` and `inadmissible/`), `tree-sitter/` is at the
 repository root, and the browser checker reports a step whose event does not
 apply as `kept` (earlier `refused`); `gen.mjs` and `public/rce/spec/notebook.js`
-read both layouts. The current `spec.json` is generated from 0c015c43, with
-`checker-wasm/pkg` rebuilt from that commit (`wasm-pack build --release --target web
---out-dir pkg`, then `wasm-opt -O` from binaryen 117), because the `pkg` committed
-there predates its last checker change.
+read both layouts.
+
+`gen.mjs` reads the commit (`commit`), its date (`commitDate`) and the draft
+(`draft`, from the title of `00-overview.md`) into `spec.json`; the notebook
+pages show them from there, so no commit, date or draft is typed on a page.
+The current `spec.json` is generated from a checkout of openIE-dev/rce main,
+with `checker-wasm/pkg` rebuilt from the same commit (`wasm-pack build . --release
+--target web --no-opt --out-dir pkg`, then `wasm-opt -O` from binaryen 117),
+because the `pkg` committed there predates its last checker change. Check
+whether that is still so with `git log -1 -- spec/checker-wasm/pkg` against
+`git log -1 -- spec/checker spec/checker-wasm/src`.
 
 Then copy `checker-wasm/pkg/rce_spec_check_wasm.js` and
 `rce_spec_check_wasm_bg.wasm` into `public/rce/spec/wasm/`.
@@ -43,6 +50,6 @@ and `Cross-Origin-Embedder-Policy: credentialless` on `/rce/spec*` only. Add
 `?tts=wasm` or `?tts=fp16` to a page URL to force a backend or weight file.
 
 Highlighting: `public/rce/spec/ts/tree-sitter-rce.wasm` is the RCE tree-sitter
-grammar (`tree-sitter/` in openIE-dev/rce) built with `tree-sitter build --wasm`
-(CLI 0.27.1), loaded with web-tree-sitter 0.27.1. Code cells also show the
+grammar (`tree-sitter/` in openIE-dev/rce, at the commit `spec.json` records)
+built with `tree-sitter build --wasm` (CLI 0.27.1), loaded with web-tree-sitter 0.27.1. Code cells also show the
 program's Form JSON (spec 6.1), produced by the checker.

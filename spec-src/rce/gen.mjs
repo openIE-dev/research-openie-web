@@ -18,8 +18,12 @@ const wasmPkg = path.join(SPEC, 'checker-wasm/pkg');
 const { default: init, check_with } = await import(path.join(wasmPkg, 'rce_spec_check_wasm.js'));
 await init({ module_or_path: fs.readFileSync(path.join(wasmPkg, 'rce_spec_check_wasm_bg.wasm')) });
 const check = (src, known = '') => JSON.parse(check_with(src, known));
-// RCE_COMMIT names the commit when SPEC is an export (git archive) rather than a checkout.
-const commit = process.env.RCE_COMMIT || execSync('git rev-parse --short HEAD', { cwd: SPEC }).toString().trim();
+// The commit and its date are read from git, never typed. RCE_COMMIT names the
+// commit when SPEC is an export (git archive) rather than a checkout; the date
+// is then read from RCE_COMMIT_DATE, or left out.
+const git = (args) => execSync(`git ${args}`, { cwd: SPEC }).toString().trim();
+const commit = process.env.RCE_COMMIT || git('rev-parse --short=8 HEAD');
+const commitDate = process.env.RCE_COMMIT ? process.env.RCE_COMMIT_DATE || '' : git('log -1 --format=%cs HEAD');
 
 // keywords come from the tree-sitter grammar (string literals that are identifiers)
 // tree-sitter/ moved from spec/ to the repository root; read whichever exists.
@@ -236,6 +240,9 @@ for (const g of groups) {
   examples.push({ ...meta, items });
 }
 
-const out = { commit, generated: new Date().toISOString(), keywords: KEYWORDS, chapters, protocol, examples, byRule, cells: cellN, katexErrors };
+// The draft is read from the title of the overview chapter ("..., draft 0.9: Overview").
+const draft = ((chapters.find((c) => c.num === '00') || {}).title || '').match(/draft (\d+(?:\.\d+)*)/i)?.[1] || '';
+
+const out = { commit, commitDate, draft, generated: new Date().toISOString(), keywords: KEYWORDS, chapters, protocol, examples, byRule, cells: cellN, katexErrors };
 fs.writeFileSync(OUT, JSON.stringify(out));
-console.log(`chapters ${chapters.length}, cells ${cellN}, examples ${examples.reduce((a, g) => a + g.items.length, 0)}, katex fallbacks ${katexErrors}, commit ${commit}`);
+console.log(`chapters ${chapters.length}, cells ${cellN}, examples ${examples.reduce((a, g) => a + g.items.length, 0)}, katex fallbacks ${katexErrors}, draft ${draft}, commit ${commit} (${commitDate})`);
