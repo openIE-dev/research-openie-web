@@ -49,6 +49,7 @@ Every acronym on this page is either expanded where it is first used or listed h
 <li>GEMM: general matrix multiplication; cuBLAS and cuDNN are NVIDIA's libraries for it and for neural-network kernels</li>
 <li>GIMPLE, FIR, HLFIR, SOACS: the intermediate representations of GCC, of LLVM Flang (two levels) and of Futhark</li>
 <li>GNU, GNAT, GNATprove: the GNU project; the Ada compiler in GCC; the SPARK proof tool</li>
+<li>GODEBUG: the environment variable that turns on debugging settings of the Go toolchain and runtime</li>
 <li>GOPATH: Go's older workspace mode, used before Go modules</li>
 <li>HAL, CNKI, ACM DL, J-STAGE: national and publisher research databases (France, China, the ACM, Japan)</li>
 <li>HIR, THIR: the high-level and typed high-level representations of the Rust compiler, rustc</li>
