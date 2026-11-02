@@ -1,0 +1,22 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/rce-compile.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description="RCE Compile asks whether one statement of what compilation is holds for any compiler. It does not hold as a description; restated as a normal form with two bounds and a measured distance, every compiler can be placed against it. The seven parts and the evidence for each, a measurable convergence function, hypotheses with falsifiers, and the first measured experiment."
+  headings={headings}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Research study, draft: problem, framework, evidence, hypotheses, falsifiers and the first experiment"
+>
+  <Content />
+</PaperLayout>

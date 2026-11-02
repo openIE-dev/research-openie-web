@@ -15,7 +15,7 @@
 //     with id="terms" that appears before the first use.
 import fs from 'node:fs';
 
-const PAGES = ['dist/papers/rce-jepa/index.html', 'dist/faq/index.html'];
+const PAGES = ['dist/papers/rce-jepa/index.html', 'dist/papers/rce-compile/index.html', 'dist/faq/index.html'];
 const files = process.argv.slice(2).length ? process.argv.slice(2) : PAGES;
 
 function textOf(html) {

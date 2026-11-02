@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 670" width="820" height="670" font-family="Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Where each part of the Compiler Form is found, by compiler family</title>
+<desc id="d">Filled circle: present as the Form requires. Half circle: present in part or only by configuration. Empty ring: absent. Energy (E) is absent in every row.</desc>
+<rect width="820" height="670" fill="#ffffff"/>
+<text x="270.0" y="62" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">R</text>
+<text x="270.0" y="84" text-anchor="middle" font-size="11.5" fill="#59636e">Representation</text>
+<text x="350.0" y="62" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">L</text>
+<text x="350.0" y="84" text-anchor="middle" font-size="11.5" fill="#59636e">Lowering</text>
+<text x="430.0" y="62" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">C</text>
+<text x="430.0" y="84" text-anchor="middle" font-size="11.5" fill="#59636e">Cost</text>
+<text x="510.0" y="62" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">K</text>
+<text x="510.0" y="84" text-anchor="middle" font-size="11.5" fill="#59636e">Checker</text>
+<text x="590.0" y="62" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">U</text>
+<text x="590.0" y="84" text-anchor="middle" font-size="11.5" fill="#59636e">Reuse</text>
+<text x="670.0" y="62" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">E</text>
+<text x="670.0" y="84" text-anchor="middle" font-size="11.5" fill="#59636e">Energy</text>
+<text x="750.0" y="62" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">G</text>
+<text x="750.0" y="84" text-anchor="middle" font-size="11.5" fill="#59636e">Gate</text>
+<rect x="10" y="110" width="800" height="40" fill="#f6f8fa"/>
+<text x="20" y="135.0" font-size="14" fill="#1f2328">Zig</text>
+<circle cx="270.0" cy="130.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M270.0 120.0 A10 10 0 0 0 270.0 140.0 Z" fill="#2a78d6"/>
+<circle cx="350.0" cy="130.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M350.0 120.0 A10 10 0 0 0 350.0 140.0 Z" fill="#2a78d6"/>
+<circle cx="430.0" cy="130.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M430.0 120.0 A10 10 0 0 0 430.0 140.0 Z" fill="#2a78d6"/>
+<circle cx="510.0" cy="130.0" r="11" fill="#2a78d6"/>
+<circle cx="590.0" cy="130.0" r="11" fill="#2a78d6"/>
+<circle cx="670.0" cy="130.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="130.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M750.0 120.0 A10 10 0 0 0 750.0 140.0 Z" fill="#2a78d6"/>
+<text x="20" y="175.0" font-size="14" fill="#1f2328">Rust (rustc)</text>
+<circle cx="270.0" cy="170.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M270.0 160.0 A10 10 0 0 0 270.0 180.0 Z" fill="#2a78d6"/>
+<circle cx="350.0" cy="170.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M350.0 160.0 A10 10 0 0 0 350.0 180.0 Z" fill="#2a78d6"/>
+<circle cx="430.0" cy="170.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M430.0 160.0 A10 10 0 0 0 430.0 180.0 Z" fill="#2a78d6"/>
+<circle cx="510.0" cy="170.0" r="11" fill="#2a78d6"/>
+<circle cx="590.0" cy="170.0" r="11" fill="#2a78d6"/>
+<circle cx="670.0" cy="170.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="170.0" r="11" fill="#2a78d6"/>
+<rect x="10" y="190" width="800" height="40" fill="#f6f8fa"/>
+<text x="20" y="215.0" font-size="14" fill="#1f2328">Go</text>
+<circle cx="270.0" cy="210.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M270.0 200.0 A10 10 0 0 0 270.0 220.0 Z" fill="#2a78d6"/>
+<circle cx="350.0" cy="210.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M350.0 200.0 A10 10 0 0 0 350.0 220.0 Z" fill="#2a78d6"/>
+<circle cx="430.0" cy="210.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M430.0 200.0 A10 10 0 0 0 430.0 220.0 Z" fill="#2a78d6"/>
+<circle cx="510.0" cy="210.0" r="11" fill="#2a78d6"/>
+<circle cx="590.0" cy="210.0" r="11" fill="#2a78d6"/>
+<circle cx="670.0" cy="210.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="210.0" r="11" fill="#2a78d6"/>
+<text x="20" y="255.0" font-size="14" fill="#1f2328">GCC and Clang/LLVM</text>
+<circle cx="270.0" cy="250.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M270.0 240.0 A10 10 0 0 0 270.0 260.0 Z" fill="#2a78d6"/>
+<circle cx="350.0" cy="250.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M350.0 240.0 A10 10 0 0 0 350.0 260.0 Z" fill="#2a78d6"/>
+<circle cx="430.0" cy="250.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M430.0 240.0 A10 10 0 0 0 430.0 260.0 Z" fill="#2a78d6"/>
+<circle cx="510.0" cy="250.0" r="11" fill="#2a78d6"/>
+<circle cx="590.0" cy="250.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M590.0 240.0 A10 10 0 0 0 590.0 260.0 Z" fill="#2a78d6"/>
+<circle cx="670.0" cy="250.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="250.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M750.0 240.0 A10 10 0 0 0 750.0 260.0 Z" fill="#2a78d6"/>
+<rect x="10" y="270" width="800" height="40" fill="#f6f8fa"/>
+<text x="20" y="295.0" font-size="14" fill="#1f2328">Swift</text>
+<circle cx="270.0" cy="290.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M270.0 280.0 A10 10 0 0 0 270.0 300.0 Z" fill="#2a78d6"/>
+<circle cx="350.0" cy="290.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M350.0 280.0 A10 10 0 0 0 350.0 300.0 Z" fill="#2a78d6"/>
+<circle cx="430.0" cy="290.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M430.0 280.0 A10 10 0 0 0 430.0 300.0 Z" fill="#2a78d6"/>
+<circle cx="510.0" cy="290.0" r="11" fill="#2a78d6"/>
+<circle cx="590.0" cy="290.0" r="11" fill="#2a78d6"/>
+<circle cx="670.0" cy="290.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="290.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M750.0 280.0 A10 10 0 0 0 750.0 300.0 Z" fill="#2a78d6"/>
+<text x="20" y="335.0" font-size="14" fill="#1f2328">Cranelift and Wasm</text>
+<circle cx="270.0" cy="330.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M270.0 320.0 A10 10 0 0 0 270.0 340.0 Z" fill="#2a78d6"/>
+<circle cx="350.0" cy="330.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M350.0 320.0 A10 10 0 0 0 350.0 340.0 Z" fill="#2a78d6"/>
+<circle cx="430.0" cy="330.0" r="11" fill="#2a78d6"/>
+<circle cx="510.0" cy="330.0" r="11" fill="#2a78d6"/>
+<circle cx="590.0" cy="330.0" r="11" fill="#2a78d6"/>
+<circle cx="670.0" cy="330.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="330.0" r="11" fill="#2a78d6"/>
+<rect x="10" y="350" width="800" height="40" fill="#f6f8fa"/>
+<text x="20" y="375.0" font-size="14" fill="#1f2328">Julia</text>
+<circle cx="270.0" cy="370.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M270.0 360.0 A10 10 0 0 0 270.0 380.0 Z" fill="#2a78d6"/>
+<circle cx="350.0" cy="370.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M350.0 360.0 A10 10 0 0 0 350.0 380.0 Z" fill="#2a78d6"/>
+<circle cx="430.0" cy="370.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M430.0 360.0 A10 10 0 0 0 430.0 380.0 Z" fill="#2a78d6"/>
+<circle cx="510.0" cy="370.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M510.0 360.0 A10 10 0 0 0 510.0 380.0 Z" fill="#2a78d6"/>
+<circle cx="590.0" cy="370.0" r="11" fill="#2a78d6"/>
+<circle cx="670.0" cy="370.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="370.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<text x="20" y="415.0" font-size="14" fill="#1f2328">Fortran compilers</text>
+<circle cx="270.0" cy="410.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M270.0 400.0 A10 10 0 0 0 270.0 420.0 Z" fill="#2a78d6"/>
+<circle cx="350.0" cy="410.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M350.0 400.0 A10 10 0 0 0 350.0 420.0 Z" fill="#2a78d6"/>
+<circle cx="430.0" cy="410.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M430.0 400.0 A10 10 0 0 0 430.0 420.0 Z" fill="#2a78d6"/>
+<circle cx="510.0" cy="410.0" r="11" fill="#2a78d6"/>
+<circle cx="590.0" cy="410.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M590.0 400.0 A10 10 0 0 0 590.0 420.0 Z" fill="#2a78d6"/>
+<circle cx="670.0" cy="410.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="410.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M750.0 400.0 A10 10 0 0 0 750.0 420.0 Z" fill="#2a78d6"/>
+<rect x="10" y="430" width="800" height="40" fill="#f6f8fa"/>
+<text x="20" y="455.0" font-size="14" fill="#1f2328">COBOL</text>
+<circle cx="270.0" cy="450.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M270.0 440.0 A10 10 0 0 0 270.0 460.0 Z" fill="#2a78d6"/>
+<circle cx="350.0" cy="450.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M350.0 440.0 A10 10 0 0 0 350.0 460.0 Z" fill="#2a78d6"/>
+<circle cx="430.0" cy="450.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M430.0 440.0 A10 10 0 0 0 430.0 460.0 Z" fill="#2a78d6"/>
+<circle cx="510.0" cy="450.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M510.0 440.0 A10 10 0 0 0 510.0 460.0 Z" fill="#2a78d6"/>
+<circle cx="590.0" cy="450.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="670.0" cy="450.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="450.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M750.0 440.0 A10 10 0 0 0 750.0 460.0 Z" fill="#2a78d6"/>
+<text x="20" y="495.0" font-size="14" fill="#1f2328">Ada and SPARK</text>
+<circle cx="270.0" cy="490.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M270.0 480.0 A10 10 0 0 0 270.0 500.0 Z" fill="#2a78d6"/>
+<circle cx="350.0" cy="490.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M350.0 480.0 A10 10 0 0 0 350.0 500.0 Z" fill="#2a78d6"/>
+<circle cx="430.0" cy="490.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M430.0 480.0 A10 10 0 0 0 430.0 500.0 Z" fill="#2a78d6"/>
+<circle cx="510.0" cy="490.0" r="11" fill="#2a78d6"/>
+<circle cx="590.0" cy="490.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M590.0 480.0 A10 10 0 0 0 590.0 500.0 Z" fill="#2a78d6"/>
+<circle cx="670.0" cy="490.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="490.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M750.0 480.0 A10 10 0 0 0 750.0 500.0 Z" fill="#2a78d6"/>
+<rect x="10" y="510" width="800" height="40" fill="#f6f8fa"/>
+<text x="20" y="535.0" font-size="14" fill="#1f2328">GHC and functional</text>
+<circle cx="270.0" cy="530.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M270.0 520.0 A10 10 0 0 0 270.0 540.0 Z" fill="#2a78d6"/>
+<circle cx="350.0" cy="530.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M350.0 520.0 A10 10 0 0 0 350.0 540.0 Z" fill="#2a78d6"/>
+<circle cx="430.0" cy="530.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M430.0 520.0 A10 10 0 0 0 430.0 540.0 Z" fill="#2a78d6"/>
+<circle cx="510.0" cy="530.0" r="11" fill="#2a78d6"/>
+<circle cx="590.0" cy="530.0" r="11" fill="#2a78d6"/>
+<circle cx="670.0" cy="530.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="530.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M750.0 520.0 A10 10 0 0 0 750.0 540.0 Z" fill="#2a78d6"/>
+<text x="20" y="575.0" font-size="14" fill="#1f2328">ML compilers</text>
+<circle cx="270.0" cy="570.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M270.0 560.0 A10 10 0 0 0 270.0 580.0 Z" fill="#2a78d6"/>
+<circle cx="350.0" cy="570.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M350.0 560.0 A10 10 0 0 0 350.0 580.0 Z" fill="#2a78d6"/>
+<circle cx="430.0" cy="570.0" r="11" fill="#2a78d6"/>
+<circle cx="510.0" cy="570.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M510.0 560.0 A10 10 0 0 0 510.0 580.0 Z" fill="#2a78d6"/>
+<circle cx="590.0" cy="570.0" r="11" fill="#2a78d6"/>
+<circle cx="670.0" cy="570.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="570.0" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M750.0 560.0 A10 10 0 0 0 750.0 580.0 Z" fill="#2a78d6"/>
+<circle cx="31" cy="630" r="11" fill="#2a78d6"/>
+<text x="50" y="635" font-size="13" fill="#1f2328">Present as the Form requires</text>
+<circle cx="292.6" cy="630" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/><path d="M292.6 620 A10 10 0 0 0 292.6 640 Z" fill="#2a78d6"/>
+<text x="311.6" y="635" font-size="13" fill="#1f2328">In part, or only by configuration</text>
+<circle cx="590.2" cy="630" r="10" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<text x="609.2" y="635" font-size="13" fill="#1f2328">Absent</text>
+<text x="20" y="28" font-size="13" fill="#59636e">Qualitative summary of the survey; almost every cell rests on [K] or [S] evidence.</text>
+</svg>
