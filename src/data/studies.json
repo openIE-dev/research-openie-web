@@ -127,7 +127,7 @@
       "pdf": "https://research.openie.dev/pdfs/rce-compile.pdf",
       "figures": "/figures/rce-compile/form-evidence.svg",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "Asks whether one statement of what compilation is holds for any compiler, independent of the Reality Code Engine. Checked against twelve compiler families, it fails as a description and holds as a normal form: seven parts (representation, lowering, cost, checker, reuse, energy, gate), four equivalence levels, a gate that names its property, linking assumption and trusted base, and a measurable replacement for the Landauer and Kolmogorov bounds. Plain words: real compilers do not all obey one rule, so the rule becomes a standard each compiler can be measured against; none of them tracks energy.",
+      "summary": "Asks whether one statement of what compilation is holds for any compiler, independent of the Reality Code Engine. Checked against twelve compiler families, it fails as a description and holds as a normal form: seven parts (representation, lowering, cost, checker, reuse, energy, gate), four equivalence levels, a gate that names its property, linking assumption, trusted base, evidence authority and digests, and a measurable replacement for the Landauer and Kolmogorov bounds. Experiments so far: byte comparisons of compiler outputs on three machines; erasure and description-length counts with no energy read; and a name-free hash that matched renamed programs more often than byte or source-text keys, with no false match, on 16 small kernels and 4 programs. Plain words: real compilers do not all obey one rule, so the rule becomes a standard each compiler can be measured against; none of them tracks energy.",
       "about": "https://research.openie.dev/about/rce-compile/",
       "keywords": [
         "RCE Compile",
@@ -135,6 +135,7 @@
         "normal form",
         "equivalence levels",
         "reproducible builds",
+        "name-free hash",
         "Landauer limit",
         "Kolmogorov complexity",
         "falsifiers"

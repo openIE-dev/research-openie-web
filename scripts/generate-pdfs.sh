@@ -193,7 +193,7 @@ elif id_ == "rce-compile":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
-        "No energy was measured. The only measured results are byte comparisons of compiler outputs (Section 8). Almost every external source was seen only as a search result; each reference states how it was checked.\n"
+        "No energy was measured. The measured results are byte comparisons of compiler outputs (E1), erasure and description-length counts on a machine with no energy counter (E4), and comparisons of name-free hashes (E5), all in Section 8. Almost every external source was seen only as a search result; each reference states how it was checked.\n"
         "</div>\n"
     )
 elif id_ == "rce":
