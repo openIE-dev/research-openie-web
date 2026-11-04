@@ -30,7 +30,7 @@ New methods for running computer intelligence at lower cost are published openly
 | Task | One unit of useful work with a stated quality threshold $q$, for example one correct answer or one checked estimate. |
 | Joules per task, $e$ | Measured energy in joules to complete one task at quality at least $q$. The unit of account for computer intelligence here. |
 | Cost per task, $c$ | Money cost of one task: $c = \kappa e + h$, where $\kappa$ is the price of a joule and $h$ is the hardware and operations cost that does not fall with $e$. |
-| Capability frontier, $C(t)$ | The lowest cost per task reachable by any method that is publicly documented by time $t$. |
+| Capability frontier, $C_f(t)$ | The lowest cost per task reachable by any method that is publicly documented by time $t$. |
 | Deployed frontier, $D(t)$ | The lowest cost per task offered in a generally available product by time $t$. |
 | Latency, $L$ | At a cost level $c$, the time between the capability frontier reaching $c$ and the deployed frontier reaching $c$. Defined in Section 0. |
 | Reporting period, $T$ | The spacing of decision dates in a firm that reports earnings, about a quarter. |
@@ -86,7 +86,7 @@ The list below is organized by the lever each method pulls on cost per task. Eac
 | Probabilistic programming | A compiler that keeps probabilistic semantics reports a geometric-mean 6.4 times over Stan and 53 times over Turing on standard benchmarks [55]. | 2025 to 2026 | demonstrated |
 | Energy measurement | An open benchmark measures inference energy across 40 architectures and reports time and energy Pareto configurations with savings above 40% in some cases [56]; one provider reports 0.24 watt-hours for a median text prompt in production [57]. | 2025 | demonstrated |
 
-Two rates give the background. Compute needed to reach a fixed language-model score has halved about every 8 months, with a 95% interval of about 5 to 14 months [58]. The price of reaching a fixed benchmark level fell between 9 and 900 times a year across six benchmarks, median about 50, with the fastest rates resting on under a year of data [59]. Both are rates of change in the capability frontier $C(t)$ or a price, and neither measures the gap to deployment.
+Two rates give the background. Compute needed to reach a fixed language-model score has halved about every 8 months, with a 95% interval of about 5 to 14 months [58]. The price of reaching a fixed benchmark level fell between 9 and 900 times a year across six benchmarks, median about 50, with the fastest rates resting on under a year of data [59]. Both are rates of change in the capability frontier $C_f(t)$ or a price, and neither measures the gap to deployment.
 
 Two limits apply to the table. Several rows are speedups against a baseline chosen by the authors, so the numbers do not add or compare across rows. And "possible" in these rows means demonstrated by the authors in a stated setting, not available in a product.
 
@@ -106,7 +106,7 @@ Two limits apply to the table. Several rows are speedups against a baseline chos
 
 **Use at the level of people and tasks.** Nearly 40% of United States adults aged 18 to 64 used generative AI in late 2024, and about 23% of workers had used it at work in the prior week [73]. A field study of 5,179 customer-support agents found 14% more resolutions per hour on average and 34% more for novice and low-skilled workers [74]. A randomized trial with 16 experienced developers and 246 tasks found tasks with AI allowed took 19% longer in that setting [75]. These results differ because tasks, people and tools differ. They show that deployment is not a single event, which is why $D(t)$ is defined from offers and not from use.
 
-**What slows research itself.** Research effort has risen while research productivity has fallen in most sectors, and keeping chip density doubling needed more than 18 times the researchers of the early 1970s [76]. This bears on $C(t)$, not on $L$, and is noted so the article does not read the capability frontier as free.
+**What slows research itself.** Research effort has risen while research productivity has fallen in most sectors, and keeping chip density doubling needed more than 18 times the researchers of the early 1970s [76]. This bears on $C_f(t)$, not on $L$, and is noted so the article does not read the capability frontier as free.
 
 ## 4. Calendars: reporting and funding periods
 
@@ -139,9 +139,9 @@ Control over distribution is documented in public court records. In September 20
 - A5. After release the incumbent's cost is $c_e(t)$, the cost of the public method.
 - A6. Flow gains from release are treated as constant after the release date (steady-state approximation).
 
-**Proposition 1 (calendar quantization).** If a method becomes ready at time $\rho$ and the firm releases at the first decision date at or after $\rho$ when release is worthwhile, the wait is $w^{cad} = \lceil \rho / T \rceil T - \rho$. If $\rho \bmod T$ is uniform on $[0, T)$, then $E[w^{cad}] = T/2$ and $\mathrm{Var}[w^{cad}] = T^2/12$.
+**Proposition 1 (calendar quantization).** If a method becomes ready at time $t_r$ and the firm releases at the first decision date at or after $t_r$ when release is worthwhile, the wait is $w^{cad} = \lceil t_r / T \rceil T - t_r$. If $t_r \bmod T$ is uniform on $[0, T)$, then $E[w^{cad}] = T/2$ and $\mathrm{Var}[w^{cad}] = T^2/12$.
 
-*Derivation.* Write $\rho = mT + x$ with $x$ uniform on $[0,T)$. For $x > 0$ the next date is $(m+1)T$ and the wait is $T - x$, which is uniform on $(0, T]$. A uniform variable on an interval of length $T$ has mean $T/2$ and variance $T^2/12$. The case $x = 0$ has probability zero. $\square$
+*Derivation.* Write $t_r = mT + x$ with $x$ uniform on $[0,T)$. For $x > 0$ the next date is $(m+1)T$ and the wait is $T - x$, which is uniform on $(0, T]$. A uniform variable on an interval of length $T$ has mean $T/2$ and variance $T^2/12$. The case $x = 0$ has probability zero. $\square$
 
 *Consequence.* A firm deciding on a quarterly calendar adds on average about 6 weeks, and one deciding on a funding cycle of 3 to 5 years adds 1.5 to 2.5 years, to the readiness delay $d$, with no engineering cause. The assumption that readiness is uniform within a period is the weak part, and Prediction 1 tests the converse.
 
@@ -316,9 +316,9 @@ The reading that the build-out is mostly a closed loop meets four sets of docume
 
 ## 12. What a task costs: the infrastructure cost model
 
-Section 0 defines cost per task as $c = \kappa e + h$. This section fills in $\kappa$ and $h$ from the cost of an accelerator-hour and ties the result to $C(t)$, $D(t)$ and $L$.
+Section 0 defines cost per task as $c = \kappa e + h$. This section fills in $\kappa$ and $h$ from the cost of an accelerator-hour and ties the result to $C_f(t)$, $D(t)$ and $L$.
 
-**Accelerator-hour.** Let $K$ be capital per accelerator, including the share of facility, power and cooling, with straight-line life $y$ years and utilization $u$. Capital per utilized hour is $a = K / (8760\, y\, u)$. Let $P$ be facility power per accelerator in kilowatts and $\kappa_e$ the price of electricity per kilowatt-hour. A task that occupies $\tau$ utilized hours costs
+**Accelerator-hour.** Let $K_{acc}$ be capital (written with a subscript to keep it apart from the adoption cost $K$ of Section 6) per accelerator, including the share of facility, power and cooling, with straight-line life $y$ years and utilization $u$. Capital per utilized hour is $a = K_{acc} / (8760\, y\, u)$. Let $P$ be facility power per accelerator in kilowatts and $\kappa_e$ the price of electricity per kilowatt-hour. A task that occupies $\tau$ utilized hours costs
 $$c = \tau\,(a + \kappa_e P), \qquad e = 3.6\times 10^{6}\, P\,\tau \ \text{joules}.$$
 
 **Proposition 8 (the capital-loaded price of a joule).** At fixed hardware, $c = \kappa^{*} e$ with $\kappa^{*} = \kappa_e + a/P$ per kilowatt-hour equivalent, so joules per task stays the right unit of account, and the price that converts joules into dollars is dominated by $a/P$ whenever $a/P \gg \kappa_e$. *Derivation.* Eliminate $\tau$ between the two expressions. $\blacksquare$ (By hand.)
@@ -353,7 +353,7 @@ Three consequences follow. Cheaper electricity can lower the cost of a task by a
 
 *Figure 13. A 280-fold price fall and how much hardware can explain (model output from the annual rates in [18]). Data: `latency_data/model_outputs.json`.*
 
-**Tie to the frontiers.** Let $\tau_C(t)$ be the lowest accelerator time per task at quality $q$ among documented methods and $\tau_D(t)$ the time in generally available products. Then $c_C(t) = \tau_C(t)\,\kappa^*(t)$ for the capability frontier, and the deployed frontier follows the price offered, which is at least cost plus the margin of Section 6. Hardware cost enters $C$ and $D$ in the same way, because suppliers and buyers purchase from the same market, so it shifts both frontiers together and leaves $L$ nearly unchanged. Latency is moved by the software term $\tau$: a method that cuts accelerator time per task by a factor $g$ lowers $c_C$ by that factor when it is published, and $c_D$ only when a product adopts it. During the wait, the ratio of the deployed to the capability cost is $g$.
+**Tie to the frontiers.** Let $\tau_C(t)$ be the lowest accelerator time per task at quality $q$ among documented methods and $\tau_D(t)$ the time in generally available products. Then $c_C(t) = \tau_C(t)\,\kappa^*(t)$ for the capability frontier, and the deployed frontier follows the price offered, which is at least cost plus the margin of Section 6. Hardware cost enters $C_f$ and $D$ in the same way, because suppliers and buyers purchase from the same market, so it shifts both frontiers together and leaves $L$ nearly unchanged. Latency is moved by the software term $\tau$: a method that cuts accelerator time per task by a factor $g$ lowers $c_C$ by that factor when it is published, and $c_D$ only when a product adopts it. During the wait, the ratio of the deployed to the capability cost is $g$.
 
 **Tie to the cadence model.** Capital is committed in multi-year steps and charged over lives of several years, so the decision dates for hardware are far apart, and the adoption cost $K$ of Section 6 includes the value of installed capital that a new method would strand or would save. A method that runs on hardware a firm already owns has an adoption cost that is mostly engineering. A method that needs new hardware carries the capital cycle with it. That is why open software methods on existing parts are the least gated, and why Prediction 3 compares targets with and without porting tools.
 
