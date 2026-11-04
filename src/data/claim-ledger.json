@@ -198,6 +198,15 @@
         "src/pages/about/rce-compile.astro",
         "src/data/studies.json"
       ]
+    },
+    {
+      "id": "name-rce-law-decl",
+      "status": "name",
+      "pattern": "an example, a check or a law\\b",
+      "note": "An RCE law declaration, a construct of the language beside example and check; not a claim of a physical law.",
+      "files": [
+        "src/components/RceJepaProposer.astro"
+      ]
     }
   ]
 }
