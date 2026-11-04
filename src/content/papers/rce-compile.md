@@ -248,7 +248,7 @@ No source measures such a split for any compiler, by decision count, CPU time, c
 
 The literature does support the two principles beneath the split. **Gate everything**: SuperCoder's best configuration still fails 5% of its test-checked outputs, and the strongest commercial baseline in that paper passes only 51.5% [41]; STOKE paired a stochastic search with an SMT validator [K]. **Put deterministic reuse first**: Compiled AI moves all stochastic work into a one-time compile phase and breaks even after about 17 runs [42], and Progressive Crystallization promotes recurring agent runs into deterministic workflows [43]. One caution carries over: in Veritas and CktFormalizer the gate checks the stochastic output against its own specification (CNF clauses, hardware types), while an error in the specification sits outside the gate [44] [45].
 
-The 98/2 split is therefore a hypothesis, to be measured rung by rung with a declared unit and recorded by the gate. Candidate units are accepted decisions, accepted rewrites, CPU seconds and joules; each is reported separately, because they can disagree.
+The 98/2 split is therefore a registered hypothesis, listed in §7, not a measured result. It is to be measured rung by rung with a declared unit and recorded by the gate. Candidate units are accepted decisions, accepted rewrites, CPU seconds and joules; each is reported separately, because they can disagree.
 
 ## 6. Prior art
 
@@ -439,7 +439,7 @@ A *hit* is an equal key on a two-directory or renamed pair. A *false hit* is an 
 - **The per-part table is qualitative.** It summarises architecture and documentation; it is not a measurement of each compiler.
 - **No energy has been measured.** E4 has counted erasure and description length on a machine that exposes no energy counter (§8.2), so its results hold no joules and H4 is untested; its energy runs need a host with RAPL or `powermetrics`.
 - **The measured corpora are small.** E1 builds one or two programs per language; E5 hashes 16 kernels and 4 programs from two toolchains that both lower through LLVM, on one machine, with WebAssembly as its one IR (§8.3).
-- **The 98/2 split is unmeasured** (§5).
+- **The 98/2 split is registered, not yet measured.** It is hypothesis H6 (§5, §7), and its measurement is planned rung by rung with a declared unit.
 
 ## 10. Conclusion
 
