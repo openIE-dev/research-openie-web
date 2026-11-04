@@ -28,7 +28,7 @@ A computing system usually treats energy as a cost reported after the work. Here
 Three established results set the frame.
 
 - **Landauer (1961).** Erasing one bit at temperature $T$ dissipates at least $k_B T \ln 2$, with $k_B = 1.380649 \times 10^{-23}$ J/K. At $T = 300$ K this is $2.87 \times 10^{-21}$ J.
-- **Horowitz (2014).** Practical CMOS operations cost many orders of magnitude more: about 0.9 pJ for a 32-bit floating-point add and about 640 pJ for a 32-bit DRAM read at 45 nm. Data movement, not arithmetic, dominates.
+- **Horowitz (2014).** Practical CMOS operations cost many orders of magnitude more: about 0.9 pJ for a 32-bit floating-point add at 45 nm and about 1 to 2 nJ for a DRAM access (paper text; the plenary slides give 1.3 to 2.6 nJ for a 64-bit access). The often-quoted 640 pJ per 32-bit DRAM read appears in later slides that cite Horowitz, not in the ISSCC paper or plenary slides, so it is not used here. Data movement, not arithmetic, dominates.
 - **Howard (1966).** The value of information (VoI) of an observation is the expected gain in a decision's payoff from making it before deciding, minus its cost. An observation with VoI ≤ 0 is not worth making.
 
 Together they say that energy per answer has a physical floor far below current practice, that most of the gap is data movement, and that an observation or computation is worth its joules only when it can change a decision.
@@ -96,7 +96,7 @@ Instruction counts per decision on an Arm Cortex-M4 with 12 input features (emul
 | int8 multilayer perceptron (MLP) | 2,451 |
 | Binding classifiers, first version without early exit | 6,948 |
 
-**Energy per decision (calculation).** The STM32U3 datasheet gives 15.5 µA/MHz at 3.3 V, so one clock cycle costs $15.5 \times 10^{-6}\,\text{A} \times 3.3\,\text{V} / 10^6\,\text{Hz} = 51$ pJ. At about one instruction per cycle, 1,723 instructions cost about $1{,}800 \times 51\,\text{pJ} \approx 92$ nJ.
+**Energy per decision (calculation).** The STM32U3 datasheet gives 15.5 µA/MHz at 3.3 V, so one clock cycle costs $15.5 \times 10^{-6}\,\text{A} \times 3.3\,\text{V} / 10^6\,\text{Hz} = 51$ pJ. At about one instruction per cycle, 1,723 instructions cost about $1{,}723 \times 51\,\text{pJ} \approx 87.9$ nJ.
 
 ### 4.2 Accuracy
 
@@ -120,7 +120,7 @@ One reading of a metal-oxide gas sensor costs 0.5 to 27 mJ depending on the part
 | Total | 9.9 µW | Sum |
 | Same tag with Nordic nRF54L15 sleep | 5.1 µW | Datasheet |
 
-**Check of the heater term.** $3.0\,\mu\text{W} \times 86{,}400\,\text{s/day} / 9.6\,\text{readings/day} = 27$ mJ per reading, the upper end of the datasheet range. Classification at 92 nJ × 9.6 per day averages $1.0 \times 10^{-11}$ W, negligible. At this schedule sleep current, not heating or classification, is the largest term, so the MCU is chosen for sleep current.
+**Check of the heater term.** $3.0\,\mu\text{W} \times 86{,}400\,\text{s/day} / 9.6\,\text{readings/day} = 27$ mJ per reading, the upper end of the datasheet range. Classification at 87.9 nJ × 9.6 per day averages $1.0 \times 10^{-11}$ W, negligible. At this schedule sleep current, not heating or classification, is the largest term, so the MCU is chosen for sleep current.
 
 **Battery life (calculation).** A CR2032 cell holds about 235 mAh to 2.0 V at 21 °C at 3.0 V nominal (Energizer datasheet), so $0.235\,\text{A·h} \times 3600\,\text{s/h} \times 3.0\,\text{V} = 2.54$ kJ. The tag uses $9.9 \times 10^{-6}\,\text{W} \times 3.156 \times 10^7\,\text{s/yr} = 312$ J per year, so the life is $2540 / 312 = 8.1$ years without self-discharge and about 7.5 years with 1% per year self-discharge. Lithium coin cells deliver less below 21 °C; that derating is not in the model and must be measured at cold-chain temperature. The 3.0 µW heater average implies a very low duty cycle for a sensor that draws milliwatts when on. Whether sensing response holds at that duty is a measurement still to make.
 

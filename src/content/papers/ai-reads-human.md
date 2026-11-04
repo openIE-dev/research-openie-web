@@ -52,7 +52,7 @@ Let a set of records R carry information that a machine consumer needs. Let F be
 | N | number of records | 1 |
 | k | a tokenizer | n/a |
 | T_{F,k} | tokens produced by k on the encoding of R | token |
-| ρ_{F,k} = B_F / T_{F,k} | bytes per token | byte/token |
+| d_{F,k} = B_F / T_{F,k} | bytes per token | byte/token |
 | t_parse(F) | wall time to decode R to in-memory values | s |
 | P | average power during an operation | W = J/s |
 | E | energy of an operation, E = ∫ P dt, approximately P_avg · t | J |
@@ -74,7 +74,7 @@ Three dimensionless ratios can be measured today without any energy meter:
 
 and they are linked by one identity that the token numbers below obey:
 
-κ_F = β_F · (ρ_ref / ρ_F)
+κ_F = β_F · (d_ref / d_F)
 
 so a format can cost more tokens because it has more bytes, because its bytes split into more pieces, or both.
 
@@ -91,7 +91,7 @@ Energy figures for model inference come from other authors' measurements on thei
 - Samsi et al., "From Words to Watts: Benchmarking the Energy Costs of Large Language Model Inference" (arXiv:2310.03003), define energy per output token as total GPU energy divided by decoded output tokens, and report about 3 to 4 J per output token for a 65-billion-parameter LLaMA model at a maximum generation length of 512, measured with NVIDIA DCGM on their MIT SuperCloud setup (V100 GPUs for the 8, 16 and 32 shard runs). That paper does not separate prefill from decode energy.
 - Luccioni, Jernite and Strubell, "Power Hungry Processing: Watts Driving the Cost of AI Deployment?" (ACM FAccT 2024, DOI 10.1145/3630106.3658542), measured energy per 1,000 inferences by task with CodeCarbon on an 8-GPU A100 node; their Table 2 reports mean 0.002 kWh for text classification and 0.047 kWh for text generation. We checked these numbers against the ACM Corrected Version of Record V1.1 (6 November 2024), which gives the same Table 2 values and the same setup (8 A100 80GB GPUs on AWS, CodeCarbon). Cite V1.1: the paper notes that an earlier version used 0.012 kWh in one comparison. The rest of the paper was read only in part.
 
-A per-word DRAM-read energy figure (a widely quoted 640 pJ per 32-bit read) is **not used on this page**: we have not read its primary source, so it is listed as unverified in section 9.
+A per-word DRAM-read energy figure (a widely quoted 640 pJ per 32-bit read) is **not used on this page**. Its attributed source, Horowitz (2014), was read: the paper gives about 1 to 2 nJ per DRAM access and the plenary slides 1.3 to 2.6 nJ per 64-bit access; the 640 pJ figure appears only in later slides that cite it. Section 9 records this status.
 
 ## 3. What was measured
 
@@ -136,7 +136,7 @@ A language model reads tokens, not bytes. The same records, counted with the `cl
 | YAML | 51.4 | 2.24 |
 | JSON, pretty-printed (indent 2) | 65.6 | 2.86 |
 
-The identity in section 2 holds on these data: for compact JSON, β = 1.912 and ρ_CSV/ρ_JSON = 0.826, giving κ = 1.58; for YAML, 2.028 × 1.107 = 2.24; for pretty JSON, 3.056 × 0.936 = 2.86. Compact JSON costs more tokens mainly because it has about 1.9 times the bytes of CSV, and pretty JSON mostly for the same reason plus indentation. YAML has both more bytes and shorter tokens.
+The identity in section 2 holds on these data: for compact JSON, β = 1.912 and d_CSV/d_JSON = 0.826, giving κ = 1.58; for YAML, 2.028 × 1.107 = 2.24; for pretty JSON, 3.056 × 0.936 = 2.86. Compact JSON costs more tokens mainly because it has about 1.9 times the bytes of CSV, and pretty JSON mostly for the same reason plus indentation. YAML has both more bytes and shorter tokens.
 
 ![Token ratio to CSV under five tokenizers](/living/ai-reads-human/charts/tokens-five-tokenizers.svg)
 
@@ -260,7 +260,7 @@ Status per source is in the [read ledger](/living/ai-reads-human/READ_LEDGER.md)
 | The Unicode Standard and UAX #15 | unicode.org (not fetched) |
 | ECMA-262 (number serialisation referenced by RFC 8785) | not fetched |
 | The TeXbook, printed edition | ISBN 978-0-201-13447-6 |
-| Horowitz, "Computing's energy problem", source of the quoted 640 pJ per 32-bit DRAM read | **unverified, not read, not used** |
+| Horowitz, "Computing's energy problem", attributed source of the quoted 640 pJ per 32-bit DRAM read | **read; 640 pJ not found in the paper or plenary slides (they give 1 to 2 nJ, and 1.3 to 2.6 nJ per 64-bit access); not used** |
 | Strubell et al. 2019; Patterson et al. 2021 and 2022; Wu et al. 2021 | cited only inside the Samsi and Luccioni papers; not read, no claim made |
 
 ## 10. What will be added

@@ -788,7 +788,7 @@ $$
 E_{\text{Landauer}}(n, T) = n\, k_B T \ln 2, \qquad k_B = 1.380649 \times 10^{-23}\ \text{J/K},
 $$
 
-which is $2.87 \times 10^{-21}$ J per bit at 300 K (Landauer, 1961; Bennett, 1973, for the reversible limit). Measured CMOS operations cost about 0.9 pJ for a 32-bit floating-point add and about 640 pJ for a 32-bit DRAM read at 45 nm (Horowitz, 2014), eight to eleven orders of magnitude above that floor. The Landauer figure on a receipt is therefore a labeled lower bound, never a measurement.
+which is $2.87 \times 10^{-21}$ J per bit at 300 K (Landauer, 1961; Bennett, 1973, for the reversible limit). Measured CMOS operations cost about 0.9 pJ for a 32-bit floating-point add at 45 nm and about 1 to 2 nJ for a DRAM access (Horowitz, 2014, paper text; the plenary slides give 1.3 to 2.6 nJ for a 64-bit access), eight to twelve orders of magnitude above that floor. The often-quoted 640 pJ per 32-bit DRAM read is not in that paper or its slides and is not used here. The Landauer figure on a receipt is therefore a labeled lower bound, never a measurement.
 
 **Catalog cost model.** Before a gear runs, the software reference prices it as
 

@@ -150,15 +150,15 @@ Each hypothesis is listed with its kill criterion. If the criterion is met, the 
 
 | ID | Hypothesis | Test corpus | Measure | Kill criterion |
 |---|---|---|---|---|
-| H1 | Simulation projections are bitwise identical | VGDL games from GVGAI; GameCraft-Bench traces | $H(s_t)$ across Rust native, Rust to Wasm, Python, XState for $10^5$ ticks | Any hash mismatch at any tick on any pair |
-| H2 | Strict mode survives a hardware change | Same, on x86-64 and ARM64 hosts | Hash equality | Any mismatch |
-| H3 | Without strict mode, divergence follows $t^{*} \propto \ln(\Delta/\delta_0)$ | Physics-heavy Summer Engine templates re-expressed as Forms | Divergence time against injected $\delta_0$ | Slope of $t^{*}$ against $\ln(1/\delta_0)$ not distinguishable from zero |
-| H4 | Form-encoded rules cut code as GameRule did | Haunted Jaunt, Survival Shooter, Tanks behaviors | Lines of behavior code | Reduction under 50% (GameRule reached 81.3%) |
-| H5 | Form runtime exceeds the GameRule ceiling | Synthetic actor scaling | Step time against $N$ | Step time over 20 ms below $N = 350$ |
-| H6 | Interface checks catch real defects | Mage's 26 patterns; injected binding and schema faults | Detection rate; mechanism F1 | Detection below 90% of injected faults, or F1 no better than the no-IR 0.12 |
-| H7 | Rendering stays within tolerance | Same scene on three GPU vendors via WGSL | Pixel error fraction | Above $p_{\max}$ on any calibrated material class |
-| H8 | Replay is complete | One-hour recorded sessions | Final hash reproduced from $D$ alone | Any replay that needs state not in $D$ |
-| H9 | Benchmark parity | GameCraft-Bench 140 tasks via a Form-to-Godot emitter | Pass rate against native Godot submissions | Lower pass rate on behavior-identical inputs |
+| GE-H1 | Simulation projections are bitwise identical | VGDL games from GVGAI; GameCraft-Bench traces | $H(s_t)$ across Rust native, Rust to Wasm, Python, XState for $10^5$ ticks | Any hash mismatch at any tick on any pair |
+| GE-H2 | Strict mode survives a hardware change | Same, on x86-64 and ARM64 hosts | Hash equality | Any mismatch |
+| GE-H3 | Without strict mode, divergence follows $t^{*} \propto \ln(\Delta/\delta_0)$ | Physics-heavy Summer Engine templates re-expressed as Forms | Divergence time against injected $\delta_0$ | Slope of $t^{*}$ against $\ln(1/\delta_0)$ not distinguishable from zero |
+| GE-H4 | Form-encoded rules cut code as GameRule did | Haunted Jaunt, Survival Shooter, Tanks behaviors | Lines of behavior code | Reduction under 50% (GameRule reached 81.3%) |
+| GE-H5 | Form runtime exceeds the GameRule ceiling | Synthetic actor scaling | Step time against $N$ | Step time over 20 ms below $N = 350$ |
+| GE-H6 | Interface checks catch real defects | Mage's 26 patterns; injected binding and schema faults | Detection rate; mechanism F1 | Detection below 90% of injected faults, or F1 no better than the no-IR 0.12 |
+| GE-H7 | Rendering stays within tolerance | Same scene on three GPU vendors via WGSL | Pixel error fraction | Above $p_{\max}$ on any calibrated material class |
+| GE-H8 | Replay is complete | One-hour recorded sessions | Final hash reproduced from $D$ alone | Any replay that needs state not in $D$ |
+| GE-H9 | Benchmark parity | GameCraft-Bench 140 tasks via a Form-to-Godot emitter | Pass rate against native Godot submissions | Lower pass rate on behavior-identical inputs |
 
 ## 7. Infeasibility flags
 
