@@ -104,7 +104,7 @@ Source for the ten-rung order: the OpenIE authors' unpublished stack analysis, s
 
 ## 4. Where the teaching line already splits
 
-The line looks like one ladder. It already splits three ways in the working study.
+The line looks like one ladder. It already splits three ways.
 
 ### 4.1 Host computer and microcontroller
 
@@ -154,7 +154,7 @@ seL4 is a microkernel with a machine-checked proof. Trustworthy Systems describe
 
 ### 5.7 Real-time kernel
 
-FreeRTOS, Zephyr, RTEMS, Apache NuttX, Eclipse ThreadX, Tock, Hubris, RIOT, Apache Mynewt, Contiki-NG, VxWorks, QNX, INTEGRITY, and embOS are placed by the working study in the real-time and embedded region. Mbed OS is placed with an end-of-life note: Arm's organization page states Mbed was sunsetted in July 2026. Bare metal remains a control scheme, not an operating system.
+FreeRTOS, Zephyr, RTEMS, Apache NuttX, Eclipse ThreadX, Tock, Hubris, RIOT, Apache Mynewt, Contiki-NG, VxWorks, QNX, INTEGRITY, and embOS are placed, from their own public pages, in the real-time and embedded region. Mbed OS is placed with an end-of-life note: Arm's organization page states Mbed was sunsetted in July 2026. Bare metal remains a control scheme, not an operating system.
 
 ### 5.8 Teaching kernel and research kernel
 
@@ -166,7 +166,7 @@ MirageOS constructs unikernels from libraries and runs them under a hypervisor. 
 
 ### 5.10 Other host operating systems, by job
 
-FreeBSD, NetBSD, OpenBSD, DragonFly BSD, illumos (core, with downstream distributions), Redox, Fuchsia on Zircon, OpenHarmony (Linux or LiteOS behind a kernel abstraction layer), SerenityOS, Haiku, MINIX 3, HelenOS, GNU Hurd, MenuetOS, KolibriOS, and ToaruOS are host or host-core systems the working study placed from fetched pages. They are alternatives of the machine's law or of a complete system around that law. They are not ranked here.
+FreeBSD, NetBSD, OpenBSD, DragonFly BSD, illumos (core, with downstream distributions), Redox, Fuchsia on Zircon, OpenHarmony (Linux or LiteOS behind a kernel abstraction layer), SerenityOS, Haiku, MINIX 3, HelenOS, GNU Hurd, MenuetOS, KolibriOS, and ToaruOS are host or host-core systems placed from their public pages. They are alternatives of the machine's law or of a complete system around that law. They are not ranked here.
 
 ### 5.11 What not to collapse
 
@@ -178,11 +178,11 @@ Source: the OpenIE authors' unpublished stack analysis, sections 4, 8, 9, 10, an
 
 ### 5.12 Three names that stay unresolved
 
-Commercial HarmonyOS stays between two statements. OpenHarmony's overview says the project uses a multi-kernel design, Linux or LiteOS, behind a kernel abstraction layer. Huawei consumer document pages fetched for the working study returned a shell titled Document and no kernel sentence. No kernel is stated for the commercial product.
+Commercial HarmonyOS stays between two statements. OpenHarmony's overview says the project uses a multi-kernel design, Linux or LiteOS, behind a kernel abstraction layer. The Huawei consumer document pages that were fetched returned a shell titled Document and no kernel sentence. No kernel is stated for the commercial product.
 
-WeensyOS stays unresolved. Course URLs returned 404 for the working study. The 2026 course home does not name it. No kernel is guessed.
+WeensyOS stays unresolved. The course URLs that were fetched returned 404. The 2026 course home does not name it. This study does not state a kernel for it.
 
-Taos stays unresolved. No fetched page said what it is. No kernel is guessed.
+Taos stays unresolved. No fetched page said what it is. This study does not state a kernel for it.
 
 ---
 
@@ -210,7 +210,7 @@ Source: the OpenIE authors' unpublished stack analysis, section 6. Named systems
 
 ## 8. The constellation by job
 
-The working study drew the other ways, academia and research, another look, and loose ends as maps grouped by job. The method is the point.
+The other groupings, academia and research, another look, and loose ends, are maps grouped by job. The method is the point.
 
 Jobs already separated include: host operating system, kernel, real-time kernel, verified or separation kernel, hypervisor, unikernel or library operating system, instruction-set contract, accelerator contract, translation layer, build system, distribution, middleware, hardware-abstraction library, teaching kernel, research kernel, human surface.
 

@@ -1,6 +1,6 @@
 ---
 title: "Metabolic Intelligence: Budget-Native Compute from Tag to Campus"
-deck: "Computer intelligence designed to run inside a fixed energy budget, measured on a cold-chain sensor tag and modeled for a grid-following data center, with every number labeled by how it was obtained."
+deck: "Computer intelligence designed to run inside a fixed energy budget. Tag results are emulator counts and a datasheet schedule, not an external meter. The data-center test is a protocol model. Every number is labeled by how it was obtained."
 id: mei
 status: "Product white paper"
 author: "David Charlot, Open Interface Engineering"
@@ -35,7 +35,7 @@ Together they say that energy per answer has a physical floor far below current 
 
 The paper studies two scales.
 
-| Scale | Budget unit | Controls | Measured outcome |
+| Scale | Budget unit | Controls | Outcome in this paper |
 |---|---|---|---|
 | Sensor tag | µW sustained; nJ to mJ per event | Heater duty, MCU sleep, classifier early exit | Battery life; accuracy under sequential learning |
 | Data center (100 MW, grid-capped) | MW import cap | Pause, speed, model choice, effort, battery, shed | Minutes over cap; share of interactive requests served |

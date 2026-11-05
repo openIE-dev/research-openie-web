@@ -12,7 +12,7 @@ import Layout from '../../layouts/Layout.astro';
       Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems
     </h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
-      This paper defines a gate that lets a machine act only after a check passes, and a rule that tries the cheapest method first. It reports software results and one board-level energy measurement, each labeled by how it was obtained.
+      This paper defines a gate that lets a machine act only after a check passes, and a rule that tries the cheapest method first. It reports software results and board readings from an AMD Kria KV260, each labeled by how it was obtained.
     </p>
     <div class="mt-8 glass-card p-6">
       <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">In plain words</p>
@@ -21,6 +21,15 @@ import Layout from '../../layouts/Layout.astro';
         <li>It should try the cheapest way to finish a job first and use a big AI (artificial intelligence) model only if nothing cheaper works.</li>
         <li>Every decision is written down with the energy it used, so anyone can check it later.</li>
       </ol>
+    </div>
+
+    <div class="mt-8 glass-card p-6">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">What the board reading is</p>
+      <ul class="list-disc pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
+        <li>Gate fabric, onboard INA260 (power monitor), whole module: 11,428 pJ per gate cycle (standard error 129 pJ, N = 4). The paper files this as <code>measured_j</code>. It is not a core-rail reading.</li>
+        <li>Seed fabric, same meter and method: +0.0098 W, which is 9.8 mW, or 98.0 pJ per seed cycle (standard error 30.8 pJ, N = 4). The overview reports this difference as inconclusive until a programmable-logic rail meter and at least 10 passes.</li>
+        <li>Part II software figures are catalog estimates. <code>measured_j</code> is not set on that path.</li>
+      </ul>
     </div>
 
     <div class="mt-10 flex flex-wrap gap-3">

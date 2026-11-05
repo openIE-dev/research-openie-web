@@ -101,8 +101,8 @@ La Figura 1 sitúa en un solo eje las cifras en dólares de las Secciones 2.1 a 
 |---|---|---|---|
 | Tokens procesados por Google al mes | 9,7 billones (2024), unos 480 billones (2025), más de 3,2 mil billones (mayo de 2026) | Declarado por la empresa | Pichai [8] |
 | Herramientas internas de IA para desarrolladores de Google | medio billón de tokens al día en marzo de 2026, más de tres billones al día en mayo | Declarado por la empresa | [8] |
-| Coste de una consulta de programación agéntica a precios de lista | 2,50 dólares: un contexto de 100.000 tokens y 10.000 tokens de salida a 15 y 75 dólares por millón de tokens | Ilustración | Appenzeller y Li [1] |
-| Lo mismo a 3 consultas por hora, 7 horas al día, 200 días | unos 10.000 dólares al año por desarrollador | Ilustración | [1] |
+| Coste de una consulta de programación agéntica a precios de lista | 2,25 dólares: un contexto de 100.000 tokens a 15 dólares por millón son 1,50 dólares, y 10.000 tokens de salida a 75 dólares por millón son 0,75 dólares | Ilustración | Appenzeller y Li [1] |
+| Lo mismo a 3 consultas por hora, 7 horas al día, 200 días | 9.450 dólares al año por desarrollador (4.200 consultas × 2,25), unos 10.000 | Ilustración | [1] |
 | Tokens en programación agéntica frente a razonamiento sobre código y chat de código | unas 1.000 veces más; las ejecuciones de una misma tarea difieren hasta 30 veces; un mayor uso de tokens "no se traduce en mayor precisión" | Medido (ocho modelos, SWE-bench Verified) | Bai, Huang y Wang [9] |
 | Pérdidas netas de la inversión de Microsoft en OpenAI, trimestre cerrado el 30 de septiembre de 2025 | 4.100 millones de dólares antes de impuestos, su participación por el método de la participación, en otros gastos; una reducción de 3.100 millones del beneficio neto (0,41 dólares por acción diluida) | Registrado y declarado por la empresa | Microsoft Form 10-Q [7]; Microsoft FY26 Q1 performance [19] |
 

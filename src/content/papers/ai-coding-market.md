@@ -91,8 +91,8 @@ Figure 1 sets the dollar figures of Sections 2.1 to 2.3 and 2.6 on one axis, mar
 |---|---|---|---|
 | Google tokens processed per month | 9.7 trillion (2024), about 480 trillion (2025), over 3.2 quadrillion (May 2026) | Company-reported | Pichai [8] |
 | Google internal AI developer tools | half a trillion tokens a day in March 2026, more than three trillion a day in May | Company-reported | [8] |
-| Cost of one agentic coding query at list prices | \$2.50: a 100,000-token context and 10,000 output tokens at \$15 and \$75 per million tokens | Illustration | Appenzeller and Li [1] |
-| The same at 3 queries an hour, 7 hours a day, 200 days | about \$10,000 a year per developer | Illustration | [1] |
+| Cost of one agentic coding query at list prices | \$2.25: a 100,000-token context at \$15 per million tokens is \$1.50, and 10,000 output tokens at \$75 per million tokens is \$0.75 | Illustration | Appenzeller and Li [1] |
+| The same at 3 queries an hour, 7 hours a day, 200 days | \$9,450 a year per developer (4,200 queries × \$2.25), about \$10,000 | Illustration | [1] |
 | Tokens in agentic coding against code reasoning and code chat | about 1,000 times more; runs of one task differ by up to 30 times; higher token use "does not translate into higher accuracy" | Measured (eight models, SWE-bench Verified) | Bai, Huang and Wang [9] |
 | Net losses from Microsoft's investment in OpenAI, quarter ended 30 September 2025 | \$4.1 billion pre-tax, its equity-method share, in other expense; a \$3.1 billion reduction in net income (\$0.41 per diluted share) | Filed and company-reported | Microsoft Form 10-Q [7]; Microsoft FY26 Q1 performance [19] |
 

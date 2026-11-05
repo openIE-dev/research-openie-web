@@ -101,8 +101,8 @@ La Figure 1 place sur un seul axe les montants en dollars des Sections 2.1 à 2.
 |---|---|---|---|
 | Tokens traités par Google par mois | 9 700 milliards (2024), environ 480 000 milliards (2025), plus de 3,2 millions de milliards (mai 2026) | Déclaré par l'entreprise | Pichai [8] |
 | Outils internes d'IA pour développeurs de Google | 500 milliards de tokens par jour en mars 2026, plus de 3 000 milliards par jour en mai | Déclaré par l'entreprise | [8] |
-| Coût d'une requête de programmation agentique aux prix catalogue | 2,50 dollars : un contexte de 100 000 tokens et 10 000 tokens de sortie à 15 et 75 dollars par million de tokens | Illustration | Appenzeller et Li [1] |
-| La même chose à 3 requêtes par heure, 7 heures par jour, 200 jours | environ 10 000 dollars par an et par développeur | Illustration | [1] |
+| Coût d'une requête de programmation agentique aux prix catalogue | 2,25 dollars : un contexte de 100 000 tokens à 15 dollars par million fait 1,50 dollar, et 10 000 tokens de sortie à 75 dollars par million font 0,75 dollar | Illustration | Appenzeller et Li [1] |
+| La même chose à 3 requêtes par heure, 7 heures par jour, 200 jours | 9 450 dollars par an et par développeur (4 200 requêtes × 2,25), environ 10 000 | Illustration | [1] |
 | Tokens en programmation agentique face au raisonnement sur le code et au chat de code | environ 1 000 fois plus ; les exécutions d'une même tâche diffèrent jusqu'à 30 fois ; un usage plus élevé de tokens « ne se traduit pas par une précision plus élevée » | Mesuré (huit modèles, SWE-bench Verified) | Bai, Huang et Wang [9] |
 | Pertes nettes de l'investissement de Microsoft dans OpenAI, trimestre clos le 30 septembre 2025 | 4,1 milliards de dollars avant impôts, sa part selon la méthode de mise en équivalence, dans les autres charges ; une réduction de 3,1 milliards du résultat net (0,41 dollar par action diluée) | Déposé et déclaré par l'entreprise | Microsoft Form 10-Q [7] ; Microsoft FY26 Q1 performance [19] |
 
