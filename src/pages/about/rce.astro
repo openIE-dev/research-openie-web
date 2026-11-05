@@ -23,6 +23,28 @@ import Layout from '../../layouts/Layout.astro';
       </ol>
     </div>
 
+    <div class="mt-8 glass-card p-6">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">Why it is built this way</p>
+      <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
+        <li>Refuse to admit. A program that does not yet have the Form's shape is not run; the checker names the place and the rule. This is the same bargain an ownership checker makes in a systems language: more is settled before the program runs, so less is paid for in production.</li>
+        <li>Checks in layers. The grammar, the types, ownership, the <code>requires</code> rules, the examples, the laws and the mutation scores each catch a different kind of fault, and each is run on every commit.</li>
+        <li>Proposers under one gate. A person, a search over existing Forms or a generative system can propose a program or a fix. Only the checker decides whether it is admitted, with the same result on every machine, so generated volume does not turn into unchecked complexity.</li>
+        <li>Joules as the unit of cost. Pricing a correct program in joules is the OpenIE extension of this argument. It is a design aim and a protocol: no receipt in the repository holds a meter reading yet, and the checker's cost units are not a measurement of energy.</li>
+      </ol>
+      <p class="mt-3 font-body text-xs text-brand-gray leading-relaxed">These points converge with arguments made in public by others in systems programming, for example on ownership and on layered validation; that is an observation about the ideas, not an endorsement of OpenIE by anyone.</p>
+    </div>
+
+    <div class="mt-8 glass-card p-6">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">Where it stands (5 November 2026)</p>
+      <ul class="list-disc pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
+        <li>All 311 normative clauses of the language have at least one conformance test.</li>
+        <li>The conformance suite has 2,236 tests. On the reference interpreter at commit <code>fb42112</code>: 2,221 pass, 0 fail, 15 unsupported. The Python and JavaScript emitters each pass 1,462 of the tests that apply to them, with 0 failures.</li>
+        <li>Landed on main: admission ladders and labels (D.12, rules LL-1 to LL-4), lifting of llama-family GGUF files with rotary embeddings and K formats (GT-10, LIFT-5, LIFT-6), a test for every command in section 10 (CMD-1), and clause ids with property suites and a check of <code>requires</code> at each call.</li>
+        <li>Not yet: there is no production compiler; the reference interpreter defines meaning and is not built for speed. Energy is not measured yet. The specification is draft 0.9, under review.</li>
+      </ul>
+      <p class="mt-3 font-body text-xs text-brand-gray leading-relaxed">Everything above can be rerun from <a href="https://github.com/openIE-dev/rce">openIE-dev/rce</a>: the conformance suite is in <code>conformance/</code>, and the counts are read from its reports.</p>
+    </div>
+
 
     <figure class="mt-10 glass-card p-4 fig-wide">
       <a class="fig-zoom" href="/figures/rce/spec/rce-overview.svg" aria-label="Enlarge figure"><picture><source type="image/svg+xml" srcset="/figures/rce/spec/rce-overview.svg" /><img src="/figures/rce/spec/rce-overview.png" alt="RCE overview: source, checker, Form P = (S, E, delta, D, lambda), hash-chained log D, emit targets Rust, Python, JS and Scala, host and compute fabrics" width="796" height="436" class="fig-img w-full rounded bg-white" loading="lazy" decoding="async" /></picture></a>
