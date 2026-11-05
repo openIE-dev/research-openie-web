@@ -71,7 +71,7 @@ const allTerms = [
   },
   {
     term: "measured_j",
-    def: "A joule reading from an external wall or shunt meter on a named rail, with its calibration stated. Never summed with reported_j, est_j or trajectory_j.",
+    def: "A joule reading from a wall or shunt meter on a named rail, with its calibration stated. Never summed with reported_j, est_j or trajectory_j. Metered Commit Gates also files its KV260 (AMD Kria) onboard INA260 (power monitor) differences under this label, and states that those readings are whole-module, not a core rail.",
   },
   {
     term: "trajectory_j",

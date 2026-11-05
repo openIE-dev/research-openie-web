@@ -18,9 +18,18 @@ import Layout from '../../layouts/Layout.astro';
       <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">In plain words</p>
       <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
         <li>Give a computer a fixed energy budget, and design it to give the best answer it can inside that budget.</li>
-        <li>A tiny sensor tag that checks food freshness can then run for about eight years on a coin battery.</li>
+        <li>A datasheet schedule for a tiny food-freshness tag comes out near eight years on a coin battery. That figure is the calculation in the paper (about 8.1 years before self-discharge, about 7.5 years at 1% a year). It is not a battery that was run down on a bench, and cold-chain temperature derating is not in the model.</li>
         <li>A data center can cut its power use when the electricity grid asks, by pausing or shrinking work, without giving wrong answers.</li>
       </ol>
+    </div>
+
+    <div class="mt-8 glass-card p-6">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">What was obtained, and what was not</p>
+      <ul class="list-disc pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
+        <li>No figure in the paper is from an external energy meter.</li>
+        <li>Tag power is a vendor datasheet plus a schedule model. Instruction counts are counted under an emulator.</li>
+        <li>The data-center section is a protocol-level model of a plant that follows grid power caps. It is not a campus meter reading.</li>
+      </ul>
     </div>
 
     <div class="mt-10 flex flex-wrap gap-3">

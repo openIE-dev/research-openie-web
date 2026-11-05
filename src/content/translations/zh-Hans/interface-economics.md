@@ -24,7 +24,7 @@ complete: true
 
 ## 0. 定义与范围
 
-**接口**是一种交接，一方的输出越过它成为另一方的输入：从陈述系统应当做什么的人（理论者），到构建系统的人（制造者），再到运行系统的人（使用者），或者在软件与硬件栈的两个层级之间。**接口假设**是对越过交接的值所施加的一个条件，接收方依赖它来保证自身的正确性，比如单位、范围、类型、版本或运行包络。当一个假设被依赖，却既没有写下也没有被检查时，它就是**未经审视的**。一大批工程文献，从 Garlan、Allen 和 Ockerbloom 关于架构失配的研究，到 Leveson 把事故视为交互故障的研究，都把许多系统故障定位在这样的假设上 [19, 20]。本文追问这些故障的代价是多少，并且只用原始来源明确给出的数字来回答。每个数字都按种类标注。**核算成本**是机构或企业报告的实际支出或损失。**模型估计**是用一种明确陈述的方法，从调查、访谈或二手数据中得出的数字。**预测**是关于未来的陈述。这三种数字不相加。
+**接口**是一种交接，一方的输出越过它成为另一方的输入：从陈述系统应当做什么的人（理论者），到构建系统的人（制造者），再到运行系统的人（使用者），或者在软件与硬件栈的两个层级之间。**接口假设**是对越过交接的值所施加的一个条件，接收方依赖它来保证自身的正确性，比如单位、范围、类型、版本或运行包络。当一个假设被依赖，却既没有写下也没有被检查时，它就是**未经审视的**。一大批工程文献，从 Garlan、Allen 和 Ockerbloom 关于架构失配的研究，到 Leveson 把事故视为交互故障的研究，都把许多系统故障定位在这样的假设上 [18, 19]。本文追问这些故障的代价是多少，并且只用原始来源明确给出的数字来回答。每个数字都按种类标注。**核算成本**是机构或企业报告的实际支出或损失。**模型估计**是用一种明确陈述的方法，从调查、访谈或二手数据中得出的数字。**预测**是关于未来的陈述。这三种数字不相加。
 
 单次接口故障的核算成本巨大而具体：包含火星气候探测者号在内的火星勘测者 1998 项目耗资 3.276 亿美元 [1]，ESA 批准了 2.14 亿 ECU，用于挽回在首次 Ariane 5 发射中损失的 Cluster 任务 [4]。模型估计更大，也更宽泛：NIST 估算，美国软件测试基础设施不足造成的年度代价为 595 亿美元 [6]，美国资本设施行业互操作性不足造成的代价为每年 158 亿美元 [7]。CISQ 估算，2022 年美国软件质量低劣的代价不低于 2.41 万亿美元，累积的技术债约为 1.52 万亿美元 [8]。这些数字都不是单独衡量接口故障的。每一个都包含了它。
 
@@ -42,7 +42,7 @@ complete: true
 
 **火星气候探测者号。** 这里的接口是一个单位：以磅力秒为单位的推进器冲量数据被当作牛顿秒读取 [2]。NASA 的项目概况说明给出，火星勘测者 1998 项目的成本为 3.276 亿美元，涵盖探测者号与火星极地着陆器两者：航天器研制 1.931 亿美元，发射 9170 万美元，运行 4280 万美元 [1]。当时的报道称，仅探测者号本身就是一个 1.25 亿美元的航天器 [3]。种类：项目的核算成本，并附有单个航天器的报道数字。
 
-**Ariane 501 与 Cluster。** 这里的接口是一个包络：从 Ariane 4 复用的软件假设了一个水平速度范围，而新运载火箭超出了这个范围 [5]。四颗 Cluster 卫星损失。ESA 关于挽回工作的记述，记录了其科学计划委员会在 1996 年为各个方案所定的价格，其中包括按原设计重建四颗卫星需 3.51 亿记账单位；1997 年，ESA 以 2.14 亿 ECU 批准了一项挽回任务，即 Cluster II [4, 17]。种类：ESA 所选挽回方案的核算成本，它是损失的下界，而不是卫星的价值或被推迟的科学研究的价值。
+**Ariane 5 Flight 501 与 Cluster。** 这里的接口是一个包络：从 Ariane 4 复用的软件假设了一个水平速度范围，而新运载火箭超出了这个范围 [5]。四颗 Cluster 卫星损失。ESA 关于挽回工作的记述，记录了其科学计划委员会在 1996 年为各个方案所定的价格，其中包括按原设计重建四颗卫星需 3.51 亿记账单位；1997 年，ESA 以 2.14 亿 ECU 批准了一项挽回任务，即 Cluster II [4, 17]。种类：ESA 所选挽回方案的核算成本，它是损失的下界，而不是卫星的价值或被推迟的科学研究的价值。
 
 这两个案例确定了问题的形状。在每个案例中，每个机构都做好了自己的工作，而代价落在接口上。在每个案例中，本可以发现失配的检查，其成本相对于损失而言都很低。两个案例都不能放大成一个全国性数字，因为单次事故不是样本。
 
@@ -78,7 +78,7 @@ CISQ 估计美国累积的技术债约为 1.52 万亿美元，这是一个存量
 
 经济学家以另一个名字研究接口问题已有数十年：兼容性。Katz 和 Shapiro 表明，当一个产品的价值随其可协作的用户数量上升时，企业实现兼容的激励取决于其规模和地位，市场可能提供过少的兼容性 [12]。Farrell 和 Saloner 表明，由于每个用户的选择取决于他人的选择，市场可能停留在旧标准上，也可能过快地转向新标准 [13]。David 关于 QWERTY 键盘的历史研究使路径依赖变得具体 [14]。Baldwin 和 Clark 表明，设计规则，即事先固定的可见接口，正是模块化产业得以形成的前提 [15]。Swann 为英国政府所作的综述总结了标准促进生产率和贸易的证据 [16]。
 
-共同的线索是：接口是一种带有私人成本的公共品。写下一个假设并检查它，会使越过该边界的每一方受益，但成本由动手写的人承担。每一方都有理由把交接当作别人的工作。标准机构、监管者和平台所有者，是历史上承担这一成本的机构。机器检查的表示，比如携带计量单位的类型，或由模型检查器检查的形式化规格 [21, 22]，会把封闭一个接口的私人成本降向运行其检查的成本。
+共同的线索是：接口是一种带有私人成本的公共品。写下一个假设并检查它，会使越过该边界的每一方受益，但成本由动手写的人承担。每一方都有理由把交接当作别人的工作。标准机构、监管者和平台所有者，是历史上承担这一成本的机构。机器检查的表示，比如携带计量单位的类型，或由模型检查器检查的形式化规格 [20, 21]，会把封闭一个接口的私人成本降向运行其检查的成本。
 
 <div id="6-generated-code-crosses-the-same-interfaces" class="anchor-alias" aria-hidden="true"></div>
 
@@ -146,10 +146,10 @@ CISQ 估计美国累积的技术债约为 1.52 万亿美元，这是一个存量
 
 [17] European Space Agency, "The Resurrection of the Cluster Scientific Mission," *ESA Bulletin* 91, 1997. https://www.esa.int/esapub/bulletin/bullet91/b91cred.htm
 
-[19] D. Garlan, R. Allen and J. Ockerbloom, "Architectural mismatch: why reuse is so hard," *IEEE Software* 12(6), 1995, pp. 17 to 26. doi:10.1109/52.469757
+[18] D. Garlan, R. Allen and J. Ockerbloom, "Architectural mismatch: why reuse is so hard," *IEEE Software* 12(6), 1995, pp. 17 to 26. doi:10.1109/52.469757
 
-[20] N. G. Leveson, *Engineering a Safer World: Systems Thinking Applied to Safety*. MIT Press, 2012. doi:10.7551/mitpress/8179.001.0001
+[19] N. G. Leveson, *Engineering a Safer World: Systems Thinking Applied to Safety*. MIT Press, 2012. doi:10.7551/mitpress/8179.001.0001
 
-[21] A. Kennedy, "Types for Units-of-Measure: Theory and Practice," in *Central European Functional Programming School*, Lecture Notes in Computer Science 6299, Springer, 2010, pp. 268 to 305. doi:10.1007/978-3-642-17685-2_8
+[20] A. Kennedy, "Types for Units-of-Measure: Theory and Practice," in *Central European Functional Programming School*, Lecture Notes in Computer Science 6299, Springer, 2010, pp. 268 to 305. doi:10.1007/978-3-642-17685-2_8
 
-[22] C. Newcombe, T. Rath, F. Zhang, B. Munteanu, M. Brooker and M. Deardeuff, "How Amazon Web Services uses formal methods," *Communications of the ACM* 58(4), 2015, pp. 66 to 73. doi:10.1145/2699417
+[21] C. Newcombe, T. Rath, F. Zhang, B. Munteanu, M. Brooker and M. Deardeuff, "How Amazon Web Services uses formal methods," *Communications of the ACM* 58(4), 2015, pp. 66 to 73. doi:10.1145/2699417

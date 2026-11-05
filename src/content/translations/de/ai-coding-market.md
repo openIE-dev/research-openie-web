@@ -100,8 +100,8 @@ Abbildung 1 setzt die Dollarbeträge der Abschnitte 2.1 bis 2.3 und 2.6 auf eine
 |---|---|---|---|
 | Von Google verarbeitete Tokens pro Monat | 9.7 Billionen (2024), etwa 480 Billionen (2025), über 3.2 Billiarden (Mai 2026) | Vom Unternehmen gemeldet | Pichai [8] |
 | Googles interne KI-Entwicklerwerkzeuge | eine halbe Billion Tokens pro Tag im März 2026, mehr als drei Billionen pro Tag im Mai | Vom Unternehmen gemeldet | [8] |
-| Kosten einer agentischen Programmieranfrage zu Listenpreisen | 2.50 Dollar: ein Kontext von 100,000 Tokens und 10,000 Ausgabetokens zu 15 und 75 Dollar pro Million Tokens | Veranschaulichung | Appenzeller und Li [1] |
-| Dasselbe bei 3 Anfragen pro Stunde, 7 Stunden pro Tag, 200 Tagen | etwa 10,000 Dollar pro Jahr und Entwickler | Veranschaulichung | [1] |
+| Kosten einer agentischen Programmieranfrage zu Listenpreisen | 2.25 Dollar: ein Kontext von 100,000 Tokens zu 15 Dollar pro Million Tokens ist 1.50 Dollar, und 10,000 Ausgabetokens zu 75 Dollar pro Million Tokens sind 0.75 Dollar | Veranschaulichung | Appenzeller und Li [1] |
+| Dasselbe bei 3 Anfragen pro Stunde, 7 Stunden pro Tag, 200 Tagen | 9,450 Dollar pro Jahr und Entwickler (4,200 Anfragen × 2.25), etwa 10,000 | Veranschaulichung | [1] |
 | Tokens beim agentischen Programmieren gegenüber Code-Reasoning und Code-Chat | etwa 1,000-mal mehr; Läufe derselben Aufgabe unterscheiden sich um bis zum 30-Fachen; höherer Tokenverbrauch "führt nicht zu höherer Genauigkeit" | Gemessen (acht Modelle, SWE-bench Verified) | Bai, Huang und Wang [9] |
 | Nettoverluste aus Microsofts Beteiligung an OpenAI, Quartal zum 30. September 2025 | 4.1 Milliarden Dollar vor Steuern, sein Anteil nach der Equity-Methode, im sonstigen Aufwand; eine Minderung des Nettoergebnisses um 3.1 Milliarden Dollar (0.41 Dollar je verwässerter Aktie) | Eingereicht und vom Unternehmen gemeldet | Microsoft Form 10-Q [7]; Microsoft FY26 Q1 performance [19] |
 

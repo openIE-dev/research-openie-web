@@ -272,7 +272,7 @@
         "standards economics",
         "cost of poor software quality",
         "Mars Climate Orbiter",
-        "Ariane 501"
+        "Ariane 5 Flight 501"
       ]
     },
     {
@@ -285,14 +285,14 @@
       "pdf": "https://research.openie.dev/pdfs/mei.pdf",
       "figures": "/living/mei/",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "Computer intelligence designed to run inside a fixed energy budget, with emulator and datasheet results on a cold-chain sensor tag and a protocol test of a grid-following data center. Plain words: give a computer a fixed energy budget and design it for the best answer inside it; a food sensor tag can then run about eight years on a coin battery; a data center can cut power when the grid asks without giving wrong answers.",
-      "about": "https://research.openie.dev/products/mei/",
+      "summary": "Computer intelligence designed to run inside a fixed energy budget, with emulator counts and a datasheet schedule for a cold-chain sensor tag and a protocol test of a grid-following data center. No external energy meter. Plain words: give a computer a fixed energy budget and design it for the best answer inside it; a datasheet schedule for a food sensor tag comes out near eight years on a coin battery, and that figure is not a bench rundown; a data center model can cut power when the grid asks without giving wrong answers.",
+      "about": "https://research.openie.dev/about/mei/",
       "keywords": [
         "Metabolic Intelligence",
         "energy budget",
         "edge AI",
-        "Klere",
-        "Energy Processing Unit"
+        "emulator counts",
+        "datasheet schedule"
       ]
     },
     {
@@ -306,7 +306,7 @@
       "figures": "/living/",
       "author": "David Charlot, Open Interface Engineering",
       "summary": "A review of how operating systems, instruction sets and agent sandboxes are composed today, and checkable requirements for a machine that schedules, meters and refuses an agent under an energy budget. Plain words: AI agents are added on top of old layers; none of them checks energy before an agent acts; a machine for agents should measure energy, budget it, and refuse what breaks the budget.",
-      "about": "https://research.openie.dev/products/jouleos/",
+      "about": "https://research.openie.dev/about/jouleos/",
       "keywords": [
         "JouleOS",
         "secure compute",
