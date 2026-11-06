@@ -3,5 +3,1205 @@ title: "El Reality Code Engine: una Forma sin pérdida para una programación na
 deck: "Un sistema de programación en el que un programa se escribe una vez como una máquina de estados y el código en otros lenguajes se genera a partir de ella: su especificación, el comprobador de referencia y sus emisores, las pruebas en Lean y mediciones registradas de la dimensión de los programas, con protocolos y falsadores fijados de antemano."
 lang: "es"
 source: "rce"
-complete: false
+complete: true
 ---
+
+
+*Versión 1.24, 28 de octubre de 2026. Especificación: [borrador actual (borrador 0.9)](/rce/spec/), de [openIE-dev/rce](https://github.com/openIE-dev/rce); los conteos de las verificaciones realizadas en [§3.7](#37-the-language-one-text-costs-and-theorem-status) se encuentran en los commits públicos mencionados allí, y los de `e416fd0` se registran en [`src/data/rce-facts.json`](https://github.com/openIE-dev/research-openie-web/blob/dcharlot65-openie/src/data/rce-facts.json). Datos y código: [research.openie.dev/data/](/data/#rce). Playground (comprobador de referencias): [openie-dev.github.io/rce](https://openie-dev.github.io/rce/).*
+
+<div id="abstract" class="anchor-alias" aria-hidden="true"></div>
+
+## Resumen
+
+Este artículo describe el Reality Code Engine (RCE), un sistema en el cual un programa se escribe una vez como una máquina de estados, llamada Forma, y se genera código en otros lenguajes a partir de él. Presenta la especificación escrita del lenguaje, el comprobador de referencias que lo implementa y genera Rust, Python, JavaScript y Scala (la salida en Scala aún no coincide con la referencia), las pruebas en Lean de sus teoremas, las mediciones registradas de la dimensión de sus programas, el diseño del motor que encuentra, verifica y reutiliza soluciones, y el diseño mediante el cual cada lenguaje debe ser elevado a la Forma y emitido desde ella. Establece cómo podrían mostrarse falsas las afirmaciones y los protocolos de las mediciones aún por realizar.
+
+**En palabras sencillas**
+
+1. Un programa se escribe una vez, en una forma precisa, y la computadora genera el mismo programa a partir de él en Rust, Python y JavaScript hoy en día. El diseño es para cada lenguaje; las herramientas que convertirían otros lenguajes aún no se han construido.
+2. Todo lo que un programa puede hacer se declara en su forma, y el lenguaje requiere que cada entrada tenga un resultado declarado, un paso o un rechazo registrado, en lugar de uno no definido que se encuentra y se corrige más tarde.
+3. En el diseño del motor, una corrección que pasa las verificaciones se guarda y se reutiliza, de modo que el mismo problema no cuesta tiempo o energía dos veces.
+<div id="1-thesis" class="anchor-alias" aria-hidden="true"></div>
+
+## 1. Tesis
+
+La automatización informática autónoma es un espacio de diseño con muchos puntos en él. Cada enfoque se sitúa en algún lugar a lo largo de cinco ejes continuos: la energía gastada por resultado correcto; la entropía que el sistema debe resolver en tiempo de ejecución, y con ello, cuán determinista es su salida; la fuerza de la verificación que acepta un resultado; cuán lejos se reutiliza y compone cada resultado aceptado; y cuánto depende el enfoque de un modelo. Un gran modelo de lenguaje (LLM), un modelo estadístico de texto, que escribe cada cambio desde la solicitud se sitúa cerca de una esquina de ese espacio: depende del modelo para cada tarea, extrae una muestra fresca de una distribución de alta entropía cada vez, y paga nuevamente por la generación en cada tarea. La recuperación, las reglas, la síntesis, la verificación y el almacenamiento en caché ocupan muchos otros puntos, y los sistemas reales los combinan.
+
+El Motor de Código Realidad (RCE) es un punto en ese espacio. Este artículo lo describe, y las mediciones que reporta son sobre su lenguaje y las herramientas del lenguaje. RCE modela un programa como una máquina de estado funcional de base de datos. Lopes y sus colegas midieron que aproximadamente el 70% del código en GitHub consiste en clones de archivos anteriores [33], por lo tanto, el diseño del motor de RCE primero recupera una solución existente, la adapta y la verifica, y llama a un modelo solo cuando nada más barato cierra la tarea.
+
+**La afirmación central.** RCE está diseñado como un ecosistema completo de código en el que los programas se escriben nativamente desde la intención. La intención se escribe una vez, como una Forma: un estado, un conjunto de eventos y una transición pura y total. La Forma es una codificación sin pérdida de esa intención. RCE está diseñado para que cada lenguaje objetivo sea una proyección de la Forma, y cada proyección debe reproducir el rastro de la Forma byte por byte. Hoy en día, el comprobador de referencias tiene cuatro emisores, para Rust, Python, JavaScript y Scala, que traducen el árbol de sintaxis verificado de un programa en lugar de la Forma; las salidas de Rust, Python y JavaScript pasan cada una 1,459 pruebas de conformidad con 0 fallos, y la salida de Scala aún no coincide con la referencia ([§4.5](#45-the-compilers)). Cada estado en el que puede estar un programa se declara en su Forma, y el lenguaje requiere que cada entrada tenga un resultado declarado: un paso que lo toma, o un rechazo por su contrato que deja el estado sin cambios y se registra en el log (T8). Un programa que cumple con estos requisitos no puede alejarse de su intención de la manera en que un programa en un lenguaje común se aleja de sus comentarios, sus pruebas o sus otras implementaciones, y no necesita diferencias posteriores o seguimiento de errores. El contrato de entrada que hace que el comprobador de referencias cumpla con el segundo requisito al entrar se encuentra en [§10](#10-work-to-finish). En el diseño del motor, cada solución que la compuerta aplica se almacena y se reutiliza, por lo tanto, el ecosistema se compone a medida que crece ([§2.4](#24-gated-verified-recursive-self-improvement)). El código escrito en otros lenguajes está diseñado para entrar por elevación ([§6](#6-lift-entering-the-ecosystem-from-other-languages)). La única elevación pública hoy en día es una sonda para un patrón de Go; elevar cada lenguaje a la Forma y emitir cada lenguaje desde ella es el objetivo de una propuesta en el repositorio de especificaciones, cuyos niveles de aceptación indican cuándo un lenguaje se cuenta como elevado o emitido ([§3.6](#36-one-ecosystem-lossless-and-the-universality-thesis)).
+
+Cada punto en el espacio enfrenta la misma compuerta. La compuerta es la corrección: el predicado de completitud de una tarea $C(z)$, aquí las pruebas de la tarea, una prueba o un rastro de acuerdo. Entre las ejecuciones que pasan la compuerta, los sistemas se clasifican según los julios para completar, $J^*$. La corrección es una restricción, no una puntuación.
+
+En el diseño del motor, los mecanismos de RCE, llamados engranajes, se ejecutan en orden de costo, y el primer engranaje cuyo candidato pasa la compuerta cierra la tarea.
+
+Las cifras de energía se etiquetan según su fuente. `est_j` es una estimación analítica. `reported_j` es un contador del sistema operativo o en chip. `measured_j` se reserva para un medidor de pared y está vacío en cada resultado aquí. RCE no tiene una figura de energía medida: el comprobador de referencias no calcula julios, sus unidades de presupuesto cuentan el trabajo y no son energía, y cada `est_j` en este artículo es un modelo. Un costo sin modelo se etiqueta como no preciado y nunca se lee como cero ([§4.4](#44-receipts)).
+
+<div id="2-two-paths-to-autonomy" class="anchor-alias" aria-hidden="true"></div>
+<div id="2-the-design-space-of-autonomous-coding" class="anchor-alias" aria-hidden="true"></div>
+
+## 2. El espacio de diseño del codificación autónoma
+
+![Una oración en. Un piso fuera. La intención humana es alta entropía; un embudo de conversiones de la intención a especificación a 626 lenguajes de superficie a una representación intermedia a código de máquina pierde información en cada frontera; todo código alcanza unas pocas formas de máquina; RCE escribe el significado una vez en una forma canónica, está diseñado para tratar cada superficie como una proyección (hoy en día Rust, Python y JavaScript pasan la suite de conformidad y Scala aún no lo hace) y para permitir que la forma correcta más barata gane.](/figures/rce/intent-entropy.svg)
+
+*Figura 1. Entropía de la intención y el piso de la máquina. Se proporciona una copia [PNG](/figures/rce/intent-entropy.png). El panel 6 establece el diseño de RCE; lo que existe hoy se establece en [§4.5](#45-the-compilers). Fuentes: Shannon (1951); Lopes et al. (2017); el recuento de 626 lenguajes es una encuesta no publicada por los autores de OpenIE y no respalda ninguna afirmación en este artículo. Los resultados de Python y C son el comportamiento de la especificación del lenguaje; el desbordamiento con signo en C es comportamiento no definido.*
+
+**La intención es alta entropía.** "Hacer más rápido el checkout" lleva muchas significados: carga de página más corta, menos pasos, aprobación más rápida de la tarjeta, un carrito en caché, o más rápido en una clase de dispositivo. El contexto se implica y nunca se escribe. Shannon midió el inglés impreso en aproximadamente 0.6 a 1.3 bits por letra [1]. Las letras son predecibles. El significado no lo es.
+
+**Cada conversión pierde información.** La intención se convierte en una especificación, y el contexto se pierde. La especificación se convierte en uno de los cientos de lenguajes de superficie, y alternativas y casos límite se pierden. La fuente se convierte en una representación intermedia (IR), y los nombres, estilo y razones del autor se pierden. La IR se convierte en código de máquina, y los tipos se convierten en tamaños y los bucles se convierten en saltos.
+
+**El piso tiene baja entropía.** Cada programa termina como cargas, almacenamientos, aritmética y saltos. El destino tiene espacio para solo unas pocas formas, por lo que el código se dobla hacia ellas. La convergencia es por diseño.
+
+**Las fronteras son donde diverge el significado.** La misma línea da diferentes respuestas en los bordes. En Python, `-3 % 2` es 1 y `-7 / 2` es -3.5. En C, `-3 % 2` es -1, `-7 / 2` es -3, y el desbordamiento con signo es comportamiento no definido. Un sistema que regenera código en cada frontera adivina en cada frontera.
+
+**Los ejes, enunciados como cantidades.**
+
+| Eje | Un extremo | Otro extremo | Dónde se sitúa el diseño de RCE |
+|---|---|---|---|
+| Energía por resultado correcto | Paga de nuevo en su totalidad en cada tarea | Paga una vez por cada nuevo caso, luego el piso del manejador | En el piso en tareas cubiertas |
+| Entropía resuelta en tiempo de ejecución, y determinismo | La distribución completa del prompt, una muestra fresca cada vez | Solo el residual, sin solución almacenada, cubre, una salida determinística | Solo el residual; cada proyección determinística |
+| Fuerza de verificación | Salida aceptada en inspección | Pruebas, cobertura y un certificado de prueba | La compuerta completa en cada resultado |
+| Reutilización y compounding | Cada resultado se usa una vez | Cada solución aceptada se almacena y se reutiliza | Cada solución a la que se aplica la compuerta se almacena |
+| Dependencia del modelo | Un modelo en cada tarea | Sin modelo | Un modelo solo como el último engranaje |
+
+Los enfoques difieren en grado en cada eje, y los ejes interactúan: la reutilización reduce la energía y la entropía restante por resolver, y la verificación fuerte es lo que hace que la reutilización sea segura. RCE escribe el significado una vez, en una forma canónica. En su diseño, cada lenguaje de superficie es una proyección de esa forma, verificada para coincidir con ella, y entre formas equivalentes la más barata y correcta se ejecuta; hoy en día se emiten cuatro lenguajes ([§4.5](#45-the-compilers)).
+
+La figura 2 dibuja los cinco ejes y coloca las principales clases de enfoque en ellos.
+
+![Gráfico de radar con cinco ejes: energía por resultado correcto, determinismo, fuerza de verificación, reutilización y compounding, e independencia de modelos. Cinco clases de enfoque se dibujan como polígonos. Un modelo en cada tarea se sitúa cerca del centro en todos los ejes. Un bucle de agente con pruebas es más alto en verificación. Un modelo con recuperación y almacenamiento en caché es más alto en reutilización. La síntesis y reparación clásica es alta en determinismo e independencia del modelo. RCE, marcado con estrellas, se sitúa en o cerca del anillo exterior en todos los cinco ejes. Las ubicaciones son cualitativas.](/figures/rce/design-space.svg)
+
+*Figura 2. El espacio de diseño de la codificación autónoma. Diagrama cualitativo: cada clase de enfoque se coloca según la lectura del artículo sobre la Sección 2 en niveles ordinales, no por medición. La dependencia del modelo se dibuja como independencia de modelos para que hacia afuera sea mejor en cada eje. Se proporciona una copia [PNG](/figures/rce/design-space.png).*
+<div id="21-programming-is-coding-theory" class="anchor-alias" aria-hidden="true"></div>
+
+### 2.1 Programación es teoría de codificación
+
+La tesis de esta sección es que la programación puede leerse como teoría de codificación. Un programador convierte la intención a lo largo de un gradiente entre dos regímenes entropicos. La intención es alta entropía, una distribución sobre significados. El código es baja entropía, una transición determinista por estado. Cada paso del trabajo de software, desde un requisito hasta un registro, es un paso de esa conversión. La literatura lo ha dicho en piezas durante setenta años, en muchos idiomas. Esta sección reúne las piezas en un argumento y coloca cada engranaje de RCE en él.
+
+**La medida.** Shannon definió la entropía de una fuente y la capacidad de un canal [40], y midió el inglés impreso en aproximadamente 0.6 a 1.3 bits por letra [1]. Kolmogorov, escribiendo en ruso en *Problemy Peredachi Informatsii* en 1965, dio tres enfoques para la cantidad de información y puso el algorítmico como principal: la información en un objeto es la longitud del programa más corto que lo produce [41]. Solomonoff llegó al mismo objeto como una teoría de inferencia inductiva [42], y Chaitin mostró que el tamaño del programa obedece identidades formalmente idénticas a las de Shannon [43]. Rissanen convirtió la idea en una regla para elegir modelos, la longitud de descripción mínima [44]. Juntos dicen que un programa es una palabra de código: una descripción de un comportamiento, y la más corta correcta es el piso. La regla de extracción de RCE, mantener el término de menor julio entre términos equivalentes (Proposición 3), es esa regla con julios en lugar de bits.
+
+**El código se encuentra en el régimen de baja entropía, y la gente lo midió.** Hindle, Barr, Su, Gabel y Devanbu encontraron que el código es "muy repetitivo, y de hecho aún más que los idiomas naturales", con menor entropía cruzada bajo los mismos modelos de n-gramas [35]. Gabel y Su encontraron que la mayoría de las líneas de un proyecto ya existen en otro lugar [34], y Lopes et al. encontraron que la mayoría de los archivos en GitHub son clones [33]. Tu, Su y Devanbu encontraron que el código también es local: lo escrito cerca predice lo que viene después [46]. Ray y colegas encontraron que las líneas con errores son menos naturales, con mayor entropía, y que la entropía disminuye cuando se corrige el error [45]. En 2025 Yang, Kolak, Hellendoorn y Martins usaron el cambio de entropía que induce un parche para clasificar candidatos de reparación y separar parches correctos de los que se ajustan demasiado [51]. Allamanis, Barr, Devanbu y Sutton revisaron el campo bajo el nombre de naturalidad [47]. El resultado no es solo un hallazgo en inglés. Prem Devanbu lo expresó como discurso clave en la Conferencia de Ingeniería de Software de la India en 2013 [50]. Sridhara, Sinha y Mani en IBM Research India midieron los artefactos de lenguaje natural alrededor del código en el mismo lugar y encontraron que los mensajes de confirmación son los más regulares y que el prosa de Stack Overflow se comporta como inglés ordinario [49]. En China, el *Journal of Software* (软件学报) publicó una revisión de la investigación sobre la naturalidad del código en 2022, que establece la medida de entropía cruzada y el hallazgo de que el código defectuoso tiene mayor entropía [48]. En Japón, Doi, Higo, Arima, Shimonaka y Kusumoto en la Universidad de Osaka usaron la naturalidad de n-gramas, primero en un informe técnico de IEICE en japonés y luego en ICPC 2018, para distinguir archivos de código generados por máquinas de los escritos por humanos [73, 74]. El código generado se encuentra aún más abajo en la escala de entropía que el código humano, porque un generador es una conversión fija. En Brasil, la tesis doctoral de Arrebola construyó sugerencias de código basadas en modelos de n-gramas y temas segmentados por proyecto y mantenedor, y la evaluó mediante entropía cruzada, los bits necesarios para codificar el siguiente token [75]. Los dos regímenes son visibles en un repositorio: el prosa alrededor del código es alta entropía, y el código es baja.
+
+**La medida importa.** Febres, Jaffé y Gershenson, trabajando desde Venezuela y México, compararon el inglés, el español y el texto de programa por diversidad de vocabulario por longitud de mensaje y encontraron que el texto de programa es más diverso [76]. Rahman, Palani y Rigby encontraron que gran parte de la predictibilidad de n-gramas del código proviene de tokens de sintaxis, y que el código aún es repetitivo, menos de lo primero reportado, una vez que se eliminan, con el uso de API la parte más repetitiva [77]. Ambos resultados afilan la afirmación en lugar de revertirla. La diversidad de símbolos no es predictibilidad, y el régimen de baja entropía es una propiedad de la distribución condicional del siguiente paso, lo que es lo que una transición determinista fija. En el diseño, el primer engranaje de RCE, búsqueda (G0, [§2.2](#22-how-rce-converts-and-where-each-gear-sits)), se basa en formas, no en texto superficial, por esa razón.
+
+**La intención se encuentra en el régimen de alta entropía.** Zave y Jackson mostraron que un requisito es una afirmación sobre el entorno, una especificación es una afirmación en la interfaz, y el vacío entre ellos se llena solo con conocimiento del dominio que a menudo no se escribe [64]. Brooks dividió la dificultad del software en esencia y accidente: la esencia es la construcción conceptual, y gran parte de ella es especificación y diseño, no representación [61]. Naur argumentó que un programa es la parte visible de una teoría sostenida por sus programadores, y que la teoría no se puede recuperar completamente del texto [62]. Leído a través de Shannon, los tres dicen lo mismo. La intención lleva más incertidumbre que cualquier programa individual, y escribir el programa es el acto que la elimina. Lo que queda en la cabeza de un programador después de que se escribe el código es la parte de la intención que el código no codificó.
+
+**La conversión es una refinación, y la refinación es una reducción.** Hoare dio a los programas una lógica en la que un programa es correcto en relación con una precondición y postcondición [54]. Wirth enseñó la refinación paso a paso: descomponer una tarea en instrucciones mediante decisiones sucesivas, cada una fijando una elección que la especificación dejó abierta [53]. Los comandos protegidos de Dijkstra hicieron explícitas las elecciones abiertas como no determinismo, y derivaron programas de especificaciones eliminándolo [52]. En Múnich, el proyecto CIP de Bauer y Wössner construyó el desarrollo de programas como una secuencia de transformaciones que preservan la corrección desde la especificación hasta el programa [58]. En Francia, el método B de Abrial y luego Event-B llevaron la refinación a escala industrial, con obligaciones de prueba en cada paso [55, 56]. En Finlandia, Back y von Wright dieron a la refinación su cálculo teórico de retículas [57]. En cada uno, una especificación denota un conjunto de comportamientos aceptables y cada paso de refinación reduce el conjunto, hasta que queda un comportamiento determinista. Eso es reducción de entropía con una prueba en cada paso. La Forma de RCE es el último elemento de esa cadena: una transición total y determinista $\delta$ sobre estados de base de datos, con cada elección resuelta ([§3.2](#32-definitions)).
+
+**La síntesis es búsqueda que reduce un espacio de hipótesis.** Gulwani's FlashFill aprende un programa de cadena a partir de unos ejemplos de entrada-salida representando el conjunto de todos los programas consistentes y intersectándolo con cada nuevo ejemplo [59]. Gulwani, Polozov y Singh enmarcan la síntesis de programas en general como búsqueda a través de un espacio de programas restringido por la intención [60], y Solar-Lezama's sketching rellena huecos en un programa parcial con un solucionador [27]. Cada ejemplo o restricción es una medición que elimina hipótesis. La medida de Shannon cuenta cuántas tales mediciones se necesitan. En el diseño, el tercer engranaje de RCE, síntesis (G2, [§2.2](#22-how-rce-converts-and-where-each-gear-sits)), es ese engranaje.
+
+**Lo que produce la conversión tiene una forma.** Gurevich demostró que cada algoritmo secuencial se captura mediante una Máquina de Estado Abstracta en su propio nivel de abstracción [2]. Codd hizo del estado una relación [5], y el sourcing de eventos hace del estado la carpeta de un registro solo de lectura [14]. Bajo Curry y Howard, una prueba es un programa y una proposición es un tipo [18, 72], así que un programa verificado es una prueba de su especificación. Estas son las razones por las que el régimen de baja entropía tiene pocas formas: el destino es una máquina de estado sobre una base de datos, sin importar el lenguaje superficial.
+
+**La baja entropía se degrada sin una compuerta.** Lehman observó durante décadas de sistemas grandes que un programa en uso debe seguir cambiando, y que su complejidad crece a menos que se haga trabajo para reducirla [63]. Torres, Baltes, Treude y Wagner midieron la entropía estructural y textual sobre las historias de confirmación de 25 proyectos y encontraron que las dos suben juntas [78]. La entropía fluye de vuelta al código desde el entorno. Un sistema que mantiene el código en el régimen de baja entropía necesita una compuerta en cada cambio, y la compuerta de RCE es la corrección ([§4.3](#43-the-gate)).
+
+**Los compiladores ya hacen codificación de fuente.** Franz y Kistler enviaron programas como árboles de sintaxis abstractos comprimidos y generaron código nativo al cargarlos, lo cual es codificación de fuente de un programa sobre su propia gramática [67]. Fraser inferió modelos estadísticos del código de un corpus para comprimirlo [68]. Futamura mostró en 1971, en la revista japonesa *Sistemas, Computadoras, Controles*, que especializar un intérprete para un programa produce un programa compilado, y que especializar el especializador produce un compilador [70]. Ershov en Novosibirsk desarrolló la misma idea como cálculo mixto [71]. La interpretación abstracta de los Cousots calcula una descripción de menor información, sonora de cada comportamiento de un programa [69]. La analogía con la codificación de canal es la lectura de este artículo, no un teorema citado: los tipos, pruebas y pruebas añaden redundancia verificada para que un programa incorrecto se detecte antes de que se ejecute, como una prueba de paridad detecta una palabra corrupta.
+
+**La eliminación es adónde van los julios.** Landauer mostró que un paso lógicamente irreversible, la eliminación de un bit, disipa al menos $k_B T \ln 2$ [65]. Bennett mostró que en principio la computación puede hacerse lógicamente reversible, así que la eliminación, no la computación, lleva el límite [66]. Convertir la intención de alta entropía en un programa de baja entropía descarta cada alternativa que la intención permitió. Ese descarte es una eliminación de información sobre las alternativas, y tiene un piso termodinámico. En el diseño del motor, RCE paga el descarte una vez por cada nuevo caso y almacena el resultado, así que un caso repetido no elimina nada nuevo.
+
+**Lo que cuesta la superficie, medido.** El resultado de naturalidad tiene dos correcciones que este artículo ahora lleva, y un tercer hallazgo que afecta al nombre libre de Forma. Primero, el hueco de entropía bruta entre el código y el prosa se reduce sustancialmente una vez que se eliminan los tokens de sintaxis [77], y Casalnuovo, Lee, Morgan y Devanbu encontraron que parte de lo que queda es un efecto de familiaridad: en proyectos de Java y Python con más estrellas, el código original tenía menor sorpresa que las reescrituras que preservan el significado, y 50 evaluadores humanos coincidieron con la preferencia del modelo de lenguaje el 61.9% de las veces [132]. Lo que se lee como natural es lo que el lector ha visto más, así que una Forma canónica mueve el equilibrio de ese ciclo en lugar de escapar de él. Segundo, las únicas cantidades que rastrean la carga de comprensión medida son el tamaño textual, el tamaño del vocabulario y el alcance de dependencia de flujo de datos: en el único estudio que probó métricas de código contra la activación cerebral, esas tres correlacionaron en Kendall τ ≈ 0.4 mientras que la complejidad ciclomática de McCabe correlacionó con nada (τ ≈ 0.09) [133]; a través de 121 métricas de legibilidad y 444 evaluaciones, ninguna métrica individual alcanzó |τ| > 0.16 con la comprensión medida [134]; y el pretty-printing contra el diseño interrumpido mostró ninguna diferencia de fMRI [135], coherente con el hallazgo de que el formato es el 13 al 15% de los tokens de lenguajes de llaves y puede quitarse para diez modelos de lenguaje sin cambio significativo en la precisión [136]. Tercero, los nombres son un canal de baja concordancia, alta dependencia: dos desarrolladores eligen el mismo nombre con probabilidad mediana del 6.9% [137], los comentarios coevolucionan con el código que describen en el 7 al 13% de los casos [138], y sin embargo los modelos de vanguardia pierden 11 a 29 puntos de precisión de resumen y hasta 24 puntos de precisión de predicción de ejecución cuando se eliminan o reemplazan los identificadores [139]. Los humanos, por el contrario, no procesan identificadores como lenguaje a nivel neural: cambiar identificadores en inglés por japoneses cambió la respuesta del sistema de lenguaje por Δβ = 0.03 [140]. La consecuencia para RCE se establece en [§3.8](#38-behaviour-equivalence-and-dimension): las posiciones permanecen en la tabla hash (T7) y los nombres permanecen fuera de ella, pero la tabla lateral que los contiene debe llevar el *concepto* que un nombre codifica, porque los únicos autores que importarán leerán a través de nombres y la Forma aún no ha mostrado que un modelo puede razonar desde una sin nombre.
+<div id="22-how-rce-converts-and-where-each-gear-sits" class="anchor-alias" aria-hidden="true"></div>
+
+### 2.2 Cómo RCE convierte, y dónde se encuentra cada engranaje
+
+Leído como teoría de codificación, una tarea llega como un mensaje cuya incertidumbre restante es aquello que ninguna solución almacenada ya resuelve. En el diseño del motor, cada engranaje elimina la incertidumbre a un precio diferente, y los engranajes están ordenados por ese precio ([§4.2](#42-the-gears)); la tabla muestra ese diseño engranaje por engranaje, con la compuerta y la promoción.
+
+| Engranaje | Lo que hace con la incertidumbre | Línea de razonamiento en el argumento anterior |
+|---|---|---|
+| G0 Lookup | Reconoce que la intención ya estaba codificada; la resuelve mediante recuperación, en el piso del manejador | Repetitividad y clones [33, 34, 35]; localidad [46] |
+| G1 Reglas | Aplica una reescritura guardada conocida; resuelve un residuo recurrente sin búsqueda | Transformación que preserva la corrección [52, 58]; refinamiento con obligaciones de prueba [55, 56] |
+| G2 Síntesis | Busca en un espacio de hipótesis y lo estrecha mediante ejemplos, restricciones y un solucionador | Síntesis de programas como búsqueda [27, 59, 60] |
+| G3 a G5 Modelos | Muestra desde una distribución aprendida sobre el código cuando ningún engranaje inferior cierra la brecha; solo un proponente | Modelos de entropía cruzada del código [35, 47] |
+| Compuerta | Acepta un candidato solo con pruebas, cobertura y un certificado de prueba | Lógica de Hoare [54]; Curry-Howard [18, 72] |
+| Promoción | Almacena la solución aceptada, por lo que el mismo residuo cuesta G0 la próxima vez | Longitud mínima de descripción [44]; eliminación de Landauer pagada una vez [65] |
+
+Las posiciones en los ejes de la Sección 2 difieren en donde se paga la conversión. Un enfoque que muestrea la distribución completa del prompt en cada tarea paga nuevamente el lado de alta entropía cada vez. Un enfoque que almacena y reutiliza soluciones aceptadas paga solo por el residuo, y solo una vez. La mayoría de los sistemas se sitúan entre esos extremos, y el diseño de RCE se sitúa en el extremo de reutilización.
+
+<div id="23-the-ecosystem-at-large-n" class="anchor-alias" aria-hidden="true"></div>
+
+### 2.3 El ecosistema en N grande
+
+La afirmación de [§1](#1-thesis) se prueba directamente, en N grande, bajo el protocolo siguiente, registrado antes de su ejecución. Un generador sembrado escribe al menos 10,000 Formas, cada una un módulo del lenguaje con una región de estado, un evento con campos enteros y un paso cuyo cuerpo es un término aritmético aleatorio de profundidad acotada sobre un conjunto fijo de operadores. El comprobador de referencias y sus emisores están congelados en un commit público antes de la ejecución, y ningún modelo es llamado. Las proyecciones son los cuatro emisores de programa del comprobador de referencias: Rust, Python, JavaScript y Scala. Cinco propiedades se verifican en cada Forma:
+
+| Propiedad | Lo que se verifica por Forma |
+|---|---|
+| Codificación sin pérdida | La JSON canónica de la Forma (`rce emit form`), decodificada a código fuente (`rce unform`) y codificada nuevamente, da los mismos bytes |
+| Proyección determinista | Dos emisiones de un objetivo dan los mismos bytes |
+| Proyección fiel | Cada programa emitido (Rust, Python, JavaScript y Scala) imprime el byte por byte de la traza de referencia en eventos sembrados |
+| Compuerta en la entrada, entradas | Cargas de datos malformadas (un tipo incorrecto, un campo faltante, un campo extra, un valor anidado) y eventos no declarados se rechazan todos, con el estado sin cambios y el rechazo registrado |
+| Compuerta en la entrada, especificaciones | Un módulo que usa un nombre que no declara se rechaza antes de la emisión (W-NAME-1) |
+
+La Sección 9 establece la observación que refuta la afirmación, RCE-F0: en una ejecución previamente registrada de al menos 10,000 Formas, cualquiera de las cuatro proyecciones imprime una traza que difiere de la traza de referencia de la Forma, o cualquier entrada malformada es aceptada. En la suite de conformidad, la salida de Scala aún no coincide con la referencia ([§4.5](#45-the-compilers)), y el comprobador público aún no cumple con el contrato de entrada ([§10](#10-work-to-finish), elemento 15). Un objetivo añadido a los emisores más tarde entra al protocolo solo mediante una nueva inscripción. Los Formas generados son pequeños, por lo que tal ejecución mide la codificación, las proyecciones y la compuerta. Los Formas elevados de programas reales se miden bajo el protocolo de [§8.7](#87-lift-coverage-across-languages).
+<div id="24-gated-verified-recursive-self-improvement" class="anchor-alias" aria-hidden="true"></div>
+
+### 2.4 Compuertas, verificación y mejora recursiva autorrefinada
+
+Good (1965) [111] definió la máquina ultrainteligente como aquella que podría diseñar máquinas mejores, de manera que la mejora se recursaría. Yudkowsky (2013) [113] planteó la pregunta en términos de retornos: si cada unidad de mejora hace que la siguiente unidad sea más barata o más cara. La máquina Gödel de Schmidhuber (2007) [112] dio una respuesta formal con garantía: un programa reescribe cualquier parte de sí mismo, incluida su propia búsqueda, solo después de probar que la reescritura mejora su utilidad esperada. El teorema de Löb (1955) [114] es el obstáculo que encuentra un probador que se confía a sí mismo, el cual Yudkowsky y Herreshoff (2013) [115] llamaron el obstáculo Löbian: un sistema en general no puede probar la solidez de un sucesor que utiliza su propio sistema de prueba. Los sistemas recientes eliminan el requisito de prueba y seleccionan por puntuación medida: STOP (Zelikman et al., 2023) [116] mejora el andamio que mejora el código, la máquina Gödel Darwin (Zhang et al., 2025) [117] mantiene un archivo de agentes de codificación autormodificados elegidos por puntuación de referencia, AlphaEvolve (Novikov et al., 2025) [118] evoluciona programas bajo evaluadores automáticos, y Voyager (Wang et al., 2023) [119] crece una biblioteca de habilidades verificadas que tareas posteriores reutilizan.
+
+RCE toma la estructura de la máquina Gödel y la biblioteca de Voyager, con dos diferencias que evitan el obstáculo para los objetos que promueve. Primero, el objeto que mejora no es el probador. En el diseño, RCE promueve manejadores, reescrituras y engranajes, y cada uno se verifica contra un núcleo fijo y una regla de prueba fija: las propiedades contra las que se verifica el núcleo ([§5.3](#53-model-checking-of-the-kernel)) y la codificación de la aritmética de la Forma para un solucionador de satisfacibilidad módulo teorías (SMT) ([§5.2](#52-the-proof-rule-for-rewrites)) nunca cambian a través de la promoción, por lo tanto, ningún paso necesita confiar en el sistema de prueba de un sucesor. Segundo, la compuerta es una prueba de corrección en el límite, no una puntuación. Una puntuación puede aumentar mientras una suposición de interfaz se rompe; una prueba en el límite no puede ser superada por un cambio que la rompa.
+
+**Proposición R1 (corrección monótona).** Si cada cambio promovido pasa la verificación de su límite, y las verificaciones de los otros límites permanecen sin cambios, entonces cada propiedad establecida por esas verificaciones antes de la promoción aún se mantiene después de ella.
+
+**Proposición R2 (compounding).** Sea una carga de trabajo un multiconjunto de tareas y sea un manejador promovido que cierre cada tarea de su forma. Entonces el número de escalaciones en la ronda $t$ es no creciente en $t$, y una corrección promovida antes de la ronda 1 reduce las escalaciones acumuladas de cada horizonte en las escalaciones que cierra en cada ronda posterior.
+
+**Proposición R3 (caída de costo).** Dado que un manejador promovido se ejecuta en lugar de una llamada a modelo, y su costo es el conteo de operaciones del manejador valorado por la tabla de sustrato, la energía de una ronda cae hacia la energía de los manejadores solos a medida que las escalaciones caen hacia cero.
+
+Las proyecciones de Futamura (1971, republicado 1999) [120] y la supercompilación de Turchin (1986) [121] dan el límite de este proceso. Especializar un intérprete para un programa produce un programa compilado; especializar al especializador produce un compilador. En el diseño, las promociones de RCE especializan el camino general de escalación a las formas que realmente ocurren, por lo tanto, el motor converge hacia el programa residual de su carga de trabajo: la parte de la computación que un modelo o una persona aún deben suministrar. La mejora autorrefinada recursiva bajo una compuerta es esa convergencia, hecha con pasos verificados.
+
+<div id="3-the-form" class="anchor-alias" aria-hidden="true"></div>
+
+## 3. La Forma
+
+<div id="31-the-strongest-formal-statement-of-same-form" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.1 La afirmación formal más fuerte de "misma forma"
+
+Se establece primero el alcance del teorema. Las postulaciones secuenciales de Gurevich cubren algoritmos secuenciales; los algoritmos paralelos e interactivos necesitan las postulaciones adicionales de Blass y Gurevich [3]. Blass, Dershowitz y Gurevich argumentan que ninguna relación de equivalencia única sobre algoritmos se ajusta a cada propósito [79], y Moschovakis y Vardi presentan el debate sobre qué es un algoritmo [80, 81]. Un manejador web que realiza entrada y salida se encuentra fuera del teorema secuencial. La Forma maneja la interacción de la manera en que lo hace la línea interactiva: cada entrada es un evento en $E$, y la máquina de estados da un paso sobre ella. Por lo tanto, "una Forma" es una elección de modelado basada en el teorema secuencial y extendida por convención, con precedentes de producción en la arquitectura Elm [83], historiales de eventos de flujo duradero [84] y semánticas de flujo como Flo [82]. Las proposiciones de la Sección 3.4 se enuncian para esa elección.
+
+El teorema de la Máquina de Estado Abstracta (ASM) de Gurevich es la afirmación formal más fuerte de que cada algoritmo tiene una forma [2]. Una máquina de estado abstracta es una máquina cuyos estados son estructuras de primer orden y cuyo paso es un conjunto finito de actualizaciones protegidas. Gurevich establece tres postulados. Tiempo Secuencial: un algoritmo tiene estados, estados iniciales y un mapa de un paso $\tau$. Estado Abstracto: los estados son estructuras de primer orden sobre un vocabulario fijo, cerradas bajo isomorfismo. Exploración Acotada: un conjunto finito de términos decide cada paso. Su Teorema Principal (Teorema 6.13) establece: "Para cada algoritmo secuencial $A$, existe una máquina abstracta secuencial equivalente $B$." Blass y Gurevich lo extienden a algoritmos paralelos [3]. Dershowitz y Gurevich añaden un cuarto axioma, que las operaciones iniciales son computables, y de él derivan la tesis de Church [4].
+<div id="32-definitions" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.2 Definiciones
+
+**Definición 1 (la Forma).** Un programa es una tupla
+
+$$P = (S, E, \delta, D, \lambda)$$
+
+- $S = \Sigma_c \times \Sigma_d$, el espacio de estados: estructuras sobre un vocabulario fijo $\Sigma$, dividido en regiones de control $\Sigma_c$ y datos $\Sigma_d$. $\Sigma_d$ contiene el reloj lógico, el recuento de entradas y las relaciones tipadas (en el lenguaje, también las regiones declaradas). Cada estado es una instancia de base de datos en el sentido de Codd [5].
+- $E$, el alfabeto de eventos, incluyendo el tic del reloj lógico.
+- $\delta : S \times E \to S \times O^*$, la transición: total, determinista y pura, escrita como un conjunto finito de actualizaciones protegidas "si $\varphi$ entonces $f(\bar t) := t_0$", cada paso lee un conjunto acotado de ubicaciones. Devuelve el siguiente estado y las salidas del paso. Escriba $\delta_1 = \pi_1 \circ \delta$ para su componente de estado.
+- $D$, el registro duradero: una secuencia de entradas $\{\mathit{seq}, \mathit{event}, \mathit{prev\_hash}, \mathit{state\_hash}, \mathit{hash}\}$, donde $\mathit{state\_hash}$ es el SHA-256 del JSON canónico del estado después del paso, $\mathit{hash}$ es el SHA-256 del JSON canónico de los primeros cuatro campos, y el primer $\mathit{prev\_hash}$ es 64 ceros. El registro es una cadena de hashes, por lo tanto, cambiar cualquier entrada pasada cambia cada $\mathit{hash}$ posterior.
+- $\lambda = \pi_2 \circ \delta : S \times E \to O^*$, el mapa de salida. Una máquina de Mealy lee ambos argumentos [6]; una máquina de Moore lee solo el estado [7].
+
+**Definición 2 (Forma y ajuste).** La *forma* es la forma de la tupla con cuatro invariantes: $\delta$ es determinista y puro; la exploración está acotada; el vocabulario está fijo; el estado es la carpeta del registro,
+
+$$\mathrm{state}(D) = \mathrm{foldl}(\delta_1, s_0, D).$$
+
+Un registro también puede llevar el resultado de cada entrada, salidas y estado. Estos son derivados: no se hash, y deben igualar la repetición (T1 y T3 de [§3.7](#37-the-language-one-text-costs-and-theorem-status)). Dos tipos de rechazo son distintos. En el perfil del motor que el Apéndice D de la especificación define, cada evento se aplica, y una entrada que falla su contrato produce una salida `rechazar` y una fila de error (D.6). En el lenguaje, un evento rechazado deja el estado sin cambios (T8) y se registra como rechazado.
+
+El *ajuste* es los datos que llenan la forma: el vocabulario $\Sigma$, los alfabetos $E$ y $O$, el programa de reglas $\Pi$ que define $\delta$, las reglas de salida que definen $\lambda$, y los datos iniciales $s_0$. En términos de Gurevich, el ajuste es el vocabulario, el programa ASM y las estructuras iniciales. En términos de Codd, $\Sigma$ es el esquema y $s_0$ es la instancia. En términos de línea de productos, un ajuste es una selección de características [8]. En términos de síntesis guiada por la sintaxis (SyGuS), un ajuste es un término de una gramática que cumple una especificación [9].
+
+**Definición 3 (equivalencia de ajuste).** Dos ajustes son equivalentes cuando, para cada secuencia de eventos $L$, sus secuencias de salida bajo $\lambda$ son iguales.
+
+**Definición 4 (lenguaje de ajuste).** Una gramática cuyos términos denotan ajustes. Los lenguajes de programación, documentos de diagramas de estado en State Chart XML (SCXML), configuraciones de XState y especificaciones `.rce` son lenguajes de ajuste. Un lenguaje de ajuste es completo cuando cada programa ASM sobre $\Sigma$ tiene un término en él.
+
+**Definición 5 (proyección de control).** Divida $\Sigma = \Sigma_c \cup \Sigma_d$ en símbolos de control finitos y relaciones de datos. El diagrama de estado de $P$ es la proyección de $\delta$ sobre $\Sigma_c$: los estados son valores de $\Sigma_c$, las transiciones llevan un evento y una guardia sobre $\Sigma_d$, y las acciones son actualizaciones a $\Sigma_d$. Los diagramas de estado de Harel dan la jerarquía y las regiones ortogonales [10].
+
+**Definición 6 (e-grafo de ajuste).** Para un ajuste $F$ y un conjunto $R$ de reescrituras sonoras, el e-grafo de ajuste $EG(F, R)$ es el e-grafo saturado de los términos de reglas de $F$ bajo $R$ [11, 12]. Cada clase e contiene ajustes equivalentes según la Definición 3.
+
+**Definición 7 (costo en julios).** $\mathrm{cost}_J(t)$ es la energía estimada (`est_j`) para ejecutar el término $t$ una vez en un sustrato con nombre, ponderada por el número esperado de ejecuciones.
+
+<div id="33-why-database-functional-state-machine" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.3 ¿Por qué "máquina de estado funcional de base de datos"?
+
+Una estructura relacional finita es una instancia de base de datos, por lo tanto, un estado de Gurevich es una base de datos y cada paso es una transacción acotada. *Base de datos*: $S$ es una estructura relacional. *Funcional*: $\delta$ y $\lambda$ son puros. *Máquina de estado*: las ejecuciones son carpetas de $\delta$ sobre eventos. Moseley y Marks trazan la misma línea en arquitectura [13]. El sourcing de eventos lo traza en el estado de la aplicación: "Capture all changes to an application state as a sequence of events" [14]. Dedalus lo traza en lógica, donde el estado mutable es una relación indexada por el tiempo [15].
+<div id="34-propositions" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.4 Proposiciones
+
+**Proposición 1 (la Forma captura cada algoritmo secuencial).** Para cada algoritmo secuencial $A$ existe una instancia de Forma $P$ cuyas ejecuciones son las ejecuciones de $A$.
+
+*Esquema de demostración.* El teorema 6.13 da un ASM $B$ con los estados, estados iniciales y mapa de un paso de $A$. Establezca $E = \{\varepsilon\}$, $\delta(s, \varepsilon) = \tau_B(s)$, $D = (s_0, \varepsilon^n)$ y $\lambda$ la identidad. El plegado después de $n$ ticks es $\tau_A^n(s_0)$. Por el corolario 3.3 de Gurevich, $P$ y $A$ tienen las mismas ejecuciones. ∎
+
+**Proposición 1b (programas interactivos).** Extienda $\Sigma$ con un conjunto de símbolos de entrada nula a $e$ antes de cada paso; luego $\delta(s, e) = \tau(s[\mathit{in} := e])$ es un algoritmo secuencial sobre el vocabulario extendido, y la Proposición 1 se aplica. La construcción es nuestra.
+
+**Proposición 1c (computabilidad).** Bajo el axioma de Dershowitz y Gurevich, cada instancia de Forma calcula una función computable por una máquina de Turing [4, 16, 17]. La Forma no agrega poder. Le da a cada programa en la clase una forma.
+
+**Proposición 1d (pruebas son ajustes).** "Para cada prueba de una proposición dada, existe un programa del tipo correspondiente" [18]. Un tipo es una especificación y una prueba es un ajuste que la cumple. La compuerta de corrección es la existencia de esa prueba o de una prueba de aceptación exitosa.
+
+**Proposición 2 (un generador).** Una función $G : \mathrm{Fit} \to \mathrm{Program}$ genera un programa ejecutable para cada ajuste y no lee ningún dominio. *Base:* cada programa es una instancia de Forma, así que $G$ emite un almacén tipado, un tipo de evento, reglas compiladas, un registro con un plegado y un despachador de salida. Scaffolders como generadores de Rails, JHipster y Yeoman son $G$ restringido a lenguajes de ajuste pequeños. La ingeniería de líneas de productos comienza desde "la descubrimiento sistemática y explotación de la comúnidad entre sistemas de software relacionados" [8]; la comúnidad es la Forma.
+
+**Proposición 3 (extracción de menor energía).** La extracción con $\mathrm{cost}_J$ devuelve el término de menor julio que el extractor encuentra en la clase $e$ de $F$. *Esquema de demostración.* Las reescrituras son sólidas, así que cada término en la clase $e$ tiene el comportamiento observable de $F$ y pasa la misma compuerta. La extracción minimiza el costo, y el costo es julios. ∎ Esto es Mixture of Limits aplicado al código. Mixture of Limits, Parte II del artículo complementario [Compuertas de confirmación medidas](/papers/gates/), establece que una tarea necesita una energía esperada mínima para cerrarse y que la energía gastada después de que la tarea se complete no compra ningún progreso verificado; aplicado al código, dice: mantenga el término mínimo que hace la tarea, y el resto es desperdicio.
+
+**Proposición 4 (determinismo de reproducción).** Si $\delta$ no lee el reloj de pared, ordena las actualizaciones sin nombres y registra cada entrada, dos reproducciones de un $D$ dan hashes de estado idénticos en cada paso.
+
+**Proposición 5 (proyección del diagrama de estados es sólida).** Proyecte cada estado de una ejecución sobre $\Sigma_c$. El resultado es una ejecución del diagrama de estados emitido bajo los mismos eventos.
+
+**Proposición 6 (presupuesto de coordinación).** Las reglas etiquetadas como monótonas se ejecutan en réplicas sin coordinación; solo las reglas no monótonas necesitan un punto de coordinación. *Base:* el teorema CALM, "los programas que tienen implementaciones distribuidas consistentes y sin coordinación son exactamente los programas que pueden expresarse en lógica monótona" [19].
+
+El apéndice D.5 de la especificación deriva la etiqueta de la regla, nunca de una declaración, y tiene la verificación de IR del perfil del motor que rechaza una Forma cuya etiqueta almacenada difiere de la derivada:
+
+| La regla tiene | Etiqueta | Razón |
+|---|---|---|
+| ninguna resolución, lectura, unión o escaneo | monótona | sus escrituras solo añaden claves y crecen contadores |
+| una resolución | no monótona | elimina filas de escalación |
+| una lectura de su propio sumidero | no monótona | lectura, modificación, escritura |
+| una unión con clave | no monótona | la fila unida puede no estar presente ahora y estar presente más tarde, o sobrescrita |
+| un escaneo | no monótona | observa toda la relación, incluyendo lo que no está presente |
+
+La etiqueta es sólida pero no completa: una unión contra una relación de solo inserción sería monótona, pero el perfil no prueba que una relación es de solo inserción, así que la etiqueta no lo afirma. Una Forma es sin coordinación cuando cada regla es monótona. Cada lectura, unión y escaneo ve el estado en la entrada del evento, así que el estado posterior de un evento de entrada no depende del orden en que se ejecuten las reglas para diferentes sumideros; solo el orden de salida lo hace, y está fijo por el hash de contenido.
+
+**Proposición 7 (inteligencia como derivada de julio).** Sea $X$ el recuento de tareas a través de la compuerta y $J$ los julios gastados. $\iota = dX/dJ$ se lee en retrospectiva de $D$, que registra cada evento, y, en el diseño del motor, de sus recibos ([§4.4](#44-receipts)), cada uno de los cuales lleva el `est_j` de una llamada a engranaje. La extracción bajo $\mathrm{cost}_J$ mantiene la compuerta fija y no eleva $J$, así que a igual $X$ no reduce $\iota$.
+
+<div id="35-graph-e-graph-and-statechart" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.5 Gráfico, e-gráfico y diagrama de estados
+
+| Estructura | Parte de la Forma | Lo que decide |
+|---|---|---|
+| Diagrama de estados | Guardias de $\delta$ sobre $\Sigma_c$ | Qué transición dispara |
+| Gráfico de flujo de datos | Dependencias de lectura y escritura de $\delta$ y $\lambda$ (redes de procesos de Kahn [20]) | Qué se ejecuta y en qué orden |
+| E-gráfico | La clase de equivalencia del ajuste | Qué ajuste equivalente se ejecuta |
+
+El diagrama de estados y el gráfico describen un ajuste. El e-gráfico describe cada ajuste equivalente a él. La extracción elige entre ellos según los julios.
+<div id="36-one-ecosystem-lossless-and-the-universality-thesis" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.6 Una ecosistema, sin pérdida, y la tesis de universalidad
+
+**Sin pérdida por construcción.** El teorema de codificación fuente de Shannon fija el piso para un código sin pérdida en la entropía de la fuente [40]. Una Forma es un código sin pérdida para la intención en un sentido estrecho que puede verificarse: la serialización canónica de la Forma es inyectiva, por lo que dos Formas que difieren en cualquier estado, evento o transición tienen hashes de forma diferentes, y la decodificación de la serialización devuelve la misma Forma. En el diseño, cada proyección a un objetivo es una función de la Forma sola; los emisores de hoy leen el programa verificado en lugar de ([§4.5](#45-the-compilers)). Las transformaciones bidireccionales hacen que el viaje de ida y vuelta sea preciso. Foster, Greenwald, Moore, Pierce y Schmitt definen una lente como un par de funciones get y put con condiciones de viaje de ida y vuelta que hacen que una vista y su fuente coincidan [122], Hofmann, Pierce y Wagner extienden las condiciones a lentes simétricos [123], y Czarnecki y colegas revisan las mismas condiciones de consistencia a través de ingeniería de modelos, bases de datos y lenguajes de programación [124]. La condición de viaje de ida y vuelta de RCE es la condición GetPut a nivel del programa completo: elevar una proyección hacia atrás y el hash de forma no cambia.
+
+**Correcto por construcción.** Dijkstra propuso en 1968 que un programa y su prueba se desarrollaran juntos, de modo que la corrección se diseñara en lugar de probarse [125]. Hall y Chapman llevaron el enfoque a un sistema seguro comercial con especificación formal y refinamiento en cada paso [126]. La regla de Minsky para programación funcional tipada, hacer estados ilegales no representables, dice lo mismo a nivel de tipo: un tipo que no puede contener un valor malo elimina la necesidad de verificarlo [127]. La programación funcional total de Turner requiere que cada función termine en cada entrada, de modo que un programa denota una función matemática sin fallos ocultos [128]. La Forma de RCE es total en el sentido de Turner, sus tipos de contrato hacen que los estados no declarados sean no representables en el sentido de Minsky, y la cadena de refinamiento de [§2.1](#21-programming-is-coding-theory) termina en ella en el sentido de Dijkstra. La consecuencia es la que se enuncia en [§1](#1-thesis): lo que hace un programa es lo que declara su Forma, por lo que no hay nada que diferenciar o rastrear después del hecho.
+
+**La tesis de universalidad.** Enunciada en términos teóricos, la tesis es que existe una Forma universal. Los programas se escriben en ella nativamente, cada lenguaje existente es alcanzable desde ella como una proyección fiel, y cada programa existente entra en ella mediante elevación. La tesis de Gurevich proporciona la base: cada algoritmo secuencial se captura, paso a paso, por una Máquina de Estado Abstracto en su propio nivel de abstracción [2], y los algoritmos paralelos de la misma manera [3]. Una Forma es tal máquina sobre un estado de base de datos.
+
+**Proposición U1 (captura).** Si un programa en el lenguaje $L$ es un algoritmo secuencial o paralelo en el sentido de Gurevich, entonces existe una Forma cuya transición simula paso a paso el algoritmo en el nivel de abstracción del programa [2, 3].
+
+**Proposición U2 (proyección fiel).** Si la proyección $\pi_L$ de una Forma a $L$ preserva la traza de la Forma en cada entrada en el contrato, entonces la Forma y su proyección son intercambiables para cada observador de la traza, y $L$ no añade nada que la Forma no tenga.
+
+**Proposición U3 (elevación por construcción).** Cada lenguaje de programación en uso tiene una gramática formal, un analizador que genera un árbol de sintaxis concreto, un árbol de sintaxis abstracto y una semántica fijada por su especificación o implementación de referencia. Una elevación $\lambda_L$ se construye por lenguaje en tres etapas: la gramática, luego el árbol de sintaxis abstracto, luego la Forma, con cada construcción de $L$ dada su regla de Forma por la semántica de $L$. Una elevación así construida satisface $\pi_L(\lambda_L(p)) \equiv p$ en comportamiento y $\lambda_L(\pi_L(F)) = F$ en hash de forma, por lo que el par es una lente en el sentido de [122], y un programa en $L$ se mantiene como una Forma sin pérdida.
+
+**Proposición U4 (reemplazo).** Si U2 y U3 se cumplen para el lenguaje $L$, entonces ningún programa necesita escribirse en $L$: se escribe una vez como una Forma y se emite como $L$ donde una plataforma lo requiera.
+
+**Cada lenguaje como objetivo y como fuente: el diseño.** La Forma no impone límites a los objetivos, y RCE está diseñado para elevar cada lenguaje a la Forma y emitir cada lenguaje desde ella. El diseño es la propuesta [`spec/proposals/rce-form.md`](https://github.com/openIE-dev/rce/blob/main/spec/proposals/rce-form.md) del repositorio de especificaciones. Fija una codificación de la Forma, `rce-form/1`, que comparten la elevación y la emisión, y trata un lenguaje como datos: una gramática fija, una tabla de elevación que mapea la sintaxis del lenguaje a la codificación, una tabla de impresión que imprime la codificación como texto del lenguaje, y una biblioteca de tiempo de ejecución que establece exactamente los valores y operaciones integradas del lenguaje. Una elevación se acepta mediante comparación exacta con la implementación propia del lenguaje, y una emisión mediante comparación exacta de la salida del programa emitido, ejecutada bajo la propia compilación del lenguaje, con la traza de referencia, en una escalera de niveles de aceptación desde 0 (el lenguaje tiene una fila, con un identificador de un catálogo público como el Historia de los Lenguajes de Programación o GitHub Linguist, en el propio registro de lenguajes de la propuesta) a través de 4 (en un corpus fijo, cada caso coincide byte por byte o se mantiene mediante la elevación o la emisión con un motivo nombrado, al menos un caso coincide, ninguno difiere, y ningún caso elevado se mantiene por un límite de recursos) y 5 (la elevación y la emisión forman una lente sobre ese corpus) hasta 6 (acuerdo con una segunda, implementación independiente, o con el propio conjunto de pruebas del lenguaje que constituyen al menos el 30% del corpus), y un nivel se publica solo con los recuentos de la ejecución que lo alcanzó. La propuesta se basa en tres anteriores: el registro de emisión (`spec/proposals/emit-targets.md`), cuyas capas listan los sistemas, plataforma, dinámicos y no von Neumann a seguir, incluyendo los nuevos entrantes de 2024 a 2026 catalogados en [§3.7](#37-the-language-one-text-costs-and-theorem-status); un emisor con una tabla de impresión por lenguaje (`spec/proposals/one-emitter.md`); y cómo la Forma mantiene lo que se le ofrece (`spec/proposals/compliance.md`). En la codificación, cada definición de un programa se nombra mediante el hash de sus bytes, y su cuerpo es un grafo sobre cinco tipos de nodos (Bind, Apply, Branch, Iterate y Halt), que mantienen los números que les da el núcleo de flowG ([openIE-dev/flow-g](https://github.com/openIE-dev/flow-g)), su vocabulario de 22 primitivas y 11 tipos de cables; flowG es el primer paso del proyecto hacia una forma compartida entre la intención y el silicio y el padre de RCE. El diseño no se construye: la propuesta establece que nada en ella se ha construido y que ninguna línea de su capa de forma existe, y el núcleo tipado que sus impresores leerían existe solo en una rama de desarrollo del repositorio. Lo que existe hoy es más estrecho. El comprobador de referencia emite Rust, Python, JavaScript y Scala a través de cuatro emisores manuales que traducen el árbol de sintaxis verificado de un programa, no la Forma ([§4.5](#45-the-compilers)). La única elevación desde otro lenguaje en el repositorio público es la prueba `spec/lift/go/lift_go.py`, que eleva un patrón de Go (una estructura con un método de receptor de puntero por evento, guardianes que devuelven un error, y asignaciones de campo) a una Forma; en su ejemplo único, una puerta, la Forma elevada tiene los mismos estados de control y transiciones que una Forma escrita a mano de la misma puerta cuando los dos declaran sus errores en el mismo orden. Bajo `lang/`, el repositorio también almacena, en los formatos de archivo por lenguaje de la propuesta, oráculos fijos y corpora grabados para Go 1.24, Python 3.13 y JavaScript (ECMAScript 2020) contra los que se juzgaría una elevación; no existe un elevador, como establece [su lea-me](https://github.com/openIE-dev/rce/blob/main/lang/README.md).
+
+U1 es un teorema. U2 se verifica para Rust, Python y JavaScript mediante las pruebas de los emisores de programas ([§5.1](#51-differential-testing-of-the-program-emitters)), aún no se cumple para Scala, y se verificará en gran N bajo el protocolo de [§2.3](#23-the-ecosystem-at-large-n). U3 es una construcción que se construirá lenguaje por lenguaje desde la gramática; un patrón de Go se eleva mediante una prueba pública hoy, y [§8.7](#87-lift-coverage-across-languages) establece cómo se mide la construcción a medida que se construye.
+
+**Dos calificaciones.** La elevación de U3 es una construcción, y su dominio es más pequeño de lo que sugiere la oración anterior. La Forma requiere que cada programa finalice (T2), por lo que la elevación desde cualquier lenguaje Turing-completo es, como máximo, una mapa desde el fragmento terminante de ese lenguaje, y la membresía en ese fragmento es indeterminable (teorema de Rice aplicado a un objetivo total [141]). En el fragmento terminante la elevación aún no es canónica: la representación de cierre, que subtérminos se convierten en estados de control, y el orden de evaluación son elecciones libres, y el inverso existe solo para programas en forma defuncionalizada [142, 143]. Por lo tanto, $\lambda_L$ es una construcción sobre la imagen de un mapa parcial cuyo dominio es indeterminable, las condiciones de viaje de ida y vuelta de la lente se mantienen en esa imagen, y "cada programa existente entra en ella mediante elevación" es una afirmación sobre el fragmento que la construcción alcanza, medida como lo mide [§8.7](#87-lift-coverage-across-languages). La segunda calificación se refiere al hash sobre el cual se hace la afirmación de inyectividad. La especificación 6.1 hashea las formas posicionales del estado y del evento (regiones y campos como listas en orden de declaración, una variante por su índice, un evento por su índice entre los eventos del módulo); la entrada almacenada mantiene su legible `event` y `state`, y una traza repite las formas hasheadas bajo `hashed` (formato de traza `rce-trace/2`). El módulo Lean `RCE/NameFree.lean` hashea las claves de De Bruijn, y `RCE/Positional.lean` modela la incrustación posicional (registros de tipos declarados como listas de campos en orden de declaración, variantes como índice y campos, eventos por índice, registros no declarados por nombre) y lo prueba inalterado bajo cualquier renombramiento que sea inyectivo y fije nombres no declarados, lo cual es lo que realiza la proyección sin nombres, por lo que el hash del estado y toda la cadena de entradas permanecen inalterados para cada función de hash; el índice de evento que hashea está definido como el índice de declaración del modelo de De Bruijn, por lo que las dos codificaciones coinciden en el componente que comparten. El comprobador de referencia y los tiempos de ejecución de Python, JavaScript y Rust coinciden en los hashes, y una prueba verifica que un programa y su proyección sin nombres tienen los mismos hashes de registro, como establece T7; en el commit público `f2bd7222`, que agrega `RCE/Positional.lean`, la auditoría pasa con 5,052 teoremas con solo axiomas estándar. Un comprobador de referencia anterior hasheaba el JSON canónico con nombre, por lo que sus hashes de registro dependían de los nombres mientras que los del modelo no lo hacían; el registro de propuestas de la especificación registra ese hallazgo, la prueba que lo demostró y su resolución como un erratum bajo C.15 (la entrada de registro está fuera del significado de un programa), con los fixtures de traza, los goldens de aplicación, 130 clavos de conformidad y los vectores de alimentación de la biblioteca estándar regenerados.
+<div id="37-the-language-one-text-costs-and-theorem-status" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.7 El lenguaje: un texto, costos y estado de los teoremas
+
+El lenguaje RCE está definido por una especificación escrita ([/rce/spec/](/rce/spec/); el código fuente está en el [repositorio rce](https://github.com/openIE-dev/rce)). Hay un solo lenguaje, el texto de la especificación en un commit determinado, y cada módulo de un programa está en él (especificación 2.7). Las secciones 2 a 10 definen el núcleo; el Apéndice C define la concurrencia (`par`, `for ... par`, `with budget`, grupos de trabajo, LVars, sesiones y supervisores) y se aplica a cada módulo; el Apéndice D define el perfil del motor: las especificaciones de los manejadores y los ajustes del diseño del motor. Ninguna declaración selecciona un dialecto: un comentario de primeras líneas `# rce-version:` es una etiqueta de lanzamiento que nombra el commit de la especificación contra el cual se escribió un módulo, es ignorado por el verificador y no se hash, y una construcción que el verificador no implementa se rechaza como reservada, no implementada (W-RES-1, Apéndice F.12). El lenguaje está en desarrollo y cambia a medida que se encuentran formas mejores: una forma puede agregarse, generalizarse o reemplazarse, y el cambio y cada programa del repositorio que toca se mueven juntos en un solo commit, nunca como una elección por módulo, por lo que un programa nunca depende de la versión de otro programa o biblioteca: todo lo verificado en un solo commit coincide con la especificación en ese commit.
+
+**¿Por qué un solo texto y no selección de versiones.** El registro de versiones respalda esta regla en lugar de la selección por módulo que tenían los borradores anteriores. La resolución de dependencias con una versión por paquete y restricciones arbitrarias es NP-completo, establecido para distribuciones de Linux [176], repetido en 2020 para cada modelo de componente no trivial [177] y probado independientemente para gestores de paquetes de lenguaje mediante reducción desde 3-SAT [178]. Un número de versión semántica no lleva la promesa que hace: sobre un tercio de los lanzamientos de Maven Central durante siete años introdujeron un cambio que rompía, en lanzamientos menores y de parches con la misma frecuencia que en lanzamientos mayores [179], una replicación en 119,879 actualizaciones aún encontró el 20.1% de los lanzamientos no mayores que rompían [180], y el texto de ingeniería de Google concluye que la numeración semántica es una resumen perdido del riesgo de adoptar un cambio y mantiene una versión de todo en un solo repositorio [181]. La exposición es una propiedad del grafo transitivo: para más del 80% de los 35,863 artefactos de Maven afectados por la vulnerabilidad de Log4j la dependencia era más de un nivel profundo [182]. Donde el registro converge es en la identidad derivada del contenido, de modo que dos cosas diferentes nunca comparten un nombre y las variantes coexisten [183, 184], en el cambio por acreción bajo nombres que nunca se reutilizan [185], y en una prueba directa de que un cambio preservó el comportamiento en lugar de un número que lo afirma [186]; el diseño de hardware ha corrido tal prueba, verificación de equivalencia, como la compuerta en cada revisión durante dos décadas [187], y los builds reproducibles atan un artefacto a su fuente por su hash [188]. El diseño RCE toma cada uno de estos como una regla: un texto en un commit, hashes de definición con una tabla de compatibilidad cerrada (F.4.3), un manifiesto que fija por hash sin resolver (F.5.3), hashes de log sin nombres (T7) y comportamiento como el único sentido de que dos programas sean los mismos ([§3.8](#38-behaviour-equivalence-and-dimension)). La encuesta del 24 de octubre de 2026 que lee el registro contra estas reglas, con los huecos que enumera (un hash de programa completo, la verificación de equivalencia corrida como una compuerta en cada cambio, el origen en el código emitido), está en el repositorio de datos ([/data/](/data/#rce)) y su propuesta es `spec/proposals/one-commit-change.md`.
+
+**Los presupuestos cuentan el trabajo.** Un bloque `with budget` carga cada operación un costo fijo de la tabla del Apéndice C.6.4 y atrapa con `budget` cuando se agota el conteo. El conteo es un proxy del trabajo, no una medición del tiempo o la energía; `est_j` es separado.
+
+| Operación | Costo |
+|---|---|
+| llamada a una función de usuario o un cierre, $c_{call}$ | 4 |
+| método de biblioteca estándar en receptor de tamaño $n$, tamaño del primer argumento $k$ | $4 + w(m, n, k)$ |
+| envío o recepción en canal | 8 |
+| `spawn` | 32 |
+| una rama `par` o fragmento `for ... par` | 16 |
+| lista o mapa literal, o comprensión, con $n$ resultados; `[x; n]` | $4 + n$ |
+| índice, rebanada, acceso a miembro; operadores unarios; `and`, `or`; operadores e comparaciones de enteros, booleanos y texto | 1 |
+| `+`, `-`, `*` de flotante | 2 |
+| `/`, `%` de flotante | 8 |
+
+Los tamaños son la longitud en bytes UTF-8 de un texto, la longitud de una lista y el número de entradas de un mapa; cualquier otro valor tiene tamaño 0. El trabajo del método $w$ está fijado por la clase de complejidad del método en el evaluador de referencia: $n + k$ para los métodos lineales en texto, listas y mapas (los mapas son listas de asociación ordenadas), $n \lceil \log_2 n \rceil$ para `sort` (0 cuando $n \le 1$), y 0 para los métodos restantes. Las llamadas que `map`, `filter` y `fold` hacen a su argumento de función se cargan como llamadas adicionales. La aritmética se satura en el entero más grande de 128 bits, y $w$ nunca disminuye cuando $n$ o $k$ crece. El evaluador de referencia y los runtimes emitidos de Rust, Python y JavaScript calculan la misma función, y una prueba verifica que la trampa de presupuesto cae en la misma operación en los cuatro.
+
+**Una regla de costo.** El costo de una llamada a un método de biblioteca estándar es el costo único del texto, en cada módulo y dondequiera que se ejecute la llamada (especificación 2.7, C.15). La regla es léxica al texto, no al módulo, por lo que enlazar módulos no cambia ningún costo; las pruebas lo verifican en los límites de los módulos en ambas direcciones en el evaluador de referencia y en los programas emitidos de Rust, Python y JavaScript.
+
+**Estado de los teoremas.** La especificación establece los teoremas T1 a T34 y registra el estado de cada uno exactamente. Las pruebas están en Lean 4 (v4.12.0, sin Mathlib) sobre un cálculo de núcleo. Las palabras usadas para el nivel de un resultado son estas. *Probado* significa una prueba de Lean sobre la semántica del núcleo del lenguaje. *Probado sobre una semántica* significa una prueba de Lean sobre una semántica de paso pequeño de un núcleo de RCE. *Modelo* significa una prueba de Lean sobre un modelo abstracto que no está conectado a la semántica de RCE ni al evaluador de referencia. *Vectores* significa que los resultados del evaluador de referencia sobre programas generados se verifican contra el modelo por el núcleo de Lean, que es una correspondencia en muestras, no una prueba sobre el evaluador. *Probado* significa pruebas diferenciales sobre entradas declaradas. *Verificado mecánicamente* significa decidido por un programa, como un constructor de tablas LALR(1).
+
+| | Enunciado | Nivel |
+|---|---|---|
+| T1 | determinismo: un resultado por estado y evento; un resultado por tick de la semántica de concurrencia | probado |
+| T2 | totalidad de $\delta$, con un límite explícito en los pasos de evaluación; recursión estructural y composición de límites a lo largo del gráfico de llamadas | probado (el núcleo de Lean no tiene llamadas a funciones de usuario; la recursión y la composición se prueban en modelos separados) |
+| T3 | el estado de tiempo de ejecución es $\mathrm{foldl}(\delta_1, s_0, D)$ y la reproducción reproduce cada hash y salida | probado |
+| T4 | progreso, incluyendo ticks (alguna tarea se mueve, o la ejecución termina o reporta `Deadlock`) | probado |
+| T5 | preservación, incluyendo el rango de enteros de cada campo escrito | probado |
+| T6 | seguridad de memoria, rutas completas de préstamo, sin compartir mutable entre tareas | probado para el núcleo de propiedad y una semántica instrumentada de rutas de préstamo |
+| T7 | independencia de nombres de hashes de log, ids y selección de opciones | probado |
+| T8 | atomicidad: un evento rechazado deja el estado sin cambios | probado |
+| T9-L | los emisores de programas (`rust`, `python`, `js`) coinciden con el evaluador de referencia | probado para el emisor de Rust en un núcleo, como una traducción verificada en MiniRust, una incrustación profunda del subconjunto emitido de Rust; que `rustc` implementa MiniRust se confía y se prueba; los otros emisores se prueban |
+| T10 | la gramática es ambigua | verificado mecánicamente (LALR(1), 0 conflictos, para ambas versiones) y muestreado por un fuzzer |
+| T11 | justicia de selección | probado en el modelo de rotación |
+| T12 | un manejador lineal se consume exactamente una vez en cada camino | probado en un modelo de declaración |
+| T13 | las operaciones f32 dan los mismos bits en objetivos que acuerdan con IEEE 754 | probado para multiplicación; para suma, resta y división la propiedad de redondeo único es el teorema de Figueroa, citado y no mecanizado |
+| T14 | la aritmética verificada u64 es exacta en el rango | probado |
+| T15 | los iteradores terminan, respetan el límite del bucle y son consistentes en el prefijo | probado |
+| T16 a T31 | concurrencia del Apéndice C: determinismo de `par`, conmutación, reducciones, libertad de bloqueo, plazos, grupos de trabajo, relojes de vector, prioridades, alcances, actores, sesiones, LVars, lotes atómicos, réplicas | probado sobre una semántica: T16, T17, T19a, T20, T23; probado sobre un modelo de ejecuciones: T24; probado sobre un cálculo de sesión: T28; modelo: T18, T19b, T21, T22, T25, T26, T31; modelo con vectores: T27, T29, T30. Ninguno es una prueba sobre el evaluador de referencia de Rust |
+| T32 | reproducción extranjera: para cada oráculo, la reproducción del log es igual a la ejecución en vivo, y un contrato de respuesta se mantiene para cada respuesta registrada | probado |
+| T33 | `&mut` restaura en caso de falla (F.4.4): una llamada fallida deja el estado `&mut` del llamante como estaba en la llamada; una llamada que devuelve escribe de vuelta (la regla anterior de copia de salida en cada resultado se retira) | probado |
+| T34 | el paso de forma A-normal preservando el orden (ANF) antes de cada emisor da el mismo valor, almacenamiento y traza de cargas y emisiones | probado para un fragmento de núcleo con ANF completo; la implementación se prueba diferencialmente en los objetivos de Rust, Python y JavaScript, incluyendo un barrido de presupuestos a través del punto de trampa; la salida de Scala pasa por el mismo paso pero no está en estas pruebas |
+
+T9-L es la afirmación sobre los emisores de programas del lenguaje, que [§5.1](#51-differential-testing-of-the-program-emitters) describe; un objetivo fuera de ese conjunto no tiene afirmación T9. La especificación también establece T9-F, para los objetivos del compilador de Form del motor, y [§10](#10-work-to-finish) lista su prueba.
+
+![Cuadrícula de 34 entradas, T1 a T34 con T9 mostrado como T9-L y T19 dividido en T19a y T19b, cada uno con un nivel codificado. Probado: T1, T2, T3, T4, T5, T7, T8, T14, T15, T32, T33; probado para un núcleo o fragmento declarado; el resto probado o citado: T6, T9-L, T13, T34; probado sobre una semántica de paso pequeño de un núcleo de RCE: T16, T17, T19a, T20, T23; probado sobre un modelo nombrado (modelo de rotación, modelo de declaración, modelo de ejecuciones, cálculo de sesión): T11, T12, T24, T28; Modelo: T18, T19b, T21, T22, T25, T26, T31; Modelo, con vectores del evaluador verificados por el núcleo de Lean: T27, T29, T30; Verificado mecánicamente (tablas LALR(1)): T10.](/figures/rce/theorem-status.svg)
+
+*Figura 3. Estado de los teoremas, T1 a T34. Nivel de cada teorema como se registra en la especificación en el commit público `ac95172` (borrador 0.7); los teoremas añadidos después de T34 no se muestran, y T9 se muestra como T9-L, la afirmación sobre los emisores de programas. `P`: prueba de Lean sobre la semántica del núcleo. `P*`: probado para un núcleo o fragmento declarado, el resto probado o citado. `S`: probado sobre una semántica de paso pequeño de un núcleo de RCE. `M+`: probado sobre un modelo nombrado (modelo de rotación, modelo de declaración, modelo de ejecuciones, cálculo de sesión). `M`: prueba de Lean sobre un modelo abstracto. `MV`: modelo, con vectores del evaluador verificados por el núcleo de Lean. `C`: verificado mecánicamente. T16 a T31 son los teoremas de concurrencia del Apéndice C, y ninguno es una prueba sobre el evaluador de referencia de Rust. Lean 4 v4.12.0, sin Mathlib. Fuente: `spec/book/10-theorems.md` y el Apéndice C.13. Se proporciona una [copia PNG](/figures/rce/theorem-status.png).*
+
+**Verificaciones que se ejecutan.** En el commit público `e416fd0`, `lake build` completa sobre los 58 archivos de `spec/lean/RCE/` sin `sorry` (46 archivos en el commit público `4304048`), y el auditoría actual reporta los axiomas de 4,877 constantes de teoremas como solo `propext`, `Quot.sound` y `Classical.choice`. El auditoría cuenta cada constante de teorema en el entorno del núcleo, incluyendo constantes que el elaborador genera, por lo que difiere del recuento de declaraciones `theorem` y `lemma` en la fuente, que es 1,116 en el mismo commit. En el mismo commit la fuente del verificador de referencia contiene 385 funciones de prueba. En el commit público `ac95172`, la verificación de la especificación construye las tablas LALR(1) de la gramática del núcleo (secciones 2 a 10, 932 estados) y de la gramática con el Apéndice C (1,110 estados) con 0 conflictos, acepta 51 de 51 ejemplos válidos, rechaza 12 de 12 rechazos de sintaxis y 64 de 64 programas mal tipados o inadmisibles, y analiza cada ejemplo con tres analizadores, y la construcción de WebAssembly del verificador pasa 401 de 401 pruebas contra los corpora de ejemplos.
+
+**Una observación de convergencia.** Dos recorridos del 24 de octubre de 2026 catalogaron 111 lenguajes de programación primeramente públicos entre enero de 2024 y octubre de 2026 [189, 190]: 72 diseñados para modelos de lenguaje o agentes como autores o implementados en gran parte por un agente (48 del catálogo agentlanguages.dev [166], leído en su repositorio de fuentes, y 24 más allá de él), y 39 lenguajes generales o de sistemas, con 35 lenguajes pre-2024 alcanzando una meta en la ventana. Entre los entrantes autorizados por máquina el recuento por año es 3, 10 y 57 para 2024, 2025 y 2026. Dos posiciones son casi universales: rechazo de entrada inválida en un límite (54 de 72) y emisión a otro lenguaje (57 de 72; 17 de 39 entrantes generales, con Go como objetivo de 2026 y C como el sistema por defecto). Minorías toman una forma canónica (25 de 72), ejemplos o pruebas dentro del programa (21 de 72; 2 de 39), una especificación escrita como definición autoritaria (16 de 72; 14 de 39), evaluación determinista como una compuerta declarada (13 de 72; 3 de 39, entre ellos Gossamer, Dawn y Wyzer) y seguridad de memoria sin recolector (8 de 72; 7 de 39, convergiendo en conteo de referencias preciso o propiedad en lugar de anotaciones de vida, con las pilas de datos de Goose como el outlier [191]). Un log solo de adición con reproducción (5 de 72; ninguno de 39) y definiciones identificadas por hash (2 de 72; 3 de 39, Bend, Scrapscript y Dawn [192]) son raros, y una forma intermedia como la fuente de verdad está ausente en los nuevos lenguajes generales. Una tendencia distintiva de 2025 y 2026 es lenguajes cuyos compiladores se escribieron en gran parte por agentes de modelo y se revelaron así, entre ellos Goose, Rue, Cursed y Jolt, cuyas afirmaciones de rendimiento se reportan por sí mismos. Por lo tanto, las decisiones de diseño de este documento se repiten donde son baratas (un resultado declarado para cada entrada en el límite, impresión a un lenguaje anfitrión) y permanecen raras donde son teoremas aquí (una forma canónica, ejemplos como parte del programa, reproducción desde un log encadenado por hash, identidad sin nombres). Esta es una observación de que las decisiones se repiten y donde; no es evidencia de que sean correctas, y este documento no hace una comparación de calidad con esos proyectos. La propuesta de registro de emisión del repositorio de especificaciones enumera cada entrante como un objetivo y una fuente bajo los mismos términos que cada otro lenguaje; ninguno de ellos se eleva o emite hoy ([§3.6](#36-one-ecosystem-lossless-and-the-universality-thesis)).
+<div id="38-behaviour-equivalence-and-dimension" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.8 Comportamiento, equivalencia y dimensión
+
+La definición 3 dice que dos ajustes son equivalentes cuando sus secuencias de salida coinciden en cada secuencia de eventos. Esta sección le da a esa definición una propiedad universal, define la dimensión de un programa como un número calculado y reporta las mediciones registradas de ella. El texto normativo es la sección 6.10 de la especificación (borrador 0.9, confirmación `45fc95c`), con los teoremas T57 a T61 y el comando `rce dim`.
+
+**Comportamiento como un punto en la coalgebra final.** Fija un programa $P$ con espacio de estados $S$, alfabeto de eventos $E$ y $\delta : S \times E \to S \times O^*$, y escribe $\delta_1 = \pi_1 \circ \delta$ y $\lambda = \pi_2 \circ \delta$ como en la definición 1. El comportamiento de un estado $s$ es la función $\mathrm{beh}_P(s) : E^* \to (O^*)^*$ con $\mathrm{beh}_P(s)(\varepsilon) = \varepsilon$ y $\mathrm{beh}_P(s)(e \cdot w) = \lambda(s, e) \cdot \mathrm{beh}_P(\delta_1(s, e))(w)$: las salidas por paso a lo largo de cualquier secuencia de eventos. $(S, \langle \lambda, \delta_1 \rangle)$ es una coalgebra del functor $F(X) = (O^* \times X)^E$; $F$ tiene una coalgebra final $\mathrm{Beh}$ cuyo portador es el conjunto de funciones de flujo causal, y $\mathrm{beh}_P$ es el único morfismo de coalgebra $S \to \mathrm{Beh}$ (Rutten [144], Teorema 2.3). Dos ajustes son equivalentes, $F \equiv G$, cuando $\mathrm{beh}_F(s_0^F) = \mathrm{beh}_G(s_0^G)$. Esto es la definición 3 restablecida; el nuevo contenido es que $\equiv$ es la igualdad en un objeto que cada Forma, en cada lenguaje de ajuste, mapea por la misma construcción. El espacio de comportamiento no es una variedad: lleva la métrica ultramétrica de prefijo $d(b_1, b_2) = 2^{-n}$, $n$ la longitud de la secuencia de eventos distinguible más corta, bajo la cual es completa y totalmente desconectada [145]. La coincidencia de trazas en cada secuencia de longitud como máximo $k$ por lo tanto certifica $d \le 2^{-(k+1)}$: una bola alrededor del comportamiento, no el comportamiento. Eso es lo que establecen las pruebas diferenciales de [§5.1](#51-differential-testing-of-the-program-emitters), y nunca entra en un hash.
+
+**Dos métodos de prueba.** Una relación $R \subseteq S \times S$ es una bisimulación para $P$ cuando $s\,R\,t$ implica, para cada $e$, $\lambda(s, e) = \lambda(t, e)$ y $\delta_1(s, e)\,R\,\delta_1(t, e)$. T58 establece que $\mathrm{beh}_P(s) = \mathrm{beh}_P(t)$ si y solo si alguna bisimulación relaciona $s$ y $t$: para mostrar dos ajustes equivalentes, exhibe la relación; para mostrarlos diferentes, exhibe una secuencia distinguible, que también da la distancia. T1 y T2 (totalidad y determinismo) son exactamente la completitud y el determinismo que hacen la máquina mínima única; una máquina especificada incompletamente no tiene mínimo único [146].
+
+**Dimensión.** $\mathrm{reach}(P)$ es el conjunto de estados alcanzables desde $s_0$; es finito porque $S$ es finito bajo los límites de valor y tamaño de la especificación (N9). La dimensión de $P$ es
+
+$$\dim(P) = |\{\mathrm{beh}_P(s) : s \in \mathrm{reach}(P)\}|,$$
+
+el número de comportamientos distintos en los que $P$ puede estar, que es el índice de Nerode de su máquina de Mealy mínima [147], computable para un alfabeto explícito en $n \log n$ [148]. $\log_2 \dim(P)$ es los bits de estado que el comportamiento necesita; $\log_2 |\mathrm{reach}(P)| - \log_2 \dim(P)$ es la *redundancia* del ajuste, los bits de estado que no cambian ninguna salida futura. Una dimensión de control $\dim_c(P) \le \dim(P)$ se define en la proyección que reemplaza cada guardia sobre $\Sigma_d$ por su símbolo de predicado, un autómata finito simbólico [149], y su máquina mínima, numerada por un recorrido en anchura primero en el orden de eventos canónico, tiene una cadena única sin nombres [150]; su SHA-256 sobre JSON canónico es `shape_ctl`, una tercera clave junto con la huella de término sin nombres y la clave de e-clase de la definición 6. La igualdad en cualquier clave implica equivalencia; la desigualdad implica nada.
+
+Lo que es y no es un teorema aquí debe decirse claramente. $S$ y $E$ son finitos por los límites de valor y astronómicamente grandes: $|S| \le 256^{\mathrm{VALUE\_LIMIT}}$ por campo, por lo tanto la finitud hace cada pregunta de comportamiento decidible y ninguna de ellas tractable. La máquina mínima es una forma canónica para la proyección de control finito, donde la minimización de autómatas simbólicos es única hasta la equivalencia de predicados [149]; para campos que solo se comparan y copian, los autómatas de registro dan un teorema de Myhill-Nerode [151]; el momento en que $\delta$ hace aritmética entera en el estado, el único objeto canónico es el término mismo. "Cada Forma es una máquina de Mealy finita, y su máquina mínima es su forma canónica" es por lo tanto verdadero como se enunció para $\Sigma_c$ más predicados de guardia y no es una afirmación computable para $\Sigma_d$. Eso también es la lectura honesta de la proposición 3: la extracción de menor julio devuelve el término de menor julio *que encuentra el extractor*, y tres funciones distintas se definen en una e-clase: las unidades de presupuesto sin objetivo de la especificación C.6, que colocan la trampa de presupuesto en la misma operación en cada tiempo de ejecución y nunca son julios; `est_j`, que es por objetivo ([§6.3](#63-energy)); y el representante hashado, elegido por costo de árbol con un empate canónico-JSON para reproducibilidad. El término emitido y el término hashado de una e-clase pueden diferir; ninguno puede diferir entre motores dados el mismo registro.
+
+**Estado de los teoremas.** T57 (finalidad: $\mathrm{beh}_P$ es el único morfismo de coalgebra), T58 (equivalencia es bisimilitud), T59 (la coincidencia de trazas hasta la longitud $k$ limita la distancia por $2^{-(k+1)}$), T60 (para $S$ finito el cociente de $\mathrm{reach}(P)$ por la bisimulación más grande es la máquina mínima, con $\dim(P)$ estados) y T61 (`shape_ctl` es invariante bajo renombramiento y bajo reescrituras equivalentes de predicados de guardias) se enuncian en el capítulo 10 de la especificación, y `spec/lean/RCE/Behaviour.lean` está en `lake build` (Lean 4.12.0; en confirmación pública `f2bd7222`, `scripts/lean-audit.sh` lee 5,052 teoremas con axiomas estándar solamente y sin `sorry`). Lo que se prueba, en el alcance exacto del capítulo: la ecuación del morfismo de T57 (`beh_cons`; la unicidad del morfismo se enuncia, no se prueba); T58 para un programa y para dos (`bisim_beh`, `beh_bisim`, `behEq_iff_bisim`, `bisim2_beh`, `beh_bisim2`); y T59 en ambas direcciones sobre un alfabeto finito explícito, los eventos declarados sobre los conjuntos de límites que `rce dim` explora (`trace_ball`, `ball_trace`), con la declaración sobre todo $E$ enunciada, no probada. T60 se enuncia, con una prueba de modelo por refinamiento de partición como el siguiente paso. T61 se prueba solo para renombramiento, contra la proyección sin nombres `rce fmt --nameless`, que imprime un programa con nombres posicionales por tipo en orden de declaración primero y se acepta siempre que la fuente lo haga, con las mismas huellas de trazas por T7; su invariancia bajo reescrituras de guardias se enuncia, no se prueba, y el cociente simbólico no se implementa.
+
+**`rce equiv`: la verificación de equivalencia como herramienta.** `rce equiv A B` explora dos programas desde sus estados iniciales sobre las mismas instancias de eventos, compara cada paso por su salida sin nombres (valores emitidos en forma posicional, un rechazo por el índice de declaración del error, T7), refina los dos gráficos juntos y lee si los dos estados iniciales caen en una clase (T58); cuando no lo hacen imprime la secuencia de eventos distinguible más corta y las dos salidas al final. `rce change OLD NEW` lo combina con la diferencia de exportación de F.4.3 y clasifica un cambio como un erratum (cada exportación compatible, cada comportamiento mantenido), un cambio de significado o un cambio de interfaz, que es la regla de C.15 decidida por la herramienta. Ejecutado entre cada programa del corpus y su proyección sin nombres como paso de integración continua, la verificación encontró un programa cuya proyección fue rechazada (un campo de estado nombrado como un método de biblioteca estándar había renombrado el método); la proyección se corrigió y el barrido reporta cada Forma del corpus equivalente a su proyección, como T7 establece. Es la versión de la verificación de equivalencia del Form: una herramienta de diseño de hardware que se ejecuta en cada revisión ([§3.7](#37-the-language-one-text-costs-and-theorem-status)): un cambio bajo el cual cada programa mantiene su comportamiento es un erratum, cualquier otro un cambio de significado, decidido por la herramienta en lugar de por un número de versión. Con `rce hash`, que imprime una huella del programa sobre la proyección sin nombres (una huella para un programa y su renombramiento, una diferente para un paso cambiado), y la línea de procedencia que cada archivo emitido ahora lleva, los tres mecanismos que el registro llama rara en nuevos lenguajes (sección 3.7) son comandos del comprobador de referencias.
+
+**`rce dim`, y las ejecuciones registradas.** `rce dim FILE [--fuel n] [--control]` explora $\mathrm{reach}(P)$ en anchura primero sobre los eventos declarados con payloads tomados de cada campo de tipo de refinamiento o, sin uno, del conjunto de límites de la especificación 6.3, hasta `--fuel` estados, luego ejecuta la refinación de partición de Hopcroft con las salidas como la partición inicial (100,000 estados en 10 a 40 s; la primera iteración de Moore fue cuadrática y no terminó), y reporta estados explorados, comportamientos (exactos cuando el límite no se alcanza, de lo contrario un límite inferior), redundancia en bits por región, y con `--control` los estados de control y `shape_ctl`. Tres ejemplos se escribieron con valores conocidos: un contador con una bandera no leída (1.00 bit de redundancia), un contador mod-6 que emite paridad (1.58 bits), y una puerta con tres estados alcanzables y sin redundancia. La preregistro (`openie-research-experiments/rce/bench/dimension/PREREG.json`, registrado el 22 de octubre de 2026 antes de que el comando se construyera y se modificara antes de cada ejecución posterior, con un sidecar hashado) fija las poblaciones y tres hipótesis sobre programas acotados cuyos pasos explorados emiten o rechazan: H0, que al menos la mitad de ellos llevan más de 0.5 bit de redundancia; H1, que un programa con un solo sitio de emisión lleva más redundancia que un programa con varios; y H2, que una región lleva al menos el 80% de la redundancia cuando excede 1 bit. Su falsificador es RCE-F6 de [§9](#9-falsifiers), una redundancia mediana por debajo de 0.1 bit. Las ejecuciones reportadas aquí, `dim-r2` a `dim-r5`, se realizaron cada una una vez con `--fuel 100000 --control`, contra una construcción de una confirmación pública de openIE-dev/rce, con la huella binaria registrada en cada fila; la primera ejecución registrada, `dim-r1`, y el piloto antes de ella se listan en [§10](#10-work-to-finish). La etiqueta de control es el rechazo o los constructores emitidos solamente, y $\dim_c \le \dim$ se mantiene en cada fila de estas ejecuciones. En una máquina de estados cuyos ejemplos leen el estado nunca emite, la intención se lleva por los ejemplos y por ninguna salida; un informe de `rce check` que nombra tal `ejemplo` (uno que lee un campo que ningún paso emite o rechaza nunca) es una propuesta abierta.
+
+**Las ejecuciones congeladas.** La ejecución `dim-r2` del 23 de octubre de 2026 (confirmación `1107442b` de openIE-dev/rce, registrada como una segunda enmienda de la misma preregistro antes de la ejecución, con la capa leída de la clave que `rce dim` reportó como `observable` en esa confirmación, ahora `has_output`) muestrea la capa que lleva salida por regla: cada programa del repositorio fusionado bajo sus ejemplos, programas, aplicaciones y listados de libro que se acepta de forma independiente, tiene una región de estado y contiene una emisión o una instrucción de fallo. Eso es 25 programas, 24 de ellos con salida, 14 acotados dentro de 100,000 estados. Entre ellos, `ring_buffer` tiene 12,500 estados alcanzables, 781 comportamientos y cinco estados de control; cuatro bits de su estado no cambian ninguna salida, todos en una región, y su proyección de control, que registra solo qué pasos disparan, tiene cinco estados. Excluyendo los tres programas escritos para `rce dim` y sus copias en el libro deja 8 programas de salida acotados, de los cuales 6 llevan más de 0.5 bit (intervalo de Wilson 95% 0.41 a 0.93), con una redundancia mediana de 1.79 bits (rango intercuartil 0.25 a 3.37); sobre todos los 14, 10 de 14 (0.45 a 0.88) y una mediana de 1.29 bits. RCE-F6 (una mediana por debajo de 0.1 bit) no se activa; el extremo inferior del intervalo está por debajo de la mitad, por lo tanto H0 se apoya y no se establece en este tamaño. H1 no se apoya (los dos programas con un solo sitio de emisión llevan 1.58 y 4.00 bits, los dos programas con múltiples sitios 2.51 y 3.65), y H2 se mantiene en 8 de 9 filas calificadas solo porque 8 tienen una región de estado; el programa de dos regiones atribuye el 62% de su redundancia a su región más grande. La adición sustancial de la ejecución son tres mediciones de tamaño de aplicación. La aplicación de chat explora 100,000 estados con 176 comportamientos y 69 estados de control, por lo tanto al menos 9.15 bits de su estado no cambian ninguna salida, la mayor redundancia medida y un límite inferior; la unidad de retransmisión selectiva (40,218 estados, 7,038 comportamientos, 2.51 bits) y el terminal (3,390 estados, 270 comportamientos, 3.65 bits) son exactos. La proporción de estados de control a comportamientos varía por una magnitud de orden a través de la población (5 a 781 para el buffer de anillo, 69 a 176 para el chat, 5,095 a 7,038 para la unidad de retransmisión), lo que mide cuánto de un comportamiento de programa es qué pasos disparan contra qué flujos de valores. La ejecución también muestra que la capa necesita una regla registrada más fina: la bandera de la herramienta es verdadera para un programa cuya salida es la misma (una constante, o un rechazo en cada estado), por lo tanto una tercera ejecución debería registrar "con salida, con más de una salida distinta" antes de muestrear. Filas, intervalos y la enmienda están en el repositorio de experimentos bajo `rce/bench/dimension/` (`results/dim-r2.jsonl`, `RESULTS.md`). Una tercera ejecución, `dim-r3` (23 de octubre de 2026, registrada antes de ella), aplicó la regla más fina que la segunda ejecución pidió: `rce dim` reporta el número de salidas distintas (`distinct_outputs`; valores emitidos y rechazos contados por separado como `emits` y `refuses`), y la capa es con salida con al menos dos de ellas. En 28 programas (la población de la segunda ejecución más los tres programas aceptados con dos o más regiones de estado), 22 son estrictamente con salida y 12 de esos están acotados; la redundancia mediana es 1.29 bits (8 de 12 por encima de 0.5 bit, Wilson 0.39 a 0.86), y 2.05 bits sobre los 6 no escritos para la herramienta. Los tres programas que la regla más fina eliminó (un termostato, un reconciliador y un carrito) son observables solo por una constante, por lo tanto las medianas de la segunda ejecución contaron bits que cambian una salida que nunca cambia en absoluto. H2 se prueba donde puede, en el único programa estrictamente con salida de múltiples regiones por encima de 1 bit, cuya región más grande lleva el 62%, por debajo del umbral del 80%; se mantiene abierta en una fila. Una cuarta ejecución sobre los 86 programas de conformidad con estado (registrada antes de ella) midió por primera vez los cinco programas de contrato de anfitrión cosechados, todos acotados dentro del combustible y llevando desde 0.01 bit (el controlador de terminal) hasta 2.16 bits (el controlador de canal) con cocientes de control en miles, y respondió la pregunta de múltiples regiones para este corpus: los únicos programas estrictamente con salida de múltiples regiones son copias distinguibles de un ejemplo de capacidad, por lo tanto H2 no puede decidirse desde material público existente y el siguiente paso es autorizar programas observables de múltiples regiones, registrados como una población antes de la ejecución. Ese paso se tomó el 24 de octubre de 2026: doce programas de dos regiones (un ascensor, una máquina expendedora, un cruce, un aparcamiento, una impresora, un vestíbulo, una tarjeta bancaria, una lavadora, una sesión, un jugador, un controlador climático y un depósito) se escribieron en el corpus de programas y se registraron como la quinta ejecución, con la divulgación de que la herramienta se había ejecutado en los borradores. Todos doce son estrictamente con salida, acotados y explorados en milisegundos; once tienen redundancia cero y el duodécimo, el controlador climático, mantiene 1.58 bits en dos banderas que registran su última acción y que nada lee. La mediana es 0.00 bits, por lo tanto RCE-F6 se activa en esta población: el estado accidental no es común en pequeños Forms cuyas caps se enforcen por rechazos y cuyas fases emiten. Leído con las ejecuciones anteriores (1.29 bits sobre los ejemplos de mano estrictamente con salida, 0.01 a 2.16 bits para los programas de anfitrión, al menos 9 bits para la aplicación de chat), la cantidad crece con el tamaño del programa y con el número de campos que nada lee. La afirmación que los datos respaldan es la propia del falsificador: `rce dim` es un diagnóstico para programas más grandes y para regiones añadidas sin observador, no una propiedad de los pequeños Forms en general.
+
+**El registro del concepto.** La especificación 6.6 ahora describe una tabla lateral sin hash clave por las claves sin nombres de un programa y que contiene sus nombres, cadenas de intención y comentarios de documentación, y `rce emit form` la imprime bajo `names`, clave por índice de declaración (el índice que `shape_ctl` usa), después de los campos hashados. Las proyecciones la renderizan; $\delta$ nunca la lee; es el complemento que hace que la proyección de un Form sea un lente simétrico [123] en lugar de una retracción. La evidencia de [§2.1](#21-programming-is-coding-theory) dice que la tabla debe contener el concepto que un nombre representa y no solo su ortografía, porque la elección de palabras y el orden son los dos pasos en los que los desarrolladores discrepan en un 6.9% [137] y el paso en el que coinciden es el concepto. Si un modelo puede razonar desde el Form con el registro adjunto así como desde una superficie nombrada es el primero de los tres experimentos registrados de [§12.3](#123-why-human-written-code-is-redundant) y está abierto.
+<div id="4-the-engine-gears-gate-and-receipts" class="anchor-alias" aria-hidden="true"></div>
+
+## 4. El motor: engranajes, compuerta y recibos
+
+Esta sección describe el diseño del motor, que el Apéndice D de la especificación y sus propuestas definen.
+
+<div id="41-the-engine-is-a-form" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.1 El motor es una Forma
+
+RCE ejecuta software como un gráfico de pequeños manejadores deterministas. Un manejador que no puede decidir genera una escalada. Un resolutor responde a la escalada una vez, y la respuesta se instala como un manejador permanente, por lo que el siguiente caso de la misma forma se ejecuta sin resolutor. El diseño requiere que el motor cumpla con cada invariante de Forma:
+
+| Invariante | Lo que el diseño requiere del motor |
+|---|---|
+| Recarga es una carpeta verificada | La recarga lee el registro literalmente, vuelve a calcular cada hash y enlace, y pliega el resto con $\delta$. Nada se vuelve a estampar. Una cadena rota se niega a cargar. |
+| Orden de ticks sin nombres | Los manejadores se ejecutan en orden de rango topológico, luego por una clave de nodo sin nombres. Las salidas se programan y se entregan después de que todos los manejadores se ejecuten, como en la semántica ASM. Renombrar cada nodo da el mismo hash de estado anónimo en cada entrada. |
+| Sin caída silenciosa | Un buzón completo mantiene el mensaje en una cola ordenada y registra `Backpressure`, y cada tarea aún cierra. |
+| Cargas en el registro | Entradas, ticks, resultados de manejadores externos, instalaciones y fallos son entradas en el registro. El hash de estado después de cada entrada coincide con una carpeta desde un motor vacío. |
+| Reloj lógico | La supervivencia cuenta ticks, no el tiempo de la pared. |
+| Hashes estables | SHA-256 (Algoritmo de Hash Seguro, 256-bit) sobre JSON canónico, claves ordenadas en cada profundidad, para entradas, estados, formas y ids de reglas. |
+
+<div id="42-the-gears" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.2 Los engranajes
+
+Cada engranaje se prueba solo cuando el engranaje de debajo no pasa la compuerta. Ese orden es una cascada fija.
+
+| Engranaje | Método | Línea de descendencia |
+|---|---|---|
+| G0 Búsqueda | Una biblioteca compartida de manejadores claveada por hash SHA-256 de forma; para reparación de código, localización a funciones clasificadas | Búsqueda y recuperación de código [21] |
+| G1 Reglas | Plantillas de reparación deterministas, validadores derivados de esquema y cada uno verificado para sensibilidad a mutaciones | PAR, TBar, AVATAR, FixMiner [22, 23, 24, 25]; codemods como Coccinelle [26] |
+| G2 Síntesis | Enumeración sobre la gramática del manejador, resolutores y e-grafos | Esbozo, SyGuS, egg [27, 9, 12] |
+| G3 a G5 Modelos | Un modelo de decisión tipado, un modelo local pequeño, luego un modelo remoto, último | Cascadas de modelos [28] |
+
+<div id="43-the-gate" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.3 La compuerta
+
+Un candidato se promueve solo cuando pasa la compuerta. La compuerta repite las entradas registradas del nodo, ejecuta al candidato en sombra en muestras frescas con un límite de cobertura (la regla de tres en un presupuesto de error declarado), verifica el esquema de salida y requiere el certificado de prueba de la Sección 5. Un candidato rechazado se registra con su contraejemplo.
+
+![Diagrama. Cuatro cajas de engranajes apiladas desde las más baratas a las más costosas: G0 Búsqueda, una biblioteca compartida de manejadores claveada por hash SHA-256 de forma; G1 Reglas, plantillas de reparación protegidas y validadores derivados del esquema; G2 Síntesis, enumeración sobre la gramática del manejador, resolutores y e-grafos; G3 a G5 Modelos, un modelo de decisión tipado, un modelo local pequeño y un modelo remoto, marcados como proponentes solo. Cada engranaje envía su candidato a una compuerta con cinco verificaciones: repetición de entradas registradas, una ejecución en sombra con un límite de cobertura, una verificación del esquema de salida, el certificado de la verificación del modelo del núcleo con Kani, un verificador de modelos para Rust, y para reescrituras una verificación aleatoria seguida de una prueba por el solucionador SMT Z3. Un paso promueve al candidato a un manejador almacenado, que alimenta a G0; un fallo se registra con su contraejemplo y se eleva al siguiente engranaje.](/figures/rce/gears-gate.svg)
+
+*Figura 4. Los modelos proponen, los verificadores deciden. Diagrama: los engranajes se ejecutan en orden de costo: G0 Búsqueda, G1 Reglas, G2 Síntesis, G3 a G5 Modelos (un modelo de decisión tipado, un modelo local pequeño, luego un modelo remoto). Cada candidato pasa por la misma compuerta: repetición de las entradas registradas del nodo, una ejecución en sombra en muestras frescas con un límite de cobertura, una verificación del esquema de salida y el certificado de la verificación del modelo del núcleo con Kani, un verificador de modelos para Rust (Sección 5.3); una reescritura propuesta también necesita una verificación aleatoria y luego una prueba por el solucionador SMT Z3 (Sección 5.2). Un candidato que pasa se promueve y cierra la misma forma en G0 la próxima vez; uno que falla se registra con su contraejemplo y se prueba el siguiente engranaje. En el diseño, los arneses de Kani y la codificación SMT no cambian con la promoción. Fuente: Secciones 2.2, 4.2, 4.3, 4.6, 5.2 a 5.5. Se proporciona una [copia en formato PNG](/figures/rce/gears-gate.png).*
+<div id="44-receipts" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.4 Recibos
+
+Cada promoción, rechazo, deferral y instalación es una mutación en un registro solo de añadido, encadenado con SHA-256, por lo que manipular cualquier entrada pasada rompe la cadena [29, 30]. El costo de cada manejador se calcula a partir de los recuentos de operaciones del intérprete con una tabla de costos por host y se etiqueta `est_j`. El encargado es el resolutor de escaladas del motor, que ejecuta los engranajes en orden en cada una, y cada una de sus llamadas lleva un recibo. Un recibo nombra el engranaje, el método de la estimación (`basis`), los candidatos probados y si el engranaje resolvió la escalada. Su campo `est_j` es obligatorio: es un número no negativo finito, o nulo, y nulo se permite solo cuando `basis` dice `unpriced`, como en una llamada al modelo sin figura de energía. Un recibo que falta el campo no se analiza. Un costo no preciado nunca se lee como cero, por lo que un total sobre recibos informa sus invocaciones preciadas y no preciadas por separado, y un ahorro que depende de una resolución no preciada se informa como desconocido.
+
+![Diagrama. Arriba: tres entradas de registro, sec 0, 1 y 2, cada una con campos sec, evento, prev_hash, state_hash y hash. El primer prev_hash es 64 ceros; cada prev_hash posterior es igual al hash de la entrada anterior, representado con flechas. state_hash es el SHA-256 del estado después del paso; hash es el SHA-256 del JSON canónico de evento, prev_hash, sec y state_hash. Abajo: un recibo de engranaje con campos gear, gear_name, est_j, basis, candidates_tried y resolved, junto a la regla de que est_j es obligatorio y es un número no negativo finito o nulo, con nulo permitido solo cuando basis dice unpriced; un costo no preciado nunca se lee como cero julios.](/figures/rce/receipt-chain.svg)
+
+*Figura 5. El registro es una cadena de hashes; cada costo lleva una base. Diagrama: las entradas del registro duradero D son `{seq, event, prev_hash, state_hash, hash}`. `state_hash` es el SHA-256 del JSON canónico del estado después del paso; `hash` es el SHA-256 del JSON canónico de `{event, prev_hash, seq, state_hash}`; el primer `prev_hash` es 64 ceros, por lo que cambiar cualquier entrada pasada cambia cada hash posterior. Un recibo de engranaje lleva `gear`, `gear_name`, `est_j`, `basis`, `candidates_tried` y `resolved`. `est_j` es obligatorio y es un número no negativo finito, o nulo solo cuando `basis` dice unpriced; los recibos de llamada al modelo llevan `est_uj` en microjulios bajo la misma regla. Un costo no preciado nunca se lee como 0 J. Las etiquetas de hash son simbólicas. Fuente: especificación 6.1 y Sección 4.4. Se proporciona una [copia en formato PNG](/figures/rce/receipt-chain.png).*
+
+<div id="45-the-form-compiler" class="anchor-alias" aria-hidden="true"></div>
+
+<div id="45-the-compilers" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.5 Los compiladores
+
+El compilador del lenguaje es el `rce emit TARGET FILE` del comprobador de referencias (especificación 10.5). Traduce un módulo que pasa `rce check` a uno de cinco resultados: `form`, la Form $P = (S, E, \delta, D, \lambda)$ como una línea de JSON canónico, una función determinista del texto del programa; y cuatro programas, `rust` (un archivo de código fuente de Rust), `python` (un archivo de Python 3), `js` (un módulo de JavaScript para Node) y `scala` (un archivo de Scala 3 para la máquina virtual Java). Los emisores de programas traducen el módulo verificado, no la Form, y cada salida es autónoma. Se genera cada objetivo. Ninguno se escribe a mano. Los cuatro no tienen el mismo estatus. En la suite de conformidad del repositorio de especificaciones (`conformance/reports/` en el commit público `464bd98b`), las salidas de Rust, Python y JavaScript pasan cada una 1,459 pruebas con 0 fallos, y las otras 520 no se aplican a un emisor (admisión, el contrato del host, replicación y comandos de herramientas). La salida de Scala pasa 52, falla 1,189 y tiene 591 no admitidos de 1,832 resultados; 1,186 de los fallos son el cierre del compilado o ejecución de Scala con estado 2 en lugar de un valor comparado, y estos resultados preceden la conversión de la suite a las reglas de un solo lenguaje de [§3.7](#37-the-language-one-text-costs-and-theorem-status). Por lo tanto, Scala se emite pero aún no coincide con la referencia, y no tiene ninguna reclamación T9.
+
+La especificación 6.3 corrige un comportamiento en cada borde numérico, que cada objetivo debe reproducir: la aritmética de enteros verificada atrapa el desbordamiento del tipo estático y nunca se envuelve; la división de enteros `/` trunca hacia cero ($-7/2 = -3$); `%` toma la señal del dividendo ($-3 \bmod 2 = -1$); la división entre cero atrapa; los flotantes son IEEE 754 binary64, correctamente redondeados una vez por operador, y un resultado no finito atrapa; el tiempo es solo el reloj lógico.
+
+En el diseño del motor, un segundo compilador reduce una especificación de manejador y su ajuste a través de un e-graf a una IR de Form y la proyecta a objetivos adicionales; su prueba se menciona en [§10](#10-work-to-finish).
+<div id="46-method-the-whole-stack-evaluated-every-interface-assumption-explicit" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.6 Método: toda la pila evaluada, cada suposición de interfaz explícita
+
+Un programa es una pila de niveles: texto fuente y declaraciones; manejadores; la Forma, una única función de paso $\delta : S \times E \to S \times O^*$ sobre $S = \Sigma_c \times \Sigma_d$ (regiones de control; datos: el reloj, la cuenta de entrada y relaciones tipadas); el registro, una cadena de hashes SHA-256 cuyas entradas registran cada evento, el hash del estado que produjo y el hash de la entrada anterior; las reescrituras que transforman la Forma; y la substrato que la ejecuta. Cada nivel descansa en suposiciones sobre el nivel inferior. En el diseño, RCE no trata ningún nivel como fijo: evalúa toda la pila, escribe cada suposición de interfaz como una afirmación verificable y la verifica en cada ejecución. Hoy en día las herramientas públicas verifican la cadena de registro durante la reproducción (`rce host replay`) y comparan los programas emitidos en Rust, Python y JavaScript con el referente; las otras verificaciones en la tabla a continuación son de diseño ([§5.2](#52-the-proof-rule-for-rewrites) a §5.4; para el contrato de entrada, [§10](#10-work-to-finish) elemento 15).
+
+| Límite | Suposición | Verificación |
+|---|---|---|
+| fuente a manejador | una entrada satisface su contrato de fuente | la verificación del contrato en el evento de entrada de δ |
+| manejador a destino | cada salida Ok satisface el esquema de salida | prueba del manejador: evaluación por el evaluador del núcleo, que el diseño requiere que sea total y determinista y se verifica con un verificador de modelos ([§5.3](#53-model-checking-of-the-kernel)) |
+| registro a estado | cada entrada lleva el hash del estado que produjo | plegado del núcleo, que rechaza la primera entrada cuyo hash no coincide ([§5.3](#53-model-checking-of-the-kernel)) |
+| reescritura a Forma | una reescritura preserva la salida para cada entrada | verificación aleatoria, luego una prueba SMT ([§5.2](#52-the-proof-rule-for-rewrites)) |
+| stub a foreman | un manejador que no puede decidir eleva en lugar de elegir un resultado que no puede decidir | los manejadores de stub emiten elevaciones; las resoluciones se promueven solo a través del camino de promoción |
+| Forma a destino | cada destino emitido calcula el mismo δ | las salidas del programa emitido, y el hash de la última entrada de su registro, igualan al referente; hoy esto se cumple en la suite de conformidad para Rust, Python y JavaScript y no para Scala ([§4.5](#45-the-compilers)) |
+
+Una verificación fallida localiza la ruptura en el límite donde ocurre. La corrección se hace en ese nivel, se pasa por la verificación de ese límite y se promueve. Cada nivel por encima del corregido hereda la corrección sin cambios adicionales, porque cada nivel por encima consume el nivel corregido solo a través de la interfaz cuya suposición ahora se verifica. Este es el sentido en el que las correcciones se transmiten hacia arriba y se compilan.
+
+<div id="5-verification" class="anchor-alias" aria-hidden="true"></div>
+
+## 5. Verificación
+
+<div id="51-five-targets-one-trace" class="anchor-alias" aria-hidden="true"></div>
+
+<div id="51-differential-testing-across-five-targets" class="anchor-alias" aria-hidden="true"></div>
+
+<div id="51-differential-testing-of-the-program-emitters" class="anchor-alias" aria-hidden="true"></div>
+
+### 5.1 Pruebas diferenciales de los emisores de programas
+
+T9-L establece que los emisores de programas `rust`, `python` y `js` coinciden con el evaluador de referencia. Para el emisor de Rust se prueba en un núcleo, como una traducción verificada en MiniRust, una profundidad de incrustación del subconjunto emitido de Rust; que `rustc` implementa MiniRust se confía y se prueba. Para los emisores de Python y JavaScript se prueba: la salida del programa emitido iguala las observaciones del evaluador de referencia de cada línea del programa de ejemplo (una línea por constante, verificación, función de cero argumentos, evento de ejemplo y salida de `fn main`), y en la suite de conformidad sus salidas y el hash de la última entrada de su registro igualan al referente. La traza completa de referencia de cada programa de ejemplo, byte por byte, es la compuerta que la propuesta de registro de emisión establece para cada lenguaje ([§3.6](#36-one-ecosystem-lossless-and-the-universality-thesis)). El emisor de Scala no tiene ninguna afirmación T9, y su salida aún no coincide con el referente ([§4.5](#45-the-compilers)). El evaluador de referencia y los entornos de ejecución emitidos de Rust, Python y JavaScript también calculan la misma función de presupuesto, y una prueba verifica que la trampa de presupuesto cae en la misma operación en los cuatro ([§3.7](#37-the-language-one-text-costs-and-theorem-status)); la pasada ANF que preserva el orden antes de cada emisor se prueba diferencialmente en los objetivos de Rust, Python y JavaScript, incluyendo un barrido de presupuestos a través del punto de trampa (teorema T34). Esto es prueba diferencial en la línea de McKeeman y de Csmith [86]: coincidencia entre implementaciones independientes en un conjunto de entradas declarado. No es validación de traducción [85], y fuera del núcleo probado del emisor de Rust no es un compilador verificado. No dice nada sobre entradas fuera del conjunto probado.
+
+<div id="52-rewrites-proved-in-z3" class="anchor-alias" aria-hidden="true"></div>
+
+<div id="52-the-proof-rule-for-rewrites" class="anchor-alias" aria-hidden="true"></div>
+
+### 5.2 La regla de prueba para reescrituras
+
+Las reglas de reescritura verificadas tienen una genealogía. Ruler infiere y verifica reglas de reescritura mediante saturación de igualdad sin modelo en el bucle [87]. La regla de reescritura propuesta por el modelo en la Sección 5.5 repite una regla que ya tenía el motor, por lo que ese registro es una afirmación sobre la compuerta, que rechazó 15 de 18 propuestas, y no una afirmación de que un modelo es una buena fuente de reglas.
+
+En el diseño del motor, cada reescritura de e-grafos debe probarse en el solucionador SMT Z3 [31] contra una codificación sin cuantificadores de la evaluación de términos y aritmética de la Forma: valores como un tipo de datos, vectores de bits de 64 bits con desbordamiento verificado, división y resto con signo del dividendo, y flotantes bin64. Una reescritura que cambia el desbordamiento, el orden de elevación o un mensaje no obtiene ninguna prueba. Una equivalencia propuesta entra en el e-grafos solo con una prueba.
+<div id="53-model-checking-of-the-kernel" class="anchor-alias" aria-hidden="true"></div>
+
+### 5.3 Verificación del modelo del núcleo
+
+El diseño verifica el núcleo del motor (cadena de hashes, plegamiento, posiciones sin nombres y evaluación del manejador) con el verificador de modelos Kani para Rust [32]. La evaluación del manejador es el punto fijo de un paso no recursivo, por lo que una prueba de que el paso es total y determinista por constructor se extiende a la evaluación mediante inducción estructural. El diseño nombra diez propiedades, una para cada uno:
+
+| Verificador | Propiedad |
+|---|---|
+| `chain_appended_verifies` | Una cadena de hashes añadida verifica |
+| `chain_detects_tampering` | Un cambio en una entrada rompe la cadena |
+| `fold_equals_replay` | El plegamiento es igual a la repetición |
+| `fold_rejects_wrong_state` | Un plegamiento que no coincide con el estado almacenado se rechaza |
+| `position_is_name_independent` | Las posiciones de las reglas no dependen de los nombres de los nodos |
+| `reason_tokens_are_name_independent` | Las razones son sin nombres por medio de tokens completos |
+| `handler_core_leaves` | Los manejadores de hojas son totales y deterministas |
+| `handler_core_validate` | La validación es total y determinista |
+| `handler_core_pipeline` | Las tuberías son totales y deterministas |
+| `handler_core_ifhas` | Los guardianes son totales y deterministas |
+
+<div id="54-promotion-gate-on-the-proof-certificate" class="anchor-alias" aria-hidden="true"></div>
+
+### 5.4 Compuerta de promoción en el certificado de prueba
+
+En el diseño, la ejecución de la verificación del modelo escribe un certificado cuyo hash se almacena con el motor. El motor, el registro, los identificadores de reglas y la evaluación del manejador pasan a través del núcleo, y la promoción requiere el certificado.
+
+<div id="55-the-model-as-a-proposer-behind-the-check" class="anchor-alias" aria-hidden="true"></div>
+
+### 5.5 El modelo como proponente detrás de la verificación
+
+Un modelo puede proponer equivalencias. No necesariamente las acepta. Un modelo de codificación local de 1.5 mil millones de parámetros se ejecutó como proponente en la especificación `orders-form`, y el registro público de la ejecución ([`rce/bench/results/llm-proposer-form-demo.form.json`](https://github.com/openIE-dev/openie-research-experiments/blob/main/rce/bench/results/llm-proposer-form-demo.form.json)) contiene 18 propuestas, 13 de ellas distintas. El registro da la fuente de cada propuesta solo como `llm`; el modelo, Qwen2.5-Coder-1.5B bajo llama.cpp, es nombrado por este artículo y por ningún registro público. La verificación rechazó 15 propuestas, 12 de ellas distintas: cuatro que no se analizan, dos que colocan un valor donde pertenece un término, y nueve conmutaciones de operadores aritméticos, cada una rechazada con un contraejemplo en el que ambos lados fallan de manera diferente. Las 3 que aceptó son una reescritura, `(pipe pass ?a) => ?a`, bajo tres nombres, y esa reescritura repite una regla que ya tenía el motor. El registro muestra la compuerta rechazando lo incorrecto; no muestra ninguna nueva regla del modelo.
+
+<div id="6-lift-entering-the-ecosystem-from-other-languages" class="anchor-alias" aria-hidden="true"></div>
+
+## 6. Elevación: entrando al ecosistema desde otros lenguajes
+
+<div id="6-importing-legacy-code-from-other-languages" class="anchor-alias" aria-hidden="true"></div>
+
+La elevación está diseñada para ser la puerta de entrada al ecosistema para el código escrito en otros lenguajes. Debe ser una construcción, hecha por lenguaje a partir de herramientas que ya tiene cada lenguaje: una gramática formal, un analizador sintáctico como [tree-sitter](https://tree-sitter.github.io/tree-sitter/) que genera el árbol sintáctico, el árbol sintáctico abstracto y los símbolos que la herramienta del servidor de lenguaje resuelve ([Language Server Protocol](https://microsoft.github.io/language-server-protocol/)). El perfil del motor especifica una elevación, `rce scan DIR --form`, que construye la Forma desde ese árbol para Rust, Python, TypeScript y Go y etiqueta cada elemento elevado como no probado (Apéndice D.8); ni esa elevación ni el motor son públicos, y nada en el Apéndice D es verificado por las herramientas publicadas. El repositorio público contiene una sola prueba de elevación, `spec/lift/go/lift_go.py`, que eleva un patrón de Go, y el diseño para elevar cada lenguaje, con los niveles en los que se acepta una elevación, es la propuesta `spec/proposals/rce-form.md` ([§3.6](#36-one-ecosystem-lossless-and-the-universality-thesis)). Un programa elevado lleva los fallos de su fuente, por lo que la elevación incluye la reparación, y el protocolo a continuación mide la reparación en corpora públicos de errores con la ubicación dada.
+
+<div id="60-the-repair-ladder-on-lifted-code" class="anchor-alias" aria-hidden="true"></div>
+<div id="60-the-repair-ladder" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.0 La escalera de reparación
+
+<div id="23-per-rung-ladder-results" class="anchor-alias" aria-hidden="true"></div>
+
+Una tarea de codificación se mide aquí por los **bits de intención** que necesita: los bits que deben suministrarse desde fuera de lo que el motor ya posee (el programa alrededor de la edición, las bibliotecas, las pruebas, el índice de correcciones conocidas). Escribiendo $H_{task}$ para los bits que fijan el artefacto objetivo y $H_{corpus}$ para los bits que ya corrige el corpus, los bits suministrados son $I = H_{task} - H_{corpus}$. Un engranaje que clasifica la edición correcta en el rango $r$ entre sus candidatos ha suministrado $\log_2 r$ bits de búsqueda, y la compuerta suministra el resto. La escalera ordena las tareas por tamaño de edición, un proxy objetivo para $I$: un token (L0), una instrucción (L1), un fragmento (L2), varios fragmentos en un archivo (L3), varios archivos (L4), una función desde una especificación o pruebas (L5), un cambio a nivel de problema (L6) y un programa desde una especificación (L7). Los peldaños, los corpora, las divisiones y las hipótesis están preregistrados; los archivos están en el [repositorio público](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
+
+L2 a L4 se miden en un conjunto reservado de Defects4J ([Sección 8.1](#81-defects4j)), y L5 a L7 bajo los protocolos de [Sección 8.2](#82-swe-bench-lite-offline). El método y la compuerta de L0 y L1 siguen.
+
+**Método.** Cada corpus se mezcla con una semilla fija. Las primeras 2,000 posiciones de cada mezcla, y para L0 tres repositorios completos (commons-lang, requests, flask), forman la división de desarrollo, en la cual los engranajes pueden afinarse; los resultados de desarrollo no se reportan. Cada tarea restante está en la división de prueba. Antes de una ejecución de prueba, el resolutor se compromete y se registra su hash binario, y ningún engranaje cambia durante la ejecución, por lo tanto, cada fila que se reporta es un resultado de un resolutor congelado en tareas de prueba solamente, con 0 llamadas al modelo. El preregistro (`PREREG.json`) y el script de reporte están en el [repositorio público](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/).
+
+**Compuerta.** En L0 y L1 se da la ubicación y la compuerta es la identidad con los espacios en blanco eliminados: la línea o instrucción reparada, con todos los bytes de espacio en blanco eliminados, debe ser igual al byte por byte del desarrollador. Esto es más estricto que pasar las pruebas, porque un parche puede pasar una suite de pruebas débil y aún así estar equivocado. Qi y colegas encontraron que la mayoría de los parches que GenProg reportó como correcciones eran plausible pero incorrectos [92]; el sobreajuste a las pruebas se documenta en la reparación basada en búsqueda y en la basada en semántica [93, 94] y se aborda con pruebas generadas [95]; las herramientas obtienen puntajes más altos en el benchmark en el que se afinaron [96]; y los sesgos de localización de fallas afectan las comparaciones [97]. La identidad con los espacios en blanco eliminados cierra la brecha de plausibilidad en estos peldaños, y al dar la ubicación se elimina el término de localización, por lo tanto, la tasa mide solo los engranajes de reparación. L2 y superiores usan las pruebas como compuerta y reportan por separado las cuentas de plausible y correctas (Sección 8.1).
+
+<div id="61-l0-one-token-faults" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.1 L0: fallas de un token
+
+El corpus L0 incluye cada mutante estilo PIT [109] con un token de reemplazo válido en repositorios reales en commits fijos, cinco en Java (commons-math, commons-collections, jsoup, joda-time, gson) y cuatro en Python (click, attrs, pydantic, sympy), con cuatro repositorios nunca usados para afinar (commons-text, commons-io, more-itertools, httpx) como un segundo conjunto de prueba. Los mutantes son un sustituto de las fallas reales de un token que Just y colegas encontraron estar acopladas con fallas reales [110]. Si el entorno que restaura una falla de un token se construye desde las mismas tablas de operadores que produjeron los mutantes, una alta tasa refleja parcialmente esa superposición y no la capacidad de reparación en fallas que surgen en la práctica. Una búsqueda simple de inversión de operador, ejecutada en los mismos mutantes, es la línea base que muestra cuánto de la tasa explica la superposición, y una tasa L0 se lee junto a ella.
+
+<div id="62-l1-one-statement-bugs-from-real-histories" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.2 L1: errores de una instrucción desde historias reales
+
+L1 utiliza dos conjuntos de datos públicos de correcciones reales de un solo error extraídos de historias de código abierto: ManySStuBs4J 2.0 [107] para Java y TSSB-3M v1.0.0 [108], fragmentos 14 y 15, para Python. El resolutor recibe ya sea solo el fragmento de 7 líneas o el archivo completo en el commit padre, con índices de los métodos del proyecto y condiciones de guardia, y los dos se reportan como filas separadas. Estos conjuntos de datos no tienen una tabla de líderes de reparación publicada bajo esta compuerta (fragmento solo, identidad con espacios en blanco eliminados, ubicación dada), por lo tanto, no se establece un número de reparación aprendida junto a ellos; Defects4J, que sí tiene uno, se compara con TBar en la Sección 8.1.
+<div id="63-energy" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.3 Energía
+
+Bajo el protocolo, cada fila de la escalera lleva `est_j`, un modelo de segundos de unidad central de procesamiento (CPU) multiplicados por 10 W, no una medición, y se lee una submuestra en el Límite de Potencia Promedio en Ejecución (RAPL) [105], el contador de paquete en chip del procesador, como `reported_j`: el delta del paquete durante toda la ejecución, menos la potencia de inactividad de una muestra tomada justo antes, multiplicado por la duración de la ejecución. `measured_j`, un medidor de pared en una vía nombrada, sigue el protocolo de la Sección 8.3.
+
+**Dos regímenes y un vector calibrado.** La estimación anterior, segundos de CPU multiplicados por 10 W, es una tabla de sustrato y no puede distinguir entre objetivos, por lo que la extracción de menor julio nunca elige un objetivo. La literatura sobre mediciones dice cómo debe verse la solución. En un núcleo en orden, los julios son lineales en el número de operaciones: un modelo de seis contadores en Cortex-M0 alcanza R² ≈ 0.99 y un error absoluto medio del 2.8 al 4.3%, con coeficientes como 0.96 nJ por instrucción y 2.1 nJ por rama tomada [152]. En un núcleo fuera de orden el modelo colapsa al tiempo: con un núcleo fijado y turbo apagado, un Xeon Gold 6430 consumió 189.8 ± 0.5 W en cada implementación y benchmark de una replicación de energía-idioma, y el ranking que había colocado a Python en 75.88 veces C desapareció una vez que se controlaron la elección de biblioteca, paralelismo, calentamiento y errores de medición [153]. Los contadores en sí mismos tienen un valor desigual: Intel RAPL predice la potencia de enchufe con un error absoluto medio del 1.8% una vez que se incluye la DRAM, pero se actualiza aproximadamente cada milisegundo y se desvió entre el 10 al 12% con la temperatura del paquete en una generación [105]; encuestarla más rápido que cada 10 ms produce hasta el 50% de lecturas obsoletas [154]; NVIDIA's NVML muestrea aproximadamente un cuarto del tiempo de ejecución y ejecuciones simples erraron hasta un 70% contra un medidor externo [155]. La medición de unidades estilo gas se correlaciona con el tiempo de CPU solo en Pearson ≈ 0.51 en Ethereum [156], por lo que "la energía escala con las operaciones contadas" es una suposición que la submuestra `reported_j` debe probar. Una propuesta al especificado mantiene tres objetos separados: las unidades de presupuesto C.6 permanecen deterministas, ciegos a objetivos y en el registro; `est_j` se convierte en $\langle \mathrm{count}(\mathit{term}), E[\mathit{target}] \rangle$ más potencia de inactividad multiplicada por el tiempo en el régimen A (microcontroladores, carriles de arreglo de puertas programables (FPGA), núcleos en orden) y $P_{\mathrm{active}} \cdot t + E_{\mathrm{llc}} \cdot \mathit{misses}$ en el régimen B (procesadores fuera de orden y unidades de procesamiento gráfico (GPU)); y el vector de coeficientes $E[\mathit{target}]$ es una entrada de registro `host.Calibrated` con su protocolo, cuenta de muestra y error estándar por coeficiente, escrita por `rce host calibrate` bajo un protocolo normativo (al menos 30 pares A/B intercalados contra la línea base de inactividad, bloques de al menos 60 s o $10^9$ operaciones, descartado el calentamiento, registrada la temperatura, reportado el bruto y neto, el medidor nombrado con su referencia de validación, RAPL muestreado no más rápido que cada 10 ms), de modo que la extracción bajo `est_j` es una función del registro y las reproducciones. Los recibos ganan un hash `calibración` y un `stale_fraction`, la proporción de operaciones de un paso sin fila calibrada, valorado `unpriced`; los totales mantienen las cuatro etiquetas en columnas separadas. El falsificador es RCE-F5 en [§9](#9-falsifiers). La primera calibración para ejecutar es la carrera KV260 de la escalera de energía en su vía de núcleo con $N \ge 30$, lo que convierte al sustituto `E_LUT_READ = 1e-12` de la especificación en un coeficiente con un error estándar.
+<div id="7-reuse-evidence" class="anchor-alias" aria-hidden="true"></div>
+
+## 7. Reutilización de evidencia
+
+La posición de RCE en el eje de reutilización se basa en un hecho de ingeniería: el código se reutiliza en cada escala. Cada método a continuación lo mide de manera diferente.
+
+| Método | Fuente | Hallazgo |
+|---|---|---|
+| Mapeo de clones a nivel de archivo | DéjàVu, Lopes et al. 2017 [33] | De 428 millones de archivos en 4.5 millones de proyectos de GitHub no ramificados, 85 millones son únicos: "el 70% del código en GitHub consiste en clones de archivos creados previamente". En JavaScript, el 6% de los archivos son distintos. |
+| Redundancia a nivel de línea | Gabel y Su 2010 [34] | Contra 420 millones de líneas, "entre el 50% y el 100% de cada proyecto es redundante" alrededor de una línea. |
+| Modelos de lenguaje estadísticos | Hindle et al. 2012 [35] | El código es "muy repetitivo, e incluso más que los idiomas naturales". |
+| Deduplicación cercana del corpus | The Stack [36] | La deduplicación cercana elimina el 54.7% de The Stack v1 (6.4 TB a 2.9 TB) y el 52.4% de v2 (67.5 TB a 32.1 TB). |
+| Preservación de todo el archivo | Software Heritage [129, 130] | 30.3 mil millones de contenidos de archivos únicos de 448 millones de orígenes (contadores de archivo leídos el 13 de octubre de 2026), cada uno almacenado una vez por el hash de sus bytes. |
+| Patrones de corrección extraídos | PAR, TBar [22, 23] | PAR encontró "varios patrones comunes de corrección" en más de 60,000 parches humanos. Las 15 categorías de patrones de TBar corrigen correctamente 43 errores de Defects4J en la tubería estándar, y 74 de 101 con localización perfecta de fallos, sin aprendizaje. Estos son datos leídos de [23]; el significado de los 101 (parches plausibles o errores intentados) no ha sido reverificado contra ese artículo aquí, así que trate la proporción como no confirmada. |
+| Tareas translingüísticas | Rosetta Code [131] | 1,360 tareas (y 421 tareas en borrador), cada una implementada en concepto en muchos de los 1,009 idiomas conocidos. |
+
+![Cinco paneles pequeños, cada uno con su propia unidad. Lopes et al. 2017: de 428 millones de archivos en 4.5 millones de proyectos de GitHub no ramificados, 85 millones son únicos, con la cita de que el 70% del código en GitHub consiste en clones de archivos creados previamente. Gabel y Su 2010: entre el 50% y el 100% de cada proyecto es redundante alrededor de una línea, contra 420 millones de líneas. The Stack: la deduplicación cercana elimina el 54.7% de v1, 6.4 TB a 2.9 TB, y el 52.4% de v2, 67.5 TB a 32.1 TB. Software Heritage: 30.3 mil millones de contenidos de archivos únicos de 448 millones de orígenes, contadores de archivo leídos el 13 de octubre de 2026, cada uno almacenado una vez por el hash de sus bytes. PAR encontró varios patrones comunes de corrección en más de 60,000 parches humanos; TBar corrige correctamente 43 errores de Defects4J en la tubería estándar y 74 de 101 con localización perfecta de fallos.](/figures/rce/reuse.svg)
+
+*Figura 6. El código se reutiliza en cada escala. Datos: cinco medidas de reutilización, cada una en su propia unidad; los paneles no son comparables entre sí. Mapeo de clones a nivel de archivo (Lopes et al. 2017 [33]): de 428 millones de archivos en 4.5 millones de proyectos de GitHub no ramificados, 85 millones son únicos. Redundancia a nivel de línea (Gabel y Su 2010 [34]): entre el 50% y el 100% de cada proyecto es redundante alrededor de una línea, contra 420 millones de líneas. Deduplicación cercana del corpus (The Stack [36]): el 54.7% se elimina de v1 (6.4 TB a 2.9 TB) y el 52.4% de v2 (67.5 TB a 32.1 TB). Software Heritage [129, 130]: 30.3 mil millones de contenidos de archivos únicos de 448 millones de orígenes (contadores de archivo leídos el 13 de octubre de 2026), cada uno almacenado una vez por el hash de sus bytes. Patrones de corrección extraídos (PAR [22], TBar [23]): PAR encontró patrones comunes de corrección en más de 60,000 parches humanos; TBar corrige correctamente 43 errores de Defects4J en la tubería estándar y 74 de 101 con localización perfecta de fallos. Los valores son los mismos que en la tabla anterior. Se proporciona una [copia en formato PNG](/figures/rce/reuse.png).*
+
+Cada fila es una entrada para el motor. Los clones y la deduplicación indican que normalmente existe una solución, que es G0. Las correcciones recurrentes indican que la adaptación es principalmente un catálogo pequeño de reescrituras protegidas, que es G1. La redundancia a nivel de línea reduce el espacio de búsqueda de G2. La escalera de reparación de la Sección 6 es el protocolo que mide esto a gran escala en divisiones reservadas. Dos advertencias afinan la lectura. Las duplicaciones inflan la recuperación y las puntuaciones del modelo a menos que se eliminen [104]. Y las líneas con errores son menos naturales que las corregidas [45], por lo tanto, el propio error es el caso de búsqueda que menos puede predecir; la forma de la corrección, no la línea con error, es lo que G0 y G1 deben enfocarse. La línea de minería de reglas que lo hace a gran escala, desde la búsqueda de generar y validar de GenProg [88] y el modelo de corrección aprendido de Prophet [89] hasta Getafix en Facebook [90] y la reparación sin modelo de violaciones de análisis estático de Sorald [91], deriva plantillas de historia disjunta y reporta precisión en casos no vistos [98]. Ese es el estándar que adopta la Sección 8.4.
+
+<div id="8-measurement-protocols-for-what-comes-next" class="anchor-alias" aria-hidden="true"></div>
+
+## 8. Protocolos de medición para lo que viene a continuación
+
+Cada protocolo se fija antes de su ejecución: compromiso de preregistro, semillas y confirmación del solucionador registradas, cada artefacto conservado. Compuerta primero, julios segundo, etiquetas siempre.
+
+<div id="81-defects4j" class="anchor-alias" aria-hidden="true"></div>
+
+### 8.1 Defects4J
+
+Defects4J contiene 854 errores activos reales de Java, cada uno con pruebas de reproducción [37].
+
+1. Desarrollar en un subconjunto de 100 errores, fuera línea, mediante `defects4j checkout`; reportar solo resultados reservados, en un conjunto disjunto extraído de los errores activos mediante una regla sembrada registrada antes de la ejecución, que excluye el subconjunto de desarrollo y cada error ya ejecutado con cualquier engranaje, y congelado antes de la ejecución.
+2. Ejecutar G0, luego G1, luego G2, luego un modelo local último. Registrar el engranaje que cerró cada error.
+3. Compuerta: las pruebas que activan y la suite completa pasan. Reportar por separado los recuentos plausibles y correctos; correcto significa equivalente al parche del desarrollador en revisión.
+4. Reportar llamadas al modelo por cada corrección correcta y julios por cada corrección correcta, etiquetados.
+5. Puntos de referencia: las 43 correcciones correctas de TBar y sus 74 de 101 bajo localización perfecta (figuras leídas de [23], con el denominador no reverificado aquí). Esta sección es un protocolo. No se reporta ningún resultado de este motor de Defects4J en este artículo.
+6. Verificación de contaminación: marcar cada error cuya corrección aparece literalmente en el índice de G0, y reportar con y sin errores marcados.
+<div id="82-swe-bench-lite-offline" class="anchor-alias" aria-hidden="true"></div>
+
+### 8.2 SWE-bench Lite, offline
+
+SWE-bench Lite es un subconjunto de 300 tareas de problemas reales de GitHub resueltos por pruebas ocultas [38].
+
+1. Use el contenedor oficial con el manejador Docker sin red.
+2. Primera ejecución: solo G0 y G1, sin llamadas a modelos. Esto es el piso de resolver sin un modelo.
+3. Segunda ejecución: agregue un modelo local como el último engranaje.
+4. Reporte la tasa de resolución, llamadas a modelos por tarea resuelta y julios por tarea resuelta, etiquetados.
+5. Verificación de contaminación como en 8.1. SWE-Bench+ encontró que el 32.67% de los parches exitosos tenían la solución en el texto del problema [39].
+
+<div id="83-a-wall-meter" class="anchor-alias" aria-hidden="true"></div>
+
+### 8.3 Un medidor de pared
+
+1. Conecte un medidor de pared o un medidor de derivación en el suministro del host, registrados a una tasa establecida con su reloj sincronizado con el registro de ejecución.
+2. Máquina en estado de inactividad: los ejecutores de CI y otros builds se detienen, y una compuerta de ventana silenciosa se verifica antes de cada bloque y se registra.
+3. Reste una base de inactividad medida y especifique el método.
+4. Llene `measured_j` solo desde el medidor. Reporte `reported_j` (RAPL) y `est_j` junto a él en columnas separadas. Nunca sume a través de etiquetas.
+5. Ejecute la subsample de RAPL de la escalera (Sección 6.3) bajo el medidor, luego el conjunto reservado de Defects4J.
+
+<div id="84-a-held-out-run-with-the-gears-frozen" class="anchor-alias" aria-hidden="true"></div>
+
+### 8.4 Una ejecución reservada con los engranajes congelados
+
+Este es el método de la Sección 6, extendido a nuevos corpora.
+
+1. Congele G0, G1 y G2 en un commit etiquetado, registre la huella binaria, y publique el conjunto de reglas con sus marcas de tiempo de autoría.
+2. Dibuje una sección reservada independiente: las instancias de Rust y Python de Multi-SWE-bench [102] y BugsInPy [103], deduplicadas contra el índice de G0 [104].
+3. Registre previamente la sección, las semillas y las hipótesis antes de la primera ejecución.
+4. Reporte las cuentas resueltas, plausibles y idénticas en bytes por separado, cada una con un intervalo del 95%.
+
+<div id="85-baselines-in-the-same-table" class="anchor-alias" aria-hidden="true"></div>
+
+### 8.5 Líneas base en la misma tabla
+
+1. Sin modelo: `cargo fix` y clippy [106], y Sorald o un puerto de TBar [91].
+2. Modelo barato: sin agente con un modelo local [99].
+3. Modelo remoto: un agente con un modelo de vanguardia, su energía estimada desde divulgaciones del proveedor y etiquetada `est_j`.
+4. Reporte el costo de paso [101] en julios y en dólares para cada fila, con el costo controlado como requieren Kapoor y colegas [100].
+
+<div id="86-convergence-of-model-calls-at-large-n" class="anchor-alias" aria-hidden="true"></div>
+
+### 8.6 Convergencia de llamadas a modelos en grandes N
+
+La promoción es el mecanismo mediante el cual el modelo sale del bucle: un resolutor se paga una vez por un nuevo caso, la compuerta aplica la solución como un manejador, y cada caso posterior del mismo tipo se cierra en G0 o G1 ([Sección 4.2](#42-the-gears)). La convergencia es la afirmación de que las llamadas a modelos por ronda caen a cero en una especificación fija bajo tráfico en vivo. Se mide de la siguiente manera.
+
+1. Dibuje al menos 1,000 especificaciones de repositorios públicos, estratificadas por lenguaje y tamaño, y congele el motor y el resolutor antes de la primera ronda.
+2. Reproduzca el tráfico de producción grabado, al menos 10,000 eventos por especificación, en rondas de tamaño fijo.
+3. Registre por ronda: nuevas escaladas, llamadas a modelos, promociones, diferimientos y julios por tarea cerrada, cada uno etiquetado (`est_j`, `reported_j`, `measured_j`).
+4. Punto final principal: la proporción de especificaciones que alcanzan una ronda con cero llamadas a modelos dentro de 20 rondas, con un intervalo del 95% de Wilson. Secundario: llamadas a modelos por tarea cerrada por ronda, y la ronda de la última llamada a modelo.
+5. Reporte las especificaciones que nunca convergen con su causa (una entrada atascada, una dependencia faltante, una nueva intención), y ejecute la diferimiento de entrada atascada como un brazo previamente registrado.
+
+**Proposición 8 (enfoque del piso).** A medida que crece la cobertura de G0 y G1, los julios por tarea resuelta se acercan al piso dorado de aplicar una corrección conocida y ejecutar las pruebas. Los peldaños de la escalera y el conjunto reservado de Defects4J bajo el medidor de pared lo prueban.
+
+<div id="87-lift-coverage-across-languages" class="anchor-alias" aria-hidden="true"></div>
+
+### 8.7 Cobertura de elevación a través de lenguajes
+
+<div id="87-coverage-of-real-programs-across-languages" class="anchor-alias" aria-hidden="true"></div>
+
+La elevación se mide mientras se construye. Para el lenguaje $L$, un programa se considera elevado cuando $\pi_L(\lambda_L(p))$ pasa las propias pruebas del programa y reproduce sus trazas grabadas byte por byte, y $\lambda_L(\pi_L(\lambda_L(p)))$ tiene la misma huella de forma que $\lambda_L(p)$. La muestra es al menos 10,000 programas por lenguaje para al menos diez lenguajes, dibujados con una semilla fija desde corpora públicos fijos, con el elevador congelado y su huella binaria registrada antes de cada ejecución, y 0 llamadas a modelos. Cada ejecución reporta la proporción elevada con un intervalo del 95% de Wilson, y cada construcción aún no elevada es un elemento de trabajo para el elevador de ese lenguaje, construido y congelado antes de la siguiente ejecución. El objetivo es cada programa en cada lenguaje.
+<div id="9-falsifiers" class="anchor-alias" aria-hidden="true"></div>
+
+## 9. Falsificadores
+
+Fijados antes de las ejecuciones que prueban.
+
+| ID | Observación | Derrota |
+|---|---|---|
+| RCE-F0 | En una ejecución preregistrada de al menos 10,000 Formas, cualquiera de las cuatro proyecciones (Rust, Python, JavaScript, Scala) imprime una traza que difiere de la traza de referencia de la Forma, o cualquier entrada malformada es aceptada | La afirmación de que las proyecciones son fieles y la compuerta rechaza en la entrada |
+| RCE-F1 | En la muestra reservada, G0 a G2 con reglas congeladas resuelven menos del 10% de las tareas con 0 llamadas al modelo | La afirmación de que la mayoría de las soluciones ya existen para la reparación a esta escala |
+| RCE-F2 | Los parches idénticos en bytes o equivalentes son menos de la mitad de las tareas resueltas en la muestra reservada | La interpretación de la compuerta como más que plausible en las tareas cubiertas |
+| RCE-F3 | Bajo el medidor de pared, los julios brutos por tarea resuelta del solucionador RCE exceden los del modelo básico más barato en las tareas que ambos resuelven | La afirmación de menor energía por tarea resuelta en las tareas cubiertas |
+| RCE-F4 | En el protocolo de convergencia de la Sección 8.6, menos de la mitad de las especificaciones sin entrada atascada alcanzan una ronda con cero llamadas al modelo dentro de 20 rondas | Compilar el modelo fuera del bucle |
+| RCE-F5 (registrado 22 de octubre de 2026) | En la submuestra de la escalera bajo el medidor de pared de la Sección 8.3, con una entrada `host.Calibrated` para el host, el R² por objetivo de `reported_j` en el vector de conteo C.6 es inferior a 0.8 en el régimen A, o `est_j` en el régimen B difiere en más del 25% en la mediana | La afirmación de que la estimación calibrada es un proxy útil; la base del recibo para ese host se convierte en `unpriced` hasta que se calibre un mejor modelo |
+| RCE-F6 (registrado 22 de octubre de 2026) | En la medición de dimensión registrada de la Sección 3.8, la redundancia mediana sobre programas acotados con salida (la capa que las ejecuciones registradas llaman observable) es inferior a 0.1 bit. Estado, 24 de octubre de 2026: activado en la población de dos regiones autorizada de la quinta ejecución (mediana 0.00 bits sobre doce programas), no activado en los ejemplos escritos a mano (1.29 bits, tercera ejecución) o en los programas del host (0.46 bits por familia, cuarta ejecución) | La afirmación de que el estado accidental es común en Formas pequeñas a esta escala; `rce dim` es entonces un diagnóstico solo para programas grandes, lo cual es la interpretación que ahora da la Sección 3.8 |
+<div id="10-work-to-finish" class="anchor-alias" aria-hidden="true"></div>
+
+## 10. Trabajo para finalizar
+
+Cada elemento tiene su protocolo nombrado.
+
+1. Elevación construida y medida en al menos diez idiomas bajo el protocolo de la Sección 8.7.
+2. El brazo de especificaciones: especificaciones en el estilo de MBPP y HumanEval autorizadas como Formas y emitidas a cada objetivo.
+3. Resultados reservados en L2 a L4, en el conjunto reservado de Defects4J dibujado por la regla registrada de la Sección 8.1, y en L5 a L7 (Sección 8.2).
+4. Líneas base en una tabla, costo de paso en julios y dólares (Sección 8.5).
+5. Una serie `measured_j`: un medidor de pared en un host inactivo, al menos 10 repeticiones, lado bruto y neto uno al lado del otro (Sección 8.3).
+6. La encuesta de 626 idiomas publicada con su método (Figura 1).
+7. Nuevos conjuntos de datos reservados con los engranajes congelados: Multi-SWE-bench y BugsInPy (Sección 8.4).
+8. Convergencia de llamadas a modelos en al menos 1,000 especificaciones (Sección 8.6).
+9. T60, T61 y T59 sobre todo $E$ probado (T60 por refinamiento de partición mecanizado), y T62 vinculado desde su modelo al orden del admitente (Sección 3.8).
+10. El hallazgo de `state_hash` de T7 se resuelve (Sección 3.6) y `RCE/Positional.lean` prueba la codificación posicional que el verificador hashea inalterada bajo los renombramientos de la especificación 10.6 para cada función de hash. Lo que queda es unir el modelo Lean al verificador que ejecuta: la Fase 2 de la Sección 13 extrae el verificador e intérprete de Lean y los usa como la compuerta, con el verificador de Rust cruzado verificado contra ellos, en lugar de probar una refinación desde el núcleo de Lean al intérprete de Rust, lo cual [§12.1](#121-seven-areas-of-the-design) rechaza.
+11. Una población de dimensiones registrada ciegamente (programas escritos sin tener en cuenta el benchmark, o elevados), lo suficientemente grande para probar H2 más allá de las dos filas que ahora lo llevan; las ejecuciones registradas en commits públicos registraron RCE-F6 como activado en una población y no en las demás (Sección 3.8).
+12. Los tres experimentos preregistrados de la Sección 12.3: precisión del modelo en la Forma sin nombre con y sin el registro de conceptos; la tasa de conmutación de declaraciones adyacentes en código elevado; y si la eliminación reversible certificada por reproducción mueve la línea base de eliminación del 20%.
+13. La primera entrada `host.Calibrated` en la escalera KV260 con $N \ge 30$, y la regresión que RCE-F5 prueba (Sección 6.3).
+14. El formato IR de Form 2 (definiciones dirigidas por contenido) hecho el único formato, de manera que los 77 bloques de biblioteca estándar rechazados solo por el tamaño del término disminuyen, y la condición de ida y vuelta hash(lift(emit(F))) = hash(F) se verifica por objetivo en $N = 10{,}000$ (Sección 13).
+15. El contrato de entrada del verificador de referencia, de manera que cada entrada tiene un resultado declarado al entrar (Sección 1). En el commit público `d91a9fc8`, `rce run` y `rce host run` dejan un campo de carga útil que el evento no declara y aplican el evento, y almacenan un campo del tipo incorrecto a menos que la aritmética del paso lo atrape. El contrato rechaza un evento no declarado, un campo faltante, extra o mal tipado y un valor anidado, deja el estado sin cambios y registra el rechazo (T8); el protocolo de la Sección 2.3 lo prueba en un gran N.
+16. El emisor de Scala llevado a acuerdos con el de referencia en la suite de conformidad, donde pasa 52 de 1,832 resultados hoy ([§4.5](#45-the-compilers)), con los resultados de Scala de la suite reejecutados bajo las reglas de un solo idioma.
+17. El diseño de [§3.6](#36-one-ecosystem-lossless-and-the-universality-thesis) construido: la codificación `rce-form/1` de la propuesta `spec/proposals/rce-form.md`, y para cada idioma su tabla de elevación, tabla de impresión y biblioteca de tiempo de ejecución, publicada en el nivel de aceptación que alcanzan sus ejecuciones, con los recuentos de esas ejecuciones.
+
+<div id="56-brownfield-agreement" class="anchor-alias" aria-hidden="true"></div>
+
+**Resultados reconstruidos en código público.** El motor produjo los resultados siguientes. Cada uno se reconstruye en código público antes de entrar en este artículo: el código en un commit público etiquetado, una inscripción sellada antes de la ejecución, filas por tarea publicadas, y un solo comando que reproduce el resumen desde un clon limpio (la primera fase del programa en [§13](#13-programme-of-work-and-its-gates)).
+
+| Resultado | Protocolo en este artículo | Ruta de reconstrucción |
+|---|---|---|
+| El recuento de pruebas del motor (`cargo test --release`, y el total de `make check`) y la auditoría de Lean en un commit del motor | §3.7 | Recuentos de verificación en un commit público: las pruebas del verificador de referencia, `lake build` y la auditoría de Lean, la verificación de especificaciones y las verificaciones de WebAssembly, con un identificador de ejecución de integración continua |
+| El piloto del 22 de octubre de 2026 y la primera ejecución de dimensión registrada, `dim-r1` (77 programas de `spec/examples/` y `rce-examples`), ambas hechas en commits que no son públicos | §3.8 | La misma población reejecutada con `rce dim` en un commit público |
+| Verificación del núcleo: diez arnéses verificados con Kani 0.67.0, sus recuentos de verificación y el certificado que requiere la promoción | §5.3, §5.4 | Kani en un crate público del núcleo que el log del verificador, el plegado y el código posicional llama, con los diez arnéses y un certificado almacenado |
+| La ejecución del ecosistema en 10,000 Formas generadas: codificación sin pérdida, proyección determinista y fiel, la compuerta en la entrada para entradas y especificaciones, su prueba de regresión y su tiempo de CPU | §2.3 | El protocolo de §2.3 ejecutado en el verificador de referencia y sus emisores, registrado bajo un nuevo identificador de ejecución |
+| T9-F: el compilador de Form del motor (`rce form`) y sus cinco objetivos (Rust, WebAssembly, Python, XState, SCXML) imprimiendo la traza de referencia en el borde y eventos sembrados de una especificación de once operadores | §3.7 | Una prueba diferencial de los emisores públicos en eventos de borde y sembrados registrados |
+| Las pruebas de Z3 de las reescrituras del e-grafico integrado del motor y el proponente determinista de 87 identidades familiares | §5.2 | Una compuerta pública de reescritura: un evaluador de referencia de términos de IR de Form, una codificación SMT-LIB con un resultado no satisfactorio por reescritura y controles negativos, y las identidades listadas en la inscripción |
+| Las invariantes de Form de §4.1 verificadas por pruebas del motor nombradas, la acumulación de escalaciones en la carga de trabajo de referencia de la Proposición R2, y la demostración del motor en el navegador | §2.4, §4.1 | El perfil, la compuerta, la promoción y los recibos del motor en código público, construidos desde el Apéndice D |
+| Las tasas de reparación de un token (L0) en nueve repositorios y en cuatro nunca ajustados, con los bits de búsqueda medianos y el desglose de no resueltos | §6, §6.1 | Una herramienta pública de reparación ejecutada en el protocolo L0, con la línea base de inversión de operador junto a ella |
+| Las tasas de reparación de una instrucción (L1) en ManySStuBs4J 2.0, solo en fragmentos y en archivos completos, y en TSSB-3M, con las tasas por categoría | §6, §6.2 | Los engranajes L1 en la herramienta pública de reparación, en el protocolo L1 |
+| Acuerdo de la elevación con el código original en fixtures de Rust, Python, TypeScript y Go | §6 | Elevaciones públicas por idioma, ejecutadas en fixtures recién escritos |
+| Acuerdo de tres programas de prospección de ventas, reexpresados como Formas, con sus entradas registradas, y el cambio de `est_j` bajo extracción | §6 | Los programas escritos como módulos de idioma y reejecutados contra las entradas registradas públicamente |
+| `est_j` por tarea resuelta en la escalera, y la muestra de RAPL | §6.3 | `est_j` desde las ejecuciones reconstruidas de la escalera, y `reported_j` en un host con RAPL |
+<div id="11-conclusion" class="anchor-alias" aria-hidden="true"></div>
+
+## 11. Conclusión
+
+RCE es un ecosistema de código nativo por diseño. Un programa se escribe una vez, desde la intención, como una Forma: una codificación sin pérdida de estado, eventos y transiciones puras, de las cuales, en el diseño, cada lenguaje objetivo es una proyección que debe reproducir su traza. Cada estado en el que puede estar un programa se declara en su Forma, y un evento rechazado deja el estado sin cambios (teorema T8), por lo tanto, un programa en el ecosistema no se desvía de su intención y no necesita diferencias posteriores ni seguimiento de errores. El lenguaje es una especificación escrita en una confirmación. El comprobador de referencias lo implementa y emite Rust, Python y JavaScript, cada uno de los cuales pasa 1,459 pruebas de conformidad con 0 fallos, y Scala, que aún no coincide con la referencia; la especificación registra el nivel de prueba de cada teorema; y la dimensión de un programa es un número calculado, medido en ejecuciones registradas en confirmaciones públicas, que activaron RCE-F6 en una población y no en las otras. En el diseño del motor, cada solución que aplica la compuerta se almacena y se reutiliza, y el ecosistema se compone bajo una compuerta cuya corrección es monótona (Proposición R1). El código de otros lenguajes está diseñado para entrar mediante elevación, una construcción desde la gramática de cada lenguaje a su árbol de sintaxis a la Forma; un patrón de Go se eleva mediante una prueba pública hoy, y elevar y emitir cada lenguaje es el objetivo de la propuesta `spec/proposals/rce-form.md`. Las secciones 3.6 y 8.7 establecen las proposiciones de universalidad y cómo se mide su construcción, la sección 9 establece las observaciones que derrotarían las afirmaciones, y la sección 10 enumera el trabajo que queda, incluyendo los resultados del motor al ser reconstruido en código público.
+
+<div id="12-the-form-against-the-record" class="anchor-alias" aria-hidden="true"></div>
+
+## 12. La Forma contra el registro
+
+Esta sección coloca la Forma frente a tres cuerpos de evidencia: la teoría y las herramientas de cada área que el diseño toca, la historia del diseño de lenguajes de programación leída como una comparación de lo que cada lenguaje arregla y lo que deja libre, y las causas medidas de la redundancia en el código escrito por humanos. Cada subsección establece lo que muestra la evidencia, con su fuente, y luego la posición que este documento toma y la razón. Donde una posición es un juicio en lugar de un resultado medido, el texto lo dice así. Las tres encuestas detrás de esta sección se realizaron en octubre de 2026; sus textos completos y notas de trabajo se publican en el repositorio de experimentos ([openie-research-experiments/rce/surveys](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/surveys)).
+<div id="121-seven-areas-of-the-design" class="anchor-alias" aria-hidden="true"></div>
+
+### 12.1 Siete áreas del diseño
+
+**Formas canónicas.** Para una máquina completa y determinista sobre un alfabeto finito, la máquina mínima es única hasta isomorfismo, y un orden de recorrido fijo la convierte en una cadena única [150]. La Forma proporciona completitud y determinismo (T1, T2), por lo que la proyección de control finito de [§3.8](#38-behaviour-equivalence-and-dimension) tiene una forma canónica. El componente de datos no lo tiene: los autómatas finitos simbólicos tienen un mínimo canónico hasta la equivalencia de predicados [149], los autómatas de registro sobre igualdad o orden denso admiten un teorema de Myhill-Nerode [151], y un estado actualizado mediante aritmética entera no tiene representante canónico, sino el propio término. La extracción de un e-grafos bajo un costo que cobra una vez los subtérminos compartidos es NP-difícil y no se puede aproximar a un factor constante [158], por lo que un representante hash debe usar un costo reproducible entre extractores. Posición: tres claves de forma, cada una nombrando su nivel en la entrada hash (el hash del término sin nombre, la forma de control de [§3.8](#38-behaviour-equivalence-and-dimension), y la clave de e-clase con su presupuesto de saturación); equivalencia definida una vez, como bisimulación; cuerpos de paso guardado revisados primero por el procedimiento de decisión casi lineal del álgebra de Kleene con pruebas guardadas [157]. Rechazado: cualquier afirmación de que la máquina mínima es *la* forma canónica de una Forma con estado aritmético; un representante hash elegido por costo de subtérmino compartido. Abierto: para qué fragmento el significado igual implica una forma de control igual (la inversa de T61).
+
+**Representación intermedia con dirección por contenido.** La experiencia de cinco años de Unison con definiciones identificadas por hash se redujo a una invariante, que el hash cubre la semántica y nunca nombra, y un costo, re-hashing dependientes bajo edición [159]; Dhall hash la forma normal de un lenguaje total [160]; el intento de Nix de direccionar por contenido la construcción de salidas permaneció experimental durante quince años porque las referencias a sí mismas y la no determinación lo rompieron [161]. Posición: definiciones clave por el resumen del cuerpo α-eliminado, normalizado, con nombres, posiciones de origen y ortografía literal en una tabla no hashada renderizada por las proyecciones; un emisor que recorre la representación intermedia a través de una tabla por objetivo, reemplazando a cuatro emisores que recorren la sintaxis superficial; cada entorno de tiempo de ejecución que serializa se compara contra los vectores de JSON canónico. Rechazado: reemplazar JSON canónico como bytes hashados con RFC 8785 (que no puede transportar un entero distinto de un flotante, cero negativo o un entero sin signo de 64 bits exacto) o con CBOR determinista (cuyas dos especificaciones discrepan en el ancho de flotante y el orden de clave); artefactos emitidos como identidad por direccionamiento por contenido; normalización β completa antes del hash, ya que una función recursiva luego no tiene término finito. Abierto: claves de nivel de componente para recursión mutua.
+
+**El log como orden parcial.** Una traza en el sentido de Mazurkiewicz es una palabra módulo la conmutación de eventos independientes, y todas las linealizaciones de una configuración leen la misma traza. El teorema de consistencia como monotonía lógica establece qué programas no necesitan coordinación [19], y su extensión a lecturas dice que las observaciones de estado convergente son inseguras a menos que sean de forma umbral [82]. Posición: una entrada del log hashada sobre su cadena, número de secuencia, evento y los hashes de las entradas que observó causalmente, con el hash de estado registrado solo en cortes, de modo que el resumen es el mismo bajo cada linealización que la semántica admite; la etiqueta monótona extendida a lecturas; cada brazo tomado de un `select` cruzado de cadena logrado. El teorema de que cualquier orden consistente con las dependencias se pliega al mismo estado de corte (T62) se prueba en un modelo y es una propuesta, no texto normativo. Rechazado: permitir que un objetivo elija la linealización de un evento no monótono. Abierto: la extensión de la prueba del modelo al evaluador completo.
+
+**Síntesis desde la intención.** Un verificador solo verifica la corrección: una postcondición que siempre es verdadera se verifica. La completitud de una especificación debe medirse, y la medida que funciona es la proporción de salidas mutadas que la especificación rechaza; eliminar esa medida de la compuerta en el estudio que la introdujo redujo la verificabilidad al 1.56% [162]. La enumeración dirigida por tipo sobre autómatas de árbol con restricciones de igualdad elevó la proporción resuelta de un benchmark de búsqueda de biblioteca del 64% al 88% [163], y la autorrefinación y el voto mayoritario rara vez justifican su costo una vez que se considera el costo por resultado correcto [164]. Posición: la intención como un programa con huecos que llevan obligaciones, ejemplos, un conjunto nombrado de definiciones utilizables y un presupuesto; una regla que rechaza una intención cuyas obligaciones rechazan ningún comportamiento; una completitud medida reportada con cada intención; un registro de derivación por hueco que da los candidatos antes y después de cada verificación. Rechazado: promoción por puntuación; bucles de refinamiento dentro de una llamada a modelo. Abierto: una medida independiente de corpus de la información que lleva una intención.
+
+**Modelos de costos energéticos.** La literatura de medición se resume en [§6.3](#63-energy): los julios son lineales en el conteo de operaciones en un núcleo en orden [152] y lineales en el tiempo en un núcleo fuera de orden [153]; los contadores en chip difieren en valor por una magnitud de orden [105, 154, 155]; la medición unitaria del tipo utilizada por Ethereum se correlaciona con el tiempo de CPU solo en 0.51 [156]. Posición: tres objetos distintos, nunca fusionados , las unidades de presupuesto deterministas y sin objetivo del especificación; una estimación que es un vector de coeficiente calibrado por objetivo aplicado a los conteos (en orden) o al tiempo (fuera de orden); y las etiquetas de recibo, mantenidas en columnas separadas. Rechazado: julios en la tabla de presupuesto; constantes por lenguaje; un contador leído como una medición de metro de pared.
+
+**Lenguajes diseñados para autores de máquinas.** Un catálogo de 42 tales lenguajes, 36 de ellos primeramente listados en 2026, muestra cada uno de los mecanismos de este artículo con un par: evidencia enlazada por hash, contratos obligatorios divididos en probados y verificados en tiempo de ejecución, un núcleo de asistente de prueba, árboles de sintaxis como la fuente de verdad con definiciones hashadas [166]. La observación de convergencia de [§3.7](#37-the-language-one-text-costs-and-theorem-status) sigue vigente. Lo que distingue este diseño no es ningún mecanismo, sino que la repetición e inyectividad son teoremas (T3, T7) en lugar de promesas en tiempo de ejecución, y que los ejemplos son trazas de eventos tipados sobre la misma semántica que usa la repetición, por lo que el oráculo que un modelo no puede eludir es el propio programa. Posición: un registro versionado de códigos de regla con diagnósticos y planes de reparación legibles por máquina; pares de traducción validados por pruebas manufacturados a partir de los emisores y el verificador, que es la receta que recuperó lenguajes de baja recursos en [165] ejecutada en sentido inverso. Rechazado: cualquier afirmación de ser primero o único.
+
+**Ingeniería de pruebas.** Los estándares que cerraron la brecha entre una especificación y su modelo mecanizado lo hicieron generando prosa, tablas de verificador y definiciones desde una sola fuente autorizada: SpecTec para WebAssembly encontró diez errores en cinco propuestas y fue adoptado para todas las ediciones futuras [167]. Los proyectos que probaron una implementación correcta mediante refinamiento lo pagaron: aproximadamente doce años-persona para 8,700 líneas de C [169]. Los mantenedores de CompCert listan cada elemento de confianza con su razón [168]. Posición: una sola fuente de regla autorizada generando el texto de especificación, las tablas de verificador y las definiciones de Lean, con una verificación que falla en cualquier divergencia; el núcleo de Lean como el ejecutor de registro para el subconjunto que cubre, con el recuento de construcciones no soportadas publicado y limitando el alcance declarado de cada teorema; un capítulo que enumera cada componente de confianza con su prueba. Rechazado: una prueba de refinamiento desde el núcleo de Lean al intérprete de Rust; recuentos de teoremas como medida de garantía; dos semánticas autorizadas de cualquier cosa.
+<div id="122-the-form-among-programming-languages" class="anchor-alias" aria-hidden="true"></div>
+
+### 12.2 La Forma entre los lenguajes de programación
+
+Acerca de cien lenguajes en doce familias se colocaron en ocho coordenadas , disposición del estado, alfabeto de eventos, transición, orden, recurso, confianza, tiempo de enlace e intención , registrando para cada una si el autor lo fija, el compilador o el tiempo de ejecución lo elige, o el lenguaje no tiene palabra para ello. Tres regularidades siguen. Solo tres familias obtienen determinismo global sin el esfuerzo del autor, por tres teoremas diferentes: los lenguajes sincrónicos por una verificación de causalidad, los lenguajes de flujo y lógica por monotonicidad, y los lenguajes de acción atómica protegida por un programación de una regla a la vez con análisis estático de conflictos. Cada familia que alcanzó la certificación de seguridad lo hizo eliminando las mismas tres coordenadas que elimina la Forma: asignación dinámica, recursión no acotada y elección no determinista. Y las dos coordenadas que ninguna familia fija bien son la confianza e intención; la intención y los bloques de ejemplo y los valores de capacidad de la Forma fijan ambas.
+
+Los cinco diseños más cercanos a la Forma son Dedalus, cuyas relaciones indexadas en el tiempo son el log y cuyas reglas de paso siguiente son la transición [15]; Bluespec, cuyas reglas atómicas protegidas se programan por un orden elegido por el compilador probado igual a la ejecución de una regla a la vez; la arquitectura Elm, que es los cuatro componentes de la Forma bajo otros nombres [83]; Lustre, cuya disciplina con memoria acotada y programación estática ha sido certificada en aproximadamente cien sistemas de aviación; y Unison, sobre identidad [159]. El registro también fija cinco restricciones, cada una un lugar donde un lenguaje anterior pagó por la elección opuesta. Las tareas concurrentes deben reducirse a máquinas de estado sin pila, como lo hacen las funciones asincrónicas de Rust, porque una coroutine con pila no puede ser registrada paso a paso. La composición paralela debe emitirse como un paso estructurado, nunca como un producto explícito de autómatas, lo cual en los compiladores de Esterel falló más allá de aproximadamente mil líneas de código fuente concurrente. Los manejadores de efectos no son un objetivo de la versión 0.9: la especificación F.2 excluye manejadores reanudables y de múltiples disparos, citando el límite de totalidad del teorema T2 y la repetición desde el log del teorema T3. El registro argumenta la exclusión de la propiedad de posesión y el límite del teorema T2 en su lugar: cada reanudación adicional duplica el estado capturado, y el número de reanudaciones depende de los datos, por lo tanto, no existe un límite desde el gráfico de llamadas; encuentra que el argumento del teorema T3 es respondible. Concluye que los manejadores deben ser de un solo disparo, como eligió OCaml 5, y nombra los manejadores de un solo disparo, reanudables en la cola, como un fragmento que la Forma podría admitir sin romper ninguno de los teoremas. La única dimensión de un programa que es un teorema es el índice de su proyección de control finito ([§3.8](#38-behaviour-equivalence-and-dimension)). Y la elevación desde un lenguaje completo de Turing es una mapa parcial cuyo dominio es indecidible ([§3.6](#36-one-ecosystem-lossless-and-the-universality-thesis)). El vocabulario de geometría diferencial que un borrador anterior de este proyecto utilizó (mapas, gauge, holonomía, geodésicas) no tiene contraparte en la literatura de lenguajes de programación y no se usa aquí; los objetos que existen son la coalgebra final, funtores desde la sintaxis hacia ella, el grupoide de pruebas de reescritura cuyas componentes conectadas son e-clases, y la longitud mínima de descripción con julios en lugar de bits.
+
+Las proposiciones de universalidad de [§3.6](#36-one-ecosystem-lossless-and-the-universality-thesis) se hacen medibles mediante un criterio de encapsulación. La Forma encapsula un lenguaje $L$ cuando, para cada programa $p$ de $L$ en un corpus fijo, la Forma elevada no es peor que $p$ en cinco coordenadas y estrictamente mejor en al menos una: julios medidos en las mismas tareas y host; redundancia en el sentido de [§3.8](#38-behaviour-equivalence-and-dimension) contra los bits de estado $p$ declara; decidibilidad, significando que cada propiedad decidida para $p$ es decidida para la Forma; el viaje de ida y vuelta, significando el acuerdo de comportamiento a una longitud declarada y la condición del lente sobre el hash de forma; y el costo para que un modelo alcance un programa que pase la compuerta desde la misma intención. La afirmación de que la Forma es mejor que un lenguaje de programación es la conjunción de este criterio sobre el corpus, una ejecución registrada por lenguaje, y nada más: no afirma expresividad, ya que una Forma no puede decir más que $p$, ni legibilidad, que es una propiedad de una proyección, ni adopción. Un lenguaje en el que la Forma es estrictamente peor en cualquier coordenada después de dos ejecuciones registradas no está encapsulado, y el registro de lo que ese lenguaje fija que la Forma no fija se convierte en un elemento de trabajo para la Forma.
+<div id="123-why-human-written-code-is-redundant" class="anchor-alias" aria-hidden="true"></div>
+
+### 12.3 ¿Por qué el código escrito por humanos es redundante
+
+El código escrito por humanos lleva redundancia siempre que el medio no le da al autor un canal para lo que se quiere decir, y esa redundancia es un sustituto privado de cada autor. La evidencia medida lo clasifica en tres capas. El formato representa del 13 al 15% de los tokens de lenguajes delimitados por llaves y puede eliminarse sin pérdida de precisión para diez modelos de lenguaje [136], y el diseño no tiene efecto medido en la comprensión humana [135]. Las únicas cantidades que rastrean la carga de comprensión medida son el tamaño textual, el tamaño del vocabulario y el alcance de las dependencias de flujo de datos, cada uno con Kendall's τ ≈ 0.4, mientras que la complejidad ciclomática no rastrea nada (τ ≈ 0.09) [133]; y el 97% de los errores reales de concurrencia distintos de los bloqueos son suposiciones no impuestas sobre la atomicidad o el orden, el 96% de ellos involucrando como máximo dos hilos, porque el texto secuencial no puede declarar un orden parcial y el autor escribe uno total [170]. Los nombres se eligen con un acuerdo mediano del 6.9% entre desarrolladores y se decodifican en un 97% [137]; los comentarios dejan de rastrear el código que describen dentro de unos pocos commits [138]; sin embargo, los modelos de lenguaje pierden hasta 29 puntos de precisión cuando se eliminan los identificadores [139]. Dos causas adicionales son organizacionales. Los desarrolladores no eliminan: en tres sistemas de producción, del 54 al 60% de los archivos nunca se ejecutaron durante seis a dieciséis meses, los desarrolladores eliminaron el 20% del código que se les mostró como innecesario, y la precaución fue razonable, ya que el detector tenía una precisión del 32% [171]. Y las organizaciones envían sus límites: ocho métricas organizacionales predijeron binarios propensos a fallar con una precisión del 86.2% y una recuperación del 84.0%, superando a cada métrica de código [172].
+
+La posición que sigue tiene cuatro partes. La Forma toma orden, localidad, idiom y alcanzabilidad, cada uno decidible sobre un estado, un conjunto de eventos y un paso total. La proyección toma diseño y idiom, renderizado por comunidad, porque la ventaja de un experto está confinada al código escrito en planes familiares y una proyección que emite solo código correcto le cuesta eso. La intención permanece como un registro estructurado y verificado, del cual la proyección renderiza nombres ([§3.8](#38-behaviour-equivalence-and-dimension)). Y la especificación está gobernada por una verificación mecánica de admisión, porque la autoría por modelos eleva la tasa de propuestas sin cambiar la regla. Tres preguntas en las que depende el diseño no tuvieron medición en la literatura y han sido registradas como experimentos con protocolos sellados: si un modelo razona tan precisamente desde una Forma sin nombre con su registro de conceptos como desde una superficie con nombre; qué porcentaje de declaraciones adyacentes en código ordinario conmutan bajo las dependencias de la Forma, lo cual es el tamaño del holgura cuyo costo mide la figura del 97%; y si la eliminación que se verifica mediante reproducción y reversible con un solo comando mueve la tasa de eliminación del 20%. Dos afirmaciones que circularon en el material de trabajo del proyecto no tienen fuente rastreable y no se usan: un estudio de 2014 sobre el conteo de páginas de manual de lenguaje, y la afirmación de que los programadores experimentados escriben menos código, que se remonta a una entrada de weblog citando un estudio no nombrado.
+
+<div id="124-how-the-language-grows-and-shrinks" class="anchor-alias" aria-hidden="true"></div>
+
+### 12.4 Cómo el lenguaje crece y se reduce
+
+Cada lenguaje que permaneció pequeño reemplazó el gusto de los revisores con una regla sobre lo que cuenta como admisible. El proceso de Go está inclinado hacia el rechazo, y en un estudio rechazó el 40.9% de 1,095 propuestas con un conjunto publicado de razones [173]; la regla de Lua sobre mecanismos en lugar de políticas mantuvo su implementación en aproximadamente 25,000 líneas de C; Elm se detuvo. El régimen que crece también se documenta por su propio presidente: el beneficio de una característica es privado e inmediato, su costo difuso y diferido, y es más fácil invocar entusiasmo por algo nuevo que por oponerse a ello [175]. En RCE la Forma crece dentro de un solo texto. Cuando un programa necesita una forma que el texto carece, incluyendo una que nadie previó, la forma se escribe en la especificación misma, sin versión y sin macro, bandera, directiva o complemento. El repositorio de especificaciones establece siete reglas sobre cómo una forma entra en el texto, cada una nombrando el artefacto que la enuncia. Un constructo entra en la gramática normativa solo con un ejemplo aceptado y un ejemplo rechazado, una declaración Lean del teorema en el que se basa vinculada al verificador mediante una tabla de reglas generada o mediante vectores de prueba, y sin conflictos de análisis; cualquier cosa menos es una propuesta. Una segunda ortografía de algo que la Forma ya dice se rechaza solo por ese motivo. El cambio ocurre en ambas direcciones: cualquier constructo puede cambiarse, generalizarse, reemplazarse o eliminarse cuando se encuentra una forma mejor, y el cambio se mueve junto con cada programa, ejemplo y módulo de biblioteca del repositorio que toca en un solo commit, con una fila de libro contable que dice qué cambió y por qué. Cada interfaz tiene un solo locus de decisión, porque un límite organizacional que atraviesa una interfaz es un sitio de defecto predicho [172]. Las decisiones y sus razones se publican en un libro contable con un conjunto fijo de razones, por lo que la tasa de rechazo es un número que cualquiera puede leer. El mercado no poda, por lo que el uso nunca es una razón para mantener un constructo. Y la autoría por un modelo cambia la tasa, no la regla.
+<div id="125-the-library-and-the-compute-fabric" class="anchor-alias" aria-hidden="true"></div>
+
+### 12.5 La biblioteca y el tejido de cálculo
+
+Ya sea que un lenguaje deba incluir una gran biblioteca ("todo incluido") o un núcleo pequeño y especificado con un registro gratuito, normalmente se argumenta como conveniencia contra flexibilidad. El registro muestra que ambas posiciones fallan en el mismo punto [193]. Una biblioteca incluida con el lenguaje vincula su interfaz a la promesa de compatibilidad del lenguaje y pierde flexibilidad [195]. Sus módulos se eliminan una vez que existe un instalador: la Propuesta de Mejora de Python 594 eliminó 22 de ellos, citando el costo de mantenimiento y la facilidad de instalar desde el registro [194]. Un registro gratuito produce gráficos transitivos profundos: la mitad de los paquetes dependientes en Cargo, npm y NuGet tienen al menos 41, 21 y 27 dependencias transitivas [196]. Una especificación con muchas implementaciones diverge en sus bordes, como lo hacen más de 30 analizadores JSON en una gramática subespecificada [197]. Donde el registro converge, converge en una capa curada que se entrega y cambia como una sola unidad.
+
+La misma falla aparece en los tejidos de cálculo. En procesadores gráficos, los modelos de un solo origen coinciden con el código nativo en núcleos de streaming y pierden en reducciones: en el producto punto, las puntuaciones de portabilidad del rendimiento de Kokkos, RAJA y SYCL se encuentran entre 0.80 y 0.91 [198]. En una FPGA, una fuente SYCL migrada desde CUDA y ajustada para una GPU alcanza el 0.2% al 47% de la velocidad de su versión optimizada para FPGA, por razones derivadas de los tiempos publicados en el tamaño de problema más grande [193, 199]. Los sistemas revisados que dan un significado en el software y en el hardware lo logran cortando su lenguaje de origen hasta lo que su hardware puede significar (estado de tamaño estáticamente conocido, sin pila o recursión en la parte del hardware, un tic lógico), y sus pruebas cubren partes de la cadena, no todas [193, 200]. Los formatos de código portables funcionan donde fijan semánticas [201]. Los resultados idénticos en bits cuestan poco cuando se diseñan [202]. Los resultados de corrección para modelos de memoria son pares [203]. La colocación desde costos medidos es no determinista a menos que cada decisión se registre y se repita, o la ejecución se simule en tiempo virtual [193, 204]. Para los autores de máquinas, la pregunta también es de conocimiento: de los paquetes nombrados por el código que 16 modelos generaron en Python y JavaScript, el 19.7% no existía [205].
+
+Ambos debates preguntan dónde se mantiene el significado de la biblioteca: por una implementación, por cada paquete del registro, por una especificación verificada con tolerancias, o por un binario de proveedor para un tejido. La posición RCE lo mantiene en un solo texto.
+
+- **La biblioteca es parte del texto.** Se escribe en el lenguaje y se construye en cada herramienta (especificación 4.1). Se fija mediante la huella hash de su manifiesto, que un programa nombra como su única dependencia (F.5.3).
+- **No tiene variante de plataforma.** Solo realiza entrada y salida a través de adaptadores.
+- **Su costo es el costo de su fuente en cada binario.** Por lo tanto, un paso significa lo mismo en cada anfitrión (HC-7).
+- **La elección por objetivo pertenece al anfitrión.** El anfitrión admite un tejido para una clase de operaciones solo después de una prueba de exactitud de bits registrada contra la referencia de CPU (HC-13), y registra cada colocación para repetición (HC-12).
+- **Lo disponible es una lista que imprime una herramienta, completa en cada confirmación y creciente en el mismo texto.** Si una función existe se convierte en una búsqueda en lugar de una recollection.
+
+La Forma lo hace como una forma, no como una compuerta. Los sistemas del registro cortan su lenguaje de origen porque dice más de lo que su hardware puede significar. La Forma P = (S, E, δ, D, λ) es la forma que ya tiene cada programa: el estado que mantiene, los eventos a los que responde, su paso, su registro y sus salidas. Eso es por qué los programas de otros lenguajes se diseñan para entrar en ella mediante elevación, dentro del dominio [§3.6](#36-one-ecosystem-lossless-and-the-universality-thesis) estados, y por qué ninguna parte de esta posición clasifica programas en admitidos y rechazados.
+
+La Forma es rígida en cada confirmación, con un solo texto y un solo significado. Es flexible entre confirmaciones. Cuando un programa necesita una forma que la forma no tiene, la forma la adquiere en el texto, nunca a través de un macro, bandera, directiva o complemento junto a ella. Un cambio puede extender, generalizar o reemplazar una forma. Se mueve junto con los programas del repositorio en una confirmación, y los hashes del programa, la verificación de equivalencia de [§3.8](#38-behaviour-equivalence-and-dimension) y el registro lo que se movió. El comportamiento y la equivalencia (especificación 6.10) y las entradas del tejido del anfitrión se agregaron dentro del texto sin cambiar el significado de ningún programa aceptado, y el registro como orden parcial e intención con huecos se propusieron de la misma manera. Bajo la propuesta, el hardware sigue la misma regla: el motor lee los tamaños de estado y los costos de paso de una Forma para materializarla, con un estado de tamaño estático en registros y un estado creciente en la memoria que la circuito aborda.
+
+Incluir baterías y especificación y gratuita dejan de ser alternativas: las baterías son parte de la especificación, y el programa es libre de cualquier tejido.
+
+La mitad de la biblioteca de esta posición se mantiene en el repositorio en sus partes principales: la biblioteca se escribe en el lenguaje, se construye en cada herramienta y se fija mediante hash. Una de sus partes permanece: una definición de la biblioteca estándar a través de las secciones de la especificación. Desde openIE-dev/rce `5e701e33` (27 de octubre de 2026), `use` es la única manera de traer un módulo de biblioteca. La mitad del tejido es un contrato cuya repetición se prueba en un modelo del anfitrión (especificación Apéndice E, teorema T37), con los registros de ejemplo replegados a través del comprobador de referencia (`tests/host_contract.rs`), y un ejecutor de referencia cuya repetición se prueba contra su ejecución en vivo (`tests/host_runtime.rs`), ejercitado solo en CPUs. La propuesta "una biblioteca y una Forma en cada tejido de cálculo" enumera lo que queda [193]:
+
+- una definición de la biblioteca estándar;
+- evidencia de prueba rederivada en repetición;
+- colocación en cada camino de ejecución;
+- un árbol de reducción por construcción;
+- ejecuciones de calibración;
+- clases de operaciones de enteros y binary32;
+- realización de hardware leída desde la forma de cada Forma;
+- un anfitrión sin sistema operativo;
+- dos mediciones que el registro carece: la energía de un kernel a través de clases de dispositivos bajo un límite, y la proporción de funcionalidad de biblioteca que los asistentes de modelos reutilizan en lugar de reimplementar.
+<div id="13-programme-of-work-and-its-gates" class="anchor-alias" aria-hidden="true"></div>
+
+## 13. Programa de trabajo y sus compuertas
+
+Dos revisiones independientes de los repositorios públicos en octubre de 2026 llegaron a la misma diagnóstico. El comprobador no se verifica por sí mismo: nada refina la semántica de Lean al intérprete de Rust, los dos núcleos de Lean no tienen ningún teorema que los relacione, y el informe de la suite de conformidad para el núcleo mecanizado (`conformance/reports/results-lean-core.json` en el commit público `d91a9fc8`) registra 210 pruebas aprobadas, 1 fallida y 1,766 no admitidas de 1,977, por lo tanto, aproximadamente una décima parte de la suite está bajo el teorema que el resumen anuncia. El código emitido es un tiempo de ejecución de valor dinámico por objetivo, cuatro runtimes escritos a mano de aproximadamente 2,000 líneas cada uno. La estimación de energía no puede distinguir entre objetivos, por lo tanto, la extracción de menor julio nunca elige uno. El perfil del motor especifica una elevación para cuatro lenguajes, ninguno de ellos público; la única elevación pública es una sonda para un patrón de Go, y la afirmación de universalidad necesita diez. Y el motor , los engranajes, el e-graf, las reescrituras y sus pruebas, el núcleo y su verificación del modelo, y la elevación , no es público, por lo tanto, los resultados que produjo entran en este artículo solo cuando cada uno se reconstruye en código público; [§10](#10-work-to-finish) los enumera con sus rastros de reconstrucción. Para un proyecto cuyo motivo declarado para trabajar en el abierto es la trazabilidad, eso es el mayor riesgo en el programa.
+
+El programa está ordenado por dependencia: la reproducibilidad primero; luego la codificación y el modelo de costo en el que descansa toda medición posterior; luego la cadena de pruebas; y solo después la amplitud. Cada fase termina en una compuerta que es un falsificador registrado antes de la ejecución, reportado con un intervalo de confianza; una fase cierra cuando se publica la observación de su compuerta, nunca por esfuerzo. Las compuertas se enuncian en [§9](#9-falsifiers) y la tabla a continuación.
+
+| Fase | Entregables | Lo que derroca la fase |
+|---|---|---|
+| 0 Reproducir | Cada resultado que depende del motor reconstruido en código público en un commit etiquetado, como [§10](#10-work-to-finish) enumera; los registros por tarea de cada ejecución reconstruida; el conjunto Defects4J reservado completado; cada registro sellado por hash; una cadena de versión; la errata de especificación cerrada; una ortografía cada una de terminación, autoridad y error; una medida publicada de redundancia superficial (constructos distintos por Forma sobre el corpus de ejemplos) | Un número en este artículo que no puede reconstruirse desde un commit público con un solo comando |
+| 1 Congelar la Forma | Definiciones con dirección de contenido como la única forma intermedia; relaciones tipadas como un valor de Forma; una reducción que cada emisor consume; la condición de ida y vuelta verificada por objetivo; un modelo de costo calibrado por objetivo como [§6.3](#63-energy) establece | Una definición rechazada por tamaño; un objetivo cuyo viaje de ida y vuelta cambia un hash de forma; el modelo de costo clasificando dos objetivos opuestos al medidor de pared |
+| 2 Un núcleo, compuerta verificada | Un solo núcleo de Lean con T1 a T9 reexpresados en él; las reglas de tipado generadas desde la tabla de reglas del comprobador para que una regla sin contraparte en Lean falle la compilación; el comprobador e intérprete extraídos de Lean y usados como la compuerta, con el comprobador de Rust como un frente de verificación cruzada | La compuerta extraída y el comprobador de Rust desacuerdan en cualquier programa; un teorema reexpresado que necesita un paso admitido; pruebas de conformidad no admitidas por encima del 10% |
+| 3 Objetivos valorados en julios | Arreglos de rango-n y operaciones en masa como la única ortografía para el trabajo numérico; emisores de Zig y Fortran con modos de punto flotante y desbordamiento fijos; pistas de diseño en el ajuste y nunca en la Forma; un certificado de validación de traducción por módulo emitido; el protocolo de medidor de pared de [§8.3](#83-a-wall-meter) | RCE-F3 y RCE-F5; un módulo emitido sin certificado; la extracción eligiendo el mismo término para cada par de objetivos |
+| 4 Elevación como entrada | Una elevación por lenguaje, Go y Python primero, luego TypeScript y Rust, luego C y Zig; 10,000 programas por lenguaje con la elevación congelada; el criterio de encapsulación de [§12.2](#122-the-form-among-programming-languages) ejecutado por lenguaje; un registro público, de solo-append de hashes de forma admitidos con sus certificados | Cobertura de elevación por debajo del 10% en cualquiera de los primeros cuatro lenguajes después de la segunda ejecución registrada; la Forma estrictamente peor en cualquier coordenada del criterio |
+| 5 El ecosistema se compone | Síntesis desde intenciones con huecos; los primeros engranajes públicos con su certificado de verificación; el protocolo de convergencia de [§8.6](#86-convergence-of-model-calls-at-large-n) en 1,000 especificaciones públicas; líneas base en una tabla con costo por resultado correcto en julios y dólares | RCE-F1, RCE-F2, RCE-F4; las herramientas incapaces de verificar o emitir ellas mismas |
+
+Tres posiciones donde las revisiones difirieron de las encuestas de [§12](#12-the-form-against-the-record) se resuelven de la siguiente manera. JSON canónico sigue siendo la única codificación con hash, por las razones dadas en [§12.1](#121-seven-areas-of-the-design); una codificación binaria puede reflejarlo solo para transporte si es una biyección a esos bytes, verificada en los mismos vectores. La única ortografía de terminación es una medida decreciente declarada, con los límites de bucle y recursión como la semántica; la forma con dirección de contenido aún necesita un punto fijo acotado para la recursión, y la medida es lo que la acota. Reducir el vocabulario de concurrencia a dos primitivas se registra como una propuesta abierta en lugar de una decisión, porque los teoremas de las dos primitivas deben probarse primero en el comprobador en lugar de en un modelo. No en el programa en absoluto: un compilador autohospedado antes de la fase 2, objetivos adicionales antes de la fase 1, cualquier construcción de los apéndices antes de su teorema, y un compilador de producción, que el propio resumen de la especificación dice que no debe construirse hasta que el documento deje de moverse.
+
+Desde las revisiones, los seis repositorios que deben coincidir con la especificación , el libro, los programas de ejemplo, la biblioteca estándar, la suite de conformidad, el paquete de gramática y el editor , se han fusionado en el repositorio de especificación con sus historias, y cada uno se verifica mediante un flujo de trabajo que construye el comprobador desde el mismo commit. Nada en el proyecto fija o vende una especificación más antigua; el comprobador vendido del editor, seis commits atrás, fue el último pin de ese tipo. El sitio de investigación y el repositorio de experimentos permanecen separados y leen el repositorio de especificación; nunca lo leen ellos.
+<div id="references" class="anchor-alias" aria-hidden="true"></div>
+
+## Referencias
+
+[1] C. E. Shannon, "Prediction and Entropy of Printed English," *Bell System Technical Journal* 30(1), 1951. doi:10.1002/j.1538-7305.1951.tb01366.x
+
+[2] Y. Gurevich, "Sequential Abstract State Machines Capture Sequential Algorithms," *ACM Transactions on Computational Logic* 1(1), 2000. doi:10.1145/343369.343384
+
+[3] A. Blass and Y. Gurevich, "Abstract State Machines Capture Parallel Algorithms," *ACM Transactions on Computational Logic*, 2003. doi:10.1145/937555.937561
+
+[4] N. Dershowitz and Y. Gurevich, "A Natural Axiomatization of Computability and Proof of Church's Thesis," *Bulletin of Symbolic Logic*, 2008. doi:10.2178/bsl/1231081370
+
+[5] E. F. Codd, "A Relational Model of Data for Large Shared Data Banks," *Communications of the ACM*, 1970. doi:10.1145/362384.362685
+
+[6] G. H. Mealy, "A Method for Synthesizing Sequential Circuits," *Bell System Technical Journal*, 1955. doi:10.1002/j.1538-7305.1955.tb03788.x
+
+[7] E. F. Moore, "Gedanken-Experiments on Sequential Machines," *Automata Studies*, 1956. doi:10.1515/9781400882618-006
+
+[8] K. Kang et al., "Feature-Oriented Domain Analysis (FODA) Feasibility Study," CMU/SEI-90-TR-021, 1990.
+
+[9] R. Alur et al., "Syntax-Guided Synthesis," FMCAD 2013. doi:10.1109/FMCAD.2013.6679385
+
+[10] D. Harel, "Statecharts: A Visual Formalism for Complex Systems," *Science of Computer Programming*, 1987. doi:10.1016/0167-6423(87)90035-9
+
+[11] R. Tate, M. Stepp, Z. Tatlock and S. Lerner, "Equality Saturation," POPL 2009. doi:10.1145/1480881.1480915
+
+[12] M. Willsey et al., "egg: Fast and Extensible Equality Saturation," POPL 2021. doi:10.1145/3434304
+
+[13] B. Moseley and P. Marks, "Out of the Tar Pit," 2006.
+
+[14] M. Fowler, "Event Sourcing," 2005. https://martinfowler.com/eaaDev/EventSourcing.html
+
+[15] P. Alvaro et al., "Dedalus: Datalog in Time and Space," LNCS 2011. doi:10.1007/978-3-642-24206-9_16
+
+[16] A. M. Turing, "On Computable Numbers," *Proceedings of the London Mathematical Society*, 1937. doi:10.1112/plms/s2-42.1.230
+
+[17] A. Church, "An Unsolvable Problem of Elementary Number Theory," *American Journal of Mathematics*, 1936. doi:10.2307/2371045
+
+[18] P. Wadler, "Propositions as Types," *Communications of the ACM*, 2015. doi:10.1145/2699407
+
+[19] J. M. Hellerstein and P. Alvaro, "Keeping CALM," *Communications of the ACM*, 2020. doi:10.1145/3369736
+
+[20] G. Kahn, "The Semantics of a Simple Language for Parallel Programming," IFIP 1974, pp. 471 to 475.
+
+[21] H. Husain et al., "CodeSearchNet Challenge," 2019. arXiv:1909.09436
+
+[22] D. Kim, J. Nam, J. Song and S. Kim, "Automatic Patch Generation Learned from Human-Written Patches" (PAR), ICSE 2013. doi:10.1109/ICSE.2013.6606626
+
+[23] K. Liu et al., "TBar: Revisiting Template-based Automated Program Repair," ISSTA 2019. arXiv:1903.08409
+
+[24] K. Liu et al., "AVATAR: Fixing Semantic Bugs with Fix Patterns of Static Analysis Violations," SANER 2019. arXiv:1812.07270
+
+[25] A. Koyuncu et al., "FixMiner: Mining Relevant Fix Patterns for Automated Program Repair," 2018. arXiv:1810.01791
+
+[26] Y. Padioleau et al., "Documenting and Automating Collateral Evolutions in Linux Device Drivers" (Coccinelle), EuroSys 2008. doi:10.1145/1352592.1352618
+
+[27] A. Solar-Lezama et al., "Combinatorial Sketching for Finite Programs," ASPLOS 2006. doi:10.1145/1168857.1168907
+
+[28] L. Chen, M. Zaharia and J. Zou, "FrugalGPT," 2023. arXiv:2305.05176
+
+[29] S. Haber and W. S. Stornetta, "How to Time-Stamp a Digital Document," *Journal of Cryptology*, 1991. doi:10.1007/BF00196791
+
+[30] S. A. Crosby and D. S. Wallach, "Efficient Data Structures for Tamper-Evident Logging," USENIX Security 2009.
+
+[31] L. de Moura and N. Bjørner, "Z3: An Efficient SMT Solver," TACAS 2008. doi:10.1007/978-3-540-78800-3_24
+
+[32] Kani Rust Verifier. https://github.com/model-checking/kani
+
+[33] C. V. Lopes et al., "DéjàVu: A Map of Code Duplicates on GitHub," OOPSLA 2017. doi:10.1145/3133908
+
+[34] M. Gabel and Z. Su, "A Study of the Uniqueness of Source Code," FSE 2010. doi:10.1145/1882291.1882315
+
+[35] A. Hindle et al., "On the Naturalness of Software," ICSE 2012. doi:10.1109/ICSE.2012.6227135
+
+[36] D. Kocetkov et al., "The Stack: 3 TB of Permissively Licensed Source Code," 2022. arXiv:2211.15533; The Stack v2 dataset card, https://huggingface.co/datasets/bigcode/the-stack-v2
+
+[37] R. Just, D. Jalali and M. D. Ernst, "Defects4J: A Database of Existing Faults to Enable Controlled Testing Studies for Java Programs," ISSTA 2014. doi:10.1145/2610384.2628055
+
+[38] C. E. Jimenez et al., "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?" 2023. arXiv:2310.06770
+
+[39] R. Aleithan et al., "SWE-Bench+: Enhanced Coding Benchmark for LLMs," 2024. arXiv:2410.06992
+
+[40] C. E. Shannon, "A Mathematical Theory of Communication," *Bell System Technical Journal* 27, 1948. doi:10.1002/j.1538-7305.1948.tb01338.x
+
+[41] A. N. Kolmogorov, "Three approaches to the quantitative definition of information," *Problemy Peredachi Informatsii* 1(1), 1965 (in Russian); English translation, *International Journal of Computer Mathematics* 2, 1968. doi:10.1080/00207166808803030
+
+[42] R. J. Solomonoff, "A formal theory of inductive inference. Part I," *Information and Control* 7(1), 1964. doi:10.1016/S0019-9958(64)90223-2
+
+[43] G. J. Chaitin, "A Theory of Program Size Formally Identical to Information Theory," *Journal of the ACM* 22(3), 1975. doi:10.1145/321892.321894
+
+[44] J. Rissanen, "Modeling by shortest data description," *Automatica* 14(5), 1978. doi:10.1016/0005-1098(78)90005-5
+
+[45] B. Ray, V. Hellendoorn, S. Godhane, Z. Tu, A. Bacchelli and P. Devanbu, "On the 'naturalness' of buggy code," ICSE 2016. doi:10.1145/2884781.2884848
+
+[46] Z. Tu, Z. Su and P. Devanbu, "On the localness of software," FSE 2014. doi:10.1145/2635868.2635875
+
+[47] M. Allamanis, E. T. Barr, P. Devanbu and C. Sutton, "A Survey of Machine Learning for Big Code and Naturalness," *ACM Computing Surveys* 51(4), 2018. doi:10.1145/3212695
+
+[48] 陈浙哲, 刘忠鑫, 鄢萌, 徐洲, 夏鑫, 雷晏 (Z. Chen, Z. Liu, M. Yan, Z. Xu, X. Xia and Y. Lei), "代码自然性及其应用研究进展" (Research progress of code naturalness and its application), *软件学报 (Journal of Software)* 33(8), 3015 to 3034, 2022. doi:10.13328/j.cnki.jos.006355
+
+[49] G. Sridhara, V. S. Sinha and S. Mani, "Naturalness of Natural Language Artifacts in Software," ISEC 2015 (India Software Engineering Conference). doi:10.1145/2723742.2723758
+
+[50] P. Devanbu, "On the naturalness of software," keynote, ISEC 2013 (India Software Engineering Conference). doi:10.1145/2442754.2442763
+
+[51] A. Z. H. Yang, S. Kolak, V. J. Hellendoorn, R. Martins et al., "Revisiting Unnaturalness for Automated Program Repair in the Era of Large Language Models," ICSE 2025. doi:10.1109/ICSE55347.2025.00089
+
+[52] E. W. Dijkstra, "Guarded commands, nondeterminacy and formal derivation of programs," *Communications of the ACM* 18(8), 1975. doi:10.1145/360933.360975
+
+[53] N. Wirth, "Program development by stepwise refinement," *Communications of the ACM* 14(4), 1971. doi:10.1145/362575.362577
+
+[54] C. A. R. Hoare, "An axiomatic basis for computer programming," *Communications of the ACM* 12(10), 1969. doi:10.1145/363235.363259
+
+[55] J.-R. Abrial, *The B-Book: Assigning Programs to Meanings*, Cambridge University Press, 1996. doi:10.1017/CBO9780511624162
+
+[56] J.-R. Abrial, *Modeling in Event-B: System and Software Engineering*, Cambridge University Press, 2010. doi:10.1017/CBO9781139195881
+
+[57] R.-J. Back and J. von Wright, *Refinement Calculus: A Systematic Introduction*, Springer, 1998. doi:10.1007/978-1-4612-1674-2
+
+[58] F. L. Bauer and H. Wössner, *Algorithmic Language and Program Development*, Springer, 1982. doi:10.1007/978-3-642-61807-9
+
+[59] S. Gulwani, "Automating string processing in spreadsheets using input-output examples," POPL 2011. doi:10.1145/1926385.1926423
+
+[60] S. Gulwani, O. Polozov and R. Singh, "Program Synthesis," *Foundations and Trends in Programming Languages* 4(1-2), 2017. doi:10.1561/2500000010
+
+[61] F. P. Brooks, "No Silver Bullet: Essence and Accidents of Software Engineering," *Computer* 20(4), 1987. doi:10.1109/MC.1987.1663532
+
+[62] P. Naur, "Programming as theory building," *Microprocessing and Microprogramming* 15(5), 1985. doi:10.1016/0165-6074(85)90032-8
+
+[63] M. M. Lehman, "Programs, life cycles, and laws of software evolution," *Proceedings of the IEEE* 68(9), 1980. doi:10.1109/PROC.1980.11805
+
+[64] P. Zave and M. Jackson, "Four dark corners of requirements engineering," *ACM Transactions on Software Engineering and Methodology* 6(1), 1997. doi:10.1145/237432.237434
+
+[65] R. Landauer, "Irreversibility and Heat Generation in the Computing Process," *IBM Journal of Research and Development* 5(3), 1961. doi:10.1147/rd.53.0183
+
+[66] C. H. Bennett, "Logical Reversibility of Computation," *IBM Journal of Research and Development* 17(6), 1973. doi:10.1147/rd.176.0525
+
+[67] M. Franz and T. Kistler, "Slim binaries," *Communications of the ACM* 40(12), 1997. doi:10.1145/265563.265576
+
+[68] C. W. Fraser, "Automatic inference of models for statistical code compression," PLDI 1999. doi:10.1145/301618.301672
+
+[69] P. Cousot and R. Cousot, "Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints," POPL 1977. doi:10.1145/512950.512973
+
+[70] Y. Futamura, "Partial evaluation of computation process: an approach to a compiler-compiler," *Systems, Computers, Controls* 2(5), 1971; reprinted in *Higher-Order and Symbolic Computation* 12(4), 1999. doi:10.1023/A:1010095604496
+
+[71] A. P. Ershov, "Mixed computation: potential applications and problems for study," *Theoretical Computer Science* 18(1), 1982. doi:10.1016/0304-3975(82)90111-6
+
+[72] W. A. Howard, "The formulae-as-types notion of construction," in J. P. Seldin and J. R. Hindley (eds.), *To H. B. Curry: Essays on Combinatory Logic, Lambda Calculus and Formalism*, Academic Press, 1980.
+
+[73] 土居真之, 肥後芳樹, 有馬諒, 下仲健斗, 楠本真二 (M. Doi, Y. Higo, R. Arima, K. Shimonaka and S. Kusumoto), "ソースコードの「自然さ」を利用した自動生成ファイルの特定" (Identifying auto-generated files using the naturalness of source code), 電子情報通信学会技術研究報告 (IEICE Technical Report) 117(380), 19 to 24, January 2018. https://sdl.ist.osaka-u.ac.jp/pman/pman3.cgi?D=517
+
+[74] M. Doi, Y. Higo, R. Arima, K. Shimonaka and S. Kusumoto, "On the naturalness of auto-generated code: can we identify auto-generated code automatically?" ICPC 2018. doi:10.1145/3196321.3196356
+
+[75] F. V. Arrebola, "Modelo de sugestão de código-fonte baseado em modelos de linguagem organizados em um contexto hierárquico" (A source code suggestion model based on language models organized in a hierarchical context), doctoral thesis in electrical engineering, Fundação Educacional Inaciana Padre Sabóia de Medeiros (FEI), Brazil, 2018. Advisor R. A. C. Bianchi.
+
+[76] G. Febres, K. Jaffé and C. Gershenson, "Complexity measurement of natural and artificial languages," *Complexity* 20(6), 2015. doi:10.1002/cplx.21529
+
+[77] M. Rahman, D. Palani and P. C. Rigby, "Natural Software Revisited," ICSE 2019. doi:10.1109/ICSE.2019.00022
+
+[78] A. Torres, S. Baltes, C. Treude and M. Wagner, "Applying Information Theory to Software Evolution," NLBSE 2023. doi:10.1109/NLBSE59153.2023.00017
+
+[79] A. Blass, N. Dershowitz and Y. Gurevich, "When are two algorithms the same?," *Bulletin of Symbolic Logic* 15(2), 2009. arXiv:0811.0811. https://arxiv.org/abs/0811.0811
+
+[80] Y. N. Moschovakis, "What is an algorithm?," in *Mathematics Unlimited: 2001 and Beyond*, Springer, 2001. https://www.math.ucla.edu/~ynm/papers/eng.pdf
+
+[81] M. Y. Vardi, "What is an algorithm?," *Communications of the ACM* 55(3), 2012. doi:10.1145/2093548.2093549
+
+[82] S. Laddad, A. Cheung, J. M. Hellerstein and M. Milano, "Flo: a Semantic Foundation for Progressive Stream Processing," POPL 2025. arXiv:2411.08274. https://arxiv.org/abs/2411.08274
+
+[83] The Elm Architecture, Elm guide. https://guide.elm-lang.org/architecture/
+
+[84] Temporal, "Workflows" (event history), documentation. https://docs.temporal.io/workflows
+
+[85] A. Pnueli, M. Siegel and E. Singerman, "Translation validation," TACAS 1998. doi:10.1007/BFb0054170
+
+[86] X. Yang, Y. Chen, E. Eide and J. Regehr, "Finding and understanding bugs in C compilers," PLDI 2011. doi:10.1145/1993498.1993532
+
+[87] C. Nandi, M. Willsey, A. Zhu et al., "Rewrite Rule Inference Using Equality Saturation," OOPSLA 2021. arXiv:2108.10436. https://arxiv.org/abs/2108.10436
+
+[88] C. Le Goues, T. Nguyen, S. Forrest and W. Weimer, "GenProg: A Generic Method for Automatic Software Repair," *IEEE TSE* 38(1), 2012. doi:10.1109/TSE.2011.104
+
+[89] F. Long and M. Rinard, "Automatic patch generation by learning correct code," POPL 2016. doi:10.1145/2837614.2837617
+
+[90] J. Bader, A. Scott, M. Pradel and S. Chandra, "Getafix: Learning to Fix Bugs Automatically," OOPSLA 2019. arXiv:1902.06111. https://arxiv.org/abs/1902.06111
+
+[91] K. Etemadi, N. Harrand, S. Larsen et al., "Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations," *IEEE TDSC*, 2022. arXiv:2103.12033. https://arxiv.org/abs/2103.12033
+
+[92] Z. Qi, F. Long, S. Achour and M. Rinard, "An analysis of patch plausibility and correctness for generate-and-validate patch generation systems," ISSTA 2015. doi:10.1145/2771783.2771791
+
+[93] E. K. Smith, E. T. Barr, C. Le Goues and Y. Brun, "Is the cure worse than the disease? Overfitting in automated program repair," ESEC/FSE 2015. doi:10.1145/2786805.2786825
+
+[94] X.-B. D. Le, F. Thung, D. Lo and C. Le Goues, "Overfitting in semantics-based automated program repair," *Empirical Software Engineering* 23, 2018. doi:10.1007/s10664-017-9577-2
+
+[95] Y. Xiong, X. Liu, M. Zeng, L. Zhang and G. Huang, "Identifying patch correctness in test-based program repair," ICSE 2018. doi:10.1145/3180155.3180182
+
+[96] T. Durieux, F. Madeiral, M. Martinez and R. Abreu, "Empirical Review of Java Program Repair Tools: A Large-Scale Experiment on 2,141 Bugs and 23,551 Repair Attempts," ESEC/FSE 2019. arXiv:1905.11973. https://arxiv.org/abs/1905.11973
+
+[97] K. Liu, A. Koyuncu, T. F. Bissyandé et al., "You Cannot Fix What You Cannot Find! An Investigation of Fault Localization Bias in Benchmarking Automated Program Repair Systems," ICST 2019. arXiv:1812.07283. https://arxiv.org/abs/1812.07283
+
+[98] M. Monperrus, "Automatic Software Repair: A Bibliography," *ACM Computing Surveys* 51(1), 2018. doi:10.1145/3105906
+
+[99] C. S. Xia, Y. Deng, S. Dunn and L. Zhang, "Agentless: Demystifying LLM-based Software Engineering Agents," 2024. arXiv:2407.01489. https://arxiv.org/abs/2407.01489
+
+[100] S. Kapoor, B. Stroebl, Z. S. Siegel, N. Nadgir and A. Narayanan, "AI Agents That Matter," 2024. arXiv:2407.01502. https://arxiv.org/abs/2407.01502
+
+[101] M. H. Erol, B. El, M. Suzgun, M. Yuksekgonul and J. Zou, "Cost-of-Pass: An Economic Framework for Evaluating Language Models," 2025. arXiv:2504.13359. https://arxiv.org/abs/2504.13359
+
+[102] D. Zan, Z. Huang, W. Liu et al., "Multi-SWE-bench: A Multilingual Benchmark for Issue Resolving," 2025. arXiv:2504.02605. https://arxiv.org/abs/2504.02605
+
+[103] R. Widyasari, S. Q. Sim, C. Lok et al., "BugsInPy: a database of existing bugs in Python programs to enable controlled testing and debugging studies," ESEC/FSE 2020. doi:10.1145/3368089.3417943
+
+[104] M. Allamanis, "The Adverse Effects of Code Duplication in Machine Learning Models of Code," Onward! 2019. arXiv:1812.06469. https://arxiv.org/abs/1812.06469
+
+[105] K. N. Khan, M. Hirki, T. Niemi, J. K. Nurminen and Z. Ou, "RAPL in Action: Experiences in Using RAPL for Power Measurements," *ACM TOMPECS* 3(2), 2018. doi:10.1145/3177754
+
+[106] The Rust project, rustfix and `cargo fix`. https://github.com/rust-lang/rustfix
+
+[107] R.-M. Karampatsis and C. Sutton, "How Often Do Single-Statement Bugs Occur? The ManySStuBs4J Dataset," MSR 2020. doi:10.1145/3379597.3387491
+
+[108] C. Richter and H. Wehrheim, "TSSB-3M: Mining single statement bugs at massive scale," MSR 2022. doi:10.1145/3524842.3528505
+
+[109] H. Coles, T. Laurent, C. Henard, M. Papadakis and A. Ventresque, "PIT: a practical mutation testing tool for Java," ISSTA 2016. doi:10.1145/2931037.2948707
+
+[110] R. Just, D. Jalali, L. Inozemtseva, M. D. Ernst, R. Holmes and G. Fraser, "Are mutants a valid substitute for real faults in software testing?" FSE 2014. doi:10.1145/2635868.2635929
+
+[111] I. J. Good, "Speculations Concerning the First Ultraintelligent Machine," *Advances in Computers* 6, 1965. doi:10.1016/S0065-2458(08)60418-0
+
+[112] J. Schmidhuber, "Gödel Machines: Fully Self-referential Optimal Universal Self-improvers," in *Artificial General Intelligence*, Springer, 2007. doi:10.1007/978-3-540-68677-4_7
+
+[113] E. Yudkowsky, "Intelligence Explosion Microeconomics," Technical report 2013-1, Machine Intelligence Research Institute, 2013. https://intelligence.org/files/IEM.pdf
+
+[114] M. H. Löb, "Solution of a Problem of Leon Henkin," *Journal of Symbolic Logic* 20(2), 1955. doi:10.2307/2266895
+
+[115] E. Yudkowsky and M. Herreshoff, "Tiling Agents for Self-Modifying AI, and the Löbian Obstacle," Machine Intelligence Research Institute, 2013. https://intelligence.org/files/TilingAgentsDraft.pdf
+
+[116] E. Zelikman, E. Lorch, L. Mackey and A. T. Kalai, "Self-Taught Optimizer (STOP): Recursively Self-Improving Code Generation," 2023. doi:10.48550/arXiv.2310.02304
+
+[117] J. Zhang, S. Hu, C. Lu, R. Lange and J. Clune, "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents," 2025. doi:10.48550/arXiv.2505.22954
+
+[118] A. Novikov et al., "AlphaEvolve: A coding agent for scientific and algorithmic discovery," 2025. doi:10.48550/arXiv.2506.13131
+
+[119] G. Wang, Y. Xie, Y. Jiang, A. Mandlekar, C. Xiao, Y. Zhu, L. Fan and A. Anandkumar, "Voyager: An Open-Ended Embodied Agent with Large Language Models," 2023. doi:10.48550/arXiv.2305.16291
+
+[120] Y. Futamura, "Partial Evaluation of Computation Process: An Approach to a Compiler-Compiler," *Higher-Order and Symbolic Computation* 12(4), 1999 (first published 1971). doi:10.1023/A:1010095604496
+
+[121] V. F. Turchin, "The Concept of a Supercompiler," *ACM Transactions on Programming Languages and Systems* 8(3), 1986. doi:10.1145/5956.5957
+
+[122] J. N. Foster, M. B. Greenwald, J. T. Moore, B. C. Pierce and A. Schmitt, "Combinators for Bidirectional Tree Transformations: A Linguistic Approach to the View-Update Problem," *ACM Transactions on Programming Languages and Systems* 29(3), 2007. doi:10.1145/1232420.1232424
+
+[123] M. Hofmann, B. Pierce and D. Wagner, "Symmetric Lenses," *POPL*, 2011. doi:10.1145/1926385.1926428
+
+[124] K. Czarnecki, J. N. Foster, Z. Hu, R. Lämmel, A. Schürr and J. F. Terwilliger, "Bidirectional Transformations: A Cross-Discipline Perspective," *ICMT*, LNCS 5563, 2009. doi:10.1007/978-3-642-02408-5_19
+
+[125] E. W. Dijkstra, "A Constructive Approach to the Problem of Program Correctness," *BIT* 8(3), 1968. doi:10.1007/BF01933419
+
+[126] A. Hall and R. Chapman, "Correctness by Construction: Developing a Commercial Secure System," *IEEE Software* 19(1), 2002. doi:10.1109/52.976937
+
+[127] Y. Minsky, "OCaml for the Masses," *Communications of the ACM* 54(11), 2011. doi:10.1145/2018396.2018413
+
+[128] D. A. Turner, "Total Functional Programming," *Journal of Universal Computer Science* 10(7), 2004. doi:10.3217/jucs-010-07-0751
+
+[129] R. Di Cosmo and S. Zacchiroli, "Software Heritage: Why and How to Preserve Software Source Code," iPRES 2017, Kyoto. https://hal.science/hal-01590958
+
+[130] Software Heritage, archive counters, read 13 October 2026: 30,253,266,524 file contents and 448,311,919 origins. https://archive.softwareheritage.org/api/1/stat/counters/
+
+[131] Rosetta Code, main page, read 13 October 2026: 1,360 tasks, 421 draft tasks, 1,009 known languages. https://rosettacode.org/wiki/Rosetta_Code
+
+[132] C. Casalnuovo, K. Lee, H. Wang, P. Devanbu and E. Morgan, "Do Programmers Prefer Predictable Expressions in Code?" *Cognitive Science* 44(12), 2020; preprint arXiv:1910.03704. https://arxiv.org/abs/1910.03704
+
+[133] N. Peitek, S. Apel, C. Parnin, A. Brechmann and J. Siegmund, "Program Comprehension and Code Complexity Metrics: An fMRI Study," ICSE 2021. https://www.se.cs.uni-saarland.de/publications/docs/PAP+21.pdf
+
+[134] S. Scalabrino, G. Bavota, C. Vendome, M. Linares-Vásquez, D. Poshyvanyk and R. Oliveto, "Automatically Assessing Code Understandability," *IEEE Transactions on Software Engineering* 47(3), 2021. https://www.cs.wm.edu/~denys/pubs/TSE'19-Understandability.pdf
+
+[135] N. Peitek, J. Siegmund, C. Parnin, S. Apel and A. Brechmann, "Beyond Gaze: Preliminary Analysis of Pupil Dilation and Blink Rates in an fMRI Study of Program Comprehension," and the companion layout study, 2017. https://www.se.cs.uni-saarland.de/publications/docs/SPP+17.pdf
+
+[136] "The Hidden Cost of Readability: How Code Formatting Silently Consumes Your LLM Budget," arXiv:2508.13666, August 2025; ICSE 2026. https://arxiv.org/abs/2508.13666
+
+[137] D. G. Feitelson, A. Mizrahi, N. Noy, A. Ben Shabat, O. Eliyahu and R. Sheffer, "How Developers Choose Names," *IEEE Transactions on Software Engineering* 48(1), 2022; preprint arXiv:2103.07487. https://arxiv.org/abs/2103.07487
+
+[138] F. Wen, C. Nagy, G. Bavota and M. Lanza, "A Large-Scale Empirical Study on Code-Comment Inconsistencies," ICPC 2019. https://www.inf.usi.ch/faculty/lanza/PUBS/P/Wen2019a.pdf
+
+[139] "When Names Disappear: Revealing What LLMs Actually Understand About Code," arXiv:2510.03178, October 2025. https://arxiv.org/abs/2510.03178
+
+[140] A. A. Ivanova, S. Srikant, Y. Sueoka, H. H. Kean, R. Dhamala, U.-M. O'Reilly, M. U. Bers and E. Fedorenko, "Comprehension of Computer Code Relies Primarily on Domain-General Executive Brain Regions," *eLife* 9, 2020. doi:10.7554/eLife.58906
+
+[141] H. G. Rice, "Classes of Recursively Enumerable Sets and Their Decision Problems," *Transactions of the American Mathematical Society* 74, 1953. doi:10.1090/S0002-9947-1953-0053041-6
+
+[142] O. Danvy and K. Millikin, "Refunctionalization at Work," BRICS RS-08-4, 2008; *Science of Computer Programming* 74(8), 2009. https://www.brics.dk/RS/08/4/
+
+[143] M. S. Ager, D. Biernacki, O. Danvy and J. Midtgaard, "A Functional Correspondence between Evaluators and Abstract Machines," PPDP 2003. doi:10.1145/888251.888254
+
+[144] J. J. M. M. Rutten, "Universal Coalgebra: A Theory of Systems," *Theoretical Computer Science* 249(1), 2000. doi:10.1016/S0304-3975(00)00056-6
+
+[145] J. W. de Bakker and J. I. Zucker, "Processes and the Denotational Semantics of Concurrency," *Information and Control* 54(1-2), 1982. doi:10.1016/S0019-9958(82)91013-8
+
+[146] C. P. Pfleeger, "State Reduction in Incompletely Specified Finite-State Machines," *IEEE Transactions on Computers* C-22(12), 1973. doi:10.1109/T-C.1973.223591
+
+[147] A. Nerode, "Linear Automaton Transformations," *Proceedings of the American Mathematical Society* 9(4), 1958. doi:10.2307/2033204
+
+[148] J. Hopcroft, "An n log n Algorithm for Minimizing States in a Finite Automaton," in *Theory of Machines and Computations*, Academic Press, 1971. doi:10.1016/B978-0-12-417750-5.50022-1
+
+[149] L. D'Antoni and M. Veanes, "Minimization of Symbolic Automata," POPL 2014. doi:10.1145/2535838.2535849
+
+[150] R. Reis, N. Moreira and M. Almeida, "On the Representation of Finite Automata," DCFS 2005. https://www.dcc.fc.up.pt/~nam/resources/publica/dcfsrma05.pdf
+
+[151] M. Bojańczyk, B. Klin and S. Lasota, "Automata with Group Actions," LICS 2011. doi:10.1109/LICS.2011.48
+
+[152] J. Lee et al., "A Linear Energy Model for Cortex-M0 Class Cores from Six Hardware Counters," arXiv:2104.01055, 2021. https://arxiv.org/abs/2104.01055
+
+[153] N. van Kempen, H. Kwon, D. T. Nguyen and E. D. Berger, "It's Not Easy Being Green: On the Energy Efficiency of Programming Languages," arXiv:2410.05460v4, 2025. https://arxiv.org/abs/2410.05460
+
+
+[154] Dauner et al., "Stale Reads: Sampling Hazards of On-Chip Energy Counters," HotCarbon 2026. https://hotcarbon.org/assets/2026/paper-46.pdf
+
+[155] Z. Yang et al., "Part-Time Power Measurements: nvidia-smi's Lack of Attention," arXiv:2312.02741v3, 2024. https://arxiv.org/abs/2312.02741
+
+[156] D. Perez and B. Livshits, "Broken Metre: Attacking Resource Metering in EVM," NDSS 2020; arXiv:1909.07220. https://arxiv.org/abs/1909.07220
+
+[157] S. Smolka, N. Foster, J. Hsu, T. Kappé, D. Kozen and A. Silva, "Guarded Kleene Algebra with Tests: Verification of Uninterpreted Programs in Nearly Linear Time," POPL 2020. doi:10.1145/3371129
+
+[158] Y. Sun, Y. Zhang and Z. Ni, "E-Graph Extraction with DAG Cost Is NP-Hard and Inapproximable," arXiv:2408.17042, 2024. https://arxiv.org/abs/2408.17042
+
+[159] Unison Computing, "The Big Idea," Unison language documentation; and "A New Update Process," 20 October 2023. https://www.unison-lang.org/docs/the-big-idea/
+
+[160] Dhall language standard, "Binary Semantics and Semantic Integrity Checks," `binary.md`. https://github.com/dhall-lang/dhall-lang/blob/master/standard/binary.md
+
+[161] Tweag, "Towards a Content-Addressed Model for Nix," 10 September 2020, and "Self-References in a Content-Addressed Nix," 18 November 2020. https://www.tweag.io/blog/2020-09-10-nix-cas/
+
+
+[162] "SpecRL: Measuring Specification Completeness for Verified Program Synthesis," arXiv:2604.05820, 2026. https://arxiv.org/abs/2604.05820
+
+[163] J. Koppel, Z. Guo, E. de Vries and A. Solar-Lezama, "Searching Entangled Program Spaces," ICFP 2022. doi:10.1145/3547622
+
+[164] M. Erol et al., "Cost-of-Pass: An Economic Framework for Evaluating Language Models," arXiv:2504.13359, 2025. https://arxiv.org/abs/2504.13359
+
+[165] F. Cassano, J. Gouwar, F. Lucchetti, C. Schlesinger, A. Freeman, C. J. Anderson, M. Q. Feldman, M. Greenberg, A. Jangda and A. Guha, "Knowledge Transfer from High-Resource to Low-Resource Programming Languages for Code LLMs," OOPSLA 2024. doi:10.1145/3689735
+
+[166] agentlanguages.dev, catalogue of agent-oriented programming languages, read 19 October 2026 (42 entries). https://agentlanguages.dev
+
+[167] WebAssembly Community Group, "SpecTec Has Been Adopted," 27 March 2025; D. Youn et al., "Bringing the WebAssembly Standard up to Speed with SpecTec," PLDI 2024. https://webassembly.org/news/2025-03-27-spectec/
+
+[168] D. Monniaux and S. Boulmé, "The Trusted Computing Base of the CompCert Verified Compiler," ESOP 2022. https://arxiv.org/abs/2201.10280
+
+[169] G. Klein, J. Andronick, K. Elphinstone, T. Murray, T. Sewell, R. Kolanski and G. Heiser, "Comprehensive Formal Verification of an OS Microkernel," *ACM Transactions on Computer Systems* 32(1), 2014; cost figures from NICTA technical report 4180. https://www.trustworthy.systems/publications/nicta_full_text/4180.pdf
+
+[170] S. Lu, S. Park, E. Seo and Y. Zhou, "Learning from Mistakes: A Comprehensive Study on Real World Concurrency Bug Characteristics," ASPLOS 2008. doi:10.1145/1346281.1346323
+
+[171] R. Haas, R. Niedermayr, T. Röhm and S. Apel, "Is Static Analysis Able to Identify Unnecessary Source Code?" *ACM Transactions on Software Engineering and Methodology* 29(1), 2020. doi:10.1145/3368267
+
+[172] N. Nagappan, B. Murphy and V. Basili, "The Influence of Organizational Structure on Software Quality: An Empirical Case Study," ICSE 2008. doi:10.1145/1368088.1368160
+
+[173] "An Empirical Study of Go's Language Proposal Process," arXiv:2510.06984, October 2025 (1,095 proposals; 448 declined, 337 accepted). https://arxiv.org/abs/2510.06984
+
+[174] Z. R. Tam, C.-K. Wu, Y.-L. Tsai, C.-Y. Lin, H. Lee and Y.-N. Chen, "Let Me Speak Freely? A Study on the Impact of Format Restrictions on Performance of Large Language Models," EMNLP Industry 2024; arXiv:2408.02442. https://arxiv.org/abs/2408.02442
+
+[175] B. Stroustrup, "Thriving in a Crowded and Changing World: C++ 2006-2020," HOPL IV, *Proceedings of the ACM on Programming Languages* 4(HOPL), 2020. doi:10.1145/3386320
+
+[176] F. Mancinelli, J. Boender, R. Di Cosmo, J. Vouillon, B. Durak, X. Leroy and R. Treinen, "Managing the Complexity of Large Free and Open Source Package-Based Software Distributions," ASE 2006, pp. 199-208. doi:10.1109/ASE.2006.49
+
+[177] P. Abate, R. Di Cosmo, G. Gousios and S. Zacchiroli, "Dependency Solving Is Still Hard, but We Are Getting Better at It," SANER 2020, pp. 547-551. doi:10.1109/SANER48275.2020.9054837
+
+[178] R. Cox, "Version SAT," research!rsc, 13 December 2016. https://research.swtch.com/version-sat
+
+[179] S. Raemaekers, A. van Deursen and J. Visser, "Semantic versioning and impact of breaking changes in the Maven repository," *Journal of Systems and Software* 129:140-158, 2017. doi:10.1016/j.jss.2016.04.008
+
+[180] L. Ochoa, T. Degueule, J.-R. Falleri and J. Vinju, "Breaking bad? Semantic versioning and impact of breaking changes in Maven Central," *Empirical Software Engineering* 27:61, 2022. doi:10.1007/s10664-021-10052-y
+
+[181] T. Winters, T. Manshreck and H. Wright (eds.), *Software Engineering at Google*, chapter 21, O'Reilly, 2020. https://abseil.io/resources/swe-book/html/ch21.html
+
+[182] J. Wetter and N. Ringland, "Understanding the Impact of Apache Log4j Vulnerability," Google Open Source Insights, 17 December 2021. https://blog.deps.dev/log4j/
+
+[183] E. Dolstra, *The Purely Functional Software Deployment Model*, PhD thesis, Utrecht University, 2006. https://edolstra.github.io/pubs/phd-thesis.pdf
+
+[184] R. Di Cosmo, M. Gruenpeter and S. Zacchiroli, "Referencing Source Code Artifacts: a Separate Concern in Software Citation," *Computing in Science & Engineering* 22(2):33-43, 2020. doi:10.1109/MCSE.2019.2963148
+
+[185] R. Hickey, "Spec-ulation," keynote, Clojure/conj, December 2016. Transcript: https://github.com/matthiasn/talk-transcripts/blob/master/Hickey_Rich/Spec_ulation.md
+
+[186] B. Godlin and O. Strichman, "Regression verification," DAC 2009, pp. 466-471. doi:10.1145/1629911.1630034
+
+[187] J. Baumgartner, H. Mony, V. Paruthi, R. Kanzelman and G. Janssen, "Scalable Sequential Equivalence Checking across Arbitrary Design Transformations," ICCD 2006. https://research.ibm.com/publications/scalable-sequential-equivalence-checking-across-arbitrary-design-transformations
+
+[188] C. Lamb and S. Zacchiroli, "Reproducible Builds: Increasing the Integrity of Software Supply Chains," *IEEE Software* 39(2):62-70, 2022. doi:10.1109/MS.2021.3073045
+
+[189] Open Interface Engineering, "Languages for or by machine authors, January 2024 to October 2026," working note 5 of the survey of 24 October 2026, `rce/surveys/2026-10-24/notes/languages_for_machine_authors.md`, openIE-dev/openie-research-experiments. https://github.com/openIE-dev/openie-research-experiments
+
+[190] Open Interface Engineering, "New general-purpose and systems languages, January 2024 to October 2026," working note 6 of the survey of 24 October 2026, `rce/surveys/2026-10-24/notes/new_general_purpose_languages.md`, openIE-dev/openie-research-experiments. https://github.com/openIE-dev/openie-research-experiments
+
+[191] W. van Oortmerssen, Goose: a memory-safe systems language with no heap allocator, garbage collector, or lifetime annotations, repository, 2026. https://github.com/aardappel/goose
+
+[192] dawnop, Dawn: a small functional language with effects in the type signature and content-addressed packages, repository, 2026. https://github.com/dawnop/dawn-lang
+
+[193] Open Interface Engineering, "Batteries included or specification and free: what the record says, and one Form on every compute fabric," synthesis of the survey of 24 October 2026, with working notes 7 to 18 and the proposal `spec/proposals/one-library-every-fabric.md` of openIE-dev/rce. https://github.com/openIE-dev/openie-research-experiments/blob/main/rce/surveys/2026-10-24/batteries-specification-and-fabrics.md
+
+[194] C. Heimes and B. Cannon, "PEP 594: Removing dead batteries from the standard library," Python Enhancement Proposals, 2019. https://peps.python.org/pep-0594/
+
+[195] Rust project, "RFC 1242: Policy for rust-lang crates," 2015. https://rust-lang.github.io/rfcs/1242-rust-lang-crates.html
+
+[196] A. Decan, T. Mens and P. Grosjean, "An empirical comparison of dependency network evolution in seven software packaging ecosystems," Empirical Software Engineering 24, 2019. https://doi.org/10.1007/s10664-017-9589-y
+
+[197] N. Seriot, "Parsing JSON is a Minefield," 2016. https://seriot.ch/projects/parsing_json.html
+
+[198] J. H. Davis, P. Sivaraman, J. Kitson, K. Parasyris, H. Menon, I. Minn, G. Georgakoudis and A. Bhatele, "Taking GPU Programming Models to Task for Performance Portability," Proc. ICS 2025. https://doi.org/10.1145/3721145.3730423
+
+[199] C. Weckert, L. Solis-Vasquez, J. Oppermann, A. Koch and O. Sinnen, "Altis-SYCL: Migrating Altis Benchmarking Suite from CUDA to SYCL for GPUs and FPGAs," SC '23 Workshops, 2023. https://doi.org/10.1145/3624062.3624542
+
+[200] T. Bourgeat, C. Pit-Claudel, A. Chlipala and Arvind, "The essence of Bluespec: a core language for rule-based hardware design," Proc. PLDI 2020. https://doi.org/10.1145/3385412.3385965
+
+[201] A. Haas, A. Rossberg, D. L. Schuff, B. L. Titzer, M. Holman, D. Gohman, L. Wagner, A. Zakai and J. F. Bastien, "Bringing the Web up to Speed with WebAssembly," Proc. PLDI 2017. https://doi.org/10.1145/3062341.3062363
+
+[202] A. Arteaga, O. Fuhrer and T. Hoefler, "Designing Bit-Reproducible Portable High-Performance Applications," Proc. IPDPS 2014. https://doi.org/10.1109/IPDPS.2014.127
+
+[203] D. Lustig, S. Sahasrabuddhe and O. Giroux, "A Formal Analysis of the NVIDIA PTX Memory Consistency Model," Proc. ASPLOS 2019. https://doi.org/10.1145/3297858.3304043
+
+[204] StarPU project, StarPU Handbook: performance models and simulation with SimGrid, Inria. https://files.inria.fr/starpu/doc/html/
+
+[205] J. Spracklen, R. Wijewickrama, A. H. M. N. Sakib, A. Maiti, B. Viswanath and M. Jadliwala, "We Have a Package for You! A Comprehensive Analysis of Package Hallucinations by Code Generating LLMs," Proc. USENIX Security 2025.

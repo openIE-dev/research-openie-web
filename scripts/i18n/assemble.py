@@ -15,6 +15,7 @@ ref_i = next(i for i, (_, s) in enumerate(en_heads) if s == 'references')
 rm = re.search(r'^## References\s*$', en, re.M); nx = re.search(r'^## ', en[rm.end():], re.M)
 refs = en[rm.end():rm.end() + nx.start()] if nx else en[rm.end():]
 refs = refs.rstrip() + '\n'
+refs = refs.replace('\u2014', '-').replace('\u2013', '-').replace('\u2212', '-')
 body = open(bodyf).read()
 out, k = [], 0
 for line in body.split('\n'):
