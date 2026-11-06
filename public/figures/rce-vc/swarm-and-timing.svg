@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 640" width="980" height="640" font-family="Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">Measured admission paths and wall time for the RCE-VC reference build</title>
+  <desc id="d">Left: shares of 1,280 submissions at 400 units. 57.0 percent accepted at G1, 27.3 percent at G2 then G3, 13.8 percent at G2 then G4 then G3, 1.9 percent refused. Right: wall time per submission. At 400 units, 2,103 microseconds for cloned maps and 98 for persistent state. At 4,000 units, 27,536 and 105. At 40,000 units, cloned maps not run and persistent state 136. At 100,000 units, cloned maps not run and persistent state 188. Release build, one core. Not joules.</desc>
+  <rect width="980" height="640" fill="#ffffff"/>
+  <text x="32" y="40" font-size="20" font-weight="700" fill="#1f2328">Measured on the reference build</text>
+  <text x="32" y="64" font-size="13" fill="#59636e">Release, one core. Wall time and path counts. Receipt costs are a stated table and are not drawn here.</text>
+
+  <text x="32" y="108" font-size="15" font-weight="700" fill="#1f2328">Admission path, 400 units</text>
+  <text x="32" y="128" font-size="12" fill="#59636e">64 writers, 20 rounds, 1,280 submissions. Notes: cloned-map configuration.</text>
+
+  <text x="32" y="168" font-size="13" fill="#1f2328">G1 commute</text>
+  <rect x="168" y="154" width="285" height="18" fill="#1f4e79"/>
+  <text x="460" y="168" font-size="13" fill="#1f2328">57.0%</text>
+
+  <text x="32" y="204" font-size="13" fill="#1f2328">G2 then G3</text>
+  <rect x="168" y="190" width="136" height="18" fill="#2a78d6"/>
+  <text x="312" y="204" font-size="13" fill="#1f2328">27.3%</text>
+
+  <text x="32" y="240" font-size="13" fill="#1f2328">G2, G4, G3</text>
+  <rect x="168" y="226" width="69" height="18" fill="#c47b00"/>
+  <text x="244" y="240" font-size="13" fill="#1f2328">13.8%</text>
+
+  <text x="32" y="276" font-size="13" fill="#1f2328">Refused</text>
+  <rect x="168" y="262" width="12" height="18" fill="#6b7280"/>
+  <text x="188" y="276" font-size="13" fill="#1f2328">1.9%</text>
+
+  <text x="32" y="318" font-size="12" fill="#59636e">Refusals were the poisoned changes, including 6 proposer outputs.</text>
+  <text x="32" y="338" font-size="12" fill="#59636e">1,259 submissions were on a stale base. 98.1% of those were admitted</text>
+  <text x="32" y="356" font-size="12" fill="#59636e">with no writer rebase. 182 proposer calls. Replay matched the head.</text>
+
+  <line x1="500" y1="100" x2="500" y2="580" stroke="#e5e7eb"/>
+
+  <text x="528" y="108" font-size="15" font-weight="700" fill="#1f2328">Wall time per submission</text>
+  <text x="528" y="128" font-size="12" fill="#59636e">64 writers, 5 rounds, same seed. Microseconds.</text>
+
+  <rect x="528" y="150" width="420" height="28" fill="#f6f8fa"/>
+  <text x="540" y="169" font-size="12" font-weight="700" fill="#1f2328">Units</text>
+  <text x="640" y="169" font-size="12" font-weight="700" fill="#1f2328">M0 cloned maps</text>
+  <text x="790" y="169" font-size="12" font-weight="700" fill="#1f2328">M1 persistent</text>
+
+  <text x="540" y="206" font-size="14" fill="#1f2328">400</text>
+  <text x="640" y="206" font-size="14" fill="#1f2328">2,103 탎</text>
+  <text x="790" y="206" font-size="14" fill="#1f2328">98 탎</text>
+
+  <rect x="528" y="218" width="420" height="26" fill="#f6f8fa"/>
+  <text x="540" y="236" font-size="14" fill="#1f2328">4,000</text>
+  <text x="640" y="236" font-size="14" fill="#1f2328">27,536 탎</text>
+  <text x="790" y="236" font-size="14" fill="#1f2328">105 탎</text>
+
+  <text x="540" y="270" font-size="14" fill="#1f2328">40,000</text>
+  <text x="640" y="270" font-size="14" fill="#1f2328">not run</text>
+  <text x="790" y="270" font-size="14" fill="#1f2328">136 탎</text>
+
+  <rect x="528" y="282" width="420" height="26" fill="#f6f8fa"/>
+  <text x="540" y="300" font-size="14" fill="#1f2328">100,000</text>
+  <text x="640" y="300" font-size="14" fill="#1f2328">not run</text>
+  <text x="790" y="300" font-size="14" fill="#1f2328">188 탎</text>
+
+  <text x="528" y="348" font-size="12" fill="#59636e">The example stores 10 units in each module.</text>
+  <text x="528" y="368" font-size="12" fill="#59636e">Those rows are 40, 400, 4,000 and 10,000 modules.</text>
+  <text x="528" y="396" font-size="12" fill="#59636e">From the two columns that both ran: 21 times at</text>
+  <text x="528" y="414" font-size="12" fill="#59636e">400 units, and 262 times at 4,000 units.</text>
+  <text x="528" y="442" font-size="12" fill="#59636e">M0 is the earlier cloned-map state reported for</text>
+  <text x="528" y="460" font-size="12" fill="#59636e">this comparison. This commit is the M1 state.</text>
+
+  <text x="32" y="600" font-size="12" fill="#59636e">Source of the numbers: the reference README for openIE-dev/rce-vc at 8bf9c9af, release build, one core.</text>
+  <text x="32" y="620" font-size="12" fill="#59636e">No joules were measured. The receipt field est_uj is a stated cost table, kept off this figure.</text>
+</svg>
