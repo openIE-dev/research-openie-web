@@ -207,6 +207,20 @@
       "files": [
         "src/components/RceJepaProposer.astro"
       ]
+    },
+    {
+      "id": "rce-vc-law-of-version-control",
+      "status": "author-proposal",
+      "pattern": "Law of Version Control",
+      "note": "Name of the RCE-VC statement. The page quotes the statement once, reports the reference tests and the measured wall times, and does not claim that existing version-control tools already follow it.",
+      "files": [
+        "src/content/papers/rce-vc.md",
+        "src/pages/papers/rce-vc.astro",
+        "src/pages/about/rce-vc.astro",
+        "src/pages/glossary.astro",
+        "src/data/studies.json",
+        "src/pages/changelog.astro"
+      ]
     }
   ]
 }

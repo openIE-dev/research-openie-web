@@ -142,6 +142,28 @@
       ]
     },
     {
+      "id": "rce-vc",
+      "title": "RCE-VC: Law of Version Control",
+      "short_title": "RCE-VC",
+      "kind": "Research study",
+      "group": "research",
+      "url": "https://research.openie.dev/papers/rce-vc/",
+      "pdf": "https://research.openie.dev/pdfs/rce-vc.pdf",
+      "figures": "/figures/rce-vc/swarm-and-timing.svg",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "A reference for the Law of Version Control: each change is admitted to one name-free repository state or refused with a recorded reason, and Git stays usable. Milestones M0 to M2 are in openIE-dev/rce-vc at commit 8bf9c9af. On that build, one core admitted a submission against 100,000 units in 188 microseconds. Receipt costs are a stated table. No joules were measured. The reference is not the Reality Code Engine language. Plain words: a named check admits or a written reason refuses; changes that do not overlap need no coordination; a writer can stay on Git.",
+      "about": "https://research.openie.dev/about/rce-vc/",
+      "keywords": [
+        "Law of Version Control",
+        "RCE-VC",
+        "version control",
+        "name-free keys",
+        "Git projection",
+        "admission",
+        "stated cost"
+      ]
+    },
+    {
       "id": "game-engines",
       "title": "Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins",
       "short_title": "Writing a Game Once",

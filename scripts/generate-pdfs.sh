@@ -189,6 +189,13 @@ elif id_ == "rce-jepa":
         "No learned proposer has been trained; the Phase 0 results are checker-only measurements with 0 model calls. No joules were measured.\n"
         "</div>\n"
     )
+elif id_ == "rce-vc":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
+        "Wall-clock times and admission-path shares were measured on the reference build (release, one core). Receipt costs are the stated est_uj table, in microjoules, not a meter reading. No joules were measured. No FPGA board result.\n"
+        "</div>\n"
+    )
 elif id_ == "rce-compile":
     measure = (
         '<div class="measurement">\n'
@@ -305,6 +312,7 @@ gen_one spellcheck
 gen_one rce
 gen_one rce-jepa
 gen_one rce-compile
+gen_one rce-vc
 gen_one three-body
 gen_one game-engines
 gen_one latency
