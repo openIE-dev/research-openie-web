@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Build, test, and lint only. This workflow must not deploy.
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Unit tests
+        run: pnpm test:guard
+
+      - name: Lint claims and private paths
+        run: |
+          pnpm lint:claims
+          pnpm lint:private
+
+      - name: Install Chrome for PDF reprint
+        uses: browser-actions/setup-chrome@v1
+        id: chrome
+
+      # ubuntu-latest blocks unprivileged user namespaces, so the Chromium
+      # snapshot above aborts with "No usable sandbox" before it can print.
+      # Lift that restriction for this job so the printer's own sandbox runs.
+      - name: Allow the Chrome sandbox to start
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
+      - name: Build
+        run: pnpm build
+        env:
+          CHROME: ${{ steps.chrome.outputs.chrome-path }}
+
+      - name: Check internal links
+        run: node scripts/check-internal-links.mjs
