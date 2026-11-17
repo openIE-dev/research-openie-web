@@ -1,0 +1,56 @@
+{
+ "ran": true,
+ "adapter": {
+  "vendor": "google",
+  "architecture": "swiftshader",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.8103.78 Safari/537.36",
+ "cells": 2097152,
+ "mismatches": 0,
+ "first": null,
+ "runs": [
+  {
+   "seed": 1,
+   "W": 1024,
+   "H": 512,
+   "mismatches": 0,
+   "gpuMs": 128,
+   "referenceMs": 137
+  },
+  {
+   "seed": 7,
+   "W": 1024,
+   "H": 512,
+   "mismatches": 0,
+   "gpuMs": 136,
+   "referenceMs": 138
+  },
+  {
+   "seed": 1234,
+   "W": 1024,
+   "H": 512,
+   "mismatches": 0,
+   "gpuMs": 134,
+   "referenceMs": 115
+  },
+  {
+   "seed": 99991,
+   "W": 1024,
+   "H": 512,
+   "mismatches": 0,
+   "gpuMs": 142,
+   "referenceMs": 146
+  }
+ ],
+ "mutationCheck": {
+  "change": "mix32 constant 0x846ca68b -> 0x846ca68a",
+  "cells": 524288,
+  "mismatches": 524276,
+  "detected": true
+ },
+ "generated": "2026-11-17T23:18:55.191Z",
+ "browser": "Chromium (Playwright), headless, --enable-unsafe-webgpu",
+ "note": "One adapter only. PL-H1 asks for three GPU vendors and three browsers; this file is one data point."
+}

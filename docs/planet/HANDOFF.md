@@ -41,3 +41,43 @@ vendor `google`, architecture `swiftshader`.
 access to publisher hosts.
 
 **Next.** PLN-011: exact core in `public/living/planet/core.js`.
+
+## 2026-11-17 · entry 2 · exact core, tests, GPU parity
+
+**Done.** PLN-011 to PLN-014.
+- `public/living/planet/core.js`: integer generator (five-octave value noise,
+  `mix32` hash), material ids and an element composition table (ppm from
+  mineral formulae and standard atomic weights, illustrative modal mixes),
+  a toy weather and water step in flux form, edits with a checker, replay,
+  state hash, totals, divergence. 192 x 96 cells.
+- Design change while building: the first step damped every perturbation
+  (heat only diffused). Two couplings were added so the toy can show the
+  butterfly effect: cooling with altitude (ground affects heat) and air that
+  carries its heat as well as its vapour (the wind depends on the heat it
+  moves). Both are in the step, commented.
+- `scripts/planet/test-core.mjs` and `scripts/planet/gpu-parity.mjs`.
+
+**Measured (run here, Node 22 on Linux x64; Chromium headless).**
+- Determinism: 4 seeds x 1,000 ticks with fuzzed edit logs, identical hashes
+  at every tick; replay from seed and log reproduces the final hash.
+- Conservation (PL-H6 on the toy): ground + inventory and water + vapour +
+  inventory unchanged at every tick; inadmissible edits refused (35 to 54 per
+  seed) and change nothing.
+- Divergence (PL-H3, PL-H4): one unit dug at one cell after 200 ticks, 12
+  trials per seed, followed 800 ticks. 20 of 48 trials spread to half the map,
+  22 stayed within 10 cells. Median doubling times per seed: 392 ticks (seed
+  1, a dry planet with about a tenth of the others' water), 26.4 (seed 7),
+  23.65 (seed 1234), 24.96 (seed 99991). Max over min of the medians is about
+  16, so **PL-H4 as stated is killed on the toy**. Without the dry seed the
+  medians agree within 1.12x: chaos in this toy needs water. PLN-017 records
+  the refined hypothesis; do not edit PL-H4 in place.
+- GPU parity (PL-H1, one device): WGSL integer generator vs `core.js` over
+  4 seeds x 1024 x 512 = 2,097,152 cells, 0 mismatches. Adapter: vendor
+  `google`, architecture `swiftshader` (software, on the CPU). Mutation check:
+  changing one hash constant by one bit gives 524,276 mismatches of 524,288,
+  so the comparison can fail.
+
+**Not done.** PL-H1 on real GPUs from three vendors and three browsers
+(PLN-021). PL-H2 not runnable on one device.
+
+**Next.** PLN-015: the living figure page `public/living/planet/index.html`.

@@ -16,13 +16,14 @@ Hypothesis IDs refer to Section 7 of `src/content/papers/planet.md`.
 
 | ID | Task | Status | Depends | Acceptance | Hypothesis | Evidence |
 |---|---|---|---|---|---|---|
-| PLN-010 | Blueprint, tracker, hand-off ledger | doing | — | Three files under `docs/planet/` | — | |
-| PLN-011 | Exact core: generator, composition table, step, edits, hash, replay | todo | PLN-010 | Pure ES module; runs in Node and browser | — | |
-| PLN-012 | Core tests | todo | PLN-011 | Determinism, replay, conservation, divergence, doubling fit; results JSON | PL-H3, PL-H4, PL-H6 | |
-| PLN-013 | WGSL generator and parity check | todo | PLN-011 | `checkParity()` returns mismatch count and adapter info | PL-H1 | |
-| PLN-014 | GPU parity run in headless Chromium | todo | PLN-013 | Results JSON naming the adapter actually used | PL-H1 (one device) | |
-| PLN-015 | Living figure page | todo | PLN-011, PLN-013 | Two branches, difference map, divergence chart, replay check, inspector, parity panel; works without WebGPU | — | |
+| PLN-010 | Blueprint, tracker, hand-off ledger | done | — | Three files under `docs/planet/` | — | `d2c0636` |
+| PLN-011 | Exact core: generator, composition table, step, edits, hash, replay | done | PLN-010 | Pure ES module; runs in Node and browser | — | `public/living/planet/core.js` |
+| PLN-012 | Core tests | done | PLN-011 | Determinism, replay, conservation, divergence, doubling fit; results JSON | PL-H3, PL-H4, PL-H6 | `scripts/planet/test-core.mjs`; `docs/planet/results/core.json` (PL-H3 and PL-H6 hold on the toy; PL-H4 killed as stated, see ledger entry 2) |
+| PLN-013 | WGSL generator and parity check | done | PLN-011 | `checkParity()` returns mismatch count and adapter info | PL-H1 | `public/living/planet/gpu.js` (with a mutation check) |
+| PLN-014 | GPU parity run in headless Chromium | done | PLN-013 | Results JSON naming the adapter actually used | PL-H1 (one device) | `scripts/planet/gpu-parity.mjs`; `docs/planet/results/gpu-parity.json` (0 of 2,097,152 cells differ on SwiftShader) |
+| PLN-015 | Living figure page | doing | PLN-011, PLN-013 | Two branches, difference map, divergence chart, replay check, inspector, parity panel; works without WebGPU | — | |
 | PLN-016 | Link the figure from the hub and the study | todo | PLN-015 | Hub card; study Section 3 link; `pnpm build` passes | — | |
+| PLN-017 | Pre-register the refined divergence hypothesis (wet planets only) and report the PL-H4 result in the study | todo | PLN-012 | New row in study Section 7 with the toy's numbers, labelled as a toy | PL-H4 | |
 
 ## M2. Reference and scale
 
