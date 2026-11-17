@@ -1,0 +1,22 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/planet.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description="Can a game let players reach every place on and inside a whole planet, down to the elements in its rocks? Only if the planet is computed on demand from a seed and an edit log, never stored, and only the ground near players is simulated."
+  headings={headings}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Research study · architecture and test plan"
+>
+  <Content />
+</PaperLayout>
