@@ -239,7 +239,7 @@ elif id_ == "planet":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
-        "Nothing was built or run. The numbers are arithmetic from stated inputs (Sections 2 to 4). Apart from the WebGPU and WGSL specifications, every external source was seen only as a search result; Section 10 says how each was checked.\n"
+        "The planet was not built. The numbers in Sections 2 to 4 are arithmetic from stated inputs; Section 7.1 reports runs of a toy core in Node and headless Chromium on one machine, with no GPU hardware. Apart from the WebGPU and WGSL specifications, every external source was seen only as a search result; Section 10 says how each was checked.\n"
         "No energy and no hardware result is claimed. No fabricated citations.\n"
         "</div>\n"
     )

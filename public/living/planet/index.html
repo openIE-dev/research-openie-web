@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Living · Planet butterfly: two branches of one exact world</title>
+<link rel="stylesheet" href="../css/living.css"/>
+<style>
+  .maps { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 860px) { .maps { grid-template-columns: 1fr; } }
+  .panel { background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px; padding: 0.85rem 1rem; min-width: 0; }
+  .panel h3 { font-family: var(--mono); font-size: 0.9rem; color: var(--accent); margin: 0 0 0.5rem; }
+  canvas.map { width: 100%; aspect-ratio: 2 / 1; display: block; image-rendering: pixelated; border-radius: 6px; border: 1px solid var(--border); cursor: crosshair; background: #020617; }
+  canvas.chart { width: 100%; height: 180px; display: block; border-radius: 6px; border: 1px solid var(--border); background: #020617; }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.5rem 0.9rem; align-items: center; margin: 0.75rem 0; font-family: var(--mono); font-size: 0.82rem; }
+  .controls label { color: var(--muted); display: inline-flex; gap: 0.35rem; align-items: center; }
+  .controls input, .controls select { font-family: var(--mono); font-size: 0.82rem; background: var(--bg-card); color: var(--text); border: 1px solid var(--border); border-radius: 5px; padding: 0.3rem 0.4rem; }
+  .controls input[type=number] { width: 6.5rem; }
+  button.run { font-family: var(--mono); background: #134e4a; color: var(--accent); border: 1px solid #2dd4bf; border-radius: 6px; padding: 0.4rem 0.8rem; cursor: pointer; font-size: 0.82rem; }
+  button.run:hover { background: #115e59; }
+  button.run.secondary { background: transparent; color: var(--text); border-color: var(--border); }
+  .metrics { font-family: var(--mono); font-size: 0.78rem; line-height: 1.6; display: grid; grid-template-columns: auto 1fr; gap: 0.1rem 0.8rem; }
+  .metrics dt { color: var(--muted); }
+  .metrics dd { margin: 0; color: #f1f5f9; word-break: break-all; }
+  .ok { color: var(--allow); font-weight: 600; }
+  .bad { color: var(--refuse); font-weight: 600; }
+  .status { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); min-height: 1.2em; margin-top: 0.4rem; }
+  .limits { font-size: 0.88rem; color: var(--muted); border-left: 3px solid var(--warn); padding: 0.65rem 0.9rem; margin: 1rem 0; background: #1c1917; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+  @media (max-width: 1000px) { .grid3 { grid-template-columns: 1fr; } }
+  table.el { font-family: var(--mono); font-size: 0.76rem; border-collapse: collapse; width: 100%; }
+  table.el td { padding: 0.15rem 0.3rem; border-bottom: 1px solid #1e293b; }
+  table.el td.num { text-align: right; }
+  ol.log { font-family: var(--mono); font-size: 0.74rem; color: var(--text); margin: 0; padding-left: 1.4rem; max-height: 9rem; overflow: auto; }
+  .legend { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); margin-top: 0.35rem; }
+  .explain p { margin: 0.4rem 0; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <div class="brand">Planet · butterfly</div>
+    <nav class="nav">
+      <a href="../index.html">Hub</a>
+      <a href="index.html" class="active">Planet</a>
+      <a href="/papers/planet/">Planet study</a>
+      <a href="/papers/game-engines/">Game engines study</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="hero">
+    <h1>Two branches of one exact world</h1>
+    <p class="deck-line">A small planet, stored only as a seed and a log of edits. Branch A and branch B share both. Change one cell in B and watch the difference spread through the weather. Because every step is integer arithmetic, any difference between the branches was caused by the edit and by nothing else.</p>
+    <p class="subtitle">Companion figure to Section 3 of <a href="/papers/planet/">A Planet You Can Take Apart</a>. Tests and results: <code>docs/planet/</code> in the repository.</p>
+  </div>
+
+  <div class="limits">
+    <strong>What this is.</strong> A toy: a 192 × 96 strip of a planet (east and west wrap; the top and bottom rows are the poles) with sun, heat, wind, vapour, rain, rivers and erosion, all in 32-bit integers. It is a simulation, not a climate model, and its numbers are not Earth's.
+    Element fractions come from mineral formulae and standard atomic weights; the mixes of minerals in each rock are illustrative.
+    The GPU check runs on this device only; it says nothing about other devices.
+  </div>
+
+  <section class="figure-shell" id="planet-branches">
+    <header>
+      <div class="title-row"><span class="fig-id">planet-01</span><h2>Branch A, branch B and their difference</h2></div>
+      <div class="chips">
+        <span class="chip modelled">simulated (exact integers, toy)</span>
+        <span class="chip illustrative">illustrative mineral mixes</span>
+      </div>
+    </header>
+
+    <div class="controls">
+      <label>seed <input id="seed" type="number" min="0" max="4294967295" value="1234"/></label>
+      <button class="run" id="reset">New world</button>
+      <button class="run" id="play">Play</button>
+      <button class="run secondary" id="step">+10 ticks</button>
+      <label>speed <select id="speed"><option value="1">1</option><option value="4" selected>4</option><option value="12">12</option></select> ticks/frame</label>
+      <label>view <select id="view"><option value="terrain">terrain and water</option><option value="heat">heat</option><option value="vapour">vapour</option><option value="material">material</option></select></label>
+    </div>
+    <div class="controls">
+      <label>click does <select id="tool"><option value="inspect">inspect</option><option value="dig" selected>dig</option><option value="raise">raise</option><option value="scoop">scoop water</option><option value="pour">pour water</option></select></label>
+      <label>amount <input id="amount" type="number" min="1" max="1000" value="1"/></label>
+      <label>edit goes to <select id="target"><option value="B" selected>branch B only</option><option value="both">both branches</option></select></label>
+      <button class="run secondary" id="fork">Make B a copy of A</button>
+      <button class="run" id="demo">Dig one unit in B somewhere wet</button>
+    </div>
+
+    <div class="maps">
+      <div class="panel"><h3>Branch A</h3><canvas class="map" id="mapA" width="192" height="96"></canvas><div class="legend" id="legend"></div></div>
+      <div class="panel"><h3>Branch B</h3><canvas class="map" id="mapB" width="192" height="96"></canvas><div class="legend">Click a cell to apply the tool. Edits go into the log and take effect at the next tick.</div></div>
+      <div class="panel"><h3>Difference, A vs B</h3><canvas class="map" id="mapD" width="192" height="96"></canvas><div class="legend">Black: identical. Brighter: larger difference in ground, water, vapour or heat.</div></div>
+      <div class="panel"><h3>Cells that differ, by tick</h3><canvas class="chart" id="chart"></canvas><div class="legend">Logarithmic scale, 1 to 18,432 cells. On a wet world a single unit of ground is often enough to reach most of the map.</div></div>
+    </div>
+
+    <div class="grid3">
+      <div class="panel">
+        <h3>State</h3>
+        <dl class="metrics" id="metrics"></dl>
+        <div class="controls"><button class="run" id="replay">Replay A from seed and log</button></div>
+        <div class="status" id="replayStatus"></div>
+      </div>
+      <div class="panel">
+        <h3>Inspector</h3>
+        <div id="inspect" class="legend">Choose "inspect" and click a cell.</div>
+      </div>
+      <div class="panel">
+        <h3>Edit logs</h3>
+        <div class="legend">A</div><ol class="log" id="logA"></ol>
+        <div class="legend">B</div><ol class="log" id="logB"></ol>
+        <div class="status" id="editStatus"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="figure-shell" id="planet-gpu">
+    <header>
+      <div class="title-row"><span class="fig-id">planet-02</span><h2>Does this GPU generate the same planet?</h2></div>
+      <div class="chips"><span class="chip modelled">run on this device</span></div>
+    </header>
+    <div class="panel explain">
+      <p>The generator is written twice: in JavaScript (the reference) and in the WebGPU Shading Language (WGSL), using 32-bit integers only. WGSL specifies that integer arithmetic wraps modulo 2<sup>32</sup>, so every GPU should produce the same cells. This check generates four worlds of 1024 × 512 cells on your GPU and compares every cell with the reference. It then changes one bit of one constant in the shader, to show the comparison would notice.</p>
+      <div class="controls"><button class="run" id="gpu">Run the check</button></div>
+      <dl class="metrics" id="gpuOut"></dl>
+    </div>
+  </section>
+
+  <section class="figure-shell">
+    <header><div class="title-row"><span class="fig-id">planet-03</span><h2>What the figure shows</h2></div></header>
+    <div class="panel explain">
+      <p><strong>The world is a function and a log.</strong> Neither map is stored. Each is the seed run forward with its edit log. "Replay" rebuilds A from nothing and compares the state hash with the live one.</p>
+      <p><strong>Matter is conserved.</strong> Digging moves ground into your inventory and raising moves it back. Water moves between ground, air and inventory. The totals under State never change, and an edit that would make anything negative is refused before it enters the log.</p>
+      <p><strong>The butterfly effect is attributable.</strong> With exact arithmetic, two branches with the same log stay identical forever, so the whole difference map is the consequence of your edit. With floating point that differs between machines, the same map would mix your cause with rounding noise.</p>
+    </div>
+  </section>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>

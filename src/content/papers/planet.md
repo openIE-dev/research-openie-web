@@ -1,6 +1,6 @@
 ---
 title: "A Planet You Can Take Apart: A Whole World as a Function and an Edit Log, Played Through the Ideas of AI"
-deck: "Can a browser game let players reach every place on and inside a planet, down to the elements in its rock, and make the ideas of modern artificial intelligence the way it is played? The planet is too large to store, so it must be computed from a seed and a log of edits. It is chaotic, so that computation must be exact. Its physics, information and free-energy structure give each AI idea a mechanic a player can touch."
+deck: "Can a browser game let players reach every place on and inside a planet, down to the elements in its rock, and make the ideas of modern artificial intelligence (AI) the way it is played? The planet is too large to store, so it must be computed from a seed and a log of edits. It is chaotic, so that computation must be exact. Its physics, information and free-energy structure give each AI idea a mechanic a player can touch."
 id: planet
 status: "Research study"
 author: "David Charlot, Open Interface Engineering"
@@ -15,7 +15,7 @@ board_metered: false
 
 ## Abstract
 
-This study asks what it takes to build a game, running in a web browser, in which every place on and inside a whole planet can be visited, dug into and examined down to the chemical elements in its rock, and in which the ideas of modern artificial intelligence (AI) are the mechanics a player uses. Arithmetic settles the architecture before any source is consulted: the planet cannot be stored, so it must be a pure function of a seed plus an append-only log of player edits. Chaos settles the next step: because the simulated planet amplifies small differences, that function and its log must give bit-identical results on every machine. Inside those two constraints, physics, information theory, energy minimisation and the free energy principle each supply a working part of the engine, and each part is also a mechanic that teaches one AI idea. Nothing has been built. The study gives the arithmetic, the design, a catalogue of mechanics, a falsifier-first test plan and a list of what is infeasible.
+This study asks what it takes to build a game, running in a web browser, in which every place on and inside a whole planet can be visited, dug into and examined down to the chemical elements in its rock, and in which the ideas of modern artificial intelligence (AI) are the mechanics a player uses. Arithmetic settles the architecture before any source is consulted: the planet cannot be stored, so it must be a pure function of a seed plus an append-only log of player edits. Chaos settles the next step: because the simulated planet amplifies small differences, that function and its log must give bit-identical results on every machine. Inside those two constraints, physics, information theory, energy minimisation and the free energy principle each supply a working part of the engine, and each part is also a mechanic that teaches one AI idea. The planet itself has not been built; a toy of its exact core has, and its first results appear with the test plan. The study gives the arithmetic, the design, a catalogue of mechanics, a falsifier-first test plan and a list of what is infeasible.
 
 **In plain words**
 
@@ -26,6 +26,29 @@ This study asks what it takes to build a game, running in a web browser, in whic
 ![Diagram of the proposed planet. In the exact zone at the top, a green box "Seed plus generator G" (a pure function of seed and cell, in integer or fixed-point arithmetic) and a green box "Edit log D" (append-only, keyed by cell, ordered by tick) feed a blue box "Query W of x and t", defined as the last edit at x before t, else G of seed and x, which returns a material id. The query feeds a blue "Composition table" mapping material id to the mass fraction of each element, and a green "Active region" in which only cells near players tick, appending results to D. A dashed red line separates this from the tolerance zone below: level of detail (a cube-sphere quadtree of about 24 levels from a cube face to one metre), camera-relative rendering in 32-bit offsets with reversed or logarithmic depth, and cosmetic detail such as grass, clouds and particles that gameplay never reads.](/figures/planet/query.svg)
 
 *Figure 1. The planet as a function and a log. Above the dashed line, state is exact and identical on every machine. Below it, everything is a view of that state and nothing flows back up. Exploring "everything" means any position can be queried, not that every position is stored or simulated.*
+
+## Terms
+
+Every acronym on this page is either expanded where it is first used or listed here.
+
+<ul id="terms">
+<li>AI: artificial intelligence</li>
+<li>API: application programming interface</li>
+<li>CRC: the CRC Handbook of Chemistry and Physics</li>
+<li>GPU: graphics processing unit</li>
+<li>I3D: the ACM Symposium on Interactive 3D Graphics and Games</li>
+<li>IBM: International Business Machines, publisher of the IBM Journal of Research and Development</li>
+<li>IEEE 754: the floating-point standard of the Institute of Electrical and Electronics Engineers</li>
+<li>JAS: Journal of the Atmospheric Sciences, as it appears in identifiers</li>
+<li>KL: Kullback–Leibler, as in the KL divergence</li>
+<li>MB, TB, ZB: megabyte, terabyte, zettabyte (10<sup>6</sup>, 10<sup>12</sup> and 10<sup>21</sup> bytes)</li>
+<li>MIG: the ACM SIGGRAPH Conference on Motion, Interaction and Games</li>
+<li>MIT: Massachusetts Institute of Technology, as in MIT Press</li>
+<li>NASA: National Aeronautics and Space Administration</li>
+<li>PL: the prefix of this study's hypothesis identifiers (PL-H1 and onwards)</li>
+<li>README: the description file at the top of a code repository</li>
+<li>SIGGRAPH: the ACM Special Interest Group on Computer Graphics and its annual conference</li>
+</ul>
 
 ## 1. The idea under test
 
@@ -94,9 +117,11 @@ $$t^{*} = T_d \log_2 \frac{\Delta}{\delta_0}.$$
 
 Exactness is required only where state feeds back. Weather that moves sediment, waters crops or floods a tunnel is gameplay and sits in the exact zone. Cloud shapes drawn from that weather are a view and sit in the tolerance zone.
 
+The interactive figure [Two branches of one exact world](/living/planet/) runs this mechanic on a toy planet of $192 \times 96$ cells with sun, heat, wind, vapour, rain, rivers and erosion, all in 32-bit integers. A reader can dig one unit of ground in one branch and watch the difference map grow.
+
 ## 4. Four lenses, each a working part of the engine
 
-Each lens below supplies a part the engine needs anyway. Section 5 then turns each part into a mechanic.
+Each lens below supplies a part the engine needs anyway. The next section turns each part into a mechanic.
 
 ### 4.1 Physics: constraints solved as energy minimisation
 
@@ -141,23 +166,23 @@ Each row pairs one idea from modern AI research with a mechanic built from a par
 |---|---|---|---|---|
 | 1 | Learned world models | Ha and Schmidhuber, "World Models" ([arXiv:1803.10122](https://arxiv.org/abs/1803.10122)) | A scanner trained on the cells the player has already seen predicts what lies behind a rock face before the player digs | Prediction from experience, and its errors where experience runs out |
 | 2 | Prediction in representation space | LeCun, "A Path Towards Autonomous Machine Intelligence," 2022 ([OpenReview](https://openreview.net/pdf?id=BZ5a1r-kVsf)), the Joint Embedding Predictive Architecture (JEPA) | The scanner predicts a summary (ore or not, water or not) rather than every cell | Predicting what matters is cheaper than predicting everything |
-| 3 | Planning with a learned model | Schrittwieser et al., MuZero ([*Nature* 588:604–609, 2020](https://doi.org/10.1038/s41586-020-03051-4)) | Fork the log, try several plans in replay, commit one (Section 3) | Search over imagined futures, and the price of searching |
+| 3 | Planning with a learned model | Schrittwieser et al., MuZero ([*Nature* 588:604–609, 2020](https://doi.org/10.1038/s41586-020-03051-4)) | Fork the log, try several plans in replay, commit one (the branch replay above) | Search over imagined futures, and the price of searching |
 | 4 | Generative interactive worlds | Bruce et al., Genie ([arXiv:2402.15391](https://arxiv.org/abs/2402.15391)) | A "dream" mode lets a learned model invent terrain ahead of the player; the exact $W$ then shows where the dream was wrong | Plausible is not the same as true; a checker tells them apart |
 | 5 | Physics-informed learning | Raissi, Perdikaris and Karniadakis, physics-informed neural networks ([*J. Comput. Phys.* 378:686–707, 2019](https://doi.org/10.1016/j.jcp.2018.10.045)) | A flood forecaster is penalised whenever it breaks conservation of water; the player sets the penalty weight | Built-in physics trades flexibility for fewer absurd answers |
-| 6 | Learned weather forecasting and its limit | Lam et al., GraphCast ([*Science*, 2023, doi:10.1126/science.adi2336](https://doi.org/10.1126/science.adi2336)): ten-day forecasts at 0.25° "in under 1 minute"; Zhang et al. 2019 (Section 3) | Forecasting contests on the planet's own weather; every forecaster, learned or physical, fails past the predictability horizon | Some limits are in the world, not the model |
+| 6 | Learned weather forecasting and its limit | Lam et al., GraphCast ([*Science*, 2023, doi:10.1126/science.adi2336](https://doi.org/10.1126/science.adi2336)): ten-day forecasts at 0.25° "in under 1 minute"; Zhang et al. 2019 (above) | Forecasting contests on the planet's own weather; every forecaster, learned or physical, fails past the predictability horizon | Some limits are in the world, not the model |
 | 7 | Energy-based memory | Hopfield 1982; LeCun et al. 2006 (Section 4.3) | Memory stones: a grid of stones that, given part of a stored pattern, settles into the whole one | Recall as rolling downhill in an energy landscape |
 | 8 | Active inference | Friston 2010; Parr, Pezzulo and Friston 2022 (Section 4.4) | Creatures whose beliefs can be read; the player can surprise them, calm them or teach them | Perception and action as two ways to reduce surprise |
 | 9 | Compression as understanding | Shannon 1948; the algorithmic-information bound (Section 4.2) | A field notebook scored by how much it compresses what the player has observed | A good theory is a short description that still predicts |
 | 10 | Energy cost of thinking | Landauer 1961; Bérut et al. 2012; the [agency study](/papers/agency/) | Every plan, forecast and undo is paid from the energy budget; scores are progress per joule | Intelligence is not free; it has a price per decision |
 | 11 | Specification gaming | Krakovna et al., "Specification gaming: the flip side of AI ingenuity" ([DeepMind blog, 2020](https://deepmind.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/)), which defines it as behaviour "that satisfies the literal specification of an objective without achieving the intended outcome" and lists around 60 examples | The player writes the reward for a team of helper drones; the drones satisfy the reward's wording and miss its intent | Writing an objective is harder than it looks |
 | 12 | A measure that becomes a target | Strathern's phrasing of Goodhart's observation, "When a measure becomes a target, it ceases to be a good measure" (*European Review* 5(3):305–321, 1997, [doi:10.1017/S1062798700002660](https://doi.org/10.1017/S1062798700002660)) | A settlement rewarded for its count of trees plants a monoculture that the next drought kills | Proxies drift away from what they stood for |
-| 13 | Side effects, safe exploration, distributional shift | Amodei et al., "Concrete Problems in AI Safety" ([arXiv:1606.06565](https://arxiv.org/abs/1606.06565)) | Branch diffs (Section 3) show a plan's side effects downstream; drones trained in one biome are sent to another | Impact travels further than intent; behaviour learned in one place breaks in another |
+| 13 | Side effects, safe exploration, distributional shift | Amodei et al., "Concrete Problems in AI Safety" ([arXiv:1606.06565](https://arxiv.org/abs/1606.06565)) | Branch diffs (the branch replay above) show a plan's side effects downstream; drones trained in one biome are sent to another | Impact travels further than intent; behaviour learned in one place breaks in another |
 | 14 | Scalable oversight by debate | Irving, Christiano and Amodei, "AI safety via debate" ([arXiv:1805.00899](https://arxiv.org/abs/1805.00899)): on handwritten digits, a judge shown 6 pixels rose from 59.4% to 88.9% accuracy with debate | Two advisors argue over whether a plan is safe; the player may inspect only a few cells before ruling | Judging an argument can be easier than checking every fact |
 | 15 | Orthogonality and instrumental convergence | Bostrom, "The Superintelligent Will" ([*Minds and Machines* 22(2):71–85, 2012](https://nickbostrom.com/superintelligentwill.pdf)): agents with "a wide range of final goals will pursue similar intermediary goals" | A rival agent with an arbitrary goal (collect blue crystals) still gathers energy, claims land and protects itself | Capability and goals are separate; very different goals share the same means |
 | 16 | Commit gates | The [gates study](/papers/gates/): act only after a check passes | Irreversible actions (detonations, dams, releasing a species) run only through a gate whose check the player designs | Undo is what makes mistakes affordable; where there is none, check first |
 | 17 | Superintelligence as faster search | Rows 3, 15 and 16 combined | The rival of row 15 can replay counterfactual branches many times faster than the player; the player cannot out-plan it and can only constrain it through gates and oversight | Against a better planner, the levers that remain are the rules it must pass |
 
-Rows 1 to 10 make the engine's own parts visible. Rows 11 to 17 come from AI safety research and need the exact replay of Section 3 to work: a side effect, a gamed reward or a rival's plan can only be shown fairly if a branch replays identically.
+Rows 1 to 10 make the engine's own parts visible. Rows 11 to 17 come from AI safety research and need the exact replay of the butterfly section to work: a side effect, a gamed reward or a rival's plan can only be shown fairly if a branch replays identically.
 
 ## 6. What runs where in a browser
 
@@ -174,7 +199,7 @@ The resulting split:
 | Part | Where it runs | Zone | Why |
 |---|---|---|---|
 | Generator $G$, reference version | WebAssembly (Wasm), integer arithmetic | Exact | The version every other version is checked against |
-| Generator $G$, fast version | WGSL compute shaders, 32-bit integers only | Exact, if the first test of Section 7 passes | Integer arithmetic is specified to wrap identically |
+| Generator $G$, fast version | WGSL compute shaders, 32-bit integers only | Exact, if the first test of the test plan passes | Integer arithmetic is specified to wrap identically |
 | Edit log $D$, conservation and gate checks | Wasm | Exact | Checks must never depend on the GPU |
 | Gameplay physics (XPBD) and creatures | Wasm, fixed point | Exact | Their results enter $S$ |
 | Coarse planetary weather | Wasm or integer WGSL, at about 0.25° (1,038,240 columns, GraphCast's grid) | Exact | It drives gameplay through the butterfly effect |
@@ -201,14 +226,29 @@ Each hypothesis is listed with the result that would withdraw it.
 | PL-H10 | The mechanics teach the ideas | Players before and after an hour with rows 1 to 17, against a group that reads the same material | Score on a concept test | No gain over the reading group |
 | PL-H11 | Specification gaming arises without being scripted | Player-written rewards for drones in playtests | Share of rewards the drones game | None gamed, which would mean the drones are too weak to teach row 11 |
 
+### 7.1 First runs on a toy
+
+A toy of the exact core has been built: the generator, a composition table, the weather and water step of the figure above, an edit checker and replay, in one JavaScript module, with the generator also written in WGSL. The results below were run in Node 22 and in headless Chromium on one Linux machine. They are about the toy, not about a planet. The scripts and results files are in the repository under `scripts/planet/` and `docs/planet/results/`.
+
+- **PL-H1, one device only.** The WGSL integer generator matched the reference on all 2,097,152 cells of four seeds. The adapter was SwiftShader, which runs on the processor rather than a GPU, so this is one data point, not the three vendors the test asks for. Changing one bit of one hash constant made 524,276 of 524,288 cells differ, so the comparison can fail.
+- **PL-H3 holds on the toy.** Over four seeds, each run for 1,000 ticks with a fuzzed log of 115 to 131 edits, two runs of the same log had identical state hashes at every tick, and replay from the seed and log reproduced the final state.
+- **PL-H6 holds on the toy's two conserved quantities.** Ground plus inventory, and water plus vapour plus inventory, never changed; 35 to 54 inadmissible edits per seed were refused and changed nothing.
+- **PL-H4 is killed as stated.** One unit of ground was dug at one cell, 12 times per seed, and both branches were followed for 800 ticks. The difference spread to half the map in 20 of 48 trials and stayed within 10 cells in 22. The median doubling time of the difference was about 24 to 26 ticks on three seeds and 392 on the fourth, a dry world with about a tenth of the others' water. Medians that differ about sixteenfold meet the kill criterion.
+
+The toy suggests that its chaos needs water. That is a new hypothesis, stated here before it is tested on seeds not used above:
+
+| ID | Hypothesis | Test | Measure | Kill criterion |
+|---|---|---|---|---|
+| PL-H12 | On toy worlds with at least 15 units of water per cell, the doubling time of a one-unit dig is stable | 8 seeds not used in Section 7.1, 12 trials each, as above | Median doubling time per seed | Medians that differ more than twofold |
+
 ## 8. Infeasibility flags
 
 1. **Storing the planet: infeasible.** About 1.1 ZB at one byte per cubic metre (Section 2.1).
 2. **Simulating every cell every tick: infeasible.** At one nanosecond per cell, one tick of $1.08 \times 10^{21}$ cells would take about $1.08 \times 10^{12}$ s, roughly 34,000 years. Only the active region and the coarse weather grid tick; every other cell stays as $G$ and $D$ left it.
-3. **Exact floating-point generation on GPUs: infeasible portably.** WGSL leaves rounding unspecified and permits reassociation (Section 6).
+3. **Exact floating-point generation on GPUs: infeasible portably.** WGSL leaves rounding unspecified and permits reassociation, as quoted above.
 4. **Native 64-bit integers in WGSL: absent.** Emulation is required, at an unmeasured cost.
 5. **Forecasting beyond the predictability horizon: infeasible for any forecaster.** The design uses this as a mechanic (row 6) rather than hiding it.
-6. **Shared floating-point worlds that run for months: infeasible.** Under the model of Section 3, last-bit differences reach order one after about 24 doublings.
+6. **Shared floating-point worlds that run for months: infeasible.** Under the butterfly model above, last-bit differences reach order one after about 24 doublings.
 7. **"Every concept of AI": not claimed.** Section 5 is a finite catalogue of 17 ideas, and the field adds more each year.
 8. **Every browser: not yet.** The status page read for this study lists Firefox on Linux as still to ship.
 
@@ -226,4 +266,4 @@ Read in full for this study: the WebGPU and WGSL editor's drafts and the WebGPU 
 
 Not used as evidence although found: the No Man's Sky terrain-edit limits reported by players, which disagree with each other; the Genie 2 and Genie 3 press coverage, which has no primary paper; and an exact energy function for Hopfield's network, which could not be confirmed.
 
-No engine code has been written and no hypothesis has been run. The illustrative models in Sections 2.4 and 3 use assumed values, labelled where they appear.
+No planet-scale engine code has been written; the only code run is the toy of Section 7.1. The illustrative models use assumed values, labelled where they appear.

@@ -21,9 +21,12 @@ Hypothesis IDs refer to Section 7 of `src/content/papers/planet.md`.
 | PLN-012 | Core tests | done | PLN-011 | Determinism, replay, conservation, divergence, doubling fit; results JSON | PL-H3, PL-H4, PL-H6 | `scripts/planet/test-core.mjs`; `docs/planet/results/core.json` (PL-H3 and PL-H6 hold on the toy; PL-H4 killed as stated, see ledger entry 2) |
 | PLN-013 | WGSL generator and parity check | done | PLN-011 | `checkParity()` returns mismatch count and adapter info | PL-H1 | `public/living/planet/gpu.js` (with a mutation check) |
 | PLN-014 | GPU parity run in headless Chromium | done | PLN-013 | Results JSON naming the adapter actually used | PL-H1 (one device) | `scripts/planet/gpu-parity.mjs`; `docs/planet/results/gpu-parity.json` (0 of 2,097,152 cells differ on SwiftShader) |
-| PLN-015 | Living figure page | doing | PLN-011, PLN-013 | Two branches, difference map, divergence chart, replay check, inspector, parity panel; works without WebGPU | — | |
-| PLN-016 | Link the figure from the hub and the study | todo | PLN-015 | Hub card; study Section 3 link; `pnpm build` passes | — | |
-| PLN-017 | Pre-register the refined divergence hypothesis (wet planets only) and report the PL-H4 result in the study | todo | PLN-012 | New row in study Section 7 with the toy's numbers, labelled as a toy | PL-H4 | |
+| PLN-015 | Living figure page | done | PLN-011, PLN-013 | Two branches, difference map, divergence chart, replay check, inspector, parity panel; works without WebGPU | — | `public/living/planet/`; driven headless: replay identical, demo dig spread to 2,417 cells in 300 ticks, parity 0 mismatches, no page errors, no horizontal scroll at 390 px |
+| PLN-016 | Link the figure from the hub and the study | done | PLN-015 | Hub card; study Section 3 link; `pnpm build` passes | — | Hub card and nav in `public/living/index.html`; link in study Section 3 |
+| PLN-017 | Pre-register the refined divergence hypothesis (wet planets only) and report the PL-H4 result in the study | done | PLN-012 | New row in study Section 7 with the toy's numbers, labelled as a toy | PL-H4 | Study Section 7.1 and PL-H12 |
+| PLN-018 | Run PL-H12 on 8 seeds not used before (not 1, 7, 1234, 99991) with at least 15 water units per cell | todo | PLN-017 | Per-seed median doubling times in `docs/planet/results/`; report pass or kill in Section 7.1 without changing the criterion | PL-H12 | |
+| PLN-019 | Run `node scripts/planet/test-core.mjs --quick` in CI | todo | PLN-012 | CI job fails on a determinism, replay or conservation failure | — | |
+| PLN-020a | Toy visuals: dried-out sea floor shows as dark basalt; decide whether evaporation should leave a thin water film or draw dry sea floor differently | todo | PLN-015 | A choice recorded in the blueprint | — | |
 
 ## M2. Reference and scale
 

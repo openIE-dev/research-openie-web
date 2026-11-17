@@ -81,3 +81,33 @@ access to publisher hosts.
 (PLN-021). PL-H2 not runnable on one device.
 
 **Next.** PLN-015: the living figure page `public/living/planet/index.html`.
+
+---
+
+## 2026-11-17 · entry 3 · living figure, study updated
+
+**Done.** PLN-015, PLN-016, PLN-017.
+- `/living/planet/` (`index.html`, `app.js`): branches A and B, difference
+  map, divergence chart, replay check, inspector with element fractions,
+  edit logs, a "dig one unit somewhere wet" button, and the GPU parity panel.
+  Linked from the living hub and from Section 3 of the study.
+- Study: abstract no longer says nothing was built; new Section 7.1 reports
+  the toy runs (PL-H1 on one software adapter, PL-H3 and PL-H6 hold on the
+  toy, PL-H4 killed as stated) and pre-registers PL-H12 (wet worlds only,
+  fresh seeds). A terms list was added, forward section references removed,
+  and `dist/papers/planet/index.html` added to the default pages of
+  `scripts/lint-order.mjs`, so the order rules are now enforced on it.
+- PDF header note for the planet study updated in `scripts/generate-pdfs.sh`.
+
+**Measured.** Page driven in headless Chromium at 1280 px and 390 px: no
+page errors; replay of 501 ticks identical to the live state; a demo dig
+spread to 2,417 of 18,432 cells within 300 ticks; GPU parity 0 mismatches on
+SwiftShader with the mutation check detected; no horizontal scroll at 390 px.
+`pnpm build` passes, all order lints clean, internal links pass.
+
+**Not done.** PL-H12 has been registered and not run (PLN-018). Core tests
+are not yet in CI (PLN-019).
+
+**Next.** PLN-018 (run PL-H12 on eight fresh wet seeds, about 6 minutes of
+CPU in Node with `test-core.mjs` adapted to take seeds as arguments), then
+PLN-019, then M2 (PLN-020, a Rust reference compiled to Wasm).
