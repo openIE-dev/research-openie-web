@@ -235,6 +235,14 @@ elif id_ == "three-body":
         "No hardware result is claimed. No fabricated citations.\n"
         "</div>\n"
     )
+elif id_ == "planet":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
+        "Nothing was built or run. The numbers are arithmetic from stated inputs (Sections 2 to 4). Apart from the WebGPU and WGSL specifications, every external source was seen only as a search result; Section 10 says how each was checked.\n"
+        "No energy and no hardware result is claimed. No fabricated citations.\n"
+        "</div>\n"
+    )
 elif dir_ == "products":
     measure = (
         '<div class="measurement">\n'
@@ -315,6 +323,7 @@ gen_one rce-compile
 gen_one rce-vc
 gen_one three-body
 gen_one game-engines
+gen_one planet
 gen_one latency
 gen_one interface-economics
 gen_one ai-coding-market

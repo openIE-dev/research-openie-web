@@ -188,6 +188,31 @@
       ]
     },
     {
+      "id": "planet",
+      "title": "A Planet You Can Take Apart: A Whole World as a Function and an Edit Log, Played Through the Ideas of AI",
+      "short_title": "A Planet You Can Take Apart",
+      "kind": "Research study",
+      "group": "research",
+      "url": "https://research.openie.dev/papers/planet/",
+      "pdf": "https://research.openie.dev/pdfs/planet.pdf",
+      "figures": "/figures/planet/query.svg",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Asks what a browser game needs so that every place on and inside a planet, down to the elements in its rock, can be explored, and so that ideas from modern AI are its mechanics. Storage arithmetic forces the planet to be a pure generator plus an edit log; chaos forces that generator to be exact; physics, information theory, energy minimisation and the free energy principle each supply an engine part that doubles as a mechanic, catalogued in 17 rows, with a WebGPU split, a falsifier-first test plan and infeasibility flags. Plain words: a planet is too big to store, so it is a formula plus a list of changes; small differences grow, so the formula must be exact; the parts that make the planet work are the same ideas that make AI work, and the player uses them by hand.",
+      "about": "https://research.openie.dev/about/planet/",
+      "keywords": [
+        "procedural generation",
+        "planet-scale games",
+        "floating origin",
+        "determinism",
+        "butterfly effect",
+        "free energy principle",
+        "energy-based models",
+        "information theory",
+        "AI safety",
+        "WebGPU"
+      ]
+    },
+    {
       "id": "three-body",
       "title": "The Pursuit of AGI Resolves the Three-Body Problem in Computing",
       "short_title": "The Three-Body Problem in Computing",
