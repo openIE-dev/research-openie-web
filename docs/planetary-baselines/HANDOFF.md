@@ -99,3 +99,15 @@ and a miss on a weak process measures the protocol's power, not absence.
 
 **Next.** BLN-011 (BL-H2: baseline prior past the horizon), or BLN-015
 (power of the protocol), or BLN-012 (rotation option).
+
+---
+
+## 2026-11-18 · entry 4 · BL-H2 registered (before running)
+
+`scripts/planetary-baselines/run-h2.mjs` fixes the worlds (PL-H12 water rule
+from seed 300: 16 train, 8 test), the climatology run (separate perturbed
+run, 4 seasons), forecast starts and leads (25, 75, 250 ticks), features,
+ridge settings, and the kill rule. The study's BL-H2 kill criterion was made
+concrete before the run: "a reduction smaller than the spread between seeds"
+became "B not more accurate than A on at least 6 of 8 test worlds at 250
+ticks". A third arm (A+, direct with the baseline as input) is secondary.
