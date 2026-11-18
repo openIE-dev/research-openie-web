@@ -10,5 +10,6 @@ get noaa.csv      "https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glan
 get berkeley.txt  "https://berkeley-earth-temperature.s3.us-west-1.amazonaws.com/Global/Land_and_Ocean_complete.txt"
 get co2_mlo.txt   "https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.txt"
 get nino34.txt    "https://psl.noaa.gov/data/correlation/nina34.anom.data"
+get erf_igcc.csv  "https://raw.githubusercontent.com/ClimateIndicator/forcing-timeseries/main/output/ERF_best_aggregates_1750-2024.csv"
 date -u +%Y-%m-%dT%H:%M:%SZ > FETCHED_AT
 sha256sum *.csv *.txt > SHA256SUMS
