@@ -111,3 +111,24 @@ ridge settings, and the kill rule. The study's BL-H2 kill criterion was made
 concrete before the run: "a reduction smaller than the spread between seeds"
 became "B not more accurate than A on at least 6 of 8 test worlds at 250
 ticks". A third arm (A+, direct with the baseline as input) is secondary.
+
+---
+
+## 2026-11-18 · entry 5 · BL-H2 survives
+
+Run as registered (`7b588d9`), 3.5 min in Node 22. Train worlds 300-315,
+test 316-323 (all met the water rule; no seed was skipped). RMSE of T over
+the 8 test worlds, ranges:
+- L=25: A 46.8-54.8, B 46.1-54.7, A+ 46.0-54.6, persistence 66.1-75.5,
+  climatology 113.9-189.1.
+- L=75: A 105.6-121.1, B 63.7-99.0, A+ 64.1-98.8.
+- L=250: A 181.8-217.3, B 99.5-171.7, A+ 99.9-169.7, persistence
+  411.4-483.9, climatology 105.6-190.6.
+B beat A at L=250 on 8/8 (survives). B beat A+ on 3/8 only: the gain is the
+information in the baseline, not the residual form, for this linear learner.
+Study Section 5.2 says so. Follow-up BLN-017 asks whether the residual form
+matters for learners that can overfit.
+
+**Next.** BLN-012 (rotation option, off by default, JS and Rust together),
+then BLN-013 (scaling ladder, BL-H3). BLN-015 (protocol power) and BLN-017
+are independent of those.

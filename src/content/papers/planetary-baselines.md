@@ -15,7 +15,7 @@ board_metered: false
 
 ## Abstract
 
-This study tests a structure-first approach to planetary atmospheres. It has two parts. First, a long-term baseline built from scaling relations and long-run averages is treated as the skeleton of a forecast, and short-term models predict only the departure from it. Second, after every known process is subtracted from an observation, the residual is treated as the main scientific object: a residual that follows a candidate variable points to that variable, and a residual that follows none points to a missing mechanism. Both ideas are tested first on a toy planet in which every process is known and every run can be replayed exactly, so the methods can be checked against a known answer before they are used on real data. Tests on Mercury's sodium exosphere, on the weather-to-macroweather transition of other planets, and on Earth forecasts beyond about ten days follow, and need data and computing not yet in hand. The first toy test has been run; it is reported with the test plan.
+This study tests a structure-first approach to planetary atmospheres. It has two parts. First, a long-term baseline built from scaling relations and long-run averages is treated as the skeleton of a forecast, and short-term models predict only the departure from it. Second, after every known process is subtracted from an observation, the residual is treated as the main scientific object: a residual that follows a candidate variable points to that variable, and a residual that follows none points to a missing mechanism. Both ideas are tested first on a toy planet in which every process is known and every run can be replayed exactly, so the methods can be checked against a known answer before they are used on real data. Tests on Mercury's sodium exosphere, on the weather-to-macroweather transition of other planets, and on Earth forecasts beyond about ten days follow, and need data and computing not yet in hand. Three toy tests have been run; they are reported with the test plan.
 
 **In plain words**
 
@@ -116,8 +116,22 @@ BL-H7 was then run as registered (`docs/planetary-baselines/results/h7.json`). I
 
 Two lessons carry to real data. A residual protocol needs candidates shaped like the processes it is looking for: transport needs differences along the flow, not local values. And a process that changes a small share of the field, like the condensation term here, can sit below any sensible effect-size floor; failing to find it is a statement about the protocol's power, not evidence that the process is absent.
 
+### 5.2 Second result: BL-H2
+
+BL-H2 was run as registered on 16 training and 8 test worlds (`docs/planetary-baselines/results/h2.json`). It survives this test. The table gives the range of temperature RMSE over the 8 test worlds, in the toy's heat units.
+
+| Lead time | Direct (A) | Baseline prior (B) | Direct with the baseline as input (A+) | Persistence | Climatology alone |
+|---|---|---|---|---|---|
+| 25 ticks, about 1 doubling time | 46.8 to 54.8 | 46.1 to 54.7 | 46.0 to 54.6 | 66.1 to 75.5 | 113.9 to 189.1 |
+| 75 ticks, about 3 | 105.6 to 121.1 | 63.7 to 99.0 | 64.1 to 98.8 | 177.1 to 205.2 | 109.0 to 187.8 |
+| 250 ticks, about 10 | 181.8 to 217.3 | 99.5 to 171.7 | 99.9 to 169.7 | 411.4 to 483.9 | 105.6 to 190.6 |
+
+At 250 ticks the baseline prior was more accurate than the direct forecaster on 8 of 8 worlds, by 21% to 45%, and more accurate than climatology alone on all 8. At one doubling time it added almost nothing. The gain appears where the handoff note predicts it, beyond the horizon.
+
+The secondary comparison changes how the result should be read. The direct forecaster given the same baseline as an input (A+) did as well as the one that predicts the departure from it; B was ahead of A+ on only 3 of 8 worlds. For this learner, the gain comes from knowing the structure, not from recasting the forecast as a residual. Whether the residual form matters for learners that can overfit, where a fixed skeleton may act as a constraint rather than as information, is a separate question this test does not answer.
+
 ## 6. Sources and limits
 
 All external sources above were checked only against search results, not against full texts. Lovejoy, Muller and Boisvert 2014: citation and abstract; the 1.8-day figure from press coverage only. Verkercke and co-authors 2025: citation and abstract. Sohl and co-authors 2024 (CUISINES): citation and summary. ROCKE-3D: summary pages. Kleidon: abstracts and conference pages. BepiColombo flyby of 19 June 2023: a conference abstract. Not yet checked at all: the "CELL consortium" named in the handoff note, and the location of MESSENGER sodium data in the PDS.
 
-BL-H1 has been run (Section 5.1). The kill criteria in Section 5 are a first statement and may be tightened, but only before the corresponding test is run, and any change is recorded in the study's working ledger.
+BL-H1, BL-H7 and BL-H2 have been run (Sections 5.1 and 5.2). The kill criteria in Section 5 are a first statement and may be tightened, but only before the corresponding test is run, and any change is recorded in the study's working ledger.
