@@ -1,0 +1,22 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/planetary.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description="Structure-first planetary forecasting: a small structural skeleton first, the residual as the scientific object. Two preregistered hindcasts on four records of Earth temperature, with protocols for Mars, Mercury and a laboratory scaling ladder."
+  headings={headings}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Research topic · work in progress"
+>
+  <Content />
+</PaperLayout>

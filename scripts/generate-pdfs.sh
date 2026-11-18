@@ -235,6 +235,13 @@ elif id_ == "three-body":
         "No hardware result is claimed. No fabricated citations.\n"
         "</div>\n"
     )
+elif id_ == "planetary":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research topic, work in progress, not a journal final.\n"
+        "Results are preregistered hindcasts on public temperature records, computed by the scripts in experiments/planetary-baseline. No energy figure and no hardware result. Mars, Mercury and laboratory studies are protocols, not results.\n"
+        "</div>\n"
+    )
 elif dir_ == "products":
     measure = (
         '<div class="measurement">\n'
@@ -319,6 +326,7 @@ gen_one latency
 gen_one interface-economics
 gen_one ai-coding-market
 gen_one ai-reads-human
+gen_one planetary
 cp "$OUT/ai-coding-market.pdf" "$OUT/rce-economics.pdf"
 gen_one mei products
 gen_one jouleos products
