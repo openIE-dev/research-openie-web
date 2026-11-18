@@ -1,0 +1,48 @@
+{
+ "ran": true,
+ "adapter": {
+  "vendor": "google",
+  "architecture": "swiftshader"
+ },
+ "results": [
+  {
+   "place": "surface",
+   "distanceFromCentreM": 6371002,
+   "vertices": 4096,
+   "maxErrorMm": {
+    "naive": 338,
+    "relative": 0.00713
+   }
+  },
+  {
+   "place": "inside the core, 1,000 km from the centre",
+   "distanceFromCentreM": 1000000,
+   "vertices": 4096,
+   "maxErrorMm": {
+    "naive": 1.65,
+    "relative": 0.00775
+   }
+  },
+  {
+   "place": "lunar distance",
+   "distanceFromCentreM": 384400000,
+   "vertices": 4096,
+   "maxErrorMm": {
+    "naive": 48000,
+    "relative": 0.00788
+   }
+  },
+  {
+   "place": "Neptune's distance from the Sun",
+   "distanceFromCentreM": 4500000000000,
+   "vertices": 4096,
+   "maxErrorMm": {
+    "naive": 8140000,
+    "relative": 0.00737
+   }
+  }
+ ],
+ "generated": "2026-11-18T14:00:49.401Z",
+ "browser": "Chromium (Playwright), headless, --enable-unsafe-webgpu",
+ "scope": "Vertex position before projection, for vertices within about 100 m of the camera. Not a rendered-image test."
+}

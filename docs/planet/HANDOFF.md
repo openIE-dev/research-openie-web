@@ -187,3 +187,52 @@ flat; a sphere version needs a 3D noise lattice, so start by sampling the
 existing generator with longitude and latitude and note the seam at the
 date line), camera-relative vertices per tile, reversed-Z depth. Measure
 jitter at the surface, at the core and at lunar distance.
+
+---
+
+## 2026-11-18 · entry 6 · the globe (PLN-031, first slice)
+
+**Done.**
+- `public/living/planet/sphere.js`: exact sphere generator. Cube-face integer
+  coordinates, exact integer square root and divisions (float estimate, then
+  integer correction; every product below 2^53), 17 octaves of 3D integer
+  value noise from 4,194 km to 64 m with 16-bit fractions, elevation in mm,
+  surface points in BigInt micrometres.
+- `public/living/planet/globe/`: WebGPU globe. Quadtree per face to level 18,
+  tiles built on the CPU within 12 ms per frame (parents drawn meanwhile),
+  skirts, reversed-Z, per-tile offsets from exact micrometre differences, a
+  naive planet-centred mode and a 5 mm-per-frame creep to compare them.
+  Linked from the living hub and from study Section 2.2.
+- `public/living/planet/jitter.js` + `scripts/planet/jitter.mjs`: PL-H9
+  arithmetic on the GPU. `scripts/planet/test-sphere.mjs` in `test:planet`.
+- Study Section 7.1: new bullet with the numbers below; PL-H9 stays open.
+
+**Found while building (all fixed).**
+1. First version kept vertices in integer metres: a flat sea showed +-0.5 m
+   rounding bumps from 2 m up. Now micrometres.
+2. 8-bit noise fractions meant 32 m steps on the finest octave. Now 16-bit,
+   still exact in doubles.
+3. Skirt vertices had sideways normals and showed as dark cracks. Now they
+   take the normal of their edge vertex.
+4. 827 tiles at ground level; tiles wholly behind the camera are now culled
+   (545).
+
+**Environment limit found.** Configuring a WebGPU canvas in headless
+Chromium on SwiftShader loses the GPU instance; a bare page reproduces it.
+Visual checks used `?offscreen` and `capture()`. The canvas path is untested
+here (PLN-033). See blueprint section 6.
+
+**Measured (SwiftShader; Node 22).**
+- `isqrt`, `divTrunc`, `floorDiv` vs BigInt: 1,000,014 inputs, 0 differ.
+- Cube edges: 6,172 shared samples identical from both faces.
+- Elevation over 155,526 samples: -4,918.7 m to 5,347.8 m, 56.1% land.
+- Vertex position error within about 100 m of the camera, naive / relative:
+  surface 338 / 0.00713 mm; 1,000 km from centre 1.65 / 0.00775 mm; lunar
+  distance 48,000 / 0.00788 mm; Neptune distance 8,140,000 / 0.00737 mm.
+- Offscreen renders built 6 tiles (Moon, space), 224 (low orbit), 545
+  (ground, level 18). On SwiftShader a 545-tile frame takes over a minute;
+  that is a software rasteriser, not a frame-time measurement.
+
+**Next.** PLN-033 needs a person with a GPU. Without one: PLN-034 (Rust port
+of `sphere.js`, match the printed hashes), then PLN-035 (worker and eviction),
+or M4 PLN-040 (volumetric bricks), which reuses `noise3`.

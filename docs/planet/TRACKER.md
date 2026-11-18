@@ -43,13 +43,19 @@ Evidence for PLN-020: `experiments/planet-core/`, `scripts/planet/test-rust.mjs`
 
 ## M3. The sphere
 
+Evidence for PLN-031 (first slice): `public/living/planet/sphere.js`, `public/living/planet/globe/`, `scripts/planet/test-sphere.mjs`, `scripts/planet/jitter.mjs`, `docs/planet/results/jitter.json`. Exact helpers match BigInt on 1,000,014 inputs; 6,172 cube-edge samples identical from both faces; camera-relative vertices within 0.008 mm of exact at the surface, 1,000 km from the centre, lunar and Neptune distance (naive: 338 mm, 1.65 mm, 48 m, 8.1 km). Rendered offscreen on SwiftShader at four altitudes; the canvas path is not run here (blueprint section 6).
+
 Evidence for PLN-030: `public/living/planet/pos64.js`, `scripts/planet/pos64-parity.mjs`, `scripts/planet/test-pos64.mjs` (in `pnpm test:planet`), `docs/planet/results/pos64.json`. Integer ops 0 of 65,536 differ on SwiftShader and in JS; carry-removal mutant caught; f32 conversion under 1 mm within 8 km on SwiftShader.
 
 | ID | Task | Status | Depends | Acceptance | Hypothesis |
 |---|---|---|---|---|---|
 | PLN-030 | 64-bit micrometre positions emulated as `vec2<u32>` in WGSL | done | PLN-013 | Add, subtract, compare match a BigInt reference | PL-H9 |
-| PLN-031 | Cube-sphere quadtree level of detail, camera-relative rendering, reversed depth | todo | PLN-030 | No visible jitter over 1 mm at surface, core, lunar distance; tiles drawn relative to their own centre (blueprint section 5) | PL-H9 |
+| PLN-031 | Cube-sphere quadtree level of detail, camera-relative rendering, reversed depth | done (first slice) | PLN-030 | No visible jitter over 1 mm at surface, core, lunar distance; tiles drawn relative to their own centre (blueprint section 5) | PL-H9 |
 | PLN-032 | Atmosphere view (tolerance zone) | todo | PLN-031 | Visual only; reads no state back | — |
+| PLN-033 | Run the globe's canvas path on a browser with a GPU; check the creep test by eye in both position modes; record adapter and frame time | todo | PLN-031 | Notes or a short screen recording in `docs/planet/results/`, naming browser, OS and GPU | PL-H9 |
+| PLN-034 | Port `sphere.js` to Rust (and later integer WGSL with an integer square root); match the reference hashes printed by `test-sphere.mjs` | todo | PLN-031 | Same hashes on all six faces | PL-H1 |
+| PLN-035 | Tile memory: evict tiles not drawn for a while; build tiles in a Web Worker | todo | PLN-031 | Memory flat while circling the planet; no frame over 50 ms from tile building | — |
+| PLN-036 | Colour by material from a 3D version of the composition table, not by elevation alone | todo | PLN-034 | Inspector on the globe shows elements, as on the flat figure | — |
 
 ## M4. Inside the planet
 

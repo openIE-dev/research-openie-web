@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Living · Planet globe: from orbit to a hand's width</title>
+<link rel="stylesheet" href="../../css/living.css"/>
+<style>
+  .panel { background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px; padding: 0.85rem 1rem; min-width: 0; }
+  .panel h3 { font-family: var(--mono); font-size: 0.9rem; color: var(--accent); margin: 0 0 0.5rem; }
+  #view { width: 100%; aspect-ratio: 16 / 9; display: block; border-radius: 8px; border: 1px solid var(--border); background: #02040a; touch-action: none; cursor: grab; }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.5rem 0.9rem; align-items: center; margin: 0.75rem 0; font-family: var(--mono); font-size: 0.82rem; }
+  .controls label { color: var(--muted); display: inline-flex; gap: 0.35rem; align-items: center; }
+  .controls input[type=range] { width: 12rem; max-width: 60vw; }
+  .controls select { font-family: var(--mono); font-size: 0.82rem; background: var(--bg-card); color: var(--text); border: 1px solid var(--border); border-radius: 5px; padding: 0.3rem 0.4rem; }
+  button.run { font-family: var(--mono); background: #134e4a; color: var(--accent); border: 1px solid #2dd4bf; border-radius: 6px; padding: 0.4rem 0.8rem; cursor: pointer; font-size: 0.82rem; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  @media (max-width: 860px) { .grid2 { grid-template-columns: 1fr; } }
+  .metrics { font-family: var(--mono); font-size: 0.78rem; line-height: 1.6; display: grid; grid-template-columns: auto 1fr; gap: 0.1rem 0.8rem; }
+  .metrics dt { color: var(--muted); }
+  .metrics dd { margin: 0; color: #f1f5f9; }
+  .limits { font-size: 0.88rem; color: var(--muted); border-left: 3px solid var(--warn); padding: 0.65rem 0.9rem; margin: 1rem 0; background: #1c1917; }
+  .explain p { margin: 0.4rem 0; }
+  #fallback { color: var(--refuse); font-family: var(--mono); font-size: 0.85rem; margin: 0.75rem 0; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <div class="brand">Planet · globe</div>
+    <nav class="nav">
+      <a href="../../index.html">Hub</a>
+      <a href="../index.html">Planet: two branches</a>
+      <a href="index.html" class="active">Planet: globe</a>
+      <a href="/papers/planet/">Planet study</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="hero">
+    <h1>From orbit to a hand's width</h1>
+    <p class="deck-line">A whole planet of 6,371 km radius, generated from a seed as you approach it. Every vertex is an exact integer point. The GPU only ever sees small numbers: each tile is drawn relative to its own centre, offset from the camera by a difference computed exactly.</p>
+    <p class="subtitle">Companion figure to Section 2.2 of <a href="/papers/planet/">A Planet You Can Take Apart</a>. Drag to turn the planet, scroll or use the slider to change altitude.</p>
+  </div>
+
+  <div class="limits">
+    <strong>What this is.</strong> A first renderer: terrain from 3D integer noise (relief of about ±5 km), level of detail from a quadtree on each face of a cube, no atmosphere, no caves yet. Colours are a view of elevation and latitude only. Tiles are built on the CPU in JavaScript as you move, so new ground takes a moment to sharpen.
+  </div>
+
+  <section class="figure-shell" id="planet-globe">
+    <header>
+      <div class="title-row"><span class="fig-id">planet-04</span><h2>The globe</h2></div>
+      <div class="chips"><span class="chip modelled">exact vertices, GPU view</span></div>
+    </header>
+    <div id="fallback" hidden></div>
+    <canvas id="view"></canvas>
+    <div class="controls">
+      <label>altitude <input id="alt" type="range" min="0" max="1000" value="900"/></label>
+      <label>tilt <input id="tilt" type="range" min="0" max="85" value="0"/></label>
+      <button class="run" id="p-moon">From the Moon's distance</button>
+      <button class="run" id="p-space">From space</button>
+      <button class="run" id="p-orbit">Low orbit</button>
+      <button class="run" id="p-ground">Stand on the ground</button>
+    </div>
+    <div class="controls">
+      <label>positions <select id="mode"><option value="relative" selected>camera-relative (this design)</option><option value="naive">planet-centred 32-bit (a naive engine)</option></select></label>
+      <label><input id="creep" type="checkbox"/> creep 5 mm per frame</label>
+    </div>
+    <div class="grid2">
+      <div class="panel"><h3>Now</h3><dl class="metrics" id="stats"></dl><dl class="metrics"><dt>adapter</dt><dd id="adapter">…</dd></dl></div>
+      <div class="panel explain">
+        <h3>Try this</h3>
+        <p>Press <em>Stand on the ground</em>, wait for the tiles to sharpen, then tick <em>creep</em>. The camera moves 5 mm a frame and the ground glides smoothly.</p>
+        <p>Now switch positions to <em>planet-centred 32-bit</em>. At 6,371 km from the centre a 32-bit float can only say where something is to the nearest half metre, so the ground jumps in half-metre steps instead of gliding, and nearby vertices snap to a coarse grid.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<script type="module" src="globe.js"></script>
+</body>
+</html>
