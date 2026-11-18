@@ -1,6 +1,6 @@
 ---
 title: "Structure First: Planetary Forecasting as a Skeleton Plus a Residual"
-deck: "Work in progress. Most atmospheric models fit correlations in the record. This topic forecasts from a small structural skeleton, treats what is left as the scientific object, and tests the idea on Earth's temperature record and Mars surface pressure, with Mercury next."
+deck: "Work in progress. Most atmospheric models fit correlations in the record. This topic forecasts from a small structural skeleton, treats what is left as the scientific object, and tests the idea on Earth's temperature, Mars surface pressure and Mercury's sodium exosphere."
 id: planetary
 status: "Work in progress"
 author: "David Charlot, Open Interface Engineering"
@@ -15,7 +15,7 @@ board_metered: false
 
 ## Abstract
 
-A planetary atmosphere produces millions of measurable signals, but a few structural drivers set how it evolves. This topic builds forecasts in that order: first a small structural skeleton, then a model of the residual around it, then a search for the driver behind whatever residual is left. Two preregistered hindcasts on four independent records of Earth's monthly global temperature, 1990 to 2026, test the approach. A two-parameter skeleton in the logarithm of carbon dioxide cuts mean square error by 32 to 42% at two years and by 66 to 73% at ten years against a 25-parameter autoregression fitted to the raw record. Beyond one year, no residual model improves on the skeleton alone. A one-parameter long-memory model of the residual helps up to six months, then does worse than short memory; the residual's fluctuations decay faster than that model allows. One named driver, the El Niño–Southern Oscillation, explains part of the residual and adds 14 to 20% skill at three to six months. On Mars, a third preregistered study of Viking and InSight surface pressure finds the predicted weather break near two sols at one lander out of three. Beyond it, residual fluctuations rise again past about 16 sols; measured dust optical depth does not explain the rise linearly, but at Viking 1 it is confined to the 1977 dust-storm years, and in later years the residual falls with a slope close to Earth's. Protocols for Mercury and a laboratory scaling ladder follow.
+A planetary atmosphere produces millions of measurable signals, but a few structural drivers set how it evolves. This topic builds forecasts in that order: first a small structural skeleton, then a model of the residual around it, then a search for the driver behind whatever residual is left. Two preregistered hindcasts on four independent records of Earth's monthly global temperature, 1990 to 2026, test the approach. A two-parameter skeleton in the logarithm of carbon dioxide cuts mean square error by 32 to 42% at two years and by 66 to 73% at ten years against a 25-parameter autoregression fitted to the raw record. Beyond one year, no residual model improves on the skeleton alone. A one-parameter long-memory model of the residual helps up to six months, then does worse than short memory; the residual's fluctuations decay faster than that model allows. One named driver, the El Niño–Southern Oscillation, explains part of the residual and adds 14 to 20% skill at three to six months. A physically built forcing skeleton with one sensitivity and one response time loses to the carbon dioxide line, because eruptions and greenhouse forcing act on different time scales. On Mars, a third preregistered study of Viking and InSight surface pressure finds the predicted weather break near two sols at one lander out of three. Beyond it, residual fluctuations rise again past about 16 sols; measured dust optical depth does not explain the rise linearly, but at Viking 1 it is confined to the 1977 dust-storm years, and in later years the residual falls with a slope close to Earth's. On Mercury, a climatology of the other Mercury years predicts two-thirds of the dayside sodium variation seen by the MESSENGER spacecraft (MErcury Surface, Space ENvironment, GEochemistry, and Ranging), and the residual is concentrated at high latitudes, up to twice the climatology, the signature of a magnetospheric source. A first, laboratory-free rung of a scaling ladder places four planets correctly by thermal Rossby number.
 
 **In plain words**
 
@@ -23,6 +23,7 @@ A planetary atmosphere produces millions of measurable signals, but a few struct
 2. On Earth's global temperature, a straight line in carbon dioxide forecasts the next one to ten years better than a pattern-fitting model with twelve times as many settings.
 3. What the line misses is mostly El Niño, and adding El Niño helps for a few months. Beyond a year, nothing tried here beats the line alone.
 4. On Mars the picture is less tidy. In quiet years the leftover behaves much as on Earth; in years with planet-wide dust storms something slow remains that dust measurements alone do not explain.
+5. On Mercury, last year's sodium at the same point in the orbit predicts most of this year's; what it misses sits near the poles.
 
 ## Terms
 
@@ -244,25 +245,50 @@ Read together: on Mars, a falling, macroweather-like residual does appear once t
 2. A check of the InSight rise against its calibration history, sol by sol.
 3. Curiosity pressure at Gale crater, which spans more than six Mars years and the 2018 global storm.
 
-## 8. Study 5: the Mercury sodium residual floor
+## 8. Study 5: the Mercury sodium residual
 
-Mercury has no ocean and almost no atmosphere; its exosphere is collisionless, so its drivers are few and listed: thermal desorption, photon-stimulated desorption, solar-wind sputtering, micrometeoroid vaporization, radiation pressure and photoionization. The protocol:
+Mercury has no ocean and almost no atmosphere; its exosphere is collisionless, so its drivers are few and listed: thermal desorption, photon-stimulated desorption, solar-wind sputtering, micrometeoroid vaporization, radiation pressure and photoionization. At a fixed local time and altitude, every one of them is set by Mercury's distance from the Sun, its radial velocity and the solar input, so by its orbital position, the true anomaly angle (TAA). MESSENGER found the dayside exosphere nearly the same from one Mercury year to the next [9]. Study 5 uses that repeatability as the skeleton and asks what it misses.
 
-1. Assemble MESSENGER UVVS (Ultraviolet and Visible Spectrometer) sodium limb scans from the PDS, with published ground-based columns as a cross-check.
-2. Bin by Mercury true anomaly angle, local time, latitude and altitude. The near repeatability between Mercury years [9] makes true anomaly angle the natural skeleton coordinate.
-3. Fit the listed source and loss terms with physically bounded parameters, and subtract.
-4. Test the residual against magnetic cusp geometry, hot-pole and cold-pole longitudes, and subsurface diffusion parameters [10].
-5. A residual flat against all of them requires a new process.
+### 8.1 Design
 
-The nightside is almost unmeasured. Any nightside floor the protocol reports is inferred from the dayside, and will be labelled as an inference, not a measurement, until in-situ data from BepiColombo arrive.
+The data are every sodium limb measurement of the MESSENGER orbital mission, 2011 to 2015, from the Ultraviolet and Visible Spectrometer (UVVS) derived data in the PDS: 1.69 million spectra in 18 Mercury years. The dayside spectra with a sunlit tangent point and no archive flag, 440,514 of them, are averaged into 17,303 passes by orbit, altitude band and local-time hour (`mercury_reduce.py`).
+
+- **Skeleton:** for each pass, the mean brightness in its cell (TAA in 10° bins, local-time hour, altitude band), computed from the other Mercury years only. The residual is brightness over skeleton, minus one.
+- **What the self-test found first.** Mercury turns three times in two orbits, so at the same TAA and local time, alternate Mercury years put longitudes 180° apart under the spacecraft. The hot-pole and cold-pole pattern is the same at two such longitudes, so it is fixed by TAA and local time, and any TAA-by-local-time skeleton absorbs it. An injected 15% cold-pole enhancement came back as zero. This design therefore cannot test the cold-pole enhancement that the subsurface-diffusion model explains [10]. That needs a skeleton built from physical source terms.
+- **H18:** a source tied to terrain, such as surface composition, would differ between longitudes 180° apart and so survive the skeleton. It is tested as a first longitude harmonic in the residual, in at least two of the three bands below 1000 km.
+- **H19:** after that term, the residual correlates with the absolute tangent latitude, in at least two of the three bands. High latitudes are where the magnetospheric cusps deliver solar-wind ions to the surface.
+
+### 8.2 Results
+
+| Altitude band | Passes | Skeleton skill | Terrain term (amplitude) | Residual against latitude, r [95%] |
+|---|---|---|---|---|
+| 0 to 250 km | 3,661 | 0.68 | 0.036, not significant | +0.07 [−0.07, +0.18] |
+| 250 to 500 km | 4,325 | 0.70 | 0.015, not significant | +0.21 [+0.09, +0.33] |
+| 500 to 1000 km | 4,599 | 0.67 | 0.005, not significant | +0.15 [+0.09, +0.18] |
+| 1000 to 2000 km | 3,995 | 0.37 | 0.036, not significant | −0.01 [−0.03, +0.03] |
+
+**The skeleton holds two-thirds of the variation.** Below 1000 km, the brightness in the other Mercury years at the same orbital position, local time and altitude predicts 67 to 70% of the pass-to-pass variance. Above 1000 km it predicts 37%; that band also carries a dayside background of unknown origin that the archive documents and leaves uncorrected for sodium, so nothing there is interpreted.
+
+**H18 is refuted.** No terrain-locked term appears in any band. The fitted amplitudes are 0.5 to 3.6%, and the intervals exclude terrain terms larger than about 5 to 11%.
+
+**H19 is supported, and the structure is large.** Figure 5 shows the residual by latitude. Within 20° of the equator it is within a few per cent of zero. At 40 to 60° it is about +40 to +45% in both hemispheres, and above 60°N it reaches about +100% at 250 to 500 km, on 71 passes. The pattern runs opposite to photon-stimulated desorption, whose source falls with solar zenith angle, and it is symmetric enough between hemispheres to be a recurring feature rather than a single event. It matches what ground-based imaging first reported in 1990, localized sodium excesses at high northern and southern latitudes, attributed to magnetospheric ions reaching the surface near the cusps [16]. The latitude breakdown is descriptive and was not preregistered (`diag_mercury_lat.py`).
+
+![Figure 5. Mercury dayside sodium residual against the climatology of the other Mercury years, by tangent latitude, two altitude bands, with 95% intervals of the mean. Near zero at low latitudes; +40 to +45% at 40 to 60 degrees in both hemispheres; about +100% above 60 degrees north.](/figures/planetary/mercury-latitude.svg)
+
+**The nightside is not measured here.** Nightside lines of sight whose tangent point is in shadow still cross sunlit gas, at a median lowest sunlit altitude of about 2,100 km. No nightside floor is inferred, and the protocol's nightside question waits for in-situ data from BepiColombo.
+
+### 8.3 Next on Mercury
+
+1. A skeleton built from the physical source terms, which can separate the cold-pole pattern from TAA and local time.
+2. A cusp test: the residual against the modelled cusp footprint for each orbit and against solar-wind conditions, which a cusp-sputtering source predicts and a polar cold-trap source does not.
 
 ## 9. Study 6: the scaling ladder
 
-Rotating annulus and differentially heated chamber experiments, varied in heat flux, rotation rate and fluid, are reduced by Buckingham-Pi analysis to their governing groups, chiefly the thermal Rossby number and the Taylor number. Read and collaborators place planetary atmospheres in the same terms [16]. The test is whether the regime boundaries the laboratory finds in those groups predict observed regimes on Earth, Mars, Venus and Titan, and where they fail. A failure of transfer locates a variable the laboratory does not contain.
+Rotating annulus and differentially heated chamber experiments, varied in heat flux, rotation rate and fluid, are reduced by Buckingham-Pi analysis to their governing groups, chiefly the thermal Rossby number and the Taylor number. Read and collaborators place planetary atmospheres in the same terms [17]. The test is whether the regime boundaries the laboratory finds in those groups predict observed regimes on Earth, Mars, Venus and Titan, and where they fail. A failure of transfer locates a variable the laboratory does not contain.
 
 ### 9.1 Rung 0: no laboratory, one boundary
 
-Rung 0 asks whether the annulus boundary near a thermal Rossby number Ro_T = R ΔT_h / (Ω a)² of order one sorts four bodies correctly. R is the specific gas constant, ΔT_h the equator-to-pole temperature difference, Ω the rotation rate and a the radius. Inputs are ranges, sampled 10,000 times (`ladder.py`). The decision rule was committed first (`PREREGISTRATION_study6.md`) as hypothesis **H14**: every body classified, and all four matching the regime observed.
+Rung 0 asks whether the annulus boundary near a thermal Rossby number Ro_T = R ΔT_h / (Ω a)² of order one sorts four bodies correctly. R is the specific gas constant, ΔT_h the equator-to-pole temperature difference, Ω the rotation rate and a the radius. Inputs are ranges, sampled 10,000 times (`ladder.py`). The decision rule was committed first (`PREREGISTRATION_study6.md`): every body must be classified, and all four must match the regime observed.
 
 | Body | Ro_T (5th to 95th percentile) | Predicted | Observed |
 |---|---|---|---|
@@ -271,13 +297,13 @@ Rung 0 asks whether the annulus boundary near a thermal Rossby number Ro_T = R �
 | Titan | 4.6 to 10 | axisymmetric | wide Hadley cells, superrotation |
 | Venus | 220 to 1,100 | axisymmetric | planet-wide Hadley cells, superrotation |
 
-**H14 is supported**, with margins of more than a factor of four on every body. The result replicates a known placement, so its value is as a calibration of the procedure. Within the eddy regime, Mars has about four times Earth's Ro_T and the more regular waves, which matches the annulus ordering. Transfer fails at the next question: both axisymmetric bodies superrotate, and the annulus regime diagram has no group that predicts superrotation. The obvious missing variable is radiation, the ratio of the radiative relaxation time to the rotation period, which the annulus lacks altogether. Rung 1 is a laboratory or numerical experiment that adds a radiative relaxation term and asks whether superrotation appears at the Ro_T where Titan and Venus sit.
+**The rule is met**, with margins of more than a factor of four on every body. The result replicates a known placement, so its value is as a calibration of the procedure. Within the eddy regime, Mars has about four times Earth's Ro_T and the more regular waves, which matches the annulus ordering. Transfer fails at the next question: both axisymmetric bodies superrotate, and the annulus regime diagram has no group that predicts superrotation. The obvious missing variable is radiation, the ratio of the radiative relaxation time to the rotation period, which the annulus lacks altogether. Rung 1 is a laboratory or numerical experiment that adds a radiative relaxation term and asks whether superrotation appears at the Ro_T where Titan and Venus sit.
 
 ## 10. Falsifiers for the topic
 
 - If Study 3 finds that M0 or M6 loses to the unconstrained M5 at 24 months on unseen data, the central claim fails on Earth.
 - If a storm-onset dust term fitted on Viking 1 year 1 does not reduce the residual rise in a held-out storm year, the slow driver at the Viking sites is not dust, and the falling macroweather slope of quiet Mars years is not a baseline that transfers.
-- If the Mercury residual can be absorbed by the six listed processes within their physical bounds, there is no missing mechanism to find there.
+- If the high-latitude sodium residual does not follow the modelled cusp footprint or solar-wind conditions orbit by orbit, the cusp-sputtering reading fails and a polar source of another kind is needed.
 
 ## 11. Reproduce
 
@@ -296,6 +322,10 @@ python3 mars.py                 # Study 4
 python3 mars_dust.py            # Study 4b
 python3 diag_mars_years.py      # post hoc Mars diagnostics
 python3 mars_holdout.py         # Study 4c
+python3 mercury_reduce.py uvvs_na.csv   # from mercury_fetch/; rebuilds data/mercury/dayside_passes.csv
+python3 mercury.py --selftest   # Mercury synthetic checks
+python3 mercury.py              # Study 5
+python3 diag_mercury_lat.py     # post hoc latitude breakdown
 python3 figures.py              # figures into public/figures/planetary/
 ```
 
@@ -321,6 +351,7 @@ How each reference was checked is stated after it.
 <li>I. M. Held et al., "Probing the fast and slow components of global warming by returning abruptly to preindustrial forcing," <em>Journal of Climate</em> 23, 2418–2427 (2010). Cited for the two-time-scale picture only.</li>
 <li>D. S. Colburn, J. B. Pollack, R. M. Haberle, "Diurnal variations in optical depth at Mars," <em>Icarus</em> 79, 159–189 (1989). Data used: PDS Viking lander opacity products (VL_OPAC); the paper itself was not re-read.</li>
 <li>M. T. Lemmon et al., "Results from the InSight atmospheric imaging campaign" (manuscript archived with the data; the archive indicates <em>Icarus</em>, 2024), and the PDS Atmospheres node InSight optical depth bundle, DOI 10.17189/dc8r-ag55 (unresolvable on the day of download; files taken from the review area). Data used as archived; the paper was not re-read.</li>
+<li>A. E. Potter, T. H. Morgan, "Evidence for magnetospheric effects on the sodium atmosphere of Mercury," <em>Science</em> 248, 835–838 (1990), DOI 10.1126/science.248.4957.835. Abstract checked.</li>
 <li>P. L. Read, S. R. Lewis, G. K. Vallis, "Atmospheric dynamics of terrestrial planets," in <em>Handbook of Exoplanets</em> (Springer, 2018). Repository record checked; cited for the use of the thermal Rossby number in planetary regimes.</li>
 </ol>
 
