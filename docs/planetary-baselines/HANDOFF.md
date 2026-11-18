@@ -147,3 +147,21 @@ must account for that.
 water, sunlight, heat transport and rotation; measure doubling time and the
 spectral transition time; fix candidate dimensionless groups and the held-out
 split before running.
+
+---
+
+## 2026-11-18 · entry 7 · BL-H3 registered (before running)
+
+`scripts/planetary-baselines/run-h3.mjs`: 60 worlds (sizes 128/192/256, rot
+0/64/128/192/256, seeds 400-403), doubling time per world (8 trials x 600
+ticks), groups omega (water per cell / 16), r (rot / 256), chi (8W / 720),
+log-linear OLS, every 4th world held out, kill at factor 2 on more than a
+quarter of held-out worlds; "not testable" if more than half lack growth.
+Secondary: Haar-fluctuation transition time (no pass condition).
+
+Before registering, a `--smoke` run on one unregistered world (seed 999,
+W 128, rot 64) checked for crashes: doubling 18.2 ticks (6 of 8 fitted),
+Haar maximum at the largest scale, 14 s. That led to one clarification of
+the secondary measure before registration: a maximum at the largest scale
+is read as "no transition within range". Study Section 5 row updated with
+the concrete design. Expected run time about 35 minutes.
