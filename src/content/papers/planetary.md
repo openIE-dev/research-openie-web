@@ -168,7 +168,7 @@ The question is whether the skeleton-plus-residual structure, and the weather-to
 
 ### 7.1 Design
 
-The preregistration file (`PREREGISTRATION_study4.md`) was committed before the analysis ran on the lander data; before that, only the data coverage had been looked at. The data are hourly mean surface pressures from the Planetary Data System (PDS): Viking Lander 1 (22°N, sols 0 to 2245), Viking Lander 2 (48°N, sols 0 to 1204) and InSight (4°N, sols 4 to 1219), with provenance in the provenance file (`data/mars/PROVENANCE.md`). Air temperature was left out because of known sensor errors at Viking 2 and InSight.
+The preregistration file (`PREREGISTRATION_study4.md`) was committed before the analysis ran on the lander data; before that, only the data coverage had been looked at. The data are hourly mean surface pressures from the Planetary Data System (PDS): Viking Lander 1 (22°N, sols 0 to 2245), Viking Lander 2 (48°N, sols 0 to 1204) and InSight (4°N, sols 4 to 1219), with a provenance file beside them in `data/mars/`. Air temperature was left out because of known sensor errors at Viking 2 and InSight.
 
 - **Skeleton (27 parameters per lander):** seasonal harmonics 0 to 4 in Ls, plus diurnal harmonics 1 to 3 in local time with amplitudes that vary with Ls.
 - **Part A:** Haar fluctuation of the hourly residual from a quarter sol to 128 sols, with decisions taken only at whole-sol lags.
