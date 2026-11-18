@@ -18,7 +18,7 @@ evidence (a path, a commit, a URL). Hypothesis IDs refer to Section 5 of
 
 | ID | Task | Status | Depends | Acceptance | Hypothesis |
 |---|---|---|---|---|---|
-| BLN-010 | Residual-protocol runner: withhold each of four processes, plus a null case; fix candidates and statistic in the file header; commit before running | todo | BLN-003 | Results in `docs/planetary-baselines/results/h1.json` | BL-H1 |
+| BLN-010 | Residual-protocol runner: withhold each of four processes, plus a null case; fix candidates and statistic in the file header; commit before running | doing | BLN-003 | Results in `docs/planetary-baselines/results/h1.json` | BL-H1 |
 | BLN-011 | Long-run baseline of a toy world (per cell, per season) and two matched forecasters | todo | BLN-003 | Errors at 1, 3, 10 doubling times on held-out seeds | BL-H2 |
 | BLN-012 | Rotation option for the toy (off by default) in `core.js` and `lib.rs`; planet hashes unchanged with it off | todo | — | `pnpm test:planet` and `test-rust.mjs` pass unchanged; new tests for rotation on | — |
 | BLN-013 | Scaling ladder across toy worlds; spectral transition time per world | todo | BLN-012 | Held-out prediction error | BL-H3 |

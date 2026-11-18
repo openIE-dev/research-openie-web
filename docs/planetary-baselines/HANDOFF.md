@@ -48,3 +48,25 @@ Append-only. Newest entry at the bottom. Correct earlier entries in a new one.
 
 **Next.** BLN-010 (residual-protocol runner on the toy; commit before
 running), or BLN-012 (rotation option) if BL-H3 is the priority.
+
+---
+
+## 2026-11-18 · entry 2 · BL-H1 registered (before running)
+
+**Registered.** `scripts/planetary-baselines/run-h1.mjs` (protocol in its
+header) and `scripts/planetary-baselines/model.mjs` (the analyst's model: a
+copy of the toy's step with four switches). Committed before the first run.
+
+**Design checks run before registering (not BL-H1 results).**
+- `checkFaithful`: with every switch on, the copy equals `core.step` by state
+  hash for 300 ticks on seeds 1 and 1234.
+- Effect of each switch, cells changed per tick from the same state, averaged
+  over 20 ticks after a 200-tick spin-up, seeds 1 / 7 / 1234:
+  altitude cooling 15,797 / 11,860 / 5,847; westerly 8,831 / 8,815 / 8,770;
+  orographic 1.0 / 1.0 / 56.8; erosion 47.5 / 123.2 / 441.4.
+  Because orographic condensation barely acts on some seeds, the kill
+  criterion was clarified before the run: a (seed, process) pair is scored
+  only if withholding changes at least 0.1% of cells per tick; a process is
+  scored only with at least 4 eligible seeds. Study Section 5 updated.
+- Statistics self-test (`--selftest`): chi-square tails match tables;
+  equal values share a bin; perfect split gives eta^2 = 1.
