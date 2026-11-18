@@ -15,7 +15,7 @@ board_metered: false
 
 ## Abstract
 
-This study tests a structure-first approach to planetary atmospheres. It has two parts. First, a long-term baseline built from scaling relations and long-run averages is treated as the skeleton of a forecast, and short-term models predict only the departure from it. Second, after every known process is subtracted from an observation, the residual is treated as the main scientific object: a residual that follows a candidate variable points to that variable, and a residual that follows none points to a missing mechanism. Both ideas are tested first on a toy planet in which every process is known and every run can be replayed exactly, so the methods can be checked against a known answer before they are used on real data. Tests on Mercury's sodium exosphere, on the weather-to-macroweather transition of other planets, and on Earth forecasts beyond about ten days follow, and need data and computing not yet in hand. Nothing has been run.
+This study tests a structure-first approach to planetary atmospheres. It has two parts. First, a long-term baseline built from scaling relations and long-run averages is treated as the skeleton of a forecast, and short-term models predict only the departure from it. Second, after every known process is subtracted from an observation, the residual is treated as the main scientific object: a residual that follows a candidate variable points to that variable, and a residual that follows none points to a missing mechanism. Both ideas are tested first on a toy planet in which every process is known and every run can be replayed exactly, so the methods can be checked against a known answer before they are used on real data. Tests on Mercury's sodium exosphere, on the weather-to-macroweather transition of other planets, and on Earth forecasts beyond about ten days follow, and need data and computing not yet in hand. The first toy test has been run; it is reported with the test plan.
 
 **In plain words**
 
@@ -96,8 +96,24 @@ Each hypothesis is listed with its kill criterion. BL-H1 to BL-H3 run on the toy
 | BL-H5 | Mercury's sodium residual follows a named candidate, or none | MESSENGER and ground-based sodium | Correlation with each candidate | Neither outcome is a kill; the result is reported either way, with the binning fixed before the data are fitted |
 | BL-H6 | A scaling baseline lowers multi-week forecast error on Earth | Reanalysis, matched forecasters | RMSE at 2 weeks to a season | No reduction beyond the seed-to-seed spread |
 
+### 5.1 First result: BL-H1
+
+BL-H1 was run as registered on seeds 200 to 207 in Node 22 on one Linux machine; results are in `docs/planetary-baselines/results/h1.json` in the repository. It is killed.
+
+- **Cooling of high ground: found on 8 of 8 seeds.** The residual of temperature against altitude explained 28% to 87% of its variance.
+- **The westerly drift: found on 0 of 8,** although withholding it changes about 47% of cells per tick, the largest effect of the four. The drift moves vapour and heat from each cell to its eastern neighbour, so the residual at a cell follows the difference between the cell and its upwind neighbour. Inside the band, cells gain and lose about equally, and no local candidate separates them. A protocol that tests residuals against local quantities is blind to transport.
+- **Lower condensation over high ground: found on 0 of 6 eligible seeds.** Withholding it changes 0.1% to 0.5% of cells per tick, below what the protocol's effect-size floor can see.
+- **Erosion: found on 5 of 7 eligible seeds,** below the 75% bar. On the two misses, water depth ranked first and the accepted flow variable second.
+- **The null case: no structure on any of 8 seeds.** The protocol invented nothing.
+
+The finding that matters for real planets is the second. Mercury's sodium is moved by radiation pressure and by transport around the planet, and a residual analysis that bins against local quantities can miss a large transported signal entirely. The next hypothesis tests the obvious repair, registered before it was run on new seeds:
+
+| ID | Hypothesis | Test | Measure | Kill criterion |
+|---|---|---|---|---|
+| BL-H7 | Adding upwind differences as candidates lets the protocol find the westerly drift | BL-H1's protocol with two extra candidates (vapour and heat of the western neighbour minus the cell's own), seeds 208 to 215 | Westerly found; null structure; cooling of high ground still found | Westerly found on fewer than 6 of 8 seeds; or structure in more than 1 of 8 null seeds; or cooling of high ground found on fewer than 75% of its eligible seeds |
+
 ## 6. Sources and limits
 
 All external sources above were checked only against search results, not against full texts. Lovejoy, Muller and Boisvert 2014: citation and abstract; the 1.8-day figure from press coverage only. Verkercke and co-authors 2025: citation and abstract. Sohl and co-authors 2024 (CUISINES): citation and summary. ROCKE-3D: summary pages. Kleidon: abstracts and conference pages. BepiColombo flyby of 19 June 2023: a conference abstract. Not yet checked at all: the "CELL consortium" named in the handoff note, and the location of MESSENGER sodium data in the PDS.
 
-Nothing has been run. The kill criteria in Section 5 are a first statement and may be tightened, but only before the corresponding test is run, and any change is recorded in the study's working ledger.
+BL-H1 has been run (Section 5.1). The kill criteria in Section 5 are a first statement and may be tightened, but only before the corresponding test is run, and any change is recorded in the study's working ledger.
