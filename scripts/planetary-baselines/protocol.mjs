@@ -21,6 +21,8 @@ export const BASE_ACCEPT = {
 };
 let ALPHA = 0.01 / (FIELDS.length * CANDS.length);
 export const ETA_MIN = 0.01, ELIGIBLE_SHARE = 0.001;
+export const FIELD_NAMES = FIELDS;
+export const alphaFor = (pairs) => 0.01 / pairs;
 
 // ---------------------------------------------------------------- statistics
 
@@ -78,13 +80,13 @@ export function etaSquared(r, b) {
 
 // ---------------------------------------------------------------- observations and candidates
 
-function observe(s, seed) {
+export function observe(s, seed) {
   const o = C.cloneState(s);
   for (let i = 0; i < o.T.length; i++) o.T[i] = s.T[i] + (C.hash3(seed ^ 0x5eed, i, s.t) % 5) - 2;
   return o;
 }
 
-function candidates(o) {
+export function candidates(o) {
   const { W, H, SEA } = { W: o.W, H: o.H, SEA: C.SEA };
   const n = W * H, X = Object.fromEntries(CANDS.map((c) => [c, new Float64Array(n)]));
   const idx = (x, y) => y * W + ((x + W) % W);

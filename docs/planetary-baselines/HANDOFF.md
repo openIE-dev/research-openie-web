@@ -165,3 +165,15 @@ Haar maximum at the largest scale, 14 s. That led to one clarification of
 the secondary measure before registration: a maximum at the largest scale
 is read as "no transition within range". Study Section 5 row updated with
 the concrete design. Expected run time about 35 minutes.
+
+---
+
+## 2026-11-18 · entry 8 · BL-H8 registered (before running)
+
+`scripts/planetary-baselines/run-h8.mjs`: a hidden heat sink (fraction p of
+cells, k heat units per tick) is added to the truth; the analyst's model is
+the full step; candidates are BL-H1's nine plus a marker of the hidden
+cells. Grid p 0.001-0.1, k 0-8, seeds 216-223. Kill rules in the header and
+study Section 5.3. Before registering: `observe` and `candidates` were
+exported from `protocol.mjs` (BL-H1 rerun identical), and a `--smoke` run on
+unregistered seed 999 (p 0.01, k 2) checked for crashes.

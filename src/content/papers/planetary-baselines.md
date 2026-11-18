@@ -130,6 +130,14 @@ At 250 ticks the baseline prior was more accurate than the direct forecaster on 
 
 The secondary comparison changes how the result should be read. The direct forecaster given the same baseline as an input (A+) did as well as the one that predicts the departure from it; B was ahead of A+ on only 3 of 8 worlds. For this learner, the gain comes from knowing the structure, not from recasting the forecast as a residual. Whether the residual form matters for learners that can overfit, where a fixed skeleton may act as a constraint rather than as information, is a separate question this test does not answer.
 
+### 5.3 Registered next: the protocol's power
+
+BL-H1 left open how small a process the residual protocol can see. BL-H8 measures it directly, registered before it was run: a hidden heat sink, unknown to the analyst, removes a fixed amount of heat each tick from a hidden set of cells, and the protocol is given a marker of those cells among its candidates.
+
+| ID | Hypothesis | Test | Measure | Kill criterion |
+|---|---|---|---|---|
+| BL-H8 | The protocol finds a hidden process that touches at least 1% of cells with a strength at least equal to the observation noise, and does not find one that is not there | Hidden set of 0.1% to 10% of cells losing 0 to 8 heat units per tick (noise is ±2), seeds 216 to 223 | Share of seeds in which the hidden process is found; false detections when its strength is 0 | Found in fewer than 6 of 8 seeds for any setting with at least 1% of cells and strength at least 2; or a false detection in more than 1 of 8 seeds at any size |
+
 ## 6. Sources and limits
 
 All external sources above were checked only against search results, not against full texts. Lovejoy, Muller and Boisvert 2014: citation and abstract; the 1.8-day figure from press coverage only. Verkercke and co-authors 2025: citation and abstract. Sohl and co-authors 2024 (CUISINES): citation and summary. ROCKE-3D: summary pages. Kleidon: abstracts and conference pages. BepiColombo flyby of 19 June 2023: a conference abstract. Not yet checked at all: the "CELL consortium" named in the handoff note, and the location of MESSENGER sodium data in the PDS.
