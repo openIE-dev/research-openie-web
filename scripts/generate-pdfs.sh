@@ -239,7 +239,7 @@ elif id_ == "planetary":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research topic, work in progress, not a journal final.\n"
-        "Results are preregistered hindcasts on public temperature records, computed by the scripts in experiments/planetary-baseline. No energy figure and no hardware result. Mars, Mercury and laboratory studies are protocols, not results.\n"
+        "Results are preregistered analyses of public data (Earth temperature records, Viking and InSight pressure and optical depth, MESSENGER UVVS sodium), computed by the scripts in experiments/planetary-baseline; post hoc diagnostics are labelled. No laboratory experiment has been run. No energy figure and no hardware result.\n"
         "</div>\n"
     )
 elif dir_ == "products":
