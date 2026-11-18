@@ -168,7 +168,7 @@ The question is whether the skeleton-plus-residual structure, and the weather-to
 
 ### 7.1 Design
 
-The preregistration file (`PREREGISTRATION_study4.md`) was committed before the analysis ran on the lander data; before that, only the data coverage had been looked at. The data are hourly mean surface pressures from the Planetary Data System (PDS): Viking Lander 1 (22°N, sols 0 to 2245), Viking Lander 2 (48°N, sols 0 to 1204) and InSight (4°N, sols 4 to 1219), with provenance in `data/mars/PROVENANCE.md`. Air temperature was left out because of known sensor errors at Viking 2 and InSight.
+The preregistration file (`PREREGISTRATION_study4.md`) was committed before the analysis ran on the lander data; before that, only the data coverage had been looked at. The data are hourly mean surface pressures from the Planetary Data System (PDS): Viking Lander 1 (22°N, sols 0 to 2245), Viking Lander 2 (48°N, sols 0 to 1204) and InSight (4°N, sols 4 to 1219), with provenance in the provenance file (`data/mars/PROVENANCE.md`). Air temperature was left out because of known sensor errors at Viking 2 and InSight.
 
 - **Skeleton (27 parameters per lander):** seasonal harmonics 0 to 4 in Ls, plus diurnal harmonics 1 to 3 in local time with amplitudes that vary with Ls.
 - **Part A:** Haar fluctuation of the hourly residual from a quarter sol to 128 sols, with decisions taken only at whole-sol lags.
@@ -200,7 +200,7 @@ The verdicts need reading against Figure 4.
 
 **No macroweather plateau.** After a minimum near 8 to 16 sols, fluctuations grow again out to about 100 sols at all three landers (slopes +0.01 to +0.18). On Earth the residual fluctuations kept falling to 20 years. On Mars, a slow component that a fixed seasonal skeleton cannot follow remains in the residual. Two candidates are year-to-year differences in the seasonal cycle and dust: the residual at tens of sols includes the 1977 global dust storms in the Viking record. The protocol does not let that component be absorbed by more harmonics. It points to the next named driver to test, dust optical depth.
 
-**The ordering of models.** At Viking 1, the record with most origins, the skeleton dominates as it does on Earth: D2 beats the unconstrained AR(5) by 81% in mean square error at 10 sols and by 98% at 30 sols. At Viking 2 the AR(5) beats the skeleton at 1 to 10 sols, where weather systems carry real short-range memory and the seasonal skeleton misses by 22 Pa RMS. At 30 sols the skeleton wins there too (+44%), but the interval includes zero. H11 passes, but it was a weak test: an AR(1) residual forecast decays to the skeleton by construction, so this result adds little.
+**The ordering of models.** At Viking 1, the record with most origins, the skeleton dominates as it does on Earth: D2 beats the unconstrained AR(5) by 81% in mean square error at 10 sols and by 98% at 30 sols. At Viking 2 the AR(5) beats the skeleton at 1 to 10 sols, where weather systems carry real short-range memory and the seasonal skeleton alone has an RMSE of 22 Pa. At 30 sols the skeleton wins there too (+44%), but the interval includes zero. H11 passes, but it was a weak test: an AR(1) residual forecast decays to the skeleton by construction, so this result adds little.
 
 Per-lander tables are in `results/study4.md`.
 
