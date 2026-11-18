@@ -1,0 +1,235 @@
+lander,sol,ls,tau,tau_source,notes
+viking2,6,120.428,0.275,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:57; mean_err_total=0.056
+viking2,7,120.675,0.283,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=06:12; mean_err_total=0.044
+viking2,15,124.835,0.247,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=18:22,19:07; range=0.245-0.249; mean_err_total=0.034"
+viking2,22,128.290,0.275,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=18:06,18:40; range=0.266-0.284; mean_err_total=0.041"
+viking2,25,129.529,0.489,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=3; local_times(Earth h:m)=05:21,06:06,06:46; range=0.451-0.514; mean_err_total=0.041"
+viking2,28,131.295,0.311,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=18:18,19:03; range=0.309-0.314; mean_err_total=0.032"
+viking2,31,132.804,0.291,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=18:06,19:04; range=0.287-0.296; mean_err_total=0.033"
+viking2,40,137.114,0.442,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=3; local_times(Earth h:m)=05:20,06:02,06:44; range=0.423-0.457; mean_err_total=0.036"
+viking2,44,139.161,0.358,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:29,05:59; range=0.353-0.364; mean_err_total=0.028"
+viking2,48,141.507,0.176,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=18:16,18:56; range=0.172-0.181; mean_err_total=0.027"
+viking2,52,143.572,0.358,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=3; local_times(Earth h:m)=16:52,17:57,18:42; range=0.341-0.368; mean_err_total=0.044"
+viking2,54,144.618,0.252,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=3; local_times(Earth h:m)=16:52,17:57,18:38; range=0.237-0.272; mean_err_total=0.044"
+viking2,55,144.876,0.426,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=3; local_times(Earth h:m)=05:13,05:33,06:08; range=0.329-0.485; mean_err_total=0.023"
+viking2,73,154.722,0.340,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=17:36,18:16; range=0.324-0.356; mean_err_total=0.032"
+viking2,88,162.903,0.268,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=17:19,17:58; range=0.254-0.282; mean_err_total=0.032"
+viking2,111,175.689,0.618,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=4; local_times(Earth h:m)=06:47,07:42,17:09,17:47; range=0.422-0.805; mean_err_total=0.034"
+viking2,120,180.786,1.150,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=3; local_times(Earth h:m)=08:25,09:14,10:19; range=1.140-1.160; mean_err_total=0.083; excluded_flagged=1.070(f1)"
+viking2,132,187.848,1.440,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=08:15; mean_err_total=0.057
+viking2,145,195.834,0.916,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=16:11; mean_err_total=0.039; excluded_flagged=0.778(f1)
+viking2,146,196.245,0.908,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=08:31; mean_err_total=0.054
+viking2,159,204.323,0.857,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=15:01,16:11; range=0.850-0.864; mean_err_total=0.046"
+viking2,160,204.803,0.836,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=4; local_times(Earth h:m)=08:47,09:47,10:52,12:17; range=0.773-0.863; mean_err_total=0.073"
+viking2,173,212.890,1.740,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=6; local_times(Earth h:m)=11:00,12:07,13:12,14:00,15:00,15:22; range=1.580-1.960; mean_err_total=0.073"
+viking2,174,213.427,2.300,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:15; mean_err_total=0.092; excluded_flagged=2.510(f1)
+viking2,184,219.723,1.755,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=8; local_times(Earth h:m)=10:14,10:48,11:29,12:09,12:49,13:27,14:17,14:47; range=1.660-1.900; mean_err_total=0.068"
+viking2,187,221.556,1.030,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:35; mean_err_total=0.063
+viking2,188,222.185,1.520,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:35; mean_err_total=0.062
+viking2,189,222.816,1.670,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:39; mean_err_total=0.063
+viking2,190,223.446,1.280,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:39; mean_err_total=0.062
+viking2,191,224.075,1.460,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:35; mean_err_total=0.061
+viking2,192,224.706,1.750,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:35; mean_err_total=0.060
+viking2,193,225.367,2.020,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:40; mean_err_total=0.067
+viking2,194,226.000,1.110,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:41; mean_err_total=0.067
+viking2,195,226.633,1.300,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:41; mean_err_total=0.066
+viking2,196,227.267,1.530,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:42; mean_err_total=0.066
+viking2,197,227.901,1.160,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:42; mean_err_total=0.065
+viking2,198,228.536,1.120,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:42; mean_err_total=0.065
+viking2,199,229.179,1.523,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=7; local_times(Earth h:m)=09:38,10:48,11:43,12:03,12:05,13:13,14:15; range=1.450-1.620; mean_err_total=0.059"
+viking2,200,229.808,0.945,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:43; mean_err_total=0.064
+viking2,201,230.482,1.070,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=11:44,14:26; range=1.060-1.080; mean_err_total=0.057"
+viking2,202,231.083,1.340,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:44; mean_err_total=0.063
+viking2,203,231.721,2.000,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:44; mean_err_total=0.063
+viking2,204,232.360,0.993,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:45; mean_err_total=0.062
+viking2,205,232.999,1.180,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:45; mean_err_total=0.061
+viking2,206,233.609,1.030,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:36; mean_err_total=0.050
+viking2,207,234.300,0.877,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=12:31; mean_err_total=0.058
+viking2,208,234.922,1.030,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:47; mean_err_total=0.060
+viking2,209,235.563,1.350,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:47; mean_err_total=0.060
+viking2,210,236.206,1.520,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:47; mean_err_total=0.059
+viking2,211,236.849,1.250,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:48; mean_err_total=0.059
+viking2,212,237.461,1.580,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:38; mean_err_total=0.050
+viking2,213,238.136,0.929,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:47; mean_err_total=0.058
+viking2,214,238.782,0.969,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:49; mean_err_total=0.057
+viking2,215,239.427,1.290,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:49; mean_err_total=0.057
+viking2,216,240.074,1.690,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:50; mean_err_total=0.060
+viking2,217,240.720,1.320,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:50; mean_err_total=0.056
+viking2,218,241.388,1.460,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=12:36; mean_err_total=0.057
+viking2,219,242.016,1.190,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:51; mean_err_total=0.056
+viking2,220,242.604,0.993,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=09:38; mean_err_total=0.033
+viking2,221,243.303,0.892,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:30; mean_err_total=0.049; excluded_flagged=0.975(f2)
+viking2,233,251.139,0.879,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=11:30; mean_err_total=0.119; excluded_flagged=0.999(f2)
+viking2,245,259.112,1.420,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=13:19; mean_err_total=0.053; excluded_flagged=1.790(f1)
+viking2,257,267.337,1.004,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=11:29,13:19; range=0.989-1.020; mean_err_total=0.045"
+viking2,329,312.175,1.690,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=11:29,13:19; range=1.660-1.720; mean_err_total=0.060"
+viking2,377,339.583,1.210,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=11:01,16:11; range=0.959-1.460; mean_err_total=0.069"
+viking2,378,340.191,1.540,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=16:12; mean_err_total=0.069
+viking2,379,340.680,1.280,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=11:02,16:07; range=1.210-1.350; mean_err_total=0.071"
+viking2,380,341.224,1.120,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=10:48,16:08; range=1.110-1.130; mean_err_total=0.070"
+viking2,381,341.770,1.014,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=10:48,16:08; range=0.949-1.080; mean_err_total=0.070"
+viking2,382,342.244,1.540,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=09:48,10:48; range=1.500-1.580; mean_err_total=0.058"
+viking2,384,343.345,1.420,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:49; mean_err_total=0.069
+viking2,386,344.430,1.040,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:50; mean_err_total=0.070
+viking2,387,344.968,1.290,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:40; mean_err_total=0.068
+viking2,388,345.508,1.210,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:41; mean_err_total=0.069
+viking2,389,346.062,1.030,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=10:41,11:56; range=1.010-1.050; mean_err_total=0.079"
+viking2,390,346.587,1.480,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:42; mean_err_total=0.072
+viking2,392,347.661,1.390,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:42
+viking2,396,349.801,1.110,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:44; mean_err_total=0.074
+viking2,397,350.333,1.660,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:44; mean_err_total=0.075
+viking2,400,351.927,1.020,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:46; mean_err_total=0.077
+viking2,404,354.195,0.833,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:57; mean_err_total=0.039
+viking2,405,354.661,0.784,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=6; local_times(Earth h:m)=10:58,11:48,16:23,17:03,17:18,18:03; range=0.633-1.130; mean_err_total=0.066"
+viking2,406,355.101,0.755,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=6; local_times(Earth h:m)=08:53,09:43,10:08,10:58,12:08,16:23; range=0.605-0.813; mean_err_total=0.073"
+viking2,407,355.616,1.220,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:59; mean_err_total=0.084
+viking2,409,356.648,1.300,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:24; mean_err_total=0.075
+viking2,410,357.170,0.798,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:25; mean_err_total=0.076
+viking2,411,357.690,1.440,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:25; mean_err_total=0.077
+viking2,413,358.791,1.038,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=09:46,16:56; range=0.657-1.420; mean_err_total=0.066"
+viking2,414,359.257,1.070,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:57; mean_err_total=0.087
+viking2,415,359.758,0.746,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:12; mean_err_total=0.075
+viking2,416,0.274,1.120,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:12; mean_err_total=0.075
+viking2,417,0.789,1.190,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:12; mean_err_total=0.076
+viking2,418,1.304,0.602,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:13; mean_err_total=0.077
+viking2,419,1.817,1.010,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:14; mean_err_total=0.077
+viking2,420,2.369,0.760,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=7; local_times(Earth h:m)=08:29,08:59,09:49,10:29,11:30,17:04,18:09; range=0.507-0.893; mean_err_total=0.064; excluded_flagged=0.607(f2)"
+viking2,421,2.985,0.785,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=16:59; mean_err_total=0.068
+viking2,422,3.357,0.703,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:26; mean_err_total=0.083
+viking2,423,3.934,0.672,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=10:26,16:50; range=0.482-0.863; mean_err_total=0.079"
+viking2,426,5.465,0.580,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=11:01,16:56; range=0.449-0.710; mean_err_total=0.085; excluded_flagged=0.490(f2)"
+viking2,428,6.540,0.599,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=16:57; mean_err_total=0.074
+viking2,429,7.044,0.519,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=16:58; mean_err_total=0.075
+viking2,431,7.917,1.170,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:34
+viking2,432,8.418,0.885,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:33; mean_err_total=0.090
+viking2,433,8.920,1.030,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:34; mean_err_total=0.091
+viking2,437,10.916,0.733,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:36; mean_err_total=0.095
+viking2,439,11.909,0.783,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=10:37; mean_err_total=0.096
+viking2,442,13.483,0.571,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=3; local_times(Earth h:m)=10:13,17:03,17:58; range=0.436-0.823; mean_err_total=0.072"
+viking2,445,15.011,0.535,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:44; mean_err_total=0.056
+viking2,446,15.341,0.734,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=6; local_times(Earth h:m)=07:34,07:36,08:17,08:19,10:00,17:44; range=0.550-0.785; mean_err_total=0.049"
+viking2,447,15.910,0.569,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=10:00,17:40; range=0.459-0.679; mean_err_total=0.073"
+viking2,448,16.476,0.464,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:41; mean_err_total=0.059; excluded_flagged=0.652(f2)
+viking2,449,16.963,0.446,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:41; mean_err_total=0.059; excluded_flagged=0.637(f2)
+viking2,450,17.464,0.628,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:26; mean_err_total=0.040
+viking2,451,17.865,0.673,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=10:02,18:27; range=0.535-0.812; mean_err_total=0.040"
+viking2,454,19.385,0.745,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:43; mean_err_total=0.059; excluded_flagged=0.622(f2)
+viking2,455,19.867,0.449,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:43; mean_err_total=0.059; excluded_flagged=0.627(f2)
+viking2,458,21.229,0.607,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=09:40,17:55; range=0.514-0.701; mean_err_total=0.070"
+viking2,461,22.660,0.629,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=09:41,17:51; range=0.602-0.656; mean_err_total=0.072"
+viking2,463,23.692,0.518,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:52; mean_err_total=0.057; excluded_flagged=0.626(f2)
+viking2,465,24.640,0.581,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:58; mean_err_total=0.055
+viking2,466,25.029,0.621,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=09:33,17:58; range=0.581-0.660; mean_err_total=0.071"
+viking2,468,25.969,0.774,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=09:19,17:54; range=0.668-0.880; mean_err_total=0.071"
+viking2,471,27.373,0.571,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=09:15,17:50; range=0.508-0.633; mean_err_total=0.072"
+viking2,473,28.393,0.552,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:01; excluded_flagged=0.605(f2)
+viking2,476,29.786,0.442,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:02; mean_err_total=0.055; excluded_flagged=0.617(f2)
+viking2,479,31.063,0.547,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=7; local_times(Earth h:m)=07:28,07:58,08:23,08:53,17:43,17:58,18:23; range=0.416-0.653; mean_err_total=0.059; excluded_flagged=0.638(f2)"
+viking2,480,31.633,0.450,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:09; mean_err_total=0.053; excluded_flagged=0.601(f2)
+viking2,481,32.091,0.403,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:04; mean_err_total=0.055; excluded_flagged=0.605(f2)
+viking2,482,32.464,0.460,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=4; local_times(Earth h:m)=09:10,10:10,17:40,18:05; range=0.373-0.609; mean_err_total=0.082"
+viking2,486,34.254,0.617,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:52,19:07; range=0.598-0.635; mean_err_total=0.031"
+viking2,487,34.695,0.514,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:52,18:02; range=0.468-0.560; mean_err_total=0.045"
+viking2,488,35.148,0.489,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:52,18:13; range=0.469-0.509; mean_err_total=0.043"
+viking2,489,35.532,0.607,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=08:58; mean_err_total=0.085
+viking2,491,36.608,0.477,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:09; mean_err_total=0.055; excluded_flagged=0.577(f2)
+viking2,493,37.411,0.432,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=4; local_times(Earth h:m)=06:39,07:49,18:09,18:44; range=0.408-0.459; mean_err_total=0.046; excluded_flagged=0.506(f2),0.586(f2)"
+viking2,495,38.417,0.464,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:15; mean_err_total=0.053; excluded_flagged=0.594(f2)
+viking2,497,39.321,0.461,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:16; mean_err_total=0.053; excluded_flagged=0.563(f2)
+viking2,499,40.224,0.361,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:12; mean_err_total=0.055
+viking2,500,40.570,0.431,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:57,18:12; range=0.420-0.443; mean_err_total=0.048"
+viking2,502,41.474,0.394,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:58,18:08; range=0.390-0.397; mean_err_total=0.050"
+viking2,503,41.820,0.370,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=06:53; mean_err_total=0.040
+viking2,506,43.388,0.334,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:05; mean_err_total=0.059; excluded_flagged=0.529(f2)
+viking2,509,44.536,0.382,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=06:56; mean_err_total=0.044
+viking2,511,45.656,0.415,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:17; mean_err_total=0.054
+viking2,512,45.895,0.413,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=06:57; mean_err_total=0.046
+viking2,514,46.901,0.351,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:13,18:13; range=0.326-0.375; mean_err_total=0.042"
+viking2,515,47.468,0.312,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:14; mean_err_total=0.056
+viking2,516,47.695,0.398,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=06:14; mean_err_total=0.029
+viking2,517,48.376,0.439,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:19; mean_err_total=0.054
+viking2,518,48.602,0.469,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=06:15; mean_err_total=0.030
+viking2,520,49.623,0.418,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:16,18:21; range=0.407-0.430; mean_err_total=0.042"
+viking2,522,50.530,0.382,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:17,18:16; range=0.360-0.404; mean_err_total=0.044"
+viking2,523,50.871,0.471,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=06:17; mean_err_total=0.033
+viking2,525,51.890,0.596,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:03,18:18; range=0.546-0.645; mean_err_total=0.045"
+viking2,528,53.252,0.691,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:04,18:14; range=0.599-0.783; mean_err_total=0.095"
+viking2,537,57.343,0.444,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:02,18:18; range=0.438-0.449; mean_err_total=0.044"
+viking2,538,57.798,0.446,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:03,18:18; range=0.437-0.455; mean_err_total=0.045"
+viking2,541,59.160,0.406,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:49,18:19; range=0.377-0.435; mean_err_total=0.042"
+viking2,544,60.526,0.414,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:51,18:16; range=0.413-0.415; mean_err_total=0.044"
+viking2,548,62.469,0.413,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:27; mean_err_total=0.060
+viking2,549,62.685,0.411,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=05:48; mean_err_total=0.030
+viking2,552,64.171,0.433,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:49,18:24; range=0.433-0.434; mean_err_total=0.043"
+viking2,553,64.627,0.411,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:49,18:24; range=0.400-0.423; mean_err_total=0.043"
+viking2,555,65.537,0.450,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:40,18:20; range=0.436-0.464; mean_err_total=0.043"
+viking2,557,66.570,0.414,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:20; mean_err_total=0.057
+viking2,558,66.785,0.378,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=05:36; mean_err_total=0.028
+viking2,559,67.482,0.422,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:17; mean_err_total=0.059
+viking2,567,71.140,0.402,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:30
+viking2,568,71.351,0.405,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=05:35
+viking2,571,72.967,0.376,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:26
+viking2,572,73.180,0.378,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=05:37
+viking2,579,76.452,0.401,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=5; local_times(Earth h:m)=06:05,06:35,07:05,07:35,19:05; range=0.364-0.437"
+viking2,583,78.209,0.428,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=05:22; mean_err_total=0.027
+viking2,584,78.792,0.398,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:22,18:22; range=0.390-0.405; mean_err_total=0.043"
+viking2,587,80.043,0.428,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=05:23; mean_err_total=0.029
+viking2,590,81.542,0.359,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:24,18:19; range=0.340-0.377; mean_err_total=0.058"
+viking2,591,82.000,0.390,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:25,18:20; range=0.377-0.402; mean_err_total=0.044"
+viking2,592,82.586,0.404,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:30; mean_err_total=0.053
+viking2,593,82.919,0.365,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:20,18:31; range=0.333-0.397; mean_err_total=0.041"
+viking2,594,83.252,0.410,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=05:21; mean_err_total=0.029
+viking2,595,83.837,0.445,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:22,18:32; range=0.442-0.447; mean_err_total=0.041"
+viking2,597,84.755,0.506,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:22,18:32; range=0.470-0.541; mean_err_total=0.041"
+viking2,600,86.007,0.603,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=05:23
+viking2,601,86.592,0.495,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:24,18:29; range=0.488-0.502"
+viking2,605,88.429,0.366,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:20,18:30; range=0.332-0.400"
+viking2,608,89.945,0.353,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=19:02
+viking2,609,90.143,0.404,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=05:22
+viking2,613,92.108,0.420,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:19,18:29; range=0.412-0.428"
+viking2,616,93.489,0.390,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:20,18:29; range=0.381-0.398"
+viking2,619,94.870,0.402,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:16,18:26; range=0.384-0.420"
+viking2,623,96.840,0.390,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=18:28
+viking2,624,97.048,0.487,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=05:18
+viking2,625,97.635,0.469,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=05:19,18:24; range=0.376-0.562"
+viking2,627,98.430,0.489,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=05:14
+viking2,629,99.415,0.515,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=5; local_times(Earth h:m)=04:50,05:15,06:30,07:30,18:25; range=0.441-0.591"
+viking2,631,100.410,0.414,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=07:01,17:26; range=0.388-0.440"
+viking2,634,101.797,0.537,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=07:10,17:32; range=0.472-0.602"
+viking2,640,104.567,0.514,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=07:09,17:28; range=0.485-0.543"
+viking2,646,107.340,0.450,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=07:05,17:22; range=0.409-0.490"
+viking2,653,110.578,0.529,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:59,17:24; range=0.457-0.601"
+viking2,665,116.140,0.367,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:59,17:25; range=0.362-0.372"
+viking2,667,117.170,0.380,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:27
+viking2,668,117.430,0.394,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=06:54
+viking2,671,118.927,0.389,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=07:10,17:26; range=0.338-0.440; mean_err_total=0.077"
+viking2,677,121.721,0.427,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=07:06,17:28; range=0.387-0.468; mean_err_total=0.071"
+viking2,683,124.596,0.360,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=07:03,17:17; range=0.359-0.361; mean_err_total=0.074"
+viking2,690,127.995,0.345,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:57,17:20; range=0.292-0.398; mean_err_total=0.069"
+viking2,696,130.945,0.391,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=07:04,17:22; range=0.317-0.465; mean_err_total=0.066"
+viking2,702,133.927,0.419,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=07:00,17:25; range=0.328-0.510; mean_err_total=0.069"
+viking2,704,134.929,0.415,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:59,17:26; range=0.292-0.539; mean_err_total=0.060"
+viking2,708,136.945,0.408,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=07:09,17:26; range=0.347-0.470; mean_err_total=0.062"
+viking2,720,143.185,0.409,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:22; mean_err_total=0.055; excluded_flagged=0.419(f2)
+viking2,727,146.824,0.421,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:24; mean_err_total=0.066; excluded_flagged=0.401(f2)
+viking2,739,153.051,0.402,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:59,17:20; range=0.315-0.490; mean_err_total=0.052"
+viking2,745,156.390,0.422,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:26; mean_err_total=0.046
+viking2,751,159.528,0.451,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=07:09,17:29; range=0.368-0.534; mean_err_total=0.051"
+viking2,757,162.813,0.480,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=07:05,17:22; range=0.402-0.558; mean_err_total=0.043"
+viking2,764,166.688,0.406,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=2; local_times(Earth h:m)=06:59,17:24; range=0.365-0.448; mean_err_total=0.040"
+viking2,770,169.928,0.453,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=07:08; mean_err_total=0.046
+viking2,776,173.563,0.443,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:27; mean_err_total=0.028
+viking2,778,174.452,0.629,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=06:59; mean_err_total=0.061
+viking2,779,175.269,0.508,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=17:22; mean_err_total=0.028
+viking2,784,178.069,0.792,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=14:34; mean_err_total=0.090
+viking2,792,182.699,0.928,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=14:27; mean_err_total=0.094
+viking2,800,187.393,0.606,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=14:31; mean_err_total=0.082
+viking2,808,192.072,0.743,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=3; local_times(Earth h:m)=09:59,10:04,14:44; range=0.669-0.800; mean_err_total=0.080"
+viking2,816,196.958,0.710,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=14:37; mean_err_total=0.072
+viking2,824,201.820,1.040,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=14:21; mean_err_total=0.072
+viking2,832,206.731,0.969,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=13:39; mean_err_total=0.076
+viking2,840,211.721,1.560,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=13:47; mean_err_total=0.070
+viking2,848,216.771,1.320,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=13:56; mean_err_total=0.065
+viking2,856,221.878,0.993,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=13:59; mean_err_total=0.061
+viking2,864,227.043,1.670,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,n=1; local_times(Earth h:m)=14:02; mean_err_total=0.058
+viking2,872,232.205,0.848,PDS_VL_OPAC_Colburn1989_0.67um_flag0_mean,"n=11; local_times(Earth h:m)=09:08,09:13,09:53,10:43,10:48,11:48,12:53,13:03,13:33,13:43,14:48; range=0.693-1.220; mean_err_total=0.053; excluded_flagged=0.989(f1),0.349(f1)"
