@@ -1,0 +1,1331 @@
+{
+ "generated": "2026-11-18T19:00:22.078Z",
+ "node": "v22.23.5",
+ "platform": "linux x64",
+ "protocol": {
+  "seeds": [
+   208,
+   209,
+   210,
+   211,
+   212,
+   213,
+   214,
+   215
+  ],
+  "spin": 200,
+  "window": 100,
+  "every": 5,
+  "fields": [
+   "T",
+   "q",
+   "w",
+   "g"
+  ],
+  "candidates": [
+   "altitude",
+   "absLat",
+   "band",
+   "water",
+   "vapour",
+   "heat",
+   "heatGrad",
+   "slope",
+   "flow",
+   "dqWest",
+   "dTWest"
+  ],
+  "accept": {
+   "altitudeCooling": [
+    [
+     "T",
+     "altitude"
+    ]
+   ],
+   "westerly": [
+    [
+     "T",
+     "band"
+    ],
+    [
+     "q",
+     "band"
+    ],
+    [
+     "q",
+     "dqWest"
+    ],
+    [
+     "T",
+     "dTWest"
+    ]
+   ],
+   "orographic": [
+    [
+     "q",
+     "altitude"
+    ],
+    [
+     "w",
+     "altitude"
+    ]
+   ],
+   "erosion": [
+    [
+     "g",
+     "flow"
+    ],
+    [
+     "g",
+     "slope"
+    ]
+   ]
+  },
+  "alpha": 0.00022727272727272727,
+  "etaMin": 0.01,
+  "eligibleShare": 0.001,
+  "noise": "T + uniform integer -2..2"
+ },
+ "faithful": {
+  "ok": true,
+  "seeds": [
+   1,
+   1234
+  ],
+  "ticks": 300,
+  "switchesChangeState": {
+   "altitudeCooling": true,
+   "westerly": true,
+   "orographic": false,
+   "erosion": true
+  }
+ },
+ "verdict": {
+  "hypothesis": "BL-H7",
+  "westerlyFound": 8,
+  "of": 8,
+  "nullSeedsWithStructure": 0,
+  "altitudeCoolingFound": "8 of 8 eligible",
+  "result": "survives this test"
+ },
+ "nulls": [
+  {
+   "seed": 208,
+   "structure": false,
+   "structuredPairs": [],
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.002085987961121028,
+     "p": 1.0088577750698586e-159,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "dTWest",
+     "eta2": 0.00010212327835079487,
+     "p": 0.00002016740883883484,
+     "structure": false
+    },
+    {
+     "field": "T",
+     "cand": "heatGrad",
+     "eta2": 0.00007030137487866654,
+     "p": 0.0021087234078216344,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 209,
+   "structure": false,
+   "structuredPairs": [],
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.0004865104318030267,
+     "p": 6.9346019552806614e-34,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "dqWest",
+     "eta2": 0.000054725691048120733,
+     "p": 0.000461391990342905,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "flow",
+     "eta2": 0.00005274738754132832,
+     "p": 0.000059926096998660306,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 210,
+   "structure": false,
+   "structuredPairs": [],
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.0012825451517419143,
+     "p": 3.8185920911417005e-96,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "dTWest",
+     "eta2": 0.00033671123229764196,
+     "p": 1.9080592136011766e-22,
+     "structure": false
+    },
+    {
+     "field": "T",
+     "cand": "heat",
+     "eta2": 0.00029299191956883675,
+     "p": 3.7378815291705896e-19,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 211,
+   "structure": false,
+   "structuredPairs": [],
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.0033835540984487916,
+     "p": 7.38662113074082e-263,
+     "structure": false
+    },
+    {
+     "field": "T",
+     "cand": "heat",
+     "eta2": 0.0004256005190682579,
+     "p": 3.28066729385842e-29,
+     "structure": false
+    },
+    {
+     "field": "T",
+     "cand": "heatGrad",
+     "eta2": 0.00038630503626123553,
+     "p": 3.283151440782102e-26,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 212,
+   "structure": false,
+   "structuredPairs": [],
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.000504949962478823,
+     "p": 2.6355442994594674e-35,
+     "structure": false
+    },
+    {
+     "field": "T",
+     "cand": "heatGrad",
+     "eta2": 0.00006521405347549244,
+     "p": 0.0042377247737574375,
+     "structure": false
+    },
+    {
+     "field": "T",
+     "cand": "absLat",
+     "eta2": 0.00005926982148097148,
+     "p": 0.009369299599733127,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 213,
+   "structure": false,
+   "structuredPairs": [],
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.0013013915758229874,
+     "p": 1.2454973884853152e-97,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "dTWest",
+     "eta2": 0.00025326375563283803,
+     "p": 3.4346685259254666e-16,
+     "structure": false
+    },
+    {
+     "field": "T",
+     "cand": "heat",
+     "eta2": 0.00023653350152505573,
+     "p": 5.937760481141237e-15,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 214,
+   "structure": false,
+   "structuredPairs": [],
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.001404091709686273,
+     "p": 9.756036376508227e-106,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "water",
+     "eta2": 0.0000663194198648032,
+     "p": 0.00017803421961673589,
+     "structure": false
+    },
+    {
+     "field": "g",
+     "cand": "dqWest",
+     "eta2": 0.00006331966049664424,
+     "p": 0.0006896174473953742,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 215,
+   "structure": false,
+   "structuredPairs": [],
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.0004919203374762516,
+     "p": 2.6581706659916893e-34,
+     "structure": false
+    },
+    {
+     "field": "w",
+     "cand": "dqWest",
+     "eta2": 0.00006282082596051174,
+     "p": 0.000037428754829974934,
+     "structure": false
+    },
+    {
+     "field": "T",
+     "cand": "heatGrad",
+     "eta2": 0.00005806319604962863,
+     "p": 0.010970877257647324,
+     "structure": false
+    }
+   ]
+  }
+ ],
+ "rows": [
+  {
+   "seed": 208,
+   "process": "altitudeCooling",
+   "effectShare": 0.42674,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "altitude",
+     "eta2": 0.6589348312754979,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "vapour",
+     "eta2": 0.26192865630556494,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "water",
+     "eta2": 0.2597035092725645,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 208,
+   "process": "westerly",
+   "effectShare": 0.48147,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.5237503182451639,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "q",
+     "cand": "dqWest",
+     "eta2": 0.35927772575047,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "dqWest",
+     "eta2": 0.14610786507542334,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 208,
+   "process": "orographic",
+   "effectShare": 0.00301,
+   "eligible": true,
+   "found": false,
+   "rankOfAccepted": 4,
+   "top": [
+    {
+     "field": "q",
+     "cand": "vapour",
+     "eta2": 0.003144968418842594,
+     "p": 1.8629170840160557e-248,
+     "structure": false
+    },
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.002085987961121028,
+     "p": 1.0088577750698586e-159,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "water",
+     "eta2": 0.001635951129244223,
+     "p": 3.3440191977873394e-129,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 208,
+   "process": "erosion",
+   "effectShare": 0.0173,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "g",
+     "cand": "flow",
+     "eta2": 0.04288393307874601,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "g",
+     "cand": "slope",
+     "eta2": 0.032521340427056095,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "g",
+     "cand": "water",
+     "eta2": 0.012027949116861811,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 209,
+   "process": "altitudeCooling",
+   "effectShare": 0.49577,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "altitude",
+     "eta2": 0.7333317063694719,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "vapour",
+     "eta2": 0.25511253416271307,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "dqWest",
+     "eta2": 0.128918100539085,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 209,
+   "process": "westerly",
+   "effectShare": 0.48965,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.5273351230834945,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "q",
+     "cand": "dqWest",
+     "eta2": 0.30554406375914367,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "dqWest",
+     "eta2": 0.1381482495327917,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 209,
+   "process": "orographic",
+   "effectShare": 0.00495,
+   "eligible": true,
+   "found": false,
+   "rankOfAccepted": 5,
+   "top": [
+    {
+     "field": "q",
+     "cand": "vapour",
+     "eta2": 0.011321676718930902,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "q",
+     "cand": "water",
+     "eta2": 0.005944195456765121,
+     "p": 0,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "flow",
+     "eta2": 0.0058884724562831255,
+     "p": 0,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 209,
+   "process": "erosion",
+   "effectShare": 0.01025,
+   "eligible": true,
+   "found": false,
+   "rankOfAccepted": 2,
+   "top": [
+    {
+     "field": "g",
+     "cand": "water",
+     "eta2": 0.023698710085271697,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "g",
+     "cand": "flow",
+     "eta2": 0.017205528868777756,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "g",
+     "cand": "slope",
+     "eta2": 0.015575139047721166,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 210,
+   "process": "altitudeCooling",
+   "effectShare": 0.49374,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "altitude",
+     "eta2": 0.7101439953727143,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "vapour",
+     "eta2": 0.2552328179727721,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "dqWest",
+     "eta2": 0.13411054741270156,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 210,
+   "process": "westerly",
+   "effectShare": 0.48558,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.5407953945907767,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "q",
+     "cand": "dqWest",
+     "eta2": 0.25330784244661037,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "dqWest",
+     "eta2": 0.15258857393060424,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 210,
+   "process": "orographic",
+   "effectShare": 0.00232,
+   "eligible": true,
+   "found": false,
+   "rankOfAccepted": 5,
+   "top": [
+    {
+     "field": "q",
+     "cand": "vapour",
+     "eta2": 0.005475218830102032,
+     "p": 0,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "water",
+     "eta2": 0.003879204728723347,
+     "p": 2.9711477407494e-311,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "flow",
+     "eta2": 0.0032028348365507964,
+     "p": 9.577887483085891e-259,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 210,
+   "process": "erosion",
+   "effectShare": 0.0029,
+   "eligible": true,
+   "found": false,
+   "rankOfAccepted": 2,
+   "top": [
+    {
+     "field": "g",
+     "cand": "water",
+     "eta2": 0.004961022262400384,
+     "p": 0,
+     "structure": false
+    },
+    {
+     "field": "g",
+     "cand": "flow",
+     "eta2": 0.0037583291415208644,
+     "p": 3.018157243875521e-303,
+     "structure": false
+    },
+    {
+     "field": "g",
+     "cand": "slope",
+     "eta2": 0.0029527844825632805,
+     "p": 1.3949316434036414e-228,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 211,
+   "process": "altitudeCooling",
+   "effectShare": 0.28784,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "altitude",
+     "eta2": 0.7430564011119166,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "vapour",
+     "eta2": 0.21451707831823627,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "water",
+     "eta2": 0.2046523192372626,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 211,
+   "process": "westerly",
+   "effectShare": 0.47898,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.518451999957437,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "q",
+     "cand": "dqWest",
+     "eta2": 0.38261735997884166,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "dqWest",
+     "eta2": 0.19272857558607684,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 211,
+   "process": "orographic",
+   "effectShare": 0.0027,
+   "eligible": true,
+   "found": false,
+   "rankOfAccepted": 4,
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.0033835540984487916,
+     "p": 7.38662113074082e-263,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "vapour",
+     "eta2": 0.0021698809895740953,
+     "p": 1.6143969973973018e-169,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "water",
+     "eta2": 0.002089491219500283,
+     "p": 4.077900678132521e-163,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 211,
+   "process": "erosion",
+   "effectShare": 0.0233,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "g",
+     "cand": "flow",
+     "eta2": 0.04961947633899593,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "g",
+     "cand": "slope",
+     "eta2": 0.03826038588101013,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "g",
+     "cand": "water",
+     "eta2": 0.019672455296317212,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 212,
+   "process": "altitudeCooling",
+   "effectShare": 0.65198,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "altitude",
+     "eta2": 0.6498691069954555,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "vapour",
+     "eta2": 0.13526917103488717,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "heatGrad",
+     "eta2": 0.1338518677917026,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 212,
+   "process": "westerly",
+   "effectShare": 0.46788,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.5146865873478267,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "q",
+     "cand": "dqWest",
+     "eta2": 0.09514959243252304,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "heat",
+     "eta2": 0.06862553770379443,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 212,
+   "process": "orographic",
+   "effectShare": 0.00158,
+   "eligible": true,
+   "found": false,
+   "rankOfAccepted": 9,
+   "top": [
+    {
+     "field": "w",
+     "cand": "water",
+     "eta2": 0.009591021760860548,
+     "p": 0,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "water",
+     "eta2": 0.008810761064361333,
+     "p": 0,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "flow",
+     "eta2": 0.00522869987433829,
+     "p": 0,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 212,
+   "process": "erosion",
+   "effectShare": 0.00086,
+   "eligible": false,
+   "found": false,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "g",
+     "cand": "flow",
+     "eta2": 0.0026960640057106904,
+     "p": 3.8475285199201465e-218,
+     "structure": false
+    },
+    {
+     "field": "g",
+     "cand": "water",
+     "eta2": 0.0011737976949663374,
+     "p": 1.0926518213517735e-94,
+     "structure": false
+    },
+    {
+     "field": "g",
+     "cand": "dTWest",
+     "eta2": 0.0005682467635402862,
+     "p": 3.4015627815562515e-40,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 213,
+   "process": "altitudeCooling",
+   "effectShare": 0.64327,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "altitude",
+     "eta2": 0.6899398293078562,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "vapour",
+     "eta2": 0.2730627716178593,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "dqWest",
+     "eta2": 0.19851454797051363,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 213,
+   "process": "westerly",
+   "effectShare": 0.4805,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.5185371173800174,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "q",
+     "cand": "dqWest",
+     "eta2": 0.18607459259800263,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "heat",
+     "eta2": 0.08136563321276276,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 213,
+   "process": "orographic",
+   "effectShare": 0.00376,
+   "eligible": true,
+   "found": false,
+   "rankOfAccepted": 14,
+   "top": [
+    {
+     "field": "q",
+     "cand": "vapour",
+     "eta2": 0.006154243629831691,
+     "p": 0,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "water",
+     "eta2": 0.005217584258075978,
+     "p": 0,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "flow",
+     "eta2": 0.004880602091555566,
+     "p": 0,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 213,
+   "process": "erosion",
+   "effectShare": 0.00211,
+   "eligible": true,
+   "found": false,
+   "rankOfAccepted": 2,
+   "top": [
+    {
+     "field": "g",
+     "cand": "water",
+     "eta2": 0.006067548666680013,
+     "p": 0,
+     "structure": false
+    },
+    {
+     "field": "g",
+     "cand": "slope",
+     "eta2": 0.004772082291663335,
+     "p": 0,
+     "structure": false
+    },
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.0013013915758229874,
+     "p": 1.2454973884853152e-97,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 214,
+   "process": "altitudeCooling",
+   "effectShare": 0.21073,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "altitude",
+     "eta2": 0.39867215887183,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "water",
+     "eta2": 0.058596594685920746,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "vapour",
+     "eta2": 0.04559404097418288,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 214,
+   "process": "westerly",
+   "effectShare": 0.48754,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.5075069724053001,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "q",
+     "cand": "dqWest",
+     "eta2": 0.4301191053445343,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "dqWest",
+     "eta2": 0.24474253260528242,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 214,
+   "process": "orographic",
+   "effectShare": 0.00596,
+   "eligible": true,
+   "found": false,
+   "rankOfAccepted": 2,
+   "top": [
+    {
+     "field": "q",
+     "cand": "vapour",
+     "eta2": 0.010051215102407073,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "q",
+     "cand": "altitude",
+     "eta2": 0.00816534102556709,
+     "p": 0,
+     "structure": false
+    },
+    {
+     "field": "q",
+     "cand": "dqWest",
+     "eta2": 0.004999056937904846,
+     "p": 0,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 214,
+   "process": "erosion",
+   "effectShare": 0.03515,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "g",
+     "cand": "flow",
+     "eta2": 0.08161262688042556,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "g",
+     "cand": "slope",
+     "eta2": 0.05269125442529622,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "g",
+     "cand": "vapour",
+     "eta2": 0.03682319713225624,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 215,
+   "process": "altitudeCooling",
+   "effectShare": 0.59719,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "altitude",
+     "eta2": 0.7338549031608151,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "water",
+     "eta2": 0.1859173072622875,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "vapour",
+     "eta2": 0.1682394742686454,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 215,
+   "process": "westerly",
+   "effectShare": 0.46488,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "T",
+     "cand": "dTWest",
+     "eta2": 0.505163307222178,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "q",
+     "cand": "dqWest",
+     "eta2": 0.2564093076481448,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "T",
+     "cand": "dqWest",
+     "eta2": 0.12005199525158892,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  },
+  {
+   "seed": 215,
+   "process": "orographic",
+   "effectShare": 0.00445,
+   "eligible": true,
+   "found": false,
+   "rankOfAccepted": 12,
+   "top": [
+    {
+     "field": "q",
+     "cand": "water",
+     "eta2": 0.014109246049722472,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "q",
+     "cand": "vapour",
+     "eta2": 0.011375939219967978,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "w",
+     "cand": "water",
+     "eta2": 0.008172198316023413,
+     "p": 0,
+     "structure": false
+    }
+   ]
+  },
+  {
+   "seed": 215,
+   "process": "erosion",
+   "effectShare": 0.01303,
+   "eligible": true,
+   "found": true,
+   "rankOfAccepted": 1,
+   "top": [
+    {
+     "field": "g",
+     "cand": "flow",
+     "eta2": 0.030557023807702175,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "g",
+     "cand": "slope",
+     "eta2": 0.02699502517979412,
+     "p": 0,
+     "structure": true
+    },
+    {
+     "field": "g",
+     "cand": "water",
+     "eta2": 0.013198262272287525,
+     "p": 0,
+     "structure": true
+    }
+   ]
+  }
+ ]
+}

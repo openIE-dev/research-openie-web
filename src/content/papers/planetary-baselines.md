@@ -112,6 +112,10 @@ The finding that matters for real planets is the second. Mercury's sodium is mov
 |---|---|---|---|---|
 | BL-H7 | Adding upwind differences as candidates lets the protocol find the westerly drift | BL-H1's protocol with two extra candidates (vapour and heat of the western neighbour minus the cell's own), seeds 208 to 215 | Westerly found; null structure; cooling of high ground still found | Westerly found on fewer than 6 of 8 seeds; or structure in more than 1 of 8 null seeds; or cooling of high ground found on fewer than 75% of its eligible seeds |
 
+BL-H7 was then run as registered (`docs/planetary-baselines/results/h7.json`). It survives this test. The westerly drift was found on 8 of 8 seeds: the residual of temperature against the western neighbour's temperature minus the cell's own explained 51% to 54% of its variance, where no BL-H1 candidate had explained more than 8%. Cooling of high ground was still found on 8 of 8, and no null seed showed structure. Erosion was found on 4 of 7 eligible seeds and lower condensation over high ground on none, as before; BL-H7 does not score them.
+
+Two lessons carry to real data. A residual protocol needs candidates shaped like the processes it is looking for: transport needs differences along the flow, not local values. And a process that changes a small share of the field, like the condensation term here, can sit below any sensible effect-size floor; failing to find it is a statement about the protocol's power, not evidence that the process is absent.
+
 ## 6. Sources and limits
 
 All external sources above were checked only against search results, not against full texts. Lovejoy, Muller and Boisvert 2014: citation and abstract; the 1.8-day figure from press coverage only. Verkercke and co-authors 2025: citation and abstract. Sohl and co-authors 2024 (CUISINES): citation and summary. ROCKE-3D: summary pages. Kleidon: abstracts and conference pages. BepiColombo flyby of 19 June 2023: a conference abstract. Not yet checked at all: the "CELL consortium" named in the handoff note, and the location of MESSENGER sodium data in the PDS.
