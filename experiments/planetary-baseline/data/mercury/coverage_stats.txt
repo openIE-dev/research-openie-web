@@ -1,0 +1,47 @@
+summary files: 2863 rows: 2076315
+geometry-classified files: 54 rows: 1244969
+duplicate (CDR_NAME, MID_SPECTRUM_TIME) rows dropped from summaries: 5668
+geometry-classified rows matched in summaries: 1241596 of 1241597
+max |radiance(LS/LD/NS) - radiance(summary)| on matched rows (kR): 0.0 ; rows differing >1e-6: 0
+ddr_class counts in summaries: {'LD': 518487, '': 829051, 'NS': 474242, 'LS': 248867}
+check |r_helio(PLANET_SUN_VECTOR) - r_kepler(TAA)| AU: median 1.03e-05 max 1.78e-05
+check finite-difference dr/dt minus Kepler v_r (km/s), 52 orbits: median 0.000, max abs 0.058
+DDR TARGET_ALTITUDE == -1e32 rows: 0 ; all-zero tangent geometry rows: 143618
+LOS class from recomputed geometry: {'limb': 1686036, 'disk': 241006, 'away': 143605}
+all-zero tangent geometry by LOS class: {'away': 143605, 'disk': 13}
+DDR alt_center==0 by LOS class: {'disk': 241006, 'away': 143605, 'limb': 14}
+limb rows: recomputed tangent alt (R=R_M) minus DDR alt: pct1/50/99 = [-0.006, 0.0, 0.006] ; |diff|>10 km: 0
+SPARE_1 nonzero rows: 0
+SPARE_2 nonzero rows: 0
+SPARE_3 nonzero rows: 0
+SPARE_4 nonzero rows: 0
+SLIT_POS counts: {1: 1837100, 0: 233547}
+radiance == -1e32 rows: 0 ; SNR==0 rows: 0
+written limb rows: 1686036 ; non-limb rows: 384611
+
+== Limb rows ==
+UTC range: 2011-03-29T01:34:26.57 -> 2015-04-30T15:03:19.27
+orbits with limb rows: 2683
+by Mercury year: {1: 31967, 2: 49341, 3: 63656, 4: 71298, 5: 15950, 6: 131185, 7: 132930, 8: 136190, 9: 124959, 10: 119822, 11: 122656, 12: 103337, 13: 124520, 14: 113732, 15: 114463, 16: 114108, 17: 108741, 18: 7181}
+by obs_type: {'UVVSExoScan': 503188, 'UVVSLimbOpp': 270101, 'UVVSDaysideScan': 249223, 'UVVSExoNadir': 246620, 'UVVSExoStare': 104107, 'UVVSDownlinkRideAlong': 97810, 'UVVSLimbStare': 52893, 'UVVSFIPSMPTangentRideAlong': 46176, 'UVVSPolarScan': 26064, 'UVVSPAARideAlong': 17087, 'UVVSFIPSPAOptRideAlong': 15037, 'UVVSFIPSNightsideRideAlong': 11705, 'UVVSNightColumn': 9562, 'UVVSEPSEquatorRideAlong': 9177, 'UVVSFIPSZStareRideAlong': 8729, 'UVVS360Roll': 7188, 'UVVSNightShadow': 4693, 'UVVSExoTargetObs': 3067, 'UVVSEPSPoleRideAlong': 3054, 'UVVSSatSearchRideAlong': 555}
+by ddr_class: {'LD': 388342, '': 591584, 'NS': 457243, 'LS': 248867}
+TAA 30-deg bins: {0: 50294, 30: 92971, 60: 170589, 90: 238197, 120: 215817, 150: 124298, 180: 88339, 210: 186947, 240: 205333, 270: 157658, 300: 111479, 330: 44114}
+tangent LT 2-h bins: {0: 237105, 2: 121928, 4: 55026, 6: 57715, 8: 44598, 10: 238365, 12: 257817, 14: 58537, 16: 59226, 18: 91218, 20: 164590, 22: 299911}
+tangent lat 30-deg bins: {-90: 41936, -60: 174380, -30: 772503, 0: 650901, 30: 29339, 60: 16977}
+tangent alt bins (km): {0: 35966, 100: 97787, 250: 127331, 500: 235757, 1000: 352494, 2000: 461451, 4000: 346661, 8000: 28589, 20000: 0}
+nightside (tangent LT 18-6 h) limb rows: 969778 of 1686036 (57.5%)
+  of which tangent point in geometric shadow: 451384
+  of which tangent in shadow AND whole LOS within 40000 km in shadow (min_sunlit nan): 0
+  nightside by obs_type: {'UVVSExoScan': 459601, 'UVVSLimbOpp': 160772, 'UVVSDownlinkRideAlong': 85183, 'UVVSExoStare': 75045, 'UVVSFIPSMPTangentRideAlong': 36516, 'UVVSDaysideScan': 22450, 'UVVSLimbStare': 20798, 'UVVSExoNadir': 20686, 'UVVSFIPSPAOptRideAlong': 15037, 'UVVSFIPSNightsideRideAlong': 11705, 'UVVSPolarScan': 11687, 'UVVSNightColumn': 9562, 'UVVSEPSEquatorRideAlong': 8794, 'UVVSFIPSZStareRideAlong': 8729, 'UVVS360Roll': 7188, 'UVVSPAARideAlong': 6667, 'UVVSNightShadow': 4693, 'UVVSEPSPoleRideAlong': 2867, 'UVVSExoTargetObs': 1243, 'UVVSSatSearchRideAlong': 555}
+  nightside by ddr_class: {'LD': 105293, '': 384824, 'NS': 457243, 'LS': 22418}
+  nightside TAA 30-deg bins: {0: 21237, 30: 56031, 60: 94841, 90: 130177, 120: 138562, 150: 88686, 180: 62293, 210: 118289, 240: 105372, 270: 80110, 300: 49863, 330: 24317}
+  nightside alt bins: {0: 22227, 100: 41948, 250: 48380, 500: 91699, 1000: 173478, 2000: 296809, 4000: 277204, 8000: 18033, 20000: 0}
+dayside rows with tangent in shadow (should be ~0): 0
+SNR>=3 limb rows: 1315289 ; SNR>=3 nightside: 863822 ; nightside & tangent in shadow & SNR>=3: 436868
+na_kR percentiles (1,10,50,90,99) limb: [-3.892, 0.883, 16.658, 275.115, 5523.204]
+negative na_kR limb rows: 53304
+flag_grating_anomaly limb rows: 98510 ; flag_slit_touches_surface: 10143 ; flag_geom_mismatch: 0
+r_helio range AU: 0.3075 0.4667 ; vr range km/s: -10.06 10.06
+
+== Non-limb rows ==
+by los_geom: {'disk': 241006, 'away': 143605} ; by obs_type: {'UVVSDownlinkRideAlong': 101143, 'UVVSLimbOpp': 86697, 'UVVSNightColumn': 69461, 'UVVSExoStare': 60068, 'UVVSExoScan': 17119, 'UVVSNightShadow': 13181, 'UVVSFIPSZStareRideAlong': 13052, 'UVVSFIPSPAOptRideAlong': 12067, 'UVVS360Roll': 7357, 'UVVSPAARideAlong': 1285, 'UVVSEPSPoleRideAlong': 910, 'UVVSExoNadir': 808, 'UVVSLimbStare': 696, 'UVVSPolarScan': 685, 'UVVSVulcanoidRideAlong': 59, 'UVVSEPSEquatorRideAlong': 11, 'UVVSSatSearchRideAlong': 6, 'UVVSDaysideScan': 5, 'UVVSOther': 1}
