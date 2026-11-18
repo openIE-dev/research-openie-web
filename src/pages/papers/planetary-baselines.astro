@@ -1,0 +1,22 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/planetary-baselines.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description="Whether a long-term structural baseline, with forecasts treated as corrections to it, gives skill beyond the deterministic horizon, and whether residuals left after known processes point to missing mechanisms. Tested first on a toy planet with known mechanisms."
+  headings={headings}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Research study · test plan (draft)"
+>
+  <Content />
+</PaperLayout>

@@ -236,3 +236,24 @@ here (PLN-033). See blueprint section 6.
 **Next.** PLN-033 needs a person with a GPU. Without one: PLN-034 (Rust port
 of `sphere.js`, match the printed hashes), then PLN-035 (worker and eviction),
 or M4 PLN-040 (volumetric bricks), which reuses `noise3`.
+
+---
+
+## 2026-11-18 · entry 7 · correction: blueprint sections restored
+
+**What went wrong.** Commit `aad8a60` (entry 6) cut `docs/planet/BLUEPRINT.md`
+down to sections 1 to 3. The script that added the sphere, globe and
+vertex-check rows kept only the text before the insertion point, and the
+follow-up replacements had no assertions, so nothing flagged it. Entry 6's
+references to "blueprint section 5" (drawing budget) and "section 6"
+(environment limits) pointed at sections that were not in the file.
+
+**Fixed.** The blueprint was rebuilt from `ca18109` (the last complete
+version), with the three module rows, the environment-limits section (now
+section 6), the hypotheses (section 7) and the definition of done (section 8),
+plus a note that the planetary-baselines study is a second user of the core.
+Section numbers cited in entry 6 now resolve: drawing budget is section 5,
+environment limits section 6. Every edit in the repair was asserted.
+
+**Rule for future edits to these docs.** Assert every scripted replacement,
+and compare heading counts before and after (`grep -c '^## '`).

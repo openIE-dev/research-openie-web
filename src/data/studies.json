@@ -213,6 +213,29 @@
       ]
     },
     {
+      "id": "planetary-baselines",
+      "title": "Structure Before Statistics: Planetary Baselines, Residuals and Forecasting Past the Horizon",
+      "short_title": "Structure Before Statistics",
+      "kind": "Research study",
+      "group": "research",
+      "status": "In preparation",
+      "url": "https://research.openie.dev/papers/planetary-baselines/",
+      "pdf": "https://research.openie.dev/pdfs/planetary-baselines.pdf",
+      "figures": "/living/planet/",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Tests a structure-first approach to planetary atmospheres: a long-term baseline as the skeleton of a forecast, and residuals after known processes as the scientific object. Methods are scored first on a toy planet with known mechanisms, then on Mercury's sodium exosphere, macroweather on other bodies, and Earth forecasts beyond ten days. Plain words: start from what the planet does over years; the leftover after subtracting everything known is the clue; try the methods where the answer is known first.",
+      "about": "https://research.openie.dev/about/planetary-baselines/",
+      "keywords": [
+        "macroweather",
+        "predictability",
+        "residual analysis",
+        "scaling",
+        "Mercury exosphere",
+        "forecasting",
+        "dimensionless groups"
+      ]
+    },
+    {
       "id": "three-body",
       "title": "The Pursuit of AGI Resolves the Three-Body Problem in Computing",
       "short_title": "The Three-Body Problem in Computing",

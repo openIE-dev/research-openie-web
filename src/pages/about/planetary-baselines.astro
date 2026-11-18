@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title={"Structure Before Statistics: Planetary Baselines, Residuals and Forecasting Past the Horizon"}
+  description={"About: Structure Before Statistics. A long-term structural baseline as the skeleton of a forecast, residuals after known processes as the scientific object, tested first on a toy planet whose mechanisms are known."}
+>
+  <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
+    <p class="section-label mb-4">Research study · about</p>
+    <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
+      Structure Before Statistics: Planetary Baselines, Residuals and Forecasting Past the Horizon
+    </h1>
+    <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
+      This study tests whether a forecast built on a long-term structural baseline gives skill where pattern-matching models lose it, beyond about ten days, and whether the residual left after every known process is subtracted can point to a missing mechanism. The methods are tried first on a toy planet whose mechanisms are all known, then on Mercury, Mars and Earth.
+    </p>
+    <div class="mt-8 glass-card p-6">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">In plain words</p>
+      <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
+        <li>Start a forecast from what the planet does over years, then add what today's weather adds.</li>
+        <li>After subtracting everything known, the leftover is the clue; a leftover that follows nothing means something is missing.</li>
+        <li>Try the methods on a simulated planet where the answer is known before trusting them on real ones.</li>
+      </ol>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/papers/planetary-baselines/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
+        Read → /papers/planetary-baselines/
+      </a>
+      <a href="/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">
+        ← Catalog
+      </a>
+    </div>
+  </section>
+</Layout>
