@@ -177,3 +177,14 @@ cells. Grid p 0.001-0.1, k 0-8, seeds 216-223. Kill rules in the header and
 study Section 5.3. Before registering: `observe` and `candidates` were
 exported from `protocol.mjs` (BL-H1 rerun identical), and a `--smoke` run on
 unregistered seed 999 (p 0.01, k 2) checked for crashes.
+
+---
+
+## 2026-11-18 · entry 9 · BL-H8 survives
+
+Run as registered (`9ff44fa`), 5 min. Detection per setting was 8/8 or 0/8;
+no false detection at k = 0. Found: (p 0.001, k 8), (0.003, k >= 4),
+(0.01 and 0.03, k >= 2), (0.1, k >= 1). Median eta^2 of T~marker tracks
+p k^2 / (p k^2 + ~3.6); detection begins where it crosses the 0.01 floor
+(p k^2 around 0.04). Study Section 5.3 states the budget rule for Mercury:
+footprint x strength^2 / residual variance must clear the effect-size floor.

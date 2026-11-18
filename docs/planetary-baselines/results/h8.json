@@ -1,0 +1,2091 @@
+{
+ "generated": "2026-11-18T19:19:21.858Z",
+ "node": "v22.23.5",
+ "platform": "linux x64",
+ "design": {
+  "PS": [
+   0.001,
+   0.003,
+   0.01,
+   0.03,
+   0.1
+  ],
+  "KS": [
+   0,
+   1,
+   2,
+   4,
+   8
+  ],
+  "SEEDS": [
+   216,
+   217,
+   218,
+   219,
+   220,
+   221,
+   222,
+   223
+  ],
+  "alpha": 0.00025,
+  "etaMin": 0.01
+ },
+ "verdict": {
+  "hypothesis": "BL-H8",
+  "missedCells": [],
+  "falseDetections": [],
+  "result": "survives this test"
+ },
+ "grid": [
+  {
+   "p": 0.001,
+   "k": 0,
+   "hits": 0,
+   "of": 8,
+   "kind": "false detection",
+   "medianMarkerEta2": 0,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 24,
+     "top": "q~vapour",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 217,
+     "markerCells": 14,
+     "top": "T~slope",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 218,
+     "markerCells": 26,
+     "top": "T~heat",
+     "topEta2": 0.0011,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 219,
+     "markerCells": 24,
+     "top": "T~heat",
+     "topEta2": 0.0002,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 220,
+     "markerCells": 15,
+     "top": "T~heat",
+     "topEta2": 0.0005,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 221,
+     "markerCells": 19,
+     "top": "T~heat",
+     "topEta2": 0.007,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 222,
+     "markerCells": 16,
+     "top": "T~heat",
+     "topEta2": 0.0011,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 223,
+     "markerCells": 21,
+     "top": "q~vapour",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    }
+   ]
+  },
+  {
+   "p": 0.001,
+   "k": 1,
+   "hits": 0,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0003,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 24,
+     "top": "T~marker",
+     "topEta2": 0.0005,
+     "markerEta2": 0.0005,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 217,
+     "markerCells": 14,
+     "top": "T~marker",
+     "topEta2": 0.0003,
+     "markerEta2": 0.0003,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 218,
+     "markerCells": 26,
+     "top": "T~heat",
+     "topEta2": 0.001,
+     "markerEta2": 0.0004,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 219,
+     "markerCells": 24,
+     "top": "T~marker",
+     "topEta2": 0.0004,
+     "markerEta2": 0.0004,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 220,
+     "markerCells": 15,
+     "top": "T~heat",
+     "topEta2": 0.0003,
+     "markerEta2": 0.0003,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 221,
+     "markerCells": 19,
+     "top": "T~heat",
+     "topEta2": 0.0011,
+     "markerEta2": 0.0003,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 222,
+     "markerCells": 16,
+     "top": "T~heat",
+     "topEta2": 0.0009,
+     "markerEta2": 0.0002,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 223,
+     "markerCells": 21,
+     "top": "T~marker",
+     "topEta2": 0.0003,
+     "markerEta2": 0.0003,
+     "markerStructure": false,
+     "found": false
+    }
+   ]
+  },
+  {
+   "p": 0.001,
+   "k": 2,
+   "hits": 0,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0013,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 24,
+     "top": "T~marker",
+     "topEta2": 0.0017,
+     "markerEta2": 0.0017,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 217,
+     "markerCells": 14,
+     "top": "T~marker",
+     "topEta2": 0.001,
+     "markerEta2": 0.001,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 218,
+     "markerCells": 26,
+     "top": "T~marker",
+     "topEta2": 0.0017,
+     "markerEta2": 0.0017,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 219,
+     "markerCells": 24,
+     "top": "T~marker",
+     "topEta2": 0.0016,
+     "markerEta2": 0.0016,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 220,
+     "markerCells": 15,
+     "top": "T~marker",
+     "topEta2": 0.0011,
+     "markerEta2": 0.0011,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 221,
+     "markerCells": 19,
+     "top": "T~marker",
+     "topEta2": 0.0013,
+     "markerEta2": 0.0013,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 222,
+     "markerCells": 16,
+     "top": "T~heat",
+     "topEta2": 0.0009,
+     "markerEta2": 0.0008,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 223,
+     "markerCells": 21,
+     "top": "T~marker",
+     "topEta2": 0.0013,
+     "markerEta2": 0.0013,
+     "markerStructure": false,
+     "found": false
+    }
+   ]
+  },
+  {
+   "p": 0.001,
+   "k": 4,
+   "hits": 0,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0053,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 24,
+     "top": "T~marker",
+     "topEta2": 0.0067,
+     "markerEta2": 0.0067,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 217,
+     "markerCells": 14,
+     "top": "T~marker",
+     "topEta2": 0.0039,
+     "markerEta2": 0.0039,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 218,
+     "markerCells": 26,
+     "top": "T~marker",
+     "topEta2": 0.0066,
+     "markerEta2": 0.0066,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 219,
+     "markerCells": 24,
+     "top": "T~marker",
+     "topEta2": 0.0065,
+     "markerEta2": 0.0065,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 220,
+     "markerCells": 15,
+     "top": "T~marker",
+     "topEta2": 0.0041,
+     "markerEta2": 0.0041,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 221,
+     "markerCells": 19,
+     "top": "T~marker",
+     "topEta2": 0.0052,
+     "markerEta2": 0.0052,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 222,
+     "markerCells": 16,
+     "top": "T~marker",
+     "topEta2": 0.0037,
+     "markerEta2": 0.0037,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 223,
+     "markerCells": 21,
+     "top": "T~marker",
+     "topEta2": 0.0053,
+     "markerEta2": 0.0053,
+     "markerStructure": false,
+     "found": false
+    }
+   ]
+  },
+  {
+   "p": 0.001,
+   "k": 8,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0213,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 24,
+     "top": "T~marker",
+     "topEta2": 0.026,
+     "markerEta2": 0.026,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 14,
+     "top": "T~marker",
+     "topEta2": 0.0149,
+     "markerEta2": 0.0149,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 26,
+     "top": "T~marker",
+     "topEta2": 0.0264,
+     "markerEta2": 0.0264,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 24,
+     "top": "T~marker",
+     "topEta2": 0.0254,
+     "markerEta2": 0.0254,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 15,
+     "top": "T~marker",
+     "topEta2": 0.0158,
+     "markerEta2": 0.0158,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 19,
+     "top": "T~marker",
+     "topEta2": 0.02,
+     "markerEta2": 0.02,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 16,
+     "top": "T~marker",
+     "topEta2": 0.0155,
+     "markerEta2": 0.0155,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 21,
+     "top": "T~marker",
+     "topEta2": 0.0213,
+     "markerEta2": 0.0213,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  },
+  {
+   "p": 0.003,
+   "k": 0,
+   "hits": 0,
+   "of": 8,
+   "kind": "false detection",
+   "medianMarkerEta2": 0,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 56,
+     "top": "q~vapour",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 217,
+     "markerCells": 49,
+     "top": "T~slope",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 218,
+     "markerCells": 62,
+     "top": "T~heat",
+     "topEta2": 0.0011,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 219,
+     "markerCells": 59,
+     "top": "T~heat",
+     "topEta2": 0.0002,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 220,
+     "markerCells": 43,
+     "top": "T~heat",
+     "topEta2": 0.0005,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 221,
+     "markerCells": 50,
+     "top": "T~heat",
+     "topEta2": 0.007,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 222,
+     "markerCells": 45,
+     "top": "T~heat",
+     "topEta2": 0.0011,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 223,
+     "markerCells": 61,
+     "top": "q~vapour",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    }
+   ]
+  },
+  {
+   "p": 0.003,
+   "k": 1,
+   "hits": 0,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.001,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 56,
+     "top": "T~marker",
+     "topEta2": 0.0011,
+     "markerEta2": 0.0011,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 217,
+     "markerCells": 49,
+     "top": "T~marker",
+     "topEta2": 0.0008,
+     "markerEta2": 0.0008,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 218,
+     "markerCells": 62,
+     "top": "T~marker",
+     "topEta2": 0.0011,
+     "markerEta2": 0.0011,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 219,
+     "markerCells": 59,
+     "top": "T~marker",
+     "topEta2": 0.001,
+     "markerEta2": 0.001,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 220,
+     "markerCells": 43,
+     "top": "T~marker",
+     "topEta2": 0.0007,
+     "markerEta2": 0.0007,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 221,
+     "markerCells": 50,
+     "top": "T~marker",
+     "topEta2": 0.0008,
+     "markerEta2": 0.0008,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 222,
+     "markerCells": 45,
+     "top": "T~heat",
+     "topEta2": 0.0009,
+     "markerEta2": 0.0006,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 223,
+     "markerCells": 61,
+     "top": "T~marker",
+     "topEta2": 0.001,
+     "markerEta2": 0.001,
+     "markerStructure": false,
+     "found": false
+    }
+   ]
+  },
+  {
+   "p": 0.003,
+   "k": 2,
+   "hits": 0,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0039,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 56,
+     "top": "T~marker",
+     "topEta2": 0.0039,
+     "markerEta2": 0.0039,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 217,
+     "markerCells": 49,
+     "top": "T~marker",
+     "topEta2": 0.0034,
+     "markerEta2": 0.0034,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 218,
+     "markerCells": 62,
+     "top": "T~marker",
+     "topEta2": 0.004,
+     "markerEta2": 0.004,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 219,
+     "markerCells": 59,
+     "top": "T~marker",
+     "topEta2": 0.0041,
+     "markerEta2": 0.0041,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 220,
+     "markerCells": 43,
+     "top": "T~marker",
+     "topEta2": 0.003,
+     "markerEta2": 0.003,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 221,
+     "markerCells": 50,
+     "top": "T~marker",
+     "topEta2": 0.0032,
+     "markerEta2": 0.0032,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 222,
+     "markerCells": 45,
+     "top": "T~marker",
+     "topEta2": 0.0028,
+     "markerEta2": 0.0028,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 223,
+     "markerCells": 61,
+     "top": "T~marker",
+     "topEta2": 0.0039,
+     "markerEta2": 0.0039,
+     "markerStructure": false,
+     "found": false
+    }
+   ]
+  },
+  {
+   "p": 0.003,
+   "k": 4,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0152,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 56,
+     "top": "T~marker",
+     "topEta2": 0.0155,
+     "markerEta2": 0.0155,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 49,
+     "top": "T~marker",
+     "topEta2": 0.0134,
+     "markerEta2": 0.0134,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 62,
+     "top": "T~marker",
+     "topEta2": 0.0161,
+     "markerEta2": 0.0161,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 59,
+     "top": "T~marker",
+     "topEta2": 0.0152,
+     "markerEta2": 0.0152,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 43,
+     "top": "T~marker",
+     "topEta2": 0.0117,
+     "markerEta2": 0.0117,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 50,
+     "top": "T~marker",
+     "topEta2": 0.0131,
+     "markerEta2": 0.0131,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 45,
+     "top": "T~marker",
+     "topEta2": 0.0113,
+     "markerEta2": 0.0113,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 61,
+     "top": "T~marker",
+     "topEta2": 0.0159,
+     "markerEta2": 0.0159,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  },
+  {
+   "p": 0.003,
+   "k": 8,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0582,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 56,
+     "top": "T~marker",
+     "topEta2": 0.0582,
+     "markerEta2": 0.0582,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 49,
+     "top": "T~marker",
+     "topEta2": 0.0511,
+     "markerEta2": 0.0511,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 62,
+     "top": "T~marker",
+     "topEta2": 0.0622,
+     "markerEta2": 0.0622,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 59,
+     "top": "T~marker",
+     "topEta2": 0.0596,
+     "markerEta2": 0.0596,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 43,
+     "top": "T~marker",
+     "topEta2": 0.0438,
+     "markerEta2": 0.0438,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 50,
+     "top": "T~marker",
+     "topEta2": 0.0496,
+     "markerEta2": 0.0496,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 45,
+     "top": "T~marker",
+     "topEta2": 0.0438,
+     "markerEta2": 0.0438,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 61,
+     "top": "T~marker",
+     "topEta2": 0.0616,
+     "markerEta2": 0.0616,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  },
+  {
+   "p": 0.01,
+   "k": 0,
+   "hits": 0,
+   "of": 8,
+   "kind": "false detection",
+   "medianMarkerEta2": 0,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 163,
+     "top": "q~vapour",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 217,
+     "markerCells": 193,
+     "top": "T~slope",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 218,
+     "markerCells": 180,
+     "top": "T~heat",
+     "topEta2": 0.0011,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 219,
+     "markerCells": 187,
+     "top": "T~heat",
+     "topEta2": 0.0002,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 220,
+     "markerCells": 182,
+     "top": "T~heat",
+     "topEta2": 0.0005,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 221,
+     "markerCells": 174,
+     "top": "T~heat",
+     "topEta2": 0.007,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 222,
+     "markerCells": 197,
+     "top": "T~heat",
+     "topEta2": 0.0011,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 223,
+     "markerCells": 177,
+     "top": "q~vapour",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    }
+   ]
+  },
+  {
+   "p": 0.01,
+   "k": 1,
+   "hits": 0,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0029,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 163,
+     "top": "T~marker",
+     "topEta2": 0.0028,
+     "markerEta2": 0.0028,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 217,
+     "markerCells": 193,
+     "top": "T~marker",
+     "topEta2": 0.0035,
+     "markerEta2": 0.0035,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 218,
+     "markerCells": 180,
+     "top": "T~marker",
+     "topEta2": 0.0032,
+     "markerEta2": 0.0032,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 219,
+     "markerCells": 187,
+     "top": "T~marker",
+     "topEta2": 0.0031,
+     "markerEta2": 0.0031,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 220,
+     "markerCells": 182,
+     "top": "T~marker",
+     "topEta2": 0.0029,
+     "markerEta2": 0.0029,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 221,
+     "markerCells": 174,
+     "top": "T~marker",
+     "topEta2": 0.0028,
+     "markerEta2": 0.0028,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 222,
+     "markerCells": 197,
+     "top": "T~marker",
+     "topEta2": 0.0029,
+     "markerEta2": 0.0029,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 223,
+     "markerCells": 177,
+     "top": "T~marker",
+     "topEta2": 0.0029,
+     "markerEta2": 0.0029,
+     "markerStructure": false,
+     "found": false
+    }
+   ]
+  },
+  {
+   "p": 0.01,
+   "k": 2,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0119,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 163,
+     "top": "T~marker",
+     "topEta2": 0.0109,
+     "markerEta2": 0.0109,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 193,
+     "top": "T~marker",
+     "topEta2": 0.0133,
+     "markerEta2": 0.0133,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 180,
+     "top": "T~marker",
+     "topEta2": 0.012,
+     "markerEta2": 0.012,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 187,
+     "top": "T~marker",
+     "topEta2": 0.0124,
+     "markerEta2": 0.0124,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 182,
+     "top": "T~marker",
+     "topEta2": 0.0117,
+     "markerEta2": 0.0117,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 174,
+     "top": "T~marker",
+     "topEta2": 0.0112,
+     "markerEta2": 0.0112,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 197,
+     "top": "T~marker",
+     "topEta2": 0.0119,
+     "markerEta2": 0.0119,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 177,
+     "top": "T~marker",
+     "topEta2": 0.0118,
+     "markerEta2": 0.0118,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  },
+  {
+   "p": 0.01,
+   "k": 4,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0463,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 163,
+     "top": "T~marker",
+     "topEta2": 0.0422,
+     "markerEta2": 0.0422,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 193,
+     "top": "T~marker",
+     "topEta2": 0.0503,
+     "markerEta2": 0.0503,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 180,
+     "top": "T~marker",
+     "topEta2": 0.0463,
+     "markerEta2": 0.0463,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 187,
+     "top": "T~marker",
+     "topEta2": 0.0471,
+     "markerEta2": 0.0471,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 182,
+     "top": "T~marker",
+     "topEta2": 0.0457,
+     "markerEta2": 0.0457,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 174,
+     "top": "T~marker",
+     "topEta2": 0.0436,
+     "markerEta2": 0.0436,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 197,
+     "top": "T~marker",
+     "topEta2": 0.0475,
+     "markerEta2": 0.0475,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 177,
+     "top": "T~marker",
+     "topEta2": 0.0458,
+     "markerEta2": 0.0458,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  },
+  {
+   "p": 0.01,
+   "k": 8,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.162,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 163,
+     "top": "T~marker",
+     "topEta2": 0.1509,
+     "markerEta2": 0.1509,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 193,
+     "top": "T~marker",
+     "topEta2": 0.1736,
+     "markerEta2": 0.1736,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 180,
+     "top": "T~marker",
+     "topEta2": 0.1605,
+     "markerEta2": 0.1605,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 187,
+     "top": "T~marker",
+     "topEta2": 0.166,
+     "markerEta2": 0.166,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 182,
+     "top": "T~marker",
+     "topEta2": 0.162,
+     "markerEta2": 0.162,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 174,
+     "top": "T~marker",
+     "topEta2": 0.153,
+     "markerEta2": 0.153,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 197,
+     "top": "T~marker",
+     "topEta2": 0.1679,
+     "markerEta2": 0.1679,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 177,
+     "top": "T~marker",
+     "topEta2": 0.1598,
+     "markerEta2": 0.1598,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  },
+  {
+   "p": 0.03,
+   "k": 0,
+   "hits": 0,
+   "of": 8,
+   "kind": "false detection",
+   "medianMarkerEta2": 0,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 532,
+     "top": "q~vapour",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 217,
+     "markerCells": 565,
+     "top": "T~slope",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 218,
+     "markerCells": 558,
+     "top": "T~heat",
+     "topEta2": 0.0011,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 219,
+     "markerCells": 582,
+     "top": "T~heat",
+     "topEta2": 0.0002,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 220,
+     "markerCells": 553,
+     "top": "T~heat",
+     "topEta2": 0.0005,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 221,
+     "markerCells": 546,
+     "top": "T~heat",
+     "topEta2": 0.007,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 222,
+     "markerCells": 572,
+     "top": "T~heat",
+     "topEta2": 0.0011,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 223,
+     "markerCells": 535,
+     "top": "q~vapour",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    }
+   ]
+  },
+  {
+   "p": 0.03,
+   "k": 1,
+   "hits": 0,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0089,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 532,
+     "top": "T~marker",
+     "topEta2": 0.0086,
+     "markerEta2": 0.0086,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 217,
+     "markerCells": 565,
+     "top": "T~marker",
+     "topEta2": 0.0096,
+     "markerEta2": 0.0096,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 218,
+     "markerCells": 558,
+     "top": "T~marker",
+     "topEta2": 0.0089,
+     "markerEta2": 0.0089,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 219,
+     "markerCells": 582,
+     "top": "T~marker",
+     "topEta2": 0.0095,
+     "markerEta2": 0.0095,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 220,
+     "markerCells": 553,
+     "top": "T~marker",
+     "topEta2": 0.0088,
+     "markerEta2": 0.0088,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 221,
+     "markerCells": 546,
+     "top": "T~marker",
+     "topEta2": 0.0081,
+     "markerEta2": 0.0081,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 222,
+     "markerCells": 572,
+     "top": "T~marker",
+     "topEta2": 0.0091,
+     "markerEta2": 0.0091,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 223,
+     "markerCells": 535,
+     "top": "T~marker",
+     "topEta2": 0.0082,
+     "markerEta2": 0.0082,
+     "markerStructure": false,
+     "found": false
+    }
+   ]
+  },
+  {
+   "p": 0.03,
+   "k": 2,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0343,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 532,
+     "top": "T~marker",
+     "topEta2": 0.0336,
+     "markerEta2": 0.0336,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 565,
+     "top": "T~marker",
+     "topEta2": 0.0351,
+     "markerEta2": 0.0351,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 558,
+     "top": "T~marker",
+     "topEta2": 0.0343,
+     "markerEta2": 0.0343,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 582,
+     "top": "T~marker",
+     "topEta2": 0.0362,
+     "markerEta2": 0.0362,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 553,
+     "top": "T~marker",
+     "topEta2": 0.0341,
+     "markerEta2": 0.0341,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 546,
+     "top": "T~marker",
+     "topEta2": 0.0325,
+     "markerEta2": 0.0325,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 572,
+     "top": "T~marker",
+     "topEta2": 0.0349,
+     "markerEta2": 0.0349,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 535,
+     "top": "T~marker",
+     "topEta2": 0.0332,
+     "markerEta2": 0.0332,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  },
+  {
+   "p": 0.03,
+   "k": 4,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.1262,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 532,
+     "top": "T~marker",
+     "topEta2": 0.123,
+     "markerEta2": 0.123,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 565,
+     "top": "T~marker",
+     "topEta2": 0.1297,
+     "markerEta2": 0.1297,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 558,
+     "top": "T~marker",
+     "topEta2": 0.1254,
+     "markerEta2": 0.1254,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 582,
+     "top": "T~marker",
+     "topEta2": 0.131,
+     "markerEta2": 0.131,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 553,
+     "top": "T~marker",
+     "topEta2": 0.1262,
+     "markerEta2": 0.1262,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 546,
+     "top": "T~marker",
+     "topEta2": 0.1206,
+     "markerEta2": 0.1206,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 572,
+     "top": "T~marker",
+     "topEta2": 0.1265,
+     "markerEta2": 0.1265,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 535,
+     "top": "T~marker",
+     "topEta2": 0.1229,
+     "markerEta2": 0.1229,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  },
+  {
+   "p": 0.03,
+   "k": 8,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.363,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 532,
+     "top": "T~marker",
+     "topEta2": 0.3598,
+     "markerEta2": 0.3598,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 565,
+     "top": "T~marker",
+     "topEta2": 0.3739,
+     "markerEta2": 0.3739,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 558,
+     "top": "T~marker",
+     "topEta2": 0.362,
+     "markerEta2": 0.362,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 582,
+     "top": "T~marker",
+     "topEta2": 0.3768,
+     "markerEta2": 0.3768,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 553,
+     "top": "T~marker",
+     "topEta2": 0.363,
+     "markerEta2": 0.363,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 546,
+     "top": "T~marker",
+     "topEta2": 0.3552,
+     "markerEta2": 0.3552,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 572,
+     "top": "T~marker",
+     "topEta2": 0.3676,
+     "markerEta2": 0.3676,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 535,
+     "top": "T~marker",
+     "topEta2": 0.3595,
+     "markerEta2": 0.3595,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  },
+  {
+   "p": 0.1,
+   "k": 0,
+   "hits": 0,
+   "of": 8,
+   "kind": "false detection",
+   "medianMarkerEta2": 0,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 1826,
+     "top": "q~vapour",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 217,
+     "markerCells": 1840,
+     "top": "T~slope",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 218,
+     "markerCells": 1773,
+     "top": "T~heat",
+     "topEta2": 0.0011,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 219,
+     "markerCells": 1867,
+     "top": "T~heat",
+     "topEta2": 0.0002,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 220,
+     "markerCells": 1817,
+     "top": "T~heat",
+     "topEta2": 0.0005,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 221,
+     "markerCells": 1809,
+     "top": "T~heat",
+     "topEta2": 0.007,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 222,
+     "markerCells": 1781,
+     "top": "T~heat",
+     "topEta2": 0.0011,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    },
+    {
+     "seed": 223,
+     "markerCells": 1864,
+     "top": "q~vapour",
+     "topEta2": 0.0001,
+     "markerEta2": 0,
+     "markerStructure": false,
+     "found": false
+    }
+   ]
+  },
+  {
+   "p": 0.1,
+   "k": 1,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.0268,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 1826,
+     "top": "T~marker",
+     "topEta2": 0.0279,
+     "markerEta2": 0.0279,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 1840,
+     "top": "T~marker",
+     "topEta2": 0.0268,
+     "markerEta2": 0.0268,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 1773,
+     "top": "T~marker",
+     "topEta2": 0.0256,
+     "markerEta2": 0.0256,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 1867,
+     "top": "T~marker",
+     "topEta2": 0.0272,
+     "markerEta2": 0.0272,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 1817,
+     "top": "T~marker",
+     "topEta2": 0.026,
+     "markerEta2": 0.026,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 1809,
+     "top": "T~marker",
+     "topEta2": 0.025,
+     "markerEta2": 0.025,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 1781,
+     "top": "T~marker",
+     "topEta2": 0.0251,
+     "markerEta2": 0.0251,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 1864,
+     "top": "T~marker",
+     "topEta2": 0.0272,
+     "markerEta2": 0.0272,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  },
+  {
+   "p": 0.1,
+   "k": 2,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.1009,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 1826,
+     "top": "T~marker",
+     "topEta2": 0.102,
+     "markerEta2": 0.102,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 1840,
+     "top": "T~marker",
+     "topEta2": 0.1012,
+     "markerEta2": 0.1012,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 1773,
+     "top": "T~marker",
+     "topEta2": 0.095,
+     "markerEta2": 0.095,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 1867,
+     "top": "T~marker",
+     "topEta2": 0.1009,
+     "markerEta2": 0.1009,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 1817,
+     "top": "T~marker",
+     "topEta2": 0.0977,
+     "markerEta2": 0.0977,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 1809,
+     "top": "T~marker",
+     "topEta2": 0.0953,
+     "markerEta2": 0.0953,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 1781,
+     "top": "T~marker",
+     "topEta2": 0.0939,
+     "markerEta2": 0.0939,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 1864,
+     "top": "T~marker",
+     "topEta2": 0.1014,
+     "markerEta2": 0.1014,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  },
+  {
+   "p": 0.1,
+   "k": 4,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.309,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 1826,
+     "top": "T~marker",
+     "topEta2": 0.3101,
+     "markerEta2": 0.3101,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 1840,
+     "top": "T~marker",
+     "topEta2": 0.309,
+     "markerEta2": 0.309,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 1773,
+     "top": "T~marker",
+     "topEta2": 0.2979,
+     "markerEta2": 0.2979,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 1867,
+     "top": "T~marker",
+     "topEta2": 0.3112,
+     "markerEta2": 0.3112,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 1817,
+     "top": "T~marker",
+     "topEta2": 0.3023,
+     "markerEta2": 0.3023,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 1809,
+     "top": "T~marker",
+     "topEta2": 0.2972,
+     "markerEta2": 0.2972,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 1781,
+     "top": "T~marker",
+     "topEta2": 0.2961,
+     "markerEta2": 0.2961,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 1864,
+     "top": "T~marker",
+     "topEta2": 0.3122,
+     "markerEta2": 0.3122,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  },
+  {
+   "p": 0.1,
+   "k": 8,
+   "hits": 8,
+   "of": 8,
+   "kind": "detected",
+   "medianMarkerEta2": 0.6411,
+   "per": [
+    {
+     "seed": 216,
+     "markerCells": 1826,
+     "top": "T~marker",
+     "topEta2": 0.6436,
+     "markerEta2": 0.6436,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 217,
+     "markerCells": 1840,
+     "top": "T~marker",
+     "topEta2": 0.6411,
+     "markerEta2": 0.6411,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 218,
+     "markerCells": 1773,
+     "top": "T~marker",
+     "topEta2": 0.6278,
+     "markerEta2": 0.6278,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 219,
+     "markerCells": 1867,
+     "top": "T~marker",
+     "topEta2": 0.6437,
+     "markerEta2": 0.6437,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 220,
+     "markerCells": 1817,
+     "top": "T~marker",
+     "topEta2": 0.6338,
+     "markerEta2": 0.6338,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 221,
+     "markerCells": 1809,
+     "top": "T~marker",
+     "topEta2": 0.631,
+     "markerEta2": 0.631,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 222,
+     "markerCells": 1781,
+     "top": "T~marker",
+     "topEta2": 0.6271,
+     "markerEta2": 0.6271,
+     "markerStructure": true,
+     "found": true
+    },
+    {
+     "seed": 223,
+     "markerCells": 1864,
+     "top": "T~marker",
+     "topEta2": 0.6464,
+     "markerEta2": 0.6464,
+     "markerStructure": true,
+     "found": true
+    }
+   ]
+  }
+ ]
+}

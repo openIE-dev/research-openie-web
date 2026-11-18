@@ -20,7 +20,7 @@ evidence (a path, a commit, a URL). Hypothesis IDs refer to Section 5 of
 |---|---|---|---|---|---|
 | BLN-010 | Residual-protocol runner: withhold each of four processes, plus a null case; fix candidates and statistic in the file header; commit before running | done | BLN-003 | Results in `docs/planetary-baselines/results/h1.json` | BL-H1 (killed: blind to transport) |
 | BLN-014 | Register and run BL-H7: upwind-difference candidates, fresh seeds | done | BLN-010 | `docs/planetary-baselines/results/h7.json` | BL-H7 (survives) |
-| BLN-015 | Power of the protocol: how small an effect it can find, against effect share and observation noise; register before running | doing (BL-H8 registered) | BLN-014 | Detection rate by effect share | new |
+| BLN-015 | Power of the protocol: how small an effect it can find, against effect share and observation noise; register before running | done (BL-H8 survives; `results/h8.json`) | BLN-014 | Detection rate by effect share | new |
 | BLN-016 | Carry the transport lesson into the Mercury protocol (BLN-021): candidates along the flow (radiation pressure direction, local time, terminator distance) | todo | BLN-014 | Candidate list in the Mercury protocol file | BL-H5 |
 | BLN-011 | Long-run baseline of a toy world (per cell, per season) and two matched forecasters | done | BLN-003 | Errors at 1, 3, 10 doubling times on held-out seeds | BL-H2 (survives; `results/h2.json`) |
 | BLN-017 | Does the residual form matter for a learner that can overfit (for example a small neural network or gradient-boosted trees)? Register B vs A+ with such a learner | todo | BLN-011 | Registered before running | new |

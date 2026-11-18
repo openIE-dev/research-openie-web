@@ -138,6 +138,18 @@ BL-H1 left open how small a process the residual protocol can see. BL-H8 measure
 |---|---|---|---|---|
 | BL-H8 | The protocol finds a hidden process that touches at least 1% of cells with a strength at least equal to the observation noise, and does not find one that is not there | Hidden set of 0.1% to 10% of cells losing 0 to 8 heat units per tick (noise is ±2), seeds 216 to 223 | Share of seeds in which the hidden process is found; false detections when its strength is 0 | Found in fewer than 6 of 8 seeds for any setting with at least 1% of cells and strength at least 2; or a false detection in more than 1 of 8 seeds at any size |
 
+BL-H8 was then run as registered (`docs/planetary-baselines/results/h8.json`). It survives this test. Every setting was found on 8 of 8 seeds or on none, and no setting of strength 0 produced a false detection.
+
+| Share of cells | 1 unit per tick | 2 | 4 | 8 |
+|---|---|---|---|---|
+| 0.1% | 0 of 8 | 0 of 8 | 0 of 8 | 8 of 8 |
+| 0.3% | 0 of 8 | 0 of 8 | 8 of 8 | 8 of 8 |
+| 1% | 0 of 8 | 8 of 8 | 8 of 8 | 8 of 8 |
+| 3% | 0 of 8 | 8 of 8 | 8 of 8 | 8 of 8 |
+| 10% | 8 of 8 | 8 of 8 | 8 of 8 | 8 of 8 |
+
+The boundary follows one quantity, the share of cells times the square of the strength. The share of residual variance the marker explained matched, to within the spread over seeds, the share expected from that product against a residual variance of about 3.6 heat units squared, and detection began where that share crossed the 1% floor. For the analysis of Mercury, the lesson is a budget: a process can only be seen if its footprint times its squared strength, relative to the variance of the residual, clears the chosen effect-size floor. A process below that line is invisible whether or not it exists.
+
 ## 6. Sources and limits
 
 All external sources above were checked only against search results, not against full texts. Lovejoy, Muller and Boisvert 2014: citation and abstract; the 1.8-day figure from press coverage only. Verkercke and co-authors 2025: citation and abstract. Sohl and co-authors 2024 (CUISINES): citation and summary. ROCKE-3D: summary pages. Kleidon: abstracts and conference pages. BepiColombo flyby of 19 June 2023: a conference abstract. Not yet checked at all: the "CELL consortium" named in the handoff note, and the location of MESSENGER sodium data in the PDS.
