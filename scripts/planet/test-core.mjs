@@ -15,6 +15,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const C = await import(pathToFileURL(path.join(ROOT, 'public/living/planet/core.js')).href);
 const QUICK = process.argv.includes('--quick');
+const { spinUp, divergenceTrial } = await import(pathToFileURL(path.join(ROOT, 'scripts/planet/divergence.mjs')).href);
 
 const TICKS = QUICK ? 200 : 1000;
 const SEEDS = QUICK ? [1, 1234] : [1, 7, 1234, 99991];
@@ -74,38 +75,8 @@ for (const seed of SEEDS) {
   results.seeds[seed] = r;
 
   // Divergence (PL-H3 second half, PL-H4): one unit dug at one cell after 200 ticks of spin-up.
-  let base = C.initState(seed);
-  for (let t = 0; t < 200; t++) base = C.advance(base, []);
-  for (let trial = 0; trial < TRIALS; trial++) {
-    let h = C.hash3(seed, trial, 77), i;
-    do { i = h % base.g.length; h = C.mix32(h); } while (base.g[i] < 1);
-    const x = i % base.W, y = Math.floor(i / base.W);
-    let p = C.cloneState(base), q = C.cloneState(base);
-    const logQ = [{ t: base.t, x, y, op: 'dig', k: 1 }];
-    const series = [];
-    for (let k = 1; k <= HORIZON; k++) {
-      p = C.advance(p, []); q = C.advance(q, logQ);
-      series.push(C.divergence(p, q));
-    }
-    // Doubling time: least-squares slope of ln(mass) while mass is between 10 and 1/10 of its final value.
-    const final = series[series.length - 1].mass;
-    const pts = series.map((d, k) => [k + 1, d.mass]).filter(([, m]) => m >= 10 && m <= final / 10);
-    let doubling = null;
-    if (pts.length >= 10) {
-      const n = pts.length, xs = pts.map((p) => p[0]), ys = pts.map((p) => Math.log(p[1]));
-      const mx = xs.reduce((s, v) => s + v, 0) / n, my = ys.reduce((s, v) => s + v, 0) / n;
-      let sxy = 0, sxx = 0;
-      for (let j = 0; j < n; j++) { sxy += (xs[j] - mx) * (ys[j] - my); sxx += (xs[j] - mx) ** 2; }
-      const slope = sxy / sxx;
-      if (slope > 0) doubling = Math.LN2 / slope;
-    }
-    const at = (k) => series[Math.min(k, HORIZON) - 1].cells;
-    results.divergence.push({
-      seed, trial, x, y, ground: base.g[i], water: base.w[i],
-      cells: { 1: at(1), 10: at(10), 50: at(50), 100: at(100), 200: at(200), [HORIZON]: at(HORIZON) },
-      finalMass: final, fitPoints: pts.length, doublingTicks: doubling && Number(doubling.toFixed(2)),
-    });
-  }
+  const base = spinUp(C, seed);
+  for (let trial = 0; trial < TRIALS; trial++) results.divergence.push(divergenceTrial(C, base, seed, trial, HORIZON));
 }
 
 // Summary of divergence.
