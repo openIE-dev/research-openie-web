@@ -93,10 +93,13 @@ export function generatePacked(seed, W, H) {
 
 // ---------------------------------------------------------------- state
 
-export function initState(seed, W = 192, H = 96) {
+// opts.rot (integer 0..256, default 0): rotation. 0 is the toy as registered in the planet
+// study; any other value turns part of the north-south air flow east or west (step 4).
+// It is a world parameter like the seed, so it is not part of the state hash.
+export function initState(seed, W = 192, H = 96, opts = {}) {
   const n = W * H;
   const s = {
-    seed: seed >>> 0, W, H, t: 0, R: 0, V: 0,
+    seed: seed >>> 0, W, H, t: 0, R: 0, V: 0, rot: opts.rot | 0,
     g: new Int32Array(n), w: new Int32Array(n), q: new Int32Array(n), T: new Int32Array(n),
     m: new Uint8Array(n),
   };
@@ -197,11 +200,21 @@ export function step(s) {
       const nb = [idx(x + 1, y), idx(x - 1, y)];
       if (y > 0) nb.push(idx(x, y - 1));
       if (y < H - 1) nb.push(idx(x, y + 1));
+      // Rotation (off when s.rot is 0): of air moving north or south, a share that grows
+      // with latitude is turned instead: poleward flow to the east, equatorward to the west.
+      const turn = s.rot ? Math.floor((s.rot * lat) / (H - 1)) : 0; // 0..rot, out of 256
       for (const j of nb) {
         if (T[j] > T[i]) {
           const d = T[j] - T[i];
           const f = d < 64 ? d : 64;
-          const amt = (qi * f) >> 9, heat = (Ti * f) >> 10;
+          let amt = (qi * f) >> 9, heat = (Ti * f) >> 10;
+          if (turn && j !== nb[0] && j !== nb[1]) {
+            const yj = Math.floor(j / W), poleward = Math.abs(2 * yj - (H - 1)) > lat;
+            const k = poleward ? nb[0] : nb[1]; // east or west neighbour of the source cell
+            const ta = (amt * turn) >> 8, th = (heat * turn) >> 8;
+            dq[i] -= ta; dq[k] += ta; dT[i] -= th; dT[k] += th;
+            amt -= ta; heat -= th;
+          }
           dq[i] -= amt; dq[j] += amt;
           dT[i] -= heat; dT[j] += heat;
         }
@@ -255,8 +268,8 @@ export function advance(s, log, refused = []) {
   return step(s);
 }
 
-export function replay(seed, log, ticks, W = 192, H = 96) {
-  let s = initState(seed, W, H);
+export function replay(seed, log, ticks, W = 192, H = 96, opts = {}) {
+  let s = initState(seed, W, H, opts);
   for (let t = 0; t < ticks; t++) s = advance(s, log);
   return s;
 }

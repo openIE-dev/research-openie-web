@@ -66,6 +66,8 @@ change together, in the same commit. Then run `node scripts/planet/test-rust.mjs
 the step changes every hash: say so in the ledger, and rerun any registered
 hypothesis whose numbers depend on it before quoting them again.
 
+**Options in the core.** `initState(seed, W, H, { rot })` sets rotation (0..256, default 0): in step 4, a share of north-south air flow growing with latitude is turned east (poleward flow) or west (equatorward flow). With `rot` 0 the code path is skipped and every hash is unchanged. It is a world parameter like the seed and is not hashed. Rust: `State.rot`, Wasm `world_set_rot`, native `hashes <seed> <ticks> <log> [rot]`. The analyst's copy in `scripts/planetary-baselines/model.mjs` does not model rotation.
+
 **Other users of the core.** The planetary-baselines study
 (`docs/planetary-baselines/`) runs experiments on this toy. Its additions must
 be options that are off by default, so the hashes and registered results here

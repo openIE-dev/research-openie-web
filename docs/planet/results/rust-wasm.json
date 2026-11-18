@@ -1,9 +1,9 @@
 {
- "generated": "2026-11-18T02:30:34.671Z",
+ "generated": "2026-11-18T19:08:06.090Z",
  "node": "v22.23.5",
  "rustc": "rustc 1.97.0 (2d8144b78 2026-07-07)",
  "platform": "linux x64",
- "wasmBytes": 47359,
+ "wasmBytes": 48722,
  "seeds": {
   "1": {
    "edits": 115,
@@ -60,6 +60,22 @@
     "wasm": -1,
     "native": -1
    }
+  }
+ },
+ "rotation": {
+  "1234/rot64": {
+   "firstMismatchTick": {
+    "wasm": -1,
+    "native": -1
+   },
+   "differsFromRot0": true
+  },
+  "7/rot200": {
+   "firstMismatchTick": {
+    "wasm": -1,
+    "native": -1
+   },
+   "differsFromRot0": true
   }
  },
  "sensitivity": {

@@ -257,3 +257,16 @@ environment limits section 6. Every edit in the repair was asserted.
 
 **Rule for future edits to these docs.** Assert every scripted replacement,
 and compare heading counts before and after (`grep -c '^## '`).
+
+---
+
+## 2026-11-18 · entry 8 · rotation option in the core
+
+For the planetary-baselines study (its BLN-012), `core.js` and `lib.rs` gained
+a rotation option, `initState(seed, W, H, { rot })`, default 0, changed in the
+same commit as the blueprint requires. With `rot` 0 the new code path is
+skipped: the four stored final hashes in `results/rust-wasm.json` reproduce
+exactly, and every registered result here is unchanged. With rotation on,
+JS, Wasm and native agree for 400 fuzzed ticks at rot 64 (seed 1234) and 200
+(seed 7). `test-core.mjs` checks rotation 128 for determinism and
+conservation. `core.wasm` was rebuilt.

@@ -132,3 +132,18 @@ matters for learners that can overfit.
 **Next.** BLN-012 (rotation option, off by default, JS and Rust together),
 then BLN-013 (scaling ladder, BL-H3). BLN-015 (protocol power) and BLN-017
 are independent of those.
+
+---
+
+## 2026-11-18 · entry 6 · rotation option (BLN-012)
+
+Added to the shared core (planet ledger entry 8): `initState(seed, W, H,
+{ rot })`, 0..256, default 0, in JS and Rust together. Off: all planet hashes
+unchanged. On: JS, Wasm and native agree. The analyst's model
+(`model.mjs`) does not model rotation; any protocol run with rotation on
+must account for that.
+
+**Next.** BLN-013 (BL-H3, scaling ladder): register worlds varying size,
+water, sunlight, heat transport and rotation; measure doubling time and the
+spectral transition time; fix candidate dimensionless groups and the held-out
+split before running.

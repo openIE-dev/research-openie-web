@@ -67,6 +67,15 @@ for (const seed of SEEDS) {
   for (let trial = 0; trial < TRIALS; trial++) results.divergence.push(divergenceTrial(C, base, seed, trial, HORIZON));
 }
 
+// Rotation option (off by default; used by the planetary-baselines study).
+{
+  const opts = { rot: 128 };
+  const a = C.replay(1234, [], 300, 192, 96, opts), b = C.replay(1234, [], 300, 192, 96, opts), z = C.replay(1234, [], 300);
+  const t0 = C.totals(C.initState(1234, 192, 96, opts)), t1 = C.totals(a);
+  const ok1 = C.hashState(a) === C.hashState(b), ok2 = t0.ground === t1.ground && t0.water === t1.water, ok3 = C.hashState(a) !== C.hashState(z);
+  ok1 && ok2 && ok3 ? ok('rotation 128: deterministic, conserves ground and water, and changes the weather') : fail(`rotation: deterministic ${ok1}, conserved ${ok2}, differs ${ok3}`);
+}
+
 // Summary of divergence.
 const N = results.divergence.length, cellsTotal = C.initState(1).g.length;
 const spread = results.divergence.filter((d) => d.cells[HORIZON] >= cellsTotal / 2).length;

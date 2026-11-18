@@ -80,6 +80,33 @@ for (const seed of SEEDS) {
   console.log(`seed ${seed}: ${ok ? 'ok  ' : 'FAIL'} JS, Wasm and native agree at all ${TICKS} ticks` + (ok ? '' : ` ${JSON.stringify(r.firstMismatchTick)}`));
 }
 
+// Rotation (an option, off by default): JS, Wasm and native must agree with it on too.
+result.rotation = {};
+for (const [seed, rot] of [[1234, 64], [7, 200]]) {
+  const s0 = C.initState(seed);
+  const log = fuzzLog(C, seed, 400, s0.W, s0.H);
+  const js = [];
+  let s = C.initState(seed, 192, 96, { rot });
+  for (let t = 0; t < 400; t++) { s = C.advance(s, log); js.push(C.hashState(s)); }
+  X.world_init(seed, 192, 96); X.world_set_rot(rot);
+  const ptr = X.alloc(Math.max(1, log.length) * 20);
+  new Int32Array(X.memory.buffer, ptr, log.length * 5).set(log.flatMap((e) => [e.t, e.x, e.y, OPS[e.op], e.k]));
+  X.world_set_log(ptr, log.length);
+  let wasmFirst = -1;
+  for (let t = 0; t < 400; t++) { X.world_advance(1); if (wasmFirst < 0 && hex(X.world_hash_hi(), X.world_hash_lo()) !== js[t]) wasmFirst = t + 1; }
+  const logFile = path.join(os.tmpdir(), `planet-rot-${seed}-${process.pid}.txt`);
+  fs.writeFileSync(logFile, log.map((e) => `${e.t} ${e.x} ${e.y} ${OPS[e.op]} ${e.k}`).join('\n') + '\n');
+  const lines = execFileSync(NATIVE, [String(seed), '400', logFile, String(rot)]).toString().trim().split('\n');
+  fs.unlinkSync(logFile); lines.pop();
+  let nativeFirst = -1;
+  lines.forEach((l, t) => { if (nativeFirst < 0 && l.split(' ')[1] !== js[t]) nativeFirst = t + 1; });
+  const differsFromRot0 = js[399] !== (() => { let z = C.initState(seed); for (let t = 0; t < 400; t++) z = C.advance(z, log); return C.hashState(z); })();
+  const ok = wasmFirst < 0 && nativeFirst < 0 && differsFromRot0;
+  if (!ok) failures++;
+  result.rotation[`${seed}/rot${rot}`] = { firstMismatchTick: { wasm: wasmFirst, native: nativeFirst }, differsFromRot0 };
+  console.log(`rotation ${rot} on seed ${seed}: ${ok ? 'ok  ' : 'FAIL'} JS, Wasm and native agree for 400 ticks; differs from no rotation: ${differsFromRot0}`);
+}
+
 // Sensitivity: the comparison must notice one missing edit. Drop the first edit the
 // JavaScript run admitted and run Wasm again; the hashes must differ.
 {

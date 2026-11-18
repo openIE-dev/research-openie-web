@@ -107,6 +107,7 @@ pub struct State {
     pub t: i32,
     pub rock: i32,  // R in core.js
     pub water: i32, // V in core.js
+    pub rot: i32,   // rotation 0..256; 0 is the toy as registered (see core.js initState)
     pub g: Vec<i32>,
     pub wv: Vec<i32>, // w in core.js
     pub q: Vec<i32>,
@@ -129,7 +130,7 @@ impl State {
     pub fn new(seed: u32, w: usize, h: usize) -> State {
         let n = w * h;
         let mut s = State {
-            seed, w, h, t: 0, rock: 0, water: 0,
+            seed, w, h, t: 0, rock: 0, water: 0, rot: 0,
             g: vec![0; n], wv: vec![0; n], q: vec![0; n], temp: vec![0; n], m: vec![0; n],
         };
         for y in 0..h {
@@ -236,12 +237,22 @@ pub fn step(s: &State) -> State {
             let mut c = 2;
             if y > 0 { nb[c] = idx(x, y - 1); c += 1; }
             if y < hi - 1 { nb[c] = idx(x, y + 1); c += 1; }
+            // Rotation (off when s.rot is 0): see core.js step 4.
+            let turn = if s.rot != 0 { (s.rot * lat) / (hi - 1) } else { 0 }; // both >= 0
             for &j in &nb[..c] {
                 if temp[j] > temp[i] {
                     let d = temp[j] - temp[i];
                     let f = if d < 64 { d } else { 64 };
-                    let amt = (qi * f) >> 9;
-                    let heat = (ti * f) >> 10;
+                    let mut amt = (qi * f) >> 9;
+                    let mut heat = (ti * f) >> 10;
+                    if turn != 0 && j != nb[0] && j != nb[1] {
+                        let yj = (j / w) as i32;
+                        let poleward = (2 * yj - (hi - 1)).abs() > lat;
+                        let k = if poleward { nb[0] } else { nb[1] };
+                        let (ta, th) = ((amt * turn) >> 8, (heat * turn) >> 8);
+                        dq[i] -= ta; dq[k] += ta; dt[i] -= th; dt[k] += th;
+                        amt -= ta; heat -= th;
+                    }
                     dq[i] -= amt; dq[j] += amt;
                     dt[i] -= heat; dt[j] += heat;
                 }
@@ -366,6 +377,11 @@ pub mod wasm {
         let raw = std::slice::from_raw_parts(ptr, n * 5);
         let log: Vec<Edit> = raw.chunks(5).map(|c| Edit { t: c[0], x: c[1], y: c[2], op: c[3], k: c[4] }).collect();
         LOG.with(|l| *l.borrow_mut() = log);
+    }
+
+    #[no_mangle]
+    pub extern "C" fn world_set_rot(rot: i32) {
+        WORLD.with(|c| c.borrow_mut().as_mut().expect("world_init first").rot = rot);
     }
 
     #[no_mangle]
