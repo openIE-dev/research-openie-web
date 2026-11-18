@@ -148,3 +148,42 @@ PLN-019, then M2 (PLN-020, a Rust reference compiled to Wasm).
 **Next.** M3, PLN-030: 64-bit micrometre positions emulated as `vec2<u32>`
 in WGSL, checked against a BigInt reference. It needs no GPU vendor for a
 first pass (SwiftShader runs it) and unblocks the sphere renderer.
+
+---
+
+## 2026-11-18 · entry 5 · 64-bit positions on the GPU
+
+**Done.** PLN-030.
+- `public/living/planet/pos64.js`: positions as `vec2<u32>` in micrometres;
+  WGSL and word-by-word JS versions of add, subtract, signed compare and the
+  camera-relative f32 conversion; BigInt reference; test vectors (every
+  combination of carry and sign edge words, plus 65,536 pairs with camera
+  offsets in buckets from 1 m to 100 km).
+- `scripts/planet/browser.mjs` (shared headless runner; `gpu-parity.mjs` now
+  uses it), `pos64-parity.mjs` (GPU), `test-pos64.mjs` (CPU, added to
+  `pnpm test:planet`, so CI runs it).
+
+**Found and fixed.** The first conversion added `f32(hi) * 2^32 + f32(lo)`
+with `lo` unsigned. A small negative difference has `hi = -1` and `lo` near
+2^32, and a 32-bit float holds that only to the nearest 512 um, so the error
+was 0.128 mm even within 1 m of the camera. Reading `lo` as signed and adding
+its sign bit to `hi` fixed it (error within 1 m now about 3 nm in JS).
+
+**Measured (SwiftShader, headless Chromium; Node 22).**
+- Integer ops: 0 of 65,536 pairs differ from BigInt, GPU and JS. Mutant with
+  the carry removed: 32,631 differ (detected).
+- f32 conversion, max error by distance from the camera, GPU / JS:
+  1 m 0.0000321 / 0.00000252 mm; 100 m 0.00802 / 0.00425; 1 km 0.063 /
+  0.0345; 4 km 0.313 / 0.198; 8 km 0.567 / 0.337; 16 km 1.08 / 0.615;
+  100 km 7.93 / 4.35. The GPU float error is larger than JS's, as the
+  tolerance zone allows; the integer results agree exactly.
+- Consequence recorded in the blueprint (section 5): draw tiles relative to
+  their own centre; f32 within 8 km of a local origin stays under 1 mm here.
+
+**Next.** PLN-031: a first cube-sphere view in WebGPU. Suggested first slice:
+one planet at 6,371 km radius, a quadtree per cube face, tiles meshed from
+`core.js`'s generator on a sphere parameterisation (the toy generator is
+flat; a sphere version needs a 3D noise lattice, so start by sampling the
+existing generator with longitude and latitude and note the seam at the
+date line), camera-relative vertices per tile, reversed-Z depth. Measure
+jitter at the surface, at the core and at lunar distance.

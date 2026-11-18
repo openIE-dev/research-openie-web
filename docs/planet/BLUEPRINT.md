@@ -51,6 +51,8 @@ it into modules with contracts, and each module into tests that can fail.
 | Cross-implementation test | `scripts/planet/test-rust.mjs` | — | Builds the crate, compares JS, Wasm and native hashes at every tick under fuzzed logs, generator parity, and a sensitivity check. Writes `docs/planet/results/rust-wasm.json`. |
 | Shared test helpers | `scripts/planet/divergence.mjs` | — | The fuzzed edit log and the divergence trial, so every script measures the same thing. |
 | PL-H12 runner | `scripts/planet/run-h12.mjs` | — | Registered rules in its header; committed before it was run. |
+| 64-bit positions | `public/living/planet/pos64.js` | Exact (integers), tolerance (float conversion) | Coordinates in micrometres as `vec2<u32>` (lo, hi), two's complement. `add64`, `sub64`, `lt64` must match BigInt exactly. `relMetres` converts a camera-relative difference to f32 metres for drawing only; read the low word as signed (see ledger entry 5). |
+| Browser runner | `scripts/planet/browser.mjs` | — | Serves `public/` on localhost and runs a function in headless Chromium with WebGPU. Used by `gpu-parity.mjs` and `pos64-parity.mjs`. |
 
 Later milestones (see the tracker) add a cube-sphere renderer, volumetric
 bricks, creatures and the mechanics.
@@ -94,14 +96,22 @@ rejected by the checker and never enters the log.
 from mineral formulae and standard atomic weights; rock types are mixtures of
 minerals with illustrative proportions (labelled as such on the page).
 
-## 5. Hypotheses the build can test now
+## 5. Camera-relative drawing budget
+
+Measured on SwiftShader (ledger entry 5): f32 camera-relative positions stay
+under 1 mm of error within 8 km of the camera. Anything drawn farther away
+must either accept more than 1 mm or be drawn relative to a nearer local
+origin (for example the centre of its own terrain tile), which the renderer
+of M3 should do by default.
+
+## 6. Hypotheses the build can test now
 
 From Section 7 of the study. M1 can run PL-H1 (on the devices available),
 PL-H3, PL-H4 (on the toy weather) and PL-H6 (on the toy's two conserved
 quantities). PL-H2 needs several GPU vendors and is not runnable in a single
 container. The others need later milestones.
 
-## 6. Definition of done for a milestone
+## 7. Definition of done for a milestone
 
 - Its tracker rows are `done` with evidence (a results file, a commit, a URL).
 - `pnpm build` passes; `node scripts/planet/test-core.mjs` passes.

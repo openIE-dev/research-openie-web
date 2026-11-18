@@ -1,0 +1,99 @@
+{
+ "ran": true,
+ "adapter": {
+  "vendor": "google",
+  "architecture": "swiftshader",
+  "description": ""
+ },
+ "cpu": {
+  "pairs": 65536,
+  "intMismatch": 0,
+  "first": null,
+  "relErrorMm": [
+   {
+    "withinMetres": 1,
+    "pairs": 9208,
+    "maxErrorMm": 0.00000252
+   },
+   {
+    "withinMetres": 100,
+    "pairs": 9208,
+    "maxErrorMm": 0.00425
+   },
+   {
+    "withinMetres": 1000,
+    "pairs": 9208,
+    "maxErrorMm": 0.0345
+   },
+   {
+    "withinMetres": 4000,
+    "pairs": 9208,
+    "maxErrorMm": 0.198
+   },
+   {
+    "withinMetres": 8000,
+    "pairs": 9208,
+    "maxErrorMm": 0.337
+   },
+   {
+    "withinMetres": 16000,
+    "pairs": 9208,
+    "maxErrorMm": 0.615
+   },
+   {
+    "withinMetres": 100000,
+    "pairs": 9208,
+    "maxErrorMm": 4.35
+   }
+  ]
+ },
+ "gpu": {
+  "pairs": 65536,
+  "intMismatch": 0,
+  "first": null,
+  "relErrorMm": [
+   {
+    "withinMetres": 1,
+    "pairs": 9208,
+    "maxErrorMm": 0.0000321
+   },
+   {
+    "withinMetres": 100,
+    "pairs": 9208,
+    "maxErrorMm": 0.00802
+   },
+   {
+    "withinMetres": 1000,
+    "pairs": 9208,
+    "maxErrorMm": 0.063
+   },
+   {
+    "withinMetres": 4000,
+    "pairs": 9208,
+    "maxErrorMm": 0.313
+   },
+   {
+    "withinMetres": 8000,
+    "pairs": 9208,
+    "maxErrorMm": 0.567
+   },
+   {
+    "withinMetres": 16000,
+    "pairs": 9208,
+    "maxErrorMm": 1.08
+   },
+   {
+    "withinMetres": 100000,
+    "pairs": 9208,
+    "maxErrorMm": 7.93
+   }
+  ]
+ },
+ "sensitivity": {
+  "change": "carry dropped from add64",
+  "intMismatch": 32631,
+  "detected": true
+ },
+ "generated": "2026-11-18T02:35:29.757Z",
+ "browser": "Chromium (Playwright), headless, --enable-unsafe-webgpu"
+}

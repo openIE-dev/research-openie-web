@@ -43,10 +43,12 @@ Evidence for PLN-020: `experiments/planet-core/`, `scripts/planet/test-rust.mjs`
 
 ## M3. The sphere
 
+Evidence for PLN-030: `public/living/planet/pos64.js`, `scripts/planet/pos64-parity.mjs`, `scripts/planet/test-pos64.mjs` (in `pnpm test:planet`), `docs/planet/results/pos64.json`. Integer ops 0 of 65,536 differ on SwiftShader and in JS; carry-removal mutant caught; f32 conversion under 1 mm within 8 km on SwiftShader.
+
 | ID | Task | Status | Depends | Acceptance | Hypothesis |
 |---|---|---|---|---|---|
-| PLN-030 | 64-bit micrometre positions emulated as `vec2<u32>` in WGSL | todo | PLN-013 | Add, subtract, compare match a BigInt reference | PL-H9 |
-| PLN-031 | Cube-sphere quadtree level of detail, camera-relative rendering, reversed depth | todo | PLN-030 | No visible jitter over 1 mm at surface, core, lunar distance | PL-H9 |
+| PLN-030 | 64-bit micrometre positions emulated as `vec2<u32>` in WGSL | done | PLN-013 | Add, subtract, compare match a BigInt reference | PL-H9 |
+| PLN-031 | Cube-sphere quadtree level of detail, camera-relative rendering, reversed depth | todo | PLN-030 | No visible jitter over 1 mm at surface, core, lunar distance; tiles drawn relative to their own centre (blueprint section 5) | PL-H9 |
 | PLN-032 | Atmosphere view (tolerance zone) | todo | PLN-031 | Visual only; reads no state back | — |
 
 ## M4. Inside the planet
