@@ -252,9 +252,10 @@
         "ENSO",
         "Mars",
         "Mercury sodium exosphere",
-        "preregistered hindcast"
+        "preregistered hindcast",
+        "Viking and InSight pressure"
       ],
-      "summary": "Forecast planetary climate from a small structural skeleton and study the residual it leaves. Two preregistered hindcasts on four records of Earth's monthly global temperature, 1990 to 2026: a two-parameter CO2 skeleton beats a 25-parameter autoregression by 32 to 42% in mean square error at two years and 66 to 73% at ten; beyond one year no residual model beats the skeleton alone; the residual is not single-exponent long memory, and El Niño explains part of it, adding 14 to 20% skill at three to six months. Protocols for Mars, Mercury and a laboratory scaling ladder follow. Plain words: start from the causes, forecast only what they miss, and study what is left."
+      "summary": "Forecast planetary climate from a small structural skeleton and study the residual it leaves. Two preregistered hindcasts on four records of Earth's monthly global temperature, 1990 to 2026: a two-parameter CO2 skeleton beats a 25-parameter autoregression by 32 to 42% in mean square error at two years and 66 to 73% at ten; beyond one year no residual model beats the skeleton alone; the residual is not single-exponent long memory, and El Niño explains part of it, adding 14 to 20% skill at three to six months. On Mars, Viking and InSight surface pressure shows the predicted weather break near two sols at one lander of three and no macroweather plateau after it, pointing to a slow driver, plausibly dust, missing from the skeleton. Protocols for Mercury and a laboratory scaling ladder follow. Plain words: start from the causes, forecast only what they miss, and study what is left."
     },
     {
       "id": "spellcheck",

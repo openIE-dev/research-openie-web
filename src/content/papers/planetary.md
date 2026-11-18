@@ -1,6 +1,6 @@
 ---
 title: "Structure First: Planetary Forecasting as a Skeleton Plus a Residual"
-deck: "Work in progress. Most atmospheric models fit correlations in the record. This topic forecasts from a small structural skeleton, treats what is left as the scientific object, and tests the idea on Earth's temperature record before carrying it to Mars and Mercury."
+deck: "Work in progress. Most atmospheric models fit correlations in the record. This topic forecasts from a small structural skeleton, treats what is left as the scientific object, and tests the idea on Earth's temperature record and Mars surface pressure, with Mercury next."
 id: planetary
 status: "Work in progress"
 author: "David Charlot, Open Interface Engineering"
@@ -15,13 +15,14 @@ board_metered: false
 
 ## Abstract
 
-A planetary atmosphere produces millions of measurable signals, but a few structural drivers set how it evolves. This topic builds forecasts in that order: first a small structural skeleton, then a model of the residual around it, then a search for the driver behind whatever residual is left. Two preregistered hindcasts on four independent records of Earth's monthly global temperature, 1990 to 2026, test the approach. A two-parameter skeleton in the logarithm of carbon dioxide cuts mean square error by 32 to 42% at two years and by 66 to 73% at ten years against a 25-parameter autoregression fitted to the raw record. Beyond one year, no residual model improves on the skeleton alone. A one-parameter long-memory model of the residual helps up to six months, then does worse than short memory; the residual's fluctuations decay faster than that model allows. One named driver, the El Niño–Southern Oscillation, explains part of the residual and adds 14 to 20% skill at three to six months. The same protocol is set out for Mars, Mercury and a laboratory scaling ladder.
+A planetary atmosphere produces millions of measurable signals, but a few structural drivers set how it evolves. This topic builds forecasts in that order: first a small structural skeleton, then a model of the residual around it, then a search for the driver behind whatever residual is left. Two preregistered hindcasts on four independent records of Earth's monthly global temperature, 1990 to 2026, test the approach. A two-parameter skeleton in the logarithm of carbon dioxide cuts mean square error by 32 to 42% at two years and by 66 to 73% at ten years against a 25-parameter autoregression fitted to the raw record. Beyond one year, no residual model improves on the skeleton alone. A one-parameter long-memory model of the residual helps up to six months, then does worse than short memory; the residual's fluctuations decay faster than that model allows. One named driver, the El Niño–Southern Oscillation, explains part of the residual and adds 14 to 20% skill at three to six months. On Mars, a third preregistered study of Viking and InSight surface pressure finds the predicted weather break near two sols at one lander out of three, and no macroweather plateau after it: residual fluctuations rise again past about 16 sols, which points to a slow driver, plausibly dust, that the skeleton lacks. Protocols for Mercury and a laboratory scaling ladder follow.
 
 **In plain words**
 
 1. Instead of learning patterns from every number in the weather record, start from the one or two causes known to drive it, and forecast only what those causes leave unexplained.
 2. On Earth's global temperature, a straight line in carbon dioxide forecasts the next one to ten years better than a pattern-fitting model with twelve times as many settings.
 3. What the line misses is mostly El Niño, and adding El Niño helps for a few months. Beyond a year, nothing tried here beats the line alone.
+4. On Mars the picture is less tidy: after the seasons are removed, something slow, probably dust, is still left, and finding it is the next step.
 
 ## Terms
 
@@ -43,6 +44,8 @@ A planetary atmosphere produces millions of measurable signals, but a few struct
 - **GISTEMP:** the Goddard Institute for Space Studies Surface Temperature Analysis, from NASA.
 - **MESSENGER:** the MErcury Surface, Space ENvironment, GEochemistry, and Ranging spacecraft, in orbit at Mercury from 2011 to 2015.
 - **SHA-256:** a cryptographic hash; a matching sum shows a file is byte-for-byte the one used.
+- **Sol:** a Mars solar day, 24 h 39 min 35 s.
+- **Ls (solar longitude):** the position of Mars in its orbit, in degrees, used as the Mars season. Ls = 0 is northern spring equinox.
 - **Buckingham-Pi analysis:** dimensional analysis that reduces a set of physical variables to a smaller set of dimensionless groups.
 
 ## 1. Thesis
@@ -161,15 +164,49 @@ Planned and preregistered in the Study 2 preregistration file (`PREREGISTRATION_
 
 ## 7. Study 4: does the macroweather baseline transfer to Mars?
 
-The question is whether the skeleton-plus-residual structure, and the weather-to-macroweather transition near 1.8 sols [1], hold in a second atmosphere with a different driver mix: a thin CO2 atmosphere, a seasonal CO2 condensation cycle that changes surface pressure by about a quarter, and dust instead of oceans. The protocol, with the same rules as Study 1:
+The question is whether the skeleton-plus-residual structure, and the weather-to-macroweather transition near 1.8 sols [1], hold in a second atmosphere with a different driver mix: a thin CO2 atmosphere, a seasonal CO2 condensation cycle that changes surface pressure by about a quarter, and dust instead of oceans.
 
-1. Lander pressure and air temperature from the Planetary Data System (PDS), Viking first, then InSight and Curiosity, reduced to hourly means.
-2. Skeleton: the diurnal harmonics and the seasonal cycle in solar longitude, fitted per Mars year with as few harmonics as hold out-of-sample.
-3. Haar fluctuation analysis of the residual from hours to a Mars year, testing the transition near 1.8 sols and the exponent beyond it against Study 1's Earth value.
-4. A hindcast ladder (skeleton alone, skeleton plus AR(1), skeleton plus fGn, unconstrained autoregression) at horizons of 1 to 30 sols.
-5. Residual isolation against dust optical depth, the candidate named driver for Mars, as ENSO was for Earth.
+### 7.1 Design
 
-The decision rules will be committed before step 3 runs.
+The preregistration file (`PREREGISTRATION_study4.md`) was committed before the analysis ran on the lander data; before that, only the data coverage had been looked at. The data are hourly mean surface pressures from the Planetary Data System (PDS): Viking Lander 1 (22°N, sols 0 to 2245), Viking Lander 2 (48°N, sols 0 to 1204) and InSight (4°N, sols 4 to 1219), with provenance in `data/mars/PROVENANCE.md`. Air temperature was left out because of known sensor errors at Viking 2 and InSight.
+
+- **Skeleton (27 parameters per lander):** seasonal harmonics 0 to 4 in Ls, plus diurnal harmonics 1 to 3 in local time with amplitudes that vary with Ls.
+- **Part A:** Haar fluctuation of the hourly residual from a quarter sol to 128 sols, with decisions taken only at whole-sol lags.
+- **Part B:** a hindcast ladder on daily means from sol 700, at 1 to 30 sols. D0 is the seasonal skeleton alone, D1 is persistence, D2 is the skeleton plus AR(1), and D5 is an AR(5) on the raw daily series with no skeleton.
+
+The self-test changed how the transition hypothesis has to be read. A synthetic weather process that forgets over 2 sols has its Haar peak near 12 sols. The Haar peak therefore marks the break between growing and shrinking fluctuations, a scale several times longer than a memory time, and the 1.8-sol prediction is tested as a prediction of that break.
+
+Hypotheses, each decided by agreement in at least two landers:
+
+- **H8:** the Haar fluctuation peaks at a whole-sol lag of 1 to 4 sols.
+- **H9:** beyond the break, between 6 and 96 sols, the Haar slope is negative (macroweather).
+- **H10:** at 10 and 30 sols, the skeleton model D2 beats the unconstrained D5.
+- **H11:** at 30 sols, memory adds less than 5% to the skeleton alone.
+
+### 7.2 Results
+
+![Figure 4. RMS Haar fluctuation of the Mars surface pressure residual against averaging interval, three landers. Shaded: lags under one sol, where diurnal leftovers dominate. Dashed: the predicted 1.8-sol break.](/figures/planetary/mars-haar.svg)
+
+| Hypothesis | Verdict | Landers for, against (of those that entered) |
+|---|---|---|
+| H8, break at 1 to 4 sols | supported | 3 for, 0 against (of 3) |
+| H9, macroweather slope beyond the break | refuted | 0 for, 3 against (of 3) |
+| H10, skeleton beats the unconstrained fit | undecided | 1 for, 0 against (of 2; InSight had too few origins) |
+| H11, memory fades by 30 sols | supported | 2 for, 0 against (of 2) |
+
+The verdicts need reading against Figure 4.
+
+**The break.** Only Viking 2 shows the predicted shape: fluctuations grow from one sol to a peak at two to three sols and then shrink. Viking 2 sits at 48°N, under the travelling weather systems of the northern mid-latitudes. At Viking 1 and InSight, nearer the equator, fluctuations already shrink from the smallest whole-sol lag, so their break lies at one sol or below and is not resolved. H8 passes by its rule; the positive detection rests on one lander.
+
+**No macroweather plateau.** After a minimum near 8 to 16 sols, fluctuations grow again out to about 100 sols at all three landers (slopes +0.01 to +0.18). On Earth the residual fluctuations kept falling to 20 years. On Mars, a slow component that a fixed seasonal skeleton cannot follow remains in the residual. Two candidates are year-to-year differences in the seasonal cycle and dust: the residual at tens of sols includes the 1977 global dust storms in the Viking record. The protocol does not let that component be absorbed by more harmonics. It points to the next named driver to test, dust optical depth.
+
+**The ordering of models.** At Viking 1, the record with most origins, the skeleton dominates as it does on Earth: D2 beats the unconstrained AR(5) by 81% in mean square error at 10 sols and by 98% at 30 sols. At Viking 2 the AR(5) beats the skeleton at 1 to 10 sols, where weather systems carry real short-range memory and the seasonal skeleton misses by 22 Pa RMS. At 30 sols the skeleton wins there too (+44%), but the interval includes zero. H11 passes, but it was a weak test: an AR(1) residual forecast decays to the skeleton by construction, so this result adds little.
+
+Per-lander tables are in `results/study4.md`.
+
+### 7.3 Next on Mars
+
+Residual isolation against dust optical depth, as ENSO was for Earth, using the Viking and InSight opacity series. The prediction to test is that the rise in residual fluctuations past 16 sols tracks dust opacity, and that a skeleton with one dust term restores a falling macroweather slope.
 
 ## 8. Study 5: the Mercury sodium residual floor
 
@@ -190,7 +227,7 @@ Rotating annulus and differentially heated chamber experiments, varied in heat f
 ## 10. Falsifiers for the topic
 
 - If Study 3 finds that M0 or M6 loses to the unconstrained M5 at 24 months on unseen data, the central claim fails on Earth.
-- If the Mars residual shows no weather-to-macroweather transition between 1 and 5 sols, the transfer of the macroweather baseline fails.
+- If a dust term in the Mars skeleton does not remove the rise in residual fluctuations past 16 sols, the missing slow driver on Mars is something other than dust, and the macroweather baseline does not transfer as a single regime.
 - If the Mercury residual can be absorbed by the six listed processes within their physical bounds, there is no missing mechanism to find there.
 
 ## 11. Reproduce
@@ -202,6 +239,8 @@ python3 analyze.py --selftest   # synthetic check
 python3 analyze.py              # Study 1, about one minute
 python3 study2.py               # Study 2
 python3 control_haar.py         # post hoc control
+python3 mars.py --selftest      # Mars synthetic check
+python3 mars.py                 # Study 4
 python3 figures.py              # figures into public/figures/planetary/
 ```
 
