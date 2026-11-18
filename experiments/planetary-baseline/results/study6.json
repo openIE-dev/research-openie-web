@@ -1,0 +1,57 @@
+{
+ "bodies": {
+  "Earth": {
+   "Ro_T_5_95": [
+    0.041235147882977836,
+    0.06511333921935307
+   ],
+   "LD_over_a_5_95": [
+    0.09904461602682794,
+    0.14577139332660696
+   ],
+   "predicted": "baroclinic eddies",
+   "observed": "baroclinic eddies",
+   "match": true
+  },
+  "Mars": {
+   "Ro_T_5_95": [
+    0.13954820830872236,
+    0.2878704946878206
+   ],
+   "LD_over_a_5_95": [
+    0.13453205509764338,
+    0.2567524103880273
+   ],
+   "predicted": "baroclinic eddies",
+   "observed": "baroclinic eddies",
+   "match": true
+  },
+  "Venus": {
+   "Ro_T_5_95": [
+    222.26445264024775,
+    1109.247378270269
+   ],
+   "LD_over_a_5_95": [
+    6.950450875461915,
+    23.351589080334595
+   ],
+   "predicted": "axisymmetric",
+   "observed": "axisymmetric",
+   "match": true
+  },
+  "Titan": {
+   "Ro_T_5_95": [
+    4.556494801225554,
+    10.334151418690565
+   ],
+   "LD_over_a_5_95": [
+    1.2916244831452368,
+    3.4357581796009877
+   ],
+   "predicted": "axisymmetric",
+   "observed": "axisymmetric",
+   "match": true
+  }
+ },
+ "H14": "supported"
+}
