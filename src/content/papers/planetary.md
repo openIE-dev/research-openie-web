@@ -15,14 +15,14 @@ board_metered: false
 
 ## Abstract
 
-A planetary atmosphere produces millions of measurable signals, but a few structural drivers set how it evolves. This topic builds forecasts in that order: first a small structural skeleton, then a model of the residual around it, then a search for the driver behind whatever residual is left. Two preregistered hindcasts on four independent records of Earth's monthly global temperature, 1990 to 2026, test the approach. A two-parameter skeleton in the logarithm of carbon dioxide cuts mean square error by 32 to 42% at two years and by 66 to 73% at ten years against a 25-parameter autoregression fitted to the raw record. Beyond one year, no residual model improves on the skeleton alone. A one-parameter long-memory model of the residual helps up to six months, then does worse than short memory; the residual's fluctuations decay faster than that model allows. One named driver, the El Niño–Southern Oscillation, explains part of the residual and adds 14 to 20% skill at three to six months. On Mars, a third preregistered study of Viking and InSight surface pressure finds the predicted weather break near two sols at one lander out of three, and no macroweather plateau after it: residual fluctuations rise again past about 16 sols, which points to a slow driver, plausibly dust, that the skeleton lacks. Protocols for Mercury and a laboratory scaling ladder follow.
+A planetary atmosphere produces millions of measurable signals, but a few structural drivers set how it evolves. This topic builds forecasts in that order: first a small structural skeleton, then a model of the residual around it, then a search for the driver behind whatever residual is left. Two preregistered hindcasts on four independent records of Earth's monthly global temperature, 1990 to 2026, test the approach. A two-parameter skeleton in the logarithm of carbon dioxide cuts mean square error by 32 to 42% at two years and by 66 to 73% at ten years against a 25-parameter autoregression fitted to the raw record. Beyond one year, no residual model improves on the skeleton alone. A one-parameter long-memory model of the residual helps up to six months, then does worse than short memory; the residual's fluctuations decay faster than that model allows. One named driver, the El Niño–Southern Oscillation, explains part of the residual and adds 14 to 20% skill at three to six months. On Mars, a third preregistered study of Viking and InSight surface pressure finds the predicted weather break near two sols at one lander out of three. Beyond it, residual fluctuations rise again past about 16 sols; measured dust optical depth does not explain the rise linearly, but at Viking 1 it is confined to the 1977 dust-storm years, and in later years the residual falls with a slope close to Earth's. Protocols for Mercury and a laboratory scaling ladder follow.
 
 **In plain words**
 
 1. Instead of learning patterns from every number in the weather record, start from the one or two causes known to drive it, and forecast only what those causes leave unexplained.
 2. On Earth's global temperature, a straight line in carbon dioxide forecasts the next one to ten years better than a pattern-fitting model with twelve times as many settings.
 3. What the line misses is mostly El Niño, and adding El Niño helps for a few months. Beyond a year, nothing tried here beats the line alone.
-4. On Mars the picture is less tidy: after the seasons are removed, something slow, probably dust, is still left, and finding it is the next step.
+4. On Mars the picture is less tidy. In quiet years the leftover behaves much as on Earth; in years with planet-wide dust storms something slow remains that dust measurements alone do not explain.
 
 ## Terms
 
@@ -148,6 +148,21 @@ The model, **M6**, is M2 plus one coefficient per horizon on Niño 3.4 at the or
 
 **H6 is supported** in all four records, with intervals excluding zero at every short horizon. **H7 is undecided:** the fitted coefficient at 24 months has the reversed sign in every record, but the gain is 0 to 3% and every interval includes zero. At ten years the per-horizon coefficient costs 1 to 2%, a small, measurable price for a parameter that carries no signal there.
 
+### 4.1 Study 2b: a physical forcing skeleton
+
+Study 1's skeleton lets CO2 stand in for every human influence and leaves volcanic eruptions in the residual. Study 2b, preregistered in its own file (`PREREGISTRATION_study2b.md`), replaces log2 CO2 with the effective radiative forcing (ERF) itself, from the Indicators of Global Climate Change dataset [12]: anthropogenic plus volcanic plus solar forcing in W m⁻², passed through a one-box response with one sensitivity and one response time (three parameters). A year's forcing counts as known only from the following January. Two hypotheses were fixed: that the forcing skeleton beats the CO2 skeleton at 12 and 24 months, and that the gain survives with the AR(1) and ENSO terms added.
+
+Both were **refuted in all four records**. The forcing skeleton is worse than the CO2 line at every horizon from 6 months, by 18 to 34% in mean square error at 12 months and by a factor of 2.2 to 2.9 at ten years. Post hoc diagnostics, not preregistered (`diag_study2b.py`), locate the cause:
+
+| Skeleton variant, skill against the CO2 skeleton (range over four records) | 12 mo | 24 mo | 120 mo |
+|---|---|---|---|
+| One sensitivity, one response time (as preregistered) | −0.34 to −0.18 | −0.52 to −0.29 | −1.94 to −1.18 |
+| Same, with the true future forcing supplied | −0.24 to −0.07 | −0.36 to −0.13 | −1.62 to −0.89 |
+| Separate sensitivities for anthropogenic and natural forcing | −0.08 to −0.01 | −0.18 to −0.05 | −0.55 to −0.25 |
+| Both changes | −0.01 to +0.05 | −0.03 to +0.06 | −0.21 to −0.01 |
+
+The main fault is structural. Per W m⁻², natural forcing, dominated by eruptions, moves global temperature by about 0.16 to 0.18 °C, against 0.40 to 0.42 °C for anthropogenic forcing. A single sensitivity cannot fit both, and the fit compensates with a four-year response time that delays the warming trend. Extrapolating the forcing itself is the second fault. With both removed, the physical skeleton only matches the CO2 line. The finding agrees with the two-time-scale picture of the climate response, a fast mixed layer and a slow deep ocean [13]: a skeleton has to carry the system's time scales, not merely have few parameters.
+
 ## 5. What the two studies say about the thesis
 
 The structure-first claim survives its first test in its strong form at long range and needs revising at medium range.
@@ -156,7 +171,9 @@ The structure-first claim survives its first test in its strong form at long ran
 2. **Revised:** "macroweather memory" should not be modelled as one scale-free exponent for this residual. At 1 to 3 years it behaves as an oscillation with a named driver; beyond that it decays faster than single-exponent memory. A residual model should be built from the drivers the residual points to, not from one power law fitted to its first lags.
 3. **The protocol works as intended.** The residual pointed to a driver (ENSO), adding that driver helped exactly where the residual said it would, and it did not help where the residual said it would not. That is the residual-isolation loop on a case where the answer is known, which is the precondition for trusting it on a case where it is not.
 
-Not yet tested: volcanic and solar forcing in the skeleton; regional fields rather than one global number; any comparison with ECMWF (European Centre for Medium-Range Weather Forecasts) seasonal systems or machine-learned models. Each is listed with the studies below.
+4. **Fewer parameters is not the same as more structure.** Study 2b's physically motivated skeleton lost to the CO2 line because it forced two time scales into one. A structural skeleton has to be right about the system's time scales before it is economical.
+
+Not yet tested: a two-time-scale forcing skeleton; regional fields rather than one global number; any comparison with ECMWF (European Centre for Medium-Range Weather Forecasts) seasonal systems or machine-learned models. Each is listed with the studies below.
 
 ## 6. Study 3: out of sample on Earth
 
@@ -204,9 +221,28 @@ The verdicts need reading against Figure 4.
 
 Per-lander tables are in `results/study4.md`.
 
-### 7.3 Next on Mars
+### 7.3 Study 4b: is dust the slow driver?
 
-Residual isolation against dust optical depth, as ENSO was for Earth, using the Viking and InSight opacity series. The prediction to test is that the rise in residual fluctuations past 16 sols tracks dust opacity, and that a skeleton with one dust term restores a falling macroweather slope.
+Residual isolation against the named candidate, as ENSO was for Earth. Each lander measured its own column optical depth in visible light: Viking from direct images of the Sun at 0.67 µm [14], InSight from sky brightness near 600 nm [15]. Both include water ice as well as dust. The Viking series stop at sols 920 and 872, so the test uses only sols where optical depth can be interpolated across gaps of at most 30 sols, with and without dust on the same hours. The preregistration file (`PREREGISTRATION_study4b.md`) fixed two hypotheses: that the daily residual correlates with optical depth, and that adding two dust terms to the skeleton turns the Haar slope from 6 to 96 sols negative.
+
+**Both were refuted.** Only Viking 2's correlation excludes zero, and it is small (+0.08, interval +0.01 to +0.23). Viking 1's is +0.26 with an interval from −0.20 to +0.51. The dust terms flatten Viking 1's slow rise (slope +0.08 to +0.02) without removing it, and steepen InSight's (+0.13 to +0.20). The self-test had warned that the test is conservative, because seasonal harmonics absorb dust variations as smooth as the seasons.
+
+### 7.4 Where the slow rise lives
+
+Three post hoc diagnostics, not preregistered (`diag_mars_years.py`), and one preregistered follow-up locate the rise.
+
+- **Year-specific seasons** barely change it (Viking 1 slope +0.18 to +0.15, InSight +0.13 to +0.13).
+- **Finer seasons**, harmonics up to the eighth instead of the fourth, remove it at both Viking landers (Viking 1 to −0.07, Viking 2 to −0.23) but not at InSight (+0.13).
+- **By years at Viking 1**, with the Study 4 skeleton fitted on all four Mars years, the slope is +0.20 in years 1 and 2 and −0.40 in years 3 and 4. Mars year 1 at Viking 1 contains the two global dust storms of 1977.
+- **Study 4c** (`PREREGISTRATION_study4c.md`) fitted the finer skeleton on Viking 1 years 1 and 2 and scored the held-out years 3 and 4. The held-out slope is −0.47, so the hypothesis that a finer skeleton leaves a falling slope passes; but the original skeleton also gives −0.38 on those years, so the finer skeleton is not what makes the difference there.
+
+Read together: on Mars, a falling, macroweather-like residual does appear once the storm years are set aside. At Viking 1 in years 3 and 4 its slope, −0.40, is close to Earth's −0.32 to −0.39, a cross-planet agreement that is post hoc and rests on one lander. The rise is concentrated in the years of planet-wide dust storms, where the measured optical depth, dropped at its most uncertain points, does not explain it linearly. At InSight it persists through every skeleton tried. InSight's calibration used estimated inputs for sols 233 to 702, and its sampling thinned after about sol 567 [15], so instrument drift has to be ruled out before the InSight rise is read as atmospheric.
+
+### 7.5 Next on Mars
+
+1. A dust-storm term that responds to storm onset rather than linearly to optical depth, tested on Viking 1 year 1 against year 3.
+2. A check of the InSight rise against its calibration history, sol by sol.
+3. Curiosity pressure at Gale crater, which spans more than six Mars years and the 2018 global storm.
 
 ## 8. Study 5: the Mercury sodium residual floor
 
@@ -222,12 +258,25 @@ The nightside is almost unmeasured. Any nightside floor the protocol reports is 
 
 ## 9. Study 6: the scaling ladder
 
-Rotating annulus and differentially heated chamber experiments, varied in heat flux, rotation rate and fluid, are reduced by Buckingham-Pi analysis to their governing groups, chiefly the thermal Rossby number and the Taylor number. The test is whether the regime boundaries the laboratory finds in those groups predict observed regimes on Earth, Mars and Venus, and where they fail. A failure of transfer locates a variable the laboratory does not contain.
+Rotating annulus and differentially heated chamber experiments, varied in heat flux, rotation rate and fluid, are reduced by Buckingham-Pi analysis to their governing groups, chiefly the thermal Rossby number and the Taylor number. Read and collaborators place planetary atmospheres in the same terms [16]. The test is whether the regime boundaries the laboratory finds in those groups predict observed regimes on Earth, Mars, Venus and Titan, and where they fail. A failure of transfer locates a variable the laboratory does not contain.
+
+### 9.1 Rung 0: no laboratory, one boundary
+
+Rung 0 asks whether the annulus boundary near a thermal Rossby number Ro_T = R ΔT_h / (Ω a)² of order one sorts four bodies correctly. R is the specific gas constant, ΔT_h the equator-to-pole temperature difference, Ω the rotation rate and a the radius. Inputs are ranges, sampled 10,000 times (`ladder.py`). The decision rule was committed first (`PREREGISTRATION_study6.md`) as hypothesis **H14**: every body classified, and all four matching the regime observed.
+
+| Body | Ro_T (5th to 95th percentile) | Predicted | Observed |
+|---|---|---|---|
+| Earth | 0.041 to 0.065 | baroclinic eddies | baroclinic eddies, irregular |
+| Mars | 0.14 to 0.29 | baroclinic eddies | regular winter baroclinic waves |
+| Titan | 4.6 to 10 | axisymmetric | wide Hadley cells, superrotation |
+| Venus | 220 to 1,100 | axisymmetric | planet-wide Hadley cells, superrotation |
+
+**H14 is supported**, with margins of more than a factor of four on every body. The result replicates a known placement, so its value is as a calibration of the procedure. Within the eddy regime, Mars has about four times Earth's Ro_T and the more regular waves, which matches the annulus ordering. Transfer fails at the next question: both axisymmetric bodies superrotate, and the annulus regime diagram has no group that predicts superrotation. The obvious missing variable is radiation, the ratio of the radiative relaxation time to the rotation period, which the annulus lacks altogether. Rung 1 is a laboratory or numerical experiment that adds a radiative relaxation term and asks whether superrotation appears at the Ro_T where Titan and Venus sit.
 
 ## 10. Falsifiers for the topic
 
 - If Study 3 finds that M0 or M6 loses to the unconstrained M5 at 24 months on unseen data, the central claim fails on Earth.
-- If a dust term in the Mars skeleton does not remove the rise in residual fluctuations past 16 sols, the missing slow driver on Mars is something other than dust, and the macroweather baseline does not transfer as a single regime.
+- If a storm-onset dust term fitted on Viking 1 year 1 does not reduce the residual rise in a held-out storm year, the slow driver at the Viking sites is not dust, and the falling macroweather slope of quiet Mars years is not a baseline that transfers.
 - If the Mercury residual can be absorbed by the six listed processes within their physical bounds, there is no missing mechanism to find there.
 
 ## 11. Reproduce
@@ -239,8 +288,14 @@ python3 analyze.py --selftest   # synthetic check
 python3 analyze.py              # Study 1, about one minute
 python3 study2.py               # Study 2
 python3 control_haar.py         # post hoc control
+python3 study2b.py              # Study 2b
+python3 diag_study2b.py         # post hoc diagnostics for 2b
+python3 ladder.py               # Study 6 rung 0
 python3 mars.py --selftest      # Mars synthetic check
 python3 mars.py                 # Study 4
+python3 mars_dust.py            # Study 4b
+python3 diag_mars_years.py      # post hoc Mars diagnostics
+python3 mars_holdout.py         # Study 4c
 python3 figures.py              # figures into public/figures/planetary/
 ```
 
@@ -262,6 +317,11 @@ How each reference was checked is stated after it.
 <li>T. A. Cassidy et al., "Mercury's seasonal sodium exosphere: MESSENGER orbital observations," <em>Icarus</em> 248, 547–559 (2015), DOI 10.1016/j.icarus.2014.10.037. Abstract checked.</li>
 <li>S. Verkercke et al., "On the origins of Mercury's sodium exospheric cold poles enhancement: a multiscale exosphere global model," <em>Journal of Geophysical Research: Planets</em> 130, e2025JE009309 (2025), DOI 10.1029/2025JE009309. Abstract checked.</li>
 <li>R. Lam et al., "Learning skillful medium-range global weather forecasting," <em>Science</em> 382, 1416–1421 (2023). Cited for scope only.</li>
+<li>P. M. Forster et al., "Indicators of Global Climate Change 2024: annual update of key indicators of the state of the climate system and human influence," <em>Earth System Science Data</em> (2025). Data used: the ClimateIndicator forcing-timeseries repository, file ERF_best_aggregates_1750-2024.csv. The paper itself was not re-read.</li>
+<li>I. M. Held et al., "Probing the fast and slow components of global warming by returning abruptly to preindustrial forcing," <em>Journal of Climate</em> 23, 2418–2427 (2010). Cited for the two-time-scale picture only.</li>
+<li>R. A. Colburn, J. B. Pollack, R. M. Haberle, "Diurnal variations in optical depth at Mars," <em>Icarus</em> 79, 159–189 (1989). Data used: PDS Viking lander opacity products (VL_OPAC); the paper itself was not re-read.</li>
+<li>M. T. Lemmon et al., "Results from the InSight atmospheric imaging campaign" (manuscript archived with the data; the archive indicates <em>Icarus</em>, 2024), and the PDS Atmospheres node InSight optical depth bundle, DOI 10.17189/dc8r-ag55 (unresolvable on the day of download; files taken from the review area). Data used as archived; the paper was not re-read.</li>
+<li>P. L. Read, S. R. Lewis, G. K. Vallis, "Atmospheric dynamics of terrestrial planets," in <em>Handbook of Exoplanets</em> (Springer, 2018). Repository record checked; cited for the use of the thermal Rossby number in planetary regimes.</li>
 </ol>
 
 Methods used without a claim about their sources' content: Haar fluctuation analysis as used in geophysics by Lovejoy and Schertzer (*Nonlinear Processes in Geophysics* 19, 513–527, 2012); fractional Gaussian noise (Mandelbrot and Van Ness, *SIAM Review* 10, 422–437, 1968); the moving-block bootstrap (Künsch, *Annals of Statistics* 17, 1217–1241, 1989).
