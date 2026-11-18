@@ -122,3 +122,21 @@ if p4.exists():
     ax.set_title("Mars: a break near two sols at Viking 2, then a rise past ten sols everywhere", loc="left", color=INK, fontsize=12)
     ax.legend(loc="lower left", bbox_to_anchor=(0.0, 0.08), fontsize=9.5)
     save(fig, "mars-haar")
+
+# Figure 5: Mercury Na residual by tangent latitude (Study 5 post hoc description).
+p5 = HERE / "results" / "diag_mercury_lat.json"
+if p5.exists():
+    D5 = json.loads(p5.read_text())
+    fig, ax = plt.subplots(figsize=(8.5, 4.8))
+    for i, (b, lab) in enumerate((("1", "250–500 km"), ("2", "500–1000 km"))):
+        rows = D5[b]
+        mid = [np.mean([float(x) for x in r["lat"].split(" to ")]) + (i - 0.5) * 2.5 for r in rows]
+        ax.errorbar(mid, [100 * r["mean_R"] for r in rows], yerr=[196 * r["se"] for r in rows], fmt="os"[i], color=C[i],
+                    ms=7, mec=SURF, mew=1.2, elinewidth=1.5, capsize=0, lw=2, ls="-", label=lab)
+    ax.axhline(0, color=INK2, lw=1)
+    ax.set_xticks([-90, -60, -40, -20, 0, 20, 40, 60, 90])
+    ax.set_xlabel("Tangent latitude (degrees)")
+    ax.set_ylabel("Residual against other Mercury years (%)")
+    ax.set_title("Mercury sodium: what the seasonal climatology misses sits at high latitude", loc="left", color=INK, fontsize=12)
+    ax.legend(loc="upper center", fontsize=9.5)
+    save(fig, "mercury-latitude")
