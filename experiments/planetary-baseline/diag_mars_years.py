@@ -40,3 +40,14 @@ for k, key in M.LANDERS.items():
     print(k, "seasonal kmax", json.dumps(fine[k]))
 out["finer_seasons"] = fine
 (A.RESULTS / "diag_mars_years.json").write_text(json.dumps(out, indent=1))
+
+# Third post hoc check (descriptive): where in the Viking 1 record is the slow rise?
+d = P["viking1_vl_p"]; sol, ls, p = d[:, 0], d[:, 1], d[:, 2]
+X = np.column_stack([M.seasonal(ls), M.diurnal(sol, ls)])
+b, *_ = np.linalg.lstsq(X, p, rcond=None); r = p - X @ b
+split = {}
+for tag, m in (("years_1_2", sol < 1338), ("years_3_4", sol >= 1338)):
+    sl, fl = MD.haar_slope(sol[m], r[m]); split[tag] = {"slope_6_96": sl, "haar_96": fl.get(96)}
+print("Viking 1 by year pair", json.dumps(split))
+out["viking1_by_years"] = split
+(A.RESULTS / "diag_mars_years.json").write_text(json.dumps(out, indent=1))
