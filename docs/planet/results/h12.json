@@ -1,0 +1,1918 @@
+{
+ "generated": "2026-11-18T02:31:00.879Z",
+ "node": "v22.23.5",
+ "platform": "linux x64",
+ "rules": {
+  "seedsFrom": 100,
+  "excluded": [
+   1,
+   7,
+   1234,
+   99991
+  ],
+  "minWaterPerCell": 15,
+  "nSeeds": 8,
+  "trials": 12,
+  "horizonTicks": 800,
+  "median": "upper median of fitted trials"
+ },
+ "verdict": {
+  "hypothesis": "PL-H12",
+  "killCriterion": "per-seed median doubling times differ more than 2-fold, or a seed shows no growth",
+  "maxOverMinMedian": 1.629,
+  "seedsWithNoGrowth": [],
+  "result": "survives this test"
+ },
+ "perSeed": [
+  {
+   "seed": 100,
+   "waterPerCell": 50.27,
+   "fitted": 3,
+   "medianDoublingTicks": 22.67,
+   "spreadToHalfTheMap": 3,
+   "stayedWithin10Cells": 7
+  },
+  {
+   "seed": 101,
+   "waterPerCell": 59.24,
+   "fitted": 9,
+   "medianDoublingTicks": 22.51,
+   "spreadToHalfTheMap": 9,
+   "stayedWithin10Cells": 3
+  },
+  {
+   "seed": 102,
+   "waterPerCell": 77.67,
+   "fitted": 9,
+   "medianDoublingTicks": 24.64,
+   "spreadToHalfTheMap": 8,
+   "stayedWithin10Cells": 3
+  },
+  {
+   "seed": 103,
+   "waterPerCell": 24.29,
+   "fitted": 4,
+   "medianDoublingTicks": 36.66,
+   "spreadToHalfTheMap": 0,
+   "stayedWithin10Cells": 8
+  },
+  {
+   "seed": 104,
+   "waterPerCell": 56.61,
+   "fitted": 10,
+   "medianDoublingTicks": 24.48,
+   "spreadToHalfTheMap": 8,
+   "stayedWithin10Cells": 2
+  },
+  {
+   "seed": 105,
+   "waterPerCell": 15.37,
+   "fitted": 6,
+   "medianDoublingTicks": 27.14,
+   "spreadToHalfTheMap": 4,
+   "stayedWithin10Cells": 6
+  },
+  {
+   "seed": 107,
+   "waterPerCell": 102.88,
+   "fitted": 11,
+   "medianDoublingTicks": 27.03,
+   "spreadToHalfTheMap": 11,
+   "stayedWithin10Cells": 1
+  },
+  {
+   "seed": 108,
+   "waterPerCell": 60.82,
+   "fitted": 11,
+   "medianDoublingTicks": 27.39,
+   "spreadToHalfTheMap": 11,
+   "stayedWithin10Cells": 1
+  }
+ ],
+ "trials": [
+  {
+   "seed": 100,
+   "trial": 0,
+   "x": 158,
+   "y": 36,
+   "ground": 714,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 100,
+   "trial": 1,
+   "x": 140,
+   "y": 33,
+   "ground": 625,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 111
+   },
+   "finalMass": 873,
+   "fitPoints": 3,
+   "doublingTicks": null
+  },
+  {
+   "seed": 100,
+   "trial": 2,
+   "x": 138,
+   "y": 35,
+   "ground": 598,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 49
+   },
+   "finalMass": 141,
+   "fitPoints": 4,
+   "doublingTicks": null
+  },
+  {
+   "seed": 100,
+   "trial": 3,
+   "x": 52,
+   "y": 4,
+   "ground": 658,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 100,
+   "trial": 4,
+   "x": 108,
+   "y": 25,
+   "ground": 589,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 100,
+   "trial": 5,
+   "x": 19,
+   "y": 36,
+   "ground": 502,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 100,
+   "trial": 6,
+   "x": 190,
+   "y": 35,
+   "ground": 486,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 100,
+   "trial": 7,
+   "x": 39,
+   "y": 65,
+   "ground": 397,
+   "water": 53,
+   "cells": {
+    "1": 3,
+    "10": 47,
+    "50": 771,
+    "100": 2846,
+    "200": 5974,
+    "800": 14560
+   },
+   "finalMass": 1383032,
+   "fitPoints": 246,
+   "doublingTicks": 29.76
+  },
+  {
+   "seed": 100,
+   "trial": 8,
+   "x": 85,
+   "y": 6,
+   "ground": 676,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 100,
+   "trial": 9,
+   "x": 117,
+   "y": 17,
+   "ground": 575,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 100,
+   "trial": 10,
+   "x": 148,
+   "y": 16,
+   "ground": 619,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 56,
+    "200": 333,
+    "800": 13806
+   },
+   "finalMass": 931648,
+   "fitPoints": 271,
+   "doublingTicks": 20.39
+  },
+  {
+   "seed": 100,
+   "trial": 11,
+   "x": 88,
+   "y": 89,
+   "ground": 325,
+   "water": 195,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 2,
+    "100": 353,
+    "200": 4879,
+    "800": 14255
+   },
+   "finalMass": 1321189,
+   "fitPoints": 234,
+   "doublingTicks": 22.67
+  },
+  {
+   "seed": 101,
+   "trial": 0,
+   "x": 133,
+   "y": 26,
+   "ground": 490,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 111,
+    "100": 1234,
+    "200": 3842,
+    "800": 16687
+   },
+   "finalMass": 1623652,
+   "fitPoints": 258,
+   "doublingTicks": 30.49
+  },
+  {
+   "seed": 101,
+   "trial": 1,
+   "x": 90,
+   "y": 48,
+   "ground": 373,
+   "water": 68,
+   "cells": {
+    "1": 1,
+    "10": 4,
+    "50": 653,
+    "100": 3458,
+    "200": 8128,
+    "800": 16769
+   },
+   "finalMass": 1997495,
+   "fitPoints": 224,
+   "doublingTicks": 26.96
+  },
+  {
+   "seed": 101,
+   "trial": 2,
+   "x": 77,
+   "y": 81,
+   "ground": 379,
+   "water": 139,
+   "cells": {
+    "1": 2,
+    "10": 5,
+    "50": 163,
+    "100": 2383,
+    "200": 6290,
+    "800": 16618
+   },
+   "finalMass": 1767280,
+   "fitPoints": 201,
+   "doublingTicks": 18.31
+  },
+  {
+   "seed": 101,
+   "trial": 3,
+   "x": 78,
+   "y": 60,
+   "ground": 404,
+   "water": 58,
+   "cells": {
+    "1": 2,
+    "10": 14,
+    "50": 1187,
+    "100": 3977,
+    "200": 7711,
+    "800": 16873
+   },
+   "finalMass": 2014785,
+   "fitPoints": 247,
+   "doublingTicks": 32.4
+  },
+  {
+   "seed": 101,
+   "trial": 4,
+   "x": 139,
+   "y": 31,
+   "ground": 550,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1787,
+    "800": 15996
+   },
+   "finalMass": 1564102,
+   "fitPoints": 196,
+   "doublingTicks": 20.85
+  },
+  {
+   "seed": 101,
+   "trial": 5,
+   "x": 188,
+   "y": 95,
+   "ground": 623,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 101,
+   "trial": 6,
+   "x": 175,
+   "y": 47,
+   "ground": 588,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 101,
+   "trial": 7,
+   "x": 102,
+   "y": 44,
+   "ground": 456,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 173,
+    "200": 3945,
+    "800": 16296
+   },
+   "finalMass": 1778603,
+   "fitPoints": 205,
+   "doublingTicks": 22.53
+  },
+  {
+   "seed": 101,
+   "trial": 8,
+   "x": 50,
+   "y": 77,
+   "ground": 369,
+   "water": 144,
+   "cells": {
+    "1": 1,
+    "10": 5,
+    "50": 653,
+    "100": 3184,
+    "200": 6292,
+    "800": 16660
+   },
+   "finalMass": 1948500,
+   "fitPoints": 222,
+   "doublingTicks": 22.51
+  },
+  {
+   "seed": 101,
+   "trial": 9,
+   "x": 178,
+   "y": 81,
+   "ground": 675,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 101,
+   "trial": 10,
+   "x": 184,
+   "y": 70,
+   "ground": 649,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 10376
+   },
+   "finalMass": 461573,
+   "fitPoints": 158,
+   "doublingTicks": 18.3
+  },
+  {
+   "seed": 101,
+   "trial": 11,
+   "x": 44,
+   "y": 84,
+   "ground": 361,
+   "water": 159,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 8,
+    "100": 320,
+    "200": 4098,
+    "800": 16404
+   },
+   "finalMass": 1748809,
+   "fitPoints": 255,
+   "doublingTicks": 20.45
+  },
+  {
+   "seed": 102,
+   "trial": 0,
+   "x": 183,
+   "y": 44,
+   "ground": 366,
+   "water": 68,
+   "cells": {
+    "1": 2,
+    "10": 2,
+    "50": 706,
+    "100": 3189,
+    "200": 7834,
+    "800": 17088
+   },
+   "finalMass": 1824735,
+   "fitPoints": 260,
+   "doublingTicks": 32.17
+  },
+  {
+   "seed": 102,
+   "trial": 1,
+   "x": 64,
+   "y": 67,
+   "ground": 471,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 15339
+   },
+   "finalMass": 937040,
+   "fitPoints": 230,
+   "doublingTicks": 28.67
+  },
+  {
+   "seed": 102,
+   "trial": 2,
+   "x": 5,
+   "y": 68,
+   "ground": 346,
+   "water": 129,
+   "cells": {
+    "1": 2,
+    "10": 4,
+    "50": 699,
+    "100": 3670,
+    "200": 7862,
+    "800": 17030
+   },
+   "finalMass": 1786521,
+   "fitPoints": 264,
+   "doublingTicks": 28.66
+  },
+  {
+   "seed": 102,
+   "trial": 3,
+   "x": 178,
+   "y": 1,
+   "ground": 590,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 102,
+   "trial": 4,
+   "x": 103,
+   "y": 41,
+   "ground": 478,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 9081
+   },
+   "finalMass": 190397,
+   "fitPoints": 116,
+   "doublingTicks": 12.15
+  },
+  {
+   "seed": 102,
+   "trial": 5,
+   "x": 47,
+   "y": 94,
+   "ground": 547,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 102,
+   "trial": 6,
+   "x": 121,
+   "y": 41,
+   "ground": 456,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 582,
+    "800": 16909
+   },
+   "finalMass": 1276212,
+   "fitPoints": 191,
+   "doublingTicks": 21.39
+  },
+  {
+   "seed": 102,
+   "trial": 7,
+   "x": 15,
+   "y": 5,
+   "ground": 535,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 102,
+   "trial": 8,
+   "x": 169,
+   "y": 49,
+   "ground": 438,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 151,
+    "100": 1424,
+    "200": 6180,
+    "800": 16963
+   },
+   "finalMass": 1473156,
+   "fitPoints": 262,
+   "doublingTicks": 27.4
+  },
+  {
+   "seed": 102,
+   "trial": 9,
+   "x": 60,
+   "y": 62,
+   "ground": 456,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 80,
+    "800": 16678
+   },
+   "finalMass": 1227126,
+   "fitPoints": 208,
+   "doublingTicks": 18.46
+  },
+  {
+   "seed": 102,
+   "trial": 10,
+   "x": 61,
+   "y": 63,
+   "ground": 467,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 15432
+   },
+   "finalMass": 877894,
+   "fitPoints": 219,
+   "doublingTicks": 24.64
+  },
+  {
+   "seed": 102,
+   "trial": 11,
+   "x": 177,
+   "y": 78,
+   "ground": 453,
+   "water": 61,
+   "cells": {
+    "1": 3,
+    "10": 12,
+    "50": 491,
+    "100": 2555,
+    "200": 6917,
+    "800": 17074
+   },
+   "finalMass": 1808629,
+   "fitPoints": 257,
+   "doublingTicks": 23.06
+  },
+  {
+   "seed": 103,
+   "trial": 0,
+   "x": 145,
+   "y": 34,
+   "ground": 662,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 103,
+   "trial": 1,
+   "x": 77,
+   "y": 39,
+   "ground": 581,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 103,
+   "trial": 2,
+   "x": 15,
+   "y": 26,
+   "ground": 455,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 513,
+    "800": 8744
+   },
+   "finalMass": 330323,
+   "fitPoints": 180,
+   "doublingTicks": 19.59
+  },
+  {
+   "seed": 103,
+   "trial": 3,
+   "x": 170,
+   "y": 46,
+   "ground": 476,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 103,
+   "trial": 4,
+   "x": 189,
+   "y": 31,
+   "ground": 481,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 103,
+   "trial": 5,
+   "x": 175,
+   "y": 67,
+   "ground": 619,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 4645
+   },
+   "finalMass": 135675,
+   "fitPoints": 136,
+   "doublingTicks": 15.23
+  },
+  {
+   "seed": 103,
+   "trial": 6,
+   "x": 158,
+   "y": 8,
+   "ground": 695,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 103,
+   "trial": 7,
+   "x": 21,
+   "y": 30,
+   "ground": 485,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 103,
+   "trial": 8,
+   "x": 120,
+   "y": 21,
+   "ground": 758,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 103,
+   "trial": 9,
+   "x": 156,
+   "y": 17,
+   "ground": 640,
+   "water": 0,
+   "cells": {
+    "1": 2,
+    "10": 23,
+    "50": 143,
+    "100": 198,
+    "200": 609,
+    "800": 5113
+   },
+   "finalMass": 128704,
+   "fitPoints": 252,
+   "doublingTicks": 37.77
+  },
+  {
+   "seed": 103,
+   "trial": 10,
+   "x": 92,
+   "y": 74,
+   "ground": 482,
+   "water": 7,
+   "cells": {
+    "1": 2,
+    "10": 2,
+    "50": 4,
+    "100": 14,
+    "200": 77,
+    "800": 8596
+   },
+   "finalMass": 730795,
+   "fitPoints": 532,
+   "doublingTicks": 36.66
+  },
+  {
+   "seed": 103,
+   "trial": 11,
+   "x": 2,
+   "y": 57,
+   "ground": 642,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 104,
+   "trial": 0,
+   "x": 45,
+   "y": 69,
+   "ground": 284,
+   "water": 194,
+   "cells": {
+    "1": 2,
+    "10": 15,
+    "50": 1033,
+    "100": 3125,
+    "200": 6195,
+    "800": 16163
+   },
+   "finalMass": 1455210,
+   "fitPoints": 239,
+   "doublingTicks": 25.87
+  },
+  {
+   "seed": 104,
+   "trial": 1,
+   "x": 40,
+   "y": 4,
+   "ground": 578,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 104,
+   "trial": 2,
+   "x": 122,
+   "y": 36,
+   "ground": 529,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 79,
+    "200": 1632,
+    "800": 16405
+   },
+   "finalMass": 1321393,
+   "fitPoints": 237,
+   "doublingTicks": 24.48
+  },
+  {
+   "seed": 104,
+   "trial": 3,
+   "x": 186,
+   "y": 47,
+   "ground": 546,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 104,
+   "trial": 4,
+   "x": 152,
+   "y": 3,
+   "ground": 371,
+   "water": 109,
+   "cells": {
+    "1": 3,
+    "10": 4,
+    "50": 2,
+    "100": 2,
+    "200": 2,
+    "800": 4684
+   },
+   "finalMass": 92679,
+   "fitPoints": 88,
+   "doublingTicks": 9.07
+  },
+  {
+   "seed": 104,
+   "trial": 5,
+   "x": 80,
+   "y": 24,
+   "ground": 552,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 11,
+    "50": 95,
+    "100": 270,
+    "200": 2390,
+    "800": 16207
+   },
+   "finalMass": 1339497,
+   "fitPoints": 275,
+   "doublingTicks": 21.99
+  },
+  {
+   "seed": 104,
+   "trial": 6,
+   "x": 122,
+   "y": 59,
+   "ground": 699,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 10971
+   },
+   "finalMass": 466230,
+   "fitPoints": 223,
+   "doublingTicks": 32.38
+  },
+  {
+   "seed": 104,
+   "trial": 7,
+   "x": 71,
+   "y": 56,
+   "ground": 241,
+   "water": 219,
+   "cells": {
+    "1": 1,
+    "10": 5,
+    "50": 885,
+    "100": 3022,
+    "200": 6242,
+    "800": 16519
+   },
+   "finalMass": 1638530,
+   "fitPoints": 231,
+   "doublingTicks": 32.22
+  },
+  {
+   "seed": 104,
+   "trial": 8,
+   "x": 174,
+   "y": 25,
+   "ground": 403,
+   "water": 45,
+   "cells": {
+    "1": 2,
+    "10": 6,
+    "50": 389,
+    "100": 1464,
+    "200": 3234,
+    "800": 16408
+   },
+   "finalMass": 1466919,
+   "fitPoints": 255,
+   "doublingTicks": 27.62
+  },
+  {
+   "seed": 104,
+   "trial": 9,
+   "x": 93,
+   "y": 50,
+   "ground": 477,
+   "water": 0,
+   "cells": {
+    "1": 2,
+    "10": 12,
+    "50": 614,
+    "100": 2647,
+    "200": 6532,
+    "800": 16388
+   },
+   "finalMass": 1677798,
+   "fitPoints": 215,
+   "doublingTicks": 23.03
+  },
+  {
+   "seed": 104,
+   "trial": 10,
+   "x": 102,
+   "y": 27,
+   "ground": 452,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 355,
+    "800": 16047
+   },
+   "finalMass": 1143061,
+   "fitPoints": 185,
+   "doublingTicks": 17.64
+  },
+  {
+   "seed": 104,
+   "trial": 11,
+   "x": 86,
+   "y": 1,
+   "ground": 544,
+   "water": 0,
+   "cells": {
+    "1": 2,
+    "10": 6,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 2293
+   },
+   "finalMass": 14233,
+   "fitPoints": 70,
+   "doublingTicks": 9.76
+  },
+  {
+   "seed": 105,
+   "trial": 0,
+   "x": 106,
+   "y": 27,
+   "ground": 657,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 105,
+   "trial": 1,
+   "x": 162,
+   "y": 80,
+   "ground": 511,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 8269
+   },
+   "finalMass": 516425,
+   "fitPoints": 230,
+   "doublingTicks": 26.11
+  },
+  {
+   "seed": 105,
+   "trial": 2,
+   "x": 120,
+   "y": 22,
+   "ground": 640,
+   "water": 0,
+   "cells": {
+    "1": 4,
+    "10": 17,
+    "50": 81,
+    "100": 190,
+    "200": 839,
+    "800": 11612
+   },
+   "finalMass": 903182,
+   "fitPoints": 284,
+   "doublingTicks": 25.1
+  },
+  {
+   "seed": 105,
+   "trial": 3,
+   "x": 102,
+   "y": 86,
+   "ground": 564,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 105,
+   "trial": 4,
+   "x": 86,
+   "y": 5,
+   "ground": 544,
+   "water": 0,
+   "cells": {
+    "1": 3,
+    "10": 13,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1791
+   },
+   "finalMass": 6630,
+   "fitPoints": 71,
+   "doublingTicks": 120.31
+  },
+  {
+   "seed": 105,
+   "trial": 5,
+   "x": 54,
+   "y": 19,
+   "ground": 591,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 105,
+   "trial": 6,
+   "x": 116,
+   "y": 26,
+   "ground": 630,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 105,
+   "trial": 7,
+   "x": 50,
+   "y": 57,
+   "ground": 612,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 105,
+   "trial": 8,
+   "x": 109,
+   "y": 16,
+   "ground": 703,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 105,
+   "trial": 9,
+   "x": 159,
+   "y": 54,
+   "ground": 494,
+   "water": 0,
+   "cells": {
+    "1": 2,
+    "10": 76,
+    "50": 651,
+    "100": 2279,
+    "200": 3723,
+    "800": 11377
+   },
+   "finalMass": 1047013,
+   "fitPoints": 184,
+   "doublingTicks": 27.14
+  },
+  {
+   "seed": 105,
+   "trial": 10,
+   "x": 15,
+   "y": 18,
+   "ground": 680,
+   "water": 0,
+   "cells": {
+    "1": 2,
+    "10": 37,
+    "50": 256,
+    "100": 395,
+    "200": 826,
+    "800": 11756
+   },
+   "finalMass": 906318,
+   "fitPoints": 318,
+   "doublingTicks": 37
+  },
+  {
+   "seed": 105,
+   "trial": 11,
+   "x": 138,
+   "y": 39,
+   "ground": 438,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 2134,
+    "800": 11402
+   },
+   "finalMass": 948294,
+   "fitPoints": 159,
+   "doublingTicks": 14.7
+  },
+  {
+   "seed": 107,
+   "trial": 0,
+   "x": 17,
+   "y": 61,
+   "ground": 308,
+   "water": 158,
+   "cells": {
+    "1": 2,
+    "10": 18,
+    "50": 1455,
+    "100": 4423,
+    "200": 7525,
+    "800": 17037
+   },
+   "finalMass": 1703312,
+   "fitPoints": 252,
+   "doublingTicks": 33.75
+  },
+  {
+   "seed": 107,
+   "trial": 1,
+   "x": 111,
+   "y": 71,
+   "ground": 581,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 14902
+   },
+   "finalMass": 873817,
+   "fitPoints": 300,
+   "doublingTicks": 25.57
+  },
+  {
+   "seed": 107,
+   "trial": 2,
+   "x": 170,
+   "y": 41,
+   "ground": 330,
+   "water": 116,
+   "cells": {
+    "1": 1,
+    "10": 2,
+    "50": 196,
+    "100": 1603,
+    "200": 5382,
+    "800": 16884
+   },
+   "finalMass": 1478763,
+   "fitPoints": 237,
+   "doublingTicks": 30.41
+  },
+  {
+   "seed": 107,
+   "trial": 3,
+   "x": 60,
+   "y": 58,
+   "ground": 499,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1125,
+    "800": 16803
+   },
+   "finalMass": 1427540,
+   "fitPoints": 211,
+   "doublingTicks": 23.98
+  },
+  {
+   "seed": 107,
+   "trial": 4,
+   "x": 98,
+   "y": 88,
+   "ground": 536,
+   "water": 0,
+   "cells": {
+    "1": 5,
+    "10": 31,
+    "50": 224,
+    "100": 740,
+    "200": 1406,
+    "800": 16042
+   },
+   "finalMass": 1121729,
+   "fitPoints": 393,
+   "doublingTicks": 45.34
+  },
+  {
+   "seed": 107,
+   "trial": 5,
+   "x": 30,
+   "y": 75,
+   "ground": 306,
+   "water": 196,
+   "cells": {
+    "1": 2,
+    "10": 6,
+    "50": 286,
+    "100": 2862,
+    "200": 6965,
+    "800": 16816
+   },
+   "finalMass": 1579697,
+   "fitPoints": 266,
+   "doublingTicks": 26.21
+  },
+  {
+   "seed": 107,
+   "trial": 6,
+   "x": 140,
+   "y": 19,
+   "ground": 549,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 3,
+    "100": 25,
+    "200": 1163,
+    "800": 16716
+   },
+   "finalMass": 1348953,
+   "fitPoints": 232,
+   "doublingTicks": 16.96
+  },
+  {
+   "seed": 107,
+   "trial": 7,
+   "x": 12,
+   "y": 16,
+   "ground": 354,
+   "water": 140,
+   "cells": {
+    "1": 1,
+    "10": 5,
+    "50": 321,
+    "100": 2159,
+    "200": 6838,
+    "800": 17077
+   },
+   "finalMass": 1598061,
+   "fitPoints": 251,
+   "doublingTicks": 22.76
+  },
+  {
+   "seed": 107,
+   "trial": 8,
+   "x": 39,
+   "y": 41,
+   "ground": 280,
+   "water": 189,
+   "cells": {
+    "1": 2,
+    "10": 2,
+    "50": 244,
+    "100": 2644,
+    "200": 7487,
+    "800": 17124
+   },
+   "finalMass": 1738244,
+   "fitPoints": 223,
+   "doublingTicks": 27.03
+  },
+  {
+   "seed": 107,
+   "trial": 9,
+   "x": 148,
+   "y": 71,
+   "ground": 590,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 107,
+   "trial": 10,
+   "x": 73,
+   "y": 36,
+   "ground": 402,
+   "water": 70,
+   "cells": {
+    "1": 2,
+    "10": 28,
+    "50": 977,
+    "100": 2809,
+    "200": 7762,
+    "800": 17121
+   },
+   "finalMass": 1975706,
+   "fitPoints": 260,
+   "doublingTicks": 31.66
+  },
+  {
+   "seed": 107,
+   "trial": 11,
+   "x": 75,
+   "y": 26,
+   "ground": 352,
+   "water": 143,
+   "cells": {
+    "1": 2,
+    "10": 19,
+    "50": 788,
+    "100": 2634,
+    "200": 7506,
+    "800": 17231
+   },
+   "finalMass": 1685124,
+   "fitPoints": 248,
+   "doublingTicks": 28.47
+  },
+  {
+   "seed": 108,
+   "trial": 0,
+   "x": 137,
+   "y": 35,
+   "ground": 454,
+   "water": 58,
+   "cells": {
+    "1": 1,
+    "10": 41,
+    "50": 832,
+    "100": 2238,
+    "200": 7165,
+    "800": 17001
+   },
+   "finalMass": 1990373,
+   "fitPoints": 263,
+   "doublingTicks": 44.51
+  },
+  {
+   "seed": 108,
+   "trial": 1,
+   "x": 85,
+   "y": 56,
+   "ground": 292,
+   "water": 162,
+   "cells": {
+    "1": 1,
+    "10": 20,
+    "50": 1573,
+    "100": 4560,
+    "200": 7341,
+    "800": 16975
+   },
+   "finalMass": 2021252,
+   "fitPoints": 254,
+   "doublingTicks": 36.03
+  },
+  {
+   "seed": 108,
+   "trial": 2,
+   "x": 63,
+   "y": 21,
+   "ground": 516,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 1
+   },
+   "finalMass": 1,
+   "fitPoints": 0,
+   "doublingTicks": null
+  },
+  {
+   "seed": 108,
+   "trial": 3,
+   "x": 98,
+   "y": 93,
+   "ground": 338,
+   "water": 182,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 15,
+    "200": 3142,
+    "800": 16635
+   },
+   "finalMass": 1589124,
+   "fitPoints": 249,
+   "doublingTicks": 20.79
+  },
+  {
+   "seed": 108,
+   "trial": 4,
+   "x": 133,
+   "y": 56,
+   "ground": 582,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 14164
+   },
+   "finalMass": 776190,
+   "fitPoints": 221,
+   "doublingTicks": 27.39
+  },
+  {
+   "seed": 108,
+   "trial": 5,
+   "x": 151,
+   "y": 72,
+   "ground": 517,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 1,
+    "200": 1,
+    "800": 13070
+   },
+   "finalMass": 464333,
+   "fitPoints": 229,
+   "doublingTicks": 28.07
+  },
+  {
+   "seed": 108,
+   "trial": 6,
+   "x": 178,
+   "y": 3,
+   "ground": 415,
+   "water": 77,
+   "cells": {
+    "1": 2,
+    "10": 4,
+    "50": 92,
+    "100": 511,
+    "200": 2364,
+    "800": 16872
+   },
+   "finalMass": 1605317,
+   "fitPoints": 293,
+   "doublingTicks": 25.14
+  },
+  {
+   "seed": 108,
+   "trial": 7,
+   "x": 56,
+   "y": 62,
+   "ground": 382,
+   "water": 78,
+   "cells": {
+    "1": 2,
+    "10": 70,
+    "50": 1596,
+    "100": 4156,
+    "200": 6968,
+    "800": 16907
+   },
+   "finalMass": 1849977,
+   "fitPoints": 242,
+   "doublingTicks": 29.4
+  },
+  {
+   "seed": 108,
+   "trial": 8,
+   "x": 143,
+   "y": 7,
+   "ground": 435,
+   "water": 58,
+   "cells": {
+    "1": 2,
+    "10": 2,
+    "50": 2,
+    "100": 2,
+    "200": 47,
+    "800": 16450
+   },
+   "finalMass": 1269648,
+   "fitPoints": 225,
+   "doublingTicks": 14.54
+  },
+  {
+   "seed": 108,
+   "trial": 9,
+   "x": 19,
+   "y": 26,
+   "ground": 599,
+   "water": 0,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 137,
+    "200": 2214,
+    "800": 16987
+   },
+   "finalMass": 1693125,
+   "fitPoints": 214,
+   "doublingTicks": 24.23
+  },
+  {
+   "seed": 108,
+   "trial": 10,
+   "x": 95,
+   "y": 61,
+   "ground": 414,
+   "water": 22,
+   "cells": {
+    "1": 2,
+    "10": 8,
+    "50": 442,
+    "100": 2859,
+    "200": 6769,
+    "800": 16875
+   },
+   "finalMass": 1812403,
+   "fitPoints": 253,
+   "doublingTicks": 28.66
+  },
+  {
+   "seed": 108,
+   "trial": 11,
+   "x": 47,
+   "y": 90,
+   "ground": 373,
+   "water": 147,
+   "cells": {
+    "1": 1,
+    "10": 1,
+    "50": 1,
+    "100": 199,
+    "200": 4084,
+    "800": 16766
+   },
+   "finalMass": 1671701,
+   "fitPoints": 264,
+   "doublingTicks": 25.45
+  }
+ ]
+}

@@ -111,3 +111,40 @@ are not yet in CI (PLN-019).
 **Next.** PLN-018 (run PL-H12 on eight fresh wet seeds, about 6 minutes of
 CPU in Node with `test-core.mjs` adapted to take seeds as arguments), then
 PLN-019, then M2 (PLN-020, a Rust reference compiled to Wasm).
+
+---
+
+## 2026-11-18 · entry 4 · PL-H12 run, CI step, Rust/Wasm reference
+
+**Done.** PLN-018, PLN-019, PLN-020.
+- `scripts/planet/divergence.mjs`: the fuzzed log and the divergence trial,
+  now shared; `test-core.mjs` output was checked unchanged after the move.
+- PL-H12 runner `scripts/planet/run-h12.mjs` committed (`dc96370`) before it
+  was run, with its seed rule, median and no-growth rule in the header.
+- CI: `pnpm test:planet` (quick core tests) and a Rust/Wasm parity step added
+  to `.github/workflows/ci.yml`. Neither has been seen running on GitHub yet
+  (PLN-024).
+- `experiments/planet-core/`: Rust port of `core.js`, native binary `hashes`,
+  Wasm exports without a binding generator; `public/living/planet/core.wasm`
+  (47 KB) built from it. The living page's replay button now replays in both
+  JavaScript and Wasm.
+- Study Section 7.1 updated with both results. Blueprint gained the new
+  modules and a rule: change `core.js` and `lib.rs` together.
+
+**Measured (Node 22, rustc 1.97.0, Linux x86-64).**
+- PL-H12: seeds 100 to 105, 107, 108 (106 below the water rule). Median
+  doubling times 22.51 to 36.66 ticks, max over min 1.63 (kill above 2), no
+  seed without growth: survives. Whether a dig spreads at all still varies
+  from 0 of 12 trials (seed 103) to 11 of 12 (107, 108); PLN-025 is the
+  follow-up. Results: `docs/planet/results/h12.json`.
+- Rust vs JS: per-tick hashes identical for 1,000 ticks on seeds 1, 7, 1234,
+  99991, native and Wasm; refused-edit counts identical; generator 0 of
+  2,097,152 cells differ; dropping one admitted edit is detected. Native
+  overflow checks never fired. Results: `docs/planet/results/rust-wasm.json`.
+- Page: replay with 3 edits identical in JS and Wasm in headless Chromium.
+
+**Not done.** Real-GPU parity (PLN-021), CI confirmation (PLN-024).
+
+**Next.** M3, PLN-030: 64-bit micrometre positions emulated as `vec2<u32>`
+in WGSL, checked against a BigInt reference. It needs no GPU vendor for a
+first pass (SwiftShader runs it) and unblocks the sphere renderer.

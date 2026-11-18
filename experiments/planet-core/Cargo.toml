@@ -1,0 +1,21 @@
+[package]
+name = "planet-core"
+version = "0.1.0"
+edition = "2021"
+description = "Rust reference of the planet exact core (public/living/planet/core.js), for native and WebAssembly."
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "hashes"
+path = "src/bin/hashes.rs"
+
+[profile.release]
+opt-level = "s"
+lto = true
+# Overflow checks stay on in release too: the reference must never wrap where
+# core.js would not (JavaScript numbers do not wrap; only Math.imul and >>> do).
+overflow-checks = true
+panic = "abort"

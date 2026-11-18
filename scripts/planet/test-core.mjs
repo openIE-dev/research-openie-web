@@ -15,7 +15,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const C = await import(pathToFileURL(path.join(ROOT, 'public/living/planet/core.js')).href);
 const QUICK = process.argv.includes('--quick');
-const { spinUp, divergenceTrial } = await import(pathToFileURL(path.join(ROOT, 'scripts/planet/divergence.mjs')).href);
+const { spinUp, divergenceTrial, fuzzLog: fuzz } = await import(pathToFileURL(path.join(ROOT, 'scripts/planet/divergence.mjs')).href);
 
 const TICKS = QUICK ? 200 : 1000;
 const SEEDS = QUICK ? [1, 1234] : [1, 7, 1234, 99991];
@@ -25,25 +25,13 @@ let failures = 0;
 const fail = (msg) => { failures++; console.log('  FAIL ' + msg); };
 const ok = (msg) => console.log('  ok   ' + msg);
 
-// Deterministic pseudo-random edits (the fuzz stream is itself seeded).
-function fuzzLog(seed, ticks, W, H) {
-  const log = [];
-  let h = C.mix32(seed ^ 0xabcdef);
-  for (let t = 0; t < ticks; t++) {
-    h = C.mix32(h + t);
-    if ((h & 7) !== 0) continue; // about one edit every eight ticks
-    const r = C.mix32(h);
-    log.push({ t, x: r % W, y: (r >>> 12) % H, op: C.OPS[(r >>> 24) & 3], k: 1 + ((r >>> 8) & 63) });
-  }
-  return log;
-}
 
 const results = { generated: new Date().toISOString(), node: process.version, platform: `${os.platform()} ${os.arch()}`, quick: QUICK, seeds: {}, divergence: [] };
 
 for (const seed of SEEDS) {
   console.log(`seed ${seed}`);
   const s0 = C.initState(seed);
-  const log = fuzzLog(seed, TICKS, s0.W, s0.H);
+  const log = fuzz(C, seed, TICKS, s0.W, s0.H);
   const r = { edits: log.length };
 
   // Determinism: two independent runs give the same hash at every tick (PL-H3, first half).

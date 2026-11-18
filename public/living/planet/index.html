@@ -98,7 +98,7 @@
       <div class="panel">
         <h3>State</h3>
         <dl class="metrics" id="metrics"></dl>
-        <div class="controls"><button class="run" id="replay">Replay A from seed and log</button></div>
+        <div class="controls"><button class="run" id="replay">Replay A from seed and log (JavaScript and WebAssembly)</button></div>
         <div class="status" id="replayStatus"></div>
       </div>
       <div class="panel">
@@ -129,7 +129,7 @@
   <section class="figure-shell">
     <header><div class="title-row"><span class="fig-id">planet-03</span><h2>What the figure shows</h2></div></header>
     <div class="panel explain">
-      <p><strong>The world is a function and a log.</strong> Neither map is stored. Each is the seed run forward with its edit log. "Replay" rebuilds A from nothing and compares the state hash with the live one.</p>
+      <p><strong>The world is a function and a log.</strong> Neither map is stored. Each is the seed run forward with its edit log. "Replay" rebuilds A from nothing, twice: once in JavaScript and once in a separate implementation of the same rules written in Rust and compiled to WebAssembly. Both must reproduce the live state hash exactly.</p>
       <p><strong>Matter is conserved.</strong> Digging moves ground into your inventory and raising moves it back. Water moves between ground, air and inventory. The totals under State never change, and an edit that would make anything negative is refused before it enters the log.</p>
       <p><strong>The butterfly effect is attributable.</strong> With exact arithmetic, two branches with the same log stay identical forever, so the whole difference map is the consequence of your edit. With floating point that differs between machines, the same map would mix your cause with rounding noise.</p>
     </div>

@@ -24,18 +24,22 @@ Hypothesis IDs refer to Section 7 of `src/content/papers/planet.md`.
 | PLN-015 | Living figure page | done | PLN-011, PLN-013 | Two branches, difference map, divergence chart, replay check, inspector, parity panel; works without WebGPU | — | `public/living/planet/`; driven headless: replay identical, demo dig spread to 2,417 cells in 300 ticks, parity 0 mismatches, no page errors, no horizontal scroll at 390 px |
 | PLN-016 | Link the figure from the hub and the study | done | PLN-015 | Hub card; study Section 3 link; `pnpm build` passes | — | Hub card and nav in `public/living/index.html`; link in study Section 3 |
 | PLN-017 | Pre-register the refined divergence hypothesis (wet planets only) and report the PL-H4 result in the study | done | PLN-012 | New row in study Section 7 with the toy's numbers, labelled as a toy | PL-H4 | Study Section 7.1 and PL-H12 |
-| PLN-018 | Run PL-H12 on 8 seeds not used before (not 1, 7, 1234, 99991) with at least 15 water units per cell | todo | PLN-017 | Per-seed median doubling times in `docs/planet/results/`; report pass or kill in Section 7.1 without changing the criterion | PL-H12 | |
-| PLN-019 | Run `node scripts/planet/test-core.mjs --quick` in CI | todo | PLN-012 | CI job fails on a determinism, replay or conservation failure | — | |
+| PLN-018 | Run PL-H12 on 8 seeds not used before (not 1, 7, 1234, 99991) with at least 15 water units per cell | done | PLN-017 | Per-seed median doubling times in `docs/planet/results/`; report pass or kill in Section 7.1 without changing the criterion | PL-H12 | Registered in `dc96370`, run after; `docs/planet/results/h12.json`: max over min of medians 1.63, survives; reported in study 7.1 |
+| PLN-019 | Run `node scripts/planet/test-core.mjs --quick` in CI | done | PLN-012 | CI job fails on a determinism, replay or conservation failure | — | `pnpm test:planet` step in `.github/workflows/ci.yml` (about 13 s locally); not yet seen running on GitHub, since CI triggers on pull requests and pushes to `main` |
 | PLN-020a | Toy visuals: dried-out sea floor shows as dark basalt; decide whether evaporation should leave a thin water film or draw dry sea floor differently | todo | PLN-015 | A choice recorded in the blueprint | — | |
 
 ## M2. Reference and scale
 
+Evidence for PLN-020: `experiments/planet-core/`, `scripts/planet/test-rust.mjs`, `docs/planet/results/rust-wasm.json` (JS, Wasm and native x86-64 agree at every tick, 4 seeds x 1,000 ticks; generator 0 of 2,097,152 cells differ; sensitivity check detected; native overflow checks never fired). The living page's replay button now also replays in Wasm.
+
 | ID | Task | Status | Depends | Acceptance | Hypothesis |
 |---|---|---|---|---|---|
-| PLN-020 | Rust reference of the core compiled to Wasm, checked against `core.js` | todo | PLN-012 | Identical hashes over the test suite | PL-H1 |
+| PLN-020 | Rust reference of the core compiled to Wasm, checked against `core.js` | done | PLN-012 | Identical hashes over the test suite | PL-H1 |
 | PLN-021 | Parity on more devices (three GPU vendors, three browsers) | todo | PLN-014 | Results files per device, gathered by people with those devices | PL-H1 |
 | PLN-022 | Floating-point generator on several GPUs | todo | PLN-021 | Mismatch counts per device pair | PL-H2 |
 | PLN-023 | Edit-log size in long sessions | todo | PLN-015 | Median log size of 100-hour sessions | PL-H5 |
+| PLN-024 | Run the Rust/Wasm parity step in CI and confirm it on GitHub | todo | PLN-020 | Green CI run with both planet steps | — |
+| PLN-025 | Spread probability: register and test a hypothesis on whether a dig spreads at all (PL-H12 only covers speed) | todo | PLN-018 | Registered before run, as PLN-018 was | new |
 
 ## M3. The sphere
 

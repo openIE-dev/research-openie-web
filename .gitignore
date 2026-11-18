@@ -16,3 +16,6 @@ __pycache__/
 public/rce/spec/tts/models/
 public/rce/spec/tts/voices/
 public/rce/spec/tts/ort/
+
+# Rust build output
+experiments/planet-core/target/

@@ -192,11 +192,38 @@ function loop() {
   requestAnimationFrame(loop);
 }
 
-$('replay').addEventListener('click', () => {
+// The Rust reference of the core, compiled to WebAssembly (experiments/planet-core).
+let wasmCore = null;
+async function loadWasm() {
+  if (!wasmCore) {
+    const { instance } = await WebAssembly.instantiateStreaming(fetch('core.wasm'), {});
+    wasmCore = instance.exports;
+  }
+  return wasmCore;
+}
+
+$('replay').addEventListener('click', async () => {
   const t0 = performance.now();
   const r = C.replay(A.seed, logA, A.t, A.W, A.H);
-  const same = C.hashState(r) === C.hashState(A);
-  $('replayStatus').innerHTML = `${A.t} ticks and ${logA.length} edits replayed in ${Math.round(performance.now() - t0)} ms: <span class="${same ? 'ok' : 'bad'}">${same ? 'identical to the live state' : 'differs from the live state'}</span>`;
+  const live = C.hashState(A), same = C.hashState(r) === live;
+  let html = `${A.t} ticks and ${logA.length} edits replayed in JavaScript in ${Math.round(performance.now() - t0)} ms: <span class="${same ? 'ok' : 'bad'}">${same ? 'identical to the live state' : 'differs from the live state'}</span>`;
+  $('replayStatus').innerHTML = html + '<br/>Replaying in WebAssembly…';
+  try {
+    const X = await loadWasm();
+    const t1 = performance.now();
+    X.world_init(A.seed, A.W, A.H);
+    const ops = Object.fromEntries(C.OPS.map((o, i) => [o, i]));
+    const ptr = X.alloc(Math.max(1, logA.length) * 20);
+    new Int32Array(X.memory.buffer, ptr, logA.length * 5).set(logA.flatMap((e) => [e.t, e.x, e.y, ops[e.op], e.k]));
+    X.world_set_log(ptr, logA.length);
+    X.world_advance(A.t);
+    const h = (X.world_hash_hi() >>> 0).toString(16).padStart(8, '0') + (X.world_hash_lo() >>> 0).toString(16).padStart(8, '0');
+    const ok = h === live;
+    html += `<br/>Same replay in the Rust core compiled to WebAssembly, ${Math.round(performance.now() - t1)} ms: <span class="${ok ? 'ok' : 'bad'}">${ok ? 'identical hash' : 'different hash ' + h}</span>`;
+  } catch (e) {
+    html += `<br/>WebAssembly replay not run: ${String(e.message || e)}`;
+  }
+  $('replayStatus').innerHTML = html;
 });
 
 $('gpu').addEventListener('click', async () => {

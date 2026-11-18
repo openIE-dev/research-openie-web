@@ -231,6 +231,7 @@ Each hypothesis is listed with the result that would withdraw it.
 A toy of the exact core has been built: the generator, a composition table, the weather and water step of the figure above, an edit checker and replay, in one JavaScript module, with the generator also written in WGSL. The results below were run in Node 22 and in headless Chromium on one Linux machine. They are about the toy, not about a planet. The scripts and results files are in the repository under `scripts/planet/` and `docs/planet/results/`.
 
 - **PL-H1, one device only.** The WGSL integer generator matched the reference on all 2,097,152 cells of four seeds. The adapter was SwiftShader, which runs on the processor rather than a GPU, so this is one data point, not the three vendors the test asks for. Changing one bit of one hash constant made 524,276 of 524,288 cells differ, so the comparison can fail.
+- **The whole core, three builds, one machine.** A second implementation of the core, written in Rust and compiled both for x86-64 and to WebAssembly, agreed with the JavaScript state hash at every one of 1,000 ticks on each of the four seeds, and refused the same edits. The x86-64 build ran with integer overflow checks on and never overflowed. Dropping one admitted edit from the WebAssembly run changed its hash, so this comparison can fail too.
 - **PL-H3 holds on the toy.** Over four seeds, each run for 1,000 ticks with a fuzzed log of 115 to 131 edits, two runs of the same log had identical state hashes at every tick, and replay from the seed and log reproduced the final state.
 - **PL-H6 holds on the toy's two conserved quantities.** Ground plus inventory, and water plus vapour plus inventory, never changed; 35 to 54 inadmissible edits per seed were refused and changed nothing.
 - **PL-H4 is killed as stated.** One unit of ground was dug at one cell, 12 times per seed, and both branches were followed for 800 ticks. The difference spread to half the map in 20 of 48 trials and stayed within 10 cells in 22. The median doubling time of the difference was about 24 to 26 ticks on three seeds and 392 on the fourth, a dry world with about a tenth of the others' water. Medians that differ about sixteenfold meet the kill criterion.
@@ -240,6 +241,8 @@ The toy suggests that its chaos needs water. That is a new hypothesis, stated he
 | ID | Hypothesis | Test | Measure | Kill criterion |
 |---|---|---|---|---|
 | PL-H12 | On toy worlds with at least 15 units of water per cell, the doubling time of a one-unit dig is stable | 8 seeds not used in Section 7.1, 12 trials each, as above | Median doubling time per seed | Medians that differ more than twofold |
+
+PL-H12 was then run as registered; the script that fixes the seed rule, the median and the treatment of a seed with no growth was committed before it was run. The rule selected seeds 100 to 105, 107 and 108 (seed 106 had too little water). Per-seed median doubling times ran from 22.5 to 36.7 ticks, a ratio of 1.63, below the kill threshold of 2, and every seed showed growth. PL-H12 survives this test. It says nothing about whether a dig spreads at all: the share of trials that reached half the map ran from 0 of 12 (seed 103) to 11 of 12 (seeds 107 and 108).
 
 ## 8. Infeasibility flags
 

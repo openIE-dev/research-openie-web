@@ -1,0 +1,82 @@
+{
+ "generated": "2026-11-18T02:30:34.671Z",
+ "node": "v22.23.5",
+ "rustc": "rustc 1.97.0 (2d8144b78 2026-07-07)",
+ "platform": "linux x64",
+ "wasmBytes": 47359,
+ "seeds": {
+  "1": {
+   "edits": 115,
+   "ticks": 1000,
+   "finalHash": "31235cf73b76af66",
+   "refused": {
+    "js": 54,
+    "wasm": 54,
+    "native": 54
+   },
+   "firstMismatchTick": {
+    "wasm": -1,
+    "native": -1
+   }
+  },
+  "7": {
+   "edits": 131,
+   "ticks": 1000,
+   "finalHash": "4015a65c4c684855",
+   "refused": {
+    "js": 50,
+    "wasm": 50,
+    "native": 50
+   },
+   "firstMismatchTick": {
+    "wasm": -1,
+    "native": -1
+   }
+  },
+  "1234": {
+   "edits": 128,
+   "ticks": 1000,
+   "finalHash": "406160adf135ca18",
+   "refused": {
+    "js": 35,
+    "wasm": 35,
+    "native": 35
+   },
+   "firstMismatchTick": {
+    "wasm": -1,
+    "native": -1
+   }
+  },
+  "99991": {
+   "edits": 118,
+   "ticks": 1000,
+   "finalHash": "ed4d3a145ae37d07",
+   "refused": {
+    "js": 54,
+    "wasm": 54,
+    "native": 54
+   },
+   "firstMismatchTick": {
+    "wasm": -1,
+    "native": -1
+   }
+  }
+ },
+ "sensitivity": {
+  "seed": 1234,
+  "droppedEdit": {
+   "t": 1,
+   "x": 21,
+   "y": 49,
+   "op": "scoop",
+   "k": 30
+  },
+  "ticks": 300,
+  "detected": true
+ },
+ "generator": {
+  "cells": 2097152,
+  "mismatches": 0
+ },
+ "failures": 0
+}

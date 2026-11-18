@@ -1,4 +1,4 @@
-// The divergence trial shared by test-core.mjs (PL-H3, PL-H4) and run-h12.mjs (PL-H12).
+// The fuzzed edit log and the divergence trial shared by test-core.mjs (PL-H3, PL-H4) and run-h12.mjs (PL-H12).
 // One unit of ground is dug at one cell after 200 ticks of spin-up; both branches are
 // followed for `horizon` ticks. Floating point is used only to fit the measurement,
 // never inside the simulation.
@@ -48,3 +48,17 @@ export function divergenceTrial(C, base, seed, trial, horizon) {
 
 // Upper median, the definition used since the first run.
 export const upperMedian = (v) => { const s = [...v].sort((a, b) => a - b); return s[Math.floor(s.length / 2)]; };
+
+// Deterministic pseudo-random edits (the fuzz stream is itself seeded). About one
+// edit every eight ticks, of every op, so some are refused by the checker.
+export function fuzzLog(C, seed, ticks, W, H) {
+  const log = [];
+  let h = C.mix32(seed ^ 0xabcdef);
+  for (let t = 0; t < ticks; t++) {
+    h = C.mix32(h + t);
+    if ((h & 7) !== 0) continue;
+    const r = C.mix32(h);
+    log.push({ t, x: r % W, y: (r >>> 12) % H, op: C.OPS[(r >>> 24) & 3], k: 1 + ((r >>> 8) & 63) });
+  }
+  return log;
+}

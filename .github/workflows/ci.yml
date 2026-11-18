@@ -33,6 +33,16 @@ jobs:
       - name: Unit tests
         run: pnpm test:guard
 
+      # Planet exact core: determinism, replay and conservation (docs/planet/).
+      - name: Planet core tests
+        run: pnpm test:planet
+
+      # Rust reference of the planet core, native and WebAssembly, against core.js.
+      - name: Planet Rust and Wasm parity
+        run: |
+          rustup target add wasm32-unknown-unknown
+          node scripts/planet/test-rust.mjs
+
       - name: Lint claims and private paths
         run: |
           pnpm lint:claims

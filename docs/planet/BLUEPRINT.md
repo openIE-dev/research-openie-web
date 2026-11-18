@@ -47,9 +47,19 @@ it into modules with contracts, and each module into tests that can fail.
 | Living figure | `public/living/planet/index.html`, `app.js` | Tolerance | Two branches of the same seed side by side, a difference map, a divergence chart, a replay check, a cell inspector, the GPU parity panel. Reads core state; never writes it except through logged edits. |
 | Core tests | `scripts/planet/test-core.mjs` | — | Node. Determinism, replay, conservation, branch divergence, doubling-time fit. Writes `docs/planet/results/core.json`. |
 | GPU parity run | `scripts/planet/gpu-parity.mjs` | — | Playwright + headless Chromium. Runs `checkParity()` and writes `docs/planet/results/gpu-parity.json` with the adapter it actually used. |
+| Rust reference | `experiments/planet-core/` (`src/lib.rs`, `src/bin/hashes.rs`) | Exact | Line-for-line port of `core.js`. Hashing uses explicit wrapping; everything else runs with overflow checks on (release too), so a value leaving 32 bits panics instead of diverging silently. Exports plain C functions for Wasm (no binding generator); the built module is `public/living/planet/core.wasm`. |
+| Cross-implementation test | `scripts/planet/test-rust.mjs` | — | Builds the crate, compares JS, Wasm and native hashes at every tick under fuzzed logs, generator parity, and a sensitivity check. Writes `docs/planet/results/rust-wasm.json`. |
+| Shared test helpers | `scripts/planet/divergence.mjs` | — | The fuzzed edit log and the divergence trial, so every script measures the same thing. |
+| PL-H12 runner | `scripts/planet/run-h12.mjs` | — | Registered rules in its header; committed before it was run. |
 
-Later milestones (see the tracker) add a Rust or WebAssembly (Wasm) reference,
-a cube-sphere renderer, volumetric bricks, creatures and the mechanics.
+Later milestones (see the tracker) add a cube-sphere renderer, volumetric
+bricks, creatures and the mechanics.
+
+**Changing the core.** `core.js` and `experiments/planet-core/src/lib.rs` must
+change together, in the same commit. Then run `node scripts/planet/test-rust.mjs`
+(rebuilds `core.wasm`) and `node scripts/planet/test-core.mjs`. Any change to
+the step changes every hash: say so in the ledger, and rerun any registered
+hypothesis whose numbers depend on it before quoting them again.
 
 ## 4. The toy planet of milestone M1
 
