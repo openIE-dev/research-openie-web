@@ -15,7 +15,7 @@ board_metered: false
 
 ## Abstract
 
-This study tests a structure-first approach to planetary atmospheres. It has two parts. First, a long-term baseline built from scaling relations and long-run averages is treated as the skeleton of a forecast, and short-term models predict only the departure from it. Second, after every known process is subtracted from an observation, the residual is treated as the main scientific object: a residual that follows a candidate variable points to that variable, and a residual that follows none points to a missing mechanism. Both ideas are tested first on a toy planet in which every process is known and every run can be replayed exactly, so the methods can be checked against a known answer before they are used on real data. Tests on Mercury's sodium exosphere, on the weather-to-macroweather transition of other planets, and on Earth forecasts beyond about ten days follow, and need data and computing not yet in hand. Three toy tests have been run; they are reported with the test plan.
+This study tests a structure-first approach to planetary atmospheres. It has two parts. First, a long-term baseline built from scaling relations and long-run averages is treated as the skeleton of a forecast, and short-term models predict only the departure from it. Second, after every known process is subtracted from an observation, the residual is treated as the main scientific object: a residual that follows a candidate variable points to that variable, and a residual that follows none points to a missing mechanism. Both ideas are tested first on a toy planet in which every process is known and every run can be replayed exactly, so the methods can be checked against a known answer before they are used on real data. Tests on Mercury's sodium exosphere, on the weather-to-macroweather transition of other planets, and on Earth forecasts beyond about ten days follow, and need data and computing not yet in hand. Five toy tests have been run; they are reported with the test plan.
 
 **In plain words**
 
@@ -150,8 +150,16 @@ BL-H8 was then run as registered (`docs/planetary-baselines/results/h8.json`). I
 
 The boundary follows one quantity, the share of cells times the square of the strength. The share of residual variance the marker explained matched, to within the spread over seeds, the share expected from that product against a residual variance of about 3.6 heat units squared, and detection began where that share crossed the 1% floor. For the analysis of Mercury, the lesson is a budget: a process can only be seen if its footprint times its squared strength, relative to the variance of the residual, clears the chosen effect-size floor. A process below that line is invisible whether or not it exists.
 
+### 5.4 Third result: BL-H3, and a lesson about kill criteria
+
+BL-H3 was run as registered on 60 worlds (`docs/planetary-baselines/results/h3.json`). Two worlds showed no measured growth and were excluded. No held-out world was predicted worse than a factor of 2, so BL-H3 survives its registered test. The test was too weak to mean anything. Doubling times across the 58 worlds ranged from 7.5 to 30.5 ticks and mostly sat between 13 and 30, so a single constant (18.6 ticks, the training mean in logarithms) also passes, with its largest held-out error a factor of 1.61. Against that constant, the fitted groups have negative skill: their mean squared logarithmic error on held-out worlds was 0.068, against 0.048 for the constant. Within the range tried, size, rotation and water barely move the toy's doubling time, and the candidate groups do not predict what variation there is.
+
+The secondary measure found no weather-to-macroweather transition within 1,024 ticks on 58 worlds; on two worlds with the strongest rotation, the Haar fluctuation peaked at 512 ticks.
+
+From here on, every kill criterion in this study is set against a null model fixed at registration (a constant, persistence, or climatology, as fits the test), so that a hypothesis can only survive by beating it.
+
 ## 6. Sources and limits
 
 All external sources above were checked only against search results, not against full texts. Lovejoy, Muller and Boisvert 2014: citation and abstract; the 1.8-day figure from press coverage only. Verkercke and co-authors 2025: citation and abstract. Sohl and co-authors 2024 (CUISINES): citation and summary. ROCKE-3D: summary pages. Kleidon: abstracts and conference pages. BepiColombo flyby of 19 June 2023: a conference abstract. Not yet checked at all: the "CELL consortium" named in the handoff note, and the location of MESSENGER sodium data in the PDS.
 
-BL-H1, BL-H7 and BL-H2 have been run (Sections 5.1 and 5.2). The kill criteria in Section 5 are a first statement and may be tightened, but only before the corresponding test is run, and any change is recorded in the study's working ledger.
+BL-H1, BL-H7, BL-H2, BL-H8 and BL-H3 have been run (Sections 5.1 to 5.4). The kill criteria in Section 5 are a first statement and may be tightened, but only before the corresponding test is run, and any change is recorded in the study's working ledger.

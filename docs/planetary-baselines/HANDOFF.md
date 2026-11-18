@@ -188,3 +188,25 @@ no false detection at k = 0. Found: (p 0.001, k 8), (0.003, k >= 4),
 p k^2 / (p k^2 + ~3.6); detection begins where it crosses the 0.01 floor
 (p k^2 around 0.04). Study Section 5.3 states the budget rule for Mercury:
 footprint x strength^2 / residual variance must clear the effect-size floor.
+
+---
+
+## 2026-11-18 · entry 10 · BL-H3: survives as registered, uninformative
+
+Run as registered (`79b0e0d`), about 20 min. 58 of 60 worlds had growth
+(no growth: indices 22, 30). Held-out (15 worlds): none off by more than a
+factor of 2, so it survives its registered criterion. Checked afterwards: a
+constant 18.6 ticks (training geometric mean) also passes (max factor 1.61),
+and the fitted model has negative skill against it on held-out worlds (mean
+squared log error 0.068 vs 0.048). Doubling time 7.5-30.5 ticks overall,
+mostly 13-30; medians by size, rotation and seed all 18.5-22.1. Haar
+transition: 1,024 (largest scale) on 58 worlds, 512 on worlds 39 and 57
+(rot 256). Study Section 5.4 reports it as uninformative.
+
+**New rule (blueprint rule 3).** Every kill criterion is set against a null
+model fixed at registration.
+
+**Next.** BLN-018 (widen the toy's range with off-by-default options, then
+a scaling test against a constant null), BLN-019 (longer Haar series),
+BLN-017 (residual form with an overfitting learner). Decision pending with
+the user: publish the study (BLN-050) or keep it as a draft.

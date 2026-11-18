@@ -30,17 +30,21 @@ known, then used on real data (Mercury, a third body for macroweather, Earth).
    planet study's practice; see `scripts/planet/run-h12.mjs` for the pattern).
    Kill criteria may be tightened only before the run, and the change goes in
    the ledger.
-3. The planet toy is shared. Anything this study adds to
+3. Every kill criterion is set against a null model fixed at registration
+   (constant, persistence or climatology, as fits): a hypothesis survives only
+   by beating it. Added after BL-H3 survived a criterion a constant also
+   passed (ledger entry 10).
+4. The planet toy is shared. Anything this study adds to
    `public/living/planet/core.js` (and its Rust twin
    `experiments/planet-core/src/lib.rs`) must be an option that is off by
    default, so that the planet study's registered results and hashes do not
    change. `pnpm test:planet` and `node scripts/planet/test-rust.mjs` must
    still pass unchanged.
-4. Site writing rules apply to the study page: define before use, terms list,
+5. Site writing rules apply to the study page: define before use, terms list,
    no narrated author, no "we", no restricted status words (run
    `node scripts/lint-claims.mjs`; note "laws" is restricted, so write
    "scaling relations").
-5. Sources: label every source by how it was checked (read in full, or search
+6. Sources: label every source by how it was checked (read in full, or search
    result only). The draft currently has no source read in full.
 
 ## 3. Workstreams

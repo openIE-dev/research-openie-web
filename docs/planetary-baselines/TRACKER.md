@@ -25,7 +25,9 @@ evidence (a path, a commit, a URL). Hypothesis IDs refer to Section 5 of
 | BLN-011 | Long-run baseline of a toy world (per cell, per season) and two matched forecasters | done | BLN-003 | Errors at 1, 3, 10 doubling times on held-out seeds | BL-H2 (survives; `results/h2.json`) |
 | BLN-017 | Does the residual form matter for a learner that can overfit (for example a small neural network or gradient-boosted trees)? Register B vs A+ with such a learner | todo | BLN-011 | Registered before running | new |
 | BLN-012 | Rotation option for the toy (off by default) in `core.js` and `lib.rs`; planet hashes unchanged with it off | done | — | `pnpm test:planet` and `test-rust.mjs` pass unchanged; new tests for rotation on | — |
-| BLN-013 | Scaling ladder across toy worlds; spectral transition time per world | todo | BLN-012 | Held-out prediction error | BL-H3 |
+| BLN-013 | Scaling ladder across toy worlds; spectral transition time per world | done | BLN-012 | Held-out prediction error | BL-H3 (survives as registered, uninformative: a constant also passes and the fit has negative skill against it; `results/h3.json`) |
+| BLN-018 | Widen the toy's range so the doubling time actually varies (options for sunlight amplitude and heat-transport strength, off by default, JS and Rust together), then register a scaling test against a constant null | todo | BLN-013 | Registered with a null model | new |
+| BLN-019 | Longer series (8,192+ ticks) for the Haar transition, since 58 of 60 worlds peaked at the largest scale tried | todo | BLN-013 | Transition found within range, or reported absent | — |
 
 ## B. Mercury
 
