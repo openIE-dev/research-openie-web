@@ -97,3 +97,28 @@ ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.0), fontsize=9.5, ncol=4)
 ax.set_ylim(-0.62, 0.42)
 save(fig, "enso-residual")
 print("wrote", sorted(p.name for p in OUT.iterdir()))
+
+# Figure 4: Mars Haar fluctuation of the skeleton residual (Study 4), if computed.
+p4 = HERE / "results" / "study4.json"
+if p4.exists():
+    M = json.loads(p4.read_text())["results"]
+    fig, ax = plt.subplots(figsize=(8.5, 5))
+    for i, (k, R) in enumerate(M.items()):
+        a = R["A"]
+        xs = [s for s, f in zip(a["lags_sol"], a["fluct_pa"]) if f is not None]
+        ys = [f for f in a["fluct_pa"] if f is not None]
+        ax.plot(xs, ys, color=C[i], lw=2, marker="osD"[i], ms=6, mec=SURF, mew=1.2, label=k)
+    ax.axvline(1.8, color=INK2, lw=1.2, ls="--")
+    ax.annotate("predicted break, 1.8 sols", (1.8, 0.47), xycoords=("data", "axes fraction"), xytext=(6, 0),
+                textcoords="offset points", va="top", color=INK2, fontsize=9.5)
+    ax.axvspan(0.2, 1, color=GRID, alpha=0.6, lw=0)
+    ax.annotate("sub-sol: diurnal leftovers", (0.22, 0.03), xycoords=("data", "axes fraction"), color=INK2, fontsize=9)
+    ax.set_xscale("log"); ax.set_yscale("log")
+    ax.set_xticks([0.25, 1, 2, 4, 8, 16, 32, 64, 128], ["0.25", "1", "2", "4", "8", "16", "32", "64", "128"])
+    ax.set_yticks([1, 2, 4, 8], ["1", "2", "4", "8"])
+    ax.minorticks_off()
+    ax.set_xlabel("Averaging interval (sols)")
+    ax.set_ylabel("RMS Haar fluctuation of pressure residual (Pa)")
+    ax.set_title("Mars: a break near two sols at Viking 2, then a rise past ten sols everywhere", loc="left", color=INK, fontsize=12)
+    ax.legend(loc="lower left", bbox_to_anchor=(0.0, 0.08), fontsize=9.5)
+    save(fig, "mars-haar")
