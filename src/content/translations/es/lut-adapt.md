@@ -1,6 +1,6 @@
 ---
 title: "Compilación descendente a LUT6 en una cascada Mixture of Limits: mallas booleanas enrutadas por Beneš, compuertas de activación conformales y transmisión de capas NVMe de 4 bits"
-deck: "Una cascada Mixture of Limits (mezcla de límites) de cuatro peldaños que prueba primero circuitos paginados de tablas de búsqueda de 6 entradas (LUT6) con cero operaciones de coma flotante (FLOP), despierta modelos Mamba-3 y modelos híbridos de 2026 transmitidos por capas desde Non-Volatile Memory Express (NVMe) en 4 bits solo ante fallos de búsqueda, y compila de forma descendente las activaciones certificadas hacia páginas de Block RAM de 36 Kbits (RAMB36E2) enrutadas mediante redes Beneš. Se informan tiempos de reloj real, conteos de bytes sin búfer bajo Darwin F_NOCACHE (lectura de archivos sin caché), memoria activa de acceso aleatorio (RAM) y simulaciones a nivel de transferencia de registros (RTL) con Yosys/Verilator para xck26 a partir de openIE-dev/lut-adapt-ai en el commit 9dbf745. Las cifras de energía son estimaciones analíticas est_j; no se midió potencia física en placa."
+deck: "Una cascada Mixture of Limits (mezcla de límites) de cuatro peldaños que prueba primero circuitos paginados de tablas de búsqueda de 6 entradas (LUT6) con cero operaciones de coma flotante (FLOP), despierta modelos Mamba-3 y modelos híbridos de 2026 transmitidos por capas desde Non-Volatile Memory Express (NVMe) en 4 bits solo ante fallos de búsqueda, y compila de forma descendente las activaciones certificadas hacia páginas de Block RAM de 36 Kbits (RAMB36E2) enrutadas mediante redes Beneš. Se informan tiempos de reloj real, conteos de bytes sin búfer bajo Darwin F_NOCACHE (lectura de archivos sin caché), memoria activa de acceso aleatorio (RAM) y simulaciones a nivel de transferencia de registros (RTL) con Yosys/Verilator para xck26 a partir de openIE-dev/lut-adapt-ai en el commit a5e9bc1. Las cifras de energía son estimaciones analíticas est_j; no se midió potencia física en placa."
 lang: "es"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-4-bit-nvme-layer-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*Revisión 11dbc8c, 22 de noviembre de 2026. Implementación de referencia y artefactos: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) en [`9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0`](https://github.com/openIE-dev/lut-adapt-ai/tree/9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0). Resumen de datos: [/data/#lut-adapt](/data/#lut-adapt). PDF en LaTeX: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([fuente](/pdfs/latex/lut-adapt.tex)).*
+*Revisión 11dbc8c, 22 de noviembre de 2026. Implementación de referencia y artefactos: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) en [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb). Resumen de datos: [/data/#lut-adapt](/data/#lut-adapt). PDF en LaTeX: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([fuente](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -359,7 +359,7 @@ Obsérvese el compromiso de rendimiento preservado sobre `Qwen3.5-0.8B-Base` ant
 
 ## Apéndice A. Reproducibilidad
 
-Desde una copia local de [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 9dbf745`):
+Desde una copia local de [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit a5e9bc1`):
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v

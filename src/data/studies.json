@@ -127,7 +127,7 @@
     },
     {
       "id": "lut-adapt",
-      "title": "Downward LUT6 Compilation in a Mixture of Limits Cascade: Beneš-Routed Boolean Fabrics, Conformal Wake Gates, and 4-Bit NVMe Layer Streaming",
+      "title": "Downward LUT6 Compilation in a Mixture of Limits Cascade: Beneš-Routed Boolean Fabrics, Conformal Wake Gates, and Frontier Sparse-MoE NVMe Streaming",
       "short_title": "Downward LUT6 Compilation",
       "kind": "Research study",
       "group": "research",
@@ -135,7 +135,7 @@
       "pdf": "https://research.openie.dev/pdfs/lut-adapt.pdf",
       "figures": "/living/lut-adapt/",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "Places a reconfigurable 6-input truth-table (LUT6) lookup tier in front of Mamba-3 and 4-bit NVMe-streamed 2026 hybrid models (LiquidAI/LFM2.5-350M and Qwen/Qwen3.5-0.8B-Base), and compiles certified wakes downward into 81-RAMB36E2 Beneš-routed lookup pages at openIE-dev/lut-adapt-ai (commit 9dbf745). Reports measured Darwin F_NOCACHE NVMe byte counts (2.86 and 2.74 tokens per sweep post-wake at 100.0% exact token parity), active RAM (128.0 MB and 242.5 MB), Yosys/Verilator xck26 RTL simulation (41,186 CLB LUTs, 81 RAMB36E2s, 0 DSP48s, CPI = 1.0), and analytical est_j estimates. No board power was measured. Plain words: repeated model work is compiled into cheap table lookups only after a check passes; streaming a 2026 model from disk with that zero-FLOP drafter cuts disk reads by nearly three times without changing a single output token.",
+      "summary": "Places a reconfigurable 6-input truth-table (LUT6) lookup tier in front of Mamba-3 and 4-bit NVMe-streamed late-2026 hybrid and sparse-MoE models up to 34.66B parameters (LiquidAI/LFM3-1.7B, LiquidAI/LFM2.5-8B-A1B, and Qwen/Qwen3.6-35B-A3B), gates commits behind deterministic verifiers, and compiles certified wakes downward into 81-RAMB36E2 Beneš-routed lookup pages at openIE-dev/lut-adapt-ai (commit a5e9bc1). Reports measured Darwin F_NOCACHE NVMe byte counts (up to 12.30× NVMe reduction and 6.50× speedup in 2,530.7 MB = 3.83% FP16 RAM on Qwen3.6-35B-A3B at 100.0% exact token parity), zero-MAC Sub1Bit-LUT6 vs. LittleBit-2, a 48-task coding bakeoff (43.75% pass, 0.00% broken commits admitted, 35,590× Wave-3 crystallized speedup), Yosys/Verilator xck26 RTL simulation (41,186 CLB LUTs, 81 RAMB36E2s, 0 DSP48s, CPI = 1.0), and analytical est_j estimates. No isolated board power was measured.",
       "about": "https://research.openie.dev/about/lut-adapt/",
       "keywords": [
         "Mixture of Limits",

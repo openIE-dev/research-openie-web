@@ -12,15 +12,15 @@ import Layout from '../../layouts/Layout.astro';
       Downward LUT6 Compilation in a Mixture of Limits Cascade
     </h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
-      This study reports the public reference at openIE-dev/lut-adapt-ai (commit 9dbf745). It places a reconfigurable 6-input truth-table (LUT6) lookup tier ahead of Mamba-3 and 4-bit NVMe-streamed 2026 hybrid models (LiquidAI/LFM2.5-350M and Qwen/Qwen3.5-0.8B-Base), compiling certified wakes downward into 81-RAMB36E2 Beneš-routed lookup pages.
+      This study reports the public reference at openIE-dev/lut-adapt-ai (commit a5e9bc1). It places a reconfigurable 6-input truth-table (LUT6) lookup tier ahead of Mamba-3 and 4-bit NVMe-streamed late-2026 hybrid and sparse-MoE models up to 34.66B parameters (LiquidAI/LFM3-1.7B, LiquidAI/LFM2.5-8B-A1B, and Qwen/Qwen3.6-35B-A3B), gates commits behind deterministic verifiers, and compiles certified wakes downward into 81-RAMB36E2 Beneš-routed lookup pages.
     </p>
     <div class="mt-8 glass-card p-6">
       <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">What the study claims and what it does not</p>
       <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
-        <li>Software and I/O measurements: exact Darwin F_NOCACHE os.pread NVMe byte counts, active weight RAM (128.0 MB on LFM2.5-350M; 242.5 MB on Qwen3.5-0.8B-Base), wall-clock throughput on Apple M5 Max, and 100.0% bit/token parity against greedy target decoding (2.86 and 2.74 tokens per sweep post-wake).</li>
+        <li>Software and I/O measurements: exact Darwin F_NOCACHE os.pread NVMe byte counts (up to 12.30× NVMe reduction and 6.50× speedup in 2,530.7 MB = 3.83% FP16 RAM on Qwen/Qwen3.6-35B-A3B; 6.90× on LFM2.5-8B-A1B; 2.74× in 3.79% FP32 RAM on Oct 2026 LiquidAI/LFM3-1.7B), 100.0% lossless token parity, zero-MAC Sub1Bit-LUT6 equivalence to LittleBit-2 ITQ, and 43.75% verified pass rate with 0.00% broken commits admitted and 35,590× Wave-3 crystallized speedup on a 48-task late-2026 coding benchmark.</li>
         <li>RTL synthesis and cycle simulation: 41,186 xcup CLB LUTs (35.2% of xck26), 81 RAMB36E2 blocks (56.2%), and 0 DSP48 slices in Yosys 0.71+, with 1-cycle context switching (CPI = 1.0) in Verilator 5.054.</li>
         <li>Oracle-free wake gate: 0.00% false crystallization risk and 1.0000 OOD AUROC on the shifted test stream via a radially regularized JEPA-EBRM Split-Conformal + Adaptive Conformal Inference gate, keeping Conformal-bounded distinct from Deterministic.</li>
-        <li>Not claimed: physical KV260 bitstream loading or rail power in this repository (board_metered = false, measured_j = None), Vivado post-place-and-route 250 MHz timing closure, silicon energy leadership, or capability gains beyond the greedy target checkpoint.</li>
+        <li>Not claimed: physical KV260 bitstream loading or isolated rail power in this repository (board_metered = false, measured_j = None), Vivado post-place-and-route 250 MHz timing closure, silicon energy leadership, or repository-scale SWE-bench evaluation beyond the 48-task deterministic contract benchmark.</li>
       </ol>
     </div>
 
@@ -39,7 +39,7 @@ import Layout from '../../layouts/Layout.astro';
       <a href="/living/lut-adapt/" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">
         Interactive figures → /living/lut-adapt/
       </a>
-      <a href="https://github.com/openIE-dev/lut-adapt-ai/tree/9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
+      <a href="https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
         Repository: openIE-dev/lut-adapt-ai
       </a>
       <a href="/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">

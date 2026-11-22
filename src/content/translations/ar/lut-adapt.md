@@ -1,6 +1,6 @@
 ---
 title: "التصريف الهابط إلى LUT6 في تسلسل Mixture of Limits: أنسجة منطقية بوليانية موجَّهة بشبكة Beneš، وبوابات إيقاظ مطابقة، وبث طبقات NVMe بدقة 4 بت"
-deck: "تسلسل Mixture of Limits (مزيج الحدود) رباعي الدرجات يجرّب أولًا دوائر جداول البحث ذات 6 مداخل (LUT6) المقسَّمة إلى صفحات بصفر عملية فاصلة عائمة (FLOP)، ولا يوقظ Mamba-3 والنماذج الهجينة لعام 2026 المبثوثة بدقة 4 بت عبر Non-Volatile Memory Express (NVMe) إلا عند الإخفاق، ويصرّف عمليات الإيقاظ المصدَّقة هبوطًا إلى صفحات ذاكرة Block RAM بسعة 36 كيلوبت (RAMB36E2) موجَّهة بشبكة Beneš. تُورَد أزمنة ساعة الحائط، وأعداد البايتات المقروءة دون تخزين مؤقت عبر Darwin F_NOCACHE (قراءة ملفات غير مخزَّنة مؤقتًا)، وذاكرة الوصول العشوائي (RAM) النشطة، ومحاكيات مستوى نقل المسجلات (RTL) بأداتي Yosys/Verilator على شريحة xck26 انطلاقًا من المستودع openIE-dev/lut-adapt-ai عند الإيداع 9dbf745. أرقام الطاقة تقديرات تحليلية est_j؛ ولم تُقَس قدرة كهربائية على اللوحة."
+deck: "تسلسل Mixture of Limits (مزيج الحدود) رباعي الدرجات يجرّب أولًا دوائر جداول البحث ذات 6 مداخل (LUT6) المقسَّمة إلى صفحات بصفر عملية فاصلة عائمة (FLOP)، ولا يوقظ Mamba-3 والنماذج الهجينة لعام 2026 المبثوثة بدقة 4 بت عبر Non-Volatile Memory Express (NVMe) إلا عند الإخفاق، ويصرّف عمليات الإيقاظ المصدَّقة هبوطًا إلى صفحات ذاكرة Block RAM بسعة 36 كيلوبت (RAMB36E2) موجَّهة بشبكة Beneš. تُورَد أزمنة ساعة الحائط، وأعداد البايتات المقروءة دون تخزين مؤقت عبر Darwin F_NOCACHE (قراءة ملفات غير مخزَّنة مؤقتًا)، وذاكرة الوصول العشوائي (RAM) النشطة، ومحاكيات مستوى نقل المسجلات (RTL) بأداتي Yosys/Verilator على شريحة xck26 انطلاقًا من المستودع openIE-dev/lut-adapt-ai عند الإيداع a5e9bc1. أرقام الطاقة تقديرات تحليلية est_j؛ ولم تُقَس قدرة كهربائية على اللوحة."
 lang: "ar"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-4-bit-nvme-layer-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*المراجعة 11dbc8c، 22 نوفمبر 2026. التنفيذ المرجعي والمخرجات: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) عند الإيداع [`9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0`](https://github.com/openIE-dev/lut-adapt-ai/tree/9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0). ملخص البيانات: [/data/#lut-adapt](/data/#lut-adapt). ملف PDF بصيغة LaTeX: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([المصدر](/pdfs/latex/lut-adapt.tex)).*
+*المراجعة 11dbc8c، 22 نوفمبر 2026. التنفيذ المرجعي والمخرجات: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) عند الإيداع [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb). ملخص البيانات: [/data/#lut-adapt](/data/#lut-adapt). ملف PDF بصيغة LaTeX: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([المصدر](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -359,7 +359,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## الملحق أ. قابلية إعادة الإنتاج
 
-انطلاقًا من نسخة مستخرجة من المستودع [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 9dbf745`):
+انطلاقًا من نسخة مستخرجة من المستودع [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit a5e9bc1`):
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v

@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits कैस्केड में अधोमुखी LUT6 संकलन: Beneš-रूट किए गए बूलियन फ़ैब्रिक, कन्फ़ॉर्मल वेक द्वार और 4-बिट NVMe परत स्ट्रीमिंग"
-deck: "एक चार-पायदान वाला Mixture of Limits (सीमाओं का मिश्रण) कैस्केड जो पहले शून्य-फ़्लोटिंग-पॉइंट-ऑपरेशन (FLOP) वाले पृष्ठित 6-इनपुट लुक-अप टेबल (LUT6) परिपथों को आज़माता है, केवल चूक होने पर ही Mamba-3 और 4-बिट Non-Volatile Memory Express (NVMe) से स्ट्रीम किए गए 2026 के हाइब्रिड मॉडलों को जगाता है, और प्रमाणित वेक परिणामों को अधोमुखी रूप से Beneš-रूट किए गए 36-Kbit Block RAM (RAMB36E2) पृष्ठों में संकलित करता है। वॉल-क्लॉक समय, बिना बफ़र वाले Darwin F_NOCACHE (अबफ़रित फ़ाइल पठन) बाइट गणनाएँ, सक्रिय रैंडम-एक्सेस मेमोरी (RAM), और Yosys/Verilator xck26 रजिस्टर-ट्रांसफ़र-लेवल (RTL) सिमुलेशन openIE-dev/lut-adapt-ai के commit 9dbf745 से रिपोर्ट किए गए हैं। ऊर्जा के आँकड़े विश्लेषणात्मक est_j अनुमान हैं; बोर्ड पर कोई शक्ति मापन नहीं किया गया।"
+deck: "एक चार-पायदान वाला Mixture of Limits (सीमाओं का मिश्रण) कैस्केड जो पहले शून्य-फ़्लोटिंग-पॉइंट-ऑपरेशन (FLOP) वाले पृष्ठित 6-इनपुट लुक-अप टेबल (LUT6) परिपथों को आज़माता है, केवल चूक होने पर ही Mamba-3 और 4-बिट Non-Volatile Memory Express (NVMe) से स्ट्रीम किए गए 2026 के हाइब्रिड मॉडलों को जगाता है, और प्रमाणित वेक परिणामों को अधोमुखी रूप से Beneš-रूट किए गए 36-Kbit Block RAM (RAMB36E2) पृष्ठों में संकलित करता है। वॉल-क्लॉक समय, बिना बफ़र वाले Darwin F_NOCACHE (अबफ़रित फ़ाइल पठन) बाइट गणनाएँ, सक्रिय रैंडम-एक्सेस मेमोरी (RAM), और Yosys/Verilator xck26 रजिस्टर-ट्रांसफ़र-लेवल (RTL) सिमुलेशन openIE-dev/lut-adapt-ai के commit a5e9bc1 से रिपोर्ट किए गए हैं। ऊर्जा के आँकड़े विश्लेषणात्मक est_j अनुमान हैं; बोर्ड पर कोई शक्ति मापन नहीं किया गया।"
 lang: "hi"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-4-bit-nvme-layer-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*संशोधन 11dbc8c, 22 नवंबर 2026। संदर्भ कार्यान्वयन और कलाकृतियाँ: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai), commit [`9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0`](https://github.com/openIE-dev/lut-adapt-ai/tree/9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0) पर। डेटा सारांश: [/data/#lut-adapt](/data/#lut-adapt)। LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([स्रोत](/pdfs/latex/lut-adapt.tex))।*
+*संशोधन 11dbc8c, 22 नवंबर 2026। संदर्भ कार्यान्वयन और कलाकृतियाँ: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai), commit [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb) पर। डेटा सारांश: [/data/#lut-adapt](/data/#lut-adapt)। LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([स्रोत](/pdfs/latex/lut-adapt.tex))।*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -359,7 +359,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## परिशिष्ट A. पुनरुत्पादनीयता
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 9dbf745`) के चेकआउट से:
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit a5e9bc1`) के चेकआउट से:
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v

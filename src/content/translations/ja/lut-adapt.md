@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits カスケードにおける下方 LUT6 コンパイル：Beneš ルーティング・ブールファブリック、コンフォーマル起動ゲート、および 4 ビット NVMe レイヤストリーミング"
-deck: "まず浮動小数点演算ゼロ（0 FLOP）のページド 6 入力ルックアップテーブル（LUT6）回路を試行し、ミス時にのみ Mamba-3 および 4 ビット Non-Volatile Memory Express（NVMe）からレイヤ単位でストリーミングされる 2026 年ハイブリッドモデルを起動し、検証済みの起動結果を Beneš ルーティングされた 36 Kbit ブロック RAM（RAMB36E2）ページへと下方コンパイルする 4 段の Mixture of Limits（限界の混合）カスケード。openIE-dev/lut-adapt-ai（コミット 9dbf745）に基づき、実経過時間、非バッファ Darwin F_NOCACHE（非バッファファイル読み取り）バイト数、アクティブなランダムアクセスメモリ（RAM）、および Yosys/Verilator による xck26 レジスタ転送レベル（RTL）シミュレーションを報告する。エネルギー数値はすべて解析的な est_j 推定値であり、ボード実測電力は測定していない。"
+deck: "まず浮動小数点演算ゼロ（0 FLOP）のページド 6 入力ルックアップテーブル（LUT6）回路を試行し、ミス時にのみ Mamba-3 および 4 ビット Non-Volatile Memory Express（NVMe）からレイヤ単位でストリーミングされる 2026 年ハイブリッドモデルを起動し、検証済みの起動結果を Beneš ルーティングされた 36 Kbit ブロック RAM（RAMB36E2）ページへと下方コンパイルする 4 段の Mixture of Limits（限界の混合）カスケード。openIE-dev/lut-adapt-ai（コミット a5e9bc1）に基づき、実経過時間、非バッファ Darwin F_NOCACHE（非バッファファイル読み取り）バイト数、アクティブなランダムアクセスメモリ（RAM）、および Yosys/Verilator による xck26 レジスタ転送レベル（RTL）シミュレーションを報告する。エネルギー数値はすべて解析的な est_j 推定値であり、ボード実測電力は測定していない。"
 lang: "ja"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-4-bit-nvme-layer-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*リビジョン 11dbc8c、2026年11月22日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（コミット [`9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0`](https://github.com/openIE-dev/lut-adapt-ai/tree/9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0)）。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
+*リビジョン 11dbc8c、2026年11月22日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（コミット [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb)）。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -359,7 +359,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## 付録 A. 再現性
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit 9dbf745`）をチェックアウトしたディレクトリから以下を実行する。
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit a5e9bc1`）をチェックアウトしたディレクトリから以下を実行する。
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v

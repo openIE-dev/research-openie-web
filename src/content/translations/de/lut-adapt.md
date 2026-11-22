@@ -1,6 +1,6 @@
 ---
 title: "Abwärtskompilierung auf LUT6 in einer Kaskade nach Mixture of Limits: Beneš-geroutete Boolesche Verbindungsnetze, konforme Aufwecktore und schichtweises 4-Bit-NVMe-Streaming"
-deck: "Eine viersprossige Kaskade nach Mixture of Limits (Mischung der Grenzen), die zuerst gepagte Schaltungen aus Nachschlagetabellen mit 6 Eingängen (LUT6) ohne Gleitkommaoperationen (FLOP) erprobt, Mamba-3 sowie per 4-Bit Non-Volatile Memory Express (NVMe) gestreamte hybride Modelle des Jahres 2026 nur bei Fehlschlägen aufweckt und zertifizierte Aufweckvorgänge abwärts in Beneš-geroutete 36-Kbit-Block-RAM-Seiten (RAMB36E2) kompiliert. Wanduhrzeiten, ungepufferte Darwin-F_NOCACHE-Bytezahlen (ungepuffertes Dateilesen), aktiver Arbeitsspeicher (RAM) sowie Yosys/Verilator-Simulationen auf Register-Transfer-Ebene (RTL) für xck26 werden aus openIE-dev/lut-adapt-ai bei Commit 9dbf745 berichtet. Energieangaben sind analytische est_j-Schätzungen; eine Platinenleistung wurde nicht gemessen."
+deck: "Eine viersprossige Kaskade nach Mixture of Limits (Mischung der Grenzen), die zuerst gepagte Schaltungen aus Nachschlagetabellen mit 6 Eingängen (LUT6) ohne Gleitkommaoperationen (FLOP) erprobt, Mamba-3 sowie per 4-Bit Non-Volatile Memory Express (NVMe) gestreamte hybride Modelle des Jahres 2026 nur bei Fehlschlägen aufweckt und zertifizierte Aufweckvorgänge abwärts in Beneš-geroutete 36-Kbit-Block-RAM-Seiten (RAMB36E2) kompiliert. Wanduhrzeiten, ungepufferte Darwin-F_NOCACHE-Bytezahlen (ungepuffertes Dateilesen), aktiver Arbeitsspeicher (RAM) sowie Yosys/Verilator-Simulationen auf Register-Transfer-Ebene (RTL) für xck26 werden aus openIE-dev/lut-adapt-ai bei Commit a5e9bc1 berichtet. Energieangaben sind analytische est_j-Schätzungen; eine Platinenleistung wurde nicht gemessen."
 lang: "de"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-4-bit-nvme-layer-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*Revision 11dbc8c, 22. November 2026. Referenzimplementierung und Artefakte: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) bei [`9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0`](https://github.com/openIE-dev/lut-adapt-ai/tree/9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0). Datenzusammenfassung: [/data/#lut-adapt](/data/#lut-adapt). LaTeX-PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([Quelltext](/pdfs/latex/lut-adapt.tex)).*
+*Revision 11dbc8c, 22. November 2026. Referenzimplementierung und Artefakte: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) bei [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb). Datenzusammenfassung: [/data/#lut-adapt](/data/#lut-adapt). LaTeX-PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([Quelltext](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -359,7 +359,7 @@ Man beachte den bewusst ausgewiesenen Zielkonflikt bei kalten, ungesehenen Promp
 
 ## Anhang A. Reproduzierbarkeit
 
-Aus einem Checkout von [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 9dbf745`):
+Aus einem Checkout von [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit a5e9bc1`):
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v

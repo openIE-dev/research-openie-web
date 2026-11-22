@@ -160,7 +160,10 @@
           <div class="ctrl-box">
             <label><span>2026 Open-Weights Checkpoint</span></label>
             <select id="hf-model">
-              <option value="lfm" selected>LiquidAI/LFM2.5-350M (Mar 2026 · 354.5M · 16b × 4 = 64b uint64)</option>
+              <option value="qwen35b" selected>Qwen/Qwen3.6-35B-A3B (2026 · 34.66B 256-Expert MoE · Expert-AirMoL)</option>
+              <option value="lfm8b">LiquidAI/LFM2.5-8B-A1B (2026 · 8.47B 32-Expert MoE · Expert-AirMoL)</option>
+              <option value="lfm3">LiquidAI/LFM3-1.7B (Oct 2026 · 1.73B Tri-Hybrid · 17b × 3 = 51b uint64)</option>
+              <option value="lfm">LiquidAI/LFM2.5-350M (Mar 2026 · 354.5M · 16b × 4 = 64b uint64)</option>
               <option value="qwen">Qwen/Qwen3.5-0.8B-Base (Feb 2026 · 752.4M · 18b × 3 = 54b uint64)</option>
             </select>
           </div>
@@ -212,6 +215,10 @@
         <figure class="fig">
           <img src="/figures/lut-adapt/airmol-nvme-speculation.svg" alt="AirMoL 4-bit NVMe streaming with token LUT6 speculation">
           <figcaption><strong>Figure 3.</strong> <code>AirMoL</code> zero-extra-sweep 4-bit NVMe layer streaming with universal <code>≤64</code>-bit token <code>LUT6</code> burst speculation.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/moe-expert-cascade.svg" alt="Expert-AirMoL router-sparse MoE NVMe streaming and VerifiedCodeCascade">
+          <figcaption><strong>Figure 4.</strong> <code>Expert-AirMoL</code> router-sparse 4-bit expert-indexed NVMe streaming (<code>12.30×</code> I/O cut on <code>Qwen3.6-35B-A3B</code>) and <code>C(z)</code>-gated <code>VerifiedCodeCascade</code>.</figcaption>
         </figure>
       </section>
     </div>
@@ -310,6 +317,27 @@
     // Widget 3: AirMoL 2026 HF data
     (function(){
       var hf = {
+        qwen35b: {
+          ram: '2,530.7 MB', rampct: '3.83% of 66,110 MB FP16 (256-Expert MoE)',
+          t1:   { tpsw: '1.00 tok', cpsw: '2.25 code chars / sweep', gb: '18.159 GB/tok', sw: '100% experts (Dense AirLLM 4B)', toks: '0.06 tok/s', par: '100.0% parity (2.356 GB/tok Expert-T1)' },
+          pld:  { tpsw: '1.89 tok', cpsw: '4.26 code chars / sweep', gb: '1.708 GB/tok', sw: '10.63× I/O cut (11.6% experts)', toks: '0.32 tok/s', par: '100.0% exact token parity' },
+          cold: { tpsw: '2.00 tok', cpsw: '4.50 code chars / sweep', gb: '1.722 GB/tok', sw: '10.54× I/O cut (12.9% experts)', toks: '0.31 tok/s', par: '100.0% exact token parity' },
+          wake: { tpsw: '2.57 tok', cpsw: '5.79 code chars / sweep', gb: '1.477 GB/tok', sw: '12.30× NVMe I/O cut (15.0% exp)', toks: '0.39 tok/s', par: '100.0% parity (6.50× faster vs T=1)' }
+        },
+        lfm8b: {
+          ram: '1,408.3 MB', rampct: '8.72% of 16,151 MB FP16 (32-Expert MoE)',
+          t1:   { tpsw: '1.00 tok', cpsw: '1.62 code chars / sweep', gb: '4.574 GB/tok', sw: '100% experts (Dense AirLLM 4B)', toks: '0.28 tok/s', par: '100.0% parity (1.200 GB/tok Expert-T1)' },
+          pld:  { tpsw: '1.78 tok', cpsw: '2.89 code chars / sweep', gb: '0.883 GB/tok', sw: '5.18× I/O cut (28.8% experts)', toks: '0.79 tok/s', par: '100.0% exact token parity' },
+          cold: { tpsw: '1.85 tok', cpsw: '3.00 code chars / sweep', gb: '1.002 GB/tok', sw: '4.56× I/O cut (33.9% experts)', toks: '0.72 tok/s', par: '100.0% exact token parity' },
+          wake: { tpsw: '3.00 tok', cpsw: '4.88 code chars / sweep', gb: '0.663 GB/tok', sw: '6.90× NVMe I/O cut (36.5% exp)', toks: '1.10 tok/s', par: '100.0% parity (3.93× faster vs T=1)' }
+        },
+        lfm3: {
+          ram: '250.0 MB', rampct: '3.79% of 6,594.85 MB FP32 (Oct 2026 Tri-Hybrid)',
+          t1:   { tpsw: '1.00 tok', cpsw: '2.30 code chars / sweep', gb: '25.045 GB', sw: '24.00 sweeps (24 BPE tok)', toks: '0.53 tok/s', par: '100.0% parity (1.2 chars/s)' },
+          pld:  { tpsw: '1.37 tok', cpsw: '3.16 code chars / sweep', gb: '18.262 GB', sw: '17.50 sweeps (1.37× fewer)', toks: '0.73 tok/s', par: '100.0% parity (1.7 chars/s)' },
+          cold: { tpsw: '1.55 tok', cpsw: '3.56 code chars / sweep', gb: '16.175 GB', sw: '15.50 sweeps (1.55× fewer)', toks: '0.81 tok/s', par: '100.0% parity (1.9 chars/s)' },
+          wake: { tpsw: '2.74 tok', cpsw: '6.31 code chars / sweep', gb: '9.131 GB', sw: '8.75 sweeps (2.74× fewer)', toks: '1.32 tok/s', par: '100.0% parity (2.49× faster vs T=1)' }
+        },
         lfm: {
           ram: '128.0 MB', rampct: '9.47% of 1,352.25 MB FP32',
           t1:   { tpsw: '1.00 tok', cpsw: '2.73 code chars / sweep', gb: '7.071 GB', sw: '32.00 sweeps (32 BPE tok)', toks: '2.21 tok/s', par: '100.0% parity (6.0 chars/s)' },

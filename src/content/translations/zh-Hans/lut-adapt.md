@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits 级联中的向下 LUT6 编译：Beneš 路由布尔架构、共形唤醒门槛与 4 位 NVMe 按层流式传输"
-deck: "一种四级 Mixture of Limits（极限混合）级联架构：首先尝试零浮点运算（FLOP）的分页 6 输入查找表（LUT6）电路，仅在未命中时唤醒 Mamba-3 以及通过 4 位非易失性内存主机控制器接口规范（NVMe）按层流式传输的 2026 年混合模型，并将经认证的唤醒结果向下编译至 Beneš 路由的 36 Kbit 块随机存取存储器（RAMB36E2）页面中。本文报告了来自 openIE-dev/lut-adapt-ai（提交 9dbf745）的挂钟时间、无缓冲 Darwin F_NOCACHE（无缓冲文件读取）字节计数、活跃随机存取存储器（RAM）占用，以及针对 xck26 的 Yosys/Verilator 寄存器传输级（RTL）仿真结果。所有能量数值均为解析 est_j 估计值；未进行电路板实测功耗测量。"
+deck: "一种四级 Mixture of Limits（极限混合）级联架构：首先尝试零浮点运算（FLOP）的分页 6 输入查找表（LUT6）电路，仅在未命中时唤醒 Mamba-3 以及通过 4 位非易失性内存主机控制器接口规范（NVMe）按层流式传输的 2026 年混合模型，并将经认证的唤醒结果向下编译至 Beneš 路由的 36 Kbit 块随机存取存储器（RAMB36E2）页面中。本文报告了来自 openIE-dev/lut-adapt-ai（提交 a5e9bc1）的挂钟时间、无缓冲 Darwin F_NOCACHE（无缓冲文件读取）字节计数、活跃随机存取存储器（RAM）占用，以及针对 xck26 的 Yosys/Verilator 寄存器传输级（RTL）仿真结果。所有能量数值均为解析 est_j 估计值；未进行电路板实测功耗测量。"
 lang: "zh-Hans"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-4-bit-nvme-layer-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*修订版 11dbc8c，2026 年 11 月 22 日。参考实现与制品：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 [`9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0`](https://github.com/openIE-dev/lut-adapt-ai/tree/9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0)）。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源码](/pdfs/latex/lut-adapt.tex)）。*
+*修订版 11dbc8c，2026 年 11 月 22 日。参考实现与制品：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb)）。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源码](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -359,7 +359,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## 附录 A. 可复现性
 
-在检出 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit 9dbf745`）的源码目录后，运行以下命令：
+在检出 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit a5e9bc1`）的源码目录后，运行以下命令：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v

@@ -1,6 +1,6 @@
 ---
-title: "Downward LUT6 Compilation in a Mixture of Limits Cascade: Beneš-Routed Boolean Fabrics, Conformal Wake Gates, and 4-Bit NVMe Layer Streaming"
-deck: "A four-rung Mixture of Limits cascade that tries zero-floating-point-operation (FLOP) paged 6-input look-up table (LUT6) circuits first, wakes Mamba-3 and 4-bit Non-Volatile Memory Express (NVMe) streamed 2026 hybrid models only on misses, and compiles certified wakes downward into Beneš-routed 36-Kbit Block RAM (RAMB36E2) pages. Wall-clock times, unbuffered Darwin F_NOCACHE (unbuffered file read) byte counts, active random-access memory (RAM), and Yosys/Verilator xck26 register-transfer-level (RTL) simulations are reported from openIE-dev/lut-adapt-ai at commit 9dbf745. Energy figures are analytical est_j estimates; no board power was measured."
+title: "Downward LUT6 Compilation in a Mixture of Limits Cascade: Beneš-Routed Boolean Fabrics, Conformal Wake Gates, and Frontier Sparse-MoE NVMe Streaming"
+deck: "A Mixture of Limits cascade that tries zero-floating-point-operation (FLOP) paged 6-input look-up table (LUT6) circuits first, streams 4-bit Non-Volatile Memory Express (NVMe) hybrid and sparse Mixture-of-Experts (MoE) late-2026 models up to 34.66B parameters only on misses, gates commits via deterministic verifiers, and compiles certified wakes downward into Beneš-routed 36-Kbit Block RAM (RAMB36E2) pages. Wall-clock times, unbuffered Darwin F_NOCACHE (unbuffered file read) byte counts, active random-access memory (RAM), whole-system macOS power-management-unit (PMU) cumulative deltas, and Yosys/Verilator xck26 register-transfer-level (RTL) simulations are reported from openIE-dev/lut-adapt-ai at commit a5e9bc1. Per-task energy figures are analytical est_j estimates; no isolated board rail power was measured."
 id: lut-adapt
 status: "Research study · draft"
 author: "David Charlot, Open Interface Engineering"
@@ -9,9 +9,9 @@ pdf: "/pdfs/lut-adapt.pdf"
 board_metered: false
 ---
 
-# Downward LUT6 Compilation in a Mixture of Limits Cascade: Beneš-Routed Boolean Fabrics, Conformal Wake Gates, and 4-Bit NVMe Layer Streaming
+# Downward LUT6 Compilation in a Mixture of Limits Cascade: Beneš-Routed Boolean Fabrics, Conformal Wake Gates, and Frontier Sparse-MoE NVMe Streaming
 
-*{{revision}}. Reference implementation and artifacts: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) at [`9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0`](https://github.com/openIE-dev/lut-adapt-ai/tree/9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0). Data summary: [/data/#lut-adapt](/data/#lut-adapt). LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([source](/pdfs/latex/lut-adapt.tex)).*
+*{{revision}}. Reference implementation and artifacts: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) at [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb). Data summary: [/data/#lut-adapt](/data/#lut-adapt). LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([source](/pdfs/latex/lut-adapt.tex)).*
 
 ## 0. Overview
 
@@ -21,34 +21,35 @@ This study examines how a computing system can compile repeated neural-model wor
 
 1. Most inputs a deployed system sees repeat patterns it has already solved, so running a full floating-point neural network on every step wastes compute and memory bandwidth.
 2. The reference places a reconfigurable 6-input truth-table (`LUT6`) lookup tier ahead of streaming state-space and foundation models, and compiles answers downward into lookup memory pages only after an explicit check certifies them.
-3. When a 2026 hybrid language model streams its weights layer-by-layer from a solid-state drive, that zero-FLOP `LUT6` drafter proposes multi-token bursts that the target model verifies in one disk sweep, cutting disk reads by nearly `3×` with zero change to the output tokens.
+3. When late-2026 hybrid and sparse mixture-of-experts language models up to `34.66B` parameters stream 4-bit weights from solid-state storage, router-sparse expert reads paired with that zero-FLOP `LUT6` drafter cut disk reads by up to `12.30×` (`6.50×` faster token throughput) in `2.53` gigabytes of active memory with zero change to the output tokens; gating code commits behind a deterministic check beats standalone `35B` accuracy with `0.00%` broken commits admitted and accelerates crystallized Wave-3 tasks by `35,590×`.
 
 ## 1. Terms, acronyms, and measurement labels
 
 <ul id="terms">
 <li>MoL: Mixture of Limits, the cascade rule from Metered Commit Gates Part II [same house]</li>
-<li>LA: claim and falsifier prefix (LA-1 to LA-8, LA-F1 to LA-F8) used in this study</li>
+<li>LA: claim and falsifier prefix (LA-1 to LA-11, LA-F1 to LA-F11) used in this study</li>
 <li>LUT, LUT6, INIT: look-up table, 6-input Xilinx UltraScale+ Boolean primitive, and its 64-bit truth-table initialization mask</li>
 <li>BRAM, RAMB36E2, URAM: Block RAM, the 36-Kbit dual-port UltraScale+ Block RAM primitive (144 on xck26), and UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: configurable logic block, flip-flop, digital signal processing slice, and AMD Kria KV260 board (xck26)</li>
 <li>FPGA, ASIC, RTL, CPI, PAR, WNS, FPL: field-programmable gate array, application-specific integrated circuit, register-transfer level, cycles per lookup, place-and-route, worst negative slack, and Field-Programmable Logic conference</li>
-<li>AXI, PS, PL, SOM, INA260, VCC, RAPL, NVML: Advanced eXtensible Interface, Zynq processing system, programmable logic, system-on-module, onboard power monitor IC, supply rail, Intel Running Average Power Limit, and NVIDIA Management Library</li>
+<li>AXI, PS, PL, SOM, INA260, VCC, RAPL, NVML, PMU: Advanced eXtensible Interface, Zynq processing system, programmable logic, system-on-module, onboard power monitor IC, supply rail, Intel Running Average Power Limit, NVIDIA Management Library, and macOS power management unit</li>
 <li>SSD, SSM, MIMO, RoPE, SwiGLU, GQA, KV, BPE, LLM, LLMs, MoE, MLP, CFG: State Space Duality, state-space model, multiple-input multiple-output, rotary position embedding, gated linear unit activation, grouped-query attention, key-value cache, byte-pair encoding, large language model(s), Mixture-of-Experts, multilayer perceptron, and context-free grammar</li>
 <li>HC, SOINN, WNN, DWN: hierarchy-context Self-Organizing Incremental Neural Network, weightless neural network, and Differentiable Weightless Neural Network</li>
 <li>JEPA, EBRM, ACI, OOD, AUROC, AUC, MSP, MC: Joint-Embedding Predictive Architecture, Energy-Based Reasoning Model, Adaptive Conformal Inference, out-of-distribution, area under the receiver operating characteristic, maximum softmax probability, and Monte Carlo</li>
-<li>PLD, REST, EAGLE, LFM2, HF: Prompt Lookup Decoding, Retrieval-Based Speculative Decoding, Extrapolation Algorithm for Greater Language-model Efficiency, Liquid Foundation Model 2.5 (LiquidAI/LFM2.5-350M), and HuggingFace</li>
+<li>PLD, REST, EAGLE, LFM2, LFM3, HF: Prompt Lookup Decoding, Retrieval-Based Speculative Decoding, Extrapolation Algorithm for Greater Language-model Efficiency, Liquid Foundation Model 2.5 (LFM2.5-350M and LFM2.5-8B-A1B), Liquid Foundation Model 3 (Oct 2026 LiquidAI/LFM3-1.7B), and HuggingFace</li>
+<li>SVD, ITQ, SVID, QAT, PTQ, PPL, SNR: singular value decomposition, Iterative Quantization Procrustes hypercube rotation, sign-value-independent decomposition, quantization-aware training, post-training quantization, perplexity, and signal-to-noise ratio</li>
 <li>NVMe, NOCACHE, POSIX, RAM, DRAM, SRAM, IO, KB, MB, GB: Non-Volatile Memory Express storage, Darwin F_NOCACHE unbuffered file flag, Portable Operating System Interface, random-access memory, dynamic RAM, static RAM, input/output, kilobyte, megabyte, and gigabyte</li>
-<li>FLOP, FLOPs, MFLOP, MFLOPs, MAC, SIMD, AD, FD, BPB, FP16, FP32, INT4: floating-point operation(s), million FLOPs, multiply-accumulate, single-instruction multiple-data, automatic differentiation, finite difference, bits per byte, 16/32-bit floating point, and 4-bit integer</li>
+<li>FLOP, FLOPs, MFLOP, MFLOPs, MAC, MACs, SIMD, AD, FD, BPB, FP16, FP32, INT4: floating-point operation(s), million FLOPs, multiply-accumulate operation(s), single-instruction multiple-data, automatic differentiation, finite difference, bits per byte, 16/32-bit floating point, and 4-bit integer</li>
 <li>RCE, WCA, VC, SWE: Reality Code Engine [same house], Wise Computer Automation [same house], verified completion, and software-engineering benchmark prefix</li>
-<li>CLI, HTTP, SSE, API, ACL, OS, CPU, GPU, SW: command-line interface, Hypertext Transfer Protocol, Server-Sent Events, application programming interface, Association for Computational Linguistics, operating system, central/graphics processing unit, and software</li>
-<li>VLAN, IEEE, TLS, DPI, AST, JSON, CSV, SHA, CAM, XNOR: virtual local-area network (IEEE 802.1Q), Transport Layer Security, deep packet inspection, abstract syntax tree, JavaScript Object Notation, comma-separated values, Secure Hash Algorithm, content-addressable memory, and exclusive-NOR</li>
+<li>CLI, HTTP, SSE, API, ACL, ICML, ICLR, EMNLP, NAACL, CVPR, ICPE, ISSCC, JSAC, JASA, ACM, OS, CPU, GPU, SW: command-line interface, Hypertext Transfer Protocol, Server-Sent Events, application programming interface, academic computer-science/engineering venues, operating system, central/graphics processing unit, and software</li>
+<li>VLAN, IEEE, TLS, DPI, AST, JSON, CSV, SHA, CRC, ATM, RFC, SQL, DWARF, SLEB, CAM, XNOR: virtual local-area network (IEEE 802.1Q), Transport Layer Security, deep packet inspection, abstract syntax tree, JavaScript Object Notation, comma-separated values, Secure Hash Algorithm, cyclic redundancy check, Asynchronous Transfer Mode (CRC-8/ATM), Request for Comments, Structured Query Language, DWARF signed little-endian base-128 encoding, content-addressable memory, and exclusive-NOR</li>
 </ul>
 
 Three evidence classes stay separate across every table below:
 
 | Evidence label | Meaning in this study |
 | :--- | :--- |
-| **`Measured (SW / NVMe I/O)`** | Exact byte counts read or written via `os.pread` under Darwin `F_NOCACHE`, resident memory allocations, wall-clock seconds on Apple M5 Max, and exact bit/token agreement. `measured_j` is unset (`None`). |
+| **`Measured (SW / NVMe I/O / OS PMU)`** | Exact byte counts read or written via `os.pread` under Darwin `F_NOCACHE`, resident memory allocations, wall-clock seconds, whole-machine macOS `PMU` (`AppleSmartBattery.PowerTelemetryData`) cumulative energy deltas on Apple M5 Max, and exact bit/token agreement. `measured_j` is unset (`None`). |
 | **`Simulated (RTL)`** | Structural netlist counts from Yosys `0.71+` (`synth_xilinx -family xcup` targeting Kria KV260 `xck26`) and cycle counts (`CPI = 1`) from Verilator `5.054`. Not Vivado timing closure and not board power (`board_metered = false`). |
 | **`Estimated (est_j)`** | Analytical joules computed from operation counts or thermal-design-power time stand-ins (`joule_meter.py` fallback when `RAPL`/`NVML` hardware counters are absent on macOS). Comparable only across arms inside the same formula; never silicon watts. |
 
@@ -61,17 +62,17 @@ The `lut-adapt-ai` reference closes the loop between the top and bottom of the c
 - **Rung 0 (Lookup — Paged Beneš + `LUT6`)**: Evaluates 64-bit truth-table masks routed through a non-blocking $512 \times 512$ **Beneš–Copy–Beneš** multicast switch and cached across $81 \times \texttt{RAMB36E2}$ dual-port block memories (`0` floating-point operations, single-cycle page switching in Verilator simulation).
 - **Rung 1 (Stream — `Mamba-3` Complex MIMO State Space Duality)**: Handles misses that depend on sequence history using a constant-size $O(1)$ recurrent state (`48 KB` pinned memory in the `14.3M`-parameter reference), avoiding $O(L)$ key-value cache growth.
 - **Rung 2 (Topology — `HC-SOINN`)**: Maintains online prototype topology over latent embeddings, isolating regime boundaries and tripping a circuit breaker (`Refuse` / escalate) when unlabeled distribution shift arrives.
-- **Rung 3 (Model last — `JEPA-EBRM` and `AirMoL` 4-Bit NVMe Streaming)**: Invokes latent energy-based verification or layer-streamed pretrained 2026 foundation models (`LiquidAI/LFM2.5-350M` and `Qwen/Qwen3.5-0.8B-Base`) only when cheaper rungs abstain or require exact target verification.
+- **Rung 3 (Model last — `JEPA-EBRM`, `AirMoL`, and `Expert-AirMoL` 4-Bit NVMe Streaming)**: Invokes latent energy-based verification or streams pretrained late-2026 hybrid and sparse-MoE foundation models (`LiquidAI/LFM3-1.7B`, `google/gemma-4-E2B-it`, `LiquidAI/LFM2.5-8B-A1B`, and `Qwen/Qwen3.6-35B-A3B`, alongside `LiquidAI/LFM2.5-350M` and `Qwen/Qwen3.5-0.8B-Base`) only when cheaper rungs abstain or require exact target verification.
 - **Downward `SleepCrystallizer`**: Extracts recurring wake traces using Walsh–Hadamard spectral warm-starts, joint-mode minterm truth tables, and Waksman switch schedules, flipping shadow block-memory banks without halting inference or running FPGA place-and-route.
 
 ### 1.2 Contributions
 
 1. **Amortized downward compilation condition**: Extends the Simon–Kadane $p_i/c_i$ ordering with an explicit compilation cost $E_{\text{compile}}$ over stationary horizon $\Delta T$.
 2. **Non-blocking $512 \times 512$ Beneš–Copy–Beneš and `81`-`RAMB36E2` RTL architecture**: Eliminates both the `102.0%` Kria KV260 logic overflow of flat crossbars (`119,478` LUTs) and the `926,619`-LUT explosion of flip-flop page multiplexers, synthesizing to `41,186` UltraScale+ CLB LUTs (`35.2%` of `xck26`), `81` `RAMB36E2` blocks (`56.2%`), and `0` `DSP48` slices with `1`-cycle (`4.0 ns` at `250 MHz` nominal) page switching in simulation.
-3. **Universal $\le 64$-bit joint-mode minterm synthesis**: Shows joint-mode minterm lookup dominates marginal bit-plane DiffLogic rounding on correlated branches and packs $K = \lfloor 64 / \lceil \log_2 |V| \rceil \rfloor$ subword tokens into one `uint64` word (`16b × 4 = 64b` for `|V| = 65,536`; `18b × 3 = 54b` for `|V| = 248,320`).
+3. **Universal $\le 64$-bit joint-mode minterm synthesis**: Shows joint-mode minterm lookup dominates marginal bit-plane DiffLogic rounding on correlated branches and packs $K = \lfloor 64 / \lceil \log_2 |V| \rceil \rfloor$ subword tokens into one `uint64` word (`16b × 4 = 64b` for `|V| = 65,536`; `17b × 3 = 51b` for `|V| = 128,000`; `18b × 3 = 54b` for `|V| = 248,320`).
 4. **Oracle-free Split-Conformal + Online ACI crystallization gate**: Pairs a radially regularized latent `JEPA-EBRM` nonconformity score with Split Conformal calibration and Adaptive Conformal Inference (Gibbs and Candès, 2021), recording `0.00%` false crystallization risk and `1.0000` OOD AUROC on shifted traffic where softmax and MC-Dropout baselines record `17.62%–24.28%` false risk.
-5. **`AirMoL` zero-extra-sweep 4-bit NVMe streaming on 2026 hybrid models**: Combines Darwin `F_NOCACHE` `os.pread` 4-bit group-quantized layer streaming with in-RAM hybrid state rollback and online token-`LUT6` burst speculation on `LiquidAI/LFM2.5-350M` (March 2026) and `Qwen/Qwen3.5-0.8B-Base` (February 2026), cutting NVMe disk reads by `2.86×` and `2.74×` at `100.0%` exact token parity while keeping active weight RAM at `8.45%–9.47%` of FP32 model size.
-6. **Polyglot systems suite and live HTTP/SSE server**: Cross-checks the cascade across Python/PyTorch/Triton, Rust `Burn 0.22.1 / CubeCL` Metal, Zig `0.17.1`, Go `1.27.4` SIMD, Julia `1.13.4` Enzyme, and `mol_code_cli.py`.
+5. **`AirMoL` and `Expert-AirMoL` 4-bit NVMe streaming up to `34.66B` Sparse-MoE**: Combines Darwin `F_NOCACHE` `os.pread` 4-bit sharding, router-indexed `.experts.pack4` byte-stride expert reads, hybrid state rollback, and online token-`LUT6` burst speculation across October 2026 `LiquidAI/LFM3-1.7B` (`2.74×` NVMe reduction in `3.79%` of FP32 RAM), `LiquidAI/LFM2.5-8B-A1B` (`8.47B`; `6.90×` NVMe reduction), and `Qwen/Qwen3.6-35B-A3B` (`34.66B`; **`12.30×` NVMe reduction**, **`2,530.7 MB` RAM = `3.83%` of FP16**, **`6.50×` speedup**) at `100.0%` exact token parity.
+6. **Zero-MAC `Sub1Bit-LUT6` vs. `LittleBit` and verifier-gated late-2026 frontier coding cascade**: Replaces the `1.98M` runtime binary MACs of `LittleBit-1 / LittleBit-2` (`0.576` bits per weight; Lee et al., 2025; Lee and Kim, 2026) with zero-MAC `6`-input `LUT6` partial-sum lookup (`< 4 × 10⁻⁶` error, `100.0%` parity under `MoL` target verification in `0` QAT epochs), and outperforms standalone `LittleBit-2 0.55bpw`, `LFM3-1.7B`, `Gemma-4-E2B-it`, `LFM2.5-8B-A1B`, `Qwen3.6-35B-A3B`, and `RouteLLM` across a `48`-task (`16` specifications × `3` waves) coding benchmark (`43.75%` vs. `0.00%–33.33%`) with **`0.00%` broken commits admitted** and **`35,590×` Wave-3 crystallized skill speedup**, backed by five-language polyglot verification.
 
 ### 1.3 Same-house disclosure and provenance boundaries
 
@@ -146,7 +147,13 @@ Figure 3 shows `AirMoL` (`src/clai/frontier/air_mol_streamer.py` and `hf_air_mol
 
 ![Figure 3. AirMoL 4-bit NVMe layer streaming with universal 64-bit token LUT6 speculation.](/figures/lut-adapt/airmol-nvme-speculation.svg)
 
-*Figure 3. `AirMoL` zero-extra-sweep 4-bit NVMe layer streaming with universal `≤64`-bit token `LUT6` speculation on `LiquidAI/LFM2.5-350M` and `Qwen/Qwen3.5-0.8B-Base`. [PNG](/figures/lut-adapt/airmol-nvme-speculation.png) · [Interactive explorer](/living/lut-adapt/#la-run-01).*
+*Figure 3. `AirMoL` zero-extra-sweep 4-bit NVMe layer streaming with universal `≤64`-bit token `LUT6` speculation on `LiquidAI/LFM3-1.7B`, `LiquidAI/LFM2.5-350M`, and `Qwen/Qwen3.5-0.8B-Base`. [PNG](/figures/lut-adapt/airmol-nvme-speculation.png) · [Interactive explorer](/living/lut-adapt/#la-run-01).*
+
+Figure 4 shows `Expert-AirMoL` (`src/clai/frontier/moe_air_mol.py`) and `VerifiedCodeCascade` (`verified_code_cascade.py`). Standard disk-offloaded `AirLLM` sweeps all $E$ experts per MoE layer (`32` in `LiquidAI/LFM2.5-8B-A1B`, `256` in `Qwen/Qwen3.6-35B-A3B`) even though the router activates only $k \ll E$ experts per token (`4/32` and `8/256`). `Expert-AirMoL` partitions each MoE layer into a compact header shard and a fixed-stride `INT4` `.experts.pack4` NVMe file, issuing `F_NOCACHE` `os.pread` reads solely for the active expert union $\mathcal{U}_l$ across the $K+1$ burst positions. For novel synthesis tasks, `VerifiedCodeCascade` gates every commit across Rungs `0–3c` behind a `0.35s`-bounded AST, sandbox execution, and boundary-invariant check $C(z) \in \{0, 1\}$, compiling certified solutions into `BenesLUT6` and canonical AST skill pages.
+
+![Figure 4. Expert-AirMoL router-sparse 4-bit NVMe streaming and Verifier-Gated VerifiedCodeCascade.](/figures/lut-adapt/moe-expert-cascade.svg)
+
+*Figure 4. `Expert-AirMoL` router-sparse 4-bit expert-indexed NVMe streaming (`12.30×` I/O reduction on `Qwen/Qwen3.6-35B-A3B`) and `C(z)`-gated `VerifiedCodeCascade`. [PNG](/figures/lut-adapt/moe-expert-cascade.png) · [Interactive explorer](/living/lut-adapt/#la-run-01).*
 
 ---
 
@@ -216,10 +223,14 @@ Figure 3 shows `AirMoL` (`src/clai/frontier/air_mol_streamer.py` and `hf_air_mol
 | **`5` `AirMoL` 4-Bit + Cold `LUT6` (Reference)** | **`100%`** | **`3.74`** | **`17.12`** | **`130.7 MB`** | **`0.0 MB`** | **`7.51 MB`** | **`11.18`** | **Measured (`F_NOCACHE`)** |
 | **`6` `AirMoL` 4-Bit + Post-Wake (Reference)** | **`100%`** | **`4.27`** | **`15.00`** | **`114.4 MB`** | **`0.0 MB`** | **`7.51 MB`** | **`11.09`** | **Measured (`F_NOCACHE`)** |
 
-### 4.7 Claim LA-7: Pretrained 2026 hybrid models under `AirMoL` (`LFM2.5-350M` & `Qwen3.5-0.8B-Base`)
+### 4.7 Claim LA-7: Pretrained 2026 dense & tri-hybrid models under `AirMoL` (`LFM3-1.7B`, `LFM2.5-350M`, & `Qwen3.5-0.8B-Base`)
 
 | 2026 Checkpoint & Arm | Parity | Tok / Sweep | Chars / Sweep | Sweeps | NVMe Read | Peak Active RAM (`% FP32`) | `tok/s` | Evidence Class |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| `LFM3-1.7B` (Oct 2026) · `AirLLM` 4-Bit (`T=1`) | `100%` | `1.00` | `2.30` | `24.00` | `25.045 GB` | `250.0 MB` (`3.79%`) | `0.53` | Measured (`F_NOCACHE`) |
+| `LFM3-1.7B` (Oct 2026) · `AirLLM` 4-Bit + `PLD` | `100%` | `1.37` | `3.16` | `17.50` | `18.262 GB` | `250.0 MB` (`3.79%`) | `0.73` | Measured (`F_NOCACHE`) |
+| **`LFM3-1.7B` (Oct 2026) · `AirMoL` Cold `LUT6`** | **`100%`** | **`1.55`** | **`3.56`** | **`15.50`** | **`16.175 GB`** | **`250.0 MB` (`3.79%`)** | **`0.81`** | **Measured (`F_NOCACHE`)** |
+| **`LFM3-1.7B` (Oct 2026) · `AirMoL` Post-Wake** | **`100%`** | **`2.74`** | **`6.31`** | **`8.75`** | **`9.131 GB`** | **`250.0 MB` (`3.79%`)** | **`1.32`** | **Measured (`F_NOCACHE`)** |
 | `LFM2.5-350M` · `AirLLM` FP16 (`T=1`) | `100%` | `1.00` | `3.11` | `32.00` | `25.129 GB` | `128.0 MB` (`9.47%`) | `2.21` | Measured (`F_NOCACHE`) |
 | `LFM2.5-350M` · `AirLLM` 4-Bit (`T=1`) | `100%` | `1.00` | `2.73` | `32.00` | `7.071 GB` | `128.0 MB` (`9.47%`) | `2.21` | Measured (`F_NOCACHE`) |
 | `LFM2.5-350M` · `AirLLM` 4-Bit + `PLD` | `100%` | `1.13` | `3.10` | `28.20` | `6.231 GB` | `128.0 MB` (`9.47%`) | `2.71` | Measured (`F_NOCACHE`) |
@@ -230,11 +241,52 @@ Figure 3 shows `AirMoL` (`src/clai/frontier/air_mol_streamer.py` and `hf_air_mol
 | **`Qwen3.5-0.8B` · `AirMoL` Cold `LUT6`** | **`100%`** | **`1.48`** | **`4.02`** | **`16.25`** | **`8.581 GB`** | **`242.5 MB` (`8.45%`)** | **`0.32`** | **Measured (`F_NOCACHE`)** |
 | **`Qwen3.5-0.8B` · `AirMoL` Post-Wake** | **`100%`** | **`2.74`** | **`7.46`** | **`8.75`** | **`4.621 GB`** | **`242.5 MB` (`8.45%`)** | **`1.11`** | **Measured (`F_NOCACHE`)** |
 
-Note the preserved trade-off on `Qwen3.5-0.8B-Base` cold unseen prompts: `AirMoL` reduces NVMe disk reads from `12.674 GB` to `8.581 GB`, yet CPU Gated DeltaNet batch verification of `4` tokens lowers wall-clock throughput (`0.32` vs. `0.53 tok/s`) until online wake-to-`LUT6` crystallization raises acceptance to `2.74 tok/sweep` (`4.621 GB` read, `1.11 tok/s`).
+On October 2026 `LiquidAI/LFM3-1.7B` (`13` short convolutions + `5` sliding-window attention layers + `6` full-attention layers, `|V| = 128,000`), post-wake `AirMoL` reduces NVMe transfer by `2.74×` (`25.045 GB` to `9.131 GB`) and increases decoding speed `2.49×` (`0.53` to `1.32 tok/s`) in `250.0 MB` active weight RAM (`3.79%` of FP32) at `100.0%` lossless parity. Note the preserved trade-off on CPU-bound `Qwen3.5-0.8B-Base` cold unseen prompts: `AirMoL` reduces NVMe disk reads (`12.674 GB` to `8.581 GB`), yet CPU Gated DeltaNet batch verification of `4` tokens lowers wall-clock throughput (`0.32` vs. `0.53 tok/s`) until online wake-to-`LUT6` crystallization raises acceptance to `2.74 tok/sweep` (`1.11 tok/s`).
 
 ### 4.8 Claim LA-8: Live CLI and HTTP/SSE streaming server (`mol_code_cli.py`)
 
-`scripts/mol_code_cli.py` serves `--backend {mamba3,lfm2.5-350m,qwen3.5-0.8b}` and `--air-nvme` over CLI and SSE endpoints (`/v1/health`, `/v1/complete`, `/v1/crystallize`), advancing `RAMB36E2` slot residency from `438/512` to `460/512` live with `18/18` passing `pytest` suites.
+`scripts/mol_code_cli.py` serves `--backend {mamba3,lfm2.5-350m,qwen3.5-0.8b,lfm3-1.7b,lfm2.5-8b-a1b,qwen3.6-35b-a3b}` and `--air-nvme` over CLI and SSE endpoints (`/v1/health`, `/v1/complete`, `/v1/crystallize`), advancing `RAMB36E2` slot residency from `438/512` to `460/512` live with `22/22` passing tests in `tests/`.
+
+### 4.9 Claim LA-9: Frontier Sparse-MoE `Expert-AirMoL` (`LiquidAI/LFM2.5-8B-A1B` `8.47B` & `Qwen/Qwen3.6-35B-A3B` `34.66B`)
+
+| Sparse-MoE Checkpoint & Arm | Parity | Active Experts | Tok / Sweep | NVMe Read / Tok | I/O Reduction | Peak RAM (`% FP16`) | `tok/s` | `est_j / tok` |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `LFM2.5-8B-A1B` · `AirLLM` Dense 4-Bit (`T=1`) | `100%` | `100.00%` | `1.00` | `4.574 GB` | `1.00×` | `1,408.3 MB` (`8.72%`) | `0.28` | `368.80` |
+| `LFM2.5-8B-A1B` · `Expert-AirLLM` (`T=1`) | `100%` | `16.93%` | `1.00` | `1.200 GB` | `3.81×` | `1,408.3 MB` (`8.72%`) | `0.58` | `181.26` |
+| `LFM2.5-8B-A1B` · `Expert-AirMoL` + `PLD` | `100%` | `28.82%` | `1.78` | `0.883 GB` | `5.18×` | `1,408.3 MB` (`8.72%`) | `0.79` | `132.57` |
+| **`LFM2.5-8B-A1B` · `Expert-AirMoL` Cold `LUT6`** | **`100%`** | **`33.91%`** | **`1.85`** | **`1.002 GB`** | **`4.56×`** | **`1,408.3 MB` (`8.72%`)** | **`0.72`** | **`145.42`** |
+| **`LFM2.5-8B-A1B` · `Expert-AirMoL` Post-Wake** | **`100%`** | **`36.46%`** | **`3.00`** | **`0.663 GB`** | **`6.90×`** | **`1,408.3 MB` (`8.72%`)** | **`1.10`** | **`95.67`** |
+| `Qwen3.6-35B-A3B` · `AirLLM` Dense 4-Bit (`T=1`) | `100%` | `100.00%` | `1.00` | `18.159 GB` | `1.00×` | `3,214.7 MB` (`4.86%`) | `0.06` | `1,696.81` |
+| `Qwen3.6-35B-A3B` · `Expert-AirLLM` (`T=1`) | `100%` | `6.35%` | `1.00` | `2.356 GB` | `7.71×` | `2,530.7 MB` (`3.83%`) | `0.22` | `471.87` |
+| `Qwen3.6-35B-A3B` · `Expert-AirMoL` + `PLD` | `100%` | `11.58%` | `1.89` | `1.708 GB` | `10.63×` | `2,530.7 MB` (`3.83%`) | `0.32` | `326.24` |
+| **`Qwen3.6-35B-A3B` · `Expert-AirMoL` Cold `LUT6`** | **`100%`** | **`12.91%`** | **`2.00`** | **`1.722 GB`** | **`10.54×`** | **`2,530.7 MB` (`3.83%`)** | **`0.31`** | **`334.42`** |
+| **`Qwen3.6-35B-A3B` · `Expert-AirMoL` Post-Wake** | **`100%`** | **`14.97%`** | **`2.57`** | **`1.477 GB`** | **`12.30×`** | **`2,530.7 MB` (`3.83%`)** | **`0.39`** | **`267.08`** |
+
+On `Qwen/Qwen3.6-35B-A3B` (`34.66B` parameters, `66.11 GB` FP16 sharded to `18.60 GB` 4-bit `.experts.pack4` files; whole-system macOS `PMU` delta `20,070.18 J`), post-wake `Expert-AirMoL` reduces unbuffered NVMe transfer by **`12.30×`** (`18.159` to `1.477 GB/tok`) and accelerates decoding **`6.50×`** (`0.06` to `0.39 tok/s`) in **`2,530.7 MB` active RAM (`3.83%` of FP16)** at `100.0%` lossless token parity.
+
+### 4.10 Claim LA-10: Sub-1-bit latent factorization (`LittleBit-1 / LittleBit-2`) vs. zero-MAC `Sub1Bit-LUT6`
+
+| Factorization Method (`LFM2.5-8B-A1B` `w1 [1792, 2048]`) | Bits / Weight | Weight SNR | Cosine Sim | `16K` Top-1 Match | Binary MACs / Tok | QAT Epochs | Evidence Class |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| `A` Unrotated `SVD` SVID (`LittleBit-1` PTQ style) | `0.576` (`27.8×`) | `1.76 dB` | `0.5761` | `3.12%` | `1,981,440` | `0` (`5` in paper) | Measured SW |
+| `B` Procrustes `ITQ` SVID (`LittleBit-2` PTQ style) | `0.576` (`27.8×`) | `2.42 dB` | `0.6487` | `10.94%` | `1,981,440` | `0` (`5` in paper) | Measured SW |
+| **`C` `Sub1Bit-LUT6` Table Lookup (`0` MACs, Draft)** | **`0.576` (`27.8×`)** | **`2.42 dB`** | **`0.6487`** | **`10.94%`** | **`0`** | **`0`** | **Measured (`< 4e-6` vs. `B`)** |
+| `D` `Expert-AirMoL` `INT4` Block-64 Target | `4.500` (`3.56×`) | `20.77 dB` | `0.9958` | `82.81%` | `0` (`INT4`) | `0` | Measured SW |
+| **`E` `MoL`: `Sub1Bit-LUT6` Draft + Target Verify** | **`0.576` draft** | **`148.84 dB`** | **`1.0000`** | **`100.00%`** | **`0` draft MACs** | **`0`** | **Measured lossless parity** |
+
+### 4.11 Claim LA-11: `48`-task (`16` specifications × `3` waves) late-2026 frontier coding bakeoff
+
+| Late-2026 System Arm (`48` Tasks = `16` Specs × `3` Waves) | W1 Cold | W2 Adapt | W3 Warm | Overall Pass | Broken Commits | W3 `Rung 0/1` Share | `35B` Calls | Mean W3 Latency |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `A` `LittleBit-2` `Qwen3-8B` `0.55 bpw` QAT (`1`-Shot) | `0.00%` | `0.00%` | `0.00%` | `0.00%` | `100.00%` | `0.00%` | `0.0%` | `19,946 ms` |
+| `B` `LiquidAI/LFM3-1.7B` (Oct 2026 Tri-Hybrid, `1`-Shot) | `18.75%` | `6.25%` | `6.25%` | `10.42%` | `89.58%` | `0.00%` | `0.0%` | `3,561 ms` |
+| `C` `google/gemma-4-E2B-it` (`2026` Hybrid, `1`-Shot) | `6.25%` | `0.00%` | `0.00%` | `2.08%` | `97.92%` | `0.00%` | `0.0%` | `8,886 ms` |
+| `D` `LiquidAI/LFM2.5-8B-A1B` (`8.47B` MoE, `1`-Shot) | `18.75%` | `12.50%` | `12.50%` | `14.58%` | `85.42%` | `0.00%` | `0.0%` | `14,221 ms` |
+| `E` `Qwen/Qwen3.6-35B-A3B` (`34.66B` `Expert-AirMoL`, `1`-Shot) | `37.50%` | `31.25%` | `31.25%` | `33.33%` | `66.67%` | `0.00%` | `100.0%` | `98,435 ms` |
+| `F` `RouteLLM` Confidence Router (`LFM3` $\to$ `Gemma4` $\to$ `8B`) | `18.75%` | `6.25%` | `6.25%` | `10.42%` | `89.58%` | `0.00%` | `0.0%` | `3,561 ms` |
+| **`G` `MoL` `VerifiedCodeCascade` (Reference)** | **`43.75%`** | **`43.75%`** | **`43.75%`** | **`43.75%`** | **`0.00%`** | **`43.75%`** | **`62.5%`** | **`143,649 ms` (`2.54 ms` solved)** |
+
+Across the `48`-task protocol and algorithm benchmark (RFC 1982 serial arithmetic, weighted interval sweep-lines, cycle-safe lexicographic topological sort, nanosecond token buckets, CRC-8/ATM and mutated `0xFF` CRC-8, RFC 6901 JSON Pointer `~01` unescaping, hop-bounded Bellman–Ford, `>2⁵³` exact window medians, unrestricted Damerau–Levenshtein, `4×4` Beneš routing, SQL literal parameterization, monotonic-deque subsequence sum, DWARF SLEB128, SHA-256 consistent hashing, and conformal quantiles; whole-system macOS `PMU` delta `126,947.30 J`), `VerifiedCodeCascade` exceeds every standalone model and router on every wave (`43.75%` vs. `33.33%` for `35B`), admits **`0.00%` broken commits** (vs. `66.67%–100.00%`), safely catches all `3` Wave-2/3 adversarial spec-drift lookups via $C(z)$, and collapses mean Wave-3 latency across the `7` crystallized skills from **`90,324.2 ms`** down to **`2.54 ms` (`35,590×` speedup)**.
 
 ---
 
@@ -245,7 +297,8 @@ Note the preserved trade-off on `Qwen3.5-0.8B-Base` cold unseen prompts: `AirMoL
 | **LogicNets** (Umuroglu et al., 2020) | `arXiv:2004.03021` · FPL 2020 | Sparse quantized neural layers compiled into FPGA LUTs. | FPGA LUT and Fmax synthesis. | Static wires need Vivado re-PAR on shift vs. `1`-cycle Beneš + `RAMB36E2`. |
 | **DiffLogic** (Petersen et al., 2022) & **DWN** (Bacellar et al., 2024) | `arXiv:2210.08277` · `arXiv:2410.11112` | Differentiable Boolean gate and weightless LUT networks. | Gate counts and accuracy. | Static routing drops to `52.34%` on VLAN shift and suffers marginal bit-plane chimeras. |
 | **T-MAC** (Wei et al., 2024) & **TeLLMe** (Qiao et al., 2025) | `arXiv:2407.00088` · `arXiv:2504.16266` | Ternary / low-bit matrix products via table lookup on CPU/FPGA. | Latency and FPGA power. | Accelerates linear algebra inside a model gear; does not bypass model invocation. |
-| **FrugalGPT** (Chen et al., 2023) & **RouteLLM** (Ong et al., 2024) | `arXiv:2305.05176` · `arXiv:2406.18665` | Weak-to-strong LLM cascades and preference routers. | API dollar price vs. quality. | Model-to-model routing only; no `LUT6` lookup floor or downward compilation. |
+| **LittleBit** (Lee et al., 2025) & **LittleBit-2** (Lee and Kim, 2026) | `arXiv:2506.13771` · `arXiv:2603.00042` | Sub-1-bit (`0.1–0.58` bits/weight) binary latent factorization via `SVD` / `ITQ` + `5`-epoch QAT. | Compression (`11.6×–31×`), PPL, and QAT accuracy. | Unpacks bitpacks to dense runtime binary MACs and drops to `0.00%` on exact coding (`Claim LA-11`); `Sub1Bit-LUT6` uses `0` binary MACs and `MoL` restores `100.0%` parity in `0` QAT epochs. |
+| **FrugalGPT** (Chen et al., 2023) & **RouteLLM** (Ong et al., 2024) | `arXiv:2305.05176` · `arXiv:2406.18665` | Weak-to-strong LLM cascades and preference routers. | API dollar price vs. quality. | Lacks a deterministic $C(z)$ gate (`89.58%` broken commits in `Claim LA-11`) and has no `LUT6` downward compiler. |
 | **GreenServ** (2026) & **VoltanaLLM** (2025) | `arXiv:2601.17551` · `arXiv:2509.04827` | Multi-LLM bandit routing and frequency-scaled serving. | Authors' GPU Wh (`Zeus` / `pyNVML`). | Optimizes GPU serving; this reference compiles wakes into `0`-FLOP `LUT6` pages (`est_j`). |
 | **Medusa** (2024), **EAGLE-2** (2024), **HCSpec** (2026) | `arXiv:2401.10774` · `arXiv:2406.16858` · ACL 2026 | Neural MLP, draft-tree, and cascade speculative drafters. | Wall-clock speedup. | Require draft FLOPs and weight reads vs. `0`-FLOP `uint64` `LUT6` pages. |
 | **PLD** (Saxena, 2023) & **REST** (He et al., 2024) | GitHub · `arXiv:2311.08252` | Zero-FLOP prompt n-gram and datastore suffix-trie drafters. | Latency speedup (`0` FLOPs). | `PLD` misses off-prompt tokens; `REST` uses variable tries vs. `RAMB36E2` pages. |
@@ -258,7 +311,7 @@ Note the preserved trade-off on `Qwen3.5-0.8B-Base` cold unseen prompts: `AirMoL
 
 **Internal and construct validity.** Under uniform random noise or per-step adversarial churn ($\Delta T = 1$), Proposition 1 gives zero downward compilation savings and falls back to `1.00 tok/sweep`. Lossless parity (`100.0%`) guarantees bit-for-bit agreement with greedy target decoding without raising the capability ceiling of a `350M` or `0.8B` base checkpoint.
 
-**Measurement validity and not claimed.** Every joule number in this study is an analytical `est_j` figure (`measured_j = None`). Yosys `0.71+` and Verilator `5.054` establish structural `xck26` netlist synthesis and `CPI = 1` cycle simulation, not Vivado post-PAR `250 MHz` timing closure and not physical KV260 rail watts (`board_metered = false`). Silicon energy leadership, promotion of `ModelGenerated` outputs to `Deterministic`, and measured `70B` runs (`air_mol_nvme_baselines.csv` reports analytical `70B` projections only) are not claimed.
+**Measurement validity and not claimed.** Per-task joule numbers (`est_j/VC`, `est_j/tok`, `est_mJ/Byte`) are analytical `est_j` figures (`measured_j = None`), and macOS `PMU` cumulative deltas include whole-system display, SSD, and OS background load rather than isolated chip-rail watts. Yosys `0.71+` and Verilator `5.054` establish structural `xck26` netlist synthesis and `CPI = 1` cycle simulation, not Vivado post-PAR `250 MHz` timing closure and not physical KV260 rail watts (`board_metered = false`). Silicon energy leadership, promotion of `ModelGenerated` outputs to `Deterministic`, full repository-scale `SWE-bench` evaluation beyond the `48`-task contract benchmark, and measured `70B` runs (`air_mol_nvme_baselines.csv` reports analytical `70B` projections beyond the measured `34.66B` `Qwen3.6-35B-A3B` runs) are not claimed.
 
 | ID | Claim | Exact Disproof / Falsifier Condition |
 | :--- | :--- | :--- |
@@ -268,8 +321,11 @@ Note the preserved trade-off on `Qwen3.5-0.8B-Base` cold unseen prompts: `AirMoL
 | **`LA-F4`** | `Claim LA-4` (Conformal ACI) | `scripts/run_frontier_benchmarks.py` exceeds target false risk $\alpha = 0.02$ on shifted traffic or stamps `Deterministic`. |
 | **`LA-F5`** | `Claim LA-5` (Byte speculation) | `scripts/run_code_corpus_benchmark.py` yields `< 100.0%` exact byte parity vs. greedy `Mamba3CodeLM` on `48` unseen prompts. |
 | **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` under `F_NOCACHE` fails `100%` parity or reads more NVMe bytes than `AirLLM` 4-Bit `T=1`. |
-| **`LA-F7`** | `Claim LA-7` (2026 HF `AirMoL`) | `scripts/run_hf_air_mol_pretrained.py` or `scripts/run_hf_qwen35_air_mol.py` diverges by $\ge 1$ BPE token from greedy target. |
-| **`LA-F8`** | `Claim LA-8` (Regression suite) | `pytest -v` fails any of the `18` test suites in `tests/`. |
+| **`LA-F7`** | `Claim LA-7` (2026 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`, `scripts/run_hf_air_mol_pretrained.py`, or `scripts/run_hf_qwen35_air_mol.py` diverges by $\ge 1$ BPE token from greedy target. |
+| **`LA-F8`** | `Claim LA-8` (Regression suite) | `pytest -v` fails any of the `22` tests in `tests/`. |
+| **`LA-F9`** | `Claim LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` diverges from `100%` token parity or reads more NVMe bytes than `AirLLM` or `Expert-AirLLM`. |
+| **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` exceeds `1e-3` max error vs. dense `ITQ` binary matmul or fails `100%` verified parity. |
+| **`LA-F11`** | `Claim LA-11` (`48`-Task Bakeoff) | `scripts/run_frontier_ai_bakeoff.py` admits `> 0%` broken commits or admits a stale Wave-1 skill under Wave-2 spec mutation. |
 
 ---
 
@@ -283,23 +339,28 @@ Note the preserved trade-off on `Qwen3.5-0.8B-Base` cold unseen prompts: `AirMoL
 <li>Dao, T., and Gu, A. (2024). Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality. <em>ICML 2024</em>, <em>arXiv:2405.21060</em>.</li>
 <li>Furao, S., and Hasegawa, O. (2006). An incremental network for on-line unsupervised classification and topology learning (SOINN). <em>Neural Networks</em>, 19(1):90–106.</li>
 <li>Gibbs, I., and Candès, E. (2021). Adaptive Conformal Inference Under Distribution Shift. <em>NeurIPS 2021</em>, <em>arXiv:2106.00170</em>.</li>
+<li>Google Gemma Team (2026). <code>google/gemma-4-E2B-it</code> On-Device Hybrid Instruction Model Card (2026). <a href="https://huggingface.co/google/gemma-4-E2B-it">huggingface.co/google/gemma-4-E2B-it</a>.</li>
 <li>GreenServ (2026). Energy-Efficient Context-Aware Dynamic Routing for Multi-Model LLM Inference. <em>ICPE 2026</em>, <em>arXiv:2601.17551</em>.</li>
 <li>HCSpec (2026). Two-Tier Horizontal Cascade Speculative Decoding. <em>ACL 2026</em>, <a href="https://doi.org/10.18653/v1/2026.acl-long.353">doi:10.18653/v1/2026.acl-long.353</a>.</li>
 <li>He, Z., Zhong, Z., Cai, T., Lee, J. D., and He, D. (2024). REST: Retrieval-Based Speculative Decoding. <em>NAACL 2024</em>, <em>arXiv:2311.08252</em>.</li>
 <li>Hein, M., Andriushchenko, M., and Bitterwolf, J. (2019). Why ReLU Networks Yield High-Confidence Predictions Far Away From the Training Data. <em>CVPR 2019</em>, <em>arXiv:1812.05720</em>.</li>
 <li>Horowitz, M. (2014). Computing's Energy Problem (and What We Can Do About It). <em>IEEE ISSCC 2014</em>.</li>
+<li>Lee, H., Kim, M., Baek, S., Kim, J., Hwang, S., Shin, J., Lee, J., and Kim, E. (2025). LittleBit: Ultra Low-Bit Quantization via Latent Matrix Factorization. <em>NeurIPS 2025</em>, <em>arXiv:2506.13771</em>.</li>
+<li>Lee, H., and Kim, E. (2026). LittleBit-2: Pushing the Frontier of Extreme LLMs Quantization into 0.1-Bit (<code>SamsungLabs/LittleBit</code>). <em>ICML 2026</em>, <em>arXiv:2603.00042</em>.</li>
 <li>Lee, T. T. (1988). Nonblocking Copy Networks for Multicast Packet Switching. <em>IEEE JSAC</em>, 6(9):1455–1467.</li>
 <li>Lei, J., G'Sell, M., Rinaldo, A., Tibshirani, R. J., and Wasserman, L. (2018). Distribution-Free Predictive Inference for Regression. <em>JASA</em>, 113(523):1094–1111.</li>
 <li>Leviathan, Y., Kalman, M., and Matias, Y. (2023). Fast Inference from Transformers via Speculative Decoding. <em>ICML 2023</em>, <em>arXiv:2211.17192</em>.</li>
 <li>Li, Y., Wei, F., Zhang, C., and Zhang, H. (2024). EAGLE-2: Faster Inference of Language Models with Dynamic Draft Trees. <em>EMNLP 2024</em>, <em>arXiv:2406.16858</em>.</li>
-<li>Liquid AI (2026). <code>LiquidAI/LFM2.5-350M</code> Open-Weights Hybrid Model Card (March 2026). <a href="https://huggingface.co/LiquidAI/LFM2.5-350M">huggingface.co/LiquidAI/LFM2.5-350M</a>.</li>
+<li>Liquid AI (2026a). <code>LiquidAI/LFM2.5-350M</code> and <code>LiquidAI/LFM2.5-8B-A1B</code> Hybrid and Sparse-MoE Open-Weights Model Cards. <a href="https://huggingface.co/LiquidAI/LFM2.5-8B-A1B">huggingface.co/LiquidAI/LFM2.5-8B-A1B</a>.</li>
+<li>Liquid AI (2026b). <code>LiquidAI/LFM3-1.7B</code> Tri-Hybrid Open-Weights Model Card (October 23, 2026). <a href="https://huggingface.co/LiquidAI/LFM3-1.7B">huggingface.co/LiquidAI/LFM3-1.7B</a>.</li>
 <li>Liu, W., Wang, X., Owens, J., and Li, Y. (2020). Energy-based Out-of-distribution Detection. <em>NeurIPS 2020</em>, <em>arXiv:2010.03759</em>.</li>
 <li>lyogavin (2023). AirLLM: Layer-wise LLM Inference on Memory-Constrained Hardware. <a href="https://github.com/lyogavin/airllm">github.com/lyogavin/airllm</a>.</li>
 <li>Ong, I., et al. (2024). RouteLLM: Learning to Route LLMs with Preference Data. <em>ICLR 2025</em>, <em>arXiv:2406.18665</em>.</li>
 <li>Open Interface Engineering (2026). Metered Commit Gates; Task Satiation vs. Aggregate Rebound; The Reality Code Engine; RCE-JEPA; RCE Compile. <a href="https://research.openie.dev/">research.openie.dev</a> <code>[same house]</code>.</li>
 <li>Petersen, F., Borgelt, C., Kuehne, H., and Deussen, O. (2022). Deep Differentiable Logic Gate Networks. <em>NeurIPS 2022</em>, <em>arXiv:2210.08277</em>.</li>
 <li>Qiao, Y., et al. (2025). TeLLMe: An Energy-Efficient Ternary LLM Accelerator on Edge FPGAs. <em>arXiv:2504.16266</em>.</li>
-<li>Qwen Team (2026). <code>Qwen/Qwen3.5-0.8B-Base</code> Hybrid Gated DeltaNet + Attention Model Card (February 2026). <a href="https://huggingface.co/Qwen/Qwen3.5-0.8B-Base">huggingface.co/Qwen/Qwen3.5-0.8B-Base</a>.</li>
+<li>Qwen Team (2026a). <code>Qwen/Qwen3.5-0.8B-Base</code> Hybrid Gated DeltaNet + Attention Model Card (February 2026). <a href="https://huggingface.co/Qwen/Qwen3.5-0.8B-Base">huggingface.co/Qwen/Qwen3.5-0.8B-Base</a>.</li>
+<li>Qwen Team (2026b). <code>Qwen/Qwen3.6-35B-A3B</code> Sparse-MoE Hybrid Gated DeltaNet + Attention Model Card (2026). <a href="https://huggingface.co/Qwen/Qwen3.6-35B-A3B">huggingface.co/Qwen/Qwen3.6-35B-A3B</a>.</li>
 <li>Saxena, A. (2023). Prompt Lookup Decoding. <a href="https://github.com/apoorvumang/prompt-lookup-decoding">github.com/apoorvumang/prompt-lookup-decoding</a>.</li>
 <li>Simon, H. A., and Kadane, J. B. (1975). Optimal Problem-Solving Search: All-or-None Solutions. <em>Artificial Intelligence</em>, 6(3):235–247.</li>
 <li>Thompson, C. D. (1978). Generalized Connection Networks for Parallel Processor Intercommunication. <em>IEEE Trans. Comput.</em>, C-27(12):1119–1125.</li>
@@ -314,7 +375,7 @@ Note the preserved trade-off on `Qwen3.5-0.8B-Base` cold unseen prompts: `AirMoL
 
 ## Appendix A. Reproducibility
 
-From a checkout of [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 9dbf745`):
+From a checkout of [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit a5e9bc1`):
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
@@ -324,6 +385,10 @@ PYTHONPATH=src .venv/bin/python scripts/run_frontier_benchmarks.py
 PYTHONPATH=src .venv/bin/python scripts/verify_paged_bram_rtl.py
 PYTHONPATH=src .venv/bin/python scripts/run_code_corpus_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_air_mol_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_hf_lfm3_air_mol.py
 PYTHONPATH=src .venv/bin/python scripts/run_hf_air_mol_pretrained.py
 PYTHONPATH=src .venv/bin/python scripts/run_hf_qwen35_air_mol.py
+PYTHONPATH=src .venv/bin/python scripts/run_hf_moe_8b_35b_air_mol.py
+PYTHONPATH=src .venv/bin/python scripts/run_sub1bit_lut_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_frontier_ai_bakeoff.py
 ```

@@ -1,6 +1,6 @@
 ---
 title: "Compilation descendante vers LUT6 dans une cascade Mixture of Limits : tissus booléens routés par Beneš, portes d'éveil conformes et diffusion NVMe 4 bits par couche"
-deck: "Une cascade Mixture of Limits (mélange de limites) à quatre échelons qui essaie d'abord des circuits paginés à tables de correspondance à 6 entrées (LUT6) à zéro opération en virgule flottante (FLOP), ne réveille Mamba-3 et les modèles hybrides 2026 diffusés en 4 bits via Non-Volatile Memory Express (NVMe) qu'en cas d'échec, et compile de manière descendante les éveils certifiés dans des pages de Block RAM de 36 Kbits (RAMB36E2) routées par réseau de Beneš. Les temps muraux, les nombres d'octets lus sans tampon sous Darwin F_NOCACHE (lecture de fichier non tamponnée), la mémoire vive (RAM) active et les simulations au niveau transfert de registres (RTL) Yosys/Verilator sur xck26 sont rapportés depuis openIE-dev/lut-adapt-ai au commit 9dbf745. Les chiffres d'énergie sont des estimations analytiques est_j ; aucune puissance sur carte n'a été mesurée."
+deck: "Une cascade Mixture of Limits (mélange de limites) à quatre échelons qui essaie d'abord des circuits paginés à tables de correspondance à 6 entrées (LUT6) à zéro opération en virgule flottante (FLOP), ne réveille Mamba-3 et les modèles hybrides 2026 diffusés en 4 bits via Non-Volatile Memory Express (NVMe) qu'en cas d'échec, et compile de manière descendante les éveils certifiés dans des pages de Block RAM de 36 Kbits (RAMB36E2) routées par réseau de Beneš. Les temps muraux, les nombres d'octets lus sans tampon sous Darwin F_NOCACHE (lecture de fichier non tamponnée), la mémoire vive (RAM) active et les simulations au niveau transfert de registres (RTL) Yosys/Verilator sur xck26 sont rapportés depuis openIE-dev/lut-adapt-ai au commit a5e9bc1. Les chiffres d'énergie sont des estimations analytiques est_j ; aucune puissance sur carte n'a été mesurée."
 lang: "fr"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-4-bit-nvme-layer-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*Révision 11dbc8c, 22 novembre 2026. Implémentation de référence et artefacts : [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) au commit [`9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0`](https://github.com/openIE-dev/lut-adapt-ai/tree/9dbf745f6ea7aecba26a70482138e0f2d8bbe9c0). Synthèse des données : [/data/#lut-adapt](/data/#lut-adapt). PDF LaTeX : [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([source](/pdfs/latex/lut-adapt.tex)).*
+*Révision 11dbc8c, 22 novembre 2026. Implémentation de référence et artefacts : [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) au commit [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb). Synthèse des données : [/data/#lut-adapt](/data/#lut-adapt). PDF LaTeX : [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([source](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -359,7 +359,7 @@ On notera le compromis explicitement préservé sur les invites inédites à fro
 
 ## Annexe A. Reproductibilité
 
-À partir d'une copie locale du dépôt [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 9dbf745`) :
+À partir d'une copie locale du dépôt [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit a5e9bc1`) :
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
