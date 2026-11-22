@@ -1,83 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OpenIE Living Papers · Hub</title>
-<link rel="stylesheet" href="css/living.css"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Interactive figures, simulators, and WebAssembly / JavaScript observatories accompanying the research papers on research.openie.dev." />
+  <link rel="canonical" href="https://research.openie.dev/living/" />
+  <link rel="describedby" type="text/markdown" href="/llms.txt" />
+  <link rel="alternate" type="application/json" href="/catalog.json" />
+  <title>Interactive Living Figures Hub | OpenIE Research</title>
+  <link rel="stylesheet" href="css/living.css" />
+  <script src="/webmcp-tools.js" defer></script>
 </head>
 <body>
 <header class="site-header">
   <div class="inner">
-    <div class="brand">OpenIE · living papers</div>
-    <nav class="nav">
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none;">OpenIE · living figures</a></div>
+    <nav class="nav" aria-label="Living figures navigation">
+      <a href="/">Catalog</a>
       <a href="index.html" class="active">Hub</a>
-      <a href="ni/index.html">P1 · NI Commit Law</a>
-      <a href="satiation/index.html">P2 · Satiation</a>
-      <a href="mol/index.html">P3 · Mixture of Limits</a>
+      <a href="deterministic-null/index.html">Deterministic Null</a>
+      <a href="lut-adapt/index.html">LUT6 &amp; AirMoL</a>
+      <a href="ni/index.html">NI Commit Gate</a>
       <a href="fpga-sim/index.html">FPGA sim</a>
       <a href="fpga-sim/alchitry/index.html">Alchitry guide</a>
-      <a href="README.md">README</a>
+      <a href="satiation/index.html">Satiation</a>
+      <a href="mol/index.html">Mixture of Limits</a>
+      <a href="ai-reads-human/index.html">AI Reads Human</a>
+      <a href="/data/">Data</a>
       <a href="/glossary/">Glossary</a>
       <a href="/about/">About</a>
-      <a href="pdf-twin/index.html">PDF twin v0</a>
-      <a href="pdf-twin-map.md">PDF twin map</a>
     </nav>
   </div>
 </header>
 <main>
   <div class="hero">
-    <h1>Living paper figures (P0)</h1>
-    <p class="deck-line">Interactive web is canonical. The PDF twin uses the same figure IDs plus static export notes.</p>
-    <p class="subtitle">Prototype figure pages for the whitepapers under <code>artifacts/FIGURE_INVENTORY.md</code>. No paid services.</p>
+    <h1>Interactive living figures</h1>
+    <p class="deck-line">Interactive instruments accompanying the studies at <a href="/">research.openie.dev</a>. Every simulator runs locally in the browser with URL-addressable parameters and zero paid services.</p>
+    <p class="subtitle">Machine-readable manifest: <a href="/catalog.json">/catalog.json</a> · <a href="/llms.txt">/llms.txt</a> · <a href="/data/">/data/</a>.</p>
   </div>
   <div class="hub-cards">
+    <a class="hub-card" href="deterministic-null/index.html">
+      <h2>Deterministic Null Control Observatory</h2>
+      <p>Switch across <code>exp-002</code> Track-B (<code>1,190</code> unique external instances), <code>exp-001</code> Track-A (<code>2,840</code> instances), and <code>6</code> multi-file repositories; simulate Zipfian online crystallization and inspect <code>OpenTimestamps</code> + <code>drand</code> proofs. <strong>URL:</strong> <span>/living/deterministic-null/</span></p>
+    </a>
+    <a class="hub-card" href="lut-adapt/index.html">
+      <h2>Downward LUT6 Compilation &amp; AirMoL</h2>
+      <p>Interactive Simon–Kadane crystallization horizon calculator, <code>xck26</code> Beneš + <code>RAMB36E2</code> RTL synthesis table, and Darwin <code>F_NOCACHE</code> 4-bit NVMe streaming explorer. <strong>URL:</strong> <span>/living/lut-adapt/</span></p>
+    </a>
     <a class="hub-card" href="ni/index.html">
-      <h2>Paper 1 · Notational Intelligence as Commit Law</h2>
-      <p>P0 shells + <code>ni-3d-01</code> canvas orbit stub + shared (incl. upgraded <code>shared-inf-02</code>).</p>
+      <h2>Paper 1 · Notational Intelligence Commit Gate</h2>
+      <p>Commit-gate shells, <code>ni-3d-01</code> 3D canvas orbit explorer, and allow/refuse receipt inspection. <strong>URL:</strong> <span>/living/ni/</span></p>
     </a>
     <a class="hub-card" href="fpga-sim/index.html">
-      <h2>Stage B · FPGA / LUT simulator</h2>
-      <p>Rust to WebAssembly (WASM) commit gate with WebGPU look-up table (LUT) and trace paint. Simulated agreement with seed-1 golden. Teach the board next: <a href="fpga-sim/alchitry/">Alchitry guide</a>. <strong>URL:</strong> <span>/living/fpga-sim/</span></p>
+      <h2>Stage B · FPGA / LUT Simulator (WASM + WebGPU)</h2>
+      <p>Rust-to-WebAssembly commit gate with WebGPU look-up table and trace paint, verified against seed-1 golden vectors. <strong>URL:</strong> <span>/living/fpga-sim/</span></p>
     </a>
-
     <a class="hub-card" href="fpga-sim/alchitry/index.html">
       <h2>Guide · Alchitry Pt V2 (Stage C)</h2>
-      <p>Detect, build, flash, and capture UART for the Wise Computer Automation (WCA) seed-1 commit-gate. Decision sequence agrees with software. Energy is unmetered. Open the guide, then read <a href="fpga-sim/stage-c/board-evidence.md">Stage C evidence</a>.</p>
+      <p>Detect, build, flash, and capture UART for the Wise Computer Automation (WCA) seed-1 commit gate. Decision sequence agrees with software; Pt V2 energy is unmetered. <strong>URL:</strong> <span>/living/fpga-sim/alchitry/</span></p>
     </a>
     <a class="hub-card" href="satiation/index.html">
-      <h2>Paper 2 · Satiation &amp; Scarcity after Free AI</h2>
-      <p>P0 shells + <code>sat-3d-01</code> bliss surface stub + shared honesty legend.</p>
+      <h2>Task Satiation vs. Aggregate Rebound</h2>
+      <p>Interactive <code>sat-3d-01</code> bliss surface and task-satiation vs. rebound figures with shared measurement labels. <strong>URL:</strong> <span>/living/satiation/</span></p>
     </a>
-        <a class="hub-card" href="mol/index.html">
-      <h2>P3 · Mixture of Limits</h2>
-      <p>Floors where more bits stop buying outcomes. Soft-ref constructive existence only. Analytical estimates are not board power. <code>board_synth_claimed=false</code>. No meter reading is reported here. <strong>URL:</strong> <span>/living/mol/</span></p>
+    <a class="hub-card" href="mol/index.html">
+      <h2>Mixture of Limits Cascade</h2>
+      <p>Cheapest-first cascade rungs where extra compute stops changing completion. Analytical estimates only (<code>board_synth_claimed=false</code>). <strong>URL:</strong> <span>/living/mol/</span></p>
+    </a>
+    <a class="hub-card" href="ai-reads-human/index.html">
+      <h2>"AI" Reads Human · Impedance Tax</h2>
+      <p>20,000-record parse-time and token-count comparison across human-readable formats vs. fixed binary layouts. <strong>URL:</strong> <span>/living/ai-reads-human/</span></p>
     </a>
     <a class="hub-card" href="mei/index.html">
-      <h2>P4 · Metabolic Intelligence</h2>
-      <p>Companion figures for the budget-native class. Estimates are not board measured_j. <strong>URL:</strong> <span>/living/mei/</span></p>
+      <h2>Metabolic Intelligence</h2>
+      <p>Companion figures for fixed-energy-envelope scheduling. Analytical estimates, not board <code>measured_j</code>. <strong>URL:</strong> <span>/living/mei/</span></p>
     </a>
     <a class="hub-card" href="spellcheck/index.html">
-      <h2>P5 · Spell Check is Global</h2>
-      <p>Companion page, not a meter. Spell check is the existence proof of the automation path. Access framing is not a census.</p>
+      <h2>Spell Check is Global</h2>
+      <p>Dated historical price and bundling figures illustrating marginal-cost commoditization. <strong>URL:</strong> <span>/living/spellcheck/</span></p>
     </a>
     <a class="hub-card" href="pdf-twin/index.html">
-      <h2>PDF twin v0</h2>
-      <p>Print-CSS HTML with same figure IDs/captions. Browser Print → Save as PDF.</p>
+      <h2>PDF Twin v0</h2>
+      <p>Print-CSS HTML shell with figure IDs and static export notes. <strong>URL:</strong> <span>/living/pdf-twin/</span></p>
     </a>
   </div>
   <section class="figure-shell" style="margin-top:2rem">
     <header>
-      <div class="title-row"><h2>How to open</h2></div>
-      <div class="chips"><span class="chip v0">V0 shell</span></div>
+      <div class="title-row"><h2>Programmatic &amp; Local Offline Use</h2></div>
+      <div class="chips"><span class="chip v0">Agent + Offline Ready</span></div>
     </header>
-    <pre class="code"># From this site tree: public/living
+    <pre class="code"># Local static preview of public/living:
 python3 -m http.server 8765
-# then open http://127.0.0.1:8765/</pre>
-    <p class="caption">ES modules require a local HTTP server (not <code>file://</code>). 3D: <code>/ni/#ni-3d-01</code>, <code>/satiation/#sat-3d-01</code>. PDF twin: <a href="pdf-twin/index.html">pdf-twin/</a>. See <a href="README.md">README.md</a>.</p>
+# Deep-link simulator states directly via URL query parameters:
+https://research.openie.dev/living/deterministic-null/?track=exp002&amp;T=600&amp;hit=0.72
+https://research.openie.dev/living/lut-adapt/?p0=0.75&amp;dt=1500&amp;model=lfm&amp;arm=wake</pre>
+    <p class="caption">Browser agents with WebMCP (<code>document.modelContext</code>) receive named catalog and simulator tools automatically via <code>/webmcp-tools.js</code>. See <a href="README.md">README.md</a> and <a href="pdf-twin-map.md">pdf-twin-map.md</a>.</p>
   </section>
 </main>
-<footer class="footer">OpenIE / wca-lut-edge · living figures · Sep 30, 2026 EDT · inventory IDs only</footer>
+<footer class="footer">OpenIE Research · <a href="/">Catalog</a> · <a href="/data/">Data and code</a> · <a href="/llms.txt">llms.txt</a></footer>
 </body>
 </html>

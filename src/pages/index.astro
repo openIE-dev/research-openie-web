@@ -1,26 +1,68 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import homeJsonLd from '../data/home-jsonld.json';
-import { studies } from '../data/studyList';
+import { getExportedStudies } from '../lib/markdownExport';
 
-const projects = studies.map((s) => ({
-  id: s.id, title: s.title, deck: s.summary, status: s.kind, group: s.group,
-  about: s.aboutPath, paper: s.path, pdf: s.pdfPath, figures: s.figures, tags: s.keywords.slice(0, 4),
+const exported = await getExportedStudies();
+
+const projects = exported.map((s) => ({
+  id: s.id,
+  title: s.title,
+  deck: s.summary,
+  status: s.kind,
+  group: s.group,
+  about: s.aboutPath,
+  paper: s.path,
+  markdown: s.markdownPath,
+  pdf: s.pdfPath,
+  figures: s.figures,
+  hasLiving: s.figures.startsWith('/living/') && s.figures !== '/living/',
+  tags: s.keywords.slice(0, 4),
+  allKeywords: s.keywords,
+  sections: s.headings.map((h) => ({ slug: h.slug, text: h.text })),
 }));
 
 const catalogLd = {
   ...homeJsonLd,
-  '@graph': homeJsonLd['@graph'].map((g: any) => g['@type'] === 'CollectionPage'
-    ? { ...g, mainEntity: { '@type': 'ItemList', itemListElement: studies.map((s, i) => ({ '@type': 'ListItem', position: i + 1, url: s.url, name: s.title })) } }
-    : g),
+  '@graph': homeJsonLd['@graph'].map((g: any) => {
+    if (g['@type'] === 'CollectionPage') {
+      return {
+        ...g,
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: exported.map((s, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            url: s.url,
+            name: s.title,
+          })),
+        },
+      };
+    }
+    if (g['@type'] === 'WebSite') {
+      return {
+        ...g,
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: 'https://research.openie.dev/?q={search_term_string}',
+          },
+          'query-input': 'required name=search_term_string',
+        },
+      };
+    }
+    return g;
+  }),
 };
+
 const research = projects.filter((p) => p.group !== 'product');
 const products = projects.filter((p) => p.group === 'product');
 ---
 
-<Layout title="Research catalog" description="OpenIE research, free to read and reuse, with a web edition, a PDF and interactive figures for each paper.">
+<Layout title="Research catalog" description="OpenIE research, free to read and reuse, with a web edition, clean Markdown, a PDF and interactive figures for each paper.">
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(catalogLd)} />
-  <section class="px-6 md:px-10 pt-16 md:pt-24 pb-12 max-w-7xl mx-auto">
+  <section class="px-6 md:px-10 pt-16 md:pt-24 pb-10 max-w-7xl mx-auto">
     <p class="section-label mb-4">research.openie.dev</p>
     <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-brand-white max-w-3xl">
       Research catalog
@@ -36,6 +78,9 @@ const products = projects.filter((p) => p.group === 'product');
       <a href="/living/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:bg-brand-slate/10 transition-colors">
         Figures hub
       </a>
+      <a href="/data/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:bg-brand-slate/10 transition-colors">
+        Data and code
+      </a>
       <a href="/glossary/" class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">
         Glossary
       </a>
@@ -46,6 +91,42 @@ const products = projects.filter((p) => p.group === 'product');
         Alchitry guide
       </a>
     </div>
+
+    <form id="catalog-search-form" role="search" aria-label="Search research studies, keywords, and sections" class="mt-8 glass-card p-4 md:p-5" onsubmit="return false;">
+      <div class="flex flex-col md:flex-row gap-3 md:items-center">
+        <div class="flex-1 relative">
+          <label for="catalog-search" class="sr-only">Search titles, summaries, keywords, and paper sections</label>
+          <input
+            id="catalog-search"
+            name="q"
+            type="search"
+            autocomplete="off"
+            placeholder="Search papers, sections, and terms (e.g. deterministic null, LUT6, Good-Turing, drand, JEPA, KV260) — press /"
+            class="w-full font-body text-sm text-brand-white bg-brand-dark/60 border border-brand-border rounded-md px-3.5 py-2.5 focus:outline-none focus:border-brand-amber"
+          />
+        </div>
+        <button
+          id="catalog-search-clear"
+          type="button"
+          hidden
+          class="font-mono text-xs text-brand-slate border border-brand-border px-3 py-2 rounded-md cursor-pointer bg-transparent hover:text-brand-white"
+        >
+          Clear
+        </button>
+      </div>
+      <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by category">
+          <button type="button" data-filter-group="all" aria-pressed="true" class="cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-amber text-brand-amber cursor-pointer bg-transparent">All ({projects.length})</button>
+          <button type="button" data-filter-group="research" aria-pressed="false" class="cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate cursor-pointer bg-transparent hover:text-brand-white">Research</button>
+          <button type="button" data-filter-group="essay" aria-pressed="false" class="cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate cursor-pointer bg-transparent hover:text-brand-white">Essays &amp; Economics</button>
+          <button type="button" data-filter-group="product" aria-pressed="false" class="cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate cursor-pointer bg-transparent hover:text-brand-white">White papers</button>
+          <button type="button" data-filter-group="living" aria-pressed="false" class="cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate cursor-pointer bg-transparent hover:text-brand-white">Interactive (/living/)</button>
+        </div>
+        <p id="catalog-search-status" aria-live="polite" class="font-mono text-[11px] text-brand-gray m-0">
+          Showing all {projects.length} studies
+        </p>
+      </div>
+    </form>
   </section>
 
   <section id="catalog" class="px-6 md:px-10 pb-12 max-w-7xl mx-auto">
@@ -56,22 +137,34 @@ const products = projects.filter((p) => p.group === 'product');
       </div>
       <p class="font-mono text-[11px] text-brand-gray hidden sm:block">FPGA board result: KV260, in Metered Commit Gates only</p>
     </div>
-    <div class="grid md:grid-cols-2 gap-6">
+    <div id="catalog-grid-research" class="grid md:grid-cols-2 gap-6">
       {research.map((p) => (
-        <article class="glass-card p-6 md:p-8 flex flex-col">
+        <article
+          class="glass-card p-6 md:p-8 flex flex-col study-card"
+          data-study-id={p.id}
+          data-study-group={p.group}
+          data-has-living={String(p.hasLiving)}
+          data-study-haystack={`${p.id} ${p.title} ${p.deck} ${p.allKeywords.join(' ')} ${p.sections.map((s) => s.text).join(' ')}`.toLowerCase()}
+          data-study-sections={JSON.stringify(p.sections)}
+          data-study-url={p.paper}
+        >
           <div class="flex items-center justify-between gap-3 mb-4">
             <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-amber">{p.status}</span>
             <span class="font-mono text-[10px] text-brand-gray">{p.id}</span>
           </div>
-          <h3 class="text-xl md:text-2xl text-brand-white mb-3">{p.title}</h3>
+          <h3 class="text-xl md:text-2xl text-brand-white mb-3">
+            <a href={p.paper} class="text-brand-white no-underline hover:text-brand-amber transition-colors">{p.title}</a>
+          </h3>
           <p class="font-body text-sm text-brand-slate leading-relaxed flex-1">{p.deck}</p>
+          <div class="matched-sections hidden mt-4 pt-3 border-t border-brand-border/60 font-mono text-[11px] text-brand-cyan space-y-1"></div>
           <div class="flex flex-wrap gap-2 mt-5 mb-6">
             {p.tags.map((t) => (
-              <span class="font-mono text-[10px] px-2 py-1 rounded border border-brand-border text-brand-gray">{t}</span>
+              <button type="button" data-tag-query={t} class="tag-pill font-mono text-[10px] px-2 py-1 rounded border border-brand-border text-brand-gray hover:text-brand-amber hover:border-brand-amber/50 cursor-pointer bg-transparent transition-colors">{t}</button>
             ))}
           </div>
           <div class="flex flex-wrap gap-3">
             {p.paper && <a href={p.paper} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">Read →</a>}
+            {p.markdown && <a href={p.markdown} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors">Markdown</a>}
             {p.pdf && <a href={p.pdf} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors" download>Download PDF</a>}
             <a href={p.figures} class="font-mono text-xs text-brand-slate no-underline hover:text-brand-white transition-colors">Figures</a>
             <a href={p.about} class="font-mono text-xs text-brand-gray no-underline hover:text-brand-white transition-colors">About</a>
@@ -89,22 +182,34 @@ const products = projects.filter((p) => p.group === 'product');
     </div>
     <div id="metabolic-intelligence" class="mb-6"></div>
     <div id="jouleos"></div>
-    <div class="grid md:grid-cols-2 gap-6">
+    <div id="catalog-grid-products" class="grid md:grid-cols-2 gap-6">
       {products.map((p) => (
-        <article class="glass-card p-6 md:p-8 flex flex-col">
+        <article
+          class="glass-card p-6 md:p-8 flex flex-col study-card"
+          data-study-id={p.id}
+          data-study-group={p.group}
+          data-has-living={String(p.hasLiving)}
+          data-study-haystack={`${p.id} ${p.title} ${p.deck} ${p.allKeywords.join(' ')} ${p.sections.map((s) => s.text).join(' ')}`.toLowerCase()}
+          data-study-sections={JSON.stringify(p.sections)}
+          data-study-url={p.paper}
+        >
           <div class="flex items-center justify-between gap-3 mb-4">
             <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-amber">{p.status}</span>
             <span class="font-mono text-[10px] text-brand-gray">{p.id}</span>
           </div>
-          <h3 class="text-xl md:text-2xl text-brand-white mb-3">{p.title}</h3>
+          <h3 class="text-xl md:text-2xl text-brand-white mb-3">
+            <a href={p.paper} class="text-brand-white no-underline hover:text-brand-amber transition-colors">{p.title}</a>
+          </h3>
           <p class="font-body text-sm text-brand-slate leading-relaxed flex-1">{p.deck}</p>
+          <div class="matched-sections hidden mt-4 pt-3 border-t border-brand-border/60 font-mono text-[11px] text-brand-cyan space-y-1"></div>
           <div class="flex flex-wrap gap-2 mt-5 mb-6">
             {p.tags.map((t) => (
-              <span class="font-mono text-[10px] px-2 py-1 rounded border border-brand-border text-brand-gray">{t}</span>
+              <button type="button" data-tag-query={t} class="tag-pill font-mono text-[10px] px-2 py-1 rounded border border-brand-border text-brand-gray hover:text-brand-amber hover:border-brand-amber/50 cursor-pointer bg-transparent transition-colors">{t}</button>
             ))}
           </div>
           <div class="flex flex-wrap gap-3">
             <a href={p.paper} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">Read →</a>
+            <a href={p.markdown} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors">Markdown</a>
             <a href={p.pdf} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors" download>Download PDF</a>
             <a href={p.figures} class="font-mono text-xs text-brand-slate no-underline hover:text-brand-white transition-colors">Figures</a>
             <a href={p.about} class="font-mono text-xs text-brand-gray no-underline hover:text-brand-white transition-colors">About</a>
@@ -114,13 +219,31 @@ const products = projects.filter((p) => p.group === 'product');
     </div>
   </section>
 
+  <section class="px-6 md:px-10 pb-12 max-w-7xl mx-auto">
+    <div class="glass-card p-6 md:p-8">
+      <p class="section-label mb-3">Agents and search</p>
+      <h2 class="text-xl text-brand-white mb-3">Machine-readable indexes, full-text Markdown, and browser tools</h2>
+      <p class="font-body text-sm text-brand-slate leading-relaxed mb-4">
+        Every study on this site is available as semantic HTML, clean Markdown (<code class="text-brand-cyan">/papers/&lt;id&gt;.md</code> and <code class="text-brand-cyan">/products/&lt;id&gt;.md</code>), a stamped PDF, and structured metadata. Browser agents with WebMCP (<code class="text-brand-cyan">document.modelContext</code>) receive named read and search tools automatically.
+      </p>
+      <div class="flex flex-wrap gap-3 font-mono text-xs">
+        <a href="/llms.txt" class="text-brand-cyan border border-brand-cyan/40 px-3 py-1.5 rounded no-underline hover:bg-brand-cyan/10">/llms.txt</a>
+        <a href="/llms-full.txt" class="text-brand-cyan border border-brand-cyan/40 px-3 py-1.5 rounded no-underline hover:bg-brand-cyan/10">/llms-full.txt</a>
+        <a href="/catalog.json" class="text-brand-amber border border-brand-amber/40 px-3 py-1.5 rounded no-underline hover:bg-brand-amber/10">/catalog.json</a>
+        <a href="/.well-known/agent-card.json" class="text-brand-amber border border-brand-amber/40 px-3 py-1.5 rounded no-underline hover:bg-brand-amber/10">/.well-known/agent-card.json</a>
+        <a href="/feed.xml" class="text-brand-slate border border-brand-border px-3 py-1.5 rounded no-underline hover:text-brand-white">/feed.xml</a>
+        <a href="/sitemap.xml" class="text-brand-slate border border-brand-border px-3 py-1.5 rounded no-underline hover:text-brand-white">/sitemap.xml</a>
+      </div>
+    </div>
+  </section>
+
   <section class="px-6 md:px-10 pb-24 max-w-7xl mx-auto">
     <div class="glass-card p-6 md:p-8">
       <p class="section-label mb-3">Measurement</p>
       <h2 class="text-xl text-brand-white mb-3">Research papers, not journal finals</h2>
       <ul class="space-y-2 font-body text-sm text-brand-slate leading-relaxed list-disc pl-5">
-        <li>Prose lives at <code class="text-brand-cyan">/papers/</code> and <code class="text-brand-cyan">/products/</code>; real PDFs at <code class="text-brand-cyan">/pdfs/</code>.</li>
-        <li>Site glossary: <a href="/glossary/" class="text-brand-cyan no-underline hover:text-brand-teal">/glossary/</a>. About index: <a href="/about/" class="text-brand-cyan no-underline hover:text-brand-teal">/about/</a>.</li>
+        <li>Prose lives at <code class="text-brand-cyan">/papers/</code> and <code class="text-brand-cyan">/products/</code>; clean Markdown at <code class="text-brand-cyan">/papers/&lt;id&gt;.md</code> and <code class="text-brand-cyan">/products/&lt;id&gt;.md</code>; real PDFs at <code class="text-brand-cyan">/pdfs/</code>.</li>
+        <li>Site glossary: <a href="/glossary/" class="text-brand-cyan no-underline hover:text-brand-teal">/glossary/</a>. Data and digests: <a href="/data/" class="text-brand-cyan no-underline hover:text-brand-teal">/data/</a>. About index: <a href="/about/" class="text-brand-cyan no-underline hover:text-brand-teal">/about/</a>.</li>
         <li>Interactive figures stay under <code class="text-brand-cyan">/living/</code>. They are figures, not papers.</li>
         <li>No Notion AI, Elicit, Consensus, or other paid research services in the runtime.</li>
         <li>Claim ledgers bind web, PDF, Medium, demos, and metadata. Forbidden claims stay off the UI.</li>
@@ -128,4 +251,138 @@ const products = projects.filter((p) => p.group === 'product');
       </ul>
     </div>
   </section>
+
+  <script is:inline>
+    (function () {
+      var input = document.getElementById('catalog-search');
+      var clearBtn = document.getElementById('catalog-search-clear');
+      var statusEl = document.getElementById('catalog-search-status');
+      var filterBtns = Array.prototype.slice.call(document.querySelectorAll('.cat-filter-btn'));
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.study-card'));
+      var researchSec = document.getElementById('catalog');
+      var productsSec = document.getElementById('products');
+      var activeGroup = 'all';
+
+      function applyFilter(queryStr, groupStr, syncUrl) {
+        if (typeof queryStr === 'string' && input && input.value !== queryStr) input.value = queryStr;
+        if (groupStr) activeGroup = groupStr;
+        var q = String((input && input.value) || '').toLowerCase().trim();
+        var terms = q ? q.split(/[^a-z0-9_+.-]+/).filter(function (t) { return t.length > 0; }) : [];
+        if (clearBtn) clearBtn.hidden = !q && activeGroup === 'all';
+
+        filterBtns.forEach(function (btn) {
+          var on = btn.getAttribute('data-filter-group') === activeGroup;
+          btn.setAttribute('aria-pressed', String(on));
+          btn.className = on
+            ? 'cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-amber text-brand-amber cursor-pointer bg-transparent'
+            : 'cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate cursor-pointer bg-transparent hover:text-brand-white';
+        });
+
+        var shown = 0, researchShown = 0, productsShown = 0;
+        var matchedIds = [];
+
+        cards.forEach(function (card) {
+          var g = card.getAttribute('data-study-group') || '';
+          var hasLiv = card.getAttribute('data-has-living') === 'true';
+          var hay = card.getAttribute('data-study-haystack') || '';
+          var groupOk =
+            activeGroup === 'all' ||
+            (activeGroup === 'living' ? hasLiv : g === activeGroup);
+          var textOk = !terms.length || terms.every(function (t) { return hay.indexOf(t) !== -1; });
+          var visible = groupOk && textOk;
+          card.style.display = visible ? '' : 'none';
+
+          var secBox = card.querySelector('.matched-sections');
+          if (secBox) {
+            if (visible && terms.length) {
+              var secs = [];
+              try { secs = JSON.parse(card.getAttribute('data-study-sections') || '[]'); } catch (_e) {}
+              var baseUrl = card.getAttribute('data-study-url') || '';
+              var hits = secs.filter(function (s) {
+                var st = String(s.text || '').toLowerCase();
+                return terms.some(function (t) { return t.length > 1 && st.indexOf(t) !== -1; });
+              }).slice(0, 3);
+              if (hits.length) {
+                secBox.innerHTML = '';
+                hits.forEach(function (h) {
+                  var row = document.createElement('div');
+                  row.appendChild(document.createTextNode('↳ '));
+                  var link = document.createElement('a');
+                  link.setAttribute('href', baseUrl + '#' + encodeURIComponent(h.slug));
+                  link.className = 'text-brand-cyan no-underline hover:underline';
+                  link.textContent = String(h.text || '');
+                  row.appendChild(link);
+                  secBox.appendChild(row);
+                });
+                secBox.classList.remove('hidden');
+              } else {
+                secBox.innerHTML = '';
+                secBox.classList.add('hidden');
+              }
+            } else {
+              secBox.innerHTML = '';
+              secBox.classList.add('hidden');
+            }
+          }
+
+          if (visible) {
+            shown += 1;
+            matchedIds.push(card.getAttribute('data-study-id'));
+            if (g === 'product') productsShown += 1;
+            else researchShown += 1;
+          }
+        });
+
+        if (researchSec) researchSec.style.display = researchShown > 0 || shown === 0 ? '' : 'none';
+        if (productsSec) productsSec.style.display = productsShown > 0 ? '' : 'none';
+
+        if (statusEl) {
+          statusEl.textContent = (!q && activeGroup === 'all')
+            ? 'Showing all ' + cards.length + ' studies'
+            : 'Matching ' + shown + ' of ' + cards.length + ' studies';
+        }
+
+        if (syncUrl !== false && window.history && window.history.replaceState) {
+          var url = new URL(window.location.href);
+          if (q) url.searchParams.set('q', q); else url.searchParams.delete('q');
+          if (activeGroup && activeGroup !== 'all') url.searchParams.set('group', activeGroup); else url.searchParams.delete('group');
+          window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+        }
+
+        return { visible_count: shown, total_count: cards.length, matched_ids: matchedIds, query: q, group: activeGroup };
+      }
+
+      window.__openieApplyCatalogFilter = function (q, g) { return applyFilter(q, g, true); };
+
+      if (input) {
+        input.addEventListener('input', function () { applyFilter(input.value, activeGroup, true); });
+      }
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function () { applyFilter('', 'all', true); if (input) input.focus(); });
+      }
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          applyFilter(input ? input.value : '', btn.getAttribute('data-filter-group') || 'all', true);
+        });
+      });
+      document.querySelectorAll('.tag-pill').forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          applyFilter(pill.getAttribute('data-tag-query') || '', activeGroup, true);
+        });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === '/' && input && document.activeElement !== input && !/^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement && document.activeElement.tagName) || '')) {
+          e.preventDefault();
+          input.focus();
+        }
+      });
+
+      var params = new URLSearchParams(window.location.search);
+      var initQ = params.get('q') || '';
+      var initG = params.get('group') || 'all';
+      if (initQ || initG !== 'all') {
+        applyFilter(initQ, initG, false);
+      }
+    })();
+  </script>
 </Layout>

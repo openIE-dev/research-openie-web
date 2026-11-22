@@ -43,6 +43,8 @@ const alternates = avail.length ? [{ hreflang: 'en', href: SITE + enPath }, ...a
 
 const citeUrl = paperId ? `https://research.openie.dev${basePath}${paperId}/` : 'https://research.openie.dev/';
 const pdfUrl = paperId ? `https://research.openie.dev/pdfs/${paperId}.pdf` : pdfHref;
+const mdHref = paperId && lang === 'en' ? `${basePath.replace(/\/$/, '')}/${paperId}.md` : null;
+const mdUrl = mdHref ? `https://research.openie.dev${mdHref}` : null;
 
 // Prefer every H2 as a top-level sibling in the outline (never drop §§9+ under a 40-cap).
 // Fill remaining TOC slots with H3s so later major sections stay visible next to §8.
@@ -57,6 +59,7 @@ const toc = [
 
 <Layout title={title} description={description ?? deck} lang={lang} dir={dir} alternates={alternates}>
   {paperId && <StudyJsonLd slot="head" id={paperId} />}
+  {mdHref && <link slot="head" rel="alternate" type="text/markdown" title={`${title} (Markdown)`} href={mdHref} />}
   <article class="px-6 md:px-10 pt-16 md:pt-20 pb-24">
     <div class="max-w-6xl mx-auto grid lg:grid-cols-[minmax(0,1fr)_220px] gap-10 lg:gap-14">
       <div class="min-w-0 paper-col">
@@ -93,6 +96,14 @@ const toc = [
           >
             Download PDF
           </a>
+          {mdHref && (
+            <a
+              href={mdHref}
+              class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors"
+            >
+              Markdown (.md)
+            </a>
+          )}
           <a
             href={figuresHref}
             class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors"
@@ -121,6 +132,7 @@ const toc = [
             {author}. <em class="text-brand-light">{title}</em>. Open Interface Engineering.
             Web: <a href={citeUrl} class="text-brand-cyan no-underline hover:underline">{citeUrl}</a>.
             PDF: <a href={pdfUrl} class="text-brand-cyan no-underline hover:underline">{pdfUrl}</a>.
+            {mdUrl && <> Markdown: <a href={mdHref!} class="text-brand-cyan no-underline hover:underline">{mdUrl}</a>.</>}
           </p>
         </div>
 
@@ -130,6 +142,12 @@ const toc = [
 
         <div class="mt-16 pt-8 border-t border-brand-border flex flex-wrap gap-3">
           <a href={pdfHref} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold" download>Download PDF</a>
+          {mdHref && (
+            <>
+              <span class="text-brand-gray">·</span>
+              <a href={mdHref} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal">Markdown (.md)</a>
+            </>
+          )}
           <span class="text-brand-gray">·</span>
           <a href={figuresHref} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal">Interactive figures</a>
           <span class="text-brand-gray">·</span>

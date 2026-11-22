@@ -1,19 +1,56 @@
-// Generated from src/data/studies.json and src/i18n.ts. Do not list studies or languages by hand.
+// Generated from src/lib/markdownExport.ts and src/i18n.ts. Do not list studies or languages by hand.
 import type { APIRoute } from 'astro';
-import { studies, groupLabel, groupOrder } from '../data/studyList';
+import { groupLabel, groupOrder } from '../data/studyList';
+import { getExportedStudies, getRceSpecChapters, LIVING_INSTRUMENTS } from '../lib/markdownExport';
 import { LANGS } from '../i18n';
 
-export const GET: APIRoute = () => {
-  const sections = groupOrder.map((g) =>
-    `## ${groupLabel(g)}\n\n` +
-    studies.filter((s) => s.group === g).map((s) => `- [${s.title}](${s.url}): ${s.summary} [PDF](${s.pdf})`).join('\n'),
-  ).join('\n\n');
-  const langs = Object.entries(LANGS).map(([k, v]) => `${k} (${v.name})`).join(', ');
+export const GET: APIRoute = async () => {
+  const exported = await getExportedStudies();
+  const specChapters = getRceSpecChapters();
+  const sections = groupOrder
+    .map(
+      (g) =>
+        `## ${groupLabel(g)}\n\n` +
+        exported
+          .filter((s) => s.group === g)
+          .map((s) => {
+            const extras = [
+              `[Markdown](${s.markdownUrl})`,
+              `[PDF](${s.pdf})`,
+              ...(s.latexPdfUrl ? [`[LaTeX PDF](${s.latexPdfUrl})`] : []),
+              `[Figures](${s.figuresUrl})`,
+              `[About](${s.about})`,
+            ].join(' · ');
+            return `- [${s.title}](${s.url}): ${s.summary} (${extras})`;
+          })
+          .join('\n'),
+    )
+    .join('\n\n');
+  const langs = Object.entries(LANGS)
+    .map(([k, v]) => `${k} (${v.name})`)
+    .join(', ');
   const body = `# OpenIE Research
 
 > Research by David Charlot at Open Interface Engineering, Inc., published free so that anyone can read, reproduce and reuse it. Each paper stands alone, defines its own terms, and opens with three plain-language points. Energy figures are labeled as estimates, operating-system or on-chip readings, or external-meter measurements.
 
+## Machine-Readable Endpoints for Agents and Search
+
+- [Full Corpus Text (llms-full.txt)](https://research.openie.dev/llms-full.txt): Complete resolved Markdown text of all ${exported.length} studies on this site in one file.
+- [Structured Catalog JSON](https://research.openie.dev/catalog.json): Machine-readable index of all studies, section anchors, keywords, revisions, RCE spec chapters, and interactive instruments.
+- [A2A Agent Card](https://research.openie.dev/.well-known/agent-card.json): Agent capabilities, skills, and protocol bindings (llms.txt, JSON catalog, WebMCP, Atom).
+- [Atom Feed](https://research.openie.dev/feed.xml): Syndication feed of published studies and revisions.
+- [Interactive Search](https://research.openie.dev/?q=deterministic+null): Filterable web catalog supporting \`?q=<query>\` and \`?group=<research|essay|product|living>\`.
+
 ${sections}
+
+## Interactive Living Instruments (/living/)
+
+${LIVING_INSTRUMENTS.map((i) => `- [${i.title}](${i.url}): ${i.description} URL-controllable parameters: ${i.controls.join('; ')}.`).join('\n')}
+
+## RCE Language Specification & Toolchain (/rce/)
+
+- [RCE Download & Releases](https://research.openie.dev/rce/download/): Prebuilt checker binaries and archives.
+${specChapters.map((c) => `- [${c.title}](${c.url})`).join('\n')}
 
 ## Earlier addresses
 
@@ -21,9 +58,12 @@ ${sections}
 
 ## Reference
 
+- [Data and code](https://research.openie.dev/data/): Reproducibility paths, SHA-256 digests, OpenTimestamps and drand pre-registrations, and energy labels (\`est_j\`, \`reported_j\`, \`measured_j\`).
+- [Changelog](https://research.openie.dev/changelog/): Dated record of published studies and revisions.
 - [Glossary](https://research.openie.dev/glossary/): Terms used on the site. Each paper also defines its own terms.
 - [RCE FAQ](https://research.openie.dev/faq/): what the Reality Code Engine is, why it is needed now, what is built, proposed and measured, how energy is labelled, and ten hard questions, each with its current answer and falsifier. Every number is cited.
 - [About the papers](https://research.openie.dev/about/): One page per paper on what it claims and what it does not.
+- [Opportunity Map](https://research.openie.dev/opportunity-map/): Interface-by-interface stack overview.
 - [Figures](https://research.openie.dev/living/): Interactive figures for the papers.
 - [RCE Playground](https://openie-dev.github.io/rce/): the reference checker (checker-wasm) in the browser: write, check and run RCE programs, with the specification examples and shareable links.
 

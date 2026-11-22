@@ -1,5 +1,60 @@
-# research.openie.dev
+# research.openie.dev — Open-access research catalog, Markdown twins, PDFs, and interactive figures
+# Machine-readable discovery:
+#   Compact LLM index:   https://research.openie.dev/llms.txt
+#   Full Markdown corpus: https://research.openie.dev/llms-full.txt
+#   Structured JSON:     https://research.openie.dev/catalog.json
+#   A2A Agent Card:      https://research.openie.dev/.well-known/agent-card.json
+#   Atom feed:           https://research.openie.dev/feed.xml
+
 User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
 Allow: /
 
 Sitemap: https://research.openie.dev/sitemap.xml

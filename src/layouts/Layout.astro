@@ -47,6 +47,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
     {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
     <meta name="author" content="David Charlot" />
     <link rel="describedby" type="text/markdown" href="/llms.txt" />
+    <link rel="alternate" type="text/plain" title="OpenIE Research Full Corpus (llms-full.txt)" href="/llms-full.txt" />
+    <link rel="alternate" type="application/json" title="OpenIE Research Catalog JSON" href="/catalog.json" />
+    <link rel="alternate" type="application/atom+xml" title="OpenIE Research Atom Feed" href="/feed.xml" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={`${title} | OpenIE Research`} />
     <meta name="twitter:description" content={description} />
@@ -78,6 +81,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
       <div id="nav-links" class="hidden md:flex gap-6 items-center max-md:fixed max-md:inset-0 max-md:top-[60px] max-md:bg-brand-dark/95 max-md:backdrop-blur-xl max-md:flex-col max-md:justify-center max-md:gap-8 max-md:z-50">
         <a href="/#catalog" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.papers}</a>
         <a href="/living/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.figures}</a>
+        <a href="/data/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Data</a>
         <a href="/about/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.about}</a>
         <a href="/glossary/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.glossary}</a>
         <a href="/faq/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">FAQ</a>
@@ -122,6 +126,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
             <div class="space-y-2">
               {studies.map((s) => <a href={s.pdfPath} class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">{s.short_title}</a>)}
               <a href="/data/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Data and code</a>
+              <a href="/changelog/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Changelog</a>
+              <a href="/opportunity-map/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Opportunity map</a>
+              <a href="/llms.txt" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">llms.txt</a>
+              <a href="/llms-full.txt" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">llms-full.txt</a>
+              <a href="/catalog.json" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">catalog.json</a>
+              <a href="/feed.xml" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Atom feed</a>
             </div>
           </div>
           <div>

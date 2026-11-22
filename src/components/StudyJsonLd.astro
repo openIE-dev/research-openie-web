@@ -1,7 +1,6 @@
 ---
-// Draft for src/components/StudyJsonLd.astro. Renders ScholarlyArticle JSON-LD for one study.
-// Reads src/data/studies.json (a copy of research/studies-index.json), the same data the
-// WebMCP tools and llms.txt use. Output matches research/jsonld/<id>.json.
+// Renders ScholarlyArticle / TechArticle JSON-LD for one study, advertising web, Markdown twin,
+// PDF edition, interactive living figures, about page, and data/reproducibility ledger entry.
 import studies from '../data/studies.json';
 
 interface Props { id: string }
@@ -12,11 +11,16 @@ if (!s) throw new Error(`StudyJsonLd: unknown study id ${id}`);
 const BASE = 'https://research.openie.dev';
 const DRAFT = ['gates', 'satiation', 'mei'];
 const headline = s.title.length > 110 ? s.title.split(':')[0].trim() : s.title;
+const isProduct = s.group === 'product' || s.url.includes('/products/');
+const mdUrl = `${BASE}/${isProduct ? 'products' : 'papers'}/${s.id}.md`;
+const figRaw = (s as any).figures || '/living/';
+const figUrl = figRaw.startsWith('http') ? figRaw : `${BASE}${figRaw}`;
+
 const doc = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': s.group === 'product' ? 'TechArticle' : 'ScholarlyArticle',
+      '@type': isProduct ? 'TechArticle' : 'ScholarlyArticle',
       '@id': `${s.url}#article`,
       headline,
       name: s.title,
@@ -31,8 +35,15 @@ const doc = {
       keywords: s.keywords.join(', '),
       ...(DRAFT.includes(s.id) ? { creativeWorkStatus: 'Draft' } : {}),
       isAccessibleForFree: true,
-      encoding: { '@type': 'MediaObject', contentUrl: s.pdf, encodingFormat: 'application/pdf' },
-      subjectOf: { '@type': 'WebPage', url: s.about, name: `About ${s.title.split(':')[0].trim()}` },
+      encoding: [
+        { '@type': 'MediaObject', contentUrl: s.pdf, encodingFormat: 'application/pdf' },
+        { '@type': 'MediaObject', contentUrl: mdUrl, encodingFormat: 'text/markdown' },
+      ],
+      hasPart: { '@type': 'WebPage', url: figUrl, name: `Figures for ${headline}` },
+      subjectOf: [
+        { '@type': 'WebPage', url: s.about, name: `About ${headline}` },
+        { '@type': 'Dataset', url: `${BASE}/data/#${s.id}`, name: `Data and digests for ${headline}` },
+      ],
     },
     { '@type': 'Person', '@id': `${BASE}/#david-charlot`, name: 'David Charlot', affiliation: { '@id': 'https://openie.dev/#org' } },
     { '@type': 'Organization', '@id': 'https://openie.dev/#org', name: 'Open Interface Engineering, Inc.', alternateName: 'OpenIE', url: 'https://openie.dev' },

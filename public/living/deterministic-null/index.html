@@ -6,7 +6,12 @@
   <meta name="theme-color" content="#F59E0B">
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="David Charlot">
+  <meta name="description" content="Interactive observatory for Deterministic Null: explore paired neural increments across 4,030 held-out instances and 6 multi-file repositories, simulate Zipfian online crystallization, and inspect OpenTimestamps and drand proofs.">
+  <link rel="canonical" href="https://research.openie.dev/living/deterministic-null/">
+  <link rel="describedby" type="text/markdown" href="/llms.txt">
+  <link rel="alternate" type="text/markdown" title="Deterministic Null (Markdown)" href="/papers/deterministic-null.md">
   <title>Living Figures · Deterministic Null Control Experiment | OpenIE Research</title>
+  <script src="/webmcp-tools.js" defer></script>
   <script>
     (function(){
       var stored = localStorage.getItem('oe-theme');
@@ -23,8 +28,10 @@
     <a href="https://research.openie.dev/" class="brand-logo">Open<span class="brand-cyan">IE</span> <span class="brand-amber">Research</span></a>
     <div class="nav-links">
       <a href="/papers/deterministic-null/">Paper</a>
+      <a href="/papers/deterministic-null.md">Markdown</a>
       <a href="/living/deterministic-null/" class="active">Figures (/living/)</a>
       <a href="/about/deterministic-null/">About</a>
+      <a href="/pdfs/deterministic-null.pdf">PDF</a>
       <a href="/pdfs/latex/deterministic-null.pdf">LaTeX PDF</a>
       <a href="https://openie.dev" class="pill-cyan">openie.dev</a>
       <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
@@ -53,14 +60,14 @@
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
           Switch between <strong>Track-B (<code>exp-002</code>, <code>1,190</code> unique external benchmark instances, <code>K_eff = n</code>)</strong>, <strong>Track-A (<code>exp-001</code>, <code>2,840</code> bounded template instances, <code>K_eff = 6–12</code>)</strong>, and the <strong>Multi-Turn <code>/work</code> Software-Engineering Track (<code>6</code> multi-file Python repositories)</strong>. All <code>99.0%</code> BCa intervals use <code>10,000</code> paired resamples against margin <code>δ = +5.0</code> percentage points.
         </p>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
-          <button type="button" class="theme-btn track-btn" data-track="exp002" style="border-color: var(--color-brand-amber); color: var(--color-brand-amber);">Track-B · exp-002 External (K_eff = 1,190)</button>
-          <button type="button" class="theme-btn track-btn" data-track="exp001_t2">Track-A · exp-001 Tier 2 Shifted (1,420)</button>
-          <button type="button" class="theme-btn track-btn" data-track="exp001_t1">Track-A · exp-001 Tier 1 Matched (1,420)</button>
-          <button type="button" class="theme-btn track-btn" data-track="multiturn">Multi-Turn /work Repos (6 Multi-File)</button>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;" role="group" aria-label="Select experimental track">
+          <button type="button" class="theme-btn track-btn" data-track="exp002" aria-pressed="true" style="border-color: var(--color-brand-amber); color: var(--color-brand-amber);">Track-B · exp-002 External (K_eff = 1,190)</button>
+          <button type="button" class="theme-btn track-btn" data-track="exp001_t2" aria-pressed="false">Track-A · exp-001 Tier 2 Shifted (1,420)</button>
+          <button type="button" class="theme-btn track-btn" data-track="exp001_t1" aria-pressed="false">Track-A · exp-001 Tier 1 Matched (1,420)</button>
+          <button type="button" class="theme-btn track-btn" data-track="multiturn" aria-pressed="false">Multi-Turn /work Repos (6 Multi-File)</button>
         </div>
 
-        <div class="metric-grid" id="track-kpis"></div>
+        <div class="metric-grid" id="track-kpis" aria-live="polite"></div>
         <div style="overflow-x: auto; margin-top: 1rem;">
           <table style="width: 100%; border-collapse: collapse; font-size: 0.84rem;" id="track-table">
             <thead><tr id="track-thead" style="border-bottom: 1px solid rgba(148,163,184,0.3); text-align: left;"></tr></thead>
@@ -80,23 +87,23 @@
         </p>
         <div class="ctrl-grid">
           <div class="ctrl-box">
-            <label><span>Production request horizon T</span><span id="v-hz">600</span></label>
-            <input type="range" id="s-hz" min="50" max="2000" step="50" value="600">
+            <label for="s-hz"><span>Production request horizon T</span><span id="v-hz">600</span></label>
+            <input type="range" id="s-hz" name="T" min="50" max="2000" step="50" value="600">
           </div>
           <div class="ctrl-box">
-            <label><span>Cumulative cache hit share h(T)</span><span id="v-hit">0.72</span></label>
-            <input type="range" id="s-hit" min="0.00" max="0.95" step="0.02" value="0.72">
+            <label for="s-hit"><span>Cumulative cache hit share h(T)</span><span id="v-hit">0.72</span></label>
+            <input type="range" id="s-hit" name="hit" min="0.00" max="0.95" step="0.02" value="0.72">
           </div>
           <div class="ctrl-box">
-            <label><span>Cloud API cost per call (USD)</span><span id="v-usd">0.0122</span></label>
-            <input type="range" id="s-usd" min="0.0020" max="0.0600" step="0.0020" value="0.0122">
+            <label for="s-usd"><span>Cloud API cost per call (USD)</span><span id="v-usd">0.0122</span></label>
+            <input type="range" id="s-usd" name="usd" min="0.0020" max="0.0600" step="0.0020" value="0.0122">
           </div>
           <div class="ctrl-box">
-            <label><span>Local B6 reported_j per call (J)</span><span id="v-joule">112.9</span></label>
-            <input type="range" id="s-joule" min="10.0" max="400.0" step="5.0" value="112.9">
+            <label for="s-joule"><span>Local B6 reported_j per call (J)</span><span id="v-joule">112.9</span></label>
+            <input type="range" id="s-joule" name="joule" min="10.0" max="400.0" step="5.0" value="112.9">
           </div>
         </div>
-        <div class="metric-grid">
+        <div class="metric-grid" aria-live="polite">
           <div class="metric-tile">
             <div class="k">Pure LLM Spend (USD / J)</div>
             <div class="v" id="o-pure">$7.32 · 67.7 kJ</div>
@@ -245,10 +252,26 @@
         }
       };
 
-      function renderTrack(key){
+      var currentTrack = 'exp002';
+
+      function syncUrl(){
+        if (!window.history || !window.history.replaceState) return;
+        var u = new URL(window.location.href);
+        u.searchParams.set('track', currentTrack);
+        u.searchParams.set('T', document.getElementById('s-hz').value);
+        u.searchParams.set('hit', document.getElementById('s-hit').value);
+        u.searchParams.set('usd', document.getElementById('s-usd').value);
+        u.searchParams.set('joule', document.getElementById('s-joule').value);
+        window.history.replaceState(null, '', u.pathname + u.search + u.hash);
+      }
+
+      function renderTrack(key, updateQuery){
+        if (!DATA[key]) key = 'exp002';
+        currentTrack = key;
         var d = DATA[key];
         document.querySelectorAll('.track-btn').forEach(function(b){
           var on = b.getAttribute('data-track') === key;
+          b.setAttribute('aria-pressed', String(on));
           b.style.borderColor = on ? 'var(--color-brand-amber)' : '';
           b.style.color = on ? 'var(--color-brand-amber)' : '';
         });
@@ -268,13 +291,14 @@
             return '<td style="padding: 0.45rem 0.5rem; ' + st + '">' + cell + '</td>';
           }).join('') + '</tr>';
         }).join('');
+        if (updateQuery) syncUrl();
+        return { track: key, kpis: d.kpis, columns: d.cols, rows: d.rows };
       }
       document.querySelectorAll('.track-btn').forEach(function(b){
-        b.addEventListener('click', function(){ renderTrack(b.getAttribute('data-track')); });
+        b.addEventListener('click', function(){ renderTrack(b.getAttribute('data-track'), true); });
       });
-      renderTrack('exp002');
 
-      function updateSim(){
+      function updateSim(updateQuery){
         var T = parseFloat(document.getElementById('s-hz').value);
         var h = parseFloat(document.getElementById('s-hit').value);
         var u = parseFloat(document.getElementById('s-usd').value);
@@ -291,11 +315,81 @@
         document.getElementById('o-online').textContent = '$' + onU.toFixed(2) + ' · ' + (onJ / 1000).toFixed(1) + ' kJ';
         document.getElementById('o-calls').textContent = missCalls + ' miss calls + ' + (T - missCalls) + ' 0-call hits';
         document.getElementById('o-mult').textContent = mult.toFixed(2) + '× (' + ((1 - missCalls / T) * 100).toFixed(1) + '%)';
+        if (updateQuery) syncUrl();
+        return {
+          horizon_T: T,
+          hit_share: h,
+          usd_per_call: u,
+          reported_j_per_call: j,
+          pure_llm_usd: +pureU.toFixed(4),
+          pure_llm_j: +pureJ.toFixed(2),
+          online_miss_calls: missCalls,
+          online_zero_call_hits: T - missCalls,
+          online_usd: +onU.toFixed(4),
+          online_j: +onJ.toFixed(2),
+          reduction_multiplier: +mult.toFixed(3)
+        };
       }
       ['s-hz','s-hit','s-usd','s-joule'].forEach(function(id){
-        document.getElementById(id).addEventListener('input', updateSim);
+        document.getElementById(id).addEventListener('input', function(){ updateSim(true); });
       });
-      updateSim();
+
+      var qs = new URLSearchParams(window.location.search);
+      if (qs.get('T')) document.getElementById('s-hz').value = qs.get('T');
+      if (qs.get('hit')) document.getElementById('s-hit').value = qs.get('hit');
+      if (qs.get('usd')) document.getElementById('s-usd').value = qs.get('usd');
+      if (qs.get('joule')) document.getElementById('s-joule').value = qs.get('joule');
+      renderTrack(qs.get('track') || 'exp002', false);
+      updateSim(false);
+
+      window.openieLivingLab = {
+        studyId: 'deterministic-null',
+        tracks: Object.keys(DATA),
+        getTrackData: function(k){ return renderTrack(k || currentTrack, true); },
+        simulateCrystallization: function(opts){
+          if (opts && opts.T != null) document.getElementById('s-hz').value = String(opts.T);
+          if (opts && opts.hit != null) document.getElementById('s-hit').value = String(opts.hit);
+          if (opts && opts.usd != null) document.getElementById('s-usd').value = String(opts.usd);
+          if (opts && opts.joule != null) document.getElementById('s-joule').value = String(opts.joule);
+          return updateSim(true);
+        }
+      };
+
+      var mc = document.modelContext || navigator.modelContext;
+      if (window.isSecureContext && mc && typeof mc.registerTool === 'function') {
+        [
+          {
+            name: 'select_deterministic_null_track',
+            title: 'Select Deterministic Null experimental track',
+            description: 'Switches the interactive table on /living/deterministic-null/ between exp002 (Track-B unique external benchmarks), exp001_t2 (Tier-2 shifted), exp001_t1 (Tier-1 matched), and multiturn (6 multi-file repositories), returning the full KPI and row data.',
+            inputSchema: {
+              type: 'object',
+              properties: { track: { type: 'string', enum: ['exp002', 'exp001_t2', 'exp001_t1', 'multiturn'] } },
+              required: ['track'],
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.getTrackData(inp && inp.track); },
+            annotations: { readOnlyHint: true }
+          },
+          {
+            name: 'simulate_online_crystallization',
+            title: 'Simulate Zipfian online crystallization cost and reported_j',
+            description: 'Sets horizon T, cache hit share h(T), cloud USD/call, and local reported_j/call on /living/deterministic-null/ and returns pure-LLM vs online-crystallized spend and reduction multiplier.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                T: { type: 'number', minimum: 50, maximum: 2000 },
+                hit: { type: 'number', minimum: 0, maximum: 0.95 },
+                usd: { type: 'number', minimum: 0.002, maximum: 0.06 },
+                joule: { type: 'number', minimum: 10, maximum: 400 }
+              },
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.simulateCrystallization(inp || {}); },
+            annotations: { readOnlyHint: true }
+          }
+        ].forEach(function(t){ try { Promise.resolve(mc.registerTool(t)).catch(function(){}); } catch(_e){} });
+      }
     })();
   </script>
 </body>

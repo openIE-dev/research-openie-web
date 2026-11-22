@@ -6,7 +6,12 @@
   <meta name="theme-color" content="#F59E0B">
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="David Charlot">
+  <meta name="description" content="Interactive instruments for Downward LUT6 Compilation & AirMoL: explore Simon-Kadane crystallization horizons, xck26 Beneš + RAMB36E2 RTL synthesis, and 4-bit NVMe streaming.">
+  <link rel="canonical" href="https://research.openie.dev/living/lut-adapt/">
+  <link rel="describedby" type="text/markdown" href="/llms.txt">
+  <link rel="alternate" type="text/markdown" title="Downward LUT6 Compilation (Markdown)" href="/papers/lut-adapt.md">
   <title>Living Figures · Downward LUT6 Compilation &amp; AirMoL | OpenIE Research</title>
+  <script src="/webmcp-tools.js" defer></script>
   <script>
     (function(){
       var stored = localStorage.getItem('oe-theme');
@@ -23,8 +28,10 @@
     <a href="https://research.openie.dev/" class="brand-logo">Open<span class="brand-cyan">IE</span> <span class="brand-amber">Research</span></a>
     <div class="nav-links">
       <a href="/papers/lut-adapt/">Paper</a>
+      <a href="/papers/lut-adapt.md">Markdown</a>
       <a href="/living/lut-adapt/" class="active">Figures (/living/)</a>
       <a href="/about/lut-adapt/">About</a>
+      <a href="/pdfs/lut-adapt.pdf">PDF</a>
       <a href="/pdfs/latex/lut-adapt.pdf">LaTeX PDF</a>
       <a href="https://openie.dev" class="pill-cyan">openie.dev</a>
       <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
@@ -265,6 +272,11 @@
         }
       }
       ['s-p0','s-dt','s-cw','s-ec'].forEach(function(id){ document.getElementById(id).addEventListener('input', upd); });
+      var qs = new URLSearchParams(window.location.search);
+      if (qs.get('p0')) document.getElementById('s-p0').value = qs.get('p0');
+      if (qs.get('dt')) document.getElementById('s-dt').value = qs.get('dt');
+      if (qs.get('cw')) document.getElementById('s-cw').value = qs.get('cw');
+      if (qs.get('ec')) document.getElementById('s-ec').value = qs.get('ec');
       upd();
     })();
 
@@ -278,6 +290,8 @@
         wnn:    { luts: '160', pct: '0.14% of xck26 (static wires)', bram: '0 / 144', bpct: '0 dynamic routing ports', cyc: 'Vivado re-PAR', ns: 'Minutes to hours on topology shift', acc: '52.34%', note: 'Collapses on VLAN 0x8100 drift' }
       };
       var sel = document.getElementById('rtl-select');
+      var qs2 = new URLSearchParams(window.location.search);
+      if (qs2.get('rtl') && data[qs2.get('rtl')]) sel.value = qs2.get('rtl');
       function render() {
         var d = data[sel.value];
         document.getElementById('r-luts').textContent = d.luts;
@@ -312,6 +326,9 @@
         }
       };
       var mSel = document.getElementById('hf-model'), aSel = document.getElementById('hf-arm');
+      var qs3 = new URLSearchParams(window.location.search);
+      if (qs3.get('model') && hf[qs3.get('model')]) mSel.value = qs3.get('model');
+      if (qs3.get('arm') && hf.lfm[qs3.get('arm')]) aSel.value = qs3.get('arm');
       function render() {
         var m = hf[mSel.value], a = m[aSel.value];
         document.getElementById('h-tpsw').textContent = a.tpsw;
