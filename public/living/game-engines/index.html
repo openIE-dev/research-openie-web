@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F59E0B">
+  <meta name="color-scheme" content="dark light">
+  <meta name="author" content="David Charlot">
+  <meta name="description" content="Interactive observatory for Writing a Game Once and Running It Everywhere: inspect GE-H1 100,000-tick 5-target Q32.32 SHA-256 replay & L3 reported_j, explore GE-H2 25,000-tick floating-point Lyapunov divergence cascades, and zoom architecture and coverage figures.">
+  <link rel="canonical" href="https://research.openie.dev/living/game-engines/">
+  <link rel="describedby" type="text/markdown" href="/llms.txt">
+  <link rel="alternate" type="text/markdown" title="Writing a Game Once and Running It Everywhere (Markdown)" href="/papers/game-engines.md">
+  <title>Living Figures · Game Engines Replay &amp; Divergence Explorer | OpenIE Research</title>
+  <script src="/webmcp-tools.js" defer></script>
+  <script>
+    (function(){
+      var stored = localStorage.getItem('oe-theme');
+      var theme = stored && ['dark','light','auto'].indexOf(stored) !== -1 ? stored : 'auto';
+      var resolved = theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
+      document.documentElement.setAttribute('data-theme', resolved);
+      document.documentElement.style.colorScheme = resolved;
+    })();
+  </script>
+  <link rel="stylesheet" href="openie.css">
+</head>
+<body class="grid-bg">
+  <nav class="nav-glass" aria-label="Main navigation">
+    <a href="https://research.openie.dev/" class="brand-logo">Open<span class="brand-cyan">IE</span> <span class="brand-amber">Research</span></a>
+    <div class="nav-links">
+      <a href="/">Catalog</a>
+      <a href="/papers/game-engines/">Paper</a>
+      <a href="/papers/game-engines.md">Markdown</a>
+      <a href="/living/game-engines/" class="active">Observatory (/living/)</a>
+      <a href="/about/game-engines/">About</a>
+      <a href="/pdfs/game-engines.pdf">PDF</a>
+      <a href="https://openie.dev" class="pill-cyan">openie.dev</a>
+      <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
+    </div>
+  </nav>
+
+  <main>
+    <div style="max-width: 70rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
+      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/game-engines/ · interactive instruments</p>
+      <h1 class="hero-title" style="max-width: none;">Living Figures: Exact Replay &amp; Floating-Point Divergence Explorer</h1>
+      <p class="author-line">David Charlot, Open Interface Engineering · Companion to <a href="/papers/game-engines/" style="color: var(--color-brand-cyan);">/papers/game-engines/</a> · Raw artifact: <a href="results.json" style="color: var(--color-brand-amber);">results.json</a></p>
+
+      <div class="measurement-box">
+        <strong>Measurement grammar on this page.</strong> Every instrument separates three classes:
+        <span class="chip chip-meas">Exact (SHA-256 &amp; Tick Index)</span> for <code>GE-H1</code> <code>1,000</code> pairwise checkpoint hash comparisons across 5 language/WebAssembly targets and <code>GE-H2</code> exact divergence ticks (<code>t_div_ieee_bits</code>, <code>t_div_macro_1e3</code>, <code>t_div_gameplay</code>);
+        <span class="chip chip-sim">Reported (L3 reported_j)</span> for Apple M5 Max kernel per-PID <code>proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj</code> counters (label <code>D</code>); and
+        <span class="chip chip-est">Lyapunov Horizon Model</span> for analytical <code>t* = (1/Λ) ln(Δ/δ₀)</code> sensitivity sweeps. <code>measured_j = None</code>; <code>board_metered = false</code>; cross-GPU <code>wgpu</code> pixel-tolerance runs (<code>GE-H3..GE-H9</code>) remain open.
+      </div>
+
+      <!-- Widget 1: GE-H1 5-Target Q32.32 Replay & Energy Explorer -->
+      <section id="ge-diag-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-01</code> · <code>GE-H1</code> Five-Target <code>Q32.32</code> Exact Replay &amp; <code>L3</code> <code>reported_j</code> Explorer</h2>
+          <span class="chip chip-meas">0 / 1,000 SHA-256 Mismatches</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          A 16-body 2D elastic-collision and cooldown-FSM arena under <code>Q32.32</code> signed 64-bit integer physics ran for <strong>100,000 ticks</strong> across five targets (5 replicates each). Inspect canonical checkpoint digests and scale session length at <code>60 Hz</code> or <code>120 Hz</code>.
+        </p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="s-ckpt"><span>Checkpoint tick</span><span id="v-ckpt">100,000</span></label>
+            <select id="s-ckpt">
+              <option value="1000">Tick 1,000 (16.7 s @ 60 Hz)</option>
+              <option value="10000">Tick 10,000 (2.78 min @ 60 Hz)</option>
+              <option value="25000">Tick 25,000 (6.94 min @ 60 Hz)</option>
+              <option value="50000">Tick 50,000 (13.89 min @ 60 Hz)</option>
+              <option value="75000">Tick 75,000 (20.83 min @ 60 Hz)</option>
+              <option value="100000" selected>Tick 100,000 (27.78 min @ 60 Hz)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="s-mins"><span>Simulated match duration (min)</span><span id="v-mins">60 min</span></label>
+            <input type="range" id="s-mins" min="5" max="240" step="5" value="60">
+          </div>
+          <div class="ctrl-box">
+            <label for="s-hz"><span>Simulation tick rate</span><span id="v-hz">60 Hz</span></label>
+            <select id="s-hz">
+              <option value="60" selected>60 Hz (3,600 ticks / min)</option>
+              <option value="120">120 Hz (7,200 ticks / min)</option>
+              <option value="240">240 Hz (14,400 ticks / min)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top: 0.9rem; padding: 0.7rem 0.95rem; border: 1px solid rgba(0,212,170,0.35); border-radius: 8px; background: rgba(0,212,170,0.06); font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all;">
+          <strong>5/5 Targets Identical SHA-256 @ Tick <span id="o-ckpt-tick">100,000</span>:</strong>
+          <span id="o-ckpt-hash" style="color: var(--color-brand-cyan);">82e404df6475d64dbfeaaa0f6cda8092787ea9048446ae862779fa29be0a0a78</span>
+        </div>
+
+        <div style="overflow-x: auto; margin-top: 1rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.83rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(148,163,184,0.32); text-align: left;">
+                <th style="padding: 0.45rem 0.5rem;">Target Projection</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">Wall ms / 100k</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">ns / tick</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">L3 J / 100k (±SD)</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">Energy Ratio</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;" id="th-session">Session L3 J</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: center;">100/100 Hash Match</th>
+              </tr>
+            </thead>
+            <tbody id="h1-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Widget 2: GE-H2 Floating-Point Divergence Horizon Explorer -->
+      <section id="ge-diag-02" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-02</code> · <code>GE-H2</code> Floating-Point Divergence &amp; Chaotic Cascade Explorer (<code>25,000</code> Ticks)</h2>
+          <span class="chip chip-sim">Measured Tick Horizons + Lyapunov Model</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Filter the 10 tested floating-point pairs by perturbation class to see where IEEE-754 bits first diverge (<code>t_div_ieee_bits</code>), when arena positions drift past <code>10⁻³</code> (<code>t_div_macro_1e3</code>), and when discrete gameplay scores/pickups desynchronize (<code>t_div_gameplay</code>), alongside Section 3's analytical Lyapunov horizon <code>t* = (1/Λ) ln(Δ/δ₀)</code>.
+        </p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="f-h2"><span>Perturbation filter</span><span id="v-h2-cnt">10 pairs</span></label>
+            <select id="f-h2">
+              <option value="all">All 10 Tested Floating-Point Pairs</option>
+              <option value="strict">Strict IEEE-754 Same-ISA / Same-libm Controls (5)</option>
+              <option value="diverged">Diverging Boundary Perturbations (5)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="s-logd0"><span>Perturbation log₁₀(δ₀)</span><span id="v-logd0">−15.6 (f64 ULP)</span></label>
+            <input type="range" id="s-logd0" min="-16" max="-3" step="0.2" value="-15.6">
+          </div>
+          <div class="ctrl-box">
+            <label for="s-lam"><span>Lyapunov exponent Λ (s⁻¹)</span><span id="v-lam">0.22 s⁻¹</span></label>
+            <input type="range" id="s-lam" min="0.05" max="3.00" step="0.05" value="0.22">
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">Compiler FMA (-ffast-math)</div>
+            <div class="v" style="color: var(--color-brand-amber);">t = 192 → 10,093</div>
+            <div class="s">Bit flip 3.2 s → Gameplay 168.2 s</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">libm vs V8 Math.sin (f64)</div>
+            <div class="v" style="color: var(--color-brand-amber);">t = 37 → 9,136</div>
+            <div class="s">Bit flip 0.6 s → Gameplay 152.3 s</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Precision Step-Down (f32)</div>
+            <div class="v" style="color: var(--color-brand-amber);">t = 1 → 1,370</div>
+            <div class="s">Bit flip tick 1 → Gameplay 22.8 s</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Analytical t* @ 60 Hz (Δ = 1)</div>
+            <div class="v" id="o-lyap" style="color: var(--color-brand-cyan);">163.3 s (9,796 t)</div>
+            <div class="s" id="o-lyap-s">t* = (1/Λ) ln(1 / δ₀)</div>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto; margin-top: 1rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(148,163,184,0.32); text-align: left;">
+                <th style="padding: 0.45rem 0.5rem;">Reference vs Candidate</th>
+                <th style="padding: 0.45rem 0.5rem;">Mechanism</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">t_div (IEEE bits)</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">t_div (10⁻³ pos)</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">t_div (Gameplay)</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">Gameplay @ 60 Hz</th>
+              </tr>
+            </thead>
+            <tbody id="h2-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 3: Zoomable Study Figures & Open Falsifiers -->
+      <section id="figures" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;">Architecture &amp; Representation Coverage Figures (Click to Zoom)</h2>
+          <span class="chip chip-est">GE-H3..GE-H9 Open (Cross-GPU wgpu Tolerance Next)</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/game-engines/architecture.svg" alt="Proposed Form split across exact simulation/scripting and tolerance-bounded scene/rendering projections" data-zoom="/figures/game-engines/architecture.svg">
+            <figcaption><strong>Figure 1 · Determinism Boundary</strong> · Simulation and scripting sit on the exact side (verified in <code>GE-H1</code>); scene and <code>wgpu</code>/WGSL rendering sit on the tolerance side (<code>GE-H7</code> open).</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/game-engines/coverage.svg" alt="Coverage matrix across eleven game representations and seven capability columns" data-zoom="/figures/game-engines/coverage.svg">
+            <figcaption><strong>Figure 2 · Representation Coverage</strong> · Documented capabilities across Slang, Naga, WGSL/WESL, glTF, OpenUSD, BSN, SCXML/XState, VGDL, GameRule, nAIVE, and SpacetimeDB.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <p class="footer-copy">&copy; 2026 Open Interface Engineering, Inc. Companion observatory for <a href="/papers/game-engines/" style="color: var(--color-brand-cyan);">/papers/game-engines/</a>.</p>
+    </div>
+  </main>
+
+  <dialog class="lb" id="lb" aria-label="Enlarged figure">
+    <div class="lb-stage"><img class="lb-img" id="lb-img" alt=""></div>
+    <div class="lb-bar">
+      <p class="lb-cap" id="lb-cap"></p>
+      <div class="lb-btns">
+        <a class="lb-btn" id="lb-open" href="#" target="_blank" rel="noopener">Open SVG</a>
+        <button type="button" class="lb-btn" id="lb-close">Close (Esc)</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('theme-toggle');
+      var lbl = document.getElementById('theme-label');
+      var modes = ['auto','dark','light'];
+      function applyMode(m){
+        localStorage.setItem('oe-theme', m);
+        var res = m === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : m;
+        document.documentElement.setAttribute('data-theme', res);
+        document.documentElement.style.colorScheme = res;
+        lbl.textContent = m.charAt(0).toUpperCase() + m.slice(1);
+      }
+      applyMode(localStorage.getItem('oe-theme') || 'auto');
+      btn.addEventListener('click', function(){
+        var cur = localStorage.getItem('oe-theme') || 'auto';
+        applyMode(modes[(modes.indexOf(cur) + 1) % modes.length]);
+      });
+
+      var dlg = document.getElementById('lb');
+      var lbImg = document.getElementById('lb-img');
+      var lbCap = document.getElementById('lb-cap');
+      var lbOpen = document.getElementById('lb-open');
+      document.querySelectorAll('[data-zoom]').forEach(function(img){
+        img.addEventListener('click', function(){
+          var src = img.getAttribute('data-zoom');
+          lbImg.src = src;
+          lbImg.alt = img.alt;
+          lbOpen.href = src;
+          var fc = img.parentElement && img.parentElement.querySelector('figcaption');
+          lbCap.textContent = fc ? fc.textContent : img.alt;
+          if (dlg.showModal) dlg.showModal();
+        });
+      });
+      document.getElementById('lb-close').addEventListener('click', function(){ dlg.close(); });
+      dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+
+      var CKPTS = {
+        '1000': '21fa688e4ee8dd6e66dc7b2cc3b674a54c59f9b61967bcf97ecb58f99dc738ae',
+        '10000': '0c60a804c15b682626442bdcd600869359ebdf1d70ff9f1f6ac5f47a38c95728',
+        '25000': '6ae7bdaa471d50df809e325cfd1b606a6cd96ef1f4563fdb92d745877d61ead0',
+        '50000': 'ea01ba7938411e6a087f2ef1b29d2a92bc53ecb774687766f500566bb8206ce7',
+        '75000': 'f4d66fdb532219ac38cfe166c77a7d37b49bb8e09f524d0ecbe07737503eadb2',
+        '100000': '82e404df6475d64dbfeaaa0f6cda8092787ea9048446ae862779fa29be0a0a78'
+      };
+
+      var H1 = [
+        { id:'rust_native_aarch64', desc:'Rust native (aarch64, rustc -O)', ms:22.333, ms_sd:5.043, ns:223.33, j:0.102809, j_sd:0.024662, ratio:1.00 },
+        { id:'cpp20_clang_o3', desc:'C++20 native (clang++ -std=c++20 -O3)', ms:21.0224, ms_sd:1.6574, ns:210.22, j:0.108996, j_sd:0.013359, ratio:1.06 },
+        { id:'rust_wasm32_node', desc:'Rust → WebAssembly (wasm32 in Node.js)', ms:84.2995, ms_sd:11.3344, ns:843.00, j:0.447975, j_sd:0.088130, ratio:4.36 },
+        { id:'javascript_bigint_node', desc:'JavaScript (Node.js ES2024 BigInt)', ms:717.9546, ms_sd:36.3038, ns:7179.55, j:4.402059, j_sd:0.404803, ratio:42.82 },
+        { id:'python_3_13', desc:'Python 3.13 (CPython int)', ms:2945.8158, ms_sd:284.0329, ns:29458.16, j:13.599870, j_sd:1.908592, ratio:132.28 }
+      ];
+
+      var H2 = [
+        { pair:'cpp_f64_strict vs rust_f64_strict', mech:'Same-ISA IEEE-754 f64 algebraic+sqrt (FMA off): Clang vs Rustc', div:false, b:null, m:null, g:null },
+        { pair:'cpp_f64_strict vs js_f64_strict', mech:'Same-ISA IEEE-754 f64 algebraic+sqrt (FMA off): Clang vs V8 Number', div:false, b:null, m:null, g:null },
+        { pair:'cpp_f64_strict vs py_f64_strict', mech:'Same-ISA IEEE-754 f64 algebraic+sqrt (FMA off): Clang vs CPython float', div:false, b:null, m:null, g:null },
+        { pair:'cpp_f64_strict_trig vs rust_f64_strict_trig', mech:'Same-OS libm sin/cos (f64 strict): Clang vs Rustc', div:false, b:null, m:null, g:null },
+        { pair:'cpp_f64_strict_trig vs py_f64_strict_trig', mech:'Same-OS libm sin/cos (f64 strict): Clang vs CPython math.sin', div:false, b:null, m:null, g:null },
+        { pair:'cpp_f64_strict vs cpp_f64_fastmath_fma', mech:'Compiler FMA contraction & reassociation (-O3 -ffast-math)', div:true, b:192, m:6576, g:10093 },
+        { pair:'cpp_f64_strict_trig vs js_f64_math_sin_trig', mech:'Cross-runtime transcendental: system libm vs Node.js V8 Math.sin/cos', div:true, b:37, m:5900, g:9136 },
+        { pair:'cpp_f64_strict_trig vs cpp_f64_fastmath_trig', mech:'Transcendental + FMA contraction (f64 strict vs -O3 -ffast-math)', div:true, b:7, m:6750, g:9802 },
+        { pair:'cpp_f64_strict vs cpp_f32_strict', mech:'Precision step-down: IEEE-754 binary64 (f64) vs binary32 (f32)', div:true, b:1, m:9, g:2240 },
+        { pair:'cpp_f64_strict_trig vs cpp_f32_strict_trig', mech:'Transcendental + binary32 precision: f64 strict vs f32 strict', div:true, b:1, m:8, g:1370 }
+      ];
+
+      function syncUrl(){
+        if (!window.history || !window.history.replaceState) return;
+        var u = new URL(window.location.href);
+        u.searchParams.set('ckpt', document.getElementById('s-ckpt').value);
+        u.searchParams.set('mins', document.getElementById('s-mins').value);
+        u.searchParams.set('hz', document.getElementById('s-hz').value);
+        u.searchParams.set('h2', document.getElementById('f-h2').value);
+        u.searchParams.set('logd0', document.getElementById('s-logd0').value);
+        u.searchParams.set('lam', document.getElementById('s-lam').value);
+        window.history.replaceState(null, '', u.pathname + u.search + u.hash);
+      }
+
+      function renderH1(updateQ){
+        var ck = document.getElementById('s-ckpt').value;
+        var mins = parseFloat(document.getElementById('s-mins').value);
+        var hz = parseFloat(document.getElementById('s-hz').value);
+        var totalTicks = mins * 60 * hz;
+        document.getElementById('v-ckpt').textContent = Number(ck).toLocaleString('en-US');
+        document.getElementById('v-mins').textContent = mins.toFixed(0) + ' min';
+        document.getElementById('v-hz').textContent = hz.toFixed(0) + ' Hz';
+        document.getElementById('o-ckpt-tick').textContent = Number(ck).toLocaleString('en-US');
+        document.getElementById('o-ckpt-hash').textContent = CKPTS[ck] || CKPTS['100000'];
+        document.getElementById('th-session').textContent = 'Session J (' + (totalTicks / 1000).toFixed(0) + 'k ticks)';
+        document.getElementById('h1-tbody').innerHTML = H1.map(function(t){
+          var sj = t.j * (totalTicks / 100000);
+          return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14);">' +
+            '<td style="padding: 0.45rem 0.5rem; font-family: var(--font-mono); font-weight: 600;">' + t.desc + '</td>' +
+            '<td style="padding: 0.45rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + t.ms.toFixed(2) + ' ± ' + t.ms_sd.toFixed(1) + '</td>' +
+            '<td style="padding: 0.45rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + t.ns.toFixed(1) + '</td>' +
+            '<td style="padding: 0.45rem 0.5rem; text-align: right; font-family: var(--font-mono); font-weight: 600;">' + t.j.toFixed(3) + ' ± ' + t.j_sd.toFixed(3) + '</td>' +
+            '<td style="padding: 0.45rem 0.5rem; text-align: right; font-family: var(--font-mono); color: var(--color-brand-amber); font-weight: 700;">' + t.ratio.toFixed(2) + '×</td>' +
+            '<td style="padding: 0.45rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + (sj < 10 ? sj.toFixed(3) + ' J' : sj.toFixed(1) + ' J') + '</td>' +
+            '<td style="padding: 0.45rem 0.5rem; text-align: center; font-family: var(--font-mono); color: var(--color-brand-cyan); font-weight: 700;">YES (100/100)</td>' +
+          '</tr>';
+        }).join('');
+        if (updateQ) syncUrl();
+        return { checkpoint_tick: +ck, sha256: CKPTS[ck], session_minutes: mins, tick_hz: hz, session_ticks: totalTicks, targets: H1 };
+      }
+
+      function renderH2(updateQ){
+        var mode = document.getElementById('f-h2').value;
+        var logd0 = parseFloat(document.getElementById('s-logd0').value);
+        var lam = parseFloat(document.getElementById('s-lam').value);
+        document.getElementById('v-logd0').textContent = logd0.toFixed(1);
+        document.getElementById('v-lam').textContent = lam.toFixed(2) + ' s⁻¹';
+        var lnRatio = -logd0 * Math.LN10;
+        var tSec = lnRatio / lam;
+        var tTicks = Math.round(tSec * 60);
+        document.getElementById('o-lyap').textContent = tSec.toFixed(1) + ' s (' + tTicks.toLocaleString('en-US') + ' t)';
+        var list = H2.filter(function(r){
+          if (mode === 'strict') return !r.div;
+          if (mode === 'diverged') return r.div;
+          return true;
+        });
+        document.getElementById('v-h2-cnt').textContent = list.length + ' pairs';
+        document.getElementById('h2-tbody').innerHTML = list.map(function(r){
+          var c = r.div ? 'var(--color-brand-amber)' : 'var(--color-brand-cyan)';
+          return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14);">' +
+            '<td style="padding: 0.42rem 0.5rem; font-family: var(--font-mono); font-weight: 600;">' + r.pair + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem;">' + r.mech + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono); color: ' + c + '; font-weight: 700;">' + (r.b == null ? 'None (>25,000)' : r.b.toLocaleString('en-US')) + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + (r.m == null ? 'None (>25,000)' : r.m.toLocaleString('en-US')) + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono); color: ' + c + '; font-weight: 700;">' + (r.g == null ? 'None (>25,000)' : r.g.toLocaleString('en-US')) + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + (r.g == null ? '> 416.7 s' : (r.g / 60).toFixed(1) + ' s') + '</td>' +
+          '</tr>';
+        }).join('');
+        if (updateQ) syncUrl();
+        return { filter: mode, log10_delta0: logd0, lyapunov_lambda: lam, predicted_t_star_s: +tSec.toFixed(2), predicted_ticks_60hz: tTicks, rows: list };
+      }
+
+      ['s-ckpt','s-hz'].forEach(function(id){ document.getElementById(id).addEventListener('change', function(){ renderH1(true); }); });
+      document.getElementById('s-mins').addEventListener('input', function(){ renderH1(true); });
+      document.getElementById('f-h2').addEventListener('change', function(){ renderH2(true); });
+      ['s-logd0','s-lam'].forEach(function(id){ document.getElementById(id).addEventListener('input', function(){ renderH2(true); }); });
+
+      var qs = new URLSearchParams(window.location.search);
+      if (qs.get('ckpt') && CKPTS[qs.get('ckpt')]) document.getElementById('s-ckpt').value = qs.get('ckpt');
+      if (qs.get('mins')) document.getElementById('s-mins').value = qs.get('mins');
+      if (qs.get('hz')) document.getElementById('s-hz').value = qs.get('hz');
+      if (qs.get('h2')) document.getElementById('f-h2').value = qs.get('h2');
+      if (qs.get('logd0')) document.getElementById('s-logd0').value = qs.get('logd0');
+      if (qs.get('lam')) document.getElementById('s-lam').value = qs.get('lam');
+      renderH1(false);
+      renderH2(false);
+
+      window.openieLivingLab = {
+        studyId: 'game-engines',
+        inspectGeH1Replay: function(opts){
+          if (opts && opts.ckpt && CKPTS[String(opts.ckpt)]) document.getElementById('s-ckpt').value = String(opts.ckpt);
+          if (opts && opts.mins != null) document.getElementById('s-mins').value = String(opts.mins);
+          if (opts && opts.hz != null) document.getElementById('s-hz').value = String(opts.hz);
+          return renderH1(true);
+        },
+        inspectGeH2Divergence: function(opts){
+          if (opts && opts.filter) document.getElementById('f-h2').value = opts.filter;
+          if (opts && opts.log10_delta0 != null) document.getElementById('s-logd0').value = String(opts.log10_delta0);
+          if (opts && opts.lambda != null) document.getElementById('s-lam').value = String(opts.lambda);
+          return renderH2(true);
+        }
+      };
+
+      var mc = document.modelContext || navigator.modelContext;
+      if (window.isSecureContext && mc && typeof mc.registerTool === 'function') {
+        [
+          {
+            name: 'inspect_game_engines_ge_h1',
+            title: 'Inspect GE-H1 5-target 100,000-tick replay and L3 reported_j',
+            description: 'Returns canonical SHA-256 checkpoints and L3 reported_j scaling across Rust, C++20, WebAssembly, Node BigInt, and Python 3.13.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                ckpt: { type: 'number', enum: [1000, 10000, 25000, 50000, 75000, 100000] },
+                mins: { type: 'number', minimum: 5, maximum: 240 },
+                hz: { type: 'number', enum: [60, 120, 240] }
+              },
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.inspectGeH1Replay(inp || {}); },
+            annotations: { readOnlyHint: true }
+          },
+          {
+            name: 'inspect_game_engines_ge_h2',
+            title: 'Inspect GE-H2 floating-point divergence horizons and Lyapunov cascade',
+            description: 'Filters the 10 tested 25,000-tick floating-point comparisons and computes t* = (1/lambda) ln(1/delta_0).',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                filter: { type: 'string', enum: ['all', 'strict', 'diverged'] },
+                log10_delta0: { type: 'number', minimum: -16, maximum: -3 },
+                lambda: { type: 'number', minimum: 0.05, maximum: 3.0 }
+              },
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.inspectGeH2Divergence(inp || {}); },
+            annotations: { readOnlyHint: true }
+          }
+        ].forEach(function(t){ try { Promise.resolve(mc.registerTool(t)).catch(function(){}); } catch(_e){} });
+      }
+    })();
+  </script>
+</body>
+</html>

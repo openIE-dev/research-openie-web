@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout
   title={"Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins"}
-  description={"About: Writing a Game Once and Running It Everywhere. Rules and simulation can be replayed exactly under strict arithmetic; rendering across graphics hardware can only agree within a measured tolerance."}
+  description={"About: Writing a Game Once and Running It Everywhere. Executed GE-H1 (100,000 ticks across Rust, Wasm32, C++20, Node BigInt, and Python: 0/1,000 SHA-256 mismatches) and GE-H2 (25,000-tick floating-point divergence horizons), while cross-GPU wgpu rendering tolerance remains open."}
 >
   <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
     <p class="section-label mb-4">Research study · about</p>
@@ -12,14 +12,14 @@ import Layout from '../../layouts/Layout.astro';
       Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins
     </h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
-      This study asks whether a game can be written once as a checked state machine and then projected into several engines and languages. The answer drawn from the sources: yes for game rules and simulation, under strict numeric discipline; no for bit-exact pixels across graphics hardware, where only tolerance-based agreement is achievable.
+      This study asks whether a game can be written once as a checked state machine and then projected into several engines and languages. Both the surveyed specifications and two executed falsifier suites (Section 6.1) confirm the boundary: yes for game rules and simulation under pinned arithmetic (<code>GE-H1</code>: <code>0 / 1,000</code> pairwise <code>SHA-256</code> checkpoint mismatches across <code>100,000</code> ticks in native Rust, Rust WebAssembly, C++20, Node.js <code>BigInt</code>, and Python <code>3.13</code>); no when unpinned floating-point operations enter chaotic collisions (<code>GE-H2</code>) or when pixels are rendered across graphics hardware, where cross-GPU <code>wgpu</code> tolerance calibration remains open (<code>measured_j = None</code>, <code>board_metered = false</code>).
     </p>
     <div class="mt-8 glass-card p-6">
       <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">In plain words</p>
       <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
-        <li>The rules of a game (who moves, what collides, who wins) can be stated once and replayed exactly, provided the arithmetic is pinned down.</li>
-        <li>The pictures a game draws cannot be made identical on every graphics card. They can be checked to stay within a measured error.</li>
-        <li>Today's game description formats each cover one slice. Almost none checks the seams between slices, and that seam is where this design concentrates its effort.</li>
+        <li>Under <code>Q32.32</code> 64-bit integer physics (<code>GE-H1</code>), a 16-body 2D arena replays bit-for-bit across all five projections for <code>100,000</code> ticks (<code>0 / 1,000</code> <code>SHA-256</code> mismatches), spending <code>0.103 J</code> in native Rust, <code>0.109 J</code> in C++20, <code>0.448 J</code> in WebAssembly, <code>4.40 J</code> in Node.js <code>BigInt</code>, and <code>13.60 J</code> in Python <code>3.13</code> (Apple M5 Max <code>L3</code> <code>reported_j</code>).</li>
+        <li>Under floating-point physics (<code>GE-H2</code>, <code>25,000</code> ticks), compiler <code>-ffast-math</code> fused multiply-add contraction diverges at tick <code>192</code>, V8 <code>Math.sin</code> vs system <code>libm</code> diverges at tick <code>37</code>, and <code>f32</code> precision diverges at tick <code>1</code> — each cascading into macroscopic gameplay desynchronization within <code>1,370</code> to <code>10,093</code> ticks.</li>
+        <li>Cross-ISA (<code>x86-64</code> vs <code>arm64</code>) verification and <code>GE-H3</code> onward — including cross-GPU <code>wgpu</code>/WGSL pixel-error tolerance and multi-engine emitters — remain open work.</li>
       </ol>
     </div>
 
@@ -29,6 +29,9 @@ import Layout from '../../layouts/Layout.astro';
       </a>
       <a href="/pdfs/game-engines.pdf" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors" download>
         Download PDF
+      </a>
+      <a href="/living/game-engines/" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/30 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
+        Interactive explorer → /living/game-engines/
       </a>
       <a href="/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">
         ← Catalog

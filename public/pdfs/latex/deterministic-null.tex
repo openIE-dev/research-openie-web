@@ -30,10 +30,10 @@
 \captionsetup{font=small,labelfont=bf}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
-\title{\vspace{-1.4em}\textbf{Deterministic Null: Pre-Registered Null-Model Control Protocol,\\Five-Language \texttt{SPEC v0.4} + \texttt{SATB} Conformance, and Confirmatory Runs \texttt{exp-001} \& \texttt{exp-002}}\\[0.30em]
-\large Measuring the Relevance of Stochastic Neural Substrates Across Frontier Cloud (\texttt{Opus 5.5}, \texttt{Sonnet 5.5}),\\[-0.1em]\large Local Open-Weight (\texttt{Qwen 3.6 35B-A3B}, \texttt{Gemma 4 E4B-it}), and \texttt{Claude Code} Harnesses ($N = 4{,}030$ Instances)}
-\author{\texttt{ai-null-hypothesis} Working Repository\\[-0.15em]\small(\texttt{SPEC.md v0.4} $\cdot$ \texttt{HYPOTHESIS.md v0.6} $\cdot$ \texttt{reg-exp-001} [\texttt{drand 6663734}] $\cdot$ \texttt{reg-exp-002} [\texttt{drand 6664089}])}
-\date{November 22, 2026 \quad|\quad Status: \textbf{Gates G0, G1, G2, Track-A \texttt{exp-001} ($2{,}840$) \& Track-B \texttt{exp-002} ($1{,}190$) Complete}}
+\title{\vspace{-1.4em}\textbf{Deterministic Null: Pre-Registered Null-Model Control Protocol,\\Five-Language \texttt{SPEC v0.4} + \texttt{SATB} Conformance, and Runs \texttt{exp-001}, \texttt{exp-002} \& \texttt{exp-003}}\\[0.30em]
+\large Measuring the Relevance of Stochastic Neural Substrates Across Multi-Vendor Cloud (\texttt{Anthropic}, \texttt{OpenAI}, \texttt{xAI}, \texttt{DeepSeek}, \texttt{Qwen}),\\[-0.1em]\large Local Open-Weight (\texttt{Qwen 3.6 35B-A3B}, \texttt{Gemma 4 E4B-it}), and Multi-Turn Repository Harnesses}
+\author{\texttt{deterministic-null} Working Repository\\[-0.15em]\small(\texttt{SPEC.md v0.4} $\cdot$ \texttt{HYPOTHESIS.md v0.6} $\cdot$ \texttt{reg-exp-001} [\texttt{drand 6663734}] $\cdot$ \texttt{reg-exp-002} [\texttt{drand 6664089}])}
+\date{November 22, 2026 \quad|\quad Status: \textbf{Gates G0--G2, Track-A \texttt{exp-001}, Track-B \texttt{exp-002} \& Companion \texttt{exp-003} Complete}}
 
 \begin{document}
 \sloppy
@@ -56,7 +56,7 @@ In \texttt{HYPOTHESIS.md v0.6}, the \emph{null model} (reference system) and \em
 
 \section{Normative \texttt{SPEC v0.4} Closures, \texttt{SATB C1--C12}, and \textbf{Gate G2}}
 
-All five \texttt{SPEC.md} \S9 items (\texttt{S-1}..\texttt{S-5}) and \texttt{rust/src/satb/} pass \textbf{27/27} Rust unit tests and \textbf{12/12} \texttt{SATB C1--C12} checks + falsifiers: outcomes map losslessly onto \texttt{pass | fail | refuse | killed} (\texttt{OQ-3}); whole-SUT raw window energy (\texttt{A2}) is primary (\texttt{OQ-4}); macOS uses rootless \texttt{macmon} \texttt{IOReport} (\texttt{L2 A2}) and \texttt{proc\_pid\_rusage(\allowbreak RUSAGE\_INFO\_V6).\allowbreak ri\_energy\_nj} (\texttt{L3 D}, zero \texttt{sudo}, \texttt{OQ-5}); closed-API server energy is strictly \texttt{N} (\texttt{not\_available}, never estimated from fleet medians, \texttt{OQ-6}); and Falsifier~6 drops drifted derived net-above-idle subtractions automatically while preserving raw window joules. Table~\ref{tab:conf} summarises \textbf{Gate G2} across five languages alongside segregated \textbf{WP4 Positive Controls}.
+All five \texttt{SPEC.md} \S9 items (\texttt{S-1}..\texttt{S-5}) and \texttt{rust/src/satb/} pass \textbf{28/28} Rust unit tests and \textbf{12/12} \texttt{SATB C1--C12} checks + falsifiers: outcomes map losslessly onto \texttt{pass | fail | refuse | killed} (\texttt{OQ-3}); whole-SUT raw window energy (\texttt{A2}) is primary (\texttt{OQ-4}); macOS uses rootless \texttt{macmon} \texttt{IOReport} (\texttt{L2 A2}) and \texttt{proc\_pid\_rusage(\allowbreak RUSAGE\_INFO\_V6).\allowbreak ri\_energy\_nj} (\texttt{L3 D}, zero \texttt{sudo}, \texttt{OQ-5}); closed-API server energy is strictly \texttt{N} (\texttt{not\_available}, never estimated from fleet medians, \texttt{OQ-6}); and Falsifier~6 drops drifted derived net-above-idle subtractions automatically while preserving raw window joules. Table~\ref{tab:conf} summarises \textbf{Gate G2} across five languages alongside segregated \textbf{WP4 Positive Controls}.
 
 \begin{table}[h!]
 \centering
@@ -188,5 +188,39 @@ A post-\texttt{exp-001} audit noted that Track-A drew from modulo-$6$ to modulo-
 
 \textbf{Two Regimes Under Good--Turing Unseen Mass $N_1(t)/t$, Multi-Turn Repositories, and Online Crystallization.}
 \emph{``Of 5 task classes sampled from Track-B Unique-Instance External Public Benchmarks Stratum, relevance was shown in 4, excluded in 0, undetermined in 0 and not assessed in 1, at tier 1.''} Good--Turing unseen key mass separates the two tracks: where structural cells saturate ($N_1(t)/t \to 0$), frozen \texttt{Shape D} captures $39.6\%$ (\texttt{tau-bench N0}), $46.0\%$ (\texttt{SWE-bench}), $69.6\%$ (\texttt{Unique 3-SAT}), and $100\%$ (Track-A formal proofs) at zero decision-time model calls. Conversely, where fine keys remain compositional ($N_1(t)/t = 0.9917$ on \texttt{BigCodeBench}, and $6$ unseen multi-file bug-fix repositories in \texttt{joule-bench/tasks/real} where \texttt{Lane B Opus/Sonnet/Qwen 3.6} and \texttt{Shape H Claude Code 2.1.330} all achieved $6/6 = 1.000$ after pristine test restoration against cold \texttt{Shape D} $0/6$), neural synthesis supplies a genuine $+52.8$ to $+95.0$-point increment. Yet under \S7 online crystallization ($600$ Zipfian $s=0.85$ requests over \texttt{BigCodeBench}), verifying and caching model solutions on first miss preserves $\mathbf{98.0\%}$ completion while cutting LLM calls by $\mathbf{72.17\%}$ ($167$ vs.\ $600$), API cost by $\mathbf{3.59\times}$ ($\$2.04$ vs.\ $\$7.33$), and local \texttt{Qwen 3.6} energy by $\mathbf{3.59\times}$ ($18{,}851\;\text{J}$ vs.\ $67{,}730\;\text{J}$).
+
+\subsection{Reviewer-Closure Companion Suite (\texttt{exp-003}: Multi-Vendor Breadth, Unique 3-SAT, and Real \texttt{SWE-bench} Patching)}
+
+Anchored read-only to \texttt{suite\_exp002/manifest.json} and post-tag \texttt{drand} round \texttt{6664089} ($0$ store or manifest mutations), companion suite \texttt{exp-003} (\texttt{bench/results/\allowbreak exp\_003\_reviewer\_closures.json}, Table~\ref{tab:exp003}) closed three methodological follow-ups:
+\begin{enumerate}[leftmargin=1.5em,itemsep=1.5pt,topsep=1.5pt]
+  \item \textbf{Closure A --- Multi-Vendor Cloud Frontier Breadth ($n=30$/class $=150$ unique instances/vendor):} Paired instance-for-instance against frozen \texttt{Shape D} (\texttt{N1} external 4-class mean $.275$) and \texttt{Opus 5.5} ($.925$), \texttt{OpenAI gpt-oss-120b} achieved $\mathbf{.733}$ across the four external public benchmarks ($\hat{\Delta}=+.458$, \textbf{Relevance shown} in $4/4$ external classes: \texttt{BFCL} $.867$, \texttt{tau-bench} $.700$, \texttt{BigCodeBench} $.467$, \texttt{SWE-bench} $.900$; $\$0.15$) and \texttt{xAI Grok 4.20} achieved $\mathbf{.717}$ ($\hat{\Delta}=+.442$, tying \texttt{Opus 5.5} at $.900$ on \texttt{BFCL v3}; $\$0.64$). Fireworks-hosted \texttt{DeepSeek V4 Flash} ($.308$) and \texttt{Qwen 3.8 Max} ($.183$) spent most completion budgets inside internal reasoning traces under fixed \texttt{max\_tokens}.
+  \item \textbf{Closure B --- Resolving \texttt{formal.unique\_3sat\_drat} ($n=50$ held-out 12-var 50-clause 3-CNF formulas):} In \texttt{exp-002}, single-turn \texttt{Opus 5.5} scored $.080$ ($4/50$) because \texttt{max\_tokens = 1{,}024} truncated adaptive thinking on $46/50$ instances (\texttt{killed}). Raising \texttt{Opus 5.5} headroom to $8{,}192$ tokens ($77{,}724$ thinking tokens, $\$2.14$) lifted completion to $\mathbf{.980}$ ($49/50$, $\hat{\Delta}=+.200$ over \texttt{TH2}-bounded $O(m)$ \texttt{Shape D} $\texttt{N1}=.780$, $95\%$ BCa $[+.080,+.340]$, \textbf{Relevance shown} vs.\ bounded \texttt{Shape D}), while \texttt{xAI Grok 4.20 Reasoning} ($519\text{k}$ reasoning tokens) tied \texttt{N1} at $\mathbf{.780}$ ($39/50$, $\hat{\Delta}=.000$, \textbf{Undetermined}). A 6-turn pure $O(m)$ clause-checker loop (reporting unsatisfied clause indices without solver or ground-truth access) lifted both \texttt{Sonnet 5.5} ($1.08$ mean turns, $\$1.98$) and \texttt{Opus 5.5} ($1.00$ turn, $\$2.15$) to $\mathbf{1.000}$ ($50/50$)---matching standalone zero-store classical \texttt{CDCL+DRAT} ($\texttt{B1}=1.000$ in $<\!1\;\text{ms}$ at $\$0.00$, \S10 Condition~2b).
+  \item \textbf{Closure C --- Real Upstream \texttt{SWE-bench Verified} Multi-Turn Patch + \texttt{pytest} Execution ($n=6$ held-out GitHub defect commits):} Across \texttt{psf/\allowbreak requests-5414}, \texttt{pytest-10051}, \texttt{pytest-10356}, \texttt{seaborn-3069}, \texttt{sympy-23824}, and \texttt{sympy-17655} (verified offline to fail \texttt{FAIL\_\allowbreak TO\_PASS} pre-patch and pass both \texttt{FAIL\_\allowbreak TO\_PASS} and \texttt{PASS\_\allowbreak TO\_PASS} under gold patches, with pristine upstream tests restored before grading), cold \texttt{Shape D} ($t=1$) completed $\mathbf{0/6}$ ($.000$), \texttt{Lane B Opus 5.5} (\texttt{max\_\allowbreak turns=10}) resolved $\mathbf{5/6}$ ($\mathbf{.833}$, $33$ calls, $\$0.86$), \texttt{Sonnet 5.5} resolved $\mathbf{4/6}$ ($.667$, $\$0.59$), \texttt{xAI Grok 4.20} resolved $\mathbf{1/6}$ ($.167$), and \texttt{Shape D} Online Crystallized Replay ($t=2$) reproduced all $\mathbf{5/6}$ ($\mathbf{.833}$) verified patches in $17.1\;\text{s}$ at $0$ LLM calls and $\$0.00$.
+\end{enumerate}
+
+\begin{table}[ht!]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.4pt}
+\caption{\textbf{Companion Suite \texttt{exp-003} Summary} on post-tag \texttt{drand 6664089} held-out slices: (A) Multi-vendor Track-B ($150$ inst./vendor), (B) \texttt{formal.unique\_3sat\_drat} resolution ($n=50$), and (C) real upstream \texttt{SWE-bench Verified} multi-turn \texttt{pytest} repair ($n=6$).}
+\label{tab:exp003}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l l r r r c r l}
+\toprule
+\textbf{Closure / Evaluation Slice} & \textbf{Evaluated Arm} & $n$ & \textbf{Pass} & \textbf{Ref.\ (\texttt{N1} / \texttt{B1})} & $\hat{\Delta}$ \textbf{vs.\ \texttt{N1} (95\% BCa)} & \textbf{Calls / USD} & \textbf{Resolution / Finding} \\
+\midrule
+\textbf{A.} Track-B External 4-Class Mean & \texttt{OpenAI gpt-oss-120b} & $120$ & $.733$ & $.275$ / --- & $+0.458$ ($4/4$ shown) & $120 / \$0.12$ & Replicates neural relevance cross-lab \\
+\textbf{A.} Track-B External 4-Class Mean & \texttt{xAI Grok 4.20} & $120$ & $.717$ & $.275$ / --- & $+0.442$ ($.900$ \texttt{BFCL}) & $120 / \$0.58$ & Matches \texttt{Opus 5.5} on \texttt{BFCL v3} \\
+\midrule
+\textbf{B.} \texttt{unique\_3sat\_drat} (Single, $8\text{k}$ tok) & \texttt{Opus 5.5} Ext.\ Thinking & $50$ & $.980$ & $.780 \;/\; 1.000$ & $+0.200$ $[+.08, +.34]$ & $50 / \$2.14$ & Lifts $1\text{k}$-cap truncation ($.080 \to .980$) \\
+\textbf{B.} \texttt{unique\_3sat\_drat} (Single, $8\text{k}$ tok) & \texttt{xAI Grok 4.20 Reasoning} & $50$ & $.780$ & $.780 \;/\; 1.000$ & $+0.000$ $[-.18, +.18]$ & $50 / \$0.10$ & Clears $2\delta$; ties $O(m)$ \texttt{Shape D N1} \\
+\textbf{B.} \texttt{unique\_3sat\_drat} ($O(m)$ 6-Turn) & \texttt{Sonnet 5.5} / \texttt{Opus 5.5} & $50$ & $1.000$ & $.780 \;/\; 1.000$ & $+0.220$ $[+.12, +.36]$ & $54\text{--}50 / \$1.98\text{--}2.15$ & Matches $\$0.00$ \texttt{CDCL+DRAT B1} ($1.000$) \\
+\midrule
+\textbf{C.} Real \texttt{SWE-bench Verified} (\texttt{pytest}) & \texttt{Lane B Opus} / \texttt{Sonnet 5.5} & $6$ & $.833 / .667$ & $.000$ (cold $t\!=\!1$) & $+0.833 \;/\; +0.667$ & $33 / \$0.86 \cdot 31 / \$0.59$ & Real upstream GitHub repo patches \\
+\textbf{C.} Real \texttt{SWE-bench Verified} ($t\!=\!2$ Replay) & \texttt{Shape D} Crystallized Store & $6$ & $.833$ & $.000$ (cold $t\!=\!1$) & $+0.833$ (exact replay) & $0 / \$0.00$ & $5/6$ verified patches replayed in $17.1\;\text{s}$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
 
 \end{document}

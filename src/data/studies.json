@@ -60,7 +60,7 @@
       "pdf": "https://research.openie.dev/pdfs/deterministic-null.pdf",
       "figures": "/living/deterministic-null/",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "Constructs and pre-registers a zero-model-call 64-bit integer case loop (Shape D: strict N0 and dev-crystallized N1, verified bit-exact across Rust, C++20, Go, Julia, and Python) under OpenTimestamps Bitcoin Calendar proofs and League of Entropy drand randomness rounds (6663734 and 6664089), and measures the paired increment of Claude Opus 5.5, Claude Sonnet 5.5, Qwen 3.6 35B-A3B, and Gemma 4 E4B-it across 4,030 held-out instances and 6 multi-file Python repositories. Bounded formal and structured classes exclude neural relevance on 9 of 10 Track-A cells; unique external public benchmarks (BFCL v3, tau-bench Retail, BigCodeBench v0.1.3, SWE-bench Verified) show +52.80 to +95.00 percentage-point neural increments while online Zipfian crystallization cuts calls and reported_j spend by 3.59x. Local Apple M5 Max counters are reported_j; no rail or wall power monitor was attached.",
+      "summary": "Constructs and pre-registers a zero-model-call 64-bit integer case loop (Shape D: strict N0 and dev-crystallized N1, verified bit-exact across Rust, C++20, Go, Julia, and Python in openIE-dev/deterministic-null) under OpenTimestamps Bitcoin Calendar proofs and League of Entropy drand randomness rounds (6663734 and 6664089), and measures the paired increment of Claude Opus 5.5, Claude Sonnet 5.5, OpenAI gpt-oss-120b, xAI Grok 4.20, Qwen 3.6 35B-A3B, and Gemma 4 E4B-it across 4,030 held-out instances and 6 real upstream SWE-bench Verified repositories. Bounded formal and structured classes exclude single-turn neural relevance on 9 of 10 Track-A cells while extended-thinking (49/50) and O(m) clause feedback (50/50) close Unique 3-SAT DRAT; unique external public benchmarks (BFCL v3, tau-bench Retail, BigCodeBench v0.1.3, SWE-bench Verified) show +45.80 to +95.00 percentage-point neural increments while online Zipfian crystallization cuts calls and reported_j spend by 3.59x. Local Apple M5 Max counters are reported_j; no rail or wall power monitor was attached.",
       "about": "https://research.openie.dev/about/deterministic-null/",
       "keywords": [
         "null model",
@@ -73,6 +73,56 @@
         "Satiation Benchmark",
         "Good-Turing",
         "reported_j"
+      ]
+    },
+    {
+      "id": "satb-harness",
+      "title": "Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution",
+      "short_title": "Satiation Benchmark Harness",
+      "kind": "Research study",
+      "group": "research",
+      "url": "https://research.openie.dev/papers/satb-harness/",
+      "pdf": "https://research.openie.dev/pdfs/satb-harness.pdf",
+      "figures": "/living/satb-harness/",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Specifies and empirically audits the Satiation Benchmark (SATB) evaluation stack: a deterministic sequential Rust reference harness (Lane B with ContextRule_v0 80% oldest-tool-output elision and Truncate_v0 8+8 KiB truncation), a loopback proxy bridge (Shapes D, M, H, and I), a five-block SUT fingerprint, twelve conformance checks (C1-C12), and a five-level rootless telemetry engine (L0-L4 crossed with attribution labels A1-N). Measured on Apple M5 Max: 12/12 C1-C12 checks pass (0-byte replay drift across 149,747 B, 2.073 ms process-group SIGKILL cleanup, 24/24 and 6/6 multi-file completion parity with Claude Code 2.1.330 at 1.67x-3.44x lower token traffic); live C12 probes across Anthropic, Cerebras, and xAI expose HTTP 400 temperature=0 deprecation on Claude 5.5 and residual seed=42 variance on cloud inference; boundary rusage reads draw 0.011 mW vs 66.44 mW at 10 Hz; CPU-proportional Kepler splits diverge from exact sequential boundary counters by 32.59%-35.86% on L2; and Falsifier 6 drops 124/188 drifted shared-host net baselines while preserving 100% of raw L2 and L3 reported_j counters. Plain words: one fixed Rust wrapper holds context and tool policy constant, one local proxy logs every external agent call, and each energy sensor stays labelled by its true boundary without guessing closed-API server joules.",
+      "about": "https://research.openie.dev/about/satb-harness/",
+      "keywords": [
+        "Satiation Benchmark",
+        "agent harness",
+        "telemetry attribution",
+        "MCP",
+        "conformance testing",
+        "determinism",
+        "observer effect",
+        "Kepler",
+        "IOReport",
+        "reported_j"
+      ]
+    },
+    {
+      "id": "time-as-an-index",
+      "title": "Time as an Index: What It Would Take to Look Up Tomorrow",
+      "short_title": "Time as an Index",
+      "kind": "Research study",
+      "group": "research",
+      "url": "https://research.openie.dev/papers/time-as-an-index/",
+      "pdf": "https://research.openie.dev/pdfs/time-as-an-index.pdf",
+      "figures": "/living/time-as-an-index/",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Tests the premise that sequential brute-force search is safe only because future states are unindexed across CTC complexity (D-CTC = PSPACE, P-CTC = PP, unbounded Delta_2), quantum no-signalling, analog relaxation, Hellman precomputation (T*M^2 = N^2), 31 Lean 4.36.0 kernel-checked theorems (Horizon.lean and Paradox.lean, zero sorry), deterministic M1 to M8 and F5 SHA-256 spectral runs (N = 65,536 digests, 0 bins below corrected p = 10^-6), and 195 cataloged temporal anomalies (TA001-TA081), frequency edge cases (AA01-AA40), and paradoxes (P01-P74). Plain words: inside a mathematical time loop almost every math-based cipher breaks at once, leaving only one-time pads; in known physics nothing reads tomorrow early, every real lookup is precomputation paid ahead of time, and fresh salts or block hashes stop tables from starting before the question exists. No hardware power monitor was attached (board_metered is false).",
+      "about": "https://research.openie.dev/about/time-as-an-index/",
+      "keywords": [
+        "closed timelike curves",
+        "PSPACE",
+        "Hellman time-memory tradeoff",
+        "no-signalling",
+        "Gabor uncertainty",
+        "Landauer bound",
+        "Lean 4",
+        "Horizon theorem",
+        "cryptanalysis",
+        "frequency atlas"
       ]
     },
     {
@@ -131,7 +181,7 @@
       "pdf": "https://research.openie.dev/pdfs/rce.pdf",
       "figures": "/figures/rce/intent-entropy.svg",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "A system in which a program is written once as a state machine and code in other languages is generated from it: its specification, reference checker and emitters, Lean proofs and registered measurements of program dimension, with protocols and falsifiers fixed in advance. Plain words: a program is written once and generated in many languages; the language requires every input to have a declared outcome; in the engine's design, checked fixes are saved so that the same problem is not paid for twice.",
+      "summary": "A system in which a program is written once as a state machine and code in other languages is generated from it: its specification (openIE-dev/rce at 1762fb4b), reference checker and emitters, 5,537 Lean 4 kernel theorem constants (theorems T1 to T63), 2,221/2,236 passing conformance checks with 0 failures, Apple M5 Max reported_j checker receipts (49.04 mJ per Form check; measured_j unset), and registered measurements of program dimension. Plain words: a program is written once and generated in many languages; the language requires every input to have a declared outcome; in the engine's design, checked fixes are saved so that the same problem is not paid for twice.",
       "about": "https://research.openie.dev/about/rce/",
       "keywords": [
         "Reality Code Engine",
@@ -154,7 +204,7 @@
       "pdf": "https://research.openie.dev/pdfs/rce-jepa.pdf",
       "figures": "/figures/rce-jepa/architecture.svg",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "World Coding, with JEPA (a Joint Embedding Predictive Architecture) as the premise rather than the whole method. Any learned proposer may suggest a Form. The checker decides. Measured floors: median rho 9.34 over 185 hand-written programs, 0 violations in 1,275 fuzzed mutants, 0 mismatches on 10,500 streams across six targets, and a ladder that closed 111 of 151 tasks (73.5%) with zero model calls, leaving 40. No learned proposer has been trained. H15, a comparison of proposer types on those 40 tasks at equal energy, is unfinished. The Laws of Coding are the acceptance rule under test, not a result claimed for other systems.",
+      "summary": "World Coding, with JEPA (a Joint Embedding Predictive Architecture) as the premise rather than the whole method. Any learned proposer may suggest a Form. The checker decides. Measured floors: median rho 9.34 over 185 hand-written programs, 0 violations in 1,275 fuzzed mutants, 0 mismatches on 10,500 streams across six targets, H2 supported on Apple M5 Max reported_j (49.04 mJ per Form check vs 84.25 J local Qwen 3.6 proposal, ratio 0.000582), and a ladder that closed 111 of 151 tasks (73.5%) with zero model calls. On the 40 residual tasks (H15, k = 1), Claude Opus 5.5 admits 34/40 (85.0%), Claude Sonnet 5.5 32/40, xAI Grok 4.20 Reasoning 31/40, OpenAI GPT-OSS-120B 29/40, and local Qwen 3.6 35B-A3B 27/40, while Shape D (DNULLMM1) Gear-0 replays 34/40 at 0 calls (1.77 uJ lookup), hits 7/9 alpha-renamed tasks via rce fmt nameless, and cuts Zipf(0.85) calls by 4.17x. No purpose-trained latent Form JEPA has been trained yet. The Laws of Coding are the acceptance rule under test, not a result claimed for other systems.",
       "about": "https://research.openie.dev/about/rce-jepa/",
       "keywords": [
         "RCE-JEPA",
@@ -202,7 +252,7 @@
       "pdf": "https://research.openie.dev/pdfs/rce-vc.pdf",
       "figures": "/figures/rce-vc/swarm-and-timing.svg",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "A reference for the Law of Version Control: each change is admitted to one name-free repository state or refused with a recorded reason, and Git stays usable. Milestones M0 to M2 are in openIE-dev/rce-vc at commit 8bf9c9af. On that build, one core admitted a submission against 100,000 units in 188 microseconds. Receipt costs are a stated table. No joules were measured. The reference is not the Reality Code Engine language. Plain words: a named check admits or a written reason refuses; changes that do not overlap need no coordination; a writer can stay on Git.",
+      "summary": "A reference for the Law of Version Control: each change is admitted to one name-free repository state or refused with a recorded reason, and Git stays usable. Milestones M0 to M2 are in openIE-dev/rce-vc at commit aba99fce (49 offline tests). On Apple M5 Max, one core admitted a submission against 100,000 units in 69.7 to 73.6 microseconds at 317 to 365 microjoules of L3 reported_j (measured_j is unset). Receipt costs also carry the stated est_uj table. The reference is not the Reality Code Engine language. Plain words: a named check admits or a written reason refuses; changes that do not overlap need no coordination; a writer can stay on Git.",
       "about": "https://research.openie.dev/about/rce-vc/",
       "keywords": [
         "Law of Version Control",
@@ -222,9 +272,9 @@
       "group": "research",
       "url": "https://research.openie.dev/papers/game-engines/",
       "pdf": "https://research.openie.dev/pdfs/game-engines.pdf",
-      "figures": "/figures/game-engines/architecture.svg",
+      "figures": "/living/game-engines/",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "Asks whether a game can be written once as a checked state machine and projected into several engines and languages, with an IR table, a layer split (simulation, scripting, scene, rendering), a determinism boundary, a falsifier-first test plan on public benchmarks, and infeasibility flags. Plain words: game rules can be replayed exactly if the arithmetic is pinned down; pictures cannot be identical on every graphics card but can be checked within a measured error; the seams between layers are where checking is missing.",
+      "summary": "Asks whether a game can be written once as a checked state machine and projected into several engines and languages, with an IR table, a layer split (simulation, scripting, scene, rendering), a determinism boundary, and executed GE-H1 and GE-H2 benchmarks on Apple M5 Max: 100,000 ticks of 64 Q32.32 fixed-point bodies across Rust native, Rust Wasm32, C++20, Node.js BigInt, and Python 3.13 produce 0/1,000 SHA-256 checkpoint mismatches (0.103 J Rust to 13.60 J Python L3 reported_j; measured_j unset), while IEEE-754 float controls diverge at tick 1 (f32), tick 37 (libm vs V8 Math.sin), and tick 192 (FMA). Cross-ISA x86-64 parity and GE-H3 to GE-H9 remain open. Plain words: game rules replay bit-identically across five runtimes when integer arithmetic is pinned down, while standard floats drift within ticks; pictures cannot be identical on every graphics card and require tolerance checks.",
       "about": "https://research.openie.dev/about/game-engines/",
       "keywords": [
         "game engines",
@@ -265,13 +315,13 @@
       "id": "ai-reads-human",
       "title": "\"AI\" Reads Human: Human Language Encoding at Machine Speed and the Energy Cost",
       "short_title": "\"AI\" Reads Human",
-      "kind": "Research topic (work in progress)",
+      "kind": "Research study",
       "group": "research",
       "url": "https://research.openie.dev/papers/ai-reads-human/",
       "pdf": "https://research.openie.dev/pdfs/ai-reads-human.pdf",
       "figures": "/living/ai-reads-human/",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "Software agents exchange data in formats made for people to read. This topic names the extra work that causes (the impedance tax), defines it with units, and reports parse time and token counts on a reproducible 20,000-record corpus, with a table of format hazards from cited specifications and tests. No joules were measured; model energy figures are other authors' measurements. Plain words: people and computers share one written format, and the computer pays extra to read it; on our test data YAML took about 735 times as long as a fixed binary layout and about 2.2 times the tokens of CSV; energy is the next measurement and is not yet claimed.",
+      "summary": "Software agents exchange data in formats made for people to read. This study names the extra work that causes (the impedance tax), defines it with units, and measures parse time, token counts, and Apple M5 Max dual-channel reported_j across 34 parse and tiktoken workloads on a reproducible 20,000-record corpus (170 isolated windows): L3 per-process parsing spans 2,053.8x from 280.4 nJ/record (fixed binary struct) to 2,212.1 nJ/record (stdlib JSON, 7.89x), 69,922.1 nJ/record (C libyaml, 249.4x), and 575,799.3 nJ/record (pure-Python YAML), while cl100k_base JSON tokenization costs 27,678.7 nJ/record (12.51x json.loads). Shared-host L2 IOReport triggers Falsifier 6 on 109/170 windows; measured_j is unset. Plain words: people and computers share one written format, and the computer pays extra time, tokens, and chip energy to read it.",
       "about": "https://research.openie.dev/about/ai-reads-human/",
       "keywords": [
         "human-readable formats",
@@ -396,6 +446,7 @@
       "group": "research",
       "url": "https://research.openie.dev/papers/latency/",
       "pdf": "https://research.openie.dev/pdfs/latency.pdf",
+      "figures": "/living/latency/",
       "author": "David Charlot, Open Interface Engineering",
       "summary": "A dated survey of methods that lower the cost of computer intelligence, evidence on the gap between publication and deployment, and a cadence model in which reporting and funding calendars quantize release decisions, with a forcing-function result for tools that lower the cost of automation. It adds what public filings document about capital flows among labs, clouds and chip makers with a closed-loop test, a cost model in dollars and joules per task, open methods and alternative hardware measured against the incumbent stack, and maps of compute, power and models. Plain words: cheaper methods are published long before most products use them; most of what a task costs is the machine and not the electricity; part of the wait is engineering and part is calendars; once the work is cheap, what is left to charge for is the cost of switching away.",
       "about": "https://research.openie.dev/about/latency/",

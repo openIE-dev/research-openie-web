@@ -1,0 +1,132 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[margin=0.72in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{caption}
+
+\definecolor{satbblue}{HTML}{1B4965}
+\definecolor{satbteal}{HTML}{0F766E}
+\definecolor{satbamber}{HTML}{B45309}
+\definecolor{satbgray}{HTML}{475569}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=satbblue,
+  urlcolor=satbblue,
+  citecolor=satbblue,
+  pdftitle={Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution},
+  pdfauthor={Open Interface Engineering}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.8pt}
+\captionsetup{font=small,labelfont=bf}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\title{\vspace{-1.4em}\textbf{Satiation Benchmark (\texttt{SATB}): Reference Harness, Adapter Bridge, and Five-Level Telemetry Attribution}\\[0.30em]
+\large Deterministic Sequential Rust Wrapper (\texttt{Lane B}), \texttt{C1--C12} Conformance, Multi-Vendor Determinism Probes,\\[-0.1em]\large Observer-Effect Cadences, and \texttt{B}-vs-\texttt{C} Attribution Falsifiers on Apple M5 Max}
+\author{Open Interface Engineering\\[-0.15em]\small(\texttt{satb-harness} Archival Twin $\cdot$ Companion to \texttt{/papers/satb-harness/} $\cdot$ \texttt{board\_metered = false} $\cdot$ \texttt{measured\_j = None})}
+\date{November 22, 2026 \quad|\quad Status: \textbf{Research Study $\cdot$ Draft (\texttt{12/12 C1--C12} \& Falsifiers Measured)}}
+
+\begin{document}
+\sloppy
+\emergencystretch=3em
+\maketitle
+\vspace{-1.1em}
+
+\begin{abstract}
+\noindent
+Benchmark comparisons across language models and coding agents routinely conflate neural capability with wrapper policy and conflate shared-host operating-system counters with physical rail joules. On \texttt{Terminal-Bench 2}, swapping only the surrounding harness shifted \texttt{Gemini 2.5 Pro} task resolution by $17$ percentage points (\texttt{Terminus-2} vs.\ \texttt{OpenHands}). This paper specifies and empirically audits the \textbf{Satiation Benchmark (\texttt{SATB})} harness and telemetry architecture: (1) a fixed sequential Rust reference harness (\textbf{\texttt{Lane B}}: \texttt{TEMPLATE\_v0}, deterministic $80\%$-window oldest-tool-output elision \texttt{ContextRule\_v0} making zero compaction model calls, sequential \texttt{TOOLS\_v0} inside a network-isolated \texttt{/work} sandbox with \texttt{Truncate\_v0} $8+8\;\text{KiB}$ bounds, and canonical outcomes \texttt{pass | fail | refuse | killed}); (2) a single loopback proxy bridge (\textbf{\texttt{Shapes D, M, H, I}}) enforcing mandatory token usage (\texttt{C7}) and isolating upstream API keys from \texttt{/work} (\texttt{C6}); (3) a five-block \texttt{JCS} (\texttt{RFC 8785}) \texttt{SUT} fingerprint and start/end canary gate; and (4) a five-level rootless telemetry engine (\textbf{\texttt{L0--L4}} crossed with attribution labels \textbf{\texttt{A1--N}}). Live verification on an \texttt{Apple M5 Max} workstation ($128\;\text{GB}$ unified memory, \texttt{macOS 27.2.1}, \texttt{macmon 0.12.0}; on-chip counters recorded as \texttt{reported\_j}) confirms \textbf{12/12} \texttt{C1--C12} checks ($0$-byte replay drift across $14$ turns and $149{,}747\;\text{B}$; $2.073\;\text{ms}$ mean 4-PID process-group \texttt{SIGKILL} cleanup vs.\ $2{,}000\;\text{ms}$ ceiling), exposes \texttt{HTTP 400} \texttt{temperature = 0} deprecation on \texttt{Claude Opus 5.5}/\texttt{Sonnet 5.5} and residual \texttt{seed = 42} variance on \texttt{Cerebras gpt-oss-120b} ($2/8$ distinct outputs), measures boundary \texttt{rusage} observer overhead at $\mathbf{0.011\;\text{mW}}$ ($108\;\mu\text{J}/10\;\text{s}$) vs.\ $66.44\;\text{mW}$ ($0.177\%$) at $10\;\text{Hz}$, demonstrates \texttt{CPU}-proportional (\texttt{Kepler}, label \texttt{C}) splitting diverging from sequential boundary counters (\texttt{B}) by $\mathbf{32.59\%\text{--}35.86\%}$ on \texttt{L2} (\texttt{Falsifier 3}), and audits \textbf{188} shared-host \texttt{L2} windows (\texttt{Falsifier 6} dropping $124$ drifted net subtractions while preserving $100\%$ of raw \texttt{L2}/\texttt{L3} \texttt{reported\_j} channels) alongside $24/24$ and $6/6$ multi-file completion parity against \texttt{Claude Code 2.1.330} (\texttt{Falsifier 8}).
+\end{abstract}
+
+\section{Harness Survey, Design Closures (\texttt{OQ-1..OQ-6}), and \texttt{Lane B} Protocol}
+
+Production and benchmark agent wrappers---including \texttt{mini-swe-agent} (stateless \texttt{subprocess.run}, linear history), \texttt{SWE-agent ACI} (100-line viewer, linter-gated edits, history folding), \texttt{UK AISI Inspect react()} and \texttt{Inspect Agent Bridge}, \texttt{Terminus-2 / Harbor} (\texttt{tmux} keystrokes + 3-stage summarization), \texttt{Codex CLI} (\texttt{Landlock}/\texttt{Seatbelt} + \texttt{apply\_patch}), \texttt{Claude Code} (\texttt{Bash} + file tools + \texttt{auto-compact}), \texttt{OpenHands} (\texttt{ACP} containers + condenser), \texttt{ARC-AGI-3}, and \texttt{OSWorld} (\texttt{pyautogui} sliding trajectory)---embed distinct context-compaction and retry policies. \texttt{SATB} eliminates this confound via six normative closures:
+\begin{enumerate}[leftmargin=1.5em,itemsep=1.5pt,topsep=1.5pt]
+  \item \textbf{\texttt{ContextRule\_v0} (\texttt{OQ-1}):} At $\ge 80\%$ of the declared context window, \texttt{Lane B} deterministically replaces oldest tool outputs with \texttt{[ELIDED\_BY\_CONTEXT\_RULE\_V0]} while keeping \texttt{system(TEMPLATE\_v0)}, initial \texttt{user(bundle)}, and the last $8$ tool outputs verbatim with \emph{zero} model calls (\texttt{killed(context\_ceiling)} fires only if retained messages exceed $100\%$).
+  \item \textbf{\texttt{TOOLS\_v0} (\texttt{OQ-2}):} Six \texttt{JCS}-hashed schemas (\texttt{exec}, \texttt{read\_file}, \texttt{write\_file}, \texttt{list\_dir}, \texttt{submit}, \texttt{refuse}) with byte-safe \texttt{Truncate\_v0} ($8\;\text{KiB}$ head $+$ $8\;\text{KiB}$ tail) inside network-blocked \texttt{/work}, avoiding \texttt{mini}-style shell-escaping failures.
+  \item \textbf{Surjective 5-to-4 Outcome Mapping (\texttt{OQ-3}):} Maps \texttt{\{completed, incorrect, malformed, refused, no\_\allowbreak submission\}} onto \texttt{\{pass, fail, refuse, killed\}} with lossless \texttt{sub\_\allowbreak reason} (\texttt{malformed} $\to$ \texttt{fail:\allowbreak malformed\_\allowbreak submission}; missing usage $\to$ \texttt{killed:\allowbreak usage\_\allowbreak missing}), keeping all four outcomes in denominator $n$ with zero test-time verifier feedback.
+  \item \textbf{Primary Energy Boundary (\texttt{OQ-4}), Rootless Rule (\texttt{OQ-5}), and Closed-API Rule (\texttt{OQ-6}):} Whole-\texttt{SUT} raw window energy (\texttt{A2}) is primary; collection is strictly rootless (\texttt{macmon} + \texttt{proc\_\allowbreak pid\_\allowbreak rusage} on macOS, zero \texttt{sudo}; \texttt{PLATYPUS}-isolated supervisor-\texttt{UID} \texttt{udev} group on Linux); closed-API server energy is written literally as \texttt{"not\_\allowbreak available"} (label \texttt{N}) unless per-request provider-attested (\texttt{P}), barring fleet sustainability medians ($0.24\;\text{Wh}$, $0.34\;\text{Wh}$, $1.14\;\text{gCO}_2\text{e}$).
+\end{enumerate}
+
+\section{Adapter Bridge (\texttt{Shapes D, M, H, I}), Five-Block Fingerprint, and \texttt{C1--C12}}
+
+External systems attach to \texttt{satb-\allowbreak supervisor} via four shapes: \textbf{\texttt{Shape D}} (\texttt{Deterministic Null} \texttt{N0}/\texttt{N1} over frozen \texttt{DNULLMM1} \texttt{mmap} stores, $0$ proxy calls), \textbf{\texttt{Shape M}} (OpenAI-compatible or translated \texttt{Anthropic}/\allowbreak\texttt{Gemini}/\allowbreak\texttt{xAI} endpoints), \textbf{\texttt{Shape H}} (harness-in-a-box \texttt{CLI}s such as \texttt{Claude Code}, \texttt{Codex CLI}, \texttt{OpenHands}, and \texttt{Terminus-2} reading \texttt{/work/\allowbreak task/\allowbreak BUNDLE.md} with base URL locked to \texttt{satb-\allowbreak proxy} and \texttt{--strict-\allowbreak mcp-\allowbreak config} \texttt{submit}/\texttt{refuse}), and \textbf{\texttt{Shape I}} (\texttt{Inspect} solvers at \texttt{attempts = 1}). Every session locks a five-block \texttt{JCS} fingerprint (\texttt{model}, \texttt{serving}, \texttt{sampling}, \texttt{harness}, \texttt{envelope}; unknown fields set to \texttt{"not\_\allowbreak available"}); any mid-session hash or \texttt{system\_\allowbreak fingerprint} drift marks session receipts \texttt{void}. Table~\ref{tab:c12} reports our \texttt{C1--C12} verification and live \texttt{C12} probes.
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.6pt}
+\caption{\textbf{Measured \texttt{C12} Eight-Request Determinism Probes} routed 100\% through loopback \texttt{satb-proxy} ($32$ live cloud API calls $+$ $8$ local \texttt{Shape D} runs; $100\%$ exact \texttt{C7} token parity across all $32/32$ calls; unlisted route blocked with \texttt{HTTP 404} per \texttt{C6}).}
+\label{tab:c12}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l c l c c l r}
+\toprule
+\textbf{\texttt{SUT} / Endpoint via \texttt{satb-proxy}} & \textbf{\texttt{T=0} HTTP} & \textbf{Recorded \texttt{sampling.temperature}} & \textbf{Distinct Raw (\texttt{/8})} & \textbf{Distinct Algebraic (\texttt{/8})} & \textbf{Echoed \texttt{system\_fingerprint}} & \textbf{Mean Latency} \\
+\midrule
+\textbf{Shape D}: \texttt{dnull N1} (Rust local) & Exact \texttt{i64} & \texttt{0 (exact\_i64\_q1e6)} & $\mathbf{1 / 8}$ & $\mathbf{1 / 8}$ & \texttt{0da4df8d9ccbce1e...} & $1{,}474.0\;\text{ms}$ \\
+\textbf{Anthropic}: \texttt{claude-opus-5-5} & \textbf{HTTP 400} & \texttt{not\_available} (deprecated) & $\mathbf{8 / 8}$ & $\mathbf{4 / 8}$ & \texttt{not\_available} & $3{,}389.1\;\text{ms}$ \\
+\textbf{Anthropic}: \texttt{claude-sonnet-5-5} & \textbf{HTTP 400} & \texttt{not\_available} (deprecated) & $\mathbf{8 / 8}$ & $\mathbf{2 / 8}$ & \texttt{not\_available} & $2{,}914.3\;\text{ms}$ \\
+\textbf{Cerebras}: \texttt{gpt-oss-120b} & HTTP 200 & \texttt{0.0 (seed=42)} & $\mathbf{2 / 8}$ & $\mathbf{2 / 8}$ & \texttt{fp\_fd4dff7eed92aaf38281} & $484.2\;\text{ms}$ \\
+\textbf{xAI}: \texttt{grok-4.20-0309-non-reasoning} & HTTP 200 & \texttt{0.0 (seed=42)} & $\mathbf{8 / 8}$ & $\mathbf{1 / 8}$ & \texttt{fp\_9974b11849} & $942.7\;\text{ms}$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\section{Telemetry Attribution (\texttt{L0--L4} $\times$ \texttt{A1--N}) and Empirical Falsifiers on Apple M5 Max}
+
+\texttt{satb-\allowbreak meter} separates \texttt{L0 wall} (\texttt{AC} plug, \texttt{A2}), \texttt{L1 platform} (\texttt{INA238}, \texttt{Mac sys\_\allowbreak power}, \texttt{RAPL psys}, \texttt{A2}), \texttt{L2 package/\allowbreak SoC} (\texttt{RAPL}, \texttt{macmon IOReport}, \texttt{INA3221}, \texttt{amdgpu hwmon}, cumulative \texttt{NVML mJ}, \texttt{A1/\allowbreak A2/\allowbreak B/\allowbreak C}), \texttt{L3 process/\allowbreak cgroup} (\texttt{cgroup v2} shares \texttt{C}; \texttt{macOS ri\_\allowbreak energy\_\allowbreak nj} \texttt{D}), and \texttt{L4 logical} (exact tokens and timings) via a 7-step raw-first pipeline that isolates \texttt{engine\_\allowbreak resident\_\allowbreak during\_\allowbreak tools} in its own unassigned channel, drops drifted net baselines ($>5.0\%$, \texttt{Falsifier 6}), and enforces the \texttt{Step 7} sum check ($\le 1\;\text{mJ}$). Tables~\ref{tab:obs} and~\ref{tab:bvc} report our empirical \texttt{Apple M5 Max} benchmarks.
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4.0pt}
+\caption{\textbf{Falsifier 5 Observer-Effect Cadence Benchmark} across interleaved $10.0\;\text{s}$ windows on \texttt{Apple M5 Max} (\texttt{Python} reader $+$ child \texttt{macmon 0.12.0} \texttt{IOReport} process tree). Requesting \texttt{-i 10} ($100\;\text{Hz}$) saturates at $7.44\;\text{Hz}$ due to the $\sim\!120\;\text{ms}$ \texttt{IOReport} subscription cycle.}
+\label{tab:obs}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l r r r r r r}
+\toprule
+\textbf{Sampling Cadence ($10.0\;\text{s}$ Window)} & \textbf{Achieved Rate} & \textbf{Sampler CPU Time} & \textbf{Observer \texttt{L3 reported\_j}} & \textbf{Observer Power} & \textbf{Share of \texttt{L2} Window} & \textbf{Whole-SoC \texttt{L2 reported\_j}} \\
+\midrule
+\textbf{\texttt{0 Hz} Boundary-Only} ($2$ \texttt{rusage} syscalls) & $0.20\;\text{Hz}$ & $\mathbf{0.004\;\text{ms}}$ & $\mathbf{0.000108\;\text{J}}$ & $\mathbf{0.011\;\text{mW}}$ & $\mathbf{0.0000\%}$ & --- (no \texttt{IOReport} daemon) \\
+\textbf{\texttt{1 Hz} Polling} ($1{,}000\;\text{ms}$ tick) & $0.90\;\text{Hz}$ & $9.323\;\text{ms}$ & $0.194237\;\text{J}$ & $19.371\;\text{mW}$ & $0.0521\%$ & $372.769\;\text{J}$ ($37.17\;\text{W}$) \\
+\textbf{\texttt{10 Hz} Reference Tick} ($100\;\text{ms}$ \texttt{SATB} default) & $8.12\;\text{Hz}$ & $36.434\;\text{ms}$ & $0.666596\;\text{J}$ & $\mathbf{66.439\;\text{mW}}$ & $\mathbf{0.1770\%}$ & $376.603\;\text{J}$ ($37.53\;\text{W}$) \\
+\textbf{\texttt{100 Hz} Stress Falsifier} ($10\;\text{ms}$ requested) & $7.44\;\text{Hz}$ & $35.636\;\text{ms}$ & $0.598721\;\text{J}$ & $58.971\;\text{mW}$ & $0.1618\%$ & $369.926\;\text{J}$ ($36.44\;\text{W}$) \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.8pt}
+\caption{\textbf{Conformance, Falsifier 3 (\texttt{B} vs.\ \texttt{C} \texttt{Kepler}), Falsifier 6 ($188$ Windows), and Falsifier 8 (\texttt{Lane B} vs.\ \texttt{Shape H})} on \texttt{Apple M5 Max}.}
+\label{tab:bvc}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l l l l}
+\toprule
+\textbf{Empirical Test / Audit} & \textbf{Protocol \& Sample} & \textbf{Measured \texttt{Apple M5 Max} Result} & \textbf{Verdict} \\
+\midrule
+\textbf{\texttt{C9} Deterministic Replay} & $14$ turns, $24\;\text{KiB}$ outputs, $48\text{k}$ window & $149{,}747\;\text{B}$ (\texttt{d697ed14...}), $5$ elided, $0$ model calls, $\mathbf{0}$ byte diffs & \textbf{Cleared (\texttt{F1})} \\
+\textbf{\texttt{C10} Process-Group \texttt{SIGKILL}} & $5$ trials $\times$ $4$-PID detached tree & $\mathbf{2.073\;\text{ms}}$ mean ($1.429\text{--}2.571\;\text{ms}$ $< 2{,}000\;\text{ms}$), $0$ survivors & \textbf{Passed (\texttt{C10})} \\
+\textbf{\texttt{Step 7} Boundary Sum Check} & $3$ two-phase sequential replicates & Residuals $0\;\mu\text{J}, 1\;\mu\text{J}, 0\;\mu\text{J}$ ($\le 1{,}000\;\mu\text{J}$ sensor quantum) & \textbf{$100\%$ Pass (\texttt{F2})} \\
+\textbf{\texttt{F3}: \texttt{B} Temporal vs.\ \texttt{C} (\texttt{Kepler})} & Phase 1 ALU ($2.5\;\text{s}$) vs.\ Phase 2 DRAM+\texttt{fsync} ($2.5\;\text{s}$) & \texttt{L2}: $+35.86\%$ (P1) / $-32.59\%$ (P2) err; \texttt{L3}: $+25.21\%$ (P2) err & \textbf{Triggered ($>20\%$)} \\
+\textbf{\texttt{F6}: Shared-Host Drift Gate} & $188$ \texttt{L2} windows (\texttt{exp-001/002} $+$ $170$ \texttt{ai-reads-human}) & $64$ valid ($\le 5\%$), $\mathbf{124}$ drifted dropped; $188/188$ raw preserved & \textbf{Enforced (\texttt{F6})} \\
+\textbf{\texttt{F8}: \texttt{Lane B} vs.\ \texttt{Claude Code 2.1.330}} & $24$ \texttt{/work} bundles $+$ $6$ multi-file Python repos & Both $\mathbf{24/24}$ \& $\mathbf{6/6}$ ($100\%$); \texttt{Lane B} uses $1.67\times\text{--}3.44\times$ fewer tokens & \textbf{Cleared (\texttt{F8})} \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\textbf{Limitations and Open Hardware Items (\texttt{OQ-5}).} Because no external \texttt{L0} smart plug or physical rail shunt was attached during these runs (\texttt{board\_metered = false}, \texttt{measured\_j = None}), all \texttt{Apple M5 Max} joule values remain on-chip/kernel \texttt{reported\_j} counters. Physical verification of \texttt{L0} sync-pulse \texttt{PDU} calibration (\texttt{Falsifier 4}), \texttt{NVIDIA Jetson Thor} \texttt{INA3221 ch3}/\texttt{NVML} permissions, \texttt{Framework AMD} \texttt{RAPL}/\texttt{amdgpu} domains, and live \texttt{C1--C12} certification of \texttt{Codex CLI}, \texttt{OpenHands}, \texttt{Terminus-2}, and \texttt{Shape I} \texttt{Inspect} solvers remain open.
+
+\end{document}

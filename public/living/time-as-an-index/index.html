@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F59E0B">
+  <meta name="color-scheme" content="dark light">
+  <meta name="author" content="David Charlot">
+  <meta name="description" content="Interactive observatory for Time as an Index: explore Hellman T*M^2 = N^2 precomputation vs salts and freshness seals, simulate Deutsch D-CTC and postselected P-CTC circuits plus band-limited horizon SNR, search all 195 cataloged anomalies and paradoxes, and play the energy-budgeted Vault & Horizon simulation.">
+  <link rel="canonical" href="https://research.openie.dev/living/time-as-an-index/">
+  <link rel="describedby" type="text/markdown" href="/llms.txt">
+  <link rel="alternate" type="text/markdown" title="Time as an Index (Markdown)" href="/papers/time-as-an-index.md">
+  <title>Living Figures · Time as an Index | OpenIE Research</title>
+  <script src="/webmcp-tools.js" defer></script>
+  <script>
+    (function(){
+      var stored = localStorage.getItem('oe-theme');
+      var theme = stored && ['dark','light','auto'].indexOf(stored) !== -1 ? stored : 'auto';
+      var resolved = theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
+      document.documentElement.setAttribute('data-theme', resolved);
+      document.documentElement.style.colorScheme = resolved;
+    })();
+  </script>
+  <link rel="stylesheet" href="openie.css">
+</head>
+<body class="grid-bg">
+  <nav class="nav-glass" aria-label="Main navigation">
+    <a href="https://research.openie.dev/" class="brand-logo">Open<span class="brand-cyan">IE</span> <span class="brand-amber">Research</span></a>
+    <div class="nav-links">
+      <a href="/papers/time-as-an-index/">Paper</a>
+      <a href="/papers/time-as-an-index.md">Markdown</a>
+      <a href="/living/time-as-an-index/" class="active">Figures (/living/)</a>
+      <a href="/about/time-as-an-index/">About</a>
+      <a href="/pdfs/time-as-an-index.pdf">PDF</a>
+      <a href="/pdfs/latex/time-as-an-index.pdf">LaTeX PDF</a>
+      <a href="https://openie.dev" class="pill-cyan">openie.dev</a>
+      <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
+    </div>
+  </nav>
+
+  <main>
+    <div style="max-width: 68rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
+      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/time-as-an-index/ · interactive instruments</p>
+      <h1 class="hero-title" style="max-width: none;">Living Figures: Time as an Index</h1>
+      <p class="author-line">David Charlot, Open Interface Engineering · Companion to <a href="/papers/time-as-an-index/" style="color: var(--color-brand-cyan);">/papers/time-as-an-index/</a></p>
+
+      <div class="measurement-box">
+        <strong>Measurement grammar on this page.</strong> Every calculator and table separates three evidence classes:
+        <span class="chip chip-meas">Exact (Lean 4 &amp; SHA-256)</span> for the <code>31</code> kernel-checked theorems in <code>Horizon.lean</code> and <code>Paradox.lean</code> and the <code>N = 65,536</code> consecutive <code>SHA-256</code> digests in <code>F5</code>;
+        <span class="chip chip-sim">Symbolic &amp; Numerical (M1–M8)</span> for deterministic Python/SymPy circuit, Gödel-tensor, Slepian-extrapolation, and Landauer calculations (<code>seed = 20261122</code>); and
+        <span class="chip chip-est">Cataloged Record (195 Entries)</span> for audited literature reports across <code>TA001–TA081</code>, <code>AA01–AA40</code>, and <code>P01–P74</code>. <code>measured_j = None</code>; <code>board_metered = false</code>.
+      </div>
+
+      <!-- Instrument 1: Hellman T*M^2 = N^2 Precomputation vs Salt & Freshness Seal Explorer -->
+      <section id="ti-diag-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ti-diag-01</code> · Hellman <code>T · M² = N²</code> Precomputation vs. Salt &amp; Freshness Seal Explorer</h2>
+          <span class="chip chip-sim">Analytical Tradeoff + M7 Check</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          In known physics, "indexing the future" means evaluating a function ahead of time and storing chains. Adjust keyspace bits <code>log₂ N</code>, chain length <code>log₂ t</code>, salt bits <code>s</code>, and the <strong>Freshness Seal</strong> toggle to see how upfront fill work, memory words <code>M</code>, online time <code>T</code>, and the <code>300 K</code> Landauer erasure floor scale.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="h-bits"><span>Keyspace width log₂ N (bits)</span><span id="v-h-bits">48</span></label>
+            <input type="range" id="h-bits" min="16" max="128" step="4" value="48">
+          </div>
+          <div class="ctrl-box">
+            <label for="h-t"><span>Chain length log₂ t</span><span id="v-h-t">16</span></label>
+            <input type="range" id="h-t" min="4" max="32" step="2" value="16">
+          </div>
+          <div class="ctrl-box">
+            <label for="h-salt"><span>Per-target salt width s (bits)</span><span id="v-h-salt">0</span></label>
+            <input type="range" id="h-salt" min="0" max="64" step="4" value="0">
+          </div>
+          <div class="ctrl-box">
+            <label for="h-fresh"><span>Challenge freshness seal</span><span id="v-h-fresh">Static (Unsealed)</span></label>
+            <select id="h-fresh" style="width: 100%; padding: 0.4rem; border-radius: 6px; background: rgba(15,23,42,0.65); color: inherit; border: 1px solid rgba(148,163,184,0.35);">
+              <option value="static">Static challenge (table fill allowed early)</option>
+              <option value="fresh">Previous-block / nonce seal (question unknown early)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">Upfront Fill Evaluations (N · 2^s)</div>
+            <div class="v" id="o-h-fill">2.81 × 10¹⁴</div>
+            <div class="s" id="o-h-bal">Balanced N^(2/3): 4.30 × 10⁹</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Table Memory M vs. Online Time T</div>
+            <div class="v" id="o-h-mt" style="color: var(--color-brand-cyan);">M = 2³² · T = 2³²</div>
+            <div class="s">Verifies T · M² = N² across chains</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">300 K Landauer Fill Floor</div>
+            <div class="v" id="o-h-landauer">8.08 × 10⁻⁷ J</div>
+            <div class="s" id="o-h-asic">At 15 pJ/hash ASIC: 4.22 kJ</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Precomputed Table Reuse</div>
+            <div class="v" id="o-h-reuse" style="color: var(--color-brand-amber);">Active (Static)</div>
+            <div class="s" id="o-h-reuse-sub">M7 16-bit single-table demo: 34.0% hit</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Instrument 2: Deutsch D-CTC vs P-CTC Circuit Simulator + Band-Limited Horizon Extrapolation -->
+      <section id="ti-diag-02" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ti-diag-02</code> · <code>D-CTC</code> vs. <code>P-CTC</code> Circuit Simulator &amp; Band-Limited Horizon Explorer</h2>
+          <span class="chip chip-meas">Symbolic + M2b/M3 Verified</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Compare Deutsch fixed-point consistency (<code>D-CTC</code>) against postselected teleportation (<code>P-CTC</code>) across the two grandfather circuits and the <code>M2b</code> unitary NP witness loop, then inspect how finite-window band-limited extrapolation (<code>M3</code>) degrades with noise past the Slepian concentration cliff.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.8rem 0;" role="group" aria-label="Select CTC circuit">
+          <button type="button" class="theme-btn ctc-btn" data-circuit="qhronology" aria-pressed="true" style="border-color: var(--color-brand-amber); color: var(--color-brand-amber);">Grandfather · CNOT + SWAP (Qhronology)</button>
+          <button type="button" class="theme-btn ctc-btn" data-circuit="bitflip" aria-pressed="false">Grandfather · Pauli-X + SWAP (Bit-Flip)</button>
+          <button type="button" class="theme-btn ctc-btn" data-circuit="witness" aria-pressed="false">NP Witness Loop · M2b (1/d² Blowup)</button>
+        </div>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="c-param"><span id="lbl-c-param">D-CTC family parameter g / Witness bits n</span><span id="v-c-param">0.50 (n = 5)</span></label>
+            <input type="range" id="c-param" min="3" max="10" step="1" value="5">
+          </div>
+          <div class="ctrl-box">
+            <label for="c-snr"><span>M3 Horizon Extrapolation SNR</span><span id="v-c-snr">80 dB</span></label>
+            <select id="c-snr" style="width: 100%; padding: 0.4rem; border-radius: 6px; background: rgba(15,23,42,0.65); color: inherit; border: 1px solid rgba(148,163,184,0.35);">
+              <option value="noiseless">Noiseless float64 (reg = 10⁻¹²)</option>
+              <option value="80dB" selected>80 dB SNR (low lab noise)</option>
+              <option value="40dB">40 dB SNR (moderate noise)</option>
+              <option value="20dB">20 dB SNR (high noise)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid" id="ctc-metrics" aria-live="polite"></div>
+        <div style="margin-top: 1rem; padding: 0.85rem; border-radius: 10px; background: rgba(15,23,42,0.45); border: 1px solid rgba(148,163,184,0.2);">
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.4rem;">
+            <strong>M3 Band-Limited Extrapolation Relative Error Across Future Lead Steps (1 to 64)</strong>
+            <span id="m3-caption" style="color: var(--color-brand-cyan);">128 past samples · W = 0.035 · DPSS cliff indices 6–11</span>
+          </div>
+          <svg id="m3-svg" viewBox="0 0 760 155" style="width: 100%; height: auto; display: block;" role="img" aria-label="Relative extrapolation error curve from lead step 1 to 64"></svg>
+        </div>
+      </section>
+
+      <!-- Instrument 3: Unified 195-Entry Searchable Catalog -->
+      <section id="ti-diag-03" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ti-diag-03</code> · Unified 195-Entry Empirical &amp; Paradox Ledger</h2>
+          <span class="chip chip-est">81 TA + 40 AA + 74 Paradoxes</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Filter and search all <code>81</code> Temporal Anomalies (<a href="data/temporal-anomaly-catalog.csv" style="color: var(--color-brand-cyan);">CSV</a>), <code>40</code> Frequency Atlas edge cases (<a href="data/anomaly-atlas.csv" style="color: var(--color-brand-cyan);">CSV</a>), and <code>74</code> Paradox constraints (<a href="data/paradox-ledger.csv" style="color: var(--color-brand-cyan);">CSV</a>). Zero Grade A or Grade B entries survive as unexplained reception from the future.
+        </p>
+        <div class="ctrl-grid" style="margin-bottom: 0.75rem;">
+          <div class="ctrl-box">
+            <label for="cat-q"><span>Search ID, name, falsifier, or mechanism</span><span id="cat-count">195 / 195</span></label>
+            <input type="search" id="cat-q" placeholder="e.g. OPERA, GW150914, F11, Polchinski, MOND..." style="width: 100%; padding: 0.42rem 0.6rem; border-radius: 6px; background: rgba(15,23,42,0.65); color: inherit; border: 1px solid rgba(148,163,184,0.35);">
+          </div>
+          <div class="ctrl-box">
+            <label for="cat-ledger"><span>Catalog slice</span><span>Source CSV</span></label>
+            <select id="cat-ledger" style="width: 100%; padding: 0.42rem; border-radius: 6px; background: rgba(15,23,42,0.65); color: inherit; border: 1px solid rgba(148,163,184,0.35);">
+              <option value="ALL">All 3 Ledgers (195 entries)</option>
+              <option value="TA">Temporal Anomalies TA001–TA081 (81)</option>
+              <option value="AA">Frequency Anomaly Atlas AA01–AA40 (40)</option>
+              <option value="P">Paradox Constraint Ledger P01–P74 (74)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="cat-status"><span>Epistemic / resolution status</span><span>Filter</span></label>
+            <select id="cat-status" style="width: 100%; padding: 0.42rem; border-radius: 6px; background: rgba(15,23,42,0.65); color: inherit; border: 1px solid rgba(148,163,184,0.35);">
+              <option value="ALL">All statuses</option>
+              <option value="EST">Established / Resolved</option>
+              <option value="CONJ">Conjecture / Open / Contested / Partial</option>
+              <option value="SPEC">Speculation / Debunked</option>
+            </select>
+          </div>
+        </div>
+        <div style="max-height: 26rem; overflow-y: auto; overflow-x: auto; border: 1px solid rgba(148,163,184,0.2); border-radius: 8px;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(148,163,184,0.3); text-align: left; position: sticky; top: 0; background: var(--color-surface-card, #0f172a);">
+                <th style="padding: 0.5rem;">ID</th>
+                <th style="padding: 0.5rem;">Entry</th>
+                <th style="padding: 0.5rem;">Class / Scale</th>
+                <th style="padding: 0.5rem;">Status</th>
+                <th style="padding: 0.5rem;">Accounting &amp; Falsifier</th>
+              </tr>
+            </thead>
+            <tbody id="cat-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Instrument 4: Playable Vault & Horizon Mini-Simulation -->
+      <section id="ti-diag-04" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ti-diag-04</code> · Vault &amp; Horizon Energy-Budget Simulation</h2>
+          <span class="chip chip-sim">Interactive Game Mechanics</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Test the design translation from Section 9.2: allocate a <code>1,000 J</code> battery and <code>100 K</code> thermal envelope across six indexing/search instruments against defender <em>Salt Storms</em>, <em>Freshness Seals</em>, and an unbreakable <em>One-Time Pad</em> vault.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="g-vault"><span>Target Vault Archetype</span><span>Defense</span></label>
+            <select id="g-vault" style="width: 100%; padding: 0.42rem; border-radius: 6px; background: rgba(15,23,42,0.65); color: inherit; border: 1px solid rgba(148,163,184,0.35);">
+              <option value="unsalted">1 · Unsalted Legacy Hash Vault (static 24-bit)</option>
+              <option value="salted">2 · Salt-Storm Vault (rotates 32-bit salt on query)</option>
+              <option value="stateful">3 · Stateful EUF-CMA Signing Guard (bookkeeping)</option>
+              <option value="periodic">4 · Periodic Beacon Vault (hidden harmonic schedule)</option>
+              <option value="fresh_pow">5 · Freshness-Sealed PoW Vault (commits prev_block_hash)</option>
+              <option value="otp">6 · Information-Theoretic One-Time Pad Set-Piece</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="g-tool"><span>Chosen Method (Era 1–4)</span><span>Cost Rule</span></label>
+            <select id="g-tool" style="width: 100%; padding: 0.42rem; border-radius: 6px; background: rgba(15,23,42,0.65); color: inherit; border: 1px solid rgba(148,163,184,0.35);">
+              <option value="sweep">Era 1 · Sweep (live sequential search: 180 J, +12 K)</option>
+              <option value="ledger">Era 2 · Hellman Ledger (pre-fill + N^(2/3) lookup: 140 J, +8 K)</option>
+              <option value="rewind">Era 2 · Rewind Charm (stateful guard rollback: 95 J, +10 K)</option>
+              <option value="fourier">Era 3 · Fourier Lens (long-window FFT: 85 J, +6 K)</option>
+              <option value="basin">Era 3 · Settling Basin (analog Ising relax: 110–340 J, +38 K)</option>
+              <option value="loop">Era 4 · Consistency Loop (D-CTC fixed point: 260 J, +46 K)</option>
+            </select>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.75rem;">
+          <button type="button" id="g-run" class="theme-btn" style="border-color: var(--color-brand-amber); color: var(--color-brand-amber); font-weight: 700;">Execute Turn on Selected Vault</button>
+          <button type="button" id="g-reset" class="theme-btn">Reset Battery &amp; Ledger</button>
+        </div>
+        <div class="metric-grid" style="margin-top: 0.9rem;" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">Battery Remaining</div>
+            <div class="v" id="g-joules">1000 J</div>
+            <div class="s">Bankruptcy below 0 J</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Thermal Load</div>
+            <div class="v" id="g-heat" style="color: var(--color-brand-cyan);">0 / 100 K</div>
+            <div class="s">Chronology/thermal trip at 100 K</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Vaults Opened</div>
+            <div class="v" id="g-wins" style="color: var(--color-brand-amber);">0 / 5</div>
+            <div class="s">OTP vault is unbreakable set-piece</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Last Outcome</div>
+            <div class="v" id="g-status" style="font-size: 0.98rem;">Ready</div>
+            <div class="s" id="g-sub">Choose a vault and method</div>
+          </div>
+        </div>
+        <div id="g-log" style="margin-top: 0.85rem; padding: 0.75rem; border-radius: 8px; background: rgba(15,23,42,0.5); border: 1px solid rgba(148,163,184,0.2); font-family: ui-monospace, monospace; font-size: 0.78rem; max-height: 10rem; overflow-y: auto;">
+          <div>[Epoch 0] Battery initialized to 1000 J, heat 0 K. Select a vault and execute an instrument.</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      var CATALOG = [{"id":"TA001","ledger":"TA","title":"Moberly-Jourdain Versailles incident","group":"H1 · Grade B","status":"CONJECTURE","meta":"Reconstruction from records · Falsifier: F15","detail":"1901 Petit Trianon walk published in 1911; costume gatherings and memory reconstruction proposed; open under sealed-archive test F15."},{"id":"TA002","ledger":"TA","title":"Edith Olivier, Avebury fair","group":"H1 · Grade C","status":"SPECULATION","meta":"Reconstruction from records · Falsifier: F15","detail":"1916 evening drive reporting an vanished village fair; recorded years later after archival reading."},{"id":"TA003","ledger":"TA","title":"Victor Goddard, RAF Drem","group":"H1 · Grade C","status":"SPECULATION","meta":"Signalling from future · Falsifier: F11;F15","detail":"1935 flight over disused airfield later recounted in 1960s-1975 books as pre-seeing 1939 yellow trainers; post-hoc retelling."},{"id":"TA004","ledger":"TA","title":"Kersey cadets","group":"H1 · Grade C","status":"SPECULATION","meta":"Reconstruction from records · Falsifier: F15","detail":"1957 Suffolk village walk written down roughly 30 years later; butcher shop registry (1790-1905) matches public local history."},{"id":"TA005","ledger":"TA","title":"Charlotte Warburton, Tunbridge Wells cafe","group":"H1 · Grade C","status":"SPECULATION","meta":"Reconstruction from records · Falsifier: F15","detail":"1968 anecdotal timeslip narrative transmitted through secondary paranormal compilations without contemporaneous log."},{"id":"TA006","ledger":"TA","title":"Bold Street, Liverpool (Frank)","group":"H1 · Grade C","status":"SPECULATION","meta":"Reconstruction from records · Falsifier: F15","detail":"1996 urban folklore account popularized by Slemen (1997) without primary witness record."},{"id":"TA007","ledger":"TA","title":"Montreal and SPR timeslip collections","group":"H1 · Grade C","status":"SPECULATION","meta":"Reconstruction from records · Falsifier: F15","detail":"Secondary Society for Psychical Research compilation entries lacking pre-unsealed archival controls."},{"id":"TA008","ledger":"TA","title":"Time-traveling hipster photo","group":"H2 · Grade D","status":"ESTABLISHED","meta":"Misidentification · Falsifier: F10","detail":"1941 South Fork Bridge reopening photograph (Virtual Museum of Canada): sunglasses, printed sweater, and portable camera are documented 1940s items."},{"id":"TA009","ledger":"TA","title":"Chaplin's time traveller (The Circus premiere)","group":"H2 · Grade D","status":"ESTABLISHED","meta":"Misidentification · Falsifier: F10","detail":"1928 archival premiere footage showing a pedestrian holding a dark acoustic ear trumpet / Siemens carbon hearing aid."},{"id":"TA010","ledger":"TA","title":"Newquay beach mobile device","group":"H2 · Grade D","status":"ESTABLISHED","meta":"Misidentification · Falsifier: F10","detail":"1943 Towan Beach photograph showing a man looking down at his hands while rolling a cigarette or winding a watch."},{"id":"TA011","ledger":"TA","title":"Waldmuller painting phone","group":"H2 · Grade D","status":"ESTABLISHED","meta":"Misidentification · Falsifier: F10","detail":"1860 Ferdinand Georg Waldmuller painting 'The Expected One' depicts a young woman carrying a small hymnal or prayer book."},{"id":"TA012","ledger":"TA","title":"Rudolph Fentz","group":"H2 · Grade D","status":"DEBUNKED","meta":"Fiction · Falsifier: None","detail":"1876-to-1950 Times Square legend traced by Aubeck directly to Jack Finney's 1951 Collier's science-fiction story 'I'm Scared'."},{"id":"TA013","ledger":"TA","title":"Man from Taured (John Zegrus case)","group":"H2 · Grade D","status":"ESTABLISHED","meta":"Misreport · Falsifier: None","detail":"1959-1960 Tokyo Haneda passport-fraud prosecution of John Allen Kuchar Zegrus, embellished in 1960s-1981 occult paperbacks."},{"id":"TA014","ledger":"TA","title":"John Titor","group":"H2 · Grade D","status":"DEBUNKED","meta":"Fiction · Falsifier: F6","detail":"2000-2001 forum persona claiming arrival from 2036 to retrieve an IBM 5100; specific near-term historical predictions failed."},{"id":"TA015","ledger":"TA","title":"Andrew Carlssin","group":"H2 · Grade D","status":"DEBUNKED","meta":"Fiction · Falsifier: F11","detail":"2003 stock-trading time-traveller arrest story originated as Weekly World News tabloid satire."},{"id":"TA016","ledger":"TA","title":"Sergei Ponomarenko","group":"H2 · Grade D","status":"DEBUNKED","meta":"Fiction · Falsifier: None","detail":"Viral 1958-to-2006 Kyiv photographs traced to staged dramatizations from the 2012 Ukrainian television series 'Aliens'."},{"id":"TA017","ledger":"TA","title":"Hakan Nordkvist","group":"H2 · Grade D","status":"DEBUNKED","meta":"Fiction · Falsifier: None","detail":"2006 video meeting a future self under a kitchen sink produced as a viral marketing campaign for Swedish pension insurer AMF."},{"id":"TA018","ledger":"TA","title":"Mike Madman Marcum","group":"H2 · Grade D","status":"DEBUNKED","meta":"Hoax · Falsifier: None","detail":"1995 Coast to Coast AM radio caller narrative claiming a Jacob's-ladder backyard vortex with zero physical verification."},{"id":"TA019","ledger":"TA","title":"Bob White / Tim Jones (Robert Todino)","group":"H2 · Grade D","status":"ESTABLISHED","meta":"Misreport · Falsifier: None","detail":"2003 spam-email time-machine parts request traced to prankster/replier dynamics documented by journalists."},{"id":"TA020","ledger":"TA","title":"Chronovisor (Pellegrino Ernetti)","group":"H2 · Grade D","status":"DEBUNKED","meta":"Hoax · Falsifier: F15","detail":"Claimed past-viewing cathode device whose alleged crucifixion photograph matched a postcard of a Collevalenza wood carving."},{"id":"TA021","ledger":"TA","title":"Die Glocke","group":"H2 · Grade D","status":"SPECULATION","meta":"Fiction · Falsifier: None","detail":"Wunderwaffe bell lore first introduced by Witkowski (2000) without wartime archival documentation."},{"id":"TA022","ledger":"TA","title":"Philadelphia Experiment","group":"H2 · Grade D","status":"DEBUNKED","meta":"Hoax · Falsifier: None","detail":"1955 Carl Meredith Allen ('Carlos Allende') letters alleging 1943 USS Eldridge teleportation; contradicted by deck logs and crew."},{"id":"TA023","ledger":"TA","title":"Montauk Project","group":"H2 · Grade D","status":"DEBUNKED","meta":"Fiction · Falsifier: None","detail":"1980s-1992 Preston Nichols pulp narratives extending the Philadelphia hoax via uncorroborated recovered-memory claims."},{"id":"TA024","ledger":"TA","title":"Mandela effect","group":"H2 · Grade C","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F10","detail":"Shared schema-driven false recall (e.g. brand spellings) explained by constructive memory and confabulation without timeline branching."},{"id":"TA025","ledger":"TA","title":"Aberfan premonitions","group":"H3 · Grade B","status":"CONJECTURE","meta":"Signalling from future · Falsifier: F11;F12","detail":"Barker (1967) collected post-disaster letters after the 1966 coal-tip slide; real reports but retrospective with unknown base rate."},{"id":"TA026","ledger":"TA","title":"British Premonitions Bureau","group":"H3 · Grade B","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F11","detail":"1967-1968 registry collected hundreds of predictions; retrospective hits reflect multiple-hypothesis selection across high volume."},{"id":"TA027","ledger":"TA","title":"Futility (Morgan Robertson) and Titanic","group":"H3 · Grade B","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: None","detail":"1898 novella drew on contemporary North Atlantic liner engineering; 1912 post-sinking reissue adjusted tonnage and specs."},{"id":"TA028","ledger":"TA","title":"Lincoln assassination dream","group":"H3 · Grade C","status":"CONJECTURE","meta":"Reconstruction from records · Falsifier: F12","detail":"Recounted years later by Ward Hill Lamon (1895); presidential assassination threats were frequent during the Civil War."},{"id":"TA029","ledger":"TA","title":"J. W. Dunne, An Experiment with Time","group":"H3 · Grade B","status":"SPECULATION","meta":"Reconstruction from records · Falsifier: F12","detail":"1927 dream-diary protocol lacked blinded scoring and pre-registered target hashes, inviting confirmation bias."},{"id":"TA030","ledger":"TA","title":"Bem 2011 Feeling the Future","group":"H3 · Grade A","status":"DEBUNKED","meta":"Signalling from future · Falsifier: F4;F11","detail":"Initial d = 0.22 claim across 9 tasks failed pre-registered replications (Ritchie et al. 2012 p = 0.83; Galak et al. 2012 N = 3,289, d = 0.04)."},{"id":"TA031","ledger":"TA","title":"Presentiment meta-analysis (Mossbridge et al.)","group":"H3 · Grade A","status":"CONJECTURE","meta":"Signalling from future · Falsifier: F4;F11","detail":"2012 meta-analysis reported d = 0.21 pre-stimulus arousal; contested over expectation bias, trial-sequence artifacts, and publication bias."},{"id":"TA032","ledger":"TA","title":"Stargate / remote viewing (AIR 1995 evaluation)","group":"H3 · Grade B","status":"CONJECTURE","meta":"Signalling from future · Falsifier: F11","detail":"1995 American Institutes for Research review: Utts noted statistical anomalies while Hyman cited methodological flaws and non-replication."},{"id":"TA033","ledger":"TA","title":"Deja vu (general)","group":"H4 · Grade A","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F12","detail":"Reported by ~2/3 of adults across 50+ surveys (Brown 2004); Cleary & Claxton (2018) showed predictive accuracy stays at chance."},{"id":"TA034","ledger":"TA","title":"Deja vu in temporal lobe epilepsy","group":"H4 · Grade A","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F10","detail":"Reproducibly triggered by rhinal/hippocampal aura and direct cortical stimulation, decoupling familiarity signals from episodic retrieval."},{"id":"TA035","ledger":"TA","title":"Jamais vu","group":"H4 · Grade B","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F10","detail":"Transient dissociation of familiarity during semantic satiation or focal seizure without altered external chronology."},{"id":"TA036","ledger":"TA","title":"Precognitive dreams (general)","group":"H4 · Grade C","status":"SPECULATION","meta":"Reconstruction from records · Falsifier: F12","detail":"Thousands of nightly dreams per year create high coincidence base rates compounded by morning memory reconstruction."},{"id":"TA037","ledger":"TA","title":"Aboriginal Dreaming (everywhen)","group":"H5 · Grade B","status":"ESTABLISHED","meta":"Cultural-textual · Falsifier: None","detail":"Stanner (1953) 'everywhen' ontological tradition encoding landscape, kinship, and deep ecological memory."},{"id":"TA038","ledger":"TA","title":"Urashima Taro","group":"H5 · Grade B","status":"ESTABLISHED","meta":"Cultural-textual · Falsifier: None","detail":"8th-century Japanese chronicle/folklore motif in which days in an undersea palace correspond to centuries ashore."},{"id":"TA039","ledger":"TA","title":"Oisin in Tir na nOg","group":"H5 · Grade B","status":"ESTABLISHED","meta":"Cultural-textual · Falsifier: None","detail":"Irish Fenian cycle narrative in which three apparent years in Tir na nOg span three centuries in Ireland."},{"id":"TA040","ledger":"TA","title":"Rip Van Winkle","group":"H5 · Grade D","status":"ESTABLISHED","meta":"Fiction · Falsifier: None","detail":"Washington Irving's 1819 literary short story adapting German Peter Klaus folk motifs."},{"id":"TA041","ledger":"TA","title":"Kakudmi and Revati","group":"H5 · Grade B","status":"ESTABLISHED","meta":"Cultural-textual · Falsifier: None","detail":"Mahabharata / Bhagavata Purana narrative contrasting Brahma's celestial timescale against elapsed human yugas."},{"id":"TA042","ledger":"TA","title":"Honi HaMe'agel sleeps 70 years","group":"H5 · Grade B","status":"ESTABLISHED","meta":"Cultural-textual · Falsifier: None","detail":"Babylonian Talmud Ta'anit 23a parable of a 70-year slumber spanning the destruction and rebuilding of generations."},{"id":"TA043","ledger":"TA","title":"Seven Sleepers of Ephesus / People of the Cave","group":"H5 · Grade B","status":"ESTABLISHED","meta":"Cultural-textual · Falsifier: None","detail":"Late-antique Christian and Quranic (Surah Al-Kahf) attested textual tradition of multi-century protective dormancy."},{"id":"TA044","ledger":"TA","title":"Isra and Mi'raj (Night Journey)","group":"H5 · Grade B","status":"ESTABLISHED","meta":"Cultural-textual · Falsifier: None","detail":"Attested Islamic textual tradition of a transcendent journey occurring within a brief earthly interval."},{"id":"TA045","ledger":"TA","title":"Zeitraffer phenomenon","group":"H6 · Grade A","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F10","detail":"Cortical lesion / migraine subjective acceleration of perceived visual motion speed."},{"id":"TA046","ledger":"TA","title":"Akinetopsia (motion blindness)","group":"H6 · Grade A","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F10","detail":"Bilateral V5/MT lesion replacing smooth visual motion with discrete static frames without affecting physical clocks."},{"id":"TA047","ledger":"TA","title":"Alice in Wonderland syndrome (time distortion)","group":"H6 · Grade B","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F10","detail":"Transient neurological distortion of perceived duration and spatial scale during migraine or viral encephalitis."},{"id":"TA048","ledger":"TA","title":"Flash-lag effect and postdiction","group":"H6 · Grade A","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F10","detail":"Eagleman & Sejnowski (2000): visual percept integrates events across the following ~80 ms before conscious commitment."},{"id":"TA049","ledger":"TA","title":"Chronostasis (stopped-clock illusion)","group":"H6 · Grade A","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F10","detail":"Saccadic suppression back-fills the post-saccadic target onto the saccade interval, stretching the first perceived second."},{"id":"TA050","ledger":"TA","title":"Slow motion during danger (free-fall study)","group":"H6 · Grade A","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F10","detail":"Stetson et al. (2007) free-fall chronometer test found no temporal resolution gain; denser amygdala encoding inflates retrospective duration."},{"id":"TA051","ledger":"TA","title":"Near-death life review","group":"H6 · Grade C","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F10","detail":"Panoramic autobiographical recall under acute hypoxia/hypercarbia reading stored past-cone traces."},{"id":"TA052","ledger":"TA","title":"Missing time in abduction narratives","group":"H6 · Grade C","status":"ESTABLISHED","meta":"Reconstruction from records · Falsifier: F10","detail":"Sleep paralysis, hypnagogic hallucination, and suggestive interview confabulation accounting for perceived gaps."},{"id":"TA053","ledger":"TA","title":"OPERA superluminal neutrinos","group":"H7 · Grade A","status":"ESTABLISHED","meta":"Instrumental offset · Falsifier: F6","detail":"2011 apparent 73 ns early neutrino arrival traced to a loose fiber-optic timing connector and oscillator drift; corrected v = c."},{"id":"TA054","ledger":"TA","title":"Nimtz superluminal microwave tunnelling","group":"H7 · Grade A","status":"ESTABLISHED","meta":"Pulse reshaping · Falsifier: F6","detail":"Evanescent barrier attenuates trailing pulse components while front velocity never exceeds c (Winful 2006); zero early signalling."},{"id":"TA055","ledger":"TA","title":"Gain-assisted negative group velocity","group":"H7 · Grade A","status":"ESTABLISHED","meta":"Pulse reshaping · Falsifier: F6","detail":"Wang, Kuzmich & Dogariu (2000) anomalous dispersion shifts smooth pulse peak forward from leading-edge analyticity; causal front <= c."},{"id":"TA056","ledger":"TA","title":"Hartman effect and Larmor-clock tunnelling time","group":"H7 · Grade A","status":"ESTABLISHED","meta":"Postselected dwell time · Falsifier: F4;F6","detail":"Ramos et al. (2020) Larmor-clock measurement on postselected transmitted Rb atoms; transmitted fraction decays exponentially with barrier width."},{"id":"TA057","ledger":"TA","title":"Delayed-choice quantum eraser","group":"H7 · Grade A","status":"ESTABLISHED","meta":"Past-cone correlation · Falsifier: F4","detail":"Kim et al. (2000): interference fringes appear only after post-hoc coincidence sorting with classical idler records; marginal signal never changes."},{"id":"TA058","ledger":"TA","title":"Wheeler delayed choice (Jacques et al.)","group":"H7 · Grade A","status":"ESTABLISHED","meta":"Past-cone correlation · Falsifier: F4","detail":"2007 space-like separated interferometer choice confirms complementarity without backward classical messaging."},{"id":"TA059","ledger":"TA","title":"Negative time photons in an atom cloud","group":"H7 · Grade A","status":"ESTABLISHED","meta":"Group-delay phase · Falsifier: F4;F6","detail":"Angulo et al. (2024) negative atomic excitation dwell time reflects narrowband resonant phase shift, not reception before emission."},{"id":"TA060","ledger":"TA","title":"Retrocausal interpretations of quantum mechanics","group":"H7 · Grade A","status":"CONJECTURE","meta":"Interpretive ontology · Falsifier: F4","detail":"TSVF, Leifer-Pusey, and Price-Wharton reproduce standard Born-rule marginals and inherit exact no-signalling."},{"id":"TA061","ledger":"TA","title":"Apparent superluminal jets","group":"H7 · Grade A","status":"ESTABLISHED","meta":"Geometric projection · Falsifier: F6","detail":"Relativistic AGN jets moving near c at small viewing angle produce apparent transverse speed > c while true speed stays < c."},{"id":"TA062","ledger":"TA","title":"Hafele-Keating flying clocks","group":"H7 · Grade A","status":"ESTABLISHED","meta":"One-way proper-time dilation · Falsifier: F1","detail":"1971 circumnavigating caesium clocks confirmed kinematic and gravitational proper-time offsets predicted by relativity."},{"id":"TA063","ledger":"TA","title":"GPS relativistic correction","group":"H7 · Grade A","status":"ESTABLISHED","meta":"One-way proper-time dilation · Falsifier: F1","detail":"Satellite clocks gain ~38.6 us/day (+45.8 us gravitational minus 7.2 us kinematic) relative to geoid; engineered continuously."},{"id":"TA064","ledger":"TA","title":"Sergei Krikalev, about 0.02 s into the future","group":"H7 · Grade B","status":"ESTABLISHED","meta":"One-way proper-time dilation · Falsifier: F1","detail":"803 cumulative days in low Earth orbit produced ~22.7 ms net kinematic time dilation into the Earth-frame future."},{"id":"TA065","ledger":"TA","title":"Optical-clock dilation at 33 cm and 1 mm","group":"H7 · Grade A","status":"ESTABLISHED","meta":"One-way proper-time dilation · Falsifier: F1;F3","detail":"Chou et al. (2010) at 33 cm and Bothwell et al. (2022) across a 1 mm Sr cloud confirmed g*dh/c^2 = 1.09e-19/mm."},{"id":"TA066","ledger":"TA","title":"2004 Indian Ocean tsunami animal flight","group":"N1 · Grade B","status":"CONJECTURE","meta":"Present physical precursor · Falsifier: F14","detail":"Eyewitness reports of animals moving inland prior to wave arrival; acoustic/infrasound and ground-Rayleigh wave cues plausible."},{"id":"TA067","ledger":"TA","title":"Common toads before L'Aquila earthquake","group":"N1 · Grade A","status":"CONJECTURE","meta":"Present physical precursor · Falsifier: F14","detail":"Grant & Halliday (2010) logged breeding-site abandonment 5 days pre-quake; groundwater/radon chemistry vs F14 precursor audit."},{"id":"TA068","ledger":"TA","title":"Animal earthquake precursors (review)","group":"N1 · Grade A","status":"ESTABLISHED","meta":"Present physical precursor · Falsifier: F14","detail":"Woith et al. (2018) meta-review of 729 reports found only 14 continuous time series and pervasive foreshock confounding."},{"id":"TA069","ledger":"TA","title":"Jaytee, the dog who knows","group":"N2 · Grade B","status":"CONJECTURE","meta":"Present cue vs signalling · Falsifier: F11","detail":"Sheldrake (1999) owner-return anticipation claim vs Wiseman, Smith & Milton (1998) controlled null replication."},{"id":"TA070","ledger":"TA","title":"Oscar the cat","group":"N2 · Grade B","status":"CONJECTURE","meta":"Present biochemical cue · Falsifier: F14","detail":"Dosa (2007) nursing-home case report of curling beside terminally ill patients; volatile ketotic odor cues untested under blinding."},{"id":"TA071","ledger":"TA","title":"Food-anticipatory activity","group":"N3 · Grade A","status":"ESTABLISHED","meta":"Mechanistic internal oscillator · Falsifier: None","detail":"Mammalian food-entrainable circadian oscillator ramps locomotion prior to scheduled daily meals from past schedule history."},{"id":"TA072","ledger":"TA","title":"Plant circadian anticipation of dawn","group":"N3 · Grade A","status":"ESTABLISHED","meta":"Mechanistic internal oscillator · Falsifier: None","detail":"Arabidopsis starch-degradation arithmetic divides stored night reserves by endogenous clock time remaining until dawn."},{"id":"TA073","ledger":"TA","title":"Migratory restlessness (Zugunruhe)","group":"N3 · Grade A","status":"ESTABLISHED","meta":"Mechanistic internal oscillator · Falsifier: None","detail":"Photoperiod and circannual clock genes trigger seasonal migratory preparation weeks before winter onset."},{"id":"TA074","ledger":"TA","title":"Physarum anticipates periodic shocks","group":"N3 · Grade A","status":"ESTABLISHED","meta":"Mechanistic internal oscillator · Falsifier: None","detail":"Saigusa et al. (2008) slime-mold slowdown at periodic cold-dry intervals reflects damped biochemical oscillation from prior pulses."},{"id":"TA075","ledger":"TA","title":"Adaptive prediction in microbes","group":"N3 · Grade A","status":"ESTABLISHED","meta":"Mechanistic evolutionary prior · Falsifier: None","detail":"Tagkopoulos et al. (2008): E. coli switches from temperature to anaerobic pathways because evolutionary history coupled both cues."},{"id":"TA076","ledger":"TA","title":"Periodical cicadas, 13 and 17 years","group":"N3 · Grade A","status":"ESTABLISHED","meta":"Mechanistic prime-cycle counter · Falsifier: None","detail":"Magicicada xylem-flux seasonal counting emerges synchronously at prime intervals avoiding predator resonance (Yoshimura 1997)."},{"id":"TA077","ledger":"TA","title":"Panagrolaimus kolymaensis revived after about 46,000 years","group":"N4 · Grade A","status":"ESTABLISHED","meta":"Metabolic arrest (one-way forward) · Falsifier: None","detail":"Shatilovich et al. (2023) revived Siberian permafrost nematodes via trehalose/anhydrobiosis metabolic suspension."},{"id":"TA078","ledger":"TA","title":"Silene stenophylla regenerated from about 32,000-year-old tissue","group":"N4 · Grade A","status":"ESTABLISHED","meta":"Metabolic arrest (one-way forward) · Falsifier: None","detail":"Yashina et al. (2012) regenerated fertile plants from Pleistocene squirrel-burrow placental fruit tissue in vitro."},{"id":"TA079","ledger":"TA","title":"Sacred lotus seed about 1300 years old germinated","group":"N4 · Grade A","status":"ESTABLISHED","meta":"Metabolic arrest (one-way forward) · Falsifier: None","detail":"Shen-Miller et al. (1995) radiocarbon-dated Nelumbo nucifera seed germinated via impermeable pericarp and L-isoaspartyl methyltransferase repair."},{"id":"TA080","ledger":"TA","title":"Tardigrade cryptobiosis","group":"N4 · Grade A","status":"ESTABLISHED","meta":"Metabolic arrest (one-way forward) · Falsifier: None","detail":"Reversible tun desiccation arrest suspending internal biological turnover while ambient proper time advances."},{"id":"TA081","ledger":"TA","title":"Mpemba effect","group":"N5 · Grade B","status":"CONJECTURE","meta":"Non-equilibrium relaxation · Falsifier: None","detail":"History-dependent relaxation rates in warm vs cool water/colloids; contested experimentally and purely causal forward dynamics."},{"id":"AA01","ledger":"AA","title":"Black hole information paradox and Page curve (islands)","group":"SKY · 4.35 Hz","status":"OPEN","meta":"Falsifier: F17","detail":"Turnover at Page time; scrambling delay t_scr = (4GM/c^3) ln S (1/t_scr = 4.35 Hz at 62 M_sun)"},{"id":"AA02","ledger":"AA","title":"Firewall paradox (AMPS 2012)","group":"SKY · Multi-scale","status":"OPEN","meta":"Falsifier: F16;F17","detail":"Near-horizon mode entanglement monogamy across Rindler frequencies"},{"id":"AA03","ledger":"AA","title":"Hawking radiation thermal spectrum","group":"SKY · 20.7 Hz","status":"OPEN","meta":"Falsifier: F16","detail":"Thermal peak nu_H = c^3/(8*pi*G*M) = 20.7 Hz for 62 M_sun; 3.1e-4 Hz for Sgr A*"},{"id":"AA04","ledger":"AA","title":"Quasinormal-mode ringdown, GW150914","group":"SKY · 195.0 Hz","status":"RESOLVED","meta":"Falsifier: F16","detail":"Fundamental l=m=2 ringdown f_QNM = 195 Hz (9.39 * nu_H non-spinning); overtone resolved at 3.6 sigma"},{"id":"AA05","ledger":"AA","title":"GW250114 area theorem and horizon direct wave","group":"SKY · 245.0 Hz","status":"OPEN","meta":"Falsifier: F16","detail":"Horizon angular frequency 2*Omega_H and surface-gravity decay kappa read directly in post-merger wave"},{"id":"AA06","ledger":"AA","title":"GW echoes claim and nulls","group":"SKY · 4.4 Hz","status":"RESOLVED","meta":"Falsifier: F17","detail":"Claimed Planck-scale echo comb spacing 1/dt = 4.4 Hz at 62 M_sun; LIGO-Virgo O1-O3 searches consistent with noise"},{"id":"AA07","ledger":"AA","title":"EHT shadow and photon ring, M87*","group":"SKY · 2.1e-6 Hz","status":"RESOLVED","meta":"Falsifier: F16","detail":"Photon-orbit frequency c/(3*sqrt(3)*pi*r_g) = 2.1e-6 Hz for 6.5e9 M_sun"},{"id":"AA08","ledger":"AA","title":"EHT shadow, Sgr A*","group":"SKY · 3.2e-3 Hz","status":"RESOLVED","meta":"Falsifier: F16","detail":"Photon-orbit frequency ~3.2e-3 Hz (orbital period ~310 s) for 4.1e6 M_sun"},{"id":"AA09","ledger":"AA","title":"Hubble tension","group":"SKY · 2.27e-18 Hz","status":"OPEN","meta":"Falsifier: F18","detail":"Cosmic expansion rate H0 = 2.367e-18 Hz (SH0ES) vs 2.184e-18 Hz (Planck CMB)"},{"id":"AA10","ledger":"AA","title":"S8 tension","group":"SKY · Multi-scale","status":"OPEN","meta":"Falsifier: F18","detail":"Late-time matter clustering amplitude sigma_8*(Omega_m/0.3)^0.5 growth-rate offset vs CMB lensing"},{"id":"AA11","ledger":"AA","title":"DESI evolving dark energy","group":"SKY · Multi-scale","status":"CONTESTED","meta":"Falsifier: F18","detail":"Baryon acoustic H(z) expansion history with w0 > -1, wa < 0 preference over flat LambdaCDM"},{"id":"AA12","ledger":"AA","title":"Rotation curves and MOND a0","group":"SKY · 4.00e-19 Hz","status":"OPEN","meta":"Falsifier: F18","detail":"Galactic acceleration scale a0/c = 4.00e-19 Hz, within 6-15% of H0/(2*pi) = 3.48e-19 to 3.77e-19 Hz"},{"id":"AA13","ledger":"AA","title":"Pioneer anomaly","group":"SKY · 1.0e-8 Hz","status":"RESOLVED","meta":"Falsifier: None","detail":"S-band 2.29 GHz carrier Doppler drift (~6e-9 Hz/s) resolved via anisotropic RTG thermal recoil"},{"id":"AA14","ledger":"AA","title":"Earth flyby anomaly","group":"SKY · 0.066 Hz","status":"OPEN","meta":"Falsifier: F6","detail":"Residual ~66 mHz X-band Doppler shift on some near-Earth gravity-assist trajectories"},{"id":"AA15","ledger":"AA","title":"Pulsar timing array background","group":"SKY · 3.17e-8 Hz","status":"OPEN","meta":"Falsifier: F6","detail":"Nanohertz stochastic gravitational-wave strain 2.4e-15 at reference frequency 1/yr = 3.17e-8 Hz"},{"id":"AA16","ledger":"AA","title":"Periodic FRB 180916","group":"SKY · 7.08e-7 Hz","status":"RESOLVED","meta":"Falsifier: None","detail":"16.35-day activity modulation window corresponding to 7.08e-7 Hz binary/precession period"},{"id":"AA17","ledger":"AA","title":"Shapiro delay","group":"SKY · Multi-scale","status":"RESOLVED","meta":"Falsifier: F6","detail":"Relativistic gravitational radar/pulsar carrier phase delay confirming past-cone metric curvature"},{"id":"AA18","ledger":"AA","title":"Lithium problem","group":"SKY · Multi-scale","status":"OPEN","meta":"Falsifier: None","detail":"Primordial 7Li nuclear reaction resonance rates vs Big Bang nucleosynthesis abundance deficit"},{"id":"AA19","ledger":"AA","title":"CMB large-angle anomalies","group":"SKY · Multi-scale","status":"CONTESTED","meta":"Falsifier: None","detail":"Lowest spherical-harmonic multipoles (l = 2, 3 quadrupole-octupole alignment and hemispherical asymmetry)"},{"id":"AA20","ledger":"AA","title":"GRB 090510 timing","group":"SKY · 7.5e24 Hz","status":"OPEN","meta":"Falsifier: F6","detail":"31 GeV photon arrival within 0.86 s across z = 0.903 bounds linear E_QG dispersion above 1.2 E_Planck"},{"id":"AA21","ledger":"AA","title":"Muon g-2","group":"EARTH · 2.29e5 Hz","status":"RESOLVED","meta":"Falsifier: None","detail":"Anomalous spin precession omega_a = 229 kHz in 1.45 T ring; reconciled with Standard Model via lattice QCD HVP"},{"id":"AA22","ledger":"AA","title":"Proton radius puzzle","group":"EARTH · 1.2e13 Hz","status":"RESOLVED","meta":"Falsifier: None","detail":"Muonic hydrogen 2S-2P Lamb-shift spectroscopy (~49.9 THz / electronic Rydberg shifts) converged near 0.841 fm"},{"id":"AA23","ledger":"AA","title":"Neutron lifetime","group":"EARTH · 1.28e-5 Hz","status":"OPEN","meta":"Falsifier: None","detail":"Bottle (1.1393e-3 Hz) vs beam (1.1265e-3 Hz) beta-decay rate discrepancy of 1.28e-5 Hz (~8.6 s)"},{"id":"AA24","ledger":"AA","title":"Atomki X17","group":"EARTH · 4.04e21 Hz","status":"CONTESTED","meta":"Falsifier: None","detail":"Claimed 16.7 MeV/c^2 e+e- pair angular anomaly in 8Be/4He/12C corresponding to nu_C = 4.04e21 Hz"},{"id":"AA25","ledger":"AA","title":"Gallium anomaly (BEST)","group":"EARTH · 2.9e20 Hz","status":"OPEN","meta":"Falsifier: None","detail":"51Cr neutrino-capture deficit at ~0.75 MeV (~1.8e20-2.9e20 Hz) in gallium detectors"},{"id":"AA26","ledger":"AA","title":"LSND, MiniBooNE; MicroBooNE null","group":"EARTH · Multi-scale","status":"CONTESTED","meta":"Falsifier: None","detail":"Short-baseline neutrino appearance oscillation phase delta_m^2 * L / (4E); constrained by MicroBooNE"},{"id":"AA27","ledger":"AA","title":"Lamb shift","group":"EARTH · 1.057e9 Hz","status":"RESOLVED","meta":"Falsifier: F8","detail":"Hydrogen 2S_1/2 - 2P_1/2 vacuum radiative splitting of 1,057.845 MHz confirming QED zero-point dressing"},{"id":"AA28","ledger":"AA","title":"Casimir effect","group":"EARTH · 1.5e14 Hz","status":"RESOLVED","meta":"Falsifier: F8","detail":"Cavity cutoff frequency c/(2d) = 1.5e14 Hz at d = 1 um; equilibrium force repaid identically on reset"},{"id":"AA29","ledger":"AA","title":"OPERA neutrinos","group":"EARTH · 1.37e7 Hz","status":"RESOLVED","meta":"Falsifier: F6","detail":"73 ns timing offset (1/73 ns = 13.7 MHz) traced to loose fiber-optic connector; causal front preserved"},{"id":"AA30","ledger":"AA","title":"Negative group delay, Hartman, negative-time photons","group":"EARTH · 3.84e14 Hz","status":"RESOLVED","meta":"Falsifier: F4;F6","detail":"d_phi/d_omega < 0 inside narrowband Rb D2 (384 THz) or microwave passband; signal front obeys v <= c"},{"id":"AA31","ledger":"AA","title":"Quantum Zeno and anti-Zeno","group":"EARTH · Multi-scale","status":"RESOLVED","meta":"Falsifier: None","detail":"Repeated projective/weak measurement rate vs system correlation frequency modulates decay rate with back-action cost"},{"id":"AA32","ledger":"AA","title":"Mpemba effect","group":"EARTH · Multi-scale","status":"CONTESTED","meta":"Falsifier: None","detail":"Multi-mode thermal/convective relaxation rate spectrum crossing without backward causation"},{"id":"AA33","ledger":"AA","title":"Sonoluminescence","group":"EARTH · 2.65e4 Hz","status":"RESOLVED","meta":"Falsifier: None","detail":"Picosecond optical flash locked to 26.5 kHz acoustic cavitation compression cycle"},{"id":"AA34","ledger":"AA","title":"Ball lightning","group":"EARTH · Multi-scale","status":"OPEN","meta":"Falsifier: None","detail":"Transient atmospheric optical emission and soil-silicon lines (Cen et al. 2014) lacking reproducible lab trigger"},{"id":"AA35","ledger":"AA","title":"Varying constants (clocks)","group":"EARTH · 6.42e14 Hz","status":"OPEN","meta":"Falsifier: F1;F3","detail":"Yb+ E3 (642 THz) vs E2/Sr optical clock ratio bounds alpha_dot/alpha = 1.0(1.1)e-18/yr"},{"id":"AA36","ledger":"AA","title":"Equivalence principle (MICROSCOPE)","group":"EARTH · 8.0e-4 Hz","status":"RESOLVED","meta":"Falsifier: F1","detail":"Orbital differential accelerometer modulation (~0.8 mHz) bounds Eotvos parameter eta = (-1.5 +- 2.7)e-15"},{"id":"AA37","ledger":"AA","title":"Allais effect","group":"EARTH · Multi-scale","status":"CONTESTED","meta":"Falsifier: None","detail":"Claimed Foucault pendulum precession anomalies during solar eclipses; atmospheric tilt vs null gravimeter tests"},{"id":"AA38","ledger":"AA","title":"Big G scatter","group":"EARTH · Multi-scale","status":"OPEN","meta":"Falsifier: None","detail":"100-500 ppm spread across mHz torsion-balance oscillation and atom-interferometer determinations of Newton's G"},{"id":"AA39","ledger":"AA","title":"Compton-frequency clock","group":"EARTH · 2.993e25 Hz","status":"CONTESTED","meta":"Falsifier: F3","detail":"Cs-133 Compton frequency nu_C = m*c^2/h = 2.993486e25 Hz; debate over direct Compton vs laser-phase observable"},{"id":"AA40","ledger":"AA","title":"Quantum-gravity timing","group":"SKY · 2.95e42 Hz","status":"OPEN","meta":"Falsifier: F6","detail":"Planck frequency nu_P = E_P/h = 2.95e42 Hz (omega_P = 1.855e43 rad/s) bounding astrophysical group-velocity dispersion"},{"id":"P01","ledger":"P","title":"Grandfather paradox","group":"Time travel · antinomy (classical deterministic)","status":"RESOLVED","meta":"Constraints: C4;M2","detail":"Deterministic NOT loop has no pure fixed point (grandfather_no_pure); requires mixed fixed point p=1/2 (D-CTC) or postselection (P-CTC)."},{"id":"P02","ledger":"P","title":"Bootstrap / ontological paradox","group":"Time travel · antinomy (origin)","status":"PARTIAL","meta":"Constraints: C1;M2;M5","detail":"Unaging object/bit in a closed loop violates thermodynamic entropy increase unless external free energy restores wear each cycle."},{"id":"P03","ledger":"P","title":"Knowledge-creation paradox (Deutsch)","group":"Time travel · veridical (complexity debt)","status":"OPEN","meta":"Constraints: M2;M7","detail":"Fixed-point loop outputs NP/PSPACE witnesses without running the search; charges PSPACE oracle complexity debt."},{"id":"P04","ledger":"P","title":"Unproven theorem paradox","group":"Time travel · antinomy (origin)","status":"OPEN","meta":"Constraints: M2;M7","detail":"Proof copied from future textbook is logically consistent only if a fallback prover branch exists inside the circuit."},{"id":"P05","ledger":"P","title":"Novikov self-consistency / predestination","group":"Time travel · principle, not a paradox","status":"PARTIAL","meta":"Constraints: C4;M2","detail":"Restricts Cauchy initial data to globally self-consistent histories; Tested in diagonal trials by F19."},{"id":"P06","ledger":"P","title":"Polchinski billiard","group":"Time travel · falsidical (assumes no self-hit)","status":"RESOLVED","meta":"Constraints: C4;M2","detail":"Echeverria, Klinkhammer & Thorne (1991) found glancing self-consistent trajectories, often with multiple fixed points (polchinski_multiplicity)."},{"id":"P07","ledger":"P","title":"Chronology protection","group":"Time travel · conjecture","status":"OPEN","meta":"Constraints: C4;M4","detail":"Hawking (1992): vacuum stress-energy <T_uv> diverges near compactly generated Cauchy horizons, charging infinite back-reaction."},{"id":"P08","ledger":"P","title":"Twin paradox","group":"Relativity · veridical","status":"RESOLVED","meta":"Constraints: C1;M4;M8","detail":"Worldline proper time tau = int d_tau is path-dependent; non-inertial turnaround breaks frame symmetry (frame-labelled index)."},{"id":"P09","ledger":"P","title":"Ladder / barn paradox","group":"Relativity · falsidical","status":"RESOLVED","meta":"Constraints: C1;C4;M4","detail":"Simultaneity of front/rear doors is chart-dependent; causal stress waves propagate <= c."},{"id":"P10","ledger":"P","title":"Bell's spaceship paradox","group":"Relativity · veridical","status":"RESOLVED","meta":"Constraints: C1;M4","detail":"Identical coordinate acceleration increases proper separation in comoving frame, snapping the thread."},{"id":"P11","ledger":"P","title":"Ehrenfest paradox","group":"Relativity · veridical","status":"RESOLVED","meta":"Constraints: C1;M4","detail":"Born-rigid spin-up of a disk is impossible; spatial slice of rotating congruence has negative spatial curvature."},{"id":"P12","ledger":"P","title":"EPR paradox","group":"Quantum · veridical","status":"RESOLVED","meta":"Constraints: C4","detail":"Bell-nonlocal entanglement correlations violate local hidden variables while preserving exact marginal no-signalling."},{"id":"P13","ledger":"P","title":"Schrodinger's cat","group":"Quantum · antinomy (interpretive)","status":"PARTIAL","meta":"Constraints: C2;H3","detail":"Decoherence rapidly exports phase into environment; single definite macro-record requires an interpretive rule."},{"id":"P14","ledger":"P","title":"Measurement problem","group":"Quantum · open problem (tension)","status":"OPEN","meta":"Constraints: C2;H3","detail":"Direct tension between strictly unitary evolution (C2) and irreversible single-outcome laboratory records."},{"id":"P15","ledger":"P","title":"Wigner's friend / Frauchiger-Renner","group":"Quantum · antinomy (claimed)","status":"OPEN","meta":"Constraints: C2;H3","detail":"Records of nested quantum observers need not compose into a single observer-independent Boolean table."},{"id":"P16","ledger":"P","title":"Quantum Zeno effect","group":"Quantum · veridical","status":"RESOLVED","meta":"Constraints: C1;M6","detail":"Frequent projective queries at rate >> correlation time freeze transitions at the price of measurement back-action energy."},{"id":"P17","ledger":"P","title":"Hardy's paradox","group":"Quantum · veridical","status":"RESOLVED","meta":"Constraints: C4","detail":"Pre- and post-selected non-null branch occurs at small probability without enabling superluminal or backward messaging."},{"id":"P18","ledger":"P","title":"Quantum Cheshire cat","group":"Quantum · veridical (weak-value)","status":"PARTIAL","meta":"Constraints: C4","detail":"Weak-value separation of particle path and spin appears only in ensemble averages conditioned on paid postselection; physical ontology contested."},{"id":"P19","ledger":"P","title":"Three-box paradox (Aharonov-Vaidman)","group":"Quantum · veridical (claimed)","status":"PARTIAL","meta":"Constraints: C4;M2","detail":"Counterfactual certainty in two boxes simultaneously holds only under two-state postselection of rare successful runs."},{"id":"P20","ledger":"P","title":"Wheeler delayed choice","group":"Quantum · falsidical (if read as retro-signal)","status":"RESOLVED","meta":"Constraints: C4","detail":"Choosing wave vs particle readout after entry alters which correlation subset is measured, never past detector marginals."},{"id":"P21","ledger":"P","title":"Elitzur-Vaidman bomb tester","group":"Quantum · veridical","status":"RESOLVED","meta":"Constraints: C4","detail":"Interaction-free detection uses coherent past-cone interference paths with bounded success probability."},{"id":"P22","ledger":"P","title":"Klein paradox","group":"Quantum · veridical","status":"RESOLVED","meta":"Constraints: M6","detail":"Relativistic barrier step > 2mc^2 triggers electron-positron pair creation paid entirely by the electrostatic potential."},{"id":"P23","ledger":"P","title":"Gibbs paradox","group":"Thermodynamics · falsidical","status":"RESOLVED","meta":"Constraints: C1;M5","detail":"1/N! quantum indistinguishability yields 0 mixing entropy for identical gases and 2R ln 2 = 11.53 J/K for distinct gases."},{"id":"P24","ledger":"P","title":"Loschmidt reversibility paradox","group":"Thermodynamics · antinomy (apparent)","status":"RESOLVED","meta":"Constraints: C2;H3;M5","detail":"Micro-reversibility (C2) coexists with coarse-grained entropy growth (H3) given atypical low-entropy initial conditions."},{"id":"P25","ledger":"P","title":"Poincare recurrence (Zermelo)","group":"Thermodynamics · veridical","status":"RESOLVED","meta":"Constraints: C2;M5","detail":"Finite bijective systems eventually recur (recurrence theorem), requiring exponential wait exp(S/k_B) and a past hypothesis."},{"id":"P26","ledger":"P","title":"Maxwell's demon / Szilard engine","group":"Thermodynamics · falsidical","status":"RESOLVED","meta":"Constraints: M5;M6","detail":"Sorting work k_B T ln 2 per molecule is repaid when the demon's 1-bit memory register is reset (Landauer floor)."},{"id":"P27","ledger":"P","title":"Mpemba effect","group":"Thermodynamics · veridical (in some systems)","status":"PARTIAL","meta":"Constraints: H3","detail":"Multi-mode non-equilibrium state is not indexed by mean temperature alone (coarse-record horizon H3)."},{"id":"P28","ledger":"P","title":"Arrow of time / past hypothesis","group":"Thermodynamics · open problem (tension)","status":"OPEN","meta":"Constraints: C2;C4;M5","detail":"Past-only records require a low-entropy early-universe boundary condition whose dynamical origin remains open."},{"id":"P29","ledger":"P","title":"Boltzmann brain","group":"Cosmology · antinomy (cognitive instability)","status":"OPEN","meta":"Constraints: C4;H3;M5","detail":"Thermal de Sitter fluctuations producing fake past-cone records undermine provenance unless cosmological measure suppresses them."},{"id":"P30","ledger":"P","title":"Olbers' paradox","group":"Cosmology · falsidical (premise)","status":"RESOLVED","meta":"Constraints: C4;M4","detail":"Finite cosmic age (~13.8 Gyr) and expansion redshift bound integrated past-light-cone starlight."},{"id":"P31","ledger":"P","title":"Bentley / Seeliger paradox","group":"Cosmology · veridical","status":"RESOLVED","meta":"Constraints: M4","detail":"Infinite static Newtonian dust is ill-posed; general relativity replaces it with dynamical Friedmann or rotating metrics."},{"id":"P32","ledger":"P","title":"Horizon problem","group":"Cosmology · open problem (tension)","status":"OPEN","meta":"Constraints: C4;M4","detail":"Near-uniform CMB temperature across disjoint post-recombination past cones requires inflation or bounce phase."},{"id":"P33","ledger":"P","title":"Flatness problem","group":"Cosmology · open problem (tension)","status":"OPEN","meta":"Constraints: M4","detail":"Near-critical spatial curvature |Omega_k| << 1 requires early accelerated expansion or anthropic/measure selection."},{"id":"P34","ledger":"P","title":"Cosmological constant problem","group":"Cosmology · open problem (tension)","status":"OPEN","meta":"Constraints: M6;M8","detail":"Naive Planck QFT cutoff (~4.6e113 J/m^3) exceeds observed rho_Lambda (~5.3e-10 J/m^3) by ~60-123 orders; gravitating zero-point open."},{"id":"P35","ledger":"P","title":"Hierarchy problem","group":"Cosmology · open problem (tension)","status":"OPEN","meta":"Constraints: M6;M8","detail":"Electroweak-to-Planck mass ratio (~10^-17) radiative stability unexplained by Compton clock relations alone."},{"id":"P36","ledger":"P","title":"Black hole information paradox","group":"Black holes · antinomy (unitarity vs thermal)","status":"OPEN","meta":"Constraints: C2;C4;H3","detail":"2D/replica island calculations recover the Page curve after scrambling latency, while 4D Kerr microstate mechanism stays open."},{"id":"P37","ledger":"P","title":"Firewall (AMPS)","group":"Black holes · antinomy","status":"OPEN","meta":"Constraints: C2;C4;H3","detail":"Simultaneous unitarity, semi-classical EFT outside the stretched horizon, and smooth infall clash after the Page time."},{"id":"P38","ledger":"P","title":"Black hole complementarity","group":"Black holes · principle","status":"PARTIAL","meta":"Constraints: C4;H3","detail":"No single causal observer can collect both interior infalling and exterior decoded Hawking records before singularity impact."},{"id":"P39","ledger":"P","title":"Fermi paradox","group":"Cosmology · open problem (tension)","status":"OPEN","meta":"Constraints: C4","detail":"Absence of technosignatures inside Earth's past light cone constrains civilization longevity, energy, or broadcast visibility."},{"id":"P40","ledger":"P","title":"Russell's paradox","group":"Set theory · antinomy","status":"RESOLVED","meta":"Constraints: C1","detail":"Unrestricted comprehension fails (no_universal_answer_table); indexes require stratified types or ZFC separation."},{"id":"P41","ledger":"P","title":"Cantor's paradox","group":"Set theory · antinomy","status":"RESOLVED","meta":"Constraints: C1","detail":"|P(Q)| > |Q| forbids a set of all sets and any flat universal predicate index."},{"id":"P42","ledger":"P","title":"Burali-Forti paradox","group":"Set theory · antinomy (per source)","status":"RESOLVED","meta":"Constraints: C1","detail":"Well-ordered time/ordinal indices form a proper class rather than a completed self-member ordinal."},{"id":"P43","ledger":"P","title":"Berry paradox","group":"Logic · antinomy","status":"RESOLVED","meta":"Constraints: C1;M7","detail":"'Definable in < k words' is not definable inside the same object language; blocks short self-referential query keys."},{"id":"P44","ledger":"P","title":"Richard's paradox","group":"Logic · antinomy","status":"RESOLVED","meta":"Constraints: C1","detail":"Diagonalization over effective real definitions separates syntax enumeration from semantic truth."},{"id":"P45","ledger":"P","title":"Liar paradox","group":"Logic · antinomy","status":"RESOLVED","meta":"Constraints: C1;M2","detail":"No total Boolean self-oracle exists (no_total_self_oracle); requires Tarski hierarchy or Deutsch p = 1/2 mixture."},{"id":"P46","ledger":"P","title":"Curry's paradox","group":"Logic · antinomy","status":"RESOLVED","meta":"Constraints: C1;M2","detail":"'If this query returns true then P' proves arbitrary P unless self-referential truth predicates are stratified."},{"id":"P47","ledger":"P","title":"Godel incompleteness","group":"Logic · veridical (theorem)","status":"RESOLVED","meta":"Constraints: C1;M7","detail":"No consistent r.e. formal index decides every arithmetic truth; unbounded CTCs reach Delta_2, still below full arithmetic truth."},{"id":"P48","ledger":"P","title":"Halting problem","group":"Logic · veridical (theorem)","status":"RESOLVED","meta":"Constraints: C1;M2;M7","detail":"Undecidable on standard Turing machines; polynomial D-CTCs stay in PSPACE while unbounded-width CTCs reach Delta_2."},{"id":"P49","ledger":"P","title":"Banach-Tarski","group":"Infinity · veridical (per source)","status":"RESOLVED","meta":"Constraints: C1;C3","detail":"Non-measurable Choice decompositions enforce explicit Lebesgue/Borel measurability requirements on physical observables."},{"id":"P50","ledger":"P","title":"Skolem's paradox","group":"Logic · veridical","status":"RESOLVED","meta":"Constraints: C1","detail":"Countable models of first-order ZFC lack internal bijections to N, showing cardinality/continuum claims are model-relative."},{"id":"P51","ledger":"P","title":"Zeno: Achilles and dichotomy","group":"Infinity · falsidical","status":"RESOLVED","meta":"Constraints: C1;M1","detail":"Countably many geometric sub-intervals sum to finite duration 1 (zeno_dichotomy)."},{"id":"P52","ledger":"P","title":"Zeno: arrow","group":"Infinity · falsidical","status":"RESOLVED","meta":"Constraints: C1;C3","detail":"Single instants have measure zero (instant_measure_zero); velocity is a neighbourhood derivative / conjugate momentum."},{"id":"P53","ledger":"P","title":"Sorites","group":"Vagueness · antinomy","status":"PARTIAL","meta":"Constraints: H3","detail":"Coarse categorical thresholds on continuous variables require probabilistic or supervaluationist boundary accounting."},{"id":"P54","ledger":"P","title":"Unexpected hanging","group":"Self-reference · antinomy","status":"PARTIAL","meta":"Constraints: C1;C4","detail":"Backward induction over self-referential epistemic announcements fails because future surprise depends on current belief state."},{"id":"P55","ledger":"P","title":"Newcomb's paradox","group":"Prediction · antinomy (decision theory)","status":"PARTIAL","meta":"Constraints: C4;M2;M7","detail":"Evidential vs causal decision theory diverge when predictor accuracy exceeds 1001/2000 = 0.5005; physical predictor tested by F4/F11."},{"id":"P56","ledger":"P","title":"Two envelopes","group":"Probability · falsidical","status":"RESOLVED","meta":"Constraints: C3","detail":"Improper uniform prior on (0, inf) invalidates expectation; under any proper integrable prior, net unconditional switching gain is 0."},{"id":"P57","ledger":"P","title":"St Petersburg paradox","group":"Probability · veridical","status":"RESOLVED","meta":"Constraints: C3","detail":"Unbounded expected dollar payoff collapses to finite certainty equivalent (4 under log utility) or finite bankroll cap."},{"id":"P58","ledger":"P","title":"Simpson's paradox","group":"Probability · veridical","status":"RESOLVED","meta":"Constraints: C1;H3","detail":"Aggregating over a confounding stratum reverses marginal rates; queries must declare causal conditioning variables (H3)."},{"id":"P59","ledger":"P","title":"Bertrand paradox","group":"Probability · veridical","status":"RESOLVED","meta":"Constraints: C1;C3","detail":"'Random chord' yields 1/3, 1/2, or 1/4 depending on symmetry group; continuous queries require an explicit measure."},{"id":"P60","ledger":"P","title":"Galileo's paradox","group":"Infinity · veridical","status":"RESOLVED","meta":"Constraints: C1","detail":"n -> n^2 is injective without surjectivity on infinite N (galileo_squares), separating Dedekind-infinite from finite state conservation."},{"id":"P61","ledger":"P","title":"Hilbert's hotel","group":"Infinity · veridical (per source)","status":"RESOLVED","meta":"Constraints: C1;M5","detail":"Nat.succ creates room 0 from thin air only on infinite state spaces (hilbert_hotel); finite Bekenstein systems forbid free slots."},{"id":"P62","ledger":"P","title":"Thomson's lamp","group":"Supertasks · antinomy (supertask)","status":"PARTIAL","meta":"Constraints: C1;C3;M6","detail":"Infinite bit-toggling before t = 1 has no limit state and violates Gabor/Margolus-Levitin finite-energy switching bounds."},{"id":"P63","ledger":"P","title":"Ross-Littlewood paradox","group":"Supertasks · veridical (model-dependent)","status":"PARTIAL","meta":"Constraints: C1","detail":"Labelled balls leave 0 in the urn while unlabelled count diverges; supertasks lack physical continuity at the limit instant."},{"id":"P64","ledger":"P","title":"Monty Hall","group":"Probability · veridical (per source)","status":"RESOLVED","meta":"Constraints: C4;H3","detail":"Host's informed door opening carries 1 bit of past-cone selection structure; switching wins 2/3 (monty_hall)."},{"id":"P65","ledger":"P","title":"Parrondo's paradox","group":"Probability · veridical","status":"RESOLVED","meta":"Constraints: M5;M6","detail":"Alternating two losing Markov chains (+1.18 over 100 rounds vs -0.93 and -1.33) acts as a Brownian flashing ratchet paid by switching."},{"id":"P66","ledger":"P","title":"Kolmogorov / Berry uncomputability","group":"Information · veridical (theorem)","status":"RESOLVED","meta":"Constraints: M1;M7","detail":"Fewer than 2^(1-k) of n-bit strings compress by k bits (incompressible); exact K(x) is uncomputable."},{"id":"P67","ledger":"P","title":"Chaitin's Omega","group":"Information · veridical (theorem)","status":"RESOLVED","meta":"Constraints: M2;M7","detail":"Halting probability bits are algorithmically random; unbounded CTCs (Delta_2) decide halting bits but cannot compress random strings."},{"id":"P68","ledger":"P","title":"Free information vs conservation","group":"Information · antinomy (if C2 holds)","status":"PARTIAL","meta":"Constraints: C2;M2;M5","detail":"Unitary conservation (C2) forbids ex nihilo bit creation; Deutsch CTC nonlinearity breaks unitarity on the CR subsystem."},{"id":"P69","ledger":"P","title":"Bekenstein bound","group":"Information · veridical (bound)","status":"RESOLVED","meta":"Constraints: C1;C3;M8","detail":"S <= 2*pi*k_B*R*E/(hbar*c) caps a 1 m, 1 kg region at 2.58e43 bits, forcing discrete finite index capacity."},{"id":"P70","ledger":"P","title":"Holographic principle","group":"Information · conjecture","status":"PARTIAL","meta":"Constraints: C1;C3","detail":"Boundary area caps bulk degrees of freedom at c^3/(4*G*hbar*ln 2) = 1.38e69 bits/m^2, forbidding infinite spatial/temporal density."},{"id":"P71","ledger":"P","title":"Jevons paradox","group":"Networks · veridical (empirical)","status":"PARTIAL","meta":"Constraints: M5;M6","detail":"Cheaper lookup per query expands aggregate query volume when demand is elastic, raising total joule dissipation."},{"id":"P72","ledger":"P","title":"Braess's paradox","group":"Networks · veridical","status":"RESOLVED","meta":"Constraints: M1","detail":"Adding an unpriced shortcut shifts Nash routing from 65 to 80 minutes; local greedy shortcuts can degrade global latency."},{"id":"P73","ledger":"P","title":"Landauer's principle (as resolution)","group":"Information · veridical (principle)","status":"RESOLVED","meta":"Constraints: M5;M6","detail":"Irreversible 2-to-1 state reset exports >= k_B T ln 2 = 2.87e-21 J/bit at 300 K while reversible bijections have zero floor."},{"id":"P74","ledger":"P","title":"Ultraviolet catastrophe","group":"Quantum · falsidical (classical premise)","status":"RESOLVED","meta":"Constraints: C3;M6","detail":"Discrete oscillator quanta E = h*nu suppress high-frequency thermal modes exponentially, keeping cavity energy finite."}];
+      var kB = 1.380649e-23, T_ROOM = 300.0, LN2 = Math.log(2);
+      var LANDAUER_300K = kB * T_ROOM * LN2;
+
+      // Theme toggle
+      var themeOrder = ['auto', 'dark', 'light'];
+      var tBtn = document.getElementById('theme-toggle');
+      var tLbl = document.getElementById('theme-label');
+      function applyTheme(mode) {
+        localStorage.setItem('oe-theme', mode);
+        var res = mode === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : mode;
+        document.documentElement.setAttribute('data-theme', res);
+        document.documentElement.style.colorScheme = res;
+        tLbl.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
+      }
+      applyTheme(localStorage.getItem('oe-theme') || 'auto');
+      tBtn.addEventListener('click', function(){
+        var cur = localStorage.getItem('oe-theme') || 'auto';
+        applyTheme(themeOrder[(themeOrder.indexOf(cur) + 1) % themeOrder.length]);
+      });
+
+      function fmtPow10(log2Val) {
+        var log10Val = log2Val * Math.LOG10E * LN2;
+        if (log10Val < 6) return Math.round(Math.pow(2, log2Val)).toLocaleString('en-US');
+        var exp = Math.floor(log10Val);
+        var mant = Math.pow(10, log10Val - exp);
+        return mant.toFixed(2) + ' × 10^' + exp;
+      }
+
+      function fmtJoules(log2Ops, jPerOp) {
+        var log10J = log2Ops * Math.log10(2) + Math.log10(jPerOp);
+        if (log10J >= -2 && log10J < 4) return Math.pow(10, log10J).toFixed(2) + ' J';
+        var exp = Math.floor(log10J);
+        var mant = Math.pow(10, log10J - exp);
+        return mant.toFixed(2) + ' × 10^' + exp + ' J';
+      }
+
+      var currentCircuit = 'qhronology';
+
+      function syncUrl() {
+        var p = new URLSearchParams();
+        p.set('bits', document.getElementById('h-bits').value);
+        p.set('t', document.getElementById('h-t').value);
+        p.set('salt', document.getElementById('h-salt').value);
+        p.set('fresh', document.getElementById('h-fresh').value);
+        p.set('circuit', currentCircuit);
+        p.set('n', document.getElementById('c-param').value);
+        p.set('snr', document.getElementById('c-snr').value);
+        if (document.getElementById('cat-ledger').value !== 'ALL') p.set('ledger', document.getElementById('cat-ledger').value);
+        if (document.getElementById('cat-q').value) p.set('q', document.getElementById('cat-q').value);
+        window.history.replaceState(null, '', '?' + p.toString());
+      }
+
+      // Instrument 1: Hellman Explorer
+      function updateHellman(pushUrl) {
+        var bits = parseInt(document.getElementById('h-bits').value, 10);
+        var logT = parseInt(document.getElementById('h-t').value, 10);
+        if (logT > Math.floor(bits / 2)) {
+          logT = Math.floor(bits / 2);
+          document.getElementById('h-t').value = String(logT);
+        }
+        var salt = parseInt(document.getElementById('h-salt').value, 10);
+        var fresh = document.getElementById('h-fresh').value;
+
+        document.getElementById('v-h-bits').textContent = String(bits);
+        document.getElementById('v-h-t').textContent = String(logT);
+        document.getElementById('v-h-salt').textContent = String(salt);
+        document.getElementById('v-h-fresh').textContent = fresh === 'fresh' ? 'Fresh-Sealed' : 'Static (Unsealed)';
+
+        var fillLog2 = bits + salt;
+        var memLog2 = bits - logT;
+        var onlineLog2 = 2 * logT;
+        var balLog2 = (2.0 * bits) / 3.0;
+
+        document.getElementById('o-h-fill').textContent = fmtPow10(fillLog2);
+        document.getElementById('o-h-bal').textContent = 'Balanced N^(2/3): ' + fmtPow10(balLog2);
+        document.getElementById('o-h-mt').textContent = 'M = 2^' + memLog2 + ' · T = 2^' + onlineLog2;
+        document.getElementById('o-h-landauer').textContent = fmtJoules(fillLog2, LANDAUER_300K);
+        document.getElementById('o-h-asic').textContent = 'At 15 pJ/hash ASIC: ' + fmtJoules(fillLog2, 15e-12);
+
+        if (fresh === 'fresh') {
+          document.getElementById('o-h-reuse').textContent = '0.0% (Blocked)';
+          document.getElementById('o-h-reuse-sub').textContent = 'Previous-block hash denies pre-query fill (M7 = 0/200)';
+        } else if (salt > 0) {
+          document.getElementById('o-h-reuse').textContent = '×2^' + salt + ' Fill Penalty';
+          document.getElementById('o-h-reuse-sub').textContent = 'Distinct salt invalidates unsalted chains';
+        } else {
+          document.getElementById('o-h-reuse').textContent = 'Active (Static)';
+          document.getElementById('o-h-reuse-sub').textContent = 'M7 16-bit single-table demo: 34.0% hit';
+        }
+        if (pushUrl) syncUrl();
+        return {
+          keyspace_bits: bits,
+          chain_log2_t: logT,
+          salt_bits: salt,
+          freshness_mode: fresh,
+          fill_log2_evals: fillLog2,
+          memory_log2_words: memLog2,
+          online_log2_evals: onlineLog2,
+          table_reuse_pct: fresh === 'fresh' ? 0.0 : (salt > 0 ? 100.0 / Math.pow(2, Math.min(20, salt)) : 34.0)
+        };
+      }
+      ['h-bits', 'h-t', 'h-salt', 'h-fresh'].forEach(function(id){
+        document.getElementById(id).addEventListener('input', function(){ updateHellman(true); });
+        document.getElementById(id).addEventListener('change', function(){ updateHellman(true); });
+      });
+
+      // Instrument 2: D-CTC vs P-CTC + M3 Horizon Curve
+      function updateCircuitAndHorizon(pushUrl) {
+        var rawN = parseInt(document.getElementById('c-param').value, 10);
+        var gWeight = ((rawN - 3) / 7.0);
+        var snrMode = document.getElementById('c-snr').value;
+        document.getElementById('v-c-snr').textContent = snrMode === 'noiseless' ? 'Noiseless' : snrMode.replace('dB', ' dB');
+
+        var tiles = [];
+        if (currentCircuit === 'qhronology') {
+          document.getElementById('v-c-param').textContent = 'g = ' + gWeight.toFixed(2);
+          tiles = [
+            ['D-CTC Fixed-Point Family', gWeight.toFixed(2) + '|0⟩⟨0| + ' + (1 - gWeight).toFixed(2) + '|1⟩⟨1|', 'Non-unique on both CR & CV (Bishop 2026)'],
+            ['P-CTC Postselected Output', '|+⟩⟨+| on CR · I/2 on CV', 'Unique coherent projection via Tr_CV(U)'],
+            ['Circuit Gate Sequence', 'CNOT(CV→CR) · SWAP', 'Input |0⟩⟨0| on chronology-respecting wire'],
+            ['Consistency Verdict', 'D-CTC ≠ P-CTC', 'Models disagree experimentally on circuit']
+          ];
+        } else if (currentCircuit === 'bitflip') {
+          document.getElementById('v-c-param').textContent = 'Unique p = 0.50';
+          tiles = [
+            ['D-CTC Unique Fixed Point', 'I/2 (P(bit=1) = 0.500)', 'Lean mixed_answer_unique: p = 1 − p ⇒ 1/2'],
+            ['P-CTC Projector Amplitude', 'Tr(X) / 2 = 0.000', 'Zero consistent pure history weight'],
+            ['Pure Boolean Check', '!b ≠ b (0 pure solutions)', 'Lean grandfather_no_pure (0 axioms)'],
+            ['Diagonal Audit', 'F19 Novikov Test', 'Enforced negation forces 1/2 mixture or fault']
+          ];
+        } else {
+          var d = 1 << rawN;
+          var d2 = d * d;
+          document.getElementById('v-c-param').textContent = 'n = ' + rawN + ' bits (d = ' + d + ')';
+          tiles = [
+            ['D-CTC Fixed-Point Queries', '1 query', 'Absorbing witness fixed point (PSPACE)'],
+            ['Classical Exhaustive Mean', (d / 2).toLocaleString('en-US') + ' queries', 'd / 2 expected oracle checks'],
+            ['P-CTC Postselection Trials', d2.toLocaleString('en-US') + ' trials', 'P_post = 1/d² = 1/' + d2.toLocaleString('en-US') + ' (worse than brute)'],
+            ['Grover Quantum Baseline', Math.max(1, Math.round((Math.PI / 4) * Math.sqrt(d))) + ' queries', '(π/4)√d standard BQP lower bound']
+          ];
+        }
+
+        document.getElementById('ctc-metrics').innerHTML = tiles.map(function(t, i){
+          var col = i === 0 ? 'color: var(--color-brand-amber);' : (i === 2 ? 'color: var(--color-brand-cyan);' : '');
+          return '<div class="metric-tile"><div class="k">' + t[0] + '</div><div class="v" style="font-size: 1.02rem; ' + col + '">' + t[1] + '</div><div class="s">' + t[2] + '</div></div>';
+        }).join('');
+
+        // Render M3 Horizon SVG curve across leads 1..64
+        var baseStart = snrMode === 'noiseless' ? 0.000025 : (snrMode === '80dB' ? 0.0053 : (snrMode === '40dB' ? 0.065 : 0.470));
+        var endCap = snrMode === 'noiseless' ? 0.65 : (snrMode === '80dB' ? 1.12 : (snrMode === '40dB' ? 1.21 : 1.29));
+        var pts = [];
+        for (var lead = 1; lead <= 64; lead++) {
+          var frac = (lead - 1) / 63.0;
+          var err = Math.min(1.35, baseStart * Math.pow(endCap / Math.max(1e-6, baseStart), Math.pow(frac, 0.72)));
+          var x = 52 + frac * 688;
+          var y = 128 - (Math.min(1.35, err) / 1.35) * 106;
+          pts.push(x.toFixed(1) + ',' + y.toFixed(1));
+        }
+        var svgHtml = ''
+          + '<line x1="52" y1="128" x2="740" y2="128" stroke="rgba(148,163,184,0.4)" stroke-width="1"/>'
+          + '<line x1="52" y1="49" x2="740" y2="49" stroke="rgba(245,158,11,0.35)" stroke-width="1" stroke-dasharray="4 4"/>'
+          + '<text x="46" y="53" fill="#f59e0b" font-size="10" text-anchor="end">1.0</text>'
+          + '<text x="46" y="131" fill="#94a3b8" font-size="10" text-anchor="end">0.0</text>'
+          + '<text x="52" y="146" fill="#94a3b8" font-size="10">Lead +1</text>'
+          + '<text x="396" y="146" fill="#94a3b8" font-size="10" text-anchor="middle">Lead +32 (Horizon Cliff)</text>'
+          + '<text x="740" y="146" fill="#94a3b8" font-size="10" text-anchor="end">Lead +64</text>'
+          + '<polyline fill="none" stroke="#22d3ee" stroke-width="2.6" points="' + pts.join(' ') + '"/>';
+        document.getElementById('m3-svg').innerHTML = svgHtml;
+
+        if (pushUrl) syncUrl();
+        return { circuit: currentCircuit, n_bits: rawN, snr: snrMode, lead_1_8_rel_err: baseStart, lead_57_64_rel_err: endCap };
+      }
+
+      document.querySelectorAll('.ctc-btn').forEach(function(b){
+        b.addEventListener('click', function(){
+          currentCircuit = b.getAttribute('data-circuit');
+          document.querySelectorAll('.ctc-btn').forEach(function(x){
+            var on = x === b;
+            x.setAttribute('aria-pressed', on ? 'true' : 'false');
+            x.style.borderColor = on ? 'var(--color-brand-amber)' : '';
+            x.style.color = on ? 'var(--color-brand-amber)' : '';
+          });
+          updateCircuitAndHorizon(true);
+        });
+      });
+      document.getElementById('c-param').addEventListener('input', function(){ updateCircuitAndHorizon(true); });
+      document.getElementById('c-snr').addEventListener('change', function(){ updateCircuitAndHorizon(true); });
+
+      // Instrument 3: Unified 195-Entry Catalog
+      function filterCatalog(pushUrl) {
+        var q = (document.getElementById('cat-q').value || '').trim().toLowerCase();
+        var led = document.getElementById('cat-ledger').value;
+        var st = document.getElementById('cat-status').value;
+
+        var rows = CATALOG.filter(function(r){
+          if (led !== 'ALL' && r.ledger !== led) return false;
+          if (st === 'EST' && r.status !== 'ESTABLISHED' && r.status !== 'RESOLVED') return false;
+          if (st === 'CONJ' && ['CONJECTURE', 'OPEN', 'CONTESTED', 'PARTIAL'].indexOf(r.status) === -1) return false;
+          if (st === 'SPEC' && ['SPECULATION', 'DEBUNKED'].indexOf(r.status) === -1) return false;
+          if (q) {
+            var hay = (r.id + ' ' + r.title + ' ' + r.group + ' ' + r.status + ' ' + r.meta + ' ' + r.detail).toLowerCase();
+            if (hay.indexOf(q) === -1) return false;
+          }
+          return true;
+        });
+
+        document.getElementById('cat-count').textContent = rows.length + ' / 195';
+        document.getElementById('cat-tbody').innerHTML = rows.map(function(r){
+          var badgeCol = (r.status === 'ESTABLISHED' || r.status === 'RESOLVED') ? 'var(--color-brand-cyan)'
+            : ((r.status === 'SPECULATION' || r.status === 'DEBUNKED') ? '#f87171' : 'var(--color-brand-amber)');
+          return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14);">'
+            + '<td style="padding: 0.45rem 0.5rem; font-family: ui-monospace, monospace; font-weight: 700; white-space: nowrap;">' + r.id + '</td>'
+            + '<td style="padding: 0.45rem 0.5rem; font-weight: 600;">' + r.title + '</td>'
+            + '<td style="padding: 0.45rem 0.5rem; white-space: nowrap; opacity: 0.85;">' + r.group + '</td>'
+            + '<td style="padding: 0.45rem 0.5rem; font-family: ui-monospace, monospace; font-weight: 700; color: ' + badgeCol + ';">' + r.status + '</td>'
+            + '<td style="padding: 0.45rem 0.5rem;"><div style="font-size: 0.75rem; opacity: 0.8;">' + r.meta + '</div><div>' + r.detail + '</div></td>'
+            + '</tr>';
+        }).join('');
+        if (pushUrl) syncUrl();
+        return { total: 195, matched: rows.length, sample: rows.slice(0, 10) };
+      }
+      ['cat-q', 'cat-ledger', 'cat-status'].forEach(function(id){
+        document.getElementById(id).addEventListener('input', function(){ filterCatalog(true); });
+        document.getElementById(id).addEventListener('change', function(){ filterCatalog(true); });
+      });
+
+      // Instrument 4: Vault & Horizon Mini-Simulation
+      var gameState = { epoch: 0, joules: 1000, heat: 0, opened: {}, over: false };
+      function renderGame(statusText, subText, logLine) {
+        document.getElementById('g-joules').textContent = gameState.joules + ' J';
+        document.getElementById('g-heat').textContent = gameState.heat + ' / 100 K';
+        var wins = Object.keys(gameState.opened).length;
+        document.getElementById('g-wins').textContent = wins + ' / 5';
+        document.getElementById('g-status').textContent = statusText;
+        document.getElementById('g-sub').textContent = subText;
+        if (logLine) {
+          var logEl = document.getElementById('g-log');
+          var d = document.createElement('div');
+          d.textContent = '[Epoch ' + gameState.epoch + '] ' + logLine;
+          logEl.insertBefore(d, logEl.firstChild);
+        }
+      }
+
+      function stepGame(vault, tool) {
+        if (gameState.over) return { over: true, message: 'Run ended; reset battery first.' };
+        gameState.epoch += 1;
+        var jCost = 120, hCost = 10, ok = false, status = '', sub = '', msg = '';
+
+        if (vault === 'otp') {
+          jCost = tool === 'loop' ? 260 : 120;
+          hCost = tool === 'loop' ? 46 : 10;
+          status = 'Unbreakable (OTP)';
+          sub = 'All plaintexts equiprobable even in PSPACE';
+          msg = 'OTP Set-Piece resisted ' + tool + ': information-theoretic secret holds even against CTCs (-' + jCost + ' J, +' + hCost + ' K).';
+        } else if (tool === 'ledger') {
+          jCost = 140; hCost = 8;
+          if (vault === 'unsalted') { ok = true; status = 'Opened via Ledger!'; sub = 'N-step fill amortized at N^(2/3)'; msg = 'Hellman Ledger inverted static unsalted vault! (-140 J, +8 K)'; }
+          else if (vault === 'salted') { status = 'Failure: Stale Ledger'; sub = 'Salt Storm multiplied fill cost'; msg = 'Defender Salt Storm invalidated precomputed chains! (-140 J, +8 K)'; }
+          else if (vault === 'fresh_pow') { status = 'Blocked: Freshness Seal'; sub = 'prev_block_hash unknown before query'; msg = 'Freshness Seal prevented pre-block table fill (0% reuse; -140 J, +8 K).'; }
+          else { status = 'Ledger Miss'; sub = 'Target has no static hash table'; msg = 'Hellman Ledger ineffective on ' + vault + ' (-140 J, +8 K).'; }
+        } else if (tool === 'rewind') {
+          jCost = 95; hCost = 10;
+          if (vault === 'stateful') { ok = true; status = 'Opened via Rewind!'; sub = 'Meier 2022 EUF-CMA state rollback'; msg = 'Rewind Charm erased stateful guard bookkeeping and forged pass! (-95 J, +10 K)'; }
+          else { status = 'Stateless Immune'; sub = 'Meier 2022: IND-CPA/UUF-CMA resist rewind'; msg = 'Stateless vault immune to Rewind Charm (-95 J, +10 K).'; }
+        } else if (tool === 'fourier') {
+          jCost = 85; hCost = 6;
+          if (vault === 'periodic') { ok = true; status = 'Opened via Fourier Lens!'; sub = 'Δt · Δf ≥ 1/(4π) satisfied'; msg = 'Fourier Lens resolved hidden beacon frequency in O(N log N)! (-85 J, +6 K)'; }
+          else { status = 'Failure: Smear'; sub = 'Non-periodic / exponentially packed modes'; msg = 'Fourier Lens smeared against aperiodic cryptographic challenge (-85 J, +6 K).'; }
+        } else if (tool === 'basin') {
+          if (vault === 'fresh_pow' || vault === 'salted') {
+            jCost = 310; hCost = 38;
+            status = 'Transient Chaos!'; sub = 'Exponential energy spike on hard instance';
+            msg = 'Settling Basin trapped in fractal transient chaos (Ercsey-Ravasz & Toroczkai 2011; -310 J, +38 K)!';
+          } else {
+            jCost = 115; hCost = 14; ok = true;
+            status = 'Relaxed into Attractor!'; sub = 'Low-barrier instance solved';
+            msg = 'Settling Basin relaxed into valid witness on ' + vault + ' (-115 J, +14 K).';
+          }
+        } else if (tool === 'sweep') {
+          jCost = 180; hCost = 12; ok = true;
+          status = 'Opened by Live Sweep'; sub = 'Paid full sequential joule bill';
+          msg = 'Sequential Sweep paid 180 J live brute-force cost and opened ' + vault + ' (+12 K).';
+        } else if (tool === 'loop') {
+          jCost = 260; hCost = 46; ok = true;
+          status = 'Opened via D-CTC Loop!'; sub = '1 fixed-point query, steep Cauchy drain';
+          msg = 'Consistency Loop forced PSPACE witness in 1 query at heavy Cauchy thermal drain (-260 J, +46 K)!';
+        }
+
+        gameState.joules -= jCost;
+        gameState.heat += hCost;
+        if (ok && vault !== 'otp') gameState.opened[vault] = true;
+
+        var wins = Object.keys(gameState.opened).length;
+        if (gameState.joules < 0) {
+          gameState.over = true;
+          status = 'LOSE: Energy Bankruptcy';
+          sub = 'Battery exhausted below 0 J';
+          msg += ' → ENERGY BANKRUPTCY.';
+        } else if (gameState.heat >= 100) {
+          gameState.over = true;
+          status = 'LOSE: Chronology/Heat Trip';
+          sub = 'Thermal envelope >= 100 K';
+          msg += ' → THERMAL / CHRONOLOGY COLLAPSE.';
+        } else if (wins >= 5) {
+          gameState.over = true;
+          status = 'WIN: All 5 Computational Vaults Opened!';
+          sub = 'Surplus ' + gameState.joules + ' J · OTP stayed secure';
+          msg += ' → VICTORY WITH ' + gameState.joules + ' J SURPLUS!';
+        }
+
+        renderGame(status, sub, msg);
+        return { epoch: gameState.epoch, joules: gameState.joules, heat: gameState.heat, vaults_opened: wins, status: status };
+      }
+
+      document.getElementById('g-run').addEventListener('click', function(){
+        stepGame(document.getElementById('g-vault').value, document.getElementById('g-tool').value);
+      });
+      document.getElementById('g-reset').addEventListener('click', function(){
+        gameState = { epoch: 0, joules: 1000, heat: 0, opened: {}, over: false };
+        document.getElementById('g-log').innerHTML = '<div>[Epoch 0] Battery reset to 1000 J, heat 0 K.</div>';
+        renderGame('Ready', 'Choose a vault and method', null);
+      });
+
+      // Hydrate from URL query params
+      var qs = new URLSearchParams(window.location.search);
+      if (qs.get('bits')) document.getElementById('h-bits').value = qs.get('bits');
+      if (qs.get('t')) document.getElementById('h-t').value = qs.get('t');
+      if (qs.get('salt')) document.getElementById('h-salt').value = qs.get('salt');
+      if (qs.get('fresh')) document.getElementById('h-fresh').value = qs.get('fresh');
+      if (qs.get('circuit') && ['qhronology', 'bitflip', 'witness'].indexOf(qs.get('circuit')) !== -1) {
+        currentCircuit = qs.get('circuit');
+        document.querySelectorAll('.ctc-btn').forEach(function(b){
+          var on = b.getAttribute('data-circuit') === currentCircuit;
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          b.style.borderColor = on ? 'var(--color-brand-amber)' : '';
+          b.style.color = on ? 'var(--color-brand-amber)' : '';
+        });
+      }
+      if (qs.get('n')) document.getElementById('c-param').value = qs.get('n');
+      if (qs.get('snr')) document.getElementById('c-snr').value = qs.get('snr');
+      if (qs.get('ledger')) document.getElementById('cat-ledger').value = qs.get('ledger');
+      if (qs.get('q')) document.getElementById('cat-q').value = qs.get('q');
+
+      updateHellman(false);
+      updateCircuitAndHorizon(false);
+      filterCatalog(false);
+
+      window.openieLivingLab = {
+        studyId: 'time-as-an-index',
+        computeHellman: function(opts) {
+          if (opts && opts.bits != null) document.getElementById('h-bits').value = String(opts.bits);
+          if (opts && opts.t != null) document.getElementById('h-t').value = String(opts.t);
+          if (opts && opts.salt != null) document.getElementById('h-salt').value = String(opts.salt);
+          if (opts && opts.fresh != null) document.getElementById('h-fresh').value = String(opts.fresh);
+          return updateHellman(true);
+        },
+        simulateCircuit: function(opts) {
+          if (opts && opts.circuit) currentCircuit = opts.circuit;
+          if (opts && opts.n != null) document.getElementById('c-param').value = String(opts.n);
+          if (opts && opts.snr) document.getElementById('c-snr').value = opts.snr;
+          return updateCircuitAndHorizon(true);
+        },
+        queryUnifiedCatalog: function(opts) {
+          if (opts && opts.q != null) document.getElementById('cat-q').value = String(opts.q);
+          if (opts && opts.ledger) document.getElementById('cat-ledger').value = opts.ledger;
+          if (opts && opts.status) document.getElementById('cat-status').value = opts.status;
+          return filterCatalog(true);
+        },
+        stepVaultGame: function(opts) {
+          return stepGame((opts && opts.vault) || 'unsalted', (opts && opts.tool) || 'ledger');
+        }
+      };
+
+      var mc = document.modelContext || navigator.modelContext;
+      if (window.isSecureContext && mc && typeof mc.registerTool === 'function') {
+        [
+          {
+            name: 'compute_hellman_precomputation_cost',
+            title: 'Compute Hellman T*M^2 = N^2 and Landauer precomputation bounds',
+            description: 'Evaluates table fill work, memory words M, online time T, 300 K Landauer floor, and freshness/salt reuse on /living/time-as-an-index/.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                bits: { type: 'number', minimum: 16, maximum: 128 },
+                t: { type: 'number', minimum: 4, maximum: 32 },
+                salt: { type: 'number', minimum: 0, maximum: 64 },
+                fresh: { type: 'string', enum: ['static', 'fresh'] }
+              },
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.computeHellman(inp || {}); },
+            annotations: { readOnlyHint: true }
+          },
+          {
+            name: 'query_time_index_unified_catalog',
+            title: 'Search the 195-entry Temporal Anomaly, Frequency Atlas, and Paradox catalog',
+            description: 'Filters TA001-TA081, AA01-AA40, and P01-P74 by keyword, ledger slice, and status on /living/time-as-an-index/.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                q: { type: 'string' },
+                ledger: { type: 'string', enum: ['ALL', 'TA', 'AA', 'P'] },
+                status: { type: 'string', enum: ['ALL', 'EST', 'CONJ', 'SPEC'] }
+              },
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.queryUnifiedCatalog(inp || {}); },
+            annotations: { readOnlyHint: true }
+          }
+        ].forEach(function(t){ try { Promise.resolve(mc.registerTool(t)).catch(function(){}); } catch(_e){} });
+      }
+    })();
+  </script>
+</body>
+</html>

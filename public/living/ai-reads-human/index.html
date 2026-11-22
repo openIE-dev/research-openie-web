@@ -1,11 +1,523 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>"AI" Reads Human: charts, data and scripts</title>
-<style>body{background:#0A0A0F;color:#CBD5E1;font:16px/1.6 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem}a{color:#00D4AA}img{max-width:100%;border-radius:8px;margin:.5rem 0 1.5rem}h1,h2{color:#fff}code{color:#00D4AA}</style></head><body>
-<p><a href="/">Catalog</a> · <a href="/papers/ai-reads-human/">Read the topic</a></p>
-<h1>"AI" Reads Human: charts, data and scripts</h1>
-<p>Work in progress. Time and token counts are measured; <strong>energy is not yet measured</strong>. Every chart is rebuilt from the files below by <code>scripts/make_charts.py</code>.</p>
-<h2>bytes-per-record</h2><img src="charts/bytes-per-record.svg" alt="bytes per record"><h2>format-timeline</h2><img src="charts/format-timeline.svg" alt="format timeline"><h2>impedance-pipeline</h2><img src="charts/impedance-pipeline.svg" alt="impedance pipeline"><h2>one-record-five-ways</h2><img src="charts/one-record-five-ways.svg" alt="one record five ways"><h2>parse-time-all</h2><img src="charts/parse-time-all.svg" alt="parse time all"><h2>parse-time-headline</h2><img src="charts/parse-time-headline.svg" alt="parse time headline"><h2>tokens-five-tokenizers</h2><img src="charts/tokens-five-tokenizers.svg" alt="tokens five tokenizers"><h2>tokens-vs-csv</h2><img src="charts/tokens-vs-csv.svg" alt="tokens vs csv">
-<h2>Results (measured)</h2><ul><li><a href="data/ENV.txt">ENV.txt</a></li><li><a href="data/SUMMARY.txt">SUMMARY.txt</a></li><li><a href="data/parse_time.tsv">parse_time.tsv</a></li><li><a href="data/tokenize_time.tsv">tokenize_time.tsv</a></li><li><a href="data/tokens.tsv">tokens.tsv</a></li></ul>
-<h2>Scripts</h2><ul><li><a href="scripts/bench_parse.py">bench_parse.py</a></li><li><a href="scripts/bench_tokenize_time.py">bench_tokenize_time.py</a></li><li><a href="scripts/bench_tokens.py">bench_tokens.py</a></li><li><a href="scripts/gen_corpus.py">gen_corpus.py</a></li><li><a href="scripts/make_charts.py">make_charts.py</a></li><li><a href="scripts/summarize.py">summarize.py</a></li><li><a href="scripts/verify_numbers.py">verify_numbers.py</a></li></ul>
-<h2>Read ledger</h2><ul><li><a href="READ_LEDGER.md">READ_LEDGER.md</a>: every source with its read status (FULL, PARTIAL, UNAVAILABLE)</li></ul><h2>Format-hazard tests</h2><ul><li><a href="tests-formats/RESULTS.txt">RESULTS.txt</a></li><li><a href="tests-formats/RESULTS_yaml12.txt">RESULTS_yaml12.txt</a></li><li><a href="tests-formats/t_json.js">t_json.js</a></li><li><a href="tests-formats/t_json.py">t_json.py</a></li><li><a href="tests-formats/t_md_bin.py">t_md_bin.py</a></li><li><a href="tests-formats/t_unicode_canon.py">t_unicode_canon.py</a></li><li><a href="tests-formats/t_xml.py">t_xml.py</a></li><li><a href="tests-formats/t_yaml12.py">t_yaml12.py</a></li><li><a href="tests-formats/t_yaml_xml_csv_toml.py">t_yaml_xml_csv_toml.py</a></li></ul>
-<p>&copy; 2026 Open Interface Engineering, Inc. MIT OR Apache-2.0, at your option.</p></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F59E0B">
+  <meta name="color-scheme" content="dark light">
+  <meta name="author" content="David Charlot">
+  <meta name="description" content="Interactive observatory for 'AI' Reads Human: explore Apple M5 Max L3 ri_energy_nj and L2 IOReport Falsifier 6 measurements across all 34 parse and tiktoken workloads, zoom all 8 SVG figures, and download raw TSV/JSON datasets and scripts.">
+  <link rel="canonical" href="https://research.openie.dev/living/ai-reads-human/">
+  <link rel="describedby" type="text/markdown" href="/llms.txt">
+  <link rel="alternate" type="text/markdown" title="&quot;AI&quot; Reads Human (Markdown)" href="/papers/ai-reads-human.md">
+  <title>Living Figures · "AI" Reads Human Impedance Tax | OpenIE Research</title>
+  <script src="/webmcp-tools.js" defer></script>
+  <script>
+    (function(){
+      var stored = localStorage.getItem('oe-theme');
+      var theme = stored && ['dark','light','auto'].indexOf(stored) !== -1 ? stored : 'auto';
+      var resolved = theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
+      document.documentElement.setAttribute('data-theme', resolved);
+      document.documentElement.style.colorScheme = resolved;
+    })();
+  </script>
+  <link rel="stylesheet" href="openie.css">
+</head>
+<body class="grid-bg">
+  <nav class="nav-glass" aria-label="Main navigation">
+    <a href="https://research.openie.dev/" class="brand-logo">Open<span class="brand-cyan">IE</span> <span class="brand-amber">Research</span></a>
+    <div class="nav-links">
+      <a href="/">Catalog</a>
+      <a href="/papers/ai-reads-human/">Paper</a>
+      <a href="/papers/ai-reads-human.md">Markdown</a>
+      <a href="/living/ai-reads-human/" class="active">Observatory (/living/)</a>
+      <a href="/about/ai-reads-human/">About</a>
+      <a href="/pdfs/ai-reads-human.pdf">PDF</a>
+      <a href="https://openie.dev" class="pill-cyan">openie.dev</a>
+      <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
+    </div>
+  </nav>
+
+  <main>
+    <div style="max-width: 70rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
+      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/ai-reads-human/ · interactive observatory</p>
+      <h1 class="hero-title" style="max-width: none;">"AI" Reads Human: Format Impedance &amp; <code>reported_j</code> Observatory</h1>
+      <p class="author-line">David Charlot, Open Interface Engineering · Companion to <a href="/papers/ai-reads-human/" style="color: var(--color-brand-cyan);">/papers/ai-reads-human/</a></p>
+
+      <div class="measurement-box">
+        <strong>Measurement grammar on this page.</strong> Every table and figure separates three evidence classes:
+        <span class="chip chip-meas">Exact (Bytes &amp; Tokens)</span> for seeded corpus byte sizes, <code>SHA-256</code> file digests, and exact BPE token counts across five open tokenizers;
+        <span class="chip chip-sim">Reported (reported_j: L3 &amp; L2)</span> for Apple M5 Max per-process kernel <code>proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj</code> (<code>L3</code>, label <code>D</code>, 34 workloads × 5 shuffled replicates = 170 windows) paired with whole-SoC <code>macmon</code> <code>IOReport</code> (<code>L2</code>, label <code>A2</code>, where Falsifier 6 invalidated <code>109 / 170</code> windows due to <code>&gt; 5.0%</code> shared-host idle drift); and
+        <span class="chip chip-est">Scaled Projection</span> for corpus-volume extrapolation. <code>measured_j = None</code>; <code>board_metered = false</code>; GPU prefill/decode joules remain planned (<code>M4</code>).
+      </div>
+
+      <!-- Widget 1: 34-Workload Format Impedance & reported_j Explorer -->
+      <section id="arh-diag-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>arh-diag-01</code> · 34-Workload Parse &amp; Tokenize <code>reported_j</code> Explorer (Apple M5 Max, <code>N = 20,000</code> Records)</h2>
+          <span class="chip chip-sim">Reported (L3 ri_energy_nj + L2 Falsifier 6)</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Filter all <strong>34 measured workloads</strong> (16 parsers + 9 <code>cl100k_base</code> + 9 <code>o200k_base</code> <code>tiktoken</code> runs) recorded in <a href="data/energy_reported_j.tsv" style="color: var(--color-brand-cyan);"><code>data/energy_reported_j.tsv</code></a>, re-normalize energy and latency ratios against any reference format, and inspect Falsifier 6 co-tenant drift per workload.
+        </p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="f-stage"><span>Stage filter</span><span id="v-count">34 rows</span></label>
+            <select id="f-stage">
+              <option value="all">All 34 Workloads (Parse + Tokenize)</option>
+              <option value="parse">Parse Stage Only (16 Workloads)</option>
+              <option value="tok_cl100k">Tokenize · cl100k_base (9 Views)</option>
+              <option value="tok_o200k">Tokenize · o200k_base (9 Views)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="f-ref"><span>Ratio denominator</span><span>L3 nJ/rec</span></label>
+            <select id="f-ref">
+              <option value="bin_struct">Fixed binary (struct.iter_unpack) · 280.4 nJ/rec</option>
+              <option value="csv_parse">CSV parse (stdlib) · 1,798.2 nJ/rec</option>
+              <option value="json_parse">JSON parse (stdlib) · 2,212.1 nJ/rec</option>
+              <option value="csv_cl100k">CSV tokenize (cl100k_base) · 16,384.8 nJ/rec</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="f-sort"><span>Sort rows by</span><span>Ascending</span></label>
+            <select id="f-sort">
+              <option value="nj">L3 reported_j per record (nJ/rec)</option>
+              <option value="wall">Wall time per 20k records (ms)</option>
+              <option value="bytes">Encoded corpus size (bytes)</option>
+              <option value="inst">CPU instructions per record</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="metric-grid" id="arh-kpis" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">Fixed Binary Parse (L3)</div>
+            <div class="v">280.4 nJ/rec</div>
+            <div class="s">67.9 ns/rec · 1,397 inst/rec</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">JSON Stdlib Parse (L3)</div>
+            <div class="v" style="color: var(--color-brand-cyan);">2,212.1 nJ/rec</div>
+            <div class="s">7.89× binary · 569.8 ns/rec</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">JSON cl100k_base Tokenize</div>
+            <div class="v" style="color: var(--color-brand-amber);">27,679.2 nJ/rec</div>
+            <div class="s">98.7× binary · 12.5× json.loads()</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">YAML Parse (C vs Pure Py)</div>
+            <div class="v">69.9k / 575.8k</div>
+            <div class="s">249.4× (libyaml) · 2,053.8× (Py)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">L2 Falsifier 6 Drift Gate</div>
+            <div class="v">109 / 170</div>
+            <div class="s">Windows invalidated (&gt;5% drift)</div>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto; margin-top: 1.1rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;" id="arh-table">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(148,163,184,0.32); text-align: left;">
+                <th style="padding: 0.45rem 0.5rem;">Stage</th>
+                <th style="padding: 0.45rem 0.5rem;">Workload / Format</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">Bytes (20k)</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">Tokens (20k)</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">Wall ms / 20k</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">L3 nJ / rec (±SD)</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;" id="th-ratio">Energy Ratio</th>
+                <th style="padding: 0.45rem 0.5rem;">L2 Falsifier 6</th>
+              </tr>
+            </thead>
+            <tbody id="arh-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Widget 2: Batch Volume Impedance Calculator -->
+      <section id="arh-diag-02" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>arh-diag-02</code> · Exchange Pipeline Volume Calculator (Parse + Tokenize <code>L3</code> <code>reported_j</code>)</h2>
+          <span class="chip chip-est">Scaled from Measured L3 Coefficients</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Scale record volume <code>N</code> to compare cumulative host CPU <code>reported_j</code> spent decoding between machines (fixed binary vs JSON vs YAML) or tokenizing for an LLM context window (CSV vs compact JSON vs pretty JSON). Does not include GPU prefill/decode joules (<code>M4</code>).
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="s-vol"><span>Records exchanged (log10 scale)</span><span id="v-vol">1,000,000</span></label>
+            <input type="range" id="s-vol" min="4" max="8" step="0.25" value="6">
+          </div>
+          <div class="ctrl-box">
+            <label for="s-tok-enc"><span>Tokenizer encoding</span><span>tiktoken</span></label>
+            <select id="s-tok-enc">
+              <option value="cl100k">cl100k_base (GPT-4 / legacy BPE)</option>
+              <option value="o200k">o200k_base (200k vocab BPE)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">Fixed Binary Parse</div>
+            <div class="v" id="sc-bin">0.280 J</div>
+            <div class="s" id="sc-bin-b">23.0 MB · 0 tokens</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">JSON Parse + Tokenize</div>
+            <div class="v" id="sc-json" style="color: var(--color-brand-cyan);">29.89 J</div>
+            <div class="s" id="sc-json-s">2.21 J parse + 27.68 J tok</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Pretty JSON Parse + Tokenize</div>
+            <div class="v" id="sc-pjson" style="color: var(--color-brand-amber);">73.24 J</div>
+            <div class="s" id="sc-pjson-s">2.65 J parse + 70.59 J tok</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">C YAML Parse + Tokenize</div>
+            <div class="v" id="sc-yaml">121.80 J</div>
+            <div class="s" id="sc-yaml-s">69.92 J parse + 51.88 J tok</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: All 8 Existing Reproducible SVG Charts with Zoom -->
+      <section id="charts" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;">Reproducible Figures (Click Any Chart to Zoom)</h2>
+          <span class="chip chip-meas">Generated by scripts/make_charts.py</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Every SVG below is rebuilt directly from the TSV files in <code>data/</code> and checked by <code>scripts/verify_numbers.py</code>.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
+          <figure class="fig" style="margin: 0;">
+            <img src="charts/format-timeline.svg" alt="format timeline" data-zoom="charts/format-timeline.svg">
+            <figcaption><strong>format-timeline</strong> · Specification dates from TeX (1982) through CommonMark 0.31.2 (2024).</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="charts/impedance-pipeline.svg" alt="impedance pipeline" data-zoom="charts/impedance-pipeline.svg">
+            <figcaption><strong>impedance-pipeline</strong> · Where the impedance tax Z(F) is paid across encode, parse, tokenize, and model read.</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="charts/one-record-five-ways.svg" alt="one record five ways" data-zoom="charts/one-record-five-ways.svg">
+            <figcaption><strong>one-record-five-ways</strong> · Record 0 serialized in CSV, compact JSON, YAML, XML, and 23-byte fixed binary.</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="charts/bytes-per-record.svg" alt="bytes per record" data-zoom="charts/bytes-per-record.svg">
+            <figcaption><strong>bytes-per-record</strong> · Encoded byte footprint per record across formats.</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="charts/parse-time-headline.svg" alt="parse time headline" data-zoom="charts/parse-time-headline.svg">
+            <figcaption><strong>parse-time-headline</strong> · Headline parse-time span (fixed binary vs JSON stdlib vs YAML libyaml).</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="charts/parse-time-all.svg" alt="parse time all" data-zoom="charts/parse-time-all.svg">
+            <figcaption><strong>parse-time-all</strong> · Full parse-time ranking across all tested formats and libraries.</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="charts/tokens-vs-csv.svg" alt="tokens vs csv" data-zoom="charts/tokens-vs-csv.svg">
+            <figcaption><strong>tokens-vs-csv</strong> · Token inflation κ relative to CSV under <code>cl100k_base</code>.</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="charts/tokens-five-tokenizers.svg" alt="tokens five tokenizers" data-zoom="charts/tokens-five-tokenizers.svg">
+            <figcaption><strong>tokens-five-tokenizers</strong> · Token ratio κ across <code>cl100k_base</code>, <code>o200k_base</code>, GPT-2, Mistral-7B, and Qwen2.5.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Section 4: Complete Downloadable Artifact Ledger (All Original Links Preserved + New reported_j Files) -->
+      <section id="artifacts" class="glass-card" style="margin-top: 2rem;">
+        <h2 style="margin: 0; font-size: 1.25rem;">Measured Data, Reproduction Scripts, Read Ledger &amp; Format-Hazard Tests</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; margin-top: 1rem; font-size: 0.86rem;">
+          <div>
+            <h3 style="font-size: 0.95rem; margin: 0 0 0.5rem;">Results (measured)</h3>
+            <ul style="margin: 0; padding-left: 1.15rem; line-height: 1.65;">
+              <li><a href="data/energy_reported_j.tsv" style="color: var(--color-brand-amber); font-weight: 600;">energy_reported_j.tsv</a> (34 workloads, M5 Max <code>L3</code> + <code>L2</code>)</li>
+              <li><a href="data/energy_reported_j_summary.json" style="color: var(--color-brand-amber);">energy_reported_j_summary.json</a></li>
+              <li><a href="data/energy_joules.tsv" style="color: var(--color-brand-cyan);">energy_joules.tsv</a> (Oct 2026 unisolated L2 null run)</li>
+              <li><a href="data/ENV.txt" style="color: var(--color-brand-cyan);">ENV.txt</a></li>
+              <li><a href="data/SUMMARY.txt" style="color: var(--color-brand-cyan);">SUMMARY.txt</a></li>
+              <li><a href="data/parse_time.tsv" style="color: var(--color-brand-cyan);">parse_time.tsv</a></li>
+              <li><a href="data/tokenize_time.tsv" style="color: var(--color-brand-cyan);">tokenize_time.tsv</a></li>
+              <li><a href="data/tokens.tsv" style="color: var(--color-brand-cyan);">tokens.tsv</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size: 0.95rem; margin: 0 0 0.5rem;">Scripts</h3>
+            <ul style="margin: 0; padding-left: 1.15rem; line-height: 1.65;">
+              <li><a href="scripts/bench_parse.py" style="color: var(--color-brand-cyan);">bench_parse.py</a></li>
+              <li><a href="scripts/bench_tokenize_time.py" style="color: var(--color-brand-cyan);">bench_tokenize_time.py</a></li>
+              <li><a href="scripts/bench_tokens.py" style="color: var(--color-brand-cyan);">bench_tokens.py</a></li>
+              <li><a href="scripts/gen_corpus.py" style="color: var(--color-brand-cyan);">gen_corpus.py</a></li>
+              <li><a href="scripts/make_charts.py" style="color: var(--color-brand-cyan);">make_charts.py</a></li>
+              <li><a href="scripts/summarize.py" style="color: var(--color-brand-cyan);">summarize.py</a></li>
+              <li><a href="scripts/verify_numbers.py" style="color: var(--color-brand-cyan);">verify_numbers.py</a></li>
+            </ul>
+            <h3 style="font-size: 0.95rem; margin: 1rem 0 0.4rem;">Read ledger</h3>
+            <ul style="margin: 0; padding-left: 1.15rem; line-height: 1.65;">
+              <li><a href="READ_LEDGER.md" style="color: var(--color-brand-cyan);">READ_LEDGER.md</a>: FULL / PARTIAL / UNAVAILABLE</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size: 0.95rem; margin: 0 0 0.5rem;">Format-hazard tests</h3>
+            <ul style="margin: 0; padding-left: 1.15rem; line-height: 1.65;">
+              <li><a href="tests-formats/RESULTS.txt" style="color: var(--color-brand-cyan);">RESULTS.txt</a></li>
+              <li><a href="tests-formats/RESULTS_yaml12.txt" style="color: var(--color-brand-cyan);">RESULTS_yaml12.txt</a></li>
+              <li><a href="tests-formats/t_json.js" style="color: var(--color-brand-cyan);">t_json.js</a></li>
+              <li><a href="tests-formats/t_json.py" style="color: var(--color-brand-cyan);">t_json.py</a></li>
+              <li><a href="tests-formats/t_md_bin.py" style="color: var(--color-brand-cyan);">t_md_bin.py</a></li>
+              <li><a href="tests-formats/t_unicode_canon.py" style="color: var(--color-brand-cyan);">t_unicode_canon.py</a></li>
+              <li><a href="tests-formats/t_xml.py" style="color: var(--color-brand-cyan);">t_xml.py</a></li>
+              <li><a href="tests-formats/t_yaml12.py" style="color: var(--color-brand-cyan);">t_yaml12.py</a></li>
+              <li><a href="tests-formats/t_yaml_xml_csv_toml.py" style="color: var(--color-brand-cyan);">t_yaml_xml_csv_toml.py</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <p class="footer-copy">&copy; 2026 Open Interface Engineering, Inc. Text, figures, data and scripts: MIT OR Apache-2.0, at your option.</p>
+    </div>
+  </main>
+
+  <dialog class="lb" id="lb" aria-label="Enlarged figure">
+    <div class="lb-stage"><img class="lb-img" id="lb-img" alt=""></div>
+    <div class="lb-bar">
+      <p class="lb-cap" id="lb-cap"></p>
+      <div class="lb-btns">
+        <a class="lb-btn" id="lb-open" href="#" target="_blank" rel="noopener">Open SVG</a>
+        <button type="button" class="lb-btn" id="lb-close">Close (Esc)</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('theme-toggle');
+      var lbl = document.getElementById('theme-label');
+      var modes = ['auto','dark','light'];
+      function applyMode(m){
+        localStorage.setItem('oe-theme', m);
+        var res = m === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : m;
+        document.documentElement.setAttribute('data-theme', res);
+        document.documentElement.style.colorScheme = res;
+        lbl.textContent = m.charAt(0).toUpperCase() + m.slice(1);
+      }
+      applyMode(localStorage.getItem('oe-theme') || 'auto');
+      btn.addEventListener('click', function(){
+        var cur = localStorage.getItem('oe-theme') || 'auto';
+        applyMode(modes[(modes.indexOf(cur) + 1) % modes.length]);
+      });
+
+      // Lightbox zoom
+      var dlg = document.getElementById('lb');
+      var lbImg = document.getElementById('lb-img');
+      var lbCap = document.getElementById('lb-cap');
+      var lbOpen = document.getElementById('lb-open');
+      document.querySelectorAll('[data-zoom]').forEach(function(img){
+        img.addEventListener('click', function(){
+          var src = img.getAttribute('data-zoom');
+          lbImg.src = src;
+          lbImg.alt = img.alt;
+          lbOpen.href = src;
+          var fc = img.parentElement && img.parentElement.querySelector('figcaption');
+          lbCap.textContent = fc ? fc.textContent : img.alt;
+          if (dlg.showModal) dlg.showModal();
+        });
+      });
+      document.getElementById('lb-close').addEventListener('click', function(){ dlg.close(); });
+      dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+
+      // All 34 measured Apple M5 Max dual-channel reported_j rows
+      var ROWS = [
+        { s:'parse', g:'parse', w:'fixed binary (numpy frombuffer, zero copy)', b:460000, tok:0, ms:0.0002, nj:0.04, sd:0.01, inst:0.3, f6:'3/5 valid (2 drifted)' },
+        { s:'parse', g:'parse', w:'fixed binary (struct.iter_unpack)', b:460000, tok:0, ms:1.3588, nj:280.36, sd:111.38, inst:1397.4, f6:'2/5 valid (3 drifted)' },
+        { s:'parse', g:'parse', w:'json (orjson)', b:2325428, tok:0, ms:7.0525, nj:1405.93, sd:372.34, inst:6187.0, f6:'3/5 valid (2 drifted)' },
+        { s:'parse', g:'parse', w:'csv (stdlib)', b:1205469, tok:0, ms:8.8041, nj:1798.22, sd:435.28, inst:8812.4, f6:'3/5 valid (2 drifted)' },
+        { s:'parse', g:'parse', w:'msgpack', b:1660773, tok:0, ms:10.8171, nj:1802.46, sd:593.84, inst:9593.3, f6:'1/5 valid (4 drifted)' },
+        { s:'parse', g:'parse', w:'json (stdlib)', b:2325428, tok:0, ms:11.3959, nj:2212.12, sd:409.29, inst:12700.6, f6:'1/5 valid (4 drifted)' },
+        { s:'parse', g:'parse', w:'json pretty (stdlib)', b:3685429, tok:0, ms:11.7157, nj:2648.45, sd:669.32, inst:13433.3, f6:'2/5 valid (3 drifted)' },
+        { s:'parse', g:'parse', w:'cbor2', b:1660877, tok:0, ms:15.2858, nj:2719.58, sd:365.78, inst:14514.3, f6:'1/5 valid (4 drifted)' },
+        { s:'parse', g:'parse', w:'xml (lxml)', b:2885487, tok:0, ms:22.2038, nj:3800.46, sd:331.49, inst:19521.4, f6:'2/5 valid (3 drifted)' },
+        { s:'parse', g:'parse', w:'xml (ElementTree)', b:2885487, tok:0, ms:26.3541, nj:6029.30, sd:370.65, inst:27495.7, f6:'1/5 valid (4 drifted)' },
+        { s:'parse', g:'parse', w:'jsonl (stdlib, per line)', b:2325427, tok:0, ms:22.7286, nj:6130.27, sd:946.08, inst:27414.8, f6:'1/5 valid (4 drifted)' },
+        { s:'parse', g:'parse', w:'markdown table (markdown-it-py)', b:1525499, tok:0, ms:115.1595, nj:22824.50, sd:2464.64, inst:115255.0, f6:'1/5 valid (4 drifted)' },
+        { s:'parse', g:'parse', w:'toml (tomllib)', b:2505426, tok:0, ms:298.5821, nj:57803.43, sd:16269.64, inst:260140.9, f6:'3/5 valid (2 drifted)' },
+        { s:'parse', g:'parse', w:'yaml (libyaml C)', b:2445427, tok:0, ms:448.0709, nj:69922.12, sd:13405.09, inst:371347.0, f6:'3/5 valid (2 drifted)' },
+        { s:'parse', g:'parse', w:'markdown list (markdown-it-py)', b:1925427, tok:0, ms:417.6997, nj:99595.04, sd:17044.11, inst:377878.0, f6:'1/5 valid (4 drifted)' },
+        { s:'parse', g:'parse', w:'yaml (pure python)', b:2445427, tok:0, ms:3224.5481, nj:575799.27, sd:56674.36, inst:2706372.9, f6:'1/5 valid (4 drifted)' },
+        { s:'tokenize', g:'tok_cl100k', w:'tiktoken (cl100k_base): recs.csv', b:1205469, tok:459916, ms:73.4423, nj:16384.84, sd:4362.40, inst:69032.7, f6:'2/5 valid (3 drifted)' },
+        { s:'tokenize', g:'tok_cl100k', w:'tiktoken (cl100k_base): recs_table.md', b:1525499, tok:569973, ms:105.3637, nj:23385.73, sd:5597.57, inst:107437.8, f6:'2/5 valid (3 drifted)' },
+        { s:'tokenize', g:'tok_cl100k', w:'tiktoken (cl100k_base): recs_list.md', b:1925427, tok:649947, ms:105.1990, nj:26749.70, sd:4445.05, inst:116436.1, f6:'2/5 valid (3 drifted)' },
+        { s:'tokenize', g:'tok_cl100k', w:'tiktoken (cl100k_base): recs.jsonl', b:2325427, tok:753109, ms:154.1140, nj:26983.02, sd:9347.95, inst:134043.6, f6:'2/5 valid (3 drifted)' },
+        { s:'tokenize', g:'tok_cl100k', w:'tiktoken (cl100k_base): recs.json', b:2325428, tok:733111, ms:124.2948, nj:27679.19, sd:2697.37, inst:129192.2, f6:'0/5 valid (5 drifted)' },
+        { s:'tokenize', g:'tok_cl100k', w:'tiktoken (cl100k_base): recs.xml', b:2885487, tok:1046596, ms:171.8439, nj:36730.51, sd:6968.26, inst:172397.9, f6:'0/5 valid (5 drifted)' },
+        { s:'tokenize', g:'tok_cl100k', w:'tiktoken (cl100k_base): recs.toml', b:2505426, tok:933109, ms:178.1108, nj:38499.73, sd:6633.02, inst:178319.5, f6:'2/5 valid (3 drifted)' },
+        { s:'tokenize', g:'tok_cl100k', w:'tiktoken (cl100k_base): recs.yaml', b:2445427, tok:1029947, ms:208.4343, nj:51880.14, sd:12381.40, inst:219336.8, f6:'2/5 valid (3 drifted)' },
+        { s:'tokenize', g:'tok_cl100k', w:'tiktoken (cl100k_base): recs_pretty.json', b:3685429, tok:1313111, ms:266.8271, nj:70590.45, sd:10239.93, inst:297292.1, f6:'2/5 valid (3 drifted)' },
+        { s:'tokenize', g:'tok_o200k', w:'tiktoken (o200k_base): recs.csv', b:1205469, tok:464995, ms:51.8636, nj:9570.91, sd:1012.53, inst:44867.5, f6:'2/5 valid (3 drifted)' },
+        { s:'tokenize', g:'tok_o200k', w:'tiktoken (o200k_base): recs.json', b:2325428, tok:754794, ms:93.2771, nj:15125.65, sd:1287.77, inst:77138.0, f6:'2/5 valid (3 drifted)' },
+        { s:'tokenize', g:'tok_o200k', w:'tiktoken (o200k_base): recs_table.md', b:1525499, tok:574818, ms:68.0911, nj:15693.90, sd:3311.55, inst:64790.4, f6:'1/5 valid (4 drifted)' },
+        { s:'tokenize', g:'tok_o200k', w:'tiktoken (o200k_base): recs_list.md', b:1925427, tok:654792, ms:68.6658, nj:17362.58, sd:3131.74, inst:68818.7, f6:'1/5 valid (4 drifted)' },
+        { s:'tokenize', g:'tok_o200k', w:'tiktoken (o200k_base): recs.jsonl', b:2325427, tok:774792, ms:83.0207, nj:21530.58, sd:4330.90, inst:79705.8, f6:'4/5 valid (1 drifted)' },
+        { s:'tokenize', g:'tok_o200k', w:'tiktoken (o200k_base): recs.xml', b:2885487, tok:1054813, ms:114.7937, nj:22997.48, sd:5578.71, inst:101427.7, f6:'2/5 valid (3 drifted)' },
+        { s:'tokenize', g:'tok_o200k', w:'tiktoken (o200k_base): recs.toml', b:2505426, tok:934792, ms:106.6799, nj:25307.32, sd:2254.77, inst:103912.2, f6:'3/5 valid (2 drifted)' },
+        { s:'tokenize', g:'tok_o200k', w:'tiktoken (o200k_base): recs.yaml', b:2445427, tok:1034792, ms:141.3379, nj:29401.44, sd:7308.15, inst:128249.7, f6:'1/5 valid (4 drifted)' },
+        { s:'tokenize', g:'tok_o200k', w:'tiktoken (o200k_base): recs_pretty.json', b:3685429, tok:1314794, ms:193.6482, nj:37070.18, sd:3651.35, inst:176149.5, f6:'2/5 valid (3 drifted)' }
+      ];
+
+      var REFS = { bin_struct: 280.36, csv_parse: 1798.22, json_parse: 2212.12, csv_cl100k: 16384.84 };
+
+      function fmtInt(n){ return Math.round(n).toLocaleString('en-US'); }
+      function fmtJ(j){
+        if (j < 1) return (j * 1000).toFixed(2) + ' mJ';
+        if (j < 1000) return j.toFixed(2) + ' J';
+        return (j / 1000).toFixed(2) + ' kJ';
+      }
+
+      function syncUrl(){
+        if (!window.history || !window.history.replaceState) return;
+        var u = new URL(window.location.href);
+        u.searchParams.set('stage', document.getElementById('f-stage').value);
+        u.searchParams.set('ref', document.getElementById('f-ref').value);
+        u.searchParams.set('sort', document.getElementById('f-sort').value);
+        u.searchParams.set('vol', document.getElementById('s-vol').value);
+        u.searchParams.set('tok', document.getElementById('s-tok-enc').value);
+        window.history.replaceState(null, '', u.pathname + u.search + u.hash);
+      }
+
+      function renderTable(updateQ){
+        var st = document.getElementById('f-stage').value;
+        var rf = document.getElementById('f-ref').value;
+        var so = document.getElementById('f-sort').value;
+        var denom = REFS[rf] || 280.36;
+        var list = ROWS.filter(function(r){ return st === 'all' || r.g === st; }).slice();
+        list.sort(function(a, b){
+          if (so === 'wall') return a.ms - b.ms;
+          if (so === 'bytes') return a.b - b.b;
+          if (so === 'inst') return a.inst - b.inst;
+          return a.nj - b.nj;
+        });
+        document.getElementById('v-count').textContent = list.length + ' rows';
+        document.getElementById('arh-tbody').innerHTML = list.map(function(r){
+          var ratio = r.nj / denom;
+          var rStr = ratio < 0.01 ? ratio.toFixed(4) + '×' : (ratio < 10 ? ratio.toFixed(2) + '×' : ratio.toFixed(1) + '×');
+          var badgeColor = r.s === 'parse' ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)';
+          return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14);">' +
+            '<td style="padding: 0.42rem 0.5rem; font-family: var(--font-mono); color: ' + badgeColor + ';">' + r.s + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; font-family: var(--font-mono); font-weight: 500;">' + r.w + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + fmtInt(r.b) + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + (r.tok ? fmtInt(r.tok) : '—') + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + (r.ms < 0.01 ? r.ms.toFixed(4) : r.ms.toFixed(2)) + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono); font-weight: 600;">' + r.nj.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ± ' + r.sd.toFixed(1) + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono); color: var(--color-brand-white); font-weight: 700;">' + rStr + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; font-family: var(--font-mono); font-size: 0.76rem;">' + r.f6 + '</td>' +
+          '</tr>';
+        }).join('');
+        if (updateQ) syncUrl();
+        return { stage: st, reference: rf, denominator_nj_per_rec: denom, count: list.length, rows: list };
+      }
+
+      function renderVolume(updateQ){
+        var exp = parseFloat(document.getElementById('s-vol').value);
+        var N = Math.round(Math.pow(10, exp));
+        var tk = document.getElementById('s-tok-enc').value;
+        document.getElementById('v-vol').textContent = fmtInt(N);
+        var binJ = N * 280.36e-9;
+        var jsonParseJ = N * 2212.12e-9;
+        var pjsonParseJ = N * 2648.45e-9;
+        var yamlParseJ = N * 69922.12e-9;
+        var jsonTokJ = N * (tk === 'cl100k' ? 27679.19e-9 : 15125.65e-9);
+        var pjsonTokJ = N * (tk === 'cl100k' ? 70590.45e-9 : 37070.18e-9);
+        var yamlTokJ = N * (tk === 'cl100k' ? 51880.14e-9 : 29401.44e-9);
+        document.getElementById('sc-bin').textContent = fmtJ(binJ);
+        document.getElementById('sc-bin-b').textContent = ((N * 23) / 1e6).toFixed(1) + ' MB · 0 tokens';
+        document.getElementById('sc-json').textContent = fmtJ(jsonParseJ + jsonTokJ);
+        document.getElementById('sc-json-s').textContent = fmtJ(jsonParseJ) + ' parse + ' + fmtJ(jsonTokJ) + ' tok';
+        document.getElementById('sc-pjson').textContent = fmtJ(pjsonParseJ + pjsonTokJ);
+        document.getElementById('sc-pjson-s').textContent = fmtJ(pjsonParseJ) + ' parse + ' + fmtJ(pjsonTokJ) + ' tok';
+        document.getElementById('sc-yaml').textContent = fmtJ(yamlParseJ + yamlTokJ);
+        document.getElementById('sc-yaml-s').textContent = fmtJ(yamlParseJ) + ' parse + ' + fmtJ(yamlTokJ) + ' tok';
+        if (updateQ) syncUrl();
+        return {
+          records_N: N,
+          tokenizer: tk,
+          binary_parse_j: +binJ.toFixed(6),
+          json_total_j: +(jsonParseJ + jsonTokJ).toFixed(6),
+          pretty_json_total_j: +(pjsonParseJ + pjsonTokJ).toFixed(6),
+          c_yaml_total_j: +(yamlParseJ + yamlTokJ).toFixed(6)
+        };
+      }
+
+      ['f-stage','f-ref','f-sort'].forEach(function(id){
+        document.getElementById(id).addEventListener('change', function(){ renderTable(true); });
+      });
+      document.getElementById('s-vol').addEventListener('input', function(){ renderVolume(true); });
+      document.getElementById('s-tok-enc').addEventListener('change', function(){ renderVolume(true); });
+
+      var qs = new URLSearchParams(window.location.search);
+      if (qs.get('stage')) document.getElementById('f-stage').value = qs.get('stage');
+      if (qs.get('ref')) document.getElementById('f-ref').value = qs.get('ref');
+      if (qs.get('sort')) document.getElementById('f-sort').value = qs.get('sort');
+      if (qs.get('vol')) document.getElementById('s-vol').value = qs.get('vol');
+      if (qs.get('tok')) document.getElementById('s-tok-enc').value = qs.get('tok');
+      renderTable(false);
+      renderVolume(false);
+
+      window.openieLivingLab = {
+        studyId: 'ai-reads-human',
+        queryWorkloads: function(opts){
+          if (opts && opts.stage) document.getElementById('f-stage').value = opts.stage;
+          if (opts && opts.ref) document.getElementById('f-ref').value = opts.ref;
+          if (opts && opts.sort) document.getElementById('f-sort').value = opts.sort;
+          return renderTable(true);
+        },
+        simulateVolume: function(opts){
+          if (opts && opts.log10_records != null) document.getElementById('s-vol').value = String(opts.log10_records);
+          if (opts && opts.tokenizer) document.getElementById('s-tok-enc').value = opts.tokenizer;
+          return renderVolume(true);
+        }
+      };
+
+      var mc = document.modelContext || navigator.modelContext;
+      if (window.isSecureContext && mc && typeof mc.registerTool === 'function') {
+        [
+          {
+            name: 'query_ai_reads_human_reported_j',
+            title: 'Query AI Reads Human 34-workload reported_j table',
+            description: 'Filters and re-normalizes the 34 Apple M5 Max L3 ri_energy_nj parse and tiktoken workloads on /living/ai-reads-human/.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                stage: { type: 'string', enum: ['all', 'parse', 'tok_cl100k', 'tok_o200k'] },
+                ref: { type: 'string', enum: ['bin_struct', 'csv_parse', 'json_parse', 'csv_cl100k'] },
+                sort: { type: 'string', enum: ['nj', 'wall', 'bytes', 'inst'] }
+              },
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.queryWorkloads(inp || {}); },
+            annotations: { readOnlyHint: true }
+          },
+          {
+            name: 'simulate_format_impedance_volume',
+            title: 'Simulate format impedance parse + tokenize reported_j at volume N',
+            description: 'Scales Apple M5 Max L3 reported_j coefficients from 10^4 to 10^8 records across fixed binary, JSON, pretty JSON, and C YAML.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                log10_records: { type: 'number', minimum: 4, maximum: 8 },
+                tokenizer: { type: 'string', enum: ['cl100k', 'o200k'] }
+              },
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.simulateVolume(inp || {}); },
+            annotations: { readOnlyHint: true }
+          }
+        ].forEach(function(t){ try { Promise.resolve(mc.registerTool(t)).catch(function(){}); } catch(_e){} });
+      }
+    })();
+  </script>
+</body>
+</html>

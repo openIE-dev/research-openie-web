@@ -1,6 +1,6 @@
 ---
 title: "Deterministic Null: A Pre-Registered Control Experiment for Neural and Agentic Substrates"
-deck: "A zero-model-call 64-bit integer case loop (Shape D: strict N0 and dev-crystallized N1) implemented across Rust, Go, Python, C++20, and Julia, locked under OpenTimestamps Bitcoin Calendar proofs prior to League of Entropy drand randomness rounds, and compared against frontier cloud and local open-weight language models across 4,030 held-out instances and 6 multi-file repositories. On-chip Apple Silicon IOReport and kernel rusage counters are recorded as reported_j; no external wall or rail joule monitor was attached (board_metered is false; measured_j is unset)."
+deck: "A zero-model-call 64-bit integer case loop (Shape D: strict N0 and dev-crystallized N1) implemented across Rust, Go, Python, C++20, and Julia, locked under OpenTimestamps Bitcoin Calendar proofs prior to League of Entropy drand randomness rounds, and compared against multi-vendor cloud (Anthropic, OpenAI, xAI, DeepSeek, Alibaba Qwen) and local open-weight language models across exp-001, exp-002, and reviewer-closure suite exp-003. On-chip Apple Silicon IOReport and kernel rusage counters are recorded as reported_j; no external wall or rail joule monitor was attached (board_metered is false; measured_j is unset)."
 id: deterministic-null
 status: "Research study · draft"
 author: "David Charlot, Open Interface Engineering"
@@ -11,22 +11,22 @@ board_metered: false
 
 # Deterministic Null: A Pre-Registered Control Experiment for Neural and Agentic Substrates
 
-*{{revision}}. Data and digest summary: [/data/#deterministic-null](/data/#deterministic-null). Interactive living figures: [/living/deterministic-null/](/living/deterministic-null/). LaTeX archival twin: [/pdfs/latex/deterministic-null.pdf](/pdfs/latex/deterministic-null.pdf) ([source](/pdfs/latex/deterministic-null.tex)).*
+*{{revision}}. Public code, manifests, and result bundles: [github.com/openIE-dev/deterministic-null](https://github.com/openIE-dev/deterministic-null). Data and digest summary: [/data/#deterministic-null](/data/#deterministic-null). Interactive living figures: [/living/deterministic-null/](/living/deterministic-null/). LaTeX archival twin: [/pdfs/latex/deterministic-null.pdf](/pdfs/latex/deterministic-null.pdf) ([source](/pdfs/latex/deterministic-null.tex)).*
 
 ## 0. Overview
 
-Empirical evaluations of agentic artificial intelligence routinely compare one stochastic language model against another, leaving unmeasured how much task completion requires a neural substrate at decision time rather than a fixed integer procedure over an explicit store of verified prior cases. This study constructs, freezes, and audits that missing control — **Deterministic Null (`Shape D`)** — and tests the per-class null hypothesis $H_{0,k}: \Delta_k = p_{\text{model},k} - p_{\text{null},k} \le \delta$ at margin $\delta = 0.05$ (`5.0` percentage points) across two cryptographically pre-registered confirmatory experiments (`4,030` total post-beacon held-out instances) and a multi-turn repository bug-repair study (`6` multi-file Python repositories). Local Apple M5 Max energy counters (`IOReport` and `proc_pid_rusage`) are recorded as operating-system/on-chip `reported_j` values; closed-model remote server energy is recorded strictly as `not_available`; no hardware rail or wall-plug power monitor was attached (`board_metered = false`, `measured_j = None`).
+Empirical evaluations of agentic artificial intelligence routinely compare one stochastic language model against another, leaving unmeasured how much task completion requires a neural substrate at decision time rather than a fixed integer procedure over an explicit store of verified prior cases. This study constructs, freezes, and audits that missing control — **Deterministic Null (`Shape D`)** — and tests the per-class null hypothesis $H_{0,k}: \Delta_k = p_{\text{model},k} - p_{\text{null},k} \le \delta$ at margin $\delta = 0.05$ (`5.0` percentage points) across two cryptographically pre-registered confirmatory experiments (`4,030` post-beacon held-out instances across `exp-001` and `exp-002`), a multi-turn repository bug-repair study (`6` multi-file Python repositories), and companion reviewer-closure suite `exp-003` (multi-vendor non-Anthropic cloud breadth, extended-thinking and multi-turn resolution of unique `3-satisfiability` formulas, and real upstream GitHub defect repair with `0`-call replay). Local Apple M5 Max energy counters (`IOReport` and `proc_pid_rusage`) are recorded as operating-system/on-chip `reported_j` values; closed-model remote server energy is recorded strictly as `not_available`; no hardware rail or wall-plug power monitor was attached (`board_metered = false`, `measured_j = None`).
 
 **In plain words**
 
 1. Most agent benchmarks compare model A with model B without asking how much a zero-model lookup loop over verified prior examples already solves.
 2. Across `2,840` instances drawn from bounded algebraic, formal-proof, and structured transaction families (`exp-001`, Track-A), a frozen integer case table (`0` model calls at decision time) matches frontier cloud models on `9` of `10` class-tier cells, failing only on `12` unindexed free-text customer idioms (`+36.40` percentage points for `Claude Opus 5.5`).
-3. Across `1,190` unique instances from externally authored public benchmarks (`exp-002`, Track-B: Berkeley Function-Calling Leaderboard `v3`, Sierra `tau-bench` Retail, `BigCodeBench v0.1.3`, and `SWE` (software-engineering)-bench Verified) plus `6` unseen multi-file repositories, neural synthesis adds `+52.80` to `+95.00` percentage points wherever unseen key mass stays high — yet on unique phase-transition `3-satisfiability` formulas, single-turn language models collapse (`0.0%–5.2%`) below both the bounded integer table (`69.6%`) and standalone conflict-driven clause learning with clausal proof checking (`100.0%`), and under recurring Zipfian streams online crystallization cuts model calls and energy by `3.59×` without losing completion.
+3. Across `1,190` unique instances from externally authored public benchmarks (`exp-002`, Track-B: Berkeley Function-Calling Leaderboard `v3`, Sierra `tau-bench` Retail, `BigCodeBench v0.1.3`, and `SWE` (software-engineering)-bench Verified), plus `exp-003` multi-vendor evaluations (`OpenAI gpt-oss-120b` `+45.83` percentage points, `xAI Grok 4.20` `+44.17` percentage points over `Shape D`) and `6` real upstream GitHub defect commits (`5/6` patched and `pytest`-verified by `Opus 5.5`, then `5/6` replayed at `0` model calls), neural synthesis delivers large gains wherever unseen key mass stays high — while extended thinking (`49/50`) and multi-turn clause feedback (`50/50`) resolve the `1,024`-token truncation cliff on unique `3-satisfiability` formulas (still matched at `50/50` and zero dollars by standalone conflict-driven clause learning), and online crystallization cuts recurring Zipfian model calls and energy by `3.59×`.
 
 ## 1. Terms, acronyms, and measurement labels
 
 <ul id="terms">
-<li>AI, ML, LLM, LLMs, MoE, E4B, A3B: artificial intelligence, machine learning, large language model(s), Mixture-of-Experts, effective 4-billion-parameter architecture, and active 3-billion-parameter routing</li>
+<li>AI, ML, LLM, LLMs, MoE, OSS, E4B, A3B: artificial intelligence, machine learning, large language model(s), Mixture-of-Experts, open-source-software model release, effective 4-billion-parameter architecture, and active 3-billion-parameter routing</li>
 <li>OBSERVE, REDUCE, FUZZ, LOOKUP, ACT, VERIFY, MUTATE, WRITE: the eight sequential steps of the Deterministic Null integer decision loop</li>
 <li>SATB, SUT, SUTs, PFRK, TH2, DOSSIER: Satiation Benchmark harness contract, system(s) under test, four-way attempt outcomes (pass, fail, refuse, killed), red-team threat 2 (no hidden solver inside action primitives), and the project prior-art/red-team dossier</li>
 <li>DNULLMM1, FT, LCB: binary memory-mapped store index format, per-class function table, and Hoeffding lower confidence bound</li>
@@ -47,14 +47,14 @@ Across telemetry levels L0 to L4, four measurement classes stay strictly separat
 | :--- | :--- |
 | **`Exact (L4 Logical & Cryptographic)`** | Bit-identical 64-bit fixed-point store digests (`SHA-256`), OpenTimestamps `.ots` calendar proofs, League of Entropy `drand` beacon rounds, token/call counts captured by `satb-proxy`, and dated API list-price dollars (`USD`). |
 | **`Reported (reported_j: L2 & L3 Counters)`** | Rootless Apple Silicon on-chip `IOReport` window joules (`macmon`, telemetry level `L2`, shared-host label `A2`) and macOS kernel per-PID `proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj` (`L3`, label `D`). Not a physical hardware rail meter (`measured_j = None`, `board_metered = false`). |
-| **`Not Available (label N)`** | Closed-API remote server energy (`Claude Opus 5.5`, `Claude Sonnet 5.5`, `Gemini 2.5 Flash`) and `L0` alternating-current wall-plug energy. Fleet medians and literature multipliers are never substituted into receipts. |
+| **`Not Available (label N)`** | Closed-API remote server energy (`Claude Opus 5.5`, `Claude Sonnet 5.5`, `OpenAI gpt-oss-120b`, `xAI Grok 4.20`, `DeepSeek V4 Flash`, `Qwen 3.8 Max`, `Gemini 2.5 Flash`) and `L0` alternating-current wall-plug energy. Fleet medians and literature multipliers are never substituted into receipts. |
 | **`Invalidated Derived (Falsifier 6)`** | Net-above-idle subtraction (`derived_marginal_j`) is automatically dropped whenever shared-host co-tenant processes induce `> 5.0%` pre/post idle baseline drift across telemetry levels L0 to L4, preserving raw `reported_j` counters intact. |
 
 ### 1.1 Lineage, prior-art boundaries, and same-house disclosure
 
 No novelty is claimed for the decision loop itself. Case-based retrieve–reuse–revise–retain cycles date to Stanfill and Waltz (1986) and Aamodt and Plaza (1994); tabular pole-balancing dates to Michie and Chambers (1968); fuzzy rule tables date to Mamdani and Assilian (1975) and Wang and Mendel (1992); satisfiability proof logging via `RUP/DRAT` dates to Goldberg and Novikov (2003) and Wetzler, Heule, and Hunt (2014). Prior Open Interface Engineering works — [Metered Commit Gates](/papers/gates/), [Task Satiation vs. Aggregate Rebound](/papers/satiation/), [The Reality Code Engine](/papers/rce/), and [Downward LUT6 Compilation](/papers/lut-adapt/) — are `[same house]` companions cited for architectural context, never as independent confirmation.
 
-A 69-source prior-art audit and 36-finding red-team review (`docs/DOSSIER.md`) established one narrow gap in the 2024–2026 agent evaluation literature: existing agent benchmarks overwhelmingly omit non-neural controls, existing non-neural baselines lack pre-registered held-out store freezes, and existing energy studies of language-model agents include no zero-model control arm on the same host.
+A 69-source prior-art audit and 36-finding red-team review (`docs/DOSSIER.md` in [openIE-dev/deterministic-null](https://github.com/openIE-dev/deterministic-null)) established one narrow gap in the 2024–2026 agent evaluation literature: existing agent benchmarks overwhelmingly omit non-neural controls, existing non-neural baselines lack pre-registered held-out store freezes, and existing energy studies of language-model agents include no zero-model control arm on the same host.
 
 <figure class="my-8">
   <img src="/figures/deterministic-null/dnull-control-protocol.svg" alt="Four-stage Deterministic Null pre-beacon lock and paired evaluation protocol." />
@@ -83,7 +83,7 @@ During `dev` construction, `WRITE` appends verified records (`src` tagged `lit:`
 | **`N0` (Strict Null)** | Fixed integer loop filled on `dev` with zero model-derived records, repairs, or per-class code (`0` `llm:` provenance entries). | `0` | `lit:`, `human:`, `mut:` |
 | **`N1` (Primary Null)** | Fixed integer loop filled on `dev` admitting verified entries of any provenance, with all `dev` model calls charged to $C_{N1}$. | `0` | Any verified (`C_N1` charged) |
 | **`B5` (`code-once`)** | Frontier LLM authors a deterministic Python policy once from `dev` specs; frozen before `test_seed` exists. | `0` | `1` `dev` LLM call / class |
-| **`B3` (Cloud Frontier)** | Per-instance cloud model evaluation (`Claude Opus 5.5` primary, `Claude Sonnet 5.5` secondary, `Gemini 2.5 Flash` probe). | `>= 1` / instance | Pretrained cloud API |
+| **`B3` (Cloud Frontier)** | Per-instance cloud evaluation (`Claude Opus 5.5` primary, `Sonnet 5.5` secondary; `OpenAI gpt-oss-120b`, `xAI Grok 4.20`, `DeepSeek V4 Flash`, `Qwen 3.8 Max`, `Gemini 2.5 Flash` in `exp-002`/`exp-003`). | `>= 1` / instance | Pretrained cloud API |
 | **`B6` (Local Open-Weight)** | Same-host local inference (`Alibaba Qwen 3.6 35B-A3B` and `Google Gemma 4 E4B-it` via `llama-server` on Apple M5 Max Metal GPU). | `>= 1` / instance | Local `reported_j` |
 | **`Shape H` (Harness Box)** | External `Claude Code 2.1.330` CLI inside `/work` with `--strict-mcp-config` routed 100% through `satb-proxy`. | Multi-turn | Tests `Lane B` floor (Falsifier 8) |
 
@@ -156,9 +156,43 @@ All `1,190` `Shape D` (`N0`, `N1`), `B0`, and `B1` (`CDCL+DRAT`) evaluations com
 
 Three empirical findings stand out in Section 4.2:
 
-1. **Deductive combinatorial cliff (`formal.unique_3sat_drat`)**: When template menus are removed from formal satisfiability (`K_eff = 250` unique phase-transition `3-CNF` formulas), single-turn neural models fail almost completely (`Opus 5.5` `5.2%` at `$13.55`, `Sonnet 5.5` `0.8%` at `$8.17`, `Qwen 3.6` `0.0%` at `7,588 J`, `Gemma 4` `0.0%` at `4,698 J`), whereas the zero-call polynomial case table solves `69.6%` (`174/250`) and standalone classical `CDCL+DRAT` (`B1`) solves **`100.0%` (`250/250`)**. Because `Opus 5.5` itself failed to clear `B0` by $2\delta = 10.0$ percentage points (`95%` `BCa` `[+2.80, +8.40]` points), the pre-registered decision rule withholds `"Relevance excluded"` and classifies the cell strictly as **`Not assessable`**.
-2. **Non-trivial zero-model baselines alongside genuine neural increments**: Even with zero neural parameters (`N0`), lexical and schema case rules solve **`46.0%`** of `SWE-bench Verified` `12`-way fault localization (vs. `9.6%` floor) and **`39.6%`** of `tau-bench` retail policy mutations (vs. `0.5%` floor). On `tau-bench`, greedy `dev` bigram extraction in `N1` actually overfit noisy customer phrasing (`25.9%` vs. `N0`'s `39.6%`), confirming the importance of reporting strict `N0` alongside `N1` (`S4`). Nevertheless, across all four public benchmarks, frontier and local open-weight models deliver large, statistically decisive increments (`+46.82` to `+95.00` percentage points over both `N0` and `N1`).
+1. **Single-turn `1,024`-token cap cliff on `formal.unique_3sat_drat` (resolved in Section 4.3)**: Under `exp-002`'s uniform single-turn `max_tokens = 1,024` cap, neural models failed almost completely (`Opus 5.5` `5.2%` at `$13.55`, `Sonnet 5.5` `0.8%` at `$8.17`, `Qwen 3.6` `0.0%` at `7,588 J`, `Gemma 4` `0.0%` at `4,698 J`), whereas the zero-call polynomial case table solved `69.6%` (`174/250`) and standalone classical `CDCL+DRAT` (`B1`) solved **`100.0%` (`250/250`)**. Because `Opus 5.5` failed to clear `B0` by $2\delta = 10.0$ percentage points (`95%` `BCa` `[+2.80, +8.40]` points), the pre-registered decision rule withheld `"Relevance excluded"` and classified the cell strictly as **`Not assessable`**.
+2. **Non-trivial zero-model baselines alongside genuine neural increments**: Even with zero neural parameters (`N0`), lexical and schema case rules solve **`46.0%`** of `SWE-bench Verified` `12`-way fault localization (vs. `9.6%` floor) and **`39.6%`** of `tau-bench` retail policy mutations (vs. `0.5%` floor). On `tau-bench`, greedy `dev` bigram extraction in `N1` overfit noisy customer phrasing (`25.9%` vs. `N0`'s `39.6%`), confirming the importance of reporting strict `N0` alongside `N1` (`S4`). Across all four public benchmarks, frontier and local open-weight models deliver large, statistically decisive increments (`+46.82` to `+95.00` percentage points over both `N0` and `N1`).
 3. **Dual-channel `reported_j` cost of the local increment (`B6`)**: On the shared Apple M5 Max host (where concurrent `yosys-abc` synthesis triggered Falsifier 6 on `4` of `5` multi-minute windows, cleanly invalidating `derived_marginal_j` while preserving raw `L2` `IOReport` and per-PID `L3` `ri_energy_nj` counters), each additional task completed by `Qwen 3.6 35B-A3B` above `N1` cost **`49.90 J`** (`SWE-bench`), **`70.33 J`** (`BFCL v3`), **`238.80 J`** (`BigCodeBench`), and **`407.12 J`** (`tau-bench` Retail) in raw `L2` `reported_j`.
+
+### 4.3 Reviewer-closure companion suite (`exp-003`: multi-vendor cloud breadth and Unique 3-SAT resolution)
+
+Anchored read-only to `suite_exp002/manifest.json` and post-tag `drand` round `6664089` (`0` store or manifest mutations; `bench/results/exp_003_reviewer_closures.json` in [openIE-dev/deterministic-null](https://github.com/openIE-dev/deterministic-null)), companion suite `exp-003` resolved two Track-B reviewer follow-ups (plus real upstream repository repair in Section 5.2):
+
+#### Closure A — Non-Anthropic multi-vendor cloud frontier breadth (`n = 30`/class = `150` unique instances/vendor)
+
+Paired instance-for-instance on the initial `30` held-out `drand 6664089` instances per class (`N1` external 4-class mean `0.2750`, `Opus 5.5` external 4-class mean `0.9250`):
+
+| Non-Anthropic Cloud Substrate (`n = 30`/class) | `unique_3sat` | `bfcl_v3` | `tau_bench` | `bigcodebench` | `swebench` | External 4-Class Mean ($\hat{\Delta}$ vs `N1`) | API Spend (`150` calls) |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| **Paired `Shape D` `N1` (`0` calls)** | `0.833` | `0.300` | `0.300` | `0.000` | `0.500` | `0.275` (`0.00 pts`) | `$0.0000` |
+| **`OpenAI gpt-oss-120b`** (`cerebras:gpt-oss-120b`) | `0.100` | **`0.867`** | **`0.700`** | **`0.467`** | **`0.900`** | **`0.733` (`+45.83 pts`, `4/4` shown)** | `$0.1458` |
+| **`xAI Grok 4.20`** (`grok-4.20-0309-non-reasoning`) | `0.000` | **`0.900`** | **`0.700`** | **`0.500`** | **`0.767`** | **`0.717` (`+44.17 pts`, ties `Opus` on `BFCL`)** | `$0.6362` |
+| **`DeepSeek V4 Flash`** (Fireworks spot router) | `0.000` | `0.533` | `0.133` | `0.200` | `0.367` | `0.308` (`+3.33 pts`; `87/150` `killed`) | `$0.1583` |
+| **`Alibaba Qwen 3.8 Max`** (Fireworks) | `0.033` | `0.167` | `0.133` | `0.067` | `0.367` | `0.183` (`-9.17 pts`; `124/150` `killed`) | `$0.7832` |
+
+Both `OpenAI gpt-oss-120b` (`+45.83` percentage points over `N1`, **Relevance shown** across all `4/4` external public benchmarks) and `xAI Grok 4.20` (`+44.17` percentage points, matching `Claude Opus 5.5` at `0.900` on `BFCL v3`) replicate `exp-002`'s two-regime separation independently of Anthropic models, while Fireworks-hosted reasoning endpoints (`DeepSeek V4 Flash`, `Qwen 3.8 Max`) consumed most single-turn `max_tokens` budgets inside internal chain-of-thought traces (`killed`).
+
+#### Closure B — Resolving `formal.unique_3sat_drat` (`n = 50` held-out `12`-variable, `50`-clause `3-CNF` formulas)
+
+Inspecting `exp-002`'s paired `n = 50` slice (`i = 0..49`) showed that `Opus 5.5` (`4/50 = 0.080`) was truncated inside its adaptive thinking block on `45` of `50` instances under `max_tokens = 1,024`. Removing that cap and testing a pure $O(m)$ clause-checker loop (returning unsatisfied clause indices without solver or witness leakage) resolved the `Not assessable` status cleanly:
+
+| `formal.unique_3sat_drat` Arm (`n = 50`, `drand 6664089`) | Passes (`p`) | `SATB` `P/F/R/K` | $\hat{\Delta}$ vs `Shape D` `N1` (`95%` BCa) | $\hat{\Delta}$ vs Classical `CDCL+DRAT` `B1` | Calls / API `USD` | Verdict vs `N1` |
+| :--- | ---: | :---: | :---: | :---: | ---: | :--- |
+| **`Shape D` `N0` = `N1` (`TH2`-bounded $O(m)$ walk)** | `39 / 50` (`0.780`) | `39/11/0/0` | Reference | `-22.00 pts` | `0` / `$0.00` | Zero-call null |
+| **Classical `B1` (`CDCL+DRAT`, zero store)** | **`50 / 50` (`1.000`)** | `50/0/0/0` | `+22.00 pts` | Reference (`< 1 ms`) | `0` / `$0.00` | Exact solver ceiling |
+| `exp-002` Single-Turn `Opus 5.5` (`1,024`-tok cap) | `4 / 50` (`0.080`) | `4/1/0/45` | `-70.00 pts` `[-82.0, -56.0]` | `-92.00 pts` | `50` / — | **Not assessable** |
+| **Single-Turn `Opus 5.5` Ext. Thinking (`8,192` tok)** | **`49 / 50` (`0.980`)** | `49/1/0/0` | **`+20.00 pts` `[+8.0, +34.0]`** | `-2.00 pts` `[-12.0, +0.0]` | `50` / `$2.14` | **Relevance shown** (vs bounded `N1`) |
+| **Single-Turn `xAI Grok 4.20 Reasoning` (`8,192` tok)** | **`39 / 50` (`0.780`)** | `39/11/0/0` | `+0.00 pts` `[-18.0, +18.0]` | `-22.00 pts` `[-34.0, -12.0]` | `50` / `$0.10` | **Undetermined** (ties `N1`) |
+| **6-Turn Pure $O(m)$ Clause-Feedback `Sonnet 5.5`** | **`50 / 50` (`1.000`)** | `50/0/0/0` | **`+22.00 pts` `[+12.0, +36.0]`** | **`+0.00 pts` `[+0.0, +0.0]`** | `54` (`1.08` turns) / `$1.98` | **Relevance shown** (matches `B1`) |
+| **6-Turn Pure $O(m)$ Clause-Feedback `Opus 5.5`** | **`50 / 50` (`1.000`)** | `50/0/0/0` | **`+22.00 pts` `[+12.0, +36.0]`** | **`+0.00 pts` `[+0.0, +0.0]`** | `50` (`1.00` turn) / `$2.15` | **Relevance shown** (matches `B1`) |
+
+Raising reasoning headroom lifts `Opus 5.5` to `49/50` (`77,724` thinking tokens) and `6`-turn $O(m)$ clause feedback lifts both `Sonnet 5.5` and `Opus 5.5` to `50/50` — beating the `TH2`-capped local walk (`39/50`), while standalone zero-store `CDCL+DRAT` (`B1`) already achieves `50/50` in under `1 ms` at `$0.00`.
 
 ---
 
@@ -185,16 +219,26 @@ Even after `N1` crystallized `108` unit-tested `Claude Opus 5.5` Python solution
 
 ### 5.2 Multi-turn `/work` software-engineering repair (`6` multi-file repositories)
 
-To verify that single-turn prompts in Section 4 did not handicap or distort multi-step coding harnesses, six multi-function and multi-file Python bug-fix repositories (`config-defaults` spanning `loader.py` + `schema.py`, `interval-merge`, `pagination`, `precedence` spanning `calc.py` + `lexer.py`, `rate-window` spanning `window.py` + `limiter.py`, and `retry-backoff`) were evaluated inside isolated `/work` sandboxes (`max_turns = 10`), overwriting `test_*.py` from pristine upstream copies prior to `pytest -q` grading:
+Two complementary multi-turn `/work` bug-repair suites (`max_turns = 10`, restoring pristine upstream test files before `pytest` grading) verify repository-level patch synthesis and `0`-call crystallized replay:
 
-| Multi-Turn `/work` Harness Lane | Repos Passed | `SATB` `P/F/R/K` | Model Calls | Tool Calls | API `USD` / Local `reported_j` |
+1. **Controlled `6`-repository multi-file Python suite**: Six multi-function repositories (`config-defaults` spanning `loader.py` + `schema.py`, `interval-merge`, `pagination`, `precedence` spanning `calc.py` + `lexer.py`, `rate-window` spanning `window.py` + `limiter.py`, and `retry-backoff`).
+2. **Closure C (`exp-003`) — Real upstream `SWE-bench Verified` GitHub defect commits (`n = 6`, seeded from `drand 6664089`)**: Six upstream commits across four open-source repositories — `psf/requests-5414`, `pytest-dev/pytest-10051`, `pytest-dev/pytest-10356`, `mwaskom/seaborn-3069`, `sympy/sympy-23824`, and `sympy/sympy-17655` — each verified offline to fail `FAIL_TO_PASS` pre-patch and pass both `FAIL_TO_PASS` and `PASS_TO_PASS` under gold patches.
+
+| Multi-Turn `/work` Suite & Harness Lane | Repos Passed | `SATB` `P/F/R/K` | Model Calls | Tool Calls | API `USD` / Local `reported_j` |
 | :--- | ---: | :---: | ---: | ---: | :--- |
-| **`Shape D` Cold Unseen (`t = 1`)** | `0 / 6` (`0.0%`) | `0/6/0/0` | `0` | `0` | `$0.0000` / `< 1 J` |
-| **`Lane B` (`Claude Opus 5.5`)** | **`6 / 6` (`100.0%`)** | `6/0/0/0` | `28` | `29` | `$0.3613` (`not_available`) |
-| **`Lane B` (`Claude Sonnet 5.5`)** | **`6 / 6` (`100.0%`)** | `6/0/0/0` | `31` | `34` | `$0.2080` (`not_available`) |
-| **`Shape H` (`Claude Code 2.1.330` + `Opus 5.5`)** | **`6 / 6` (`100.0%`)** | `6/0/0/0` | `30` | `MCP` | `$0.2646` (`not_available`; Falsifier 8 passed) |
-| **`Lane B` Local (`Qwen 3.6 35B-A3B`)** | **`6 / 6` (`100.0%`)** | `6/0/0/0` | `42` | `42` | **`2,342.0 J`** `L2` (`390.3 J`/repo) |
-| **`Shape D` Online Replay (`t = 2` stream)** | **`6 / 6` (`100.0%`)** | `6/0/0/0` | `0` | `0` | `$0.0000` (verified patch replay) |
+| **Controlled 6-Repo** · `Shape D` Cold (`t = 1`) | `0 / 6` (`0.0%`) | `0/6/0/0` | `0` | `0` | `$0.0000` / `< 1 J` |
+| **Controlled 6-Repo** · `Lane B` `Claude Opus 5.5` | **`6 / 6` (`100.0%`)** | `6/0/0/0` | `28` | `29` | `$0.3613` (`not_available`) |
+| **Controlled 6-Repo** · `Lane B` `Claude Sonnet 5.5` | **`6 / 6` (`100.0%`)** | `6/0/0/0` | `31` | `34` | `$0.2080` (`not_available`) |
+| **Controlled 6-Repo** · `Shape H` `Claude Code 2.1.330` | **`6 / 6` (`100.0%`)** | `6/0/0/0` | `30` | `MCP` | `$0.2646` (Falsifier 8 passed) |
+| **Controlled 6-Repo** · `Lane B` Local `Qwen 3.6` | **`6 / 6` (`100.0%`)** | `6/0/0/0` | `42` | `42` | **`2,342.0 J`** `L2` (`390.3 J`/repo) |
+| **Controlled 6-Repo** · `Shape D` Replay (`t = 2`) | **`6 / 6` (`100.0%`)** | `6/0/0/0` | `0` | `0` | `$0.0000` (verified patch replay) |
+| **Real `SWE-bench` (`exp-003`)** · `Shape D` Cold (`t = 1`) | `0 / 6` (`0.0%`) | `0/6/0/0` | `0` | `0` | `$0.0000` (unseen repo trees) |
+| **Real `SWE-bench` (`exp-003`)** · `Lane B` `Claude Opus 5.5` | **`5 / 6` (`83.3%`)** | `5/1/0/0` | `33` | `45` | `$0.8557` (`not_available`) |
+| **Real `SWE-bench` (`exp-003`)** · `Lane B` `Claude Sonnet 5.5` | **`4 / 6` (`66.7%`)** | `4/2/0/0` | `31` | `46` | `$0.5865` (`not_available`) |
+| **Real `SWE-bench` (`exp-003`)** · `Lane B` `xAI Grok 4.20` | `1 / 6` (`16.7%`) | `1/5/0/0` | `60` | `51` | `$0.8480` (`not_available`) |
+| **Real `SWE-bench` (`exp-003`)** · **`Shape D` Replay (`t = 2`)** | **`5 / 6` (`83.3%`)** | `5/1/0/0` | **`0`** | **`0`** | **`$0.0000`** (`17.1 s` `pytest` re-verification) |
+
+On real upstream `SWE-bench Verified` repositories, `Claude Opus 5.5` synthesized valid patches passing full `FAIL_TO_PASS` and `PASS_TO_PASS` `pytest` suites on `requests-5414`, `pytest-10051`, `seaborn-3069`, `sympy-23824`, and `sympy-17655` (`5/6`, failing only `pytest-10356`), and `Shape D` online crystallization replayed and re-verified all `5/6` repository fixes on `t = 2` in `17.1 s` at **`0` model calls and `$0.00`**.
 
 ### 5.3 Online crystallization on recurring Zipfian traffic (`BigCodeBench`)
 
@@ -205,8 +249,8 @@ On the secondary online track (`600` requests drawn from a Zipf-$0.85$ distribut
 ## 6. Limitations, Falsifiers, and Unfinished Work
 
 1. **No physical rail or AC wall-plug power meter (`board_metered = false`, `measured_j = None`)**: All energy figures in this study are Apple Silicon on-chip `IOReport` (`L2`) and kernel `ri_energy_nj` (`L3`) `reported_j` counters on a host running concurrent jobs; `L0` AC wall-plug measurements (`Shelly`/`Yokogawa`, capturing PSU, DRAM, and NVMe losses) on a quiesced target machine remain open.
-2. **Self-administered benchmark selection vs. human outside-party Tier 3**: Although Track-B (`exp-002`) replaced synthetic templates with four externally authored public benchmarks locked before `drand` round `6664089`, a sealed Tier-3 benchmark authored and held in escrow by an independent human third party has not yet been run.
-3. **Finite-budget non-necessity**: Every `"Relevance shown"` verdict is strictly relative to the declared `dev` sample (`100–150` instances) and `4,096 B` function-table cap; an unfilled key demonstrates coverage not reached within that budget, never mathematical impossibility of a non-neural procedure.
+2. **Self-administered benchmark selection vs. human outside-party Tier 3**: Although Track-B (`exp-002`) and `exp-003` evaluated externally authored public benchmarks and upstream GitHub commits locked before `drand` round `6664089`, a sealed Tier-3 benchmark authored and held in escrow by an independent human third party has not yet been run.
+3. **Finite-budget non-necessity**: Every `"Relevance shown"` verdict is strictly relative to the declared `dev` sample (`100–150` instances) and `4,096 B` function-table cap; as Closure B (`formal.unique_3sat_drat`) illustrates directly, a zero-store classical `CDCL+DRAT` solver (`B1`) solves `100%` of instances where a `TH2`-capped local walk stops at `78.0%`.
 
 ## References
 

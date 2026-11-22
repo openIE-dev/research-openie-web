@@ -1,0 +1,22 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/satb-harness.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description="Satiation Benchmark (SATB): a deterministic Rust reference harness (Lane B), multi-shape adapter bridge (Shapes D, M, H, I), C1-C12 conformance suite, and five-level rootless telemetry attribution engine (L0-L4 by A1-N) verified empirically on Apple M5 Max."
+  headings={headings}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Research study, draft: agent benchmark harness specification, C1-C12 adapter conformance, five-block system-under-test (SUT) fingerprinting, and L0-L4 rootless telemetry attribution"
+>
+  <Content />
+</PaperLayout>

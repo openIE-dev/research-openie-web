@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="555" viewBox="0 0 1200 555" role="img" aria-labelledby="t3 d3">
+  <title id="t3">Frequency Anomaly Atlas across 61 orders of magnitude (AA01 to AA40)</title>
+  <desc id="d3">Logarithmic frequency map of 28 single-frequency entries from AA01 to AA40 spanning MOND a0/c (4.0e-19 Hz) and H0 (2.27e-18 Hz) through GW150914 (195 Hz) and Cs-133 Compton frequency (2.99e25 Hz) to the Planck scale (2.95e42 Hz), stratified by OPEN, CONTESTED, and RESOLVED status and colored by SKY versus EARTH domain.</desc>
+  <rect x="1" y="1" width="1198" height="553" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="40" y="48" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="23" font-weight="800" fill="#0f172a">Frequency Anomaly Atlas: 61 decades from a₀/c to ν_Planck</text>
+  <text x="40" y="76" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" fill="#475569">28 single-frequency entries plotted by log₁₀(ν / Hz) and status; 12 multi-scale entries (AA02, AA10, AA11, AA17–AA19, AA26, AA31, AA32, AA34, AA37, AA38) tabulated.</text>
+
+  <!-- Legend -->
+  <circle cx="905" cy="40" r="7" fill="#0072B2"/>
+  <text x="918" y="45" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Sky (21)</text>
+  <circle cx="998" cy="40" r="7" fill="#D55E00"/>
+  <text x="1011" y="45" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Earth (19)</text>
+  <rect x="1090" y="24" width="74" height="30" rx="15" fill="none" stroke="#009E73" stroke-width="2"/>
+  <text x="1127" y="44" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#009E73" text-anchor="middle">Atlas</text>
+
+  <rect x="155" y="138.0" width="998" height="88" rx="10" fill="#fff7ed" fill-opacity="0.55" stroke="#fdba74" stroke-width="1.2"/>
+  <text x="143" y="178.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#0f172a" text-anchor="end">OPEN</text>
+  <text x="143" y="196.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" fill="#64748b" text-anchor="end">12 plotted</text>
+  <rect x="155" y="248.0" width="998" height="88" rx="10" fill="#fdf2f8" fill-opacity="0.55" stroke="#f9a8d4" stroke-width="1.2"/>
+  <text x="143" y="288.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#0f172a" text-anchor="end">CONTESTED</text>
+  <text x="143" y="306.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" fill="#64748b" text-anchor="end">2 plotted</text>
+  <rect x="155" y="358.0" width="998" height="88" rx="10" fill="#ecfdf5" fill-opacity="0.55" stroke="#86efac" stroke-width="1.2"/>
+  <text x="143" y="398.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#0f172a" text-anchor="end">RESOLVED</text>
+  <text x="143" y="416.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" fill="#64748b" text-anchor="end">14 plotted</text>
+  <line x1="195.6" y1="126" x2="195.6" y2="452" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="195.6" y="474" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">10^-18</text>
+  <line x1="287.5" y1="126" x2="287.5" y2="452" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="287.5" y="474" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">10^-12</text>
+  <line x1="379.4" y1="126" x2="379.4" y2="452" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="379.4" y="474" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">10^-6</text>
+  <line x1="471.2" y1="126" x2="471.2" y2="452" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="471.2" y="474" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">10^0</text>
+  <line x1="563.1" y1="126" x2="563.1" y2="452" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="563.1" y="474" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">10^6</text>
+  <line x1="655.0" y1="126" x2="655.0" y2="452" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="655.0" y="474" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">10^12</text>
+  <line x1="746.9" y1="126" x2="746.9" y2="452" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="746.9" y="474" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">10^18</text>
+  <line x1="838.8" y1="126" x2="838.8" y2="452" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="838.8" y="474" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">10^24</text>
+  <line x1="930.6" y1="126" x2="930.6" y2="452" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="930.6" y="474" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">10^30</text>
+  <line x1="1022.5" y1="126" x2="1022.5" y2="452" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="1022.5" y="474" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">10^36</text>
+  <line x1="1114.4" y1="126" x2="1114.4" y2="452" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="1114.4" y="474" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#475569" text-anchor="middle">10^42</text>
+  <circle cx="481.0" cy="162.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="481.0" y="165.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">01</text>
+  <line x1="481.0" y1="154.0" x2="463.0" y2="138.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="463.0" y="134.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA01 t_scr⁻¹</text>
+  <circle cx="491.4" cy="202.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="491.4" y="205.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">03</text>
+  <circle cx="506.3" cy="382.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="506.3" y="385.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">04</text>
+  <line x1="506.3" y1="374.0" x2="488.3" y2="358.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="488.3" y="354.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA04 GW150914 (195 Hz)</text>
+  <circle cx="507.8" cy="202.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="507.8" y="205.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">05</text>
+  <line x1="507.8" y1="210.0" x2="535.8" y2="221.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="535.8" y="232.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA05 GW250114</text>
+  <circle cx="481.1" cy="402.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="481.1" y="405.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">06</text>
+  <circle cx="384.3" cy="418.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="384.3" y="421.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">07</text>
+  <line x1="384.3" y1="426.0" x2="384.3" y2="435.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="384.3" y="446.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA07 M87*</text>
+  <circle cx="433.0" cy="386.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="433.0" y="389.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">08</text>
+  <circle cx="201.1" cy="200.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="201.1" y="203.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">09</text>
+  <line x1="201.1" y1="208.0" x2="223.1" y2="219.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="223.1" y="230.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA09 H₀</text>
+  <circle cx="189.5" cy="164.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="189.5" y="167.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">12</text>
+  <line x1="189.5" y1="156.0" x2="195.5" y2="140.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="195.5" y="136.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA12 MOND a₀/c</text>
+  <circle cx="348.8" cy="388.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="348.8" y="391.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">13</text>
+  <circle cx="453.2" cy="198.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="453.2" y="201.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">14</text>
+  <circle cx="356.4" cy="198.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="356.4" y="201.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">15</text>
+  <line x1="356.4" y1="206.0" x2="356.4" y2="217.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="356.4" y="228.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA15 PTA</text>
+  <circle cx="377.1" cy="386.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="377.1" y="389.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">16</text>
+  <circle cx="852.1" cy="200.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="852.1" y="203.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">20</text>
+  <circle cx="553.3" cy="420.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="553.3" y="423.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">21</text>
+  <line x1="553.3" y1="428.0" x2="525.3" y2="439.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="525.3" y="450.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA21 Muon g−2</text>
+  <circle cx="671.5" cy="384.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="671.5" y="387.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">22</text>
+  <circle cx="396.3" cy="166.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="396.3" y="169.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">23</text>
+  <circle cx="802.1" cy="304.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="802.1" y="307.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">24</text>
+  <line x1="802.1" y1="312.0" x2="774.1" y2="321.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="774.1" y="332.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA24 X17</text>
+  <circle cx="784.6" cy="166.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="784.6" y="169.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">25</text>
+  <circle cx="609.4" cy="384.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="609.4" y="387.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">27</text>
+  <line x1="609.4" y1="376.0" x2="633.4" y2="362.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="633.4" y="358.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA27 Lamb (1.06 GHz)</text>
+  <circle cx="688.3" cy="420.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="688.3" y="423.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">28</text>
+  <line x1="688.3" y1="428.0" x2="704.3" y2="439.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="704.3" y="450.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA28 Casimir</text>
+  <circle cx="580.5" cy="418.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="580.5" y="421.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">29</text>
+  <circle cx="694.6" cy="384.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="694.6" y="387.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">30</text>
+  <circle cx="539.0" cy="384.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="539.0" y="387.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">33</text>
+  <circle cx="698.0" cy="200.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="698.0" y="203.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">35</text>
+  <line x1="698.0" y1="208.0" x2="716.0" y2="219.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="716.0" y="230.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA35 Yb⁺ 642 THz</text>
+  <circle cx="423.8" cy="418.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="423.8" y="421.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">36</text>
+  <circle cx="861.4" cy="280.0" r="7.5" fill="#D55E00" stroke="#ffffff" stroke-width="2"/>
+  <text x="861.4" y="283.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">39</text>
+  <line x1="861.4" y1="272.0" x2="895.4" y2="258.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="895.4" y="254.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA39 Cs-133 ν_C (3×10²⁵ Hz)</text>
+  <circle cx="1121.6" cy="182.0" r="7.5" fill="#0072B2" stroke="#ffffff" stroke-width="2"/>
+  <text x="1121.6" y="185.2" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">40</text>
+  <line x1="1121.6" y1="174.0" x2="1069.6" y2="160.0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="1069.6" y="156.0" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#1e293b" text-anchor="middle">AA40 Planck (3×10⁴² Hz)</text>
+
+  <text x="654" y="502" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="middle">Representative Frequency ν (Hz, logarithmic scale from 10⁻²⁰ Hz to 10⁴⁴ Hz)</text>
+  <text x="600" y="532" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle" font-style="italic">Zero entries open a causal channel from the future; horizon ringdowns (F16), scrambling combs (F17), and cosmic-rate scaling a₀(z) (F18) are pre-registered tests.</text>
+</svg>

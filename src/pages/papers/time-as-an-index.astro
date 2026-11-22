@@ -1,0 +1,22 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/time-as-an-index.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description="Time as an Index: a formal, numerical, and empirical audit of treating time as a queryable dimension across D-CTC (PSPACE) and P-CTC (PP) time-loop complexity, Hellman precomputation (T*M^2 = N^2), 31 Lean 4 kernel-checked theorems, M1 to M8 numerical models, and 195 cataloged anomalies and paradoxes."
+  headings={headings}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Research study, draft: closed-timelike-curve complexity, precomputation bounds, Lean 4 formal verification, Secure Hash Algorithm 256-bit (SHA-256) spectral test, and anomaly/paradox ledgers"
+>
+  <Content />
+</PaperLayout>

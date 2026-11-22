@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F59E0B">
+  <meta name="color-scheme" content="dark light">
+  <meta name="author" content="David Charlot">
+  <meta name="description" content="Interactive observatory for Satiation Benchmark (SATB): inspect platform L0-L4 hardware attribution maps (Apple Silicon, Framework AMD, Jetson Thor, Closed API) and explore measured C1-C12 conformance, C12 multi-vendor determinism, observer-effect cadences, and B-vs-C attribution falsifiers on Apple M5 Max.">
+  <link rel="canonical" href="https://research.openie.dev/living/satb-harness/">
+  <link rel="describedby" type="text/markdown" href="/llms.txt">
+  <link rel="alternate" type="text/markdown" title="Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution (Markdown)" href="/papers/satb-harness.md">
+  <title>Living Figures · Satiation Benchmark Harness &amp; Telemetry | OpenIE Research</title>
+  <script src="/webmcp-tools.js" defer></script>
+  <script>
+    (function(){
+      var stored = localStorage.getItem('oe-theme');
+      var theme = stored && ['dark','light','auto'].indexOf(stored) !== -1 ? stored : 'auto';
+      var resolved = theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
+      document.documentElement.setAttribute('data-theme', resolved);
+      document.documentElement.style.colorScheme = resolved;
+    })();
+  </script>
+  <link rel="stylesheet" href="openie.css">
+</head>
+<body class="grid-bg">
+  <nav class="nav-glass" aria-label="Main navigation">
+    <a href="https://research.openie.dev/" class="brand-logo">Open<span class="brand-cyan">IE</span> <span class="brand-amber">Research</span></a>
+    <div class="nav-links">
+      <a href="/papers/satb-harness/">Paper</a>
+      <a href="/papers/satb-harness.md">Markdown</a>
+      <a href="/living/satb-harness/" class="active">Figures (/living/)</a>
+      <a href="/about/satb-harness/">About</a>
+      <a href="/pdfs/satb-harness.pdf">PDF</a>
+      <a href="/pdfs/latex/satb-harness.pdf">LaTeX PDF</a>
+      <a href="https://openie.dev" class="pill-cyan">openie.dev</a>
+      <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
+    </div>
+  </nav>
+
+  <main>
+    <div style="max-width: 68rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
+      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/satb-harness/ · interactive instruments</p>
+      <h1 class="hero-title" style="max-width: none;">Living Figures: Satiation Benchmark Harness &amp; Telemetry Attribution</h1>
+      <p class="author-line">David Charlot, Open Interface Engineering · Companion to <a href="/papers/satb-harness/" style="color: var(--color-brand-cyan);">/papers/satb-harness/</a></p>
+
+      <div class="measurement-box">
+        <strong>Measurement grammar on this page.</strong> Every table and explorer separates four evidence classes:
+        <span class="chip chip-meas">Exact (L4 &amp; JCS SHA-256)</span> for canonical bundle digests, 5-block SUT fingerprints, byte-identical replay hashes (<code>C9</code>), <code>satb-proxy</code> token counts, and API list-price USD;
+        <span class="chip chip-sim">Reported (reported_j)</span> for rootless Apple M5 Max <code>IOReport</code> (<code>L1</code>/<code>L2</code>) and kernel <code>proc_pid_rusage.ri_energy_nj</code> (<code>L3</code>) counters; and
+        <span class="chip chip-est">Hardware Spec / Open</span> for target platform rails awaiting physical bench verification. <code>measured_j = None</code>; <code>board_metered = false</code>; closed-API server energy is <code>not_available</code> (label <code>N</code>).
+      </div>
+
+      <!-- Widget 1: Interactive Platform Hardware Attribution Switcher -->
+      <section id="satb-diag-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>satb-diag-01</code> · Platform Telemetry Channel &amp; Attribution Switcher (<code>L0–L4 × A1–N</code>)</h2>
+          <span class="chip chip-sim">Rootless Attribution Maps</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Inspect exact physical boundaries, rootless sensors, and best honest attribution labels across the four <code>SATB</code> target platforms. Channels at different levels are recorded independently and never summed into one unlabelled number.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;" role="group" aria-label="Select target hardware platform">
+          <button type="button" class="theme-btn plat-btn" data-plat="apple_silicon" aria-pressed="true" style="border-color: var(--color-brand-amber); color: var(--color-brand-amber);">Apple Silicon Mac (M5 Max Verified)</button>
+          <button type="button" class="theme-btn plat-btn" data-plat="framework_amd" aria-pressed="false">Framework AMD (Linux RAPL + amdgpu)</button>
+          <button type="button" class="theme-btn plat-btn" data-plat="jetson_thor" aria-pressed="false">NVIDIA Jetson Thor (INA238 / INA3221)</button>
+          <button type="button" class="theme-btn plat-btn" data-plat="closed_api" aria-pressed="false">Closed Cloud API (Label N / P)</button>
+        </div>
+
+        <div class="metric-grid" id="plat-kpis" aria-live="polite"></div>
+        <div style="overflow-x: auto; margin-top: 1rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.84rem;" id="plat-table">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(148,163,184,0.3); text-align: left;">
+                <th style="padding: 0.45rem 0.5rem;">Channel / Sensor</th>
+                <th style="padding: 0.45rem 0.5rem;">Boundary Level</th>
+                <th style="padding: 0.45rem 0.5rem;">Best Label</th>
+                <th style="padding: 0.45rem 0.5rem;">Rootless Access &amp; Attribution Scope</th>
+              </tr>
+            </thead>
+            <tbody id="plat-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Widget 2: Empirical Conformance (C1-C12), Determinism (C12), Observer-Effect & B-vs-C Falsifier Explorer -->
+      <section id="satb-diag-02" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>satb-diag-02</code> · Apple M5 Max Empirical Conformance, Determinism (<code>C12</code>), Observer-Effect &amp; Falsifier Explorer</h2>
+          <span class="chip chip-meas">Measured on Apple M5 Max (reported_j + Exact L4)</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Explore the real receipts generated by <code>bench_satb_falsifiers.py</code> on Apple M5 Max (<code>128 GB</code> unified memory, <code>macOS 27.2.1</code>, <code>macmon 0.12.0</code>): <code>12/12</code> <code>C1–C12</code> checks, <code>32</code> live multi-vendor <code>satb-proxy</code> determinism probes, <code>0 Hz–100 Hz</code> observer-effect cadences, and sequential <code>B</code> vs. proportional <code>C</code> (<code>Kepler</code>) divergence.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;" role="group" aria-label="Select empirical benchmark view">
+          <button type="button" class="theme-btn view-btn" data-view="c12_det" aria-pressed="true" style="border-color: var(--color-brand-cyan); color: var(--color-brand-cyan);">C12 · Multi-Vendor Determinism (8x Probes)</button>
+          <button type="button" class="theme-btn view-btn" data-view="c1_c12" aria-pressed="false">C1–C12 · Conformance &amp; C9/C10 Receipts</button>
+          <button type="button" class="theme-btn view-btn" data-view="observer" aria-pressed="false">Falsifier 5 · Observer Cadence (0–100 Hz)</button>
+          <button type="button" class="theme-btn view-btn" data-view="b_vs_c" aria-pressed="false">Falsifiers 3, 6 &amp; 8 · B-vs-C, 188-Win Drift &amp; Shape H</button>
+        </div>
+
+        <div class="metric-grid" id="view-kpis" aria-live="polite"></div>
+        <div style="overflow-x: auto; margin-top: 1rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.84rem;" id="view-table">
+            <thead><tr id="view-thead" style="border-bottom: 1px solid rgba(148,163,184,0.3); text-align: left;"></tr></thead>
+            <tbody id="view-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- Interactive Observer Budget Calculator -->
+        <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(148,163,184,0.2);">
+          <h3 style="margin: 0 0 0.5rem; font-size: 1.02rem;">Interactive Sampler Overhead &amp; Resolution Floor Calculator (Apple M5 Max Calibrated)</h3>
+          <div class="ctrl-grid">
+            <div class="ctrl-box">
+              <label for="s-cad"><span>Telemetry cadence preset</span><span id="v-cad">10 Hz (100 ms ref)</span></label>
+              <input type="range" id="s-cad" name="cad" min="0" max="3" step="1" value="2">
+            </div>
+            <div class="ctrl-box">
+              <label for="s-dur"><span>Attempt duration (seconds)</span><span id="v-dur">30 s</span></label>
+              <input type="range" id="s-dur" name="dur" min="1" max="300" step="1" value="30">
+            </div>
+            <div class="ctrl-box">
+              <label for="s-sutw"><span>Active SUT host draw (W)</span><span id="v-sutw">52.5 W</span></label>
+              <input type="range" id="s-sutw" name="sutw" min="15.0" max="120.0" step="2.5" value="52.5">
+            </div>
+          </div>
+          <div class="metric-grid" aria-live="polite">
+            <div class="metric-tile">
+              <div class="k">Measured Observer Power</div>
+              <div class="v" id="o-mw">66.44 mW</div>
+              <div class="s" id="o-hz">8.12 Hz achieved on IOReport</div>
+            </div>
+            <div class="metric-tile">
+              <div class="k">Cumulative Observer Spend</div>
+              <div class="v" id="o-obsj" style="color: var(--color-brand-cyan);">1.993 J</div>
+              <div class="s" id="o-cpu">109.3 ms sampler CPU time</div>
+            </div>
+            <div class="metric-tile">
+              <div class="k">Observer Share of SUT Window</div>
+              <div class="v" id="o-pct" style="color: var(--color-brand-amber);">0.1265%</div>
+              <div class="s" id="o-totj">Out of 1,575.0 J raw window</div>
+            </div>
+            <div class="metric-tile">
+              <div class="k">Step 2 Resolution Status</div>
+              <div class="v" id="o-res">observed</div>
+              <div class="s" id="o-minw">Needs &ge; 10 periods (~1.23 s)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('theme-toggle');
+      var lbl = document.getElementById('theme-label');
+      var modes = ['auto','dark','light'];
+      function applyMode(m){
+        localStorage.setItem('oe-theme', m);
+        var res = m === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : m;
+        document.documentElement.setAttribute('data-theme', res);
+        document.documentElement.style.colorScheme = res;
+        lbl.textContent = m.charAt(0).toUpperCase() + m.slice(1);
+      }
+      applyMode(localStorage.getItem('oe-theme') || 'auto');
+      btn.addEventListener('click', function(){
+        var cur = localStorage.getItem('oe-theme') || 'auto';
+        applyMode(modes[(modes.indexOf(cur) + 1) % modes.length]);
+      });
+
+      var PLATFORMS = {
+        apple_silicon: {
+          kpis: [
+            ['Host Verification', 'Verified Live', 'Apple M5 Max · 128 GB · macOS 27.2.1'],
+            ['Rootless Method', 'macmon + rusage_v6', 'Zero sudo · zero powermetrics'],
+            ['Primary Energy Channel', 'L2 IOReport (A2)', 'reported_j (L0 plug not_available)'],
+            ['Co-Tenant Isolation', 'L3 ri_energy_nj (D)', 'Per-PID kernel counter + Falsifier 6']
+          ],
+          rows: [
+            ['Shelly PDU apower / aenergy', 'L0 wall (AC)', 'A2 (if attached) / N', 'Whole machine incl. PSU loss (~1 s); currently not_available (measured_j = None)'],
+            ['macmon sys_power (SMC)', 'L1 platform (DC)', 'A2', 'Whole system DC side (~60.8 W idle/load baseline on M5 Max)'],
+            ['macmon IOReport chip/cpu/gpu/ane/ram', 'L2 package / SoC', 'A2 / B', 'Primary reported_j SoC window + sequential Lane B phase split (~8.1 Hz ceiling)'],
+            ['proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj', 'L3 process tree', 'D (OS-modelled)', 'Rootless libSystem per-PID energy & instruction counter; immune to CPU co-tenants'],
+            ['satb-proxy + Lane B counters', 'L4 logical', 'Exact', 'Exact prompt/cache/thinking/output tokens, call timings, turns, and ContextRule_v0 elisions']
+          ]
+        },
+        framework_amd: {
+          kpis: [
+            ['Host Verification', 'Spec Complete · Open', 'Linux x86-64 target'],
+            ['PLATYPUS Safety', 'Supervisor-UID udev', 'Sandbox UID barred from RAPL'],
+            ['Primary Energy Channel', 'L0 Plug / L2 RAPL+GPU', 'package-0 + amdgpu energy1_input'],
+            ['Process Boundary', 'cgroup v2 (Label C)', 'Activity shares, not physical joules']
+          ],
+          rows: [
+            ['Shelly Plus Plug S / Pro PDU', 'L0 wall (AC)', 'A2', 'Whole host incl. AC-DC brick; 50% duty sync-pulse cross-correlated at session start/end'],
+            ['powercap intel-rapl:0 (package)', 'L2 CPU package', 'A2 / B', 'Root-only since Linux 5.10 (PLATYPUS); one-time udev rule grants read to Supervisor UID only'],
+            ['amdgpu hwmon energy1_input', 'L2 GPU / APU rail', 'A2 / B', 'Cumulative microjoule counter; domain overlap with package RAPL checked on hardware'],
+            ['cgroup v2 cpu.stat / memory.peak / io.stat', 'L3 cgroup tree', 'C (proportional)', 'Exact CPU/memory/IO activity shares; Linux exposes no per-process hardware joule counter'],
+            ['satb-proxy + Lane B counters', 'L4 logical', 'Exact', 'Exact token usage, echoed model/fingerprint, and sequential phase timestamps']
+          ]
+        },
+        jetson_thor: {
+          kpis: [
+            ['Host Verification', 'Spec Mapped · Open', 'NVIDIA Jetson Thor carrier + module'],
+            ['Exclusive Engine Rail', 'INA3221 ch1 (Label A1)', 'VDD_GPU when engine-exclusive'],
+            ['Board Input Monitor', 'INA238 + INA3221 ch3', 'L1 platform DC input (Label A2)'],
+            ['Integrated GPU NVML', 'Marked unverified', 'Pending on-device counter check']
+          ],
+          rows: [
+            ['INA238 (carrier board shunt)', 'L1 platform', 'A2', 'Overall system DC input: Thor module + carrier board'],
+            ['INA3221 ch3 VIN_SYS_5V0', 'L1 rail', 'A2', 'Main 5 V system input rail; rootless sysfs read permissions still to verify on-device'],
+            ['INA3221 ch1 VDD_GPU', 'L2 GPU domain', 'A1', 'Upgrades to A1 exclusive rail whenever only the local inference engine can touch the GPU'],
+            ['INA3221 ch2 VDD_CPU_SOC_MSS', 'L2 CPU/SoC/MSS', 'B / C', 'Shared by engine host threads, SATB harness, and /work sandbox tools'],
+            ['NVML cumulative energy (mJ)', 'L2 domain', 'unverified', 'Support on Thor integrated GPU is unconfirmed; never fall back to 25%-duty power gauge']
+          ]
+        },
+        closed_api: {
+          kpis: [
+            ['Host Verification', 'Verified Live (32 Calls)', 'Anthropic · Cerebras · xAI via satb-proxy'],
+            ['Server Energy Label', 'Strictly N (or P)', 'not_available unless per-request attested'],
+            ['Fleet Medians Barred', '0.24 / 0.34 Wh Excluded', 'Never substituted into SATB receipts'],
+            ['Exact Placement Axis', 'L4 Tokens + E3 USD', '100% exact proxy usage match (C7)']
+          ],
+          rows: [
+            ['Remote provider server energy', 'L2 remote server', 'N (or P)', 'Literally "not_available" unless provider supplies per-request P with verbatim methodology'],
+            ['Provider sustainability disclosures', 'Fleet median (barred)', 'Excluded', 'Google 0.24 Wh, OpenAI 0.34 Wh, Mistral 1.14 gCO2e are fleet medians and never enter receipts'],
+            ['Local client L0–L3 counters', 'Client / sandbox host', 'D / A2 (host only)', 'Measures local /work tool execution only; never mislabelled as model inference energy'],
+            ['satb-proxy L4 logical ledger', 'L4 conversation', 'Exact', '100% exact prompt, cache, reasoning, and output tokens + dated list-price USD (32/32 verified)'],
+            ['Session start/end canary rung', 'Session validity', 'Void gate', 'Flags silent mid-session provider weight or quantization swaps behind fixed model_id']
+          ]
+        }
+      };
+
+      var VIEWS = {
+        c12_det: {
+          kpis: [
+            ['Live Proxy Calls Logged', '32 Cloud + 8 Local', '100% exact C7 usage token parity'],
+            ['Anthropic temp=0 Preflight', 'HTTP 400 Deprecated', 'Normalized to not_available in fingerprint'],
+            ['Cerebras gpt-oss-120b @ T=0', '2 / 8 Distinct', 'Residual batch/FP variance under seed=42'],
+            ['Shape D (dnull N1)', '1 / 8 Bit-Identical', '0da4df8d9ccbce1e… (0 model calls)']
+          ],
+          cols: ['SUT / Endpoint (8 Identical Calls)', 'temp=0 HTTP', 'sampling.temperature', 'Distinct Raw (/8)', 'Distinct Algebraic (/8)', 'system_fingerprint', 'Mean Latency'],
+          rows: [
+            ['Shape D · dnull N1 (Rust)', 'Exact i64', '0 (exact_i64_q1e6)', '1 / 8', '1 / 8', '0da4df8d9ccbce1e…', '1,474.0 ms'],
+            ['Anthropic · claude-opus-5-5', 'HTTP 400', 'not_available (deprecated)', '8 / 8', '4 / 8', 'not_available', '3,389.1 ms'],
+            ['Anthropic · claude-sonnet-5-5', 'HTTP 400', 'not_available (deprecated)', '8 / 8', '2 / 8', 'not_available', '2,914.3 ms'],
+            ['Cerebras · gpt-oss-120b', 'HTTP 200', '0.0 (seed=42)', '2 / 8', '2 / 8', 'fp_fd4dff7eed92aaf38281', '484.2 ms'],
+            ['xAI · grok-4.20-0309-non-reasoning', 'HTTP 200', '0.0 (seed=42)', '8 / 8', '1 / 8', 'fp_9974b11849', '942.7 ms']
+          ]
+        },
+        c1_c12: {
+          kpis: [
+            ['Rust + OS Conformance', '12 / 12 Passed', 'dnull_cli satb-conformance + live proxy'],
+            ['C9 14-Turn Replay Drift', '0 Byte Diffs', '149,747 B · 5 elided · 0 compaction calls'],
+            ['C10 Process-Tree SIGKILL', '2.073 ms Mean', '4 PIDs reaped (778× under 2,000 ms cap)'],
+            ['C6 Unlisted Proxy Route', 'HTTP 404 Blocked', 'Sandbox env NP=* · zero API keys in /work']
+          ],
+          cols: ['Check', 'Contract Tested', 'Measured Apple M5 Max Receipt', 'Status'],
+          rows: [
+            ['C1 · Bundle round-trip', 'Adapter echoes canonical JCS bundle hash', 'bundle_sha256 = 455e941f51f8ffef…', 'PASS'],
+            ['C2 · Submit path', 'Verifier receives exact proxy-logged bytes', 'verifier_bytes == proxy_bytes (0 byte diffs)', 'PASS'],
+            ['C3 · Refuse path', 'Instructed refusal maps to refuse(other)', 'outcome = refuse:other (score = 0)', 'PASS'],
+            ['C4 · One terminal call', 'Post-submit tool calls ignored and counted', 'ignored_trailing_calls = 1', 'PASS'],
+            ['C5 · No oracle', 'Verifier & .. escapes blocked from /work', 'Blocked ../, /etc/passwd, verifier_oracle/*', 'PASS'],
+            ['C6 · Egress', 'Loopback proxy only; keys stripped from /work', 'NP=*|HTTP=; unlisted route -> HTTP 404', 'PASS'],
+            ['C7 · Usage present', 'Missing usage -> killed(usage_missing); exact match', 'Missing -> killed; 32/32 live calls 0-token diff', 'PASS'],
+            ['C8 · Fingerprint stable', '5-block SHA-256 stable across 3-attempt dry run', 'sut_fp = 8b741c27bf364e5d… (swap -> session_void)', 'PASS'],
+            ['C9 · Harness replay', 'Byte-identical transcript under ContextRule_v0', '14 turns, 149,747 B, 5 elided, 0 diffs (d697ed14…)', 'PASS'],
+            ['C10 · Kill path', '4-PID process group gone in < 2,000 ms', '2.073 ms mean [1.429–2.571 ms], 0 surviving PIDs', 'PASS'],
+            ['C11 · Telemetry handshake', 'Rootless rusage_v6 + monotonic clock offset', 'ri_energy_nj active, sudo = false, 7 markers', 'PASS'],
+            ['C12 · Determinism probe', '8x identical calls recorded as SUT property', '1/8 (dnull), 2/8 (Cerebras), 8/8 raw (Claude/xAI)', 'PASS']
+          ]
+        },
+        observer: {
+          kpis: [
+            ['0 Hz Boundary Overhead', '0.011 mW (108 µJ)', '2 rusage syscalls / 10 s · 0.004 ms CPU'],
+            ['10 Hz Reference Tick', '66.44 mW (0.667 J)', '0.177% of 376.6 J L2 window'],
+            ['IOReport Pipe Ceiling', '~8.12 Hz Achieved', '~120 ms macmon subscription cycle'],
+            ['10 ms vs 1 s L2 Delta', '0.76% Window Diff', '369.93 J vs 372.77 J (Falsifier 5 cleared)']
+          ],
+          cols: ['Sampling Cadence (10 s Window)', 'Achieved Rate', 'Sampler CPU Time', 'Observer L3 reported_j', 'Observer Power', '% of L2 Window', 'L2 Window reported_j'],
+          rows: [
+            ['0 Hz Boundary-Only (2 syscalls)', '0.20 Hz', '0.004 ms', '0.000108 J', '0.011 mW', '0.0000%', '— (no IOReport daemon)'],
+            ['1 Hz Polling (1,000 ms)', '0.90 Hz', '9.323 ms', '0.194237 J', '19.371 mW', '0.0521%', '372.769 J'],
+            ['10 Hz Reference Tick (100 ms)', '8.12 Hz', '36.434 ms', '0.666596 J', '66.439 mW', '0.1770%', '376.603 J'],
+            ['100 Hz Stress Tick (10 ms)', '7.44 Hz (capped)', '35.636 ms', '0.598721 J', '58.971 mW', '0.1618%', '369.926 J']
+          ]
+        },
+        b_vs_c: {
+          kpis: [
+            ['Step 7 Sum-Check Residual', '<= 1 µJ (100% Pass)', '3 / 3 sequential boundary splits exact'],
+            ['Falsifier 3 (B vs C on L2)', '32.59% – 35.86% Err', 'Triggers > 20% Kepler unreliability flag'],
+            ['Falsifier 6 (188 L2 Windows)', '124 Drifted Dropped', '64 valid <=5% · 100% raw L2/L3 preserved'],
+            ['Falsifier 8 (Lane B vs Shape H)', '24/24 & 6/6 Parity', '1.67×–3.44× fewer tokens than Claude Code']
+          ],
+          cols: ['Falsifier / Attribution Audit', 'Scope', 'Measured Result on Apple M5 Max', 'SATB Rule Enforced'],
+          rows: [
+            ['Step 7 Sum Check (F2)', '3 two-phase replicates', '0 µJ, 1 µJ, 0 µJ residual (100.0% pass)', 'Raw counter delta reproduced by B phases'],
+            ['B Temporal vs C Kepler on L2 (F3)', 'Compute 2.5s vs DRAM+fsync 2.5s', 'C errs +35.86% (Phase 1) & −32.59% (Phase 2)', 'Triggered (>20%): C barred on sequential runs'],
+            ['B Temporal vs C Kepler on L3 (F3)', 'Per-PID ri_energy_nj', '38.6 vs 27.7 mJ/CPU-ms -> +25.21% Phase-2 err', 'CPU-ns is non-constant energy even within 1 PID'],
+            ['Pre/Post Idle Drift Gate (F6)', '188 windows (exp-001/002 + 170 parse)', '64 valid (<=5%) · 124 invalidated (up to 65.1%)', 'Drifted active−idle dropped; raw joules intact'],
+            ['Lane B vs Shape H Floor Check (F8)', '24 bundles + 6 multi-file repos', 'Lane B 24/24 & 6/6 == Claude Code 2.1.330', 'Cleared: 3.25×–3.44× lower prompt+cache tokens']
+          ]
+        }
+      };
+
+      var CAD_PRESETS = [
+        { label: '0 Hz (boundary-only)', mw: 0.011, cpuMsPer10s: 0.004, hz: 0.0, minS: 0.001, hzNote: '2 rusage syscalls total (0 polling)' },
+        { label: '1 Hz (1,000 ms)', mw: 19.371, cpuMsPer10s: 9.323, hz: 0.90, minS: 10.0, hzNote: '0.90 Hz achieved (10-period floor = 10.0 s)' },
+        { label: '10 Hz (100 ms ref)', mw: 66.439, cpuMsPer10s: 36.434, hz: 8.12, minS: 1.23, hzNote: '8.12 Hz achieved on IOReport (~1.23 s floor)' },
+        { label: '100 Hz (10 ms req)', mw: 58.971, cpuMsPer10s: 35.636, hz: 7.44, minS: 1.34, hzNote: 'Saturates at 7.44 Hz (~120 ms IOReport cycle)' }
+      ];
+
+      var curPlat = 'apple_silicon';
+      var curView = 'c12_det';
+
+      function syncUrl(){
+        if (!window.history || !window.history.replaceState) return;
+        var u = new URL(window.location.href);
+        u.searchParams.set('platform', curPlat);
+        u.searchParams.set('view', curView);
+        u.searchParams.set('cad', document.getElementById('s-cad').value);
+        u.searchParams.set('dur', document.getElementById('s-dur').value);
+        u.searchParams.set('sutw', document.getElementById('s-sutw').value);
+        window.history.replaceState(null, '', u.pathname + u.search + u.hash);
+      }
+
+      function renderPlatform(key, updateQuery){
+        if (!PLATFORMS[key]) key = 'apple_silicon';
+        curPlat = key;
+        var d = PLATFORMS[key];
+        document.querySelectorAll('.plat-btn').forEach(function(b){
+          var on = b.getAttribute('data-plat') === key;
+          b.setAttribute('aria-pressed', String(on));
+          b.style.borderColor = on ? 'var(--color-brand-amber)' : '';
+          b.style.color = on ? 'var(--color-brand-amber)' : '';
+        });
+        document.getElementById('plat-kpis').innerHTML = d.kpis.map(function(k){
+          return '<div class="metric-tile"><div class="k">' + k[0] + '</div><div class="v">' + k[1] + '</div><div class="s">' + k[2] + '</div></div>';
+        }).join('');
+        document.getElementById('plat-tbody').innerHTML = d.rows.map(function(r){
+          return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14);">' + r.map(function(c, i){
+            var st = i === 0 ? 'font-family: ui-monospace, monospace; font-weight: 600;' : (i === 2 ? 'color: var(--color-brand-amber); font-weight: 700;' : '');
+            return '<td style="padding: 0.45rem 0.5rem; ' + st + '">' + c + '</td>';
+          }).join('') + '</tr>';
+        }).join('');
+        if (updateQuery) syncUrl();
+        return { platform: key, kpis: d.kpis, channels: d.rows };
+      }
+
+      function renderView(key, updateQuery){
+        if (!VIEWS[key]) key = 'c12_det';
+        curView = key;
+        var d = VIEWS[key];
+        document.querySelectorAll('.view-btn').forEach(function(b){
+          var on = b.getAttribute('data-view') === key;
+          b.setAttribute('aria-pressed', String(on));
+          b.style.borderColor = on ? 'var(--color-brand-cyan)' : '';
+          b.style.color = on ? 'var(--color-brand-cyan)' : '';
+        });
+        document.getElementById('view-kpis').innerHTML = d.kpis.map(function(k){
+          return '<div class="metric-tile"><div class="k">' + k[0] + '</div><div class="v">' + k[1] + '</div><div class="s">' + k[2] + '</div></div>';
+        }).join('');
+        document.getElementById('view-thead').innerHTML = d.cols.map(function(c){
+          return '<th style="padding: 0.45rem 0.5rem;">' + c + '</th>';
+        }).join('');
+        document.getElementById('view-tbody').innerHTML = d.rows.map(function(r){
+          return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14);">' + r.map(function(c, i){
+            var st = i === 0 ? 'font-family: ui-monospace, monospace; font-weight: 600;' : '';
+            if (c === 'PASS' || c.indexOf('1 / 8') === 0) st += 'color: var(--color-brand-cyan); font-weight: 700;';
+            else if (c.indexOf('HTTP 400') !== -1 || c.indexOf('Triggered') !== -1) st += 'color: var(--color-brand-amber); font-weight: 700;';
+            return '<td style="padding: 0.45rem 0.5rem; ' + st + '">' + c + '</td>';
+          }).join('') + '</tr>';
+        }).join('');
+        if (updateQuery) syncUrl();
+        return { view: key, kpis: d.kpis, columns: d.cols, rows: d.rows };
+      }
+
+      function updateObserverCalc(updateQuery){
+        var idx = Math.max(0, Math.min(3, parseInt(document.getElementById('s-cad').value, 10) || 0));
+        var dur = parseFloat(document.getElementById('s-dur').value) || 30;
+        var sutW = parseFloat(document.getElementById('s-sutw').value) || 52.5;
+        var p = CAD_PRESETS[idx];
+        document.getElementById('v-cad').textContent = p.label;
+        document.getElementById('v-dur').textContent = dur.toFixed(0) + ' s';
+        document.getElementById('v-sutw').textContent = sutW.toFixed(1) + ' W';
+
+        var obsJ = idx === 0 ? 0.000108 : (p.mw / 1000.0) * dur;
+        var cpuMs = idx === 0 ? 0.004 : p.cpuMsPer10s * (dur / 10.0);
+        var totJ = sutW * dur;
+        var pct = (obsJ / Math.max(1e-6, totJ)) * 100.0;
+        var resStatus = (idx === 0 || dur >= p.minS) ? 'observed' : 'below_resolution';
+
+        document.getElementById('o-mw').textContent = p.mw.toFixed(3) + ' mW';
+        document.getElementById('o-hz').textContent = p.hzNote;
+        document.getElementById('o-obsj').textContent = obsJ < 0.01 ? (obsJ * 1e6).toFixed(0) + ' µJ' : obsJ.toFixed(3) + ' J';
+        document.getElementById('o-cpu').textContent = cpuMs.toFixed(3) + ' ms sampler CPU time';
+        document.getElementById('o-pct').textContent = pct.toFixed(4) + '%';
+        document.getElementById('o-totj').textContent = 'Out of ' + totJ.toFixed(1) + ' J raw window';
+        document.getElementById('o-res').textContent = resStatus;
+        document.getElementById('o-res').style.color = resStatus === 'observed' ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)';
+        document.getElementById('o-minw').textContent = idx === 0 ? 'Boundary counter read (2 syscalls)' : 'Needs >= 10 periods (~' + p.minS.toFixed(2) + ' s)';
+
+        if (updateQuery) syncUrl();
+        return {
+          cadence_preset: p.label,
+          duration_s: dur,
+          sut_power_w: sutW,
+          observer_mw: p.mw,
+          observer_j: +obsJ.toFixed(6),
+          observer_pct_of_window: +pct.toFixed(5),
+          step2_status: resStatus
+        };
+      }
+
+      document.querySelectorAll('.plat-btn').forEach(function(b){
+        b.addEventListener('click', function(){ renderPlatform(b.getAttribute('data-plat'), true); });
+      });
+      document.querySelectorAll('.view-btn').forEach(function(b){
+        b.addEventListener('click', function(){ renderView(b.getAttribute('data-view'), true); });
+      });
+      ['s-cad','s-dur','s-sutw'].forEach(function(id){
+        document.getElementById(id).addEventListener('input', function(){ updateObserverCalc(true); });
+      });
+
+      var qs = new URLSearchParams(window.location.search);
+      if (qs.get('cad') != null) document.getElementById('s-cad').value = qs.get('cad');
+      if (qs.get('dur') != null) document.getElementById('s-dur').value = qs.get('dur');
+      if (qs.get('sutw') != null) document.getElementById('s-sutw').value = qs.get('sutw');
+      renderPlatform(qs.get('platform') || 'apple_silicon', false);
+      renderView(qs.get('view') || 'c12_det', false);
+      updateObserverCalc(false);
+
+      window.openieLivingLab = {
+        studyId: 'satb-harness',
+        platforms: Object.keys(PLATFORMS),
+        views: Object.keys(VIEWS),
+        selectPlatform: function(p){ return renderPlatform(p || curPlat, true); },
+        selectView: function(v){ return renderView(v || curView, true); },
+        simulateObserver: function(opts){
+          if (opts && opts.cad != null) document.getElementById('s-cad').value = String(opts.cad);
+          if (opts && opts.dur != null) document.getElementById('s-dur').value = String(opts.dur);
+          if (opts && opts.sutw != null) document.getElementById('s-sutw').value = String(opts.sutw);
+          return updateObserverCalc(true);
+        }
+      };
+
+      var mc = document.modelContext || navigator.modelContext;
+      if (window.isSecureContext && mc && typeof mc.registerTool === 'function') {
+        [
+          {
+            name: 'select_satb_platform_map',
+            title: 'Select SATB hardware telemetry attribution platform',
+            description: 'Switches Widget 1 on /living/satb-harness/ between apple_silicon, framework_amd, jetson_thor, and closed_api and returns the L0-L4 channel and A1-N attribution table.',
+            inputSchema: {
+              type: 'object',
+              properties: { platform: { type: 'string', enum: ['apple_silicon', 'framework_amd', 'jetson_thor', 'closed_api'] } },
+              required: ['platform'],
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.selectPlatform(inp && inp.platform); },
+            annotations: { readOnlyHint: true }
+          },
+          {
+            name: 'inspect_satb_empirical_falsifiers',
+            title: 'Inspect SATB Apple M5 Max conformance and falsifier receipts',
+            description: 'Switches Widget 2 on /living/satb-harness/ between c12_det (multi-vendor determinism probes), c1_c12 (conformance checks), observer (0-100 Hz cadence overhead), and b_vs_c (B-vs-C Kepler divergence and 188-window Falsifier 6 audit).',
+            inputSchema: {
+              type: 'object',
+              properties: { view: { type: 'string', enum: ['c12_det', 'c1_c12', 'observer', 'b_vs_c'] } },
+              required: ['view'],
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.selectView(inp && inp.view); },
+            annotations: { readOnlyHint: true }
+          }
+        ].forEach(function(t){ try { Promise.resolve(mc.registerTool(t)).catch(function(){}); } catch(_e){} });
+      }
+    })();
+  </script>
+</body>
+</html>

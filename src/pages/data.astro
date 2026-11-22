@@ -1,49 +1,81 @@
 ---
 import Layout from '../layouts/Layout.astro';
 const R = 'https://github.com/openIE-dev/openie-research-experiments/tree/main/';
+const hrefOf = (p: string) => (p.startsWith('http') || p.startsWith('/')) ? p : R + p;
+const labelOf = (p: string) => p.replace(/^https:\/\/github\.com\//, '');
 const groups = [
-  { id: 'agency', title: 'Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents', paper: '/papers/agency/', rows: [
+  { id: 'agency', aliases: [], title: 'Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents', paper: '/papers/agency/', rows: [
     ['§8.11 preregistered acceptor run', 'agency-run/', 'Preregistrations v1, v2 and second machine; agents, meters, tasks, analysis; episodes and receipts'],
     ['§8.11 results, run 1', 'agency-run/results/', 'Episode rows and receipts'],
     ['§8.11.1 and §8.11.2 results', 'agency-run/results2/', 'Second run; the second machine is in results_jetson/ and results_jetson_cyc/'],
   ]},
-  { id: 'rce', title: 'The Reality Code Engine', paper: '/papers/rce/', rows: [
+  { id: 'rce', aliases: [], title: 'The Reality Code Engine', paper: '/papers/rce/', rows: [
+    ['Reference checker, emitters, and 5,537 Lean 4 theorems (T1 to T63)', 'https://github.com/openIE-dev/rce/tree/1762fb4b', 'Commit 1762fb4b: 2,221/2,236 passing conformance checks (0 fail), 837 Rust checker unit tests, browser Wasm checker'],
+    ['Apple M5 Max reported_j checker and 62-Form suite receipts', 'rce/bench/reported-j/', '49.04 mJ / 7.32 ms per Form check; 15.44 J / 2.32 s per full 62-Form check + run + 5-target emit suite (measured_j unset)'],
     ['§6 repair ladder protocol (L0 and L1)', 'rce/bench/ladder/', 'LADDER.md, PREREG.json with splits, report.py'],
     ['§5.5 model proposer on the demonstration specification', 'rce/bench/results/', 'llm-proposer-form-demo.form.json: 18 proposals, 13 distinct, 15 not admitted, one rewrite admitted under three names'],
     ['Cross-backend conformance of RCE graph code (first written under the name flowG; not cited by the RCE paper)', 'flowg-conformance/', 'Suite, fixtures by tier, recorded 18 of 18 report, CI job'],
     ['§3.8 dimension runs dim-r2 to dim-r5', 'rce/bench/dimension/', 'PREREG.json with amendments and hash sidecar, RESULTS.md, per-program rows in results/'],
     ['§3.5, §3.7 and §12.4 surveys of 22, 23 and 24 October 2026', 'rce/surveys/', 'The three design reports, the database survey, the versioning survey (continuous improvement without versions), the new-entrant languages survey (111 languages of 2024 to 2026) and their reading notes'],
   ]},
-  { id: 'rce-jepa', title: 'RCE-JEPA', paper: '/papers/rce-jepa/', rows: [
+  { id: 'rce-jepa', aliases: [], title: 'RCE-JEPA', paper: '/papers/rce-jepa/', rows: [
     ['W1 Form corpus v1 and v2, H1 (Form space against source space), the intent mutation score and the cost of a check', 'rce/bench/form-space/', 'PREREG.json with amendments and hash sidecar, CARD.md (dataset card), RESULTS.md, results/forms.jsonl, results/negatives.jsonl, summary.json; generator scripts/corpus.py in openIE-dev/rce'],
+    ['H2 checker-to-proposer reported_j ratio on Apple M5 Max', 'rce/bench/reported-j/', '0.04904 J per Form check vs 84.25 J local Qwen 3.6 proposal (C_check / E_model = 0.000582 <= 0.05); measured_j unset'],
     ['H7 adversarial Forms, fuzzed arm: 560 accepted mutants against five invariants', 'rce/bench/adversarial/', 'PREREG.json with hash sidecar, run.py, RESULTS.md, results/summary.json and violations.jsonl (empty)'],
     ['H8 determinism: 10,500 streams on six targets', 'rce/bench/determinism/', 'PREREG.json with hash sidecar, RESULTS.md with the workflow run, per-target jobs and limits; generator scripts/xarch-streams.py and the parity workflow in openIE-dev/rce'],
+    ['H15 (k = 1) residual 40-task multi-vendor benchmark & Shape D (DNULLMM1) Gear-0 replay', 'rce/bench/h15-gear0/', 'PREREG.json (b64c4c67...), residual_40_tasks.jsonl, multi-vendor proposer episodes (Opus 5.5 34/40, Sonnet 5.5 32/40, Grok 4.20 31/40, GPT-OSS-120B 29/40, Qwen 3.6 27/40, DeepSeek V4.1 17/40), and 0-call Gear-0 store (34/40 replay, 7/9 nameless alpha-rename hits, 4.17x Zipf call reduction)'],
   ]},
-  { id: 'gates', title: 'Metered Commit Gates', paper: '/papers/gates/', rows: [
-    ['Part I and II', null, 'The gate and cascade use the WCA reference implementation described in the paper. Its board logs are cited in the paper\'s Appendix A.'],
+  { id: 'rce-vc', aliases: [], title: 'RCE-VC', paper: '/papers/rce-vc/', rows: [
+    ['Milestones M0 to M2 reference implementation', 'https://github.com/openIE-dev/rce-vc/tree/aba99fce', 'Commit aba99fce: 49 offline tests across rcevc-core, rcevc-keys, and rcevc-proj-git'],
+    ['100,000-unit admission timing and L3 reported_j receipts', 'rce/bench/reported-j/', '69.7 to 73.6 microseconds and 317 to 365 microjoules per admission on Apple M5 Max (measured_j unset)'],
   ]},
-  { id: 'deterministic-null', title: 'Deterministic Null: A Pre-Registered Control Experiment for Neural and Agentic Substrates', paper: '/papers/deterministic-null/', rows: [
-    ['Gate G2 five-language conformance & 1M DNULLMM1 mmap probes', null, 'Rust, C++20, Go, Julia, and Python implementations reproducing frozen store digest 0da4df8d9ccbce1e...4485781 and 10k-probe checksum 15027705736.'],
-    ['Gate G1 Track-A (reg-exp-001, drand 6663734) & Track-B (reg-exp-002, drand 6664089)', null, 'Manifest digests cffb564cd9ad... (.ots 172 B) and 5fe640f00298... (.ots 207 B + amendment_01_b6_slot_ctx.json), 4,030 held-out instances, 1,265/1,265 scorer-audited trajectories (0 exploits), and 6 multi-file repositories. Local Apple M5 Max counters are reported_j; measured_j is unset.'],
+  { id: 'rce-compile', aliases: ['three-body'], title: 'RCE Compile and The Three-Body Problem in Computing', paper: '/papers/rce-compile/', rows: [
+    ['Byte comparisons, erasure counts, name-free hash checks, and cited verified-systems protocols', '/papers/rce-compile/', 'Section 8 of RCE Compile records compiler byte-determinism, description-length counts, and name-free hash tests; Three-Body cites public CompCert, seL4, and AWS TLA+ artefacts.'],
   ]},
-  { id: 'lut-adapt', title: 'Downward LUT6 Compilation in a Mixture of Limits Cascade', paper: '/papers/lut-adapt/', rows: [
-    ['Claims LA-1 to LA-8, Yosys/Verilator xck26 RTL, and AirMoL 4-bit NVMe logs', null, 'Public reference and CSV/JSON/RTL artifacts in github.com/openIE-dev/lut-adapt-ai (commit 9dbf745, artifacts/). Energy figures are analytical est_j estimates; measured_j is unset.'],
+  { id: 'gates', aliases: [], title: 'Metered Commit Gates', paper: '/papers/gates/', rows: [
+    ['Part I and II plus browser Wasm + WebGPU commit-gate simulator', '/living/fpga-sim/', 'The gate and cascade use the WCA reference implementation and golden seed-1 vectors; KV260 INA260 board logs are cited in Appendix A.'],
   ]},
-  { id: 'economics', title: 'Economics companions: AI-Coding Market, Task Satiation, Spell Check', paper: '/papers/ai-coding-market/', rows: [
-    ['Sources', null, 'The projections cite public sources in each paper\'s references.'],
+  { id: 'deterministic-null', aliases: [], title: 'Deterministic Null: A Pre-Registered Control Experiment for Neural and Agentic Substrates', paper: '/papers/deterministic-null/', rows: [
+    ['Gate G2 five-language conformance & 1M DNULLMM1 mmap probes', 'https://github.com/openIE-dev/deterministic-null', 'Rust, C++20, Go, Julia, and Python implementations reproducing frozen store digest 0da4df8d9ccbce1e...4485781 and 10k-probe checksum 15027705736.'],
+    ['Gate G1 Track-A (reg-exp-001, drand 6663734), Track-B (reg-exp-002, drand 6664089), and exp-003 closures', 'https://github.com/openIE-dev/deterministic-null/tree/main/receipts', 'Manifest digests cffb564cd9ad... (.ots 172 B) and 5fe640f00298... (.ots 207 B), 4,030 held-out instances, multi-vendor Track-B (OpenAI gpt-oss-120b, xAI Grok 4.20), 49/50 extended-thinking and 50/50 O(m) clause-feedback Unique 3-SAT DRAT resolution, and 5/6 real upstream SWE-bench Verified pytest patches. Local Apple M5 Max counters are reported_j; measured_j is unset.'],
+  ]},
+  { id: 'satb-harness', aliases: [], title: 'Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution', paper: '/papers/satb-harness/', rows: [
+    ['Lane B Rust harness & satb-proxy source', 'https://github.com/openIE-dev/deterministic-null', 'Reference sequential harness (ContextRule_v0 80% elision + Truncate_v0 8+8 KiB) and loopback adapter bridge'],
+    ['C1-C12 conformance, Falsifiers 3/5/6/8, and live multi-vendor C12 determinism receipts', 'satb-harness/', 'bench_satb_falsifiers.py and satb_empirical_receipts.json: 12/12 C1-C12 checks, 0-100 Hz observer-effect curve, Kepler proportional vs boundary comparison, 188-window Falsifier 6 audit, and Claude Code 2.1.330 completion parity (reported_j only; measured_j unset)'],
+  ]},
+  { id: 'time-as-an-index', aliases: [], title: 'Time as an Index: What It Would Take to Look Up Tomorrow', paper: '/papers/time-as-an-index/', rows: [
+    ['Lean 4.36.0 formal verification (31 theorems, zero sorry)', 'time-as-an-index/lean/', 'Horizon.lean (17 theorems across C1-C4, H-coarse, M1, M3-M6) and Paradox.lean (14 theorems across self-referential oracles, pigeonhole incompressibility, recurrence, and measure)'],
+    ['Models M1 to M8 + F5 SHA-256 spectral suite & 195-entry CSV catalogs', 'time-as-an-index/', 'run_models_m1_m8.py, models_m1_m8_results.json (seed 20261122), temporal-anomaly-catalog.csv (TA001-TA081), anomaly-atlas.csv (AA01-AA40), and paradox-ledger.csv (P01-P74)'],
+  ]},
+  { id: 'lut-adapt', aliases: [], title: 'Downward LUT6 Compilation in a Mixture of Limits Cascade', paper: '/papers/lut-adapt/', rows: [
+    ['Claims LA-1 to LA-8, Yosys/Verilator xck26 RTL, and AirMoL 4-bit NVMe logs', 'https://github.com/openIE-dev/lut-adapt-ai', 'Public reference and CSV/JSON/RTL artifacts at commit 9dbf745 (artifacts/). Energy figures are analytical est_j estimates; measured_j is unset.'],
+  ]},
+  { id: 'game-engines', aliases: [], title: 'Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins', paper: '/papers/game-engines/', rows: [
+    ['GE-H1 five-target 100,000-tick Q32.32 determinism & GE-H2 float divergence horizons', 'game-engines-determinism/', 'PREREG.json, Rust/Wasm32/C++20/Node BigInt/Python 3.13 sources, SHA-256 checkpoint receipts (0/1,000 mismatches), float perturbation logs, and Apple M5 Max L3 reported_j (measured_j unset)'],
+  ]},
+  { id: 'ai-reads-human', aliases: [], title: '"AI" Reads Human: Human Language Encoding at Machine Speed and the Energy Cost', paper: '/papers/ai-reads-human/', rows: [
+    ['Section 5c 34-workload dual-channel reported_j harness and 170-window receipts', 'ai-reads-human-energy/', 'bench_energy_reported_j.py, energy_reported_j.tsv, raw_replicates.jsonl, and summary.json (L3 ri_energy_nj and L2 IOReport; measured_j unset)'],
+    ['20,000-record parse-time corpus, token counts, and format-hazard test suites', '/living/ai-reads-human/', 'Downloadable TSV tables, reproduction scripts, READ_LEDGER.md, and cited specification edge-case tests'],
+  ]},
+  { id: 'latency', aliases: [], title: 'The Gap Between Possible and Deployed', paper: '/papers/latency/', rows: [
+    ['Dated release/lag tables and interactive cadence/cost simulator', '/living/latency/', 'Model release and benchmark frontier tables (also archived under timeline/ in openIE-dev/deterministic-null) plus interactive cadence and per-task cost breakdown'],
+  ]},
+  { id: 'economics', aliases: ['satiation', 'spellcheck', 'ai-coding-market', 'interface-economics', 'mei', 'jouleos'], title: 'Economics essays and product white papers: Task Satiation, Spell Check, AI-Coding Market, Interface Economics, Metabolic Intelligence, JouleOS', paper: '/papers/ai-coding-market/', rows: [
+    ['Interactive companion figures and cited public sources', '/living/', 'Interactive figures at /living/satiation/, /living/spellcheck/, and /living/mei/; projections, historical prices, and datasheet schedules cite public sources in each paper\'s reference list.'],
   ]},
 ];
 ---
-<Layout title="Data and code | OpenIE Research" description="Where each paper's results live in the public experiments repository.">
+<Layout title="Data and code | OpenIE Research" description="Where each paper's results live in the public experiments and reference repositories.">
   <main class="max-w-4xl mx-auto px-6 py-16">
     <h1 class="font-display text-3xl text-brand-white">Data and code</h1>
-    <p class="mt-4 font-body text-sm text-brand-slate leading-relaxed">The reproducible material for these papers is in <a href="https://github.com/openIE-dev/openie-research-experiments">github.com/openIE-dev/openie-research-experiments</a>: preregistrations with their SHA-256, scripts, results, receipts, a checksum file for every file, and pinned references for large corpora (CORPORA.md). Code is Apache-2.0 and data is CC BY 4.0. Energy labels: est_j is an estimate, reported_j an operating-system or on-chip counter, measured_j a meter reading on a named rail. measured_j is empty in the Reality Code Engine results, and no public RCE receipt holds a reported_j reading. Metered Commit Gates files three KV260 (AMD Kria) INA260 (onboard power monitor) rows as measured_j (Section I.4.9): a seed freerun in watts only, the seed halt-versus-run difference of +0.0098 W (98.0 pJ per seed cycle, standard error 30.8 pJ, N = 4), which the overview reports as inconclusive, and the gate fabric at 11,428 pJ per gate cycle (standard error 129 pJ, N = 4). Part II of that paper leaves measured_j unset on the software-reference path. The Agency runs on this site leave measured_j empty.</p>
+    <p class="mt-4 font-body text-sm text-brand-slate leading-relaxed">The reproducible material for these studies lives in <a href="https://github.com/openIE-dev/openie-research-experiments">github.com/openIE-dev/openie-research-experiments</a> and companion repositories under <a href="https://github.com/openIE-dev">github.com/openIE-dev</a> (<a href="https://github.com/openIE-dev/rce">rce</a>, <a href="https://github.com/openIE-dev/rce-vc">rce-vc</a>, <a href="https://github.com/openIE-dev/deterministic-null">deterministic-null</a>, and <a href="https://github.com/openIE-dev/lut-adapt-ai">lut-adapt-ai</a>): preregistrations with SHA-256 digests, scripts, Lean 4 proof packages, results, receipts, a repository-wide <code>CHECKSUMS.sha256</code>, and pinned references for large corpora (<code>CORPORA.md</code>). Code is Apache-2.0 and data is CC BY 4.0. Energy labels: <code>est_j</code> is an analytical estimate, <code>reported_j</code> an operating-system or on-chip counter, and <code>measured_j</code> a meter reading on a named hardware rail. On-chip Apple M5 Max <code>reported_j</code> receipts are filed for the Reality Code Engine, RCE-VC, RCE-JEPA (H2 and H15), Deterministic Null, the Satiation Benchmark Harness, Writing a Game Once (GE-H1), and "AI" Reads Human, while <code>measured_j</code> remains empty across all software-only studies. Metered Commit Gates files three KV260 (AMD Kria) INA260 (onboard power monitor) rows as <code>measured_j</code> (Section I.4.9): a seed freerun in watts only, the seed halt-versus-run difference of +0.0098 W (98.0 pJ per seed cycle, standard error 30.8 pJ, N = 4), which the overview reports as inconclusive, and the gate fabric at 11,428 pJ per gate cycle (standard error 129 pJ, N = 4). Part II of that paper leaves <code>measured_j</code> unset on the software-reference path, and the Agency runs on this site leave <code>measured_j</code> empty.</p>
     {groups.map((g) => (
       <section id={g.id} class="mt-10">
+        {g.aliases.map((a) => <div id={a} aria-hidden="true"></div>)}
         <h2 class="font-display text-xl text-brand-white"><a href={g.paper}>{g.title}</a></h2>
         <table class="mt-3 w-full font-body text-sm text-brand-slate">
-          <thead><tr><th class="text-left pr-4">Result</th><th class="text-left pr-4">Repository path</th><th class="text-left">Contents</th></tr></thead>
-          <tbody>{g.rows.map(([r, p, c]) => (<tr><td class="pr-4 py-1 align-top">{r}</td><td class="pr-4 py-1 align-top">{p ? <a href={R + p}><code>{p}</code></a> : 'n/a'}</td><td class="py-1 align-top">{c}</td></tr>))}</tbody>
+          <thead><tr><th class="text-left pr-4">Result</th><th class="text-left pr-4">Repository or artifact path</th><th class="text-left">Contents</th></tr></thead>
+          <tbody>{g.rows.map(([r, p, c]) => (<tr><td class="pr-4 py-1 align-top">{r}</td><td class="pr-4 py-1 align-top">{p ? <a href={hrefOf(p)}><code>{labelOf(p)}</code></a> : 'n/a'}</td><td class="py-1 align-top">{c}</td></tr>))}</tbody>
         </table>
       </section>
     ))}

@@ -178,22 +178,22 @@ if id_ in ("spellcheck", "ai-coding-market", "interface-economics"):
 elif id_ == "ai-reads-human":
     measure = (
         '<div class="measurement">\n'
-        "<strong>Measurement.</strong> Research topic, work in progress, not a journal final.\n"
-        "Time and token counts are measured on one virtualised machine. No joules were measured; model energy figures are other authors' measurements.\n"
+        "<strong>Measurement.</strong> Research study, not a journal final.\n"
+        "Parse time, token counts, and Apple M5 Max dual-channel reported_j (L3 proc_pid_rusage and L2 IOReport across 34 workloads, 170 windows) were measured locally. No hardware power rail or wall meter was attached (measured_j = None, board_metered = false); model energy figures are other authors' measurements.\n"
         "</div>\n"
     )
 elif id_ == "rce-jepa":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research paper, open topic, not a journal final.\n"
-        "No learned proposer has been trained; the Phase 0 results are checker-only measurements with 0 model calls. No joules were measured.\n"
+        "No purpose-trained latent Form JEPA proposer has been trained; H2 and H15 (40 residual tasks across multi-vendor cloud/local proposers and Shape D Gear-0) report Apple M5 Max on-chip reported_j counters. No hardware rail or wall meter was attached (measured_j = None).\n"
         "</div>\n"
     )
 elif id_ == "rce-vc":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
-        "Wall-clock times and admission-path shares were measured on the reference build (release, one core). Receipt costs are the stated est_uj table, in microjoules, not a meter reading. No joules were measured. No FPGA board result.\n"
+        "Wall-clock times, admission-path shares, and Apple M5 Max L3 reported_j (317 to 365 microjoules per 100,000-unit admission at commit aba99fce) were measured on the reference build. Receipt costs also carry the stated est_uj table. No hardware rail or wall meter was attached (measured_j = None). No FPGA board result.\n"
         "</div>\n"
     )
 elif id_ == "rce-compile":
@@ -207,8 +207,29 @@ elif id_ == "rce":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research paper, not a journal final.\n"
-        "No energy figure for RCE is reported. est_j, reported_j and measured_j are defined in Section 1; measured_j is reserved for a wall meter and is empty.\n"
+        "est_j, reported_j and measured_j are defined in Section 1; Apple M5 Max on-chip reported_j checker receipts (49.04 mJ per Form check at commit 1762fb4b) are filed in openie-research-experiments/rce/bench/reported-j/; measured_j is reserved for a wall or rail meter and is empty.\n"
         "No FPGA board result in this paper. No fabricated citations.\n"
+        "</div>\n"
+    )
+elif id_ == "game-engines":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
+        "GE-H1 (5-target 100,000-tick Q32.32 simulation, 0/1,000 SHA-256 checkpoint mismatches, L3 reported_j) and GE-H2 (25,000-tick float drift horizons) were measured on Apple M5 Max. Cross-ISA x86-64 parity and GE-H3 to GE-H9 remain open. No hardware rail or wall meter was attached (measured_j = None).\n"
+        "</div>\n"
+    )
+elif id_ in ("deterministic-null", "satb-harness"):
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research study, not a journal final.\n"
+        "Local Apple M5 Max energy readings are on-chip L2 IOReport and L3 proc_pid_rusage reported_j counters; closed-API runs report token, dollar, and wall-clock counts only. No hardware power rail or wall meter was attached (measured_j = None, board_metered = false). No fabricated citations.\n"
+        "</div>\n"
+    )
+elif id_ == "time-as-an-index":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research study, not a journal final.\n"
+        "Formal claims in Section 7 are kernel-checked in Lean 4.36.0 (Horizon.lean and Paradox.lean, 31 theorems, zero sorry); M1 to M8 and F5 SHA-256 spectral runs are deterministic Python/SymPy evaluations; physical energy numbers (k_B T ln 2, Compton clocks) are analytical bounds (est_j). Established literature, mathematical models, and speculative proposals are explicitly separated. No hardware power meter was attached (measured_j = None, board_metered = false).\n"
         "</div>\n"
     )
 elif id_ == "agency":
@@ -316,6 +337,8 @@ gen_one agency
 gen_one gates
 gen_one lut-adapt
 gen_one deterministic-null
+gen_one satb-harness
+gen_one time-as-an-index
 gen_one satiation
 gen_one spellcheck
 gen_one rce

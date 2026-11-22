@@ -6,14 +6,23 @@ States: abstract = title and abstract only (complete: false); full = whole text 
 
 | paper | zh-Hans | es | fr | de | ja | pt | hi | ar |
 |---|---|---|---|---|---|---|---|---|
-| rce | stale | stale | stale | stale | stale | stale | stale | stale |
+| rce | full | full | full | full | full | full | full | full |
 | agency | full | full | full | full | full | full | full | full |
 | ai-coding-market | full | full | full | full | full | full | full | full |
 | interface-economics | full | full | full | full | full | full | full | full |
-| latency | full | full | full | full | full | abstract | abstract | abstract |
-| gates | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
+| latency | full | full | full | full | full | full | full | full |
+| deterministic-null | full | full | full | full | full | full | full | full |
+| lut-adapt | full | full | full | full | full | full | full | full |
 | satiation | full | full | full | full | full | full | full | full |
+| gates | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
+| satb-harness | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
+| time-as-an-index | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
+| rce-jepa | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
+| rce-compile | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
+| rce-vc | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
+| game-engines | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | three-body | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
+| ai-reads-human | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 | spellcheck | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
 
 ## Deploy rule

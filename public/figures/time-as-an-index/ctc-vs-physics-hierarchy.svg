@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="t1 d1">
+  <title id="t1">Complexity and cryptographic survival across formal time-loop models and known physics</title>
+  <desc id="d1">Five-tier comparison from Unbounded D-CTC (Delta_2) and Polynomial D-CTC (PSPACE) through Postselected P-CTC (PP) and Standard Quantum (BQP) down to Physical Precomputation (Hellman T*M^2 = N^2 and Landauer floor), mapped against cryptographic primitives.</desc>
+  <rect x="1" y="1" width="1198" height="518" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="40" y="50" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="25" font-weight="800" fill="#0f172a">Time-loop complexity ceiling versus physical indexing limits</text>
+  <text x="40" y="78" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" fill="#475569">Formal closed timelike curves collapse computational cryptography; known physics enforces no-signalling, 1/p postselection, and Hellman fill cost.</text>
+  <rect x="1062" y="22" width="98" height="32" rx="16" fill="none" stroke="#CC79A7" stroke-width="2"/>
+  <text x="1111" y="43" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#CC79A7" text-anchor="middle">Hierarchy</text>
+
+  <!-- Left column: 5 Computational / Physical Regimes -->
+  <text x="44" y="114" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#64748b">COMPUTATIONAL OR PHYSICAL REGIME</text>
+  <text x="645" y="114" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#64748b">CRYPTOGRAPHIC &amp; THERMODYNAMIC CONSEQUENCE</text>
+
+  <!-- Tier 1: Unbounded D-CTC -->
+  <rect x="40" y="126" width="565" height="62" rx="12" fill="#fdf2f8" stroke="#CC79A7" stroke-width="2.2"/>
+  <text x="58" y="151" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a">Unbounded-Width D-CTC  →  Δ₂ = P^HALT</text>
+  <text x="58" y="173" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569">Aaronson, Bavarian, Gueltrini et al. (arXiv:1609.05507v2, 2024) · Established in model</text>
+
+  <rect x="635" y="126" width="525" height="62" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8"/>
+  <text x="653" y="151" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#9f1239">Decides halting-reducible predicates; all computational locks broken</text>
+  <text x="653" y="172" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569">Only information-theoretic schemes (OTP, Shamir secret sharing) survive.</text>
+
+  <!-- Tier 2: Polynomial D-CTC -->
+  <rect x="40" y="198" width="565" height="68" rx="12" fill="#fff7ed" stroke="#D55E00" stroke-width="2.5"/>
+  <text x="58" y="223" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a">Polynomial Deutsch D-CTC  →  P_CTC = BQP_CTC = PSPACE</text>
+  <text x="58" y="244" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569">Deutsch (1991); Bacon (2004); Aaronson &amp; Watrous (2009) · Nonlinear fixed point ρ_CTC</text>
+  <text x="58" y="259" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#D55E00">M2/M7 check: 8-, 12-, 16-bit SHA-256d PoW solved in 1 oracle fixed-point query</text>
+
+  <rect x="635" y="198" width="525" height="68" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8"/>
+  <text x="653" y="222" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#D55E00">Breaks ECDSA, SHA-256d PoW, AES-256, and BB84 QKD at once</text>
+  <text x="653" y="243" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569">Cloning &amp; state discrimination hold in D-CTC (disputed on labelled mixtures).</text>
+  <text x="653" y="259" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#009E73" font-weight="600">OTP &amp; secret sharing remain unconditionally secure.</text>
+
+  <!-- Tier 3: Postselected P-CTC -->
+  <rect x="40" y="276" width="565" height="66" rx="12" fill="#f0f9ff" stroke="#0072B2" stroke-width="2.2"/>
+  <text x="58" y="301" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a">Postselected Teleportation P-CTC  →  PostBQP = PP</text>
+  <text x="58" y="322" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569">Lloyd et al. (2011); Aaronson (2005) · Linear projection onto consistent histories</text>
+  <text x="58" y="336" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#0072B2">M2b check: 3..6-bit witness circuit succeeds with P = 1/d² (64 to 4,096 trials)</text>
+
+  <rect x="635" y="276" width="525" height="66" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8"/>
+  <text x="653" y="301" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0072B2">Physical implementation pays ~1/p discarded runs (brute force)</text>
+  <text x="653" y="322" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569">No free backward channel (Ji, Lloyd &amp; Wilde 2026); grandfather trace Tr(X)=0.</text>
+
+  <!-- Tier 4: Standard Quantum -->
+  <rect x="40" y="352" width="565" height="62" rx="12" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+  <text x="58" y="377" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a">Standard Quantum (No Time Loop)  →  BQP (Shor &amp; Grover)</text>
+  <text x="58" y="399" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569">No-signalling holds strictly; unstructured search lower-bounded at (π/4)√N queries</text>
+
+  <rect x="635" y="352" width="525" height="62" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8"/>
+  <text x="653" y="377" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Breaks ECDSA (Shor); halves AES-256 &amp; SHA-256 bits (Grover)</text>
+  <text x="653" y="399" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#009E73" font-weight="600">QKD secure by physics; fresh SHA-256d PoW resists at ASIC clock rates.</text>
+
+  <!-- Tier 5: Known Classical & Analog Physics -->
+  <rect x="40" y="424" width="565" height="68" rx="12" fill="#ecfdf5" stroke="#009E73" stroke-width="2.5"/>
+  <text x="58" y="448" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a">Known Physical Indexing  →  Hellman T·M² = N² &amp; Past Cone</text>
+  <text x="58" y="469" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569">Hellman (1980) N-step fill · Gabor Δt·Δf ≥ 1/(4π) · Landauer k_B T ln 2 = 2.87×10⁻²¹ J/bit</text>
+  <text x="58" y="484" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#009E73">M7 &amp; F5 check: fresh block-hash reuse = 0.0%; 65,536 SHA-256 FFT bins inside null</text>
+
+  <rect x="635" y="424" width="525" height="68" rx="12" fill="#ecfdf5" stroke="#009E73" stroke-width="2"/>
+  <text x="653" y="448" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#065f46">Unsalted static secrets fall to tables; salted &amp; fresh locks hold</text>
+  <text x="653" y="469" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#065f46">Previous-block hashes &amp; post-request nonces prevent table fill before query.</text>
+  <text x="653" y="484" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#475569">Analog settling shifts hardness into exponential energy fluctuations or precision.</text>
+</svg>

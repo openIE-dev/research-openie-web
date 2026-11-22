@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#F59E0B">
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="David Charlot">
-  <meta name="description" content="Interactive observatory for Deterministic Null: explore paired neural increments across 4,030 held-out instances and 6 multi-file repositories, simulate Zipfian online crystallization, and inspect OpenTimestamps and drand proofs.">
+  <meta name="description" content="Interactive observatory for Deterministic Null: explore paired neural increments across exp-001, exp-002, and exp-003 (OpenAI gpt-oss-120b, xAI Grok 4.20, Unique 3-SAT resolution, real SWE-bench Verified pytest repair), simulate Zipfian online crystallization, and inspect OpenTimestamps and drand proofs.">
   <link rel="canonical" href="https://research.openie.dev/living/deterministic-null/">
   <link rel="describedby" type="text/markdown" href="/llms.txt">
   <link rel="alternate" type="text/markdown" title="Deterministic Null (Markdown)" href="/papers/deterministic-null.md">
@@ -33,7 +33,7 @@
       <a href="/about/deterministic-null/">About</a>
       <a href="/pdfs/deterministic-null.pdf">PDF</a>
       <a href="/pdfs/latex/deterministic-null.pdf">LaTeX PDF</a>
-      <a href="https://openie.dev" class="pill-cyan">openie.dev</a>
+      <a href="https://github.com/openIE-dev/deterministic-null" class="pill-cyan">GitHub Repo</a>
       <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
     </div>
   </nav>
@@ -42,7 +42,7 @@
     <div style="max-width: 68rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
       <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/deterministic-null/ · interactive instruments</p>
       <h1 class="hero-title" style="max-width: none;">Living Figures: Deterministic Null Control Experiment</h1>
-      <p class="author-line">David Charlot, Open Interface Engineering · Companion to <a href="/papers/deterministic-null/" style="color: var(--color-brand-cyan);">/papers/deterministic-null/</a></p>
+      <p class="author-line">David Charlot, Open Interface Engineering · Companion to <a href="/papers/deterministic-null/" style="color: var(--color-brand-cyan);">/papers/deterministic-null/</a> · Code &amp; manifests: <a href="https://github.com/openIE-dev/deterministic-null" style="color: var(--color-brand-amber);">github.com/openIE-dev/deterministic-null</a></p>
 
       <div class="measurement-box">
         <strong>Measurement grammar on this page.</strong> Every table and calculator below separates four evidence classes:
@@ -51,20 +51,23 @@
         <span class="chip chip-est">Modelled (Zipf / Break-Even)</span> for adjustable horizon projections. <code>measured_j = None</code>; <code>board_metered = false</code>; closed-API server energy is <code>not_available</code>.
       </div>
 
-      <!-- Widget 1: Confirmatory Track Switcher (exp-002 Track-B, exp-001 Track-A, Multi-Turn Repos) -->
+      <!-- Widget 1: Confirmatory & Companion Track Switcher (exp-002, exp-003 A/B/C, exp-001, Multi-Turn) -->
       <section id="dn-diag-01" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>dn-diag-01</code> · Confirmatory Paired Increment Explorer (<code>N = 4,030</code> + <code>6</code> Multi-File Repos)</h2>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>dn-diag-01</code> · Confirmatory &amp; <code>exp-003</code> Paired Increment Explorer (<code>exp-001</code>, <code>exp-002</code>, <code>exp-003</code>)</h2>
           <span class="chip chip-meas">Exact (L4) + Reported (reported_j)</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          Switch between <strong>Track-B (<code>exp-002</code>, <code>1,190</code> unique external benchmark instances, <code>K_eff = n</code>)</strong>, <strong>Track-A (<code>exp-001</code>, <code>2,840</code> bounded template instances, <code>K_eff = 6–12</code>)</strong>, and the <strong>Multi-Turn <code>/work</code> Software-Engineering Track (<code>6</code> multi-file Python repositories)</strong>. All <code>99.0%</code> BCa intervals use <code>10,000</code> paired resamples against margin <code>δ = +5.0</code> percentage points.
+          Switch between <strong>Track-B (<code>exp-002</code>, <code>1,190</code> unique external instances)</strong>, <strong><code>exp-003</code> Closure A (Multi-Vendor Non-Anthropic Cloud)</strong>, <strong><code>exp-003</code> Closure B (<code>Unique 3-SAT</code> <code>49/50</code> &amp; <code>50/50</code> Resolution)</strong>, <strong><code>exp-003</code> Closure C (Real Upstream <code>SWE-bench Verified</code> + <code>pytest</code>)</strong>, <strong>Track-A (<code>exp-001</code>, <code>2,840</code> instances)</strong>, and the <strong>Controlled 6-Repo Multi-Turn Suite</strong>.
         </p>
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;" role="group" aria-label="Select experimental track">
-          <button type="button" class="theme-btn track-btn" data-track="exp002" aria-pressed="true" style="border-color: var(--color-brand-amber); color: var(--color-brand-amber);">Track-B · exp-002 External (K_eff = 1,190)</button>
-          <button type="button" class="theme-btn track-btn" data-track="exp001_t2" aria-pressed="false">Track-A · exp-001 Tier 2 Shifted (1,420)</button>
-          <button type="button" class="theme-btn track-btn" data-track="exp001_t1" aria-pressed="false">Track-A · exp-001 Tier 1 Matched (1,420)</button>
-          <button type="button" class="theme-btn track-btn" data-track="multiturn" aria-pressed="false">Multi-Turn /work Repos (6 Multi-File)</button>
+          <button type="button" class="theme-btn track-btn" data-track="exp002" aria-pressed="true" style="border-color: var(--color-brand-amber); color: var(--color-brand-amber);">Track-B · exp-002 (K_eff = 1,190)</button>
+          <button type="button" class="theme-btn track-btn" data-track="exp003_vendor" aria-pressed="false">exp-003 A · Multi-Vendor Cloud (OpenAI / xAI)</button>
+          <button type="button" class="theme-btn track-btn" data-track="exp003_3sat" aria-pressed="false">exp-003 B · Unique 3-SAT (49/50 &amp; 50/50)</button>
+          <button type="button" class="theme-btn track-btn" data-track="exp003_swebench" aria-pressed="false">exp-003 C · Real SWE-bench + pytest (5/6)</button>
+          <button type="button" class="theme-btn track-btn" data-track="exp001_t2" aria-pressed="false">Track-A · exp-001 Tier 2 (1,420)</button>
+          <button type="button" class="theme-btn track-btn" data-track="exp001_t1" aria-pressed="false">Track-A · exp-001 Tier 1 (1,420)</button>
+          <button type="button" class="theme-btn track-btn" data-track="multiturn" aria-pressed="false">Controlled /work Repos (6/6)</button>
         </div>
 
         <div class="metric-grid" id="track-kpis" aria-live="polite"></div>
@@ -144,12 +147,12 @@
             </ul>
           </div>
           <div style="padding: 0.9rem; border: 1px solid rgba(148,163,184,0.25); border-radius: 0.6rem;">
-            <strong style="color: var(--color-brand-cyan);">Gate G1 · Track-B (<code>reg-exp-002</code>)</strong>
+            <strong style="color: var(--color-brand-cyan);">Gate G1 · Track-B (<code>reg-exp-002</code> + <code>exp-003</code>)</strong>
             <ul style="margin: 0.5rem 0 0; padding-left: 1.1rem; line-height: 1.55;">
               <li>Manifest <code>SHA-256</code>: <code>5fe640f002989ebf…</code></li>
               <li>OpenTimestamps <code>.ots</code>: <code>207 B</code> (<code>4350cb0f8476…</code>)</li>
               <li>Locked at <code>drand</code> <code>6664086</code> &lt; target <code>6664089</code></li>
-              <li>Scorer audit: <code>515 / 515</code> re-verified (<code>0</code> exploits)</li>
+              <li>Scorer audit: <code>515 / 515</code> + <code>exp-003</code> <code>pytest</code> verified</li>
             </ul>
           </div>
           <div style="padding: 0.9rem; border: 1px solid rgba(148,163,184,0.25); border-radius: 0.6rem;">
@@ -188,17 +191,68 @@
         exp002: {
           kpis: [
             ['Unique Instances (K_eff = n)', '1,190', 'drand round 6664089'],
-            ['Breadth Verdicts (m = 5)', '4 Shown · 1 N/A', '0 Excluded · 0 Undetermined'],
+            ['Breadth Verdicts (m = 5)', '4 Shown · 1 N/A', '3-SAT resolved in exp-003 B'],
             ['Shape D Batch Latency', '0.92 s (35.7 J)', '0 decision LLM calls'],
             ['Scorer Audit', '515 / 515', '0 exploits detected']
           ],
           cols: ['Class (Unique Instances)', 'n', 'B0', 'N0', 'N1', 'Opus 5.5', 'Sonnet 5.5', 'Qwen 3.6', 'Gemma 4', 'Δ(Opus−N1) [99% BCa]', 'Verdict'],
           rows: [
-            ['formal.unique_3sat_drat (B1=1.000)', '250', '0.000', '0.696', '0.696', '0.052', '0.008', '0.000', '0.000', '−64.40 pts [−72.0, −56.0]', 'Not assessable (p_LLM < 2δ)'],
+            ['formal.unique_3sat_drat (B1=1.000)', '250', '0.000', '0.696', '0.696', '0.052', '0.008', '0.000', '0.000', '−64.40 pts [−72.0, −56.0]', 'Not assessable (resolved in exp-003 B)'],
             ['external.bfcl_v3_live', '250', '0.180', '0.200', '0.228', '0.828', '0.840', '0.804', '0.720', '+60.00 pts [+51.2, +68.4]', 'Relevance shown (28 unfilled)'],
             ['external.tau_bench_retail', '220', '0.005', '0.396', '0.259', '0.864', '0.805', '0.755', '0.623', '+60.45 pts [+51.8, +68.6]', 'Relevance shown (14 unfilled)'],
             ['external.bigcodebench_exec', '220', '0.000', '0.000', '0.000', '0.950', '0.836', '0.473', '0.391', '+95.00 pts [+90.0, +97.7]', 'Relevance shown (218 unfilled)'],
             ['external.swebench_verified', '250', '0.096', '0.460', '0.456', '0.984', '0.952', '0.900', '0.812', '+52.80 pts [+44.4, +60.4]', 'Relevance shown (4 unfilled)']
+          ]
+        },
+        exp003_vendor: {
+          kpis: [
+            ['Multi-Vendor Slice', '150 inst / vendor', 'n = 30/class · drand 6664089'],
+            ['OpenAI gpt-oss-120b (Ext 4)', '0.733 (+45.8 pts)', 'Relevance shown in 4/4 external'],
+            ['xAI Grok 4.20 (Ext 4)', '0.717 (+44.2 pts)', 'Ties Opus 5.5 (0.900) on BFCL v3'],
+            ['Manifest Mutation', '0 bytes changed', 'Anchored to reg-exp-002']
+          ],
+          cols: ['Substrate (n = 30 / class)', 'unique_3sat', 'bfcl_v3', 'tau_bench', 'bigcodebench', 'swebench', 'Ext 4-Class Mean', 'Δ vs N1', '150-Call USD'],
+          rows: [
+            ['Paired Shape D N1 (0 calls)', '0.833', '0.300', '0.300', '0.000', '0.500', '0.275', 'Reference', '$0.0000'],
+            ['Paired Claude Opus 5.5', '0.033', '0.900', '0.833', '0.967', '1.000', '0.925', '+65.00 pts', 'exp-002'],
+            ['OpenAI gpt-oss-120b (Cerebras)', '0.100', '0.867', '0.700', '0.467', '0.900', '0.733', '+45.83 pts (4/4 shown)', '$0.1458'],
+            ['xAI Grok 4.20 (Cloud)', '0.000', '0.900', '0.700', '0.500', '0.767', '0.717', '+44.17 pts (3/4 shown)', '$0.6362'],
+            ['DeepSeek V4 Flash (Fireworks)', '0.000', '0.533', '0.133', '0.200', '0.367', '0.308', '+3.33 pts (87 killed)', '$0.1583'],
+            ['Alibaba Qwen 3.8 Max (Fireworks)', '0.033', '0.167', '0.133', '0.067', '0.367', '0.183', '−9.17 pts (124 killed)', '$0.7832']
+          ]
+        },
+        exp003_3sat: {
+          kpis: [
+            ['Unique 3-SAT Formulas', '50 Formulas', '12-var, 50-clause · drand 6664089'],
+            ['Opus 5.5 Extended Thinking', '49 / 50 (0.980)', '8,192 tok cap (lifts 4/50 truncation)'],
+            ['6-Turn O(m) Clause Feedback', '50 / 50 (1.000)', 'Both Sonnet 5.5 & Opus 5.5'],
+            ['Classical CDCL+DRAT (B1)', '50 / 50 (1.000)', '< 1 ms · $0.00 · 0 neural calls']
+          ],
+          cols: ['Unique 3-SAT Arm (n = 50)', 'Passes (Rate)', '4-Way P/F/R/K', 'Δ vs N1 [95% BCa]', 'Δ vs Classical B1', 'Calls / USD', 'Verdict'],
+          rows: [
+            ['Shape D N0 = N1 (TH2 O(m) walk)', '39 / 50 (0.780)', '39/11/0/0', 'Reference', '−22.00 pts', '0 / $0.00', 'Zero-call null'],
+            ['Classical B1 (CDCL+DRAT)', '50 / 50 (1.000)', '50/0/0/0', '+22.00 pts', 'Reference (< 1 ms)', '0 / $0.00', 'Exact solver ceiling'],
+            ['exp-002 Opus 5.5 (1,024-tok cap)', '4 / 50 (0.080)', '4/1/0/45', '−70.00 pts [−82, −56]', '−92.00 pts', '50 / —', 'Not assessable'],
+            ['Opus 5.5 Ext. Thinking (8,192 tok)', '49 / 50 (0.980)', '49/1/0/0', '+20.00 pts [+8, +34]', '−2.00 pts', '50 / $2.14', 'Relevance shown'],
+            ['xAI Grok 4.20 Reasoning (8,192 tok)', '39 / 50 (0.780)', '39/11/0/0', '+0.00 pts [−18, +18]', '−22.00 pts', '50 / $0.10', 'Undetermined'],
+            ['6-Turn O(m) Feedback · Sonnet 5.5', '50 / 50 (1.000)', '50/0/0/0', '+22.00 pts [+12, +36]', '+0.00 pts', '54 / $1.98', 'Relevance shown'],
+            ['6-Turn O(m) Feedback · Opus 5.5', '50 / 50 (1.000)', '50/0/0/0', '+22.00 pts [+12, +36]', '+0.00 pts', '50 / $2.15', 'Relevance shown']
+          ]
+        },
+        exp003_swebench: {
+          kpis: [
+            ['Real Upstream GitHub Issues', '6 Defect Commits', 'requests, pytest, seaborn, sympy'],
+            ['Cold Shape D (t = 1)', '0 / 6 (0.0%)', 'Unseen upstream repository trees'],
+            ['Lane B · Claude Opus 5.5', '5 / 6 (83.3%)', 'Full FAIL_TO_PASS + PASS_TO_PASS pytest'],
+            ['Shape D Replay (t = 2)', '5 / 6 (83.3%)', '0 LLM calls · $0.00 · 17.1 s pytest']
+          ],
+          cols: ['Real SWE-bench Verified Arm (n = 6)', 'Issues Resolved', '4-Way P/F/R/K', 'API Calls', 'API USD', 'Verification Note'],
+          rows: [
+            ['Shape D Cold Unseen (t = 1)', '0 / 6 (0.0%)', '0/6/0/0', '0', '$0.0000', 'All 6 pre-patch FAIL_TO_PASS verified failing'],
+            ['Lane B · Claude Opus 5.5 (max_turns=10)', '5 / 6 (83.3%)', '5/1/0/0', '33', '$0.8557', 'Passed requests-5414, pytest-10051, seaborn-3069, sympy-23824/17655'],
+            ['Lane B · Claude Sonnet 5.5 (max_turns=10)', '4 / 6 (66.7%)', '4/2/0/0', '31', '$0.5865', 'Passed requests-5414, pytest-10051, seaborn-3069, sympy-23824'],
+            ['Lane B · xAI Grok 4.20 Reasoning', '1 / 6 (16.7%)', '1/5/0/0', '60', '$0.8480', 'Cross-vendor multi-turn baseline'],
+            ['Shape D Crystallized Replay (t = 2)', '5 / 6 (83.3%)', '5/1/0/0', '0', '$0.0000', 'Exact tree-key lookup + pristine pytest re-verification (17.1 s)']
           ]
         },
         exp001_t2: {
@@ -284,9 +338,9 @@
         document.getElementById('track-tbody').innerHTML = d.rows.map(function(r){
           return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14);">' + r.map(function(cell, idx){
             var st = idx === 0 ? 'font-family: ui-monospace, monospace; font-weight: 600;' : '';
-            if (idx === r.length - 1) {
+            if (idx === r.length - 1 || idx === r.length - 2) {
               if (cell.indexOf('shown') !== -1) st += 'color: var(--color-brand-amber); font-weight: 700;';
-              else if (cell.indexOf('excluded') !== -1) st += 'color: var(--color-brand-cyan); font-weight: 700;';
+              else if (cell.indexOf('excluded') !== -1 || cell.indexOf('ceiling') !== -1) st += 'color: var(--color-brand-cyan); font-weight: 700;';
             }
             return '<td style="padding: 0.45rem 0.5rem; ' + st + '">' + cell + '</td>';
           }).join('') + '</tr>';
@@ -361,10 +415,10 @@
           {
             name: 'select_deterministic_null_track',
             title: 'Select Deterministic Null experimental track',
-            description: 'Switches the interactive table on /living/deterministic-null/ between exp002 (Track-B unique external benchmarks), exp001_t2 (Tier-2 shifted), exp001_t1 (Tier-1 matched), and multiturn (6 multi-file repositories), returning the full KPI and row data.',
+            description: 'Switches the interactive table on /living/deterministic-null/ across exp002, exp003_vendor, exp003_3sat, exp003_swebench, exp001_t2, exp001_t1, and multiturn, returning the full KPI and row data.',
             inputSchema: {
               type: 'object',
-              properties: { track: { type: 'string', enum: ['exp002', 'exp001_t2', 'exp001_t1', 'multiturn'] } },
+              properties: { track: { type: 'string', enum: ['exp002', 'exp003_vendor', 'exp003_3sat', 'exp003_swebench', 'exp001_t2', 'exp001_t1', 'multiturn'] } },
               required: ['track'],
               additionalProperties: false
             },

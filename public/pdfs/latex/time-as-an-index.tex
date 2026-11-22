@@ -1,0 +1,149 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[margin=0.72in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{caption}
+
+\definecolor{tiblue}{HTML}{0072B2}
+\definecolor{titeal}{HTML}{009E73}
+\definecolor{tiamber}{HTML}{D55E00}
+\definecolor{tigray}{HTML}{475569}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=tiblue,
+  urlcolor=tiblue,
+  citecolor=tiblue,
+  pdftitle={Time as an Index: What It Would Take to Look Up Tomorrow},
+  pdfauthor={David Charlot, Open Interface Engineering}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.8pt}
+\setlength{\emergencystretch}{3em}
+\hfuzz=12pt
+\vfuzz=12pt
+\hbadness=10000
+\vbadness=10000
+\captionsetup{font=small,labelfont=bf}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\title{\vspace{-1.4em}\textbf{Time as an Index: What It Would Take to Look Up Tomorrow}\\[0.28em]
+\large Closed-Timelike-Curve Complexity ($\mathrm{PSPACE}, \mathrm{PP}, \Delta_2$), Hellman Precomputation ($T\cdot M^2 = N^2$),\\[-0.08em]
+\large 31 Kernel-Checked Lean~4 Theorems, Models \texttt{M1--M8}, and 195 Cataloged Anomalies \& Paradoxes}
+\author{David Charlot, Open Interface Engineering\\[-0.12em]
+\small(\texttt{research.openie.dev/papers/time-as-an-index/} $\cdot$ \texttt{Lean 4.36.0} $\cdot$ \texttt{seed = 20261122} $\cdot$ \texttt{board\_metered = false})}
+\date{November 22, 2026 \quad|\quad Status: \textbf{Research Study $\cdot$ Draft (Formal, Numerical \& Catalog Audit)}}
+
+\begin{document}
+\sloppy
+\maketitle
+\vspace{-1.1em}
+
+\begin{abstract}
+\noindent
+If a future state of a computational or physical system could be queried directly like an indexed row in a relational database, sequential brute-force search---cryptographic key recovery, hash preimage inversion, and proof-of-work puzzle solving---would stop protecting secrets, because the target witness was never hidden, only unindexed. This study tests that premise across computational complexity theory, quantum foundations, physical relaxation hardware, cryptographic reductions, mechanical proof checking in \texttt{Lean 4.36.0} (\textbf{31 kernel-checked theorems}, zero \texttt{sorry}, standard foundational axioms only), deterministic Python and SymPy models (\texttt{M1--M8} plus pre-registered \texttt{SHA-256} spectral test \texttt{F5}, \texttt{seed = 20261122}), and a unified public ledger of \textbf{195 entries} ($81$ temporal anomalies \texttt{TA001--TA081}, $40$ frequency-atlas edge cases \texttt{AA01--AA40}, and $74$ foundational paradoxes \texttt{P01--P74}). Verdict: \textbf{established inside formal closed-timelike-curve (CTC) models; refuted across known laboratory physics}. With a polynomial Deutsch fixed-point loop (\texttt{D-CTC}), classical and quantum polynomial time both equal $\mathrm{PSPACE}$ (Aaronson \& Watrous 2009), collapsing \texttt{ECDSA}, \texttt{SHA-256d} proof of work, \texttt{AES-256}, and prepare-and-measure quantum key distribution (\texttt{BB84}) in a single fixed-point evaluation while leaving one-time pads unconditionally secure. Without a physical time loop, quantum retrocausal models inherit exact marginal no-signalling, postselected teleportation loops (\texttt{P-CTC}, $\mathrm{PostBQP}=\mathrm{PP}$) pay an inverse-probability repetition bill ($\sim 1/p$, reaching $1/d^2 = 64\dots 4{,}096$ trials on $3\dots 6$-bit witness circuits in \texttt{M2b}), analog relaxation relocates hardness into exponential energy fluctuations or Gabor observation windows $\Delta t \cdot \Delta f \ge 1/(4\pi)$, and every realizable ``future index'' reduces to precomputation bounded by Hellman's $T \cdot M^2 = N^2$ after an $N$-step fill that per-user salts and fresh block hashes (\texttt{0.0\%} reuse in \texttt{M7}) defeat before construction can begin.
+\end{abstract}
+
+\section{Formal Time-Loop Models vs.\ Known Physical Indexing}
+
+Deutsch (1991) models a closed timelike curve as a causality-violating register $\rho_{\text{CTC}} \in \mathcal{D}(\mathcal{H}_{\text{CV}})$ coupled to a chronology-respecting input $\rho_{\text{in}} \in \mathcal{D}(\mathcal{H}_{\text{CR}})$ via unitary $U$, governed by the kinematic fixed-point condition
+\begin{equation}
+  \rho_{\text{CTC}} = \mathrm{Tr}_{\text{CR}}\!\left[\, U\left(\rho_{\text{in}} \otimes \rho_{\text{CTC}}\right) U^\dagger \,\right], \qquad
+  \rho_{\text{out}} = \mathrm{Tr}_{\text{CV}}\!\left[\, U\left(\rho_{\text{in}} \otimes \rho_{\text{CTC}}\right) U^\dagger \,\right].
+\end{equation}
+Every finite-dimensional channel possesses at least one fixed point, converting deterministic contradictions into mixed states while making $\rho_{\text{in}} \mapsto \rho_{\text{out}}$ \emph{nonlinear}. Table~\ref{tab:regimes} contrasts the resulting complexity hierarchy against postselected teleportation (\texttt{P-CTC}, Lloyd et al.\ 2011; Ji, Lloyd \& Wilde 2026), standard quantum computation ($\mathrm{BQP}$), stateful rewinding (Meier 2022), and physical precomputation (Hellman 1980; Demaine, Iacono \& Langerman 2007).
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\caption{\textbf{Complexity Ceiling and Cryptographic Survival Across Formal Time Loops and Known Physics.}}
+\label{tab:regimes}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l l l l l}
+\toprule
+\textbf{Regime / Model} & \textbf{Exact Power} & \textbf{\texttt{ECDSA} / \texttt{AES-256}} & \textbf{\texttt{SHA-256d} PoW \& \texttt{QKD}} & \textbf{Binding Physical / Formal Price} \\
+\midrule
+Unbounded \texttt{D-CTC} (2024 v2) & $\Delta_2 = \mathrm{P}^{\mathrm{HALT}}$ & Broken / Broken & Broken / Broken & Infinite register width; \texttt{OTP} still secure \\
+Polynomial \texttt{D-CTC} (AW09) & $\mathrm{P}_{\text{CTC}} = \mathrm{BQP}_{\text{CTC}} = \mathrm{PSPACE}$ & Broken / Broken & Broken ($1$ query) / Broken & Nonlinearity; disputed on labelled mixtures \\
+Postselected \texttt{P-CTC} (L11) & $\mathrm{PostBQP} = \mathrm{PP}$ & Broken / Broken (cond.) & Costs $\sim 1/p$ runs / Secure & $P_{\text{post}} = 1/d^2$ in \texttt{M2b} ($64$--$4{,}096$ trials) \\
+Standard Quantum ($\mathrm{BQP}$) & Shor + Grover $\frac{\pi}{4}\sqrt{N}$ & Broken / $\sim 2^{128}$ ops & Holds at ASIC clocks / Secure & Marginal no-signalling $P(a\mid x,y)=P(a\mid x)$ \\
+Physical Precomputation & Hellman $T\cdot M^2 = N^2$ & Secure / Fixed-msg only & \textbf{0.0\% reuse} on fresh hash & $\Theta(N)$ fill; $k_B T \ln 2 = 2.87\times 10^{-21}\;\text{J/bit}$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\textbf{Retrocausality, Analog Settling, and Gabor Windows.} Time-symmetric quantum formalisms (Aharonov, Bergmann \& Lebowitz 1964; Leifer \& Pusey 2017; Castagnoli 2025; Aharonov \& Elitzur \texttt{arXiv:2611.12971}, where two-branch atomic time-translation is bounded by the $\sim\!1\;\text{fs}$ free-space radiation memory time) preserve Born-rule marginals and therefore obey exact no-signalling. Continuous-time analog \texttt{SAT} flows (Ercsey-Ravasz \& Toroczkai 2011) trade polynomial coordinate time for exponential auxiliary energy fluctuations across fractal basins, while frequency-multiplexed solvers obey Gabor's rms bound $\Delta t \cdot \Delta f \ge 1/(4\pi)$: packing $2^n$ sums into finite bandwidth requires $\delta f \sim 2^{-n}$ and observation time $\Delta t \gtrsim 2^n$ (Aaronson 2015).
+
+\section{The Horizon Theorem (\texttt{C1--C4}), Explicit Models (\texttt{M1--M8}), and Lean~4 Verification}
+
+Section~7 of the study establishes four jointly consistent conditions under which a system's state at time $t$ is a pure function of a present record $R$ inside the observer's causal past cone $J^-(o)$, mechanically checked across \textbf{31 theorems} in \texttt{Lean 4.36.0} (\texttt{Horizon.lean} and \texttt{Paradox.lean}, zero \texttt{sorry}, axioms $\subseteq \{\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}\}$):
+\begin{enumerate}[leftmargin=1.5em,itemsep=1.5pt,topsep=1.5pt]
+  \item \textbf{\texttt{C1} Faithful Causal Index (\texttt{TQ.M1.exists\_time\_index}):} Every finite strict causal DAG on $\mathrm{Fin}\,n$ admits an injective order-preserving index $\mathrm{idx}(u) = \mathrm{rank}(u)(n+1)+u \in \mathbb{N}$. Coarse summaries such as the two-atom mean (\texttt{mean\_not\_injective}, \texttt{coarse\_record\_horizon}, $0$ axioms) destroy invertibility.
+  \item \textbf{\texttt{C2} Lossless Bijective Dynamics (\texttt{future\_determined}, \texttt{iterate\_injective}, \texttt{past\_recovered}):} For bijective $T$, $T^{-t}(T^t(R))=R$ preserves full mutual information ($4.000\;\text{bits}$ on $16$ states vs.\ $2.000\;\text{bits}$ under a 2-bit coarse bin), whereas 2-to-1 erasure (\texttt{erase\_not\_injective}) merges distinct histories.
+  \item \textbf{\texttt{C3} Band-Limited Polynomial/Spectral Structure (\texttt{TQ.M3.future\_from\_past\_samples}, \texttt{plancherel\_z4}):} Exact discrete Plancherel norm conservation holds on $\mathbb{Z}/4\mathbb{Z}$, and any two $d$-mode polynomial signals agreeing on $d$ distinct past samples agree identically at every future point. Under finite sub-Nyquist windows, Slepian--Pollak eigenvalue decay creates a steep conditioning cliff.
+  \item \textbf{\texttt{C4} Minkowski Past-Cone Locality (\texttt{interval\_lightcone}, \texttt{future\_timelike}, \texttt{future\_irrefl}, \texttt{future\_trans}, \texttt{past\_cone\_no\_future\_access}):} In $1+1$ Minkowski space, $(\Delta t)^2 - (\Delta x)^2 = du\cdot dv$, chronological precedence is a strict partial order, and $I^+(o) \cap J^-(o) = \varnothing$. Joint satisfiability of \texttt{C1--C4} plus two-level ground-state passivity is proved in \texttt{horizon\_conditions\_consistent}.
+\end{enumerate}
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\caption{\textbf{Deterministic Numerical \& Symbolic Suite (\texttt{M1--M8} and \texttt{F5}, \texttt{seed = 20261122}).}}
+\label{tab:models}
+\begin{tabularx}{\textwidth}{l Y l}
+\toprule
+\textbf{Model / Test} & \textbf{Verified Quantitative Output (\texttt{models\_m1\_m8\_results.json})} & \textbf{Falsifier} \\
+\midrule
+\texttt{M1} Indexed Dataset & $n=10^6$: direct lookup $1$ step, binary search $20$ steps, scan $777{,}778$ steps; $8/16$ lossy futures at $t=5$. & \texttt{F3} \\
+\texttt{M2} \& \texttt{M2b} Loops & \texttt{Qhronology} CNOT+SWAP: \texttt{D-CTC} $g|0\rangle\langle 0|+(1-g)|1\rangle\langle 1|$ vs.\ \texttt{P-CTC} $|+\rangle\langle +|$; $3..6$-bit witness \texttt{P-CTC} costs $1/d^2 = 64..4{,}096$ trials vs.\ $1$ \texttt{D-CTC} query. & \texttt{F4, F6} \\
+\texttt{M3} Frequency Index & $N=128$ Plancherel rel.\ err.\ $2.34\times 10^{-16}$; DPSS indices $6$--$11$: $[.991, .928, .681, .289, .063, .008]$; lead $1..8$ err.\ $2.5\times 10^{-5}$ (noiseless) $\to 5.3\times 10^{-3}$ ($80\;\text{dB}$) $\to 0.470$ ($20\;\text{dB}$); lead $57..64$: $0.600$--$1.294$. & \texttt{F5} \\
+\texttt{M4} G\"odel Metric & SymPy exact: $ds^2 = -dt^2 - 2e^{\sqrt{2}\omega x}dt\,dy - \frac{1}{2}e^{2\sqrt{2}\omega x}dy^2 + dx^2 + dz^2$ solves $G_{\mu\nu} - \omega^2 g_{\mu\nu} = 2\omega^2 u_\mu u_\nu$ ($\mathbf{0}_{4\times 4}$ residual; $R=-2\omega^2$; $g_{yy}<0$ everywhere). & \texttt{F4, F6} \\
+\texttt{M5} Count \& Landauer & Bijection $\Delta H = 4.4\times 10^{-16}\;\text{nats}$; $300\;\text{K}$ floor $2.871\times 10^{-21}\;\text{J/bit}$ ($2^{128}$ bits $= 9.77\times 10^{17}\;\text{J}$; $2^{256}$ bits $= 3.32\times 10^{56}\;\text{J}$); human speech $\approx 1.95\;\text{bit/J}$ vs.\ $3.37\times 10^{20}\;\text{bit/J}$ at $310\;\text{K}$. & \texttt{F1, F2} \\
+\texttt{M6} Vacuum Passivity & $500$ Haar $4\times 4$ unitaries: $\min \Delta E = +0.347 > 0$; squeezing $r=5$: $\sinh^2(5)=5{,}506.1$ photons paid by pump; Casimir $1\;\mu\text{m}$ $1.30\;\text{mPa}$ ($4.33\times 10^{-10}\;\text{J/m}^2$), closed-cycle $W_{\text{net}} = 0\;\text{J}$. & \texttt{F8} \\
+\texttt{M7} Crypto PoW & Real \texttt{SHA-256d} $8,12,16$-bit nonces (\texttt{392, 4245, 9459}): $1$ \texttt{D-CTC} query vs.\ $243.9, 5{,}294.2, 27{,}078.9$ postselected trials; 16-bit Hellman reuse $34.0\%$ (unsalted) $\to \mathbf{0.0\%}$ (fresh block hash). & \texttt{F5} \\
+\texttt{M8} Compton Bridge & $\nu_{C,e} = 1.235590\times 10^{20}\;\text{Hz}$; $\nu_{C,\text{Cs}} = 2.993486\times 10^{25}\;\text{Hz}$; $1\;\text{mm}$ vertical shift $= 3.443\;\text{ps/yr}$ ($6.48\times 10^{14}\;\text{rad}$ Compton, $0.199\;\text{rad}$ Cs hyperfine). & \texttt{F3} \\
+\texttt{F5} \texttt{SHA-256} FFT & $N=65{,}536$ consecutive digests ($32{,}767$ interior bins): $\max I_k = 10.5368$ vs.\ Gumbel median $10.7637$ (\v{S}id\'ak $p=0.5809$, $\mathbf{0}$ bins $<10^{-6}$); $k=1,2,4,8$-bit $z \in [-0.50, +1.82]$ (null retained). & \texttt{F5} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Unified 195-Entry Empirical \& Paradox Accounting and Falsifiers \texttt{F1--F19}}
+
+\begin{enumerate}[leftmargin=1.5em,itemsep=1.5pt,topsep=1.5pt]
+  \item \textbf{81 Temporal Anomalies (\texttt{TA001--TA081}):} $33$ Grade~A peer-reviewed measurements, $20$ Grade~B contemporaneous/textual accounts, $11$ Grade~C retellings, and $17$ Grade~D fictions/hoaxes/misidentifications. Zero Grade~A or B entries survive as unexplained future reception; real time travel in the record is strictly one-way relativistic dilation (\texttt{GPS} $+38.6\;\mu\text{s/day}$, $1\;\text{mm}$ Sr clocks) or cryptobiotic arrest ($46{,}000$-year \emph{Panagrolaimus kolymaensis}). Constructive recall (Loftus $32\%$ vs.\ $14\%$; \texttt{DRM} $40$--$55\%$; Cleary \& Claxton chance navigation during d\'ej\`a vu) places memory inside past-cone reconstruction (\texttt{F10--F15}).
+  \item \textbf{40-Entry Frequency Atlas (\texttt{AA01--AA40}):} $21$ sky and $19$ Earth edge cases ($16$ resolved, $17$ open, $7$ contested) spanning $61$ decades from \texttt{MOND} $a_0/c = 4.00\times 10^{-19}\;\text{Hz}$ (within $6$--$15\%$ of $H_0/(2\pi)$, tested at $1\le z \le 2.5$ by \texttt{F18}) through \texttt{GW150914} ($195\;\text{Hz}$), \texttt{GW250114} ($2\Omega_H,\kappa$, \texttt{F16}), and $62\,M_\odot$ scrambling $t_{\text{scr}}^{-1} = 4.35\;\text{Hz}$ (\texttt{F17}) to $\nu_{C,\text{Cs}} = 2.99\times 10^{25}\;\text{Hz}$ and $\nu_{\text{Planck}} = 2.95\times 10^{42}\;\text{Hz}$.
+  \item \textbf{74 Foundational Paradoxes (\texttt{P01--P74}):} $45$ resolved, $15$ partial, $14$ open, backed by $14$ Lean~4 theorems in \texttt{TQ.Paradox}: \texttt{no\_total\_self\_oracle} ($0$ axioms, motivating Novikov conspiracy audit \texttt{F19}), \texttt{no\_universal\_answer\_table} ($0$ axioms), \texttt{mixed\_answer\_unique} ($p=1-p \iff p=1/2$), \texttt{grandfather\_no\_pure}, \texttt{polchinski\_multiplicity}, \texttt{no\_injection\_gt}, \texttt{incompressible}, \texttt{recurrence}, \texttt{zeno\_dichotomy}, \texttt{instant\_measure\_zero}, \texttt{countable\_instants\_null}, \texttt{hilbert\_hotel}, \texttt{galileo\_squares}, and \texttt{monty\_hall} ($2/3$), plus Bekenstein ($2.58\times 10^{43}\;\text{bits}$), holographic ($1.38\times 10^{69}\;\text{bits/m}^2$), Newcomb ($p > 0.5005$), Parrondo ($+1.18$ mixed vs.\ $-0.93, -1.33$), and Braess ($65 \to 80\;\text{min}$) checks.
+\end{enumerate}
+
+\vspace{0.3em}
+\noindent\textbf{Selected Key References.}
+D.~Deutsch, \emph{Phys.\ Rev.\ D} \textbf{44}, 3197 (1991);
+T.~A.~Brun, \emph{Found.\ Phys.\ Lett.} \textbf{16}, 245 (2003);
+D.~Bacon, \emph{Phys.\ Rev.\ A} \textbf{70}, 032309 (2004);
+S.~Aaronson \& J.~Watrous, \emph{Proc.\ R.\ Soc.\ A} \textbf{465}, 631 (2009);
+S.~Aaronson et al., \texttt{arXiv:1609.05507v2} (2024);
+S.~Lloyd et al., \emph{Phys.\ Rev.\ Lett.} \textbf{106}, 040403 (2011);
+Z.~Ji, S.~Lloyd \& M.~M.~Wilde, \emph{Phys.\ Rev.\ Lett.} \textbf{136}, 230801 (2026);
+L.~G.~Bishop, \texttt{arXiv:2601.17459} (2026);
+M.~E.~Hellman, \emph{IEEE Trans.\ Inf.\ Theory} \textbf{26}, 401 (1980);
+E.~D.~Demaine, J.~Iacono \& S.~Langerman, \emph{ACM TALG} \textbf{3}, 13 (2007);
+R.~Meier, \emph{IACR ePrint} 2022/1148;
+M.~Ercsey-Ravasz \& Z.~Toroczkai, \emph{Nat.\ Phys.} \textbf{7}, 966 (2011);
+D.~Gabor, \emph{J.\ IEE III} \textbf{93}, 429 (1946);
+R.~Landauer, \emph{IBM J.\ Res.\ Dev.} \textbf{5}, 183 (1961);
+K.~G\"odel, \emph{Rev.\ Mod.\ Phys.} \textbf{21}, 447 (1949);
+Y.~Aharonov \& A.~C.~Elitzur, \texttt{arXiv:2611.12971} (2026);
+T.~Bothwell et al., \emph{Nature} \textbf{602}, 420 (2022);
+J.~Zheng \& M.~Meister, \emph{Neuron} \textbf{113}, 192 (2025).
+
+\end{document}

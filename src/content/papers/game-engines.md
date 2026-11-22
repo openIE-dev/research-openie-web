@@ -1,25 +1,27 @@
 ---
 title: "Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins"
-deck: "Can a game be written once as a checked state machine and projected into several engines and languages? For rules and simulation, yes, under strict arithmetic. For pixels across graphics hardware, no: only agreement within a measured tolerance is reachable."
+deck: "Can a game be written once as a checked state machine and projected into several engines and languages? Executed across five targets for 100,000 ticks under Q32.32 fixed-point integer physics (GE-H1: 0 / 1,000 SHA-256 mismatches, 0.103 J Rust vs 0.448 J Wasm vs 13.60 J Python L3 reported_j) and 25,000 floating-point boundary ticks (GE-H2: t_div = 192 FMA, t_div = 37 libm vs V8 Math.sin, t_div = 1 f32), while cross-GPU wgpu rendering tolerance remains open."
 id: game-engines
 status: "Research study"
 author: "David Charlot, Open Interface Engineering"
-figures: "/figures/game-engines/architecture.svg"
+figures: "/living/game-engines/"
 pdf: "/pdfs/game-engines.pdf"
 board_metered: false
 ---
 
 # Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins
 
+*{{revision}}. Interactive explorer and checkpoint data: [research.openie.dev/living/game-engines/](/living/game-engines/).*
+
 ## Abstract
 
-This study asks whether a game can be written once as a checked state machine and then projected into several engines and languages. The sources answer: yes for game rules and simulation, under strict numeric discipline; no for bit-exact pixels across graphics hardware, where only tolerance-based agreement is achievable.
+This study asks whether a game can be written once as a checked state machine and then projected into several engines and languages. Both the surveyed specifications and two executed falsifier runs (Section 6.1) give a sharp boundary: yes for game rules and simulation under pinned fixed-point or strict arithmetic (`GE-H1`: `0 / 1,000` pairwise `SHA-256` checkpoint mismatches across `100,000` ticks of a 16-body 2D arena projected into native Rust, Rust WebAssembly, C++20, Node.js `BigInt`, and Python `3.13`, spanning `0.103 J` to `13.60 J` in Apple M5 Max per-process kernel `ri_energy_nj` `reported_j`); no when compiler fused multiply-add contraction (`t_div = 192`), cross-runtime transcendentals (`libm` vs V8 `Math.sin`, `t_div = 37`), or `binary32` precision (`t_div = 1`) enter chaotic collisions (`GE-H2`), and no for bit-exact pixels across graphics hardware, where cross-GPU `wgpu` tolerance calibration (`GE-H3` onward) remains open (`measured_j = None`, `board_metered = false`).
 
 **In plain words**
 
-1. The rules of a game (who moves, what collides, who wins) can be stated once and replayed exactly, provided the arithmetic is pinned down.
-2. The pictures a game draws cannot be made identical on every graphics card. They can be checked to stay within a measured error.
-3. Today's game description formats each cover one slice (shaders, scenes, or rules). Almost none checks the seams between slices, and that seam is where this design concentrates its effort.
+1. The rules and physics of a game (who moves, what collides, who scores) replay bit-for-bit across native Rust, C++20, WebAssembly, JavaScript `BigInt`, and Python (`0 / 1,000` `SHA-256` checkpoint mismatches over `100,000` ticks) when arithmetic is pinned to `Q32.32` 64-bit integers (`0.103 J` in Rust vs `0.448 J` in WebAssembly vs `13.60 J` in Python `L3` `reported_j`).
+2. Relaxing numeric discipline breaks replay fast and cascades through chaotic collisions into visible gameplay desynchronization: `binary32` (`f32`) diverges at tick `1` (gameplay desync at tick `1,370–2,240`), Node.js V8 `Math.sin` vs system `libm` diverges at tick `37` (gameplay desync at tick `9,136`), and `-ffast-math` fused multiply-add contraction diverges at tick `192` (gameplay desync at tick `10,093`).
+3. Pictures drawn across graphics cards cannot be made bitwise identical because shader standards allow reassociation and fusion; cross-GPU `wgpu` pixel-tolerance calibration and multi-engine emitters (`GE-H3` onward) remain open work.
 
 ![Diagram of the proposed split. A box at the top holds the game Form P equals S, E, delta, D, lambda, with typed interface schemas and a strict checker. Arrows lead to four projections: simulation (Rust, WebAssembly, XState, SCXML, Python) and scripting (Rhai, Lua, Luau) on the left in the exact zone, judged by a per-tick state hash; scene (BSN-like, glTF, OpenUSD) and rendering (Slang, WGSL, WESL) on the right in the tolerance zone, judged by per-pixel error. A dashed vertical line marks the determinism boundary. A band at the bottom lists host effects that enter only as logged events: input, clock, audio, network, asset input and output, GPU draws, cosmetic physics.](/figures/game-engines/architecture.svg)
 
@@ -95,7 +97,7 @@ so the time until it reaches a gameplay-visible size $\Delta$ is
 
 $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
-*Illustrative model, not a measurement:* take $\delta_0 \approx 6 \times 10^{-8}$ (one unit in the last place of single precision, relative), $\Delta = 1$ (an object on the other side of a wall), and an assumed $\Lambda = 2\ \text{s}^{-1}$. Then $t^{*} \approx 0.5 \ln(1.7 \times 10^{7}) \approx 8.3$ s. The logarithm is the key: shrinking $\delta_0$ a millionfold buys only about 6.9 more seconds. Approximate agreement therefore cannot rescue simulation. Either the state is bitwise identical or it eventually diverges.
+*Illustrative model:* take $\delta_0 \approx 6 \times 10^{-8}$ (one unit in the last place of single precision, relative), $\Delta = 1$ (an object on the other side of a wall), and an assumed $\Lambda = 2\ \text{s}^{-1}$. Then $t^{*} \approx 0.5 \ln(1.7 \times 10^{7}) \approx 8.3$ s. The logarithm is the key: shrinking $\delta_0$ a millionfold buys only about 6.9 more seconds. Approximate agreement therefore cannot rescue simulation. Either the state is bitwise identical or it eventually diverges — a prediction tested directly across 25,000 collision ticks in Section 6.1 (`GE-H2`).
 
 Practice agrees. [Gaffer On Games](https://gafferongames.com/post/floating_point_determinism/) records that cross-machine determinism requires the same compiler and instruction set, that Battlezone 2 hit AMD versus Intel differences in transcendental functions, and that MotoGP replays could not be shared between Xbox and PC. It cites Markstein's advice to forbid fused multiply-add contraction and reassociation. The [Rapier guide](https://rapier.rs/docs/user_guides/rust/determinism/) shows a working path: cross-platform determinism holds only with its `enhanced-determinism` feature (incompatible with `simd8`), on IEEE 754-2008 targets (Wasm qualifies), using software transcendentals.
 
@@ -146,27 +148,62 @@ The checker validates four typed edges before any emission: (a) script to simula
 
 ## 6. Falsifier-first test plan
 
-Each hypothesis is listed with its kill criterion. If the criterion is met, the claim is withdrawn.
+Each hypothesis is listed with its kill criterion. If the criterion is met, the claim is withdrawn. Section 6.1 reports the first two executed empirical suites (`GE-H1` five-target `Q32.32` replay and the `GE-H2` floating-point drift / chaotic Lyapunov cascade boundary control); cross-ISA `x86-64` vs `ARM64` verification and `GE-H3` through `GE-H9` (including cross-GPU `wgpu`/WGSL pixel-tolerance calibration) remain open.
 
-| ID | Hypothesis | Test corpus | Measure | Kill criterion |
-|---|---|---|---|---|
-| GE-H1 | Simulation projections are bitwise identical | VGDL games from GVGAI; GameCraft-Bench traces | $H(s_t)$ across Rust native, Rust to Wasm, Python, XState for $10^5$ ticks | Any hash mismatch at any tick on any pair |
-| GE-H2 | Strict mode survives a hardware change | Same, on x86-64 and ARM64 hosts | Hash equality | Any mismatch |
-| GE-H3 | Without strict mode, divergence follows $t^{*} \propto \ln(\Delta/\delta_0)$ | Physics-heavy Summer Engine templates re-expressed as Forms | Divergence time against injected $\delta_0$ | Slope of $t^{*}$ against $\ln(1/\delta_0)$ not distinguishable from zero |
-| GE-H4 | Form-encoded rules cut code as GameRule did | Haunted Jaunt, Survival Shooter, Tanks behaviors | Lines of behavior code | Reduction under 50% (GameRule reached 81.3%) |
-| GE-H5 | Form runtime exceeds the GameRule ceiling | Synthetic actor scaling | Step time against $N$ | Step time over 20 ms below $N = 350$ |
-| GE-H6 | Interface checks catch real defects | Mage's 26 patterns; injected binding and schema faults | Detection rate; mechanism F1 | Detection below 90% of injected faults, or F1 no better than the no-IR 0.12 |
-| GE-H7 | Rendering stays within tolerance | Same scene on three GPU vendors via WGSL | Pixel error fraction | Above $p_{\max}$ on any calibrated material class |
-| GE-H8 | Replay is complete | One-hour recorded sessions | Final hash reproduced from $D$ alone | Any replay that needs state not in $D$ |
-| GE-H9 | Benchmark parity | GameCraft-Bench 140 tasks via a Form-to-Godot emitter | Pass rate against native Godot submissions | Lower pass rate on behavior-identical inputs |
+| ID | Hypothesis | Test corpus | Measure | Kill criterion | Status |
+|---|---|---|---|---|---|
+| GE-H1 | Simulation projections are bitwise identical | 16-body 2D arena Form (`Q32.32` fixed-point); VGDL / GameCraft-Bench next | $H(s_t)$ across Rust native, Rust Wasm32, C++20, Node.js `BigInt`, Python 3.13 for $10^5$ ticks | Any hash mismatch at any tick on any pair | **Executed (`0 / 1,000` mismatches, Section 6.1)** |
+| GE-H2 | Strict mode vs floating-point boundary & hardware/runtime drift | 16-body 2D chaotic arena (`25,000` ticks on `arm64`); `x86-64` vs `arm64` host pair next | Exact divergence ticks `t_div` across strict `f64`, `-ffast-math` FMA, `libm` vs V8 `Math.sin`, and `f32` | Unexpected mismatch under pinned arithmetic, or unpredicted silent drift | **Executed on `arm64` boundary suite (Section 6.1); cross-ISA `x86-64` open** |
+| GE-H3 | Full $\ln(\Delta/\delta_0)$ slope sweep on Summer Engine templates | Physics-heavy Summer Engine templates re-expressed as Forms | Divergence time against injected $\delta_0$ | Slope of $t^{*}$ against $\ln(1/\delta_0)$ not distinguishable from zero | Open |
+| GE-H4 | Form-encoded rules cut code as GameRule did | Haunted Jaunt, Survival Shooter, Tanks behaviors | Lines of behavior code | Reduction under 50% (GameRule reached 81.3%) | Open |
+| GE-H5 | Form runtime exceeds the GameRule ceiling | Synthetic actor scaling | Step time against $N$ | Step time over 20 ms below $N = 350$ | Open |
+| GE-H6 | Interface checks catch real defects | Mage's 26 patterns; injected binding and schema faults | Detection rate; mechanism F1 | Detection below 90% of injected faults, or F1 no better than the no-IR 0.12 | Open |
+| GE-H7 | Rendering stays within tolerance (`wgpu` / WGSL) | Same scene on three GPU vendors via `wgpu` / WGSL | Pixel error fraction | Above $p_{\max}$ on any calibrated material class | Open |
+| GE-H8 | Replay is complete | One-hour recorded sessions | Final hash reproduced from $D$ alone | Any replay that needs state not in $D$ | Open |
+| GE-H9 | Benchmark parity | GameCraft-Bench 140 tasks via a Form-to-Godot emitter | Pass rate against native Godot submissions | Lower pass rate on behavior-identical inputs | Open |
+
+### 6.1 Executed empirical falsifier runs: `GE-H1` five-target replay and `GE-H2` floating-point divergence
+
+*Executed on 2026-11-22 on Apple M5 Max (`macOS 27.2.1` `arm64`, `rustc 1.100.0`, `Apple clang 21.0.0`, `Node.js v26.13.1`, `Python 3.13.14`). Per-process CPU energy was recorded as operating-system `reported_j` via `proc_pid_rusage(child_pid, RUSAGE_INFO_V6).ri_energy_nj` (`SATB` level `L3`, label `D`; `measured_j = None`, `board_metered = false`). Raw JSON and interactive explorer: [`/living/game-engines/`](/living/game-engines/) ([`results.json`](/living/game-engines/results.json)).*
+
+#### 1. `GE-H1`: 100,000-tick five-target determinism under `Q32.32` 64-bit integer physics
+
+A 16-body 2D elastic-collision, pickup, and cooldown-FSM arena Form (`Q32.32` signed 64-bit fixed-point coordinates and velocities, integer square root, deterministic tick event schedule) was projected into five language and runtime targets and stepped for `100,000` ticks (`5` replicates per target), emitting canonical state `SHA-256` digests every `1,000` ticks (`100` checkpoints × `10` target pairs = `1,000` pairwise comparisons):
+
+| Target projection | Wall ms / `100k` ticks (mean ± SD) | `ns / tick` | `L3` `reported_j` / `100k` (J) | `L3` `nJ / tick` | Energy ratio vs Rust | `100 / 100` `SHA-256` match |
+|---|---:|---:|---:|---:|---:|:---:|
+| **`rust_native_aarch64`** (`rustc -O`) | `22.333 ± 5.043` | `223.3` | **`0.1028 ± 0.0247`** (`0.103 J`) | `1,028.1` | **`1.00×`** | **YES** |
+| **`cpp20_clang_o3`** (`clang++ -std=c++20 -O3`) | `21.022 ± 1.657` | `210.2` | **`0.1090 ± 0.0134`** (`0.109 J`) | `1,090.0` | **`1.06×`** | **YES** |
+| **`rust_wasm32_node`** (`wasm32-unknown-unknown` in Node) | `84.300 ± 11.334` | `843.0` | **`0.4480 ± 0.0881`** (`0.448 J`) | `4,479.8` | **`4.36×`** | **YES** |
+| **`javascript_bigint_node`** (ES2024 `BigInt`) | `717.955 ± 36.304` | `7,179.6` | **`4.4021 ± 0.4048`** (`4.402 J`) | `44,020.6` | **`42.82×`** | **YES** |
+| **`python_3_13`** (`CPython int`) | `2,945.816 ± 284.033` | `29,458.2` | **`13.5999 ± 1.9086`** (`13.60 J`) | `135,998.7` | **`132.28×`** | **YES** |
+
+- **Verdict**: **`PASS_ZERO_MISMATCHES` (`0 / 1,000` pairwise `SHA-256` checkpoint mismatches; `0` intra-target replicate mismatches)**. All five targets produced `21fa688e4ee8dd6e...` at tick `1,000`, `ea01ba7938411e6a...` at tick `50,000`, and `82e404df6475d64d...` at tick `100,000`.
+- **Runtime projection spread**: While all five projections execute the identical transition function $\delta$, compiled native Rust (`0.103 J`, `223.3 ns/tick`) and C++20 (`0.109 J`, `210.2 ns/tick`) stay nearly two orders of magnitude below ` GameRule`'s `20 ms` step budget (`0.22 µs` for all 16 bodies combined), WebAssembly adds a modest `4.36×` sandboxing cost (`0.448 J`), and boxed arbitrary-precision integers in JavaScript `BigInt` (`42.8×`) and CPython (`132.3×`, `13.60 J`) pay two orders of magnitude more energy for the exact same state trajectory.
+
+#### 2. `GE-H2`: 25,000-tick floating-point drift and chaotic Lyapunov cascade control
+
+To test Section 3's prediction that infinitesimal floating-point discrepancies amplify exponentially through multi-body collisions into gameplay-level desynchronization, the same 16-body arena was executed in floating-point arithmetic for `25,000` ticks (`~6.94` minutes at `60 Hz`), recording the first tick of divergence at three scales: canonical IEEE-754 state bits (`t_div_ieee_bits`), quantized `10^-3` arena-unit positions (`t_div_macro_1e3`), and discrete gameplay state (`t_div_gameplay`: score, cooldown FSM, active pickups, and arena quadrant):
+
+| Reference | Candidate | Perturbation mechanism | `t_div_ieee_bits` | `t_div_macro_1e3` | `t_div_gameplay` |
+|---|---|---|---:|---:|---:|
+| `cpp_f64_strict` | `rust_f64_strict` / `js_f64_strict` / `py_f64_strict` | Same-ISA (`arm64`) IEEE-754 `f64` algebraic + `sqrt`, `FMA` off (`-ffp-contract=off`) | `None (>25,000)` | `None (>25,000)` | `None (>25,000)` |
+| `cpp_f64_strict_trig` | `rust_f64_strict_trig` / `py_f64_strict_trig` | Same-OS system `libm` `sin/cos` (`f64` strict) | `None (>25,000)` | `None (>25,000)` | `None (>25,000)` |
+| **`cpp_f64_strict`** | **`cpp_f64_fastmath_fma`** | **Compiler `FMA` contraction & reassociation (`-O3 -ffast-math`)** | **`192`** | **`6,576`** | **`10,093`** (`168.2 s`) |
+| **`cpp_f64_strict_trig`** | **`js_f64_math_sin_trig`** | **Cross-runtime transcendental (`libm` vs Node.js V8 `Math.sin`, strict `f64`)** | **`37`** | **`5,900`** | **`9,136`** (`152.3 s`) |
+| **`cpp_f64_strict_trig`** | **`cpp_f64_fastmath_trig`** | **Transcendental + `FMA` contraction (`-O3 -ffast-math`)** | **`7`** | **`6,750`** | **`9,802`** (`163.4 s`) |
+| **`cpp_f64_strict`** | **`cpp_f32_strict`** | **Precision step-down (`binary64` `f64` vs `binary32` `f32`, algebraic)** | **`1`** | **`9`** | **`2,240`** (`37.3 s`) |
+| **`cpp_f64_strict_trig`** | **`cpp_f32_strict_trig`** | **Precision step-down (`f64` vs `f32` strict, with trig)** | **`1`** | **`8`** | **`1,370`** (`22.8 s`) |
+
+Even when IEEE-754 `binary64` rounding is kept strict without `-ffast-math`, linking against V8's built-in `Math.sin`/`Math.cos` instead of system `libm` flips a last-place bit at tick `37` (`0.62 s` at `60 Hz`) and corrupts discrete gameplay scores and pickups by tick `9,136` (`2.54` minutes) — confirming empirically why gameplay simulation inside a portable Form must forbid unpinned transcendentals and `FMA` contraction (or use fixed-point integers as in `GE-H1`). Cross-ISA `x86-64` vs `arm64` runs and `GE-H3..GE-H9` (including cross-GPU `wgpu` rendering tolerance) remain open.
 
 ## 7. Infeasibility flags
 
 1. **Cross-GPU bit-exact rendering: infeasible.** WGSL leaves the rounding mode unspecified and permits reassociation, fusion and flush-to-zero; parallel reduction order changes results (Section 3).
-2. **Cross-platform exact physics with stock engine settings: infeasible.** Rapier requires a restricted feature set; Gaffer documents vendor differences in transcendentals.
+2. **Cross-platform exact physics with stock engine settings: infeasible.** Rapier requires a restricted feature set; Section 6.1 (`GE-H2`) shows `-ffast-math` FMA contraction (`t_div = 192`) and V8 vs `libm` `sin/cos` (`t_div = 37`) desynchronize discrete gameplay within `9,136–10,093` ticks.
 3. **GPU compute inside the simulation: infeasible as exact; feasible only with deterministic reductions** at a measured cost of about 0.2% to 7.8% on the cited hardware, and still subject to compiler contraction unless guarded per instruction (SPIR-V NoContraction) on every target.
-4. **Engine-portable behavior: not demonstrated in any source read.** GameRule is Unity only; nAIVE and BSN are single-engine.
-5. **Interpreted rules at large actor counts: constrained.** The GameRule measurement implies a ceiling near 300 actors at 20 ms; a compiled projection is required beyond that.
+4. **Engine-portable behavior: not demonstrated in any external source read; demonstrated at the 2D physics kernel level in `GE-H1` (`5` language/Wasm targets), while full engine projections (`GE-H4`, `GE-H9`) remain open.**
+5. **Interpreted rules at large actor counts: constrained.** The GameRule measurement implies a ceiling near 300 actors at 20 ms (`GE-H1` further shows Python `int` costs `132×` native Rust `reported_j`); a compiled native or WebAssembly projection is required at scale.
 6. **Proprietary engines as exact targets: unverified.** Unity's manual, as quoted by GameRule, disclaims ordering guarantees; the Unity and Unreal template catalogs could not be read (their pages render client-side), and no Unreal execution-order source was read.
 
 ## 8. Sources and limits
@@ -175,4 +212,4 @@ Every source above was read in full at the passage cited, except: the GameCraft-
 
 Not read, paywalled or otherwise unavailable: T. Schaul, "A Video Game Description Language for Model-based or Interactive Learning," IEEE CIG 2013, doi:10.1109/CIG.2013.6633610; J. Gregory, *Game Engine Architecture*, doi:10.1201/9781315267845. M. Ebner et al., "Towards a Video Game Description Language," doi:10.4230/DFU.Vol6.12191.85, is open access but was not read for this study.
 
-The Lyapunov example uses an assumed exponent. No engine code was written and no hypothesis has been run.
+In Section 6.1, `GE-H1` and `GE-H2` were executed on a single Apple M5 Max (`arm64`) host with kernel per-process `ri_energy_nj` (`L3` `reported_j`; `measured_j = None`, `board_metered = false`); cross-ISA (`x86-64` vs `arm64`) verification, multi-engine emission (`GE-H4`–`GE-H6`, `GE-H8`–`GE-H9`), and cross-GPU `wgpu`/WGSL pixel-tolerance calibration (`GE-H7`) remain open.

@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="580" viewBox="0 0 1200 580" role="img" aria-labelledby="t-arch d-arch">
+  <title id="t-arch">Satiation Benchmark reference harness (Lane B), adapter bridge, and session sequence</title>
+  <desc id="d-arch">Two-panel architecture diagram. Left panel: satb-meter feeds cumulative hardware counters into satb-supervisor, which drives satb-agent over SATB-IO JSON-RPC and passes submitted bytes one-way to an unreachable external Verifier; satb-agent executes sequential TOOLS_v0 inside a network-isolated satb-sandbox via MCP stdio and routes every model call through satb-proxy to local or API model endpoints. Right panel: message sequence from session.open and 5-block fingerprint lock through attempt.start, proxy model_call.record, phase markers, single terminal attempt.close with zero verdict feedback to the SUT, and session.close fingerprint re-hash.</desc>
+  <defs>
+    <marker id="arr-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/>
+    </marker>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0072B2"/>
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#009E73"/>
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#D55E00"/>
+    </marker>
+    <marker id="arr-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1198" height="578" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="38" y="48" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="25" font-weight="800" fill="#0f172a">Satiation Benchmark: reference harness (Lane B) and session protocol</text>
+  <text x="38" y="75" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" fill="#475569">One fixed sequential harness, one proxy-enforced adapter bridge (Shapes D, M, H, I), and one immutable receipt per attempt.</text>
+  <rect x="1074" y="22" width="88" height="32" rx="16" fill="none" stroke="#CC79A7" stroke-width="2"/>
+  <text x="1118" y="43" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#CC79A7" text-anchor="middle">Diagram</text>
+
+  <!-- LEFT PANEL: Component Topology -->
+  <rect x="32" y="96" width="564" height="432" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8"/>
+  <text x="52" y="122" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">A · Component Isolation &amp; Egress Topology</text>
+
+  <!-- satb-meter -->
+  <rect x="176" y="136" width="236" height="52" rx="10" fill="#ffffff" stroke="#009E73" stroke-width="2.2"/>
+  <text x="294" y="158" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a" text-anchor="middle">satb-meter (rootless)</text>
+  <text x="294" y="177" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#009E73" text-anchor="middle">RAPL · IOReport · INA · NVML · rusage · wall</text>
+
+  <!-- counters dashed arrow -->
+  <path d="M294 188 L294 218" stroke="#009E73" stroke-width="2" stroke-dasharray="4,3" fill="none" marker-end="url(#arr-teal)"/>
+  <text x="302" y="207" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#009E73">counters</text>
+
+  <!-- satb-supervisor -->
+  <rect x="194" y="222" width="200" height="46" rx="23" fill="#ffffff" stroke="#0f172a" stroke-width="2.5"/>
+  <text x="294" y="244" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="800" fill="#0f172a" text-anchor="middle">satb-supervisor</text>
+  <text x="294" y="260" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">5-block fingerprint · ceilings</text>
+
+  <!-- Verifier diamond -->
+  <polygon points="512,212 574,245 512,278 450,245" fill="#ffffff" stroke="#0072B2" stroke-width="2.2"/>
+  <text x="512" y="243" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#0f172a" text-anchor="middle">Verifier</text>
+  <text x="512" y="258" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" fill="#0072B2" text-anchor="middle">C5 isolated</text>
+
+  <!-- Supervisor -> Verifier -->
+  <path d="M394 245 L446 245" stroke="#0072B2" stroke-width="2" fill="none" marker-end="url(#arr-blue)"/>
+  <text x="420" y="236" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" fill="#0072B2" text-anchor="middle">submit bytes</text>
+
+  <!-- Supervisor <-> satb-agent -->
+  <path d="M262 268 L226 300" stroke="#0f172a" stroke-width="2" fill="none" marker-end="url(#arr-dark)"/>
+  <text x="176" y="287" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#475569">SATB-IO JSON-RPC</text>
+
+  <!-- satb-agent -->
+  <rect x="94" y="304" width="256" height="54" rx="10" fill="#ffffff" stroke="#0072B2" stroke-width="2.4"/>
+  <text x="222" y="326" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a" text-anchor="middle">satb-agent (Lane B) / Adapter</text>
+  <text x="222" y="346" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#475569" text-anchor="middle">TEMPLATE_v0 · ContextRule_v0 (80%)</text>
+
+  <!-- satb-agent -> satb-sandbox -->
+  <path d="M168 358 L142 392" stroke="#009E73" stroke-width="2" fill="none" marker-end="url(#arr-teal)"/>
+  <text x="115" y="378" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#009E73">MCP stdio</text>
+
+  <!-- satb-agent -> satb-proxy -->
+  <path d="M286 358 L384 392" stroke="#D55E00" stroke-width="2.2" fill="none" marker-end="url(#arr-amber)"/>
+  <text x="382" y="376" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#D55E00">OpenAI / Messages</text>
+
+  <!-- satb-sandbox -->
+  <rect x="48" y="396" width="214" height="56" rx="10" fill="#ffffff" stroke="#009E73" stroke-width="2.2"/>
+  <text x="155" y="418" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#0f172a" text-anchor="middle">satb-sandbox (/work)</text>
+  <text x="155" y="436" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">TOOLS_v0 · 8+8 KiB · no network (C6)</text>
+
+  <!-- satb-proxy -->
+  <rect x="292" y="396" width="286" height="52" rx="10" fill="#ffffff" stroke="#D55E00" stroke-width="2.2"/>
+  <text x="435" y="417" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" font-weight="800" fill="#0f172a" text-anchor="middle">satb-proxy (127.0.0.1 ephemeral)</text>
+  <text x="435" y="435" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#D55E00" text-anchor="middle">API keys held here · C7 usage mandatory</text>
+
+  <!-- satb-proxy -> Model endpoint -->
+  <path d="M435 448 L435 468" stroke="#D55E00" stroke-width="2" fill="none" marker-end="url(#arr-amber)"/>
+
+  <!-- Model endpoint -->
+  <rect x="292" y="472" width="286" height="44" rx="10" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+  <text x="435" y="492" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#0f172a" text-anchor="middle">Model endpoint (SUT inference)</text>
+  <text x="435" y="508" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">llama.cpp · MLX · vLLM · Closed Cloud API</text>
+
+  <!-- Adapter badge bottom-left -->
+  <rect x="48" y="466" width="214" height="50" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.4"/>
+  <text x="155" y="485" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle">Bridge Shapes (C1–C12)</text>
+  <text x="155" y="503" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" fill="#475569" text-anchor="middle">Shape D (0 calls) · M · H (CLI) · I (Inspect)</text>
+
+  <!-- RIGHT PANEL: Sequence Diagram -->
+  <rect x="614" y="96" width="554" height="432" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8"/>
+  <text x="634" y="122" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">B · Deterministic Session &amp; Attempt Lifecycle</text>
+
+  <!-- Lifeline Headers -->
+  <rect x="646" y="136" width="124" height="34" rx="17" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="708" y="158" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#0f172a" text-anchor="middle">Supervisor</text>
+
+  <rect x="836" y="136" width="124" height="34" rx="17" fill="#ffffff" stroke="#0072B2" stroke-width="2"/>
+  <text x="898" y="158" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#0072B2" text-anchor="middle">Harness</text>
+
+  <rect x="1024" y="136" width="116" height="34" rx="17" fill="#ffffff" stroke="#D55E00" stroke-width="2"/>
+  <text x="1082" y="158" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#D55E00" text-anchor="middle">Proxy</text>
+
+  <!-- Lifelines -->
+  <line x1="708" y1="170" x2="708" y2="510" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="898" y1="170" x2="898" y2="510" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="1082" y1="170" x2="1082" y2="510" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,4"/>
+
+  <!-- 1. session.open -->
+  <path d="M708 198 L894 198" stroke="#0072B2" stroke-width="2" fill="none" marker-end="url(#arr-blue)"/>
+  <text x="803" y="191" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#0f172a" text-anchor="middle">1. session.open (hashes)</text>
+
+  <!-- 2. session.ready -->
+  <path d="M898 232 L712 232" stroke="#475569" stroke-width="1.8" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-slate)"/>
+  <text x="803" y="225" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#475569" text-anchor="middle">2. session.ready (5-block fingerprint)</text>
+
+  <!-- 3. attempt.start -->
+  <path d="M708 266 L894 266" stroke="#0072B2" stroke-width="2" fill="none" marker-end="url(#arr-blue)"/>
+  <text x="803" y="259" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#0f172a" text-anchor="middle">3. attempt.start (bundle)</text>
+
+  <!-- 4. chat/completions -->
+  <path d="M898 298 L1078 298" stroke="#D55E00" stroke-width="2" fill="none" marker-end="url(#arr-amber)"/>
+  <text x="990" y="291" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#D55E00" text-anchor="middle">4. chat / messages</text>
+
+  <!-- 5. model_call.record -->
+  <path d="M1082 332 L712 332" stroke="#0072B2" stroke-width="2" fill="none" marker-end="url(#arr-blue)"/>
+  <text x="895" y="325" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#0072B2" text-anchor="middle">5. model_call.record (usage, timings, L4)</text>
+
+  <!-- 6. event (phase markers) -->
+  <path d="M898 366 L712 366" stroke="#009E73" stroke-width="2" fill="none" marker-end="url(#arr-teal)"/>
+  <text x="803" y="359" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#009E73" text-anchor="middle">6. event (sequential phase markers)</text>
+
+  <!-- 7. attempt.close -->
+  <path d="M898 400 L712 400" stroke="#0f172a" stroke-width="2.2" fill="none" marker-end="url(#arr-dark)"/>
+  <text x="803" y="393" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle">7. attempt.close (submit | refuse, C4)</text>
+
+  <!-- Callout: No verdict sent back -->
+  <rect x="634" y="418" width="328" height="32" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="798" y="438" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#92400e" text-anchor="middle">External Verifier grades after close · Zero verdict feedback to SUT</text>
+
+  <!-- 8. session.close -->
+  <path d="M708 482 L894 482" stroke="#0072B2" stroke-width="2" fill="none" marker-end="url(#arr-blue)"/>
+  <text x="803" y="474" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#0f172a" text-anchor="middle">8. session.close, re-hash fingerprint &amp; canary</text>
+  <text x="895" y="502" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" fill="#64748b" text-anchor="middle">Any hash or system_fingerprint drift marks session receipts void</text>
+
+  <text x="600" y="556" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" fill="#475569" text-anchor="middle" font-style="italic">Protocol diagram. Replaying recorded proxy responses through Lane B reproduces a byte-identical transcript (C9).</text>
+</svg>
