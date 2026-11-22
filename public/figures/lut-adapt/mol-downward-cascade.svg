@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="470" viewBox="0 0 1200 470" role="img" aria-labelledby="t1 d1">
+  <title id="t1">Downward LUT6 compilation inside a four-rung Mixture of Limits cascade</title>
+  <desc id="d1">Diagram of the four-rung cascade: Rung 0 Paged LUT6 Lookup, Rung 1 Mamba-3 SSD Formula/Stream, Rung 2 HC-SOINN Topological Graph, and Rung 3 JEPA-EBRM and AirMoL Model LAST, gated by Propose to Certify to Commit or Refuse with Receipt, and closed by SleepCrystallizer shadow-bank hot-swap back into Rung 0.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/>
+    </marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#009E73"/>
+    </marker>
+    <marker id="aho" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#D55E00"/>
+    </marker>
+    <marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0072B2"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="1198" height="468" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="40" y="54" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="28" font-weight="800" fill="#0f172a">Downward compilation across a four-rung Mixture of Limits cascade</text>
+  <text x="40" y="84" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#475569">Cheapest gear runs first by p_i / c_i; certified wakes compile recurring patterns downward into zero-FLOP LUT6 pages.</text>
+  <rect x="1072.5" y="24" width="87.5" height="34" rx="17" fill="none" stroke="#CC79A7" stroke-width="2"/>
+  <text x="1116.2" y="47" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#CC79A7" text-anchor="middle">Diagram</text>
+
+  <!-- Rung 0 -->
+  <rect x="38" y="122" width="215" height="126" rx="14" fill="#f8fafc" stroke="#009E73" stroke-width="3"/>
+  <text x="145.5" y="150" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Rung 0 · Lookup</text>
+  <text x="145.5" y="174" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#009E73" text-anchor="middle">Paged Beneš + LUT6</text>
+  <text x="145.5" y="197" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" fill="#475569" text-anchor="middle">0 FLOPs · 1 cycle (RTL sim)</text>
+  <text x="145.5" y="218" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle">64-bit joint minterm INIT</text>
+  <text x="145.5" y="237" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#64748b" text-anchor="middle">81 RAMB36E2 · 0 DSP48</text>
+
+  <!-- Rung 1 -->
+  <rect x="285" y="122" width="210" height="126" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3"/>
+  <text x="390" y="150" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Rung 1 · Stream</text>
+  <text x="390" y="174" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#0072B2" text-anchor="middle">Mamba-3 SSD (O(1) state)</text>
+  <text x="390" y="197" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" fill="#475569" text-anchor="middle">Complex MIMO recurrence</text>
+  <text x="390" y="218" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle">Pinned 48 KB SRAM state</text>
+  <text x="390" y="237" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#64748b" text-anchor="middle">Escalates on LUT miss</text>
+
+  <!-- Rung 2 -->
+  <rect x="527" y="122" width="205" height="126" rx="14" fill="#f8fafc" stroke="#E69F00" stroke-width="3"/>
+  <text x="629.5" y="150" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Rung 2 · Topology</text>
+  <text x="629.5" y="174" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#b45309" text-anchor="middle">HC-SOINN Plastic Graph</text>
+  <text x="629.5" y="197" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" fill="#475569" text-anchor="middle">Online regime prototypes</text>
+  <text x="629.5" y="218" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle">Detects unlabeled drift</text>
+  <text x="629.5" y="237" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#64748b" text-anchor="middle">Triggers circuit breaker</text>
+
+  <!-- Rung 3 -->
+  <rect x="764" y="122" width="215" height="126" rx="14" fill="#f8fafc" stroke="#D55E00" stroke-width="3"/>
+  <text x="871.5" y="150" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="800" fill="#0f172a" text-anchor="middle">Rung 3 · Model LAST</text>
+  <text x="871.5" y="174" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#D55E00" text-anchor="middle">JEPA-EBRM &amp; AirMoL 4-Bit</text>
+  <text x="871.5" y="197" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" fill="#475569" text-anchor="middle">LFM2.5-350M / Qwen3.5-0.8B</text>
+  <text x="871.5" y="218" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle">NVMe layer-streamed wake</text>
+  <text x="871.5" y="237" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#64748b" text-anchor="middle">Proposer / verifier only</text>
+
+  <!-- Commit / Refuse Gate + Receipt -->
+  <rect x="1012" y="112" width="152" height="68" rx="12" fill="#f8fafc" stroke="#009E73" stroke-width="2.5"/>
+  <text x="1088" y="139" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="middle">Certify → Commit</text>
+  <text x="1088" y="160" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569" text-anchor="middle">RCE or ACI (1−α) + receipt</text>
+
+  <rect x="1012" y="194" width="152" height="68" rx="12" fill="#f8fafc" stroke="#0f172a" stroke-width="2.5"/>
+  <text x="1088" y="221" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="middle">Refuse / Abstain</text>
+  <text x="1088" y="242" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569" text-anchor="middle">no false compile + receipt</text>
+
+  <!-- Escalation arrows -->
+  <path d="M253 185 L281 185" stroke="#0f172a" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+  <path d="M495 185 L523 185" stroke="#0f172a" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+  <path d="M732 185 L760 185" stroke="#0f172a" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+  <path d="M979 162 L1008 148" stroke="#009E73" stroke-width="2.5" fill="none" marker-end="url(#ahg)"/>
+  <path d="M979 208 L1008 224" stroke="#D55E00" stroke-width="2.5" fill="none" marker-end="url(#aho)"/>
+
+  <!-- Downward SleepCrystallizer loop -->
+  <rect x="245" y="302" width="725" height="86" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="2.5"/>
+  <text x="607.5" y="330" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="middle">Downward SleepCrystallizer (Walsh–Hadamard + Joint Minterm + Beneš Routing)</text>
+  <text x="607.5" y="353" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle">Compiles only certified wake traces (holdout ≥ 98.5% or Split-Conformal ACI E_φ(x,y) ≤ Q̂_t);</text>
+  <text x="607.5" y="373" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#0072B2" text-anchor="middle">writes shadow BRAM page and swaps active bank in 1 clock cycle (ModelGenerated ↛ Deterministic).</text>
+
+  <path d="M1164 146 L1182 146 L1182 345 L975 345" stroke="#0072B2" stroke-width="2.5" stroke-dasharray="6 4" fill="none" marker-end="url(#ahb)"/>
+  <path d="M245 345 L145.5 345 L145.5 253" stroke="#009E73" stroke-width="2.8" fill="none" marker-end="url(#ahg)"/>
+  <text x="195" y="334" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#009E73" text-anchor="middle">atomic swap</text>
+
+  <text x="600" y="438" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" fill="#475569" text-anchor="middle" font-style="italic">Design diagram, not a board power measurement. Receipts keep analytical est_j separate from measured_j=None (Section 1).</text>
+</svg>

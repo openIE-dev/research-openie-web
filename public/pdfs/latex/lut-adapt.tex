@@ -1,0 +1,582 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[10pt]{article}
+
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen}
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\setmainfont{STIX Two Text}
+\setmathfont{STIX Two Math}
+\setmonofont{Menlo}[Scale=0.83]
+
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{longtable,booktabs,array}
+\usepackage{caption}
+\captionsetup[table]{skip=6pt}
+\captionsetup[figure]{font=small,labelfont=bf}
+\usepackage{graphicx}
+\usepackage{xurl}
+\usepackage{bookmark}
+\usepackage{hyperref}
+
+\definecolor{openieAmber}{HTML}{D97706}
+\definecolor{openieAmberBg}{HTML}{FFFBEB}
+\definecolor{openieAmberBorder}{HTML}{F59E0B}
+\definecolor{openieSlate}{HTML}{334155}
+\definecolor{openieDark}{HTML}{0F172A}
+\definecolor{openieCodeBg}{HTML}{F8FAFC}
+\definecolor{openieCodeBorder}{HTML}{CBD5E1}
+\definecolor{openieBlue}{HTML}{0057B8}
+
+\hypersetup{
+  pdftitle={Downward LUT6 Compilation in a Mixture of Limits Cascade: Benes-Routed Boolean Fabrics, Conformal Wake Gates, and 4-Bit NVMe Layer Streaming},
+  pdfauthor={David Charlot, Open Interface Engineering},
+  colorlinks=true,
+  linkcolor=openieBlue,
+  citecolor=openieBlue,
+  urlcolor=openieBlue,
+  pdfcreator={XeTeX / Tectonic — Open Interface Engineering}
+}
+
+\urlstyle{same}
+\setlength{\emergencystretch}{3em}
+\sloppy
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+\title{\textbf{Downward LUT6 Compilation in a Mixture of Limits Cascade:\\
+Bene\v{s}-Routed Boolean Fabrics, Conformal Wake Gates, and 4-Bit NVMe Layer Streaming}}
+\author{\textbf{David Charlot, Open Interface Engineering}\\
+{\small Research paper $\cdot$ OpenIE \href{https://research.openie.dev}{research.openie.dev} $\cdot$ Repository: \texttt{lut-adapt-ai}}}
+\date{\small Version 1.0, 22 November 2026 $\cdot$ Web edition: \texttt{paper/web/index.html} $\cdot$ Living figures: \texttt{paper/web/living.html}}
+
+\begin{document}
+\maketitle
+
+% OpenIE Yellow Measurement Honesty Box
+\noindent\fcolorbox{openieAmberBorder}{openieAmberBg}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+    \small\color{openieDark}%
+    \textbf{Measurement.} Research paper, not a journal final. No physical FPGA board or silicon power rail was metered in this repository (\texttt{measured\_j = None}, \texttt{board\_metered = false}). Hardware logic and BRAM utilization (\texttt{41,186} \texttt{xcup} CLB LUTs, \texttt{81} \texttt{RAMB36E2} blocks, \texttt{0} \texttt{DSP48} slices) and single-cycle (\texttt{CPI = 1} at \texttt{250 MHz} nominal) context switching are \textbf{simulated} via Yosys \texttt{0.71+} (\texttt{synth\_xilinx -family xcup} targeting AMD Kria KV260 \texttt{xck26}) and Verilator \texttt{5.054}. Workstation wall-clock times, exact Darwin \texttt{F\_NOCACHE} \texttt{os.pread} NVMe byte counts, peak active RAM (\texttt{128.0 MB} on \texttt{LiquidAI/LFM2.5-350M}, \texttt{242.5 MB} on \texttt{Qwen/Qwen3.5-0.8B-Base}), and \texttt{100.0\%} bit/token parity are \textbf{measured} in software on Apple M5 Max. Every joule figure (\texttt{J/VC} and \texttt{mJ/byte}) is an \textbf{analytical estimate (\texttt{est\_j})}, never board power. The \texttt{11,428 pJ} KV260 \texttt{INA260} \texttt{VCC\_SOM} board reading cited for baseline context belongs solely to \emph{Metered Commit Gates} [same house]. No fabricated citations.
+  }%
+}
+
+\vspace{6pt}
+% OpenIE Amber Left-Rule Summary Quote
+\noindent{\color{openieAmber}\vrule width 3pt}\hspace{8pt}%
+\parbox{\dimexpr\linewidth-11pt\relax}{%
+  \itshape\color{openieSlate}%
+  A cascade that runs zero-FLOP lookup circuits first, wakes heavy sequence and world models only on novel inputs, and compiles certified wakes downward into Bene\v{s}-routed \texttt{LUT6} memory pages --- cutting NVMe weight traffic on 2026 hybrid models by up to \texttt{2.86$\times$} at \texttt{100\%} exact token parity, with every result labeled by how it was obtained.
+}
+\vspace{6pt}
+
+{
+\small
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\vspace{4pt}
+\hrule
+\vspace{8pt}
+
+\section{0. Overview}\label{overview}
+
+This paper studies how a machine can turn repeated neural-model work into cheap table lookups without losing exact output parity or promoting unverified guesses into trusted rules. It reports software measurements, register-transfer-level (RTL) synthesis and cycle simulations, and labeled analytical energy estimates.
+
+\textbf{In plain words}
+\begin{enumerate}
+  \item Most inputs a deployed system sees are variations of patterns it has already solved, so paying full neural-network compute and memory traffic on every token wastes energy and bandwidth.
+  \item We place a fast, reconfigurable 6-input truth-table (\texttt{LUT6}) lookup layer in front of streaming state-space and foundation models, and compile answers downward into lookup memory pages only after a strict check certifies them.
+  \item When a large 2026 language model must stream its weights layer-by-layer from an NVMe solid-state drive, that zero-FLOP \texttt{LUT6} drafter proposes multi-token bursts that the target model verifies in a single disk sweep, cutting disk reads by nearly \texttt{3$\times$} with zero change to the output tokens.
+\end{enumerate}
+
+In \emph{Metered Commit Gates} [same house], Part II introduced \textbf{Mixture of Limits (MoL)}: try gears in decreasing order of pass probability per joule $p_i / c_i$ (Simon and Kadane, 1975), stop as soon as the task completion predicate $C(z) = 1$ holds, and never promote \texttt{ModelGenerated} output to \texttt{Deterministic}. A static Lookup gear, however, covers only the patterns written into it before deployment. Conversely, existing lookup-table neural networks --- LogicNets (Umuroglu et al., 2020), DiffLogic (Petersen et al., 2022), and Differentiable Weightless Neural Networks (Bacellar et al., 2024) --- bake wire connectivity into fixed FPGA routing, requiring minutes to hours of vendor place-and-route (\texttt{Vivado}) whenever the input distribution shifts.
+
+This work closes the loop between the top and bottom of the cascade via \textbf{online downward \texttt{LUT6} compilation}:
+\begin{itemize}
+  \item \textbf{Rung 0 (Lookup --- Paged Bene\v{s} + \texttt{LUT6})}: Evaluates 64-bit truth-table \texttt{INIT} masks routed through a non-blocking $512 \times 512$ \textbf{Bene\v{s}--Copy--Bene\v{s}} multicast network and cached across $81 \times \texttt{RAMB36E2}$ dual-port block RAMs (\texttt{0} floating-point operations, \texttt{CPI = 1} cycle context switch in Verilator simulation).
+  \item \textbf{Rung 1 (Formula / Stream --- \texttt{Mamba-3} Complex MIMO SSD)}: Handles misses that require sequence context via a constant-memory $O(1)$ recurrent state (\texttt{48 KB} pinned SRAM in our \texttt{14.3M}-parameter reference), avoiding $O(L)$ KV-cache growth.
+  \item \textbf{Rung 2 (Topological Router --- \texttt{HC-SOINN})}: Maintains online prototype topology over latent embeddings, isolating regime boundaries and tripping a circuit breaker (\texttt{Refuse} / escalate) when unlabeled distribution shift arrives.
+  \item \textbf{Rung 3 (Solver / Model LAST --- \texttt{JEPA-EBRM} \& \texttt{AirMoL} 4-Bit NVMe Streaming)}: Wakes deep latent energy-based verification or layer-streamed pretrained 2026 foundation models (\texttt{LiquidAI/LFM2.5-350M} and \texttt{Qwen/Qwen3.5-0.8B-Base}) only when cheaper rungs abstain or require exact target verification.
+  \item \textbf{Downward \texttt{SleepCrystallizer}}: Extracts recurring wake traces using Walsh--Hadamard spectral warm-starts, joint-mode minterm truth tables, and Waksman Bene\v{s} switch schedules, hot-swapping shadow BRAM banks without halting inference or running FPGA place-and-route.
+\end{itemize}
+
+\subsection{0.1 Contributions}\label{contributions}
+
+\begin{enumerate}
+  \item \textbf{Amortized downward compilation condition (Section 2.1)}: Extends the Simon--Kadane $p_i / c_i$ cascade ordering with an explicit crystallization cost $E_{\text{compile}}$, establishing when compiling certified Rung 3 wakes into Rung 0 \texttt{LUT6} pages lowers cumulative energy-to-correct-completion.
+  \item \textbf{Non-blocking $512 \times 512$ Bene\v{s}--Copy--Bene\v{s} + \texttt{81}-\texttt{RAMB36E2} RTL architecture (Section 2.2, Section 3.3, Claim LA-3)}: Eliminates both the \texttt{102.0\%} KV260 LUT overflow of flat crossbars (\texttt{119,478} LUTs) and the \texttt{926,619}-LUT explosion of flip-flop page multiplexers, synthesizing to \texttt{41,186} \texttt{xcup} CLB LUTs (\texttt{35.2\%} of \texttt{xck26}), \texttt{81} \texttt{RAMB36E2}s (\texttt{56.2\%}), and \texttt{0} \texttt{DSP48} slices with \texttt{1}-cycle (\texttt{4.0 ns} at \texttt{250 MHz} nominal) page switching in simulation.
+  \item \textbf{Universal $\le 64$-bit joint-mode minterm synthesis (Section 2.3, Claims LA-5 \& LA-7)}: Proves joint-mode minterm lookup dominates independent bit-plane DiffLogic argmax on correlated branches (\texttt{if/else}, BPE multi-token bursts) with zero off-support chimeras, packing $K = \lfloor 64 / \lceil \log_2 |V| \rceil \rfloor$ subword tokens into a single \texttt{uint64} (\texttt{16b $\times$ 4 = 64b} for $|V|=65{,}536$; \texttt{18b $\times$ 3 = 54b} for $|V|=248{,}320$).
+  \item \textbf{Oracle-free Split-Conformal + Online ACI crystallization gate (Section 2.4, Claim LA-4)}: Pairs a quadratically regularized latent \texttt{JEPA-EBRM} score with Split Conformal calibration and Adaptive Conformal Inference (Gibbs and Cand\`es, 2021), achieving \texttt{0.00\%} false crystallization risk and \texttt{1.0000} OOD AUROC on shifted regimes where softmax MSP, margin, Helmholtz logit energy, and 5-pass MC-Dropout suffer \texttt{17.62\%--24.28\%} false risk.
+  \item \textbf{\texttt{AirMoL} zero-extra-sweep 4-bit NVMe streaming on 2026 foundation models (Section 3.4, Claims LA-6 \& LA-7)}: Combines Darwin \texttt{F\_NOCACHE} + \texttt{os.pread} 4-bit group-wise NVMe layer streaming with in-RAM hybrid state rollback (\texttt{Conv} / \texttt{SSM} / \texttt{Gated DeltaNet} + \texttt{GQA KV}) and online token-\texttt{LUT6} burst speculation on \texttt{LiquidAI/LFM2.5-350M} (March 2026) and \texttt{Qwen/Qwen3.5-0.8B-Base} (February 2026), cutting NVMe disk reads by \texttt{2.86$\times$} and \texttt{2.74$\times$} respectively at \texttt{100.0\%} exact token parity while holding only \texttt{8.45\%--9.47\%} of FP32 model size in active RAM.
+  \item \textbf{Polyglot systems verification and live CLI/SSE server (Section 3.2, Claims LA-2 \& LA-8)}: Cross-validates the cascade across Python/PyTorch/Triton, Rust \texttt{Burn 0.22.1 / CubeCL} Metal, Zig \texttt{0.17.1}, Go \texttt{1.27.4} SIMD, Julia \texttt{1.13.4} Enzyme, and a live HTTP/SSE code-completion server (\texttt{mol\_code\_cli.py}).
+\end{enumerate}
+
+\subsection{0.2 Energy to correct completion and downward amortization}\label{energy-ranking}
+
+Following \emph{Metered Commit Gates} [same house], let $C(z) \in \{0, 1\}$ be the task completion predicate over state $z$ and $\delta \in [0, 1)$ the allowed failure rate. Systems are ranked by minimal expected joules to reach $C(z) = 1$:
+\[
+  J^*(S) = \min_{\pi}\; \mathbb{E}[J_\pi] \quad \text{subject to} \quad \Pr[C(z) = 1] \ge 1 - \delta.
+\]
+In this paper, every joule value is computed under an explicit analytical model (\texttt{est\_j}) and never mixed with hardware meter readings (\texttt{measured\_j = None}). Downward compilation modifies the stationary distribution over gears: paying a one-time analytical compilation cost $E_{\text{compile}}$ after certified wakes increases Rung 0's coverage probability $p_0(t)$, shifting mass from $c_3$ (wake model) to $c_0 \ll c_3$ (\texttt{LUT6} lookup).
+
+\subsection{0.3 Relation to OpenIE Mixture of Limits and RCE-JEPA [same house]}\label{same-house}
+
+Prior OpenIE studies --- \emph{Metered Commit Gates}, \emph{Task Satiation vs.\ Aggregate Rebound}, \emph{The Reality Code Engine}, \emph{RCE-JEPA}, and \emph{RCE Compile} --- are \texttt{[same house]} works cited for architectural continuity, never as independent external confirmation. Two invariants from those studies bind every module in \texttt{lut-adapt-ai}:
+\begin{itemize}
+  \item \textbf{Provenance non-strengthening (\texttt{ModelGenerated $\nrightarrow$ Deterministic})}: When \texttt{SleepCrystallizer} compiles \texttt{LUT6} truth tables from a deterministic \texttt{RCE} check (Section 4.1), the resulting table is \texttt{Check-safe} on verified holdout grids (guarded online by an \texttt{HC-SOINN} / \texttt{RCE} circuit breaker). When \texttt{SleepCrystallizer} compiles under the oracle-free \texttt{JEPA-EBRM} Split-Conformal + ACI gate (Section 2.4), the resulting table carries a finite-sample statistical coverage bound (\texttt{Conformal-bounded}, $1-\alpha$) and is \textbf{never} stamped \texttt{Deterministic}.
+  \item \textbf{Proposer vs.\ authority in speculative decoding (\emph{The drafter proposes; the target decides})}: In byte-level and BPE token-level speculative decoding (Claims LA-5, LA-6, LA-7), \texttt{PagedBenesLUT6} acts strictly as a zero-FLOP proposer. Every emitted token is verified against the exact greedy distribution of the target model (\texttt{Mamba3CodeLM}, \texttt{LFM2.5-350M}, or \texttt{Qwen3.5-0.8B-Base}), guaranteeing \texttt{100.0\%} lossless output parity.
+\end{itemize}
+
+\subsection{0.4 How to read this paper}\label{how-to-read}
+
+Section 1 defines all notation, acronyms, and measurement labels before use. Section 2 states and proves four mathematical results governing cascade amortization, Bene\v{s} multicast routing, joint-mode minterm synthesis, and conformal wake gating. Section 3 describes the reference implementation across Python, Rust, Zig, Go, Julia, SystemVerilog (\texttt{xck26}), and \texttt{AirMoL} NVMe streaming. Section 4 reports Claims \texttt{LA-1} through \texttt{LA-8} with explicit measurement columns. Section 5 compares prior work in two structured tables. Section 6 records threats to validity, non-claims, and executable falsifiers \texttt{LA-F1} through \texttt{LA-F8}. Appendix A lists exact reproduction commands.
+
+\section{1. Notation, terms, and measurement labels}\label{notation}
+
+All symbols, hardware primitives, model acronyms, and evidence labels used in later sections are collected below.
+
+{\footnotesize
+\begin{longtable}{@{}L{0.27\linewidth}L{0.69\linewidth}@{}}
+\toprule
+\textbf{Term} & \textbf{Definition in this paper} \\
+\midrule
+\endhead
+\textbf{Mixture of Limits (MoL)} & Cascade policy [same house] ordering gears by decreasing $p_i / c_i$, stopping when $C(z)=1$, and issuing typed refusals and receipts. \\
+\addlinespace[3pt]
+\texttt{LUT6} (\texttt{INIT[63:0]}) & 6-input, 1-output Boolean look-up table primitive on Xilinx UltraScale+ silicon, fully specified by a 64-bit truth-table \texttt{INIT} mask. \\
+\addlinespace[3pt]
+\texttt{RAMB36E2} & Dual-port 36-Kbit Block RAM primitive on AMD/Xilinx Zynq UltraScale+ (\texttt{xck26} provides \texttt{144} \texttt{RAMB36E2} blocks). \\
+\addlinespace[3pt]
+\textbf{Bene\v{s}--Copy--Bene\v{s}} & Three-cascade non-blocking multicast network ($\mathcal{B}_1 \to \mathcal{C} \to \mathcal{B}_2$) routing $N=512$ input wires to $M=480$ \texttt{LUT6} pins via $11{,}008$ SRAM switch bits without FPGA re-synthesis. \\
+\addlinespace[3pt]
+\texttt{Mamba-3} SSD & State Space Duality sequence model with trapezoidal discretization, complex-valued RoPE transitions, and MIMO projections ($O(1)$ recurrent state per step). \\
+\addlinespace[3pt]
+\texttt{HC-SOINN} & Hierarchy-Context Self-Organizing Incremental Neural Network (Rung 2); builds online topological prototypes and flags unlabeled regime shift. \\
+\addlinespace[3pt]
+\texttt{JEPA-EBRM} & Joint-Embedding Predictive Architecture paired with a latent Energy-Based Reasoning Model $E_\phi(x,y)$ (Rung 3 scorer / verifier). \\
+\addlinespace[3pt]
+\textbf{Split Conformal + ACI} & Held-out nonconformity calibration paired with Adaptive Conformal Inference ($\alpha_{t+1} = \alpha_t + \gamma(\alpha - \text{err}_t)$; Gibbs and Cand\`es, 2021). \\
+\addlinespace[3pt]
+\textbf{Joint-mode minterm} & Packing a $K$-step discrete burst $(y_1,\dots,y_K)$ into one integer word ($\le 64$ bits) and storing the empirical conditional mode per context, preventing marginal bit-plane chimeras. \\
+\addlinespace[3pt]
+\texttt{AirMoL} & Our 4-bit group-quantized (\texttt{INT4} + FP16 scale/zero per 128 weights) NVMe layer-streaming engine with Darwin \texttt{F\_NOCACHE} \texttt{os.pread}, pinned $O(1)$ states, and token-\texttt{LUT6} speculation. \\
+\addlinespace[3pt]
+\texttt{LFM2.5-350M} & Liquid AI's March 2026 354.5M-parameter hybrid checkpoint (\texttt{10} Short-Conv/SSM blocks + \texttt{6} GQA full-attention blocks, $|V|=65{,}536$). \\
+\addlinespace[3pt]
+\texttt{Qwen3.5-0.8B-Base} & Alibaba Qwen Team's February 2026 752.4M-parameter hybrid checkpoint (\texttt{18} Gated DeltaNet linear-attention + \texttt{6} gated full-attention blocks, $|V|=248{,}320$). \\
+\addlinespace[3pt]
+\texttt{PLD} / \texttt{REST} & Prompt Lookup Decoding (Saxena, 2023) and Retrieval-Based Speculative Decoding (He et al., 2024), zero-FLOP retrieval drafters evaluated as baselines. \\
+\addlinespace[3pt]
+\texttt{Medusa} / \texttt{EAGLE-2} & Parallel MLP heads (Cai et al., 2024) and context-aware dynamic draft trees (Li et al., 2024), neural speculative drafters evaluated as baselines. \\
+\addlinespace[3pt]
+\texttt{Deterministic} / \texttt{Check-safe} & Provenance of an output verified by an exact specification check (\texttt{RCE}); distinct from statistical model predictions. \\
+\addlinespace[3pt]
+\texttt{Conformal-bounded} & Provenance of a \texttt{LUT6} page crystallized under the oracle-free \texttt{JEPA-EBRM} ACI gate ($1-\alpha$ marginal coverage); never promoted to \texttt{Deterministic}. \\
+\addlinespace[3pt]
+\texttt{ModelGenerated} & Provenance of a neural model proposal prior to verification. \texttt{ModelGenerated $\nrightarrow$ Deterministic}. \\
+\addlinespace[3pt]
+\textbf{Measured (software / I/O)} & Exact byte counts transferred via OS syscalls (\texttt{os.pread} with \texttt{F\_NOCACHE}), resident memory allocations, wall-clock seconds on Apple M5 Max, and exact bit/token agreement. Not joules. \\
+\addlinespace[3pt]
+\textbf{Simulated (RTL)} & Gate/BRAM/DSP counts from Yosys \texttt{0.71+} (\texttt{synth\_xilinx -family xcup}) and cycle counts (\texttt{CPI = 1}) from Verilator \texttt{5.054}. Not physical board timing closure or rail power (\texttt{board\_metered = false}). \\
+\addlinespace[3pt]
+\textbf{Estimated (\texttt{est\_j})} & Analytical joules computed from operation counts or TDP-time stand-ins (\texttt{joule\_meter.py} fallback when \texttt{RAPL}/\texttt{NVML} hardware counters are absent on macOS). Comparable only across arms inside the same formula; never silicon watts. \\
+\bottomrule
+\end{longtable}
+}
+
+\section{2. Mathematical formulations and four results}\label{math-results}
+
+\subsection{2.1 Result 1: Cascade ordering with amortized downward compilation}\label{result-1}
+
+Consider gears $i \in \{0, 1, 2, 3\}$ tried sequentially on an input $x$. Gear $i$ closes the task ($C(z)=1$) with probability $p_i$ at expected analytical energy $c_i > 0$. By Simon and Kadane (1975) (derived for Mixture of Limits in \emph{Metered Commit Gates}, Section II.2 [same house]), the expected energy of a permutation $\sigma$ under independent close events is
+\[
+  \mathbb{E}[J_\sigma] = \sum_{k=1}^{n} c_{\sigma(k)} \prod_{j < k} \bigl(1 - p_{\sigma(j)}\bigr),
+\]
+which is minimized if and only if gears are ordered by non-increasing ratio $p_{\sigma(1)}/c_{\sigma(1)} \ge \dots \ge p_{\sigma(n)}/c_{\sigma(n)}$.
+
+Now suppose a stationary regime $\mathcal{D}_r$ persists for a remaining horizon of $\Delta T$ queries. Initially Rung 0 (\texttt{LUT6}) has coverage $p_0 = 0$ on $\mathcal{D}_r$, so every query escalates to a wake path of expected cost $c_{\text{wake}}$ (for example Rung 3 at cost $c_3$). After collecting $N_{\text{wake}}$ certified wake pairs $(x, y^*)$, \texttt{SleepCrystallizer} expends one-time compilation energy $E_{\text{compile}}$ to synthesize a Rung 0 \texttt{LUT6} page with certified coverage $p_0' \in (0, 1]$ and per-query lookup cost $c_0 \ll c_{\text{wake}}$.
+
+\textbf{Proposition 1 (Net energy condition for downward crystallization).} \emph{Assuming the wake path closes the task ($p_{\text{wake}} = 1$), downward compilation strictly reduces expected cumulative spend over the remaining stationary horizon $\Delta T$ if and only if}
+\[
+  \Delta T \cdot \bigl(p_0' c_{\text{wake}} - c_0\bigr) > E_{\text{compile}}, \qquad \text{and} \qquad \frac{p_0'}{c_0} > \frac{1}{c_{\text{wake}}}.
+\]
+\emph{Proof.} Without crystallization, the remaining $\Delta T$ queries each incur expected energy $c_{\text{wake}}$, totaling $\Delta T \cdot c_{\text{wake}}$. With crystallization at one-time cost $E_{\text{compile}}$, Rung 0 precedes the wake path whenever $p_0'/c_0 > 1/c_{\text{wake}} \iff c_0 < p_0' c_{\text{wake}}$. Each subsequent query tries Rung 0 at cost $c_0$ and escalates with probability $1 - p_0'$, incurring expected energy $c_0 + (1 - p_0') c_{\text{wake}}$ and saving $p_0' c_{\text{wake}} - c_0 > 0$ per query. Summing over $\Delta T$ steps yields net cumulative savings $\Delta T(p_0' c_{\text{wake}} - c_0) - E_{\text{compile}} > 0$. When $c_0 / c_{\text{wake}} < 10^{-4}$, the threshold simplifies to $\Delta T \cdot p_0' c_{\text{wake}} > E_{\text{compile}}$. $\blacksquare$
+
+\textbf{Consequence on non-stationary drift.} If regimes churn faster than $\Delta T^* = E_{\text{compile}} / (p_0' c_{\text{wake}} - c_0)$, compiling \texttt{LUT6} pages loses energy. \texttt{SleepCrystallizer} therefore gates compilation behind a minimum certified buffer $N_{\text{wake}}$ and holdout agreement $\tau_{\text{agree}} = 0.985$.
+
+\subsection{2.2 Result 2: Non-blocking \texorpdfstring{$512 \times 512$}{512x512} Bene\v{s}--Copy--Bene\v{s} multicast routing}\label{result-2}
+
+A Rung 0 layer of $G = 80$ dynamic \texttt{LUT6} primitives requires $M = 6G = 480$ input pins drawn from an $N = 512$-bit input bus. Because learned Boolean features exhibit variable fan-out (one input wire may feed zero \texttt{LUT6} pins or dozens), a standard $N \times N$ permutation Bene\v{s} network cannot route multicast assignments, while a flat $M \times N$ multiplexer crossbar requires $480$ independent $512:1$ muxes (\texttt{119,478} CLB LUTs already at $384$ ports, overflowing the \texttt{117,120}-LUT Kria KV260 \texttt{xck26}; Claim LA-3).
+
+\textbf{Theorem 2 (Contention-free multicast via Bene\v{s}--Copy--Bene\v{s}).} \emph{Let $N = 2^n$ ($n=9, N=512$) and $M \le N$ ($M=480$). Any arbitrary many-to-one multicast mapping $\phi: \{0, \dots, M-1\} \to \{0, \dots, N-1\}$ is realizable without wire contention in a three-cascade $2 \times 2$ switch fabric $\mathcal{B}_1 \to \mathcal{C} \to \mathcal{B}_2$ of depth}
+\[
+  D(N) = 2(2\log_2 N - 1) + \log_2 N = 5\log_2 N - 2 = 43 \text{ stages}
+\]
+\emph{comprising $43 \times (N/2) = 11{,}008$ SRAM-configured $2 \times 2$ cells, with $O(N \log N)$ configuration runtime and zero FPGA place-and-route.}
+
+\emph{Proof.} Let $U = \{s_1, \dots, s_r\}$ be the $r \le M$ distinct active sources in the image of $\phi$ with fan-out multiplicities $m_1, \dots, m_r \ge 1$ summing to $\sum_{j=1}^r m_j = M \le N$. Define partial sums $S_0 = 0$ and $S_j = \sum_{i=1}^j m_i$.
+(1) \emph{Concentration ($\mathcal{B}_1$, $2n-1 = 17$ stages)}: Choose any bijection $\pi_1$ on $\{0,\dots,N-1\}$ mapping $\pi_1(s_j) = S_{j-1}$ for $j=1,\dots,r$. By the Bene\v{s}--Waksman theorem (Bene\v{s}, 1965; Waksman, 1968), $\pi_1$ decomposes into $2n-1$ stages of $N/2$ $2\times 2$ switches via $O(N \log N)$ bipartite 2-coloring.
+(2) \emph{Contiguous fan-out ($\mathcal{C}$, $n = 9$ stages)}: Replicating each seed at $S_{j-1}$ across the contiguous interval $[S_{j-1}, S_j - 1]$ defines disjoint monotonic intervals $[S_0, S_1-1], \dots, [S_{r-1}, S_r-1]$. By Thompson's monotonic copy network theorem (Thompson, 1978; Lee, 1988), binary-tree interval splitting across $n$ butterfly stages preserves strict endpoint monotonicity at every stage and routes all $M$ copies with zero link contention.
+(3) \emph{Output permutation ($\mathcal{B}_2$, $2n-1 = 17$ stages)}: Map each contiguous block $[S_{j-1}, S_j-1]$ bijectively onto the target pin set $\phi^{-1}(s_j) \subset \{0,\dots,M-1\}$ and pad $[M, N-1]$ arbitrarily to form a bijection $\pi_2$, routed by Waksman's algorithm on $\mathcal{B}_2$. Composing $\pi_2 \circ \mathcal{C} \circ \pi_1$ delivers $\phi(q)$ to every pin $q \in \{0,\dots,M-1\}$. $\blacksquare$
+
+\subsection{2.3 Result 3: Joint-mode minterm synthesis vs.\ marginal coordinate argmax}\label{result-3}
+
+Standard differentiable LUT layers (Petersen et al., 2022) predict multi-bit or multi-token outputs $\mathbf{Y} = (Y_1, \dots, Y_B) \in \mathcal{Y}$ via independent binary gates $\hat{y}_b(x) = \mathbb{I}[\Pr(Y_b = 1 \mid \psi(x)) > 1/2]$ on each bit-plane $b \in \{1,\dots,B\}$. On multi-modal conditional distributions --- such as code after \texttt{if (} vs.\ \texttt{return }, or $K$-token BPE bursts --- independent bit-plane rounding creates invalid \textbf{chimera} tokens.
+
+\textbf{Proposition 3 (Dominance and zero-chimera property of joint-mode minterms).} \emph{For any discrete context map $\psi: \mathcal{X} \to \mathcal{C}$ and discrete burst space $\mathcal{Y}$ encoded into $B \le 64$ bits, define the joint-mode minterm table $T^*(c) = \arg\max_{\mathbf{y} \in \mathcal{Y}} \Pr(\mathbf{Y} = \mathbf{y} \mid \psi(X) = c)$ and the marginal bit-plane predictor $\hat{\mathbf{y}}^{\text{marg}}(c) = (\arg\max_{v \in \{0,1\}} \Pr(Y_b = v \mid \psi(X)=c))_{b=1}^B$. Then:}
+\begin{enumerate}
+  \item \emph{$\Pr[\mathbf{Y} = T^*(\psi(X))] \ge \Pr[\mathbf{Y} = \hat{\mathbf{y}}^{\text{marg}}(\psi(X))]$, with strict inequality whenever marginal bit majorities disagree with the joint mode.}
+  \item \emph{Every output of $T^*(c)$ belongs to $\operatorname{supp}(\mathbf{Y} \mid \psi(X)=c)$ (zero chimera bursts), whereas $\hat{\mathbf{y}}^{\text{marg}}(c)$ can achieve \texttt{0\%} exact-burst accuracy.}
+\end{enumerate}
+\emph{Proof.} Pointwise for each context $c$, $\Pr(\mathbf{Y} = g(c) \mid c) \le \max_{\mathbf{y} \in \mathcal{Y}} \Pr(\mathbf{Y} = \mathbf{y} \mid c) = \Pr(\mathbf{Y} = T^*(c) \mid c)$ for every deterministic $g(c)$; taking expectations gives (1), and positive probability mass at the mode gives $T^*(c) \in \operatorname{supp}(\mathbf{Y}\mid c)$. For the counterexample in (2), let $B=3$ and place conditional mass $0.40, 0.35, 0.25$ on $(1,1,0), (1,0,1), (0,1,1)$: every marginal bit satisfies $\Pr(Y_b=1\mid c) \ge 0.60 > 1/2$, so $\hat{\mathbf{y}}^{\text{marg}}(c) = (1,1,1) \notin \operatorname{supp}(\mathbf{Y}\mid c)$ (\texttt{0\%} exact match vs.\ \texttt{40\%} for $T^*(c)=(1,1,0)$). $\blacksquare$
+
+\textbf{Universal 64-bit BPE token packing.} For any pretrained tokenizer of vocabulary size $|V|$, each token requires $b_V = \lceil \log_2 |V| \rceil$ bits, packing $K = \lfloor 64 / b_V \rfloor$ tokens losslessly into one \texttt{uint64} word: \texttt{LFM2.5-350M} ($|V|=65{,}536, b_V=16 \implies K=4$, \texttt{64} bits) and \texttt{Qwen3.5-0.8B-Base} ($|V|=248{,}320, b_V=18 \implies K=3$, \texttt{54} bits $\le 64$).
+
+\subsection{2.4 Result 4: Oracle-free latent \texttt{JEPA-EBRM} Split-Conformal + Online ACI gate}\label{result-4}
+
+In open-world perceptual or telemetry tasks without a deterministic \texttt{RCE} check, gating \texttt{SleepCrystallizer} by softmax Maximum Softmax Probability (MSP) or logit energy (Liu et al., 2020) suffers from high-confidence Extrapolation far from training data (Hein et al., 2019), crystallizing hallucinated labels into \texttt{LUT6} banks (\texttt{17.6\%--24.3\%} false risk in Claim LA-4). We define a quadratically regularized latent \texttt{JEPA-EBRM} nonconformity score over encoder $z = f_\theta(x) \in \mathbb{R}^d$ and class prototypes $\{\mu_y\}$:
+\[
+  E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f_\theta(x)\|_2^2 + \psi_\phi(f_\theta(x), y), \qquad \lambda_r > 0, \quad |\psi_\phi(z,y)| \le C_\psi.
+\]
+Calibration on $n$ exchangeable held-out pairs sets $\hat{Q}_{1-\alpha} = \operatorname{Quantile}_{\lceil (n+1)(1-\alpha) \rceil / n}(\{E_\phi(X_i, Y_i)\}_{i=1}^n)$. Online, Adaptive Conformal Inference (ACI; Gibbs and Cand\`es, 2021) updates $\alpha_{t+1} = \alpha_t + \gamma(\alpha - \text{err}_t)$ and forms $\mathcal{C}_t(x) = \{y : E_\phi(x, y) \le \hat{Q}_{1-\alpha_t}\}$. \texttt{SleepCrystallizer} compiles $(x, \hat{y})$ if and only if $|\mathcal{C}_t(x)| = 1$, stamping provenance \texttt{Conformal-bounded} (\texttt{ModelGenerated $\nrightarrow$ Deterministic}).
+
+\textbf{Proposition 4 (Coverage, adaptive shift recovery, and radial OOD abstention).}
+\emph{(1) Under exchangeable $(X_{\text{test}}, Y_{\text{test}})$ at fixed $\alpha_t=\alpha$, $\Pr[Y_{\text{test}} \in \mathcal{C}(X_{\text{test}})] \ge 1 - \alpha$ (Vovk et al., 2005; Lei et al., 2018). (2) Under arbitrary bounded shift with $\alpha_t \in (0,1)$, ACI satisfies $\lim_{T\to\infty} T^{-1}\sum_{t=1}^T \text{err}_t = \alpha$ (Gibbs and Cand\`es, 2021). (3) Because $|\psi_\phi| \le C_\psi$ and $\lambda_r > 0$, $\min_y E_\phi(x,y) \ge \frac{\lambda_r}{2}\|z\|_2^2 - C_\psi \to +\infty$ as $\|z\|_2 \to \infty$, so every ray leaving radius $R(\alpha_t) = \sqrt{2(\hat{Q}_{1-\alpha_t} + C_\psi)/\lambda_r}$ yields $\mathcal{C}_t(x) = \emptyset$ (explicit \texttt{Refuse} / abstain).} $\blacksquare$
+
+\section{3. Architecture, polyglot reference suite, and KV260 RTL}\label{architecture}
+
+\subsection{3.1 The four-rung downward-compilation cascade}\label{cascade-arch}
+
+Figure~\ref{fig:cascade} shows the closed-loop execution and downward-compilation dataflow implemented in \texttt{src/clai/}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/mol-downward-cascade.png}
+  \caption{Downward compilation across a four-rung Mixture of Limits cascade. Design diagram, not a board power measurement. Receipts keep analytical \texttt{est\_j} separate from \texttt{measured\_j = None}.}
+  \label{fig:cascade}
+\end{figure}
+
+Every incoming input enters \textbf{Rung 0} (\texttt{difflut\_net.py}, \texttt{code\_corpus\_speculative.py}). On a certified cache hit, Rung 0 closes immediately with zero floating-point operations. On a miss or ambiguity: \textbf{Rung 1} (\texttt{Mamba-3} Complex MIMO SSD, \texttt{triton\_mamba3\_ssd.py}) updates its constant-size complex recurrent state; \textbf{Rung 2} (\texttt{HC-SOINN}, \texttt{hc\_soinn.py}) tracks topological prototypes and isolates novel regimes; \textbf{Rung 3} (\texttt{JEPA-EBRM} and \texttt{AirMoL}) performs latent energy verification or streams 4-bit foundation model shards from NVMe; and \textbf{\texttt{SleepCrystallizer}} (\texttt{sleep\_crystallizer.py}) warm-starts Boolean truth tables from Walsh--Hadamard correlations, computes Waksman Bene\v{s} switch schedules (\texttt{benes\_lut\_fabric.py}), verifies holdout agreement $\ge 98.5\%$, and atomically flips the active \texttt{LUT6} bank pointer.
+
+\subsection{3.2 Polyglot systems suite}\label{polyglot-arch}
+
+Five independent implementations in \texttt{src/clai/} and \texttt{sys/} cross-check the cascade across runtimes:
+\begin{itemize}
+  \item \textbf{Python 3.12 + PyTorch + Custom Triton Kernel (\texttt{src/clai/})}: Reference 4-rung engine, Triton \texttt{LUT6} kernel (\texttt{triton\_lut6.py}), Split-Conformal ACI governance, SystemVerilog emitter, and \texttt{AirMoL} NVMe streamer.
+  \item \textbf{Rust (\texttt{sys/rust/}, \texttt{Burn 0.22.1} + \texttt{CubeCL} Metal GPU + \texttt{Rayon})}: Full 4-rung Metal GPU training and sleep crystallization on Apple M5 Max, emitting standalone KV260 Verilog (\texttt{artifacts/rust\_clai\_rung0\_kv260.v}).
+  \item \textbf{Zig \texttt{0.17.1} (\texttt{sys/zig/src/mol\_baremetal.zig})}: Bare-metal \texttt{std.Io.Threaded} cascade using \texttt{@Vector(8, f32)} SIMD and \texttt{@popCount} with strictly \texttt{0} heap bytes allocated in the hot inference loop.
+  \item \textbf{Go \texttt{1.27.4} (\texttt{sys/go/mol\_dataplane.go})}: Concurrent worker-pool L7 packet dataplane (\texttt{bits.OnesCount64}) verified at \texttt{0 B/op} and \texttt{0 allocs/op}.
+  \item \textbf{Julia \texttt{1.13.4} (\texttt{sys/julia/mol\_scientific.jl})}: Reverse-mode automatic differentiation through smooth Walsh--Hadamard \texttt{DiffLUT6} polynomials via \texttt{Enzyme.jl} (\texttt{6.11e-10} max finite-difference discrepancy).
+\end{itemize}
+
+\subsection{3.3 Kria KV260 (\texttt{xck26}) SystemVerilog RTL and \texttt{RAMB36E2} page cache}\label{rtl-arch}
+
+Figure~\ref{fig:benes} shows the hardware datapath in \texttt{hw/kv260/rtl/} (\texttt{clai\_kv260\_axi\_top.sv}, \texttt{clai\_benes\_hotswap\_core.sv}, and \texttt{clai\_benes\_hotswap\_core.sv}).
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/benes-paged-silicon.png}
+  \caption{$512\times 512$ Bene\v{s}--Copy--Bene\v{s} multicast fabric and $81 \times \texttt{RAMB36E2}$ single-cycle \texttt{LUT6} page cache targeting AMD Kria KV260 (\texttt{xck26}). Synthesized in Yosys \texttt{0.71+} (\texttt{synth\_xilinx -family xcup}) and cycle-simulated in Verilator \texttt{5.054}; \texttt{board\_metered = false}.}
+  \label{fig:benes}
+\end{figure}
+
+Reloading a single shadow \texttt{LUT6} bank (\texttt{5,120} bits) over 64-bit AXI4-Lite stalls switching for \texttt{82} cycles (\texttt{328 ns} at \texttt{250 MHz}), whereas storing \texttt{512} pages in distributed flip-flops explodes to \texttt{926,619} CLB LUTs (\texttt{791\%} of \texttt{xck26}). \texttt{clai\_benes\_hotswap\_core.sv} maps \texttt{512} resident pages (\texttt{5,120} \texttt{INIT} bits + \texttt{48}-bit context tag + \texttt{1} valid bit, aligned to $81 \times 64 = 5{,}184$ bits/page) across \textbf{\texttt{81} parallel \texttt{RAMB36E2} blocks} in $512 \times 64$ simple dual-port mode: Port A services asynchronous AXI4-Lite fills from the ARM PS while Port B performs a 9-bit XOR-fold hash lookup, reads all \texttt{5,120} \texttt{INIT} bits + \texttt{48}-bit tag in \textbf{\texttt{1} clock cycle (\texttt{4.0 ns} at \texttt{250 MHz} nominal, \texttt{CPI = 1.0})}, checks \texttt{tag\_hit}, and evaluates the \texttt{80} Bene\v{s}-routed \texttt{LUT6}s in a single beat.
+
+\subsection{3.4 \texttt{AirMoL}: Zero-extra-sweep 4-bit NVMe layer streaming on 2026 hybrid models}\label{airmol-arch}
+
+Figure~\ref{fig:airmol} illustrates \texttt{AirMoL} (\texttt{src/clai/frontier/air\_mol\_streamer.py} and \texttt{hf\_air\_mol\_pretrained.py}). Standard \texttt{AirLLM}-style layer streaming sweeps the entire model from NVMe once per generated token (\texttt{T=1}) and spills Transformer KV-caches to flash.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/airmol-nvme-speculation.png}
+  \caption{\texttt{AirMoL} zero-extra-sweep 4-bit NVMe layer streaming with universal $\le 64$-bit joint-mode token \texttt{LUT6} speculation on \texttt{LiquidAI/LFM2.5-350M} and \texttt{Qwen/Qwen3.5-0.8B-Base}. NVMe bytes, peak active RAM, exact token agreement, and wall-clock throughput are measured on Apple M5 Max; joules are unmetered.}
+  \label{fig:airmol}
+\end{figure}
+
+\texttt{AirMoL} combines four mechanisms: (1) group-wise 4-bit (\texttt{INT4}, group size \texttt{128}) NVMe layer shards read via POSIX \texttt{os.pread} under Darwin \texttt{fcntl(fd, F\_NOCACHE, 1)} so OS page caching cannot hide flash I/O; (2) \texttt{TokenPagedBenesLUT6Drafter} proposing $K \in \{3, 4\}$ BPE tokens packed in one \texttt{uint64} at \texttt{0} FLOPs and \texttt{0} NVMe reads; (3) single-sweep batch verification of $[t_0, d_1, \dots, d_K]$ through each streamed layer shard once; and (4) \textbf{in-RAM hybrid state rollback}, snapshotting compact recurrent states (\texttt{Short-Conv}/\texttt{SSM} in \texttt{LFM2.5}; \texttt{Gated DeltaNet} in \texttt{Qwen3.5}) across the $K+1$ positions inside each layer and truncating the sparse \texttt{6}-layer \texttt{GQA} KV-cache to \texttt{seq\_len + m + 1} upon partial draft mismatch --- incurring \textbf{zero extra NVMe sweeps}.
+
+\section{4. Claims and results}\label{claims-results}
+
+Every claim below corresponds to an executable script and persisted artifact in \texttt{artifacts/}. Measurement labels follow Section 1 strictly.
+
+\subsection{4.1 Claim LA-1: Analytical \texttt{J/VC} collapse on synthetic tasks and real \texttt{.pcap} traffic}\label{claim-la1}
+
+\texttt{scripts/run\_collapse\_curve.py} (5,120 synthetic piecewise-stationary episodes) and \texttt{scripts/run\_realworld\_domain.py} (5,120 real L7 enterprise packets in \texttt{artifacts/enterprise\_drift\_capture.pcap}, with an unannounced IEEE \texttt{802.1Q} VLAN \texttt{0x8100} shift at packet 2,500) evaluate downward \texttt{LUT6} compilation under deterministic \texttt{RCE} holdout verification ($\ge 98.5\%$).
+
+{\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}L{0.25\linewidth}C{0.09\linewidth}C{0.11\linewidth}C{0.15\linewidth}C{0.10\linewidth}L{0.16\linewidth}@{}}
+\toprule
+\textbf{Workload \& Window} & \textbf{R0 Share} & \textbf{Pass Rate} & \textbf{Analytical \texttt{est\_j/VC}} & \textbf{RTL Parity} & \textbf{Measurement} \\
+\midrule
+\endhead
+Synthetic ep.\ \texttt{1--512} (cold) & \texttt{0.00\%} & \texttt{0.0\%$\to$52.0\%} & \texttt{2,323.18 est\_j} & --- & SW + \texttt{est\_j} \\
+Synthetic ep.\ \texttt{3,073--3,584} & \texttt{52.73\%} & \texttt{60.55\%} & \texttt{2.59 est\_j} (\texttt{895$\times$}) & \texttt{100.0\%} & Verilator + \texttt{est\_j} \\
+\texttt{.pcap} pkts \texttt{1--512} (cold IPv4) & \texttt{0.00\%} & \texttt{73.05\%} & \texttt{3.3351 est\_j} & \texttt{100.0\%} & Verilator + \texttt{est\_j} \\
+\texttt{.pcap} pkts \texttt{1,537--2,048} (cryst.) & \texttt{100.00\%} & \texttt{100.00\%} & \texttt{0.000140 est\_j} & \texttt{100.0\%} & Verilator + \texttt{est\_j} \\
+\texttt{.pcap} pkts \texttt{2,049--2,560} (VLAN drift) & \texttt{2.73\%} & \texttt{68.55\%} & \texttt{3.0485 est\_j} & \texttt{100.0\%} & Breaker + \texttt{est\_j} \\
+\textbf{\texttt{.pcap} pkts \texttt{2,561--3,072} (re-cryst.)} & \textbf{\texttt{100.00\%}} & \textbf{\texttt{100.00\%}} & \textbf{\texttt{0.000131 est\_j}} & \textbf{\texttt{100.0\%}} & \textbf{Verilator + \texttt{est\_j}} \\
+\bottomrule
+\end{longtable}
+}
+
+At packet \texttt{2,500}, the circuit breaker catches the 4-byte VLAN header offset (\texttt{96.9\%} mismatch against the pre-drift \texttt{LUT6} bank), flushes Rung 0, wakes Rung 1/3, and re-crystallizes a new \texttt{LUT6} bank within one sleep window (\texttt{5,120/5,120} exact Verilator RTL parity). The \texttt{25,458$\times$} ratio compares \texttt{est\_j} analytical counts inside the same model, not metered board power.
+
+\subsection{4.2 Claim LA-2: Five-language polyglot parity and zero-allocation dataplanes}\label{claim-la2}
+
+{\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}L{0.19\linewidth}L{0.24\linewidth}L{0.33\linewidth}L{0.16\linewidth}@{}}
+\toprule
+\textbf{Implementation} & \textbf{Target / Backend} & \textbf{Key Verified Metric} & \textbf{Measurement} \\
+\midrule
+\endhead
+\textbf{Rust (\texttt{sys/rust/})} & \texttt{Burn 0.22.1} + \texttt{CubeCL} Metal & \texttt{2,331.42 $\to$ 0.19 est\_j/VC}, \texttt{95.31\%} R0, emits KV260 \texttt{.v} & Measured + \texttt{est\_j} \\
+\textbf{Zig \texttt{0.17.1}} & \texttt{@Vector(8, f32)} + \texttt{@popCount} & \texttt{0} heap bytes in hot loop; \texttt{87 ns/pkt} (\texttt{11.49M pkts/s}) & Measured (M5 Max) \\
+\textbf{Go \texttt{1.27.4}} & Worker pool + \texttt{OnesCount64} & \texttt{0 B/op}, \texttt{0 allocs/op}; \texttt{31.86 ns/op} (\texttt{31.39M evals/s}) & Measured (\texttt{go test}) \\
+\textbf{Julia \texttt{1.13.4}} & \texttt{Enzyme.jl} reverse-mode AD & Max gradient error vs.\ central FD: \texttt{6.11 $\times$ 10$^{-10}$} & Measured check \\
+\bottomrule
+\end{longtable}
+}
+
+\subsection{4.3 Claim LA-3: KV260 (\texttt{xck26}) Bene\v{s}--Copy--Bene\v{s} and \texttt{RAMB36E2} paged synthesis}\label{claim-la3}
+
+{\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{@{}L{0.29\linewidth}C{0.06\linewidth}C{0.12\linewidth}C{0.16\linewidth}C{0.09\linewidth}C{0.08\linewidth}L{0.10\linewidth}@{}}
+\toprule
+\textbf{RTL Architecture} & \textbf{Pages} & \textbf{Switch} & \textbf{CLB LUTs (\texttt{xck26})} & \textbf{RAMB36} & \textbf{Drift Acc.} & \textbf{Evidence} \\
+\midrule
+\endhead
+\texttt{2A} Flat \texttt{512:1} Crossbar (\texttt{64} LUT6) & \texttt{1} & \texttt{82 cyc} & \texttt{119,478} (\textbf{102.0\%!}) & \texttt{0} & \texttt{98.44\%} & Yosys sim \\
+\texttt{2B} Compact Crossbar (\texttt{32} LUT6) & \texttt{1} & \texttt{82 cyc} & \texttt{59,739} (\texttt{51.0\%}) & \texttt{0} & \texttt{95.94\%} & Yosys sim \\
+\texttt{2C} Fixed-Wire DiffLogic / WNN & \texttt{1} & Re-PAR & \texttt{160} (\texttt{0.14\%}) & \texttt{0} & \textbf{\texttt{52.34\%}} & Yosys sim \\
+\texttt{2D} Single-Page Bene\v{s}--Copy--Bene\v{s} & \texttt{1} & \texttt{82 cyc} & \texttt{40,155} (\texttt{34.3\%}) & \texttt{0} & \texttt{98.44\%} & Yosys+Veril. \\
+\texttt{P2} Distributed FF + \texttt{512:1} Mux & \texttt{512} & \texttt{1 cyc} & \texttt{926,619} (\textbf{791.2\%!}) & \texttt{0} & \texttt{98.44\%} & Simulated \\
+\textbf{\texttt{P3} Bene\v{s} + \texttt{81} \texttt{RAMB36E2} (Ours)} & \textbf{\texttt{512}} & \textbf{\texttt{1 cyc (4ns)}} & \textbf{\texttt{41,186 (35.2\%)}} & \textbf{\texttt{81 (56\%)}} & \textbf{\texttt{98.44\%}} & \textbf{Yosys+Veril.} \\
+\bottomrule
+\end{longtable}
+}
+
+All six configurations synthesize with \textbf{\texttt{0} \texttt{DSP48} slices}. Adding \texttt{512} resident \texttt{LUT6} context pages via \texttt{81} \texttt{RAMB36E2} blocks adds only \texttt{+1,031} CLB LUTs (\texttt{+0.88\%} of \texttt{xck26}) over the single-page Bene\v{s} core while accelerating page switching \texttt{82$\times$} (\texttt{CPI = 1.0} across \texttt{24/24} Verilator assertions).
+
+\subsection{4.4 Claim LA-4: Oracle-free latent \texttt{JEPA-EBRM} Split-Conformal + Online ACI gate}\label{claim-la4}
+
+{\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{@{}L{0.30\linewidth}C{0.07\linewidth}C{0.10\linewidth}C{0.09\linewidth}C{0.09\linewidth}C{0.11\linewidth}L{0.13\linewidth}@{}}
+\toprule
+\textbf{Crystallization Gate} & \textbf{Passes} & \textbf{False Risk} & \textbf{OOD AUC} & \textbf{ID Cov.} & \textbf{Drift Caught} & \textbf{Measurement} \\
+\midrule
+\endhead
+\texttt{3A} Softmax MSP ($\max p \ge 0.95$) & \texttt{1} & \texttt{17.62\%} & \texttt{0.8552} & \texttt{90.93\%} & \texttt{False} & SW measured \\
+\texttt{3B} Temp-Scaled Margin & \texttt{1} & \texttt{17.66\%} & \texttt{0.8422} & \texttt{91.12\%} & \texttt{False} & SW measured \\
+\texttt{3C} Helmholtz Logit Energy & \texttt{1} & \texttt{24.28\%} & \texttt{0.8045} & \texttt{97.17\%} & \texttt{False} & SW measured \\
+\texttt{3D} Epistemic MC-Dropout (\texttt{5}-pass) & \texttt{5} & \texttt{18.24\%} & \texttt{0.8494} & \texttt{91.03\%} & \texttt{False} & SW measured \\
+\textbf{\texttt{3E} \texttt{JEPA-EBRM} + Conformal ACI} & \textbf{\texttt{1}} & \textbf{\texttt{0.00\%}} & \textbf{\texttt{1.0000}} & \textbf{\texttt{95.66\%}} & \textbf{\texttt{True}} & \textbf{SW measured} \\
+\bottomrule
+\end{longtable}
+}
+
+\subsection{4.5 Claim LA-5: Lossless byte-level speculative decoding on \texttt{520 KB} polyglot source code}\label{claim-la5}
+
+{\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{@{}L{0.30\linewidth}C{0.08\linewidth}C{0.08\linewidth}C{0.12\linewidth}C{0.10\linewidth}C{0.11\linewidth}L{0.10\linewidth}@{}}
+\toprule
+\textbf{Decoding / Speculation Arm} & \textbf{Parity} & \textbf{B / Pass} & \textbf{Draft FLOPs} & \textbf{MFLOP/B} & \textbf{\texttt{est\_mJ/B}} & \textbf{Evidence} \\
+\midrule
+\endhead
+\texttt{A} Causal Transformer (\texttt{RoPE+SwiGLU}) & \texttt{100.0\%} & \texttt{1.00} & \texttt{0} & \texttt{7.209} & \texttt{58.94} & SW+\texttt{est\_j} \\
+\texttt{B} \texttt{Mamba-3} Complex MIMO (\texttt{T=1}) & \texttt{100.0\%} & \texttt{1.00} & \texttt{0} & \texttt{2.257} & \texttt{20.84} & SW+\texttt{est\_j} \\
+\texttt{C} \texttt{PLD} In-Prompt Lookup & \texttt{100.0\%} & \texttt{2.13} & \texttt{0} & \texttt{1.322} & \texttt{11.52} & SW+\texttt{est\_j} \\
+\texttt{D} \texttt{REST} Corpus Suffix-Trie & \texttt{100.0\%} & \texttt{3.84} & \texttt{0} & \texttt{0.734} & \texttt{6.40} & SW+\texttt{est\_j} \\
+\texttt{E} \texttt{Medusa} Parallel MLP Heads & \texttt{100.0\%} & \texttt{2.62} & \texttt{428,288} & \texttt{1.241} & \texttt{9.46} & SW+\texttt{est\_j} \\
+\texttt{F} \texttt{EAGLE-2} Neural Draft Tree & \texttt{100.0\%} & \texttt{2.75} & \texttt{1,122,560} & \texttt{1.435} & \texttt{9.07} & SW+\texttt{est\_j} \\
+\textbf{\texttt{G} \texttt{MoL} Paged Bene\v{s} \texttt{LUT6} (Ours)} & \textbf{\texttt{100.0\%}} & \textbf{\texttt{3.84}} & \textbf{\texttt{0}} & \textbf{\texttt{0.736}} & \textbf{\texttt{6.41}} & \textbf{SW+\texttt{est\_j}} \\
+\bottomrule
+\end{longtable}
+}
+
+\subsection{4.6 Claim LA-6: Controlled \texttt{AirMoL} 4-bit NVMe streaming (\texttt{14.3M} matched pair)}\label{claim-la6}
+
+{\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}L{0.31\linewidth}C{0.07\linewidth}C{0.07\linewidth}C{0.10\linewidth}C{0.10\linewidth}C{0.09\linewidth}C{0.08\linewidth}L{0.07\linewidth}@{}}
+\toprule
+\textbf{Offloaded NVMe Architecture} & \textbf{Parity} & \textbf{B/Swp} & \textbf{Read MB} & \textbf{Write MB} & \textbf{RAM} & \textbf{ms/B} & \textbf{Class} \\
+\midrule
+\endhead
+\texttt{1} \texttt{AirLLM} Transformer FP16 + KV Spill & \texttt{100\%} & \texttt{1.00} & \texttt{2,130.0} & \texttt{407.6} & \texttt{8.81 MB} & \texttt{60.6} & Meas. \\
+\texttt{2} \texttt{AirLLM} Transformer 4-Bit + KV Spill & \texttt{100\%} & \texttt{1.00} & \texttt{887.6} & \texttt{407.6} & \texttt{8.81 MB} & \texttt{64.9} & Meas. \\
+\texttt{3} \texttt{AirMamba-3} 4-Bit + Swapped \texttt{EAGLE-2} & \texttt{100\%} & \texttt{2.86} & \texttt{175.3} & \texttt{0.0} & \texttt{7.20 MB} & \texttt{19.2} & Meas. \\
+\texttt{4} \texttt{AirMamba-3} 4-Bit + Pinned $O(1)$ (\texttt{T=1}) & \texttt{100\%} & \texttt{1.00} & \texttt{488.3} & \texttt{0.0} & \texttt{7.20 MB} & \texttt{37.7} & Meas. \\
+\textbf{\texttt{5} \texttt{AirMoL} 4-Bit + Cold \texttt{LUT6} (Ours)} & \textbf{\texttt{100\%}} & \textbf{\texttt{3.74}} & \textbf{\texttt{130.7}} & \textbf{\texttt{0.0}} & \textbf{\texttt{7.51 MB}} & \textbf{\texttt{11.2}} & \textbf{Meas.} \\
+\textbf{\texttt{6} \texttt{AirMoL} 4-Bit + Post-Wake (Ours)} & \textbf{\texttt{100\%}} & \textbf{\texttt{4.27}} & \textbf{\texttt{114.4}} & \textbf{\texttt{0.0}} & \textbf{\texttt{7.51 MB}} & \textbf{\texttt{11.1}} & \textbf{Meas.} \\
+\bottomrule
+\end{longtable}
+}
+
+\subsection{4.7 Claim LA-7: Pretrained 2026 hybrid models under \texttt{AirMoL} (\texttt{LFM2.5-350M} \& \texttt{Qwen3.5-0.8B-Base})}\label{claim-la7}
+
+{\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}L{0.30\linewidth}C{0.07\linewidth}C{0.08\linewidth}C{0.07\linewidth}C{0.11\linewidth}C{0.11\linewidth}C{0.07\linewidth}L{0.08\linewidth}@{}}
+\toprule
+\textbf{2026 Checkpoint \& Arm} & \textbf{Parity} & \textbf{Tok/Sw} & \textbf{Sweeps} & \textbf{NVMe Read} & \textbf{Peak RAM} & \textbf{tok/s} & \textbf{Class} \\
+\midrule
+\endhead
+\texttt{LFM2.5-350M} $\cdot$ \texttt{AirLLM} FP16 (\texttt{T=1}) & \texttt{100\%} & \texttt{1.00} & \texttt{32.00} & \texttt{25.129 GB} & \texttt{128.0 MB} & \texttt{2.21} & Meas. \\
+\texttt{LFM2.5-350M} $\cdot$ \texttt{AirLLM} 4-Bit (\texttt{T=1}) & \texttt{100\%} & \texttt{1.00} & \texttt{32.00} & \texttt{7.071 GB} & \texttt{128.0 MB} & \texttt{2.21} & Meas. \\
+\texttt{LFM2.5-350M} $\cdot$ \texttt{AirLLM} 4-Bit + \texttt{PLD} & \texttt{100\%} & \texttt{1.13} & \texttt{28.20} & \texttt{6.231 GB} & \texttt{128.0 MB} & \texttt{2.71} & Meas. \\
+\textbf{\texttt{LFM2.5-350M} $\cdot$ \texttt{AirMoL} Cold \texttt{LUT6}} & \textbf{\texttt{100\%}} & \textbf{\texttt{1.32}} & \textbf{\texttt{24.20}} & \textbf{\texttt{5.347 GB}} & \textbf{\texttt{128.0 MB}} & \textbf{\texttt{2.74}} & \textbf{Meas.} \\
+\textbf{\texttt{LFM2.5-350M} $\cdot$ \texttt{AirMoL} Post-Wake} & \textbf{\texttt{100\%}} & \textbf{\texttt{2.86}} & \textbf{\texttt{11.20}} & \textbf{\texttt{2.475 GB}} & \textbf{\texttt{128.0 MB}} & \textbf{\texttt{6.26}} & \textbf{Meas.} \\
+\midrule
+\texttt{Qwen3.5-0.8B} $\cdot$ \texttt{AirLLM} 4-Bit (\texttt{T=1}) & \texttt{100\%} & \texttt{1.00} & \texttt{24.00} & \texttt{12.674 GB} & \texttt{242.5 MB} & \texttt{0.53} & Meas. \\
+\texttt{Qwen3.5-0.8B} $\cdot$ \texttt{AirLLM} 4-Bit + \texttt{PLD} & \texttt{100\%} & \texttt{1.32} & \texttt{18.25} & \texttt{9.637 GB} & \texttt{242.5 MB} & \texttt{0.50} & Meas. \\
+\textbf{\texttt{Qwen3.5-0.8B} $\cdot$ \texttt{AirMoL} Cold \texttt{LUT6}} & \textbf{\texttt{100\%}} & \textbf{\texttt{1.48}} & \textbf{\texttt{16.25}} & \textbf{\texttt{8.581 GB}} & \textbf{\texttt{242.5 MB}} & \textbf{\texttt{0.32}} & \textbf{Meas.} \\
+\textbf{\texttt{Qwen3.5-0.8B} $\cdot$ \texttt{AirMoL} Post-Wake} & \textbf{\texttt{100\%}} & \textbf{\texttt{2.74}} & \textbf{\texttt{8.75}} & \textbf{\texttt{4.621 GB}} & \textbf{\texttt{242.5 MB}} & \textbf{\texttt{1.11}} & \textbf{Meas.} \\
+\bottomrule
+\end{longtable}
+}
+
+Active weight RAM stays capped at \textbf{\texttt{128.0 MB}} (\texttt{9.47\%} of \texttt{1,352.25 MB} FP32) on \texttt{LiquidAI/LFM2.5-350M} and \textbf{\texttt{242.5 MB}} (\texttt{8.45\%} of \texttt{2,870.15 MB} FP32) on \texttt{Qwen/Qwen3.5-0.8B-Base}. Note the preserved trade-off on \texttt{Qwen3.5-0.8B} cold unseen prompts: while \texttt{AirMoL} cuts NVMe disk reads from \texttt{12.674 GB} to \texttt{8.581 GB}, CPU Gated DeltaNet batch verification of \texttt{4} tokens lowers wall-clock speed (\texttt{0.32} vs.\ \texttt{0.53 tok/s}) until online wake-to-\texttt{LUT6} crystallization lifts acceptance to \textbf{\texttt{2.74 tok/sweep}} (\texttt{4.621 GB} read, \textbf{\texttt{1.11 tok/s}}).
+
+\subsection{4.8 Claim LA-8: Interactive CLI and HTTP/SSE server (\texttt{mol\_code\_cli.py})}\label{claim-la8}
+
+\texttt{scripts/mol\_code\_cli.py} exposes \texttt{--backend \{mamba3,lfm2.5-350m,qwen3.5-0.8b\}} and \texttt{--air-nvme} across a terminal CLI and local HTTP/SSE server (\texttt{/v1/health}, \texttt{/v1/complete/stream}, \texttt{/v1/crystallize}), streaming live Rung routing, NVMe shard I/O, and \texttt{RAMB36E2} page occupancy (\texttt{438/512 $\to$ 460/512}, \texttt{Gen 1 $\to$ Gen 2}; \texttt{18/18} \texttt{pytest} suites passing).
+
+\section{5. Related work and convergence observations}\label{related-work}
+
+{\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{@{}L{0.19\linewidth}L{0.15\linewidth}L{0.24\linewidth}L{0.14\linewidth}L{0.19\linewidth}@{}}
+\toprule
+\textbf{System} & \textbf{ID / Venue} & \textbf{What it establishes} & \textbf{Reported cost} & \textbf{Difference here} \\
+\midrule
+\endhead
+\textbf{LogicNets} (Umuroglu et al., 2020) & \texttt{2004.03021} $\cdot$ FPL 2020 & Sparse quantized NN layers compiled to FPGA LUTs. & FPGA LUT / Fmax synthesis. & Fixed routing; drift needs Vivado re-PAR vs.\ \texttt{1}-cycle Bene\v{s}+\texttt{RAMB36E2}. \\
+\addlinespace[3pt]
+\textbf{DiffLogic} (Petersen et al., 2022) \& \textbf{DWN} (2024) & \texttt{2210.08277} $\cdot$ \texttt{2410.11112} & Differentiable Boolean gate \& weightless LUT training. & Gate count \& accuracy. & Static wires fail drift (\texttt{52.34\%}) and suffer marginal chimeras (Prop.\ 3). \\
+\addlinespace[3pt]
+\textbf{T-MAC} (2024) \& \textbf{TeLLMe} (Qiao et al., 2025) & \texttt{2407.00088} $\cdot$ \texttt{2504.16266} & Ternary / low-bit matmul via table lookup on CPU/FPGA. & Latency \& FPGA power. & Accelerates matmul \emph{inside} a model; does not bypass model runs. \\
+\addlinespace[3pt]
+\textbf{FrugalGPT} (2023) \& \textbf{RouteLLM} (2024) & \texttt{2305.05176} $\cdot$ \texttt{2406.18665} & Weak-to-strong LLM cascades \& preference routers. & API dollar cost vs.\ quality. & Model-to-model only; no \texttt{LUT6} floor or downward compilation. \\
+\addlinespace[3pt]
+\textbf{GreenServ} (2026) \& \textbf{VoltanaLLM} (2025) & \texttt{2601.17551} $\cdot$ \texttt{2509.04827} & Energy-metered multi-LLM routing \& frequency serving. & \textbf{Metered} GPU Wh (\texttt{Zeus}/\texttt{NVML}). & Optimizes GPU serving; our joules are \texttt{est\_j}, compiling to \texttt{LUT6}. \\
+\addlinespace[3pt]
+\textbf{Medusa} (2024), \textbf{EAGLE-2} (2024), \textbf{HCSpec} (2026) & \texttt{2401.10774} $\cdot$ \texttt{2406.16858} $\cdot$ ACL 2026 & Neural MLP/tree/cascade speculative drafters. & Wall-clock speedup. & Require draft FLOPs \& weight reads vs.\ \texttt{0}-FLOP \texttt{uint64} \texttt{LUT6} pages. \\
+\addlinespace[3pt]
+\textbf{PLD} (2023) \& \textbf{REST} (He et al., 2024) & GitHub 2023 $\cdot$ \texttt{2311.08252} & Zero-FLOP prompt n-gram \& datastore suffix-trie draft. & Latency speedup (\texttt{0} FLOPs). & \texttt{PLD} misses off-prompt tokens; \texttt{REST} uses variable tries vs.\ \texttt{RAMB36E2} pages. \\
+\addlinespace[3pt]
+\textbf{AirLLM} (lyogavin, 2023) & Open-source SSD streamer & Layer-by-layer SSD streaming in tiny RAM. & Active RAM (\texttt{4 GB} for \texttt{70B}). & Pure \texttt{T=1} (\texttt{1.0 tok/swp}) + KV spill vs.\ \texttt{AirMoL} \texttt{2.74$\times$--2.86$\times$} cut. \\
+\addlinespace[3pt]
+\textbf{Gates} \& \textbf{RCE-JEPA} (Charlot, 2026) \texttt{[same house]} & \texttt{research.openie.dev} & Commit gates (\texttt{11,428 pJ} KV260 SOM), MoL $p_i/c_i$, \texttt{RCE-JEPA}. & KV260 SOM \texttt{measured\_j} + \texttt{est\_j}. & Same-house foundation; extended here with Bene\v{s} \texttt{LUT6} compiler \& \texttt{AirMoL}. \\
+\bottomrule
+\end{longtable}
+}
+
+\section{6. Limits, threats to validity, not claimed, and falsifiers}\label{limits}
+
+\textbf{Internal validity.} Downward crystallization pays off only when regime persistence $\Delta T$ exceeds Proposition 1's amortization threshold. On i.i.d.\ random bitstreams or per-step adversarial churn ($\Delta T = 1$), $p_0' \approx 0$ and the system falls back to \texttt{1.00 tok/sweep} plus Rung 0 lookup overhead. On \texttt{Qwen3.5-0.8B-Base} cold prompts (\texttt{Claim LA-7}), CPU verification of $K+1 = 4$ tokens reduced wall-clock speed (\texttt{0.32} vs.\ \texttt{0.53 tok/s}) despite cutting NVMe bytes (\texttt{8.581} vs.\ \texttt{12.674 GB}), showing that CPU batch verification requires post-wake draft acceptance (\texttt{2.74 tok/sweep} $\to$ \texttt{1.11 tok/s}) or GPU/FPGA offload to beat \texttt{T=1} latency.
+
+\textbf{Construct validity.} \texttt{100.0\%} lossless parity guarantees bit-for-bit agreement with greedy target decoding; it does not raise the underlying capability ceiling of a \texttt{350M} or \texttt{0.8B} checkpoint. Likewise, \texttt{Conformal-bounded} ($1-\alpha$) bounds statistical miscoverage on the calibrated \texttt{JEPA-EBRM} manifold and never promotes neural proposals to \texttt{Deterministic}.
+
+\textbf{External validity.} Foundation-model \texttt{AirMoL} runs were measured on \texttt{LiquidAI/LFM2.5-350M} and \texttt{Qwen/Qwen3.5-0.8B-Base} over held-out repository code on one Apple M5 Max SSD. Larger \texttt{30B--70B} figures in \texttt{air\_mol\_nvme\_baselines.csv} are labeled analytical projections, not executed \texttt{70B} runs.
+
+\textbf{Measurement validity.} Every \texttt{J/VC} and \texttt{mJ/byte} value is an analytical estimate (\texttt{est\_j}), never silicon power (\texttt{measured\_j = None}). Yosys \texttt{0.71+} and Verilator \texttt{5.054} prove structural \texttt{xck26} synthesis and cycle-accurate \texttt{CPI = 1} behavior, not Vivado post-PAR \texttt{250 MHz} timing closure or KV260 rail watts (\texttt{board\_metered = false}).
+
+\textbf{Not claimed.} Not claimed here: physical KV260 bitstream loading or rail-metered joules for \texttt{clai\_benes\_hotswap\_core.sv}; Vivado post-PAR timing closure at \texttt{250 MHz}; silicon energy leadership over commercial ASICs; promotion of \texttt{ModelGenerated} outputs to \texttt{Deterministic}; or \texttt{SWE-bench} accuracy gains beyond the target model.
+
+{\footnotesize
+\begin{longtable}{@{}L{0.11\linewidth}L{0.25\linewidth}L{0.58\linewidth}@{}}
+\toprule
+\textbf{ID} & \textbf{Claim} & \textbf{Exact Disproof / Falsifier Condition} \\
+\midrule
+\endhead
+\texttt{LA-F1} & \texttt{Claim LA-1} (\texttt{.pcap} + RTL) & \texttt{run\_realworld\_domain.py} fails \texttt{100.0\%} Verilator parity over \texttt{5,120} packets or misses the packet-\texttt{2,500} VLAN drift. \\
+\texttt{LA-F2} & \texttt{Claim LA-2} (Polyglot suite) & Zig allocates \texttt{> 0} hot-loop heap bytes, Go reports \texttt{> 0 allocs/op}, or Julia Enzyme exceeds \texttt{1e-7} FD error. \\
+\texttt{LA-F3} & \texttt{Claim LA-3} (KV260 paged RTL) & \texttt{verify\_paged\_bram\_rtl.py} exceeds \texttt{117,120} LUTs, \texttt{144} \texttt{RAMB36E2}s, \texttt{0} \texttt{DSP48}s, or \texttt{1} cycle per page switch. \\
+\texttt{LA-F4} & \texttt{Claim LA-4} (Conformal ACI) & \texttt{run\_frontier\_benchmarks.py} exceeds target false risk $\alpha=0.02$ on shifted traffic or stamps \texttt{Deterministic}. \\
+\texttt{LA-F5} & \texttt{Claim LA-5} (Byte speculation) & \texttt{run\_code\_corpus\_benchmark.py} yields \texttt{< 100.0\%} byte parity vs.\ greedy \texttt{Mamba3CodeLM} on \texttt{48} unseen prompts. \\
+\texttt{LA-F6} & \texttt{Claim LA-6} (\texttt{AirMoL} 14.3M) & \texttt{run\_air\_mol\_benchmark.py} under \texttt{F\_NOCACHE} fails \texttt{100\%} parity or reads more bytes than \texttt{AirLLM} 4-Bit \texttt{T=1}. \\
+\texttt{LA-F7} & \texttt{Claim LA-7} (2026 HF \texttt{AirMoL}) & \texttt{run\_hf\_air\_mol\_pretrained.py} or \texttt{run\_hf\_qwen35\_air\_mol.py} diverges by $\ge 1$ BPE token from greedy target. \\
+\texttt{LA-F8} & \texttt{Claim LA-8} (Full test suite) & \texttt{pytest -v} fails any of the \texttt{18} test suites in \texttt{tests/}. \\
+\bottomrule
+\end{longtable}
+}
+
+\section{7. References}\label{references}
+
+{\small
+\emph{Every reference is a verified primary publication, technical report, or model card. Works marked \texttt{[same house]} are by David Charlot, Open Interface Engineering (\url{https://research.openie.dev/}), cited for continuity and disclosure.}
+
+\begin{itemize}
+  \item Bacellar, A., et al.\ (2024). Differentiable Weightless Neural Networks. \emph{arXiv:2410.11112}.
+  \item Bene\v{s}, V.\ E.\ (1965). \emph{Mathematical Theory of Connecting Networks and Telephone Traffic}. Academic Press.
+  \item Cai, T., Li, Y., Geng, Z., Peng, H., Lee, J.\ D., Chen, D., and Dao, T.\ (2024). Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads. \emph{ICML 2024}, \emph{arXiv:2401.10774}.
+  \item Charlot, D.\ (2026). Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems (Part I \& Part II: Mixture of Limits). \emph{Open Interface Engineering}, \url{https://research.openie.dev/papers/gates/} \texttt{[same house]}.
+  \item Charlot, D.\ (2026). RCE-JEPA: World Coding, with JEPA as Premise. \emph{Open Interface Engineering}, \url{https://research.openie.dev/papers/rce-jepa/} \texttt{[same house]}.
+  \item Charlot, D.\ (2026). RCE Compile \& Task Satiation vs.\ Aggregate Rebound. \emph{Open Interface Engineering}, \url{https://research.openie.dev/} \texttt{[same house]}.
+  \item Chen, L., Zaharia, M., and Zou, J.\ (2023). FrugalGPT. \emph{arXiv:2305.05176}.
+  \item Dao, T., and Gu, A.\ (2024). Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality. \emph{ICML 2024}, \emph{arXiv:2405.21060}.
+  \item Furao, S., and Hasegawa, O.\ (2006). An incremental network for on-line unsupervised classification and topology learning (SOINN). \emph{Neural Networks}, 19(1):90--106.
+  \item Gibbs, I., and Cand\`es, E.\ (2021). Adaptive Conformal Inference Under Distribution Shift. \emph{NeurIPS 2021}, \emph{arXiv:2106.00170}.
+  \item GreenServ (2026). Energy-Efficient Context-Aware Dynamic Routing for Multi-Model LLM Inference. \emph{ICPE 2026}, \emph{arXiv:2601.17551}.
+  \item HCSpec (2026). Two-Tier Horizontal Cascade Speculative Decoding. \emph{ACL 2026}, \url{https://doi.org/10.18653/v1/2026.acl-long.353}.
+  \item He, Z., Zhong, Z., Cai, T., Lee, J.\ D., and He, D.\ (2024). REST: Retrieval-Based Speculative Decoding. \emph{NAACL 2024}, \emph{arXiv:2311.08252}.
+  \item Hein, M., Andriushchenko, M., and Bitterwolf, J.\ (2019). Why ReLU Networks Yield High-Confidence Predictions Far Away From the Training Data. \emph{CVPR 2019}, \emph{arXiv:1812.05720}.
+  \item Horowitz, M.\ (2014). Computing's Energy Problem (and What We Can Do About It). \emph{IEEE ISSCC 2014}.
+  \item Kuon, I., and Rose, J.\ (2007). Measuring the Gap Between FPGAs and ASICs. \emph{IEEE TCAD}, 26(2):203--215.
+  \item Landauer, R.\ (1961). Irreversibility and Heat Generation in the Computing Process. \emph{IBM J.\ Res.\ Dev.}, 5(3):183--191.
+  \item LeCun, Y.\ (2022). A Path Towards Autonomous Machine Intelligence. \emph{Meta AI Research}.
+  \item LeCun, Y., Chopra, S., Hadsell, R., Ranzato, M., and Huang, F.\ J.\ (2006). A Tutorial on Energy-Based Learning. MIT Press.
+  \item Lee, T.\ T.\ (1988). Nonblocking Copy Networks for Multicast Packet Switching. \emph{IEEE JSAC}, 6(9):1455--1467.
+  \item Lei, J., G'Sell, M., Rinaldo, A., Tibshirani, R.\ J., and Wasserman, L.\ (2018). Distribution-Free Predictive Inference for Regression. \emph{JASA}, 113(523):1094--1111.
+  \item Leviathan, Y., Kalman, M., and Matias, Y.\ (2023). Fast Inference from Transformers via Speculative Decoding. \emph{ICML 2023}, \emph{arXiv:2211.17192}.
+  \item Li, Y., Wei, F., Zhang, C., and Zhang, H.\ (2024). EAGLE-2: Faster Inference of Language Models with Dynamic Draft Trees. \emph{EMNLP 2024}, \emph{arXiv:2406.16858}.
+  \item Liquid AI (2026). \texttt{LiquidAI/LFM2.5-350M} Hybrid Open-Weights Model Card (March 2026). \url{https://huggingface.co/LiquidAI/LFM2.5-350M}.
+  \item Liu, W., Wang, X., Owens, J., and Li, Y.\ (2020). Energy-based Out-of-distribution Detection. \emph{NeurIPS 2020}, \emph{arXiv:2010.03759}.
+  \item lyogavin (2023). AirLLM: Layer-wise LLM Inference on Memory-Constrained Hardware. \url{https://github.com/lyogavin/airllm}.
+  \item Ma, S., et al.\ (2024). The Era of 1-bit LLMs (\texttt{BitNet b1.58}). \emph{arXiv:2402.17764}.
+  \item Ong, I., et al.\ (2024). RouteLLM: Learning to Route LLMs with Preference Data. \emph{ICLR 2025}, \emph{arXiv:2406.18665}.
+  \item Petersen, F., Borgelt, C., Kuehne, H., and Deussen, O.\ (2022). Deep Differentiable Logic Gate Networks. \emph{NeurIPS 2022}, \emph{arXiv:2210.08277}.
+  \item Qiao, Y., et al.\ (2025). TeLLMe: An Energy-Efficient Ternary LLM Accelerator on Edge FPGAs. \emph{arXiv:2504.16266}.
+  \item Qwen Team (2026). \texttt{Qwen/Qwen3.5-0.8B-Base} Hybrid Gated DeltaNet + Attention Model Card (February 2026). \url{https://huggingface.co/Qwen/Qwen3.5-0.8B-Base}.
+  \item Saxena, A.\ (2023). Prompt Lookup Decoding. \url{https://github.com/apoorvumang/prompt-lookup-decoding}.
+  \item Simon, H.\ A., and Kadane, J.\ B.\ (1975). Optimal Problem-Solving Search: All-or-None Solutions. \emph{Artificial Intelligence}, 6(3):235--247.
+  \item Thompson, C.\ D.\ (1978). Generalized Connection Networks for Parallel Processor Intercommunication. \emph{IEEE Trans.\ Comput.}, C-27(12):1119--1125.
+  \item Umuroglu, Y., Akhauri, Y., Fraser, N.\ J., and Blott, M.\ (2020). LogicNets. \emph{FPL 2020}, \emph{arXiv:2004.03021}.
+  \item VoltanaLLM (2025). Energy-Efficient and SLO-Aware Disaggregated LLM Serving. \emph{arXiv:2509.04827}.
+  \item Vovk, V., Gammerman, A., and Shafer, G.\ (2005). \emph{Algorithmic Learning in a Random World}. Springer.
+  \item Waksman, A.\ (1968). A Permutation Network. \emph{Journal of the ACM}, 15(1):159--163.
+  \item Wei, J., et al.\ (2024). T-MAC: CPU Renaissance via Table Lookup for Low-Bit LLM Deployment. \emph{arXiv:2407.00088}.
+\end{itemize}
+}
+
+\section{Appendix A. Reproducibility}\label{reproducibility}
+
+All claims, RTL simulations, and CSV/JSON logs reproduce from \texttt{openIE-dev/lut-adapt-ai}:
+
+\noindent\fcolorbox{openieCodeBorder}{openieCodeBg}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+    \footnotesize\ttfamily
+    pytest -v \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \# 18/18 suites pass (Python, RTL, Conformal, AirMoL)\\
+    python3 scripts/run\_collapse\_curve.py \ \ \ \ \ \ \ \ \ \ \ \# Claim LA-1 synthetic collapse + Verilator\\
+    python3 scripts/run\_realworld\_domain.py \ \ \ \ \ \ \# Claim LA-1 5,120-pkt .pcap + VLAN drift + RTL\\
+    (cd sys/rust \&\& cargo run --release) \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \# Claim LA-2 Rust Burn 0.22.1 / CubeCL Metal\\
+    (cd sys/zig \&\& zig build test) \&\& (cd sys/go \&\& go test -bench=.) \&\& julia sys/julia/mol\_scientific.jl\\
+    python3 scripts/run\_frontier\_benchmarks.py \ \ \ \ \ \ \ \ \ \# Claims LA-3 \& LA-4 Benes + Conformal ACI\\
+    python3 scripts/verify\_paged\_bram\_rtl.py \ \ \ \ \# Claim LA-3 81-RAMB36E2 1-cycle paged LUT6 RTL\\
+    python3 scripts/run\_code\_corpus\_benchmark.py \ \ \ \ \ \ \ \ \ \# Claim LA-5 520 KB repo speculative codegen\\
+    python3 scripts/run\_air\_mol\_benchmark.py \ \ \ \ \ \ \# Claim LA-6 14.3M F\_NOCACHE 4-bit NVMe streaming\\
+    python3 scripts/run\_hf\_air\_mol\_pretrained.py \ \ \ \# Claim LA-7 LiquidAI/LFM2.5-350M (Mar 2026)\\
+    python3 scripts/run\_hf\_qwen35\_air\_mol.py \# Claim LA-7 Qwen/Qwen3.5-0.8B-Base (Feb 2026)\\
+    python3 scripts/mol\_code\_cli.py --backend qwen3.5-0.8b --prompt "def forward(self, x):" --max-bytes 48
+  }%
+}
+
+\end{document}

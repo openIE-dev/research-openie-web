@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F59E0B">
+  <meta name="color-scheme" content="dark light">
+  <meta name="author" content="David Charlot">
+  <title>Living Figures · Downward LUT6 Compilation &amp; AirMoL | OpenIE Research</title>
+  <script>
+    (function(){
+      var stored = localStorage.getItem('oe-theme');
+      var theme = stored && ['dark','light','auto'].indexOf(stored) !== -1 ? stored : 'auto';
+      var resolved = theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
+      document.documentElement.setAttribute('data-theme', resolved);
+      document.documentElement.style.colorScheme = resolved;
+    })();
+  </script>
+  <link rel="stylesheet" href="openie.css">
+</head>
+<body class="grid-bg">
+  <nav class="nav-glass" aria-label="Main navigation">
+    <a href="https://research.openie.dev/" class="brand-logo">Open<span class="brand-cyan">IE</span> <span class="brand-amber">Research</span></a>
+    <div class="nav-links">
+      <a href="/papers/lut-adapt/">Paper</a>
+      <a href="/living/lut-adapt/" class="active">Figures (/living/)</a>
+      <a href="/about/lut-adapt/">About</a>
+      <a href="/pdfs/latex/lut-adapt.pdf">LaTeX PDF</a>
+      <a href="https://openie.dev" class="pill-cyan">openie.dev</a>
+      <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
+    </div>
+  </nav>
+
+  <main>
+    <div style="max-width: 64rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
+      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/lut-adapt/ · interactive instruments</p>
+      <h1 class="hero-title" style="max-width: none;">Living Figures: Downward LUT6 Compilation &amp; AirMoL</h1>
+      <p class="author-line">David Charlot, Open Interface Engineering · Companion to <a href="/papers/lut-adapt/" style="color: var(--color-brand-cyan);">/papers/lut-adapt/</a></p>
+
+      <div class="measurement-box">
+        <strong>Measurement grammar on this page.</strong> Every widget below stamps its numbers with an explicit honesty chip:
+        <span class="chip chip-meas">Measured (SW / NVMe I/O)</span> for Darwin <code>F_NOCACHE</code> bytes, RAM, and wall-clock runs from <code>artifacts/*.csv</code>;
+        <span class="chip chip-sim">Simulated (RTL)</span> for Yosys <code>0.71+</code> <code>xcup</code> + Verilator <code>5.054</code> netlist results; and
+        <span class="chip chip-est">Modelled (est_j)</span> for analytical cascade equations. <code>measured_j = None</code>; <code>board_metered = false</code>.
+      </div>
+
+      <!-- Widget 1: Proposition 1 Simon-Kadane + Downward Amortization -->
+      <section id="la-diag-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-diag-01</code> · Simon–Kadane <code>p_i / c_i</code> &amp; Downward Crystallization Horizon</h2>
+          <span class="chip chip-est">Modelled (est_j · Proposition 1)</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Explore Proposition 1 (Section 2.1): compiling certified Rung 3 wakes into a Rung 0 <code>LUT6</code> page pays off if and only if stationary regime persistence <code>ΔT</code> exceeds <code>E_compile / (p'_0 · c_wake − c_0)</code>. Under rapid adversarial churn (small <code>ΔT</code>), downward compilation is refused.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Post-compile Rung 0 hit rate p'₀</span><span id="v-p0">0.75</span></label>
+            <input type="range" id="s-p0" min="0.05" max="1.00" step="0.05" value="0.75">
+          </div>
+          <div class="ctrl-box">
+            <label><span>Stationary regime horizon ΔT (queries)</span><span id="v-dt">1500</span></label>
+            <input type="range" id="s-dt" min="20" max="5000" step="20" value="1500">
+          </div>
+          <div class="ctrl-box">
+            <label><span>Wake gear cost c_wake (est_j)</span><span id="v-cw">3.30</span></label>
+            <input type="range" id="s-cw" min="0.20" max="10.0" step="0.20" value="3.30">
+          </div>
+          <div class="ctrl-box">
+            <label><span>One-time compile cost E_compile (est_j)</span><span id="v-ec">420</span></label>
+            <input type="range" id="s-ec" min="20" max="2000" step="20" value="420">
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Always-Wake Spend</div>
+            <div class="v" id="o-base">4,950 J</div>
+            <div class="s">ΔT · c_wake (est_j)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Crystallized Cascade Spend</div>
+            <div class="v" id="o-cryst">1,658 J</div>
+            <div class="s">E_compile + ΔT(c₀ + (1−p'₀)c_wake)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Break-Even Horizon ΔT*</div>
+            <div class="v" id="o-bkeven">170 steps</div>
+            <div class="s">Min stationary steps to amortize</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">SleepCrystallizer Verdict</div>
+            <div class="v" id="o-verdict" style="color: var(--color-brand-cyan);">COMPILE (3.0×)</div>
+            <div class="s" id="o-verdict-sub">Net est_j savings positive</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Widget 2: Claim LA-3 KV260 Benes + RAMB36E2 RTL Explorer -->
+      <section id="la-diag-02" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-diag-02</code> · Kria KV260 (<code>xck26</code>) Beneš + <code>RAMB36E2</code> RTL Synthesis Explorer</h2>
+          <span class="chip chip-sim">Simulated (Yosys 0.71+ xcup + Verilator 5.054)</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Inspect exact netlist synthesis and cycle-simulation figures from <code>artifacts/frontier2_benes_silicon_baselines.csv</code> and <code>artifacts/kv260_paged_bram_baselines.csv</code> against the AMD Kria KV260 (<code>xck26</code>: <code>117,120</code> CLB LUTs, <code>144</code> <code>RAMB36E2</code> blocks).
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Select RTL Architecture (Claim LA-3)</span></label>
+            <select id="rtl-select">
+              <option value="ours" selected>P3 · 512×512 Beneš–Copy–Beneš + 81 RAMB36E2 (512 pages, Ours)</option>
+              <option value="benes1">2D · Single-Page 512×512 Beneš–Copy–Beneš (AXIlite 82-cyc reload)</option>
+              <option value="flat64">2A · Flat 512:1 Crossbar (64 LUT6, 384 ports — OVERFLOW)</option>
+              <option value="ff512">P2 · Distributed FF + 512:1 Mux (512 pages — 7.9× OVERFLOW)</option>
+              <option value="wnn">2C · Fixed-Wire DiffLogic / WNN (0 dynamic routing ports)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Synthesized xcup CLB LUTs</div>
+            <div class="v" id="r-luts">41,186</div>
+            <div class="s" id="r-luts-pct">35.17% of xck26 (FITS)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Block RAM (RAMB36E2)</div>
+            <div class="v" id="r-bram">81 / 144</div>
+            <div class="s" id="r-bram-pct">56.25% of xck26 · 0 DSP48</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Context Page Switch</div>
+            <div class="v" id="r-cyc">1 cycle</div>
+            <div class="s" id="r-ns">4.0 ns @ 250 MHz sim (CPI = 1.0)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Post-VLAN Drift Accuracy</div>
+            <div class="v" id="r-acc">98.44%</div>
+            <div class="s" id="r-note">Zero Vivado re-PAR required</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Widget 3: Claim LA-7 AirMoL 2026 Foundation Models -->
+      <section id="la-run-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-run-01</code> · AirMoL 2026 Hybrid Foundation Model NVMe Telemetry</h2>
+          <span class="chip chip-meas">Measured (Darwin F_NOCACHE os.pread + RAM)</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Switch between the persisted 2026 HuggingFace checkpoint benchmarks (<code>LiquidAI/LFM2.5-350M</code> [Mar 2026] and <code>Qwen/Qwen3.5-0.8B-Base</code> [Feb 2026]) from <code>artifacts/hf_2026_*_air_mol_baselines.csv</code>. Every arm verifies <code>100.0%</code> lossless token parity against greedy target decoding.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>2026 Open-Weights Checkpoint</span></label>
+            <select id="hf-model">
+              <option value="lfm" selected>LiquidAI/LFM2.5-350M (Mar 2026 · 354.5M · 16b × 4 = 64b uint64)</option>
+              <option value="qwen">Qwen/Qwen3.5-0.8B-Base (Feb 2026 · 752.4M · 18b × 3 = 54b uint64)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label><span>Streaming &amp; Speculation Arm</span></label>
+            <select id="hf-arm">
+              <option value="t1">AirLLM 4-Bit Group-Quantized Prefetch (T=1 baseline)</option>
+              <option value="pld">AirLLM 4-Bit + Prompt Lookup Decoding (PLD)</option>
+              <option value="cold">AirMoL 4-Bit + Cold Token-LUT6 Burst Drafter (unseen file)</option>
+              <option value="wake" selected>AirMoL 4-Bit + Post-Wake Crystallized Token-LUT6 (Ours)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Tokens / NVMe Sweep</div>
+            <div class="v" id="h-tpsw">2.86 tok</div>
+            <div class="s" id="h-cpsw">7.80 code chars / sweep</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Unbuffered NVMe Read</div>
+            <div class="v" id="h-gb">2.475 GB</div>
+            <div class="s" id="h-sweeps">11.20 sweeps (vs 32.00 T=1)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Peak Active Weight RAM</div>
+            <div class="v" id="h-ram">128.0 MB</div>
+            <div class="s" id="h-ram-pct">9.47% of 1,352 MB FP32</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Measured Wall-Clock</div>
+            <div class="v" id="h-toks">6.26 tok/s</div>
+            <div class="s" id="h-parity">100.0% exact token parity</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Static Vector Diagrams Gallery -->
+      <section id="la-figs" style="margin-top: 2.5rem;">
+        <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/mol-downward-cascade.svg" alt="Four-rung Mixture of Limits downward compilation cascade">
+          <figcaption><strong>Figure 1.</strong> Downward compilation across a four-rung Mixture of Limits cascade. Design diagram, not a board power measurement.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/benes-paged-silicon.svg" alt="512x512 Benes-Copy-Benes and 81 RAMB36E2 page cache">
+          <figcaption><strong>Figure 2.</strong> <code>512×512</code> Beneš–Copy–Beneš multicast fabric and <code>81 × RAMB36E2</code> single-cycle <code>LUT6</code> page cache (Yosys <code>xcup</code> + Verilator simulated; <code>board_metered = false</code>).</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/airmol-nvme-speculation.svg" alt="AirMoL 4-bit NVMe streaming with token LUT6 speculation">
+          <figcaption><strong>Figure 3.</strong> <code>AirMoL</code> zero-extra-sweep 4-bit NVMe layer streaming with universal <code>≤64</code>-bit token <code>LUT6</code> burst speculation.</figcaption>
+        </figure>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-copy">© Open Interface Engineering, Inc. · Living figures · Not a board wattmeter (<code>board_metered = false</code>) · <a href="/papers/lut-adapt/" style="color: var(--color-brand-cyan);">Back to paper</a></div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    (function(){
+      var key = 'oe-theme', modes = ['dark','light','auto'];
+      var btn = document.getElementById('theme-toggle'), lbl = document.getElementById('theme-label');
+      function apply(m) {
+        var r = m === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : m;
+        document.documentElement.setAttribute('data-theme', r);
+        document.documentElement.style.colorScheme = r;
+        lbl.textContent = m.charAt(0).toUpperCase() + m.slice(1);
+      }
+      apply(localStorage.getItem(key) || 'auto');
+      btn.addEventListener('click', function(){
+        var cur = localStorage.getItem(key) || 'auto';
+        var next = modes[(modes.indexOf(cur) + 1) % 3];
+        localStorage.setItem(key, next);
+        apply(next);
+      });
+    })();
+
+    // Widget 1: Proposition 1 calculator
+    (function(){
+      var c0 = 0.00014;
+      function upd() {
+        var p0 = parseFloat(document.getElementById('s-p0').value);
+        var dt = parseFloat(document.getElementById('s-dt').value);
+        var cw = parseFloat(document.getElementById('s-cw').value);
+        var ec = parseFloat(document.getElementById('s-ec').value);
+        document.getElementById('v-p0').textContent = p0.toFixed(2);
+        document.getElementById('v-dt').textContent = dt.toFixed(0);
+        document.getElementById('v-cw').textContent = cw.toFixed(2);
+        document.getElementById('v-ec').textContent = ec.toFixed(0);
+        var base = dt * cw;
+        var perStepSave = p0 * cw - c0;
+        var cryst = ec + dt * (c0 + (1 - p0) * cw);
+        var bkeven = perStepSave > 0 ? Math.ceil(ec / perStepSave) : Infinity;
+        document.getElementById('o-base').textContent = base.toFixed(1) + ' est_j';
+        document.getElementById('o-cryst').textContent = cryst.toFixed(1) + ' est_j';
+        document.getElementById('o-bkeven').textContent = isFinite(bkeven) ? (bkeven + ' steps') : 'Never';
+        var vEl = document.getElementById('o-verdict'), sEl = document.getElementById('o-verdict-sub');
+        if (cryst < base) {
+          vEl.textContent = 'COMPILE (' + (base / cryst).toFixed(2) + '×)';
+          vEl.style.color = 'var(--color-brand-cyan)';
+          sEl.textContent = 'Saves ' + (base - cryst).toFixed(1) + ' est_j over ΔT';
+        } else {
+          vEl.textContent = 'REFUSE COMPILE';
+          vEl.style.color = 'var(--color-brand-amber)';
+          sEl.textContent = 'ΔT < ΔT* (churn too fast to amortize)';
+        }
+      }
+      ['s-p0','s-dt','s-cw','s-ec'].forEach(function(id){ document.getElementById(id).addEventListener('input', upd); });
+      upd();
+    })();
+
+    // Widget 2: KV260 RTL table
+    (function(){
+      var data = {
+        ours:   { luts: '41,186', pct: '35.17% of xck26 (FITS)', bram: '81 / 144', bpct: '56.25% of xck26 · 0 DSP48', cyc: '1 cycle', ns: '4.0 ns @ 250 MHz sim (CPI = 1.0)', acc: '98.44%', note: '512 resident context pages' },
+        benes1: { luts: '40,155', pct: '34.29% of xck26 (FITS)', bram: '0 / 144',  bpct: '0.0% BRAM · 0 DSP48', cyc: '82 cycles', ns: '328.0 ns AXI4-Lite reload stall', acc: '98.44%', note: '1 resident page only' },
+        flat64: { luts: '119,478', pct: '102.01% of xck26 (OVERFLOW!)', bram: '0 / 144', bpct: '0.0% BRAM · 0 DSP48', cyc: '82 cycles', ns: 'Exceeds KV260 logic capacity', acc: '98.44%', note: '384 mux ports overflow xck26' },
+        ff512:  { luts: '926,619', pct: '791.17% of xck26 (OVERFLOW!)', bram: '0 / 144', bpct: '2,690,051 FFs · 0 DSP48', cyc: '1 cycle', ns: 'Unroutable distributed FF mux', acc: '98.44%', note: '22.5× larger than RAMB36E2 core' },
+        wnn:    { luts: '160', pct: '0.14% of xck26 (static wires)', bram: '0 / 144', bpct: '0 dynamic routing ports', cyc: 'Vivado re-PAR', ns: 'Minutes to hours on topology shift', acc: '52.34%', note: 'Collapses on VLAN 0x8100 drift' }
+      };
+      var sel = document.getElementById('rtl-select');
+      function render() {
+        var d = data[sel.value];
+        document.getElementById('r-luts').textContent = d.luts;
+        document.getElementById('r-luts-pct').textContent = d.pct;
+        document.getElementById('r-bram').textContent = d.bram;
+        document.getElementById('r-bram-pct').textContent = d.bpct;
+        document.getElementById('r-cyc').textContent = d.cyc;
+        document.getElementById('r-ns').textContent = d.ns;
+        document.getElementById('r-acc').textContent = d.acc;
+        document.getElementById('r-note').textContent = d.note;
+      }
+      sel.addEventListener('change', render);
+      render();
+    })();
+
+    // Widget 3: AirMoL 2026 HF data
+    (function(){
+      var hf = {
+        lfm: {
+          ram: '128.0 MB', rampct: '9.47% of 1,352.25 MB FP32',
+          t1:   { tpsw: '1.00 tok', cpsw: '2.73 code chars / sweep', gb: '7.071 GB', sw: '32.00 sweeps (32 BPE tok)', toks: '2.21 tok/s', par: '100.0% parity (6.0 chars/s)' },
+          pld:  { tpsw: '1.13 tok', cpsw: '3.10 code chars / sweep', gb: '6.231 GB', sw: '28.20 sweeps (1.13× fewer)', toks: '2.71 tok/s', par: '100.0% parity (7.4 chars/s)' },
+          cold: { tpsw: '1.32 tok', cpsw: '3.61 code chars / sweep', gb: '5.347 GB', sw: '24.20 sweeps (1.32× fewer)', toks: '2.74 tok/s', par: '100.0% parity (7.5 chars/s)' },
+          wake: { tpsw: '2.86 tok', cpsw: '7.80 code chars / sweep', gb: '2.475 GB', sw: '11.20 sweeps (2.86× fewer)', toks: '6.26 tok/s', par: '100.0% parity (17.1 chars/s)' }
+        },
+        qwen: {
+          ram: '242.5 MB', rampct: '8.45% of 2,870.15 MB FP32',
+          t1:   { tpsw: '1.00 tok', cpsw: '2.72 code chars / sweep', gb: '12.674 GB', sw: '24.00 sweeps (24 BPE tok)', toks: '0.53 tok/s', par: '100.0% parity (1.4 chars/s)' },
+          pld:  { tpsw: '1.32 tok', cpsw: '3.58 code chars / sweep', gb: '9.637 GB',  sw: '18.25 sweeps (1.32× fewer)', toks: '0.50 tok/s', par: '100.0% parity (1.4 chars/s)' },
+          cold: { tpsw: '1.48 tok', cpsw: '4.02 code chars / sweep', gb: '8.581 GB',  sw: '16.25 sweeps (CPU batch trade-off)', toks: '0.32 tok/s', par: '100.0% parity (less SSD wear)' },
+          wake: { tpsw: '2.74 tok', cpsw: '7.46 code chars / sweep', gb: '4.621 GB',  sw: '8.75 sweeps (2.74× fewer)', toks: '1.11 tok/s', par: '100.0% parity (3.0 chars/s)' }
+        }
+      };
+      var mSel = document.getElementById('hf-model'), aSel = document.getElementById('hf-arm');
+      function render() {
+        var m = hf[mSel.value], a = m[aSel.value];
+        document.getElementById('h-tpsw').textContent = a.tpsw;
+        document.getElementById('h-cpsw').textContent = a.cpsw;
+        document.getElementById('h-gb').textContent = a.gb;
+        document.getElementById('h-sweeps').textContent = a.sw;
+        document.getElementById('h-ram').textContent = m.ram;
+        document.getElementById('h-ram-pct').textContent = m.rampct;
+        document.getElementById('h-toks').textContent = a.toks;
+        document.getElementById('h-parity').textContent = a.par;
+      }
+      mSel.addEventListener('change', render);
+      aSel.addEventListener('change', render);
+      render();
+    })();
+
+    // Lightbox for SVGs
+    (function(){
+      var imgs = Array.from(document.querySelectorAll('figure.fig img'));
+      if (!imgs.length) return;
+      var dlg = document.createElement('dialog');
+      dlg.className = 'lb';
+      dlg.innerHTML = '<div class="lb-stage"><img class="lb-img" alt=""></div><div class="lb-bar"><p class="lb-cap"></p><div class="lb-btns"><button class="lb-btn" data-z="out">−</button><button class="lb-btn" data-z="reset">1:1</button><button class="lb-btn" data-z="in">+</button><button class="lb-btn" data-z="close">Close ×</button></div></div>';
+      document.body.appendChild(dlg);
+      var lbImg = dlg.querySelector('.lb-img'), lbCap = dlg.querySelector('.lb-cap'), scale = 1;
+      imgs.forEach(function(img){
+        img.addEventListener('click', function(){
+          lbImg.src = img.src;
+          var cap = img.closest('figure').querySelector('figcaption');
+          lbCap.textContent = cap ? cap.textContent : img.alt;
+          scale = 1; lbImg.style.transform = 'scale(1)';
+          dlg.showModal();
+        });
+      });
+      dlg.querySelectorAll('[data-z]').forEach(function(b){
+        b.addEventListener('click', function(){
+          var z = b.dataset.z;
+          if (z === 'close') dlg.close();
+          else { scale = z === 'in' ? Math.min(5, scale * 1.35) : z === 'out' ? Math.max(1, scale / 1.35) : 1; lbImg.style.transform = 'scale(' + scale + ')'; }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

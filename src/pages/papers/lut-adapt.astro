@@ -1,0 +1,22 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/lut-adapt.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description="Downward LUT6 compilation in a four-rung Mixture of Limits cascade: 512x512 Benes-Copy-Benes and 81-RAMB36E2 RTL simulation, conformal JEPA-EBRM wake gates, and AirMoL 4-bit NVMe streaming on 2026 hybrid models at openIE-dev/lut-adapt-ai."
+  headings={headings}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Research study, draft: downward LUT6 compilation, Yosys/Verilator xck26 RTL simulation, conformal wake gating, and measured AirMoL NVMe I/O"
+>
+  <Content />
+</PaperLayout>

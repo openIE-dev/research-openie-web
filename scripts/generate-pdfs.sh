@@ -227,6 +227,13 @@ elif id_ == "gates":
         "All other energy figures are OpCounter analytical estimates, not board power. No fabricated citations.\n"
         "</div>\n"
     )
+elif id_ == "lut-adapt":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
+        "No physical FPGA board or rail power was measured in this repository (measured_j = None, board_metered = false). Hardware utilization (41,186 xcup CLB LUTs, 81 RAMB36E2 blocks, 0 DSP48 slices) and 1-cycle context switching (CPI = 1.0) are Yosys 0.71+ and Verilator 5.054 simulations. Darwin F_NOCACHE NVMe byte counts, active RAM, wall-clock times, and 100.0% token parity were measured on Apple M5 Max. Every joule figure is an analytical est_j estimate. No fabricated citations.\n"
+        "</div>\n"
+    )
 elif id_ == "three-body":
     measure = (
         '<div class="measurement">\n'
@@ -307,6 +314,7 @@ PY
 PRINTED=""
 gen_one agency
 gen_one gates
+gen_one lut-adapt
 gen_one satiation
 gen_one spellcheck
 gen_one rce
