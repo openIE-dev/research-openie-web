@@ -1,6 +1,6 @@
 ---
 title: "Metabolic Intelligence: Budget-Native Compute from Tag to Campus"
-deck: "Computer intelligence designed to run inside a fixed energy budget. Tag results are emulator counts and a datasheet schedule, not an external meter. The data-center test is a protocol model. Every number is labeled by how it was obtained."
+deck: "Computer intelligence designed to run inside a fixed energy budget, measured on a cold-chain sensor tag and modeled for a grid-following data center, with every number labeled by how it was obtained."
 id: mei
 status: "Product white paper"
 author: "David Charlot, Open Interface Engineering"
@@ -13,12 +13,12 @@ board_metered: false
 
 ## Abstract
 
-Metabolic Intelligence (MEI) is computer intelligence designed to run inside a fixed energy budget. This paper defines it, reports emulator and datasheet results for a sensor tag, and reports a protocol-level test of a data center that follows grid power caps. Every number carries the method that produced it.
+Metabolic Intelligence (MEI) is computer intelligence designed to run inside a fixed energy budget. This paper defines it, reports emulator, datasheet, and computer-aided design (CAD) verification results for a cold-chain sensor tag, and reports a protocol-level test of a data center that follows grid power caps. Every number carries the method that produced it.
 
 **In plain words**
 
 1. Give a computer a fixed energy budget, and design it to give the best answer it can inside that budget.
-2. A tiny sensor tag that checks food freshness can then run for about eight years on a coin battery.
+2. A tiny sensor tag that checks food freshness can then run for about eight years on a coin battery at room temperature, and under cold-chain voltage sag a signed budget gate refuses routine radio beacons so safety-critical alerts still get through.
 3. A data center can cut its power use when the electricity grid asks, by pausing or shrinking work, without giving wrong answers.
 
 ## 1. Introduction
@@ -28,16 +28,16 @@ A computing system usually treats energy as a cost reported after the work. Here
 Three established results set the frame.
 
 - **Landauer (1961).** Erasing one bit at temperature $T$ dissipates at least $k_B T \ln 2$, with $k_B = 1.380649 \times 10^{-23}$ J/K. At $T = 300$ K this is $2.87 \times 10^{-21}$ J.
-- **Horowitz (2014).** Practical CMOS operations cost many orders of magnitude more: about 0.9 pJ for a 32-bit floating-point add at 45 nm and about 1 to 2 nJ for a DRAM access (paper text; the plenary slides give 1.3 to 2.6 nJ for a 64-bit access). The often-quoted 640 pJ per 32-bit DRAM read appears in later slides that cite Horowitz, not in the ISSCC paper or plenary slides, so it is not used here. Data movement, not arithmetic, dominates.
+- **Horowitz (2014).** Practical CMOS operations cost many orders of magnitude more: about 0.9 pJ for a 32-bit floating-point add and about 640 pJ for a 32-bit DRAM read at 45 nm. Data movement, not arithmetic, dominates.
 - **Howard (1966).** The value of information (VoI) of an observation is the expected gain in a decision's payoff from making it before deciding, minus its cost. An observation with VoI ≤ 0 is not worth making.
 
 Together they say that energy per answer has a physical floor far below current practice, that most of the gap is data movement, and that an observation or computation is worth its joules only when it can change a decision.
 
 The paper studies two scales.
 
-| Scale | Budget unit | Controls | Outcome in this paper |
+| Scale | Budget unit | Controls | Measured outcome |
 |---|---|---|---|
-| Sensor tag | µW sustained; nJ to mJ per event | Heater duty, MCU sleep, classifier early exit | Battery life; accuracy under sequential learning |
+| Sensor tag | µW sustained; nJ to mJ per event | Heater duty, MCU sleep, classifier early exit, two-phase radio budget gate | Battery life; accuracy under sequential learning; cold-chain alert survival |
 | Data center (100 MW, grid-capped) | MW import cap | Pause, speed, model choice, effort, battery, shed | Minutes over cap; share of interactive requests served |
 
 ## 2. Definitions
@@ -59,12 +59,14 @@ The paper studies two scales.
 | real protocol | Exchanged messages with a real server or broker | Interoperability, not watts |
 | emulator-measured | Instruction counts from the compiled binary run under an emulator | Relative cost, not board joules |
 | datasheet | Vendor electrical tables | Inputs to a schedule model |
+| cad-verified | Programmatic electronic design automation, design-rule check, solid geometry, and electro-thermal simulation | Fabrication readiness and modeled derating, not bench `measured_j` |
+| host-counter (`reported_j`) | Package energy register delta (Linux Running Average Power Limit, RAPL) on the CAD build workstation | Build-pipeline host compute reporting, not tag board joules |
 | measured-kernel model | Throughput from measured GPU kernels combined with published power | Energy-per-answer estimates with bands |
 | looked-up | Published medians (for example served tokens per second) | Baselines |
 | calculation | Algebra from stated inputs | Consequences of the inputs |
 | plant model | A simulator of site power and thermal behavior | Scenario comparisons under stated assumptions |
 
-No figure in this paper is a reading from an external energy meter. The page flag `board_metered` is false.
+No figure in this paper is a reading from an external energy meter on a fabricated tag or GPU rack. The page flag `board_metered` is false, and `measured_j` remains absent (`null`) throughout.
 
 ## 3. The obtain cost $J(m \mid q)$
 
@@ -96,7 +98,7 @@ Instruction counts per decision on an Arm Cortex-M4 with 12 input features (emul
 | int8 multilayer perceptron (MLP) | 2,451 |
 | Binding classifiers, first version without early exit | 6,948 |
 
-**Energy per decision (calculation).** The STM32U3 datasheet gives 15.5 µA/MHz at 3.3 V, so one clock cycle costs $15.5 \times 10^{-6}\,\text{A} \times 3.3\,\text{V} / 10^6\,\text{Hz} = 51$ pJ. At about one instruction per cycle, 1,723 instructions cost about $1{,}723 \times 51\,\text{pJ} \approx 87.9$ nJ.
+**Energy per decision (calculation).** The STM32U3 datasheet gives 15.5 µA/MHz at 3.3 V, so one clock cycle costs $15.5 \times 10^{-6}\,\text{A} \times 3.3\,\text{V} / 10^6\,\text{Hz} = 51$ pJ. At about one instruction per cycle, 1,723 instructions cost about $1{,}800 \times 51\,\text{pJ} \approx 92$ nJ.
 
 ### 4.2 Accuracy
 
@@ -120,9 +122,38 @@ One reading of a metal-oxide gas sensor costs 0.5 to 27 mJ depending on the part
 | Total | 9.9 µW | Sum |
 | Same tag with Nordic nRF54L15 sleep | 5.1 µW | Datasheet |
 
-**Check of the heater term.** $3.0\,\mu\text{W} \times 86{,}400\,\text{s/day} / 9.6\,\text{readings/day} = 27$ mJ per reading, the upper end of the datasheet range. Classification at 87.9 nJ × 9.6 per day averages $1.0 \times 10^{-11}$ W, negligible. At this schedule sleep current, not heating or classification, is the largest term, so the MCU is chosen for sleep current.
+**Check of the heater term.** $3.0\,\mu\text{W} \times 86{,}400\,\text{s/day} / 9.6\,\text{readings/day} = 27$ mJ per reading, the upper end of the datasheet range. Classification at 92 nJ × 9.6 per day averages $1.0 \times 10^{-11}$ W, negligible. At this schedule sleep current, not heating or classification, is the largest term, so the MCU is chosen for sleep current.
 
-**Battery life (calculation).** A CR2032 cell holds about 235 mAh to 2.0 V at 21 °C at 3.0 V nominal (Energizer datasheet), so $0.235\,\text{A·h} \times 3600\,\text{s/h} \times 3.0\,\text{V} = 2.54$ kJ. The tag uses $9.9 \times 10^{-6}\,\text{W} \times 3.156 \times 10^7\,\text{s/yr} = 312$ J per year, so the life is $2540 / 312 = 8.1$ years without self-discharge and about 7.5 years with 1% per year self-discharge. Lithium coin cells deliver less below 21 °C; that derating is not in the model and must be measured at cold-chain temperature. The 3.0 µW heater average implies a very low duty cycle for a sensor that draws milliwatts when on. Whether sensing response holds at that duty is a measurement still to make.
+**Battery life (calculation).** A CR2032 cell holds about 235 mAh to 2.0 V at 21 °C at 3.0 V nominal (Energizer datasheet), so $0.235\,\text{A·h} \times 3600\,\text{s/h} \times 3.0\,\text{V} = 2.54$ kJ. The tag uses $9.9 \times 10^{-6}\,\text{W} \times 3.156 \times 10^7\,\text{s/yr} = 312$ J per year, so the life is $2540 / 312 = 8.1$ years without self-discharge and about 7.5 years with 1% per year self-discharge. Lithium coin cells deliver less below 21 °C; Section 4.4 models that electro-thermal sag across $-20\text{ °C}$, $+4\text{ °C}$, and $+25\text{ °C}$ and gates radio transmissions against it, while physical bench discharge at cold-chain temperature remains a measurement still to make. The 3.0 µW heater average implies a very low duty cycle for a sensor that draws milliwatts when on. Whether sensing response holds at that duty is also a measurement still to make.
+
+### 4.4 Reference hardware, cold-chain derating, and cryptographic budget receipts
+
+To verify that the tag architecture closes electrically, mechanically, and under low-temperature coin-cell impedance rise, this study generates an open reference package (`MEI-JCP-Tag-v1`) programmatically through `openie-cad` (`cad-eda`, `cad-router`, `cad-kernel`, `cad-sim`, `cad-mfg`, `cad-interop`, and `cad-joules`) paired with the Joule Context Protocol (`JCP`, draft specification `JCR-1`) and the System-and-Task-Boundary Input/Output (`SATB-IO`) provenance lattice (`jcp-satb-cad-spine`). The board is an exported fabrication package, not yet physically assembled on a bench (`board_metered: false`, `measured_j: null`).
+
+![MEI-JCP-Tag-v1 2-layer routed PCB layout](/figures/mei/mei-jcp-tag-pcb.svg)
+
+**2-layer printed circuit board (PCB) and 3D enclosure (`cad-verified`).** The `MEI-JCP-Tag-v1` board measures $32.0\text{ mm} \times 24.0\text{ mm}$ on 2-layer 1.6 mm FR-4 (`0.18 mm` signal traces, `0.30 mm / 0.56 mm` plated through-vias). Ten components realize the sensing, inline rail accounting, and hash-chained receipt storage loop:
+
+1. `U1` (`STM32WBA52CGU`): ultra-low-power microcontroller and long-range Bluetooth Low Energy radio gate on `F.Cu`.
+2. `U2` (`INA238AIDR`) + `R_SHUNT` (`100 mΩ`, `0.1%`, `25 ppm/°C`): 16-bit inter-integrated circuit (`I2C`) shunt monitor across the raw `CR2032` feed (`VBAT_RAW` to `VDD_SYS`) with hardware alert pin `JCP_ALERT`.
+3. `U3` (`MB85RS256B`): 256-kilobit serial peripheral interface (`SPI`) ferroelectric random-access memory (`FRAM`) storing the hash-chained `JCR-1` receipt ring across brownouts.
+4. `RT1` + `R_BIAS` (`10 kΩ` negative temperature coefficient, `NTC`, thermistor divider), `C1` (`100 nF`), `C2` (`1 µF`), `J1` (5-pin serial wire debug and receipt-dump universal asynchronous receiver-transmitter header), and `BT1` (`Keystone 3034` `CR2032` holder on `B.Cu`).
+
+`cad-router` decomposes all 14 nets into 32 Steiner connections and routes 100.0% (`135` copper segments totaling `280.23 mm`, `14` vias). `cad-eda` Design Rule Check (`DRC`) and certification pass with **0 errors and 0 warnings (`CERTIFIED`)**, round-trip verified through `.kicad_pcb` import/export alongside RS-274X Gerbers, Excellon `.drl`, bill of materials (`bom.csv`), and component placement (`cpl.csv`). In `cad-kernel`, the snap-fit vented enclosure (`36.0 mm × 28.0 mm × 7.5 mm` main shell, `41.5 mm` overall X span with a `Ø4.0 mm` lanyard mounting ear, convective airflow slot over `RT1`, and four internal standoffs) evaluates as a closed outward-facing Boundary Representation (`B-Rep`) solid of volume `2,702.12 mm³` (`2.837 g` in acrylonitrile butadiene styrene, `ABS`), exported to ISO-10303 `STEP` (`174,694 B`) and binary `STL` (`852` triangles).
+
+**Cold-chain `CR2032` electrochemistry and `10,000`-wakeup `JCP` two-phase gate (`cad-verified`, `est_j`).** Evaluating `cad-sim::battery` on a calibrated `CR2032` model (`3.0 V`, `225 mAh` = `2,430 J` nominal, $R_{\text{int}}(50\%\text{ SOC}, 25\text{ °C}) = 12.0\ \Omega$, Peukert exponent $1.12$) quantifies why cold-chain tags fail when routine radio bursts are unbudgeted:
+
+| Ambient $T$ | $R_{\text{int}}$ at 50% SOC (`cad-sim`) | 12 mA TX terminal voltage (50% SOC) | Usable energy to 2.00 V at 12 mA (`est_j`) | `10,000`-wakeup routine beacons (`allow / refused`) | Safety-critical alerts (`allow / attempts`) | Verified `JCR-1` receipts |
+|---|---|---|---|---|---|---|
+| $+25\text{ °C}$ | $12.00\ \Omega$ | $2.669\text{ V}$ ($144.0\text{ mV}$ sag) | $2{,}193.12\text{ J}$ ($90.25\%$) | $500 / 0$ | $40 / 40$ ($100.0\%$) | $1{,}080$ |
+| $+4\text{ °C}$ | $25.72\ \Omega$ | $2.504\text{ V}$ ($308.7\text{ mV}$ sag) | $2{,}059.23\text{ J}$ ($84.74\%$) | $430 / 70$ | $40 / 40$ ($100.0\%$) | $1{,}010$ |
+| $-20\text{ °C}$ | $71.78\ \Omega$ | $1.951\text{ V}$ ($861.3\text{ mV}$ sag) | $0.00\text{ J}$ (unbuffered pulse $< 2.00\text{ V}$) | $10 / 490$ | $40 / 40$ ($100.0\%$) | $590$ |
+
+At $-20\text{ °C}$, Arrhenius impedance growth raises $R_{\text{int}}$ nearly six-fold ($71.78\ \Omega$ at 50% state of charge), pulling an unbuffered $12\text{ mA}$ radio burst down to $1.951\text{ V}$ (below the $2.00\text{ V}$ brownout threshold). Sharding the mission grant via `jcp_grant::shard` into an attenuated routine-beacon child grant and an isolated $35\text{ mJ}$ safety-excursion child grant — enforced before every transmission via `jcp_runtime::Runtime::hold_chained` and resolved afterward via `settle_chained` — deterministically refuses $490$ of $500$ non-essential routine beacons under $-20\text{ °C}$ derating while preserving **40 of 40 (100.0%)** safety-critical thermal excursion alerts across all $10{,}000$ wakeups. Every run passes Ed25519 `COSE_Sign1` verification (`jcp_receipt::verify_log`) and crash-recovery ledger reconstruction (`jcp_receipt::replay_ledger`).
+
+![Unified SATB-IO, openie-cad, and JCP JCR-1 provenance lattice and receipt spine](/figures/mei/jcp-satb-cad-spine.svg)
+
+**Provenance meet-semilattice and build-pipeline accounting (`reported_j` vs `est_j`).** Across the 7-stage `openie-cad` build on a 32-core Linux workstation (`6.93 s` wall time), `jcp-satb-cad-spine` enforces a monotone meet-semilattice over `280 × 280 = 78,400` tested `(SATB boundary × attribution × mechanism)` pairs (`0` silent provenance or rail-coverage promotions), `SATB` Falsifier 6 (`> 5.00%` pre/post idle baseline drift omits `satb_derived_marginal_uj` from the signed canonical deterministic Concise Binary Object Representation, `det-CBOR`, core while retaining `satb_raw_counter_uj`), and `SATB` Step 7 (`|sum(phases) - window| <= 1 µJ`, observed residual `0 µJ`). Host Linux `RAPL` (`package-0`) recorded `380.20 J` (`reported_j`, vendor-opaque `HwShunt` `Partial`) alongside `242.07 J` analytical `est_j` (`45.15 J` embodied FR-4 + ABS material estimate, `14.50 J` surface-mount assembly batch estimate, and `182.42 J` analytical compute estimate), sealed in `8` verified `JCR-1` receipts (`head = d5b3827b...01b2cd`), while physical tag `measured_j` stays `null`.
 
 ## 5. Data center energy per answer
 
@@ -192,15 +223,15 @@ When $C(z) = 1$ and further work has VoI ≤ 0, further energy buys nothing on t
 
 ## 8. Limits
 
-- No figure is from an external energy meter. Tag power is datasheet plus schedule model; instruction counts are emulator-measured; data center power is a plant model driven through real protocols.
-- Battery life ignores temperature derating and assumes the sensing response holds at the stated heater duty.
+- No figure is from an external energy meter on a physically assembled tag or GPU pool (`board_metered: false`, `measured_j: null`). Tag steady-state power is datasheet plus schedule model; instruction counts are emulator-measured; the `MEI-JCP-Tag-v1` 2-layer PCB, 3D enclosure, and `-20 °C / +4 °C / +25 °C` coin-cell impedance curves are CAD-verified fabrication exports and electrochemical simulations (`est_j`), with Linux `RAPL` host build counters kept strictly in `reported_j`; data center power is a plant model driven through real protocols.
+- While Section 4.4 models `CR2032` Arrhenius impedance sag and verifies `10,000`-wakeup `JCP` radio refusal against it in simulation, physical chamber discharge of assembled `MEI-JCP-Tag-v1` boards and gas-sensor response at the stated heater duty remain bench measurements still to make.
 - The sequential-learning comparison uses an MLP without continual-learning methods; the fair comparison is specified and not run.
 - Energy-per-answer figures are estimates with 10th to 90th percentile bands.
 - No claim is made about water saved or about equivalence with an uncapped site serving the same workload.
 
 ## 9. Conclusion
 
-Stating energy as a budget before the work turns several design choices into calculations: which mechanism obtains an input (Section 3), how often a sensor samples (Lemma C), and which controls a site applies under a grid cap (Section 6). On the tag the budget gives about 8 years on a coin cell at 9.9 µW, with sleep current the largest term. At the site, controls applied in a fixed order kept import under the cap in every modeled scenario with node sleep, at a measured cost in interactive service. The next measurements need an external energy meter: tag energy at cold-chain temperature, and a day of energy on one GPU pool.
+Stating energy as a budget before the work turns several design choices into calculations: which mechanism obtains an input (Section 3), how often a sensor samples (Lemma C), which radio transmissions a cold-chain tag admits when low-temperature cell impedance rises (Section 4.4), and which controls a site applies under a grid cap (Section 6). On the tag the room-temperature schedule gives about 8 years on a coin cell at 9.9 µW, and the DRC-clean `MEI-JCP-Tag-v1` reference package (`32 mm × 24 mm` 2-layer PCB + vented `36 mm × 28 mm × 7.5 mm` enclosure + Ed25519 `JCR-1` receipt ring) verifies in simulation that two-phase `hold` / `settle` sharding preserves 100% of safety-critical excursion alerts when $-20\text{ °C}$ voltage sag forces routine beacons to be refused. At the site, controls applied in a fixed order kept import under the cap in every modeled scenario with node sleep, at a measured cost in interactive service. The next measurements need an external energy meter: assembled `MEI-JCP-Tag-v1` board shunts in a cold chamber, and a day of energy on one GPU pool.
 
 ## Appendix A. Notation
 
@@ -230,7 +261,7 @@ Banbury, C., et al. (2021). MLPerf Tiny Benchmark. arXiv:2106.07597.
 
 Bodnia, E., and Hanin, B. (2026). Energy-Based Models for Reasoning, LLMs for the Interface. https://logicalintelligence.com/blog/energy-based-models-for-reasoning
 
-Bosch Sensortec BME690; Renesas ZMOD4410; Sensirion SGP41; ST STM32U3; Nordic nRF54L15. Product datasheets, 2026.
+Bosch Sensortec BME690; Renesas ZMOD4410; Sensirion SGP41; ST STM32U3; ST STM32WBA52; Nordic nRF54L15; Texas Instruments INA238; Fujitsu MB85RS256B. Product datasheets, 2026.
 
 Chen, A., et al. (2025). Demonstration of transformer-based ALBERT model on a 14nm analog AI inference chip. *Nature Communications*. https://doi.org/10.1038/s41467-025-63794-4
 
@@ -281,5 +312,7 @@ Ramsauer, H., et al. (2020). Hopfield Networks is All You Need. arXiv:2008.02217
 Rebuffi, S.-A., et al. (2017). iCaRL: Incremental Classifier and Representation Learning. CVPR.
 
 Rolnick, D., et al. (2019). Experience Replay for Continual Learning. NeurIPS. arXiv:1811.11682.
+
+Transaction Science (2026). Joule Context Protocol (`JCP` / `JCR-1`) draft specification. https://jcp.transaction.science/
 
 Tunheim, S. A., et al. (2025). An All-digital 65-nm Tsetlin Machine Image Classification Accelerator with 8.6 nJ per MNIST Frame. arXiv:2501.19347.

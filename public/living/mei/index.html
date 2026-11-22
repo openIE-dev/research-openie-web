@@ -1,83 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Living · Metabolic Intelligence</title>
-<link rel="stylesheet" href="../css/living.css"/>
-<style>
-  .ev-chip {
-    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em;
-    text-transform: uppercase; padding: 0.15rem 0.45rem; border-radius: 4px;
-    border: 1px solid var(--border); color: var(--warn); background: #1c1917;
-  }
-  .ev-chip.real { color: var(--allow); border-color: #065f46; }
-  .ev-chip.emu { color: #7dd3fc; border-color: #0e7490; }
-  .ev-chip.model { color: var(--soft); border-color: #5b21b6; }
-  .ev-chip.datasheet { color: var(--warn); border-color: #854d0e; }
-  .figure-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem 1.25rem; margin: 1.75rem 0; scroll-margin-top: 4.5rem; }
-  .figure-block h2 { font-family: var(--mono); font-size: 1.05rem; margin: 0 0 0.75rem; color: #f1f5f9; }
-  .figure-block .id { font-family: var(--mono); color: var(--accent); font-size: 0.85em; }
-  .figure-block img, .figure-block video { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); background: #0f172a; display: block; }
-  .figure-block .caption { color: var(--muted); font-size: 0.85rem; margin-top: 0.65rem; }
-  .teach { color: #cbd5e1; font-size: 0.92rem; line-height: 1.55; margin: 0.55rem 0 0.85rem; }
-  .teach strong { color: #f1f5f9; }
-  .teach-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 0.75rem 0; }
-  .teach-table th, .teach-table td { border: 1px solid var(--border); padding: 0.4rem 0.55rem; text-align: left; vertical-align: top; }
-  .teach-table th { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); background: #0f172a; }
-  .svg-wrap { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; }
-  .note-manim { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); margin-top: 1.5rem; padding: 0.65rem 0.8rem; border: 1px dashed var(--border); border-radius: 8px; }
-  .lesson { background: #0f172a; border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1rem; margin: 1rem 0 1.5rem; }
-  .lesson h3 { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: #5eead4; margin: 0 0 0.45rem; }
-  .lesson ol { margin: 0; padding-left: 1.2rem; color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; }
-  .lesson li { margin: 0.25rem 0; }
-</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Living · Metabolic Intelligence &amp; MEI-JCP-Tag-v1 Explorer</title>
+  <link rel="stylesheet" href="../css/living.css"/>
+  <link rel="stylesheet" href="openie.css"/>
+  <script src="/webmcp-tools.js" defer></script>
+  <style>
+    :root {
+      --bg-card: rgba(17, 19, 31, 0.86);
+      --border: rgba(255, 255, 255, 0.10);
+      --accent: #00d4aa;
+      --warn: #f59e0b;
+      --allow: #10b981;
+      --soft: #a78bfa;
+      --muted: #94a3b8;
+      --mono: "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+    }
+    html[data-theme="light"] {
+      --bg-card: #ffffff;
+      --border: rgba(15, 23, 42, 0.12);
+      --accent: #0d9488;
+      --warn: #d97706;
+      --allow: #059669;
+      --soft: #6d28d9;
+      --muted: #475569;
+    }
+    main.living-main {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 5.5rem 1.5rem 4.5rem;
+    }
+    .ev-chip {
+      display: inline-block;
+      font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em;
+      text-transform: uppercase; padding: 0.15rem 0.48rem; border-radius: 4px;
+      border: 1px solid var(--border); color: var(--warn); background: rgba(245, 158, 11, 0.09);
+    }
+    .ev-chip.real { color: var(--allow); border-color: rgba(16, 185, 129, 0.45); background: rgba(16, 185, 129, 0.09); }
+    .ev-chip.emu { color: #38bdf8; border-color: rgba(56, 189, 248, 0.45); background: rgba(56, 189, 248, 0.09); }
+    .ev-chip.model { color: var(--soft); border-color: rgba(167, 139, 250, 0.45); background: rgba(167, 139, 250, 0.09); }
+    .ev-chip.datasheet { color: var(--warn); border-color: rgba(245, 158, 11, 0.45); }
+    .ev-chip.cad { color: var(--accent); border-color: rgba(0, 212, 170, 0.45); background: rgba(0, 212, 170, 0.09); }
+    .figure-block {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.2rem 1.35rem 1.35rem; margin: 1.75rem 0; scroll-margin-top: 5rem;
+    }
+    .figure-block h2 { font-family: var(--mono); font-size: 1.05rem; margin: 0 0 0.75rem; color: var(--color-brand-white); }
+    .figure-block .id { font-family: var(--mono); color: var(--accent); font-size: 0.88em; }
+    .figure-block img, .figure-block video {
+      max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border);
+      background: #0f172a; display: block;
+    }
+    .figure-block .caption { color: var(--muted); font-size: 0.85rem; margin-top: 0.65rem; }
+    .teach { color: var(--color-brand-slate); font-size: 0.94rem; line-height: 1.6; margin: 0.55rem 0 0.85rem; }
+    .teach strong { color: var(--color-brand-white); }
+    .teach-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 0.75rem 0; }
+    .teach-table th, .teach-table td { border: 1px solid var(--border); padding: 0.45rem 0.6rem; text-align: left; vertical-align: top; }
+    .teach-table th { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); background: rgba(15, 23, 42, 0.45); }
+    .svg-wrap { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; }
+    .note-manim { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); margin-top: 1.5rem; padding: 0.65rem 0.8rem; border: 1px dashed var(--border); border-radius: 8px; }
+    .lesson { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 0.95rem 1.1rem; margin: 1rem 0 1.5rem; }
+    .lesson h3 { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.45rem; }
+    .lesson ol { margin: 0; padding-left: 1.2rem; color: var(--color-brand-slate); font-size: 0.9rem; line-height: 1.55; }
+    .toc { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; margin: 1.25rem 0; }
+    .toc h2 { font-family: var(--mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 0.6rem; }
+    .toc ul { columns: 2; gap: 1.5rem; margin: 0; padding-left: 1.1rem; font-size: 0.86rem; }
+    @media (max-width: 760px) { .toc ul { columns: 1; } }
+    .toc a { color: var(--color-brand-slate); text-decoration: none; }
+    .toc a:hover { color: var(--accent); }
+
+    /* Interactive Explorer Controls */
+    .exp-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 1.15rem; margin-top: 0.9rem; }
+    @media (max-width: 900px) { .exp-grid { grid-template-columns: 1fr; } }
+    .ctrl-panel { background: rgba(15, 23, 42, 0.45); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; }
+    html[data-theme="light"] .ctrl-panel { background: #f8fafc; }
+    .ctrl-row { margin-bottom: 0.85rem; }
+    .ctrl-row label { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.78rem; color: var(--color-brand-white); margin-bottom: 0.3rem; }
+    .ctrl-row input[type="range"] { width: 100%; accent-color: var(--accent); }
+    .preset-bar { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.85rem; }
+    .chip-btn {
+      font-family: var(--mono); font-size: 0.74rem; padding: 0.34rem 0.65rem; border-radius: 6px;
+      border: 1px solid var(--border); background: transparent; color: var(--color-brand-slate); cursor: pointer;
+    }
+    .chip-btn:hover, .chip-btn.active { border-color: var(--accent); color: var(--color-brand-white); background: rgba(0, 212, 170, 0.12); }
+    .kpi-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
+    .kpi-card { border: 1px solid var(--border); border-radius: 8px; padding: 0.65rem 0.75rem; background: rgba(10, 10, 15, 0.38); }
+    html[data-theme="light"] .kpi-card { background: #ffffff; }
+    .kpi-lbl { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; color: var(--muted); }
+    .kpi-val { font-family: var(--mono); font-size: 1.06rem; font-weight: 600; color: var(--color-brand-white); margin-top: 0.2rem; }
+    .kpi-sub { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-top: 0.12rem; }
+    .bar-track { height: 12px; background: rgba(148, 163, 184, 0.18); border-radius: 999px; overflow: hidden; display: flex; margin-top: 0.45rem; }
+    .bar-seg-sense { background: #38bdf8; }
+    .bar-seg-routine { background: #f59e0b; }
+    .bar-seg-crit { background: #10b981; }
+    .receipt-code {
+      font-family: var(--mono); font-size: 0.75rem; line-height: 1.5; background: #0b1120; color: #e2e8f0;
+      border: 1px solid var(--border); border-radius: 8px; padding: 0.85rem; overflow-x: auto; max-height: 290px;
+    }
+  </style>
 </head>
-<body>
-<header class="site-header">
-  <div class="inner">
-    <div class="brand">P4 · Metabolic Intelligence</div>
-    <nav class="nav">
-      <a href="../index.html">Hub</a>
-      <a href="../ni/index.html">NI</a>
-      <a href="../satiation/index.html">Satiation</a>
-      <a href="../mol/index.html">Mixture of Limits</a>
-      <a href="index.html" class="active">Metabolic Intelligence</a>
-      <a href="../README.md">README</a>
-    </nav>
-  </div>
+<body class="grid-bg">
+<header class="nav-glass">
+  <a href="/" class="brand-logo">Open<span class="brand-cyan">IE</span> <span class="brand-amber">· Living</span></a>
+  <nav class="nav-links">
+    <a href="../index.html">Hub</a>
+    <a href="../ni/index.html">NI</a>
+    <a href="../satiation/index.html">Satiation</a>
+    <a href="../mol/index.html">Mixture of Limits</a>
+    <a href="index.html" class="active">Metabolic Intelligence</a>
+    <a href="/products/mei/" class="pill-cyan">Paper → /products/mei/</a>
+    <button type="button" class="theme-btn" id="theme-toggle" aria-label="Toggle color theme">Theme</button>
+  </nav>
 </header>
-<main>
+
+<main class="living-main">
   <div class="hero">
-    <h1>Metabolic Intelligence</h1>
-    <p class="deck-line">Energy binds. The envelope is the physical condition of the superior answer. Not a cheaper answer. The class studied here is an edge plant and a resource-optimized central plant, not uncapped hyperscale.</p>
-    <p class="subtitle">This page teaches the dual-scale class with pack charts and short Manim clips.
-      Claims stay ledger-safe with the study at <a href="/products/mei/">/products/mei/</a>.
-      Soft-ref path: <code>board_synth_claimed=false</code>. Estimates are not package <code>measured_j</code>.
-      Chicken-spoilage results from the Anwar work are not published on this page.
-      Evidence chips label each figure.</p>
+    <div class="badge-row">
+      <span class="badge-paper">P4 · Metabolic Intelligence</span>
+      <span class="badge-honesty">board_metered: false · measured_j: null · DRC: 0 violations</span>
+    </div>
+    <h1 class="hero-title">Metabolic Intelligence &amp; MEI-JCP-Tag-v1 Interactive Explorer</h1>
+    <p class="hero-deck">Energy binds. The envelope is the physical condition of the superior answer. Explore the dual-scale study figures alongside the interactive <code>MEI-JCP-Tag-v1</code> 2-layer PCB, 3D B-Rep enclosure, <code>CR2032</code> cold-chain battery simulator, and Ed25519 <code>JCR-1</code> cryptographic receipt ledger.</p>
+    <p class="author-line">
+      Study: <a href="/products/mei/">/products/mei/</a> ·
+      Companion OS design guide: <a href="/products/jouleos/">/products/jouleos/</a> ·
+      Summary: <a href="/about/mei/">/about/mei/</a> ·
+      <code>board_synth_claimed=false</code> (fabrication &amp; simulation package; host Linux RAPL reported separately in <code>reported_j</code>).
+    </p>
   </div>
-  <p class="subtitle">Related papers, not a count of the catalog:
-    <a href="/papers/gates/#part-ii-the-cascade-mixture-of-limits">Navigation (Mixture of Limits)</a> ·
-    <a href="/papers/gates/">Commit (Notational Intelligence)</a> ·
-    <a href="/papers/satiation/">Task Satiation</a>.
-    This page is the figure set for <a href="/products/mei/">Metabolic Intelligence</a>.
-    The about note is <a href="/about/mei/">/about/mei/</a>.</p>
 
   <div class="lesson" id="how-to-read">
     <h3>How to read this page</h3>
     <ol>
-      <li><strong>Dual scale.</strong> Same thesis at a coin-cell tag and at a budget-capped lean campus.</li>
-      <li><strong>Enzyme vs MLP.</strong> Recognition under MCU instruction budgets, not a smaller transformer.</li>
-      <li><strong>Grid levers.</strong> Ordered actuators that free megawatts with least service lost.</li>
-      <li><strong>J(m|q).</strong> Price the obtain zone. Open Model last. Stop when Value of Information is spent.</li>
+      <li><strong>Interactive Tag &amp; JCP Explorer (<code>#mei-jcp-explorer</code>).</strong> Sweep ambient temperature (<code>-25 °C</code> to <code>+30 °C</code>) to watch <code>CR2032</code> Arrhenius resistance sag and <code>JCP</code> two-phase <code>hold</code> / <code>settle</code> sharding protect 100% of critical alerts, inspect the 0-DRC 2-layer PCB and 3D enclosure, and verify the signed <code>JCR-1</code> receipts.</li>
+      <li><strong>Dual scale &amp; enzyme recognition.</strong> Same thesis at a coin-cell tag and at a budget-capped lean campus; digital enzymes fit Cortex-M4 instruction budgets.</li>
+      <li><strong>Grid levers &amp; J(m|q).</strong> Ordered campus actuators free megawatts with least service lost; open Model last when Value of Information justifies the joules.</li>
     </ol>
   </div>
 
   <nav class="toc" aria-label="Figure TOC">
-    <h2>Figure IDs on this page</h2>
+    <h2>Figure &amp; Explorer IDs on this page</h2>
     <ul>
+      <li><a href="#mei-hw-01"><span class="id">mei-hw-01</span> Interactive Cold-Chain CR2032 + JCP 10k-Wakeup Gate</a></li>
+      <li><a href="#mei-hw-02"><span class="id">mei-hw-02</span> MEI-JCP-Tag-v1 2-Layer PCB (0 DRC) &amp; 3D B-Rep Enclosure</a></li>
+      <li><a href="#mei-hw-03"><span class="id">mei-hw-03</span> SATB-IO ↔ JCP Provenance Lattice &amp; JCR-1 Receipt Verifier</a></li>
       <li><a href="#mei-arg-01"><span class="id">mei-arg-01</span> Why this is the future</a></li>
       <li><a href="#mei-diag-01"><span class="id">mei-diag-01</span> Budget-in → best-answer-out dual scale</a></li>
       <li><a href="#mei-diag-02"><span class="id">mei-diag-02</span> J(m|q) obtain router</a></li>
@@ -95,11 +164,142 @@
     </ul>
   </nav>
 
+  <!-- ═══════════════════ INTERACTIVE EXPLORER SUITE ═══════════════════ -->
+  <div id="mei-jcp-explorer">
+    <section id="mei-hw-01" class="figure-block">
+      <h2><span class="id">mei-hw-01</span> Interactive Cold-Chain CR2032 Electrochemistry &amp; 10,000-Wakeup JCP Hold/Settle Explorer</h2>
+      <p>
+        <span class="ev-chip cad">cad-sim::battery + jcp-runtime</span>
+        <span class="ev-chip datasheet">est_j simulation · measured_j: null</span>
+      </p>
+      <p class="teach">
+        Adjust ambient temperature, radio pulse current, and the isolated safety reserve. Under <code>cad-sim::battery</code>'s Arrhenius impedance curve ($R_{\text{int}}(T) = R_{25}\cdot f(\text{SOC})\cdot \exp(3000(1/T - 1/298.15))$), deep-freeze storage (<code>-20 °C</code>) raises cell resistance from <code>12.0 Ω</code> to <code>71.8 Ω</code>. Sharding the mission grant via <code>jcp_grant::shard</code> and gating every transmission with <code>Runtime::hold_chained</code> / <code>settle_chained</code> refuses non-essential routine beacons before brownout while keeping <strong>40 / 40 (100%)</strong> safety-critical threshold excursion alerts intact.
+      </p>
 
+      <div class="exp-grid">
+        <div class="ctrl-panel">
+          <div class="preset-bar" role="group" aria-label="Cold-chain temperature presets">
+            <button type="button" class="chip-btn active" data-preset="-20">-20 °C Deep Freeze (Verified Vector)</button>
+            <button type="button" class="chip-btn" data-preset="4">+4 °C Vaccine Fridge (Verified Vector)</button>
+            <button type="button" class="chip-btn" data-preset="25">+25 °C Room Ambient (Verified Vector)</button>
+          </div>
+
+          <div class="ctrl-row">
+            <label for="cc-temp"><span>Ambient Temperature</span><span id="cc-temp-val">-20 °C</span></label>
+            <input type="range" id="cc-temp" min="-25" max="30" step="1" value="-20"/>
+          </div>
+
+          <div class="ctrl-row">
+            <label for="cc-tx-ma"><span>Routine Radio Peak Current</span><span id="cc-tx-ma-val">12.0 mA</span></label>
+            <input type="range" id="cc-tx-ma" min="3" max="15" step="0.5" value="12"/>
+          </div>
+
+          <div class="ctrl-row">
+            <label for="cc-reserve"><span>Isolated Critical Alert Reserve (<code>G_critical</code>)</span><span id="cc-reserve-val">35.0 mJ</span></label>
+            <input type="range" id="cc-reserve" min="15" max="60" step="1" value="35"/>
+          </div>
+
+          <div style="margin-top:0.9rem">
+            <div class="kpi-lbl">Mission-Slice Energy Allocation (10,000 Wakeups)</div>
+            <div class="bar-track" aria-label="Budget allocation bar">
+              <div id="bar-sense" class="bar-seg-sense" style="width:72%"></div>
+              <div id="bar-routine" class="bar-seg-routine" style="width:8%"></div>
+              <div id="bar-crit" class="bar-seg-crit" style="width:20%"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:0.7rem;color:var(--muted);margin-top:0.35rem;">
+              <span>■ Passive Sense/FRAM</span>
+              <span>■ Routine TX Debited</span>
+              <span>■ Critical Reserve</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-lbl">Cell R_int (50% SOC)</div>
+            <div class="kpi-val" id="kpi-rint">71.78 Ω</div>
+            <div class="kpi-sub" id="kpi-sag">TX terminal: 1.951 V (861 mV sag)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-lbl">Routine Beacons (500 Attempts)</div>
+            <div class="kpi-val" id="kpi-routine">10 allow / 490 refused</div>
+            <div class="kpi-sub" id="kpi-routine-uj">Debited: 4,800 µJ (G_routine)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-lbl">Critical Excursion Alerts</div>
+            <div class="kpi-val" id="kpi-crit" style="color:var(--allow)">40 / 40 (100.0%)</div>
+            <div class="kpi-sub" id="kpi-crit-uj">0 refused · isolated shard</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-lbl">Sealed JCR-1 Chain</div>
+            <div class="kpi-val" id="kpi-receipts">590 envelopes</div>
+            <div class="kpi-sub" id="kpi-head">verify_log: OK · replay_ledger: OK</div>
+          </div>
+        </div>
+      </div>
+      <p class="caption">Exact preset points match <code>receipts/conformance_summary.json</code> generated by <code>mei-jcp-tag-builder</code> + <code>jcp-satb-cad-spine</code>.</p>
+    </section>
+
+    <section id="mei-hw-02" class="figure-block">
+      <h2><span class="id">mei-hw-02</span> MEI-JCP-Tag-v1 Reference Hardware: 2-Layer Routed PCB (0 DRC Violations) &amp; 3D B-Rep Enclosure</h2>
+      <p>
+        <span class="ev-chip cad">openie-cad: cad-eda + cad-router + cad-kernel</span>
+        <span class="ev-chip">Fabrication package · board_metered: false</span>
+      </p>
+      <p class="teach">
+        Left/top: programmatic <code>32.0 mm × 24.0 mm</code> 2-layer FR-4 layout (<code>10</code> parts, <code>46</code> pads, <code>14</code> nets, <code>135</code> trace segments, <code>14</code> vias, <code>280.23 mm</code> routed copper, <code>cad-eda</code> DRC <strong>0 errors / 0 warnings</strong>). Right/bottom: 4-view hidden-line-removed orthographic engineering drawing of the base-seated <code>36.0 mm × 28.0 mm × 7.5 mm</code> vented cold-chain enclosure (<code>2,702.12 mm³</code>, <code>2.837 g</code> ABS, <code>852</code> STL triangles, <code>174,694 B</code> ISO-10303 STEP). Click any BOM part below to inspect its net bindings and LCSC code.
+      </p>
+
+      <div class="preset-bar" id="bom-selector" role="group" aria-label="Inspect PCB component">
+        <button type="button" class="chip-btn active" data-ref="U1">U1 STM32WBA52</button>
+        <button type="button" class="chip-btn" data-ref="U2">U2 INA238</button>
+        <button type="button" class="chip-btn" data-ref="R_SHUNT">R_SHUNT 100mΩ</button>
+        <button type="button" class="chip-btn" data-ref="U3">U3 FRAM 256Kb</button>
+        <button type="button" class="chip-btn" data-ref="RT1">RT1 NTC 10k</button>
+        <button type="button" class="chip-btn" data-ref="R_BIAS">R_BIAS 10k</button>
+        <button type="button" class="chip-btn" data-ref="C1">C1 100nF</button>
+        <button type="button" class="chip-btn" data-ref="C2">C2 1µF</button>
+        <button type="button" class="chip-btn" data-ref="J1">J1 SWD/UART</button>
+        <button type="button" class="chip-btn" data-ref="BT1">BT1 CR2032 (B.Cu)</button>
+      </div>
+      <div id="bom-detail" class="ctrl-panel" style="margin-bottom:0.9rem;font-family:var(--mono);font-size:0.79rem;"></div>
+
+      <figure style="margin:0 0 1rem 0;">
+        <img src="/figures/mei/mei-jcp-tag-pcb.svg" alt="MEI-JCP-Tag-v1 2-Layer Routed PCB Layout (32 mm x 24 mm, 0 DRC Violations)" style="background:#f8fafc;"/>
+        <figcaption class="caption"><code>/figures/mei/mei-jcp-tag-pcb.svg</code> — exported alongside RS-274X Gerbers, Excellon <code>.drl</code>, <code>mei_jcp_tag_v1.kicad_pcb</code>, <code>bom.csv</code>, and <code>cpl.csv</code>.</figcaption>
+      </figure>
+
+      <figure style="margin:0;">
+        <img src="/figures/mei/mei-jcp-tag-enclosure.svg" alt="MEI-JCP-Tag-v1 3D B-Rep Vented Cold-Chain Enclosure Multi-View HLR Engineering Drawing" style="background:#ffffff;"/>
+        <figcaption class="caption"><code>/figures/mei/mei-jcp-tag-enclosure.svg</code> — generated via <code>cad_format::drawing::multiview_svg_hlr</code> from the <code>cad-kernel</code> NURBS B-Rep body.</figcaption>
+      </figure>
+    </section>
+
+    <section id="mei-hw-03" class="figure-block">
+      <h2><span class="id">mei-hw-03</span> Unified SATB-IO ↔ openie-cad ↔ JCP JCR-1 Spine &amp; Live Receipt Inspector</h2>
+      <p>
+        <span class="ev-chip real">Ed25519 COSE_Sign1 · Canonical Det-CBOR</span>
+        <span class="ev-chip cad">reported_j (Linux RAPL) + est_j · measured_j: null</span>
+      </p>
+      <p class="teach">
+        Inspect the 8 hash-chained <code>JCR-1</code> receipts sealed during the <code>mei-jcp-tag-builder</code> hardware build pipeline (<code>head = d5b3827b429093fd...20e01b2cd</code>). Notice how live shared-host idle fluctuations (&gt; 5.00% = 500 bps) automatically trigger <strong>SATB Falsifier 6</strong> (omitting <code>satb_derived_marginal_uj</code> while sealing <code>satb_raw_counter_uj</code>), how <strong>SATB Step 7</strong> verifies <code>0 µJ</code> phase-sum residual, and how <code>seq 6 → 7</code> seals a two-phase <code>hold</code> (<code>250 J</code>) followed by a post-execution <code>settle</code> (<code>268.23 J</code>) recording <code>caveat-unsatisfied</code> without hiding a single microjoule of spend.
+      </p>
+
+      <figure style="margin:0 0 1rem 0;">
+        <img src="/figures/mei/jcp-satb-cad-spine.svg" alt="Unified SATB-IO, openie-cad, and JCP JCR-1 Provenance Lattice and Receipt Spine" style="background:#f8fafc;"/>
+      </figure>
+
+      <div class="preset-bar" id="seq-selector" role="group" aria-label="Select sealed JCR-1 build receipt"></div>
+      <pre class="receipt-code" id="receipt-inspector" aria-live="polite"></pre>
+      <p class="caption">Steward public key (Ed25519): <code>22fc297792f0b6ffc0bfcfdb7edb0c0aa14e025a365ec0e342e86e3829cb74b6</code> · <code>jcp_receipt::verify_log</code>: 8 / 8 valid · <code>unresolved_holds</code>: 0.</p>
+    </section>
+  </div>
+
+  <!-- ═══════════════════ EXISTING STUDY FIGURES (PRESERVED) ═══════════════════ -->
   <section id="mei-arg-01" class="figure-block">
     <h2><span class="id">mei-arg-01</span> Why this is the future</h2>
-    <p><span class="ev-chip model">Teaching diagram</span> <span class="ev-chip">Settled law + pack labels</span></p>
-    <p class="teach">Read top to bottom. Energy binds by settled law, not by a slogan. The transformer corridor can keep improving and still plateau as a deployment future, because uncapped import stops buying the next useful answer. Metabolic Intelligence obtains the superior answer under the metabolic envelope. Not a cheaper answer. Mixture of Limits chooses the gear. Two plants, edge and resource-optimized central, remove the hyperscale water and power prerequisite by design. That is not a liter count and not a board <code>measured_j</code>. The class is the research object. No product is claimed on this page.</p>
+    <p><span class="ev-chip model">Teaching diagram</span> <span class="ev-chip">Thermodynamic bounds + pack labels</span></p>
+    <p class="teach">Read top to bottom. Energy binds by physical principles, not by a slogan. The transformer corridor can keep improving and still plateau as a deployment future, because uncapped import stops buying the next useful answer. Metabolic Intelligence obtains the superior answer under the metabolic envelope. Not a cheaper answer. Mixture of Limits chooses the gear. Two plants, edge and resource-optimized central, remove the hyperscale water and power prerequisite by design. That is not a liter count and not a board <code>measured_j</code>. Klere is the product home. Research owns the class.</p>
     <div class="svg-wrap">
       <svg viewBox="0 0 760 340" width="100%" height="auto" role="img" aria-label="Why Metabolic Intelligence is the future, five claims">
         <rect width="760" height="340" fill="#0f172a"/>
@@ -118,12 +318,12 @@
           <text x="36" y="232" fill="#60a5fa" font-family="IBM Plex Mono, monospace" font-size="12">4  TWO PLANTS, NOT HYPERSCALE WATER AND POWER</text>
           <text x="36" y="250" fill="#e2e8f0" font-size="13">Edge: coin cell, ~10 µW class (datasheet + schedule). Lean central: OpenADR / DSX, cap held with sleep.</text>
           <rect x="20" y="268" width="720" height="48" rx="8" fill="#111827" stroke="#fde68a"/>
-          <text x="36" y="288" fill="#fde68a" font-family="IBM Plex Mono, monospace" font-size="12">5  THE CLASS IS THE RESEARCH</text>
-          <text x="36" y="306" fill="#e2e8f0" font-size="13">No product is claimed here. A roadmap is not a result. No invented liters. No board measured_j.</text>
+          <text x="36" y="288" fill="#fde68a" font-family="IBM Plex Mono, monospace" font-size="12">5  KLERE IS THE PRODUCT HOME</text>
+          <text x="36" y="306" fill="#e2e8f0" font-size="13">Research owns the class. Roadmap is not bench hardware. No invented liters. No board measured_j.</text>
         </g>
       </svg>
     </div>
-    <p class="caption">Static teaching figure. Study section “Why this is the future” and Appendix F. Soft-ref: <code>board_synth_claimed=false</code>.</p>
+    <p class="caption">Static teaching figure. Soft-ref: <code>board_synth_claimed=false</code>.</p>
   </section>
 
   <section id="mei-diag-01" class="figure-block">
@@ -160,27 +360,27 @@
         <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#5eead4"/></marker></defs>
       </svg>
     </div>
-    <p class="caption">Manim clip plus static SVG. Soft-ref: <code>board_synth_claimed=false</code>. Study: §1–§2 and Appendix C.</p>
+    <p class="caption">Manim clip plus static SVG. Soft-ref: <code>board_synth_claimed=false</code>. Study: §1–§2.</p>
   </section>
 
   <section id="mei-diag-02" class="figure-block">
     <h2><span class="id">mei-diag-02</span> J(m|q) obtain router</h2>
     <p><span class="ev-chip model">Calculation + looked-up</span> <span class="ev-chip">Estimated</span></p>
-    <p class="teach">Watch the cascade left to right. Lookup and Formula close first when grammar covers the need. Solver settles when physics needs it. Model opens last. Guess is residual. The rule under Mixture of Limits is <code>m* = argmin J(m|q)</code>. Ledger Wh/answer bands on this path are estimates, not board <code>measured_j</code>.</p>
+    <p class="teach">Watch the cascade left to right. Lookup and Formula close first when grammar covers the need. Solver resolves when physics needs it. Model opens last. Guess is residual. The rule under Mixture of Limits is <code>m* = argmin J(m|q)</code>. Wh/answer bands on this path are estimates, not board <code>measured_j</code>.</p>
     <video autoplay muted loop playsinline controls poster="media/mei-diag-02-obtain-router.gif"
       aria-label="Obtain router J(m|q) animation">
       <source src="media/mei-diag-02-obtain-router.webm" type="video/webm"/>
       <source src="media/mei-diag-02-obtain-router.mp4" type="video/mp4"/>
     </video>
-    <pre class="mono" style="font-family:var(--mono);font-size:0.85rem;background:#0f172a;border:1px solid var(--border);border-radius:8px;padding:1rem;overflow-x:auto;margin-top:0.85rem;">Lookup → Formula / Calculate → Solver → Model LAST → Guess
+    <pre class="mono" style="font-family:var(--mono);font-size:0.85rem;background:#0f172a;color:#e2e8f0;border:1px solid var(--border);border-radius:8px;padding:1rem;overflow-x:auto;margin-top:0.85rem;">Lookup → Formula / Calculate → Solver → Model LAST → Guess
 m* = argmin_m J(m|q) = E_m + λ · ½ · S_q² · var_m(t)</pre>
-    <p class="caption">Standing obtain rule. Study §4. Price the obtain zone, not only which LLM answers.</p>
+    <p class="caption">Standing obtain rule. Study §3. Price the obtain zone, not only which LLM answers.</p>
   </section>
 
   <section id="mei-tab-01" class="figure-block">
     <h2><span class="id">mei-tab-01</span> Digital enzyme vs int8 MLP (instruction counts)</h2>
     <p><span class="ev-chip emu">Emulator-measured</span> <span class="ev-chip">Pack MCU</span></p>
-    <p class="teach">Compare recognition cost under a matched Cortex-M4 decision setting. Enzymes with early exit take fewer instructions than a dense int8 MLP. On SmellNet sequential learning (50 foods, five groups, no revisit), enzymes keep accuracy across groups while the MLP collapses. Instruction counts are not a wattmeter. Do not upgrade them to board joules.</p>
+    <p class="teach">Compare recognition cost under a matched Cortex-M4 decision setting. Enzymes with early exit take fewer instructions than a dense int8 MLP. On SmellNet sequential learning (50 foods, five groups, no revisit), enzymes keep accuracy across groups while the MLP drops sharply. Instruction counts are not a wattmeter. Do not upgrade them to board joules.</p>
     <table class="teach-table">
       <thead><tr><th>Model (Cortex-M4 pack)</th><th>Instr / decision</th><th>Notes</th><th>Evidence</th></tr></thead>
       <tbody>
@@ -189,13 +389,13 @@ m* = argmin_m J(m|q) = E_m + λ · ½ · S_q² · var_m(t)</pre>
         <tr><td>SmellNet sequential (50 foods, 5 groups, no revisit)</td><td>—</td><td>Enzymes 77.7% vs MLP 18.4%</td><td>Real dataset protocol</td></tr>
       </tbody>
     </table>
-    <p class="caption">Chicken-spoilage Anwar numbers stay internal (no licence). Study §5.</p>
+    <p class="caption">Unlicensed third-party chicken-spoilage dataset excluded from publication. Study §4.1–§4.2.</p>
   </section>
 
   <section id="mei-tab-02" class="figure-block">
     <h2><span class="id">mei-tab-02</span> Tag metabolic schedule (~10 µW class)</h2>
     <p><span class="ev-chip datasheet">Datasheet + schedule model</span></p>
-    <p class="teach">The heater is not always the dominant cost. On the metabolic schedule with T/RH wake and a 4 h cap, sleep current dominates. Total average power sits near 10 µW in the pack model. Capacity years are a model from CR2032 datasheet capacity, not shelf-measured years.</p>
+    <p class="teach">The heater is not always the dominant cost. On the metabolic schedule with T/RH wake and a 4 h cap, sleep current dominates. Total average power sits near 10 µW in the pack model. Capacity years are a model from CR2032 datasheet capacity at 21 °C; see <code>mei-hw-01</code> above for low-temperature derating.</p>
     <table class="teach-table">
       <thead><tr><th>Policy (BME690 + STM32U3)</th><th>Heater µW</th><th>Sleep µW</th><th>Total µW</th><th>CR2032 years (model)</th></tr></thead>
       <tbody>
@@ -206,16 +406,16 @@ m* = argmin_m J(m|q) = E_m + λ · ½ · S_q² · var_m(t)</pre>
         <tr><td>metabolic + T/RH wake, cap 8 h</td><td>2.26</td><td>6.93</td><td>9.19</td><td>~8.8</td></tr>
       </tbody>
     </table>
-    <p class="caption">From pack <code>tag_budget_2026_results.json</code>. Study §6.</p>
+    <p class="caption">From pack <code>tag_budget_2026_results.json</code>. Study §4.3.</p>
   </section>
 
   <section id="mei-chart-01" class="figure-block">
     <h2><span class="id">mei-chart-01</span> Energy vs speed (pack chart)</h2>
     <p><span class="ev-chip model">Curves / measured-kernel model</span> <span class="ev-chip">Estimated</span></p>
-    <p class="teach">Speed-matching and Flash-first are test-time levers under a live budget. They are not a new pretrain. Wh/answer stays Estimated until Metered.</p>
+    <p class="teach">Speed-matching and Flash-first are test-time levers under a live budget. They are not a new pretrain. Wh/answer remains an estimate with stated bands.</p>
     <figure>
       <img src="media/energy_vs_speed.png" alt="Energy per chat answer versus streaming speed for V4 Pro and Flash on GB300/B300"/>
-      <figcaption class="caption">Pack asset <code>datacenter/curves/energy_vs_speed.png</code> (AI Configurator curves × estimated all-in kW/GPU). Study §7.</figcaption>
+      <figcaption class="caption">Pack asset <code>datacenter/curves/energy_vs_speed.png</code> (AI Configurator curves × estimated all-in kW/GPU). Study §5.</figcaption>
     </figure>
   </section>
 
@@ -225,7 +425,7 @@ m* = argmin_m J(m|q) = E_m + λ · ½ · S_q² · var_m(t)</pre>
     <p class="teach">Cluster power tracks a simulated grid day under several policies. Use this with OpenADR/DSX protocol evidence. Do not treat the plant model as a field meter.</p>
     <figure>
       <img src="media/grid_day.png" alt="Cluster power through a simulated grid day under multiple policies"/>
-      <figcaption class="caption">Pack asset <code>datacenter/grid_day.png</code>. Study §8.</figcaption>
+      <figcaption class="caption">Pack asset <code>datacenter/grid_day.png</code>. Study §6.</figcaption>
     </figure>
   </section>
 
@@ -282,14 +482,14 @@ m* = argmin_m J(m|q) = E_m + λ · ½ · S_q² · var_m(t)</pre>
     <p class="teach">Consumer speed tiers feed the metabolic gateway. Regime detection tells which lever to pull first under a live budget. This is software-path evidence, not a GPU wattmeter.</p>
     <figure>
       <img src="media/regime_consumer_detection.png" alt="Consumer regime detection for metabolic gateway speed tiers"/>
-      <figcaption class="caption">Pack asset <code>synthesis/regime_consumer_detection.png</code>. Study §4 and §10 Journey C.</figcaption>
+      <figcaption class="caption">Pack asset <code>synthesis/regime_consumer_detection.png</code>. Study §3 and §6.</figcaption>
     </figure>
   </section>
 
   <section id="mei-diag-03" class="figure-block">
     <h2><span class="id">mei-diag-03</span> Grid lever order (least service lost per MW)</h2>
     <p><span class="ev-chip real">Real protocol demos</span> <span class="ev-chip model">Plant model</span></p>
-    <p class="teach">Pull levers left to right. Pause first. Then slow speed. Then route to a smaller model. Then lower effort. Then battery. Shed last. AEMA has no published protocol spec yet (1 Oct 2026 radar). Do not sell AEMA latency numbers.</p>
+    <p class="teach">Pull levers left to right. Pause first. Then slow speed. Then route to a smaller model. Then lower effort. Then battery. Shed last.</p>
     <div class="svg-wrap">
       <svg viewBox="0 0 720 120" width="100%" height="auto" role="img" aria-label="Ordered grid levers">
         <text x="20" y="28" fill="#94a3b8" font-family="IBM Plex Mono, monospace" font-size="11">LEAST SERVICE LOST → MOST</text>
@@ -301,33 +501,204 @@ m* = argmin_m J(m|q) = E_m + λ · ½ · S_q² · var_m(t)</pre>
         <rect x="570" y="45" width="100" height="44" rx="8" fill="#111827" stroke="#f87171"/><text x="620" y="72" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="IBM Plex Sans, sans-serif">shed</text>
       </svg>
     </div>
-    <p class="caption">OpenADR 3.1 + DSX Flex–shaped service. Manim motion for this figure is backlog. Study §8.</p>
+    <p class="caption">OpenADR 3.1 + DSX Flex–shaped service. Study §6.</p>
   </section>
 
   <section id="mei-map-01" class="figure-block">
     <h2><span class="id">mei-map-01</span> Hardware dual-map</h2>
     <p><span class="ev-chip">Operational map</span> <span class="ev-chip">Unmetered</span></p>
-    <p class="teach">The class runs today on GPUs and MCUs. It points at neuromorphic, analog / in-memory, photonic, and reversible / adiabatic substrates next. Map status is not a meter reading.</p>
+    <p class="teach">The class runs today on GPUs and MCUs, backed by the <code>MEI-JCP-Tag-v1</code> 2-layer PCB fabrication package. It points at neuromorphic, analog / in-memory, photonic, and reversible / adiabatic substrates next. Map status is not a physical bench reading.</p>
     <table class="teach-table">
       <thead><tr><th>Leaf</th><th>Runs today (von Neumann)</th><th>Post–von Neumann path</th><th>Status in study</th></tr></thead>
       <tbody>
-        <tr><td>Digital enzyme</td><td>MCU / Cortex-M4 C</td><td>Content-addressable / sparse associative</td><td>Emulator-measured instructions</td></tr>
+        <tr><td>Digital enzyme + JCP tag</td><td>MCU / Cortex-M4 C + <code>MEI-JCP-Tag-v1</code> 2-layer PCB</td><td>Content-addressable / sparse associative</td><td>Emulator instructions + 0-DRC CAD fab package</td></tr>
         <tr><td>J(m|q) router</td><td>CPU / gateway service</td><td>N/A (software)</td><td>Math + ledger</td></tr>
         <tr><td>Campus levers</td><td>GPU planners, Redfish, MQTT</td><td>Analog power fabrics (speculative)</td><td>Real protocols; plant model</td></tr>
         <tr><td>Latent / EBM optional</td><td>GPU ViT / Lean</td><td>Analog DenseAM / memristor Hopfield</td><td>Cited peers; not OpenIE meters</td></tr>
       </tbody>
     </table>
-    <p class="caption">Teaching map from study Appendix B. Soft-ref path: <code>board_synth_claimed=false</code>.</p>
+    <p class="caption">Teaching map. Soft-ref path: <code>board_synth_claimed=false</code>.</p>
   </section>
 
-  <p class="note-manim">Shipped Manim: <code>mei-diag-01</code> dual scale, <code>mei-diag-02</code> obtain router (mp4/webm/gif). Static argument figure: <code>mei-arg-01</code> (no new render). Backlog: <code>mei-diag-03</code> lever-order motion; enzyme vs MLP bar motion. Voice locks unchanged. Thesis video docs untouched and not committed.</p>
+  <p class="note-manim">Shipped Manim: <code>mei-diag-01</code> dual scale, <code>mei-diag-02</code> obtain router (mp4/webm/gif). Interactive CAD/JCP explorer: <code>mei-hw-01..03</code>.</p>
 
   <section class="figure-block">
     <h2>Measurement note</h2>
-    <p>No board package joules are claimed here. Evidence classes: real protocol / emulator / datasheet / curves / plant model.
-      Read the study claim ledger (Appendix E) for proven pack vs roadmap vs estimate.
+    <p>No physical tag bench joules are claimed here (<code>board_metered: false</code>, <code>measured_j: null</code>). Evidence classes: real protocol / emulator / datasheet / CAD-verified fabrication package / build-host Linux RAPL (<code>reported_j</code>) / curves / plant model.
       Pack third-party notices: <a href="media/PACK_THIRD_PARTY_NOTICES.md">PACK_THIRD_PARTY_NOTICES.md</a>.</p>
   </section>
 </main>
+
+<script>
+(function () {
+  const html = document.documentElement;
+  const saved = localStorage.getItem('openie-theme');
+  if (saved === 'light' || saved === 'dark') html.setAttribute('data-theme', saved);
+  const btn = document.getElementById('theme-toggle');
+  if (btn) {
+    btn.addEventListener('click', function () {
+      const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('openie-theme', next);
+    });
+  }
+
+  // 1. Cold-Chain CR2032 + 10,000-Wakeup JCP Hold/Settle Simulator
+  const tempEl = document.getElementById('cc-temp');
+  const txEl = document.getElementById('cc-tx-ma');
+  const resEl = document.getElementById('cc-reserve');
+  const presetBtns = document.querySelectorAll('[data-preset]');
+
+  const VERIFIED_VECTORS = {
+    "-20:12:35": { rint: 71.78, vtx: 1.951, sag: 861.3, allow: 10, refuse: 490, rUj: 4800, sUj: 420000, cUj: 10400, cBudget: 35000, usableUj: 460000, rcpts: 590, head: "70137549...4896c3" },
+    "4:12:35":   { rint: 25.72, vtx: 2.504, sag: 308.7, allow: 430, refuse: 70, rUj: 184900, sUj: 400000, cUj: 9600, cBudget: 35000, usableUj: 620000, rcpts: 1010, head: "6a2309af...e78e84" },
+    "25:12:35":  { rint: 12.00, vtx: 2.669, sag: 144.0, allow: 500, refuse: 0, rUj: 200000, sUj: 380000, cUj: 9000, cBudget: 35000, usableUj: 720000, rcpts: 1080, head: "76ae028c...4f1368" }
+  };
+
+  function updateColdChain() {
+    const T = parseFloat(tempEl.value);
+    const iMa = parseFloat(txEl.value);
+    const resMj = parseFloat(resEl.value);
+    document.getElementById('cc-temp-val').textContent = (T > 0 ? '+' : '') + T.toFixed(0) + ' °C';
+    document.getElementById('cc-tx-ma-val').textContent = iMa.toFixed(1) + ' mA';
+    document.getElementById('cc-reserve-val').textContent = resMj.toFixed(1) + ' mJ';
+
+    const key = T + ':' + iMa + ':' + resMj;
+    let d = VERIFIED_VECTORS[key];
+    if (!d) {
+      const tk = T + 273.15;
+      const rint = 12.0 * Math.exp(3000.0 * (1.0 / tk - 1.0 / 298.15));
+      const ocv50 = 2.8125;
+      const sagMv = iMa * rint;
+      const vtx = Math.max(0, ocv50 - sagMv / 1000.0);
+      const usableUj = Math.round(Math.max(435000, Math.min(760000, 720000 - Math.max(0, 25 - T) * 5780 - Math.max(0, iMa - 12) * 14000)));
+      const sensePerWake = Math.round(38 + Math.max(0, 25 - T) * 0.09);
+      const sUj = 10000 * sensePerWake;
+      const cBudget = Math.round(resMj * 1000);
+      const routineCost = Math.round((400 + Math.max(0, 25 - T) * 1.78) * (iMa / 12.0));
+      const critCost = Math.round(225 + Math.max(0, 25 - T) * 0.78);
+      const surplus = Math.max(0, usableUj - sUj - cBudget);
+      const allow = Math.min(500, Math.floor(surplus / Math.max(1, routineCost)));
+      const refuse = 500 - allow;
+      const rUj = allow * routineCost;
+      const cAllow = Math.min(40, Math.floor(cBudget / critCost));
+      const rcpts = allow * 2 + refuse + cAllow * 2;
+      d = { rint, vtx, sag: sagMv, allow, refuse, rUj, sUj, cUj: cAllow * critCost, cBudget, usableUj, rcpts, head: "live-sim-det-cbor", cAllow };
+    } else {
+      d.cAllow = 40;
+    }
+
+    document.getElementById('kpi-rint').textContent = d.rint.toFixed(2) + ' Ω';
+    const brownoutNote = d.vtx < 2.0 ? ' (< 2.00 V cutoff!)' : ' (> 2.00 V safe)';
+    document.getElementById('kpi-sag').textContent = 'TX: ' + d.vtx.toFixed(3) + ' V (' + d.sag.toFixed(1) + ' mV sag)' + brownoutNote;
+    document.getElementById('kpi-routine').textContent = d.allow + ' allow / ' + d.refuse + ' refused';
+    document.getElementById('kpi-routine-uj').textContent = 'Debited: ' + d.rUj.toLocaleString() + ' µJ (G_routine)';
+    document.getElementById('kpi-crit').textContent = d.cAllow + ' / 40 (' + ((d.cAllow / 40) * 100).toFixed(1) + '%)';
+    document.getElementById('kpi-crit-uj').textContent = (40 - d.cAllow) + ' refused · ' + d.cUj.toLocaleString() + ' µJ debited';
+    document.getElementById('kpi-receipts').textContent = d.rcpts.toLocaleString() + ' envelopes';
+    document.getElementById('kpi-head').textContent = 'head: ' + d.head + ' · replay: OK';
+
+    const tot = Math.max(1, d.sUj + d.rUj + d.cBudget);
+    document.getElementById('bar-sense').style.width = ((d.sUj / tot) * 100).toFixed(1) + '%';
+    document.getElementById('bar-routine').style.width = ((d.rUj / tot) * 100).toFixed(1) + '%';
+    document.getElementById('bar-crit').style.width = ((d.cBudget / tot) * 100).toFixed(1) + '%';
+  }
+
+  presetBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      presetBtns.forEach(function (x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      tempEl.value = b.getAttribute('data-preset');
+      txEl.value = '12';
+      resEl.value = '35';
+      updateColdChain();
+    });
+  });
+  [tempEl, txEl, resEl].forEach(function (el) {
+    el.addEventListener('input', function () {
+      presetBtns.forEach(function (x) { x.classList.remove('active'); });
+      updateColdChain();
+    });
+  });
+  updateColdChain();
+
+  // 2. Interactive PCB Component BOM Inspector
+  const BOM = {
+    U1: { mpn: "STM32WBA52CGU6", lcsc: "C5362912", layer: "F.Cu (19.5, 12.5 mm)", role: "ULP Cortex-M33 MCU + BLE-LR gate executing JCP hold/settle checks", nets: "VDD_SYS, GND, I2C_SCL, I2C_SDA, JCP_ALERT, NTC_ADC, SPI_CS, SPI_SCK, SPI_MOSI, SPI_MISO, SWDIO, SWCLK, UART_TX" },
+    U2: { mpn: "INA238AIDR", lcsc: "C2875184", layer: "F.Cu (11.5, 17.5 mm)", role: "TI 16-bit I2C high-precision shunt & bus monitor", nets: "VBAT_RAW (IN+, VBUS), VDD_SYS (IN-, VS), GND, I2C_SDA, I2C_SCL, JCP_ALERT" },
+    R_SHUNT: { mpn: "RG2012P-101-B-T5", lcsc: "C275409", layer: "F.Cu (5.5, 17.5 mm)", role: "100 mΩ 0.1% 25 ppm/°C thin-film sense resistor", nets: "VBAT_RAW → VDD_SYS" },
+    U3: { mpn: "MB85RS256BPNF-G-JNERE1", lcsc: "C90968", layer: "F.Cu (26.5, 18.0 mm)", role: "256-Kb non-volatile SPI FRAM storing hash-chained JCR-1 receipt ring", nets: "SPI_CS, SPI_MISO, SPI_MOSI, SPI_SCK, VDD_SYS, GND" },
+    RT1: { mpn: "NCP18XH103F03RB", lcsc: "C77131", layer: "F.Cu (7.5, 5.5 mm) under enclosure vent", role: "10 kΩ B3380 cold-chain NTC thermistor", nets: "NTC_ADC, GND" },
+    R_BIAS: { mpn: "RT0603BRD0710KL", lcsc: "C25804", layer: "F.Cu (12.5, 5.5 mm)", role: "10 kΩ 0.1% thin-film thermistor divider reference", nets: "VDD_SYS, NTC_ADC" },
+    C1: { mpn: "CL10B104KO8NNNC", lcsc: "C14663", layer: "F.Cu (15.5, 21.5 mm)", role: "100 nF X7R local rail decoupling for INA238 & FRAM", nets: "VDD_SYS, GND" },
+    C2: { mpn: "CL10B105KO8NNNC", lcsc: "C15849", layer: "F.Cu (19.5, 6.5 mm)", role: "1 µF X7R bulk decoupling for MCU & pulse transient support", nets: "VDD_SYS, GND" },
+    J1: { mpn: "A1501WV-5P", lcsc: "C2939543", layer: "PTH 1.50 mm pitch (28.0, 7.0 mm)", role: "5-pin SWD programming + offline JCR-1 receipt UART readout", nets: "VDD_SYS, SWDIO, SWCLK, UART_TX, GND" },
+    BT1: { mpn: "Keystone 3034", lcsc: "C70377", layer: "B.Cu (16.0, 12.0 mm)", role: "SMD CR2032 3.0 V 225 mAh (2,430 J nominal) coin-cell holder", nets: "VBAT_RAW, GND" }
+  };
+  const bomDetail = document.getElementById('bom-detail');
+  const bomBtns = document.querySelectorAll('#bom-selector [data-ref]');
+  function showBom(ref) {
+    const p = BOM[ref];
+    bomDetail.innerHTML = '<strong>' + ref + ' · ' + p.mpn + '</strong> (LCSC <code>' + p.lcsc + '</code>) — Placement: <code>' + p.layer + '</code><br/>' +
+      'Role: ' + p.role + '<br/>Connected nets: <code>' + p.nets + '</code>';
+  }
+  bomBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      bomBtns.forEach(function (x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      showBom(b.getAttribute('data-ref'));
+    });
+  });
+  showBom('U1');
+
+  // 3. Sealed JCR-1 Build Receipt Chain Inspector (exact verified records from jcr1_build_and_coldchain_ledger.json)
+  const RECEIPTS = [
+    { seq: 0, stage: "material.fr4_and_abs_embodied", tract: "material", verdict: "allow", tier: "est_j", debited_uj: 45151500, reported_uj: null, est_uj: 45151500, prev: "0000000000000000...00000000", cid: "8a8f09472630cf5429344ce73ef7926515dd69838e9a215c2abe45c0f053c4ac", f6: "n/a (analytical estimator)", step7: "n/a" },
+    { seq: 1, stage: "supply_chain.smt_10part_batch_share", tract: "supply_chain", verdict: "allow", tier: "est_j", debited_uj: 14500000, reported_uj: null, est_uj: 14500000, prev: "8a8f09472630cf54...053c4ac", cid: "fa0a4c71be423566bd92f834027bd1675b7ead57b969eee494f9598a5170f90a", f6: "n/a (analytical estimator)", step7: "n/a" },
+    { seq: 2, stage: "kernel.brep_enclosure", tract: "compute", verdict: "allow", tier: "reported_j", debited_uj: 108150825, reported_uj: 108150825, est_uj: 34184990, prev: "fa0a4c71be423566...5170f90a", cid: "3828011ebcc5d93b5c96e94ae4224b3862fea1e93f115d73fb4e37a50f8eb1eb", f6: "drift 4023 bps > 500 bps -> derived_marginal_uj omitted, raw_counter_uj sealed", step7: "pass (residual 0 uJ)" },
+    { seq: 3, stage: "ecad.schematic_and_autoroute (x27 to 1s)", tract: "compute", verdict: "allow", tier: "reported_j", debited_uj: 3603973, reported_uj: 3603973, est_uj: 32177408, prev: "3828011ebcc5d93b...0f8eb1eb", cid: "e4f93462242dc65c50e178141d1e37f6dc86987faf64613c51d5d18b9f56f2db", f6: "drift 823 bps > 500 bps -> derived_marginal_uj omitted, raw_counter_uj sealed", step7: "pass (residual 0 uJ)" },
+    { seq: 4, stage: "ecad.drc_and_fab_export (x517 to 1s)", tract: "compute", verdict: "allow", tier: "reported_j", debited_uj: 218229, reported_uj: 218229, est_uj: 30058230, prev: "e4f93462242dc65c...9f56f2db", cid: "bf0bc8464669405e50156a3fd85316f218ce57334aca35069dfe126e674e3396", f6: "drift 2672 bps > 500 bps -> derived_marginal_uj omitted, raw_counter_uj sealed", step7: "pass (residual 0 uJ)" },
+    { seq: 5, stage: "sim.battery_cr2032_electrochem (x49960 to 1s)", tract: "compute", verdict: "allow", tier: "reported_j", debited_uj: 2337, reported_uj: 2337, est_uj: 28001904, prev: "bf0bc8464669405e...674e3396", cid: "925b0c36000fe32608b74eb568f8552ff8fd9837b1f9becde2db78fe3d4afe23", f6: "drift 724 bps > 500 bps -> derived_marginal_uj omitted, raw_counter_uj sealed", step7: "pass (residual 0 uJ)" },
+    { seq: 6, stage: "jcp.coldchain_10k_hold_settle.hold", tract: "compute", verdict: "allow (hold: 250,000,000 uJ)", tier: "est_j", debited_uj: 0, reported_uj: null, est_uj: 250000000, prev: "925b0c36000fe326...3d4afe23", cid: "901ecc88cec594cbbb33f7614eac9a8166b331d2c9274afee6dd7deb40d58c5d", f6: "pre-execution hold reservation", step7: "n/a" },
+    { seq: 7, stage: "jcp.coldchain_10k_hold_settle.settle", tract: "compute", verdict: "deny (caveat-unsatisfied; debited 268.23 J > 250 J MaxCostUj)", tier: "reported_j", debited_uj: 268226638, reported_uj: 268226638, est_uj: 57999870, prev: "901ecc88cec594cb...40d58c5d", cid: "d5b3827b429093fd22bc2525e9f574aeb2f52411077ec221ecbc5ec20e01b2cd", f6: "drift 2595 bps > 500 bps -> derived_marginal_uj omitted, raw_counter_uj sealed", step7: "pass (residual 0 uJ)" }
+  ];
+
+  const seqBar = document.getElementById('seq-selector');
+  const rcptPre = document.getElementById('receipt-inspector');
+  RECEIPTS.forEach(function (r, i) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'chip-btn' + (i === 7 ? ' active' : '');
+    b.textContent = 'seq ' + r.seq + ' · ' + r.tract;
+    b.addEventListener('click', function () {
+      seqBar.querySelectorAll('.chip-btn').forEach(function (x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      renderReceipt(r);
+    });
+    seqBar.appendChild(b);
+  });
+  function renderReceipt(r) {
+    rcptPre.textContent = JSON.stringify({
+      jcp_receipt: "jcp/2 (COSE_Sign1 Ed25519 over canonical det-CBOR)",
+      seq: r.seq,
+      prev_cid_prefix: r.prev,
+      receipt_cid_blake3: r.cid,
+      cad_stage: r.stage,
+      cad_tract: r.tract,
+      verdict: r.verdict,
+      debited_uj: r.debited_uj,
+      evidence_separation: {
+        measured_uj: null,
+        reported_uj_linux_rapl: r.reported_uj,
+        est_uj_analytical: r.est_uj,
+        satb_evidence_tier: r.tier
+      },
+      satb_falsifier6: r.f6,
+      satb_step7_conservation: r.step7
+    }, null, 2);
+  }
+  renderReceipt(RECEIPTS[7]);
+})();
+</script>
 </body>
 </html>

@@ -52,33 +52,43 @@ function decodeHtmlEntities(s: string): string {
     .replace(/&rarr;/g, '→');
 }
 
+function stripHtmlTags(x: string): string {
+  return x.replace(/<\/?[a-zA-Z!][^>]*>/g, ' ');
+}
+
 function astroHtmlToMarkdown(rawAstro: string): string {
   let s = rawAstro.replace(/^---[\s\S]*?---\s*/, '');
   // Strip JSX comments and inline style/script blocks if any
   s = s.replace(/<!--[\s\S]*?-->/g, '');
   s = s.replace(/<script[\s\S]*?<\/script>/gi, '');
   s = s.replace(/<style[\s\S]*?<\/style>/gi, '');
+  // Preserve <img> figures before converting <a> wrappers
+  s = s.replace(/<img\b[^>]*src="([^"]+)"[^>]*alt="([^"]*)"[^>]*\/?>/gi, (_m, src, alt) => {
+    const fullSrc = src.startsWith('/') ? `${BASE}${src}` : src;
+    return `\n\n![${decodeHtmlEntities(alt.trim())}](${fullSrc})\n\n`;
+  });
   // Convert inline formatting first
   s = s.replace(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi, (_m, href, inner) => {
-    const cleanInner = inner.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    if (inner.includes('![')) return inner;
+    const cleanInner = stripHtmlTags(inner).replace(/\s+/g, ' ').trim();
     if (!cleanInner) return '';
     const fullHref = href.startsWith('/') ? `${BASE}${href}` : href;
     return `[${cleanInner}](${fullHref})`;
   });
-  s = s.replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, (_m, c) => `\`${c.replace(/<[^>]+>/g, '').trim()}\``);
+  s = s.replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, (_m, c) => `\`${stripHtmlTags(c).trim()}\``);
   s = s.replace(/<(?:strong|b)[^>]*>([\s\S]*?)<\/(?:strong|b)>/gi, (_m, c) => `**${c.trim()}**`);
   s = s.replace(/<(?:em|i)[^>]*>([\s\S]*?)<\/(?:em|i)>/gi, (_m, c) => `*${c.trim()}*`);
   // Headings
-  s = s.replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi, (_m, c) => `\n\n## ${c.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()}\n\n`);
-  s = s.replace(/<h3[^>]*>([\s\S]*?)<\/h3>/gi, (_m, c) => `\n\n### ${c.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()}\n\n`);
-  s = s.replace(/<h4[^>]*>([\s\S]*?)<\/h4>/gi, (_m, c) => `\n\n#### ${c.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()}\n\n`);
+  s = s.replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi, (_m, c) => `\n\n## ${stripHtmlTags(c).replace(/\s+/g, ' ').trim()}\n\n`);
+  s = s.replace(/<h3[^>]*>([\s\S]*?)<\/h3>/gi, (_m, c) => `\n\n### ${stripHtmlTags(c).replace(/\s+/g, ' ').trim()}\n\n`);
+  s = s.replace(/<h4[^>]*>([\s\S]*?)<\/h4>/gi, (_m, c) => `\n\n#### ${stripHtmlTags(c).replace(/\s+/g, ' ').trim()}\n\n`);
   // Tables
   s = s.replace(/<table[\s\S]*?<\/table>/gi, (tbl) => {
     const rows: string[][] = [];
     for (const tr of tbl.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)) {
       const cells: string[] = [];
       for (const td of tr[1].matchAll(/<(?:th|td)[^>]*>([\s\S]*?)<\/(?:th|td)>/gi)) {
-        cells.push(decodeHtmlEntities(td[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()).replace(/\|/g, '\\|'));
+        cells.push(decodeHtmlEntities(stripHtmlTags(td[1]).replace(/\s+/g, ' ').trim()).replace(/\|/g, '\\|'));
       }
       if (cells.length) rows.push(cells);
     }
@@ -91,10 +101,10 @@ function astroHtmlToMarkdown(rawAstro: string): string {
     return `\n\n${head}\n${sep}${rest ? '\n' + rest : ''}\n\n`;
   });
   // Lists & paragraphs & figcaptions
-  s = s.replace(/<figcaption[^>]*>([\s\S]*?)<\/figcaption>/gi, (_m, c) => `\n\n> ${c.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()}\n\n`);
-  s = s.replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, (_m, c) => `\n- ${c.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()}`);
-  s = s.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (_m, c) => `\n\n${c.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()}\n\n`);
-  s = s.replace(/<[^>]+>/g, '');
+  s = s.replace(/<figcaption[^>]*>([\s\S]*?)<\/figcaption>/gi, (_m, c) => `\n\n> ${stripHtmlTags(c).replace(/\s+/g, ' ').trim()}\n\n`);
+  s = s.replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, (_m, c) => `\n- ${stripHtmlTags(c).replace(/\s+/g, ' ').trim()}`);
+  s = s.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (_m, c) => `\n\n${stripHtmlTags(c).replace(/\s+/g, ' ').trim()}\n\n`);
+  s = stripHtmlTags(s);
   s = decodeHtmlEntities(s);
   return s.replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
 }

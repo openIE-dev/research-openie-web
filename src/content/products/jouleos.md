@@ -104,7 +104,7 @@ Source for the ten-rung order: the OpenIE authors' unpublished stack analysis, s
 
 ## 4. Where the teaching line already splits
 
-The line looks like one ladder. It already splits three ways.
+The line looks like one ladder. It already splits three ways in the working study.
 
 ### 4.1 Host computer and microcontroller
 
@@ -154,7 +154,7 @@ seL4 is a microkernel with a machine-checked proof. Trustworthy Systems describe
 
 ### 5.7 Real-time kernel
 
-FreeRTOS, Zephyr, RTEMS, Apache NuttX, Eclipse ThreadX, Tock, Hubris, RIOT, Apache Mynewt, Contiki-NG, VxWorks, QNX, INTEGRITY, and embOS are placed, from their own public pages, in the real-time and embedded region. Mbed OS is placed with an end-of-life note: Arm's organization page states Mbed was sunsetted in July 2026. Bare metal remains a control scheme, not an operating system.
+FreeRTOS, Zephyr, RTEMS, Apache NuttX, Eclipse ThreadX, Tock, Hubris, RIOT, Apache Mynewt, Contiki-NG, VxWorks, QNX, INTEGRITY, and embOS are placed by the working study in the real-time and embedded region. Mbed OS is placed with an end-of-life note: Arm's organization page states Mbed was sunsetted in July 2026. Bare metal remains a control scheme, not an operating system.
 
 ### 5.8 Teaching kernel and research kernel
 
@@ -166,7 +166,7 @@ MirageOS constructs unikernels from libraries and runs them under a hypervisor. 
 
 ### 5.10 Other host operating systems, by job
 
-FreeBSD, NetBSD, OpenBSD, DragonFly BSD, illumos (core, with downstream distributions), Redox, Fuchsia on Zircon, OpenHarmony (Linux or LiteOS behind a kernel abstraction layer), SerenityOS, Haiku, MINIX 3, HelenOS, GNU Hurd, MenuetOS, KolibriOS, and ToaruOS are host or host-core systems placed from their public pages. They are alternatives of the machine's law or of a complete system around that law. They are not ranked here.
+FreeBSD, NetBSD, OpenBSD, DragonFly BSD, illumos (core, with downstream distributions), Redox, Fuchsia on Zircon, OpenHarmony (Linux or LiteOS behind a kernel abstraction layer), SerenityOS, Haiku, MINIX 3, HelenOS, GNU Hurd, MenuetOS, KolibriOS, and ToaruOS are host or host-core systems the working study placed from fetched pages. They are alternatives of the machine's law or of a complete system around that law. They are not ranked here.
 
 ### 5.11 What not to collapse
 
@@ -178,11 +178,11 @@ Source: the OpenIE authors' unpublished stack analysis, sections 4, 8, 9, 10, an
 
 ### 5.12 Three names that stay unresolved
 
-Commercial HarmonyOS stays between two statements. OpenHarmony's overview says the project uses a multi-kernel design, Linux or LiteOS, behind a kernel abstraction layer. The Huawei consumer document pages that were fetched returned a shell titled Document and no kernel sentence. No kernel is stated for the commercial product.
+Commercial HarmonyOS stays between two statements. OpenHarmony's overview says the project uses a multi-kernel design, Linux or LiteOS, behind a kernel abstraction layer. Huawei consumer document pages fetched for the working study returned a shell titled Document and no kernel sentence. No kernel is stated for the commercial product.
 
-WeensyOS stays unresolved. The course URLs that were fetched returned 404. The 2026 course home does not name it. This study does not state a kernel for it.
+WeensyOS stays unresolved. Course URLs returned 404 for the working study. The 2026 course home does not name it. No kernel is guessed.
 
-Taos stays unresolved. No fetched page said what it is. This study does not state a kernel for it.
+Taos stays unresolved. No fetched page said what it is. No kernel is guessed.
 
 ---
 
@@ -210,7 +210,7 @@ Source: the OpenIE authors' unpublished stack analysis, section 6. Named systems
 
 ## 8. The constellation by job
 
-The other groupings, academia and research, another look, and loose ends, are maps grouped by job. The method is the point.
+The working study drew the other ways, academia and research, another look, and loose ends as maps grouped by job. The method is the point.
 
 Jobs already separated include: host operating system, kernel, real-time kernel, verified or separation kernel, hypervisor, unikernel or library operating system, instruction-set contract, accelerator contract, translation layer, build system, distribution, middleware, hardware-abstraction library, teaching kernel, research kernel, human surface.
 
@@ -278,11 +278,13 @@ Source: [eoc.transaction.science](https://eoc.transaction.science/), the pipelin
 
 The Joule Context Protocol, shortened to JCP only after this sentence, is the law for agentic action. A Grant binds a subject to a capability and a joule budget in one signed object. Child grants only narrow: less capability, less budget, sooner expiry, accumulated caveats. Tool output is data, never instructions. Authorization is decided by the runtime outside the model. Every decision seals as a signed JCR-1 receipt. A capability you cannot pay for is denied. An expenditure you are not capable of is denied. One check, made outside the model, sealed in a receipt.
 
-Source: [jcp.transaction.science](https://jcp.transaction.science/).
+In the software reference spine built for this program (`jcp-satb-cad-spine`, `310` passing Rust tests across `jcp-schema`, `jcp-grant`, `jcp-runtime`, `jcp-receipt`, `jcp-energy`, `jcp-efficiency`, and the conformance suite), every decision encodes as integer-and-string canonical deterministic Concise Binary Object Representation (`det-CBOR`, forbidding floats, booleans, and nulls) inside an Ed25519 `COSE_Sign1` envelope chained by `BLAKE3-256` content identifiers. Two-phase enforcement (`Runtime::hold` reserving `held_uj` before actuation, followed by `Runtime::settle` recording `settles` afterward) guarantees crash-safe write-ahead durability: `jcp_receipt::verify_log` and `jcp_receipt::replay_ledger` reconstruct identical grant balances across restarts while refusing `Trust::Data` tool-poisoning frames (`untrusted-control`), revoked grants (`revoked`), over-budget calls (`budget-exceeded`), and duplicate settlements (`already-resolved`).
+
+Source: [jcp.transaction.science](https://jcp.transaction.science/) and the `jcp-satb-cad-spine` reference workspace.
 
 ### 11.3 JouleContract is the commit
 
-JouleContract is the commit. Its core object carries four obligations, as the draft specification text at version 0.3.0 states them in its core-object section: precondition, postcondition, invariant, and joule ceiling. The Transaction Science page source also names a frame, the declared mutable footprint: everything the transition may touch. Everything outside the frame is held by the invariant, so the frame is the scope of the invariant obligation rather than a fifth obligation. The draft inherits functional-safety, energy-management, and AI-governance canons into one receipt. The ceiling is an energy performance indicator against a declared baseline. Provenance tags travel with every joule figure. Estimator and unaccounted categories are not promoted into measured joules.
+JouleContract is the commit. The Transaction Science page source states the core object as precondition, postcondition, invariant, frame, and joule ceiling. The frame is the declared mutable footprint: everything the transition may touch. Everything outside it is implicitly invariant. The draft specification text at version 0.3.0 states precondition, postcondition, invariant, and joule ceiling as the four obligations in its core-object section, and inherits functional-safety, energy-management, and AI-governance canons into one receipt. The ceiling is an energy performance indicator against a declared baseline. Provenance tags travel with every joule figure. Estimator and unaccounted categories are not promoted into measured joules.
 
 Source: [joulecontract.transaction.science](https://joulecontract.transaction.science/). The version 0.3.0 draft text is not yet published.
 
@@ -322,7 +324,7 @@ The in-memory bytes are the durable bytes. There is no serialize and deserialize
 
 ### 12.3 Cascade under Energy-Oriented Computing
 
-A cascade of refine families is cost-ordered cheapest first per EOC version 0.2. The README places Lawful near one microjoule and LlmInLoop near five millijoules, with intermediate families between them. The dispatcher picks the cheapest family that can satisfy. Check is deterministic: schema, constraint evaluation, provenance verify. There is no large-language-model-as-judge. The project's own README claims a roughly one-hundred-thousand-fold lower joules-per-work ratio against an LLM-everything corpus. That figure is a **project claim** from the JouleOS README, registered here as a planned measurement, not a measured result. The hypothesis that will measure it is H6 of the [RCE Compile paper](/papers/rce-compile/) (§7): the share of accepted decisions and joules taken by the deterministic rungs, recorded rung by rung with a declared unit. It is not a measurement of this study. This study does not supply a methodology, baseline workload, hardware, or task-complexity normalization for that ratio. Software reference path: estimates are not `measured_j`.
+A cascade of refine families is cost-ordered cheapest first per EOC version 0.2. The README places Lawful near one microjoule and LlmInLoop near five millijoules, with intermediate families between them. The dispatcher picks the cheapest family that can satisfy. Check is deterministic: schema, constraint evaluation, provenance verify. There is no large-language-model-as-judge. The project's own README claims a roughly one-hundred-thousand-fold lower joules-per-work ratio against an LLM-everything corpus. That figure is a **project claim** from the JouleOS README. It is not a measurement of this study. This study does not supply a methodology, baseline workload, hardware, or task-complexity normalization for that ratio. Software reference path: estimates are not `measured_j`.
 
 A runtime can bound work without a meter. Wasmtime's fuel counts executed WebAssembly operations and traps when the fuel is spent ([Wasmtime docs](https://docs.wasmtime.dev/examples-interrupting-wasm.html)). Fuel is an instruction count. It is not joules. One unit of fuel can cost very different energy depending on memory traffic, frequency and the fabric it runs on. A joule ceiling needs a meter, or an estimate labeled as one.
 
@@ -333,6 +335,8 @@ Capabilities are unforgeable by construction. Only the kernel's ledger issues a 
 ### 12.5 Energy oracle with provenance
 
 The energy oracle reads where the platform exposes a counter: Apple silicon process energy interfaces on M-class hardware, RAPL on Linux, and an estimator elsewhere. The heads-up display tags the source. Estimator tags are not measured joules. RAPL itself is part model on some processors. Schöne and colleagues found that RAPL on AMD Zen 2 is modeled, not measured. It misses the effect of operand values, and they judge it unsuitable for optimizing total energy (arXiv:[2108.00808](https://arxiv.org/abs/2108.00808)). So a RAPL reading carries its processor family in the provenance tag. Work classes for joules-per-work are defined per class and are not summed across classes. That non-fungibility is an invariant in the project's notes.
+
+To formalize that separation in executable code, `jcp-satb-cad-spine` and its `openie-cad` bridge (`cad-joules::jcp_satb_bridge`) align the System-and-Task-Boundary Input/Output (`SATB-IO`) lattice (`L0..L4` boundaries × `A1, A2, B, C, D, P, N` attribution disciplines) with `JCP` `JCR-1` energy rungs: inline physical rail shunts at `L0..L2` with `A1..B` map to `HwShunt` (`Whole` or `Partial`, `measured_j`); vendor-opaque SoC counters (`IOReport`, `RAPL`, `NVML`, `ri_energy_nj`) map to vendor-opaque `HwShunt` (`reported_j`, never silently promoted to `measured_j`); `C` utilization shares (`Kepler` CPU-share) map to `ModelBased` (`reported_j`); `D` analytical models map to `Estimator` (`est_j`); and unattested `L4` APIs map to `NotAvailable`. Exhaustive property tests across all `280 × 280 = 78,400` state pairs verify that the meet operator never upgrades provenance or rail coverage (`Whole ∧ Partial = Partial`), while `SATB` Falsifier 6 (`<= 5.00%` idle baseline drift) drops `derived_marginal_uj` whenever host background drift exceeds `500` basis points and `SATB` Step 7 checks sequential phase conservation within `1 µJ`. On the microcontroller rung (Section 4.1), the companion `MEI-JCP-Tag-v1` open hardware package ([Metabolic Intelligence](/products/mei/), Section 4.4) pairs a `100 mΩ` `INA238` shunt and `256-Kb` SPI `FRAM` `JCR-1` receipt ring on a DRC-clean `32 mm × 24 mm` 2-layer PCB (`board_metered: false` until physical bench assembly), verifying across `10,000` simulated cold-chain wakeups that chained `hold` / `settle` sharding refuses non-essential radio bursts under `-20 °C` `CR2032` sag while preserving 100% of safety-critical excursion alerts.
 
 ### 12.6 Unified Design Architecture, and the runtime that is seen
 
@@ -356,7 +360,7 @@ A design guide ends in requirements a reader can check, not in a brand preferenc
 4. Treat the agent as a guest program under the machine's law, not as a new rung above the person.
 5. Require a schedule that is state, retrieve, refine, check, not tokens: Energy-Oriented Computing.
 6. Require a law that binds capability to a joule budget, narrows on delegation, treats tool output as data, checks outside the model, and seals JCR-1 receipts: the Joule Context Protocol.
-7. Require a commit with the four obligations precondition, postcondition, invariant (scoped by a declared frame), and joule ceiling: JouleContract.
+7. Require a commit with precondition, postcondition, invariant, frame, and joule ceiling: JouleContract.
 8. Require the lowest S0 to S7 rung that satisfies, with grants, meter tags HwShunt or ModelBased or Estimator, and attestation: the sandbox standard.
 9. Require that the schedule, the meter and the refusal run on the machine itself, and that every energy reading name its source.
 10. Require one intent stream lowered per measured coordinate, the WebAssembly runtime as the operating system that is seen, and the bare-metal kernel as the coordinate where the law is native.
@@ -383,13 +387,15 @@ Kinds: Definition (distinctions this draft uses), Sourced fact (a page or file s
 | OpenHuman is Rust, GPL-3.0, early beta; core on host; sandbox backends None / Local / Docker; ReadOnly resolves to None for jail enforcement; elevated tools leave the jail; README density figures are memory. | Sourced fact / Project claim | https://github.com/tinyhumansai/openhuman ; https://github.com/tinyhumansai/openhuman/pull/3261 |
 | EOC pipeline is state-construct, retrieve, refine, check; not tokens. | Sourced fact | [eoc.transaction.science](https://eoc.transaction.science/) |
 | JCP Grant binds capability to joule budget; child grants narrow; tool output is data; check outside the model; JCR-1 receipts. | Sourced fact | [jcp.transaction.science](https://jcp.transaction.science/) |
-| JouleContract commit object has four obligations: pre, post, invariant, joule ceiling (v0.3.0 draft text, core-object section); the page source also names a frame, the declared footprint that scopes the invariant. | Sourced fact | [joulecontract.transaction.science](https://joulecontract.transaction.science/); v0.3.0 draft text unpublished |
+| JouleContract commit object includes pre, post, invariant, frame, joule ceiling (page source); v0.3 draft text states pre, post, inv, ceiling in §3. | Sourced fact | [joulecontract.transaction.science](https://joulecontract.transaction.science/); v0.3.0 draft text unpublished |
 | Sandbox ladder S0 to S7; lowest rung that satisfies; meter tags HwShunt / ModelBased / Estimator; attestation. | Sourced fact | [sandbox.transaction.science](https://sandbox.transaction.science/) |
 | JouleOS: single-level store, EOC cascade, capability ledger, energy oracle with provenance, Rust, small TCB, AOT in TCB and JIT out, bare-metal vs hosted. | Project claim / Sourced fact | [jos.transaction.science](https://jos.transaction.science/); project documentation (tree not public) |
 | Energy as an OS resource: ECOSystem currentcy, Cinder reserves and taps, Odyssey fidelity, EnerJ approximate types, energy proportionality, Linux EAS. None gates a commit on a certified result under a joule bound. | Sourced fact / reading | DOIs in Section 11.5 |
 | Wasmtime fuel counts operations, not joules. RAPL on AMD Zen is modeled. seL4's proof is functional correctness, not energy. | Sourced fact | Sections 12.1, 12.3, 12.5 |
-| JouleOS README Lawful ~1 µJ, LlmInLoop ~5 mJ, ~10^5× vs LLM-everything on a corpus. | Project claim (README only); planned measurement under RCE Compile H6; not this study's measurement | [jos.transaction.science](https://jos.transaction.science/); project README |
+| JouleOS README Lawful ~1 µJ, LlmInLoop ~5 mJ, ~10^5× vs LLM-everything on a corpus. | Project claim (README only; not this study's measurement) | [jos.transaction.science](https://jos.transaction.science/); project README |
 | Unified Design Architecture is one artifact lowered per measured coordinate. The WebAssembly runtime is the surface that is seen. A virtual machine or a container is a coordinate. The bare-metal kernel is where the law is native, not a second product. | Definition / design reading of the tree | Project documentation (tree not public) |
+| `jcp-satb-cad-spine` maps `SATB-IO` (`L0..L4 × A1..N`) to `JCP` rungs (`78,400` meet pairs, `0` silent upgrades), enforces `Falsifier 6` (`<= 5.00%` drift) and `Step 7` (`<= 1 µJ` sum), and verifies Ed25519 `JCR-1` chains across `310` passing Rust tests. | Sourced fact (software reference test) | Sections 11.2, 12.5; `jcp-satb-cad-spine` bundle |
+| `MEI-JCP-Tag-v1` (`32 mm × 24 mm` 2-layer PCB, `0` DRC violations, `INA238` + `FRAM`, `36 × 28 × 7.5 mm` B-Rep enclosure) preserves `40 / 40` critical alerts across `10,000` simulated `-20 °C` wakeups via `hold` / `settle` sharding; `board_metered: false`, `measured_j: null`. | Sourced fact (CAD + simulation package) | Section 12.5; [Metabolic Intelligence](/products/mei/) §4.4 |
 
 ---
 
@@ -409,4 +415,3 @@ The schedule is Energy-Oriented Computing. Refine families run cheapest first. T
 The meter reads the counter the platform exposes and names the source. On Apple silicon that source is the process energy interface. On Linux it is RAPL. Elsewhere the source is an estimator, and an estimator is not a measured joule. Work classes are not added together.
 
 The bare-metal kernel is the coordinate where this law is native. Its trusted computing base is small and links without the host standard library. Just-in-time compilation stays outside that base. On every other coordinate the same runtime is what runs. The kernel is not a second product.
-

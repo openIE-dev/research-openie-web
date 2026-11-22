@@ -1,82 +1,84 @@
 ---
-title: "Compilación descendente a LUT6 en una cascada Mixture of Limits: mallas booleanas enrutadas por Beneš, compuertas de activación conformales y transmisión de capas NVMe de 4 bits"
-deck: "Una cascada Mixture of Limits (mezcla de límites) de cuatro peldaños que prueba primero circuitos paginados de tablas de búsqueda de 6 entradas (LUT6) con cero operaciones de coma flotante (FLOP), despierta modelos Mamba-3 y modelos híbridos de 2026 transmitidos por capas desde Non-Volatile Memory Express (NVMe) en 4 bits solo ante fallos de búsqueda, y compila de forma descendente las activaciones certificadas hacia páginas de Block RAM de 36 Kbits (RAMB36E2) enrutadas mediante redes Beneš. Se informan tiempos de reloj real, conteos de bytes sin búfer bajo Darwin F_NOCACHE (lectura de archivos sin caché), memoria activa de acceso aleatorio (RAM) y simulaciones a nivel de transferencia de registros (RTL) con Yosys/Verilator para xck26 a partir de openIE-dev/lut-adapt-ai en el commit a5e9bc1. Las cifras de energía son estimaciones analíticas est_j; no se midió potencia física en placa."
+title: "Compilación descendente a LUT6 en una cascada Mixture of Limits: mallas booleanas enrutadas por Beneš, compuertas de activación conformales y transmisión NVMe de MoE dispersa de vanguardia"
+deck: "Una cascada Mixture of Limits que intenta primero circuitos de tabla de consulta de 6 entradas (LUT6) paginados con cero operaciones de punto flotante (FLOP), transmite modelos híbridos y dispersos Mixture-of-Experts (MoE) NVMe de 4 bits de finales de 2026 de hasta 34,66B parámetros solo en fallos, controla las confirmaciones mediante verificadores deterministas y compila activaciones certificadas descendentes en páginas RAMB36E2 de 36 Kbit enrutadas por Beneš. Se informan tiempos de reloj de pared, recuentos de bytes de Darwin F_NOCACHE sin búfer (lectura de archivo sin búfer), memoria de acceso aleatorio (RAM) activa, deltas acumulativos de la unidad de gestión de energía (PMU) de todo el sistema macOS, y simulaciones a nivel de transferencia de registros (RTL) de Yosys/Verilator xck26, a partir de openIE-dev/lut-adapt-ai en el commit a5e9bc1. Las cifras de energía por tarea son estimaciones analíticas est_j; no se midió potencia aislada de rieles de la placa."
 lang: "es"
 source: "lut-adapt"
 complete: true
 ---
 
-<div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-4-bit-nvme-layer-streaming" class="anchor-alias" aria-hidden="true"></div>
+<div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*Revisión 11dbc8c, 22 de noviembre de 2026. Implementación de referencia y artefactos: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) en [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb). Resumen de datos: [/data/#lut-adapt](/data/#lut-adapt). PDF en LaTeX: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([fuente](/pdfs/latex/lut-adapt.tex)).*
+*Revisión 30613ef, 22 de noviembre de 2026. Implementación de referencia y artefactos: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) en [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb). Resumen de datos: [/data/#lut-adapt](/data/#lut-adapt). PDF en LaTeX: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([fuente](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
-## 0. Descripción general
+## 0. Visión general
 
-Este estudio examina cómo un sistema de cómputo puede compilar de manera descendente el trabajo repetido de un modelo neuronal hacia búsquedas rápidas en tablas booleanas sin perder la paridad exacta de salida ni promover conjeturas no verificadas a la categoría de reglas confiables. Se presentan mediciones de software, síntesis a nivel de transferencia de registros (RTL) y simulaciones por ciclos, junto con estimaciones analíticas de energía debidamente etiquetadas (`est_j`). No se conectó ningún medidor de julios en toma eléctrica ni en riel de alimentación en este repositorio (`measured_j` no está definido; `board_metered` es falso).
+Este estudio examina cómo un sistema informático puede compilar trabajo repetido de modelos neuronales hacia abajo en búsquedas rápidas de tablas booleanas sin perder la paridad exacta de salida ni promover conjeturas no verificadas a reglas de confianza. Informa mediciones de software, síntesis a nivel de registro-transferencia y simulaciones de ciclos, y estimaciones analíticas de energía etiquetadas (`est_j`). No se adjuntó ningún monitor de julios de pared o de riel en este repositorio (`measured_j` is unset; `board_metered` is false).
 
 **En palabras sencillas**
 
-1. La mayoría de las entradas que recibe un sistema desplegado repiten patrones que ya ha resuelto antes, de modo que ejecutar una red neuronal completa en coma flotante en cada paso desperdicia cómputo y ancho de banda de memoria.
-2. La arquitectura de referencia sitúa un nivel reconfigurable de búsqueda en tablas de verdad de 6 entradas (`LUT6`) delante de los modelos de espacio de estados en transmisión y de los modelos fundacionales, y compila las respuestas hacia abajo en páginas de memoria de búsqueda únicamente después de que una comprobación explícita las certifica.
-3. Cuando un modelo de lenguaje híbrido de 2026 transmite sus pesos capa por capa desde una unidad de estado sólido, ese redactor borrador `LUT6` de cero FLOP propone ráfagas de múltiples tokens que el modelo objetivo verifica en un único barrido de disco, reduciendo las lecturas de disco en casi `3×` sin alterar en absoluto los tokens de salida.
+1. La mayoría de las entradas que un sistema desplegado observa repiten patrones que ya ha resuelto, por lo que ejecutar una red neuronal de punto flotante completa en cada paso desperdicia cómputo y ancho de banda de memoria.  
+2. La referencia coloca un nivel de búsqueda de tabla de verdad reconfigurable de 6 entradas (`LUT6`) delante de los modelos de espacio de estado en streaming y de los modelos fundacionales, y compila las respuestas hacia abajo en páginas de memoria de búsqueda solo después de que una verificación explícita las certifique.  
+3. Cuando los modelos de lenguaje híbridos y de mezcla de expertos escasa de finales de 2026 de hasta `34.66B` parámetros transmiten pesos de 4 bits desde almacenamiento de estado sólido, las lecturas de expertos escasos enrutados emparejadas con ese generador `LUT6` de cero FLOP redujeron las lecturas de disco hasta `12.30×` (`6.50×` mayor rendimiento de token) en `2.53` gigabytes de memoria activa sin cambiar los tokens de salida; el código de compuerta que se compromete detrás de una verificación determinista supera la precisión autónoma de `35B` con `0.00%` de compromisos rotos admitidos y acelera las tareas cristalizadas Wave-3 en `35,590×`.
 
 <div id="1-terms-acronyms-and-measurement-labels" class="anchor-alias" aria-hidden="true"></div>
 
-## 1. Términos, siglas y etiquetas de medición
+## 1. Términos, acrónimos y etiquetas de medición
 
 <ul id="terms">
-<li>MoL: Mixture of Limits (mezcla de límites), la regla de cascada definida en Compuertas de confirmación medidas, Parte II [same house]</li>
-<li>LA: prefijo de afirmaciones y falsadores (LA-1 a LA-8, LA-F1 a LA-F8) empleado en este estudio</li>
-<li>LUT, LUT6, INIT: tabla de búsqueda, primitiva booleana de 6 entradas de Xilinx UltraScale+ y su máscara de inicialización de tabla de verdad de 64 bits</li>
-<li>BRAM, RAMB36E2, URAM: Block RAM, la primitiva de memoria en bloque de doble puerto de 36 Kbits de UltraScale+ (144 unidades en xck26) y UltraRAM</li>
-<li>CLB, FF, DSP, DSP48, KV260: bloque lógico configurable, biestable (flip-flop), bloque de procesamiento digital de señales y placa AMD Kria KV260 (xck26)</li>
-<li>FPGA, ASIC, RTL, CPI, PAR, WNS, FPL: matriz de compuertas programables en campo, circuito integrado de aplicación específica, nivel de transferencia de registros, ciclos por búsqueda, posicionamiento y enrutamiento (place-and-route), peor holgura negativa (worst negative slack) y conferencia Field-Programmable Logic</li>
-<li>AXI, PS, PL, SOM, INA260, VCC, RAPL, NVML: Advanced eXtensible Interface, sistema de procesamiento Zynq, lógica programable, sistema en módulo, circuito integrado monitor de potencia en placa, riel de alimentación, Intel Running Average Power Limit y NVIDIA Management Library</li>
-<li>SSD, SSM, MIMO, RoPE, SwiGLU, GQA, KV, BPE, LLM, LLMs, MoE, MLP, CFG: dualidad de espacio de estados (State Space Duality), modelo de espacio de estados, múltiples entradas y múltiples salidas, incrustación posicional rotatoria, activación de unidad lineal con compuerta, atención de consultas agrupadas, caché clave-valor, codificación de pares de bytes, modelo(s) grande(s) de lenguaje, mezcla de expertos (Mixture-of-Experts), perceptrón multicapa y gramática libre de contexto</li>
-<li>HC, SOINN, WNN, DWN: red neuronal incremental autoorganizada de contexto jerárquico (hierarchy-context Self-Organizing Incremental Neural Network), red neuronal sin pesos y red neuronal diferenciable sin pesos (Differentiable Weightless Neural Network)</li>
-<li>JEPA, EBRM, ACI, OOD, AUROC, AUC, MSP, MC: arquitectura predictiva de incrustación conjunta, modelo de razonamiento basado en energía, inferencia conformal adaptativa (Adaptive Conformal Inference), fuera de distribución, área bajo la curva característica operativa del receptor, probabilidad softmax máxima y Monte Carlo</li>
-<li>PLD, REST, EAGLE, LFM2, HF: decodificación por búsqueda en el prompt (Prompt Lookup Decoding), decodificación especulativa basada en recuperación, algoritmo de extrapolación para mayor eficiencia en modelos de lenguaje, Liquid Foundation Model 2.5 (LiquidAI/LFM2.5-350M) y HuggingFace</li>
-<li>NVMe, NOCACHE, POSIX, RAM, DRAM, SRAM, IO, KB, MB, GB: almacenamiento Non-Volatile Memory Express, indicador Darwin F_NOCACHE de lectura sin caché, interfaz portable de sistema operativo, memoria de acceso aleatorio, RAM dinámica, RAM estática, entrada/salida, kilobyte, megabyte y gigabyte</li>
-<li>FLOP, FLOPs, MFLOP, MFLOPs, MAC, SIMD, AD, FD, BPB, FP16, FP32, INT4: operación(es) de coma flotante, millones de FLOPs, multiplicación-acumulación, instrucción única sobre múltiples datos, diferenciación automática, diferencias finitas, bits por byte, coma flotante de 16/32 bits y entero de 4 bits</li>
-<li>RCE, WCA, VC, SWE: Reality Code Engine [same house], Wise Computer Automation [same house], finalización verificada (verified completion) y prefijo de bancos de pruebas de ingeniería de software</li>
-<li>CLI, HTTP, SSE, API, ACL, OS, CPU, GPU, SW: interfaz de línea de comandos, protocolo de transferencia de hipertexto, eventos enviados por el servidor (Server-Sent Events), interfaz de programación de aplicaciones, Association for Computational Linguistics, sistema operativo, unidad central o gráfica de procesamiento y software</li>
-<li>VLAN, IEEE, TLS, DPI, AST, JSON, CSV, SHA, CAM, XNOR: red de área local virtual (IEEE 802.1Q), seguridad de la capa de transporte, inspección profunda de paquetes, árbol de sintaxis abstracta, JavaScript Object Notation, valores separados por comas, algoritmo de hash seguro, memoria direccionable por contenido y compuerta NOR exclusiva</li>
+<li>MoL: Mixture of Limits, la regla de cascada de Metered Commit Gates Part II [misma casa]</li>
+<li>LA: prefijo de afirmación y falsador (LA-1 a LA-11, LA-F1 a LA-F11) utilizado en este estudio</li>
+<li>LUT, LUT6, INIT: tabla de consulta (look-up table), primitiva booleana de 6 entradas de Xilinx UltraScale+ y su máscara de inicialización de tabla de verdad de 64 bits</li>
+<li>BRAM, RAMB36E2, URAM: bloque de RAM (Block RAM), primitiva de bloque de RAM de doble puerto de 36 Kbit de UltraScale+ (144 en xck26), y UltraRAM</li>
+<li>CLB, FF, DSP, DSP48, KV260: bloque lógico configurable, biestable (flip-flop), slice de procesamiento digital de señales, y placa AMD Kria KV260 (xck26)</li>
+<li>FPGA, ASIC, RTL, CPI, PAR, WNS, FPL: matriz de puertas programable en campo, circuito integrado de aplicación específica, nivel de transferencia entre registros, ciclos por consulta, colocación y enrutamiento, holgura negativa en el peor caso, y conferencia Field-Programmable Logic</li>
+<li>AXI, PS, PL, SOM, INA260, VCC, RAPL, NVML, PMU: Advanced eXtensible Interface, sistema de procesamiento Zynq, lógica programable, módulo en sistema (system-on-module), monitor de potencia integrado en la placa, riel de alimentación, Intel Running Average Power Limit, NVIDIA Management Library, y unidad de gestión de energía de macOS</li>
+<li>SSD, SSM, MIMO, RoPE, SwiGLU, GQA, KV, BPE, LLM, LLMs, MoE, MLP, CFG: dualidad de espacio de estados (State Space Duality), modelo de espacio de estados, múltiples entradas y múltiples salidas, codificación posicional rotatoria, unidad lineal con compuerta de activación Swish, atención de consultas agrupadas, caché clave-valor, codificación por pares de bytes, modelo(s) de lenguaje de gran escala, Mezcla de Expertos, perceptrón multicapa, y gramática independiente del contexto</li>
+<li>HC, SOINN, WNN, DWN: red neuronal incremental autoorganizada de contexto jerárquico (hierarchy-context Self-Organizing Incremental Neural Network), red neuronal sin pesos (weightless neural network), y red neuronal diferenciable sin pesos (Differentiable Weightless Neural Network)</li>
+<li>JEPA, EBRM, ACI, OOD, AUROC, AUC, MSP, MC: Arquitectura Predictiva de Incrustación Conjunta, Modelo de Razonamiento Basado en Energía, Inferencia Conformal Adaptativa, fuera de distribución, área bajo la curva característica operativa del receptor, área bajo la curva, probabilidad softmax máxima, y Monte Carlo</li>
+<li>PLD, REST, EAGLE, LFM2, LFM3, HF: Prompt Lookup Decoding (decodificación por búsqueda en el prompt), decodificación especulativa basada en recuperación (Retrieval-Based Speculative Decoding), Extrapolation Algorithm for Greater Language-model Efficiency (algoritmo de extrapolación para una mayor eficiencia de modelos de lenguaje), Liquid Foundation Model 2.5 (LFM2.5-350M y LFM2.5-8B-A1B), Liquid Foundation Model 3 (oct 2026 LiquidAI/LFM3-1.7B), y HuggingFace</li>
+<li>SVD, ITQ, SVID, QAT, PTQ, PPL, SNR: descomposición en valores singulares, rotación Procrustes en hipercubo de cuantización iterativa (Iterative Quantization Procrustes hypercube rotation), descomposición independiente del valor de signo, entrenamiento consciente de la cuantización, cuantización post-entrenamiento, perplejidad, y relación señal-ruido</li>
+<li>NVMe, NOCACHE, POSIX, RAM, DRAM, SRAM, IO, KB, MB, GB: almacenamiento Non-Volatile Memory Express (NVMe), indicador de archivo sin búfer F_NOCACHE de Darwin, Portable Operating System Interface (POSIX), memoria de acceso aleatorio, RAM dinámica, RAM estática, entrada/salida, kilobyte, megabyte, y gigabyte</li>
+<li>FLOP, FLOPs, MFLOP, MFLOPs, MAC, MACs, SIMD, AD, FD, BPB, FP16, FP32, INT4: operación(es) de punto flotante, millones de FLOPs, operación(es) de multiplicar-acumular, instrucción única múltiple-datos, diferenciación automática, diferencia finita, bits por byte, punto flotante de 16/32 bits, y entero de 4 bits</li>
+<li>RCE, WCA, VC, SWE: Reality Code Engine [same house], Wise Computer Automation [same house], completado verificado, y prefijo de benchmark de ingeniería de software</li>
+<li>CLI, HTTP, SSE, API, ACL, ICML, ICLR, EMNLP, NAACL, CVPR, ICPE, ISSCC, JSAC, JASA, ACM, OS, CPU, GPU, SW: interfaz de línea de comandos, Protocolo de Transferencia de Hipertexto, Eventos enviados por el servidor, interfaz de programación de aplicaciones, conferencias académicas de informática/ingeniería, sistema operativo, unidad central de procesamiento, unidad de procesamiento gráfico, y software</li>
+<li>VLAN, IEEE, TLS, DPI, AST, JSON, CSV, SHA, CRC, ATM, RFC, SQL, DWARF, SLEB, CAM, XNOR: red de área local virtual (IEEE 802.1Q), Seguridad de la capa de transporte, inspección profunda de paquetes, árbol de sintaxis abstracta, Notación de objetos JavaScript, valores separados por comas, Algoritmo seguro de hash, verificación de redundancia cíclica, Modo de transferencia asíncrono (CRC-8/ATM), Solicitud de Comentarios, Lenguaje de consulta estructurada, codificación DWARF con signo little-endian base-128, memoria direccionable por contenido, y exclusivo-NOR</li>
+<li>JTAG, XSDB, DAP, USB, FTDI, FT2232C, UART, FIFO, IC, EDA, OOC, AMBA, AXI4, IOB, IBUF, OBUF, FDRE, FDSE, LUT1, LUT2, LUT3, LUT4, LUT5, MUXF7, MUXF8, CARRY4, DSP48E2, URAM288, AMD: puerto de depuración Joint Test Action Group, depurador de Xilinx Software Command-Line Tool, puerto de acceso de depuración, Bus Serial Universal, Future Technology Devices International y su circuito integrado puente dual UART/FIFO FT2232C, receptor-transmisor asíncrono universal, búfer primero en entrar primero en salir, circuito integrado, automatización de diseño electrónico, modo de síntesis fuera de contexto, Arquitectura de Bus de Microcontrolador Avanzado, interconexión AXI4-Lite/AXI4-Stream, bloque de entrada/salida, buffers de entrada/salida, flip-flops D de reinicio/establecimiento sincrónico, tablas de búsqueda UltraScale+ de 1-a-5 entradas, multiplexores UltraScale+ de 7/8 entradas, cadena de acarreo rápido de 4 bits, segmento DSP UltraScale+, UltraRAM de 288 Kbit, y Advanced Micro Devices</li>
 </ul>
 
-En todas las tablas siguientes se mantienen estrictamente separadas tres clases de evidencia:
+Tres clases de evidencia permanecen separadas en cada tabla a continuación:
 
 | Etiqueta de evidencia | Significado en este estudio |
 | :--- | :--- |
-| **`Measured (SW / NVMe I/O)`** | Conteos exactos de bytes leídos o escritos mediante `os.pread` bajo Darwin `F_NOCACHE`, asignaciones de memoria residente, segundos de reloj real en Apple M5 Max y concordancia exacta de bits o tokens. `measured_j` no está definido (`None`). |
-| **`Simulated (RTL)`** | Conteos estructurales de lista de conexiones (netlist) obtenidos con Yosys `0.71+` (`synth_xilinx -family xcup` dirigido a Kria KV260 `xck26`) y conteos de ciclos (`CPI = 1`) obtenidos con Verilator `5.054`. No corresponde a cierre temporal en Vivado ni a potencia medida en placa (`board_metered = false`). |
-| **`Estimated (est_j)`** | Julios analíticos calculados a partir de conteos de operaciones o sustitutos temporales de potencia de diseño térmico (`joule_meter.py` en modo de respaldo cuando no existen contadores hardware `RAPL`/`NVML` en macOS). Comparables únicamente entre variantes dentro de una misma fórmula; nunca equivalen a vatios medidos en silicio. |
+| **`Measured (SW / NVMe I/O / OS PMU)`** | Recuentos exactos de bytes leídos o escritos mediante `os.pread` bajo Darwin `F_NOCACHE`, asignaciones de memoria residente, segundos de reloj de pared, deltas de energía acumulada de `PMU` (`AppleSmartBattery.PowerTelemetryData`) de todo el equipo macOS en Apple M5 Max, y acuerdo exacto de bits/token. `measured_j` está sin establecer (`None`). |
+| **`Simulated (RTL)`** | Recuentos de netlist estructurales de Yosys `0.71+` (`synth_xilinx -family xcup` con destino Kria KV260 `xck26`) y recuentos de ciclos (`CPI = 1`) de Verilator `5.054`. No es cierre de temporización de Vivado ni potencia medida en placa (`board_metered = false`). |
+| **`Estimated (est_j)`** | Julios analíticos calculados a partir de recuentos de operaciones o sustitutos de tiempo de potencia de diseño térmico (`joule_meter.py` como respaldo cuando faltan contadores de hardware `RAPL`/`NVML` en macOS). Comparable solo entre brazos dentro de la misma fórmula; nunca vatios de silicio. |
 
 <div id="11-architectural-background-and-contributions" class="anchor-alias" aria-hidden="true"></div>
 
 ### 1.1 Antecedentes arquitectónicos y contribuciones
 
-En [Compuertas de confirmación medidas](/papers/gates/) `[same house]`, la Parte II define **Mixture of Limits (mezcla de límites)**: probar los engranajes en orden decreciente de probabilidad de éxito por julio $p_i / c_i$ (Simon y Kadane, 1975), detenerse tan pronto como se cumpla el predicado de finalización de la tarea $C(z) = 1$, y prohibir el fortalecimiento de una salida `ModelGenerated` hacia `Deterministic`. Sin embargo, un nivel de búsqueda estático solo cubre las entradas escritas en él antes del despliegue. En sentido inverso, las redes neuronales basadas en tablas de búsqueda existentes (LogicNets de Umuroglu et al., 2020; DiffLogic de Petersen et al., 2022; y Differentiable Weightless Neural Networks de Bacellar et al., 2024) fijan la conectividad de cables dentro del enrutamiento estático del FPGA, lo que exige volver a ejecutar el posicionamiento y enrutamiento del fabricante cada vez que cambia la distribución de entrada.
+En [Metered Commit Gates](/papers/gates/) `[same house]`, la Parte II define **Mixture of Limits**: probar las marchas en orden decreciente de probabilidad de superación por julio $p_i / c_i$ (Simon y Kadane, 1975), detenerse en cuanto se cumple el predicado de finalización de la tarea $C(z) = 1$, y prohibir que la salida `ModelGenerated` se refuerce hasta convertirse en `Deterministic`. Sin embargo, un nivel de búsqueda estático (Lookup) solo cubre las entradas escritas en él antes del despliegue. Por el contrario, las redes neuronales basadas en tablas de búsqueda existentes, LogicNets (Umuroglu et al., 2020), DiffLogic (Petersen et al., 2022) y las Differentiable Weightless Neural Networks (Bacellar et al., 2024), fijan la conectividad de los cables dentro de un enrutamiento estático de FPGA, lo que exige place-and-route del proveedor cada vez que cambia la distribución de entrada.
 
-La implementación de referencia `lut-adapt-ai` cierra el ciclo entre la cima y la base de la cascada mediante la **compilación descendente en línea hacia `LUT6`**:
+La referencia `lut-adapt-ai` cierra el ciclo entre la parte superior e inferior de la cascada mediante **compilación descendente en línea a `LUT6`**:
 
-- **Peldaño 0 (Búsqueda - Beneš paginado + `LUT6`)**: Evalúa máscaras de tablas de verdad de 64 bits enrutadas a través de un conmutador multidifusión sin bloqueo $512 \times 512$ **Beneš-Copy-Beneš** y almacenadas en caché a lo largo de $81 \times \texttt{RAMB36E2}$ memorias en bloque de doble puerto (`0` operaciones de coma flotante, cambio de página en un solo ciclo en simulación con Verilator).
-- **Peldaño 1 (Flujo - Dualidad de espacio de estados MIMO compleja `Mamba-3`)**: Resuelve los fallos de búsqueda que dependen del historial de la secuencia empleando un estado recurrente de tamaño constante $O(1)$ (`48 KB` de memoria fijada en la referencia de `14.3M` parámetros), evitando el crecimiento $O(L)$ de la caché clave-valor.
-- **Peldaño 2 (Topología - `HC-SOINN`)**: Mantiene en línea una topología de prototipos sobre incrustaciones latentes, aislando fronteras entre regímenes y disparando un disyuntor (`Refuse` de rechazo o escalamiento) cuando llega un desplazamiento de distribución sin etiquetar.
-- **Peldaño 3 (Modelo en último lugar - `JEPA-EBRM` y transmisión NVMe de 4 bits `AirMoL`)**: Invoca la verificación basada en energía latente o modelos fundacionales preentrenados de 2026 transmitidos por capas (`LiquidAI/LFM2.5-350M` y `Qwen/Qwen3.5-0.8B-Base`) únicamente cuando los peldaños más económicos se abstienen o requieren verificación exacta del modelo objetivo.
-- **`SleepCrystallizer` descendente**: Extrae trazas recurrentes de activación mediante arranques en caliente espectrales de Walsh-Hadamard, tablas de verdad de minitérminos de moda conjunta y planificaciones de conmutadores de Waksman, alternando bancos de memoria en bloque en sombra sin detener la inferencia ni ejecutar posicionamiento y enrutamiento en el FPGA.
+- **Peldaño 0 (Lookup, Beneš paginado + `LUT6`)**: Evalúa máscaras de tablas de verdad de 64 bits enrutadas a través de un conmutador multicast no bloqueante **Beneš-Copy-Beneš** de $512 \times 512$, almacenadas en caché en $81 \times \texttt{RAMB36E2}$ memorias de bloque de doble puerto (`0` operaciones de punto flotante, cambio de página en un único ciclo en la simulación de Verilator).
+- **Peldaño 1 (Stream, espacio de estados Mamba-3 Complex MIMO)**: Gestiona los fallos que dependen del historial de la secuencia mediante un estado recurrente de tamaño constante $O(1)$ (`48 KB` de memoria fijada en la referencia de `14.3M` parámetros), evitando el crecimiento $O(L)$ de la caché clave-valor.
+- **Peldaño 2 (Topología, `HC-SOINN`)**: Mantiene en línea una topología de prototipos sobre los embeddings latentes, aísla las fronteras de régimen y activa un cortacircuitos (`Refuse` / escalar) cuando llega un desplazamiento de distribución no etiquetado.
+- **Peldaño 3 (Modelo al final, `JEPA-EBRM`, `AirMoL` y transmisión NVMe de 4 bits de `Expert-AirMoL`)**: Invoca la verificación basada en energía latente o transmite modelos fundacionales híbridos y de MoE dispersa preentrenados de finales de 2026 (`LiquidAI/LFM3-1.7B`, `google/gemma-4-E2B-it`, `LiquidAI/LFM2.5-8B-A1B` y `Qwen/Qwen3.6-35B-A3B`, junto con `LiquidAI/LFM2.5-350M` y `Qwen/Qwen3.5-0.8B-Base`) únicamente cuando los peldaños más baratos se abstienen o requieren verificación exacta del objetivo.
+- **`SleepCrystallizer` descendente**: Extrae trazas de vigilia recurrentes mediante arranques en caliente espectrales de Walsh-Hadamard, tablas de verdad de minterms en modo conjunto y calendarios de conmutación de Waksman, alternando los bancos sombra de memoria de bloque sin detener la inferencia ni ejecutar place-and-route en FPGA.
 
 <div id="12-contributions" class="anchor-alias" aria-hidden="true"></div>
 
 ### 1.2 Contribuciones
 
-1. **Condición de compilación descendente amortizada**: Extiende el ordenamiento $p_i/c_i$ de Simon-Kadane incorporando un costo explícito de compilación $E_{\text{compile}}$ sobre un horizonte estacionario $\Delta T$.
-2. **Arquitectura RTL sin bloqueo $512 \times 512$ Beneš-Copy-Beneš con `81` bloques `RAMB36E2`**: Elimina tanto el desbordamiento lógico del `102.0%` en la Kria KV260 producido por matrices de conmutación planas (`119,478` LUTs) como la explosión a `926,619` LUTs de los multiplexores de páginas basados en biestables, sintetizando en `41,186` LUTs de CLB UltraScale+ (`35.2%` del `xck26`), `81` bloques `RAMB36E2` (`56.2%`) y `0` bloques `DSP48`, con cambio de página en `1` ciclo (`4.0 ns` a `250 MHz` nominales) en simulación.
-3. **Síntesis universal de minitérminos de moda conjunta de $\le 64$ bits**: Demuestra que la búsqueda de minitérminos de moda conjunta domina al redondeo marginal por planos de bits de DiffLogic en ramas correlacionadas, y empaqueta $K = \lfloor 64 / \lceil \log_2 |V| \rceil \rfloor$ tokens de subpalabra en una sola palabra `uint64` (`16b × 4 = 64b` para `|V| = 65,536`; `18b × 3 = 54b` para `|V| = 248,320`).
-4. **Compuerta de cristalización Split-Conformal + ACI en línea sin oráculo**: Combina una puntuación de no conformidad `JEPA-EBRM` latente regularizada radialmente con calibración Split Conformal e Inferencia Conformal Adaptativa (Gibbs y Candès, 2021), registrando `0.00%` de riesgo de falsa cristalización y `1.0000` de AUROC fuera de distribución en tráfico desplazado, donde las líneas base softmax y MC-Dropout registran entre `17.62%-24.28%` de falso riesgo.
-5. **Transmisión NVMe de 4 bits `AirMoL` sin barridos adicionales en modelos híbridos de 2026**: Combina la transmisión por capas cuantizadas por grupos de 4 bits mediante `os.pread` con Darwin `F_NOCACHE`, la reversión en RAM de estados híbridos y la especulación en línea por ráfagas de tokens en `LUT6` sobre `LiquidAI/LFM2.5-350M` (marzo de 2026) y `Qwen/Qwen3.5-0.8B-Base` (febrero de 2026), reduciendo las lecturas NVMe de disco en `2.86×` y `2.74×` con `100.0%` de paridad exacta de tokens mientras mantiene la RAM activa de pesos en `8.45%-9.47%` del tamaño del modelo en FP32.
-6. **Suite de sistemas políglota y servidor HTTP/SSE en vivo**: Verifica de forma cruzada la cascada en Python/PyTorch/Triton, Rust `Burn 0.22.1 / CubeCL` Metal, Zig `0.17.1`, Go `1.27.4` SIMD, Julia `1.13.4` Enzyme y `mol_code_cli.py`.
+1. **Condición amortizada de compilación descendente**: Amplía el ordenamiento $p_i/c_i$ de Simon-Kadane con un costo de compilación explícito $E_{\text{compile}}$ sobre un horizonte estacionario $\Delta T$.
+2. **Arquitectura RTL sin bloqueo $512 \times 512$ Beneš-Copy-Beneš y `81`-`RAMB36E2`**: Elimina tanto el desbordamiento lógico `102.0%` del Kria KV260 en crossbars planos (`119,478` LUTs) como la explosión de `926,619` LUTs de los multiplexores de página flip-flop, sintetizando a `41,186` LUTs UltraScale+ CLB (`35.2%` de `xck26`), `81` bloques `RAMB36E2` (`56.2%`), y `0` slices `DSP48` con conmutación de página de `1` ciclo (`4.0 ns` a `250 MHz` nominal) en simulación.
+3. **Síntesis universal de minterminos de modo conjunto de $\le 64$-bit**: Muestra que la búsqueda de minterminos en modo conjunto domina el redondeo marginal de planos de bits DiffLogic en ramas correlacionadas y empaqueta $K = \lfloor 64 / \lceil \log_2 |V| \rceil \rfloor$ tokens sub-palabra en una sola palabra `uint64` (`16b × 4 = 64b` para `|V| = 65,536`; `17b × 3 = 51b` para `|V| = 128,000`; `18b × 3 = 54b` para `|V| = 248,320`).
+4. **Puerta de cristalización ACI en línea + Split-Conformal sin oráculo**: Combina una puntuación de no conformidad latente `JEPA-EBRM` regularizada radialmente con la calibración Split Conformal y la Inferencia Conformal Adaptativa (Gibbs y Candès, 2021), registrando un riesgo de cristalización falso de `0.00%` y un AUROC OOD de `1.0000` en tráfico desplazado donde las líneas base softmax y MC-Dropout registran un riesgo falso de `17.62%-24.28%`.
+5. **`AirMoL` y `Expert-AirMoL` transmisión NVMe de 4 bits hasta `34.66B` Sparse-MoE**: Combina el fragmentado de 4 bits `F_NOCACHE` `os.pread` de Darwin, lecturas de experto con desplazamiento de byte `.experts.pack4` indexadas por router, retroceso de estado híbrido y especulación de ráfaga de token `LUT6` en línea a lo largo de octubre 2026 `LiquidAI/LFM3-1.7B` (`2.74×` reducción NVMe en `3.79%` de RAM FP32), `LiquidAI/LFM2.5-8B-A1B` (`8.47B`; `6.90×` reducción NVMe), y `Qwen/Qwen3.6-35B-A3B` (`34.66B`; **`12.30×` reducción NVMe**, **`2,530.7 MB` RAM = `3.83%` de FP16**, **`6.50×` aceleración**) con paridad exacta de token de `100.0%`.
+6. **Zero-MAC `Sub1Bit-LUT6` vs. `LittleBit` y cascada de codificación de frontera con verificador de puerta tardía 2026**: Reemplaza los `1.98M` MAC binarios en tiempo de ejecución de `LittleBit-1 / LittleBit-2` (`0.576` bits por peso; Lee et al., 2025; Lee y Kim, 2026) por una búsqueda de suma parcial `LUT6` de `6` entradas sin MAC (`< 4 × 10⁻⁶` error, `100.0%` paridad bajo verificación objetivo `MoL` en `0` época QAT), y supera a los modelos independientes `LittleBit-2 0.55bpw`, `LFM3-1.7B`, `Gemma-4-E2B-it`, `LFM2.5-8B-A1B`, `Qwen3.6-35B-A3B` y `RouteLLM` a través de una benchmark de codificación de `48` tareas (`16` especificaciones × `3` ondas) (`43.75%` vs. `0.00%-33.33%`) con **`0.00%` commits rotos admitidos** y **`35,590×` aceleración de habilidad cristalizada Wave-3**, respaldado por verificación políglota en cinco lenguas.
 
 <div id="13-same-house-disclosure-and-provenance-boundaries" class="anchor-alias" aria-hidden="true"></div>
 
@@ -145,27 +147,33 @@ La calibración Split Conformal sobre un conjunto reservado fija el umbral $\hat
 
 <div id="3-reference-architecture-polyglot-suite-and-kv260-rtl" class="anchor-alias" aria-hidden="true"></div>
 
-## 3. Arquitectura de referencia, suite políglota y RTL en KV260
+## 3. Arquitectura de referencia, suite poliglota y RTL para KV260
 
-La Figura 1 muestra la cascada de cuatro peldaños y el bucle descendente de `SleepCrystallizer` implementado en `src/clai/`.
+La figura 1 muestra la cascada de cuatro peldaños y el bucle descendente de `SleepCrystallizer` en `src/clai/`.
 
-![Figura 1. Compilación descendente a lo largo de una cascada Mixture of Limits de cuatro peldaños.](/figures/lut-adapt/mol-downward-cascade.svg)
+![Figura 1. Compilación descendente a través de una cascada Mixture of Limits de cuatro peldaños.](/figures/lut-adapt/mol-downward-cascade.svg)
 
-*Figura 1. Compilación descendente a lo largo de una cascada Mixture of Limits de cuatro peldaños. Diagrama de diseño, no una medición de potencia en placa. [PNG](/figures/lut-adapt/mol-downward-cascade.png) · [Explorador interactivo](/living/lut-adapt/#la-diag-01).*
+*Figura 1. Compilación descendente a través de una cascada Mixture of Limits de cuatro peldaños. Diagrama de diseño, no una medición de potencia de placa. [PNG](/figures/lut-adapt/mol-downward-cascade.png) · [Explorador interactivo](/living/lut-adapt/#la-diag-01).*
 
-Cinco implementaciones de sistemas en `openIE-dev/lut-adapt-ai` verifican de manera cruzada la cascada: Python/PyTorch/Triton (`src/clai/`), Rust `Burn 0.22.1 / CubeCL` Metal (`sys/rust/`), Zig `0.17.1` (`sys/zig/`), Go `1.27.4` SIMD (`sys/go/`) y Julia `1.13.4` Enzyme (`sys/julia/`).
+Cinco implementaciones de sistemas en `openIE-dev/lut-adapt-ai` verifican cruzadamente la cascada: Python/PyTorch/Triton (`src/clai/`), Rust `Burn 0.22.1 / CubeCL` Metal (`sys/rust/`), Zig `0.17.1` (`sys/zig/`), Go `1.27.4` SIMD (`sys/go/`) y Julia `1.13.4` Enzyme (`sys/julia/`).
 
-La Figura 2 ilustra la ruta de datos RTL para la Kria KV260 (`xck26`) en `hw/kv260/rtl/clai_benes_hotswap_core.sv`, donde se mapean `512` páginas `LUT6` residentes (`5,120` bits `INIT` + etiqueta de contexto de `48` bits + bit de validez) en `81` memorias de doble puerto `RAMB36E2` en paralelo para lograr conmutación de contexto en un solo ciclo (`4.0 ns` a `250 MHz` nominales, `CPI = 1.0`).
+La figura 2 ilustra el camino de datos RTL de la Kria KV260 (`xck26`) en `hw/kv260/rtl/clai_benes_hotswap_core.sv`, que mapea `512` páginas residentes de `LUT6` (`5.120` bits `INIT` + etiqueta de contexto de `48` bits + bit de validez) a través de `81` memorias `RAMB36E2` de doble puerto en paralelo para conmutación de contexto en un solo ciclo (`4,0 ns` a `250 MHz` nominal, `CPI = 1,0`).
 
-![Figura 2. Malla multidifusión Beneš-Copy-Beneš y caché de páginas LUT6 en BRAM de un solo ciclo.](/figures/lut-adapt/benes-paged-silicon.svg)
+![Figura 2. Malla de multidifusión Beneš-Copy-Beneš y caché de página LUT6 en BRAM de un solo ciclo.](/figures/lut-adapt/benes-paged-silicon.svg)
 
-*Figura 2. Malla multidifusión `512×512` Beneš-Copy-Beneš y caché de páginas `LUT6` de un solo ciclo en `81 × RAMB36E2` dirigida a AMD Kria KV260 (`xck26`) bajo simulación en Yosys `0.71+` y Verilator `5.054` (`board_metered = false`). [PNG](/figures/lut-adapt/benes-paged-silicon.png) · [Explorador interactivo](/living/lut-adapt/#la-diag-02).*
+*Figura 2. Malla de multidifusión Beneš-Copy-Beneš de `512×512` y caché de página `LUT6` de un solo ciclo con `81 × RAMB36E2` orientada a AMD Kria KV260 (`xck26`) en simulación Yosys `0.71+` y Verilator `5.054` (`board_metered = false`). [PNG](/figures/lut-adapt/benes-paged-silicon.png) · [Explorador interactivo](/living/lut-adapt/#la-diag-02).*
 
-La Figura 3 muestra `AirMoL` (`src/clai/frontier/air_mol_streamer.py` y `hf_air_mol_pretrained.py`), que transmite fragmentos cuantizados por grupos de 4 bits mediante `os.pread` con Darwin `F_NOCACHE`, verifica `[last_tok, d_1..d_K]` en un único barrido y guarda instantáneas en RAM de estados híbridos compactos (`Short-Conv/SSM` o `Gated DeltaNet` + recorte disperso KV de `GQA` en `6` capas) de modo que los rechazos parciales del borrador requieran **cero barridos NVMe adicionales**.
+La figura 3 muestra `AirMoL` (`src/clai/frontier/air_mol_streamer.py` y `hf_air_mol_pretrained.py`), que transmite fragmentos cuantizados en grupos de 4 bits mediante `os.pread` de Darwin `F_NOCACHE`, verifica `[last_tok, d_1..d_K]` en un solo barrido y captura estados híbridos compactos (`Short-Conv/SSM` o `Gated DeltaNet` + recorte disperso de KV de `6` capas `GQA`) en RAM, de modo que las rechazos parciales de borrador requieren **cero barridos NVMe adicionales**.
 
-![Figura 3. Transmisión de capas NVMe de 4 bits AirMoL con especulación universal LUT6 de tokens de 64 bits.](/figures/lut-adapt/airmol-nvme-speculation.svg)
+![Figura 3. Transmisión NVMe por capas de AirMoL de 4 bits con especulación universal LUT6 de token de 64 bits.](/figures/lut-adapt/airmol-nvme-speculation.svg)
 
-*Figura 3. Transmisión de capas NVMe de 4 bits `AirMoL` sin barridos adicionales con especulación universal `LUT6` de tokens de `≤64` bits sobre `LiquidAI/LFM2.5-350M` y `Qwen/Qwen3.5-0.8B-Base`. [PNG](/figures/lut-adapt/airmol-nvme-speculation.png) · [Explorador interactivo](/living/lut-adapt/#la-run-01).*
+*Figura 3. Transmisión NVMe por capas de `AirMoL` de 4 bits con cero barridos adicionales y especulación universal `LUT6` de token de `≤64` bits en `LiquidAI/LFM3-1.7B`, `LiquidAI/LFM2.5-350M` y `Qwen/Qwen3.5-0.8B-Base`. [PNG](/figures/lut-adapt/airmol-nvme-speculation.png) · [Explorador interactivo](/living/lut-adapt/#la-run-01).*
+
+La Figura 4 muestra `Expert-AirMoL` (`src/clai/frontier/moe_air_mol.py`) y `VerifiedCodeCascade` (`verified_code_cascade.py`). El `AirLLM` estándar con descarga a disco recorre los $E$ expertos de cada capa MoE (`32` en `LiquidAI/LFM2.5-8B-A1B`, `256` en `Qwen/Qwen3.6-35B-A3B`), aunque el router activa solo $k \ll E$ expertos por token (`4/32` y `8/256`). `Expert-AirMoL` divide cada capa MoE en un fragmento compacto de cabeceras y un archivo NVMe `INT4` de tamaño de paso fijo, `.experts.pack4`. Emite lecturas `os.pread` con `F_NOCACHE` únicamente para la unión de expertos activos $\mathcal{U}_l$ a lo largo de las $K+1$ posiciones de ráfaga. Para tareas de síntesis novedosas, `VerifiedCodeCascade` somete cada confirmación en los escalones `0-3c` a un AST acotado a `0.35s`, a ejecución en sandbox y a una comprobación de invariantes de frontera $C(z) \in \{0, 1\}$, y compila las soluciones certificadas en `BenesLUT6` y en páginas canónicas de habilidades AST.
+
+![Figura 4. Transmisión NVMe de 4 bits dispersa por router en Expert-AirMoL y VerifiedCodeCascade con compuerta de verificación.](/figures/lut-adapt/moe-expert-cascade.svg)
+
+*Figura 4. Transmisión NVMe de 4 bits indexada por experto y dispersa por router en `Expert-AirMoL` (reducción de E/S de `12.30×` en `Qwen/Qwen3.6-35B-A3B`) y `VerifiedCodeCascade` con compuerta `C(z)`. [PNG](/figures/lut-adapt/moe-expert-cascade.png) · [Explorador interactivo](/living/lut-adapt/#la-run-01).*
 
 ---
 
@@ -249,29 +257,100 @@ La Figura 3 muestra `AirMoL` (`src/clai/frontier/air_mol_streamer.py` y `hf_air_
 | **`5` `AirMoL` 4 bits + `LUT6` en frío (Referencia)** | **`100%`** | **`3.74`** | **`17.12`** | **`130.7 MB`** | **`0.0 MB`** | **`7.51 MB`** | **`11.18`** | **Medido (`F_NOCACHE`)** |
 | **`6` `AirMoL` 4 bits + tras activación (Referencia)** | **`100%`** | **`4.27`** | **`15.00`** | **`114.4 MB`** | **`0.0 MB`** | **`7.51 MB`** | **`11.09`** | **Medido (`F_NOCACHE`)** |
 
-<div id="47-claim-la-7-pretrained-2026-hybrid-models-under-airmol-lfm25-350m--qwen35-08b-base" class="anchor-alias" aria-hidden="true"></div>
+<div id="47-claim-la-7-pretrained-2026-dense--tri-hybrid-models-under-airmol-lfm3-17b-lfm25-350m--qwen35-08b-base" class="anchor-alias" aria-hidden="true"></div>
 
-### 4.7 Afirmación LA-7: Modelos híbridos preentrenados de 2026 bajo `AirMoL` (`LFM2.5-350M` y `Qwen3.5-0.8B-Base`)
+### 4.7 Reclamación LA-7: Modelos densos y tri-híbridos preentrenados 2026 bajo `AirMoL` (`LFM3-1.7B`, `LFM2.5-350M`, & `Qwen3.5-0.8B-Base`)
 
-| Punto de control 2026 y variante | Paridad | Tok / Barrido | Caract. / Barrido | Barridos | Lectura NVMe | RAM activa pico (`% FP32`) | `tok/s` | Clase de evidencia |
+| Punto de Control 2026 y Arm | Paridad | Token / Barrido | Caracteres / Barrido | Barridos | Lectura NVMe | RAM Activa Máxima (`% FP32`) | `tok/s` | Clase de Evidencia |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| `LFM3-1.7B` (Oct 2026) · `AirLLM` 4-Bit (`T=1`) | `100%` | `1.00` | `2.30` | `24.00` | `25.045 GB` | `250.0 MB` (`3.79%`) | `0.53` | Medido (`F_NOCACHE`) |
+| `LFM3-1.7B` (Oct 2026) · `AirLLM` 4-Bit + `PLD` | `100%` | `1.37` | `3.16` | `17.50` | `18.262 GB` | `250.0 MB` (`3.79%`) | `0.73` | Medido (`F_NOCACHE`) |
+| **`LFM3-1.7B` (Oct 2026) · `AirMoL` Frío `LUT6`** | **`100%`** | **`1.55`** | **`3.56`** | **`15.50`** | **`16.175 GB`** | **`250.0 MB` (`3.79%`)** | **`0.81`** | **Medido (`F_NOCACHE`)** |
+| **`LFM3-1.7B` (Oct 2026) · `AirMoL` Post-Despertar** | **`100%`** | **`2.74`** | **`6.31`** | **`8.75`** | **`9.131 GB`** | **`250.0 MB` (`3.79%`)** | **`1.32`** | **Medido (`F_NOCACHE`)** |
 | `LFM2.5-350M` · `AirLLM` FP16 (`T=1`) | `100%` | `1.00` | `3.11` | `32.00` | `25.129 GB` | `128.0 MB` (`9.47%`) | `2.21` | Medido (`F_NOCACHE`) |
-| `LFM2.5-350M` · `AirLLM` 4 bits (`T=1`) | `100%` | `1.00` | `2.73` | `32.00` | `7.071 GB` | `128.0 MB` (`9.47%`) | `2.21` | Medido (`F_NOCACHE`) |
-| `LFM2.5-350M` · `AirLLM` 4 bits + `PLD` | `100%` | `1.13` | `3.10` | `28.20` | `6.231 GB` | `128.0 MB` (`9.47%`) | `2.71` | Medido (`F_NOCACHE`) |
-| **`LFM2.5-350M` · `AirMoL` `LUT6` en frío** | **`100%`** | **`1.32`** | **`3.61`** | **`24.20`** | **`5.347 GB`** | **`128.0 MB` (`9.47%`)** | **`2.74`** | **Medido (`F_NOCACHE`)** |
-| **`LFM2.5-350M` · `AirMoL` tras activación** | **`100%`** | **`2.86`** | **`7.80`** | **`11.20`** | **`2.475 GB`** | **`128.0 MB` (`9.47%`)** | **`6.26`** | **Medido (`F_NOCACHE`)** |
-| `Qwen3.5-0.8B` · `AirLLM` 4 bits (`T=1`) | `100%` | `1.00` | `2.72` | `24.00` | `12.674 GB` | `242.5 MB` (`8.45%`) | `0.53` | Medido (`F_NOCACHE`) |
-| `Qwen3.5-0.8B` · `AirLLM` 4 bits + `PLD` | `100%` | `1.32` | `3.58` | `18.25` | `9.637 GB` | `242.5 MB` (`8.45%`) | `0.50` | Medido (`F_NOCACHE`) |
-| **`Qwen3.5-0.8B` · `AirMoL` `LUT6` en frío** | **`100%`** | **`1.48`** | **`4.02`** | **`16.25`** | **`8.581 GB`** | **`242.5 MB` (`8.45%`)** | **`0.32`** | **Medido (`F_NOCACHE`)** |
-| **`Qwen3.5-0.8B` · `AirMoL` tras activación** | **`100%`** | **`2.74`** | **`7.46`** | **`8.75`** | **`4.621 GB`** | **`242.5 MB` (`8.45%`)** | **`1.11`** | **Medido (`F_NOCACHE`)** |
+| `LFM2.5-350M` · `AirLLM` 4-Bit (`T=1`) | `100%` | `1.00` | `2.73` | `32.00` | `7.071 GB` | `128.0 MB` (`9.47%`) | `2.21` | Medido (`F_NOCACHE`) |
+| `LFM2.5-350M` · `AirLLM` 4-Bit + `PLD` | `100%` | `1.13` | `3.10` | `28.20` | `6.231 GB` | `128.0 MB` (`9.47%`) | `2.71` | Medido (`F_NOCACHE`) |
+| **`LFM2.5-350M` · `AirMoL` Frío `LUT6`** | **`100%`** | **`1.32`** | **`3.61`** | **`24.20`** | **`5.347 GB`** | **`128.0 MB` (`9.47%`)** | **`2.74`** | **Medido (`F_NOCACHE`)** |
+| **`LFM2.5-350M` · `AirMoL` Post-Despertar** | **`100%`** | **`2.86`** | **`7.80`** | **`11.20`** | **`2.475 GB`** | **`128.0 MB` (`9.47%`)** | **`6.26`** | **Medido (`F_NOCACHE`)** |
+| `Qwen3.5-0.8B` · `AirLLM` 4-Bit (`T=1`) | `100%` | `1.00` | `2.72` | `24.00` | `12.674 GB` | `242.5 MB` (`8.45%`) | `0.53` | Medido (`F_NOCACHE`) |
+| `Qwen3.5-0.8B` · `AirLLM` 4-Bit + `PLD` | `100%` | `1.32` | `3.58` | `18.25` | `9.637 GB` | `242.5 MB` (`8.45%`) | `0.50` | Medido (`F_NOCACHE`) |
+| **`Qwen3.5-0.8B` · `AirMoL` Frío `LUT6`** | **`100%`** | **`1.48`** | **`4.02`** | **`16.25`** | **`8.581 GB`** | **`242.5 MB` (`8.45%`)** | **`0.32`** | **Medido (`F_NOCACHE`)** |
+| **`Qwen3.5-0.8B` · `AirMoL` Post-Despertar** | **`100%`** | **`2.74`** | **`7.46`** | **`8.75`** | **`4.621 GB`** | **`242.5 MB` (`8.45%`)** | **`1.11`** | **Medido (`F_NOCACHE`)** |
 
-Obsérvese el compromiso de rendimiento preservado sobre `Qwen3.5-0.8B-Base` ante prompts no vistos en frío: `AirMoL` reduce las lecturas de disco NVMe de `12.674 GB` a `8.581 GB`, pero la verificación por lotes de `4` tokens en Gated DeltaNet sobre CPU reduce el rendimiento en tiempo real (`0.32` frente a `0.53 tok/s`) hasta que la cristalización en línea de las activaciones hacia `LUT6` eleva la aceptación a `2.74 tok/sweep` (`4.621 GB` leídos, `1.11 tok/s`).
+El 26 de octubre de 2026, `LiquidAI/LFM3-1.7B` (`13` convoluciones cortas + `5` capas de atención de ventana deslizante + `6` capas de atención completa, `|V| = 128.000`), post-activación `AirMoL` reduce la transferencia por NVMe en `2,74×` (`25,045 GB` a `9,131 GB`) y aumenta la velocidad de decodificación en `2,49×` (`0,53` a `1,32 tok/s`) en `250,0 MB` de RAM de pesos activos (`3,79%` de FP32) con paridad sin pérdidas del `100,0%`. Nótese el equilibrio preservado en los prompts fríos no vistos de `Qwen3.5-0.8B-Base` limitados por CPU: `AirMoL` reduce las lecturas de disco NVMe (`12,674 GB` a `8,581 GB`), aunque la verificación por lotes de CPU de `4` tokens en Gated DeltaNet disminuye el rendimiento de reloj de pared (`0,32` frente a `0,53 tok/s`) hasta que la cristalización en línea de activación-a-`LUT6` eleva la aceptación a `2,74 tok/sweep` (`1,11 tok/s`).
 
 <div id="48-claim-la-8-live-cli-and-httpsse-streaming-server-mol_code_clipy" class="anchor-alias" aria-hidden="true"></div>
 
-### 4.8 Afirmación LA-8: Interfaz CLI en vivo y servidor de transmisión HTTP/SSE (`mol_code_cli.py`)
+### 4.8 Afirmación LA-8: CLI y servidor de streaming HTTP/SSE en vivo (`mol_code_cli.py`)
 
-`scripts/mol_code_cli.py` sirve `--backend {mamba3,lfm2.5-350m,qwen3.5-0.8b}` y `--air-nvme` a través de CLI y puntos finales SSE (`/v1/health`, `/v1/complete`, `/v1/crystallize`), elevando en vivo la ocupación de ranuras `RAMB36E2` de `438/512` a `460/512` con `18/18` suites de pruebas `pytest` superadas.
+`scripts/mol_code_cli.py` sirve `--backend {mamba3,lfm2.5-350m,qwen3.5-0.8b,lfm3-1.7b,lfm2.5-8b-a1b,qwen3.6-35b-a3b}` y `--air-nvme` a través de la CLI y de los endpoints SSE (`/v1/health`, `/v1/complete`, `/v1/crystallize`), avanzando la residencia de slots `RAMB36E2` de `438/512` a `460/512` en vivo, con `22/22` pruebas superadas en `tests/`.
+
+<div id="49-claim-la-9-frontier-sparse-moe-expert-airmol-liquidailfm25-8b-a1b-847b--qwenqwen36-35b-a3b-3466b" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.9 Afirmación LA-9: Frontier Sparse-MoE `Expert-AirMoL` (`LiquidAI/LFM2.5-8B-A1B` `8.47B` & `Qwen/Qwen3.6-35B-A3B` `34.66B`)
+
+| Punto de control Sparse-MoE y brazo | Paridad | Expertos activos | Tok / Barrido | Lectura NVMe / Tok | Reducción E/S | RAM pico (`% FP16`) | `tok/s` | `est_j / tok` |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `LFM2.5-8B-A1B` · `AirLLM` Denso 4-Bit (`T=1`) | `100%` | `100.00%` | `1.00` | `4.574 GB` | `1.00×` | `1,408.3 MB` (`8.72%`) | `0.28` | `368.80` |
+| `LFM2.5-8B-A1B` · `Expert-AirLLM` (`T=1`) | `100%` | `16.93%` | `1.00` | `1.200 GB` | `3.81×` | `1,408.3 MB` (`8.72%`) | `0.58` | `181.26` |
+| `LFM2.5-8B-A1B` · `Expert-AirMoL` + `PLD` | `100%` | `28.82%` | `1.78` | `0.883 GB` | `5.18×` | `1,408.3 MB` (`8.72%`) | `0.79` | `132.57` |
+| **`LFM2.5-8B-A1B` · `Expert-AirMoL` Frío `LUT6`** | **`100%`** | **`33.91%`** | **`1.85`** | **`1.002 GB`** | **`4.56×`** | **`1,408.3 MB` (`8.72%`)** | **`0.72`** | **`145.42`** |
+| **`LFM2.5-8B-A1B` · `Expert-AirMoL` Post-Despertar** | **`100%`** | **`36.46%`** | **`3.00`** | **`0.663 GB`** | **`6.90×`** | **`1,408.3 MB` (`8.72%`)** | **`1.10`** | **`95.67`** |
+| `Qwen3.6-35B-A3B` · `AirLLM` Denso 4-Bit (`T=1`) | `100%` | `100.00%` | `1.00` | `18.159 GB` | `1.00×` | `3,214.7 MB` (`4.86%`) | `0.06` | `1,696.81` |
+| `Qwen3.6-35B-A3B` · `Expert-AirLLM` (`T=1`) | `100%` | `6.35%` | `1.00` | `2.356 GB` | `7.71×` | `2,530.7 MB` (`3.83%`) | `0.22` | `471.87` |
+| `Qwen3.6-35B-A3B` · `Expert-AirMoL` + `PLD` | `100%` | `11.58%` | `1.89` | `1.708 GB` | `10.63×` | `2,530.7 MB` (`3.83%`) | `0.32` | `326.24` |
+| **`Qwen3.6-35B-A3B` · `Expert-AirMoL` Frío `LUT6`** | **`100%`** | **`12.91%`** | **`2.00`** | **`1.722 GB`** | **`10.54×`** | **`2,530.7 MB` (`3.83%`)** | **`0.31`** | **`334.42`** |
+| **`Qwen3.6-35B-A3B` · `Expert-AirMoL` Post-Despertar** | **`100%`** | **`14.97%`** | **`2.57`** | **`1.477 GB`** | **`12.30×`** | **`2,530.7 MB` (`3.83%`)** | **`0.39`** | **`267.08`** |
+
+En `Qwen/Qwen3.6-35B-A3B` (`34.66B` parámetros, `66.11 GB` FP16 fragmentado a `18.60 GB` archivos `.experts.pack4` de 4 bits; delta `PMU` de todo el sistema macOS `20,070.18 J`), el `Expert-AirMoL` post-despertar reduce la transferencia NVMe sin búfer en **`12.30×`** (`18.159` a `1.477 GB/tok`) y acelera la decodificación **`6.50×`** (`0.06` a `0.39 tok/s`) en **`2,530.7 MB`** de RAM activa (`3.83%` de FP16) al `100.0%` de paridad de token sin pérdidas.
+
+<div id="410-claim-la-10-sub-1-bit-latent-factorization-littlebit-1--littlebit-2-vs-zero-mac-sub1bit-lut6" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.10 Afirmación LA-10: Factorización latente sub-1-bit (`LittleBit-1 / LittleBit-2`) frente a `Sub1Bit-LUT6` de MAC cero
+
+| Método de factorización (`LFM2.5-8B-A1B` `w1 [1792, 2048]`) | Bits / Peso | Relación señal-ruido del peso | Similitud coseno | Coincidencia Top-1 en `16K` | MACs binarios / Tok | Épocas de QAT | Clase de evidencia |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| `A` SVD sin rotación SVID (estilo PTQ de `LittleBit-1`) | `0.576` (`27.8×`) | `1.76 dB` | `0.5761` | `3.12%` | `1,981,440` | `0` (`5` en el artículo) | Medido en SW |
+| `B` SVID con Procrustes `ITQ` (estilo PTQ de `LittleBit-2`) | `0.576` (`27.8×`) | `2.42 dB` | `0.6487` | `10.94%` | `1,981,440` | `0` (`5` en el artículo) | Medido en SW |
+| **`C` Búsqueda en tabla `Sub1Bit-LUT6` (`0` MACs, borrador)** | **`0.576` (`27.8×`)** | **`2.42 dB`** | **`0.6487`** | **`10.94%`** | **`0`** | **`0`** | **Medido (`< 4e-6` frente a `B`)** |
+| `D` Bloque-64 objetivo `INT4` de `Expert-AirMoL` | `4.500` (`3.56×`) | `20.77 dB` | `0.9958` | `82.81%` | `0` (`INT4`) | `0` | Medido en SW |
+| **`E` `MoL`: borrador `Sub1Bit-LUT6` + verificación del objetivo** | **`0.576` borrador** | **`148.84 dB`** | **`1.0000`** | **`100.00%`** | **`0` MACs de borrador** | **`0`** | **Paridad sin pérdidas medida** |
+
+<div id="411-claim-la-11-48-task-16-specifications--3-waves-late-2026-frontier-coding-bakeoff" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.11 Afirmación LA-11: bakeoff de codificación de frontera de finales de 2026 con `48` tareas (`16` especificaciones × `3` oleadas)
+
+| Brazo del sistema de finales de 2026 (`48` tareas = `16` especificaciones × `3` oleadas) | W1 En frío | W2 Adaptación | W3 En caliente | Aprobación global | Commits rotos | Proporción W3 `Rung 0/1` | Llamadas `35B` | Latencia media W3 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `A` `LittleBit-2` `Qwen3-8B` `0.55 bpw` QAT (`1`-disparo) | `0.00%` | `0.00%` | `0.00%` | `0.00%` | `100.00%` | `0.00%` | `0.0%` | `19,946 ms` |
+| `B` `LiquidAI/LFM3-1.7B` (tri-híbrido de octubre de 2026, `1`-disparo) | `18.75%` | `6.25%` | `6.25%` | `10.42%` | `89.58%` | `0.00%` | `0.0%` | `3,561 ms` |
+| `C` `google/gemma-4-E2B-it` (híbrido de `2026`, `1`-disparo) | `6.25%` | `0.00%` | `0.00%` | `2.08%` | `97.92%` | `0.00%` | `0.0%` | `8,886 ms` |
+| `D` `LiquidAI/LFM2.5-8B-A1B` (MoE de `8.47B`, `1`-disparo) | `18.75%` | `12.50%` | `12.50%` | `14.58%` | `85.42%` | `0.00%` | `0.0%` | `14,221 ms` |
+| `E` `Qwen/Qwen3.6-35B-A3B` (`34.66B` `Expert-AirMoL`, `1`-disparo) | `37.50%` | `31.25%` | `31.25%` | `33.33%` | `66.67%` | `0.00%` | `100.0%` | `98,435 ms` |
+| `F` Router de confianza `RouteLLM` (`LFM3` $\to$ `Gemma4` $\to$ `8B`) | `18.75%` | `6.25%` | `6.25%` | `10.42%` | `89.58%` | `0.00%` | `0.0%` | `3,561 ms` |
+| **`G` `MoL` `VerifiedCodeCascade` (Referencia)** | **`43.75%`** | **`43.75%`** | **`43.75%`** | **`43.75%`** | **`0.00%`** | **`43.75%`** | **`62.5%`** | **`143,649 ms` (`2.54 ms` resueltos)** |
+
+En el protocolo de `48` tareas y el benchmark de algoritmos (aritmética serial RFC 1982, líneas de barrido de intervalos ponderados, ordenación topológica lexicográfica segura frente a ciclos, cubetas de tokens de nanosegundos, CRC-8/ATM y CRC-8 mutado con `0xFF`, desescapado `~01` de JSON Pointer según RFC 6901, Bellman-Ford con límite de saltos, medianas de ventana exactas para `>2⁵³`, Damerau-Levenshtein sin restricciones, enrutamiento Beneš `4×4`, parametrización de literales SQL, suma de subsecuencias mediante deque monótona, DWARF SLEB128, hashing consistente SHA-256 y cuantiles conformales; delta PMU de todo el sistema en macOS de `126,947.30 J`), `VerifiedCodeCascade` supera a cada modelo independiente y a cada router en todas las oleadas (`43.75%` frente a `33.33%` de `35B`), admite **`0.00%` de commits rotos** (frente a `66.67%-100.00%`), detecta de forma segura las `3` búsquedas adversarias de deriva de especificación de las oleadas 2 y 3 mediante $C(z)$, y reduce la latencia media de la oleada 3 en las `7` habilidades cristalizadas desde **`90,324.2 ms`** hasta **`2.54 ms` (aceleración de `35,590×`)**.
+
+<div id="412-xck26-sfvc784-2lv-c-full-subsystem-primitive-breakdown-topological-depth-and-vivado-20261-hardware-probe" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.12 `xck26-sfvc784-2LV-c` Desglose de primitivas del subsistema completo, Profundidad topológica, y `Vivado 2026.1` Sondeo de hardware
+
+Para auditar tanto el núcleo especulativo autónomo de `512` páginas (`clai_benes_paged_hotswap_core` en `hw/kv260/rtl/clai_benes_hotswap_core.sv`) como el subsistema completo de la Advanced Microcontroller Bus Architecture (`AMBA`) `AXI4-Lite` + `AXI4-Stream` Rung-0 (`clai_kv260_axi_top` en `hw/kv260/rtl/clai_kv260_axi_top.sv`, `clai_engram_streamer.sv`, `clai_rung0_hotswap_core.sv` y `artifacts/clai_rung0_kv260.v` en el commit `a5e9bc1de280`) frente a la pieza exacta AMD Kria KV260 (`xck26-sfvc784-2LV-c`: `117,120` LUTs CLB, `234,240` flip-flops CLB, `144` bloques `RAMB36E2`, `64` bloques UltraRAM (`URAM288`) de 288 Kbit, `1,248` slices de procesamiento digital de señal UltraScale+ (`DSP48E2`) y `189` bloques de entrada/salida de usuario (`IOB`s)), ejecutamos tres verificaciones de hardware y automatización de diseño electrónico (`EDA`) en una estación de trabajo `Intel Core i9-13900H` (`Linux 7.0.0-43-generic x86-64`):
+
+1. **Grupo de Acción de Prueba Conjunta de Solo Lectura (`JTAG`) y sonda de Bus Serie Universal (`USB`) (`Xilinx hw_server v2026.1` + Herramienta de Línea de Comandos de Software Xilinx (`XSDB`))**: Aunque `lsusb` informó de un puente Future Technology Devices International (`FTDI`) `0403:6010` (`FT2232C/D/H` receptor-transmisor asíncrono universal dual (`UART`) / first-in first-out (`FIFO`) circuito integrado (`IC`)) conectado, la inspección de las cadenas de proveedor y producto USB en el `sysfs` de Linux (`idVendor = 0403`, `idProduct = 6010`) identificó el dispositivo como `Manufacturer = "Particle"`, `Product = "tachyon-dbg-1.0"` en lugar de un portador Kria KV260. La consulta a `hw_server v2026.1` (Build May 29, 2026) mediante `xsdb` (`connect; jtag targets; targets`) devolvió **`0` dispositivos Xilinx `JTAG` y `0` destinos de Puerto de Acceso de Depuración (`DAP`)** (`board_metered = false`, `measured_j = None`).
+2. **Síntesis por lotes y compuerta de licencia de `Vivado 2026.1` (`SW Build 6511674`)**: Se preparó un guion reproducible de lotes sin proyecto de baja huella (`scripts/run_vivado_xck26.tcl`, `set_param general.maxThreads 4`, orientado a `xck26-sfvc784-2LV-c` a `250.0 MHz` / `4.000 ns` en modo fuera de contexto (`OOC`)) contra `/tools/Xilinx/2026.1/Vivado/bin/vivado`. El lanzamiento de `vivado v2026.1` en modo por lotes finalizó antes de `synth_design` (`ERROR: Vivado Design Suite cannot be launched because a valid license was not found`), porque AMD `Vivado 2025.1+` / `2026.1` requiere un archivo `.lic` Standard/Enterprise generado explícitamente por el usuario (`~/.Xilinx/Xilinx.lic` o `XILINXD_LICENSE_FILE`) incluso para piezas `xck26` de nivel Standard y no se instalaron archivos `.lic` en la estación de trabajo. Según las reglas de medición estrictas, el `WNS` posterior al enrutamiento, la frecuencia máxima de reloj colocada y enrutada, y el `report_power` vectorless (`est_j`) permanecen registrados como `not_available` hasta que se proporcione un archivo `.lic` Standard.
+3. **Descomposición primitiva UltraScale+ `xcup` de subsistema completo, presupuesto de `IOB` y auditoría topológica a nivel lógico (`Yosys 0.71+`)**: La síntesis tanto de `clai_benes_paged_hotswap_core` como de `clai_kv260_axi_top` mediante `synth_xilinx -family xcup` y `ltp -noff` (mientras se registra estrictamente el `reported_j` del paquete-0 `RAPL` del anfitrión como costo de compilación $E_{\text{compile}}$ de `EDA` `x86-64`, nunca como potencia de silicio de FPGA) estableció recuentos exactos de celdas y profundidades combinacionales de ruta crítica:
+
+| Módulo objetivo `xck26-sfvc784-2LV-c` | LUT de CLB (`% xck26`) | Primitivas LUT dominantes | Registros CLB (`FDRE`/`FDSE`) | `RAMB36E2` (`%`) | `DSP48E2` | Puertos superiores (`IBUF`+`OBUF`) | Profundidad combinacional (`ltp`) | Síntesis host `RAPL` (`reported_j`) |
+| :--- | ---: | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
+| **`clai_benes_paged_hotswap_core`** (`512` páginas) | **`41,185`** (`35.17%`) | `19,982 LUT3`, `7,804 LUT6`, `7,714 LUT5`, `36 MUXF7`, `18 MUXF8` | **`36,464`** (`15.57%`) | **`81`** (`56.25%`) | **`0`** | `1,599` (`OOC` / bus interno) | **`81` niveles** | `7,297.3 J` (`144.8 s`) |
+| **`clai_kv260_axi_top`** (subsistema AXI4 de Rung-0) | **`67,366`** (`57.52%`) | `25,557 LUT6`, `25,333 LUT5`, `7,918 LUT3`, `569 CARRY4` | **`16,619`** (`7.09%`) | **`4`** (`2.78%`) | **`0`** | `126` (`<= 189` `IOB`; `PS-PL`) | **`73` niveles** | `10,089.4 J` (`214.8 s`) |
+
+Se derivan dos restricciones concretas de diseño físico a partir de la auditoría de `xcup` y `ltp`:
+
+- **Confinamiento del presupuesto de pines (`OOC` frente al envoltorio `AXI` `PS-PL`)**: Dado que `clai_benes_paged_hotswap_core` expone el bus `CodeBitBus` crudo de `512` bits y los vectores anchos de configuración en sombra (`1,379` búferes de entrada (`IBUF`) + `220` búferes de salida (`OBUF`) = `1,599` puertos frente a los `189` `IOB` del encapsulado `xck26-sfvc784-2LV-c`), la implementación standalone del proveedor debe ejecutarse con `synth_design -mode out_of_context` o dentro de un envoltorio `AXI4-Stream` / `zynq_ultra_ps_e`, como `clai_kv260_axi_top` (`126` puertos, `57.52%` de utilización de LUT).
+- **Profundidad combinacional sin pipeline (`81` y `73` niveles) frente al cierre de `250 MHz` (`4.000 ns`) en `-2LV`**: Aunque Verilator `5.054` verifica `CPI = 1.0` ciclo a ciclo (`1` consulta por ciclo de reloj), recorrer en un único ciclo combinacional `17` etapas `Beneš-1`, `9` etapas de copia por prefijo, `17` etapas `Beneš-2`, la multiplexación dinámica de tablas de verdad `LUT6` y la reducción por mayoría de `5` votantes abarca **`81` niveles de primitivas** (`73` niveles en la popcount combinacional de `64` entradas y el comparador de márgenes de `8` clases de `clai_kv260_axi_top`). Por tanto, el cierre de `250 MHz` (`4.000 ns`) tras colocación y enrutado en silicio de bajo voltaje (`0.72 V`) `-2LV` favorece insertar de `2` a `3` etapas de registros de pipeline entre $\mathcal{B}_1 \to \mathcal{C} \to \mathcal{B}_2$ (y `1` etapa de registro entre el árbol de popcount de `64` cables y el comparador de top-`2`), preservando el rendimiento `CPI = 1.0` (`1` contexto por ciclo de reloj) con una latencia de pipeline de `3`-`4` ciclos.
 
 ---
 
@@ -279,38 +358,42 @@ Obsérvese el compromiso de rendimiento preservado sobre `Qwen3.5-0.8B-Base` ant
 
 ## 5. Trabajo relacionado y observaciones de convergencia
 
-| Sistema | ID / Foro | Qué establece | Costo según se informa | Diferencia en esta referencia |
+| Sistema | ID / Lugar | Lo que establece | Costo según lo reportado | Diferencia en esta referencia |
 | :--- | :--- | :--- | :--- | :--- |
-| **LogicNets** (Umuroglu et al., 2020) | `arXiv:2004.03021` · FPL 2020 | Capas neuronales dispersas y cuantizadas compiladas en LUTs de FPGA. | Síntesis de LUTs en FPGA y Fmax. | El cableado estático exige re-PAR en Vivado ante cambios, frente al cambio en `1` ciclo con Beneš + `RAMB36E2`. |
-| **DiffLogic** (Petersen et al., 2022) y **DWN** (Bacellar et al., 2024) | `arXiv:2210.08277` · `arXiv:2410.11112` | Redes diferenciables de compuertas booleanas y redes LUT sin pesos. | Conteo de compuertas y precisión. | El enrutamiento estático cae a `52.34%` ante el cambio de VLAN y sufre quimeras marginales por planos de bits. |
-| **T-MAC** (Wei et al., 2024) y **TeLLMe** (Qiao et al., 2025) | `arXiv:2407.00088` · `arXiv:2504.16266` | Productos matriciales ternarios o de pocos bits mediante búsqueda en tablas en CPU/FPGA. | Latencia y potencia en FPGA. | Acelera el álgebra lineal dentro de un engranaje de modelo; no evita invocar el modelo. |
-| **FrugalGPT** (Chen et al., 2023) y **RouteLLM** (Ong et al., 2024) | `arXiv:2305.05176` · `arXiv:2406.18665` | Cascadas de LLM de débil a fuerte y enrutadores de preferencias. | Precio en dólares de API frente a calidad. | Enrutamiento exclusivo entre modelos; sin piso de búsqueda `LUT6` ni compilación descendente. |
-| **GreenServ** (2026) y **VoltanaLLM** (2025) | `arXiv:2601.17551` · `arXiv:2509.04827` | Enrutamiento bandit multi-LLM y servicio con escalado de frecuencia. | Wh de GPU informados por los autores (`Zeus` / `pyNVML`). | Optimiza el servicio en GPU; esta referencia compila las activaciones hacia páginas `LUT6` de `0` FLOP (`est_j`). |
-| **Medusa** (2024), **EAGLE-2** (2024), **HCSpec** (2026) | `arXiv:2401.10774` · `arXiv:2406.16858` · ACL 2026 | Redactores especulativos basados en MLP neuronales, árboles borrador y cascadas. | Aceleración en tiempo de reloj real. | Requieren FLOPs de borrador y lecturas de pesos, frente a páginas `LUT6` `uint64` de `0` FLOP. |
-| **PLD** (Saxena, 2023) y **REST** (He et al., 2024) | GitHub · `arXiv:2311.08252` | Redactores de cero FLOP por n-gramas en el prompt y árboles de sufijos en almacén de datos. | Aceleración de latencia (`0` FLOPs). | `PLD` omite tokens fuera del prompt; `REST` recorre árboles variables frente a páginas fijas `RAMB36E2`. |
-| **AirLLM** (lyogavin, 2023) | Transmisor SSD de código abierto | Transmisión de pesos desde SSD capa por capa en poca RAM. | Huella de RAM activa. | Puro `T=1` (`1.0 tok/sweep`) + volcado KV frente a la reducción de barridos de `2.74×-2.86×` en `AirMoL`. |
-| **Compuertas de confirmación medidas** y **RCE-JEPA** `[same house]` | `/papers/gates/` · `/papers/rce-jepa/` | Compuertas de confirmación (lectura SOM `INA260` en KV260 de `11,428 pJ`), MoL $p_i/c_i$ y `RCE-JEPA`. | `measured_j` + `est_j` en SOM KV260. | Base propia de la misma casa; extendida aquí con compilación descendente Beneš `LUT6` y `AirMoL`. |
+| **LogicNets** (Umuroglu et al., 2020) | `arXiv:2004.03021` · FPL 2020 | Capas neuronales cuantizadas dispersas compiladas en LUTs de FPGA. | Síntesis de LUT de FPGA y Fmax. | Los cables estáticos necesitan re-PAR de Vivado en el desplazamiento frente a Beneš de `1` ciclo + `RAMB36E2`. |
+| **DiffLogic** (Petersen et al., 2022) y **DWN** (Bacellar et al., 2024) | `arXiv:2210.08277` · `arXiv:2410.11112` | Redes de compuertas booleanas diferenciables y LUT sin pesos. | Conteos de compuertas y exactitud. | El enrutamiento estático cae a `52.34%` en el desplazamiento VLAN y sufre quimeras marginales de plano de bits. |
+| **T-MAC** (Wei et al., 2024) y **TeLLMe** (Qiao et al., 2025) | `arXiv:2407.00088` · `arXiv:2504.16266` | Productos matriciales ternarios o de pocos bits mediante consulta de tablas en CPU/FPGA. | Latencia y potencia de FPGA. | Acelera el álgebra lineal dentro de un engranaje de modelo; no evita la invocación del modelo. |
+| **LittleBit** (Lee et al., 2025) y **LittleBit-2** (Lee y Kim, 2026) | `arXiv:2506.13771` · `arXiv:2603.00042` | Factorización latente binaria sub-1-bit (`0.1-0.58` bits/peso) mediante `SVD` / `ITQ` + QAT de `5` épocas. | Compresión (`11.6×-31×`), PPL y exactitud de QAT. | Desempaqueta paquetes de bits en MAC binarios densos en tiempo de ejecución y cae a `0.00%` en codificación exacta (`Claim LA-11`); `Sub1Bit-LUT6` usa `0` MAC binarios y `MoL` restaura la paridad del `100.0%` en `0` épocas de QAT. |
+| **FrugalGPT** (Chen et al., 2023) y **RouteLLM** (Ong et al., 2024) | `arXiv:2305.05176` · `arXiv:2406.18665` | Cascadas de LLM de débil a fuerte y enrutadores de preferencia. | Precio en dólares de API frente a calidad. | Carece de una compuerta determinista $C(z)$ (`89.58%` de commits rotos en `Claim LA-11`) y no tiene compilador descendente a `LUT6`. |
+| **GreenServ** (2026) y **VoltanaLLM** (2025) | `arXiv:2601.17551` · `arXiv:2509.04827` | Enrutamiento bandit multi-LLM y servicio escalado en frecuencia. | Wh de GPU de los autores (`Zeus` / `pyNVML`). | Optimiza el servicio en GPU; esta referencia compila activaciones en páginas `LUT6` de `0`-FLOP (`est_j`). |
+| **Medusa** (2024), **EAGLE-2** (2024), **HCSpec** (2026) | `arXiv:2401.10774` · `arXiv:2406.16858` · ACL 2026 | Generadores especulativos neuronales MLP, de árbol de borrador y en cascada. | Aceleración de tiempo de pared. | Requieren FLOPs de borrador y lecturas de pesos frente a páginas `LUT6` `uint64` de `0`-FLOP. |
+| **PLD** (Saxena, 2023) y **REST** (He et al., 2024) | GitHub · `arXiv:2311.08252` | Generadores de n-gramas de prompt y sufijos de trie de almacén de datos de cero FLOP. | Aceleración de latencia (`0` FLOPs). | `PLD` omite tokens fuera de prompt; `REST` usa tries variables frente a páginas `RAMB36E2`. |
+| **AirLLM** (lyogavin, 2023) | Transmisor SSD de código abierto | Transmisión de pesos de SSD capa por capa en RAM pequeña. | Huella de RAM activa. | `T=1` puro (`1.0 tok/sweep`) + derrame de KV frente a reducción de barrido `AirMoL` de `2.74×-2.86×`. |
+| **Compuertas de Commit Medidas** y **RCE-JEPA** `[misma casa]` | `/papers/gates/` · `/papers/rce-jepa/` | Compuertas de commit (`11,428 pJ` lectura de SOM KV260 `INA260`), $p_i/c_i$ de MoL y `RCE-JEPA`. | `measured_j` + `est_j` de SOM KV260. | Fundación de la misma casa; extendida aquí con compilación descendente a `LUT6` Beneš y `AirMoL`. |
 
 ---
 
 <div id="6-limits-threats-to-validity-not-claimed-and-falsifiers" class="anchor-alias" aria-hidden="true"></div>
 
-## 6. Límites, amenazas a la validez, lo que no se afirma y falsadores
+## 6. Límites, amenazas a la validez, aspectos no reivindicados y falsadores
 
-**Validez interna y de constructo.** Bajo ruido aleatorio uniforme o rotación adversaria paso a paso ($\Delta T = 1$), la Proposición 1 arroja cero ahorro por compilación descendente y el sistema retrocede a `1.00 tok/sweep`. La paridad sin pérdida (`100.0%`) garantiza concordancia bit a bit con la decodificación voraz del modelo objetivo, sin elevar el techo de capacidad intrínseca de un punto de control base de `350M` o `0.8B` parámetros.
+**Validez interna y de constructo.** Bajo ruido aleatorio uniforme o con rotación adversarial por paso ($\Delta T = 1$), la Proposición 1 no produce ahorros de compilación descendente y recae en `1.00 tok/sweep`. La paridad sin pérdida (`100.0%`) garantiza concordancia bit a bit con la decodificación greedy del modelo objetivo, pero no eleva el techo de capacidad de un punto de control base de `350M` u `0.8B`.
 
-**Validez de medición y lo que no se afirma.** Toda cifra en julios de este estudio es una estimación analítica `est_j` (`measured_j = None`). Yosys `0.71+` y Verilator `5.054` establecen la síntesis estructural de lista de conexiones para `xck26` y la simulación por ciclos con `CPI = 1`, no el cierre temporal posterior a posicionamiento y enrutamiento en Vivado a `250 MHz` ni vatios físicos medidos en los rieles de una placa KV260 (`board_metered = false`). No se afirma liderazgo energético medido en silicio, ni promoción de salidas `ModelGenerated` a `Deterministic`, ni ejecuciones medidas en modelos de `70B` (`air_mol_nvme_baselines.csv` informa únicamente proyecciones analíticas para `70B`).
+**Validez de medición y aspectos no reivindicados.** Las cifras de julios por tarea (`est_j/VC`, `est_j/tok`, `est_mJ/Byte`) son valores analíticos `est_j` (`measured_j = None`). Los deltas acumulados de la PMU de macOS incluyen la carga completa del sistema, es decir, la pantalla, el SSD y la actividad de fondo del sistema operativo, y no vatios aislados de un riel del chip. Yosys `0.71+` y Verilator `5.054` establecen la síntesis estructural de la netlist para `xck26` y la simulación de ciclos con `CPI = 1`, pero no el cierre de temporización post-PAR de `250 MHz` en Vivado ni los vatios físicos de los rieles de la KV260 (`board_metered = false`). No se reivindican: el liderazgo energético en silicio; la promoción de salidas `ModelGenerated` a `Deterministic`; una evaluación completa de `SWE-bench` a escala de repositorio más allá del benchmark contractual de `48` tareas; ni ejecuciones medidas de `70B`, dado que `air_mol_nvme_baselines.csv` reporta proyecciones analíticas para `70B` más allá de las ejecuciones medidas de `Qwen3.6-35B-A3B` de `34.66B`.
 
-| ID | Afirmación | Condición exacta de refutación / falsador |
+| ID | Afirmación | Condición exacta de refutación / falsificador |
 | :--- | :--- | :--- |
-| **`LA-F1`** | `Claim LA-1` (`.pcap` + RTL) | `scripts/run_realworld_domain.py` no alcanza el `100.0%` de paridad en Verilator en los `5,120` paquetes o no detecta el cambio de VLAN en el paquete `2,500`. |
-| **`LA-F2`** | `Claim LA-2` (Suite políglota) | Zig asigna `> 0` bytes de montículo en el bucle crítico, Go informa `> 0 allocs/op` o Enzyme en Julia supera un error de `1e-7` frente a diferencias finitas. |
-| **`LA-F3`** | `Claim LA-3` (RTL paginado KV260) | `scripts/verify_paged_bram_rtl.py` supera `117,120` LUTs, `144` bloques `RAMB36E2`, `0` bloques `DSP48` o `1` ciclo por cambio de página. |
-| **`LA-F4`** | `Claim LA-4` (ACI conformal) | `scripts/run_frontier_benchmarks.py` supera el riesgo falso objetivo $\alpha = 0.02$ en tráfico desplazado o etiqueta salidas como `Deterministic`. |
-| **`LA-F5`** | `Claim LA-5` (Especulación por bytes) | `scripts/run_code_corpus_benchmark.py` produce `< 100.0%` de paridad exacta de bytes frente a `Mamba3CodeLM` voraz en `48` prompts no vistos. |
-| **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` bajo `F_NOCACHE` pierde el `100%` de paridad o lee más bytes NVMe que `AirLLM` de 4 bits con `T=1`. |
-| **`LA-F7`** | `Claim LA-7` (`AirMoL` HF 2026) | `scripts/run_hf_air_mol_pretrained.py` o `scripts/run_hf_qwen35_air_mol.py` diverge en $\ge 1$ token BPE respecto a la decodificación voraz del objetivo. |
-| **`LA-F8`** | `Claim LA-8` (Suite de regresión) | `pytest -v` falla en cualquiera de las `18` suites de pruebas dentro de `tests/`. |
+| **`LA-F1`** | `Claim LA-1` (`.pcap` + RTL) | `scripts/run_realworld_domain.py` falla `100.0%` de paridad Verilator en `5,120` paquetes o pierde el desplazamiento VLAN del paquete `2,500`. |
+| **`LA-F2`** | `Claim LA-2` (Polyglot suite) | Zig asigna `> 0` bytes de heap en bucle caliente, Go informa `> 0 allocs/op`, o Julia Enzyme excede `1e-7` error FD. |
+| **`LA-F3`** | `Claim LA-3` (KV260 paged RTL) | `scripts/verify_paged_bram_rtl.py` excede `117,120` LUTs, `144` `RAMB36E2`s, `0` `DSP48`s, o `1` ciclo por conmutación de página. |
+| **`LA-F4`** | `Claim LA-4` (Conformal ACI) | `scripts/run_frontier_benchmarks.py` excede el riesgo falso objetivo $\alpha = 0.02$ en tráfico desplazado o marca `Deterministic`. |
+| **`LA-F5`** | `Claim LA-5` (Byte speculation) | `scripts/run_code_corpus_benchmark.py` produce `< 100.0%` de paridad exacta de bytes frente a `Mamba3CodeLM` codicioso en `48` prompts no vistos. |
+| **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` bajo `F_NOCACHE` falla `100%` de paridad o lee más bytes NVMe que `AirLLM` 4-Bit `T=1`. |
+| **`LA-F7`** | `Claim LA-7` (2026 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`, `scripts/run_hf_air_mol_pretrained.py` o `scripts/run_hf_qwen35_air_mol.py` diverge en $\ge 1$ token BPE del objetivo codicioso. |
+| **`LA-F8`** | `Claim LA-8` (Regression suite) | `pytest -v` falla cualquiera de los `22` pruebas en `tests/`. |
+| **`LA-F9`** | `Claim LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` diverge de `100%` de paridad de tokens o lee más bytes NVMe que `AirLLM` o `Expert-AirLLM`. |
+| **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` excede `1e-3` error máximo frente a la multiplicación binaria densa `ITQ` o falla `100%` de paridad verificada. |
+| **`LA-F11`** | `Claim LA-11` (`48`-Task Bakeoff) | `scripts/run_frontier_ai_bakeoff.py` admite `> 0%` de commits rotos o admite una habilidad obsoleta Wave-1 bajo mutación de especificación Wave-2. |
 
 ---
 
@@ -326,23 +409,28 @@ Obsérvese el compromiso de rendimiento preservado sobre `Qwen3.5-0.8B-Base` ant
 <li>Dao, T., and Gu, A. (2024). Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality. <em>ICML 2024</em>, <em>arXiv:2405.21060</em>.</li>
 <li>Furao, S., and Hasegawa, O. (2006). An incremental network for on-line unsupervised classification and topology learning (SOINN). <em>Neural Networks</em>, 19(1):90-106.</li>
 <li>Gibbs, I., and Candès, E. (2021). Adaptive Conformal Inference Under Distribution Shift. <em>NeurIPS 2021</em>, <em>arXiv:2106.00170</em>.</li>
+<li>Google Gemma Team (2026). <code>google/gemma-4-E2B-it</code> On-Device Hybrid Instruction Model Card (2026). <a href="https://huggingface.co/google/gemma-4-E2B-it">huggingface.co/google/gemma-4-E2B-it</a>.</li>
 <li>GreenServ (2026). Energy-Efficient Context-Aware Dynamic Routing for Multi-Model LLM Inference. <em>ICPE 2026</em>, <em>arXiv:2601.17551</em>.</li>
 <li>HCSpec (2026). Two-Tier Horizontal Cascade Speculative Decoding. <em>ACL 2026</em>, <a href="https://doi.org/10.18653/v1/2026.acl-long.353">doi:10.18653/v1/2026.acl-long.353</a>.</li>
 <li>He, Z., Zhong, Z., Cai, T., Lee, J. D., and He, D. (2024). REST: Retrieval-Based Speculative Decoding. <em>NAACL 2024</em>, <em>arXiv:2311.08252</em>.</li>
 <li>Hein, M., Andriushchenko, M., and Bitterwolf, J. (2019). Why ReLU Networks Yield High-Confidence Predictions Far Away From the Training Data. <em>CVPR 2019</em>, <em>arXiv:1812.05720</em>.</li>
 <li>Horowitz, M. (2014). Computing's Energy Problem (and What We Can Do About It). <em>IEEE ISSCC 2014</em>.</li>
+<li>Lee, H., Kim, M., Baek, S., Kim, J., Hwang, S., Shin, J., Lee, J., and Kim, E. (2025). LittleBit: Ultra Low-Bit Quantization via Latent Matrix Factorization. <em>NeurIPS 2025</em>, <em>arXiv:2506.13771</em>.</li>
+<li>Lee, H., and Kim, E. (2026). LittleBit-2: Pushing the Frontier of Extreme LLMs Quantization into 0.1-Bit (<code>SamsungLabs/LittleBit</code>). <em>ICML 2026</em>, <em>arXiv:2603.00042</em>.</li>
 <li>Lee, T. T. (1988). Nonblocking Copy Networks for Multicast Packet Switching. <em>IEEE JSAC</em>, 6(9):1455-1467.</li>
 <li>Lei, J., G'Sell, M., Rinaldo, A., Tibshirani, R. J., and Wasserman, L. (2018). Distribution-Free Predictive Inference for Regression. <em>JASA</em>, 113(523):1094-1111.</li>
 <li>Leviathan, Y., Kalman, M., and Matias, Y. (2023). Fast Inference from Transformers via Speculative Decoding. <em>ICML 2023</em>, <em>arXiv:2211.17192</em>.</li>
 <li>Li, Y., Wei, F., Zhang, C., and Zhang, H. (2024). EAGLE-2: Faster Inference of Language Models with Dynamic Draft Trees. <em>EMNLP 2024</em>, <em>arXiv:2406.16858</em>.</li>
-<li>Liquid AI (2026). <code>LiquidAI/LFM2.5-350M</code> Open-Weights Hybrid Model Card (March 2026). <a href="https://huggingface.co/LiquidAI/LFM2.5-350M">huggingface.co/LiquidAI/LFM2.5-350M</a>.</li>
+<li>Liquid AI (2026a). <code>LiquidAI/LFM2.5-350M</code> and <code>LiquidAI/LFM2.5-8B-A1B</code> Hybrid and Sparse-MoE Open-Weights Model Cards. <a href="https://huggingface.co/LiquidAI/LFM2.5-8B-A1B">huggingface.co/LiquidAI/LFM2.5-8B-A1B</a>.</li>
+<li>Liquid AI (2026b). <code>LiquidAI/LFM3-1.7B</code> Tri-Hybrid Open-Weights Model Card (October 23, 2026). <a href="https://huggingface.co/LiquidAI/LFM3-1.7B">huggingface.co/LiquidAI/LFM3-1.7B</a>.</li>
 <li>Liu, W., Wang, X., Owens, J., and Li, Y. (2020). Energy-based Out-of-distribution Detection. <em>NeurIPS 2020</em>, <em>arXiv:2010.03759</em>.</li>
 <li>lyogavin (2023). AirLLM: Layer-wise LLM Inference on Memory-Constrained Hardware. <a href="https://github.com/lyogavin/airllm">github.com/lyogavin/airllm</a>.</li>
 <li>Ong, I., et al. (2024). RouteLLM: Learning to Route LLMs with Preference Data. <em>ICLR 2025</em>, <em>arXiv:2406.18665</em>.</li>
 <li>Open Interface Engineering (2026). Metered Commit Gates; Task Satiation vs. Aggregate Rebound; The Reality Code Engine; RCE-JEPA; RCE Compile. <a href="https://research.openie.dev/">research.openie.dev</a> <code>[same house]</code>.</li>
 <li>Petersen, F., Borgelt, C., Kuehne, H., and Deussen, O. (2022). Deep Differentiable Logic Gate Networks. <em>NeurIPS 2022</em>, <em>arXiv:2210.08277</em>.</li>
 <li>Qiao, Y., et al. (2025). TeLLMe: An Energy-Efficient Ternary LLM Accelerator on Edge FPGAs. <em>arXiv:2504.16266</em>.</li>
-<li>Qwen Team (2026). <code>Qwen/Qwen3.5-0.8B-Base</code> Hybrid Gated DeltaNet + Attention Model Card (February 2026). <a href="https://huggingface.co/Qwen/Qwen3.5-0.8B-Base">huggingface.co/Qwen/Qwen3.5-0.8B-Base</a>.</li>
+<li>Qwen Team (2026a). <code>Qwen/Qwen3.5-0.8B-Base</code> Hybrid Gated DeltaNet + Attention Model Card (February 2026). <a href="https://huggingface.co/Qwen/Qwen3.5-0.8B-Base">huggingface.co/Qwen/Qwen3.5-0.8B-Base</a>.</li>
+<li>Qwen Team (2026b). <code>Qwen/Qwen3.6-35B-A3B</code> Sparse-MoE Hybrid Gated DeltaNet + Attention Model Card (2026). <a href="https://huggingface.co/Qwen/Qwen3.6-35B-A3B">huggingface.co/Qwen/Qwen3.6-35B-A3B</a>.</li>
 <li>Saxena, A. (2023). Prompt Lookup Decoding. <a href="https://github.com/apoorvumang/prompt-lookup-decoding">github.com/apoorvumang/prompt-lookup-decoding</a>.</li>
 <li>Simon, H. A., and Kadane, J. B. (1975). Optimal Problem-Solving Search: All-or-None Solutions. <em>Artificial Intelligence</em>, 6(3):235-247.</li>
 <li>Thompson, C. D. (1978). Generalized Connection Networks for Parallel Processor Intercommunication. <em>IEEE Trans. Comput.</em>, C-27(12):1119-1125.</li>
@@ -359,7 +447,7 @@ Obsérvese el compromiso de rendimiento preservado sobre `Qwen3.5-0.8B-Base` ant
 
 ## Apéndice A. Reproducibilidad
 
-Desde una copia local de [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit a5e9bc1`):
+A partir de una copia del repositorio [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit a5e9bc1`):
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
@@ -369,6 +457,10 @@ PYTHONPATH=src .venv/bin/python scripts/run_frontier_benchmarks.py
 PYTHONPATH=src .venv/bin/python scripts/verify_paged_bram_rtl.py
 PYTHONPATH=src .venv/bin/python scripts/run_code_corpus_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_air_mol_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_hf_lfm3_air_mol.py
 PYTHONPATH=src .venv/bin/python scripts/run_hf_air_mol_pretrained.py
 PYTHONPATH=src .venv/bin/python scripts/run_hf_qwen35_air_mol.py
+PYTHONPATH=src .venv/bin/python scripts/run_hf_moe_8b_35b_air_mol.py
+PYTHONPATH=src .venv/bin/python scripts/run_sub1bit_lut_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_frontier_ai_bakeoff.py
 ```

@@ -6,11 +6,11 @@
   <meta name="theme-color" content="#F59E0B">
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="David Charlot">
-  <meta name="description" content="Interactive observatory for Writing a Game Once and Running It Everywhere: inspect GE-H1 100,000-tick 5-target Q32.32 SHA-256 replay & L3 reported_j, explore GE-H2 25,000-tick floating-point Lyapunov divergence cascades, and zoom architecture and coverage figures.">
+  <meta name="description" content="Interactive observatory & playable Q32.32 Chrono-Budget Arena for Writing a Game Once and Running It Everywhere: inspect 25-cell Multi-ISA GE-H1 SHA-256 replay, Cross-ISA GE-H2 float drift, Cross-GPU GE-H3 Metal/Vulkan PSNR & SSIM tolerance, and play a 60 Hz BigInt WebXR/Gamepad deterministic mini-game.">
   <link rel="canonical" href="https://research.openie.dev/living/game-engines/">
   <link rel="describedby" type="text/markdown" href="/llms.txt">
   <link rel="alternate" type="text/markdown" title="Writing a Game Once and Running It Everywhere (Markdown)" href="/papers/game-engines.md">
-  <title>Living Figures · Game Engines Replay &amp; Divergence Explorer | OpenIE Research</title>
+  <title>Living Figures · Multi-ISA Replay, Cross-GPU Tolerance &amp; Chrono-Budget Arena | OpenIE Research</title>
   <script src="/webmcp-tools.js" defer></script>
   <script>
     (function(){
@@ -22,6 +22,73 @@
     })();
   </script>
   <link rel="stylesheet" href="openie.css">
+  <style>
+    .arena-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 512px) minmax(0, 1fr);
+      gap: 1.25rem;
+      margin-top: 1rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .arena-layout { grid-template-columns: minmax(0, 1fr); }
+    }
+    .arena-canvas-wrap {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 212, 170, 0.38);
+      background: #070b14;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      touch-action: none;
+    }
+    #chrono-canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      cursor: crosshair;
+    }
+    .act-btn {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      padding: 0.45rem 0.78rem;
+      border-radius: 6px;
+      border: 1px solid var(--color-brand-border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--color-brand-white);
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+    .act-btn:hover { border-color: var(--color-brand-amber); color: var(--color-brand-amber); }
+    .act-btn-primary {
+      background: var(--color-brand-amber);
+      color: #0a0a0f;
+      border-color: var(--color-brand-amber);
+      font-weight: 700;
+    }
+    html[data-theme="light"] .act-btn-primary { color: #ffffff; }
+    .act-btn-primary:hover { background: var(--color-brand-gold); color: #0a0a0f; }
+    .act-btn-cyan {
+      border-color: rgba(0, 212, 170, 0.5);
+      color: var(--color-brand-cyan);
+      background: rgba(0, 212, 170, 0.08);
+      font-weight: 600;
+    }
+    .act-btn-cyan:hover { background: rgba(0, 212, 170, 0.18); }
+    .bar-track {
+      width: 100%;
+      height: 10px;
+      border-radius: 5px;
+      background: rgba(148, 163, 184, 0.16);
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 5px;
+      transition: width 0.18s ease;
+    }
+  </style>
 </head>
 <body class="grid-bg">
   <nav class="nav-glass" aria-label="Main navigation">
@@ -39,32 +106,44 @@
   </nav>
 
   <main>
-    <div style="max-width: 70rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
-      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/game-engines/ · interactive instruments</p>
-      <h1 class="hero-title" style="max-width: none;">Living Figures: Exact Replay &amp; Floating-Point Divergence Explorer</h1>
-      <p class="author-line">David Charlot, Open Interface Engineering · Companion to <a href="/papers/game-engines/" style="color: var(--color-brand-cyan);">/papers/game-engines/</a> · Raw artifact: <a href="results.json" style="color: var(--color-brand-amber);">results.json</a></p>
+    <div style="max-width: 72rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
+      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/game-engines/ · multi-ISA, cross-GPU &amp; joule-native observatory</p>
+      <h1 class="hero-title" style="max-width: none;">Living Figures: Multi-ISA Replay, Cross-GPU Tolerance &amp; Playable <code>Q32.32</code> Chrono-Budget Arena</h1>
+      <p class="author-line">David Charlot, Open Interface Engineering · Companion to <a href="/papers/game-engines/" style="color: var(--color-brand-cyan);">/papers/game-engines/</a> &amp; <a href="/papers/time-as-an-index/" style="color: var(--color-brand-cyan);">/papers/time-as-an-index/</a> · Raw artifact: <a href="results.json" style="color: var(--color-brand-amber);">results.json</a></p>
 
       <div class="measurement-box">
-        <strong>Measurement grammar on this page.</strong> Every instrument separates three classes:
-        <span class="chip chip-meas">Exact (SHA-256 &amp; Tick Index)</span> for <code>GE-H1</code> <code>1,000</code> pairwise checkpoint hash comparisons across 5 language/WebAssembly targets and <code>GE-H2</code> exact divergence ticks (<code>t_div_ieee_bits</code>, <code>t_div_macro_1e3</code>, <code>t_div_gameplay</code>);
-        <span class="chip chip-sim">Reported (L3 reported_j)</span> for Apple M5 Max kernel per-PID <code>proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj</code> counters (label <code>D</code>); and
-        <span class="chip chip-est">Lyapunov Horizon Model</span> for analytical <code>t* = (1/Λ) ln(Δ/δ₀)</code> sensitivity sweeps. <code>measured_j = None</code>; <code>board_metered = false</code>; cross-GPU <code>wgpu</code> pixel-tolerance runs (<code>GE-H3..GE-H9</code>) remain open.
+        <strong>Measurement grammar on this page.</strong> Every instrument strictly separates four classes:
+        <span class="chip chip-meas">Exact (SHA-256 &amp; Pixel Error)</span> for <code>GE-H1</code> <code>20,500</code> verified checkpoints across 25 multi-ISA cells (<code>arm64</code> macOS, <code>aarch64</code> Linux, AMD &amp; Intel <code>x86_64</code> Linux), <code>GE-H2</code> exact divergence ticks, and <code>GE-H3</code> <code>512×512</code> <code>RGBA8Unorm</code> cross-GPU pixel metrics;
+        <span class="chip chip-sim">Reported (L3 vs L2 reported_j)</span> keeping macOS per-PID <code>proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj</code> (<code>L3</code>) strictly separate from Linux socket/core <code>/sys/class/powercap/intel-rapl:0</code> (<code>L2</code>); and
+        <span class="chip chip-est">Analytical Model (est_j &amp; Lyapunov)</span> for Section 3's <code>t* = (1/Λ) ln(Δ/δ₀)</code> curve and the Chrono-Budget Arena's Hellman lookahead &amp; Landauer branch-erasure microjoule (<code>µJ</code>) mechanics. Across all runs, <code>measured_j = None</code> and <code>board_metered = false</code>.
       </div>
 
-      <!-- Widget 1: GE-H1 5-Target Q32.32 Replay & Energy Explorer -->
+      <!-- Widget 1: Multi-ISA GE-H1 Q32.32 Replay & L3/L2 reported_j Explorer -->
       <section id="ge-diag-01" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-01</code> · <code>GE-H1</code> Five-Target <code>Q32.32</code> Exact Replay &amp; <code>L3</code> <code>reported_j</code> Explorer</h2>
-          <span class="chip chip-meas">0 / 1,000 SHA-256 Mismatches</span>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-01</code> · <code>GE-H1</code> Multi-ISA &amp; Multi-OS <code>Q32.32</code> Replay Explorer (<code>25</code> Cells)</h2>
+          <span class="chip chip-meas">0 / 20,500 SHA-256 Mismatches</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          A 16-body 2D elastic-collision and cooldown-FSM arena under <code>Q32.32</code> signed 64-bit integer physics ran for <strong>100,000 ticks</strong> across five targets (5 replicates each). Inspect canonical checkpoint digests and scale session length at <code>60 Hz</code> or <code>120 Hz</code>.
+          The identical 16-body + 4-pickup <code>Q32.32</code> signed 64-bit integer arena ran for <strong>100,000 ticks</strong> across five machines spanning <code>arm64</code> macOS, <code>aarch64</code> Linux, and AMD Zen 5 &amp; Intel Raptor Lake <code>x86_64</code> Linux across Rust, C++20 (Clang &amp; GCC), WebAssembly, Node.js <code>BigInt</code>, and Python 3. Filter by host/ISA and scale match length.
         </p>
 
         <div class="ctrl-grid">
           <div class="ctrl-box">
-            <label for="s-ckpt"><span>Checkpoint tick</span><span id="v-ckpt">100,000</span></label>
+            <label for="s-host"><span>Hardware host / ISA slice</span><span id="v-host-cnt">25 cells</span></label>
+            <select id="s-host">
+              <option value="all" selected>All 5 Hosts · arm64 + aarch64 + x86_64 (25 cells)</option>
+              <option value="apple_m5_max_arm64_macos">Apple M5 Max · arm64 macOS 27.2.1 (L3 PID, 5)</option>
+              <option value="apple_m3_ultra_arm64_macos">Apple M3 Ultra · arm64 macOS 27.2.1 (L3 PID, 2)</option>
+              <option value="amd_zen5_x86_64_linux">AMD Ryzen AI Max+ 395 · x86_64 Linux 7.0 (L2 RAPL, 6)</option>
+              <option value="intel_rpl_x86_64_linux">Intel Core i9-13900H · x86_64 Linux 7.0 (L2 RAPL, 6)</option>
+              <option value="nvidia_thor_aarch64_linux">NVIDIA Jetson Thor · aarch64 Linux 6.8 (CPU-only, 6)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="s-ckpt"><span>Canonical checkpoint tick</span><span id="v-ckpt">100,000</span></label>
             <select id="s-ckpt">
+              <option value="100">Tick 100 (1.67 s @ 60 Hz · stride-100)</option>
               <option value="1000">Tick 1,000 (16.7 s @ 60 Hz)</option>
               <option value="10000">Tick 10,000 (2.78 min @ 60 Hz)</option>
               <option value="25000">Tick 25,000 (6.94 min @ 60 Hz)</option>
@@ -88,21 +167,22 @@
         </div>
 
         <div style="margin-top: 0.9rem; padding: 0.7rem 0.95rem; border: 1px solid rgba(0,212,170,0.35); border-radius: 8px; background: rgba(0,212,170,0.06); font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all;">
-          <strong>5/5 Targets Identical SHA-256 @ Tick <span id="o-ckpt-tick">100,000</span>:</strong>
+          <strong>25/25 Multi-ISA Cells Identical SHA-256 @ Tick <span id="o-ckpt-tick">100,000</span>:</strong>
           <span id="o-ckpt-hash" style="color: var(--color-brand-cyan);">82e404df6475d64dbfeaaa0f6cda8092787ea9048446ae862779fa29be0a0a78</span>
         </div>
 
-        <div style="overflow-x: auto; margin-top: 1rem;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.83rem;">
+        <div style="overflow-x: auto; margin-top: 1rem; max-height: 28rem; overflow-y: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.81rem;">
             <thead>
-              <tr style="border-bottom: 1px solid rgba(148,163,184,0.32); text-align: left;">
+              <tr style="border-bottom: 1px solid rgba(148,163,184,0.32); text-align: left; position: sticky; top: 0; background: var(--color-brand-dark);">
+                <th style="padding: 0.45rem 0.5rem;">Host · ISA</th>
                 <th style="padding: 0.45rem 0.5rem;">Target Projection</th>
                 <th style="padding: 0.45rem 0.5rem; text-align: right;">Wall ms / 100k</th>
                 <th style="padding: 0.45rem 0.5rem; text-align: right;">ns / tick</th>
-                <th style="padding: 0.45rem 0.5rem; text-align: right;">L3 J / 100k (±SD)</th>
-                <th style="padding: 0.45rem 0.5rem; text-align: right;">Energy Ratio</th>
-                <th style="padding: 0.45rem 0.5rem; text-align: right;" id="th-session">Session L3 J</th>
-                <th style="padding: 0.45rem 0.5rem; text-align: center;">100/100 Hash Match</th>
+                <th style="padding: 0.45rem 0.5rem;">Telemetry Scope</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">reported_j / 100k</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;" id="th-session">Session J</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: center;">Checkpoints</th>
               </tr>
             </thead>
             <tbody id="h1-tbody"></tbody>
@@ -110,23 +190,24 @@
         </div>
       </section>
 
-      <!-- Widget 2: GE-H2 Floating-Point Divergence Horizon Explorer -->
+      <!-- Widget 2: Cross-ISA GE-H2 Floating-Point Divergence Horizon Explorer -->
       <section id="ge-diag-02" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-02</code> · <code>GE-H2</code> Floating-Point Divergence &amp; Chaotic Cascade Explorer (<code>25,000</code> Ticks)</h2>
-          <span class="chip chip-sim">Measured Tick Horizons + Lyapunov Model</span>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-02</code> · <code>GE-H2</code> Cross-ISA &amp; Cross-OS Floating-Point Divergence Explorer (<code>25,000</code> Ticks)</h2>
+          <span class="chip chip-sim">Cross-ISA Tick Horizons + Lyapunov Model</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          Filter the 10 tested floating-point pairs by perturbation class to see where IEEE-754 bits first diverge (<code>t_div_ieee_bits</code>), when arena positions drift past <code>10⁻³</code> (<code>t_div_macro_1e3</code>), and when discrete gameplay scores/pickups desynchronize (<code>t_div_gameplay</code>), alongside Section 3's analytical Lyapunov horizon <code>t* = (1/Λ) ln(Δ/δ₀)</code>.
+          Even <em>without</em> <code>-ffast-math</code>, standard library <code>std::sin/cos</code> diverges between Apple <code>libSystem</code> <code>libm</code> and Linux GNU <code>glibc</code> at <strong>tick 10</strong>, and default <code>-ffp-contract=fast</code> hardware FMA lowering diverges between <code>x86_64</code> (<code>VFMADD</code>) and <code>arm64</code> (<code>FMADD</code>) at <strong>tick 406</strong>.
         </p>
 
         <div class="ctrl-grid">
           <div class="ctrl-box">
-            <label for="f-h2"><span>Perturbation filter</span><span id="v-h2-cnt">10 pairs</span></label>
+            <label for="f-h2"><span>Perturbation filter</span><span id="v-h2-cnt">16 pairs</span></label>
             <select id="f-h2">
-              <option value="all">All 10 Tested Floating-Point Pairs</option>
-              <option value="strict">Strict IEEE-754 Same-ISA / Same-libm Controls (5)</option>
-              <option value="diverged">Diverging Boundary Perturbations (5)</option>
+              <option value="all">All 16 Multi-ISA &amp; Single-Host Float Pairs</option>
+              <option value="cross_isa">Cross-ISA / Cross-OS Wave 3 Pairs (9)</option>
+              <option value="strict">Pinned 0-ULP Controls (&gt;25,000 ticks, 7)</option>
+              <option value="diverged">All Diverging Boundary Pairs (9)</option>
             </select>
           </div>
           <div class="ctrl-box">
@@ -141,19 +222,19 @@
 
         <div class="metric-grid" aria-live="polite">
           <div class="metric-tile">
-            <div class="k">Compiler FMA (-ffast-math)</div>
-            <div class="v" style="color: var(--color-brand-amber);">t = 192 → 10,093</div>
-            <div class="s">Bit flip 3.2 s → Gameplay 168.2 s</div>
+            <div class="k">Apple libm vs GNU glibc sin/cos</div>
+            <div class="v" style="color: var(--color-brand-amber);">t = 10 → 9,798</div>
+            <div class="s">Strict f64 (-ffp-contract=off) · 163.3 s</div>
           </div>
           <div class="metric-tile">
-            <div class="k">libm vs V8 Math.sin (f64)</div>
-            <div class="v" style="color: var(--color-brand-amber);">t = 37 → 9,136</div>
-            <div class="s">Bit flip 0.6 s → Gameplay 152.3 s</div>
+            <div class="k">x86_64 VFMADD vs arm64 FMADD</div>
+            <div class="v" style="color: var(--color-brand-amber);">t = 406 → 11,205</div>
+            <div class="s">Algebraic only (no trig/fast-math) · 186.8 s</div>
           </div>
           <div class="metric-tile">
-            <div class="k">Precision Step-Down (f32)</div>
-            <div class="v" style="color: var(--color-brand-amber);">t = 1 → 1,370</div>
-            <div class="s">Bit flip tick 1 → Gameplay 22.8 s</div>
+            <div class="k">V8 Math.sin (x86_64 vs aarch64)</div>
+            <div class="v" style="color: var(--color-brand-amber);">t = 66 → 10,093</div>
+            <div class="s">Node v22 x86_64 vs v24 aarch64 · 168.2 s</div>
           </div>
           <div class="metric-tile">
             <div class="k">Analytical t* @ 60 Hz (Δ = 1)</div>
@@ -163,10 +244,10 @@
         </div>
 
         <div style="overflow-x: auto; margin-top: 1rem;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.81rem;">
             <thead>
               <tr style="border-bottom: 1px solid rgba(148,163,184,0.32); text-align: left;">
-                <th style="padding: 0.45rem 0.5rem;">Reference vs Candidate</th>
+                <th style="padding: 0.45rem 0.5rem;">Host / Target Pair</th>
                 <th style="padding: 0.45rem 0.5rem;">Mechanism</th>
                 <th style="padding: 0.45rem 0.5rem; text-align: right;">t_div (IEEE bits)</th>
                 <th style="padding: 0.45rem 0.5rem; text-align: right;">t_div (10⁻³ pos)</th>
@@ -179,20 +260,202 @@
         </div>
       </section>
 
-      <!-- Section 3: Zoomable Study Figures & Open Falsifiers -->
+      <!-- Widget 3: Cross-GPU GE-H3 Headless wgpu (Metal / Vulkan) Tolerance Inspector -->
+      <section id="ge-diag-03" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-03</code> · <code>GE-H3</code> Cross-GPU Headless <code>wgpu</code> Tolerance Inspector (<code>Metal</code> &amp; <code>Vulkan</code>)</h2>
+          <span class="chip chip-meas">24 / 24 GPU Frames Pass Gate (PSNR 64.2–72.1 dB)</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Four canonical <code>Q32.32</code> snapshots (ticks <code>0, 250, 1,000, 10,000</code>) were rendered at <code>512×512</code> <code>RGBA8Unorm</code> across <strong>Apple M3 Ultra (Metal)</strong>, <strong>AMD Radeon 8060S (RADV Vulkan)</strong>, <strong>NVIDIA GeForce RTX 4050 (Vulkan)</strong>, and <strong>Intel Iris Xe (ANV Vulkan)</strong>, plus <code>Mesa llvmpipe</code> and a zero-float <code>CPU Q16.16</code> integer reference. Adjust the gate thresholds to test conformance.
+        </p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="s-gpu-pair"><span>Adapter pair</span><span id="v-gpu-cat">Physical GPU</span></label>
+            <select id="s-gpu-pair">
+              <option value="0" selected>Apple M3 Ultra (Metal) vs Intel Iris Xe (ANV Vulkan)</option>
+              <option value="1">AMD Radeon 8060S (RADV) vs Apple M3 Ultra (Metal)</option>
+              <option value="2">AMD Radeon 8060S (RADV) vs Intel Iris Xe (ANV Vulkan)</option>
+              <option value="3">AMD Radeon 8060S (RADV) vs NVIDIA RTX 4050 (Vulkan)</option>
+              <option value="4">Intel Iris Xe (ANV) vs NVIDIA RTX 4050 (Vulkan)</option>
+              <option value="5">Apple M3 Ultra (Metal) vs NVIDIA RTX 4050 (Vulkan)</option>
+              <option value="6">Apple M3 Ultra (Metal) vs Mesa llvmpipe (CPU Vulkan)</option>
+              <option value="7">NVIDIA RTX 4050 (Vulkan) vs CPU Q16.16 Integer Ref</option>
+              <option value="8">Apple M3 Ultra (Metal) vs CPU Q16.16 Integer Ref</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="s-gpu-tick"><span>Canonical frame tick</span><span id="v-gpu-tick">Tick 1,000</span></label>
+            <select id="s-gpu-tick">
+              <option value="0">Tick 0 (initial grid + 4 active pickups)</option>
+              <option value="250">Tick 250 (early elastic scatter)</option>
+              <option value="1000" selected>Tick 1,000 (canonical checkpoint #1)</option>
+              <option value="10000">Tick 10,000 (deep chaotic mixing)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="s-gate-psnr"><span>Gate PSNR floor (dB)</span><span id="v-gate-psnr">40.0 dB</span></label>
+            <input type="range" id="s-gate-psnr" min="35" max="75" step="0.5" value="40.0">
+          </div>
+          <div class="ctrl-box">
+            <label for="s-gate-ssim"><span>Gate SSIM floor</span><span id="v-gate-ssim">0.99900</span></label>
+            <input type="range" id="s-gate-ssim" min="0.9900" max="0.99999" step="0.00005" value="0.99900">
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">Differing Pixels (of 262,144)</div>
+            <div class="v" id="o-gpu-diff" style="color: var(--color-brand-amber);">1.30%</div>
+            <div class="s" id="o-gpu-maxd">Max channel |Δ| = 2 / 255</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Frame PSNR (dB)</div>
+            <div class="v" id="o-gpu-psnr" style="color: var(--color-brand-cyan);">72.12 dB</div>
+            <div class="s" id="o-gpu-rmse">RMSE = 0.063 u8 · MAE = 0.0039</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Frame SSIM (8×8 Luma)</div>
+            <div class="v" id="o-gpu-ssim" style="color: var(--color-brand-cyan);">0.999987</div>
+            <div class="s">Outliers |Δ| &gt; 8: 0.0000%</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Tolerance Gate Verdict</div>
+            <div class="v" id="o-gpu-gate" style="color: var(--color-brand-cyan);">PASS</div>
+            <div class="s" id="o-gpu-bit">Raw SHA-256: DIVERGED (expected)</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 0.85rem; padding: 0.7rem 0.95rem; border-radius: 8px; border: 1px solid var(--color-brand-border); background: rgba(255,255,255,0.02); font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.65; word-break: break-all;">
+          <div><strong>Upstream Q32.32 State SHA-256 (0-bit identical on all hosts):</strong> <span id="o-gpu-shash" style="color: var(--color-brand-cyan);"></span></div>
+          <div><strong>Adapter A RGBA8 SHA-256:</strong> <span id="o-gpu-ha" style="color: var(--color-brand-amber);"></span></div>
+          <div><strong>Adapter B RGBA8 SHA-256:</strong> <span id="o-gpu-hb" style="color: var(--color-brand-amber);"></span></div>
+        </div>
+
+        <div style="overflow-x: auto; margin-top: 1rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.81rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(148,163,184,0.32); text-align: left;">
+                <th style="padding: 0.45rem 0.5rem;">Adapter A vs Adapter B</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">Mean Diff Px</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">Δ_max</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">Min PSNR</th>
+                <th style="padding: 0.45rem 0.5rem; width: 150px;">PSNR Margin</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: right;">Min SSIM</th>
+                <th style="padding: 0.45rem 0.5rem; text-align: center;">Gate</th>
+              </tr>
+            </thead>
+            <tbody id="h3-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Widget 4: Playable Q32.32 Chrono-Budget Arena (Canvas + WebXR / Gamepad) -->
+      <section id="ge-diag-04" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-04</code> · Playable <code>Q32.32</code> Chrono-Budget Arena (<code>BigInt</code> + <code>WebXR</code> / Gamepad)</h2>
+          <div style="display: flex; gap: 0.45rem; align-items: center; flex-wrap: wrap;">
+            <span class="chip chip-meas">0 Simulation Floats</span>
+            <span class="chip chip-est" id="xr-badge">Gamepad / WebXR Ready</span>
+          </div>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Play a real <code>60 Hz</code> deterministic orbital-navigation arena joining <code>game-engines</code> (<code>Q32.32</code> <code>BigInt</code> integer physics + rolling FIPS <code>SHA-256</code> state hash + input-tape replay verification) with <a href="/papers/time-as-an-index/" style="color: var(--color-brand-cyan);">Time as an Index</a> joule-budgeted temporal mechanics (<code>est_j</code> design model): <strong>Hellman Branch Lookahead</strong> projects 3 speculative future steering arcs <code>K</code> ticks ahead at explicit microjoule (<code>µJ</code>) precompute + <strong>Landauer branch-discard cost</strong>, while <strong>Causal Rewind</strong> rolls back to a persistent log snapshot without refunding spent energy.
+        </p>
+
+        <div class="arena-layout">
+          <div>
+            <div class="arena-canvas-wrap">
+              <canvas id="chrono-canvas" width="512" height="512" aria-label="Playable Q32.32 Chrono-Budget Arena canvas"></canvas>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.7rem;">
+              <button type="button" id="b-play" class="act-btn act-btn-primary">▶ Start 60 Hz</button>
+              <button type="button" id="b-step" class="act-btn">+1 Tick</button>
+              <button type="button" id="b-dash" class="act-btn">⚡ Dash (Shift)</button>
+              <button type="button" id="b-look" class="act-btn act-btn-cyan">🔭 Lookahead: ON (L)</button>
+              <button type="button" id="b-rewind" class="act-btn">⏪ Rewind −120t (R)</button>
+              <button type="button" id="b-verify" class="act-btn act-btn-cyan">✓ Replay &amp; Verify SHA-256</button>
+              <button type="button" id="b-reset" class="act-btn">↺ Reset Seed</button>
+              <button type="button" id="b-xr" class="act-btn" style="display: none;">🥽 WebXR Inline Session</button>
+            </div>
+            <p style="font-size: 0.76rem; font-family: var(--font-mono); color: var(--color-brand-gray); margin: 0.5rem 0 0;">
+              Controls: <code>WASD</code> / Arrows or drag on canvas to thrust · <code>Shift</code>/<code>Space</code> Dash · <code>L</code> Toggle 3-branch lookahead · <code>R</code> Rewind · Quest / Gamepad left stick + <code>A/B/X</code>.
+            </p>
+          </div>
+
+          <div>
+            <div class="ctrl-grid" style="margin-top: 0;">
+              <div class="ctrl-box">
+                <label for="s-c-seed"><span>Deterministic Seed</span><span id="v-c-seed">#20261122</span></label>
+                <select id="s-c-seed">
+                  <option value="20261122" selected>Seed 20261122 (Canonical Wave 3)</option>
+                  <option value="31415926">Seed 31415926 (High-eccentricity)</option>
+                  <option value="27182818">Seed 27182818 (Cross-orbit cluster)</option>
+                  <option value="16180339">Seed 16180339 (Golden spiral)</option>
+                </select>
+              </div>
+              <div class="ctrl-box">
+                <label for="s-c-look"><span>Lookahead Horizon K (ticks)</span><span id="v-c-look">48 ticks (0.80 s)</span></label>
+                <input type="range" id="s-c-look" min="12" max="120" step="12" value="48">
+              </div>
+              <div class="ctrl-box">
+                <label for="s-c-bud"><span>Initial Battery (µJ, est_j)</span><span id="v-c-bud">6,000 µJ</span></label>
+                <input type="range" id="s-c-bud" min="2000" max="15000" step="1000" value="6000">
+              </div>
+            </div>
+
+            <div class="metric-grid" style="margin-top: 0.8rem;" aria-live="polite">
+              <div class="metric-tile">
+                <div class="k">Causal Tick / Tape Len</div>
+                <div class="v" id="c-tick">0</div>
+                <div class="s" id="c-snaps">Checkpoints saved: 1</div>
+              </div>
+              <div class="metric-tile">
+                <div class="k">Battery Remaining (est_j)</div>
+                <div class="v" id="c-batt" style="color: var(--color-brand-cyan);">6,000.0 µJ</div>
+                <div class="s" id="c-burn">Fwd 0 · Hellman 0 · Erase 0 µJ</div>
+              </div>
+              <div class="metric-tile">
+                <div class="k">Cores Collected / Hits</div>
+                <div class="v" id="c-score" style="color: var(--color-brand-amber);">0 / 0</div>
+                <div class="s">+350 µJ per core · −180 µJ hit</div>
+              </div>
+              <div class="metric-tile">
+                <div class="k">Replay SHA-256 Audit</div>
+                <div class="v" id="c-audit" style="font-size: 1rem; color: var(--color-brand-cyan);">READY (0-float)</div>
+                <div class="s" id="c-audit-sub">Click Replay &amp; Verify</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 0.8rem; padding: 0.7rem 0.9rem; border-radius: 8px; border: 1px solid rgba(0,212,170,0.32); background: rgba(0,212,170,0.05); font-family: var(--font-mono); font-size: 0.76rem; word-break: break-all;">
+              <div><strong>Live Canonical Q32.32 State SHA-256:</strong></div>
+              <div id="c-hash" style="color: var(--color-brand-cyan); margin-top: 0.2rem;">—</div>
+            </div>
+
+            <div id="c-log" style="margin-top: 0.8rem; padding: 0.7rem 0.85rem; border-radius: 8px; background: rgba(15,23,42,0.5); border: 1px solid var(--color-brand-border); font-family: var(--font-mono); font-size: 0.75rem; max-height: 9.5rem; overflow-y: auto; line-height: 1.55;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Zoomable Study Figures -->
       <section id="figures" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;">Architecture &amp; Representation Coverage Figures (Click to Zoom)</h2>
-          <span class="chip chip-est">GE-H3..GE-H9 Open (Cross-GPU wgpu Tolerance Next)</span>
+          <h2 style="margin: 0; font-size: 1.25rem;">Architecture, Coverage &amp; Cross-GPU Tolerance Figures (Click to Zoom)</h2>
+          <span class="chip chip-meas">GE-H1, GE-H2 &amp; GE-H3 Executed · GE-H4..GE-H9 Open</span>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
           <figure class="fig" style="margin: 0;">
             <img src="/figures/game-engines/architecture.svg" alt="Proposed Form split across exact simulation/scripting and tolerance-bounded scene/rendering projections" data-zoom="/figures/game-engines/architecture.svg">
-            <figcaption><strong>Figure 1 · Determinism Boundary</strong> · Simulation and scripting sit on the exact side (verified in <code>GE-H1</code>); scene and <code>wgpu</code>/WGSL rendering sit on the tolerance side (<code>GE-H7</code> open).</figcaption>
+            <figcaption><strong>Figure 1 · Determinism Boundary</strong> · Simulation and scripting sit on the exact side (<code>GE-H1</code>); scene and <code>wgpu</code>/WGSL rendering sit on the tolerance side (<code>GE-H3</code>).</figcaption>
           </figure>
           <figure class="fig" style="margin: 0;">
             <img src="/figures/game-engines/coverage.svg" alt="Coverage matrix across eleven game representations and seven capability columns" data-zoom="/figures/game-engines/coverage.svg">
             <figcaption><strong>Figure 2 · Representation Coverage</strong> · Documented capabilities across Slang, Naga, WGSL/WESL, glTF, OpenUSD, BSN, SCXML/XState, VGDL, GameRule, nAIVE, and SpacetimeDB.</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/game-engines/cross-gpu-tolerance.svg" alt="Empirical results across Multi-ISA GE-H1, Cross-ISA GE-H2, and Cross-GPU GE-H3 Metal and Vulkan rendering tolerance" data-zoom="/figures/game-engines/cross-gpu-tolerance.svg">
+            <figcaption><strong>Figure 3 · Multi-ISA &amp; Cross-GPU Results</strong> · <code>0 / 20,500</code> <code>GE-H1</code> mismatches vs <code>64.2–72.1 dB</code> <code>PSNR</code> across Apple Metal, AMD RADV, Intel ANV, and NVIDIA Vulkan (<code>GE-H3</code>).</figcaption>
           </figure>
         </div>
       </section>
@@ -214,6 +477,7 @@
 
   <script>
     (function(){
+      // Theme & Lightbox
       var btn = document.getElementById('theme-toggle');
       var lbl = document.getElementById('theme-label');
       var modes = ['auto','dark','light'];
@@ -248,7 +512,71 @@
       document.getElementById('lb-close').addEventListener('click', function(){ dlg.close(); });
       dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
 
+      // Pure synchronous FIPS 180-4 SHA-256 (constants derived mathematically from primes 2..311)
+      var SHA_H0 = new Uint32Array(8);
+      var SHA_K = new Uint32Array(64);
+      (function initSha256Tables(){
+        var pCount = 0, cand = 2;
+        while (pCount < 64) {
+          var ok = true;
+          for (var d = 2; d * d <= cand; d++) { if (cand % d === 0) { ok = false; break; } }
+          if (ok) {
+            if (pCount < 8) SHA_H0[pCount] = Math.floor((Math.sqrt(cand) % 1) * 4294967296) >>> 0;
+            SHA_K[pCount] = Math.floor((Math.cbrt(cand) % 1) * 4294967296) >>> 0;
+            pCount++;
+          }
+          cand++;
+        }
+      })();
+
+      function sha256Hex(bytes) {
+        var len = bytes.length;
+        var bitLenHi = Math.floor((len * 8) / 4294967296) >>> 0;
+        var bitLenLo = (len * 8) >>> 0;
+        var padLen = ((len + 9 + 63) & ~63);
+        var msg = new Uint8Array(padLen);
+        msg.set(bytes);
+        msg[len] = 0x80;
+        var dv = new DataView(msg.buffer);
+        dv.setUint32(padLen - 8, bitLenHi, false);
+        dv.setUint32(padLen - 4, bitLenLo, false);
+
+        var h0 = SHA_H0[0], h1 = SHA_H0[1], h2 = SHA_H0[2], h3 = SHA_H0[3],
+            h4 = SHA_H0[4], h5 = SHA_H0[5], h6 = SHA_H0[6], h7 = SHA_H0[7];
+        var w = new Uint32Array(64);
+
+        for (var off = 0; off < padLen; off += 64) {
+          for (var i = 0; i < 16; i++) w[i] = dv.getUint32(off + i * 4, false);
+          for (var j = 16; j < 64; j++) {
+            var x = w[j - 15], y = w[j - 2];
+            var s0 = ((x >>> 7) | (x << 25)) ^ ((x >>> 18) | (x << 14)) ^ (x >>> 3);
+            var s1 = ((y >>> 17) | (y << 15)) ^ ((y >>> 19) | (y << 13)) ^ (y >>> 10);
+            w[j] = (w[j - 16] + s0 + w[j - 7] + s1) >>> 0;
+          }
+          var a = h0, b = h1, c = h2, d = h3, e = h4, f = h5, g = h6, h = h7;
+          for (var r = 0; r < 64; r++) {
+            var S1 = ((e >>> 6) | (e << 26)) ^ ((e >>> 11) | (e << 21)) ^ ((e >>> 25) | (e << 7));
+            var ch = (e & f) ^ ((~e) & g);
+            var t1 = (h + S1 + ch + SHA_K[r] + w[r]) >>> 0;
+            var S0 = ((a >>> 2) | (a << 30)) ^ ((a >>> 13) | (a << 19)) ^ ((a >>> 22) | (a << 10));
+            var maj = (a & b) ^ (a & c) ^ (b & c);
+            var t2 = (S0 + maj) >>> 0;
+            h = g; g = f; f = e; e = (d + t1) >>> 0;
+            d = c; c = b; b = a; a = (t1 + t2) >>> 0;
+          }
+          h0 = (h0 + a) >>> 0; h1 = (h1 + b) >>> 0; h2 = (h2 + c) >>> 0; h3 = (h3 + d) >>> 0;
+          h4 = (h4 + e) >>> 0; h5 = (h5 + f) >>> 0; h6 = (h6 + g) >>> 0; h7 = (h7 + h) >>> 0;
+        }
+        return [h0,h1,h2,h3,h4,h5,h6,h7].map(function(v){ return ('00000000' + v.toString(16)).slice(-8); }).join('');
+      }
+
+      // ======================================================================
+      // Widget 1 & 2 Data: Multi-ISA GE-H1 (25 cells) & Cross-ISA GE-H2 (16 pairs)
+      // ======================================================================
       var CKPTS = {
+        '0': '6e2bdc67884f3631d4d7d0b0e2ca26f5c559a37ed36a329a4fc24da5ba96b127',
+        '100': '2683c3f7cb8b29eb64da8121161b0edbadececcc65b35a8ecf01e90aa3d15445',
+        '250': 'f5e7c33650f08407bc2e910c07a0d32c9e2b90e5225603d84a1e02d6db867a6f',
         '1000': '21fa688e4ee8dd6e66dc7b2cc3b674a54c59f9b61967bcf97ecb58f99dc738ae',
         '10000': '0c60a804c15b682626442bdcd600869359ebdf1d70ff9f1f6ac5f47a38c95728',
         '25000': '6ae7bdaa471d50df809e325cfd1b606a6cd96ef1f4563fdb92d745877d61ead0',
@@ -257,64 +585,201 @@
         '100000': '82e404df6475d64dbfeaaa0f6cda8092787ea9048446ae862779fa29be0a0a78'
       };
 
-      var H1 = [
-        { id:'rust_native_aarch64', desc:'Rust native (aarch64, rustc -O)', ms:22.333, ms_sd:5.043, ns:223.33, j:0.102809, j_sd:0.024662, ratio:1.00 },
-        { id:'cpp20_clang_o3', desc:'C++20 native (clang++ -std=c++20 -O3)', ms:21.0224, ms_sd:1.6574, ns:210.22, j:0.108996, j_sd:0.013359, ratio:1.06 },
-        { id:'rust_wasm32_node', desc:'Rust → WebAssembly (wasm32 in Node.js)', ms:84.2995, ms_sd:11.3344, ns:843.00, j:0.447975, j_sd:0.088130, ratio:4.36 },
-        { id:'javascript_bigint_node', desc:'JavaScript (Node.js ES2024 BigInt)', ms:717.9546, ms_sd:36.3038, ns:7179.55, j:4.402059, j_sd:0.404803, ratio:42.82 },
-        { id:'python_3_13', desc:'Python 3.13 (CPython int)', ms:2945.8158, ms_sd:284.0329, ns:29458.16, j:13.599870, j_sd:1.908592, ratio:132.28 }
+      var H1_CELLS = [
+        { host:'apple_m5_max_arm64_macos', hlabel:'Apple M5 Max · arm64 macOS', desc:'Rust native (rustc 1.100 -O)', ms:22.333, ms_sd:5.043, ns:223.3, scope:'L3 PID ri_energy_nj', j:0.102809, j_sd:0.024662, ck:'100/100' },
+        { host:'apple_m5_max_arm64_macos', hlabel:'Apple M5 Max · arm64 macOS', desc:'C++20 native (Apple Clang 21 -O3)', ms:21.022, ms_sd:1.657, ns:210.2, scope:'L3 PID ri_energy_nj', j:0.108996, j_sd:0.013359, ck:'100/100' },
+        { host:'apple_m5_max_arm64_macos', hlabel:'Apple M5 Max · arm64 macOS', desc:'Rust → Wasm32 (Node v26.13)', ms:84.300, ms_sd:11.334, ns:843.0, scope:'L3 PID ri_energy_nj', j:0.447975, j_sd:0.088130, ck:'100/100' },
+        { host:'apple_m5_max_arm64_macos', hlabel:'Apple M5 Max · arm64 macOS', desc:'JavaScript (ES2024 BigInt)', ms:717.955, ms_sd:36.304, ns:7179.6, scope:'L3 PID ri_energy_nj', j:4.402059, j_sd:0.404803, ck:'100/100' },
+        { host:'apple_m5_max_arm64_macos', hlabel:'Apple M5 Max · arm64 macOS', desc:'Python 3.13.14 (CPython int)', ms:2945.816, ms_sd:284.033, ns:29458.2, scope:'L3 PID ri_energy_nj', j:13.59987, j_sd:1.908592, ck:'100/100' },
+
+        { host:'apple_m3_ultra_arm64_macos', hlabel:'Apple M3 Ultra · arm64 macOS', desc:'Rust native (rustc 1.100 -O)', ms:32.711, ms_sd:1.052, ns:327.1, scope:'L3 PID ri_energy_nj', j:0.072897, j_sd:0.002359, ck:'1,000/1,000' },
+        { host:'apple_m3_ultra_arm64_macos', hlabel:'Apple M3 Ultra · arm64 macOS', desc:'C++20 native (Apple Clang 21 -O3)', ms:33.727, ms_sd:2.633, ns:337.3, scope:'L3 PID ri_energy_nj', j:0.075547, j_sd:0.002654, ck:'1,000/1,000' },
+
+        { host:'amd_zen5_x86_64_linux', hlabel:'AMD Zen 5 · x86_64 Linux 7.0', desc:'Rust native (rustc 1.100 -O)', ms:21.793, ms_sd:0.558, ns:217.9, scope:'L2 AMD RAPL pkg (core 0.13J)', j:1.957717, j_sd:0.250576, ck:'1,000/1,000' },
+        { host:'amd_zen5_x86_64_linux', hlabel:'AMD Zen 5 · x86_64 Linux 7.0', desc:'C++20 native (Clang 21.1.8 -O3)', ms:23.061, ms_sd:0.427, ns:230.6, scope:'L2 AMD RAPL pkg (core 0.20J)', j:2.349065, j_sd:0.041490, ck:'1,000/1,000' },
+        { host:'amd_zen5_x86_64_linux', hlabel:'AMD Zen 5 · x86_64 Linux 7.0', desc:'C++20 native (GCC 15.2.0 -O3)', ms:26.677, ms_sd:0.985, ns:266.8, scope:'L2 AMD RAPL pkg (core 0.21J)', j:2.932104, j_sd:0.315182, ck:'1,000/1,000' },
+        { host:'amd_zen5_x86_64_linux', hlabel:'AMD Zen 5 · x86_64 Linux 7.0', desc:'Rust → Wasm32 (Node v22.22)', ms:145.291, ms_sd:3.844, ns:1452.9, scope:'L2 AMD RAPL pkg (core 1.01J)', j:14.44298, j_sd:1.773048, ck:'1,000/1,000' },
+        { host:'amd_zen5_x86_64_linux', hlabel:'AMD Zen 5 · x86_64 Linux 7.0', desc:'JavaScript (Node v22.22 BigInt)', ms:1347.803, ms_sd:35.308, ns:13478.0, scope:'L2 AMD RAPL pkg (core 6.26J)', j:115.8125, j_sd:4.184394, ck:'1,000/1,000' },
+        { host:'amd_zen5_x86_64_linux', hlabel:'AMD Zen 5 · x86_64 Linux 7.0', desc:'Python 3.14.4 (CPython int)', ms:2546.420, ms_sd:31.298, ns:25464.2, scope:'L2 AMD RAPL pkg (core 12.23J)', j:181.8714, j_sd:10.50566, ck:'1,000/1,000' },
+
+        { host:'intel_rpl_x86_64_linux', hlabel:'Intel i9-13900H · x86_64 Linux 7.0', desc:'Rust native (rustc 1.100 -O)', ms:39.718, ms_sd:3.508, ns:397.2, scope:'L2 Intel RAPL pkg (core 1.83J)', j:2.062027, j_sd:0.170354, ck:'1,000/1,000' },
+        { host:'intel_rpl_x86_64_linux', hlabel:'Intel i9-13900H · x86_64 Linux 7.0', desc:'C++20 native (Clang 21.1.8 -O3)', ms:36.868, ms_sd:4.305, ns:368.7, scope:'L2 Intel RAPL pkg (core 1.64J)', j:1.888020, j_sd:0.266824, ck:'1,000/1,000' },
+        { host:'intel_rpl_x86_64_linux', hlabel:'Intel i9-13900H · x86_64 Linux 7.0', desc:'C++20 native (GCC 15.2.0 -O3)', ms:58.792, ms_sd:24.182, ns:587.9, scope:'L2 Intel RAPL pkg (core 2.68J)', j:3.026483, j_sd:1.358680, ck:'1,000/1,000' },
+        { host:'intel_rpl_x86_64_linux', hlabel:'Intel i9-13900H · x86_64 Linux 7.0', desc:'Rust → Wasm32 (Node v22.14)', ms:158.348, ms_sd:8.258, ns:1583.5, scope:'L2 Intel RAPL pkg (core 5.65J)', j:6.894697, j_sd:0.896799, ck:'1,000/1,000' },
+        { host:'intel_rpl_x86_64_linux', hlabel:'Intel i9-13900H · x86_64 Linux 7.0', desc:'JavaScript (Node v22.14 BigInt)', ms:1390.455, ms_sd:97.262, ns:13904.6, scope:'L2 Intel RAPL pkg (core 50.12J)', j:60.78676, j_sd:11.11013, ck:'1,000/1,000' },
+        { host:'intel_rpl_x86_64_linux', hlabel:'Intel i9-13900H · x86_64 Linux 7.0', desc:'Python 3.14.4 (CPython int)', ms:3375.073, ms_sd:303.369, ns:33750.7, scope:'L2 Intel RAPL pkg (core 124.9J)', j:149.4797, j_sd:20.06218, ck:'1,000/1,000' },
+
+        { host:'nvidia_thor_aarch64_linux', hlabel:'Jetson Thor · aarch64 Linux 6.8', desc:'Rust native (rustc 1.100 -O)', ms:40.834, ms_sd:1.061, ns:408.3, scope:'CPU-only (reported_j = null)', j:null, j_sd:null, ck:'1,000/1,000' },
+        { host:'nvidia_thor_aarch64_linux', hlabel:'Jetson Thor · aarch64 Linux 6.8', desc:'C++20 native (Clang 18.1.3 -O3)', ms:48.275, ms_sd:2.250, ns:482.8, scope:'CPU-only (reported_j = null)', j:null, j_sd:null, ck:'1,000/1,000' },
+        { host:'nvidia_thor_aarch64_linux', hlabel:'Jetson Thor · aarch64 Linux 6.8', desc:'C++20 native (GCC 13.3.0 -O3)', ms:39.284, ms_sd:0.881, ns:392.8, scope:'CPU-only (reported_j = null)', j:null, j_sd:null, ck:'1,000/1,000' },
+        { host:'nvidia_thor_aarch64_linux', hlabel:'Jetson Thor · aarch64 Linux 6.8', desc:'Rust → Wasm32 (Node v24.22)', ms:171.641, ms_sd:4.265, ns:1716.4, scope:'CPU-only (reported_j = null)', j:null, j_sd:null, ck:'1,000/1,000' },
+        { host:'nvidia_thor_aarch64_linux', hlabel:'Jetson Thor · aarch64 Linux 6.8', desc:'JavaScript (Node v24.22 BigInt)', ms:1449.457, ms_sd:59.252, ns:14494.6, scope:'CPU-only (reported_j = null)', j:null, j_sd:null, ck:'1,000/1,000' },
+        { host:'nvidia_thor_aarch64_linux', hlabel:'Jetson Thor · aarch64 Linux 6.8', desc:'Python 3.12.3 (CPython int)', ms:4407.885, ms_sd:92.489, ns:44078.9, scope:'CPU-only (reported_j = null)', j:null, j_sd:null, ck:'1,000/1,000' }
       ];
 
       var H2 = [
-        { pair:'cpp_f64_strict vs rust_f64_strict', mech:'Same-ISA IEEE-754 f64 algebraic+sqrt (FMA off): Clang vs Rustc', div:false, b:null, m:null, g:null },
-        { pair:'cpp_f64_strict vs js_f64_strict', mech:'Same-ISA IEEE-754 f64 algebraic+sqrt (FMA off): Clang vs V8 Number', div:false, b:null, m:null, g:null },
-        { pair:'cpp_f64_strict vs py_f64_strict', mech:'Same-ISA IEEE-754 f64 algebraic+sqrt (FMA off): Clang vs CPython float', div:false, b:null, m:null, g:null },
-        { pair:'cpp_f64_strict_trig vs rust_f64_strict_trig', mech:'Same-OS libm sin/cos (f64 strict): Clang vs Rustc', div:false, b:null, m:null, g:null },
-        { pair:'cpp_f64_strict_trig vs py_f64_strict_trig', mech:'Same-OS libm sin/cos (f64 strict): Clang vs CPython math.sin', div:false, b:null, m:null, g:null },
-        { pair:'cpp_f64_strict vs cpp_f64_fastmath_fma', mech:'Compiler FMA contraction & reassociation (-O3 -ffast-math)', div:true, b:192, m:6576, g:10093 },
-        { pair:'cpp_f64_strict_trig vs js_f64_math_sin_trig', mech:'Cross-runtime transcendental: system libm vs Node.js V8 Math.sin/cos', div:true, b:37, m:5900, g:9136 },
-        { pair:'cpp_f64_strict_trig vs cpp_f64_fastmath_trig', mech:'Transcendental + FMA contraction (f64 strict vs -O3 -ffast-math)', div:true, b:7, m:6750, g:9802 },
-        { pair:'cpp_f64_strict vs cpp_f32_strict', mech:'Precision step-down: IEEE-754 binary64 (f64) vs binary32 (f32)', div:true, b:1, m:9, g:2240 },
-        { pair:'cpp_f64_strict_trig vs cpp_f32_strict_trig', mech:'Transcendental + binary32 precision: f64 strict vs f32 strict', div:true, b:1, m:8, g:1370 }
+        { pair:'arm64 macOS Clang 21 vs AMD/Intel x86_64 Linux Clang 21', mech:'Cross-ISA & Cross-OS strict IEEE-754 f64 algebraic+sqrt (-ffp-contract=off)', cross:true, div:false, b:null, m:null, g:null },
+        { pair:'aarch64 Thor GCC 13.3 / Rust vs AMD x86_64 GCC 15.2 / Rust', mech:'Cross-ISA Linux strict IEEE-754 f64 algebraic+sqrt (-ffp-contract=off)', cross:true, div:false, b:null, m:null, g:null },
+        { pair:'x86_64 Linux glibc 2.43 vs aarch64 Linux glibc 2.39 (f64_trig)', mech:'Cross-ISA GNU glibc std::sin/cos (strict f64, -ffp-contract=off)', cross:true, div:false, b:null, m:null, g:null },
+        { pair:'Apple arm64 Clang 21 fmadd vs Thor aarch64 Clang 18 fmadd', mech:'Same-ISA-family AArch64 hardware FMA lowering (macOS vs Linux)', cross:true, div:false, b:null, m:null, g:null },
+        { pair:'AMD Zen 5 x86_64 vs Intel Raptor Lake x86_64 (-mavx2 -mfma)', mech:'Same-ISA x86_64 AVX2+FMA3 hardware execution (AMD vs Intel)', cross:true, div:false, b:null, m:null, g:null },
+        { pair:'Apple arm64 macOS libSystem vs x86_64/aarch64 GNU glibc', mech:'Cross-OS std::sin/cos (strict f64, -ffp-contract=off, NO -ffast-math)', cross:true, div:true, b:10, m:5900, g:9798 },
+        { pair:'x86_64 AVX2 (-mavx2 -mfma) vs arm64/aarch64 NEON (fmadd)', mech:'Cross-ISA hardware FMA lowering (algebraic only, NO -ffast-math)', cross:true, div:true, b:406, m:7422, g:11205 },
+        { pair:'x86_64 Node.js v22.22 vs aarch64 Node.js v24.22 (Math.sin)', mech:'Cross-ISA V8 Math.sin/cos transcendental drift (strict f64)', cross:true, div:true, b:66, m:7617, g:10093 },
+        { pair:'x86_64 AVX2 -ffast-math vs arm64 NEON -ffast-math', mech:'Cross-ISA -O3 -ffast-math algebraic reassociation & FMA', cross:true, div:true, b:192, m:5784, g:8234 },
+        { pair:'Same-ISA Clang vs Rustc / V8 / CPython (f64_strict)', mech:'Same-host IEEE-754 f64 algebraic+sqrt (FMA off)', cross:false, div:false, b:null, m:null, g:null },
+        { pair:'Same-OS Clang vs Rustc / CPython (f64_strict_trig)', mech:'Same-OS system libm sin/cos (f64 strict)', cross:false, div:false, b:null, m:null, g:null },
+        { pair:'x86_64 Linux glibc 2.43 vs Node.js V8 Math.sin/cos', mech:'Same-host Linux system libm vs V8 Math.sin/cos (strict f64)', cross:false, div:true, b:10, m:6190, g:9136 },
+        { pair:'Apple arm64 libSystem vs Node.js V8 Math.sin/cos', mech:'Same-host macOS system libm vs V8 Math.sin/cos (strict f64)', cross:false, div:true, b:37, m:5900, g:9136 },
+        { pair:'cpp_f64_strict vs cpp_f64_fastmath_fma (M5 Max)', mech:'Compiler FMA contraction & reassociation (-O3 -ffast-math)', cross:false, div:true, b:192, m:6576, g:10093 },
+        { pair:'cpp_f64_strict vs cpp_f32_strict (algebraic)', mech:'Precision step-down: IEEE-754 binary64 (f64) vs binary32 (f32)', cross:false, div:true, b:1, m:9, g:2240 },
+        { pair:'cpp_f64_strict_trig vs cpp_f32_strict_trig', mech:'Transcendental + binary32 precision: f64 strict vs f32 strict', cross:false, div:true, b:1, m:8, g:1370 }
+      ];
+
+      // ======================================================================
+      // Widget 3 Data: GE-H3 Cross-GPU wgpu (Metal / Vulkan)
+      // ======================================================================
+      var H3_PAIRS = [
+        {
+          a:'Apple M3 Ultra (Metal)', b:'Intel Iris Xe (ANV Vulkan)', cat:'Physical GPU vs Physical GPU',
+          meanDiff:1.301, maxD:2, minPsnr:72.06, minSsim:0.999986,
+          frames:{
+            '0':   { diff:1.3054, maxD:2, mae:0.00387, rmse:0.06224, psnr:72.25, ssim:0.999987, ha:'c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef', hb:'6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567' },
+            '250': { diff:1.2981, maxD:2, mae:0.00385, rmse:0.06205, psnr:72.28, ssim:0.999987, ha:'0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0', hb:'49f5e190b883fac65471d72363318c0d94fea5191a1969da35451d4fafcafd54' },
+            '1000':{ diff:1.3210, maxD:2, mae:0.00394, rmse:0.06292, psnr:72.15, ssim:0.999987, ha:'84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6', hb:'ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74' },
+            '10000':{diff:1.2798, maxD:2, mae:0.00379, rmse:0.06139, psnr:72.06, ssim:0.999986, ha:'cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a', hb:'e3d205cd2bd947d13a8ad4179bdf4b7caa0cae388595e44e3cf457ff03cb9f70' }
+          }
+        },
+        {
+          a:'AMD Radeon 8060S (RADV Vulkan)', b:'Apple M3 Ultra (Metal)', cat:'Physical GPU vs Physical GPU',
+          meanDiff:3.103, maxD:1, minPsnr:69.09, minSsim:0.999956,
+          frames:{
+            '0':   { diff:3.1147, maxD:1, mae:0.00793, rmse:0.08903, psnr:69.14, ssim:0.999959, ha:'afa619ae3b5691e1c3ba87b2b5606b01d34ab49ec0b7ca6fec480b43c5a0c47d', hb:'c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef' },
+            '250': { diff:3.0792, maxD:1, mae:0.00782, rmse:0.08842, psnr:69.20, ssim:0.999956, ha:'59a778a07e8551c52dc40f7732f1607c30a8603d387b022453d0b36b6cf7cc8b', hb:'0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0' },
+            '1000':{ diff:3.1551, maxD:1, mae:0.00802, rmse:0.08954, psnr:69.09, ssim:0.999956, ha:'13f2f43b2f6c3e8c0dfd4a8658a77385149c0cd04b5d27a887fd62da6f71d834', hb:'84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6' },
+            '10000':{diff:3.0640, maxD:1, mae:0.00775, rmse:0.08805, psnr:69.24, ssim:0.999956, ha:'064fdde5ef09d5ba9f935591124b3819e215c1e3b896ce4b611032ac0e08fa07', hb:'cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a' }
+          }
+        },
+        {
+          a:'AMD Radeon 8060S (RADV Vulkan)', b:'Intel Iris Xe (ANV Vulkan)', cat:'Physical GPU vs Physical GPU',
+          meanDiff:3.774, maxD:2, minPsnr:67.97, minSsim:0.999951,
+          frames:{
+            '0':   { diff:3.8025, maxD:2, mae:0.01038, rmse:0.10193, psnr:67.97, ssim:0.999956, ha:'afa619ae3b5691e1c3ba87b2b5606b01d34ab49ec0b7ca6fec480b43c5a0c47d', hb:'6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567' },
+            '250': { diff:3.7926, maxD:2, mae:0.01024, rmse:0.10127, psnr:68.02, ssim:0.999954, ha:'59a778a07e8551c52dc40f7732f1607c30a8603d387b022453d0b36b6cf7cc8b', hb:'49f5e190b883fac65471d72363318c0d94fea5191a1969da35451d4fafcafd54' },
+            '1000':{ diff:3.6999, maxD:2, mae:0.00997, rmse:0.09991, psnr:68.14, ssim:0.999956, ha:'13f2f43b2f6c3e8c0dfd4a8658a77385149c0cd04b5d27a887fd62da6f71d834', hb:'ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74' },
+            '10000':{diff:3.8002, maxD:2, mae:0.01029, rmse:0.10152, psnr:68.00, ssim:0.999951, ha:'064fdde5ef09d5ba9f935591124b3819e215c1e3b896ce4b611032ac0e08fa07', hb:'e3d205cd2bd947d13a8ad4179bdf4b7caa0cae388595e44e3cf457ff03cb9f70' }
+          }
+        },
+        {
+          a:'AMD Radeon 8060S (RADV Vulkan)', b:'NVIDIA GeForce RTX 4050 (Vulkan)', cat:'Physical GPU vs Physical GPU',
+          meanDiff:6.553, maxD:2, minPsnr:65.64, minSsim:0.999874,
+          frames:{
+            '0':   { diff:6.5144, maxD:2, mae:0.01733, rmse:0.13170, psnr:65.74, ssim:0.999877, ha:'afa619ae3b5691e1c3ba87b2b5606b01d34ab49ec0b7ca6fec480b43c5a0c47d', hb:'af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8' },
+            '250': { diff:6.5613, maxD:2, mae:0.01737, rmse:0.13184, psnr:65.73, ssim:0.999875, ha:'59a778a07e8551c52dc40f7732f1607c30a8603d387b022453d0b36b6cf7cc8b', hb:'cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338' },
+            '1000':{ diff:6.6097, maxD:2, mae:0.01755, rmse:0.13322, psnr:65.64, ssim:0.999874, ha:'13f2f43b2f6c3e8c0dfd4a8658a77385149c0cd04b5d27a887fd62da6f71d834', hb:'49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41' },
+            '10000':{diff:6.5266, maxD:2, mae:0.01715, rmse:0.13040, psnr:65.83, ssim:0.999877, ha:'064fdde5ef09d5ba9f935591124b3819e215c1e3b896ce4b611032ac0e08fa07', hb:'138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16' }
+          }
+        },
+        {
+          a:'Intel Iris Xe (ANV Vulkan)', b:'NVIDIA GeForce RTX 4050 (Vulkan)', cat:'Physical GPU vs Physical GPU',
+          meanDiff:8.280, maxD:2, minPsnr:64.79, minSsim:0.999844,
+          frames:{
+            '0':   { diff:8.2687, maxD:2, mae:0.02145, rmse:0.14653, psnr:64.81, ssim:0.999846, ha:'6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567', hb:'af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8' },
+            '250': { diff:8.3019, maxD:2, mae:0.02156, rmse:0.14689, psnr:64.79, ssim:0.999844, ha:'49f5e190b883fac65471d72363318c0d94fea5191a1969da35451d4fafcafd54', hb:'cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338' },
+            '1000':{ diff:8.2794, maxD:2, mae:0.02151, rmse:0.14674, psnr:64.80, ssim:0.999845, ha:'ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74', hb:'49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41' },
+            '10000':{diff:8.2684, maxD:2, mae:0.02145, rmse:0.14651, psnr:64.81, ssim:0.999846, ha:'e3d205cd2bd947d13a8ad4179bdf4b7caa0cae388595e44e3cf457ff03cb9f70', hb:'138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16' }
+          }
+        },
+        {
+          a:'Apple M3 Ultra (Metal)', b:'NVIDIA GeForce RTX 4050 (Vulkan)', cat:'Physical GPU vs Physical GPU',
+          meanDiff:9.337, maxD:2, minPsnr:64.16, minSsim:0.999833,
+          frames:{
+            '0':   { diff:9.3155, maxD:2, mae:0.02462, rmse:0.15703, psnr:64.21, ssim:0.999835, ha:'c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef', hb:'af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8' },
+            '250': { diff:9.3540, maxD:2, mae:0.02472, rmse:0.15736, psnr:64.19, ssim:0.999834, ha:'0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0', hb:'cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338' },
+            '1000':{ diff:9.3914, maxD:2, mae:0.02483, rmse:0.15789, psnr:64.16, ssim:0.999833, ha:'84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6', hb:'49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41' },
+            '10000':{diff:9.2869, maxD:2, mae:0.02452, rmse:0.15652, psnr:64.24, ssim:0.999836, ha:'cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a', hb:'138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16' }
+          }
+        },
+        {
+          a:'Apple M3 Ultra (Metal)', b:'Mesa llvmpipe (LLVM 21.1.8 Vulkan)', cat:'Physical GPU vs Software Vulkan',
+          meanDiff:1.589, maxD:2, minPsnr:70.35, minSsim:0.999983,
+          frames:{
+            '0':   { diff:1.5957, maxD:2, mae:0.00544, rmse:0.07381, psnr:70.77, ssim:0.999984, ha:'c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef', hb:'ccb291f67d79a2ee12cd4cdd8cbc192f6968e4d01728b3ce87b3329be70efb48' },
+            '250': { diff:1.5820, maxD:2, mae:0.00539, rmse:0.07325, psnr:70.83, ssim:0.999984, ha:'0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0', hb:'58c9b7ea9b67351e34b08cd8161f3fa38cb153f39298f58b9018120c3d336c8a' },
+            '1000':{ diff:1.6109, maxD:2, mae:0.00552, rmse:0.07747, psnr:70.35, ssim:0.999983, ha:'84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6', hb:'7998a44c842910dc2d7a3d59fc126608ff6b638f91e20f1be33e8f38fa6dc87d' },
+            '10000':{diff:1.5686, maxD:2, mae:0.00534, rmse:0.06972, psnr:71.26, ssim:0.999984, ha:'cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a', hb:'de9bc1dbf9d020796bb93ca6b78864f1eb62e087d92e5bb621855fdf76396863' }
+          }
+        },
+        {
+          a:'NVIDIA GeForce RTX 4050 (Vulkan)', b:'CPU Q16.16 Integer Reference', cat:'GPU vs CPU Q16.16 Reference',
+          meanDiff:20.400, maxD:2, minPsnr:60.58, minSsim:0.999693,
+          frames:{
+            '0':   { diff:20.3812, maxD:2, mae:0.05606, rmse:0.23675, psnr:60.65, ssim:0.999695, ha:'af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8', hb:'9c693a38eb59531f91eba15eb22ea1cb763f83e1ceb9e38fd1051f3d0422f8ac' },
+            '250': { diff:20.4155, maxD:2, mae:0.05618, rmse:0.23701, psnr:60.63, ssim:0.999694, ha:'cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338', hb:'38643021e6439b57998c864d8493f3ef27a898f8bc6d249ca38a4b144fe4dbfd' },
+            '1000':{ diff:20.4578, maxD:2, mae:0.05632, rmse:0.23855, psnr:60.58, ssim:0.999693, ha:'49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41', hb:'912058d6ffb2f4777920d49eaee225cc5659cc7db3a2c6f7ba056a7ec4f009f7' },
+            '10000':{diff:20.3457, maxD:2, mae:0.05592, rmse:0.23525, psnr:60.70, ssim:0.999696, ha:'138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16', hb:'ce3b2cec3b4d1e0559e9fd023a476537bfbd64a455d3c7f2e46c5c27e359599b' }
+          }
+        },
+        {
+          a:'Apple M3 Ultra (Metal)', b:'CPU Q16.16 Integer Reference', cat:'GPU vs CPU Q16.16 Reference',
+          meanDiff:27.626, maxD:2, minPsnr:59.13, minSsim:0.999556,
+          frames:{
+            '0':   { diff:27.6012, maxD:2, mae:0.07856, rmse:0.28054, psnr:59.17, ssim:0.999558, ha:'c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef', hb:'9c693a38eb59531f91eba15eb22ea1cb763f83e1ceb9e38fd1051f3d0422f8ac' },
+            '250': { diff:27.6485, maxD:2, mae:0.07871, rmse:0.28080, psnr:59.16, ssim:0.999557, ha:'0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0', hb:'38643021e6439b57998c864d8493f3ef27a898f8bc6d249ca38a4b144fe4dbfd' },
+            '1000':{ diff:27.6844, maxD:2, mae:0.07884, rmse:0.28181, psnr:59.13, ssim:0.999556, ha:'84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6', hb:'912058d6ffb2f4777920d49eaee225cc5659cc7db3a2c6f7ba056a7ec4f009f7' },
+            '10000':{diff:27.5711, maxD:2, mae:0.07845, rmse:0.27957, psnr:59.20, ssim:0.999559, ha:'cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a', hb:'ce3b2cec3b4d1e0559e9fd023a476537bfbd64a455d3c7f2e46c5c27e359599b' }
+          }
+        }
       ];
 
       function syncUrl(){
         if (!window.history || !window.history.replaceState) return;
         var u = new URL(window.location.href);
+        u.searchParams.set('host', document.getElementById('s-host').value);
         u.searchParams.set('ckpt', document.getElementById('s-ckpt').value);
         u.searchParams.set('mins', document.getElementById('s-mins').value);
         u.searchParams.set('hz', document.getElementById('s-hz').value);
         u.searchParams.set('h2', document.getElementById('f-h2').value);
         u.searchParams.set('logd0', document.getElementById('s-logd0').value);
         u.searchParams.set('lam', document.getElementById('s-lam').value);
+        u.searchParams.set('gpu_pair', document.getElementById('s-gpu-pair').value);
+        u.searchParams.set('gpu_tick', document.getElementById('s-gpu-tick').value);
+        u.searchParams.set('seed', document.getElementById('s-c-seed').value);
+        u.searchParams.set('lookahead', document.getElementById('s-c-look').value);
+        u.searchParams.set('budget_uj', document.getElementById('s-c-bud').value);
         window.history.replaceState(null, '', u.pathname + u.search + u.hash);
       }
 
       function renderH1(updateQ){
+        var hostF = document.getElementById('s-host').value;
         var ck = document.getElementById('s-ckpt').value;
         var mins = parseFloat(document.getElementById('s-mins').value);
         var hz = parseFloat(document.getElementById('s-hz').value);
         var totalTicks = mins * 60 * hz;
+        var rows = H1_CELLS.filter(function(r){ return hostF === 'all' || r.host === hostF; });
+        document.getElementById('v-host-cnt').textContent = rows.length + ' cells';
         document.getElementById('v-ckpt').textContent = Number(ck).toLocaleString('en-US');
         document.getElementById('v-mins').textContent = mins.toFixed(0) + ' min';
         document.getElementById('v-hz').textContent = hz.toFixed(0) + ' Hz';
         document.getElementById('o-ckpt-tick').textContent = Number(ck).toLocaleString('en-US');
         document.getElementById('o-ckpt-hash').textContent = CKPTS[ck] || CKPTS['100000'];
-        document.getElementById('th-session').textContent = 'Session J (' + (totalTicks / 1000).toFixed(0) + 'k ticks)';
-        document.getElementById('h1-tbody').innerHTML = H1.map(function(t){
-          var sj = t.j * (totalTicks / 100000);
+        document.getElementById('th-session').textContent = 'Session (' + (totalTicks / 1000).toFixed(0) + 'k t)';
+        document.getElementById('h1-tbody').innerHTML = rows.map(function(t){
+          var jCell = t.j == null ? '<span style="color:var(--color-brand-gray);">null</span>' : (t.j.toFixed(3) + ' ± ' + t.j_sd.toFixed(3) + ' J');
+          var sj = t.j == null ? '—' : ((t.j * (totalTicks / 100000)) < 10 ? (t.j * (totalTicks / 100000)).toFixed(2) + ' J' : (t.j * (totalTicks / 100000)).toFixed(1) + ' J');
           return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14);">' +
-            '<td style="padding: 0.45rem 0.5rem; font-family: var(--font-mono); font-weight: 600;">' + t.desc + '</td>' +
-            '<td style="padding: 0.45rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + t.ms.toFixed(2) + ' ± ' + t.ms_sd.toFixed(1) + '</td>' +
-            '<td style="padding: 0.45rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + t.ns.toFixed(1) + '</td>' +
-            '<td style="padding: 0.45rem 0.5rem; text-align: right; font-family: var(--font-mono); font-weight: 600;">' + t.j.toFixed(3) + ' ± ' + t.j_sd.toFixed(3) + '</td>' +
-            '<td style="padding: 0.45rem 0.5rem; text-align: right; font-family: var(--font-mono); color: var(--color-brand-amber); font-weight: 700;">' + t.ratio.toFixed(2) + '×</td>' +
-            '<td style="padding: 0.45rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + (sj < 10 ? sj.toFixed(3) + ' J' : sj.toFixed(1) + ' J') + '</td>' +
-            '<td style="padding: 0.45rem 0.5rem; text-align: center; font-family: var(--font-mono); color: var(--color-brand-cyan); font-weight: 700;">YES (100/100)</td>' +
+            '<td style="padding: 0.42rem 0.5rem; font-family: var(--font-mono); font-size: 0.76rem;">' + t.hlabel + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; font-family: var(--font-mono); font-weight: 600;">' + t.desc + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + t.ms.toFixed(2) + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + t.ns.toFixed(1) + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; font-family: var(--font-mono); font-size: 0.74rem;">' + t.scope + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono); font-weight: 600;">' + jCell + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + sj + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: center; font-family: var(--font-mono); color: var(--color-brand-cyan); font-weight: 700;">' + t.ck + '</td>' +
           '</tr>';
         }).join('');
         if (updateQ) syncUrl();
-        return { checkpoint_tick: +ck, sha256: CKPTS[ck], session_minutes: mins, tick_hz: hz, session_ticks: totalTicks, targets: H1 };
+        return { host_filter: hostF, checkpoint_tick: +ck, sha256: CKPTS[ck], session_minutes: mins, tick_hz: hz, session_ticks: totalTicks, cells: rows };
       }
 
       function renderH2(updateQ){
@@ -328,6 +793,7 @@
         var tTicks = Math.round(tSec * 60);
         document.getElementById('o-lyap').textContent = tSec.toFixed(1) + ' s (' + tTicks.toLocaleString('en-US') + ' t)';
         var list = H2.filter(function(r){
+          if (mode === 'cross_isa') return r.cross;
           if (mode === 'strict') return !r.div;
           if (mode === 'diverged') return r.div;
           return true;
@@ -348,24 +814,745 @@
         return { filter: mode, log10_delta0: logd0, lyapunov_lambda: lam, predicted_t_star_s: +tSec.toFixed(2), predicted_ticks_60hz: tTicks, rows: list };
       }
 
-      ['s-ckpt','s-hz'].forEach(function(id){ document.getElementById(id).addEventListener('change', function(){ renderH1(true); }); });
+      function renderH3(updateQ){
+        var pIdx = parseInt(document.getElementById('s-gpu-pair').value, 10) || 0;
+        var tick = document.getElementById('s-gpu-tick').value;
+        var gPsnr = parseFloat(document.getElementById('s-gate-psnr').value);
+        var gSsim = parseFloat(document.getElementById('s-gate-ssim').value);
+        document.getElementById('v-gpu-tick').textContent = 'Tick ' + Number(tick).toLocaleString('en-US');
+        document.getElementById('v-gate-psnr').textContent = gPsnr.toFixed(1) + ' dB';
+        document.getElementById('v-gate-ssim').textContent = gSsim.toFixed(5);
+
+        var sel = H3_PAIRS[pIdx] || H3_PAIRS[0];
+        var fr = sel.frames[tick] || sel.frames['1000'];
+        var passSel = fr.psnr > gPsnr && fr.ssim > gSsim;
+
+        document.getElementById('v-gpu-cat').textContent = sel.cat.indexOf('Physical GPU vs Physical') === 0 ? 'Physical GPU' : 'Ref Control';
+        document.getElementById('o-gpu-diff').textContent = fr.diff.toFixed(2) + '%';
+        document.getElementById('o-gpu-maxd').textContent = 'Max channel |Δ| = ' + fr.maxD + ' / 255';
+        document.getElementById('o-gpu-psnr').textContent = fr.psnr.toFixed(2) + ' dB';
+        document.getElementById('o-gpu-rmse').textContent = 'RMSE = ' + fr.rmse.toFixed(4) + ' · MAE = ' + fr.mae.toFixed(5);
+        document.getElementById('o-gpu-ssim').textContent = fr.ssim.toFixed(6);
+        document.getElementById('o-gpu-gate').textContent = passSel ? 'PASS' : 'FAIL (Gate Tightened)';
+        document.getElementById('o-gpu-gate').style.color = passSel ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)';
+        document.getElementById('o-gpu-shash').textContent = CKPTS[tick];
+        document.getElementById('o-gpu-ha').textContent = fr.ha;
+        document.getElementById('o-gpu-hb').textContent = fr.hb;
+
+        document.getElementById('h3-tbody').innerHTML = H3_PAIRS.map(function(p, idx){
+          var ok = p.minPsnr > gPsnr && p.minSsim > gSsim;
+          var pctW = Math.max(4, Math.min(100, ((p.minPsnr - 35) / 40) * 100));
+          var hi = idx === pIdx ? 'background: rgba(0,212,170,0.07);' : '';
+          return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14); cursor: pointer; ' + hi + '" data-gpair="' + idx + '">' +
+            '<td style="padding: 0.42rem 0.5rem; font-family: var(--font-mono); font-weight: 600;">' + p.a + ' vs ' + p.b + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + p.meanDiff.toFixed(2) + '%</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + p.maxD + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--color-brand-cyan);">' + p.minPsnr.toFixed(2) + ' dB</td>' +
+            '<td style="padding: 0.42rem 0.5rem;"><div class="bar-track"><div class="bar-fill" style="width:' + pctW.toFixed(1) + '%; background:' + (ok ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)') + ';"></div></div></td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + p.minSsim.toFixed(6) + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: center; font-family: var(--font-mono); font-weight: 700; color:' + (ok ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)') + ';">' + (ok ? 'PASS' : 'FAIL') + '</td>' +
+          '</tr>';
+        }).join('');
+        document.querySelectorAll('[data-gpair]').forEach(function(tr){
+          tr.addEventListener('click', function(){
+            document.getElementById('s-gpu-pair').value = tr.getAttribute('data-gpair');
+            renderH3(true);
+          });
+        });
+        if (updateQ) syncUrl();
+        return { pair_index: pIdx, adapter_a: sel.a, adapter_b: sel.b, tick: +tick, frame: fr, gate_psnr_db: gPsnr, gate_ssim: gSsim, passes_gate: passSel };
+      }
+
+      // ======================================================================
+      // Widget 4: Playable Q32.32 Chrono-Budget Arena (Zero-Float BigInt Sim)
+      // ======================================================================
+      var ONE_Q = 1n << 32n;
+      var BOUND_Q = 60n * ONE_Q;
+      var MAX_VQ = 46n * ONE_Q;
+      var DT_Q = 1n << 26n; // 1/64 s
+      var DRAG_IDLE_Q = 4278190080n;
+      var DRAG_DASH_Q = 4288675840n;
+      var REST_WALL_Q = 3865470566n;
+      var DIAG_Q = 3037000500n;
+      var DIR_XQ = [0n, ONE_Q, DIAG_Q, 0n, -DIAG_Q, -ONE_Q, -DIAG_Q, 0n, DIAG_Q];
+      var DIR_YQ = [0n, 0n, DIAG_Q, ONE_Q, DIAG_Q, 0n, -DIAG_Q, -ONE_Q, -DIAG_Q];
+      var MASK64_Q = (1n << 64n) - 1n;
+      var MASK32_Q = 0xffffffffn;
+      var HALF32_Q = 2147483648n;
+      var SM0 = 11400714819323198485n, SM1 = 13787848793156543929n, SM2 = 10723151780598845931n;
+      var N_ACTORS = 8; // 0 = player, 1..7 = orbital drones
+      var N_CORES = 4;
+
+      function smNext(st) {
+        var s = (st + SM0) & MASK64_Q;
+        var z = s;
+        z = ((z ^ (z >> 30n)) * SM1) & MASK64_Q;
+        z = ((z ^ (z >> 27n)) * SM2) & MASK64_Q;
+        return [s, (z ^ (z >> 31n)) & MASK64_Q];
+      }
+
+      function isqrtBig(n) {
+        if (n <= 0n) return 0n;
+        var bits = 0n, tmp = n;
+        while (tmp > 0n) { bits += 1n; tmp >>= 1n; }
+        var x = 1n << ((bits + 1n) >> 1n);
+        while (true) {
+          var y = (x + n / x) >> 1n;
+          if (y >= x) return x;
+          x = y;
+        }
+      }
+
+      function createSimFromSeed(seedNum) {
+        var rng = (BigInt(seedNum >>> 0) * 6364136223846793005n + 1442695040888963407n) & MASK64_Q;
+        var bx = new BigInt64Array(N_ACTORS);
+        var by = new BigInt64Array(N_ACTORS);
+        var bvx = new BigInt64Array(N_ACTORS);
+        var bvy = new BigInt64Array(N_ACTORS);
+        var bfsm = new Uint8Array(N_ACTORS);
+        var btimer = new Uint16Array(N_ACTORS);
+
+        // Player starts in outer safe orbit at (-36, 0) with upward orbital tangent velocity
+        bx[0] = -36n * ONE_Q;
+        by[0] = 0n;
+        bvx[0] = 0n;
+        bvy[0] = 22n * ONE_Q;
+
+        for (var i = 1; i < N_ACTORS; i++) {
+          var rr1, rr2;
+          var s1 = smNext(rng); rng = s1[0]; rr1 = s1[1];
+          var s2 = smNext(rng); rng = s2[0]; rr2 = s2[1];
+          var rad = BigInt(16 + i * 5) * ONE_Q;
+          var dirIdx = (i % 8) + 1;
+          bx[i] = (DIR_XQ[dirIdx] * rad) >> 32n;
+          by[i] = (DIR_YQ[dirIdx] * rad) >> 32n;
+          // Tangential velocity (-dy, dx)
+          bvx[i] = ((-DIR_YQ[dirIdx] * (18n * ONE_Q)) >> 32n) + (((rr1 & MASK32_Q) - HALF32_Q) * 4n);
+          bvy[i] = ((DIR_XQ[dirIdx] * (18n * ONE_Q)) >> 32n) + ((((rr2 >> 32n) & MASK32_Q) - HALF32_Q) * 4n);
+        }
+
+        var cx = new BigInt64Array(N_CORES);
+        var cy = new BigInt64Array(N_CORES);
+        var cact = new Uint8Array(N_CORES);
+        var cresp = new Uint16Array(N_CORES);
+        for (var c = 0; c < N_CORES; c++) {
+          cx[c] = (c & 1) === 0 ? -26n * ONE_Q : 26n * ONE_Q;
+          cy[c] = (c >> 1) === 0 ? -26n * ONE_Q : 26n * ONE_Q;
+          cact[c] = 1;
+          cresp[c] = 0;
+        }
+        return { tick: 0, rng: rng, score: 0, hits: 0, bx: bx, by: by, bvx: bvx, bvy: bvy, bfsm: bfsm, btimer: btimer, cx: cx, cy: cy, cact: cact, cresp: cresp };
+      }
+
+      function cloneSim(st) {
+        return {
+          tick: st.tick, rng: st.rng, score: st.score, hits: st.hits,
+          bx: new BigInt64Array(st.bx), by: new BigInt64Array(st.by),
+          bvx: new BigInt64Array(st.bvx), bvy: new BigInt64Array(st.bvy),
+          bfsm: new Uint8Array(st.bfsm), btimer: new Uint16Array(st.btimer),
+          cx: new BigInt64Array(st.cx), cy: new BigInt64Array(st.cy),
+          cact: new Uint8Array(st.cact), cresp: new Uint16Array(st.cresp)
+        };
+      }
+
+      var SERIAL_BUF = new ArrayBuffer(388);
+      var SERIAL_U8 = new Uint8Array(SERIAL_BUF);
+      var SERIAL_DV = new DataView(SERIAL_BUF);
+
+      function hashSimState(st) {
+        var o = 0;
+        SERIAL_DV.setUint32(o, st.tick >>> 0, true); o += 4;
+        SERIAL_DV.setBigUint64(o, st.rng, true); o += 8;
+        SERIAL_DV.setUint32(o, st.score >>> 0, true); o += 4;
+        SERIAL_DV.setUint32(o, st.hits >>> 0, true); o += 4;
+        for (var i = 0; i < N_ACTORS; i++) {
+          SERIAL_DV.setBigInt64(o, st.bx[i], true); o += 8;
+          SERIAL_DV.setBigInt64(o, st.by[i], true); o += 8;
+          SERIAL_DV.setBigInt64(o, st.bvx[i], true); o += 8;
+          SERIAL_DV.setBigInt64(o, st.bvy[i], true); o += 8;
+          SERIAL_DV.setUint16(o, st.btimer[i], true); o += 2;
+          SERIAL_DV.setUint8(o, st.bfsm[i]); o += 1;
+          SERIAL_DV.setUint8(o, 0); o += 1;
+        }
+        for (var c = 0; c < N_CORES; c++) {
+          SERIAL_DV.setBigInt64(o, st.cx[c], true); o += 8;
+          SERIAL_DV.setBigInt64(o, st.cy[c], true); o += 8;
+          SERIAL_DV.setUint16(o, st.cresp[c], true); o += 2;
+          SERIAL_DV.setUint8(o, st.cact[c]); o += 1;
+          SERIAL_DV.setUint8(o, 0); o += 1;
+        }
+        return sha256Hex(SERIAL_U8);
+      }
+
+      // Pure Q32.32 integer transition delta(s, cmdByte) -> events (0 floating-point ops!)
+      function stepSimBigInt(st, cmdByte) {
+        var dir = cmdByte & 15;
+        if (dir > 8) dir = 0;
+        var wantDash = (cmdByte & 16) !== 0;
+        var prevScore = st.score;
+        var prevHits = st.hits;
+
+        if (wantDash && st.bfsm[0] === 0 && dir > 0) {
+          st.bfsm[0] = 1;
+          st.btimer[0] = 12;
+          st.bvx[0] += (11n * DIR_XQ[dir]) >> 1n;
+          st.bvy[0] += (11n * DIR_YQ[dir]) >> 1n;
+        } else if (dir > 0) {
+          st.bvx[0] += (3n * DIR_XQ[dir]) >> 2n;
+          st.bvy[0] += (3n * DIR_YQ[dir]) >> 2n;
+        }
+
+        // Deterministic PRNG drone micro-impulse
+        var sEv = smNext(st.rng);
+        st.rng = sEv[0];
+        var ev = sEv[1];
+        var dActor = 1 + Number(ev % 7n);
+        var dDir = 1 + Number((ev >> 4n) & 7n);
+        st.bvx[dActor] += DIR_XQ[dDir] >> 1n;
+        st.bvy[dActor] += DIR_YQ[dDir] >> 1n;
+
+        // Central gravity well + drag + wall reflection (all integer Q32.32)
+        var minWellSq = (7n * ONE_Q) * (7n * ONE_Q);
+        var gmConst = 520n * ONE_Q; // gravitational constant in Q32.32
+        for (var i = 0; i < N_ACTORS; i++) {
+          if (st.bfsm[i] === 1) {
+            st.btimer[i] -= 1;
+            if (st.btimer[i] === 0) { st.bfsm[i] = 2; st.btimer[i] = 36; }
+          } else if (st.bfsm[i] === 2) {
+            st.btimer[i] -= 1;
+            if (st.btimer[i] === 0) st.bfsm[i] = 0;
+          }
+
+          var rx = -st.bx[i], ry = -st.by[i];
+          var rSq = rx * rx + ry * ry;
+          var effSq = rSq < minWellSq ? minWellSq : rSq;
+          var rDist = isqrtBig(effSq);
+          // accel = gmConst / effSq along unit (rx/rDist, ry/rDist), scaled by dt = 1/64
+          var denom = (effSq >> 32n) * (rDist >> 16n);
+          if (denom > 0n) {
+            var dvx = ((gmConst * (rx >> 16n)) / denom) >> 6n;
+            var dvy = ((gmConst * (ry >> 16n)) / denom) >> 6n;
+            st.bvx[i] += dvx;
+            st.bvy[i] += dvy;
+          }
+
+          var drag = st.bfsm[i] === 1 ? DRAG_DASH_Q : DRAG_IDLE_Q;
+          var vx = (st.bvx[i] * drag) >> 32n;
+          var vy = (st.bvy[i] * drag) >> 32n;
+          if (vx > MAX_VQ) vx = MAX_VQ; else if (vx < -MAX_VQ) vx = -MAX_VQ;
+          if (vy > MAX_VQ) vy = MAX_VQ; else if (vy < -MAX_VQ) vy = -MAX_VQ;
+
+          var nx = st.bx[i] + ((vx * DT_Q) >> 32n);
+          var ny = st.by[i] + ((vy * DT_Q) >> 32n);
+          if (nx > BOUND_Q) { nx = 2n * BOUND_Q - nx; vx = -((vx * REST_WALL_Q) >> 32n); }
+          else if (nx < -BOUND_Q) { nx = -2n * BOUND_Q - nx; vx = -((vx * REST_WALL_Q) >> 32n); }
+          if (ny > BOUND_Q) { ny = 2n * BOUND_Q - ny; vy = -((vy * REST_WALL_Q) >> 32n); }
+          else if (ny < -BOUND_Q) { ny = -2n * BOUND_Q - ny; vy = -((vy * REST_WALL_Q) >> 32n); }
+          st.bx[i] = nx; st.by[i] = ny; st.bvx[i] = vx; st.bvy[i] = vy;
+        }
+
+        // Elastic collisions (4.2 units min dist -> 4.2 * ONE)
+        var minDist = 18038862643n;
+        var minDistSq = minDist * minDist;
+        for (var a = 0; a < N_ACTORS; a++) {
+          for (var b = a + 1; b < N_ACTORS; b++) {
+            var dx = st.bx[b] - st.bx[a];
+            var dy = st.by[b] - st.by[a];
+            var dSq = dx * dx + dy * dy;
+            if (dSq > 0n && dSq < minDistSq) {
+              var dist = isqrtBig(dSq);
+              var ux = (dx * ONE_Q) / dist;
+              var uy = (dy * ONE_Q) / dist;
+              var sep = (minDist - dist) >> 1n;
+              var sx = (sep * ux) >> 32n;
+              var sy = (sep * uy) >> 32n;
+              st.bx[a] -= sx; st.by[a] -= sy;
+              st.bx[b] += sx; st.by[b] += sy;
+
+              var rvx = st.bvx[b] - st.bvx[a];
+              var rvy = st.bvy[b] - st.bvy[a];
+              var vn = ((rvx * ux) >> 32n) + ((rvy * uy) >> 32n);
+              if (vn < 0n) {
+                var imp = (-vn * 3900000000n) >> 32n;
+                st.bvx[a] -= (imp * ux) >> 32n;
+                st.bvy[a] -= (imp * uy) >> 32n;
+                st.bvx[b] += (imp * ux) >> 32n;
+                st.bvy[b] += (imp * uy) >> 32n;
+                if (a === 0 && st.bfsm[0] !== 1) st.hits += 1;
+              }
+            }
+          }
+        }
+
+        // Player Chrono-Core pickups (deferred respawn)
+        var pickSq = (5n * ONE_Q) * (5n * ONE_Q);
+        for (var c = 0; c < N_CORES; c++) {
+          if (st.cact[c] === 1) {
+            var pdx = st.bx[0] - st.cx[c];
+            var pdy = st.by[0] - st.cy[c];
+            if (pdx * pdx + pdy * pdy <= pickSq) {
+              st.score += 1;
+              st.cact[c] = 0;
+              st.cresp[c] = 90;
+            }
+          } else {
+            st.cresp[c] -= 1;
+            if (st.cresp[c] === 0) {
+              var sp = smNext(st.rng);
+              st.rng = sp[0];
+              var rp = sp[1];
+              st.cx[c] = ((rp & MASK32_Q) - HALF32_Q) * 76n;
+              st.cy[c] = (((rp >> 32n) & MASK32_Q) - HALF32_Q) * 76n;
+              st.cact[c] = 1;
+            }
+          }
+        }
+        st.tick += 1;
+        return { dScore: st.score - prevScore, dHits: st.hits - prevHits };
+      }
+
+      // Arena Runtime & Joule Accounting State
+      var cv = document.getElementById('chrono-canvas');
+      var ctx = cv.getContext('2d');
+      var arenaSeed = 20261122;
+      var arenaSim = createSimFromSeed(arenaSeed);
+      var liveHash = hashSimState(arenaSim);
+      var inputTape = [];
+      var snapshots = [{ tick: 0, sim: cloneSim(arenaSim), hash: liveHash }];
+      var lookaheadOn = true;
+      var playing = false;
+      var rafId = null;
+
+      var batteryUj = 6000.0;
+      var spentFwdUj = 0.0;
+      var spentHellmanUj = 0.0;
+      var spentLandauerUj = 0.0;
+      var spentRewindUj = 0.0;
+
+      var keysDown = {};
+      var pointerVec = null;
+      var wantDashLatch = false;
+      var prevGpButtons = [false, false, false, false];
+
+      function logArena(msg) {
+        var box = document.getElementById('c-log');
+        var div = document.createElement('div');
+        div.textContent = '[t=' + arenaSim.tick + '] ' + msg;
+        box.prepend(div);
+        while (box.children.length > 30) box.removeChild(box.lastChild);
+      }
+
+      function pollInputCommand() {
+        var dx = 0, dy = 0;
+        if (keysDown['ArrowRight'] || keysDown['KeyD']) dx += 1;
+        if (keysDown['ArrowLeft'] || keysDown['KeyA']) dx -= 1;
+        if (keysDown['ArrowUp'] || keysDown['KeyW']) dy += 1;
+        if (keysDown['ArrowDown'] || keysDown['KeyS']) dy -= 1;
+        var dash = wantDashLatch || !!keysDown['ShiftLeft'] || !!keysDown['ShiftRight'] || !!keysDown['Space'];
+        wantDashLatch = false;
+
+        if (pointerVec) {
+          dx = pointerVec.dx;
+          dy = pointerVec.dy;
+        }
+
+        // Poll WebXR / Standard Gamepads (Meta Quest Touch & desktop controllers)
+        if (navigator.getGamepads) {
+          var gps = navigator.getGamepads();
+          for (var gi = 0; gi < gps.length; gi++) {
+            var gp = gps[gi];
+            if (!gp || !gp.connected) continue;
+            document.getElementById('xr-badge').textContent = 'Gamepad Active: ' + gp.id.slice(0, 18);
+            var ax = gp.axes[0] || 0;
+            var ay = -(gp.axes[1] || 0);
+            if (Math.hypot(ax, ay) > 0.24) {
+              dx = ax; dy = ay;
+            }
+            var b0 = !!(gp.buttons[0] && gp.buttons[0].pressed);
+            var b1 = !!(gp.buttons[1] && gp.buttons[1].pressed);
+            var b2 = !!(gp.buttons[2] && gp.buttons[2].pressed);
+            if (b0 && !prevGpButtons[0]) dash = true;
+            if (b1 && !prevGpButtons[1]) triggerRewind();
+            if (b2 && !prevGpButtons[2]) toggleLookahead();
+            prevGpButtons[0] = b0; prevGpButtons[1] = b1; prevGpButtons[2] = b2;
+            break;
+          }
+        }
+
+        var dirCode = 0;
+        if (dx !== 0 || dy !== 0) {
+          var ang = Math.atan2(dy, dx);
+          var oct = Math.round(ang / (Math.PI / 4));
+          dirCode = ((oct % 8) + 8) % 8 + 1;
+        }
+        return (dirCode & 15) | (dash ? 16 : 0);
+      }
+
+      function computeLookaheadBranches(kTicks, baseDir) {
+        // 3 candidate steering branches: Hold (or East if idle), CCW +45 deg, CW -45 deg
+        var dCenter = baseDir > 0 ? baseDir : 3;
+        var dCcw = ((dCenter - 1 + 1) % 8) + 1;
+        var dCw = ((dCenter - 1 + 7) % 8) + 1;
+        var dirs = [dCcw, dCenter, dCw];
+        var branches = [];
+        var oneF = 4294967296.0;
+        for (var b = 0; b < 3; b++) {
+          var ghost = cloneSim(arenaSim);
+          var pts = [[Number(ghost.bx[0]) / oneF, Number(ghost.by[0]) / oneF]];
+          var hitTick = null, pickTick = null;
+          for (var s = 0; s < kTicks; s++) {
+            var ev = stepSimBigInt(ghost, s < 18 ? dirs[b] : 0);
+            if (ev.dHits > 0 && hitTick == null) hitTick = s + 1;
+            if (ev.dScore > 0 && pickTick == null) pickTick = s + 1;
+            if ((s + 1) % 3 === 0 || s === kTicks - 1) {
+              pts.push([Number(ghost.bx[0]) / oneF, Number(ghost.by[0]) / oneF]);
+            }
+          }
+          branches.push({ dir: dirs[b], pts: pts, hitTick: hitTick, pickTick: pickTick });
+        }
+        return branches;
+      }
+
+      function advanceOneTick(explicitCmd) {
+        if (batteryUj <= 0) {
+          playing = false;
+          document.getElementById('b-play').textContent = '▶ Start 60 Hz';
+          logArena('Battery depleted (0 µJ). Reset seed or collect cores earlier.');
+          updateArenaHud();
+          return;
+        }
+        var cmd = explicitCmd != null ? explicitCmd : pollInputCommand();
+        inputTape.push(cmd);
+        var ev = stepSimBigInt(arenaSim, cmd);
+
+        // Forward step joule cost + Hellman lookahead + Landauer branch-discard cost (est_j model)
+        var stepCost = 1.0;
+        batteryUj -= stepCost;
+        spentFwdUj += stepCost;
+
+        if (lookaheadOn && (arenaSim.tick % 6 === 0)) {
+          var k = parseInt(document.getElementById('s-c-look').value, 10) || 48;
+          var hellmanUj = 3 * k * 0.08;
+          var landauerDiscardUj = 2 * k * 0.03; // erasing 2 non-chosen 364-byte speculative branches
+          batteryUj -= (hellmanUj + landauerDiscardUj);
+          spentHellmanUj += hellmanUj;
+          spentLandauerUj += landauerDiscardUj;
+        }
+
+        if (ev.dScore > 0) {
+          var grant = 350.0 * ev.dScore;
+          batteryUj += grant;
+          logArena('Collected Chrono-Core! +' + grant.toFixed(0) + ' µJ grant (score=' + arenaSim.score + ').');
+        }
+        if (ev.dHits > 0) {
+          var drain = 180.0 * ev.dHits;
+          batteryUj -= drain;
+          logArena('Hull collision! −' + drain.toFixed(0) + ' µJ shield dissipation.');
+        }
+        if (batteryUj < 0) batteryUj = 0;
+
+        liveHash = hashSimState(arenaSim);
+        if (arenaSim.tick % 30 === 0) {
+          snapshots.push({ tick: arenaSim.tick, sim: cloneSim(arenaSim), hash: liveHash });
+          if (snapshots.length > 24) snapshots.shift();
+        }
+      }
+
+      function triggerRewind() {
+        if (snapshots.length <= 1 || arenaSim.tick === 0) {
+          logArena('Already at initial causal origin (tick 0).');
+          return;
+        }
+        var targetIdx = Math.max(0, snapshots.length - 5); // ~120 ticks back
+        var snap = snapshots[targetIdx];
+        var dtRew = arenaSim.tick - snap.tick;
+        if (dtRew <= 0) return;
+        var rewCost = 140.0 + dtRew * 0.65;
+        if (batteryUj < rewCost) {
+          logArena('Insufficient battery for Causal Rewind (needs ' + rewCost.toFixed(0) + ' µJ).');
+          return;
+        }
+        batteryUj -= rewCost;
+        spentRewindUj += rewCost;
+        spentLandauerUj += dtRew * 0.25;
+        arenaSim = cloneSim(snap.sim);
+        inputTape.length = snap.tick;
+        snapshots.length = targetIdx + 1;
+        liveHash = snap.hash;
+        logArena('Causal Rewind −' + dtRew + ' ticks → t=' + arenaSim.tick + ' (debited ' + rewCost.toFixed(1) + ' µJ; battery not refunded).');
+        drawArena();
+        updateArenaHud();
+      }
+
+      function toggleLookahead() {
+        lookaheadOn = !lookaheadOn;
+        document.getElementById('b-look').textContent = '🔭 Lookahead: ' + (lookaheadOn ? 'ON (L)' : 'OFF (L)');
+        drawArena();
+      }
+
+      function verifyReplayTape() {
+        var checkSim = createSimFromSeed(arenaSeed);
+        for (var i = 0; i < inputTape.length; i++) {
+          stepSimBigInt(checkSim, inputTape[i]);
+        }
+        var checkHash = hashSimState(checkSim);
+        var match = (checkHash === liveHash) && (checkSim.tick === arenaSim.tick);
+        var auditEl = document.getElementById('c-audit');
+        var subEl = document.getElementById('c-audit-sub');
+        auditEl.textContent = match ? ('PASS · ' + checkSim.tick + 't EXACT') : 'MISMATCH';
+        auditEl.style.color = match ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)';
+        subEl.textContent = 'H=' + checkHash.slice(0, 16) + '…';
+        logArena('Replay verification over ' + checkSim.tick + ' input-tape bytes: ' + (match ? 'PASS (0-bit SHA-256 match)' : 'FAIL'));
+        return { verified: match, seed: arenaSeed, ticks_replayed: checkSim.tick, live_sha256: liveHash, replayed_sha256: checkHash };
+      }
+
+      function resetArena(newSeed) {
+        if (newSeed != null) arenaSeed = newSeed >>> 0;
+        arenaSim = createSimFromSeed(arenaSeed);
+        liveHash = hashSimState(arenaSim);
+        inputTape = [];
+        snapshots = [{ tick: 0, sim: cloneSim(arenaSim), hash: liveHash }];
+        batteryUj = parseFloat(document.getElementById('s-c-bud').value) || 6000;
+        spentFwdUj = 0; spentHellmanUj = 0; spentLandauerUj = 0; spentRewindUj = 0;
+        document.getElementById('c-audit').textContent = 'READY (0-float)';
+        document.getElementById('c-log').innerHTML = '';
+        logArena('Initialized Q32.32 arena (seed=' + arenaSeed + ', battery=' + batteryUj.toFixed(0) + ' µJ).');
+        drawArena();
+        updateArenaHud();
+      }
+
+      function updateArenaHud() {
+        document.getElementById('v-c-seed').textContent = '#' + arenaSeed;
+        var k = parseInt(document.getElementById('s-c-look').value, 10) || 48;
+        document.getElementById('v-c-look').textContent = k + ' ticks (' + (k / 60).toFixed(2) + ' s)';
+        document.getElementById('v-c-bud').textContent = Number(document.getElementById('s-c-bud').value).toLocaleString('en-US') + ' µJ';
+        document.getElementById('c-tick').textContent = arenaSim.tick + ' (' + inputTape.length + ' B)';
+        document.getElementById('c-snaps').textContent = 'Checkpoints saved: ' + snapshots.length;
+        document.getElementById('c-batt').textContent = batteryUj.toFixed(1) + ' µJ';
+        document.getElementById('c-batt').style.color = batteryUj < 800 ? 'var(--color-brand-amber)' : 'var(--color-brand-cyan)';
+        document.getElementById('c-burn').textContent = 'Fwd ' + spentFwdUj.toFixed(0) + ' · Look ' + spentHellmanUj.toFixed(0) + ' · Erase ' + (spentLandauerUj + spentRewindUj).toFixed(0) + ' µJ';
+        document.getElementById('c-score').textContent = arenaSim.score + ' / ' + arenaSim.hits;
+        document.getElementById('c-hash').textContent = liveHash;
+      }
+
+      // Pure visual view lambda(s_t) -> Canvas (GPU/Canvas output never feeds back into arenaSim!)
+      function toPxX(wx) { return (wx / 64.0 * 0.5 + 0.5) * 512.0; }
+      function toPxY(wy) { return (0.5 - wy / 64.0 * 0.5) * 512.0; }
+
+      function drawArena() {
+        var oneF = 4294967296.0;
+        ctx.fillStyle = '#070b14';
+        ctx.fillRect(0, 0, 512, 512);
+
+        // Arena radar rings & grid
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.10)';
+        ctx.lineWidth = 1;
+        for (var g = -48; g <= 48; g += 16) {
+          var gx = toPxX(g), gy = toPxY(g);
+          ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, 512); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(512, gy); ctx.stroke();
+        }
+        [64, 128, 192].forEach(function(radPx){
+          ctx.beginPath(); ctx.arc(256, 256, radPx, 0, Math.PI * 2); ctx.stroke();
+        });
+
+        // Central gravity singularity
+        var grd = ctx.createRadialGradient(256, 256, 2, 256, 256, 36);
+        grd.addColorStop(0, 'rgba(245, 158, 11, 0.85)');
+        grd.addColorStop(0.45, 'rgba(217, 119, 6, 0.25)');
+        grd.addColorStop(1, 'rgba(7, 11, 20, 0)');
+        ctx.fillStyle = grd;
+        ctx.beginPath(); ctx.arc(256, 256, 36, 0, Math.PI * 2); ctx.fill();
+
+        // Hellman 3-branch speculative lookahead fan
+        if (lookaheadOn && batteryUj > 0) {
+          var k = parseInt(document.getElementById('s-c-look').value, 10) || 48;
+          var curCmd = pollInputCommand() & 15;
+          var branches = computeLookaheadBranches(k, curCmd);
+          var cols = ['rgba(167, 139, 250, 0.65)', 'rgba(0, 212, 170, 0.90)', 'rgba(251, 191, 36, 0.65)'];
+          branches.forEach(function(br, idx){
+            ctx.save();
+            ctx.strokeStyle = br.hitTick ? 'rgba(248, 113, 113, 0.85)' : cols[idx];
+            ctx.lineWidth = idx === 1 ? 2.4 : 1.5;
+            ctx.setLineDash(idx === 1 ? [5, 4] : [3, 4]);
+            ctx.beginPath();
+            br.pts.forEach(function(pt, pi){
+              var x = toPxX(pt[0]), y = toPxY(pt[1]);
+              if (pi === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+            var end = br.pts[br.pts.length - 1];
+            ctx.fillStyle = br.pickTick ? '#00d4aa' : (br.hitTick ? '#f87171' : cols[idx]);
+            ctx.beginPath(); ctx.arc(toPxX(end[0]), toPxY(end[1]), 3.5, 0, Math.PI * 2); ctx.fill();
+            ctx.restore();
+          });
+        }
+
+        // Chrono-Core pickups
+        for (var c = 0; c < N_CORES; c++) {
+          if (arenaSim.cact[c] === 0) continue;
+          var cx = toPxX(Number(arenaSim.cx[c]) / oneF);
+          var cy = toPxY(Number(arenaSim.cy[c]) / oneF);
+          ctx.strokeStyle = '#f59e0b';
+          ctx.lineWidth = 2.6;
+          ctx.beginPath(); ctx.arc(cx, cy, 11, 0, Math.PI * 2); ctx.stroke();
+          ctx.fillStyle = 'rgba(245, 158, 11, 0.25)';
+          ctx.beginPath(); ctx.arc(cx, cy, 6, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // Hazard drones (1..7) and Player ship (0)
+        for (var i = N_ACTORS - 1; i >= 0; i--) {
+          var wx = Number(arenaSim.bx[i]) / oneF;
+          var wy = Number(arenaSim.by[i]) / oneF;
+          var px = toPxX(wx), py = toPxY(wy);
+          if (i === 0) {
+            var pCol = arenaSim.bfsm[0] === 1 ? '#f59e0b' : (arenaSim.bfsm[0] === 2 ? '#60a5fa' : '#00d4aa');
+            ctx.fillStyle = pCol;
+            ctx.beginPath(); ctx.arc(px, py, 9.5, 0, Math.PI * 2); ctx.fill();
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          } else {
+            ctx.fillStyle = '#ef4444';
+            ctx.beginPath(); ctx.arc(px, py, 7.5, 0, Math.PI * 2); ctx.fill();
+            ctx.strokeStyle = 'rgba(254, 202, 202, 0.65)';
+            ctx.lineWidth = 1.3;
+            ctx.stroke();
+          }
+        }
+
+        // Canvas overlay status bar
+        ctx.fillStyle = 'rgba(7, 11, 20, 0.76)';
+        ctx.fillRect(8, 8, 496, 24);
+        ctx.fillStyle = '#cbd5e1';
+        ctx.font = '11px "JetBrains Mono", monospace';
+        ctx.fillText('Q32.32 BigInt · t=' + arenaSim.tick + ' · SHA256=' + liveHash.slice(0, 14) + '… · Batt=' + batteryUj.toFixed(0) + 'µJ', 14, 24);
+      }
+
+      function tickLoop() {
+        if (!playing) return;
+        advanceOneTick(null);
+        drawArena();
+        updateArenaHud();
+        rafId = requestAnimationFrame(tickLoop);
+      }
+
+      document.getElementById('b-play').addEventListener('click', function(){
+        playing = !playing;
+        this.textContent = playing ? '⏸ Pause 60 Hz' : '▶ Start 60 Hz';
+        if (playing) tickLoop(); else if (rafId) cancelAnimationFrame(rafId);
+      });
+      document.getElementById('b-step').addEventListener('click', function(){
+        playing = false;
+        document.getElementById('b-play').textContent = '▶ Start 60 Hz';
+        advanceOneTick(null);
+        drawArena();
+        updateArenaHud();
+      });
+      document.getElementById('b-dash').addEventListener('click', function(){
+        wantDashLatch = true;
+        if (!playing) { advanceOneTick(1 | 16); drawArena(); updateArenaHud(); }
+      });
+      document.getElementById('b-look').addEventListener('click', toggleLookahead);
+      document.getElementById('b-rewind').addEventListener('click', triggerRewind);
+      document.getElementById('b-verify').addEventListener('click', verifyReplayTape);
+      document.getElementById('b-reset').addEventListener('click', function(){
+        resetArena(parseInt(document.getElementById('s-c-seed').value, 10));
+      });
+      document.getElementById('s-c-seed').addEventListener('change', function(){
+        resetArena(parseInt(this.value, 10));
+        syncUrl();
+      });
+      document.getElementById('s-c-look').addEventListener('input', function(){
+        updateArenaHud(); drawArena(); syncUrl();
+      });
+      document.getElementById('s-c-bud').addEventListener('input', function(){
+        if (arenaSim.tick === 0) batteryUj = parseFloat(this.value);
+        updateArenaHud(); syncUrl();
+      });
+
+      window.addEventListener('keydown', function(e){
+        if (['INPUT','SELECT','TEXTAREA'].indexOf(document.activeElement && document.activeElement.tagName) !== -1) return;
+        keysDown[e.code] = true;
+        if (e.code === 'KeyL') toggleLookahead();
+        else if (e.code === 'KeyR') triggerRewind();
+        else if (e.code === 'KeyV') verifyReplayTape();
+        else if (e.code === 'KeyP') document.getElementById('b-play').click();
+      });
+      window.addEventListener('keyup', function(e){ keysDown[e.code] = false; });
+
+      function updatePointerVec(ev) {
+        var rect = cv.getBoundingClientRect();
+        var x = ((ev.clientX - rect.left) / rect.width) * 512.0;
+        var y = ((ev.clientY - rect.top) / rect.height) * 512.0;
+        var oneF = 4294967296.0;
+        var sx = toPxX(Number(arenaSim.bx[0]) / oneF);
+        var sy = toPxY(Number(arenaSim.by[0]) / oneF);
+        pointerVec = { dx: x - sx, dy: -(y - sy) };
+      }
+      cv.addEventListener('pointerdown', function(ev){ cv.setPointerCapture(ev.pointerId); updatePointerVec(ev); });
+      cv.addEventListener('pointermove', function(ev){ if (pointerVec) updatePointerVec(ev); });
+      cv.addEventListener('pointerup', function(){ pointerVec = null; });
+      cv.addEventListener('pointercancel', function(){ pointerVec = null; });
+      cv.addEventListener('dblclick', function(){ wantDashLatch = true; });
+
+      // WebXR capability probe (Meta Quest Browser & XR runtimes)
+      if (navigator.xr && typeof navigator.xr.isSessionSupported === 'function') {
+        Promise.all([
+          navigator.xr.isSessionSupported('immersive-vr').catch(function(){ return false; }),
+          navigator.xr.isSessionSupported('inline').catch(function(){ return false; })
+        ]).then(function(res){
+          var vrOk = res[0], inlineOk = res[1];
+          var badge = document.getElementById('xr-badge');
+          if (vrOk || inlineOk) {
+            badge.textContent = vrOk ? 'WebXR VR Ready (Quest)' : 'WebXR Inline Ready';
+            var xrBtn = document.getElementById('b-xr');
+            xrBtn.style.display = 'inline-block';
+            xrBtn.addEventListener('click', function(){
+              var mode = vrOk ? 'immersive-vr' : 'inline';
+              navigator.xr.requestSession(mode).then(function(sess){
+                logArena('WebXR ' + mode + ' session active; polling XR inputSources & gamepads.');
+                sess.addEventListener('end', function(){ logArena('WebXR session ended.'); });
+              }).catch(function(err){
+                logArena('WebXR session note: ' + (err && err.message ? err.message : 'inline canvas active'));
+              });
+            });
+          }
+        });
+      }
+
+      // Wire listeners & URL query-parameter sync
+      ['s-host','s-ckpt','s-hz'].forEach(function(id){ document.getElementById(id).addEventListener('change', function(){ renderH1(true); }); });
       document.getElementById('s-mins').addEventListener('input', function(){ renderH1(true); });
       document.getElementById('f-h2').addEventListener('change', function(){ renderH2(true); });
       ['s-logd0','s-lam'].forEach(function(id){ document.getElementById(id).addEventListener('input', function(){ renderH2(true); }); });
+      ['s-gpu-pair','s-gpu-tick'].forEach(function(id){ document.getElementById(id).addEventListener('change', function(){ renderH3(true); }); });
+      ['s-gate-psnr','s-gate-ssim'].forEach(function(id){ document.getElementById(id).addEventListener('input', function(){ renderH3(true); }); });
 
       var qs = new URLSearchParams(window.location.search);
+      if (qs.get('host')) document.getElementById('s-host').value = qs.get('host');
       if (qs.get('ckpt') && CKPTS[qs.get('ckpt')]) document.getElementById('s-ckpt').value = qs.get('ckpt');
       if (qs.get('mins')) document.getElementById('s-mins').value = qs.get('mins');
       if (qs.get('hz')) document.getElementById('s-hz').value = qs.get('hz');
       if (qs.get('h2')) document.getElementById('f-h2').value = qs.get('h2');
       if (qs.get('logd0')) document.getElementById('s-logd0').value = qs.get('logd0');
       if (qs.get('lam')) document.getElementById('s-lam').value = qs.get('lam');
+      if (qs.get('gpu_pair')) document.getElementById('s-gpu-pair').value = qs.get('gpu_pair');
+      if (qs.get('gpu_tick')) document.getElementById('s-gpu-tick').value = qs.get('gpu_tick');
+      if (qs.get('lookahead')) document.getElementById('s-c-look').value = qs.get('lookahead');
+      if (qs.get('budget_uj')) document.getElementById('s-c-bud').value = qs.get('budget_uj');
+      if (qs.get('seed')) document.getElementById('s-c-seed').value = qs.get('seed');
+
       renderH1(false);
       renderH2(false);
+      renderH3(false);
+      resetArena(parseInt(document.getElementById('s-c-seed').value, 10) || 20261122);
 
+      // Programmatic Living Lab API
       window.openieLivingLab = {
         studyId: 'game-engines',
         inspectGeH1Replay: function(opts){
+          if (opts && opts.host) document.getElementById('s-host').value = String(opts.host);
           if (opts && opts.ckpt && CKPTS[String(opts.ckpt)]) document.getElementById('s-ckpt').value = String(opts.ckpt);
           if (opts && opts.mins != null) document.getElementById('s-mins').value = String(opts.mins);
           if (opts && opts.hz != null) document.getElementById('s-hz').value = String(opts.hz);
@@ -376,6 +1563,42 @@
           if (opts && opts.log10_delta0 != null) document.getElementById('s-logd0').value = String(opts.log10_delta0);
           if (opts && opts.lambda != null) document.getElementById('s-lam').value = String(opts.lambda);
           return renderH2(true);
+        },
+        inspectGeH3CrossGpu: function(opts){
+          if (opts && opts.pair_index != null) document.getElementById('s-gpu-pair').value = String(opts.pair_index);
+          if (opts && opts.tick != null) document.getElementById('s-gpu-tick').value = String(opts.tick);
+          if (opts && opts.gate_psnr_db != null) document.getElementById('s-gate-psnr').value = String(opts.gate_psnr_db);
+          if (opts && opts.gate_ssim != null) document.getElementById('s-gate-ssim').value = String(opts.gate_ssim);
+          return renderH3(true);
+        },
+        stepChronoArena: function(opts){
+          var steps = (opts && opts.steps) ? Math.min(600, Math.max(1, opts.steps | 0)) : 1;
+          var cmd = (opts && opts.cmd != null) ? (opts.cmd & 31) : 1;
+          for (var i = 0; i < steps; i++) advanceOneTick(cmd);
+          drawArena(); updateArenaHud();
+          return this.getChronoArenaState();
+        },
+        rewindChronoArena: function(){
+          triggerRewind();
+          return this.getChronoArenaState();
+        },
+        verifyChronoReplay: function(){
+          return verifyReplayTape();
+        },
+        getChronoArenaState: function(){
+          return {
+            seed: arenaSeed,
+            tick: arenaSim.tick,
+            live_sha256: liveHash,
+            score: arenaSim.score,
+            hits: arenaSim.hits,
+            battery_uj: +batteryUj.toFixed(2),
+            spent_forward_uj: +spentFwdUj.toFixed(2),
+            spent_hellman_lookahead_uj: +spentHellmanUj.toFixed(2),
+            spent_landauer_discard_uj: +spentLandauerUj.toFixed(2),
+            spent_rewind_uj: +spentRewindUj.toFixed(2),
+            input_tape_bytes: inputTape.length
+          };
         }
       };
 
@@ -384,12 +1607,13 @@
         [
           {
             name: 'inspect_game_engines_ge_h1',
-            title: 'Inspect GE-H1 5-target 100,000-tick replay and L3 reported_j',
-            description: 'Returns canonical SHA-256 checkpoints and L3 reported_j scaling across Rust, C++20, WebAssembly, Node BigInt, and Python 3.13.',
+            title: 'Inspect Multi-ISA GE-H1 100,000-tick Q32.32 replay & L3/L2 reported_j',
+            description: 'Returns canonical SHA-256 checkpoints and reported_j across 25 cells on arm64 macOS, aarch64 Linux, and AMD/Intel x86_64 Linux.',
             inputSchema: {
               type: 'object',
               properties: {
-                ckpt: { type: 'number', enum: [1000, 10000, 25000, 50000, 75000, 100000] },
+                host: { type: 'string', enum: ['all', 'apple_m5_max_arm64_macos', 'apple_m3_ultra_arm64_macos', 'amd_zen5_x86_64_linux', 'intel_rpl_x86_64_linux', 'nvidia_thor_aarch64_linux'] },
+                ckpt: { type: 'number', enum: [100, 1000, 10000, 25000, 50000, 75000, 100000] },
                 mins: { type: 'number', minimum: 5, maximum: 240 },
                 hz: { type: 'number', enum: [60, 120, 240] }
               },
@@ -400,12 +1624,12 @@
           },
           {
             name: 'inspect_game_engines_ge_h2',
-            title: 'Inspect GE-H2 floating-point divergence horizons and Lyapunov cascade',
-            description: 'Filters the 10 tested 25,000-tick floating-point comparisons and computes t* = (1/lambda) ln(1/delta_0).',
+            title: 'Inspect Cross-ISA GE-H2 floating-point divergence horizons',
+            description: 'Filters 16 multi-ISA and single-host 25,000-tick float comparisons (Apple libm vs GNU glibc, x86_64 FMA vs arm64 fmadd).',
             inputSchema: {
               type: 'object',
               properties: {
-                filter: { type: 'string', enum: ['all', 'strict', 'diverged'] },
+                filter: { type: 'string', enum: ['all', 'cross_isa', 'strict', 'diverged'] },
                 log10_delta0: { type: 'number', minimum: -16, maximum: -3 },
                 lambda: { type: 'number', minimum: 0.05, maximum: 3.0 }
               },
@@ -413,6 +1637,41 @@
             },
             execute: function(inp){ return window.openieLivingLab.inspectGeH2Divergence(inp || {}); },
             annotations: { readOnlyHint: true }
+          },
+          {
+            name: 'inspect_game_engines_ge_h3_gpu',
+            title: 'Inspect Cross-GPU GE-H3 wgpu (Metal / Vulkan) rendering tolerance',
+            description: 'Returns pairwise PSNR, SSIM, differing pixel %, and RGBA8 SHA-256 across Apple Metal, AMD RADV, Intel ANV, and NVIDIA Vulkan.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                pair_index: { type: 'number', minimum: 0, maximum: 8 },
+                tick: { type: 'number', enum: [0, 250, 1000, 10000] },
+                gate_psnr_db: { type: 'number', minimum: 35, maximum: 75 },
+                gate_ssim: { type: 'number', minimum: 0.99, maximum: 0.99999 }
+              },
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.inspectGeH3CrossGpu(inp || {}); },
+            annotations: { readOnlyHint: true }
+          },
+          {
+            name: 'step_and_verify_chrono_arena',
+            title: 'Step Q32.32 Chrono-Budget Arena & verify deterministic SHA-256 replay',
+            description: 'Steps the zero-float BigInt simulation with joule-budgeted Hellman lookahead and verifies input-tape SHA-256 replay.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                steps: { type: 'number', minimum: 1, maximum: 600 },
+                cmd: { type: 'number', minimum: 0, maximum: 31 }
+              },
+              additionalProperties: false
+            },
+            execute: function(inp){
+              window.openieLivingLab.stepChronoArena(inp || {});
+              return window.openieLivingLab.verifyChronoReplay();
+            },
+            annotations: { readOnlyHint: false }
           }
         ].forEach(function(t){ try { Promise.resolve(mc.registerTool(t)).catch(function(){}); } catch(_e){} });
       }

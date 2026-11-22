@@ -1,21 +1,1246 @@
 ---
-title: "RCE-JEPA: programação do mundo com JEPA como premissa"
-deck: "RCE-JEPA (RCE é o Reality Code Engine; JEPA é uma Joint Embedding Predictive Architecture) mantém seu nome para que o trabalho continue localizável. O tema é World Coding. JEPA é a premissa: um modelo aprendido prevê um resumo compacto de um programa em vez de escrever o próximo fragmento de texto. Um Mundo de Código é o espaço de Formas canônicas de programa somado às regras exatas de transição e aceitação (as Leis da Programação). O posto de proponente aceita qualquer modelo aprendido; o verificador decide. Os pisos medidos são uma razão mediana de comprimento de descrição de 9.34 em 185 programas escritos à mão, 0 violações de invariantes entre 1,275 mutantes difusos, 0 divergências de reprodução em 10,500 fluxos em seis alvos, e uma escada determinística que fechou 111 de 151 tarefas (73.5%) com zero chamadas a modelo, deixando 40. Nenhum proponente aprendido foi treinado e H15 segue inacabado."
+title: "RCE-JEPA: Codificação do Mundo, com JEPA como Premissa"
+deck: "RCE-JEPA (RCE é o Reality Code Engine; JEPA é uma Joint Embedding Predictive Architecture) mantém seu nome para que o trabalho permaneça localizável. O tema é a Codificação do Mundo. JEPA é a premissa: um modelo aprendido prevê um resumo compacto de um programa em vez de escrever o próximo fragmento de texto. Um Mundo de Código é o espaço das Formas canônicas de programas mais as regras exatas de transição e aceitação (as Leis da Codificação). O slot do propositor é qualquer modelo aprendido. O verificador decide. As hipóteses H1 a H15 são enunciadas no artigo. Os resultados medidos cobrem agora H1 (razão mediana de comprimento de descrição 9,34 sobre 185 programas escritos à mão), H2 (razão de energia verificador-modelo 0,000582, ou 1.718 vezes mais barato no Apple M5 Max em `reported_j` de núcleo em chip), H7 braço fuzzing (0 violações de invariante entre 1.275 mutantes), H8 (0 discrepâncias de replay em 10.500 fluxos em seis alvos), H14 (escada determinística fechando 111 de 151 tarefas, 73,5%, com zero chamadas ao modelo, deixando 40 tarefas residuais), H15 mais Shape D Gear-0 sobre essas 40 tarefas residuais (17/40 a 34/40 em seis propositores prontos para uso, 22/40 em k=1 e 27/40 em k=16 para o primeiro propositor de reparo FormJEPA-v1 treinado com propósito específico, com 8,42M de parâmetros, a 58,65 mJ / 474,76 mJ de `reported_j` de núcleo em chip, 34/40 replay Gear-0 a 0 chamadas e 0,325 microssegundos por consulta, e 8,70 vezes menos chamadas à fronteira sob um fluxo Zipf de 3 Engrenagens), e a auditoria de promoção de nível f do rce repair rung de 151 tarefas (3/119 = 2,5% > 2,0%, 0 contradições, mantendo o nível f em modo de observação). A síntese completa de intenção para Forma (H3), o ranqueamento de energia multi-termo calibrado (H5, H11) e a energia medida por medidor externo de parede (`measured_j`) permanecem em aberto."
 lang: "pt"
 source: "rce-jepa"
-complete: false
+complete: true
 ---
 
-<div id="abstract" class="anchor-alias" aria-hidden="true"></div>
+<div id="rce-jepa-world-coding-with-jepa-as-premise" class="anchor-alias" aria-hidden="true"></div>
 
-## Resumo
+**Status.** Este artigo apresenta uma tese, quinze hipóteses (H1 a H15), seis falsificadores e um programa de trabalho. Seus resultados medidos agora cobrem os pisos determinísticos da Fase 0 (o corpus Form e H1, o braço adversarial fuzzed de H7, os fluxos de determinismo de seis alvos de H8, e a escada de reparo determinístico de H14), a razão local Apple M5 Max verificador‑versus‑modelo `reported_j` **H2** (`C_check / E_model = 0.000582 <= 0.05`, `1,718` vezes mais barato), o **H15** de seis propositores prontos‑para‑uso mais o benchmark de cristalização Gear-0 mapeado em memória através das **40 tarefas residuais abertas** (`17/40` a `34/40` admitidas; reprodução Gear-0 `34/40` com `0` chamadas de modelo e `0.325 µs` por consulta), o primeiro proponente latente treinado para propósito de reparo Form JEPA **`FormJEPA-v1`** (`8.42M` parâmetros treináveis sobre S‑expressões Form disjuntas, admitindo `177/200` defeitos sintéticos retidos, fechando `22/40` em `k = 1` e `27/40` em `k = 16` nas 40 tarefas residuais a `58.65 mJ` / `474.76 mJ` no núcleo on‑chip `reported_j`, e reduzindo chamadas de fronteira recorrentes `Zipf(0.85)` de `200` para `23`, `8.70×`, em uma Cascata de 3‑Gear), e a auditoria de promoção pré‑registrada de 151‑tarefas **`rce repair` degrau `f`** (`3/119 = 2.5% > 2.0%` de participação estocástica, `3/3` aprovando `W-MUT-1`, `0` contradições, confirmando que o degrau `f` permanece em modo `observe`). Divulgação honesta: síntese completa intenção‑para‑Form (H3), paridade joule de ponta a ponta (H4), classificação de energia multitermo calibrada (H5, H11; distância latente não calibrada atinge área sob a curva ROC (AUROC) `0.618` e `36.0%` de monotonicidade em 5 passos), codificação de referência‑app (H6), predição de tabela de custos (H9), economia de dados por quociente (H10), calibração de cabeça de decisão (H12), planejamento de longo horizonte discreto‑versus‑contínuo (H13), braços H15 de difusão/evolutivo, e o medidor de parede externo `measured_j` permanecem abertos. JEPA é a premissa: prever um resumo de significado, não o texto superficial. O assunto é World Coding, qualquer proponente aprendido sobre Forms, com as Leis de Coding como regra de aceitação. A metade decisória (portão de commit, replay exato, projeção e unidades de custo inteiro) é descrita em [the RCE paper](/papers/rce/); este artigo trata do proponente: um modelo aprendido que orienta a busca sobre Forms enquanto o motor renderiza cada alvo. Qualquer modelo no loop, hospedado ou local, apenas propõe, e a segurança nunca depende dele.
 
-Este artigo enuncia uma tese, hipóteses (H1 a H15), falseadores e um programa de trabalho; os resultados relatados são as medições da Fase 0 que não exigem proponente aprendido (o corpus de Formas, o espaço de Formas sem nomes, os fluxos de determinismo e as Formas adversariais), e nenhum resultado de proponente aprendido é relatado porque nenhum foi treinado. JEPA é a premissa: prever um resumo do significado, não o texto de superfície. O tema é World Coding, qualquer proponente aprendido sobre Formas tendo as Leis da Programação como regra de aceitação. A metade decisória (porta de confirmação, reprodução exata, projeção e custo contado em unidades inteiras com estimativas de energia rotuladas `est_j`) é descrita em [O Reality Code Engine](/papers/rce/); qualquer modelo no laço apenas propõe e a segurança nunca depende dele.
+![Pipeline: stated intent goes to any learned proposer, with JEPA shown, a decoder proposes candidate program forms ranked by energy score, a deterministic checker accepts or names the broken rule, and accepted forms go to the engine for exact replay, proofs, code in other languages and placement](/figures/rce-jepa/pipeline.svg)
+
+*Figura 1. O pipeline proposto. Qualquer proponente aprendido mapeia a intenção declarada para um programa candidato. JEPA, que prediz em um espaço latente, é a instância desenhada. Um decodificador transforma essa proposta em programas candidatos na forma fixa e os classifica por uma pontuação de energia (menor indica ajuste melhor). Um verificador determinístico aceita cada candidato ou relata que ele requer mudança, e devolve a regra violada para reclassificação. Tudo dentro da caixa tracejada é aprendido e não confiável; somente programas aceitos chegam ao motor. Contadores locais Apple M5 Max são registrados estritamente como `reported_j` (`measured_j = None`, `board_metered = false`), e a energia do servidor remoto em nuvem é registrada como `not_available`..*
 
 **Em palavras simples**
 
-1. O tema é World Coding. Um Mundo de Código é o espaço de Formas de programa mais regras exatas para o próximo estado e para o que é aceito (as Leis da Programação). JEPA é a premissa, não o método inteiro: prever um resumo de significado em vez da próxima palavra de código.
-2. O modelo propõe e o verificador decide. Decodificadores treinados em rastros, difusão, aprendizado por reforço dentro de um verificador de provas, busca evolutiva, aprendizado de bibliotecas e decodificação restrita podem ocupar esse espaço sem alterar a porta nem a segurança.
-3. Os pisos medidos permanecem rotulados e o trabalho inacabado continua declarado como inacabado: razão mediana de comprimento de descrição de 9.34 em 185 programas escritos à mão, 0 invariantes quebrados em 1,275 mutantes aceitos, reprodução idêntica em 10,500 fluxos em seis alvos e 111 de 151 tarefas (73.5%) fechadas com zero chamadas a modelo. Nenhum proponente aprendido foi treinado e nenhuma contagem em joules é inventada.
+1. O assunto é World Coding. Um World of Code é o espaço de Formas de programa, mais regras exatas para o próximo estado e para o que é aceito (as Leis da Codificação). JEPA é a premissa, não todo o método: prever um resumo de significado ao invés da próxima palavra de código. IA (inteligência artificial) aqui significa qualquer proponente aprendido, não uma arquitetura específica.
+2. O modelo propõe e o verificador decide. Decodificadores treinados por rastreamento, difusão, aprendizado por reforço dentro de um verificador de provas, busca evolutiva, aprendizado de bibliotecas e decodificação restrita podem ocupar esse slot. O portão não muda quando o proponente muda. A segurança não depende de o proponente estar correto.
+3. Pisos medidos e benchmarks residuais permanecem estritamente rotulados. Em mais de 185 programas escritos à mão, a razão mediana de comprimento de descrição é 9.34 (H1); no Apple M5 Max no commit `1762fb4b`, verificar uma Forma custa `49.04 mJ` contra `84.25 J` por geração local de candidato 35B (`1,718×` mais barato, sustentando H2); verificações fuzz encontraram 0 invariantes quebradas em 1,275 mutantes aceitos (H7); replay coincidiu em 10,500 fluxos em seis alvos (H8); e a escada determinística fechou 111 de 151 tarefas (73.5%) sem chamadas ao modelo, deixando 40 tarefas de história real (H14). Entre essas 40 tarefas residuais (H15), proponentes de nuvem e locais prontos‑para‑uso admitem `17/40` a `34/40` em `k = 1`, o primeiro proponente de reparo latente Form JEPA treinado para propósito (`FormJEPA-v1`, `8.42M` parâmetros treináveis, sem sobreposição de tarefa) admite `22/40` em `k = 1` e `27/40` em `k = 16` (`58.65 mJ` / `474.76 mJ` no núcleo on‑chip `reported_j`; `177/200` em defeitos sintéticos disjuntos), e combinar **Gear 0 (`DNULLMM1`) → Gear 1 (`FormJEPA-v1`) → Gear 2 (`Opus 5.5`)** reduz chamadas de fronteira recorrentes `Zipf(0.85)` de `200` para `23` (`8.70×`). A síntese de biblioteca padrão multi‑módulo aberta ainda requer proponentes de fronteira Gear‑2, o degrau `rce repair` `f` permanece em modo `observe` (`3/119 = 2.5% > 2.0%`, `0` contradições), e nenhuma leitura externa de medidor de parede (`measured_j`) é reivindicada.
 
-*Texto completo em inglês: [/papers/rce-jepa/](/papers/rce-jepa/).*
+<div id="principles" class="anchor-alias" aria-hidden="true"></div>
+
+## Princípios
+
+- O modelo apenas propõe.
+- O verificador decide.
+- A segurança nunca depende do modelo.
+- Nenhum modelo é executado dentro do próprio loop da cadeia de ferramentas do Reality Code Engine.
+- Cada forma de programa aceita é reproduzível bit a bit.
+- Qualquer modelo de decisão, hospedado ou local, é apenas um proponente fora do portão.
+- Determinístico primeiro. A primeira regra da automação é ter um processo manual que funciona: uma escada de proponentes exatos e determinísticos roda antes de qualquer modelo, e o modelo age apenas sobre o que essa escada deixa aberto (declarado na seção de proponentes abaixo).
+
+<div id="terms-heading" class="anchor-alias" aria-hidden="true"></div>
+
+## Termos e acrônimos utilizados nesta página
+
+Listados aqui para que cada um seja definido antes de ser usado. Siglas que aparecem apenas dentro de entradas de referência (locais, séries de relatórios) não são listadas.
+
+<ul id="terms">
+<li>AGX: linha Jetson AGX da NVIDIA de computadores embarcados</li>
+<li>AILANG: uma linguagem de programação para código escrito por IA (nome de projeto)</li>
+<li>AIME: Exame Americano de Matemática Convite</li>
+<li>AI: inteligência artificial</li>
+<li>AIXI: modelo teórico de Hutter de um agente universalmente inteligente</li>
+<li>AMD: Advanced Micro Devices</li>
+<li>ANDF: Formato de Distribuição Neutra de Arquitetura</li>
+<li>API: interface de programação de aplicações</li>
+<li>ARC: Corpus de Abstração e Raciocínio, o conjunto de tarefas usado pela medida de Chollet e pelo Prêmio ARC</li>
+<li>AST: árvore sintática abstrata</li>
+<li>AUROC: área sob a curva característica de operação do receptor</li>
+<li>BLAKE3: função hash criptográfica</li>
+<li>BLEU: avaliação bilíngue de sobreposição de texto</li>
+<li>CALM: consistência como monotonicidade lógica</li>
+<li>CEGIS: síntese indutiva guiada por contraexemplo</li>
+<li>CPU: unidade central de processamento</li>
+<li>CUDA: plataforma de programação GPU da NVIDIA</li>
+<li>CWM: Modelo de Mundo de Código, um modelo de código de pesos abertos treinado em parte com rastros de execução</li>
+<li>Dafny: linguagem de programação na qual especificações e provas convivem ao lado do código</li>
+<li>DBOS: sistema de execução durável (nome de projeto)</li>
+<li>DIR: caminho de diretório fornecido a um comando</li>
+<li>DNULLMM1: formato de armazenamento de tabela hash mapeada em memória binária de endereçamento aberto (cabeçalho de 64 bytes mais slots de 48 bytes)</li>
+<li>EB-JEPA: biblioteca JEPA baseada em energia (nome de projeto)</li>
+<li>ECE: erro de calibração esperado</li>
+<li>e-graph: grafo de igualdade, uma estrutura que contém muitos programas equivalentes</li>
+<li>EMA: média móvel exponencial</li>
+<li>EWD: a série numerada de manuscritos de Edsger W. Dijkstra</li>
+<li>ESBMC: verificador de modelo limitado baseado em SMT eficiente</li>
+<li>FAIR: grupo Fundamental AI Research da Meta</li>
+<li>GELU: função de ativação Gaussian error linear unit</li>
+<li>GPT: transformer generativo pré-treinado, família de modelos da OpenAI</li>
+<li>GPU: unidade de processamento gráfico</li>
+<li>GRPO: a atualização de aprendizado por reforço denominada coupled-GRPO no relatório DiffuCoder</li>
+<li>GSM8K: conjunto de problemas de palavras de matemática escolar usado pelo LLM-JEPA</li>
+<li>HVM2: modelo de computação de combinador de interação da Higher Order Company</li>
+<li>IBM: International Business Machines</li>
+<li>ICOT: Instituto para Tecnologia Computacional de Nova Geração (Japão)</li>
+<li>IEEE: Institute of Electrical and Electronics Engineers</li>
+<li>JACM: Journal of the ACM (Association for Computing Machinery)</li>
+<li>LCM: Large Concept Model, um modelo que prevê em um espaço de incorporação de sentenças ao invés de tokens</li>
+<li>LHS: lado esquerdo de um rastreamento de evento de exemplo</li>
+<li>LLM: modelo de linguagem grande</li>
+<li>MBPP: conjunto curto de problemas Python nomeado no relatório de decodificação com restrição de tipo</li>
+<li>MDE: engenharia dirigida por modelo</li>
+<li>METR: o grupo que relatou o ensaio de produtividade de desenvolvedores início de 2025 (Becker et al.)</li>
+<li>MLA: atenção latente multi-cabeça</li>
+<li>MLIPS: milhões de inferências lógicas por segundo</li>
+<li>MLIR: representação intermediária de múltiplos níveis</li>
+<li>MLP: perceptron multicamadas</li>
+<li>MoE: mistura de especialistas</li>
+<li>MPC: controle preditivo de modelo, planejamento por rollouts curtos repetidos</li>
+<li>NAIL: uma linguagem de programação em forma canônica (nome de projeto)</li>
+<li>NVIDIA: fabricante de GPUs</li>
+<li>OMG: Object Management Group</li>
+<li>PAR: reparo automático de programas baseado em padrões</li>
+<li>PID: identificador de processo no sistema operacional</li>
+<li>POSIX: Interface Portável de Sistema Operacional</li>
+<li>PTX: conjunto de instruções de execução paralela de threads da NVIDIA</li>
+<li>RAND RM: memorando de pesquisa da RAND Corporation</li>
+<li>RAPL: contadores de energia de limite médio de energia em execução da Intel</li>
+<li>README: arquivo de documentação da página inicial de um repositório</li>
+<li>RF: rótulo de regra de degrau externo de proposta na especificação RCE</li>
+<li>RFC: solicitação de comentários, documento de padrões da Internet</li>
+<li>RISC-V: arquitetura aberta de computador de conjunto reduzido de instruções</li>
+<li>RJ-F: rótulo de falsificador da premissa RCE-JEPA</li>
+<li>RL: aprendizado por reforço</li>
+<li>SAT: satisfiabilidade booleana</li>
+<li>SATB: telemetria e disciplina de harness do Satiation Benchmark</li>
+<li>SFT: ajuste fino supervisionado</li>
+<li>SHA-256: algoritmo de hash seguro com digest de 256 bits</li>
+<li>SMC: Controlador de Gerenciamento de Sistema</li>
+<li>SoC: sistema-em-chip</li>
+<li>SONAR: o espaço de incorporação de sentenças usado por Grandes Modelos de Conceito, abrangendo 200 idiomas</li>
+<li>STAN-CS: série de relatórios técnicos de ciência da computação de Stanford</li>
+<li>STOP: otimizador autodidata</li>
+<li>SUT: sistema sob teste</li>
+<li>SWE-bench: um benchmark de problemas reais de repositórios. SWE-bench Verified é um subconjunto revisado no qual vários relatórios de código fornecem uma métrica pass@1</li>
+<li>TOPLAS: ACM Transactions on Programming Languages and Systems</li>
+<li>UNCOL: linguagem universal orientada a computadores</li>
+<li>USD: dólares dos Estados Unidos</li>
+<li>VAX: computadores de extensão de endereço virtual da Digital Equipment Corporation</li>
+<li>Verus: um verificador para um subconjunto de Rust</li>
+<li>VICReg: regularização de variância-invariância-covariância</li>
+<li>XML: linguagem de marcação extensível</li>
+</ul>
+
+<div id="outline" class="anchor-alias" aria-hidden="true"></div>
+
+## Como esta página está organizada
+
+A página deve ser lida de cima para baixo. Após as hipóteses e falsificadores em visão geral, ela contém estas partes, nesta ordem:
+
+1. O que já existe, e sobre o que trata esta página (a seção do proponente)
+2. A tese, em cinco partes: Parte 1, computação como um sistema de informação finito; Parte 2, compressão em Forma e modelo; Parte 3, cinemática; Parte 4, um modelo de mundo cuja física é conhecida exatamente; Parte 5, consequências como previsões testáveis
+3. Convergência por compromisso
+4. Seção 1. História: setenta anos de “diga o que quiser, obtenha o programa”
+5. Seção 2. Por que as tentativas anteriores estagnaram
+6. Seção 3. Três vias para um Mundo de Código: treinamento, híbridos e reconcepções da computação
+7. Seção 4. Por que agora
+8. Seção 5. JEPA como premissa, e onde ele termina
+9. Seção 6. O slot do proponente é neutro em relação à arquitetura
+10. Seção 7. Um Mundo de Código
+11. Seção 8. Um exemplo concreto: o Reality Code Engine, com a tabela de hipóteses e os falsificadores
+12. Status e referências
+
+<div id="hypotheses-overview" class="anchor-alias" aria-hidden="true"></div>
+
+## Hipóteses em síntese
+
+A página testa quinze hipóteses, H1 a H15, listadas aqui na íntegra antes de qualquer discussão. Cada uma é apresentada com sua métrica e limites em uma tabela na [Seção 8](#hypotheses), seguida pelos falsificadores RJ-F1 a RJ-F6.
+
+1. H1. O espaço de Formas é muito menor que o espaço de origem para os mesmos programas. (Apoiado em 185 programas escritos à mão: mediana rho 9.34.)
+2. H2. O verificador é barato em relação à geração. (Apoiado no Apple M5 Max em `reported_j`: `C_check / E_model = 0.000582 <= 0.05`, `1,718×` mais barato.)
+3. H3. A predição no espaço de representação atinge aceitação útil.
+4. H4. A energia por programa aceito diminui.
+5. H5. O ranking de energia concentra massa em Formas válidas. (Distância latente não calibrada `FormJEPA-v1` atinge AUROC `0.618`, inconclusivo; cabeça multi‑termo calibrada aberta.)
+6. H6. Os aplicativos de referência são codificáveis como Formas.
+7. H7. A segurança não depende do modelo. (Braço fuzzado medido: 0 violações em 1,275 mutantes.)
+8. H8. Cada Forma aceita reproduz-se deterministicamente. (Apoiado em 10,500 fluxos em seis alvos: 0 incompatibilidades.)
+9. H9. O custo é previsto antes da execução.
+10. H10. Aprender no quociente (Formas canônicas) economiza dados de treinamento.
+11. H11. A energia é monótona em relação à distância de edição. (Pontuação de edição definida manualmente `76.8% < 80%`; distância latente não calibrada `FormJEPA-v1` aumenta ao longo das distâncias `0..4` com cadeias de 5 passos `36.0%` estritamente monótonas; cabeça calibrada aberta.)
+12. H12. A cabeça de decisão é calibrada nos resultados dos portões.
+13. H13. Um plano latente discreto supera um plano contínuo em sequências longas de edição.
+14. H14. Uma escada determinística pública de propositores exatos fecha uma parcela mensurável de um conjunto de tarefas registradas sem chamadas ao modelo, e essa parcela é a linha de base que o propositor aprendido deve superar no residual. (Apoiado: 111 de 151 tarefas, 73.5%, deixando 40 tarefas abertas.)
+15. H15. Classes de propositores são comparadas no residual de 40 tarefas sob um orçamento pareado, ao lado da cristalização Gear-0 e da Cascata 3‑Gear. Avaliado em seis propositores de nuvem/local prontos‑para‑uso (`17/40` a `34/40` em `k = 1`), `FormJEPA-v1` treinado especificamente (`22/40` em `k = 1`, `27/40` em `k = 16`), e replay Gear-0 Shape D (`DNULLMM1`) (`34/40` em `0` chamadas; redução de `8.70×` nas chamadas de fronteira 3‑Gear em `Zipf(0.85)`); difusão e braços evolutivos permanecem abertos.
+
+<div id="falsifiers-overview" class="anchor-alias" aria-hidden="true"></div>
+
+## Falsificadores em síntese
+
+Seis observações que invalidariam parte da premissa, declaradas integralmente na Seção 8 após as hipóteses que testam.
+
+1. RJ-F1. A cobertura de elevação estabiliza abaixo de 80% em qualquer das cinco línguas‑alvo.
+2. RJ-F2. Redigir as especificações de intenção para as aplicações de referência custa mais do que escrever seus Formulários manualmente.
+3. RJ-F3. H3 falha enquanto o braço de token passa no mesmo portão.
+4. RJ-F4. H11 falha e a busca não alcança Formulários aceitos dentro do orçamento de feixe.
+5. RJ-F5. A calibração da cabeça de decisão nunca supera uma tabela de frequência sobre hashes de forma.
+6. RJ-F6. Um modelo treinado em espaço de token a partir de rastros fecha o residual de 40 tarefas com energia igual e aceitação de portão igual, sem uso do quociente de Formulário.
+
+<div id="proposer" class="anchor-alias" aria-hidden="true"></div>
+
+## O que já existe e sobre o que trata esta página
+
+O Reality Code Engine contém, em seu verificador de referência pública e no design de seu motor, a metade do problema que decide. Seu artigo público, [The Reality Code Engine](/papers/rce/), descreve o design dessa metade: um portão de commit que verifica cada candidato na entrada, replay exato (o estado de execução é uma dobra à esquerda da função de transição sobre o log), projeção de um Form para outras linguagens e contabilidade de custo inteiro (`est_j`), mantida estritamente separada das leituras de contadores do sistema operacional ou do chip (`reported_j`, primeiro registrado no Apple M5 Max no commit `1762fb4b`) e das leituras externas de medidor de parede (`measured_j`, das quais nenhuma existe para RCE). Os teoremas centrais são verificados em Lean 4, um assistente de prova (`5,537` constantes de teorema de kernel em `64` módulos no `1762fb4b`), e a especificação e a biblioteca Lean são públicas. Esta página cita desse artigo apenas o registro público de sua execução de modelo-propositor e trata o restante como contexto de design.
+
+**Esta página trata do propositor:** a parte aprendida que sugere qual Form tentar. O verificador, o replay e as projeções para outras linguagens são código público, e o portão do motor e sua contabilidade `est_j` são designs especificados; a Seção 8 abaixo relata agora tanto o benchmark pronto‑para‑uso de seis modelos quanto a cristalização mapeada em memória Gear-0 e o primeiro propositor de reparo latente Form JEPA treinado para propósito (`FormJEPA-v1`, `8.42M` parâmetros treináveis sobre S‑expressões canônicas Form disjuntas, admitindo `177/200` defeitos sintéticos Form retidos e `27/40` tarefas residuais abertas em sub‑joule core `reported_j`), enquanto a síntese completa de intenção‑para‑Form, o ranking energético calibrado de múltiplos termos e a cabeça de decisão porta‑recebimento permanecem em aberto.
+
+<div id="ladder" class="anchor-alias" aria-hidden="true"></div>
+
+### Determinismo em primeiro lugar: a escada sob o propositor
+
+A primeira regra da automação é ter um processo manual que funcione. O que o RCE-JEPA propõe faz sentido apenas sobre uma variante manual da tarefa, ou uma variante automatizada determinística, que já funciona; um proponente aprendido é adicionado a isso, nunca o substitui. O design, portanto, ordena os proponentes como uma escada, e os proponentes exatos são executados primeiro:
+
+1. **Reuso.** Um Form cujo hash de conteúdo (o hash de seu texto canônico), ou cuja forma sem nome (o Form com cada nome substituído por sua posição, de modo que renomear não o altere), corresponde a um Form armazenado é reutilizado como está.
+2. **Busca por tipo.** `rce search` encontra manipuladores armazenados cujo tipo corresponde ao que a tarefa necessita.
+3. **Reescritas determinadas.** As reescritas `rce fmt` grava para as regras cujo método está “alterado” na tabela de regras da especificação; cada uma tem um resultado, e uma segunda execução não encontra nada para reescrever.
+4. **Enumeração limitada.** Cada pequena edição até um limite fixo, enumerada na projeção canônica sem nome, cada candidato julgado pelo verificador.
+5. **Renomeações.** Um uso de um nome de valor torna‑se outro nome de valor no escopo ali, ou uma vinculação torna‑se um nome que o relatório do verificador nomeia, até um limite fixo, cada candidato julgado pelo verificador.
+
+O proponente aprendido atua apenas sobre o residual, as tarefas que a escada não fecha. Ele propõe edições no espaço canônico de edição do Form, e o mesmo verificador julga cada proposta exatamente como julga o candidato de um degrau. Reduzir o que um modelo estocástico precisa fazer diminui seu espaço de ação, e um espaço de ação menor é mais fácil de dominar. Essa é a razão para esperar que H10 (aprendizado no quociente economiza dados) se mantenha, e o motivo pelo qual H14 faz a participação da escada ser a linha de base que o proponente aprendido deve superar no residual. A escada é pública, como `rce repair` de openIE-dev/rce, e tem três execuções registradas sob `rce/bench/ladder` em openie-research-experiments, cujos arquivos rotulam os degraus de 1 a 5 com as letras a a e; o degrau 5 foi adicionado para a terceira execução. Seu resultado, relatado com H14 na Seção 8 abaixo, é que ele fecha as classes de mutação que seus degraus invertem e 1 de 41 mudanças da história real, de modo que o residual é quase todo defeito real.
+
+<div id="rung-f" class="anchor-alias" aria-hidden="true"></div>
+
+`rce repair` no ramo principal de openIE-dev/rce tem um sexto degrau, rotulado f, que roda somente depois que os degraus 1 a 5 não fecharam nada. O degrau f não chama nenhum modelo. Programas escritos fora do RCE, por um modelo em um serviço hospedado ou em máquina local, ou por uma pessoa, chegam a ele apenas como um arquivo de entrada, cada um com um rótulo que nomeia sua origem e registrado por seu resumo SHA-256. O verificador julga cada um como julga o candidato de um degrau, incluindo o portão de mutação, que recusa um programa com um exemplo ou verificação que nenhum pequeno ajuste do programa possa fazer falhar; uma proposta que altera um exemplo, uma verificação ou uma lei é recusada antes de ser julgada. O modo do degrau está nos dados da especificação, um entre `off`, `observe` e `auto`, e permanece em `observe`: cada proposta é julgada, cada uma que o verificador admitiria é relatada com sua diferença, resumo e origem, o programa fica aberto, e nenhum arquivo‑fonte é sobrescrito. Em `auto`, a primeira proposta admitida fecharia o programa, e o relatório rotularia esse fechamento como estocástico.
+
+A especificação permite a mudança de `observe` para `auto` somente quando um critério de promoção se mantém em uma avaliação registrada. O critério foi registrado em openIE-dev/rce antes de qualquer observação (`rce-repair-rung-f-promotion-2026-11-03`, `sha256: abf7f131f240e3f9...`), com seu SHA-256 fixado ao lado, e segue a regra de que pelo menos 98 % dos fechamentos provêm de degraus determinísticos e no máximo 2 % de degraus estocásticos, cada saída estocástica controlada. Sobre as 151 tarefas das execuções 2 e 3, cada execução com o programa original da tarefa fornecido como a versão conhecida‑boa, no máximo 2 % dos fechamentos podem vir do degrau f; toda proposta observada como admitida deve também passar pelo portão de mutação; e nenhuma pode contradizer o original, isto é, comportar‑se de forma diferente dele após alguma sequência de eventos. Um comando determinístico, `rce repair criterion`, avalia o critério a partir dos registros de observação, e a própria verificação da especificação recusa o modo `auto` a menos que uma avaliação registrada o satisfaça. Na avaliação registrada de 151 tarefas no commit `1762fb4b` (relatada na Seção 8 abaixo), os degraus de 1 a 5 fornecem a cada tarefa o fechamento original conhecido‑bom `116` de `151` tarefas em `0` chamadas de modelo, deixando `35` tarefas abertas (`25` arquivos `W-SYN-1` não analisáveis pulados pelo degrau f, e `10` tarefas de análise abertas). Ao alimentar propostas externas combinadas (`FormJEPA-v1` mais reparos residuais registrados, `91` propostas julgadas) obtêm‑se `3` admissões observadas no degrau f: `3/3` (`100.0%`) passam pelo portão de mutação e `0` contradizem o original (`3/3` restaurados), porém `3` de `119` fechamentos correspondem a `2.5% > 2.0%`, de modo que `rce repair criterion` retorna deterministamente `holds: false` e mantém o degrau f no modo `observe`.
+
+<div id="steer" class="anchor-alias" aria-hidden="true"></div>
+
+### O modelo orienta; o motor renderiza
+
+A robótica já funciona dessa maneira. Em V-JEPA 2-AC, a versão condicionada à ação do modelo de vídeo V-JEPA 2, um planejador busca entre ações de robô minimizando a distância entre uma representação futura prevista e a representação de uma imagem‑objetivo; ele nunca gera pixels [B1]. O codificador foi pré‑treinado em mais de um milhão de horas de vídeo, e o preditor condicionado à ação em menos de 62 horas de vídeo de robô não rotulado [B1, abstract]. RCE-JEPA propõe a mesma divisão para código: um modelo aprendido escolhe edições a um Form, e o motor renderiza cada linguagem‑alvo a partir do Form aceito. Nenhum modelo emite código.
+
+O código difere da robótica em um aspecto decisivo. O modelo de mundo de um robô deve *aprender* como o mundo se move, $z_{t+1}=g_\phi(z_t,a_t)$. Em RCE a função de transição $\delta$ é fornecida e provada, de modo que a dinâmica direta não precisa ser aprendida. O que resta aprender é o inverso: qual edição move um candidato em direção ao que a intenção requer. MuZero aprende um modelo porque, como seus autores afirmam, métodos de planejamento "dependem do conhecimento das dinâmicas do ambiente" [T1, Sec. 1]; aqui essas dinâmicas estão escritas.
+
+<div id="one-form" class="anchor-alias" aria-hidden="true"></div>
+
+### Uma Forma real
+
+Antes da arquitetura, o objeto. Este é um programa completo do repositório público (`examples/surface/counter.rce` em openIE-dev/rce, no commit `1762fb4b`), quatorze linhas na sintaxe de superfície do RCE, mostradas sem edição:
+
+```text
+intent "a counter that never goes negative"
+    example Inc, Inc, Dec -> 1
+    example Dec -> kept: Underflow
+
+state Counter
+    n: u64 = 0
+
+event Inc
+event Dec
+
+error Underflow
+
+step Counter on Inc -> n + 1
+step Counter on Dec -> try n.checked_sub(1) else Underflow
+```
+
+Leia‑o como $P=(S,E,\delta,D,\lambda)$. O bloco `state` é S, um inteiro sem sinal de 64 bits iniciando em zero. As duas linhas `event` são E. As duas linhas `step` são $\delta$. O bloco `intent` é uma pequena especificação de intenção, escrita $\sigma(I)$ nesta página: duas trilhas obrigatórias, uma das quais deve terminar em um passo mantido. Um decremento em zero não se aplica: o passo mantém o estado com `Underflow`, e pelo teorema T8 o estado permanece inalterado. A tarefa do proponente, declarada neste exemplo: dado apenas o bloco `intent`, encontrar as linhas `state`, `event` e `step` que o portão aceita.
+
+<div id="architecture" class="anchor-alias" aria-hidden="true"></div>
+
+### Arquitetura
+
+A caixa desenhada aqui é uma interface de proponente. Não se trata de uma arquitetura única. Um proponente lê a intenção e o Formulário atual e devolve edições candidatas ou Formulários candidatos. O portão está fora da interface. Um codificador JEPA, que prevê em um espaço latente, é um exemplo. Um decodificador treinado por rastreamento, um modelo de código de difusão, aprendizado por reforço dentro de um ambiente formal, busca evolutiva, aprendizado de biblioteca e decodificação restrita são outros exemplos. A Seção 6 abaixo nomeia cada um, o que ele necessita do verificador, seu modo de falha conhecido e qual hipótese ele moveria. A cabeça de decisão é a pequena instância tipada da mesma interface. Qualquer instância apenas propõe, e as Leis da Codificação não dependem dela.
+
+![Inside a dashed region labelled learned and untrusted: an intent encoder, a proposer acting as an inverse model, an exact rollout by the transition function, a Form encoder with energy, a tree search, and a decision head. Outside it: the gate, which alone admits programs, and the checker and engine, which replay and project. A requires-change arrow returns the broken rule to the search](/figures/rce-jepa/architecture.svg)
+
+*Figura 2. O modelo dirige, o motor renderiza. Caixas laranja são aprendidas e não confiáveis; a caixa azul é a execução exata pela função de transição, usada como simulador durante a busca; caixas verdes são as partes descritas no artigo RCE, código público ou design especificado (veja esse artigo). Apenas o portão admite. Um diagrama de design, não dados.*
+
+| Componente | Função | Design inicial | Por quê |
+| --- | --- | --- | --- |
+| Form encoder $E_f$ | Mapear um Formulário e seu rastro em eventos de exemplo para um latente $z_f$ | Um pequeno transformer sobre o JSON canônico (JavaScript Object Notation) do Formulário mais tokens de rastro, regularizado com SIGReg (regularização gaussiana isotrópica esboçada) [B2]; um segundo braço com um gargalo de codebook discreto ou suave [B3, B4, B5] (o codebook suave do SC-JEPA é estabilizado junto com um professor EMA (exponential moving average) e uma âncora de reconstrução [B5, Sec. 4.4.1 and App. B.1]) | Rastros definem equivalência, e o rastro é livre porque $\delta$ é exato. Tokens discretos mantiveram a predição de longo horizonte estável onde latentes contínuos acumularam erro [B3]; latentes booleanos permitem reidentificação exata do estado por igualdade bit a bit, uma motivação [B4] afirma com referência a trabalhos anteriores |
+| Intent encoder $E_I$ | Mapear $\sigma(I)$ (rastros requeridos, contratos, testes, prosa) para o mesmo espaço | Arquitetura compartilhada, treinada de modo que $E_I(\sigma(I))$ fique próximo de $E_f(f^\star)$ para ajustes aceitos conhecidos $f^\star$ | Coloca objetivo e candidato em uma única métrica, como V-JEPA 2-AC faz com imagens‑objetivo [B1] |
+| Proposer $\Pi_\theta$ | Dado $z_I$ e o $z_f$ atual, propor uma edição tipada do Formulário | Um modelo inverso condicionado a objetivo, a forma LeWAM compara contra como GC-IDM (goal‑conditioned inverse dynamics model), uma linha de base de Nguyen et al. (2026) que LeWAM avalia, não um modelo proposto pelos autores do LeWAM [B6, Sec. 4.2 and App. A.2] | Com $\delta$ exato, o inverso é o objeto aprendível |
+| Energy $\mathcal{E}$ | Classificar candidatos antes do portão | $\alpha V(f)+\beta\,d(z_{\tau(f)},z_{\sigma(I)})+\gamma\,C(f)$, com $C(f)$ extraído de `est_j` | Energias treinadas separadamente não são comensuráveis [T2, Sec. 1.3]; $\alpha,\beta,\gamma$ são ajustadas em uma fatia reservada para maximizar AUROC (area under the receiver operating characteristic curve) para aceitos contra requer mudança, e relatadas em cada execução |
+| Planner | Buscar sobre edições | Busca em feixe ou em árvore sobre edições do proponente, pontuadas por $\mathcal{E}$, com rollout exato em cada nó | V-JEPA 2-AC planeja com o método de entropia cruzada (CEM) sobre ações contínuas [B1]; edições de Formulário são discretas e combinatórias, portanto CEM não se aplica |
+| Decision head | Seleção limitada com probabilidade calibrada: o valor para cada lacuna, uma classificação, um veredicto de equivalência | Um pequeno modelo de decisão construído pelo projeto RCE e treinado em recibos de portão (subseção seguinte) | A probabilidade calibrada $p_i$ ordena a cascata do mais barato ao mais caro |
+
+**Não aprendidos, jamais:** $\delta$, $\lambda$, o dobramento, a cadeia de hash, as projeções, o portão e o caminho de promoção. Eles são fixos e certificados, e a promoção nunca os re‑treina.
+
+<div id="decision-head" class="anchor-alias" aria-hidden="true"></div>
+
+### A cabeça de decisão é um propositor e situa-se fora do portão
+
+Uma classe de modelos de decisão pequenos e conscientes de energia surgiu em 2026. Um modelo de decisão recebe um fragmento de estado e uma pergunta fixa e devolve uma resposta tipada com uma probabilidade para cada opção, sem gerar texto; todas as perguntas sobre um estado são respondidas em uma única solicitação [B7; B8]. As respostas são limitadas: sim ou não, uma escolha entre um conjunto de opções fornecido pelo chamador (até 255 para Jev; a precisão de Laya diminui além de cerca de 20), ou uma pontuação em uma escala declarada [B8]. Membros da classe, citados aqui como exemplos convergentes do conceito e não como componentes do RCE:
+
+- **Laya**, um modelo de peso aberto de cerca de 421 milhões de parâmetros construído sobre um codificador ModernBERT-large com uma cabeça de decisão de duas camadas, lançado sob Apache 2.0 [B8, B9].
+- **Kev**, uma família de modelos de decisão abertos de 0,8 a 27 bilhões de parâmetros construídos sobre backbones Qwen, cada ponto de verificação enviado com uma temperatura ajustada para calibração [B10].
+- **Modelos d1 abertos da Liquid AI**, d1-3B e d1-omni-600M, lançados em 7 de outubro de 2026 para sistemas de borda e físicos: d1-3B responde a uma pergunta em 16 ms em um NVIDIA Jetson AGX Thor e 50 ms em um Jetson Orin Nano, lê quadros de câmera e foi demonstrado navegando em um ambiente no simulador de robôs Isaac Sim com o modelo servido em um Jetson em uma configuração hardware-in-the-loop [B11].
+
+Um benchmark independente de um membro hospedado da classe constatou que suas probabilidades de escolha estavam bem calibradas, com um erro de calibração esperado (ECE) de 0,028 agregado em 22 conjuntos de dados de escolha e 279 925 respostas [B7]; suas probabilidades binárias (sim ou não) estavam menos bem posicionadas (ECE 0,052 único, 0,168 multilabel) e necessitaram de limiares ajustados [B7, Sec. 4.3]. Fraquezas documentadas da classe incluem contagem, aritmética e comparação de datas, e menor precisão quando o estado é preenchido com conteúdo irrelevante [B8, B12].
+
+A cabeça de decisão é um plug-in na interface do proponente acima. Um codificador JEPA é um plug-in diferente. Hospedada ou local, a cabeça apenas propõe.
+
+**O que o projeto RCE planeja.** O projeto construirá sua própria cabeça de decisão, treinada e calibrada com seus próprios recibos de portão. No design do motor, cada decisão de portão grava um recibo com o candidato, o resultado, a regra violada e `est_j`, de modo que os dados de calibração não custariam rotulagem. O estado entregue à cabeça é o JSON canônico do Formulário e seu rastreamento, que é pequeno por construção; isso aborda diretamente a fraqueza documentada de estado preenchido. A cabeça é um proponente. Qualquer modelo de decisão, hospedado ou local, construído pelo projeto ou por terceiros, apenas propõe; nunca aceita um Formulário, e a segurança do RCE nunca depende dele.
+
+<div id="data" class="anchor-alias" aria-hidden="true"></div>
+
+### Dados
+
+V-JEPA 2 pares pré-treinamento passivo muito grande com um pequeno conjunto condicionado por ação [B1]. O análogo RCE possui quatro níveis.
+
+| Nível | Fonte | Tamanho alvo | Treinos |
+| --- | --- | --- | --- |
+| Passivo: Formas e rastros | Formas extraídas de corpora públicos fixados pelo levantamento do artigo RCE (Sec. 6) assim que o código for público, Formas do gerador semeado do protocolo do ecossistema desse artigo (Sec. 2.3), e todo manipulador promovido | $10^5$ a $10^6$ Formas com rastros | O codificador de Formas, prevendo regras mascaradas e segmentos de rastros mascarados no espaço latente |
+| Emparelhado: intenção e ajuste | Testes e contratos anexados a programas levantados; o próprio rastro de uma Forma como especificação auto‑gerada; as aplicações brownfield pré‑registradas; especificações de benchmark escritas como Formas | $10^4$ pares para iniciar | Codificador de intenção e proponente |
+| Recibos de decisão | Cada decisão de porta | Ilimitado, sem custo de rotulagem | Calibração da cabeça de decisão |
+| Negativos duros | Veredictos de necessidade de mudança com a regra quebrada nomeada; equivalências propostas pelo modelo que a porta não admitiu (15 de 18 propostas, 12 reescritas distintas, no registro público da execução do modelo‑proponente no artigo RCE, Sec. 5.5) | Cresce a cada execução | Sinal contrastivo: válido contra inválido, equivalente contra não equivalente |
+
+Formulários quase duplicados são removidos por hash de forma antes de qualquer divisão, e as divisões retidas são por hash de forma, nunca por texto de superfície. O primeiro corpus existe: a versão 1 do corpus de Formulários (23 de outubro de 2026) contém 192 formas distintas de programas manuscritos do repositório público (versão 4, 24 de outubro de 2026), 55 deles com um bloco de intenção, e 3 456 negativos (343 programas de conformidade que requerem mudança, cada um com seu código diagnóstico, e 3 113 mutantes verificados por verificador, token de espaço em branco e tipados, que requerem mudança em 31 códigos diagnósticos), com um cartão de conjunto de dados e uma divisão por hash de forma; seu gerador é `scripts/corpus.py` no repositório e as linhas estão em [research.openie.dev/data/](/data/#rce-jepa). É o nível pareado e de negativos difíceis em seu menor tamanho; o nível passivo (programas elevados) está vazio até que o pipeline de elevação seja público. Sobre ele, H1 tem uma primeira medição, pré‑registrada antes da execução: a mediana de rho = b(código)/b(P) sobre 185 programas é 9,34 contra o Python emitido (intervalo interquartil 8,45 a 10,81; a versão 1 deu 9,31 sobre 173, com 17,33 para Rust, 11,06 para JavaScript e 13,66 para Scala), acima do limiar de 5; 171 dos primeiros 173 programas estavam acima de 5 (intervalo Wilson 95 % 0,96 a 1,00). Sob um comprimento de descrição comprimido (gzip) a razão é 3,57 para Python e 5,73 para Rust, que é relatada ao lado do primário para que o número não seja interpretado como uma afirmação sobre conteúdo informacional: H1 refere‑se ao espaço que um proponente pesquisa, que é a contagem de tokens sob seu vocabulário. O código fonte emitido é o do verificador de referência, com o runtime compartilhado excluído, e nenhum programa elevado ou escrito por modelo está na população. No Apple M5 Max no commit `1762fb4b`, H2 agora é medido em `reported_j` do sistema operacional/no chip: `rce check` leva uma mediana de `7.32 ms` e `0.04904 J` por verificação de Formulário (kernel `ri_energy_nj`) contra `84.25 J` por candidato no `Qwen 3.6 35B-A3B` local (`C_check / E_model = 0.000582 <= 0.05`; detalhes na Seção 8 abaixo). E uma medida do que um bloco de intenção compra, que RJ‑F2 e H7 ambos sustentam: dos mutantes que alteram o comportamento de um programa, suas próprias linhas de exemplo capturam 317 de 392 (0,81, intervalo Wilson 95 % 0,77 a 0,85; 24 de 54 programas capturam todos), e as mudanças não capturadas são quase todas um constante deslocado por um que nenhum exemplo exercita.
+
+<div id="training" class="anchor-alias" aria-hidden="true"></div>
+
+### Treinamento, em síntese
+
+- **Objetivo do codificador.** Predição latente mais SIGReg, a receita do LeJEPA, que requer um único hiperparâmetro de trade‑off e não necessita de stop‑gradient ou esquema professor‑aluno [B2, abstract], e do LeWorldModel, que treina de ponta a ponta com dois termos de perda [B13, abstract]. Duas advertências da mesma linha de trabalho: os autores do LeWorldModel sinalizam o alvo gaussiano isotrópico como uma possível limitação em ambientes de baixa dimensão intrínseca [B13, Sec. 4.2 e Sec. 6], e a dinâmica inversa contrastiva é oferecida como alternativa livre de distribuição [B14], que, porém, foi avaliada apenas em controles contínuos e foi claramente pior que SIGReg em tarefas de quebra‑cabeça combinatórios cujas mudanças de estado discretas parecem semelhantes independentemente da ação que as causou [B14, Appendix D]; e SIGReg e VISReg “não garantem que a representação latente aprendida preserve todas as informações chave necessárias para o planejamento” [B15, Sec. 4.1]. Ambos os braços rodam em paralelo, com cabeças auxiliares que predizem propriedades exatas e baratas da Forma (etiqueta monótona, limite de combustível, contagem de regras).  
+- **Predição multi‑passo.** Treinar com predição recursiva de k passos produz resultados significativamente melhores nas ablações do EB-JEPA, ao reduzir o viés de exposição, com um ótimo de Pareto próximo a k = 4 [B16, Fig. 3]; RoboJEPA eleva o rollout de treinamento autoregressivo de K = 2 para K = 10 passos em um cooldown de longo horizonte, o que só compensa em grande escala computacional (acima de cerca de 10<sup>21</sup> FLOPs) [B17, Sec. 3.3 e App. C.2]; um termo de consistência de rollout ajustado ao horizonte do planejador provém do Temporal‑Distance JEPA [B18, abstract].  
+- **Energia monótona.** Uma classificação de custo monótona faz com que planos que se desviam mais de uma trajetória de alcance de objetivo custem mais; sem isso, mínimos locais na superfície de custo podem levar o planejador a planos subótimos [B19]. A monotonicidade não é garantida pela tarefa: a tarefa de navegação EB-JEPA é não monótona, pois o melhor caminho inicialmente afasta-se do objetivo [B16]. Aqui trata‑se de um diagnóstico pré‑registrado (H11), não de uma suposição.  
+- **Proponente.** Supervisionado em intenção, trios Form e edição a partir do nível pareado, depois aprimorado em suas próprias trajetórias aceitas pelo portão: o portão é a recompensa.  
+- **Nunca decodifique um latente diretamente.** MoRAE relata que gerar movimento diretamente em um latente JEPA congelado “falha dramaticamente”, e atribui a falha a um espectro latente mal condicionado e a pequenos erros latentes amplificados em grandes artefatos após a decodificação [B20, abstract and Sec. 3]. O proponente produz edições tipificadas; latentes são ranqueados, não renderizados.
+
+<div id="convergence" class="anchor-alias" aria-hidden="true"></div>
+
+### Convergência: onde cada peça já existe
+
+Nenhum componente individual do RCE-JEPA é novo. Cada um tem um local de origem existente, listado abaixo como convergência, não prioridade. O que não foi medido é o sistema conjunto, que é o assunto das hipóteses.
+
+| Peça | Onde existe | O que estabeleceu | Diferença em relação ao RCE-JEPA |
+| --- | --- | --- | --- |
+| Prever um plano compacto, então decodificar o programa | Latent Programmer [B21] | Um código latente discreto previsto a partir da especificação, depois o programa; acurácia de transformação de strings aumentada em 5 a 7 pontos (mais de 10% relativo) em relação ao melhor baseline, além de BLEU mais alto na geração de código Python a partir de docstrings [B21, Sec. 5.1 and 5.3] | Linguagem alvo aberta, sem forma canônica, sem verificador |
+| Aprender execução, não apenas texto | LaSynth [B22]; Code World Model (CWM) [B23]; analysis of CWMs [B24] | Execução latente melhora a síntese em um domínio C restrito; CWM é treinado parcialmente em trajetórias observação-ação de um interpretador Python e ambientes Docker | Dinâmicas são aprendidas; em RCE são exatas |
+| Classes de equivalência como alvo de aprendizado | EqNet, Allamanis et al. [B25] | Representações contínuas de expressões simbólicas treinadas em classes de equivalência | Expressões, não programas completos |
+| Agentes propõem, solucionadores verificam | Agentic model checking [B26]; verified synthesis for concept design driven by a large language model (LLM) [B27]; AlphaProof, Clover, AutoVerus (Section 3 below) | "Agentes propõem, solucionadores verificam" é declarado como princípio; síntese estilo CEGIS (síntese indutiva guiada por contraexemplo) contra invariantes Alloy e cenários positivos e negativos | Proponentes geram tokens; sem planejamento latente, sem contabilização de joules |
+| JEPA como um raciocinador latente | JEPA-Reasoner [B28] | Raciocínio latente desacoplado da geração de tokens | Domínio de texto |
+| Custo previsto antes da execução | Compiler world models [B29] | Um modelo de transição projeta ações de agendamento no espaço latente para prever a representação do estado terminal, que um rankeador usa para ordenar candidatos antes de menos medições de hardware; a pontuação é um ranking dentro da carga de trabalho, não um custo calibrado [B29, Sec. 3.2 and Sec. 6] | Apenas agendas de programas tensor |
+| Latentes discretos | Discrete-JEPA [B3]; discrete world models via regularization [B4]; SC-JEPA [B5] | Tokens discretos que mantêm a previsão simbólica de longo horizonte estável [B3]; latentes booleanos aprendidos sem reconstrução (planejamento deixado para trabalhos futuros) [B4]; um gargalo de codebook suave, com um professor EMA e uma âncora de reconstrução, para estabilizar a previsão latente de um passo, não a rollout de longo horizonte [B5] | Imagens sintéticas, quebra-cabeças, séries temporais; não programas |
+| Treinamento estável de JEPA | LeJEPA [B2]; LeWorldModel [B13] | Treinamento livre de colapso sem stop-gradient, redes professoras ou agendadores de hiperparâmetros; ainda é usado um aquecimento padrão da taxa de aprendizado e agenda cosseno [B2, abstract and Sec. 6.1]; sem stop-gradient, EMA ou codificadores pré-treinados, com dois termos de perda [B13, Sec. 3.1] | Reutilizável como objetivo; validado apenas em imagens [B2] e pixels [B13], não testado em dados de programas |
+| Pequenos modelos de decisão calibrados | Laya [B9]; Kev [B10]; Liquid AI open d1 [B11]; benchmark [B7] | Respostas tipificadas com probabilidades por opção. Kev fornece uma temperatura ajustada por ponto de verificação [B10]; Laya fornece respostas superconfidentes (ECE médio 0.466) e atinge 0.081 apenas após um reajuste de temperatura por tipo [B9]. Latência: cerca de 33 a 40 ms por pergunta em uma GPU T4 para Laya e 18,1 ms para seis perguntas em uma H100 para Kev, mas centenas de milissegundos em CPU ou Mac (Laya 193 a 464 ms em CPU, Kev-4B 721 ms em um Mac M5) [B9, B10]; d1-3B responde uma pergunta em 16 ms em um Jetson AGX Thor e 50 ms em um Jetson Orin Nano [B11]; um membro hospedado avaliou independentemente a calibração [B7] | Sem modelo de mundo; no RCE-JEPA um cabeçalho de decisão é um proponente entre vários |
+| Proponentes treinados por rastreamento | Code World Model [B23], Section 3 below | Treinamento intermediário em rastros de execução Python e em trajetórias de agentes. SWE-bench Verified pass@1 53.9 % base e 65.8 % com o melhor de 16 amostras, conforme indica o relatório | A dinâmica é aprendida. Em um Form a transição é exata. Os autores chamam a predição de rastros de “primeiro passo” |
+| Busca evolutiva guiada por avaliador | AlphaEvolve (Novikov et al., Section 3 below) | Um modelo propõe edições. Um avaliador automático decide. Uma multiplicação de matriz complexa 4 por 4 em 48 multiplicações escalares é a figura‑kernel usada aqui | Funciona onde existe um avaliador. Esse relatório não utiliza um quociente Form |
+| Restrição no momento da amostragem | Decodificação com restrição de tipo (Mündler et al., the Swiss Federal Institute of Technology Zurich and the University of California, Berkeley, Section 3 below) | Erros de compilação reduzidos em 75.3 % no HumanEval e 52.1 % no MBPP. Apenas sintaxe: 9.0 % e 4.9 % | Escala TypeScript. Tipos não são a regra completa de aceitação |
+| Especificação para código verificado | Vericoding (Bursuc et al., Section 3 below) | 12 504 especificações. Sucesso 82.2 % Dafny, 44.2 % Verus, 26.8 % Lean. O resumo arredonda essas parcelas para 82 %, 44 % e 27 % | A especificação ainda precisa ser escrita. Descrições em linguagem natural acrescentam pouco |
+
+<div id="specification-cost" class="anchor-alias" aria-hidden="true"></div>
+
+### O custo de especificação, nomeado
+
+O verificador garante que um Formulário é válido; não garante que seja o Formulário pretendido. Na síntese verificada dirigida por LLM para projeto conceitual, a síntese apenas por invariantes “alcançou projetos verificados rapidamente, mas frequentemente produziu projetos inconsistentes entre execuções”, o que demonstra “que invariantes sozinhas sub‑constrangem a tarefa de projeto”; a síntese guiada por cenários recuperou projetos pretendidos de forma mais consistente do que a solicitação em linguagem natural, embora cenários mínimos possam super‑ajustar [B27, abstract], em 3 aplicações e 12 variantes com uma configuração de LLM [B27, Sec. 5]. As falhas dominantes “não foram falhas de verificação limitada, mas falhas de cobertura de especificação” [B27, Sec. 5.6]. No seL4 a especificação abstrata levou cerca de 4 pessoa‑meses e a prova cerca de 20 pessoa‑anos (Klein et al. 2009, Seção 2 abaixo). Um mundo de programa fechado torna a aceitação exata e a busca tratável. Ele transfere a incerteza da intenção para $\sigma(I)$; não a elimina. O falsificador RJ‑F2 abaixo torna esse custo público e mensurável.
+
+<div id="h11-h13" class="anchor-alias" aria-hidden="true"></div>
+
+### Hipóteses do propositor
+
+O proponente é testado por H11 (energia monótona), H12 (calibração da cabeça de decisão) e H13 (latentes discretas contra contínuas), e é pontuado pelo residual da escada determinística acima (H14, H15). Todas as quinze hipóteses, de H1 a H15, são apresentadas em ordem numérica com seus limiares em uma única tabela na Seção 8 abaixo, sob as mesmas convenções: pré‑registradas antes da execução, commit do motor congelado e hash binário registrado, mesmo portão para cada braço.
+
+O controle H3 está fixo agora: o mesmo portão e a mesma contabilidade de custos, com Qwen2.5-Coder-1.5B propondo código de superfície, o braço já executado no artigo RCE (Sec. 5.5), onde o portão não admitiu 15 de 18 equivalências propostas e admitiu apenas uma reescrita distinta, uma regra que o motor já possuía.
+
+<div id="falsifiers-moved" class="anchor-alias" aria-hidden="true"></div>
+
+**Falsificadores.** Os falsificadores para a própria premissa, RJ-F1 a RJ-F6, agora seguem as hipóteses que testam, diretamente após a tabela de H1 a H15 em [Seção 8 abaixo](#falsifiers) .
+
+<div id="risks" class="anchor-alias" aria-hidden="true"></div>
+
+### Riscos e mitigações
+
+| Risco | Evidência | Mitigação |
+| --- | --- | --- |
+| Decodificar um latente amplifica pequenos erros | Geração direta em um latente JEPA congelado falha dramaticamente para movimento, devido a má condição espectral e amplificação do decodificador [B20] | Nunca decodificar um latente; o proponente emite edições tipadas e o portão as verifica |
+| Uma representação que não colapsa mas aprende a coisa errada | “Preguiça de representação física” sob SIGReg [B15] | Cabeças auxiliares de propriedade exata; um regularizador de dinâmica inversa |
+| Prior isotrópico não se ajusta a um espaço Form de baixa dimensão | [B13]; [B14] | SIGReg e braços de dinâmica inversa contrastiva lado a lado, lembrando que o braço de dinâmica inversa era mais fraco em estado de quebra‑cabeça discreto [B14] |
+| Termos de energia não são comensuráveis | [T2, Sec. 1.3] | Ajustar $\alpha,\beta,\gamma$ por experimento e publicá‑los |
+| Cabeça de decisão degrada em estado preenchido | Fraqueza documentada da classe [B8, B12] | Alimentar apenas JSON canônico de Form e rastrear |
+| Teto de expressividade | Teorema de Rice [T3]; a linguagem restrita | Cobertura de elevação é a medida; RJ‑F1 é o falsificador |
+| Custo de especificação domina | esforço seL4 (Seção 2 abaixo); sub‑restrição invariante [B27] | RJ‑F2; ferramentas que capturam rastros de programas em execução e inferem contratos, como entregáveis por si mesmos |
+| Fraqueza do oráculo de benchmark | PatchDiff (Wang, Pradel e Liu, Seção 3 abaixo): 7.8 % dos patches contados como corretos falham em testes de desenvolvedor, e taxas de resolução são infladas em cerca de 6.4 pontos. Um teste METR de ferramentas de início‑2025 (Becker et al., Seção 3 abaixo): 16 desenvolvedores, 246 tarefas, tempo de conclusão medido 19 % maior. A previsão era 24 % menor. Uma estimativa pós‑hoc foi 20 % menor | Aceitação é o portão mais replay, não um conjunto de testes. Seção 8 (H15) impõe `rce check` mais preservação de obrigação em cada candidato |
+| Latência de planejamento aprendido | Controle preditivo de modelo V‑JEPA 2 levou cerca de 16 s por ação [B1] | Busca sobre Forms com verificador exato (`7.32 ms` / `49.04 mJ` no Apple M5 Max) e cristalização Gear‑0 (`0.325 µs` / `1.77 µJ` por consulta) limitando rollouts repetidos |
+
+O plano piloto faseado, do motor de dados até a convergência, com pré‑registro e critérios de saída para cada fase, está mantido nas notas de trabalho do projeto e resumido aqui: a Fase 0 constrói o corpus de elevação e o conjunto de dados de recibos, e mede a escada determinística para H14, que não requer proponente aprendido; a Fase 1 treina o codificador Form e testa H1, H5 e H11; a Fase 2 constrói e calibra a cabeça de decisão (H12); a Fase 3 treina o proponente JEPA dedicado e o planejador contra o controle de token (H3, H4, H10, H13), estendendo a primeira linha de base H15 de disparo único pronta‑para‑uso relatada na Seção 8; a Fase 4 estende o `reported_j` on‑chip (H2) para o medidor de parede externo `measured_j` (H8, H9); a Fase 5 executa o protocolo de convergência, no qual a promoção Gear‑0 retira o modelo do loop para cada forma fechada. Paralelamente à Fase 0, uma fatia do benchmark vericoding (fonte C34, listada sob Convergência por compromisso abaixo), escolhida por suas tarefas em forma de máquina de estados em Dafny, Verus e Lean, é elevada para Forms e pontuada sob o portão RCE ao lado dos resultados vericoding publicados, um benchmark externo para a transição de especificação para Form (H6, H7 e H8).
+
+<div id="proposer-references" class="anchor-alias" aria-hidden="true"></div>
+
+### Referências do propositor
+
+Referências marcadas [T] estão listadas nas referências de tese abaixo; referências às Seções 2, 3 e 5 referem‑se às seções desta página abaixo. Os rótulos seguem a convenção das principais referências abaixo. **Full** aqui significa que o texto completo foi lido, incluindo referências e apêndices; para B9 e B10 o cartão de modelo ao vivo e o README foram lidos em 14 de outubro de 2026.
+
+1. [B1] M. Assran et al., "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning", 2025. [arXiv:2506.09985](https://arxiv.org/abs/2506.09985). Full.
+2. [B2] R. Balestriero and Y. LeCun, "LeJEPA: Provable and Scalable Self-Supervised Learning Without the Heuristics", 2025. [arXiv:2511.08544](https://arxiv.org/abs/2511.08544). Full.
+3. [B3] J. Baek et al., "Discrete JEPA: Learning Discrete Token Representations without Reconstruction", 2025. [arXiv:2506.14373](https://arxiv.org/abs/2506.14373). Full.
+4. [B4] D. Bizzaro and L. Serafini, "Discrete World Models via Regularization", 2026. [arXiv:2603.01748](https://arxiv.org/abs/2603.01748). Full.
+5. [B5] Y. He et al., "SC-JEPA: Stabilizing Latent Predictive Learning for Time-Series Anomaly Prediction", 2026. [arXiv:2602.04643](https://arxiv.org/abs/2602.04643). Full.
+6. [B6] M. Fu et al., "LeWAM: End-to-End World and Action Modeling with JEPAs", 2026. [arXiv:2610.12818](https://arxiv.org/abs/2610.12818). Full.
+7. [B7] T. Deußer, L. Sparrenberg and R. Sifa, "Evaluating and Benchmarking the System One Model Jev", 2026. [arXiv:2609.37647](https://arxiv.org/abs/2609.37647). Full.
+8. [B8] W. Wu, "Jev vs Laya: Comparing and Choosing Between Closed-Source and Open-Source System One Decision Models", 23 September 2026. [wilsonwu.me](https://wilsonwu.me/en/blog/2026/jev-vs-laya/). Full.
+9. [B9] Nandakishor M (Convai Innovations), Laya model card. [Hugging Face](https://huggingface.co/convaiinnovations/laya). Full (read live 14 October 2026).
+10. [B10] J. Palmer, Kev. [GitHub](https://github.com/jaredpalmer/kev). Full (README, read live 14 October 2026).
+11. [B11] Liquid AI, "Open d1: Edge decision models for text, vision, and audio", 7 October 2026. [liquid.ai](https://www.liquid.ai/blog/d1-open). Full.
+12. [B12] Sanity, "Decision model" (glossary). [sanity.io](https://www.sanity.io/glossary/decision-model). Full.
+13. [B13] L. Maes, Q. Le Lidec, D. Scieur, Y. LeCun and R. Balestriero, "LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels", 2026. [arXiv:2603.19312](https://arxiv.org/abs/2603.19312). Full.
+14. [B14] J. Boylan and C. Hokamp, "No Gaussian Required: Contrastive Inverse Dynamics for JEPA World Models", 2026. [arXiv:2608.17542](https://arxiv.org/abs/2608.17542). Full.
+15. [B15] P. Zhu et al., "Spectral-Target Physical Latent Structuring for JEPA-Style World Models", 2026. [arXiv:2609.04264](https://arxiv.org/abs/2609.04264). Full.
+16. [B16] B. Terver et al., "A Lightweight Library for Energy-Based Joint-Embedding Predictive Architectures", 2026. [arXiv:2602.03604](https://arxiv.org/abs/2602.03604). Full.
+17. [B17] A. Zholus et al., "RoboJEPA: Scaling Robotic Latent World Models", 2026. [arXiv:2610.10515](https://arxiv.org/abs/2610.10515). Full.
+18. [B18] J. Bai and J. Xiong, "Temporal-Distance JEPA: Plan-Aware Representation Learning for Latent World Model Predictive Control", 2026. [arXiv:2607.25337](https://arxiv.org/abs/2607.25337). Full.
+19. [B19] A. Chahe, S. Cai and L. Zhou, "Latent World Models with Monotone Planning Costs for Image-Goal Navigation", 2026. [arXiv:2608.09073](https://arxiv.org/abs/2608.09073). Full.
+20. [B20] Y. Zhu et al., "MoRAE: Flow-Friendly Self-Supervised Latents for Text-to-Motion Generation", 2026. [arXiv:2607.29180](https://arxiv.org/abs/2607.29180). Full.
+21. [B21] J. Hong, D. Dohan, R. Singh, C. Sutton and M. Zaheer, "Latent Programmer: Discrete Latent Codes for Program Synthesis", ICML 2021. [PMLR PDF](https://proceedings.mlr.press/v139/hong21a/hong21a.pdf). Full.
+22. [B22] X. Chen, D. Song and Y. Tian, "Latent Execution for Neural Program Synthesis", NeurIPS 2021. [arXiv:2107.00101](https://arxiv.org/abs/2107.00101). Full.
+23. [B23] Meta FAIR CodeGen Team, "CWM: An Open-Weights LLM for Research on Code Generation with World Models", 2025. [arXiv:2510.02387](https://arxiv.org/abs/2510.02387). Full.
+24. [B24] B. Rahmani, "Debugging Code World Models", 2026. [arXiv:2602.07672](https://arxiv.org/abs/2602.07672). Full.
+25. [B25] M. Allamanis, P. Chanthirasegaran, P. Kohli and C. Sutton, "Learning Continuous Semantic Representations of Symbolic Expressions", ICML 2017. [arXiv:1611.01423](https://arxiv.org/abs/1611.01423). Full.
+26. [B26] Y. Sun, J. Liu, D. Kroening and J. Xue, "Agentic Model Checking", 2026. [arXiv:2605.21434](https://arxiv.org/abs/2605.21434). Full.
+27. [B27] A. Cunha, "Verified LLM-Driven Synthesis for Concept Design", 2026. [arXiv:2607.15718](https://arxiv.org/abs/2607.15718). Full.
+28. [B28] B. K. Liu, Z. P. Chen and D. P. Woodruff, "JEPA-Reasoner: Decoupling Latent Reasoning from Token Generation", 2025. [arXiv:2512.19171](https://arxiv.org/abs/2512.19171). Full.
+29. [B29] H. Pan et al., "Toward Compiler World Models: Learning Latent Dynamics for Efficient Tensor Program Search", 2026. [arXiv:2606.09312](https://arxiv.org/abs/2606.09312). Full.
+30. [B30] Open Interface Engineering, "Exact-proposer ladder: registered run", openIE-dev/openie-research-experiments, `rce/bench/ladder/exact-proposers/`: registration committed before the run at `3030469d`, results at `70a0a776` (pull request #21); ladder openIE-dev/rce `6d04a096`. [GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/exact-proposers). Full.
+31. [B31] Open Interface Engineering, "Exact-proposer ladder on real defects: registered run", openIE-dev/openie-research-experiments, `rce/bench/ladder/real-defects/`: registration committed before the run at `64e70389`, results at `00e3b005` (pull request #22); ladder openIE-dev/rce `7dc4eded`. [GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/real-defects). Full.
+32. [B32] Open Interface Engineering, "Exact-proposer ladder with renames: registered run", openIE-dev/openie-research-experiments, `rce/bench/ladder/rung-e/`: registration committed before the run at `be5f370d`, results at `3a5227c2`, merged at `f76ba9d8` (pull request #23); ladder openIE-dev/rce `8a5d90ea`. [GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/f76ba9d8d02d57b773afbf105333417d55f72e2c/rce/bench/ladder/rung-e). Full.
+33. [B33] Open Interface Engineering, "RCE-JEPA H2, single-shot H15, and Shape D (DNULLMM1) Gear-0 on the 40 open residual tasks", registered 22 November 2026 (`rce-jepa-h15-and-shape-d-gear0-2026-11-22`, `sha256: b64c4c671ae85755...`) on `openIE-dev/rce` at commit `1762fb4b` (20 November 2026, binary `sha256: 1d3b0d07ff5b2e8f...`), Apple M5 Max dual-channel `reported_j` receipts (`measured_j = None`, `board_metered = false`). [research.openie.dev/data/](/data/#rce-jepa). Full.
+34. [B34] Open Interface Engineering, "FormJEPA-v1 latent Form repair proposer, 3-Gear Cascade, and rce repair rung f criterion evaluation on the 151-task ladder and 40 residual tasks", registered 22 November 2026 (`rce-jepa-form-jepa-v1-2026-11-22`, `sha256: 22682e6e936ec120...`; `rce-repair-rung-f-wave3-eval-2026-11-22`, `sha256: 04aff4b2b44cdbea...`) on `openIE-dev/rce` at commit `1762fb4b` (Linux x86_64 binary `sha256: 5ef9931ff23a310f...`), AMD Ryzen AI Max+ 395 Linux powercap RAPL `reported_j` receipts (`measured_j = None`, `board_metered = false`). [research.openie.dev/data/](/data/#rce-jepa). Full.
+
+<div id="thesis" class="anchor-alias" aria-hidden="true"></div>
+
+## A tese: a construção de software é pré-"Leis da Codificação"
+
+Imagine a Europa na década de 1660. Kepler havia publicado duas regularidades do movimento planetário em *Astronomia nova* (1609) e uma terceira em *Harmonice mundi* (1619) [[T4]]. Galileu e Huygens haviam derivado conclusões testáveis a partir de hipóteses sobre o movimento [[T5, Sec. 1]]. Artilheiros, construtores de moinhos e de navios construíam por regra prática e longa aprendizagem. O céu fora observado com enorme cuidado durante dois mil anos, e ainda assim a predição era um mosaico. Newton, segundo o relato de George Smith, “estava familiarizado com sete abordagens diferentes para calcular órbitas planetárias, todas com aproximadamente a mesma precisão”, e as posições calculadas “às vezes estavam erradas em até um quarto da largura da Lua” [[T5, Sec. 2]]. Existiam muitas tabelas boas e nenhum relato único sobre por que as tabelas funcionavam.
+
+Então, em 1687, surgiu o *Principia*. Um punhado de axiomas do movimento e uma força inversa ao quadrado, e a partir deles trajetórias que podiam ser computadas antecipadamente, custos que podiam ser calculados antes de o canhão ser fundido, e erros que apontavam para novos corpos em vez de má sorte. Smith resume a mudança: após o *Principia*, “a teoria física ganhou primazia sobre a observação para fins de responder a questões específicas sobre o mundo” [[T5, Sec. 1]]. Os resultados de Galileu para a gravidade uniforme não desapareceram; tornaram‑se um caso limite da gravidade inversa ao quadrado, e a teoria passou a explicar as desvios dos planetas em relação às regras de Kepler [[T5, Secs. 1 e 2]].
+
+A premissa, em palavras simples: **a prática de construção de software, incluindo a codificação assistida por IA de hoje por grandes modelos de linguagem, está pré-"Leis da Codificação".** Aqui "a prática de construção de software" significa os praticantes e sistemas, desenvolvedores humanos e modelos geradores de código por igual, que produzem código por tentativa empírica, teste e revisão ao invés de derivação a partir de um conjunto formal de regras. Essa prática hoje vive nos anos 1660. Ela tem observação cuidadosa: pass@k (a chance de que ao menos um dos k programas amostrados passe nos testes), usado na Seção 4 abaixo, e SWE-bench Verified (um conjunto revisado de questões de repositório), usado na Seção 3 abaixo. Ela tem artesanato: formulação de prompts, novas tentativas e tentativa‑e‑erro. Saídas de modelos geradores de código são amostras de uma distribuição de probabilidade, de modo que a mesma solicitação pode gerar um programa diferente amanhã; quando o ChatGPT (gpt-3.5-turbo em sua temperatura padrão) recebeu a mesma questão de codificação cinco vezes, de 47,56 % a 75,76 % dos problemas em três conjuntos de dados não houve teste no qual todas as cinco respostas deram a mesma saída, e "definir a temperatura para 0 não garante determinismo na geração de código" (Ouyang et al., 2023, abstract). As regularidades que o lado humano da prática demonstra são, nas palavras de Lehman, aquelas que "surgem dos hábitos e práticas de pessoas e organizações" [T6, Sec. V-A, p. 1069]. Hoare e colegas nomearam a mesma lacuna em 1987: "Quais, então, são as leis da programação, que fornecem a base formal para a profissão de engenharia de software? Muitos programadores podem ser incapazes de citar sequer uma única lei" [T7, p. 673]. Dijkstra já havia apontado o limite do método empírico do qual a prática ainda depende: "testar programas pode ser uma forma muito eficaz de mostrar a presença de bugs, mas é desesperadamente inadequado para mostrar sua ausência" [T8, Argument three]. Não há quantidade conservada acordada para um programa, nem equação de movimento que um gerador de código obedeça, e o custo é medido após o fato, em tokens e em eletricidade, ao invés de ser calculado antes do início do trabalho.
+
+"Leis da Codificação" nomeia a camada de artesanato, definida com as outras três camadas abaixo. A proposta RCE-JEPA, declarada aqui como conjectura, é que esse artesanato pode obter um pequeno conjunto de regras a partir das quais o comportamento e o custo do código que produz pode ser calculado antes de sua execução, emprestando das camadas abaixo dele. Os candidatos são (L1) uma regra de transição determinística, (L2) uma conta de informação e energia por transição, (L3) uma Forma canônica para cada programa, que é compressão, e (L4) uma regra de composição sob a qual L1 a L3 sobrevivem quando programas são unidos. O [Reality Code Engine (RCE)](/about/rce/) propõe candidatos para cada; hipóteses H1 a H15 são os testes, declarados em ordem numérica em uma tabela na Seção 8 abaixo. Nada nesta seção é um resultado medido a menos que carregue um número e uma fonte.
+
+A analogia tem limites, declarados aqui. Newton descreveu um mundo que ninguém projetou; programas são criados por pessoas, de modo que suas regras são parcialmente escolhidas em vez de descobertas. A mecânica possui grandezas contínuas e conservação exata de energia; o estado de um programa é discreto e finito, e a energia que um chip consome depende do hardware, não apenas do programa. O teorema de Rice [T3] afirma que não existe procedimento geral que decida qualquer propriedade não‑trivial do que um programa arbitrário computa, e o problema da parada [T9] é o caso mais conhecido; a RCE contorna esses limites apenas ao operar em uma linguagem restrita cujos programas carregam limites de terminação, e essa restrição tem um custo no que pode ser expresso. Finalmente, mesmo o *Principia* não era o “universo mecânico”: Smith observa que esse aspecto “foi adicionado por Laplace” [T5, Sec. 1]; os axiomas do movimento, por si só, não resolviam todos os problemas da mecânica, pois para corpos que não são pontos‑massa eles “devem ser complementados por princípios adicionais” [T5, Sec. 5]; e “a teoria newtoniana agora é vista como válida apenas em alta aproximação em circunstâncias limitadas” [T5, Sec. 1]. A afirmação é uma analogia, não uma equivalência.
+
+<div id="not-yet" class="anchor-alias" aria-hidden="true"></div>
+
+### Quatro camadas de lei, da teoria à arte
+
+Quatro frases são fáceis de confundir, e esta página as mantém separadas. Cada uma nomeia uma camada diferente, que vai da teoria à ciência até a arte, e cada uma é formalizada em grau distinto hoje. Elas nunca são usadas de forma intercambiável aqui.
+
+![Um espectro da teoria à arte com quatro camadas distintas: "Leis da Computação", "Leis das Linguagens de Programação", "Leis da Programação" e "Leis da Codificação", cada uma com sua questão, sua obra representativa e o grau de formalização atual, e RCE-JEPA desenhado como uma ponte entre as camadas em vez de uma fusão](/figures/rce-jepa/layers.svg)
+
+*Figura 3. O espectro. Da esquerda para a direita: "Leis da Computação" (teoria), "Leis das Linguagens de Programação" e "Leis da Programação" (ciência), "Leis da Codificação" (arte). A barra sob cada camada indica o grau de formalização atual, um julgamento qualitativo explicado na tabela abaixo. RCE-JEPA é desenhado como uma ponte que transporta evidência entre as camadas; não as funde. Um diagrama qualitativo, não dados..*
+
+| Camada | Definição | Quem trabalha nela | Grau de formalização hoje |
+| --- | --- | --- | --- |
+| "Leis da Computação" | Limites físicos e de informação: o que pode ser computado em absoluto, e a que custo em informação, tempo e energia. | Shannon [T10]; Landauer [T11]; Bennett e Landauer [T12, T13]; Turing [T9] e Rice [T3]; Lloyd [T14]; Wolpert [T15]; Carette, James e Sabry [T16]. | Teoremas exatos para limites: informação em bits, o piso de apagamento $k_BT\ln 2$, indecidibilidade. Ainda não há uma conta unificada que preveja o custo de um programa dado em uma máquina dada; Bennett e Landauer observam que seus limites estão "terrivelmente longe dos limites reais da tecnologia moderna" [T13, p. 48]. |
+| "Leis das Linguagens de Programação" | Semântica e teoria de tipos: as regras que fixam o que um programa em uma linguagem significa. | Semântica axiomática de Hoare [T17]; Milner [T18]; Harel [T19]; Lamport [T20]; Berry e Gonthier [T21]; Halbwachs et al. [T22]; compilador verificado de Leroy e extração de Letouzey (Seção 1 abaixo). | Totalmente formal para algumas linguagens e compiladores, verificado por máquina em CompCert (Seção 1 abaixo). Significado formal é uma propriedade que uma linguagem é projetada para ter, não uma que toda linguagem possui. |
+| "Leis da Programação" | Leis algébricas da construção correta de programas: equações pelas quais programas são transformados e derivados de especificações. | Hoare, Hayes, He, Morgan, Roscoe, Sanders, Sorensen, Spivey e Sufrin [T7]; derivação de programas de Dijkstra e cálculo de listas de Bird (Seção 1 abaixo). | Quase cem leis para uma linguagem pequena [T7]; segundo relato dos próprios autores "ainda há um longo caminho até saber como aplicá‑las diretamente ao design de programas corretos e eficientes na escala exigida pela tecnologia moderna" [T7, p. 686]. |
+| "Leis da Codificação" | O ofício empírico de produzir código funcional por pessoas ou modelos. É aqui que a codificação por IA se situa hoje. | Brooks [T23]; Lehman [T6]; Hindle et al. [T24]; os relatórios na Seção 3 abaixo. | Regularidades empíricas e benchmarks, sem leis. Saídas de codificadores de IA são amostras, de modo que a mesma solicitação pode gerar um programa diferente (Ouyang et al., 2023, citado acima). |
+
+**Como o RCE-JEPA se relaciona com as camadas.** O RCE-JEPA é uma ponte, não uma fusão. Ele opera na camada “Leis da Codificação”, onde um modelo aprendido propõe código, e vincula cada proposta às camadas subjacentes: o Form tem um significado fixo (“Leis das Linguagens de Programação”), Formas aceitas podem ser transformadas por regras declaradas (“Leis da Programação”), e seu custo deve ser contabilizado contra limites físicos (“Leis da Computação”); o RCE contabiliza esse custo hoje em unidades inteiras, que não são joules. Cada hipótese abaixo nomeia a camada que testa. Se a ponte se mantiver, o artefato ganha regras emprestadas da ciência e da teoria; as camadas permanecem distintas.
+
+A Mecânica tem seu *Principia*. A Computação ainda não tem. As partes das “Leis da Computação” listadas acima são exatas, mas ainda não foram reunidas em uma única conta formal que preveja comportamento e custo conjuntamente, da mesma forma que o *Principia* uniu as regularidades de Kepler e Galileu. Isso é apresentado como um problema aberto, não como um problema resolvido.
+
+Nada nessa lacuna é uma falha das pessoas que vieram antes. Cada era fez o que suas máquinas, sua teoria da informação e seu ofício de construir e otimizar programas permitiam. A linha do tempo abaixo indica com o que cada era contou, com figuras das fontes nomeadas, e o que alcançou.
+
+![Timeline in five eras from the 1940s to today, each with three lanes: hardware, information theory, and applied computer science for building and optimizing algorithms, showing sourced hardware figures and landmark results, ending with the open question of "Laws of Computation"](/figures/rce-jepa/eras.svg)
+
+*Figura 4. Cinco eras na estrada rumo às “Leis da Computação”. Faixa superior: hardware, com figuras das fontes na tabela abaixo. Faixa do meio: teoria da informação. Faixa inferior: ciência da computação aplicada ao desenvolvimento e otimização de algoritmos (compiladores, complexidade, síntese, verificação). O quadro à direita é a questão aberta: uma “Leis da Computação” unificada. Um diagrama histórico, não dados.*
+
+| Era | Hardware (memória, operações, energia) | Teoria da informação | Ciência da computação aplicada a algoritmos | O que tornou possível, e onde parou |
+| --- | --- | --- | --- | --- |
+| 1940 a 1950 | Máquinas de cópia única cuja memória "geralmente era muito pequena" e que eram "geralmente muito lentas" [T8]. No IBM 704, um programa FORTRAN (FORmula TRANslation) de 47 instruções compilado "em seis minutos, produzindo cerca de 1000 instruções" [T25, PDF p. 2]. | Shannon (1948) torna a informação uma quantidade mensurável: "O problema fundamental da comunicação é reproduzir em um ponto, exatamente ou aproximadamente, uma mensagem selecionada em outro ponto" [T10, Introduction, p. 1]. | Os primeiros compiladores otimizadores [T25]. | A tradução de fórmula para código de máquina tornou‑se automática. Cada instrução e cada palavra de memória era cara, de modo que o esforço se destinava a encaixar programas nas máquinas, como recorda Dijkstra [T8]. |
+| 1960 | Os quatro modelos do IBM System/360 (1964) diferiam em um fator de 16 na capacidade de memória e 50 no desempenho, compartilhando um conjunto de instruções [T26]. | Landauer (1961) relaciona a eliminação de informação ao calor [T11]; Solomonoff, Kolmogorov e Chaitin definem complexidade como a descrição mais curta [T27, T28, T29]. | A base axiomática de Hoare para provar a correção de programas (1969) [T17]. | Correção e informação obtiveram definições exatas no papel. Dijkstra (1972): como "o poder das máquinas disponíveis cresceu em um fator de mais de mil, a ambição da sociedade de aplicar essas máquinas cresceu proporcionalmente" [T8], e a crise de software se seguiu. |
+| 1970 a 1980 | Alto (1973): um armazenamento de controle gravável de 4.096 palavras de 32 bits; VAX-11/780 (1977): um armazenamento de controle de 5.120 palavras de 96 bits; projeção de Moore de 1975 de dobrar a densidade de transistores a cada dois anos [T26]. | Bennett (1973) demonstra que máquinas de computação de uso geral "podem ser tornadas logicamente reversíveis em cada passo, mantendo sua simplicidade e capacidade de realizar computações gerais" [T30, abstract, p. 525]; Bennett e Landauer (1985) estabelecem os limites físicos [T13]. | Brooks (1986) separa complexidade essencial da acidental [T23]; Hoare e oito coautores apresentam quase cem leis algébricas para uma linguagem de programação [T7]; Lehman formula leis empíricas da evolução de software [T6]. | Programas tornaram‑se objetos algébricos. Hoare et al. são francos quanto à distância que ainda resta: "ainda estamos longe de saber como aplicá‑las diretamente ao projeto de programas corretos e eficientes na escala exigida pela tecnologia moderna" [T7, p. 686]. |
+| 1990s to 2000s | O paralelismo em nível de instrução e transistores mais rápidos proporcionaram cerca de 50% de crescimento anual de desempenho de 1986 até aproximadamente 2002 [T26]. | Lloyd (2000) limita as operações por segundo pela energia [T14]. | McKee (1995) propõe leis fundamentais da computação [T31]; compiladores e kernels verificados por máquina, CompCert e seL4 (Seção 1 abaixo). | A prova chegou a sistemas reais, a um custo: a prova do seL4 levou cerca de 20 pessoa-anos (Seção 1 abaixo). |
+| 2010s to today | A escalada de Dennard "desapareceu quase totalmente até 2012"; um acesso a cache de 32 kilobytes custa cerca de 200 vezes a energia de uma soma de 32 bits, e a DRAM externa (memória de acesso aleatório dinâmico) cerca de 10 vezes um acesso a cache de último nível; o TPU (Tensor Processing Unit) v1 do Google executa 256 x 256 multiplicações-acumulações por ciclo com 24 megabytes de memória local, com mais de 80 vezes a eficiência energética de uma CPU em sua carga de trabalho [T26]. Um modelo de linguagem com 65 bilhões de parâmetros usou cerca de 3 a 4 joules por token de saída (Samsi et al., Seção 4 abaixo). | A termodinâmica estocástica da computação de Wolpert [T15]; predição mostrada equivalente à compressão para modelos de linguagem [T32]; Carette, James e Sabry reconstruem modelos de computação baseados na conservação da informação [T16]. | Geradores de código aprendidos; loops de modelo mais verificador; teste de simulação determinística (veja quem sustenta essas visões, abaixo). | A verificação é barata e exata onde os proponentes são baratos e abundantes. Uma multiplicação de matriz em Python reescrita para o hardware executou "mais de 62,000x mais rápido" [T26]: a distância entre um programa e sua máquina agora é grande, mensurável e vale a pena reduzir. |
+
+**Por que o progresso é possível agora (opinião, a ser testada).** Três coisas que nunca estiveram disponíveis juntas estão disponíveis hoje. Verificadores verificados por máquina existem para sistemas reais, de modo que uma regra pode ser aplicada em vez de esperada. Modelos aprendidos podem propor programas candidatos por milhares, de modo que a busca por um programa que satisfaça uma regra é acessível. E a energia pode ser lida a partir de contadores em hardware comum, de modo que o custo pode ser medido contra a previsão em vez de adivinhado. Cada era anterior carecia de pelo menos uma das três. Nada disso torna as “Leis da Computação” inevitáveis; isso as torna testáveis, que é o propósito das hipóteses abaixo.
+
+<div id="symbols-used-in-this-section" class="anchor-alias" aria-hidden="true"></div>
+
+### Símbolos utilizados nesta seção
+
+- $P=(S,E,\delta,D,\lambda)$: um programa como uma máquina de estados funcional. $S$ é um conjunto finito de estados; $E$ um conjunto finito de eventos (entradas); $\delta: S\times E\to S$ a função de transição; $D$ o conjunto de derivações, valores calculados a partir de um estado por funções puras; $\lambda: S\times E\to O$ a função de saída para um conjunto finito de saídas $O$.
+- $\Omega_n$: o conjunto de Formas canônicas de tamanho no máximo $n$ símbolos. Uma Forma é a representação canônica aceita pelo verificador de um programa em RCE (Seção 8).
+- $X$: o conjunto de programas de superfície (o texto que pessoas ou modelos escrevem). $\kappa: X\to\Omega$: o mapa de canonização do programa de superfície para a Forma.
+- $H(\cdot)$: entropia de Shannon em bits [T10]. $K(x)$: complexidade de Kolmogorov, o comprimento em bits do programa mais curto que produz $x$ em uma máquina universal fixa [T27, T28].
+- $k_B=1.380649\times10^{-23}\ \mathrm{J\,K^{-1}}$: constante de Boltzmann. $T$: temperatura em kelvin (K). J: joule.
+- JEPA: Joint Embedding Predictive Architecture [LeCun 2022, citado acima]. MDL: comprimento mínimo de descrição [T33]. EBM: modelo baseado em energia.
+
+<div id="part-1-computation-as-a-finite-information-system" class="anchor-alias" aria-hidden="true"></div>
+
+### Parte 1. Computação como sistema finito de informação
+
+Remova de um programa sua sintaxe, seus comentários, sua indentação e os hábitos de seu autor, e o que resta é uma máquina que avança de um estado para o próximo, um evento de cada vez. Essa máquina é finita, e algo finito pode ser contado.
+
+**Definição.** Um programa é uma máquina de estado funcional determinística $P=(S,E,\delta,D,\lambda)$ com $S$ e $E$ finitos e $\delta$ uma função total. Determinismo significa que $\delta$ é uma função, não uma relação: um estado e um evento fornecem exatamente um próximo estado.
+
+**Limite sobre o conteúdo de informação.** Se uma Forma for extraída de $\Omega_n$ por qualquer distribuição, sua entropia é no máximo a da distribuição uniforme: para $n$ resultados, “H é máximo e igual a log n quando todos os p<sub>i</sub> são iguais” [T10, Sec. 6, property 2, p. 11]:
+
+$$H(P)\;\le\;\log_2\lvert\Omega_n\rvert\ \text{bits}.$$
+
+Para um alfabeto de $a$ símbolos, $\lvert\Omega_n\rvert\le\sum_{k\le n}a^k$, portanto $H(P)\le n\log_2 a+1$ bits. Toda Forma, por mais longo que seja seu comportamento, é uma mensagem finita.
+
+**Compressão e compreensão.** A complexidade de Kolmogorov $K(x)$ [T27, T28] mede a descrição mais curta de um objeto. Kolmogorov toma como “complexidade relativa” de um objeto y dado x “o comprimento mínimo l(p) do ‘programa’ p para obter y a partir de x” [T28, Sec. 3, p. 165]; a indução de Solomonoff [T27] e o MDL de Rissanen [T33] transformam “preferir a descrição mais curta” em uma regra para predição e escolha de modelo. A ponte para a aprendizagem é o teorema da codificação de fonte de Shannon [T10, Sec. 9, Theorem 9, p. 16]: um bom código gasta cerca de $-\log_2 p(x)$ bits em $x$ (a segunda demonstração de Shannon fornece uma mensagem de probabilidade $p_s$ um código de $m_s$ dígitos binários com $\log_2(1/p_s)\le m_s<1+\log_2(1/p_s)$ [T10, Sec. 9, p. 17]), de modo que um preditor melhor é um compressor melhor. Delétang et al. afirmam diretamente: “maximizar a verossimilhança log2 (dos dados) é equivalente a minimizar o número de bits necessários por mensagem” [T32, Sec. 1]. $K$ em si não é computável: Kolmogorov já observou que a complexidade condicional “não pode ser calculada efetivamente (geralmente recursiva) mesmo que se saiba que é finita para todo x e y” [T28, Sec. 3, p. 165], e Schmidhuber observa “não há maneira geral de encontrar o programa mais curto que compute quaisquer dados dados” [T34, Sec. 1]. Em uma linguagem restrita com uma Forma canônica, o comprimento da Forma é um limite superior computável de $K$ até uma constante aditiva.
+
+<div id="part-2-compression-into-form-and-template" class="anchor-alias" aria-hidden="true"></div>
+
+### Parte 2. Compressão em Forma e modelo
+
+Peça a cem programadores que escrevam um carrinho de compras e você obterá cem programas. Por trás desses cem há talvez três ou quatro ideias. A superfície é uma multidão; a Forma é o rosto que ela compartilha.
+
+**Classes de equivalência.** Defina $x\sim y \iff \kappa(x)=\kappa(y)$. Cada Forma $f\in\Omega$ é a representante da classe $[f]=\kappa^{-1}(f)$ de programas de superfície $m_f=\lvert[f]\rvert$. Como $\kappa$ é uma função, a regra da cadeia da entropia, $H(x,y)=H(x)+H_x(y)$ [T10, Sec. 6, property 5, p. 12], fornece
+
+$$H(X)\;=\;H(\kappa(X))\;+\;H\big(X\mid\kappa(X)\big).$$
+
+Um preditor que produz a Forma em vez do texto de superfície poupa o segundo termo. Se as variantes de superfície dentro de uma classe forem igualmente prováveis, a economia por Forma é
+
+$$\Delta H_f=\log_2 m_f\ \text{bits},\qquad \rho_f=\frac{\lvert x\rvert}{\lvert f\rvert}\quad(\text{bytes of surface code per byte of Form}).$$
+
+É por isso que o preditor opera no espaço quociente $X/\!\sim\;\cong\;\Omega$: ele aprende um alvo menor e mais limpo, e cada ponto nele é algo que o verificador pode julgar.
+
+**Modelos como variedades de baixa dimensão.** Um modelo ou um esquema sem código é uma Forma com lacunas. Se um modelo tem $h$ lacunas, cada uma assumindo um dos $v$ valores, ele cobre $v^h$ Formas e é endereçado por $h\log_2 v$ bits, tipicamente muito menos que $\log_2\lvert\Omega_n\rvert$. O espaço de programas é vasto; os programas que as pessoas realmente desejam situam‑se em folhas finas dentro dele. Esta é uma conjectura, coerente com a observação de que o código é mais previsível que a linguagem natural [T24] e com embeddings de código aprendidos nos quais “objetos semanticamente semelhantes são mapeados para vetores próximos” [T35, Sec. 1].
+
+**Medições de corpus.** H1 tem um piso publicado para a população escrita à mão. A mediana de $\rho$ = b(code)/b(P) em 185 programas é 9.34 contra o Python emitido, acima do limiar de 5. A execução foi registrada antes de ser medida. A seção de dados do proponente acima fornece o intervalo interquartílico, a figura da versão‑1 de 9.31 em 173 programas, e a verificação de descrição comprimida. A economia $\Delta H$ em um corpus de elevação ainda está planejada. Esse corpus está vazio até que o pipeline de elevação seja público. A figura 9.34 é um piso medido para programas escritos à mão. Não se trata de uma medição de programas elevados ou escritos por modelo.
+
+<div id="part-3-kinematics-a-newtonian-form-of-computing" class="anchor-alias" aria-hidden="true"></div>
+
+### Parte 3. Cinemática: uma forma newtoniana de computação
+
+Lance uma pedra e, dado onde ela começa, quão rápido está e o que a empurra, Newton lhe diz onde ela aterrará. Um programa determinístico tem o mesmo caráter e, de forma ainda mais estrita: sem ar, sem vento, sem arredondamento do mundo. Dado onde ele começa e quais eventos chegam, todo o seu futuro está fixo.
+
+**Trajetória.** Para o estado inicial $s_0$ e o fluxo de eventos $e_0,e_1,\dots,e_{T-1}$,
+
+$$s_{t+1}=\delta(s_t,e_t),\qquad t=0,\dots,T-1.$$
+
+A correspondência proposta aqui, como analogia:
+
+- o estado $s_t$ desempenha o papel de posição;
+- um evento $e_t$ desempenha o papel de impulso aplicado;
+- $\delta$ desempenha o papel da equação de movimento;
+- o registro de eventos é um histórico a partir do qual a trajetória pode ser reproduzida exatamente, o que corresponde à reversibilidade no registro mesmo quando $\delta$ descarta informação; Bennett demonstra que “é possível reprogramar qualquer computação determinística como uma sequência de passos logicamente reversíveis, desde que a computação possa salvar uma cópia de sua entrada” [T12];
+- a contagem de passos ou combustível $t$ desempenha o papel de tempo;
+- energia por transição, em joules, é o custo.
+
+**Piso de energia.** Landauer argumentou que a irreversibilidade lógica “está associada à irreversibilidade física e requer uma geração mínima de calor, por ciclo de máquina, tipicamente da ordem de kT para cada função irreversível” [T11, abstract, p. 183]; redefinir um bit corta a entropia em k log<sub>e</sub> 2 e assim fornece “0,6931 kT por bit restaurado ao ambiente” [T11, Sec. 4, p. 187]. O princípio de Landauer, como Bennett o restata posteriormente, afirma que uma operação logicamente irreversível como a exclusão “deve ser acompanhada por um aumento correspondente de entropia” no ambiente [T12, abstract]. O piso por bit apagado é
+
+$$E_{\min}=k_B T\ln 2\approx 2.87\times10^{-21}\ \mathrm{J}\quad\text{at } T=300\ \mathrm{K}.$$
+
+Se a transição $t$ apaga $b_t$ bits, então $E_{\text{total}}\ge k_B T\ln 2\sum_t b_t$. Lloyd acrescenta um limite superior de velocidade: “a velocidade com que um dispositivo físico pode processar informação é limitada por sua energia” [T14, abstract], no máximo $2E/\pi\hbar$ operações por segundo para energia $E$, onde $\hbar=1.0546\times10^{-34}\ \mathrm{J\,s}$ é a constante de Planck reduzida. Chips reais gastam muitas ordens de magnitude acima do piso de Landauer por operação; o projeto RCE não tem figura medida de joules‑por‑operação no momento da escrita, e H9 (Seção 8 abaixo) é a medição planejada. Kolmogorov sinalizou a dimensão de custo ausente em 1965: suas medidas de complexidade “não permitem a ‘dificuldade’ de preparar um programa p para passar de um objeto x a um objeto y” [T28, Sec. 4, p. 167]. Wolpert, citando Boyd, observa como advertência que “implementações diferentes da mesma computação (entrada para saída) podem ter consequências termodinâmicas radicalmente diferentes” [T15, Sec. I.B]: a energia pertence ao programa e à máquina conjuntamente.
+
+**Definição (programa cinemático).** $P$ é cinemático se, para todo $s_0$ e todo fluxo finito de eventos,
+
+$$\text{(i)}\ \operatorname{Var}[s_T]=0,\qquad \text{(ii)}\ E_{\text{total}}=\sum_{t=0}^{T-1}c(s_t,e_t)\ \le\ c_{\max}\,F$$
+
+onde $c: S\times E\to\mathbb{R}_{\ge0}$ é uma tabela de custo em joules para uma máquina declarada, $c_{\max}$ sua maior entrada, e $F$ o limite de combustível (passos máximos) da prova de terminação. A condição (i) afirma que a trajetória tem variância zero; a condição (ii) afirma que seu custo pode ser calculado, ou ao menos limitado, antes de ser executado. A própria tabela de custo da RCE, no Apêndice C.6.4 de sua especificação, está em unidades inteiras, não em joules; uma tabela em joules por unidade para uma máquina declarada é uma proposta no repositório da especificação, e H9 é o teste.
+
+**Contrast.** Um gerador estocástico devolve uma amostra $x\sim p_\theta(x\mid\text{prompt})$ de um modelo com parâmetros $\theta$. Sua saída é uma distribuição, sua correção é uma probabilidade, e seu custo só é conhecido após a amostragem. O RCE-JEPA mantém o gerador estocástico mas torna o objeto que ele gera cinemático, e insere um verificador determinístico entre eles.
+
+<div id="part-4-a-world-model-whose-physics-is-known-exactly" class="anchor-alias" aria-hidden="true"></div>
+
+### Parte 4. Um modelo de mundo cuja física é conhecida exatamente
+
+A maioria dos modelos de mundo são construídos em névoa. Um robô aprende física a partir de câmeras desfocadas; um agente de jogo infere regras que não pode ler. Código é o raro mundo onde as regras estão escritas.
+
+**Modelo de mundo.** No sentido JEPA [LeCun 2022, citado acima], um modelo de mundo é um preditor $\hat z_{t+1}=g_\phi(z_t,a_t)$ da próxima representação latente $z_{t+1}=\mathrm{enc}(s_{t+1})$ a partir da atual e de uma ação $a_t$, com parâmetros aprendidos $\phi$. Para código o mundo é o espaço de estados do Formulário e a ação é um evento, de modo que o alvo é calculado exatamente por $\delta$:
+
+$$\mathcal{L}(\phi)=\mathbb{E}\,\big\lVert g_\phi\big(\mathrm{enc}(s_t),e_t\big)-\mathrm{enc}\big(\delta(s_t,e_t)\big)\big\rVert^2 .$$
+
+Não há ruído aleatório (irreducível) no alvo. MuZero parte da observação de que algoritmos de planejamento antecipado “todos dependem do conhecimento das dinâmicas do ambiente, como as regras do jogo ou um simulador preciso”, e aprende um modelo em vez disso [T1, Sec. 1]; para código, essas regras são $\delta$, disponíveis na íntegra.
+
+**Contraste com modelos que aprendem a física.** CWM, o Modelo de Mundo de Código [B23], é um decodificador treinado parcialmente em rastros de execução Python e em trajetórias de agentes. A predição de rastros nesse relatório é um interpretador aprendido, e os autores o chamam de “primeiro passo”, deixando um depurador neural como trabalho futuro. V-JEPA 2 [B1] aprende sua física a partir de vídeo, incluindo 62 horas de vídeo de robô no resumo reportado, e o preditor condicionado à ação usa menos de 62 horas de vídeo de robô não rotulado. Seu controle preditivo de modelo levou cerca de 16 segundos por ação. No Formulário, $\delta$ é a física, e ela é exata, de modo que não há ruído aleatório a ajustar. O que ainda resta ao proponente aprender está descrito na Seção 7 abaixo: intenção para o Formulário, orientação de busca e o residual que a escada não fecha.
+
+**Decodificação de intenção como problema inverso.** Dada uma intenção $I$ declarada como restrições, encontre um Formulário cujas trajetórias a satisfaçam. Isto é escrito como minimização de energia no sentido de modelos baseados em energia [T36, T2]:
+
+$$\mathcal{E}(I,f)=\alpha\,V(f)+\beta\,d\big(\tau(f),\sigma(I)\big)+\gamma\,C(f),\qquad z^\star=\arg\min_{z}\ \mathcal{E}\big(I,\mathrm{dec}(z)\big).$$
+
+Aqui $V(f)$ é o número de violações do verificador (adimensional); $\tau(f)$ o conjunto de trajetórias de $f$ nos eventos de exemplo da intenção; $\sigma(I)$ as trajetórias que a intenção requer; $d$ uma distância entre elas (contagem adimensional de estados incompatíveis); $C(f)$ a energia prevista por execução em joules; $\alpha,\beta\ge0$ pesos adimensionais e $\gamma\ge0$ em $\mathrm{J}^{-1}$; $\mathrm{dec}$ o decodificador do ponto latente para o Formulário. O minimizador é decodificado, depois verificado; o verificador, não $\mathcal{E}$, decide a aceitação. Du e Mordatch observam que “a soma de duas ou mais energias corresponde a satisfazer todos os seus objetivos ou restrições” [T36, Sec. 1], razão pela qual os três termos podem ser somados. LeCun et al. acrescentam um aviso: “combinar dois modelos baseados em energia treinados separadamente não é trivial: não há garantia a priori de que suas escalas de energia sejam compatíveis” [T2, Sec. 1.3, p. 6]. Os pesos $\alpha,\beta,\gamma$ devem, portanto, ser calibrados, não assumidos, e seus valores são reportados com cada experimento.
+
+<div id="part-5-consequences-as-testable-predictions" class="anchor-alias" aria-hidden="true"></div>
+
+### Parte 5. Consequências como previsões testáveis
+
+Uma tese que não pode perder não é uma tese. Cada parte acima corresponde a um teste que poderia prová‑la errada.
+
+- Parte 1 e T2 (compressão em Forma) são testadas por H1, H3 e H10.
+- Parte 3 (cinemática, contabilidade de energia) é testada por H2, H4, H8 e H9.
+- Parte 4 (modelo mundial, problema inverso) é testada por H5 a H7.
+- O proponente é testado por H11 a H13, sobre o residual da escada determinística que H14 mede. H15 compara classes de proponentes nesse residual e está incompleto. Todas as quinze hipóteses, com métricas e limites, estão em uma tabela em ordem numérica na Seção 8 abaixo.
+
+![Three panels: a large cloud of surface programs; arrows collapse it onto a thin curved sheet of canonical Forms with the entropy saving log2 m bits; a trajectory of states s0 to s4 under the transition function delta, each step annotated with energy in joules and a total bounded by the fuel bound](/figures/rce-jepa/thesis.svg)
+
+*Figura 5. Informação e cinemática. Esquerda: espaço de programas, onde muitos programas de superfície X expressam o mesmo comportamento. Centro: a canonização κ colapsa cada classe em uma única Forma em uma variedade de baixa dimensão Ω, economizando ΔH = log2 m bits para uma classe de m variantes igualmente prováveis. Direita: uma Forma move‑se deterministicamente, s(t+1) = δ(s(t), e(t)), cada transição carregando um custo c em joules, com o total limitado por c_max · F antes da execução. Um diagrama conceitual, não dados..*
+
+<div id="chain" class="anchor-alias" aria-hidden="true"></div>
+
+### A cadeia demonstrável: hipótese, camada, evidência
+
+Uma afirmação sobre “Leis da Codificação” é tão forte quanto seu elo mais fraco. A tabela indica, para cada hipótese, qual das quatro camadas de lei ela testa, e então a segue através de três camadas de implementação: o algoritmo (a matemática do Formulário e do preditor), o ambiente de software (verificador, corpus, harness) e o hardware (a máquina e seu medidor). Cada elo recebe um de quatro rótulos. **[C] literatura citada:** um resultado publicado, lido como está no registro. **[M] dados medidos:** um número medido pelos autores do OpenIE em uma execução registrada antes de ser executada, com sua fonte em um repositório público. **[X] medido, não suportado:** uma medição registrada cujo resultado não apoia a hipótese como pretendido. **[P] experimento planejado:** um teste ainda não realizado. Um elo que é parcialmente medido carrega tanto [M] quanto [P]. Quatro hipóteses têm elos medidos, conforme a seção Status ao final da página relata. H15 não tem elo medido. As quatro são: H1 nos programas escritos à mão do corpus Form (a seção de dados do proponente acima), H7 apenas em seu braço fuzzado, H8 em seis alvos, e H14, cujas três execuções registradas [B30, B31, B32] a suportam por sua regra registrada (Seção 8 abaixo). Um elo medido registra que uma execução registrada existe e o que encontrou; não é, por si só, um veredicto de apoio. A cadeia é um plano para transformar cada [P] restante em [M] ou [X], e qualquer [P] ainda pode quebrá‑la.
+
+![Grid of fourteen hypotheses H1 to H14 against three layers, algorithm, software environment and hardware; each cell coloured by evidence type: cited literature, measured data, measured but not supported, planned experiment, or not applicable. At the software layer H1 and H7 carry measured data alongside planned experiments, H8 and H14 carry measured data; at the hardware layer H8 carries cited literature and measured data](/figures/rce-jepa/chain.svg)
+
+*Figura 6. A cadeia demonstrável para “Leis da Codificação”. Linhas: hipóteses H1 a H14, cada uma marcada com a camada de lei que testa. H15 não está desenhada na figura. A tabela a inclui como trabalho planejado, sem elo medido. Colunas: camadas de implementação, algoritmo, ambiente de software, hardware. Azul: literatura citada. Verde: dados medidos. Vermelhão: medido, não suportado. Laranja: experimento planejado. Cinza: não aplicável. A tabela abaixo fornece o conteúdo e a fonte de cada célula..*
+
+| ID | Hipótese | Camada de lei testada | Algoritmo | Ambiente de software | Hardware |
+| --- | --- | --- | --- | --- | --- |
+| H1 | Form muito menor que a fonte | "Laws of Programming Languages" (canonical meaning) and "Laws of Coding" | [C] Regra da cadeia: prever o Form salva $H(X\mid\kappa(X))$ bits [T10] | [M] Mediana $\rho$ de 9,34 sobre 185 programas escritos à mão do corpus Form contra o Python emitido, acima do limiar de 5, registrado antes da execução (seção de dados do proponente acima). [P] $\rho$ na serialização canônica sobre o corpus lift, vazio até que o pipeline lift seja público | Não aplicável (uma contagem de bits) |
+| H2 | Verificador barato relativo à geração | "Laws of Programming Languages" | [C] Validar um resultado pode ser mais fácil que provar o gerador: alocador de registradores do CompCert (Leroy, Seção 4 abaixo) | [P] Tempo de parede do verificador e ciclos por candidato | [P] $C_{\text{check}}/E_{\text{model}}$ em joules em um medidor nomeado |
+| H3 | Predição latente atinge aceitação útil | "Laws of Coding" | [C] Predição no espaço de representação (I-JEPA e V-JEPA 2, Seção 4 abaixo; LLM-JEPA, Huang, LeCun e Balestriero, Seção 5 abaixo) | [P] pass@1 em tarefas de intenção‑para‑Form mantidas | Não aplicável |
+| H4 | Energia por programa aceito diminui | "Laws of Computation" | [C] Piso de Landauer $k_BT\ln 2$ por bit apagado [T11, T12] | [P] $J_{\text{acc}}$ para ambos os braços em um único harness | [C] Cerca de 3 a 4 J por token para um modelo de 65B (Samsi et al.); acesso à memória domina a aritmética [T26]. [P] Medidor do dispositivo, ocioso subtraído |
+| H5 | Ranking de energia favorece Forms válidos | "Laws of Coding" | [C] Energias se somam para combinar restrições [T36] | [P] AUROC de energia para aceitos versus requer mudança | Não aplicável |
+| H6 | Aplicativos de referência são codificáveis | "Laws of Programming Languages" | [C] Nenhum procedimento geral decide propriedades semânticas não triviais [T9, T3], daí a linguagem restrita | [P] 7 de 7 aplicativos de referência como Forms verificados | [P] Reprodução dos mesmos Forms em diferentes máquinas (com H8) |
+| H7 | Segurança independente do modelo | "Laws of Programming Languages" | [C] Após cerca de seis CPU‑anos, Csmith não encontrou erros de código errado no CompCert (Yang et al., Seção 4 abaixo) | [M] Braço fuzzado: 0 violações de cinco invariantes declarados sobre 1.275 mutantes aceitos pelo verificador em duas execuções, cada uma registrada antes de ser executada (`rce/bench/adversarial/`). [P] Forms adversariais gerados pelo modelo, um braço que ainda não existe | [C] Canais laterais de execução especulativa estão fora da semântica do conjunto de instruções [T26]; fora do escopo do Form, declarado |
+| H8 | Determinismo | "Leis de Linguagens de Programação" e "Leis de Computação" | [C] Qualquer computação determinística pode ser tornada logicamente reversível dado uma cópia de sua entrada [T12] | [M] Reprodução bit a bit de 10.500 fluxos de eventos semeados com 0 linhas divergentes em relação à referência, registrado antes da execução (`rce/bench/determinism/`) | [C] Interrupções chegam "em momentos imprevisíveis e irreproduzíveis" [T8]. [M] A mesma execução em seis alvos: quatro conjuntos de instruções (x86_64, aarch64, s390x big-endian, wasm32) e três sistemas operacionais (Linux, macOS, Windows) |
+| H9 | Custo previsto antes da execução | "Leis de Computação" | [C] Limites de energia aceleram [T14]; limite de custo $c_{\max}F$ (Parte 3 acima) | [P] Predição por tabela de custos por Form | [C] Implementações de uma computação diferem em custo termodinâmico [T15]. [P] Erro mediano dentro de 20% dos joules medidos |
+| H10 | Aprender no quociente economiza dados | "Leis de Codificação" | [C] Melhor predição é melhor compressão [T32]; comprimento de descrição mínima [T33] | [P] Aceitação igual com no máximo metade dos exemplos de treinamento | [P] Energia de treinamento medida para ambos os preditores |
+| H11 | Energia monótona em distância de edição | "Leis de Codificação" | [C] Um ranking de custo monótono faz planos que se desviam mais do objetivo custarem mais (Chahe et al., [B19] na seção do proponente) | [P] Fração de famílias onde a energia aumenta com a distância de edição | Não aplicável |
+| H12 | Cabeça de decisão calibrada em resultados de portas | "Leis de Codificação" e "Leis de Computação" | [C] Decisões tipadas calibradas são mensuráveis: ECE de Choice agregado 0.028 para um modelo de decisão hospedado ([B7]) | [P] ECE por tipo de decisão após 10<sup>4</sup> recebimentos, contra uma tabela de frequência | [P] Latência e joules por decisão em um dispositivo nomeado |
+| H13 | Discreto contra latente contínuo | "Leis de Codificação" | [C] Tokens discretos mantêm a predição de longo horizonte estável onde latentes contínuos acumulam erro ([B3]) | [P] Sucesso de planejamento em comprimentos de edição 1, 5 e 20 | Não aplicável |
+| H14 | Compartilhamento de escada determinística | "Leis de Codificação" | [C] Engrenagens exatas (lookup, regras, síntese) executam antes de qualquer modelo na cascata do artigo RCE, com falsificador RCE-F1 no compartilhamento que fecham sem chamada de modelo | [M] Fração de um conjunto de tarefas registrado fechado pela escada pública sem chamadas de modelo: três execuções registradas [B30, B31, B32]; execução 3 fecha 111 de 151 (73.5%), no ou acima do 10% registrado, portanto H14 é suportado por sua regra registrada, e 1 de 41 mudanças da história real (2.4%) (Seção 8 abaixo) | Não aplicável |
+| H15 | Classes de proponente no residual. Inacabado | "Leis de Codificação" | [P] Quatro classes nas 40 tarefas residuais, energia igual, aceitação de porta. Nenhuma execução | [P] A comparação não foi executada | [P] Energia igual quando existe um medidor nomeado. Nenhum valor em joules é declarado |
+
+<div id="who-holds" class="anchor-alias" aria-hidden="true"></div>
+
+### Quem sustenta estas visões e por quê
+
+Ideias raramente chegam sozinhas. Cada parte da tese ecoa argumentos feitos, por suas próprias razões, por pessoas que nunca ouviram falar do RCE. Elas são listadas como observações de convergência: concordância em direção, nunca confirmação das alegações do projeto RCE. Onde os autores do OpenIE leram uma fonte na íntegra, ela é citada com sua seção; onde não o fizeram, a entrada indica isso e não cita nada.
+
+**Aqueles que já pensam assim.** A ideia de que programação e computação deveriam ter leis próprias não se originou no projeto RCE, e é mais antiga que a maior parte do campo. Esta página se junta a uma conversa que ocorre há pelo menos quarenta anos e a lista como convergência, não como prioridade.
+
+- **Hoare e colegas, "Laws of Programming" (1987).** Nove autores argumentaram que “os programas procedurais convencionais são expressões matemáticas, e que estão sujeitos a um conjunto de leis tão rico e elegante quanto o de qualquer outro ramo da matemática, engenharia ou ciência natural” [T7, p. 672], e apresentaram quase cem delas. Eles também nomearam a lacuna que permanece (citado na linha do tempo acima) [T7, p. 686].
+- **Bennett e Landauer, "The Fundamental Physical Limits of Computation" (1985).** “Estamos buscando leis gerais que devem reger todo o processamento de informação, não importa como ele seja realizado” [T13, p. 48]. Eles acrescentam um aviso que esta página compartilha: “Na medida em que encontramos limites, eles estão terrivelmente longe dos limites reais da tecnologia moderna” [T13, p. 48]. O resultado deles para máquinas reversíveis: “Não há, portanto, quantidade mínima de energia que deva ser gasta para executar qualquer computação dada” [T13, p. 51], enquanto a eliminação e a correção de erros ainda dissipam energia, pois, em suas palavras, “Qualquer dispositivo corretivo deve, portanto, dissipar alguma energia” [T13, p. 51].
+- **McKee, "A few (proposed) fundamental laws of computation" (1995).** Um breve ensaio na IEEE Computer propondo leis para o campo [T31]. Os autores do OpenIE não obtiveram o texto, de modo que ele não é citado ou resumido além de seu título.
+- **Carette, James e Sabry, "Embracing the laws of physics" (2022).** Eles observam que a teoria quântica e a termodinâmica “implicam que a informação é uma quantidade conservada dos processos físicos e, portanto, das operações computacionais primitivas”, e estabelecem “re‑desenvolver modelos computacionais fundamentais de forma que abracem o princípio da conservação da informação” [T16, abstract, PDF p. 2]. Seu resumo final: “Todo o edifício da ciência da computação, incluindo seus modelos convencionais de computação, linguagens de programação e lógicas, está fundado na física clássica” [T16, Sec. 5.5, p. 45].
+- **Lehman (1980)** apresenta cinco regularidades empíricas da evolução de software para programas incorporados ao mundo [T6]. A primeira, “Continuing Change”: um programa “que é usado e que, como implementação de sua especificação, reflete alguma outra realidade, sofre mudança contínua ou torna‑se progressivamente menos útil” [T6, Table I, p. 1068]. Ele deixa claro que essas não são leis da física: “Elas, no entanto, claramente não são imutáveis” como as regularidades físicas e químicas, pois “resultam dos hábitos e práticas de pessoas e organizações” [T6, Sec. V-A, p. 1069], a mesma distância que esta página mantém entre “Laws of Coding” e “Laws of Computation”. **Brooks** distinguiu “tarefas essenciais, a modelagem das estruturas conceituais complexas que compõem a entidade de software abstrata” das acidentais [T23, PDF p. 1]. **Dijkstra** observou que um computador abrange uma razão de grãos de tempo de “10<sup>10</sup> ou mais”, o que o torna “o primeiro a nos proporcionar um ambiente onde artefatos altamente hierárquicos são tanto possíveis quanto necessários” [T8].
+
+Os grupos abaixo cada um sustenta um fio da mesma ideia.
+
+**Compressão como compreensão (Parte 1, T2).** Solomonoff, Kolmogorov e Chaitin definiram complexidade como a descrição mais curta [T27, T28, T29]; Rissanen a transformou em uma regra de seleção de modelo [T33]; o prêmio de Hutter e AIXI e as palestras de Sutskever a estendem à inteligência (não lido aqui; não citado). Delétang e colegas da DeepMind argumentam que “um modelo que comprime bem generaliza bem” [T32, Sec. 1] e mostram que grandes modelos de linguagem comprimem imagens e áudio. Schmidhuber argumenta que se a história do universo fosse computável, sua explicação mais simples “seria o programa mais curto que a computa” [T34, Sec. 1]. Divergência: Delétang et al. alertam que “escalar além de certo ponto deteriorará o desempenho da compressão, pois os parâmetros do modelo precisam ser contabilizados” [T32, Sec. 1], e Chollet sustenta que “medir apenas a habilidade em qualquer tarefa dada não captura a inteligência” [T37, abstract]; compressão de um corpus fixo não equivale ao aprendizado eficiente de novas habilidades.
+
+**Computação como física (Parte 3).** Landauer [T11], Bennett [T12, T30] e Lloyd [T14] defendem que o processamento de informação é um processo físico com custos e limites energéticos. Lloyd: “Limites de energia limitam a velocidade. Entropia limita a memória.” [T14, Sec. 1.5]. A termodinâmica estocástica de Wolpert trata a computação, incluindo autômatos finitos, como física fora do equilíbrio: “Um dos aspectos mais proeminentes dos computadores é que eles são inerentemente sistemas fora do equilíbrio” [T15, abstract]; autômatos finitos são abordados na Sec. XII [T15]. A lógica conservadora de Fredkin e Toffoli [T38], as palestras de Feynman sobre computação, o “it from bit” de Wheeler e o universo computacional de Wolfram apontam na mesma direção (não lido aqui). Divergência: Bennett registra objeções de que o princípio de Landauer é falso, ou, por ser consequência da segunda lei da termodinâmica, desnecessário ou insuficiente para exorcizar o demônio de Maxwell, e responde a elas [T12]; o debate trata de fundamentos, não do tamanho do piso. Uma segunda divergência é histórica: Landauer escreveu “Acreditamos que dispositivos que exibem irreversibilidade lógica são essenciais para a computação” [T11, Sec. 3, p. 186], e a construção de Bennett em 1973 respondeu que não são, ao custo de cerca de duas vezes mais passos e uma grande história temporária [T30, pp. 525, 529]; Bennett então estimou que “kT ln 2 é, como Landauer argumentou [1], um limite inferior aproximado” apenas para máquinas que descartam cerca de um bit por passo [T30, p. 532].
+
+**Máquinas de estado e semântica determinística (Parte 1, T3).** As máquinas de Turing [T9], o cálculo de Milner [T18], os statecharts de Harel [T19], o TLA de Lamport, que trata um programa como um conjunto de comportamentos sobre estados [T20], as linguagens síncronas Esterel e Lustre (Berry, Halbwachs) [T21, T22], a programação reativa funcional de Elliott [T39], a arquitetura Elm, os testes de simulação determinística no FoundationDB e no TigerBeetle, e a visão de Hoare e Dijkstra de programas como predicados [T17] tratam um programa como uma máquina de estado com semântica exata. Elas são citadas aqui como histórico. As páginas do FoundationDB e do TigerBeetle e o guia do Elm foram lidos integralmente para a seção de convergência abaixo (suas linhas FoundationDB, TigerBeetle e Arquitetura Elm); os demais não foram lidos integralmente para esta seção, de modo que nenhum deles é citado. Limites: Turing [T9] e Rice [T3] delimitam o que pode ser decidido sobre programas arbitrários; a semântica determinística é fácil de enunciar para uma linguagem fechada e difícil de manter em hardware real, threads e redes.
+
+**Programas como dados em uma variedade de baixa dimensão (Parte 2).** Hindle et al. descobriram que o software é “natural”, mais repetitivo que o inglês [T24] (não lido integralmente aqui). O code2vec de Alon et al. mapeia código para vetores onde “objetos semanticamente semelhantes são mapeados para vetores próximos” [T35, Sec. 1]. A síntese baseada em esboço (Solar-Lezama), o aprendizado de bibliotecas do DreamCoder (Ellis et al. 2021, citado na Seção 2 abaixo; seu suplemento descreve aprendizado de bibliotecas como “refatoração automática” [Ellis et al. 2021, supplement S3.2, p. 39]) e a pesquisa de Allamanis sobre aprendizado de máquina em código apontam na mesma direção (Solar-Lezama e Allamanis não lidos aqui). Divergência: os autores do code2vec relatam que “quando se dão nomes de variáveis não informativos, ofuscados ou adversariais, a previsão do rótulo costuma ser menos precisa” [T35, Sec. 7]: embeddings aprendidos podem rastrear nomes ao invés de significado, que é a lacuna que uma Forma canônica pretende fechar.
+
+**Modelos de mundo e predição latente (Parte 4).** O programa JEPA de LeCun na Meta FAIR (citado acima), Ha e Schmidhuber, que “aprendem uma representação espacial e temporal comprimida do ambiente” [T40, abstract], MuZero [T1], redes neurais informadas por física, onde conhecimento físico prévio “pode atuar como um agente de regularização que restringe o espaço de soluções admissíveis a um tamanho manejável” [T41, Sec. 1], e redes neurais Hamiltonianas, motivadas por modelos cuja simulação “desvia ao longo do tempo para estados de energia mais altos ou mais baixos” [T42, Sec. 1], incorporam estrutura nas dinâmicas aprendidas. Redes Lagrangianas (Cranmer), Dreamer (Hafner) e aprendizado de operadores de Koopman compartilham o objetivo (não lidos aqui). Divergência: Ha e Schmidhuber descobriram que um modelo de mundo aprendido “será explorável pelo controlador, mesmo que no ambiente real tais explorações não existam” [T40, Sec. 4.5]; Greydanus et al. observam que seu método assume uma quantidade conservada e, portanto, não pode modelar atrito [T42, Sec. 3.2]. Para código, o verificador é a guarda contra a exploração dos erros do modelo.
+
+**Modelos baseados em energia (Parte 4).** Hopfield [T43] e Hinton [T44] enquadram a aprendizagem como a modelagem de uma superfície de energia (não lida aqui); Du e Mordatch [T36] mostram geração implícita ao descer uma energia aprendida, e LeCun (citado acima) coloca a minimização de energia no centro da inferência JEPA. O desacordo dentro do campo diz respeito à estabilidade do treinamento e ao custo de amostragem, que Du e Mordatch discutem [T36].
+
+<div id="lane-3-views" class="anchor-alias" aria-hidden="true"></div>
+
+### Faixa 3, vista de fora do projeto
+
+Seção 3 abaixo registra programas que reconcebem o que é computação, programação ou codificação. São observações de convergência. A seção de compromissos abaixo mapeia alguns dos mesmos nomes para os sete compromissos, um a um.
+
+- **Unison.** Uma definição é o hash de sua árvore sintática. Nomes são uma visão. Dois textos com a mesma árvore são a mesma definição. Essa é a metade de identidade de uma Forma canônica.
+- **egg.** Um e‑graph contém um conjunto de programas equivalentes como uma única estrutura (Willsey et al., Seção 3 abaixo). As Leis da Codificação usam o mesmo quociente: muitos programas de superfície, uma Forma.
+- **Interaction nets.** HVM2 (o modelo de combinadores de interação da Higher Order Company) trata a computação como reescrita local, com paralelismo inerente ao modelo. A Seção 3 cita o modelo e não inclui as figuras desse artigo.
+- **Assistentes de prova.** Lean, Dafny e Verus tornam a correção um objeto verificável. O benchmark vericoding é o piso medido citado na Seção 3. AlphaProof, DeepSeek-Prover-V2, Kimina-Prover Preview e Goedel-Prover utilizam o kernel Lean como porta de entrada. Nos relatórios lidos aqui, o domínio é a matemática.
+- **Elliott, design denotacional.** “O significado da instância é a instância do significado.” Um modelo semântico define a correção e a transporta para a implementação (Elliott, 2009, revisado 2016). É uma disciplina manual. É a mesma exigência de que uma Forma tenha um único significado.
+- **Propagadores.** Radul e Sussman (2009) descrevem a computação como máquinas autônomas que adicionam informação a células compartilhadas, unificando expressões e restrições. O relatório é teoria com uma implementação em Scheme.
+- **Lean, como programa de engenharia.** O roteiro do Lean FRO (Focused Research Organization) Ano 1, de agosto de 2023 a julho de 2024, lista uma biblioteca padrão, um sistema de módulos, Lake e Reservoir, automação de provas, integração de aprendizado de máquina e um novo gerador de código. Anos posteriores não são usados aqui.
+- **Chollet.** Inteligência como eficiência de aquisição de habilidades, com o Corpus de Abstração e Raciocínio (ARC) como medida [T37]. Os resultados do Prêmio ARC na Seção 3 são a medição posterior desse programa. Palestras após 2019 não são citadas isoladamente.
+
+![Grid mapping six research communities, compression, computation as physics, state machines, programs as data, world models and energy-based models, to thesis parts T1 to T4, with filled dots where a community's argument bears on a part](/figures/rce-jepa/groups.svg)
+
+*Figura 7. Quais comunidades influenciam qual parte da tese. Um ponto preenchido indica uma observação de convergência, não confirmação. Parte 1: sistema de informação finito; T2: compressão em Forma; T3: cinemática e energia; T4: modelo de mundo e problema inverso.*
+
+<div id="thesis-references" class="anchor-alias" aria-hidden="true"></div>
+
+### Referências da tese
+
+Registro: Completo = lido na íntegra; Parcial = lido em parte; Indisponível = não lido (paywalled ou não recuperado), listado apenas com identificador e nunca citado.
+
+1. [T1] J. Schrittwieser et al., "Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model", Nature 588 (2020). [arXiv:1911.08265](https://arxiv.org/abs/1911.08265). Full.
+2. [T2] Y. LeCun et al., "A tutorial on energy-based learning", 2006. [PDF](http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf). Full.
+3. [T3] H. G. Rice, "Classes of recursively enumerable sets and their decision problems", Trans. AMS 74 (1953). [doi:10.1090/S0002-9947-1953-0053041-6](https://doi.org/10.1090/S0002-9947-1953-0053041-6). Unavailable.
+4. [T4] M. A. Di Liscia, "Johannes Kepler", Stanford Encyclopedia of Philosophy. [plato.stanford.edu](https://plato.stanford.edu/entries/kepler/). Full.
+5. [T5] G. E. Smith, "Newton's Philosophiae Naturalis Principia Mathematica", Stanford Encyclopedia of Philosophy. [plato.stanford.edu](https://plato.stanford.edu/entries/newton-principia/). Full.
+6. [T6] M. M. Lehman, "Programs, life cycles, and laws of software evolution", Proceedings of the IEEE 68(9) (1980). [doi:10.1109/PROC.1980.11805](https://doi.org/10.1109/PROC.1980.11805). Full.
+7. [T7] C. A. R. Hoare, I. J. Hayes, He Jifeng, C. C. Morgan, A. W. Roscoe, J. W. Sanders, I. H. Sorensen, J. M. Spivey and B. A. Sufrin, "Laws of Programming", Communications of the ACM 30(8), 672-686 (1987). [doi:10.1145/27651.27653](https://doi.org/10.1145/27651.27653); [PDF copy](https://www.cs.ox.ac.uk/bill.roscoe/publications/20.pdf). Full.
+8. [T8] E. W. Dijkstra, "The Humble Programmer", ACM Turing Lecture 1972, EWD 340. [Transcription](https://www.cs.utexas.edu/~EWD/transcriptions/EWD03xx/EWD340.html); [doi:10.1145/355604.361591](https://doi.org/10.1145/355604.361591). Full.
+9. [T9] A. M. Turing, "On computable numbers", Proc. London Math. Soc. 42 (1936). [doi:10.1112/plms/s2-42.1.230](https://doi.org/10.1112/plms/s2-42.1.230). Unavailable.
+10. [T10] C. E. Shannon, "A mathematical theory of communication", Bell System Technical Journal 27 (1948). [doi:10.1002/j.1538-7305.1948.tb01338.x](https://doi.org/10.1002/j.1538-7305.1948.tb01338.x); [reprint](https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf) (page numbers refer to this reprint). Full (all 55 pp. of the reprint, Parts I to V and Appendices 1 to 7).
+11. [T11] R. Landauer, "Irreversibility and heat generation in the computing process", IBM J. Res. Dev. 5 (1961). [doi:10.1147/rd.53.0183](https://doi.org/10.1147/rd.53.0183). Full.
+12. [T12] C. H. Bennett, "Notes on Landauer's principle, reversible computation, and Maxwell's Demon", 2003. [arXiv:physics/0210005](https://arxiv.org/abs/physics/0210005). Full.
+13. [T13] C. H. Bennett and R. Landauer, "The Fundamental Physical Limits of Computation", Scientific American 253(1), 48-57 (1985). [doi:10.1038/scientificamerican0785-48](https://doi.org/10.1038/scientificamerican0785-48); [PDF copy](http://physics.bu.edu/~pankajm/PY541/Bennett-Landauer.pdf). Full (all text pages of the linked copy, pp. 48-56).
+14. [T14] S. Lloyd, "Ultimate physical limits to computation", Nature 406 (2000). [arXiv:quant-ph/9908043](https://arxiv.org/abs/quant-ph/9908043). Full.
+15. [T15] D. H. Wolpert, "The stochastic thermodynamics of computation", J. Phys. A 52 (2019). [arXiv:1905.05669](https://arxiv.org/abs/1905.05669). Full.
+16. [T16] J. Carette, R. P. James and A. Sabry, "Embracing the laws of physics: Three reversible models of computation", Advances in Computers (2022). [doi:10.1016/bs.adcom.2021.11.009](https://doi.org/10.1016/bs.adcom.2021.11.009); [author copy](https://www.cas.mcmaster.ca/~carette/publications/EmbracingTheLaws.pdf). Full.
+17. [T17] C. A. R. Hoare, "An axiomatic basis for computer programming", CACM 12 (1969). [doi:10.1145/363235.363259](https://doi.org/10.1145/363235.363259). Unavailable.
+18. [T18] R. Milner, A Calculus of Communicating Systems, LNCS 92 (1980). [doi:10.1007/3-540-10235-3](https://doi.org/10.1007/3-540-10235-3). Unavailable.
+19. [T19] D. Harel, "Statecharts: a visual formalism for complex systems", Sci. Comput. Program. 8 (1987). [doi:10.1016/0167-6423(87)90035-9](https://doi.org/10.1016/0167-6423(87)90035-9). Unavailable.
+20. [T20] L. Lamport, "The temporal logic of actions", ACM TOPLAS 16 (1994). [doi:10.1145/177492.177726](https://doi.org/10.1145/177492.177726). Unavailable.
+21. [T21] G. Berry and G. Gonthier, "The Esterel synchronous programming language", Sci. Comput. Program. 19 (1992). [doi:10.1016/0167-6423(92)90005-V](https://doi.org/10.1016/0167-6423(92)90005-V). Unavailable.
+22. [T22] N. Halbwachs et al., "The synchronous data flow programming language LUSTRE", Proc. IEEE 79 (1991). [doi:10.1109/5.97300](https://doi.org/10.1109/5.97300). Unavailable.
+23. [T23] F. P. Brooks, "No Silver Bullet: Essence and Accidents of Software Engineering", IEEE Computer 20(4) (1987; first presented 1986). [doi:10.1109/MC.1987.1663532](https://doi.org/10.1109/MC.1987.1663532); [PDF copy](https://worrydream.com/refs/Brooks_1986_-_No_Silver_Bullet.pdf). Full.
+24. [T24] A. Hindle et al., "On the naturalness of software", ICSE (International Conference on Software Engineering) 2012. [doi:10.1109/ICSE.2012.6227135](https://doi.org/10.1109/ICSE.2012.6227135). Unavailable.
+25. [T25] J. W. Backus et al., "The FORTRAN Automatic Coding System", Western Joint Computer Conference (1957). [Computer History Museum copy](https://archive.computerhistory.org/resources/text/Fortran/102663113.05.01.acc.pdf). Full.
+26. [T26] J. L. Hennessy and D. A. Patterson, "A New Golden Age for Computer Architecture", Communications of the ACM 62(2) (2019). [doi:10.1145/3282307](https://doi.org/10.1145/3282307); [CACM web text](https://cacm.acm.org/research/a-new-golden-age-for-computer-architecture/). Full.
+27. [T27] R. J. Solomonoff, "A formal theory of inductive inference, Part I", Information and Control 7 (1964). [doi:10.1016/S0019-9958(64)90223-2](https://doi.org/10.1016/S0019-9958(64)90223-2). Unavailable.
+28. [T28] A. N. Kolmogorov, "Three approaches to the quantitative definition of information", Problems of Information Transmission 1 (1965); English reprint, International Journal of Computer Mathematics 2 (1968), [doi:10.1080/00207166808803030](https://doi.org/10.1080/00207166808803030). Full (page numbers from the 1968 reprint).
+29. [T29] G. J. Chaitin, "On the length of programs for computing finite binary sequences", J. ACM 13 (1966). [doi:10.1145/321356.321363](https://doi.org/10.1145/321356.321363). Unavailable.
+30. [T30] C. H. Bennett, "Logical Reversibility of Computation", IBM J. Res. Dev. 17(6), 525-532 (1973). [doi:10.1147/rd.176.0525](https://doi.org/10.1147/rd.176.0525). Full.
+31. [T31] G. McKee, "A Few (Proposed) Fundamental Laws of Computation", IEEE Computer 28(1), 120 (1995), Open Channel. No DOI located; [DBLP table of contents](https://vldb.org/dblp/db/journals/computer/computer28.html). Unavailable.
+32. [T32] G. Delétang et al., "Language Modeling Is Compression", ICLR 2024. [arXiv:2309.10668](https://arxiv.org/abs/2309.10668). Full.
+33. [T33] J. Rissanen, "Modeling by shortest data description", Automatica 14 (1978). [doi:10.1016/0005-1098(78)90005-5](https://doi.org/10.1016/0005-1098(78)90005-5). Unavailable.
+34. [T34] J. Schmidhuber, "Driven by Compression Progress", 2009. [arXiv:0812.4360](https://arxiv.org/abs/0812.4360). Full.
+35. [T35] U. Alon et al., "code2vec: Learning Distributed Representations of Code", POPL 2019. [arXiv:1803.09473](https://arxiv.org/abs/1803.09473). Full.
+36. [T36] Y. Du and I. Mordatch, "Implicit Generation and Modeling with Energy-Based Models", NeurIPS 2019. [arXiv:1903.08689](https://arxiv.org/abs/1903.08689). Full.
+37. [T37] F. Chollet, "On the Measure of Intelligence", 2019. [arXiv:1911.01547](https://arxiv.org/abs/1911.01547). Full.
+38. [T38] E. Fredkin and T. Toffoli, "Conservative logic", Int. J. Theor. Phys. 21 (1982). [doi:10.1007/BF01857727](https://doi.org/10.1007/BF01857727). Unavailable.
+39. [T39] C. Elliott and P. Hudak, "Functional reactive animation", ICFP 1997. [doi:10.1145/258948.258973](https://doi.org/10.1145/258948.258973). Unavailable.
+40. [T40] D. Ha and J. Schmidhuber, "World Models", 2018. [arXiv:1803.10122](https://arxiv.org/abs/1803.10122). Full.
+41. [T41] M. Raissi, P. Perdikaris and G. E. Karniadakis, "Physics Informed Deep Learning (Part I)", 2017. [arXiv:1711.10561](https://arxiv.org/abs/1711.10561). Full.
+42. [T42] S. Greydanus, M. Dzamba and J. Yosinski, "Hamiltonian Neural Networks", NeurIPS 2019. [arXiv:1906.01563](https://arxiv.org/abs/1906.01563). Full.
+43. [T43] J. J. Hopfield, "Neural networks and physical systems with emergent collective computational abilities", PNAS 79 (1982). [doi:10.1073/pnas.79.8.2554](https://doi.org/10.1073/pnas.79.8.2554). Unavailable.
+44. [T44] G. E. Hinton, "Training products of experts by minimizing contrastive divergence", Neural Computation 14 (2002). [doi:10.1162/089976602760128018](https://doi.org/10.1162/089976602760128018). Unavailable.
+
+<div id="convergence-commitments" class="anchor-alias" aria-hidden="true"></div>
+
+## Convergência por comprometimento
+
+A tese RCE baseia‑se em sete compromissos. Cada um foi alcançado independentemente, muitas vezes mais de uma vez, por pessoas que atuam por suas próprias razões. As tabelas abaixo listam projetos cujas fontes primárias (artigo, documentação oficial ou repositório) foram abertas e verificadas em relação à frase escrita aqui. Cada linha indica o que o projeto estabeleceu e onde ele para em relação ao compromisso. Estas são observações de convergência: concordância na direção, não confirmação das alegações da RCE e não um ranking. Itens da OpenIE, a organização por trás da RCE, são marcados *same house* e nunca são usados como evidência.
+
+Acrônimos usados nesta seção: RCE, o Reality Code Engine; AST, abstract syntax tree; IR, intermediate representation; LLM, large language model; JSON, JavaScript Object Notation; WASM, WebAssembly; SMT, satisfiability modulo theories (Z3 é um resolvedor SMT); DST, deterministic simulation testing; CEGIS, counterexample‑guided inductive synthesis.
+
+![Grid of seven commitments, canonical form, log and replay, projection, stored intent, deterministic gate, promotion and reuse, and energy or cost, against verified outside projects; a filled dot marks a commitment that the project's own primary source states](/figures/rce-jepa/convergence.svg)
+
+*Figura 8. Qual compromisso cada projeto externo verificado atinge, de acordo com sua própria fonte primária. Um ponto é uma observação de convergência, não uma pontuação; a RCE não está desenhada. Selecione a figura para ampliá‑la..*
+
+<div id="cc1" class="anchor-alias" aria-hidden="true"></div>
+
+### 1. Uma forma canônica; o texto de superfície é uma visão
+
+| Projeto | O que estabeleceu | Onde para |
+| --- | --- | --- |
+| Intentional Programming, Simonyi, 1995 [C1] | Um programa é uma árvore de nós, cada um uma instância de uma intenção; os usuários editam a árvore e a visualizam em qualquer notação; a intenção computacional pode ser mantida separada da implementação | Um sistema de pesquisa na Microsoft; o relatório não descreve modelo de determinismo ou de replay (um arquivo de transação alimenta o controle de versão, mas não são fornecidas semânticas de replay) |
+| Unison [C2] | Cada definição é identificada por um hash de sua árvore sintática; os nomes são armazenados separadamente como metadados | O hash refere‑se à estrutura: duas definições com o mesmo comportamento e estrutura diferente possuem hashes diferentes |
+| Equality saturation and egg [C3; C4] | Um e‑graph contém muitas versões equivalentes de um programa simultaneamente; um modelo de custo escolhe uma (Tate et al.: um resolvedor pseudo‑booleano sobre um modelo de custo estático; egg: um extrator com função de custo fornecida pelo usuário) | Técnica de otimização e síntese aplicada por função (intraprocedural em Tate et al.) ou sobre termos em uma linguagem definida pelo usuário (egg, que não tem suporte interno para vinculação); a saturação é limitada quando não termina, e o e‑graph não é mantido como forma armazenada do programa |
+| Tacit, 2026 [C5] | A AST é a fonte da verdade; todo AST válido tem um texto canônico byte‑exato; definições são endereçadas por hash BLAKE3; código malformado torna‑se nós de Hole tipados | Um alvo (LLVM); nenhuma semântica de máquina de estados declarada |
+| X07, 2026 [C6] | A fonte canônica é uma AST JSON, editada com JSON Patch; um catálogo diagnóstico de 646 códigos com cobertura de quickfix obrigatória | Bytes canônicos, não comportamento canônico |
+| Codifide, 2026 [C7] | A forma canônica é um hipergrafo tipado com forma byte determinística e hash SHA‑256; a sintaxe de superfície é uma projeção; a intenção faz parte da identidade de uma definição | Descrito pelos autores como uma linguagem de contrato‑e‑despacho, não como computação geral |
+| NAIL [C8] | `nail canonicalize` normaliza qualquer programa; `nail check --strict` rejeita entrada não canônica | Um subconjunto JSON inspirado no RFC 8785 que, em suas próprias palavras, não afirma conformidade total com o RFC 8785; apenas canonicalização de bytes |
+| EqNet, Allamanis et al., 2017 [C9] | Representações neurais treinadas em classes de equivalência conhecidas de modo que expressões equivalentes obtenham vetores idênticos ou altamente semelhantes | Expressões booleanas e polinomiais (supervisionadas), não programas |
+
+<div id="cc2" class="anchor-alias" aria-hidden="true"></div>
+
+### 2. Um programa é uma máquina de estados determinística sobre um registro
+
+| Projeto | O que estabeleceu | Onde termina |
+| --- | --- | --- |
+| Abstract State Machines, Gurevich, 2000 [C10] | O título do artigo indica o resultado: máquinas de estado abstratas sequenciais capturam algoritmos sequenciais | Um teorema, não um sistema: todo algoritmo sequencial, definido por três postulados (tempo sequencial, estado abstrato, exploração limitada; Def. 6.1), tem uma máquina de estado abstrata sequencial equivalente que o corresponde passo a passo (Teorema principal 6.13). Que os postulados cobrem todos os algoritmos sequenciais é argumentado, não provado |
+| Event sourcing, Fowler, 2005 [C11] | “Capturar todas as mudanças em um estado de aplicação como uma sequência de eventos” | Um padrão, publicado como rascunho; a reprodução permanece consistente somente se os gateways registrarem respostas de consultas externas e suprimirem atualizações externas durante a reprodução |
+| The Elm Architecture [C12] | Modelo, Visão, Atualização: estado, uma visão do estado e uma atualização a partir de mensagens | Uma linguagem e um alvo (o navegador) |
+| Dedalus e o teorema CALM, Hellerstein, Alvaro et al. [C13; C14] | Dedalus: Datalog com tempo explícito, modelando estado mutável e mensagens assíncronas. CALM: um programa tem implementação distribuída consistente e livre de coordenação se, e somente se, for monotônico (provado por Ameloot et al.; [C14] fornece um esboço de prova) | Dedalus e Bloom são linguagens de pesquisa e CALM é um teorema; nenhum deles gera código para outras linguagens |
+| Execução durável: Temporal, Restate [C15; C16] | Temporal: o código de fluxo de trabalho “deve ser determinístico para suportar reprodução”. Restate: cada passo e seu resultado são registrados em um diário | A reprodução serve à resiliência, não à identidade do programa |
+| Teste de simulação determinística TigerBeetle, 2026 [C17] | Determinismo lógico (como FoundationDB) mais determinismo físico: réplicas convergem para um estado idêntico byte a byte; código real roda em um simulador | Um banco de dados, construído manualmente segundo essa disciplina |
+| Teste de simulação FoundationDB [C18] | “Uma simulação determinística de todo um cluster FoundationDB dentro de um processo monothread”; o determinismo “permite repetibilidade perfeita de uma execução simulada” | Uma disciplina de teste para um banco de dados, não uma forma de programa |
+| musil [C19] | Um verificador de modelo de estado explícito como biblioteca Python; seu modo de simulação executa o código real do nó em uma rede simulada semeada e reproduzível | Espaços de estado limitados; verifica o modelo, e a simulação encontra bugs em vez de provar sua ausência |
+| AILANG; agent-scroll [C20; C21] | AILANG: cada construção tem semântica determinística, com execução reproduzível e rastros estruturados. agent-scroll: transcrições canônicas, byte-determinísticas, encadeadas por hash, com um verificador que detecta qualquer alteração de um único byte | AILANG é funcional, não uma forma de máquina de estado; agent-scroll registra conversas, não programas |
+
+<div id="cc3" class="anchor-alias" aria-hidden="true"></div>
+
+### 3. Todo alvo é uma projeção: escreva uma vez, emita para muitos
+
+| Projeto | O que estabeleceu | Onde termina |
+| --- | --- | --- |
+| MLIR [C22] | Uma infraestrutura de compilador reutilizável que abrange níveis de abstração, alvos de hardware e domínios | Começa abaixo da fonte: não possui geração de analisador sintático nem construção de AST (Sec. 7), e seu artigo nomeia a validação de tradução em um ecossistema de dialetos extensível como um problema aberto (Sec. 2) |
+| Model Driven Architecture, OMG, 2003 [C23] | Pontos de vista independentes de computação, independentes de plataforma e específicos de plataforma | Petre relata, de Forward e Lethbridge, que manter o modelo atualizado com o código foi o maior problema percebido (68 % de concordância) [C24] |
+| Protocol Buffers; Lumos [C25; C26] | Definir um esquema uma única vez e gerar ligações em várias linguagens (Lumos: Rust e TypeScript para Solana) | Formatos de dados, não comportamento; a mesma mensagem Protocol Buffers pode ter muitas serializações binárias ("Não é possível comparar duas mensagens para igualdade sem analisá‑las completamente") |
+| Forge, 2026 [C27] | "Muitos front‑ends alimentam uma representação intermediária verificada, e essa representação alimenta muitos back‑ends" | Descrições de placa e periféricos, não programas gerais |
+| Faber Romanus, 2026 [C28] | Uma IR de alto nível projetada para Rust, Go, TypeScript, Swift e Faber, e através de uma IR inferior para LLVM e texto WASM, com kernels Metal e CUDA; o suporte é medido e declarado por alvo | O acordo entre alvos é medido pela cobertura de corpus, não provado |
+| Intent, 2026 [C29] | Um arquivo‑fonte compila para Rust, JavaScript e WASM; contratos são aplicados em tempo de execução em cada alvo e opcionalmente verificados por Z3 | Três alvos |
+| NanoLang [C30] | Semântica central provada em Coq sem axiomas; C é o alvo de produção | PTX e RISC‑V são experimentais; LLVM e WASM estão planejados |
+
+<div id="cc4" class="anchor-alias" aria-hidden="true"></div>
+
+### 4. Armazene a intenção; derive a implementação
+
+| Projeto | O que estabeleceu | Onde para |
+| --- | --- | --- |
+| FORTRAN, Backus et al., 1957; síntese dedutiva, Manna e Waldinger, 1980 [C31; C32] | Codificação automática a partir de fórmulas; programas extraídos de provas construtivas | FORTRAN tornou‑se um compilador; síntese dedutiva não tinha implementação na época |
+| Desenvolvimento guiado por especificação, conforme classificado por Böckeler [C33] | Três níveis: spec‑first, spec‑anchored e spec‑as‑source, nos quais “apenas a especificação é editada pelo humano, o humano nunca toca no código”; de Kiro, spec‑kit e Tessl, apenas Tessl explora spec‑as‑source | A especificação é linguagem natural, e Böckeler observou que código gerado repetidamente a partir de uma mesma especificação difere; nada verifica que o código corresponde à especificação |
+| Benchmark Vericoding, 2025 [C34] | 12 504 especificações formais em Dafny, Verus e Lean; ao menos um de nove LLMs prontos, com cinco tentativas cada, resolveu 82 % (Dafny), 44 % (Verus) e 27 % (Lean) das tarefas, e o melhor modelo único atingiu 67,5 %, 30,9 % e 17,9 % (Tabela 3); a adição de descrições em linguagem natural não produziu ganho estatisticamente significativo no único subconjunto testado (Verina, 157 tarefas; Sec. 4.1) | As linguagens de especificação são as linguagens de prova; não há forma de tempo de execução nem emissão multi‑alvo; entre os sucessos cerca de 9 % das especificações eram fracas demais para capturar a intenção (Sec. 4) |
+| Codifide [C7] | Cada definição carrega uma intenção que a compilação nunca descarta | Escopo de contrato‑e‑despacho |
+
+**Recomendação.** O benchmark vericoding [C34] é usado como benchmark externo para a transição da especificação para Form: um recorte de suas especificações em Dafny, Verus e Lean, modeladas como máquinas de estado, é elevado para Forms e a parcela que o portão RCE aceita é relatada ao lado dos resultados publicados do vericoding.
+
+<div id="cc5" class="anchor-alias" aria-hidden="true"></div>
+
+### 5. O modelo propõe; um portão determinístico decide
+
+| Projeto | O que estabeleceu | Onde para |
+| --- | --- | --- |
+| CompCert; seL4 [C35; C36] | Compilador e kernel verificados por prova mecânica; CompCert verifica a saída de uma heurística não verificada com um verificador verificado; a prova do seL4 custou cerca de 20 pessoa‑anos | Esforço de prova por artefato |
+| Sketching, Solar‑Lezama et al., 2006 (o laço dirigido por contra‑exemplo posteriormente denominado CEGIS) [C37] | Contra um programa parcial escrito por humano (esboço) e uma especificação executável, um sintetizador propõe, um verificador devolve um contra‑exemplo, e o laço se repete | Os propositores são solucionadores SAT, não modelos aprendidos; limitado a programas finitos (entrada limitada, terminação garantida), com garantias apenas para a instância limitada |
+| AlphaProof; Clover; AutoVerus [C38; C39; C40] | Um modelo propõe; Lean, Dafny ou Verus verificam | Portão em provas ou texto de código; sem forma canônica de programa |
+| Verificação de modelo agente, 2026; Síntese verificada dirigida por LLM para design conceitual, 2026 [C41; C42] | “Agentes propõem, solucionadores verificam” (um LLM ainda triageia contra‑exemplos para realismo); no segundo, invariantes sozinhas sub‑constrangem designs, que variaram entre execuções, alguns deles implausíveis | [C41] verifica código existente com especificações inferidas por LLM; as verificações são limitadas (desenrolamento padrão 4) e relativas à especificação, e os autores nomeiam especificações excessivamente fracas que “causam falhas a serem perdidas silenciosamente” como o modo de falha principal. [C42] sintetiza regras de coordenação para modelos de design (não código), verificadas apenas dentro de um escopo limitado de Alloy, com um LLM traduzindo o design para Alloy. Ambos alertam que validade não corresponde à intenção |
+| Vera, 2026; Vow; Thermite [C43; C44; C45] | Vera: contratos obrigatórios, provados pelo resolvedor SMT Z3 onde decidível e, caso contrário, verificados em tempo de execução: “O modelo não precisa estar correto, precisa ser verificável”. Vow: contratos verificados estaticamente por verificação de modelo limitado ESBMC. Thermite: contratos com contra‑exemplos em falha e nível de garantia registrado (Verus/Z3, Lean, Kani limitado, tempo de execução) | Portão na função; sem replay ou promoção |
+| Modelos de decisão, uma classe de conceito [C46] | Um modelo cujo output completo é uma resposta tipada (uma opção de um conjunto fechado, uma pontuação limitada ou uma probabilidade sim/não) com probabilidade para cada opção, treinado para calibração | Requer um conjunto fechado de opções. O projeto RCE constrói sua própria cabeça de decisão e não utiliza modelo de decisão externo |
+
+<div id="cc6" class="anchor-alias" aria-hidden="true"></div>
+
+### 6. O trabalho aceito é promovido e reutilizado
+
+| Project | What it established | Where it stops |
+| --- | --- | --- |
+| Gödel machine, Schmidhuber; Löbian obstacle, Yudkowsky and Herreshoff [C47; C48] | Reescreve‑se apenas após uma prova, sob seus próprios axiomas, de que a reescrita tem utilidade maior que continuar a buscar; na formalização direta, um agente baseado em prova não pode confiar em um sucessor que usa seu próprio sistema de prova (teorema de Löb), de modo que a confiança diminui a cada reescrita, e as soluções técnicas do artigo são apenas parciais | Theory |
+| Voyager; STOP; Darwin Gödel Machine; AlphaEvolve [C49; C50; C51; C52] | Uma biblioteca crescente de habilidades executáveis; andaimes que se aprimoram sozinhos (os pesos do modelo permanecem inalterados); arquivos de agentes auto‑modificados (mantidos se ainda compilam e podem editar código; pais escolhidos por pontuação de benchmark); código evoluído sob avaliadores automáticos | Seleção por pontuação ou avaliador, não por prova em uma interface. O avaliador do Voyager é um crítico GPT‑4; as pontuações do AlphaEvolve podem incluir feedback classificado por LLM, e sua correção provém de construção, teste aleatório ou revisão humana e de verificação fora do loop |
+| Getafix; Sorald; TBar [C53; C54; C55] | Padrões de correção extraídos de correções passadas ou escritos como modelos, reutilizados em novos casos sem modelo; com localização de falhas perfeita, TBar corrige corretamente 74 de 395 bugs Defects4J (patches plausíveis para 101), e 43 com localização de falhas padrão | Os padrões são por classe de bug, aprendidos ou escritos para uma linguagem (o método do Getafix é agnóstico à linguagem); Getafix verifica apenas sua correção principal, reexecutando o analisador estático |
+
+<div id="cc7" class="anchor-alias" aria-hidden="true"></div>
+
+### 7. Energia ou custo é o objetivo
+
+| Projeto | O que estabeleceu | Onde para |
+| --- | --- | --- |
+| Landauer, 1961; Bennett, 1973 [C56; C57] | Apagar um bit tem um piso termodinâmico; a computação pode, em princípio, ser feita logicamente reversível | Física, não um objetivo de software |
+| FrugalGPT, 2023 [C58] | Uma cascata de modelos igualou o melhor modelo único com até 98 % de custo menor em suas tarefas | Custo em dólares; sem níveis determinísticos abaixo dos modelos |
+| Cost-of-pass, 2025; AI Agents That Matter, 2024 [C59; C60] | Custo monetário esperado de uma solução correta; relatar e otimizar conjuntamente custo com acurácia | Dólares e tokens, não joules; os autores do Cost-of-Pass observam que energia poderia substituir dólares mas não a medem |
+| Compiler world models, 2026 [C61] | Avança o estado de um programa tensorial através de ações de agendamento no espaço latente, depois classifica agendas candidatas dentro de uma carga de trabalho antes de medir no hardware (uma pontuação relativa, não uma predição de latência) | Apenas agendas tensoriais (TVM AutoScheduler); classifica candidatos, não os gera |
+| Codifide [C7] | Seleciona entre candidatos satisfeitos pelo custo declarado | Custo declarado, não energia medida |
+| JouleOS (OpenIE) [same house] | Orçamentos de energia e os rótulos `est_j`, `reported_j`, `measured_j` | Mesma casa: listado para divulgação, não como evidência |
+
+<div id="cc-lanes" class="anchor-alias" aria-hidden="true"></div>
+
+### Como quatro comprometimentos atendem às faixas posteriores
+
+Seção 3 abaixo registra três faixas. Figura 8 permanece inalterada. As notas aqui são leituras de convergência de fontes já presentes nas tabelas, mais os relatórios das faixas, não uma pontuação.
+
+- **Uma forma canônica.** Unison [C2] identifica uma definição por um hash de sua árvore sintática, e os nomes são uma visualização. egg [C4] armazena programas equivalentes como um e‑graph. Ambos tratam a estrutura, não o texto superficial, como o objeto.
+- **O modelo propõe e um portão determinístico decide.** AlphaEvolve [C52] e AlphaProof [C38] são instâncias híbridas, juntamente com o benchmark vericoding [C34]. Seção 3 acrescenta os provadores Lean DeepSeek-Prover-V2, Kimina-Prover Preview e Goedel-Prover, onde o kernel Lean é o portão, e a decodificação restrita por tipo, onde o sistema de tipos atua enquanto o modelo amostra.
+- **Promoção e reutilização.** DreamCoder (Ellis et al., Seção 2 abaixo) aprende uma biblioteca por compressão. LILO (Grand et al., Seção 3 abaixo) combina um grande modelo de linguagem com refatoração simbólica. A biblioteca é a etapa de reutilização nesses sistemas. Os domínios que relatam são pequenos.
+- **Custo.** No relatório CWM, um melhor de 16 amostras no tempo de teste eleva o SWE-bench Verified pass@1 de 53.9% para 65.8% [B23]. Isso representa um custo computacional em um benchmark, não uma medição em joules. Mercury relata taxa de transferência de 1.109 e 737 tokens por segundo em um H100 (Inception Labs, Seção 3 abaixo). Taxa de transferência não é joules. Esta página ainda contabiliza o custo como energia elétrica, subtraindo ociosidade quando existe uma leitura de medidor, e não converte esses valores em joules.
+
+<div id="cc-rce" class="anchor-alias" aria-hidden="true"></div>
+
+### O que o artigo RCE enuncia (trabalho próprio da OpenIE)
+
+Os seguintes trechos são do [the RCE paper](/papers/rce/) (Revisão df38742, 6 de novembro de 2026). Eles são listados aqui como trabalho próprio do projeto, não como comparação com os projetos acima.
+
+- **Forma canônica.** A serialização canônica é injetiva em Forms, de modo que dois Forms que diferem possuem hashes de forma diferentes. A equivalência de comportamento é definida separadamente (equivalência de ajuste), e no design do motor variantes equivalentes são agrupadas por reescritas sonoras em um e-graph; o artigo não afirma que comportamento equivalente sempre produz uma forma canônica.
+- **Provas.** Determinismo, totalidade, replay como uma dobra do log e atomicidade de um passo mantido (um evento que não se aplica mantém o estado) são provados em Lean 4 sobre um cálculo central. O emissor de programa Rust é provado sobre um núcleo como uma tradução verificada para MiniRust, uma incorporação profunda do subconjunto Rust emitido; que o compilador Rust implementa MiniRust é confiável e testado. Essa prova cobre o emissor de programa, não a projeção de Form.
+- **Portão.** No design do motor, um candidato passa pelo replay de entradas gravadas, uma execução sombra com um limite de cobertura, uma verificação de esquema de saída e um certificado de prova Kani, e uma reescrita proposta também necessita de uma prova Z3. No registro público de uma execução, um modelo local de 1,5 bilhão de parâmetros fez 18 propostas, 13 delas distintas; o portão não admitiu 15, e as 3 que admitiu são uma reescrita sob três nomes que repete uma regra que o motor já possuía.
+- **Energia.** No design do motor cada recibo carrega `est_j`; uma chamada de modelo sem preço nunca é lida como zero. `measured_j` (medidor de parede) está vazio em todos os resultados até agora.
+
+<div id="cc-refs" class="anchor-alias" aria-hidden="true"></div>
+
+### Fontes para esta seção
+
+Rótulos como no registro: Completo = a fonte primária inteira (artigo, página de documentação, README ou descrição do projeto) foi lida, incluindo referências e apêndices quando presentes. Cada fonte listada aqui foi lida na íntegra em ou antes de 14 de outubro de 2026; [C46] aponta para fontes listadas na seção de cabeçalho de decisão.
+
+1. [C1] C. Simonyi, "The Death of Computer Languages, the Birth of Intentional Programming", Microsoft Research MSR-TR-95-52, September 1995. [Microsoft Research](https://www.microsoft.com/en-us/research/publication/the-death-of-computer-languages-the-birth-of-intentional-programming/); [PDF copy](https://uni.r-brause.de/seminare/SemSS07/simonyi95death.pdf). Full.
+2. [C2] Unison, "The big idea". [unison-lang.org](https://www.unison-lang.org/docs/the-big-idea/). Full.
+3. [C3] R. Tate, M. Stepp, Z. Tatlock and S. Lerner, "Equality Saturation: A New Approach to Optimization", Logical Methods in Computer Science 7(1:10), 2011 (extended version of POPL 2009). [arXiv:1012.1802](https://arxiv.org/abs/1012.1802). Full.
+4. [C4] M. Willsey, C. Nandi, Y. R. Wang, O. Flatt, Z. Tatlock and P. Panchekha, "egg: Fast and Extensible Equality Saturation", POPL 2021. [arXiv:2004.03082](https://arxiv.org/abs/2004.03082). Full.
+5. [C5] Tacit. [github.com/weetster/tacit](https://github.com/weetster/tacit). Full (README).
+6. [C6] X07. [github.com/x07lang/x07](https://github.com/x07lang/x07). Full (README).
+7. [C7] Codifide. [github.com/codifide/codifide-programming-language](https://github.com/codifide/codifide-programming-language). Full (README).
+8. [C8] NAIL. [pypi.org/project/nail-lang](https://pypi.org/project/nail-lang/). Full (project description).
+9. [C9] M. Allamanis, P. Chanthirasegaran, P. Kohli and C. Sutton, "Learning Continuous Semantic Representations of Symbolic Expressions", ICML 2017 (PMLR 70). [arXiv:1611.01423](https://arxiv.org/abs/1611.01423). Full.
+10. [C10] Y. Gurevich, "Sequential Abstract State Machines Capture Sequential Algorithms", ACM TOCL 1(1), 2000. [doi:10.1145/343369.343384](https://doi.org/10.1145/343369.343384); [PDF copy](https://www.cs.tau.ac.il/~nachumd/models/gurevich.pdf). Full.
+11. [C11] M. Fowler, "Event Sourcing", 2005. [martinfowler.com](https://martinfowler.com/eaaDev/EventSourcing.html). Full.
+12. [C12] The Elm Architecture. [guide.elm-lang.org](https://guide.elm-lang.org/architecture/). Full.
+13. [C13] P. Alvaro, W. R. Marczak, N. Conway, J. M. Hellerstein, D. Maier and R. Sears, "Dedalus: Datalog in Time and Space", UC Berkeley EECS-2009-173, December 2009. [PDF](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-173.pdf). Full.
+14. [C14] J. M. Hellerstein and P. Alvaro, "Keeping CALM: When Distributed Consistency is Easy", 2019. [arXiv:1901.01930](https://arxiv.org/abs/1901.01930). Full. The formal proof is T. J. Ameloot, F. Neven and J. Van den Bussche, "Relational transducers for declarative networking", JACM 60(2), 2013.
+15. [C15] Temporal, "Workflow Definition". [docs.temporal.io](https://docs.temporal.io/workflow-definition). Full.
+16. [C16] Restate, "Key Concepts: Durable Execution". [docs.restate.dev](https://docs.restate.dev/foundations/key-concepts#durable-execution). Full.
+17. [C17] C. Bhandari, "Protocol-Aware Deterministic Simulation Testing", TigerBeetle, 20 August 2026. [tigerbeetle.com](https://tigerbeetle.com/blog/2026-08-20-protocol-aware-dst/). Full.
+18. [C18] FoundationDB, "Simulation and Testing". [apple.github.io/foundationdb](https://apple.github.io/foundationdb/testing.html). Full.
+19. [C19] musil (project description, version 0.35.6). [pypi.org/project/musil](https://pypi.org/project/musil/). Full.
+20. [C20] AILANG. [github.com/sunholo-data/ailang](https://github.com/sunholo-data/ailang). Full (README).
+21. [C21] agent-scroll. [github.com/p-vbordei/agent-scroll](https://github.com/p-vbordei/agent-scroll). Full (README).
+22. [C22] C. Lattner et al., "MLIR: A Compiler Infrastructure for the End of Moore's Law", 2020. [arXiv:2002.11054](https://arxiv.org/abs/2002.11054). Full.
+23. [C23] OMG, MDA Guide Version 1.0, 2003. [PDF](https://www.omg.org/mda/mda_files/MDA_Guide_Version1-0.pdf). Full.
+24. [C24] M. Petre, "UML in practice", ICSE 2013. [author copy](https://oro.open.ac.uk/35805/). Full.
+25. [C25] Protocol Buffers overview. [protobuf.dev](https://protobuf.dev/overview/). Full.
+26. [C26] Lumos introduction. [docs.lumos-lang.org](https://docs.lumos-lang.org/getting-started/introduction). Full.
+27. [C27] Forge. [github.com/Sanjith-Shan/Forge](https://github.com/Sanjith-Shan/Forge). Full (README).
+28. [C28] Faber Romanus. [github.com/faberlang/faber](https://github.com/faberlang/faber). Full (README).
+29. [C29] Intent. [github.com/lhaig/intent](https://github.com/lhaig/intent). Full (README).
+30. [C30] NanoLang. [github.com/jordanhubbard/nanolang](https://github.com/jordanhubbard/nanolang). Full (README).
+31. [C31] J. W. Backus et al., "The FORTRAN Automatic Coding System", 1957. [Computer History Museum copy](https://archive.computerhistory.org/resources/text/Fortran/102663113.05.01.acc.pdf). Full.
+32. [C32] Z. Manna and R. Waldinger, "A Deductive Approach to Program Synthesis", ACM TOPLAS 2(1), 1980. [doi:10.1145/357084.357090](https://doi.org/10.1145/357084.357090). Full.
+33. [C33] B. Böckeler, "Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl", martinfowler.com, 15 October 2025. [martinfowler.com](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html). Full.
+34. [C34] S. Bursuc, T. Ehrenborg, S. Lin et al., "A benchmark for vericoding: formally verified program synthesis", 2025. [arXiv:2509.22908](https://arxiv.org/abs/2509.22908). Full.
+35. [C35] X. Leroy, "Formal verification of a realistic compiler", CACM, 2009. [PDF](https://xavierleroy.org/publi/compcert-CACM.pdf). Full.
+36. [C36] G. Klein et al., "seL4: Formal Verification of an OS Kernel", SOSP 2009. [PDF](https://www.sigops.org/s/conferences/sosp/2009/papers/klein-sosp09.pdf). Full.
+37. [C37] A. Solar-Lezama, L. Tancau, R. Bodik, V. Saraswat and S. Seshia, "Combinatorial Sketching for Finite Programs", ASPLOS 2006. [PDF](https://people.csail.mit.edu/asolar/papers/asplos06-final.pdf). Full.
+38. [C38] T. Hubert et al., "Olympiad-level formal mathematical reasoning with reinforcement learning", Nature, 2025. [Nature](https://www.nature.com/articles/s41586-025-09833-y). Full.
+39. [C39] C. Sun et al., "Clover: Closed-Loop Verifiable Code Generation". [arXiv:2310.17807](https://arxiv.org/abs/2310.17807). Full.
+40. [C40] C. Yang et al., "AutoVerus". [arXiv:2409.13082](https://arxiv.org/abs/2409.13082). Full.
+41. [C41] Y. Sun, J. Liu, D. Kroening and J. Xue, "Agentic Model Checking", 2026. [arXiv:2605.21434](https://arxiv.org/abs/2605.21434). Full.
+42. [C42] A. Cunha, "Verified LLM-Driven Synthesis for Concept Design", 2026. [arXiv:2607.15718](https://arxiv.org/abs/2607.15718). Full.
+43. [C43] Vera. [github.com/aallan/vera](https://github.com/aallan/vera). Full (README).
+44. [C44] Vow. [github.com/vow-lang/vow](https://github.com/vow-lang/vow). Full (README).
+45. [C45] Thermite. [github.com/dollspace-gay/Thermite](https://github.com/dollspace-gay/Thermite). Full (README).
+46. [C46] Decision models as a class: see the decision-head section above and its sources [B7; B8; B12].
+47. [C47] J. Schmidhuber, "Goedel Machines: Self-Referential Universal Problem Solvers Making Provably Optimal Self-Improvements", TR IDSIA-19-03 (v5, 2006). [arXiv:cs/0309048](https://arxiv.org/abs/cs/0309048). Full.
+48. [C48] E. Yudkowsky and M. Herreshoff, "Tiling Agents for Self-Modifying AI, and the Löbian Obstacle", MIRI early draft, 7 October 2013. [PDF](https://intelligence.org/files/TilingAgentsDraft.pdf). Full.
+49. [C49] G. Wang et al., "Voyager: An Open-Ended Embodied Agent with Large Language Models", 2023. [arXiv:2305.16291](https://arxiv.org/abs/2305.16291). Full.
+50. [C50] E. Zelikman, E. Lorch, L. Mackey and A. T. Kalai, "Self-Taught Optimizer (STOP): Recursively Self-Improving Code Generation", COLM 2024. [arXiv:2310.02304](https://arxiv.org/abs/2310.02304). Full.
+51. [C51] J. Zhang, S. Hu, C. Lu, R. Lange and J. Clune, "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents", ICLR 2026. [arXiv:2505.22954](https://arxiv.org/abs/2505.22954). Full.
+52. [C52] A. Novikov et al., "AlphaEvolve: A coding agent for scientific and algorithmic discovery", Google DeepMind white paper, 2025. [arXiv:2506.13131](https://arxiv.org/abs/2506.13131). Full.
+53. [C53] J. Bader, A. Scott, M. Pradel and S. Chandra, "Getafix: Learning to Fix Bugs Automatically", OOPSLA 2019. [arXiv:1902.06111](https://arxiv.org/abs/1902.06111). Full.
+54. [C54] K. Etemadi et al., "Sorald: Automatic Patch Suggestions for SonarQube Static Analysis Violations", 2021 (v2 2022). [arXiv:2103.12033](https://arxiv.org/abs/2103.12033). Full.
+55. [C55] K. Liu et al., "TBar: Revisiting Template-based Automated Program Repair", 2019. [arXiv:1903.08409](https://arxiv.org/abs/1903.08409). Full.
+56. [C56] R. Landauer, "Irreversibility and heat generation in the computing process", 1961. [doi:10.1147/rd.53.0183](https://doi.org/10.1147/rd.53.0183). Full.
+57. [C57] C. H. Bennett, "Logical Reversibility of Computation", 1973. [doi:10.1147/rd.176.0525](https://doi.org/10.1147/rd.176.0525). Full.
+58. [C58] L. Chen, M. Zaharia and J. Zou, "FrugalGPT", 2023. [arXiv:2305.05176](https://arxiv.org/abs/2305.05176). Full.
+59. [C59] M. H. Erol, B. El, M. Suzgun, M. Yüksekgönül and J. Zou, "Cost-of-Pass: An Economic Framework for Evaluating Language Models", ICLR 2026. [arXiv:2504.13359](https://arxiv.org/abs/2504.13359). Full.
+60. [C60] S. Kapoor, B. Stroebl, Z. S. Siegel, N. Nadgir and A. Narayanan, "AI Agents That Matter", 2024. [arXiv:2407.01502](https://arxiv.org/abs/2407.01502). Full.
+61. [C61] H. Pan, L. Huang, X. Zhou, M. Xing and Y. Wu, "Toward Compiler World Models: Learning Latent Dynamics for Efficient Tensor Program Search", 2026. [arXiv:2606.09312](https://arxiv.org/abs/2606.09312). Full.
+
+**Not carried over from the survey**, because the primary source was not obtained or did not support the claim: Smalltalk image claims, Darklang hashing, Pantograph and Grove, Codong, Lume, Magpie, Codex (Tedrow), Spec IR, Boruna, d-raft, Sockudo, DBOS, P language compilation to C, UNCOL and ANDF, Thrift and OpenAPI, Pact, Aver, Prove, reqlan, translation validation (Pnueli), SyGuS, Futamura and Turchin, PAR, DéjàVu and Gabel and Su, Simon and Kadane, and the comparative scoreboard.
+
+<div id="1-history-seventy-years-of-say-what-you-want-get-the-program" class="anchor-alias" aria-hidden="true"></div>
+
+## 1. História: setenta anos de "diga o que deseja, obtenha o programa"
+
+O desejo por trás deste tópico é antigo. O que mudou são as partes que agora são baratas. A linha do tempo abaixo lista as principais tentativas; o texto subsequente indica o que cada uma alcançou e onde parou.
+
+![Timeline from FORTRAN in 1954 through deductive synthesis, program derivation, fourth-generation languages and CASE tools, the Fifth Generation project, No Silver Bullet, refinement methods and Model Driven Architecture, verified systems CompCert and seL4, large language model code generation, constrained decoding and verifier loops, to the open question of learned proposers with deterministic checkers](/figures/rce-jepa/timeline.svg)
+
+*Figura 9. Tentativas de transformar uma declaração de intenção em um programa funcional. CASE significa engenharia de software assistida por computador; UML significa Linguagem de Modelagem Unificada; Z, B e VDM (Método de Desenvolvimento de Viena) são métodos de especificação matemática; Coq é um assistente de prova. Verde: sistemas verificados por máquina. Âmbar: modelos aprendidos. Azul: a questão que este tópico estuda.*
+
+- **Programação automática, década de 1950.** FORTRAN (FORmula TRANslation) foi apresentado como “The FORTRAN Automatic Coding System”. Seus autores escreveram que seu objetivo era permitir que o IBM 704 “code problems for itself and produce as good programs as human coders (but without the errors)” (Backus et al., 1957, p. 188; PDF p. 2). Exemplo: um cientista escreveu uma fórmula; o sistema escreveu o código de máquina. Hoje isso é chamado de compilador, não de programação automática.  
+- **Síntese dedutiva, décadas de 1960‑80.** O compilador heurístico de Simon (1963) tratava a programação como resolução heurística de problemas: uma busca de meios‑fins, baseada no General Problem Solver (GPS), que escreve rotinas a partir de descrições do estado antes e depois, por “selective trial-and-error search” (Simon, RAND RM-3588-PR, 1963, Summary, p. vii). Manna e Waldinger (1980) trataram um programa como algo extraído de uma prova construtiva de que uma especificação pode ser atendida: “From such a proof, a program to compute z can be extracted” (Manna and Waldinger, STAN‑CS‑78‑690, 1978, Specification section; the same sentence appears in the TOPLAS article, 1980, p. 92); ambas as versões observam que “no implementation exists” (report, Motivation, p. 2; TOPLAS, p. 91). O artigo do JACM afirma a conclusão de Simon diretamente: “compiling tasks--at least simple compiling tasks--can fruitfully be viewed as problem-solving tasks” (Simon, 1963, Summary, p. 505), e não faz nenhuma reivindicação prática: “no claims will be made for the heuristic programming procedures described here as practical approaches to the construction of compilers” (Introduction, p. 493). Manna e Waldinger observaram que a prova de teoremas havia sido “abandoned as an approach to program synthesis when the development of sufficiently powerful automatic theorem provers appeared to flounder” (TOPLAS, 1980, p. 120). Todos os quatro textos foram lidos na íntegra.  
+- **Derivação de programas, 1975‑86.** Dijkstra introduziu comandos guardados “as a building block” para programas e apresentou “the formal derivation of programs” a partir de condições sobre o estado final (Dijkstra, EWD 472, abstract). O cálculo de listas de Bird (o formalismo Bird‑Meertens) é “used to derive efficient solutions” por reescrita com identidades algébricas (Bird, 1986, PDF p. 3). Exemplo: para o problema de Gries “to compute the minimum of the sums of all segments” de uma lista, o programa direto leva O(n^3) passos, e a reescrita com o cálculo produz “a linear time algorithm” (Sec. 4.2, PDF p. 34).  
+- **Linguagens de quarta geração, ferramentas CASE e sistemas especialistas, década de 1980.** Geradores de relatórios, construtores de formulários e ferramentas de diagramas prometiam programas a partir de telas e imagens. Brooks revisou programação gráfica, programação automática e sistemas especialistas em 1986 e argumentou que nenhum deles “promises even one order-of-magnitude improvement” (Brooks, 1986, PDF pp. 1, 8‑11). Kemerer relatou, citando um estudo anterior, que “one year after introduction, 70 percent of CASE tools and techniques are never used” e que “the first project written with an integrated CASE tool typically fails to deliver improved results”; ele atribui parte do abandono a uma curva de aprendizado que cai abaixo da tecnologia antiga antes de subir (Kemerer, 1992, pp. 23‑24, Fig. 1).  
+- **Projeto Japan’s Fifth Generation Computer Systems, 1982‑92.** Um esforço nacional baseado em programação lógica na família Prolog; o ICOT gastou “about 54 billion Yen, that is some 450 million US\$” ao longo de dez anos (van de Riet, 1993, Sec. 1, p. 83). Um objetivo no plano de 1981 era “to lessen the burden of software generation in order that a high level requirements specification is sufficient for automatic processing” (Sec. 3, p. 85). A máquina de inferência paralela atingiu sua meta de 100 MLIPS, mas van de Riet avalia “break‑through in architecture” e “break‑through in software” como falhas e julga o impacto técnico “small” (Sec. 6, p. 103); quanto ao esforço necessário para programar o sistema, “there is almost no evidence” (Sec. 4.1, p. 86).  
+- **Refinamento e métodos dirigidos por modelo, décadas de 1980‑2000.** Z, B e VDM refinam uma especificação matemática passo a passo até o código. O guia Model Driven Architecture do Object Management Group “specifies three viewpoints on a system, a computation independent viewpoint, a platform independent viewpoint and a platform specific viewpoint” (OMG, 2003, Sec. 2.2.5, PDF p. 13). Exemplo: desenhar um diagrama de classes uma vez e gerar Java e SQL (Structured Query Language) a partir dele. Hutchinson et al. observam que MDE “has been developed largely without the support of empirical data” (2011, Sec. 1, p. 471); entre 250+ profissionais pesquisados, 74 % disseram que MDE “requires them to carry out significant extra training” (Sec. 4.3.1, p. 475), e um entrevistado relatou produtividade interna de 4 a 8 vezes enquanto dizia a externos “1.5 to 2” (Sec. 5.2.6, p. 478). Os autores qualificam seus resultados como “interesting and suggestive rather than conclusive” (Sec. 3.1, p. 473).  
+- **Sistemas verificados por máquina, 2008‑09.** CompCert é um compilador C cuja “proof of semantic preservation” foi realizada no assistente de provas Coq (Leroy, 2009, abstract, PDF p. 1). seL4 é um microkernel de “8,700 lines of C code” com uma “proof of functional correctness” verificada por máquina (abstract, PDF p. 1); a prova custou “about 20 py” (person‑years) (Klein et al., 2009, Sec. 5.2, PDF p. 13). Coq pode extrair uma função provada para código ordinário em “functional languages such as Ocaml, Haskell or Scheme” (Letouzey, 2008, Sec. 1, PDF p. 1); a etapa de extração ainda não foi verificada mecanicamente, e sua correção repousa em provas em papel (Sec. 6, PDF p. 10).
+
+<div id="2-why-the-earlier-attempts-stalled" class="anchor-alias" aria-hidden="true"></div>
+
+## 2. Por que as tentativas anteriores estagnaram
+
+- **Complexidade essencial versus acidental.** Brooks separou “tarefas essenciais, a confecção das estruturas conceituais complexas que compõem a entidade de software abstrata”, de “tarefas acidentais, a representação dessas entidades abstratas em linguagens de programação” (abstract, PDF p. 1). Ele citou Parnas: “programação automática sempre foi um eufemismo para programação com uma linguagem de nível mais alto do que a que estava disponível ao programador” (PDF p. 9), e escreveu que “mesmo a verificação perfeita de programas só pode estabelecer que um programa atende à sua especificação” (PDF p. 11) (Brooks, 1986). Exemplo: uma notação melhor para uma regra de folha de pagamento não decide qual deve ser a regra.  
+- **Linguagem natural é ambígua.** Dijkstra argumentou que textos formais são, “quando se pensa bem, uma ferramenta surpreendentemente eficaz para eliminar todo tipo de disparate que, quando usamos nossas línguas nativas, são quase impossíveis de evitar” (Dijkstra, EWD 667, para. 6). Exemplo: “ordenar os usuários por nome e data” tem ao menos duas interpretações.  
+- **Custos de especificação são tão altos quanto o programa.** No seL4 a especificação abstrata levou “cerca de 4 pessoa‑meses” e a prova cerca de 20 pessoa‑anos, contra “um custo total de 2,2 py incluindo o esforço em Haskell” para construir o kernel propriamente dito (Klein et al., 2009, Sec. 5.2, PDF pp. 12‑13). Os 20 py incluem cerca de 9 py de pesquisa e ferramentas de prova reutilizáveis; a prova específica do seL4 “foi de 11 py” (PDF p. 13).  
+- **Busca combinatorial.** Buscar em todos os programas cresce exponencialmente com o comprimento do programa. DreamCoder aborda isso aprendendo uma biblioteca de peças reutilizáveis e uma rede neural “para guiar a busca por programas” em um ciclo “wake‑sleep” (Ellis et al., 2021, abstract, PDF p. 1); o artigo chama tal busca de “intratável para algoritmos de uso geral, por causa da natureza combinatorial do espaço de busca” (introduction, PDF p. 2); o suplemento repete que encontrar programas “é difícil por causa da paisagem de busca combinatorial infinitamente grande” (supplement S4.1, PDF p. 42 da versão com suplemento), o mesmo tipo de problema de busca que limitou a síntese dedutiva.  
+- **Fragilidade e adoção.** Ferramentas de diagrama‑para‑código geravam código que depois era editado manualmente, e o modelo e o código se afastavam. Petre relata de pesquisas anteriores que “o maior problema percebido das abordagens centradas no modelo é manter o modelo atualizado com o código (68 % de concordância)” (Forward and Lethbridge, conforme relatado por Petre, 2013, author copy p. 3); entre os 50 informantes de Petre, 35 não usavam UML (Unified Modeling Language) e 3 usavam geração automática de código (pp. 4‑5). Estudos de adoção de CASE e de engenharia dirigida por modelo aparecem no registro como não lidos, portanto nenhum dado deles é citado.  
+- **Opinião.** O fio condutor comum é que cada abordagem resolveu um custo (notação, prova, geração) enquanto outro permanecia manual: escrever a especificação, buscar o programa ou verificar o resultado.
+
+<div id="3-three-lanes" class="anchor-alias" aria-hidden="true"></div>
+
+## 3. Três faixas em direção a um Mundo de Código
+
+O desejo na Seção 1 é antigo. O que mudou até novembro de 2026 é que vários programas de pesquisa, trabalhando por seus próprios motivos, agora colocam um proponente instruído ao lado de algo que pode dizer sim ou não. Esta seção registra três vias. Uma via é uma observação de convergência: concordância na direção, não um ranking, e não uma alegação de que um programa substitui outro. Cada figura abaixo está conforme relatado pela fonte citada. Nenhuma delas é uma medição do Reality Code Engine exceto a linha final da Seção 3.3.
+
+<div id="lane-training" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.1 Treinamento em arquiteturas populares
+
+Esta faixa mantém uma forma de modelo amplamente utilizada, geralmente um decodificador que prevê o próximo token (um fragmento de palavra), e altera os dados de treinamento ou a recompensa.
+
+| Quem | Conforme reportado | Incompleto nessa fonte |
+| --- | --- | --- |
+| Meta FAIR CodeGen. CWM, um decodificador denso de 32 bilhões de parâmetros [B23] | O código é aprendido melhor quando o modelo observa a execução, e não apenas texto. O treinamento intermediário utiliza rastreamentos Python e trajetórias de agentes. SWE-bench Verified pass@1 53,9% para o modelo base, 65,8% com o melhor de 16 amostras no momento do teste. LiveCodeBench 68,6%. CruxEval-O 94,3%. 120 milhões de funções rastreadas. 3 milhões de trajetórias ForagerAgent provenientes de 10,2 mil imagens. Uma ablação de 8 bilhões de parâmetros: os rastreamentos elevam o CruxEval-O de 44,6 para 73,9, e o Forager eleva o SWE-bench Verified de 18,4 para 22,1. | Os autores denominam a previsão de rastreamento um "primeiro passo". Um depurador neural e usos em verificação constituem trabalho futuro nesse relatório. |
+| SWE-RL, Wei et al. | Aprendizado por reforço sobre histórico de pull requests. A recompensa é a similaridade com um patch oráculo, e não igualdade semântica. Llama3-SWE-RL-70B é reportado com 41,0% no SWE-bench Verified. | A recompensa não é igualdade semântica. |
+| SWE-smith, Yang et al. | Tarefas sintéticas por repositório: 50.000 instâncias, 128 repositórios. SWE-agent-LM-32B com 40,2% pass@1. | Apenas ajuste fino supervisionado no artigo. O aprendizado por reforço é um sistema externo denominado SkyRL. |
+| DiffuCoder, Gong et al. Mercury, Inception Labs | Geração de código não autorregressiva (difusão mascarada). DiffuCoder é um modelo de 7 bilhões de parâmetros treinado em 130 bilhões de tokens; o coupled-GRPO é reportado com um acréscimo de 4,4% no EvalPlus. Mercury é reportado com 1.109 e 737 tokens por segundo em uma H100. | A paridade de qualidade com modelos autorregressivos não está estabelecida nas fontes aqui consultadas. |
+| PatchDiff, Wang, Pradel e Liu. METR, Becker et al. | Benchmarks podem superestimar o sucesso, e a produtividade em campo pode cair. PatchDiff: 7,8% dos patches considerados corretos falham nos testes dos desenvolvedores, e as taxas de resolução estão infladas em aproximadamente 6,4 pontos. METR, sobre ferramentas do início de 2025: 16 desenvolvedores, 246 tarefas, tempo de conclusão medido 19% maior. Uma previsão de 24% menor, e uma estimativa post-hoc de 20% menor, não corresponderam a essa medição. | Ambas as verificações são datadas de ferramentas do início ou meados de 2025. |
+| SWE-Bench Pro, Scale AI. Placar público consultado em 6 de novembro de 2026 | Construído para resistir à contaminação (repositórios com copyleft e privados) e para solicitar alterações extensas: média de 107,4 linhas em 4,1 arquivos. 1.865 tarefas, 41 repositórios (731 públicos, 276 privados, 858 retidos). Placar público naquele dia: Muse Spark 1.1 com 61,50 +/- 3,10; gpt-5.4 (xHigh) com 59,10; Muse Spark com 55,00; claude-opus-4-6 (thinking) com 51,90; gemini-3.1-pro com 46,10. Os quatro primeiros executaram com mini-swe-agent. Texto de lançamento na mesma página: GPT-5 com 23,3% e Opus 4.1 com 23,1%, contra mais de 70% no SWE-bench Verified. Conjunto privado: Opus 4.1 com 17,8%, GPT-5 com 14,9%. A página não exibe data de atualização. | O oráculo ainda consiste em testes fail-to-pass e pass-to-pass. |
+| Multi-SWE-bench, ByteDance Seed | Resolução de issues em Java, TypeScript, JavaScript, Go, Rust, C e C++. 1.632 instâncias provenientes de 2.456 candidatos, com 68 anotadores. | Uma figura do placar de novembro de 2026 não foi recuperada. Nenhuma é indicada nessa página. |
+
+**Leitura de faixa.** Os relatórios de treinamento acima avançam em direção à semântica: rastros de execução, dinâmica do ambiente e recompensas que um verificador pode observar. O conjunto de testes continua sendo o oráculo, e o PatchDiff é evidência de que um conjunto de testes é incompleto. O board do SWE-Bench Pro está acima de seu texto de lançamento e ainda avalia patches por testes. Esse é o início do nome Leis da Codificação. Um verificador exato substitui “tests passed” por um Formulário aceito. A aceitação faz parte do mundo, não é uma pontuação ajustada posteriormente.
+
+<div id="lane-hybrids" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.2 Híbridos criativos
+
+Esta via combina um proponente aprendido com um portão que já existe: um avaliador, um kernel de prova, um sistema de tipos ou um conjunto de exemplos.
+
+| Quem | Conforme relatado | Incompleto nessa fonte |
+| --- | --- | --- |
+| AlphaEvolve, Google DeepMind [C52] | Um grande modelo de linguagem propõe edições de código. Um loop evolutivo o envolve. Avaliadores automáticos decidem. Uma multiplicação de matriz complexa 4 por 4 em 48 multiplicações escalares. Também agendamento de datacenter, simplificação de circuitos e um aceleramento de seu próprio treinamento, sem figura adicional usada aqui. | Funciona onde existe um avaliador. |
+| AlphaProof, Google DeepMind [C38] | Aprendizado por reforço no estilo de AlphaZero, dentro do Lean. O ambiente formal fundamenta o raciocínio. 80 million autoformalized statements. No Olimpíada Internacional de Matemática de 2024, 3 de 5 problemas não-geométricos, resultado de medalha de prata com AlphaGeometry 2, em computação de vários dias. | Custo computacional. O relatório é de matemática, não de software. |
+| DeepSeek-Prover-V2-671B | Decomposição de subobjetivos por DeepSeek-V3, provas dos subobjetivos costuradas em uma cadeia de pensamento de partida fria, depois aprendizado por reforço. O kernel Lean 4 é o portão. miniF2F-test pass ratio 88.9%. PutnamBench 49 of 658. Um novo ProverBench de 325 problemas. 6 of 15 AIME (American Invitational Mathematics Examination) 2024 and 2025 problems in the formal setting, against 8 for DeepSeek-V3 by an informal majority vote. | Matemática, não software. A lacuna formal e informal ainda é diferente de zero. |
+| Kimina-Prover Preview, Moonshot and Numina | A partir do Qwen2.5-72B. Aprendizado por reforço em larga escala com padrão de raciocínio formal no Lean 4. miniF2F 80.7% at pass@8192. Modelos destilados com 1.5 billion and 7 billion parameters foram lançados. | Um lançamento de pré-visualização. |
+| Goedel-Prover, Princeton | Problemas em linguagem natural autoformalizados para Lean (1.64 million statements). Iteração de especialista constrói mais de 800,000 proofs. Apenas ajuste fino supervisionado. miniF2F 57.6% at pass@32. PutnamBench 7 at pass@512. | Sem aprendizado por reforço na versão 1. |
+| Vericoding benchmark, Beneficial AI Foundation [C34] | Gerar código e uma prova a partir de uma especificação formal. 12,504 specifications. Sucesso 82.2% Dafny, 44.2% Verus, 26.8% Lean. O resumo arredonda essas parcelas para 82%, 44% e 27%, que é o arredondamento na seção de compromisso abaixo. A divisão é 3,029 Dafny, 2,334 Verus e 7,141 Lean. Verificação Dafny nessa linha de trabalho passou de 68% para 96% em um ano. Descrições em linguagem natural acrescentam pouco. | O custo de escrever a especificação permanece. |
+| Type-constrained decoding, Mündler et al. | O sistema de tipos restringe a amostragem de tokens. Autores afiliados ao Swiss Federal Institute of Technology Zurich and the University of California, Berkeley. Erros de compilação caíram 75.3% no HumanEval e 52.1% no MBPP (the short Python set named in that report). Uma restrição apenas de sintaxe gera 9.0% e 4.9% nesses dois conjuntos. | Escala apenas TypeScript. Tipos não são aceitação total de comportamento. |
+| DreamCoder, Ellis et al. LILO, Grand et al. | Aprendizado de biblioteca por compressão. LILO adiciona um grande modelo de linguagem e refatoração simbólica (Stitch). DreamCoder é citado do texto completo na Seção 2. LILO está em nível abstrato nesta passagem. | Pequenas linguagens específicas de domínio nas fontes lidas para a pista. |
+| egg, Willsey et al. [C4] | Saturação de igualdade: um conjunto de programas equivalentes armazenados como um e-grafo. Principles of Programming Languages, 2021. | Alguém ainda precisa escrever as regras de reescrita. |
+| ARC Prize 2024, Chollet, Knoop, Kamradt and Landers. Akyurek et al. | Síntese de programa guiada por aprendizado profundo, mais treinamento em tempo de teste. A pontuação privada do ARC (Corpus de Abstração e Raciocínio) em ARC-AGI-1 passou de 33% para 55,5% durante 2024. Uma meta de 85% não foi atingida. Akyurek et al. atualizam pesos na inferência nos exemplos da tarefa: 53,0% no conjunto de validação público do ARC com modelo de 8 bilhões de parâmetros, e 61,9% quando combinado com síntese de programa. | A meta de 85% não foi atingida. O regime de Akyurek é few-shot. |
+| ARC Prize 2025 results page | Vencedores em ARC-AGI-2 privado, com limite de custo de 0,20 dólares por tarefa. NVARC (a entrada vencedora nomeada naquela página) 24,0%, com dados sintéticos, treinamento em tempo de teste e uma pequena rede recursiva. ARChitects 16,5%, um modelo de linguagem de difusão mascarada bidimensional com refinamento recursivo. MindsAI 12,6%. Prêmios de artigos naquela página: uma pequena rede recursiva de cerca de 7 milhões de parâmetros com cerca de 45% em ARC-AGI-1 e cerca de 8% em ARC-AGI-2; SOAR (síntese evolutiva de programa com autoajuste, como aquela página a denomina) até 52% em ARC-AGI-1; CompressARC, um método de comprimento mínimo de descrição sem pré-treinamento, cerca de 20% a 34% em ARC-AGI-1 e cerca de 4% em ARC-AGI-2. | O grande prêmio ficou sem reivindicação. ARC-AGI-3, uma trilha interativa, está em desenvolvimento. |
+| Large Concept Models, Meta FAIR | Predição autorregressiva em um espaço de incorporação de sentenças, SONAR (o espaço de incorporação de sentenças nomeado naquele relatório, 200 idiomas), em vez de tokens. Erro quadrático médio, difusão e variantes quantizadas. Modelos de 1,6 bilhão de parâmetros em cerca de 1,3 trilhão de tokens. Uma arquitetura escalada para 7 bilhões de parâmetros em cerca de 2,7 trilhões de tokens. | No resumo, um conceito é uma sentença, um proxy. Nenhum resultado específico de código é fornecido ali. |
+
+**Leitura de faixa.** Cada um desses híbridos tem a forma declarada nos princípios acima: o modelo propõe, e um portão determinístico decide. AlphaEvolve e AlphaProof são pontos de contato claros. Os provadores Lean têm a mesma forma com o kernel como o portão, e os ganhos que relatam provêm de dados gerados contra esse kernel. A página do ARC Prize 2025 mostra busca de programa, treinamento no tempo de teste, difusão e redes recursivas pequenas em um único ciclo: propor, verificar contra exemplos, refinar. O limite compartilhado também é compartilhado. Eles precisam de um avaliador, um kernel, ou um conjunto de exemplos. As Leis da Codificação são a afirmação de que um ambiente desse tipo existe para codificação em geral, não apenas para matemática e para kernels de referência. Grandes Modelos de Conceito são o parente mais próximo livre de tokens do JEPA em linguagem: predição em um espaço conceitual, ainda sem uma etapa de aceitação exata.
+
+<div id="lane-formula" class="anchor-alias" aria-hidden="true"></div>
+
+### 3.3 Reconcepções de computação, programação e codificação
+
+Esta faixa não começa a partir de uma pontuação de referência. Começa a partir de uma questão sobre o que é um programa.
+
+| Quem | Conforme relatado | Inacabado nessa fonte |
+| --- | --- | --- |
+| HVM2, Higher Order Company | Combinadores de interação como modelo de computação, com paralelismo inerente ao modelo. Esta página cita o modelo. | Figuras naquele artigo não são usadas aqui. A adoção em produção está aberta. |
+| Unison [C2] | Uma definição é o hash de sua árvore sintática. Nomes são visualizações sobre esse hash. A linguagem está em uso de produção. | Tamanho do ecossistema. |
+| Comunidades Lean, Dafny e Verus, via o benchmark vericoding [C34] | Uma prova é um programa que o kernel pode verificar. Correção é um objeto verificável. O piso medido usado aqui é a linha vericoding acima. | O custo de escrever a especificação permanece. |
+| egg [C4] | Classes de equivalência de programas como dados. Programas vivem em um quociente. | Completude das regras de reescrita. |
+| Lean FRO (Focused Research Organization), roteiro do Ano 1, agosto de 2023 a julho de 2024 | Lean como linguagem e assistente de prova para matemática e para verificação de software e hardware. As entregas nomeadas naquela página incluem uma biblioteca padrão, um sistema de módulos, Lake e Reservoir, automação de prova, integração de aprendizado de máquina e um novo gerador de código. | Roteiros de anos posteriores não são usados nesta página. |
+| Conal Elliott, design denotacional | “O significado da instância é a instância do significado.” Um modelo semântico define correção e a transporta para a implementação. A nota é de 2009, revisada em 2016. | Uma disciplina de design manual. |
+| Radul e Sussman, propagadores | Computação como máquinas autônomas que adicionam informação a células compartilhadas. O relato unifica programação estilo expressão e programação por restrição, incluindo busca incremental distribuída. Relatório técnico de 2009, com implementação em Scheme. | Adoção. |
+| Chollet, sobre a medida de inteligência [T37] | Inteligência como eficiência de aquisição de habilidades. ARC é a medida. Síntese de programas é o enquadramento. O artigo de 2019 é a citação. Palestras posteriores sobre síntese feita no momento da tarefa não são citadas isoladamente. Onde o relatório ARC Prize 2024 menciona síntese de programas guiada por deep learning, esse relatório é a citação. | A medida formal não é operacionalizada além de ARC no resumo lido para esta faixa. |
+| Este projeto, as Leis da Codificação | Uma Forma canônica é o objeto. Texto superficial é uma projeção. Custo é contabilizado. Resultados medidos: H1 mediana rho 9.34 sobre 185 programas; H2 `C_check / E_model = 0.000582 <= 0.05` (`1,718×` mais barato no M5 Max); H7, 1.275 mutantes e 0 violações no braço fuzzado; H8, 10.500 fluxos, seis alvos, 0 incompatibilidades; H14 execução 3, 111 de 151 (73.5%) fechados com 0 chamadas ao modelo; H15 nos 40 tarefas residuais, 17/40 a 34/40 em seis propositores prontos, `22/40` (`k = 1`) e `27/40` (`k = 16`) para `FormJEPA-v1` treinado especificamente (`8.42M` parâmetros, `58.65 mJ` / `474.76 mJ` núcleo RAPL `reported_j`; `177/200` em defeitos sintéticos disjuntos), 34/40 replay Gear-0 sem chamadas (`0.325 µs`, `1.77 µJ`/sonda), redução de `8.70×` nas chamadas de fronteira 3-Gear em `Zipf(0.85)`, e auditoria `rce repair` de 151 tarefas `f` (`3/119 = 2.5% > 2.0%`, `0` contradições, permanece em `observe`). | Síntese completa de intenção‑para‑Forma (H3), ranking energético multi‑termo calibrado (H5, H11), H4, H6, H9, H10, H12, H13, os braços de difusão e evolutivo de H15, e o wall‑meter `measured_j` permanecem abertos. |
+
+**Leitura de faixa.** Unison (identidade é um hash de estrutura), egg (programas como classes de equivalência), interaction nets (computação como reescrita local) e assistentes de prova (correção como objeto) cada um contém um pedaço do que as Leis da Codificação afirmam em conjunto: uma Forma canônica, reprodução exata, projeção para alvos e aceitação verificável. O design denotacional de Elliott e a conta do propagador são declarações anteriores da mesma exigência: significado define a implementação, e a computação adiciona informação em vez de apenas emitir texto. Eles são convergências independentes, cada uma a partir de um ponto de partida diferente. A medida de Chollet diz que o que se deve contar é quão eficientemente um sistema adquire uma habilidade, razão pela qual as comparações de proponentes rastreiam tanto orçamentos de chamadas quanto energia física (Seção 8).
+
+<div id="4-why-now-the-case-for-closed-form-deterministic-ai-proposed-code" class="anchor-alias" aria-hidden="true"></div>
+
+## 4. Por que agora: o argumento pelo código de forma fechada, determinístico e proposto por IA
+
+**Esta seção é opinião, construída a partir da história acima e das três vias na Seção 3. É um caso a ser testado, não um resultado.**
+
+- **Checkers são baratos e confiáveis onde as tentativas anteriores careciam deles.** Usando Csmith, um gerador de programas aleatórios, os autores descobriram que o CompCert era “o único compilador que testamos para o qual o Csmith não consegue encontrar erros de código incorreto” após “cerca de seis anos‑CPU” de tentativas (Yang et al., 2011, Sec. 3.1, PDF p. 6). Regras verificadas por máquina podem carregar a confiança que um gerador não pode. O próprio CompCert usa esse padrão: seu alocador de registradores executa uma heurística de coloração de grafos não verificada e verifica cada resultado com um verificador provado correto em Coq, porque a coloração de grafos é “mais fácil de validar a posteriori do que provar diretamente correta” (Leroy, 2009, Sec. 4.2, PDF p. 7).
+- **Semânticas determinísticas respondem ao problema do nondeterminismo.** Se o gerador puder variar mas o artefato aceito for verificado e reproduzido exatamente, a variação de execução a execução no modelo deixa de importar para o resultado.
+- **Evidência de verificador‑em‑loop existe.** A filtragem comportamental do AlphaCode, a seleção de teste oráculo do Codex‑S (77,5 % versus 44,5 % para ranking por log‑probabilidade), Clover, AutoVerus e AlphaProof mostram ganhos significativos quando uma verificação seleciona entre propostas. A Seção 3 registra a mesma forma em sistemas posteriores: um modelo propõe, e um avaliador, um kernel de prova ou um sistema de tipos decide.
+- **Preditores aprendidos agora operam em espaço latente.** I‑JEPA e V‑JEPA 2 demonstram que prever um resumo do alvo, em vez de cada detalhe, pode funcionar bem para essas tarefas: V‑JEPA 2 teve sucesso maior em 4 de 5 tarefas robóticas (empatado em uma) e planejou cerca de 15 x mais rápido que um modelo de vídeo generativo em sua comparação (Tabela 3, PDF p. 15). Em um programa, detalhes como ortografia de identificadores, formatação e linguagem alvo podem ser preenchidos deterministamente após a escolha da estrutura. A Seção 5 expõe a premissa e onde ela termina quando Formas e as Leis da Codificação existem.
+- **Geração token‑a‑token é cara.** LLaMA 65B, distribuído em 8 a 32 GPUs V100 com limite de saída de 512 tokens, consumiu “cerca de 3‑4 Joules por token de saída”, contabilizando apenas a energia da GPU (Samsi et al., 2023, Secs. III‑C e IV‑C, PDF pp. 4‑6). Em um estudo com 88 modelos, modelos de geração de texto consumiram em média 0,047 kWh por 1 000 consultas, cada consulta gerando apenas 10 novos tokens (Tabela 2), e “arquiteturas generativas de uso geral são ordens de magnitude mais caras que sistemas específicos de tarefa”, em parte porque um gerador escolhe entre “todo um vocabulário” (Luccioni et al., 2024, abstract, PDF p. 1; Sec. 4.1 e Tabela 2, PDF p. 6; Sec. 4.2.1, PDF p. 8).
+- **Comparação check‑to‑model no mesmo host (Seção 8, H2).** Em vez de misturar números externos de V100 com tempos de laptop local, a Seção 8 mede ambos no mesmo host Apple M5 Max: `0.04904 J` por verificação de Form versus `84.25 J` por candidato no `Qwen 3.6 35B-A3B` local (`124.81 J` por reparo residual admitido).
+
+<div id="what-could-still-fail" class="anchor-alias" aria-hidden="true"></div>
+
+### O que ainda pode falhar
+
+- **Teto de expressividade (H6).** Se programas reais necessitam de efeitos ou nondeterminismo que o Form não pode declarar, a premissa de “todo código” falha.
+- **A intenção pode ser o gargalo.** Um espaço de saída menor não corrige intenção subespecificada. Sinal: H1 e H2 se mantêm enquanto H3 falha.
+- **Manipulação de especificação.** O verificador demonstra que um Form está bem formado e cumpre as propriedades declaradas, não que corresponda ao que o usuário pretendia. Tarefas de benchmark carregam rastros comportamentais verificados por replay; o risco residual é rotulado, não resolvido.
+- **Escassez de corpus.** Sinal: H3 permanece plano à medida que o corpus cresce.
+- **Colapso.** JEPAs precisam de medidas anti-colapso, como o codificador alvo EMA (média móvel exponencial) do I-JEPA e V-JEPA 2; LeCun (2022) propõe maximização de informação no estilo VICReg em vez disso (Sec. 4.5). Um embedding de Form colapsado faz H5 falhar. A Seção 5 indica esse limite ao lado dos demais.
+- **Erro de medição.** Contadores sem raiz (macmon `IOReport` L2, kernel `ri_energy_nj` L3, RAPL) abrangem contadores de SoC ou de processo (`reported_j`), não a potência de parede em corrente alternada (`measured_j`).
+- **Deriva de linha de base.** Processos co‑locados em hosts compartilhados deslocam linhas de base ociosas L2 (Falsifier 6), exigindo contadores L3 por identificador de processo (PID) ou hosts ociosos dedicados.
+
+<div id="5-jepa-as-premise" class="anchor-alias" aria-hidden="true"></div>
+
+## 5. JEPA como premissa e onde ela se encerra
+
+A premissa permanece. Um JEPA prevê em um espaço de incorporação, não no espaço da entrada bruta. A tese cita a declaração de 2022 de LeCun sobre essa ideia. V-JEPA 2 relata 62 horas de vídeo de robô e sucesso em pick-and-place zero-shot de 65 % a 80 % [B1]. O preditor condicionado à ação, como afirma a seção do proponente no mesmo relatório, foi treinado com menos de 62 horas de vídeo de robô não rotulado. LLM-JEPA relata que uma perda no espaço de incorporação supera uma perda de token em uma tarefa de linguagem natural para expressão regular, no GSM8K (um conjunto de matemática de escola primária) e no Spider (um conjunto de consulta texto‑para‑banco de dados), em escala de 1 bilhão de parâmetros (Huang, LeCun e Balestriero, 2025). Para código, isso corresponde à intuição de que o objeto útil é o significado, não os tokens.
+
+Uma vez que Formas existam, e uma vez que as Leis da Codificação fixem equivalência e aceitação, essa premissa não é todo o método. Seis limites seguem. Eles são razões para ampliar o proponente, não razões para abandonar a premissa.
+
+1. **Uma geometria aproximada, onde uma exata pode ser computada.** JEPA aprende uma geometria latente aproximada. As Leis da Codificação fornecem uma exata: a Forma canônica e as equivalências que o verificador já decide. Aprender isso por auto‑supervisão gasta dados em um mapa que pode ser calculado. H10 é o teste de se aprender no quociente economiza dados. H10 ainda não foi executado.  
+2. **Colapso.** O colapso de representação, e a necessidade de regularizadores contra ele, são problemas abertos no treinamento de JEPA. Um canonicizador exato não pode colapsar. Ele mapeia cada programa de superfície para uma Forma por uma regra, não por uma perda.  
+3. **Nenhuma aceitação nativa.** JEPA não possui decodificador nativo nem etapa de aceitação. O código precisa de uma saída discreta, verificável. A pontuação de energia classifica candidatos. Ela não decide. O verificador decide.  
+4. **Pontos, não um quociente.** Formas alternativas são um quociente. Muitos programas de superfície podem ser uma Forma, e uma Forma pode ser projetada para muitos alvos. JEPA incorpora pontos. Não certifica que dois pontos são a mesma Forma. Um e‑graph certifica. Um hash de estrutura certifica. Na Seção 8, `rce fmt nameless` mapeia `7` de `9` mutantes de variável local renomeados alfa para o mesmo slot Gear-0 (`DNULLMM1`) mapeado em memória, com zero chamadas ao modelo.  
+5. **Escala da evidência.** A evidência do LLM-JEPA está em escala de 1 a 2 bilhões de parâmetros, em conjuntos de dados pequenos. Nenhuma fonte lida para esta página mostra treinamento de JEPA em código de escala de repositório.  
+6. **O custo do planejamento aprendido.** O controle preditivo de modelo (MPC) do V-JEPA 2 levou cerca de 16 segundos por ação [B1]. Busca sobre Formas com um verificador exato barato (`7.32 ms`, `49.04 mJ` L3 `reported_j` no M5 Max) e consulta Gear-0 (`0.325 µs`, `1.77 µJ`) limita o custo de rollout repetido antes que qualquer planejador aprendido seja treinado.
+
+**Consequência.** JEPA permanece como a premissa: prever significado, não texto. O slot do proponente generaliza para qualquer proponente aprendido sobre Formas. As instâncias nomeadas na Seção 3 são modelos autoregressivos com execução durante o treinamento (CWM), modelos de código por difusão, aprendizado por reforço em um ambiente formal (AlphaProof e os provadores Lean), busca evolutiva (AlphaEvolve), aprendizado de biblioteca (DreamCoder e LILO) e decodificação restrita. Grandes Modelos de Conceito ficam ao lado da premissa em linguagem, ainda não em código. O portão é o mesmo para todos eles. A Seção 6 apresenta a taxonomia. A Seção 7 descreve o mundo no qual eles propõem.
+
+<div id="6-proposer-slot" class="anchor-alias" aria-hidden="true"></div>
+
+## 6. O slot do propositor é neutro em relação à arquitetura
+
+Figura 1 desenha um pipeline. A caixa aprendida é um slot, não uma arquitetura única. JEPA é a instância na figura. O portão desenhado fora da caixa não muda se um proponente diferente for conectado. A tabela indica, para cada tipo de proponente descrito na Seção 3, o que ele aprende, o que necessita das Leis da Codificação (um canonicalizador, um verificador, um medidor de custo), o modo de falha já nomeado pelas fontes, e qual hipótese ele move ou moveria. A Seção 8 relata agora tanto o primeiro proponente reparador latent Form JEPA treinado para propósito (`FormJEPA-v1`, `8.42M` parâmetros treináveis) quanto seis modelos prontos autoregressivos, de raciocínio e híbridos Gated-DeltaNet / MoE nas 40 tarefas residuais.
+
+| Proponente | O que aprende | O que precisa do verificador | Modo de falha conhecido | Hipótese que move / moveria |
+| --- | --- | --- | --- | --- |
+| JEPA, um preditor de incorporação (`FormJEPA-v1` na Seção 8) | Uma geometria latente aproximada da estrutura e edições de Form (codificador alvo EMA + VICReg + decodificador tipado de edição condicionado latente) | Um canonicalizador, um verificador, um medidor de custo e uma cabeça de edição discreta. A pontuação de energia não aceita | Nenhuma aceitação nativa. Distância latente não calibrada sozinha fornece AUROC `0.618`, e modelos compactos não pré‑treinados perdem migrações de API multi‑módulo abertas (`0/9` em H15) sem fallback Gear-2 | `FormJEPA-v1` medido em H15 (`22/40` em `k = 1`, `27/40` em `k = 16`) e defeitos sintéticos disjuntos (`177/200`); intenção‑para‑Form completa H3, calibrado H5/H11, H10 e H13 permanecem aberto |
+| Decodificadores autorregressivos / de raciocínio / treinados por rastreamento (Claude, Grok, transformer generativo pré‑treinado de pesos abertos (GPT-OSS), DeepSeek, Qwen 3.6, classe CWM) | Previsão do próximo token, raciocínio em cadeia de pensamento, híbrido Gated-DeltaNet / MoE, ou rastros de execução | Um verificador como aceitação, mais cristalização Gear-0 para que formas recorrentes não invoquem novamente o modelo | Retries no espaço de tokens gastam `84.25 J` por candidato local (`Qwen 3.6`), e rastros de raciocínio longos podem esgotar limites fixos de conclusão (`DeepSeek V4.1` `17/40`) | Primeiro disparo único (`k = 1`) medido em H15 na Seção 8 (`17/40` a `34/40`); testes RJ-F6 verificam se modelos de token treinados por rastreamento correspondem ao treinamento Form‑quotient com energia igual |
+| Modelo de código por difusão | Um programa mascarado ou denoizado, não um fluxo de tokens da esquerda para a direita | Um verificador na aceitação. Uma restrição também pode atuar durante a amostragem | Paridade de qualidade com modelos autorregressivos não está estabelecida nas fontes lidas aqui | O braço de difusão de H15 (aberto) |
+| Aprendizado por reforço em ambiente formal | Passos que um kernel aceita, como em AlphaProof e nos provadores Lean da Seção 3 | O kernel é o ambiente. Para software, esse papel é o verificador | Nos relatórios lidos aqui o domínio é matemática, não software. Custo computacional faz parte do resultado AlphaProof. Goedel‑Prover versão 1 não possui aprendizado por reforço | H3 e H12, se o mesmo loop for executado em Forms (aberto) |
+| Busca evolutiva | Edições, mantidas ou descartadas por um avaliador, como em AlphaEvolve e em SOAR na página ARC Prize 2025 | Um avaliador. Aqui o avaliador é o verificador, não apenas um conjunto de testes | O loop funciona onde existe um avaliador. Verificações de exemplo, como no ARC, não são uma regra geral de aceitação para software | O braço evolutivo de H15, sobre o residual de H14 (aberto) |
+| Aprendizado de biblioteca (DreamCoder, LILO) | Uma biblioteca reutilizável, por compressão, com ou sem um grande modelo de linguagem no loop | Um verificador nos programas que a biblioteca emite | Os domínios nas fontes lidas para esta pista são pequenos | H10 (aberto) |
+| Decodificação restrita | Nada de novo nos pesos. A restrição mascara tokens ilegais, como no relatório restrito por tipo | Uma gramática ou um sistema de tipos no momento da amostragem, e o verificador de comportamento | O resultado principal está na escala TypeScript. Sintaxe e tipos não são aceitação total. Erros de compilação caíram 75.3% no HumanEval e 52.1% no MBPP, contra 9.0% e 4.9% apenas para sintaxe | H3, apenas para a parcela de falhas que são falhas de tipo |
+| Grandes Modelos de Conceito | A incorporação da próxima frase, não o próximo token | Uma etapa de aceitação exata, que o resumo não possui | Um conceito lá é uma frase. Nenhum resultado específico de código no resumo | Nenhum de H1 a H15 até que exista um resultado de código |
+
+A escada determinística na seção do proponente executa antes de qualquer uma destas (H14: `111/151` fechado em `0` chamadas, deixando `40` tarefas residuais). A Seção 8 relata tanto a linha de base H15 de seis modelos pronta para uso mais a cristalização Gear-0 Shape D (`DNULLMM1`) quanto o braço treinado especificamente `FormJEPA-v1` mais Cascata 3-Gear nessas `40` tarefas, mantendo explicitamente abertas as armas de difusão e evolutiva, intent-to-Form H3, e a paridade de joules do servidor wall-meter.
+
+<div id="7-world-of-code" class="anchor-alias" aria-hidden="true"></div>
+
+## 7. Um Mundo de Código
+
+**Definição.** Um Mundo de Código é o espaço de estados de Formas, mais a transição exata e a regra de aceitação exata. Na notação da tese, o espaço de estados é S, a transição é a função δ, e a aceitação é o veredicto do verificador sobre uma Forma. “Modelo de mundo”, para código, significa um modelo deste espaço. Ao contrário de um modelo de mundo físico, a física é conhecida exatamente. A Parte 4 da tese diz que para um preditor no estilo JEPA. A mesma física limita todo proponente na Seção 6. CWM aprende um interpretador a partir de rastros. V-JEPA 2 aprende física a partir de vídeo. Em uma Forma, a transição é dada. Não há ruído irreduzível no próximo estado.
+
+**Onde a aprendizagem é removida, e onde permanece.** Canonicalização, equivalência e replay são computações. Uma vez que as Leis da Codificação as fixam, um modelo não precisa aprendê‑las. O que resta aprender é o mapeamento de uma intenção declarada para uma Forma, a orientação da busca e a classificação de tudo que a escada determinística deixa aberto (`40` tarefas de história real após H14 execução 3). Quando qualquer proponente resolve uma dessas tarefas residuais e passa o portão, a cristalização Gear‑0 transforma cada recorrência (e `7/9` renomeações‑alfa sob `rce fmt nameless`) em uma busca determinística de `0.325 µs`.
+
+**Avaliação.** Um conjunto de testes não são as Leis da Codificação. PatchDiff relata que 7,8 % dos patches considerados corretos falham em testes de desenvolvedor, e que as taxas de resolução são infladas em cerca de 6,4 pontos. O ensaio METR relata 16 desenvolvedores, 246 tarefas, e um tempo de conclusão medido 19 % maior com ferramentas de início de 2025. SWE‑Bench Pro, na placa obtida em 6 de novembro de 2026, ainda usa testes de falha‑para‑aprovação e aprovação‑para‑aprovação como oráculo. Multi‑SWE‑bench amplia o conjunto de linguagens para Java, TypeScript, JavaScript, Go, Rust, C e C++. A aceitação nesta página é o portão (`rce check` saída `0` mais preservação de obrigação), verificado adicionalmente contra originais históricos por `rce hash` e `rce equiv`.
+
+**Falsificador da reivindicação ampliada.** RJ‑F6, declarado com os demais na Seção 8, nomeia a observação que derrotaria o quociente de Forma como ajuda aos proponentes: se um modelo de espaço‑token fecha o residual de 40 tarefas com energia igual e aceitação de portão igual sem o quociente de Forma. Modelos de token de fronteira de disparo único fecham até `34/40` (`85.0%`) no primeiro encontro, enquanto `FormJEPA-v1` (`8.42M` parâmetros sobre Formas S‑expressões normalizadas por quociente) corresponde a reparo local de 35 B tokens em `27/40` (`k = 16`) com mais de uma ordem de magnitude menor `reported_j` e `rce fmt nameless` fornece `7/9` acertos de quociente sem chamada sob renomeação‑alfa; testes controlados de eficiência de amostra de quociente‑versus‑superfície de tamanho igual (H10) e intenção‑para‑Forma H3 permanecem abertos.
+
+<div id="8-one-concrete-instance-the-reality-code-engine" class="anchor-alias" aria-hidden="true"></div>
+
+## 8. Uma instância concreta: o Reality Code Engine
+
+RCE é uma forma de programa fechado entre possíveis outras; as questões acima se aplicam a qualquer linguagem com uma forma de programa pequena e verificável. Em RCE todo programa é um Formulário P = (S, E, δ, D, λ):
+
+- **S, estado:** os dados tipados que o programa mantém, por exemplo a posição do cursor e o buffer de texto de um editor.
+- **E, eventos:** as entradas que ele pode receber, por exemplo “tecla pressionada” ou “arquivo aberto”.
+- **δ (delta), função de transição:** a regra que fornece o próximo estado a partir do estado atual e de um evento.
+- **D, derivações:** o histórico registrado, encadeado por hash, dos passos, que torna cada execução reproduzível bit a bit.
+- **λ (lambda), saída:** o que o programa mostra ou emite para um dado estado, por exemplo as linhas visíveis de texto.
+
+Um verificador aceita um Formulário ou indica a regra que ele viola. No commit `1762fb4b` (20 de novembro de 2026), o verificador de referência público reproduz um Formulário aceito exatamente, passa `2,221` de `2,236` testes de conformidade com `0` falhas (`837` testes unitários Rust), gera Rust, Python, JavaScript e Scala, e é sustentado por `5,537` constantes de teorema do kernel Lean 4 distribuídas em `64` módulos (teoremas T1 a T63). No Apple M5 Max, recibos de canal duplo `reported_j` registram `49.04 mJ` por verificação de Formulário (L3 `ri_energy_nj`, `7.32 ms`/Formulário) e `15.44 J` por verificação completa de 62 Formulários, execução de rastreamento e suíte de emissão para cinco alvos (`2.32 s`/passagem; `measured_j = None`, `board_metered = false`). A descrição completa está na [página do tópico RCE](/about/rce/) e em [github.com/openIE-dev/rce](https://github.com/openIE-dev/rce).
+
+**RCE-JEPA** é o nome de trabalho, mantido para que o tópico permaneça encontrável. O assunto é World Coding. JEPA, um preditor de incorporação conjunta, é a premissa: prever significado, não texto superficial. O slot de proponente é qualquer proponente aprendido sobre Formulários. Verificação, provas, derivação, emissão e posicionamento permanecem com RCE. O objetivo é o melhor desempenho por ciclo de relógio e por joule. *Hipótese de trabalho:* se todo código pode ser codificado no Formulário, todo código pode ser produzido por modelos de incorporação conjunta ou baseados em energia sobre ele. As hipóteses abaixo são desenhadas de modo que a evidência possa refutá‑las.
+
+<div id="defined-quantities" class="anchor-alias" aria-hidden="true"></div>
+
+### Quantidades definidas
+
+- **Espaço de saída.** Geração livre sobre o vocabulário V com comprimento L tem espaço bruto |V|<sup>L</sup>. Ω<sub>n</sub> (ômega) é o conjunto de Formas válidas de tamanho n (nós de Forma); Ω<sub>n</sub><sup>✓</sup> ⊆ Ω<sub>n</sub> é o subconjunto que o verificador aceita. Reportado como log<sub>2</sub>|Ω<sub>n</sub>| bits, estimado por contagem de gramática e amostragem.  
+- **Comprimento da descrição.** b(P) são os bits para codificar a Forma P de forma canônica; b(code) = tokens × log<sub>2</sub>|V| para a fonte emitida equivalente. Razão ρ (rho) = b(code) / b(P).  
+- **Custo de verificação.** C<sub>check</sub>(P): tempo de parede, ciclos e joules para o verificador decidir P. Testes unitários fornecem C<sub>test</sub>; um teste aprovado é evidência, não prova.  
+- **Probabilidade de aceitação.** a = P(verificador aceita e especificação da tarefa satisfeita | intenção), medido como pass@1 sobre o benchmark.  
+- **Joules por programa aceito.** J<sub>acc</sub> = (E<sub>model</sub> + E<sub>check</sub> + E<sub>retry</sub>) / N<sub>accepted</sub>, somado ao longo de uma execução do benchmark (rotulado `reported_j` para contadores L2/L3 e `measured_j` apenas quando um medidor de energia externo está conectado).  
+- **Ciclos por programa aceito.** K<sub>acc</sub>, o mesmo em ciclos de CPU (unidade central de processamento) ou GPU onde os contadores são legíveis.  
+- **AUROC** (área sob a curva característica de operação do receptor): a probabilidade de que uma Forma aceita escolhida aleatoriamente tenha energia menor que uma escolhida aleatoriamente que requer mudança; 0,5 indica chance, 1,0 indica perfeição.  
+
+**Argumento (opinião, a ser testado).** Uma Forma possui cinco slots tipados com regras de composição fixas. Restringir a saída a Ω<sub>n</sub> remove a maior parte de |V|<sup>L</sup> antes que o modelo seja consultado, de modo que menos bits são previstos por programa (ρ > 1), o verificador fornece um veredicto definitivo, aceito ou requer mudança, em vez de um teste probabilístico, e um veredicto de requer mudança é barato e estruturado, nomeando a regra, de modo que as tentativas de nova geração são guiadas em vez de cegas.
+
+<div id="hypotheses" class="anchor-alias" aria-hidden="true"></div>
+
+### Hipóteses falsificáveis H1 a H15
+
+Todas as quinze hipóteses em ordem numérica. H1 a H7 testam a tese RCE-JEPA diretamente, H8 a H10 testam a tese “Leis da Codificação” acima, H11 a H13 testam o proponente, H14 mede a escada determinística abaixo dele, e H15 compara classes de proponentes na residual de 40 tarefas ao lado da cristalização Shape D (`DNULLMM1`) Gear-0.
+
+| ID | Hipótese | Métrica | Apoiado se | Refutado se |
+| --- | --- | --- | --- | --- |
+| H1 | O espaço de Formulário é muito menor que o espaço de origem para os mesmos programas. **Suportado em corpus escrito à mão** (mediana ρ = 9.34 sobre 185 programas) | ρ = b(código)/b(P), mediana sobre o corpus | ρ ≥ 5 | ρ < 2 |
+| H2 | O verificador é barato em relação à geração. **Suportado em `reported_j` no Apple M5 Max**: `C_check / E_model = 0.04904 J / 84.25 J = 0.000582` (`1,718×` mais barato; `measured_j = None`) | C<sub>check</sub> / E<sub>model</sub> por candidato (joules) | ≤ 0.05 | ≥ 0.5 |
+| H3 | A predição no espaço de representação atinge aceitação útil | pass@1 Formulários aceitos em tarefas de intenção‑para‑Formulário reservadas | ≥ baseline pass@1 on the same tasks | < 0.5 × baseline |
+| H4 | A energia por programa aceito diminui | J<sub>acc</sub>(RCE-JEPA) / J<sub>acc</sub>(baseline) | ≤ 0.1 | ≥ 1 |
+| H5 | O ranking de energia concentra massa em Formulários válidos (distância latente L2 não calibrada `FormJEPA-v1` em 925 candidatos de feixe: AUROC `0.618`, inconclusivo; cabeça multi‑termo calibrada aberta) | taxa de verificação de tipo top‑1; AUROC de E para aceitos vs requer mudança | ≥ 0.8 top-1 valid; AUROC ≥ 0.85 | AUROC ≤ 0.6 |
+| H6 | Os aplicativos de referência são codificáveis | porcentagem dos 6 aplicativos de referência mais RCEdb totalmente expressos como Formulários que passam no verificador e reproduzem bit‑identicamente | 7 of 7 | any app requires an escape hatch outside the Form |
+| H7 | Segurança é independente do modelo (braço fuzzed: 0 violações em 1.275 mutantes; braço modelo aberto) | Formulários adversariais (fuzzed e gerados pelo modelo) aceitos pelo verificador que violam uma invariância declarada | 0 | ≥ 1 confirmed |
+| H8 | Determinismo: todo Formulário aceito reproduz uma trajetória e saída bit‑identicas. **Suportado** (0 incompatibilidades em 10.500 fluxos em 6 alvos) | incompatibilidades em pelo menos 10.000 fluxos de eventos gravados em pelo menos 3 máquinas e sistemas operacionais diferentes | 0 | a single mismatch |
+| H9 | O custo é previsto antes da execução | erro mediano da predição da tabela de custos em relação à energia medida (J, medidor nomeado) para uma máquina declarada, sobre as famílias de teste | ≤ 20% | > 50% |
+| H10 | Aprender no quociente economiza dados | exemplos de treinamento que um preditor de Formulários canônicos precisa para alcançar a mesma taxa de aceitação de teste que um de tamanho igual treinado em código de superfície | no máximo metade (uma economia de 2 vezes ou mais) | uma economia inferior a 1,25 vezes |
+| H11 | A energia é monótona em relação à distância de edição (pontuação de edição definida manualmente: `76.8% < 80%`; L2 latente não calibrado `FormJEPA-v1` aumenta sobre distâncias `0..4` com monotonicidade estrita de 5 passos `36.0%`; cabeça calibrada aberta) | porcentagem das famílias de teste nas quais a energia E aumenta com a distância de edição de 1 a k a partir de um ajuste aceito | ≥ 80% of families | < 80% of families |
+| H12 | A cabeça de decisão é calibrada nos resultados do portão | ECE por tipo de decisão, após 10<sup>4</sup> recebimentos | ECE ≤ 0.1 e abaixo de uma tabela de frequência sobre hashes de forma | ECE > 0.2, ou não melhor que a tabela de frequência |
+| H13 | Planos latentes discretos são melhores que um contínuo em sequências longas de edição | Sucesso de planejamento em comprimentos de sequência de edição 1, 5 e 20, braço discreto contra braço contínuo SIGReg | Braço discreto superior no comprimento 20 | Nenhum braço atinge o limiar H3 |
+| H14 | Uma escada determinística fecha uma parcela de tarefas sem chamada ao modelo. **Suportado por sua regra registrada**: três execuções registradas [B30, B31, B32], relatadas abaixo da tabela | Porcentagem de um conjunto de tarefas registradas que a escada determinística pública (reuso, busca por tipo, reescritas determinadas, enumeração limitada) fecha com zero chamadas ao modelo, cada fechamento admitido pelo verificador, em um commit de escada congelado | ≥ 10% das tarefas registradas, relatado com o degrau que fechou cada uma (limiar registrado, inalterado). Medido: execução 1, 118 de 120 (98.3%), nas mutações a escada inverte por construção; execução 2, 31 de 151 (20.5%), 27 delas negações de guarda; execução 3, braço simples, 111 de 151 (73.5%), 110 delas negações de guarda e renomeações | < 10% das tarefas registradas, o mesmo piso que o falsificador RCE-F1 do artigo RCE. Não atingido em nenhuma execução. Nas 41 tarefas de histórico real, que a regra não destaca, as execuções 2 e 3 fecham cada uma 1 de 41 (2.4%) |
+| H15 | As classes de proponente diferem no residual de 40 tarefas. **Medido em proponentes prontos [B33] e `FormJEPA-v1` treinado para o propósito + 3-Gear Cascade [B34]**: seis modelos cloud/local admitem `17/40` a `34/40` (`k = 1`), `FormJEPA-v1` (`8.42M` parâmetros) admite `22/40` (`k = 1`) e `27/40` (`k = 16`) no núcleo sub-joule `reported_j`, e 3-Gear Cascade reduz chamadas de fronteira `Zipf(0.85)` em `8.70×`; braços de difusão, evolutivo e wall-meter permanecem abertos | Porcentagem aceita pelo portão (`C(z) = 1`) das 40 tarefas residuais do braço simples da execução 3 de H14, auditada por `rce check`, preservação de obrigação, `rce hash` e `rce equiv` | Execuções registradas relatam parcelas por braço e `reported_j` local [B33, B34]; braços de difusão/evolutivo e paridade de wall-meter do servidor permanecem abertos | Classes pontuadas em tarefas diferentes ou saídas não verificadas |
+
+<div id="h14-result" class="anchor-alias" aria-hidden="true"></div>
+
+**H14, medido.** A escada é `rce repair` de openIE-dev/rce, com os degraus da seção do proponente acima e um limite de enumeração de 2000 candidatos. Possui três execuções, cada uma registrada antes de ser executada, e juntas constituem o resultado atual. Execução 1 [B30] fechou 118 de 120 tarefas sem chamadas ao modelo, mas 119 de suas 120 tarefas eram mutações de operador e de literal inteiro, o que inverte a enumeração limitada por construção, e 9 dos 118 fechamentos passam nos exemplos e verificações sem ser o programa original. Execução 2 [B31] não tem mutação de operador ou literal: 41 alterações do histórico git de openIE-dev/rce, 27 negações de guarda e 83 renomeações, 151 tarefas no total. Fechou 31 delas (20,5%) sem chamadas ao modelo: 1 das 41 tarefas históricas; todas as 27 negações de guarda, cada uma pela edição de enumeração que remove um `not`, que inverte essa mutação por construção; e 3 das 83 renomeações, nenhuma delas restaurada ao original. Das 41 tarefas históricas, 39 são programas atualizados porque a linguagem mudou, não defeitos; apenas 2 são defeitos de um programa, e a escada fechou um deles. Sem as negações de guarda, 4 de 124 tarefas fecham (3,2%). A previsão P3 da execução 2, de que de 10 % a 40 % das renomeações fecham, falhou, e seu falsificador F1 foi atendido: a taxa de fechamento da execução 1 não se transfere para alterações do histórico real. Execução 3 [B32] executou as 151 tarefas da execução 2 inalteradas, em openIE-dev/rce `8a5d90ea`, com degrau 5, renomeações, após degrau 4; seu registro indica que renomeações são a classe para a qual o degrau 5 foi construído após a execução 2. Seu braço simples, a escada recebendo apenas a tarefa, fechou 111 de 151 (73,5%) sem chamadas ao modelo, 103 delas restauradas ao original: todas as 83 renomeações (80 no degrau 5, 3 no degrau 4), 77 restauradas; todas as 27 negações de guarda, cada uma com seu resultado na execução 2; e 1 das 41 tarefas históricas, a mesma da execução 2. Sem as negações de guarda, 84 de 124 tarefas fecham (67,7%). Seu braço conhecido‑bom deu à escada o programa original de cada tarefa também: fechou 116 de 151, 114 restauradas, incluindo todas as 83 renomeações restauradas e 6 das 41 tarefas históricas. A previsão P6 da execução 3, de que no braço conhecido‑bom cada guarda e tarefa histórica mantêm seu resultado do braço simples, falhou: 5 tarefas históricas a mais fecham, e a que fechou no braço simples fecha no degrau 5 em vez de no degrau 3. Nenhum dos seis falsificadores da execução 3 foi atendido, e a escada relatou zero chamadas ao modelo em ambos os braços. A regra registrada de H14 é apoio em 10 % ou mais das tarefas registradas, e falsificação abaixo de 10 %, para a parcela que a escada determinística pública fecha sem chamadas ao modelo, todo fechamento admitido pelo verificador, em um commit de escada congelado. O braço simples cumpre essas condições. Pela regra, H14 é suportado: o braço simples da execução 3 fecha 111 de 151 (73,5%), deixando 40 tarefas residuais abertas do histórico git.
+
+<div id="h15-result" class="anchor-alias" aria-hidden="true"></div>
+
+**H2, single-shot H15, e Shape D (`DNULLMM1`) Gear-0 nas 40 tarefas residuais abertas, medido [B33].** Registrado antes da execução (`rce-jepa-h15-and-shape-d-gear0-2026-11-22`, `sha256: b64c4c671ae85755...`) contra `openIE-dev/rce` commit `1762fb4b` (`2026-11-20`, binário `sha256: 1d3b0d07ff5b2e8f...`), as 40 tarefas residuais (`sha256: 3ca3a32769145e9b...`; `25` `W-SYN-1`, `5` `W-LEN-1`, `4` `W-NAME-1,W-TY-1`, `3` `W-NAME-1`, `1` `W-WORLD-1`, `1` `W-CAP-3,W-WORLD-1`, `1` `W-INT-1`) foram avaliadas sob predicado de porta estrito `C(z) = 1`: (1) `rce check candidate.rce` sai `0` (impondo não vacuidade `W-UI-1` e `W-MUT-1`), (2) `no_spec_deletion` preserva todos os cabeçalhos declarados `state`, `event`, `error`, `struct`, `kind`, `fn`, `extern` e `step` mais cada traço do lado esquerdo de `example` e contagem de `check` do mutante, e (3) auditoria de equivalência secundária via `rce hash` (`restored`), `rce equiv fuel 2000` (`behaviour-equal`), e modo `rce repair` rung `f` `observe`.
+
+| Braço / Família de Arquitetura | Modelo | Chamadas | Admitido (`C(z)=1`) | Restaurado + Beh-Eq | Tokens Entrada / Saída | Custo (US\$) | On-Chip `reported_j` |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **Arm 0**: Shape D Cold Static Gear-0 | `DNULLMM1` (0 records) + `a..e` | 0 | 0 / 40 (0.0%) | 0 | 0 / 0 | \$0.0000 | < 0.001 J (37.7 µs) |
+| **Arm 1a**: Cloud Autoregressive + Adaptive Thinking | `claude-opus-5-5` | 40 | **34 / 40 (85.0%)** | 33 (30 + 3) | 114,855 / 32,159 | \$1.3783 | `not_available` (N) |
+| **Arm 1b**: Cloud Autoregressive + Adaptive Thinking | `claude-sonnet-5-5` | 40 | **32 / 40 (80.0%)** | 32 (30 + 2) | 114,855 / 30,764 | \$0.8060 | `not_available` (N) |
+| **Arm 2c**: Cloud Reasoning Transformer | `xai:grok-4.20-0309-reasoning` | 40 | **31 / 40 (77.5%)** | 30 (28 + 2) | 76,546 / 18,474 | \$0.2747 | `not_available` (N) |
+| **Arm 2a**: Cloud Reasoning MoE (Cerebras) | `cerebras:gpt-oss-120b` | 40 | **29 / 40 (72.5%)** | 27 (25 + 2) | 78,825 / 43,596 | \$0.1340 | `not_available` (N) |
+| **Arm 3**: Local Hybrid Gated-DeltaNet + Sparse MoE | `Qwen3.6-35B-A3B` (quantized `Q5_K_M`) | 40 | **27 / 40 (67.5%)** | 26 (25 + 1) | 82,330 / 18,411 | \$0.0000 | **3,369.89 J** system-under-test (`124.81 J/adm`) |
+| **Arm 2b**: Cloud multi-head latent attention (MLA) Sparse MoE (Fireworks) | `deepseek-v4p1-flash` | 40 | **17 / 40 (42.5%)** | 16 (15 + 1) | 63,446 / 64,215 | \$0.0930 | `not_available` (N) |
+| **Arm 5a**: Purpose-Trained Latent Form JEPA (`k = 1`) [B34] | `FormJEPA-v1` (`8.42M` params, greedy) | 40 | **22 / 40 (55.0%)** | 22 (20 + 2) | Form S-expr | \$0.0000 | **58.65 mJ** core / **1.19 J** pkg RAPL/prop |
+| **Arm 5b**: Purpose-Trained Latent Form JEPA (`k = 16`) [B34] | `FormJEPA-v1` (`8.42M` params, latent beam) | 40 | **27 / 40 (67.5%)** | 27 (25 + 2) | Form S-expr | \$0.0000 | **474.76 mJ** core / **6.74 J** pkg RAPL/prop |
+| **Arm 6**: 3-Gear Cascade (`t = 1` Cold Gear-0 → `FormJEPA-v1` → `Opus 5.5`) [B34] | `DNULLMM1` + `FormJEPA-v1` + `Opus 5.5` | 13 G2 | **34 / 40 (85.0%)** | 33 | Form + 13 cloud | **\$0.8108** | `FormJEPA` RAPL + 13 cloud (N) |
+| **Arm 4**: Shape D Warm Gear-0 (`t = 2` Replay) | `DNULLMM1` (34 crystallized) | **0** | **34 / 40 (85.0%)** | 33 | 0 / 0 | **\$0.0000** | **0.325 µs / 1.77 µJ** probe + `rce check` |
+
+- **Hipótese H2 suportada (`1,718×` vantagem de energia local de verificação‑para‑modelo):** No Apple M5 Max, o custo de verificação por Form é `C_check = 0.049038 J` (L3 `ri_energy_nj`, `7.32 ms`) enquanto a geração de um candidato local `Qwen 3.6 35B-A3B` custa `E_model = 84.247 J` (`3,303.62 J` L2 GPU + `66.26 J` L3 `llama-server` PID em 40 candidatos; `14,476.18 J` bruto L2 SoC, com `derived_marginal_j` invalidado pelo Falsifier 6 em `68.31%` de deriva ociosa), resultando em **`C_check / E_model = 0.000582 <= 0.05`** (`measured_j = None`, `board_metered = false`).
+- **Forma D (`DNULLMM1`) latência, energia, invariância sem nome e amortização `Zipf(0.85)`:** Em `40,000` buscas `mmap` de interface de sistema operacional portátil (POSIX) contra a loja congelada de 34 registros (`sha256: d92a57b40de0b0ec...`, verificado byte‑identical antes/depois da reprodução), a latência média de sondagem é **`0.3246 µs`** (`324.6 ns`, `9,516.5` instruções) e **`1.771 µJ`** (`1,771.3 nJ` L3 `ri_energy_nj`). Indexar slots por `rce fmt nameless` (teorema T7) produz **`7 / 9` (`77.8%`)** de acertos de chamada zero quando variáveis locais são renomeadas alfa. Em um fluxo recorrente de `200` chegadas `Zipf(s = 0.85)` sob cristalização apenas verificada, o `2-Gear DNULLMM1` reduz chamadas ao modelo de `200` para **`48` (`4.17×` de redução)** para `Opus 5.5` (`$6.81` para `$2.63`; `5.41×` / `37` chamadas com deduplicação de falhas), `56` (`3.57×`) para `Sonnet 5.5`, `57` (`3.51×`) para `Grok 4.20`, `66` (`3.03×`) para `GPT-OSS-120B`, e `94` (`2.13×` chamadas, **`1.56×` redução de energia local**: `16,457.9 J` para `10,553.5 J`) para o `Qwen 3.6` local.
+- **Divulgação de escopo em H15:** Dois dos 40 originais históricos antecedem a regra de exemplo vazio `W-MUT-1` (`spec/examples/57_float_vectors.rce@b2b932da` e `programs/multi/washer.rce@2cc82de7`), explicando parte do teto próximo a `34/40`. Modelos de código de difusão, busca evolutiva de Form e medidor de parede de hardware `measured_j` permanecem abertos.
+
+<div id="form-jepa-and-rung-f-result" class="anchor-alias" aria-hidden="true"></div>
+
+**`FormJEPA-v1` proponente latente de reparo de Form, Cascata de 3 Engrenagens, e auditoria de promoção de tarefa `rce repair` de 151 degraus `f`, medida [B34].** Pré-registrado antes da geração do conjunto de dados, inicialização de pesos e execução do degrau `f` (`rce-jepa-form-jepa-v1-2026-11-22`, `sha256: 22682e6e936ec120...`; `rce-repair-rung-f-wave3-eval-2026-11-22`, `sha256: 04aff4b2b44cdbea...`) contra o commit `openIE-dev/rce` `1762fb4b` (binário Linux x86_64 `sha256: 5ef9931ff23a310f...`), `FormJEPA-v1` (`8,424,073` parâmetros treináveis, `13,917,577` buffers alvo EMA; ponto de verificação `sha256: cbfbf2274175c737...`) foi treinado a partir de inicialização aleatória (`seed = 20261122`) em `6,329` pares de defeitos verificados por verificador em `1,106` formas de Form válidas e disjuntas (extraídas de `1,387` formas de Form únicas após exclusão de caminho de quatro camadas, slug, nome de declaração e exclusão `rce fmt nameless` de `458` digest com `0` sobreposição contra as 151 escadas ou 40 tarefas residuais). Ele combina um codificador de contexto Transformer Pre-LN de 6 camadas (`d = 256`) sobre tokens S‑expression AST de Form normalizados por quociente com um codificador alvo EMA (`τ = 0.996`), um preditor latente MLP residual de 3 camadas treinado sob regularização Smooth-L<sub>1</sub> mais VICReg de variância‑covariância anti‑colapso (aumentando o posto efetivo do contexto de `32.90` na época 0 para **`85.24`** pós‑treinamento, desvio padrão coordenado de `0.1038` para `0.3830`, e energia L<sub>2</sub> latente de pares positivos de `149.25` para `10.57` versus `13.02` pares aleatórios), e um decodificador tipado editado condicionado latente de 2 camadas reordenado por `||z_hat_y - E_ema(y_cand)||_2^2`.
+
+- **Precisão sintética disjunta, escada de 151 degraus e residual de 40 tarefas versus escala do modelo:** Em `200` defeitos de Form sintéticos disjuntos retidos (hashes de forma não vistos), `FormJEPA-v1` admite **`156/200` (`78.0%`)** em `k = 1` e **`177/200` (`88.5%`)** em `k = 16`. Na escada de 151 tarefas (braço simples), `FormJEPA-v1` autônomo admite `27/151` (`k = 1`) e `57/151` (`k = 16`), elevando a escada determinística combinada (`111/151`) mais `FormJEPA-v1 (k = 16)` para **`138/151` (`91.4%`)** sem chamadas de fronteira. Nas 40 tarefas residuais abertas (H15), `FormJEPA-v1` admite **`22/40` (`55.0%`)** em `k = 1` e **`27/40` (`67.5%`)** em `k = 16` (`25` restaurados + `2` iguais em comportamento = `27/27` comportam-se igual, `5.33` chamadas médias de verificação `rce` por tarefa), equiparando‑se ao `Qwen 3.6 35B-A3B` local (`27/40`) em reparos de gramática estruturada, método de comprimento e capacidade (`24/25` `W-SYN-1`, `2/5` `W-LEN-1`, `1/1` `W-WORLD-1`), enquanto fecha `0/9` migrações criptográficas multimódulo da stdlib (`W-NAME-1` / `W-TY-1` em `hpke`, `mls`, `pq`, `pqxdh`, `energy`), compõe `W-CAP-3,W-WORLD-1` e tarefas de síntese de exemplo vazio onde os propositores de fronteira Gear‑2 permanecem necessários.  
+- **Diagnósticos de inferência `reported_j`, cascata de 3‑Gear e H5/H11 honestos:** Nos contadores RAPL `powercap` do AMD Ryzen AI Max+ 395 Linux (`measured_j = None`, `board_metered = false`, `derived_marginal_pkg_reported_j = None` sob Falsifier 6 em deriva de pacote co‑inquilino de `33.38%`), custos de inferência CPU por proposta **`58.65 mJ`** RAPL núcleo (`1.194 J` pacote bruto, `10.15 ms`) em `k = 1` e **`474.76 mJ`** RAPL núcleo (`6.736 J` pacote bruto, `67.51 ms`) em `k = 16` - de `70.6×` a `1,436×` menores em `k = 1` (`12.5×` a `177.5×` em `k = 16`) que um candidato local de 35B (`84.25 J`). Inserir `FormJEPA-v1 (k = 16)` como Gear 1 entre `DNULLMM1` Gear 0 e `Claude Opus 5.5` Gear 2 preserva fechamento de passagem única `34/40` enquanto reduz chamadas a `Opus 5.5` de `40` para `13` (`$1.38` para `$0.81`), e no fluxo de chegada `200` de `Zipf(0.85)` reduz chamadas de fronteira Gear‑2 de `200` (sem estado) e `48` (2‑Gear) para **`23` chamadas (`8.70×` redução; `152` acertos Gear‑0, `25` admissões Gear‑1, `7` admissões Gear‑2)**; com `Qwen 3.6` local como Gear 2, chamadas de 35B em `Zipf(0.85)` caem para `49` (`4.08×` redução) e chegadas admitidas sobem de `141/200` para `154/200`. A distância latente negativa não calibrada L<sub>2</sub> sozinha atinge AUROC **`0.618`** em `925` candidatos de feixe (H5 inconclusivo: acima de `0.60` piso de refutação, abaixo de `0.85` limiar de suporte) e aumenta ao longo de distâncias de edição cumulativas `0..4` (`0.00, 0.99, 2.26, 3.27, 3.89`, depois `3.72` em `d = 5`; `18/50 = 36.0% < 80%` monotonicidade estrita de 5 passos em H11), mostrando que a precisão de reparo aqui provém do condicionamento do decodificador de edição tipada em `(z_x, z_hat_y)` ao invés de energia latente não calibrada e suave sozinha.  
+- **Veredicto de promoção do degrau `f` de reparo `rce` na escada de 151 tarefas:** Executar `rce repair` em modo `observe` (`bound 2000`, dado o original conhecido‑bom de cada tarefa e o arquivo de propostas externas) em todas as 151 tarefas da escada e avaliar o critério de reparo `rce` contra o registro de registro de 3 de novembro de 2026 (`sha256: abf7f131f240e3f9...`) registra `116/151` fechamentos exatos pelos degraus `a..e` e `35` tarefas abertas (`25` arquivos `W-SYN-1` não analisáveis pulados sob a regra RF-2, `10` tarefas de análise abertas julgadas com `0` cobertura ausente). Sob propostas externas combinadas (`FormJEPA-v1` + reparos H15 registrados, `91` propostas julgadas), o degrau `f` observa **`3` tarefas admitidas** (`hpke`, `mls_key_schedule`, `energy`), **`3/3` (`100.0%`)** passam pelo portão de mutação `W-MUT-1`, e **`0` contradizem o original conhecido‑bom** (`3/3` restaurados); como `3 / 119 = 2.5% > 2.0%`, o critério de reparo `rce` retorna **`holds: false`** (`exit = 1`), mantendo o degrau `f` em modo `observe`.
+
+<div id="falsifiers" class="anchor-alias" aria-hidden="true"></div>
+
+### Falsificadores RJ-F1 a RJ-F6 para a premissa em si
+
+Cada falsificador é uma observação que derrotaria parte da premissa; vários são declarados em termos das hipóteses acima (RJ-F3 em H3, RJ-F4 em H11, RJ-F6 em H3 e H10).
+
+| ID | Observação | O que derrota |
+| --- | --- | --- |
+| RJ-F1 | A cobertura de elevação estabiliza abaixo de 80 % em qualquer das cinco línguas‑alvo após a lista de construções ser esgotada | A alegação de que todo o código pode ser emitido a partir de RCE, e com isso o escopo da codificação autônoma sobre Formulários |
+| RJ-F2 | Escrever σ(I) para as 7 aplicações de referência custa mais horas‑pessoa do que escrever seus Formulários manualmente | A alegação de que o fechamento remove, em vez de deslocar, o custo de especificação |
+| RJ-F3 | H3 falha enquanto o braço de token passa no mesmo portão | Proposta latente sobre o espaço de Formulário; o portão ainda permanece, a metade JEPA não |
+| RJ-F4 | H11 falha e a busca não alcança Formulários aceitos dentro do orçamento de feixe | Planejamento guiado por energia no espaço de Formulário (observado em pontuação de edição definida manualmente; aberto para uma cabeça de energia aprendida) |
+| RJ-F5 | A calibração da cabeça de decisão nunca supera uma tabela de frequência sobre hashes de forma | A perna do modelo de decisão; não acrescenta nada sobre as estatísticas do manipulador promovido |
+| RJ-F6 | Um modelo de espaço de token treinado com rastros de execução, da classe CWM, fecha o residual de 40 tarefas do braço simples de H14 execução 3, com energia igual e o mesmo portão da regra de aceitação | A alegação de que o quociente de Formulário adiciona algo para os proponentes durante treinamento/proposta (nota: para reutilização Gear‑0, `rce fmt nameless` já recupera `7/9` renomeações alfa em 0 chamadas; paridade de proponente treinado contra H3/H10 aguarda um braço JEPA treinado) |
+
+A tese é refutada globalmente se H4 falhar (nenhuma vantagem em joules por programa aceito) ou se H6 falhar (o Formulário não puder expressar as aplicações de referência). Cada uma sozinha é suficiente.
+
+<div id="what-will-be-delivered" class="anchor-alias" aria-hidden="true"></div>
+
+### O que será entregue
+
+Escopo, organizado como fluxos de trabalho paralelos que convergem no harness de avaliação. Cada entregável produz Formulários, produz modelos que propõem Formulários, ou mede o resultado.
+
+- **W1. Corpus de Formulários e ficha de conjunto de dados.** Formulários emparelhados com declarações de intenção e veredictos do verificador, provenientes de Formulários manuscritos, Formulários de aplicativos de referência e mutações verificadas pelo verificador; a ficha cobre proveniência, licença, distribuição de tamanho, geração negativa, lacunas conhecidas e controles de contaminação; serialização canônica para H1.
+- **W2. Codificador e preditor.** Codificador de intenção, codificador de alvo EMA Form, preditor no espaço de representação e cabeça de energia E(intent, P), com medidas anti-colapso, uma ablação de perda entre espaço de incorporação e espaço de token, e fichas de modelo com energia de treinamento medida.
+- **W3. Decodificador restrito pelo verificador.** Formulários candidatos restritos por gramática classificados por energia e submetidos ao verificador, diagnóstico de necessidade de mudança, cada um nomeando sua regra, retroalimentado sob um orçamento fixo de novas tentativas; o verificador é a única autoridade de aceitação sem caminho de bypass para o motor.
+- **W4. Benchmark de Intenção‑para‑Formulário.** Tarefas unitárias e compostas, os aplicativos de referência (motor de jogo, editor de texto, reprodutor de vídeo, aplicativo de chat, navegador, terminal) e RCEdb; cada tarefa possui intenção, Formulário de referência, rastros de replay e uma tarefa equivalente na linguagem‑fonte para a linha de base; divisão de teste reservada.
+- **W5. Harness de avaliação com energia em joules.** Ambos os braços em hardware e tarefas idênticos; pass@1, pass@k, ρ, C<sub>check</sub>, J<sub>acc</sub>, K<sub>acc</sub>, tentativas por aceitação, AUROC de classificação por energia; contadores sem raiz (`reported_j`), Falsificador de deriva ociosa 6 gating, logs brutos mantidos, contadores de nuvem indisponíveis relatados como `not_available` em vez de estimados.
+- **W6. Artigo de pesquisa.** Este caso ampliado com resultados de H1 a H15, incluindo resultados negativos, figuras, tabelas e instruções de reproducibilidade.
+- **W7. Artefatos abertos.** Público: a especificação de Formulário, o verificador de referência e seus emissores, tarefas de benchmark e rastros, harness, fichas de conjunto de dados e modelo, e pesos onde as licenças permitem. Um número é relatado somente quando tudo necessário para reproduzi‑lo está público.
+- **W8. Demonstração.** Intenção declarada para Formulário previsto ao veredicto do verificador (incluindo um veredicto de necessidade de mudança mostrado) para replay e código emitido em duas linguagens pelo verificador de referência, com leitura de joules na tela.
+
+<div id="status" class="anchor-alias" aria-hidden="true"></div>
+
+## Estado
+
+Tópico de pesquisa aberto, atualizado 22 de novembro de 2026 contra `openIE-dev/rce` commit `1762fb4b` (20 de novembro de 2026; `5,537` constantes de teoremas Lean 4 em `64` módulos, teoremas T1 a T63, `2,221/2,236` testes de conformidade aprovados com `0` falhas, `837` testes unitários do verificador Rust). Pisos determinísticos da Fase 0 são medidos: H1 é suportado na população escrita à mão com um rho mediano de `9.34` em 185 programas (versão W1 1 deu `9.31` em 173); H8 é suportado em `10,500` fluxos de eventos semeados em seis alvos com `0` incompatibilidades (`rce/bench/determinism/`); o braço fuzzado de H7 encontrou `0` violações invariantes em `1,275` mutantes aceitos pelo verificador (`rce/bench/adversarial/`); e H14 é suportado em três execuções registradas de `rce repair` [B30, B31, B32], concluindo `111` de `151` tarefas (`73.5%`) com zero chamadas ao modelo no braço simples da execução 3 e deixando `40` tarefas residuais de histórico git abertas. Em 22 de novembro de 2026 [B33, B34], recibos dual-channel Apple M5 Max `reported_j` (L2 `IOReport` + L3 `ri_energy_nj`, `measured_j = None`, `board_metered = false`) estabeleceram **H2 suportado** (`C_check / E_model = 0.04904 J / 84.25 J = 0.000582 <= 0.05`, `1,718×` mais barato; suíte completa de verificação+execução+emissão de 62 Formas `15.44 J`), benchmarkaram seis propositores em nuvem e locais prontos para uso em `k = 1` (**H15**: `17/40` a `34/40`) mais **Shape D (`DNULLMM1`) Gear-0 cristalização** (`34/40` em `0` chamadas, `0.325 µs` / `1.77 µJ` por consulta, `7/9` acertos renomeados alfa), treinaram e avaliaram o primeiro proponente de reparo latente Form JEPA construído especificamente **`FormJEPA-v1`** (`8.42M` parâmetros treináveis em `6,329` pares de defeitos Form disjuntos: `177/200` em defeitos sintéticos reservados, `22/40` em `k = 1` e `27/40` em `k = 16` em H15 a `58.65 mJ` / `474.76 mJ` RAPL núcleo `reported_j`, `138/151` fechamento combinado de escada, e redução de chamadas de fronteira `8.70×` `Zipf(0.85)` na Cascata de 3 Engrenagens), e auditou a promoção de 151 tarefas **`rce repair` rung `f`** (`3/119 = 2.5% > 2.0%`, `3/3` aprovando `W-MUT-1`, `0` contradições, confirmando que o nível `f` permanece em modo `observe`). Ainda aberto: síntese completa de intenção‑para‑Form (H3), paridade de joules ponta‑a‑ponta (H4), classificação de energia multitermo calibrada (H5, H11), codificação de aplicativo‑referência (H6), previsão de tabela de custos (H9), eficiência amostral de quociente (H10), calibração de cabeça de decisão de recibo‑gate (H12), planejamento de longo horizonte discreto‑versus‑contínuo (H13), braços H15 de difusão/evolutivo, e medição de energia em trilho de hardware externo (`measured_j`).
+
+<div id="references" class="anchor-alias" aria-hidden="true"></div>
+
+## Referências
+
+Cada fonte possui um rótulo de leitura. **Completo:** lido na íntegra. **Parcial:** o texto completo foi recuperado e pesquisado pelas passagens citadas, que foram verificadas em seu contexto, mas a obra inteira não foi lida. **Indisponível:** não obtido. "PDF p." indica a página na cópia vinculada; Sec. indica a seção.
+
+- Assran et al. 2023. Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture. CVPR. [arXiv:2301.08243](https://arxiv.org/abs/2301.08243). Full.
+- Assran et al. 2025. V-JEPA 2. [arXiv:2506.09985](https://arxiv.org/abs/2506.09985). Full.
+- Backus et al. 1957. The FORTRAN Automatic Coding System. Western Joint Computer Conference. [Computer History Museum copy](https://archive.computerhistory.org/resources/text/Fortran/102663113.05.01.acc.pdf). Full.
+- Bird 1986. An Introduction to the Theory of Lists. Oxford PRG-56. [PDF](https://www.cs.ox.ac.uk/files/3378/PRG56.pdf). Full.
+- Brooks 1986. No Silver Bullet: Essence and Accident in Software Engineering. [PDF](https://worrydream.com/refs/Brooks_1986_-_No_Silver_Bullet.pdf) (page numbers refer to this copy). Full.
+- Chen et al. 2021. Evaluating Large Language Models Trained on Code. [arXiv:2107.03374](https://arxiv.org/abs/2107.03374). Full.
+- Dijkstra. EWD 472, Guarded commands, non-determinacy and formal derivation of programs. [Transcription](https://www.cs.utexas.edu/~EWD/transcriptions/EWD04xx/EWD472.html). Full.
+- Dijkstra. EWD 667, On the foolishness of "natural language programming". [Transcription](https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html). Full.
+- Ellis et al. 2021. DreamCoder. PLDI. [arXiv:2006.08381](https://arxiv.org/abs/2006.08381); [version with supplement](https://www.cs.cornell.edu/~ellisk/documents/dreamcoder_with_supplement.pdf). Full (main text and supplement S1 to S4.8, PDF pp. 23-68, read in full).
+- Hubert et al. 2025. Olympiad-level formal mathematical reasoning with reinforcement learning (AlphaProof). Nature. [Nature](https://www.nature.com/articles/s41586-025-09833-y). Full.
+- Klein et al. 2009. seL4: Formal Verification of an OS Kernel. SOSP. [PDF](https://www.sigops.org/s/conferences/sosp/2009/papers/klein-sosp09.pdf). Full.
+- Leroy 2009. Formal verification of a realistic compiler. CACM. [PDF](https://xavierleroy.org/publi/compcert-CACM.pdf). Full.
+- Letouzey 2008. Extraction in Coq: an Overview. CiE. [PDF](https://www.irif.fr/~letouzey/download/letouzey_extr_cie08.pdf). Full.
+- Li et al. 2022. Competition-Level Code Generation with AlphaCode. [arXiv:2203.07814](https://arxiv.org/abs/2203.07814). Full.
+- Luccioni, Jernite, Strubell 2024. Power Hungry Processing. FAccT. [arXiv:2311.16863](https://arxiv.org/abs/2311.16863). Full.
+- OMG 2003. MDA Guide Version 1.0. [PDF](https://www.omg.org/mda/mda_files/MDA_Guide_Version1-0.pdf). Full.
+- Ouyang et al. 2023. An Empirical Study of the Non-determinism of ChatGPT in Code Generation (v1 title: LLM is Like a Box of Chocolates). [arXiv:2308.02828](https://arxiv.org/abs/2308.02828). Full.
+- Samsi et al. 2023. From Words to Watts. IEEE HPEC. [arXiv:2310.03003](https://arxiv.org/abs/2310.03003). Full.
+- Sun et al. 2024. Clover: Closed-Loop Verifiable Code Generation. [arXiv:2310.17807](https://arxiv.org/abs/2310.17807). Full.
+- Yang et al. 2011. Finding and Understanding Bugs in C Compilers (Csmith). PLDI. [PDF](https://users.cs.utah.edu/~regehr/papers/pldi11-preprint.pdf). Full.
+- Yang et al. 2024. AutoVerus. [arXiv:2409.13082](https://arxiv.org/abs/2409.13082). Full.
+- LeCun 2022. A Path Towards Autonomous Machine Intelligence, version 0.9.2. [OpenReview](https://openreview.net/forum?id=BZ5a1r-kVsf). Full.
+- Simon 1963. Experiments with a Heuristic Compiler. Journal of the ACM 10(4), 493-506. [DOI 10.1145/321186.321192](https://doi.org/10.1145/321186.321192). Full.
+- Manna and Waldinger 1980. A Deductive Approach to Program Synthesis. ACM TOPLAS 2(1), 90-121. [DOI 10.1145/357084.357090](https://doi.org/10.1145/357084.357090). Full.
+- van de Riet 1993. An overview and appraisal of the Fifth Generation Computer System project. Future Generation Computer Systems 9, 83-103. [DOI 10.1016/0167-739X(93)90002-7](https://doi.org/10.1016/0167-739X(93)90002-7). Full.
+- Kemerer 1992. How the Learning Curve Affects CASE Tool Adoption. IEEE Software 9(3), 23-28. [DOI 10.1109/52.136161](https://doi.org/10.1109/52.136161). Full.
+- Hutchinson, Whittle, Rouncefield and Kristoffersen 2011. Empirical Assessment of MDE in Industry. ICSE, 471-480. [DOI 10.1145/1985793.1985858](https://doi.org/10.1145/1985793.1985858). Full.
+- Petre 2013. UML in practice. ICSE. [DOI 10.1109/ICSE.2013.6606618](https://doi.org/10.1109/ICSE.2013.6606618); [author copy, Open Research Online](https://oro.open.ac.uk/35805/) (page numbers refer to this copy). Full.
+- Simon 1963. Experiments with a Heuristic Compiler. RAND RM-3588-PR. [Internet Archive](https://archive.org/details/bitsavers_randiplRM3mpilerMay63_4935437); a memorandum related to but distinct from the JACM article. Full (prose pp. iii-63; program listings in Appendices A and B scanned).
+- Manna and Waldinger 1978. A Deductive Approach to Program Synthesis. Stanford STAN-CS-78-690. [Report version](http://i.stanford.edu/TR/CS-TR-78-690.html), which predates the TOPLAS article. Full.
+- Huang, LeCun and Balestriero 2025. LLM-JEPA. [arXiv:2509.14252](https://arxiv.org/abs/2509.14252). Partial (abstract, repository README and run script).
+- Wei et al. 2025. SWE-RL. [arXiv:2502.18449](https://arxiv.org/abs/2502.18449). Partial (abstract and method summary).
+- Yang et al. 2025. SWE-smith. [arXiv:2504.21798](https://arxiv.org/abs/2504.21798). Partial (abstract and repository README).
+- Shansan Gong, Ruixiang Zhang, Huangjie Zheng, Jiatao Gu, Navdeep Jaitly, Lingpeng Kong and Yizhe Zhang 2025. DiffuCoder. [arXiv:2506.20639](https://arxiv.org/abs/2506.20639). Partial (abstract). Author list from arXiv metadata, not a PDF title page.
+- Inception Labs 2025. Mercury. [arXiv:2506.17298](https://arxiv.org/abs/2506.17298). Partial (abstract).
+- Wang, Pradel and Liu 2025. Are "Solved Issues" in SWE-bench Really Solved Correctly? [arXiv:2503.15223](https://arxiv.org/abs/2503.15223). ICSE (International Conference on Software Engineering) 2026. Partial (findings summary).
+- Becker, Rush, Barnes and Rein 2025. Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. [arXiv:2507.09089](https://arxiv.org/abs/2507.09089). Partial (summary, and the abstract via arXiv metadata). Author list from arXiv metadata, not a PDF title page.
+- Niels Mündler, Jingxuan He, Hao Wang, Koushik Sen, Dawn Song and Martin Vechev 2025. Type-Constrained Code Generation with Language Models. [arXiv:2504.09246](https://arxiv.org/abs/2504.09246). Partial (headline result). Affiliation: the Swiss Federal Institute of Technology Zurich and the University of California, Berkeley, from the author list, not a PDF title page.
+- Grand et al. 2023. LILO. [arXiv:2310.19791](https://arxiv.org/abs/2310.19791). Partial (abstract).
+- Higher Order Company. HVM2. [PDF](https://raw.githubusercontent.com/HigherOrderCO/HVM/main/paper/HVM2.pdf). Partial (summary). The model is cited. Figures from that paper are not used.
+- DeepSeek 2025. DeepSeek-Prover-V2. [arXiv:2504.21801](https://arxiv.org/abs/2504.21801). Partial (arXiv metadata and abstract).
+- Moonshot and Numina 2025. Kimina-Prover Preview. [arXiv:2504.11354](https://arxiv.org/abs/2504.11354). Partial (abstract).
+- Princeton 2025. Goedel-Prover. [arXiv:2502.07640](https://arxiv.org/abs/2502.07640). Partial (abstract).
+- Scale AI. SWE-Bench Pro public leaderboard, page text fetched 6 November 2026. [scale.com/leaderboard/swe_bench_pro_public](https://scale.com/leaderboard/swe_bench_pro_public). Full (page text). The page prints no update date.
+- ByteDance Seed 2025. Multi-SWE-bench. [arXiv:2504.02605](https://arxiv.org/abs/2504.02605). Partial (abstract). No November 2026 leaderboard figure was retrieved, and none is stated.
+- Meta FAIR 2024. Large Concept Models. [arXiv:2412.08821](https://arxiv.org/abs/2412.08821). Partial (abstract).
+- Chollet, Knoop, Kamradt and Landers 2024. ARC Prize 2024 Technical Report. [arXiv:2412.04604](https://arxiv.org/abs/2412.04604). Partial (abstract).
+- Akyurek et al. 2024. Test-time training on ARC. [arXiv:2411.07279](https://arxiv.org/abs/2411.07279). Partial (abstract).
+- ARC Prize 2025 results page. [arcprize.org/competitions/2025/](https://arcprize.org/competitions/2025/). Full (page).
+- Lean FRO (Focused Research Organization). Year 1 roadmap, August 2023 to July 2024. [lean-fro.org/about/roadmap/](https://lean-fro.org/about/roadmap/). Partial (deliverables list). Later-year roadmaps are not used.
+- Conal Elliott 2009, revised 2016. Denotational design with type class morphisms. [conal.net/papers/type-class-morphisms/](https://conal.net/papers/type-class-morphisms/). Partial (abstract page).
+- Radul and Sussman 2009. The Art of the Propagator. MIT-CSAIL-TR-2009-002. [dspace.mit.edu/handle/1721.1/44215](https://dspace.mit.edu/handle/1721.1/44215). Partial (abstract).

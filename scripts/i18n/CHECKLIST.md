@@ -14,16 +14,16 @@ States: abstract = title and abstract only (complete: false); full = whole text 
 | deterministic-null | full | full | full | full | full | full | full | full |
 | lut-adapt | full | full | full | full | full | full | full | full |
 | satiation | full | full | full | full | full | full | full | full |
-| gates | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| satb-harness | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| time-as-an-index | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| rce-jepa | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| rce-compile | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| rce-vc | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| game-engines | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| three-body | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| ai-reads-human | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
-| spellcheck | abstract | abstract | abstract | abstract | abstract | abstract | abstract | abstract |
+| gates | full | full | full | full | full | full | full | full |
+| satb-harness | full | full | full | full | full | full | full | full |
+| time-as-an-index | full | full | full | full | full | full | full | full |
+| rce-jepa | full | full | full | full | full | full | full | full |
+| rce-compile | full | full | full | full | full | full | full | full |
+| rce-vc | full | full | full | full | full | full | full | full |
+| game-engines | full | full | full | full | full | full | full | full |
+| three-body | full | full | full | full | full | full | full | full |
+| ai-reads-human | full | full | full | full | full | full | full | full |
+| spellcheck | full | full | full | full | full | full | full | full |
 
 ## Deploy rule
 

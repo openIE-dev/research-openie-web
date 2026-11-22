@@ -112,7 +112,7 @@ None of these frameworks yields an early lookup oracle because standard quantum 
 
 $$P(a \mid x, y) = \mathrm{Tr}\!\left[(M_a^x \otimes I_2)\,\rho_{12}\right] = P(a \mid x).$$
 
-Conditioning on a desired postselection outcome $b = b^*$ with probability $p$ requires repeating the preparation roughly $1/p$ times ("anthropic computing", Aaronson 2005). In the explicit unitary witness-search model `M2b` (`3` to `6` bits, Hilbert dimension $d = 2^n \in \{8, 16, 32, 64\}`), `P-CTC` Bell projection succeeds with exact probability $P_{\text{post}} = 1/d^2$, requiring `64`, `256`, `1,024`, and `4,096` expected repetitions — strictly costlier than classical $d/2$ exhaustive guessing (`4` to `32` queries).
+Conditioning on a desired postselection outcome $b = b^*$ with probability $p$ requires repeating the preparation roughly $1/p$ times ("anthropic computing", Aaronson 2005). In the explicit unitary witness-search model `M2b` (`3` to `6` bits, Hilbert dimension $d = 2^n \in \{8, 16, 32, 64\}$), `P-CTC` Bell projection succeeds with exact probability $P_{\text{post}} = 1/d^2$, requiring `64`, `256`, `1,024`, and `4,096` expected repetitions — strictly costlier than classical $d/2$ exhaustive guessing (`4` to `32` queries).
 
 ### 4.2 Analog settling hardware and the Gabor uncertainty barrier
 

@@ -1,82 +1,84 @@
 ---
-title: "Mixture of Limits カスケードにおける下方 LUT6 コンパイル：Beneš ルーティング・ブールファブリック、コンフォーマル起動ゲート、および 4 ビット NVMe レイヤストリーミング"
-deck: "まず浮動小数点演算ゼロ（0 FLOP）のページド 6 入力ルックアップテーブル（LUT6）回路を試行し、ミス時にのみ Mamba-3 および 4 ビット Non-Volatile Memory Express（NVMe）からレイヤ単位でストリーミングされる 2026 年ハイブリッドモデルを起動し、検証済みの起動結果を Beneš ルーティングされた 36 Kbit ブロック RAM（RAMB36E2）ページへと下方コンパイルする 4 段の Mixture of Limits（限界の混合）カスケード。openIE-dev/lut-adapt-ai（コミット a5e9bc1）に基づき、実経過時間、非バッファ Darwin F_NOCACHE（非バッファファイル読み取り）バイト数、アクティブなランダムアクセスメモリ（RAM）、および Yosys/Verilator による xck26 レジスタ転送レベル（RTL）シミュレーションを報告する。エネルギー数値はすべて解析的な est_j 推定値であり、ボード実測電力は測定していない。"
+title: "Mixture of Limits カスケードにおける下方 LUT6 コンパイル：Beneš ルーティング・ブールファブリック、コンフォーマル起動ゲート、およびフロンティア疎 MoE NVMe ストリーミング"
+deck: "Mixture of Limits カスケードは、まず zero-floating-point-operation (FLOP) ページド 6 入力 ルックアップテーブル (LUT6) 回路を試行し、4 ビット Non-Volatile Memory Express (NVMe) ハイブリッドおよびスパース Mixture-of-Experts (MoE) 2026 年後半モデル（最大 34.66B パラメータ）をミス時のみストリームし、決定的検証器を介してゲートコミットを行い、認証済みウェイクを Beneš ルーティングされた 36-Kbit Block RAM (RAMB36E2) ページへ下方にコンパイルする。壁時計時間、バッファなし Darwin F_NOCACHE（バッファなしファイル読み取り）バイト数、アクティブ ランダムアクセス メモリ (RAM)、全システム macOS 電源管理ユニット (PMU) の累積デルタ、及び Yosys/Verilator xck26 レジスタ転送レベル (RTL) シミュレーションは、openIE-dev/lut-adapt-ai のコミット a5e9bc1 にて報告された。タスクごとのエネルギー値は解析的 est_j 推定であり、個別ボードレール電力は測定されていない。"
 lang: "ja"
 source: "lut-adapt"
 complete: true
 ---
 
-<div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-4-bit-nvme-layer-streaming" class="anchor-alias" aria-hidden="true"></div>
+<div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*リビジョン 11dbc8c、2026年11月22日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（コミット [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb)）。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
+*Revision 30613ef, 22 November 2026. 参照実装および成果物: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) at [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb). データ要約: [/data/#lut-adapt](/data/#lut-adapt). LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([ソース](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
 ## 0. 概要
 
-本研究は、厳密な出力一致性を損なうことなく、また未検証の推測を信頼された規則へと昇格させることなく、反復されるニューラルモデルの計算処理を高速なブール真理値表ルックアップへと下方コンパイルする計算システムの構成法を検討する。本稿では、ソフトウェア測定値、レジスタ転送レベル（RTL）の論理合成およびサイクルシミュレーション結果、ならびに算出根拠を明記した解析的エネルギー推定値（`est_j`）を報告する。本リポジトリの実験ではコンセントや電源レールのジュール計は接続していない（`measured_j` は未設定であり、`board_metered` は false である）。
+本研究は、計算システムが反復的なニューラルモデルの処理を、出力の厳密な一致を損なうことなく高速なブール真理値表の参照へ下方コンパイルする方法を検討する。未検証の推定を信頼される規則へ昇格させない方式を前提とする。報告は、ソフトウェアによる計測、レジスタ転送レベルの合成およびサイクル単位のシミュレーション、ならびにラベル付けされた解析的エネルギー推定値(`est_j`)から成る。本リポジトリには壁面または電源レールの電力計は接続されていない(`measured_j` は未設定、`board_metered` は偽)。
 
-**平易な言葉で言えば**
+**平易な言い換え**
 
-1. 展開されたシステムが受け取る入力の大半はすでに解決済みのパターンを繰り返しているため、毎ステップ完全な浮動小数点ニューラルネットワークを実行すると計算資源とメモリ帯域幅が浪費される。
-2. 本参照実装は、ストリーミング状態空間モデルおよび基盤モデルの前段に再構成可能な 6 入力真理値表（`LUT6`）ルックアップ層を配置し、明示的な検査によって回答が保証された後でのみ、それをルックアップメモリページへと下方コンパイルする。
-3. 2026 年のハイブリッド言語モデルがソリッドステートドライブ（SSD）からレイヤごとに重みをストリーミングする際、浮動小数点演算ゼロ（0 FLOP）の `LUT6` ドラフタが複数トークンのバーストを提案し、ターゲットモデルが 1 回のディスクスイープでそれを一括検証することで、出力トークンを一切変えずにディスク読み取り量をほぼ `3×` 削減する。
+1. 展開されたシステムが受け取る入力の多くは、既に解いたことのあるパターンの反復である。そのため、すべてのステップで浮動小数点のニューラルネットワーク全体を実行することは、計算資源とメモリ帯域の浪費となる。
+2. 本参照設計は、再構成可能な6入力真理値表(`LUT6`)参照層を、ストリーミング型の状態空間モデルおよび基盤モデルの前段に配置する。回答は、明示的な検査によって認証された後にのみ、参照メモリのページへ下方コンパイルされる。
+3. 2026年後半のハイブリッド型およびスパースな混合専門家(MoE)言語モデルは、パラメータ数が最大`34.66B`に及び、4ビット重みを固体記憶装置からストリーミングで読み込む。ルーターによって疎となった専門家の読み出しを、ゼロFLOPの`LUT6`ドラフターと組み合わせることで、ディスク読み出し量を最大`12.30×`削減し(トークン処理速度は`6.50×`向上)、有効メモリ`2.53`ギガバイトで動作させる。このとき出力トークンは一切変化しない。決定論的な検査によってゲーティングされたコードのコミットは、単体の`35B`モデルの精度を上回り、不正なコミットの混入率は`0.00%`に抑えられ、結晶化済みのWave-3タスクを`35,590×`高速化する。
 
 <div id="1-terms-acronyms-and-measurement-labels" class="anchor-alias" aria-hidden="true"></div>
 
-## 1. 用語、頭字語、および測定ラベル
+## 1. 用語、頭字語、及び測定ラベル
 
 <ul id="terms">
-<li>MoL: Mixture of Limits（限界の混合）、『計量コミットゲート』第II部で定義されたカスケード規則 [same house]</li>
-<li>LA: 本研究で用いる主張および反証条件の接頭辞（LA-1 から LA-8、LA-F1 から LA-F8）</li>
-<li>LUT, LUT6, INIT: ルックアップテーブル、6 入力 Xilinx UltraScale+ ブールプリミティブ、およびその 64 ビット真理値表初期化マスク</li>
-<li>BRAM, RAMB36E2, URAM: ブロック RAM、36 Kbit デュアルポート UltraScale+ ブロック RAM プリミティブ（xck26 上に 144 個搭載）、および UltraRAM</li>
-<li>CLB, FF, DSP, DSP48, KV260: コンフィギュラブル・ロジック・ブロック、フリップフロップ、デジタル信号処理スライス、および AMD Kria KV260 ボード（xck26）</li>
-<li>FPGA, ASIC, RTL, CPI, PAR, WNS, FPL: フィールド・プログラマブル・ゲート・アレイ、特定用途向け集積回路、レジスタ転送レベル、ルックアップあたりサイクル数、配置配線、最悪負スラック、および Field-Programmable Logic 国際会議</li>
-<li>AXI, PS, PL, SOM, INA260, VCC, RAPL, NVML: Advanced eXtensible Interface、Zynq プロセッシングシステム、プログラマブルロジック、システム・オン・モジュール、オンボード電力モニタ IC、電源レール、Intel Running Average Power Limit、および NVIDIA Management Library</li>
-<li>SSD, SSM, MIMO, RoPE, SwiGLU, GQA, KV, BPE, LLM, LLMs, MoE, MLP, CFG: 状態空間双対性（State Space Duality）、状態空間モデル、多入力多出力、回転位置埋め込み、ゲート付き線形ユニット活性化関数、グループ化クエリアテンション、キー・バリュー・キャッシュ、バイト対符号化、大規模言語モデル、Mixture-of-Experts、多層パーセプトロン、および文脈自由文法</li>
-<li>HC, SOINN, WNN, DWN: 階層コンテキスト自己増殖型ニューラルネットワーク（hierarchy-context Self-Organizing Incremental Neural Network）、重みなしニューラルネットワーク、および微分可能重みなしニューラルネットワーク（Differentiable Weightless Neural Network）</li>
-<li>JEPA, EBRM, ACI, OOD, AUROC, AUC, MSP, MC: 結合埋め込み予測アーキテクチャ、エネルギーベース推論モデル、適応的コンフォーマル推論（Adaptive Conformal Inference）、分布外、受信者操作特性曲線下面積、最大ソフトマックス確率、およびモンテカルロ法（Monte Carlo）</li>
-<li>PLD, REST, EAGLE, LFM2, HF: プロンプトルックアップデコーディング（Prompt Lookup Decoding）、検索ベース投機的デコーディング、言語モデル効率化のための外挿アルゴリズム、Liquid Foundation Model 2.5（LiquidAI/LFM2.5-350M）、および HuggingFace</li>
-<li>NVMe, NOCACHE, POSIX, RAM, DRAM, SRAM, IO, KB, MB, GB: Non-Volatile Memory Express ストレージ、Darwin F_NOCACHE 非バッファファイルフラグ、Portable Operating System Interface、ランダムアクセスメモリ、動的 RAM、静的 RAM、入出力、キロバイト、メガバイト、およびギガバイト</li>
-<li>FLOP, FLOPs, MFLOP, MFLOPs, MAC, SIMD, AD, FD, BPB, FP16, FP32, INT4: 浮動小数点演算、百万回浮動小数点演算、積和演算、単一命令複数データ、自動微分、有限差分、バイトあたりビット数、16/32 ビット浮動小数点、および 4 ビット整数</li>
-<li>RCE, WCA, VC, SWE: Reality Code Engine [same house]、Wise Computer Automation [same house]、検証済み完了（verified completion）、およびソフトウェア工学ベンチマーク接頭辞</li>
-<li>CLI, HTTP, SSE, API, ACL, OS, CPU, GPU, SW: コマンドラインインターフェース、Hypertext Transfer Protocol、Server-Sent Events、アプリケーション・プログラミング・インターフェース、計算言語学会（Association for Computational Linguistics）、オペレーティングシステム、中央/グラフィックス処理装置、およびソフトウェア</li>
-<li>VLAN, IEEE, TLS, DPI, AST, JSON, CSV, SHA, CAM, XNOR: 仮想ローカルエリアネットワーク（IEEE 802.1Q）、Transport Layer Security、ディープパケットインスペクション、抽象構文木、JavaScript Object Notation、カンマ区切り値、セキュアハッシュアルゴリズム、連想メモリ（content-addressable memory）、および排他的否定論理和（exclusive-NOR）</li>
+<li>MoL: Mixture of Limits、カスケード規則（Metered Commit Gates Part II [same house]より）</li>
+<li>LA: 本研究で用いた主張と反証接頭辞（LA-1からLA-11、LA-F1からLA-F11）</li>
+<li>LUT、LUT6、INIT: ルックアップテーブル、6入力Xilinx UltraScale+ブール原始子、およびその64ビット真理値表初期化マスク</li>
+<li>BRAM、RAMB36E2、URAM: ブロックRAM、36-KbitデュアルポートUltraScale+ブロックRAM原始子（xck26では144個）、およびUltraRAM</li>
+<li>CLB、FF、DSP、DSP48、KV260: 構成可能ロジックブロック、フリップフロップ、デジタル信号処理スライス、およびAMD Kria KV260ボード（xck26）</li>
+<li>FPGA、ASIC、RTL、CPI、PAR、WNS、FPL: フィールドプログラマブルゲートアレイ、特定用途集積回路、レジスタ転送レベル、ルックアップあたりのサイクル数、配置配線、最悪負スラック、およびField-Programmable Logic会議</li>
+<li>AXI、PS、PL、SOM、INA260、VCC、RAPL、NVML、PMU: Advanced eXtensible Interface、Zynq処理システム、プログラマブルロジック、システムオンモジュール、オンボード電源監視IC、電源レール、Intel Running Average Power Limit、NVIDIA Management Library、およびmacOS電源管理ユニット</li>
+<li>SSD、SSM、MIMO、RoPE、SwiGLU、GQA、KV、BPE、LLM、LLMs、MoE、MLP、CFG: State Space Duality、状態空間モデル、多入力多出力、ロータリ位置埋め込み、ゲート付き線形ユニット活性化、グループ化クエリアテンション、キー・バリューキャッシュ、バイトペアエンコーディング、大規模言語モデル（群）、Mixture-of-Experts、多層パーセプトロン、および文脈自由文法</li>
+<li>HC、SOINN、WNN、DWN: 階層文脈自己組織化増分ニューラルネットワーク、重みなしニューラルネットワーク、および微分可能重みなしニューラルネットワーク</li>
+<li>JEPA、EBRM、ACI、OOD、AUROC、AUC、MSP、MC: Joint-Embedding Predictive Architecture、エネルギーベース推論モデル、適応型コンフォーマル推論、分布外、受信者動作特性曲線下面積、最大ソフトマックス確率、およびモンテカルロ</li>
+<li>PLD、REST、EAGLE、LFM2、LFM3、HF: Prompt Lookup Decoding、検索ベース投機的デコーディング、Greater Language-model Efficiencyのための外挿アルゴリズム、Liquid Foundation Model 2.5（LFM2.5-350MおよびLFM2.5-8B-A1B）、Liquid Foundation Model 3（2026年10月LiquidAI/LFM3-1.7B）、およびHuggingFace</li>
+<li>SVD、ITQ、SVID、QAT、PTQ、PPL、SNR: 特異値分解、Iterative Quantization Procrustes超立方体回転、符号値独立分解、量子化認識訓練、訓練後量子化、perplexity、および信号対雑音比</li>
+<li>NVMe、NOCACHE、POSIX、RAM、DRAM、SRAM、IO、KB、MB、GB: Non-Volatile Memory Expressストレージ、Darwin F_NOCACHE非バッファファイルフラグ、Portable Operating System Interface、ランダムアクセスメモリ、ダイナミックRAM、スタティックRAM、入出力、キロバイト、メガバイト、およびギガバイト</li>
+<li>FLOP, FLOPs, MFLOP, MFLOPs, MAC, MACs, SIMD, AD, FD, BPB, FP16, FP32, INT4: 浮動小数点演算(単数・複数)、百万FLOP、積和演算(単数・複数)、単一命令複数データ、自動微分、有限差分、バイト当たりビット数、16/32ビット浮動小数点数、4ビット整数</li>
+<li>RCE, WCA, VC, SWE: Reality Code Engine [同一組織]、Wise Computer Automation [同一組織]、検証済み完了、ソフトウェア工学ベンチマークの接頭辞</li>
+<li>CLI, HTTP, SSE, API, ACL, ICML, ICLR, EMNLP, NAACL, CVPR, ICPE, ISSCC, JSAC, JASA, ACM, OS, CPU, GPU, SW: コマンドラインインタフェース、ハイパーテキスト転送プロトコル、Server-Sent Events、アプリケーションプログラミングインタフェース、計算機科学・工学分野の学術会議、オペレーティングシステム、中央処理装置・画像処理装置、ソフトウェア</li>
+<li>VLAN, IEEE, TLS, DPI, AST, JSON, CSV, SHA, CRC, ATM, RFC, SQL, DWARF, SLEB, CAM, XNOR: 仮想LAN(IEEE 802.1Q)、トランスポート層セキュリティ、深層パケット検査、抽象構文木、JavaScript Object Notation、カンマ区切り値、Secure Hash Algorithm、巡回冗長検査、Asynchronous Transfer Mode(CRC-8/ATM)、Request for Comments、Structured Query Language、DWARF符号付きリトルエンディアン base-128 符号化、内容参照メモリ、排他的論理和否定</li>
+<li>JTAG, XSDB, DAP, USB, FTDI, FT2232C, UART, FIFO, IC, EDA, OOC, AMBA, AXI4, IOB, IBUF, OBUF, FDRE, FDSE, LUT1, LUT2, LUT3, LUT4, LUT5, MUXF7, MUXF8, CARRY4, DSP48E2, URAM288, AMD: Joint Test Action Group デバッグポート、Xilinx Software Command-Line Tool デバッガ、Debug Access Port、Universal Serial Bus、Future Technology Devices International およびその FT2232C デュアルUART/FIFOブリッジIC、汎用非同期送受信器、先入れ先出しバッファ、集積回路、電子設計自動化、コンテキスト外合成モード、Advanced Microcontroller Bus Architecture、AXI4-Lite/AXI4-Stream相互接続、入出力ブロック、入出力バッファ、同期リセット/セット付きDフリップフロップ、1〜5入力UltraScale+ルックアップテーブル、7/8入力UltraScale+マルチプレクサ、4ビット高速桁上げ連鎖、UltraScale+ DSPスライス、288キビットUltraRAM、Advanced Micro Devices</li>
 </ul>
 
-以下のすべての表において、3 つの証拠クラスを厳密に区別する。
+以下の全ての表において、3 つのエビデンスクラスは分離されたままである。
 
-| 証拠ラベル | 本研究における意味 |
+| エビデンスラベル | 本研究における意味 |
 | :--- | :--- |
-| **`Measured (SW / NVMe I/O)`** | Darwin `F_NOCACHE` 下で `os.pread` を介して読み書きされた正確なバイト数、常駐メモリ割り当て量、Apple M5 Max 上の実経過秒数、およびビット/トークン単位の厳密な一致率。`measured_j` は未設定（`None`）である。 |
-| **`Simulated (RTL)`** | Yosys `0.71+`（Kria KV260 `xck26` を対象とする `synth_xilinx -family xcup`）による構造ネットリスト素子数、および Verilator `5.054` によるサイクル数（`CPI = 1`）。Vivado のタイミング収束結果ではなく、ボード実測電力でもない（`board_metered = false`）。 |
-| **`Estimated (est_j)`** | 演算回数または熱設計電力（TDP）時間換算から算出された解析的ジュール値（macOS 上に `RAPL`/`NVML` ハードウェアカウンタが存在しない場合の `joule_meter.py` フォールバック）。同一計算式内の条件間でのみ比較可能であり、シリコン上の実測ワット数ではない。 |
+| **`Measured (SW / NVMe I/O / OS PMU)`** | Darwin `F_NOCACHE` 下で `os.pread` により読み書きされた正確なバイト数、常駐メモリ割り当て、実時間秒数、Apple M5 Max 上の全機械 macOS `PMU` (`AppleSmartBattery.PowerTelemetryData`) の累積エネルギー差分、および正確なビット/トークンの一致。`measured_j` は未設定 (`None`)。 |
+| **`Simulated (RTL)`** | Yosys `0.71+` (`synth_xilinx -family xcup` による Kria KV260 `xck26` 対象) から取得した構造的ネットリストカウントと、Verilator `5.054` から取得したサイクルカウント (`CPI = 1`)。Vivado タイミングクロージャーではなく、ボード電力 (`board_metered = false`) でもない。 |
+| **`Estimated (est_j)`** | 操作数または熱設計電力時間代替 (`joule_meter.py` が `RAPL`/`NVML` ハードウェアカウンタが macOS 上に存在しない場合のフォールバック) から算出された解析的ジュール。同一式内の各アーム間でのみ比較可能であり、シリコンワットとしては使用しない。 |
 
 <div id="11-architectural-background-and-contributions" class="anchor-alias" aria-hidden="true"></div>
 
-### 1.1 アーキテクチャの背景と貢献
+### 1.1 建築的背景と貢献
 
-[計量コミットゲート](/papers/gates/) `[same house]` の第II部では **Mixture of Limits（限界の混合）** を定義している。すなわち、1ジュールあたりの合格確率 $p_i / c_i$ の非増加順にギアを試行し（Simon and Kadane, 1975）、タスク完了述語 $C(z) = 1$ が成立した時点で直ちに停止し、かつ `ModelGenerated` の出力を `Deterministic` へと格上げすることを禁じる規則である。しかし、静的なルックアップ層は展開前に書き込まれたエントリしかカバーできない。その一方で、既存のルックアップテーブル型ニューラルネットワークである LogicNets（Umuroglu et al., 2020）、DiffLogic（Petersen et al., 2022）、および微分可能重みなしニューラルネットワーク（Bacellar et al., 2024）は、結線構造を静的な FPGA 配線内に固定しているため、入力分布がシフトするたびにベンダツールの配置配線を再実行しなければならない。
+[Metered Commit Gates](/papers/gates/) `[same house]` において、Part II は **Mixture of Limits** を定義する：ジュールあたりの通過確率 $p_i / c_i$ の降順でギアを試し (Simon and Kadane, 1975)、タスク完了述語 $C(z) = 1$ が成立した時点で停止し、`ModelGenerated` 出力を `Deterministic` に強化することを禁じる。ただし静的な Lookup 階層は、展開前に書き込まれたエントリのみをカバーする。逆に、既存のルックアップテーブル型ニューラルネットワークである LogicNets (Umuroglu et al., 2020)、DiffLogic (Petersen et al., 2022)、および Differentiable Weightless Neural Networks (Bacellar et al., 2024) は、静的 FPGA ルーティング内部で配線接続を固定するため、入力分布が変化するたびにベンダーの配置配線を必要とする。
 
-`lut-adapt-ai` 参照実装は、**オンライン下方 `LUT6` コンパイル**によってカスケードの最上段と最下段の間のループを閉じる。
+`lut-adapt-ai` 参照は、カスケードの頂点と底辺の間を **オンライン下方 `LUT6` コンパイル** によって閉じる：
 
-- **第0段（ルックアップ - ページド Beneš + `LUT6`）**：非ブロッキング $512 \times 512$ **Beneš-Copy-Beneš** マルチキャストスイッチを介してルーティングされ、$81 \times \texttt{RAMB36E2}$ デュアルポート・ブロックメモリ群にキャッシュされた 64 ビット真理値表マスクを評価する（浮動小数点演算 `0` 回、Verilator シミュレーションにおいて 1 サイクルでのページ切り替えを実現）。
-- **第1段（ストリーム - `Mamba-3` 複素 MIMO 状態空間双対性）**：一定サイズ $O(1)$ の再帰状態（`14.3M` パラメータ参照実装で `48 KB` のピン留めメモリ）を用いて系列履歴に依存するミスを処理し、$O(L)$ のキー・バリュー・キャッシュ肥大化を回避する。
-- **第2段（トポロジ - `HC-SOINN`）**：潜在埋め込み空間上でオンラインのプロトタイプ・トポロジを維持し、レジーム境界を分離するとともに、ラベルなし分布シフトが到来した際にサーキットブレーカ（`Refuse` 拒否または上位段へのエスカレーション）を作動させる。
-- **第3段（最終段モデル - `JEPA-EBRM` および `AirMoL` 4 ビット NVMe ストリーミング）**：より安価な段が棄権した場合、または厳密なターゲット検証が必要な場合にのみ、潜在エネルギーベース検証やレイヤ単位でストリーミングされる 2026 年の事前学習済み基盤モデル（`LiquidAI/LFM2.5-350M` および `Qwen/Qwen3.5-0.8B-Base`）を呼び出す。
-- **下方 `SleepCrystallizer`**：Walsh-Hadamard スペクトル・ウォームスタート、結合最頻値最小項真理値表、および Waksman スイッチスケジュールを用いて反復する起動トレースを抽出し、推論を停止することなく、また FPGA の配置配線を走らせることなくシャドウ・ブロックメモリバンクを切り替える。
+- **Rung 0 (Lookup, Paged Beneš + `LUT6`)**：非ブロッキング $512 \times 512$ **Beneš-Copy-Beneš** マルチキャストスイッチを通じてルーティングされた 64 ビット真理値表マスクを評価し、$81 \times \texttt{RAMB36E2}$ デュアルポートブロックメモリ群にキャッシュする (`0` 浮動小数点演算、Verilator シミュレーションにおける単一サイクルページ切り替え)。
+- **Rung 1 (Stream, `Mamba-3` Complex MIMO State Space Duality)**：シーケンス履歴に依存するミスを、定数サイズ $O(1)$ 再帰状態 (`14.3M` パラメータ参照における `48 KB` ピン留めメモリ) で処理し、$O(L)$ キー・バリューキャッシュの増大を回避する。
+- **Rung 2 (Topology, `HC-SOINN`)**：潜在埋め込み上でオンライン原型トポロジを維持し、レジーム境界を分離するとともに、ラベルなし分布シフトが発生した際に回路ブレーカ (`Refuse` / エスカレーション) を作動させる。
+- **Rung 3 (Model last, `JEPA-EBRM`, `AirMoL`, and `Expert-AirMoL` 4-Bit NVMe Streaming)**：安価な下位ラングが棄権するか正確な対象検証を必要とする場合にのみ、潜在エネルギー基盤検証を呼び出すか、事前学習済み 2026 年後半のハイブリッドおよび疎 MoE 基盤モデル (`LiquidAI/LFM3-1.7B`, `google/gemma-4-E2B-it`, `LiquidAI/LFM2.5-8B-A1B`, および `Qwen/Qwen3.6-35B-A3B`、ならびに `LiquidAI/LFM2.5-350M` および `Qwen/Qwen3.5-0.8B-Base`) をストリーミングする。
+- **下方 `SleepCrystallizer`**：Walsh-Hadamard スペクトルウォームスタート、共同モード最小項真理値表、および Waksman スイッチスケジュールを用いて再帰的起動トレースを抽出し、推論を停止させたり FPGA 配置配線を実行したりすることなく、シャドウブロックメモリバンクを反転させる。
 
 <div id="12-contributions" class="anchor-alias" aria-hidden="true"></div>
 
-### 1.2 主な貢献
+### 1.2 貢献
 
-1. **償却型下方コンパイル条件**：Simon-Kadane の $p_i/c_i$ 順序付けを拡張し、定常ホライズン $\Delta T$ にわたる明示的なコンパイルコスト $E_{\text{compile}}$ を組み込んだ条件を導出した。
-2. **非ブロッキング $512 \times 512$ Beneš-Copy-Beneš および `81`-`RAMB36E2` RTL アーキテクチャ**：フラットなクロスバにおける Kria KV260 の `102.0%` ロジック溢れ（`119,478` LUT）と、フリップフロップ・ページマルチプレクサにおける `926,619` LUT 爆発の双方を解消し、`41,186` 個の UltraScale+ CLB LUT（`xck26` の `35.2%`）、`81` 個の `RAMB36E2` ブロック（`56.2%`）、`0` 個の `DSP48` スライスへと論理合成され、シミュレーション上で `1` サイクル（公称 `250 MHz` 時に `4.0 ns`）のページ切り替えを達成した。
-3. **汎用 $\le 64$ ビット結合最頻値最小項合成**：相関する分岐において結合最頻値最小項ルックアップが周辺ビットプレーン DiffLogic 丸めを優越することを示し、1 つの `uint64` ワードに $K = \lfloor 64 / \lceil \log_2 |V| \rceil \rfloor$ 個のサブワードトークンを格納する方式を構築した（`|V| = 65,536` で `16b × 4 = 64b`、`|V| = 248,320` で `18b × 3 = 54b`）。
-4. **オラクル不要な分割コンフォーマル + オンライン ACI 結晶化ゲート**：動径方向正則化を備えた潜在 `JEPA-EBRM` 非適合度スコアを分割コンフォーマル校正および適応的コンフォーマル推論（Gibbs and Candès, 2021）と組み合わせ、ソフトマックスや MC-Dropout ベースラインが `17.62%-24.28%` の誤結晶化リスクを示すシフトトラフィック上で、`0.00%` の誤結晶化リスクと `1.0000` の OOD AUROC を記録した。
-5. **2026 年ハイブリッドモデル上の `AirMoL` 追加スイープゼロ 4 ビット NVMe ストリーミング**：Darwin `F_NOCACHE` `os.pread` による 4 ビット・グループ量子化レイヤストリーミング、RAM 内ハイブリッド状態ロールバック、およびオンライン・トークン `LUT6` バースト投機を `LiquidAI/LFM2.5-350M`（2026年3月）と `Qwen/Qwen3.5-0.8B-Base`（2026年2月）に適用し、アクティブな重み RAM を FP32 モデルサイズの `8.45%-9.47%` に抑え、`100.0%` の厳密トークン一致性を維持したまま NVMe ディスク読み取り量をそれぞれ `2.86×` および `2.74×` 削減した。
-6. **多言語システムスイートとライブ HTTP/SSE サーバ**：Python/PyTorch/Triton、Rust `Burn 0.22.1 / CubeCL` Metal、Zig `0.17.1`、Go `1.27.4` SIMD、Julia `1.13.4` Enzyme、および `mol_code_cli.py` にわたりカスケード全体を相互検証した。
+1. **償却下方コンパイル条件**: Simon-Kadane の $p_i/c_i$ 順序を、定常区間 $\Delta T$ 上の明示的なコンパイルコスト $E_{\text{compile}}$ によって拡張する。
+2. **非ブロッキング $512 \times 512$ Beneš-Copy-Beneš および `81`-`RAMB36E2` RTL アーキテクチャ**: フラットクロスバーの Kria KV260 論理オーバーフロー(`102.0%`、`119,478` LUT)と、フリップフロップ型ページマルチプレクサの `926,619` LUT への爆発的増大の双方を解消する。本構成は `xck26` に対して `41,186` UltraScale+ CLB LUT(`35.2%`)、`81` 個の `RAMB36E2`(`56.2%`)、`0` 個の `DSP48` スライスに合成され、シミュレーションにおいて `1` サイクル(公称 `250 MHz` で `4.0 ns`)のページ切替を達成する。
+3. **普遍的な $\le 64$ ビット同時モード最小項合成**: 同時モードの最小項ルックアップが、相関のある分岐において周辺ビットプレーン DiffLogic の丸めを上回ることを示す。また、$K = \lfloor 64 / \lceil \log_2 |V| \rceil \rfloor$ 個のサブワードトークンを 1 個の `uint64` ワードに詰め込む(`|V| = 65,536` では `16b × 4 = 64b`、`|V| = 128,000` では `17b × 3 = 51b`、`|V| = 248,320` では `18b × 3 = 54b`)。
+4. **オラクル不要の分割コンフォーマル・オンライン ACI 結晶化ゲート**: 放射状正則化された潜在 `JEPA-EBRM` の非適合度スコアを、分割コンフォーマル較正および適応的コンフォーマル推論(Gibbs and Candès, 2021)と組み合わせる。シフトしたトラフィックにおいて、本手法は `0.00%` の誤結晶化リスクと `1.0000` の OOD AUROC を記録した。これに対し、ソフトマックスおよび MC-Dropout のベースラインは `17.62%-24.28%` の誤リスクを記録した。
+5. **`AirMoL` および `Expert-AirMoL` による最大 `34.66B` 疎 MoE の 4 ビット NVMe ストリーミング**: Darwin の `F_NOCACHE` と `os.pread` による 4 ビットシャーディング、ルーターによって索引される `.experts.pack4` のバイトストライド型エキスパート読み出し、ハイブリッド状態ロールバック、およびオンライントークン `LUT6` バースト推測を統合する。評価は 2026 年 10 月時点の `LiquidAI/LFM3-1.7B`(FP32 RAM の `3.79%` で NVMe を `2.74×` 削減)、`LiquidAI/LFM2.5-8B-A1B`(`8.47B`、NVMe を `6.90×` 削減)、`Qwen/Qwen3.6-35B-A3B`(`34.66B`、**NVMe を `12.30×` 削減**、**RAM `2,530.7 MB` = FP16 の `3.83%`**、**`6.50×` の高速化**)を対象とし、いずれも `100.0%` の厳密なトークン一致を達成した。
+6. **ゼロ MAC の `Sub1Bit-LUT6` と `LittleBit` の比較、および検証器によるゲート付きの 2026 年後期フロンティア符号化カスケード**: `LittleBit-1 / LittleBit-2` が有する実行時 `1.98M` 個の二値 MAC(重み当たり `0.576` ビット; Lee et al., 2025; Lee and Kim, 2026)を、ゼロ MAC の `6` 入力 `LUT6` 部分和ルックアップに置き換える。本手法は `< 4 × 10⁻⁶` の誤差を示し、`0` 回の QAT エポックで `MoL` 目標検証の下に `100.0%` の一致を達成する。さらに、`48` タスク(`16` 仕様 × `3` 波)の符号化ベンチマークにおいて、単独の `LittleBit-2 0.55bpw`、`LFM3-1.7B`、`Gemma-4-E2B-it`、`LFM2.5-8B-A1B`、`Qwen3.6-35B-A3B`、`RouteLLM` を上回る(`43.75%` 対 `0.00%-33.33%`)。加えて、**`0.00%` の破損コミットの採用**と**`35,590×` の第 3 波における結晶化スキルの高速化**を達成し、5 言語のポリグロット検証によって裏付けられる。
 
 <div id="13-same-house-disclosure-and-provenance-boundaries" class="anchor-alias" aria-hidden="true"></div>
 
@@ -145,27 +147,33 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 <div id="3-reference-architecture-polyglot-suite-and-kv260-rtl" class="anchor-alias" aria-hidden="true"></div>
 
-## 3. 参照アーキテクチャ、多言語実装スイート、および KV260 RTL
+## 3. 参照アーキテクチャ、多言語スイート、および KV260 RTL
 
-図 1 に、`src/clai/` における 4 段カスケードおよび下方 `SleepCrystallizer` ループを示す。
+図 1 は `src/clai/` における 4 段カスケードおよび下方 `SleepCrystallizer` ループを示す。
 
-![図 1. 4段 Mixture of Limits カスケードにおける下方コンパイル。](/figures/lut-adapt/mol-downward-cascade.svg)
+![4 段 Mixture of Limits カスケードにおける下方コンパイル。](/figures/lut-adapt/mol-downward-cascade.svg)
 
-*図 1. 4段 Mixture of Limits カスケードにおける下方コンパイル。設計図であり、ボード電力の実測値ではない。[PNG](/figures/lut-adapt/mol-downward-cascade.png) · [インタラクティブ・エクスプローラ](/living/lut-adapt/#la-diag-01)。*
+図 1. Mixture of Limits カスケードにおける 4 段下方コンパイル。設計図であり、基板電力測定ではない。[PNG](/figures/lut-adapt/mol-downward-cascade.png) · [対話型エクスプローラ](/living/lut-adapt/#la-diag-01)。
 
-`openIE-dev/lut-adapt-ai` 内の 5 つのシステム実装がこのカスケードを相互検証している。すなわち、Python/PyTorch/Triton（`src/clai/`）、Rust `Burn 0.22.1 / CubeCL` Metal（`sys/rust/`）、Zig `0.17.1`（`sys/zig/`）、Go `1.27.4` SIMD（`sys/go/`）、および Julia `1.13.4` Enzyme（`sys/julia/`）である。
+`openIE-dev/lut-adapt-ai` における 5 つのシステム実装がカスケードを相互検証する：Python/PyTorch/Triton (`src/clai/`)、Rust `Burn 0.22.1 / CubeCL` Metal (`sys/rust/`)、Zig `0.17.1` (`sys/zig/`)、Go `1.27.4` SIMD (`sys/go/`)、および Julia `1.13.4` Enzyme (`sys/julia/`)。
 
-図 2 は `hw/kv260/rtl/clai_benes_hotswap_core.sv` における Kria KV260（`xck26`）向け RTL データパスを示しており、`512` 個の常駐 `LUT6` ページ（`5,120` 個の `INIT` ビット + `48` ビットのコンテキストタグ + 有効ビット）を `81` 個の並列 `RAMB36E2` デュアルポートメモリにマッピングすることで、単一サイクル（公称 `250 MHz` で `4.0 ns`、`CPI = 1.0`）のコンテキスト切り替えを実現する。
+図 2 は `hw/kv260/rtl/clai_benes_hotswap_core.sv` における Kria KV260 (`xck26`) RTL データパスを示し、`81` 個の並列 `RAMB36E2` デュアルポートメモリにわたって `512` 個の常駐 `LUT6` ページ (`5,120` `INIT` ビット + `48` ビットコンテキストタグ + 妥当ビット) をマッピングし、単一サイクル (`250 MHz` 公称で `4.0 ns`、`CPI = 1.0`) のコンテキスト切り替えを実現する。
 
-![図 2. Beneš-Copy-Beneš マルチキャストファブリックと単一サイクル BRAM LUT6 ページキャッシュ。](/figures/lut-adapt/benes-paged-silicon.svg)
+![Beneš-Copy-Beneš マルチキャストファブリックおよび単一サイクル BRAM LUT6 ページキャッシュ。](/figures/lut-adapt/benes-paged-silicon.svg)
 
-*図 2. Yosys `0.71+` および Verilator `5.054` シミュレーション（`board_metered = false`）における AMD Kria KV260（`xck26`）向け `512×512` Beneš-Copy-Beneš マルチキャストファブリックおよび `81 × RAMB36E2` 単一サイクル `LUT6` ページキャッシュ。[PNG](/figures/lut-adapt/benes-paged-silicon.png) · [インタラクティブ・エクスプローラ](/living/lut-adapt/#la-diag-02)。*
+図 2. `512×512` Beneš-Copy-Beneš マルチキャストファブリックおよび `81 × RAMB36E2` 単一サイクル `LUT6` ページキャッシュで、AMD Kria KV260 (`xck26`) を Yosys `0.71+` および Verilator `5.054` シミュレーション (`board_metered = false`) で対象とする。[PNG](/figures/lut-adapt/benes-paged-silicon.png) · [対話型エクスプローラ](/living/lut-adapt/#la-diag-02)。
 
-図 3 は `AirMoL`（`src/clai/frontier/air_mol_streamer.py` および `hf_air_mol_pretrained.py`）を示している。Darwin `F_NOCACHE` `os.pread` を介して 4 ビット・グループ量子化シャードをストリーミングし、単一スイープ内で `[last_tok, d_1..d_K]` を一括検証するとともに、コンパクトなハイブリッド状態（`Short-Conv/SSM` または `Gated DeltaNet` + スパースな `6` 層 `GQA` KV クロップ）を RAM 内にスナップショット保持することで、ドラフトの部分棄却時にも**追加の NVMe スイープを一切不要**にしている。
+図 3 は `AirMoL` (`src/clai/frontier/air_mol_streamer.py` および `hf_air_mol_pretrained.py`) を示し、これは Darwin `F_NOCACHE` `os.pread` 経由で 4 ビットグループ量子化シャードをストリーミングし、単一走査で `[last_tok, d_1..d_K]` を検証し、コンパクトなハイブリッド状態 (`Short-Conv/SSM` または `Gated DeltaNet` + 疎 `6` 層 `GQA` KV クロップ) を RAM にスナップショットするため、部分ドラフト拒否は **余分な NVMe 走査をゼロ** とする。
 
-![図 3. 汎用 64 ビット・トークン LUT6 投機を備えた AirMoL 4 ビット NVMe レイヤストリーミング。](/figures/lut-adapt/airmol-nvme-speculation.svg)
+![AirMoL 4 ビット NVMe 層ストリーミングと汎用 64 ビットトークン LUT6 投機。](/figures/lut-adapt/airmol-nvme-speculation.svg)
 
-*図 3. `LiquidAI/LFM2.5-350M` および `Qwen/Qwen3.5-0.8B-Base` における汎用 `≤64` ビット・トークン `LUT6` 投機を備えた `AirMoL` 追加スイープゼロ 4 ビット NVMe レイヤストリーミング。[PNG](/figures/lut-adapt/airmol-nvme-speculation.png) · [インタラクティブ・エクスプローラ](/living/lut-adapt/#la-run-01)。*
+図 3. `AirMoL` ゼロ余分走査 4 ビット NVMe 層ストリーミングと `LiquidAI/LFM3-1.7B`、`LiquidAI/LFM2.5-350M`、および `Qwen/Qwen3.5-0.8B-Base` 上の汎用 `≤64` ビットトークン `LUT6` 投機。[PNG](/figures/lut-adapt/airmol-nvme-speculation.png) · [対話型エクスプローラ](/living/lut-adapt/#la-run-01)。
+
+図 4 は `Expert-AirMoL` (`src/clai/frontier/moe_air_mol.py`) および `VerifiedCodeCascade` (`verified_code_cascade.py`) を示す。標準的なディスクオフロード `AirLLM` は各 MoE 層ごとにすべての $E$ 専門家を走査する (`LiquidAI/LFM2.5-8B-A1B` では `32`、`Qwen/Qwen3.6-35B-A3B` では `256`) が、ルータはトークンごとに $k \ll E$ 専門家のみを活性化する (`4/32` および `8/256`)。`Expert-AirMoL` は各 MoE 層をコンパクトなヘッダシャードと固定ストライド `INT4` `.experts.pack4` NVMe ファイルに分割し、$K+1$ バースト位置にわたる活性専門家合併集合 $\mathcal{U}_l$ のみに対して `F_NOCACHE` `os.pread` 読み出しを発行する。新規合成タスクに対しては、`VerifiedCodeCascade` は Rung `0-3c` の全コミットを `0.35s` 境界付き AST、サンドボックス実行、および境界不変性検査 $C(z) \in \{0, 1\}$ の背後にゲートし、認定された解を `BenesLUT6` および正規 AST スキルページにコンパイルする。
+
+![図 4. Expert-AirMoL ルータ疎 4 ビット NVMe ストリーミングおよび検証器ゲート VerifiedCodeCascade。](/figures/lut-adapt/moe-expert-cascade.svg)
+
+*図 4. `Expert-AirMoL` ルータ疎 4 ビット専門家インデックス NVMe ストリーミング (`Qwen/Qwen3.6-35B-A3B` において `12.30×` I/O 削減) および `C(z)` ゲート `VerifiedCodeCascade`。[PNG](/figures/lut-adapt/moe-expert-cascade.png) · [対話型エクスプローラ](/living/lut-adapt/#la-run-01).*
 
 ---
 
@@ -249,68 +257,146 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`5` `AirMoL` 4 ビット + コールド `LUT6`（参照実装）** | **`100%`** | **`3.74`** | **`17.12`** | **`130.7 MB`** | **`0.0 MB`** | **`7.51 MB`** | **`11.18`** | **実測（`F_NOCACHE`）** |
 | **`6` `AirMoL` 4 ビット + 起動結晶化後（参照実装）** | **`100%`** | **`4.27`** | **`15.00`** | **`114.4 MB`** | **`0.0 MB`** | **`7.51 MB`** | **`11.09`** | **実測（`F_NOCACHE`）** |
 
-<div id="47-claim-la-7-pretrained-2026-hybrid-models-under-airmol-lfm25-350m--qwen35-08b-base" class="anchor-alias" aria-hidden="true"></div>
+<div id="47-claim-la-7-pretrained-2026-dense--tri-hybrid-models-under-airmol-lfm3-17b-lfm25-350m--qwen35-08b-base" class="anchor-alias" aria-hidden="true"></div>
 
-### 4.7 主張 LA-7：`AirMoL` 下の 2026 年事前学習済みハイブリッドモデル（`LFM2.5-350M` & `Qwen3.5-0.8B-Base`）
+### 4.7 主張 LA-7: `AirMoL` 下における 2026 年事前学習済み密および三重ハイブリッドモデル (`LFM3-1.7B`, `LFM2.5-350M`, `Qwen3.5-0.8B-Base`)
 
-| 2026 年チェックポイントと条件 | 一致率 | スイープあたり Tok | スイープあたり文字数 | スイープ数 | NVMe 読取量 | ピーク・アクティブ RAM（`% FP32`） | `tok/s` | 証拠クラス |
+| 2026 年チェックポイントおよび条件 | パリティ | トークン / スイープ | 文字 / スイープ | スイープ数 | NVMe 読み出し | ピーク時アクティブ RAM (`% FP32`) | `tok/s` | 証拠区分 |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| `LFM2.5-350M` · `AirLLM` FP16 (`T=1`) | `100%` | `1.00` | `3.11` | `32.00` | `25.129 GB` | `128.0 MB` (`9.47%`) | `2.21` | 実測（`F_NOCACHE`） |
-| `LFM2.5-350M` · `AirLLM` 4 ビット (`T=1`) | `100%` | `1.00` | `2.73` | `32.00` | `7.071 GB` | `128.0 MB` (`9.47%`) | `2.21` | 実測（`F_NOCACHE`） |
-| `LFM2.5-350M` · `AirLLM` 4 ビット + `PLD` | `100%` | `1.13` | `3.10` | `28.20` | `6.231 GB` | `128.0 MB` (`9.47%`) | `2.71` | 実測（`F_NOCACHE`） |
-| **`LFM2.5-350M` · `AirMoL` コールド `LUT6`** | **`100%`** | **`1.32`** | **`3.61`** | **`24.20`** | **`5.347 GB`** | **`128.0 MB` (`9.47%`)** | **`2.74`** | **実測（`F_NOCACHE`）** |
-| **`LFM2.5-350M` · `AirMoL` 起動結晶化後** | **`100%`** | **`2.86`** | **`7.80`** | **`11.20`** | **`2.475 GB`** | **`128.0 MB` (`9.47%`)** | **`6.26`** | **実測（`F_NOCACHE`）** |
-| `Qwen3.5-0.8B` · `AirLLM` 4 ビット (`T=1`) | `100%` | `1.00` | `2.72` | `24.00` | `12.674 GB` | `242.5 MB` (`8.45%`) | `0.53` | 実測（`F_NOCACHE`） |
-| `Qwen3.5-0.8B` · `AirLLM` 4 ビット + `PLD` | `100%` | `1.32` | `3.58` | `18.25` | `9.637 GB` | `242.5 MB` (`8.45%`) | `0.50` | 実測（`F_NOCACHE`） |
-| **`Qwen3.5-0.8B` · `AirMoL` コールド `LUT6`** | **`100%`** | **`1.48`** | **`4.02`** | **`16.25`** | **`8.581 GB`** | **`242.5 MB` (`8.45%`)** | **`0.32`** | **実測（`F_NOCACHE`）** |
-| **`Qwen3.5-0.8B` · `AirMoL` 起動結晶化後** | **`100%`** | **`2.74`** | **`7.46`** | **`8.75`** | **`4.621 GB`** | **`242.5 MB` (`8.45%`)** | **`1.11`** | **実測（`F_NOCACHE`）** |
+| `LFM3-1.7B` (2026 年 10 月) · `AirLLM` 4 ビット (`T=1`) | `100%` | `1.00` | `2.30` | `24.00` | `25.045 GB` | `250.0 MB` (`3.79%`) | `0.53` | 測定 (`F_NOCACHE`) |
+| `LFM3-1.7B` (2026 年 10 月) · `AirLLM` 4 ビット + `PLD` | `100%` | `1.37` | `3.16` | `17.50` | `18.262 GB` | `250.0 MB` (`3.79%`) | `0.73` | 測定 (`F_NOCACHE`) |
+| **`LFM3-1.7B` (2026 年 10 月) · `AirMoL` コールド `LUT6`** | **`100%`** | **`1.55`** | **`3.56`** | **`15.50`** | **`16.175 GB`** | **`250.0 MB` (`3.79%`)** | **`0.81`** | **測定 (`F_NOCACHE`)** |
+| **`LFM3-1.7B` (2026 年 10 月) · `AirMoL` 起動後** | **`100%`** | **`2.74`** | **`6.31`** | **`8.75`** | **`9.131 GB`** | **`250.0 MB` (`3.79%`)** | **`1.32`** | **測定 (`F_NOCACHE`)** |
+| `LFM2.5-350M` · `AirLLM` FP16 (`T=1`) | `100%` | `1.00` | `3.11` | `32.00` | `25.129 GB` | `128.0 MB` (`9.47%`) | `2.21` | 測定 (`F_NOCACHE`) |
+| `LFM2.5-350M` · `AirLLM` 4 ビット (`T=1`) | `100%` | `1.00` | `2.73` | `32.00` | `7.071 GB` | `128.0 MB` (`9.47%`) | `2.21` | 測定 (`F_NOCACHE`) |
+| `LFM2.5-350M` · `AirLLM` 4 ビット + `PLD` | `100%` | `1.13` | `3.10` | `28.20` | `6.231 GB` | `128.0 MB` (`9.47%`) | `2.71` | 測定 (`F_NOCACHE`) |
+| **`LFM2.5-350M` · `AirMoL` コールド `LUT6`** | **`100%`** | **`1.32`** | **`3.61`** | **`24.20`** | **`5.347 GB`** | **`128.0 MB` (`9.47%`)** | **`2.74`** | **測定 (`F_NOCACHE`)** |
+| **`LFM2.5-350M` · `AirMoL` 起動後** | **`100%`** | **`2.86`** | **`7.80`** | **`11.20`** | **`2.475 GB`** | **`128.0 MB` (`9.47%`)** | **`6.26`** | **測定 (`F_NOCACHE`)** |
+| `Qwen3.5-0.8B` · `AirLLM` 4 ビット (`T=1`) | `100%` | `1.00` | `2.72` | `24.00` | `12.674 GB` | `242.5 MB` (`8.45%`) | `0.53` | 測定 (`F_NOCACHE`) |
+| `Qwen3.5-0.8B` · `AirLLM` 4 ビット + `PLD` | `100%` | `1.32` | `3.58` | `18.25` | `9.637 GB` | `242.5 MB` (`8.45%`) | `0.50` | 測定 (`F_NOCACHE`) |
+| **`Qwen3.5-0.8B` · `AirMoL` コールド `LUT6`** | **`100%`** | **`1.48`** | **`4.02`** | **`16.25`** | **`8.581 GB`** | **`242.5 MB` (`8.45%`)** | **`0.32`** | **測定 (`F_NOCACHE`)** |
+| **`Qwen3.5-0.8B` · `AirMoL` 起動後** | **`100%`** | **`2.74`** | **`7.46`** | **`8.75`** | **`4.621 GB`** | **`242.5 MB` (`8.45%`)** | **`1.11`** | **測定 (`F_NOCACHE`)** |
 
-ここで、`Qwen3.5-0.8B-Base` の未知プロンプトに対するコールド実行において生じるトレードオフをそのまま記しておく。`AirMoL` は NVMe ディスク読み取り量を `12.674 GB` から `8.581 GB` へと削減するものの、CPU 上での Gated DeltaNet による `4` トークン一括検証の計算負荷により、オンラインの起動から `LUT6` への結晶化によって受理率が `2.74 tok/sweep`（読み取り量 `4.621 GB`、`1.11 tok/s`）に引き上げられるまでは、実経過スループットが低下する（`0.32` 対 `0.53 tok/s`）。
+2026年10月に `LiquidAI/LFM3-1.7B` (`13` short convolutions + `5` sliding-window attention layers + `6` full-attention layers, `|V| = 128,000`) において、ポストウェイク `AirMoL` は NVMe 転送量を `2.74×`（`25.045 GB` から `9.131 GB`）に削減し、デコード速度を `2.49×`（`0.53` から `1.32 tok/s`）に向上させ、`250.0 MB` のアクティブウェイト RAM（FP32 の `3.79%`）で `100.0%` のロスレスパリティを実現した。CPU バウンドの `Qwen3.5-0.8B-Base` のコールド未見プロンプトに対するトレードオフは保たれ、`AirMoL` は NVMe ディスク読み込みを (`12.674 GB` から `8.581 GB`) に削減するが、`4` トークンの CPU Gated DeltaNet バッチ検証により実時間スループットが (`0.32` 対 `0.53 tok/s`) 低下し、オンラインウェイク-to-`LUT6` 結晶化が受容率を `2.74 tok/sweep`（`1.11 tok/s`）に上昇させるまでである。
 
 <div id="48-claim-la-8-live-cli-and-httpsse-streaming-server-mol_code_clipy" class="anchor-alias" aria-hidden="true"></div>
 
-### 4.8 主張 LA-8：ライブ CLI および HTTP/SSE ストリーミングサーバ（`mol_code_cli.py`）
+### 4.8 主張 LA-8: ライブ CLI および HTTP/SSE ストリーミングサーバ (`mol_code_cli.py`)
 
-`scripts/mol_code_cli.py` は CLI および SSE エンドポイント（`/v1/health`、`/v1/complete`、`/v1/crystallize`）を介して `--backend {mamba3,lfm2.5-350m,qwen3.5-0.8b}` と `--air-nvme` を提供し、ライブ実行中に `RAMB36E2` スロット常駐数を `438/512` から `460/512` へと更新しつつ、`18/18` 個すべての `pytest` スイートに合格している。
+`scripts/mol_code_cli.py` は `--backend {mamba3,lfm2.5-350m,qwen3.5-0.8b,lfm3-1.7b,lfm2.5-8b-a1b,qwen3.6-35b-a3b}` および `--air-nvme` を CLI および SSE エンドポイント (`/v1/health`, `/v1/complete`, `/v1/crystallize`) 経由で提供し、`tests/` における `22/22` の合格テストとともに `RAMB36E2` スロット常駐性を `438/512` から `460/512` へライブで進展させる。
+
+<div id="49-claim-la-9-frontier-sparse-moe-expert-airmol-liquidailfm25-8b-a1b-847b--qwenqwen36-35b-a3b-3466b" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.9 主張 LA-9: フロンティア疎 MoE `Expert-AirMoL` (`LiquidAI/LFM2.5-8B-A1B` `8.47B` および `Qwen/Qwen3.6-35B-A3B` `34.66B`)
+
+| スパース MoE チェックポイントと方式 | パリティ | 活性エキスパート率 | トークン / スイープ | NVMe 読み出し / トークン | I/O 削減率 | ピーク RAM (`% FP16`) | `tok/s` | `est_j / tok` |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `LFM2.5-8B-A1B` · `AirLLM` 密 4 ビット (`T=1`) | `100%` | `100.00%` | `1.00` | `4.574 GB` | `1.00×` | `1,408.3 MB` (`8.72%`) | `0.28` | `368.80` |
+| `LFM2.5-8B-A1B` · `Expert-AirLLM` (`T=1`) | `100%` | `16.93%` | `1.00` | `1.200 GB` | `3.81×` | `1,408.3 MB` (`8.72%`) | `0.58` | `181.26` |
+| `LFM2.5-8B-A1B` · `Expert-AirMoL` + `PLD` | `100%` | `28.82%` | `1.78` | `0.883 GB` | `5.18×` | `1,408.3 MB` (`8.72%`) | `0.79` | `132.57` |
+| **`LFM2.5-8B-A1B` · `Expert-AirMoL` コールド `LUT6`** | **`100%`** | **`33.91%`** | **`1.85`** | **`1.002 GB`** | **`4.56×`** | **`1,408.3 MB` (`8.72%`)** | **`0.72`** | **`145.42`** |
+| **`LFM2.5-8B-A1B` · `Expert-AirMoL` ウェイク後** | **`100%`** | **`36.46%`** | **`3.00`** | **`0.663 GB`** | **`6.90×`** | **`1,408.3 MB` (`8.72%`)** | **`1.10`** | **`95.67`** |
+| `Qwen3.6-35B-A3B` · `AirLLM` 密 4 ビット (`T=1`) | `100%` | `100.00%` | `1.00` | `18.159 GB` | `1.00×` | `3,214.7 MB` (`4.86%`) | `0.06` | `1,696.81` |
+| `Qwen3.6-35B-A3B` · `Expert-AirLLM` (`T=1`) | `100%` | `6.35%` | `1.00` | `2.356 GB` | `7.71×` | `2,530.7 MB` (`3.83%`) | `0.22` | `471.87` |
+| `Qwen3.6-35B-A3B` · `Expert-AirMoL` + `PLD` | `100%` | `11.58%` | `1.89` | `1.708 GB` | `10.63×` | `2,530.7 MB` (`3.83%`) | `0.32` | `326.24` |
+| **`Qwen3.6-35B-A3B` · `Expert-AirMoL` コールド `LUT6`** | **`100%`** | **`12.91%`** | **`2.00`** | **`1.722 GB`** | **`10.54×`** | **`2,530.7 MB` (`3.83%`)** | **`0.31`** | **`334.42`** |
+| **`Qwen3.6-35B-A3B` · `Expert-AirMoL` ウェイク後** | **`100%`** | **`14.97%`** | **`2.57`** | **`1.477 GB`** | **`12.30×`** | **`2,530.7 MB` (`3.83%`)** | **`0.39`** | **`267.08`** |
+
+`Qwen/Qwen3.6-35B-A3B` (`34.66B` パラメータ、FP16 で `66.11 GB`、4 ビットの `.experts.pack4` ファイル群に分割して `18.60 GB`、システム全体の macOS `PMU` 差分 `20,070.18 J`) において、ウェイク後の `Expert-AirMoL` は、アクティブ RAM `2,530.7 MB` (FP16 の `3.83%`) で、バッファなしの NVMe 転送量を **`12.30×`** (`18.159` から `1.477 GB/トークン`) に削減し、デコードを **`6.50×`** (`0.06` から `0.39 tok/s`) 高速化する。その際のトークン・パリティは `100.0%` の無損失である。
+
+<div id="410-claim-la-10-sub-1-bit-latent-factorization-littlebit-1--littlebit-2-vs-zero-mac-sub1bit-lut6" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.10 主張 LA-10: サブ 1 ビット潜在因子分解（`LittleBit-1 / LittleBit-2`） vs. ゼロ MAC `Sub1Bit-LUT6`
+
+| 因子分解手法 (`LFM2.5-8B-A1B` `w1 [1792, 2048]`) | ビット / 重み | 重み SNR | 余弦類似度 | `16K` Top-1 マッチ | バイナリ MAC / トークン | QAT エポック | エビデンスクラス |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| `A` 未回転 `SVD` SVID (`LittleBit-1` PTQ スタイル) | `0.576` (`27.8×`) | `1.76 dB` | `0.5761` | `3.12%` | `1,981,440` | `0` (`5` in paper) | 測定 SW |
+| `B` プロクルース `ITQ` SVID (`LittleBit-2` PTQ スタイル) | `0.576` (`27.8×`) | `2.42 dB` | `0.6487` | `10.94%` | `1,981,440` | `0` (`5` in paper) | 測定 SW |
+| **`C` `Sub1Bit-LUT6` テーブル参照 (`0` MAC, Draft)** | **`0.576` (`27.8×`)** | **`2.42 dB`** | **`0.6487`** | **`10.94%`** | **`0`** | **`0`** | **測定 (`< 4e-6` vs. `B`)** |
+| `D` `Expert-AirMoL` `INT4` ブロック-64 ターゲット | `4.500` (`3.56×`) | `20.77 dB` | `0.9958` | `82.81%` | `0` (`INT4`) | `0` | 測定 SW |
+| **`E` `MoL`: `Sub1Bit-LUT6` Draft + ターゲット検証** | **`0.576` draft** | **`148.84 dB`** | **`1.0000`** | **`100.00%`** | **`0` draft MAC** | **`0`** | **測定 ロスレス パリティ** |
+
+<div id="411-claim-la-11-48-task-16-specifications--3-waves-late-2026-frontier-coding-bakeoff" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.11 主張 LA-11: `48` タスク (`16` 仕様 × `3` 波) 2026 年後半フロンティア符号化ベイクオフ
+
+| 2026 年後半システム群 (`48` タスク = `16` 仕様 × `3` 波) | W1 コールド | W2 アダプト | W3 ウォーム | 全体パス | 破損コミット | W3 `Rung 0/1` シェア | `35B` コール | 平均 W3 レイテンシ |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `A` `LittleBit-2` `Qwen3-8B` `0.55 bpw` QAT (`1`-Shot) | `0.00%` | `0.00%` | `0.00%` | `0.00%` | `100.00%` | `0.00%` | `0.0%` | `19,946 ms` |
+| `B` `LiquidAI/LFM3-1.7B` (2026 年 10 月 Tri-Hybrid, `1`-Shot) | `18.75%` | `6.25%` | `6.25%` | `10.42%` | `89.58%` | `0.00%` | `0.0%` | `3,561 ms` |
+| `C` `google/gemma-4-E2B-it` (`2026` Hybrid, `1`-Shot) | `6.25%` | `0.00%` | `0.00%` | `2.08%` | `97.92%` | `0.00%` | `0.0%` | `8,886 ms` |
+| `D` `LiquidAI/LFM2.5-8B-A1B` (`8.47B` MoE, `1`-Shot) | `18.75%` | `12.50%` | `12.50%` | `14.58%` | `85.42%` | `0.00%` | `0.0%` | `14,221 ms` |
+| `E` `Qwen/Qwen3.6-35B-A3B` (`34.66B` `Expert-AirMoL`, `1`-Shot) | `37.50%` | `31.25%` | `31.25%` | `33.33%` | `66.67%` | `0.00%` | `100.0%` | `98,435 ms` |
+| `F` `RouteLLM` 信頼性ルータ (`LFM3` $\to$ `Gemma4` $\to$ `8B`) | `18.75%` | `6.25%` | `6.25%` | `10.42%` | `89.58%` | `0.00%` | `0.0%` | `3,561 ms` |
+| **`G` `MoL` `VerifiedCodeCascade` (参照)** | **`43.75%`** | **`43.75%`** | **`43.75%`** | **`43.75%`** | **`0.00%`** | **`43.75%`** | **`62.5%`** | **`143,649 ms` (`2.54 ms` 解決済み)** |
+
+`48` タスクプロトコルおよびアルゴリズムベンチマーク (RFC 1982 直列算術, 重み付き区間スイープライン, サイクル安全辞書式トポロジカルソート, ナノ秒トークンバケット, CRC-8/ATM および変異 `0xFF` CRC-8, RFC 6901 JSON Pointer `~01` アンエスケープ, ホップ境界付き Bellman-Ford, `>2⁵³` 正確ウィンドウ中央値, 無制限 Damerau-Levenshtein, `4×4` Beneš ルーティング, SQL リテラルパラメータ化, 単調デック部分列和, DWARF SLEB128, SHA-256 一貫性ハッシュ, およびコンフォーマル分位数; 全体システム macOS `PMU` デルタ `126,947.30 J`) において, `VerifiedCodeCascade` はあらゆる単独モデルおよびルータを全波で上回り (`43.75%` 対 `35B` の `33.33%`), **`0.00%` の破損コミット** (対 `66.67%`-`100.00%`) を認め, $C(z)$ により全 `3` つの Wave-2/3 敵対的仕様ドリフト参照を安全に捕捉し, `7` つの結晶化スキルにわたる平均 Wave-3 レイテンシを **`90,324.2 ms`** から **`2.54 ms` (`35,590×` 高速化)** へ崩壊させる。
+
+<div id="412-xck26-sfvc784-2lv-c-full-subsystem-primitive-breakdown-topological-depth-and-vivado-20261-hardware-probe" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.12 `xck26-sfvc784-2LV-c` 全サブシステムのプリミティブ内訳、トポロジカル深度、および `Vivado 2026.1` ハードウェアプローブ
+
+本節では、独立型の `512` ページ投機的コア（`hw/kv260/rtl/clai_benes_hotswap_core.sv` 内の `clai_benes_paged_hotswap_core`）と、完全な Advanced Microcontroller Bus Architecture（`AMBA`）`AXI4-Lite` + `AXI4-Stream` Rung-0 サブシステムを監査する。後者は `hw/kv260/rtl/clai_kv260_axi_top.sv`、`clai_engram_streamer.sv`、`clai_rung0_hotswap_core.sv`、およびコミット `a5e9bc1de280` の `artifacts/clai_rung0_kv260.v` から構成される。これらを正確な AMD Kria KV260 デバイス（`xck26-sfvc784-2LV-c`：`117,120` 個の CLB LUT、`234,240` 個の CLB フリップフロップ、`144` 個の `RAMB36E2` ブロック、`64` 個の 288 Kbit UltraRAM（`URAM288`）ブロック、`1,248` 個の UltraScale+ デジタル信号処理（`DSP48E2`）スライス、`189` 個のユーザー入出力ブロック（`IOB`））と照合するため、`Intel Core i9-13900H`（`Linux 7.0.0-43-generic x86-64`）ワークステーション上で、三つのハードウェアおよび電子設計自動化（`EDA`）検査を実施した。
+
+1. **Read-only Joint Test Action Group（JTAG） & Universal Serial Bus（USB） probe（Xilinx hw_server v2026.1 + Xilinx Software Command-Line Tool（XSDB））**: `lsusb` が接続された Future Technology Devices International（FTDI）`0403:6010`（FT2232C/D/H デュアル ユニバーサル非同期受信送信装置（UART）/ FIFO 統合回路（IC））ブリッジを報告したが、Linux `sysfs` の USB ベンダー/プロダクト文字列（`idVendor = 0403`、`idProduct = 6010`）を調査した結果、デバイスは Kria KV260 キャリアではなく `Manufacturer = "Particle"`、`Product = "tachyon-dbg-1.0"` と識別された。 `hw_server v2026.1`（Build May 29, 2026）を `xsdb`（`connect; jtag targets; targets`）で問い合わせた結果、**`0` Xilinx `JTAG` デバイスおよび `0` Debug Access Port（DAP）ターゲット** が返された（`board_metered = false`、`measured_j = None`）である。
+
+2. **`Vivado 2026.1` batch synthesis and licensing gate（SW Build 6511674）**: 再現性のある低フットプリント非プロジェクトバッチスクリプト（`scripts/run_vivado_xck26.tcl`、`set_param general.maxThreads 4`、`xck26-sfvc784-2LV-c` を `250.0 MHz` / `4.000 ns` のコンテキスト外（OOC）モードで対象）を `/tools/Xilinx/2026.1/Vivado/bin/vivado` に配置した。`vivado v2026.1` をバッチモードで起動したところ、`synth_design` に到達する前に（`ERROR: Vivado Design Suite cannot be launched because a valid license was not found`）終了した。これは AMD の `Vivado 2025.1+` / `2026.1` が、Standard 階層の `xck26` デバイスであっても、ユーザーが生成した Standard/Enterprise `.lic` ファイル（`~/.Xilinx/Xilinx.lic` または `XILINXD_LICENSE_FILE`）を明示的に必要とするためであり、ワークステーションには `.lic` ファイルが一つもインストールされていなかったためである。厳格な測定規則に従い、ポストルート `WNS`、配置配線後の最大クロック周波数、およびベクトルレス `report_power`（`est_j`）は Standard `.lic` ファイルが供給されるまで `not_available` と記録されたである。
+
+3. **Full-subsystem UltraScale+ `xcup` primitive decomposition, `IOB` budget, and topological logic-level audit（Yosys 0.71+）**: `synth_xilinx -family xcup` および `ltp -noff` を用いて `clai_benes_paged_hotswap_core` と `clai_kv260_axi_top` の両方を合成し、ホスト `RAPL package-0` の `reported_j` を `x86-64` `EDA` コンパイルコスト $E_{\text{compile}}$ として厳密に記録（FPGA シリコン電力としては記録しない）した結果、正確なセル数とクリティカルパスの組み合わせ深さが確立されたである。
+
+| `xck26-sfvc784-2LV-c` 対象モジュール | CLB LUT (`% xck26`) | 支配的 LUT プリミティブ | CLB レジスタ (`FDRE`/`FDSE`) | `RAMB36E2` (`%`) | `DSP48E2` | トップポート (`IBUF`+`OBUF`) | 組合せ深さ (`ltp`) | ホスト合成 `RAPL` (`reported_j`) |
+| :--- | ---: | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
+| **`clai_benes_paged_hotswap_core`** (`512` ページ) | **`41,185`** (`35.17%`) | `19,982 LUT3`, `7,804 LUT6`, `7,714 LUT5`, `36 MUXF7`, `18 MUXF8` | **`36,464`** (`15.57%`) | **`81`** (`56.25%`) | **`0`** | `1,599` (`OOC` / 内部バス) | **`81` レベル** | `7,297.3 J` (`144.8 s`) |
+| **`clai_kv260_axi_top`** (`AXI4` Rung-0 サブシステム) | **`67,366`** (`57.52%`) | `25,557 LUT6`, `25,333 LUT5`, `7,918 LUT3`, `569 CARRY4` | **`16,619`** (`7.09%`) | **`4`** (`2.78%`) | **`0`** | `126` (`<= 189` `IOB`; `PS-PL`) | **`73` レベル** | `10,089.4 J` (`214.8 s`) |
+
+`xcup` プリミティブおよび `ltp` 監査から 2 つの具体的な物理設計制約が生じる。
+- **ピンバジェット制約 (`OOC` 対 `PS-PL` `AXI` ラッパー)**: `clai_benes_paged_hotswap_core` が生の `512` ビット `CodeBitBus` および広いシャドウ構成ベクトル (`1,379` 個の入力バッファ (`IBUF`) + `220` 個の出力バッファ (`OBUF`) = `1,599` ポート対 `xck26-sfvc784-2LV-c` 上の `189` パッケージ `IOB`) を露出させるため, スタンドアロンなベンダ実装は `synth_design -mode out_of_context` で実行するか, `clai_kv260_axi_top` (`126` ポート, `57.52%` LUT 使用率) のような `AXI4-Stream` / `zynq_ultra_ps_e` ラッパ内部で実行しなければならない。
+- **非パイプライン化組合せ深さ (`81` および `73` レベル) 対 `250 MHz` (`4.000 ns`) `-2LV` クロージャ**: Verilator `5.054` がサイクル正確な `CPI = 1.0` (`1` ルックアップ / クロックサイクル) を検証する一方で, `17` `Beneš-1` ステージ + `9` プレフィックスコピーステージ + `17` `Beneš-2` ステージ + 動的 `LUT6` 真理値表多重化 + `5` 投票多数決縮小を単一の組合せサイクルで横断することは **`81` プリミティブレベル** (`clai_kv260_axi_top` の組合せ `64` 入力ポップカウントおよび `8` クラスマージン比較器では `73` レベル) に及ぶ。低電圧 (`0.72 V`) `-2LV` シリコン上で `250 MHz` (`4.000 ns`) の配置配線後閉合を達成するためには, $\mathcal{B}_1 \to \mathcal{C} \to \mathcal{B}_2$ 間に `2` から `3` のパイプラインレジスタステージを挿入し (`64` ワイヤポップカウントツリーとトップ `2` 比較器の間に `1` レジスタステージ), `CPI = 1.0` スループット (`1` コンテキスト / クロック) を `3`-`4` サイクルのパイプライン遅延で維持することが望ましい。
 
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
 
-## 5. 関連研究と収束に関する考察
+## 5. 関連研究と収束的知見
 
-| システム | ID / 発表会議 | 確立された内容 | 報告されているコスト指標 | 本参照実装との相違点 |
+本節では、本研究の主要な構成要素である下方 LUT6 コンパイル、Beneš ルーティング・ブールファブリック、コンフォーマル起動ゲート、およびフロンティア疎 MoE NVMe ストリーミングに関連する先行研究を整理し、それらの間に観察される収束的知見を述べる。
+
+| システム | ID / 会場 | 確立内容 | 報告されたコスト | 本参照における差異 |
 | :--- | :--- | :--- | :--- | :--- |
-| **LogicNets** (Umuroglu et al., 2020) | `arXiv:2004.03021` · FPL 2020 | スパース量子化ニューラル層を FPGA LUT へコンパイル。 | FPGA LUT 数および Fmax 論理合成値。 | 静的配線のためシフト時に Vivado 再 PAR が必要であるのに対し、本実装は `1` サイクルの Beneš + `RAMB36E2` を用いる。 |
-| **DiffLogic** (Petersen et al., 2022) & **DWN** (Bacellar et al., 2024) | `arXiv:2210.08277` · `arXiv:2410.11112` | 微分可能ブール論理ゲート網および重みなし LUT 網。 | ゲート数と分類精度。 | 静的配線は VLAN シフト時に精度が `52.34%` へ低下し、周辺ビットプレーンのキメラ問題を受ける。 |
-| **T-MAC** (Wei et al., 2024) & **TeLLMe** (Qiao et al., 2025) | `arXiv:2407.00088` · `arXiv:2504.16266` | CPU/FPGA 上のテーブルルックアップによる三値/低ビット行列積。 | レイテンシおよび FPGA 消費電力。 | モデルギア内部の線形代数を高速化するものであり、モデル呼び出し自体はバイパスしない。 |
-| **FrugalGPT** (Chen et al., 2023) & **RouteLLM** (Ong et al., 2024) | `arXiv:2305.05176` · `arXiv:2406.18665` | 弱モデルから強モデルへの LLM カスケードおよび選好ルータ。 | API のドル料金対品質。 | モデル間のルーティングのみであり、`LUT6` ルックアップ最下層や下方コンパイルを持たない。 |
-| **GreenServ** (2026) & **VoltanaLLM** (2025) | `arXiv:2601.17551` · `arXiv:2509.04827` | マルチ LLM バンディット・ルーティングおよび周波数スケーリング配信。 | 著者報告の GPU Wh（`Zeus` / `pyNVML`）。 | GPU サービングを最適化する手法であり、本参照実装は起動結果を `0` FLOP の `LUT6` ページへコンパイルする（`est_j`）。 |
-| **Medusa** (2024), **EAGLE-2** (2024), **HCSpec** (2026) | `arXiv:2401.10774` · `arXiv:2406.16858` · ACL 2026 | ニューラル MLP、ドラフト木、およびカスケード型投機的ドラフタ。 | 実経過時間の高速化倍率。 | ドラフト計算の FLOPs と重み読み取りを要するのに対し、本実装は `0` FLOP の `uint64` `LUT6` ページを用いる。 |
-| **PLD** (Saxena, 2023) & **REST** (He et al., 2024) | GitHub · `arXiv:2311.08252` | 0 FLOP のプロンプト n-gram およびデータストア接尾辞トライ・ドラフタ。 | レイテンシ高速化（`0` FLOPs）。 | `PLD` はプロンプト外のトークンを捕捉できず、`REST` は固定 `RAMB36E2` ページではなく可変長トライを用いる。 |
-| **AirLLM** (lyogavin, 2023) | オープンソース SSD ストリーマ | 小容量 RAM での SSD レイヤ単位重みストリーミング。 | アクティブ RAM 使用量。 | 純粋な `T=1`（`1.0 tok/sweep`）+ KV スピルであるのに対し、`AirMoL` はスイープ数を `2.74×-2.86×` 削減する。 |
-| **計量コミットゲート** & **RCE-JEPA** `[same house]` | `/papers/gates/` · `/papers/rce-jepa/` | コミットゲート（KV260 `INA260` SOM 実測 `11,428 pJ`）、MoL $p_i/c_i$、および `RCE-JEPA`。 | KV260 SOM の `measured_j` + `est_j`。 | 同一組織の基礎研究であり、本稿では Beneš `LUT6` 下方コンパイルおよび `AirMoL` により拡張している。 |
+| **LogicNets**（Umuroglu 他, 2020） | `arXiv:2004.03021` · FPL 2020 | FPGA LUT にコンパイルされたスパース量子化ニューラル層である。 | FPGA LUT および Fmax の合成である。 | シフト時に静的配線は Vivado の再PAR が必要であり、`1` サイクル Beneš + `RAMB36E2` と比較される。 |
+| **DiffLogic**（Petersen 他, 2022） & **DWN**（Bacellar 他, 2024） | `arXiv:2210.08277` · `arXiv:2410.11112` | 微分可能なブールゲートおよび無重み LUT ネットワークである。 | ゲート数と精度である。 | VLAN シフト時に静的ルーティングは `52.34%` まで低下し、マージナルなビットプレーン異常が生じる。 |
+| **T-MAC**（Wei 他, 2024） & **TeLLMe**（Qiao 他, 2025） | `arXiv:2407.00088` · `arXiv:2504.16266` | CPU/FPGA 上でテーブル参照により三値・低ビット行列積を実現する。 | レイテンシと FPGA 消費電力である。 | モデル内部の線形代数を高速化するが、モデル呼び出しをバイパスしない。 |
+| **LittleBit**（Lee 他, 2025） & **LittleBit-2**（Lee と Kim, 2026） | `arXiv:2506.13771` · `arXiv:2603.00042` | `SVD`／`ITQ` と `5` エポック QAT により、`0.1-0.58` ビット/重みのサブ 1 ビットバイナリ潜在因子分解を行う。 | 圧縮率 (`11.6×-31×`)、PPL、及び QAT 精度である。 | ビットパックをデンスランタイムのバイナリ MAC に展開し、正確な符号化（`Claim LA-11`）で `0.00%` に低下する。`Sub1Bit-LUT6` は `0` バイナリ MAC を使用し、`MoL` が `0` エポック QAT で `100.0%` の同等性を回復する。 |
+| **FrugalGPT**（Chen 他, 2023） & **RouteLLM**（Ong 他, 2024） | `arXiv:2305.05176` · `arXiv:2406.18665` | 弱から強への LLM カスケードとプリファレンスルーターである。 | API のドル価格と品質の比較である。 | 決定論的な $C(z)$ ゲートが欠如し（`Claim LA-11` の `89.58%` の破損コミット）、`LUT6` 下方コンパイラも存在しない。 |
+| **GreenServ**（2026） & **VoltanaLLM**（2025） | `arXiv:2601.17551` · `arXiv:2509.04827` | マルチ LLM バンディットルーティングおよび周波数スケーリングされたサービスである。 | 著者の GPU Wh（`Zeus` / `pyNVML`）。 | GPU サービスを最適化し、本稿ではウェイクを `0` FLOP の `LUT6` ページ（`est_j`）にコンパイルする。 |
+| **Medusa**（2024）、**EAGLE-2**（2024）、**HCSpec**（2026） | `arXiv:2401.10774` · `arXiv:2406.16858` · ACL 2026 | ニューラル MLP、ドラフトツリー、及びカスケード投機的ドラフターである。 | 実時間での速度向上である。 | ドラフト FLOP と重み読みが必要であり、`0` FLOP の `uint64` `LUT6` ページと比較される。 |
+| **PLD**（Saxena, 2023） & **REST**（He 他, 2024） | GitHub · `arXiv:2311.08252` | `0` FLOP のプロンプト n-gram とデータストアサフィックストライのドラフターである。 | レイテンシの速度向上（`0` FLOP）。 | `PLD` はプロンプト外トークンを見逃し、`REST` は `RAMB36E2` ページに対し可変トライを使用する。 |
+| **AirLLM**（lyogavin, 2023） | Open-source SSD streamer | 小容量 RAM におけるレイヤごとの SSD 重みストリーミングである。 | アクティブ RAM フットプリントである。 | 純粋な `T=1`（`1.0 tok/sweep`）＋ KV スピルと `AirMoL` の `2.74×-2.86×` スイープ削減を比較する。 |
+| **Metered Commit Gates** & **RCE-JEPA** `[same house]` | `/papers/gates/` · `/papers/rce-jepa/` | コミットゲート（`11,428 pJ` KV260 `INA260` SOM 測定）、MoL $p_i/c_i$、および `RCE-JEPA`。 | KV260 SOM `measured_j` + `est_j`。 | 同一ハウスの基盤であり、ここでは Beneš `LUT6` 下方コンパイルと `AirMoL` を拡張している。 |
 
 ---
 
 <div id="6-limits-threats-to-validity-not-claimed-and-falsifiers" class="anchor-alias" aria-hidden="true"></div>
 
-## 6. 限界、妥当性への脅威、主張しない事項、および反証条件
+## 6. 限界、有効性に対する脅威、非主張、および反証因子
 
-**内的妥当性と構成概念妥当性。** 一様ランダム雑音またはステップごとの敵対的変動（$\Delta T = 1$）の下では、命題 1 により下方コンパイルの節約量はゼロとなり、システムは `1.00 tok/sweep` へとフォールバックする。可逆一致性（`100.0%`）はターゲットの貪欲デコーディングとのビット単位の完全一致を保証するものであるが、`350M` や `0.8B` ベースチェックポイント自体の能力上限を引き上げるものではない。
+**内部妥当性および構成妥当性。** 一様乱数ノイズまたはステップごとの敵対的チャーン ($\Delta T = 1$) の下では、命題 1 は下方コンパイルの節約をゼロとし、`1.00 tok/sweep` にフォールバックする。ロスレスパリティ (`100.0%`) は、貪欲目標デコーディングとのビット単位の完全一致を保証し、`350M` または `0.8B` ベースチェックポイントの能力上限を引き上げない。
 
-**測定妥当性と主張しない事項。** 本研究におけるすべてのジュール数値は解析的な `est_j` 推定値である（`measured_j = None`）。Yosys `0.71+` および Verilator `5.054` が示すのは `xck26` 構造ネットリスト合成と `CPI = 1` のサイクルシミュレーションであり、Vivado 配置配線後の `250 MHz` タイミング収束や KV260 実機電源レールのワット数ではない（`board_metered = false`）。シリコン実測エネルギーにおける優位性、`ModelGenerated` 出力の `Deterministic` への昇格、および `70B` モデルの実測実行（`air_mol_nvme_baselines.csv` は `70B` の解析的推計のみを記載）はいずれも主張しない。
+**測定妥当性および非主張。** タスクごとのジュール数 (`est_j/VC`, `est_j/tok`, `est_mJ/Byte`) は解析的な `est_j` 値 (`measured_j = None`) であり、macOS `PMU` 累積デルタは、チップレールワット分離ではなく、システム全体のディスプレイ、SSD、および OS バックグラウンド負荷を含む。Yosys `0.71+` および Verilator `5.054` は、構造的な `xck26` ネットリスト合成および `CPI = 1` サイクルシミュレーションを確立するものであり、Vivado post-PAR `250 MHz` タイミングクロージャではなく、物理 KV260 レールワット (`board_metered = false`) でもない。シリコンエネルギー主導権、`ModelGenerated` 出力を `Deterministic` へ昇格、48 タスク契約ベンチマークを超える完全リポジトリ規模の `SWE-bench` 評価、および測定された `70B` 実行 (`air_mol_nvme_baselines.csv` は測定された `34.66B` `Qwen3.6-35B-A3B` 実行を超える解析的な `70B` 投影を報告) は主張しない。
 
-| ID | 対象の主張 | 厳密な反証 / 棄却条件 |
+| ID | 主張 | 正確な反証 / 偽証条件 |
 | :--- | :--- | :--- |
-| **`LA-F1`** | `Claim LA-1`（`.pcap` + RTL） | `scripts/run_realworld_domain.py` が `5,120` パケットにわたり `100.0%` の Verilator 一致率を達成できないか、パケット `2,500` での VLAN シフトを見逃す場合。 |
-| **`LA-F2`** | `Claim LA-2`（多言語スイート） | Zig がホットループ内で `> 0` ヒープバイトを割り当てるか、Go が `> 0 allocs/op` を報告するか、Julia Enzyme の FD 誤差が `1e-7` を超える場合。 |
-| **`LA-F3`** | `Claim LA-3`（KV260 ページド RTL） | `scripts/verify_paged_bram_rtl.py` が `117,120` LUT、`144` 個の `RAMB36E2`、`0` 個の `DSP48`、またはページ切替あたり `1` サイクルのいずれかを超過する場合。 |
-| **`LA-F4`** | `Claim LA-4`（コンフォーマル ACI） | `scripts/run_frontier_benchmarks.py` がシフトトラフィック上で目標誤リスク $\alpha = 0.02$ を超えるか、`Deterministic` ラベルを付与した場合。 |
-| **`LA-F5`** | `Claim LA-5`（バイト投機） | `scripts/run_code_corpus_benchmark.py` が未知の `48` プロンプト上で貪欲 `Mamba3CodeLM` に対し `< 100.0%` のバイト一致率しか得られない場合。 |
-| **`LA-F6`** | `Claim LA-6`（`AirMoL` 14.3M） | `F_NOCACHE` 下の `scripts/run_air_mol_benchmark.py` が `100%` 一致率を損なうか、`AirLLM` 4 ビット `T=1` より多くの NVMe バイトを読み取る場合。 |
-| **`LA-F7`** | `Claim LA-7`（2026 HF `AirMoL`） | `scripts/run_hf_air_mol_pretrained.py` または `scripts/run_hf_qwen35_air_mol.py` がターゲットの貪欲出力から $\ge 1$ 個の BPE トークンで乖離する場合。 |
-| **`LA-F8`** | `Claim LA-8`（回帰テストスイート） | `pytest -v` が `tests/` 内の `18` 個のテストスイートのいずれか 1 つでも失敗する場合。 |
+| **`LA-F1`** | `主張 LA-1` (`.pcap` + RTL) | `scripts/run_realworld_domain.py` が `5,120` パケット全体で `100.0%` Verilator パリティに失敗するか、パケット `2,500` における VLAN シフトを見逃す。 |
+| **`LA-F2`** | `主張 LA-2` (Polyglot suite) | Zig がホットループで `> 0` ヒープバイトを割り当て、Go が `> 0 allocs/op` を報告するか、Julia Enzyme が `1e-7` FD 誤差を超える。 |
+| **`LA-F3`** | `主張 LA-3` (KV260 paged RTL) | `scripts/verify_paged_bram_rtl.py` が `117,120` LUT、`144` `RAMB36E2`、`0` `DSP48` を超えるか、ページ切り替えあたり `1` サイクルを超える。 |
+| **`LA-F4`** | `主張 LA-4` (Conformal ACI) | `scripts/run_frontier_benchmarks.py` がシフトされたトラフィック上で目標偽リスク $\alpha = 0.02$ を超えるか、`Deterministic` と印を付ける。 |
+| **`LA-F5`** | `主張 LA-5` (Byte speculation) | `scripts/run_code_corpus_benchmark.py` が `48` 個の未見プロンプト上で貪欲 `Mamba3CodeLM` に対して `< 100.0%` 正確バイトパリティを生成する。 |
+| **`LA-F6`** | `主張 LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` が `F_NOCACHE` 下で `100%` パリティに失敗するか、`AirLLM` 4-Bit `T=1` よりも多くの NVMe バイトを読み込む。 |
+| **`LA-F7`** | `主張 LA-7` (2026 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`、`scripts/run_hf_air_mol_pretrained.py`、または `scripts/run_hf_qwen35_air_mol.py` が貪欲目標から $\ge 1$ BPE トークン逸脱する。 |
+| **`LA-F8`** | `主張 LA-8` (Regression suite) | `pytest -v` が `tests/` 内の `22` 個のテストのいずれかに失敗する。 |
+| **`LA-F9`** | `主張 LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` が `100%` トークンパリティから逸脱するか、`AirLLM` または `Expert-AirLLM` よりも多くの NVMe バイトを読み込む。 |
+| **`LA-F10`** | `主張 LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` が密 `ITQ` バイナリ行列乗算に対して `1e-3` 最大誤差を超えるか、`100%` 検証済みパリティに失敗する。 |
+| **`LA-F11`** | `主張 LA-11` (`48`-Task Bakeoff) | `scripts/run_frontier_ai_bakeoff.py` が `> 0%` 破損コミットを許容するか、Wave-2 仕様変異下で古い Wave-1 スキルを許容する。 |
 
 ---
 
@@ -326,23 +412,28 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 <li>Dao, T., and Gu, A. (2024). Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality. <em>ICML 2024</em>, <em>arXiv:2405.21060</em>.</li>
 <li>Furao, S., and Hasegawa, O. (2006). An incremental network for on-line unsupervised classification and topology learning (SOINN). <em>Neural Networks</em>, 19(1):90-106.</li>
 <li>Gibbs, I., and Candès, E. (2021). Adaptive Conformal Inference Under Distribution Shift. <em>NeurIPS 2021</em>, <em>arXiv:2106.00170</em>.</li>
+<li>Google Gemma Team (2026). <code>google/gemma-4-E2B-it</code> On-Device Hybrid Instruction Model Card (2026). <a href="https://huggingface.co/google/gemma-4-E2B-it">huggingface.co/google/gemma-4-E2B-it</a>.</li>
 <li>GreenServ (2026). Energy-Efficient Context-Aware Dynamic Routing for Multi-Model LLM Inference. <em>ICPE 2026</em>, <em>arXiv:2601.17551</em>.</li>
 <li>HCSpec (2026). Two-Tier Horizontal Cascade Speculative Decoding. <em>ACL 2026</em>, <a href="https://doi.org/10.18653/v1/2026.acl-long.353">doi:10.18653/v1/2026.acl-long.353</a>.</li>
 <li>He, Z., Zhong, Z., Cai, T., Lee, J. D., and He, D. (2024). REST: Retrieval-Based Speculative Decoding. <em>NAACL 2024</em>, <em>arXiv:2311.08252</em>.</li>
 <li>Hein, M., Andriushchenko, M., and Bitterwolf, J. (2019). Why ReLU Networks Yield High-Confidence Predictions Far Away From the Training Data. <em>CVPR 2019</em>, <em>arXiv:1812.05720</em>.</li>
 <li>Horowitz, M. (2014). Computing's Energy Problem (and What We Can Do About It). <em>IEEE ISSCC 2014</em>.</li>
+<li>Lee, H., Kim, M., Baek, S., Kim, J., Hwang, S., Shin, J., Lee, J., and Kim, E. (2025). LittleBit: Ultra Low-Bit Quantization via Latent Matrix Factorization. <em>NeurIPS 2025</em>, <em>arXiv:2506.13771</em>.</li>
+<li>Lee, H., and Kim, E. (2026). LittleBit-2: Pushing the Frontier of Extreme LLMs Quantization into 0.1-Bit (<code>SamsungLabs/LittleBit</code>). <em>ICML 2026</em>, <em>arXiv:2603.00042</em>.</li>
 <li>Lee, T. T. (1988). Nonblocking Copy Networks for Multicast Packet Switching. <em>IEEE JSAC</em>, 6(9):1455-1467.</li>
 <li>Lei, J., G'Sell, M., Rinaldo, A., Tibshirani, R. J., and Wasserman, L. (2018). Distribution-Free Predictive Inference for Regression. <em>JASA</em>, 113(523):1094-1111.</li>
 <li>Leviathan, Y., Kalman, M., and Matias, Y. (2023). Fast Inference from Transformers via Speculative Decoding. <em>ICML 2023</em>, <em>arXiv:2211.17192</em>.</li>
 <li>Li, Y., Wei, F., Zhang, C., and Zhang, H. (2024). EAGLE-2: Faster Inference of Language Models with Dynamic Draft Trees. <em>EMNLP 2024</em>, <em>arXiv:2406.16858</em>.</li>
-<li>Liquid AI (2026). <code>LiquidAI/LFM2.5-350M</code> Open-Weights Hybrid Model Card (March 2026). <a href="https://huggingface.co/LiquidAI/LFM2.5-350M">huggingface.co/LiquidAI/LFM2.5-350M</a>.</li>
+<li>Liquid AI (2026a). <code>LiquidAI/LFM2.5-350M</code> and <code>LiquidAI/LFM2.5-8B-A1B</code> Hybrid and Sparse-MoE Open-Weights Model Cards. <a href="https://huggingface.co/LiquidAI/LFM2.5-8B-A1B">huggingface.co/LiquidAI/LFM2.5-8B-A1B</a>.</li>
+<li>Liquid AI (2026b). <code>LiquidAI/LFM3-1.7B</code> Tri-Hybrid Open-Weights Model Card (October 23, 2026). <a href="https://huggingface.co/LiquidAI/LFM3-1.7B">huggingface.co/LiquidAI/LFM3-1.7B</a>.</li>
 <li>Liu, W., Wang, X., Owens, J., and Li, Y. (2020). Energy-based Out-of-distribution Detection. <em>NeurIPS 2020</em>, <em>arXiv:2010.03759</em>.</li>
 <li>lyogavin (2023). AirLLM: Layer-wise LLM Inference on Memory-Constrained Hardware. <a href="https://github.com/lyogavin/airllm">github.com/lyogavin/airllm</a>.</li>
 <li>Ong, I., et al. (2024). RouteLLM: Learning to Route LLMs with Preference Data. <em>ICLR 2025</em>, <em>arXiv:2406.18665</em>.</li>
 <li>Open Interface Engineering (2026). Metered Commit Gates; Task Satiation vs. Aggregate Rebound; The Reality Code Engine; RCE-JEPA; RCE Compile. <a href="https://research.openie.dev/">research.openie.dev</a> <code>[same house]</code>.</li>
 <li>Petersen, F., Borgelt, C., Kuehne, H., and Deussen, O. (2022). Deep Differentiable Logic Gate Networks. <em>NeurIPS 2022</em>, <em>arXiv:2210.08277</em>.</li>
 <li>Qiao, Y., et al. (2025). TeLLMe: An Energy-Efficient Ternary LLM Accelerator on Edge FPGAs. <em>arXiv:2504.16266</em>.</li>
-<li>Qwen Team (2026). <code>Qwen/Qwen3.5-0.8B-Base</code> Hybrid Gated DeltaNet + Attention Model Card (February 2026). <a href="https://huggingface.co/Qwen/Qwen3.5-0.8B-Base">huggingface.co/Qwen/Qwen3.5-0.8B-Base</a>.</li>
+<li>Qwen Team (2026a). <code>Qwen/Qwen3.5-0.8B-Base</code> Hybrid Gated DeltaNet + Attention Model Card (February 2026). <a href="https://huggingface.co/Qwen/Qwen3.5-0.8B-Base">huggingface.co/Qwen/Qwen3.5-0.8B-Base</a>.</li>
+<li>Qwen Team (2026b). <code>Qwen/Qwen3.6-35B-A3B</code> Sparse-MoE Hybrid Gated DeltaNet + Attention Model Card (2026). <a href="https://huggingface.co/Qwen/Qwen3.6-35B-A3B">huggingface.co/Qwen/Qwen3.6-35B-A3B</a>.</li>
 <li>Saxena, A. (2023). Prompt Lookup Decoding. <a href="https://github.com/apoorvumang/prompt-lookup-decoding">github.com/apoorvumang/prompt-lookup-decoding</a>.</li>
 <li>Simon, H. A., and Kadane, J. B. (1975). Optimal Problem-Solving Search: All-or-None Solutions. <em>Artificial Intelligence</em>, 6(3):235-247.</li>
 <li>Thompson, C. D. (1978). Generalized Connection Networks for Parallel Processor Intercommunication. <em>IEEE Trans. Comput.</em>, C-27(12):1119-1125.</li>
@@ -359,7 +450,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## 付録 A. 再現性
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit a5e9bc1`）をチェックアウトしたディレクトリから以下を実行する。
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit a5e9bc1`) のチェックアウトから：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
@@ -369,6 +460,10 @@ PYTHONPATH=src .venv/bin/python scripts/run_frontier_benchmarks.py
 PYTHONPATH=src .venv/bin/python scripts/verify_paged_bram_rtl.py
 PYTHONPATH=src .venv/bin/python scripts/run_code_corpus_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_air_mol_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_hf_lfm3_air_mol.py
 PYTHONPATH=src .venv/bin/python scripts/run_hf_air_mol_pretrained.py
 PYTHONPATH=src .venv/bin/python scripts/run_hf_qwen35_air_mol.py
+PYTHONPATH=src .venv/bin/python scripts/run_hf_moe_8b_35b_air_mol.py
+PYTHONPATH=src .venv/bin/python scripts/run_sub1bit_lut_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_frontier_ai_bakeoff.py
 ```

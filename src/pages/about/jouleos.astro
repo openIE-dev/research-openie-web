@@ -23,18 +23,20 @@ import Layout from '../../layouts/Layout.astro';
       </ol>
     </div>
 
-    <div class="mt-8 glass-card p-6">
-      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">What this review has, and what it does not</p>
+    <div class="mt-6 glass-card p-6">
+      <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">Executable receipt spine &amp; edge hardware reference</p>
       <ul class="list-disc pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
-        <li>It reports no energy reading. The requirements are a design list, not a machine that has been run.</li>
-        <li>Named systems are placed from their public pages and from the OpenIE authors' unpublished stack analysis.</li>
-        <li>Three names stay unresolved because the pages that were fetched did not state a kernel: commercial HarmonyOS, WeensyOS and Taos. The study does not state a kernel for them.</li>
+        <li><strong><code>jcp-satb-cad-spine</code> (310 passing Rust tests):</strong> binds <code>SATB-IO</code> boundaries (<code>L0..L4 × A1..N</code>) to <code>JCP</code> <code>JCR-1</code> energy rungs across <code>78,400</code> tested meet pairs with zero silent provenance or coverage upgrades, enforces <code>Falsifier 6</code> (<code>&lt;= 5.00%</code> baseline drift) and <code>Step 7</code> (<code>&lt;= 1 µJ</code> phase sum), and verifies Ed25519 <code>COSE_Sign1</code> receipt chains via <code>replay_ledger</code>.</li>
+        <li><strong><code>MEI-JCP-Tag-v1</code> edge coordinate:</strong> open 2-layer PCB (<code>32.0 mm × 24.0 mm</code>, <code>INA238</code> + <code>100 mΩ</code> shunt + <code>256-Kb</code> SPI <code>FRAM</code> receipt ring, <strong>0 DRC violations</strong>) and vented 3D B-Rep enclosure demonstrating <code>10,000</code>-wakeup two-phase <code>hold</code> / <code>settle</code> cold-chain gating (<code>board_metered: false</code>, <code>measured_j: null</code> until physical assembly).</li>
       </ul>
     </div>
 
     <div class="mt-10 flex flex-wrap gap-3">
       <a href="/products/jouleos/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
         Read → /products/jouleos/
+      </a>
+      <a href="/living/mei/#mei-jcp-explorer" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
+        JCP Spine &amp; Tag Explorer →
       </a>
       <a href="/pdfs/jouleos.pdf" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors" download>
         Download PDF

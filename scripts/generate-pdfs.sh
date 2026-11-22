@@ -186,7 +186,7 @@ elif id_ == "rce-jepa":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research paper, open topic, not a journal final.\n"
-        "No purpose-trained latent Form JEPA proposer has been trained; H2 and H15 (40 residual tasks across multi-vendor cloud/local proposers and Shape D Gear-0) report Apple M5 Max on-chip reported_j counters. No hardware rail or wall meter was attached (measured_j = None).\n"
+        "H2, H15 (40 residual tasks across multi-vendor cloud/local proposers and Shape D Gear-0), FormJEPA-v1 (8.42M trainable parameters on 1,387 disjoint Forms), and the 151-task rce repair rung-f criterion audit report Apple M5 Max and Linux x86-64 RAPL on-chip reported_j counters. No hardware rail or wall meter was attached (measured_j = None).\n"
         "</div>\n"
     )
 elif id_ == "rce-vc":
@@ -215,14 +215,21 @@ elif id_ == "game-engines":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
-        "GE-H1 (5-target 100,000-tick Q32.32 simulation, 0/1,000 SHA-256 checkpoint mismatches, L3 reported_j) and GE-H2 (25,000-tick float drift horizons) were measured on Apple M5 Max. Cross-ISA x86-64 parity and GE-H3 to GE-H9 remain open. No hardware rail or wall meter was attached (measured_j = None).\n"
+        "GE-H1 (25 target x host cells across 5 machines and 3 ISAs, 100,000 Q32.32 ticks, 0/20,500 SHA-256 checkpoint mismatches), GE-H2 (25,000-tick cross-ISA/OS float drift horizons), and GE-H3 (4-vendor headless wgpu Metal/Vulkan rendering tolerance) were measured on physical hosts using L2/L3 reported_j counters. Bare-metal Windows x86-64 and GE-H4 to GE-H9 remain open. No hardware rail or wall meter was attached (measured_j = None).\n"
         "</div>\n"
     )
-elif id_ in ("deterministic-null", "satb-harness"):
+elif id_ == "deterministic-null":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, not a journal final.\n"
         "Local Apple M5 Max energy readings are on-chip L2 IOReport and L3 proc_pid_rusage reported_j counters; closed-API runs report token, dollar, and wall-clock counts only. No hardware power rail or wall meter was attached (measured_j = None, board_metered = false). No fabricated citations.\n"
+        "</div>\n"
+    )
+elif id_ == "satb-harness":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research study, not a journal final.\n"
+        "Verified across four hardware archetypes: physical Texas Instruments INA238 (VIN L1) and three-channel INA3221 (VDD_GPU, VDD_CPU_SOC_MSS, VIN_SYS_5V0 L2) shunt measured_j on NVIDIA Jetson AGX Thor (shared host; A2 net placement attribution withheld per Falsifier 6), plus on-chip reported_j on Apple M5 Max (IOReport/proc_pid_rusage), Framework AMD Ryzen AI Max+ 395 (0440 root:energy RAPL + Radeon 8060S PPT), and Intel Core i9-13900H (psys L1 + package-0 L2 RAPL). Closed-API server joules remain not_available. No fabricated citations.\n"
         "</div>\n"
     )
 elif id_ == "time-as-an-index":
@@ -267,8 +274,7 @@ elif dir_ == "products":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Product white paper, kept apart from the research catalog. Not a journal final.\n"
-        "Energy figures from the software reference are OpCounter analytical estimates, not board power.\n"
-        "We have not synthesized or metered an FPGA board for this white paper. No fabricated citations.\n"
+        "Includes the open jcp-satb-cad-spine (JCR-1 canonical det-CBOR + Ed25519 receipts) and MEI-JCP-Tag-v1 DRC-certified PCB, 3D STEP/STL enclosure, and CR2032 electro-thermal simulation reference; host build counters are reported_j and model schedules are est_j. Physical tag bench power has not been measured (board_metered = false, measured_j = None). No fabricated citations.\n"
         "</div>\n"
     )
 else:
