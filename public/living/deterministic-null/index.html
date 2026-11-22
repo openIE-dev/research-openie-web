@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F59E0B">
+  <meta name="color-scheme" content="dark light">
+  <meta name="author" content="David Charlot">
+  <title>Living Figures · Deterministic Null Control Experiment | OpenIE Research</title>
+  <script>
+    (function(){
+      var stored = localStorage.getItem('oe-theme');
+      var theme = stored && ['dark','light','auto'].indexOf(stored) !== -1 ? stored : 'auto';
+      var resolved = theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
+      document.documentElement.setAttribute('data-theme', resolved);
+      document.documentElement.style.colorScheme = resolved;
+    })();
+  </script>
+  <link rel="stylesheet" href="openie.css">
+</head>
+<body class="grid-bg">
+  <nav class="nav-glass" aria-label="Main navigation">
+    <a href="https://research.openie.dev/" class="brand-logo">Open<span class="brand-cyan">IE</span> <span class="brand-amber">Research</span></a>
+    <div class="nav-links">
+      <a href="/papers/deterministic-null/">Paper</a>
+      <a href="/living/deterministic-null/" class="active">Figures (/living/)</a>
+      <a href="/about/deterministic-null/">About</a>
+      <a href="/pdfs/latex/deterministic-null.pdf">LaTeX PDF</a>
+      <a href="https://openie.dev" class="pill-cyan">openie.dev</a>
+      <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
+    </div>
+  </nav>
+
+  <main>
+    <div style="max-width: 68rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
+      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/deterministic-null/ · interactive instruments</p>
+      <h1 class="hero-title" style="max-width: none;">Living Figures: Deterministic Null Control Experiment</h1>
+      <p class="author-line">David Charlot, Open Interface Engineering · Companion to <a href="/papers/deterministic-null/" style="color: var(--color-brand-cyan);">/papers/deterministic-null/</a></p>
+
+      <div class="measurement-box">
+        <strong>Measurement grammar on this page.</strong> Every table and calculator below separates four evidence classes:
+        <span class="chip chip-meas">Exact (L4 &amp; SHA-256)</span> for canonical 64-bit integer digests, OpenTimestamps <code>.ots</code> proofs, League of Entropy <code>drand</code> rounds (<code>6663734</code>, <code>6664089</code>), token counts, and API list-price dollars;
+        <span class="chip chip-sim">Reported (reported_j)</span> for Apple M5 Max on-chip <code>IOReport</code> (<code>L2</code>) and kernel <code>proc_pid_rusage.ri_energy_nj</code> (<code>L3</code>) counters; and
+        <span class="chip chip-est">Modelled (Zipf / Break-Even)</span> for adjustable horizon projections. <code>measured_j = None</code>; <code>board_metered = false</code>; closed-API server energy is <code>not_available</code>.
+      </div>
+
+      <!-- Widget 1: Confirmatory Track Switcher (exp-002 Track-B, exp-001 Track-A, Multi-Turn Repos) -->
+      <section id="dn-diag-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>dn-diag-01</code> · Confirmatory Paired Increment Explorer (<code>N = 4,030</code> + <code>6</code> Multi-File Repos)</h2>
+          <span class="chip chip-meas">Exact (L4) + Reported (reported_j)</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Switch between <strong>Track-B (<code>exp-002</code>, <code>1,190</code> unique external benchmark instances, <code>K_eff = n</code>)</strong>, <strong>Track-A (<code>exp-001</code>, <code>2,840</code> bounded template instances, <code>K_eff = 6–12</code>)</strong>, and the <strong>Multi-Turn <code>/work</code> Software-Engineering Track (<code>6</code> multi-file Python repositories)</strong>. All <code>99.0%</code> BCa intervals use <code>10,000</code> paired resamples against margin <code>δ = +5.0</code> percentage points.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+          <button type="button" class="theme-btn track-btn" data-track="exp002" style="border-color: var(--color-brand-amber); color: var(--color-brand-amber);">Track-B · exp-002 External (K_eff = 1,190)</button>
+          <button type="button" class="theme-btn track-btn" data-track="exp001_t2">Track-A · exp-001 Tier 2 Shifted (1,420)</button>
+          <button type="button" class="theme-btn track-btn" data-track="exp001_t1">Track-A · exp-001 Tier 1 Matched (1,420)</button>
+          <button type="button" class="theme-btn track-btn" data-track="multiturn">Multi-Turn /work Repos (6 Multi-File)</button>
+        </div>
+
+        <div class="metric-grid" id="track-kpis"></div>
+        <div style="overflow-x: auto; margin-top: 1rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.84rem;" id="track-table">
+            <thead><tr id="track-thead" style="border-bottom: 1px solid rgba(148,163,184,0.3); text-align: left;"></tr></thead>
+            <tbody id="track-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Widget 2: Online Crystallization & Break-Even Horizon Explorer -->
+      <section id="dn-diag-02" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>dn-diag-02</code> · Online Zipfian Crystallization &amp; Break-Even Horizon <code>M*</code></h2>
+          <span class="chip chip-est">Empirical Stream + Break-Even</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          On unseen compositional tasks (<code>BigCodeBench v0.1.3</code>, Good–Turing unseen mass <code>N₁(t)/t = 0.9917</code>), cold frozen <code>Shape D</code> completes <code>0.0%</code>. When recurring traffic arrives with Zipfian skew and verified model outputs are written once on miss and replayed at zero model calls on hit, model invocations and cumulative spend drop sharply while completion holds steady.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Production request horizon T</span><span id="v-hz">600</span></label>
+            <input type="range" id="s-hz" min="50" max="2000" step="50" value="600">
+          </div>
+          <div class="ctrl-box">
+            <label><span>Cumulative cache hit share h(T)</span><span id="v-hit">0.72</span></label>
+            <input type="range" id="s-hit" min="0.00" max="0.95" step="0.02" value="0.72">
+          </div>
+          <div class="ctrl-box">
+            <label><span>Cloud API cost per call (USD)</span><span id="v-usd">0.0122</span></label>
+            <input type="range" id="s-usd" min="0.0020" max="0.0600" step="0.0020" value="0.0122">
+          </div>
+          <div class="ctrl-box">
+            <label><span>Local B6 reported_j per call (J)</span><span id="v-joule">112.9</span></label>
+            <input type="range" id="s-joule" min="10.0" max="400.0" step="5.0" value="112.9">
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Pure LLM Spend (USD / J)</div>
+            <div class="v" id="o-pure">$7.32 · 67.7 kJ</div>
+            <div class="s">T calls (every request wakes LLM)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Online Crystallized Spend</div>
+            <div class="v" id="o-online" style="color: var(--color-brand-cyan);">$2.05 · 19.0 kJ</div>
+            <div class="s" id="o-calls">168 miss calls + 432 0-call hits</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Cost &amp; Energy Reduction</div>
+            <div class="v" id="o-mult" style="color: var(--color-brand-amber);">3.57× (72.0%)</div>
+            <div class="s">Verified unit-test parity preserved</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Measured BigCodeBench @ T=600</div>
+            <div class="v">3.59× (98.0%)</div>
+            <div class="s">167 vs 600 calls · $2.04 vs $7.33</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Widget 3: Good-Turing Unseen Mass & Cryptographic Audit Ledger -->
+      <section id="dn-diag-03" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>dn-diag-03</code> · Good–Turing Unseen Mass <code>N₁(t)/t</code> &amp; Pre-Beacon Cryptographic Proofs</h2>
+          <span class="chip chip-meas">Exact (SHA-256 · OpenTimestamps · drand)</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin-top: 1rem; font-size: 0.85rem;">
+          <div style="padding: 0.9rem; border: 1px solid rgba(148,163,184,0.25); border-radius: 0.6rem;">
+            <strong style="color: var(--color-brand-amber);">Gate G1 · Track-A (<code>reg-exp-001</code>)</strong>
+            <ul style="margin: 0.5rem 0 0; padding-left: 1.1rem; line-height: 1.55;">
+              <li>Manifest <code>SHA-256</code>: <code>cffb564cd9adfe14…</code></li>
+              <li>OpenTimestamps <code>.ots</code>: <code>172 B</code> (<code>41de66ab8eda…</code>)</li>
+              <li>Locked at <code>drand</code> <code>6663731</code> &lt; target <code>6663734</code></li>
+              <li>Scorer audit: <code>750 / 750</code> re-verified (<code>0</code> exploits)</li>
+            </ul>
+          </div>
+          <div style="padding: 0.9rem; border: 1px solid rgba(148,163,184,0.25); border-radius: 0.6rem;">
+            <strong style="color: var(--color-brand-cyan);">Gate G1 · Track-B (<code>reg-exp-002</code>)</strong>
+            <ul style="margin: 0.5rem 0 0; padding-left: 1.1rem; line-height: 1.55;">
+              <li>Manifest <code>SHA-256</code>: <code>5fe640f002989ebf…</code></li>
+              <li>OpenTimestamps <code>.ots</code>: <code>207 B</code> (<code>4350cb0f8476…</code>)</li>
+              <li>Locked at <code>drand</code> <code>6664086</code> &lt; target <code>6664089</code></li>
+              <li>Scorer audit: <code>515 / 515</code> re-verified (<code>0</code> exploits)</li>
+            </ul>
+          </div>
+          <div style="padding: 0.9rem; border: 1px solid rgba(148,163,184,0.25); border-radius: 0.6rem;">
+            <strong>Gate G2 · 5-Language Bit-Exact Engine</strong>
+            <ul style="margin: 0.5rem 0 0; padding-left: 1.1rem; line-height: 1.55;">
+              <li>Languages: Rust, C++20, Go, Julia, Python</li>
+              <li>Frozen digest: <code>0da4df8d9ccbce1e…4485781</code></li>
+              <li><code>10⁶</code>-record <code>DNULLMM1</code> <code>mmap</code>: <code>350–634 ns</code>/probe</li>
+              <li><code>10k</code>-probe checksum: <code>15027705736</code></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('theme-toggle');
+      var lbl = document.getElementById('theme-label');
+      var modes = ['auto','dark','light'];
+      function applyMode(m){
+        localStorage.setItem('oe-theme', m);
+        var res = m === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : m;
+        document.documentElement.setAttribute('data-theme', res);
+        document.documentElement.style.colorScheme = res;
+        lbl.textContent = m.charAt(0).toUpperCase() + m.slice(1);
+      }
+      applyMode(localStorage.getItem('oe-theme') || 'auto');
+      btn.addEventListener('click', function(){
+        var cur = localStorage.getItem('oe-theme') || 'auto';
+        applyMode(modes[(modes.indexOf(cur) + 1) % modes.length]);
+      });
+
+      var DATA = {
+        exp002: {
+          kpis: [
+            ['Unique Instances (K_eff = n)', '1,190', 'drand round 6664089'],
+            ['Breadth Verdicts (m = 5)', '4 Shown · 1 N/A', '0 Excluded · 0 Undetermined'],
+            ['Shape D Batch Latency', '0.92 s (35.7 J)', '0 decision LLM calls'],
+            ['Scorer Audit', '515 / 515', '0 exploits detected']
+          ],
+          cols: ['Class (Unique Instances)', 'n', 'B0', 'N0', 'N1', 'Opus 5.5', 'Sonnet 5.5', 'Qwen 3.6', 'Gemma 4', 'Δ(Opus−N1) [99% BCa]', 'Verdict'],
+          rows: [
+            ['formal.unique_3sat_drat (B1=1.000)', '250', '0.000', '0.696', '0.696', '0.052', '0.008', '0.000', '0.000', '−64.40 pts [−72.0, −56.0]', 'Not assessable (p_LLM < 2δ)'],
+            ['external.bfcl_v3_live', '250', '0.180', '0.200', '0.228', '0.828', '0.840', '0.804', '0.720', '+60.00 pts [+51.2, +68.4]', 'Relevance shown (28 unfilled)'],
+            ['external.tau_bench_retail', '220', '0.005', '0.396', '0.259', '0.864', '0.805', '0.755', '0.623', '+60.45 pts [+51.8, +68.6]', 'Relevance shown (14 unfilled)'],
+            ['external.bigcodebench_exec', '220', '0.000', '0.000', '0.000', '0.950', '0.836', '0.473', '0.391', '+95.00 pts [+90.0, +97.7]', 'Relevance shown (218 unfilled)'],
+            ['external.swebench_verified', '250', '0.096', '0.460', '0.456', '0.984', '0.952', '0.900', '0.812', '+52.80 pts [+44.4, +60.4]', 'Relevance shown (4 unfilled)']
+          ]
+        },
+        exp001_t2: {
+          kpis: [
+            ['Shifted Tier-2 Instances', '1,420', 'drand round 6663734 (K_eff=6–12)'],
+            ['Breadth Verdicts (m = 5)', '1 Shown · 4 Excluded', '0 Undetermined'],
+            ['Opus 5.5 Formal Spend', '$13.64 vs $0.00', 'N0 = N1 = 1.000 on 4/4 formal'],
+            ['Qwen 3.6 Increment Cost', '23.38 J / task', 'On unseen SQLite paraphrases']
+          ],
+          cols: ['Tier-2 Shifted Class', 'n', 'B0', 'N0', 'N1', 'Opus 5.5', 'Qwen 3.6', 'Δ(Opus−N1) [99% BCa]', 'Qwen J/pass', 'Verdict'],
+          rows: [
+            ['formal.bv_superopt (16-bit)', '420', '0.000', '1.000', '1.000', '0.983', '1.000', '−1.67 pts [−3.81, −0.48]', '7.87 J', 'Relevance excluded'],
+            ['formal.hoare_inv (6-bit)', '250', '0.000', '1.000', '1.000', '1.000', '0.600', '+0.00 pts [+0.00, +0.00]', '16.41 J', 'Relevance excluded'],
+            ['formal.poly_ideal (k∈[7,15])', '250', '0.376', '1.000', '1.000', '1.000', '1.000', '+0.00 pts [+0.00, +0.00]', '6.74 J', 'Relevance excluded'],
+            ['formal.open_drat_synth', '250', '0.000', '1.000', '1.000', '1.000', '0.376', '+0.00 pts [+0.00, +0.00]', '53.59 J', 'Relevance excluded'],
+            ['tool.tau2_sqlite (paraphrases)', '250', '0.224', '0.516', '0.636', '1.000', '0.916', '+36.40 pts [+28.80, +44.80]', '7.15 J', 'Relevance shown (12 unfilled)']
+          ]
+        },
+        exp001_t1: {
+          kpis: [
+            ['Tier-1 Matched Instances', '1,420', 'drand round 6663734 (K_eff=6–12)'],
+            ['Breadth Verdicts (m = 5)', '0 Shown · 5 Excluded', 'All 5 classes excluded'],
+            ['Pooled Descriptive Δ', '−0.13 pts', '95% CI [−0.34, +0.00] pts'],
+            ['Break-Even M* (SQLite N1)', '5.9 tasks (USD)', '$0.0095 dev vs $0.40 test']
+          ],
+          cols: ['Tier-1 Matched Class', 'n', 'B0', 'N0', 'N1', 'Opus 5.5', 'Qwen 3.6', 'Δ(Opus−N1) [99% BCa]', 'Qwen J/pass', 'Verdict'],
+          rows: [
+            ['formal.bv_superopt (12-bit)', '420', '0.000', '1.000', '1.000', '0.998', '0.836', '−0.24 pts [−1.43, +0.00]', '14.17 J', 'Relevance excluded'],
+            ['formal.hoare_inv (5-bit)', '250', '0.000', '1.000', '1.000', '1.000', '0.508', '+0.00 pts [+0.00, +0.00]', '23.32 J', 'Relevance excluded'],
+            ['formal.poly_ideal (k∈[1,4])', '250', '0.348', '1.000', '1.000', '0.996', '1.000', '−0.40 pts [−2.80, +0.00]', '7.26 J', 'Relevance excluded'],
+            ['formal.open_drat_synth', '250', '0.000', '1.000', '1.000', '1.000', '0.352', '+0.00 pts [+0.00, +0.00]', '69.00 J', 'Relevance excluded'],
+            ['tool.tau2_sqlite', '250', '0.188', '0.624', '1.000', '1.000', '0.940', '+0.00 pts [+0.00, +0.00]', '7.11 J', 'Relevance excluded']
+          ]
+        },
+        multiturn: {
+          kpis: [
+            ['Multi-File Python Repos', '6 Repos', 'Pristine test_*.py restored before pytest'],
+            ['Cold Shape D (t = 1)', '0 / 6 (0.0%)', 'Unseen multi-file AST trees'],
+            ['Lane B & Shape H (Claude Code)', '6 / 6 (100.0%)', 'Falsifier 8 passed on multi-file repos'],
+            ['Online Shape D Replay (t = 2)', '6 / 6 (100.0%)', '0 model calls on recurring CI stream']
+          ],
+          cols: ['SATB Multi-Turn /work Lane', 'Repos Passed', '4-Way P/F/R/K', 'Model Calls', 'Tool Calls', 'API USD / Local reported_j'],
+          rows: [
+            ['Shape D Cold Unseen (t = 1)', '0 / 6 (0.0%)', '0/6/0/0', '0', '0', '$0.0000 · < 1 J'],
+            ['Lane B · Claude Opus 5.5', '6 / 6 (100.0%)', '6/0/0/0', '28', '29', '$0.3613 (server N)'],
+            ['Lane B · Claude Sonnet 5.5', '6 / 6 (100.0%)', '6/0/0/0', '31', '34', '$0.2080 (server N)'],
+            ['Shape H · Claude Code 2.1.330 (Opus 5.5)', '6 / 6 (100.0%)', '6/0/0/0', '30', 'MCP', '$0.2646 (server N)'],
+            ['Lane B Local · Qwen 3.6 35B-A3B', '6 / 6 (100.0%)', '6/0/0/0', '42', '42', '2,342.0 J L2 (390.3 J/repo)'],
+            ['Shape D Online Crystallized (t = 2)', '6 / 6 (100.0%)', '6/0/0/0', '0', '0', '$0.0000 (verified patch replay)']
+          ]
+        }
+      };
+
+      function renderTrack(key){
+        var d = DATA[key];
+        document.querySelectorAll('.track-btn').forEach(function(b){
+          var on = b.getAttribute('data-track') === key;
+          b.style.borderColor = on ? 'var(--color-brand-amber)' : '';
+          b.style.color = on ? 'var(--color-brand-amber)' : '';
+        });
+        document.getElementById('track-kpis').innerHTML = d.kpis.map(function(k){
+          return '<div class="metric-tile"><div class="k">' + k[0] + '</div><div class="v">' + k[1] + '</div><div class="s">' + k[2] + '</div></div>';
+        }).join('');
+        document.getElementById('track-thead').innerHTML = d.cols.map(function(c){
+          return '<th style="padding: 0.45rem 0.5rem;">' + c + '</th>';
+        }).join('');
+        document.getElementById('track-tbody').innerHTML = d.rows.map(function(r){
+          return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14);">' + r.map(function(cell, idx){
+            var st = idx === 0 ? 'font-family: ui-monospace, monospace; font-weight: 600;' : '';
+            if (idx === r.length - 1) {
+              if (cell.indexOf('shown') !== -1) st += 'color: var(--color-brand-amber); font-weight: 700;';
+              else if (cell.indexOf('excluded') !== -1) st += 'color: var(--color-brand-cyan); font-weight: 700;';
+            }
+            return '<td style="padding: 0.45rem 0.5rem; ' + st + '">' + cell + '</td>';
+          }).join('') + '</tr>';
+        }).join('');
+      }
+      document.querySelectorAll('.track-btn').forEach(function(b){
+        b.addEventListener('click', function(){ renderTrack(b.getAttribute('data-track')); });
+      });
+      renderTrack('exp002');
+
+      function updateSim(){
+        var T = parseFloat(document.getElementById('s-hz').value);
+        var h = parseFloat(document.getElementById('s-hit').value);
+        var u = parseFloat(document.getElementById('s-usd').value);
+        var j = parseFloat(document.getElementById('s-joule').value);
+        document.getElementById('v-hz').textContent = T.toFixed(0);
+        document.getElementById('v-hit').textContent = h.toFixed(2);
+        document.getElementById('v-usd').textContent = u.toFixed(4);
+        document.getElementById('v-joule').textContent = j.toFixed(1);
+        var pureU = T * u, pureJ = T * j;
+        var missCalls = Math.max(1, Math.round(T * (1 - h)));
+        var onU = missCalls * u, onJ = missCalls * j;
+        var mult = pureU / Math.max(1e-9, onU);
+        document.getElementById('o-pure').textContent = '$' + pureU.toFixed(2) + ' · ' + (pureJ / 1000).toFixed(1) + ' kJ';
+        document.getElementById('o-online').textContent = '$' + onU.toFixed(2) + ' · ' + (onJ / 1000).toFixed(1) + ' kJ';
+        document.getElementById('o-calls').textContent = missCalls + ' miss calls + ' + (T - missCalls) + ' 0-call hits';
+        document.getElementById('o-mult').textContent = mult.toFixed(2) + '× (' + ((1 - missCalls / T) * 100).toFixed(1) + '%)';
+      }
+      ['s-hz','s-hit','s-usd','s-joule'].forEach(function(id){
+        document.getElementById(id).addEventListener('input', updateSim);
+      });
+      updateSim();
+    })();
+  </script>
+</body>
+</html>

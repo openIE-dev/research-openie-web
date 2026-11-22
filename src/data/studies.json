@@ -51,6 +51,31 @@
       ]
     },
     {
+      "id": "deterministic-null",
+      "title": "Deterministic Null: A Pre-Registered Control Experiment for Neural and Agentic Substrates",
+      "short_title": "Deterministic Null",
+      "kind": "Research study",
+      "group": "research",
+      "url": "https://research.openie.dev/papers/deterministic-null/",
+      "pdf": "https://research.openie.dev/pdfs/deterministic-null.pdf",
+      "figures": "/living/deterministic-null/",
+      "author": "David Charlot, Open Interface Engineering",
+      "summary": "Constructs and pre-registers a zero-model-call 64-bit integer case loop (Shape D: strict N0 and dev-crystallized N1, verified bit-exact across Rust, C++20, Go, Julia, and Python) under OpenTimestamps Bitcoin Calendar proofs and League of Entropy drand randomness rounds (6663734 and 6664089), and measures the paired increment of Claude Opus 5.5, Claude Sonnet 5.5, Qwen 3.6 35B-A3B, and Gemma 4 E4B-it across 4,030 held-out instances and 6 multi-file Python repositories. Bounded formal and structured classes exclude neural relevance on 9 of 10 Track-A cells; unique external public benchmarks (BFCL v3, tau-bench Retail, BigCodeBench v0.1.3, SWE-bench Verified) show +52.80 to +95.00 percentage-point neural increments while online Zipfian crystallization cuts calls and reported_j spend by 3.59x. Local Apple M5 Max counters are reported_j; no rail or wall power monitor was attached.",
+      "about": "https://research.openie.dev/about/deterministic-null/",
+      "keywords": [
+        "null model",
+        "control experiment",
+        "case-based reasoning",
+        "pre-registration",
+        "drand",
+        "OpenTimestamps",
+        "DRAT",
+        "Satiation Benchmark",
+        "Good-Turing",
+        "reported_j"
+      ]
+    },
+    {
       "id": "lut-adapt",
       "title": "Downward LUT6 Compilation in a Mixture of Limits Cascade: Beneš-Routed Boolean Fabrics, Conformal Wake Gates, and 4-Bit NVMe Layer Streaming",
       "short_title": "Downward LUT6 Compilation",

@@ -315,6 +315,7 @@ PRINTED=""
 gen_one agency
 gen_one gates
 gen_one lut-adapt
+gen_one deterministic-null
 gen_one satiation
 gen_one spellcheck
 gen_one rce

@@ -1,0 +1,192 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[margin=0.72in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{caption}
+
+\definecolor{dnblue}{HTML}{1B4965}
+\definecolor{dnteal}{HTML}{0F766E}
+\definecolor{dnamber}{HTML}{B45309}
+\definecolor{dngray}{HTML}{475569}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=dnblue,
+  urlcolor=dnblue,
+  citecolor=dnblue,
+  pdftitle={Deterministic Null: Pre-Registered Control Protocol, SPEC v0.4 + SATB Conformance, and Confirmatory Experiment exp-001},
+  pdfauthor={ai-null-hypothesis Project}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.8pt}
+\captionsetup{font=small,labelfont=bf}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\title{\vspace{-1.4em}\textbf{Deterministic Null: Pre-Registered Null-Model Control Protocol,\\Five-Language \texttt{SPEC v0.4} + \texttt{SATB} Conformance, and Confirmatory Runs \texttt{exp-001} \& \texttt{exp-002}}\\[0.30em]
+\large Measuring the Relevance of Stochastic Neural Substrates Across Frontier Cloud (\texttt{Opus 5.5}, \texttt{Sonnet 5.5}),\\[-0.1em]\large Local Open-Weight (\texttt{Qwen 3.6 35B-A3B}, \texttt{Gemma 4 E4B-it}), and \texttt{Claude Code} Harnesses ($N = 4{,}030$ Instances)}
+\author{\texttt{ai-null-hypothesis} Working Repository\\[-0.15em]\small(\texttt{SPEC.md v0.4} $\cdot$ \texttt{HYPOTHESIS.md v0.6} $\cdot$ \texttt{reg-exp-001} [\texttt{drand 6663734}] $\cdot$ \texttt{reg-exp-002} [\texttt{drand 6664089}])}
+\date{November 22, 2026 \quad|\quad Status: \textbf{Gates G0, G1, G2, Track-A \texttt{exp-001} ($2{,}840$) \& Track-B \texttt{exp-002} ($1{,}190$) Complete}}
+
+\begin{document}
+\sloppy
+\maketitle
+\vspace{-1.1em}
+
+\begin{abstract}
+\noindent
+Empirical evaluations of agentic artificial intelligence routinely compare one stochastic language model against another, leaving unmeasured how much task completion requires a neural substrate rather than a fixed deterministic procedure over verified prior cases. This paper reports the specification (\texttt{SPEC.md v0.4}), Satiation Benchmark (\texttt{SATB}) reference harness and rootless \texttt{L0--L4}/\texttt{A1--N} telemetry engine (\texttt{12/12} \texttt{C1--C12} checks passed), five-language bit-exact conformance (\textbf{Gate G2}), paired $n=200$ calibration across three November 2026 Frontier Cloud models (\textbf{Claude Opus 5.5}, \textbf{Sonnet 5.5}, \textbf{Sonnet 4.6}), two 2026 Local Open-Weight models (\textbf{Qwen 3.6 35B-A3B}, \textbf{Gemma 4 E4B-it}), and \textbf{Shape H} (\texttt{Claude Code 2.1.330}), and \textbf{Confirmatory Experiment \#1 (\texttt{exp-001}, Track-A)}. Following a 69-source prior-art and 36-finding red-team dossier, we claim no new loop architecture (case-based retrieve--reuse--revise--retain dates to 1986--1994; quantised tables to 1968--1975), testing instead $H_{0,k}: \Delta_k = p_{\text{LLM},k} - p_{\text{Null},k} \le \delta$ ($\delta = 0.05$). Manifest \texttt{cffb564cd9ad\dots}, $J=5$ frozen \texttt{dev} stores, and the confirmatory analysis script were committed at \texttt{git tag reg-exp-001} (\texttt{e5007a4}) and timestamped on the OpenTimestamps Bitcoin Calendar (\texttt{suite/manifest.json.ots}) at \texttt{drand} round \texttt{6663731}, strictly before League of Entropy \texttt{drand} round \texttt{6663734} seeded the $2{,}840$ held-out \texttt{test} instances ($1{,}420$/tier across Tier~1 and shifted Tier~2; $750/750$ scorer-audited trajectories passed with $0$ exploits). At Tier~1, \textbf{relevance was excluded in 5 of 5 classes} ($\hat{\Delta}_k \in [-0.004, 0.000]$). At shifted Tier~2, \textbf{relevance was excluded in all 4 formally verified mathematical classes} ($\texttt{N0} = \texttt{N1} = 1.000$ at $\$0.00$ vs.\ $\$27.25$ \texttt{Opus 5.5} spend) and \textbf{shown in 1 class} (\texttt{tool.tau2\_sqlite} unseen customer paraphrases: \texttt{Opus 5.5} $+36.40$ pts over \texttt{N1}, $99\%$ BCa $[+28.80, +44.80]$, leaving 12 unseen \texttt{surf:} keys unfilled; \texttt{Qwen 3.6} increment cost $23.38\;\text{J}$ per additional completed task).
+\end{abstract}
+
+\section{Experimental Framing, All AI Permutations, and Formal Verification}
+
+In \texttt{HYPOTHESIS.md v0.6}, the \emph{null model} (reference system) and \emph{null hypothesis} (statistical statement) are strictly separated (\texttt{DOSSIER.md} ME1/TH4):
+\begin{enumerate}[leftmargin=1.5em,itemsep=1.5pt,topsep=1.5pt]
+  \item \textbf{Null Models (\texttt{N1} Primary; \texttt{N0} Strict Alongside It):} Both execute the fixed eight-step integer loop (\texttt{SPEC.md v0.4}, $Q = 10^6$, zero floats, zero neural calls at decision time). \textbf{\texttt{N1}} (Owner Decision D2) admits \texttt{dev}-verified records of any provenance (\texttt{lit:}, \texttt{human:}, \texttt{mut:}, \texttt{llm:}) with all \texttt{dev} model calls metered and charged to $C_{N1}$. \textbf{\texttt{N0}} prohibits any \texttt{llm:} record or model-derived per-class code; reporting $\Delta(\texttt{B3}-\texttt{N1})$ beside $\Delta(\texttt{B3}-\texttt{N0})$ (\textbf{S4}) separates decision-time relevance from offline entry discovery.
+  \item \textbf{All Operational AI Permutations (\S5):} \texttt{B0} (default floor enforcing assay sensitivity $>2\delta$), \texttt{B1} (standalone classical solver without store), \texttt{B2} (seed store, mutation off), \texttt{B3} (frontier cloud LLM), \texttt{B4} (matched-info LLM with \texttt{REDUCE} + \texttt{VERIFY} retries), \texttt{B5} (\texttt{code-once} Python solver authored once on \texttt{dev}, $0$ \texttt{test} calls), \texttt{B6} (same-host metered local 2026 LLM), and \texttt{SATB Shape H} (external \texttt{Claude Code 2.1.330} agentic CLI routed via \texttt{satb-proxy} + MCP \texttt{submit}/\texttt{refuse}).
+  \item \textbf{Formally Verifiable Mathematics (\S6):} Tasks governed by exact proof checkers---\texttt{formal.\allowbreak bv\_superopt} (12$\to$16-bit Tseitin Miter-SAT + 2-watched-literal \texttt{RUP/DRAT}), \texttt{formal.\allowbreak hoare\_inv} (3-obligation Hoare loop \texttt{DRAT}), \texttt{formal.\allowbreak poly\_ideal} (exact $\mathbb{Q}$ Buchberger Gr\"obner + cofactor check), and \texttt{formal.\allowbreak open\_drat\_synth} (\emph{no-menu} open-ended Hoare formula synthesis verified live by \texttt{dnull\_cli})---need no learned free-text reducer ($\texttt{N0}=\texttt{N1}$, \texttt{S-4}), obey \texttt{S-3} ($1{,}105\;\text{B}$ avg gzip/class $\le 4{,}096\;\text{B}$), and eliminate scorer gaming (\S11).
+\end{enumerate}
+
+\section{Normative \texttt{SPEC v0.4} Closures, \texttt{SATB C1--C12}, and \textbf{Gate G2}}
+
+All five \texttt{SPEC.md} \S9 items (\texttt{S-1}..\texttt{S-5}) and \texttt{rust/src/satb/} pass \textbf{27/27} Rust unit tests and \textbf{12/12} \texttt{SATB C1--C12} checks + falsifiers: outcomes map losslessly onto \texttt{pass | fail | refuse | killed} (\texttt{OQ-3}); whole-SUT raw window energy (\texttt{A2}) is primary (\texttt{OQ-4}); macOS uses rootless \texttt{macmon} \texttt{IOReport} (\texttt{L2 A2}) and \texttt{proc\_pid\_rusage(\allowbreak RUSAGE\_INFO\_V6).\allowbreak ri\_energy\_nj} (\texttt{L3 D}, zero \texttt{sudo}, \texttt{OQ-5}); closed-API server energy is strictly \texttt{N} (\texttt{not\_available}, never estimated from fleet medians, \texttt{OQ-6}); and Falsifier~6 drops drifted derived net-above-idle subtractions automatically while preserving raw window joules. Table~\ref{tab:conf} summarises \textbf{Gate G2} across five languages alongside segregated \textbf{WP4 Positive Controls}.
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\caption{\textbf{Gate G2}: Five-language \texttt{SPEC v0.4} conformance (\texttt{test.setpoint}, 58 records) and $10^6$-record \texttt{DNULLMM1} \texttt{POSIX mmap} index (\texttt{100.66 MB}, 10k probes). \textbf{WP4 Positive Controls} ($n=200$, excluded from agent breadth): \texttt{ctl.setpoint} ($\texttt{B0}=.110 \to \texttt{N0}=1.00$), \texttt{ctl.mamdani} ($\texttt{B0}=.525 \to \texttt{N0}=1.00$), \texttt{ctl.cartpole} ($\texttt{B0}=.000 \to \texttt{N0}=.805$).}
+\label{tab:conf}
+\begin{tabularx}{\textwidth}{Y l r r r}
+\toprule
+\textbf{Implementation} & \textbf{Frozen Store \texttt{SHA-256} Digest} & \textbf{1M \texttt{mmap} Mount} & \textbf{Mean Probe} & \textbf{10k Checksum} \\
+\midrule
+\textbf{Rust} (Primary + \texttt{SATB}) & \texttt{0da4df8d9ccbce1e...4485781} (Exact) & $44.67\;\mu\text{s}$ & $582.57\;\text{ns}$ & \texttt{15027705736} \\
+\textbf{C++20} (\texttt{clang++ -O3}) & \texttt{0da4df8d9ccbce1e...4485781} (Exact) & $41.58\;\mu\text{s}$ & $388.43\;\text{ns}$ & \texttt{15027705736} \\
+\textbf{Go 1.25} / \textbf{Julia 1.12} & \texttt{0da4df8d9ccbce1e...4485781} (Exact) & $60.63 / 125.92\;\mu\text{s}$ & $417.05 / 350.07\;\text{ns}$ & \texttt{15027705736} \\
+\textbf{Python 3.13} (\texttt{mmap}) & \texttt{0da4df8d9ccbce1e...4485781} (Exact) & $8{,}655.58\;\mu\text{s}$ & $633.87\;\text{ns}$ & \texttt{15027705736} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Multi-Model Calibration ($n=200$) and 8-Lane \texttt{SATB} Workspace Study}
+
+Pre-beacon calibration ($n=200$/class) established assay sensitivity ($>0.20$ over \texttt{B0}) and \texttt{HYPOTHESIS.md} \S9 sample sizes ($m=5$, $z_{0.995}=2.5758$, $90\%$ power, Wilson $90\%$ UCL on disagreement $\psi$ $\Rightarrow n_{\text{req}} = [404, 200, 200, 200, 200]$ for \texttt{Claude Opus 5.5}, registered upward to $n = [420, 250, 250, 250, 250]$). On calibration, \texttt{Claude Opus 5.5} ($136{,}121$ thinking tokens, $\$10.19$) scored $.955$--$1.000$, \texttt{Sonnet 5.5} scored $.600$--$1.000$, \texttt{Sonnet 4.6} scored $.000$--$1.000$, \texttt{Qwen 3.6 35B-A3B} scored $.340$--$.974$, and \texttt{Gemma 4 E4B-it} scored $.000$--$.970$ (Tables~\ref{tab:cal_compact} and~\ref{tab:lanes}).
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.6pt}
+\caption{\textbf{Summary of Pre-Registration Calibration Contrasts} ($n=200$/class across 3 Frontier Cloud and 2 Local 2026 models, $\delta=+0.05$). Across all 4 formal classes, $\texttt{N0}=\texttt{N1}=\texttt{B1}=1.000$; cloud \texttt{B5} (\texttt{code-once}) scored $1.000$.}
+\label{tab:cal_compact}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l r r r r r l}
+\toprule
+\textbf{Model Substrate ($n=200$/class)} & \texttt{bv\_superopt} & \texttt{hoare\_inv} & \texttt{poly\_ideal} & \texttt{open\_drat} & \texttt{tau2\_sqlite} (\texttt{N1/N0}) & \textbf{Total Cost / \texttt{L2 A2} Energy} \\
+\midrule
+\textbf{Shape D}: \texttt{dnull N1 / N0} & $1.000$ & $1.000$ & $1.000$ & $1.000$ & $1.000 \;/\; 0.675$ & $\$0.0088$ \texttt{N1 dev} / $<\!1\;\text{J}$ warm \\
+\textbf{B3}: \texttt{Claude Opus 5.5} (Cloud) & $0.955$ & $1.000$ & $1.000$ & $1.000$ & $1.000$ ($M^*_{\$}=5.5$) & $\$10.1884$ ($136{,}121$ think tok) \\
+\textbf{B3}: \texttt{Claude Sonnet 5.5} (Cloud) & $0.730$ & $0.600$ & $0.870$ & $1.000$ & $1.000$ ($M^*_{\$}=3.2$) & $\$7.7336$ ($163{,}073$ think tok) \\
+\textbf{B3}: \texttt{Claude Sonnet 4.6} (Cloud) & $0.265$ & $0.310$ & $0.000^*$ & $0.765$ & $1.000$ ($M^*_{\$}=9.2$) & $\$1.2652$ ($0$ think tok) \\
+\textbf{B6}: \texttt{Qwen 3.6 35B-A3B} (Local) & $0.785$ & $0.515$ & $0.974$ & $0.340$ & $0.897$ ($M^*_{J}=28.7$) & $15{,}430.0\;\text{J}$ (\texttt{L2 A2} M5 Max) \\
+\textbf{B6}: \texttt{Gemma 4 E4B-it} (Local) & $0.124^*$ & $0.393$ & $0.970$ & $0.000^*$ & $0.800$ ($M^*_{J}=8.5$) & $19{,}496.8\;\text{J}$ (\texttt{L2 A2} M5 Max) \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4.0pt}
+\caption{\textbf{8-Lane \texttt{SATB} Workspace Comparison (\texttt{Shape D} vs.\ \texttt{Lane B} vs.\ \texttt{Shape H})} across 24 multi-step \texttt{/work} bundles. \textbf{Falsifier 8 Cleared}: \texttt{Lane B} matches \texttt{Shape H} (\texttt{Claude Code 2.1.330}) at $1.000$ with $\sim\!2\times$ fewer calls and $3.25\times$--$3.44\times$ fewer prompt/cache tokens.}
+\label{tab:lanes}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l r c r r r l}
+\toprule
+\textbf{Satiation Lane / Adapter} & \textbf{Pass} & \textbf{4-Way (\texttt{P/F/R/K})} & \textbf{Calls} & \textbf{Prompt+Cache} & \textbf{USD} & \textbf{Physical Energy (\texttt{L2 A2} Raw / Server)} \\
+\midrule
+\texttt{Shape D}: \texttt{dnull N0} / \texttt{N1} & $.875 / 1.00$ & \texttt{21/3/0/0} $\cdot$ \texttt{24/0/0/0} & $0$ & $0$ & $\$0.0000$ & \texttt{below\_resolution} warm ($53.1\;\text{J}$ cold fill) \\
+\texttt{Lane B}: Local \texttt{Gemma 4} / \texttt{Qwen 3.6} & $.458 / .500$ & \texttt{11/9/2/2} $\cdot$ \texttt{12/3/0/9} & $85 / 91$ & $73.3\text{k} / 73.0\text{k}$ & $\$0.0000$ & $\mathbf{13{,}446.3\;\text{J}} \;/\; \mathbf{10{,}087.8\;\text{J}}$ (\texttt{L2 A2}) \\
+\texttt{Lane B} vs \texttt{Shape H} (\texttt{Sonnet 5.5}) & $1.00 / 1.00$ & \texttt{24/0/0/0} $\cdot$ \texttt{24/0/0/0} & $43 / 83$ & $60.3\text{k} / 196.1\text{k}$ & $\$0.34 / \$0.24$ & \texttt{not\_available} (\texttt{N}, closed API) \\
+\texttt{Lane B} vs \texttt{Shape H} (\texttt{Opus 5.5}) & $1.00 / 1.00$ & \texttt{24/0/0/0} $\cdot$ \texttt{24/0/0/0} & $44 / 89$ & $63.6\text{k} / 218.4\text{k}$ & $\$0.55 / \$0.68$ & \texttt{not\_available} (\texttt{N}, closed API) \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\section{Pre-Registration Gate \texttt{G1} (\texttt{reg-exp-001}) and Confirmatory \texttt{exp-001} Results}
+
+\textbf{Cryptographic Pre-Beacon Lock (\textbf{Gate G1}).} Prior to any \texttt{test} run, $J=5$ deterministic \texttt{dev} episode permutations were frozen into \texttt{suite/stores/*.jsonl} + \texttt{.mmap} (with $\text{min}=\text{med}=\text{max}=1.000$ on calibration across all 3 formal classes, $966.2\;\text{J}$ total $J=5$ \texttt{L2 A2} fill energy charged in full, and $\$0.00955$ \texttt{Opus 5.5} \texttt{dev} discovery charged to \texttt{N1} on \texttt{tool.tau2\_sqlite}). Manifest \texttt{suite/manifest.json} (\texttt{cffb564cd9ad\dots}), including \texttt{SHA-256} digests of all frozen stores and of \texttt{tools/step2\_run\_confirmatory\_exp001.py}, was timestamped on the OpenTimestamps Bitcoin Calendar (\texttt{suite/manifest.json.ots}, $172\;\text{B}$) and committed at \texttt{git tag reg-exp-001} (\texttt{e5007a4}) while League of Entropy \texttt{drand} stood at round \texttt{6663731}, strictly before target round \texttt{6663734} (\texttt{randomness = 51576380bab74fb9\dots}, \texttt{test\_seed\_u64 = 5861262844585529273}) was published.
+
+\textbf{Validity, Scorer Audit, and Confirmatory Endpoints (Table~\ref{tab:exp001}).} Every frozen store verified identical pre/post \texttt{SHA-256} digests ($0$ \texttt{test} writes), and an automated scorer audit (\texttt{suite/exp001\_scorer\_audit.json}) independently re-verified $25$ completed trajectories per cell ($750/750$ passed via \texttt{DRAT} proof checking and SQLite \texttt{SAVEPOINT} relational post-state replay, $0$ exploits). Frozen \texttt{dev}-authored \texttt{B5} (\texttt{code-once}, $0$ \texttt{test} calls) achieved $1.000$ on all three menu formal classes at both tiers.
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.9pt}
+\caption{\textbf{Confirmatory Experiment \#1 (\texttt{exp-001}, Track-A)}: $2{,}840$ held-out \texttt{test} instances seeded from post-tag \texttt{drand} round \texttt{6663734} ($99.0\%$ multiplicity-adjusted 10,000-resample BCa CIs, $m=5$, $\delta=+0.05$). \texttt{dnull} fully loaded energy includes all $J=5$ cold fill attempts ($966.2\;\text{J}$) plus warm \texttt{test} batch ($652.1\;\text{J}$ \texttt{L2 A2}; $0.331\;\text{J}$ \texttt{L3 ri\_energy\_nj}).}
+\label{tab:exp001}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l r r r r r r c c r r r l}
+\toprule
+\textbf{Tier / Class} & $n$ & $p_{B0}$ & $p_{N0}$ & $p_{N1}$ & $p_{B3}$ & $p_{B6}$ & $\hat{\Delta}(\texttt{B3}\!-\!\texttt{N1})$ & \textbf{99\% BCa CI} & \textbf{\texttt{B3} P/F/R/K} & \textbf{\texttt{B6} J/pass} & \textbf{\texttt{B3} USD} & \textbf{Licensed Verdict (\S12)} \\
+\midrule
+\multicolumn{13}{l}{\textit{\textbf{Tier 1} (\texttt{dev}-matched generator distribution; $1{,}420$ held-out \texttt{test} instances; pooled descriptive $\hat{\Delta} = -0.0013$ $[-0.0034, +0.0000]$)}} \\
+\texttt{formal.bv\_superopt} & $420$ & $.000$ & $1.000$ & $1.000$ & $.998$ & $.836$ & $-0.0024$ & $[-0.0143, +0.0000]$ & \texttt{419/1/0/0} & $14.17\;\text{J}$ & $\$1.86$ & \textbf{Relevance excluded} ($M^*_J\!=\!32.7$) \\
+\texttt{formal.hoare\_inv} & $250$ & $.000$ & $1.000$ & $1.000$ & $1.000$ & $.508$ & $+0.0000$ & $[+0.0000, +0.0000]^\dagger$ & \texttt{250/0/0/0} & $23.32\;\text{J}$ & $\$3.32$ & \textbf{Relevance excluded} ($M^*_J\!=\!32.7$) \\
+\texttt{formal.poly\_ideal} & $250$ & $.348$ & $1.000$ & $1.000$ & $.996$ & $1.000$ & $-0.0040$ & $[-0.0280, +0.0000]$ & \texttt{249/0/0/1} & $7.26\;\text{J}$ & $\$5.53$ & \textbf{Relevance excluded} ($M^*_J\!=\!53.4$) \\
+\texttt{formal.open\_drat\_synth} & $250$ & $.000$ & $1.000$ & $1.000$ & $1.000$ & $.352$ & $+0.0000$ & $[+0.0000, +0.0000]^\dagger$ & \texttt{250/0/0/0} & $69.00\;\text{J}$ & $\$2.89$ & \textbf{Relevance excluded} ($M^*_J\!=\!16.0$) \\
+\texttt{tool.tau2\_sqlite} & $250$ & $.188$ & $.624$ & $1.000$ & $1.000$ & $.940$ & $+0.0000^\ddagger$ & $[+0.0000, +0.0000]^\dagger$ & \texttt{250/0/0/0} & $7.11\;\text{J}$ & $\$0.40$ & \textbf{Relevance excluded} ($M^*_{\$}\!=\!5.9$) \\
+\midrule
+\multicolumn{13}{l}{\textit{\textbf{Tier 2} (shifted 16-bit widths, bounds, scales $k\in[7,15]$, \& unseen free-text paraphrases; $1{,}420$ instances; pooled descriptive $\hat{\Delta} = +0.0695$)}} \\
+\texttt{formal.bv\_superopt} & $420$ & $.000$ & $1.000$ & $1.000$ & $.983$ & $1.000$ & $-0.0167$ & $[-0.0381, -0.0048]$ & \texttt{413/7/0/0} & $7.87\;\text{J}$ & $\$1.84$ & \textbf{Relevance excluded} ($M^*_J\!=\!49.2$) \\
+\texttt{formal.hoare\_inv} & $250$ & $.000$ & $1.000$ & $1.000$ & $1.000$ & $.600$ & $+0.0000$ & $[+0.0000, +0.0000]^\dagger$ & \texttt{250/0/0/0} & $16.41\;\text{J}$ & $\$3.37$ & \textbf{Relevance excluded} ($M^*_J\!=\!39.4$) \\
+\texttt{formal.poly\_ideal} & $250$ & $.376$ & $1.000$ & $1.000$ & $1.000$ & $1.000$ & $+0.0000$ & $[+0.0000, +0.0000]^\dagger$ & \texttt{250/0/0/0} & $6.74\;\text{J}$ & $\$5.56$ & \textbf{Relevance excluded} ($M^*_J\!=\!57.5$) \\
+\texttt{formal.open\_drat\_synth} & $250$ & $.000$ & $1.000$ & $1.000$ & $1.000$ & $.376$ & $+0.0000$ & $[+0.0000, +0.0000]^\dagger$ & \texttt{250/0/0/0} & $53.59\;\text{J}$ & $\$2.87$ & \textbf{Relevance excluded} ($M^*_J\!=\!19.2$) \\
+\texttt{tool.tau2\_sqlite} & $250$ & $.224$ & $.516$ & $.636$ & $1.000$ & $.916$ & $+0.3640^\S$ & $[+0.2880, +0.4480]$ & \texttt{250/0/0/0} & $7.15\;\text{J}$ & $\$0.39$ & \textbf{Relevance shown} ($12$ unfilled) \\
+\bottomrule
+\end{tabular}%
+}\\[2pt]
+{\scriptsize $^\dagger$Exact finite-sample Newcombe $99\%$ paired bound at $0/250$ disagreements is $[-0.0259, +0.0259]$ ($<\delta = +0.05$). $^\ddagger$Against strict \texttt{N0} at Tier~1, $\hat{\Delta}(\texttt{B3}-\texttt{N0}) = +0.3760$ ($[+0.3000, +0.4560]$). $^\S$At Tier~2, \texttt{Qwen 3.6} (\texttt{B6}) achieved $\hat{\Delta}(\texttt{B6}-\texttt{N1})=+0.2800$ ($[+0.2000, +0.3680]$) at $\mathbf{23.38\;\text{J}}$ per additional completed task.}
+\end{table}
+
+\textbf{Licensed Breadth Statements (\texttt{HYPOTHESIS.md} \S12) \& Registered Scope Boundaries (\S17).}
+\emph{``Of 5 task classes sampled from Track-A Self-Administered Formal+SQLite Stratum, relevance was shown in 0, excluded in 5, undetermined in 0 and not assessed in 0, at tier 1''} and \emph{``shown in 1, excluded in 4, undetermined in 0 and not assessed in 0, at tier 2.''} On \texttt{tool.tau2\_sqlite} Tier~2, the $+36.40$-point increment reflects $12$ unseen customer paraphrase surface hashes (\texttt{a0/a1:surf:\dots}) not encountered in the 120-\texttt{dev} fill budget---demonstrating both that the assay cleanly detects open-ended lexical generalisation and that bounded canonicalised domains ($K_{\text{eff}} = 6\text{--}12$) exclude neural relevance even against \texttt{Claude Opus 5.5}.
+
+\section{Course-Corrected Track-B (\texttt{exp-002}, $K_{\text{eff}} = n = 1{,}190$) and Online Crystallization}
+
+A post-\texttt{exp-001} audit noted that Track-A drew from modulo-$6$ to modulo-$12$ synthetic template families ($K_{\text{eff}} = 6\text{--}12$). To eliminate template saturation, \textbf{Confirmatory Experiment \#2 (\texttt{exp-002}, Track-B)} locked manifest \texttt{5fe640f00298\dots} and OpenTimestamps proof \texttt{suite\_exp002/\allowbreak manifest.\allowbreak json.ots} ($207\;\text{B}$) at \texttt{git tag reg-exp-002} (\texttt{d6bfae5}, \texttt{drand} round \texttt{6664086}), strictly prior to target \texttt{drand} round \texttt{6664089} (seed \texttt{9069507899917430179}; mechanical \texttt{llama-server} \texttt{-c 81920} slot-context fix recorded in \texttt{amendment\_01\_\allowbreak b6\_slot\_\allowbreak ctx.json} with zero changes to stores, prompts, or seed; $515/515$ scorer-audited trajectories passed with $0$ exploits). Table~\ref{tab:exp002} reports all $1{,}190$ unique held-out instances across four externally authored public benchmarks plus unique 12-variable 50-clause phase-transition 3-CNF formulas.
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.7pt}
+\caption{\textbf{Confirmatory Experiment \#2 (\texttt{exp-002}, Track-B External Public Benchmarks, $K_{\text{eff}} = n = 1{,}190$)} seeded from post-tag \texttt{drand} round \texttt{6664089} ($99.0\%$ BCa CIs, $m=5$, $\delta=+0.05$). All $1{,}190$ \texttt{Shape D} lookups completed in $0.92\;\text{s}$ ($35.72\;\text{J}$ \texttt{L2 A2}, $2.58\;\text{J}$ \texttt{L3 ri\_energy\_nj}, drift $3.09\%$).}
+\label{tab:exp002}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l r r r r r r r r c c r l}
+\toprule
+\textbf{Unique-Instance Class} & $n$ & $p_{B0}$ & $p_{N0}$ & $p_{N1}$ & $p_{\text{Opus}}$ & $p_{\text{Sonnet}}$ & $p_{\text{Qwen36}}$ & $p_{\text{Gemma4}}$ & $\hat{\Delta}(\text{Opus}\!-\!\texttt{N1})$ & \textbf{99\% BCa CI} & \textbf{\texttt{Qwen} J/pass} & \textbf{Licensed Verdict (\S12)} \\
+\midrule
+\texttt{formal.unique\_3sat\_drat}$^\star$ & $250$ & $.000$ & $.696$ & $.696$ & $.052$ & $.008$ & $.000$ & $.000$ & $-0.6440$ & $[-0.7200, -0.5600]$ & --- ($7.59\text{k J}$) & \textbf{Not assessable} ($p_{\text{LLM}}\!<\!2\delta$) \\
+\texttt{external.bfcl\_v3\_live} & $250$ & $.180$ & $.200$ & $.228$ & $.828$ & $.840$ & $.804$ & $.720$ & $+0.6000$ & $[+0.5120, +0.6840]$ & $50.39\;\text{J}$ & \textbf{Relevance shown} ($28$ unfilled) \\
+\texttt{external.tau\_bench\_retail} & $220$ & $.005$ & $.396$ & $.259$ & $.864$ & $.805$ & $.755$ & $.623$ & $+0.6045^\dagger$ & $[+0.5182, +0.6864]$ & $267.30\;\text{J}$ & \textbf{Relevance shown} ($14$ unfilled) \\
+\texttt{external.bigcodebench\_exec} & $220$ & $.000$ & $.000$ & $.000$ & $.950$ & $.836$ & $.473$ & $.391$ & $+0.9500$ & $[+0.9000, +0.9773]$ & $238.79\;\text{J}$ & \textbf{Relevance shown} ($218$ unfilled) \\
+\texttt{external.swebench\_verified} & $250$ & $.096$ & $.460$ & $.456$ & $.984$ & $.952$ & $.900$ & $.812$ & $+0.5280$ & $[+0.4440, +0.6040]$ & $24.62\;\text{J}$ & \textbf{Relevance shown} ($4$ unfilled) \\
+\bottomrule
+\end{tabular}%
+}\\[2pt]
+{\scriptsize $^\star$On \texttt{formal.unique\_3sat\_drat}, standalone classical \texttt{CDCL+DRAT} (\texttt{B1}) completed $\mathbf{1.000}$ ($250/250$) with $0$ neural calls; single-turn neural substrates failed the $2\delta$ assay gate ($p_{\text{Opus}}=0.052$). $^\dagger$Against strict model-free \texttt{N0} ($0.3955$), $\hat{\Delta}(\text{Opus}-\texttt{N0}) = +0.4682$ ($[+0.3818, +0.5591]$), exposing \texttt{S4} bigram overfitting when \texttt{N1} greedy-extracts noisy \texttt{dev} phrases.}
+\end{table}
+
+\textbf{Two Regimes Under Good--Turing Unseen Mass $N_1(t)/t$, Multi-Turn Repositories, and Online Crystallization.}
+\emph{``Of 5 task classes sampled from Track-B Unique-Instance External Public Benchmarks Stratum, relevance was shown in 4, excluded in 0, undetermined in 0 and not assessed in 1, at tier 1.''} Good--Turing unseen key mass separates the two tracks: where structural cells saturate ($N_1(t)/t \to 0$), frozen \texttt{Shape D} captures $39.6\%$ (\texttt{tau-bench N0}), $46.0\%$ (\texttt{SWE-bench}), $69.6\%$ (\texttt{Unique 3-SAT}), and $100\%$ (Track-A formal proofs) at zero decision-time model calls. Conversely, where fine keys remain compositional ($N_1(t)/t = 0.9917$ on \texttt{BigCodeBench}, and $6$ unseen multi-file bug-fix repositories in \texttt{joule-bench/tasks/real} where \texttt{Lane B Opus/Sonnet/Qwen 3.6} and \texttt{Shape H Claude Code 2.1.330} all achieved $6/6 = 1.000$ after pristine test restoration against cold \texttt{Shape D} $0/6$), neural synthesis supplies a genuine $+52.8$ to $+95.0$-point increment. Yet under \S7 online crystallization ($600$ Zipfian $s=0.85$ requests over \texttt{BigCodeBench}), verifying and caching model solutions on first miss preserves $\mathbf{98.0\%}$ completion while cutting LLM calls by $\mathbf{72.17\%}$ ($167$ vs.\ $600$), API cost by $\mathbf{3.59\times}$ ($\$2.04$ vs.\ $\$7.33$), and local \texttt{Qwen 3.6} energy by $\mathbf{3.59\times}$ ($18{,}851\;\text{J}$ vs.\ $67{,}730\;\text{J}$).
+
+\end{document}

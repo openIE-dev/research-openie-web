@@ -1,0 +1,22 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/deterministic-null.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description="Deterministic Null: a pre-registered null-model control experiment comparing a zero-model-call 64-bit integer case loop (N0 and N1) against cloud and local neural agents across 4,030 beacon-seeded instances (Track-A reg-exp-001 and Track-B reg-exp-002)."
+  headings={headings}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Research study, draft: pre-registered null-model control experiment, drand and OpenTimestamps cryptographic registration, polyglot 64-bit integer case engine, and reported_j telemetry"
+>
+  <Content />
+</PaperLayout>

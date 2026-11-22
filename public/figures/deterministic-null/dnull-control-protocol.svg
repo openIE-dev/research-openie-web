@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="470" viewBox="0 0 1200 470" role="img" aria-labelledby="t1 d1">
+  <title id="t1">Pre-registered Deterministic Null control protocol and beacon-locked evaluation</title>
+  <desc id="d1">Four-stage diagram: Stage 1 Dev Fill across J=5 orderings into frozen DNULLMM1 case store; Stage 2 Gate G1 SHA-256 manifest and OpenTimestamps proof locked strictly before League of Entropy drand round R; Stage 3 Held-out Test pairing zero-call Shape D (N0/N1) against Cloud B3 and Local B6; Stage 4 25-sample/cell Scorer Audit and 99.0% BCa inference.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0f172a"/>
+    </marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#009E73"/>
+    </marker>
+    <marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0072B2"/>
+    </marker>
+    <marker id="aho" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#D55E00"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="1198" height="468" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="40" y="54" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27" font-weight="800" fill="#0f172a">Deterministic Null control experiment: pre-beacon lock and paired evaluation</text>
+  <text x="40" y="84" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569">Every store digest, prompt, sample size, and executor hash is anchored before the public drand randomness round exists.</text>
+  <rect x="1072.5" y="24" width="87.5" height="34" rx="17" fill="none" stroke="#CC79A7" stroke-width="2"/>
+  <text x="1116.2" y="47" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#CC79A7" text-anchor="middle">Diagram</text>
+
+  <!-- Stage 1: Dev Fill -->
+  <rect x="38" y="122" width="248" height="148" rx="14" fill="#f8fafc" stroke="#009E73" stroke-width="3"/>
+  <text x="162" y="150" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17.5" font-weight="800" fill="#0f172a" text-anchor="middle">1 · Dev Construction</text>
+  <text x="162" y="174" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#009E73" text-anchor="middle">J = 5 Orderings → DNULLMM1</text>
+  <text x="162" y="198" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle">N0: 0 model calls (strict null)</text>
+  <text x="162" y="219" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle">N1: dev misses charged to C_N1</text>
+  <text x="162" y="240" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#64748b" text-anchor="middle">64-bit Q=10^6 integer loop</text>
+  <text x="162" y="258" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Gzipped FT ≤ 4,096 B / class</text>
+
+  <!-- Stage 2: Gate G1 Lock -->
+  <rect x="320" y="122" width="252" height="148" rx="14" fill="#f8fafc" stroke="#0072B2" stroke-width="3"/>
+  <text x="446" y="150" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17.5" font-weight="800" fill="#0f172a" text-anchor="middle">2 · Gate G1 + Beacon</text>
+  <text x="446" y="174" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#0072B2" text-anchor="middle">OpenTimestamps + drand R</text>
+  <text x="446" y="198" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle">Commit manifest.json + .ots</text>
+  <text x="446" y="219" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle">Assert round_tag &lt; round_target</text>
+  <text x="446" y="240" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#64748b" text-anchor="middle">Wait for future drand round R</text>
+  <text x="446" y="258" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Derive held-out test_seed_u64</text>
+
+  <!-- Stage 3: Held-Out Paired Test -->
+  <rect x="606" y="114" width="276" height="76" rx="12" fill="#f8fafc" stroke="#009E73" stroke-width="2.5"/>
+  <text x="744" y="140" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="800" fill="#0f172a" text-anchor="middle">3a · Frozen Shape D (N0, N1)</text>
+  <text x="744" y="161" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569" text-anchor="middle">Read-only store · 0 decision LLM calls</text>
+  <text x="744" y="179" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#009E73" text-anchor="middle">Pre/post SHA-256 digest asserted equal</text>
+
+  <rect x="606" y="202" width="276" height="76" rx="12" fill="#f8fafc" stroke="#D55E00" stroke-width="2.5"/>
+  <text x="744" y="228" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="800" fill="#0f172a" text-anchor="middle">3b · Neural SUTs (B3, B6, H)</text>
+  <text x="744" y="249" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569" text-anchor="middle">Opus 5.5, Sonnet 5.5, Qwen 3.6, Gemma 4</text>
+  <text x="744" y="267" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#D55E00" text-anchor="middle">reported_j (L2 IOReport + L3 ri_energy_nj)</text>
+
+  <!-- Stage 4: Scorer Audit & BCa -->
+  <rect x="916" y="122" width="246" height="148" rx="14" fill="#f8fafc" stroke="#0f172a" stroke-width="3"/>
+  <text x="1039" y="150" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17.5" font-weight="800" fill="#0f172a" text-anchor="middle">4 · Audit &amp; Verdict</text>
+  <text x="1039" y="174" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#0f172a" text-anchor="middle">H_0,k: Δ_k = p_LLM − p_Null ≤ 0.05</text>
+  <text x="1039" y="198" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle">25 trajectories/cell re-verified</text>
+  <text x="1039" y="219" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle">99.0% paired BCa (m = 5, 10^4)</text>
+  <text x="1039" y="240" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#009E73" text-anchor="middle">Shown | Excluded | Undetermined</text>
+  <text x="1039" y="258" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Break-even horizon M* reported</text>
+
+  <!-- Arrows -->
+  <path d="M286 196 L316 196" stroke="#0f172a" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+  <path d="M572 170 L602 154" stroke="#009E73" stroke-width="2.5" fill="none" marker-end="url(#ahg)"/>
+  <path d="M572 220 L602 238" stroke="#D55E00" stroke-width="2.5" fill="none" marker-end="url(#aho)"/>
+  <path d="M882 154 L912 174" stroke="#009E73" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+  <path d="M882 238 L912 218" stroke="#D55E00" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+
+  <!-- Bottom polyglot & telemetry bar -->
+  <rect x="38" y="310" width="1124" height="84" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="600" y="338" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="800" fill="#0f172a" text-anchor="middle">Gate G2 Cross-Language Determinism &amp; SATB Attribution Discipline</text>
+  <text x="600" y="361" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#475569" text-anchor="middle">5 independent implementations (Rust, Go, Python, C++20, Julia) agree on frozen store digest (0da4df8d9ccbce1e...) and 1M mmap checksum (15027705736).</text>
+  <text x="600" y="381" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" fill="#0072B2" text-anchor="middle">Closed-API server energy is recorded strictly as not_available (label N); local Apple M5 Max counters are reported_j (measured_j = None).</text>
+
+  <text x="600" y="438" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" fill="#475569" text-anchor="middle" font-style="italic">Protocol diagram, not a hardware rail meter reading. Both Track-A (reg-exp-001) and Track-B (reg-exp-002) follow this sequence.</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="450" viewBox="0 0 1200 450" role="img" aria-labelledby="t2 d2">
+  <title id="t2">Good-Turing unseen mass N1(t)/t separates saturating structural regimes from open compositional synthesis</title>
+  <desc id="d2">Two-panel schematic and stream curve: when structural feature cells saturate (N1(t)/t approaches 0), frozen Shape D matches or approaches neural completion at zero decision-time model calls; when fine keys remain unique (N1(t)/t near 1.0 on unseen BigCodeBench or unseen multi-file repositories), one-shot Shape D stays at 0% and only online crystallization amortizes recurring Zipfian traffic.</desc>
+  <rect x="1" y="1" width="1198" height="448" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="40" y="54" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27" font-weight="800" fill="#0f172a">Two regimes separated by Good–Turing unseen key mass N₁(t) / t</text>
+  <text x="40" y="84" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#475569">Whether a fixed case store closes the gap depends on key-space entropy and workload recurrence, not prompt wording.</text>
+  <rect x="1072.5" y="24" width="87.5" height="34" rx="17" fill="none" stroke="#CC79A7" stroke-width="2"/>
+  <text x="1116.2" y="47" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#CC79A7" text-anchor="middle">Diagram</text>
+
+  <!-- Left Panel: Saturating Structural Feature Space -->
+  <rect x="40" y="116" width="540" height="268" rx="14" fill="#f8fafc" stroke="#009E73" stroke-width="2.8"/>
+  <text x="68" y="148" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18.5" font-weight="800" fill="#0f172a">Regime A · Saturating Structural Cells (N₁(t)/t → 0)</text>
+  <text x="68" y="172" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" fill="#009E73" font-weight="600">Formal algebraic/proof families · Schema &amp; lexical fault cells</text>
+  <!-- Mini chart axes -->
+  <line x1="80" y1="320" x2="540" y2="320" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="80" y1="195" x2="80" y2="320" stroke="#94a3b8" stroke-width="2"/>
+  <text x="72" y="205" font-family="Inter, sans-serif" font-size="11.5" fill="#64748b" text-anchor="end">1.0</text>
+  <text x="72" y="320" font-family="Inter, sans-serif" font-size="11.5" fill="#64748b" text-anchor="end">0.0</text>
+  <!-- Decay curve N1(t)/t -->
+  <path d="M80 205 Q 160 295, 535 316" stroke="#009E73" stroke-width="3.5" fill="none"/>
+  <text x="330" y="276" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#009E73">Unseen cell mass N₁(t)/t &lt; 0.05</text>
+  <text x="68" y="350" font-family="Inter, sans-serif" font-size="13" fill="#334155">• Track-A formal proof families (K_eff = 6–8): Δ = 0.00 pts (Excluded)</text>
+  <text x="68" y="370" font-family="Inter, sans-serif" font-size="13" fill="#334155">• SWE-bench &amp; Unique 3-SAT coarse cells: N0/N1 captures 50–61% at 0 calls</text>
+
+  <!-- Right Panel: Open Compositional Key Space -->
+  <rect x="620" y="116" width="540" height="268" rx="14" fill="#f8fafc" stroke="#D55E00" stroke-width="2.8"/>
+  <text x="648" y="148" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18.5" font-weight="800" fill="#0f172a">Regime B · Unbounded Compositional Keys (N₁(t)/t ≈ 1)</text>
+  <text x="648" y="172" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" fill="#D55E00" font-weight="600">Unseen BigCodeBench specs · Unseen multi-file repositories · Idioms</text>
+  <!-- Mini chart axes -->
+  <line x1="660" y1="320" x2="1120" y2="320" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="660" y1="195" x2="660" y2="320" stroke="#94a3b8" stroke-width="2"/>
+  <!-- Flat unseen mass 1.0 -->
+  <line x1="660" y1="205" x2="1115" y2="205" stroke="#D55E00" stroke-width="3.5"/>
+  <!-- Online Zipfian amortization curve -->
+  <path d="M660 205 Q 780 268, 1115 288" stroke="#0072B2" stroke-width="3" stroke-dasharray="7 4" fill="none"/>
+  <text x="890" y="198" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#D55E00">One-shot i.i.d. unique stream: N₁(t)/t = 1.00</text>
+  <text x="885" y="246" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#0072B2">Online Zipfian crystallization (§7)</text>
+  <text x="648" y="350" font-family="Inter, sans-serif" font-size="13" fill="#334155">• Cold frozen N0/N1 = 0.0% (Relevance shown for neural synthesis)</text>
+  <text x="648" y="370" font-family="Inter, sans-serif" font-size="13" fill="#334155">• Recurring stream: pay model once on miss, 0-call verified replay on hit</text>
+
+  <text x="600" y="424" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" fill="#475569" text-anchor="middle" font-style="italic">Conceptual and empirical summary of Hypothesis S3 and Section 7 online crystallization (measured_j = None).</text>
+</svg>
