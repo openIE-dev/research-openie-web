@@ -29,7 +29,7 @@ complete: true
 | Claim label | Operational meaning in this study |
 | :--- | :--- |
 | **`Established`** | 在其所述的形式模型内通过数学证明，或在同行评审的实验物理中得到复现。 |
-| **`Kernel-checked`** | 在 `Lean 4.36.0`（`code_and_proofs/lean/Horizon.lean` 和 `Paradox.lean`）中机械验证，使用零个 `sorry` 占位符且仅依赖标准基础公理（`propext`、`Classical.choice`、`Quot.sound`）。在形式结构上建立数学一致性，绝不涉及自然界的物理主张。 |
+| **`Kernel-checked`** | 在 `Lean 4.36.0`（`code_and_proofs/lean/Horizon.lean` 和 `Paradox.lean`，已编目的 `31` 条定理，`0` 个 `sorry`、`0` 条自定义公理、`0` 个 `opaque`、`0` 个 `Lean.ofReduceBool`）中机械验证，并在 Linux `bubblewrap`（`bwrap`）命名空间沙箱内经 `lake check --paranoid` 的全部**六个独立证明检查器**一致接受（`con-leche --verified` 与 `con-ron --verified`：`58,796` 条声明；`lean4lean`、`nanoda`、`leanchecker --paranoid` 与 `Lean v4.36.0`：`58,798` 条声明）。在形式结构上建立数学一致性，绝不涉及自然界的物理主张。 |
 | **`Conjecture`** | 连贯的理论提议或有争议的经验异常，具备明确的假设和可检验的反例，既未被证明也未被否定。 |
 | **`Speculation`** | 未得到复现测量的支持，除非出现新物理否则与已确立的界限相矛盾，或被追溯至误报/虚构（若有来源造假则标记为 `Debunked`）。 |
 
@@ -53,7 +53,8 @@ complete: true
 <li>AIR, SPR, DNA, NRC, TSVF, EPR, SNR, QNM, ULP, CODATA, DOI: 美国研究所，超心理学研究会，脱氧核糖核酸，国家研究委员会，两态矢量形式，爱因斯坦‑波多尔斯基‑罗森，信噪比，准常模，最后有效位，国际科学理事会数据委员会，数字对象标识符</li>
 <li>TA, TA001, TA007, TA008, TA009, TA011, TA012, TA014, TA015, TA016, TA017, TA025, TA030, TA031, TA032, TA033, TA036, TA053, TA062, TA063, TA064, TA065, TA066, TA067, TA070, TA077, TA081: 时间异常目录条目标识符（`data/temporal-anomaly-catalog.csv`）</li>
 <li>AA, AA01, AA02, AA03, AA04, AA05, AA06, AA07, AA08, AA09, AA10, AA11, AA12, AA17, AA18, AA19, AA26, AA31, AA32, AA34, AA37, AA38, AA40: 频率异常图集条目标识符（`data/anomaly-atlas.csv`）</li>
-<li>CSV, JSON, API, PyPI, AGPL, GPL, IP, CD, PROJEKT, WebMCP, RCE, LUT6: 逗号分隔值，JavaScript 对象表示法，应用程序编程接口，Python 包索引，GNU Affero 通用公共许可证，GNU 通用公共许可证，知识产权，CD PROJEKT 公司商标持有者，Web 模型上下文协议，Reality Code Engine [same house]，6 输入布尔查找表 [same house]</li>
+<li>CSV, JSON, NDJSON, API, PyPI, AGPL, GPL, IP, CD, PROJEKT, WebMCP, RCE, LUT6: 逗号分隔值，JavaScript 对象表示法，换行分隔的 JavaScript 对象表示法，应用程序编程接口，Python 包索引，GNU Affero 通用公共许可证，GNU 通用公共许可证，知识产权，CD PROJEKT 公司商标持有者，Web 模型上下文协议，Reality Code Engine [same house]，6 输入布尔查找表 [same house]</li>
+<li>CVE, CWE, FRO, GMP, WHNF, CIC, FFI, RAPL: 通用漏洞披露，通用缺陷枚举，Lean 聚焦研究组织，GNU 多精度算术库，弱头范式，归纳构造演算，外部函数接口，以及运行平均功率限制</li>
 </ul>
 
 为了使前向引用从上至下保持透明，第 1 节定义记号，第 2 节回顾时间循环复杂度，第 3 节讨论时间索引和 Hellman 预计算，第 4 节分析逆因果和物理松弛，第 5 节映射密码学存活性，第 6 节评估候选公理 `A1 to A8` 与零点条件 `Z1 to Z6`，第 7 节证明 Horizon 条件 `C1 to C4` 并运行模型 `M1 to M8`，第 8 节审计三个经验账本（`TA001` 到 `TA081`、`AA01` 到 `AA40`、以及 `P01 to P74`），第 9 节整合伪证 `F1 to F19` 以及游戏机制。此前的 Open Interface Engineering 研究 - [Thermodynamic Bounds and an Optimal Tempo](/papers/agency/)、[Metered Commit Gates](/papers/gates/)、[Deterministic Null](/papers/deterministic-null/)、以及 [Downward LUT6 Compilation](/papers/lut-adapt/) - 为 `[same house]` 伴随文献，仅作架构上下文引用。
@@ -209,6 +210,17 @@ $$\Delta t \cdot \Delta f \;\ge\; \frac{1}{4\pi}.$$
 | **`C4` 过去光锥局域性** | 在 $1+1$ 闵可夫斯基空间中，$(\Delta t)^2 - (\Delta x)^2 = du \cdot dv$，时序先后关系是非自反且传递的，且 $I^+(o)$ 与 $J^-(o)$ 严格不相交（`past_cone_no_future_access`）。 | `M4.interval_lightcone`，`M4.future_timelike`，`M4.future_irrefl`，`M4.future_trans`，`M4.past_cone_no_future_access` | **`Kernel-checked`**（标准 3） |
 | **`H-coarse` 视界边界** | 任何非单射粗粒记录（例如双原子均值 `(-1, 1)` 与 `(0, 0)` 之比较，或 4 位状态的 2 位分箱）均**不**存在精确解码器；噪声与有限 Slepian 窗口使外推误差在窗口视界处发散。 | `M1.coarse_record_horizon`，`M1.mean_not_injective`，`M5.erase_not_injective` | **`Kernel-checked`**（`0` 公理） |
 | **联合可满足性** | 存在显式非空见证，同时满足 `C1`、`C2`、`C3` 与 `C4`，以及基态被动性（`M6.ground_state_passive_two_level`）。 | `horizon_conditions_consistent`，`M6.ground_state_passive_two_level` | **`Kernel-checked`**（`propext`，`Quot.sound`） |
+
+**六内核 `bubblewrap` 沙箱化 `lake check --paranoid` 审计（针对 `CVE-2026-72844`、`CVE-2026-72711`、`#16688` 与 `#16693` 加固）。** 针对 2026 年披露的 Lean 4 可靠性漏洞（包括 `CVE-2026-72844`（`leanprover/lean4#14576`，`<= v4.31.0` 中的幻影嵌套归纳 `.proj` 类型混淆 `CWE-843`）、`CVE-2026-72711`（`#14484`，`add_opaque` 中缺失自由变量闭包检查）、`Kernel.Environment.replay` 跳过伪造的 `.inductInfo`（`#16688`）、`.olean.server` 侧车与重放键不匹配（`#16674`、`#16675`）、`Prop` 结构体字段投影收紧（`#14977`），以及信任编译器的 `native_decide`（`Lean.ofReduceBool` `FFI`，`#16693`）），`openie-research-experiments/time-as-an-index/lean/verify_six_kernels.py`（`six_kernel_paranoid_audit.json`、`six_kernel_paranoid_audit.csv`，提交 `1f50db59`）强制检查零 `sorry`、零自定义 `axiom`、零 `opaque`、零嵌套归纳类型、零带有非 `Prop` 字段的 `Prop` 结构体以及零 `Lean.ofReduceBool`（`10 / 31` 条零公理定理，`23 / 31` 条无选择公理定理），在 `Lean v4.36.0` 中干净通过构建（`1,129.83 ms`，Linux `RAPL` 封装 `reported_j` 为 `61.66 J`），并在非特权 Linux `bubblewrap 0.11.1`（`bwrap`）只读、网络隔离命名空间内导出文本格式 `NDJSON` 声明（`283,210.00 ms`，核心 `1,632.08 J` / 封装 `27,217.18 J` `reported_j`，`measured_j = None`，`board_metered = false`），经全部六个独立检查器一致验证通过：
+
+| 独立证明检查器（`bwrap` 中的 `lake check --paranoid`） | 实现与可靠性基础 | 已验证声明数 | 裁决结果 | 已缓解的漏洞类别 |
+| :--- | :--- | :---: | :---: | :--- |
+| **`con-leche --verified`** | 在 `ZFC` 集合论中经形式化证明相容的极小参考内核（Breitner，绝不接受 `False`） | `58,796` | **`Accepts`** | `CVE-2026-72844`（嵌套归纳 `.proj`）、`CVE-2026-72711`（`add_opaque`）、`WHNF` 缓存缺陷 |
+| **`con-ron --verified`** | 经 *Aeneas* 验证的 `con-leche` Rust 精化实现 | `58,796` | **`Accepts`** | `CVE-2026-72844`、`CVE-2026-72711`、C++ 内存与 `GMP` 大数库缺陷（`#14833`） |
+| **`lean4lean`** | 独立的 Lean-in-Lean `CIC` 类型检查器（Carneiro） | `58,798` | **`Accepts`** | C++ 内核实现分歧与 `#14977` 投影类型检查 |
+| **`nanoda`** | 独立的零 Lean 运行时 Rust 导出验证器（已拦截 `sorryAx`） | `58,798` | **`Accepts`** | `.olean` 重放篡改（`#16674`、`#16688`）与未经许可的 `sorryAx` |
+| **`leanchecker --paranoid`** | 零策略信任、零编译器信任的全新环境 C++ 内核重放 | `58,798` | **`Accepts`** | 元编程环境变异、`skipKernelTC` 与 `Lean.ofReduceBool`（`#16693`） |
+| **`Lean v4.36.0`（默认）** | 修复 `CVE` 后的 2026 年 11 月 C++ 内核（强制执行 `#print axioms`） | `58,798` | **`Accepts`** | 全部 2026 年内核 `CVE` 均已修补；`0` 个 `sorry`、`0` 个 `opaque`、`0` 个 `ofReduceBool` |
 
 <div id="72-numerical--symbolic-verification-across-m1-to-m8-and-f5-seed--20261122" class="anchor-alias" aria-hidden="true"></div>
 

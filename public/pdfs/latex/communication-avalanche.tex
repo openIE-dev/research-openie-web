@@ -505,21 +505,25 @@ unverified human clinical efficacy.
   worst negative slack, exclusive-OR predicate, and predicted local
   distance difference test
 \item
-  AGX, CAN, CRT, CUDA, DC, DE10, FD, FSM, LRU, MDP, MSS, NVIDIA, NVML,
-  PID, PPT, RUSAGE\_INFO\_V6, RTX, SAT, TI, UCB1, VDD, VDD\_CPU\_SOC,
-  VDD\_CPU\_SOC\_MSS, VDD\_GPU, VIN, VIN\_SYS\_5V0, XNU:
-  Autonomous-Grade Compute module family, Controller Area Network,
-  Chinese Remainder Theorem, Compute Unified Device Architecture, direct
-  current, Digital Enzyme 10-camp binary frame magic header,
-  finite-domain constraint solver, finite-state machine,
+  AGX, CAN, CIC, CRT, CUDA, CWE, DC, DE10, FD, FFI, FRO, FSM, LRU, MDP,
+  MSS, NDJSON, NVIDIA, NVML, PID, PPT, RUSAGE\_INFO\_V6, RTX, SAT, TI,
+  UCB1, VDD, VDD\_CPU\_SOC, VDD\_CPU\_SOC\_MSS, VDD\_GPU, VIN,
+  VIN\_SYS\_5V0, WHNF, XNU, ZFC: Autonomous-Grade Compute module family,
+  Controller Area Network, Calculus of Inductive Constructions, Chinese
+  Remainder Theorem, Compute Unified Device Architecture, Common
+  Weakness Enumeration, direct current, Digital Enzyme 10-camp binary
+  frame magic header, finite-domain constraint solver, foreign function
+  interface, Lean Focused Research Organization, finite-state machine,
   least-recently-used cache policy, Markov decision process, memory
-  subsystem, accelerated-computing hardware vendor NVIDIA, NVIDIA
-  Management Library, process identifier, Package Power Tracking, Darwin
-  Resource Usage Info v6 struct, Ray Tracing Texel eXtreme, Boolean
+  subsystem, newline-delimited JavaScript Object Notation,
+  accelerated-computing hardware vendor NVIDIA, NVIDIA Management
+  Library, process identifier, Package Power Tracking, Darwin Resource
+  Usage Info v6 struct, Ray Tracing Texel eXtreme, Boolean
   satisfiability, Texas Instruments, Upper Confidence Bound 1, voltage
   drain-drain supply rail, Tegra CPU/SoC supply rail, Tegra
   CPU/SoC/memory supply rail, Tegra GPU supply rail, board voltage-input
-  rail, 5-volt system input rail, and Darwin X is Not Unix kernel
+  rail, 5-volt system input rail, weak head normal form, Darwin X is Not
+  Unix kernel, and Zermelo-Fraenkel set theory with Choice
 \end{itemize}
 
 \subsection{Measurement and Evidence Class
@@ -598,8 +602,15 @@ Proved mechanically in \texttt{Lean\ 4.\allowbreak{}36.\allowbreak{}0}
 (\texttt{QuorumRatchet.\allowbreak{}lean}, \texttt{OrchestrationFlow.\allowbreak{}lean}, and
 \texttt{EnzymaticSynthesis.\allowbreak{}lean}, \texttt{45} theorems \texttt{CTA-T1}
 to \texttt{CTA-T45}, \texttt{0} \texttt{sorry}, \texttt{0} custom
-axioms). Certifies deductive validity of the stated formal structures,
-never an unmeasured physical claim. \\
+axioms, \texttt{0} \texttt{opaque}, \texttt{0}
+\texttt{Lean.\allowbreak{}ofReduceBool}) and unanimously accepted inside a Linux
+\texttt{bubblewrap} (\texttt{bwrap}) sandbox by all \textbf{six
+independent proof checkers} of \texttt{lake\ check\ --paranoid}
+(\texttt{con-leche\ --verified} and \texttt{con-ron\ --verified}:
+\texttt{58,928} declarations; \texttt{lean4lean}, \texttt{nanoda},
+\texttt{leanchecker\ --paranoid}, and \texttt{Lean\ v4.36.0}:
+\texttt{58,930} declarations). Certifies deductive validity of the
+stated formal structures, never an unmeasured physical claim. \\
 \textbf{\texttt{{[}M{]}}} & \textbf{Deterministic computational model} &
 Executed from pre-registered configuration
 \texttt{PREREG\_\allowbreak{}cta\_\allowbreak{}models.\allowbreak{}json} (\texttt{SHA-\allowbreak{}256:\ 475a89e3.\allowbreak{}.\allowbreak{}.\allowbreak{}ac9fa},
@@ -4029,6 +4040,84 @@ preserves soundness across all 4 tiers, and establishes exact kill floor
 \texttt{CTA-T41}--\texttt{CTA-T43}, \texttt{CTA-T45}: \texttt{propext},
 \texttt{Classical.\allowbreak{}choice}, \texttt{Quot.\allowbreak{}sound} \\
 \end{longtable}
+}
+
+\subsection{7.1 Six-kernel bubblewrap-sandboxed lake check --paranoid audit}\label{six-kernel-bubblewrap-sandboxed-lake-check-paranoid-audit}
+
+In response to the 2026 Lean 4 soundness disclosures ---
+\texttt{CVE-2026-72844} (\texttt{leanprover/\allowbreak{}lean4\#14576}, nested
+inductive \texttt{.proj} type confusion \texttt{CWE-843} in
+\texttt{<=\ v4.31.0}), \texttt{CVE-2026-72711} (\texttt{\#14484},
+missing free-variable closure check in \texttt{add\_opaque}),
+\texttt{Kernel.\allowbreak{}Environment.\allowbreak{}replay} forged \texttt{.inductInfo} skipping
+(\texttt{\#16688}), \texttt{.olean.server} sidecar/replay key mismatches
+(\texttt{\#16674}, \texttt{\#16675}), \texttt{Prop}-structure field
+projection tightening (\texttt{\#14977}), and compiler-trust
+\texttt{native\_decide} (\texttt{Lean.\allowbreak{}ofReduceBool} \texttt{FFI},
+\texttt{\#16693}) ---
+\texttt{openie-\allowbreak{}research-\allowbreak{}experiments/\allowbreak{}communication-\allowbreak{}avalanche/\allowbreak{}lean/\allowbreak{}verify\_\allowbreak{}six\_\allowbreak{}kernels.\allowbreak{}py}
+(\texttt{six\_\allowbreak{}kernel\_\allowbreak{}paranoid\_\allowbreak{}audit.\allowbreak{}json},
+\texttt{six\_\allowbreak{}kernel\_\allowbreak{}paranoid\_\allowbreak{}audit.\allowbreak{}csv}, commit
+\texttt{1f50db59}) verifies zero \texttt{sorry}, zero custom
+\texttt{axiom}, zero \texttt{opaque}, zero inductive declarations
+(\texttt{0} nested inductives), zero \texttt{Prop}-structures (\texttt{all\ 5}
+structures live in \texttt{Type}), and zero
+\texttt{Lean.\allowbreak{}ofReduceBool} (\texttt{4\ /\ 45} zero-axiom theorems,
+\texttt{40\ /\ 45} choice-free), builds cleanly in
+\texttt{Lean\ v4.36.0} (\texttt{1,346.19\ ms}, \texttt{135.98\ J} Linux
+\texttt{RAPL} package \texttt{reported\_j}), and exports text-format
+\texttt{NDJSON} declarations inside an unprivileged Linux
+\texttt{bubblewrap\ 0.11.1} (\texttt{bwrap}) read-only, network-isolated
+sandbox (\texttt{237.26\ s} [\texttt{237,264.86\ ms}],
+\texttt{874.98\ J} core / \texttt{18,368.96\ J} package \texttt{RAPL}
+\texttt{reported\_j}) accepted unanimously across all six independent
+proof checkers:
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.23}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.31}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.10}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.09}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.27}}@{}}
+\toprule\noalign{}
+\textbf{Independent Proof Checker (\texttt{bwrap})} &
+\textbf{Implementation \& Soundness Basis} &
+\textbf{Decls} &
+\textbf{Verdict} &
+\textbf{Mitigated Vulnerability Classes} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{con-leche\ --verified}} & Minimal reference kernel
+(Breitner) formally proved consistent in \texttt{ZFC} set theory (cannot
+accept \texttt{False}) & \texttt{58,928} & \textbf{\texttt{Accepts}} &
+\texttt{CVE-2026-72844} (nested inductive \texttt{.proj}),
+\texttt{CVE-2026-72711} (\texttt{add\_opaque}), \texttt{WHNF} cache bugs \\
+\textbf{\texttt{con-ron\ --verified}} & \emph{Aeneas}-verified Rust
+refinement of \texttt{con-leche} & \texttt{58,928} &
+\textbf{\texttt{Accepts}} & \texttt{CVE-2026-72844},
+\texttt{CVE-2026-72711}, C++ memory \& GNU bignum bugs
+(\texttt{\#14833}) \\
+\textbf{\texttt{lean4lean}} & Independent Lean-in-Lean \texttt{CIC}
+typechecker (Carneiro) & \texttt{58,930} & \textbf{\texttt{Accepts}} &
+C++ kernel implementation divergence \& \texttt{\#14977} projection typing \\
+\textbf{\texttt{nanoda}} & Standalone zero-Lean-runtime Rust export
+verifier (\texttt{sorryAx} blocked) & \texttt{58,930} &
+\textbf{\texttt{Accepts}} & \texttt{.olean} replay manipulation
+(\texttt{\#16674}, \texttt{\#16688}) \& unpermitted \texttt{sorryAx} \\
+\textbf{\texttt{leanchecker\ --paranoid}} & Fresh-environment C++ kernel
+replay with zero tactic or compiler trust & \texttt{58,930} &
+\textbf{\texttt{Accepts}} & Metaprogramming environment mutation,
+\texttt{skipKernelTC}, \& \texttt{Lean.\allowbreak{}ofReduceBool} (\texttt{\#16693}) \\
+\textbf{\texttt{Lean\ v4.36.0} (default)} & Post-\texttt{CVE} November
+2026 C++ kernel (\texttt{\#print\ axioms} enforced) & \texttt{58,930} &
+\textbf{\texttt{Accepts}} & All 2026 kernel \texttt{CVE}s patched;
+\texttt{0} \texttt{sorry}, \texttt{0} \texttt{opaque}, \texttt{0} \texttt{ofReduceBool} \\
+\end{longtable}
+}
 }
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}

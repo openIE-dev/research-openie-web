@@ -1,10 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import tvCatalog from '../../data/tv-catalog.json';
+import ecosystemChannels from '../../data/openie-ecosystem-channels.json';
+import TvEcosystemChannels from '../../components/tv/TvEcosystemChannels.astro';
 import TvClient from './_TvClient.astro';
 
 const SITE = 'https://research.openie.dev';
 const studies = tvCatalog.studies as any[];
+const studiesById = Object.fromEntries(studies.map((s) => [s.id, s]));
 const initialStudy = studies.find((s) => s.id === 'communication-avalanche') ?? studies[0];
 const initialTier = initialStudy.tiers['90s'] ?? Object.values(initialStudy.tiers)[0];
 
@@ -87,6 +90,9 @@ const jsonLd = {
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">
           Plain Words First · Zero Acronym Soup · 21 Global Voices
         </span>
+        <a href="#ecosystem-channels" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-white/5 text-brand-light border border-brand-border no-underline hover:border-brand-amber hover:text-brand-amber transition-colors">
+          6 *.openie.dev Channels ↓
+        </a>
       </div>
       <h1 class="font-display text-3xl md:text-5xl font-bold tracking-tight text-brand-white mb-4">
         Open<span class="text-brand-cyan">IE</span> Research <span class="text-brand-amber">TV</span>
@@ -264,6 +270,9 @@ const jsonLd = {
       </div>
     </div>
 
+    <!-- OpenIE Ecosystem Channels (*.openie.dev) -->
+    <TvEcosystemChannels ecosystem={ecosystemChannels} studiesById={studiesById} />
+
     <!-- Category Filter Tabs & Instant Search -->
     <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
       <div class="flex flex-wrap gap-2" role="tablist" aria-label="Study categories">
@@ -403,7 +412,12 @@ const jsonLd = {
       border-color: rgba(245, 158, 11, 0.65) !important;
       box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.25);
     }
+    .tv-channel-active {
+      border-color: rgba(245, 158, 11, 0.75) !important;
+      background: rgba(245, 158, 11, 0.08) !important;
+      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.25);
+    }
   </style>
 
-  <TvClient catalog={tvCatalog} />
+  <TvClient catalog={tvCatalog} ecosystem={ecosystemChannels} />
 </Layout>

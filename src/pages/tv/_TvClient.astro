@@ -1,14 +1,18 @@
 ---
 interface Props {
   catalog: any;
+  ecosystem?: any;
 }
-const { catalog } = Astro.props;
+const { catalog, ecosystem = { channels: [] } } = Astro.props;
 const catalogJson = JSON.stringify(catalog);
+const ecosystemJson = JSON.stringify(ecosystem);
 ---
 
-<script is:inline define:vars={{ catalogJson }}>
+<script is:inline define:vars={{ catalogJson, ecosystemJson }}>
 (function () {
   const CATALOG = JSON.parse(catalogJson);
+  const ECOSYSTEM = JSON.parse(ecosystemJson);
+  const CHANNELS_BY_ID = Object.fromEntries((ECOSYSTEM.channels || []).map((c) => [c.id, c]));
   const STUDIES = CATALOG.studies || [];
   const TIER_ORDER = ['15s', '45s', '90s', '180s'];
   const LEGACY_TIER_MAP = {
@@ -27,6 +31,7 @@ const catalogJson = JSON.stringify(catalog);
   let activeTier = '90s';
   let playlistMode = null; // null | '15s' | '90s'
   let activeCategory = 'All 21';
+  let activeChannelId = null; // null | 'avalanche' | 'stack' | 'compute' | 'synthesis' | 'knowledge' | 'database'
   let searchQuery = '';
   let playbackRate = 1.0;
 
@@ -70,8 +75,11 @@ const catalogJson = JSON.stringify(catalog);
 
   function visibleStudyIds() {
     const q = searchQuery.trim().toLowerCase();
-    return STUDIES.filter((s) => {
-      if (activeCategory !== 'All 21' && s.category !== activeCategory) return false;
+    const chObj = activeChannelId ? CHANNELS_BY_ID[activeChannelId] : null;
+    const chSet = chObj ? new Set(chObj.tv_studies || []) : null;
+    const filtered = STUDIES.filter((s) => {
+      if (chSet && !chSet.has(s.id)) return false;
+      if (!chSet && activeCategory !== 'All 21' && s.category !== activeCategory) return false;
       if (!q) return true;
       const hay = [
         s.id, s.title, s.short_title, s.category, s.headline_metric, s.energy_tier,
@@ -82,6 +90,10 @@ const catalogJson = JSON.stringify(catalog);
       ].join(' ').toLowerCase();
       return hay.includes(q);
     }).map((s) => s.id);
+    if (chObj && !q) {
+      return (chObj.tv_studies || []).filter((id) => byId[id]);
+    }
+    return filtered;
   }
 
   function renderCues(study, tier) {
@@ -223,8 +235,18 @@ const catalogJson = JSON.stringify(catalog);
       const cid = card.getAttribute('data-study-card');
       card.classList.toggle('hidden', !vis.has(cid));
     });
+    document.querySelectorAll('[data-tv-channel-card]').forEach((el) => {
+      el.classList.toggle('tv-channel-active', el.getAttribute('data-tv-channel-card') === activeChannelId);
+    });
+    const clearChBtn = document.getElementById('tv-clear-channel-btn');
+    if (clearChBtn) clearChBtn.classList.toggle('hidden', !activeChannelId);
     const countEl = document.getElementById('tv-visible-count');
-    if (countEl) countEl.textContent = vis.size + ' / ' + STUDIES.length + ' studies shown (' + (vis.size * 4) + ' films)';
+    if (countEl) {
+      const chSuffix = activeChannelId && CHANNELS_BY_ID[activeChannelId]
+        ? ' · Channel: ' + CHANNELS_BY_ID[activeChannelId].name + ' (' + CHANNELS_BY_ID[activeChannelId].domain + ')'
+        : '';
+      countEl.textContent = vis.size + ' / ' + STUDIES.length + ' studies shown (' + (vis.size * 4) + ' films)' + chSuffix;
+    }
   }
 
   function stepTopic(delta, autoplay) {
@@ -275,6 +297,7 @@ const catalogJson = JSON.stringify(catalog);
 
   document.querySelectorAll('[data-cat-tab]').forEach((tab) => {
     tab.addEventListener('click', () => {
+      activeChannelId = null;
       activeCategory = tab.getAttribute('data-cat-tab') || 'All 21';
       document.querySelectorAll('[data-cat-tab]').forEach((t) => {
         const on = t === tab;
@@ -283,6 +306,30 @@ const catalogJson = JSON.stringify(catalog);
       });
       applyFilters();
     });
+  });
+
+  document.querySelectorAll('[data-tv-channel-queue]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const chId = btn.getAttribute('data-tv-channel-queue');
+      const tr = normalizeTier(btn.getAttribute('data-tier') || '90s');
+      const ch = chId ? CHANNELS_BY_ID[chId] : null;
+      if (!ch) return;
+      activeChannelId = chId;
+      playlistMode = tr;
+      activeTier = tr;
+      const firstId = (ch.tv_studies || []).find((id) => byId[id]);
+      if (firstId) activeStudyId = firstId;
+      applyFilters();
+      updateUIState(true);
+      document.getElementById('tv-theater-anchor')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  document.getElementById('tv-clear-channel-btn')?.addEventListener('click', () => {
+    activeChannelId = null;
+    playlistMode = null;
+    applyFilters();
+    updateUIState(false);
   });
 
   const searchInput = document.getElementById('tv-search-input');
@@ -339,13 +386,20 @@ const catalogJson = JSON.stringify(catalog);
   });
 
   const params = new URLSearchParams(window.location.search);
+  const qChannel = params.get('channel');
   const qStudy = params.get('study');
   const qTier = params.get('tier');
   const rawHash = (window.location.hash || '').replace(/^#/, '');
+  if (qChannel && CHANNELS_BY_ID[qChannel]) {
+    activeChannelId = qChannel;
+    const chFirst = (CHANNELS_BY_ID[qChannel].tv_studies || []).find((id) => byId[id]);
+    if (chFirst) activeStudyId = chFirst;
+    if (qTier) activeTier = normalizeTier(qTier);
+  }
   if (qStudy && byId[qStudy]) {
     activeStudyId = qStudy;
     if (qTier) activeTier = normalizeTier(qTier);
-  } else if (rawHash) {
+  } else if (rawHash && rawHash !== 'ecosystem-channels') {
     const [hId, hTier] = rawHash.split(':');
     if (hId && byId[hId]) activeStudyId = hId;
     if (hTier) activeTier = normalizeTier(hTier);

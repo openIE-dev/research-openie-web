@@ -166,7 +166,7 @@
 \noindent\fcolorbox{openieAmberBorder}{openieAmberBg}{%
   \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
     \small\color{openieDark}%
-    \textbf{Measurement.} Research paper, not a journal final. \texttt{est\_j}, \texttt{reported\_j}, and \texttt{measured\_j} are defined in Section~1. At public \texttt{openIE-dev/rce} commit \texttt{1762fb4b} (20~November 2026; specification draft~0.9), the Lean~4.12.0 audit verifies \textbf{\texttt{5,537}} kernel theorem constants across \texttt{64} top-level \texttt{RCE} modules (\texttt{1,264} source declarations, theorems \texttt{T1} to \texttt{T63}, standard axioms only, zero \texttt{sorry}), and the conformance suite records \textbf{\texttt{2,221 / 2,236}} passing checks across \texttt{311} normative clauses (\texttt{0} failures, \texttt{15} unsupported). Apple M5 Max on-chip \texttt{reported\_j} checker receipts (\texttt{L3 proc\_pid\_rusage(RUSAGE\_INFO\_V6).ri\_energy\_nj} paired with \texttt{L2 macmon IOReport}) record \textbf{\texttt{49.04 mJ}} median per Form check (\texttt{7.32 ms}/Form) and \textbf{\texttt{15.44 J}} per full 62-Form check, trace-run, and emit suite (\texttt{2.32 s}). \texttt{measured\_j} is reserved for a wall or rail meter and is empty (\texttt{measured\_j = None}, \texttt{board\_metered = false}). No FPGA board result in this paper. No fabricated citations.
+    \textbf{Measurement.} Research paper, not a journal final. \texttt{est\_j}, \texttt{reported\_j}, and \texttt{measured\_j} are defined in Section~1. At public \texttt{openIE-dev/rce} commit \texttt{f87d6af2} (23~November 2026; specification draft~0.9), the \texttt{Lean~4.36.0} audit and Linux \texttt{bubblewrap} 6-kernel \texttt{lake check --paranoid} run verify \textbf{\texttt{5,393}} \texttt{RCE} theorem constants across \texttt{64} top-level \texttt{RCE} modules from the unchanged \texttt{1,264} source declarations (\texttt{68,090} \texttt{con-leche --verified} \& \texttt{con-ron --verified} declarations; \texttt{68,092} \texttt{lean4lean}, \texttt{nanoda}, \texttt{leanchecker --paranoid}, and \texttt{Lean v4.36.0} declarations; theorems \texttt{T1} to \texttt{T63}, standard axioms only, \texttt{0} \texttt{sorry}, \texttt{0} custom axioms, \texttt{0} \texttt{opaque}, \texttt{0} \texttt{Lean.ofReduceBool}; \texttt{22,354.77 J} Linux RAPL \texttt{package-0} \texttt{reported\_j}), and the conformance suite records \textbf{\texttt{2,221 / 2,236}} passing checks across \texttt{311} normative clauses (\texttt{0} failures, \texttt{15} unsupported). Apple M5 Max on-chip \texttt{reported\_j} checker receipts (\texttt{L3 proc\_pid\_rusage(RUSAGE\_INFO\_V6).ri\_energy\_nj} paired with \texttt{L2 macmon IOReport}) record \textbf{\texttt{49.04 mJ}} median per Form check (\texttt{7.32 ms}/Form) and \textbf{\texttt{15.44 J}} per full 62-Form check, trace-run, and emit suite (\texttt{2.32 s}). \texttt{measured\_j} is reserved for a wall or rail meter and is empty (\texttt{measured\_j = None}, \texttt{board\_metered = false}). No FPGA board result in this paper. No fabricated citations.
   }%
 }
 
@@ -1358,8 +1358,9 @@ it at module boundaries in both directions on the reference evaluator
 and on the emitted Rust, Python and JavaScript programs.
 
 \textbf{Theorem status.} The specification states theorems T1 to T34 and
-records the status of each exactly. The proofs are in Lean 4 (v4.12.0,
-no Mathlib) over a core calculus. The words used for the level of a
+records the status of each exactly. The proofs are in Lean 4 (v4.36.0 at
+public commit \texttt{f87d6af2}, migrated from v4.12.0, no Mathlib) over
+a core calculus. The words used for the level of a
 result are these. \emph{Proved} means a Lean proof about the core
 semantics of the language. \emph{Proved on a semantics} means a Lean
 proof over a small-step semantics of a core of RCE. \emph{Model} means a
@@ -1469,45 +1470,127 @@ statement model, model of runs, session calculus). \texttt{M}: Lean
 proof about an abstract model. \texttt{MV}: model, with reference
 evaluator vectors checked by the Lean kernel. \texttt{C}: checked
 mechanically. T16 to T31 are the Appendix C concurrency theorems, and
-none is a proof about the Rust reference evaluator. Lean 4 v4.12.0, no
-Mathlib. Source: \texttt{spec/\allowbreak{}book/\allowbreak{}10-\allowbreak{}theorems.\allowbreak{}md} and Appendix C.13. A
+none is a proof about the Rust reference evaluator. Lean 4 v4.12.0 at
+\texttt{ac95172}, upgraded to Lean 4 v4.36.0 with six-kernel paranoid
+verification at \texttt{f87d6af2}, no Mathlib. Source: \texttt{spec/\allowbreak{}book/\allowbreak{}10-\allowbreak{}theorems.\allowbreak{}md} and Appendix C.13. A
 \href{https://research.openie.dev/figures/rce/theorem-status.png}{PNG
 copy} is provided.}
 
-\textbf{Checks run.} At public commit \texttt{0c015c43},
-\texttt{lake\ build} completes over the 62 files of
-\texttt{spec/lean/RCE/} with no \texttt{sorry} (58 files at public
-\texttt{e416fd0}, 46 at \texttt{4304048}), and the standing audit
-reports the axioms of 5,055 theorem constants as only \texttt{propext},
-\texttt{Quot.sound} and \texttt{Classical.\allowbreak{}choice} (4,877 at
-\texttt{e416fd0}). The audit counts every theorem constant in the kernel
-environment, including constants the elaborator generates, so it differs
-from the count of \texttt{theorem} and \texttt{lemma} declarations in
-the source, which is 1,155 at the same commit (1,116 at
-\texttt{e416fd0}). At the same commit the reference checker's source
-holds 581 test functions, and the specification check builds the LALR(1)
-tables of the core grammar (974 states) and of the grammar with Appendix
-C (1,152 states) with 0 conflicts, accepts 62 of 62 valid examples, and
-reports that 12 of 12 syntax examples and 65 of 65 ill-typed or
-inadmissible programs require change. At public commit \texttt{ac95172},
-the specification check builds the LALR(1) tables of the core grammar
-(sections 2 to 10, 932 states) and of the grammar with Appendix C (1,110
-states) with 0 conflicts, accepts 51 of 51 valid examples, reports that
-12 of 12 syntax examples and 64 of 64 ill-typed or inadmissible programs
-require change, each naming its rule, and parses every example with
-three parsers, and the WebAssembly build of the checker passes 401 of
-401 checks against the example corpora.
+\textbf{Checks run.} At public commit \texttt{f87d6af2} (23 November
+2026), \texttt{spec/lean/} is upgraded from Lean 4.12.0 to \textbf{Lean
+4.36.0} (\texttt{leanprover/\allowbreak{}lean4:\allowbreak{}v4.36.0}) to close the 2026 Lean 4
+soundness and \texttt{.olean} replay disclosures: Common Vulnerabilities
+and Exposures \texttt{CVE-2026-72844} (\texttt{leanprover/\allowbreak{}lean4\#14576},
+nested inductive \texttt{.proj} type confusion in \texttt{<=\ v4.31.0},
+fixed in \texttt{v4.32.2}), \texttt{CVE-2026-72711} (\texttt{\#14484},
+missing free-variable closure check in
+\texttt{environment::\allowbreak{}add\_\allowbreak{}opaque}),
+\texttt{Kernel.\allowbreak{}Environment.\allowbreak{}replay} forged \texttt{.inductInfo} skipping
+(\texttt{\#16688}, which showed that in-process
+\texttt{Lean.\allowbreak{}collectAxioms} and non-paranoid \texttt{.olean} replay can
+overlook manipulated environment entries), \texttt{.olean.server}
+sidecar/replay key mismatches (\texttt{\#16674}, \texttt{\#16675}),
+\texttt{Prop}-structure non-\texttt{Prop} field projection tightening
+(\texttt{\#14977}), and compiler-trust \texttt{native\_decide}
+(\texttt{Lean.\allowbreak{}ofReduceBool}, \texttt{\#16693}). Across all \texttt{97}
+\texttt{.lean} files in \texttt{spec/lean/} (\texttt{64} top-level
+\texttt{RCE} modules, \texttt{90} \texttt{.lean} files under
+\texttt{spec/lean/RCE/}), static and elaborated kernel scans confirm
+\texttt{0} \texttt{sorry}, \texttt{0} custom \texttt{axiom}, \texttt{0}
+\texttt{opaque}, \texttt{0} \texttt{Lean.\allowbreak{}ofReduceBool}, \texttt{0}
+\texttt{@[implemented\_\allowbreak{}by]}/\allowbreak{}\texttt{@[extern]}/\allowbreak{}\texttt{skipKernelTC},
+and \texttt{0} \texttt{Prop}-structures with non-\texttt{Prop} data
+fields; \texttt{audit/\allowbreak{}Audit.\allowbreak{}lean} verifies all
+\textbf{\texttt{5,393}} \texttt{RCE} theorem constants generated from
+the \textbf{\texttt{1,264}} \texttt{theorem} and \texttt{lemma}
+declarations in source (identical source declarations to historical
+commit \texttt{1762fb4b}, where Lean 4.12.0 generated 5,537 auxiliary
+theorem constants; 1,155 source declarations and 5,055 constants at
+\texttt{0c015c43}; 1,116 and 4,877 at \texttt{e416fd0}) using only
+\texttt{propext}, \texttt{Quot.sound}, and
+\texttt{Classical.\allowbreak{}choice}, and
+\texttt{scripts/\allowbreak{}lean-\allowbreak{}audit.\allowbreak{}sh}
+(\texttt{spec/\allowbreak{}lean/\allowbreak{}audit/\allowbreak{}six\_\allowbreak{}kernel\_\allowbreak{}paranoid\_\allowbreak{}audit.\allowbreak{}json})
+executes \textbf{\texttt{lake\ check\ --paranoid}} inside an
+unprivileged Linux \texttt{bubblewrap\ 0.11.1} (\texttt{bwrap})
+read-only, network-isolated sandbox (\texttt{319.80\ s},
+\texttt{22,354.77\ J} Linux Running Average Power Limit
+\texttt{package-0} \texttt{reported\_j},
+\texttt{measured\_j\ =\ None}, \texttt{board\_metered\ =\ false}) with
+unanimous acceptance across all \textbf{six independent proof checkers}:
 
-\textbf{Public Audit Rerun at Commit \texttt{1762fb4b}
-(\texttt{2026-11-20}, recorded in \texttt{src/\allowbreak{}data/\allowbreak{}rce-\allowbreak{}facts.\allowbreak{}json}).}
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.23}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.31}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.10}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.09}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.27}}@{}}
+\toprule\noalign{}
+\textbf{Independent Proof Checker (\texttt{bwrap})} &
+\textbf{Implementation \& Soundness Basis} &
+\textbf{Decls} &
+\textbf{Verdict} &
+\textbf{Mitigated Vulnerability Classes} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{con-leche\ --verified}} & Minimal reference kernel
+(Breitner) formally proved consistent in \texttt{ZFC} set theory &
+\texttt{68,090} & \textbf{\texttt{Accepts}} &
+\texttt{CVE-2026-72844} (\texttt{8} blocks $\rightarrow$ \texttt{252} fold records), \texttt{CVE-2026-72711}, weak-head cache bugs \\
+\textbf{\texttt{con-ron\ --verified}} & \emph{Aeneas}-verified Rust
+refinement of \texttt{con-leche} & \texttt{68,090} &
+\textbf{\texttt{Accepts}} & \texttt{CVE-2026-72844},
+\texttt{CVE-2026-72711}, C++ memory \& GNU bignum bugs (\texttt{\#14833}) \\
+\textbf{\texttt{lean4lean}} & Independent Lean-in-Lean \texttt{CIC}
+typechecker (Carneiro) & \texttt{68,092} & \textbf{\texttt{Accepts}} &
+C++ kernel divergence \& \texttt{\#14977} projection typing \\
+\textbf{\texttt{nanoda}} & Standalone zero-Lean-runtime Rust export
+verifier (\texttt{sorryAx} blocked) & \texttt{68,092} &
+\textbf{\texttt{Accepts}} & \texttt{.olean} replay manipulation
+(\texttt{\#16674}, \texttt{\#16688}) \& unpermitted \texttt{sorryAx} \\
+\textbf{\texttt{leanchecker\ --paranoid}} & Fresh-environment C++ kernel
+replay with zero tactic or compiler trust & \texttt{68,092} &
+\textbf{\texttt{Accepts}} & Metaprogramming mutation,
+\texttt{skipKernelTC}, \& \texttt{Lean.\allowbreak{}ofReduceBool} (\texttt{\#16693}) \\
+\textbf{\texttt{Lean\ v4.36.0} (default)} & Post-\texttt{CVE} November
+2026 C++ kernel (\texttt{\#print\ axioms} enforced) & \texttt{68,092} &
+\textbf{\texttt{Accepts}} & All 2026 kernel \texttt{CVE}s patched;
+\texttt{0} \texttt{sorry}, \texttt{0} \texttt{opaque}, \texttt{0} \texttt{ofReduceBool} \\
+\end{longtable}
+}
+}
+
+All 24 Rust-to-Lean vector tests and
+\texttt{spec/\allowbreak{}lean/\allowbreak{}emit-\allowbreak{}test/\allowbreak{}run.\allowbreak{}sh} (\texttt{3,000} cases,
+\texttt{0} mismatches) pass unchanged on Lean 4.36.0. At public commit
+\texttt{f87d6af2}, the reference checker holds 837 Rust unit tests
+across 159 test files (581 at \texttt{0c015c43}), passes 2,221 of 2,236
+conformance tests across all 311 normative clauses (\texttt{0} failures,
+\texttt{15} unsupported), and \texttt{rce-spec-check} builds the LALR(1)
+tables of the core grammar (\texttt{1,028} states; \texttt{974} at
+\texttt{0c015c43}, \texttt{932} at \texttt{ac95172}) and of the grammar
+with Appendix C (\texttt{1,206} states; \texttt{1,152} at
+\texttt{0c015c43}, \texttt{1,110} at \texttt{ac95172}) with \texttt{0}
+conflicts, accepts \texttt{62} of \texttt{62} valid examples (\texttt{51}
+at \texttt{ac95172}), and reports that \texttt{13} of \texttt{13} syntax
+examples and \texttt{73} of \texttt{73} ill-typed or inadmissible
+programs require change (\texttt{12} and \texttt{65} at
+\texttt{0c015c43}, \texttt{12} and \texttt{64} at \texttt{ac95172}, where
+the WebAssembly build also passed \texttt{401} of \texttt{401} checks).
+
+\textbf{Public Audit Rerun at Commit \texttt{f87d6af2}
+(\texttt{2026-11-23}, recorded in \texttt{src/\allowbreak{}data/\allowbreak{}rce-\allowbreak{}facts.\allowbreak{}json}).}
 Rerunning \texttt{scripts/\allowbreak{}claim-\allowbreak{}counts.\allowbreak{}py},
-\texttt{scripts/\allowbreak{}lean-\allowbreak{}audit.\allowbreak{}sh} (Lean \texttt{4.12.0}),
+\texttt{scripts/\allowbreak{}lean-\allowbreak{}audit.\allowbreak{}sh} (Lean \texttt{4.36.0} + Linux \texttt{bwrap} 6-kernel \texttt{lake\ check\ --paranoid}),
 \texttt{rce-spec-check}, \texttt{conformance/}, and Apple M5 Max
 dual-channel \texttt{reported\_j} telemetry on public
 \texttt{openIE-dev/rce} at commit
-\href{https://github.com/openIE-dev/rce/commit/1762fb4bb65a58de07ab00f0d1bfdf4969d0358c}{\texttt{1762fb4b}}
-(\texttt{1762fb4bb65a\allowbreak{}58de07ab00f0\allowbreak{}d1bfdf4969d0358c}, specification draft
-\texttt{0.9}) establishes the current public baseline:
+\href{https://github.com/openIE-dev/rce/commit/f87d6af2}{\texttt{f87d6af2}}
+(specification draft \texttt{0.9}) establishes the current public baseline:
 
 {\def\LTcaptype{none} % do not increment counter
 {\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
@@ -1517,7 +1600,7 @@ dual-channel \texttt{reported\_j} telemetry on public
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4752}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Audit surface (\texttt{openIE-dev/rce} at \texttt{1762fb4b})}
+\textbf{Audit surface (\texttt{openIE-dev/rce} at \texttt{f87d6af2})}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Verified public count / result}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -1527,11 +1610,11 @@ dual-channel \texttt{reported\_j} telemetry on public
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\textbf{Lean 4 kernel audit (\texttt{scripts/\allowbreak{}lean-\allowbreak{}audit.\allowbreak{}sh})} &
-\textbf{\texttt{5,537}} theorem constants (\texttt{T1\ to\ T63}) &
+\textbf{Lean 4.36.0 \& 6-kernel paranoid audit (\texttt{scripts/\allowbreak{}lean-\allowbreak{}audit.\allowbreak{}sh})} &
+\textbf{\texttt{5,393}} theorem constants (\texttt{T1\ to\ T63}; \texttt{6/6} kernels) &
 \texttt{64} top-level \texttt{RCE} modules (\texttt{97} \texttt{.lean}
-files), \texttt{1,264} source \texttt{theorem}/\texttt{lemma} decls,
-\texttt{0} \texttt{sorry}, standard axioms only \\
+files), unchanged \texttt{1,264} source \texttt{theorem}/\texttt{lemma} decls,
+\texttt{68,090}/\texttt{68,092} exported decls in \texttt{bwrap}, \texttt{0} \texttt{sorry}/\texttt{opaque}/\texttt{ofReduceBool} (\texttt{22,354.77\ J} Linux RAPL \texttt{package-0} \texttt{reported\_j}) \\
 \textbf{Grammar \& \texttt{rce-spec-check} (\texttt{Appendix\ C})} &
 \textbf{\texttt{118\ rules,\allowbreak{}\ 581\ productions,\allowbreak{}\ 1206\ states,\allowbreak{}\ 0\ conflicts}}
 & Core grammar:
@@ -1696,9 +1779,12 @@ largest bisimulation is the minimal machine, with \(\dim(P)\) states)
 and T61 (\texttt{shape\_ctl} is invariant under renaming and under
 predicate-equivalent rewrites of guards) are stated in chapter 10 of the
 specification, and \texttt{spec/\allowbreak{}lean/\allowbreak{}RCE/\allowbreak{}Behaviour.\allowbreak{}lean} is in
-\texttt{lake\ build} (Lean 4.12.0; at public commit \texttt{f2bd7222},
-\texttt{scripts/\allowbreak{}lean-\allowbreak{}audit.\allowbreak{}sh} reads 5,052 theorems with standard axioms
-only and no \texttt{sorry}). What is proved, in the chapter's exact
+\texttt{lake\ build} (Lean 4.36.0 at public commit \texttt{f87d6af2},
+passing \texttt{scripts/\allowbreak{}lean-\allowbreak{}audit.\allowbreak{}sh} and six-kernel
+\texttt{lake\ check\ --paranoid} over 5,393 theorem constants with
+standard axioms only and no \texttt{sorry}; earlier recorded at commit
+\texttt{f2bd7222} on Lean 4.12.0 with 5,052 theorem constants). What is
+proved, in the chapter's exact
 scope: the morphism equation of T57 (\texttt{beh\_cons}; uniqueness of
 the morphism is stated, unproved); T58 for one program and for two
 (\texttt{bisim\_beh}, \texttt{beh\_bisim}, \texttt{behEq\_\allowbreak{}iff\_\allowbreak{}bisim},

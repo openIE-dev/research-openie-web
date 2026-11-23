@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import RadioStudioDeck from '../../components/radio/RadioStudioDeck.astro';
+import RadioEcosystemSection from '../../components/radio/RadioEcosystemSection.astro';
 import RadioRadarSection from '../../components/radio/RadioRadarSection.astro';
 import RadioFoundrySection from '../../components/radio/RadioFoundrySection.astro';
 import RadioClientScript from '../../components/radio/RadioClientScript.astro';
@@ -8,6 +9,7 @@ import RadioClientScript from '../../components/radio/RadioClientScript.astro';
 import radioFeed from '../../data/radio-feed.json';
 import radioRadar from '../../data/radio-radar.json';
 import topicFoundry from '../../data/topic-foundry.json';
+import ecosystemChannels from '../../data/openie-ecosystem-channels.json';
 
 const pageTitle = 'OpenIE Research Radio — Live Broadcast, Global Radar & Pilot Foundry';
 const pageDesc =
@@ -28,11 +30,14 @@ const pageDesc =
     feed={radioFeed}
     radarCount={(radioRadar.items || []).length}
     foundryCount={(topicFoundry.topics || []).length}
+    ecosystemCount={(ecosystemChannels.channels || []).length}
   />
+
+  <RadioEcosystemSection ecosystem={ecosystemChannels} episodes={radioFeed.episodes || []} />
 
   <RadioRadarSection radar={radioRadar} />
 
   <RadioFoundrySection foundry={topicFoundry} />
 
-  <RadioClientScript feed={radioFeed} radar={radioRadar} foundry={topicFoundry} />
+  <RadioClientScript feed={radioFeed} radar={radioRadar} foundry={topicFoundry} ecosystem={ecosystemChannels} />
 </Layout>

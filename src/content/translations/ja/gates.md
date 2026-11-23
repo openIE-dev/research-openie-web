@@ -916,9 +916,9 @@ $$
 | P13 | Receipt transcript replay | `claim.mol.receipt_replay` | JSONL/インメモリ replay が commit/refuse + limit id を再現する; モデルは決して回答しない。 | none | 未計測 |
 | P14 | Z2 retrieve+cite | `claim.mol.z2_retrieve_cite` | シードされた事実的ヒット → COMMIT `RetrievedCited` + citation ids; 不明 → REFUSE `claim_unknown` (捏造なし)。 | Seed corpus in-tree only | 未計測 |
 | P15 | Z1 compose/synthesis | `claim.mol.z1_compose` | ≥2 の引用主張 → COMMIT `Composed` + `synthesis.composed_from`; 欠如 → REFUSE `compose_missing`; Deterministic/RetrievedCited のみとしては決して洗浄されない。 | none | 未計測 |
-| P16 | エージェントメールボックスループ | `claim.mol.agent_mailbox` | Goal/Message/Act → close → commit|refuse + 受領書 in transcript; demo hits formula/cite/compose COMMIT and voi/settle_refuse REFUSE; model cold; measurement flags hold. | none | 未計測 |
+| P16 | エージェントメールボックスループ | `claim.mol.agent_mailbox` | Goal/Message/Act → close → commit\|refuse + 受領書 in transcript; demo hits formula/cite/compose COMMIT and voi/settle_refuse REFUSE; model cold; measurement flags hold. | none | 未計測 |
 | P17 | 双時間状態 + メモリ | `claim.mol.bitemporal_memory` | Writes only on Mixture of Limits close COMMIT; Mutate deny / free-form remember → REFUSE; recall → `RetrievedCited` + `memory:` cite; unknown → `memory_unknown`. | none | 未計測 |
-| P18 | ファブリックルーティング + ソフトウェア参照インベントリ | `claim.mol.fabric_soft_ref` | Offline inventory valid (`source=software_ref`, Cpu always); Lookup/Formula→Cpu; Settle→ThermoSettle|Cpu; Model→Gpu* or REFUSE `fabric_unavailable`; detect ≠ measured joules. | Live wgpu の存在はオプション / 証明に必須ではない | 未計測 |
+| P18 | ファブリックルーティング + ソフトウェア参照インベントリ | `claim.mol.fabric_soft_ref` | Offline inventory valid (`source=software_ref`, Cpu always); Lookup/Formula→Cpu; Settle→ThermoSettle\|Cpu; Model→Gpu* or REFUSE `fabric_unavailable`; detect ≠ measured joules. | Live wgpu の存在はオプション / 証明に必須ではない | 未計測 |
 | P19 | デスクトップシェルヘッドレス | `claim.mol.desktop_headless` | `ShellSession` ask/close → receipt view (zone/fabric/limit/estimated_j/`measured_j=None`); joule ledger; VoI refuse; GUI not required. | egui GUI はオプション | 未計測 / 推定 |
 | P20 | OS メーターラベル | `claim.mol.os_meter_honesty` | Feature off / VM / no permission → `measured_j=None`, empty components, `measure_source=unavailable`; fixtures stamp labeled sources; default close stays unmetered. | Live probe はオプション (`energy-meter`) | 未計測 (デフォルト) / プローブが返す場合のみ計測 |
 | P21 | WASM カプセル認証 | `claim.mol.wasm_capsule` | `add.wasm` under stub runtime; fuel → estimated_j only; FS/net grant / fuel exceed / host-share → REFUSE; close stamps capsule. | オプション `wasmtime` 機能 | 未計測 / 推定 (fuel) |
@@ -926,7 +926,7 @@ $$
 | P23 | マルチファブリック計算受領書 | `claim.mol.fabric_compute_receipt` | Software reference inventory; `ComputeFabric` / `ScheduleDecision` / `ComputeStepReceipt` with `fabric_id`; cascade stamps `fabric:route`; CPU Formula COMMIT; Model residual may `fabric_unavailable`; `measured_j=None` on software reference path. | none | 未計測 |
 | P23b | ライブファブリックソフト | `claim.mol.fabric_live_soft` | Feature off stays software_ref; mock/live Metal can stamp `gpu_metal`; Formula stays Cpu; missing Gpu* fail-closed; prove does not require a GPU; `measured_j=None` unless Metered. | ソフト / オプション検出 | 未計測 |
 | P23c | wgpu / Metal 小規模カーネル | `claim.mol.kernel_vector_add` | クリーンルーム WGSL ベクトル加算; ソフトスタブ オフライン (同一チェックサム); Gpu* が `kernel:vector_add` と `execution_proof` をスタンプ; オプションの重複メーターはパッケージ `measured_j` に `energy_honesty=measured` (フィールド名) をスタンプする可能性がある; rail-sum パッケージ ジュールはなし。 | Live Metal オプション; フィクスチャは証明に対して OK | 未計測 (デフォルト) / メーターが返す場合のみ計測 |
-| P24 | エコシステム e2e 認証 (1 件のレシート) | `claim.mol.ecosystem_e2e` | レーン → ファブリック (Cpu ソフトウェア参照) → WASM → エネルギーラベル (推定燃料; オプションの meter_sample) → ホストは `GrantReceipt` のみで呼び出し → **1** 件のレシートで commit|refuse; grant なしで refuse → `grant_receipt_required`。 | なし | 未計測 / 推定 |
+| P24 | エコシステム e2e 認証 (1 件のレシート) | `claim.mol.ecosystem_e2e` | レーン → ファブリック (Cpu ソフトウェア参照) → WASM → エネルギーラベル (推定燃料; オプションの meter_sample) → ホストは `GrantReceipt` のみで呼び出し → **1** 件のレシートで commit\|refuse; grant なしで refuse → `grant_receipt_required`。 | なし | 未計測 / 推定 |
 
 ハーネスの外部: デフォルトのクローズとしてのライブエネルギーカウンタ（RAPL、NVML）、ライブGPU検出、デバイス上の証明書ハードウェア、学習済みモデル重み、そしてGapセル用シリコンメータ。いずれも主張されていない。
 

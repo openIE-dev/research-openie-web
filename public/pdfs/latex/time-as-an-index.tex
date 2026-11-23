@@ -284,8 +284,16 @@ explicit epistemic labels:
 formal model or replicated in peer-reviewed experimental physics. \\
 \textbf{\texttt{Kernel-\allowbreak{}checked}} & Verified mechanically in
 \texttt{Lean\ 4.\allowbreak{}36.\allowbreak{}0} (\texttt{code\_\allowbreak{}and\_\allowbreak{}proofs/\allowbreak{}lean/\allowbreak{}Horizon.\allowbreak{}lean} and
-\texttt{Paradox.\allowbreak{}lean}) using zero \texttt{sorry} placeholders and at
-most standard foundational axioms (\texttt{propext},
+\texttt{Paradox.\allowbreak{}lean}, \texttt{31} cataloged theorems, \texttt{0}
+\texttt{sorry}, \texttt{0} custom axioms, \texttt{0} \texttt{opaque},
+\texttt{0} \texttt{Lean.\allowbreak{}ofReduceBool}) and unanimously accepted inside
+a Linux \texttt{bubblewrap} (\texttt{bwrap}) namespace sandbox by all
+\textbf{six independent proof checkers} of
+\texttt{lake\ check\ --paranoid} (\texttt{con-leche\ --verified} and
+\texttt{con-ron\ --verified}: \texttt{58,796} declarations;
+\texttt{lean4lean}, \texttt{nanoda}, \texttt{leanchecker\ --paranoid},
+and \texttt{Lean\ v4.36.0}: \texttt{58,798} declarations; at most
+standard foundational axioms \texttt{propext},
 \texttt{Classical.\allowbreak{}choice}, \texttt{Quot.\allowbreak{}sound}). Establishes
 mathematical consistency on formal structures, never a physical claim
 about nature. \\
@@ -389,13 +397,20 @@ is documented). \\
   Frequency Anomaly Atlas entry identifiers
   (\texttt{data/\allowbreak{}anomaly-\allowbreak{}atlas.\allowbreak{}csv})
 \item
-  CSV, JSON, API, PyPI, AGPL, GPL, IP, CD, PROJEKT, WebMCP, RCE, LUT6:
-  comma-separated values, JavaScript Object Notation, application
-  programming interface, Python Package Index, GNU Affero General Public
-  License, GNU General Public License, intellectual property, CD PROJEKT
+  CSV, JSON, NDJSON, API, PyPI, AGPL, GPL, IP, CD, PROJEKT, WebMCP,
+  RCE, LUT6: comma-separated values, JavaScript Object Notation,
+  newline-delimited JavaScript Object Notation, application programming
+  interface, Python Package Index, GNU Affero General Public License,
+  GNU General Public License, intellectual property, CD PROJEKT
   corporate trademark holder, Web Model Context Protocol, Reality Code
   Engine {[}same house{]}, and 6-input Boolean look-up table {[}same
   house{]}
+\item
+  CVE, CWE, FRO, GMP, WHNF, CIC, FFI, RAPL: Common Vulnerabilities and
+  Exposures, Common Weakness Enumeration, Lean Focused Research
+  Organization, GNU Multiple Precision Arithmetic Library, weak head
+  normal form, Calculus of Inductive Constructions, foreign function
+  interface, and Running Average Power Limit
 \end{itemize}
 
 To keep forward references transparent from top to bottom, Section 1
@@ -1083,6 +1098,85 @@ alongside ground-state passivity
 \texttt{M6.\allowbreak{}ground\_\allowbreak{}state\_\allowbreak{}passive\_\allowbreak{}two\_\allowbreak{}level} &
 \textbf{\texttt{Kernel-\allowbreak{}checked}} (\texttt{propext},
 \texttt{Quot.\allowbreak{}sound}) \\
+\end{longtable}
+}
+}
+
+\textbf{Six-kernel \texttt{bubblewrap}-sandboxed
+\texttt{lake\ check\ --paranoid} audit (\texttt{CVE-2026-72844},
+\texttt{CVE-2026-72711}, \texttt{\#16688}, and \texttt{\#16693}
+hardened).} Following the 2026 Lean 4 soundness disclosures ---
+\texttt{CVE-2026-72844} (\texttt{leanprover/\allowbreak{}lean4\#14576}, phantom
+nested-inductive \texttt{.proj} type confusion \texttt{CWE-843} in
+\texttt{<=\ v4.31.0}), \texttt{CVE-2026-72711} (\texttt{\#14484},
+missing free-variable closure check in \texttt{add\_opaque}),
+\texttt{Kernel.\allowbreak{}Environment.\allowbreak{}replay} forged \texttt{.inductInfo} skipping
+(\texttt{\#16688}), \texttt{.olean.server} sidecar/replay key mismatches
+(\texttt{\#16674}, \texttt{\#16675}), \texttt{Prop}-structure field
+projection tightening (\texttt{\#14977}), and compiler-trust
+\texttt{native\_decide} (\texttt{Lean.\allowbreak{}ofReduceBool} \texttt{FFI},
+\texttt{\#16693}) ---
+\texttt{openie-\allowbreak{}research-\allowbreak{}experiments/\allowbreak{}time-\allowbreak{}as-\allowbreak{}an-\allowbreak{}index/\allowbreak{}lean/\allowbreak{}verify\_\allowbreak{}six\_\allowbreak{}kernels.\allowbreak{}py}
+(\texttt{six\_\allowbreak{}kernel\_\allowbreak{}paranoid\_\allowbreak{}audit.\allowbreak{}json},
+\texttt{six\_\allowbreak{}kernel\_\allowbreak{}paranoid\_\allowbreak{}audit.\allowbreak{}csv}, commit
+\texttt{1f50db59}) enforces zero \texttt{sorry}, zero custom
+\texttt{axiom}, zero \texttt{opaque}, zero nested inductives, zero
+\texttt{Prop}-structures with non-\texttt{Prop} fields, and zero
+\texttt{Lean.\allowbreak{}ofReduceBool} (\texttt{10\ /\ 31} zero-axiom theorems,
+\texttt{23\ /\ 31} choice-free), builds cleanly in
+\texttt{Lean\ v4.36.0} (\texttt{1,129.83\ ms}, \texttt{61.66\ J} Linux
+\texttt{RAPL} package \texttt{reported\_j}), and exports text-format
+\texttt{NDJSON} declarations inside an unprivileged Linux
+\texttt{bubblewrap\ 0.11.1} (\texttt{bwrap}) read-only, network-isolated
+namespace (\texttt{283.21\ s} [\texttt{283,210.00\ ms}],
+\texttt{1,632.08\ J} core / \texttt{27,217.18\ J} package \texttt{RAPL}
+\texttt{reported\_j}, \texttt{measured\_j\ =\ None},
+\texttt{board\_metered\ =\ false}) verified unanimously by all six
+independent checkers:
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.23}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.31}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.10}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.09}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.27}}@{}}
+\toprule\noalign{}
+\textbf{Independent Proof Checker (\texttt{bwrap})} &
+\textbf{Implementation \& Soundness Basis} &
+\textbf{Decls} &
+\textbf{Verdict} &
+\textbf{Mitigated Vulnerability Classes} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{con-leche\ --verified}} & Minimal reference kernel
+(Breitner) formally proved consistent in \texttt{ZFC} set theory (cannot
+accept \texttt{False}) & \texttt{58,796} & \textbf{\texttt{Accepts}} &
+\texttt{CVE-2026-72844} (nested inductive \texttt{.proj}),
+\texttt{CVE-2026-72711} (\texttt{add\_opaque}), \texttt{WHNF} cache bugs \\
+\textbf{\texttt{con-ron\ --verified}} & \emph{Aeneas}-verified Rust
+refinement of \texttt{con-leche} & \texttt{58,796} &
+\textbf{\texttt{Accepts}} & \texttt{CVE-2026-72844},
+\texttt{CVE-2026-72711}, C++ memory \& \texttt{GMP} bignum bugs
+(\texttt{\#14833}) \\
+\textbf{\texttt{lean4lean}} & Independent Lean-in-Lean \texttt{CIC}
+typechecker (Carneiro) & \texttt{58,798} & \textbf{\texttt{Accepts}} &
+C++ kernel implementation divergence \& \texttt{\#14977} projection typing \\
+\textbf{\texttt{nanoda}} & Standalone zero-Lean-runtime Rust export
+verifier (\texttt{sorryAx} blocked) & \texttt{58,798} &
+\textbf{\texttt{Accepts}} & \texttt{.olean} replay manipulation
+(\texttt{\#16674}, \texttt{\#16688}) \& unpermitted \texttt{sorryAx} \\
+\textbf{\texttt{leanchecker\ --paranoid}} & Fresh-environment C++ kernel
+replay with zero tactic or compiler trust & \texttt{58,798} &
+\textbf{\texttt{Accepts}} & Metaprogramming environment mutation,
+\texttt{skipKernelTC}, \& \texttt{Lean.\allowbreak{}ofReduceBool} (\texttt{\#16693}) \\
+\textbf{\texttt{Lean\ v4.36.0} (default)} & Post-\texttt{CVE} November
+2026 C++ kernel (\texttt{\#print\ axioms} enforced) & \texttt{58,798} &
+\textbf{\texttt{Accepts}} & All 2026 kernel \texttt{CVE}s patched;
+\texttt{0} \texttt{sorry}, \texttt{0} \texttt{opaque}, \texttt{0} \texttt{ofReduceBool} \\
 \end{longtable}
 }
 }

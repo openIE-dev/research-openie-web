@@ -29,7 +29,7 @@ complete: true
 | Claim label | Operational meaning in this study |
 | :--- | :--- |
 | **`Established`** | その定式化された形式モデル内で数学的に証明された、または査読付き実験物理学で再現された。 |
-| **`Kernel-checked`** | `Lean 4.36.0`（`code_and_proofs/lean/Horizon.lean` と `Paradox.lean`）で機械的に検証され、`sorry` プレースホルダーを一切使用せず、標準的な基礎公理（`propext`、`Classical.choice`、`Quot.sound`）のみで実施された。形式構造上の数学的一貫性を確立するものであり、自然に関する物理的主張を示すものではない。 |
+| **`Kernel-checked`** | `Lean 4.36.0`（`code_and_proofs/lean/Horizon.lean` と `Paradox.lean`、目録化された `31` 定理、`sorry` `0`、カスタム公理 `0`、`opaque` `0`、`Lean.ofReduceBool` `0`）で機械的に検証され、さらに Linux `bubblewrap`（`bwrap`）名前空間サンドボックス内で `lake check --paranoid` の**6つの独立した証明チェッカー**すべてによって全会一致で受理された（`con-leche --verified` および `con-ron --verified`：`58,796` 宣言；`lean4lean`、`nanoda`、`leanchecker --paranoid`、および `Lean v4.36.0`：`58,798` 宣言）。形式構造上の数学的一貫性を確立するものであり、自然に関する物理的主張を示すものではない。 |
 | **`Conjecture`** | 明確な仮定と明示的な反証手段を伴う整合的な理論的提案、または争点となっている経験的異常であり、証明も反証もされていない。 |
 | **`Speculation`** | 再現測定によって裏付けられておらず、既知の上限と矛盾する（新たな物理が介入しない限り）、あるいは誤報・虚構に起因する（出典の捏造が記録されている場合は `Debunked` とする）。 |
 
@@ -53,7 +53,8 @@ complete: true
 <li>AIR, SPR, DNA, NRC, TSVF, EPR, SNR, QNM, ULP, CODATA, DOI: American Institutes for Research、Society for Psychical Research、デオキシリボ核酸、National Research Council、二状態ベクトル形式、Einstein‑Podolsky‑Rosen、信号対雑音比、準正準モード、最下位ビット、Committee on Data of the International Science Council、Digital Object Identifier</li>
 <li>TA, TA001, TA007, TA008, TA009, TA011, TA012, TA014, TA015, TA016, TA017, TA025, TA030, TA031, TA032, TA033, TA036, TA053, TA062, TA063, TA064, TA065, TA066, TA067, TA070, TA077, TA081: Temporal Anomaly カタログエントリ識別子 (`data/temporal-anomaly-catalog.csv`)</li>
 <li>AA, AA01, AA02, AA03, AA04, AA05, AA06, AA07, AA08, AA09, AA10, AA11, AA12, AA17, AA18, AA19, AA26, AA31, AA32, AA34, AA37, AA38, AA40: Frequency Anomaly Atlas エントリ識別子 (`data/anomaly-atlas.csv`)</li>
-<li>CSV, JSON, API, PyPI, AGPL, GPL, IP, CD, PROJEKT, WebMCP, RCE, LUT6: カンマ区切り値、JavaScript Object Notation、アプリケーションプログラミングインタフェース、Python Package Index、GNU Affero General Public License、GNU General Public License、知的財産、CD PROJEKT 社の商標保有者、Web Model Context Protocol、Reality Code Engine（同一ハウス）、および 6 入力ブールルックアップテーブル（同一ハウス）</li>
+<li>CSV, JSON, NDJSON, API, PyPI, AGPL, GPL, IP, CD, PROJEKT, WebMCP, RCE, LUT6: カンマ区切り値、JavaScript Object Notation、改行区切り JavaScript Object Notation、アプリケーションプログラミングインタフェース、Python Package Index、GNU Affero General Public License、GNU General Public License、知的財産、CD PROJEKT 社の商標保有者、Web Model Context Protocol、Reality Code Engine（同一ハウス）、および 6 入力ブールルックアップテーブル（同一ハウス）</li>
+<li>CVE, CWE, FRO, GMP, WHNF, CIC, FFI, RAPL: 共通脆弱性識別子（Common Vulnerabilities and Exposures）、共通脆弱性タイプ一覧（Common Weakness Enumeration）、Lean Focused Research Organization、GNU 多倍長演算ライブラリ（GNU Multiple Precision Arithmetic Library）、弱頭部正規形、帰納的構成計算（Calculus of Inductive Constructions）、外部関数インタフェース、および Running Average Power Limit</li>
 </ul>
 
 上から下へ前方参照を明確に保つため、セクション 1 では記法を定義し、セクション 2 では時間ループの複雑性を概観し、セクション 3 では時間的インデックス付けと Hellman 事前計算を取り上げ、セクション 4 では逆因果性と物理的緩和を分析し、セクション 5 では暗号的生存性を写像し、セクション 6 では候補公理 `A1 to A8` と零点条件 `Z1 to Z6` を評価し、セクション 7 では Horizon 条件 `C1 to C4` を証明しモデル `M1 to M8` を実行し、セクション 8 では三つの実証台帳（`TA001` から `TA081`、`AA01` から `AA40`、および `P01` から `P74`）を監査し、セクション 9 では偽証者 `F1 to F19` とゲームメカニクスを統合する。以前の Open Interface Engineering の研究 - [Thermodynamic Bounds and an Optimal Tempo](/papers/agency/)、[Metered Commit Gates](/papers/gates/)、[Deterministic Null](/papers/deterministic-null/)、および [Downward LUT6 Compilation](/papers/lut-adapt/) - は `[same house]` の仲間として、建築的文脈のためにのみ引用されている。
@@ -213,6 +214,17 @@ Frequency transformation trades temporal localization for spectral resolution; i
 | **`C4` 過去光円錐局所性** | $1+1$ ミンコフスキー空間において、$(\Delta t)^2 - (\Delta x)^2 = du \cdot dv$、時系列的先行関係は非反射的かつ推移的であり、$I^+(o)$ は $J^-(o)$ と厳密に素である (`past_cone_no_future_access`)。 | `M4.interval_lightcone`、`M4.future_timelike`、`M4.future_irrefl`、`M4.future_trans`、`M4.past_cone_no_future_access` | **`Kernel-checked`** (標準 3) |
 | **`H-coarse` 地平線境界** | 非単射な粗い記録 (2原子平均 `(-1, 1)` 対 `(0, 0)` や 4ビット状態の 2ビットビニングなど) はすべて、厳密なデコーダを**持たない**; ノイズおよび有限 Slepian 窓は、窓の地平線を超えると外挿誤差を爆発させる。 | `M1.coarse_record_horizon`、`M1.mean_not_injective`、`M5.erase_not_injective` | **`Kernel-checked`** (`0` 公理) |
 | **同時充足可能性** | 基底状態の受動性 (`M6.ground_state_passive_two_level`) とともに `C1`、`C2`、`C3`、および `C4` を同時に満たす明示的な非空の証人。 | `horizon_conditions_consistent`、`M6.ground_state_passive_two_level` | **`Kernel-checked`** (`propext`、`Quot.sound`) |
+
+**6カーネル `bubblewrap` サンドボックス化 `lake check --paranoid` 監査（`CVE-2026-72844`、`CVE-2026-72711`、`#16688`、および `#16693` 対策強化済み）。** 2026年の Lean 4 健全性に関する脆弱性開示（`CVE-2026-72844`［`leanprover/lean4#14576`、`<= v4.31.0` における幽霊パラメータ付き入れ子帰納型 `.proj` の型混同 `CWE-843`］、`CVE-2026-72711`［`#14484`、`add_opaque` における自由変数閉包検査の欠落］、`Kernel.Environment.replay` における偽造 `.inductInfo` のスキップ［`#16688`］、`.olean.server` サイドカー／リプレイキーの不整合［`#16674`、`#16675`］、`Prop` 構造体フィールド射影の厳格化［`#14977`］、およびコンパイラ信頼に依存する `native_decide`［`Lean.ofReduceBool` `FFI`、`#16693`］）を受け、`openie-research-experiments/time-as-an-index/lean/verify_six_kernels.py`（`six_kernel_paranoid_audit.json`、`six_kernel_paranoid_audit.csv`、コミット `1f50db59`）は、`sorry` ゼロ、カスタム `axiom` ゼロ、`opaque` ゼロ、入れ子帰納型ゼロ、非 `Prop` フィールドを持つ `Prop` 構造体ゼロ、および `Lean.ofReduceBool` ゼロ（無公理定理 `10 / 31`、選択公理不使用 `23 / 31`）を強制し、`Lean v4.36.0` でクリーンにビルドしたうえで（`1,129.83 ms`、Linux `RAPL` パッケージ `reported_j` が `61.66 J`）、非特権 Linux `bubblewrap 0.11.1`（`bwrap`）読み取り専用・ネットワーク隔離名前空間内でテキスト形式の `NDJSON` 宣言をエクスポートし（`283,210.00 ms`、コア `1,632.08 J`／パッケージ `27,217.18 J` `reported_j`、`measured_j = None`、`board_metered = false`）、6つの独立したチェッカーすべてによって全会一致で検証されている：
+
+| 独立証明チェッカー（`bwrap` 内の `lake check --paranoid`） | 実装と健全性の根拠 | 検証済み宣言数 | 判定 | 緩和される脆弱性クラス |
+| :--- | :--- | :---: | :---: | :--- |
+| **`con-leche --verified`** | `ZFC` 集合論で無矛盾性が形式的に証明された最小参照カーネル（Breitner；`False` を受理し得ない） | `58,796` | **`Accepts`** | `CVE-2026-72844`（入れ子帰納型 `.proj`）、`CVE-2026-72711`（`add_opaque`）、`WHNF` キャッシュバグ |
+| **`con-ron --verified`** | *Aeneas* により検証された `con-leche` の Rust 精緻化実装 | `58,796` | **`Accepts`** | `CVE-2026-72844`、`CVE-2026-72711`、C++ メモリおよび `GMP` 多倍長整数バグ（`#14833`） |
+| **`lean4lean`** | 独立した Lean-in-Lean `CIC` 型チェッカー（Carneiro） | `58,798` | **`Accepts`** | C++ カーネル実装の乖離および `#14977` 射影型付け |
+| **`nanoda`** | Lean ランタイム非依存のスタンドアロン Rust エクスポート検証器（`sorryAx` 遮断） | `58,798` | **`Accepts`** | `.olean` リプレイ改ざん（`#16674`、`#16688`）および不許可の `sorryAx` |
+| **`leanchecker --paranoid`** | タクティクおよびコンパイラへの信頼ゼロの新規環境 C++ カーネルリプレイ | `58,798` | **`Accepts`** | メタプログラミングによる環境書換え、`skipKernelTC`、および `Lean.ofReduceBool`（`#16693`） |
+| **`Lean v4.36.0`（デフォルト）** | `CVE` 修正後の2026年11月版 C++ カーネル（`#print axioms` 強制） | `58,798` | **`Accepts`** | 2026年の全カーネル `CVE` 修正済み；`sorry` `0`、`opaque` `0`、`ofReduceBool` `0` |
 
 <div id="72-numerical--symbolic-verification-across-m1-to-m8-and-f5-seed--20261122" class="anchor-alias" aria-hidden="true"></div>
 

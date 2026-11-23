@@ -3,9 +3,10 @@ interface Props {
   feed: any;
   radarCount: number;
   foundryCount: number;
+  ecosystemCount?: number;
 }
 
-const { feed, radarCount, foundryCount } = Astro.props;
+const { feed, radarCount, foundryCount, ecosystemCount = 6 } = Astro.props;
 const episodes = feed.episodes || [];
 const personasMap = feed.personas || {};
 const personaList = Object.values(personasMap) as any[];
@@ -128,6 +129,9 @@ const firstEp = episodes[0] || {
     </button>
     <button type="button" data-radio-tab="foundry" class="radio-tab-btn font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer">
       3 · Topic Idea Foundry &amp; &lt;60s Pilots ({foundryCount})
+    </button>
+    <button type="button" data-radio-tab="ecosystem" class="radio-tab-btn font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-border text-brand-cyan hover:text-brand-white cursor-pointer">
+      4 · *.openie.dev Ecosystem Desks ({ecosystemCount})
     </button>
   </div>
 

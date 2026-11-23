@@ -12,9 +12,18 @@
 \usepackage{unicode-math}
 \defaultfontfeatures{Scale=MatchLowercase}
 \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\setmainfont{STIX Two Text}
-\setmathfont{STIX Two Math}
-\setmonofont{Menlo}[Scale=0.83]
+\IfFontExistsTF{STIX Two Text}{%
+  \setmainfont{STIX Two Text}
+  \setmathfont{STIX Two Math}
+}{%
+  \setmainfont{STIXTwoText}[Extension=.otf,UprightFont=*-Regular,BoldFont=*-Bold,ItalicFont=*-Italic,BoldItalicFont=*-BoldItalic]
+  \setmathfont{STIXTwoMath-Regular.otf}
+}
+\IfFontExistsTF{Menlo}{%
+  \setmonofont{Menlo}[Scale=0.83]
+}{%
+  \setmonofont{DejaVu Sans Mono}[Scale=0.83]
+}
 
 \usepackage{microtype}
 \usepackage{parskip}
@@ -665,7 +674,7 @@ Invoking \texttt{Qwen/Qwen3.6-35B-A3B} native \texttt{enable\_thinking=True} (\t
 
 \subsection{4.19 Claim LA-19: Six-kernel paranoid formal proofs of Section 2 (\texttt{27} theorems, \texttt{6/6} kernels, \texttt{CVE-2026-72844}-hardened)}\label{claim-la19}
 
-To guard against single-prover kernel vulnerabilities (\texttt{CVE-2026-72844} nested-inductive \texttt{.proj} confusion and \texttt{CVE-2026-72711} \texttt{add\_opaque} cache poisoning in Lean $\le$ \texttt{v4.31.0}) and \texttt{native\_decide} (\texttt{Lean.ofReduceBool}) bypasses, \texttt{verify\_lean\_proofs.py} audits all \texttt{27} theorems across \textbf{six independent kernels} via \texttt{lake check --paranoid} (\texttt{175.8 s}, \texttt{77.75 J} \texttt{reported\_j}; clean \texttt{lake build}: \texttt{1.04 s}, \texttt{0.32 J}; Figure~\ref{fig:sixkernel}):
+To guard against single-prover kernel and \texttt{.olean}-replay vulnerabilities (\texttt{CVE-2026-72844} nested-inductive \texttt{.proj} confusion, \texttt{CVE-2026-72711} \texttt{add\_opaque} closure omission, \texttt{\#16688} forged \texttt{.inductInfo} replay skipping, \texttt{\#16674}/\texttt{\#16675} sidecar mismatches, and \texttt{\#16693} \texttt{native\_decide} \texttt{Lean.ofReduceBool} bypasses), \texttt{verify\_lean\_proofs.py} audits all \texttt{27} theorems (clean \texttt{lake build}: \texttt{1.04 s}, \texttt{0.32 J} Darwin \texttt{reported\_j}) and confirms that \texttt{lake check --paranoid} passes both on Apple Silicon (\texttt{175.80 s}, \texttt{77.75 J} Darwin \texttt{reported\_j}) and inside an unprivileged Linux \texttt{bubblewrap 0.11.1} (\texttt{bwrap}) read-only, network-isolated namespace (\texttt{237.82 s}, \texttt{1,461.62 J} core / \texttt{22,371.48 J} package \texttt{RAPL} \texttt{reported\_j}, archived in \texttt{openie-research-experiments/lut-adapt-bwrap-paranoid/} at commit \texttt{1f50db59}) across all \textbf{6/6 independent kernels} (\texttt{con-leche --verified} and \texttt{con-ron --verified}: \texttt{58,683} declarations; \texttt{lean4lean}, \texttt{nanoda}, \texttt{leanchecker --paranoid}, and \texttt{Lean v4.36.0}: \texttt{58,685} declarations; Figure~\ref{fig:sixkernel}):
 
 {\footnotesize\setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}L{0.28\linewidth}C{0.08\linewidth}L{0.36\linewidth}L{0.22\linewidth}@{}}
@@ -678,7 +687,7 @@ To guard against single-prover kernel vulnerabilities (\texttt{CVE-2026-72844} n
 \texttt{LutAdapt/JointMinterm.lean} & \texttt{7} & Prop.\ 3 chimera witness, \texttt{uint64} BPE pack (\texttt{K=3,4}) & \textbf{\texttt{1} zero-ax}; \texttt{6} choice-free \\
 \texttt{LutAdapt/ConformalProvenance.lean} & \texttt{6} & Result 4 radial \texttt{EBRM}, conformal bound, provenance lattice & \textbf{\texttt{2} zero-ax}; \texttt{4} choice-free \\
 \midrule
-\textbf{Total (\texttt{6/6} Kernels Accept)} & \textbf{\texttt{27}} & \textbf{\texttt{con-leche} \& \texttt{con-ron} (\texttt{58,683} decls), \texttt{lean4lean}, \texttt{nanoda}} & \textbf{\texttt{5} zero-ax; \texttt{23/27} choice-free} \\
+\textbf{Total (\texttt{6/6} Kernels Accept)} & \textbf{\texttt{27}} & \textbf{\texttt{con-leche}/\texttt{con-ron} (\texttt{58,683}), \texttt{lean4lean}/\texttt{nanoda}/\texttt{4.36} (\texttt{58,685})} & \textbf{\texttt{5} zero-ax; \texttt{23/27} choice-free} \\
 \bottomrule
 \end{longtable}
 }

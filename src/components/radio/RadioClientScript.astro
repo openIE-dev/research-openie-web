@@ -3,10 +3,11 @@ interface Props {
   feed: any;
   radar: any;
   foundry: any;
+  ecosystem?: any;
 }
 
-const { feed, radar, foundry } = Astro.props;
-const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u003c');
+const { feed, radar, foundry, ecosystem = { channels: [] } } = Astro.props;
+const payloadJson = JSON.stringify({ feed, radar, foundry, ecosystem }).replace(/</g, '\\u003c');
 ---
 
 <script type="application/json" id="openie-radio-payload" set:html={payloadJson}></script>
@@ -418,18 +419,31 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
     });
   }
 
-  var pStudio = document.getElementById('radio-panel-studio'), pRadar = document.getElementById('radar'), pFoundry = document.getElementById('foundry');
+  var pStudio = document.getElementById('radio-panel-studio'), pRadar = document.getElementById('radar'), pFoundry = document.getElementById('foundry'), pEcosystem = document.getElementById('ecosystem');
+  function activateRadioTab(tab) {
+    if (pStudio) pStudio.classList.toggle('hidden', tab !== 'all' && tab !== 'studio');
+    if (pEcosystem) pEcosystem.classList.toggle('hidden', tab !== 'all' && tab !== 'ecosystem');
+    if (pRadar) pRadar.classList.toggle('hidden', tab !== 'all' && tab !== 'radar');
+    if (pFoundry) pFoundry.classList.toggle('hidden', tab !== 'all' && tab !== 'foundry');
+    document.querySelectorAll('.radio-tab-btn').forEach(function (b) {
+      var on = (b.getAttribute('data-radio-tab') || 'all') === tab;
+      b.className = 'radio-tab-btn font-mono text-xs px-3.5 py-2 rounded-lg border cursor-pointer ' +
+        (on ? 'border-brand-amber/50 bg-brand-amber/15 text-brand-amber' : 'border-brand-border text-brand-slate hover:text-brand-white');
+    });
+  }
   document.querySelectorAll('.radio-tab-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var tab = btn.getAttribute('data-radio-tab') || 'all';
-      if (pStudio) pStudio.classList.toggle('hidden', tab !== 'all' && tab !== 'studio');
-      if (pRadar) pRadar.classList.toggle('hidden', tab !== 'all' && tab !== 'radar');
-      if (pFoundry) pFoundry.classList.toggle('hidden', tab !== 'all' && tab !== 'foundry');
-      document.querySelectorAll('.radio-tab-btn').forEach(function (b) {
-        var on = b === btn;
-        b.className = 'radio-tab-btn font-mono text-xs px-3.5 py-2 rounded-lg border cursor-pointer ' +
-          (on ? 'border-brand-amber/50 bg-brand-amber/15 text-brand-amber' : 'border-brand-border text-brand-slate hover:text-brand-white');
-      });
+      activateRadioTab(btn.getAttribute('data-radio-tab') || 'all');
+    });
+  });
+
+  document.querySelectorAll('[data-desk-tune-ep]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var eid = btn.getAttribute('data-desk-tune-ep');
+      var dname = btn.getAttribute('data-desk-name') || 'Ecosystem Desk';
+      activateRadioTab('all');
+      loadEpisode(eid, 0, true, 'Desk: ' + dname);
+      if (pStudio) pStudio.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
@@ -460,6 +474,25 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
     });
   });
 
+  var qParams = new URLSearchParams(window.location.search);
+  var qTab = qParams.get('tab');
+  var qDesk = qParams.get('desk');
+  if (qTab && ['all', 'studio', 'radar', 'foundry', 'ecosystem'].indexOf(qTab) !== -1) {
+    activateRadioTab(qTab);
+  }
+  if (qDesk && DATA.ecosystem && DATA.ecosystem.channels) {
+    var matchedDesk = DATA.ecosystem.channels.find(function (c) { return c.id === qDesk; });
+    if (matchedDesk) {
+      document.querySelectorAll('[data-radio-desk]').forEach(function (el) {
+        if (el.getAttribute('data-radio-desk') === qDesk) {
+          el.classList.add('border-brand-amber', 'bg-brand-amber/10');
+        }
+      });
+      if (matchedDesk.radio_episodes && matchedDesk.radio_episodes[0]) {
+        loadEpisode(matchedDesk.radio_episodes[0], 0, false, 'Desk: ' + matchedDesk.name);
+      }
+    }
+  }
   if (window.location.hash) {
     var matchedEp = EPISODES.find(function (e) { return e.id === window.location.hash.slice(1); });
     if (matchedEp) loadEpisode(matchedEp.id, 0, false, 'Mode: On-Demand');

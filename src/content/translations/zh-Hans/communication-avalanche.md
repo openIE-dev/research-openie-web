@@ -54,7 +54,7 @@ complete: true
 <li>ICLR, ICML, IJCAI, ILSVRC, INA238, INA3221, IPA, IPL, IR, JEPA, I-JEPA：国际学习表征会议、国际机器学习会议、国际人工智能联合会议、ImageNet大规模视觉识别挑战、德州仪器在线功率监视器（`INA238`、`INA3221`）、不变点注意力、信息处理语言、中间表示、联合嵌入预测架构和基于图像的联合嵌入预测架构</li>
 <li>KKT、KL、KS、KSs、LNCS、LSTM、MAXIM、MCP、MCTS、MGU、MIPS、MPNN、MSA、MSE、MYCIN：Karush-Kuhn-Tucker 最优性条件、Kullback-Leibler 散度、Hearsay-II 知识来源（们）、Lecture Notes in Computer Science、长短期记忆、Dallas/Maxim 1-Wire 循环冗余多项式（`CRC-8/MAXIM`）、模型上下文协议、蒙特卡罗树搜索、最一般统一子句、最大内积搜索、消息传递神经网络、多序列比对、均方误差，以及抗菌生成规则专家系统（`MYCIN`）</li>
 <li>NL、NLP、OEM、OS、PET、PMLR、POSIX、PPO、RAG、RAMB36E2、RCE、RPC、ReAct、ReLU、ResNet、RFC、RLHF、RNN、RTL、SATB、SE、SMT、SOM、SSM、SVM、TD、UCT、URI、URIs、USD、VC、WNS、XOR、pLDDT：自然语言、自然语言处理、原始设备制造商、操作系统、正电子发射断层扫描、Proceedings of Machine Learning Research、可移植操作系统接口、近端策略优化、检索增强生成、AMD UltraScale+ 36-Kilobit Block RAM 原语、Reality Code Engine、远程过程调用、Reasoning and Acting 循环、修正线性单元、深度残差网络、Request for Comments、来自人类反馈的强化学习、循环神经网络、寄存器-传输级、沙箱代理测试平台、特殊欧氏群（`SE(3)`）、可满足性模理论、系统级模块、结构化状态空间模型、支持向量机、时序差分学习、树的上限置信界、统一资源标识符（们）、United States dollars、Vapnik-Chervonenkis 维度、最坏负松弛、异或谓词，以及预测局部距离差异测试</li>
-<li>AGX、CAN、CRT、CUDA、DC、DE10、FD、FSM、LRU、MDP、MSS、NVIDIA、NVML、PID、PPT、RUSAGE_INFO_V6、RTX、SAT、TI、UCB1、VDD、VDD_CPU_SOC、VDD_CPU_SOC_MSS、VDD_GPU、VIN、VIN_SYS_5V0、XNU：Autonomous-Grade Compute 模块系列、控制器局域网络、华氏剩余定理、统一计算设备架构、直流、电数字酶 10-camp 二进制帧魔术头、有限域约束求解器、有限状态机、最近最少使用缓存策略、马尔可夫决策过程、内存子系统、加速计算硬件供应商 NVIDIA、NVIDIA Management Library、进程标识符、功耗跟踪、Darwin Resource Usage Info v6 结构体、Ray Tracing Texel eXtreme、布尔可满足性、Texas Instruments、上限置信界 1、电压漏-漏供电轨、Tegra CPU/SoC 供电轨、Tegra CPU/SoC/内存供电轨、Tegra GPU 供电轨、板卡电压-输入轨、5 伏系统输入轨，以及 Darwin X is Not Unix kernel</li>
+<li>AGX, CAN, CIC, CRT, CUDA, CWE, DC, DE10, FD, FFI, FRO, FSM, LRU, MDP, MSS, NDJSON, NVIDIA, NVML, PID, PPT, RUSAGE_INFO_V6, RTX, SAT, TI, UCB1, VDD, VDD_CPU_SOC, VDD_CPU_SOC_MSS, VDD_GPU, VIN, VIN_SYS_5V0, WHNF, XNU, ZFC: Autonomous-Grade Compute 模块系列、控制器局域网、归纳构造演算、中国剩余定理、统一计算设备架构、通用缺陷枚举、直流电、数字酶 10 阵营二进制帧魔数头、有限域约束求解器、外部函数接口、Lean 聚焦研究组织、有限状态机、最近最少使用缓存策略、马尔可夫决策过程、内存子系统、换行分隔的 JavaScript 对象表示法、加速计算硬件厂商 NVIDIA、NVIDIA 管理库（NVIDIA Management Library）、进程标识符、封装功耗跟踪（Package Power Tracking）、Darwin Resource Usage Info v6 结构体、Ray Tracing Texel eXtreme、布尔可满足性、德州仪器（Texas Instruments）、置信上限 1（Upper Confidence Bound 1）、漏-漏电压供电轨、Tegra CPU/SoC 供电轨、Tegra CPU/SoC/内存供电轨、Tegra GPU 供电轨、板载输入电压供电轨、5 伏系统输入供电轨、弱头范式、Darwin X is Not Unix 内核，以及带选择公理的策梅洛-弗兰克尔集合论</li>
 </ul>
 
 <div id="measurement-and-evidence-class-ledger" class="anchor-alias" aria-hidden="true"></div>
@@ -68,7 +68,7 @@ complete: true
 | 标签 | 证据类别 | 本研究中的操作边界 |
 | :--- | :--- | :--- |
 | **`[E]`** | **已确立的实证科学** | 微生物学、进化细胞生物学、动物集体行为、认知科学或人类临床神经技术中经过复现的同行评议研究结果，并附有经核验的 `DOI` 或 `PMID` 标识符。 |
-| **`[T]`** | **经内核检验的形式定理** | 在 `Lean 4.36.0` 中机械证明（`QuorumRatchet.lean`、`OrchestrationFlow.lean` 与 `EnzymaticSynthesis.lean`，共 `45` 条定理，编号 `CTA-T1` 至 `CTA-T45`，`0` 个 `sorry`，`0` 条自定义公理）。仅证明所述形式结构的演绎有效性，从不证明未经测量的物理主张。 |
+| **`[T]`** | **经内核检验的形式定理** | 在 `Lean 4.36.0` 中机械证明（`QuorumRatchet.lean`、`OrchestrationFlow.lean` 与 `EnzymaticSynthesis.lean`，共 `45` 条定理，编号 `CTA-T1` 至 `CTA-T45`，`0` 个 `sorry`、`0` 条自定义公理、`0` 个 `opaque`、`0` 个 `Lean.ofReduceBool`），并在 Linux `bubblewrap`（`bwrap`）沙箱内经 `lake check --paranoid` 的全部**六个独立证明检查器**一致接受（`con-leche --verified` 与 `con-ron --verified`：`58,928` 条声明；`lean4lean`、`nanoda`、`leanchecker --paranoid` 与 `Lean v4.36.0`：`58,930` 条声明）。仅证明所述形式结构的演绎有效性，从不证明未经测量的物理主张。 |
 | **`[M]`** | **确定性计算模型** | 依据预注册配置 `PREREG_cta_models.json`（`SHA-256: 475a89e3...ac9fa`，固定随机种子 `20261123`），在 `CA-M1` 至 `CA-M5` 上执行。 |
 | **`measured_j` / `reported_j` / `est_j`** | **物理分流器、硬件计数器或解析能量** | 物理 `TI INA238` / `INA3221` 直流分流器电源轨（`Jetson AGX Thor` 上的 `measured_j`，`CTA-E4`/`CTA-E5`），`CPU`/`SoC`/`GPU` 计数器（`RAPL`、`ri_energy_nj`、`NVML` 的 `reported_j`，`CTA-E1`-`CTA-E5`），以及解析查表界限（`est_j`）。三者严格分列保存，从不相加。 |
 | **`[S]`** | **推测性假说** | 未经验证的工程或临床前景，包括 `N` 维心智语义 `BCI` 桥接，以及超出动物或类器官模型的人类神经退行性分泌组/囊泡疗效。 |
@@ -464,7 +464,7 @@ $$
 | `C1` 自回归大语言模型单独运行（`GPT-OSS-120B`） | **`48%`**（`17`/`1`/`1`/`11`/`18`） | `52%` | `100` / `67,146`（`\$0.0359`） | `0.110 J` / `3,637.81 J` | `0.0132` | `0.079 J` / `5,513.77 J`（`28,161.53 J`） | `0.0087` |
 | `C2` 符号约束单独运行（`FD/SAT`） | **`30%`**（`0`/`10`/`20`/`0`/`0`） | **`0%`** | `0` / `0`（`\$0.00`） | `0.087 J` / `0.09 J` | `346.6885` | `0.070 J` / `0.07 J`（`0.33 J`） | `429.5963` |
 | `C3` 潜在能量模型打分器单独运行（未验证） | **`0%`**（`0`/`0`/`0`/`0`/`0`） | `100%` | `0` / `0`（`\$0.00`） | `5.156 J` / `5.16 J` | `0.0000` | `3.991 J` / `3.99 J`（`17.61 J`） | `0.0000` |
-| `C4` 蒙特卡洛树搜索展开搜索单独运行（`UCB1`，`256`） | **`11%`**\*（`0`/`0`/`1`\*`/`10`/`0`） | `19%`\* | `0` / `0`（`\$0.00`） | `0.785 J` / `0.78 J` | `14.0197` | `0.617 J` / `0.62 J`（`2.43 J`） | `16.2199` |
+| `C4` 蒙特卡洛树搜索展开搜索单独运行（`UCB1`，`256`） | **`11%`**\*（`0`/`0`/`1`\*/`10`/`0`） | `19%`\* | `0` / `0`（`\$0.00`） | `0.785 J` / `0.78 J` | `14.0197` | `0.617 J` / `0.62 J`（`2.43 J`） | `16.2199` |
 | `C5` 情节式案例存储单独运行（`Shape D`） | **`16%`**（`16`/`0`/`0`/`0`/`0`） | **`0%`** | `0` / `0`（`\$0.00`） | `0.005 J` / `0.005 J` | `3,363.4644` | `0.003 J` / `0.003 J`（`0.012 J`） | `6,254.8866` |
 | `C6` 进化式 AST 变异器单独运行（`300` 次评估） | **`4%`**（`0`/`0`/`0`/`0`/`4`） | `20%` | `0` / `0`（`\$0.00`） | `5.959 J` / `5.96 J` | `0.6713` | `4.936 J` / `4.94 J`（`22.13 J`） | `0.8104` |
 | `C7` 因果贝叶斯 `do(X)` 引擎单独运行 | **`10%`**（`0`/`0`/`0`/`10`/`0`） | **`0%`** | `0` / `0`（`\$0.00`） | `0.003 J` / `0.003 J` | `3,980.8917` | `0.002 J` / `0.002 J`（`0.007 J`） | `6,506.1809` |
@@ -675,6 +675,21 @@ $$\mathrm{CpJ}(t_{\text{month}}) < \mathrm{CpJ}(t_{\text{quarter}}) < \mathrm{Cp
 | **`CTA-T32` 至 `CTA-T35`**（数字酶催化） | `EnzymaticSynthesis`：`digital_enzyme_barrier_lowering_and_invariance`，`digital_enzyme_linear_cumulative_savings`，`digital_enzyme_zero_unverified_drift`，`digital_enzyme_sequential_composition` | 任何 `DigitalEnzyme`（$\Phi_{\text{IR}}$，`attest_ok`，$V_{\text{det}}$，$c_{\text{enz}} < c_{\text{nl}}$）在 $M$ 次反应中保持结构上未消耗，将每次交接激活能降低 $\Delta E^\ddagger = k_{\text{retry}} c_{\text{nl}} - c_{\text{enz}} > 0$（`M * DeltaE` 累积），传播 `0` 未验证漂移而非 $M\epsilon > 0$，并顺序复合（$\mathcal{E}_2 \circ \mathcal{E}_1$）。 | `propext`, `Quot.sound`（`CTA-T34`：`propext`） |
 | **`CTA-T36` 至 `CTA-T40`**（`DES-10` 生态位主导性） | `EnzymaticSynthesis`：`des_coverage_union_dominates_solo`，`des_strict_global_pass_superiority`，`des_strict_total_joule_dominance`，`des_strict_cpj_dominance`，`des_one_pass_calibration_identifies_niche_router` | 在 $K \ge 2$ 个阵营（`TenCamps = 10`）和 $R$ 个体制下，可执行 `selectNicheCamp` 实现覆盖并集 $\bigvee_k p(k,r)$，在没有单一阵营解决所有 $R$ 个体制时严格优于每个单一单培养，在 $\sum_r (c_{\text{univ}} - c^*) > R c_{\text{enz}}$ 时在总焦耳和 `CpJ` 上严格主导任何通用单阵营，并以 $K \cdot m$ 次探测的 `1` 次通过校准（`0` 梯度周期）。 | `propext`, `Quot.sound` |
 | **`CTA-T41` 至 `CTA-T45`**（4 层向下强制与视界界限） | `EnzymaticSynthesis`：`downward_step_amortization_dominance`，`four_tier_downward_convergence_to_c0`，`horizon_cpj_monotonicity_month_quarter_year_decade`，`downward_compilation_preserves_soundness_all_tiers`，`downward_compilation_falsifier_hit_rate_iff` | 在有序层 $c_3 > c_2 > c_1 > c_0 > 0$ 上，向下提升当 $E_{\text{comp}} < N(c_j - c_{j-1})$ 时回本，从 $c_3$ 单调收敛到 $c_0$，保证严格 $\mathrm{CpJ}(t_M) < \mathrm{CpJ}(t_Q) < \mathrm{CpJ}(t_Y) < \mathrm{CpJ}(t_D)$，在所有 4 层上保持可靠性，并建立精确杀伤底板 $h_{\min} = E_{\text{comp}} / (N(c_{\text{high}} - c_{\text{low}}))$。 | `CTA-T44`：**`0` 公理**；`CTA-T41`-`CTA-T43`, `CTA-T45`：`propext`, `Classical.choice`, `Quot.sound` |
+
+<div id="71-six-kernel-bubblewrap-sandboxed-lake-check---paranoid-audit-cve-2026-72844-cve-2026-72711-16688-and-16693-hardened" class="anchor-alias" aria-hidden="true"></div>
+
+### 7.1 六内核 `bubblewrap` 沙箱化 `lake check --paranoid` 审计（针对 `CVE-2026-72844`、`CVE-2026-72711`、`#16688` 与 `#16693` 加固）
+
+针对 2026 年披露的 Lean 4 可靠性漏洞（包括 `CVE-2026-72844`（`leanprover/lean4#14576`，`<= v4.31.0` 中的嵌套归纳 `.proj` 类型混淆 `CWE-843`）、`CVE-2026-72711`（`#14484`，`add_opaque` 中缺失自由变量闭包检查）、`Kernel.Environment.replay` 跳过伪造的 `.inductInfo`（`#16688`）、`.olean.server` 侧车与重放键不匹配（`#16674`、`#16675`）、`Prop` 结构体字段投影收紧（`#14977`），以及信任编译器的 `native_decide`（`Lean.ofReduceBool` `FFI`，`#16693`）），`openie-research-experiments/communication-avalanche/lean/verify_six_kernels.py`（`six_kernel_paranoid_audit.json`、`six_kernel_paranoid_audit.csv`，提交 `1f50db59`）验证了零 `sorry`、零自定义 `axiom`、零 `opaque`、零归纳类型声明（`0` 个嵌套归纳类型）、零 `Prop` 结构体（`全部 5` 个结构体均位于 `Type` 中）以及零 `Lean.ofReduceBool`（`4 / 45` 条零公理定理，`40 / 45` 条无选择公理定理），在 `Lean v4.36.0` 中干净通过构建（`1,346.19 ms`，Linux `RAPL` 封装 `reported_j` 为 `135.98 J`），并在非特权 Linux `bubblewrap 0.11.1`（`bwrap`）只读、网络隔离沙箱内导出文本格式 `NDJSON` 声明（`237,264.86 ms`，核心 `874.98 J` / 封装 `18,368.96 J` `reported_j`），经全部六个独立证明检查器一致接受：
+
+| 独立证明检查器（`bwrap` 中的 `lake check --paranoid`） | 实现与可靠性基础 | 已验证声明数 | 裁决结果 | 已缓解的漏洞类别 |
+| :--- | :--- | :---: | :---: | :--- |
+| **`con-leche --verified`** | 在 `ZFC` 集合论中经形式化证明相容的极小参考内核（Breitner，绝不接受 `False`） | `58,928` | **`Accepts`** | `CVE-2026-72844`（嵌套归纳 `.proj`）、`CVE-2026-72711`（`add_opaque`）、`WHNF` 缓存缺陷 |
+| **`con-ron --verified`** | 经 *Aeneas* 验证的 `con-leche` Rust 精化实现 | `58,928` | **`Accepts`** | `CVE-2026-72844`、`CVE-2026-72711`、C++ 内存与 GNU 大数库缺陷（`#14833`） |
+| **`lean4lean`** | 独立的 Lean-in-Lean `CIC` 类型检查器（Carneiro） | `58,930` | **`Accepts`** | C++ 内核实现分歧与 `#14977` 投影类型检查 |
+| **`nanoda`** | 独立的零 Lean 运行时 Rust 导出验证器（已拦截 `sorryAx`） | `58,930` | **`Accepts`** | `.olean` 重放篡改（`#16674`、`#16688`）与未经许可的 `sorryAx` |
+| **`leanchecker --paranoid`** | 零策略信任、零编译器信任的全新环境 C++ 内核重放 | `58,930` | **`Accepts`** | 元编程环境变异、`skipKernelTC` 与 `Lean.ofReduceBool`（`#16693`） |
+| **`Lean v4.36.0`（默认）** | 修复 `CVE` 后的 2026 年 11 月 C++ 内核（强制执行 `#print axioms`） | `58,930` | **`Accepts`** | 全部 2026 年内核 `CVE` 均已修补；`0` 个 `sorry`、`0` 个 `opaque`、`0` 个 `ofReduceBool` |
 
 ---
 

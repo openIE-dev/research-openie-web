@@ -1,0 +1,175 @@
+---
+interface Props {
+  ecosystem: any;
+  studiesById: Record<string, any>;
+}
+
+const { ecosystem, studiesById } = Astro.props;
+const channels = ecosystem.channels || [];
+const extended = ecosystem.extended_directory || [];
+---
+
+<section id="ecosystem-channels" class="mb-12 scroll-mt-24">
+  <div class="glass-card p-5 md:p-7 border border-brand-amber/30">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-5 mb-6 border-b border-brand-border">
+      <div>
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+          <span class="section-label">OpenIE Ecosystem Network · *.openie.dev</span>
+          <span class="px-2 py-0.5 rounded font-mono text-[10px] bg-brand-amber/15 text-brand-amber border border-brand-amber/30">
+            6 Domain Channels + 9 Stack Companions
+          </span>
+        </div>
+        <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white tracking-tight">
+          Watch by <span class="text-brand-amber">OpenIE Domain</span> &amp; <span class="text-brand-cyan">Avalanche Rung</span>
+        </h2>
+        <p class="font-body text-sm text-brand-slate mt-1.5 max-w-3xl leading-relaxed m-0">
+          Every film on OpenIE Research TV connects directly to our live domain properties—from the 9-rung forecasting engine at <a href="https://avalanche.openie.dev" class="text-brand-amber hover:underline">avalanche.openie.dev</a> and the substrate map at <a href="https://stack.openie.dev" class="text-brand-cyan hover:underline">stack.openie.dev</a> to <a href="https://compute.openie.dev" class="text-brand-light hover:underline">compute</a>, <a href="https://synthesis.openie.dev" class="text-brand-light hover:underline">synthesis</a>, <a href="https://knowledge.openie.dev" class="text-brand-light hover:underline">knowledge</a>, and <a href="https://database.openie.dev" class="text-brand-light hover:underline">database</a>. Select any channel below to filter the studio grid or launch its curated film queue.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2 shrink-0">
+        <button
+          type="button"
+          id="tv-clear-channel-btn"
+          class="hidden font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-amber text-brand-amber bg-brand-amber/10 hover:bg-brand-amber/20 cursor-pointer transition-all"
+        >
+          ✕ Clear Channel Filter (Show All 21)
+        </button>
+        <a
+          href="/radio/?tab=ecosystem#ecosystem"
+          class="font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-cyan/40 text-brand-cyan bg-brand-cyan/10 no-underline hover:bg-brand-cyan/20 transition-all"
+        >
+          ◉ Matching Radio Desks →
+        </a>
+      </div>
+    </div>
+
+    <!-- 6 Flagship *.openie.dev Channel Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+      {channels.map((ch: any) => (
+        <div
+          data-tv-channel-card={ch.id}
+          class="tv-channel-card rounded-xl border border-brand-border bg-white/[0.02] p-4 flex flex-col justify-between transition-all hover:border-brand-amber/40"
+        >
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <a
+                href={ch.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded border no-underline hover:opacity-90 transition-opacity"
+                style={`color:${ch.accent}; border-color:${ch.accent}55; background:${ch.accent}14;`}
+              >
+                {ch.domain} ↗
+              </a>
+              <span class="font-mono text-[10px] text-brand-gray">
+                {ch.tv_studies.length} studies · {ch.tv_studies.length * 4} films
+              </span>
+            </div>
+
+            <h3 class="font-display text-lg font-bold text-brand-white mb-0.5">
+              {ch.name}
+            </h3>
+            <div class="font-mono text-[10px] uppercase tracking-wider text-brand-amber mb-2">
+              {ch.rungs}
+            </div>
+            <p class="font-body text-xs text-brand-slate leading-relaxed mb-3">
+              {ch.plain_summary}
+            </p>
+            <div class="font-mono text-[10.5px] text-brand-cyan mb-3 pb-2.5 border-b border-brand-border">
+              {ch.key_metric}
+            </div>
+
+            <!-- Curated Study Film Chips -->
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              {ch.tv_studies.map((sid: string) => {
+                const st = studiesById[sid];
+                if (!st) return null;
+                return (
+                  <button
+                    type="button"
+                    data-card-play="true"
+                    data-study={sid}
+                    data-tier="90s"
+                    class="font-mono text-[10px] px-2 py-1 rounded border border-brand-border bg-white/[0.03] text-brand-light hover:border-brand-amber hover:text-brand-amber cursor-pointer transition-colors"
+                    title={`Play ${st.short_title} (90s Briefing)`}
+                  >
+                    ▶ {st.short_title}
+                  </button>
+                );
+              })}
+            </div>
+
+            {ch.companion_sites?.length > 0 && (
+              <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 mb-3 font-mono text-[10px] text-brand-gray">
+                <span>Linked:</span>
+                {ch.companion_sites.map((cs: any) => (
+                  <a
+                    href={cs.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-brand-slate hover:text-brand-cyan no-underline"
+                  >
+                    {cs.label} ↗
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 pt-2.5 border-t border-brand-border">
+            <button
+              type="button"
+              data-tv-channel-queue={ch.id}
+              data-tier="15s"
+              class="font-mono text-[11px] font-semibold py-1.5 px-2 rounded border border-brand-amber/40 bg-brand-amber/10 text-brand-amber hover:bg-brand-amber/20 cursor-pointer transition-colors"
+            >
+              ▶ Queue 15s ({ch.tv_studies.length})
+            </button>
+            <button
+              type="button"
+              data-tv-channel-queue={ch.id}
+              data-tier="90s"
+              class="font-mono text-[11px] font-semibold py-1.5 px-2 rounded border border-brand-cyan/40 bg-brand-cyan/10 text-brand-cyan hover:bg-brand-cyan/20 cursor-pointer transition-colors"
+            >
+              ▶ Queue 90s ({ch.tv_studies.length})
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Extended *.openie.dev Periodic Stack Strip -->
+    <div class="pt-4 border-t border-brand-border">
+      <div class="font-mono text-[10px] uppercase tracking-[1.8px] text-brand-gray mb-2.5">
+        Extended *.openie.dev Periodic Stack Research Directory
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+        {extended.map((item: any) => (
+          <div class="flex items-center justify-between gap-2 px-3 py-2 rounded-lg border border-brand-border bg-white/[0.015]">
+            <div class="min-w-0">
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-mono text-[11px] font-semibold text-brand-white hover:text-brand-amber no-underline block truncate"
+              >
+                {item.name} · <span class="text-brand-cyan">{item.domain}</span> ↗
+              </a>
+              <div class="font-body text-[11px] text-brand-gray truncate" title={item.role}>
+                {item.role}
+              </div>
+            </div>
+            <button
+              type="button"
+              data-tv-channel-queue={item.channel}
+              data-tier="90s"
+              class="font-mono text-[10px] px-2 py-1 rounded border border-brand-border text-brand-slate hover:border-brand-amber hover:text-brand-amber cursor-pointer bg-transparent shrink-0"
+            >
+              ▶ TV
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

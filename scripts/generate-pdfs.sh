@@ -207,7 +207,7 @@ elif id_ == "rce":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research paper, not a journal final.\n"
-        "est_j, reported_j and measured_j are defined in Section 1; Apple M5 Max on-chip reported_j checker receipts (49.04 mJ per Form check at commit 1762fb4b) are filed in openie-research-experiments/rce/bench/reported-j/; measured_j is reserved for a wall or rail meter and is empty.\n"
+        "est_j, reported_j and measured_j are defined in Section 1; Lean 4.36.0 six-kernel bubblewrap-sandboxed lake check --paranoid receipts (5,393 RCE theorem constants from 1,264 source declarations; 68,090 / 68,092 declarations accepted across con-leche, con-ron, lean4lean, nanoda, leanchecker, and Lean v4.36.0; 22,354.77 J Linux RAPL reported_j at commit f87d6af2) are filed in openIE-dev/rce/spec/lean/audit/, and Apple M5 Max on-chip reported_j checker receipts (49.04 mJ per Form check at commit 1762fb4b) are filed in openie-research-experiments/rce/bench/reported-j/; measured_j is reserved for a wall or rail meter and is empty.\n"
         "No FPGA board result in this paper. No fabricated citations.\n"
         "</div>\n"
     )
@@ -236,14 +236,14 @@ elif id_ == "time-as-an-index":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, not a journal final.\n"
-        "Formal claims in Section 7 are kernel-checked in Lean 4.36.0 (Horizon.lean and Paradox.lean, 31 theorems, zero sorry); M1 to M8 and F5 SHA-256 spectral runs are deterministic Python/SymPy evaluations; physical energy numbers (k_B T ln 2, Compton clocks) are analytical bounds (est_j). Established literature, mathematical models, and speculative proposals are explicitly separated. No hardware power meter was attached (measured_j = None, board_metered = false).\n"
+        "Formal claims in Section 7 are kernel-checked in Lean 4.36.0 (Horizon.lean and Paradox.lean, 31 theorems, zero sorry, zero opaque, zero ofReduceBool) and accepted inside Linux bubblewrap across all 6/6 independent kernels of lake check --paranoid (con-leche/con-ron 58,796 decls; lean4lean/nanoda/leanchecker/Lean 58,798 decls; 27,217.18 J Linux RAPL reported_j); M1 to M8 and F5 SHA-256 spectral runs are deterministic Python/SymPy evaluations; physical energy numbers (k_B T ln 2, Compton clocks) are analytical bounds (est_j). Established literature, mathematical models, and speculative proposals are explicitly separated. No hardware power meter was attached (measured_j = None, board_metered = false).\n"
         "</div>\n"
     )
 elif id_ == "communication-avalanche":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
-        "Formal claims in Section 7 are kernel-checked in Lean 4.36.0 (QuorumRatchet.lean, OrchestrationFlow.lean, and EnzymaticSynthesis.lean, 45 theorems, zero sorry); CA-M1 to CA-M5 are pre-registered deterministic numerical evaluations; CTA-E4 and CTA-E5 record physical Texas Instruments INA238 (VIN L1) and three-channel INA3221 (VDD_CPU_SOC_MSS L2) shunt measured_j on NVIDIA Jetson AGX Thor (shared host; A2 net idle subtraction withheld per Falsifier 6) strictly separated from four-host RAPL, ri_energy_nj, and NVML reported_j (CTA-E1 to CTA-E5) and cloud API token/USD columns. All 16 audited extracellular-vesicle studies are preclinical animal or in vitro models; human clinical efficacy and N-mind neural bridging remain open ([S]). No fabricated citations.\n"
+        "Formal claims in Section 7 are kernel-checked in Lean 4.36.0 (QuorumRatchet.lean, OrchestrationFlow.lean, and EnzymaticSynthesis.lean, 45 theorems, zero sorry, zero opaque, zero ofReduceBool) and accepted inside Linux bubblewrap across all 6/6 independent kernels of lake check --paranoid (con-leche/con-ron 58,928 decls; lean4lean/nanoda/leanchecker/Lean 58,930 decls); CA-M1 to CA-M5 are pre-registered deterministic numerical evaluations; CTA-E4 and CTA-E5 record physical Texas Instruments INA238 (VIN L1) and three-channel INA3221 (VDD_CPU_SOC_MSS L2) shunt measured_j on NVIDIA Jetson AGX Thor (shared host; A2 net idle subtraction withheld per Falsifier 6) strictly separated from four-host RAPL, ri_energy_nj, and NVML reported_j (CTA-E1 to CTA-E5) and cloud API token/USD columns. All 16 audited extracellular-vesicle studies are preclinical animal or in vitro models; human clinical efficacy and N-mind neural bridging remain open ([S]). No fabricated citations.\n"
         "</div>\n"
     )
 elif id_ == "agency":
@@ -266,7 +266,7 @@ elif id_ == "lut-adapt":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
-        "No physical FPGA board or rail power was measured in this repository (measured_j = None, board_metered = false). Hardware utilization (41,185-67,366 xcup CLB LUTs, 81 RAMB36E2 blocks, 0 DSP48 slices), 1-cycle context switching (CPI = 1.0), and 4-phase VCD toggle-rate + AMD DS925 dynamic switching estimates (Section 4.16, est_j) are Yosys 0.71+ and Verilator 5.054 simulations. Darwin F_NOCACHE NVMe byte counts, active RAM, wall-clock times, and Apple M5 Max Metal INT4 MoE reported_j (6.773 J/tok) were measured locally. No fabricated citations.\n"
+        "No physical FPGA board or rail power was measured in this repository (measured_j = None, board_metered = false). Formal claims in Section 4.13 are kernel-checked in Lean 4.36.0 (LutAdapt.lean and Ratchet.lean, 27 theorems, zero sorry, zero opaque, zero ofReduceBool) and accepted inside Linux bubblewrap across all 6/6 independent kernels of lake check --paranoid (con-leche/con-ron 58,683 decls; lean4lean/nanoda/leanchecker/Lean 58,685 decls). Hardware utilization (41,185-67,366 xcup CLB LUTs, 81 RAMB36E2 blocks, 0 DSP48 slices), 1-cycle context switching (CPI = 1.0), and 4-phase VCD toggle-rate + AMD DS925 dynamic switching estimates (Section 4.16, est_j) are Yosys 0.71+ and Verilator 5.054 simulations. Darwin F_NOCACHE NVMe byte counts, active RAM, wall-clock times, and Apple M5 Max Metal INT4 MoE reported_j (6.773 J/tok) were measured locally. No fabricated citations.\n"
         "</div>\n"
     )
 elif id_ == "three-body":
