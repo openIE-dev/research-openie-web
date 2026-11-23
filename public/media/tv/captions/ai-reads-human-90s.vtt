@@ -1,46 +1,46 @@
 WEBVTT
-NOTE OpenIE Research TV — ai-reads-human (90s) AI-synthesized studio narration
+NOTE OpenIE Research TV — ai-reads-human (90s) Narrator Sean
 
 1
-00:00:01.718 --> 00:00:08.556
+00:00:01.374 --> 00:00:08.872
 Modern MCP and JSON-RPC agent stacks convert typed memory into UTF-8 text,
 
 2
-00:00:08.556 --> 00:00:12.159
+00:00:08.872 --> 00:00:12.824
 BPE tokens, and AST dicts on every hop.
 
 3
-00:00:16.576 --> 00:00:21.559
+00:00:16.263 --> 00:00:21.604
 By locking a 20,000-record corpus across 34 parsers and tokenizers,
 
 4
-00:00:21.559 --> 00:00:25.799
+00:00:21.604 --> 00:00:26.149
 every layer of serialization overhead becomes measurable.
 
 5
-00:00:30.216 --> 00:00:35.095
+00:00:29.588 --> 00:00:34.817
 This three-dimensional funnel contrasts sprawling JSON and YAML
 
 6
-00:00:35.095 --> 00:00:40.051
+00:00:34.817 --> 00:00:40.130
 token clouds against compact 280-nanojoule fixed binary records.
 
 7
-00:00:44.467 --> 00:00:50.620
+00:00:43.569 --> 00:00:50.326
 Even fast C libyaml burns 249 times more energy than binary structs,
 
 8
-00:00:50.620 --> 00:00:55.687
+00:00:50.326 --> 00:00:55.892
 while BPE tokenization adds 27.7 microjoules per record.
 
 9
-00:01:00.104 --> 00:01:08.541
+00:00:59.330 --> 00:01:08.148
 Executable specification tests expose real-world silent data corruption across loose text parsers alongside energy bloat.
 
 10
-00:01:12.957 --> 00:01:19.488
+00:01:11.587 --> 00:01:19.413
 Dual-channel harnesses separate clean process L3 counters from noisy shared-host L2 windows,
 
 11
-00:01:19.488 --> 00:01:21.902
+00:01:19.413 --> 00:01:22.305
 leaving measured_j honestly unset.

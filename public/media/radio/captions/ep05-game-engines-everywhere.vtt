@@ -3,65 +3,65 @@ Kind: captions
 Language: en
 
 1
-00:00:01.830 --> 00:00:24.679
-<v Elena>Welcome to Episode Five of OpenIE Research Radio! Elena, Marcus, and Devon here — AI-synthesized OpenIE research personas grounded strictly in verified Open Interface Engineering artifacts. Today we ask a dream question for systems engineers and game developers: can you write a game once as a checked state machine and run it everywhere?
+00:00:01.830 --> 00:00:25.209
+<v Mei>Welcome to Episode Five of OpenIE Research Radio! I'm Mei, joined in the studio by Liam and Kwame — three AI-synthesized OpenIE research personas voiced with ElevenLabs studio neural voices and grounded in verified Open Interface Engineering artifacts. Today we ask: can you write a game once as a checked state machine and run it everywhere?
 
 2
-00:00:24.874 --> 00:00:40.165
-<v Marcus>Hold on — game studios have burned hundreds of millions of dollars trying to keep multiplayer lockstep replays synchronized between Windows PCs, Macs, and Linux servers! Why does ordinary floating-point physics blow up so fast?
+00:00:25.399 --> 00:00:40.683
+<v Liam>Hold on Kwame — game studios have torched tens of millions of engineering hours trying to keep multiplayer lockstep replays synchronized across Windows PCs, Macs, and Linux servers! How fast does ordinary floating-point physics actually drift?
 
 3
-00:00:40.440 --> 00:01:03.514
-<v Devon>We measured the exact tick where it breaks in falsifier GE-H2! Standard library sine — Apple libSystem versus Linux glibc versus Windows UCRT — diverges between tick ten and tick thirty-seven! Even without transcendentals, MSVC slash fp colon precise versus Clang fused multiply-add diverges at tick one hundred ninety-two.
+00:00:40.953 --> 00:01:03.433
+<v Kwame>Faster than people blink, Liam! In falsifier GE-H2, standard-library sine — Apple libSystem versus Linux glibc versus Windows UCRT — diverges between tick ten and tick thirty-seven! Even without transcendentals, MSVC slash fp colon precise versus Clang fused multiply-add splits apart at tick one hundred ninety-two.
 
 4
-00:01:03.789 --> 00:01:23.361
-<v Elena>Ten ticks! At sixty frames per second, three operating systems disagree on where a projectile is in one-sixth of a second! And in GE-H7, across eight hundred forty chaotic trajectories, that divergence follows Lyapunov's logarithmic slope with R-squared above zero point nine nine four.
+00:01:03.703 --> 00:01:22.364
+<v Mei>Tick ten! At sixty frames per second, three operating systems disagree on trajectory state inside one-sixth of a second! And across eight hundred forty chaotic runs in GE-H7, divergence time tracks Lyapunov's logarithmic slope with R-squared above zero point nine nine four.
 
 5
-00:01:23.556 --> 00:01:44.523
-<v Marcus>Okay, so you drew a razor-sharp architectural boundary: simulation state stays strictly bit-exact in Q32.32 fixed-point integer arithmetic, while GPU rendering lives inside a perceptual tolerance envelope. Did Q32.32 actually survive six real machines?
+00:01:22.554 --> 00:01:40.071
+<v Liam>So you split the architecture right down the fault line: simulation stays strictly bit-exact in Q32.32 fixed-point integer math, while GPU pixels live inside a perceptual tolerance bound. Did Q32.32 survive six real machines?
 
 6
-00:01:44.798 --> 00:02:06.418
-<v Devon>In GE-H1, we stepped sixty-four Q32.32 rigid bodies for one hundred thousand ticks across thirty language-target-by-host cells spanning six machines on macOS, Linux, and bare-metal Windows 11. Out of twenty-five thousand five hundred SHA-256 state checkpoints, mismatches were zero!
+00:01:40.341 --> 00:02:00.508
+<v Kwame>In GE-H1, we stepped sixty-four Q32.32 rigid bodies for one hundred thousand ticks across thirty target-by-host cells spanning six physical machines on macOS, Linux, and bare-metal Windows 11. Across twenty-five thousand five hundred SHA-256 checkpoints, mismatches were zero!
 
 7
-00:02:06.693 --> 00:02:27.355
-<v Elena>And look at what that unlocks in GE-H8: three full one-hour gameplay sessions — two hundred sixteen thousand ticks each — reconstruct bit-for-bit across macOS, Linux, and Windows 11 from forty-four point six kilobytes of gzipped player inputs alone! Zero out of six thousand four hundred eighty checkpoint diffs!
+00:02:00.778 --> 00:02:21.004
+<v Mei>And look what that buys in GE-H8: three full one-hour sessions — two hundred sixteen thousand ticks each — replay bit-for-bit across macOS, Linux, and Windows 11 from forty-four point six kilobytes of gzipped player inputs alone! Zero out of six thousand four hundred eighty checkpoint diffs!
 
 8
-00:02:27.550 --> 00:02:37.838
-<v Marcus>Forty-four kilobytes for an entire hour of physics and game state! Wait — what about performance? Fixed-point emulation in scripting languages can crawl.
+00:02:21.194 --> 00:02:29.289
+<v Liam>Forty-four kilobytes for a whole hour of simulation! Wait — doesn't fixed-point arithmetic hit a frame-time wall at scale?
 
 9
-00:02:38.113 --> 00:03:00.248
-<v Devon>In Python, you hit the twenty-millisecond frame ceiling at just three hundred ninety actors. In GE-H5, compiled RCE Form projections step ten thousand Q32.32 actors in zero point zero five eight to zero point one two five milliseconds — over one hundred sixty times headroom inside a sixty-hertz frame!
+00:02:29.559 --> 00:02:50.119
+<v Kwame>Interpreted Python hits the twenty-millisecond frame ceiling at just three hundred ninety actors. In GE-H5, compiled RCE Form projections step ten thousand Q32.32 actors in zero point zero five eight to zero point one two five milliseconds — leaving over ninety-nine percent of a sixteen-millisecond frame free!
 
 10
-00:03:00.523 --> 00:03:10.121
-<v Elena>Now test the rendering side of the boundary! Different GPU vendors never round pixels identically across DirectX 12, Apple Metal, and Vulkan.
+00:02:50.389 --> 00:03:00.633
+<v Mei>Now test the GPU side of the boundary! Shader compilers across DirectX 12, Apple Metal, and Vulkan never round rasterized fragments identically.
 
 11
-00:03:10.396 --> 00:03:32.085
-<v Devon>That's GE-H3. Across eight physical GPU-by-API endpoints spanning DirectX 12, Metal, and Vulkan under headless wgpu, all twenty-eight hardware pairs passed with peak signal-to-noise ratio at least sixty-four point one six decibels and structural similarity SSIM at least zero point nine nine nine eight three three!
+00:03:00.903 --> 00:03:22.491
+<v Kwame>That is GE-H3. Across eight hardware GPU-by-API endpoints spanning DirectX 12, Metal, and Vulkan under headless wgpu, all twenty-eight hardware pairs passed with PSNR at least sixty-four point one six decibels and structural similarity SSIM at least zero point nine nine nine eight three three!
 
 12
-00:03:32.280 --> 00:03:42.501
-<v Marcus>Okay, toy benchmarks are one thing — what about real game logic across Unity C-sharp, Bevy Rust ECS, and Godot 4 GDScript?
+00:03:22.681 --> 00:03:30.175
+<v Liam>What about actual game codebases across Unity C-sharp, Bevy Rust ECS, and Godot 4 GDScript?
 
 13
-00:03:42.776 --> 00:04:19.920
-<v Devon>In GE-H4, seventeen admitted RCE Forms across three classic games — Haunted Jaunt, Survival Shooter, and Tanks — cut behavior source lines of code by seventy-six point two two percent versus Unity C-sharp, sixty-one point four seven percent versus Bevy Rust, and fifty-one point nine nine percent versus Godot GDScript, with zero out of six hundred eighty trace mismatches! And in GE-H9, our Form-to-Godot 4.7.2 headless emitter matched handwritten GDScript on thirty-six out of thirty-six tasks across eighteen thousand ticks!
+00:03:30.445 --> 00:04:03.199
+<v Kwame>In GE-H4, seventeen admitted RCE Forms across Haunted Jaunt, Survival Shooter, and Tanks cut behavior source lines of code by seventy-six point two two percent versus Unity C-sharp, sixty-one point four seven percent versus Bevy Rust, and fifty-one point nine nine percent versus Godot GDScript with zero out of six hundred eighty trace mismatches! And in GE-H9, our headless Form-to-Godot 4.7.2 emitter matched native GDScript on thirty-six out of thirty-six tasks across eighteen thousand ticks!
 
 14
-00:04:20.195 --> 00:04:43.512
-<v Elena>Notice how GE-H6 ties straight back to OpenIE's Three-Body Problem in Computing and The Price of the Unexamined Interface: static Form plus manifest checking caught ninety-eight point four six percent of one hundred thirty injected handoff faults at F1 zero point nine nine two two, compared to zero point one one five nine for syntax parsing alone!
+00:04:03.469 --> 00:04:24.515
+<v Mei>Notice how GE-H6 echoes OpenIE's Three-Body Problem in Computing and Interface Economics: static Form plus manifest checking caught ninety-eight point four six percent of one hundred thirty injected handoff faults at F1 zero point nine nine two two, versus zero point one one five nine for parse-only!
 
 15
-00:04:43.707 --> 00:04:56.091
-<v Marcus>And true to OpenIE telemetry discipline, we explicitly stamp measured_j as unset on the game-engine study because no external DC shunt was wired to those six workstations!
+00:04:24.705 --> 00:04:34.051
+<v Liam>And keeping telemetry honest, measured_j stays explicitly unset on the game-engine runs because no inline rail shunt was wired to those six hosts!
 
 16
-00:04:56.366 --> 00:05:13.541
-<v Elena>Exact replay where logic demands it, bounded tolerance where photons hit the screen, and machine-checked interfaces in between. Coming up in Episode Six: compiling intelligence all the way down to LUT6 truth tables, sovereign hardware tags, and JouleOS!
+00:04:34.321 --> 00:04:45.859
+<v Mei>Up next in Episode Six, Amara, Sean, and Claire descend into LUT6 Boolean fabrics, sovereign MEI-JCP hardware tags, and JouleOS!

@@ -166,7 +166,8 @@ def draw_chrome(ctx, study, tier: str, sc_idx: int, n_sc: int, t_sec: float, tot
     ctx.set_font_size(11.5)
     ctx.set_source_rgb(*PAL["slate"])
     ctx.move_to(36, H - 19)
-    ctx.show_text(f"AI-Synthesized Studio Voiceover · {study['energy_disclosure'][:96]}")
+    narr = study.get("narrator_name", "Studio")
+    ctx.show_text(f"Voice: {narr} (ElevenLabs v4 Studio) · {study['energy_disclosure'][:82]}")
     ctx.set_source_rgb(*PAL["cyan"])
     tc = f"SCENE {sc_idx + 1}/{n_sc}  ·  {t_sec:04.1f}s / {total_dur:04.1f}s"
     ctx.move_to(W - 245, H - 19)

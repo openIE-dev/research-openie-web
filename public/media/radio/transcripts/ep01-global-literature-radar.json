@@ -2,204 +2,295 @@
   "id": "ep01-global-literature-radar",
   "number": 1,
   "title": "Live Global Radar — Open-Access Preprints vs. OpenIE Commit Gates",
-  "subtitle": "Auditing live 2026 arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov feeds against joules and null baselines",
-  "summary": "Elena, Marcus, and Devon open the autonomous 6-hour literature radar, cross-examining live 2026 works — including TokenPowerBench, Lean Graph Search, AgentShield, INFRAMIND, and npj Biofilms extracellular-vesicle quorum studies — against OpenIE's Metered Commit Gates and Shape-D controls.",
+  "subtitle": "Elena, Marcus, and Rohan audit live 2026 arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov feeds",
+  "summary": "Elena, Marcus, and Rohan open the autonomous 6-hour literature radar, cross-examining live 2026 works — including TokenPowerBench, Lean Graph Search, AgentShield, INFRAMIND, and npj Biofilms extracellular-vesicle quorum studies — against OpenIE's Metered Commit Gates and Shape-D controls.",
   "topic_tags": [
     "global-radar",
     "commit-gates",
     "telemetry",
     "open-access"
   ],
+  "panel": [
+    "Elena",
+    "Marcus",
+    "Rohan"
+  ],
+  "panel_profiles": [
+    {
+      "name": "Elena",
+      "group": "host",
+      "title": "Science Journalist · Hispanic/Spanish English",
+      "voice_id": "uR6zbwkKmeecuupKV18k",
+      "fallback_voice": "en-US-AvaMultilingualNeural",
+      "color": "#00D4AA",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    {
+      "name": "Marcus",
+      "group": "skeptic",
+      "title": "Empirical Foil · North American English",
+      "voice_id": "iP95p4xoKVk53GoZ742B",
+      "fallback_voice": "en-US-BrianMultilingualNeural",
+      "color": "#F59E0B",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    {
+      "name": "Rohan",
+      "group": "specialist",
+      "title": "Hardware & Compiler Specialist · South Asian English",
+      "voice_id": "QtQiNi8LdZTzSJzhCvXT",
+      "fallback_voice": "en-IN-PrabhatNeural",
+      "color": "#818CF8",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  ],
+  "tts_engines": [
+    "eleven_v4"
+  ],
   "published_utc": "2026-11-23T06:00:00Z",
-  "duration_sec": 358.6,
-  "duration_human": "5:59",
-  "byte_length": 4834920,
+  "duration_sec": 331.1,
+  "duration_human": "5:31",
+  "byte_length": 5477780,
   "audio_url": "/media/radio/episodes/ep01-global-literature-radar.m4a",
   "captions_url": "/media/radio/captions/ep01-global-literature-radar.vtt",
   "transcript_url": "/media/radio/transcripts/ep01-global-literature-radar.json",
   "turn_count": 18,
   "card_count": 8,
-  "ai_disclosure": "AI Persona Disclosure: Elena, Marcus, and Devon are AI-synthesized OpenIE research personas voiced via open-weight neural speech synthesis and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
   "personas": {
     "Elena": {
       "name": "Elena",
-      "title": "The Architect — Host",
-      "voice": "af_heart",
-      "lang": "en-us",
-      "speed": 1.01,
+      "group": "host",
+      "title": "Science Journalist · Hispanic/Spanish English",
+      "voice_id": "uR6zbwkKmeecuupKV18k",
+      "fallback_voice": "en-US-AvaMultilingualNeural",
       "color": "#00D4AA",
-      "bio": "AI-synthesized science communicator connecting biological signaling, thermodynamics, and verified computing."
+      "pan": [
+        0.98,
+        0.98
+      ]
     },
     "Marcus": {
       "name": "Marcus",
-      "title": "The Skeptic — Critical Foil",
-      "voice": "am_michael",
-      "lang": "en-us",
-      "speed": 1.04,
+      "group": "skeptic",
+      "title": "Empirical Foil · North American English",
+      "voice_id": "iP95p4xoKVk53GoZ742B",
+      "fallback_voice": "en-US-BrianMultilingualNeural",
       "color": "#F59E0B",
-      "bio": "AI-synthesized empirical foil auditing lookup baselines, telemetry drift, and unverified hype."
+      "pan": [
+        1.04,
+        0.9
+      ]
     },
-    "Devon": {
-      "name": "Devon",
-      "title": "The Bench Engineer — Specialist",
-      "voice": "bm_george",
-      "lang": "en-gb",
-      "speed": 1.0,
+    "Rohan": {
+      "name": "Rohan",
+      "group": "specialist",
+      "title": "Hardware & Compiler Specialist · South Asian English",
+      "voice_id": "QtQiNi8LdZTzSJzhCvXT",
+      "fallback_voice": "en-IN-PrabhatNeural",
       "color": "#818CF8",
-      "bio": "AI-synthesized formal verification and hardware systems specialist citing exact Lean 4, RAPL, and shunt receipts."
+      "pan": [
+        0.9,
+        1.04
+      ]
     }
   },
   "turns": [
     {
       "turn_index": 0,
       "speaker": "Elena",
-      "role": "The Architect — Host",
+      "role": "Science Journalist · Hispanic/Spanish English",
+      "group": "host",
+      "color": "#00D4AA",
       "start_sec": 1.83,
-      "end_sec": 24.224,
-      "text": "Welcome to the launch broadcast of OpenIE Research Radio! Before we dive in, full transparency up front: Marcus, Devon, and I — Elena — are AI-synthesized OpenIE research personas, voiced through open-weight neural speech and grounded strictly in verified Open Interface Engineering artifacts and live open-access literature feeds."
+      "end_sec": 23.666,
+      "text": "Welcome to the launch broadcast of OpenIE Research Radio! Full studio transparency right up front: Marcus, Rohan, and I — Elena — are AI-synthesized OpenIE research personas voiced with ElevenLabs studio neural speech and grounded strictly in verified Open Interface Engineering artifacts and live open-access literature feeds."
     },
     {
       "turn_index": 1,
       "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 24.419,
-      "end_sec": 48.887,
-      "text": "Which means nobody here gets to bluff! Every six hours, our autonomous Linux radar scrapes five sanctioned public archives — arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov — hashes every record with BLAKE2b and SHA-256, and puts brand-new papers on the bench. Devon, how many survived deduplication today?"
+      "role": "Empirical Foil · North American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 23.856,
+      "end_sec": 48.02,
+      "text": "Which means nobody at this table gets to bluff! Every six hours, our autonomous Linux radar polls five sanctioned public archives — arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov — hashes every record with BLAKE2b and SHA-256, and drops fresh papers onto the bench. Rohan, how many survived deduplication today?"
     },
     {
       "turn_index": 2,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 49.162,
-      "end_sec": 71.002,
-      "text": "Over forty distinct open-access works across all five registries, mapped against all twenty-one OpenIE studies. Every single entry gets an epistemic badge — T for kernel-checked theorems, E for empirical hardware or wet-lab data, M for computational models, and S for speculative or uncompleted clinical horizons."
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 48.29,
+      "end_sec": 69.422,
+      "text": "Sixty-two distinct open-access works across all five registries, Marcus, mapped against all twenty-one OpenIE studies. Every single entry receives an epistemic badge — T for kernel-checked theorems, E for empirical hardware or wet-lab data, M for computational models, and S for speculative or recruiting clinical horizons."
     },
     {
       "turn_index": 3,
       "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 71.278,
-      "end_sec": 87.413,
+      "role": "Science Journalist · Hispanic/Spanish English",
+      "group": "host",
+      "color": "#00D4AA",
+      "start_sec": 69.692,
+      "end_sec": 84.108,
       "text": "Let's start with energy-aware AI. One of the top OpenAlex and arXiv hits on the radar right now is TokenPowerBench, published in 2026 to benchmark the power consumption of large language model inference across serving stacks."
     },
     {
       "turn_index": 4,
       "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 87.608,
-      "end_sec": 105.998,
+      "role": "Empirical Foil · North American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 84.298,
+      "end_sec": 100.575,
       "text": "Hold on — let me ask my favorite annoying question right away! When TokenPowerBench or any 2026 inference paper reports joules per token, are they measuring physical DC shunt rails on the board, or reading software counters like RAPL and NVML?"
     },
     {
       "turn_index": 5,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 106.273,
-      "end_sec": 129.488,
-      "text": "Almost always software counters on shared GPUs, or analytical estimates — what OpenIE stamps as reported_j, never measured_j. And second, joules per token is the wrong denominator if the model spends ten thousand tokens hallucinating a broken patch! In Metered Commit Gates, the denominator is energy to correct completion."
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 100.845,
+      "end_sec": 121.744,
+      "text": "Almost always software counters on shared GPUs, or analytical estimates — what OpenIE stamps as reported_j, never measured_j. And second, joules per token is the wrong denominator if a model burns ten thousand tokens hallucinating a broken patch! In Metered Commit Gates, the denominator is energy to correct completion."
     },
     {
       "turn_index": 6,
       "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 129.763,
-      "end_sec": 146.945,
+      "role": "Science Journalist · Hispanic/Spanish English",
+      "group": "host",
+      "color": "#00D4AA",
+      "start_sec": 122.014,
+      "end_sec": 138.986,
       "text": "That connects directly to our second radar cluster: formal theorem proving. Today's intake pulled two 2026 preprints — Compile to Compress, which boosts formal theorem provers using compiler outputs, and Lean Graph Search for Formal Theorem Proving on arXiv."
     },
     {
       "turn_index": 7,
       "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 147.14,
-      "end_sec": 164.093,
-      "text": "Okay, I actually like those two! Because instead of asking a giant language model to vibe-check mathematics, the Lean 4 kernel acts as an unforgiving binary oracle. Either the proof term type-checks with zero sorry placeholders, or it's rejected."
+      "role": "Empirical Foil · North American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 139.176,
+      "end_sec": 155.073,
+      "text": "Okay, I actually love those two! Because instead of asking a giant language model to vibe-check mathematics, the Lean 4 kernel acts as an unforgiving binary oracle. Either the proof term type-checks with zero sorry placeholders, or it gets refused."
     },
     {
       "turn_index": 8,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 164.368,
-      "end_sec": 186.416,
-      "text": "Exactly. Across OpenIE's Reality Code Engine, Time as an Index, and Communication Tool Avalanche, we rely on over five thousand five hundred Lean 4 kernel constants plus sixty-two specialized domain theorems with zero sorry. What Lean Graph Search still omits, though, is reporting how many joules the search burned per closed lemma."
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 155.343,
+      "end_sec": 175.574,
+      "text": "Exactly. Across OpenIE's Reality Code Engine, Time as an Index, and Communication Tool Avalanche, we rely on five thousand five hundred thirty-seven Lean 4 kernel constants plus sixty-two specialized domain theorems with zero sorry. What Lean Graph Search still omits, though, is reporting how many joules the search spent per closed lemma."
     },
     {
       "turn_index": 9,
       "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 186.691,
-      "end_sec": 200.581,
+      "role": "Science Journalist · Hispanic/Spanish English",
+      "group": "host",
+      "color": "#00D4AA",
+      "start_sec": 175.844,
+      "end_sec": 188.803,
       "text": "Now look at the multi-agent orchestration cluster from arXiv today: Decoupled Multi-Agent Orchestration, INFRAMIND for infrastructure-aware orchestration, and the AgentShield Byzantine fault tolerance dataset."
     },
     {
       "turn_index": 10,
       "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 200.776,
-      "end_sec": 212.384,
+      "role": "Empirical Foil · North American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 188.993,
+      "end_sec": 199.78,
       "text": "Wait — let me guess what happens in ninety percent of multi-agent papers when four chatty agents pass natural-language paragraphs back and forth without a cryptographic or test gate!"
     },
     {
       "turn_index": 11,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 212.659,
-      "end_sec": 238.499,
-      "text": "Prompt bloat triples, errors compound exponentially as fidelity to the power k across hops, and false commits spike! In our sixty-task Communication Avalanche benchmark, an unattested four-agent cascade dropped to eighty-six point six seven percent accuracy with thirteen point three percent broken commits, burning nearly fifteen times more energy per coherent fix than our BLAKE3 and Ed25519 gated graph."
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 200.05,
+      "end_sec": 223.901,
+      "text": "Prompt bloat triples, errors compound exponentially across hops, and false commits spike! In our sixty-task Communication Avalanche benchmark, an unattested four-agent cascade dropped to eighty-six point six seven percent accuracy with thirteen point three percent broken commits, burning nearly fifteen times more energy per coherent fix than our BLAKE3 and Ed25519 gated graph."
     },
     {
       "turn_index": 12,
       "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 238.774,
-      "end_sec": 257.556,
+      "role": "Science Journalist · Hispanic/Spanish English",
+      "group": "host",
+      "color": "#00D4AA",
+      "start_sec": 224.171,
+      "end_sec": 241.621,
       "text": "And my favorite catch from Europe PMC today comes straight out of microbiology: a January 2026 paper in npj Biofilms and Microbiomes showing extracellular vesicles acting as structured vectors of quorum-sensing signals in aquatic microbial communities!"
     },
     {
       "turn_index": 13,
       "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 257.751,
-      "end_sec": 271.461,
-      "text": "Think about how wild that is. Three and a half billion years before packet-switched networks, bacteria wrapped quorum signals inside lipid envelopes so nucleases and water currents wouldn't corrupt the packet in transit!"
+      "role": "Empirical Foil · North American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 241.811,
+      "end_sec": 255.254,
+      "text": "Think about how wild that is, Elena. Three and a half billion years before packet-switched networks, bacteria wrapped quorum signals inside lipid envelopes so nucleases and water currents wouldn't corrupt the packet in transit!"
     },
     {
       "turn_index": 14,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 271.736,
-      "end_sec": 304.98,
-      "text": "Meanwhile, our ClinicalTrials.gov feed keeps us honest on the human neurotechnology side. Today's radar pulled eight trials, including stroke alpha-coherence neurofeedback NCT02223910 and cognitive memory restoration NCT04253587. We classify recruiting or unverified human translation strictly as S or Challenges Assumption so preclinical animal rescue is never conflated with human cures."
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 255.524,
+      "end_sec": 282.325,
+      "text": "Meanwhile, our ClinicalTrials.gov feed keeps us disciplined on human neurotechnology. Today's radar pulled eight trials, including stroke alpha-coherence neurofeedback NCT02223910 and cognitive memory restoration NCT04253587. We classify recruiting or unverified human translation strictly under Challenges Assumption so preclinical animal rescue is never confused with human efficacy."
     },
     {
       "turn_index": 15,
       "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 305.255,
-      "end_sec": 324.757,
-      "text": "And remember our rule on AI formats too: Europe PMC also surfaced The Cost of Reproducibility in Artificial Intelligence, right alongside OpenIE's AI Reads Human study showing pure-Python YAML parsing burns over two thousand times more nanojoules per record than fixed binary structs!"
+      "role": "Science Journalist · Hispanic/Spanish English",
+      "group": "host",
+      "color": "#00D4AA",
+      "start_sec": 282.595,
+      "end_sec": 299.428,
+      "text": "And Europe PMC also surfaced The Cost of Reproducibility in Artificial Intelligence, right alongside OpenIE's AI Reads Human study showing pure-Python YAML parsing burns over two thousand times more nanojoules per record than fixed binary structs!"
     },
     {
       "turn_index": 16,
       "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 324.952,
-      "end_sec": 341.143,
+      "role": "Empirical Foil · North American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 299.618,
+      "end_sec": 314.324,
       "text": "Two thousand and fifty-three times more energy just so a machine can read whitespace indentation! Every paper on today's radar is searchable right below this player — complete with its BLAKE2b digest, epistemic badge, and telemetry audit."
     },
     {
       "turn_index": 17,
       "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 341.418,
-      "end_sec": 356.703,
-      "text": "Next up in Episode Two, we zoom across three point eight billion years of biological signaling, seventy-six years of AI winters, and DES-10 digital enzymatic synthesis. Stay tuned on OpenIE Research Radio!"
+      "role": "Science Journalist · Hispanic/Spanish English",
+      "group": "host",
+      "color": "#00D4AA",
+      "start_sec": 314.594,
+      "end_sec": 329.145,
+      "text": "Next up in Episode Two, Amara, Liam, and Kenji take the mics to explore three point eight billion years of biological signaling, seventy-six years of AI winters, and DES-10 digital enzymatic synthesis!"
     }
   ],
   "cards": [
     {
       "id": "ep01-global-literature-radar-card-00-0",
       "at_sec": 2.63,
-      "end_sec": 24.224,
+      "end_sec": 23.666,
       "turn_index": 0,
       "speaker": "Elena",
       "kind": "study",
@@ -210,8 +301,8 @@
     },
     {
       "id": "ep01-global-literature-radar-card-03-0",
-      "at_sec": 72.078,
-      "end_sec": 87.413,
+      "at_sec": 70.492,
+      "end_sec": 84.108,
       "turn_index": 3,
       "speaker": "Elena",
       "kind": "external_paper",
@@ -222,10 +313,10 @@
     },
     {
       "id": "ep01-global-literature-radar-card-05-0",
-      "at_sec": 107.073,
-      "end_sec": 129.488,
+      "at_sec": 101.645,
+      "end_sec": 121.744,
       "turn_index": 5,
-      "speaker": "Devon",
+      "speaker": "Rohan",
       "kind": "falsifier",
       "badge": "reported_j",
       "title": "Joules per Token vs. Energy to Correct Completion",
@@ -234,8 +325,8 @@
     },
     {
       "id": "ep01-global-literature-radar-card-06-0",
-      "at_sec": 130.563,
-      "end_sec": 146.945,
+      "at_sec": 122.814,
+      "end_sec": 138.986,
       "turn_index": 6,
       "speaker": "Elena",
       "kind": "external_paper",
@@ -246,8 +337,8 @@
     },
     {
       "id": "ep01-global-literature-radar-card-09-0",
-      "at_sec": 187.491,
-      "end_sec": 200.581,
+      "at_sec": 176.644,
+      "end_sec": 188.803,
       "turn_index": 9,
       "speaker": "Elena",
       "kind": "external_paper",
@@ -258,10 +349,10 @@
     },
     {
       "id": "ep01-global-literature-radar-card-11-0",
-      "at_sec": 213.459,
-      "end_sec": 238.499,
+      "at_sec": 200.85,
+      "end_sec": 223.901,
       "turn_index": 11,
-      "speaker": "Devon",
+      "speaker": "Rohan",
       "kind": "receipt",
       "badge": "[M]",
       "title": "Attested Orchestrator vs. Unattested 4-Agent Chat",
@@ -270,8 +361,8 @@
     },
     {
       "id": "ep01-global-literature-radar-card-12-0",
-      "at_sec": 239.574,
-      "end_sec": 257.556,
+      "at_sec": 224.971,
+      "end_sec": 241.621,
       "turn_index": 12,
       "speaker": "Elena",
       "kind": "external_paper",
@@ -282,10 +373,10 @@
     },
     {
       "id": "ep01-global-literature-radar-card-14-0",
-      "at_sec": 272.536,
-      "end_sec": 304.98,
+      "at_sec": 256.324,
+      "end_sec": 282.325,
       "turn_index": 14,
-      "speaker": "Devon",
+      "speaker": "Rohan",
       "kind": "external_paper",
       "badge": "[S]",
       "title": "ClinicalTrials.gov Neuro-Interface Boundary (NCT04253587)",

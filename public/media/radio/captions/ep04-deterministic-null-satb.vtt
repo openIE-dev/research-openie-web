@@ -3,65 +3,65 @@ Kind: captions
 Language: en
 
 1
-00:00:01.830 --> 00:00:22.787
-<v Elena>Welcome to Episode Four of OpenIE Research Radio! Elena, Marcus, and Devon here — AI-synthesized OpenIE research personas unpacking verified Open Interface Engineering studies. Today is Marcus's favorite double feature: Deterministic Null and the Satiation Benchmark Harness, SATB.
+00:00:01.830 --> 00:00:24.141
+<v Elena>Welcome back to Episode Four of OpenIE Research Radio! I'm Elena, joined by Sean and Tariq — AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio speech and grounded strictly in verified Open Interface Engineering studies. Today we pair Deterministic Null with the Satiation Benchmark Harness, SATB.
 
 2
-00:00:22.982 --> 00:00:40.610
-<v Marcus>You better believe this is my favorite episode! In medicine, nobody approves a drug without a placebo control. Yet in AI, teams publish billion-parameter agent benchmarks every week without checking what a zero-model-call integer case loop scores first!
+00:00:24.331 --> 00:00:40.251
+<v Sean>You know this is right up an auditor's alley, Elena! In clinical medicine, nobody clears a therapy without a placebo arm. Yet in AI, teams publish billion-parameter agent leaderboards every single week without checking what a zero-model-call integer loop scores first!
 
 3
-00:00:40.885 --> 00:01:06.822
-<v Devon>So we built Shape D — strict N0 and dev-crystallized N1 — verified bit-exact across five languages: Rust, C++20, Go, Julia, and Python. Before touching the held-out split, we anchored the hashes to the Bitcoin blockchain via OpenTimestamps and League of Entropy drand randomness rounds six million six hundred sixty-three thousand seven hundred thirty-four and six million six hundred sixty-four thousand eighty-nine.
+00:00:40.521 --> 00:01:09.430
+<v Tariq>So we built Shape D — strict N0 and dev-crystallized N1 — verified bit-exact across Rust, C++20, Go, Julia, and Python. Before evaluating a single held-out instance, we anchored the commitment digests to the Bitcoin calendar via OpenTimestamps and League of Entropy drand rounds six million six hundred sixty-three thousand seven hundred thirty-four and six million six hundred sixty-four thousand eighty-nine.
 
 4
-00:01:07.097 --> 00:01:30.733
-<v Elena>Then we measured six models — Claude Opus 5.5, Claude Sonnet 5.5, OpenAI gpt-oss-120b, xAI Grok 4.20, Qwen 3.6 35B-A3B, and Gemma 4 E4B-it — across four thousand thirty held-out instances plus six real upstream SWE-bench Verified repositories. What happened?
+00:01:09.700 --> 00:01:38.431
+<v Elena>Then we tested six frontier and open models — Claude Opus 5.5, Claude Sonnet 5.5, OpenAI gpt-oss-120b, xAI Grok 4.20, Qwen 3.6 35B-A3B, and Gemma 4 E4B-it — across four thousand thirty held-out instances and six real SWE-bench Verified repositories. Tariq, what broke loose?
 
 5
-00:01:31.008 --> 00:01:51.156
-<v Devon>Total bifurcation! On bounded formal and structured Track-A classes, single-turn neural calls failed to beat the deterministic control on nine out of ten cells — until extended thinking hit forty-nine out of fifty and O-of-m clause feedback hit fifty out of fifty on Unique 3-SAT DRAT proofs!
+00:01:38.701 --> 00:01:59.245
+<v Tariq>A clean split! On bounded formal and structured Track-A classes, single-turn neural inference failed to beat the deterministic baseline on nine of ten cells — until extended thinking reached forty-nine out of fifty and O-of-m clause feedback closed fifty out of fifty on Unique 3-SAT DRAT proofs!
 
 6
-00:01:51.351 --> 00:02:16.160
-<v Marcus>Aha! And on genuinely open-ended software benchmarks — BFCL v3, tau-bench Retail, BigCodeBench, and SWE-bench Verified — where lookup tables hit zero, neural models delivered plus forty-five point eight to plus ninety-five percentage points of real gain! That proves Shape D isn't anti-neural — it tells you WHERE neural compute actually earns its joules!
+00:01:59.435 --> 00:02:23.207
+<v Sean>Aha! And on genuinely open-ended public benchmarks — BFCL v3, tau-bench Retail, BigCodeBench, and SWE-bench Verified — where pure lookup hits zero, neural models posted plus forty-five point eight to plus ninety-five percentage points of real gain! Shape D isn't anti-neural at all — it proves exactly WHERE neural joules earn their keep!
 
 7
-00:02:16.435 --> 00:02:29.215
-<v Devon>And when recurring Zipfian traffic arrives online, crystallizing verified solutions back into Shape D cuts model calls and reported_j spend by three point five nine times.
+00:02:23.477 --> 00:02:34.750
+<v Tariq>And when recurring Zipfian workloads arrive online, crystallizing verified outputs back into Shape D cuts model calls and reported_j spend by three point five nine times.
 
 8
-00:02:29.490 --> 00:02:41.133
-<v Elena>Now let's talk about measuring those joules honestly in the Satiation Benchmark Harness, SATB. We audited SATB across five completely different silicon and OS archetypes!
+00:02:35.020 --> 00:02:43.018
+<v Elena>Now let's audit how those joules are measured in SATB — executed across five distinct silicon and OS archetypes!
 
 9
-00:02:41.408 --> 00:03:15.515
-<v Devon>Right: Apple M5 Max on macOS IOReport, AMD Ryzen AI Max+ 395 Strix Halo with 0440 PLATYPUS-hardened RAPL, Intel Core i9-13900H Raptor Lake Linux, bare-metal Windows 11 Pro with rootless nvml.dll, and — crucially — NVIDIA Jetson AGX Thor equipped with physical Texas Instruments INA238 whole-board and three-channel INA3221 rail shunts!
+00:02:43.288 --> 00:03:16.248
+<v Tariq>We ran all twelve conformance checks C1 through C12 across Apple M5 Max on Darwin IOReport, AMD Ryzen AI Max+ 395 Strix Halo with 0440 PLATYPUS-isolated RAPL, Intel Core i9-13900H Raptor Lake Linux, bare-metal Windows 11 Pro with rootless nvml.dll, and NVIDIA Jetson AGX Thor equipped with physical Texas Instruments INA238 whole-board and three-channel INA3221 rail shunts!
 
 10
-00:03:15.710 --> 00:03:40.316
-<v Marcus>Stop and underline that! Jetson AGX Thor with TI INA238 and INA3221 plus the Kria KV260 with INA260 are real inline rail shunts — so those earn measured_j! What happened when you tested popular cloud power-attribution heuristics like Kepler CPU-proportional splitting against real hardware?
+00:03:16.438 --> 00:03:37.441
+<v Sean>Pause right there, Tariq! Jetson AGX Thor's physical TI INA238 and INA3221 shunts — like Kria KV260's INA260 — sit directly on the power rails, earning measured_j! What happened when you compared cloud-native Kepler CPU-proportional splitting against real hardware telemetry?
 
 11
-00:03:40.591 --> 00:04:03.686
-<v Devon>Kepler CPU-proportional splitting erred by thirty-two point five nine percent all the way up to eighty-nine point eight eight percent! And on bare-metal Windows 11, Win32 GetProcessTimes suffered fifteen-point-six-two-five millisecond tick aliasing — Falsifier 3 — under-attributing short burst CPU usage by minus eighty-nine point eight eight percent!
+00:03:37.711 --> 00:04:00.737
+<v Tariq>Kepler CPU-proportional splitting erred by thirty-two point five nine percent up to eighty-nine point eight eight percent! And on bare-metal Windows 11, Win32 GetProcessTimes suffered fifteen-point-six-two-five millisecond tick aliasing under Falsifier 3 — missing minus eighty-nine point eight eight percent of short-burst CPU time!
 
 12
-00:04:03.961 --> 00:04:19.284
-<v Elena>Wait — eighty-nine point eight eight percent attribution error from standard cloud-native CPU-ratio formulas! Explain how SATB Falsifier 6 protects researchers from publishing garbage energy numbers on shared machines.
+00:04:01.007 --> 00:04:12.227
+<v Elena>Almost ninety percent attribution error from standard CPU-ratio formulas! Show how SATB Falsifier 6 stops shared-host background noise from polluting published results.
 
 13
-00:04:19.559 --> 00:04:44.251
-<v Devon>SATB crosses five telemetry levels L0 through L4 with attribution labels A1 through N. Whenever background host drift or quiescent power variance violates Falsifier 6 — as happened on one hundred nine of one hundred seventy shared-host windows in AI Reads Human — the harness refuses to stamp a net attributed joule claim while preserving the raw channel log untouched.
+00:04:12.497 --> 00:04:35.137
+<v Tariq>SATB pairs telemetry levels L0 through L4 with attribution classes A1 through N. Whenever background drift exceeds Falsifier 6 — as occurred on one hundred nine of one hundred seventy shared-host windows in AI Reads Human — net attribution is automatically withheld while raw counter traces stay preserved for inspection.
 
 14
-00:04:44.446 --> 00:05:00.374
-<v Marcus>And across all five operating systems and CPU architectures, Shape D checksum fifteen billion twenty-seven million seven hundred five thousand seven hundred thirty-six and C9 context truncation replayed with ZERO byte diffs!
+00:04:35.327 --> 00:04:48.687
+<v Sean>And across all five operating systems and architectures, Shape D checksum fifteen billion twenty-seven million seven hundred five thousand seven hundred thirty-six and C9 truncation replayed with zero byte diffs!
 
 15
-00:05:00.649 --> 00:05:16.930
-<v Elena>And pair SATB with our economics paper on Task Satiation versus Aggregate Rebound: every individual job has a finish line where extra tokens add zero value, even as cheaper inference sparks Jevons demand growth across new tasks.
+00:04:48.957 --> 00:05:02.081
+<v Elena>Pair that with Task Satiation versus Aggregate Rebound: every bounded job has a finish line where extra tokens add zero value, even while cheaper inference expands total Jevons demand across the economy.
 
 16
-00:05:17.125 --> 00:05:29.851
-<v Marcus>Which brings us right to Episode Five: what happens when you demand bit-exact replay across six machines, three operating systems, and real GPU game engines? Don't touch that dial!
+00:05:02.271 --> 00:05:11.950
+<v Sean>Next up in Episode Five, Mei, Liam, and Kwame test where bit-exact replay ends and GPU tolerance begins across real game engines!

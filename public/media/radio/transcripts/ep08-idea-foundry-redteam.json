@@ -2,202 +2,289 @@
   "id": "ep08-idea-foundry-redteam",
   "number": 8,
   "title": "The Idea Foundry Live — Pitching, Red-Teaming & Pilot-Testing 6 New Research Topics",
-  "subtitle": "Four promoted candidates, one held for TI INA238 shunt rails, and one neural router crushed 63.7x by a Shape-D integer grid",
-  "summary": "Inside the autonomous 6-hour Topic Idea Foundry & <60s Linux RAPL Pilot Loop: live red-teaming and exact execution receipts for TF-2026-01 through TF-2026-06 (4 PROMOTED_CANDIDATE, 1 HOLD_NEEDS_HARDWARE, 1 KILLED_BY_NULL).",
+  "subtitle": "Mateo, Sean, and Rohan audit 4 promoted pilots, 1 INA238 hardware hold, and 1 neural router crushed 63.7x by Shape D",
+  "summary": "Mateo, Sean, and Rohan host the autonomous 6-hour Topic Idea Foundry & <60s Linux RAPL Pilot Loop: live red-teaming and exact receipts for TF-2026-01 through TF-2026-06 (4 PROMOTED_CANDIDATE, 1 HOLD_NEEDS_HARDWARE, 1 KILLED_BY_NULL).",
   "topic_tags": [
     "topic-foundry",
     "pilot-loop",
     "killed-by-null",
     "red-team"
   ],
+  "panel": [
+    "Mateo",
+    "Sean",
+    "Rohan"
+  ],
+  "panel_profiles": [
+    {
+      "name": "Mateo",
+      "group": "host",
+      "title": "Foundry Host · Latino English",
+      "voice_id": "Dn7kHvEWEQXbRGLGqWJV",
+      "fallback_voice": "en-US-AndrewMultilingualNeural",
+      "color": "#10B981",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    {
+      "name": "Sean",
+      "group": "skeptic",
+      "title": "Auditor & Skeptic · Irish English",
+      "voice_id": "tRqj2rLkZmeP61CMmIX4",
+      "fallback_voice": "en-IE-ConnorNeural",
+      "color": "#FBBF24",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    {
+      "name": "Rohan",
+      "group": "specialist",
+      "title": "Hardware & Compiler Specialist · South Asian English",
+      "voice_id": "QtQiNi8LdZTzSJzhCvXT",
+      "fallback_voice": "en-IN-PrabhatNeural",
+      "color": "#818CF8",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  ],
+  "tts_engines": [
+    "eleven_v4"
+  ],
   "published_utc": "2026-11-23T09:30:00Z",
-  "duration_sec": 379.9,
-  "duration_human": "6:20",
-  "byte_length": 5151755,
+  "duration_sec": 336.6,
+  "duration_human": "5:37",
+  "byte_length": 5547950,
   "audio_url": "/media/radio/episodes/ep08-idea-foundry-redteam.m4a",
   "captions_url": "/media/radio/captions/ep08-idea-foundry-redteam.vtt",
   "transcript_url": "/media/radio/transcripts/ep08-idea-foundry-redteam.json",
   "turn_count": 16,
   "card_count": 6,
-  "ai_disclosure": "AI Persona Disclosure: Elena, Marcus, and Devon are AI-synthesized OpenIE research personas voiced via open-weight neural speech synthesis and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
   "personas": {
-    "Elena": {
-      "name": "Elena",
-      "title": "The Architect — Host",
-      "voice": "af_heart",
-      "lang": "en-us",
-      "speed": 1.01,
-      "color": "#00D4AA",
-      "bio": "AI-synthesized science communicator connecting biological signaling, thermodynamics, and verified computing."
+    "Mateo": {
+      "name": "Mateo",
+      "group": "host",
+      "title": "Foundry Host · Latino English",
+      "voice_id": "Dn7kHvEWEQXbRGLGqWJV",
+      "fallback_voice": "en-US-AndrewMultilingualNeural",
+      "color": "#10B981",
+      "pan": [
+        0.98,
+        0.98
+      ]
     },
-    "Marcus": {
-      "name": "Marcus",
-      "title": "The Skeptic — Critical Foil",
-      "voice": "am_michael",
-      "lang": "en-us",
-      "speed": 1.04,
-      "color": "#F59E0B",
-      "bio": "AI-synthesized empirical foil auditing lookup baselines, telemetry drift, and unverified hype."
+    "Sean": {
+      "name": "Sean",
+      "group": "skeptic",
+      "title": "Auditor & Skeptic · Irish English",
+      "voice_id": "tRqj2rLkZmeP61CMmIX4",
+      "fallback_voice": "en-IE-ConnorNeural",
+      "color": "#FBBF24",
+      "pan": [
+        1.04,
+        0.9
+      ]
     },
-    "Devon": {
-      "name": "Devon",
-      "title": "The Bench Engineer — Specialist",
-      "voice": "bm_george",
-      "lang": "en-gb",
-      "speed": 1.0,
+    "Rohan": {
+      "name": "Rohan",
+      "group": "specialist",
+      "title": "Hardware & Compiler Specialist · South Asian English",
+      "voice_id": "QtQiNi8LdZTzSJzhCvXT",
+      "fallback_voice": "en-IN-PrabhatNeural",
       "color": "#818CF8",
-      "bio": "AI-synthesized formal verification and hardware systems specialist citing exact Lean 4, RAPL, and shunt receipts."
+      "pan": [
+        0.9,
+        1.04
+      ]
     }
   },
   "turns": [
     {
       "turn_index": 0,
-      "speaker": "Elena",
-      "role": "The Architect — Host",
+      "speaker": "Mateo",
+      "role": "Foundry Host · Latino English",
+      "group": "host",
+      "color": "#10B981",
       "start_sec": 1.83,
-      "end_sec": 23.518,
-      "text": "Welcome to Episode Eight — the season-launch finale of OpenIE Research Radio! Elena, Marcus, and Devon here, three AI-synthesized OpenIE research personas grounded strictly in verified Open Interface Engineering artifacts and live pilot receipts. Today we open the doors to the Autonomous Topic Idea Foundry!"
+      "end_sec": 22.503,
+      "text": "Welcome to Episode Eight — the season-launch finale of OpenIE Research Radio! I'm Mateo, joined in the Foundry booth by Sean and Rohan — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural speech and grounded in live pilot receipts. Welcome inside the Autonomous Topic Idea Foundry!"
     },
     {
       "turn_index": 1,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 23.713,
-      "end_sec": 48.835,
-      "text": "Here are the rules of the Foundry arena! Every six hours, after scraping global open-access literature, our Linux daemon synthesizes candidate research topics. Every single topic MUST declare a Shape-D zero-parameter null baseline, a hard kill criterion, and run an actual deterministic Python pilot under sixty seconds before any human or LLM writes a paper!"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 22.693,
+      "end_sec": 44.237,
+      "text": "Here are the house rules of the Foundry, Mateo! Every six hours, right after scraping global open-access feeds, our Linux daemon pitches six candidate research topics. Every single topic MUST pre-declare a zero-parameter Shape-D null baseline, a hard kill criterion, and survive an executable Python pilot under sixty seconds before anyone writes a manuscript!"
     },
     {
       "turn_index": 2,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 49.11,
-      "end_sec": 67.886,
-      "text": "Today's full six-topic pilot suite executed in zero point nine eight three seconds on our x86-64 Linux harness, reading wrap-safe intel-rapl colon zero package reported joules — with board_metered explicitly false. Let's walk through all six verdicts!"
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 44.507,
+      "end_sec": 59.63,
+      "text": "Today's six-pilot suite completed in zero point nine seven seven seconds on our x86-64 Linux harness, reading wrap-safe intel-rapl colon zero package reported joules with board_metered explicitly false. Let's inspect all six receipts!"
     },
     {
       "turn_index": 3,
-      "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 68.161,
-      "end_sec": 85.572,
-      "text": "Candidate One, TF-2026-01, inspired by TokenPowerBench and our LUT6 cascade: a Conformal Prefix-LUT6 Early-Exit Gate for hybrid state-space routing across six thousand Zipf-distributed requests."
+      "speaker": "Mateo",
+      "role": "Foundry Host · Latino English",
+      "group": "host",
+      "color": "#10B981",
+      "start_sec": 59.9,
+      "end_sec": 74.942,
+      "text": "Up first: TF-2026-01, inspired by TokenPowerBench and our LUT6 cascade — a Conformal Prefix-LUT6 Early-Exit Gate routing six thousand Zipf-distributed state-space requests."
     },
     {
       "turn_index": 4,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 85.847,
-      "end_sec": 109.3,
-      "text": "A sixty-four-entry bit-sliced LUT6 signature table paired with an exact parity check intercepted eighty-eight point two two percent of arrivals with zero out of six thousand false commits, cutting package reported joules from one point five eight joules down to zero point six four joules — a two point four six times energy gain! Verdict: PROMOTED CANDIDATE."
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 75.212,
+      "end_sec": 96.342,
+      "text": "A sixty-four-entry bit-sliced LUT6 signature table paired with exact schema parity intercepted eighty-eight point two two percent of arrivals with zero out of six thousand false commits, cutting package reported joules from one point five eight joules down to zero point six four joules — a two point four six times energy gain! Verdict: PROMOTED CANDIDATE."
     },
     {
       "turn_index": 5,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 109.495,
-      "end_sec": 127.114,
-      "text": "Zero false accepts! What about Candidate Two, TF-2026-02 — the SepJ-inspired Quorum-Hysteresis Circuit Breaker for Byzantine multi-agent DAGs, inspired by today's AgentShield and HALO preprints?"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 96.532,
+      "end_sec": 111.367,
+      "text": "Clean pass! What about Candidate Two, TF-2026-02 — the SepJ-inspired Quorum-Hysteresis Circuit Breaker for Byzantine agent DAGs, sparked by today's AgentShield and INFRAMIND preprints?"
     },
     {
       "turn_index": 6,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 127.389,
-      "end_sec": 153.919,
-      "text": "Across two thousand five hundred committee rounds on a sixteen-node graph with four adversarial poisoners, unverified three-of-five majority voting suffered one hundred thirty-six corrupted commits! Keyed BLAKE2b attestation plus a two-strike SepJ link quarantine isolated all four Byzantine nodes within fourteen rounds, delivering one hundred percent goodput and zero out of two thousand five hundred false commits. Verdict: PROMOTED CANDIDATE!"
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 111.637,
+      "end_sec": 136.905,
+      "text": "Across two thousand five hundred rounds on a sixteen-node graph with four adversarial poisoners, unverified three-of-five majority voting suffered one hundred thirty-six corrupted commits! Keyed BLAKE2b attestation plus a two-strike SepJ link quarantine isolated all four poisoners within fourteen rounds, yielding one hundred percent goodput and zero out of two thousand five hundred false commits. Verdict: PROMOTED CANDIDATE!"
     },
     {
       "turn_index": 7,
-      "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 154.194,
-      "end_sec": 168.288,
-      "text": "Now give us Candidates Three and Four — TF-2026-03 on Epoch-Salted Horizon Commitments, and TF-2026-04 on Operator-Aware De Bruijn Memoization!"
+      "speaker": "Mateo",
+      "role": "Foundry Host · Latino English",
+      "group": "host",
+      "color": "#10B981",
+      "start_sec": 137.175,
+      "end_sec": 150.855,
+      "text": "Give us Candidates Three and Four back-to-back — TF-2026-03 on Epoch-Salted Horizon Commitments, and TF-2026-04 on Operator-Aware De Bruijn Memoization!"
     },
     {
       "turn_index": 8,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 168.563,
-      "end_sec": 209.085,
-      "text": "In TF-2026-03, a precomputed Hellman table of one thousand five hundred thirty-six chains inverted seventy-four out of four hundred unsalted state targets; binding each step to a fresh drand-style epoch beacon dropped inversions to zero out of four hundred at zero point five seven four microseconds per step! And in TF-2026-04, operator-aware De Bruijn indexing hit two thousand out of two thousand alpha-equivalent renames with zero non-commutative a-minus-b swap collisions! Both are PROMOTED CANDIDATES."
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 151.125,
+      "end_sec": 185.045,
+      "text": "In TF-2026-03, a precomputed Hellman table of one thousand five hundred thirty-six chains inverted seventy-four out of four hundred unsalted state targets; binding each transition to a fresh epoch beacon collapsed inversions to zero out of four hundred at zero point five seven four microseconds per step! And in TF-2026-04, operator-aware De Bruijn indexing hit two thousand out of two thousand alpha-equivalent renames with zero non-commutative a-minus-b swap collisions! Both are PROMOTED CANDIDATES."
     },
     {
       "turn_index": 9,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 209.28,
-      "end_sec": 224.751,
-      "text": "Four promotions in a row — okay, now show the listeners where the brakes slammed on! What happened to Candidate Five, TF-2026-05, on sub-ten-millisecond Adaptive Beta-Burst Neuro-Stimulation?"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 185.235,
+      "end_sec": 199.899,
+      "text": "Four promotions in a row — alright, now show the listeners where our own guardrails slammed on the brakes! What happened to Candidate Five, TF-2026-05, on sub-ten-millisecond Adaptive Beta-Burst Neuro-Stimulation?"
     },
     {
       "turn_index": 10,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 225.026,
-      "end_sec": 258.605,
-      "text": "Algorithmically, thresholded beta-envelope gating cut stimulation pulses by three point one eight times — eight hundred seventeen pulses versus two thousand six hundred in continuous 130-hertz pacing! But when we sampled forty consecutive eight-millisecond Linux RAPL windows to attribute micro-burst silicon energy, window coefficient of variation hit forty-four point zero three percent — blowing right past our fifteen-percent SATB Falsifier 6 stability limit!"
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 200.169,
+      "end_sec": 228.167,
+      "text": "In signal processing terms, thresholded beta-envelope gating cut stimulation pulses by three point one eight times — eight hundred seventeen pulses versus two thousand six hundred in continuous 130-hertz pacing! When we sampled forty consecutive eight-millisecond Linux RAPL windows to attribute micro-burst silicon energy, however, window coefficient of variation hit forty-four point zero three percent — well above our fifteen-percent SATB Falsifier 6 limit!"
     },
     {
       "turn_index": 11,
-      "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 258.88,
-      "end_sec": 274.464,
-      "text": "So instead of faking a micro-burst joule claim off noisy OS counters, the daemon stamped TF-2026-05 as HOLD NEEDS HARDWARE — queued for a physical Texas Instruments INA238 shunt bench!"
+      "speaker": "Mateo",
+      "role": "Foundry Host · Latino English",
+      "group": "host",
+      "color": "#10B981",
+      "start_sec": 228.437,
+      "end_sec": 244.479,
+      "text": "So rather than publishing noisy micro-window counter guesses, the Foundry automatically stamped TF-2026-05 as HOLD NEEDS HARDWARE — waiting for a physical Texas Instruments INA238 inline shunt bench!"
     },
     {
       "turn_index": 12,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 274.659,
-      "end_sec": 294.721,
-      "text": "And now — drumroll please — Candidate Six, TF-2026-06: pitching a learned three-layer dense neural MLP router to predict broadphase collision buckets for two hundred fifty-six Q32.32 rigid bodies! Tell us how badly Shape D destroyed it!"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 244.669,
+      "end_sec": 262.534,
+      "text": "And now for the main event — Candidate Six, TF-2026-06: pitching a learned three-layer dense neural MLP router to predict broadphase collision buckets for two hundred fifty-six Q32.32 rigid bodies! Rohan, read the obituary!"
     },
     {
       "turn_index": 13,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 294.996,
-      "end_sec": 329.442,
-      "text": "Total carnage! Across thirty thousand seven hundred twenty body-ticks, the three-layer MLP router took twenty-one point nine eight milliseconds, burned one point zero one three four joules of socket reported_j, and still missed zero point six percent of true collision pairs at ninety-nine point four percent recall! Meanwhile, the zero-parameter Shape-D bit-shifted integer grid — literally x shifted right fifteen bits — hit ONE HUNDRED POINT ZERO percent exact recall in zero point three four milliseconds!"
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 262.804,
+      "end_sec": 289.968,
+      "text": "Across thirty thousand seven hundred twenty body-ticks, the three-layer MLP router took twenty-one point nine eight milliseconds, burned over one joule of socket reported_j, and still missed zero point six percent of true collision pairs at ninety-nine point four percent recall! Meanwhile, the zero-parameter Shape-D bit-shifted integer grid — x shifted right fifteen bits — achieved ONE HUNDRED POINT ZERO percent exact recall in zero point three four milliseconds!"
     },
     {
       "turn_index": 14,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 329.637,
-      "end_sec": 352.033,
-      "text": "Sixty-three point seven two times faster, lower joules, zero parameters, AND one hundred percent exact recall versus ninety-nine point four percent! Stamped in bright red: KILLED BY NULL! Imagine how many GPU hours the AI industry would save if every lab ran a thirty-line integer baseline before training!"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 290.158,
+      "end_sec": 309.23,
+      "text": "Over sixty times faster, lower joules, zero learned weights, AND one hundred percent exact recall versus ninety-nine point four percent! Stamped in bright red: KILLED BY NULL! Think how much datacenter electricity the world would save if every lab ran a thirty-line integer baseline before training!"
     },
     {
       "turn_index": 15,
-      "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 352.308,
-      "end_sec": 377.98,
-      "text": "And because our Linux systemd user timer and six-hour cron daemon stay live around the clock, this exact four-stage loop — global open-access scrape, epistemic cross-exam, sub-sixty-second RAPL pilot, and multi-voice broadcast — keeps running autonomously. Subscribe via Podcast RSS right on this page, click any transcript line to inspect its receipt, and thanks for tuning in to OpenIE Research Radio!"
+      "speaker": "Mateo",
+      "role": "Foundry Host · Latino English",
+      "group": "host",
+      "color": "#10B981",
+      "start_sec": 309.5,
+      "end_sec": 334.653,
+      "text": "And because our Linux systemd user timer and six-hour cron daemon stay active around the clock, this four-stage loop — open-access scrape, epistemic audit, sub-sixty-second RAPL pilot, and multi-voice studio synthesis — keeps running autonomously. Subscribe via Podcast RSS right on this page, click any transcript line to jump straight to the receipt, and thank you for listening to OpenIE Research Radio!"
     }
   ],
   "cards": [
     {
       "id": "ep08-idea-foundry-redteam-card-00-0",
       "at_sec": 2.63,
-      "end_sec": 23.518,
+      "end_sec": 22.503,
       "turn_index": 0,
-      "speaker": "Elena",
+      "speaker": "Mateo",
       "kind": "pilot",
-      "badge": "0.983s RUN",
+      "badge": "0.977s RUN",
       "title": "Autonomous 6-Topic Linux RAPL Pilot Suite",
-      "detail": "All 6 deterministic pilots executed in 0.983s (<60s budget) on Linux powercap intel-rapl:0: 4 Promoted, 1 Hold, 1 Killed by Null.",
+      "detail": "All 6 deterministic pilots executed in 0.977s (<60s budget) on Linux powercap intel-rapl:0: 4 Promoted, 1 Hold, 1 Killed by Null.",
       "href": "/radio/#foundry"
     },
     {
       "id": "ep08-idea-foundry-redteam-card-04-0",
-      "at_sec": 86.647,
-      "end_sec": 109.3,
+      "at_sec": 76.012,
+      "end_sec": 96.342,
       "turn_index": 4,
-      "speaker": "Devon",
+      "speaker": "Rohan",
       "kind": "pilot",
       "badge": "PROMOTED",
       "title": "TF-2026-01: Conformal Prefix-LUT6 Early-Exit Gate",
@@ -206,10 +293,10 @@
     },
     {
       "id": "ep08-idea-foundry-redteam-card-06-0",
-      "at_sec": 128.189,
-      "end_sec": 153.919,
+      "at_sec": 112.437,
+      "end_sec": 136.905,
       "turn_index": 6,
-      "speaker": "Devon",
+      "speaker": "Rohan",
       "kind": "pilot",
       "badge": "PROMOTED",
       "title": "TF-2026-02: SepJ Quorum Circuit Breaker (4/4 Isolated)",
@@ -218,10 +305,10 @@
     },
     {
       "id": "ep08-idea-foundry-redteam-card-08-0",
-      "at_sec": 169.363,
-      "end_sec": 209.085,
+      "at_sec": 151.925,
+      "end_sec": 185.045,
       "turn_index": 8,
-      "speaker": "Devon",
+      "speaker": "Rohan",
       "kind": "pilot",
       "badge": "PROMOTED",
       "title": "TF-2026-03 & TF-2026-04: Salted Horizons + De Bruijn Cache",
@@ -230,26 +317,26 @@
     },
     {
       "id": "ep08-idea-foundry-redteam-card-10-0",
-      "at_sec": 225.826,
-      "end_sec": 258.605,
+      "at_sec": 200.969,
+      "end_sec": 228.167,
       "turn_index": 10,
-      "speaker": "Devon",
+      "speaker": "Rohan",
       "kind": "falsifier",
       "badge": "HOLD_HARDWARE",
-      "title": "TF-2026-05 Held by SATB Falsifier 6 (44.03% > 15% CV)",
+      "title": "TF-2026-05 Held by SATB Falsifier 6 (>=15% RAPL CV)",
       "detail": "3.18x pulse reduction confirmed, but 8 ms shared-host RAPL jitter requires physical TI INA238 inline DC shunts before claiming measured_j.",
       "href": "/radio/#foundry"
     },
     {
       "id": "ep08-idea-foundry-redteam-card-13-0",
-      "at_sec": 295.796,
-      "end_sec": 329.442,
+      "at_sec": 263.604,
+      "end_sec": 289.968,
       "turn_index": 13,
-      "speaker": "Devon",
+      "speaker": "Rohan",
       "kind": "falsifier",
       "badge": "KILLED_BY_NULL",
-      "title": "TF-2026-06: MLP Router Crushed 63.72x by Shape-D Grid",
-      "detail": "Zero-parameter integer bit-shift achieved 100.0% exact recall in 0.34 ms vs MLP's 99.4% recall in 21.98 ms (1.0134 J reported_j).",
+      "title": "TF-2026-06: MLP Router Crushed >60x by Shape-D Grid",
+      "detail": "Zero-parameter integer bit-shift achieved 100.0% exact recall in ~0.34 ms vs MLP's 99.4% recall in ~22 ms (~1.0 J reported_j).",
       "href": "/radio/#foundry"
     }
   ]

@@ -1,34 +1,34 @@
 WEBVTT
-NOTE OpenIE Research TV — gates (30s) AI-synthesized studio narration
+NOTE OpenIE Research TV — gates (30s) Narrator George
 
 1
-00:00:00.300 --> 00:00:02.997
+00:00:00.260 --> 00:00:03.572
 When an AI agent deletes data or sends money,
 
 2
-00:00:02.997 --> 00:00:06.352
+00:00:03.572 --> 00:00:07.692
 guessing with a giant model and apologizing later fails.
 
 3
-00:00:06.832 --> 00:00:08.549
+00:00:08.112 --> 00:00:10.240
 Metered Commit Gates puts a fast,
 
 4
-00:00:08.549 --> 00:00:13.023
+00:00:10.240 --> 00:00:15.784
 cheap check in front of every irreversible side effect and escalates only when needed.
 
 5
-00:00:13.503 --> 00:00:18.690
-On an AMD Kria K V 260 board with an I N A 260 rail sensor,
+00:00:16.204 --> 00:00:21.936
+On an AMD Kria KV260 board with an INA260 rail sensor,
 
 6
-00:00:18.690 --> 00:00:23.261
+00:00:21.936 --> 00:00:27.455
 one whole-module gate cycle reads 11,428 picojoules.
 
 7
-00:00:23.741 --> 00:00:26.162
+00:00:27.875 --> 00:00:30.773
 Every decision either passes the check or logs
 
 8
-00:00:26.162 --> 00:00:28.531
+00:00:30.773 --> 00:00:33.607
 a clean refusal receipt with its energy cost.

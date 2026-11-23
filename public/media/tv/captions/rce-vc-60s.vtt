@@ -1,42 +1,42 @@
 WEBVTT
-NOTE OpenIE Research TV — rce-vc (60s) AI-synthesized studio narration
+NOTE OpenIE Research TV — rce-vc (60s) Narrator River
 
 1
-00:00:00.951 --> 00:00:04.673
+00:00:00.320 --> 00:00:04.501
 Traditional version control tracks text lines and filenames,
 
 2
-00:00:04.673 --> 00:00:09.326
+00:00:04.501 --> 00:00:09.726
 turning harmless re-orderings or parallel agent patches into manual merges.
 
 3
-00:00:11.603 --> 00:00:14.615
+00:00:10.246 --> 00:00:14.119
 Each submission runs against a named admission check:
 
 4
-00:00:14.615 --> 00:00:19.218
+00:00:14.119 --> 00:00:20.038
 either it joins the single name-free state, or a structured refusal explains why.
 
 5
-00:00:21.495 --> 00:00:25.610
+00:00:20.558 --> 00:00:25.307
 Because dependencies reference content keys rather than mutable paths,
 
 6
-00:00:25.610 --> 00:00:29.313
+00:00:25.307 --> 00:00:29.580
 disjoint agent swarms commit concurrently without branch locks.
 
 7
-00:00:31.590 --> 00:00:36.202
+00:00:30.100 --> 00:00:35.666
 At commit aba99fce, 49 offline tests pass across core,
 
 8
-00:00:36.202 --> 00:00:42.179
+00:00:35.666 --> 00:00:42.881
 keys, and Git projection, scaling cleanly to 100,000 repository units.
 
 9
-00:00:44.456 --> 00:00:47.460
+00:00:43.401 --> 00:00:46.986
 RCE-VC requires no RCE source code,
 
 10
-00:00:47.460 --> 00:00:54.154
+00:00:46.986 --> 00:00:54.974
 and transparently pairs M5 Max L3 reported_j with stated est_uj receipt costs.

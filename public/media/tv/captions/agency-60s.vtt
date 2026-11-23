@@ -1,42 +1,42 @@
 WEBVTT
-NOTE OpenIE Research TV — agency (60s) AI-synthesized studio narration
+NOTE OpenIE Research TV — agency (60s) Narrator Joy
 
 1
-00:00:01.099 --> 00:00:04.866
+00:00:00.421 --> 00:00:05.119
 Every time an agent updates memory to steer toward a goal,
 
 2
-00:00:04.866 --> 00:00:08.244
+00:00:05.119 --> 00:00:09.332
 thermodynamics charges an irreversible energy floor.
 
 3
-00:00:10.945 --> 00:00:13.458
+00:00:10.140 --> 00:00:13.484
 The study defines agency operationally:
 
 4
-00:00:13.458 --> 00:00:18.676
+00:00:13.484 --> 00:00:20.431
 hold a target state against disturbance while spending from a finite joule grant.
 
 5
-00:00:21.377 --> 00:00:26.429
+00:00:21.239 --> 00:00:27.021
 Dividing task velocity by static leakage plus dynamic switching power
 
 6
-00:00:26.429 --> 00:00:31.042
+00:00:27.021 --> 00:00:32.300
 reveals a concave efficiency curve with a unique optimal tempo.
 
 7
-00:00:33.743 --> 00:00:38.389
+00:00:33.109 --> 00:00:38.595
 Across pre-registered acceptor runs on desktop and embedded silicon,
 
 8
-00:00:38.389 --> 00:00:43.377
+00:00:38.595 --> 00:00:44.485
 tempo-selected policies finish more verified episodes per reported joule.
 
 9
-00:00:46.078 --> 00:00:49.521
+00:00:45.294 --> 00:00:49.531
 Benchmarks that ignore energy reward brute waste.
 
 10
-00:00:49.521 --> 00:00:53.878
+00:00:49.531 --> 00:00:54.892
 Measure completion first, then rank finishers by joules spent.

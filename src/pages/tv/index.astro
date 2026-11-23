@@ -79,22 +79,22 @@ const jsonLd = {
           21 Studies × 4 Depth Tiers = 84 Films
         </span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">
-          720p30 · WebVTT · Blender 5.3 3D Cutaways
+          21-Presenter ElevenLabs v4 Ensemble · 720p30 · Blender 5.3 3D
         </span>
       </div>
       <h1 class="font-display text-3xl md:text-5xl font-bold tracking-tight text-brand-white mb-4">
         Open<span class="text-brand-cyan">IE</span> Research <span class="text-brand-amber">TV</span>
       </h1>
       <p class="font-body text-base md:text-lg text-brand-slate max-w-4xl leading-relaxed mb-5">
-        Every published study rendered at four distinct pedagogical depths—from a five-second thesis flash to a ninety-second laboratory documentary cut featuring three-dimensional hardware and state-machine turntables.
+        Every published study narrated by a distinct studio voice across global accents and rendered at four pedagogical depths—from a five-second thesis flash to a ninety-second laboratory documentary cut featuring three-dimensional hardware and state-machine turntables.
       </p>
 
       <div class="glass-card p-4 md:p-5 border-l-4 border-l-brand-amber">
         <div class="font-mono text-[11px] uppercase tracking-wider text-brand-amber mb-1.5">
-          Studio Narration &amp; Energy Provenance Disclosure
+          21-Presenter Studio Ensemble &amp; Energy Provenance Disclosure
         </div>
         <p class="font-body text-[13px] text-brand-light leading-relaxed m-0">
-          AI-synthesized studio narration; every claim, equation, and joule reading is bound to verified OpenIE study artifacts.
+          Narration uses a 21-presenter global studio voice ensemble synthesized via <code class="font-mono text-brand-cyan">ElevenLabs eleven_v4</code>; every claim, equation, and joule reading is bound strictly to verified OpenIE study artifacts.
           Energy labels strictly distinguish <code class="font-mono text-brand-cyan">measured_j</code> (physical hardware rail shunts: AMD Kria <code class="font-mono">KV260 INA260</code> in <em>Metered Commit Gates</em> and <code class="font-mono">NVIDIA Jetson AGX Thor TI INA238/INA3221</code> in <em>Satiation Benchmark Harness</em> and <em>The Communication Tool Avalanche</em>),
           <code class="font-mono text-brand-amber">reported_j</code> (host <code class="font-mono">RAPL</code>, <code class="font-mono">IOReport</code>, and <code class="font-mono">NVML</code> counters),
           and <code class="font-mono text-brand-slate">est_j</code> (analytical or datasheet schedules).
@@ -171,6 +171,9 @@ const jsonLd = {
               <span id="tv-active-energy-tier" class="px-2 py-0.5 rounded font-mono text-[11px] border border-brand-amber/40 text-brand-amber bg-brand-amber/10">
                 {initialStudy.energy_tier}
               </span>
+              <span id="tv-active-voice" class="px-2.5 py-0.5 rounded font-mono text-[11px] border border-brand-cyan/40 text-brand-cyan bg-brand-cyan/10" title={(initialStudy as any).narrator_profile ?? ''}>
+                Voice: {(initialStudy as any).narrator_name ?? 'Sarah'} · ElevenLabs v4 Studio
+              </span>
               <div id="tv-active-epistemic" class="flex items-center gap-1"></div>
             </div>
             <div class="flex items-center gap-2">
@@ -195,6 +198,9 @@ const jsonLd = {
           </div>
           <div id="tv-active-energy-disc" class="mt-1 font-mono text-[11px] text-brand-gray">
             {initialStudy.energy_disclosure}
+          </div>
+          <div id="tv-active-voice-profile" class="mt-1 font-mono text-[11px] text-brand-slate">
+            Presenter Profile: {(initialStudy as any).narrator_profile ?? 'Documentary Host · North American English'}
           </div>
 
           <!-- Deep-Link Action Buttons -->
@@ -316,6 +322,12 @@ const jsonLd = {
               <h3 class="font-display text-lg font-bold text-brand-white leading-snug mb-1.5">
                 {s.short_title}
               </h3>
+              <div class="font-mono text-[10px] text-brand-slate mb-1.5 flex items-center gap-1.5">
+                <span class="text-brand-amber">Voice:</span>
+                <span class="text-brand-light font-semibold">{(s as any).narrator_name ?? 'Studio'}</span>
+                <span>·</span>
+                <span class="truncate">{(s as any).narrator_profile ?? 'ElevenLabs v4 Studio'}</span>
+              </div>
               <div class="font-mono text-[11px] text-brand-cyan mb-2">
                 {s.headline_metric}
               </div>

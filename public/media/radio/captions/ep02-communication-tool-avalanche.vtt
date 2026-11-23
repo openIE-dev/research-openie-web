@@ -3,69 +3,69 @@ Kind: captions
 Language: en
 
 1
-00:00:01.830 --> 00:00:21.117
-<v Elena>Welcome back to OpenIE Research Radio! I'm Elena, joined by Marcus and Devon — three AI-synthesized OpenIE research personas exploring verified Open Interface Engineering studies. Today we're opening one of our most sweeping monographs: The Communication Tool Avalanche.
+00:00:01.830 --> 00:00:25.786
+<v Amara>Hello and welcome to Episode Two of OpenIE Research Radio! I'm Amara, joined in the studio by Liam and Kenji — three AI-synthesized OpenIE research personas voiced with ElevenLabs neural voices and grounded in verified Open Interface Engineering studies. Today we're diving into The Communication Tool Avalanche.
 
 2
-00:00:21.312 --> 00:00:34.505
-<v Marcus>Okay, pitch me the core thesis without any hand-waving. Why put bacteria, slime molds, starling flocks, printing presses, and multi-agent language models inside one mathematical equation?
+00:00:25.976 --> 00:00:39.385
+<v Liam>Alright Kenji, pitch me the big thesis without any academic fluff! Why put ancient bacteria, slime molds, starling murmurations, printing presses, and multi-agent language models inside one mathematical operator?
 
 3
-00:00:34.780 --> 00:00:59.068
-<v Devon>Because single-agent brains hit steep thermodynamic walls long before complex jobs finish! What unlocks superlinear scaling is a three-step ratchet formalized in Lean 4.36.0 across thirty-one theorems with zero sorry: Externalize structured state into a medium, Ingest it only across a threshold and validity gate, and Transform recipient state without regressing.
+00:00:39.655 --> 00:01:07.232
+<v Kenji>Because isolated brains hit steep metabolic walls long before collective problems saturate, Liam! What unlocks superlinear scaling is a three-phase ratchet checked mechanically in Lean 4.36.0 across thirty-one theorems with zero sorry: Externalize state into a shared medium, Ingest it only across a threshold and validity gate, and Transform recipient state without regressing.
 
 4
-00:00:59.343 --> 00:01:18.964
-<v Elena>Look at Rung CL02, three point five billion years ago: bacterial quorum sensing in Vibrio fischeri and Pseudomonas aeruginosa. A single bacterium floating alone in the ocean doesn't waste ATP secreting bioluminescent enzymes or biofilms into empty water.
+00:01:07.502 --> 00:01:27.120
+<v Amara>Start at Rung CL02, three point five billion years ago: bacterial quorum sensing in Vibrio fischeri and Pseudomonas aeruginosa. One lone cell drifting in open water never wastes precious ATP pumping out bioluminescent enzymes or biofilms.
 
 5
-00:01:19.239 --> 00:01:42.916
-<v Devon>In our pre-registered simulation CA-M1 under seed 20261123, a cooperative Hill switch with exponent two to four saves ninety-five point four nine to ninety-nine point one seven percent of regulon ATP at low cell density, while suppressing premature noise firing by eleven point six six times!
+00:01:27.390 --> 00:01:51.511
+<v Kenji>In our pre-registered simulation CA-M1 under seed 20261123, a cooperative Hill switch with exponent two to four saves ninety-five point four nine to ninety-nine point one seven percent of regulon ATP at low density, while suppressing premature noise firing by eleven point six six times!
 
 6
-00:01:43.111 --> 00:02:00.026
-<v Marcus>Wait — once cells link up into multicellular filaments like cyanobacteria in Rung CL03 and share cytoplasm through fifteen-nanometer SepJ nanopores, doesn't a single punctured cell bleed the entire hundred-cell chain to death?
+00:01:51.701 --> 00:02:06.846
+<v Liam>Wait a minute — once cells connect into multicellular filaments like cyanobacteria in Rung CL03 and share cytoplasm through fifteen-nanometer SepJ nanopores, doesn't one punctured cell drain the whole hundred-cell filament dry?
 
 7
-00:02:00.301 --> 00:02:19.586
-<v Devon>It would, if the pore were ungated! In model CA-M2, an ungated twenty-cell filament collapses to zero percent survival after cell-zero lyses. With calcium-triggered SepJ plug closure in fifty milliseconds, nineteen of twenty cells — ninety-five percent — survive intact.
+00:02:07.116 --> 00:02:28.071
+<v Kenji>It absolutely does if the pore stays open! In model CA-M2, an ungated twenty-cell filament collapses to zero percent survival when cell-zero lyses. With calcium-triggered SepJ plug closure in fifty milliseconds, nineteen out of twenty cells — ninety-five percent — survive intact.
 
 8
-00:02:19.781 --> 00:02:34.509
-<v Marcus>And I appreciate that Section 3 also calls foul on popular biology myths! Everyone loves talking about forest mother trees sending intentional warning broadcasts through fungal networks, and we actually audited that.
+00:02:28.261 --> 00:02:43.466
+<v Liam>And I love that Section 3 refuses to repeat romanticized pop-science myths! People constantly claim forest mother trees broadcast intentional warning messages to kin through fungal networks, and we actually checked the forestry audit.
 
 9
-00:02:34.784 --> 00:02:57.292
-<v Elena>Right! Simard's 1997 carbon-isotope flux across ectomycorrhizal hyphae is established biophysics — tagged E — but Karst, Jones, and Hoeksema's 2023 audit exposed severe citation bias behind teleological mother-tree signaling claims, so we flag intentional maternal warnings as unsubstantiated!
+00:02:43.736 --> 00:03:10.216
+<v Amara>Yes! Simard's 1997 carbon-isotope transfer across ectomycorrhizal hyphae is solid biophysics — tagged E — but Karst, Jones, and Hoeksema's 2023 systematic audit exposed heavy citation bias and confounders behind teleological mother-tree stories, so we separate biophysical flux from unsubstantiated signaling intent.
 
 10
-00:02:57.567 --> 00:03:15.349
-<v Elena>Now jump to computing history from 1950 to 2026! Why did AI suffer AI Winter One in 1974 and AI Winter Two in 1988? Look at those seven eras through the exact same externalization-and-gate lens.
+00:03:10.486 --> 00:03:26.639
+<v Amara>Now map that exact same gate principle onto seventy-six years of artificial intelligence from 1950 to 2026! Why did AI Winter One hit in 1974 and AI Winter Two hit in 1988?
 
 11
-00:03:15.624 --> 00:03:42.016
-<v Devon>Every breakthrough paired a compact externalized representation with a sound gate — Lisp recursion in 1956, backprop chain-rule gradients in 1986, sparse MoE top-k routing in 2022. Every AI Winter struck when signals outran verification: Hearsay-II untyped blackboards locked up quadratically, and MYCIN ad-hoc certainty factors drifted across multi-hop rules.
+00:03:26.909 --> 00:03:57.025
+<v Kenji>Every surge paired a compact externalized representation with a sound gate — Lisp recursion in 1956, backprop chain-rule gradients in 1986, sparse MoE top-k routing in 2022. Every AI Winter struck when signals outran verification: Hearsay-II untyped blackboards locked up quadratically, and MYCIN certainty factors drifted across multi-hop chains.
 
 12
-00:03:42.211 --> 00:04:02.178
-<v Marcus>Wait a second — today's multi-agent LLM chat frameworks are literally recreating 1975 Hearsay-II blackboards, just at fifteen to a hundred joules per turn! Agents spewing three-point-seven-x bloated English prose back and forth until hallucinations lock in!
+00:03:57.215 --> 00:04:13.038
+<v Liam>Hang on — today's unverified multi-agent LLM chat loops are literally 1975 Hearsay-II blackboards burning a hundred joules a turn! Agents firing three-point-seven-x bloated English essays at each other until hallucinations lock in!
 
 13
-00:04:02.453 --> 00:04:27.722
-<v Devon>That's why we designed DES-10 — ten-camp Digital Enzymatic Synthesis. In biochemistry, an enzyme slashes the activation energy barrier Delta E-double-dagger of a reaction by orders of magnitude and exits completely unconsumed. A digital enzyme pairs a canonical typed IR with BLAKE3 hashing, Ed25519 signatures, and a deterministic verifier.
+00:04:13.308 --> 00:04:36.275
+<v Kenji>That's why we engineered DES-10 — ten-camp Digital Enzymatic Synthesis. Just like a biological enzyme slashes a reaction's activation barrier and exits unconsumed, a digital enzyme pairs a canonical typed schema with BLAKE3 hashing, Ed25519 signatures, and a deterministic verifier.
 
 14
-00:04:27.997 --> 00:04:38.857
-<v Elena>Give us the Linux RAPL bench numbers from experiments CTA-E1 through CTA-E3 — keeping clear that board_metered is false and these are socket reported joules.
+00:04:36.545 --> 00:04:48.705
+<v Amara>Give us the Linux RAPL numbers from benchmarks CTA-E1 through CTA-E3, Kenji — keeping clear that board_metered is false and these are socket reported joules.
 
 15
-00:04:39.132 --> 00:05:12.667
-<v Devon>Rust BLAKE3 plus Ed25519 channel verification takes twenty-five point nine five to thirty-seven point three nine microseconds — just six hundred forty-three to nine hundred twenty-six microjoules per edge! Zero-clock Linux eventfd waiting cuts one-percent-duty idle socket energy by two point two one times versus one-kilohertz polling, and min-cost flow reroutes around two hundred out of two hundred Byzantine faults in two point four microseconds.
+00:04:48.975 --> 00:05:21.925
+<v Kenji>Rust BLAKE3 plus Ed25519 envelope verification takes twenty-five point nine five to thirty-seven point three nine microseconds — just six hundred forty-three to nine hundred twenty-six microjoules per edge! Zero-clock Linux eventfd waiting cuts one-percent-duty socket energy by two point two one times versus one-kilohertz polling, and min-cost flow reroutes around two hundred out of two hundred Byzantine faults in two point four microseconds.
 
 16
-00:05:12.862 --> 00:05:38.920
-<v Marcus>And once a frontier fifteen-joule model solves a novel bug and passes the test gate, downward crystallization locks that fix into a one-point-seven-seven microjoule lookup case — just like our twenty-generation cultural ratchet model CA-M5, where attested libraries held one hundred percent retention after machine teachers vanished, while unverified imitation collapsed to twenty-nine percent!
+00:05:22.115 --> 00:05:45.457
+<v Liam>And once a frontier fifteen-joule model solves a novel bug and clears the test gate, downward crystallization locks that fix into a one-point-seven-seven microjoule lookup case — matching our twenty-generation cultural ratchet CA-M5, where attested libraries held one hundred percent competence after synthetic teachers left, while unverified imitation dropped to twenty-nine percent!
 
 17
-00:05:39.195 --> 00:05:53.227
-<v Elena>From bacterial autoinducers to sub-millijoule digital enzymes, the rule never changes: gate the channel, verify the payload, and crystallize what works. Up next in Episode Three: World Coding and RCE-JEPA!
+00:05:45.727 --> 00:05:58.875
+<v Amara>Gate the channel, verify the payload, and crystallize every verified gain. Up next in Episode Three, Priya, Marcus, and Claire dive into World Coding and RCE-JEPA!

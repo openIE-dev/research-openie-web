@@ -1,42 +1,42 @@
 WEBVTT
-NOTE OpenIE Research TV — rce-vc (90s) AI-synthesized studio narration
+NOTE OpenIE Research TV — rce-vc (90s) Narrator River
 
 1
-00:00:02.315 --> 00:00:05.070
+00:00:01.794 --> 00:00:05.047
 Human teams merge a few pull requests an hour;
 
 2
-00:00:05.070 --> 00:00:09.741
+00:00:05.047 --> 00:00:10.561
 autonomous coding swarms submit hundreds of concurrent micro-patches a second.
 
 3
-00:00:15.861 --> 00:00:19.664
+00:00:15.202 --> 00:00:19.834
 Replacing mutable file paths with canonical dependency digests
 
 4
-00:00:19.664 --> 00:00:23.713
+00:00:19.834 --> 00:00:24.765
 separates genuine semantic overlap from accidental file adjacency.
 
 5
-00:00:29.833 --> 00:00:34.104
+00:00:29.406 --> 00:00:34.552
 This three-dimensional hub shows concurrent submissions entering the deterministic
 
 6
-00:00:34.104 --> 00:00:37.177
+00:00:34.552 --> 00:00:38.255
 admission ring while projecting lossless views back to Git.
 
 7
-00:00:43.297 --> 00:00:51.997
+00:00:42.896 --> 00:00:52.370
 Forty-nine offline verification tests validate canonical hashing, conflict detection, refusal receipts, and round-trip Git projection.
 
 8
-00:00:58.118 --> 00:01:06.232
+00:00:57.011 --> 00:01:06.765
 Single-core Apple M5 Max benchmarks sustain over 13,000 admissions per second against 100,000-unit repositories.
 
 9
-00:01:12.352 --> 00:01:17.896
+00:01:11.406 --> 00:01:18.050
 The study explicitly notes existing VCS tools do not follow this contract automatically,
 
 10
-00:01:17.896 --> 00:01:20.794
+00:01:18.050 --> 00:01:21.523
 and separates L3 reported_j from board shunts.

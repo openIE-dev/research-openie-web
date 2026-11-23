@@ -1,34 +1,34 @@
 WEBVTT
-NOTE OpenIE Research TV — rce (60s) AI-synthesized studio narration
+NOTE OpenIE Research TV — rce (60s) Narrator Alice
 
 1
-00:00:00.881 --> 00:00:08.812
+00:00:00.320 --> 00:00:09.734
 Conventional languages let partial functions, hidden exceptions, and target-specific quirks slip past syntax checks.
 
 2
-00:00:10.890 --> 00:00:16.568
+00:00:10.254 --> 00:00:17.189
 In RCE, every program is a total finite-horizon or stepped Form whose states,
 
 3
-00:00:16.568 --> 00:00:19.591
+00:00:17.189 --> 00:00:20.881
 types, and failure branches are explicit.
 
 4
-00:00:21.669 --> 00:00:27.301
+00:00:21.401 --> 00:00:28.097
 Registered dimension measurements quantify structural compactness while Lean
 
 5
-00:00:27.301 --> 00:00:31.229
+00:00:28.097 --> 00:00:32.766
 4 theorems T1 through T63 verify semantic invariants.
 
 6
-00:00:33.308 --> 00:00:35.779
+00:00:33.286 --> 00:00:36.024
 On Apple M5 Max reported_j,
 
 7
-00:00:35.779 --> 00:00:45.026
+00:00:36.024 --> 00:00:46.268
 checking one Form takes 7.32 milliseconds and 49.04 millijoules—emitting five native targets cleanly.
 
 8
-00:00:47.104 --> 00:00:54.283
+00:00:46.788 --> 00:00:55.109
 The open checker, emitters, and WebAssembly playground let anyone inspect and run verified Forms directly.

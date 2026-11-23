@@ -1,46 +1,46 @@
 WEBVTT
-NOTE OpenIE Research TV — mei (90s) AI-synthesized studio narration
+NOTE OpenIE Research TV — mei (90s) Narrator Jessica
 
 1
-00:00:01.802 --> 00:00:04.792
+00:00:01.437 --> 00:00:04.752
 Edge sensors freeze in cargo holds while data
 
 2
-00:00:04.792 --> 00:00:09.576
+00:00:04.752 --> 00:00:10.056
 centers hit transformer caps—both fail without native energy scheduling.
 
 3
-00:00:14.232 --> 00:00:19.078
+00:00:13.675 --> 00:00:18.907
 By modeling CR2032 internal impedance at minus 20 Celsius,
 
 4
-00:00:19.078 --> 00:00:25.259
+00:00:18.907 --> 00:00:25.583
 JCP holds defer non-critical telemetry while guaranteeing critical alarms.
 
 5
-00:00:29.916 --> 00:00:37.741
-This three-dimensional cutaway shows the DRC-certified 2-layer PCB, coin-cell bay,
+00:00:29.202 --> 00:00:35.935
+This three-dimensional cutaway shows the DRC-certified 2-layer PCB,
 
 6
-00:00:37.741 --> 00:00:43.467
-I N A 238 monitor, FRAM, and 36-by-28-millimeter STEP shell.
+00:00:35.935 --> 00:00:43.170
+coin-cell bay, INA238 monitor, FRAM, and 36-by-28-millimeter STEP shell.
 
 7
-00:00:48.123 --> 00:00:49.555
+00:00:46.789 --> 00:00:48.513
 Every hold, refusal,
 
 8
-00:00:49.555 --> 00:00:56.210
+00:00:48.513 --> 00:00:56.533
 and settlement emits a deterministic CBOR receipt verifiable across embedded and cloud nodes.
 
 9
-00:01:00.866 --> 00:01:04.449
+00:01:00.152 --> 00:01:04.147
 The exact same hold-and-settle state machine scales upward
 
 10
-00:01:04.449 --> 00:01:08.587
+00:01:04.147 --> 00:01:08.763
 to schedule batch inference inside grid-following campus envelopes.
 
 11
-00:01:13.243 --> 00:01:21.746
+00:01:12.382 --> 00:01:22.188
 Manufacturing Gerbers, BOM, pick-and-place, and CAD files are downloadable today, with zero unmeasured bench claims.

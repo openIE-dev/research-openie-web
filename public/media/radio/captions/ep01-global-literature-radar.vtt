@@ -3,73 +3,73 @@ Kind: captions
 Language: en
 
 1
-00:00:01.830 --> 00:00:24.224
-<v Elena>Welcome to the launch broadcast of OpenIE Research Radio! Before we dive in, full transparency up front: Marcus, Devon, and I — Elena — are AI-synthesized OpenIE research personas, voiced through open-weight neural speech and grounded strictly in verified Open Interface Engineering artifacts and live open-access literature feeds.
+00:00:01.830 --> 00:00:23.666
+<v Elena>Welcome to the launch broadcast of OpenIE Research Radio! Full studio transparency right up front: Marcus, Rohan, and I — Elena — are AI-synthesized OpenIE research personas voiced with ElevenLabs studio neural speech and grounded strictly in verified Open Interface Engineering artifacts and live open-access literature feeds.
 
 2
-00:00:24.419 --> 00:00:48.887
-<v Marcus>Which means nobody here gets to bluff! Every six hours, our autonomous Linux radar scrapes five sanctioned public archives — arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov — hashes every record with BLAKE2b and SHA-256, and puts brand-new papers on the bench. Devon, how many survived deduplication today?
+00:00:23.856 --> 00:00:48.020
+<v Marcus>Which means nobody at this table gets to bluff! Every six hours, our autonomous Linux radar polls five sanctioned public archives — arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov — hashes every record with BLAKE2b and SHA-256, and drops fresh papers onto the bench. Rohan, how many survived deduplication today?
 
 3
-00:00:49.162 --> 00:01:11.002
-<v Devon>Over forty distinct open-access works across all five registries, mapped against all twenty-one OpenIE studies. Every single entry gets an epistemic badge — T for kernel-checked theorems, E for empirical hardware or wet-lab data, M for computational models, and S for speculative or uncompleted clinical horizons.
+00:00:48.290 --> 00:01:09.422
+<v Rohan>Sixty-two distinct open-access works across all five registries, Marcus, mapped against all twenty-one OpenIE studies. Every single entry receives an epistemic badge — T for kernel-checked theorems, E for empirical hardware or wet-lab data, M for computational models, and S for speculative or recruiting clinical horizons.
 
 4
-00:01:11.278 --> 00:01:27.413
+00:01:09.692 --> 00:01:24.108
 <v Elena>Let's start with energy-aware AI. One of the top OpenAlex and arXiv hits on the radar right now is TokenPowerBench, published in 2026 to benchmark the power consumption of large language model inference across serving stacks.
 
 5
-00:01:27.608 --> 00:01:45.998
+00:01:24.298 --> 00:01:40.575
 <v Marcus>Hold on — let me ask my favorite annoying question right away! When TokenPowerBench or any 2026 inference paper reports joules per token, are they measuring physical DC shunt rails on the board, or reading software counters like RAPL and NVML?
 
 6
-00:01:46.273 --> 00:02:09.488
-<v Devon>Almost always software counters on shared GPUs, or analytical estimates — what OpenIE stamps as reported_j, never measured_j. And second, joules per token is the wrong denominator if the model spends ten thousand tokens hallucinating a broken patch! In Metered Commit Gates, the denominator is energy to correct completion.
+00:01:40.845 --> 00:02:01.744
+<v Rohan>Almost always software counters on shared GPUs, or analytical estimates — what OpenIE stamps as reported_j, never measured_j. And second, joules per token is the wrong denominator if a model burns ten thousand tokens hallucinating a broken patch! In Metered Commit Gates, the denominator is energy to correct completion.
 
 7
-00:02:09.763 --> 00:02:26.945
+00:02:02.014 --> 00:02:18.986
 <v Elena>That connects directly to our second radar cluster: formal theorem proving. Today's intake pulled two 2026 preprints — Compile to Compress, which boosts formal theorem provers using compiler outputs, and Lean Graph Search for Formal Theorem Proving on arXiv.
 
 8
-00:02:27.140 --> 00:02:44.093
-<v Marcus>Okay, I actually like those two! Because instead of asking a giant language model to vibe-check mathematics, the Lean 4 kernel acts as an unforgiving binary oracle. Either the proof term type-checks with zero sorry placeholders, or it's rejected.
+00:02:19.176 --> 00:02:35.073
+<v Marcus>Okay, I actually love those two! Because instead of asking a giant language model to vibe-check mathematics, the Lean 4 kernel acts as an unforgiving binary oracle. Either the proof term type-checks with zero sorry placeholders, or it gets refused.
 
 9
-00:02:44.368 --> 00:03:06.416
-<v Devon>Exactly. Across OpenIE's Reality Code Engine, Time as an Index, and Communication Tool Avalanche, we rely on over five thousand five hundred Lean 4 kernel constants plus sixty-two specialized domain theorems with zero sorry. What Lean Graph Search still omits, though, is reporting how many joules the search burned per closed lemma.
+00:02:35.343 --> 00:02:55.574
+<v Rohan>Exactly. Across OpenIE's Reality Code Engine, Time as an Index, and Communication Tool Avalanche, we rely on five thousand five hundred thirty-seven Lean 4 kernel constants plus sixty-two specialized domain theorems with zero sorry. What Lean Graph Search still omits, though, is reporting how many joules the search spent per closed lemma.
 
 10
-00:03:06.691 --> 00:03:20.581
+00:02:55.844 --> 00:03:08.803
 <v Elena>Now look at the multi-agent orchestration cluster from arXiv today: Decoupled Multi-Agent Orchestration, INFRAMIND for infrastructure-aware orchestration, and the AgentShield Byzantine fault tolerance dataset.
 
 11
-00:03:20.776 --> 00:03:32.384
+00:03:08.993 --> 00:03:19.780
 <v Marcus>Wait — let me guess what happens in ninety percent of multi-agent papers when four chatty agents pass natural-language paragraphs back and forth without a cryptographic or test gate!
 
 12
-00:03:32.659 --> 00:03:58.499
-<v Devon>Prompt bloat triples, errors compound exponentially as fidelity to the power k across hops, and false commits spike! In our sixty-task Communication Avalanche benchmark, an unattested four-agent cascade dropped to eighty-six point six seven percent accuracy with thirteen point three percent broken commits, burning nearly fifteen times more energy per coherent fix than our BLAKE3 and Ed25519 gated graph.
+00:03:20.050 --> 00:03:43.901
+<v Rohan>Prompt bloat triples, errors compound exponentially across hops, and false commits spike! In our sixty-task Communication Avalanche benchmark, an unattested four-agent cascade dropped to eighty-six point six seven percent accuracy with thirteen point three percent broken commits, burning nearly fifteen times more energy per coherent fix than our BLAKE3 and Ed25519 gated graph.
 
 13
-00:03:58.774 --> 00:04:17.556
+00:03:44.171 --> 00:04:01.621
 <v Elena>And my favorite catch from Europe PMC today comes straight out of microbiology: a January 2026 paper in npj Biofilms and Microbiomes showing extracellular vesicles acting as structured vectors of quorum-sensing signals in aquatic microbial communities!
 
 14
-00:04:17.751 --> 00:04:31.461
-<v Marcus>Think about how wild that is. Three and a half billion years before packet-switched networks, bacteria wrapped quorum signals inside lipid envelopes so nucleases and water currents wouldn't corrupt the packet in transit!
+00:04:01.811 --> 00:04:15.254
+<v Marcus>Think about how wild that is, Elena. Three and a half billion years before packet-switched networks, bacteria wrapped quorum signals inside lipid envelopes so nucleases and water currents wouldn't corrupt the packet in transit!
 
 15
-00:04:31.736 --> 00:05:04.980
-<v Devon>Meanwhile, our ClinicalTrials.gov feed keeps us honest on the human neurotechnology side. Today's radar pulled eight trials, including stroke alpha-coherence neurofeedback NCT02223910 and cognitive memory restoration NCT04253587. We classify recruiting or unverified human translation strictly as S or Challenges Assumption so preclinical animal rescue is never conflated with human cures.
+00:04:15.524 --> 00:04:42.325
+<v Rohan>Meanwhile, our ClinicalTrials.gov feed keeps us disciplined on human neurotechnology. Today's radar pulled eight trials, including stroke alpha-coherence neurofeedback NCT02223910 and cognitive memory restoration NCT04253587. We classify recruiting or unverified human translation strictly under Challenges Assumption so preclinical animal rescue is never confused with human efficacy.
 
 16
-00:05:05.255 --> 00:05:24.757
-<v Elena>And remember our rule on AI formats too: Europe PMC also surfaced The Cost of Reproducibility in Artificial Intelligence, right alongside OpenIE's AI Reads Human study showing pure-Python YAML parsing burns over two thousand times more nanojoules per record than fixed binary structs!
+00:04:42.595 --> 00:04:59.428
+<v Elena>And Europe PMC also surfaced The Cost of Reproducibility in Artificial Intelligence, right alongside OpenIE's AI Reads Human study showing pure-Python YAML parsing burns over two thousand times more nanojoules per record than fixed binary structs!
 
 17
-00:05:24.952 --> 00:05:41.143
+00:04:59.618 --> 00:05:14.324
 <v Marcus>Two thousand and fifty-three times more energy just so a machine can read whitespace indentation! Every paper on today's radar is searchable right below this player — complete with its BLAKE2b digest, epistemic badge, and telemetry audit.
 
 18
-00:05:41.418 --> 00:05:56.703
-<v Elena>Next up in Episode Two, we zoom across three point eight billion years of biological signaling, seventy-six years of AI winters, and DES-10 digital enzymatic synthesis. Stay tuned on OpenIE Research Radio!
+00:05:14.594 --> 00:05:29.145
+<v Elena>Next up in Episode Two, Amara, Liam, and Kenji take the mics to explore three point eight billion years of biological signaling, seventy-six years of AI winters, and DES-10 digital enzymatic synthesis!

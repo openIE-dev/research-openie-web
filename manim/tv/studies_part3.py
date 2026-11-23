@@ -348,7 +348,7 @@ STUDIES_PART3 = [
                 "scenes": [
                     ("hook_contrast", "BATTERIES DIE IN THE COLD", "Why Unbudgeted Edge Radio Bursts Brown Out", "At minus twenty degrees Celsius, a CR2032 coin cell sags sharply—killing naive smart tags mid-transmission."),
                     ("state_cascade", "HOLD, EXECUTE, SETTLE (JCP)", "Budget-Native Compute From Tag to Campus", "Metabolic Intelligence reserves a joule grant before acting and settles canonical Ed25519 JCR-1 receipts afterward."),
-                    ("benchmark_bars", "OPEN MEI-JCP-TAG-V1 PACKAGE", "32×24 mm 0-DRC PCB · 10,000 Wakes", "A DRC-clean STM32WBA52, T I I N A 238, and FRAM PCB design preserves 100 percent of critical cold-chain alerts across 10,000 wakes."),
+                    ("benchmark_bars", "OPEN MEI-JCP-TAG-V1 PACKAGE", "32×24 mm 0-DRC PCB · 10,000 Wakes", "A DRC-clean STM32WBA52, TI INA238, and FRAM PCB design preserves 100 percent of critical cold-chain alerts across 10,000 wakes."),
                     ("horizon_slate", "FAB-READY FILES + HONEST LABELS", "Gerbers, STEP Enclosure & Campus Sim", "Complete KiCad, Gerber, BOM, and 3D STEP files ship openly, with board_metered explicitly false prior to bench fab."),
                 ],
             },
@@ -367,7 +367,7 @@ STUDIES_PART3 = [
                 "scenes": [
                     ("hook_contrast", "DESIGNING INSIDE FIXED JOULES", "From Cold-Chain Pallets to Curtailed Grids", "Edge sensors freeze in cargo holds while data centers hit transformer caps—both fail without native energy scheduling."),
                     ("equation_curve", "METABOLIC PRIORITY SHEDDING", "Critical Alerts Survive Voltage Sag", "By modeling CR2032 internal impedance at minus 20 Celsius, JCP holds defer non-critical telemetry while guaranteeing critical alarms."),
-                    ("cutaway_3d", "3D MEI-JCP-TAG-V1 HARDWARE", "32×24 mm PCB + STM32WBA52 + INA238 + FRAM", "This three-dimensional cutaway shows the DRC-certified 2-layer PCB, coin-cell bay, I N A 238 monitor, FRAM, and 36-by-28-millimeter STEP shell."),
+                    ("cutaway_3d", "3D MEI-JCP-TAG-V1 HARDWARE", "32×24 mm PCB + STM32WBA52 + INA238 + FRAM", "This three-dimensional cutaway shows the DRC-certified 2-layer PCB, coin-cell bay, INA238 monitor, FRAM, and 36-by-28-millimeter STEP shell."),
                     ("state_cascade", "CANONICAL DET-CBOR RECEIPTS", "2,680 Ed25519 JCR-1 Signatures Verified", "Every hold, refusal, and settlement emits a deterministic CBOR receipt verifiable across embedded and cloud nodes."),
                     ("benchmark_bars", "TAG TO GRID-FOLLOWING CAMPUS", "0 DRC Errors · 100% Alerts · Protocol Test", "The exact same hold-and-settle state machine scales upward to schedule batch inference inside grid-following campus envelopes."),
                     ("falsifier_audit", "OPEN GERBERS, HONEST METERING", "board_metered = false · measured_j Unset", "Manufacturing Gerbers, BOM, pick-and-place, and CAD files are downloadable today, with zero unmeasured bench claims."),

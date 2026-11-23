@@ -3,65 +3,65 @@ Kind: captions
 Language: en
 
 1
-00:00:01.830 --> 00:00:26.073
-<v Elena>Welcome back to OpenIE Research Radio! Elena, Marcus, and Devon here — AI-synthesized OpenIE research personas walking through verified Open Interface Engineering hardware and systems studies. Today in Episode Six, we descend the entire compute stack: Downward LUT6 Compilation, Metabolic Intelligence MEI-JCP tags, and JouleOS.
+00:00:01.830 --> 00:00:32.482
+<v Amara>Welcome back to Episode Six of OpenIE Research Radio! I'm Amara, joined by Sean and Claire — AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio voices and grounded in verified Open Interface Engineering studies. Today we follow intelligence downward into silicon: Downward LUT6 Compilation, Metabolic Intelligence MEI-JCP tags, and JouleOS.
 
 2
-00:00:26.268 --> 00:00:45.141
-<v Marcus>Let's start with the economic absurdity we pointed out in Spell Check is Global and The Promised Trillion Dollar AI-Coding Market: imagine if every time you typed 'teh' in a document, Microsoft or Google spun up an eighty-gigabyte datacenter GPU cluster to fix your typo!
+00:00:32.672 --> 00:00:48.066
+<v Sean>Let's start with the economic parallel from Spell Check is Global and The Promised Trillion Dollar AI-Coding Market: imagine if every time someone mistyped 'recieve' in an email, a cloud vendor fired up an eighty-gigabyte GPU node to fix it!
 
 3
-00:00:45.416 --> 00:01:03.802
-<v Elena>Spell check used to sell as a standalone multi-hundred-dollar add-on in the early 1980s, and it became universal for seven billion people precisely because its marginal cost dropped to a tiny local dictionary lookup! Why treat recurring code and agent patterns any differently?
+00:00:48.336 --> 00:01:07.900
+<v Amara>In the early 1980s, standalone spell checkers cost hundreds of dollars! Spell check reached seven billion people only when its marginal cost dropped to a local dictionary lookup bundled inside every editor. Why should recurring code repairs burn frontier joules forever?
 
 4
-00:01:04.077 --> 00:01:25.061
-<v Devon>In Downward LUT6 Compilation, we build that exact downward escalator. At the top tier, when true novelty strikes, custom Apple Metal INT4 Mixture-of-Experts and GatedDeltaNet compute shaders stream Qwen 3.6 35B-A3B directly from NVMe using Darwin F_NOCACHE.
+00:01:08.170 --> 00:01:31.923
+<v Claire>In Downward LUT6 Compilation, we build that exact downward cascade. When genuine novelty arrives at the top tier, custom Apple Metal INT4 Mixture-of-Experts and GatedDeltaNet compute shaders stream Qwen 3.6 35B-A3B directly off NVMe via Darwin F_NOCACHE.
 
 5
-00:01:25.256 --> 00:01:36.409
-<v Marcus>Wait — a thirty-five-billion-parameter model normally demands seventy gigabytes of unified memory in FP16! How much RAM did our streaming tier hold?
+00:01:32.113 --> 00:01:41.454
+<v Sean>Hold on Claire — a thirty-five-billion-parameter model normally eats seventy gigabytes of unified RAM in FP16! What was our resident footprint?
 
 6
-00:01:36.684 --> 00:01:57.633
-<v Devon>Nine hundred seventy megabytes — just one point four seven percent of FP16 RAM! It achieved one hundred percent exact token parity, cut NVMe traffic twelve point three times via expert locality, and ran at six point seven seven three joules per token of dual-channel reported_j.
+00:01:41.724 --> 00:02:01.767
+<v Claire>Nine hundred seventy megabytes — just one point four seven percent of FP16 RAM! It hit one hundred percent exact token parity, cut NVMe reads twelve point three times through expert locality, and ran at six point seven seven three joules per token of dual-channel reported_j.
 
 7
-00:01:57.909 --> 00:02:09.503
-<v Elena>Now comes the magic: once a frontier wake passes deterministic pytest verification, we don't pay six point seven seven joules per token the second or third time that pattern arrives!
+00:02:02.037 --> 00:02:13.074
+<v Amara>And once a frontier wake passes deterministic pytest gates, we compile that certified skill downward so the thirty-five-B model sleeps on repeat arrivals!
 
 8
-00:02:09.778 --> 00:02:49.767
-<v Devon>Right! On our forty-eight-task verified coding bakeoff and sixteen-repo SWE-Mini suite, the cascade closed eighty-seven point five percent with zero broken commits, invoking the thirty-five-B tier on only twenty-two point nine two percent of arrivals. By Wave 3 replay, certified wakes ran in two point eight nine milliseconds at zero point zero four two four joules reported_j — and compile further downward into eighty-one RAMB36E2 Beneš-routed six-input LUT fabrics verified in Yosys and Verilator for Xilinx Kria xck26 silicon!
+00:02:13.344 --> 00:02:53.747
+<v Claire>Exactly. Across our forty-eight-task coding bakeoff and sixteen-repo SWE-Mini suite, the cascade closed eighty-seven point five percent with zero broken commits, waking the thirty-five-B tier on only twenty-two point nine two percent of tasks. By Wave 3 replay, certified wakes ran in two point eight nine milliseconds at zero point zero four two four joules reported_j — and synthesize downward via Yosys and Verilator into eighty-one RAMB36E2 Beneš-routed LUT6 blocks targeting Xilinx Kria xck26!
 
 9
-00:02:49.962 --> 00:03:02.631
-<v Marcus>Zero multiply-accumulates — pure Boolean truth-table routing! Now take us even smaller, down to a coin-cell battery at minus twenty degrees Celsius in Metabolic Intelligence!
+00:02:53.937 --> 00:03:06.400
+<v Sean>Zero multiply-accumulates — pure Boolean truth tables! Now shrink the energy budget all the way down to a CR2032 coin cell at minus twenty Celsius in Metabolic Intelligence!
 
 10
-00:03:02.906 --> 00:03:39.133
-<v Devon>In the MEI white paper, we released MEI-JCP-Tag-v1: a complete sovereign hardware manufacturing package — KiCad schematics, RS-274X Gerbers with zero DRC violations, bill of materials, and a thirty-six by twenty-eight by seven-point-five millimeter STEP enclosure. The two-layer thirty-two by twenty-four millimeter board pairs an STM32WBA52 microcontroller with a physical Texas Instruments INA238 shunt monitor and FRAM.
+00:03:06.670 --> 00:03:38.347
+<v Claire>In the MEI white paper, we shipped MEI-JCP-Tag-v1: a complete open manufacturing package — DRC-clean two-layer thirty-two by twenty-four millimeter KiCad PCB, RS-274X Gerbers, BOM, and a thirty-six by twenty-eight by seven-point-five millimeter STEP enclosure pairing an STM32WBA52 with a physical Texas Instruments INA238 shunt monitor and FRAM.
 
 11
-00:03:39.328 --> 00:03:48.130
-<v Marcus>And quick honesty check for the listeners: have we claimed physical bench-metered joules off a fabbed MEI-JCP tag board yet?
+00:03:38.537 --> 00:03:45.914
+<v Sean>Quick audit check for the listeners: do we claim physical bench-metered joules off a fabbed MEI-JCP tag board yet?
 
 12
-00:03:48.405 --> 00:04:15.582
-<v Devon>Explicitly no! Board_metered is false and measured_j is unset until fabbed boards come back from assembly and sit on an inline meter. What IS verified today is our ten-thousand-wakeup CR2032 electro-thermal hold-and-settle simulation preserving one hundred percent of critical alerts at minus twenty Celsius across two thousand six hundred eighty Ed25519 canonical CBOR JCR-1 receipts.
+00:03:46.184 --> 00:04:14.984
+<v Claire>Explicitly no — board_metered is false and measured_j is unset until physical boards return from fabrication. What IS verified is our ten-thousand-wakeup CR2032 electro-thermal simulation preserving one hundred percent of critical alerts at minus twenty Celsius across two thousand six hundred eighty Ed25519 canonical CBOR JCR-1 receipts.
 
 13
-00:04:15.857 --> 00:04:23.213
-<v Elena>And tying the tag, the SATB telemetry engine, and desktop sandboxes together is The Search for JouleOS!
+00:04:15.254 --> 00:04:25.997
+<v Amara>And binding JCR-1 receipts, SATB drift gates, and agent sandboxes into one operating-system contract is The Search for JouleOS!
 
 14
-00:04:23.488 --> 00:04:48.799
-<v Devon>Today's operating systems were built in the 1970s to multiplex time and memory — none of them checks an energy grant before an autonomous agent acts! Our verified Rust reference spine passes three hundred ten workspace tests and checks seventy-eight thousand four hundred provenance pairs to prove meet-semilattice laws bridging JCR-1 receipts, SATB Falsifier 6 drift gates, and stage accounting.
+00:04:26.267 --> 00:04:48.100
+<v Claire>Legacy OS kernels multiplex time and virtual memory without checking energy before an agent acts. Our Rust reference spine passes three hundred ten workspace tests and verifies seventy-eight thousand four hundred provenance pairs across a meet-semilattice that schedules, budgets, and refuses out-of-envelope agent actions.
 
 15
-00:04:48.994 --> 00:05:04.378
-<v Marcus>An operating system that schedules, budgets, and refuses runaway agents before they torch the battery or the power grid! Speaking of physics limits, wait until you hear Episode Seven: closed timelike curves and looking up tomorrow!
+00:04:48.290 --> 00:04:59.177
+<v Sean>An OS that refuses runaway joule spend before it happens! Up next in Episode Seven, Priya, Marcus, and senior fellow Arthur ask what it would take to look up tomorrow!
 
 16
-00:05:04.653 --> 00:05:08.359
-<v Elena>Episode Seven — Time as an Index — starts right after this!
+00:04:59.447 --> 00:05:03.711
+<v Amara>Stay tuned for Episode Seven — Time as an Index!

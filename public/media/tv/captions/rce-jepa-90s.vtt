@@ -1,46 +1,46 @@
 WEBVTT
-NOTE OpenIE Research TV — rce-jepa (90s) AI-synthesized studio narration
+NOTE OpenIE Research TV — rce-jepa (90s) Narrator Jyothi
 
 1
-00:00:01.617 --> 00:00:09.601
+00:00:00.591 --> 00:00:11.239
 Joint Embedding Predictive Architectures predict cleanly in latent space—but code execution demands exact discrete correctness.
 
 2
-00:00:13.727 --> 00:00:19.343
+00:00:12.443 --> 00:00:19.644
 Over 185 programs, lossless Forms compress boilerplate 9.34x,
 
 3
-00:00:19.343 --> 00:00:25.971
+00:00:19.644 --> 00:00:28.142
 making deterministic verification 1,718x cheaper than neural generation.
 
 4
-00:00:30.098 --> 00:00:34.058
+00:00:29.346 --> 00:00:34.594
 This three-dimensional core shows candidate proposals scored in latent
 
 5
-00:00:34.058 --> 00:00:37.849
+00:00:34.594 --> 00:00:39.617
 space and filtered by the RCE checker before multi-target emission.
 
 6
-00:00:41.975 --> 00:00:46.145
+00:00:40.821 --> 00:00:46.449
 At 47.09 millijoules RAPL core reported_j,
 
 7
-00:00:46.145 --> 00:00:55.279
+00:00:46.449 --> 00:00:58.776
 FormEBM-v2 ranks 84.05 percent top-1 valid beams with Spearman rho 0.9931 across edit steps.
 
 8
-00:00:59.406 --> 00:01:06.078
+00:00:59.980 --> 00:01:07.951
 Bounded checker diagnostics close 100 percent of residual tasks with zero contradictions,
 
 9
-00:01:06.078 --> 00:01:09.302
+00:01:07.951 --> 00:01:11.802
 replaying in 1.771 microjoules from Gear-0.
 
 10
-00:01:13.429 --> 00:01:18.722
+00:01:13.006 --> 00:01:19.576
 Because rung-f exceeded its pre-registered 2.0 percent bound by half a point,
 
 11
-00:01:18.722 --> 00:01:22.090
+00:01:19.576 --> 00:01:23.757
 it remains gated in observe mode—zero exceptions.

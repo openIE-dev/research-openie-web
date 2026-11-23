@@ -3,65 +3,65 @@ Kind: captions
 Language: en
 
 1
-00:00:01.830 --> 00:00:23.518
-<v Elena>Welcome to Episode Eight — the season-launch finale of OpenIE Research Radio! Elena, Marcus, and Devon here, three AI-synthesized OpenIE research personas grounded strictly in verified Open Interface Engineering artifacts and live pilot receipts. Today we open the doors to the Autonomous Topic Idea Foundry!
+00:00:01.830 --> 00:00:22.503
+<v Mateo>Welcome to Episode Eight — the season-launch finale of OpenIE Research Radio! I'm Mateo, joined in the Foundry booth by Sean and Rohan — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural speech and grounded in live pilot receipts. Welcome inside the Autonomous Topic Idea Foundry!
 
 2
-00:00:23.713 --> 00:00:48.835
-<v Marcus>Here are the rules of the Foundry arena! Every six hours, after scraping global open-access literature, our Linux daemon synthesizes candidate research topics. Every single topic MUST declare a Shape-D zero-parameter null baseline, a hard kill criterion, and run an actual deterministic Python pilot under sixty seconds before any human or LLM writes a paper!
+00:00:22.693 --> 00:00:44.237
+<v Sean>Here are the house rules of the Foundry, Mateo! Every six hours, right after scraping global open-access feeds, our Linux daemon pitches six candidate research topics. Every single topic MUST pre-declare a zero-parameter Shape-D null baseline, a hard kill criterion, and survive an executable Python pilot under sixty seconds before anyone writes a manuscript!
 
 3
-00:00:49.110 --> 00:01:07.886
-<v Devon>Today's full six-topic pilot suite executed in zero point nine eight three seconds on our x86-64 Linux harness, reading wrap-safe intel-rapl colon zero package reported joules — with board_metered explicitly false. Let's walk through all six verdicts!
+00:00:44.507 --> 00:00:59.630
+<v Rohan>Today's six-pilot suite completed in zero point nine seven seven seconds on our x86-64 Linux harness, reading wrap-safe intel-rapl colon zero package reported joules with board_metered explicitly false. Let's inspect all six receipts!
 
 4
-00:01:08.161 --> 00:01:25.572
-<v Elena>Candidate One, TF-2026-01, inspired by TokenPowerBench and our LUT6 cascade: a Conformal Prefix-LUT6 Early-Exit Gate for hybrid state-space routing across six thousand Zipf-distributed requests.
+00:00:59.900 --> 00:01:14.942
+<v Mateo>Up first: TF-2026-01, inspired by TokenPowerBench and our LUT6 cascade — a Conformal Prefix-LUT6 Early-Exit Gate routing six thousand Zipf-distributed state-space requests.
 
 5
-00:01:25.847 --> 00:01:49.300
-<v Devon>A sixty-four-entry bit-sliced LUT6 signature table paired with an exact parity check intercepted eighty-eight point two two percent of arrivals with zero out of six thousand false commits, cutting package reported joules from one point five eight joules down to zero point six four joules — a two point four six times energy gain! Verdict: PROMOTED CANDIDATE.
+00:01:15.212 --> 00:01:36.342
+<v Rohan>A sixty-four-entry bit-sliced LUT6 signature table paired with exact schema parity intercepted eighty-eight point two two percent of arrivals with zero out of six thousand false commits, cutting package reported joules from one point five eight joules down to zero point six four joules — a two point four six times energy gain! Verdict: PROMOTED CANDIDATE.
 
 6
-00:01:49.495 --> 00:02:07.114
-<v Marcus>Zero false accepts! What about Candidate Two, TF-2026-02 — the SepJ-inspired Quorum-Hysteresis Circuit Breaker for Byzantine multi-agent DAGs, inspired by today's AgentShield and HALO preprints?
+00:01:36.532 --> 00:01:51.367
+<v Sean>Clean pass! What about Candidate Two, TF-2026-02 — the SepJ-inspired Quorum-Hysteresis Circuit Breaker for Byzantine agent DAGs, sparked by today's AgentShield and INFRAMIND preprints?
 
 7
-00:02:07.389 --> 00:02:33.919
-<v Devon>Across two thousand five hundred committee rounds on a sixteen-node graph with four adversarial poisoners, unverified three-of-five majority voting suffered one hundred thirty-six corrupted commits! Keyed BLAKE2b attestation plus a two-strike SepJ link quarantine isolated all four Byzantine nodes within fourteen rounds, delivering one hundred percent goodput and zero out of two thousand five hundred false commits. Verdict: PROMOTED CANDIDATE!
+00:01:51.637 --> 00:02:16.905
+<v Rohan>Across two thousand five hundred rounds on a sixteen-node graph with four adversarial poisoners, unverified three-of-five majority voting suffered one hundred thirty-six corrupted commits! Keyed BLAKE2b attestation plus a two-strike SepJ link quarantine isolated all four poisoners within fourteen rounds, yielding one hundred percent goodput and zero out of two thousand five hundred false commits. Verdict: PROMOTED CANDIDATE!
 
 8
-00:02:34.194 --> 00:02:48.288
-<v Elena>Now give us Candidates Three and Four — TF-2026-03 on Epoch-Salted Horizon Commitments, and TF-2026-04 on Operator-Aware De Bruijn Memoization!
+00:02:17.175 --> 00:02:30.855
+<v Mateo>Give us Candidates Three and Four back-to-back — TF-2026-03 on Epoch-Salted Horizon Commitments, and TF-2026-04 on Operator-Aware De Bruijn Memoization!
 
 9
-00:02:48.563 --> 00:03:29.085
-<v Devon>In TF-2026-03, a precomputed Hellman table of one thousand five hundred thirty-six chains inverted seventy-four out of four hundred unsalted state targets; binding each step to a fresh drand-style epoch beacon dropped inversions to zero out of four hundred at zero point five seven four microseconds per step! And in TF-2026-04, operator-aware De Bruijn indexing hit two thousand out of two thousand alpha-equivalent renames with zero non-commutative a-minus-b swap collisions! Both are PROMOTED CANDIDATES.
+00:02:31.125 --> 00:03:05.045
+<v Rohan>In TF-2026-03, a precomputed Hellman table of one thousand five hundred thirty-six chains inverted seventy-four out of four hundred unsalted state targets; binding each transition to a fresh epoch beacon collapsed inversions to zero out of four hundred at zero point five seven four microseconds per step! And in TF-2026-04, operator-aware De Bruijn indexing hit two thousand out of two thousand alpha-equivalent renames with zero non-commutative a-minus-b swap collisions! Both are PROMOTED CANDIDATES.
 
 10
-00:03:29.280 --> 00:03:44.751
-<v Marcus>Four promotions in a row — okay, now show the listeners where the brakes slammed on! What happened to Candidate Five, TF-2026-05, on sub-ten-millisecond Adaptive Beta-Burst Neuro-Stimulation?
+00:03:05.235 --> 00:03:19.899
+<v Sean>Four promotions in a row — alright, now show the listeners where our own guardrails slammed on the brakes! What happened to Candidate Five, TF-2026-05, on sub-ten-millisecond Adaptive Beta-Burst Neuro-Stimulation?
 
 11
-00:03:45.026 --> 00:04:18.605
-<v Devon>Algorithmically, thresholded beta-envelope gating cut stimulation pulses by three point one eight times — eight hundred seventeen pulses versus two thousand six hundred in continuous 130-hertz pacing! But when we sampled forty consecutive eight-millisecond Linux RAPL windows to attribute micro-burst silicon energy, window coefficient of variation hit forty-four point zero three percent — blowing right past our fifteen-percent SATB Falsifier 6 stability limit!
+00:03:20.169 --> 00:03:48.167
+<v Rohan>In signal processing terms, thresholded beta-envelope gating cut stimulation pulses by three point one eight times — eight hundred seventeen pulses versus two thousand six hundred in continuous 130-hertz pacing! When we sampled forty consecutive eight-millisecond Linux RAPL windows to attribute micro-burst silicon energy, however, window coefficient of variation hit forty-four point zero three percent — well above our fifteen-percent SATB Falsifier 6 limit!
 
 12
-00:04:18.880 --> 00:04:34.464
-<v Elena>So instead of faking a micro-burst joule claim off noisy OS counters, the daemon stamped TF-2026-05 as HOLD NEEDS HARDWARE — queued for a physical Texas Instruments INA238 shunt bench!
+00:03:48.437 --> 00:04:04.479
+<v Mateo>So rather than publishing noisy micro-window counter guesses, the Foundry automatically stamped TF-2026-05 as HOLD NEEDS HARDWARE — waiting for a physical Texas Instruments INA238 inline shunt bench!
 
 13
-00:04:34.659 --> 00:04:54.721
-<v Marcus>And now — drumroll please — Candidate Six, TF-2026-06: pitching a learned three-layer dense neural MLP router to predict broadphase collision buckets for two hundred fifty-six Q32.32 rigid bodies! Tell us how badly Shape D destroyed it!
+00:04:04.669 --> 00:04:22.534
+<v Sean>And now for the main event — Candidate Six, TF-2026-06: pitching a learned three-layer dense neural MLP router to predict broadphase collision buckets for two hundred fifty-six Q32.32 rigid bodies! Rohan, read the obituary!
 
 14
-00:04:54.996 --> 00:05:29.442
-<v Devon>Total carnage! Across thirty thousand seven hundred twenty body-ticks, the three-layer MLP router took twenty-one point nine eight milliseconds, burned one point zero one three four joules of socket reported_j, and still missed zero point six percent of true collision pairs at ninety-nine point four percent recall! Meanwhile, the zero-parameter Shape-D bit-shifted integer grid — literally x shifted right fifteen bits — hit ONE HUNDRED POINT ZERO percent exact recall in zero point three four milliseconds!
+00:04:22.804 --> 00:04:49.968
+<v Rohan>Across thirty thousand seven hundred twenty body-ticks, the three-layer MLP router took twenty-one point nine eight milliseconds, burned over one joule of socket reported_j, and still missed zero point six percent of true collision pairs at ninety-nine point four percent recall! Meanwhile, the zero-parameter Shape-D bit-shifted integer grid — x shifted right fifteen bits — achieved ONE HUNDRED POINT ZERO percent exact recall in zero point three four milliseconds!
 
 15
-00:05:29.637 --> 00:05:52.033
-<v Marcus>Sixty-three point seven two times faster, lower joules, zero parameters, AND one hundred percent exact recall versus ninety-nine point four percent! Stamped in bright red: KILLED BY NULL! Imagine how many GPU hours the AI industry would save if every lab ran a thirty-line integer baseline before training!
+00:04:50.158 --> 00:05:09.230
+<v Sean>Over sixty times faster, lower joules, zero learned weights, AND one hundred percent exact recall versus ninety-nine point four percent! Stamped in bright red: KILLED BY NULL! Think how much datacenter electricity the world would save if every lab ran a thirty-line integer baseline before training!
 
 16
-00:05:52.308 --> 00:06:17.980
-<v Elena>And because our Linux systemd user timer and six-hour cron daemon stay live around the clock, this exact four-stage loop — global open-access scrape, epistemic cross-exam, sub-sixty-second RAPL pilot, and multi-voice broadcast — keeps running autonomously. Subscribe via Podcast RSS right on this page, click any transcript line to inspect its receipt, and thanks for tuning in to OpenIE Research Radio!
+00:05:09.500 --> 00:05:34.653
+<v Mateo>And because our Linux systemd user timer and six-hour cron daemon stay active around the clock, this four-stage loop — open-access scrape, epistemic audit, sub-sixty-second RAPL pilot, and multi-voice studio synthesis — keeps running autonomously. Subscribe via Podcast RSS right on this page, click any transcript line to jump straight to the receipt, and thank you for listening to OpenIE Research Radio!

@@ -1,38 +1,38 @@
 WEBVTT
-NOTE OpenIE Research TV — interface-economics (60s) AI-synthesized studio narration
+NOTE OpenIE Research TV — interface-economics (60s) Narrator Lily
 
 1
-00:00:01.418 --> 00:00:05.015
+00:00:00.551 --> 00:00:05.553
 Software quality papers routinely add audited accident ledgers to
 
 2
-00:00:05.015 --> 00:00:08.446
+00:00:05.553 --> 00:00:10.324
 loose executive opinion polls as if both were bank statements.
 
 3
-00:00:12.058 --> 00:00:15.655
+00:00:11.505 --> 00:00:16.181
 Separating exact accounted failures like Knight Capital,
 
 4
-00:00:15.655 --> 00:00:19.702
+00:00:16.181 --> 00:00:21.442
 Ariane 5, and Mars Orbiter from macro estimates restores rigor.
 
 5
-00:00:23.314 --> 00:00:26.336
+00:00:22.623 --> 00:00:26.777
 Standards economics explains persistent fragility:
 
 6
-00:00:26.336 --> 00:00:31.110
+00:00:26.777 --> 00:00:33.341
 specifying every invariant upfront is a local cost with positive externalities.
 
 7
-00:00:34.723 --> 00:00:39.265
+00:00:34.522 --> 00:00:40.128
 Every documented handoff catastrophe traced to an assumption—units,
 
 8
-00:00:39.265 --> 00:00:43.129
+00:00:40.128 --> 00:00:44.898
 bounds, or state—that a millisecond static check catches.
 
 9
-00:00:46.741 --> 00:00:53.286
+00:00:46.080 --> 00:00:54.650
 Automated interface checkers shrink specification effort below the private pain of debugging one integration outage.

@@ -1,38 +1,38 @@
 WEBVTT
-NOTE OpenIE Research TV — time-as-an-index (60s) AI-synthesized studio narration
+NOTE OpenIE Research TV — time-as-an-index (60s) Narrator Hakim
 
 1
-00:00:00.714 --> 00:00:03.572
+00:00:00.320 --> 00:00:03.773
 Time as an Index asks a foundational question:
 
 2
-00:00:03.572 --> 00:00:08.667
+00:00:03.773 --> 00:00:09.930
 what physical assumptions keep tomorrow's computation from being read like memory?
 
 3
-00:00:10.266 --> 00:00:15.509
+00:00:10.450 --> 00:00:16.321
 Comparing closed timelike curves, quantum no-signalling, analog relaxation,
 
 4
-00:00:15.509 --> 00:00:20.403
+00:00:16.321 --> 00:00:21.800
 and Hellman rainbow tables isolates where speedups actually come from.
 
 5
-00:00:22.002 --> 00:00:26.254
+00:00:22.320 --> 00:00:27.266
 Hellman's tradeoff trades lookup time against squared memory,
 
 6
-00:00:26.254 --> 00:00:31.063
+00:00:27.266 --> 00:00:32.860
 but Horizon.lean proves no table can index a salt chosen after setup.
 
 7
-00:00:32.662 --> 00:00:37.006
+00:00:33.380 --> 00:00:38.734
 Lean 4.36 verifies 31 zero-sorry theorems,
 
 8
-00:00:37.006 --> 00:00:46.211
+00:00:38.734 --> 00:00:50.079
 SHA-256 spectral falsifier F5 finds zero leaks, and 195 temporal anomalies are cataloged.
 
 9
-00:00:47.810 --> 00:00:54.595
+00:00:50.599 --> 00:00:59.054
 Only fresh entropy and nonces bind computation to the present moment; board_metered is explicitly false.

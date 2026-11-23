@@ -1,30 +1,30 @@
 WEBVTT
-NOTE OpenIE Research TV — rce-jepa (30s) AI-synthesized studio narration
+NOTE OpenIE Research TV — rce-jepa (30s) Narrator Jyothi
 
 1
-00:00:00.300 --> 00:00:02.965
+00:00:00.260 --> 00:00:03.551
 Generating tokens in raw source code burns 84 joules
 
 2
-00:00:02.965 --> 00:00:06.142
+00:00:03.551 --> 00:00:07.474
 locally with no guarantee the program even handles edge cases.
 
 3
-00:00:06.622 --> 00:00:14.757
+00:00:07.594 --> 00:00:17.383
 RCE-JEPA predicts over compact lossless Forms—median 9.34x smaller—where a 49-millijoule checker rejects every invalid mutant.
 
 4
-00:00:15.237 --> 00:00:19.990
+00:00:17.503 --> 00:00:22.866
 An 8.4-million-parameter FormJEPA lifts zero-LLM closure to 91.4 percent,
 
 5
-00:00:19.990 --> 00:00:23.897
+00:00:22.866 --> 00:00:27.274
 while bounded checker feedback closes all 40 residual tasks.
 
 6
-00:00:24.377 --> 00:00:27.913
+00:00:27.394 --> 00:00:31.185
 When rung-f hit 2.5 percent against a 2.0 percent threshold,
 
 7
-00:00:27.913 --> 00:00:30.566
+00:00:31.185 --> 00:00:34.028
 the harness honestly kept it in observe mode.

@@ -18,10 +18,11 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
   var rawEl = document.getElementById('openie-radio-payload');
   if (!rawEl) return;
   var DATA = JSON.parse(rawEl.textContent || '{}');
-  var FEED = DATA.feed || { episodes: [], rotation_epoch_unix: 1763856000 };
+  var FEED = DATA.feed || { episodes: [], personas: {}, rotation_epoch_unix: 1763856000 };
   var RADAR = DATA.radar || { items: [] };
   var FOUNDRY = DATA.foundry || { topics: [] };
   var EPISODES = FEED.episodes || [];
+  var PERSONAS = FEED.personas || {};
   if (!EPISODES.length) return;
 
   var audio = document.getElementById('radio-audio');
@@ -36,6 +37,7 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
   var kickerEl = document.getElementById('deck-ep-kicker');
   var titleEl = document.getElementById('deck-ep-title');
   var subEl = document.getElementById('deck-ep-subtitle');
+  var panelBadgesEl = document.getElementById('deck-panel-badges');
   var speakerChip = document.getElementById('active-turn-speaker-chip');
   var transcriptBox = document.getElementById('transcript-container');
   var cardsBox = document.getElementById('cards-container');
@@ -57,6 +59,10 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
     return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
   }
 
+  function personaColor(sp) {
+    return (PERSONAS[sp] && PERSONAS[sp].color) || '#00D4AA';
+  }
+
   function findTurnAt(ep, sec) {
     var turns = (ep && ep.turns) || [];
     for (var i = 0; i < turns.length; i++) {
@@ -75,12 +81,8 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
       if (pos < acc + dur || i === EPISODES.length - 1) {
         var offset = Math.max(0, Math.min(dur - 0.5, pos - acc));
         var activeTurn = findTurnAt(EPISODES[i], offset);
-        return {
-          episode: EPISODES[i],
-          offset_sec: Number(offset.toFixed(2)),
-          speaker: activeTurn ? activeTurn.speaker : 'Elena',
-          turn: activeTurn
-        };
+        var spk = activeTurn ? activeTurn.speaker : ((EPISODES[i].panel || ['Elena'])[0]);
+        return { episode: EPISODES[i], offset_sec: Number(offset.toFixed(2)), speaker: spk, turn: activeTurn };
       }
       acc += dur;
     }
@@ -91,24 +93,45 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
     var st = getLiveRotationState();
     if (liveTitleEl) liveTitleEl.textContent = 'EP 0' + st.episode.number + ' · ' + st.episode.title;
     if (liveClockEl) liveClockEl.textContent = fmtSec(st.offset_sec) + ' / ' + fmtSec(st.episode.duration_sec);
-    if (liveSpeakerEl) liveSpeakerEl.textContent = st.speaker;
+    if (liveSpeakerEl) {
+      var pf = PERSONAS[st.speaker];
+      liveSpeakerEl.textContent = st.speaker + (pf ? ' (' + pf.title.split('·')[0].trim() + ')' : '');
+      liveSpeakerEl.style.color = personaColor(st.speaker);
+    }
   }
   updateLiveBanner();
   setInterval(updateLiveBanner, 1000);
 
-  function speakerClass(sp) {
-    if (sp === 'Elena') return 'text-brand-cyan font-bold';
-    if (sp === 'Marcus') return 'text-brand-amber font-bold';
-    return 'text-brand-indigo font-bold';
-  }
-
   function renderEpisodeDom(ep) {
-    if (kickerEl) kickerEl.textContent = 'Episode ' + ep.number + ' of ' + EPISODES.length;
+    var castStr = (ep.panel || []).join(' · ');
+    if (kickerEl) kickerEl.textContent = 'Episode ' + ep.number + ' of ' + EPISODES.length + (castStr ? ' · Roundtable Cast: ' + castStr : '');
     if (titleEl) titleEl.textContent = ep.title;
     if (subEl) subEl.textContent = ep.subtitle;
     if (durTimeEl) durTimeEl.textContent = ep.duration_human || fmtSec(ep.duration_sec);
     if (dlLink) dlLink.setAttribute('href', ep.audio_url);
     if (vttTrack) vttTrack.setAttribute('src', ep.captions_url);
+
+    if (panelBadgesEl) {
+      panelBadgesEl.innerHTML = '';
+      var profiles = ep.panel_profiles || (ep.panel || []).map(function (nm) { return PERSONAS[nm]; }).filter(Boolean);
+      profiles.forEach(function (pf) {
+        var chip = document.createElement('span');
+        chip.className = 'inline-flex items-center gap-1.5 font-mono text-[11px] px-2.5 py-1 rounded-md border border-brand-border bg-white/[0.03] text-brand-light';
+        var dot = document.createElement('span');
+        dot.className = 'w-2 h-2 rounded-full';
+        dot.style.backgroundColor = pf.color || '#00D4AA';
+        var nm = document.createElement('strong');
+        nm.className = 'text-brand-white';
+        nm.textContent = pf.name;
+        var rl = document.createElement('span');
+        rl.className = 'text-brand-gray';
+        rl.textContent = '· ' + pf.title;
+        chip.appendChild(dot);
+        chip.appendChild(nm);
+        chip.appendChild(rl);
+        panelBadgesEl.appendChild(chip);
+      });
+    }
 
     document.querySelectorAll('.ep-select-btn').forEach(function (b) {
       var active = b.getAttribute('data-ep-id') === ep.id;
@@ -126,8 +149,10 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
         var hdr = document.createElement('div');
         hdr.className = 'flex items-center justify-between font-mono text-[10px] mb-1';
         var sp = document.createElement('span');
-        sp.className = speakerClass(t.speaker);
-        sp.textContent = t.speaker;
+        sp.className = 'font-bold';
+        sp.style.color = t.color || personaColor(t.speaker);
+        var roleShort = ((t.role || (PERSONAS[t.speaker] && PERSONAS[t.speaker].title) || '').split('·')[0] || '').trim();
+        sp.textContent = t.speaker + (roleShort ? ' · ' + roleShort : '');
         var ts = document.createElement('span');
         ts.className = 'text-brand-gray';
         ts.textContent = fmtSec(t.start_sec);
@@ -233,7 +258,6 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
     }
   }
 
-  // Bind initial SSR transcript & card buttons
   document.querySelectorAll('.transcript-turn').forEach(function (el) {
     el.addEventListener('click', function () { seekAndPlay(parseFloat(el.getAttribute('data-start') || '0')); });
   });
@@ -241,9 +265,7 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
     el.addEventListener('click', function () { seekAndPlay(parseFloat(el.getAttribute('data-seek-sec') || '0')); });
   });
   document.querySelectorAll('.ep-select-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      loadEpisode(btn.getAttribute('data-ep-id'), 0, true, 'Mode: On-Demand');
-    });
+    btn.addEventListener('click', function () { loadEpisode(btn.getAttribute('data-ep-id'), 0, true, 'Mode: On-Demand'); });
   });
 
   if (tuneLiveBtn) {
@@ -292,7 +314,6 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
     });
   });
 
-  // Sync transcript & pop-up citation cards on timeupdate
   if (audio) {
     audio.addEventListener('timeupdate', function () {
       var t = audio.currentTime || 0;
@@ -303,7 +324,11 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
       var activeTurn = findTurnAt(currentEp, t);
       if (activeTurn && activeTurn.turn_index !== lastHighlightedTurn) {
         lastHighlightedTurn = activeTurn.turn_index;
-        if (speakerChip) speakerChip.textContent = activeTurn.speaker + ' · Speaking';
+        if (speakerChip) {
+          var pf = PERSONAS[activeTurn.speaker];
+          speakerChip.textContent = activeTurn.speaker + (pf ? ' · ' + pf.title : ' · Speaking');
+          speakerChip.style.color = personaColor(activeTurn.speaker);
+        }
         if (transcriptBox) {
           transcriptBox.querySelectorAll('.transcript-turn').forEach(function (row) {
             var match = parseInt(row.getAttribute('data-turn-idx') || '-1', 10) === activeTurn.turn_index;
@@ -325,12 +350,7 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
     });
   }
 
-  // Real-Time WebAudio Canvas Spectrum + Oscilloscope
-  var audioCtx = null;
-  var analyser = null;
-  var freqData = null;
-  var waveData = null;
-
+  var audioCtx = null, analyser = null, freqData = null, waveData = null;
   function ensureWebAudio() {
     if (!audio || !canvas) return;
     var AC = window.AudioContext || window.webkitAudioContext;
@@ -347,30 +367,22 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
         waveData = new Uint8Array(analyser.fftSize);
       } catch (_) {}
     }
-    if (audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume().catch(function () {});
-    }
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume().catch(function () {});
   }
 
   if (canvas) {
-    var ctx = canvas.getContext('2d');
-    var phase = 0;
-    var drawFrame = function () {
+    var ctx = canvas.getContext('2d'), phase = 0;
+    (function drawFrame() {
       requestAnimationFrame(drawFrame);
       if (!ctx) return;
-      var w = canvas.width;
-      var h = canvas.height;
+      var w = canvas.width, h = canvas.height;
       ctx.clearRect(0, 0, w, h);
-
-      var playing = audio && !audio.paused && analyser && freqData && waveData;
-      if (playing) {
+      if (audio && !audio.paused && analyser && freqData && waveData) {
         analyser.getByteFrequencyData(freqData);
         analyser.getByteTimeDomainData(waveData);
-        var bars = 64;
-        var bw = w / bars;
+        var bars = 64, bw = w / bars;
         for (var i = 0; i < bars; i++) {
-          var v = freqData[i] / 255.0;
-          var bh = Math.max(3, v * (h * 0.78));
+          var bh = Math.max(3, (freqData[i] / 255.0) * (h * 0.78));
           ctx.fillStyle = i < 24 ? 'rgba(0, 212, 170, 0.52)' : i < 46 ? 'rgba(245, 158, 11, 0.48)' : 'rgba(129, 140, 248, 0.52)';
           ctx.fillRect(i * bw + 1, h - bh, bw - 2, bh);
         }
@@ -378,10 +390,8 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
         ctx.strokeStyle = '#00D4AA';
         ctx.lineWidth = 2;
         for (var j = 0; j < waveData.length; j++) {
-          var x = (j / (waveData.length - 1)) * w;
-          var y = (waveData[j] / 255.0) * h;
-          if (j === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
+          var x = (j / (waveData.length - 1)) * w, y = (waveData[j] / 255.0) * h;
+          if (j === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
         ctx.stroke();
       } else {
@@ -390,18 +400,14 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
         ctx.strokeStyle = 'rgba(0, 212, 170, 0.4)';
         ctx.lineWidth = 1.6;
         for (var k = 0; k <= 120; k++) {
-          var px = (k / 120) * w;
-          var py = h * 0.55 + Math.sin(k * 0.14 + phase) * 8 + Math.cos(k * 0.07 - phase * 0.8) * 5;
-          if (k === 0) ctx.moveTo(px, py);
-          else ctx.lineTo(px, py);
+          var px = (k / 120) * w, py = h * 0.55 + Math.sin(k * 0.14 + phase) * 8 + Math.cos(k * 0.07 - phase * 0.8) * 5;
+          if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
         }
         ctx.stroke();
       }
-    };
-    drawFrame();
+    })();
   }
 
-  // Tabs, Copy RSS, Radar & Foundry Filters
   var copyBtn = document.getElementById('copy-rss-btn');
   if (copyBtn) {
     copyBtn.addEventListener('click', function () {
@@ -412,9 +418,7 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
     });
   }
 
-  var pStudio = document.getElementById('radio-panel-studio');
-  var pRadar = document.getElementById('radar');
-  var pFoundry = document.getElementById('foundry');
+  var pStudio = document.getElementById('radio-panel-studio'), pRadar = document.getElementById('radar'), pFoundry = document.getElementById('foundry');
   document.querySelectorAll('.radio-tab-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var tab = btn.getAttribute('data-radio-tab') || 'all';
@@ -429,33 +433,20 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
     });
   });
 
-  var activeCls = 'ALL';
-  var radarBadgeSel = document.getElementById('radar-badge-select');
-  var radarSearch = document.getElementById('radar-search-input');
-  var radarEmpty = document.getElementById('radar-empty-msg');
-
+  var activeCls = 'ALL', radarBadgeSel = document.getElementById('radar-badge-select'), radarSearch = document.getElementById('radar-search-input'), radarEmpty = document.getElementById('radar-empty-msg');
   function applyRadarFilters() {
-    var bdg = radarBadgeSel ? radarBadgeSel.value : 'ALL';
-    var q = radarSearch ? radarSearch.value.toLowerCase().trim() : '';
-    var shown = 0;
+    var bdg = radarBadgeSel ? radarBadgeSel.value : 'ALL', q = radarSearch ? radarSearch.value.toLowerCase().trim() : '', shown = 0;
     document.querySelectorAll('.radar-item').forEach(function (el) {
-      var okCls = activeCls === 'ALL' || el.getAttribute('data-cls') === activeCls;
-      var okBdg = bdg === 'ALL' || el.getAttribute('data-badge') === bdg;
-      var okQ = !q || (el.getAttribute('data-hay') || '').indexOf(q) !== -1;
-      var show = okCls && okBdg && okQ;
+      var show = (activeCls === 'ALL' || el.getAttribute('data-cls') === activeCls) && (bdg === 'ALL' || el.getAttribute('data-badge') === bdg) && (!q || (el.getAttribute('data-hay') || '').indexOf(q) !== -1);
       el.classList.toggle('hidden', !show);
       if (show) shown++;
     });
     if (radarEmpty) radarEmpty.classList.toggle('hidden', shown > 0);
   }
-
   document.querySelectorAll('.radar-cls-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       activeCls = btn.getAttribute('data-radar-cls') || 'ALL';
-      document.querySelectorAll('.radar-cls-btn').forEach(function (b) {
-        b.classList.toggle('bg-brand-amber/15', b === btn);
-        b.classList.toggle('border-brand-amber', b === btn);
-      });
+      document.querySelectorAll('.radar-cls-btn').forEach(function (b) { b.classList.toggle('bg-brand-amber/15', b === btn); b.classList.toggle('border-brand-amber', b === btn); });
       applyRadarFilters();
     });
   });
@@ -465,71 +456,40 @@ const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u0
   document.querySelectorAll('.foundry-st-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var st = btn.getAttribute('data-foundry-st') || 'ALL';
-      document.querySelectorAll('.foundry-card').forEach(function (c) {
-        c.classList.toggle('hidden', st !== 'ALL' && c.getAttribute('data-status') !== st);
-      });
+      document.querySelectorAll('.foundry-card').forEach(function (c) { c.classList.toggle('hidden', st !== 'ALL' && c.getAttribute('data-status') !== st); });
     });
   });
 
-  // Hash deep-link support (#ep04-deterministic-null-satb)
   if (window.location.hash) {
-    var hid = window.location.hash.slice(1);
-    var matchedEp = EPISODES.find(function (e) { return e.id === hid; });
+    var matchedEp = EPISODES.find(function (e) { return e.id === window.location.hash.slice(1); });
     if (matchedEp) loadEpisode(matchedEp.id, 0, false, 'Mode: On-Demand');
   }
 
-  // WebMCP & Agent Discovery API: window.openieRadio
   window.openieRadio = {
     aiDisclosure: FEED.ai_disclosure,
     rssUrl: 'https://research.openie.dev/radio/rss.xml',
+    listPersonas: function () { return PERSONAS; },
     getNowPlaying: function () {
-      var live = getLiveRotationState();
-      var deckSec = audio ? Number((audio.currentTime || 0).toFixed(2)) : 0;
+      var live = getLiveRotationState(), deckSec = audio ? Number((audio.currentTime || 0).toFixed(2)) : 0;
       return {
-        live_broadcast: {
-          episode_id: live.episode.id,
-          episode_title: live.episode.title,
-          offset_sec: live.offset_sec,
-          speaker: live.speaker
-        },
-        studio_deck: {
-          episode_id: currentEp.id,
-          episode_title: currentEp.title,
-          paused: audio ? audio.paused : true,
-          current_sec: deckSec,
-          playback_rate: currentRate,
-          active_turn: findTurnAt(currentEp, deckSec)
-        }
+        live_broadcast: { episode_id: live.episode.id, episode_title: live.episode.title, panel: live.episode.panel, offset_sec: live.offset_sec, speaker: live.speaker },
+        studio_deck: { episode_id: currentEp.id, episode_title: currentEp.title, panel: currentEp.panel, paused: audio ? audio.paused : true, current_sec: deckSec, playback_rate: currentRate, active_turn: findTurnAt(currentEp, deckSec) }
       };
     },
     listEpisodes: function () {
       return EPISODES.map(function (e) {
-        return {
-          id: e.id,
-          number: e.number,
-          title: e.title,
-          subtitle: e.subtitle,
-          duration_sec: e.duration_sec,
-          duration_human: e.duration_human,
-          audio_url: e.audio_url,
-          captions_url: e.captions_url,
-          transcript_url: e.transcript_url,
-          card_count: e.card_count
-        };
+        return { id: e.id, number: e.number, title: e.title, subtitle: e.subtitle, panel: e.panel, duration_sec: e.duration_sec, duration_human: e.duration_human, audio_url: e.audio_url, captions_url: e.captions_url, transcript_url: e.transcript_url, card_count: e.card_count };
       });
     },
     listFoundryTopics: function (statusFilter) {
       var all = FOUNDRY.topics || [];
-      if (!statusFilter || statusFilter === 'ALL') return all;
-      return all.filter(function (t) { return t.status === statusFilter; });
+      return (!statusFilter || statusFilter === 'ALL') ? all : all.filter(function (t) { return t.status === statusFilter; });
     },
     listRadarPapers: function (query) {
       var all = RADAR.items || [];
       if (!query) return all;
       var q = String(query).toLowerCase();
-      return all.filter(function (it) {
-        return (it.title + ' ' + it.external_id + ' ' + it.classification + ' ' + it.epistemic_badge + ' ' + it.source).toLowerCase().indexOf(q) !== -1;
-      });
+      return all.filter(function (it) { return (it.title + ' ' + it.external_id + ' ' + it.classification + ' ' + it.epistemic_badge + ' ' + it.source).toLowerCase().indexOf(q) !== -1; });
     },
     tuneInLive: function () {
       var live = getLiveRotationState();

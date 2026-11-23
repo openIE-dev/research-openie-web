@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""OpenIE Research Radio — Launch Episodes 1 & 2 Dialogue & Citation Card Scripts."""
+"""OpenIE Research Radio — Launch Episodes 1 (Elena, Marcus, Rohan) & 2 (Amara, Liam, Kenji)."""
 
 from __future__ import annotations
 
@@ -9,9 +9,9 @@ EPISODE_01: dict[str, Any] = {
     "id": "ep01-global-literature-radar",
     "number": 1,
     "title": "Live Global Radar — Open-Access Preprints vs. OpenIE Commit Gates",
-    "subtitle": "Auditing live 2026 arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov feeds against joules and null baselines",
+    "subtitle": "Elena, Marcus, and Rohan audit live 2026 arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov feeds",
     "summary": (
-        "Elena, Marcus, and Devon open the autonomous 6-hour literature radar, cross-examining live 2026 works — "
+        "Elena, Marcus, and Rohan open the autonomous 6-hour literature radar, cross-examining live 2026 works — "
         "including TokenPowerBench, Lean Graph Search, AgentShield, INFRAMIND, and npj Biofilms extracellular-vesicle "
         "quorum studies — against OpenIE's Metered Commit Gates and Shape-D controls."
     ),
@@ -21,8 +21,8 @@ EPISODE_01: dict[str, Any] = {
         {
             "speaker": "Elena",
             "text": (
-                "Welcome to the launch broadcast of OpenIE Research Radio! Before we dive in, full transparency up front: "
-                "Marcus, Devon, and I — Elena — are AI-synthesized OpenIE research personas, voiced through open-weight neural speech "
+                "Welcome to the launch broadcast of OpenIE Research Radio! Full studio transparency right up front: "
+                "Marcus, Rohan, and I — Elena — are AI-synthesized OpenIE research personas voiced with ElevenLabs studio neural speech "
                 "and grounded strictly in verified Open Interface Engineering artifacts and live open-access literature feeds."
             ),
             "cards": [
@@ -38,17 +38,17 @@ EPISODE_01: dict[str, Any] = {
         {
             "speaker": "Marcus",
             "text": (
-                "Which means nobody here gets to bluff! Every six hours, our autonomous Linux radar scrapes five sanctioned public "
+                "Which means nobody at this table gets to bluff! Every six hours, our autonomous Linux radar polls five sanctioned public "
                 "archives — arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov — hashes every record with BLAKE2b and SHA-256, "
-                "and puts brand-new papers on the bench. Devon, how many survived deduplication today?"
+                "and drops fresh papers onto the bench. Rohan, how many survived deduplication today?"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Rohan",
             "text": (
-                "Over forty distinct open-access works across all five registries, mapped against all twenty-one OpenIE studies. "
-                "Every single entry gets an epistemic badge — T for kernel-checked theorems, E for empirical hardware or wet-lab data, "
-                "M for computational models, and S for speculative or uncompleted clinical horizons."
+                "Sixty-two distinct open-access works across all five registries, Marcus, mapped against all twenty-one OpenIE studies. "
+                "Every single entry receives an epistemic badge — T for kernel-checked theorems, E for empirical hardware or wet-lab data, "
+                "M for computational models, and S for speculative or recruiting clinical horizons."
             ),
         },
         {
@@ -75,10 +75,10 @@ EPISODE_01: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Rohan",
             "text": (
                 "Almost always software counters on shared GPUs, or analytical estimates — what OpenIE stamps as reported_j, never measured_j. "
-                "And second, joules per token is the wrong denominator if the model spends ten thousand tokens hallucinating a broken patch! "
+                "And second, joules per token is the wrong denominator if a model burns ten thousand tokens hallucinating a broken patch! "
                 "In Metered Commit Gates, the denominator is energy to correct completion."
             ),
             "cards": [
@@ -110,16 +110,16 @@ EPISODE_01: dict[str, Any] = {
         {
             "speaker": "Marcus",
             "text": (
-                "Okay, I actually like those two! Because instead of asking a giant language model to vibe-check mathematics, "
-                "the Lean 4 kernel acts as an unforgiving binary oracle. Either the proof term type-checks with zero sorry placeholders, or it's rejected."
+                "Okay, I actually love those two! Because instead of asking a giant language model to vibe-check mathematics, "
+                "the Lean 4 kernel acts as an unforgiving binary oracle. Either the proof term type-checks with zero sorry placeholders, or it gets refused."
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Rohan",
             "text": (
-                "Exactly. Across OpenIE's Reality Code Engine, Time as an Index, and Communication Tool Avalanche, we rely on over five thousand "
-                "five hundred Lean 4 kernel constants plus sixty-two specialized domain theorems with zero sorry. What Lean Graph Search still omits, "
-                "though, is reporting how many joules the search burned per closed lemma."
+                "Exactly. Across OpenIE's Reality Code Engine, Time as an Index, and Communication Tool Avalanche, we rely on five thousand "
+                "five hundred thirty-seven Lean 4 kernel constants plus sixty-two specialized domain theorems with zero sorry. What Lean Graph Search still omits, "
+                "though, is reporting how many joules the search spent per closed lemma."
             ),
         },
         {
@@ -146,9 +146,9 @@ EPISODE_01: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Rohan",
             "text": (
-                "Prompt bloat triples, errors compound exponentially as fidelity to the power k across hops, and false commits spike! "
+                "Prompt bloat triples, errors compound exponentially across hops, and false commits spike! "
                 "In our sixty-task Communication Avalanche benchmark, an unattested four-agent cascade dropped to eighty-six point six seven percent "
                 "accuracy with thirteen point three percent broken commits, burning nearly fifteen times more energy per coherent fix than our BLAKE3 and Ed25519 gated graph."
             ),
@@ -181,16 +181,16 @@ EPISODE_01: dict[str, Any] = {
         {
             "speaker": "Marcus",
             "text": (
-                "Think about how wild that is. Three and a half billion years before packet-switched networks, bacteria wrapped quorum signals "
+                "Think about how wild that is, Elena. Three and a half billion years before packet-switched networks, bacteria wrapped quorum signals "
                 "inside lipid envelopes so nucleases and water currents wouldn't corrupt the packet in transit!"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Rohan",
             "text": (
-                "Meanwhile, our ClinicalTrials.gov feed keeps us honest on the human neurotechnology side. Today's radar pulled eight trials, "
+                "Meanwhile, our ClinicalTrials.gov feed keeps us disciplined on human neurotechnology. Today's radar pulled eight trials, "
                 "including stroke alpha-coherence neurofeedback NCT02223910 and cognitive memory restoration NCT04253587. We classify recruiting "
-                "or unverified human translation strictly as S or Challenges Assumption so preclinical animal rescue is never conflated with human cures."
+                "or unverified human translation strictly under Challenges Assumption so preclinical animal rescue is never confused with human efficacy."
             ),
             "cards": [
                 {
@@ -205,7 +205,7 @@ EPISODE_01: dict[str, Any] = {
         {
             "speaker": "Elena",
             "text": (
-                "And remember our rule on AI formats too: Europe PMC also surfaced The Cost of Reproducibility in Artificial Intelligence, "
+                "And Europe PMC also surfaced The Cost of Reproducibility in Artificial Intelligence, "
                 "right alongside OpenIE's AI Reads Human study showing pure-Python YAML parsing burns over two thousand times more nanojoules per record than fixed binary structs!"
             ),
         },
@@ -219,8 +219,8 @@ EPISODE_01: dict[str, Any] = {
         {
             "speaker": "Elena",
             "text": (
-                "Next up in Episode Two, we zoom across three point eight billion years of biological signaling, seventy-six years of AI winters, "
-                "and DES-10 digital enzymatic synthesis. Stay tuned on OpenIE Research Radio!"
+                "Next up in Episode Two, Amara, Liam, and Kenji take the mics to explore three point eight billion years of biological signaling, "
+                "seventy-six years of AI winters, and DES-10 digital enzymatic synthesis!"
             ),
         },
     ],
@@ -230,19 +230,20 @@ EPISODE_02: dict[str, Any] = {
     "id": "ep02-communication-tool-avalanche",
     "number": 2,
     "title": "The Communication Tool Avalanche — Quorum Ratchets, 1950–2026 AI Winters & DES-10",
-    "subtitle": "From Archaean quorum switches and SepJ nanopores to 76 years of AI winters and sub-millijoule digital enzymes",
+    "subtitle": "Amara, Liam, and Kenji trace externalized signal gates from Archaean nanopores to sub-millijoule digital enzymes",
     "summary": (
-        "Why collective intelligence scales by externalizing state behind selective gates: bacterial quorum switches, "
-        "cyanobacterial SepJ circuit-breakers, mycorrhizal citation bias, the 1950–2026 AI Winter ratchet, and DES-10 digital enzymes."
+        "Amara, Liam, and Kenji examine why collective intelligence scales by externalizing state behind selective gates: "
+        "bacterial quorum switches, cyanobacterial SepJ circuit-breakers, mycorrhizal citation bias, 1950–2026 AI winters, and DES-10."
     ),
     "topic_tags": ["communication-avalanche", "quorum-sensing", "ai-winters", "des-10"],
     "published_utc": "2026-11-23T06:30:00Z",
     "turns": [
         {
-            "speaker": "Elena",
+            "speaker": "Amara",
             "text": (
-                "Welcome back to OpenIE Research Radio! I'm Elena, joined by Marcus and Devon — three AI-synthesized OpenIE research personas "
-                "exploring verified Open Interface Engineering studies. Today we're opening one of our most sweeping monographs: The Communication Tool Avalanche."
+                "Hello and welcome to Episode Two of OpenIE Research Radio! I'm Amara, joined in the studio by Liam and Kenji — "
+                "three AI-synthesized OpenIE research personas voiced with ElevenLabs neural voices and grounded in verified Open Interface Engineering studies. "
+                "Today we're diving into The Communication Tool Avalanche."
             ),
             "cards": [
                 {
@@ -255,32 +256,32 @@ EPISODE_02: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Liam",
             "text": (
-                "Okay, pitch me the core thesis without any hand-waving. Why put bacteria, slime molds, starling flocks, printing presses, "
-                "and multi-agent language models inside one mathematical equation?"
+                "Alright Kenji, pitch me the big thesis without any academic fluff! Why put ancient bacteria, slime molds, starling murmurations, "
+                "printing presses, and multi-agent language models inside one mathematical operator?"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Kenji",
             "text": (
-                "Because single-agent brains hit steep thermodynamic walls long before complex jobs finish! What unlocks superlinear scaling "
-                "is a three-step ratchet formalized in Lean 4.36.0 across thirty-one theorems with zero sorry: Externalize structured state into a medium, "
+                "Because isolated brains hit steep metabolic walls long before collective problems saturate, Liam! What unlocks superlinear scaling "
+                "is a three-phase ratchet checked mechanically in Lean 4.36.0 across thirty-one theorems with zero sorry: Externalize state into a shared medium, "
                 "Ingest it only across a threshold and validity gate, and Transform recipient state without regressing."
             ),
         },
         {
-            "speaker": "Elena",
+            "speaker": "Amara",
             "text": (
-                "Look at Rung CL02, three point five billion years ago: bacterial quorum sensing in Vibrio fischeri and Pseudomonas aeruginosa. "
-                "A single bacterium floating alone in the ocean doesn't waste ATP secreting bioluminescent enzymes or biofilms into empty water."
+                "Start at Rung CL02, three point five billion years ago: bacterial quorum sensing in Vibrio fischeri and Pseudomonas aeruginosa. "
+                "One lone cell drifting in open water never wastes precious ATP pumping out bioluminescent enzymes or biofilms."
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Kenji",
             "text": (
                 "In our pre-registered simulation CA-M1 under seed 20261123, a cooperative Hill switch with exponent two to four saves "
-                "ninety-five point four nine to ninety-nine point one seven percent of regulon ATP at low cell density, while suppressing "
+                "ninety-five point four nine to ninety-nine point one seven percent of regulon ATP at low density, while suppressing "
                 "premature noise firing by eleven point six six times!"
             ),
             "cards": [
@@ -294,17 +295,17 @@ EPISODE_02: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Liam",
             "text": (
-                "Wait — once cells link up into multicellular filaments like cyanobacteria in Rung CL03 and share cytoplasm through fifteen-nanometer "
-                "SepJ nanopores, doesn't a single punctured cell bleed the entire hundred-cell chain to death?"
+                "Wait a minute — once cells connect into multicellular filaments like cyanobacteria in Rung CL03 and share cytoplasm through fifteen-nanometer "
+                "SepJ nanopores, doesn't one punctured cell drain the whole hundred-cell filament dry?"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Kenji",
             "text": (
-                "It would, if the pore were ungated! In model CA-M2, an ungated twenty-cell filament collapses to zero percent survival after cell-zero lyses. "
-                "With calcium-triggered SepJ plug closure in fifty milliseconds, nineteen of twenty cells — ninety-five percent — survive intact."
+                "It absolutely does if the pore stays open! In model CA-M2, an ungated twenty-cell filament collapses to zero percent survival when cell-zero lyses. "
+                "With calcium-triggered SepJ plug closure in fifty milliseconds, nineteen out of twenty cells — ninety-five percent — survive intact."
             ),
             "cards": [
                 {
@@ -317,18 +318,18 @@ EPISODE_02: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Liam",
             "text": (
-                "And I appreciate that Section 3 also calls foul on popular biology myths! Everyone loves talking about forest mother trees "
-                "sending intentional warning broadcasts through fungal networks, and we actually audited that."
+                "And I love that Section 3 refuses to repeat romanticized pop-science myths! People constantly claim forest mother trees "
+                "broadcast intentional warning messages to kin through fungal networks, and we actually checked the forestry audit."
             ),
         },
         {
-            "speaker": "Elena",
+            "speaker": "Amara",
             "text": (
-                "Right! Simard's 1997 carbon-isotope flux across ectomycorrhizal hyphae is established biophysics — tagged E — "
-                "but Karst, Jones, and Hoeksema's 2023 audit exposed severe citation bias behind teleological mother-tree signaling claims, "
-                "so we flag intentional maternal warnings as unsubstantiated!"
+                "Yes! Simard's 1997 carbon-isotope transfer across ectomycorrhizal hyphae is solid biophysics — tagged E — "
+                "but Karst, Jones, and Hoeksema's 2023 systematic audit exposed heavy citation bias and confounders behind teleological mother-tree stories, "
+                "so we separate biophysical flux from unsubstantiated signaling intent."
             ),
             "cards": [
                 {
@@ -341,33 +342,32 @@ EPISODE_02: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Elena",
+            "speaker": "Amara",
             "text": (
-                "Now jump to computing history from 1950 to 2026! Why did AI suffer AI Winter One in 1974 and AI Winter Two in 1988? "
-                "Look at those seven eras through the exact same externalization-and-gate lens."
+                "Now map that exact same gate principle onto seventy-six years of artificial intelligence from 1950 to 2026! "
+                "Why did AI Winter One hit in 1974 and AI Winter Two hit in 1988?"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Kenji",
             "text": (
-                "Every breakthrough paired a compact externalized representation with a sound gate — Lisp recursion in 1956, backprop chain-rule gradients in 1986, "
+                "Every surge paired a compact externalized representation with a sound gate — Lisp recursion in 1956, backprop chain-rule gradients in 1986, "
                 "sparse MoE top-k routing in 2022. Every AI Winter struck when signals outran verification: Hearsay-II untyped blackboards locked up quadratically, "
-                "and MYCIN ad-hoc certainty factors drifted across multi-hop rules."
+                "and MYCIN certainty factors drifted across multi-hop chains."
             ),
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Liam",
             "text": (
-                "Wait a second — today's multi-agent LLM chat frameworks are literally recreating 1975 Hearsay-II blackboards, just at fifteen to a hundred joules per turn! "
-                "Agents spewing three-point-seven-x bloated English prose back and forth until hallucinations lock in!"
+                "Hang on — today's unverified multi-agent LLM chat loops are literally 1975 Hearsay-II blackboards burning a hundred joules a turn! "
+                "Agents firing three-point-seven-x bloated English essays at each other until hallucinations lock in!"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Kenji",
             "text": (
-                "That's why we designed DES-10 — ten-camp Digital Enzymatic Synthesis. In biochemistry, an enzyme slashes the activation energy barrier "
-                "Delta E-double-dagger of a reaction by orders of magnitude and exits completely unconsumed. A digital enzyme pairs a canonical typed IR "
-                "with BLAKE3 hashing, Ed25519 signatures, and a deterministic verifier."
+                "That's why we engineered DES-10 — ten-camp Digital Enzymatic Synthesis. Just like a biological enzyme slashes a reaction's activation barrier "
+                "and exits unconsumed, a digital enzyme pairs a canonical typed schema with BLAKE3 hashing, Ed25519 signatures, and a deterministic verifier."
             ),
             "cards": [
                 {
@@ -380,26 +380,26 @@ EPISODE_02: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Elena",
+            "speaker": "Amara",
             "text": (
-                "Give us the Linux RAPL bench numbers from experiments CTA-E1 through CTA-E3 — keeping clear that board_metered is false and these are socket reported joules."
+                "Give us the Linux RAPL numbers from benchmarks CTA-E1 through CTA-E3, Kenji — keeping clear that board_metered is false and these are socket reported joules."
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Kenji",
             "text": (
-                "Rust BLAKE3 plus Ed25519 channel verification takes twenty-five point nine five to thirty-seven point three nine microseconds — "
+                "Rust BLAKE3 plus Ed25519 envelope verification takes twenty-five point nine five to thirty-seven point three nine microseconds — "
                 "just six hundred forty-three to nine hundred twenty-six microjoules per edge! Zero-clock Linux eventfd waiting cuts one-percent-duty "
-                "idle socket energy by two point two one times versus one-kilohertz polling, and min-cost flow reroutes around two hundred out of two hundred "
+                "socket energy by two point two one times versus one-kilohertz polling, and min-cost flow reroutes around two hundred out of two hundred "
                 "Byzantine faults in two point four microseconds."
             ),
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Liam",
             "text": (
-                "And once a frontier fifteen-joule model solves a novel bug and passes the test gate, downward crystallization locks that fix into "
-                "a one-point-seven-seven microjoule lookup case — just like our twenty-generation cultural ratchet model CA-M5, where attested libraries "
-                "held one hundred percent retention after machine teachers vanished, while unverified imitation collapsed to twenty-nine percent!"
+                "And once a frontier fifteen-joule model solves a novel bug and clears the test gate, downward crystallization locks that fix into "
+                "a one-point-seven-seven microjoule lookup case — matching our twenty-generation cultural ratchet CA-M5, where attested libraries "
+                "held one hundred percent competence after synthetic teachers left, while unverified imitation dropped to twenty-nine percent!"
             ),
             "cards": [
                 {
@@ -412,10 +412,10 @@ EPISODE_02: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Elena",
+            "speaker": "Amara",
             "text": (
-                "From bacterial autoinducers to sub-millijoule digital enzymes, the rule never changes: gate the channel, verify the payload, "
-                "and crystallize what works. Up next in Episode Three: World Coding and RCE-JEPA!"
+                "Gate the channel, verify the payload, and crystallize every verified gain. Up next in Episode Three, Priya, Marcus, and Claire "
+                "dive into World Coding and RCE-JEPA!"
             ),
         },
     ],

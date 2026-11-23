@@ -1,30 +1,30 @@
 WEBVTT
-NOTE OpenIE Research TV — jouleos (30s) AI-synthesized studio narration
+NOTE OpenIE Research TV — jouleos (30s) Narrator Brian
 
 1
-00:00:00.300 --> 00:00:03.439
+00:00:00.260 --> 00:00:03.696
 Today's AI agents sit atop operating systems, containers,
 
 2
-00:00:03.439 --> 00:00:07.460
+00:00:03.696 --> 00:00:08.096
 and sandboxes designed fifty years ago with zero pre-action energy gates.
 
 3
-00:00:07.940 --> 00:00:10.662
+00:00:08.216 --> 00:00:11.344
 The Search for JouleOS surveys ISAs, microkernels,
 
 4
-00:00:10.662 --> 00:00:14.637
+00:00:11.344 --> 00:00:15.910
 and WebAssembly sandboxes to specify a runtime governed by energy grants.
 
 5
-00:00:15.117 --> 00:00:19.546
+00:00:16.030 --> 00:00:21.598
 The jcp-satb-cad-spine crate bridges JCR-1 Ed25519 receipts,
 
 6
-00:00:19.546 --> 00:00:24.492
+00:00:21.598 --> 00:00:27.815
 SATB-IO telemetry, and CAD stage accounting with 310 passing tests.
 
 7
-00:00:24.972 --> 00:00:30.721
+00:00:27.935 --> 00:00:34.035
 Combining hardware shunts with analytical estimates automatically downgrades receipt provenance—preventing energy laundering.

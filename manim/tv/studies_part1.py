@@ -119,7 +119,7 @@ STUDIES_PART1 = [
             "5s": {
                 "hook": "Never execute an irreversible action until a deterministic gate passes—at 11,428 picojoules per cycle on KV260.",
                 "scenes": [
-                    ("flash_kinetic", "COMMIT GATE VERIFIED", "11,428 pJ / cycle · KV260 measured_j", "Check before every irreversible act: 11,428 picojoules per gate cycle on K V 260."),
+                    ("flash_kinetic", "COMMIT GATE VERIFIED", "11,428 pJ / cycle · KV260 measured_j", "Check before every irreversible act: 11,428 picojoules per gate cycle on KV260."),
                 ],
             },
             "30s": {
@@ -127,7 +127,7 @@ STUDIES_PART1 = [
                 "scenes": [
                     ("hook_contrast", "UNDOABLE AGENT MISTAKES", "Why Guessing First Breaks Systems", "When an AI agent deletes data or sends money, guessing with a giant model and apologizing later fails."),
                     ("state_cascade", "CHEAPEST RUNG FIRST", "Cascade + Deterministic Gate", "Metered Commit Gates puts a fast, cheap check in front of every irreversible side effect and escalates only when needed."),
-                    ("benchmark_bars", "BOARD-SHUNT SILICON READING", "11,428 pJ / Gate Cycle on KV260", "On an AMD Kria K V 260 board with an I N A 260 rail sensor, one whole-module gate cycle reads 11,428 picojoules."),
+                    ("benchmark_bars", "BOARD-SHUNT SILICON READING", "11,428 pJ / Gate Cycle on KV260", "On an AMD Kria KV260 board with an INA260 rail sensor, one whole-module gate cycle reads 11,428 picojoules."),
                     ("horizon_slate", "ADMIT OR REFUSE WITH RECEIPT", "Zero Silent Side Effects", "Every decision either passes the check or logs a clean refusal receipt with its energy cost."),
                 ],
             },
@@ -137,8 +137,8 @@ STUDIES_PART1 = [
                     ("hook_contrast", "THE COST OF WRONG ACTIONS", "Energy-to-Correct-Completion", "Cheap per-token inference still wastes joules if ten unverified guesses corrupt state and force human cleanup."),
                     ("state_cascade", "MIXTURE OF LIMITS CASCADE", "Exact Lookup -> Small Solver -> Model", "A Mixture of Limits cascade tries deterministic tables and lightweight checks first, waking heavy models only on novel inputs."),
                     ("equation_curve", "GATE INVARIANT & ECC CURVE", "Zero Side Effects Without Proof", "Before any external write commits, a deterministic verifier checks the postcondition, driving Energy-to-Correct-Completion sharply down."),
-                    ("benchmark_bars", "KV260 INA260 MEASURED_J", "11,428 pJ Whole-Module Gate Cycle", "Hardware measurements on the K V 260 I N A 260 rail shunt record 11,428 picojoules per gate cycle across the whole module."),
-                    ("horizon_slate", "BROWSER WASM & GOLDEN VECTORS", "Reproducible Seed-1 Reference", "Every software cascade trace and K V 260 board log ships with golden vectors and an interactive FPGA simulator."),
+                    ("benchmark_bars", "KV260 INA260 MEASURED_J", "11,428 pJ Whole-Module Gate Cycle", "Hardware measurements on the KV260 INA260 rail shunt record 11,428 picojoules per gate cycle across the whole module."),
+                    ("horizon_slate", "BROWSER WASM & GOLDEN VECTORS", "Reproducible Seed-1 Reference", "Every software cascade trace and KV260 board log ships with golden vectors and an interactive FPGA simulator."),
                 ],
             },
             "90s": {
@@ -146,10 +146,10 @@ STUDIES_PART1 = [
                 "scenes": [
                     ("hook_contrast", "IRREVERSIBILITY IN AUTOMATION", "Side Effects Cannot Be Hallucinated Away", "In real software infrastructure, actions cross boundaries that cannot be rolled back by generating another polite paragraph."),
                     ("equation_curve", "ENERGY TO CORRECT COMPLETION", "Accounting for Retries and Refusals", "Metered Commit Gates replaces raw token cost with Energy to Correct Completion, summing every joule spent until a verified outcome commits."),
-                    ("cutaway_3d", "3D KV260 & SHUNT CUTAWAY", "INA260 Rail Sensor + Gate Fabric", "This three-dimensional silicon cutaway highlights the physical I N A 260 board shunt feeding deterministic gate logic on K V 260 hardware."),
+                    ("cutaway_3d", "3D KV260 & SHUNT CUTAWAY", "INA260 Rail Sensor + Gate Fabric", "This three-dimensional silicon cutaway highlights the physical INA260 board shunt feeding deterministic gate logic on KV260 hardware."),
                     ("state_cascade", "CASCADE + REFUSAL PROTOCOL", "Try Cheap -> Check -> Admit or Refuse", "Inputs hit zero-hallucination lookup rungs first; proposals from higher rungs still pass through the exact same commit gate."),
-                    ("benchmark_bars", "MEASURED_J VS SOFTWARE TIERS", "11,428 pJ / Cycle Hardware Anchor", "Whole-module K V 260 rail readings establish a true measured_j anchor at 11,428 picojoules per cycle alongside audited software cascades."),
-                    ("falsifier_audit", "STRICT METERING HONESTY", "Only Physical Shunts Earn measured_j", "Across the entire OpenIE corpus, only physical rail sensors like this K V 260 shunt and Thor I N A rails carry measured_j."),
+                    ("benchmark_bars", "MEASURED_J VS SOFTWARE TIERS", "11,428 pJ / Cycle Hardware Anchor", "Whole-module KV260 rail readings establish a true measured_j anchor at 11,428 picojoules per cycle alongside audited software cascades."),
+                    ("falsifier_audit", "STRICT METERING HONESTY", "Only Physical Shunts Earn measured_j", "Across the entire OpenIE corpus, only physical rail sensors like this KV260 shunt and Thor INA rails carry measured_j."),
                 ],
             },
         },
@@ -275,7 +275,7 @@ STUDIES_PART1 = [
                 "scenes": [
                     ("hook_contrast", "BROKEN ENERGY ATTRIBUTION", "Why CPU-Ratio Guessing Fails by 90%", "Popular cloud tools split server power by CPU percentage—erring by 33 to 90 percent when GPUs or short bursts run."),
                     ("state_cascade", "RUST LANE B + PROXY BRIDGE", "Deterministic Context & 12 Checks", "The Satiation Benchmark reference harness enforces deterministic truncation, a loopback proxy, and twelve strict conformance checks."),
-                    ("benchmark_bars", "FIVE SILICON & OS ARCHETYPES", "Thor INA Shunts + M5, Zen 5, i9, Win11", "Across Apple Silicon, Jetson AGX Thor physical I N A shunts, AMD Zen 5, Intel Raptor Lake, and Windows 11 N V M L, replay hits zero diffs."),
+                    ("benchmark_bars", "FIVE SILICON & OS ARCHETYPES", "Thor INA Shunts + M5, Zen 5, i9, Win11", "Across Apple Silicon, Jetson AGX Thor physical INA shunts, AMD Zen 5, Intel Raptor Lake, and Windows 11 NVML, replay hits zero diffs."),
                     ("horizon_slate", "HONESTY BUILT INTO CODE", "Falsifier 6 Refuses Noisy Attribution", "When shared-host background noise exceeds tolerance, Falsifier 6 withholds net claims while preserving raw sensor logs."),
                 ],
             },
@@ -285,7 +285,7 @@ STUDIES_PART1 = [
                     ("hook_contrast", "HARNESS DRIFT CORRUPTS SCORES", "Context Bloat & Observer Overhead", "Two agent harnesses running the exact same model get different scores and energy readings if tool outputs or polling drift."),
                     ("state_cascade", "SEQUENTIAL RUST HARNESS", "ContextRule_v0 + Five-Block Fingerprint", "SATB locks down 80 percent oldest-output elision, 8-plus-8 kilobyte truncation, and a five-block hardware-software fingerprint."),
                     ("equation_curve", "L0–L4 × A1–N TELEMETRY MATRIX", "Observer Curve & Tick-Aliasing Proof", "Crossing five sensor levels with attribution classes exposes Windows 15.6 millisecond tick aliasing and observer-effect overhead."),
-                    ("benchmark_bars", "MULTI-HOST SHUNT & RAPL AUDIT", "Thor INA238/3221 measured_j + 4 Hosts", "Physical T I I N A 238 and 3-channel I N A 32 21 shunts on Jetson AGX Thor pair with Darwin IOReport, Linux RAPL, and Windows N V M L."),
+                    ("benchmark_bars", "MULTI-HOST SHUNT & RAPL AUDIT", "Thor INA238/3221 measured_j + 4 Hosts", "Physical TI INA238 and 3-channel INA3221 shunts on Jetson AGX Thor pair with Darwin IOReport, Linux RAPL, and Windows NVML."),
                     ("horizon_slate", "ZERO-DIFF DETERMINISTIC REPLAY", "149,747-Byte C9 & Shape D Parity", "All twelve C1 through C12 conformance checks pass with byte-identical transcripts across macOS, Linux, and bare-metal Windows 11."),
                 ],
             },
@@ -295,7 +295,7 @@ STUDIES_PART1 = [
                     ("hook_contrast", "MEASURING AGENTS WITHOUT ROOT", "Why Telemetry Needs Falsifiers", "Benchmarking autonomous coding agents across laptops, edge modules, and workstations usually collapses into incompatible ad-hoc scripts."),
                     ("equation_curve", "KEPLER ERROR & TICK ALIASING", "32.59%–89.88% Split Error Exposed", "Empirical audits show CPU-proportional power splitting errs up to 89.88 percent, matching Windows GetProcessTimes tick-aliasing loss."),
                     ("cutaway_3d", "3D FIVE-ARCHETYPE TELEMETRY RING", "Thor Physical Shunts to Win11 NVML", "Five hardware satellites surround one deterministic core: Jetson AGX Thor physical rail shunts, M5 Max, Strix Halo Zen 5, Raptor Lake, and Windows 11."),
-                    ("state_cascade", "PLATYPUS-SAFE & ROOTLESS DESIGN", "0440 root:energy RAPL + JobObjects", "Linux hosts isolate RAPL under 0440 energy permissions, while Windows 11 pairs 2.46-millisecond JobObject teardown with rootless N V M L."),
+                    ("state_cascade", "PLATYPUS-SAFE & ROOTLESS DESIGN", "0440 root:energy RAPL + JobObjects", "Linux hosts isolate RAPL under 0440 energy permissions, while Windows 11 pairs 2.46-millisecond JobObject teardown with rootless NVML."),
                     ("benchmark_bars", "TWELVE CONFORMANCE CHECKS PASS", "C1–C12 · Claude Code 2.1.330 Parity", "Every host replays Shape D checksum 15027705736 and C9's 149,747-byte payload with zero diffs, plus live adapter parity."),
                     ("falsifier_audit", "FALSIFIER 6 WITHHOLDING GATE", "Separating measured_j from reported_j", "Whenever shared-host drift crosses threshold, Falsifier 6 withholds net process claims while keeping raw measured_j and reported_j intact."),
                 ],
@@ -444,7 +444,7 @@ STUDIES_PART1 = [
                     ("equation_curve", "BIOPHYSICAL & ENZYMATIC BOUNDS", "99.17% ATP Saved · DES-10 43.69x CpJ", "Models CA-M1 to M5 confirm quorum ATP savings, 95 percent SepJ survival under 0.30-second pore closure, and 100 percent attested cultural retention."),
                     ("cutaway_3d", "3D SEPJ PORE & NEURAL BRIDGE", "Blender 5.3 Nanopore + Electrode Array", "This three-dimensional cutaway pairs calcium-gated cyanobacterial SepJ filaments with an opt-in multi-electrode neural bridge."),
                     ("state_cascade", "DES-10 & RUST SSP ORCHESTRATOR", "10 AI Camps · 25.95 µs BLAKE3+Ed25519", "Ten siloed AI camps converge in Digital Enzymatic Synthesis, backed by 25.95-microsecond Rust edge verification and eventfd wakeups."),
-                    ("benchmark_bars", "5-HOST TELEMETRY & 60-TASK SUITE", "59/60 Pass · 2.09x / 14.97x CpJ · Thor INA", "Linux RAPL benchmarks and five-host fleet profiles with Jetson AGX Thor I N A 238 shunts verify 59 of 60 repairs and zero Byzantine cascades."),
+                    ("benchmark_bars", "5-HOST TELEMETRY & 60-TASK SUITE", "59/60 Pass · 2.09x / 14.97x CpJ · Thor INA", "Linux RAPL benchmarks and five-host fleet profiles with Jetson AGX Thor INA238 shunts verify 59 of 60 repairs and zero Byzantine cascades."),
                     ("falsifier_audit", "LEAN 4 OPT-IN BCI & ROADMAP", "CTA-T29..T31 Zero-Axiom · Month->Decade", "Zero-axiom Lean 4 proofs block coercive neural pulses across 18 BCI and 16 vesicle studies, anchoring the Month-Quarter-Year-Decade blueprint."),
                 ],
             },

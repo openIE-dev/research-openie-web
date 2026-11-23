@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""OpenIE Research Radio — Launch Episodes 3 & 4 Dialogue & Citation Card Scripts."""
+"""OpenIE Research Radio — Launch Episodes 3 (Priya, Marcus, Claire) & 4 (Elena, Sean, Tariq)."""
 
 from __future__ import annotations
 
@@ -9,19 +9,20 @@ EPISODE_03: dict[str, Any] = {
     "id": "ep03-rce-world-coding",
     "number": 3,
     "title": "World Coding — The Reality Code Engine, FormJEPA/FormEBM & 40/40 Verified Repair",
-    "subtitle": "Why any learned model may propose a state-machine Form, why only the deterministic checker decides, and why Rung F stayed in observe mode",
+    "subtitle": "Priya, Marcus, and Claire examine state-machine Forms, 8.42M FormJEPA-v1, compiler payback N*, and why Rung F stayed in observe mode",
     "summary": (
-        "Inside RCE, RCE-JEPA, RCE Compile, and RCE-VC: 5,537 Lean 4 theorem constants, 8.42M-parameter FormJEPA-v1, "
-        "5.85M-parameter FormEBM-v2, 40/40 H15-Iterative repair, compiler payback horizons N*, and candid falsifiers."
+        "Priya, Marcus, and Claire unpack RCE, RCE-JEPA, RCE Compile, and RCE-VC: 5,537 Lean 4 theorem constants, "
+        "FormJEPA-v1, FormEBM-v2, 40/40 H15-Iterative repair, compiler payback horizons N*, and candid falsifiers."
     ),
     "topic_tags": ["rce", "rce-jepa", "world-coding", "rce-compile"],
     "published_utc": "2026-11-23T07:00:00Z",
     "turns": [
         {
-            "speaker": "Elena",
+            "speaker": "Priya",
             "text": (
-                "Welcome to Episode Three of OpenIE Research Radio! As always, Elena, Marcus, and Devon are AI-synthesized OpenIE research personas "
-                "speaking strictly from verified Open Interface Engineering studies. Today we're tackling World Coding: RCE, RCE-JEPA, RCE Compile, and RCE-VC."
+                "Welcome to Episode Three of OpenIE Research Radio! I'm Priya, joined today by Marcus and Claire — "
+                "three AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio synthesis and grounded strictly in verified Open Interface Engineering studies. "
+                "Our subject today is World Coding: RCE, RCE-JEPA, RCE Compile, and RCE-VC."
             ),
             "cards": [
                 {
@@ -36,15 +37,15 @@ EPISODE_03: dict[str, Any] = {
         {
             "speaker": "Marcus",
             "text": (
-                "Let's start with the elephant in the server room. People hear JEPA — Joint Embedding Predictive Architecture — and assume "
-                "we're trusting a neural latent space to decide whether software is correct. Are we?"
+                "Claire, let's address the elephant in the room right away. People see JEPA — Joint Embedding Predictive Architecture — in the title "
+                "and assume we're letting a neural latent space decide whether software is safe to ship. Are we?"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Claire",
             "text": (
-                "Never! That's the entire subtitle of RCE-JEPA: World Coding, with JEPA as premise rather than the whole method. "
-                "Any proposer — human, deterministic rule ladder, small latent predictor, or frontier model — may suggest a Form. "
+                "Categorically no, Marcus! That is why the study is titled World Coding, with JEPA as premise rather than the whole method. "
+                "Any proposer — a human engineer, a deterministic rule ladder, a compact latent predictor, or a frontier language model — may suggest a Form. "
                 "Only the deterministic checker decides admission."
             ),
             "cards": [
@@ -58,23 +59,23 @@ EPISODE_03: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Elena",
+            "speaker": "Priya",
             "text": (
-                "Look at that energy asymmetry on Apple M5 Max reported joules: checking a Form costs forty-nine point zero four millijoules, "
-                "while generating one local thirty-five-billion-parameter Qwen 3.6 proposal costs eighty-four point two five joules — over seventeen hundred times more!"
+                "Look at that energy ratio on Apple M5 Max reported joules: checking a Form costs forty-nine point zero four millijoules, "
+                "whereas generating a single local thirty-five-billion-parameter Qwen 3.6 proposal costs eighty-four point two five joules — over seventeen hundred times more!"
             ),
         },
         {
             "speaker": "Marcus",
             "text": (
-                "And before calling ANY neural network at all, what happened when you ran the zero-model-call deterministic repair ladder?"
+                "And before waking ANY neural weights at all, what happened when you ran the zero-model-call deterministic repair ladder?"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Claire",
             "text": (
-                "The deterministic ladder closed one hundred and eleven out of one hundred and fifty-one broken Forms — seventy-three point five percent — "
-                "with zero neural calls! Then we trained two tiny purpose-built models on one thousand three hundred eighty-seven strictly disjoint Forms: "
+                "The deterministic ladder closed one hundred and eleven of one hundred and fifty-one broken Forms — seventy-three point five percent — "
+                "with zero model calls! Next, we trained two tiny purpose-built networks on one thousand three hundred eighty-seven strictly disjoint Forms: "
                 "FormJEPA-v1 at eight point four two million parameters, and FormEBM-v2 at five point eight five million parameters."
             ),
             "cards": [
@@ -88,32 +89,32 @@ EPISODE_03: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Elena",
+            "speaker": "Priya",
             "text": (
-                "Wait — an eight-point-four-million parameter latent model lifted repair from seventy-three point five percent up to ninety-one point four percent, "
-                "and matched a thirty-five-billion-parameter model single-shot on H15 at twenty-seven out of forty?!"
+                "An eight-point-four-million parameter latent model lifted repair from seventy-three point five percent up to ninety-one point four percent, "
+                "and matched a thirty-five-billion-parameter model single-shot on H15 at twenty-seven out of forty!"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Claire",
             "text": (
-                "Yes, at four hundred seventy-four point eight millijoules of Linux RAPL core reported joules for sixteen candidates! "
-                "And FormEBM-v2 scored candidate validity with AUROC zero point eight nine two two, cutting rce check invocations by two point three nine times."
+                "At just four hundred seventy-four point eight millijoules of Linux RAPL core reported joules across sixteen candidates! "
+                "Meanwhile, FormEBM-v2 ranked candidate validity at AUROC zero point eight nine two two, cutting rce check calls by two point three nine times."
             ),
         },
         {
             "speaker": "Marcus",
             "text": (
-                "Now give me the headline H15-Iterative stress test — where frontier models get zero access to the original source file, "
-                "only public standard-library headers and bounded deterministic checker diagnostics for at most five turns."
+                "Now give us the H15-Iterative stress test — where frontier models get zero access to the original source file, "
+                "only public standard-library headers and bounded deterministic checker diagnostics for up to five turns."
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Claire",
             "text": (
                 "Claude Opus 5.5 and Claude Sonnet 5.5 both closed forty out of forty — one hundred percent, zero contradictions! "
                 "xAI Grok 4.20 closed thirty-nine out of forty with zero contradictions. And once crystallized into warm Gear-0 case memory, "
-                "all forty replay at zero model calls for one point seven seven one microjoules!"
+                "all forty replay with zero model calls at one point seven seven one microjoules!"
             ),
             "cards": [
                 {
@@ -128,14 +129,14 @@ EPISODE_03: dict[str, Any] = {
         {
             "speaker": "Marcus",
             "text": (
-                "Hold everything — you promised no cherry-picking! Tell the listeners what FAILED its promotion threshold in RCE-JEPA!"
+                "Hold everything, Claire — we promised zero cherry-picking on this show! Tell the listeners which rung FAILED its promotion gate in RCE-JEPA!"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Claire",
             "text": (
-                "On the one-hundred-fifty-one-task rce repair Rung-F audit, our pre-registered error ceiling was two point zero percent. "
-                "Rung F came back at three out of one hundred nineteen — two point five percent! So holds returned false, and we kept Rung F locked in observe mode instead of promoting it."
+                "On the one-hundred-fifty-one-task rce repair Rung-F audit, our pre-registered ceiling was two point zero percent. "
+                "Rung F landed at three out of one hundred nineteen — two point five percent! So holds returned false, and Rung F remained locked in observe mode rather than being promoted."
             ),
             "cards": [
                 {
@@ -148,19 +149,19 @@ EPISODE_03: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Elena",
+            "speaker": "Priya",
             "text": (
-                "That same willingness to let data falsify a sweeping claim shaped RCE Compile too! We asked whether one candidate statement "
-                "of compilation describes all twelve real-world compiler families."
+                "That same willingness to let evidence falsify an overbroad statement shaped RCE Compile as well, when we tested a single candidate definition "
+                "of compilation across twelve real compiler families."
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Claire",
             "text": (
-                "And it failed as a universal description — because mainstream compilers omit explicit energy gates and linking digests — "
-                "while holding cleanly as a seven-part normal form! Even better, across two hundred eighty checksum-verified Zen 5 RAPL cells, "
-                "compiling Python to clang dash O3 pays back its compile energy after a median N-star of two thousand four hundred ninety runs, "
-                "whereas thirty percent of clang and rustc O2-to-O3 optimizations NEVER pay back their extra compile joules!"
+                "It failed as a description of existing compilers — because standard toolchains omit explicit energy gates and linking digests — "
+                "and held cleanly as a seven-part normal form! Across two hundred eighty checksum-verified Zen 5 RAPL cells, compiling Python to clang dash O3 "
+                "pays back its compile energy after a median N-star of two thousand four hundred ninety runs, while thirty percent of clang and rustc O2-to-O3 "
+                "tiers never pay back their extra compile joules!"
             ),
             "cards": [
                 {
@@ -175,16 +176,16 @@ EPISODE_03: dict[str, Any] = {
         {
             "speaker": "Marcus",
             "text": (
-                "Thirty percent of dash O3 builds burn extra compiler electricity for zero runtime savings! Meanwhile, De Bruijn nameless SHA-256 "
-                "memoization hit zero out of five hundred false collisions and slashed warm rustc compile energy by four hundred forty-eight point five times!"
+                "Thirty percent of dash O3 builds burn extra compiler electricity for zero runtime return! Meanwhile, De Bruijn nameless SHA-256 "
+                "memoization hit zero out of five hundred false collisions and cut warm rustc compile energy by four hundred forty-eight point five times!"
             ),
         },
         {
-            "speaker": "Elena",
+            "speaker": "Priya",
             "text": (
-                "And RCE-VC closes the loop at version control: admitting non-overlapping changes against one hundred thousand name-free units "
-                "in seventy microseconds at three hundred forty microjoules while keeping Git completely usable. Next up in Episode Four: "
-                "Deterministic Null and physical shunt telemetry in SATB!"
+                "And RCE-VC completes the stack at version control: admitting non-overlapping changes against one hundred thousand name-free units "
+                "in seventy microseconds at three hundred forty microjoules while keeping Git intact. Up next in Episode Four, Elena, Sean, and Tariq "
+                "tackle Deterministic Null and SATB hardware shunts!"
             ),
         },
     ],
@@ -194,9 +195,9 @@ EPISODE_04: dict[str, Any] = {
     "id": "ep04-deterministic-null-satb",
     "number": 4,
     "title": "Deterministic Null & SATB — Pre-Registered Baselines and INA238 Shunt Rails vs. RAPL",
-    "subtitle": "Bitcoin-anchored Shape-D controls, 4,030 held-out instances, Jetson AGX Thor physical shunts, and why Kepler power splitting errs by up to 89.88%",
+    "subtitle": "Elena, Sean, and Tariq audit Bitcoin-anchored Shape-D controls, Jetson AGX Thor shunts, and 89.88% Kepler attribution errors",
     "summary": (
-        "Why every AI benchmark needs a zero-model-call Shape-D control and rootless telemetry attribution: "
+        "Elena, Sean, and Tariq examine why every AI benchmark needs a zero-model-call Shape-D control and rootless telemetry attribution: "
         "OpenTimestamps + drand pre-registration, 6 frontier models across 4,030 instances, and 5-host SATB conformance."
     ),
     "topic_tags": ["deterministic-null", "satb-harness", "ina238", "preregistration"],
@@ -205,8 +206,9 @@ EPISODE_04: dict[str, Any] = {
         {
             "speaker": "Elena",
             "text": (
-                "Welcome to Episode Four of OpenIE Research Radio! Elena, Marcus, and Devon here — AI-synthesized OpenIE research personas "
-                "unpacking verified Open Interface Engineering studies. Today is Marcus's favorite double feature: Deterministic Null and the Satiation Benchmark Harness, SATB."
+                "Welcome back to Episode Four of OpenIE Research Radio! I'm Elena, joined by Sean and Tariq — "
+                "AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio speech and grounded strictly in verified Open Interface Engineering studies. "
+                "Today we pair Deterministic Null with the Satiation Benchmark Harness, SATB."
             ),
             "cards": [
                 {
@@ -219,32 +221,32 @@ EPISODE_04: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Sean",
             "text": (
-                "You better believe this is my favorite episode! In medicine, nobody approves a drug without a placebo control. "
-                "Yet in AI, teams publish billion-parameter agent benchmarks every week without checking what a zero-model-call integer case loop scores first!"
+                "You know this is right up an auditor's alley, Elena! In clinical medicine, nobody clears a therapy without a placebo arm. "
+                "Yet in AI, teams publish billion-parameter agent leaderboards every single week without checking what a zero-model-call integer loop scores first!"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Tariq",
             "text": (
-                "So we built Shape D — strict N0 and dev-crystallized N1 — verified bit-exact across five languages: Rust, C++20, Go, Julia, and Python. "
-                "Before touching the held-out split, we anchored the hashes to the Bitcoin blockchain via OpenTimestamps and League of Entropy drand randomness rounds "
+                "So we built Shape D — strict N0 and dev-crystallized N1 — verified bit-exact across Rust, C++20, Go, Julia, and Python. "
+                "Before evaluating a single held-out instance, we anchored the commitment digests to the Bitcoin calendar via OpenTimestamps and League of Entropy drand rounds "
                 "six million six hundred sixty-three thousand seven hundred thirty-four and six million six hundred sixty-four thousand eighty-nine."
             ),
         },
         {
             "speaker": "Elena",
             "text": (
-                "Then we measured six models — Claude Opus 5.5, Claude Sonnet 5.5, OpenAI gpt-oss-120b, xAI Grok 4.20, Qwen 3.6 35B-A3B, "
-                "and Gemma 4 E4B-it — across four thousand thirty held-out instances plus six real upstream SWE-bench Verified repositories. What happened?"
+                "Then we tested six frontier and open models — Claude Opus 5.5, Claude Sonnet 5.5, OpenAI gpt-oss-120b, xAI Grok 4.20, Qwen 3.6 35B-A3B, "
+                "and Gemma 4 E4B-it — across four thousand thirty held-out instances and six real SWE-bench Verified repositories. Tariq, what broke loose?"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Tariq",
             "text": (
-                "Total bifurcation! On bounded formal and structured Track-A classes, single-turn neural calls failed to beat the deterministic control on nine out of ten cells — "
-                "until extended thinking hit forty-nine out of fifty and O-of-m clause feedback hit fifty out of fifty on Unique 3-SAT DRAT proofs!"
+                "A clean split! On bounded formal and structured Track-A classes, single-turn neural inference failed to beat the deterministic baseline on nine of ten cells — "
+                "until extended thinking reached forty-nine out of fifty and O-of-m clause feedback closed fifty out of fifty on Unique 3-SAT DRAT proofs!"
             ),
             "cards": [
                 {
@@ -257,23 +259,23 @@ EPISODE_04: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Sean",
             "text": (
-                "Aha! And on genuinely open-ended software benchmarks — BFCL v3, tau-bench Retail, BigCodeBench, and SWE-bench Verified — "
-                "where lookup tables hit zero, neural models delivered plus forty-five point eight to plus ninety-five percentage points of real gain! "
-                "That proves Shape D isn't anti-neural — it tells you WHERE neural compute actually earns its joules!"
+                "Aha! And on genuinely open-ended public benchmarks — BFCL v3, tau-bench Retail, BigCodeBench, and SWE-bench Verified — "
+                "where pure lookup hits zero, neural models posted plus forty-five point eight to plus ninety-five percentage points of real gain! "
+                "Shape D isn't anti-neural at all — it proves exactly WHERE neural joules earn their keep!"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Tariq",
             "text": (
-                "And when recurring Zipfian traffic arrives online, crystallizing verified solutions back into Shape D cuts model calls and reported_j spend by three point five nine times."
+                "And when recurring Zipfian workloads arrive online, crystallizing verified outputs back into Shape D cuts model calls and reported_j spend by three point five nine times."
             ),
         },
         {
             "speaker": "Elena",
             "text": (
-                "Now let's talk about measuring those joules honestly in the Satiation Benchmark Harness, SATB. We audited SATB across five completely different silicon and OS archetypes!"
+                "Now let's audit how those joules are measured in SATB — executed across five distinct silicon and OS archetypes!"
             ),
             "cards": [
                 {
@@ -286,26 +288,26 @@ EPISODE_04: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Devon",
+            "speaker": "Tariq",
             "text": (
-                "Right: Apple M5 Max on macOS IOReport, AMD Ryzen AI Max+ 395 Strix Halo with 0440 PLATYPUS-hardened RAPL, Intel Core i9-13900H Raptor Lake Linux, "
-                "bare-metal Windows 11 Pro with rootless nvml.dll, and — crucially — NVIDIA Jetson AGX Thor equipped with physical Texas Instruments INA238 whole-board "
-                "and three-channel INA3221 rail shunts!"
+                "We ran all twelve conformance checks C1 through C12 across Apple M5 Max on Darwin IOReport, AMD Ryzen AI Max+ 395 Strix Halo with 0440 PLATYPUS-isolated RAPL, "
+                "Intel Core i9-13900H Raptor Lake Linux, bare-metal Windows 11 Pro with rootless nvml.dll, and NVIDIA Jetson AGX Thor equipped with physical "
+                "Texas Instruments INA238 whole-board and three-channel INA3221 rail shunts!"
             ),
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Sean",
             "text": (
-                "Stop and underline that! Jetson AGX Thor with TI INA238 and INA3221 plus the Kria KV260 with INA260 are real inline rail shunts — "
-                "so those earn measured_j! What happened when you tested popular cloud power-attribution heuristics like Kepler CPU-proportional splitting against real hardware?"
+                "Pause right there, Tariq! Jetson AGX Thor's physical TI INA238 and INA3221 shunts — like Kria KV260's INA260 — sit directly on the power rails, "
+                "earning measured_j! What happened when you compared cloud-native Kepler CPU-proportional splitting against real hardware telemetry?"
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Tariq",
             "text": (
-                "Kepler CPU-proportional splitting erred by thirty-two point five nine percent all the way up to eighty-nine point eight eight percent! "
-                "And on bare-metal Windows 11, Win32 GetProcessTimes suffered fifteen-point-six-two-five millisecond tick aliasing — Falsifier 3 — "
-                "under-attributing short burst CPU usage by minus eighty-nine point eight eight percent!"
+                "Kepler CPU-proportional splitting erred by thirty-two point five nine percent up to eighty-nine point eight eight percent! "
+                "And on bare-metal Windows 11, Win32 GetProcessTimes suffered fifteen-point-six-two-five millisecond tick aliasing under Falsifier 3 — "
+                "missing minus eighty-nine point eight eight percent of short-burst CPU time!"
             ),
             "cards": [
                 {
@@ -320,30 +322,29 @@ EPISODE_04: dict[str, Any] = {
         {
             "speaker": "Elena",
             "text": (
-                "Wait — eighty-nine point eight eight percent attribution error from standard cloud-native CPU-ratio formulas! "
-                "Explain how SATB Falsifier 6 protects researchers from publishing garbage energy numbers on shared machines."
+                "Almost ninety percent attribution error from standard CPU-ratio formulas! Show how SATB Falsifier 6 stops shared-host background noise from polluting published results."
             ),
         },
         {
-            "speaker": "Devon",
+            "speaker": "Tariq",
             "text": (
-                "SATB crosses five telemetry levels L0 through L4 with attribution labels A1 through N. Whenever background host drift or quiescent power variance "
-                "violates Falsifier 6 — as happened on one hundred nine of one hundred seventy shared-host windows in AI Reads Human — "
-                "the harness refuses to stamp a net attributed joule claim while preserving the raw channel log untouched."
+                "SATB pairs telemetry levels L0 through L4 with attribution classes A1 through N. Whenever background drift exceeds Falsifier 6 — "
+                "as occurred on one hundred nine of one hundred seventy shared-host windows in AI Reads Human — net attribution is automatically withheld "
+                "while raw counter traces stay preserved for inspection."
             ),
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Sean",
             "text": (
-                "And across all five operating systems and CPU architectures, Shape D checksum fifteen billion twenty-seven million seven hundred five thousand seven hundred thirty-six "
-                "and C9 context truncation replayed with ZERO byte diffs!"
+                "And across all five operating systems and architectures, Shape D checksum fifteen billion twenty-seven million seven hundred five thousand seven hundred thirty-six "
+                "and C9 truncation replayed with zero byte diffs!"
             ),
         },
         {
             "speaker": "Elena",
             "text": (
-                "And pair SATB with our economics paper on Task Satiation versus Aggregate Rebound: every individual job has a finish line where extra tokens add zero value, "
-                "even as cheaper inference sparks Jevons demand growth across new tasks."
+                "Pair that with Task Satiation versus Aggregate Rebound: every bounded job has a finish line where extra tokens add zero value, "
+                "even while cheaper inference expands total Jevons demand across the economy."
             ),
             "cards": [
                 {
@@ -356,10 +357,9 @@ EPISODE_04: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Sean",
             "text": (
-                "Which brings us right to Episode Five: what happens when you demand bit-exact replay across six machines, three operating systems, "
-                "and real GPU game engines? Don't touch that dial!"
+                "Next up in Episode Five, Mei, Liam, and Kwame test where bit-exact replay ends and GPU tolerance begins across real game engines!"
             ),
         },
     ],

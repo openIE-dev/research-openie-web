@@ -2,188 +2,275 @@
   "id": "ep04-deterministic-null-satb",
   "number": 4,
   "title": "Deterministic Null & SATB — Pre-Registered Baselines and INA238 Shunt Rails vs. RAPL",
-  "subtitle": "Bitcoin-anchored Shape-D controls, 4,030 held-out instances, Jetson AGX Thor physical shunts, and why Kepler power splitting errs by up to 89.88%",
-  "summary": "Why every AI benchmark needs a zero-model-call Shape-D control and rootless telemetry attribution: OpenTimestamps + drand pre-registration, 6 frontier models across 4,030 instances, and 5-host SATB conformance.",
+  "subtitle": "Elena, Sean, and Tariq audit Bitcoin-anchored Shape-D controls, Jetson AGX Thor shunts, and 89.88% Kepler attribution errors",
+  "summary": "Elena, Sean, and Tariq examine why every AI benchmark needs a zero-model-call Shape-D control and rootless telemetry attribution: OpenTimestamps + drand pre-registration, 6 frontier models across 4,030 instances, and 5-host SATB conformance.",
   "topic_tags": [
     "deterministic-null",
     "satb-harness",
     "ina238",
     "preregistration"
   ],
+  "panel": [
+    "Elena",
+    "Sean",
+    "Tariq"
+  ],
+  "panel_profiles": [
+    {
+      "name": "Elena",
+      "group": "host",
+      "title": "Science Journalist · Hispanic/Spanish English",
+      "voice_id": "uR6zbwkKmeecuupKV18k",
+      "fallback_voice": "en-US-AvaMultilingualNeural",
+      "color": "#00D4AA",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    {
+      "name": "Sean",
+      "group": "skeptic",
+      "title": "Auditor & Skeptic · Irish English",
+      "voice_id": "tRqj2rLkZmeP61CMmIX4",
+      "fallback_voice": "en-IE-ConnorNeural",
+      "color": "#FBBF24",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    {
+      "name": "Tariq",
+      "group": "specialist",
+      "title": "Telemetry & Physics Specialist · Middle Eastern English",
+      "voice_id": "EzoxNTKsg4JNN7wxAgut",
+      "fallback_voice": "en-GB-ThomasNeural",
+      "color": "#C084FC",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  ],
+  "tts_engines": [
+    "eleven_v4"
+  ],
   "published_utc": "2026-11-23T07:30:00Z",
-  "duration_sec": 331.8,
-  "duration_human": "5:32",
-  "byte_length": 4482305,
+  "duration_sec": 313.9,
+  "duration_human": "5:14",
+  "byte_length": 5426747,
   "audio_url": "/media/radio/episodes/ep04-deterministic-null-satb.m4a",
   "captions_url": "/media/radio/captions/ep04-deterministic-null-satb.vtt",
   "transcript_url": "/media/radio/transcripts/ep04-deterministic-null-satb.json",
   "turn_count": 16,
   "card_count": 5,
-  "ai_disclosure": "AI Persona Disclosure: Elena, Marcus, and Devon are AI-synthesized OpenIE research personas voiced via open-weight neural speech synthesis and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
   "personas": {
     "Elena": {
       "name": "Elena",
-      "title": "The Architect — Host",
-      "voice": "af_heart",
-      "lang": "en-us",
-      "speed": 1.01,
+      "group": "host",
+      "title": "Science Journalist · Hispanic/Spanish English",
+      "voice_id": "uR6zbwkKmeecuupKV18k",
+      "fallback_voice": "en-US-AvaMultilingualNeural",
       "color": "#00D4AA",
-      "bio": "AI-synthesized science communicator connecting biological signaling, thermodynamics, and verified computing."
+      "pan": [
+        0.98,
+        0.98
+      ]
     },
-    "Marcus": {
-      "name": "Marcus",
-      "title": "The Skeptic — Critical Foil",
-      "voice": "am_michael",
-      "lang": "en-us",
-      "speed": 1.04,
-      "color": "#F59E0B",
-      "bio": "AI-synthesized empirical foil auditing lookup baselines, telemetry drift, and unverified hype."
+    "Sean": {
+      "name": "Sean",
+      "group": "skeptic",
+      "title": "Auditor & Skeptic · Irish English",
+      "voice_id": "tRqj2rLkZmeP61CMmIX4",
+      "fallback_voice": "en-IE-ConnorNeural",
+      "color": "#FBBF24",
+      "pan": [
+        1.04,
+        0.9
+      ]
     },
-    "Devon": {
-      "name": "Devon",
-      "title": "The Bench Engineer — Specialist",
-      "voice": "bm_george",
-      "lang": "en-gb",
-      "speed": 1.0,
-      "color": "#818CF8",
-      "bio": "AI-synthesized formal verification and hardware systems specialist citing exact Lean 4, RAPL, and shunt receipts."
+    "Tariq": {
+      "name": "Tariq",
+      "group": "specialist",
+      "title": "Telemetry & Physics Specialist · Middle Eastern English",
+      "voice_id": "EzoxNTKsg4JNN7wxAgut",
+      "fallback_voice": "en-GB-ThomasNeural",
+      "color": "#C084FC",
+      "pan": [
+        0.9,
+        1.04
+      ]
     }
   },
   "turns": [
     {
       "turn_index": 0,
       "speaker": "Elena",
-      "role": "The Architect — Host",
+      "role": "Science Journalist · Hispanic/Spanish English",
+      "group": "host",
+      "color": "#00D4AA",
       "start_sec": 1.83,
-      "end_sec": 22.787,
-      "text": "Welcome to Episode Four of OpenIE Research Radio! Elena, Marcus, and Devon here — AI-synthesized OpenIE research personas unpacking verified Open Interface Engineering studies. Today is Marcus's favorite double feature: Deterministic Null and the Satiation Benchmark Harness, SATB."
+      "end_sec": 24.141,
+      "text": "Welcome back to Episode Four of OpenIE Research Radio! I'm Elena, joined by Sean and Tariq — AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio speech and grounded strictly in verified Open Interface Engineering studies. Today we pair Deterministic Null with the Satiation Benchmark Harness, SATB."
     },
     {
       "turn_index": 1,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 22.982,
-      "end_sec": 40.61,
-      "text": "You better believe this is my favorite episode! In medicine, nobody approves a drug without a placebo control. Yet in AI, teams publish billion-parameter agent benchmarks every week without checking what a zero-model-call integer case loop scores first!"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 24.331,
+      "end_sec": 40.251,
+      "text": "You know this is right up an auditor's alley, Elena! In clinical medicine, nobody clears a therapy without a placebo arm. Yet in AI, teams publish billion-parameter agent leaderboards every single week without checking what a zero-model-call integer loop scores first!"
     },
     {
       "turn_index": 2,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 40.885,
-      "end_sec": 66.822,
-      "text": "So we built Shape D — strict N0 and dev-crystallized N1 — verified bit-exact across five languages: Rust, C++20, Go, Julia, and Python. Before touching the held-out split, we anchored the hashes to the Bitcoin blockchain via OpenTimestamps and League of Entropy drand randomness rounds six million six hundred sixty-three thousand seven hundred thirty-four and six million six hundred sixty-four thousand eighty-nine."
+      "speaker": "Tariq",
+      "role": "Telemetry & Physics Specialist · Middle Eastern English",
+      "group": "specialist",
+      "color": "#C084FC",
+      "start_sec": 40.521,
+      "end_sec": 69.43,
+      "text": "So we built Shape D — strict N0 and dev-crystallized N1 — verified bit-exact across Rust, C++20, Go, Julia, and Python. Before evaluating a single held-out instance, we anchored the commitment digests to the Bitcoin calendar via OpenTimestamps and League of Entropy drand rounds six million six hundred sixty-three thousand seven hundred thirty-four and six million six hundred sixty-four thousand eighty-nine."
     },
     {
       "turn_index": 3,
       "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 67.097,
-      "end_sec": 90.733,
-      "text": "Then we measured six models — Claude Opus 5.5, Claude Sonnet 5.5, OpenAI gpt-oss-120b, xAI Grok 4.20, Qwen 3.6 35B-A3B, and Gemma 4 E4B-it — across four thousand thirty held-out instances plus six real upstream SWE-bench Verified repositories. What happened?"
+      "role": "Science Journalist · Hispanic/Spanish English",
+      "group": "host",
+      "color": "#00D4AA",
+      "start_sec": 69.7,
+      "end_sec": 98.431,
+      "text": "Then we tested six frontier and open models — Claude Opus 5.5, Claude Sonnet 5.5, OpenAI gpt-oss-120b, xAI Grok 4.20, Qwen 3.6 35B-A3B, and Gemma 4 E4B-it — across four thousand thirty held-out instances and six real SWE-bench Verified repositories. Tariq, what broke loose?"
     },
     {
       "turn_index": 4,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 91.008,
-      "end_sec": 111.156,
-      "text": "Total bifurcation! On bounded formal and structured Track-A classes, single-turn neural calls failed to beat the deterministic control on nine out of ten cells — until extended thinking hit forty-nine out of fifty and O-of-m clause feedback hit fifty out of fifty on Unique 3-SAT DRAT proofs!"
+      "speaker": "Tariq",
+      "role": "Telemetry & Physics Specialist · Middle Eastern English",
+      "group": "specialist",
+      "color": "#C084FC",
+      "start_sec": 98.701,
+      "end_sec": 119.245,
+      "text": "A clean split! On bounded formal and structured Track-A classes, single-turn neural inference failed to beat the deterministic baseline on nine of ten cells — until extended thinking reached forty-nine out of fifty and O-of-m clause feedback closed fifty out of fifty on Unique 3-SAT DRAT proofs!"
     },
     {
       "turn_index": 5,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 111.351,
-      "end_sec": 136.16,
-      "text": "Aha! And on genuinely open-ended software benchmarks — BFCL v3, tau-bench Retail, BigCodeBench, and SWE-bench Verified — where lookup tables hit zero, neural models delivered plus forty-five point eight to plus ninety-five percentage points of real gain! That proves Shape D isn't anti-neural — it tells you WHERE neural compute actually earns its joules!"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 119.435,
+      "end_sec": 143.207,
+      "text": "Aha! And on genuinely open-ended public benchmarks — BFCL v3, tau-bench Retail, BigCodeBench, and SWE-bench Verified — where pure lookup hits zero, neural models posted plus forty-five point eight to plus ninety-five percentage points of real gain! Shape D isn't anti-neural at all — it proves exactly WHERE neural joules earn their keep!"
     },
     {
       "turn_index": 6,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 136.435,
-      "end_sec": 149.215,
-      "text": "And when recurring Zipfian traffic arrives online, crystallizing verified solutions back into Shape D cuts model calls and reported_j spend by three point five nine times."
+      "speaker": "Tariq",
+      "role": "Telemetry & Physics Specialist · Middle Eastern English",
+      "group": "specialist",
+      "color": "#C084FC",
+      "start_sec": 143.477,
+      "end_sec": 154.75,
+      "text": "And when recurring Zipfian workloads arrive online, crystallizing verified outputs back into Shape D cuts model calls and reported_j spend by three point five nine times."
     },
     {
       "turn_index": 7,
       "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 149.49,
-      "end_sec": 161.133,
-      "text": "Now let's talk about measuring those joules honestly in the Satiation Benchmark Harness, SATB. We audited SATB across five completely different silicon and OS archetypes!"
+      "role": "Science Journalist · Hispanic/Spanish English",
+      "group": "host",
+      "color": "#00D4AA",
+      "start_sec": 155.02,
+      "end_sec": 163.018,
+      "text": "Now let's audit how those joules are measured in SATB — executed across five distinct silicon and OS archetypes!"
     },
     {
       "turn_index": 8,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 161.408,
-      "end_sec": 195.515,
-      "text": "Right: Apple M5 Max on macOS IOReport, AMD Ryzen AI Max+ 395 Strix Halo with 0440 PLATYPUS-hardened RAPL, Intel Core i9-13900H Raptor Lake Linux, bare-metal Windows 11 Pro with rootless nvml.dll, and — crucially — NVIDIA Jetson AGX Thor equipped with physical Texas Instruments INA238 whole-board and three-channel INA3221 rail shunts!"
+      "speaker": "Tariq",
+      "role": "Telemetry & Physics Specialist · Middle Eastern English",
+      "group": "specialist",
+      "color": "#C084FC",
+      "start_sec": 163.288,
+      "end_sec": 196.248,
+      "text": "We ran all twelve conformance checks C1 through C12 across Apple M5 Max on Darwin IOReport, AMD Ryzen AI Max+ 395 Strix Halo with 0440 PLATYPUS-isolated RAPL, Intel Core i9-13900H Raptor Lake Linux, bare-metal Windows 11 Pro with rootless nvml.dll, and NVIDIA Jetson AGX Thor equipped with physical Texas Instruments INA238 whole-board and three-channel INA3221 rail shunts!"
     },
     {
       "turn_index": 9,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 195.71,
-      "end_sec": 220.316,
-      "text": "Stop and underline that! Jetson AGX Thor with TI INA238 and INA3221 plus the Kria KV260 with INA260 are real inline rail shunts — so those earn measured_j! What happened when you tested popular cloud power-attribution heuristics like Kepler CPU-proportional splitting against real hardware?"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 196.438,
+      "end_sec": 217.441,
+      "text": "Pause right there, Tariq! Jetson AGX Thor's physical TI INA238 and INA3221 shunts — like Kria KV260's INA260 — sit directly on the power rails, earning measured_j! What happened when you compared cloud-native Kepler CPU-proportional splitting against real hardware telemetry?"
     },
     {
       "turn_index": 10,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 220.591,
-      "end_sec": 243.686,
-      "text": "Kepler CPU-proportional splitting erred by thirty-two point five nine percent all the way up to eighty-nine point eight eight percent! And on bare-metal Windows 11, Win32 GetProcessTimes suffered fifteen-point-six-two-five millisecond tick aliasing — Falsifier 3 — under-attributing short burst CPU usage by minus eighty-nine point eight eight percent!"
+      "speaker": "Tariq",
+      "role": "Telemetry & Physics Specialist · Middle Eastern English",
+      "group": "specialist",
+      "color": "#C084FC",
+      "start_sec": 217.711,
+      "end_sec": 240.737,
+      "text": "Kepler CPU-proportional splitting erred by thirty-two point five nine percent up to eighty-nine point eight eight percent! And on bare-metal Windows 11, Win32 GetProcessTimes suffered fifteen-point-six-two-five millisecond tick aliasing under Falsifier 3 — missing minus eighty-nine point eight eight percent of short-burst CPU time!"
     },
     {
       "turn_index": 11,
       "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 243.961,
-      "end_sec": 259.284,
-      "text": "Wait — eighty-nine point eight eight percent attribution error from standard cloud-native CPU-ratio formulas! Explain how SATB Falsifier 6 protects researchers from publishing garbage energy numbers on shared machines."
+      "role": "Science Journalist · Hispanic/Spanish English",
+      "group": "host",
+      "color": "#00D4AA",
+      "start_sec": 241.007,
+      "end_sec": 252.227,
+      "text": "Almost ninety percent attribution error from standard CPU-ratio formulas! Show how SATB Falsifier 6 stops shared-host background noise from polluting published results."
     },
     {
       "turn_index": 12,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 259.559,
-      "end_sec": 284.251,
-      "text": "SATB crosses five telemetry levels L0 through L4 with attribution labels A1 through N. Whenever background host drift or quiescent power variance violates Falsifier 6 — as happened on one hundred nine of one hundred seventy shared-host windows in AI Reads Human — the harness refuses to stamp a net attributed joule claim while preserving the raw channel log untouched."
+      "speaker": "Tariq",
+      "role": "Telemetry & Physics Specialist · Middle Eastern English",
+      "group": "specialist",
+      "color": "#C084FC",
+      "start_sec": 252.497,
+      "end_sec": 275.137,
+      "text": "SATB pairs telemetry levels L0 through L4 with attribution classes A1 through N. Whenever background drift exceeds Falsifier 6 — as occurred on one hundred nine of one hundred seventy shared-host windows in AI Reads Human — net attribution is automatically withheld while raw counter traces stay preserved for inspection."
     },
     {
       "turn_index": 13,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 284.446,
-      "end_sec": 300.374,
-      "text": "And across all five operating systems and CPU architectures, Shape D checksum fifteen billion twenty-seven million seven hundred five thousand seven hundred thirty-six and C9 context truncation replayed with ZERO byte diffs!"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 275.327,
+      "end_sec": 288.687,
+      "text": "And across all five operating systems and architectures, Shape D checksum fifteen billion twenty-seven million seven hundred five thousand seven hundred thirty-six and C9 truncation replayed with zero byte diffs!"
     },
     {
       "turn_index": 14,
       "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 300.649,
-      "end_sec": 316.93,
-      "text": "And pair SATB with our economics paper on Task Satiation versus Aggregate Rebound: every individual job has a finish line where extra tokens add zero value, even as cheaper inference sparks Jevons demand growth across new tasks."
+      "role": "Science Journalist · Hispanic/Spanish English",
+      "group": "host",
+      "color": "#00D4AA",
+      "start_sec": 288.957,
+      "end_sec": 302.081,
+      "text": "Pair that with Task Satiation versus Aggregate Rebound: every bounded job has a finish line where extra tokens add zero value, even while cheaper inference expands total Jevons demand across the economy."
     },
     {
       "turn_index": 15,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 317.125,
-      "end_sec": 329.851,
-      "text": "Which brings us right to Episode Five: what happens when you demand bit-exact replay across six machines, three operating systems, and real GPU game engines? Don't touch that dial!"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 302.271,
+      "end_sec": 311.95,
+      "text": "Next up in Episode Five, Mei, Liam, and Kwame test where bit-exact replay ends and GPU tolerance begins across real game engines!"
     }
   ],
   "cards": [
     {
       "id": "ep04-deterministic-null-satb-card-00-0",
       "at_sec": 2.63,
-      "end_sec": 22.787,
+      "end_sec": 24.141,
       "turn_index": 0,
       "speaker": "Elena",
       "kind": "study",
@@ -194,10 +281,10 @@
     },
     {
       "id": "ep04-deterministic-null-satb-card-04-0",
-      "at_sec": 91.808,
-      "end_sec": 111.156,
+      "at_sec": 99.501,
+      "end_sec": 119.245,
       "turn_index": 4,
-      "speaker": "Devon",
+      "speaker": "Tariq",
       "kind": "receipt",
       "badge": "[M]",
       "title": "Track-A vs. Open Benchmarks (+45.80 to +95.00 pp)",
@@ -206,8 +293,8 @@
     },
     {
       "id": "ep04-deterministic-null-satb-card-07-0",
-      "at_sec": 150.29,
-      "end_sec": 161.133,
+      "at_sec": 155.82,
+      "end_sec": 163.018,
       "turn_index": 7,
       "speaker": "Elena",
       "kind": "study",
@@ -218,10 +305,10 @@
     },
     {
       "id": "ep04-deterministic-null-satb-card-10-0",
-      "at_sec": 221.391,
-      "end_sec": 243.686,
+      "at_sec": 218.511,
+      "end_sec": 240.737,
       "turn_index": 10,
-      "speaker": "Devon",
+      "speaker": "Tariq",
       "kind": "falsifier",
       "badge": "FALSIFIER 3 & 6",
       "title": "Kepler Splitting Errs 32.59%–89.88%; Tick Aliasing -89.88%",
@@ -230,8 +317,8 @@
     },
     {
       "id": "ep04-deterministic-null-satb-card-14-0",
-      "at_sec": 301.449,
-      "end_sec": 316.93,
+      "at_sec": 289.757,
+      "end_sec": 302.081,
       "turn_index": 14,
       "speaker": "Elena",
       "kind": "study",

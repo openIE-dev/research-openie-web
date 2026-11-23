@@ -2,7 +2,8 @@
 """
 OpenIE Research TV — 84-Film Master Render & Verification Orchestrator.
 Renders 21 studies × 4 bespoke depth tiers (5s, 30s, 60s, 90s) = 84 MP4 films,
-84 WebVTT caption tracks, 21 high-DPI 1280x720 JPG posters, and tv-catalog.json.
+84 WebVTT caption tracks, 21 high-DPI 1280x720 JPG posters, and tv-catalog.json
+using the 21-presenter ElevenLabs v4 Global Studio Ensemble (with edge-tts fallback).
 
 Usage:
   python3 manim/tv/render_tv_films.py \
@@ -24,6 +25,7 @@ import cairo
 from studies_part1 import STUDIES_PART1
 from studies_part2 import STUDIES_PART2
 from studies_part3 import STUDIES_PART3
+from voices_and_labs import TUTORIAL_LAB_MAP, VOICE_ENSEMBLE
 from audio_studio import FPS, build_film_audio_and_vtt
 from visual_scenes import W, H, draw_chrome, load_cutaway_surfaces, render_poster_jpg, render_scene_body
 
@@ -58,10 +60,10 @@ def parse_vtt_cues(vtt_path: str):
 
 
 def audio_job(task):
-    study, tier, tmp_dir, wav_path, vtt_path = task
+    study, tier, voice_tuple, cache_dir, tmp_dir, wav_path, vtt_path = task
     t_spec = study["tiers"][tier]
     total_frames, total_dur, scene_windows, transcript = build_film_audio_and_vtt(
-        study["id"], tier, t_spec["scenes"], study["voice"], tmp_dir, wav_path, vtt_path
+        study["id"], tier, t_spec["scenes"], voice_tuple, cache_dir, tmp_dir, wav_path, vtt_path
     )
     return (study["id"], tier, total_frames, total_dur, scene_windows, transcript)
 
@@ -71,8 +73,7 @@ def study_video_job(task):
     sid = study["id"]
     cutaways = load_cutaway_surfaces(cutaway_dir, study["cutaway_3d"])
     poster_path = os.path.join(posters_dir, f"{sid}-poster.jpg")
-    if not os.path.exists(poster_path):
-        render_poster_jpg(study, cutaways, poster_path)
+    render_poster_jpg(study, cutaways, poster_path)
 
     results = {}
     for tier in active_tiers:
@@ -115,7 +116,8 @@ def study_video_job(task):
 
         probe = subprocess.check_output(
             [
-                "ffprobe", "-v", "error", "-show_entries", "stream=codec_type,codec_name,width,height:format=duration,size",
+                "ffprobe", "-v", "error",
+                "-show_entries", "stream=codec_type,codec_name,width,height,sample_rate:format=duration,size",
                 "-of", "json", mp4_path,
             ],
             text=True,
@@ -148,13 +150,21 @@ def main():
     ap.add_argument("--cutaway-dir", required=True)
     ap.add_argument("--media-dir", required=True)
     ap.add_argument("--catalog-out", required=True)
-    ap.add_argument("--tts-workers", type=int, default=4)
-    ap.add_argument("--video-workers", type=int, default=11)
+    ap.add_argument("--tts-workers", type=int, default=5)
+    ap.add_argument("--video-workers", type=int, default=12)
     ap.add_argument("--tiers", default="5s,30s,60s,90s")
     args = ap.parse_args()
     active_tiers = [t.strip() for t in args.tiers.split(",") if t.strip() in TIERS]
 
-    studies = STUDIES_PART1 + STUDIES_PART2 + STUDIES_PART3
+    studies = []
+    for raw_st in STUDIES_PART1 + STUDIES_PART2 + STUDIES_PART3:
+        st = dict(raw_st)
+        sid = st["id"]
+        v_tup = VOICE_ENSEMBLE[sid]
+        st["narrator_name"] = v_tup[0]
+        st["narrator_profile"] = v_tup[3]
+        st["tutorial_lab_id"] = TUTORIAL_LAB_MAP[sid]
+        studies.append(st)
     assert len(studies) == 21, f"Expected 21 studies, got {len(studies)}"
 
     existing_by_id = {}
@@ -162,22 +172,25 @@ def main():
         with open(args.catalog_out, "r", encoding="utf-8") as ef:
             existing_by_id = {s["id"]: s for s in json.load(ef).get("studies", [])}
 
+    cache_dir = os.path.join(args.work_dir, "eleven_cache")
     tmp_tts = os.path.join(args.work_dir, "tts_tmp")
     wav_dir = os.path.join(args.work_dir, "wavs")
     films_dir = os.path.join(args.media_dir, "films")
     vtt_dir = os.path.join(args.media_dir, "captions")
     posters_dir = os.path.join(args.media_dir, "posters")
-    for d in (tmp_tts, wav_dir, films_dir, vtt_dir, posters_dir, os.path.dirname(args.catalog_out)):
+    for d in (cache_dir, tmp_tts, wav_dir, films_dir, vtt_dir, posters_dir, os.path.dirname(args.catalog_out)):
         os.makedirs(d, exist_ok=True)
 
+    engine_label = "eleven_v4" if os.environ.get("ELEVENLABS_API_KEY", "").strip() else "edge-tts-neural"
     t0 = time.time()
-    print(f"[1/3] Synthesizing studio neural voiceovers & WebVTT tracks for {active_tiers}...", flush=True)
+    print(f"[1/3] Synthesizing 21-presenter {engine_label} voiceovers & WebVTT ({args.tts_workers} workers)...", flush=True)
     tts_tasks = []
     for st in studies:
+        sid = st["id"]
         for tier in active_tiers:
-            wav_p = os.path.join(wav_dir, f"{st['id']}-{tier}.wav")
-            vtt_p = os.path.join(vtt_dir, f"{st['id']}-{tier}.vtt")
-            tts_tasks.append((st, tier, tmp_tts, wav_p, vtt_p))
+            wav_p = os.path.join(wav_dir, f"{sid}-{tier}.wav")
+            vtt_p = os.path.join(vtt_dir, f"{sid}-{tier}.vtt")
+            tts_tasks.append((st, tier, VOICE_ENSEMBLE[sid], cache_dir, tmp_tts, wav_p, vtt_p))
 
     audio_meta = {st["id"]: {} for st in studies}
     with cf.ProcessPoolExecutor(max_workers=args.tts_workers) as ex:
@@ -186,7 +199,7 @@ def main():
     print(f"      Audio + VTT tracks ready in {time.time() - t0:.1f}s", flush=True)
 
     t1 = time.time()
-    print(f"[2/3] Rendering HD 720p30 MP4 films ({args.video_workers} workers)...", flush=True)
+    print(f"[2/3] Rendering 21 posters + 84 HD 720p30 MP4 films ({args.video_workers} workers)...", flush=True)
     vid_tasks = [
         (st, active_tiers, audio_meta[st["id"]], args.cutaway_dir, wav_dir, films_dir, posters_dir)
         for st in studies
@@ -196,7 +209,7 @@ def main():
         for idx, (sid, res) in enumerate(ex.map(study_video_job, vid_tasks), 1):
             rendered_info[sid] = res
             d_summary = ", ".join(f"{k}={v['duration_s']}s" for k, v in res.items())
-            print(f"      [{idx:02d}/21] {sid}: {d_summary}", flush=True)
+            print(f"      [{idx:02d}/21] {sid} ({VOICE_ENSEMBLE[sid][0]}): {d_summary}", flush=True)
     print(f"      Encoded & ffprobe-verified in {time.time() - t1:.1f}s", flush=True)
 
     print("[3/3] Emitting structured tv-catalog.json...", flush=True)
@@ -230,6 +243,8 @@ def main():
             "figures_url": st["figures_url"],
             "about_url": st["about_url"],
             "tutorial_lab_id": st["tutorial_lab_id"],
+            "narrator_name": st["narrator_name"],
+            "narrator_profile": st["narrator_profile"],
             "headline_metric": st["headline_metric"],
             "epistemic_tags": st["epistemic_tags"],
             "energy_tier": st["energy_tier"],
@@ -241,11 +256,12 @@ def main():
 
     catalog = {
         "title": "OpenIE Research TV Catalog",
-        "version": "1.0.0",
+        "version": "2.0.0",
         "study_count": 21,
         "film_count": 84,
+        "tts_model": "ElevenLabs eleven_v4 (21-Presenter Global Studio Ensemble; edge-tts neural fallback)",
         "categories": CATEGORIES,
-        "studio_disclosure": "Narration uses AI-synthesized studio neural voiceover grounded strictly in verified OpenIE study artifacts. Every claim, equation, and energy figure links directly to its published paper, interactive figure, and artifact ledger.",
+        "studio_disclosure": "Narration features a 21-presenter global studio voice ensemble synthesized with ElevenLabs eleven_v4 and grounded strictly in verified OpenIE study artifacts. Every claim, equation, and energy figure links directly to its published paper, interactive figure, and artifact ledger.",
         "metering_contract": "Physical hardware rail shunts earn measured_j (AMD Kria KV260 INA260 in gates; NVIDIA Jetson AGX Thor TI INA238/INA3221 in satb-harness and communication-avalanche). Host hardware/OS counters (RAPL, Darwin IOReport, NVML) are labeled reported_j. Analytical or datasheet figures are labeled est_j.",
         "studies": catalog_studies,
     }

@@ -2,190 +2,277 @@
   "id": "ep06-lut6-metabolic-jouleos",
   "number": 6,
   "title": "Downward LUT6 Compilation, MEI-JCP Sovereign Hardware Tags & JouleOS",
-  "subtitle": "Streaming 35B sparse-MoE models in 970 MB RAM, compiling recurring wakes into 81-RAMB36E2 Boolean fabrics, and budgeting agents at the OS spine",
-  "summary": "How Mixture of Limits cascades bridge 34.66B sparse-MoE NVMe streaming (970 MB RAM, 6.773 J/tok reported_j) down to Beneš-routed LUT6 FPGA fabrics, 32x24 mm MEI-JCP sovereign PCB tags, and JouleOS.",
+  "subtitle": "Amara, Sean, and Claire examine 970 MB NVMe MoE streaming, 81-RAMB36E2 LUT6 fabrics, 32x24 mm PCB tags, and JouleOS",
+  "summary": "Amara, Sean, and Claire trace Mixture of Limits cascades from 34.66B sparse-MoE NVMe streaming (970 MB RAM, 6.773 J/tok reported_j) down to Beneš-routed LUT6 FPGA fabrics, 32x24 mm MEI-JCP sovereign PCB tags, and JouleOS.",
   "topic_tags": [
     "lut-adapt",
     "mei",
     "jouleos",
     "fpga"
   ],
+  "panel": [
+    "Amara",
+    "Sean",
+    "Claire"
+  ],
+  "panel_profiles": [
+    {
+      "name": "Amara",
+      "group": "host",
+      "title": "Systems Storyteller · West African English",
+      "voice_id": "mzbNqbWwLuZObi7qEA67",
+      "fallback_voice": "en-NG-EzinneNeural",
+      "color": "#22D3EE",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    {
+      "name": "Sean",
+      "group": "skeptic",
+      "title": "Auditor & Skeptic · Irish English",
+      "voice_id": "tRqj2rLkZmeP61CMmIX4",
+      "fallback_voice": "en-IE-ConnorNeural",
+      "color": "#FBBF24",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    {
+      "name": "Claire",
+      "group": "specialist",
+      "title": "Formal Verification & Silicon Architect · British English",
+      "voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+      "fallback_voice": "en-GB-SoniaNeural",
+      "color": "#60A5FA",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  ],
+  "tts_engines": [
+    "eleven_v4"
+  ],
   "published_utc": "2026-11-23T08:30:00Z",
-  "duration_sec": 310.3,
-  "duration_human": "5:10",
-  "byte_length": 4197954,
+  "duration_sec": 305.6,
+  "duration_human": "5:06",
+  "byte_length": 5139181,
   "audio_url": "/media/radio/episodes/ep06-lut6-metabolic-jouleos.m4a",
   "captions_url": "/media/radio/captions/ep06-lut6-metabolic-jouleos.vtt",
   "transcript_url": "/media/radio/transcripts/ep06-lut6-metabolic-jouleos.json",
   "turn_count": 16,
   "card_count": 6,
-  "ai_disclosure": "AI Persona Disclosure: Elena, Marcus, and Devon are AI-synthesized OpenIE research personas voiced via open-weight neural speech synthesis and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
   "personas": {
-    "Elena": {
-      "name": "Elena",
-      "title": "The Architect — Host",
-      "voice": "af_heart",
-      "lang": "en-us",
-      "speed": 1.01,
-      "color": "#00D4AA",
-      "bio": "AI-synthesized science communicator connecting biological signaling, thermodynamics, and verified computing."
+    "Amara": {
+      "name": "Amara",
+      "group": "host",
+      "title": "Systems Storyteller · West African English",
+      "voice_id": "mzbNqbWwLuZObi7qEA67",
+      "fallback_voice": "en-NG-EzinneNeural",
+      "color": "#22D3EE",
+      "pan": [
+        0.98,
+        0.98
+      ]
     },
-    "Marcus": {
-      "name": "Marcus",
-      "title": "The Skeptic — Critical Foil",
-      "voice": "am_michael",
-      "lang": "en-us",
-      "speed": 1.04,
-      "color": "#F59E0B",
-      "bio": "AI-synthesized empirical foil auditing lookup baselines, telemetry drift, and unverified hype."
+    "Sean": {
+      "name": "Sean",
+      "group": "skeptic",
+      "title": "Auditor & Skeptic · Irish English",
+      "voice_id": "tRqj2rLkZmeP61CMmIX4",
+      "fallback_voice": "en-IE-ConnorNeural",
+      "color": "#FBBF24",
+      "pan": [
+        1.04,
+        0.9
+      ]
     },
-    "Devon": {
-      "name": "Devon",
-      "title": "The Bench Engineer — Specialist",
-      "voice": "bm_george",
-      "lang": "en-gb",
-      "speed": 1.0,
-      "color": "#818CF8",
-      "bio": "AI-synthesized formal verification and hardware systems specialist citing exact Lean 4, RAPL, and shunt receipts."
+    "Claire": {
+      "name": "Claire",
+      "group": "specialist",
+      "title": "Formal Verification & Silicon Architect · British English",
+      "voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+      "fallback_voice": "en-GB-SoniaNeural",
+      "color": "#60A5FA",
+      "pan": [
+        0.9,
+        1.04
+      ]
     }
   },
   "turns": [
     {
       "turn_index": 0,
-      "speaker": "Elena",
-      "role": "The Architect — Host",
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
+      "group": "host",
+      "color": "#22D3EE",
       "start_sec": 1.83,
-      "end_sec": 26.073,
-      "text": "Welcome back to OpenIE Research Radio! Elena, Marcus, and Devon here — AI-synthesized OpenIE research personas walking through verified Open Interface Engineering hardware and systems studies. Today in Episode Six, we descend the entire compute stack: Downward LUT6 Compilation, Metabolic Intelligence MEI-JCP tags, and JouleOS."
+      "end_sec": 32.482,
+      "text": "Welcome back to Episode Six of OpenIE Research Radio! I'm Amara, joined by Sean and Claire — AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio voices and grounded in verified Open Interface Engineering studies. Today we follow intelligence downward into silicon: Downward LUT6 Compilation, Metabolic Intelligence MEI-JCP tags, and JouleOS."
     },
     {
       "turn_index": 1,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 26.268,
-      "end_sec": 45.141,
-      "text": "Let's start with the economic absurdity we pointed out in Spell Check is Global and The Promised Trillion Dollar AI-Coding Market: imagine if every time you typed 'teh' in a document, Microsoft or Google spun up an eighty-gigabyte datacenter GPU cluster to fix your typo!"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 32.672,
+      "end_sec": 48.066,
+      "text": "Let's start with the economic parallel from Spell Check is Global and The Promised Trillion Dollar AI-Coding Market: imagine if every time someone mistyped 'recieve' in an email, a cloud vendor fired up an eighty-gigabyte GPU node to fix it!"
     },
     {
       "turn_index": 2,
-      "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 45.416,
-      "end_sec": 63.802,
-      "text": "Spell check used to sell as a standalone multi-hundred-dollar add-on in the early 1980s, and it became universal for seven billion people precisely because its marginal cost dropped to a tiny local dictionary lookup! Why treat recurring code and agent patterns any differently?"
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
+      "group": "host",
+      "color": "#22D3EE",
+      "start_sec": 48.336,
+      "end_sec": 67.9,
+      "text": "In the early 1980s, standalone spell checkers cost hundreds of dollars! Spell check reached seven billion people only when its marginal cost dropped to a local dictionary lookup bundled inside every editor. Why should recurring code repairs burn frontier joules forever?"
     },
     {
       "turn_index": 3,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 64.077,
-      "end_sec": 85.061,
-      "text": "In Downward LUT6 Compilation, we build that exact downward escalator. At the top tier, when true novelty strikes, custom Apple Metal INT4 Mixture-of-Experts and GatedDeltaNet compute shaders stream Qwen 3.6 35B-A3B directly from NVMe using Darwin F_NOCACHE."
+      "speaker": "Claire",
+      "role": "Formal Verification & Silicon Architect · British English",
+      "group": "specialist",
+      "color": "#60A5FA",
+      "start_sec": 68.17,
+      "end_sec": 91.923,
+      "text": "In Downward LUT6 Compilation, we build that exact downward cascade. When genuine novelty arrives at the top tier, custom Apple Metal INT4 Mixture-of-Experts and GatedDeltaNet compute shaders stream Qwen 3.6 35B-A3B directly off NVMe via Darwin F_NOCACHE."
     },
     {
       "turn_index": 4,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 85.256,
-      "end_sec": 96.409,
-      "text": "Wait — a thirty-five-billion-parameter model normally demands seventy gigabytes of unified memory in FP16! How much RAM did our streaming tier hold?"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 92.113,
+      "end_sec": 101.454,
+      "text": "Hold on Claire — a thirty-five-billion-parameter model normally eats seventy gigabytes of unified RAM in FP16! What was our resident footprint?"
     },
     {
       "turn_index": 5,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 96.684,
-      "end_sec": 117.633,
-      "text": "Nine hundred seventy megabytes — just one point four seven percent of FP16 RAM! It achieved one hundred percent exact token parity, cut NVMe traffic twelve point three times via expert locality, and ran at six point seven seven three joules per token of dual-channel reported_j."
+      "speaker": "Claire",
+      "role": "Formal Verification & Silicon Architect · British English",
+      "group": "specialist",
+      "color": "#60A5FA",
+      "start_sec": 101.724,
+      "end_sec": 121.767,
+      "text": "Nine hundred seventy megabytes — just one point four seven percent of FP16 RAM! It hit one hundred percent exact token parity, cut NVMe reads twelve point three times through expert locality, and ran at six point seven seven three joules per token of dual-channel reported_j."
     },
     {
       "turn_index": 6,
-      "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 117.909,
-      "end_sec": 129.503,
-      "text": "Now comes the magic: once a frontier wake passes deterministic pytest verification, we don't pay six point seven seven joules per token the second or third time that pattern arrives!"
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
+      "group": "host",
+      "color": "#22D3EE",
+      "start_sec": 122.037,
+      "end_sec": 133.074,
+      "text": "And once a frontier wake passes deterministic pytest gates, we compile that certified skill downward so the thirty-five-B model sleeps on repeat arrivals!"
     },
     {
       "turn_index": 7,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 129.778,
-      "end_sec": 169.767,
-      "text": "Right! On our forty-eight-task verified coding bakeoff and sixteen-repo SWE-Mini suite, the cascade closed eighty-seven point five percent with zero broken commits, invoking the thirty-five-B tier on only twenty-two point nine two percent of arrivals. By Wave 3 replay, certified wakes ran in two point eight nine milliseconds at zero point zero four two four joules reported_j — and compile further downward into eighty-one RAMB36E2 Beneš-routed six-input LUT fabrics verified in Yosys and Verilator for Xilinx Kria xck26 silicon!"
+      "speaker": "Claire",
+      "role": "Formal Verification & Silicon Architect · British English",
+      "group": "specialist",
+      "color": "#60A5FA",
+      "start_sec": 133.344,
+      "end_sec": 173.747,
+      "text": "Exactly. Across our forty-eight-task coding bakeoff and sixteen-repo SWE-Mini suite, the cascade closed eighty-seven point five percent with zero broken commits, waking the thirty-five-B tier on only twenty-two point nine two percent of tasks. By Wave 3 replay, certified wakes ran in two point eight nine milliseconds at zero point zero four two four joules reported_j — and synthesize downward via Yosys and Verilator into eighty-one RAMB36E2 Beneš-routed LUT6 blocks targeting Xilinx Kria xck26!"
     },
     {
       "turn_index": 8,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 169.962,
-      "end_sec": 182.631,
-      "text": "Zero multiply-accumulates — pure Boolean truth-table routing! Now take us even smaller, down to a coin-cell battery at minus twenty degrees Celsius in Metabolic Intelligence!"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 173.937,
+      "end_sec": 186.4,
+      "text": "Zero multiply-accumulates — pure Boolean truth tables! Now shrink the energy budget all the way down to a CR2032 coin cell at minus twenty Celsius in Metabolic Intelligence!"
     },
     {
       "turn_index": 9,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 182.906,
-      "end_sec": 219.133,
-      "text": "In the MEI white paper, we released MEI-JCP-Tag-v1: a complete sovereign hardware manufacturing package — KiCad schematics, RS-274X Gerbers with zero DRC violations, bill of materials, and a thirty-six by twenty-eight by seven-point-five millimeter STEP enclosure. The two-layer thirty-two by twenty-four millimeter board pairs an STM32WBA52 microcontroller with a physical Texas Instruments INA238 shunt monitor and FRAM."
+      "speaker": "Claire",
+      "role": "Formal Verification & Silicon Architect · British English",
+      "group": "specialist",
+      "color": "#60A5FA",
+      "start_sec": 186.67,
+      "end_sec": 218.347,
+      "text": "In the MEI white paper, we shipped MEI-JCP-Tag-v1: a complete open manufacturing package — DRC-clean two-layer thirty-two by twenty-four millimeter KiCad PCB, RS-274X Gerbers, BOM, and a thirty-six by twenty-eight by seven-point-five millimeter STEP enclosure pairing an STM32WBA52 with a physical Texas Instruments INA238 shunt monitor and FRAM."
     },
     {
       "turn_index": 10,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 219.328,
-      "end_sec": 228.13,
-      "text": "And quick honesty check for the listeners: have we claimed physical bench-metered joules off a fabbed MEI-JCP tag board yet?"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 218.537,
+      "end_sec": 225.914,
+      "text": "Quick audit check for the listeners: do we claim physical bench-metered joules off a fabbed MEI-JCP tag board yet?"
     },
     {
       "turn_index": 11,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 228.405,
-      "end_sec": 255.582,
-      "text": "Explicitly no! Board_metered is false and measured_j is unset until fabbed boards come back from assembly and sit on an inline meter. What IS verified today is our ten-thousand-wakeup CR2032 electro-thermal hold-and-settle simulation preserving one hundred percent of critical alerts at minus twenty Celsius across two thousand six hundred eighty Ed25519 canonical CBOR JCR-1 receipts."
+      "speaker": "Claire",
+      "role": "Formal Verification & Silicon Architect · British English",
+      "group": "specialist",
+      "color": "#60A5FA",
+      "start_sec": 226.184,
+      "end_sec": 254.984,
+      "text": "Explicitly no — board_metered is false and measured_j is unset until physical boards return from fabrication. What IS verified is our ten-thousand-wakeup CR2032 electro-thermal simulation preserving one hundred percent of critical alerts at minus twenty Celsius across two thousand six hundred eighty Ed25519 canonical CBOR JCR-1 receipts."
     },
     {
       "turn_index": 12,
-      "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 255.857,
-      "end_sec": 263.213,
-      "text": "And tying the tag, the SATB telemetry engine, and desktop sandboxes together is The Search for JouleOS!"
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
+      "group": "host",
+      "color": "#22D3EE",
+      "start_sec": 255.254,
+      "end_sec": 265.997,
+      "text": "And binding JCR-1 receipts, SATB drift gates, and agent sandboxes into one operating-system contract is The Search for JouleOS!"
     },
     {
       "turn_index": 13,
-      "speaker": "Devon",
-      "role": "The Bench Engineer — Specialist",
-      "start_sec": 263.488,
-      "end_sec": 288.799,
-      "text": "Today's operating systems were built in the 1970s to multiplex time and memory — none of them checks an energy grant before an autonomous agent acts! Our verified Rust reference spine passes three hundred ten workspace tests and checks seventy-eight thousand four hundred provenance pairs to prove meet-semilattice laws bridging JCR-1 receipts, SATB Falsifier 6 drift gates, and stage accounting."
+      "speaker": "Claire",
+      "role": "Formal Verification & Silicon Architect · British English",
+      "group": "specialist",
+      "color": "#60A5FA",
+      "start_sec": 266.267,
+      "end_sec": 288.1,
+      "text": "Legacy OS kernels multiplex time and virtual memory without checking energy before an agent acts. Our Rust reference spine passes three hundred ten workspace tests and verifies seventy-eight thousand four hundred provenance pairs across a meet-semilattice that schedules, budgets, and refuses out-of-envelope agent actions."
     },
     {
       "turn_index": 14,
-      "speaker": "Marcus",
-      "role": "The Skeptic — Critical Foil",
-      "start_sec": 288.994,
-      "end_sec": 304.378,
-      "text": "An operating system that schedules, budgets, and refuses runaway agents before they torch the battery or the power grid! Speaking of physics limits, wait until you hear Episode Seven: closed timelike curves and looking up tomorrow!"
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 288.29,
+      "end_sec": 299.177,
+      "text": "An OS that refuses runaway joule spend before it happens! Up next in Episode Seven, Priya, Marcus, and senior fellow Arthur ask what it would take to look up tomorrow!"
     },
     {
       "turn_index": 15,
-      "speaker": "Elena",
-      "role": "The Architect — Host",
-      "start_sec": 304.653,
-      "end_sec": 308.359,
-      "text": "Episode Seven — Time as an Index — starts right after this!"
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
+      "group": "host",
+      "color": "#22D3EE",
+      "start_sec": 299.447,
+      "end_sec": 303.711,
+      "text": "Stay tuned for Episode Seven — Time as an Index!"
     }
   ],
   "cards": [
     {
       "id": "ep06-lut6-metabolic-jouleos-card-00-0",
       "at_sec": 2.63,
-      "end_sec": 26.073,
+      "end_sec": 32.482,
       "turn_index": 0,
-      "speaker": "Elena",
+      "speaker": "Amara",
       "kind": "study",
       "badge": "[M]",
       "title": "Downward LUT6 Compilation (Mixture of Limits)",
@@ -194,10 +281,10 @@
     },
     {
       "id": "ep06-lut6-metabolic-jouleos-card-02-0",
-      "at_sec": 46.216,
-      "end_sec": 63.802,
+      "at_sec": 49.136,
+      "end_sec": 67.9,
       "turn_index": 2,
-      "speaker": "Elena",
+      "speaker": "Amara",
       "kind": "study",
       "badge": "[E]",
       "title": "Spell Check is Global & Latency Cadence Model",
@@ -206,10 +293,10 @@
     },
     {
       "id": "ep06-lut6-metabolic-jouleos-card-05-0",
-      "at_sec": 97.484,
-      "end_sec": 117.633,
+      "at_sec": 102.524,
+      "end_sec": 121.767,
       "turn_index": 5,
-      "speaker": "Devon",
+      "speaker": "Claire",
       "kind": "receipt",
       "badge": "reported_j",
       "title": "Qwen3.6-35B-A3B in 970.0 MB RAM (1.47% FP16)",
@@ -218,10 +305,10 @@
     },
     {
       "id": "ep06-lut6-metabolic-jouleos-card-07-0",
-      "at_sec": 130.578,
-      "end_sec": 169.767,
+      "at_sec": 134.144,
+      "end_sec": 173.747,
       "turn_index": 7,
-      "speaker": "Devon",
+      "speaker": "Claire",
       "kind": "receipt",
       "badge": "[M]",
       "title": "87.5% Bakeoff (0% Broken) & 81-RAMB36E2 xck26 RTL",
@@ -230,10 +317,10 @@
     },
     {
       "id": "ep06-lut6-metabolic-jouleos-card-09-0",
-      "at_sec": 183.706,
-      "end_sec": 219.133,
+      "at_sec": 187.47,
+      "end_sec": 218.347,
       "turn_index": 9,
-      "speaker": "Devon",
+      "speaker": "Claire",
       "kind": "study",
       "badge": "[M]",
       "title": "MEI-JCP-Tag-v1 Sovereign Hardware Reference",
@@ -242,10 +329,10 @@
     },
     {
       "id": "ep06-lut6-metabolic-jouleos-card-12-0",
-      "at_sec": 256.657,
-      "end_sec": 263.213,
+      "at_sec": 256.054,
+      "end_sec": 265.997,
       "turn_index": 12,
-      "speaker": "Elena",
+      "speaker": "Amara",
       "kind": "study",
       "badge": "[T]",
       "title": "The Search for JouleOS (310 Rust Tests)",

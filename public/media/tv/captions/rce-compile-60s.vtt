@@ -1,38 +1,38 @@
 WEBVTT
-NOTE OpenIE Research TV — rce-compile (60s) AI-synthesized studio narration
+NOTE OpenIE Research TV — rce-compile (60s) Narrator Lem
 
 1
-00:00:00.492 --> 00:00:06.578
+00:00:00.320 --> 00:00:05.927
 RCE Compile tests a single candidate statement across GCC,
 
 2
-00:00:06.578 --> 00:00:13.084
+00:00:05.927 --> 00:00:11.920
 Clang, Rustc, CompCert, MLIR, JITs, and hardware synthesizers.
 
 3
-00:00:14.049 --> 00:00:17.704
+00:00:12.440 --> 00:00:16.328
 Existing compilers omit explicit gates and reuse keys;
 
 4
-00:00:17.704 --> 00:00:23.322
+00:00:16.328 --> 00:00:22.303
 restating compilation as a seven-part normal form makes every assumption checkable.
 
 5
-00:00:24.287 --> 00:00:29.029
+00:00:22.823 --> 00:00:27.673
 Moving from Python to Clang O3 pays back in 2,490 runs,
 
 6
-00:00:29.029 --> 00:00:34.806
+00:00:27.673 --> 00:00:33.581
 whereas O2-to-O3 fails to pay back in 30 percent of measured pairs.
 
 7
-00:00:35.771 --> 00:00:42.800
+00:00:34.101 --> 00:00:42.483
 Naive AST identifier stripping mis-caches 150 of 500 variable-capture mutants;
 
 8
-00:00:42.800 --> 00:00:47.036
+00:00:42.483 --> 00:00:47.534
 De Bruijn canonical SHA-256 scores zero errors.
 
 9
-00:00:48.001 --> 00:00:55.007
+00:00:48.054 --> 00:00:55.704
 Safe alpha-equivalent artifact reuse collapses warm compilation reported_j by two orders of magnitude.

@@ -7,22 +7,36 @@ interface Props {
 
 const { feed, radarCount, foundryCount } = Astro.props;
 const episodes = feed.episodes || [];
-const firstEp = episodes[0] || { id: 'ep01-global-literature-radar', title: 'Loading...', subtitle: '', audio_url: '', captions_url: '', turns: [], cards: [] };
+const personasMap = feed.personas || {};
+const personaList = Object.values(personasMap) as any[];
+const firstEp = episodes[0] || {
+  id: 'ep01-global-literature-radar',
+  number: 1,
+  title: 'Loading…',
+  subtitle: '',
+  panel: ['Elena', 'Marcus', 'Rohan'],
+  panel_profiles: [],
+  audio_url: '',
+  captions_url: '',
+  duration_human: '0:00',
+  turns: [],
+  cards: [],
+};
 ---
 
 <section class="max-w-7xl mx-auto px-5 md:px-10 pt-8 pb-10">
-  <!-- Hero & AI Persona Disclosure -->
+  <!-- Hero & Podcast RSS Actions -->
   <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-6">
     <div>
       <div class="section-label mb-2 flex items-center gap-2">
         <span class="inline-block w-2 h-2 rounded-full bg-red-500 pulse"></span>
-        <span>24/7 Synchronized Broadcast · 6h Autonomous Literature &amp; Pilot Engine</span>
+        <span>24/7 Synchronized Broadcast · 14-Voice Global Studio Ensemble · 6h Autonomous Loop</span>
       </div>
       <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-white">
         Open<span class="text-brand-cyan">IE</span> Research <span class="text-brand-amber">Radio</span>
       </h1>
       <p class="mt-3 font-body text-sm sm:text-base text-brand-slate max-w-3xl leading-relaxed">
-        Conversational three-voice briefings auditing joules-to-correct-completion, kernel-checked state machines, biological quorum ratchets, live open-access preprints, and sub-60-second falsifier pilots.
+        Rotating global three-person roundtables auditing joules-to-correct-completion, kernel-checked state machines, biological quorum ratchets, live open-access preprints, and sub-60-second falsifier pilots.
       </p>
     </div>
 
@@ -45,20 +59,25 @@ const firstEp = episodes[0] || { id: 'ep01-global-literature-radar', title: 'Loa
     </div>
   </div>
 
-  <!-- Explicit AI-Synthesized Persona Disclosure Box -->
+  <!-- Explicit AI-Synthesized Global Ensemble Disclosure Box -->
   <div class="glass-card p-4 sm:p-5 mb-6 border-l-4 border-l-brand-cyan">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-      <div class="text-xs sm:text-[13px] text-brand-light leading-relaxed">
-        <strong class="font-mono text-brand-cyan uppercase tracking-wider mr-1.5">AI Persona Disclosure:</strong>
-        <span>
-          <strong>Elena</strong>, <strong>Marcus</strong>, and <strong>Devon</strong> are <strong>AI-synthesized OpenIE research personas</strong> voiced via open-weight neural speech synthesis and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live sanctioned open-access feeds.
+    <div class="text-xs sm:text-[13px] text-brand-light leading-relaxed mb-3">
+      <strong class="font-mono text-brand-cyan uppercase tracking-wider mr-1.5">AI Studio Ensemble Disclosure:</strong>
+      <span>
+        All fourteen OpenIE Research Radio hosts, skeptics, and bench specialists are <strong>AI-synthesized OpenIE research personas</strong> voiced via <strong>ElevenLabs <code class="font-mono text-brand-amber">eleven_v4</code> 44.1 kHz studio neural voices</strong> (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live sanctioned open-access feeds.
+      </span>
+    </div>
+    <div class="flex flex-wrap gap-1.5">
+      {personaList.map((p: any) => (
+        <span
+          class="inline-flex items-center gap-1.5 font-mono text-[10px] px-2.5 py-1 rounded-md border border-brand-border bg-white/[0.025] text-brand-light"
+          title={p.title}
+        >
+          <span class="w-2 h-2 rounded-full shrink-0" style={`background-color:${p.color}`}></span>
+          <strong class="text-brand-white">{p.name}</strong>
+          <span class="text-brand-gray hidden sm:inline">· {p.title.split('·')[1]?.trim() || p.group}</span>
         </span>
-      </div>
-      <div class="flex flex-wrap gap-2 shrink-0">
-        <span class="font-mono text-[11px] px-2.5 py-1 rounded-md border border-brand-cyan/30 bg-brand-cyan/10 text-brand-cyan">Elena · Host</span>
-        <span class="font-mono text-[11px] px-2.5 py-1 rounded-md border border-brand-amber/30 bg-brand-amber/10 text-brand-amber">Marcus · Skeptic</span>
-        <span class="font-mono text-[11px] px-2.5 py-1 rounded-md border border-brand-indigo/30 bg-brand-indigo/10 text-brand-indigo">Devon · Bench Specialist</span>
-      </div>
+      ))}
     </div>
   </div>
 
@@ -114,12 +133,11 @@ const firstEp = episodes[0] || { id: 'ep01-global-literature-radar', title: 'Loa
 
   <!-- TAB 1: STUDIO DECK, WAVEFORM, EPISODES, TRANSCRIPT & POP-UP CARDS -->
   <div id="radio-panel-studio" class="space-y-6">
-    <!-- Master Audio Deck + WebAudio Canvas Visualizer -->
     <div class="glass-card p-5 sm:p-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+      <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-3">
         <div>
           <div class="font-mono text-[11px] text-brand-amber uppercase tracking-wider" id="deck-ep-kicker">
-            Episode {firstEp.number} of {episodes.length}
+            Episode {firstEp.number} of {episodes.length} · Roundtable Cast: {(firstEp.panel || []).join(' · ')}
           </div>
           <h2 class="font-display text-xl sm:text-2xl font-bold text-brand-white mt-0.5" id="deck-ep-title">
             {firstEp.title}
@@ -142,16 +160,27 @@ const firstEp = episodes[0] || { id: 'ep01-global-literature-radar', title: 'Loa
         </div>
       </div>
 
-      <!-- Real-Time WebAudio Canvas Spectrum + Waveform -->
+      <!-- Episode Active 3-Persona Panel Badges -->
+      <div id="deck-panel-badges" class="flex flex-wrap gap-2 mb-4">
+        {(firstEp.panel_profiles || []).map((pf: any) => (
+          <span class="inline-flex items-center gap-1.5 font-mono text-[11px] px-2.5 py-1 rounded-md border border-brand-border bg-white/[0.03] text-brand-light">
+            <span class="w-2 h-2 rounded-full" style={`background-color:${pf.color}`}></span>
+            <strong class="text-brand-white">{pf.name}</strong>
+            <span class="text-brand-gray">· {pf.title}</span>
+          </span>
+        ))}
+      </div>
+
+      <!-- Real-Time WebAudio Canvas Spectrum + Stereo Waveform -->
       <div class="relative rounded-xl overflow-hidden border border-brand-border bg-black/40 mb-4">
         <canvas id="radio-visualizer" width="960" height="116" class="w-full h-[96px] sm:h-[116px] block"></canvas>
         <div class="absolute top-2.5 left-3 flex items-center gap-2 pointer-events-none">
           <span id="active-turn-speaker-chip" class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-brand-cyan/20 border border-brand-cyan/40 text-brand-cyan">
-            Elena · Ready
+            {(firstEp.panel || ['Elena'])[0]} · Ready
           </span>
         </div>
         <div class="absolute top-2.5 right-3 font-mono text-[10px] text-brand-gray pointer-events-none">
-          WebAudio FFT + Oscilloscope · AAC 96k (-16 LUFS)
+          44.1 kHz Stereo AAC 128k (-16 LUFS) · ElevenLabs eleven_v4
         </div>
       </div>
 
@@ -175,24 +204,11 @@ const firstEp = episodes[0] || { id: 'ep01-global-literature-radar', title: 'Loa
 
         <div class="flex-1 flex items-center gap-3">
           <span id="deck-cur-time" class="font-mono text-xs text-brand-light w-12 text-right">0:00</span>
-          <input
-            id="deck-scrubber"
-            type="range"
-            min="0"
-            max="1000"
-            value="0"
-            aria-label="Seek episode timeline"
-            class="flex-1 accent-amber-500 cursor-pointer h-1.5"
-          />
+          <input id="deck-scrubber" type="range" min="0" max="1000" value="0" aria-label="Seek episode timeline" class="flex-1 accent-amber-500 cursor-pointer h-1.5" />
           <span id="deck-dur-time" class="font-mono text-xs text-brand-gray w-12">{firstEp.duration_human}</span>
         </div>
 
-        <a
-          id="deck-download-link"
-          href={firstEp.audio_url}
-          download
-          class="font-mono text-[11px] px-3 py-1.5 rounded border border-brand-border text-brand-slate no-underline hover:border-brand-amber hover:text-brand-amber text-center"
-        >
+        <a id="deck-download-link" href={firstEp.audio_url} download class="font-mono text-[11px] px-3 py-1.5 rounded border border-brand-border text-brand-slate no-underline hover:border-brand-amber hover:text-brand-amber text-center">
           .m4a
         </a>
       </div>
@@ -200,7 +216,6 @@ const firstEp = episodes[0] || { id: 'ep01-global-literature-radar', title: 'Loa
 
     <!-- 3-Column Studio Grid: Playlist | Interactive Transcript | Live Citation & Falsifier Cards -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-      <!-- Episode Playlist (4 cols) -->
       <div class="lg:col-span-4 glass-card p-4">
         <div class="flex items-center justify-between mb-3">
           <h3 class="font-mono text-xs uppercase tracking-wider text-brand-amber">8 Launch Episodes</h3>
@@ -214,8 +229,8 @@ const firstEp = episodes[0] || { id: 'ep01-global-literature-radar', title: 'Loa
               class={`ep-select-btn w-full text-left p-3 rounded-lg border transition-all cursor-pointer block ${i === 0 ? 'border-brand-amber/60 bg-brand-amber/10' : 'border-brand-border bg-white/[0.015] hover:border-brand-cyan/40'}`}
             >
               <div class="flex items-center justify-between font-mono text-[10px] text-brand-gray mb-1">
-                <span class="text-brand-cyan font-semibold">EP 0{ep.number}</span>
-                <span>{ep.duration_human} · {ep.turn_count} turns · {ep.card_count} cards</span>
+                <span class="text-brand-cyan font-semibold">EP 0{ep.number} · {(ep.panel || []).join(' · ')}</span>
+                <span>{ep.duration_human}</span>
               </div>
               <div class="font-display text-xs sm:text-[13px] font-semibold text-brand-white leading-snug">
                 {ep.title}
@@ -225,7 +240,6 @@ const firstEp = episodes[0] || { id: 'ep01-global-literature-radar', title: 'Loa
         </div>
       </div>
 
-      <!-- Auto-Scrolling Interactive Transcript (5 cols) -->
       <div class="lg:col-span-5 glass-card p-4">
         <div class="flex items-center justify-between mb-3">
           <h3 class="font-mono text-xs uppercase tracking-wider text-brand-cyan">Turn-Synced Transcript</h3>
@@ -239,8 +253,8 @@ const firstEp = episodes[0] || { id: 'ep01-global-literature-radar', title: 'Loa
               class="transcript-turn p-3 rounded-lg border border-brand-border bg-white/[0.015] hover:border-brand-cyan/40 cursor-pointer transition-all"
             >
               <div class="flex items-center justify-between font-mono text-[10px] mb-1">
-                <span class={t.speaker === 'Elena' ? 'text-brand-cyan font-bold' : t.speaker === 'Marcus' ? 'text-brand-amber font-bold' : 'text-brand-indigo font-bold'}>
-                  {t.speaker}
+                <span class="font-bold" style={`color:${t.color || '#00D4AA'}`}>
+                  {t.speaker} <span class="font-normal text-brand-gray">· {(t.role || '').split('·')[0].trim()}</span>
                 </span>
                 <span class="text-brand-gray">{Math.floor(t.start_sec / 60)}:{String(Math.floor(t.start_sec % 60)).padStart(2, '0')}</span>
               </div>
@@ -250,7 +264,6 @@ const firstEp = episodes[0] || { id: 'ep01-global-literature-radar', title: 'Loa
         </div>
       </div>
 
-      <!-- Synchronized Pop-Up Citation & Falsifier Cards (3 cols) -->
       <div class="lg:col-span-3 glass-card p-4">
         <div class="flex items-center justify-between mb-3">
           <h3 class="font-mono text-xs uppercase tracking-wider text-brand-indigo">Citation &amp; Falsifier Deck</h3>
@@ -258,11 +271,7 @@ const firstEp = episodes[0] || { id: 'ep01-global-literature-radar', title: 'Loa
         </div>
         <div id="cards-container" class="space-y-2.5 max-h-[540px] overflow-y-auto pr-1">
           {firstEp.cards.map((c: any) => (
-            <div
-              data-card-id={c.id}
-              data-at={c.at_sec}
-              class="citation-card p-3 rounded-lg border border-brand-border bg-white/[0.02] transition-all"
-            >
+            <div data-card-id={c.id} data-at={c.at_sec} class="citation-card p-3 rounded-lg border border-brand-border bg-white/[0.02] transition-all">
               <div class="flex items-center justify-between gap-1 font-mono text-[10px] mb-1.5">
                 <span class="px-1.5 py-0.5 rounded bg-brand-amber/15 text-brand-amber border border-brand-amber/30">{c.badge}</span>
                 <button type="button" data-seek-sec={c.at_sec} class="text-brand-cyan hover:underline cursor-pointer bg-transparent border-0 p-0 font-mono text-[10px]">

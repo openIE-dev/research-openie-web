@@ -1,34 +1,34 @@
 WEBVTT
-NOTE OpenIE Research TV — rce-compile (30s) AI-synthesized studio narration
+NOTE OpenIE Research TV — rce-compile (30s) Narrator Lem
 
 1
-00:00:00.300 --> 00:00:02.349
+00:00:00.260 --> 00:00:02.456
 Developers pass dash-O-three by reflex,
 
 2
-00:00:02.349 --> 00:00:06.501
+00:00:02.456 --> 00:00:06.905
 assuming faster binaries always pay back the heavy energy spent compiling them.
 
 3
-00:00:06.981 --> 00:00:08.912
+00:00:07.026 --> 00:00:09.216
 Audited across twelve compiler families,
 
 4
-00:00:08.912 --> 00:00:13.015
+00:00:09.216 --> 00:00:13.869
 a universal statement failed as description and survived as a seven-part normal form.
 
 5
-00:00:13.495 --> 00:00:17.178
+00:00:13.990 --> 00:00:18.010
 Across 20 kernels and 14 compiler tiers on Zen 5 RAPL,
 
 6
-00:00:17.178 --> 00:00:23.111
+00:00:18.010 --> 00:00:24.487
 jumping from O0 to O3 needs over 50,000 runs—and 30 percent of O3 jumps never pay back.
 
 7
-00:00:23.591 --> 00:00:27.347
+00:00:24.608 --> 00:00:29.181
 Indexing binaries by De Bruijn nameless hashes hits zero
 
 8
-00:00:27.347 --> 00:00:31.304
+00:00:29.181 --> 00:00:34.000
 false collisions and cuts warm rustc O3 energy 448.5 times.

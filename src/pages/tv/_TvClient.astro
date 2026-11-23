@@ -28,6 +28,8 @@ const catalogJson = JSON.stringify(catalog);
   const metricEl = document.getElementById('tv-active-metric');
   const energyBadgeEl = document.getElementById('tv-active-energy-tier');
   const energyDiscEl = document.getElementById('tv-active-energy-disc');
+  const voiceBadgeEl = document.getElementById('tv-active-voice');
+  const voiceProfEl = document.getElementById('tv-active-voice-profile');
   const epistEl = document.getElementById('tv-active-epistemic');
   const cueListEl = document.getElementById('tv-cue-list');
   const playlistStatusEl = document.getElementById('tv-playlist-status');
@@ -53,6 +55,7 @@ const catalogJson = JSON.stringify(catalog);
       if (!q) return true;
       const hay = [
         s.id, s.title, s.short_title, s.category, s.headline_metric, s.energy_tier,
+        s.narrator_name, s.narrator_profile,
         s.tiers['5s']?.transcript, s.tiers['30s']?.transcript,
         s.tiers['60s']?.transcript, s.tiers['90s']?.transcript,
       ].join(' ').toLowerCase();
@@ -117,6 +120,13 @@ const catalogJson = JSON.stringify(catalog);
     if (metricEl) metricEl.textContent = study.headline_metric;
     if (energyBadgeEl) energyBadgeEl.textContent = study.energy_tier;
     if (energyDiscEl) energyDiscEl.textContent = study.energy_disclosure;
+    if (voiceBadgeEl) {
+      voiceBadgeEl.textContent = 'Voice: ' + (study.narrator_name || 'Studio') + ' · ElevenLabs v4 Studio';
+      voiceBadgeEl.title = study.narrator_profile || '';
+    }
+    if (voiceProfEl) {
+      voiceProfEl.textContent = 'Presenter Profile: ' + (study.narrator_profile || 'ElevenLabs v4 Studio');
+    }
 
     if (epistEl) {
       epistEl.innerHTML = (study.epistemic_tags || [])
@@ -336,6 +346,9 @@ const catalogJson = JSON.stringify(catalog);
             video_url: td.video_url,
             vtt_url: td.vtt_url,
             poster_url: s.poster_url,
+            narrator_name: s.narrator_name,
+            narrator_profile: s.narrator_profile,
+            tutorial_lab_id: s.tutorial_lab_id,
             headline_metric: s.headline_metric,
             epistemic_tags: s.epistemic_tags,
             energy_tier: s.energy_tier,
@@ -362,6 +375,8 @@ const catalogJson = JSON.stringify(catalog);
         study_id: s.id,
         title: s.title,
         tier: cleanTier,
+        narrator_name: s.narrator_name,
+        narrator_profile: s.narrator_profile,
         duration_s: td.duration_s,
         hook: td.hook,
         transcript: td.transcript,

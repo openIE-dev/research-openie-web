@@ -37,7 +37,8 @@ export const GET: APIRoute = async () => {
       const audioAbs = `${BASE}${ep.audio_url}`;
       const vttAbs = `${BASE}${ep.captions_url}`;
       const pageAbs = `${BASE}/radio/#${ep.id}`;
-      const fullDesc = `${ep.summary} — ${disclosure}`;
+      const panelStr = Array.isArray((ep as any).panel) && (ep as any).panel.length ? `Roundtable Cast: ${(ep as any).panel.join(', ')}. ` : '';
+      const fullDesc = `${panelStr}${ep.summary} — ${disclosure}`;
       return `    <item>
       <guid isPermaLink="false">openie-radio-${escXml(ep.id)}</guid>
       <title>${escXml(`Ep. ${ep.number}: ${ep.title}`)}</title>
