@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""OpenIE Research Radio — Launch Episodes 7 (Priya, Marcus, Arthur) & 8 (Mateo, Sean, Rohan)."""
+"""OpenIE Research Radio — Launch Episodes 7 (Amara, Nia, Arthur) & 8 (Mateo, Nia, Kwame)."""
 
 from __future__ import annotations
 
@@ -9,18 +9,18 @@ EPISODE_07: dict[str, Any] = {
     "id": "ep07-time-as-an-index",
     "number": 7,
     "title": "Time as an Index — Closed Timelike Curves, Hellman T·M² = N² & Salted Horizons",
-    "subtitle": "Priya, Marcus, and Arthur explore PSPACE time loops, 31 Lean 4 theorems, 65,536 SHA-256 spectral runs, and salted horizons",
+    "subtitle": "Amara, Nia, and Arthur explore PSPACE time loops, 31 Lean 4 theorems, 65,536 SHA-256 spectral runs, and salted horizons",
     "summary": (
-        "Priya, Marcus, and Arthur unpack Time as an Index and Thermodynamic Bounds of Agency: Aaronson-Watrous D-CTC = PSPACE, "
+        "Amara, Nia, and Arthur unpack Time as an Index and Thermodynamic Bounds of Agency: Aaronson-Watrous D-CTC = PSPACE, "
         "quantum no-signalling, Hellman T*M^2 = N^2 tables, 31 Lean 4.36.0 theorems, and 195 cataloged temporal anomalies."
     ),
     "topic_tags": ["time-as-an-index", "lean-4", "hellman-tradeoff", "cryptanalysis"],
     "published_utc": "2026-11-23T09:00:00Z",
     "turns": [
         {
-            "speaker": "Priya",
+            "speaker": "Amara",
             "text": (
-                "Welcome to Episode Seven of OpenIE Research Radio! I'm Priya, joined by Marcus and senior cryptography fellow Arthur — "
+                "Welcome to Episode Seven of OpenIE Research Radio! I'm Amara, joined by Nia and senior cryptography fellow Arthur — "
                 "three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural voices and grounded strictly in verified Open Interface Engineering studies. "
                 "Today we open Time as an Index: What It Would Take to Look Up Tomorrow."
             ),
@@ -35,7 +35,7 @@ EPISODE_07: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Nia",
             "text": (
                 "Arthur, whenever I see 'Closed Timelike Curves' and 'Looking Up Tomorrow' in a research paper, my sci-fi alarm bells ring off the wall! "
                 "Promise me nobody here is claiming a time machine in the basement!"
@@ -44,13 +44,13 @@ EPISODE_07: dict[str, Any] = {
         {
             "speaker": "Arthur",
             "text": (
-                "Quite the opposite, Marcus — and board_metered is explicitly false! Across thirty-one kernel-checked theorems in Lean 4.36.0 — "
+                "Quite the opposite, Nia — and board_metered is explicitly false! Across thirty-one kernel-checked theorems in Lean 4.36.0 — "
                 "Horizon.lean and Paradox.lean, zero sorry — Time as an Index establishes WHY nothing in known physics reads tomorrow early, "
                 "and why every genuine O-of-one lookup in engineering is precomputation paid ahead of time."
             ),
         },
         {
-            "speaker": "Priya",
+            "speaker": "Amara",
             "text": (
                 "Begin with the complexity-theory premise, Arthur, because it reframes cryptography completely. Why does brute-force search hold up in ordinary spacetime?"
             ),
@@ -73,7 +73,7 @@ EPISODE_07: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Nia",
             "text": (
                 "Wait — EVERY computational cipher collapses inside a mathematical time loop, EXCEPT one! Which one survives?"
             ),
@@ -86,7 +86,7 @@ EPISODE_07: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Priya",
+            "speaker": "Amara",
             "text": (
                 "Now step out of mathematical CTCs into real laboratory physics. Researchers periodically suggest quantum entanglement, analog relaxation, "
                 "or frequency-domain transforms might bypass sequential search. What did our catalog find?"
@@ -110,7 +110,7 @@ EPISODE_07: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Nia",
             "text": (
                 "And to test whether SHA-256 leaks hidden spectral structure, you ran falsifier F5 across sixty-five thousand five hundred thirty-six SHA-256 digests! "
                 "How many bins cleared the Bonferroni ten-to-the-minus-six floor?"
@@ -123,7 +123,7 @@ EPISODE_07: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Priya",
+            "speaker": "Amara",
             "text": (
                 "Which leaves the one physical way engineers trade time for space: Martin Hellman's 1980 time-memory tradeoff, T times M-squared equals N-squared!"
             ),
@@ -146,14 +146,14 @@ EPISODE_07: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Nia",
             "text": (
                 "Look at that symmetry! In security, you inject fresh salts so adversaries CANNOT pre-index tomorrow. "
                 "In World Coding and LUT6 cascades, you canonicalize recurring inputs with De Bruijn hashes so you CAN pre-index stationary work and save joules!"
             ),
         },
         {
-            "speaker": "Priya",
+            "speaker": "Amara",
             "text": (
                 "And that connects directly to OpenIE's foundational paper, Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents — "
                 "framing the OpenIE authors' proposed Universal Law of Agency: physics sets an energy floor per decision, correctness is the gate, "
@@ -170,9 +170,9 @@ EPISODE_07: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Nia",
             "text": (
-                "Now get ready for our season finale in Episode Eight: Mateo, Sean, and Rohan enter the Idea Foundry live and watch a three-layer neural router "
+                "Now get ready for our season finale in Episode Eight: Mateo, Marcus, and Kwame enter the Idea Foundry live and watch a three-layer neural router "
                 "get obliterated by a Shape-D integer grid!"
             ),
         },
@@ -183,9 +183,9 @@ EPISODE_08: dict[str, Any] = {
     "id": "ep08-idea-foundry-redteam",
     "number": 8,
     "title": "The Idea Foundry Live — Pitching, Red-Teaming & Pilot-Testing 6 New Research Topics",
-    "subtitle": "Mateo, Sean, and Rohan audit 4 promoted pilots, 1 INA238 hardware hold, and 1 neural router crushed 63.7x by Shape D",
+    "subtitle": "Mateo, Marcus, and Kwame audit 4 promoted pilots, 1 INA238 hardware hold, and 1 neural router crushed 63.7x by Shape D",
     "summary": (
-        "Mateo, Sean, and Rohan host the autonomous 6-hour Topic Idea Foundry & <60s Linux RAPL Pilot Loop: live red-teaming and exact receipts "
+        "Mateo, Marcus, and Kwame host the autonomous 6-hour Topic Idea Foundry & <60s Linux RAPL Pilot Loop: live red-teaming and exact receipts "
         "for TF-2026-01 through TF-2026-06 (4 PROMOTED_CANDIDATE, 1 HOLD_NEEDS_HARDWARE, 1 KILLED_BY_NULL)."
     ),
     "topic_tags": ["topic-foundry", "pilot-loop", "killed-by-null", "red-team"],
@@ -194,7 +194,7 @@ EPISODE_08: dict[str, Any] = {
         {
             "speaker": "Mateo",
             "text": (
-                "Welcome to Episode Eight — the season-launch finale of OpenIE Research Radio! I'm Mateo, joined in the Foundry booth by Sean and Rohan — "
+                "Welcome to Episode Eight — the season-launch finale of OpenIE Research Radio! I'm Mateo, joined in the Foundry booth by Marcus and Kwame — "
                 "three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural speech and grounded in live pilot receipts. "
                 "Welcome inside the Autonomous Topic Idea Foundry!"
             ),
@@ -209,7 +209,7 @@ EPISODE_08: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Sean",
+            "speaker": "Marcus",
             "text": (
                 "Here are the house rules of the Foundry, Mateo! Every six hours, right after scraping global open-access feeds, our Linux daemon pitches "
                 "six candidate research topics. Every single topic MUST pre-declare a zero-parameter Shape-D null baseline, a hard kill criterion, "
@@ -217,7 +217,7 @@ EPISODE_08: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Rohan",
+            "speaker": "Kwame",
             "text": (
                 "Today's six-pilot suite completed in zero point nine seven seven seconds on our x86-64 Linux harness, reading wrap-safe "
                 "intel-rapl colon zero package reported joules with board_metered explicitly false. Let's inspect all six receipts!"
@@ -231,7 +231,7 @@ EPISODE_08: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Rohan",
+            "speaker": "Kwame",
             "text": (
                 "A sixty-four-entry bit-sliced LUT6 signature table paired with exact schema parity intercepted eighty-eight point two two percent "
                 "of arrivals with zero out of six thousand false commits, cutting package reported joules from one point five eight joules down to "
@@ -248,14 +248,14 @@ EPISODE_08: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Sean",
+            "speaker": "Marcus",
             "text": (
                 "Clean pass! What about Candidate Two, TF-2026-02 — the SepJ-inspired Quorum-Hysteresis Circuit Breaker for Byzantine agent DAGs, "
                 "sparked by today's AgentShield and INFRAMIND preprints?"
             ),
         },
         {
-            "speaker": "Rohan",
+            "speaker": "Kwame",
             "text": (
                 "Across two thousand five hundred rounds on a sixteen-node graph with four adversarial poisoners, unverified three-of-five majority voting "
                 "suffered one hundred thirty-six corrupted commits! Keyed BLAKE2b attestation plus a two-strike SepJ link quarantine isolated all four poisoners "
@@ -278,7 +278,7 @@ EPISODE_08: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Rohan",
+            "speaker": "Kwame",
             "text": (
                 "In TF-2026-03, a precomputed Hellman table of one thousand five hundred thirty-six chains inverted seventy-four out of four hundred unsalted state targets; "
                 "binding each transition to a fresh epoch beacon collapsed inversions to zero out of four hundred at zero point five seven four microseconds per step! "
@@ -296,14 +296,14 @@ EPISODE_08: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Sean",
+            "speaker": "Marcus",
             "text": (
                 "Four promotions in a row — alright, now show the listeners where our own guardrails slammed on the brakes! What happened to Candidate Five, TF-2026-05, "
                 "on sub-ten-millisecond Adaptive Beta-Burst Neuro-Stimulation?"
             ),
         },
         {
-            "speaker": "Rohan",
+            "speaker": "Kwame",
             "text": (
                 "In signal processing terms, thresholded beta-envelope gating cut stimulation pulses by three point one eight times — eight hundred seventeen pulses "
                 "versus two thousand six hundred in continuous 130-hertz pacing! When we sampled forty consecutive eight-millisecond Linux RAPL windows "
@@ -328,14 +328,14 @@ EPISODE_08: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Sean",
+            "speaker": "Marcus",
             "text": (
                 "And now for the main event — Candidate Six, TF-2026-06: pitching a learned three-layer dense neural MLP router to predict "
-                "broadphase collision buckets for two hundred fifty-six Q32.32 rigid bodies! Rohan, read the obituary!"
+                "broadphase collision buckets for two hundred fifty-six Q32.32 rigid bodies! Kwame, read the obituary!"
             ),
         },
         {
-            "speaker": "Rohan",
+            "speaker": "Kwame",
             "text": (
                 "Across thirty thousand seven hundred twenty body-ticks, the three-layer MLP router took twenty-one point nine eight milliseconds, "
                 "burned over one joule of socket reported_j, and still missed zero point six percent of true collision pairs at ninety-nine point four percent recall! "
@@ -353,7 +353,7 @@ EPISODE_08: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Sean",
+            "speaker": "Marcus",
             "text": (
                 "Over sixty times faster, lower joules, zero learned weights, AND one hundred percent exact recall versus ninety-nine point four percent! "
                 "Stamped in bright red: KILLED BY NULL! Think how much datacenter electricity the world would save if every lab ran a thirty-line integer baseline before training!"

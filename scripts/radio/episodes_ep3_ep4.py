@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""OpenIE Research Radio — Launch Episodes 3 (Priya, Marcus, Claire) & 4 (Elena, Sean, Tariq)."""
+"""OpenIE Research Radio — Launch Episodes 3 (Priya, Nia, Devon) & 4 (Elena, Nia, Tariq)."""
 
 from __future__ import annotations
 
@@ -9,9 +9,9 @@ EPISODE_03: dict[str, Any] = {
     "id": "ep03-rce-world-coding",
     "number": 3,
     "title": "World Coding — The Reality Code Engine, FormJEPA/FormEBM & 40/40 Verified Repair",
-    "subtitle": "Priya, Marcus, and Claire examine state-machine Forms, 8.42M FormJEPA-v1, compiler payback N*, and why Rung F stayed in observe mode",
+    "subtitle": "Priya, Nia, and Devon examine state-machine Forms, 8.42M FormJEPA-v1, compiler payback N*, and why Rung F stayed in observe mode",
     "summary": (
-        "Priya, Marcus, and Claire unpack RCE, RCE-JEPA, RCE Compile, and RCE-VC: 5,537 Lean 4 theorem constants, "
+        "Priya, Nia, and Devon unpack RCE, RCE-JEPA, RCE Compile, and RCE-VC: 5,537 Lean 4 theorem constants, "
         "FormJEPA-v1, FormEBM-v2, 40/40 H15-Iterative repair, compiler payback horizons N*, and candid falsifiers."
     ),
     "topic_tags": ["rce", "rce-jepa", "world-coding", "rce-compile"],
@@ -20,7 +20,7 @@ EPISODE_03: dict[str, Any] = {
         {
             "speaker": "Priya",
             "text": (
-                "Welcome to Episode Three of OpenIE Research Radio! I'm Priya, joined today by Marcus and Claire — "
+                "Welcome to Episode Three of OpenIE Research Radio! I'm Priya, joined today by Nia and Devon — "
                 "three AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio synthesis and grounded strictly in verified Open Interface Engineering studies. "
                 "Our subject today is World Coding: RCE, RCE-JEPA, RCE Compile, and RCE-VC."
             ),
@@ -35,16 +35,16 @@ EPISODE_03: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Nia",
             "text": (
-                "Claire, let's address the elephant in the room right away. People see JEPA — Joint Embedding Predictive Architecture — in the title "
+                "Devon, let's address the elephant in the room right away. People see JEPA — Joint Embedding Predictive Architecture — in the title "
                 "and assume we're letting a neural latent space decide whether software is safe to ship. Are we?"
             ),
         },
         {
-            "speaker": "Claire",
+            "speaker": "Devon",
             "text": (
-                "Categorically no, Marcus! That is why the study is titled World Coding, with JEPA as premise rather than the whole method. "
+                "Categorically no, Nia! That is why the study is titled World Coding, with JEPA as premise rather than the whole method. "
                 "Any proposer — a human engineer, a deterministic rule ladder, a compact latent predictor, or a frontier language model — may suggest a Form. "
                 "Only the deterministic checker decides admission."
             ),
@@ -66,13 +66,13 @@ EPISODE_03: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Nia",
             "text": (
                 "And before waking ANY neural weights at all, what happened when you ran the zero-model-call deterministic repair ladder?"
             ),
         },
         {
-            "speaker": "Claire",
+            "speaker": "Devon",
             "text": (
                 "The deterministic ladder closed one hundred and eleven of one hundred and fifty-one broken Forms — seventy-three point five percent — "
                 "with zero model calls! Next, we trained two tiny purpose-built networks on one thousand three hundred eighty-seven strictly disjoint Forms: "
@@ -96,21 +96,21 @@ EPISODE_03: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Claire",
+            "speaker": "Devon",
             "text": (
                 "At just four hundred seventy-four point eight millijoules of Linux RAPL core reported joules across sixteen candidates! "
                 "Meanwhile, FormEBM-v2 ranked candidate validity at AUROC zero point eight nine two two, cutting rce check calls by two point three nine times."
             ),
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Nia",
             "text": (
                 "Now give us the H15-Iterative stress test — where frontier models get zero access to the original source file, "
                 "only public standard-library headers and bounded deterministic checker diagnostics for up to five turns."
             ),
         },
         {
-            "speaker": "Claire",
+            "speaker": "Devon",
             "text": (
                 "Claude Opus 5.5 and Claude Sonnet 5.5 both closed forty out of forty — one hundred percent, zero contradictions! "
                 "xAI Grok 4.20 closed thirty-nine out of forty with zero contradictions. And once crystallized into warm Gear-0 case memory, "
@@ -127,13 +127,13 @@ EPISODE_03: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Nia",
             "text": (
-                "Hold everything, Claire — we promised zero cherry-picking on this show! Tell the listeners which rung FAILED its promotion gate in RCE-JEPA!"
+                "Hold everything, Devon — we promised zero cherry-picking on this show! Tell the listeners which rung FAILED its promotion gate in RCE-JEPA!"
             ),
         },
         {
-            "speaker": "Claire",
+            "speaker": "Devon",
             "text": (
                 "On the one-hundred-fifty-one-task rce repair Rung-F audit, our pre-registered ceiling was two point zero percent. "
                 "Rung F landed at three out of one hundred nineteen — two point five percent! So holds returned false, and Rung F remained locked in observe mode rather than being promoted."
@@ -156,7 +156,7 @@ EPISODE_03: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Claire",
+            "speaker": "Devon",
             "text": (
                 "It failed as a description of existing compilers — because standard toolchains omit explicit energy gates and linking digests — "
                 "and held cleanly as a seven-part normal form! Across two hundred eighty checksum-verified Zen 5 RAPL cells, compiling Python to clang dash O3 "
@@ -174,7 +174,7 @@ EPISODE_03: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Marcus",
+            "speaker": "Nia",
             "text": (
                 "Thirty percent of dash O3 builds burn extra compiler electricity for zero runtime return! Meanwhile, De Bruijn nameless SHA-256 "
                 "memoization hit zero out of five hundred false collisions and cut warm rustc compile energy by four hundred forty-eight point five times!"
@@ -184,7 +184,7 @@ EPISODE_03: dict[str, Any] = {
             "speaker": "Priya",
             "text": (
                 "And RCE-VC completes the stack at version control: admitting non-overlapping changes against one hundred thousand name-free units "
-                "in seventy microseconds at three hundred forty microjoules while keeping Git intact. Up next in Episode Four, Elena, Sean, and Tariq "
+                "in seventy microseconds at three hundred forty microjoules while keeping Git intact. Up next in Episode Four, Elena, Marcus, and Tariq "
                 "tackle Deterministic Null and SATB hardware shunts!"
             ),
         },
@@ -195,9 +195,9 @@ EPISODE_04: dict[str, Any] = {
     "id": "ep04-deterministic-null-satb",
     "number": 4,
     "title": "Deterministic Null & SATB — Pre-Registered Baselines and INA238 Shunt Rails vs. RAPL",
-    "subtitle": "Elena, Sean, and Tariq audit Bitcoin-anchored Shape-D controls, Jetson AGX Thor shunts, and 89.88% Kepler attribution errors",
+    "subtitle": "Elena, Marcus, and Tariq audit Bitcoin-anchored Shape-D controls, Jetson AGX Thor shunts, and 89.88% Kepler attribution errors",
     "summary": (
-        "Elena, Sean, and Tariq examine why every AI benchmark needs a zero-model-call Shape-D control and rootless telemetry attribution: "
+        "Elena, Marcus, and Tariq examine why every AI benchmark needs a zero-model-call Shape-D control and rootless telemetry attribution: "
         "OpenTimestamps + drand pre-registration, 6 frontier models across 4,030 instances, and 5-host SATB conformance."
     ),
     "topic_tags": ["deterministic-null", "satb-harness", "ina238", "preregistration"],
@@ -206,7 +206,7 @@ EPISODE_04: dict[str, Any] = {
         {
             "speaker": "Elena",
             "text": (
-                "Welcome back to Episode Four of OpenIE Research Radio! I'm Elena, joined by Sean and Tariq — "
+                "Welcome back to Episode Four of OpenIE Research Radio! I'm Elena, joined by Marcus and Tariq — "
                 "AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio speech and grounded strictly in verified Open Interface Engineering studies. "
                 "Today we pair Deterministic Null with the Satiation Benchmark Harness, SATB."
             ),
@@ -221,7 +221,7 @@ EPISODE_04: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Sean",
+            "speaker": "Marcus",
             "text": (
                 "You know this is right up an auditor's alley, Elena! In clinical medicine, nobody clears a therapy without a placebo arm. "
                 "Yet in AI, teams publish billion-parameter agent leaderboards every single week without checking what a zero-model-call integer loop scores first!"
@@ -259,7 +259,7 @@ EPISODE_04: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Sean",
+            "speaker": "Marcus",
             "text": (
                 "Aha! And on genuinely open-ended public benchmarks — BFCL v3, tau-bench Retail, BigCodeBench, and SWE-bench Verified — "
                 "where pure lookup hits zero, neural models posted plus forty-five point eight to plus ninety-five percentage points of real gain! "
@@ -296,7 +296,7 @@ EPISODE_04: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Sean",
+            "speaker": "Marcus",
             "text": (
                 "Pause right there, Tariq! Jetson AGX Thor's physical TI INA238 and INA3221 shunts — like Kria KV260's INA260 — sit directly on the power rails, "
                 "earning measured_j! What happened when you compared cloud-native Kepler CPU-proportional splitting against real hardware telemetry?"
@@ -334,7 +334,7 @@ EPISODE_04: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Sean",
+            "speaker": "Marcus",
             "text": (
                 "And across all five operating systems and architectures, Shape D checksum fifteen billion twenty-seven million seven hundred five thousand seven hundred thirty-six "
                 "and C9 truncation replayed with zero byte diffs!"
@@ -357,9 +357,9 @@ EPISODE_04: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Sean",
+            "speaker": "Marcus",
             "text": (
-                "Next up in Episode Five, Mei, Liam, and Kwame test where bit-exact replay ends and GPU tolerance begins across real game engines!"
+                "Next up in Episode Five, Mei, Liam, and Malik test where bit-exact replay ends and GPU tolerance begins across real game engines!"
             ),
         },
     ],

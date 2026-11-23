@@ -2,8 +2,8 @@
   "id": "ep05-game-engines-everywhere",
   "number": 5,
   "title": "Writing a Game Once — Q32.32 Lockstep, DirectX 12/Metal/Vulkan & Closing GE-H1..H9",
-  "subtitle": "Mei, Liam, and Kwame map where bit-exact Q32.32 replay ends, where GPU tolerance begins, and why std::sin diverges in 10 ticks",
-  "summary": "Mei, Liam, and Kwame walk through all nine executed falsifier suites GE-H1..GE-H9 across macOS, Linux, and Windows 11: 0/25,500 Q32.32 mismatches, tick-10 float divergence, 28/28 DirectX 12/Metal/Vulkan GPU pairs, and Godot 4.7.2 projection.",
+  "subtitle": "Mei, Liam, and Malik map where bit-exact Q32.32 replay ends, where GPU tolerance begins, and why std::sin diverges in 10 ticks",
+  "summary": "Mei, Liam, and Malik walk through all nine executed falsifier suites GE-H1..GE-H9 across macOS, Linux, and Windows 11: 0/25,500 Q32.32 mismatches, tick-10 float divergence, 28/28 DirectX 12/Metal/Vulkan GPU pairs, and Godot 4.7.2 projection.",
   "topic_tags": [
     "game-engines",
     "determinism",
@@ -13,7 +13,7 @@
   "panel": [
     "Mei",
     "Liam",
-    "Kwame"
+    "Malik"
   ],
   "panel_profiles": [
     {
@@ -41,12 +41,12 @@
       ]
     },
     {
-      "name": "Kwame",
+      "name": "Malik",
       "group": "specialist",
-      "title": "Distributed Systems Engineer · Nigerian English",
-      "voice_id": "PFnEp0d5QKq6baWI3azv",
-      "fallback_voice": "en-NG-AbeoNeural",
-      "color": "#A78BFA",
+      "title": "Engine & Hardware Fellow · African American English",
+      "voice_id": "lGMJWfnL2SVUwU7i6zQ7",
+      "fallback_voice": "en-US-BrianMultilingualNeural",
+      "color": "#8B5CF6",
       "pan": [
         0.9,
         1.04
@@ -57,15 +57,15 @@
     "eleven_v4"
   ],
   "published_utc": "2026-11-23T08:00:00Z",
-  "duration_sec": 287.8,
-  "duration_human": "4:48",
-  "byte_length": 4844810,
+  "duration_sec": 291.0,
+  "duration_human": "4:51",
+  "byte_length": 4947143,
   "audio_url": "/media/radio/episodes/ep05-game-engines-everywhere.m4a",
   "captions_url": "/media/radio/captions/ep05-game-engines-everywhere.vtt",
   "transcript_url": "/media/radio/transcripts/ep05-game-engines-everywhere.json",
   "turn_count": 16,
   "card_count": 6,
-  "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
   "personas": {
     "Mei": {
       "name": "Mei",
@@ -91,13 +91,13 @@
         0.9
       ]
     },
-    "Kwame": {
-      "name": "Kwame",
+    "Malik": {
+      "name": "Malik",
       "group": "specialist",
-      "title": "Distributed Systems Engineer · Nigerian English",
-      "voice_id": "PFnEp0d5QKq6baWI3azv",
-      "fallback_voice": "en-NG-AbeoNeural",
-      "color": "#A78BFA",
+      "title": "Engine & Hardware Fellow · African American English",
+      "voice_id": "lGMJWfnL2SVUwU7i6zQ7",
+      "fallback_voice": "en-US-BrianMultilingualNeural",
+      "color": "#8B5CF6",
       "pan": [
         0.9,
         1.04
@@ -112,8 +112,8 @@
       "group": "host",
       "color": "#38BDF8",
       "start_sec": 1.83,
-      "end_sec": 25.209,
-      "text": "Welcome to Episode Five of OpenIE Research Radio! I'm Mei, joined in the studio by Liam and Kwame — three AI-synthesized OpenIE research personas voiced with ElevenLabs studio neural voices and grounded in verified Open Interface Engineering artifacts. Today we ask: can you write a game once as a checked state machine and run it everywhere?"
+      "end_sec": 24.981,
+      "text": "Welcome to Episode Five of OpenIE Research Radio! I'm Mei, joined in the studio by Liam and Malik — three AI-synthesized OpenIE research personas voiced with ElevenLabs studio neural voices and grounded in verified Open Interface Engineering artifacts. Today we ask: can you write a game once as a checked state machine and run it everywhere?"
     },
     {
       "turn_index": 1,
@@ -121,18 +121,18 @@
       "role": "Energetic Foil · Australian English",
       "group": "skeptic",
       "color": "#FB923C",
-      "start_sec": 25.399,
-      "end_sec": 40.683,
-      "text": "Hold on Kwame — game studios have torched tens of millions of engineering hours trying to keep multiplayer lockstep replays synchronized across Windows PCs, Macs, and Linux servers! How fast does ordinary floating-point physics actually drift?"
+      "start_sec": 25.171,
+      "end_sec": 39.805,
+      "text": "Hold on Malik — game studios have torched tens of millions of engineering hours trying to keep multiplayer lockstep replays synchronized across Windows PCs, Macs, and Linux servers! How fast does ordinary floating-point physics actually drift?"
     },
     {
       "turn_index": 2,
-      "speaker": "Kwame",
-      "role": "Distributed Systems Engineer · Nigerian English",
+      "speaker": "Malik",
+      "role": "Engine & Hardware Fellow · African American English",
       "group": "specialist",
-      "color": "#A78BFA",
-      "start_sec": 40.953,
-      "end_sec": 63.433,
+      "color": "#8B5CF6",
+      "start_sec": 40.075,
+      "end_sec": 63.113,
       "text": "Faster than people blink, Liam! In falsifier GE-H2, standard-library sine — Apple libSystem versus Linux glibc versus Windows UCRT — diverges between tick ten and tick thirty-seven! Even without transcendentals, MSVC slash fp colon precise versus Clang fused multiply-add splits apart at tick one hundred ninety-two."
     },
     {
@@ -141,8 +141,8 @@
       "role": "Tech & Physics Host · East/SE Asian English",
       "group": "host",
       "color": "#38BDF8",
-      "start_sec": 63.703,
-      "end_sec": 82.364,
+      "start_sec": 63.383,
+      "end_sec": 82.045,
       "text": "Tick ten! At sixty frames per second, three operating systems disagree on trajectory state inside one-sixth of a second! And across eight hundred forty chaotic runs in GE-H7, divergence time tracks Lyapunov's logarithmic slope with R-squared above zero point nine nine four."
     },
     {
@@ -151,18 +151,18 @@
       "role": "Energetic Foil · Australian English",
       "group": "skeptic",
       "color": "#FB923C",
-      "start_sec": 82.554,
-      "end_sec": 100.071,
+      "start_sec": 82.235,
+      "end_sec": 99.752,
       "text": "So you split the architecture right down the fault line: simulation stays strictly bit-exact in Q32.32 fixed-point integer math, while GPU pixels live inside a perceptual tolerance bound. Did Q32.32 survive six real machines?"
     },
     {
       "turn_index": 5,
-      "speaker": "Kwame",
-      "role": "Distributed Systems Engineer · Nigerian English",
+      "speaker": "Malik",
+      "role": "Engine & Hardware Fellow · African American English",
       "group": "specialist",
-      "color": "#A78BFA",
-      "start_sec": 100.341,
-      "end_sec": 120.508,
+      "color": "#8B5CF6",
+      "start_sec": 100.022,
+      "end_sec": 121.191,
       "text": "In GE-H1, we stepped sixty-four Q32.32 rigid bodies for one hundred thousand ticks across thirty target-by-host cells spanning six physical machines on macOS, Linux, and bare-metal Windows 11. Across twenty-five thousand five hundred SHA-256 checkpoints, mismatches were zero!"
     },
     {
@@ -171,8 +171,8 @@
       "role": "Tech & Physics Host · East/SE Asian English",
       "group": "host",
       "color": "#38BDF8",
-      "start_sec": 120.778,
-      "end_sec": 141.004,
+      "start_sec": 121.461,
+      "end_sec": 141.687,
       "text": "And look what that buys in GE-H8: three full one-hour sessions — two hundred sixteen thousand ticks each — replay bit-for-bit across macOS, Linux, and Windows 11 from forty-four point six kilobytes of gzipped player inputs alone! Zero out of six thousand four hundred eighty checkpoint diffs!"
     },
     {
@@ -181,18 +181,18 @@
       "role": "Energetic Foil · Australian English",
       "group": "skeptic",
       "color": "#FB923C",
-      "start_sec": 141.194,
-      "end_sec": 149.289,
+      "start_sec": 141.877,
+      "end_sec": 149.972,
       "text": "Forty-four kilobytes for a whole hour of simulation! Wait — doesn't fixed-point arithmetic hit a frame-time wall at scale?"
     },
     {
       "turn_index": 8,
-      "speaker": "Kwame",
-      "role": "Distributed Systems Engineer · Nigerian English",
+      "speaker": "Malik",
+      "role": "Engine & Hardware Fellow · African American English",
       "group": "specialist",
-      "color": "#A78BFA",
-      "start_sec": 149.559,
-      "end_sec": 170.119,
+      "color": "#8B5CF6",
+      "start_sec": 150.242,
+      "end_sec": 171.268,
       "text": "Interpreted Python hits the twenty-millisecond frame ceiling at just three hundred ninety actors. In GE-H5, compiled RCE Form projections step ten thousand Q32.32 actors in zero point zero five eight to zero point one two five milliseconds — leaving over ninety-nine percent of a sixteen-millisecond frame free!"
     },
     {
@@ -201,18 +201,18 @@
       "role": "Tech & Physics Host · East/SE Asian English",
       "group": "host",
       "color": "#38BDF8",
-      "start_sec": 170.389,
-      "end_sec": 180.633,
+      "start_sec": 171.538,
+      "end_sec": 181.782,
       "text": "Now test the GPU side of the boundary! Shader compilers across DirectX 12, Apple Metal, and Vulkan never round rasterized fragments identically."
     },
     {
       "turn_index": 10,
-      "speaker": "Kwame",
-      "role": "Distributed Systems Engineer · Nigerian English",
+      "speaker": "Malik",
+      "role": "Engine & Hardware Fellow · African American English",
       "group": "specialist",
-      "color": "#A78BFA",
-      "start_sec": 180.903,
-      "end_sec": 202.491,
+      "color": "#8B5CF6",
+      "start_sec": 182.052,
+      "end_sec": 204.525,
       "text": "That is GE-H3. Across eight hardware GPU-by-API endpoints spanning DirectX 12, Metal, and Vulkan under headless wgpu, all twenty-eight hardware pairs passed with PSNR at least sixty-four point one six decibels and structural similarity SSIM at least zero point nine nine nine eight three three!"
     },
     {
@@ -221,18 +221,18 @@
       "role": "Energetic Foil · Australian English",
       "group": "skeptic",
       "color": "#FB923C",
-      "start_sec": 202.681,
-      "end_sec": 210.175,
+      "start_sec": 204.715,
+      "end_sec": 212.208,
       "text": "What about actual game codebases across Unity C-sharp, Bevy Rust ECS, and Godot 4 GDScript?"
     },
     {
       "turn_index": 12,
-      "speaker": "Kwame",
-      "role": "Distributed Systems Engineer · Nigerian English",
+      "speaker": "Malik",
+      "role": "Engine & Hardware Fellow · African American English",
       "group": "specialist",
-      "color": "#A78BFA",
-      "start_sec": 210.445,
-      "end_sec": 243.199,
+      "color": "#8B5CF6",
+      "start_sec": 212.478,
+      "end_sec": 246.633,
       "text": "In GE-H4, seventeen admitted RCE Forms across Haunted Jaunt, Survival Shooter, and Tanks cut behavior source lines of code by seventy-six point two two percent versus Unity C-sharp, sixty-one point four seven percent versus Bevy Rust, and fifty-one point nine nine percent versus Godot GDScript with zero out of six hundred eighty trace mismatches! And in GE-H9, our headless Form-to-Godot 4.7.2 emitter matched native GDScript on thirty-six out of thirty-six tasks across eighteen thousand ticks!"
     },
     {
@@ -241,8 +241,8 @@
       "role": "Tech & Physics Host · East/SE Asian English",
       "group": "host",
       "color": "#38BDF8",
-      "start_sec": 243.469,
-      "end_sec": 264.515,
+      "start_sec": 246.903,
+      "end_sec": 267.949,
       "text": "Notice how GE-H6 echoes OpenIE's Three-Body Problem in Computing and Interface Economics: static Form plus manifest checking caught ninety-eight point four six percent of one hundred thirty injected handoff faults at F1 zero point nine nine two two, versus zero point one one five nine for parse-only!"
     },
     {
@@ -251,8 +251,8 @@
       "role": "Energetic Foil · Australian English",
       "group": "skeptic",
       "color": "#FB923C",
-      "start_sec": 264.705,
-      "end_sec": 274.051,
+      "start_sec": 268.139,
+      "end_sec": 277.485,
       "text": "And keeping telemetry honest, measured_j stays explicitly unset on the game-engine runs because no inline rail shunt was wired to those six hosts!"
     },
     {
@@ -261,16 +261,16 @@
       "role": "Tech & Physics Host · East/SE Asian English",
       "group": "host",
       "color": "#38BDF8",
-      "start_sec": 274.321,
-      "end_sec": 285.859,
-      "text": "Up next in Episode Six, Amara, Sean, and Claire descend into LUT6 Boolean fabrics, sovereign MEI-JCP hardware tags, and JouleOS!"
+      "start_sec": 277.755,
+      "end_sec": 289.127,
+      "text": "Up next in Episode Six, Misha, Sean, and Claire descend into LUT6 Boolean fabrics, sovereign MEI-JCP hardware tags, and JouleOS!"
     }
   ],
   "cards": [
     {
       "id": "ep05-game-engines-everywhere-card-00-0",
       "at_sec": 2.63,
-      "end_sec": 25.209,
+      "end_sec": 24.981,
       "turn_index": 0,
       "speaker": "Mei",
       "kind": "study",
@@ -281,10 +281,10 @@
     },
     {
       "id": "ep05-game-engines-everywhere-card-02-0",
-      "at_sec": 41.753,
-      "end_sec": 63.433,
+      "at_sec": 40.875,
+      "end_sec": 63.113,
       "turn_index": 2,
-      "speaker": "Kwame",
+      "speaker": "Malik",
       "kind": "falsifier",
       "badge": "GE-H2 & GE-H7",
       "title": "3-OS std::sin Diverges at Ticks 10–37; FMA at Tick 192",
@@ -293,10 +293,10 @@
     },
     {
       "id": "ep05-game-engines-everywhere-card-05-0",
-      "at_sec": 101.141,
-      "end_sec": 120.508,
+      "at_sec": 100.822,
+      "end_sec": 121.191,
       "turn_index": 5,
-      "speaker": "Kwame",
+      "speaker": "Malik",
       "kind": "receipt",
       "badge": "GE-H1 & GE-H8",
       "title": "0/25,500 Q32.32 Mismatches & 44.6 KB 1-Hour Replay",
@@ -305,10 +305,10 @@
     },
     {
       "id": "ep05-game-engines-everywhere-card-10-0",
-      "at_sec": 181.703,
-      "end_sec": 202.491,
+      "at_sec": 182.852,
+      "end_sec": 204.525,
       "turn_index": 10,
-      "speaker": "Kwame",
+      "speaker": "Malik",
       "kind": "receipt",
       "badge": "GE-H3",
       "title": "28/28 DirectX 12, Metal & Vulkan GPU Pairs Pass",
@@ -317,10 +317,10 @@
     },
     {
       "id": "ep05-game-engines-everywhere-card-12-0",
-      "at_sec": 211.245,
-      "end_sec": 243.199,
+      "at_sec": 213.278,
+      "end_sec": 246.633,
       "turn_index": 12,
-      "speaker": "Kwame",
+      "speaker": "Malik",
       "kind": "receipt",
       "badge": "GE-H4 & GE-H9",
       "title": "76.22% SLOC Reduction & 36/36 Godot 4.7.2 Parity",
@@ -329,8 +329,8 @@
     },
     {
       "id": "ep05-game-engines-everywhere-card-13-0",
-      "at_sec": 244.269,
-      "end_sec": 264.515,
+      "at_sec": 247.703,
+      "end_sec": 267.949,
       "turn_index": 13,
       "speaker": "Mei",
       "kind": "study",

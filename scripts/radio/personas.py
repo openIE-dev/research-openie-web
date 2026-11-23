@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""OpenIE Research Radio — 14-Persona Global Studio Ensemble & Phonetic Normalizer."""
+"""OpenIE Research Radio — 19-Persona Global Studio Ensemble & Phonetic Normalizer."""
 
 from __future__ import annotations
 
@@ -15,6 +15,24 @@ PERSONAS: dict[str, dict[str, Any]] = {
         "voice_id": "uR6zbwkKmeecuupKV18k",
         "fallback_voice": "en-US-AvaMultilingualNeural",
         "color": "#00D4AA",
+        "pan": [0.98, 0.98],
+    },
+    "Cecily": {
+        "name": "Cecily",
+        "group": "host",
+        "title": "Lead Science Host · African American English",
+        "voice_id": "NQMJRVvPew6HsaebYnZj",
+        "fallback_voice": "en-US-EmmaMultilingualNeural",
+        "color": "#14B8A6",
+        "pan": [0.98, 0.98],
+    },
+    "Misha": {
+        "name": "Misha",
+        "group": "host",
+        "title": "Documentary & Hardware Host · African American English",
+        "voice_id": "DXX4Q5Bh1vqK8CciYVPf",
+        "fallback_voice": "en-US-AriaNeural",
+        "color": "#2DD4BF",
         "pan": [0.98, 0.98],
     },
     "Amara": {
@@ -57,10 +75,19 @@ PERSONAS: dict[str, dict[str, Any]] = {
     "Marcus": {
         "name": "Marcus",
         "group": "skeptic",
-        "title": "Empirical Foil · North American English",
-        "voice_id": "iP95p4xoKVk53GoZ742B",
-        "fallback_voice": "en-US-BrianMultilingualNeural",
+        "title": "Empirical Foil · African American English",
+        "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+        "fallback_voice": "en-US-ChristopherNeural",
         "color": "#F59E0B",
+        "pan": [1.04, 0.90],
+    },
+    "Nia": {
+        "name": "Nia",
+        "group": "skeptic",
+        "title": "Empirical Auditor · African American English",
+        "voice_id": "GbDIo39THauInuigCmPM",
+        "fallback_voice": "en-US-JennyNeural",
+        "color": "#F97316",
         "pan": [1.04, 0.90],
     },
     "Liam": {
@@ -82,6 +109,24 @@ PERSONAS: dict[str, dict[str, Any]] = {
         "pan": [1.04, 0.90],
     },
     # Bench Engineers & Domain Specialists
+    "Devon": {
+        "name": "Devon",
+        "group": "specialist",
+        "title": "Systems & Compiler Architect · African American English",
+        "voice_id": "CMUEYyUNA4TrldQy4HLM",
+        "fallback_voice": "en-US-GuyNeural",
+        "color": "#6366F1",
+        "pan": [0.90, 1.04],
+    },
+    "Malik": {
+        "name": "Malik",
+        "group": "specialist",
+        "title": "Engine & Hardware Fellow · African American English",
+        "voice_id": "lGMJWfnL2SVUwU7i6zQ7",
+        "fallback_voice": "en-US-BrianMultilingualNeural",
+        "color": "#8B5CF6",
+        "pan": [0.90, 1.04],
+    },
     "Rohan": {
         "name": "Rohan",
         "group": "specialist",
@@ -139,8 +184,8 @@ PERSONAS: dict[str, dict[str, Any]] = {
 }
 
 AI_DISCLOSURE = (
-    "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists "
-    "(Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) "
+    "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists "
+    "(Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) "
     "are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices "
     "(with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering "
     "artifacts, deterministic pilot receipts, and live open-access literature feeds."

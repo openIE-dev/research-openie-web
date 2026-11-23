@@ -5,10 +5,10 @@
   "site_url": "https://research.openie.dev/radio/",
   "rss_url": "https://research.openie.dev/radio/rss.xml",
   "audio_spec": "44.1 kHz · 128 kbps Stereo AAC (-16 LUFS) · ElevenLabs eleven_v4 Studio Ensemble",
-  "generated_at_utc": "2026-11-23T15:52:43Z",
+  "generated_at_utc": "2026-11-23T17:43:20Z",
   "rotation_epoch_unix": 1763856000,
   "autonomous_cadence": "Every 6 hours (systemd --user openie-research-radio.timer + cron flock)",
-  "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
   "personas": {
     "Elena": {
       "name": "Elena",
@@ -17,6 +17,30 @@
       "voice_id": "uR6zbwkKmeecuupKV18k",
       "fallback_voice": "en-US-AvaMultilingualNeural",
       "color": "#00D4AA",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    "Cecily": {
+      "name": "Cecily",
+      "group": "host",
+      "title": "Lead Science Host · African American English",
+      "voice_id": "NQMJRVvPew6HsaebYnZj",
+      "fallback_voice": "en-US-EmmaMultilingualNeural",
+      "color": "#14B8A6",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    "Misha": {
+      "name": "Misha",
+      "group": "host",
+      "title": "Documentary & Hardware Host · African American English",
+      "voice_id": "DXX4Q5Bh1vqK8CciYVPf",
+      "fallback_voice": "en-US-AriaNeural",
+      "color": "#2DD4BF",
       "pan": [
         0.98,
         0.98
@@ -73,10 +97,22 @@
     "Marcus": {
       "name": "Marcus",
       "group": "skeptic",
-      "title": "Empirical Foil · North American English",
-      "voice_id": "iP95p4xoKVk53GoZ742B",
-      "fallback_voice": "en-US-BrianMultilingualNeural",
+      "title": "Empirical Foil · African American English",
+      "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+      "fallback_voice": "en-US-ChristopherNeural",
       "color": "#F59E0B",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    "Nia": {
+      "name": "Nia",
+      "group": "skeptic",
+      "title": "Empirical Auditor · African American English",
+      "voice_id": "GbDIo39THauInuigCmPM",
+      "fallback_voice": "en-US-JennyNeural",
+      "color": "#F97316",
       "pan": [
         1.04,
         0.9
@@ -104,6 +140,30 @@
       "pan": [
         1.04,
         0.9
+      ]
+    },
+    "Devon": {
+      "name": "Devon",
+      "group": "specialist",
+      "title": "Systems & Compiler Architect · African American English",
+      "voice_id": "CMUEYyUNA4TrldQy4HLM",
+      "fallback_voice": "en-US-GuyNeural",
+      "color": "#6366F1",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    },
+    "Malik": {
+      "name": "Malik",
+      "group": "specialist",
+      "title": "Engine & Hardware Fellow · African American English",
+      "voice_id": "lGMJWfnL2SVUwU7i6zQ7",
+      "fallback_voice": "en-US-BrianMultilingualNeural",
+      "color": "#8B5CF6",
+      "pan": [
+        0.9,
+        1.04
       ]
     },
     "Rohan": {
@@ -180,8 +240,8 @@
     }
   },
   "episode_count": 8,
-  "total_duration_sec": 2540.3,
-  "total_duration_human": "42:20",
+  "total_duration_sec": 2527.6,
+  "total_duration_human": "42:08",
   "episodes": [
     {
       "id": "ep01-global-literature-radar",
@@ -216,9 +276,9 @@
         {
           "name": "Marcus",
           "group": "skeptic",
-          "title": "Empirical Foil · North American English",
-          "voice_id": "iP95p4xoKVk53GoZ742B",
-          "fallback_voice": "en-US-BrianMultilingualNeural",
+          "title": "Empirical Foil · African American English",
+          "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+          "fallback_voice": "en-US-ChristopherNeural",
           "color": "#F59E0B",
           "pan": [
             1.04,
@@ -242,15 +302,15 @@
         "eleven_v4"
       ],
       "published_utc": "2026-11-23T06:00:00Z",
-      "duration_sec": 331.1,
-      "duration_human": "5:31",
-      "byte_length": 5477780,
+      "duration_sec": 328.5,
+      "duration_human": "5:28",
+      "byte_length": 5492407,
       "audio_url": "/media/radio/episodes/ep01-global-literature-radar.m4a",
       "captions_url": "/media/radio/captions/ep01-global-literature-radar.vtt",
       "transcript_url": "/media/radio/transcripts/ep01-global-literature-radar.json",
       "turn_count": 18,
       "card_count": 8,
-      "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+      "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
       "turns": [
         {
           "turn_index": 0,
@@ -265,11 +325,11 @@
         {
           "turn_index": 1,
           "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
           "color": "#F59E0B",
           "start_sec": 23.856,
-          "end_sec": 48.02,
+          "end_sec": 47.352,
           "text": "Which means nobody at this table gets to bluff! Every six hours, our autonomous Linux radar polls five sanctioned public archives — arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov — hashes every record with BLAKE2b and SHA-256, and drops fresh papers onto the bench. Rohan, how many survived deduplication today?"
         },
         {
@@ -278,8 +338,8 @@
           "role": "Hardware & Compiler Specialist · South Asian English",
           "group": "specialist",
           "color": "#818CF8",
-          "start_sec": 48.29,
-          "end_sec": 69.422,
+          "start_sec": 47.622,
+          "end_sec": 68.754,
           "text": "Sixty-two distinct open-access works across all five registries, Marcus, mapped against all twenty-one OpenIE studies. Every single entry receives an epistemic badge — T for kernel-checked theorems, E for empirical hardware or wet-lab data, M for computational models, and S for speculative or recruiting clinical horizons."
         },
         {
@@ -288,18 +348,18 @@
           "role": "Science Journalist · Hispanic/Spanish English",
           "group": "host",
           "color": "#00D4AA",
-          "start_sec": 69.692,
-          "end_sec": 84.108,
+          "start_sec": 69.024,
+          "end_sec": 83.44,
           "text": "Let's start with energy-aware AI. One of the top OpenAlex and arXiv hits on the radar right now is TokenPowerBench, published in 2026 to benchmark the power consumption of large language model inference across serving stacks."
         },
         {
           "turn_index": 4,
           "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
           "color": "#F59E0B",
-          "start_sec": 84.298,
-          "end_sec": 100.575,
+          "start_sec": 83.63,
+          "end_sec": 99.022,
           "text": "Hold on — let me ask my favorite annoying question right away! When TokenPowerBench or any 2026 inference paper reports joules per token, are they measuring physical DC shunt rails on the board, or reading software counters like RAPL and NVML?"
         },
         {
@@ -308,8 +368,8 @@
           "role": "Hardware & Compiler Specialist · South Asian English",
           "group": "specialist",
           "color": "#818CF8",
-          "start_sec": 100.845,
-          "end_sec": 121.744,
+          "start_sec": 99.292,
+          "end_sec": 120.192,
           "text": "Almost always software counters on shared GPUs, or analytical estimates — what OpenIE stamps as reported_j, never measured_j. And second, joules per token is the wrong denominator if a model burns ten thousand tokens hallucinating a broken patch! In Metered Commit Gates, the denominator is energy to correct completion."
         },
         {
@@ -318,18 +378,18 @@
           "role": "Science Journalist · Hispanic/Spanish English",
           "group": "host",
           "color": "#00D4AA",
-          "start_sec": 122.014,
-          "end_sec": 138.986,
+          "start_sec": 120.462,
+          "end_sec": 137.433,
           "text": "That connects directly to our second radar cluster: formal theorem proving. Today's intake pulled two 2026 preprints — Compile to Compress, which boosts formal theorem provers using compiler outputs, and Lean Graph Search for Formal Theorem Proving on arXiv."
         },
         {
           "turn_index": 7,
           "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
           "color": "#F59E0B",
-          "start_sec": 139.176,
-          "end_sec": 155.073,
+          "start_sec": 137.623,
+          "end_sec": 153.276,
           "text": "Okay, I actually love those two! Because instead of asking a giant language model to vibe-check mathematics, the Lean 4 kernel acts as an unforgiving binary oracle. Either the proof term type-checks with zero sorry placeholders, or it gets refused."
         },
         {
@@ -338,8 +398,8 @@
           "role": "Hardware & Compiler Specialist · South Asian English",
           "group": "specialist",
           "color": "#818CF8",
-          "start_sec": 155.343,
-          "end_sec": 175.574,
+          "start_sec": 153.546,
+          "end_sec": 173.777,
           "text": "Exactly. Across OpenIE's Reality Code Engine, Time as an Index, and Communication Tool Avalanche, we rely on five thousand five hundred thirty-seven Lean 4 kernel constants plus sixty-two specialized domain theorems with zero sorry. What Lean Graph Search still omits, though, is reporting how many joules the search spent per closed lemma."
         },
         {
@@ -348,18 +408,18 @@
           "role": "Science Journalist · Hispanic/Spanish English",
           "group": "host",
           "color": "#00D4AA",
-          "start_sec": 175.844,
-          "end_sec": 188.803,
+          "start_sec": 174.047,
+          "end_sec": 187.006,
           "text": "Now look at the multi-agent orchestration cluster from arXiv today: Decoupled Multi-Agent Orchestration, INFRAMIND for infrastructure-aware orchestration, and the AgentShield Byzantine fault tolerance dataset."
         },
         {
           "turn_index": 10,
           "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
           "color": "#F59E0B",
-          "start_sec": 188.993,
-          "end_sec": 199.78,
+          "start_sec": 187.196,
+          "end_sec": 197.409,
           "text": "Wait — let me guess what happens in ninety percent of multi-agent papers when four chatty agents pass natural-language paragraphs back and forth without a cryptographic or test gate!"
         },
         {
@@ -368,8 +428,8 @@
           "role": "Hardware & Compiler Specialist · South Asian English",
           "group": "specialist",
           "color": "#818CF8",
-          "start_sec": 200.05,
-          "end_sec": 223.901,
+          "start_sec": 197.679,
+          "end_sec": 221.53,
           "text": "Prompt bloat triples, errors compound exponentially across hops, and false commits spike! In our sixty-task Communication Avalanche benchmark, an unattested four-agent cascade dropped to eighty-six point six seven percent accuracy with thirteen point three percent broken commits, burning nearly fifteen times more energy per coherent fix than our BLAKE3 and Ed25519 gated graph."
         },
         {
@@ -378,18 +438,18 @@
           "role": "Science Journalist · Hispanic/Spanish English",
           "group": "host",
           "color": "#00D4AA",
-          "start_sec": 224.171,
-          "end_sec": 241.621,
+          "start_sec": 221.8,
+          "end_sec": 239.25,
           "text": "And my favorite catch from Europe PMC today comes straight out of microbiology: a January 2026 paper in npj Biofilms and Microbiomes showing extracellular vesicles acting as structured vectors of quorum-sensing signals in aquatic microbial communities!"
         },
         {
           "turn_index": 13,
           "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
           "color": "#F59E0B",
-          "start_sec": 241.811,
-          "end_sec": 255.254,
+          "start_sec": 239.44,
+          "end_sec": 252.644,
           "text": "Think about how wild that is, Elena. Three and a half billion years before packet-switched networks, bacteria wrapped quorum signals inside lipid envelopes so nucleases and water currents wouldn't corrupt the packet in transit!"
         },
         {
@@ -398,8 +458,8 @@
           "role": "Hardware & Compiler Specialist · South Asian English",
           "group": "specialist",
           "color": "#818CF8",
-          "start_sec": 255.524,
-          "end_sec": 282.325,
+          "start_sec": 252.914,
+          "end_sec": 279.716,
           "text": "Meanwhile, our ClinicalTrials.gov feed keeps us disciplined on human neurotechnology. Today's radar pulled eight trials, including stroke alpha-coherence neurofeedback NCT02223910 and cognitive memory restoration NCT04253587. We classify recruiting or unverified human translation strictly under Challenges Assumption so preclinical animal rescue is never confused with human efficacy."
         },
         {
@@ -408,18 +468,18 @@
           "role": "Science Journalist · Hispanic/Spanish English",
           "group": "host",
           "color": "#00D4AA",
-          "start_sec": 282.595,
-          "end_sec": 299.428,
+          "start_sec": 279.986,
+          "end_sec": 296.818,
           "text": "And Europe PMC also surfaced The Cost of Reproducibility in Artificial Intelligence, right alongside OpenIE's AI Reads Human study showing pure-Python YAML parsing burns over two thousand times more nanojoules per record than fixed binary structs!"
         },
         {
           "turn_index": 16,
           "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
           "color": "#F59E0B",
-          "start_sec": 299.618,
-          "end_sec": 314.324,
+          "start_sec": 297.008,
+          "end_sec": 311.086,
           "text": "Two thousand and fifty-three times more energy just so a machine can read whitespace indentation! Every paper on today's radar is searchable right below this player — complete with its BLAKE2b digest, epistemic badge, and telemetry audit."
         },
         {
@@ -428,9 +488,9 @@
           "role": "Science Journalist · Hispanic/Spanish English",
           "group": "host",
           "color": "#00D4AA",
-          "start_sec": 314.594,
-          "end_sec": 329.145,
-          "text": "Next up in Episode Two, Amara, Liam, and Kenji take the mics to explore three point eight billion years of biological signaling, seventy-six years of AI winters, and DES-10 digital enzymatic synthesis!"
+          "start_sec": 311.356,
+          "end_sec": 326.568,
+          "text": "Next up in Episode Two, Cecily, Liam, and Kenji take the mics to explore three point eight billion years of biological signaling, seventy-six years of AI winters, and DES-10 digital enzymatic synthesis!"
         }
       ],
       "cards": [
@@ -448,8 +508,8 @@
         },
         {
           "id": "ep01-global-literature-radar-card-03-0",
-          "at_sec": 70.492,
-          "end_sec": 84.108,
+          "at_sec": 69.824,
+          "end_sec": 83.44,
           "turn_index": 3,
           "speaker": "Elena",
           "kind": "external_paper",
@@ -460,8 +520,8 @@
         },
         {
           "id": "ep01-global-literature-radar-card-05-0",
-          "at_sec": 101.645,
-          "end_sec": 121.744,
+          "at_sec": 100.092,
+          "end_sec": 120.192,
           "turn_index": 5,
           "speaker": "Rohan",
           "kind": "falsifier",
@@ -472,8 +532,8 @@
         },
         {
           "id": "ep01-global-literature-radar-card-06-0",
-          "at_sec": 122.814,
-          "end_sec": 138.986,
+          "at_sec": 121.262,
+          "end_sec": 137.433,
           "turn_index": 6,
           "speaker": "Elena",
           "kind": "external_paper",
@@ -484,8 +544,8 @@
         },
         {
           "id": "ep01-global-literature-radar-card-09-0",
-          "at_sec": 176.644,
-          "end_sec": 188.803,
+          "at_sec": 174.847,
+          "end_sec": 187.006,
           "turn_index": 9,
           "speaker": "Elena",
           "kind": "external_paper",
@@ -496,8 +556,8 @@
         },
         {
           "id": "ep01-global-literature-radar-card-11-0",
-          "at_sec": 200.85,
-          "end_sec": 223.901,
+          "at_sec": 198.479,
+          "end_sec": 221.53,
           "turn_index": 11,
           "speaker": "Rohan",
           "kind": "receipt",
@@ -508,8 +568,8 @@
         },
         {
           "id": "ep01-global-literature-radar-card-12-0",
-          "at_sec": 224.971,
-          "end_sec": 241.621,
+          "at_sec": 222.6,
+          "end_sec": 239.25,
           "turn_index": 12,
           "speaker": "Elena",
           "kind": "external_paper",
@@ -520,8 +580,8 @@
         },
         {
           "id": "ep01-global-literature-radar-card-14-0",
-          "at_sec": 256.324,
-          "end_sec": 282.325,
+          "at_sec": 253.714,
+          "end_sec": 279.716,
           "turn_index": 14,
           "speaker": "Rohan",
           "kind": "external_paper",
@@ -536,8 +596,8 @@
       "id": "ep02-communication-tool-avalanche",
       "number": 2,
       "title": "The Communication Tool Avalanche — Quorum Ratchets, 1950–2026 AI Winters & DES-10",
-      "subtitle": "Amara, Liam, and Kenji trace externalized signal gates from Archaean nanopores to sub-millijoule digital enzymes",
-      "summary": "Amara, Liam, and Kenji examine why collective intelligence scales by externalizing state behind selective gates: bacterial quorum switches, cyanobacterial SepJ circuit-breakers, mycorrhizal citation bias, 1950–2026 AI winters, and DES-10.",
+      "subtitle": "Cecily, Liam, and Kenji trace externalized signal gates from Archaean nanopores to sub-millijoule digital enzymes",
+      "summary": "Cecily, Liam, and Kenji examine why collective intelligence scales by externalizing state behind selective gates: bacterial quorum switches, cyanobacterial SepJ circuit-breakers, mycorrhizal citation bias, 1950–2026 AI winters, and DES-10.",
       "topic_tags": [
         "communication-avalanche",
         "quorum-sensing",
@@ -545,18 +605,18 @@
         "des-10"
       ],
       "panel": [
-        "Amara",
+        "Cecily",
         "Liam",
         "Kenji"
       ],
       "panel_profiles": [
         {
-          "name": "Amara",
+          "name": "Cecily",
           "group": "host",
-          "title": "Systems Storyteller · West African English",
-          "voice_id": "mzbNqbWwLuZObi7qEA67",
-          "fallback_voice": "en-NG-EzinneNeural",
-          "color": "#22D3EE",
+          "title": "Lead Science Host · African American English",
+          "voice_id": "NQMJRVvPew6HsaebYnZj",
+          "fallback_voice": "en-US-EmmaMultilingualNeural",
+          "color": "#14B8A6",
           "pan": [
             0.98,
             0.98
@@ -591,25 +651,25 @@
         "eleven_v4"
       ],
       "published_utc": "2026-11-23T06:30:00Z",
-      "duration_sec": 360.8,
-      "duration_human": "6:01",
-      "byte_length": 6046065,
+      "duration_sec": 350.7,
+      "duration_human": "5:51",
+      "byte_length": 5890990,
       "audio_url": "/media/radio/episodes/ep02-communication-tool-avalanche.m4a",
       "captions_url": "/media/radio/captions/ep02-communication-tool-avalanche.vtt",
       "transcript_url": "/media/radio/transcripts/ep02-communication-tool-avalanche.json",
       "turn_count": 17,
       "card_count": 6,
-      "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+      "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
       "turns": [
         {
           "turn_index": 0,
-          "speaker": "Amara",
-          "role": "Systems Storyteller · West African English",
+          "speaker": "Cecily",
+          "role": "Lead Science Host · African American English",
           "group": "host",
-          "color": "#22D3EE",
+          "color": "#14B8A6",
           "start_sec": 1.83,
-          "end_sec": 25.786,
-          "text": "Hello and welcome to Episode Two of OpenIE Research Radio! I'm Amara, joined in the studio by Liam and Kenji — three AI-synthesized OpenIE research personas voiced with ElevenLabs neural voices and grounded in verified Open Interface Engineering studies. Today we're diving into The Communication Tool Avalanche."
+          "end_sec": 23.499,
+          "text": "Hello and welcome to Episode Two of OpenIE Research Radio! I'm Cecily, joined in the studio by Liam and Kenji — three AI-synthesized OpenIE research personas voiced with ElevenLabs neural voices and grounded in verified Open Interface Engineering studies. Today we're diving into The Communication Tool Avalanche."
         },
         {
           "turn_index": 1,
@@ -617,8 +677,8 @@
           "role": "Energetic Foil · Australian English",
           "group": "skeptic",
           "color": "#FB923C",
-          "start_sec": 25.976,
-          "end_sec": 39.385,
+          "start_sec": 23.689,
+          "end_sec": 37.099,
           "text": "Alright Kenji, pitch me the big thesis without any academic fluff! Why put ancient bacteria, slime molds, starling murmurations, printing presses, and multi-agent language models inside one mathematical operator?"
         },
         {
@@ -627,18 +687,18 @@
           "role": "Orchestration & Runtime Engineer · Filipino/APAC English",
           "group": "specialist",
           "color": "#6EE7B7",
-          "start_sec": 39.655,
-          "end_sec": 67.232,
+          "start_sec": 37.369,
+          "end_sec": 64.946,
           "text": "Because isolated brains hit steep metabolic walls long before collective problems saturate, Liam! What unlocks superlinear scaling is a three-phase ratchet checked mechanically in Lean 4.36.0 across thirty-one theorems with zero sorry: Externalize state into a shared medium, Ingest it only across a threshold and validity gate, and Transform recipient state without regressing."
         },
         {
           "turn_index": 3,
-          "speaker": "Amara",
-          "role": "Systems Storyteller · West African English",
+          "speaker": "Cecily",
+          "role": "Lead Science Host · African American English",
           "group": "host",
-          "color": "#22D3EE",
-          "start_sec": 67.502,
-          "end_sec": 87.12,
+          "color": "#14B8A6",
+          "start_sec": 65.216,
+          "end_sec": 83.385,
           "text": "Start at Rung CL02, three point five billion years ago: bacterial quorum sensing in Vibrio fischeri and Pseudomonas aeruginosa. One lone cell drifting in open water never wastes precious ATP pumping out bioluminescent enzymes or biofilms."
         },
         {
@@ -647,8 +707,8 @@
           "role": "Orchestration & Runtime Engineer · Filipino/APAC English",
           "group": "specialist",
           "color": "#6EE7B7",
-          "start_sec": 87.39,
-          "end_sec": 111.511,
+          "start_sec": 83.655,
+          "end_sec": 107.775,
           "text": "In our pre-registered simulation CA-M1 under seed 20261123, a cooperative Hill switch with exponent two to four saves ninety-five point four nine to ninety-nine point one seven percent of regulon ATP at low density, while suppressing premature noise firing by eleven point six six times!"
         },
         {
@@ -657,8 +717,8 @@
           "role": "Energetic Foil · Australian English",
           "group": "skeptic",
           "color": "#FB923C",
-          "start_sec": 111.701,
-          "end_sec": 126.846,
+          "start_sec": 107.965,
+          "end_sec": 123.11,
           "text": "Wait a minute — once cells connect into multicellular filaments like cyanobacteria in Rung CL03 and share cytoplasm through fifteen-nanometer SepJ nanopores, doesn't one punctured cell drain the whole hundred-cell filament dry?"
         },
         {
@@ -667,8 +727,8 @@
           "role": "Orchestration & Runtime Engineer · Filipino/APAC English",
           "group": "specialist",
           "color": "#6EE7B7",
-          "start_sec": 127.116,
-          "end_sec": 148.071,
+          "start_sec": 123.38,
+          "end_sec": 144.335,
           "text": "It absolutely does if the pore stays open! In model CA-M2, an ungated twenty-cell filament collapses to zero percent survival when cell-zero lyses. With calcium-triggered SepJ plug closure in fifty milliseconds, nineteen out of twenty cells — ninety-five percent — survive intact."
         },
         {
@@ -677,28 +737,28 @@
           "role": "Energetic Foil · Australian English",
           "group": "skeptic",
           "color": "#FB923C",
-          "start_sec": 148.261,
-          "end_sec": 163.466,
+          "start_sec": 144.525,
+          "end_sec": 159.73,
           "text": "And I love that Section 3 refuses to repeat romanticized pop-science myths! People constantly claim forest mother trees broadcast intentional warning messages to kin through fungal networks, and we actually checked the forestry audit."
         },
         {
           "turn_index": 8,
-          "speaker": "Amara",
-          "role": "Systems Storyteller · West African English",
+          "speaker": "Cecily",
+          "role": "Lead Science Host · African American English",
           "group": "host",
-          "color": "#22D3EE",
-          "start_sec": 163.736,
-          "end_sec": 190.216,
+          "color": "#14B8A6",
+          "start_sec": 160.0,
+          "end_sec": 183.148,
           "text": "Yes! Simard's 1997 carbon-isotope transfer across ectomycorrhizal hyphae is solid biophysics — tagged E — but Karst, Jones, and Hoeksema's 2023 systematic audit exposed heavy citation bias and confounders behind teleological mother-tree stories, so we separate biophysical flux from unsubstantiated signaling intent."
         },
         {
           "turn_index": 9,
-          "speaker": "Amara",
-          "role": "Systems Storyteller · West African English",
+          "speaker": "Cecily",
+          "role": "Lead Science Host · African American English",
           "group": "host",
-          "color": "#22D3EE",
-          "start_sec": 190.486,
-          "end_sec": 206.639,
+          "color": "#14B8A6",
+          "start_sec": 183.418,
+          "end_sec": 198.509,
           "text": "Now map that exact same gate principle onto seventy-six years of artificial intelligence from 1950 to 2026! Why did AI Winter One hit in 1974 and AI Winter Two hit in 1988?"
         },
         {
@@ -707,8 +767,8 @@
           "role": "Orchestration & Runtime Engineer · Filipino/APAC English",
           "group": "specialist",
           "color": "#6EE7B7",
-          "start_sec": 206.909,
-          "end_sec": 237.025,
+          "start_sec": 198.779,
+          "end_sec": 228.896,
           "text": "Every surge paired a compact externalized representation with a sound gate — Lisp recursion in 1956, backprop chain-rule gradients in 1986, sparse MoE top-k routing in 2022. Every AI Winter struck when signals outran verification: Hearsay-II untyped blackboards locked up quadratically, and MYCIN certainty factors drifted across multi-hop chains."
         },
         {
@@ -717,8 +777,8 @@
           "role": "Energetic Foil · Australian English",
           "group": "skeptic",
           "color": "#FB923C",
-          "start_sec": 237.215,
-          "end_sec": 253.038,
+          "start_sec": 229.086,
+          "end_sec": 244.908,
           "text": "Hang on — today's unverified multi-agent LLM chat loops are literally 1975 Hearsay-II blackboards burning a hundred joules a turn! Agents firing three-point-seven-x bloated English essays at each other until hallucinations lock in!"
         },
         {
@@ -727,18 +787,18 @@
           "role": "Orchestration & Runtime Engineer · Filipino/APAC English",
           "group": "specialist",
           "color": "#6EE7B7",
-          "start_sec": 253.308,
-          "end_sec": 276.275,
+          "start_sec": 245.178,
+          "end_sec": 268.145,
           "text": "That's why we engineered DES-10 — ten-camp Digital Enzymatic Synthesis. Just like a biological enzyme slashes a reaction's activation barrier and exits unconsumed, a digital enzyme pairs a canonical typed schema with BLAKE3 hashing, Ed25519 signatures, and a deterministic verifier."
         },
         {
           "turn_index": 13,
-          "speaker": "Amara",
-          "role": "Systems Storyteller · West African English",
+          "speaker": "Cecily",
+          "role": "Lead Science Host · African American English",
           "group": "host",
-          "color": "#22D3EE",
-          "start_sec": 276.545,
-          "end_sec": 288.705,
+          "color": "#14B8A6",
+          "start_sec": 268.415,
+          "end_sec": 279.402,
           "text": "Give us the Linux RAPL numbers from benchmarks CTA-E1 through CTA-E3, Kenji — keeping clear that board_metered is false and these are socket reported joules."
         },
         {
@@ -747,8 +807,8 @@
           "role": "Orchestration & Runtime Engineer · Filipino/APAC English",
           "group": "specialist",
           "color": "#6EE7B7",
-          "start_sec": 288.975,
-          "end_sec": 321.925,
+          "start_sec": 279.672,
+          "end_sec": 312.622,
           "text": "Rust BLAKE3 plus Ed25519 envelope verification takes twenty-five point nine five to thirty-seven point three nine microseconds — just six hundred forty-three to nine hundred twenty-six microjoules per edge! Zero-clock Linux eventfd waiting cuts one-percent-duty socket energy by two point two one times versus one-kilohertz polling, and min-cost flow reroutes around two hundred out of two hundred Byzantine faults in two point four microseconds."
         },
         {
@@ -757,28 +817,28 @@
           "role": "Energetic Foil · Australian English",
           "group": "skeptic",
           "color": "#FB923C",
-          "start_sec": 322.115,
-          "end_sec": 345.457,
+          "start_sec": 312.812,
+          "end_sec": 336.154,
           "text": "And once a frontier fifteen-joule model solves a novel bug and clears the test gate, downward crystallization locks that fix into a one-point-seven-seven microjoule lookup case — matching our twenty-generation cultural ratchet CA-M5, where attested libraries held one hundred percent competence after synthetic teachers left, while unverified imitation dropped to twenty-nine percent!"
         },
         {
           "turn_index": 16,
-          "speaker": "Amara",
-          "role": "Systems Storyteller · West African English",
+          "speaker": "Cecily",
+          "role": "Lead Science Host · African American English",
           "group": "host",
-          "color": "#22D3EE",
-          "start_sec": 345.727,
-          "end_sec": 358.875,
-          "text": "Gate the channel, verify the payload, and crystallize every verified gain. Up next in Episode Three, Priya, Marcus, and Claire dive into World Coding and RCE-JEPA!"
+          "color": "#14B8A6",
+          "start_sec": 336.424,
+          "end_sec": 348.786,
+          "text": "Gate the channel, verify the payload, and crystallize every verified gain. Up next in Episode Three, Priya, Nia, and Devon dive into World Coding and RCE-JEPA!"
         }
       ],
       "cards": [
         {
           "id": "ep02-communication-tool-avalanche-card-00-0",
           "at_sec": 2.63,
-          "end_sec": 25.786,
+          "end_sec": 23.499,
           "turn_index": 0,
-          "speaker": "Amara",
+          "speaker": "Cecily",
           "kind": "study",
           "badge": "[T]",
           "title": "The Communication Tool Avalanche (31 Lean 4 Theorems)",
@@ -787,8 +847,8 @@
         },
         {
           "id": "ep02-communication-tool-avalanche-card-04-0",
-          "at_sec": 88.19,
-          "end_sec": 111.511,
+          "at_sec": 84.455,
+          "end_sec": 107.775,
           "turn_index": 4,
           "speaker": "Kenji",
           "kind": "receipt",
@@ -799,8 +859,8 @@
         },
         {
           "id": "ep02-communication-tool-avalanche-card-06-0",
-          "at_sec": 127.916,
-          "end_sec": 148.071,
+          "at_sec": 124.18,
+          "end_sec": 144.335,
           "turn_index": 6,
           "speaker": "Kenji",
           "kind": "receipt",
@@ -811,10 +871,10 @@
         },
         {
           "id": "ep02-communication-tool-avalanche-card-08-0",
-          "at_sec": 164.536,
-          "end_sec": 190.216,
+          "at_sec": 160.8,
+          "end_sec": 183.148,
           "turn_index": 8,
-          "speaker": "Amara",
+          "speaker": "Cecily",
           "kind": "falsifier",
           "badge": "[E]",
           "title": "Mycorrhizal Carbon Flux vs. 'Mother-Tree' Citation Bias",
@@ -823,8 +883,8 @@
         },
         {
           "id": "ep02-communication-tool-avalanche-card-12-0",
-          "at_sec": 254.108,
-          "end_sec": 276.275,
+          "at_sec": 245.978,
+          "end_sec": 268.145,
           "turn_index": 12,
           "speaker": "Kenji",
           "kind": "receipt",
@@ -835,8 +895,8 @@
         },
         {
           "id": "ep02-communication-tool-avalanche-card-15-0",
-          "at_sec": 322.915,
-          "end_sec": 345.457,
+          "at_sec": 313.612,
+          "end_sec": 336.154,
           "turn_index": 15,
           "speaker": "Liam",
           "kind": "receipt",
@@ -851,8 +911,8 @@
       "id": "ep03-rce-world-coding",
       "number": 3,
       "title": "World Coding — The Reality Code Engine, FormJEPA/FormEBM & 40/40 Verified Repair",
-      "subtitle": "Priya, Marcus, and Claire examine state-machine Forms, 8.42M FormJEPA-v1, compiler payback N*, and why Rung F stayed in observe mode",
-      "summary": "Priya, Marcus, and Claire unpack RCE, RCE-JEPA, RCE Compile, and RCE-VC: 5,537 Lean 4 theorem constants, FormJEPA-v1, FormEBM-v2, 40/40 H15-Iterative repair, compiler payback horizons N*, and candid falsifiers.",
+      "subtitle": "Priya, Nia, and Devon examine state-machine Forms, 8.42M FormJEPA-v1, compiler payback N*, and why Rung F stayed in observe mode",
+      "summary": "Priya, Nia, and Devon unpack RCE, RCE-JEPA, RCE Compile, and RCE-VC: 5,537 Lean 4 theorem constants, FormJEPA-v1, FormEBM-v2, 40/40 H15-Iterative repair, compiler payback horizons N*, and candid falsifiers.",
       "topic_tags": [
         "rce",
         "rce-jepa",
@@ -861,8 +921,8 @@
       ],
       "panel": [
         "Priya",
-        "Marcus",
-        "Claire"
+        "Nia",
+        "Devon"
       ],
       "panel_profiles": [
         {
@@ -878,24 +938,24 @@
           ]
         },
         {
-          "name": "Marcus",
+          "name": "Nia",
           "group": "skeptic",
-          "title": "Empirical Foil · North American English",
-          "voice_id": "iP95p4xoKVk53GoZ742B",
-          "fallback_voice": "en-US-BrianMultilingualNeural",
-          "color": "#F59E0B",
+          "title": "Empirical Auditor · African American English",
+          "voice_id": "GbDIo39THauInuigCmPM",
+          "fallback_voice": "en-US-JennyNeural",
+          "color": "#F97316",
           "pan": [
             1.04,
             0.9
           ]
         },
         {
-          "name": "Claire",
+          "name": "Devon",
           "group": "specialist",
-          "title": "Formal Verification & Silicon Architect · British English",
-          "voice_id": "Xb7hH8MSUJpSbSDYk0k2",
-          "fallback_voice": "en-GB-SoniaNeural",
-          "color": "#60A5FA",
+          "title": "Systems & Compiler Architect · African American English",
+          "voice_id": "CMUEYyUNA4TrldQy4HLM",
+          "fallback_voice": "en-US-GuyNeural",
+          "color": "#6366F1",
           "pan": [
             0.9,
             1.04
@@ -906,15 +966,15 @@
         "eleven_v4"
       ],
       "published_utc": "2026-11-23T07:00:00Z",
-      "duration_sec": 313.7,
-      "duration_human": "5:14",
-      "byte_length": 5235673,
+      "duration_sec": 312.1,
+      "duration_human": "5:12",
+      "byte_length": 5216340,
       "audio_url": "/media/radio/episodes/ep03-rce-world-coding.m4a",
       "captions_url": "/media/radio/captions/ep03-rce-world-coding.vtt",
       "transcript_url": "/media/radio/transcripts/ep03-rce-world-coding.json",
       "turn_count": 16,
       "card_count": 6,
-      "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+      "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
       "turns": [
         {
           "turn_index": 0,
@@ -923,28 +983,28 @@
           "group": "host",
           "color": "#34D399",
           "start_sec": 1.83,
-          "end_sec": 29.319,
-          "text": "Welcome to Episode Three of OpenIE Research Radio! I'm Priya, joined today by Marcus and Claire — three AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio synthesis and grounded strictly in verified Open Interface Engineering studies. Our subject today is World Coding: RCE, RCE-JEPA, RCE Compile, and RCE-VC."
+          "end_sec": 29.51,
+          "text": "Welcome to Episode Three of OpenIE Research Radio! I'm Priya, joined today by Nia and Devon — three AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio synthesis and grounded strictly in verified Open Interface Engineering studies. Our subject today is World Coding: RCE, RCE-JEPA, RCE Compile, and RCE-VC."
         },
         {
           "turn_index": 1,
-          "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "speaker": "Nia",
+          "role": "Empirical Auditor · African American English",
           "group": "skeptic",
-          "color": "#F59E0B",
-          "start_sec": 29.509,
-          "end_sec": 42.327,
-          "text": "Claire, let's address the elephant in the room right away. People see JEPA — Joint Embedding Predictive Architecture — in the title and assume we're letting a neural latent space decide whether software is safe to ship. Are we?"
+          "color": "#F97316",
+          "start_sec": 29.7,
+          "end_sec": 43.442,
+          "text": "Devon, let's address the elephant in the room right away. People see JEPA — Joint Embedding Predictive Architecture — in the title and assume we're letting a neural latent space decide whether software is safe to ship. Are we?"
         },
         {
           "turn_index": 2,
-          "speaker": "Claire",
-          "role": "Formal Verification & Silicon Architect · British English",
+          "speaker": "Devon",
+          "role": "Systems & Compiler Architect · African American English",
           "group": "specialist",
-          "color": "#60A5FA",
-          "start_sec": 42.597,
-          "end_sec": 64.405,
-          "text": "Categorically no, Marcus! That is why the study is titled World Coding, with JEPA as premise rather than the whole method. Any proposer — a human engineer, a deterministic rule ladder, a compact latent predictor, or a frontier language model — may suggest a Form. Only the deterministic checker decides admission."
+          "color": "#6366F1",
+          "start_sec": 43.712,
+          "end_sec": 65.014,
+          "text": "Categorically no, Nia! That is why the study is titled World Coding, with JEPA as premise rather than the whole method. Any proposer — a human engineer, a deterministic rule ladder, a compact latent predictor, or a frontier language model — may suggest a Form. Only the deterministic checker decides admission."
         },
         {
           "turn_index": 3,
@@ -952,28 +1012,28 @@
           "role": "Science Documentary Host · South Asian English",
           "group": "host",
           "color": "#34D399",
-          "start_sec": 64.675,
-          "end_sec": 84.582,
+          "start_sec": 65.284,
+          "end_sec": 85.192,
           "text": "Look at that energy ratio on Apple M5 Max reported joules: checking a Form costs forty-nine point zero four millijoules, whereas generating a single local thirty-five-billion-parameter Qwen 3.6 proposal costs eighty-four point two five joules — over seventeen hundred times more!"
         },
         {
           "turn_index": 4,
-          "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "speaker": "Nia",
+          "role": "Empirical Auditor · African American English",
           "group": "skeptic",
-          "color": "#F59E0B",
-          "start_sec": 84.772,
-          "end_sec": 91.314,
+          "color": "#F97316",
+          "start_sec": 85.382,
+          "end_sec": 92.378,
           "text": "And before waking ANY neural weights at all, what happened when you ran the zero-model-call deterministic repair ladder?"
         },
         {
           "turn_index": 5,
-          "speaker": "Claire",
-          "role": "Formal Verification & Silicon Architect · British English",
+          "speaker": "Devon",
+          "role": "Systems & Compiler Architect · African American English",
           "group": "specialist",
-          "color": "#60A5FA",
-          "start_sec": 91.584,
-          "end_sec": 119.014,
+          "color": "#6366F1",
+          "start_sec": 92.648,
+          "end_sec": 119.613,
           "text": "The deterministic ladder closed one hundred and eleven of one hundred and fifty-one broken Forms — seventy-three point five percent — with zero model calls! Next, we trained two tiny purpose-built networks on one thousand three hundred eighty-seven strictly disjoint Forms: FormJEPA-v1 at eight point four two million parameters, and FormEBM-v2 at five point eight five million parameters."
         },
         {
@@ -982,58 +1042,58 @@
           "role": "Science Documentary Host · South Asian English",
           "group": "host",
           "color": "#34D399",
-          "start_sec": 119.284,
-          "end_sec": 135.283,
+          "start_sec": 119.883,
+          "end_sec": 135.882,
           "text": "An eight-point-four-million parameter latent model lifted repair from seventy-three point five percent up to ninety-one point four percent, and matched a thirty-five-billion-parameter model single-shot on H15 at twenty-seven out of forty!"
         },
         {
           "turn_index": 7,
-          "speaker": "Claire",
-          "role": "Formal Verification & Silicon Architect · British English",
+          "speaker": "Devon",
+          "role": "Systems & Compiler Architect · African American English",
           "group": "specialist",
-          "color": "#60A5FA",
-          "start_sec": 135.553,
-          "end_sec": 154.598,
+          "color": "#6366F1",
+          "start_sec": 136.152,
+          "end_sec": 154.599,
           "text": "At just four hundred seventy-four point eight millijoules of Linux RAPL core reported joules across sixteen candidates! Meanwhile, FormEBM-v2 ranked candidate validity at AUROC zero point eight nine two two, cutting rce check calls by two point three nine times."
         },
         {
           "turn_index": 8,
-          "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "speaker": "Nia",
+          "role": "Empirical Auditor · African American English",
           "group": "skeptic",
-          "color": "#F59E0B",
-          "start_sec": 154.788,
-          "end_sec": 168.437,
+          "color": "#F97316",
+          "start_sec": 154.789,
+          "end_sec": 169.172,
           "text": "Now give us the H15-Iterative stress test — where frontier models get zero access to the original source file, only public standard-library headers and bounded deterministic checker diagnostics for up to five turns."
         },
         {
           "turn_index": 9,
-          "speaker": "Claire",
-          "role": "Formal Verification & Silicon Architect · British English",
+          "speaker": "Devon",
+          "role": "Systems & Compiler Architect · African American English",
           "group": "specialist",
-          "color": "#60A5FA",
-          "start_sec": 168.707,
-          "end_sec": 194.822,
+          "color": "#6366F1",
+          "start_sec": 169.442,
+          "end_sec": 193.933,
           "text": "Claude Opus 5.5 and Claude Sonnet 5.5 both closed forty out of forty — one hundred percent, zero contradictions! xAI Grok 4.20 closed thirty-nine out of forty with zero contradictions. And once crystallized into warm Gear-0 case memory, all forty replay with zero model calls at one point seven seven one microjoules!"
         },
         {
           "turn_index": 10,
-          "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "speaker": "Nia",
+          "role": "Empirical Auditor · African American English",
           "group": "skeptic",
-          "color": "#F59E0B",
-          "start_sec": 195.012,
-          "end_sec": 203.532,
-          "text": "Hold everything, Claire — we promised zero cherry-picking on this show! Tell the listeners which rung FAILED its promotion gate in RCE-JEPA!"
+          "color": "#F97316",
+          "start_sec": 194.123,
+          "end_sec": 203.483,
+          "text": "Hold everything, Devon — we promised zero cherry-picking on this show! Tell the listeners which rung FAILED its promotion gate in RCE-JEPA!"
         },
         {
           "turn_index": 11,
-          "speaker": "Claire",
-          "role": "Formal Verification & Silicon Architect · British English",
+          "speaker": "Devon",
+          "role": "Systems & Compiler Architect · African American English",
           "group": "specialist",
-          "color": "#60A5FA",
-          "start_sec": 203.802,
-          "end_sec": 223.394,
+          "color": "#6366F1",
+          "start_sec": 203.753,
+          "end_sec": 223.096,
           "text": "On the one-hundred-fifty-one-task rce repair Rung-F audit, our pre-registered ceiling was two point zero percent. Rung F landed at three out of one hundred nineteen — two point five percent! So holds returned false, and Rung F remained locked in observe mode rather than being promoted."
         },
         {
@@ -1042,28 +1102,28 @@
           "role": "Science Documentary Host · South Asian English",
           "group": "host",
           "color": "#34D399",
-          "start_sec": 223.664,
-          "end_sec": 237.417,
+          "start_sec": 223.366,
+          "end_sec": 237.119,
           "text": "That same willingness to let evidence falsify an overbroad statement shaped RCE Compile as well, when we tested a single candidate definition of compilation across twelve real compiler families."
         },
         {
           "turn_index": 13,
-          "speaker": "Claire",
-          "role": "Formal Verification & Silicon Architect · British English",
+          "speaker": "Devon",
+          "role": "Systems & Compiler Architect · African American English",
           "group": "specialist",
-          "color": "#60A5FA",
-          "start_sec": 237.687,
-          "end_sec": 270.519,
+          "color": "#6366F1",
+          "start_sec": 237.389,
+          "end_sec": 267.993,
           "text": "It failed as a description of existing compilers — because standard toolchains omit explicit energy gates and linking digests — and held cleanly as a seven-part normal form! Across two hundred eighty checksum-verified Zen 5 RAPL cells, compiling Python to clang dash O3 pays back its compile energy after a median N-star of two thousand four hundred ninety runs, while thirty percent of clang and rustc O2-to-O3 tiers never pay back their extra compile joules!"
         },
         {
           "turn_index": 14,
-          "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "speaker": "Nia",
+          "role": "Empirical Auditor · African American English",
           "group": "skeptic",
-          "color": "#F59E0B",
-          "start_sec": 270.709,
-          "end_sec": 287.689,
+          "color": "#F97316",
+          "start_sec": 268.183,
+          "end_sec": 286.668,
           "text": "Thirty percent of dash O3 builds burn extra compiler electricity for zero runtime return! Meanwhile, De Bruijn nameless SHA-256 memoization hit zero out of five hundred false collisions and cut warm rustc compile energy by four hundred forty-eight point five times!"
         },
         {
@@ -1072,16 +1132,16 @@
           "role": "Science Documentary Host · South Asian English",
           "group": "host",
           "color": "#34D399",
-          "start_sec": 287.959,
-          "end_sec": 311.737,
-          "text": "And RCE-VC completes the stack at version control: admitting non-overlapping changes against one hundred thousand name-free units in seventy microseconds at three hundred forty microjoules while keeping Git intact. Up next in Episode Four, Elena, Sean, and Tariq tackle Deterministic Null and SATB hardware shunts!"
+          "start_sec": 286.938,
+          "end_sec": 310.224,
+          "text": "And RCE-VC completes the stack at version control: admitting non-overlapping changes against one hundred thousand name-free units in seventy microseconds at three hundred forty microjoules while keeping Git intact. Up next in Episode Four, Elena, Marcus, and Tariq tackle Deterministic Null and SATB hardware shunts!"
         }
       ],
       "cards": [
         {
           "id": "ep03-rce-world-coding-card-00-0",
           "at_sec": 2.63,
-          "end_sec": 29.319,
+          "end_sec": 29.51,
           "turn_index": 0,
           "speaker": "Priya",
           "kind": "study",
@@ -1092,10 +1152,10 @@
         },
         {
           "id": "ep03-rce-world-coding-card-02-0",
-          "at_sec": 43.397,
-          "end_sec": 64.405,
+          "at_sec": 44.512,
+          "end_sec": 65.014,
           "turn_index": 2,
-          "speaker": "Claire",
+          "speaker": "Devon",
           "kind": "study",
           "badge": "[M]",
           "title": "RCE-JEPA: Proposer Suggests, Checker Decides",
@@ -1104,10 +1164,10 @@
         },
         {
           "id": "ep03-rce-world-coding-card-05-0",
-          "at_sec": 92.384,
-          "end_sec": 119.014,
+          "at_sec": 93.448,
+          "end_sec": 119.613,
           "turn_index": 5,
-          "speaker": "Claire",
+          "speaker": "Devon",
           "kind": "receipt",
           "badge": "reported_j",
           "title": "FormJEPA-v1 (8.42M) & FormEBM-v2 (5.85M)",
@@ -1116,10 +1176,10 @@
         },
         {
           "id": "ep03-rce-world-coding-card-09-0",
-          "at_sec": 169.507,
-          "end_sec": 194.822,
+          "at_sec": 170.242,
+          "end_sec": 193.933,
           "turn_index": 9,
-          "speaker": "Claire",
+          "speaker": "Devon",
           "kind": "receipt",
           "badge": "[M]",
           "title": "H15-Iterative: 40/40 Closed + 1.771 μJ Gear-0 Replay",
@@ -1128,10 +1188,10 @@
         },
         {
           "id": "ep03-rce-world-coding-card-11-0",
-          "at_sec": 204.602,
-          "end_sec": 223.394,
+          "at_sec": 204.553,
+          "end_sec": 223.096,
           "turn_index": 11,
-          "speaker": "Claire",
+          "speaker": "Devon",
           "kind": "falsifier",
           "badge": "HOLDS: FALSE",
           "title": "Rung-F Audit Kept in Observe Mode (2.5% > 2.0%)",
@@ -1140,10 +1200,10 @@
         },
         {
           "id": "ep03-rce-world-coding-card-13-0",
-          "at_sec": 238.487,
-          "end_sec": 270.519,
+          "at_sec": 238.189,
+          "end_sec": 267.993,
           "turn_index": 13,
-          "speaker": "Claire",
+          "speaker": "Devon",
           "kind": "study",
           "badge": "reported_j",
           "title": "RCE Compile: Payback Horizon N* & De Bruijn Cache",
@@ -1156,8 +1216,8 @@
       "id": "ep04-deterministic-null-satb",
       "number": 4,
       "title": "Deterministic Null & SATB — Pre-Registered Baselines and INA238 Shunt Rails vs. RAPL",
-      "subtitle": "Elena, Sean, and Tariq audit Bitcoin-anchored Shape-D controls, Jetson AGX Thor shunts, and 89.88% Kepler attribution errors",
-      "summary": "Elena, Sean, and Tariq examine why every AI benchmark needs a zero-model-call Shape-D control and rootless telemetry attribution: OpenTimestamps + drand pre-registration, 6 frontier models across 4,030 instances, and 5-host SATB conformance.",
+      "subtitle": "Elena, Marcus, and Tariq audit Bitcoin-anchored Shape-D controls, Jetson AGX Thor shunts, and 89.88% Kepler attribution errors",
+      "summary": "Elena, Marcus, and Tariq examine why every AI benchmark needs a zero-model-call Shape-D control and rootless telemetry attribution: OpenTimestamps + drand pre-registration, 6 frontier models across 4,030 instances, and 5-host SATB conformance.",
       "topic_tags": [
         "deterministic-null",
         "satb-harness",
@@ -1166,7 +1226,7 @@
       ],
       "panel": [
         "Elena",
-        "Sean",
+        "Marcus",
         "Tariq"
       ],
       "panel_profiles": [
@@ -1183,12 +1243,12 @@
           ]
         },
         {
-          "name": "Sean",
+          "name": "Marcus",
           "group": "skeptic",
-          "title": "Auditor & Skeptic · Irish English",
-          "voice_id": "tRqj2rLkZmeP61CMmIX4",
-          "fallback_voice": "en-IE-ConnorNeural",
-          "color": "#FBBF24",
+          "title": "Empirical Foil · African American English",
+          "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+          "fallback_voice": "en-US-ChristopherNeural",
+          "color": "#F59E0B",
           "pan": [
             1.04,
             0.9
@@ -1211,15 +1271,15 @@
         "eleven_v4"
       ],
       "published_utc": "2026-11-23T07:30:00Z",
-      "duration_sec": 313.9,
-      "duration_human": "5:14",
-      "byte_length": 5426747,
+      "duration_sec": 313.3,
+      "duration_human": "5:13",
+      "byte_length": 5467820,
       "audio_url": "/media/radio/episodes/ep04-deterministic-null-satb.m4a",
       "captions_url": "/media/radio/captions/ep04-deterministic-null-satb.vtt",
       "transcript_url": "/media/radio/transcripts/ep04-deterministic-null-satb.json",
       "turn_count": 16,
       "card_count": 5,
-      "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+      "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
       "turns": [
         {
           "turn_index": 0,
@@ -1228,17 +1288,17 @@
           "group": "host",
           "color": "#00D4AA",
           "start_sec": 1.83,
-          "end_sec": 24.141,
-          "text": "Welcome back to Episode Four of OpenIE Research Radio! I'm Elena, joined by Sean and Tariq — AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio speech and grounded strictly in verified Open Interface Engineering studies. Today we pair Deterministic Null with the Satiation Benchmark Harness, SATB."
+          "end_sec": 24.463,
+          "text": "Welcome back to Episode Four of OpenIE Research Radio! I'm Elena, joined by Marcus and Tariq — AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio speech and grounded strictly in verified Open Interface Engineering studies. Today we pair Deterministic Null with the Satiation Benchmark Harness, SATB."
         },
         {
           "turn_index": 1,
-          "speaker": "Sean",
-          "role": "Auditor & Skeptic · Irish English",
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
-          "color": "#FBBF24",
-          "start_sec": 24.331,
-          "end_sec": 40.251,
+          "color": "#F59E0B",
+          "start_sec": 24.653,
+          "end_sec": 40.653,
           "text": "You know this is right up an auditor's alley, Elena! In clinical medicine, nobody clears a therapy without a placebo arm. Yet in AI, teams publish billion-parameter agent leaderboards every single week without checking what a zero-model-call integer loop scores first!"
         },
         {
@@ -1247,8 +1307,8 @@
           "role": "Telemetry & Physics Specialist · Middle Eastern English",
           "group": "specialist",
           "color": "#C084FC",
-          "start_sec": 40.521,
-          "end_sec": 69.43,
+          "start_sec": 40.923,
+          "end_sec": 69.833,
           "text": "So we built Shape D — strict N0 and dev-crystallized N1 — verified bit-exact across Rust, C++20, Go, Julia, and Python. Before evaluating a single held-out instance, we anchored the commitment digests to the Bitcoin calendar via OpenTimestamps and League of Entropy drand rounds six million six hundred sixty-three thousand seven hundred thirty-four and six million six hundred sixty-four thousand eighty-nine."
         },
         {
@@ -1257,8 +1317,8 @@
           "role": "Science Journalist · Hispanic/Spanish English",
           "group": "host",
           "color": "#00D4AA",
-          "start_sec": 69.7,
-          "end_sec": 98.431,
+          "start_sec": 70.103,
+          "end_sec": 98.834,
           "text": "Then we tested six frontier and open models — Claude Opus 5.5, Claude Sonnet 5.5, OpenAI gpt-oss-120b, xAI Grok 4.20, Qwen 3.6 35B-A3B, and Gemma 4 E4B-it — across four thousand thirty held-out instances and six real SWE-bench Verified repositories. Tariq, what broke loose?"
         },
         {
@@ -1267,18 +1327,18 @@
           "role": "Telemetry & Physics Specialist · Middle Eastern English",
           "group": "specialist",
           "color": "#C084FC",
-          "start_sec": 98.701,
-          "end_sec": 119.245,
+          "start_sec": 99.104,
+          "end_sec": 119.648,
           "text": "A clean split! On bounded formal and structured Track-A classes, single-turn neural inference failed to beat the deterministic baseline on nine of ten cells — until extended thinking reached forty-nine out of fifty and O-of-m clause feedback closed fifty out of fifty on Unique 3-SAT DRAT proofs!"
         },
         {
           "turn_index": 5,
-          "speaker": "Sean",
-          "role": "Auditor & Skeptic · Irish English",
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
-          "color": "#FBBF24",
-          "start_sec": 119.435,
-          "end_sec": 143.207,
+          "color": "#F59E0B",
+          "start_sec": 119.838,
+          "end_sec": 143.239,
           "text": "Aha! And on genuinely open-ended public benchmarks — BFCL v3, tau-bench Retail, BigCodeBench, and SWE-bench Verified — where pure lookup hits zero, neural models posted plus forty-five point eight to plus ninety-five percentage points of real gain! Shape D isn't anti-neural at all — it proves exactly WHERE neural joules earn their keep!"
         },
         {
@@ -1287,8 +1347,8 @@
           "role": "Telemetry & Physics Specialist · Middle Eastern English",
           "group": "specialist",
           "color": "#C084FC",
-          "start_sec": 143.477,
-          "end_sec": 154.75,
+          "start_sec": 143.509,
+          "end_sec": 154.781,
           "text": "And when recurring Zipfian workloads arrive online, crystallizing verified outputs back into Shape D cuts model calls and reported_j spend by three point five nine times."
         },
         {
@@ -1297,8 +1357,8 @@
           "role": "Science Journalist · Hispanic/Spanish English",
           "group": "host",
           "color": "#00D4AA",
-          "start_sec": 155.02,
-          "end_sec": 163.018,
+          "start_sec": 155.051,
+          "end_sec": 163.049,
           "text": "Now let's audit how those joules are measured in SATB — executed across five distinct silicon and OS archetypes!"
         },
         {
@@ -1307,18 +1367,18 @@
           "role": "Telemetry & Physics Specialist · Middle Eastern English",
           "group": "specialist",
           "color": "#C084FC",
-          "start_sec": 163.288,
-          "end_sec": 196.248,
+          "start_sec": 163.319,
+          "end_sec": 196.279,
           "text": "We ran all twelve conformance checks C1 through C12 across Apple M5 Max on Darwin IOReport, AMD Ryzen AI Max+ 395 Strix Halo with 0440 PLATYPUS-isolated RAPL, Intel Core i9-13900H Raptor Lake Linux, bare-metal Windows 11 Pro with rootless nvml.dll, and NVIDIA Jetson AGX Thor equipped with physical Texas Instruments INA238 whole-board and three-channel INA3221 rail shunts!"
         },
         {
           "turn_index": 9,
-          "speaker": "Sean",
-          "role": "Auditor & Skeptic · Irish English",
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
-          "color": "#FBBF24",
-          "start_sec": 196.438,
-          "end_sec": 217.441,
+          "color": "#F59E0B",
+          "start_sec": 196.469,
+          "end_sec": 217.802,
           "text": "Pause right there, Tariq! Jetson AGX Thor's physical TI INA238 and INA3221 shunts — like Kria KV260's INA260 — sit directly on the power rails, earning measured_j! What happened when you compared cloud-native Kepler CPU-proportional splitting against real hardware telemetry?"
         },
         {
@@ -1327,8 +1387,8 @@
           "role": "Telemetry & Physics Specialist · Middle Eastern English",
           "group": "specialist",
           "color": "#C084FC",
-          "start_sec": 217.711,
-          "end_sec": 240.737,
+          "start_sec": 218.072,
+          "end_sec": 241.097,
           "text": "Kepler CPU-proportional splitting erred by thirty-two point five nine percent up to eighty-nine point eight eight percent! And on bare-metal Windows 11, Win32 GetProcessTimes suffered fifteen-point-six-two-five millisecond tick aliasing under Falsifier 3 — missing minus eighty-nine point eight eight percent of short-burst CPU time!"
         },
         {
@@ -1337,8 +1397,8 @@
           "role": "Science Journalist · Hispanic/Spanish English",
           "group": "host",
           "color": "#00D4AA",
-          "start_sec": 241.007,
-          "end_sec": 252.227,
+          "start_sec": 241.367,
+          "end_sec": 252.588,
           "text": "Almost ninety percent attribution error from standard CPU-ratio formulas! Show how SATB Falsifier 6 stops shared-host background noise from polluting published results."
         },
         {
@@ -1347,18 +1407,18 @@
           "role": "Telemetry & Physics Specialist · Middle Eastern English",
           "group": "specialist",
           "color": "#C084FC",
-          "start_sec": 252.497,
-          "end_sec": 275.137,
+          "start_sec": 252.858,
+          "end_sec": 275.498,
           "text": "SATB pairs telemetry levels L0 through L4 with attribution classes A1 through N. Whenever background drift exceeds Falsifier 6 — as occurred on one hundred nine of one hundred seventy shared-host windows in AI Reads Human — net attribution is automatically withheld while raw counter traces stay preserved for inspection."
         },
         {
           "turn_index": 13,
-          "speaker": "Sean",
-          "role": "Auditor & Skeptic · Irish English",
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
-          "color": "#FBBF24",
-          "start_sec": 275.327,
-          "end_sec": 288.687,
+          "color": "#F59E0B",
+          "start_sec": 275.688,
+          "end_sec": 288.308,
           "text": "And across all five operating systems and architectures, Shape D checksum fifteen billion twenty-seven million seven hundred five thousand seven hundred thirty-six and C9 truncation replayed with zero byte diffs!"
         },
         {
@@ -1367,26 +1427,26 @@
           "role": "Science Journalist · Hispanic/Spanish English",
           "group": "host",
           "color": "#00D4AA",
-          "start_sec": 288.957,
-          "end_sec": 302.081,
+          "start_sec": 288.578,
+          "end_sec": 301.702,
           "text": "Pair that with Task Satiation versus Aggregate Rebound: every bounded job has a finish line where extra tokens add zero value, even while cheaper inference expands total Jevons demand across the economy."
         },
         {
           "turn_index": 15,
-          "speaker": "Sean",
-          "role": "Auditor & Skeptic · Irish English",
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
-          "color": "#FBBF24",
-          "start_sec": 302.271,
-          "end_sec": 311.95,
-          "text": "Next up in Episode Five, Mei, Liam, and Kwame test where bit-exact replay ends and GPU tolerance begins across real game engines!"
+          "color": "#F59E0B",
+          "start_sec": 301.892,
+          "end_sec": 311.332,
+          "text": "Next up in Episode Five, Mei, Liam, and Malik test where bit-exact replay ends and GPU tolerance begins across real game engines!"
         }
       ],
       "cards": [
         {
           "id": "ep04-deterministic-null-satb-card-00-0",
           "at_sec": 2.63,
-          "end_sec": 24.141,
+          "end_sec": 24.463,
           "turn_index": 0,
           "speaker": "Elena",
           "kind": "study",
@@ -1397,8 +1457,8 @@
         },
         {
           "id": "ep04-deterministic-null-satb-card-04-0",
-          "at_sec": 99.501,
-          "end_sec": 119.245,
+          "at_sec": 99.904,
+          "end_sec": 119.648,
           "turn_index": 4,
           "speaker": "Tariq",
           "kind": "receipt",
@@ -1409,8 +1469,8 @@
         },
         {
           "id": "ep04-deterministic-null-satb-card-07-0",
-          "at_sec": 155.82,
-          "end_sec": 163.018,
+          "at_sec": 155.851,
+          "end_sec": 163.049,
           "turn_index": 7,
           "speaker": "Elena",
           "kind": "study",
@@ -1421,8 +1481,8 @@
         },
         {
           "id": "ep04-deterministic-null-satb-card-10-0",
-          "at_sec": 218.511,
-          "end_sec": 240.737,
+          "at_sec": 218.872,
+          "end_sec": 241.097,
           "turn_index": 10,
           "speaker": "Tariq",
           "kind": "falsifier",
@@ -1433,8 +1493,8 @@
         },
         {
           "id": "ep04-deterministic-null-satb-card-14-0",
-          "at_sec": 289.757,
-          "end_sec": 302.081,
+          "at_sec": 289.378,
+          "end_sec": 301.702,
           "turn_index": 14,
           "speaker": "Elena",
           "kind": "study",
@@ -1449,8 +1509,8 @@
       "id": "ep05-game-engines-everywhere",
       "number": 5,
       "title": "Writing a Game Once — Q32.32 Lockstep, DirectX 12/Metal/Vulkan & Closing GE-H1..H9",
-      "subtitle": "Mei, Liam, and Kwame map where bit-exact Q32.32 replay ends, where GPU tolerance begins, and why std::sin diverges in 10 ticks",
-      "summary": "Mei, Liam, and Kwame walk through all nine executed falsifier suites GE-H1..GE-H9 across macOS, Linux, and Windows 11: 0/25,500 Q32.32 mismatches, tick-10 float divergence, 28/28 DirectX 12/Metal/Vulkan GPU pairs, and Godot 4.7.2 projection.",
+      "subtitle": "Mei, Liam, and Malik map where bit-exact Q32.32 replay ends, where GPU tolerance begins, and why std::sin diverges in 10 ticks",
+      "summary": "Mei, Liam, and Malik walk through all nine executed falsifier suites GE-H1..GE-H9 across macOS, Linux, and Windows 11: 0/25,500 Q32.32 mismatches, tick-10 float divergence, 28/28 DirectX 12/Metal/Vulkan GPU pairs, and Godot 4.7.2 projection.",
       "topic_tags": [
         "game-engines",
         "determinism",
@@ -1460,7 +1520,7 @@
       "panel": [
         "Mei",
         "Liam",
-        "Kwame"
+        "Malik"
       ],
       "panel_profiles": [
         {
@@ -1488,12 +1548,12 @@
           ]
         },
         {
-          "name": "Kwame",
+          "name": "Malik",
           "group": "specialist",
-          "title": "Distributed Systems Engineer · Nigerian English",
-          "voice_id": "PFnEp0d5QKq6baWI3azv",
-          "fallback_voice": "en-NG-AbeoNeural",
-          "color": "#A78BFA",
+          "title": "Engine & Hardware Fellow · African American English",
+          "voice_id": "lGMJWfnL2SVUwU7i6zQ7",
+          "fallback_voice": "en-US-BrianMultilingualNeural",
+          "color": "#8B5CF6",
           "pan": [
             0.9,
             1.04
@@ -1504,15 +1564,15 @@
         "eleven_v4"
       ],
       "published_utc": "2026-11-23T08:00:00Z",
-      "duration_sec": 287.8,
-      "duration_human": "4:48",
-      "byte_length": 4844810,
+      "duration_sec": 291.0,
+      "duration_human": "4:51",
+      "byte_length": 4947143,
       "audio_url": "/media/radio/episodes/ep05-game-engines-everywhere.m4a",
       "captions_url": "/media/radio/captions/ep05-game-engines-everywhere.vtt",
       "transcript_url": "/media/radio/transcripts/ep05-game-engines-everywhere.json",
       "turn_count": 16,
       "card_count": 6,
-      "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+      "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
       "turns": [
         {
           "turn_index": 0,
@@ -1521,8 +1581,8 @@
           "group": "host",
           "color": "#38BDF8",
           "start_sec": 1.83,
-          "end_sec": 25.209,
-          "text": "Welcome to Episode Five of OpenIE Research Radio! I'm Mei, joined in the studio by Liam and Kwame — three AI-synthesized OpenIE research personas voiced with ElevenLabs studio neural voices and grounded in verified Open Interface Engineering artifacts. Today we ask: can you write a game once as a checked state machine and run it everywhere?"
+          "end_sec": 24.981,
+          "text": "Welcome to Episode Five of OpenIE Research Radio! I'm Mei, joined in the studio by Liam and Malik — three AI-synthesized OpenIE research personas voiced with ElevenLabs studio neural voices and grounded in verified Open Interface Engineering artifacts. Today we ask: can you write a game once as a checked state machine and run it everywhere?"
         },
         {
           "turn_index": 1,
@@ -1530,18 +1590,18 @@
           "role": "Energetic Foil · Australian English",
           "group": "skeptic",
           "color": "#FB923C",
-          "start_sec": 25.399,
-          "end_sec": 40.683,
-          "text": "Hold on Kwame — game studios have torched tens of millions of engineering hours trying to keep multiplayer lockstep replays synchronized across Windows PCs, Macs, and Linux servers! How fast does ordinary floating-point physics actually drift?"
+          "start_sec": 25.171,
+          "end_sec": 39.805,
+          "text": "Hold on Malik — game studios have torched tens of millions of engineering hours trying to keep multiplayer lockstep replays synchronized across Windows PCs, Macs, and Linux servers! How fast does ordinary floating-point physics actually drift?"
         },
         {
           "turn_index": 2,
-          "speaker": "Kwame",
-          "role": "Distributed Systems Engineer · Nigerian English",
+          "speaker": "Malik",
+          "role": "Engine & Hardware Fellow · African American English",
           "group": "specialist",
-          "color": "#A78BFA",
-          "start_sec": 40.953,
-          "end_sec": 63.433,
+          "color": "#8B5CF6",
+          "start_sec": 40.075,
+          "end_sec": 63.113,
           "text": "Faster than people blink, Liam! In falsifier GE-H2, standard-library sine — Apple libSystem versus Linux glibc versus Windows UCRT — diverges between tick ten and tick thirty-seven! Even without transcendentals, MSVC slash fp colon precise versus Clang fused multiply-add splits apart at tick one hundred ninety-two."
         },
         {
@@ -1550,8 +1610,8 @@
           "role": "Tech & Physics Host · East/SE Asian English",
           "group": "host",
           "color": "#38BDF8",
-          "start_sec": 63.703,
-          "end_sec": 82.364,
+          "start_sec": 63.383,
+          "end_sec": 82.045,
           "text": "Tick ten! At sixty frames per second, three operating systems disagree on trajectory state inside one-sixth of a second! And across eight hundred forty chaotic runs in GE-H7, divergence time tracks Lyapunov's logarithmic slope with R-squared above zero point nine nine four."
         },
         {
@@ -1560,18 +1620,18 @@
           "role": "Energetic Foil · Australian English",
           "group": "skeptic",
           "color": "#FB923C",
-          "start_sec": 82.554,
-          "end_sec": 100.071,
+          "start_sec": 82.235,
+          "end_sec": 99.752,
           "text": "So you split the architecture right down the fault line: simulation stays strictly bit-exact in Q32.32 fixed-point integer math, while GPU pixels live inside a perceptual tolerance bound. Did Q32.32 survive six real machines?"
         },
         {
           "turn_index": 5,
-          "speaker": "Kwame",
-          "role": "Distributed Systems Engineer · Nigerian English",
+          "speaker": "Malik",
+          "role": "Engine & Hardware Fellow · African American English",
           "group": "specialist",
-          "color": "#A78BFA",
-          "start_sec": 100.341,
-          "end_sec": 120.508,
+          "color": "#8B5CF6",
+          "start_sec": 100.022,
+          "end_sec": 121.191,
           "text": "In GE-H1, we stepped sixty-four Q32.32 rigid bodies for one hundred thousand ticks across thirty target-by-host cells spanning six physical machines on macOS, Linux, and bare-metal Windows 11. Across twenty-five thousand five hundred SHA-256 checkpoints, mismatches were zero!"
         },
         {
@@ -1580,8 +1640,8 @@
           "role": "Tech & Physics Host · East/SE Asian English",
           "group": "host",
           "color": "#38BDF8",
-          "start_sec": 120.778,
-          "end_sec": 141.004,
+          "start_sec": 121.461,
+          "end_sec": 141.687,
           "text": "And look what that buys in GE-H8: three full one-hour sessions — two hundred sixteen thousand ticks each — replay bit-for-bit across macOS, Linux, and Windows 11 from forty-four point six kilobytes of gzipped player inputs alone! Zero out of six thousand four hundred eighty checkpoint diffs!"
         },
         {
@@ -1590,18 +1650,18 @@
           "role": "Energetic Foil · Australian English",
           "group": "skeptic",
           "color": "#FB923C",
-          "start_sec": 141.194,
-          "end_sec": 149.289,
+          "start_sec": 141.877,
+          "end_sec": 149.972,
           "text": "Forty-four kilobytes for a whole hour of simulation! Wait — doesn't fixed-point arithmetic hit a frame-time wall at scale?"
         },
         {
           "turn_index": 8,
-          "speaker": "Kwame",
-          "role": "Distributed Systems Engineer · Nigerian English",
+          "speaker": "Malik",
+          "role": "Engine & Hardware Fellow · African American English",
           "group": "specialist",
-          "color": "#A78BFA",
-          "start_sec": 149.559,
-          "end_sec": 170.119,
+          "color": "#8B5CF6",
+          "start_sec": 150.242,
+          "end_sec": 171.268,
           "text": "Interpreted Python hits the twenty-millisecond frame ceiling at just three hundred ninety actors. In GE-H5, compiled RCE Form projections step ten thousand Q32.32 actors in zero point zero five eight to zero point one two five milliseconds — leaving over ninety-nine percent of a sixteen-millisecond frame free!"
         },
         {
@@ -1610,18 +1670,18 @@
           "role": "Tech & Physics Host · East/SE Asian English",
           "group": "host",
           "color": "#38BDF8",
-          "start_sec": 170.389,
-          "end_sec": 180.633,
+          "start_sec": 171.538,
+          "end_sec": 181.782,
           "text": "Now test the GPU side of the boundary! Shader compilers across DirectX 12, Apple Metal, and Vulkan never round rasterized fragments identically."
         },
         {
           "turn_index": 10,
-          "speaker": "Kwame",
-          "role": "Distributed Systems Engineer · Nigerian English",
+          "speaker": "Malik",
+          "role": "Engine & Hardware Fellow · African American English",
           "group": "specialist",
-          "color": "#A78BFA",
-          "start_sec": 180.903,
-          "end_sec": 202.491,
+          "color": "#8B5CF6",
+          "start_sec": 182.052,
+          "end_sec": 204.525,
           "text": "That is GE-H3. Across eight hardware GPU-by-API endpoints spanning DirectX 12, Metal, and Vulkan under headless wgpu, all twenty-eight hardware pairs passed with PSNR at least sixty-four point one six decibels and structural similarity SSIM at least zero point nine nine nine eight three three!"
         },
         {
@@ -1630,18 +1690,18 @@
           "role": "Energetic Foil · Australian English",
           "group": "skeptic",
           "color": "#FB923C",
-          "start_sec": 202.681,
-          "end_sec": 210.175,
+          "start_sec": 204.715,
+          "end_sec": 212.208,
           "text": "What about actual game codebases across Unity C-sharp, Bevy Rust ECS, and Godot 4 GDScript?"
         },
         {
           "turn_index": 12,
-          "speaker": "Kwame",
-          "role": "Distributed Systems Engineer · Nigerian English",
+          "speaker": "Malik",
+          "role": "Engine & Hardware Fellow · African American English",
           "group": "specialist",
-          "color": "#A78BFA",
-          "start_sec": 210.445,
-          "end_sec": 243.199,
+          "color": "#8B5CF6",
+          "start_sec": 212.478,
+          "end_sec": 246.633,
           "text": "In GE-H4, seventeen admitted RCE Forms across Haunted Jaunt, Survival Shooter, and Tanks cut behavior source lines of code by seventy-six point two two percent versus Unity C-sharp, sixty-one point four seven percent versus Bevy Rust, and fifty-one point nine nine percent versus Godot GDScript with zero out of six hundred eighty trace mismatches! And in GE-H9, our headless Form-to-Godot 4.7.2 emitter matched native GDScript on thirty-six out of thirty-six tasks across eighteen thousand ticks!"
         },
         {
@@ -1650,8 +1710,8 @@
           "role": "Tech & Physics Host · East/SE Asian English",
           "group": "host",
           "color": "#38BDF8",
-          "start_sec": 243.469,
-          "end_sec": 264.515,
+          "start_sec": 246.903,
+          "end_sec": 267.949,
           "text": "Notice how GE-H6 echoes OpenIE's Three-Body Problem in Computing and Interface Economics: static Form plus manifest checking caught ninety-eight point four six percent of one hundred thirty injected handoff faults at F1 zero point nine nine two two, versus zero point one one five nine for parse-only!"
         },
         {
@@ -1660,8 +1720,8 @@
           "role": "Energetic Foil · Australian English",
           "group": "skeptic",
           "color": "#FB923C",
-          "start_sec": 264.705,
-          "end_sec": 274.051,
+          "start_sec": 268.139,
+          "end_sec": 277.485,
           "text": "And keeping telemetry honest, measured_j stays explicitly unset on the game-engine runs because no inline rail shunt was wired to those six hosts!"
         },
         {
@@ -1670,16 +1730,16 @@
           "role": "Tech & Physics Host · East/SE Asian English",
           "group": "host",
           "color": "#38BDF8",
-          "start_sec": 274.321,
-          "end_sec": 285.859,
-          "text": "Up next in Episode Six, Amara, Sean, and Claire descend into LUT6 Boolean fabrics, sovereign MEI-JCP hardware tags, and JouleOS!"
+          "start_sec": 277.755,
+          "end_sec": 289.127,
+          "text": "Up next in Episode Six, Misha, Sean, and Claire descend into LUT6 Boolean fabrics, sovereign MEI-JCP hardware tags, and JouleOS!"
         }
       ],
       "cards": [
         {
           "id": "ep05-game-engines-everywhere-card-00-0",
           "at_sec": 2.63,
-          "end_sec": 25.209,
+          "end_sec": 24.981,
           "turn_index": 0,
           "speaker": "Mei",
           "kind": "study",
@@ -1690,10 +1750,10 @@
         },
         {
           "id": "ep05-game-engines-everywhere-card-02-0",
-          "at_sec": 41.753,
-          "end_sec": 63.433,
+          "at_sec": 40.875,
+          "end_sec": 63.113,
           "turn_index": 2,
-          "speaker": "Kwame",
+          "speaker": "Malik",
           "kind": "falsifier",
           "badge": "GE-H2 & GE-H7",
           "title": "3-OS std::sin Diverges at Ticks 10–37; FMA at Tick 192",
@@ -1702,10 +1762,10 @@
         },
         {
           "id": "ep05-game-engines-everywhere-card-05-0",
-          "at_sec": 101.141,
-          "end_sec": 120.508,
+          "at_sec": 100.822,
+          "end_sec": 121.191,
           "turn_index": 5,
-          "speaker": "Kwame",
+          "speaker": "Malik",
           "kind": "receipt",
           "badge": "GE-H1 & GE-H8",
           "title": "0/25,500 Q32.32 Mismatches & 44.6 KB 1-Hour Replay",
@@ -1714,10 +1774,10 @@
         },
         {
           "id": "ep05-game-engines-everywhere-card-10-0",
-          "at_sec": 181.703,
-          "end_sec": 202.491,
+          "at_sec": 182.852,
+          "end_sec": 204.525,
           "turn_index": 10,
-          "speaker": "Kwame",
+          "speaker": "Malik",
           "kind": "receipt",
           "badge": "GE-H3",
           "title": "28/28 DirectX 12, Metal & Vulkan GPU Pairs Pass",
@@ -1726,10 +1786,10 @@
         },
         {
           "id": "ep05-game-engines-everywhere-card-12-0",
-          "at_sec": 211.245,
-          "end_sec": 243.199,
+          "at_sec": 213.278,
+          "end_sec": 246.633,
           "turn_index": 12,
-          "speaker": "Kwame",
+          "speaker": "Malik",
           "kind": "receipt",
           "badge": "GE-H4 & GE-H9",
           "title": "76.22% SLOC Reduction & 36/36 Godot 4.7.2 Parity",
@@ -1738,8 +1798,8 @@
         },
         {
           "id": "ep05-game-engines-everywhere-card-13-0",
-          "at_sec": 244.269,
-          "end_sec": 264.515,
+          "at_sec": 247.703,
+          "end_sec": 267.949,
           "turn_index": 13,
           "speaker": "Mei",
           "kind": "study",
@@ -1754,8 +1814,8 @@
       "id": "ep06-lut6-metabolic-jouleos",
       "number": 6,
       "title": "Downward LUT6 Compilation, MEI-JCP Sovereign Hardware Tags & JouleOS",
-      "subtitle": "Amara, Sean, and Claire examine 970 MB NVMe MoE streaming, 81-RAMB36E2 LUT6 fabrics, 32x24 mm PCB tags, and JouleOS",
-      "summary": "Amara, Sean, and Claire trace Mixture of Limits cascades from 34.66B sparse-MoE NVMe streaming (970 MB RAM, 6.773 J/tok reported_j) down to Beneš-routed LUT6 FPGA fabrics, 32x24 mm MEI-JCP sovereign PCB tags, and JouleOS.",
+      "subtitle": "Misha, Sean, and Claire examine 970 MB NVMe MoE streaming, 81-RAMB36E2 LUT6 fabrics, 32x24 mm PCB tags, and JouleOS",
+      "summary": "Misha, Sean, and Claire trace Mixture of Limits cascades from 34.66B sparse-MoE NVMe streaming (970 MB RAM, 6.773 J/tok reported_j) down to Beneš-routed LUT6 FPGA fabrics, 32x24 mm MEI-JCP sovereign PCB tags, and JouleOS.",
       "topic_tags": [
         "lut-adapt",
         "mei",
@@ -1763,18 +1823,18 @@
         "fpga"
       ],
       "panel": [
-        "Amara",
+        "Misha",
         "Sean",
         "Claire"
       ],
       "panel_profiles": [
         {
-          "name": "Amara",
+          "name": "Misha",
           "group": "host",
-          "title": "Systems Storyteller · West African English",
-          "voice_id": "mzbNqbWwLuZObi7qEA67",
-          "fallback_voice": "en-NG-EzinneNeural",
-          "color": "#22D3EE",
+          "title": "Documentary & Hardware Host · African American English",
+          "voice_id": "DXX4Q5Bh1vqK8CciYVPf",
+          "fallback_voice": "en-US-AriaNeural",
+          "color": "#2DD4BF",
           "pan": [
             0.98,
             0.98
@@ -1809,25 +1869,25 @@
         "eleven_v4"
       ],
       "published_utc": "2026-11-23T08:30:00Z",
-      "duration_sec": 305.6,
-      "duration_human": "5:06",
-      "byte_length": 5139181,
+      "duration_sec": 297.8,
+      "duration_human": "4:58",
+      "byte_length": 4994019,
       "audio_url": "/media/radio/episodes/ep06-lut6-metabolic-jouleos.m4a",
       "captions_url": "/media/radio/captions/ep06-lut6-metabolic-jouleos.vtt",
       "transcript_url": "/media/radio/transcripts/ep06-lut6-metabolic-jouleos.json",
       "turn_count": 16,
       "card_count": 6,
-      "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+      "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
       "turns": [
         {
           "turn_index": 0,
-          "speaker": "Amara",
-          "role": "Systems Storyteller · West African English",
+          "speaker": "Misha",
+          "role": "Documentary & Hardware Host · African American English",
           "group": "host",
-          "color": "#22D3EE",
+          "color": "#2DD4BF",
           "start_sec": 1.83,
-          "end_sec": 32.482,
-          "text": "Welcome back to Episode Six of OpenIE Research Radio! I'm Amara, joined by Sean and Claire — AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio voices and grounded in verified Open Interface Engineering studies. Today we follow intelligence downward into silicon: Downward LUT6 Compilation, Metabolic Intelligence MEI-JCP tags, and JouleOS."
+          "end_sec": 29.496,
+          "text": "Welcome back to Episode Six of OpenIE Research Radio! I'm Misha, joined by Sean and Claire — AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio voices and grounded in verified Open Interface Engineering studies. Today we follow intelligence downward into silicon: Downward LUT6 Compilation, Metabolic Intelligence MEI-JCP tags, and JouleOS."
         },
         {
           "turn_index": 1,
@@ -1835,18 +1895,18 @@
           "role": "Auditor & Skeptic · Irish English",
           "group": "skeptic",
           "color": "#FBBF24",
-          "start_sec": 32.672,
-          "end_sec": 48.066,
+          "start_sec": 29.686,
+          "end_sec": 45.08,
           "text": "Let's start with the economic parallel from Spell Check is Global and The Promised Trillion Dollar AI-Coding Market: imagine if every time someone mistyped 'recieve' in an email, a cloud vendor fired up an eighty-gigabyte GPU node to fix it!"
         },
         {
           "turn_index": 2,
-          "speaker": "Amara",
-          "role": "Systems Storyteller · West African English",
+          "speaker": "Misha",
+          "role": "Documentary & Hardware Host · African American English",
           "group": "host",
-          "color": "#22D3EE",
-          "start_sec": 48.336,
-          "end_sec": 67.9,
+          "color": "#2DD4BF",
+          "start_sec": 45.35,
+          "end_sec": 62.704,
           "text": "In the early 1980s, standalone spell checkers cost hundreds of dollars! Spell check reached seven billion people only when its marginal cost dropped to a local dictionary lookup bundled inside every editor. Why should recurring code repairs burn frontier joules forever?"
         },
         {
@@ -1855,8 +1915,8 @@
           "role": "Formal Verification & Silicon Architect · British English",
           "group": "specialist",
           "color": "#60A5FA",
-          "start_sec": 68.17,
-          "end_sec": 91.923,
+          "start_sec": 62.974,
+          "end_sec": 86.727,
           "text": "In Downward LUT6 Compilation, we build that exact downward cascade. When genuine novelty arrives at the top tier, custom Apple Metal INT4 Mixture-of-Experts and GatedDeltaNet compute shaders stream Qwen 3.6 35B-A3B directly off NVMe via Darwin F_NOCACHE."
         },
         {
@@ -1865,8 +1925,8 @@
           "role": "Auditor & Skeptic · Irish English",
           "group": "skeptic",
           "color": "#FBBF24",
-          "start_sec": 92.113,
-          "end_sec": 101.454,
+          "start_sec": 86.917,
+          "end_sec": 96.258,
           "text": "Hold on Claire — a thirty-five-billion-parameter model normally eats seventy gigabytes of unified RAM in FP16! What was our resident footprint?"
         },
         {
@@ -1875,18 +1935,18 @@
           "role": "Formal Verification & Silicon Architect · British English",
           "group": "specialist",
           "color": "#60A5FA",
-          "start_sec": 101.724,
-          "end_sec": 121.767,
+          "start_sec": 96.528,
+          "end_sec": 116.57,
           "text": "Nine hundred seventy megabytes — just one point four seven percent of FP16 RAM! It hit one hundred percent exact token parity, cut NVMe reads twelve point three times through expert locality, and ran at six point seven seven three joules per token of dual-channel reported_j."
         },
         {
           "turn_index": 6,
-          "speaker": "Amara",
-          "role": "Systems Storyteller · West African English",
+          "speaker": "Misha",
+          "role": "Documentary & Hardware Host · African American English",
           "group": "host",
-          "color": "#22D3EE",
-          "start_sec": 122.037,
-          "end_sec": 133.074,
+          "color": "#2DD4BF",
+          "start_sec": 116.84,
+          "end_sec": 126.736,
           "text": "And once a frontier wake passes deterministic pytest gates, we compile that certified skill downward so the thirty-five-B model sleeps on repeat arrivals!"
         },
         {
@@ -1895,8 +1955,8 @@
           "role": "Formal Verification & Silicon Architect · British English",
           "group": "specialist",
           "color": "#60A5FA",
-          "start_sec": 133.344,
-          "end_sec": 173.747,
+          "start_sec": 127.006,
+          "end_sec": 167.409,
           "text": "Exactly. Across our forty-eight-task coding bakeoff and sixteen-repo SWE-Mini suite, the cascade closed eighty-seven point five percent with zero broken commits, waking the thirty-five-B tier on only twenty-two point nine two percent of tasks. By Wave 3 replay, certified wakes ran in two point eight nine milliseconds at zero point zero four two four joules reported_j — and synthesize downward via Yosys and Verilator into eighty-one RAMB36E2 Beneš-routed LUT6 blocks targeting Xilinx Kria xck26!"
         },
         {
@@ -1905,8 +1965,8 @@
           "role": "Auditor & Skeptic · Irish English",
           "group": "skeptic",
           "color": "#FBBF24",
-          "start_sec": 173.937,
-          "end_sec": 186.4,
+          "start_sec": 167.599,
+          "end_sec": 180.062,
           "text": "Zero multiply-accumulates — pure Boolean truth tables! Now shrink the energy budget all the way down to a CR2032 coin cell at minus twenty Celsius in Metabolic Intelligence!"
         },
         {
@@ -1915,8 +1975,8 @@
           "role": "Formal Verification & Silicon Architect · British English",
           "group": "specialist",
           "color": "#60A5FA",
-          "start_sec": 186.67,
-          "end_sec": 218.347,
+          "start_sec": 180.332,
+          "end_sec": 212.009,
           "text": "In the MEI white paper, we shipped MEI-JCP-Tag-v1: a complete open manufacturing package — DRC-clean two-layer thirty-two by twenty-four millimeter KiCad PCB, RS-274X Gerbers, BOM, and a thirty-six by twenty-eight by seven-point-five millimeter STEP enclosure pairing an STM32WBA52 with a physical Texas Instruments INA238 shunt monitor and FRAM."
         },
         {
@@ -1925,8 +1985,8 @@
           "role": "Auditor & Skeptic · Irish English",
           "group": "skeptic",
           "color": "#FBBF24",
-          "start_sec": 218.537,
-          "end_sec": 225.914,
+          "start_sec": 212.199,
+          "end_sec": 219.576,
           "text": "Quick audit check for the listeners: do we claim physical bench-metered joules off a fabbed MEI-JCP tag board yet?"
         },
         {
@@ -1935,18 +1995,18 @@
           "role": "Formal Verification & Silicon Architect · British English",
           "group": "specialist",
           "color": "#60A5FA",
-          "start_sec": 226.184,
-          "end_sec": 254.984,
+          "start_sec": 219.846,
+          "end_sec": 248.646,
           "text": "Explicitly no — board_metered is false and measured_j is unset until physical boards return from fabrication. What IS verified is our ten-thousand-wakeup CR2032 electro-thermal simulation preserving one hundred percent of critical alerts at minus twenty Celsius across two thousand six hundred eighty Ed25519 canonical CBOR JCR-1 receipts."
         },
         {
           "turn_index": 12,
-          "speaker": "Amara",
-          "role": "Systems Storyteller · West African English",
+          "speaker": "Misha",
+          "role": "Documentary & Hardware Host · African American English",
           "group": "host",
-          "color": "#22D3EE",
-          "start_sec": 255.254,
-          "end_sec": 265.997,
+          "color": "#2DD4BF",
+          "start_sec": 248.916,
+          "end_sec": 258.756,
           "text": "And binding JCR-1 receipts, SATB drift gates, and agent sandboxes into one operating-system contract is The Search for JouleOS!"
         },
         {
@@ -1955,8 +2015,8 @@
           "role": "Formal Verification & Silicon Architect · British English",
           "group": "specialist",
           "color": "#60A5FA",
-          "start_sec": 266.267,
-          "end_sec": 288.1,
+          "start_sec": 259.026,
+          "end_sec": 280.859,
           "text": "Legacy OS kernels multiplex time and virtual memory without checking energy before an agent acts. Our Rust reference spine passes three hundred ten workspace tests and verifies seventy-eight thousand four hundred provenance pairs across a meet-semilattice that schedules, budgets, and refuses out-of-envelope agent actions."
         },
         {
@@ -1965,18 +2025,18 @@
           "role": "Auditor & Skeptic · Irish English",
           "group": "skeptic",
           "color": "#FBBF24",
-          "start_sec": 288.29,
-          "end_sec": 299.177,
-          "text": "An OS that refuses runaway joule spend before it happens! Up next in Episode Seven, Priya, Marcus, and senior fellow Arthur ask what it would take to look up tomorrow!"
+          "start_sec": 281.049,
+          "end_sec": 291.762,
+          "text": "An OS that refuses runaway joule spend before it happens! Up next in Episode Seven, Amara, Nia, and senior fellow Arthur ask what it would take to look up tomorrow!"
         },
         {
           "turn_index": 15,
-          "speaker": "Amara",
-          "role": "Systems Storyteller · West African English",
+          "speaker": "Misha",
+          "role": "Documentary & Hardware Host · African American English",
           "group": "host",
-          "color": "#22D3EE",
-          "start_sec": 299.447,
-          "end_sec": 303.711,
+          "color": "#2DD4BF",
+          "start_sec": 292.032,
+          "end_sec": 295.914,
           "text": "Stay tuned for Episode Seven — Time as an Index!"
         }
       ],
@@ -1984,9 +2044,9 @@
         {
           "id": "ep06-lut6-metabolic-jouleos-card-00-0",
           "at_sec": 2.63,
-          "end_sec": 32.482,
+          "end_sec": 29.496,
           "turn_index": 0,
-          "speaker": "Amara",
+          "speaker": "Misha",
           "kind": "study",
           "badge": "[M]",
           "title": "Downward LUT6 Compilation (Mixture of Limits)",
@@ -1995,10 +2055,10 @@
         },
         {
           "id": "ep06-lut6-metabolic-jouleos-card-02-0",
-          "at_sec": 49.136,
-          "end_sec": 67.9,
+          "at_sec": 46.15,
+          "end_sec": 62.704,
           "turn_index": 2,
-          "speaker": "Amara",
+          "speaker": "Misha",
           "kind": "study",
           "badge": "[E]",
           "title": "Spell Check is Global & Latency Cadence Model",
@@ -2007,8 +2067,8 @@
         },
         {
           "id": "ep06-lut6-metabolic-jouleos-card-05-0",
-          "at_sec": 102.524,
-          "end_sec": 121.767,
+          "at_sec": 97.328,
+          "end_sec": 116.57,
           "turn_index": 5,
           "speaker": "Claire",
           "kind": "receipt",
@@ -2019,8 +2079,8 @@
         },
         {
           "id": "ep06-lut6-metabolic-jouleos-card-07-0",
-          "at_sec": 134.144,
-          "end_sec": 173.747,
+          "at_sec": 127.806,
+          "end_sec": 167.409,
           "turn_index": 7,
           "speaker": "Claire",
           "kind": "receipt",
@@ -2031,8 +2091,8 @@
         },
         {
           "id": "ep06-lut6-metabolic-jouleos-card-09-0",
-          "at_sec": 187.47,
-          "end_sec": 218.347,
+          "at_sec": 181.132,
+          "end_sec": 212.009,
           "turn_index": 9,
           "speaker": "Claire",
           "kind": "study",
@@ -2043,10 +2103,10 @@
         },
         {
           "id": "ep06-lut6-metabolic-jouleos-card-12-0",
-          "at_sec": 256.054,
-          "end_sec": 265.997,
+          "at_sec": 249.716,
+          "end_sec": 258.756,
           "turn_index": 12,
-          "speaker": "Amara",
+          "speaker": "Misha",
           "kind": "study",
           "badge": "[T]",
           "title": "The Search for JouleOS (310 Rust Tests)",
@@ -2059,8 +2119,8 @@
       "id": "ep07-time-as-an-index",
       "number": 7,
       "title": "Time as an Index — Closed Timelike Curves, Hellman T·M² = N² & Salted Horizons",
-      "subtitle": "Priya, Marcus, and Arthur explore PSPACE time loops, 31 Lean 4 theorems, 65,536 SHA-256 spectral runs, and salted horizons",
-      "summary": "Priya, Marcus, and Arthur unpack Time as an Index and Thermodynamic Bounds of Agency: Aaronson-Watrous D-CTC = PSPACE, quantum no-signalling, Hellman T*M^2 = N^2 tables, 31 Lean 4.36.0 theorems, and 195 cataloged temporal anomalies.",
+      "subtitle": "Amara, Nia, and Arthur explore PSPACE time loops, 31 Lean 4 theorems, 65,536 SHA-256 spectral runs, and salted horizons",
+      "summary": "Amara, Nia, and Arthur unpack Time as an Index and Thermodynamic Bounds of Agency: Aaronson-Watrous D-CTC = PSPACE, quantum no-signalling, Hellman T*M^2 = N^2 tables, 31 Lean 4.36.0 theorems, and 195 cataloged temporal anomalies.",
       "topic_tags": [
         "time-as-an-index",
         "lean-4",
@@ -2068,30 +2128,30 @@
         "cryptanalysis"
       ],
       "panel": [
-        "Priya",
-        "Marcus",
+        "Amara",
+        "Nia",
         "Arthur"
       ],
       "panel_profiles": [
         {
-          "name": "Priya",
+          "name": "Amara",
           "group": "host",
-          "title": "Science Documentary Host · South Asian English",
-          "voice_id": "QCzL5yD6UcwZgNMhRj6G",
-          "fallback_voice": "en-IN-NeerjaNeural",
-          "color": "#34D399",
+          "title": "Systems Storyteller · West African English",
+          "voice_id": "mzbNqbWwLuZObi7qEA67",
+          "fallback_voice": "en-NG-EzinneNeural",
+          "color": "#22D3EE",
           "pan": [
             0.98,
             0.98
           ]
         },
         {
-          "name": "Marcus",
+          "name": "Nia",
           "group": "skeptic",
-          "title": "Empirical Foil · North American English",
-          "voice_id": "iP95p4xoKVk53GoZ742B",
-          "fallback_voice": "en-US-BrianMultilingualNeural",
-          "color": "#F59E0B",
+          "title": "Empirical Auditor · African American English",
+          "voice_id": "GbDIo39THauInuigCmPM",
+          "fallback_voice": "en-US-JennyNeural",
+          "color": "#F97316",
           "pan": [
             1.04,
             0.9
@@ -2114,34 +2174,34 @@
         "eleven_v4"
       ],
       "published_utc": "2026-11-23T09:00:00Z",
-      "duration_sec": 290.8,
-      "duration_human": "4:51",
-      "byte_length": 4829579,
+      "duration_sec": 297.7,
+      "duration_human": "4:58",
+      "byte_length": 4942423,
       "audio_url": "/media/radio/episodes/ep07-time-as-an-index.m4a",
       "captions_url": "/media/radio/captions/ep07-time-as-an-index.vtt",
       "transcript_url": "/media/radio/transcripts/ep07-time-as-an-index.json",
       "turn_count": 16,
       "card_count": 5,
-      "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+      "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
       "turns": [
         {
           "turn_index": 0,
-          "speaker": "Priya",
-          "role": "Science Documentary Host · South Asian English",
+          "speaker": "Amara",
+          "role": "Systems Storyteller · West African English",
           "group": "host",
-          "color": "#34D399",
+          "color": "#22D3EE",
           "start_sec": 1.83,
-          "end_sec": 27.67,
-          "text": "Welcome to Episode Seven of OpenIE Research Radio! I'm Priya, joined by Marcus and senior cryptography fellow Arthur — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural voices and grounded strictly in verified Open Interface Engineering studies. Today we open Time as an Index: What It Would Take to Look Up Tomorrow."
+          "end_sec": 28.945,
+          "text": "Welcome to Episode Seven of OpenIE Research Radio! I'm Amara, joined by Nia and senior cryptography fellow Arthur — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural voices and grounded strictly in verified Open Interface Engineering studies. Today we open Time as an Index: What It Would Take to Look Up Tomorrow."
         },
         {
           "turn_index": 1,
-          "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "speaker": "Nia",
+          "role": "Empirical Auditor · African American English",
           "group": "skeptic",
-          "color": "#F59E0B",
-          "start_sec": 27.86,
-          "end_sec": 39.52,
+          "color": "#F97316",
+          "start_sec": 29.135,
+          "end_sec": 41.963,
           "text": "Arthur, whenever I see 'Closed Timelike Curves' and 'Looking Up Tomorrow' in a research paper, my sci-fi alarm bells ring off the wall! Promise me nobody here is claiming a time machine in the basement!"
         },
         {
@@ -2150,18 +2210,18 @@
           "role": "Senior Cryptography & Foundations Fellow · North American Senior",
           "group": "specialist",
           "color": "#93C5FD",
-          "start_sec": 39.79,
-          "end_sec": 66.222,
-          "text": "Quite the opposite, Marcus — and board_metered is explicitly false! Across thirty-one kernel-checked theorems in Lean 4.36.0 — Horizon.lean and Paradox.lean, zero sorry — Time as an Index establishes WHY nothing in known physics reads tomorrow early, and why every genuine O-of-one lookup in engineering is precomputation paid ahead of time."
+          "start_sec": 42.233,
+          "end_sec": 68.838,
+          "text": "Quite the opposite, Nia — and board_metered is explicitly false! Across thirty-one kernel-checked theorems in Lean 4.36.0 — Horizon.lean and Paradox.lean, zero sorry — Time as an Index establishes WHY nothing in known physics reads tomorrow early, and why every genuine O-of-one lookup in engineering is precomputation paid ahead of time."
         },
         {
           "turn_index": 3,
-          "speaker": "Priya",
-          "role": "Science Documentary Host · South Asian English",
+          "speaker": "Amara",
+          "role": "Systems Storyteller · West African English",
           "group": "host",
-          "color": "#34D399",
-          "start_sec": 66.492,
-          "end_sec": 76.634,
+          "color": "#22D3EE",
+          "start_sec": 69.108,
+          "end_sec": 79.171,
           "text": "Begin with the complexity-theory premise, Arthur, because it reframes cryptography completely. Why does brute-force search hold up in ordinary spacetime?"
         },
         {
@@ -2170,18 +2230,18 @@
           "role": "Senior Cryptography & Foundations Fellow · North American Senior",
           "group": "specialist",
           "color": "#93C5FD",
-          "start_sec": 76.904,
-          "end_sec": 106.884,
+          "start_sec": 79.441,
+          "end_sec": 109.422,
           "text": "Because future computation states are unindexed: to know the millionth iterate of a sequential hash, you must pay the intermediate steps. Inside a mathematical Deutsch closed timelike curve, Aaronson and Watrous showed deterministic polynomial time expands to PSPACE! Every computational cipher — AES, RSA, lattices, hash preimages — collapses inside one self-consistent fixed-point loop."
         },
         {
           "turn_index": 5,
-          "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "speaker": "Nia",
+          "role": "Empirical Auditor · African American English",
           "group": "skeptic",
-          "color": "#F59E0B",
-          "start_sec": 107.074,
-          "end_sec": 114.797,
+          "color": "#F97316",
+          "start_sec": 109.612,
+          "end_sec": 118.053,
           "text": "Wait — EVERY computational cipher collapses inside a mathematical time loop, EXCEPT one! Which one survives?"
         },
         {
@@ -2190,18 +2250,18 @@
           "role": "Senior Cryptography & Foundations Fellow · North American Senior",
           "group": "specialist",
           "color": "#93C5FD",
-          "start_sec": 115.067,
-          "end_sec": 132.215,
+          "start_sec": 118.323,
+          "end_sec": 135.471,
           "text": "Claude Shannon's one-time pad! Because every candidate plaintext corresponds to an equally probable key under a uniform prior, we verified mechanically in Lean 4 that even an unbounded CTC oracle gains zero distinguishing advantage."
         },
         {
           "turn_index": 7,
-          "speaker": "Priya",
-          "role": "Science Documentary Host · South Asian English",
+          "speaker": "Amara",
+          "role": "Systems Storyteller · West African English",
           "group": "host",
-          "color": "#34D399",
-          "start_sec": 132.485,
-          "end_sec": 149.676,
+          "color": "#22D3EE",
+          "start_sec": 135.741,
+          "end_sec": 152.902,
           "text": "Now step out of mathematical CTCs into real laboratory physics. Researchers periodically suggest quantum entanglement, analog relaxation, or frequency-domain transforms might bypass sequential search. What did our catalog find?"
         },
         {
@@ -2210,18 +2270,18 @@
           "role": "Senior Cryptography & Foundations Fellow · North American Senior",
           "group": "specialist",
           "color": "#93C5FD",
-          "start_sec": 149.946,
-          "end_sec": 182.966,
+          "start_sec": 153.172,
+          "end_sec": 186.192,
           "text": "We audited one hundred ninety-five temporal anomalies TA001 to TA081, forty frequency edge cases AA01 to AA40, and seventy-four paradoxes P01 to P74. Quantum no-signalling forbids retrocausal bit transmission; Gabor uncertainty enforces Delta-t times Delta-f at least one over four pi; and analog soap films or Ising annealers pay thermal energy across barrier heights."
         },
         {
           "turn_index": 9,
-          "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "speaker": "Nia",
+          "role": "Empirical Auditor · African American English",
           "group": "skeptic",
-          "color": "#F59E0B",
-          "start_sec": 183.156,
-          "end_sec": 198.125,
+          "color": "#F97316",
+          "start_sec": 186.382,
+          "end_sec": 202.542,
           "text": "And to test whether SHA-256 leaks hidden spectral structure, you ran falsifier F5 across sixty-five thousand five hundred thirty-six SHA-256 digests! How many bins cleared the Bonferroni ten-to-the-minus-six floor?"
         },
         {
@@ -2230,18 +2290,18 @@
           "role": "Senior Cryptography & Foundations Fellow · North American Senior",
           "group": "specialist",
           "color": "#93C5FD",
-          "start_sec": 198.395,
-          "end_sec": 204.105,
+          "start_sec": 202.812,
+          "end_sec": 208.521,
           "text": "Not a single bin — zero out of sixty-five thousand five hundred thirty-six."
         },
         {
           "turn_index": 11,
-          "speaker": "Priya",
-          "role": "Science Documentary Host · South Asian English",
+          "speaker": "Amara",
+          "role": "Systems Storyteller · West African English",
           "group": "host",
-          "color": "#34D399",
-          "start_sec": 204.375,
-          "end_sec": 215.49,
+          "color": "#22D3EE",
+          "start_sec": 208.791,
+          "end_sec": 220.215,
           "text": "Which leaves the one physical way engineers trade time for space: Martin Hellman's 1980 time-memory tradeoff, T times M-squared equals N-squared!"
         },
         {
@@ -2250,48 +2310,48 @@
           "role": "Senior Cryptography & Foundations Fellow · North American Senior",
           "group": "specialist",
           "color": "#93C5FD",
-          "start_sec": 215.76,
-          "end_sec": 238.873,
+          "start_sec": 220.485,
+          "end_sec": 243.599,
           "text": "Precisely. Hellman chains amortize search across memory M only if the target function exists before precomputation begins! Our Horizon theorem proves in Lean 4 that injecting a fresh k-bit salt or block hash born at query time scales offline table work by two to the k, rendering precomputed rainbow tables useless."
         },
         {
           "turn_index": 13,
-          "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "speaker": "Nia",
+          "role": "Empirical Auditor · African American English",
           "group": "skeptic",
-          "color": "#F59E0B",
-          "start_sec": 239.063,
-          "end_sec": 255.38,
+          "color": "#F97316",
+          "start_sec": 243.789,
+          "end_sec": 260.707,
           "text": "Look at that symmetry! In security, you inject fresh salts so adversaries CANNOT pre-index tomorrow. In World Coding and LUT6 cascades, you canonicalize recurring inputs with De Bruijn hashes so you CAN pre-index stationary work and save joules!"
         },
         {
           "turn_index": 14,
-          "speaker": "Priya",
-          "role": "Science Documentary Host · South Asian English",
+          "speaker": "Amara",
+          "role": "Systems Storyteller · West African English",
           "group": "host",
-          "color": "#34D399",
-          "start_sec": 255.65,
-          "end_sec": 277.01,
+          "color": "#22D3EE",
+          "start_sec": 260.977,
+          "end_sec": 282.991,
           "text": "And that connects directly to OpenIE's foundational paper, Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents — framing the OpenIE authors' proposed Universal Law of Agency: physics sets an energy floor per decision, correctness is the gate, and progress per joule orders the systems that finish."
         },
         {
           "turn_index": 15,
-          "speaker": "Marcus",
-          "role": "Empirical Foil · North American English",
+          "speaker": "Nia",
+          "role": "Empirical Auditor · African American English",
           "group": "skeptic",
-          "color": "#F59E0B",
-          "start_sec": 277.2,
-          "end_sec": 288.885,
-          "text": "Now get ready for our season finale in Episode Eight: Mateo, Sean, and Rohan enter the Idea Foundry live and watch a three-layer neural router get obliterated by a Shape-D integer grid!"
+          "color": "#F97316",
+          "start_sec": 283.181,
+          "end_sec": 295.741,
+          "text": "Now get ready for our season finale in Episode Eight: Mateo, Marcus, and Kwame enter the Idea Foundry live and watch a three-layer neural router get obliterated by a Shape-D integer grid!"
         }
       ],
       "cards": [
         {
           "id": "ep07-time-as-an-index-card-00-0",
           "at_sec": 2.63,
-          "end_sec": 27.67,
+          "end_sec": 28.945,
           "turn_index": 0,
-          "speaker": "Priya",
+          "speaker": "Amara",
           "kind": "study",
           "badge": "[T]",
           "title": "Time as an Index (31 Lean 4.36.0 Theorems, 0 sorry)",
@@ -2300,8 +2360,8 @@
         },
         {
           "id": "ep07-time-as-an-index-card-04-0",
-          "at_sec": 77.704,
-          "end_sec": 106.884,
+          "at_sec": 80.241,
+          "end_sec": 109.422,
           "turn_index": 4,
           "speaker": "Arthur",
           "kind": "receipt",
@@ -2312,8 +2372,8 @@
         },
         {
           "id": "ep07-time-as-an-index-card-08-0",
-          "at_sec": 150.746,
-          "end_sec": 182.966,
+          "at_sec": 153.972,
+          "end_sec": 186.192,
           "turn_index": 8,
           "speaker": "Arthur",
           "kind": "falsifier",
@@ -2324,8 +2384,8 @@
         },
         {
           "id": "ep07-time-as-an-index-card-12-0",
-          "at_sec": 216.56,
-          "end_sec": 238.873,
+          "at_sec": 221.285,
+          "end_sec": 243.599,
           "turn_index": 12,
           "speaker": "Arthur",
           "kind": "receipt",
@@ -2336,10 +2396,10 @@
         },
         {
           "id": "ep07-time-as-an-index-card-14-0",
-          "at_sec": 256.45,
-          "end_sec": 277.01,
+          "at_sec": 261.777,
+          "end_sec": 282.991,
           "turn_index": 14,
-          "speaker": "Priya",
+          "speaker": "Amara",
           "kind": "study",
           "badge": "[T]",
           "title": "Thermodynamic Bounds and an Optimal Tempo",
@@ -2352,8 +2412,8 @@
       "id": "ep08-idea-foundry-redteam",
       "number": 8,
       "title": "The Idea Foundry Live — Pitching, Red-Teaming & Pilot-Testing 6 New Research Topics",
-      "subtitle": "Mateo, Sean, and Rohan audit 4 promoted pilots, 1 INA238 hardware hold, and 1 neural router crushed 63.7x by Shape D",
-      "summary": "Mateo, Sean, and Rohan host the autonomous 6-hour Topic Idea Foundry & <60s Linux RAPL Pilot Loop: live red-teaming and exact receipts for TF-2026-01 through TF-2026-06 (4 PROMOTED_CANDIDATE, 1 HOLD_NEEDS_HARDWARE, 1 KILLED_BY_NULL).",
+      "subtitle": "Mateo, Marcus, and Kwame audit 4 promoted pilots, 1 INA238 hardware hold, and 1 neural router crushed 63.7x by Shape D",
+      "summary": "Mateo, Marcus, and Kwame host the autonomous 6-hour Topic Idea Foundry & <60s Linux RAPL Pilot Loop: live red-teaming and exact receipts for TF-2026-01 through TF-2026-06 (4 PROMOTED_CANDIDATE, 1 HOLD_NEEDS_HARDWARE, 1 KILLED_BY_NULL).",
       "topic_tags": [
         "topic-foundry",
         "pilot-loop",
@@ -2362,8 +2422,8 @@
       ],
       "panel": [
         "Mateo",
-        "Sean",
-        "Rohan"
+        "Marcus",
+        "Kwame"
       ],
       "panel_profiles": [
         {
@@ -2379,24 +2439,24 @@
           ]
         },
         {
-          "name": "Sean",
+          "name": "Marcus",
           "group": "skeptic",
-          "title": "Auditor & Skeptic · Irish English",
-          "voice_id": "tRqj2rLkZmeP61CMmIX4",
-          "fallback_voice": "en-IE-ConnorNeural",
-          "color": "#FBBF24",
+          "title": "Empirical Foil · African American English",
+          "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+          "fallback_voice": "en-US-ChristopherNeural",
+          "color": "#F59E0B",
           "pan": [
             1.04,
             0.9
           ]
         },
         {
-          "name": "Rohan",
+          "name": "Kwame",
           "group": "specialist",
-          "title": "Hardware & Compiler Specialist · South Asian English",
-          "voice_id": "QtQiNi8LdZTzSJzhCvXT",
-          "fallback_voice": "en-IN-PrabhatNeural",
-          "color": "#818CF8",
+          "title": "Distributed Systems Engineer · Nigerian English",
+          "voice_id": "PFnEp0d5QKq6baWI3azv",
+          "fallback_voice": "en-NG-AbeoNeural",
+          "color": "#A78BFA",
           "pan": [
             0.9,
             1.04
@@ -2407,15 +2467,15 @@
         "eleven_v4"
       ],
       "published_utc": "2026-11-23T09:30:00Z",
-      "duration_sec": 336.6,
-      "duration_human": "5:37",
-      "byte_length": 5547950,
+      "duration_sec": 336.5,
+      "duration_human": "5:36",
+      "byte_length": 5742670,
       "audio_url": "/media/radio/episodes/ep08-idea-foundry-redteam.m4a",
       "captions_url": "/media/radio/captions/ep08-idea-foundry-redteam.vtt",
       "transcript_url": "/media/radio/transcripts/ep08-idea-foundry-redteam.json",
       "turn_count": 16,
       "card_count": 6,
-      "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+      "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
       "turns": [
         {
           "turn_index": 0,
@@ -2424,27 +2484,27 @@
           "group": "host",
           "color": "#10B981",
           "start_sec": 1.83,
-          "end_sec": 22.503,
-          "text": "Welcome to Episode Eight — the season-launch finale of OpenIE Research Radio! I'm Mateo, joined in the Foundry booth by Sean and Rohan — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural speech and grounded in live pilot receipts. Welcome inside the Autonomous Topic Idea Foundry!"
+          "end_sec": 22.637,
+          "text": "Welcome to Episode Eight — the season-launch finale of OpenIE Research Radio! I'm Mateo, joined in the Foundry booth by Marcus and Kwame — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural speech and grounded in live pilot receipts. Welcome inside the Autonomous Topic Idea Foundry!"
         },
         {
           "turn_index": 1,
-          "speaker": "Sean",
-          "role": "Auditor & Skeptic · Irish English",
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
-          "color": "#FBBF24",
-          "start_sec": 22.693,
-          "end_sec": 44.237,
+          "color": "#F59E0B",
+          "start_sec": 22.827,
+          "end_sec": 44.692,
           "text": "Here are the house rules of the Foundry, Mateo! Every six hours, right after scraping global open-access feeds, our Linux daemon pitches six candidate research topics. Every single topic MUST pre-declare a zero-parameter Shape-D null baseline, a hard kill criterion, and survive an executable Python pilot under sixty seconds before anyone writes a manuscript!"
         },
         {
           "turn_index": 2,
-          "speaker": "Rohan",
-          "role": "Hardware & Compiler Specialist · South Asian English",
+          "speaker": "Kwame",
+          "role": "Distributed Systems Engineer · Nigerian English",
           "group": "specialist",
-          "color": "#818CF8",
-          "start_sec": 44.507,
-          "end_sec": 59.63,
+          "color": "#A78BFA",
+          "start_sec": 44.962,
+          "end_sec": 60.273,
           "text": "Today's six-pilot suite completed in zero point nine seven seven seconds on our x86-64 Linux harness, reading wrap-safe intel-rapl colon zero package reported joules with board_metered explicitly false. Let's inspect all six receipts!"
         },
         {
@@ -2453,38 +2513,38 @@
           "role": "Foundry Host · Latino English",
           "group": "host",
           "color": "#10B981",
-          "start_sec": 59.9,
-          "end_sec": 74.942,
+          "start_sec": 60.543,
+          "end_sec": 75.585,
           "text": "Up first: TF-2026-01, inspired by TokenPowerBench and our LUT6 cascade — a Conformal Prefix-LUT6 Early-Exit Gate routing six thousand Zipf-distributed state-space requests."
         },
         {
           "turn_index": 4,
-          "speaker": "Rohan",
-          "role": "Hardware & Compiler Specialist · South Asian English",
+          "speaker": "Kwame",
+          "role": "Distributed Systems Engineer · Nigerian English",
           "group": "specialist",
-          "color": "#818CF8",
-          "start_sec": 75.212,
-          "end_sec": 96.342,
+          "color": "#A78BFA",
+          "start_sec": 75.855,
+          "end_sec": 97.132,
           "text": "A sixty-four-entry bit-sliced LUT6 signature table paired with exact schema parity intercepted eighty-eight point two two percent of arrivals with zero out of six thousand false commits, cutting package reported joules from one point five eight joules down to zero point six four joules — a two point four six times energy gain! Verdict: PROMOTED CANDIDATE."
         },
         {
           "turn_index": 5,
-          "speaker": "Sean",
-          "role": "Auditor & Skeptic · Irish English",
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
-          "color": "#FBBF24",
-          "start_sec": 96.532,
-          "end_sec": 111.367,
+          "color": "#F59E0B",
+          "start_sec": 97.322,
+          "end_sec": 111.962,
           "text": "Clean pass! What about Candidate Two, TF-2026-02 — the SepJ-inspired Quorum-Hysteresis Circuit Breaker for Byzantine agent DAGs, sparked by today's AgentShield and INFRAMIND preprints?"
         },
         {
           "turn_index": 6,
-          "speaker": "Rohan",
-          "role": "Hardware & Compiler Specialist · South Asian English",
+          "speaker": "Kwame",
+          "role": "Distributed Systems Engineer · Nigerian English",
           "group": "specialist",
-          "color": "#818CF8",
-          "start_sec": 111.637,
-          "end_sec": 136.905,
+          "color": "#A78BFA",
+          "start_sec": 112.232,
+          "end_sec": 138.07,
           "text": "Across two thousand five hundred rounds on a sixteen-node graph with four adversarial poisoners, unverified three-of-five majority voting suffered one hundred thirty-six corrupted commits! Keyed BLAKE2b attestation plus a two-strike SepJ link quarantine isolated all four poisoners within fourteen rounds, yielding one hundred percent goodput and zero out of two thousand five hundred false commits. Verdict: PROMOTED CANDIDATE!"
         },
         {
@@ -2493,38 +2553,38 @@
           "role": "Foundry Host · Latino English",
           "group": "host",
           "color": "#10B981",
-          "start_sec": 137.175,
-          "end_sec": 150.855,
+          "start_sec": 138.34,
+          "end_sec": 152.02,
           "text": "Give us Candidates Three and Four back-to-back — TF-2026-03 on Epoch-Salted Horizon Commitments, and TF-2026-04 on Operator-Aware De Bruijn Memoization!"
         },
         {
           "turn_index": 8,
-          "speaker": "Rohan",
-          "role": "Hardware & Compiler Specialist · South Asian English",
+          "speaker": "Kwame",
+          "role": "Distributed Systems Engineer · Nigerian English",
           "group": "specialist",
-          "color": "#818CF8",
-          "start_sec": 151.125,
-          "end_sec": 185.045,
+          "color": "#A78BFA",
+          "start_sec": 152.29,
+          "end_sec": 185.894,
           "text": "In TF-2026-03, a precomputed Hellman table of one thousand five hundred thirty-six chains inverted seventy-four out of four hundred unsalted state targets; binding each transition to a fresh epoch beacon collapsed inversions to zero out of four hundred at zero point five seven four microseconds per step! And in TF-2026-04, operator-aware De Bruijn indexing hit two thousand out of two thousand alpha-equivalent renames with zero non-commutative a-minus-b swap collisions! Both are PROMOTED CANDIDATES."
         },
         {
           "turn_index": 9,
-          "speaker": "Sean",
-          "role": "Auditor & Skeptic · Irish English",
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
-          "color": "#FBBF24",
-          "start_sec": 185.235,
-          "end_sec": 199.899,
+          "color": "#F59E0B",
+          "start_sec": 186.084,
+          "end_sec": 200.244,
           "text": "Four promotions in a row — alright, now show the listeners where our own guardrails slammed on the brakes! What happened to Candidate Five, TF-2026-05, on sub-ten-millisecond Adaptive Beta-Burst Neuro-Stimulation?"
         },
         {
           "turn_index": 10,
-          "speaker": "Rohan",
-          "role": "Hardware & Compiler Specialist · South Asian English",
+          "speaker": "Kwame",
+          "role": "Distributed Systems Engineer · Nigerian English",
           "group": "specialist",
-          "color": "#818CF8",
-          "start_sec": 200.169,
-          "end_sec": 228.167,
+          "color": "#A78BFA",
+          "start_sec": 200.514,
+          "end_sec": 228.904,
           "text": "In signal processing terms, thresholded beta-envelope gating cut stimulation pulses by three point one eight times — eight hundred seventeen pulses versus two thousand six hundred in continuous 130-hertz pacing! When we sampled forty consecutive eight-millisecond Linux RAPL windows to attribute micro-burst silicon energy, however, window coefficient of variation hit forty-four point zero three percent — well above our fifteen-percent SATB Falsifier 6 limit!"
         },
         {
@@ -2533,38 +2593,38 @@
           "role": "Foundry Host · Latino English",
           "group": "host",
           "color": "#10B981",
-          "start_sec": 228.437,
-          "end_sec": 244.479,
+          "start_sec": 229.174,
+          "end_sec": 245.217,
           "text": "So rather than publishing noisy micro-window counter guesses, the Foundry automatically stamped TF-2026-05 as HOLD NEEDS HARDWARE — waiting for a physical Texas Instruments INA238 inline shunt bench!"
         },
         {
           "turn_index": 12,
-          "speaker": "Sean",
-          "role": "Auditor & Skeptic · Irish English",
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
-          "color": "#FBBF24",
-          "start_sec": 244.669,
-          "end_sec": 262.534,
-          "text": "And now for the main event — Candidate Six, TF-2026-06: pitching a learned three-layer dense neural MLP router to predict broadphase collision buckets for two hundred fifty-six Q32.32 rigid bodies! Rohan, read the obituary!"
+          "color": "#F59E0B",
+          "start_sec": 245.407,
+          "end_sec": 262.906,
+          "text": "And now for the main event — Candidate Six, TF-2026-06: pitching a learned three-layer dense neural MLP router to predict broadphase collision buckets for two hundred fifty-six Q32.32 rigid bodies! Kwame, read the obituary!"
         },
         {
           "turn_index": 13,
-          "speaker": "Rohan",
-          "role": "Hardware & Compiler Specialist · South Asian English",
+          "speaker": "Kwame",
+          "role": "Distributed Systems Engineer · Nigerian English",
           "group": "specialist",
-          "color": "#818CF8",
-          "start_sec": 262.804,
-          "end_sec": 289.968,
+          "color": "#A78BFA",
+          "start_sec": 263.176,
+          "end_sec": 290.507,
           "text": "Across thirty thousand seven hundred twenty body-ticks, the three-layer MLP router took twenty-one point nine eight milliseconds, burned over one joule of socket reported_j, and still missed zero point six percent of true collision pairs at ninety-nine point four percent recall! Meanwhile, the zero-parameter Shape-D bit-shifted integer grid — x shifted right fifteen bits — achieved ONE HUNDRED POINT ZERO percent exact recall in zero point three four milliseconds!"
         },
         {
           "turn_index": 14,
-          "speaker": "Sean",
-          "role": "Auditor & Skeptic · Irish English",
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
           "group": "skeptic",
-          "color": "#FBBF24",
-          "start_sec": 290.158,
-          "end_sec": 309.23,
+          "color": "#F59E0B",
+          "start_sec": 290.697,
+          "end_sec": 309.114,
           "text": "Over sixty times faster, lower joules, zero learned weights, AND one hundred percent exact recall versus ninety-nine point four percent! Stamped in bright red: KILLED BY NULL! Think how much datacenter electricity the world would save if every lab ran a thirty-line integer baseline before training!"
         },
         {
@@ -2573,8 +2633,8 @@
           "role": "Foundry Host · Latino English",
           "group": "host",
           "color": "#10B981",
-          "start_sec": 309.5,
-          "end_sec": 334.653,
+          "start_sec": 309.384,
+          "end_sec": 334.537,
           "text": "And because our Linux systemd user timer and six-hour cron daemon stay active around the clock, this four-stage loop — open-access scrape, epistemic audit, sub-sixty-second RAPL pilot, and multi-voice studio synthesis — keeps running autonomously. Subscribe via Podcast RSS right on this page, click any transcript line to jump straight to the receipt, and thank you for listening to OpenIE Research Radio!"
         }
       ],
@@ -2582,7 +2642,7 @@
         {
           "id": "ep08-idea-foundry-redteam-card-00-0",
           "at_sec": 2.63,
-          "end_sec": 22.503,
+          "end_sec": 22.637,
           "turn_index": 0,
           "speaker": "Mateo",
           "kind": "pilot",
@@ -2593,10 +2653,10 @@
         },
         {
           "id": "ep08-idea-foundry-redteam-card-04-0",
-          "at_sec": 76.012,
-          "end_sec": 96.342,
+          "at_sec": 76.655,
+          "end_sec": 97.132,
           "turn_index": 4,
-          "speaker": "Rohan",
+          "speaker": "Kwame",
           "kind": "pilot",
           "badge": "PROMOTED",
           "title": "TF-2026-01: Conformal Prefix-LUT6 Early-Exit Gate",
@@ -2605,10 +2665,10 @@
         },
         {
           "id": "ep08-idea-foundry-redteam-card-06-0",
-          "at_sec": 112.437,
-          "end_sec": 136.905,
+          "at_sec": 113.032,
+          "end_sec": 138.07,
           "turn_index": 6,
-          "speaker": "Rohan",
+          "speaker": "Kwame",
           "kind": "pilot",
           "badge": "PROMOTED",
           "title": "TF-2026-02: SepJ Quorum Circuit Breaker (4/4 Isolated)",
@@ -2617,10 +2677,10 @@
         },
         {
           "id": "ep08-idea-foundry-redteam-card-08-0",
-          "at_sec": 151.925,
-          "end_sec": 185.045,
+          "at_sec": 153.09,
+          "end_sec": 185.894,
           "turn_index": 8,
-          "speaker": "Rohan",
+          "speaker": "Kwame",
           "kind": "pilot",
           "badge": "PROMOTED",
           "title": "TF-2026-03 & TF-2026-04: Salted Horizons + De Bruijn Cache",
@@ -2629,10 +2689,10 @@
         },
         {
           "id": "ep08-idea-foundry-redteam-card-10-0",
-          "at_sec": 200.969,
-          "end_sec": 228.167,
+          "at_sec": 201.314,
+          "end_sec": 228.904,
           "turn_index": 10,
-          "speaker": "Rohan",
+          "speaker": "Kwame",
           "kind": "falsifier",
           "badge": "HOLD_HARDWARE",
           "title": "TF-2026-05 Held by SATB Falsifier 6 (>=15% RAPL CV)",
@@ -2641,10 +2701,10 @@
         },
         {
           "id": "ep08-idea-foundry-redteam-card-13-0",
-          "at_sec": 263.604,
-          "end_sec": 289.968,
+          "at_sec": 263.976,
+          "end_sec": 290.507,
           "turn_index": 13,
-          "speaker": "Rohan",
+          "speaker": "Kwame",
           "kind": "falsifier",
           "badge": "KILLED_BY_NULL",
           "title": "TF-2026-06: MLP Router Crushed >60x by Shape-D Grid",

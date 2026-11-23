@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""OpenIE Research Radio — Launch Episodes 1 (Elena, Marcus, Rohan) & 2 (Amara, Liam, Kenji)."""
+"""OpenIE Research Radio — Launch Episodes 1 (Elena, Marcus, Rohan) & 2 (Cecily, Liam, Kenji)."""
 
 from __future__ import annotations
 
@@ -219,7 +219,7 @@ EPISODE_01: dict[str, Any] = {
         {
             "speaker": "Elena",
             "text": (
-                "Next up in Episode Two, Amara, Liam, and Kenji take the mics to explore three point eight billion years of biological signaling, "
+                "Next up in Episode Two, Cecily, Liam, and Kenji take the mics to explore three point eight billion years of biological signaling, "
                 "seventy-six years of AI winters, and DES-10 digital enzymatic synthesis!"
             ),
         },
@@ -230,18 +230,18 @@ EPISODE_02: dict[str, Any] = {
     "id": "ep02-communication-tool-avalanche",
     "number": 2,
     "title": "The Communication Tool Avalanche — Quorum Ratchets, 1950–2026 AI Winters & DES-10",
-    "subtitle": "Amara, Liam, and Kenji trace externalized signal gates from Archaean nanopores to sub-millijoule digital enzymes",
+    "subtitle": "Cecily, Liam, and Kenji trace externalized signal gates from Archaean nanopores to sub-millijoule digital enzymes",
     "summary": (
-        "Amara, Liam, and Kenji examine why collective intelligence scales by externalizing state behind selective gates: "
+        "Cecily, Liam, and Kenji examine why collective intelligence scales by externalizing state behind selective gates: "
         "bacterial quorum switches, cyanobacterial SepJ circuit-breakers, mycorrhizal citation bias, 1950–2026 AI winters, and DES-10."
     ),
     "topic_tags": ["communication-avalanche", "quorum-sensing", "ai-winters", "des-10"],
     "published_utc": "2026-11-23T06:30:00Z",
     "turns": [
         {
-            "speaker": "Amara",
+            "speaker": "Cecily",
             "text": (
-                "Hello and welcome to Episode Two of OpenIE Research Radio! I'm Amara, joined in the studio by Liam and Kenji — "
+                "Hello and welcome to Episode Two of OpenIE Research Radio! I'm Cecily, joined in the studio by Liam and Kenji — "
                 "three AI-synthesized OpenIE research personas voiced with ElevenLabs neural voices and grounded in verified Open Interface Engineering studies. "
                 "Today we're diving into The Communication Tool Avalanche."
             ),
@@ -271,7 +271,7 @@ EPISODE_02: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Amara",
+            "speaker": "Cecily",
             "text": (
                 "Start at Rung CL02, three point five billion years ago: bacterial quorum sensing in Vibrio fischeri and Pseudomonas aeruginosa. "
                 "One lone cell drifting in open water never wastes precious ATP pumping out bioluminescent enzymes or biofilms."
@@ -325,7 +325,7 @@ EPISODE_02: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Amara",
+            "speaker": "Cecily",
             "text": (
                 "Yes! Simard's 1997 carbon-isotope transfer across ectomycorrhizal hyphae is solid biophysics — tagged E — "
                 "but Karst, Jones, and Hoeksema's 2023 systematic audit exposed heavy citation bias and confounders behind teleological mother-tree stories, "
@@ -342,7 +342,7 @@ EPISODE_02: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Amara",
+            "speaker": "Cecily",
             "text": (
                 "Now map that exact same gate principle onto seventy-six years of artificial intelligence from 1950 to 2026! "
                 "Why did AI Winter One hit in 1974 and AI Winter Two hit in 1988?"
@@ -380,7 +380,7 @@ EPISODE_02: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Amara",
+            "speaker": "Cecily",
             "text": (
                 "Give us the Linux RAPL numbers from benchmarks CTA-E1 through CTA-E3, Kenji — keeping clear that board_metered is false and these are socket reported joules."
             ),
@@ -412,9 +412,9 @@ EPISODE_02: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Amara",
+            "speaker": "Cecily",
             "text": (
-                "Gate the channel, verify the payload, and crystallize every verified gain. Up next in Episode Three, Priya, Marcus, and Claire "
+                "Gate the channel, verify the payload, and crystallize every verified gain. Up next in Episode Three, Priya, Nia, and Devon "
                 "dive into World Coding and RCE-JEPA!"
             ),
         },

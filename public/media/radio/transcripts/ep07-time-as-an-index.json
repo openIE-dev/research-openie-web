@@ -2,8 +2,8 @@
   "id": "ep07-time-as-an-index",
   "number": 7,
   "title": "Time as an Index — Closed Timelike Curves, Hellman T·M² = N² & Salted Horizons",
-  "subtitle": "Priya, Marcus, and Arthur explore PSPACE time loops, 31 Lean 4 theorems, 65,536 SHA-256 spectral runs, and salted horizons",
-  "summary": "Priya, Marcus, and Arthur unpack Time as an Index and Thermodynamic Bounds of Agency: Aaronson-Watrous D-CTC = PSPACE, quantum no-signalling, Hellman T*M^2 = N^2 tables, 31 Lean 4.36.0 theorems, and 195 cataloged temporal anomalies.",
+  "subtitle": "Amara, Nia, and Arthur explore PSPACE time loops, 31 Lean 4 theorems, 65,536 SHA-256 spectral runs, and salted horizons",
+  "summary": "Amara, Nia, and Arthur unpack Time as an Index and Thermodynamic Bounds of Agency: Aaronson-Watrous D-CTC = PSPACE, quantum no-signalling, Hellman T*M^2 = N^2 tables, 31 Lean 4.36.0 theorems, and 195 cataloged temporal anomalies.",
   "topic_tags": [
     "time-as-an-index",
     "lean-4",
@@ -11,30 +11,30 @@
     "cryptanalysis"
   ],
   "panel": [
-    "Priya",
-    "Marcus",
+    "Amara",
+    "Nia",
     "Arthur"
   ],
   "panel_profiles": [
     {
-      "name": "Priya",
+      "name": "Amara",
       "group": "host",
-      "title": "Science Documentary Host · South Asian English",
-      "voice_id": "QCzL5yD6UcwZgNMhRj6G",
-      "fallback_voice": "en-IN-NeerjaNeural",
-      "color": "#34D399",
+      "title": "Systems Storyteller · West African English",
+      "voice_id": "mzbNqbWwLuZObi7qEA67",
+      "fallback_voice": "en-NG-EzinneNeural",
+      "color": "#22D3EE",
       "pan": [
         0.98,
         0.98
       ]
     },
     {
-      "name": "Marcus",
+      "name": "Nia",
       "group": "skeptic",
-      "title": "Empirical Foil · North American English",
-      "voice_id": "iP95p4xoKVk53GoZ742B",
-      "fallback_voice": "en-US-BrianMultilingualNeural",
-      "color": "#F59E0B",
+      "title": "Empirical Auditor · African American English",
+      "voice_id": "GbDIo39THauInuigCmPM",
+      "fallback_voice": "en-US-JennyNeural",
+      "color": "#F97316",
       "pan": [
         1.04,
         0.9
@@ -57,35 +57,35 @@
     "eleven_v4"
   ],
   "published_utc": "2026-11-23T09:00:00Z",
-  "duration_sec": 290.8,
-  "duration_human": "4:51",
-  "byte_length": 4829579,
+  "duration_sec": 297.7,
+  "duration_human": "4:58",
+  "byte_length": 4942423,
   "audio_url": "/media/radio/episodes/ep07-time-as-an-index.m4a",
   "captions_url": "/media/radio/captions/ep07-time-as-an-index.vtt",
   "transcript_url": "/media/radio/transcripts/ep07-time-as-an-index.json",
   "turn_count": 16,
   "card_count": 5,
-  "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
   "personas": {
-    "Priya": {
-      "name": "Priya",
+    "Amara": {
+      "name": "Amara",
       "group": "host",
-      "title": "Science Documentary Host · South Asian English",
-      "voice_id": "QCzL5yD6UcwZgNMhRj6G",
-      "fallback_voice": "en-IN-NeerjaNeural",
-      "color": "#34D399",
+      "title": "Systems Storyteller · West African English",
+      "voice_id": "mzbNqbWwLuZObi7qEA67",
+      "fallback_voice": "en-NG-EzinneNeural",
+      "color": "#22D3EE",
       "pan": [
         0.98,
         0.98
       ]
     },
-    "Marcus": {
-      "name": "Marcus",
+    "Nia": {
+      "name": "Nia",
       "group": "skeptic",
-      "title": "Empirical Foil · North American English",
-      "voice_id": "iP95p4xoKVk53GoZ742B",
-      "fallback_voice": "en-US-BrianMultilingualNeural",
-      "color": "#F59E0B",
+      "title": "Empirical Auditor · African American English",
+      "voice_id": "GbDIo39THauInuigCmPM",
+      "fallback_voice": "en-US-JennyNeural",
+      "color": "#F97316",
       "pan": [
         1.04,
         0.9
@@ -107,22 +107,22 @@
   "turns": [
     {
       "turn_index": 0,
-      "speaker": "Priya",
-      "role": "Science Documentary Host · South Asian English",
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
       "group": "host",
-      "color": "#34D399",
+      "color": "#22D3EE",
       "start_sec": 1.83,
-      "end_sec": 27.67,
-      "text": "Welcome to Episode Seven of OpenIE Research Radio! I'm Priya, joined by Marcus and senior cryptography fellow Arthur — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural voices and grounded strictly in verified Open Interface Engineering studies. Today we open Time as an Index: What It Would Take to Look Up Tomorrow."
+      "end_sec": 28.945,
+      "text": "Welcome to Episode Seven of OpenIE Research Radio! I'm Amara, joined by Nia and senior cryptography fellow Arthur — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural voices and grounded strictly in verified Open Interface Engineering studies. Today we open Time as an Index: What It Would Take to Look Up Tomorrow."
     },
     {
       "turn_index": 1,
-      "speaker": "Marcus",
-      "role": "Empirical Foil · North American English",
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
       "group": "skeptic",
-      "color": "#F59E0B",
-      "start_sec": 27.86,
-      "end_sec": 39.52,
+      "color": "#F97316",
+      "start_sec": 29.135,
+      "end_sec": 41.963,
       "text": "Arthur, whenever I see 'Closed Timelike Curves' and 'Looking Up Tomorrow' in a research paper, my sci-fi alarm bells ring off the wall! Promise me nobody here is claiming a time machine in the basement!"
     },
     {
@@ -131,18 +131,18 @@
       "role": "Senior Cryptography & Foundations Fellow · North American Senior",
       "group": "specialist",
       "color": "#93C5FD",
-      "start_sec": 39.79,
-      "end_sec": 66.222,
-      "text": "Quite the opposite, Marcus — and board_metered is explicitly false! Across thirty-one kernel-checked theorems in Lean 4.36.0 — Horizon.lean and Paradox.lean, zero sorry — Time as an Index establishes WHY nothing in known physics reads tomorrow early, and why every genuine O-of-one lookup in engineering is precomputation paid ahead of time."
+      "start_sec": 42.233,
+      "end_sec": 68.838,
+      "text": "Quite the opposite, Nia — and board_metered is explicitly false! Across thirty-one kernel-checked theorems in Lean 4.36.0 — Horizon.lean and Paradox.lean, zero sorry — Time as an Index establishes WHY nothing in known physics reads tomorrow early, and why every genuine O-of-one lookup in engineering is precomputation paid ahead of time."
     },
     {
       "turn_index": 3,
-      "speaker": "Priya",
-      "role": "Science Documentary Host · South Asian English",
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
       "group": "host",
-      "color": "#34D399",
-      "start_sec": 66.492,
-      "end_sec": 76.634,
+      "color": "#22D3EE",
+      "start_sec": 69.108,
+      "end_sec": 79.171,
       "text": "Begin with the complexity-theory premise, Arthur, because it reframes cryptography completely. Why does brute-force search hold up in ordinary spacetime?"
     },
     {
@@ -151,18 +151,18 @@
       "role": "Senior Cryptography & Foundations Fellow · North American Senior",
       "group": "specialist",
       "color": "#93C5FD",
-      "start_sec": 76.904,
-      "end_sec": 106.884,
+      "start_sec": 79.441,
+      "end_sec": 109.422,
       "text": "Because future computation states are unindexed: to know the millionth iterate of a sequential hash, you must pay the intermediate steps. Inside a mathematical Deutsch closed timelike curve, Aaronson and Watrous showed deterministic polynomial time expands to PSPACE! Every computational cipher — AES, RSA, lattices, hash preimages — collapses inside one self-consistent fixed-point loop."
     },
     {
       "turn_index": 5,
-      "speaker": "Marcus",
-      "role": "Empirical Foil · North American English",
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
       "group": "skeptic",
-      "color": "#F59E0B",
-      "start_sec": 107.074,
-      "end_sec": 114.797,
+      "color": "#F97316",
+      "start_sec": 109.612,
+      "end_sec": 118.053,
       "text": "Wait — EVERY computational cipher collapses inside a mathematical time loop, EXCEPT one! Which one survives?"
     },
     {
@@ -171,18 +171,18 @@
       "role": "Senior Cryptography & Foundations Fellow · North American Senior",
       "group": "specialist",
       "color": "#93C5FD",
-      "start_sec": 115.067,
-      "end_sec": 132.215,
+      "start_sec": 118.323,
+      "end_sec": 135.471,
       "text": "Claude Shannon's one-time pad! Because every candidate plaintext corresponds to an equally probable key under a uniform prior, we verified mechanically in Lean 4 that even an unbounded CTC oracle gains zero distinguishing advantage."
     },
     {
       "turn_index": 7,
-      "speaker": "Priya",
-      "role": "Science Documentary Host · South Asian English",
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
       "group": "host",
-      "color": "#34D399",
-      "start_sec": 132.485,
-      "end_sec": 149.676,
+      "color": "#22D3EE",
+      "start_sec": 135.741,
+      "end_sec": 152.902,
       "text": "Now step out of mathematical CTCs into real laboratory physics. Researchers periodically suggest quantum entanglement, analog relaxation, or frequency-domain transforms might bypass sequential search. What did our catalog find?"
     },
     {
@@ -191,18 +191,18 @@
       "role": "Senior Cryptography & Foundations Fellow · North American Senior",
       "group": "specialist",
       "color": "#93C5FD",
-      "start_sec": 149.946,
-      "end_sec": 182.966,
+      "start_sec": 153.172,
+      "end_sec": 186.192,
       "text": "We audited one hundred ninety-five temporal anomalies TA001 to TA081, forty frequency edge cases AA01 to AA40, and seventy-four paradoxes P01 to P74. Quantum no-signalling forbids retrocausal bit transmission; Gabor uncertainty enforces Delta-t times Delta-f at least one over four pi; and analog soap films or Ising annealers pay thermal energy across barrier heights."
     },
     {
       "turn_index": 9,
-      "speaker": "Marcus",
-      "role": "Empirical Foil · North American English",
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
       "group": "skeptic",
-      "color": "#F59E0B",
-      "start_sec": 183.156,
-      "end_sec": 198.125,
+      "color": "#F97316",
+      "start_sec": 186.382,
+      "end_sec": 202.542,
       "text": "And to test whether SHA-256 leaks hidden spectral structure, you ran falsifier F5 across sixty-five thousand five hundred thirty-six SHA-256 digests! How many bins cleared the Bonferroni ten-to-the-minus-six floor?"
     },
     {
@@ -211,18 +211,18 @@
       "role": "Senior Cryptography & Foundations Fellow · North American Senior",
       "group": "specialist",
       "color": "#93C5FD",
-      "start_sec": 198.395,
-      "end_sec": 204.105,
+      "start_sec": 202.812,
+      "end_sec": 208.521,
       "text": "Not a single bin — zero out of sixty-five thousand five hundred thirty-six."
     },
     {
       "turn_index": 11,
-      "speaker": "Priya",
-      "role": "Science Documentary Host · South Asian English",
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
       "group": "host",
-      "color": "#34D399",
-      "start_sec": 204.375,
-      "end_sec": 215.49,
+      "color": "#22D3EE",
+      "start_sec": 208.791,
+      "end_sec": 220.215,
       "text": "Which leaves the one physical way engineers trade time for space: Martin Hellman's 1980 time-memory tradeoff, T times M-squared equals N-squared!"
     },
     {
@@ -231,48 +231,48 @@
       "role": "Senior Cryptography & Foundations Fellow · North American Senior",
       "group": "specialist",
       "color": "#93C5FD",
-      "start_sec": 215.76,
-      "end_sec": 238.873,
+      "start_sec": 220.485,
+      "end_sec": 243.599,
       "text": "Precisely. Hellman chains amortize search across memory M only if the target function exists before precomputation begins! Our Horizon theorem proves in Lean 4 that injecting a fresh k-bit salt or block hash born at query time scales offline table work by two to the k, rendering precomputed rainbow tables useless."
     },
     {
       "turn_index": 13,
-      "speaker": "Marcus",
-      "role": "Empirical Foil · North American English",
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
       "group": "skeptic",
-      "color": "#F59E0B",
-      "start_sec": 239.063,
-      "end_sec": 255.38,
+      "color": "#F97316",
+      "start_sec": 243.789,
+      "end_sec": 260.707,
       "text": "Look at that symmetry! In security, you inject fresh salts so adversaries CANNOT pre-index tomorrow. In World Coding and LUT6 cascades, you canonicalize recurring inputs with De Bruijn hashes so you CAN pre-index stationary work and save joules!"
     },
     {
       "turn_index": 14,
-      "speaker": "Priya",
-      "role": "Science Documentary Host · South Asian English",
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
       "group": "host",
-      "color": "#34D399",
-      "start_sec": 255.65,
-      "end_sec": 277.01,
+      "color": "#22D3EE",
+      "start_sec": 260.977,
+      "end_sec": 282.991,
       "text": "And that connects directly to OpenIE's foundational paper, Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents — framing the OpenIE authors' proposed Universal Law of Agency: physics sets an energy floor per decision, correctness is the gate, and progress per joule orders the systems that finish."
     },
     {
       "turn_index": 15,
-      "speaker": "Marcus",
-      "role": "Empirical Foil · North American English",
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
       "group": "skeptic",
-      "color": "#F59E0B",
-      "start_sec": 277.2,
-      "end_sec": 288.885,
-      "text": "Now get ready for our season finale in Episode Eight: Mateo, Sean, and Rohan enter the Idea Foundry live and watch a three-layer neural router get obliterated by a Shape-D integer grid!"
+      "color": "#F97316",
+      "start_sec": 283.181,
+      "end_sec": 295.741,
+      "text": "Now get ready for our season finale in Episode Eight: Mateo, Marcus, and Kwame enter the Idea Foundry live and watch a three-layer neural router get obliterated by a Shape-D integer grid!"
     }
   ],
   "cards": [
     {
       "id": "ep07-time-as-an-index-card-00-0",
       "at_sec": 2.63,
-      "end_sec": 27.67,
+      "end_sec": 28.945,
       "turn_index": 0,
-      "speaker": "Priya",
+      "speaker": "Amara",
       "kind": "study",
       "badge": "[T]",
       "title": "Time as an Index (31 Lean 4.36.0 Theorems, 0 sorry)",
@@ -281,8 +281,8 @@
     },
     {
       "id": "ep07-time-as-an-index-card-04-0",
-      "at_sec": 77.704,
-      "end_sec": 106.884,
+      "at_sec": 80.241,
+      "end_sec": 109.422,
       "turn_index": 4,
       "speaker": "Arthur",
       "kind": "receipt",
@@ -293,8 +293,8 @@
     },
     {
       "id": "ep07-time-as-an-index-card-08-0",
-      "at_sec": 150.746,
-      "end_sec": 182.966,
+      "at_sec": 153.972,
+      "end_sec": 186.192,
       "turn_index": 8,
       "speaker": "Arthur",
       "kind": "falsifier",
@@ -305,8 +305,8 @@
     },
     {
       "id": "ep07-time-as-an-index-card-12-0",
-      "at_sec": 216.56,
-      "end_sec": 238.873,
+      "at_sec": 221.285,
+      "end_sec": 243.599,
       "turn_index": 12,
       "speaker": "Arthur",
       "kind": "receipt",
@@ -317,10 +317,10 @@
     },
     {
       "id": "ep07-time-as-an-index-card-14-0",
-      "at_sec": 256.45,
-      "end_sec": 277.01,
+      "at_sec": 261.777,
+      "end_sec": 282.991,
       "turn_index": 14,
-      "speaker": "Priya",
+      "speaker": "Amara",
       "kind": "study",
       "badge": "[T]",
       "title": "Thermodynamic Bounds and an Optimal Tempo",

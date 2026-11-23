@@ -13,7 +13,7 @@ VOICE_ENSEMBLE = {
     "deterministic-null": ("Hari", "QtQiNi8LdZTzSJzhCvXT", "en-IN-PrabhatNeural", "Engaging Educator · South Asian English"),
     "satb-harness": ("Mia", "uR6zbwkKmeecuupKV18k", "en-US-AvaMultilingualNeural", "Science Journalist · Hispanic/Spanish English"),
     "time-as-an-index": ("Hakim", "EzoxNTKsg4JNN7wxAgut", "en-GB-ThomasNeural", "Confident Narrator · Middle Eastern English"),
-    "communication-avalanche": ("Sarah", "EXAVITQu4vr4xnSDxMaL", "en-US-EmmaMultilingualNeural", "Documentary Host · North American English"),
+    "communication-avalanche": ("Cecily", "NQMJRVvPew6HsaebYnZj", "en-US-EmmaMultilingualNeural", "Documentary Host · African American English"),
     "lut-adapt": ("Jenny", "7o3vIXfwm98KKuNfGmuY", "en-SG-LunaNeural", "Documentary Narrator · East/SE Asian English"),
     "satiation": ("Gabriel", "Dn7kHvEWEQXbRGLGqWJV", "en-US-AndrewMultilingualNeural", "Charismatic Host · Latino English"),
     "rce": ("Alice", "Xb7hH8MSUJpSbSDYk0k2", "en-GB-SoniaNeural", "Clear Educator · British English"),
@@ -23,12 +23,12 @@ VOICE_ENSEMBLE = {
     "game-engines": ("Charlie", "IKne3meq5aSn9XLyUdCD", "en-AU-WilliamNeural", "Energetic Creator · Australian English"),
     "three-body": ("Bill", "pqHfZKP75CvOlQylNhV4", "en-US-ChristopherNeural", "Senior Narrator · North American English"),
     "ai-reads-human": ("Sean", "tRqj2rLkZmeP61CMmIX4", "en-IE-ConnorNeural", "Clear Educator · Irish English"),
-    "spellcheck": ("Matilda", "XrExE9yKIg1WjnnlVkGX", "en-AU-NatashaNeural", "Upbeat Educator · North American English"),
+    "spellcheck": ("Misha", "DXX4Q5Bh1vqK8CciYVPf", "en-US-AriaNeural", "Storytelling Narrator · African American English"),
     "ai-coding-market": ("Osato", "PFnEp0d5QKq6baWI3azv", "en-NG-AbeoNeural", "Smooth Narrator · Nigerian English"),
-    "interface-economics": ("Lily", "pFZP5JQG7iQjIQuC4Bku", "en-GB-LibbyNeural", "Velvety Contralto · British English"),
-    "mei": ("Jessica", "cgSgspJ2msm6clMCkdW9", "en-US-JennyNeural", "Bright Explainer · North American English"),
-    "jouleos": ("Brian", "nPczCjzI2devNBz1zQrb", "en-US-BrianMultilingualNeural", "Resonant Baritone · North American English"),
-    "latency": ("Daniel", "onwK4e9ZLuTAKqWW03F9", "en-GB-RyanNeural", "Steady Broadcaster · British English"),
+    "interface-economics": ("Edwin", "CMUEYyUNA4TrldQy4HLM", "en-US-GuyNeural", "Warm Storyteller · African American English"),
+    "mei": ("Nylo", "GbDIo39THauInuigCmPM", "en-US-JennyNeural", "Systems Educator · African American English"),
+    "jouleos": ("Bobby", "lGMJWfnL2SVUwU7i6zQ7", "en-US-BrianMultilingualNeural", "Commanding Baritone · African American English"),
+    "latency": ("Julius", "VlUmeC1Uzj3NnwiVR9K9", "en-US-ChristopherNeural", "Conversational Host · African American English"),
 }
 
 TUTORIAL_LAB_MAP = {

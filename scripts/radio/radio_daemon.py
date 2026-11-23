@@ -30,11 +30,14 @@ from scraper import run_scrape
 from studio_synth import load_radio_env, render_episode
 
 ROTATING_PULSE_PANELS = [
-    ("Amara", "Sean", "Tariq"),
-    ("Elena", "Marcus", "Rohan"),
+    ("Cecily", "Marcus", "Rohan"),
+    ("Misha", "Sean", "Devon"),
+    ("Amara", "Nia", "Tariq"),
+    ("Elena", "Marcus", "Malik"),
     ("Priya", "Liam", "Claire"),
-    ("Mei", "Sean", "Kwame"),
+    ("Mei", "Nia", "Kwame"),
     ("Mateo", "Marcus", "Kenji"),
+    ("Cecily", "Sean", "Arthur"),
 ]
 
 

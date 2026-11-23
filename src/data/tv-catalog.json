@@ -1117,8 +1117,8 @@
       "figures_url": "/living/communication-avalanche/",
       "about_url": "/about/communication-avalanche/",
       "tutorial_lab_id": "lab-04-digital-enzymatic",
-      "narrator_name": "Sarah",
-      "narrator_profile": "Documentary Host · North American English",
+      "narrator_name": "Cecily",
+      "narrator_profile": "Documentary Host · African American English",
       "headline_metric": "59/60 Pass · 14.97x CpJ · 0/200 Byzantine",
       "epistemic_tags": [
         "T",
@@ -1134,15 +1134,15 @@
         "5s": {
           "video_url": "/media/tv/films/communication-avalanche-5s.mp4",
           "vtt_url": "/media/tv/captions/communication-avalanche-5s.vtt",
-          "duration_s": 6.7,
-          "bytes": 511830,
-          "sha256": "a02e62ad8185db176881c227dc5f322e9bade483529d1feb7fed30ff61f10857",
+          "duration_s": 6.47,
+          "bytes": 211639,
+          "sha256": "7ba0f305e68f0409c561b283247200eddb2c178a28a2a520e609608a162c793b",
           "hook": "From Archaean quorum pores to DES-10 attested agents: 59/60 repair at 14.97x Coherence per Joule and zero Byzantine leaks.",
           "transcript": "Fast cryptographic gates hit 59 of 60 repairs at 14.97x Coherence per Joule.",
           "cues": [
             {
               "start": 0.18,
-              "end": 6.43,
+              "end": 6.179,
               "text": "Fast cryptographic gates hit 59 of 60 repairs at 14.97x Coherence per Joule."
             }
           ]
@@ -1150,50 +1150,50 @@
         "30s": {
           "video_url": "/media/tv/films/communication-avalanche-30s.mp4",
           "vtt_url": "/media/tv/captions/communication-avalanche-30s.vtt",
-          "duration_s": 34.53,
-          "bytes": 1498161,
-          "sha256": "b28e1f65d89b17bda42a8d54db12036bf0b5c87bf6781b4e0a5c8a7bd8745e2a",
+          "duration_s": 34.5,
+          "bytes": 1492940,
+          "sha256": "0f399dd2a5ae4c38d0d346e96d5e1447db596c5b56390952cccbe113c0f049c6",
           "hook": "Why unverified multi-agent chat cascades hallucinate, and how nature's 3-phase ratchet fixes orchestration.",
           "transcript": "Chaining four unverified AI agents bloats transcripts 3.7x and commits eight broken patches out of sixty. Across 24 evolutionary rungs and 1950-to-2026 AI history, collective scale requires thresholded signals and fast isolation gates. BLAKE3 plus Ed25519 attestation in 25.95 microseconds and zero-clock eventfd match 59 of 60 repairs at 14.97x higher Coherence per Joule. Digital Enzymatic Synthesis unifies ten AI camps while 31 Lean 4 theorems guarantee opt-in neural agency.",
           "cues": [
             {
               "start": 0.26,
-              "end": 3.953,
+              "end": 3.929,
               "text": "Chaining four unverified AI agents bloats transcripts 3.7x"
             },
             {
-              "start": 3.953,
-              "end": 6.881,
+              "start": 3.929,
+              "end": 6.838,
               "text": "and commits eight broken patches out of sixty."
             },
             {
-              "start": 7.001,
-              "end": 10.768,
+              "start": 6.958,
+              "end": 10.717,
               "text": "Across 24 evolutionary rungs and 1950-to-2026 AI history,"
             },
             {
-              "start": 10.768,
-              "end": 15.459,
+              "start": 10.717,
+              "end": 15.4,
               "text": "collective scale requires thresholded signals and fast isolation gates."
             },
             {
-              "start": 15.579,
-              "end": 22.045,
+              "start": 15.52,
+              "end": 22.076,
               "text": "BLAKE3 plus Ed25519 attestation in 25.95 microseconds and zero-clock eventfd"
             },
             {
-              "start": 22.045,
-              "end": 27.15,
+              "start": 22.076,
+              "end": 27.251,
               "text": "match 59 of 60 repairs at 14.97x higher Coherence per Joule."
             },
             {
-              "start": 27.27,
-              "end": 30.785,
+              "start": 27.371,
+              "end": 30.815,
               "text": "Digital Enzymatic Synthesis unifies ten AI camps while"
             },
             {
-              "start": 30.785,
-              "end": 34.039,
+              "start": 30.815,
+              "end": 34.004,
               "text": "31 Lean 4 theorems guarantee opt-in neural agency."
             }
           ]
@@ -1201,55 +1201,55 @@
         "60s": {
           "video_url": "/media/tv/films/communication-avalanche-60s.mp4",
           "vtt_url": "/media/tv/captions/communication-avalanche-60s.vtt",
-          "duration_s": 61.27,
-          "bytes": 2385272,
-          "sha256": "0063adc3badceed382b7fd47e5629d5c4b9a2ff082fa930c239963c3a0fe2651",
+          "duration_s": 58.23,
+          "bytes": 2302877,
+          "sha256": "0a59721c0d0a659dc6b845d3a3c01aa833faf8dacd3d0f7730e5648599b0c80f",
           "hook": "24 biological rungs, 1950–2026 AI history, DES-10 enzymatic synthesis, Rust BLAKE3+Ed25519+SSP benchmarks, and Lean 4 BCI proofs.",
           "transcript": "Bacteria save 99 percent ATP via quorum thresholds and SepJ nanopores; early AI blackboard systems stalled when unverified noise compounded. DES-10 bridges ten isolated AI camps—catalyzing frontier reasoning downward into 1.77-microjoule memory-mapped enzymes. Zero-clock eventfd cuts idle socket joules 2.21x vs 1,000 Hz polling, while Zipfian crystallization reaches 43.69x Coherence per Joule. On 60 code repairs, attested min-cost flow hits 59 of 60 with zero false commits, 2.09x monolithic CpJ, and 200 of 200 faults contained. Thirty-one Lean 4 proofs enforce zero-axiom opt-in BCI sovereignty across 18 neural modalities and a Month-to-Decade roadmap.",
           "cues": [
             {
               "start": 0.32,
-              "end": 6.032,
+              "end": 5.691,
               "text": "Bacteria save 99 percent ATP via quorum thresholds and SepJ nanopores;"
             },
             {
-              "start": 6.032,
-              "end": 11.662,
+              "start": 5.691,
+              "end": 10.985,
               "text": "early AI blackboard systems stalled when unverified noise compounded."
             },
             {
-              "start": 12.182,
-              "end": 23.159,
+              "start": 11.505,
+              "end": 22.261,
               "text": "DES-10 bridges ten isolated AI camps—catalyzing frontier reasoning downward into 1.77-microjoule memory-mapped enzymes."
             },
             {
-              "start": 23.679,
-              "end": 30.193,
+              "start": 22.781,
+              "end": 29.013,
               "text": "Zero-clock eventfd cuts idle socket joules 2.21x vs 1,000 Hz polling,"
             },
             {
-              "start": 30.193,
-              "end": 36.329,
+              "start": 29.013,
+              "end": 34.883,
               "text": "while Zipfian crystallization reaches 43.69x Coherence per Joule."
             },
             {
-              "start": 36.849,
-              "end": 44.668,
+              "start": 35.403,
+              "end": 42.914,
               "text": "On 60 code repairs, attested min-cost flow hits 59 of 60 with zero false commits,"
             },
             {
-              "start": 44.668,
-              "end": 49.88,
+              "start": 42.914,
+              "end": 47.921,
               "text": "2.09x monolithic CpJ, and 200 of 200 faults contained."
             },
             {
-              "start": 50.4,
-              "end": 54.859,
+              "start": 48.441,
+              "end": 52.431,
               "text": "Thirty-one Lean 4 proofs enforce zero-axiom opt-in BCI"
             },
             {
-              "start": 54.859,
-              "end": 60.639,
+              "start": 52.431,
+              "end": 57.605,
               "text": "sovereignty across 18 neural modalities and a Month-to-Decade roadmap."
             }
           ]
@@ -1258,64 +1258,64 @@
           "video_url": "/media/tv/films/communication-avalanche-90s.mp4",
           "vtt_url": "/media/tv/captions/communication-avalanche-90s.vtt",
           "duration_s": 84.9,
-          "bytes": 3727113,
-          "sha256": "9920a0091fdf5ed235171ad6c78561aebc246b3e0d45437fcf21c15d8d62d1cf",
+          "bytes": 3173208,
+          "sha256": "986977d30b87c855c040ff13b5731283b4f923c3e5acdb4d57cc63a0253c7c23",
           "hook": "The Lab Cut: SepJ nanopores, 1950–2026 AI ratchet, DES-10 10-camp synthesis, 5-host Thor INA shunts + RAPL, and opt-in BCI Lean 4 proofs.",
           "transcript": "Across 3.5 billion years of biology and 76 years of AI from MYCIN to FunSearch, externalized symbols scale minds only behind strict gates. Models CA-M1 to M5 confirm quorum ATP savings, 95 percent SepJ survival under 0.30-second pore closure, and 100 percent attested cultural retention. This three-dimensional cutaway pairs calcium-gated cyanobacterial SepJ filaments with an opt-in multi-electrode neural bridge. Ten siloed AI camps converge in Digital Enzymatic Synthesis, backed by 25.95-microsecond Rust edge verification and eventfd wakeups. Linux RAPL benchmarks and five-host fleet profiles with Jetson AGX Thor INA238 shunts verify 59 of 60 repairs and zero Byzantine cascades. Zero-axiom Lean 4 proofs block coercive neural pulses across 18 BCI and 16 vesicle studies, anchoring the Month-Quarter-Year-Decade blueprint.",
           "cues": [
             {
-              "start": 0.511,
-              "end": 8.284,
+              "start": 0.653,
+              "end": 8.187,
               "text": "Across 3.5 billion years of biology and 76 years of AI from MYCIN to FunSearch,"
             },
             {
-              "start": 8.284,
-              "end": 13.992,
+              "start": 8.187,
+              "end": 13.718,
               "text": "externalized symbols scale minds only behind strict gates."
             },
             {
-              "start": 14.965,
-              "end": 19.921,
+              "start": 15.097,
+              "end": 19.955,
               "text": "Models CA-M1 to M5 confirm quorum ATP savings,"
             },
             {
-              "start": 19.921,
-              "end": 30.802,
+              "start": 19.955,
+              "end": 30.62,
               "text": "95 percent SepJ survival under 0.30-second pore closure, and 100 percent attested cultural retention."
             },
             {
-              "start": 31.776,
-              "end": 41.525,
+              "start": 31.999,
+              "end": 41.442,
               "text": "This three-dimensional cutaway pairs calcium-gated cyanobacterial SepJ filaments with an opt-in multi-electrode neural bridge."
             },
             {
-              "start": 42.499,
-              "end": 48.235,
+              "start": 42.821,
+              "end": 48.384,
               "text": "Ten siloed AI camps converge in Digital Enzymatic Synthesis,"
             },
             {
-              "start": 48.235,
-              "end": 55.022,
+              "start": 48.384,
+              "end": 54.968,
               "text": "backed by 25.95-microsecond Rust edge verification and eventfd wakeups."
             },
             {
-              "start": 55.996,
-              "end": 63.384,
+              "start": 56.346,
+              "end": 63.496,
               "text": "Linux RAPL benchmarks and five-host fleet profiles with Jetson AGX Thor"
             },
             {
-              "start": 63.384,
-              "end": 70.252,
+              "start": 63.496,
+              "end": 70.143,
               "text": "INA238 shunts verify 59 of 60 repairs and zero Byzantine cascades."
             },
             {
-              "start": 71.226,
-              "end": 76.622,
+              "start": 71.522,
+              "end": 76.68,
               "text": "Zero-axiom Lean 4 proofs block coercive neural pulses across"
             },
             {
-              "start": 76.622,
-              "end": 83.907,
+              "start": 76.68,
+              "end": 83.644,
               "text": "18 BCI and 16 vesicle studies, anchoring the Month-Quarter-Year-Decade blueprint."
             }
           ]
@@ -3269,8 +3269,8 @@
       "figures_url": "/living/spellcheck/",
       "about_url": "/about/spellcheck/",
       "tutorial_lab_id": "lab-03-ai-ratchet-winters",
-      "narrator_name": "Matilda",
-      "narrator_profile": "Upbeat Educator · North American English",
+      "narrator_name": "Misha",
+      "narrator_profile": "Storytelling Narrator · African American English",
       "headline_metric": "$$$ Standalone -> $0 Universal Feature for 7B+ People",
       "epistemic_tags": [
         "M",
@@ -3285,19 +3285,19 @@
           "video_url": "/media/tv/films/spellcheck-5s.mp4",
           "vtt_url": "/media/tv/captions/spellcheck-5s.vtt",
           "duration_s": 6.83,
-          "bytes": 689906,
-          "sha256": "e6e4b0f4e16878b21303d35c63fa0a6bc477f4806260bfacb37a5c878be2657c",
+          "bytes": 232085,
+          "sha256": "e58bcc199212913b59aac2797d7a3057839ad4cd0bf5519107072796aace24de",
           "hook": "Spell check went from an expensive standalone luxury to a free global feature once its marginal cost hit near zero.",
           "transcript": "Spell check cost hundreds of dollars until tiny marginal energy let every device bundle it free for billions.",
           "cues": [
             {
               "start": 0.18,
-              "end": 3.492,
+              "end": 3.489,
               "text": "Spell check cost hundreds of dollars until tiny marginal"
             },
             {
-              "start": 3.492,
-              "end": 6.567,
+              "start": 3.489,
+              "end": 6.562,
               "text": "energy let every device bundle it free for billions."
             }
           ]
@@ -3305,45 +3305,45 @@
         "30s": {
           "video_url": "/media/tv/films/spellcheck-30s.mp4",
           "vtt_url": "/media/tv/captions/spellcheck-30s.vtt",
-          "duration_s": 31.37,
-          "bytes": 1332926,
-          "sha256": "4f61313b9046ba73d319bc0503723380f7d191aba579a226f9ef126014486b61",
+          "duration_s": 30.37,
+          "bytes": 1318692,
+          "sha256": "3c10af9868b6e191115a316a8c5cbe0a0e172bc27d51b35c7b87eda9f1fc474c",
           "hook": "Dated software prices from the 1980s to today reveal what AI must achieve to reach 7 billion people.",
           "transcript": "Forty years ago, checking spelling on a personal computer required buying a separate hundred-dollar floppy package. Spell check became free not through charity, but because compressed dictionaries dropped per-word compute near zero. A skill used on every sentence belongs inside the operating system—provided running it costs negligible watts. Computer intelligence reaches seven billion people when common skills compile down to spell-check-scale energy.",
           "cues": [
             {
               "start": 0.26,
-              "end": 1.265,
+              "end": 1.248,
               "text": "Forty years ago,"
             },
             {
-              "start": 1.265,
-              "end": 7.423,
+              "start": 1.248,
+              "end": 7.3,
               "text": "checking spelling on a personal computer required buying a separate hundred-dollar floppy package."
             },
             {
-              "start": 7.843,
-              "end": 10.837,
+              "start": 7.72,
+              "end": 10.474,
               "text": "Spell check became free not through charity,"
             },
             {
-              "start": 10.837,
-              "end": 15.668,
+              "start": 10.474,
+              "end": 14.919,
               "text": "but because compressed dictionaries dropped per-word compute near zero."
             },
             {
-              "start": 16.088,
-              "end": 19.056,
+              "start": 15.339,
+              "end": 18.338,
               "text": "A skill used on every sentence belongs inside"
             },
             {
-              "start": 19.056,
-              "end": 23.277,
+              "start": 18.338,
+              "end": 22.604,
               "text": "the operating system—provided running it costs negligible watts."
             },
             {
-              "start": 23.697,
-              "end": 30.884,
+              "start": 23.024,
+              "end": 29.894,
               "text": "Computer intelligence reaches seven billion people when common skills compile down to spell-check-scale energy."
             }
           ]
@@ -3352,54 +3352,54 @@
           "video_url": "/media/tv/films/spellcheck-60s.mp4",
           "vtt_url": "/media/tv/captions/spellcheck-60s.vtt",
           "duration_s": 55.7,
-          "bytes": 2207766,
-          "sha256": "bf96a9ca7955b85dd1c9feee3b48ae8b99981a2174aa63812dc30bcc72dfa54b",
+          "bytes": 2211279,
+          "sha256": "5a842cb218944620c653d8a8eeb4bf6bf733260c20d8aff9b3740c6ebd1551d4",
           "hook": "Tracing dated spell-check prices, bundling economics, and why low marginal energy decides global AI access.",
           "transcript": "Twenty-dollar monthly cloud subscriptions work for a few million professionals, not seven billion everyday users. Spell Check is Global documents dated retail prices showing how standalone proofreading vanished into standard editors. Once the compute cost of an inline check fell below billing overhead, charging per check became economically irrational. Heavy frontier models stay metered behind paywalls precisely because each invocation still burns substantial datacenter energy. Lowering energy per verified action is not an afterthought—it is the economic mechanism of global access.",
           "cues": [
             {
-              "start": 0.931,
-              "end": 9.209,
+              "start": 0.964,
+              "end": 9.39,
               "text": "Twenty-dollar monthly cloud subscriptions work for a few million professionals, not seven billion everyday users."
             },
             {
-              "start": 11.475,
-              "end": 15.264,
+              "start": 11.751,
+              "end": 15.473,
               "text": "Spell Check is Global documents dated retail prices"
             },
             {
-              "start": 15.264,
-              "end": 20.241,
+              "start": 15.473,
+              "end": 20.361,
               "text": "showing how standalone proofreading vanished into standard editors."
             },
             {
-              "start": 22.507,
-              "end": 27.639,
+              "start": 22.722,
+              "end": 27.563,
               "text": "Once the compute cost of an inline check fell below billing overhead,"
             },
             {
-              "start": 27.639,
-              "end": 31.358,
+              "start": 27.563,
+              "end": 31.071,
               "text": "charging per check became economically irrational."
             },
             {
-              "start": 33.624,
-              "end": 38.22,
+              "start": 33.432,
+              "end": 37.963,
               "text": "Heavy frontier models stay metered behind paywalls precisely"
             },
             {
-              "start": 38.22,
-              "end": 43.276,
+              "start": 37.963,
+              "end": 42.947,
               "text": "because each invocation still burns substantial datacenter energy."
             },
             {
-              "start": 45.543,
-              "end": 49.178,
+              "start": 45.308,
+              "end": 49.019,
               "text": "Lowering energy per verified action is not an"
             },
             {
-              "start": 49.178,
-              "end": 53.945,
+              "start": 49.019,
+              "end": 53.883,
               "text": "afterthought—it is the economic mechanism of global access."
             }
           ]
@@ -3408,64 +3408,64 @@
           "video_url": "/media/tv/films/spellcheck-90s.mp4",
           "vtt_url": "/media/tv/captions/spellcheck-90s.vtt",
           "duration_s": 84.9,
-          "bytes": 4221331,
-          "sha256": "24b6e3bdea7e406e3987ea78873d4765689f160daf0c76048ce1debcb4727857",
+          "bytes": 3168230,
+          "sha256": "46a6bfd0b60b24cb7f26feac03a96069aeefd01bd424e31042069cd7773548e2",
           "hook": "Full historical and economic tour of spell check's price collapse and its lesson for universal computer intelligence.",
           "transcript": "Nobody budgets tokens before fixing a typo today, yet early spell checkers were marketed as elite productivity engines. Dated catalogs from CP/M and DOS through modern mobile OSes trace an exact economic transition driven by algorithmic efficiency. This three-dimensional globe contrasts centralized high-watt server hubs with lightweight skills running locally across billions of devices. Inline tools succeed when latency is imperceptible, false positives are bounded, and battery drain goes unnoticed. Today's frontier AI resembles standalone 1982 software: impressive, power-hungry, and priced per seat or per token. Compiling verified capabilities into sub-millijoule local tables repeats the spell-check trajectory for computer intelligence.",
           "cues": [
             {
-              "start": 1.517,
-              "end": 5.467,
+              "start": 1.714,
+              "end": 5.486,
               "text": "Nobody budgets tokens before fixing a typo today,"
             },
             {
-              "start": 5.467,
-              "end": 11.029,
+              "start": 5.486,
+              "end": 10.797,
               "text": "yet early spell checkers were marketed as elite productivity engines."
             },
             {
-              "start": 14.877,
-              "end": 19.955,
+              "start": 15.208,
+              "end": 19.966,
               "text": "Dated catalogs from CP/M and DOS through modern mobile"
             },
             {
-              "start": 19.955,
-              "end": 26.821,
+              "start": 19.966,
+              "end": 26.398,
               "text": "OSes trace an exact economic transition driven by algorithmic efficiency."
             },
             {
-              "start": 30.669,
-              "end": 36.262,
+              "start": 30.809,
+              "end": 35.913,
               "text": "This three-dimensional globe contrasts centralized high-watt server hubs"
             },
             {
-              "start": 36.262,
-              "end": 41.466,
+              "start": 35.913,
+              "end": 40.663,
               "text": "with lightweight skills running locally across billions of devices."
             },
             {
-              "start": 45.314,
-              "end": 49.546,
+              "start": 45.073,
+              "end": 48.923,
               "text": "Inline tools succeed when latency is imperceptible,"
             },
             {
-              "start": 49.546,
-              "end": 54.69,
+              "start": 48.923,
+              "end": 53.602,
               "text": "false positives are bounded, and battery drain goes unnoticed."
             },
             {
-              "start": 58.538,
-              "end": 64.913,
+              "start": 58.012,
+              "end": 64.233,
               "text": "Today's frontier AI resembles standalone 1982 software: impressive,"
             },
             {
-              "start": 64.913,
-              "end": 69.386,
+              "start": 64.233,
+              "end": 68.597,
               "text": "power-hungry, and priced per seat or per token."
             },
             {
-              "start": 73.233,
-              "end": 82.039,
+              "start": 73.008,
+              "end": 81.673,
               "text": "Compiling verified capabilities into sub-millijoule local tables repeats the spell-check trajectory for computer intelligence."
             }
           ]
@@ -3675,8 +3675,8 @@
       "figures_url": "/figures/interface-economics/estimates-by-kind.svg",
       "about_url": "/about/interface-economics/",
       "tutorial_lab_id": "lab-02-attested-orchestrator",
-      "narrator_name": "Lily",
-      "narrator_profile": "Velvety Contralto · British English",
+      "narrator_name": "Edwin",
+      "narrator_profile": "Warm Storyteller · African American English",
       "headline_metric": "Accounted Disasters vs Unpriced Public-Good Checks",
       "epistemic_tags": [
         "S",
@@ -3690,20 +3690,20 @@
         "5s": {
           "video_url": "/media/tv/films/interface-economics-5s.mp4",
           "vtt_url": "/media/tv/captions/interface-economics-5s.vtt",
-          "duration_s": 6.9,
-          "bytes": 419042,
-          "sha256": "ab9d20864db9a4c953ecc6518b3026933a22cab9ee04f16e94ecbace921a49ac",
+          "duration_s": 6.87,
+          "bytes": 232286,
+          "sha256": "43f500981ee1e0c53990d6150875756fa45ed3889ef534a45d646b8455bd2d9d",
           "hook": "Checking an interface assumption is cheap, skipping it destroys spacecraft, and misaligned incentives explain why teams skip it.",
           "transcript": "One unchecked unit or overflow destroys rockets, yet teams under-invest because one group pays while everyone downstream benefits.",
           "cues": [
             {
               "start": 0.18,
-              "end": 2.575,
+              "end": 2.561,
               "text": "One unchecked unit or overflow destroys rockets,"
             },
             {
-              "start": 2.575,
-              "end": 6.616,
+              "start": 2.561,
+              "end": 6.58,
               "text": "yet teams under-invest because one group pays while everyone downstream benefits."
             }
           ]
@@ -3711,45 +3711,45 @@
         "30s": {
           "video_url": "/media/tv/films/interface-economics-30s.mp4",
           "vtt_url": "/media/tv/captions/interface-economics-30s.vtt",
-          "duration_s": 31.17,
-          "bytes": 1343848,
-          "sha256": "c80a8f99b8e478f444da1c0bd98bbf3535ef5d5cda95c4a616cb53e91261e1ab",
+          "duration_s": 31.1,
+          "bytes": 1356820,
+          "sha256": "872ae44df56c3aa76301a7dc55cc804e838942d2b71fcd74892d9ae9e999551f",
           "hook": "From Mars Climate Orbiter and Ariane 5 to public-good economics: why software handoffs stay under-specified.",
           "transcript": "Mars Climate Orbiter burned up over an unchecked unit handoff; Ariane 5 Flight 501 self-destructed on an unhandled conversion. The Price of the Unexamined Interface catalogs published costs by strict evidence kind and refuses to mash them into one fake sum. Writing a formal boundary contract taxes one team's sprint today while the avoided outages benefit downstream strangers. When machine-checked Forms make interface verification nearly free, private incentives finally align with system safety.",
           "cues": [
             {
               "start": 0.26,
-              "end": 4.356,
+              "end": 4.335,
               "text": "Mars Climate Orbiter burned up over an unchecked unit handoff;"
             },
             {
-              "start": 4.356,
-              "end": 8.519,
+              "start": 4.335,
+              "end": 8.476,
               "text": "Ariane 5 Flight 501 self-destructed on an unhandled conversion."
             },
             {
-              "start": 8.939,
-              "end": 13.13,
+              "start": 8.896,
+              "end": 13.089,
               "text": "The Price of the Unexamined Interface catalogs published costs by strict"
             },
             {
-              "start": 13.13,
-              "end": 16.447,
+              "start": 13.089,
+              "end": 16.408,
               "text": "evidence kind and refuses to mash them into one fake sum."
             },
             {
-              "start": 16.867,
-              "end": 19.748,
+              "start": 16.828,
+              "end": 19.735,
               "text": "Writing a formal boundary contract taxes one team's"
             },
             {
-              "start": 19.748,
-              "end": 23.588,
+              "start": 19.735,
+              "end": 23.611,
               "text": "sprint today while the avoided outages benefit downstream strangers."
             },
             {
-              "start": 24.008,
-              "end": 30.682,
+              "start": 24.031,
+              "end": 30.609,
               "text": "When machine-checked Forms make interface verification nearly free, private incentives finally align with system safety."
             }
           ]
@@ -3758,54 +3758,54 @@
           "video_url": "/media/tv/films/interface-economics-60s.mp4",
           "vtt_url": "/media/tv/captions/interface-economics-60s.vtt",
           "duration_s": 55.7,
-          "bytes": 2246546,
-          "sha256": "e9976dce6b85dd1a85fc1586679d2865c8a785e29294d6805b61e9fcd1ebcf90",
+          "bytes": 2236275,
+          "sha256": "fb60b11d74f2f68cb0197fc15db70e4187e98539c39a9fca7724553fc4dd760e",
           "hook": "Separating accounted failure costs from macro surveys, and modeling interface specification as a public-good problem.",
           "transcript": "Software quality papers routinely add audited accident ledgers to loose executive opinion polls as if both were bank statements. Separating exact accounted failures like Knight Capital, Ariane 5, and Mars Orbiter from macro estimates restores rigor. Standards economics explains persistent fragility: specifying every invariant upfront is a local cost with positive externalities. Every documented handoff catastrophe traced to an assumption—units, bounds, or state—that a millisecond static check catches. Automated interface checkers shrink specification effort below the private pain of debugging one integration outage.",
           "cues": [
             {
-              "start": 0.551,
-              "end": 5.553,
+              "start": 0.678,
+              "end": 5.398,
               "text": "Software quality papers routinely add audited accident ledgers to"
             },
             {
-              "start": 5.553,
-              "end": 10.324,
+              "start": 5.398,
+              "end": 9.9,
               "text": "loose executive opinion polls as if both were bank statements."
             },
             {
-              "start": 11.505,
-              "end": 16.181,
+              "start": 11.442,
+              "end": 16.045,
               "text": "Separating exact accounted failures like Knight Capital,"
             },
             {
-              "start": 16.181,
-              "end": 21.442,
+              "start": 16.045,
+              "end": 21.224,
               "text": "Ariane 5, and Mars Orbiter from macro estimates restores rigor."
             },
             {
-              "start": 22.623,
-              "end": 26.777,
+              "start": 22.766,
+              "end": 26.833,
               "text": "Standards economics explains persistent fragility:"
             },
             {
-              "start": 26.777,
-              "end": 33.341,
+              "start": 26.833,
+              "end": 33.258,
               "text": "specifying every invariant upfront is a local cost with positive externalities."
             },
             {
-              "start": 34.522,
-              "end": 40.128,
+              "start": 34.8,
+              "end": 39.998,
               "text": "Every documented handoff catastrophe traced to an assumption—units,"
             },
             {
-              "start": 40.128,
-              "end": 44.898,
+              "start": 39.998,
+              "end": 44.419,
               "text": "bounds, or state—that a millisecond static check catches."
             },
             {
-              "start": 46.08,
-              "end": 54.65,
+              "start": 45.962,
+              "end": 54.415,
               "text": "Automated interface checkers shrink specification effort below the private pain of debugging one integration outage."
             }
           ]
@@ -3814,54 +3814,54 @@
           "video_url": "/media/tv/films/interface-economics-90s.mp4",
           "vtt_url": "/media/tv/captions/interface-economics-90s.vtt",
           "duration_s": 84.9,
-          "bytes": 3615737,
-          "sha256": "cfa73eba3255d0d5ba119504879b360376a822c33a45a47e46c4622ba8f521ec",
+          "bytes": 3171055,
+          "sha256": "c2091056d75552ca35b22e25572c1abcf846066dcc20092062772d19a112a096",
           "hook": "Full economic and historical investigation of integration failures, NIST/CISQ estimate hygiene, and automated contract tooling.",
           "transcript": "In Ariane 501 and Mars Climate Orbiter, individual modules behaved exactly as coded while unwritten interface contracts shattered. Under deadline pressure, documenting and proving boundary invariants penalizes the upstream schedule while downstream teams reap stability. This three-dimensional gate illustrates untyped cross-team payloads compressed through explicit unit, range, and totality contracts. Side-by-side visual ledgers classify every published figure honestly, refusing to add apples, models, and opinion polls. Across aerospace, finance, and enterprise stacks, boundary reconciliation consumes a massive share of engineering budgets. Lowering verification cost via total Forms and static manifest checks solves the public-good bottleneck directly.",
           "cues": [
             {
-              "start": 1.673,
-              "end": 5.05,
+              "start": 1.738,
+              "end": 4.93,
               "text": "In Ariane 501 and Mars Climate Orbiter,"
             },
             {
-              "start": 5.05,
-              "end": 12.843,
+              "start": 4.93,
+              "end": 12.295,
               "text": "individual modules behaved exactly as coded while unwritten interface contracts shattered."
             },
             {
-              "start": 17.136,
-              "end": 18.894,
+              "start": 16.775,
+              "end": 18.517,
               "text": "Under deadline pressure,"
             },
             {
-              "start": 18.894,
-              "end": 27.247,
+              "start": 18.517,
+              "end": 26.791,
               "text": "documenting and proving boundary invariants penalizes the upstream schedule while downstream teams reap stability."
             },
             {
-              "start": 31.54,
-              "end": 41.313,
+              "start": 31.271,
+              "end": 40.83,
               "text": "This three-dimensional gate illustrates untyped cross-team payloads compressed through explicit unit, range, and totality contracts."
             },
             {
-              "start": 45.606,
-              "end": 51.378,
+              "start": 45.309,
+              "end": 51.025,
               "text": "Side-by-side visual ledgers classify every published figure honestly,"
             },
             {
-              "start": 51.378,
-              "end": 55.56,
+              "start": 51.025,
+              "end": 55.167,
               "text": "refusing to add apples, models, and opinion polls."
             },
             {
-              "start": 59.853,
-              "end": 69.271,
+              "start": 59.647,
+              "end": 69.005,
               "text": "Across aerospace, finance, and enterprise stacks, boundary reconciliation consumes a massive share of engineering budgets."
             },
             {
-              "start": 73.564,
-              "end": 81.75,
+              "start": 73.484,
+              "end": 81.628,
               "text": "Lowering verification cost via total Forms and static manifest checks solves the public-good bottleneck directly."
             }
           ]
@@ -3878,8 +3878,8 @@
       "figures_url": "/living/mei/",
       "about_url": "/about/mei/",
       "tutorial_lab_id": "lab-09-lut6-benes",
-      "narrator_name": "Jessica",
-      "narrator_profile": "Bright Explainer · North American English",
+      "narrator_name": "Nylo",
+      "narrator_profile": "Systems Educator · African American English",
       "headline_metric": "32×24 mm 0-DRC PCB · 100% -20°C Alerts · 2,680 JCR-1",
       "epistemic_tags": [
         "E",
@@ -3893,15 +3893,15 @@
         "5s": {
           "video_url": "/media/tv/films/mei-5s.mp4",
           "vtt_url": "/media/tv/captions/mei-5s.vtt",
-          "duration_s": 6.07,
-          "bytes": 368022,
-          "sha256": "5f0afae716afe80887fade4da84daa6115f53e0f05b35ec7df9938a1660503c7",
+          "duration_s": 6.3,
+          "bytes": 212940,
+          "sha256": "156dae1100aea9edd7e7690f81c6fdc7bd7a19bd8427651b8a258cb914f0b34a",
           "hook": "Budget-native compute from a 32×24 mm zero-DRC coin-cell tag preserving 100% of -20°C alerts up to grid-following data centers.",
           "transcript": "Hold joules before waking and settle signed receipts, from coin-cell tag to campus.",
           "cues": [
             {
               "start": 0.18,
-              "end": 5.777,
+              "end": 6.013,
               "text": "Hold joules before waking and settle signed receipts, from coin-cell tag to campus."
             }
           ]
@@ -3909,40 +3909,40 @@
         "30s": {
           "video_url": "/media/tv/films/mei-30s.mp4",
           "vtt_url": "/media/tv/captions/mei-30s.vtt",
-          "duration_s": 34.5,
-          "bytes": 1489473,
-          "sha256": "2648be8e0f85737305a0aff37057ba7fe02d87aacd3c5a9b6d5040192fd8e87f",
+          "duration_s": 34.47,
+          "bytes": 1493098,
+          "sha256": "6609c23ccd51a6f1bbff3e24b5d6af1280c82868ec29c799ca2facd9c2dbfe26",
           "hook": "What happens when intelligence treats energy like a living metabolism—from a cold-chain coin-cell tag to a data center.",
           "transcript": "At minus twenty degrees Celsius, a CR2032 coin cell sags sharply—killing naive smart tags mid-transmission. Metabolic Intelligence reserves a joule grant before acting and settles canonical Ed25519 JCR-1 receipts afterward. A DRC-clean STM32WBA52, TI INA238, and FRAM PCB design preserves 100 percent of critical cold-chain alerts across 10,000 wakes. Complete KiCad, Gerber, BOM, and 3D STEP files ship openly, with board_metered explicitly false prior to bench fab.",
           "cues": [
             {
               "start": 0.26,
-              "end": 7.124,
+              "end": 6.918,
               "text": "At minus twenty degrees Celsius, a CR2032 coin cell sags sharply—killing naive smart tags mid-transmission."
             },
             {
-              "start": 7.244,
-              "end": 14.918,
+              "start": 7.04,
+              "end": 14.73,
               "text": "Metabolic Intelligence reserves a joule grant before acting and settles canonical Ed25519 JCR-1 receipts afterward."
             },
             {
-              "start": 15.038,
-              "end": 18.223,
+              "start": 14.852,
+              "end": 18.152,
               "text": "A DRC-clean STM32WBA52, TI INA238,"
             },
             {
-              "start": 18.223,
-              "end": 26.841,
+              "start": 18.152,
+              "end": 27.079,
               "text": "and FRAM PCB design preserves 100 percent of critical cold-chain alerts across 10,000 wakes."
             },
             {
-              "start": 26.961,
-              "end": 30.62,
+              "start": 27.202,
+              "end": 30.72,
               "text": "Complete KiCad, Gerber, BOM, and 3D STEP files ship openly,"
             },
             {
-              "start": 30.62,
-              "end": 34.031,
+              "start": 30.72,
+              "end": 34.0,
               "text": "with board_metered explicitly false prior to bench fab."
             }
           ]
@@ -3951,54 +3951,54 @@
           "video_url": "/media/tv/films/mei-60s.mp4",
           "vtt_url": "/media/tv/captions/mei-60s.vtt",
           "duration_s": 55.7,
-          "bytes": 2253571,
-          "sha256": "298ef5710de9ec5b4156fea619c6731d01fd4a2556749415572ba1a05e686dd4",
+          "bytes": 2246523,
+          "sha256": "a2c090b1e09e4759ceefe6b43a54627a5bede3733a4bf15b706b613da15f78ae",
           "hook": "Inside MEI-JCP-Tag-v1: 32×24 mm STM32WBA52+INA238+FRAM PCB, NURBS enclosure, -20°C CR2032 verification, and grid-following DCs.",
           "transcript": "Biological cells throttle non-essential work when ATP drops; conventional computers run full tilt until voltage collapses. Whether running on a coin cell or following renewable curtailment in a megawatt campus, tasks request a joule hold first. Across 10,000 simulated cold-chain wakeups at minus 20 Celsius, metabolic shedding preserves 100 percent of critical alerts. Zero DRC violations across 2-layer KiCad Gerbers, paired with a 3D B-Rep enclosure and 2,680 signed det-CBOR receipts. Every table distinguishes emulator instruction counts and datasheet schedules from physical bench power.",
           "cues": [
             {
-              "start": 0.637,
-              "end": 5.479,
+              "start": 0.475,
+              "end": 5.559,
               "text": "Biological cells throttle non-essential work when ATP drops;"
             },
             {
-              "start": 5.479,
-              "end": 10.4,
+              "start": 5.559,
+              "end": 10.729,
               "text": "conventional computers run full tilt until voltage collapses."
             },
             {
-              "start": 11.827,
-              "end": 18.165,
+              "start": 11.69,
+              "end": 18.273,
               "text": "Whether running on a coin cell or following renewable curtailment in a megawatt campus,"
             },
             {
-              "start": 18.165,
-              "end": 20.57,
+              "start": 18.273,
+              "end": 20.77,
               "text": "tasks request a joule hold first."
             },
             {
-              "start": 21.996,
-              "end": 27.213,
+              "start": 21.732,
+              "end": 27.356,
               "text": "Across 10,000 simulated cold-chain wakeups at minus 20 Celsius,"
             },
             {
-              "start": 27.213,
-              "end": 32.181,
+              "start": 27.356,
+              "end": 32.712,
               "text": "metabolic shedding preserves 100 percent of critical alerts."
             },
             {
-              "start": 33.608,
-              "end": 38.855,
+              "start": 33.674,
+              "end": 39.082,
               "text": "Zero DRC violations across 2-layer KiCad Gerbers,"
             },
             {
-              "start": 38.855,
-              "end": 46.137,
+              "start": 39.082,
+              "end": 46.586,
               "text": "paired with a 3D B-Rep enclosure and 2,680 signed det-CBOR receipts."
             },
             {
-              "start": 47.564,
-              "end": 54.491,
+              "start": 47.548,
+              "end": 54.793,
               "text": "Every table distinguishes emulator instruction counts and datasheet schedules from physical bench power."
             }
           ]
@@ -4007,64 +4007,64 @@
           "video_url": "/media/tv/films/mei-90s.mp4",
           "vtt_url": "/media/tv/captions/mei-90s.vtt",
           "duration_s": 84.9,
-          "bytes": 3692563,
-          "sha256": "0d220f72f81d2c5aec8da45f696c97685c8c112f7ba93e5d5fa88cf6941d1194",
+          "bytes": 3109618,
+          "sha256": "3012a2a0394df63d1f616a0306ac42e654f0b97d5803cd7d5120aa8f17da22e6",
           "hook": "The Lab Cut: 3D cutaway of the 32×24 mm MEI-JCP-Tag-v1 PCB & enclosure, 2,680 Ed25519 JCR-1 receipts, and grid-following campus protocol.",
           "transcript": "Edge sensors freeze in cargo holds while data centers hit transformer caps—both fail without native energy scheduling. By modeling CR2032 internal impedance at minus 20 Celsius, JCP holds defer non-critical telemetry while guaranteeing critical alarms. This three-dimensional cutaway shows the DRC-certified 2-layer PCB, coin-cell bay, INA238 monitor, FRAM, and 36-by-28-millimeter STEP shell. Every hold, refusal, and settlement emits a deterministic CBOR receipt verifiable across embedded and cloud nodes. The exact same hold-and-settle state machine scales upward to schedule batch inference inside grid-following campus envelopes. Manufacturing Gerbers, BOM, pick-and-place, and CAD files are downloadable today, with zero unmeasured bench claims.",
           "cues": [
             {
-              "start": 1.437,
-              "end": 4.752,
+              "start": 1.265,
+              "end": 4.682,
               "text": "Edge sensors freeze in cargo holds while data"
             },
             {
-              "start": 4.752,
-              "end": 10.056,
+              "start": 4.682,
+              "end": 10.149,
               "text": "centers hit transformer caps—both fail without native energy scheduling."
             },
             {
-              "start": 13.675,
-              "end": 18.907,
+              "start": 13.279,
+              "end": 18.816,
               "text": "By modeling CR2032 internal impedance at minus 20 Celsius,"
             },
             {
-              "start": 18.907,
-              "end": 25.583,
+              "start": 18.816,
+              "end": 25.882,
               "text": "JCP holds defer non-critical telemetry while guaranteeing critical alarms."
             },
             {
-              "start": 29.202,
-              "end": 35.935,
+              "start": 29.011,
+              "end": 36.066,
               "text": "This three-dimensional cutaway shows the DRC-certified 2-layer PCB,"
             },
             {
-              "start": 35.935,
-              "end": 43.17,
+              "start": 36.066,
+              "end": 43.648,
               "text": "coin-cell bay, INA238 monitor, FRAM, and 36-by-28-millimeter STEP shell."
             },
             {
-              "start": 46.789,
-              "end": 48.513,
+              "start": 46.778,
+              "end": 48.605,
               "text": "Every hold, refusal,"
             },
             {
-              "start": 48.513,
-              "end": 56.533,
+              "start": 48.605,
+              "end": 57.104,
               "text": "and settlement emits a deterministic CBOR receipt verifiable across embedded and cloud nodes."
             },
             {
-              "start": 60.152,
-              "end": 64.147,
+              "start": 60.233,
+              "end": 64.452,
               "text": "The exact same hold-and-settle state machine scales upward"
             },
             {
-              "start": 64.147,
-              "end": 68.763,
+              "start": 64.452,
+              "end": 69.325,
               "text": "to schedule batch inference inside grid-following campus envelopes."
             },
             {
-              "start": 72.382,
-              "end": 82.188,
+              "start": 72.454,
+              "end": 82.506,
               "text": "Manufacturing Gerbers, BOM, pick-and-place, and CAD files are downloadable today, with zero unmeasured bench claims."
             }
           ]
@@ -4081,8 +4081,8 @@
       "figures_url": "/living/",
       "about_url": "/about/jouleos/",
       "tutorial_lab_id": "lab-09-lut6-benes",
-      "narrator_name": "Brian",
-      "narrator_profile": "Resonant Baritone · North American English",
+      "narrator_name": "Bobby",
+      "narrator_profile": "Commanding Baritone · African American English",
       "headline_metric": "310 Rust Spine Tests · 78,400-Pair Provenance Lattice",
       "epistemic_tags": [
         "T",
@@ -4098,8 +4098,8 @@
           "video_url": "/media/tv/films/jouleos-5s.mp4",
           "vtt_url": "/media/tv/captions/jouleos-5s.vtt",
           "duration_s": 6.87,
-          "bytes": 405129,
-          "sha256": "36f4dda4d8f7bd325d7d5426d708c6f556472e5a3d1175059d2e951d41a09c15",
+          "bytes": 226856,
+          "sha256": "6171e828e8589efc9dc1d5b3f72569bc9d2b97dfbabdc345bd5feed563765813",
           "hook": "Legacy operating systems schedule time, not joules: JouleOS specifies—and tests in 310 Rust checks—an energy-grant spine.",
           "transcript": "Existing operating systems never check energy before an agent acts—JouleOS budgets, schedules, and refuses by joule grant.",
           "cues": [
@@ -4118,45 +4118,45 @@
         "30s": {
           "video_url": "/media/tv/films/jouleos-30s.mp4",
           "vtt_url": "/media/tv/captions/jouleos-30s.vtt",
-          "duration_s": 34.5,
-          "bytes": 1516456,
-          "sha256": "5e6021e05672bb035af93e2fdd43535756400cadf4786d5b97fef2e068a4a17c",
+          "duration_s": 34.47,
+          "bytes": 1518172,
+          "sha256": "49b78604801f7c92587ea7ec98d35821366be32b373746e48d50302fb0613545",
           "hook": "Why bolting AI agents onto 1970s operating systems leaks unbounded energy, and how a 310-test Rust spine fixes it.",
           "transcript": "Today's AI agents sit atop operating systems, containers, and sandboxes designed fifty years ago with zero pre-action energy gates. The Search for JouleOS surveys ISAs, microkernels, and WebAssembly sandboxes to specify a runtime governed by energy grants. The jcp-satb-cad-spine crate bridges JCR-1 Ed25519 receipts, SATB-IO telemetry, and CAD stage accounting with 310 passing tests. Combining hardware shunts with analytical estimates automatically downgrades receipt provenance—preventing energy laundering.",
           "cues": [
             {
               "start": 0.26,
-              "end": 3.696,
+              "end": 3.609,
               "text": "Today's AI agents sit atop operating systems, containers,"
             },
             {
-              "start": 3.696,
-              "end": 8.096,
+              "start": 3.609,
+              "end": 7.898,
               "text": "and sandboxes designed fifty years ago with zero pre-action energy gates."
             },
             {
-              "start": 8.216,
-              "end": 11.344,
+              "start": 8.121,
+              "end": 11.146,
               "text": "The Search for JouleOS surveys ISAs, microkernels,"
             },
             {
-              "start": 11.344,
-              "end": 15.91,
+              "start": 11.146,
+              "end": 15.564,
               "text": "and WebAssembly sandboxes to specify a runtime governed by energy grants."
             },
             {
-              "start": 16.03,
-              "end": 21.598,
+              "start": 15.786,
+              "end": 21.311,
               "text": "The jcp-satb-cad-spine crate bridges JCR-1 Ed25519 receipts,"
             },
             {
-              "start": 21.598,
-              "end": 27.815,
+              "start": 21.311,
+              "end": 27.48,
               "text": "SATB-IO telemetry, and CAD stage accounting with 310 passing tests."
             },
             {
-              "start": 27.935,
-              "end": 34.035,
+              "start": 27.702,
+              "end": 34.0,
               "text": "Combining hardware shunts with analytical estimates automatically downgrades receipt provenance—preventing energy laundering."
             }
           ]
@@ -4164,55 +4164,55 @@
         "60s": {
           "video_url": "/media/tv/films/jouleos-60s.mp4",
           "vtt_url": "/media/tv/captions/jouleos-60s.vtt",
-          "duration_s": 56.83,
-          "bytes": 2225672,
-          "sha256": "afc9e797c5a6f007f65ab12f924bb8fb0657edbbeef0483eb86b717212e39d0d",
+          "duration_s": 56.0,
+          "bytes": 2174014,
+          "sha256": "7e933f13083f2615e7bcc76694395446329964b083309f1746241b5e78b71a82",
           "hook": "Reviewing POSIX/container/Wasm gaps, checkable JouleOS requirements, and the 78,400-pair provenance meet-semilattice in Rust.",
           "transcript": "Every layer under a modern autonomous agent tracks memory bytes and wall-clock slices, yet none refuses an unbudgeted energy spike. JouleOS lays out checkable architectural requirements: meter honestly, cap grants hierarchically, and refuse budget violations cleanly. Exhaustive algebraic tests over 78,400 sensor-attribution pairs verify that composing stages preserves exact epistemic honesty. Three hundred ten Rust tests verify canonical det-CBOR signing, Falsifier 6 drift withholding, and multi-stage joule rollups. Framed honestly as a review, requirement spec, and verified Rust spine—never claiming a deployed bare-metal OS where none exists.",
           "cues": [
             {
               "start": 0.32,
-              "end": 6.83,
+              "end": 6.61,
               "text": "Every layer under a modern autonomous agent tracks memory bytes and wall-clock slices,"
             },
             {
-              "start": 6.83,
-              "end": 10.161,
+              "start": 6.61,
+              "end": 9.828,
               "text": "yet none refuses an unbudgeted energy spike."
             },
             {
-              "start": 10.681,
-              "end": 16.39,
+              "start": 10.348,
+              "end": 16.031,
               "text": "JouleOS lays out checkable architectural requirements: meter honestly,"
             },
             {
-              "start": 16.39,
-              "end": 21.61,
+              "start": 16.031,
+              "end": 21.227,
               "text": "cap grants hierarchically, and refuse budget violations cleanly."
             },
             {
-              "start": 22.13,
-              "end": 33.754,
+              "start": 21.747,
+              "end": 32.906,
               "text": "Exhaustive algebraic tests over 78,400 sensor-attribution pairs verify that composing stages preserves exact epistemic honesty."
             },
             {
-              "start": 34.274,
-              "end": 40.005,
+              "start": 33.426,
+              "end": 39.264,
               "text": "Three hundred ten Rust tests verify canonical det-CBOR signing,"
             },
             {
-              "start": 40.005,
-              "end": 45.553,
+              "start": 39.264,
+              "end": 44.917,
               "text": "Falsifier 6 drift withholding, and multi-stage joule rollups."
             },
             {
-              "start": 46.073,
-              "end": 49.714,
+              "start": 45.437,
+              "end": 49.014,
               "text": "Framed honestly as a review, requirement spec,"
             },
             {
-              "start": 49.714,
-              "end": 56.204,
+              "start": 49.014,
+              "end": 55.391,
               "text": "and verified Rust spine—never claiming a deployed bare-metal OS where none exists."
             }
           ]
@@ -4221,69 +4221,69 @@
           "video_url": "/media/tv/films/jouleos-90s.mp4",
           "vtt_url": "/media/tv/captions/jouleos-90s.vtt",
           "duration_s": 84.9,
-          "bytes": 3619617,
-          "sha256": "239a42dfd2c704489851444037c1b2a03b5fee64705a872c6994c8fa6d8cac69",
+          "bytes": 3106876,
+          "sha256": "5572e716efd90cb0a485e237525535d801061279c7e1d1de5604db11210ff0a4",
           "hook": "The Lab Cut: Surveying OS/Wasm/ISA substrates, formalizing energy-grant scheduling, and auditing the 310-test Rust JCP-SATB spine.",
           "transcript": "Wall-clock quotas treat a quiet sleep and a full tensor-core burst identically, leaving agent sandboxes blind to physical power. When one pipeline stage has rail-shunt measured_j and another has analytical est_j, the 78,400-pair meet operator labels the sum honestly. This three-dimensional hardware-software stack traces rail telemetry up through SATB-IO drift gates into Ed25519 JCR-1 receipts. Child holds cannot exceed parent grants, settlements reconcile exact remainders, and noisy shared-host windows withhold net splits. All 310 Rust workspace tests pass cleanly across receipt serialization, signature tampering rejection, and stage rollups. By separating what today's OSes lack from what the verified Rust spine already checks, JouleOS charts a concrete build path.",
           "cues": [
             {
-              "start": 1.374,
-              "end": 7.135,
+              "start": 1.495,
+              "end": 7.185,
               "text": "Wall-clock quotas treat a quiet sleep and a full tensor-core burst identically,"
             },
             {
-              "start": 7.135,
-              "end": 10.636,
+              "start": 7.185,
+              "end": 10.642,
               "text": "leaving agent sandboxes blind to physical power."
             },
             {
-              "start": 14.077,
-              "end": 21.608,
+              "start": 14.429,
+              "end": 21.701,
               "text": "When one pipeline stage has rail-shunt measured_j and another has analytical est_j,"
             },
             {
-              "start": 21.608,
-              "end": 26.508,
+              "start": 21.701,
+              "end": 26.432,
               "text": "the 78,400-pair meet operator labels the sum honestly."
             },
             {
-              "start": 29.949,
-              "end": 36.974,
+              "start": 30.219,
+              "end": 36.838,
               "text": "This three-dimensional hardware-software stack traces rail telemetry up"
             },
             {
-              "start": 36.974,
-              "end": 42.514,
+              "start": 36.838,
+              "end": 42.059,
               "text": "through SATB-IO drift gates into Ed25519 JCR-1 receipts."
             },
             {
-              "start": 45.956,
-              "end": 49.114,
+              "start": 45.846,
+              "end": 48.95,
               "text": "Child holds cannot exceed parent grants,"
             },
             {
-              "start": 49.114,
-              "end": 56.219,
+              "start": 48.95,
+              "end": 55.935,
               "text": "settlements reconcile exact remainders, and noisy shared-host windows withhold net splits."
             },
             {
-              "start": 59.66,
-              "end": 65.555,
+              "start": 59.721,
+              "end": 65.353,
               "text": "All 310 Rust workspace tests pass cleanly across receipt serialization,"
             },
             {
-              "start": 65.555,
-              "end": 69.624,
+              "start": 65.353,
+              "end": 69.239,
               "text": "signature tampering rejection, and stage rollups."
             },
             {
-              "start": 73.066,
-              "end": 79.524,
+              "start": 73.026,
+              "end": 79.355,
               "text": "By separating what today's OSes lack from what the verified Rust spine already checks,"
             },
             {
-              "start": 79.524,
-              "end": 82.303,
+              "start": 79.355,
+              "end": 82.078,
               "text": "JouleOS charts a concrete build path."
             }
           ]
@@ -4300,8 +4300,8 @@
       "figures_url": "/living/latency/",
       "about_url": "/about/latency/",
       "tutorial_lab_id": "lab-03-ai-ratchet-winters",
-      "narrator_name": "Daniel",
-      "narrator_profile": "Steady Broadcaster · British English",
+      "narrator_name": "Julius",
+      "narrator_profile": "Conversational Host · African American English",
       "headline_metric": "Calendars Quantize Deployment · Switching Cost Is the Moat",
       "epistemic_tags": [
         "T",
@@ -4316,15 +4316,15 @@
         "5s": {
           "video_url": "/media/tv/films/latency-5s.mp4",
           "vtt_url": "/media/tv/captions/latency-5s.vtt",
-          "duration_s": 6.0,
-          "bytes": 618421,
-          "sha256": "0abe0e2cd0b59ee8b5d58e7105f4105bac0d126143c992c01c2a1ad5974c602e",
+          "duration_s": 6.23,
+          "bytes": 214010,
+          "sha256": "eb7054ed7b7dc61ca887a511e8f9a08111dd343fad774c634c25cccc15cb5c72",
           "hook": "Cheaper AI methods sit published long before products ship them—because hardware capex, calendars, and switching friction rule.",
           "transcript": "Cheaper AI waits on calendars and capex—until automation crushes switching costs.",
           "cues": [
             {
               "start": 0.18,
-              "end": 5.728,
+              "end": 5.957,
               "text": "Cheaper AI waits on calendars and capex—until automation crushes switching costs."
             }
           ]
@@ -4332,40 +4332,40 @@
         "30s": {
           "video_url": "/media/tv/films/latency-30s.mp4",
           "vtt_url": "/media/tv/captions/latency-30s.vtt",
-          "duration_s": 33.53,
-          "bytes": 1520206,
-          "sha256": "3963f2e12d2e25f7b1e702c07f60a992d85683c3d7f3982c1314ed8c478aa3df",
+          "duration_s": 30.3,
+          "bytes": 1360436,
+          "sha256": "3f768d0cbdcaebb80f255d05585dcf7c2d9114d2d769d55baacee6f16e8ee2d1",
           "hook": "Why published 10x efficiency breakthroughs take quarters to reach users—and how automation tools break the logjam.",
           "transcript": "Research papers routinely demonstrate tenfold cheaper inference months or years before mainstream products adopt them. Part of the lag is systems integration, and part is quantized by quarterly reporting, funding rounds, and hardware depreciation. Public filings show most of a task's dollar cost is amortizing the machine, not the kilowatt-hours at the plug. Once execution gets cheap, vendors charge for switching friction—and coding automation tools collapse that moat.",
           "cues": [
             {
               "start": 0.26,
-              "end": 7.927,
+              "end": 7.195,
               "text": "Research papers routinely demonstrate tenfold cheaper inference months or years before mainstream products adopt them."
             },
             {
-              "start": 8.347,
-              "end": 10.999,
+              "start": 7.615,
+              "end": 9.987,
               "text": "Part of the lag is systems integration,"
             },
             {
-              "start": 10.999,
-              "end": 16.982,
+              "start": 9.987,
+              "end": 15.339,
               "text": "and part is quantized by quarterly reporting, funding rounds, and hardware depreciation."
             },
             {
-              "start": 17.402,
-              "end": 22.351,
+              "start": 15.759,
+              "end": 20.276,
               "text": "Public filings show most of a task's dollar cost is amortizing the machine,"
             },
             {
-              "start": 22.351,
-              "end": 24.66,
+              "start": 20.276,
+              "end": 22.384,
               "text": "not the kilowatt-hours at the plug."
             },
             {
-              "start": 25.08,
-              "end": 33.056,
+              "start": 22.804,
+              "end": 29.834,
               "text": "Once execution gets cheap, vendors charge for switching friction—and coding automation tools collapse that moat."
             }
           ]
@@ -4374,54 +4374,54 @@
           "video_url": "/media/tv/films/latency-60s.mp4",
           "vtt_url": "/media/tv/captions/latency-60s.vtt",
           "duration_s": 55.7,
-          "bytes": 2224064,
-          "sha256": "e29cc4ffdc144651d685ea80804446078e2cf4ce5eb328e008defebb1ea9701b",
+          "bytes": 2228149,
+          "sha256": "b54e07bf583bc36ca6dab47bd406926aea038b3291b6dc8bd29d7c5084c07cc5",
           "hook": "Inside the cadence model: dated efficiency lag tables, circular cloud-chip filings, $/J task breakdown, and open hardware.",
           "transcript": "Dated release tables track how quantization, sparse routing, and caching wait behind incumbent stack inertia. A cadence model shows how corporate reporting and financing cycles batch technical readiness into discrete calendar steps. Decomposing cost per task in both dollars and joules proves accelerator capex and utilization dominate raw electricity. Public SEC filings document circular capital flows alongside open models and alternative hardware measured against incumbents. Tools that automate porting and verification slash migration cost, forcing deployed stacks toward the possible frontier.",
           "cues": [
             {
-              "start": 0.673,
-              "end": 9.442,
+              "start": 1.057,
+              "end": 8.585,
               "text": "Dated release tables track how quantization, sparse routing, and caching wait behind incumbent stack inertia."
             },
             {
-              "start": 10.97,
-              "end": 14.605,
+              "start": 11.211,
+              "end": 14.472,
               "text": "A cadence model shows how corporate reporting and"
             },
             {
-              "start": 14.605,
-              "end": 19.947,
+              "start": 14.472,
+              "end": 19.263,
               "text": "financing cycles batch technical readiness into discrete calendar steps."
             },
             {
-              "start": 21.475,
-              "end": 25.332,
+              "start": 21.89,
+              "end": 25.387,
               "text": "Decomposing cost per task in both dollars and"
             },
             {
-              "start": 25.332,
-              "end": 31.588,
+              "start": 25.387,
+              "end": 31.059,
               "text": "joules proves accelerator capex and utilization dominate raw electricity."
             },
             {
-              "start": 33.116,
-              "end": 38.176,
+              "start": 33.686,
+              "end": 37.999,
               "text": "Public SEC filings document circular capital flows alongside"
             },
             {
-              "start": 38.176,
-              "end": 43.657,
+              "start": 37.999,
+              "end": 42.672,
               "text": "open models and alternative hardware measured against incumbents."
             },
             {
-              "start": 45.185,
-              "end": 50.31,
+              "start": 45.299,
+              "end": 49.964,
               "text": "Tools that automate porting and verification slash migration cost,"
             },
             {
-              "start": 50.31,
-              "end": 54.425,
+              "start": 49.964,
+              "end": 53.711,
               "text": "forcing deployed stacks toward the possible frontier."
             }
           ]
@@ -4430,64 +4430,64 @@
           "video_url": "/media/tv/films/latency-90s.mp4",
           "vtt_url": "/media/tv/captions/latency-90s.vtt",
           "duration_s": 84.9,
-          "bytes": 4334018,
-          "sha256": "697c8689b1ff8f2729e9a60d59a763319366f8b435ba642b84fd01e5bbab2088",
+          "bytes": 3247835,
+          "sha256": "8dc7fa4181beb901327cec1b02f434a63a00f9a885c166d5e82d1ea027509b14",
           "hook": "The Lab Cut: Technology diffusion lags, quantized release calendars, SEC filing capital loops, geography of power, and forcing functions.",
           "transcript": "Across quantization, attention kernels, and Mixture-of-Limits cascades, what works in artifacts lags what ships in production. Modeling engineering rewrite effort alongside quarterly reporting clocks explains staircase adoption curves across the industry. This three-dimensional globe maps compute corridors, grid power constraints, and quantized calendar rings around global infrastructure. Auditing public disclosures among frontier labs, hyperscalers, and silicon vendors separates net external demand from circular financing. Comparing open weights on alternative silicon against incumbent clusters pinpoints where margin sits above physical energy. As verified translation and coding tools automate stack migration, the gap between possible and deployed narrows sharply.",
           "cues": [
             {
-              "start": 1.624,
-              "end": 7.445,
+              "start": 2.041,
+              "end": 7.062,
               "text": "Across quantization, attention kernels, and Mixture-of-Limits cascades,"
             },
             {
-              "start": 7.445,
-              "end": 11.872,
+              "start": 7.062,
+              "end": 10.88,
               "text": "what works in artifacts lags what ships in production."
             },
             {
-              "start": 16.026,
-              "end": 25.434,
+              "start": 16.226,
+              "end": 24.344,
               "text": "Modeling engineering rewrite effort alongside quarterly reporting clocks explains staircase adoption curves across the industry."
             },
             {
-              "start": 29.588,
-              "end": 35.296,
+              "start": 29.69,
+              "end": 34.674,
               "text": "This three-dimensional globe maps compute corridors, grid power constraints,"
             },
             {
-              "start": 35.296,
-              "end": 39.651,
+              "start": 34.674,
+              "end": 38.478,
               "text": "and quantized calendar rings around global infrastructure."
             },
             {
-              "start": 43.805,
-              "end": 48.733,
+              "start": 43.824,
+              "end": 48.231,
               "text": "Auditing public disclosures among frontier labs, hyperscalers,"
             },
             {
-              "start": 48.733,
-              "end": 54.614,
+              "start": 48.231,
+              "end": 53.491,
               "text": "and silicon vendors separates net external demand from circular financing."
             },
             {
-              "start": 58.768,
-              "end": 63.541,
+              "start": 58.837,
+              "end": 63.124,
               "text": "Comparing open weights on alternative silicon against incumbent"
             },
             {
-              "start": 63.541,
-              "end": 68.011,
+              "start": 63.124,
+              "end": 67.139,
               "text": "clusters pinpoints where margin sits above physical energy."
             },
             {
-              "start": 72.165,
-              "end": 77.486,
+              "start": 72.485,
+              "end": 77.204,
               "text": "As verified translation and coding tools automate stack migration,"
             },
             {
-              "start": 77.486,
-              "end": 81.84,
+              "start": 77.204,
+              "end": 81.065,
               "text": "the gap between possible and deployed narrows sharply."
             }
           ]

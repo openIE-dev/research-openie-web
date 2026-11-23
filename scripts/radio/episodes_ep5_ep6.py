@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""OpenIE Research Radio — Launch Episodes 5 (Mei, Liam, Kwame) & 6 (Amara, Sean, Claire)."""
+"""OpenIE Research Radio — Launch Episodes 5 (Mei, Liam, Malik) & 6 (Misha, Sean, Claire)."""
 
 from __future__ import annotations
 
@@ -9,9 +9,9 @@ EPISODE_05: dict[str, Any] = {
     "id": "ep05-game-engines-everywhere",
     "number": 5,
     "title": "Writing a Game Once — Q32.32 Lockstep, DirectX 12/Metal/Vulkan & Closing GE-H1..H9",
-    "subtitle": "Mei, Liam, and Kwame map where bit-exact Q32.32 replay ends, where GPU tolerance begins, and why std::sin diverges in 10 ticks",
+    "subtitle": "Mei, Liam, and Malik map where bit-exact Q32.32 replay ends, where GPU tolerance begins, and why std::sin diverges in 10 ticks",
     "summary": (
-        "Mei, Liam, and Kwame walk through all nine executed falsifier suites GE-H1..GE-H9 across macOS, Linux, and Windows 11: "
+        "Mei, Liam, and Malik walk through all nine executed falsifier suites GE-H1..GE-H9 across macOS, Linux, and Windows 11: "
         "0/25,500 Q32.32 mismatches, tick-10 float divergence, 28/28 DirectX 12/Metal/Vulkan GPU pairs, and Godot 4.7.2 projection."
     ),
     "topic_tags": ["game-engines", "determinism", "q32-32", "wgpu"],
@@ -20,7 +20,7 @@ EPISODE_05: dict[str, Any] = {
         {
             "speaker": "Mei",
             "text": (
-                "Welcome to Episode Five of OpenIE Research Radio! I'm Mei, joined in the studio by Liam and Kwame — "
+                "Welcome to Episode Five of OpenIE Research Radio! I'm Mei, joined in the studio by Liam and Malik — "
                 "three AI-synthesized OpenIE research personas voiced with ElevenLabs studio neural voices and grounded in verified Open Interface Engineering artifacts. "
                 "Today we ask: can you write a game once as a checked state machine and run it everywhere?"
             ),
@@ -37,12 +37,12 @@ EPISODE_05: dict[str, Any] = {
         {
             "speaker": "Liam",
             "text": (
-                "Hold on Kwame — game studios have torched tens of millions of engineering hours trying to keep multiplayer lockstep replays synchronized "
+                "Hold on Malik — game studios have torched tens of millions of engineering hours trying to keep multiplayer lockstep replays synchronized "
                 "across Windows PCs, Macs, and Linux servers! How fast does ordinary floating-point physics actually drift?"
             ),
         },
         {
-            "speaker": "Kwame",
+            "speaker": "Malik",
             "text": (
                 "Faster than people blink, Liam! In falsifier GE-H2, standard-library sine — Apple libSystem versus Linux glibc versus Windows UCRT — "
                 "diverges between tick ten and tick thirty-seven! Even without transcendentals, MSVC slash fp colon precise versus Clang fused multiply-add "
@@ -73,7 +73,7 @@ EPISODE_05: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Kwame",
+            "speaker": "Malik",
             "text": (
                 "In GE-H1, we stepped sixty-four Q32.32 rigid bodies for one hundred thousand ticks across thirty target-by-host cells "
                 "spanning six physical machines on macOS, Linux, and bare-metal Windows 11. Across twenty-five thousand five hundred SHA-256 checkpoints, "
@@ -103,7 +103,7 @@ EPISODE_05: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Kwame",
+            "speaker": "Malik",
             "text": (
                 "Interpreted Python hits the twenty-millisecond frame ceiling at just three hundred ninety actors. In GE-H5, compiled RCE Form projections "
                 "step ten thousand Q32.32 actors in zero point zero five eight to zero point one two five milliseconds — leaving over ninety-nine percent of a sixteen-millisecond frame free!"
@@ -116,7 +116,7 @@ EPISODE_05: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Kwame",
+            "speaker": "Malik",
             "text": (
                 "That is GE-H3. Across eight hardware GPU-by-API endpoints spanning DirectX 12, Metal, and Vulkan under headless wgpu, "
                 "all twenty-eight hardware pairs passed with PSNR at least sixty-four point one six decibels and structural similarity SSIM "
@@ -139,7 +139,7 @@ EPISODE_05: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Kwame",
+            "speaker": "Malik",
             "text": (
                 "In GE-H4, seventeen admitted RCE Forms across Haunted Jaunt, Survival Shooter, and Tanks cut behavior source lines of code "
                 "by seventy-six point two two percent versus Unity C-sharp, sixty-one point four seven percent versus Bevy Rust, and fifty-one point nine nine percent "
@@ -181,7 +181,7 @@ EPISODE_05: dict[str, Any] = {
         {
             "speaker": "Mei",
             "text": (
-                "Up next in Episode Six, Amara, Sean, and Claire descend into LUT6 Boolean fabrics, sovereign MEI-JCP hardware tags, and JouleOS!"
+                "Up next in Episode Six, Misha, Sean, and Claire descend into LUT6 Boolean fabrics, sovereign MEI-JCP hardware tags, and JouleOS!"
             ),
         },
     ],
@@ -191,18 +191,18 @@ EPISODE_06: dict[str, Any] = {
     "id": "ep06-lut6-metabolic-jouleos",
     "number": 6,
     "title": "Downward LUT6 Compilation, MEI-JCP Sovereign Hardware Tags & JouleOS",
-    "subtitle": "Amara, Sean, and Claire examine 970 MB NVMe MoE streaming, 81-RAMB36E2 LUT6 fabrics, 32x24 mm PCB tags, and JouleOS",
+    "subtitle": "Misha, Sean, and Claire examine 970 MB NVMe MoE streaming, 81-RAMB36E2 LUT6 fabrics, 32x24 mm PCB tags, and JouleOS",
     "summary": (
-        "Amara, Sean, and Claire trace Mixture of Limits cascades from 34.66B sparse-MoE NVMe streaming (970 MB RAM, 6.773 J/tok reported_j) "
+        "Misha, Sean, and Claire trace Mixture of Limits cascades from 34.66B sparse-MoE NVMe streaming (970 MB RAM, 6.773 J/tok reported_j) "
         "down to Beneš-routed LUT6 FPGA fabrics, 32x24 mm MEI-JCP sovereign PCB tags, and JouleOS."
     ),
     "topic_tags": ["lut-adapt", "mei", "jouleos", "fpga"],
     "published_utc": "2026-11-23T08:30:00Z",
     "turns": [
         {
-            "speaker": "Amara",
+            "speaker": "Misha",
             "text": (
-                "Welcome back to Episode Six of OpenIE Research Radio! I'm Amara, joined by Sean and Claire — "
+                "Welcome back to Episode Six of OpenIE Research Radio! I'm Misha, joined by Sean and Claire — "
                 "AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio voices and grounded in verified Open Interface Engineering studies. "
                 "Today we follow intelligence downward into silicon: Downward LUT6 Compilation, Metabolic Intelligence MEI-JCP tags, and JouleOS."
             ),
@@ -224,7 +224,7 @@ EPISODE_06: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Amara",
+            "speaker": "Misha",
             "text": (
                 "In the early 1980s, standalone spell checkers cost hundreds of dollars! Spell check reached seven billion people only when its marginal cost "
                 "dropped to a local dictionary lookup bundled inside every editor. Why should recurring code repairs burn frontier joules forever?"
@@ -269,7 +269,7 @@ EPISODE_06: dict[str, Any] = {
             ],
         },
         {
-            "speaker": "Amara",
+            "speaker": "Misha",
             "text": (
                 "And once a frontier wake passes deterministic pytest gates, we compile that certified skill downward so the thirty-five-B model sleeps on repeat arrivals!"
             ),
@@ -331,7 +331,7 @@ EPISODE_06: dict[str, Any] = {
             ),
         },
         {
-            "speaker": "Amara",
+            "speaker": "Misha",
             "text": (
                 "And binding JCR-1 receipts, SATB drift gates, and agent sandboxes into one operating-system contract is The Search for JouleOS!"
             ),
@@ -356,12 +356,12 @@ EPISODE_06: dict[str, Any] = {
         {
             "speaker": "Sean",
             "text": (
-                "An OS that refuses runaway joule spend before it happens! Up next in Episode Seven, Priya, Marcus, and senior fellow Arthur "
+                "An OS that refuses runaway joule spend before it happens! Up next in Episode Seven, Amara, Nia, and senior fellow Arthur "
                 "ask what it would take to look up tomorrow!"
             ),
         },
         {
-            "speaker": "Amara",
+            "speaker": "Misha",
             "text": (
                 "Stay tuned for Episode Seven — Time as an Index!"
             ),

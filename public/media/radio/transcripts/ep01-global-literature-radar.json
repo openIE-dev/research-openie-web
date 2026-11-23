@@ -31,9 +31,9 @@
     {
       "name": "Marcus",
       "group": "skeptic",
-      "title": "Empirical Foil · North American English",
-      "voice_id": "iP95p4xoKVk53GoZ742B",
-      "fallback_voice": "en-US-BrianMultilingualNeural",
+      "title": "Empirical Foil · African American English",
+      "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+      "fallback_voice": "en-US-ChristopherNeural",
       "color": "#F59E0B",
       "pan": [
         1.04,
@@ -57,15 +57,15 @@
     "eleven_v4"
   ],
   "published_utc": "2026-11-23T06:00:00Z",
-  "duration_sec": 331.1,
-  "duration_human": "5:31",
-  "byte_length": 5477780,
+  "duration_sec": 328.5,
+  "duration_human": "5:28",
+  "byte_length": 5492407,
   "audio_url": "/media/radio/episodes/ep01-global-literature-radar.m4a",
   "captions_url": "/media/radio/captions/ep01-global-literature-radar.vtt",
   "transcript_url": "/media/radio/transcripts/ep01-global-literature-radar.json",
   "turn_count": 18,
   "card_count": 8,
-  "ai_disclosure": "AI Persona Disclosure: All OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Amara, Priya, Mei, Mateo, Marcus, Liam, Sean, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
   "personas": {
     "Elena": {
       "name": "Elena",
@@ -82,9 +82,9 @@
     "Marcus": {
       "name": "Marcus",
       "group": "skeptic",
-      "title": "Empirical Foil · North American English",
-      "voice_id": "iP95p4xoKVk53GoZ742B",
-      "fallback_voice": "en-US-BrianMultilingualNeural",
+      "title": "Empirical Foil · African American English",
+      "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+      "fallback_voice": "en-US-ChristopherNeural",
       "color": "#F59E0B",
       "pan": [
         1.04,
@@ -118,11 +118,11 @@
     {
       "turn_index": 1,
       "speaker": "Marcus",
-      "role": "Empirical Foil · North American English",
+      "role": "Empirical Foil · African American English",
       "group": "skeptic",
       "color": "#F59E0B",
       "start_sec": 23.856,
-      "end_sec": 48.02,
+      "end_sec": 47.352,
       "text": "Which means nobody at this table gets to bluff! Every six hours, our autonomous Linux radar polls five sanctioned public archives — arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov — hashes every record with BLAKE2b and SHA-256, and drops fresh papers onto the bench. Rohan, how many survived deduplication today?"
     },
     {
@@ -131,8 +131,8 @@
       "role": "Hardware & Compiler Specialist · South Asian English",
       "group": "specialist",
       "color": "#818CF8",
-      "start_sec": 48.29,
-      "end_sec": 69.422,
+      "start_sec": 47.622,
+      "end_sec": 68.754,
       "text": "Sixty-two distinct open-access works across all five registries, Marcus, mapped against all twenty-one OpenIE studies. Every single entry receives an epistemic badge — T for kernel-checked theorems, E for empirical hardware or wet-lab data, M for computational models, and S for speculative or recruiting clinical horizons."
     },
     {
@@ -141,18 +141,18 @@
       "role": "Science Journalist · Hispanic/Spanish English",
       "group": "host",
       "color": "#00D4AA",
-      "start_sec": 69.692,
-      "end_sec": 84.108,
+      "start_sec": 69.024,
+      "end_sec": 83.44,
       "text": "Let's start with energy-aware AI. One of the top OpenAlex and arXiv hits on the radar right now is TokenPowerBench, published in 2026 to benchmark the power consumption of large language model inference across serving stacks."
     },
     {
       "turn_index": 4,
       "speaker": "Marcus",
-      "role": "Empirical Foil · North American English",
+      "role": "Empirical Foil · African American English",
       "group": "skeptic",
       "color": "#F59E0B",
-      "start_sec": 84.298,
-      "end_sec": 100.575,
+      "start_sec": 83.63,
+      "end_sec": 99.022,
       "text": "Hold on — let me ask my favorite annoying question right away! When TokenPowerBench or any 2026 inference paper reports joules per token, are they measuring physical DC shunt rails on the board, or reading software counters like RAPL and NVML?"
     },
     {
@@ -161,8 +161,8 @@
       "role": "Hardware & Compiler Specialist · South Asian English",
       "group": "specialist",
       "color": "#818CF8",
-      "start_sec": 100.845,
-      "end_sec": 121.744,
+      "start_sec": 99.292,
+      "end_sec": 120.192,
       "text": "Almost always software counters on shared GPUs, or analytical estimates — what OpenIE stamps as reported_j, never measured_j. And second, joules per token is the wrong denominator if a model burns ten thousand tokens hallucinating a broken patch! In Metered Commit Gates, the denominator is energy to correct completion."
     },
     {
@@ -171,18 +171,18 @@
       "role": "Science Journalist · Hispanic/Spanish English",
       "group": "host",
       "color": "#00D4AA",
-      "start_sec": 122.014,
-      "end_sec": 138.986,
+      "start_sec": 120.462,
+      "end_sec": 137.433,
       "text": "That connects directly to our second radar cluster: formal theorem proving. Today's intake pulled two 2026 preprints — Compile to Compress, which boosts formal theorem provers using compiler outputs, and Lean Graph Search for Formal Theorem Proving on arXiv."
     },
     {
       "turn_index": 7,
       "speaker": "Marcus",
-      "role": "Empirical Foil · North American English",
+      "role": "Empirical Foil · African American English",
       "group": "skeptic",
       "color": "#F59E0B",
-      "start_sec": 139.176,
-      "end_sec": 155.073,
+      "start_sec": 137.623,
+      "end_sec": 153.276,
       "text": "Okay, I actually love those two! Because instead of asking a giant language model to vibe-check mathematics, the Lean 4 kernel acts as an unforgiving binary oracle. Either the proof term type-checks with zero sorry placeholders, or it gets refused."
     },
     {
@@ -191,8 +191,8 @@
       "role": "Hardware & Compiler Specialist · South Asian English",
       "group": "specialist",
       "color": "#818CF8",
-      "start_sec": 155.343,
-      "end_sec": 175.574,
+      "start_sec": 153.546,
+      "end_sec": 173.777,
       "text": "Exactly. Across OpenIE's Reality Code Engine, Time as an Index, and Communication Tool Avalanche, we rely on five thousand five hundred thirty-seven Lean 4 kernel constants plus sixty-two specialized domain theorems with zero sorry. What Lean Graph Search still omits, though, is reporting how many joules the search spent per closed lemma."
     },
     {
@@ -201,18 +201,18 @@
       "role": "Science Journalist · Hispanic/Spanish English",
       "group": "host",
       "color": "#00D4AA",
-      "start_sec": 175.844,
-      "end_sec": 188.803,
+      "start_sec": 174.047,
+      "end_sec": 187.006,
       "text": "Now look at the multi-agent orchestration cluster from arXiv today: Decoupled Multi-Agent Orchestration, INFRAMIND for infrastructure-aware orchestration, and the AgentShield Byzantine fault tolerance dataset."
     },
     {
       "turn_index": 10,
       "speaker": "Marcus",
-      "role": "Empirical Foil · North American English",
+      "role": "Empirical Foil · African American English",
       "group": "skeptic",
       "color": "#F59E0B",
-      "start_sec": 188.993,
-      "end_sec": 199.78,
+      "start_sec": 187.196,
+      "end_sec": 197.409,
       "text": "Wait — let me guess what happens in ninety percent of multi-agent papers when four chatty agents pass natural-language paragraphs back and forth without a cryptographic or test gate!"
     },
     {
@@ -221,8 +221,8 @@
       "role": "Hardware & Compiler Specialist · South Asian English",
       "group": "specialist",
       "color": "#818CF8",
-      "start_sec": 200.05,
-      "end_sec": 223.901,
+      "start_sec": 197.679,
+      "end_sec": 221.53,
       "text": "Prompt bloat triples, errors compound exponentially across hops, and false commits spike! In our sixty-task Communication Avalanche benchmark, an unattested four-agent cascade dropped to eighty-six point six seven percent accuracy with thirteen point three percent broken commits, burning nearly fifteen times more energy per coherent fix than our BLAKE3 and Ed25519 gated graph."
     },
     {
@@ -231,18 +231,18 @@
       "role": "Science Journalist · Hispanic/Spanish English",
       "group": "host",
       "color": "#00D4AA",
-      "start_sec": 224.171,
-      "end_sec": 241.621,
+      "start_sec": 221.8,
+      "end_sec": 239.25,
       "text": "And my favorite catch from Europe PMC today comes straight out of microbiology: a January 2026 paper in npj Biofilms and Microbiomes showing extracellular vesicles acting as structured vectors of quorum-sensing signals in aquatic microbial communities!"
     },
     {
       "turn_index": 13,
       "speaker": "Marcus",
-      "role": "Empirical Foil · North American English",
+      "role": "Empirical Foil · African American English",
       "group": "skeptic",
       "color": "#F59E0B",
-      "start_sec": 241.811,
-      "end_sec": 255.254,
+      "start_sec": 239.44,
+      "end_sec": 252.644,
       "text": "Think about how wild that is, Elena. Three and a half billion years before packet-switched networks, bacteria wrapped quorum signals inside lipid envelopes so nucleases and water currents wouldn't corrupt the packet in transit!"
     },
     {
@@ -251,8 +251,8 @@
       "role": "Hardware & Compiler Specialist · South Asian English",
       "group": "specialist",
       "color": "#818CF8",
-      "start_sec": 255.524,
-      "end_sec": 282.325,
+      "start_sec": 252.914,
+      "end_sec": 279.716,
       "text": "Meanwhile, our ClinicalTrials.gov feed keeps us disciplined on human neurotechnology. Today's radar pulled eight trials, including stroke alpha-coherence neurofeedback NCT02223910 and cognitive memory restoration NCT04253587. We classify recruiting or unverified human translation strictly under Challenges Assumption so preclinical animal rescue is never confused with human efficacy."
     },
     {
@@ -261,18 +261,18 @@
       "role": "Science Journalist · Hispanic/Spanish English",
       "group": "host",
       "color": "#00D4AA",
-      "start_sec": 282.595,
-      "end_sec": 299.428,
+      "start_sec": 279.986,
+      "end_sec": 296.818,
       "text": "And Europe PMC also surfaced The Cost of Reproducibility in Artificial Intelligence, right alongside OpenIE's AI Reads Human study showing pure-Python YAML parsing burns over two thousand times more nanojoules per record than fixed binary structs!"
     },
     {
       "turn_index": 16,
       "speaker": "Marcus",
-      "role": "Empirical Foil · North American English",
+      "role": "Empirical Foil · African American English",
       "group": "skeptic",
       "color": "#F59E0B",
-      "start_sec": 299.618,
-      "end_sec": 314.324,
+      "start_sec": 297.008,
+      "end_sec": 311.086,
       "text": "Two thousand and fifty-three times more energy just so a machine can read whitespace indentation! Every paper on today's radar is searchable right below this player — complete with its BLAKE2b digest, epistemic badge, and telemetry audit."
     },
     {
@@ -281,9 +281,9 @@
       "role": "Science Journalist · Hispanic/Spanish English",
       "group": "host",
       "color": "#00D4AA",
-      "start_sec": 314.594,
-      "end_sec": 329.145,
-      "text": "Next up in Episode Two, Amara, Liam, and Kenji take the mics to explore three point eight billion years of biological signaling, seventy-six years of AI winters, and DES-10 digital enzymatic synthesis!"
+      "start_sec": 311.356,
+      "end_sec": 326.568,
+      "text": "Next up in Episode Two, Cecily, Liam, and Kenji take the mics to explore three point eight billion years of biological signaling, seventy-six years of AI winters, and DES-10 digital enzymatic synthesis!"
     }
   ],
   "cards": [
@@ -301,8 +301,8 @@
     },
     {
       "id": "ep01-global-literature-radar-card-03-0",
-      "at_sec": 70.492,
-      "end_sec": 84.108,
+      "at_sec": 69.824,
+      "end_sec": 83.44,
       "turn_index": 3,
       "speaker": "Elena",
       "kind": "external_paper",
@@ -313,8 +313,8 @@
     },
     {
       "id": "ep01-global-literature-radar-card-05-0",
-      "at_sec": 101.645,
-      "end_sec": 121.744,
+      "at_sec": 100.092,
+      "end_sec": 120.192,
       "turn_index": 5,
       "speaker": "Rohan",
       "kind": "falsifier",
@@ -325,8 +325,8 @@
     },
     {
       "id": "ep01-global-literature-radar-card-06-0",
-      "at_sec": 122.814,
-      "end_sec": 138.986,
+      "at_sec": 121.262,
+      "end_sec": 137.433,
       "turn_index": 6,
       "speaker": "Elena",
       "kind": "external_paper",
@@ -337,8 +337,8 @@
     },
     {
       "id": "ep01-global-literature-radar-card-09-0",
-      "at_sec": 176.644,
-      "end_sec": 188.803,
+      "at_sec": 174.847,
+      "end_sec": 187.006,
       "turn_index": 9,
       "speaker": "Elena",
       "kind": "external_paper",
@@ -349,8 +349,8 @@
     },
     {
       "id": "ep01-global-literature-radar-card-11-0",
-      "at_sec": 200.85,
-      "end_sec": 223.901,
+      "at_sec": 198.479,
+      "end_sec": 221.53,
       "turn_index": 11,
       "speaker": "Rohan",
       "kind": "receipt",
@@ -361,8 +361,8 @@
     },
     {
       "id": "ep01-global-literature-radar-card-12-0",
-      "at_sec": 224.971,
-      "end_sec": 241.621,
+      "at_sec": 222.6,
+      "end_sec": 239.25,
       "turn_index": 12,
       "speaker": "Elena",
       "kind": "external_paper",
@@ -373,8 +373,8 @@
     },
     {
       "id": "ep01-global-literature-radar-card-14-0",
-      "at_sec": 256.324,
-      "end_sec": 282.325,
+      "at_sec": 253.714,
+      "end_sec": 279.716,
       "turn_index": 14,
       "speaker": "Rohan",
       "kind": "external_paper",

@@ -3,65 +3,65 @@ Kind: captions
 Language: en
 
 1
-00:00:01.830 --> 00:00:32.482
-<v Amara>Welcome back to Episode Six of OpenIE Research Radio! I'm Amara, joined by Sean and Claire — AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio voices and grounded in verified Open Interface Engineering studies. Today we follow intelligence downward into silicon: Downward LUT6 Compilation, Metabolic Intelligence MEI-JCP tags, and JouleOS.
+00:00:01.830 --> 00:00:29.496
+<v Misha>Welcome back to Episode Six of OpenIE Research Radio! I'm Misha, joined by Sean and Claire — AI-synthesized OpenIE research personas voiced via ElevenLabs neural studio voices and grounded in verified Open Interface Engineering studies. Today we follow intelligence downward into silicon: Downward LUT6 Compilation, Metabolic Intelligence MEI-JCP tags, and JouleOS.
 
 2
-00:00:32.672 --> 00:00:48.066
+00:00:29.686 --> 00:00:45.080
 <v Sean>Let's start with the economic parallel from Spell Check is Global and The Promised Trillion Dollar AI-Coding Market: imagine if every time someone mistyped 'recieve' in an email, a cloud vendor fired up an eighty-gigabyte GPU node to fix it!
 
 3
-00:00:48.336 --> 00:01:07.900
-<v Amara>In the early 1980s, standalone spell checkers cost hundreds of dollars! Spell check reached seven billion people only when its marginal cost dropped to a local dictionary lookup bundled inside every editor. Why should recurring code repairs burn frontier joules forever?
+00:00:45.350 --> 00:01:02.704
+<v Misha>In the early 1980s, standalone spell checkers cost hundreds of dollars! Spell check reached seven billion people only when its marginal cost dropped to a local dictionary lookup bundled inside every editor. Why should recurring code repairs burn frontier joules forever?
 
 4
-00:01:08.170 --> 00:01:31.923
+00:01:02.974 --> 00:01:26.727
 <v Claire>In Downward LUT6 Compilation, we build that exact downward cascade. When genuine novelty arrives at the top tier, custom Apple Metal INT4 Mixture-of-Experts and GatedDeltaNet compute shaders stream Qwen 3.6 35B-A3B directly off NVMe via Darwin F_NOCACHE.
 
 5
-00:01:32.113 --> 00:01:41.454
+00:01:26.917 --> 00:01:36.258
 <v Sean>Hold on Claire — a thirty-five-billion-parameter model normally eats seventy gigabytes of unified RAM in FP16! What was our resident footprint?
 
 6
-00:01:41.724 --> 00:02:01.767
+00:01:36.528 --> 00:01:56.570
 <v Claire>Nine hundred seventy megabytes — just one point four seven percent of FP16 RAM! It hit one hundred percent exact token parity, cut NVMe reads twelve point three times through expert locality, and ran at six point seven seven three joules per token of dual-channel reported_j.
 
 7
-00:02:02.037 --> 00:02:13.074
-<v Amara>And once a frontier wake passes deterministic pytest gates, we compile that certified skill downward so the thirty-five-B model sleeps on repeat arrivals!
+00:01:56.840 --> 00:02:06.736
+<v Misha>And once a frontier wake passes deterministic pytest gates, we compile that certified skill downward so the thirty-five-B model sleeps on repeat arrivals!
 
 8
-00:02:13.344 --> 00:02:53.747
+00:02:07.006 --> 00:02:47.409
 <v Claire>Exactly. Across our forty-eight-task coding bakeoff and sixteen-repo SWE-Mini suite, the cascade closed eighty-seven point five percent with zero broken commits, waking the thirty-five-B tier on only twenty-two point nine two percent of tasks. By Wave 3 replay, certified wakes ran in two point eight nine milliseconds at zero point zero four two four joules reported_j — and synthesize downward via Yosys and Verilator into eighty-one RAMB36E2 Beneš-routed LUT6 blocks targeting Xilinx Kria xck26!
 
 9
-00:02:53.937 --> 00:03:06.400
+00:02:47.599 --> 00:03:00.062
 <v Sean>Zero multiply-accumulates — pure Boolean truth tables! Now shrink the energy budget all the way down to a CR2032 coin cell at minus twenty Celsius in Metabolic Intelligence!
 
 10
-00:03:06.670 --> 00:03:38.347
+00:03:00.332 --> 00:03:32.009
 <v Claire>In the MEI white paper, we shipped MEI-JCP-Tag-v1: a complete open manufacturing package — DRC-clean two-layer thirty-two by twenty-four millimeter KiCad PCB, RS-274X Gerbers, BOM, and a thirty-six by twenty-eight by seven-point-five millimeter STEP enclosure pairing an STM32WBA52 with a physical Texas Instruments INA238 shunt monitor and FRAM.
 
 11
-00:03:38.537 --> 00:03:45.914
+00:03:32.199 --> 00:03:39.576
 <v Sean>Quick audit check for the listeners: do we claim physical bench-metered joules off a fabbed MEI-JCP tag board yet?
 
 12
-00:03:46.184 --> 00:04:14.984
+00:03:39.846 --> 00:04:08.646
 <v Claire>Explicitly no — board_metered is false and measured_j is unset until physical boards return from fabrication. What IS verified is our ten-thousand-wakeup CR2032 electro-thermal simulation preserving one hundred percent of critical alerts at minus twenty Celsius across two thousand six hundred eighty Ed25519 canonical CBOR JCR-1 receipts.
 
 13
-00:04:15.254 --> 00:04:25.997
-<v Amara>And binding JCR-1 receipts, SATB drift gates, and agent sandboxes into one operating-system contract is The Search for JouleOS!
+00:04:08.916 --> 00:04:18.756
+<v Misha>And binding JCR-1 receipts, SATB drift gates, and agent sandboxes into one operating-system contract is The Search for JouleOS!
 
 14
-00:04:26.267 --> 00:04:48.100
+00:04:19.026 --> 00:04:40.859
 <v Claire>Legacy OS kernels multiplex time and virtual memory without checking energy before an agent acts. Our Rust reference spine passes three hundred ten workspace tests and verifies seventy-eight thousand four hundred provenance pairs across a meet-semilattice that schedules, budgets, and refuses out-of-envelope agent actions.
 
 15
-00:04:48.290 --> 00:04:59.177
-<v Sean>An OS that refuses runaway joule spend before it happens! Up next in Episode Seven, Priya, Marcus, and senior fellow Arthur ask what it would take to look up tomorrow!
+00:04:41.049 --> 00:04:51.762
+<v Sean>An OS that refuses runaway joule spend before it happens! Up next in Episode Seven, Amara, Nia, and senior fellow Arthur ask what it would take to look up tomorrow!
 
 16
-00:04:59.447 --> 00:05:03.711
-<v Amara>Stay tuned for Episode Seven — Time as an Index!
+00:04:52.032 --> 00:04:55.914
+<v Misha>Stay tuned for Episode Seven — Time as an Index!

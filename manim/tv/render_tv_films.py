@@ -153,8 +153,10 @@ def main():
     ap.add_argument("--tts-workers", type=int, default=5)
     ap.add_argument("--video-workers", type=int, default=12)
     ap.add_argument("--tiers", default="5s,30s,60s,90s")
+    ap.add_argument("--studies", default="", help="Optional comma-separated subset of study IDs to re-render")
     args = ap.parse_args()
     active_tiers = [t.strip() for t in args.tiers.split(",") if t.strip() in TIERS]
+    only_studies = {s.strip() for s in args.studies.split(",") if s.strip()}
 
     studies = []
     for raw_st in STUDIES_PART1 + STUDIES_PART2 + STUDIES_PART3:
@@ -166,9 +168,10 @@ def main():
         st["tutorial_lab_id"] = TUTORIAL_LAB_MAP[sid]
         studies.append(st)
     assert len(studies) == 21, f"Expected 21 studies, got {len(studies)}"
+    target_studies = [st for st in studies if not only_studies or st["id"] in only_studies]
 
     existing_by_id = {}
-    if os.path.exists(args.catalog_out) and set(active_tiers) != set(TIERS):
+    if os.path.exists(args.catalog_out) and (set(active_tiers) != set(TIERS) or bool(only_studies)):
         with open(args.catalog_out, "r", encoding="utf-8") as ef:
             existing_by_id = {s["id"]: s for s in json.load(ef).get("studies", [])}
 
@@ -183,33 +186,33 @@ def main():
 
     engine_label = "eleven_v4" if os.environ.get("ELEVENLABS_API_KEY", "").strip() else "edge-tts-neural"
     t0 = time.time()
-    print(f"[1/3] Synthesizing 21-presenter {engine_label} voiceovers & WebVTT ({args.tts_workers} workers)...", flush=True)
+    print(f"[1/3] Synthesizing {len(target_studies)}-presenter {engine_label} voiceovers & WebVTT ({args.tts_workers} workers)...", flush=True)
     tts_tasks = []
-    for st in studies:
+    for st in target_studies:
         sid = st["id"]
         for tier in active_tiers:
             wav_p = os.path.join(wav_dir, f"{sid}-{tier}.wav")
             vtt_p = os.path.join(vtt_dir, f"{sid}-{tier}.vtt")
             tts_tasks.append((st, tier, VOICE_ENSEMBLE[sid], cache_dir, tmp_tts, wav_p, vtt_p))
 
-    audio_meta = {st["id"]: {} for st in studies}
+    audio_meta = {st["id"]: {} for st in target_studies}
     with cf.ProcessPoolExecutor(max_workers=args.tts_workers) as ex:
         for sid, tier, n_frames, dur, wins, tr in ex.map(audio_job, tts_tasks):
             audio_meta[sid][tier] = (n_frames, dur, wins, tr)
     print(f"      Audio + VTT tracks ready in {time.time() - t0:.1f}s", flush=True)
 
     t1 = time.time()
-    print(f"[2/3] Rendering 21 posters + 84 HD 720p30 MP4 films ({args.video_workers} workers)...", flush=True)
+    print(f"[2/3] Rendering {len(target_studies)} posters + {len(target_studies) * len(active_tiers)} HD 720p30 MP4 films ({args.video_workers} workers)...", flush=True)
     vid_tasks = [
         (st, active_tiers, audio_meta[st["id"]], args.cutaway_dir, wav_dir, films_dir, posters_dir)
-        for st in studies
+        for st in target_studies
     ]
     rendered_info = {}
     with cf.ProcessPoolExecutor(max_workers=args.video_workers) as ex:
         for idx, (sid, res) in enumerate(ex.map(study_video_job, vid_tasks), 1):
             rendered_info[sid] = res
             d_summary = ", ".join(f"{k}={v['duration_s']}s" for k, v in res.items())
-            print(f"      [{idx:02d}/21] {sid} ({VOICE_ENSEMBLE[sid][0]}): {d_summary}", flush=True)
+            print(f"      [{idx:02d}/{len(target_studies):02d}] {sid} ({VOICE_ENSEMBLE[sid][0]}): {d_summary}", flush=True)
     print(f"      Encoded & ffprobe-verified in {time.time() - t1:.1f}s", flush=True)
 
     print("[3/3] Emitting structured tv-catalog.json...", flush=True)
@@ -218,7 +221,7 @@ def main():
         sid = st["id"]
         tiers_obj = {}
         for tier in TIERS:
-            if tier in rendered_info[sid]:
+            if sid in rendered_info and tier in rendered_info[sid]:
                 r = rendered_info[sid][tier]
                 vtt_p = os.path.join(vtt_dir, f"{sid}-{tier}.vtt")
                 tiers_obj[tier] = {
