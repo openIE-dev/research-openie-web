@@ -135,7 +135,7 @@
       "pdf": "https://research.openie.dev/pdfs/lut-adapt.pdf",
       "figures": "/living/lut-adapt/",
       "author": "David Charlot, Open Interface Engineering",
-      "summary": "Places a reconfigurable 6-input truth-table (LUT6) lookup tier in front of Mamba-3 and 4-bit NVMe-streamed late-2026 hybrid and sparse-MoE models up to 34.66B parameters (LiquidAI/LFM3-1.7B, LiquidAI/LFM2.5-8B-A1B, and Qwen/Qwen3.6-35B-A3B), gates commits behind deterministic verifiers, and compiles certified wakes downward into 81-RAMB36E2 Beneš-routed lookup pages at openIE-dev/lut-adapt-ai (commit a5e9bc1). Reports measured Darwin F_NOCACHE NVMe byte counts (up to 12.30× NVMe reduction and 6.50× speedup in 2,530.7 MB = 3.83% FP16 RAM on Qwen3.6-35B-A3B at 100.0% exact token parity), zero-MAC Sub1Bit-LUT6 vs. LittleBit-2, a 48-task coding bakeoff (43.75% pass, 0.00% broken commits admitted, 35,590× Wave-3 crystallized speedup), Yosys/Verilator xck26 RTL synthesis and topological-depth audit across both the 512-page core (41,185 CLB LUTs, 81 RAMB36E2s, 81 levels) and the AXI4 Rung-0 subsystem (67,366 CLB LUTs, 126 IOBs, 73 levels), and analytical est_j estimates. No isolated board power was measured.",
+      "summary": "Places a reconfigurable 6-input truth-table (LUT6) lookup tier in front of Mamba-3 and 4-bit NVMe-streamed late-2026 hybrid and sparse-MoE models up to 34.66B parameters (LiquidAI/LFM3-1.7B, google/gemma-4-E2B-it, LiquidAI/LFM2.5-8B-A1B, and Qwen/Qwen3.6-35B-A3B), gates commits behind deterministic verifiers, and compiles certified wakes downward into 81-RAMB36E2 Beneš-routed lookup and canonical skill pages at openIE-dev/lut-adapt-ai (commit af152ba). Reports Darwin F_NOCACHE NVMe byte counts, custom Apple Metal INT4 MoE & GatedDeltaNet compute shaders (970.0 MB = 1.47% FP16 RAM and 6.773 J/tok dual-channel reported_j on Qwen3.6-35B-A3B at 100.0% exact token parity; 12.30× NVMe reduction), zero-MAC Sub1Bit-LUT6 vs. LittleBit-2, an 87.50% (42/48) verified coding bakeoff (0.00% broken commits, 22.92% 35B calls, 2.89 ms / 0.0424 J reported_j Wave-3 replay) plus an 87.50% (14/16) multi-file git-repo SWE-Mini pytest suite, a drop-in OpenAI /v1 + MCP JSON-RPC 2.0 mol-agent server, and Yosys/Verilator xck26 RTL synthesis. No isolated board power was measured (measured_j unset).",
       "about": "https://research.openie.dev/about/lut-adapt/",
       "keywords": [
         "Mixture of Limits",
@@ -147,7 +147,9 @@
         "conformal prediction",
         "AirMoL",
         "NVMe streaming",
-        "KV260"
+        "KV260",
+        "MCP",
+        "reported_j"
       ]
     },
     {

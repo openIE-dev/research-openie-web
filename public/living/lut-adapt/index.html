@@ -47,6 +47,7 @@
       <div class="measurement-box">
         <strong>Measurement grammar on this page.</strong> Every widget below stamps its numbers with an explicit honesty chip:
         <span class="chip chip-meas">Measured (SW / NVMe I/O)</span> for Darwin <code>F_NOCACHE</code> bytes, RAM, and wall-clock runs from <code>artifacts/*.csv</code>;
+        <span class="chip chip-meas">Reported (OS / On-Chip reported_j)</span> for Apple M5 Max dual-channel <code>IOReport</code> GPU + <code>proc_pid_rusage</code> CPU joules;
         <span class="chip chip-sim">Simulated (RTL)</span> for Yosys <code>0.71+</code> <code>xcup</code> + Verilator <code>5.054</code> netlist results; and
         <span class="chip chip-est">Modelled (est_j)</span> for analytical cascade equations. <code>measured_j = None</code>; <code>board_metered = false</code>.
       </div>
@@ -160,8 +161,10 @@
           <div class="ctrl-box">
             <label><span>2026 Open-Weights Checkpoint</span></label>
             <select id="hf-model">
-              <option value="qwen35b" selected>Qwen/Qwen3.6-35B-A3B (2026 · 34.66B 256-Expert MoE · Expert-AirMoL)</option>
-              <option value="lfm8b">LiquidAI/LFM2.5-8B-A1B (2026 · 8.47B 32-Expert MoE · Expert-AirMoL)</option>
+              <option value="qwen35b_metal" selected>Qwen/Qwen3.6-35B-A3B · Metal-Fused INT4 + GatedDeltaNet (970.0 MB = 1.47% FP16 · 6.773 J/tok reported_j)</option>
+              <option value="lfm8b_metal">LiquidAI/LFM2.5-8B-A1B · Metal-Fused INT4 MoE (500.0 MB RAM · 3.493 J/tok reported_j)</option>
+              <option value="qwen35b">Qwen/Qwen3.6-35B-A3B (2026 · 34.66B 256-Expert MoE · PyTorch Expert-AirMoL)</option>
+              <option value="lfm8b">LiquidAI/LFM2.5-8B-A1B (2026 · 8.47B 32-Expert MoE · PyTorch Expert-AirMoL)</option>
               <option value="lfm3">LiquidAI/LFM3-1.7B (Oct 2026 · 1.73B Tri-Hybrid · 17b × 3 = 51b uint64)</option>
               <option value="lfm">LiquidAI/LFM2.5-350M (Mar 2026 · 354.5M · 16b × 4 = 64b uint64)</option>
               <option value="qwen">Qwen/Qwen3.5-0.8B-Base (Feb 2026 · 752.4M · 18b × 3 = 54b uint64)</option>
@@ -317,6 +320,20 @@
     // Widget 3: AirMoL 2026 HF data
     (function(){
       var hf = {
+        qwen35b_metal: {
+          ram: '970.0 MB', rampct: '1.47% of 66,110 MB FP16 (Metal INT4 + GatedDeltaNet)',
+          t1:   { tpsw: '1.00 tok', cpsw: '2.25 code chars / sweep', gb: '2.353 GB/tok', sw: '20.765 J/tok reported_j (PyTorch T=1)', toks: '0.19 tok/s', par: '100.0% parity (2,434.7 MB PyTorch RAM)' },
+          pld:  { tpsw: '1.00 tok', cpsw: '2.25 code chars / sweep', gb: '2.353 GB/tok', sw: '15.440 J/tok reported_j (Metal T=1)', toks: '0.24 tok/s', par: '100.0% parity (2.51× RAM reduction)' },
+          cold: { tpsw: '2.00 tok', cpsw: '4.50 code chars / sweep', gb: '1.722 GB/tok', sw: '10.54× I/O cut vs Dense AirLLM', toks: '0.47 tok/s', par: '100.0% exact token parity' },
+          wake: { tpsw: '2.67 tok', cpsw: '6.01 code chars / sweep', gb: '1.447 GB/tok', sw: '6.773 J/tok reported_j (3.07× lower!)', toks: '0.62 tok/s', par: '100.0% parity (15.7 tok/s Unified Q4)' }
+        },
+        lfm8b_metal: {
+          ram: '500.0 MB', rampct: '3.10% of 16,151 MB FP16 (Metal INT4 Sparse-MoE)',
+          t1:   { tpsw: '1.00 tok', cpsw: '1.62 code chars / sweep', gb: '1.257 GB/tok', sw: '10.978 J/tok reported_j (PyTorch T=1)', toks: '0.39 tok/s', par: '100.0% parity (1,408.3 MB PyTorch RAM)' },
+          pld:  { tpsw: '1.00 tok', cpsw: '1.62 code chars / sweep', gb: '1.257 GB/tok', sw: '6.979 J/tok reported_j (Metal T=1)', toks: '0.69 tok/s', par: '100.0% parity (2.82× RAM reduction)' },
+          cold: { tpsw: '1.85 tok', cpsw: '3.00 code chars / sweep', gb: '1.002 GB/tok', sw: '4.56× I/O cut vs Dense AirLLM', toks: '1.15 tok/s', par: '100.0% exact token parity' },
+          wake: { tpsw: '2.67 tok', cpsw: '4.34 code chars / sweep', gb: '0.791 GB/tok', sw: '3.493 J/tok reported_j (3.14× lower!)', toks: '1.67 tok/s', par: '100.0% parity (4.24× faster vs PyTorch)' }
+        },
         qwen35b: {
           ram: '2,530.7 MB', rampct: '3.83% of 66,110 MB FP16 (256-Expert MoE)',
           t1:   { tpsw: '1.00 tok', cpsw: '2.25 code chars / sweep', gb: '18.159 GB/tok', sw: '100% experts (Dense AirLLM 4B)', toks: '0.06 tok/s', par: '100.0% parity (2.356 GB/tok Expert-T1)' },
