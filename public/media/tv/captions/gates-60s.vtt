@@ -1,0 +1,38 @@
+WEBVTT
+NOTE OpenIE Research TV — gates (60s) AI-synthesized studio narration
+
+1
+00:00:01.293 --> 00:00:04.139
+Cheap per-token inference still wastes joules if ten
+
+2
+00:00:04.139 --> 00:00:07.260
+unverified guesses corrupt state and force human cleanup.
+
+3
+00:00:10.512 --> 00:00:15.603
+A Mixture of Limits cascade tries deterministic tables and lightweight checks first,
+
+4
+00:00:15.603 --> 00:00:18.087
+waking heavy models only on novel inputs.
+
+5
+00:00:21.340 --> 00:00:29.460
+Before any external write commits, a deterministic verifier checks the postcondition, driving Energy-to-Correct-Completion sharply down.
+
+6
+00:00:32.713 --> 00:00:36.440
+Hardware measurements on the K V 260 I N A 260
+
+7
+00:00:36.440 --> 00:00:42.517
+rail shunt record 11,428 picojoules per gate cycle across the whole module.
+
+8
+00:00:45.770 --> 00:00:49.011
+Every software cascade trace and K V 260 board
+
+9
+00:00:49.011 --> 00:00:53.520
+log ships with golden vectors and an interactive FPGA simulator.

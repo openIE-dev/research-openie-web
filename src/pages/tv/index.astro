@@ -1,0 +1,381 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import tvCatalog from '../../data/tv-catalog.json';
+import TvClient from './_TvClient.astro';
+
+const SITE = 'https://research.openie.dev';
+const studies = tvCatalog.studies;
+const initialStudy = studies.find((s) => s.id === 'communication-avalanche') ?? studies[0];
+const initialTier = initialStudy.tiers['60s'];
+
+const categories = [
+  'All 21',
+  'Foundations & Thermodynamics',
+  'Reality Code Engine',
+  'Null & Benchmarks',
+  'Communication Avalanche & Bio',
+  'Hardware, LUT6 & OS',
+  'Economics & Cadence',
+];
+
+const tierOrder = ['5s', '30s', '60s', '90s'] as const;
+const tierLabels: Record<string, string> = {
+  '5s': '5s Flash',
+  '30s': '30s Elevator',
+  '60s': '60s Briefing',
+  '90s': '90s Lab Cut',
+};
+
+const isoDuration = (sec: number) => `PT${Math.max(1, Math.round(sec))}S`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'OpenIE Research TV — 84 Research Films Across 21 Studies',
+  description: tvCatalog.studio_disclosure,
+  numberOfItems: tvCatalog.film_count,
+  itemListElement: studies.flatMap((s, sIdx) =>
+    tierOrder.map((t, tIdx) => {
+      const td = s.tiers[t];
+      return {
+        '@type': 'ListItem',
+        position: sIdx * 4 + tIdx + 1,
+        item: {
+          '@type': 'VideoObject',
+          name: `${s.short_title} (${tierLabels[t]})`,
+          description: td.hook,
+          thumbnailUrl: `${SITE}${s.poster_url}`,
+          uploadDate: '2026-11-23',
+          duration: isoDuration(td.duration_s),
+          contentUrl: `${SITE}${td.video_url}`,
+          embedUrl: `${SITE}/tv/#${s.id}:${t}`,
+          transcript: td.transcript,
+          publisher: {
+            '@type': 'Organization',
+            name: 'Open Interface Engineering, Inc.',
+            url: 'https://openie.dev',
+          },
+        },
+      };
+    })
+  ),
+};
+---
+
+<Layout
+  title="OpenIE Research TV — 84 Snackable Research Films"
+  description="Watch all 21 OpenIE research studies across four bespoke depth tiers (5s Flash, 30s Elevator, 60s Briefing, and 90s 3D Lab Cut) with synchronized captions, interactive transcripts, and verified energy provenance."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <section class="max-w-7xl mx-auto px-5 md:px-10 pt-10 pb-20">
+    <!-- Studio Header & Explicit Disclosure Banner -->
+    <div class="mb-8">
+      <div class="flex flex-wrap items-center gap-3 mb-3">
+        <span class="section-label">OpenIE Broadcast Studio · /tv/</span>
+        <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/30">
+          21 Studies × 4 Depth Tiers = 84 Films
+        </span>
+        <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">
+          720p30 · WebVTT · Blender 5.3 3D Cutaways
+        </span>
+      </div>
+      <h1 class="font-display text-3xl md:text-5xl font-bold tracking-tight text-brand-white mb-4">
+        Open<span class="text-brand-cyan">IE</span> Research <span class="text-brand-amber">TV</span>
+      </h1>
+      <p class="font-body text-base md:text-lg text-brand-slate max-w-4xl leading-relaxed mb-5">
+        Every published study rendered at four distinct pedagogical depths—from a five-second thesis flash to a ninety-second laboratory documentary cut featuring three-dimensional hardware and state-machine turntables.
+      </p>
+
+      <div class="glass-card p-4 md:p-5 border-l-4 border-l-brand-amber">
+        <div class="font-mono text-[11px] uppercase tracking-wider text-brand-amber mb-1.5">
+          Studio Narration &amp; Energy Provenance Disclosure
+        </div>
+        <p class="font-body text-[13px] text-brand-light leading-relaxed m-0">
+          AI-synthesized studio narration; every claim, equation, and joule reading is bound to verified OpenIE study artifacts.
+          Energy labels strictly distinguish <code class="font-mono text-brand-cyan">measured_j</code> (physical hardware rail shunts: AMD Kria <code class="font-mono">KV260 INA260</code> in <em>Metered Commit Gates</em> and <code class="font-mono">NVIDIA Jetson AGX Thor TI INA238/INA3221</code> in <em>Satiation Benchmark Harness</em> and <em>The Communication Tool Avalanche</em>),
+          <code class="font-mono text-brand-amber">reported_j</code> (host <code class="font-mono">RAPL</code>, <code class="font-mono">IOReport</code>, and <code class="font-mono">NVML</code> counters),
+          and <code class="font-mono text-brand-slate">est_j</code> (analytical or datasheet schedules).
+        </p>
+      </div>
+    </div>
+
+    <!-- Hero Broadcast Theater -->
+    <div id="tv-theater-anchor" class="scroll-mt-24 glass-card p-4 md:p-6 mb-12">
+      <!-- Top Control Deck: Depth Tiers + Continuous Playlists + Speed -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-brand-border">
+        <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Depth tier selector">
+          <button type="button" data-tier-btn="5s" class="tv-tier-pill font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-border text-brand-light cursor-pointer transition-all">
+            <span class="text-brand-amber mr-1">1</span> 5s Flash
+          </button>
+          <button type="button" data-tier-btn="30s" class="tv-tier-pill font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-border text-brand-light cursor-pointer transition-all">
+            <span class="text-brand-amber mr-1">2</span> 30s Elevator
+          </button>
+          <button type="button" data-tier-btn="60s" class="tv-tier-pill tv-pill-active font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-border text-brand-light cursor-pointer transition-all">
+            <span class="text-brand-amber mr-1">3</span> 60s Briefing
+          </button>
+          <button type="button" data-tier-btn="90s" class="tv-tier-pill font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-border text-brand-light cursor-pointer transition-all">
+            <span class="text-brand-amber mr-1">4</span> 90s Lab Cut · 3D
+          </button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" data-playlist-btn="60s" aria-pressed="false" class="tv-playlist-btn font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-cyan/40 text-brand-cyan bg-brand-cyan/10 hover:bg-brand-cyan/20 cursor-pointer transition-all">
+            ▶ Play All 60s Briefing
+          </button>
+          <button type="button" data-playlist-btn="30s" aria-pressed="false" class="tv-playlist-btn font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-amber/40 text-brand-amber bg-brand-amber/10 hover:bg-brand-amber/20 cursor-pointer transition-all">
+            ▶ Play All 30s
+          </button>
+          <div class="flex items-center gap-1 ml-1 pl-2 border-l border-brand-border" role="group" aria-label="Playback speed">
+            <button type="button" data-speed-btn="1" class="tv-speed-btn tv-speed-active font-mono text-[11px] px-2 py-1 rounded border border-brand-border text-brand-slate cursor-pointer">1x</button>
+            <button type="button" data-speed-btn="1.25" class="tv-speed-btn font-mono text-[11px] px-2 py-1 rounded border border-brand-border text-brand-slate cursor-pointer">1.25x</button>
+            <button type="button" data-speed-btn="1.5" class="tv-speed-btn font-mono text-[11px] px-2 py-1 rounded border border-brand-border text-brand-slate cursor-pointer">1.5x</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video + Interactive Synced Cue Transcript Split -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div class="lg:col-span-7">
+          <div class="relative rounded-xl overflow-hidden border border-brand-border bg-[#0b1020] aspect-video shadow-2xl">
+            <video
+              id="tv-player"
+              controls
+              playsinline
+              preload="metadata"
+              poster={initialStudy.poster_url}
+              src={initialTier.video_url}
+              data-loaded-src={initialTier.video_url}
+              class="w-full h-full object-contain bg-[#0b1020]"
+            >
+              <track
+                id="tv-track"
+                kind="captions"
+                srclang="en"
+                label="English Studio Captions"
+                src={initialTier.vtt_url}
+                default
+              />
+            </video>
+          </div>
+
+          <!-- Active Film Metadata & Prev/Next Bar -->
+          <div class="mt-4 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex flex-wrap items-center gap-2">
+              <span id="tv-active-category" class="font-mono text-[11px] uppercase tracking-wider text-brand-amber">
+                {initialStudy.category}
+              </span>
+              <span class="text-brand-gray">·</span>
+              <span id="tv-active-energy-tier" class="px-2 py-0.5 rounded font-mono text-[11px] border border-brand-amber/40 text-brand-amber bg-brand-amber/10">
+                {initialStudy.energy_tier}
+              </span>
+              <div id="tv-active-epistemic" class="flex items-center gap-1"></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span id="tv-playlist-status" class="font-mono text-[11px] text-brand-gray mr-1">Single-Film Mode</span>
+              <button id="tv-prev-btn" type="button" class="font-mono text-xs px-2.5 py-1 rounded border border-brand-border text-brand-light hover:border-brand-amber cursor-pointer bg-transparent">
+                ← Prev (K)
+              </button>
+              <button id="tv-next-btn" type="button" class="font-mono text-xs px-2.5 py-1 rounded border border-brand-border text-brand-light hover:border-brand-amber cursor-pointer bg-transparent">
+                Next (J) →
+              </button>
+            </div>
+          </div>
+
+          <h2 id="tv-active-title" class="font-display text-xl md:text-2xl font-bold text-brand-white mt-2">
+            {initialStudy.title}
+          </h2>
+          <p id="tv-active-hook" class="font-body text-sm text-brand-slate mt-1.5 leading-relaxed">
+            {initialTier.hook}
+          </p>
+          <div class="mt-2 font-mono text-xs text-brand-cyan">
+            Verified Headline: <span id="tv-active-metric" class="text-brand-amber">{initialStudy.headline_metric}</span>
+          </div>
+          <div id="tv-active-energy-disc" class="mt-1 font-mono text-[11px] text-brand-gray">
+            {initialStudy.energy_disclosure}
+          </div>
+
+          <!-- Deep-Link Action Buttons -->
+          <div class="mt-4 pt-4 border-t border-brand-border flex flex-wrap items-center gap-2.5">
+            <a id="tv-link-paper" href={initialStudy.paper_url} class="font-mono text-xs px-3.5 py-2 rounded-lg bg-brand-amber text-brand-dark font-semibold no-underline hover:opacity-90 transition-opacity">
+              Read Paper →
+            </a>
+            <a id="tv-link-figures" href={initialStudy.figures_url} class="font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-cyan/40 text-brand-cyan no-underline hover:bg-brand-cyan/10 transition-colors">
+              Interactive Figure
+            </a>
+            <a id="tv-link-tutorial" href={`/tutorials/?lab=${initialStudy.tutorial_lab_id}`} class="font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-border text-brand-light no-underline hover:border-brand-amber transition-colors">
+              Interactive Tutorial
+            </a>
+            <a id="tv-link-pdf" href={initialStudy.pdf_url} class="font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-border text-brand-light no-underline hover:border-brand-amber transition-colors">
+              Download PDF
+            </a>
+            <a id="tv-link-about" href={initialStudy.about_url} class="font-mono text-xs px-3 py-2 rounded-lg text-brand-slate no-underline hover:text-brand-white transition-colors">
+              Plain-Words Summary
+            </a>
+          </div>
+        </div>
+
+        <!-- Synced Clickable Cue Transcript Panel -->
+        <div class="lg:col-span-5 glass-card p-4 flex flex-col h-[460px] lg:h-[520px]">
+          <div class="flex items-center justify-between pb-3 mb-2 border-b border-brand-border">
+            <div>
+              <div class="font-mono text-xs text-brand-white font-semibold">Interactive Synced Transcript</div>
+              <div class="font-mono text-[10px] text-brand-gray">Click any timestamped cue to seek</div>
+            </div>
+            <button id="tv-copy-transcript" type="button" class="font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate hover:text-brand-amber hover:border-brand-amber cursor-pointer bg-transparent">
+              Copy Transcript
+            </button>
+          </div>
+          <div id="tv-cue-list" class="flex-1 overflow-y-auto space-y-1 pr-1" role="region" aria-label="Synchronized film transcript"></div>
+          <div class="pt-3 mt-2 border-t border-brand-border font-mono text-[10px] text-brand-gray flex flex-wrap gap-x-3 gap-y-1">
+            <span><kbd class="px-1.5 py-0.5 rounded bg-white/5 text-brand-light">Space</kbd> Play/Pause</span>
+            <span><kbd class="px-1.5 py-0.5 rounded bg-white/5 text-brand-light">1–4</kbd> Depth Tier</span>
+            <span><kbd class="px-1.5 py-0.5 rounded bg-white/5 text-brand-light">J / K</kbd> Next/Prev</span>
+            <span><kbd class="px-1.5 py-0.5 rounded bg-white/5 text-brand-light">M</kbd> Mute</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Filter Tabs & Instant Search -->
+    <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="flex flex-wrap gap-2" role="tablist" aria-label="Study categories">
+        {categories.map((cat, idx) => (
+          <button
+            type="button"
+            role="tab"
+            aria-selected={idx === 0 ? 'true' : 'false'}
+            data-cat-tab={cat}
+            class={`tv-cat-tab font-mono text-xs px-3 py-1.5 rounded-lg border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer bg-transparent transition-all ${idx === 0 ? 'tv-cat-active' : ''}`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+      <div class="flex items-center gap-3">
+        <input
+          id="tv-search-input"
+          type="search"
+          placeholder="Search 21 studies & 84 transcripts..."
+          aria-label="Search studies and film transcripts"
+          class="font-body text-sm px-3.5 py-2 rounded-lg bg-white/5 border border-brand-border text-brand-white placeholder:text-brand-gray focus:border-brand-amber w-full md:w-72"
+        />
+      </div>
+    </div>
+    <div id="tv-visible-count" class="font-mono text-xs text-brand-gray mb-5">
+      21 / 21 studies shown (84 films)
+    </div>
+
+    <!-- 21-Study × 4-Tier Visual Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {studies.map((s) => (
+        <article data-study-card={s.id} class="glass-card overflow-hidden flex flex-col justify-between transition-all">
+          <div>
+            <div class="relative aspect-video bg-[#0b1020] overflow-hidden border-b border-brand-border group">
+              <img
+                src={s.poster_url}
+                alt={`${s.short_title} studio poster`}
+                loading="lazy"
+                width="1280"
+                height="720"
+                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+              />
+              <button
+                type="button"
+                data-card-play="true"
+                data-study={s.id}
+                data-tier="60s"
+                aria-label={`Play ${s.short_title} 60s Briefing`}
+                class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer border-none"
+              >
+                <span class="px-4 py-2 rounded-full bg-brand-amber text-brand-dark font-mono text-xs font-bold shadow-lg">
+                  ▶ Play Briefing
+                </span>
+              </button>
+              <span class="tv-now-playing-pill hidden absolute top-2.5 left-2.5 px-2.5 py-1 rounded font-mono text-[10px] font-bold bg-brand-amber text-brand-dark">
+                NOW PLAYING
+              </span>
+              <div class="absolute bottom-2 right-2 flex gap-1">
+                {s.epistemic_tags.map((tg) => (
+                  <span class="px-1.5 py-0.5 rounded font-mono text-[10px] bg-[#0b1020]/90 text-brand-cyan border border-brand-cyan/40">
+                    [{tg}]
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div class="p-4">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="font-mono text-[10px] uppercase tracking-wider text-brand-amber truncate">{s.category}</span>
+                <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 text-brand-slate border border-brand-border shrink-0">
+                  {s.energy_tier}
+                </span>
+              </div>
+              <h3 class="font-display text-lg font-bold text-brand-white leading-snug mb-1.5">
+                {s.short_title}
+              </h3>
+              <div class="font-mono text-[11px] text-brand-cyan mb-2">
+                {s.headline_metric}
+              </div>
+              <p class="font-body text-xs text-brand-slate leading-relaxed line-clamp-2 m-0">
+                {s.tiers['30s'].hook}
+              </p>
+            </div>
+          </div>
+
+          <div class="px-4 pb-4 pt-2 border-t border-brand-border">
+            <div class="font-mono text-[10px] text-brand-gray mb-2">Select Depth Tier:</div>
+            <div class="grid grid-cols-4 gap-1.5">
+              {tierOrder.map((t) => (
+                <button
+                  type="button"
+                  data-card-play="true"
+                  data-study={s.id}
+                  data-tier={t}
+                  class="font-mono text-[11px] py-1.5 px-1 rounded border border-brand-border hover:border-brand-amber hover:text-brand-amber text-brand-light bg-white/[0.02] cursor-pointer transition-colors text-center"
+                >
+                  <div class="font-bold">{t}</div>
+                  <div class="text-[9px] text-brand-gray">{Math.round(s.tiers[t].duration_s)}s</div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <style is:global>
+    .tv-pill-active {
+      background: rgba(245, 158, 11, 0.18) !important;
+      border-color: #f59e0b !important;
+      color: #ffffff !important;
+    }
+    .tv-playlist-active {
+      background: #00d4aa !important;
+      color: #0a0a0f !important;
+      font-weight: 700;
+    }
+    .tv-speed-active {
+      border-color: #f59e0b !important;
+      color: #f59e0b !important;
+    }
+    .tv-cat-active {
+      background: rgba(245, 158, 11, 0.14) !important;
+      border-color: rgba(245, 158, 11, 0.6) !important;
+      color: #f59e0b !important;
+    }
+    .tv-cue-active {
+      background: rgba(245, 158, 11, 0.12) !important;
+      border-color: rgba(245, 158, 11, 0.45) !important;
+    }
+    .tv-card-playing {
+      border-color: rgba(245, 158, 11, 0.65) !important;
+      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.25);
+    }
+  </style>
+
+  <TvClient catalog={tvCatalog} />
+</Layout>

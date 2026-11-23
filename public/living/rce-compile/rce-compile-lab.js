@@ -407,7 +407,7 @@
     { id: 'ada_spark', name: 'Ada & SPARK (gnatmake, GNATprove)', scores: ['half', 'half', 'half', 'full', 'half', 'empty', 'half'], note: 'GNATprove SMT proof levels certify absence of run-time errors when gated by CI; gnatmake -O2 -g retained build-path bytes in .ali outputs in E1.' },
     { id: 'ghc_func', name: 'GHC & Functional (Lean 4, OCaml, Erlang, Futhark)', scores: ['half', 'half', 'half', 'full', 'full', 'empty', 'half'], note: 'GHC Core, Lean LCNF, and Erlang bytecode validator provide strong K/R structure, but interface fingerprints still hash user names.' },
     { id: 'ml_compilers', name: 'ML Compilers (XLA, TorchInductor, TVM, Triton)', scores: ['half', 'half', 'full', 'half', 'full', 'empty', 'half'], note: 'Autotuned cost models and tolerance-based sample checks (float32 rtol 1.3e-6); graph breaks fall back to eager execution unless fullgraph=True.' },
-    { id: 'rce_ref', name: 'RCE Reference (`openIE-dev/rce` @ 1762fb4b)', scores: ['full', 'half', 'half', 'full', 'full', 'half', 'full'], note: 'Admits or refuses before emit; `rce fmt nameless` projects declared names to positional indices (0/500 false hits in E5-Scale; 78.7 mJ core check+5-target emit; host.Energy RAPL counter in D.11).' }
+    { id: 'rce_ref', name: 'RCE Reference (`openIE-dev/rce` @ 1762fb4b)', scores: ['full', 'half', 'half', 'full', 'full', 'half', 'full'], note: 'Admits or refuses before emit; `rce fmt nameless` projects declared names to positional indices (0/500 false hits in E5-Scale; 78.7 mJ core check+5-target emit; pre-compiled librce_rt.rlib cuts RCE->rustc -O3 compile energy 20.1x from 56.29 J to 2.81 J and N* vs Node JS from 31,080 to 1,079).' }
   ];
 
   var selFam = document.getElementById('sel-family');
@@ -512,7 +512,7 @@
       {
         name: 'explore_rce_compile_payback',
         title: 'Explore RCE Compile E4-Energy payback horizon N*',
-        description: 'Computes lifecycle reported_j (E_compile + N * E_run) and crossover N* across 20 kernels and 14 compiler tiers on /living/rce-compile/.',
+        description: 'Computes lifecycle reported_j (E_compile + N * E_run) and crossover N* across 20 kernels and 15 compiler tiers on /living/rce-compile/.',
         inputSchema: {
           type: 'object',
           properties: {

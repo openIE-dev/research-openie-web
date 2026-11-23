@@ -1,0 +1,30 @@
+WEBVTT
+NOTE OpenIE Research TV — ai-reads-human (30s) AI-synthesized studio narration
+
+1
+00:00:00.300 --> 00:00:04.394
+Software agents routinely serialize numbers into JSON or YAML strings,
+
+2
+00:00:04.394 --> 00:00:06.792
+tokenize them, and parse them right back.
+
+3
+00:00:07.272 --> 00:00:10.407
+AI Reads Human defines this extra work with physical
+
+4
+00:00:10.407 --> 00:00:14.144
+units across 170 isolated measurement windows on Apple M5 Max.
+
+5
+00:00:14.624 --> 00:00:19.540
+A fixed binary struct costs 280 nanojoules per record;
+
+6
+00:00:19.540 --> 00:00:26.276
+JSON costs 2.2 microjoules, cl100k tokenization 27.7, and Python YAML 576.
+
+7
+00:00:26.756 --> 00:00:32.712
+Render human text for human eyes, and keep machine-to-machine channels binary—with Falsifier 6 guarding telemetry.

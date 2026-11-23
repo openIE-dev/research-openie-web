@@ -1,0 +1,141 @@
+---
+interface Props {
+  radar: any;
+}
+
+const { radar } = Astro.props;
+const items = radar.items || [];
+const srcCounts = radar.counts_by_source || {};
+const clsCounts = radar.counts_by_classification || {};
+---
+
+<section id="radar" class="max-w-7xl mx-auto px-5 md:px-10 py-10 border-t border-brand-border">
+  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
+    <div>
+      <div class="section-label mb-1.5">Stage 1 &amp; 2 · Sanctioned Open-Access Intake &amp; Epistemic Audit</div>
+      <h2 class="font-display text-2xl sm:text-3xl font-bold text-brand-white">
+        Active Global Literature Radar
+      </h2>
+      <p class="font-body text-xs sm:text-sm text-brand-slate mt-1.5 max-w-3xl">
+        Polled every 6 hours across five documented public APIs (arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov), deduplicated via <code class="font-mono text-brand-amber">BLAKE2b-256</code> &amp; <code class="font-mono text-brand-amber">SHA-256</code>, and cross-checked against all {radar.openie_studies_audited} OpenIE studies.
+      </p>
+    </div>
+    <div class="font-mono text-[11px] text-brand-gray shrink-0">
+      Last live scrape: <span class="text-brand-cyan">{radar.scraped_at_utc}</span>
+    </div>
+  </div>
+
+  <!-- Source Telemetry Strip -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-5">
+    <div class="glass-card p-3.5">
+      <div class="font-mono text-[10px] text-brand-gray uppercase">Total Deduplicated</div>
+      <div class="font-display text-xl font-bold text-brand-white mt-0.5">{radar.total_external_works}</div>
+    </div>
+    {Object.entries(srcCounts).map(([src, cnt]) => (
+      <div class="glass-card p-3.5">
+        <div class="font-mono text-[10px] text-brand-gray uppercase truncate">{src}</div>
+        <div class="font-display text-xl font-bold text-brand-cyan mt-0.5">{cnt as number}</div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Filter & Search Controls -->
+  <div class="glass-card p-4 mb-5 flex flex-col lg:flex-row gap-3 lg:items-center justify-between">
+    <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filter radar classification">
+      <button type="button" data-radar-cls="ALL" class="radar-cls-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-amber bg-brand-amber/15 text-brand-amber cursor-pointer">
+        ALL ({items.length})
+      </button>
+      <button type="button" data-radar-cls="CORROBORATES" class="radar-cls-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border text-brand-cyan hover:border-brand-cyan/50 cursor-pointer">
+        CORROBORATES ({clsCounts.CORROBORATES || 0})
+      </button>
+      <button type="button" data-radar-cls="CHALLENGES_ASSUMPTION" class="radar-cls-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border text-brand-amber hover:border-brand-amber/50 cursor-pointer">
+        CHALLENGES ({clsCounts.CHALLENGES_ASSUMPTION || 0})
+      </button>
+      <button type="button" data-radar-cls="NEW_FRONTIER_GAP" class="radar-cls-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border text-brand-indigo hover:border-brand-indigo/50 cursor-pointer">
+        NEW FRONTIER GAP ({clsCounts.NEW_FRONTIER_GAP || 0})
+      </button>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2">
+      <select id="radar-badge-select" aria-label="Filter by epistemic badge" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border bg-brand-navy text-brand-light">
+        <option value="ALL">All Badges ([T]/[E]/[M]/[S])</option>
+        <option value="[T]">[T] Kernel-Checked Theorem</option>
+        <option value="[E]">[E] Empirical / Clinical</option>
+        <option value="[M]">[M] Computational Model</option>
+        <option value="[S]">[S] Speculative / Recruiting</option>
+      </select>
+      <input
+        id="radar-search-input"
+        type="search"
+        placeholder="Search title, DOI, arXiv, NCT, vector…"
+        aria-label="Search global literature radar"
+        class="font-body text-xs px-3.5 py-1.5 rounded-md border border-brand-border bg-brand-navy text-brand-white placeholder:text-brand-gray min-w-[230px]"
+      />
+    </div>
+  </div>
+
+  <!-- Radar Cards Grid -->
+  <div id="radar-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {items.map((it: any) => {
+      const clsStyle =
+        it.classification === 'CORROBORATES'
+          ? 'border-brand-cyan/40 text-brand-cyan bg-brand-cyan/10'
+          : it.classification === 'CHALLENGES_ASSUMPTION'
+          ? 'border-brand-amber/40 text-brand-amber bg-brand-amber/10'
+          : 'border-brand-indigo/40 text-brand-indigo bg-brand-indigo/10';
+      return (
+        <article
+          class="radar-item glass-card p-4 flex flex-col justify-between"
+          data-cls={it.classification}
+          data-badge={it.epistemic_badge}
+          data-hay={`${it.title} ${it.external_id} ${it.source} ${it.vector_label} ${(it.authors || []).join(' ')}`.toLowerCase()}
+        >
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2 font-mono text-[10px]">
+              <div class="flex items-center gap-1.5">
+                <span class="text-brand-gray">{it.radar_id}</span>
+                <span class="px-2 py-0.5 rounded bg-white/5 border border-brand-border text-brand-light">{it.source}</span>
+                <span class="px-2 py-0.5 rounded bg-brand-amber/15 border border-brand-amber/30 text-brand-amber font-bold">{it.epistemic_badge}</span>
+              </div>
+              <span class={`px-2 py-0.5 rounded border font-semibold ${clsStyle}`}>
+                {it.classification}
+              </span>
+            </div>
+
+            <h3 class="font-display text-sm sm:text-[15px] font-bold text-brand-white leading-snug mb-1.5">
+              <a href={it.url} target="_blank" rel="noopener noreferrer" class="text-brand-white no-underline hover:text-brand-cyan transition-colors">
+                {it.title} ↗
+              </a>
+            </h3>
+
+            <div class="font-mono text-[10px] text-brand-gray mb-2 flex flex-wrap gap-x-3 gap-y-0.5">
+              <span>ID: <strong class="text-brand-slate">{it.external_id}</strong></span>
+              {it.published_date && <span>Date: {it.published_date}</span>}
+              <span>BLAKE2b: {it.blake2b_256.slice(0, 12)}…</span>
+            </div>
+
+            <p class="font-body text-xs text-brand-slate leading-relaxed mb-2.5">
+              {it.rationale}
+            </p>
+
+            <div class="p-2.5 rounded-lg bg-black/25 border border-brand-border font-mono text-[10px] text-brand-light mb-3">
+              <span class="text-brand-amber">Telemetry &amp; Null Audit:</span> {it.telemetry_audit.audit_summary}
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-brand-border">
+            <span class="font-mono text-[10px] text-brand-gray mr-1">OpenIE links:</span>
+            {(it.matched_openie_studies || []).map((ms: any) => (
+              <a href={ms.path} class="font-mono text-[10px] px-2 py-0.5 rounded border border-brand-cyan/25 bg-brand-cyan/5 text-brand-cyan no-underline hover:bg-brand-cyan/15">
+                {ms.short_title}
+              </a>
+            ))}
+          </div>
+        </article>
+      );
+    })}
+  </div>
+  <div id="radar-empty-msg" class="hidden text-center font-mono text-xs text-brand-gray py-8">
+    No external radar entries match the current filter.
+  </div>
+</section>

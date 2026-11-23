@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img" aria-labelledby="cta-ten-camps-t cta-ten-camps-d">
+  <title id="cta-ten-camps-t">Atlas of the 10 Siloed AI Camps vs. Digital Enzymatic Synthesis (DES-10)</title>
+  <desc id="cta-ten-camps-d">Left half maps all 10 siloed AI camps (C1 Autoregressive LLMs, C2 Deductive Symbolic/SMT/Lean, C3 Latent JEPA/EBM, C4 RL/MCTS, C5 Episodic RAG/Shape-D, C6 Evolutionary Program Search, C7 Causal/Bayesian Do-Calculus, C8 Sub-Symbolic SSM/Spiking/LUT6, C9 Multi-Agent NL Debate, C10 Embodied Sandbox) with each camp&#x27;s superpower and solo failure mode. Right half shows how Digital Enzymes wire all 10 organs into one thresholded Min-Cost Flow cascade with downward crystallization.</desc>
+  <defs>
+    <marker id="arr-cyan" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#22d3ee"/>
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arr-emerald" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#10b981"/>
+    </marker>
+    <marker id="arr-rose" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f43f5e"/>
+    </marker>
+    <marker id="arr-violet" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a78bfa"/>
+    </marker>
+    <marker id="arr-slate" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect x="1.0" y="1.0" width="1198.0" height="738.0" rx="18.0" fill="#0b1120" stroke="#334155" stroke-width="2.00"/>
+  <text x="30.0" y="38.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="20.0" font-weight="800" fill="#f8fafc">Ten Siloed AI Camps vs. Digital Enzymatic Unification (DES-10)</text>
+  <text x="30.0" y="60.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.0" font-weight="500" fill="#94a3b8">Every isolated AI camp fails outside its niche; &lt;1 mJ Digital Enzymes wire all 10 into one thresholded min-cost cascade</text>
+  <rect x="1010.0" y="18.0" width="164.0" height="28.0" rx="14.0" fill="#0f172a" stroke="#a78bfa" stroke-width="1.60"/>
+  <text x="1092.0" y="36.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#a78bfa" text-anchor="middle">C1..C10 -&gt; DES-10</text>
+  <rect x="26.0" y="82.0" width="594.0" height="636.0" rx="12.0" fill="#111827" stroke="#334155" stroke-width="1.50"/>
+  <text x="42.0" y="106.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.6" font-weight="800" fill="#f8fafc">LEFT · THE 10 SILOED AI CAMPS: NATIVE SUPERPOWER (+) VS. SOLO BLIND SPOT (-)</text>
+  <rect x="40.0" y="120.0" width="278.0" height="104.0" rx="8.0" fill="#0f172a" stroke="#f59e0b" stroke-width="1.40"/>
+  <text x="52.0" y="144.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.2" font-weight="800" fill="#f59e0b">C1 · Autoregressive LLMs</text>
+  <text x="52.0" y="172.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#10b981">+ Broad NL parsing &amp; open synthesis</text>
+  <text x="52.0" y="198.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#f43f5e">- ~15 J/call; Simpson &amp; f^k drift</text>
+  <rect x="328.0" y="120.0" width="278.0" height="104.0" rx="8.0" fill="#0f172a" stroke="#22d3ee" stroke-width="1.40"/>
+  <text x="340.0" y="144.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.2" font-weight="800" fill="#22d3ee">C2 · Deductive Symbolic / Lean</text>
+  <text x="340.0" y="172.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#10b981">+ Sound 0-false-commit proofs</text>
+  <text x="340.0" y="198.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#f43f5e">- Cannot parse raw noisy NL solo</text>
+  <rect x="40.0" y="236.0" width="278.0" height="104.0" rx="8.0" fill="#0f172a" stroke="#a78bfa" stroke-width="1.40"/>
+  <text x="52.0" y="260.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.2" font-weight="800" fill="#a78bfa">C3 · Latent JEPA / FormEBM</text>
+  <text x="52.0" y="288.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#10b981">+ Fast mJ candidate rank (0.89 AUC)</text>
+  <text x="52.0" y="314.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#f43f5e">- Needs exact terminal proof gate</text>
+  <rect x="328.0" y="236.0" width="278.0" height="104.0" rx="8.0" fill="#0f172a" stroke="#22d3ee" stroke-width="1.40"/>
+  <text x="340.0" y="260.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.2" font-weight="800" fill="#22d3ee">C4 · RL / MCTS Tree Search</text>
+  <text x="340.0" y="288.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#10b981">+ Non-myopic multi-step planning</text>
+  <text x="340.0" y="314.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#f43f5e">- High rollout burn w/o fast prior</text>
+  <rect x="40.0" y="352.0" width="278.0" height="104.0" rx="8.0" fill="#0f172a" stroke="#10b981" stroke-width="1.40"/>
+  <text x="52.0" y="376.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.2" font-weight="800" fill="#10b981">C5 · Episodic RAG / Shape-D</text>
+  <text x="52.0" y="404.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#10b981">+ O(1) 1.77 uJ DNULLMM1 recall</text>
+  <text x="52.0" y="430.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#f43f5e">- Misses on novel structural graphs</text>
+  <rect x="328.0" y="352.0" width="278.0" height="104.0" rx="8.0" fill="#0f172a" stroke="#f59e0b" stroke-width="1.40"/>
+  <text x="340.0" y="376.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.2" font-weight="800" fill="#f59e0b">C6 · Evolutionary Code Search</text>
+  <text x="340.0" y="404.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#10b981">+ Escapes local traps (FunSearch)</text>
+  <text x="340.0" y="430.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#f43f5e">- Wastes evals w/o sub-ms fitness</text>
+  <rect x="40.0" y="468.0" width="278.0" height="104.0" rx="8.0" fill="#0f172a" stroke="#22d3ee" stroke-width="1.40"/>
+  <text x="52.0" y="492.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.2" font-weight="800" fill="#22d3ee">C7 · Causal Do-Calculus / DAG</text>
+  <text x="52.0" y="520.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#10b981">+ Exact P(Y|do(X)) deconfounding</text>
+  <text x="52.0" y="546.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#f43f5e">- Requires typed causal graph input</text>
+  <rect x="328.0" y="468.0" width="278.0" height="104.0" rx="8.0" fill="#0f172a" stroke="#10b981" stroke-width="1.40"/>
+  <text x="340.0" y="492.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.2" font-weight="800" fill="#10b981">C8 · Sub-Symbolic / LUT6 / SSM</text>
+  <text x="340.0" y="520.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#10b981">+ ~12 pJ est_j 4 ns zero-FLOP reflex</text>
+  <text x="340.0" y="546.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#f43f5e">- Bounded combinational page table</text>
+  <rect x="40.0" y="584.0" width="278.0" height="104.0" rx="8.0" fill="#0f172a" stroke="#f43f5e" stroke-width="1.40"/>
+  <text x="52.0" y="608.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.2" font-weight="800" fill="#f43f5e">C9 · Multi-Agent NL Debate</text>
+  <text x="52.0" y="636.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#10b981">+ Diverse hypothesis proposals</text>
+  <text x="52.0" y="662.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#f43f5e">- 3.71x token bloat &amp; 13.3% bad</text>
+  <rect x="328.0" y="584.0" width="278.0" height="104.0" rx="8.0" fill="#0f172a" stroke="#a78bfa" stroke-width="1.40"/>
+  <text x="340.0" y="608.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.2" font-weight="800" fill="#a78bfa">C10 · Embodied Sandbox / Ctrl</text>
+  <text x="340.0" y="636.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#10b981">+ Grounded execution &amp; test oracle</text>
+  <text x="340.0" y="662.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#f43f5e">- Unsafe/slow w/o upstream filter</text>
+  <rect x="634.0" y="82.0" width="540.0" height="636.0" rx="12.0" fill="#111827" stroke="#10b981" stroke-width="1.60"/>
+  <text x="650.0" y="106.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.6" font-weight="800" fill="#10b981">RIGHT · DES-10 ENZYMATIC MIN-COST FLOW &amp; DOWNWARD RATCHET</text>
+  <rect x="650.0" y="124.0" width="434.0" height="82.0" rx="9.0" fill="#0f172a" stroke="#10b981" stroke-width="1.60"/>
+  <text x="664.0" y="147.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.8" font-weight="800" fill="#10b981">TIER 0/1 · O(1) REFLEX &amp; EPISODIC LOOKUP (C8 + C5)</text>
+  <text x="664.0" y="170.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.7" font-weight="400" fill="#e2e8f0">xck26 LUT6 (~12 pJ est_j, 4 ns) + DNULLMM1 mmap (1.77 uJ)</text>
+  <text x="664.0" y="190.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.6" font-weight="400" fill="#cbd5e1">Hit -&gt; Instant verified output (0 FLOPs, 0 LLM calls)</text>
+  <line x1="760.0" y1="206.0" x2="760.0" y2="236.0" stroke="#f59e0b" stroke-width="2.00" marker-end="url(#arr-amber)"/>
+  <rect x="776.0" y="211.0" width="256.0" height="21.0" rx="10.5" fill="#0f172a" stroke="#f59e0b" stroke-width="1.40"/>
+  <text x="904.0" y="225.3" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="700" fill="#f59e0b" text-anchor="middle">Enzyme E_01: Miss V&gt;=theta (&lt;1 mJ)</text>
+  <rect x="650.0" y="238.0" width="434.0" height="82.0" rx="9.0" fill="#0f172a" stroke="#22d3ee" stroke-width="1.60"/>
+  <text x="664.0" y="261.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.8" font-weight="800" fill="#22d3ee">TIER 2 · CAUSAL &amp; SYMBOLIC KERNELS (C7 + C2)</text>
+  <text x="664.0" y="284.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.7" font-weight="400" fill="#e2e8f0">Do-calculus backdoor adjustment + AST/SMT kernels (0.4-16 mJ)</text>
+  <text x="664.0" y="304.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.6" font-weight="400" fill="#cbd5e1">Closes 66.7% (40/60) CTA-E2 tasks deterministically</text>
+  <line x1="760.0" y1="320.0" x2="760.0" y2="350.0" stroke="#f59e0b" stroke-width="2.00" marker-end="url(#arr-amber)"/>
+  <rect x="776.0" y="325.0" width="256.0" height="21.0" rx="10.5" fill="#0f172a" stroke="#f59e0b" stroke-width="1.40"/>
+  <text x="904.0" y="339.3" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="700" fill="#f59e0b" text-anchor="middle">Enzyme E_12: Residual AST+Causal IR</text>
+  <rect x="650.0" y="352.0" width="434.0" height="82.0" rx="9.0" fill="#0f172a" stroke="#f59e0b" stroke-width="1.60"/>
+  <text x="664.0" y="375.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.8" font-weight="800" fill="#f59e0b">TIER 3 · EBM-GATED SEARCH &amp; SYNTHESIS (C3 -&gt; C4/C6/C1)</text>
+  <text x="664.0" y="398.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.7" font-weight="400" fill="#e2e8f0">FormEBM (47 mJ) prunes 2.39x before MCTS / Evo / LLM (~15 J)</text>
+  <text x="664.0" y="418.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.6" font-weight="400" fill="#cbd5e1">Replaces C9 chat avalanche; wakes strictly on V_u &gt;= theta_u</text>
+  <line x1="760.0" y1="434.0" x2="760.0" y2="464.0" stroke="#f59e0b" stroke-width="2.00" marker-end="url(#arr-amber)"/>
+  <rect x="776.0" y="439.0" width="256.0" height="21.0" rx="10.5" fill="#0f172a" stroke="#f59e0b" stroke-width="1.40"/>
+  <text x="904.0" y="453.3" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="700" fill="#f59e0b" text-anchor="middle">Enzyme E_23: BLAKE3+Ed25519 (27 us)</text>
+  <rect x="650.0" y="466.0" width="434.0" height="82.0" rx="9.0" fill="#0f172a" stroke="#a78bfa" stroke-width="1.60"/>
+  <text x="664.0" y="489.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.8" font-weight="800" fill="#a78bfa">TERMINAL GATE · EXACT PROOF &amp; SANDBOX ORACLE (C2 + C10)</text>
+  <text x="664.0" y="512.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.7" font-weight="400" fill="#e2e8f0">Lean/SMT check + diff_verifier_kernel repeat-call sandbox</text>
+  <text x="664.0" y="532.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.6" font-weight="400" fill="#cbd5e1">0.00% false commits (0/60 CTA-E2 · 0/200 Byzantine CTA-E3)</text>
+  <line x1="760.0" y1="548.0" x2="760.0" y2="578.0" stroke="#f59e0b" stroke-width="2.00" marker-end="url(#arr-amber)"/>
+  <rect x="776.0" y="553.0" width="256.0" height="21.0" rx="10.5" fill="#0f172a" stroke="#f59e0b" stroke-width="1.40"/>
+  <text x="904.0" y="567.3" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="700" fill="#f59e0b" text-anchor="middle">Enzyme E_down: Canonical Freeze</text>
+  <rect x="650.0" y="580.0" width="434.0" height="82.0" rx="9.0" fill="#0f172a" stroke="#10b981" stroke-width="1.60"/>
+  <text x="664.0" y="603.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.8" font-weight="800" fill="#10b981">DOWNWARD CRYSTALLIZER · SKILL COMPILER (-&gt; C5 / C2 / C8)</text>
+  <text x="664.0" y="626.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.7" font-weight="400" fill="#e2e8f0">Verified novel trace distilled into Case, Rule &amp; LUT6 page</text>
+  <text x="664.0" y="646.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.6" font-weight="400" fill="#cbd5e1">Amortizes 15 J discovery across all future Zipfian repeats!</text>
+  <path d="M 1084 620 L 1146 620 L 1146 164 L 1088 164" fill="none" stroke="#10b981" stroke-width="2.40" stroke-dasharray="5,3" marker-end="url(#arr-emerald)"/>
+  <text x="1158.0" y="392.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="700" fill="#10b981" text-anchor="middle" transform="rotate(-90.0 1158.0 392.0)">Crystallized Replay Loop (CTA-T23)</text>
+  <text x="650.0" y="696.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#f59e0b">Digital Enzyme E_{a-&gt;b}: Typed IR + BLAKE3 + Ed25519 (&lt;1 mJ, unconsumed)</text>
+</svg>

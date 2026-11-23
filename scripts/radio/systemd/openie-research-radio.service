@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenIE Research Radio — 6h Autonomous Literature Scrape, Pilot & Synthesis Daemon
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/openie-research-radio
+EnvironmentFile=-%h/.config/openie-radio/env
+ExecStart=%h/openie-research-radio/.venv/bin/python %h/openie-research-radio/radio_daemon.py --base-dir %h/openie-research-radio
+Nice=10

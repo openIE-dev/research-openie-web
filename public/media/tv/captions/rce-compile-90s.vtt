@@ -1,0 +1,50 @@
+WEBVTT
+NOTE OpenIE Research TV — rce-compile (90s) AI-synthesized studio narration
+
+1
+00:00:01.309 --> 00:00:06.060
+Checked honestly against twelve production and verified compiler families,
+
+2
+00:00:06.060 --> 00:00:09.976
+no single descriptive rule covers how compilers behave today.
+
+3
+00:00:13.224 --> 00:00:21.047
+Static WebAssembly IR size predicts runtime energy poorly at R-squared 0.1154,
+
+4
+00:00:21.047 --> 00:00:25.961
+whereas Regime-B execution profiling hits 0.9999.
+
+5
+00:00:29.209 --> 00:00:35.138
+This three-dimensional prism traces source lowering through explicit equivalence levels,
+
+6
+00:00:35.138 --> 00:00:38.371
+trusted-base digests, and nameless binary reuse.
+
+7
+00:00:41.619 --> 00:00:46.798
+Every optimization tier from CPython and PyPy to Clang, GCC,
+
+8
+00:00:46.798 --> 00:00:52.063
+and Rustc was checksum-verified on Linux Zen 5 RAPL counters.
+
+9
+00:00:55.310 --> 00:01:02.669
+While aggressive O3 flags often lose energy on short-lived binaries,
+
+10
+00:01:02.669 --> 00:01:09.920
+De Bruijn SHA-256 caching cuts Clang O3 167.8x and Rustc O3 448.5x.
+
+11
+00:01:13.168 --> 00:01:18.743
+Five hundred execution-verified semantic mutants confirm De Bruijn safety,
+
+12
+00:01:18.743 --> 00:01:22.661
+with Zen 5 RAPL figures strictly labeled reported_j.

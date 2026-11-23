@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:01.830 --> 00:00:26.073
+<v Elena>Welcome back to OpenIE Research Radio! Elena, Marcus, and Devon here — AI-synthesized OpenIE research personas walking through verified Open Interface Engineering hardware and systems studies. Today in Episode Six, we descend the entire compute stack: Downward LUT6 Compilation, Metabolic Intelligence MEI-JCP tags, and JouleOS.
+
+2
+00:00:26.268 --> 00:00:45.141
+<v Marcus>Let's start with the economic absurdity we pointed out in Spell Check is Global and The Promised Trillion Dollar AI-Coding Market: imagine if every time you typed 'teh' in a document, Microsoft or Google spun up an eighty-gigabyte datacenter GPU cluster to fix your typo!
+
+3
+00:00:45.416 --> 00:01:03.802
+<v Elena>Spell check used to sell as a standalone multi-hundred-dollar add-on in the early 1980s, and it became universal for seven billion people precisely because its marginal cost dropped to a tiny local dictionary lookup! Why treat recurring code and agent patterns any differently?
+
+4
+00:01:04.077 --> 00:01:25.061
+<v Devon>In Downward LUT6 Compilation, we build that exact downward escalator. At the top tier, when true novelty strikes, custom Apple Metal INT4 Mixture-of-Experts and GatedDeltaNet compute shaders stream Qwen 3.6 35B-A3B directly from NVMe using Darwin F_NOCACHE.
+
+5
+00:01:25.256 --> 00:01:36.409
+<v Marcus>Wait — a thirty-five-billion-parameter model normally demands seventy gigabytes of unified memory in FP16! How much RAM did our streaming tier hold?
+
+6
+00:01:36.684 --> 00:01:57.633
+<v Devon>Nine hundred seventy megabytes — just one point four seven percent of FP16 RAM! It achieved one hundred percent exact token parity, cut NVMe traffic twelve point three times via expert locality, and ran at six point seven seven three joules per token of dual-channel reported_j.
+
+7
+00:01:57.909 --> 00:02:09.503
+<v Elena>Now comes the magic: once a frontier wake passes deterministic pytest verification, we don't pay six point seven seven joules per token the second or third time that pattern arrives!
+
+8
+00:02:09.778 --> 00:02:49.767
+<v Devon>Right! On our forty-eight-task verified coding bakeoff and sixteen-repo SWE-Mini suite, the cascade closed eighty-seven point five percent with zero broken commits, invoking the thirty-five-B tier on only twenty-two point nine two percent of arrivals. By Wave 3 replay, certified wakes ran in two point eight nine milliseconds at zero point zero four two four joules reported_j — and compile further downward into eighty-one RAMB36E2 Beneš-routed six-input LUT fabrics verified in Yosys and Verilator for Xilinx Kria xck26 silicon!
+
+9
+00:02:49.962 --> 00:03:02.631
+<v Marcus>Zero multiply-accumulates — pure Boolean truth-table routing! Now take us even smaller, down to a coin-cell battery at minus twenty degrees Celsius in Metabolic Intelligence!
+
+10
+00:03:02.906 --> 00:03:39.133
+<v Devon>In the MEI white paper, we released MEI-JCP-Tag-v1: a complete sovereign hardware manufacturing package — KiCad schematics, RS-274X Gerbers with zero DRC violations, bill of materials, and a thirty-six by twenty-eight by seven-point-five millimeter STEP enclosure. The two-layer thirty-two by twenty-four millimeter board pairs an STM32WBA52 microcontroller with a physical Texas Instruments INA238 shunt monitor and FRAM.
+
+11
+00:03:39.328 --> 00:03:48.130
+<v Marcus>And quick honesty check for the listeners: have we claimed physical bench-metered joules off a fabbed MEI-JCP tag board yet?
+
+12
+00:03:48.405 --> 00:04:15.582
+<v Devon>Explicitly no! Board_metered is false and measured_j is unset until fabbed boards come back from assembly and sit on an inline meter. What IS verified today is our ten-thousand-wakeup CR2032 electro-thermal hold-and-settle simulation preserving one hundred percent of critical alerts at minus twenty Celsius across two thousand six hundred eighty Ed25519 canonical CBOR JCR-1 receipts.
+
+13
+00:04:15.857 --> 00:04:23.213
+<v Elena>And tying the tag, the SATB telemetry engine, and desktop sandboxes together is The Search for JouleOS!
+
+14
+00:04:23.488 --> 00:04:48.799
+<v Devon>Today's operating systems were built in the 1970s to multiplex time and memory — none of them checks an energy grant before an autonomous agent acts! Our verified Rust reference spine passes three hundred ten workspace tests and checks seventy-eight thousand four hundred provenance pairs to prove meet-semilattice laws bridging JCR-1 receipts, SATB Falsifier 6 drift gates, and stage accounting.
+
+15
+00:04:48.994 --> 00:05:04.378
+<v Marcus>An operating system that schedules, budgets, and refuses runaway agents before they torch the battery or the power grid! Speaking of physics limits, wait until you hear Episode Seven: closed timelike curves and looking up tomorrow!
+
+16
+00:05:04.653 --> 00:05:08.359
+<v Elena>Episode Seven — Time as an Index — starts right after this!

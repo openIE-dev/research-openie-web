@@ -44,17 +44,17 @@ complete: true
 <li>RCE, WCA, VC, SWE: Reality Code Engine [same house]，Wise Computer Automation [same house]，已验证完成，和 software-engineering benchmark 前缀</li>
 <li>CLI、HTTP、GET、POST、SSE、API、MCP、RPC、IDE、SDK、CORS、ACL、ICML、ICLR、EMNLP、NAACL、CVPR、ICPE、ISSCC、JSAC、JASA、ACM、OS、CPU、GPU、SW、TDP：命令行界面、超文本传输协议及其 GET/POST 请求方法、服务器发送事件、应用程序编程接口、模型上下文协议、远程过程调用（JSON-RPC 2.0）、集成开发环境、软件开发工具包、跨源资源共享、学术计算机科学/工程会议、操作系统、中央/图形处理器、软件和热设计功耗</li>
 <li>VLAN、IEEE、TLS、DPI、AST、JSON、CSV、SHA、CRC、ATM、RFC、SQL、DWARF、SLEB、CAM、XNOR、JWT、HMAC、DAG、CIDR、LRU、TTL、WAL、ETL：虚拟局域网（IEEE 802.1Q）、传输层安全、深度包检测、抽象语法树、JavaScript 对象表示法、逗号分隔值、安全哈希算法、循环冗余校验、异步传输模式（CRC-8/ATM）、请求评议、结构化查询语言、DWARF 有符号小端基数 128 编码、内容可寻址存储器、异或非、JSON Web 令牌、基于哈希的消息认证码、有向无环图、无类别域间路由、最久未使用缓存、存活时间过期、预写日志和抽取-转换-加载流水线</li>
-<li>JTAG, XSDB, DAP, USB, FTDI, FT2232C, UART, FIFO, IC, EDA, OOC, AMBA, AXI4, IOB, IBUF, OBUF, FDRE, FDSE, LUT1, LUT2, LUT3, LUT4, LUT5, MUXF7, MUXF8, CARRY4, DSP48E2, URAM288, AMD: Joint Test Action Group 调试端口，Xilinx 软件命令行工具调试器，调试访问端口，通用串行总线，Future Technology Devices International 及其 FT2232C 双 UART/FIFO 桥接 IC，通用异步收发器，先进先出缓冲区，集成电路，电子设计自动化，场景外综合模式，Advanced Microcontroller Bus Architecture，AXI4-Lite/AXI4-Stream 互连，输入/输出块，输入/输出缓冲器，同步复位/置位 D 触发器，1 到 5 输入 UltraScale+ 查找表，7/8 输入 UltraScale+ 多路复用器，4 位快速进位链，UltraScale+ DSP 切片，288 Kbit UltraRAM，和 Advanced Micro Devices</li>
+<li>JTAG、XSDB、DAP、USB、FTDI、FT2232C、UART、FIFO、IC、EDA、OOC、AMBA、AXI4、IOB、IBUF、OBUF、FDRE、FDSE、LUT1、LUT2、LUT3、LUT4、LUT5、MUXF7、MUXF8、CARRY4、CARRY8、DSP48E2、URAM288、VCCINT、DS925、VCD、SDP、CE、XPE、CLAI、AMD：Joint Test Action Group 调试端口、Xilinx 软件命令行工具调试器、调试访问端口、通用串行总线、Future Technology Devices International 及其 FT2232C 双 UART/FIFO 桥接 IC、通用异步收发器、先进先出缓冲区、集成电路、电子设计自动化、超上下文合成模式、Advanced Microcontroller Bus Architecture、AXI4-Lite/AXI4-Stream 互连、输入/输出块、输入/输出缓冲器、同步复位/置位 D 触发器、UltraScale+ 1 至 5 输入查找表、UltraScale+ 7/8 输入多路复用器、4/8 位快速进位链、UltraScale+ DSP 切片、288 Kbit UltraRAM、内部核心供电轨（-2LV 上 0.72 V）、AMD Zynq UltraScale+ DC 与 AC 开关特性数据手册 DS925、值变化转储波形追踪、简单双端口块 RAM 模式、同步时钟使能、Xilinx 功耗估算器、子系统寄存器魔术标识符（“CLAI”），以及 Advanced Micro Devices。</li>
 </ul>
 
-四类证据在下文每一张表格中保持分离:
+四个证据类别在下表中保持独立：
 
 | 证据标签 | 本研究中的含义 |
 | :--- | :--- |
-| **`Measured (SW / NVMe I/O / OS PMU)`** | 通过 Darwin `F_NOCACHE` 下的 `os.pread` 读取或写入的精确字节数、常驻内存分配、挂钟秒数、Apple M5 Max 上全机 macOS `PMU`（`AppleSmartBattery.PowerTelemetryData`）的累计能量增量，以及精确的比特与词元一致性。`measured_j` 未设置（`None`）。 |
-| **`Reported (OS / On-Chip Counter, reported_j)`** | 无特权的操作系统与片上遥测计数器：在 Apple M5 Max 上（`joule_meter.py`），为双通道 `libIOReport.dylib` 的 "Energy Model" 与 'GPU Energy'（`L2`，纳秒分辨率的 `nJ`），以及 `proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj`（`L3`，每进程 CPU `nJ`）；在下文 `xck26` EDA 综合审计所用的 `x86-64` Linux 上，为 `RAPL` `package-0` 的焦耳值。二者从不与 `measured_j`（`None`）合并。 |
-| **`Simulated (RTL)`** | Yosys `0.71+` 的结构化网表计数（以 `synth_xilinx -family xcup` 面向 Kria KV260 `xck26`），以及 Verilator `5.054` 的周期计数（`CPI = 1`）。不是 Vivado 时序收敛结果，也不是板级功耗（`board_metered = false`）。 |
-| **`Estimated (est_j)`** | 由操作计数或热设计功耗时间代理量（`joule_meter.py`）计算得到的解析焦耳值。仅可在同一公式内的各组之间比较;绝不代表硅片瓦数。 |
+| **`Measured (SW / NVMe I/O / OS PMU)`** | 通过 Darwin `F_NOCACHE` 下的 `os.pread` 读取或写入的精确字节数、常驻内存分配、壁钟秒数、整机 macOS `PMU`（`AppleSmartBattery.PowerTelemetryData`）累计能量增量（Apple M5 Max）以及精确的比特/标记一致性。`measured_j` 为未设置 (`None`)。 |
+| **`Reported (OS / On-Chip Counter, reported_j)`** | 非特权操作系统和片上遥测计数器：在 Apple M5 Max 上（`joule_meter.py`），双通道 `libIOReport.dylib` “Energy Model” `'GPU Energy'`（`L2` 纳秒分辨率 `nJ`）以及 `proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj`（`L3` 每进程 CPU `nJ`）；在 `x86-64` Linux（下文 `xck26` EDA 综合审计中），`RAPL` `package-0` 焦耳。永不与 `measured_j` 合并 (`None`)。 |
+| **`Simulated (RTL)`** | 来自 Yosys `0.71+`（`synth_xilinx -family xcup` 针对 Kria KV260 `xck26`）的结构网表计数以及 Verilator `5.054` 的周期计数（`CPI = 1`）。不涉及 Vivado 时序闭合，也不涉及板级功耗（`board_metered = false`）。 |
+| **`Estimated (est_j)`** | 基于操作计数、热设计功率时间替代值（`joule_meter.py`）或 Verilator VCD 切换率活动与 AMD `DS925` `xck26-2LV`（`0.72 V`）逻辑及 `RAMB36E2` 电容上限（§4.16）配对计算的分析焦耳。仅在同一公式的不同臂之间可比；不表示硅片功率。 |
 
 <div id="11-architectural-background-and-contributions" class="anchor-alias" aria-hidden="true"></div>
 
@@ -383,7 +383,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 <div id="415-xck26-sfvc784-2lv-c-full-subsystem-primitive-breakdown-topological-depth-and-vivado-20261-hardware-probe" class="anchor-alias" aria-hidden="true"></div>
 
-### 4.15 `xck26-sfvc784-2LV-c` 全子系统原语分解、拓扑深度与 `Vivado 2026.1` 硬件探测
+### 4.15 `xck26-sfvc784-2LV-c` 全子系统原语拆解、拓扑深度与 `Vivado 2026.1` 硬件探测
 
 为审计独立的 `512` 页推测核心（`hw/kv260/rtl/clai_benes_hotswap_core.sv` 中的 `clai_benes_paged_hotswap_core`）以及完整的 Advanced Microcontroller Bus Architecture (`AMBA`) `AXI4-Lite` + `AXI4-Stream` Rung-0 子系统（`hw/kv260/rtl/clai_kv260_axi_top.sv`、`clai_engram_streamer.sv`、`clai_rung0_hotswap_core.sv` 以及 `artifacts/clai_rung0_kv260.v`，提交 `a5e9bc1de280`，在 `af152ba` 中未更改），针对精确的 AMD Kria KV260 器件（`xck26-sfvc784-2LV-c`：`117,120` 个 CLB LUT、`234,240` 个 CLB 触发器、`144` 个 `RAMB36E2` 块、`64` 个 288-Kbit UltraRAM (`URAM288`) 块、`1,248` 个 UltraScale+ 数字信号处理 (`DSP48E2`) 片以及 `189` 个用户输入/输出块 (`IOB`)），在 `Intel Core i9-13900H` (`Linux 7.0.0-43-generic x86-64`) 工作站上执行了三项硬件和电子设计自动化 (`EDA`) 检查：
 
@@ -396,9 +396,33 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`clai_benes_paged_hotswap_core`**（`512` 页） | **`41,185`**（`35.17%`） | `19,982 LUT3`、`7,804 LUT6`、`7,714 LUT5`、`36 MUXF7`、`18 MUXF8` | **`36,464`**（`15.57%`） | **`81`**（`56.25%`） | **`0`** | `1,599`（`OOC` / 内部总线） | **`81` 层** | `7,297.3 J`（`144.8 s`） |
 | **`clai_kv260_axi_top`**（`AXI4` Rung-0 子系统） | **`67,366`**（`57.52%`） | `25,557 LUT6`、`25,333 LUT5`、`7,918 LUT3`、`569 CARRY4` | **`16,619`**（`7.09%`） | **`4`**（`2.78%`） | **`0`** | `126`（`<= 189` `IOB`；`PS-PL`） | **`73` 层** | `10,089.4 J`（`214.8 s`） |
 
-出现的两个具体物理设计约束来自 `xcup` 基元和 `ltp` 审计：
-- **引脚预算限制（`OOC` 与 `PS-PL` `AXI` 包装器）**：因为 `clai_benes_paged_hotswap_core` 暴露原始的 `512` 位 `CodeBitBus` 与宽影子配置向量（`1,379` 输入缓冲（`IBUF`）+ `220` 输出缓冲（`OBUF`）= `1,599` 端口，而 `xck26-sfvc784-2LV-c` 包装只有 `189` 个 `IOB`），单独的厂商实现必须在 `synth_design -mode out_of_context` 下运行，或在 `AXI4-Stream` / `zynq_ultra_ps_e` 包装器（如 `clai_kv260_axi_top`，`126` 端口，`57.52%` LUT 利用率）内部使用。
-- **无流水线的组合深度（`81` 与 `73` 层）相对于 `250 MHz`（`4.000 ns`）`-2LV` 闭合**：虽然 Verilator `5.054` 验证循环精确的 `CPI = 1.0`（每时钟周期一次查表），遍历 `17` 个 `Beneš-1` 阶段 + `9` 个前缀复制阶段 + `17` 个 `Beneš-2` 阶段 + 动态 `LUT6` 真值表多路复用 + `5`-投票多数归约在单个组合周期内跨 **`81` 原语层**（在 `clai_kv260_axi_top` 中，`64` 输入的流行计数与 `8` 类比较器的组合为 **`73` 层**）。在低电压（`0.72 V`）`-2LV` 硅上实现 `250 MHz`（`4.000 ns`）后布局布线闭合因此倾向于在 $\mathcal{B}_1 \to \mathcal{C} \to \mathcal{B}_2$ 之间插入 `2` 到 `3` 级流水线寄存器（以及在 `64` 线流行计数树与顶部 `2` 比较器之间插入 `1` 级寄存器），以在 `3`-`4` 周期的流水线延迟下保持 `CPI = 1.0` 吞吐量（每时钟一次上下文）。
+- **引脚预算限制（`OOC` 与 `PS-PL` `AXI` 包装器）**：由于 `clai_benes_paged_hotswap_core` 暴露了原始的 `512` 位 `CodeBitBus` 以及宽的影子配置向量（`1,379` 个输入缓冲器（`IBUF`）+ `220` 个输出缓冲器（`OBUF`）= `1,599` 个端口，而 `xck26-sfvc784-2LV-c` 上仅有 `189` 个封装 `IOB`），独立供应商实现必须以 `synth_design -mode out_of_context` 运行，或置于 `AXI4-Stream` / `zynq_ultra_ps_e` 包装器（如 `clai_kv260_axi_top`（`126` 个端口，`57.52%` LUT 利用率））内部。
+- **非流水线组合深度（`81` 和 `73` 级）与 `250 MHz`（`4.000 ns`）`-2LV` 收敛**：虽然 Verilator `5.054` 验证了周期精确的 `CPI = 1.0`（每个时钟周期 `1` 次查找），但在单个组合周期内遍历 `17` 个 `Beneš-1` 级 + `9` 个前缀复制级 + `17` 个 `Beneš-2` 级 + 动态 `LUT6` 真值表多路复用 + `5` 投票多数归约跨越了 **`81` 个基元级**（在 `clai_kv260_axi_top` 的组合 `64` 输入 popcount 和 `8` 类裕度比较器中，每个分层模块 `73` 级）。因此，在低电压（`0.72 V`）`-2LV` 硅片上实现 `250 MHz`（`4.000 ns`）布局布线后收敛倾向于在 $\mathcal{B}_1 \to \mathcal{C} \to \mathcal{B}_2$ 之间插入流水线寄存器级，并压缩 `64` 线 popcount 归约，该过程在 §4.16 中进行了解析量化。
+
+<div id="416-gate-level-xcup-primitive--verilator-vcd-switching-activity-datasheet-audit-est_j" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.16 Gate-Level `xcup` Primitive 与 `Verilator` `VCD` 切换活动数据表审计 (`est_j`)
+
+由于 AMD `Vivado 2026.1` 因缺少 `.lic` 文件而被阻止，且未连接 `0` 块物理 `xck26` 开发板（§4.15），通过预先注册的 `Verilator 5.054` `--trace` 波形和 `Yosys 0.71+` 扁平化 `synth_xilinx -family xcup` 审计（`PREREG_xck26_vcd.json`，SHA-256 `c64505d177515c47…`）从 `openIE-dev/lut-adapt-ai`（`af152ba`）在四个运行阶段（`idle_quiescent`、`steady_lut6_eval_2048_cycles`、`single_cycle_page_switch_512_burst` 和 `shadow_page_stream_write`）提取了每周期的信号跃迁，未出现 `0` 次协同仿真错误，覆盖了 `3,072` 次分页查找以及所有 `AXI4-Lite`/`AXI4-Stream` 包突发。 本节中的所有功耗和能量数值均为严格的分析动态切换估算（**`est_j` / `est_pJ/cycle` / `est_mW`**，**`measured_j = None`**，**`reported_j = None`**，**`board_metered = false`**），不包括静态硅泄漏，也不替代已布线后 `Vivado report_power` 或 KV260 `INA260` 轨道读取。
+
+扁平化 `xcup` 综合将 `clai_benes_paged_hotswap_core`（`512` 页）映射为 **`41,623` CLB LUT**（`35.54%` 的 `xck26`，相较 §4.15 的 `41,185` 层次式；`19,982 LUT3`、`7,853 LUT6`、`7,738 LUT5`、`3,380 LUT4`、`2,670 LUT2`、`36 MUXF7`、`18 MUXF8`），`36,464` `FDRE`（`15.57%`），以及 `81` `RAMB36E2`（`56.25%`），涉及 `27,157` 条唯一 `VCD` 网络（`90,124` 内部比特：`64,218` 组合，`20,767` 时序），并将 `clai_kv260_axi_top` 映射为 **`66,881` CLB LUT**（`57.10%` 的 `xck26`，相较 §4.15 的 `67,366` 层次式；`25,402 LUT6`、`25,313 LUT5`、`7,909 LUT3`、`5,303 LUT4`、`2,879 LUT2`、`75 LUT1`、`569 CARRY4` $\equiv$ `285 CARRY8`），`16,619` `FDRE`/`FDSE`（`7.09%`），以及 `4` `RAMB36E2`（`2.78%`），涉及 `3,825` 条唯一 `VCD` 网络（`128,486` 内部比特：`108,582` 组合，`19,901` 时序）。 在 `VCCINT = 0.72 V`（`xck26-sfvc784-2LV-c`，`250.0 MHz`，AMD DS925 / XPE 16 nm FinFET 边界 `[low, nom, high]`）下的动态切换能量模型将切换逻辑 + 本地互连节点的电容设为 $C_{\text{node}} = [2.6, 4.5, 7.2]\text{ fF}$（$\frac{1}{2} C V^2 = [0.674, 1.166, 1.866]\text{ fJ/transition}$），并按 Beneš 核心中每个 `VCD` 组合比特对应 `2.02` 个 `xcup` 原语加权；`FDRE`/`FDSE` 时钟叶脚引脚电容为 `[1.5, 2.2, 3.0] fF`（每周期 `2` 边沿 = `1.141 fJ/FF/cycle` 额定），`Q` 迁移电容为 `[3.5, 5.5, 8.0] fF`；`RAMB36E2`（`SDP` `64b`/`72b`）在变址读取时每次耗能 `[2.90, 3.80, 4.80] pJ`，在常址使能周期（`ENARDEN = 1`，$\alpha_{\text{addr}} = 0$）每次耗能 `[1.90, 2.47, 3.12] pJ`，写入时每次耗能 `[3.30, 4.30, 5.40] pJ`，禁用时（`EN = 0`）每周期耗能 `[0.04, 0.08, 0.14] pJ`。
+
+| 目标模块与 `VCD` 工作负载（`250 MHz`，`0.72 V`） | 周期数 | 组合逻辑翻转 / 周期（$\alpha_{\text{comb}}$） | 时序逻辑翻转 / 周期（$\alpha_{\text{seq}}$） | `RAMB36E2` 占空比（`Rd` / `Wr`） | 动态 `est_pJ / cycle` | 动态 `est_mW`（`[low, high]`） |
+| :--- | ---: | ---: | ---: | :---: | ---: | ---: |
+| **`clai_benes_paged_hotswap_core`** · `idle_quiescent` | `256` | `0.00`（`0.0000`） | `0.00`（`0.0000`） | `100.0%` 常地址 / `0%` | **`241.66`**（`53.74` CE 门控） | **`60.41`**（`[47.25, 76.21]`；`13.43` CE 门控） |
+| **`clai_benes_paged_hotswap_core`** · `steady_lut6_eval_2048_cycles` | `2,048` | `5,010.21`（`0.0780`） | `90.97`（`0.0044`） | `100.0%` 活跃 / `0%` | **`361.68`** | **`90.42`**（`[69.29, 116.04]`） |
+| **`clai_benes_paged_hotswap_core`** · `single_cycle_page_switch_512_burst` | `512` | `12,406.84`（`0.1932`） | `269.46`（`0.0130`） | `100.0%` 活跃 / `0%` | **`380.07`** | **`95.02`**（`[72.58, 122.60]`） |
+| **`clai_benes_paged_hotswap_core`** · `shadow_page_stream_write` | `512` | `1,987.31`（`0.0310`） | `74.47`（`0.0036`） | `100.0%` 读 / `1.23%` 写（`1/81`） | **`358.86`** | **`89.72`**（`[68.82, 114.89]`） |
+| **`clai_kv260_axi_top`** · `idle_quiescent` | `256` | `0.00`（`0.0000`） | `0.00`（`0.0000`） | `0.0%`（`EN = 0`）/ `0%` | **`19.55`** | **`4.89`**（`[3.26, 6.66]`） |
+| **`clai_kv260_axi_top`** · `steady_lut6_eval_2048_cycles` | `2,048` | `120.31`（`0.0011`） | `15.27`（`0.0008`） | `3.12%` 读 / `0%` | **`20.40`** | **`5.10`**（`[5.04, 5.18]`） |
+| **`clai_kv260_axi_top`** · `single_cycle_page_switch_512_burst` | `512` | `325.21`（`0.0030`） | `25.56`（`0.0013`） | `11.13%` 读 / `0%` | **`22.07`** | **`5.52`**（`[5.34, 5.75]`） |
+| **`clai_kv260_axi_top`** · `shadow_page_stream_write` | `512` | `31.95`（`0.0003`） | `71.92`（`0.0036`） | `0.0%` 读 / `8.20%` 写 | **`21.80`** | **`5.45`**（`[5.30, 5.64]`） |
+
+基于 `VCD` 活动分解与 `DS925` 延迟模型，可直接得出以下三项硬件设计结论：
+
+1. **无条件 `RAMB36E2` `ENARDEN` 空闲预充电（静态核心功耗的 `82.8%`）与 `4.50×` 的 `CE` 门控降幅**：虽然 `clai_benes_paged_hotswap_core` 在空闲时数据翻转率为 `0.00` 次/周期，但 `clai_uram_lut6_page_cache` 将全部 `81` 个 `RAMB36E2` 模块的 `ENARDEN` 持续绑定为 `1'b1`，导致位线预充电消耗 `200.07 est_pJ/cycle`（`50.02 est_mW`），同时 `FDRE` 时钟叶节点消耗 `41.59 est_pJ/cycle`（`10.40 est_mW`），静态合计为 **`60.41 est_mW`**。相比之下，`clai_kv260_axi_top` 中的 `clai_engram_streamer` 以 `accept_byte && s_axis_tlast` 对其 `4` 个 `RAMB36E2` 模块进行门控，空闲时功耗为 **`4.89 est_mW`**（`19.55 est_pJ/cycle`）；在持续进行 `31` 字节 `AXI4-Stream` 数据包推理时（`core_bus_reg` 每个数据包锁存一次，$\alpha_{\text{comb}} = 0.0011$），功耗为 **`5.10 est_mW`**。将 `clai_uram_lut6_page_cache` 的 `ENARDEN` 与 `bus_valid` 进行门控，可使分页核心的静态动态功耗降低 **`4.50×`**，降至 **`13.43 est_mW`**（`53.74 est_pJ/cycle`），且不引入任何延迟代价。
+2. **Beneš 组合翻转放大（`2.48×`）与以 `RAMB36E2` 为主的有功功耗（`+5.1%`）对比**：在连续时钟周期内对全部 `512` 个槽位切换 `page_id`（`single_cycle_page_switch_512_burst`），会使 `81 × 64 = 5,184` 条 `LUT6` `INIT` 位线同时驱动选择器树，组合翻转由 `5,010.2` 次/周期升至 `12,406.8` 次/周期（即 `2.48×`，功耗由 `11.80` 增至 `29.22 est_pJ/cycle`）。然而，分页核心的动态总功耗仅增加 `+4.60 est_mW`（由 `90.42` 增至 `95.02 est_mW`，`+5.1%`）。原因在于 `81` 个 `RAMB36E2` 的灵敏放大器读出（`307.80 est_pJ/cycle`）在有功动态能量中占比为 `85.1%`-`80.9%`（并发执行 `shadow_page_stream_write` 时，有功动态能量为 `358.86 est_pJ/cycle`，功耗为 `89.72 est_mW`）。
+3. **展平关键路径审计（`81` 与 `162` 级 `ltp`）及 `DS925` `-2LV` 解析级延迟预算**：依据 `AMD DS925`（`xck26-2LV`，`0.72 V`）的原语延迟（`T_ILO = 0.068 ns`，`T_CKO = 0.148 ns`；未流水化的 `RAMB36E2` `T_RCKO_DO = 1.390 ns`，对比 `DOA_REG = 1` 时的 `0.610 ns`；另加 `[0.140, 0.220] ns/level` 的互连延迟预算），未流水化的 `81` 级 `clai_benes_paged_hotswap_core` 路径延迟为 **`18.76-24.83 est_ns`**，对应解析估计的 `est_Fmax` 为 `40.3-53.3 MHz`。若跨模块边界展平 `clai_kv260_axi_top`（在 `-flatten` 之后执行 `ltp -noff`），则与第 4.15 节中各层级模块的 `73` 级相比，会暴露出一条 **`162` 级**路径（**`34.77-46.92 est_ns`**，`21.3-28.8 MHz`）。该路径从 `core_bus_reg` 经过 `clai_rung0_core`（`artifacts/clai_rung0_kv260.v`），并穿过其展开的 `64` 步串行 `pop_acc` 加法器链。若启用 `RAMB36E2` 的 `DOA_REG = 1`，插入 `4`-`5` 级流水线寄存器切分（每级 `<= 18` 个逻辑级），并将串行的 `64` 输入人口计数(popcount)循环替换为 `6` 级 `LUT6`/Wallace 压缩器，则每级解析延迟可降至 **`3.7 est_ns` 以下（在 `250 MHz` 下 `<= 4.000 ns`）**，CPI 为 `1.0`（此为解析结果，非 Vivado 布局布线后时序收敛结论）。
 
 ---
 
@@ -427,7 +451,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 **内部效度与构念效度。** 在均匀随机噪声或逐步对抗性扰动（$\Delta T = 1$）下，命题 1 给出的向下编译节省为零，并退化为 `1.00 tok/sweep`。无损一致性（`100.0%`）保证了与贪心目标解码逐位一致，但并不能提升 `350M` 或 `0.8B` 基础检查点的能力上限。
 
-**测量有效性未声明。** 分析焦耳数 (`est_j/VC`、`est_j/tok`、`est_mJ/Byte`)、操作系统/芯片内计数器读取 (`reported_j` 来自 Apple Silicon `L2` `libIOReport` `'GPU Energy'` + `L3` `proc_pid_rusage` `ri_energy_nj`，以及文档于 `Claim LA-11` 中的 `> 450 W` 窄寄存器回绕过滤器)，以及整机 macOS `PMU` 累计增量均严格与物理轨道测量 (`measured_j = None`) 分离。Yosys `0.71+` 与 Verilator `5.054` 实现结构化 `xck26` 网表合成和 `CPI = 1` 周期仿真，而非 Vivado 后 PAR `250 MHz` 时序闭合，也不涉及物理 KV260 轨道瓦特 (`board_metered = false`)。硅能耗领先、将 `ModelGenerated` 输出提升为 `Deterministic`、超出 `48` 任务合同基准 (`Claim LA-11`) 的 `500` 任务 `SWE-bench Verified` 容器评估，以及超出 `16` 任务多文件 git 仓库 `SWE-Mini` `pytest` 基准 (`Claim LA-13`) 的评估，和测得的 `70B` 运行 (`air_mol_nvme_baselines.csv` 报告的分析 `70B` 投影超出测量的 `34.66B` `Qwen3.6-35B-A3B` 运行) 均未声明。
+**测量有效性且未声明。** 分析焦耳数和开关功率数值（`est_j/VC`、`est_j/tok`、`est_mJ/Byte`，以及 §4.16 中 `Verilator` `VCD` + `AMD DS925` `0.72 V` 的 `est_pJ/cycle` 和 `est_mW` 界限），操作系统/片上计数器读数（来自 Apple Silicon `L2` `libIOReport` `'GPU Energy'` + `L3` `proc_pid_rusage` `ri_energy_nj`，以及 `Claim LA-11` 中记载的 `> 450 W` 窄寄存器翻转过滤器），以及整机 macOS `PMU` 累积增量，均与物理轨道测量（`measured_j = None`）严格分开。Yosys `0.71+` 和 Verilator `5.054` 确立了结构 `xck26` 网表综合、`CPI = 1` 周期仿真，以及 `VCD` 翻转率动态开关 `est_mW`（不含静态泄漏），而非 Vivado 后布局布线 `250 MHz` 时序收敛，也非物理 KV260 轨道瓦数（`board_metered = false`）。硅能效领先地位、将 `ModelGenerated` 输出提升为 `Deterministic`、超出 `48` 任务合同基准的完整 `500` 任务 `SWE-bench Verified` 容器评估（`Claim LA-11`）和 `16` 任务多文件 git 仓库 `SWE-Mini` `pytest` 基准（`Claim LA-13`），以及测量的 `70B` 运行（`air_mol_nvme_baselines.csv` 报告了超出测量的 `34.66B` `Qwen3.6-35B-A3B` 运行的分析 `70B` 投影），均未声明。
 
 | 编号 | 主张 | 精确反驳 / 证伪条件 |
 | :--- | :--- | :--- |

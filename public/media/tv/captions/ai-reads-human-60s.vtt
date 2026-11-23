@@ -1,0 +1,38 @@
+WEBVTT
+NOTE OpenIE Research TV — ai-reads-human (60s) AI-synthesized studio narration
+
+1
+00:00:00.405 --> 00:00:04.243
+JSON, YAML, and Markdown evolved so humans could
+
+2
+00:00:04.243 --> 00:00:09.440
+inspect files in text editors—not for billion-record agent loops.
+
+3
+00:00:10.157 --> 00:00:14.733
+Before a transformer even runs one matrix multiply,
+
+4
+00:00:14.733 --> 00:00:21.821
+cl100k_base JSON tokenization burns 12.5 times more energy than C JSON parsing.
+
+5
+00:00:22.538 --> 00:00:25.777
+Across 20,000 structured records,
+
+6
+00:00:25.777 --> 00:00:34.318
+per-process L3 reported_j spans 2,053.8x from fixed binary structs to pure-Python YAML.
+
+7
+00:00:35.035 --> 00:00:40.129
+Human formats also smuggle silent parsing bugs—from YAML's Norway
+
+8
+00:00:40.129 --> 00:00:44.987
+boolean trap to IEEE float truncation and duplicate JSON keys.
+
+9
+00:00:45.704 --> 00:00:55.168
+Falsifier 6 automatically flags noisy whole-SoC L2 windows while preserving clean per-process L3 reported_j receipts.

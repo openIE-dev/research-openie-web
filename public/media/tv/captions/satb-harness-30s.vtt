@@ -1,0 +1,34 @@
+WEBVTT
+NOTE OpenIE Research TV — satb-harness (30s) AI-synthesized studio narration
+
+1
+00:00:00.300 --> 00:00:04.059
+Popular cloud tools split server power by CPU percentage—erring by
+
+2
+00:00:04.059 --> 00:00:06.736
+33 to 90 percent when GPUs or short bursts run.
+
+3
+00:00:07.216 --> 00:00:11.306
+The Satiation Benchmark reference harness enforces deterministic truncation,
+
+4
+00:00:11.306 --> 00:00:14.266
+a loopback proxy, and twelve strict conformance checks.
+
+5
+00:00:14.746 --> 00:00:19.492
+Across Apple Silicon, Jetson AGX Thor physical I N A shunts, AMD Zen 5,
+
+6
+00:00:19.492 --> 00:00:23.904
+Intel Raptor Lake, and Windows 11 N V M L, replay hits zero diffs.
+
+7
+00:00:24.384 --> 00:00:27.074
+When shared-host background noise exceeds tolerance,
+
+8
+00:00:27.074 --> 00:00:30.488
+Falsifier 6 withholds net claims while preserving raw sensor logs.

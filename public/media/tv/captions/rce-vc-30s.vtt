@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Research TV — rce-vc (30s) AI-synthesized studio narration
+
+1
+00:00:00.300 --> 00:00:03.910
+When ten coding agents edit different functions in the same file,
+
+2
+00:00:03.910 --> 00:00:06.631
+line-based Git branches stall in merge conflicts.
+
+3
+00:00:07.111 --> 00:00:14.605
+RCE-VC addresses semantic units by content rather than file lines: non-overlapping changes need zero coordination.
+
+4
+00:00:15.085 --> 00:00:18.591
+One Apple M5 Max core admits a submission
+
+5
+00:00:18.591 --> 00:00:23.893
+against 100,000 units in 69.7 microseconds at 317 microjoules.
+
+6
+00:00:24.373 --> 00:00:30.437
+Developers keep familiar Git commands while the repository enforces atomic admission and written refusal reasons.

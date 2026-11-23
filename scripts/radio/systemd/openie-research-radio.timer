@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenIE Research Radio — 6-Hour Autonomous Wakeup Timer
+
+[Timer]
+OnCalendar=00/6:15:00
+RandomizedDelaySec=120
+Persistent=true
+Unit=openie-research-radio.service
+
+[Install]
+WantedBy=timers.target

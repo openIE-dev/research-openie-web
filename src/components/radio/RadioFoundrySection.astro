@@ -1,0 +1,131 @@
+---
+interface Props {
+  foundry: any;
+}
+
+const { foundry } = Astro.props;
+const topics = foundry.topics || [];
+const counts = foundry.counts_by_status || {};
+---
+
+<section id="foundry" class="max-w-7xl mx-auto px-5 md:px-10 py-10 border-t border-brand-border">
+  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
+    <div>
+      <div class="section-label mb-1.5">Stage 3 &amp; 4 · Hypothesis Synthesis &amp; Sub-60s Falsifier Arena</div>
+      <h2 class="font-display text-2xl sm:text-3xl font-bold text-brand-white">
+        Autonomous Topic Idea Foundry &amp; &lt;60s Pilot Loop
+      </h2>
+      <p class="font-body text-xs sm:text-sm text-brand-slate mt-1.5 max-w-3xl">
+        Every candidate topic synthesized from live literature gaps must pre-declare a zero-parameter <code class="font-mono text-brand-cyan">Shape D</code> null baseline and a hard kill criterion, then survive a real deterministic pilot run under 60 seconds before advancing.
+      </p>
+    </div>
+    <div class="font-mono text-[11px] text-brand-gray shrink-0">
+      Suite runtime: <strong class="text-brand-cyan">{foundry.total_pilot_wall_sec}s</strong> / {foundry.pilot_budget_limit_sec}s cap
+    </div>
+  </div>
+
+  <!-- 6-Hour Autonomous Pipeline Telemetry Banner -->
+  <div class="glass-card p-4 sm:p-5 mb-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="p-3 rounded-lg bg-white/[0.02] border border-brand-border">
+        <div class="font-mono text-[10px] text-brand-cyan uppercase">Stage 1 · 6h Global Scrape</div>
+        <div class="font-display text-sm font-bold text-brand-white mt-1">5 Sanctioned Open APIs</div>
+        <div class="font-mono text-[10px] text-brand-gray mt-1">arXiv · Europe PMC · OpenAlex · bioRxiv · ClinicalTrials.gov</div>
+      </div>
+      <div class="p-3 rounded-lg bg-white/[0.02] border border-brand-border">
+        <div class="font-mono text-[10px] text-brand-amber uppercase">Stage 2 · Epistemic Cross-Exam</div>
+        <div class="font-display text-sm font-bold text-brand-white mt-1">[T] / [E] / [M] / [S] Audit</div>
+        <div class="font-mono text-[10px] text-brand-gray mt-1">Checks inline shunts vs reported_j &amp; Shape-D controls</div>
+      </div>
+      <div class="p-3 rounded-lg bg-white/[0.02] border border-brand-border">
+        <div class="font-mono text-[10px] text-brand-indigo uppercase">Stage 3 · &lt;60s Linux RAPL Pilot</div>
+        <div class="font-display text-sm font-bold text-brand-white mt-1">{foundry.total_pilot_wall_sec}s Deterministic Run</div>
+        <div class="font-mono text-[10px] text-brand-gray mt-1">powercap intel-rapl:0 reported_j (board_metered=false)</div>
+      </div>
+      <div class="p-3 rounded-lg bg-white/[0.02] border border-brand-border">
+        <div class="font-mono text-[10px] text-emerald-400 uppercase">Stage 4 · Multi-Voice Broadcast</div>
+        <div class="font-display text-sm font-bold text-brand-white mt-1">systemd --user + cron (6h)</div>
+        <div class="font-mono text-[10px] text-brand-gray mt-1">Kokoro-82M ONNX + FFmpeg -16 LUFS AAC + WebVTT</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Foundry Verdict Filter Pills -->
+  <div class="flex flex-wrap gap-2 mb-5" role="group" aria-label="Filter foundry topics by pilot status">
+    <button type="button" data-foundry-st="ALL" class="foundry-st-btn font-mono text-xs px-3.5 py-1.5 rounded-md border border-brand-amber bg-brand-amber/15 text-brand-amber cursor-pointer">
+      ALL CANDIDATES ({topics.length})
+    </button>
+    <button type="button" data-foundry-st="PROMOTED_CANDIDATE" class="foundry-st-btn font-mono text-xs px-3.5 py-1.5 rounded-md border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/10 cursor-pointer">
+      PROMOTED_CANDIDATE ({counts.PROMOTED_CANDIDATE || 0})
+    </button>
+    <button type="button" data-foundry-st="HOLD_NEEDS_HARDWARE" class="foundry-st-btn font-mono text-xs px-3.5 py-1.5 rounded-md border border-amber-500/40 text-amber-400 hover:bg-amber-500/10 cursor-pointer">
+      HOLD_NEEDS_HARDWARE ({counts.HOLD_NEEDS_HARDWARE || 0})
+    </button>
+    <button type="button" data-foundry-st="KILLED_BY_NULL" class="foundry-st-btn font-mono text-xs px-3.5 py-1.5 rounded-md border border-red-500/40 text-red-400 hover:bg-red-500/10 cursor-pointer">
+      KILLED_BY_NULL ({counts.KILLED_BY_NULL || 0})
+    </button>
+  </div>
+
+  <!-- 6 Candidate Topic Cards -->
+  <div id="foundry-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+    {topics.map((tp: any) => {
+      const r = tp.pilot_receipt || {};
+      const badgeCls =
+        tp.status === 'PROMOTED_CANDIDATE'
+          ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/40'
+          : tp.status === 'HOLD_NEEDS_HARDWARE'
+          ? 'bg-amber-500/15 text-amber-400 border-amber-500/40'
+          : 'bg-red-500/20 text-red-400 border-red-500/50';
+      return (
+        <article class="foundry-card glass-card p-5 flex flex-col justify-between" data-status={tp.status}>
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5 font-mono text-[11px]">
+              <span class="text-brand-cyan font-bold">{tp.topic_id}</span>
+              <span class={`px-2.5 py-0.5 rounded border font-bold ${badgeCls}`}>{tp.status}</span>
+            </div>
+
+            <h3 class="font-display text-base sm:text-lg font-bold text-brand-white mb-2">
+              {tp.title}
+            </h3>
+
+            <p class="font-body text-xs sm:text-[13px] text-brand-light leading-relaxed mb-3">
+              <strong class="text-brand-white">Hypothesis:</strong> {tp.hypothesis}
+            </p>
+
+            <div class="space-y-2 text-xs mb-3.5">
+              <div class="p-2.5 rounded bg-white/[0.02] border border-brand-border">
+                <span class="font-mono text-[10px] text-brand-cyan uppercase block mb-0.5">Shape-D Null Baseline</span>
+                <span class="text-brand-slate">{tp.shape_d_null_baseline}</span>
+              </div>
+              <div class="p-2.5 rounded bg-white/[0.02] border border-brand-border">
+                <span class="font-mono text-[10px] text-red-400 uppercase block mb-0.5">Pre-Registered Kill Criterion</span>
+                <span class="text-brand-slate">{tp.kill_criterion}</span>
+              </div>
+              <div class="p-2.5 rounded bg-black/30 border border-brand-amber/25">
+                <div class="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-brand-amber mb-1">
+                  <span>EXECUTION RECEIPT · SHA-256: {r.receipt_sha256}</span>
+                  <span>{r.baseline_ms} ms → {r.candidate_ms} ms</span>
+                </div>
+                <p class="font-body text-xs text-brand-white m-0 leading-relaxed">{r.verdict_detail}</p>
+                <div class="font-mono text-[10px] text-brand-gray mt-1.5">
+                  RAPL pkg reported_j: baseline={r.baseline_reported_j ?? 'n/a'} J · candidate={r.candidate_reported_j ?? 'n/a'} J · {r.telemetry_source}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2.5 border-t border-brand-border">
+            <div class="font-mono text-[10px] text-brand-gray mb-1.5">Inspired by live open-access intake:</div>
+            <div class="flex flex-col gap-1">
+              {(tp.inspired_by_urls || []).map((u: any) => (
+                <a href={u.url} target="_blank" rel="noopener noreferrer" class="font-mono text-[10px] text-brand-cyan no-underline hover:underline truncate block">
+                  [{u.source}] {u.title} ↗
+                </a>
+              ))}
+            </div>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</section>

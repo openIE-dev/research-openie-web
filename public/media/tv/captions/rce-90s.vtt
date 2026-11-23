@@ -1,0 +1,50 @@
+WEBVTT
+NOTE OpenIE Research TV — rce (90s) AI-synthesized studio narration
+
+1
+00:00:01.625 --> 00:00:07.379
+Every translation between human prose and imperative source languages injects entropy,
+
+2
+00:00:07.379 --> 00:00:09.921
+edge-case gaps, and duplicated energy.
+
+3
+00:00:14.072 --> 00:00:18.907
+RCE enforces exhaustive outcome coverage and deterministic transition
+
+4
+00:00:18.907 --> 00:00:22.831
+semantics before a single native instruction is emitted.
+
+5
+00:00:26.982 --> 00:00:36.022
+This three-dimensional state polyhedron illustrates one verified Form projecting deterministic code across Rust,
+
+6
+00:00:36.022 --> 00:00:38.525
+C++, Go, Wasm, and GPU targets.
+
+7
+00:00:42.676 --> 00:00:47.318
+Sixty-three theorem families totaling 5,537 Lean 4 kernel
+
+8
+00:00:47.318 --> 00:00:52.205
+constants anchor the reference Rust and WebAssembly checker.
+
+9
+00:00:56.356 --> 00:01:02.441
+Across 2,221 active conformance checks and 837 Rust unit tests,
+
+10
+00:01:02.441 --> 00:01:09.396
+zero checks fail and full 62-Form multi-target suites take 15.44 joules.
+
+11
+00:01:13.547 --> 00:01:18.198
+Checked fixes persist so recurring defects are never solved twice,
+
+12
+00:01:18.198 --> 00:01:22.074
+with M5 Max counters explicitly recorded as reported_j.

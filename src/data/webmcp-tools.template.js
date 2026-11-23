@@ -31,6 +31,7 @@
     var fp = s.figures_path || '/living/';
     s.figures = fp.indexOf('http') === 0 ? fp : BASE + fp;
     s.data_url = BASE + '/data/#' + s.id;
+    s.tv_url = BASE + '/tv/?study=' + s.id;
   });
 
   var IDS = STUDIES.map(function (s) { return s.id; });
@@ -75,7 +76,8 @@
       latex_pdf: s.latex_pdf || null,
       figures: s.figures,
       about: s.about,
-      data_url: s.data_url
+      data_url: s.data_url,
+      tv_url: s.tv_url
     };
   }
 
@@ -147,7 +149,11 @@
       llms_full_txt: BASE + '/llms-full.txt',
       catalog_json: BASE + '/catalog.json',
       agent_card: BASE + '/.well-known/agent-card.json',
-      feed_xml: BASE + '/feed.xml'
+      feed_xml: BASE + '/feed.xml',
+      research_tv: BASE + '/tv/',
+      research_radio: BASE + '/radio/',
+      radio_rss: BASE + '/radio/rss.xml',
+      tutorials: BASE + '/tutorials/'
     },
     studies: STUDIES,
     living_instruments: LIVING,

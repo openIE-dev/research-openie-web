@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#F59E0B">
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="David Charlot">
-  <meta name="description" content="Interactive observatory & playable Q32.32 Chrono-Budget Arena for Writing a Game Once and Running It Everywhere: inspect 30-cell 3-OS × 3-ISA GE-H1 SHA-256 replay (macOS, Linux, Windows 11), 3-OS GE-H2 UCRT/libm/glibc float drift, 3-API GE-H3 DirectX 12/Metal/Vulkan PSNR & SSIM tolerance, and play a 60 Hz BigInt WebXR/Gamepad deterministic mini-game.">
+  <meta name="description" content="Interactive observatory & playable Q32.32 Chrono-Budget Arena for Writing a Game Once and Running It Everywhere: inspect all 9 executed falsifier suites (GE-H1..GE-H9) — 30-cell 3-OS × 3-ISA replay, 3-OS float drift & 840-run Lyapunov slopes, 3-API DirectX 12/Metal/Vulkan tolerance, 17-module SLOC cut, 10,000-actor scaling, 26-pattern interface F1, 1-hour 3-OS replays, and 36-task Godot 4.7.2 parity.">
   <link rel="canonical" href="https://research.openie.dev/living/game-engines/">
   <link rel="describedby" type="text/markdown" href="/llms.txt">
   <link rel="alternate" type="text/markdown" title="Writing a Game Once and Running It Everywhere (Markdown)" href="/papers/game-engines.md">
@@ -446,11 +446,179 @@
         </div>
       </section>
 
+      <!-- Widget 5: GE-H4 17-Module Behavior Concision & GE-H5 10,000-Actor Scaling -->
+      <section id="ge-diag-05" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-05</code> · <code>GE-H4</code> Behavior Concision (<code>17</code> Modules) &amp; <code>GE-H5</code> <code>10,000</code>-Actor Scaling</h2>
+          <span class="chip chip-meas">-76.2% SLOC vs C# · 0 / 50 Actor-Scaling Mismatches</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Inspect all <code>17</code> admitted <code>.rce</code> behavior Forms across <em>Haunted Jaunt</em>, <em>Survival Shooter</em>, and <em>Tanks</em> paired against behavior-identical Unity C#, Bevy Rust ECS, and Godot 4 GDScript (<code>0 / 680</code> trace mismatches), alongside the 5-tier <code>Q32.32</code> spatial-grid actor benchmark up to <code>N = 10,000</code> actors on idle <code>Intel Core i9-13900H</code> (<code>SATB L2</code> RAPL package joules).
+        </p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="s-h4-suite"><span>GE-H4 game suite</span><span id="v-h4-cnt">17 modules</span></label>
+            <select id="s-h4-suite">
+              <option value="all" selected>All 3 Suites · 17 Modules</option>
+              <option value="Haunted Jaunt">Haunted Jaunt (5 stealth / patrol modules)</option>
+              <option value="Survival Shooter">Survival Shooter (7 wave / boss modules)</option>
+              <option value="Tanks">Tanks (5 Q32.32 ballistics / shield modules)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="s-h4-metric"><span>GE-H4 comparison metric</span><span id="v-h4-metric">Behavior SLOC</span></label>
+            <select id="s-h4-metric">
+              <option value="0" selected>Behavior SLOC (excl. blank/comment)</option>
+              <option value="1">Total SLOC (incl. embedded intent examples)</option>
+              <option value="2">Lexical Tokens</option>
+              <option value="3">Boilerplate / Lifecycle Glue Lines</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="s-h5-n"><span>GE-H5 actor count N</span><span id="v-h5-n">10,000 actors</span></label>
+            <select id="s-h5-n">
+              <option value="64">N = 64 actors</option>
+              <option value="128">N = 128 actors</option>
+              <option value="256">N = 256 actors</option>
+              <option value="300">N = 300 actors (GameRule ceiling)</option>
+              <option value="350">N = 350 actors (GameRule 20 ms limit)</option>
+              <option value="500">N = 500 actors</option>
+              <option value="1000">N = 1,000 actors</option>
+              <option value="2500">N = 2,500 actors</option>
+              <option value="5000">N = 5,000 actors</option>
+              <option value="10000" selected>N = 10,000 actors</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="s-h5-gate"><span>Frame step budget gate</span><span id="v-h5-gate">20.00 ms</span></label>
+            <select id="s-h5-gate">
+              <option value="20" selected>20.00 ms / tick (50 Hz GameRule gate)</option>
+              <option value="16.67">16.67 ms / tick (60 Hz lockstep gate)</option>
+              <option value="8.33">8.33 ms / tick (120 Hz competitive gate)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">Form .rce Total (Selected)</div>
+            <div class="v" id="o-h4-rce" style="color: var(--color-brand-cyan);">326</div>
+            <div class="s" id="o-h4-cs">vs 1,371 Unity C# (-76.22%)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">vs Bevy Rust ECS &amp; GDScript</div>
+            <div class="v" id="o-h4-rsgd" style="color: var(--color-brand-cyan);">-61.5% / -52.0%</div>
+            <div class="s" id="o-h4-sum">vs 2,896 3-engine sum (-88.74%)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Python vs C++20 @ N</div>
+            <div class="v" id="o-h5-lat" style="color: var(--color-brand-amber);">564.57 vs 0.0583 ms</div>
+            <div class="s" id="o-h5-ceil">Python N_20ms = 390 · Compiled &gt;10,000</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">L2 RAPL Energy Ratio @ N</div>
+            <div class="v" id="o-h5-eratio" style="color: var(--color-brand-cyan);">7,728× lower</div>
+            <div class="s" id="o-h5-esub">1.694 mJ (C++20) vs 13,090.6 mJ (Py)</div>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto; margin-top: 1rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.81rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(148,163,184,0.32); text-align: left;">
+                <th style="padding: 0.42rem 0.5rem;">GE-H5 Projection Tier</th>
+                <th style="padding: 0.42rem 0.5rem; text-align: right;">p50 ms / tick</th>
+                <th style="padding: 0.42rem 0.5rem; text-align: right;">p99 ms / tick</th>
+                <th style="padding: 0.42rem 0.5rem; text-align: right;">L2 RAPL mJ / tick</th>
+                <th style="padding: 0.42rem 0.5rem; text-align: right;">N_20ms Ceiling</th>
+                <th style="padding: 0.42rem 0.5rem; text-align: center;">Budget Gate</th>
+              </tr>
+            </thead>
+            <tbody id="h5-tbody"></tbody>
+          </table>
+        </div>
+
+        <div style="overflow-x: auto; margin-top: 1rem; max-height: 20rem; overflow-y: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(148,163,184,0.32); text-align: left; position: sticky; top: 0; background: var(--color-brand-dark);">
+                <th style="padding: 0.42rem 0.5rem;">Suite · Behavior Module</th>
+                <th style="padding: 0.42rem 0.5rem; text-align: right;">Form .rce</th>
+                <th style="padding: 0.42rem 0.5rem; text-align: right;">Unity C#</th>
+                <th style="padding: 0.42rem 0.5rem; text-align: right;">Bevy Rust</th>
+                <th style="padding: 0.42rem 0.5rem; text-align: right;">Godot 4 GDScript</th>
+                <th style="padding: 0.42rem 0.5rem; text-align: right;">Cut vs C#</th>
+              </tr>
+            </thead>
+            <tbody id="h4-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Widget 6: GE-H6..GE-H9 Interface Gate, Lyapunov, 1-Hour 3-OS Replay & Godot 4.7.2 Parity -->
+      <section id="ge-diag-06" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-06</code> · <code>GE-H6</code>–<code>GE-H9</code> Interface Gate, Lyapunov Slope, 1-Hour Replay &amp; Godot 4 Parity</h2>
+          <span class="chip chip-meas">F1 = 0.9922 · R²_mean ≥ 0.994 · 0/6,480 Replay · 36/36 Godot 4</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Switch across the remaining four Wave 5 closure suites: <code>GE-H6</code> 26-pattern static interface gate (<code>260</code> modules, zero runtime execution), <code>GE-H7</code> <code>840</code>-trajectory Lyapunov slope sweep across three physics-heavy templates, <code>GE-H8</code> three 1-hour (<code>216,000</code>-tick) 3-OS replays from <code>44.6 KB</code> gzip input logs plus 4 ambient-leak controls, and <code>GE-H9</code> 36-task <code>form_to_gdscript.py</code> parity on headless <code>Godot 4.7.2.stable</code>.
+        </p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="s-w6-tab"><span>Hypothesis suite view</span><span id="v-w6-badge">GE-H6</span></label>
+            <select id="s-w6-tab">
+              <option value="h6" selected>GE-H6 · 26-Pattern Static Interface Gate (260 modules)</option>
+              <option value="h7">GE-H7 · 840-Trajectory ln(Δ/δ₀) Lyapunov Sweep (3 templates)</option>
+              <option value="h8">GE-H8 · 1-Hour (216,000-Tick) 3-OS Replay &amp; Leak Controls</option>
+              <option value="h9">GE-H9 · 36-Task Headless Godot 4.7.2 GDScript Parity</option>
+            </select>
+          </div>
+          <div class="ctrl-box" id="box-h6-edge">
+            <label for="s-h6-edge"><span>GE-H6 boundary edge filter</span><span id="v-h6-cnt">26 patterns</span></label>
+            <select id="s-h6-edge">
+              <option value="all" selected>All 4 Architecture Edges (26 patterns · 260 modules)</option>
+              <option value="a">Edge (a) · Scripting ↔ Simulation</option>
+              <option value="b">Edge (b) · Simulation → Scene Tree</option>
+              <option value="c">Edge (c) · Scene → Rendering / Audio</option>
+              <option value="d">Edge (d) · Asset / Save / Network Manifests</option>
+              <option value="fn">Residual False Negatives Only (P10 &amp; P19 bare-i64 notes)</option>
+            </select>
+          </div>
+          <div class="ctrl-box" id="box-h7-tmpl" style="display: none;">
+            <label for="s-h7-tmpl"><span>GE-H7 chaotic physics template</span><span id="v-h7-lam">Λ̂ = 2.48 s⁻¹</span></label>
+            <select id="s-h7-tmpl">
+              <option value="0" selected>GE-T1 · 16-Body Chaotic Bumper Arena (280 runs)</option>
+              <option value="1">GE-T2 · 12-Peg Galton / Pinball Lattice (280 runs)</option>
+              <option value="2">GE-T3 · 8-Node Coupled Spring-Pendulum Bridge (280 runs)</option>
+            </select>
+          </div>
+          <div class="ctrl-box" id="box-h9-fam" style="display: none;">
+            <label for="s-h9-fam"><span>GE-H9 gameplay family</span><span id="v-h9-cnt">36 tasks</span></label>
+            <select id="s-h9-fam">
+              <option value="all" selected>All 15 Families + Core Systems (36 / 36 PASS)</option>
+              <option value="Platformer">Platformer</option>
+              <option value="Stealth">Stealth</option>
+              <option value="Shooter">Shooter</option>
+              <option value="Artillery">Artillery</option>
+              <option value="Inventory">Inventory</option>
+              <option value="Quest">Quest</option>
+              <option value="Lockstep">Lockstep</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="w6-metrics" class="metric-grid" aria-live="polite"></div>
+        <div id="w6-table-wrap" style="overflow-x: auto; margin-top: 1rem; max-height: 24rem; overflow-y: auto;"></div>
+      </section>
+
       <!-- Section 5: Zoomable Study Figures -->
       <section id="figures" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
           <h2 style="margin: 0; font-size: 1.25rem;">Architecture, Coverage &amp; Cross-GPU Tolerance Figures (Click to Zoom)</h2>
-          <span class="chip chip-meas">GE-H1, GE-H2 &amp; GE-H3 Executed · GE-H4..GE-H9 Open</span>
+          <span class="chip chip-meas">All 9 Suites Executed (GE-H1..GE-H9)</span>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
           <figure class="fig" style="margin: 0;">
@@ -464,6 +632,10 @@
           <figure class="fig" style="margin: 0;">
             <img src="/figures/game-engines/cross-gpu-tolerance.svg" alt="Empirical results across Multi-ISA GE-H1, Cross-ISA GE-H2, and Cross-GPU GE-H3 Metal and Vulkan rendering tolerance" data-zoom="/figures/game-engines/cross-gpu-tolerance.svg">
             <figcaption><strong>Figure 3 · 3-OS Multi-ISA &amp; 3-API Cross-GPU Results</strong> · <code>0 / 25,500</code> <code>GE-H1</code> mismatches across macOS, Linux, and Windows 11 vs <code>64.2–108.3 dB</code> <code>PSNR</code> across DirectX 12, Metal, and Vulkan (<code>GE-H3</code>).</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/game-engines/ge-h4-h9-closure.svg" alt="Wave 5 empirical closure across GE-H4 behavior concision, GE-H5 10,000-actor scaling, GE-H6 26-pattern F1, GE-H7 Lyapunov slopes, GE-H8 1-hour 3-OS replay, and GE-H9 Godot 4.7.2 parity" data-zoom="/figures/game-engines/ge-h4-h9-closure.svg">
+            <figcaption><strong>Figure 4 · Wave 5 <code>GE-H4</code>–<code>GE-H9</code> Closure</strong> · <code>-76.2%</code> SLOC vs C# (<code>GE-H4</code>), <code>10,000</code>-actor compiled scaling (<code>GE-H5</code>), <code>F1 = 0.9922</code> vs <code>0.1159</code> (<code>GE-H6</code>), <code>840</code>-run Lyapunov lines (<code>GE-H7</code>), 1-hour 3-OS replay (<code>GE-H8</code>), and <code>36 / 36</code> Godot 4.7.2 parity (<code>GE-H9</code>).</figcaption>
           </figure>
         </div>
       </section>
@@ -2297,6 +2469,200 @@
       renderH3(false);
       resetArena(parseInt(document.getElementById('s-c-seed').value, 10) || 20261122);
 
+      // ======================================================================
+      // Widget 5 & 6 Data: Wave 5 GE-H4..GE-H9 Full Empirical Closure
+      // ======================================================================
+      var H4_MODS = [{"id": "hj_01_player_stealth", "game": "Haunted Jaunt", "name": "PlayerStealth", "rce": [20, 23, 195, 4], "cs": [88, 88, 489, 49], "rs": [53, 53, 340, 22], "gd": [44, 44, 333, 12]}, {"id": "hj_02_ghost_patrol", "game": "Haunted Jaunt", "name": "GhostPatrol", "rce": [20, 23, 216, 3], "cs": [82, 82, 470, 47], "rs": [51, 51, 376, 23], "gd": [43, 43, 336, 11]}, {"id": "hj_03_gargoyle_spotter", "game": "Haunted Jaunt", "name": "GargoyleSpotter", "rce": [22, 25, 161, 3], "cs": [74, 74, 412, 45], "rs": [48, 48, 308, 22], "gd": [37, 37, 270, 11]}, {"id": "hj_04_observer_los", "game": "Haunted Jaunt", "name": "ObserverLineOfSight", "rce": [15, 18, 117, 3], "cs": [74, 74, 384, 44], "rs": [41, 41, 236, 21], "gd": [31, 31, 246, 10]}, {"id": "hj_05_exit_trigger", "game": "Haunted Jaunt", "name": "ExitTrigger", "rce": [13, 16, 81, 4], "cs": [73, 73, 339, 45], "rs": [45, 45, 208, 24], "gd": [35, 35, 197, 10]}, {"id": "ss_01_player_avatar", "game": "Survival Shooter", "name": "PlayerAvatar", "rce": [21, 24, 216, 4], "cs": [99, 99, 518, 55], "rs": [59, 59, 360, 25], "gd": [49, 49, 344, 12]}, {"id": "ss_02_gun_raycaster", "game": "Survival Shooter", "name": "GunRaycaster", "rce": [23, 26, 113, 3], "cs": [81, 81, 377, 49], "rs": [52, 52, 258, 25], "gd": [38, 38, 236, 11]}, {"id": "ss_03_zombunny_chaser", "game": "Survival Shooter", "name": "ZombunnyChaser", "rce": [24, 27, 138, 4], "cs": [87, 87, 424, 51], "rs": [58, 58, 296, 26], "gd": [45, 45, 265, 12]}, {"id": "ss_04_zombear_bruiser", "game": "Survival Shooter", "name": "ZomBearBruiser", "rce": [15, 18, 116, 4], "cs": [78, 78, 391, 48], "rs": [44, 44, 262, 23], "gd": [34, 34, 243, 11]}, {"id": "ss_05_hellephant_boss", "game": "Survival Shooter", "name": "HellephantBoss", "rce": [28, 31, 145, 4], "cs": [83, 83, 444, 49], "rs": [57, 57, 337, 23], "gd": [47, 47, 278, 12]}, {"id": "ss_06_wave_spawner", "game": "Survival Shooter", "name": "WaveSpawner", "rce": [20, 23, 109, 4], "cs": [84, 84, 390, 51], "rs": [49, 49, 274, 22], "gd": [39, 39, 245, 12]}, {"id": "ss_07_score_hud", "game": "Survival Shooter", "name": "ScoreHUD", "rce": [17, 20, 92, 4], "cs": [78, 78, 352, 48], "rs": [48, 48, 229, 24], "gd": [36, 36, 208, 11]}, {"id": "tk_01_tank_chassis", "game": "Tanks", "name": "TankChassis", "rce": [17, 20, 176, 3], "cs": [76, 76, 416, 45], "rs": [43, 43, 316, 21], "gd": [40, 40, 313, 11]}, {"id": "tk_02_shell_ballistics_q32", "game": "Tanks", "name": "ShellBallisticsQ32", "rce": [25, 28, 124, 4], "cs": [88, 88, 431, 52], "rs": [56, 56, 285, 23], "gd": [46, 46, 264, 13]}, {"id": "tk_03_explosion_falloff", "game": "Tanks", "name": "ExplosionFalloff", "rce": [11, 14, 106, 3], "cs": [72, 72, 346, 44], "rs": [39, 39, 222, 20], "gd": [33, 33, 247, 10]}, {"id": "tk_04_tank_health_shield", "game": "Tanks", "name": "TankHealthShield", "rce": [20, 23, 128, 4], "cs": [85, 85, 405, 50], "rs": [54, 54, 290, 25], "gd": [43, 43, 255, 11]}, {"id": "tk_05_round_director", "game": "Tanks", "name": "RoundDirector", "rce": [15, 18, 115, 3], "cs": [69, 69, 349, 42], "rs": [49, 49, 239, 22], "gd": [39, 39, 221, 12]}];
+      var H5_TIERS = [{"id": "rce_python3", "label": "1 \u00b7 rce emit python (Python 3.12)", "ceil20": "390", "pts": {"64": {"p50": 3.0725, "p99": 3.1675, "mj": 72.5274, "hash": "9448bb090c68db57"}, "128": {"p50": 5.5679, "p99": 5.7112, "mj": 162.9465, "hash": "37c07d14c59fc7be"}, "256": {"p50": 12.0921, "p99": 12.4176, "mj": 476.562, "hash": "ce3694d5556eb032"}, "300": {"p50": 13.6617, "p99": 14.1968, "mj": 423.2705, "hash": "bafc83e3fecda5ca"}, "350": {"p50": 18.115, "p99": 18.8248, "mj": 390.5504, "hash": "ac62bed36e252a98"}, "500": {"p50": 25.2486, "p99": 25.7833, "mj": 971.5046, "hash": "0588e72fd93a115f"}, "1000": {"p50": 55.525, "p99": 59.2337, "mj": 1177.8582, "hash": "d3089c782d46166a"}, "2500": {"p50": 123.4842, "p99": 141.7076, "mj": 4172.9848, "hash": "30c0ba51ede0e393"}, "5000": {"p50": 249.1536, "p99": 286.5639, "mj": 8559.2637, "hash": "173b86d51de692be"}, "10000": {"p50": 564.5748, "p99": 648.0611, "mj": 13090.5727, "hash": "601d937bc1f4765e"}}}, {"id": "rce_nodejs_v22", "label": "2 \u00b7 rce emit js (Node.js v22.22)", "ceil20": "3,906", "pts": {"64": {"p50": 0.287, "p99": 0.9063, "mj": 12.8059, "hash": "9448bb090c68db57"}, "128": {"p50": 0.5912, "p99": 1.5666, "mj": 25.3437, "hash": "37c07d14c59fc7be"}, "256": {"p50": 1.2304, "p99": 2.9757, "mj": 45.3898, "hash": "ce3694d5556eb032"}, "300": {"p50": 1.4788, "p99": 3.3603, "mj": 57.2474, "hash": "bafc83e3fecda5ca"}, "350": {"p50": 1.8461, "p99": 3.755, "mj": 73.6699, "hash": "ac62bed36e252a98"}, "500": {"p50": 2.6783, "p99": 4.9081, "mj": 93.4031, "hash": "0588e72fd93a115f"}, "1000": {"p50": 4.7692, "p99": 8.9281, "mj": 196.0831, "hash": "d3089c782d46166a"}, "2500": {"p50": 12.6015, "p99": 16.9675, "mj": 550.5494, "hash": "30c0ba51ede0e393"}, "5000": {"p50": 25.7548, "p99": 33.9731, "mj": 1174.584, "hash": "173b86d51de692be"}, "10000": {"p50": 57.0496, "p99": 66.3129, "mj": 1559.7701, "hash": "601d937bc1f4765e"}}}, {"id": "form_wasm32_v8", "label": "3 \u00b7 Form Rust \u2192 Wasm32 (Node V8)", "ceil20": "> 10,000 (~2,760,906 extrap.)", "pts": {"64": {"p50": 0.0006, "p99": 0.0007, "mj": 0.0149, "hash": "9448bb090c68db57"}, "128": {"p50": 0.0012, "p99": 0.0015, "mj": 0.033, "hash": "37c07d14c59fc7be"}, "256": {"p50": 0.0028, "p99": 0.0038, "mj": 0.074, "hash": "ce3694d5556eb032"}, "300": {"p50": 0.004, "p99": 0.005, "mj": 0.1161, "hash": "bafc83e3fecda5ca"}, "350": {"p50": 0.0044, "p99": 0.0052, "mj": 0.1193, "hash": "ac62bed36e252a98"}, "500": {"p50": 0.0057, "p99": 0.007, "mj": 0.1572, "hash": "0588e72fd93a115f"}, "1000": {"p50": 0.0089, "p99": 0.0113, "mj": 0.1945, "hash": "d3089c782d46166a"}, "2500": {"p50": 0.0207, "p99": 0.0264, "mj": 0.5648, "hash": "30c0ba51ede0e393"}, "5000": {"p50": 0.0408, "p99": 0.0439, "mj": 1.3877, "hash": "173b86d51de692be"}, "10000": {"p50": 0.0724, "p99": 0.081, "mj": 2.2109, "hash": "601d937bc1f4765e"}}}, {"id": "form_cpp20_o3", "label": "4 \u00b7 Form C++20 (g++ 13.3 -O3)", "ceil20": "> 10,000 (~3,431,120 extrap.)", "pts": {"64": {"p50": 0.0004, "p99": 0.0005, "mj": 0.0108, "hash": "9448bb090c68db57"}, "128": {"p50": 0.001, "p99": 0.0012, "mj": 0.0253, "hash": "37c07d14c59fc7be"}, "256": {"p50": 0.0024, "p99": 0.0031, "mj": 0.0584, "hash": "ce3694d5556eb032"}, "300": {"p50": 0.0033, "p99": 0.0042, "mj": 0.0986, "hash": "bafc83e3fecda5ca"}, "350": {"p50": 0.0036, "p99": 0.0044, "mj": 0.0918, "hash": "ac62bed36e252a98"}, "500": {"p50": 0.0047, "p99": 0.0052, "mj": 0.1249, "hash": "0588e72fd93a115f"}, "1000": {"p50": 0.0073, "p99": 0.0094, "mj": 0.1665, "hash": "d3089c782d46166a"}, "2500": {"p50": 0.0167, "p99": 0.0182, "mj": 0.4673, "hash": "30c0ba51ede0e393"}, "5000": {"p50": 0.0317, "p99": 0.0358, "mj": 1.0981, "hash": "173b86d51de692be"}, "10000": {"p50": 0.0583, "p99": 0.0654, "mj": 1.694, "hash": "601d937bc1f4765e"}}}, {"id": "form_rust_o3", "label": "5 \u00b7 Form Native Rust (rustc -O)", "ceil20": "> 10,000 (~1,602,179 extrap.)", "pts": {"64": {"p50": 0.0004, "p99": 0.0005, "mj": 0.0111, "hash": "9448bb090c68db57"}, "128": {"p50": 0.0009, "p99": 0.0013, "mj": 0.0242, "hash": "37c07d14c59fc7be"}, "256": {"p50": 0.0024, "p99": 0.0033, "mj": 0.0588, "hash": "ce3694d5556eb032"}, "300": {"p50": 0.0035, "p99": 0.0045, "mj": 0.1072, "hash": "bafc83e3fecda5ca"}, "350": {"p50": 0.0041, "p99": 0.0058, "mj": 0.099, "hash": "ac62bed36e252a98"}, "500": {"p50": 0.0061, "p99": 0.0066, "mj": 0.17, "hash": "0588e72fd93a115f"}, "1000": {"p50": 0.0129, "p99": 0.0149, "mj": 0.4128, "hash": "d3089c782d46166a"}, "2500": {"p50": 0.0358, "p99": 0.0382, "mj": 1.033, "hash": "30c0ba51ede0e393"}, "5000": {"p50": 0.0616, "p99": 0.0662, "mj": 1.9509, "hash": "173b86d51de692be"}, "10000": {"p50": 0.1248, "p99": 0.1274, "mj": 3.6728, "hash": "601d937bc1f4765e"}}}];
+      var H6_PATS = [{"id": "P01", "name": "node_path_typo", "edgeKey": "b", "edge": "Edge (b) sim->scene: node path missing from scene tree", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "edge_b_node_path: Root/Player/Spite2D_1 not in scene_nodes"}, {"id": "P02", "name": "missing_signal_handler", "edgeKey": "d", "edge": "Edge (d) event totality: declared event has no step handler (RCE W-STEP-2)", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "rce_check: requires change P02_fault_1.rce: line 14: W-STEP-2 event `UnhandledSig1` is handled by no step or actor: \u03b4 would not be total [requires change]"}, {"id": "P03", "name": "signal_payload_arity_mismatch", "edgeKey": "a", "edge": "Edge (a) script->sim: event dispatch argument count mismatch", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 4, "dfn": 1, "diag": "rce_check: requires change P03_fault_1.rce: line 4: W-TY-1 `HitEvent` is missing field `src_id` [requires change]"}, {"id": "P04", "name": "signal_payload_type_mismatch", "edgeKey": "a", "edge": "Edge (a) script->sim: event payload static type mismatch (RCE W-TY-1)", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 4, "dfn": 1, "diag": "rce_check: requires change P04_fault_1.rce: line 4: W-TY-1 expected i64, found text [requires change]"}, {"id": "P05", "name": "physics_layer_mask_inversion", "edgeKey": "b", "edge": "Edge (b) physics schema: declared contact pair has (mask & layer) == 0", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "edge_b_physics_mask: (projectile, foe) initiator mask misses target layer"}, {"id": "P06", "name": "unhandled_enum_state", "edgeKey": "a", "edge": "Edge (a) totality: non-exhaustive match over kind variants", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "rce_check: requires change P06_fault_1.rce: line 17: W-MATCH-1 match is not exhaustive: missing Recover [requires change]"}, {"id": "P07", "name": "null_scene_resource_ref", "edgeKey": "b", "edge": "Edge (b) sim->scene: required prefab/resource slot bound to empty handle", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "edge_b_null_resource: player_prefab is empty"}, {"id": "P08", "name": "tag_string_typo", "edgeKey": "a", "edge": "Edge (a) typed tag kind: misspelled entity tag variant (RCE W-NAME-1)", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "rce_check: requires change P08_fault_1.rce: line 17: W-UNUSED-1 `PalyerTag` is never read; remove it or name it `_PalyerTag` [altered by rce fmt]; line 19: W-MATCH-2 unreachable arm [requires change]"}, {"id": "P09", "name": "animation_event_missing_method", "edgeKey": "d", "edge": "Edge (d) event coverage: animation track invokes undeclared event", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "edge_d_anim_event: MissingAnimHook_1 undeclared"}, {"id": "P10", "name": "delta_time_unit_mismatch", "edgeKey": "a", "edge": "Edge (a) unit/example contract: ms delta-time applied to per-second rate", "ftp": 4, "ffn": 1, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "rce_check: requires change P10_fault_1.rce: line 4: W-INT-1 example does not hold: final value is 6000, expected false [requires change]"}, {"id": "P11", "name": "fixed_vs_render_frame_mutation", "edgeKey": "a", "edge": "Determinism boundary: render pass mutates simulation state S", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "boundary_render_mutates_S"}, {"id": "P12", "name": "save_schema_missing_field", "edgeKey": "b", "edge": "Edge (b) persistence schema: state field omitted from save manifest", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "edge_b_save_missing: ['keys_held']"}, {"id": "P13", "name": "network_packet_field_reorder", "edgeKey": "a", "edge": "Edge (a) wire schema: packet field order disagrees with Form Event", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "edge_a_wire_order: NetSync"}, {"id": "P14", "name": "input_action_unmapped", "edgeKey": "d", "edge": "Edge (d) host input: action binding absent from Form event alphabet", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "edge_d_unmapped_input: UndeclaredAction_1"}, {"id": "P15", "name": "cooldown_underflow", "edgeKey": "a", "edge": "Core Form safety: u64 cooldown subtraction underflows below zero", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "rce_check: requires change P15_fault_1.rce: line 4: W-INT-1 example does not hold: event 1 (TickCd) kept: trap(overflow: -3 is outside u64) [requires change]"}, {"id": "P16", "name": "dead_entity_message_dispatch", "edgeKey": "a", "edge": "Core Form invariant: inactive entity mutates combat counters", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "rce_check: requires change P16_fault_1.rce: line 4: W-INT-1 example does not hold: final-state condition is false [requires change]"}, {"id": "P17", "name": "singleton_init_order_race", "edgeKey": "a", "edge": "Schedule DAG: region reads peer state prior to peer initialization", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "sched_init_order: Actor before Config"}, {"id": "P18", "name": "asset_id_dangling_handle", "edgeKey": "b", "edge": "Edge (b) asset table: scene patch references missing asset digest/id", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "edge_b_dangling_asset: mesh_missing_v1"}, {"id": "P19", "name": "coord_space_local_vs_world", "edgeKey": "a", "edge": "Core Form newtype: LocalPos added directly to WorldPos without transform", "ftp": 4, "ffn": 1, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "rce_check: requires change P19_fault_1.rce: line 20: W-TY-1 expected WorldX, found LocalX [requires change]"}, {"id": "P20", "name": "collision_callback_reentrancy", "edgeKey": "a", "edge": "ECS schedule contract: immediate structural delete inside traversal", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "ecs_reentrant_structural_mutation"}, {"id": "P21", "name": "shader_uniform_missing_binding", "edgeKey": "c", "edge": "Edge (c) scene->render: material binding missing from WGSL shader", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "edge_c_missing_wgsl_binding: u_ghost_tint_1"}, {"id": "P22", "name": "shader_uniform_vec3_vec4_align", "edgeKey": "c", "edge": "Edge (c) scene->render: uniform buffer offset violates 16-byte WGSL align", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "edge_c_wgsl_align: u_tint offset 12 != 16"}, {"id": "P23", "name": "audio_bus_missing_name", "edgeKey": "b", "edge": "Edge (b) host audio: sound cue targets undeclared audio bus", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "edge_b_audio_bus: MissingReverbBus_1"}, {"id": "P24", "name": "ui_binding_stale_state", "edgeKey": "b", "edge": "Edge (b) sim->UI: HUD widget binds renamed/nonexistent state field", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "edge_b_ui_stale_field: stale_mana_1"}, {"id": "P25", "name": "inventory_capacity_overflow", "edgeKey": "a", "edge": "Core Form invariant: item append exceeds declared slot capacity", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "rce_check: requires change P25_fault_1.rce: line 4: W-INT-1 example does not hold: final value is 4, expected false [requires change]"}, {"id": "P26", "name": "portal_transition_state_drop", "edgeKey": "b", "edge": "Edge (b) scene transition: persistent state field dropped across portal", "ftp": 5, "ffn": 0, "ftn": 5, "ffp": 0, "dtp": 0, "dfn": 5, "diag": "rce_check: requires change P26_fault_1.rce: line 4: W-INT-1 example does not hold: final-state condition is false [requires change]"}];
+      var H7_TMPLS = [{"id": "GE-T1", "name": "16-Body Chaotic Bumper Arena", "beta": 0.40247, "lam": 2.4846, "ciLam": [2.3554, 2.6157], "r2Traj": 0.85694, "r2Mean": 0.99953, "pStr": "10^(-118.7)", "cells": [{"exp": -52, "lnRatio": 36.044, "meanS": 14.487, "sdS": 2.425, "meanTicks": 869.2}, {"exp": -44, "lnRatio": 30.498, "meanS": 12.22, "sdS": 1.905, "meanTicks": 733.2}, {"exp": -36, "lnRatio": 24.953, "meanS": 9.954, "sdS": 1.594, "meanTicks": 597.2}, {"exp": -28, "lnRatio": 19.408, "meanS": 7.68, "sdS": 1.5, "meanTicks": 460.8}, {"exp": -23, "lnRatio": 15.942, "meanS": 6.519, "sdS": 1.381, "meanTicks": 391.1}, {"exp": -16, "lnRatio": 11.09, "meanS": 4.293, "sdS": 1.043, "meanTicks": 257.6}, {"exp": -10, "lnRatio": 6.931, "meanS": 2.797, "sdS": 0.915, "meanTicks": 167.8}]}, {"id": "GE-T2", "name": "12-Peg Galton/Pinball Elastic Lattice", "beta": 0.19735, "lam": 5.0671, "ciLam": [4.6611, 5.5436], "r2Traj": 0.71762, "r2Mean": 0.99629, "pStr": "10^(-77.6)", "cells": [{"exp": -52, "lnRatio": 36.044, "meanS": 7.565, "sdS": 1.637, "meanTicks": 453.9}, {"exp": -44, "lnRatio": 30.498, "meanS": 6.712, "sdS": 1.52, "meanTicks": 402.7}, {"exp": -36, "lnRatio": 24.953, "meanS": 5.634, "sdS": 1.389, "meanTicks": 338.1}, {"exp": -28, "lnRatio": 19.408, "meanS": 4.598, "sdS": 1.166, "meanTicks": 275.9}, {"exp": -23, "lnRatio": 15.942, "meanS": 3.875, "sdS": 0.976, "meanTicks": 232.5}, {"exp": -16, "lnRatio": 11.09, "meanS": 2.785, "sdS": 0.777, "meanTicks": 167.1}, {"exp": -10, "lnRatio": 6.931, "meanS": 1.845, "sdS": 0.612, "meanTicks": 110.7}]}, {"id": "GE-T3", "name": "8-Node Coupled Spring-Pendulum Bridge", "beta": 0.51209, "lam": 1.9528, "ciLam": [1.8382, 2.0823], "r2Traj": 0.81685, "r2Mean": 0.99395, "pStr": "10^(-103.7)", "cells": [{"exp": -52, "lnRatio": 36.044, "meanS": 17.359, "sdS": 3.162, "meanTicks": 1041.5}, {"exp": -44, "lnRatio": 30.498, "meanS": 15.465, "sdS": 2.918, "meanTicks": 927.9}, {"exp": -36, "lnRatio": 24.953, "meanS": 12.694, "sdS": 2.686, "meanTicks": 761.6}, {"exp": -28, "lnRatio": 19.408, "meanS": 9.704, "sdS": 2.262, "meanTicks": 582.2}, {"exp": -23, "lnRatio": 15.942, "meanS": 7.987, "sdS": 2.017, "meanTicks": 479.2}, {"exp": -16, "lnRatio": 11.09, "meanS": 4.716, "sdS": 1.504, "meanTicks": 282.9}, {"exp": -10, "lnRatio": 6.931, "meanS": 2.944, "sdS": 1.139, "meanTicks": 176.7}]}];
+      var H8_DATA = {"sessions": [{"name": "HauntedJaunt_1h", "log_D_gzip_bytes": 44603, "snap_stream_gzip_bytes": 5186323, "gzip_compression_ratio_snap_over_D": 116.28, "wall_ms_macos_arm64": 5.227, "wall_ms_windows11_x86_64": 7.629, "final_216000_sha256": "b4120d81a8fb5b6916ef443b2e3ebc59905b8ba201dd3b50c123edbf32f5f06c"}, {"name": "SurvivalShooter_1h", "log_D_gzip_bytes": 44596, "snap_stream_gzip_bytes": 7000277, "gzip_compression_ratio_snap_over_D": 156.97, "wall_ms_macos_arm64": 8.318, "wall_ms_windows11_x86_64": 11.021, "final_216000_sha256": "6cce1282304dfdc5b623ad5be42357dec970ee4a8125f583557cd88b20edff73"}, {"name": "TanksQ32_1h", "log_D_gzip_bytes": 44583, "snap_stream_gzip_bytes": 13030308, "gzip_compression_ratio_snap_over_D": 292.27, "wall_ms_macos_arm64": 3.896, "wall_ms_windows11_x86_64": 4.944, "final_216000_sha256": "ca627edaf8cb56532a33ee83997a8487aed9e1f4066f5d3c832fd04e38fe58ea"}], "leaks": [{"id": "GE-L1_wall_clock_ns", "t_div": 1, "mac": "b7584bf13a465e", "lin": "c03b379e305b1e", "win": "865efa16ed08f4"}, {"id": "GE-L2_stack_addr_rng", "t_div": 1, "mac": "58ee31efda2b74", "lin": "a90e2663c8da55", "win": "99b8adcea2a48c"}, {"id": "GE-L3_hash_seed_order", "t_div": 1, "mac": "e62dee9e7f689e", "lin": "180e6ee851ec2d", "win": "7b43f9f2cfa085"}, {"id": "GE-L4_host_libm_sin_f64", "t_div": 1, "mac": "0d1722cf36e27e", "lin": "50f9ff25b88251", "win": "54d0f774f451c3"}]};
+      var H9_TASKS = [{"id": "t01_platformer_coyote_jump", "fam": "Platformer", "emMs": 453.1, "naMs": 453.6, "sha": "0920824d835ecf044a3b"}, {"id": "t02_platformer_wall_slide", "fam": "Platformer", "emMs": 556.2, "naMs": 355.8, "sha": "55bcd22008a8b8a12c74"}, {"id": "t03_strategy_turn_ap_grid", "fam": "Strategy", "emMs": 468.0, "naMs": 466.3, "sha": "0ea1dd4accd600996da8"}, {"id": "t04_strategy_territory_supply", "fam": "Strategy", "emMs": 465.2, "naMs": 445.5, "sha": "af74f7b7076050ea3783"}, {"id": "t05_tycoon_factory_conveyor", "fam": "Tycoon", "emMs": 471.6, "naMs": 466.6, "sha": "424b8596d77c568c6c5a"}, {"id": "t06_tycoon_price_demand_ledger", "fam": "Tycoon", "emMs": 559.9, "naMs": 470.8, "sha": "e9735ca85cb53284cdbb"}, {"id": "t07_openworld_day_night_stamina", "fam": "Open-world", "emMs": 560.9, "naMs": 351.7, "sha": "3c3b9174a6318dc5dd79"}, {"id": "t08_openworld_beacon_discovery", "fam": "Open-world", "emMs": 549.0, "naMs": 466.3, "sha": "f03329e695a18bdc4a88"}, {"id": "t09_roguelike_dungeon_floor_rng", "fam": "Roguelike", "emMs": 561.4, "naMs": 562.0, "sha": "375f5af1afb6e219fff0"}, {"id": "t10_roguelike_relic_synergy", "fam": "Roguelike", "emMs": 556.4, "naMs": 455.6, "sha": "b7f86c7fe25f2ded2279"}, {"id": "t11_visualnovel_affection_branch", "fam": "Visual novel", "emMs": 560.2, "naMs": 465.9, "sha": "7e522ea8eb3ac2106325"}, {"id": "t12_visualnovel_clue_deduction", "fam": "Visual novel", "emMs": 561.5, "naMs": 461.6, "sha": "5af5b82536f37b87a5b4"}, {"id": "t13_puzzle_sokoban_crate_row", "fam": "Puzzle", "emMs": 466.3, "naMs": 464.0, "sha": "c22ec5eb5cc2e4063038"}, {"id": "t14_puzzle_laser_mirror_latch", "fam": "Puzzle", "emMs": 467.9, "naMs": 358.6, "sha": "8a9648770c3aba73ddc8"}, {"id": "t15_shooter_twin_stick_heat", "fam": "Shooter", "emMs": 470.9, "naMs": 462.3, "sha": "0164ddb07254b9c56c60"}, {"id": "t16_shooter_shield_phase_gate", "fam": "Shooter", "emMs": 549.0, "naMs": 484.7, "sha": "882d57cdb6b7ba73416f"}, {"id": "t17_simulation_crop_moisture_cycle", "fam": "Simulation", "emMs": 560.7, "naMs": 486.7, "sha": "ac5563a4361e830cee36"}, {"id": "t18_simulation_power_grid_balance", "fam": "Simulation", "emMs": 463.4, "naMs": 564.9, "sha": "03ccbc722e0d2e21a79b"}, {"id": "t19_cardgame_mana_curve_hand", "fam": "Card game", "emMs": 564.4, "naMs": 462.7, "sha": "224fb024e1e59a1972e8"}, {"id": "t20_cardgame_ward_chain_stack", "fam": "Card game", "emMs": 558.5, "naMs": 555.2, "sha": "a4acf967121c194bec48"}, {"id": "t21_horror_radio_battery_jam", "fam": "Horror", "emMs": 469.3, "naMs": 457.6, "sha": "061f59eb85faa349feb5"}, {"id": "t22_horror_lantern_sanity_ward", "fam": "Horror", "emMs": 562.8, "naMs": 551.9, "sha": "2f5c2e00d97322694c16"}, {"id": "t23_rhythm_beat_window_judge", "fam": "Rhythm", "emMs": 462.0, "naMs": 556.5, "sha": "c8a9cb10b83b2320bfcd"}, {"id": "t24_rhythm_fever_groove_meter", "fam": "Rhythm", "emMs": 558.1, "naMs": 464.1, "sha": "d70bc289e9aaab3f2bd7"}, {"id": "t25_idle_generator_prestige", "fam": "Idle", "emMs": 457.1, "naMs": 369.1, "sha": "07b36e0aae84e3f8def2"}, {"id": "t26_idle_offline_tick_bank", "fam": "Idle", "emMs": 342.2, "naMs": 548.6, "sha": "f03788a967e2228a2029"}, {"id": "t27_racing_boost_drift_lap", "fam": "Racing", "emMs": 436.8, "naMs": 455.1, "sha": "50c31687615c01167f7c"}, {"id": "t28_racing_tire_wear_pitstop", "fam": "Racing", "emMs": 461.1, "naMs": 452.6, "sha": "0bee674ef29627a49d7a"}, {"id": "t29_sports_rally_volley_score", "fam": "Sports", "emMs": 561.7, "naMs": 450.7, "sha": "ef5eb1cd6cbae8fa2cef"}, {"id": "t30_sports_stamina_pass_clock", "fam": "Sports", "emMs": 461.4, "naMs": 549.4, "sha": "e9af7ab2f25986d71e1c"}, {"id": "t31_ref_haunted_jaunt_suite", "fam": "Reference: Haunted Jaunt", "emMs": 458.0, "naMs": 446.9, "sha": "95b2a7cddb1e4c83bb11"}, {"id": "t32_ref_survival_wave_director", "fam": "Reference: Survival Shooter", "emMs": 462.8, "naMs": 457.1, "sha": "9519572100d9933cd826"}, {"id": "t33_ref_tanks_q32_artillery", "fam": "Reference: Tanks Q32.32", "emMs": 478.7, "naMs": 344.1, "sha": "0299f7840387a790b02b"}, {"id": "t34_sys_inventory_recipe_craft", "fam": "Systems: Inventory", "emMs": 458.6, "naMs": 446.4, "sha": "f24432ef3baf3577d0bf"}, {"id": "t35_sys_quest_dag_journal", "fam": "Systems: Quest DAG", "emMs": 346.4, "naMs": 338.0, "sha": "21bb3c14ae4330fc6b35"}, {"id": "t36_sys_lockstep_4p_arena", "fam": "Systems: Lockstep 4P", "emMs": 448.9, "naMs": 452.0, "sha": "8fb46f41af929cf531e7"}];
+
+      var H4_METRIC_LABELS = ['Behavior SLOC', 'Total SLOC (+intent)', 'Lexical Tokens', 'Glue Lines'];
+
+      function renderH4H5() {
+        var suite = document.getElementById('s-h4-suite').value;
+        var mIdx = parseInt(document.getElementById('s-h4-metric').value, 10) || 0;
+        var nKey = document.getElementById('s-h5-n').value;
+        var gateMs = parseFloat(document.getElementById('s-h5-gate').value) || 20.0;
+
+        var mods = H4_MODS.filter(function(m){ return suite === 'all' || m.game === suite; });
+        document.getElementById('v-h4-cnt').textContent = mods.length + ' modules';
+        document.getElementById('v-h4-metric').textContent = H4_METRIC_LABELS[mIdx];
+        document.getElementById('v-h5-n').textContent = Number(nKey).toLocaleString('en-US') + ' actors';
+        document.getElementById('v-h5-gate').textContent = gateMs.toFixed(2) + ' ms';
+
+        var sumRce = 0, sumCs = 0, sumRs = 0, sumGd = 0;
+        mods.forEach(function(m){
+          sumRce += m.rce[mIdx]; sumCs += m.cs[mIdx]; sumRs += m.rs[mIdx]; sumGd += m.gd[mIdx];
+        });
+        var cutCs = (100 * (1 - sumRce / sumCs)).toFixed(2);
+        var cutRs = (100 * (1 - sumRce / sumRs)).toFixed(2);
+        var cutGd = (100 * (1 - sumRce / sumGd)).toFixed(2);
+        var sum3 = sumCs + sumRs + sumGd;
+        var cutSum = (100 * (1 - sumRce / sum3)).toFixed(2);
+
+        document.getElementById('o-h4-rce').textContent = sumRce.toLocaleString('en-US') + ' (' + H4_METRIC_LABELS[mIdx] + ')';
+        document.getElementById('o-h4-cs').textContent = 'vs ' + sumCs.toLocaleString('en-US') + ' Unity C# (-' + cutCs + '%)';
+        document.getElementById('o-h4-rsgd').textContent = '-' + cutRs + '% / -' + cutGd + '%';
+        document.getElementById('o-h4-sum').textContent = 'vs ' + sum3.toLocaleString('en-US') + ' 3-engine sum (-' + cutSum + '%)';
+
+        document.getElementById('h4-tbody').innerHTML = mods.map(function(m){
+          var mCut = (100 * (1 - m.rce[mIdx] / m.cs[mIdx])).toFixed(1);
+          return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14);">' +
+            '<td style="padding: 0.4rem 0.5rem; font-family: var(--font-mono);"><strong>' + m.game + '</strong> · ' + m.name + '</td>' +
+            '<td style="padding: 0.4rem 0.5rem; text-align: right; font-family: var(--font-mono); color: var(--color-brand-cyan); font-weight: 700;">' + m.rce[mIdx].toLocaleString('en-US') + '</td>' +
+            '<td style="padding: 0.4rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + m.cs[mIdx].toLocaleString('en-US') + '</td>' +
+            '<td style="padding: 0.4rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + m.rs[mIdx].toLocaleString('en-US') + '</td>' +
+            '<td style="padding: 0.4rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + m.gd[mIdx].toLocaleString('en-US') + '</td>' +
+            '<td style="padding: 0.4rem 0.5rem; text-align: right; font-family: var(--font-mono); color: var(--color-brand-cyan); font-weight: 700;">-' + mCut + '%</td>' +
+          '</tr>';
+        }).join('');
+
+        var pyPt = H5_TIERS[0].pts[nKey];
+        var cppPt = H5_TIERS[3].pts[nKey];
+        var eRatio = (pyPt.mj / cppPt.mj).toFixed(0);
+        document.getElementById('o-h5-lat').textContent = pyPt.p50.toFixed(2) + ' vs ' + cppPt.p50.toFixed(4) + ' ms';
+        document.getElementById('o-h5-eratio').textContent = Number(eRatio).toLocaleString('en-US') + '× lower';
+        document.getElementById('o-h5-esub').textContent = cppPt.mj.toFixed(3) + ' mJ (C++20) vs ' + pyPt.mj.toFixed(2) + ' mJ (Py)';
+
+        document.getElementById('h5-tbody').innerHTML = H5_TIERS.map(function(t){
+          var p = t.pts[nKey];
+          var ok = p.p50 <= gateMs;
+          return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14);">' +
+            '<td style="padding: 0.42rem 0.5rem; font-family: var(--font-mono); font-weight: 600;">' + t.label + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono); font-weight: 700;">' + p.p50.toFixed(4) + ' ms</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + p.p99.toFixed(4) + ' ms</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + p.mj.toFixed(3) + ' mJ</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + t.ceil20 + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: center; font-family: var(--font-mono); font-weight: 700; color: ' + (ok ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)') + ';">' + (ok ? 'PASS' : 'OVER BUDGET') + '</td>' +
+          '</tr>';
+        }).join('');
+
+        return {
+          ge_h4: { suite: suite, metric: H4_METRIC_LABELS[mIdx], rce: sumRce, csharp: sumCs, rust_ecs: sumRs, gdscript: sumGd, reduction_vs_csharp_pct: +cutCs },
+          ge_h5: { N: +nKey, gate_ms: gateMs, python_p50_ms: pyPt.p50, cpp20_p50_ms: cppPt.p50, energy_ratio_py_over_cpp: +eRatio }
+        };
+      }
+
+      function renderH6H9() {
+        var tab = document.getElementById('s-w6-tab').value;
+        document.getElementById('box-h6-edge').style.display = tab === 'h6' ? '' : 'none';
+        document.getElementById('box-h7-tmpl').style.display = tab === 'h7' ? '' : 'none';
+        document.getElementById('box-h9-fam').style.display = tab === 'h9' ? '' : 'none';
+        document.getElementById('v-w6-badge').textContent = tab.toUpperCase().replace('H', 'GE-H');
+
+        var mEl = document.getElementById('w6-metrics');
+        var tEl = document.getElementById('w6-table-wrap');
+
+        if (tab === 'h6') {
+          var ef = document.getElementById('s-h6-edge').value;
+          var list = H6_PATS.filter(function(p){
+            if (ef === 'all') return true;
+            if (ef === 'fn') return p.ffn > 0;
+            return p.edgeKey === ef;
+          });
+          document.getElementById('v-h6-cnt').textContent = list.length + ' patterns';
+          mEl.innerHTML =
+            '<div class="metric-tile"><div class="k">Form + 4-Edge Checker Recall</div><div class="v" style="color:var(--color-brand-cyan);">98.46% (128/130)</div><div class="s">Precision 100.0% · FP = 0 / 130</div></div>' +
+            '<div class="metric-tile"><div class="k">Form Static Fault F1</div><div class="v" style="color:var(--color-brand-cyan);">0.9922</div><div class="s">0 runtime ticks executed</div></div>' +
+            '<div class="metric-tile"><div class="k">Godot Parse-Only Baseline</div><div class="v" style="color:var(--color-brand-amber);">F1 = 0.1159</div><div class="s">TP = 8/130 (6.15%) · Mage ref 0.12</div></div>' +
+            '<div class="metric-tile"><div class="k">2 Residual FNs (Honest Boundary)</div><div class="v" style="color:var(--color-brand-amber);">P10 &amp; P19</div><div class="s">Bare i64 scalar without unit newtype</div></div>';
+          tEl.innerHTML = '<table style="width:100%; border-collapse:collapse; font-size:0.8rem;"><thead><tr style="border-bottom:1px solid rgba(148,163,184,0.32); text-align:left;">' +
+            '<th style="padding:0.4rem 0.5rem;">ID · Defect Pattern</th><th style="padding:0.4rem 0.5rem;">Contract Edge</th><th style="padding:0.4rem 0.5rem; text-align:right;">Form TP/5</th><th style="padding:0.4rem 0.5rem; text-align:right;">Form FP/5</th><th style="padding:0.4rem 0.5rem; text-align:right;">Parse TP/5</th><th style="padding:0.4rem 0.5rem;">Sample Static Diagnostic</th></tr></thead><tbody>' +
+            list.map(function(p){
+              return '<tr style="border-bottom:1px solid rgba(148,163,184,0.14);">' +
+                '<td style="padding:0.4rem 0.5rem; font-family:var(--font-mono); font-weight:600;">' + p.id + ' · ' + p.name + '</td>' +
+                '<td style="padding:0.4rem 0.5rem; font-size:0.76rem;">' + p.edge + '</td>' +
+                '<td style="padding:0.4rem 0.5rem; text-align:right; font-family:var(--font-mono); color:var(--color-brand-cyan); font-weight:700;">' + p.ftp + ' / 5</td>' +
+                '<td style="padding:0.4rem 0.5rem; text-align:right; font-family:var(--font-mono);">' + p.ffp + ' / 5</td>' +
+                '<td style="padding:0.4rem 0.5rem; text-align:right; font-family:var(--font-mono); color:var(--color-brand-amber);">' + p.dtp + ' / 5</td>' +
+                '<td style="padding:0.4rem 0.5rem; font-family:var(--font-mono); font-size:0.74rem; color:var(--color-brand-gray);">' + p.diag + '</td></tr>';
+            }).join('') + '</tbody></table>';
+          return { tab: 'h6', edge_filter: ef, patterns_shown: list.length, form_f1: 0.9922, baseline_f1: 0.1159 };
+        }
+
+        if (tab === 'h7') {
+          var ti = parseInt(document.getElementById('s-h7-tmpl').value, 10) || 0;
+          var tm = H7_TMPLS[ti] || H7_TMPLS[0];
+          document.getElementById('v-h7-lam').textContent = 'Λ̂ = ' + tm.lam.toFixed(2) + ' s⁻¹';
+          mEl.innerHTML =
+            '<div class="metric-tile"><div class="k">OLS Slope β̂ = 1 / Λ̂</div><div class="v" style="color:var(--color-brand-cyan);">' + tm.beta.toFixed(4) + ' s/nat</div><div class="s">' + tm.id + ' · ' + tm.name + '</div></div>' +
+            '<div class="metric-tile"><div class="k">Implied Lyapunov Λ̂</div><div class="v" style="color:var(--color-brand-amber);">' + tm.lam.toFixed(4) + ' s⁻¹</div><div class="s">95% CI [' + tm.ciLam[0].toFixed(2) + ', ' + tm.ciLam[1].toFixed(2) + '] s⁻¹</div></div>' +
+            '<div class="metric-tile"><div class="k">Linearity R² (Mean / Traj)</div><div class="v" style="color:var(--color-brand-cyan);">' + tm.r2Mean.toFixed(5) + ' / ' + tm.r2Traj.toFixed(4) + '</div><div class="s">0 / 280 right-censored runs</div></div>' +
+            '<div class="metric-tile"><div class="k">Two-Sided Zero-Slope p</div><div class="v" style="color:var(--color-brand-cyan);">' + tm.pStr + '</div><div class="s">df = 278 · 40 seeds × 7 δ₀</div></div>';
+          tEl.innerHTML = '<table style="width:100%; border-collapse:collapse; font-size:0.81rem;"><thead><tr style="border-bottom:1px solid rgba(148,163,184,0.32); text-align:left;">' +
+            '<th style="padding:0.42rem 0.5rem;">Initial Perturbation δ₀</th><th style="padding:0.42rem 0.5rem; text-align:right;">ln(Δ / δ₀) (nats)</th><th style="padding:0.42rem 0.5rem; text-align:right;">Empirical Mean t* (s)</th><th style="padding:0.42rem 0.5rem; text-align:right;">SD (s)</th><th style="padding:0.42rem 0.5rem; text-align:right;">Mean Ticks @ 60 Hz</th><th style="padding:0.42rem 0.5rem; text-align:right;">OLS Predicted t* (s)</th></tr></thead><tbody>' +
+            tm.cells.map(function(c){
+              var pred = tm.beta * c.lnRatio;
+              return '<tr style="border-bottom:1px solid rgba(148,163,184,0.14);">' +
+                '<td style="padding:0.42rem 0.5rem; font-family:var(--font-mono); font-weight:600;">2^(' + c.exp + ')</td>' +
+                '<td style="padding:0.42rem 0.5rem; text-align:right; font-family:var(--font-mono);">' + c.lnRatio.toFixed(2) + '</td>' +
+                '<td style="padding:0.42rem 0.5rem; text-align:right; font-family:var(--font-mono); color:var(--color-brand-cyan); font-weight:700;">' + c.meanS.toFixed(3) + ' s</td>' +
+                '<td style="padding:0.42rem 0.5rem; text-align:right; font-family:var(--font-mono);">± ' + c.sdS.toFixed(3) + ' s</td>' +
+                '<td style="padding:0.42rem 0.5rem; text-align:right; font-family:var(--font-mono);">' + c.meanTicks.toLocaleString('en-US') + '</td>' +
+                '<td style="padding:0.42rem 0.5rem; text-align:right; font-family:var(--font-mono); color:var(--color-brand-amber);">' + pred.toFixed(3) + ' s</td></tr>';
+            }).join('') + '</tbody></table>';
+          return { tab: 'h7', template_id: tm.id, lambda_per_s: tm.lam, r2_mean: tm.r2Mean };
+        }
+
+        if (tab === 'h8') {
+          mEl.innerHTML =
+            '<div class="metric-tile"><div class="k">3-OS 1-Hour Checkpoints</div><div class="v" style="color:var(--color-brand-cyan);">0 / 6,480 Mismatches</div><div class="s">macOS arm64 · Linux x86_64 · Win11 x86_64</div></div>' +
+            '<div class="metric-tile"><div class="k">Input Log |D| (1 Hour)</div><div class="v" style="color:var(--color-brand-cyan);">44.6 KB gzip</div><div class="s">432.0 KB raw (216,000 ticks @ 60 Hz)</div></div>' +
+            '<div class="metric-tile"><div class="k">State Snapshot Savings</div><div class="v" style="color:var(--color-brand-cyan);">116× – 292× smaller</div><div class="s">vs 5.19–13.03 MB gzip state stream</div></div>' +
+            '<div class="metric-tile"><div class="k">4 Ambient Leak Controls</div><div class="v" style="color:var(--color-brand-amber);">4 / 4 Fail @ t = 1</div><div class="s">GE-L4 sin() differs across all 3 OSs</div></div>';
+          var sRows = H8_DATA.sessions.map(function(s){
+            return '<tr style="border-bottom:1px solid rgba(148,163,184,0.14);">' +
+              '<td style="padding:0.42rem 0.5rem; font-family:var(--font-mono); font-weight:600;">' + s.name + ' (216,000 t)</td>' +
+              '<td style="padding:0.42rem 0.5rem; text-align:right; font-family:var(--font-mono);">' + (s.log_D_gzip_bytes / 1024).toFixed(1) + ' KB</td>' +
+              '<td style="padding:0.42rem 0.5rem; text-align:right; font-family:var(--font-mono);">' + (s.snap_stream_gzip_bytes / 1048576).toFixed(2) + ' MB (' + s.gzip_compression_ratio_snap_over_D.toFixed(1) + '×)</td>' +
+              '<td style="padding:0.42rem 0.5rem; text-align:right; font-family:var(--font-mono);">' + s.wall_ms_macos_arm64.toFixed(1) + ' / ' + s.wall_ms_windows11_x86_64.toFixed(1) + ' ms</td>' +
+              '<td style="padding:0.42rem 0.5rem; font-family:var(--font-mono); color:var(--color-brand-cyan);">' + s.final_216000_sha256.slice(0, 24) + '… (3/3 OS exact)</td></tr>';
+          }).join('');
+          var lRows = H8_DATA.leaks.map(function(l){
+            return '<tr style="border-bottom:1px solid rgba(148,163,184,0.14);">' +
+              '<td style="padding:0.42rem 0.5rem; font-family:var(--font-mono); color:var(--color-brand-amber); font-weight:600;">' + l.id + '</td>' +
+              '<td style="padding:0.42rem 0.5rem; text-align:right; font-family:var(--font-mono); color:var(--color-brand-amber);">t_div = ' + l.t_div + '</td>' +
+              '<td colspan="3" style="padding:0.42rem 0.5rem; font-family:var(--font-mono); font-size:0.75rem;">macOS ' + l.mac + '… · Linux ' + l.lin + '… · Win11 ' + l.win + '…</td></tr>';
+          }).join('');
+          tEl.innerHTML = '<table style="width:100%; border-collapse:collapse; font-size:0.8rem;"><thead><tr style="border-bottom:1px solid rgba(148,163,184,0.32); text-align:left;">' +
+            '<th style="padding:0.4rem 0.5rem;">Session / Control</th><th style="padding:0.4rem 0.5rem; text-align:right;">Gzip |D| / t_div</th><th style="padding:0.4rem 0.5rem; text-align:right;">Gzip State Stream</th><th style="padding:0.4rem 0.5rem; text-align:right;">macOS / Win11 ms</th><th style="padding:0.4rem 0.5rem;">Final SHA-256 Receipt</th></tr></thead><tbody>' + sRows + lRows + '</tbody></table>';
+          return { tab: 'h8', sessions: 3, checkpoints_verified_per_os: 6480, mismatches: 0 };
+        }
+
+        var fam = document.getElementById('s-h9-fam').value;
+        var tasks = H9_TASKS.filter(function(t){ return fam === 'all' || t.fam.indexOf(fam) !== -1; });
+        document.getElementById('v-h9-cnt').textContent = tasks.length + ' tasks';
+        mEl.innerHTML =
+          '<div class="metric-tile"><div class="k">Headless Godot 4.7.2 Parity</div><div class="v" style="color:var(--color-brand-cyan);">36 / 36 (100.0%)</div><div class="s">form_to_gdscript.py vs native GDScript</div></div>' +
+          '<div class="metric-tile"><div class="k">Per-Tick SHA-256 Checks</div><div class="v" style="color:var(--color-brand-cyan);">0 / 18,000 Mismatches</div><div class="s">500 ticks × 36 gameplay tasks</div></div>' +
+          '<div class="metric-tile"><div class="k">RCE 0.9 Admission Gate</div><div class="v" style="color:var(--color-brand-cyan);">36 / 36 Admitted</div><div class="s">rce check &amp; rce test @ 1762fb4bb65a</div></div>' +
+          '<div class="metric-tile"><div class="k">GameCraft-Bench Audit</div><div class="v" style="color:var(--color-brand-amber);">140 NL + VLM Judge</div><div class="s">Public repo uses Xvfb + external VLM</div></div>';
+        tEl.innerHTML = '<table style="width:100%; border-collapse:collapse; font-size:0.8rem;"><thead><tr style="border-bottom:1px solid rgba(148,163,184,0.32); text-align:left;">' +
+          '<th style="padding:0.4rem 0.5rem;">Task ID</th><th style="padding:0.4rem 0.5rem;">Family</th><th style="padding:0.4rem 0.5rem; text-align:right;">Emitted ms</th><th style="padding:0.4rem 0.5rem; text-align:right;">Native ms</th><th style="padding:0.4rem 0.5rem;">500-Tick Final SHA-256</th><th style="padding:0.4rem 0.5rem; text-align:center;">Parity</th></tr></thead><tbody>' +
+          tasks.map(function(t){
+            return '<tr style="border-bottom:1px solid rgba(148,163,184,0.14);">' +
+              '<td style="padding:0.4rem 0.5rem; font-family:var(--font-mono); font-weight:600;">' + t.id + '</td>' +
+              '<td style="padding:0.4rem 0.5rem;">' + t.fam + '</td>' +
+              '<td style="padding:0.4rem 0.5rem; text-align:right; font-family:var(--font-mono);">' + t.emMs.toFixed(1) + '</td>' +
+              '<td style="padding:0.4rem 0.5rem; text-align:right; font-family:var(--font-mono);">' + t.naMs.toFixed(1) + '</td>' +
+              '<td style="padding:0.4rem 0.5rem; font-family:var(--font-mono); color:var(--color-brand-cyan);">' + t.sha + '…</td>' +
+              '<td style="padding:0.4rem 0.5rem; text-align:center; font-family:var(--font-mono); color:var(--color-brand-cyan); font-weight:700;">500/500 EXACT</td></tr>';
+          }).join('') + '</tbody></table>';
+        return { tab: 'h9', family_filter: fam, tasks_shown: tasks.length, parity_pct: 100.0, tick_mismatches: 0 };
+      }
+
+      ['s-h4-suite','s-h4-metric','s-h5-n','s-h5-gate'].forEach(function(id){
+        document.getElementById(id).addEventListener('change', renderH4H5);
+      });
+      ['s-w6-tab','s-h6-edge','s-h7-tmpl','s-h9-fam'].forEach(function(id){
+        document.getElementById(id).addEventListener('change', renderH6H9);
+      });
+      renderH4H5();
+      renderH6H9();
+
       // Programmatic Living Lab API
       window.openieLivingLab = {
         studyId: 'game-engines',
@@ -2348,6 +2714,20 @@
             spent_rewind_uj: +spentRewindUj.toFixed(2),
             input_tape_bytes: inputTape.length
           };
+        },
+        inspectGeH4H5: function(opts){
+          if (opts && opts.suite) document.getElementById('s-h4-suite').value = String(opts.suite);
+          if (opts && opts.metric_index != null) document.getElementById('s-h4-metric').value = String(opts.metric_index);
+          if (opts && opts.actor_n != null) document.getElementById('s-h5-n').value = String(opts.actor_n);
+          if (opts && opts.gate_ms != null) document.getElementById('s-h5-gate').value = String(opts.gate_ms);
+          return renderH4H5();
+        },
+        inspectGeH6H9: function(opts){
+          if (opts && opts.tab) document.getElementById('s-w6-tab').value = String(opts.tab);
+          if (opts && opts.edge) document.getElementById('s-h6-edge').value = String(opts.edge);
+          if (opts && opts.template_index != null) document.getElementById('s-h7-tmpl').value = String(opts.template_index);
+          if (opts && opts.family) document.getElementById('s-h9-fam').value = String(opts.family);
+          return renderH6H9();
         }
       };
 
@@ -2421,6 +2801,39 @@
               return window.openieLivingLab.verifyChronoReplay();
             },
             annotations: { readOnlyHint: false }
+          },
+          {
+            name: 'inspect_game_engines_ge_h4_h5',
+            title: 'Inspect GE-H4 17-module SLOC concision & GE-H5 10,000-actor scaling',
+            description: 'Returns Form .rce SLOC/token/glue reductions across Haunted Jaunt, Survival Shooter, and Tanks plus 5-tier latency and Linux L2 RAPL mJ/tick across N = 64..10,000 actors.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                suite: { type: 'string', enum: ['all', 'Haunted Jaunt', 'Survival Shooter', 'Tanks'] },
+                metric_index: { type: 'number', enum: [0, 1, 2, 3] },
+                actor_n: { type: 'number', enum: [64, 128, 256, 300, 350, 500, 1000, 2500, 5000, 10000] },
+                gate_ms: { type: 'number', enum: [20, 16.67, 8.33] }
+              },
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.inspectGeH4H5(inp || {}); },
+            annotations: { readOnlyHint: true }
+          },
+          {
+            name: 'inspect_game_engines_ge_h6_h9',
+            title: 'Inspect GE-H6 interface F1, GE-H7 Lyapunov slopes, GE-H8 1h replay & GE-H9 Godot 4 parity',
+            description: 'Switches between GE-H6 (26-pattern static checker F1=0.9922), GE-H7 (840-run Lyapunov slopes), GE-H8 (1-hour 216,000-tick 3-OS replay), and GE-H9 (36-task Godot 4.7.2 parity).',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                tab: { type: 'string', enum: ['h6', 'h7', 'h8', 'h9'] },
+                edge: { type: 'string', enum: ['all', 'a', 'b', 'c', 'd', 'fn'] },
+                template_index: { type: 'number', enum: [0, 1, 2] }
+              },
+              additionalProperties: false
+            },
+            execute: function(inp){ return window.openieLivingLab.inspectGeH6H9(inp || {}); },
+            annotations: { readOnlyHint: true }
           }
         ].forEach(function(t){ try { Promise.resolve(mc.registerTool(t)).catch(function(){}); } catch(_e){} });
       }

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#F59E0B">
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="David Charlot">
-  <meta name="description" content="Interactive observatory for RCE Compile: explore E4-Energy RAPL reported_j compilation vs runtime payback horizons across 20 kernels and 14 compiler tiers, test live De Bruijn name-free hashing against naive identifier-stripping, and audit 12 compiler families against the Compiler Form.">
+  <meta name="description" content="Interactive observatory for RCE Compile: explore E4-Energy &amp; E4-Prelude (librce_rt.rlib) RAPL reported_j compilation vs runtime payback horizons across 20 kernels and 15 compiler tiers, test live De Bruijn name-free hashing against naive identifier-stripping, and audit 12 compiler families against the Compiler Form.">
   <link rel="canonical" href="https://research.openie.dev/living/rce-compile/">
   <link rel="describedby" type="text/markdown" href="/llms.txt">
   <link rel="alternate" type="text/markdown" title="RCE Compile (Markdown)" href="/papers/rce-compile.md">
@@ -32,23 +32,23 @@
     <div style="max-width: 68rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
       <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/rce-compile/ · interactive instruments</p>
       <h1 class="hero-title" style="max-width: none;">Living Figures: RCE Compile Normal-Form, Energy &amp; Reuse Observatory</h1>
-      <p class="author-line">Open Interface Engineering · Companion to <a href="/papers/rce-compile/" style="color: var(--color-brand-cyan);">/papers/rce-compile/</a> · Engine pin: <code>openIE-dev/rce @ 1762fb4b</code> · Pre-reg SHA-256: <code>165a12cda4d9c304…</code></p>
+      <p class="author-line">Open Interface Engineering · Companion to <a href="/papers/rce-compile/" style="color: var(--color-brand-cyan);">/papers/rce-compile/</a> · Engine pin: <code>openIE-dev/rce @ 1762fb4b</code> · Pre-reg SHA-256: <code>165a12cda4d9c304…</code> (W4) · <code>1ba4f28abfaa3783…</code> (W5 <code>.rlib</code>)</p>
 
       <div class="measurement-box">
         <strong>Measurement grammar on this page.</strong> Every widget stamps its numbers by evidence basis:
-        <span class="chip chip-meas">Exact (Bitwise Checksum &amp; SHA-256)</span> for <code>280 / 280</code> checksum-verified kernel builds, <code>245</code> base programs, and <code>500</code> test-vector-verified semantic mutants;
+        <span class="chip chip-meas">Exact (Bitwise Checksum &amp; SHA-256)</span> for <code>300 / 300</code> checksum-verified kernel builds across <code>15</code> tiers, <code>245</code> base programs, and <code>500</code> test-vector-verified semantic mutants;
         <span class="chip chip-sim">Reported (RAPL reported_j)</span> for Linux <code>powercap</code> CPU core (<code>intel-rapl:0:0/energy_uj</code>, pinned CPU 0) and APU package (<code>intel-rapl:0/energy_uj</code>) readings on <code>AMD Ryzen AI Max+ 395</code>; and
         <span class="chip chip-est">Modelled (Lifecycle N)</span> for adjustable deployment horizon projections <code>E_compile + N · E_run</code>. <code>measured_j = None</code>; <code>board_metered = false</code>.
       </div>
 
-      <!-- Panel 1 (rc-diag-01): Interactive E4-Energy Compiler Payback Horizon Explorer -->
+      <!-- Panel 1 (rc-diag-01): Interactive E4-Energy & E4-Prelude Compiler Payback Horizon Explorer -->
       <section id="rc-diag-01" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>rc-diag-01</code> · <code>E4-Energy</code> Compiler Payback Horizon Explorer (<code>N* = ΔE_compile / ΔE_run</code>)</h2>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>rc-diag-01</code> · <code>E4-Energy</code> &amp; <code>E4-Prelude</code> Compiler Payback Horizon Explorer (<code>N* = ΔE_compile / ΔE_run</code>)</h2>
           <span class="chip chip-sim">Reported (RAPL core &amp; pkg reported_j)</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          Inspect measured compilation energy <code>E_compile</code> and per-invocation runtime energy <code>E_run</code> across <strong><code>20</code> exact-integer and fixed-point kernels × <code>14</code> compiler tiers</strong> (<code>gcc</code>, <code>clang</code>, <code>rustc</code>, <code>wasm32</code> in Node, <code>python3</code>, and <code>rce</code> at <code>1762fb4b</code>). Adjust deployment invocations <code>N ∈ [1, 10⁹]</code> to see when aggressive optimization pays back — and when <code>-O3</code> vs <code>-O2</code> never recovers its extra compile joules (<code>6/20</code> kernels on Clang and Rust, <code>4/20</code> on GCC).
+          Inspect measured compilation energy <code>E_compile</code> and per-invocation runtime energy <code>E_run</code> across <strong><code>20</code> exact-integer and fixed-point kernels × <code>15</code> compiler tiers</strong> (<code>gcc</code>, <code>clang</code>, <code>rustc</code>, <code>wasm32</code> in Node, <code>python3</code>, and <code>rce</code> at <code>1762fb4b</code> — both monolithic prelude and pre-compiled <code>librce_rt.rlib</code> shared runtime crate, which cuts per-kernel <code>rustc -O3</code> build energy <code>20.1×</code> from <code>56.29 J</code> to <code>2.81 J</code> and lowers <code>N*</code> vs. Node JS from <code>31,080</code> to <code>1,079</code>). Adjust deployment invocations <code>N ∈ [1, 10⁹]</code> to see when aggressive optimization pays back — and when <code>-O3</code> vs <code>-O2</code> never recovers its extra compile joules (<code>6/20</code> kernels on Clang and Rust, <code>4/20</code> on GCC).
         </p>
         <p id="k-desc" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-brand-cyan); margin: 0.4rem 0 0;"></p>
 
@@ -199,8 +199,8 @@
             <figcaption><strong>Figure 1.</strong> Qualitative audit of twelve production compiler families against the seven parts of the Compiler Form (<code>R, L, C, K, U, E, G</code>). Energy (<code>E</code>) is absent in every shipping compiler family surveyed.</figcaption>
           </figure>
           <figure class="fig">
-            <img src="/figures/rce-compile/compile-energy-payback.svg" alt="Compilation energy payback horizons N* and E5-Scale name-free reuse soundness">
-            <figcaption><strong>Figure 2.</strong> Wave 4 <code>E4-Energy</code> lifecycle curves <code>E_compile + N · E_run</code> (Linux RAPL core <code>reported_j</code>, <code>board_metered = false</code>), <code>-O2 → -O3</code> non-paying optimization shares across <code>20</code> kernels, and <code>E5-Scale</code> soundness across <code>245</code> base programs and <code>500</code> verified semantic mutants.</figcaption>
+            <img src="/figures/rce-compile/compile-energy-payback.svg" alt="Compilation energy payback horizons N*, shared .rlib prelude cache, and E5-Scale name-free reuse soundness">
+            <figcaption><strong>Figure 2.</strong> <code>E4-Energy</code> &amp; <code>E4-Prelude</code> lifecycle curves <code>E_compile + N · E_run</code> (Linux RAPL core <code>reported_j</code>, <code>board_metered = false</code>; including pre-compiled <code>librce_rt.rlib</code> cutting RCE→Rust build energy <code>20.1×</code> from <code>56.29 J</code> to <code>2.81 J</code> and lowering <code>N*</code> from <code>31,080</code> to <code>1,079</code>), <code>-O2 → -O3</code> non-paying optimization shares across <code>20</code> kernels, and <code>E5-Scale</code> soundness across <code>245</code> base programs and <code>500</code> verified semantic mutants.</figcaption>
           </figure>
         </div>
       </section>

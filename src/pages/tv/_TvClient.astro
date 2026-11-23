@@ -1,0 +1,378 @@
+---
+interface Props {
+  catalog: any;
+}
+const { catalog } = Astro.props;
+const catalogJson = JSON.stringify(catalog);
+---
+
+<script is:inline define:vars={{ catalogJson }}>
+(function () {
+  const CATALOG = JSON.parse(catalogJson);
+  const STUDIES = CATALOG.studies || [];
+  const TIER_ORDER = ['5s', '30s', '60s', '90s'];
+  const byId = Object.fromEntries(STUDIES.map((s) => [s.id, s]));
+
+  let activeStudyId = STUDIES[0]?.id || 'communication-avalanche';
+  let activeTier = '60s';
+  let playlistMode = null; // null | '60s' | '30s'
+  let activeCategory = 'All 21';
+  let searchQuery = '';
+  let playbackRate = 1.0;
+
+  const videoEl = document.getElementById('tv-player');
+  const trackEl = document.getElementById('tv-track');
+  const titleEl = document.getElementById('tv-active-title');
+  const catEl = document.getElementById('tv-active-category');
+  const hookEl = document.getElementById('tv-active-hook');
+  const metricEl = document.getElementById('tv-active-metric');
+  const energyBadgeEl = document.getElementById('tv-active-energy-tier');
+  const energyDiscEl = document.getElementById('tv-active-energy-disc');
+  const epistEl = document.getElementById('tv-active-epistemic');
+  const cueListEl = document.getElementById('tv-cue-list');
+  const playlistStatusEl = document.getElementById('tv-playlist-status');
+  const copyBtn = document.getElementById('tv-copy-transcript');
+
+  const linkPaper = document.getElementById('tv-link-paper');
+  const linkFigures = document.getElementById('tv-link-figures');
+  const linkTutorial = document.getElementById('tv-link-tutorial');
+  const linkPdf = document.getElementById('tv-link-pdf');
+  const linkAbout = document.getElementById('tv-link-about');
+
+  function formatSec(sec) {
+    const s = Math.max(0, Math.floor(sec));
+    const m = Math.floor(s / 60);
+    const r = s % 60;
+    return String(m).padStart(2, '0') + ':' + String(r).padStart(2, '0');
+  }
+
+  function visibleStudyIds() {
+    const q = searchQuery.trim().toLowerCase();
+    return STUDIES.filter((s) => {
+      if (activeCategory !== 'All 21' && s.category !== activeCategory) return false;
+      if (!q) return true;
+      const hay = [
+        s.id, s.title, s.short_title, s.category, s.headline_metric, s.energy_tier,
+        s.tiers['5s']?.transcript, s.tiers['30s']?.transcript,
+        s.tiers['60s']?.transcript, s.tiers['90s']?.transcript,
+      ].join(' ').toLowerCase();
+      return hay.includes(q);
+    }).map((s) => s.id);
+  }
+
+  function renderCues(study, tier) {
+    if (!cueListEl) return;
+    const tObj = study.tiers[tier];
+    const cues = tObj?.cues || [];
+    cueListEl.innerHTML = '';
+    cues.forEach((c, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'tv-cue-row w-full text-left px-3 py-2.5 rounded-lg border border-transparent transition-all flex gap-3 items-start cursor-pointer bg-transparent hover:bg-white/5';
+      btn.dataset.start = String(c.start);
+      btn.dataset.end = String(c.end);
+      btn.dataset.idx = String(idx);
+      btn.innerHTML =
+        '<span class="font-mono text-[11px] text-brand-cyan shrink-0 pt-0.5">' + formatSec(c.start) + '</span>' +
+        '<span class="font-body text-[13px] text-brand-light leading-snug">' +
+        c.text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
+        '</span>';
+      btn.addEventListener('click', () => {
+        if (videoEl) {
+          videoEl.currentTime = c.start;
+          videoEl.play().catch(() => {});
+        }
+      });
+      cueListEl.appendChild(btn);
+    });
+  }
+
+  function syncActiveCue() {
+    if (!videoEl || !cueListEl) return;
+    const t = videoEl.currentTime;
+    const rows = cueListEl.querySelectorAll('.tv-cue-row');
+    rows.forEach((r) => {
+      const s0 = parseFloat(r.dataset.start || '0');
+      const s1 = parseFloat(r.dataset.end || '0');
+      const active = t >= s0 - 0.08 && t <= s1 + 0.18;
+      r.classList.toggle('tv-cue-active', active);
+      if (active) {
+        const box = cueListEl;
+        const top = r.offsetTop - box.offsetTop;
+        if (top < box.scrollTop || top + r.offsetHeight > box.scrollTop + box.clientHeight) {
+          box.scrollTo({ top: Math.max(0, top - 48), behavior: 'smooth' });
+        }
+      }
+    });
+  }
+
+  function updateUIState(autoplay) {
+    const study = byId[activeStudyId] || STUDIES[0];
+    if (!study) return;
+    const tObj = study.tiers[activeTier] || study.tiers['60s'];
+
+    if (titleEl) titleEl.textContent = study.title;
+    if (catEl) catEl.textContent = study.category;
+    if (hookEl) hookEl.textContent = tObj.hook;
+    if (metricEl) metricEl.textContent = study.headline_metric;
+    if (energyBadgeEl) energyBadgeEl.textContent = study.energy_tier;
+    if (energyDiscEl) energyDiscEl.textContent = study.energy_disclosure;
+
+    if (epistEl) {
+      epistEl.innerHTML = (study.epistemic_tags || [])
+        .map((tg) => '<span class="px-2 py-0.5 rounded font-mono text-[11px] border border-brand-cyan/40 text-brand-cyan bg-brand-cyan/10">[' + tg + ']</span>')
+        .join('');
+    }
+
+    if (linkPaper) linkPaper.href = study.paper_url;
+    if (linkFigures) linkFigures.href = study.figures_url;
+    if (linkTutorial) linkTutorial.href = '/tutorials/?lab=' + study.tutorial_lab_id;
+    if (linkPdf) linkPdf.href = study.pdf_url;
+    if (linkAbout) linkAbout.href = study.about_url;
+
+    document.querySelectorAll('[data-tier-btn]').forEach((b) => {
+      const isAct = b.getAttribute('data-tier-btn') === activeTier;
+      b.classList.toggle('tv-pill-active', isAct);
+      b.setAttribute('aria-pressed', String(isAct));
+    });
+
+    document.querySelectorAll('[data-playlist-btn]').forEach((b) => {
+      const m = b.getAttribute('data-playlist-btn');
+      const isAct = playlistMode === m;
+      b.classList.toggle('tv-playlist-active', isAct);
+      b.setAttribute('aria-pressed', String(isAct));
+    });
+
+    if (playlistStatusEl) {
+      if (playlistMode) {
+        const ids = visibleStudyIds();
+        const pos = Math.max(0, ids.indexOf(activeStudyId)) + 1;
+        playlistStatusEl.textContent = 'Continuous ' + playlistMode + ' Playlist · Film ' + pos + ' of ' + ids.length;
+      } else {
+        playlistStatusEl.textContent = 'Single-Film Mode · ' + tObj.duration_s.toFixed(1) + 's';
+      }
+    }
+
+    document.querySelectorAll('[data-study-card]').forEach((card) => {
+      const cid = card.getAttribute('data-study-card');
+      card.classList.toggle('tv-card-playing', cid === activeStudyId);
+      const badge = card.querySelector('.tv-now-playing-pill');
+      if (badge) badge.classList.toggle('hidden', cid !== activeStudyId);
+    });
+
+    renderCues(study, activeTier);
+
+    if (videoEl) {
+      const curSrc = videoEl.getAttribute('data-loaded-src');
+      if (curSrc !== tObj.video_url) {
+        videoEl.poster = study.poster_url;
+        videoEl.setAttribute('data-loaded-src', tObj.video_url);
+        if (trackEl) trackEl.src = tObj.vtt_url;
+        videoEl.src = tObj.video_url;
+        videoEl.load();
+      }
+      videoEl.playbackRate = playbackRate;
+      if (autoplay) {
+        videoEl.play().catch(() => {});
+      }
+    }
+
+    try {
+      history.replaceState(null, '', '#' + activeStudyId + ':' + activeTier);
+    } catch (_) {}
+  }
+
+  function applyFilters() {
+    const vis = new Set(visibleStudyIds());
+    document.querySelectorAll('[data-study-card]').forEach((card) => {
+      const cid = card.getAttribute('data-study-card');
+      card.classList.toggle('hidden', !vis.has(cid));
+    });
+    const countEl = document.getElementById('tv-visible-count');
+    if (countEl) countEl.textContent = vis.size + ' / ' + STUDIES.length + ' studies shown (' + (vis.size * 4) + ' films)';
+  }
+
+  function stepTopic(delta, autoplay) {
+    const ids = visibleStudyIds();
+    if (!ids.length) return;
+    const idx = ids.indexOf(activeStudyId);
+    const nextIdx = idx < 0 ? 0 : (idx + delta + ids.length) % ids.length;
+    activeStudyId = ids[nextIdx];
+    if (playlistMode) activeTier = playlistMode;
+    updateUIState(autoplay);
+  }
+
+  // Bind controls
+  document.querySelectorAll('[data-tier-btn]').forEach((b) => {
+    b.addEventListener('click', () => {
+      const t = b.getAttribute('data-tier-btn');
+      if (t && TIER_ORDER.includes(t)) {
+        playlistMode = null;
+        activeTier = t;
+        updateUIState(true);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-playlist-btn]').forEach((b) => {
+    b.addEventListener('click', () => {
+      const m = b.getAttribute('data-playlist-btn');
+      if (playlistMode === m) {
+        playlistMode = null;
+        updateUIState(false);
+      } else {
+        playlistMode = m;
+        activeTier = m;
+        updateUIState(true);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-speed-btn]').forEach((b) => {
+    b.addEventListener('click', () => {
+      playbackRate = parseFloat(b.getAttribute('data-speed-btn') || '1');
+      document.querySelectorAll('[data-speed-btn]').forEach((x) => x.classList.toggle('tv-speed-active', x === b));
+      if (videoEl) videoEl.playbackRate = playbackRate;
+    });
+  });
+
+  document.getElementById('tv-prev-btn')?.addEventListener('click', () => stepTopic(-1, true));
+  document.getElementById('tv-next-btn')?.addEventListener('click', () => stepTopic(1, true));
+
+  document.querySelectorAll('[data-cat-tab]').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      activeCategory = tab.getAttribute('data-cat-tab') || 'All 21';
+      document.querySelectorAll('[data-cat-tab]').forEach((t) => {
+        const on = t === tab;
+        t.classList.toggle('tv-cat-active', on);
+        t.setAttribute('aria-selected', String(on));
+      });
+      applyFilters();
+    });
+  });
+
+  const searchInput = document.getElementById('tv-search-input');
+  searchInput?.addEventListener('input', (e) => {
+    searchQuery = e.target.value || '';
+    applyFilters();
+  });
+
+  document.querySelectorAll('[data-card-play]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const sid = btn.getAttribute('data-study');
+      const tr = btn.getAttribute('data-tier') || activeTier;
+      if (sid && byId[sid]) {
+        playlistMode = null;
+        activeStudyId = sid;
+        activeTier = tr;
+        updateUIState(true);
+        document.getElementById('tv-theater-anchor')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  copyBtn?.addEventListener('click', () => {
+    const st = byId[activeStudyId];
+    const txt = st?.tiers?.[activeTier]?.transcript || '';
+    navigator.clipboard?.writeText(txt).then(() => {
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => { copyBtn.textContent = 'Copy Transcript'; }, 1600);
+    });
+  });
+
+  videoEl?.addEventListener('timeupdate', syncActiveCue);
+  videoEl?.addEventListener('ended', () => {
+    if (playlistMode) stepTopic(1, true);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const tag = (e.target?.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select' || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === ' ') {
+      e.preventDefault();
+      if (videoEl) videoEl.paused ? videoEl.play().catch(() => {}) : videoEl.pause();
+    } else if (['1', '2', '3', '4'].includes(e.key)) {
+      playlistMode = null;
+      activeTier = TIER_ORDER[parseInt(e.key, 10) - 1];
+      updateUIState(true);
+    } else if (e.key === 'j' || e.key === 'J') {
+      stepTopic(1, true);
+    } else if (e.key === 'k' || e.key === 'K') {
+      stepTopic(-1, true);
+    } else if (e.key === 'm' || e.key === 'M') {
+      if (videoEl) videoEl.muted = !videoEl.muted;
+    }
+  });
+
+  // Restore initial URL hash or query (?study=...&tier=... or #study:tier)
+  const params = new URLSearchParams(window.location.search);
+  const qStudy = params.get('study');
+  const qTier = params.get('tier');
+  const rawHash = (window.location.hash || '').replace(/^#/, '');
+  if (qStudy && byId[qStudy]) {
+    activeStudyId = qStudy;
+    if (qTier && TIER_ORDER.includes(qTier)) activeTier = qTier;
+  } else if (rawHash) {
+    const [hId, hTier] = rawHash.split(':');
+    if (hId && byId[hId]) activeStudyId = hId;
+    if (hTier && TIER_ORDER.includes(hTier)) activeTier = hTier;
+  }
+
+  // Expose WebMCP / agentic browser API on window.openieTV
+  window.openieTV = {
+    version: CATALOG.version,
+    listFilms() {
+      const out = [];
+      for (const s of STUDIES) {
+        for (const t of TIER_ORDER) {
+          const td = s.tiers[t];
+          out.push({
+            study_id: s.id,
+            title: s.title,
+            short_title: s.short_title,
+            category: s.category,
+            tier: t,
+            duration_s: td.duration_s,
+            video_url: td.video_url,
+            vtt_url: td.vtt_url,
+            poster_url: s.poster_url,
+            headline_metric: s.headline_metric,
+            epistemic_tags: s.epistemic_tags,
+            energy_tier: s.energy_tier,
+          });
+        }
+      }
+      return out;
+    },
+    play(studyId, tier = '60s') {
+      if (!byId[studyId]) throw new Error('Unknown studyId: ' + studyId);
+      const cleanTier = TIER_ORDER.includes(tier) ? tier : '60s';
+      playlistMode = null;
+      activeStudyId = studyId;
+      activeTier = cleanTier;
+      updateUIState(true);
+      return { study_id: activeStudyId, tier: activeTier, video_url: byId[studyId].tiers[cleanTier].video_url };
+    },
+    getTranscript(studyId, tier = '60s') {
+      const s = byId[studyId];
+      if (!s) return null;
+      const cleanTier = TIER_ORDER.includes(tier) ? tier : '60s';
+      const td = s.tiers[cleanTier];
+      return {
+        study_id: s.id,
+        title: s.title,
+        tier: cleanTier,
+        duration_s: td.duration_s,
+        hook: td.hook,
+        transcript: td.transcript,
+        cues: td.cues,
+        energy_tier: s.energy_tier,
+        energy_disclosure: s.energy_disclosure,
+      };
+    },
+  };
+
+  updateUIState(false);
+  applyFilters();
+})();
+</script>

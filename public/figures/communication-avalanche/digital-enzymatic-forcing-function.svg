@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="cta-enz-force-t cta-enz-force-d">
+  <title id="cta-enz-force-t">Catalytic Reaction-Coordinate and 5-Stage Closed-Loop Forcing-Function Blueprint</title>
+  <desc id="cta-enz-force-d">Left panel plots the computational activation energy barrier E^ddagger of unattested natural-language multi-agent handoff (&gt;15 J to 110 J/task, 3.71x prompt bloat, 13.3% false commits) versus a Digital Enzyme (Phi_IR + BLAKE3/Ed25519 + deterministic verifier) slashing Delta E^ddagger to &lt;1 mJ (26-37 us, 0% drift, enzyme unconsumed). Right panel details the 5-stage closed-loop forcing-function blueprint.</desc>
+  <defs>
+    <marker id="arr-cyan" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#22d3ee"/>
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arr-emerald" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#10b981"/>
+    </marker>
+    <marker id="arr-rose" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f43f5e"/>
+    </marker>
+    <marker id="arr-violet" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a78bfa"/>
+    </marker>
+    <marker id="arr-slate" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect x="1.0" y="1.0" width="1198.0" height="698.0" rx="18.0" fill="#0b1120" stroke="#334155" stroke-width="2.00"/>
+  <text x="30.0" y="38.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="20.0" font-weight="800" fill="#f8fafc">Digital Enzymatic Catalysis &amp; Closed-Loop Forcing-Function Blueprint</text>
+  <text x="30.0" y="60.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.0" font-weight="500" fill="#94a3b8">Slashing multi-paradigm handoff activation energy from &gt;15 J prose chat to &lt;1 mJ attested IR without consuming the enzyme</text>
+  <rect x="1026.0" y="18.0" width="148.0" height="28.0" rx="14.0" fill="#0f172a" stroke="#10b981" stroke-width="1.60"/>
+  <text x="1100.0" y="36.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#10b981" text-anchor="middle">&lt; 1 mJ Catalyst</text>
+  <rect x="28.0" y="82.0" width="556.0" height="590.0" rx="12.0" fill="#111827" stroke="#334155" stroke-width="1.50"/>
+  <text x="46.0" y="108.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="13.2" font-weight="800" fill="#f8fafc">A · Computational Activation Barrier (Log10 Joules / Handoff)</text>
+  <text x="46.0" y="127.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.2" font-weight="400" fill="#94a3b8">Analogous to biological enzyme catalysis: catalyst lowers E^ddagger &amp; exits intact</text>
+  <rect x="92.0" y="150.0" width="468.0" height="360.0" fill="#0b1120" stroke="#1e293b" stroke-width="1.20"/>
+  <line x1="92.0" y1="158.8" x2="560.0" y2="158.8" stroke="#1e293b" stroke-width="1.00"/>
+  <text x="84.0" y="162.8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#94a3b8" text-anchor="end">100 J</text>
+  <line x1="92.0" y1="202.7" x2="560.0" y2="202.7" stroke="#1e293b" stroke-width="1.00"/>
+  <text x="84.0" y="206.7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#94a3b8" text-anchor="end">10 J</text>
+  <line x1="92.0" y1="246.6" x2="560.0" y2="246.6" stroke="#1e293b" stroke-width="1.00" stroke-dasharray="3,3"/>
+  <text x="84.0" y="250.6" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#94a3b8" text-anchor="end">1 J</text>
+  <line x1="92.0" y1="378.3" x2="560.0" y2="378.3" stroke="#1e293b" stroke-width="1.00" stroke-dasharray="3,3"/>
+  <text x="84.0" y="382.3" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#94a3b8" text-anchor="end">1 mJ</text>
+  <line x1="92.0" y1="510.0" x2="560.0" y2="510.0" stroke="#1e293b" stroke-width="1.00"/>
+  <text x="84.0" y="514.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#94a3b8" text-anchor="end">1 uJ</text>
+  <text x="38.0" y="330.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.0" font-weight="600" fill="#cbd5e1" text-anchor="middle" transform="rotate(-90.0 38.0 330.0)">Log-Scaled Energy Barrier per Task</text>
+  <path d="M 126.0 312.4 C 222.0 312.4, 257.0 157.0, 327.0 157.0 C 397.0 157.0, 442.0 196.1, 530.0 196.1" fill="none" stroke="#f43f5e" stroke-width="2.60" stroke-dasharray="6,3"/>
+  <text x="327.0" y="147.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.6" font-weight="700" fill="#f43f5e" text-anchor="middle">Unattested 4-Agent Chat: ~110 J/task (3.71x bloat, 13.3% bad)</text>
+  <path d="M 126.0 312.4 C 222.0 312.4, 262.0 194.8, 332.0 194.8 C 402.0 194.8, 452.0 237.8, 530.0 237.8" fill="none" stroke="#f59e0b" stroke-width="2.20" stroke-dasharray="3,3"/>
+  <text x="314.0" y="185.8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.4" font-weight="700" fill="#f59e0b" text-anchor="middle">Monolithic LLM: 15.3 J/task (no memory)</text>
+  <path d="M 126.0 312.4 C 202.0 312.4, 252.0 380.5, 327.0 380.5 C 407.0 380.5, 447.0 499.0, 530.0 499.0" fill="none" stroke="#10b981" stroke-width="3.00"/>
+  <circle cx="126.0" cy="312.4" r="5.0" fill="#22d3ee"/>
+  <circle cx="327.0" cy="380.5" r="5.0" fill="#22d3ee"/>
+  <circle cx="530.0" cy="499.0" r="5.5" fill="#10b981"/>
+  <line x1="242.0" y1="165.0" x2="242.0" y2="372.5" stroke="#22d3ee" stroke-width="2.00" marker-end="url(#arr-cyan)"/>
+  <text x="252.0" y="264.8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="800" fill="#22d3ee">Delta E^ddagger slashed</text>
+  <text x="252.0" y="279.8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.6" font-weight="400" fill="#22d3ee">&gt;15,000x (&lt;1 mJ gate)</text>
+  <text x="327.0" y="398.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.6" font-weight="700" fill="#22d3ee" text-anchor="middle">Digital Enzyme Gate: 643-926 uJ (26-37 us)</text>
+  <text x="526.0" y="489.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="800" fill="#10b981" text-anchor="end">Crystallized Case: 1.77 uJ (0% drift)</text>
+  <text x="102.0" y="528.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#cbd5e1">Raw Arrival (s_i)</text>
+  <text x="326.0" y="528.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#cbd5e1" text-anchor="middle">Transition State (Gate)</text>
+  <text x="554.0" y="528.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#10b981" text-anchor="end">Locked Skill</text>
+  <rect x="46.0" y="542.0" width="520.0" height="112.0" rx="9.0" fill="#0f172a" stroke="#22d3ee" stroke-width="1.40"/>
+  <text x="62.0" y="565.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.4" font-weight="800" fill="#22d3ee">THREE DEFINING PROPERTIES OF A DIGITAL ENZYME E = (Phi_IR, Verify, Gate):</text>
+  <text x="62.0" y="587.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.0" font-weight="400" fill="#e2e8f0">1. Substrate Specificity: Canonical schema strips prose bloat (3.71x -&gt; 1.00x).</text>
+  <text x="62.0" y="608.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.0" font-weight="400" fill="#e2e8f0">2. Sub-Millijoule Barrier: Rust BLAKE3 + Ed25519 verifies in 26-37 us (&lt;1 mJ).</text>
+  <text x="62.0" y="629.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.0" font-weight="400" fill="#10b981">3. Unconsumed Reusability: Zero weight mutation; locks gains into O(1) store.</text>
+  <rect x="600.0" y="82.0" width="572.0" height="590.0" rx="12.0" fill="#111827" stroke="#10b981" stroke-width="1.60"/>
+  <text x="618.0" y="108.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="13.2" font-weight="800" fill="#f8fafc">B · Five-Stage Closed-Loop Forcing-Function Blueprint</text>
+  <text x="618.0" y="127.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.2" font-weight="400" fill="#94a3b8">Architectural pipeline forcing monotonic Coherence-per-Joule (CpJ) escalation</text>
+  <rect x="618.0" y="144.0" width="478.0" height="82.0" rx="9.0" fill="#0f172a" stroke="#22d3ee" stroke-width="1.60"/>
+  <text x="632.0" y="167.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.8" font-weight="800" fill="#22d3ee">STAGE 1 · CANONICAL TYPED ENVELOPE (Phi_IR)</text>
+  <text x="632.0" y="189.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#e2e8f0">256-bit BLAKE3 digest + 64-byte Ed25519 signature (RFC 8032)</text>
+  <text x="632.0" y="209.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.7" font-weight="400" fill="#cbd5e1">Eliminates chat avalanche; rejects bit-flips in 0.19 us</text>
+  <line x1="857.0" y1="226.0" x2="857.0" y2="244.0" stroke="#10b981" stroke-width="2.20" marker-end="url(#arr-emerald)"/>
+  <rect x="618.0" y="246.0" width="478.0" height="82.0" rx="9.0" fill="#0f172a" stroke="#f59e0b" stroke-width="1.60"/>
+  <text x="632.0" y="269.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.8" font-weight="800" fill="#f59e0b">STAGE 2 · HARDWARE-PROFILED SSP NICHE ROUTER</text>
+  <text x="632.0" y="291.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#e2e8f0">Reads cost_lut.json (RAPL reported_j or Thor INA238 measured_j)</text>
+  <text x="632.0" y="311.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.7" font-weight="400" fill="#cbd5e1">Bellman-Ford + Johnson Dijkstra min-cost flow in 2.11 us</text>
+  <line x1="857.0" y1="328.0" x2="857.0" y2="346.0" stroke="#10b981" stroke-width="2.20" marker-end="url(#arr-emerald)"/>
+  <rect x="618.0" y="348.0" width="478.0" height="82.0" rx="9.0" fill="#0f172a" stroke="#a78bfa" stroke-width="1.60"/>
+  <text x="632.0" y="371.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.8" font-weight="800" fill="#a78bfa">STAGE 3 · THRESHOLDED NOVELTY ESCALATION (eventfd)</text>
+  <text x="632.0" y="393.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#e2e8f0">Blocks at 0 CPU cycles while V_u &lt; theta_u; zero polling tax</text>
+  <text x="632.0" y="413.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.7" font-weight="400" fill="#cbd5e1">Wakes Tier-3 LLM strictly on deterministic miss (21/60 calls)</text>
+  <line x1="857.0" y1="430.0" x2="857.0" y2="448.0" stroke="#10b981" stroke-width="2.20" marker-end="url(#arr-emerald)"/>
+  <rect x="618.0" y="450.0" width="478.0" height="82.0" rx="9.0" fill="#0f172a" stroke="#10b981" stroke-width="1.60"/>
+  <text x="632.0" y="473.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.8" font-weight="800" fill="#10b981">STAGE 4 · VERIFIED DOWNWARD CRYSTALLIZER</text>
+  <text x="632.0" y="495.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#e2e8f0">Sound Verifier Gate enforces 0.00% false commits (CTA-T3..T6)</text>
+  <text x="632.0" y="515.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.7" font-weight="400" fill="#cbd5e1">Compiles: Tier 3 (15 J) -&gt; Tier 2 (15 mJ) -&gt; Tier 1 (1.77 uJ) -&gt; LUT6 (~12 pJ)</text>
+  <line x1="857.0" y1="532.0" x2="857.0" y2="550.0" stroke="#10b981" stroke-width="2.20" marker-end="url(#arr-emerald)"/>
+  <rect x="618.0" y="552.0" width="478.0" height="82.0" rx="9.0" fill="#0f172a" stroke="#22d3ee" stroke-width="1.60"/>
+  <text x="632.0" y="575.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.8" font-weight="800" fill="#22d3ee">STAGE 5 · IMMUTABLE JOULE LEDGER &amp; AUTO-PRUNING</text>
+  <text x="632.0" y="597.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#e2e8f0">Hash-chained receipts per firing; prunes dominated high-J edges</text>
+  <text x="632.0" y="617.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.7" font-weight="400" fill="#cbd5e1">Updates SSP cost weights automatically as hit rate p_hit rises</text>
+  <path d="M 1096 593 L 1146 593 L 1146 287 L 1100 287" fill="none" stroke="#f59e0b" stroke-width="2.40" stroke-dasharray="5,3" marker-end="url(#arr-amber)"/>
+  <text x="1158.0" y="440.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="700" fill="#f59e0b" text-anchor="middle" transform="rotate(-90.0 1158.0 440.0)">Closed-Loop Weight Update (CpJ Up)</text>
+  <text x="618.0" y="658.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="400" fill="#10b981">Amortization threshold N* = ceil(E_synth / (c_hi - c_lo)) proved in Lean (CTA-T23)</text>
+</svg>

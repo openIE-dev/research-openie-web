@@ -186,7 +186,7 @@ elif id_ == "rce-jepa":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research paper, open topic, not a journal final.\n"
-        "H2, H15 (single-shot and bounded 5-turn H15-Iterative closing 40/40 residual tasks with 0 contradictions plus DNULLMM1 Gear-0 v2), FormJEPA-v1 (8.42M trainable parameters) and FormEBM-v2 (5.85M trainable parameters; H5 AUROC 0.8922, H11 93.0% strict 5-step monotonicity) on 1,387 disjoint Forms, and the 151-task rce repair rung-f criterion audit report Apple M5 Max and Linux x86-64 RAPL on-chip reported_j counters. No hardware rail or wall meter was attached (measured_j = None).\n"
+        "H2, H15 (single-shot and bounded 5-turn H15-Iterative closing 40/40 residual tasks with 0 contradictions plus DNULLMM1 Gear-0 v2), FormJEPA-v1 (8.42M trainable parameters), FormEBM-v2 (5.85M parameters), and span-normalized FormEBM-v3 (6.05M parameters; H5 AUROC 0.9437, H11 94.0% strict 5-step monotonicity, OOD H15 inversion resolved 0.2585 -> 0.5278) on 1,387 disjoint Forms, plus the 151-task rce repair rung-f audit report Apple M5 Max and Linux x86-64 RAPL on-chip reported_j counters. No hardware rail or wall meter was attached (measured_j = None).\n"
         "</div>\n"
     )
 elif id_ == "rce-vc":
@@ -200,7 +200,7 @@ elif id_ == "rce-compile":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
-        "Byte reproducibility (E1), 20-kernel x 14-tier Linux Zen 5 RAPL core and package reported_j compilation vs execution energy payback horizons N* and H4 Regime-B checks (E4-Energy), and 245-program / 500-mutant De Bruijn nameless cache soundness plus warm-cache avoided compilation reported_j (E5-Scale) are reported in Section 8. No hardware power rail or wall meter was attached (measured_j = None, board_metered = false).\n"
+        "Byte reproducibility (E1), 20-kernel x 15-tier Linux Zen 5 and Core i9-13900H RAPL core and package reported_j compilation vs execution energy payback horizons N* including pre-compiled librce_rt.rlib (20.07x lower compile energy, median N* = 1,079) and H4 Regime-B checks (E4-Energy / E4-Prelude), and 245-program / 500-mutant De Bruijn nameless cache soundness plus warm-cache avoided compilation reported_j (E5-Scale) are reported in Section 8. No hardware power rail or wall meter was attached (measured_j = None, board_metered = false).\n"
         "</div>\n"
     )
 elif id_ == "rce":
@@ -215,7 +215,7 @@ elif id_ == "game-engines":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
-        "GE-H1 (30 target x host cells across 6 machines, 3 OSs [macOS, Linux, Windows 11], and 3 ISAs, 100,000 Q32.32 ticks, 0/25,500 SHA-256 checkpoint mismatches), GE-H2 (25,000-tick 3-OS UCRT/libSystem/glibc and MSVC/Clang FMA drift horizons), and GE-H3 (8 hardware GPU x API endpoints across DirectX 12, Metal, and Vulkan passing 28/28 hardware pairs) were measured on physical hosts using L2/L3 reported_j counters. GE-H4 to GE-H9 remain open. No hardware rail or wall meter was attached (measured_j = None).\n"
+        "All nine falsifier suites (GE-H1 through GE-H9) were executed across physical macOS, Linux, and bare-metal Windows 11 hosts: 30-cell Q32.32 replay (GE-H1), 3-OS libm/FMA float drift (GE-H2), 8-endpoint DirectX 12 / Metal / Vulkan wgpu tolerance (GE-H3), 17-module Haunted Jaunt / Survival Shooter / Tanks Form SLOC comparison (GE-H4), 10,000-actor scaling on Linux RAPL L2 reported_j (GE-H5), 260-module static interface fault detection (GE-H6), 840-trajectory Lyapunov slope sweep (GE-H7), 3-OS one-hour 216,000-tick input-log replay (GE-H8), and 36-task Godot 4.7.2 headless parity (GE-H9). Chrono-Budget Arena mechanics are est_j. No hardware rail or wall meter was attached (measured_j = None, board_metered = false).\n"
         "</div>\n"
     )
 elif id_ == "deterministic-null":
@@ -239,6 +239,13 @@ elif id_ == "time-as-an-index":
         "Formal claims in Section 7 are kernel-checked in Lean 4.36.0 (Horizon.lean and Paradox.lean, 31 theorems, zero sorry); M1 to M8 and F5 SHA-256 spectral runs are deterministic Python/SymPy evaluations; physical energy numbers (k_B T ln 2, Compton clocks) are analytical bounds (est_j). Established literature, mathematical models, and speculative proposals are explicitly separated. No hardware power meter was attached (measured_j = None, board_metered = false).\n"
         "</div>\n"
     )
+elif id_ == "communication-avalanche":
+    measure = (
+        '<div class="measurement">\n'
+        "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
+        "Formal claims in Section 7 are kernel-checked in Lean 4.36.0 (QuorumRatchet.lean, OrchestrationFlow.lean, and EnzymaticSynthesis.lean, 45 theorems, zero sorry); CA-M1 to CA-M5 are pre-registered deterministic numerical evaluations; CTA-E4 and CTA-E5 record physical Texas Instruments INA238 (VIN L1) and three-channel INA3221 (VDD_CPU_SOC_MSS L2) shunt measured_j on NVIDIA Jetson AGX Thor (shared host; A2 net idle subtraction withheld per Falsifier 6) strictly separated from four-host RAPL, ri_energy_nj, and NVML reported_j (CTA-E1 to CTA-E5) and cloud API token/USD columns. All 16 audited extracellular-vesicle studies are preclinical animal or in vitro models; human clinical efficacy and N-mind neural bridging remain open ([S]). No fabricated citations.\n"
+        "</div>\n"
+    )
 elif id_ == "agency":
     measure = (
         '<div class="measurement">\n'
@@ -259,7 +266,7 @@ elif id_ == "lut-adapt":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
-        "No physical FPGA board or rail power was measured in this repository (measured_j = None, board_metered = false). Hardware utilization (41,186 xcup CLB LUTs, 81 RAMB36E2 blocks, 0 DSP48 slices) and 1-cycle context switching (CPI = 1.0) are Yosys 0.71+ and Verilator 5.054 simulations. Darwin F_NOCACHE NVMe byte counts, active RAM, wall-clock times, and 100.0% token parity were measured on Apple M5 Max. Every joule figure is an analytical est_j estimate. No fabricated citations.\n"
+        "No physical FPGA board or rail power was measured in this repository (measured_j = None, board_metered = false). Hardware utilization (41,185-67,366 xcup CLB LUTs, 81 RAMB36E2 blocks, 0 DSP48 slices), 1-cycle context switching (CPI = 1.0), and 4-phase VCD toggle-rate + AMD DS925 dynamic switching estimates (Section 4.16, est_j) are Yosys 0.71+ and Verilator 5.054 simulations. Darwin F_NOCACHE NVMe byte counts, active RAM, wall-clock times, and Apple M5 Max Metal INT4 MoE reported_j (6.773 J/tok) were measured locally. No fabricated citations.\n"
         "</div>\n"
     )
 elif id_ == "three-body":
@@ -345,6 +352,7 @@ gen_one lut-adapt
 gen_one deterministic-null
 gen_one satb-harness
 gen_one time-as-an-index
+gen_one communication-avalanche
 gen_one satiation
 gen_one spellcheck
 gen_one rce

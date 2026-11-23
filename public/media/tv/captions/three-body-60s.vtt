@@ -1,0 +1,42 @@
+WEBVTT
+NOTE OpenIE Research TV — three-body (60s) AI-synthesized studio narration
+
+1
+00:00:01.529 --> 00:00:05.111
+Unit tests pass in isolation while rockets, databases,
+
+2
+00:00:05.111 --> 00:00:08.759
+and distributed clouds fail at the seams between teams.
+
+3
+00:00:12.689 --> 00:00:15.573
+Each role holds private mental models about units,
+
+4
+00:00:15.573 --> 00:00:19.322
+failure modes, and ordering that never make it into source types.
+
+5
+00:00:23.251 --> 00:00:26.252
+A repair stays fixed if and only if every assumption
+
+6
+00:00:26.252 --> 00:00:30.291
+crossing a module or role handoff is stated and mechanically verified.
+
+7
+00:00:34.220 --> 00:00:39.173
+Csmith fuzzing found bugs in every compiler except CompCert's verified middle-end,
+
+8
+00:00:39.173 --> 00:00:42.193
+pinpointing remaining risk to unchecked frontends.
+
+9
+00:00:46.122 --> 00:00:48.870
+Because AI agents lack unwritten human context,
+
+10
+00:00:48.870 --> 00:00:53.080
+making software safe for agents resolves computing's three-body problem.

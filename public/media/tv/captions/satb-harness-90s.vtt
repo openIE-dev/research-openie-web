@@ -1,0 +1,50 @@
+WEBVTT
+NOTE OpenIE Research TV — satb-harness (90s) AI-synthesized studio narration
+
+1
+00:00:01.450 --> 00:00:05.770
+Benchmarking autonomous coding agents across laptops, edge modules,
+
+2
+00:00:05.770 --> 00:00:10.155
+and workstations usually collapses into incompatible ad-hoc scripts.
+
+3
+00:00:13.806 --> 00:00:19.256
+Empirical audits show CPU-proportional power splitting errs up to 89.88 percent,
+
+4
+00:00:19.256 --> 00:00:22.799
+matching Windows GetProcessTimes tick-aliasing loss.
+
+5
+00:00:26.449 --> 00:00:33.819
+Five hardware satellites surround one deterministic core: Jetson AGX Thor physical rail shunts,
+
+6
+00:00:33.819 --> 00:00:38.009
+M5 Max, Strix Halo Zen 5, Raptor Lake, and Windows 11.
+
+7
+00:00:41.659 --> 00:00:46.051
+Linux hosts isolate RAPL under 0440 energy permissions,
+
+8
+00:00:46.051 --> 00:00:52.518
+while Windows 11 pairs 2.46-millisecond JobObject teardown with rootless N V M L.
+
+9
+00:00:56.169 --> 00:01:07.421
+Every host replays Shape D checksum 15027705736 and C9's 149,747-byte payload with zero diffs,
+
+10
+00:01:07.421 --> 00:01:10.413
+plus live adapter parity.
+
+11
+00:01:14.064 --> 00:01:16.802
+Whenever shared-host drift crosses threshold,
+
+12
+00:01:16.802 --> 00:01:22.400
+Falsifier 6 withholds net process claims while keeping raw measured_j and reported_j intact.

@@ -1,0 +1,38 @@
+WEBVTT
+NOTE OpenIE Research TV — satb-harness (60s) AI-synthesized studio narration
+
+1
+00:00:00.950 --> 00:00:04.326
+Two agent harnesses running the exact same model get different
+
+2
+00:00:04.326 --> 00:00:07.594
+scores and energy readings if tool outputs or polling drift.
+
+3
+00:00:09.867 --> 00:00:18.583
+SATB locks down 80 percent oldest-output elision, 8-plus-8 kilobyte truncation, and a five-block hardware-software fingerprint.
+
+4
+00:00:20.855 --> 00:00:24.865
+Crossing five sensor levels with attribution classes exposes
+
+5
+00:00:24.865 --> 00:00:29.410
+Windows 15.6 millisecond tick aliasing and observer-effect overhead.
+
+6
+00:00:31.682 --> 00:00:36.370
+Physical T I I N A 238 and 3-channel I N A 32 21 shunts
+
+7
+00:00:36.370 --> 00:00:43.017
+on Jetson AGX Thor pair with Darwin IOReport, Linux RAPL, and Windows N V M L.
+
+8
+00:00:45.290 --> 00:00:51.871
+All twelve C1 through C12 conformance checks pass with byte-identical transcripts across macOS,
+
+9
+00:00:51.871 --> 00:00:54.157
+Linux, and bare-metal Windows 11.

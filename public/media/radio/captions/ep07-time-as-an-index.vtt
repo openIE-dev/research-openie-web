@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:01.830 --> 00:00:23.905
+<v Elena>Welcome to Episode Seven of OpenIE Research Radio! Elena, Marcus, and Devon here — AI-synthesized OpenIE research personas grounded strictly in verified Open Interface Engineering studies. Today we get to explore the most mind-bending study in the entire catalog: Time as an Index: What It Would Take to Look Up Tomorrow.
+
+2
+00:00:24.100 --> 00:00:37.396
+<v Marcus>Okay, when people see 'Closed Timelike Curves' and 'Looking Up Tomorrow' in a title, their sci-fi detector goes straight to red alert! Assure me right now that we didn't claim to build a flux capacitor in the garage!
+
+3
+00:00:37.671 --> 00:01:02.115
+<v Devon>Zero flux capacitors, and board_metered is false! In fact, the whole point of Time as an Index is to prove rigorously — across thirty-one Lean 4.36.0 kernel-checked theorems in Horizon.lean and Paradox.lean with zero sorry — WHY nothing in known physics reads tomorrow early, and why every real O-of-one 'instant' lookup is actually precomputation paid ahead of time!
+
+4
+00:01:02.390 --> 00:01:09.669
+<v Elena>Start with the cryptographic thought experiment, though, because it's stunning. Why is sequential brute-force search hard in our universe?
+
+5
+00:01:09.944 --> 00:01:35.685
+<v Devon>Because future computation states are unindexed — to know the millionth iterate of a hash chain, you have to step through the intermediate states! Inside a mathematical Deutsch closed timelike curve, Aaronson and Watrous proved that deterministic polynomial time collapses to PSPACE! Every computational cipher — AES, RSA, lattice cryptography, hash preimages — breaks in one fixed-point consistency loop.
+
+6
+00:01:35.880 --> 00:01:45.620
+<v Marcus>Wait — EVERY computational cipher breaks inside a mathematical time loop, EXCEPT one! Which cipher survives even a closed timelike curve?
+
+7
+00:01:45.895 --> 00:02:02.454
+<v Devon>Shannon's information-theoretic one-time pad! We proved mechanically in Lean 4 that because every plaintext is equally consistent with a uniform pad key, even an unbounded CTC fixed-point oracle has zero distinguishing advantage!
+
+8
+00:02:02.729 --> 00:02:18.428
+<v Elena>Now bring us back to real laboratory physics! People periodically propose using quantum entanglement, analog soap films, optical dispersion, or frequency-domain shortcuts to 'peek' ahead of sequential work. What happens when we test all of them?
+
+9
+00:02:18.703 --> 00:02:55.219
+<v Devon>We cataloged one hundred ninety-five temporal anomalies TA001 to TA081, forty frequency edge cases AA01 to AA40, and seventy-four paradoxes P01 to P74. Quantum no-signalling blocks superluminal or retrocausal bit readout; Gabor time-frequency uncertainty forces a minimum observation window Delta-t times Delta-f at least one over four pi; and analog relaxation still pays thermal energy proportional to state-space barrier height!
+
+10
+00:02:55.414 --> 00:03:16.113
+<v Marcus>And just in case anyone wondered whether SHA-256 hides secret frequency-domain shortcuts, you actually ran the spectral falsifier F5 across sixty-five thousand five hundred thirty-six SHA-256 digests! How many frequency bins beat the corrected ten-to-the-minus-six threshold?
+
+11
+00:03:16.388 --> 00:03:20.292
+<v Devon>Zero bins! Flat white noise across the entire spectrum.
+
+12
+00:03:20.566 --> 00:03:37.169
+<v Elena>Which leaves the one real way engineers 'look up' answers fast in our universe: Martin Hellman's 1980 time-memory tradeoff, T times M-squared equals N-squared! Explain how that connects Time as an Index to OpenIE's downward crystallization.
+
+13
+00:03:37.444 --> 00:04:02.185
+<v Devon>Hellman showed you can trade online search time T against precomputed table memory M along T times M-squared equals N-squared — provided the function is fixed ahead of time! In defense, our Horizon theorem proves that injecting a fresh k-bit salt or block hash that didn't exist when precomputation started multiplies table work by two to the k, stopping rainbow tables cold.
+
+14
+00:04:02.380 --> 00:04:20.142
+<v Marcus>Look at the beautiful duality there! In cryptography, you ADD a fresh salt so attackers CANNOT pre-index tomorrow. In software engineering and AI coding, you strip irrelevant variable names with De Bruijn hashes so you CAN pre-index recurring work and save joules!
+
+15
+00:04:20.417 --> 00:04:42.739
+<v Elena>And that ties straight back to OpenIE's foundational monograph, Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents — framing the OpenIE authors' proposed Universal Law of Agency: physics sets a minimum joule cost per decision, correctness is the gate, and among systems that finish the job right, progress per joule orders them!
+
+16
+00:04:42.934 --> 00:04:58.181
+<v Marcus>Which sets up our grand finale in Episode Eight: putting six brand-new research ideas into our autonomous sub-sixty-second Linux pilot arena — and watching one get publicly executed by a zero-parameter lookup table!

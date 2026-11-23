@@ -1,0 +1,256 @@
+{
+  "id": "ep03-rce-world-coding",
+  "number": 3,
+  "title": "World Coding — The Reality Code Engine, FormJEPA/FormEBM & 40/40 Verified Repair",
+  "subtitle": "Why any learned model may propose a state-machine Form, why only the deterministic checker decides, and why Rung F stayed in observe mode",
+  "summary": "Inside RCE, RCE-JEPA, RCE Compile, and RCE-VC: 5,537 Lean 4 theorem constants, 8.42M-parameter FormJEPA-v1, 5.85M-parameter FormEBM-v2, 40/40 H15-Iterative repair, compiler payback horizons N*, and candid falsifiers.",
+  "topic_tags": [
+    "rce",
+    "rce-jepa",
+    "world-coding",
+    "rce-compile"
+  ],
+  "published_utc": "2026-11-23T07:00:00Z",
+  "duration_sec": 301.6,
+  "duration_human": "5:02",
+  "byte_length": 4080644,
+  "audio_url": "/media/radio/episodes/ep03-rce-world-coding.m4a",
+  "captions_url": "/media/radio/captions/ep03-rce-world-coding.vtt",
+  "transcript_url": "/media/radio/transcripts/ep03-rce-world-coding.json",
+  "turn_count": 16,
+  "card_count": 6,
+  "ai_disclosure": "AI Persona Disclosure: Elena, Marcus, and Devon are AI-synthesized OpenIE research personas voiced via open-weight neural speech synthesis and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "personas": {
+    "Elena": {
+      "name": "Elena",
+      "title": "The Architect — Host",
+      "voice": "af_heart",
+      "lang": "en-us",
+      "speed": 1.01,
+      "color": "#00D4AA",
+      "bio": "AI-synthesized science communicator connecting biological signaling, thermodynamics, and verified computing."
+    },
+    "Marcus": {
+      "name": "Marcus",
+      "title": "The Skeptic — Critical Foil",
+      "voice": "am_michael",
+      "lang": "en-us",
+      "speed": 1.04,
+      "color": "#F59E0B",
+      "bio": "AI-synthesized empirical foil auditing lookup baselines, telemetry drift, and unverified hype."
+    },
+    "Devon": {
+      "name": "Devon",
+      "title": "The Bench Engineer — Specialist",
+      "voice": "bm_george",
+      "lang": "en-gb",
+      "speed": 1.0,
+      "color": "#818CF8",
+      "bio": "AI-synthesized formal verification and hardware systems specialist citing exact Lean 4, RAPL, and shunt receipts."
+    }
+  },
+  "turns": [
+    {
+      "turn_index": 0,
+      "speaker": "Elena",
+      "role": "The Architect — Host",
+      "start_sec": 1.83,
+      "end_sec": 23.062,
+      "text": "Welcome to Episode Three of OpenIE Research Radio! As always, Elena, Marcus, and Devon are AI-synthesized OpenIE research personas speaking strictly from verified Open Interface Engineering studies. Today we're tackling World Coding: RCE, RCE-JEPA, RCE Compile, and RCE-VC."
+    },
+    {
+      "turn_index": 1,
+      "speaker": "Marcus",
+      "role": "The Skeptic — Critical Foil",
+      "start_sec": 23.257,
+      "end_sec": 36.232,
+      "text": "Let's start with the elephant in the server room. People hear JEPA — Joint Embedding Predictive Architecture — and assume we're trusting a neural latent space to decide whether software is correct. Are we?"
+    },
+    {
+      "turn_index": 2,
+      "speaker": "Devon",
+      "role": "The Bench Engineer — Specialist",
+      "start_sec": 36.507,
+      "end_sec": 55.51,
+      "text": "Never! That's the entire subtitle of RCE-JEPA: World Coding, with JEPA as premise rather than the whole method. Any proposer — human, deterministic rule ladder, small latent predictor, or frontier model — may suggest a Form. Only the deterministic checker decides admission."
+    },
+    {
+      "turn_index": 3,
+      "speaker": "Elena",
+      "role": "The Architect — Host",
+      "start_sec": 55.785,
+      "end_sec": 74.461,
+      "text": "Look at that energy asymmetry on Apple M5 Max reported joules: checking a Form costs forty-nine point zero four millijoules, while generating one local thirty-five-billion-parameter Qwen 3.6 proposal costs eighty-four point two five joules — over seventeen hundred times more!"
+    },
+    {
+      "turn_index": 4,
+      "speaker": "Marcus",
+      "role": "The Skeptic — Critical Foil",
+      "start_sec": 74.656,
+      "end_sec": 82.112,
+      "text": "And before calling ANY neural network at all, what happened when you ran the zero-model-call deterministic repair ladder?"
+    },
+    {
+      "turn_index": 5,
+      "speaker": "Devon",
+      "role": "The Bench Engineer — Specialist",
+      "start_sec": 82.387,
+      "end_sec": 106.838,
+      "text": "The deterministic ladder closed one hundred and eleven out of one hundred and fifty-one broken Forms — seventy-three point five percent — with zero neural calls! Then we trained two tiny purpose-built models on one thousand three hundred eighty-seven strictly disjoint Forms: FormJEPA-v1 at eight point four two million parameters, and FormEBM-v2 at five point eight five million parameters."
+    },
+    {
+      "turn_index": 6,
+      "speaker": "Elena",
+      "role": "The Architect — Host",
+      "start_sec": 107.113,
+      "end_sec": 122.602,
+      "text": "Wait — an eight-point-four-million parameter latent model lifted repair from seventy-three point five percent up to ninety-one point four percent, and matched a thirty-five-billion-parameter model single-shot on H15 at twenty-seven out of forty?!"
+    },
+    {
+      "turn_index": 7,
+      "speaker": "Devon",
+      "role": "The Bench Engineer — Specialist",
+      "start_sec": 122.877,
+      "end_sec": 141.399,
+      "text": "Yes, at four hundred seventy-four point eight millijoules of Linux RAPL core reported joules for sixteen candidates! And FormEBM-v2 scored candidate validity with AUROC zero point eight nine two two, cutting rce check invocations by two point three nine times."
+    },
+    {
+      "turn_index": 8,
+      "speaker": "Marcus",
+      "role": "The Skeptic — Critical Foil",
+      "start_sec": 141.594,
+      "end_sec": 157.046,
+      "text": "Now give me the headline H15-Iterative stress test — where frontier models get zero access to the original source file, only public standard-library headers and bounded deterministic checker diagnostics for at most five turns."
+    },
+    {
+      "turn_index": 9,
+      "speaker": "Devon",
+      "role": "The Bench Engineer — Specialist",
+      "start_sec": 157.321,
+      "end_sec": 181.661,
+      "text": "Claude Opus 5.5 and Claude Sonnet 5.5 both closed forty out of forty — one hundred percent, zero contradictions! xAI Grok 4.20 closed thirty-nine out of forty with zero contradictions. And once crystallized into warm Gear-0 case memory, all forty replay at zero model calls for one point seven seven one microjoules!"
+    },
+    {
+      "turn_index": 10,
+      "speaker": "Marcus",
+      "role": "The Skeptic — Critical Foil",
+      "start_sec": 181.856,
+      "end_sec": 189.563,
+      "text": "Hold everything — you promised no cherry-picking! Tell the listeners what FAILED its promotion threshold in RCE-JEPA!"
+    },
+    {
+      "turn_index": 11,
+      "speaker": "Devon",
+      "role": "The Bench Engineer — Specialist",
+      "start_sec": 189.838,
+      "end_sec": 209.389,
+      "text": "On the one-hundred-fifty-one-task rce repair Rung-F audit, our pre-registered error ceiling was two point zero percent. Rung F came back at three out of one hundred nineteen — two point five percent! So holds returned false, and we kept Rung F locked in observe mode instead of promoting it."
+    },
+    {
+      "turn_index": 12,
+      "speaker": "Elena",
+      "role": "The Architect — Host",
+      "start_sec": 209.664,
+      "end_sec": 222.579,
+      "text": "That same willingness to let data falsify a sweeping claim shaped RCE Compile too! We asked whether one candidate statement of compilation describes all twelve real-world compiler families."
+    },
+    {
+      "turn_index": 13,
+      "speaker": "Devon",
+      "role": "The Bench Engineer — Specialist",
+      "start_sec": 222.854,
+      "end_sec": 257.078,
+      "text": "And it failed as a universal description — because mainstream compilers omit explicit energy gates and linking digests — while holding cleanly as a seven-part normal form! Even better, across two hundred eighty checksum-verified Zen 5 RAPL cells, compiling Python to clang dash O3 pays back its compile energy after a median N-star of two thousand four hundred ninety runs, whereas thirty percent of clang and rustc O2-to-O3 optimizations NEVER pay back their extra compile joules!"
+    },
+    {
+      "turn_index": 14,
+      "speaker": "Marcus",
+      "role": "The Skeptic — Critical Foil",
+      "start_sec": 257.273,
+      "end_sec": 278.472,
+      "text": "Thirty percent of dash O3 builds burn extra compiler electricity for zero runtime savings! Meanwhile, De Bruijn nameless SHA-256 memoization hit zero out of five hundred false collisions and slashed warm rustc compile energy by four hundred forty-eight point five times!"
+    },
+    {
+      "turn_index": 15,
+      "speaker": "Elena",
+      "role": "The Architect — Host",
+      "start_sec": 278.747,
+      "end_sec": 299.694,
+      "text": "And RCE-VC closes the loop at version control: admitting non-overlapping changes against one hundred thousand name-free units in seventy microseconds at three hundred forty microjoules while keeping Git completely usable. Next up in Episode Four: Deterministic Null and physical shunt telemetry in SATB!"
+    }
+  ],
+  "cards": [
+    {
+      "id": "ep03-rce-world-coding-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 23.062,
+      "turn_index": 0,
+      "speaker": "Elena",
+      "kind": "study",
+      "badge": "[T]",
+      "title": "The Reality Code Engine (5,537 Lean 4 Constants)",
+      "detail": "Write a program once as a total state machine Form; check deterministically at 49.04 mJ reported_j; emit native targets.",
+      "href": "/papers/rce/"
+    },
+    {
+      "id": "ep03-rce-world-coding-card-02-0",
+      "at_sec": 37.307,
+      "end_sec": 55.51,
+      "turn_index": 2,
+      "speaker": "Devon",
+      "kind": "study",
+      "badge": "[M]",
+      "title": "RCE-JEPA: Proposer Suggests, Checker Decides",
+      "detail": "49.04 mJ per Form check vs 84.25 J local 35B proposal (ratio 0.000582); deterministic ladder closes 111/151 (73.5%) at 0 model calls.",
+      "href": "/papers/rce-jepa/"
+    },
+    {
+      "id": "ep03-rce-world-coding-card-05-0",
+      "at_sec": 83.187,
+      "end_sec": 106.838,
+      "turn_index": 5,
+      "speaker": "Devon",
+      "kind": "receipt",
+      "badge": "reported_j",
+      "title": "FormJEPA-v1 (8.42M) & FormEBM-v2 (5.85M)",
+      "detail": "FormJEPA-v1 lifts deterministic ladder to 138/151 (91.4%) at 474.8 mJ RAPL core reported_j; FormEBM-v2 hits AUROC 0.8922 at 47.09 mJ.",
+      "href": "/papers/rce-jepa/"
+    },
+    {
+      "id": "ep03-rce-world-coding-card-09-0",
+      "at_sec": 158.121,
+      "end_sec": 181.661,
+      "turn_index": 9,
+      "speaker": "Devon",
+      "kind": "receipt",
+      "badge": "[M]",
+      "title": "H15-Iterative: 40/40 Closed + 1.771 μJ Gear-0 Replay",
+      "detail": "Opus 5.5 & Sonnet 5.5 close 40/40 under checker feedback; 3-Gear Zipf(0.85) stream cuts frontier episodes 16.67x.",
+      "href": "/papers/rce-jepa/"
+    },
+    {
+      "id": "ep03-rce-world-coding-card-11-0",
+      "at_sec": 190.638,
+      "end_sec": 209.389,
+      "turn_index": 11,
+      "speaker": "Devon",
+      "kind": "falsifier",
+      "badge": "HOLDS: FALSE",
+      "title": "Rung-F Audit Kept in Observe Mode (2.5% > 2.0%)",
+      "detail": "3/119 (2.5%) exceeded the 2.0% threshold on the 151-task audit; Rung F was refused promotion rather than moving the goalpost.",
+      "href": "/papers/rce-jepa/"
+    },
+    {
+      "id": "ep03-rce-world-coding-card-13-0",
+      "at_sec": 223.654,
+      "end_sec": 257.078,
+      "turn_index": 13,
+      "speaker": "Devon",
+      "kind": "study",
+      "badge": "reported_j",
+      "title": "RCE Compile: Payback Horizon N* & De Bruijn Cache",
+      "detail": "Python -> clang -O3 pays back in N*=2,490 runs, while 30% of -O2 -> -O3 tiers never pay back; De Bruijn SHA-256 cuts warm compile joules 448.5x.",
+      "href": "/papers/rce-compile/"
+    }
+  ]
+}

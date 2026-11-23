@@ -1,0 +1,308 @@
+{
+  "schema": "openie.radio.topic_foundry.v1",
+  "executed_at_utc": "2026-11-23T12:51:09Z",
+  "cadence_hours": 6,
+  "pilot_budget_limit_sec": 60.0,
+  "total_pilot_wall_sec": 0.977,
+  "execution_substrate": "Linux x86_64 deterministic Python 3.12.13 harness (RAPL reported_j=True, board_metered=false, measured_j=null)",
+  "counts_by_status": {
+    "PROMOTED_CANDIDATE": 4,
+    "HOLD_NEEDS_HARDWARE": 1,
+    "KILLED_BY_NULL": 1
+  },
+  "topics": [
+    {
+      "topic_id": "TF-2026-01",
+      "title": "Conformal Prefix-LUT6 Early-Exit Gate for Hybrid State-Space Routing",
+      "status": "PROMOTED_CANDIDATE",
+      "openie_anchors": [
+        "lut-adapt",
+        "gates",
+        "agency"
+      ],
+      "inspired_by_urls": [
+        {
+          "title": "PolyLUT-Add: FPGA-based LUT Inference with Wide Inputs",
+          "url": "https://arxiv.org/pdf/2406.04910",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W4403278591"
+        },
+        {
+          "title": "LUTMUL: Exceed Conventional FPGA Roofline Limit by LUT-based Efficient Multiplication for Neural Network Inference",
+          "url": "https://doi.org/10.1145/3658617.3697687",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W4404573308"
+        },
+        {
+          "title": "TeLLMe v2: An Efficient End-to-End Ternary LLM Prefill and Decode Accelerator with Table-Lookup Matmul on Edge FPGAs",
+          "url": "https://arxiv.org/pdf/2510.15926",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W4416054522"
+        }
+      ],
+      "hypothesis": "A 64-entry bit-sliced LUT6 prefix table paired with an exact schema parity check intercepts recurring Zipfian tool/AST prefixes before dense matrix layers wake, cutting socket reported_j by >8x with 0/6,000 false commits.",
+      "shape_d_null_baseline": "Unconditional 256x256 FP64 dense projection executed on every arrival across 6,000 Zipf(1.38) requests.",
+      "kill_criterion": "Kill if false-accept rate > 0.0% OR package reported_j / latency gain is < 3.0x versus unconditional dense evaluation.",
+      "target_joule_bound": "<= 0.12x baseline package reported_j per 6,000-arrival batch (board_metered=false).",
+      "pilot_receipt": {
+        "status": "PROMOTED_CANDIDATE",
+        "trials": 6000,
+        "lut6_hit_rate_pct": 88.22,
+        "false_commits": 0,
+        "parity_delta": 0.0,
+        "baseline_ms": 43.79,
+        "candidate_ms": 29.63,
+        "baseline_reported_j": 3.3426,
+        "candidate_reported_j": 1.0198,
+        "gain_factor": 3.28,
+        "verdict_detail": "LUT6 prefix gate intercepted 88.2% of Zipf arrivals with 0/6,000 false accepts and 1.48x latency reduction (3.28x package reported_j gain).",
+        "receipt_sha256": "15b021c9889231c7c2abbd2b",
+        "telemetry_source": "Linux powercap intel-rapl:0 (package-0 reported_j, board_metered=false)"
+      }
+    },
+    {
+      "topic_id": "TF-2026-02",
+      "title": "SepJ-Inspired Quorum-Hysteresis Circuit Breaker for Byzantine Agent DAGs",
+      "status": "PROMOTED_CANDIDATE",
+      "openie_anchors": [
+        "communication-avalanche",
+        "three-body",
+        "gates"
+      ],
+      "inspired_by_urls": [
+        {
+          "title": "\"AgentShield: Multi-Agent LLM Byzantine Fault Tolerance Evaluation Dataset\"",
+          "url": "https://doi.org/10.21227/qyq3-3g19",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W7150906705"
+        },
+        {
+          "title": "HALO: Hierarchical Autonomous Logic-Oriented Orchestration for Multi-Agent LLM Systems",
+          "url": "https://arxiv.org/pdf/2505.13516",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W4417298492"
+        },
+        {
+          "title": "A Byzantine Fault Tolerance Approach Towards AI Safety",
+          "url": "https://arxiv.org/pdf/2504.14668",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W7154576848"
+        }
+      ],
+      "hypothesis": "Combining keyed BLAKE2b envelope attestation with a 2-strike SepJ-style node quarantine and >=3-of-5 cooperative quorum threshold isolates 25% Byzantine poisoners with 0 corrupted commits.",
+      "shape_d_null_baseline": "Unattested 3-of-5 majority-vote broadcast relay across 2,500 rounds on a 16-node graph with 4 adversarial corruptors.",
+      "kill_criterion": "Kill if candidate_false_commits > 0 across 2,500 rounds OR healthy quorum goodput falls below 90.0%.",
+      "target_joule_bound": "<= 1.0 mJ per attested 5-edge committee round on Linux RAPL (reported_j).",
+      "pilot_receipt": {
+        "status": "PROMOTED_CANDIDATE",
+        "trials": 2500,
+        "null_false_commits": 136,
+        "candidate_false_commits": 0,
+        "goodput_pct": 100.0,
+        "quarantined_byzantine": "4/4",
+        "baseline_ms": 10.33,
+        "candidate_ms": 18.74,
+        "baseline_reported_j": 0.2037,
+        "candidate_reported_j": 0.3452,
+        "gain_factor": 136.0,
+        "verdict_detail": "SepJ-inspired quorum quarantine isolated 4/4 Byzantine nodes within 14 rounds: 0/2500 false commits (100.0% goodput) vs 136 poisoned commits in unverified 3-of-5 voting.",
+        "receipt_sha256": "045473b4e6343ad01176d69c",
+        "telemetry_source": "Linux powercap intel-rapl:0 (package-0 reported_j, board_metered=false)"
+      }
+    },
+    {
+      "topic_id": "TF-2026-03",
+      "title": "Epoch-Salted Horizon Commitments Against Precomputed Rainbow Chains",
+      "status": "PROMOTED_CANDIDATE",
+      "openie_anchors": [
+        "time-as-an-index",
+        "deterministic-null",
+        "rce-vc"
+      ],
+      "inspired_by_urls": [
+        {
+          "title": "Composable Privacy-Preserving Framework for Stakes-Based Online Peer-to-Peer Applications",
+          "url": "https://www.mdpi.com/2410-387X/9/3/48/pdf?version=1751464968",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W4411923446"
+        },
+        {
+          "title": "Piecewise deterministic simulated annealing",
+          "url": "http://arxiv.org/abs/1410.1656v4",
+          "source": "arXiv",
+          "external_id": "arXiv:1410.1656v4"
+        },
+        {
+          "title": "BlazeFL: Fast and Deterministic Federated Learning Simulation",
+          "url": "http://arxiv.org/abs/2604.03606v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2604.03606v1"
+        }
+      ],
+      "hypothesis": "Binding state-transition digests to fresh per-epoch randomness beacons collapses offline Hellman T*M^2=N^2 chain inversions to 0/400 while adding <10 microseconds per transition.",
+      "shape_d_null_baseline": "Unsalted 18-bit truncated SHA-256 transition domain probed by a precomputed (M=1,536, t=96) Hellman table across 400 targets.",
+      "kill_criterion": "Kill if any precomputed chain inverts an epoch-salted target (salted_horizon_inversions > 0) OR per-step latency > 10 us.",
+      "target_joule_bound": "<= 500 uJ per 400 salted transition checks (Linux RAPL reported_j).",
+      "pilot_receipt": {
+        "status": "PROMOTED_CANDIDATE",
+        "trials": 400,
+        "unsalted_hellman_inversions": 74,
+        "salted_horizon_inversions": 0,
+        "us_per_salted_step": 0.589,
+        "baseline_ms": 493.11,
+        "candidate_ms": 0.24,
+        "baseline_reported_j": 10.6769,
+        "candidate_reported_j": 0.0,
+        "gain_factor": 74,
+        "verdict_detail": "Precomputed Hellman table inverted 74/400 unsalted targets; fresh epoch salting collapsed precomputation hits to 0/400 at 0.589 us/transition.",
+        "receipt_sha256": "7fe36e3d32ce7150288e2678",
+        "telemetry_source": "Linux powercap intel-rapl:0 (package-0 reported_j, board_metered=false)"
+      }
+    },
+    {
+      "topic_id": "TF-2026-04",
+      "title": "Operator-Aware De Bruijn Memoization for Multi-Target State Lowering",
+      "status": "PROMOTED_CANDIDATE",
+      "openie_anchors": [
+        "rce-compile",
+        "rce",
+        "rce-jepa"
+      ],
+      "inspired_by_urls": [
+        {
+          "title": "Lean Copilot: Large Language Models as Copilots for Theorem Proving in Lean",
+          "url": "https://arxiv.org/pdf/2404.12534",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W4395021983"
+        },
+        {
+          "title": "Compile to Compress: Boosting Formal Theorem Provers by Compiler Outputs",
+          "url": "https://arxiv.org/pdf/2604.18587",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W7155197691"
+        },
+        {
+          "title": "Lean Graph Search for Formal Theorem Proving",
+          "url": "https://arxiv.org/pdf/2610.22339",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W7222406367"
+        }
+      ],
+      "hypothesis": "Positional De Bruijn indexing (#0, #1) combined with commutative child sorting strictly on associative/commutative ops achieves 100% alpha-equivalent cache hits with 0% non-commutative swap collisions.",
+      "shape_d_null_baseline": "Raw source-text SHA-256 compiler cache (0% rename reuse) and naive identifier-stripped structural hash across 2,000 fuzzed AST pairs.",
+      "kill_criterion": "Kill if non-commutative false collisions (a - b vs b - a) > 0 OR alpha-equivalent hit rate < 95.0%.",
+      "target_joule_bound": "<= 25 mJ per 2,000 AST canonicalization checks (Linux RAPL reported_j).",
+      "pilot_receipt": {
+        "status": "PROMOTED_CANDIDATE",
+        "trials": 2000,
+        "alpha_hit_rate_pct": 100.0,
+        "false_commits": 0,
+        "baseline_ms": 2.78,
+        "candidate_ms": 2.5,
+        "baseline_reported_j": 0.0627,
+        "candidate_reported_j": 0.0453,
+        "gain_factor": 100.0,
+        "verdict_detail": "Operator-aware De Bruijn canonicalization achieved 2000/2000 (100.0%) alpha+commutative memoization hits with 0/2000 non-commutative false collisions (vs 0% raw SHA-256 hits).",
+        "receipt_sha256": "d2635dc21513fef826c948bb",
+        "telemetry_source": "Linux powercap intel-rapl:0 (package-0 reported_j, board_metered=false)"
+      }
+    },
+    {
+      "topic_id": "TF-2026-05",
+      "title": "Sub-10ms Adaptive Beta-Burst Stimulation Attribution on Shared Silicon",
+      "status": "HOLD_NEEDS_HARDWARE",
+      "openie_anchors": [
+        "satb-harness",
+        "communication-avalanche",
+        "mei"
+      ],
+      "inspired_by_urls": [
+        {
+          "title": "Bacterial Diseases in Farmed Nile Tilapia ( Oreochromis niloticus ): A Review of Pathogenesis, Immune Responses and Recent Advances in Diagnostics and Management",
+          "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aff2.70319",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W7212035636"
+        },
+        {
+          "title": "Learning in Kombucha",
+          "url": "https://doi.org/10.1016/j.nxmate.2025.101281",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W4415017307"
+        },
+        {
+          "title": "Lipid vesicle-based molecular robots",
+          "url": "https://pubs.rsc.org/en/content/articlepdf/2024/lc/d3lc00860f",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W4391031251"
+        }
+      ],
+      "hypothesis": "Thresholded beta-envelope gating cuts neuro-stimulation pulse count >3x versus continuous 130 Hz pacing, and package-level RAPL counters can attribute 8 ms micro-burst windows within <=15% CV.",
+      "shape_d_null_baseline": "Continuous 130 Hz pulse train plus SATB Falsifier 6 window-stability check across 40 consecutive 8 ms Linux RAPL windows.",
+      "kill_criterion": "Place on HOLD_NEEDS_HARDWARE if 8 ms shared-host RAPL window CV exceeds SATB Falsifier 6 (15.0% CV), requiring TI INA238 inline DC shunts.",
+      "target_joule_bound": "Requires physical inline shunt measured_j (TI INA238 / KV260 INA260); RAPL reported_j withheld on micro-windows.",
+      "pilot_receipt": {
+        "status": "HOLD_NEEDS_HARDWARE",
+        "trials": 40,
+        "analytical_pulse_reduction_x": 3.18,
+        "rapl_8ms_window_cv_pct": 79.07,
+        "board_metered": false,
+        "baseline_ms": 320.0,
+        "candidate_ms": 328.0,
+        "baseline_reported_j": 2.4174,
+        "candidate_reported_j": 0.06044,
+        "gain_factor": 3.18,
+        "verdict_detail": "Thresholded beta-burst gating cut stimulation pulses 3.18x (817 vs 2600), but shared-socket 8 ms RAPL windows showed 79.07% CV (>15% SATB Falsifier 6 threshold). Held pending TI INA238 inline shunt rails.",
+        "receipt_sha256": "c75930ce895c1a5ecc86130c",
+        "telemetry_source": "Linux powercap intel-rapl:0 (package-0 reported_j, board_metered=false)"
+      }
+    },
+    {
+      "topic_id": "TF-2026-06",
+      "title": "Dense 3-Layer MLP Bucket Router for Q32.32 Broadphase Collision Pruning",
+      "status": "KILLED_BY_NULL",
+      "openie_anchors": [
+        "deterministic-null",
+        "game-engines",
+        "agency"
+      ],
+      "inspired_by_urls": [
+        {
+          "title": "Composable Privacy-Preserving Framework for Stakes-Based Online Peer-to-Peer Applications",
+          "url": "https://www.mdpi.com/2410-387X/9/3/48/pdf?version=1751464968",
+          "source": "OpenAlex",
+          "external_id": "OpenAlex:W4411923446"
+        },
+        {
+          "title": "Piecewise deterministic simulated annealing",
+          "url": "http://arxiv.org/abs/1410.1656v4",
+          "source": "arXiv",
+          "external_id": "arXiv:1410.1656v4"
+        },
+        {
+          "title": "BlazeFL: Fast and Deterministic Federated Learning Simulation",
+          "url": "http://arxiv.org/abs/2604.03606v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2604.03606v1"
+        }
+      ],
+      "hypothesis": "A learned 3-layer dense neural router (2 -> 64 -> 32 -> 16) predicts collision buckets for 256 Q32.32 fixed-point bodies faster and more accurately per joule than deterministic integer spatial hashing.",
+      "shape_d_null_baseline": "Zero-parameter Shape-D bit-shifted integer grid ((x >> 15), (y >> 15)) with 3x3 neighbor stencil, 0 learned weights, bit-exact.",
+      "kill_criterion": "KILL (KILLED_BY_NULL) if zero-parameter Shape-D integer grid matches or beats the MLP router on exact pair recall AND uses less time/reported_j.",
+      "target_joule_bound": "Must beat Shape-D integer grid reported_j at 100.0% collision pair recall (FAILED -> KILLED_BY_NULL).",
+      "pilot_receipt": {
+        "status": "KILLED_BY_NULL",
+        "trials": 30720,
+        "shape_d_recall_pct": 100.0,
+        "mlp_recall_pct": 99.4,
+        "baseline_ms": 0.36,
+        "candidate_ms": 20.21,
+        "baseline_reported_j": 0.0,
+        "candidate_reported_j": 1.0624,
+        "gain_factor": 0.0177,
+        "verdict_detail": "KILLED BY SHAPE-D NULL: Zero-parameter integer grid shift achieved 100.0% exact collision recall in 0.36 ms, beating the 3-layer MLP router (99.4% recall, 20.21 ms) by 56.45x speed and lower reported_j.",
+        "receipt_sha256": "7b29365816b1b8fa7580036e",
+        "telemetry_source": "Linux powercap intel-rapl:0 (package-0 reported_j, board_metered=false)"
+      }
+    }
+  ]
+}

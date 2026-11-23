@@ -82,6 +82,7 @@
 \newunicodechar{Ω}{\ensuremath{\Omega}}
 \newunicodechar{α}{\ensuremath{\alpha}}
 \newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
 \newunicodechar{δ}{\ensuremath{\delta}}
 \newunicodechar{ε}{\ensuremath{\varepsilon}}
 \newunicodechar{θ}{\ensuremath{\theta}}
@@ -167,7 +168,7 @@
 \noindent\fcolorbox{openieAmberBorder}{openieAmberBg}{%
   \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
     \small\color{openieDark}%
-    \textbf{Measurement.} Research study, draft, not a journal final. No physical FPGA board or isolated silicon rail shunt was metered in this repository (\texttt{measured\_j = None}, \texttt{board\_metered = false}; \texttt{hw\_server v2026.1} + \texttt{XSDB} probed \texttt{0} Xilinx \texttt{JTAG} targets, and \texttt{Vivado 2026.1} post-route \texttt{WNS}/\texttt{report\_power} remain \texttt{not\_available} pending a Standard \texttt{.lic} file). UltraScale+ \texttt{xck26-sfvc784-2LV-c} utilization (\texttt{41,185} CLB LUTs / \texttt{81} \texttt{RAMB36E2} / \texttt{81} logic levels on \texttt{clai\_benes\_paged\_hotswap\_core}; \texttt{67,366} CLB LUTs / \texttt{126} \texttt{IOB}s / \texttt{73} logic levels on \texttt{clai\_kv260\_axi\_top}) and single-cycle (\texttt{CPI = 1.0}) page switching are \textbf{simulated} via Yosys \texttt{0.71+} (\texttt{synth\_xilinx -family xcup} + \texttt{ltp -noff}) and Verilator \texttt{5.054}. Darwin \texttt{F\_NOCACHE} \texttt{os.pread} NVMe byte counts, active RAM (\texttt{970.0 MB} = \texttt{1.47\%} of FP16 on \texttt{Qwen/Qwen3.6-35B-A3B}), \texttt{100.0\%} token parity, and Apple M5 Max + Linux \texttt{x86-64} \texttt{RAPL} \texttt{reported\_j} counters stay strictly separated from analytical \texttt{est\_j}. No fabricated citations.
+    \textbf{Measurement.} Research study, draft, not a journal final. No physical FPGA board or isolated silicon rail shunt was metered in this repository (\texttt{measured\_j = None}, \texttt{board\_metered = false}; \texttt{hw\_server v2026.1} + \texttt{XSDB} probed \texttt{0} Xilinx \texttt{JTAG} targets, and \texttt{Vivado 2026.1} post-route \texttt{WNS}/\texttt{report\_power} remain \texttt{not\_available} pending a Standard \texttt{.lic} file). UltraScale+ \texttt{xck26-sfvc784-2LV-c} utilization (\texttt{41,185--67,366} CLB LUTs, \texttt{81} \texttt{RAMB36E2} blocks, \texttt{0} \texttt{DSP48} slices), single-cycle (\texttt{CPI = 1.0}) page switching, and \textbf{4-phase VCD toggle-rate + \texttt{AMD DS925} dynamic switching estimates} (Section~4.16, \textbf{\texttt{est\_j}}) are Yosys \texttt{0.71+} and Verilator \texttt{5.054} simulations. Darwin \texttt{F\_NOCACHE} \texttt{os.pread} NVMe byte counts, active RAM (\texttt{970.0 MB} = \texttt{1.47\%} of FP16 on \texttt{Qwen/Qwen3.6-35B-A3B}), \texttt{100.0\%} token parity, and Apple M5 Max Metal \texttt{INT4} MoE (\texttt{6.773 J/tok}) + Linux \texttt{RAPL} \texttt{reported\_j} counters stay strictly separated from analytical \texttt{est\_j}. No fabricated citations.
   }%
 }
 
@@ -354,17 +355,22 @@ labels}\label{terms-acronyms-and-measurement-labels}
 \item
   JTAG, XSDB, DAP, USB, FTDI, FT2232C, UART, FIFO, IC, EDA, OOC, AMBA,
   AXI4, IOB, IBUF, OBUF, FDRE, FDSE, LUT1, LUT2, LUT3, LUT4, LUT5,
-  MUXF7, MUXF8, CARRY4, DSP48E2, URAM288, AMD: Joint Test Action Group
-  debug port, Xilinx Software Command-Line Tool debugger, Debug Access
-  Port, Universal Serial Bus, Future Technology Devices International
-  and its FT2232C dual UART/FIFO bridge IC, universal asynchronous
-  receiver-transmitter, first-in first-out buffer, integrated circuit,
-  electronic design automation, out-of-context synthesis mode, Advanced
-  Microcontroller Bus Architecture, AXI4-Lite/AXI4-Stream interconnect,
-  input/output block, input/output buffers, synchronous-reset/set D
-  flip-flops, 1-to-5-input UltraScale+ look-up tables, 7/8-input
-  UltraScale+ multiplexers, 4-bit fast carry chain, UltraScale+ DSP
-  slice, 288-Kbit UltraRAM, and Advanced Micro Devices
+  MUXF7, MUXF8, CARRY4, CARRY8, DSP48E2, URAM288, VCCINT, DS925, VCD,
+  SDP, CE, XPE, CLAI, AMD: Joint Test Action Group debug port, Xilinx
+  Software Command-Line Tool debugger, Debug Access Port, Universal
+  Serial Bus, Future Technology Devices International and its FT2232C
+  dual UART/FIFO bridge IC, universal asynchronous receiver-transmitter,
+  first-in first-out buffer, integrated circuit, electronic design
+  automation, out-of-context synthesis mode, Advanced Microcontroller
+  Bus Architecture, AXI4-Lite/AXI4-Stream interconnect, input/output
+  block, input/output buffers, synchronous-reset/set D flip-flops,
+  1-to-5-input UltraScale+ look-up tables, 7/8-input UltraScale+
+  multiplexers, 4/8-bit fast carry chains, UltraScale+ DSP slice,
+  288-Kbit UltraRAM, internal core supply rail (0.72 V on -2LV), AMD
+  Zynq UltraScale+ DC and AC Switching Characteristics datasheet DS925,
+  Value Change Dump waveform trace, simple dual-port Block RAM mode,
+  synchronous clock enable, Xilinx Power Estimator, subsystem register
+  magic identifier (``CLAI''), and Advanced Micro Devices
 \end{itemize}
 
 Four evidence classes stay separate across every table below:
@@ -407,9 +413,12 @@ Kria KV260 \texttt{xck26}) and cycle counts (\texttt{CPI\ =\ 1}) from
 Verilator \texttt{5.054}. Not Vivado timing closure and not board power
 (\texttt{board\_\allowbreak{}metered\ =\ false}). \\
 \textbf{\texttt{Estimated\ (\allowbreak{}est\_\allowbreak{}j)}} & Analytical joules computed from
-operation counts or thermal-design-power time stand-ins
-(\texttt{joule\_\allowbreak{}meter.\allowbreak{}py}). Comparable only across arms inside the same
-formula; never silicon watts. \\
+operation counts, thermal-design-power time stand-ins
+(\texttt{joule\_\allowbreak{}meter.\allowbreak{}py}), or Verilator VCD toggle-rate switching
+activity paired with AMD \texttt{DS925} \texttt{xck26-2LV}
+(\texttt{0.72\ V}) logic and \texttt{RAMB36E2} capacitance bounds
+(§4.16). Comparable only across arms inside the same formula; never
+silicon watts. \\
 \end{longtable}
 }
 
@@ -1951,17 +1960,230 @@ primitive and \texttt{ltp} audit:
   \texttt{17} \texttt{Beneš-2} stages + dynamic \texttt{LUT6}
   truth-table multiplexing + \texttt{5}-voter majority reduction in a
   single combinational cycle spans \textbf{\texttt{81} primitive levels}
-  (\texttt{73} levels in \texttt{clai\_\allowbreak{}kv260\_\allowbreak{}axi\_\allowbreak{}top}'s combinational
-  \texttt{64}-input popcount and \texttt{8}-class margin comparator).
-  Closing \texttt{250\ MHz} (\texttt{4.000\ ns}) post-place-and-route on
+  (\texttt{73} levels per hierarchical module in
+  \texttt{clai\_\allowbreak{}kv260\_\allowbreak{}axi\_\allowbreak{}top}'s combinational \texttt{64}-input
+  popcount and \texttt{8}-class margin comparator). Closing
+  \texttt{250\ MHz} (\texttt{4.000\ ns}) post-place-and-route on
   low-voltage (\texttt{0.72\ V}) \texttt{-2LV} silicon therefore favors
-  inserting \texttt{2} to \texttt{3} pipeline register stages across
-  \(\mathcal{B}_1 \to \mathcal{C} \to \mathcal{B}_2\) (and \texttt{1}
-  register stage between the \texttt{64}-wire popcount tree and
-  top-\texttt{2} comparator), preserving \texttt{CPI\ =\ 1.\allowbreak{}0} throughput
-  (\texttt{1} context per clock) at \texttt{3}--\texttt{4} cycles of
-  pipeline latency.
+  inserting pipeline register stages across
+  \(\mathcal{B}_1 \to \mathcal{C} \to \mathcal{B}_2\) and compressing
+  the \texttt{64}-wire popcount reduction, quantified analytically in
+  §4.16.
 \end{itemize}
+
+\subsection{\texorpdfstring{4.16 Gate-Level \texttt{xcup} Primitive \&
+\texttt{Verilator} \texttt{VCD} Switching-Activity Datasheet Audit
+(\texttt{est\_j})}{4.16 Gate-Level xcup Primitive \& Verilator VCD Switching-Activity Datasheet Audit (est\_j)}}\label{gate-level-xcup-primitive-verilator-vcd-switching-activity-datasheet-audit-est_j}
+
+Because AMD \texttt{Vivado\ 2026.\allowbreak{}1} was blocked by a missing
+\texttt{.lic} file and \texttt{0} physical \texttt{xck26} boards were
+attached (§4.15), a pre-registered \texttt{Verilator\ 5.\allowbreak{}054}
+\texttt{-\/-trace} waveform and \texttt{Yosys\ 0.\allowbreak{}71+} flattened
+\texttt{synth\_\allowbreak{}xilinx\ -\allowbreak{}family\ xcup} audit
+(\texttt{PREREG\_\allowbreak{}xck26\_\allowbreak{}vcd.\allowbreak{}json}, SHA-256 \texttt{c64505d1\allowbreak{}77515c47…})
+extracted exact per-cycle signal transitions from
+\texttt{openIE-\allowbreak{}dev/\allowbreak{}lut-\allowbreak{}adapt-\allowbreak{}ai} (\texttt{af152ba}) across four
+operational phases (\texttt{idle\_\allowbreak{}quiescent},
+\texttt{steady\_\allowbreak{}lut6\_\allowbreak{}eval\_\allowbreak{}2048\_\allowbreak{}cycles},
+\texttt{single\_\allowbreak{}cycle\_\allowbreak{}page\_\allowbreak{}switch\_\allowbreak{}512\_\allowbreak{}burst}, and
+\texttt{shadow\_\allowbreak{}page\_\allowbreak{}stream\_\allowbreak{}write}, \texttt{0} co-simulation errors
+across \texttt{3,072} paged lookups and all
+\texttt{AXI4-Lite}/\allowbreak{}\texttt{AXI4-\allowbreak{}Stream} packet bursts). Every power and
+energy number in this subsection is strictly an analytical dynamic
+switching estimate (\textbf{\texttt{est\_j} / \texttt{est\_\allowbreak{}pJ/\allowbreak{}cycle} /
+\texttt{est\_mW}}, \textbf{\texttt{measured\_\allowbreak{}j\ =\ None}},
+\textbf{\texttt{reported\_\allowbreak{}j\ =\ None}},
+\textbf{\texttt{board\_\allowbreak{}metered\ =\ false}}), excluding static silicon
+leakage and never substituting for placed-and-routed
+\texttt{Vivado\ report\_\allowbreak{}power} or KV260 \texttt{INA260} rail readings.
+
+Flattened \texttt{xcup} synthesis maps
+\texttt{clai\_\allowbreak{}benes\_\allowbreak{}paged\_\allowbreak{}hotswap\_\allowbreak{}core} (\texttt{512} pages) to
+\textbf{\texttt{41,623} CLB LUTs} (\texttt{35.54\%} of \texttt{xck26},
+vs.~\texttt{41,185} hierarchical in §4.15; \texttt{19,\allowbreak{}982\ LUT3},
+\texttt{7,\allowbreak{}853\ LUT6}, \texttt{7,\allowbreak{}738\ LUT5}, \texttt{3,\allowbreak{}380\ LUT4},
+\texttt{2,\allowbreak{}670\ LUT2}, \texttt{36\ MUXF7}, \texttt{18\ MUXF8}),
+\texttt{36,464} \texttt{FDRE} (\texttt{15.57\%}), and \texttt{81}
+\texttt{RAMB36E2} (\texttt{56.25\%}) across \texttt{27,157} unique
+\texttt{VCD} nets (\texttt{90,124} internal bits: \texttt{64,218}
+combinational, \texttt{20,767} sequential), and maps
+\texttt{clai\_\allowbreak{}kv260\_\allowbreak{}axi\_\allowbreak{}top} to \textbf{\texttt{66,881} CLB LUTs}
+(\texttt{57.10\%} of \texttt{xck26}, vs.~\texttt{67,366} hierarchical in
+§4.15; \texttt{25,\allowbreak{}402\ LUT6}, \texttt{25,\allowbreak{}313\ LUT5},
+\texttt{7,\allowbreak{}909\ LUT3}, \texttt{5,\allowbreak{}303\ LUT4}, \texttt{2,\allowbreak{}879\ LUT2},
+\texttt{75\ LUT1}, \texttt{569\ CARRY4} \(\equiv\)
+\texttt{285\ CARRY8}), \texttt{16,619} \texttt{FDRE}/\allowbreak{}\texttt{FDSE}
+(\texttt{7.09\%}), and \texttt{4} \texttt{RAMB36E2} (\texttt{2.78\%})
+across \texttt{3,825} unique \texttt{VCD} nets (\texttt{128,486}
+internal bits: \texttt{108,582} combinational, \texttt{19,901}
+sequential). Dynamic switching energy at \texttt{VCCINT\ =\ 0.\allowbreak{}72\ V}
+(\texttt{xck26-\allowbreak{}sfvc784-\allowbreak{}2LV-\allowbreak{}c}, \texttt{250.\allowbreak{}0\ MHz}, \texttt{AMD\ DS925}
+/ \texttt{XPE} 16 nm FinFET bounds \texttt{{[}low,\ nom,\ high{]}})
+models switched logic + local interconnect nodes at
+\(C_{\text{node}} = [2.6, 4.5, 7.2]\text{ fF}\)
+(\(\frac{1}{2} C V^2 = [0.674, 1.166, 1.866]\text{ fJ/transition}\),
+weighted by \texttt{2.02} \texttt{xcup} primitives per \texttt{VCD}
+combinational bit in the Beneš core), \texttt{FDRE}/\allowbreak{}\texttt{FDSE}
+clock-leaf pins at \texttt{{[}1.5,\ 2.2,\ 3.0{]}\ fF} (\texttt{2}
+edges/cycle = \texttt{1.\allowbreak{}141\ fJ/\allowbreak{}FF/\allowbreak{}cycle} nominal) plus
+\texttt{{[}3.5,\ 5.5,\ 8.0{]}\ fF} per \texttt{Q} transition, and
+\texttt{RAMB36E2} (\texttt{SDP} \texttt{64b}/\allowbreak{}\texttt{72b}) at
+\texttt{{[}2.90,\ 3.80,\ 4.80{]}\ pJ} per varying-address read,
+\texttt{{[}1.90,\ 2.47,\ 3.12{]}\ pJ} per constant-address enabled cycle
+(\texttt{ENARDEN\ =\ 1}, \(\alpha_{\text{addr}} = 0\)),
+\texttt{{[}3.30,\ 4.30,\ 5.40{]}\ pJ} per write, and
+\texttt{{[}0.04,\ 0.08,\ 0.14{]}\ pJ/cycle} when disabled
+(\texttt{EN\ =\ 0}):
+
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0562}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1812}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1812}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1250}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1188}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1375}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Target Module \& \texttt{VCD} Workload (\texttt{250\ MHz},
+\texttt{0.72\ V})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Cycles}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Comb Transitions / Cyc (\(\alpha_{\text{comb}}\))}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Seq Transitions / Cyc (\(\alpha_{\text{seq}}\))}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\texttt{RAMB36E2} Duty (\texttt{Rd} / \texttt{Wr})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Dynamic \texttt{est\_\allowbreak{}pJ\ /\allowbreak{}\ cycle}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Dynamic \texttt{est\_mW} (\texttt{{[}low,\ high{]}})}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{clai\_\allowbreak{}benes\_\allowbreak{}paged\_\allowbreak{}hotswap\_\allowbreak{}core}} ·
+\texttt{idle\_\allowbreak{}quiescent} & \texttt{256} & \texttt{0.00}
+(\texttt{0.0000}) & \texttt{0.00} (\texttt{0.0000}) & \texttt{100.0\%}
+const-addr / \texttt{0\%} & \textbf{\texttt{241.66}} (\texttt{53.74}
+CE-gated) & \textbf{\texttt{60.41}} (\texttt{{[}47.25,\ 76.21{]}};
+\texttt{13.43} CE-gated) \\
+\textbf{\texttt{clai\_\allowbreak{}benes\_\allowbreak{}paged\_\allowbreak{}hotswap\_\allowbreak{}core}} ·
+\texttt{steady\_\allowbreak{}lut6\_\allowbreak{}eval\_\allowbreak{}2048\_\allowbreak{}cycles} & \texttt{2,048} &
+\texttt{5,010.21} (\texttt{0.0780}) & \texttt{90.97} (\texttt{0.0044}) &
+\texttt{100.0\%} active / \texttt{0\%} & \textbf{\texttt{361.68}} &
+\textbf{\texttt{90.42}} (\texttt{{[}69.29,\ 116.04{]}}) \\
+\textbf{\texttt{clai\_\allowbreak{}benes\_\allowbreak{}paged\_\allowbreak{}hotswap\_\allowbreak{}core}} ·
+\texttt{single\_\allowbreak{}cycle\_\allowbreak{}page\_\allowbreak{}switch\_\allowbreak{}512\_\allowbreak{}burst} & \texttt{512} &
+\texttt{12,406.84} (\texttt{0.1932}) & \texttt{269.46} (\texttt{0.0130})
+& \texttt{100.0\%} active / \texttt{0\%} & \textbf{\texttt{380.07}} &
+\textbf{\texttt{95.02}} (\texttt{{[}72.58,\ 122.60{]}}) \\
+\textbf{\texttt{clai\_\allowbreak{}benes\_\allowbreak{}paged\_\allowbreak{}hotswap\_\allowbreak{}core}} ·
+\texttt{shadow\_\allowbreak{}page\_\allowbreak{}stream\_\allowbreak{}write} & \texttt{512} & \texttt{1,987.31}
+(\texttt{0.0310}) & \texttt{74.47} (\texttt{0.0036}) & \texttt{100.0\%}
+rd / \texttt{1.23\%} wr (\texttt{1/81}) & \textbf{\texttt{358.86}} &
+\textbf{\texttt{89.72}} (\texttt{{[}68.82,\ 114.89{]}}) \\
+\textbf{\texttt{clai\_\allowbreak{}kv260\_\allowbreak{}axi\_\allowbreak{}top}} · \texttt{idle\_\allowbreak{}quiescent} &
+\texttt{256} & \texttt{0.00} (\texttt{0.0000}) & \texttt{0.00}
+(\texttt{0.0000}) & \texttt{0.0\%} (\texttt{EN\ =\ 0}) / \texttt{0\%} &
+\textbf{\texttt{19.55}} & \textbf{\texttt{4.89}}
+(\texttt{{[}3.26,\ 6.66{]}}) \\
+\textbf{\texttt{clai\_\allowbreak{}kv260\_\allowbreak{}axi\_\allowbreak{}top}} ·
+\texttt{steady\_\allowbreak{}lut6\_\allowbreak{}eval\_\allowbreak{}2048\_\allowbreak{}cycles} & \texttt{2,048} &
+\texttt{120.31} (\texttt{0.0011}) & \texttt{15.27} (\texttt{0.0008}) &
+\texttt{3.12\%} rd / \texttt{0\%} & \textbf{\texttt{20.40}} &
+\textbf{\texttt{5.10}} (\texttt{{[}5.04,\ 5.18{]}}) \\
+\textbf{\texttt{clai\_\allowbreak{}kv260\_\allowbreak{}axi\_\allowbreak{}top}} ·
+\texttt{single\_\allowbreak{}cycle\_\allowbreak{}page\_\allowbreak{}switch\_\allowbreak{}512\_\allowbreak{}burst} & \texttt{512} &
+\texttt{325.21} (\texttt{0.0030}) & \texttt{25.56} (\texttt{0.0013}) &
+\texttt{11.13\%} rd / \texttt{0\%} & \textbf{\texttt{22.07}} &
+\textbf{\texttt{5.52}} (\texttt{{[}5.34,\ 5.75{]}}) \\
+\textbf{\texttt{clai\_\allowbreak{}kv260\_\allowbreak{}axi\_\allowbreak{}top}} ·
+\texttt{shadow\_\allowbreak{}page\_\allowbreak{}stream\_\allowbreak{}write} & \texttt{512} & \texttt{31.95}
+(\texttt{0.0003}) & \texttt{71.92} (\texttt{0.0036}) & \texttt{0.0\%} rd
+/ \texttt{8.20\%} wr & \textbf{\texttt{21.80}} & \textbf{\texttt{5.45}}
+(\texttt{{[}5.30,\ 5.64{]}}) \\
+\end{longtable}
+}
+
+Three hardware-design findings follow directly from the \texttt{VCD}
+activity decomposition and \texttt{DS925} delay model:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Unconditional \texttt{RAMB36E2} \texttt{ENARDEN} idle
+  precharge (\texttt{82.8\%} of quiescent core power) and \texttt{4.50×}
+  \texttt{CE}-gating reduction}: Although
+  \texttt{clai\_\allowbreak{}benes\_\allowbreak{}paged\_\allowbreak{}hotswap\_\allowbreak{}core} exhibits \texttt{0.00} data
+  transitions/cycle when idle, \texttt{clai\_\allowbreak{}uram\_\allowbreak{}lut6\_\allowbreak{}page\_\allowbreak{}cache}
+  ties \texttt{ENARDEN\ =\ 1\textquotesingle{}b1} continuously across
+  all \texttt{81} \texttt{RAMB36E2} blocks, burning
+  \texttt{200.\allowbreak{}07\ est\_\allowbreak{}pJ/\allowbreak{}cycle} (\texttt{50.\allowbreak{}02\ est\_\allowbreak{}mW}) in bitline
+  precharge alongside \texttt{41.\allowbreak{}59\ est\_\allowbreak{}pJ/\allowbreak{}cycle}
+  (\texttt{10.\allowbreak{}40\ est\_\allowbreak{}mW}) in \texttt{FDRE} clock leaves
+  (\textbf{\texttt{60.\allowbreak{}41\ est\_\allowbreak{}mW}} quiescent). By contrast,
+  \texttt{clai\_\allowbreak{}engram\_\allowbreak{}streamer} inside \texttt{clai\_\allowbreak{}kv260\_\allowbreak{}axi\_\allowbreak{}top}
+  gates its \texttt{4} \texttt{RAMB36E2} blocks with
+  \texttt{accept\_\allowbreak{}byte\ \&\&\ s\_\allowbreak{}axis\_\allowbreak{}tlast}, idling at
+  \textbf{\texttt{4.\allowbreak{}89\ est\_\allowbreak{}mW}} (\texttt{19.\allowbreak{}55\ est\_\allowbreak{}pJ/\allowbreak{}cycle}) and
+  running steady \texttt{31}-byte \texttt{AXI4-\allowbreak{}Stream} packet inference
+  (\texttt{core\_\allowbreak{}bus\_\allowbreak{}reg} latched once per packet,
+  \(\alpha_{\text{comb}} = 0.0011\)) at \textbf{\texttt{5.\allowbreak{}10\ est\_\allowbreak{}mW}}.
+  Gating \texttt{clai\_\allowbreak{}uram\_\allowbreak{}lut6\_\allowbreak{}page\_\allowbreak{}cache}'s \texttt{ENARDEN} with
+  \texttt{bus\_\allowbreak{}valid} reduces quiescent paged-core dynamic power
+  \textbf{\texttt{4.50×} to \texttt{13.\allowbreak{}43\ est\_\allowbreak{}mW}
+  (\texttt{53.\allowbreak{}74\ est\_\allowbreak{}pJ/\allowbreak{}cycle})} at zero latency penalty.
+\item
+  \textbf{Beneš combinational toggle amplification (\texttt{2.48×})
+  vs.~\texttt{RAMB36E2}-dominated active power (\texttt{+5.1\%})}:
+  Switching \texttt{page\_id} across all \texttt{512} slots on
+  consecutive clock cycles
+  (\texttt{single\_\allowbreak{}cycle\_\allowbreak{}page\_\allowbreak{}switch\_\allowbreak{}512\_\allowbreak{}burst}) drives
+  \texttt{81\ ×\ 64\ =\ 5,\allowbreak{}184} \texttt{LUT6} \texttt{INIT} bitlines into
+  the selector trees simultaneously, raising combinational transitions
+  \texttt{2.48×} (\texttt{5,010.2} to \texttt{12,406.8}
+  transitions/cycle, \texttt{11.80} to \texttt{29.\allowbreak{}22\ est\_\allowbreak{}pJ/\allowbreak{}cycle}),
+  yet total paged-core dynamic power rises by only
+  \texttt{+4.\allowbreak{}60\ est\_\allowbreak{}mW} (\texttt{90.42} to \texttt{95.\allowbreak{}02\ est\_\allowbreak{}mW},
+  \texttt{+5.1\%}) because \texttt{81\ ×\ RAMB36E2} sense-amplifier
+  reads (\texttt{307.\allowbreak{}80\ est\_\allowbreak{}pJ/\allowbreak{}cycle}) account for
+  \texttt{85.1\%}--\texttt{80.9\%} of active dynamic energy
+  (\texttt{358.\allowbreak{}86\ est\_\allowbreak{}pJ/\allowbreak{}cycle} / \texttt{89.\allowbreak{}72\ est\_\allowbreak{}mW} during
+  concurrent \texttt{shadow\_\allowbreak{}page\_\allowbreak{}stream\_\allowbreak{}write}).
+\item
+  \textbf{Flattened critical-path audit (\texttt{81} and \texttt{162}
+  \texttt{ltp} levels) and \texttt{DS925} \texttt{-2LV} analytical
+  stage-delay budget}: Applying \texttt{AMD\ DS925} (\texttt{xck26-2LV},
+  \texttt{0.72\ V}) primitive delays (\texttt{T\_\allowbreak{}ILO\ =\ 0.\allowbreak{}068\ ns},
+  \texttt{T\_\allowbreak{}CKO\ =\ 0.\allowbreak{}148\ ns}, unpipelined \texttt{RAMB36E2}
+  \texttt{T\_\allowbreak{}RCKO\_\allowbreak{}DO\ =\ 1.\allowbreak{}390\ ns} vs.~\texttt{DOA\_\allowbreak{}REG\ =\ 1}
+  \texttt{0.610\ ns}, plus \texttt{{[}0.140,\ 0.220{]}\ ns/level}
+  interconnect budget) places the unpipelined \texttt{81}-level
+  \texttt{clai\_\allowbreak{}benes\_\allowbreak{}paged\_\allowbreak{}hotswap\_\allowbreak{}core} path at
+  \textbf{\texttt{18.\allowbreak{}76–24.\allowbreak{}83\ est\_\allowbreak{}ns}} (\texttt{40.\allowbreak{}3–53.\allowbreak{}3\ MHz}
+  analytical \texttt{est\_Fmax}). Flattening
+  \texttt{clai\_\allowbreak{}kv260\_\allowbreak{}axi\_\allowbreak{}top} across module boundaries
+  (\texttt{ltp\ -\allowbreak{}noff} after \texttt{-flatten}, vs.~\texttt{73} levels
+  per hierarchical module in §4.15) exposes a
+  \textbf{\texttt{162}-level} path
+  (\textbf{\texttt{34.\allowbreak{}77–46.\allowbreak{}92\ est\_\allowbreak{}ns}}, \texttt{21.\allowbreak{}3–28.\allowbreak{}8\ MHz})
+  spanning \texttt{core\_\allowbreak{}bus\_\allowbreak{}reg} through \texttt{clai\_\allowbreak{}rung0\_\allowbreak{}core}
+  (\texttt{artifacts/\allowbreak{}clai\_\allowbreak{}rung0\_\allowbreak{}kv260.\allowbreak{}v}) and its unrolled
+  \texttt{64}-step serial \texttt{pop\_acc} adder chain. Enabling
+  \texttt{RAMB36E2} \texttt{DOA\_\allowbreak{}REG\ =\ 1}, inserting
+  \texttt{4}--\texttt{5} pipeline register cuts
+  (\texttt{\textless{}=\ 18} logic levels/stage), and replacing the
+  serial \texttt{64}-input popcount loop with a \texttt{6}-level
+  \texttt{LUT6}/\allowbreak{}Wallace compressor brings per-stage analytical delay
+  below \textbf{\texttt{3.\allowbreak{}7\ est\_\allowbreak{}ns} (\texttt{\textless{}=\ 4.000\ ns}
+  at \texttt{250\ MHz})} at \texttt{CPI\ =\ 1.\allowbreak{}0} (\texttt{not} Vivado
+  post-PAR timing closure).
+\end{enumerate}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -2063,10 +2285,13 @@ Lossless parity (\texttt{100.0\%}) guarantees bit-for-bit agreement with
 greedy target decoding without raising the capability ceiling of a
 \texttt{350M} or \texttt{0.8B} base checkpoint.
 
-\textbf{Measurement validity and not claimed.} Analytical joule numbers
-(\texttt{est\_j/VC}, \texttt{est\_\allowbreak{}j/\allowbreak{}tok}, \texttt{est\_\allowbreak{}mJ/\allowbreak{}Byte}),
-operating-system / on-chip counter readings (\texttt{reported\_\allowbreak{}j} from
-Apple Silicon \texttt{L2} \texttt{libIOReport}
+\textbf{Measurement validity and not claimed.} Analytical joule and
+switching-power numbers (\texttt{est\_j/VC}, \texttt{est\_\allowbreak{}j/\allowbreak{}tok},
+\texttt{est\_\allowbreak{}mJ/\allowbreak{}Byte}, and the \texttt{Verilator} \texttt{VCD} +
+\texttt{AMD\ DS925} \texttt{0.72\ V} \texttt{est\_\allowbreak{}pJ/\allowbreak{}cycle} and
+\texttt{est\_mW} bounds in §4.16), operating-system / on-chip counter
+readings (\texttt{reported\_\allowbreak{}j} from Apple Silicon \texttt{L2}
+\texttt{libIOReport}
 \texttt{\textquotesingle{}GPU\ Energy\textquotesingle{}} + \texttt{L3}
 \texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage} \texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj}, plus a
 \texttt{\textgreater{}\ 450\ W} narrow-register rollover filter
@@ -2074,13 +2299,15 @@ documented in \texttt{Claim\ LA-\allowbreak{}11}), and whole-machine macOS
 \texttt{PMU} cumulative deltas are kept strictly separate from physical
 rail measurements (\texttt{measured\_\allowbreak{}j\ =\ None}). Yosys \texttt{0.71+}
 and Verilator \texttt{5.054} establish structural \texttt{xck26} netlist
-synthesis and \texttt{CPI\ =\ 1} cycle simulation, not Vivado post-PAR
-\texttt{250\ MHz} timing closure and not physical KV260 rail watts
-(\texttt{board\_\allowbreak{}metered\ =\ false}). Silicon energy leadership,
-promotion of \texttt{ModelGenerated} outputs to \texttt{Deterministic},
-full \texttt{500}-task \texttt{SWE-\allowbreak{}bench\ Verified} container evaluation
-beyond the \texttt{48}-task contract benchmark (\texttt{Claim\ LA-\allowbreak{}11})
-and \texttt{16}-task multi-file git-repository \texttt{SWE-Mini}
+synthesis, \texttt{CPI\ =\ 1} cycle simulation, and \texttt{VCD}
+toggle-rate dynamic switching \texttt{est\_mW} (excluding static
+leakage), not Vivado post-PAR \texttt{250\ MHz} timing closure and not
+physical KV260 rail watts (\texttt{board\_\allowbreak{}metered\ =\ false}). Silicon
+energy leadership, promotion of \texttt{ModelGenerated} outputs to
+\texttt{Deterministic}, full \texttt{500}-task
+\texttt{SWE-\allowbreak{}bench\ Verified} container evaluation beyond the
+\texttt{48}-task contract benchmark (\texttt{Claim\ LA-\allowbreak{}11}) and
+\texttt{16}-task multi-file git-repository \texttt{SWE-Mini}
 \texttt{pytest} benchmark (\texttt{Claim\ LA-\allowbreak{}13}), and measured
 \texttt{70B} runs (\texttt{air\_\allowbreak{}mol\_\allowbreak{}nvme\_\allowbreak{}baselines.\allowbreak{}csv} reports
 analytical \texttt{70B} projections beyond the measured \texttt{34.66B}

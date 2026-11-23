@@ -39,6 +39,9 @@ export const GET: APIRoute = async () => {
 - [Structured Catalog JSON](https://research.openie.dev/catalog.json): Machine-readable index of all studies, section anchors, keywords, revisions, RCE spec chapters, and interactive instruments.
 - [A2A Agent Card](https://research.openie.dev/.well-known/agent-card.json): Agent capabilities, skills, and protocol bindings (llms.txt, JSON catalog, WebMCP, Atom).
 - [Atom Feed](https://research.openie.dev/feed.xml): Syndication feed of published studies and revisions.
+- [OpenIE Research TV](https://research.openie.dev/tv/): 84 snackable research films (${exported.length} studies x 4 depth tiers: 5s, 30s, 60s, and 90s) with synchronized WebVTT captions and Schema.org VideoObject metadata.
+- [OpenIE Research Radio](https://research.openie.dev/radio/): Multi-voice conversational research radio, active open-access literature radar, autonomous topic idea foundry with deterministic pilot receipts, and [Podcast RSS 2.0 Feed](https://research.openie.dev/radio/rss.xml).
+- [Interactive Tutorials Hub](https://research.openie.dev/tutorials/): 10 guided multi-step interactive simulations (Predict -> Break -> Repair -> Verify) with chromeless embed support (\`?embed=1&lab=<id>\`).
 - [Interactive Search](https://research.openie.dev/?q=deterministic+null): Filterable web catalog supporting \`?q=<query>\` and \`?group=<research|essay|product|living>\`.
 
 ${sections}

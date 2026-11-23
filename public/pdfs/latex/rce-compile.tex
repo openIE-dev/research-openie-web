@@ -82,6 +82,7 @@
 \newunicodechar{Ω}{\ensuremath{\Omega}}
 \newunicodechar{α}{\ensuremath{\alpha}}
 \newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
 \newunicodechar{δ}{\ensuremath{\delta}}
 \newunicodechar{ε}{\ensuremath{\varepsilon}}
 \newunicodechar{θ}{\ensuremath{\theta}}
@@ -157,7 +158,7 @@
 \title{\vspace{-1.2em}\textbf{RCE Compile: A Law of Compilation, Tested as a Normal Form Against Real Compilers}}
 \author{\textbf{David Charlot, Open Interface Engineering}\\[0.15em]
 {\small Research study · draft $\cdot$ Open Interface Engineering $\cdot$ \href{https://research.openie.dev}{research.openie.dev}}}
-\date{\small Revision \texttt{395f081} (4 November 2026) $\cdot$ Web: \href{https://research.openie.dev/papers/rce-compile/}{research.openie.dev/papers/rce-compile/} $\cdot$ Archival LaTeX: \href{https://research.openie.dev/pdfs/latex/rce-compile.pdf}{/pdfs/latex/rce-compile.pdf} (\href{https://research.openie.dev/pdfs/latex/rce-compile.tex}{.tex})}
+\date{\small Revision \texttt{5c50a85} (23 November 2026) $\cdot$ Web: \href{https://research.openie.dev/papers/rce-compile/}{research.openie.dev/papers/rce-compile/} $\cdot$ Archival LaTeX: \href{https://research.openie.dev/pdfs/latex/rce-compile.pdf}{/pdfs/latex/rce-compile.pdf} (\href{https://research.openie.dev/pdfs/latex/rce-compile.tex}{.tex})}
 
 \begin{document}
 \maketitle
@@ -167,7 +168,7 @@
 \noindent\fcolorbox{openieAmberBorder}{openieAmberBg}{%
   \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
     \small\color{openieDark}%
-    \textbf{Measurement.} Research study, draft, not a journal final. Measured results in Section~8 cover byte comparisons of compiler outputs across three hosts (\texttt{E1}), erasure and description-length counts alongside Regime-B Linux \texttt{x86-64} \texttt{RAPL} core/package \textbf{\texttt{reported\_j}} compilation cost and optimization payback horizons across \texttt{20} exact-integer kernels and \texttt{14} compiler tiers (\texttt{E4} and \texttt{E4-Energy}: Python$\to$\texttt{clang -O3} median payback \texttt{2,490} runs; \texttt{-O0}$\to$\texttt{-O3} \texttt{53,464--102,720} runs), and De~Bruijn positional name-free hashing across \texttt{245} programs and \texttt{500} verified semantic mutants (\texttt{E5} and \texttt{E5-Scale}: \texttt{0 / 500} false hits; \texttt{167.8$\times$} \texttt{clang -O3} and \texttt{448.5$\times$} \texttt{rustc -O3} rebuild \texttt{reported\_j} reduction), plus the 12-compiler normal-form audit (\texttt{R..G}). No hardware rail or wall wattmeter was attached (\texttt{measured\_j = None}, \texttt{board\_metered = false}); every external source states how it was verified.
+    \textbf{Measurement.} Research study, draft, not a journal final. Byte reproducibility (\texttt{E1}), \texttt{20}-kernel $\times$ \textbf{\texttt{15}-tier} Linux Zen~5 and Core~i9-13900H \texttt{RAPL} core and package \textbf{\texttt{reported\_j}} compilation vs.\ execution energy payback horizons $N^*$ including pre-compiled \textbf{\texttt{librce\_rt.rlib}} (\textbf{\texttt{20.07$\times$}} lower compile energy, median \textbf{$N^* = 1{,}079$}) and \texttt{H4} Regime-B checks (\texttt{E4-Energy} / \textbf{\texttt{E4-Prelude}}), and \texttt{245}-program / \texttt{500}-mutant De~Bruijn nameless cache soundness plus warm-cache avoided compilation \texttt{reported\_j} (\texttt{E5-Scale}) are reported in Section~8, alongside the 12-compiler normal-form audit (\texttt{R..G}). No hardware power rail or wall meter was attached (\texttt{measured\_j = None}, \texttt{board\_metered = false}).
   }%
 }
 
@@ -176,7 +177,7 @@
 \noindent{\color{openieAmber}\vrule width 3pt}\hspace{8pt}%
 \parbox{\dimexpr\linewidth-11pt\relax}{%
   \small\itshape\color{openieSlate}%
-  RCE Compile (a research project in the Reality Code Engine repository) asks whether one statement of what compilation is holds for every compiler, independent of the Reality Code Engine itself. Checked against twelve compiler families, the candidate holds as a standard a compiler can be measured against, not as a description of what compilers do. This study states that standard, the evidence for and against each of its seven parts, a measurable replacement for its convergence function, seven hypotheses with their falsifiers, and the experiments run so far: byte comparisons of compiler outputs on three machines, erasure counts alongside Linux Running Average Power Limit (RAPL) reported\_j compilation cost and optimization payback horizons across 20 kernels and 14 compiler tiers, and name-free De Bruijn reuse hashing tested across 245 programs and 500 verified semantic mutants.
+  RCE Compile (a research project in the Reality Code Engine repository) asks whether one statement of what compilation is holds for every compiler, independent of the Reality Code Engine itself. Checked against twelve compiler families, the candidate holds as a standard a compiler can be measured against, not as a description of what compilers do. This study states that standard, the evidence for and against each of its seven parts, a measurable replacement for its convergence function, seven hypotheses with their falsifiers, and the experiments run so far: byte comparisons of compiler outputs on three machines, erasure counts alongside Linux Running Average Power Limit (RAPL) reported\_j compilation cost and optimization payback horizons across 20 kernels and 15 compiler tiers (including a pre-compiled shared .rlib runtime crate that cuts emitted Rust -O3 compile reported\_j by 20.1×), and name-free De Bruijn reuse hashing tested across 245 programs and 500 verified semantic mutants.
 }
 \vspace{6pt}
 
@@ -190,8 +191,8 @@
 \vspace{8pt}
 
 \emph{Revision
-\href{https://github.com/openIE-dev/research-openie-web/commits/main/src/content/papers/rce-compile.md}{\texttt{395f081}},
-4 November 2026. Research study, draft. Project repository:
+\href{https://github.com/openIE-dev/research-openie-web/commits/main/src/content/papers/rce-compile.md}{\texttt{5c50a85}},
+23 November 2026. Research study, draft. Project repository:
 \href{https://github.com/openIE-dev/rce/tree/main/compile}{openIE-dev/rce,
 \texttt{compile/}}, which holds the charter, the hypotheses and the
 experiments this study reports. Interactive observatory:
@@ -199,11 +200,11 @@ experiments this study reports. Interactive observatory:
 
 \section{Abstract}\label{abstract}
 
-RCE Compile is a research project that asks whether a single statement
-of what compilation is, here called a Law of Compilation, holds for any
-compiler, independent of the Reality Code Engine (RCE) in whose
-repository the project lives. The candidate statement says that
-compilation is meaning-preserving lowering between canonical
+RCE (Reality Code Engine) Compile is a research project that asks
+whether a single statement of what compilation is, here called a Law of
+Compilation, holds for any compiler, independent of the Reality Code
+Engine in whose repository the project lives. The candidate statement
+says that compilation is meaning-preserving lowering between canonical
 representations, ranked by a cost whose floor is Landauer's limit and
 whose target is the shortest equivalent program, gated by verification
 and compounded by reuse. This study checks that candidate against twelve
@@ -222,23 +223,28 @@ on three machines; some differences survive the toolchains' path
 remapping and have no traced cause, so the hypothesis that lowering is
 deterministic is neither supported nor falsified. Erasure and
 description length were first counted for 96 builds on a machine with no
-energy counter, and a pre-registered Regime-B extension then read Linux
+energy counter, and pre-registered Regime-B extensions then read Linux
 Running Average Power Limit (RAPL) on-chip \texttt{reported\_\allowbreak{}j}
 (\texttt{board\_\allowbreak{}metered\ =\ false}, no wall wattmeter) across 20
-deterministic integer and fixed-point kernels and 14 compiler and
-runtime tiers (280 of 280 builds checksum-verified): lowering from
+deterministic integer and fixed-point kernels and 15 compiler and
+runtime tiers (300 of 300 builds checksum-verified): lowering from
 Python to \texttt{clang\ -\allowbreak{}O3} recovers its compilation joules after a
 median of 2,490 runs, \texttt{-O0} to \texttt{-O3} pays back after a
 median of 53,464 to 102,720 runs, \texttt{-O2} to \texttt{-O3} never
-recovers its extra compile energy on 4 to 6 of the 20 kernels, and time
-multiplied by power explains far more Regime-B variance than static
-intermediate-representation size (adjusted \(R^2\) 0.9999 against
-0.1154). A name-free hash, the part of the standard that no compiler
-surveyed has, was built first over binary objects and WebAssembly
-modules (16 kernels and 4 programs) and then scaled across 185 RCE
-Forms, 60 C, Rust and Python kernels, and 500 test-vector-verified
-semantic mutants: positional De Bruijn hashing produced 0 of 500
-(0.00\%) false-positive collisions while cutting cold
+recovers its extra compile energy on 4 to 6 of the 20 kernels,
+pre-compiling RCE's standalone Rust runtime prelude once into a shared
+\texttt{librce\_\allowbreak{}rt.\allowbreak{}rlib} crate cuts per-kernel emitted Rust \texttt{-O3}
+compilation \texttt{reported\_\allowbreak{}j} by 20.07× (56.29 J to 2.81 J core,
+cross-checked at 15.44× on an idle dedicated Core i9-13900H host) and
+lowers its payback horizon against Node JavaScript 28.8× from 31,080 to
+1,079 runs, and time multiplied by power explains far more Regime-B
+variance than static intermediate-representation size (adjusted \(R^2\)
+0.9999 against 0.1154). A name-free hash, the part of the standard that
+no compiler surveyed has, was built first over binary objects and
+WebAssembly modules (16 kernels and 4 programs) and then scaled across
+185 RCE Forms, 60 C, Rust and Python kernels, and 500
+test-vector-verified semantic mutants: positional De Bruijn hashing
+produced 0 of 500 (0.00\%) false-positive collisions while cutting cold
 \texttt{clang\ -\allowbreak{}O3} and \texttt{rustc\ -\allowbreak{}O3} compilation
 \texttt{reported\_\allowbreak{}j} by 167.8× and 448.5× on renamed hits, whereas naive
 identifier-stripping collided on 150 of 150 (100.0\%) variable-binding
@@ -263,8 +269,11 @@ and each citation says so.
   energy per run. Across 20 test kernels on Linux chip counters
   (\texttt{reported\_\allowbreak{}j}, not a wall plug meter), compiling to
   \texttt{clang\ -\allowbreak{}O3} instead of running Python pays back after about
-  2,500 runs, while stepping from \texttt{-O2} to \texttt{-O3} never
-  pays back on up to 30\% of the kernels.
+  2,500 runs, stepping from \texttt{-O2} to \texttt{-O3} never pays back
+  on up to 30\% of the kernels, and pre-compiling a shared
+  \texttt{.rlib} runtime library cuts emitted Rust compile energy 20× so
+  native lowering beats JavaScript after about 1,080 runs instead of
+  31,000.
 \item
   A fingerprint of a program that replaces variable names by their
   binding positions --- rather than merely erasing names --- recognised
@@ -395,8 +404,9 @@ listed here.
 \item
   NOT FOUND: an evidence mark, defined below
 \item
-  NVML, RAPL: NVIDIA's management library and Intel's running average
-  power limit interface, both of which report energy counters
+  NVML, RAPL, PP0: NVIDIA's management library and Intel's running
+  average power limit interface (including its processor-core energy
+  plane PP0), both of which report energy counters
 \item
   OSS: open-source software
 \item
@@ -1700,8 +1710,8 @@ horizons)}{8.2 E2 to E4: protocols, E4's erasure counts, and E4-Energy (reported
 
 E2 and E3 have protocols in the repository and have not been run. E4 has
 its original 96-row erasure-count run on a host without an energy
-counter {[}6{]}, plus a pre-registered Wave 4 Linux RAPL
-\texttt{reported\_\allowbreak{}j} extension across 20 deterministic kernels and 14
+counter {[}6{]}, plus pre-registered Wave 4 and Wave 5 Linux RAPL
+\texttt{reported\_\allowbreak{}j} extensions across 20 deterministic kernels and 15
 compiler and runtime tiers (\texttt{board\_\allowbreak{}metered\ =\ false},
 \texttt{measured\_\allowbreak{}j\ =\ None}).
 
@@ -1827,10 +1837,12 @@ at \texttt{-Oz} counts 3,540,016 bits, about 13 times its count at
 \texttt{-O2}, and executes 488,404 WebAssembly instructions per call
 against 19,530.
 
-\textbf{E4-Energy (Wave 4), Linux RAPL \texttt{reported\_\allowbreak{}j}, compilation
-cost and payback horizon \(N^*\).} Before running
+\textbf{E4-Energy (Wave 4 \& Wave 5), Linux RAPL \texttt{reported\_\allowbreak{}j},
+compilation cost and payback horizon \(N^*\).} Before running
 (\texttt{PREREG\_\allowbreak{}rce\_\allowbreak{}compile\_\allowbreak{}wave4.\allowbreak{}json}, SHA-256
-\texttt{165a12cd\allowbreak{}a4d9c304…}), a 20-kernel deterministic exact-integer and
+\texttt{165a12cd\allowbreak{}a4d9c304…}, and
+\texttt{PREREG\_\allowbreak{}rce\_\allowbreak{}compile\_\allowbreak{}wave5\_\allowbreak{}rlib.\allowbreak{}json}, SHA-256
+\texttt{1ba4f28a\allowbreak{}bfaa3783…}), a 20-kernel deterministic exact-integer and
 fixed-point suite was locked across C, Rust, WebAssembly, Python, and
 RCE (\texttt{openIE-\allowbreak{}dev/\allowbreak{}rce} at \texttt{1762fb4b}):
 \texttt{sha256\_\allowbreak{}block}, \texttt{chacha20\_\allowbreak{}block}, \texttt{q32\_\allowbreak{}orbital},
@@ -1848,9 +1860,10 @@ Max+ 395, Zen 5, Ubuntu Linux 7.0; GCC 15.2.0, Clang 21.1.8, rustc
 \texttt{MSR\_\allowbreak{}CORE\_\allowbreak{}ENERGY\_\allowbreak{}STAT}), while simultaneously logging
 \texttt{/\allowbreak{}sys/\allowbreak{}class/\allowbreak{}powercap/\allowbreak{}intel-\allowbreak{}rapl:0/\allowbreak{}energy\_\allowbreak{}uj} (APU package;
 \texttt{basis\ =\ "reported"}, \texttt{board\_\allowbreak{}metered\ =\ false},
-\texttt{measured\_\allowbreak{}j\ =\ None}). All 280 kernel-by-tier cells (20 kernels
-× 14 tiers) matched their 64-bit unsigned batch checksums over 2,000
-seeds with 0 mismatches {[}M{]}.
+\texttt{measured\_\allowbreak{}j\ =\ None}). All 300 kernel-by-tier cells (20 kernels
+× 15 tiers: 280 in Wave 4 plus 20 linked against the pre-compiled
+\texttt{librce\_\allowbreak{}rt.\allowbreak{}rlib} crate in Wave 5) matched their 64-bit unsigned
+batch checksums over 2,000 seeds with 0 mismatches {[}M{]}.
 
 
 \begin{center}
@@ -1858,14 +1871,15 @@ seeds with 0 mismatches {[}M{]}.
 \end{center}
 
 
-\emph{Figure 2. Pre-registered Wave 4 E4-Energy and E5-Scale
-measurements (Linux RAPL core \texttt{reported\_\allowbreak{}j};
-\texttt{board\_\allowbreak{}metered\ =\ false}). (A) Median cumulative lifecycle
-energy \(E_{\text{compile}} + N \cdot E_{\text{run}}\) over
-\(N \in [1, 10^8]\) kernel invocations. (B) Share of the 20 kernels
-where stepping from level 2 (or \texttt{-Os}) to level 3 dominates
-immediately (\(N^* = 0\)), pays back at finite \(N^*\), or never
-recovers its compile cost (\(\Delta E_{\text{run}} \le 0\)). (C)
+\emph{Figure 2. Pre-registered Wave 4 E4-Energy, Wave 5 E4-Prelude
+(\texttt{librce\_\allowbreak{}rt.\allowbreak{}rlib}), and E5-Scale measurements (Linux RAPL core
+\texttt{reported\_\allowbreak{}j}; \texttt{board\_\allowbreak{}metered\ =\ false}). (A) Median
+cumulative lifecycle energy
+\(E_{\text{compile}} + N \cdot E_{\text{run}}\) over \(N \in [1, 10^8]\)
+kernel invocations across seven highlight tiers. (B) Share of the 20
+kernels where stepping from level 2 (or \texttt{-Os}) to level 3
+dominates immediately (\(N^* = 0\)), pays back at finite \(N^*\), or
+never recovers its compile cost (\(\Delta E_{\text{run}} \le 0\)). (C)
 E5-Scale soundness across 500 verified semantic mutants and warm De
 Bruijn cache savings {[}M{]}.}
 
@@ -1930,6 +1944,9 @@ Bruijn cache savings {[}M{]}.}
 \texttt{rce\ check\ +\ emit\ rust\ -\textgreater{}\ rustc\ -O3} &
 56.2925 & 896.930 & 7,473.83 & 5,190,208 & 1,306.95 & 15,049.10 &
 123,497.6 \\
+\texttt{rce\ check\ +\ emit\ rust\ -\textgreater{}\ rustc\ -O3\ (shared\ .rlib)}
+& 2.8053 & 27.045 & 304.10 & 5,303,456 & 1,212.03 & 8,864.82 &
+94,571.7 \\
 \end{longtable}
 }
 
@@ -1965,11 +1982,65 @@ builds a 1.6 KB portable module in 0.485 J core and executes in Node at
 link and codegen work. For RCE (\texttt{1762fb4b}), \texttt{rce\ check}
 plus emitting all five scalar targets (\texttt{core}, \texttt{rust},
 \texttt{python}, \texttt{js}, \texttt{scala}) costs a median of 0.851 J
-core (97.9 ms), whereas compiling the standalone 1,400-line RCE
-value-runtime prelude inside each emitted Rust file under
-\texttt{rustc\ -\allowbreak{}O3} costs 56.29 J core and requires a median of
-\textbf{31,080} invocations (18 of 20 finite, 2 never) to beat running
-the emitted JS directly in Node.
+core (97.9 ms), whereas compiling the standalone RCE value-runtime
+prelude inline inside each emitted Rust file under \texttt{rustc\ -\allowbreak{}O3}
+costs 56.29 J core and requires a median of \textbf{31,080} invocations
+(18 of 20 finite, 2 never) to beat running the emitted JS directly in
+Node.
+
+\textbf{E4-Prelude (Wave 5), pre-compiled \texttt{librce\_\allowbreak{}rt.\allowbreak{}rlib}
+shared runtime crate.} Because \texttt{rce\ emit\ -\allowbreak{}\/\allowbreak{}-\allowbreak{}target\ rust}
+embeds the standalone \texttt{src/\allowbreak{}emit/\allowbreak{}rt.\allowbreak{}rs} value runtime verbatim at
+the top of every emitted \texttt{.rs} program, monolithic builds
+re-optimise \texttt{2,286} lines (\texttt{143.4\ KB}) of \texttt{Val}
+arithmetic, copy-on-write collections and formatting helpers on every
+kernel compile. Under \texttt{PREREG\_\allowbreak{}rce\_\allowbreak{}compile\_\allowbreak{}wave5\_\allowbreak{}rlib.\allowbreak{}json}
+(\texttt{1ba4f28a\allowbreak{}bfaa3783…}), that runtime prelude (plus
+\texttt{DISPLAY\_\allowbreak{}ESCAPE} and a zero-cost \texttt{RceProgramHooks} trait
+dispatch vtable) was factored into \texttt{rce\_\allowbreak{}rt.\allowbreak{}rs} and compiled once
+with \texttt{rustc\ -\allowbreak{}\/\allowbreak{}-\allowbreak{}crate-\allowbreak{}type=rlib\ -\allowbreak{}C\ opt-\allowbreak{}level=3}: on Zen 5 CPU
+0, building \texttt{librce\_\allowbreak{}rt.\allowbreak{}rlib} (\texttt{5,\allowbreak{}409,\allowbreak{}636\ B},
+byte-identical SHA-256 \texttt{ecfdc64c\allowbreak{}8d5f141e…} across 5 of 5 trials)
+cost \textbf{66.0344 J} core (\textbf{575.648 J} package,
+\textbf{7,103.8 ms}; package idle drift \texttt{3.40\%},
+\texttt{49.825\ W} to \texttt{51.517\ W}). Linking each kernel via
+\texttt{extern\ crate\ rce\_\allowbreak{}rt;\ use\ rce\_\allowbreak{}rt::*;} and
+\texttt{-\allowbreak{}\/\allowbreak{}-\allowbreak{}extern\ rce\_\allowbreak{}rt=librce\_\allowbreak{}rt.\allowbreak{}rlib} (\texttt{20\ of\ 20} exact
+2,000-seed batch checksum matches, \texttt{0} mismatches) cuts median
+per-kernel compile cost from \textbf{56.2925 J} core
+(\texttt{7,\allowbreak{}473.\allowbreak{}83\ ms}) to \textbf{2.8053 J} core (\texttt{27.045\ J}
+package, \textbf{304.10 ms}, \texttt{5,\allowbreak{}303,\allowbreak{}456\ B} unstripped /
+\texttt{944,\allowbreak{}544\ B} stripped) --- a \textbf{20.07×} reduction in
+\texttt{compile\_\allowbreak{}core\_\allowbreak{}reported\_\allowbreak{}j} and \textbf{24.58×} wall-time
+speedup against Wave 4 (\textbf{15.85×} lower core energy and
+\textbf{16.43×} faster than same-session monolithic \texttt{44.\allowbreak{}4513\ J}
+/ \texttt{4,\allowbreak{}996.\allowbreak{}61\ ms}), reducing total 20-kernel suite compile energy
+(including the one-time \texttt{66.03\ J} \texttt{.rlib} build)
+\textbf{8.65×} from \textbf{1,108.01 J} to \textbf{128.17 J} (\texttt{U}
++ \texttt{E} compounding). Against
+\texttt{rce\ check\ +\ 5-\allowbreak{}target\ emit} (\texttt{node} JS), median finite
+payback \(N^*\) drops \textbf{28.8×} from \textbf{31,080} to
+\textbf{1,079} invocations (17 of 20 finite, range 404 to 5,650, 3
+never; \textbf{1,974} with 18 of 20 finite against same-session Node JS)
+when \texttt{librce\_\allowbreak{}rt.\allowbreak{}rlib} ships pre-built with the toolchain,
+\textbf{3,110} invocations (range 1,294 to 9,326; \textbf{10.0×} lower)
+when amortised across 20 kernels (\texttt{+3.302\ J} core per kernel),
+and \textbf{37,744} invocations (range 18,198 to 79,159) if built cold
+for a single kernel (breaking even against inline compilation as soon as
+two or more kernels share \texttt{librce\_\allowbreak{}rt.\allowbreak{}rlib}). To rule out
+co-tenant package noise on the Zen 5 host, the full 20-kernel comparison
+was replicated on an idle dedicated 20-thread
+\texttt{Intel\ Core\ i9-\allowbreak{}13900H} Linux x86-64 workstation (load average
+\texttt{1.19} to \texttt{2.35}, idle package power \texttt{4.461\ W} to
+\texttt{4.756\ W}, \texttt{6.62\%} drift; one-time
+\texttt{librce\_\allowbreak{}rt.\allowbreak{}rlib} \texttt{111.82\ J} PP0 core, \texttt{142.63\ J}
+package, \texttt{6,\allowbreak{}581.\allowbreak{}8\ ms}, byte-identical across 5 of 5 trials):
+linking \texttt{librce\_\allowbreak{}rt.\allowbreak{}rlib} cut median per-kernel compile energy
+from \textbf{84.4024 J} PP0 (\texttt{104.\allowbreak{}560\ J} package,
+\texttt{4,\allowbreak{}397.\allowbreak{}44\ ms}) to \textbf{5.4661 J} PP0 (\texttt{6.851\ J}
+package, \texttt{277.\allowbreak{}47\ ms}), a \textbf{15.44×} PP0 core and
+\textbf{15.26×} full-socket package reduction (\texttt{15.85×} speedup)
+{[}M{]}.
 
 \textbf{H4 Regime-B check on Linux RAPL.} Across the 140 Clang and Rust
 rows with freestanding WebAssembly IR modules (40 kernel-by-language
@@ -2316,7 +2387,7 @@ Three empirical results stand out:
   per hit), and from \textbf{78.71 mJ} core (9.85 ms) to \textbf{4.59
   mJ} (0.74 ms) for \texttt{rce\ check} plus 5-target \texttt{rce\ emit}
   (\textbf{17.15×} reduction) {[}M{]}. Readers can test live snippets
-  and inspect all 280 E4-Energy cells in the companion observatory at
+  and inspect all 300 E4-Energy cells in the companion observatory at
   \href{https://research.openie.dev/living/rce-compile/}{\texttt{/\allowbreak{}living/\allowbreak{}rce-\allowbreak{}compile/\allowbreak{}}}.
 \end{enumerate}
 
@@ -2342,21 +2413,25 @@ Three empirical results stand out:
   \textbf{The per-part table is qualitative.} It summarises architecture
   and documentation; it is not a measurement of each compiler.
 \item
-  \textbf{Energy readings are Regime-B on-chip \texttt{reported\_\allowbreak{}j} on a
-  shared host, not supply wattmeter \texttt{measured\_\allowbreak{}j}.} E4-Energy
-  records Linux RAPL core and package \texttt{reported\_\allowbreak{}j}
+  \textbf{Energy readings are Regime-B on-chip \texttt{reported\_\allowbreak{}j}, not
+  supply wattmeter \texttt{measured\_\allowbreak{}j}.} E4-Energy records Linux RAPL
+  core and package \texttt{reported\_\allowbreak{}j}
   (\texttt{board\_\allowbreak{}metered\ =\ false}, \texttt{measured\_\allowbreak{}j\ =\ None}) on
-  a single 32-CPU Zen 5 host whose non-pinned cores carried co-tenant
-  workloads (§8.2); Regimes A (in-order/FPGA supply shunt) and C
-  (thermodynamic entropy production) remain unmeasured, so H4 as a
-  three-regime hypothesis is not yet closed.
+  a 32-CPU Zen 5 host whose non-pinned cores carried co-tenant
+  workloads, with the Wave 5 \texttt{librce\_\allowbreak{}rt.\allowbreak{}rlib} compile-energy
+  ratio replicated on an idle dedicated \texttt{Core\ i9-\allowbreak{}13900H} Linux
+  workstation (\texttt{4.46\ W} idle package, \texttt{15.44×} PP0 and
+  \texttt{15.26×} package reduction, §8.2); Regimes A (in-order/FPGA
+  supply shunt) and C (thermodynamic entropy production) remain
+  unmeasured, so H4 as a three-regime hypothesis is not yet closed.
 \item
   \textbf{Corpus scope.} E1 builds one or two programs per language;
   E4-Energy covers 20 self-contained integer and fixed-point kernels
-  without multi-crate link-time optimisation or GPU kernels; and
-  E5-Scale's source-level De Bruijn canonicaliser covers RCE Forms
-  (\texttt{185}) plus single-file C, Rust and Python kernels
-  (\texttt{60}), not full multi-translation-unit C++ or LLVM IR (§8.3).
+  (plus the shared \texttt{librce\_\allowbreak{}rt.\allowbreak{}rlib} prelude crate) without
+  whole-program link-time optimisation or GPU kernels; and E5-Scale's
+  source-level De Bruijn canonicaliser covers RCE Forms (\texttt{185})
+  plus single-file C, Rust and Python kernels (\texttt{60}), not full
+  multi-translation-unit C++ or LLVM IR (§8.3).
 \item
   \textbf{The 98/2 split is registered, not yet measured.} It is
   hypothesis H6 (§5, §7), and its measurement is planned rung by rung
@@ -2380,21 +2455,25 @@ identifiers by De Bruijn positions rather than merely stripping names:
 positional hashing yields 0 of 500 false hits and cuts cold
 \texttt{clang\ -\allowbreak{}O3} and \texttt{rustc\ -\allowbreak{}O3} rebuild \texttt{reported\_\allowbreak{}j}
 by 167.8× and 448.5×, whereas naive identifier-stripping collides on
-100\% of variable-binding swaps (§8.3). Second, E4-Energy shows across
-20 exact-integer kernels and 14 compiler tiers that compilation joules
-materially reshape which optimisation tier wins: lowering from Python to
-\texttt{clang\ -\allowbreak{}O3} pays back after a median of 2,490 runs, \texttt{-O0}
-to \texttt{-O3} needs 53,464 to 102,720 runs, \texttt{-O2} to
-\texttt{-O3} never recovers its extra compile joules on 20\% to 30\% of
-the kernels, and in Regime B time multiplied by power explains far more
-variance in RAPL \texttt{reported\_\allowbreak{}j} than static WebAssembly IR size
-(0.9999 against 0.1154, §8.2). With hardware \(10^6\) to \(10^{11}\)
-above the floor, ranking compilers by lifecycle \texttt{reported\_\allowbreak{}j}
-(and supply \texttt{measured\_\allowbreak{}j} when hardware shunt meters are
-attached) while keeping Landauer as a physical lower bound turns part E
-into an operational decision rule. The 98/2 principle needs the same
-treatment: the unit it is counted in must be chosen and published before
-the first measurement.
+100\% of variable-binding swaps (§8.3). Second, E4-Energy and E4-Prelude
+show across 20 exact-integer kernels and 15 compiler tiers that
+compilation joules materially reshape which optimisation tier wins:
+lowering from Python to \texttt{clang\ -\allowbreak{}O3} pays back after a median of
+2,490 runs, \texttt{-O0} to \texttt{-O3} needs 53,464 to 102,720 runs,
+\texttt{-O2} to \texttt{-O3} never recovers its extra compile joules on
+20\% to 30\% of the kernels, factoring RCE's emitted Rust runtime
+prelude into a pre-compiled \texttt{librce\_\allowbreak{}rt.\allowbreak{}rlib} crate cuts
+per-kernel compile \texttt{reported\_\allowbreak{}j} by 20.07× (56.29 J to 2.81 J
+core) and lowers its payback against Node JS from 31,080 to 1,079 runs,
+and in Regime B time multiplied by power explains far more variance in
+RAPL \texttt{reported\_\allowbreak{}j} than static WebAssembly IR size (0.9999
+against 0.1154, §8.2). With hardware \(10^6\) to \(10^{11}\) above the
+floor, ranking compilers by lifecycle \texttt{reported\_\allowbreak{}j} (and supply
+\texttt{measured\_\allowbreak{}j} when hardware shunt meters are attached) while
+keeping Landauer as a physical lower bound turns part E into an
+operational decision rule. The 98/2 principle needs the same treatment:
+the unit it is counted in must be chosen and published before the first
+measurement.
 
 \section{Appendix A. Claims checked}\label{appendix-a.-claims-checked}
 

@@ -1,0 +1,2925 @@
+{
+  "schema": "openie.radio.radar.v1",
+  "generated_at_utc": "2026-11-23T12:51:08Z",
+  "scraped_at_utc": "2026-11-23T12:49:21Z",
+  "openie_studies_audited": 21,
+  "total_external_works": 62,
+  "counts_by_source": {
+    "OpenAlex": 24,
+    "bioRxiv": 4,
+    "ClinicalTrials.gov": 8,
+    "arXiv": 17,
+    "Europe PMC": 9
+  },
+  "counts_by_classification": {
+    "CORROBORATES": 31,
+    "CHALLENGES_ASSUMPTION": 13,
+    "NEW_FRONTIER_GAP": 18
+  },
+  "counts_by_badge": {
+    "[T]": 1,
+    "[E]": 15,
+    "[M]": 42,
+    "[S]": 4
+  },
+  "study_coverage_counts": {
+    "agency": 29,
+    "gates": 16,
+    "deterministic-null": 7,
+    "satb-harness": 2,
+    "time-as-an-index": 7,
+    "communication-avalanche": 31,
+    "lut-adapt": 10,
+    "satiation": 0,
+    "rce": 8,
+    "rce-jepa": 8,
+    "rce-compile": 8,
+    "rce-vc": 0,
+    "game-engines": 7,
+    "three-body": 8,
+    "ai-reads-human": 0,
+    "spellcheck": 0,
+    "ai-coding-market": 0,
+    "interface-economics": 8,
+    "mei": 33,
+    "jouleos": 0,
+    "latency": 4
+  },
+  "items": [
+    {
+      "radar_id": "RAD-001",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W7138433923",
+      "doi": "10.1609/aaai.v40i38.40535",
+      "title": "TokenPowerBench: Benchmarking the Power Consumption of LLM Inference",
+      "authors": [
+        "Chenxu Niu",
+        "Wei Emma Zhang",
+        "Jie Li",
+        "Yongjian Zhao",
+        "Tongyang Wang"
+      ],
+      "published_date": "2026-03-14",
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/download/40535/44496",
+      "vector_id": "energy-joules-token",
+      "vector_label": "Energy-Aware AI & Joules per Token",
+      "abstract": "Large language model (LLM) services now answer billions of queries per day, and industry reports show that inference, not training, accounts for more than 90% of total power consumption. However, existing benchmarks focus on either training/fine-tuning or performance of inference and provide little support for power consumption measurement and analysis of inference. We introduce TokenPowerBench, the first lightweight and extensible benchmark designed for LLM-inference power consumption studies. The benchmark combines a declarative configuration…",
+      "blake2b_256": "0073561d7f511645d94ea435",
+      "sha256": "1ab9b1354e2c451ce6f0f66f",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Aligns with OpenIE progress-per-joule ordering once task correctness gates pass.",
+      "telemetry_audit": {
+        "energy_class": "counter_or_model_j",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": true,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports counter or analytical energy metrics without external inline rail shunts (equivalent to reported_j / est_j). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "satb-harness",
+          "short_title": "Satiation Benchmark Harness",
+          "path": "/papers/satb-harness/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-002",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W7161008126",
+      "doi": "10.48550/arxiv.2605.11733",
+      "title": "Position: LLM Inference Should Be Evaluated as Energy-to-Token Production",
+      "authors": [
+        "Xiang Liu",
+        "Shimiao Yuan",
+        "Zhenheng Tang",
+        "Peijie Dong",
+        "Kaiyong Zhao"
+      ],
+      "published_date": "2026-05-12",
+      "url": "https://arxiv.org/pdf/2605.11733",
+      "vector_id": "energy-joules-token",
+      "vector_label": "Energy-Aware AI & Joules per Token",
+      "abstract": "LLM inference is still evaluated mainly as a model or software problem: accuracy, latency, throughput, and hardware utilization. This is incomplete. At deployment scale, the relevant output is a quality-conditioned token produced under joint constraints from effective compute, delivered data-center power, cooling capacity, PUE, and utilization. We argue that the ML community should treat inference as \\emph{energy-to-token production}. We formalize this view with a dimensionally consistent Token Production Function in which token rate is bounded by both…",
+      "blake2b_256": "e94a65d2ffccd51a66499d5f",
+      "sha256": "a6f9d4b6a26f52390dfb4daf",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Aligns with OpenIE progress-per-joule ordering once task correctness gates pass.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "latency",
+          "short_title": "The Gap Between Possible and Deployed",
+          "path": "/papers/latency/"
+        },
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-003",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W7223098920",
+      "doi": "10.48550/arxiv.2610.28576",
+      "title": "The Token-Energy Law of LLM Decode: Active Bytes and Realized Time Account for Joules per Token",
+      "authors": [
+        "Chenxu Niu",
+        "Batuhan Sencer",
+        "Wei Zhang",
+        "Yong Chen"
+      ],
+      "published_date": "2026-10-20",
+      "url": "https://arxiv.org/pdf/2610.28576",
+      "vector_id": "energy-joules-token",
+      "vector_label": "Energy-Aware AI & Joules per Token",
+      "abstract": "Energy-efficient deployment of large language models requires understanding how model architecture, hardware, and serving settings shape energy per generated token. We introduce the Token-Energy Law, a compact, interpretable model of GPU-board energy per output token for dense, full-history decoding. It relates token energy to two core dimensions: active bytes and realized decode time. Active bytes describe logical byte demand per output, separating dense weights shared within a decode iteration from private key--value (KV) histories read and updated…",
+      "blake2b_256": "f0eeff41efde8a1f53cbff79",
+      "sha256": "18d6d4753d04279fb1db043c",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Aligns with OpenIE progress-per-joule ordering once task correctness gates pass.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "latency",
+          "short_title": "The Gap Between Possible and Deployed",
+          "path": "/papers/latency/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-004",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W4395021983",
+      "doi": "10.48550/arxiv.2404.12534",
+      "title": "Lean Copilot: Large Language Models as Copilots for Theorem Proving in Lean",
+      "authors": [
+        "Peiyang Song",
+        "Kaiyu Yang",
+        "Animashree Anandkumar"
+      ],
+      "published_date": "2024-04-18",
+      "url": "https://arxiv.org/pdf/2404.12534",
+      "vector_id": "formal-lean4-statemachines",
+      "vector_label": "Formal Verification, Lean 4 & State Machines",
+      "abstract": "Neural theorem proving combines large language models (LLMs) with proof assistants such as Lean, where the correctness of formal proofs can be rigorously verified, leaving no room for hallucination. With existing neural theorem provers pretrained on a fixed collection of data and offering valuable suggestions at times, it is challenging for them to continually prove novel theorems in a fully autonomous mode, where human insights may be critical. In this paper, we explore LLMs as copilots that assist humans in proving theorems. We introduce Lean…",
+      "blake2b_256": "8f98f0e32cc3a199d76bb364",
+      "sha256": "b389f4d6d0507b172a19b1e1",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Opens an unmeasured parameter regime across multi-step verification, compiler lowering, or event-driven wakeup scheduling.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "rce",
+          "short_title": "The Reality Code Engine",
+          "path": "/papers/rce/"
+        },
+        {
+          "id": "rce-jepa",
+          "short_title": "RCE-JEPA",
+          "path": "/papers/rce-jepa/"
+        },
+        {
+          "id": "rce-compile",
+          "short_title": "RCE Compile",
+          "path": "/papers/rce-compile/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-005",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W7155197691",
+      "doi": "10.48550/arxiv.2604.18587",
+      "title": "Compile to Compress: Boosting Formal Theorem Provers by Compiler Outputs",
+      "authors": [
+        "G. Li",
+        "Rui Tian",
+        "Hongning Wang"
+      ],
+      "published_date": "2026-03-13",
+      "url": "https://arxiv.org/pdf/2604.18587",
+      "vector_id": "formal-lean4-statemachines",
+      "vector_label": "Formal Verification, Lean 4 & State Machines",
+      "abstract": "Large language models (LLMs) have demonstrated significant potential in formal theorem proving, yet state-of-the-art performance often necessitates prohibitive test-time compute via massive roll-outs or extended context windows. In this work, we address this scalability bottleneck by exploiting an informative structure in formal verification: the observation that compilers map a vast space of diverse proof attempts to a compact set of structured failure modes. We introduce a learning-to-refine framework that leverages this compression to perform…",
+      "blake2b_256": "6f4c27ad94ac3b3a845715b7",
+      "sha256": "746b75c2840ac7b03735b48e",
+      "epistemic_badge": "[M]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Surfaces coordination, verification, or memory-wall overhead requiring N* payback amortization or strict commit-gate refusal.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "rce",
+          "short_title": "The Reality Code Engine",
+          "path": "/papers/rce/"
+        },
+        {
+          "id": "rce-compile",
+          "short_title": "RCE Compile",
+          "path": "/papers/rce-compile/"
+        },
+        {
+          "id": "rce-jepa",
+          "short_title": "RCE-JEPA",
+          "path": "/papers/rce-jepa/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-006",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W7222406367",
+      "doi": "10.48550/arxiv.2610.22339",
+      "title": "Lean Graph Search for Formal Theorem Proving",
+      "authors": [
+        "Yihan Xu",
+        "Jia-Chen Gu",
+        "Junyi Zhang",
+        "Di Wu",
+        "Haikang Deng"
+      ],
+      "published_date": "2026-10-15",
+      "url": "https://arxiv.org/pdf/2610.22339",
+      "vector_id": "formal-lean4-statemachines",
+      "vector_label": "Formal Verification, Lean 4 & State Machines",
+      "abstract": "Retrieving relevant lemmas is crucial for formal theorem proving, enabling provers to build machine-checkable proofs from established mathematical results. Recent retrieval systems match library declarations to a target theorem or its intermediate proof steps, but make limited use of multi-hop dependencies among declarations. These dependencies can reveal supporting lemmas that are not necessarily lexically similar to the target theorem but recur in proofs of related problems. To this end, we propose LeanGraphSearch, a graph-based retrieval method for…",
+      "blake2b_256": "69bb10aee8aad1dff7e57904",
+      "sha256": "89ad2ac7aaf61430bed2ffab",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Supports machine-checked specifications (Lean 4 / state machines) acting as deterministic commit gates.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "rce",
+          "short_title": "The Reality Code Engine",
+          "path": "/papers/rce/"
+        },
+        {
+          "id": "rce-jepa",
+          "short_title": "RCE-JEPA",
+          "path": "/papers/rce-jepa/"
+        },
+        {
+          "id": "rce-compile",
+          "short_title": "RCE Compile",
+          "path": "/papers/rce-compile/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-007",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W7167242648",
+      "doi": "10.5281/zenodo.21152165",
+      "title": "PNBA Identity Physics ProofPress: Lean 4/Markdown to LaTeX Conversion Tool for Formally Verified Research",
+      "authors": [
+        "Russell Vernon Trent III"
+      ],
+      "published_date": "2026-07-03",
+      "url": "https://doi.org/10.5281/zenodo.21152165",
+      "vector_id": "formal-lean4-statemachines",
+      "vector_label": "Formal Verification, Lean 4 & State Machines",
+      "abstract": "# ProofPress: A Lean 4 to LaTeX Conversion Tool for Formally Verified Research **Tool Name:** ProofPress (PP) **Architect:** HIGHTISTIC (Russell Vernon Trent III) · /haɪˈtɪstɪk/ **Affiliation:** SNSFT Foundation · Soldotna, Alaska **ORCID:** 0009-0005-5313-7443 **DOI:** 10.5281/zenodo.18719748 **Coordinate:** [9,9,8,8] · Tools Series **Version:** v1.0 · July 2026 **Repository:** github.com/SNSFT **License:** MIT **Status:** Standalone · No dependencies · No build step --- ## Abstract ProofPress is a standalone, browser-based conversion tool that…",
+      "blake2b_256": "5f0077a9ec6580329851189a",
+      "sha256": "157469119324891d342c7972",
+      "epistemic_badge": "[T]",
+      "classification": "CORROBORATES",
+      "rationale": "Supports machine-checked specifications (Lean 4 / state machines) acting as deterministic commit gates.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Formal or clinical registry entry; Shape-D lookup control applies at downstream deployment."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "rce",
+          "short_title": "The Reality Code Engine",
+          "path": "/papers/rce/"
+        },
+        {
+          "id": "rce-compile",
+          "short_title": "RCE Compile",
+          "path": "/papers/rce-compile/"
+        },
+        {
+          "id": "rce-jepa",
+          "short_title": "RCE-JEPA",
+          "path": "/papers/rce-jepa/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-008",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W7165487055",
+      "doi": "10.21203/rs.3.rs-10086537/v1",
+      "title": "K-Lean: Machine-Verified Formal Proofs for Computational Biology",
+      "authors": [
+        "Heime Jorgen"
+      ],
+      "published_date": "2026-06-21",
+      "url": "https://www.researchsquare.com/article/rs-10086537/latest.pdf",
+      "vector_id": "formal-lean4-statemachines",
+      "vector_label": "Formal Verification, Lean 4 & State Machines",
+      "abstract": "Computational biology software routinely implements kinetic models, survival functions, and structural metrics whose mathematical properties — non- negativity, monotonicity, conservation laws — are assumed but never formally certified. We call this gap the Bio-Algorithm Verification Problem (BAVP): an algorithm computes a biological quantity with known mathematical properties, yet no machine-checkable proof establishes those properties for all valid inputs. Unit tests cannot close BAVP; they verify specific values, not universal statements. We…",
+      "blake2b_256": "58aa3259c6ff52a4aafe99cb",
+      "sha256": "e85d2634fa9c650fd32e74c4",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Opens an unmeasured parameter regime across multi-step verification, compiler lowering, or event-driven wakeup scheduling.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "rce",
+          "short_title": "The Reality Code Engine",
+          "path": "/papers/rce/"
+        },
+        {
+          "id": "rce-jepa",
+          "short_title": "RCE-JEPA",
+          "path": "/papers/rce-jepa/"
+        },
+        {
+          "id": "rce-compile",
+          "short_title": "RCE Compile",
+          "path": "/papers/rce-compile/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-009",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W7150906705",
+      "doi": "10.21227/qyq3-3g19",
+      "title": "\"AgentShield: Multi-Agent LLM Byzantine Fault Tolerance Evaluation Dataset\"",
+      "authors": [
+        "Naga Sujitha Vummaneni"
+      ],
+      "published_date": "2026-04-06",
+      "url": "https://doi.org/10.21227/qyq3-3g19",
+      "vector_id": "multiagent-byzantine-flow",
+      "vector_label": "Multi-Agent Orchestration & Byzantine Fault Tolerance",
+      "abstract": "\"This dataset supports the paper \\\"Byzantine Resilience in Multi-Agent LLM Orchestration: Consensus Protocols for Trustworthy Collective Decision-Making\\\" published in IEEE Transactions on Dependable and Secure Computing (2026). The dataset contains 15,000 multi-agent decision scenarios across four safety-critical domains: medical (5,000 clinical decision scenarios derived from MIMIC-IV under PhysioNet DUA), legal (3,000 case analysis scenarios from CaseHOLD under CC-BY-4.0), financial (4,000 credit and investment scenarios from SEC EDGAR public…",
+      "blake2b_256": "40f92a505943b01e54881055",
+      "sha256": "45bba539316ecb58c6f5f653",
+      "epistemic_badge": "[E]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Surfaces coordination, verification, or memory-wall overhead requiring N* payback amortization or strict commit-gate refusal.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "three-body",
+          "short_title": "The Three-Body Problem in Computing",
+          "path": "/papers/three-body/"
+        },
+        {
+          "id": "interface-economics",
+          "short_title": "The Price of the Unexamined Interface",
+          "path": "/papers/interface-economics/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-010",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W4417298492",
+      "doi": "10.48550/arxiv.2505.13516",
+      "title": "HALO: Hierarchical Autonomous Logic-Oriented Orchestration for Multi-Agent LLM Systems",
+      "authors": [
+        "Hou, Zhipeng",
+        "Tang, Junyi",
+        "Yu Wang"
+      ],
+      "published_date": "2025-05-17",
+      "url": "https://arxiv.org/pdf/2505.13516",
+      "vector_id": "multiagent-byzantine-flow",
+      "vector_label": "Multi-Agent Orchestration & Byzantine Fault Tolerance",
+      "abstract": "Recent advancements in Multi-Agent Systems (MAS) powered by Large Language Models (LLMs) have demonstrated tremendous potential in diverse task scenarios. Nonetheless, existing agentic systems typically rely on predefined agent-role design spaces and static communication structures, limiting their adaptability as well as flexibility in complex interaction environments and leading to subpar performance on highly specialized and expert-level tasks. To address these issues, we introduce HALO, a multi-agent collaboration framework based on a hierarchical…",
+      "blake2b_256": "c66582477dd2ac63654f2973",
+      "sha256": "bb301b18535be049568e35bd",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Reinforces thresholded, attested multi-agent routing over unverified natural-language broadcast.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "three-body",
+          "short_title": "The Three-Body Problem in Computing",
+          "path": "/papers/three-body/"
+        },
+        {
+          "id": "interface-economics",
+          "short_title": "The Price of the Unexamined Interface",
+          "path": "/papers/interface-economics/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-011",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W7154576848",
+      "doi": "10.1109/icdlt66400.2025.11466516",
+      "title": "A Byzantine Fault Tolerance Approach Towards AI Safety",
+      "authors": [
+        "John de Vadoss",
+        "Matthias Artzt"
+      ],
+      "published_date": "2025-11-05",
+      "url": "https://arxiv.org/pdf/2504.14668",
+      "vector_id": "multiagent-byzantine-flow",
+      "vector_label": "Multi-Agent Orchestration & Byzantine Fault Tolerance",
+      "abstract": "Ensuring that an AI system behaves reliably and as intended - especially in the presence of unexpected faults or adversarial conditions - is a complex challenge. Inspired by the field of Byzantine Fault Tolerance (BFT) from distributed computing, we explore a fault-tolerance architecture for AI safety. BFT refers to a system's ability to continue operating correctly even when some components misbehave arbitrarily or maliciously. In classical terms, a Byzantine fault-tolerant system can withstand up to$\\boldsymbol{f}$faulty nodes out…",
+      "blake2b_256": "6f85cc1098063075d2e624e1",
+      "sha256": "0089695e00b43d3bc7a118d0",
+      "epistemic_badge": "[M]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Surfaces coordination, verification, or memory-wall overhead requiring N* payback amortization or strict commit-gate refusal.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "three-body",
+          "short_title": "The Three-Body Problem in Computing",
+          "path": "/papers/three-body/"
+        },
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "interface-economics",
+          "short_title": "The Price of the Unexamined Interface",
+          "path": "/papers/interface-economics/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-012",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W4414404571",
+      "doi": "10.1109/tccn.2025.3612760",
+      "title": "Toward Edge General Intelligence With Multiple-Large Language Model (Multi-LLM): Architecture, Trust, and Orchestration",
+      "authors": [
+        "Haoxiang Luo",
+        "Yinqiu Liu",
+        "Ruichen Zhang",
+        "Jiacheng Wang",
+        "Gang Sun"
+      ],
+      "published_date": "2025-09-22",
+      "url": "https://pure.qub.ac.uk/en/publications/a3586b62-09da-4793-be5e-1babbac38073",
+      "vector_id": "multiagent-byzantine-flow",
+      "vector_label": "Multi-Agent Orchestration & Byzantine Fault Tolerance",
+      "abstract": "Edge computing enables real-time data processing closer to its source, thus improving the latency and performance of edge-enabled AI applications. However, predictive AI models often fall short when dealing with complex, dynamic tasks that require advanced reasoning and multimodal data processing. This survey explores the integration of multi-LLMs (Large Language Models) to address these challenges in edge computing, where multiple specialized LLMs collaborate to enhance task performance and adaptability in resource-constrained environments. We review…",
+      "blake2b_256": "93967ddd8bbe1db9223da546",
+      "sha256": "fcc7cf5429b2c92107bcc812",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Opens an unmeasured parameter regime across multi-step verification, compiler lowering, or event-driven wakeup scheduling.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "three-body",
+          "short_title": "The Three-Body Problem in Computing",
+          "path": "/papers/three-body/"
+        },
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "interface-economics",
+          "short_title": "The Price of the Unexamined Interface",
+          "path": "/papers/interface-economics/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-013",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W7215077782",
+      "doi": "10.48550/arxiv.2609.38482",
+      "title": "PANDA: A Decentralized Architecture with Flexible Orchestration for Scalable, Fault-Tolerant Multi-Agent Systems",
+      "authors": [
+        "Matthew D. Laws",
+        "Cristina Nita-Rotaru"
+      ],
+      "published_date": "2026-09-29",
+      "url": "https://arxiv.org/pdf/2609.38482",
+      "vector_id": "multiagent-byzantine-flow",
+      "vector_label": "Multi-Agent Orchestration & Byzantine Fault Tolerance",
+      "abstract": "Existing architectures for LLM-based multi-agent systems (MAS) cannot reliably and efficiently solve multi-step tasks at scale: they struggle to support large numbers of agents and concurrent tasks, tolerate failures, govern agent interactions, and accommodate the diverse planning and execution patterns different tasks require. We present PANDA, a decentralized architecture that connects a large collective of heterogeneous, independently administered agents, letting them discover each other's capabilities and self-organize into small specialized teams…",
+      "blake2b_256": "15216fd0a109e28752e8d2c1",
+      "sha256": "5204e6eafabf672f78920269",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Reinforces thresholded, attested multi-agent routing over unverified natural-language broadcast.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "three-body",
+          "short_title": "The Three-Body Problem in Computing",
+          "path": "/papers/three-body/"
+        },
+        {
+          "id": "interface-economics",
+          "short_title": "The Price of the Unexamined Interface",
+          "path": "/papers/interface-economics/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-014",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W7212035636",
+      "doi": "10.1002/aff2.70319",
+      "title": "Bacterial Diseases in Farmed Nile Tilapia ( Oreochromis niloticus ): A Review of Pathogenesis, Immune Responses and Recent Advances in Diagnostics and Management",
+      "authors": [
+        "Catherine Agoe",
+        "John Walakira",
+        "Gerald Kwikiriza",
+        "Nasser Kasozi",
+        "Ivan Abaho"
+      ],
+      "published_date": "2026-09-09",
+      "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aff2.70319",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Nile tilapia ( Oreochromis niloticus ) is among the most widely farmed fish globally that plays a major role in ensuring food security in many low‐ and middle‐income countries. This is attributed to its environmental tolerance, ease of breeding, rapid growth, efficient feed use and high consumer acceptance. As aquaculture production intensifies, bacterial diseases increasingly constrain yields and economic benefits. Although many studies document bacterial outbreaks and have evaluated interventions, heterogeneity across pathogens in virulence,…",
+      "blake2b_256": "f5cf2c3eaa1de76905a04c0c",
+      "sha256": "43fac70618acffcef0e68daf",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates thresholded intercellular/neural signal gating and fault-isolating circuit breakers.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-015",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W4415017307",
+      "doi": "10.1016/j.nxmate.2025.101281",
+      "title": "Learning in Kombucha",
+      "authors": [
+        "Panagiotis Mougkogiannis",
+        "Andrew Adamatzky"
+      ],
+      "published_date": "2025-10-01",
+      "url": "https://doi.org/10.1016/j.nxmate.2025.101281",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "This study investigates how kombucha SCOBY (Symbiotic Culture of Bacteria and Yeast) exhibits learning-like behavior through bioelectrical mechanisms. Structured electrical stimulation was applied using Shakespearean text. An Arduino microcontroller was used to convert Hamlet’s soliloquies into binary signals, which were transmitted through eight digital pins to kombucha cultures. Two experimental protocols were implemented: brief stimulation (10 s, single loop) and extended stimulation (1000 s, 100 loops). Scanning electron microscopy revealed complex…",
+      "blake2b_256": "a4e49fdde94c1234b7ec07f0",
+      "sha256": "8deafc487650fcae246306d3",
+      "epistemic_badge": "[E]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates thresholded intercellular/neural signal gating and fault-isolating circuit breakers.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-016",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W4391031251",
+      "doi": "10.1039/d3lc00860f",
+      "title": "Lipid vesicle-based molecular robots",
+      "authors": [
+        "Zugui Peng",
+        "Shoji Iwabuchi",
+        "Kayano Izumi",
+        "Sotaro Takiguchi",
+        "Misa Yamaji"
+      ],
+      "published_date": "2024-02-27",
+      "url": "https://pubs.rsc.org/en/content/articlepdf/2024/lc/d3lc00860f",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "A molecular robot, which is a system comprised of one or more molecular machines and computers, can execute sophisticated tasks in many fields that span from nanomedicine to green nanotechnology. The core parts of molecular robots are fairly consistent from system to system and always include (i) a body to encapsulate molecular machines, (ii) sensors to capture signals, (iii) computers to make decisions, and (iv) actuators to perform tasks. This review aims to provide an overview of approaches and considerations to develop molecular robots. We first…",
+      "blake2b_256": "5fb6ab58c7ba36f1d0433297",
+      "sha256": "5c828b82f2dfe9c1540e59fb",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Identifies an external substrate or hardware lowering path where a Shape-D + joule-gated OpenIE pilot can test downward crystallization.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-017",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W4405024029",
+      "doi": "10.1016/j.heliyon.2024.e40892",
+      "title": "A comprehensive review on probiotics and their use in aquaculture: Biological control, efficacy, and safety through the genomics and wet methods",
+      "authors": [
+        "Matteo Calcagnile",
+        "Salvatore Maurizio Tredici",
+        "Pietro Alifano"
+      ],
+      "published_date": "2024-12-01",
+      "url": "https://doi.org/10.1016/j.heliyon.2024.e40892",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Probiotics, defined as viable microorganisms that enhance host health when consumed through the diet, exert their effects through mechanisms such as strengthening the immune system, enhancing resistance to infectious diseases, and improving tolerance to stressful conditions. Driven by a growing market, research on probiotics in aquaculture is a burgeoning field. However, the identification of new probiotics presents a complex challenge, necessitating careful consideration of both the safety and efficacy of the microorganisms employed. This review aims…",
+      "blake2b_256": "c5672adfde8a0b013772d526",
+      "sha256": "f4f8e61dfb83005736719f74",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates thresholded intercellular/neural signal gating and fault-isolating circuit breakers.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-018",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W4410127815",
+      "doi": "10.1039/d5sm00174a",
+      "title": "Intelligent soft matter: towards embodied intelligence",
+      "authors": [
+        "Vladimir A. Baulin",
+        "Achille Giacometti",
+        "Dmitry A. Fedosov",
+        "Stephen J. Ebbens",
+        "Nydia Roxana Varela-Rosales"
+      ],
+      "published_date": "2025-05-28",
+      "url": "https://pubs.rsc.org/sm/article-pdf/21/21/4129/10688425/d5sm00174a.pdf",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Intelligent soft matter lies at the intersection of materials science, physics, and cognitive science, promising to change how we design and interact with materials. This transformative field aims to create materials with life-like capabilities, such as perception, learning, memory, and adaptive behavior. Unlike traditional materials, which typically perform static or predefined functions, intelligent soft matter can dynamically interact with its environment, integrating multiple sensory inputs, retaining past experiences, and making decisions to…",
+      "blake2b_256": "abca781f296cb9d8573edeee",
+      "sha256": "55553d21d248b63c593ab2ac",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates thresholded intercellular/neural signal gating and fault-isolating circuit breakers.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-019",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W4403278591",
+      "doi": "10.1109/fpl64840.2024.00029",
+      "title": "PolyLUT-Add: FPGA-based LUT Inference with Wide Inputs",
+      "authors": [
+        "Binglei Lou",
+        "Richard Rademacher",
+        "David Boland",
+        "Philip H. W. Leong"
+      ],
+      "published_date": "2024-09-02",
+      "url": "https://arxiv.org/pdf/2406.04910",
+      "vector_id": "fpga-lut-ternary-inmemory",
+      "vector_label": "FPGA Lookup Fabrics, Ternary & In-Memory Inference",
+      "abstract": "FPGAs have distinct advantages as a technology for deploying deep neural networks (DNNs) at the edge. Lookup Table (LUT) based networks, where neurons are directly modeled using LUTs, help maximize this promise of offering ultra-low latency and high area efficiency on FPGAs. Unfortunately, LUT resource usage scales exponentially with the number of inputs to the LUT, restricting PolyLUT to small LUT sizes. This work introduces PolyLUT-Add, a technique that enhances neuron connectivity by combining A PolyLUT sub-neurons via addition to improve accuracy.…",
+      "blake2b_256": "7bebda065e73a26e30ba6794",
+      "sha256": "95de308eacac1eacf23b6030",
+      "epistemic_badge": "[E]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Identifies an external substrate or hardware lowering path where a Shape-D + joule-gated OpenIE pilot can test downward crystallization.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": true,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Includes an explicit ablation or deterministic rule baseline."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-020",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W4404573308",
+      "doi": "10.1145/3658617.3697687",
+      "title": "LUTMUL: Exceed Conventional FPGA Roofline Limit by LUT-based Efficient Multiplication for Neural Network Inference",
+      "authors": [
+        "Yanyue Xie",
+        "Zhengang Li",
+        "Dana Diaconu",
+        "Suranga Handagala",
+        "Miriam E. Leeser"
+      ],
+      "published_date": "2025-01-20",
+      "url": "https://doi.org/10.1145/3658617.3697687",
+      "vector_id": "fpga-lut-ternary-inmemory",
+      "vector_label": "FPGA Lookup Fabrics, Ternary & In-Memory Inference",
+      "abstract": "For FPGA-based neural network accelerators, digital signal processing (DSP) blocks have traditionally been the cornerstone for handling multiplications. This paper introduces LUTMUL, which harnesses the potential of look-up tables (LUTs) for performing multiplications. The availability of LUTs typically outnumbers that of DSPs by a factor of 100, offering a significant computational advantage. By exploiting this advantage of LUTs, our method demonstrates a potential boost in the performance of FPGA-based neural network accelerators with a…",
+      "blake2b_256": "71f8afdc780dbcb4eecf4e72",
+      "sha256": "b7ecd347b0c07ebf56338cdb",
+      "epistemic_badge": "[E]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Identifies an external substrate or hardware lowering path where a Shape-D + joule-gated OpenIE pilot can test downward crystallization.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/"
+        },
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-021",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W4416054522",
+      "doi": "10.48550/arxiv.2510.15926",
+      "title": "TeLLMe v2: An Efficient End-to-End Ternary LLM Prefill and Decode Accelerator with Table-Lookup Matmul on Edge FPGAs",
+      "authors": [
+        "Ye Qiao",
+        "Chen, Zhiheng",
+        "Yifan Zhang",
+        "Wang, Yian",
+        "Sitao Huang"
+      ],
+      "published_date": "2025-10-03",
+      "url": "https://arxiv.org/pdf/2510.15926",
+      "vector_id": "fpga-lut-ternary-inmemory",
+      "vector_label": "FPGA Lookup Fabrics, Ternary & In-Memory Inference",
+      "abstract": "With the emergence of wearable devices and other embedded systems, deploying large language models (LLMs) on edge platforms has become an urgent need. However, this is challenging because of their high computational and memory demands. Although recent low-bit quantization methods (e.g., BitNet, DeepSeek) compress weights to as low as 1.58~bits with minimal accuracy loss, edge deployment is still constrained by limited on-chip resources, power budgets, and the often-neglected long latency of the prefill stage. We present \\textbf{TeLLMe}, the first…",
+      "blake2b_256": "8e9c3f31162439751015793d",
+      "sha256": "42f8e5bc360e83caaa5a2bc3",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Identifies an external substrate or hardware lowering path where a Shape-D + joule-gated OpenIE pilot can test downward crystallization.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-022",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W7212128099",
+      "doi": "10.48550/arxiv.2609.09254",
+      "title": "DiffLUT-Net: Differentiable Training of FPGA LUT Networks with Learnable Connectivity",
+      "authors": [
+        "Jiaqi Ye",
+        "Xinrui Gong",
+        "Jingcun Wang",
+        "Olga Kondrateva",
+        "Bing Li"
+      ],
+      "published_date": "2026-09-08",
+      "url": "https://arxiv.org/pdf/2609.09254",
+      "vector_id": "fpga-lut-ternary-inmemory",
+      "vector_label": "FPGA Lookup Fabrics, Ternary & In-Memory Inference",
+      "abstract": "Field-programmable gate arrays (FPGAs) enable efficient neural-network inference, but most deployment flows either accelerate multiply-accumulate operations or convert pretrained quantized models into lookup tables (LUTs). We present DiffLUT-Net, an FPGA-native network connected by six-input LUTs that are trained from scratch. We jointly learn the 64 truth-table entries of a LUT and the source to each of its six input ports using a differentiable LUT function relaxation and hardware source selection. After training, the truth tables and connections are…",
+      "blake2b_256": "32834defd23b0ece87d9f717",
+      "sha256": "a54bf6a98cb40a027160fc16",
+      "epistemic_badge": "[E]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Identifies an external substrate or hardware lowering path where a Shape-D + joule-gated OpenIE pilot can test downward crystallization.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-023",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W4415065479",
+      "doi": "10.48550/arxiv.2504.16266",
+      "title": "TeLLMe: An Energy-Efficient Ternary LLM Accelerator for Prefilling and Decoding on Edge FPGAs",
+      "authors": [
+        "Ye Qiao",
+        "Chen, Zhiheng",
+        "Yifan Zhang",
+        "Y. F. Wang",
+        "Sitao Huang"
+      ],
+      "published_date": "2025-04-22",
+      "url": "https://arxiv.org/pdf/2504.16266",
+      "vector_id": "fpga-lut-ternary-inmemory",
+      "vector_label": "FPGA Lookup Fabrics, Ternary & In-Memory Inference",
+      "abstract": "Deploying large language models (LLMs) on edge platforms is challenged by their high computational and memory demands. Although recent low-bit quantization methods (e.g., BitNet, DeepSeek) compress weights to as little as 1.58 bits with minimal accuracy loss, edge deployment is still constrained by limited on-chip resources, power budgets, and the often-neglected latency of the prefill phase. We present TeLLMe, the first ternary LLM accelerator for low-power FPGAs (e.g., AMD KV260) that fully supports both prefill and autoregressive decoding using…",
+      "blake2b_256": "1a16b1dbe217233ebc2f9e6d",
+      "sha256": "adb09a936370bc5dcdcba5e3",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Identifies an external substrate or hardware lowering path where a Shape-D + joule-gated OpenIE pilot can test downward crystallization.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-024",
+      "source": "OpenAlex",
+      "external_id": "OpenAlex:W4411923446",
+      "doi": "10.3390/cryptography9030048",
+      "title": "Composable Privacy-Preserving Framework for Stakes-Based Online Peer-to-Peer Applications",
+      "authors": [
+        "Nikola Hristov-Kalamov",
+        "Raúl Fernández-Ruiz",
+        "Agustín Álvarez-Marquina",
+        "Julio Guillén-García",
+        "Roberto Gallardo-Cava"
+      ],
+      "published_date": "2025-07-01",
+      "url": "https://www.mdpi.com/2410-387X/9/3/48/pdf?version=1751464968",
+      "vector_id": "deterministic-sim-tmt",
+      "vector_label": "Deterministic Simulation & Time-Memory Tradeoffs",
+      "abstract": "As the demand for expansive back-end systems in online applications continues to grow, novel frameworks are necessitated to address the escalating operational demands, energy consumption, and associated costs. Traditional Client–Server models, while offering centralized security and reliability, are characterized by their high deployment and maintenance expenses. Conversely, Peer-to-Peer (P2P) models, despite being cost-effective and scalable, are hindered by inherent security and data integrity challenges. Moreover, the lack of a central authority in…",
+      "blake2b_256": "7914281ded32b1d89b5622f3",
+      "sha256": "cd2dde0318806b61bbebf97e",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Opens an unmeasured parameter regime across multi-step verification, compiler lowering, or event-driven wakeup scheduling.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "deterministic-null",
+          "short_title": "Deterministic Null",
+          "path": "/papers/deterministic-null/"
+        },
+        {
+          "id": "time-as-an-index",
+          "short_title": "Time as an Index",
+          "path": "/papers/time-as-an-index/"
+        },
+        {
+          "id": "game-engines",
+          "short_title": "Writing a Game Once",
+          "path": "/papers/game-engines/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-025",
+      "source": "bioRxiv",
+      "external_id": "bioRxiv:10.64898/2026.11.04.763721",
+      "doi": "10.64898/2026.11.04.763721",
+      "title": "Social vision expands into auditory cortices of people born deaf: evidence from naturalistic film and encoding models",
+      "authors": [
+        "Zimmermann, M.",
+        "Szwed, M.",
+        "Isik, L.",
+        "Bedny, M."
+      ],
+      "published_date": "2026-11-05",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.11.04.763721v1",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Comparing deaf and hearing adults provides insight into the contribution of experience to function of auditory cortical networks. We used naturalistic fMRI and voxel-wise encoding to measure information processing in auditory networks of deaf (n=24) and hearing (n=22) adults who watched a 35-minute silent animated film. Unlike simpler stimuli, naturalistic films are rich in a broad range of perceptual, affective, and social features, including motion, dynamic social interactions, and Theory of Mind. Machine vision algorithms and human coding were used…",
+      "blake2b_256": "b70e2b2c7a9d733da7d7973d",
+      "sha256": "e65cbc52ff7a99d6945a49e5",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates thresholded intercellular/neural signal gating and fault-isolating circuit breakers.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-026",
+      "source": "bioRxiv",
+      "external_id": "bioRxiv:10.64898/2026.11.04.764139",
+      "doi": "10.64898/2026.11.04.764139",
+      "title": "Increased activity without changes in coupling between somata and apical dendrites during visual mismatches",
+      "authors": [
+        "Henley, T. M.",
+        "Tindall, J.",
+        "Pina, J. E.",
+        "Pogodin, R.",
+        "Caldejon, S."
+      ],
+      "published_date": "2026-11-05",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.11.04.764139v1",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Leading theories of cortical function posit that sensory processing involves a comparison between top-down predictions and bottom-up sensory data. Tests of these theories have been hampered by experimental challenges related to simultaneously recording top-down and bottom-up signals in response to sensory stimuli that either do or do not match internally-generated predictions. Here, we conduct dual-plane 2-photon calcium imaging near-simultaneously from distal apical dendrites and somata of pyramidal neurons in each of 4 different regions of mouse…",
+      "blake2b_256": "408eb2a68395393c08429eca",
+      "sha256": "83ad24bc7dc1b189daa2b55b",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates thresholded intercellular/neural signal gating and fault-isolating circuit breakers.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-027",
+      "source": "bioRxiv",
+      "external_id": "bioRxiv:10.1101/2025.04.11.648453",
+      "doi": "10.1101/2025.04.11.648453",
+      "title": "Phage lysates are reservoirs of biologically active quorum sensing signals",
+      "authors": [
+        "Eichler, A. H.",
+        "Mauritzen, J. J.",
+        "Koonce, K. C.",
+        "Kaur, G.",
+        "Hoyland-Kroghsbo, N. M."
+      ],
+      "published_date": "2026-11-05",
+      "url": "https://www.biorxiv.org/content/10.1101/2025.04.11.648453v2",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Bacteriophage lysates are widely used to study phage-bacterial interactions and are typically applied after filtration without further purification. As a result, host-derived metabolites produced during phage propagation are transferred alongside phage particles, yet the biological consequences of this carryover remain largely unexplored. Here, we show that the Pseudomonas aeruginosa quorum sensing signal PQS persists in a bioactive state in phage lysates for at least one year. In contrast, the quorum sensing molecules 3OC12-HSL and C4-HSL are rapidly…",
+      "blake2b_256": "0f15118acff4dc273db0738c",
+      "sha256": "cfc2029a8b18b9166bbe3360",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates thresholded intercellular/neural signal gating and fault-isolating circuit breakers.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-028",
+      "source": "bioRxiv",
+      "external_id": "bioRxiv:10.64898/2026.11.04.764328",
+      "doi": "10.64898/2026.11.04.764328",
+      "title": "Dendrite Control Theory: A Unifying Framework Bridging Neuronal Morphology And Dendritic Voltage Behavior",
+      "authors": [
+        "Lagzi, F.",
+        "Bird, A.",
+        "Cuntz, H.",
+        "Caze, R.",
+        "Rosenow, F."
+      ],
+      "published_date": "2026-11-05",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.11.04.764328v1",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Control theory and dendritic computation have revolutionized their respective fields, yet they rarely converge. Here, we use control theory as a framework to reveal how dendritic morphology and synaptic input organization constrain structural resilience and energy cost. Treating diverse dendritic trees as connected network nodes, we demonstrate that the degree of structural symmetry dictates easy- versus hard-to-access control states. Notably, control inputs restricted solely to peripheral terminal branches are mathematically sufficient to govern the…",
+      "blake2b_256": "c165b676fad26190fb3ae9d1",
+      "sha256": "eed86544b213b4cc16ef8246",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Opens an unmeasured parameter regime across multi-step verification, compiler lowering, or event-driven wakeup scheduling.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-029",
+      "source": "ClinicalTrials.gov",
+      "external_id": "NCT04253587",
+      "doi": null,
+      "title": "Cognitive Intervention to Restore Capabilities for Learning and Retrieval of High-Fidelity Memory [COMPLETED]",
+      "authors": [
+        "University of California, San Francisco"
+      ],
+      "published_date": "2019-10-01",
+      "url": "https://clinicaltrials.gov/study/NCT04253587",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Therapeutic treatment is yet available for declining memory, which is an impairment affecting the quality of life for many older adults and patients with cognitive impairment. Cognitive training with an immersive video game promises to drive hippocampal-cortical plasticity and associated gains that can restore memory capability or provide therapeutic treatment for memory deficits.",
+      "blake2b_256": "a4495473aaedd1fb7edca751",
+      "sha256": "e58ba367f59b9af70fbaa1fd",
+      "epistemic_badge": "[E]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Human clinical translation boundary: enforces strict separation between animal/preclinical rescue [E] and unverified human clinical outcomes [S].",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-030",
+      "source": "ClinicalTrials.gov",
+      "external_id": "NCT07326423",
+      "doi": null,
+      "title": "Mental Imagery Therapy for Autism (MITA) - a Randomized Controlled Study of Early Intervention Computerized Brain Training Program for Children With ASD [ENROLLING_BY_INVITATION]",
+      "authors": [
+        "ImagiRation, LLC"
+      ],
+      "published_date": "2021-09-01",
+      "url": "https://clinicaltrials.gov/study/NCT07326423",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Mental Imagery Therapy for Autism (MITA) is a highly innovative adaptive language therapy application for children with autism. MITA exercises are limitless in variations, therefore avoiding routinization. Each activity is dynamic, quickly adjusting to the child's exact ability level. All activities are disguised as games that engage children. A 3-year observational clinical study of 6,454 children with ASD demonstrated that children who engaged with MITA showed 2.2-fold greater language improvement than children…",
+      "blake2b_256": "cda763675b22049b6796671d",
+      "sha256": "7e1d25013f82412f634da071",
+      "epistemic_badge": "[E]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Human clinical translation boundary: enforces strict separation between animal/preclinical rescue [E] and unverified human clinical outcomes [S].",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-031",
+      "source": "ClinicalTrials.gov",
+      "external_id": "NCT02223910",
+      "doi": null,
+      "title": "Neurofeedback Training of Alpha-band Coherence After Stroke: a Randomized Controlled Crossover Trial [COMPLETED]",
+      "authors": [
+        "University Hospital, Geneva"
+      ],
+      "published_date": "2014-02",
+      "url": "https://clinicaltrials.gov/study/NCT02223910",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Background: The technology of brain-computer interfaces (BCI) enables the monitoring of brain activity and the generation of a real-time output about specific changes in activity patterns. The recorded subject receives a feedback about the neural activity associated his/her efforts and can thus learn to voluntarily modulate brain activity. There is accumulating evidence that training of motor cortex activations with brain-computer interface systems can enhance recovery in stroke patients. Here we propose a new…",
+      "blake2b_256": "2a10680bf5b31e0a97ab152e",
+      "sha256": "813d7aea2932821089e895d3",
+      "epistemic_badge": "[E]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Human clinical translation boundary: enforces strict separation between animal/preclinical rescue [E] and unverified human clinical outcomes [S].",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-032",
+      "source": "ClinicalTrials.gov",
+      "external_id": "NCT07525609",
+      "doi": null,
+      "title": "Neurofeedback-guided Motor Imagery Using a Brain-Computer Interface in Chronic Stroke: a Controlled Pilot Study on Upper-limb Function and Brain Symmetry [COMPLETED]",
+      "authors": [
+        "CESPU-Escola Superior de Tecnologias da Saúde de Tâmega e Sousa"
+      ],
+      "published_date": "2012-03",
+      "url": "https://clinicaltrials.gov/study/NCT07525609",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Stroke can lead to long-term impairment of upper-limb function, particularly in the chronic phase, where recovery is often limited. Brain-computer interface (BCI) systems combined with motor imagery (MI) are emerging as promising neurorehabilitation approaches. Providing real-time neurofeedback during MI may enhance motor recovery by promoting use-dependent neuroplasticity; however, evidence in individuals with chronic stroke remains limited. This controlled pilot study aims to evaluate the feasibility and…",
+      "blake2b_256": "f405ad15c4401bdff3dcf09b",
+      "sha256": "dab78ce65eda2d9ef228140a",
+      "epistemic_badge": "[E]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Human clinical translation boundary: enforces strict separation between animal/preclinical rescue [E] and unverified human clinical outcomes [S].",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-033",
+      "source": "ClinicalTrials.gov",
+      "external_id": "NCT06869135",
+      "doi": null,
+      "title": "Novel Method for Diagnosis of Neurodegenerative Diseases Based on Saliva Biochemical Profiling [RECRUITING]",
+      "authors": [
+        "Fondazione Don Carlo Gnocchi ETS"
+      ],
+      "published_date": "2025-01-24",
+      "url": "https://clinicaltrials.gov/study/NCT06869135",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Early diagnosis of Neurodegenerative diseases (NDDs) and accurate patient profiling are key goals needed to tailor prompt personalized therapeutic strategies that can significantly impact disease progression and patients' quality of life. The project will validate a novel, cost-effective and quick biophotonic-based method for early and differential diagnosis of NDDs (Parkinson's disease, atypical parkinsonisms, Alzheimer's disease) and for routine clinical monitoring of NDD progression (longitudinal study). Raman…",
+      "blake2b_256": "9f878233b451bb59a515e346",
+      "sha256": "6b87c8506e80bf1091372835",
+      "epistemic_badge": "[S]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Human clinical translation boundary: enforces strict separation between animal/preclinical rescue [E] and unverified human clinical outcomes [S].",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Formal or clinical registry entry; Shape-D lookup control applies at downstream deployment."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-034",
+      "source": "ClinicalTrials.gov",
+      "external_id": "NCT07404709",
+      "doi": null,
+      "title": "Clinical Phase I and IIa Trials of Intratympanic Injection of Small Extracellular Vesicles Derived From Mesenchymal Stem Cells in Severe and Profound Sudden Sensorineural Hearing Loss [NOT_YET_RECRUITING]",
+      "authors": [
+        "The Affiliated Hospital of Qingdao University"
+      ],
+      "published_date": "2026-02-28",
+      "url": "https://clinicaltrials.gov/study/NCT07404709",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "The goal of this clinical trial is to learn if small extracellular vesicles derived from mesenchymal stem cells work to treat severe and above sudden sensorineural hearing loss. It will also learn about the safety of small extracellular vesicles. The main questions it aims to answer are: 1. Does small extracellular vesicles combined with traditional drug treatment improve hearing even better in severe and above sudden deafness participants? 2. What medical problems do participants have with intratympanic…",
+      "blake2b_256": "d4a6fcf92bc59a3fb6b55129",
+      "sha256": "196959a42dda3cfd9bc7ef65",
+      "epistemic_badge": "[S]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Human clinical translation boundary: enforces strict separation between animal/preclinical rescue [E] and unverified human clinical outcomes [S].",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Formal or clinical registry entry; Shape-D lookup control applies at downstream deployment."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-035",
+      "source": "ClinicalTrials.gov",
+      "external_id": "NCT05730023",
+      "doi": null,
+      "title": "A Multimodal Approach for Clinical Diagnosis and Treatment of Primary Progressive Aphasia, MAINSTREAM ID:3430931 [COMPLETED]",
+      "authors": [
+        "IRCCS Centro San Giovanni di Dio Fatebenefratelli"
+      ],
+      "published_date": "2023-02-01",
+      "url": "https://clinicaltrials.gov/study/NCT05730023",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Primary Progressive Aphasia (PPA) is a syndrome due to different neurodegenerative disorders selectively disrupting language functions. PPA specialist care is underdeveloped. There are very few specialists (neurologists, psychiatrists, neuropsychologists and speech therapists) and few hospitals- or community-based services dedicated to diagnosis and continuing care. Currently, healthcare systems struggle to provide adequate coverage of diagnostic services, and care is too often fragmented, uncoordinated, and…",
+      "blake2b_256": "c325ffd5c5e20889b6ee4d51",
+      "sha256": "2942132d838cc74707936952",
+      "epistemic_badge": "[E]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Human clinical translation boundary: enforces strict separation between animal/preclinical rescue [E] and unverified human clinical outcomes [S].",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-036",
+      "source": "ClinicalTrials.gov",
+      "external_id": "NCT07227727",
+      "doi": null,
+      "title": "Endothelial Dysfunction After SCI: Mechanism and Therapeutic Target for SCI-related Cardiovascular Disease [RECRUITING]",
+      "authors": [
+        "Craig Hospital"
+      ],
+      "published_date": "2025-07-31",
+      "url": "https://clinicaltrials.gov/study/NCT07227727",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "This study plans to learn how endothelial cells, single cell lining of blood vessels may be dysfunctional after a spinal cord injury. Endothelial dysfunction will be measured by the capacity of blood vessels to vasodilate (increase in size) and alter blood flow is lower in adults with a spinal cord injury in comparison to adults without a spinal cord injury. The mechanisms which may alter this function may be critical in reducing the risk of heart attacks and strokes in people with spinal cord injuries.",
+      "blake2b_256": "0ccf3d214c656a7bab795989",
+      "sha256": "4ea19ab8b1b103e0b89850dc",
+      "epistemic_badge": "[S]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Human clinical translation boundary: enforces strict separation between animal/preclinical rescue [E] and unverified human clinical outcomes [S].",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Formal or clinical registry entry; Shape-D lookup control applies at downstream deployment."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-037",
+      "source": "arXiv",
+      "external_id": "arXiv:2504.17674v1",
+      "doi": null,
+      "title": "Energy Considerations of Large Language Model Inference and Efficiency Optimizations",
+      "authors": [
+        "Jared Fernandez",
+        "Clara Na",
+        "Vashisth Tiwari",
+        "Yonatan Bisk",
+        "Sasha Luccioni"
+      ],
+      "published_date": "2025-04-24",
+      "url": "http://arxiv.org/abs/2504.17674v1",
+      "vector_id": "energy-joules-token",
+      "vector_label": "Energy-Aware AI & Joules per Token",
+      "abstract": "As large language models (LLMs) scale in size and adoption, their computational and environmental costs continue to rise. Prior benchmarking efforts have primarily focused on latency reduction in idealized settings, often overlooking the diverse real-world inference workloads that shape energy use. In this work, we systematically analyze the energy implications of common inference efficiency optimizations across diverse Natural Language Processing (NLP) and generative Artificial Intelligence (AI) workloads, including conversational AI and code…",
+      "blake2b_256": "5f7da57c8dfb442a9fbc9de0",
+      "sha256": "f958a5e0fc0c6d045715804c",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Aligns with OpenIE progress-per-joule ordering once task correctness gates pass.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "latency",
+          "short_title": "The Gap Between Possible and Deployed",
+          "path": "/papers/latency/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-038",
+      "source": "arXiv",
+      "external_id": "arXiv:2606.23001v2",
+      "doi": null,
+      "title": "EnerInfer: Energy-Aware On-Device LLM Inference",
+      "authors": [
+        "Bohua Zou",
+        "Nian Liu",
+        "Binqi Sun",
+        "Matteo Mascherin",
+        "Debayan Roy"
+      ],
+      "published_date": "2026-06-22",
+      "url": "http://arxiv.org/abs/2606.23001v2",
+      "vector_id": "energy-joules-token",
+      "vector_label": "Energy-Aware AI & Joules per Token",
+      "abstract": "On-device LLM inference is increasingly attractive for privacy-preserving, reliable, and cost-effective deployment, yet its energy and thermal costs remain a critical bottleneck. Existing systems primarily optimize for decoding speed, implicitly assuming that faster execution is always preferable. We show instead that on-device LLM inference often has exploitable configuration slack: modestly lowering NPU and memory frequencies preserves quality of experience (QoE) while substantially improving energy efficiency and reducing heat. Realizing this…",
+      "blake2b_256": "e102b1cf2d8f2d524754fc34",
+      "sha256": "67dbcf375c3e3775916351a2",
+      "epistemic_badge": "[M]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Surfaces coordination, verification, or memory-wall overhead requiring N* payback amortization or strict commit-gate refusal.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "satb-harness",
+          "short_title": "Satiation Benchmark Harness",
+          "path": "/papers/satb-harness/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-039",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.18570v2",
+      "doi": null,
+      "title": "Towards Energy-Efficient Large Language Model Inference: A Systematic Literature Review",
+      "authors": [
+        "Sabiya Banu Masthan Ali",
+        "Syed Muhammad Danish",
+        "Rupinder Kaur",
+        "Marin Litoiu",
+        "Arghavan Asad"
+      ],
+      "published_date": "2026-07-24",
+      "url": "http://arxiv.org/abs/2611.18570v2",
+      "vector_id": "energy-joules-token",
+      "vector_label": "Energy-Aware AI & Joules per Token",
+      "abstract": "Large language model (LLM) inference is becoming a significant contributor to both operational cost and environmental impact in modern AI deployments. Energy consumption during inference depends on multiple factors across the pipeline, including input and output length, model design, deployment-level decisions, and hardware characteristics. This paper presents a systematic literature review (SLR) of energy-efficient and sustainable LLM inference. We analyze selected primary studies to identify techniques proposed to reduce energy consumption across…",
+      "blake2b_256": "020aa98735e9b9ce72361f60",
+      "sha256": "342b91a1714cc897835475cd",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Aligns with OpenIE progress-per-joule ordering once task correctness gates pass.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "latency",
+          "short_title": "The Gap Between Possible and Deployed",
+          "path": "/papers/latency/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-040",
+      "source": "arXiv",
+      "external_id": "arXiv:2505.20302v3",
+      "doi": null,
+      "title": "VeriThoughts: Enabling Automated Verilog Code Generation using Reasoning and Formal Verification",
+      "authors": [
+        "Patrick Yubeaton",
+        "Andre Nakkab",
+        "Weihua Xiao",
+        "Luca Collini",
+        "Ramesh Karri"
+      ],
+      "published_date": "2025-05-16",
+      "url": "http://arxiv.org/abs/2505.20302v3",
+      "vector_id": "formal-lean4-statemachines",
+      "vector_label": "Formal Verification, Lean 4 & State Machines",
+      "abstract": "This paper introduces VeriThoughts, a novel dataset designed for reasoning-based Verilog code generation. We establish a new benchmark framework grounded in formal verification methods to evaluate the quality and correctness of generated hardware descriptions. Additionally, we present a suite of specialized small-scale models optimized specifically for Verilog generation. Our work addresses the growing need for automated hardware design tools that can produce verifiably correct implementations from high-level specifications, potentially accelerating…",
+      "blake2b_256": "a27abf3db4c45d54dfabee25",
+      "sha256": "fd290c9ad08251adcba85f27",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Opens an unmeasured parameter regime across multi-step verification, compiler lowering, or event-driven wakeup scheduling.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "rce",
+          "short_title": "The Reality Code Engine",
+          "path": "/papers/rce/"
+        },
+        {
+          "id": "rce-jepa",
+          "short_title": "RCE-JEPA",
+          "path": "/papers/rce-jepa/"
+        },
+        {
+          "id": "rce-compile",
+          "short_title": "RCE Compile",
+          "path": "/papers/rce-compile/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-041",
+      "source": "arXiv",
+      "external_id": "arXiv:2601.19747v2",
+      "doi": null,
+      "title": "Veri-Sure: Multi-Agent RTL Code Generation with Temporal Tracing, Slicing and Formal Verification",
+      "authors": [
+        "Jiale Liu",
+        "Taiyu Zhou",
+        "Tianqi Jiang"
+      ],
+      "published_date": "2026-01-27",
+      "url": "http://arxiv.org/abs/2601.19747v2",
+      "vector_id": "formal-lean4-statemachines",
+      "vector_label": "Formal Verification, Lean 4 & State Machines",
+      "abstract": "In the rapidly evolving field of Electronic Design Automation (EDA), the deployment of Large Language Models (LLMs) for Register-Transfer Level (RTL) code generation has emerged as a promising direction. However, because RTL code describes concurrent hardware behavior with strict cycle-level timing and thus differs fundamentally from software code, LLM-based RTL code generation remains bottlenecked by (i) sparse feedback and limited test coverage of simulation-centric evaluation, (ii) regressions and repair hallucinations introduced by whole-file…",
+      "blake2b_256": "cf7a1381a11b626ca5186982",
+      "sha256": "844953e7f8e661c6976e3a8d",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Supports machine-checked specifications (Lean 4 / state machines) acting as deterministic commit gates.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "rce",
+          "short_title": "The Reality Code Engine",
+          "path": "/papers/rce/"
+        },
+        {
+          "id": "rce-jepa",
+          "short_title": "RCE-JEPA",
+          "path": "/papers/rce-jepa/"
+        },
+        {
+          "id": "rce-compile",
+          "short_title": "RCE Compile",
+          "path": "/papers/rce-compile/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-042",
+      "source": "arXiv",
+      "external_id": "arXiv:2604.22601v1",
+      "doi": null,
+      "title": "From Natural Language to Verified Code: Toward AI Assisted Problem-to-Code Generation with Dafny-Based Formal Verification",
+      "authors": [
+        "Md Erfan",
+        "Md Kamal Hossain Chowdhury",
+        "Ahmed Ryan",
+        "Md Rayhanur Rahman"
+      ],
+      "published_date": "2026-04-24",
+      "url": "http://arxiv.org/abs/2604.22601v1",
+      "vector_id": "formal-lean4-statemachines",
+      "vector_label": "Formal Verification, Lean 4 & State Machines",
+      "abstract": "Large Language Models (LLMs) show promise in automated software engineering, yet their guarantee of correctness is frequently undermined by erroneous or hallucinated code. To enforce model honesty, formal verification requires LLMs to synthesize implementation logic alongside formal specifications that are subsequently proven correct by a mathematical verifier. However, the transition from informal natural language to precise formal specification remains an arduous task. Our work addresses this by providing the NaturalLanguage2VerifiedCode (NL2VC)-60…",
+      "blake2b_256": "5f308a4e2a125c28ab49b4ad",
+      "sha256": "c038f703b6ef8a76f1fb448a",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Supports machine-checked specifications (Lean 4 / state machines) acting as deterministic commit gates.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "rce",
+          "short_title": "The Reality Code Engine",
+          "path": "/papers/rce/"
+        },
+        {
+          "id": "rce-jepa",
+          "short_title": "RCE-JEPA",
+          "path": "/papers/rce-jepa/"
+        },
+        {
+          "id": "rce-compile",
+          "short_title": "RCE Compile",
+          "path": "/papers/rce-compile/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-043",
+      "source": "arXiv",
+      "external_id": "arXiv:2610.07556v2",
+      "doi": null,
+      "title": "Decoupled Multi-Agent Orchestration",
+      "authors": [
+        "Xinle Wu",
+        "Yao Lu"
+      ],
+      "published_date": "2026-10-06",
+      "url": "http://arxiv.org/abs/2610.07556v2",
+      "vector_id": "multiagent-byzantine-flow",
+      "vector_label": "Multi-Agent Orchestration & Byzantine Fault Tolerance",
+      "abstract": "Learned orchestration can automatically construct effective language-model multi-agent systems, but existing approaches couple planning to fixed worker pools and train decomposition and collaboration from the same terminal outcome, limiting transfer and obscuring credit assignment. We introduce DeOrch, which separates worker-agnostic planning from concrete worker selection. Its two-stage planner first decomposes the task without worker information, then chooses collaboration operations using compact, worker-identity-free matchability feedback from the…",
+      "blake2b_256": "ffb04c514d4a01f51912d3ee",
+      "sha256": "9b6293a5863ea29c76cdd794",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Reinforces thresholded, attested multi-agent routing over unverified natural-language broadcast.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "three-body",
+          "short_title": "The Three-Body Problem in Computing",
+          "path": "/papers/three-body/"
+        },
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "interface-economics",
+          "short_title": "The Price of the Unexamined Interface",
+          "path": "/papers/interface-economics/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-044",
+      "source": "arXiv",
+      "external_id": "arXiv:2606.13598v1",
+      "doi": null,
+      "title": "Reward Modeling for Multi-Agent Orchestration",
+      "authors": [
+        "King Yeung Tsang",
+        "Zihao Zhao",
+        "Vishal Venkataramani",
+        "Haizhou Shi",
+        "Zixuan Ke"
+      ],
+      "published_date": "2026-06-11",
+      "url": "http://arxiv.org/abs/2606.13598v1",
+      "vector_id": "multiagent-byzantine-flow",
+      "vector_label": "Multi-Agent Orchestration & Byzantine Fault Tolerance",
+      "abstract": "Multi-Agent Systems (MAS) built on Large Language Models (LLMs) require effective orchestration to coordinate specialized agents, yet training such orchestrators is hindered by limited supervision and high computational cost. We propose Orchestration Reward Modeling (OrchRM), a self-supervised framework for evaluating orchestration quality without human annotations. OrchRM leverages intermediate artifacts from multi-agent executions to construct win-lose pairs for Bradley-Terry reward model training. Unlike existing MAS test-time scaling and…",
+      "blake2b_256": "00d58c9e804a41db0a6b4aff",
+      "sha256": "edb5eba30b2011a981e16051",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Opens an unmeasured parameter regime across multi-step verification, compiler lowering, or event-driven wakeup scheduling.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "interface-economics",
+          "short_title": "The Price of the Unexamined Interface",
+          "path": "/papers/interface-economics/"
+        },
+        {
+          "id": "three-body",
+          "short_title": "The Three-Body Problem in Computing",
+          "path": "/papers/three-body/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-045",
+      "source": "arXiv",
+      "external_id": "arXiv:2606.11440v2",
+      "doi": null,
+      "title": "INFRAMIND: Infrastructure-Aware Multi-Agent Orchestration",
+      "authors": [
+        "Ahasan Kabir",
+        "Mengxin Zheng",
+        "Qian Lou"
+      ],
+      "published_date": "2026-06-09",
+      "url": "http://arxiv.org/abs/2606.11440v2",
+      "vector_id": "multiagent-byzantine-flow",
+      "vector_label": "Multi-Agent Orchestration & Byzantine Fault Tolerance",
+      "abstract": "Multi-agent LLM systems spend additional computation on reasoning and collaboration, but shared serving queues can prevent that computation from producing answers before a deadline. This creates a coupled decision: the reasoning workflow determines the load, while changing load determines which reasoning choices remain affordable. We introduce INFRAMIND, a hierarchical policy that adapts workflow planning and execution to serving conditions. At arrival, a planner selects the collaboration graph using task information, load and the time budget. Before…",
+      "blake2b_256": "eba500d13f1a4b05dee2085f",
+      "sha256": "214d29131103a8069bb57901",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Reinforces thresholded, attested multi-agent routing over unverified natural-language broadcast.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "three-body",
+          "short_title": "The Three-Body Problem in Computing",
+          "path": "/papers/three-body/"
+        },
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "interface-economics",
+          "short_title": "The Price of the Unexamined Interface",
+          "path": "/papers/interface-economics/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-046",
+      "source": "arXiv",
+      "external_id": "arXiv:2311.12592v1",
+      "doi": null,
+      "title": "Visual tracking brain computer interface",
+      "authors": [
+        "Changxing Huang",
+        "Nanlin Shi",
+        "Yining Miao",
+        "Xiaogang Chen",
+        "Yijun Wang"
+      ],
+      "published_date": "2023-11-21",
+      "url": "http://arxiv.org/abs/2311.12592v1",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Brain-computer interfaces (BCIs) offer a way to interact with computers without relying on physical movements. Non-invasive electroencephalography (EEG)-based visual BCIs, known for efficient speed and calibration ease, face limitations in continuous tasks due to discrete stimulus design and decoding methods. To achieve continuous control, we implemented a novel spatial encoding stimulus paradigm and devised a corresponding projection method to enable continuous modulation of decoded velocity. Subsequently, we conducted experiments involving 17…",
+      "blake2b_256": "c492c77aebd3009cf3ee4063",
+      "sha256": "c9703527846f7aed32d20dec",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates thresholded intercellular/neural signal gating and fault-isolating circuit breakers.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-047",
+      "source": "arXiv",
+      "external_id": "arXiv:1003.2660v1",
+      "doi": null,
+      "title": "An Educative Brain-Computer Interface",
+      "authors": [
+        "Kirill A. Sorudeykin"
+      ],
+      "published_date": "2010-03-13",
+      "url": "http://arxiv.org/abs/1003.2660v1",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "In this paper we will describe all necessary parts of Brain-Computer Interface (BCI), such as source of signals, hardware, software, analysis, architectures of complete system. We also will go along various applications of BCI, view some subject fields and their specifics. After preface we will consider the main point of this work-concepts of using BCI in education. Represented direction of BCI development has not been reported prior. In this work a computer system, currently being elaborated in author's laboratory, will be specified. A purpose of it…",
+      "blake2b_256": "9a3c82cb6d1e5d0378fbb837",
+      "sha256": "eb24bd032491ddb93baf7282",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates thresholded intercellular/neural signal gating and fault-isolating circuit breakers.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-048",
+      "source": "arXiv",
+      "external_id": "arXiv:1811.06040v1",
+      "doi": "10.1109/NER.2019.8717158",
+      "title": "Brain-Computer Interface in Virtual Reality",
+      "authors": [
+        "Reza Abbasi-Asl",
+        "Mohammad Keshavarzi",
+        "Dorian Yao Chan"
+      ],
+      "published_date": "2018-11-13",
+      "url": "http://arxiv.org/abs/1811.06040v1",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "We study the performance of brain computer interface (BCI) system in a virtual reality (VR) environment and compare it to 2D regular displays. First, we design a headset that consists of three components: a wearable electroencephalography (EEG) device, a VR headset and an interface. Recordings of brain and behavior from human subjects, performing a wide variety of tasks using our device are collected. The tasks consist of object rotation or scaling in VR using either mental commands or facial expression (smile and eyebrow movement). Subjects are asked…",
+      "blake2b_256": "b094512566a4ad749c9317ff",
+      "sha256": "31d209222ed7dc2412dec945",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Opens an unmeasured parameter regime across multi-step verification, compiler lowering, or event-driven wakeup scheduling.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-049",
+      "source": "arXiv",
+      "external_id": "arXiv:2610.27078v1",
+      "doi": null,
+      "title": "LEAF: LUT-aware Efficient Attention on FPGAs",
+      "authors": [
+        "Arianna Cox",
+        "Chang Sun",
+        "Lauri Laatu",
+        "Benedikt Maier",
+        "Aadeesh Sharma"
+      ],
+      "published_date": "2026-10-19",
+      "url": "http://arxiv.org/abs/2610.27078v1",
+      "vector_id": "fpga-lut-ternary-inmemory",
+      "vector_label": "FPGA Lookup Fabrics, Ternary & In-Memory Inference",
+      "abstract": "We introduce Lookup-table (LUT)-aware Efficient Attention on FPGAs (LEAF). LEAF is the first nanosecond-scale LUT-aware transformer for FPGAs. Deploying transformers that are large enough to perform well, small enough to fit on an FPGA, and fast enough to meet the sub-microsecond timescales required by real-time systems such as those at CERN remains difficult, since the same attention mechanism that gives these models their high expressivity also makes them costly to implement in hardware. LEAF converts the query, key, and value projections and the…",
+      "blake2b_256": "f9f2ea3cfa98f029d083b8f7",
+      "sha256": "21cbe5d65b3986448a7f9b3b",
+      "epistemic_badge": "[E]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Identifies an external substrate or hardware lowering path where a Shape-D + joule-gated OpenIE pilot can test downward crystallization.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-050",
+      "source": "arXiv",
+      "external_id": "arXiv:1804.11275v2",
+      "doi": null,
+      "title": "LUT-Lock: A Novel LUT-based Logic Obfuscation for FPGA-Bitstream and ASIC-Hardware Protection",
+      "authors": [
+        "Hadi Mardani Kamali",
+        "Kimia Zamiri Azar",
+        "Kris Gaj",
+        "Houman Homayoun",
+        "Avesta Sasan"
+      ],
+      "published_date": "2018-04-30",
+      "url": "http://arxiv.org/abs/1804.11275v2",
+      "vector_id": "fpga-lut-ternary-inmemory",
+      "vector_label": "FPGA Lookup Fabrics, Ternary & In-Memory Inference",
+      "abstract": "In this work, we propose LUT-Lock, a novel Look-Up-Table-based netlist obfuscation algorithm, for protecting the intellectual property that is mapped to an FPGA bitstream or an ASIC netlist. We, first, illustrate the effectiveness of several key features that make the LUT-based obfuscation more resilient against SAT attacks and then we embed the proposed key features into our proposed LUT-Lock algorithm. We illustrates that LUT-Lock maximizes the resiliency of the LUT-based obfuscation against SAT attacks by forcing a near exponential increase in the…",
+      "blake2b_256": "7b2a5df5a4af94db64384994",
+      "sha256": "f68646a9cbf13224ed51a0de",
+      "epistemic_badge": "[E]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Identifies an external substrate or hardware lowering path where a Shape-D + joule-gated OpenIE pilot can test downward crystallization.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-051",
+      "source": "arXiv",
+      "external_id": "arXiv:1410.1656v4",
+      "doi": null,
+      "title": "Piecewise deterministic simulated annealing",
+      "authors": [
+        "Pierre Monmarché"
+      ],
+      "published_date": "2014-10-07",
+      "url": "http://arxiv.org/abs/1410.1656v4",
+      "vector_id": "deterministic-sim-tmt",
+      "vector_label": "Deterministic Simulation & Time-Memory Tradeoffs",
+      "abstract": "Given an energy potential on the Euclidian space, a piecewise deterministic Markov process is designed to sample the corresponding Gibbs measure. In dimension one an Eyring-Kramers formula is obtained for the exit time of the domain of a local minimum at low temperature, and a necessary and sufficient condition is given on the cooling schedule in a simulated annealing algorithm to ensure the process converges to the set of global minima. This condition is similar to the classical one for diffusions and involves the critical depth of the potential. In…",
+      "blake2b_256": "c621bee882c134e50a82eb70",
+      "sha256": "a3cfe5abbe8acb6e4758464a",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates fixed-point replay invariants and precomputation horizon bounds.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "deterministic-null",
+          "short_title": "Deterministic Null",
+          "path": "/papers/deterministic-null/"
+        },
+        {
+          "id": "time-as-an-index",
+          "short_title": "Time as an Index",
+          "path": "/papers/time-as-an-index/"
+        },
+        {
+          "id": "game-engines",
+          "short_title": "Writing a Game Once",
+          "path": "/papers/game-engines/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-052",
+      "source": "arXiv",
+      "external_id": "arXiv:2604.03606v1",
+      "doi": null,
+      "title": "BlazeFL: Fast and Deterministic Federated Learning Simulation",
+      "authors": [
+        "Kitsuya Azuma",
+        "Takayuki Nishio"
+      ],
+      "published_date": "2026-04-04",
+      "url": "http://arxiv.org/abs/2604.03606v1",
+      "vector_id": "deterministic-sim-tmt",
+      "vector_label": "Deterministic Simulation & Time-Memory Tradeoffs",
+      "abstract": "Federated learning (FL) research increasingly relies on single-node simulations with hundreds or thousands of virtual clients, making both efficiency and reproducibility essential. Yet parallel client training often introduces nondeterminism through shared random state and scheduling variability, forcing researchers to trade throughput for reproducibility or to implement custom control logic within complex frameworks. We present BlazeFL, a lightweight framework for single-node FL simulation that alleviates this trade-off through free-threaded…",
+      "blake2b_256": "1f7aafa1fe80ad65f555ad2b",
+      "sha256": "563e40e515bcd36111ec087f",
+      "epistemic_badge": "[M]",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Surfaces coordination, verification, or memory-wall overhead requiring N* payback amortization or strict commit-gate refusal.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "deterministic-null",
+          "short_title": "Deterministic Null",
+          "path": "/papers/deterministic-null/"
+        },
+        {
+          "id": "game-engines",
+          "short_title": "Writing a Game Once",
+          "path": "/papers/game-engines/"
+        },
+        {
+          "id": "time-as-an-index",
+          "short_title": "Time as an Index",
+          "path": "/papers/time-as-an-index/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-053",
+      "source": "arXiv",
+      "external_id": "arXiv:1910.00162v2",
+      "doi": null,
+      "title": "Large Scale Deterministic Networking: A Simulation Evaluation",
+      "authors": [
+        "Ahmed Nasrallah",
+        "Venkatraman Balasubramanian",
+        "Akhilesh Thyagaturu",
+        "Martin Reisslein",
+        "Hesham ElBakoury"
+      ],
+      "published_date": "2019-10-01",
+      "url": "http://arxiv.org/abs/1910.00162v2",
+      "vector_id": "deterministic-sim-tmt",
+      "vector_label": "Deterministic Simulation & Time-Memory Tradeoffs",
+      "abstract": "The use of Ethernet switched networks usually involves best effort service. A recent effort by the IEEE 802.1/3 TSN group has sought to standardize the Ethernet data-link protocol such that it operates on a deterministic service in addition to the best effort service targeting Operational Technology applications, e.g., industrial control systems. This paper investigates the Cyclic Queueing and Forwarding (CQF) and Paternoster scheduling protocols in a typical industrial control loop with varying propagation delays emulating large scale networks. Our…",
+      "blake2b_256": "9b6ba97b9cc3190176983881",
+      "sha256": "87be4042f70981bdae95a6b9",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates fixed-point replay invariants and precomputation horizon bounds.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "deterministic-null",
+          "short_title": "Deterministic Null",
+          "path": "/papers/deterministic-null/"
+        },
+        {
+          "id": "time-as-an-index",
+          "short_title": "Time as an Index",
+          "path": "/papers/time-as-an-index/"
+        },
+        {
+          "id": "game-engines",
+          "short_title": "Writing a Game Once",
+          "path": "/papers/game-engines/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-054",
+      "source": "Europe PMC",
+      "external_id": "EPMC:PMC13667617",
+      "doi": null,
+      "title": "MetaIDNet: A Fast Brain–Computer Interface for Color Vision Assessment",
+      "authors": [
+        "Habibzadeh H",
+        "Zois D",
+        "Norton J."
+      ],
+      "published_date": "2026-09-30",
+      "url": "https://europepmc.org/article/MED/PMC13667617",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Europe PMC open-access article (PMC13667617).",
+      "blake2b_256": "76da72b2a83f4072449759c5",
+      "sha256": "6a4d845818e635c1a5a4e236",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates thresholded intercellular/neural signal gating and fault-isolating circuit breakers.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-055",
+      "source": "Europe PMC",
+      "external_id": "EPMC:41617725",
+      "doi": "10.1038/s41522-026-00924-w",
+      "title": "Extracellular vesicles as structured vectors of quorum sensing signals influence aquatic microbial communities",
+      "authors": [
+        "Xu X",
+        "Lin J",
+        "Zhu LT",
+        "Long L",
+        "Duan Y"
+      ],
+      "published_date": "2026-01-31",
+      "url": "https://doi.org/10.1038/s41522-026-00924-w",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Quorum sensing (QS) orchestrates collective microbial behaviors and functional acclimatization through chemical communication. However, QS in natural waters is challenged by dilution, alkaline hydrolysis, and enzymatic degradation of freely dissolved autoinducers. Here, we demonstrate that extracellular vesicles (EVs) act as selective, durable, and protective vectors for QS signal molecules under environmental stresses. Specifically, EVs preferentially package hydrophobic acyl‑homoserine lactones, concentrate them locally, and shield them from alkaline…",
+      "blake2b_256": "f40e6d44ca5c4f6ff84f6f89",
+      "sha256": "7e078751905dc8b59d459745",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates thresholded intercellular/neural signal gating and fault-isolating circuit breakers.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-056",
+      "source": "Europe PMC",
+      "external_id": "EPMC:42975207",
+      "doi": "10.1002/brb3.71896",
+      "title": "Mapping Brain-Computer Interface Research in Depression (1995-2026): A Bibliometric Analysis",
+      "authors": [
+        "Jiang Y",
+        "Duan X."
+      ],
+      "published_date": "2026-11-01",
+      "url": "https://doi.org/10.1002/brb3.71896",
+      "vector_id": "quorum-bio-neural-bci",
+      "vector_label": "Quorum Sensing, Collective Biology & Neural Interfaces",
+      "abstract": "Introduction Brain-computer interfaces (BCIs) have emerged as promising tools for neuromodulation and emotion regulation in depression. This study aimed to systematically map the global research landscape, thematic evolution, and emerging trends of BCI applications in depressive disorders through bibliometric analysis. Methods Data were retrieved from the Web of Science Core Collection and analyzed using the R package bibliometrix, VOSviewer, and CiteSpace. Publication trends, country and institutional contributions, journal impact, author influence,…",
+      "blake2b_256": "e781c310ee58d20ff7b15519",
+      "sha256": "14762ea53071bc3224bc9322",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Opens an unmeasured parameter regime across multi-step verification, compiler lowering, or event-driven wakeup scheduling.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "agency",
+          "short_title": "Thermodynamic Bounds and an Optimal Tempo",
+          "path": "/papers/agency/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-057",
+      "source": "Europe PMC",
+      "external_id": "EPMC:PMC13661921",
+      "doi": null,
+      "title": "Feature-aware attention convolutional neural network for efficient pulmonary fibrosis classification from chest CT images with FPGA deployment",
+      "authors": [
+        "Mahapackialakshmi K",
+        "Jaffino G."
+      ],
+      "published_date": "2026-10-16",
+      "url": "https://europepmc.org/article/MED/PMC13661921",
+      "vector_id": "fpga-lut-ternary-inmemory",
+      "vector_label": "FPGA Lookup Fabrics, Ternary & In-Memory Inference",
+      "abstract": "Europe PMC open-access article (PMC13661921).",
+      "blake2b_256": "6700e536c22987db7a4fdc5d",
+      "sha256": "c0941c02007b41da0939a109",
+      "epistemic_badge": "[E]",
+      "classification": "CORROBORATES",
+      "rationale": "Supports compiling recurring inference wakes downward into low-energy lookup and quantized fabrics.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-058",
+      "source": "Europe PMC",
+      "external_id": "EPMC:42719006",
+      "doi": "10.3389/fnsys.2026.1866947",
+      "title": "Large-scale neuromorphic modeling of cortical networks on FPGA for investigating anesthetic-induced neural dynamics",
+      "authors": [
+        "Wang C",
+        "Pan X",
+        "Chen S",
+        "Cheng H",
+        "Yao Y"
+      ],
+      "published_date": "2026-08-26",
+      "url": "https://doi.org/10.3389/fnsys.2026.1866947",
+      "vector_id": "fpga-lut-ternary-inmemory",
+      "vector_label": "FPGA Lookup Fabrics, Ternary & In-Memory Inference",
+      "abstract": "Introduction Understanding the neural mechanisms underlying general anesthesia remains a significant challenge in neuroscience and clinical practice. Traditional software-based simulations of large-scale brain networks are often constrained by high computational costs and fail to achieve real-time performance. Methods In this paper, we propose a high-performance hardware implementation of large-scale neuromorphic system to investigate anesthetic-induced neural dynamics. The system successfully models a cortical network comprising 10,000 spiking neurons…",
+      "blake2b_256": "71cd919a67194f3a17f7c484",
+      "sha256": "4734fe42f632157bf774a1ad",
+      "epistemic_badge": "[E]",
+      "classification": "CORROBORATES",
+      "rationale": "Supports compiling recurring inference wakes downward into low-energy lookup and quantized fabrics.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/"
+        },
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-059",
+      "source": "Europe PMC",
+      "external_id": "EPMC:42305627",
+      "doi": "10.1016/j.isci.2026.115985",
+      "title": "System-level FPGA validation of a trainable and robust multiplier-free spiking neural network",
+      "authors": [
+        "Li Q",
+        "Zhang L."
+      ],
+      "published_date": "2026-06-04",
+      "url": "https://doi.org/10.1016/j.isci.2026.115985",
+      "vector_id": "fpga-lut-ternary-inmemory",
+      "vector_label": "FPGA Lookup Fabrics, Ternary & In-Memory Inference",
+      "abstract": "The growing scale of artificial intelligence models has expanded their impact, yet efficient deployment on hardware remains challenging due to intensive matrix-based computation and energy demand. Spiking neural networks (SNNs), inspired by biological neural processing, offer an event-driven and energy-efficient alternative for neuromorphic computing. In this work, we present a system-level FPGA validation of a trainable, multiplier-free SNN that supports on-chip supervised learning under fixed-point constraints. By implementing a sensitive-noise…",
+      "blake2b_256": "b47449fbebced8138b52ca29",
+      "sha256": "d61d9dcf8cd37be37bf7dd6f",
+      "epistemic_badge": "[E]",
+      "classification": "CORROBORATES",
+      "rationale": "Supports compiling recurring inference wakes downward into low-energy lookup and quantized fabrics.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/"
+        },
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-060",
+      "source": "Europe PMC",
+      "external_id": "EPMC:41999207",
+      "doi": "10.1093/bioinformatics/btag185",
+      "title": "HySimODE: a hybrid stochastic-deterministic simulation framework for multiscale models of biological systems",
+      "authors": [
+        "Zamora-Chimal CG",
+        "Darlington APS."
+      ],
+      "published_date": "2026-05-01",
+      "url": "https://doi.org/10.1093/bioinformatics/btag185",
+      "vector_id": "deterministic-sim-tmt",
+      "vector_label": "Deterministic Simulation & Time-Memory Tradeoffs",
+      "abstract": "Hybrid simulation is essential for modeling biochemical systems that mix low-copy stochastic dynamics with high-abundance deterministic processes. We present HySimODE, a Python framework that automates hybrid simulation directly from user-defined ordinary differential equation-based models. HySimODE uses a short deterministic pre-simulation and a machine-learning classifier to automatically assign each species to a stochastic or deterministic regime, and then combines a simple stochastic update rule with a stiff ODE solver in a single simulation loop.…",
+      "blake2b_256": "800d822fb5b1ae9523efba9b",
+      "sha256": "c81e7cafd845a718d697061c",
+      "epistemic_badge": "[M]",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Opens an unmeasured parameter regime across multi-step verification, compiler lowering, or event-driven wakeup scheduling.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "deterministic-null",
+          "short_title": "Deterministic Null",
+          "path": "/papers/deterministic-null/"
+        },
+        {
+          "id": "time-as-an-index",
+          "short_title": "Time as an Index",
+          "path": "/papers/time-as-an-index/"
+        },
+        {
+          "id": "game-engines",
+          "short_title": "Writing a Game Once",
+          "path": "/papers/game-engines/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-061",
+      "source": "Europe PMC",
+      "external_id": "EPMC:PMC13674308",
+      "doi": null,
+      "title": "The cost of reproducibility in artificial intelligence",
+      "authors": [
+        "Snelleman T",
+        "Hoos H",
+        "Gundersen O."
+      ],
+      "published_date": "2026-08-27",
+      "url": "https://europepmc.org/article/MED/PMC13674308",
+      "vector_id": "deterministic-sim-tmt",
+      "vector_label": "Deterministic Simulation & Time-Memory Tradeoffs",
+      "abstract": "Europe PMC open-access article (PMC13674308).",
+      "blake2b_256": "76f7ce58c3301ead9ad41d0d",
+      "sha256": "ebd90b8a0bcdfcc8a4e8b475",
+      "epistemic_badge": "[M]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates fixed-point replay invariants and precomputation horizon bounds.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Omits a zero-parameter Shape-D case-loop control; neural gain over exact lookup remains untested."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "game-engines",
+          "short_title": "Writing a Game Once",
+          "path": "/papers/game-engines/"
+        },
+        {
+          "id": "deterministic-null",
+          "short_title": "Deterministic Null",
+          "path": "/papers/deterministic-null/"
+        },
+        {
+          "id": "time-as-an-index",
+          "short_title": "Time as an Index",
+          "path": "/papers/time-as-an-index/"
+        }
+      ]
+    },
+    {
+      "radar_id": "RAD-062",
+      "source": "Europe PMC",
+      "external_id": "EPMC:43013020",
+      "doi": "10.1021/jacs.6c09028",
+      "title": "Rigor and Reproducibility in Electrocatalysis: Integrating Theory and Experiment",
+      "authors": [
+        "Árnadóttir L",
+        "Bagger A",
+        "Bates JS",
+        "Clark EL",
+        "Hu G"
+      ],
+      "published_date": "2026-11-01",
+      "url": "https://doi.org/10.1021/jacs.6c09028",
+      "vector_id": "deterministic-sim-tmt",
+      "vector_label": "Deterministic Simulation & Time-Memory Tradeoffs",
+      "abstract": "Electrocatalysis is central to electrified energy conversion technologies, including the production of fuels and chemicals from renewable electricity. In recent years, atomistic modeling based on density functional theory (DFT) has become an indispensable tool for catalysis researchers because it can provide a molecular-level perspective of catalytic reactivity that is otherwise inaccessible through experimental measurements. Computational electrocatalysis model inputs are intended to capture fundamental understanding of the complex interfacial…",
+      "blake2b_256": "2dc2646a49447da036b7b12e",
+      "sha256": "c25a166128ce99d907711484",
+      "epistemic_badge": "[S]",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates fixed-point replay invariants and precomputation horizon bounds.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Reports accuracy, theorem, or biological state transitions without joule-per-task accounting (board_metered=false). Formal or clinical registry entry; Shape-D lookup control applies at downstream deployment."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "deterministic-null",
+          "short_title": "Deterministic Null",
+          "path": "/papers/deterministic-null/"
+        },
+        {
+          "id": "game-engines",
+          "short_title": "Writing a Game Once",
+          "path": "/papers/game-engines/"
+        },
+        {
+          "id": "time-as-an-index",
+          "short_title": "Time as an Index",
+          "path": "/papers/time-as-an-index/"
+        }
+      ]
+    }
+  ]
+}

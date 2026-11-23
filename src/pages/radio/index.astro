@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RadioStudioDeck from '../../components/radio/RadioStudioDeck.astro';
+import RadioRadarSection from '../../components/radio/RadioRadarSection.astro';
+import RadioFoundrySection from '../../components/radio/RadioFoundrySection.astro';
+import RadioClientScript from '../../components/radio/RadioClientScript.astro';
+
+import radioFeed from '../../data/radio-feed.json';
+import radioRadar from '../../data/radio-radar.json';
+import topicFoundry from '../../data/topic-foundry.json';
+
+const pageTitle = 'OpenIE Research Radio — Live Broadcast, Global Radar & Pilot Foundry';
+const pageDesc =
+  'Multi-voice OpenIE Research Radio (8 launch episodes + Podcast RSS), 6-hour autonomous open-access literature radar, and sub-60-second deterministic RAPL pilot foundry. Hosted by AI-synthesized OpenIE research personas Elena, Marcus, and Devon.';
+---
+
+<Layout title={pageTitle} description={pageDesc}>
+  <Fragment slot="head">
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="OpenIE Research Radio Podcast RSS"
+      href="/radio/rss.xml"
+    />
+  </Fragment>
+
+  <RadioStudioDeck
+    feed={radioFeed}
+    radarCount={(radioRadar.items || []).length}
+    foundryCount={(topicFoundry.topics || []).length}
+  />
+
+  <RadioRadarSection radar={radioRadar} />
+
+  <RadioFoundrySection foundry={topicFoundry} />
+
+  <RadioClientScript feed={radioFeed} radar={radioRadar} foundry={topicFoundry} />
+</Layout>

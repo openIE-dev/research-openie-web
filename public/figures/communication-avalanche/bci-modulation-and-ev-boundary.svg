@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="cta-bci-ev-t cta-bci-ev-d">
+  <title id="cta-bci-ev-t">Neural Interface Bandwidth vs. Invasiveness (BM01-BM18) and Paracrine EV Translational Funnel (EV01-EV16)</title>
+  <desc id="cta-bci-ev-d">Left panel plots all 18 neural and paracrine modalities (BM01-BM18) on log10 bandwidth (bit/s) versus invasiveness, highlighting the 10-39 bit/s overt human speech ceiling, ~15-19 bit/s intracortical speech readout, ~0.05 bit/s BrainNet, closed-loop ICMS/aDBS, and the CTA-T29 Local Consent Gate boundary. Right panel contrasts 16/16 replicated preclinical rodent/porcine/in vitro EV rescue studies (EV01-EV16) against 0 Phase-III human CNS approvals (CA-H8).</desc>
+  <defs>
+    <marker id="arr-cyan" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#22d3ee"/>
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arr-emerald" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#10b981"/>
+    </marker>
+    <marker id="arr-rose" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f43f5e"/>
+    </marker>
+    <marker id="arr-violet" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a78bfa"/>
+    </marker>
+    <marker id="arr-slate" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect x="1.0" y="1.0" width="1198.0" height="718.0" rx="18.0" fill="#0b1120" stroke="#334155" stroke-width="2.00"/>
+  <text x="30.0" y="38.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="20.0" font-weight="800" fill="#f8fafc">Neural Interface Matrix (BM01–BM18) &amp; Paracrine EV Audit (EV01–EV16)</text>
+  <text x="30.0" y="60.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.0" font-weight="500" fill="#94a3b8">Strict epistemic separation between replicated neurotechnology / animal EV rescue [E] and unproven human CNS horizons [S]</text>
+  <rect x="994.0" y="18.0" width="180.0" height="28.0" rx="14.0" fill="#0f172a" stroke="#a78bfa" stroke-width="1.60"/>
+  <text x="1084.0" y="36.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#a78bfa" text-anchor="middle">BM01..18 · EV01..16</text>
+  <rect x="28.0" y="82.0" width="600.0" height="578.0" rx="12.0" fill="#111827" stroke="#334155" stroke-width="1.50"/>
+  <text x="44.0" y="107.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="13.0" font-weight="800" fill="#f8fafc">A · 18 Neural &amp; Paracrine Modalities: Bandwidth vs. Invasiveness</text>
+  <text x="44.0" y="125.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.8" font-weight="400" fill="#94a3b8">Cyan = Read-Only · Amber = Write/Trophic · Emerald = Closed-Loop [E] · Violet = [S]</text>
+  <rect x="94.0" y="146.0" width="514.0" height="412.0" fill="#0b1120" stroke="#1e293b" stroke-width="1.20"/>
+  <rect x="95.0" y="203.1" width="512.0" height="55.2" fill="#1e293b" opacity="0.65"/>
+  <line x1="94.0" y1="203.1" x2="608.0" y2="203.1" stroke="#f59e0b" stroke-width="1.40" stroke-dasharray="5,3"/>
+  <text x="102.0" y="198.1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="700" fill="#f59e0b">Spoken Language ~39 bit/s Ceiling &amp; CTA-T29 Consent Gate</text>
+  <text x="102.0" y="253.4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.8" font-weight="400" fill="#cbd5e1">Overt Behavior ~10 bit/s [E]</text>
+  <line x1="94.0" y1="539.3" x2="608.0" y2="539.3" stroke="#1e293b" stroke-width="0.90"/>
+  <text x="86.0" y="543.3" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="400" fill="#94a3b8" text-anchor="end">0.01</text>
+  <line x1="94.0" y1="445.6" x2="608.0" y2="445.6" stroke="#1e293b" stroke-width="0.90"/>
+  <text x="86.0" y="449.6" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="400" fill="#94a3b8" text-anchor="end">0.1</text>
+  <line x1="94.0" y1="352.0" x2="608.0" y2="352.0" stroke="#1e293b" stroke-width="0.90"/>
+  <text x="86.0" y="356.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="400" fill="#94a3b8" text-anchor="end">1</text>
+  <line x1="94.0" y1="258.4" x2="608.0" y2="258.4" stroke="#1e293b" stroke-width="0.90"/>
+  <text x="86.0" y="262.4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="400" fill="#94a3b8" text-anchor="end">10</text>
+  <line x1="94.0" y1="164.7" x2="608.0" y2="164.7" stroke="#1e293b" stroke-width="0.90"/>
+  <text x="86.0" y="168.7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="400" fill="#94a3b8" text-anchor="end">100</text>
+  <text x="42.0" y="352.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.8" font-weight="600" fill="#cbd5e1" text-anchor="middle" transform="rotate(-90.0 42.0 352.0)">Effective Information Rate (bit/s, log10)</text>
+  <line x1="145.4" y1="146.0" x2="145.4" y2="558.0" stroke="#1e293b" stroke-width="0.80" stroke-dasharray="2,4"/>
+  <text x="145.4" y="574.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="400" fill="#94a3b8" text-anchor="middle">Non-Invasive</text>
+  <line x1="268.8" y1="146.0" x2="268.8" y2="558.0" stroke="#1e293b" stroke-width="0.80" stroke-dasharray="2,4"/>
+  <text x="268.8" y="574.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="400" fill="#94a3b8" text-anchor="middle">Endovasc.</text>
+  <line x1="381.8" y1="146.0" x2="381.8" y2="558.0" stroke="#1e293b" stroke-width="0.80" stroke-dasharray="2,4"/>
+  <text x="381.8" y="574.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="400" fill="#94a3b8" text-anchor="middle">Subdural/Sens.</text>
+  <line x1="494.9" y1="146.0" x2="494.9" y2="558.0" stroke="#1e293b" stroke-width="0.80" stroke-dasharray="2,4"/>
+  <text x="494.9" y="574.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="400" fill="#94a3b8" text-anchor="middle">Penetrating</text>
+  <line x1="577.2" y1="146.0" x2="577.2" y2="558.0" stroke="#1e293b" stroke-width="0.80" stroke-dasharray="2,4"/>
+  <text x="577.2" y="574.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="400" fill="#94a3b8" text-anchor="middle">Opsin/[S]</text>
+  <circle cx="140.3" cy="319.2" r="4.6" fill="#22d3ee" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="147.3" y="322.2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="600" fill="#22d3ee">BM01 EEG (0.2-2.5)</text>
+  <circle cx="166.0" cy="300.5" r="4.6" fill="#22d3ee" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="173.0" y="302.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="600" fill="#22d3ee">BM02 OPM-MEG (1-4)</text>
+  <circle cx="135.1" cy="403.5" r="4.6" fill="#f59e0b" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="142.1" y="406.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="600" fill="#f59e0b">BM05 tFUS (0.1-1)</text>
+  <circle cx="135.1" cy="438.1" r="4.6" fill="#22d3ee" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="142.1" y="441.1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="600" fill="#22d3ee">BM03 fNIRS (0.05-0.3)</text>
+  <circle cx="135.1" cy="475.6" r="4.6" fill="#10b981" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="142.1" y="478.6" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="700" fill="#10b981">BM16 BrainNet (~0.05)</text>
+  <circle cx="135.1" cy="513.1" r="4.6" fill="#f59e0b" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="142.1" y="516.1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="600" fill="#f59e0b">BM17 Nasal EVs (trophic)</text>
+  <circle cx="135.1" cy="544.9" r="4.6" fill="#f59e0b" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="142.1" y="547.9" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="600" fill="#f59e0b">BM04 tDCS (&lt;0.01)</text>
+  <circle cx="273.9" cy="366.0" r="4.6" fill="#22d3ee" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="280.9" y="369.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="600" fill="#22d3ee">BM06 Stentrode</text>
+  <circle cx="351.0" cy="215.3" r="4.6" fill="#f59e0b" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="344.0" y="218.3" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="600" fill="#f59e0b" text-anchor="end">BM13 Cochlear (20-40)</text>
+  <circle cx="376.7" cy="233.1" r="4.6" fill="#22d3ee" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="369.7" y="237.1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="600" fill="#22d3ee" text-anchor="end">BM07 ECoG (~19 b/s)</text>
+  <circle cx="366.4" cy="312.7" r="4.6" fill="#f59e0b" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="373.4" y="315.7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="600" fill="#f59e0b">BM14 Argus/PRIMA</text>
+  <circle cx="381.8" cy="346.4" r="4.6" fill="#10b981" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="388.8" y="349.4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="700" fill="#10b981">BM12 aDBS (PD RCT)</text>
+  <circle cx="484.6" cy="241.5" r="4.6" fill="#22d3ee" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="491.6" y="245.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="600" fill="#22d3ee">BM08 Utah (~15 b/s)</text>
+  <circle cx="479.5" cy="267.7" r="4.6" fill="#10b981" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="486.5" y="271.7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="700" fill="#10b981">BM09 M1+S1 ICMS</text>
+  <circle cx="484.6" cy="291.1" r="4.6" fill="#22d3ee" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="491.6" y="295.1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="600" fill="#22d3ee">BM10 Threads (4-10)</text>
+  <circle cx="479.5" cy="403.5" r="4.6" fill="#10b981" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="486.5" y="406.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="700" fill="#10b981">BM15 Rat BBI (0.1-0.5)</text>
+  <circle cx="572.0" cy="190.9" r="4.6" fill="#10b981" stroke="#0b1120" stroke-width="1.30"/>
+  <text x="565.0" y="185.9" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="700" fill="#10b981" text-anchor="end">BM11 Optogenetics</text>
+  <circle cx="566.9" cy="168.5" r="4.6" fill="#a78bfa" stroke="#f8fafc" stroke-width="1.30"/>
+  <text x="559.9" y="172.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.9" font-weight="700" fill="#a78bfa" text-anchor="end">BM18 Gated N-Mind [S]</text>
+  <rect x="44.0" y="584.0" width="568.0" height="62.0" rx="8.0" fill="#0f172a" stroke="#a78bfa" stroke-width="1.30"/>
+  <text x="58.0" y="605.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.8" font-weight="800" fill="#a78bfa">KEY ASYMMETRY &amp; SOVEREIGNTY BOUNDARY (CTA-T29 TO CTA-T31):</text>
+  <text x="58.0" y="623.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="400" fill="#e2e8f0">• Readout reaches ~15-19 bit/s (BM07/08), while multi-brain BrainNet is ~0.05 bit/s.</text>
+  <text x="58.0" y="640.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="400" fill="#10b981">• Every future write-in bridge MUST enforce local hardware opt-in g_i(s_i, m) = 1.</text>
+  <rect x="644.0" y="82.0" width="528.0" height="578.0" rx="12.0" fill="#111827" stroke="#f59e0b" stroke-width="1.50"/>
+  <text x="660.0" y="107.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="13.0" font-weight="800" fill="#f8fafc">B · Paracrine &amp; EV Translational Funnel (EV01–EV16)</text>
+  <text x="660.0" y="125.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.8" font-weight="400" fill="#94a3b8">16 primary studies audited vs. mandatory clinical efficacy gap (CA-H8)</text>
+  <rect x="662.0" y="146.0" width="492.0" height="116.0" rx="9.0" fill="#0f172a" stroke="#10b981" stroke-width="1.60"/>
+  <text x="908.0" y="167.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="800" fill="#10b981" text-anchor="middle">STAGE 1 · 16 / 16 REPLICATED PRECLINICAL STUDIES [E]</text>
+  <text x="676.0" y="188.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#e2e8f0">• Renal &amp; Senescence (EV01,07,08,13-15): RNase-sensitive mRNA;</text>
+  <text x="676.0" y="206.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#cbd5e1">  eNAMPT/GSTM2/PGC-1a (+12.4% aged mouse median lifespan).</text>
+  <text x="676.0" y="224.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#e2e8f0">• Stroke, Status Epilepticus &amp; TBI (EV02-04,11,16): MSC/hNSC EVs.</text>
+  <text x="676.0" y="242.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#e2e8f0">• AD, PD &amp; Autism Models (EV05,06,09,10,12): 3xTg/5XFAD/Shank3B.</text>
+  <line x1="908.0" y1="262.0" x2="908.0" y2="280.0" stroke="#10b981" stroke-width="2.20" marker-end="url(#arr-amber)"/>
+  <rect x="696.0" y="282.0" width="424.0" height="92.0" rx="9.0" fill="#0f172a" stroke="#22d3ee" stroke-width="1.60"/>
+  <text x="908.0" y="303.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="800" fill="#22d3ee" text-anchor="middle">STAGE 2 · 1 / 16 LARGE-ANIMAL GYRENCEPHALIC BRIDGE [E]</text>
+  <text x="710.0" y="324.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#e2e8f0">• Porcine Permanent MCAO Stroke (EV04 · Webb et al. 2018):</text>
+  <text x="710.0" y="342.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#cbd5e1">  IV hNSC-EVs reduced lesion volume &amp; white-matter loss.</text>
+  <text x="710.0" y="360.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#e2e8f0">• Remaining 15 / 16 studies are murine/rat/in-vitro models.</text>
+  <line x1="908.0" y1="374.0" x2="908.0" y2="392.0" stroke="#22d3ee" stroke-width="2.20" marker-end="url(#arr-amber)"/>
+  <rect x="724.0" y="394.0" width="368.0" height="112.0" rx="9.0" fill="#0f172a" stroke="#f59e0b" stroke-width="1.60"/>
+  <text x="908.0" y="415.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="800" fill="#f59e0b" text-anchor="middle">STAGE 3 · TRANSLATIONAL &amp; SAFETY BOTTLENECKS</text>
+  <text x="738.0" y="436.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#e2e8f0">• Nasal Anatomy: Human olfactory area ~3-5% vs ~50% rodent.</text>
+  <text x="738.0" y="454.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#e2e8f0">• Systemic Clearance: Heavy hepatic/splenic trapping of IV EVs.</text>
+  <text x="738.0" y="472.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#e2e8f0">• Oncogenic &amp; Lot Risk: ESC miR-290 proliferation; donor variance.</text>
+  <text x="738.0" y="490.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#e2e8f0">• Model Gap: Acute 6-OHDA / APP != sporadic human PD / AD.</text>
+  <line x1="908.0" y1="506.0" x2="908.0" y2="524.0" stroke="#f59e0b" stroke-width="2.20" marker-end="url(#arr-amber)"/>
+  <rect x="752.0" y="526.0" width="312.0" height="116.0" rx="9.0" fill="#0f172a" stroke="#f43f5e" stroke-width="1.60"/>
+  <text x="908.0" y="547.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="800" fill="#f43f5e" text-anchor="middle">STAGE 4 · 0 / 16 PHASE-III HUMAN CNS APPROVALS [S]</text>
+  <text x="766.0" y="568.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#e2e8f0">• 0 approved human neurodegenerative or cognitive EV therapies.</text>
+  <text x="766.0" y="586.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#e2e8f0">• CA-H8 Kill Gate: Double-blind GMP Phase-II/III human RCT</text>
+  <text x="766.0" y="604.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#cbd5e1">  must beat sham intranasal vehicle at p &lt; 0.01.</text>
+  <text x="766.0" y="622.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.2" font-weight="400" fill="#e2e8f0">• Zero clinical claims made in this study.</text>
+  <rect x="28.0" y="672.0" width="1144.0" height="32.0" rx="8.0" fill="#111827" stroke="#334155" stroke-width="1.20"/>
+  <text x="600.0" y="692.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="400" fill="#cbd5e1" text-anchor="middle">Catalog Sources: bci-sensing-modulation-matrix.csv (BM01-BM18) &amp; secretome-ev-evidence-ledger.csv (EV01-EV16) · Verified via Europe PMC DOIs/PMIDs</text>
+</svg>

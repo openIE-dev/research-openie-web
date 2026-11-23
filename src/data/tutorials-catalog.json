@@ -1,0 +1,261 @@
+{
+  "version": "1.0.0",
+  "storage_key": "oe-tutorials-v1",
+  "tracks": [
+    { "id": "all", "label": "All 10 Labs", "count": 10 },
+    { "id": "avalanche", "label": "Communication Avalanche (1–5)", "count": 5 },
+    { "id": "core", "label": "Core OpenIE Stack (6–10)", "count": 5 }
+  ],
+  "labs": [
+    {
+      "id": "lab-01-quorum-sepj", "number": 1, "track": "avalanche", "track_label": "Track A · Communication Avalanche",
+      "title": "Biological Thresholds: Quorum Sensing & SepJ Nanopore Isolation",
+      "subtitle": "Why lone bacteria go bankrupt without Hill cooperativity (n=4) and how Anabaena filaments seal injured neighbors in 50 ms.",
+      "study_id": "communication-avalanche", "paper_url": "/papers/communication-avalanche/", "tv_url": "/tv/?study=communication-avalanche", "figures_url": "/living/communication-avalanche/", "estimated_minutes": 6,
+      "key_concept": "Rational Hill cooperativity H_n(A/K) saves 95.49%–99.17% of secretome ATP at sub-quorum density while Ca2+-gated SepJ nanopores isolate lysed cells in <= 0.30 s (95.0% vs 0.0% survival).",
+      "predict": {
+        "question": "At sub-quorum density A/K = 0.20 with diffusive micro-eddies (sigma = 0.25 K), how often does a non-cooperative (n = 1) receptor falsely fire expensive secretome synthesis?",
+        "choices": [
+          { "label": "4.45% of cell cycles", "ok": false, "why": "4.45% requires a cooperative tetramer (n = 4), which suppresses sub-threshold noise wakes by 11.66x." },
+          { "label": "17.75% of cell cycles", "ok": false, "why": "17.75% corresponds to a LuxR-class dimer (n = 2). A monomeric n = 1 curve stays far steeper near zero." },
+          { "label": "51.90% of cell cycles (over half!)", "ok": true, "why": "Exact match (CA-M1: 1,038 / 2,000 cycles)! An n = 1 switch leaks 312.0 ATP/cycle at A/K = 0.20 and misfires on 51.90% of noisy cycles." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict the Threshold Leak", "prompt": "Commit to a quantitative intuition before touching the biophysical controls." },
+        { "step": 2, "kind": "break", "title": "Break the Naive Baseline", "prompt": "Set Hill Cooperativity n = 1 and SepJ = Ungated Lock-Open, then click 'Trigger Cell-0 Lysis' (or click Cell 0 on the filament) to watch metabolic drain to 0/20 survival.", "goal": "Observe n=1 ATP leak and <= 3/20 ungated filament collapse" },
+        { "step": 3, "kind": "repair", "title": "Engage Hill (n=4) + Ca2+ SepJ", "prompt": "Switch Cooperativity to n = 4 and SepJ Gate to 'Fast Ca2+ Plug (0.05 s)', then trigger Cell-0 Lysis to achieve >= 95% regulon ATP savings and 19/20 filament survival.", "goal": "Reach >= 95% ATP saved and >= 18/20 survival under active lysis" },
+        { "step": 4, "kind": "verify", "title": "Verify Empirical Receipt", "prompt": "Compare your live RK4 simulation receipt against pre-registered CA-M1 & CA-M2 results." }
+      ],
+      "verified_receipt": {
+        "suite": "CA-M1 & CA-M2 · QuorumRatchet.lean (CTA-T11..T15)", "headline": "95.49%–99.17% regulon ATP saved · 95.0% vs 0.0% SepJ survival",
+        "metrics": [["Sub-quorum ATP (n=1 -> n=4)", "312.0 -> 14.88 ATP (99.17% saved)"], ["Noise false wakes (2,000 trials)", "51.90% (n=1) -> 4.45% (n=4)"], ["20-cell RK4 filament survival", "19/20 (95.0% at 0.05 s) vs 0/20 ungated"], ["Formal verification", "Lean 4.36.0 · 0 sorry · seed 20261123"]]
+      }
+    },
+    {
+      "id": "lab-02-attested-orchestrator", "number": 2, "track": "avalanche", "track_label": "Track A · Communication Avalanche",
+      "title": "Stop the Avalanche: Attested Event-Driven Orchestration vs. Unattested Chat",
+      "subtitle": "Replace 1,000 Hz busy polling and 4-agent transcript bloat with eventfd wakeups, BLAKE3+Ed25519 envelopes, and SSP min-cost rerouting.",
+      "study_id": "communication-avalanche", "paper_url": "/papers/communication-avalanche/", "tv_url": "/tv/?study=communication-avalanche", "figures_url": "/living/communication-avalanche/", "estimated_minutes": 7,
+      "key_concept": "Zero-clock eventfd cuts 1%-duty socket energy by 2.21x (300.73 J -> 136.32 J), while 25.95 us BLAKE3+Ed25519 verification + SSP min-cost flow contains 200/200 Byzantine faults at 14.97x higher CpJ.",
+      "predict": {
+        "question": "On the 60-task CTA-E2 code-repair suite, what happens when a single model call is replaced by an unattested 4-agent chat ring (Planner -> Coder -> Reviewer -> Summarizer)?",
+        "choices": [
+          { "label": "Accuracy climbs to 100.0% with zero false commits", "ok": false, "why": "Without a deterministic verifier gate, extra chat rounds amplify commentary bloat rather than checking code execution." },
+          { "label": "Accuracy stays at 98.33% while using 4x tokens", "ok": false, "why": "It actually degrades! Conversational verbosity overflows the 1,000-token output window mid-function on 8 tasks." },
+          { "label": "Accuracy drops to 86.67% with 13.33% false commits at 5,710.77 J", "ok": true, "why": "Exact match (CTA-E2 Arm C)! Prompt tokens bloat 3.71x across hops, committing raw SyntaxErrors on 8/60 tasks." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict Transcript Avalanche", "prompt": "Predict what unverified multi-agent chat does to accuracy and joules." },
+        { "step": 2, "kind": "break", "title": "Trigger Byzantine Chat Bloat", "prompt": "Run '1,000 Hz Busy Poll' + 'Unattested 4-Agent Chat' and toggle 'Byzantine Poison Edge' (or click the primary DAG edge) to watch false commits propagate.", "goal": "Inject a Byzantine fault into the unattested 4-agent chat ring" },
+        { "step": 3, "kind": "repair", "title": "Wire eventfd + BLAKE3/Ed25519 + SSP", "prompt": "Enable 'Zero-Clock eventfd' and 'BLAKE3 + Ed25519 + SSP' while keeping Byzantine poison active to quarantine 100% of faults at 14.97x CpJ.", "goal": "Contain active Byzantine fault with eventfd + BLAKE3/Ed25519 + SSP" },
+        { "step": 4, "kind": "verify", "title": "Verify Empirical Receipt", "prompt": "Inspect Linux RAPL reported_j hardware receipts from CTA-E1, CTA-E2 (Task C3_20), and CTA-E3." }
+      ],
+      "verified_receipt": {
+        "suite": "CTA-E1..E3 · OrchestrationFlow.lean · Linux RAPL reported_j", "headline": "2.21x idle J saved · 59/60 (0 false commits) · 14.97x higher CpJ",
+        "metrics": [["1%-duty wakeup (CTA-E1)", "300.73 J (1 kHz poll) -> 136.32 J (eventfd, 2.21x)"], ["Edge check latency & cost", "25.95–37.39 us · 643–926 uJ per edge"], ["60-task repair (Arm C -> Arm D)", "86.67% (8 false) -> 98.33% (0 false, 14.97x CpJ)"], ["Byzantine fault injection (CTA-E3)", "200/200 forged/corrupted packets quarantined"]]
+      }
+    },
+    {
+      "id": "lab-03-ai-ratchet-winters", "number": 3, "track": "avalanche", "track_label": "Track A · Communication Avalanche",
+      "title": "Unfreezing AI Winters: The 1950–2026 Three-Phase Ratchet",
+      "subtitle": "Step through 1969, 1987, 2017–2024, and 2026 to see why missing any phase of (Externalize -> Gate -> Transform) stalls collective agency.",
+      "study_id": "communication-avalanche", "paper_url": "/papers/communication-avalanche/", "tv_url": "/tv/?study=communication-avalanche", "figures_url": "/living/communication-avalanche/", "estimated_minutes": 6,
+      "key_concept": "Unverified multi-hop chains decay exponentially as f^k (CTA-T2) and untyped blackboards stall at O(K*|B|) (CTA-T9); pairing expressive externalization with a sound gate and downward distillation locks in Q(t+1) >= Q(t).",
+      "predict": {
+        "question": "In a 1975 MYCIN-style rule chain or unverified agent pipeline with 92% per-step precision (f = 0.92), what is joint validity after k = 12 chained steps without an exact verifier?",
+        "choices": [
+          { "label": "92.00% (errors average out across steps)", "ok": false, "why": "Correlated or unverified errors compound rather than cancel across sequential inference hops (CTA-T1, CTA-T2)." },
+          { "label": "76.40% (linear 1.3% loss per hop)", "ok": false, "why": "Multiplicative fidelity follows f^k, decaying much faster than a mild linear slope." },
+          { "label": "36.77% (0.92^12 — nearly two-thirds invalid!)", "ok": true, "why": "Exact match (CTA-T2)! At f = 0.92 across k = 12 hops, 0.92^12 = 0.3677, explaining why unverified chains stall." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict Multi-Hop Drift", "prompt": "Calculate how fast unverified rule or prompt chains decay across hops." },
+        { "step": 2, "kind": "break", "title": "Reproduce AI Winter Stall", "prompt": "Select '1987 · MYCIN / Blackboard' with Sound Verifier Gate = OFF and Chain Depth k >= 12 to watch fidelity collapse below 40%.", "goal": "Drive unverified chain validity below 40% at k >= 12" },
+        { "step": 3, "kind": "repair", "title": "Complete the Three-Phase Ratchet", "prompt": "Select '2026 · Multi-Agent Blizzard' and enable BOTH 'Sound Verifier Gate (G)' and 'Downward Distillation (T)' to lock in monotonic Q(t+1) >= Q(t) ascent.", "goal": "Activate both Sound Gate (G) and Downward Distillation (T) on 2026 era" },
+        { "step": 4, "kind": "verify", "title": "Verify Empirical Receipt", "prompt": "Review the 76-year historical audit and Lean 4 ratchet theorems CTA-T1..T9." }
+      ],
+      "verified_receipt": {
+        "suite": "Section 4 Historical Audit · QuorumRatchet.lean (CTA-T1..T9)", "headline": "f^k unverified decay vs Q(t+1) >= Q(t) verified monotonic lock-in",
+        "metrics": [["1975 MYCIN 12-hop chain (f=0.92)", "0.92^12 = 36.77% joint validity (CTA-T2)"], ["1980 Hearsay-II blackboard", "O(K * |B|) unthresholded scheduler contention"], ["Gen-20 cultural retention (CA-M5)", "100.0% attested library vs 29.27% unverified"], ["2016–2026 verified ratchet", "admittedWeight = 0 on invalid proposals (CTA-T3)"]]
+      }
+    },
+    {
+      "id": "lab-04-digital-enzymatic", "number": 4, "track": "avalanche", "track_label": "Track A · Communication Avalanche",
+      "title": "Digital Enzymatic Engineering: Synthesizing the 10 Siloed AI Camps",
+      "subtitle": "Bridge LLM parsing, causal do-calculus, SMT synthesis, and Shape D / LUT6 crystallization across a < 1 mJ typed catalytic saddle.",
+      "study_id": "communication-avalanche", "paper_url": "/papers/communication-avalanche/", "tv_url": "/tv/?study=communication-avalanche", "figures_url": "/living/communication-avalanche/", "estimated_minutes": 8,
+      "key_concept": "Solo AI camps fail composite causal+integer tasks or pay 15.0 J repeatedly; a 643 uJ Digital Enzyme bridges C1->C7->C2->C10 (19.44 mJ) and crystallizes into DNULLMM1 (1.77 uJ) & LUT6 (12 pJ) for 43.69x CpJ.",
+      "predict": {
+        "question": "Across 800 incident episodes confounded by workload severity, naive pooled success is 79.00% for X=0 vs 68.25% for X=1. Under Pearl backdoor adjustment P(Y=1 | do(X)), which policy actually wins?",
+        "choices": [
+          { "label": "Policy X=0 wins by +10.75 percentage points", "ok": false, "why": "79.00% vs 68.25% is Simpson's paradox! Operators routed 77.5% (310/400) of X=1 runs onto Heavy incidents." },
+          { "label": "Both policies tie at 72.50% after stratification", "ok": false, "why": "In BOTH Light (90.00% vs 85.81%) and Heavy (61.94% vs 55.56%) strata, X=1 strictly outperforms X=0." },
+          { "label": "Policy X=1 wins by +5.29% (+295 / 5,580 exact lift)", "ok": true, "why": "Exact match (DES-10)! Backdoor adjustment gives 471/620 (75.97%) vs 986/1,395 (70.68%) = +5.29% favoring X=1." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Spot Simpson's Confounded Trap", "prompt": "Predict the true interventional causal lift before running the 10-camp workbench." },
+        { "step": 2, "kind": "break", "title": "Watch Solo Camps Fail or Burn 15 kJ", "prompt": "Run 'Solo C1 (Monolithic LLM)' across M = 1,000 arrivals to see pooled Simpson reversal and 15,000 J spend, or click solo C2 / C5 on the ring to see abstention.", "goal": "Observe Solo C1 15,000 J failure or Solo C2/C5 abstention at M >= 500" },
+        { "step": 3, "kind": "repair", "title": "Activate DES-10 Enzyme + Crystallization", "prompt": "Select 'DES-10 Digital Enzyme' and enable 'Downward Crystallization' at M = 1,000 to collapse total spend to 343.34 J (43.69x CpJ)!", "goal": "Achieve >= 40x CpJ with DES-10 + Downward Crystallization at M = 1,000" },
+        { "step": 4, "kind": "verify", "title": "Verify Empirical Receipt", "prompt": "Inspect the DES-10 10-camp pipeline and 1,000-arrival downward crystallization ledger." }
+      ],
+      "verified_receipt": {
+        "suite": "DES-10 Synthesis & Forcing Function (CTA-T23, CTA-T41, CTA-T45)", "headline": "15,000.00 J -> 343.34 J (43.69x CpJ) · +295/5,580 exact causal lift",
+        "metrics": [["Enzyme verification (E_1->7, E_7->2)", "643–651 uJ · 26.0 us BLAKE3+Ed25519+schema"], ["First-solve composite pipeline", "19.44 mJ (C1->C7->C2->C10, 0 state leaks)"], ["Break-even amortization N*", "N*_{3->2} = 1 repeat · N*_{2->1} = 4 hits"], ["1,000-arrival Zipf ledger", "343.34 J cascade vs 15,000 J monolithic (43.69x)"]]
+      }
+    },
+    {
+      "id": "lab-05-bci-consent-firewall", "number": 5, "track": "avalanche", "track_label": "Track A · Communication Avalanche",
+      "title": "Agency-Preserving Neural Interfaces: The CTA-T29 Consent Firewall",
+      "subtitle": "Enforce hardware opt-in consent and 30 uC/cm2 charge bounds between cortical neural interfaces and external AI co-processors.",
+      "study_id": "communication-avalanche", "paper_url": "/papers/communication-avalanche/", "tv_url": "/tv/?study=communication-avalanche", "figures_url": "/living/communication-avalanche/", "estimated_minutes": 6,
+      "key_concept": "Factored sovereignty s_i = (g_i, w_i) requires hardware-enforced local gate g_i(s_i, m) verifying signatures, zero volitional mutation (Delta g = 0), opt-in switch = 1, and |q_stim| <= 30.0 uC/cm2 (CTA-T29..T31).",
+      "predict": {
+        "question": "Under Lean 4 theorem CTA-T31, how many unconsented closed-loop write-back pulses (forcedStep) are required to falsify an operator's autonomy invariant I_1(s_1)?",
+        "choices": [
+          { "label": "At least 1,000 pulses due to cortical homeostasis", "ok": false, "why": "Without a local hardware gate, an over-charge or goal-mutating write-back alters state immediately on arrival." },
+          { "label": "Roughly 50 pulses over a 10-second window", "ok": false, "why": "CTA-T31 constructs an explicit single-step witness where forcedStep breaks I_1 immediately." },
+          { "label": "1 single unconsented packet with Delta g != 0 or q_stim > 30 uC/cm2", "ok": true, "why": "Exact match (CTA-T31)! Ungated broadcast mutates g_1 from (1,0,1,1) to (1,1,1,1) at 44.0 uC/cm2 in 1 step." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict Sovereignty Breach", "prompt": "Evaluate what separates assistive neural supplementation from coercive write-back." },
+        { "step": 2, "kind": "break", "title": "Trigger Ungated Cortical Override", "prompt": "Select 'Ungated Broadcast (forcedStep)', enable 'Adversarial Volitional Drift', and set Charge q_stim > 30 uC/cm2 to watch volitional state flip in 1 pulse.", "goal": "Trigger an autonomy/charge invariant breach in Ungated mode" },
+        { "step": 3, "kind": "repair", "title": "Engage Hardware CTA-T29 Firewall", "prompt": "Switch to 'CTA-T29 Hardware Consent Gate' (or click the firewall latch on canvas) to clamp adversarial pulses to 0 uC/cm2 with 0 autonomy violations.", "goal": "Block adversarial pulses with 0 autonomy violations under CTA-T29 Gate" },
+        { "step": 4, "kind": "verify", "title": "Verify Empirical Receipt", "prompt": "Review zero-axiom Lean 4 theorems CTA-T29..T31 and the 18-modality BM01–BM18 audit." }
+      ],
+      "verified_receipt": {
+        "suite": "Section 7 BM01–BM18 & EV01–EV16 · QuorumRatchet.lean (CTA-T29..T31)", "headline": "0 autonomy violations across arbitrary adversarial streams (0 Lean axioms)",
+        "metrics": [["Safe prosthetic packet m_1", "11.5 uC/cm2 · Delta g = 0 -> workspace w_1 updated"], ["Adversarial pulse m_2 (44 uC/cm2)", "Clamped to 0.0 uC/cm2 · g_1 = (1,0,1,1) preserved"], ["Kernel axiom footprint", "Lean 4.36.0 · 0 sorry · 0 axioms (CTA-T29..T31)"], ["Empirical modality synthesis", "18 BCI modalities (BM01–18) + 16 EV studies (EV01–16)"]]
+      }
+    },
+    {
+      "id": "lab-06-rce-world-coding", "number": 6, "track": "core", "track_label": "Track B · Core OpenIE Stack",
+      "title": "World Coding: RCE Total State Machines & FormEBM Repair",
+      "subtitle": "Refuse unhandled edge cases in 49.04 mJ, score candidate repairs with FormEBM-v3, and emit Rust, C++, and Wasm from one total Form.",
+      "study_id": "rce-jepa", "paper_url": "/papers/rce-jepa/", "tv_url": "/tv/?study=rce-jepa", "figures_url": "/living/rce-jepa/", "estimated_minutes": 7,
+      "key_concept": "Any proposer may suggest a Form, but the deterministic checker decides: rce check verifies totality in 49.04 mJ (1,718x cheaper than an 84.25 J 35B proposal) while span-normalized FormEBM-v3 ranks valid repairs at AUROC 0.9437.",
+      "predict": {
+        "question": "On Apple M5 Max (reported_j), how much less energy does one deterministic rce check verification (49.04 mJ) use than one local 35B neural repair proposal (84.25 J)?",
+        "choices": [
+          { "label": "Roughly 2x less energy", "ok": false, "why": "49.04 millijoules vs 84.25 joules spans more than three orders of magnitude!" },
+          { "label": "Roughly 25x less energy", "ok": false, "why": "84.25 J / 0.04904 J is far larger than 25x — deterministic checking sits in the millijoule regime." },
+          { "label": "1,718x less energy (0.000582 checker-to-proposer ratio)", "ok": true, "why": "Exact match (rce-jepa H2)! 0.04904 J / 84.25 J = 0.000582, making deterministic refusal ultra-cheap." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict Checker vs. Proposer Joules", "prompt": "Compare millijoule deterministic verification against multi-joule neural generation." },
+        { "step": 2, "kind": "break", "title": "Crash the Unhandled Transition", "prompt": "With 'rce check Gate = OFF' and 'Missing Timeout Edge', click 'Fire Timeout in Armed' (or click Armed on canvas) to trigger an unhandled runtime panic.", "goal": "Trigger runtime panic on the missing (Armed, Timeout) transition" },
+        { "step": 3, "kind": "repair", "title": "Admit FormEBM Top-1 Total Form", "prompt": "Enable 'rce check Gate (49.04 mJ)' and select 'FormEBM Top-1: Armed->FaultSafe (E=0.19)' to admit a total Form and route Timeout safely.", "goal": "Admit total Form via rce check + FormEBM Top-1 (E=0.19)" },
+        { "step": 4, "kind": "verify", "title": "Verify Empirical Receipt", "prompt": "Compare your repair trace against RCE and RCE-JEPA conformance receipts." }
+      ],
+      "verified_receipt": {
+        "suite": "RCE (T1..T63) & RCE-JEPA (H2, H5, H11, H15-Iterative)", "headline": "49.04 mJ rce check · FormEBM-v3 AUROC 0.9437 · 0/10,500 target mismatches",
+        "metrics": [["Checker vs 35B proposer (H2)", "49.04 mJ vs 84.25 J (ratio 0.000582 · 1,718x)"], ["FormEBM-v3 scorer (6.05M)", "AUROC 0.9437 · 94.0% H11 strict monotonicity"], ["Cross-target emission parity", "0 mismatches on 10,500 streams across 6 targets"], ["H15-Iterative bounded repair", "40/40 (100.0%, 0 contradictions) · 1.771 uJ warm replay"]]
+      }
+    },
+    {
+      "id": "lab-07-deterministic-null", "number": 7, "track": "core", "track_label": "Track B · Core OpenIE Stack",
+      "title": "Shape D & Zipf Crystallization: The Pre-Registered Null",
+      "subtitle": "Stream Zipf(0.85) tasks against a 64-bit canonical case store (DNULLMM1) to separate true open-world reasoning from repeated work.",
+      "study_id": "deterministic-null", "paper_url": "/papers/deterministic-null/", "tv_url": "/tv/?study=deterministic-null", "figures_url": "/living/deterministic-null/", "estimated_minutes": 6,
+      "key_concept": "Bounded formal classes show zero single-turn increment over Shape D on 9/10 Track-A cells, while online verified crystallization cuts frontier calls and reported_j by 3.59x–16.67x under Zipfian skew.",
+      "predict": {
+        "question": "Under a skewed Zipf(0.85) task stream, what happens if an agent caches raw LLM outputs into a fast lookup table WITHOUT a sound deterministic verifier?",
+        "choices": [
+          { "label": "Energy drops 10x with 100% accuracy", "ok": false, "why": "Caching without verification locks in early hallucinations alongside valid solves." },
+          { "label": "Cache misses force 100% frontier calls anyway", "ok": false, "why": "Zipf(0.85) has heavy head repetition — the cache hits frequently, amplifying whatever was stored first!" },
+          { "label": "One early hallucination poisons every future hit on that hot class", "ok": true, "why": "Exact match! Only verified admission (verifier pass = true) turns Zipfian repetition into zero-contradiction reuse." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict Unverified Cache Risk", "prompt": "Reason through why crystallization requires a deterministic commit gate." },
+        { "step": 2, "kind": "break", "title": "Burn Frontier Joules or Poison Cache", "prompt": "Run 'Frontier Every Time' (paying full joules on all 200 arrivals) or switch Admission Gate to 'Unverified Raw Cache' to watch poisoned hot-class hits accumulate.", "goal": "Observe >= 100 frontier calls or >= 5 poisoned cache hits" },
+        { "step": 3, "kind": "repair", "title": "Engage Verified Shape D Crystallization", "prompt": "Select 'Shape D + Online Crystallization' with 'Sound Deterministic Verifier' at Zipf skew s >= 0.85 to achieve 16.67x frontier call reduction with 0 poisoned hits!", "goal": "Achieve >= 3.59x call reduction with 0 poisoned hits via Verified Shape D" },
+        { "step": 4, "kind": "verify", "title": "Verify Empirical Receipt", "prompt": "Inspect Bitcoin-anchored (OpenTimestamps + drand) Deterministic Null receipts." }
+      ],
+      "verified_receipt": {
+        "suite": "Deterministic Null (drand 6663734/6664089) & RCE-JEPA 3-Gear Stream", "headline": "9/10 bounded formal cells Delta = 0 · 3.59x–16.67x Zipf call reduction",
+        "metrics": [["Pre-registration & cross-lang parity", "Bit-exact Rust, C++20, Go, Julia, Python (4,030 tasks)"], ["Bounded Track-A single-turn null", "9/10 cells exclude neural gain; O(m) closes 3-SAT 50/50"], ["External public suites (Zipf)", "3.59x call & reported_j reduction via crystallization"], ["200-arrival Zipf(0.85) RCE stream", "200/200 admitted · 16.67x frontier cut · 1.771 uJ warm"]]
+      }
+    },
+    {
+      "id": "lab-08-game-lockstep", "number": 8, "track": "core", "track_label": "Track B · Core OpenIE Stack",
+      "title": "Writing a Game Once: Q32.32 Lockstep vs. 3-OS Float Divergence",
+      "subtitle": "Watch macOS, Linux, and Windows 11 split from a 1-ULP std::sin rounding seed at ticks 10–37, then lock all three to bit-exact Q32.32 replay.",
+      "study_id": "game-engines", "paper_url": "/papers/game-engines/", "tv_url": "/tv/?study=game-engines", "figures_url": "/living/game-engines/", "estimated_minutes": 7,
+      "key_concept": "IEEE-754 leaves transcendental functions implementation-defined: 3-OS std::sin diverges at ticks 10–37 and amplifies exponentially (Lyapunov R^2 >= 0.994), whereas Q32.32 fixed-point yields 0/25,500 SHA-256 mismatches.",
+      "predict": {
+        "question": "When identical C++/Rust orbital code calls standard-library std::sin in IEEE-754 float64 on macOS (libSystem), Linux (glibc), and Windows 11 (UCRT), when does the first cross-OS bit mismatch appear?",
+        "choices": [
+          { "label": "Never — IEEE-754 guarantees bit-exact sin() everywhere", "ok": false, "why": "IEEE-754 mandates exact rounding for +, -, *, /, sqrt, and FMA — transcendental math libraries remain only faithfully rounded (~0.5–1 ULP)." },
+          { "label": "Only after ~1,000,000 ticks of accumulated drift", "ok": false, "why": "The first 1-ULP libm discrepancy appears almost immediately and chaos amplifies it exponentially." },
+          { "label": "Between ticks 10 and 37 (with FMA split at tick 192)", "ok": true, "why": "Exact match (GE-H2)! Apple libSystem, Linux glibc, and Windows UCRT diverge at ticks 10–37, then separate along exp(lambda * t)." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict Cross-OS Float Split", "prompt": "Test your intuition on IEEE-754 transcendental reproducibility across OS libraries." },
+        { "step": 2, "kind": "break", "title": "Trigger Tick 10–37 3-OS Divergence", "prompt": "Run 'IEEE-754 float64 + OS std::sin' past tick 40 to watch macOS, Linux, and Windows 11 trajectories split along Lyapunov slope lambda > 0.", "goal": "Observe 3-OS SHA-256 digest mismatch and visual trajectory split" },
+        { "step": 3, "kind": "repair", "title": "Lock All 3 OSs with Q32.32 Fixed-Point", "prompt": "Switch Arithmetic to 'Q32.32 Fixed-Point RCE Form' and run past tick 60 to verify 0 SHA-256 checkpoint mismatches across macOS, Linux, and Windows 11.", "goal": "Run Q32.32 Fixed-Point past tick 60 with 0 cross-OS mismatches" },
+        { "step": 4, "kind": "verify", "title": "Verify Empirical Receipt", "prompt": "Compare against GE-H1..H9 multi-OS hardware receipts across 6 machines." }
+      ],
+      "verified_receipt": {
+        "suite": "Writing a Game Once · Falsifier Suites GE-H1 to GE-H9", "headline": "0/25,500 Q32.32 SHA-256 mismatches vs tick 10–37 3-OS std::sin split",
+        "metrics": [["Q32.32 lockstep (GE-H1, 6 hosts)", "100,000 ticks x 64 bodies -> 0/25,500 SHA-256 diffs"], ["3-OS std::sin & FMA split (GE-H2)", "Ticks 10–37 (libSystem/glibc/UCRT) · Tick 192 (FMA)"], ["Chaotic Lyapunov scaling (GE-H7)", "840 runs · linear t* vs ln(Delta/d0) R^2 = 0.9940–0.9995"], ["1-hour replay logs (GE-H8)", "216,000 ticks from 44.6 KB gzip -> 0/6,480 diffs"]]
+      }
+    },
+    {
+      "id": "lab-09-lut6-benes", "number": 9, "track": "core", "track_label": "Track B · Core OpenIE Stack",
+      "title": "Downward LUT6 Compilation & Single-Cycle Beneš Fabrics",
+      "subtitle": "Route Boolean features through a 6-wire Beneš switch and conformal wake gate in front of a 4-bit NVMe-streamed 35B sparse-MoE model.",
+      "study_id": "lut-adapt", "paper_url": "/papers/lut-adapt/", "tv_url": "/tv/?study=lut-adapt", "figures_url": "/living/lut-adapt/", "estimated_minutes": 7,
+      "key_concept": "Placing Beneš-routed LUT6 lookup + conformal wake gates in front of Qwen3.6-35B-A3B resolves 77.08% of tasks without waking 35B, achieves 0.00% broken commits, and compiles wakes into 0.0424 J 81-RAMB36E2 pages.",
+      "predict": {
+        "question": "In the lut-adapt 48-task verified coding bakeoff, once fast tiers and conformal wake gates sit in front of Qwen3.6-35B-A3B (6.773 J/tok), what share of tasks actually wake the 35B model?",
+        "choices": [
+          { "label": "100.0% — smaller tiers only draft tokens for 35B", "ok": false, "why": "Mixture of Limits is not speculative decoding: lower tiers settle verified tasks outright without touching 35B!" },
+          { "label": "68.75% — roughly two-thirds still require 35B", "ok": false, "why": "Conformal gating plus downward compilation settles over three-quarters of queries before the 35B tier." },
+          { "label": "Only 22.92% (77.08% resolve without waking 35B, 0% broken commits)", "ok": true, "why": "Exact match (lut-adapt)! 42/48 (87.50%) pass deterministic verification with only 22.92% 35B calls and 0.0424 J Wave-3 replay." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict 35B Wake Fraction", "prompt": "Estimate how many queries need a 35B model behind a conformal LUT6 cascade." },
+        { "step": 2, "kind": "break", "title": "Over-Wake the 35B Sparse-MoE Tier", "prompt": "Set Conformal Wake Gate tau >= 0.85 with 'Downward 81-RAMB36E2 Compile = OFF' to watch 35B wake energy surge past 35 J.", "goal": "Trigger >= 80% 35B wake rate with Downward Compile OFF" },
+        { "step": 3, "kind": "repair", "title": "Tune Conformal Gate + 81-RAMB36E2 Compile", "prompt": "Tune tau <= 0.35 and enable 'Downward 81-RAMB36E2 Compile' (click x0..x5 wires on canvas to inspect Beneš routing) to cut 35B wakes to <= 25%!", "goal": "Keep 35B wakes <= 25% with Downward 81-RAMB36E2 Compile ON" },
+        { "step": 4, "kind": "verify", "title": "Verify Empirical Receipt", "prompt": "Inspect lut-adapt coding bakeoff, Metal INT4 streaming, and xck26 RTL receipts." }
+      ],
+      "verified_receipt": {
+        "suite": "Downward LUT6 Compilation (openIE-dev/lut-adapt-ai @ af152ba)", "headline": "87.50% (42/48) verified · 22.92% 35B wakes · 0.0424 J Wave-3 replay",
+        "metrics": [["48-task verified coding bakeoff", "42/48 (87.50%) · 0.00% broken commits · 22.92% 35B"], ["Compiled Wave-3 replay cost", "2.89 ms wall · 0.0424 J reported_j (81-RAMB36E2)"], ["Metal INT4 35B NVMe streaming", "970.0 MB RAM (1.47% FP16) · 6.773 J/tok · 100% parity"], ["Hardware fabric synthesis", "Yosys/Verilator xck26 Beneš + Sub1Bit-LUT6 zero-MAC"]]
+      }
+    },
+    {
+      "id": "lab-10-time-index", "number": 10, "track": "core", "track_label": "Track B · Core OpenIE Stack",
+      "title": "Time as an Index: Hellman Tables, Precomputation & Salted Horizons",
+      "subtitle": "Slide memory M against online time T along T*M^2 = N^2 to see why precomputation pays O(N) upfront—and how a 128-bit salt zeroes it out.",
+      "study_id": "time-as-an-index", "paper_url": "/papers/time-as-an-index/", "tv_url": "/tv/?study=time-as-an-index", "figures_url": "/living/time-as-an-index/", "estimated_minutes": 6,
+      "key_concept": "In known physics nothing reads tomorrow early: Hellman tables trade online steps T = N^2/M^2 against O(N) offline precomputation energy, and a fresh 128-bit salt (Horizon.lean) renders pre-query chains 100% useless.",
+      "predict": {
+        "question": "Under Hellman's cryptanalytic tradeoff T * M^2 = N^2, if precomputed rainbow chains cut online inversion time T by 1,000x, how much hash work was paid offline to build the table?",
+        "choices": [
+          { "label": "1,000x less than N total hash evaluations", "ok": false, "why": "Shrinking online T requires covering the state space with m * t ~= N offline hash evaluations beforehand!" },
+          { "label": "Zero offline hashes — reduction functions index states algebraically", "ok": false, "why": "Cryptographic hashes behave pseudorandomly (0 spectral bins below p = 10^-6 across 65,536 SHA-256 digests); chains must be computed." },
+          { "label": "At least O(N) hash evaluations paid upfront before the query existed", "ok": true, "why": "Exact match (Horizon.lean)! Every fast lookup is sequential energy paid yesterday—and a fresh salt invalidates it." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict Offline Energy Debt", "prompt": "Distinguish true future lookup from upfront precomputation amortization." },
+        { "step": 2, "kind": "break", "title": "Invert an Unsalted Target via Rainbow Chains", "prompt": "Set Salt = '0-bit Unsalted', raise Table Memory log2(M) >= 11, and click 'Launch Rainbow Lookup' to intercept and invert the unsalted hash.", "goal": "Intercept and invert an unsalted target with high-memory rainbow chains" },
+        { "step": 3, "kind": "repair", "title": "Inject a 128-bit Salted Horizon", "prompt": "Switch Salt to '128-bit Fresh Salt H_s(x)' to watch precomputed unsalted chains miss 100.0% of the post-salt domain!", "goal": "Drop rainbow table hit rate to 0.0% using a 128-bit fresh salt" },
+        { "step": 4, "kind": "verify", "title": "Verify Empirical Receipt", "prompt": "Review the 31 Lean 4.36.0 theorems (Horizon.lean & Paradox.lean) and SHA-256 spectral audit." }
+      ],
+      "verified_receipt": {
+        "suite": "Time as an Index · Horizon.lean & Paradox.lean (31 Lean 4 Theorems)", "headline": "T*M^2 = N^2 upfront O(N) work · 100% pre-table miss under 128-bit salt",
+        "metrics": [["Formal kernel proofs", "31 Lean 4.36.0 theorems · 0 sorry (Horizon & Paradox)"], ["SHA-256 spectral audit (M1–M8, F5)", "N = 65,536 digests · 0 bins below corrected p = 10^-6"], ["Unsalted Hellman tradeoff", "Online T = N^2 / M^2 paid by O(N) pre-query hashes"], ["128-bit salted horizon H_s(x)", "Pre-query table coverage < 2^-128 (0.0% hit rate)"]]
+      }
+    }
+  ]
+}

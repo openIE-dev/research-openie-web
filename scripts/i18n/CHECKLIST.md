@@ -24,6 +24,7 @@ States: abstract = title and abstract only (complete: false); full = whole text 
 | three-body | full | full | full | full | full | full | full | full |
 | ai-reads-human | full | full | full | full | full | full | full | full |
 | spellcheck | full | full | full | full | full | full | full | full |
+| communication-avalanche | full | full | full | full | full | full | full | full |
 
 ## Deploy rule
 

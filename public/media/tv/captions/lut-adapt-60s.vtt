@@ -1,0 +1,42 @@
+WEBVTT
+NOTE OpenIE Research TV — lut-adapt (60s) AI-synthesized studio narration
+
+1
+00:00:00.552 --> 00:00:02.936
+Edge workstations face twin bottlenecks:
+
+2
+00:00:02.936 --> 00:00:08.360
+huge static weight footprints and re-running billion-parameter attention on recurring bugs.
+
+3
+00:00:09.497 --> 00:00:13.954
+A reconfigurable 6-input truth-table tier and conformal wake gate
+
+4
+00:00:13.954 --> 00:00:18.136
+escalate only novel tasks to NVMe-streamed sparse MoE models.
+
+5
+00:00:19.273 --> 00:00:24.305
+Bypassing OS page-cache illusions with Darwin F_NOCACHE and
+
+6
+00:00:24.305 --> 00:00:29.082
+custom INT4 GatedDeltaNet shaders cuts NVMe reads 12.3x.
+
+7
+00:00:30.218 --> 00:00:36.755
+Deterministic commit gates achieve 87.5 percent verified pass on both coding
+
+8
+00:00:36.755 --> 00:00:41.829
+suites while calling the 35B tier on 22.9 percent of tasks.
+
+9
+00:00:42.966 --> 00:00:47.539
+Synthesized xck26 RTL maps 81 RAMB36E2 blocks,
+
+10
+00:00:47.539 --> 00:00:54.895
+with host joules reported honestly as reported_j and RTL analytical est_j.

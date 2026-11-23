@@ -1,0 +1,34 @@
+WEBVTT
+NOTE OpenIE Research TV — lut-adapt (30s) AI-synthesized studio narration
+
+1
+00:00:00.300 --> 00:00:03.937
+Running a 35-billion-parameter coding model normally demands tens
+
+2
+00:00:03.937 --> 00:00:06.622
+of gigabytes of wired GPU memory on every query.
+
+3
+00:00:07.102 --> 00:00:10.722
+Downward LUT6 Compilation places Beneš-routed lookup fabrics and
+
+4
+00:00:10.722 --> 00:00:14.229
+conformal wake gates in front of NVMe-streamed sparse experts.
+
+5
+00:00:14.709 --> 00:00:18.860
+Custom Apple Metal INT4 shaders stream Qwen 3.6 35B in 970
+
+6
+00:00:18.860 --> 00:00:23.656
+megabytes at 100 percent token parity and 87.5 percent coding pass.
+
+7
+00:00:24.136 --> 00:00:27.256
+Once a frontier wake passes pytest verification,
+
+8
+00:00:27.256 --> 00:00:30.765
+it compiles into canonical skill and xck26 LUT6 pages.

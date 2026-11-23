@@ -1,0 +1,285 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="cta-fig1-title cta-fig1-desc" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="cta-fig1-title">The Communication Tool Avalanche across biological evolution, pre-registered ratchet models, and neural interface gating</title>
+  <desc id="cta-fig1-desc">Three-band synthesis diagram on a dark canvas. Band A shows the conserved Externalize, Threshold-and-Verify, and Transform-and-Lock operator alongside six escalation epochs from 3.8 billion years ago to attested orchestration graphs and predicted agency-preserving brain-computer interfaces. Band B plots exact outputs from executed models CA-M1 through CA-M5 (seed 20261123): cooperative Hill quorum ATP savings (95.5% for n=2, 99.2% for n=4) and SepJ nanopore survival (95.0% vs 0.0% ungated); topological k=7 flock cohesion (100.0% vs 0.7%-4.3% metric) and Physarum shortest-path selection (100.0% flux for mu &gt; 1); and 20-generation cultural ratchet retention after demonstrator removal at generation 5 (100.0% attested library vs 76.3% prestige imitation, 29.3% unverified imitation, and 0.0% baseline). Band C maps the transition from read-only sensing to closed-loop modulation, preclinical extracellular vesicles, and opt-in N-mind bridging proved in Lean 4 theorems T29 to T31.</desc>
+
+  <defs>
+    <marker id="arr-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arr-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#34d399"/>
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#fbbf24"/>
+    </marker>
+    <marker id="arr-rose" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f472b6"/>
+    </marker>
+    <marker id="arr-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- Outer Dark Frame -->
+  <rect x="1" y="1" width="1198" height="678" rx="18" fill="#0b1120" stroke="#334155" stroke-width="2"/>
+
+  <!-- Header -->
+  <text x="32" y="40" font-size="21.5" font-weight="800" fill="#f8fafc">The Communication Tool Avalanche: Conserved Ratchet, Models (CA-M1 to CA-M5), and BCI Horizon</text>
+  <text x="32" y="64" font-size="12.8" fill="#94a3b8">3.8-Ga biological externalization ladder [E], Lean 4.36.0 kernel proofs (31 theorems, 0 sorry) [T], and pre-registered simulations (seed = 20261123, board_metered = false) [M]</text>
+  <rect x="1034" y="18" width="134" height="30" rx="15" fill="#111827" stroke="#38bdf8" stroke-width="1.8"/>
+  <text x="1101" y="38" font-size="12.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Synthesis + [M]</text>
+
+  <!-- ======================================================================= -->
+  <!-- BAND A: Conserved Operator + 3.8-Ga Escalation Timeline (y = 82..232)   -->
+  <!-- ======================================================================= -->
+  <rect x="28" y="82" width="424" height="148" rx="12" fill="#111827" stroke="#334155" stroke-width="1.6"/>
+  <text x="44" y="104" font-size="12.5" font-weight="800" fill="#e2e8f0">A1 · CONSERVED RATCHET OPERATOR (LEAN T1 TO T6, T23)</text>
+
+  <!-- 3 Operator Boxes -->
+  <rect x="42" y="118" width="114" height="58" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8"/>
+  <text x="99" y="138" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">1. Externalize</text>
+  <text x="99" y="154" font-size="10.2" fill="#cbd5e1" text-anchor="middle">Molecule · Trail</text>
+  <text x="99" y="168" font-size="10.2" fill="#94a3b8" text-anchor="middle">Symbol · Payload</text>
+
+  <path d="M156 147 L174 147" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arr-cyan)"/>
+
+  <rect x="178" y="118" width="124" height="58" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.8"/>
+  <text x="240" y="138" font-size="12" font-weight="700" fill="#fbbf24" text-anchor="middle">2. Gate &amp; Ingest</text>
+  <text x="240" y="154" font-size="10.2" fill="#cbd5e1" text-anchor="middle">Sum w &gt;= theta</text>
+  <text x="240" y="168" font-size="10.2" fill="#94a3b8" text-anchor="middle">BLAKE3 + Verifier</text>
+
+  <path d="M302 147 L320 147" stroke="#fbbf24" stroke-width="2" fill="none" marker-end="url(#arr-amber)"/>
+
+  <rect x="324" y="118" width="114" height="58" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.8"/>
+  <text x="381" y="138" font-size="12" font-weight="700" fill="#34d399" text-anchor="middle">3. Transform</text>
+  <text x="381" y="154" font-size="10.2" fill="#cbd5e1" text-anchor="middle">Non-regression</text>
+  <text x="381" y="168" font-size="10.2" fill="#94a3b8" text-anchor="middle">Q(t+1) &gt;= Q(t)</text>
+
+  <!-- Feedback Crystallization Arc -->
+  <path d="M381 176 L381 206 L99 206 L99 180" stroke="#34d399" stroke-width="1.6" stroke-dasharray="5,3" fill="none" marker-end="url(#arr-emerald)"/>
+  <text x="240" y="220" font-size="10.5" font-weight="600" fill="#34d399" text-anchor="middle">Shared memory &amp; downward kernel crystallization (T6, T23)</text>
+
+  <!-- Right Panel: 3.8-Ga Escalation Ladder -->
+  <rect x="468" y="82" width="704" height="148" rx="12" fill="#111827" stroke="#334155" stroke-width="1.6"/>
+  <text x="484" y="104" font-size="12.5" font-weight="800" fill="#e2e8f0">A2 · 24-RUNG EXTERNALIZATION LADDER (CL01 TO CL24)</text>
+
+  <!-- 6 Epoch Cards -->
+  <rect x="482" y="118" width="104" height="96" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="534" y="135" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">~3.8-3.5 Ga [E]</text>
+  <text x="534" y="151" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">EVs &amp; Quorum</text>
+  <text x="534" y="167" font-size="9.6" fill="#cbd5e1" text-anchor="middle">LuxI/LuxR Hill</text>
+  <text x="534" y="181" font-size="9.6" fill="#94a3b8" text-anchor="middle">~300-600 / 5,570</text>
+  <text x="534" y="195" font-size="9.6" fill="#34d399" text-anchor="middle">genes gated</text>
+
+  <rect x="596" y="118" width="104" height="96" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="648" y="135" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">~3.4-0.54 Ga [E]</text>
+  <text x="648" y="151" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">Pores &amp; Tissue</text>
+  <text x="648" y="167" font-size="9.6" fill="#cbd5e1" text-anchor="middle">SepJ · cAMP · Ca2+</text>
+  <text x="648" y="181" font-size="9.6" fill="#94a3b8" text-anchor="middle">80% ancestral;</text>
+  <text x="648" y="195" font-size="9.6" fill="#34d399" text-anchor="middle">20% secreted</text>
+
+  <rect x="710" y="118" width="104" height="96" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="762" y="135" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">~400-15 Ma [E]</text>
+  <text x="762" y="151" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">Stigmergy</text>
+  <text x="762" y="167" font-size="9.6" fill="#cbd5e1" text-anchor="middle">Physarum tubes</text>
+  <text x="762" y="181" font-size="9.6" fill="#94a3b8" text-anchor="middle">Starlings k ~ 7</text>
+  <text x="762" y="195" font-size="9.6" fill="#34d399" text-anchor="middle">EOD &amp; whistles</text>
+
+  <rect x="824" y="118" width="104" height="96" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="876" y="135" font-size="10" font-weight="700" fill="#fbbf24" text-anchor="middle">300 ka-1995 [E]</text>
+  <text x="876" y="151" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">Human Proxy</text>
+  <text x="876" y="167" font-size="9.6" fill="#cbd5e1" text-anchor="middle">Speech 39 bit/s</text>
+  <text x="876" y="181" font-size="9.6" fill="#94a3b8" text-anchor="middle">Writing · Print</text>
+  <text x="876" y="195" font-size="9.6" fill="#fbbf24" text-anchor="middle">TCP/IP &amp; Git CI</text>
+
+  <rect x="938" y="118" width="104" height="96" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.8"/>
+  <text x="990" y="135" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">2017-2026 [E/T]</text>
+  <text x="990" y="151" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">Digital Hive</text>
+  <text x="990" y="167" font-size="9.6" fill="#cbd5e1" text-anchor="middle">Sparse MoE +</text>
+  <text x="990" y="181" font-size="9.6" fill="#94a3b8" text-anchor="middle">Attested DAGs</text>
+  <text x="990" y="195" font-size="9.6" fill="#34d399" text-anchor="middle">CpJ = Q / E</text>
+
+  <rect x="1052" y="118" width="106" height="96" rx="8" fill="#0f172a" stroke="#f472b6" stroke-width="1.8" stroke-dasharray="5,3"/>
+  <text x="1105" y="135" font-size="10" font-weight="700" fill="#f472b6" text-anchor="middle">Horizon [S]</text>
+  <text x="1105" y="151" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">Analog Hive</text>
+  <text x="1105" y="167" font-size="9.6" fill="#cbd5e1" text-anchor="middle">Read-Write BCI</text>
+  <text x="1105" y="181" font-size="9.6" fill="#94a3b8" text-anchor="middle">Opt-in g_i = 1</text>
+  <text x="1105" y="195" font-size="9.6" fill="#f472b6" text-anchor="middle">N-mind bridge</text>
+
+  <!-- ======================================================================= -->
+  <!-- BAND B: Executed Simulation Suite CA-M1 .. CA-M5 (y = 244..470)         -->
+  <!-- ======================================================================= -->
+
+  <!-- Panel B1: CA-M1 Hill Quorum & CA-M2 SepJ Containment -->
+  <rect x="28" y="244" width="368" height="224" rx="12" fill="#111827" stroke="#334155" stroke-width="1.6"/>
+  <text x="44" y="266" font-size="12.2" font-weight="800" fill="#e2e8f0">B1 · CA-M1 QUORUM ATP &amp; CA-M2 SEPJ GATE [M]</text>
+  <text x="44" y="283" font-size="10.4" fill="#94a3b8">Regulon activation H_n(rho) across density rho / rho_K</text>
+
+  <!-- Plot box B1: x=68..372 (w=304), y=294..406 (h=112) -->
+  <rect x="68" y="294" width="304" height="112" fill="#0b1120" stroke="#1e293b" stroke-width="1.2"/>
+  <!-- Threshold vertical line rho/rho_K = 1.0 at x = 68 + 76 = 144 -->
+  <line x1="144" y1="294" x2="144" y2="406" stroke="#475569" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="144" y="419" font-size="9.5" fill="#94a3b8" text-anchor="middle">rho_K=1</text>
+  <text x="68" y="419" font-size="9.5" fill="#64748b" text-anchor="middle">0</text>
+  <text x="220" y="419" font-size="9.5" fill="#64748b" text-anchor="middle">2.0</text>
+  <text x="372" y="419" font-size="9.5" fill="#64748b" text-anchor="middle">4.0</text>
+  <text x="62" y="302" font-size="9.5" fill="#64748b" text-anchor="end">1.0</text>
+  <text x="62" y="353" font-size="9.5" fill="#64748b" text-anchor="end">0.5</text>
+  <text x="62" y="405" font-size="9.5" fill="#64748b" text-anchor="end">0.0</text>
+
+  <!-- Constitutive horizontal line at y=296 -->
+  <line x1="68" y1="297" x2="372" y2="297" stroke="#f472b6" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <!-- n=1 curve: (0.05->0.048, 0.2->0.167, 0.6->0.375, 1.0->0.50, 2.0->0.667, 4.0->0.80) -->
+  <polyline fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-dasharray="4,2"
+    points="72,401 83,387 114,364 144,350 220,331 296,322 372,316"/>
+  <!-- n=2 curve: (0.05->0.002, 0.2->0.038, 0.6->0.265, 1.0->0.50, 2.0->0.80, 4.0->0.941) -->
+  <polyline fill="none" stroke="#38bdf8" stroke-width="2.2"
+    points="72,406 83,402 114,376 144,350 220,316 296,305 372,301"/>
+  <!-- n=4 curve: (0.05->0.0, 0.2->0.0016, 0.6->0.115, 1.0->0.50, 2.0->0.941, 4.0->0.996) -->
+  <polyline fill="none" stroke="#34d399" stroke-width="2.4"
+    points="72,406 83,406 114,393 144,350 220,301 296,295 372,294"/>
+
+  <!-- Legend inside B1 -->
+  <text x="232" y="311" font-size="9.6" font-weight="700" fill="#f472b6">Constitutive (0% saved)</text>
+  <text x="232" y="362" font-size="9.6" font-weight="700" fill="#34d399">n_H=4: 99.2% saved; 11.7x</text>
+  <text x="232" y="375" font-size="9.6" font-weight="700" fill="#38bdf8">n_H=2: 95.5% saved; 2.9x</text>
+  <text x="232" y="388" font-size="9.6" fill="#fbbf24">n_H=1: 51.9% noise false-fire</text>
+
+  <!-- CA-M2 Callout strip at bottom of B1 -->
+  <rect x="42" y="427" width="340" height="32" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="212" y="441" font-size="10.2" font-weight="700" fill="#34d399" text-anchor="middle">CA-M2 SepJ Gate (20-cell filament): tau=0.05s -&gt; 95.0% viable</text>
+  <text x="212" y="454" font-size="9.6" fill="#94a3b8" text-anchor="middle">tau=1.2s -&gt; 80.0% | tau=5.0s -&gt; 25.0% | Ungated pore -&gt; 0.0% viable</text>
+
+  <!-- Panel B2: CA-M3 Topological Flocking & CA-M4 Physarum -->
+  <rect x="416" y="244" width="368" height="224" rx="12" fill="#111827" stroke="#334155" stroke-width="1.6"/>
+  <text x="432" y="266" font-size="12.2" font-weight="800" fill="#e2e8f0">B2 · CA-M3 TOPOLOGICAL k=7 &amp; CA-M4 PHYSARUM [M]</text>
+  <text x="432" y="283" font-size="10.4" fill="#94a3b8">Connected flock cohesion after predator strike &amp; 4x expansion</text>
+
+  <!-- Plot box B2: x=456..764 (w=308), y=294..406 (h=112) -->
+  <rect x="456" y="294" width="308" height="112" fill="#0b1120" stroke="#1e293b" stroke-width="1.2"/>
+  <text x="450" y="302" font-size="9.5" fill="#64748b" text-anchor="end">100%</text>
+  <text x="450" y="353" font-size="9.5" fill="#64748b" text-anchor="end">50%</text>
+  <text x="450" y="405" font-size="9.5" fill="#64748b" text-anchor="end">0%</text>
+
+  <!-- Grouped Bars for N = 64, 128, 256, 512 -->
+  <!-- N=64 -->
+  <rect x="478" y="296" width="22" height="110" rx="2" fill="#38bdf8"/>
+  <rect x="503" y="401" width="22" height="5" rx="1" fill="#f472b6"/>
+  <text x="501" y="419" font-size="9.5" fill="#cbd5e1" text-anchor="middle">N=64</text>
+
+  <!-- N=128 -->
+  <rect x="552" y="296" width="22" height="110" rx="2" fill="#38bdf8"/>
+  <rect x="577" y="403" width="22" height="3" rx="1" fill="#f472b6"/>
+  <text x="575" y="419" font-size="9.5" fill="#cbd5e1" text-anchor="middle">N=128</text>
+
+  <!-- N=256 -->
+  <rect x="626" y="296" width="22" height="110" rx="2" fill="#38bdf8"/>
+  <rect x="651" y="404" width="22" height="2" rx="1" fill="#f472b6"/>
+  <text x="649" y="419" font-size="9.5" fill="#cbd5e1" text-anchor="middle">N=256</text>
+
+  <!-- N=512 -->
+  <rect x="700" y="296" width="22" height="110" rx="2" fill="#38bdf8"/>
+  <rect x="725" y="405" width="22" height="1.5" rx="1" fill="#f472b6"/>
+  <text x="723" y="419" font-size="9.5" fill="#cbd5e1" text-anchor="middle">N=512</text>
+
+  <!-- Overlay Callout inside B2 -->
+  <rect x="534" y="314" width="220" height="54" rx="6" fill="#111827" stroke="#334155"/>
+  <text x="544" y="330" font-size="9.8" font-weight="700" fill="#38bdf8">Topological k=7: 100.0% connected</text>
+  <text x="544" y="344" font-size="9.5" fill="#cbd5e1">Scale-free xi / L = 0.369 mean</text>
+  <text x="544" y="359" font-size="9.8" font-weight="700" fill="#f472b6">Metric R_0: 4.3% -&gt; 0.7% (467.5 parts)</text>
+
+  <!-- CA-M4 Callout strip at bottom of B2 -->
+  <rect x="430" y="427" width="340" height="32" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="600" y="441" font-size="10.2" font-weight="700" fill="#fbbf24" text-anchor="middle">CA-M4 Physarum: mu=1.3, 1.8 -&gt; 100.0% shortest-path flux</text>
+  <text x="600" y="454" font-size="9.6" fill="#94a3b8" text-anchor="middle">16-node multi-source (mu=1.4): TL/MST = 1.39, MD/MST = 0.83, FT = 1.00</text>
+
+  <!-- Panel B3: CA-M5 20-Generation Hybrid Cultural Ratchet -->
+  <rect x="804" y="244" width="368" height="224" rx="12" fill="#111827" stroke="#334155" stroke-width="1.6"/>
+  <text x="820" y="266" font-size="12.2" font-weight="800" fill="#e2e8f0">B3 · CA-M5 20-GEN CULTURAL RATCHET [M]</text>
+  <text x="820" y="283" font-size="10.4" fill="#94a3b8">Mean task reward (30 lineages x 32 agents; machines exit Gen 5)</text>
+
+  <!-- Plot box B3: x=844..1152 (w=308), y=294..406 (h=112) -->
+  <!-- y mapping: score 1.0 -> 300, score 0.3 -> 400 (scale: y = 300 + (1.0 - score)*135) -->
+  <rect x="844" y="294" width="308" height="112" fill="#0b1120" stroke="#1e293b" stroke-width="1.2"/>
+  <!-- Machine Removal vertical line at Gen 5: x = 844 + (5/20)*308 = 921 -->
+  <line x1="921" y1="294" x2="921" y2="406" stroke="#f472b6" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="925" y="346" font-size="9.2" font-weight="700" fill="#f472b6">Machines removed (Gen 5)</text>
+
+  <text x="844" y="419" font-size="9.5" fill="#64748b" text-anchor="middle">G0</text>
+  <text x="921" y="419" font-size="9.5" fill="#f472b6" text-anchor="middle">G5</text>
+  <text x="998" y="419" font-size="9.5" fill="#64748b" text-anchor="middle">G10</text>
+  <text x="1075" y="419" font-size="9.5" fill="#64748b" text-anchor="middle">G15</text>
+  <text x="1152" y="419" font-size="9.5" fill="#64748b" text-anchor="middle">G20</text>
+  <text x="839" y="303" font-size="9.5" fill="#64748b" text-anchor="end">1.0</text>
+  <text x="839" y="344" font-size="9.5" fill="#64748b" text-anchor="end">0.7</text>
+  <text x="839" y="388" font-size="9.5" fill="#64748b" text-anchor="end">0.4</text>
+
+  <!-- Attested Externalized Library: 0.433 at G0 -> 1.000 from G1..G20 -->
+  <polyline fill="none" stroke="#34d399" stroke-width="2.6"
+    points="844,377 859,300 921,300 998,300 1075,300 1152,300"/>
+  <!-- Prestige-Biased Imitation: 0.432 -> 0.935 -> 0.928(G4) -> 0.927(G5) -> 0.918(G10) -> 0.922(G20) -->
+  <polyline fill="none" stroke="#38bdf8" stroke-width="2.1"
+    points="844,377 859,309 906,310 921,310 998,311 1075,310 1152,311"/>
+  <!-- Unverified Imitation: 0.434(G0) -> 0.765(G4) -> 0.707(G5) -> 0.635(G10) -> 0.667(G15) -> 0.652(G20) -->
+  <polyline fill="none" stroke="#fbbf24" stroke-width="2.0"
+    points="844,376 875,347 906,332 921,340 998,349 1075,345 1152,347"/>
+  <!-- No-Machine Baseline: ~0.351 -> 0.369 -->
+  <polyline fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="4,3"
+    points="844,388 906,386 921,386 998,385 1075,385 1152,385"/>
+
+  <!-- Summary strip at bottom of B3 -->
+  <rect x="818" y="427" width="340" height="32" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="988" y="441" font-size="10.0" font-weight="700" fill="#34d399" text-anchor="middle">Gen 20 Optimal: Attested 100.0% | Prestige 76.3%</text>
+  <text x="988" y="454" font-size="9.6" fill="#cbd5e1" text-anchor="middle">Unverified imitation 29.3% (drift) | No-machine baseline 0.0%</text>
+
+  <!-- ======================================================================= -->
+  <!-- BAND C: Sensing -> Modulation -> Agency-Preserving BCI (y = 482..642)    -->
+  <!-- ======================================================================= -->
+  <rect x="28" y="482" width="1144" height="160" rx="12" fill="#111827" stroke="#334155" stroke-width="1.6"/>
+  <text x="44" y="504" font-size="12.5" font-weight="800" fill="#e2e8f0">C · NEURAL &amp; PARACRINE INTERFACE PROGRESSION (BM01 TO BM18, EV01 TO EV16, LEAN T29 TO T31)</text>
+
+  <!-- Stage 1 -->
+  <rect x="44" y="516" width="254" height="112" rx="9" fill="#0f172a" stroke="#38bdf8" stroke-width="1.6"/>
+  <text x="171" y="535" font-size="11.5" font-weight="800" fill="#38bdf8" text-anchor="middle">1. Read-Only Sensing [E]</text>
+  <text x="171" y="553" font-size="10.2" fill="#e2e8f0" text-anchor="middle">Scalp EEG / OPM-MEG (0.2-4 bit/s)</text>
+  <text x="171" y="569" font-size="10.2" fill="#e2e8f0" text-anchor="middle">Endovascular Stentrode (SWITCH)</text>
+  <text x="171" y="585" font-size="10.2" fill="#cbd5e1" text-anchor="middle">Utah / ECoG Speech: 62-78 words/min</text>
+  <text x="171" y="602" font-size="9.8" fill="#94a3b8" text-anchor="middle">(~15-19 bit/s vs 39 bit/s speech)</text>
+  <text x="171" y="618" font-size="9.6" font-weight="600" fill="#fbbf24" text-anchor="middle">Bottleneck: zero neural write-back</text>
+
+  <path d="M298 572 L322 572" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arr-cyan)"/>
+
+  <!-- Stage 2 -->
+  <rect x="326" y="516" width="258" height="112" rx="9" fill="#0f172a" stroke="#34d399" stroke-width="1.6"/>
+  <text x="455" y="535" font-size="11.5" font-weight="800" fill="#34d399" text-anchor="middle">2. Closed-Loop 1-Brain [E]</text>
+  <text x="455" y="553" font-size="10.2" fill="#e2e8f0" text-anchor="middle">M1 Read + S1 Tactile ICMS Write</text>
+  <text x="455" y="569" font-size="10.2" fill="#cbd5e1" text-anchor="middle">Robotic grasp halved: 20.9s -&gt; 10.2s</text>
+  <text x="455" y="585" font-size="10.2" fill="#e2e8f0" text-anchor="middle">Adaptive DBS (Parkinson's RCT)</text>
+  <text x="455" y="602" font-size="9.8" fill="#94a3b8" text-anchor="middle">Focal tFUS (1.5-5 mm) &amp; Cochlear CIS</text>
+  <text x="455" y="618" font-size="9.6" font-weight="600" fill="#34d399" text-anchor="middle">Closes sensorimotor / symptom loop</text>
+
+  <path d="M584 572 L608 572" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arr-emerald)"/>
+
+  <!-- Stage 3 -->
+  <rect x="612" y="516" width="266" height="112" rx="9" fill="#0f172a" stroke="#fbbf24" stroke-width="1.6"/>
+  <text x="745" y="535" font-size="11.5" font-weight="800" fill="#fbbf24" text-anchor="middle">3. Multi-Brain &amp; Paracrine EV</text>
+  <text x="745" y="553" font-size="10.2" fill="#e2e8f0" text-anchor="middle">3-Human BrainNet [E]: ~0.05 bit/s</text>
+  <text x="745" y="569" font-size="10.2" fill="#cbd5e1" text-anchor="middle">Rodent ICMS dyads (~0.2 bit/s cue)</text>
+  <text x="745" y="585" font-size="10.2" fill="#e2e8f0" text-anchor="middle">Intranasal MSC/NSC/ESC EVs [E animal]:</text>
+  <text x="745" y="602" font-size="9.8" fill="#94a3b8" text-anchor="middle">AKI, senescence, stroke, AD/PD, Shank3B</text>
+  <text x="745" y="618" font-size="9.6" font-weight="700" fill="#f472b6" text-anchor="middle">Gap: 0 Phase III human CNS proofs [S]</text>
+
+  <path d="M878 572 L902 572" stroke="#f472b6" stroke-width="2" stroke-dasharray="4,3" fill="none" marker-end="url(#arr-rose)"/>
+
+  <!-- Stage 4 -->
+  <rect x="906" y="516" width="250" height="112" rx="9" fill="#0f172a" stroke="#f472b6" stroke-width="1.8" stroke-dasharray="6,3"/>
+  <text x="1031" y="535" font-size="11.5" font-weight="800" fill="#f472b6" text-anchor="middle">4. Bridged N-Mind Mesh [S + T]</text>
+  <text x="1031" y="553" font-size="10.2" fill="#e2e8f0" text-anchor="middle">High-channel read-write + attestation</text>
+  <text x="1031" y="569" font-size="10.2" font-weight="700" fill="#34d399" text-anchor="middle">Local gate g_i(s_i, m) = 1 (T29-T30)</text>
+  <text x="1031" y="585" font-size="10.2" fill="#cbd5e1" text-anchor="middle">Preserves private invariant I_i(s_i)</text>
+  <text x="1031" y="602" font-size="9.8" fill="#94a3b8" text-anchor="middle">Inverse of forced overwrite (T31)</text>
+  <text x="1031" y="618" font-size="9.6" font-weight="600" fill="#f472b6" text-anchor="middle">Falsifier CA-H7: authorship &gt;= 0.90</text>
+
+  <!-- Footer -->
+  <text x="600" y="663" font-size="11.4" fill="#94a3b8" text-anchor="middle" font-style="italic">Figure 1 · Conserved externalization ratchet, pre-registered CA-M1..CA-M5 trajectories, and clinical/engineering boundary between established [E] and speculative [S] BCI rungs.</text>
+</svg>

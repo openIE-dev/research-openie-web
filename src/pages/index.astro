@@ -72,6 +72,15 @@ const products = projects.filter((p) => p.group === 'product');
       Each paper stands alone, defines its own terms, and opens with three points in plain words. Energy figures are labeled by how they were obtained.
     </p>
     <div class="mt-8 flex flex-wrap gap-3">
+      <a href="/tv/" class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
+        ▶ Research TV (84 films)
+      </a>
+      <a href="/radio/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/50 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
+        ◉ Research Radio
+      </a>
+      <a href="/tutorials/" class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">
+        Interactive Tutorials (10 labs)
+      </a>
       <a href="https://openie-dev.github.io/rce/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
         RCE Playground
       </a>
@@ -81,7 +90,7 @@ const products = projects.filter((p) => p.group === 'product');
       <a href="/data/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:bg-brand-slate/10 transition-colors">
         Data and code
       </a>
-      <a href="/glossary/" class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">
+      <a href="/glossary/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:bg-brand-slate/10 transition-colors">
         Glossary
       </a>
       <a href="/about/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:bg-brand-slate/10 transition-colors">
@@ -164,6 +173,7 @@ const products = projects.filter((p) => p.group === 'product');
           </div>
           <div class="flex flex-wrap gap-3">
             {p.paper && <a href={p.paper} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">Read →</a>}
+            <a href={`/tv/?study=${p.id}`} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">TV (5s–90s)</a>
             {p.markdown && <a href={p.markdown} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors">Markdown</a>}
             {p.pdf && <a href={p.pdf} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors" download>Download PDF</a>}
             <a href={p.figures} class="font-mono text-xs text-brand-slate no-underline hover:text-brand-white transition-colors">Figures</a>
@@ -209,6 +219,7 @@ const products = projects.filter((p) => p.group === 'product');
           </div>
           <div class="flex flex-wrap gap-3">
             <a href={p.paper} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">Read →</a>
+            <a href={`/tv/?study=${p.id}`} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">TV (5s–90s)</a>
             <a href={p.markdown} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors">Markdown</a>
             <a href={p.pdf} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors" download>Download PDF</a>
             <a href={p.figures} class="font-mono text-xs text-brand-slate no-underline hover:text-brand-white transition-colors">Figures</a>

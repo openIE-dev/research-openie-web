@@ -66,6 +66,9 @@ export const GET: APIRoute = async () => {
         examples: [
           `${BASE}/living/deterministic-null/?track=exp002&T=600&hit=0.72`,
           `${BASE}/living/lut-adapt/?p0=0.75&dt=1500&model=lfm&arm=wake`,
+          `${BASE}/tv/`,
+          `${BASE}/radio/`,
+          `${BASE}/tutorials/`,
           `${BASE}/living/fpga-sim/`,
           `${BASE}/rce/spec/`,
         ],

@@ -1,0 +1,122 @@
+/* OpenIE Interactive Tutorials Hub — 4-Color Visual Algebra & Chromeless Embed */
+:root {
+  --tut-canvas-bg: #0b1020;
+  --tut-panel-bg: rgba(15, 21, 38, 0.86);
+  --tut-card-bg: rgba(11, 16, 32, 0.78);
+  --tut-border: rgba(148, 163, 184, 0.16);
+  --tut-text: #f1f5f9;
+  --tut-muted: #94a3b8;
+  --tut-amber: #f59e0b;
+  --tut-cyan: #22d3ee;
+  --tut-emerald: #10b981;
+  --tut-rose: #f43f5e;
+  --tut-grid: rgba(34, 211, 238, 0.055);
+}
+
+html[data-theme="light"] {
+  --tut-canvas-bg: #f8fafc;
+  --tut-panel-bg: rgba(255, 255, 255, 0.92);
+  --tut-card-bg: rgba(241, 245, 249, 0.9);
+  --tut-border: rgba(15, 23, 42, 0.12);
+  --tut-text: #0f172a;
+  --tut-muted: #475569;
+  --tut-amber: #d97706;
+  --tut-cyan: #0891b2;
+  --tut-emerald: #059669;
+  --tut-rose: #e11d48;
+  --tut-grid: rgba(15, 23, 42, 0.05);
+}
+
+/* Chromeless ?embed=1&lab=<id> mode for iframe embeds inside papers */
+html.oe-embed-mode #nav, html.oe-embed-mode footer, html.oe-embed-mode .tut-embed-hide, html.oe-embed-mode .tut-rail { display: none !important; }
+html.oe-embed-mode main { padding-top: 0 !important; }
+html.oe-embed-mode .tut-shell { max-width: none; padding: 0.65rem; }
+html.oe-embed-mode .tut-layout { grid-template-columns: 1fr !important; }
+.tut-embed-banner { display: none; }
+html.oe-embed-mode .tut-embed-banner {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+  padding: 0.45rem 0.85rem; margin-bottom: 0.6rem; border: 1px solid var(--tut-border);
+  border-radius: 10px; background: var(--tut-panel-bg); font-family: var(--font-mono); font-size: 0.72rem; color: var(--tut-muted);
+}
+
+.tut-shell { max-width: 1400px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+.tut-progress-bar {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.9rem 1.15rem; border-radius: 12px; background: var(--tut-panel-bg); border: 1px solid var(--tut-border); margin-bottom: 1.25rem;
+}
+.tut-meter-track { width: 200px; height: 8px; border-radius: 999px; background: rgba(148, 163, 184, 0.18); overflow: hidden; }
+.tut-meter-fill { height: 100%; background: linear-gradient(90deg, var(--tut-cyan), var(--tut-emerald)); transition: width 0.35s ease; }
+
+.tut-filter-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tut-chip {
+  font-family: var(--font-mono); font-size: 0.73rem; padding: 0.42rem 0.85rem; border-radius: 999px;
+  border: 1px solid var(--tut-border); background: transparent; color: var(--tut-muted); cursor: pointer; transition: all 0.18s ease;
+}
+.tut-chip:hover { border-color: var(--tut-cyan); color: var(--tut-text); }
+.tut-chip[aria-pressed="true"] { background: rgba(34, 211, 238, 0.14); border-color: var(--tut-cyan); color: var(--tut-cyan); font-weight: 600; }
+
+.tut-layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+@media (max-width: 1060px) { .tut-layout { grid-template-columns: 1fr; } }
+
+.tut-rail {
+  background: var(--tut-panel-bg); border: 1px solid var(--tut-border); border-radius: 14px; padding: 0.75rem;
+  max-height: calc(100vh - 110px); overflow-y: auto; position: sticky; top: 84px;
+}
+@media (max-width: 1060px) { .tut-rail { position: static; max-height: 300px; } }
+
+.tut-lab-item {
+  width: 100%; text-align: left; display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.68rem 0.75rem;
+  border-radius: 10px; border: 1px solid transparent; background: transparent; color: var(--tut-text); cursor: pointer; transition: all 0.16s ease; margin-bottom: 0.3rem;
+}
+.tut-lab-item:hover { background: rgba(34, 211, 238, 0.06); }
+.tut-lab-item.active { background: rgba(34, 211, 238, 0.11); border-color: var(--tut-cyan); }
+.tut-lab-num {
+  flex: 0 0 28px; height: 28px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; border: 1px solid var(--tut-border); color: var(--tut-muted);
+}
+.tut-lab-item.done .tut-lab-num { background: rgba(16, 185, 129, 0.16); border-color: var(--tut-emerald); color: var(--tut-emerald); }
+
+.tut-stage { background: var(--tut-panel-bg); border: 1px solid var(--tut-border); border-radius: 16px; padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+.tut-stepper { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; }
+@media (max-width: 680px) { .tut-stepper { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tut-step-btn {
+  padding: 0.55rem 0.7rem; border-radius: 10px; border: 1px solid var(--tut-border); background: var(--tut-card-bg);
+  color: var(--tut-muted); font-family: var(--font-mono); font-size: 0.72rem; text-align: left; cursor: pointer; transition: all 0.18s ease;
+}
+.tut-step-btn.active { border-color: var(--tut-cyan); color: var(--tut-text); box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.25); }
+.tut-step-btn.completed { border-color: rgba(16, 185, 129, 0.5); color: var(--tut-emerald); }
+
+.tut-canvas-card { border-radius: 12px; border: 1px solid var(--tut-border); background: var(--tut-canvas-bg); overflow: hidden; position: relative; }
+.tut-canvas-wrap { width: 100%; height: 360px; position: relative; }
+@media (max-width: 640px) { .tut-canvas-wrap { height: 300px; } }
+#tut-canvas { width: 100%; height: 100%; display: block; }
+
+.tut-telemetry { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem; padding: 0.65rem 0.85rem; border-top: 1px solid var(--tut-border); background: var(--tut-card-bg); }
+.tut-metric { padding: 0.4rem 0.6rem; border-radius: 8px; border: 1px solid var(--tut-border); font-family: var(--font-mono); }
+.tut-metric-label { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--tut-muted); }
+.tut-metric-val { font-size: 0.88rem; font-weight: 600; margin-top: 2px; }
+.tone-amber { color: var(--tut-amber); }
+.tone-cyan { color: var(--tut-cyan); }
+.tone-emerald { color: var(--tut-emerald); }
+.tone-rose { color: var(--tut-rose); }
+
+.tut-controls { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; padding: 0.85rem 1rem; border-radius: 12px; border: 1px solid var(--tut-border); background: var(--tut-card-bg); }
+.tut-ctrl { display: flex; flex-direction: column; gap: 0.28rem; min-width: 155px; flex: 1 1 165px; }
+.tut-ctrl label { font-family: var(--font-mono); font-size: 0.68rem; color: var(--tut-muted); display: flex; justify-content: space-between; }
+.tut-ctrl input[type="range"] { accent-color: var(--tut-cyan); width: 100%; cursor: pointer; }
+.tut-ctrl select, .tut-btn {
+  font-family: var(--font-mono); font-size: 0.75rem; padding: 0.45rem 0.75rem; border-radius: 8px;
+  border: 1px solid var(--tut-border); background: var(--tut-panel-bg); color: var(--tut-text); cursor: pointer;
+}
+.tut-btn-primary { background: rgba(16, 185, 129, 0.16); border-color: var(--tut-emerald); color: var(--tut-emerald); font-weight: 600; }
+.tut-btn-action { background: rgba(245, 158, 11, 0.14); border-color: var(--tut-amber); color: var(--tut-amber); font-weight: 600; }
+
+.tut-lesson-box { padding: 1.05rem 1.15rem; border-radius: 12px; border: 1px solid var(--tut-border); background: var(--tut-card-bg); }
+.tut-choice {
+  width: 100%; text-align: left; padding: 0.72rem 0.9rem; margin-top: 0.5rem; border-radius: 10px;
+  border: 1px solid var(--tut-border); background: var(--tut-panel-bg); color: var(--tut-text); font-size: 0.88rem; cursor: pointer; transition: all 0.15s ease;
+}
+.tut-choice:hover { border-color: var(--tut-cyan); }
+.tut-choice.right { border-color: var(--tut-emerald); background: rgba(16, 185, 129, 0.12); }
+.tut-choice.wrong { border-color: var(--tut-amber); background: rgba(245, 158, 11, 0.10); }
+.tut-receipt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.85rem; margin-top: 0.75rem; }

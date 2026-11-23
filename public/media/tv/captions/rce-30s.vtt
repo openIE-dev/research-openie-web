@@ -1,0 +1,34 @@
+WEBVTT
+NOTE OpenIE Research TV — rce (30s) AI-synthesized studio narration
+
+1
+00:00:00.300 --> 00:00:03.960
+Teams write a specification in prose, re-implement it in Rust,
+
+2
+00:00:03.960 --> 00:00:07.502
+Python, and TypeScript, and debug silent mismatches forever.
+
+3
+00:00:07.982 --> 00:00:10.422
+The Reality Code Engine represents a program once as
+
+4
+00:00:10.422 --> 00:00:13.377
+a lossless state machine where unhandled inputs cannot compile.
+
+5
+00:00:13.857 --> 00:00:17.588
+Backed by theorems T1 to T63 in Lean 4 and 2,221
+
+6
+00:00:17.588 --> 00:00:23.727
+passing conformance checks with zero failures, each check costs 49 millijoules.
+
+7
+00:00:24.207 --> 00:00:26.439
+Once a Form passes the reference checker,
+
+8
+00:00:26.439 --> 00:00:30.250
+emitters generate native targets and store verified repairs for reuse.

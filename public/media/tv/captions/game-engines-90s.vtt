@@ -1,0 +1,46 @@
+WEBVTT
+NOTE OpenIE Research TV — game-engines (90s) AI-synthesized studio narration
+
+1
+00:00:00.918 --> 00:00:09.478
+Cross-platform engines mingle deterministic game rules with vendor-specific math libraries, shader compilers, and rasterizers.
+
+2
+00:00:11.607 --> 00:00:14.693
+Across 840 chaotic trajectories,
+
+3
+00:00:14.693 --> 00:00:24.144
+floating-point ULP differences diverge predictably at ticks 10 to 192, while Q32.32 holds forever.
+
+4
+00:00:26.273 --> 00:00:30.292
+This three-dimensional arena shows macOS, Linux,
+
+5
+00:00:30.292 --> 00:00:38.078
+and Windows 11 DirectX 12 rings locked in Q32.32 phase while an unguarded float ghost drifts.
+
+6
+00:00:40.207 --> 00:00:46.606
+Projecting 17 game Forms cuts behavior code 76.2 percent vs Unity
+
+7
+00:00:46.606 --> 00:00:53.005
+C-sharp and 61.5 percent vs Bevy Rust with zero trace mismatches.
+
+8
+00:00:55.134 --> 00:01:01.988
+Compiled projections step 10,000 actors in 0.058 milliseconds,
+
+9
+00:01:01.988 --> 00:01:09.726
+replay 216,000 ticks from 44.6 kilobytes, and pass 28 of 28 GPU pairs.
+
+10
+00:01:11.855 --> 00:01:18.146
+With 36 of 36 Godot 4.7.2 headless tasks matching native GDScript,
+
+11
+00:01:18.146 --> 00:01:23.389
+all nine falsifiers stand closed and playable in WebXR.

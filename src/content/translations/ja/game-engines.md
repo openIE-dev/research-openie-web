@@ -1,6 +1,6 @@
 ---
 title: "ゲームを一度書いてどこでも動かす：厳密な再生が終わり許容誤差が始まる境界"
-deck: "ゲームは一度だけチェックされた状態機械として記述され、複数のエンジン、命令セット、オペレーティングシステム、グラフィックススタックへと投影できるか。30 のマルチ ISA ターゲット × ホストセル上で 100,000 ティックを実行し、Q32.32 整数物理を適用した結果（GE-H1: 0 / 25,500 の状態ダイジェスト不一致が arm64 macOS、aarch64 Linux、Zen 5 および Raptor Lake x86_64 Linux、Tiger Lake x86_64 Windows 11 に跨って観測された）、25,000 のクロスプラットフォーム浮動小数点ティックにおいて（GE-H2: t_div = 10 が Windows Universal C Runtime と Apple libm と Linux glibc の sin/cos とで差異、t_div = 192-406 の融合乗算加算低減が -ffast-math を使用しない条件下で実施された）、そして Metal、Vulkan、DirectX 12 の 8 つのハードウェアグラフィックスエンドポイントに対して（GE-H3: ピクセルドリフトが 0.00%-9.34%、Δ_max ≤ 2、ピーク信号対雑音比 ≥ 64.2 dB、構造類似度 ≥ 0.99983 が全 28 ペアで維持された）実行された結果、プレイ可能なジュール予算制限付き Q32.32 プロトタイプと組み合わせて評価された。"
+deck: "ゲームは一度だけチェックされた状態機械として記述され、複数のエンジン、命令セット、オペレーティングシステム、グラフィックスタックへ投影できるか。すべての九つの事前登録済み偽装スイートで実行された結果: 30 のマルチアーキテクチャターゲット × ホストセルで 100,000 ティックを Q32.32 整数物理で実行 (GE-H1: 0 / 25,500 状態ダイジェスト不一致、arm64 macOS、aarch64 Linux、Zen 5 および Raptor Lake x86_64 Linux、Tiger Lake x86_64 Windows 11)、25,000 のクロスプラットフォーム浮動小数点ティック (GE-H2: t_div = 10 Windows Universal C Runtime と Apple libm 対 Linux glibc sin/cos、t_div = 192-406 融合乗算加算低減、-ffast-math 無し)、Metal、Vulkan、DirectX 12 の 8 つのハードウェアグラフィックエンドポイント (GE-H3: 0.00%-9.34% ピクセルドリフト、Δ_max ≤ 2、ピーク信号対雑音比 ≥ 64.2 dB、構造類似度 ≥ 0.99983、全 28 ペア間)、17 のマルチエンジンゲーム動作 (GE-H4: Unity C# に対し -76.2% ソース行、0 / 680 トレース不一致)、10,000 アクターのスケーリング (GE-H5: 0.058-0.125 ms/ティック コンパイル時、N_20ms = 390 インタプリタ Python)、260 のインターフェース障害モジュール (GE-H6: 98.46% 再現率、F1 = 0.9922 対 0.1159 パース専用)、840 のカオス的リャプノフ軌道 (GE-H7: R²_mean = 0.994-1.000)、コンパクト入力ログのみからの 1 時間 216,000 ティック三システムリプレイ 3 件 (GE-H8: 0 / 6,480 不一致)、および 36 のヘッドレス Godot 4.7.2 タスク (GE-H9: 36 / 36 正確なトレース同等)。"
 lang: "ja"
 source: "game-engines"
 complete: true
@@ -8,63 +8,59 @@ complete: true
 
 <div id="writing-a-game-once-and-running-it-everywhere-where-exact-replay-ends-and-tolerance-begins" class="anchor-alias" aria-hidden="true"></div>
 
-*改訂 1561a2a, 2026年11月22日。インタラクティブエクスプローラ、3-OS / 3-API クロスGPUインスペクタ、そしてプレイ可能な `Q32.32` クロノ・バジェットアリーナ: [research.openie.dev/living/game-engines/](/living/game-engines/).*
+*改訂 5c50a85、2026年11月23日。インタラクティブ・エクスプローラー、3 OS / 3 API にまたがるクロス GPU インスペクター、`GE-H4`-`GE-H9` の実証的閉包観測所、そして遊べる `Q32.32` Chrono-Budget Arena を収録: [インタラクティブ版（ゲームエンジン）](/living/game-engines/)。*
 
 <div id="abstract" class="anchor-alias" aria-hidden="true"></div>
 
 ## 要旨
 
-本研究は、ゲームを検査可能な状態機械として一度記述し、それを各言語、各オペレーティングシステム（OS）、各中央処理装置（CPU）命令セットアーキテクチャ（ISA）、各グラフィックス処理装置（GPU）アプリケーションプログラミングインターフェース（API）へ投影できるかを問う。調査対象の仕様と、実行された3種類の経験的反証スイートの双方が明確な境界を示した。固定小数点整数演算を固定（pinned）した場合のゲーム規則およびシミュレーションについては**可能**である（`(GE-H1)`：3つのオペレーティングシステムと3つの命令セットにまたがる30の対象×ホストの組（`arm64` `macOS 27.2.1`、`aarch64` `Linux 6.8`、Advanced Micro Devices（`AMD`）Zen 5およびIntel Raptor Lake `x86_64` `Linux 7.0`、ならびにMicrosoft Visual C++（`MSVC`）`cl.exe`を用いたベアメタルのIntel Tiger Lake `x86_64` `Windows 11` ビルド`26300`を含む）に投影した16体の2次元アリーナの`100,000`ティックにわたり、チェックポイントの`SHA-256`不一致は`0 / 25,500`であった。消費電力は、macOSのプロセス単位`reported_j`で`0.073 J`から`13.60 J`、LinuxのRunning Average Power Limit（`RAPL`）パッケージ`reported_j`で`1.89 J`から`181.87 J`に及ぶ）。
+本研究は、ゲームを一度チェック済みの状態機械として記述し、それを言語、オペレーティングシステム（OS）、中央処理装置（CPU）の命令セットアーキテクチャ（ISA）、グラフィックス処理装置（GPU）のアプリケーションプログラミングインターフェース（API）へ投影できるかを問うものである。調査した仕様と、実行された9つの実証的反証スイート（`GE-H1` から `GE-H9`）はいずれも、明確で閉じた境界を示している。ゲームルール、複数エンジンによる振る舞いの出力、高アクター数のシミュレーション、固定小数点整数演算を固定した条件でのOS横断の1時間規模のリプレイについては**はい**である。（`GE-H1`：Apple Silicon の `arm64` `macOS 27.2.1`、`aarch64` `Linux 6.8`、Advanced Micro Devices（`AMD`）Zen 5 と Intel Raptor Lake の `x86_64` `Linux 7.0`、Microsoft Visual C++（`MSVC`）`cl.exe` を含む Intel Tiger Lake の `x86_64` `Windows 11` ビルド `26300` のベアメタル環境にわたる30のターゲット×ホストの組において、16体の2Dアリーナを `100,000` ティック実行したところ、Secure Hash Algorithm 256ビット（`SHA-256`）のチェックポイント不一致は `0 / 25,500` であった。消費電力は macOS のプロセス単位の `reported_j` で `0.073 J` から `13.60 J`、Linux の Running Average Power Limit（`RAPL`）パッケージの `reported_j` で `1.89 J` から `181.87 J` に及んだ。（`GE-H4`：*Haunted Jaunt*、*Survival Shooter*、*Tanks* にまたがる17の振る舞いを Reality Code Engine（`RCE`）Forms で記述したところ、コメントを除く非空行のソースコード行数（`SLOC`）は、慣用的な Unity `MonoBehaviour` の C# 比で `76.22%` 削減（`326` 対 `1,371` `SLOC`、糊付けコードは `92.51%` 減）、Bevy 風の Rust エンティティコンポーネントシステム（`ECS`）コード比で `61.47%` 削減（`846` `SLOC`）、Godot 4 の `Node` GDScript 比で `51.99%` 削減（`679` `SLOC`）となり、トレースの不一致は `0 / 680` であった。）（`GE-H5`：`500` ティックにわたる $N \in [64, 10{,}000]$ のアクター数において、参照実装の `rce emit python` は $N_{20\text{ms}} = 390$ で `20 ms` の予算を超えた。これは GameRule の `308` アクターという上限付近にあたる。`rce emit js` は $N_{20\text{ms}} = 3{,}906$ に達した。コンパイル済みの WebAssembly（`Wasm`）、C++20 `-O3`、ネイティブ Rust `-O3` の各投影は、Linux の `RAPL` パッケージ `reported_j` で `1.69`-`3.67 mJ`/ティックの条件下、$N = 10{,}000$ を `0.058`-`0.125 ms`/ティックで実行した（`SHA-256` 不一致は `0 / 50`）。）（`GE-H6`：`26` のインターフェース欠陥パターンにまたがる `260` モジュールにおいて、Form による静的検査と4辺のマニフェスト検査は `128 / 130` の注入欠陥を検出した（再現率 `98.46%`、偽陽性 `0`、欠陥 `F1 = 0.9922`）。これに対し、中間表現（`IR`）を持たない構文解析のみの動的検査は `8 / 130`（`6.15%`、`F1 = 0.1159`）にとどまった。）（`GE-H8`：`60 Hz` の1時間（`216,000` ティック）のセッション3件は、圧縮された入力ログ $D$ のみ、すなわち `44.6` キロバイト（`KB`）から再生され（圧縮された状態スナップショットより `116×`-`292×` 小さい）、`macOS arm64`、`Linux x86_64`、`Windows 11 x86_64` の全体で `0 / 6,480` のチェックポイント `SHA-256` 不一致であった。）（`GE-H9`：Form から Godot 4 への出力器は、`Godot 4.7.2` のもとでヘッドレス同等性 `36 / 36`（`100.0%`、ティックハッシュの不一致 `0 / 18,000`）を達成した。）一方、固定されていない浮動小数点の超越関数や融合積和（`FMA`）の下位化がカオス的な力学に入り込む場合には**いいえ**である。（`GE-H2`：`-ffast-math` や `/fp:fast` を用いない場合でも、Windows の Universal C Runtime（`UCRT`）、Apple の `libSystem` の `libm`、Linux の `glibc` の `std::sin`/`std::cos` は、ティック `10` から `37` にかけて3者間で発散する三角形を形成した。また、`MSVC` の `/fp:precise` と `Clang` の `-ffp-contract=fast` はティック `192` で、`x86_64` と `arm64` の `FMA` はティック `406` で発散した。）（`GE-H7`：3種類のカオス的物理テンプレートにわたる $\delta_0 \in [2^{-52}, 2^{-10}]$ の範囲の `840` 組の対の軌道において、マクロな発散時刻 $t^*$ は $t^* = \hat{\alpha} + (1/\hat{\Lambda})\ln(\Delta/\delta_0)$ に従い、暗黙のリアプノフ指数は $\hat{\Lambda} \in \{1.95, 2.48, 5.07\}\ \text{s}^{-1}$、セル平均の $R^2 \in [0.9940, 0.9995]$、両側検定の $p \le 10^{-77.6}$ であった。）GPU のバックエンドをまたぐビット完全一致のピクセル出力については**いいえ**である。しかし、有界な一方向の許容誤差ゲートのもとでは**はい**である。（`GE-H3`：Apple `Metal`、Linux Mesa Radeon Vulkan（`RADV`）、Nvidia（`NVIDIA`）の Linux および Windows の `Vulkan` と Windows DirectX 12（`DX12`）、Intel の Linux Mesa Vulkan（`ANV`）、Windows の `Vulkan` と `DX12` にまたがる8つのハードウェアの `GPU × API` 組において、`512×512` の `RGBA8Unorm` で測定したところ、28組のハードウェア対のうち `27 / 28` は生の `SHA-256` が異なった。それにもかかわらず、`28 / 28` のすべてで、チャンネルごとの最大誤差 $\Delta_{\max} \le 2 / 255$、ピーク信号対雑音比（`PSNR`）`>= 64.16 dB`、構造類似度（`SSIM`）`>= 0.99983` を満たした。なお、`measured_j = None` および `board_metered = false` である。）
 
-浮動小数点の超越関数または融合積和（`FMA`）の下位化が固定されていない場合、多体衝突はカオス的に発展するため**不可能**である（`(GE-H2)`：*用いなくても*、`-ffast-math`や`/fp:fast`を指定しないときでも、3つのデスクトップOSの数学ライブラリはいずれも互いに発散する三角形を形成する。同一の`x86_64` ISA上で、Windows Universal C Runtime（`UCRT`）とLinuxのシステム`glibc`の`std::sin`/`std::cos`はティック`10`で発散し、Apple `libSystem`の`libm`とLinuxの`glibc`もティック`10`で発散し、WindowsのUCRTとApple `libm`はティック`37`で発散する。また、`MSVC`の`/fp:precise`と`Clang`の`-ffp-contract=fast`はx86_64上でティック`192`において、`x86_64`の`-mavx2 -mfma`と`arm64`の`fmadd`はティック`406`において発散する）。
+**平易な言葉での要約**
 
-GPUバックエンド間でのビット単位で一致するピクセルは**不可能**である。一方、有界な一方向の許容誤差ゲートの下では**可能**である（`(GE-H3)`：Apple `Metal`、Linux Mesa Radeon Vulkan（`RADV`）、Nvidia（`NVIDIA`）のLinuxおよびWindowsの`Vulkan`とWindowsのDirectX 12（`DX12`）、ならびにIntel Linux Mesa Vulkan（`ANV`）およびWindowsの`Vulkan`と`DX12`にまたがる8つのハードウェアの`GPU × API`エンドポイントにおいて、`512×512` `RGBA8Unorm`で測定した。`GeForce 2060`と`Iris Xe`のそれぞれについて`DX12`と`Vulkan`の間で同一の物理GPUを用いた組を含め、`28`組中`27`組のハードウェア対は生の`SHA-256`が異なった。それにもかかわらず、`28 / 28`のハードウェア対すべてにおいて、最大チャネル誤差$\Delta_{\max} \le 2 / 255$、ピーク信号対雑音比（`PSNR`）`>= 64.16 dB`、構造的類似性（`SSIM`）`>= 0.99983`を満たした。なお、測定値は`measured_j = None`、`board_metered = false`である）。
+1. **厳密なシミュレーション、簡潔な規則、大規模なアクター数、および1時間規模のリプレイは、演算と効果が検証済みの Form の範囲内にとどまる限り、いずれも成立する。** `100,000` 物理ティックにわたり（`GE-H1`、`30` セルにまたがる `0 / 25,500` 件の不一致。対象は、ネイティブ Rust、`Clang` を用いた C++20、コンパイラ群（`GCC`）、`MSVC`、`Wasm`、JavaScript の `BigInt`、Python である）、3 本の1時間・`216,000` ティックのゲームプレイ・セッションが、わずか `44.6 KB` の圧縮入力ログのみからリプレイされた（`GE-H8`、`macOS`、`Linux`、`Windows 11` にわたり `0 / 6,480` 件の不一致）。`17` 個のマルチエンジン・ゲーム挙動（`GE-H4`）では、Unity C# と比べて行数が `76.2%` 少なく、C# + GDScript + Rust の `ECS` を別々に保守する場合と比べて `88.7%` 少ない。`10,000` アクターの空間グリッド・アリーナ（`GE-H5`）では、コンパイル済み C++20 で `0.058 ms`/tick、`1.69 mJ`/tick であったのに対し、インタプリタ型 Python では `564.6 ms`、`13.09 J`/tick であった。`260` 件の静的インターフェース障害テスト（`GE-H6`）では、検出率が `98.46%` であり、構文解析のみの場合の `6.15%` を大きく上回った。`36` 件のヘッドレス `Godot 4.7.2` タスク（`GE-H9`）では、`36 / 36` で厳密なトレースの一致が得られた。いずれの投影においても、同一の正準状態ハッシュが再現された。
 
-**平易な言葉で**
+2. **浮動小数点の標準的な物理演算は、高速数学フラグを付けなくても、`Windows`、`macOS`、`Linux` の間で対数的に速く乖離する。** `FMA` を無効化（`/fp:strict` と `-ffp-contract=off`）した純粋な代数演算 `+`、`-`、`*`、`/`、`sqrt` は、試験したすべての OS と ISA において `25,000` ティックすべてで一致した。しかし、Windows の `UCRT`、macOS の `libm`、Linux の `glibc` にまたがる `std::sin`/`std::cos` では、`10` から `37` ティック以内にビットが反転し（`GE-H2`）、既定の `FMA` 規則では `192` から `406` ティックで乖離が生じた。さらに、`840` 件の制御された摂動軌道（`GE-H7`）により、初期摂動 $\delta_0$ を $2^{-10}$ から米国電気電子学会（`IEEE`）`754` `binary64` のイプシロン $2^{-52}$ まで縮小しても、得られる追加時間は `5.7` から `14.4` 秒にとどまることが確認された（$R^2_{\text{mean}} \ge 0.994$）。
 
-1. **整数で固定された演算を用いれば、オペレーティングシステム、チップ、言語をまたぐ厳密なシミュレーションが成立する。** 100,000ティック(30セルにわたる25,500個の検証済み`SHA-256`チェックポイント)にわたり、ネイティブRust、C++20(`Clang`、コンパイラコレクション(`GCC`)、Windowsの`MSVC`)、WebAssembly(`Wasm`)、JavaScriptの`BigInt`、Pythonは、`macOS`(`arm64`)、`Linux`(`aarch64`および`x86_64`)、`Windows 11`(`x86_64`)上で、732バイトの同一の状態をビット単位で完全に再現した。不一致は0件であった。
+3. **同一のグラフィックスカードであっても、`DirectX 12` と `Vulkan` の間でピクセルのビットが反転しうるため、描画は一方向の許容誤差ゲートの下流に置かれるべきである。** ハードウェアの `GPU × API` 組合せ8通り（`Metal`、`Vulkan`、`DirectX 12`）に加え、Windows Advanced Rasterization Platform（`WARP`）と `Mesa llvmpipe` を対象として、同一の `NVIDIA GeForce 2060`（`108.34 dB` の `PSNR`）または `Intel Iris Xe`（`79.52 dB` の `PSNR`）上で `DirectX 12` と `Vulkan` を切り替えると、シェーダーコンパイラの下位変換により `1` 最下位ビット（`LSB`）が変化する。一方、ベンダーの異なる組合せでは、`0.00%` から `9.34%` のピクセルが `<= 2` `LSB` だけ異なり（`PSNR >= 64.16 dB`、`SSIM >= 0.99983`）、いずれの場合もシミュレーション状態を破損することはなかった（`GE-H3`）。
 
-2. **標準的な浮動小数点物理演算は、fast-mathフラグを使用しなくても、`Windows`、`macOS`、`Linux`の間で乖離する。** FMAを無効化した(`/fp:strict`および`-ffp-contract=off`)純粋な代数演算`+`、`-`、`*`、`/`、`sqrt`は、検証したすべてのOSおよびISAにおいて25,000ティックにわたり一致した。一方、`std::sin`および`std::cos`を呼び出すと、Windowsの`UCRT`、macOSの`libm`、Linuxの`glibc`の間でビットが10〜37ティックの範囲で反転した(60Hzで0.17〜0.62秒)。その結果、ゲームプレイのスコアは9,798〜10,392ティック(163.3〜173.2秒)の時点で非同期化した。さらに、コンパイラ既定のFMA規則は、`MSVC`(`/fp:precise`)と`Clang`(`-ffp-contract=fast`)の間では192ティック目で、`x86_64`と`arm64`の間では406ティック目で乖離した。
+![提案する分割の図。上部の箱にはゲームの形式 P = (S, E, δ, D, λ) が置かれ、型付きインターフェース・スキーマと厳密な検査器を備える。矢印は四つの射影へ伸びる。左側の厳密ゾーンには、シミュレーション(Rust、WebAssembly、XState、SCXML、Python)とスクリプティング(Rhai、Lua、Luau)があり、ティックごとの状態ハッシュで判定される。右側の許容誤差ゾーンには、シーン(BSN 風、glTF、OpenUSD)とレンダリング(Slang、WGSL、WESL)があり、ピクセルごとの誤差で判定される。決定性の境界を示す破線の縦線が中央を通る。下部の帯には、入力、時計、音声、ネットワーク、アセットの入出力、GPU 描画、装飾的な物理演算といったホスト側の効果が挙げられ、これらは記録されたイベントとしてのみ系に入る。](/figures/game-engines/architecture.svg)
 
-3. **同一のグラフィックスカードであっても、`DirectX 12`と`Vulkan`の間でピクセルのビットが反転しうるため、描画は一方向の許容誤差ゲートの下流に配置すべきである。** `Metal`、`Vulkan`、`DirectX 12`によるハードウェアの`GPU × API`の8つの実行環境に加え、Windowsの Advanced Rasterization Platform(`WARP`)および`Mesa llvmpipe`を対象に検証した。同一の`NVIDIA GeForce 2060`(`PSNR` 108.34 dB)または`Intel Iris Xe`(`PSNR` 79.52 dB)上で`DirectX 12`と`Vulkan`を切り替えると、シェーダーコンパイラの低位化により最下位ビット(`LSB`)が1だけ変化した。異なるベンダー間の組み合わせでは、ピクセルの0.00%から9.34%が`<= 2` `LSB`の差異を示した(PSNR >= 64.16 dB、SSIM >= 0.99983)。ただし、これらのいずれもシミュレーション状態を破損させることはなかった。
+*図1. 提案する分割。一つの形式から四つの射影が導かれる。シミュレーションとスクリプティングは厳密ゾーンに置かれ、ティックごとの状態ハッシュで判定される。シーンとレンダリングは許容誤差ゾーンに置かれ、ピクセルごとの誤差で判定される。ホスト側の効果は記録されたイベントとしてのみ系に入る。*
 
-![提案された分割の図。上の箱にはゲームの Form P = S, E, delta, D, lambda が入っており、型付けされたインタフェーススキーマと厳密なチェッカーを備える。矢印は 4 つの射影へ分岐する：左側の厳密領域にあるシミュレーション（Rust、WebAssembly、XState、SCXML、Python）およびスクリプティング（Rhai、Lua、Luau）はティックごとの状態ハッシュで判定され、右側の許容領域にあるシーン（BSN 類似、glTF、OpenUSD）およびレンダリング（Slang、WGSL、WESL）はピクセルごとの誤差で判定される。破線の垂直線が決定論的境界を示す。下部の帯には、ログ化されたイベントとしてのみ入力されるホスト効果（入力、クロック、オーディオ、ネットワーク、アセット入出力、GPU 描画、化粧的物理演算）が列挙されている。](/figures/game-engines/architecture.svg)
+![既存の11の表現を行(Slang、Naga、WGSL と WESL、glTF、OpenUSD、BSN、SCXML と XState、VGDL、GameRule、nAIVE、SpacetimeDB)とし、7つの能力を列(振る舞い、シーン、シェーダ、実行順序、複数ターゲット、再生ログ、層を横断する検査)として並べた格子。緑のセルは文書化された能力、黄色は部分的な能力、灰色は欠如または未文書化を示す。層横断の列は、Slang と nAIVE に部分的な印がある以外はすべて灰色である。](/figures/game-engines/coverage.svg)
 
-図 1. 提案された分割。一つの Form が四つの射影に供給される。シミュレーションおよびスクリプティングは厳密領域に位置し、ティックごとの状態ハッシュで判定される。シーンおよびレンダリングは許容領域に位置し、ピクセルごとの誤差で判定される。ホスト効果はログ化されたイベントとしてのみ入力される。
-
-![11 の既存表現を行とし（Slang、Naga、WGSL および WESL、glTF、OpenUSD、BSN、SCXML および XState、VGDL、GameRule、nAIVE、SpacetimeDB）、7 つの能力列（挙動、シーン、シェーダ、実行順序、マルチターゲット、リプレイログ、クロスレイヤ検査）を持つグリッド。緑のセルは文書化された能力、琥珀色は部分的、灰色は欠如または未文書化を示す。クロスレイヤ列は Slang と nAIVE の部分的印を除きすべて灰色である。](/figures/game-engines/coverage.svg)
-
-*図2. 本研究で読み込んだ文書のみに基づいて採点した既存表現の網羅状況。緑: 文書化された能力。黄: 部分的。灰: 不在または未文書化。最右列の層間検査は、ほぼ空白である。*
+*図2. 既存の表現の対応範囲。本研究で精読した文書のみに基づいて採点した。緑は文書化された能力、黄色は部分的、灰色は欠如または未文書化を示す。最右列の層横断の検査はほぼ空白である。*
 
 <div id="1-terms-notation-and-the-idea-under-test" class="anchor-alias" aria-hidden="true"></div>
 
 ## 1. 用語、表記法、および検証対象の考え方
 
 <ul id="terms">
-<li>RCE, IR, ECS, FSM, SDF: 現実コードエンジン[同一家], 中間表現, エンティティコンポーネントシステム, 有限状態機械, 符号付き距離場</li>
+<li>RCE, IR, ECS, FSM, SDF, AST, DAG, LCG: 現実コードエンジン [同一家], 中間表現, エンティティコンポーネントシステム, 有限状態機械, 符号付き距離場, 抽象構文木, 有向非巡回グラフ, および線形合同法生成器</li>
 <li>CPU, GPU, ISA, ISAs, SIMD, AVX2, NEON, SFU, ROP, RPL, TGL: 中央処理装置, グラフィックス処理装置, 命令セットアーキテクチャ(複数形), 単一命令多データ, Advanced Vector Extensions 2, Arm Advanced SIMD, 特殊機能ユニット, ラスタ操作パイプライン, Intel Raptor Lake モバイルアーキテクチャ, Intel Tiger Lake モバイルアーキテクチャ</li>
-<li>IEEE, FMA, VFMADD, VFNMADD, FMADD, FMSUB, ULP, LSB, SHA, MAE, RMSE, PSNR, SSIM, SD, RGBA8: Institute of Electrical and Electronics Engineers (IEEE 754浮動小数点におけるもの), 融合積和演算, x86_64ベクトル融合積和および否定積和オペコード, AArch64スカラー融合積和および積減算オペコード, 最終桁単位, 最下位ビット, Secure Hash Algorithm (`SHA-256`), 平均絶対誤差, 二乗平均平方根誤差, ピーク信号対雑音比, 構造的類似性指標, 標準偏差, および8ビット毎チャネル赤緑青アルファフレームバッファ形式</li>
-<li>WGSL, WESL, SPIR-V, GLSL, HLSL, MSL, D3D11, D3D12, DX12, VULKAN, METAL, DXIL, DXBC, DXC, FXC, WARP, WDDM, CUDA: WebGPU Shading Language, WebGPU Extended Shading Language, Standard Portable Intermediate Representation V, OpenGL Shading Language, High-Level Shading Language, Metal Shading Language, Direct3D 11, Direct3D 12, DirectX 12, `wgpu::Backends::VULKAN` と `wgpu::Backends::METAL` バックエンドフラグ, DirectX Intermediate Language, DirectX バイトコード, DirectX Shader Compiler, 従来の Direct3D Effect-Compiler ツール, Windows Advanced Rasterization Platform ソフトウェア DirectX 12 ラスタライザ, Windows Display Driver Model, Compute Unified Device Architecture</li>
-<li>RADV, ANV, LLVM, GNU, GCC, MSVC, UCRT, NT, PE, OS, OSs, API, APIs, JIT, WebXR, WebMCP, URL, JSON, YAML, README, MB, CS0246, RE, ENGINE, DFU: Mesa Radeon Vulkan ドライバ, Mesa Intel Vulkan ドライバ, Low Level Virtual Machine コンパイラ基盤, GNU's Not Unix プロジェクト, GNU Compiler Collection, Microsoft Visual C++ コンパイラ (`cl.exe`), Windows Universal C Runtime (`ucrtbase.dll`), Windows New Technology カーネル (`Windows NT`), Windows Portable Executable, オペレーティングシステム(複数形), アプリケーションプログラミングインタフェース(複数形), just-in-time コンパイラ, Web Extended Reality API, Web Model Context Protocol, Uniform Resource Locator, JavaScript Object Notation, YAML Ain't Markup Language, リポジトリ README 文書ファイル, メガバイト, C# コンパイラ欠如型診断 CS0246, Capcom RE ENGINE (「Reach for the Moon」／「RE neXt」エンジンブランディング), および Dagstuhl Follow-Ups DOI プレフィックス</li>
+<li>IEEE, FMA, VFMADD, VFNMADD, FMADD, FMSUB, ULP, LSB, SHA, MAE, RMSE, PSNR, SSIM, SD, OLS, CI, TP, FP, FN, TN, RGBA8: 電気電子工学協会 (IEEE 754浮動小数点形式におけるもの), 融合乗加算, x86_64ベクトル融合乗加算および否定乗加算オペコード, AArch64スカラー融合乗加算および乗減算オペコード, 最終桁単位, 最下位ビット, セキュアハッシュアルゴリズム (`SHA-256`), 平均絶対誤差, 二乗平均平方根誤差, ピーク信号対雑音比, 構造的類似性指標, 標準偏差, 通常最小二乗法, 信頼区間, 真陽性, 偽陽性, 偽陰性, 真陰性, および8ビット毎チャネル赤緑青アルファフレームバッファ形式</li>
+<li>WGSL, WESL, SPIR-V, GLSL, HLSL, MSL, D3D11, D3D12, DX12, VULKAN, METAL, DXIL, DXBC, DXC, FXC, WARP, WDDM, CUDA, UBO: WebGPUシェーディング言語, WebGPU拡張シェーディング言語, 標準可搬中間表現V, OpenGLシェーディング言語, 高水準シェーディング言語, Metalシェーディング言語, Direct3D 11, Direct3D 12, DirectX 12, `wgpu::Backends::VULKAN`および`wgpu::Backends::METAL`バックエンドフラグ, DirectX中間言語, DirectXバイトコード, DirectXシェーダーコンパイラ, 従来のDirect3Dエフェクトコンパイラツール, Windows高度ラスタライズプラットフォームソフトウェアDirectX 12ラスタライザ, Windowsディスプレイドライバモデル, 統一計算デバイスアーキテクチャ, およびユニフォームバッファオブジェクト</li>
+<li>RADV、ANV、LLVM、GNU、GCC、MSVC、UCRT、NT、PE、OS、OSs、API、APIs、JIT、VM、SLOC、HUD、UI、SFX、LOS、AABB、HP、XP、AP、KB、MB、CRUD、NL、VLM、LLM、GFW、Xvfb、WebXR、WebMCP、URL、JSON、YAML、README、NTFS、CRLF、CS0246、RE、ENGINE、DFU：Mesa Radeon Vulkan ドライバ、Mesa Intel Vulkan ドライバ、Low Level Virtual Machine コンパイラ基盤、GNU の Not Unix プロジェクト、GNU Compiler Collection、Microsoft Visual C++ コンパイラ（`cl.exe`）、Windows Universal C Runtime（`ucrtbase.dll`）、Windows New Technology カーネル（`Windows NT`）、Windows Portable Executable、オペレーティングシステム群、アプリケーションプログラミングインタフェース群、ジャストインタイムコンパイラ、仮想マシン、コメントでも空白行でもないソースコード行数、ヘッドアップディスプレイ、ユーザインタフェース、サウンドエフェクト、視界ライン、軸整列バウンドボックス、ヒットポイント、経験ポイント、アクションポイント、キロバイト、メガバイト、作成/読み取り/更新/削除操作、自然言語、ビジョンランゲージモデル、ラージランゲージモデル、Great Firewall ネットワークフィルタ、X 仮想フレームバッファディスプレイサーバ、Web Extended Reality API、Web Model Context Protocol、Uniform Resource Locator、JavaScript Object Notation、YAML Ain't Markup Language、リポジトリ README 文書ファイル、New Technology File System、キャリッジリターン・ラインフィードシーケンス、C# コンパイラ欠損型診断 CS0246、Capcom RE ENGINE（「Reach for the Moon」／「RE neXt」 エンジンブランディング）、および Dagstuhl Follow-Ups DOI プレフィックス</li>
 <li>SCXML, GDL, VGDL, BSN, BSL, MLIR, ACID, GGPO, glTF, OpenUSD, USD, LAN, AI, CIG: State Chart XML, Game Description Language, Video Game Description Language, Bevy Scene Notation, Boldsea Semantic Language, Multi-Level Intermediate Representation, 原子性/一貫性/隔離性/永続性トランザクション, Good Game Peace Outロールバックネットワークライブラリ, Graphics Language Transmission Format (ISO/IEC 12113:2022), Open Universal Scene Description, Universal Scene Description, ローカルエリアネットワーク, 人工知能, およびComputational Intelligence and Games</li>
 <li>SATB, RAPL, MSR, PID, RUSAGE, V6, AMD, NVIDIA, RTX, V100, GH200, CTC: Satiation Tiered Benchmark（SATB）のテレメトリ水準（`L2` はソケット/パッケージのカウンタ、`L3` はプロセス単位のカーネルカウンタ）[同一組織]、Running Average Power Limit（平均電力制限）、モデル固有レジスタ（model-specific register）、プロセス識別子（process identifier）、`proc_pid_rusage`（`RUSAGE_INFO_V6`）、Advanced Micro Devices（AMD社）、NVIDIA Corporation（NVIDIA社）、NVIDIA GeForce RTX GPUファミリ、Volta V100 GPU、Grace Hopper GH200スーパーチップ、および閉じた時間的曲線（closed timelike curve）</li>
 </ul>
 
-前方参照を上から下へ見通しやすくするため、第1節ではForm表記を定義し、第2節では既存のゲーム表現を概観し、第3節では浮動小数点数による乖離を分析し、第4節では中間表現を一覧にし、第5節では提案する階層分割を述べ、第6節では3 OS・複数ISA・3 APIにわたるクロスGPUの反証実験の結果を報告し、第7節では実現不可能性のフラグを列挙し、第8節では出典と限界を記録する。
+第1節はForm記法を定義し、第2節は既存のゲーム表現を概観し、第3節は浮動小数点の乖離を分析し、第4節は中間表現を表形式でまとめ、第5節は提案する層分割を述べ、第6節は3種類のOS、3種類のISA、3種類のGPU API、および4種類のゲーム動作ツールチェインにわたる9つの実行済み偽造検出スイート（`GE-H1`から`GE-H9`）を報告し、第7節は実行不可能フラグを列挙し、第8節は出典と限界を文書化する。
 
-[現実コードエンジン (RCE)](https://research.openie.dev/about/rce/)は、プログラムを状態機械として扱う。この状態機械をFormと呼び、$P = (S, E, \delta, D, \lambda)$ と記述する。
+[現実コードエンジン (RCE)](https://research.openie.dev/about/rce/) はプログラムをFormと呼ばれる状態機械として扱い、$P = (S, E, \delta, D, \lambda)$ と書く。
 
 - $S$: 状態の集合;
-- $E$: 事象(入力)の集合;
+- $E$: 事象（入力）の集合;
 - $\delta : S \times E \to S$: 遷移関数;
-- $D$: 実行されたすべてのステップを記録する追記専用のログ;
-- $\lambda$: 状態から観測可能な出力への写像。
+- $D$: 実行されたすべてのステップを追記するログ;
+- $\lambda$: 状態から観測可能な出力への写像.
 
-厳密な検査器は、Formを受理するか、違反した規則を明示して拒否する。受理されたFormは、エミッタによってRust、Python、JavaScript、Scalaへ射影される。XState(JavaScriptおよびTypeScript向けのステートチャートライブラリ)、SCXML(World Wide Web Consortiumの勧告)、WebAssembly(`Wasm`)は、エミッタの対象には含まれていない。本研究では、これらを射影先の候補として扱う。すべてのステップは $D$ に記録されるため、任意の実行を再生できる。
+厳密な検査器はFormを受け入れるか、違反した規則の名称を返す。次にエミッタが受理されたFormをRust、Python、JavaScriptおよびScalaに射影する。XState（JavaScriptおよびTypeScriptの状態チャートライブラリ）、SCXML（World Wide Web Consortium勧告）、WebAssembly（`Wasm`）、およびGodot 4 GDScriptはコア検査器における組み込みの`rce emit`対象ではない。第6節はコンパイルされた`Wasm`射影（`GE-H1`、`GE-H5`）を試験し、`rce emit form`の上にForm-to-Godot 4 GDScriptエミッタを単独で構築する（`GE-H9`）。あらゆるステップが$D$に記録されるため、任意の実行を再生できる。
 
-ゲームエンジンは、はるかに大きな機械である。固定ステップのシミュレーション、スクリプト層、シーン記述、そしてGPU上のレンダリングパイプラインを実行する。第1節から第8節では、これらの層のうちどれをForm内に置けるか、どれを外部のホスト効果として外に置くべきか、そして厳密性がどこで許容誤差に譲歩しなければならないかを検討する。
+ゲームエンジンははるかに大きな機械である。それは固定ステップシミュレーション、スクリプト層、シーン記述、およびGPU上のレンダリングパイプラインを実行する。第1節から第8節は、これらの層のうちどれがForm内に存在し得るか、どれがホスト効果として外部に留まる必要があるか、そして厳密性が許容誤差に譲らなければならない境界はどこにあるかを問う。
 
-この着想には長い系譜がある。スタンフォード大学の[Game Description Language (GDL)仕様書](http://ggp.stanford.edu/readings/gdl_spec.pdf)は、対象を「有限・離散・決定論的な、完全情報をもつ複数プレイヤーのゲーム」と定め、そのようなゲームの自然な基礎モデルは「有限状態機械である」と指摘している。ゲームエンジンにおいて新しいのは状態機械そのものではなく、その周囲にある要素、すなわち浮動小数点数による物理演算、スクリプト、シーン、そしてGPUである。
+この考え方には長い系譜がある。Stanfordの[ゲーム記述言語 (GDL) 仕様](http://ggp.stanford.edu/readings/gdl_spec.pdf)は「有限で離散的、決定論的、完全情報多人数ゲーム」を対象とし、そのようなゲームの自然な基礎モデル「は有限状態機械である」と述べている。ゲームエンジンにおいて新しいのは状態機械そのものではなく、その周囲にあるすべて、すなわち浮動小数点物理、スクリプト、シーン、およびGPUである。
 
 <div id="2-what-the-landscape-shows" class="anchor-alias" aria-hidden="true"></div>
 
@@ -98,9 +94,9 @@ Mageベンチマーク（[arXiv:2605.07342](https://arxiv.org/abs/2605.07342)）
 
 <div id="24-public-benchmarks-with-replayable-traces-exist" class="anchor-alias" aria-hidden="true"></div>
 
-### 2.4 再生可能なトレースを持つ公開ベンチマークが存在する
+### 2.4 再生可能なトレースを備えた公開ベンチマークは存在する
 
-GameCraft-Bench ([arXiv:2606.17861](https://arxiv.org/abs/2606.17861); [リポジトリ](https://github.com/FreedomIntelligence/gamecraft-bench)) は、15 ファミリーにわたる 140 の Godot 4 二次元タスクを提供している。提出物は再生可能な入力トレースを伴う。論文での最も強力なエージェントは 41.46% のスコアを獲得し、リポジトリは後に 65.70% を報告している。Unity、Unreal、3D、マルチプレイヤー、あるいは大規模物理シーンはカバーされていない。 [Summer Engine](https://www.summerengine.com/templates) は、ラリー、プラットフォーマー、タワーディフェンス、メトロイドヴァニア、サバイバーズ、ファーストパーソンシューター、LAN マルチプレイヤー、ボクセルなど、17 のオープンソースゲームテンプレートを公開している。General Video Game AI フレームワークとその VGDL ([arXiv:1802.10363](https://arxiv.org/abs/1802.10363)) は、スプライト、インタラクション、終了条件、レベルマッピング集合で定義された 120 のシングルプレイヤーゲームと 60 の二人プレイヤーゲームを提供している。
+GameCraft-Bench（[arXiv:2606.17861](https://arxiv.org/abs/2606.17861)；[リポジトリ](https://github.com/FreedomIntelligence/gamecraft-bench)）は、Godot 4 による2次元タスク140件を15のファミリーに分けて提供する。提出物には再生可能な入力トレースが含まれる。論文中で最も強力なエージェントの得点は41.46%であり、リポジトリでは後に65.70%から75.86%という値が報告されている。ただし、Unity、Unreal、3次元、マルチプレイヤー、大規模な物理シーンは対象外である。[Summer Engine](https://www.summerengine.com/templates)は、ラリー、プラットフォーマー、タワーディフェンス、メトロイドヴァニア、サバイバーズ、一人称シューター、LANマルチプレイヤー、ボクセル等を含む17件のオープンソースのゲームテンプレートを公開している。General Video Game AI フレームワークおよびその記述言語VGDL（[arXiv:1802.10363](https://arxiv.org/abs/1802.10363)）は、スプライト集合、相互作用集合、終了条件集合、レベル対応集合によって定義される、単一プレイヤーゲーム120件と二人プレイヤーゲーム60件を提供する。
 
 <div id="25-convergence-across-industry-and-research" class="anchor-alias" aria-hidden="true"></div>
 
@@ -132,7 +128,7 @@ $$\delta(t) = \delta_0 \, e^{\Lambda t},$$
 
 $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
-*例示モデル:* $\delta_0 \approx 6 \times 10^{-8}$ (単精度の 1 ULP、相対) 、$\Delta = 1$ (壁の向こう側のオブジェクト) 、仮定された $\Lambda = 2\ \text{s}^{-1}$ とする。すると $t^{*} \approx 0.5 \ln(1.7 \times 10^{7}) \approx 8.3$ s になる。対数が鍵であり、$\delta_0$ を百万倍縮小しても約 6.9 秒しか増えない。したがって近似的一致はシミュレーションを救うことはできない。状態はビット単位で同一であるか、最終的に発散するかのいずれかであり、この予測は 25,000 のマルチ ISA と 3-OS の衝突ティック以下で直接検証された (`GE-H2`)。
+*例示モデル：* $\delta_0 \approx 6 \times 10^{-8}$（単精度浮動小数点数の1 ULP，相対値），$\Delta = 1$（壁の反対側にある物体），および仮定された$\Lambda = 2\ \text{s}^{-1}$とする。このとき$t^{*} \approx 0.5 \ln(1.7 \times 10^{7}) \approx 8.3$ sとなる。対数が鍵である：$\delta_0$を100万分の1に縮小しても，わずか6.9秒程度しか得られない。したがって近似的一致はシミュレーションを救済し得ない。状態はビット単位で同一であるか，やがて発散するかのいずれかであり，この予測は25,000件のマルチISA・3 OS衝突ティック（`GE-H2`）および840軌道の$\ln(\Delta/\delta_0)$傾き掃引（`GE-H7`）により直接検証されている。
 
 実践もこの見方と一致している。[Gaffer On Games](https://gafferongames.com/post/floating_point_determinism/) は、機器間の決定性にはコンパイラと命令セットの一致が必要であること、Battlezone 2 では AMD と Intel の間で超越関数の差異に直面したこと、MotoGP のリプレイは Xbox と個人用コンピュータの間で共有できなかったことを記録している。また、FMA の縮約と再結合を禁止すべきとする Markstein の助言を引用している。[Rapier ガイド](https://rapier.rs/docs/user_guides/rust/determinism/) は、動作する方法を示している。すなわち、クロスプラットフォームの決定性は、`enhanced-determinism` 機能(`simd8` とは非互換)を用い、IEEE 754-2008 対応のターゲット(Wasm は該当する)上で、ソフトウェアによる超越関数を使用する場合にのみ成立する。
 
@@ -166,18 +162,18 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
 <div id="51-layer-split" class="anchor-alias" aria-hidden="true"></div>
 
-### 5.1 レイヤ分割
+### 5.1 レイヤー分割
 
-1. **シミュレーション形式（厳密）。** $S$ は固定小数点または厳密な IEEE 754 値を保持し、FMA および再結合を無効化する。超越関数は整数演算またはピン留めされたソフトウェアルーチンで実装する。$E$ はティックイベントと記録された入力を保持する。$\delta$ は SCXML のマクロステップ意味論に従う。すなわち各ティックにおいて、イベントをキューの順序で処理し、競合は文書順序によって解決し、並列領域は直列に実行する。コレクションは宣言された順序で反復する。これは GameRule の契約（宣言順序、後勝ちの書き込み、構造変更はティックの末尾に遅延）に従う。並列性が望まれる場合、検査器は Core ECS の非交差条件を満たすスケジュールのみを許容する。
-2. **スクリプト射影（厳密）。** 設計者のスクリプトは $S$ 上のガードおよびアクションにコンパイルされ、[Rhai](https://rhai.rs/book/about/features.html)（サンドボックス化され、"Don't Panic" 保証、no-std および Wasm 対応）、Lua、または [Luau](https://luau.org/)（既定でサンドボックス化され、漸進的型を備える）として出力される。スクリプトは宣言されたアクションを通じてのみ $\delta$ を呼び出せる。時計、乱数源、GPU の結果を直接読むことはできない。
-3. **シーン射影（下流における許容誤差）。** $\lambda$ は $S$ を BSN 風のパッチ木へ写像する。その構成要素スキーマは形式の一部である。アセットの書き出し先として glTF および OpenUSD を用いる。
-4. **描画射影（許容誤差）。** マテリアルおよびパスは Slang または WGSL で記述し、Slang または Naga を経由して `DirectX 12`、`Metal`、`Vulkan` の各バックエンドへ出力する。描画は $\lambda(s)$ の純粋関数である。GPU の結果が $S$ へ逆流することはない。
+1. **シミュレーション形態（正確）.** $S$ は固定小数点または厳密な IEEE 754 値を保持し、FMA と再結合を無効化し、超越関数は整数または固定ソフトウェア例程で実装する。$E$ はティックイベントと記録入力を保持する。$\delta$ は SCXML マクロステップセマンティクスを使用し、ティック毎にキュー順にイベントを処理し、文書順で競合を解決し、並列領域を逐次実行する。コレクションは宣言順に走査し、GameRule の契約（宣言順、後書きが勝ち、構造変更はティック終端に遅延）に従う。並列性が要求される場合、チェッカーは Core ECS の非交叉条件を満たすスケジュールのみを許容する。
+2. **スクリプト投影（正確）.** デザイナースクリプトは $S$ 上のガードとアクションにコンパイルされ、[Rhai](https://rhai.rs/book/about/features.html)（サンドボックス化、"Don't Panic" 保証、no-std と Wasm 対応）、Lua、[Luau](https://luau.org/)（デフォルトでサンドボックス化、段階的型付け）または Godot 4 GDScript (`GE-H9`) のような型付エンジンスクリプトとして出力される。スクリプトは宣言されたアクションを介してのみ $\delta$ を呼び出すことができ、クロック、乱数源、GPU 結果を直接読むことはできない。
+3. **シーン投影（下流許容）.** $\lambda$ は $S$ を BSN ライクなパッチツリーへ写像し、そのコンポーネントスキーマは Form の一部となる。glTF と OpenUSD がアセットのエクスポート先として使用される。
+4. **レンダリング投影（許容）.** マテリアルとパスは Slang または WGSL で作成され、Slang または Naga を通じて `DirectX 12`、`Metal`、`Vulkan` バックエンドへ出力される。レンダリングは $\lambda(s)$ の純粋関数であり、GPU の結果が $S$ に逆流することはない。
 
 <div id="52-inside-the-form-versus-host-effects" class="anchor-alias" aria-hidden="true"></div>
 
-### 5.2 形式の内側と外部ホスト効果
+### 5.2 フォーム内部対ホスト効果
 
-内側には、状態、遷移、規則の順序、ゲーム上重要な物体に対する不動点物理、シード $S$ を持つ乱数生成器、インターフェース・スキーマが含まれる。外側には、入力デバイス、壁時計時刻、ネットワークパケット、音声出力、アセットの入出力、GPU描画、そして見た目のみに用いられるサードパーティ製物理演算などが、ログされるイベントとして扱われる。再生時には、デバイスに触れることなく、記録された $D$ を $\delta$ に与え直す。記録に要する記憶コストは小さい。ティックレート $f_{\text{tick}} = 60$ Hz、ティックあたりの入力 $b = 16$ バイトとすると、ログは $f_{\text{tick}} \cdot b = 960$ B/s の速度で増加し、1時間あたり約3.5 MBとなる。
+内部：状態、遷移、規則順序、ゲームプレイ関連物体に対する固定小数点物理、シードが$S$にある乱数生成器、インタフェーススキーマ。外部は、記録されたイベントとして：デバイス入力、壁時計時間、ネットワークパケット、オーディオ出力、アセット入出力、GPU描画、および化粧効果に用いられる任意の第三者物理。再生はデバイスに触れることなく$D$を$\delta$を通してフィードバックする。記憶コストは控えめである。ティックレート$f_{\text{tick}} = 60$ Hzおよびティックあたり$b = 2$から$16$バイトの入力で、生ログは$120$から$960$ B/sで成長する（生で`0.43`から`3.5` MB/時、6.8節でgzip圧縮後`44.6 KB`/時）。
 
 <div id="53-determinism-boundary" class="anchor-alias" aria-hidden="true"></div>
 
@@ -193,27 +189,31 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
 チェッカは、任意のエミッションの前に4種類の型付きエッジを検証する：(a) スクリプトからシミュレーションへ：すべてのアクションが、引数型が一致する宣言済み遷移を指名すること；(b) シミュレーションからシーンへ：$\lambda$の出力がコンポーネントスキーマに一致すること；(c) シーンからレンダリングへ：すべてのマテリアルバインディングが、互換性のある型、グループ、およびバインディングインデックスを持つSlangまたはWGSLリソースに一致すること；(d) イベントカバレッジ：スクリプトがリッスンするすべてのイベントが、何らかの遷移またはホストソースによって生成可能であること。Mageの発見（2.3節）が、エッジ検査をコンパイル成功ではなく動作トレースによって判定する理由である。
 
-<div id="6-falsifier-first-test-plan-and-executed-3-os--3-isa--3-api-results" class="anchor-alias" aria-hidden="true"></div>
+<div id="6-falsifier-first-test-plan-and-full-ge-h1ge-h9-empirical-closure" class="anchor-alias" aria-hidden="true"></div>
 
-## 6. 偽造者優先テスト計画および実行された3-OS/3-ISA/3-API結果
+## 6. 反証優先の検証計画と `GE-H1`-`GE-H9` の実証的閉鎖
 
-各仮説は、その殺却基準とともに列挙される。基準が満たされた場合、主張は撤回される。6.1節から6.4節は、3つの実行された経験的偽造者スイート（`GE-H1` 3-OS×3-ISA `Q32.32` リプレイ（30のターゲット×ホストセル間）、`GE-H2` 3-OS×3-ISA浮動小数点ドリフト（`Windows 11 UCRT`、`macOS libSystem`、および`Linux glibc`間）、および`GE-H3` 3-OS×3-APIヘッドレス`wgpu`レンダリング許容誤差（`DirectX 12`、`Metal`、および`Vulkan`間））、ならびにインタラクティブなジュール予算付き`Q32.32`プロトタイプ（`GE-H4`から`GE-H9`は未解決のまま）を報告する。
+各仮説には反証基準を併記する。反証基準が充足された場合、当該主張は撤回される。6.1 から 6.10 では、9 件の実行済み実証的反証スイート (`GE-H1` から `GE-H9`、事前登録ファイル `PREREG_wave3_multi_isa_wgpu.json` `1721e5bdffaf...` および `PREREG_wave5_ge_h4_h9.json` `7d02115e37d3...` に基づく) の結果を、対話型かつジュール予算制約付きの `Q32.32` Chrono-Budget Arena とあわせて報告する。
 
-| ID | 仮説 | テストコーパス | 測定量 | 棄却基準 | ステータス |
+| ID | 仮説 | 検証コーパス | 測定量 | 棄却基準 | 状態 |
 |---|---|---|---|---|---|
-| GE-H1 | シミュレーションの射影は言語・OS・CPU ISA を横断してビット単位で同一である | 16体 2D アリーナ Form（`Q32.32` 固定小数点、`732` バイトの状態）を `arm64` macOS、`aarch64` Linux、AMD/Intel `x86_64` Linux、Tiger Lake `x86_64` Windows 11 上で実行 | Rust、Wasm32、C++20（`Clang`/`GCC`/`MSVC`）、Node.js `BigInt`、Python 3 にわたる $10^5$ ティックの $H(s_t)$（`30` セル） | 任意の `(host, target)` セルの任意のチェックポイントでハッシュ不一致が生じた場合 | **実施済み（`3` OS・`3` ISA にわたり `0 / 25,500` 件の不一致、第6.1節）** |
-| GE-H2 | 厳密モードと、3 OS・クロス ISA における浮動小数点の境界およびライブラリ/FMA によるドリフトとの比較 | 16体 2D カオティックアリーナ（`arm64` macOS、`aarch64` Linux、`x86_64` Linux、`x86_64` Windows 11 にわたる `25,000` ティック） | 厳密な `f64`、3 OS の `UCRT`/`libSystem`/`glibc` による `sin/cos`、`MSVC` 対 `Clang` の `FMA`、V8 の `Math.sin`、および `f32` にわたる厳密な乖離ティック `t_div` | 固定された代数演算の下での予期しない不一致、または予測されなかった無音のドリフト | **`macOS`、`Linux`、`Windows 11` にわたり実施済み（第6.2節）** |
-| GE-H3 | GPU・API を横断したレンダリングは有界な許容誤差内に収まる（`wgpu` / WGSL） | 正準 `Q32.32` 状態 4 件（`t = 0, 250, 1k, 10k`）を、`8` 個の `GPU × API` エンドポイント（`DX12`、`Metal`、`Vulkan`）、`WARP`、`llvmpipe`、`CPU Q16.16` 上で `512×512` の `RGBA8Unorm` にレンダリング | フレームバッファの `SHA-256`、差分ピクセルの `%`、$\Delta_{\max}$、MAE、RMSE、`PSNR`、`SSIM` | いずれかの物理 GPU の組で `PSNR > 40 dB`、`SSIM > 0.999`、または $p(\Delta > 8) \le 0.001$ を満たさない場合 | **実施済み（`28/28` の組、すなわち `112/112` フレームが合格基準を満たす：`PSNR ≥ 64.16 dB`、`SSIM ≥ 0.99983`、第6.3節）** |
-| GE-H4 | Form で符号化された規則は、GameRule と同程度にコードを削減する | Haunted Jaunt、Survival Shooter、Tanks の振る舞い | 振る舞いコードの行数 | 削減率が 50% 未満である場合（GameRule は 81.3% に到達） | 未着手 |
-| GE-H5 | Form ランタイムは GameRule の上限を超える | 合成アクタのスケーリング | アクタ数 $N$ に対するステップ時間 | $N = 350$ 未満で、ステップ時間が 20 ms を超える場合 | 未着手 |
-| GE-H6 | インタフェース検査は実際の欠陥を検出する | Mage の 26 パターン、および注入されたバインディングおよびスキーマの欠陥 | 検出率、メカニズム F1 | 注入された欠陥の検出率が 90% 未満である場合、または F1 が IR を用いない場合の 0.12 を上回らない場合 | 未着手 |
-| GE-H7 | Summer Engine のテンプレートに対する完全な $\ln(\Delta/\delta_0)$ の傾き掃引 | 物理演算を多用する Summer Engine のテンプレートを Form として再表現したもの | 注入された $\delta_0$ に対する乖離時刻 | $t^{*}$ と $\ln(1/\delta_0)$ の傾きが 0 と区別できない場合 | 未着手 |
-| GE-H8 | リプレイは完全である | 1 時間分の記録されたセッション | $D$ のみから再現された最終ハッシュ | $D$ に含まれない状態を必要とするリプレイが存在する場合 | 未着手 |
-| GE-H9 | ベンチマークの同等性 | Form-to-Godot エミッタを経由した GameCraft-Bench の 140 タスク | ネイティブ Godot による提出との合格率の比較 | 振る舞いが同一の入力に対して合格率が低い場合 | 未着手 |
+| GE-H1 | シミュレーションの射影は、言語、OS、CPU の ISA をまたいでビット単位で一致する | `arm64` macOS、`aarch64` Linux、AMD/Intel `x86_64` Linux、Tiger Lake `x86_64` Windows 11 にわたる 16 体 2D アリーナの Form (`Q32.32` 固定小数点、`732` バイトの状態) | Rust、Wasm32、C++20 (`Clang`/`GCC`/`MSVC`)、Node.js `BigInt`、Python 3 における $10^5$ ティック分の $H(s_t)$ (`30` セル) | 任意の `(host, target)` セルの任意のチェックポイントでハッシュが 1 つでも不一致 | **実行済み (`3` OS・`3` ISA で `0 / 25,500` 件の不一致、6.1 節)** |
+| GE-H2 | 厳密モードと、3 OS・ISA 横断の浮動小数点境界およびライブラリ/FMA のドリフト | 16 体 2D カオスアリーナ (`arm64` macOS、`aarch64` Linux、`x86_64` Linux、`x86_64` Windows 11 にわたる `25,000` ティック) | 厳密 `f64`、3 OS の `UCRT`/`libSystem`/`glibc` による `sin/cos`、`MSVC` 対 `Clang` の `FMA`、V8 の `Math.sin`、`f32` における正確な発散ティック `t_div` | 固定した代数的演算の下での想定外の不一致、または予測されなかった暗黙のドリフト | **`macOS`、`Linux`、`Windows 11` で実行済み (6.2 節)** |
+| GE-H3 | GPU および API をまたぐ描画は、有界な許容誤差内に収まる (`wgpu` / WGSL) | 4 つの標準 `Q32.32` 状態 (`t = 0, 250, 1k, 10k`) を、`8` 個のハードウェア `GPU × API` エンドポイント (`DX12`、`Metal`、`Vulkan`)、`WARP`、`llvmpipe`、`CPU Q16.16` 上で `512×512` の `RGBA8Unorm` として描画 | フレームバッファの `SHA-256`、相違画素の割合 (%)、$\Delta_{\max}$、MAE、RMSE、`PSNR`、`SSIM` | 物理 GPU のいずれかの対が `PSNR > 40 dB`、`SSIM > 0.999`、または $p(\Delta > 8) \le 0.001$ を満たさない | **実行済み (`28/28` 対 = `112/112` フレームがゲートを通過: `PSNR ≥ 64.16 dB`、`SSIM ≥ 0.99983`、6.3 節)** |
+| GE-H4 | Form で符号化したルールは GameRule と同様にコードを削減する | *Haunted Jaunt* (`5`)、*Survival Shooter* (`7`)、*Tanks* (`5`) にわたる `17` 個の振る舞い × `4` 言語 (`68` モジュール、`680` トレース) | コメントを除く `SLOC`、字句トークン数、グルー行数、言語間のトレース一致 | Unity C# に対する振る舞い `SLOC` 削減率が `< 50%` (GameRule: `81.3%`)、またはトレース不一致が `> 0` 件 | **実行済み (Unity C# に対し `−76.22%` SLOC、Rust ECS に対し `−61.47%`、GDScript に対し `−51.99%`、`0 / 680` 件の不一致、6.4 節)** |
+| GE-H5 | Form ランタイムは GameRule の上限を超える | 複数アクターの `Q32.32` `16×16` 空間グリッドアリーナ (`N = 64..10,000`、`500` ティック/セル、`5` ティア + Linux `RAPL` の `reported_j`) | p50/p99 のステップ時間 `ms/tick`、`RAPL` の `mJ/tick`、$N_{20\text{ms}}$、ティア間の `SHA-256` | コンパイル済み Form のステップ時間が $N = 350$ 未満で `> 20 ms`、またはハッシュ不一致が `> 0` 件 | **実行済み (`N_20ms = 390` Py、`3,906` Node.js、コンパイル済みは `N = 10,000` で `0.058-0.125 ms/tick`、`0 / 50` 件の不一致、6.5 節)** |
+| GE-H6 | インタフェース検査は実際の欠陥を捕捉する | `26` 種の欠陥パターン × `10` モジュール (`130` 件の注入故障 + `130` 件の有効な対照 = `260` モジュール) | `TP`、`FP`、`FN`、`TN`、検出再現率 (%)、適合率 (%)、故障 `F1` | 注入故障の検出が `< 90%`、または `F1` が IR なしの `0.12` を上回らない | **実行済み (`128 / 130` = 再現率 `98.46%`、`0` FP、`F1 = 0.9922` 対 構文解析のみのベースライン `0.1159`、6.6 節)** |
+| GE-H7 | カオス的物理テンプレートに対する $\ln(\Delta/\delta_0)$ の傾きの全面掃引 | `3` 種のカオステンプレート (`GE-T1`..`GE-T3`) × `7` 種の摂動 $\delta_0 \in [2^{-52}, 2^{-10}]$ × `40` シード (`840` 本の軌道、`60 Hz`) | OLS 傾き $\hat{\beta} = 1/\hat{\Lambda}$、含意される $\hat{\Lambda}$、$R^2$、95% ブートストラップ信頼区間、両側 $p$ | $t^*$ の $\ln(\Delta/\delta_0)$ に対する傾きがゼロと区別できない ($p \ge 0.01$) | **実行済み ($\hat{\Lambda} \in \{1.95, 2.48, 5.07\}\ \text{s}^{-1}$、$R^2_{\text{mean}} = 0.9940\text{-}0.9995$、$p \le 10^{-77.6}$、6.7 節)** |
+| GE-H8 | 再生は完全である | `macOS`、`Linux`、`Windows 11` にわたり、コンパクトな入力ログ $D$ のみから再生した 1 時間 (`60 Hz` で `216,000` ティック) のセッション 3 件 + `4` 件のリーク対照 | `2,160` 個のストライド `100` ダイジェストと最終 `SHA-256` ダイジェスト、圧縮後の $|D|$ と状態ストリームの比較 | $D$ のみからの再生で OS 間のハッシュ不一致が 1 件でもある、またはリーク対照が発散しない | **実行済み (`3` OS で `0 / 6,480` 件のチェックポイント不一致、`44.6 KB` の gzip 圧縮 $D$ = `116×-292×` の縮小、`4/4` のリークが `t = 1` で発散、6.8 節)** |
+| GE-H9 | ベンチマークの同等性 | `Godot 4.7.2 --headless` 上で `form_to_gdscript.py` を `36` 件の決定論的タスク (`15` 個の GameCraft-Bench ファミリー × `2` + `6` 個のコアシステム、`18,000` ティック) に適用 + 140 タスクのアーカイブ監査 | 手書きのネイティブ GDScript に対する合格率とティックごとの `SHA-256` の同等性 | 合格率が低い、または同一の入力ストリームで状態トレースの不一致が `> 0` 件 | **実行済み (`36 / 36` = 合格率の同等性 `100.0%`、`0 / 18,000` 件のティックハッシュ不一致、6.9 節)** |
 
 ![決定性境界を横断する2パネルの実証的要約。左パネルは厳密領域 GE-H1 (arm64 macOS、aarch64 Linux、AMD/Intel x86_64 Linux、Intel x86_64 Windows 11 の4環境、30セルにわたる25,500個の SHA-256 チェックポイントで不一致0件) と GE-H2 の3 OS における f64 発散時刻 (Windows UCRT と Apple libm の sin/cos を GNU glibc と比較した場合は t_div = 10、Windows UCRT と Apple libm の比較では t_div = 37、MSVC /fp:precise と Clang -ffp-contract=fast の比較では t_div = 192、x86_64 VFMADD と arm64 FMADD の比較では t_div = 406) を示す。右パネルは許容領域 GE-H3 の最小 PSNR 棒グラフであり、DirectX 12、Metal、Vulkan にまたがる8つのハードウェア GPU × API の組み合わせを示す。同一 GPU 上での DX12 と Vulkan のコンパイラ差異 (RTX 2060 で 108.3 dB、Iris Xe で 79.5 dB) と、ベンダー間のラスタライズ差異 (64.2 から 72.1 dB) を分離しており、いずれも 40 dB のゲート値を大きく上回る。](/figures/game-engines/cross-gpu-tolerance.svg)
 
 *図3. `GE-H1`、`GE-H2`、`GE-H3` にわたる経験的境界。上流の `Q32.32` シミュレーション状態（`S`）は、6台のマシン、3種のOS（`macOS`、`Linux`、`Windows 11`）、3種のISAにまたがって `0 / 25,500` の `SHA-256` チェックポイント不一致を達成する。一方、固定されていない `f64` の `sin/cos` と `FMA` は、OS・コンパイラ・ISAの境界をまたぐと `10` から `406` ティック以内に乖離する。$\lambda(s_t)$ の下流では、同一の Windows 11 GPU上で `DirectX 12` と `Vulkan` を切り替えると、シェーダーのローワリングにより 1 LSB の差が生じる（`79.5-108.3 dB` の PSNR）。その一方で、全 `28 / 28` のハードウェア `GPU × API` の組み合わせは、いずれも `64.16 dB` を厳密に上回る PSNR と、0.99983 を上回る SSIM を維持した（`measured_j = None`、`board_metered = false`）。*
+
+![4パネルからなる実証的要約：GE-H4 から GE-H9 の閉鎖。パネル A は 17 モジュールにわたる GE-H4 の SLOC 挙動を示し、326 行の RCE SLOC と 679 行の Godot 4 GDScript、846 行の Bevy Rust ECS、1,371 行の Unity MonoBehaviour C# を比較し、680 件のトレース不一致は 0 件である。パネル B は 64 人から 10,000 人のアクターに対する GE-H5 の対数-対数ステップ時間を示し、rce emit Python が N=390 で 20 ms を超え、rce emit js が N=3,906 で同様に超え、コンパイル済み Wasm32、C++20、Rust は N=10,000 で 0.058〜0.125 ms/ティックに留まる。パネル C は GE-H6 のフォールト検出（リコール 98.46%、F1=0.9922）を示し、解析のみの場合の 6.15%、F1=0.1159 と比較し、さらに GE-H7 の t* 対 ln(Delta/delta0) 軌跡を 3 つのカオス的テンプレート上で示し、決定係数 R2=0.994 から 1.000 の範囲であることを示す。パネル D は 44.6 KB の gzip ログからの 1 時間 216,000 ティック 3-OS リプレイ（6,480 件の不一致は 0 件）と、GE-H9 の Godot 4.7.2 ヘッドレスパリティ（36 件のタスクすべて成功、18,000 ティックの不一致は 0 件）を要約する。](/figures/game-engines/ge-h4-h9-closure.svg)
+
+*図4. `GE-H4` から `GE-H9` までの経験的閉包の全体(`openIE-dev/rce` コミット `1762fb4b`、`Godot 4.7.2 --headless`、`macOS arm64`、`Linux x86_64`、`Windows 11 x86_64`; `measured_j = None`、`board_metered = false`)。*
 
 <div id="61-ge-h1-three-os-and-three-isa-100000-tick-determinism-q3232-integer-physics" class="anchor-alias" aria-hidden="true"></div>
 
@@ -297,9 +297,96 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 - **全`28 / 28`のハードウェア`GPU × API`組合せ(`112 / 112`フレーム)における許容誤差の有界性の確認**: `27 / 28`のハードウェア端点の組合せでは、生の`RGBA8`の`SHA-256`ダイジェストが異なった。しかし、`DirectX 12`、`Metal`、`Vulkan`にまたがるいずれのハードウェアの組合せにおいても、`2 / 255`を超えて異なったピクセルは皆無であった($p(|\Delta| > 8) = 0.000000 \le 0.001$)。`PSNR`は`64.16 dB`を超え(`> 40.0 dB`の判定基準を`+24.16 dB`上回る)、`SSIM`は`0.999833`を超えた(`> 0.999`の判定基準)。処理時間はフレームあたり`0.29`-`6.04 ms`であった。
 - **ソフトウェアラスタライザとの対比(`WARP`、`llvmpipe`、`CPU Q16.16`)**: CPU上で動作するソフトウェアのGPU APIエミュレータであっても、APIごとに結果は乖離する。`Microsoft Basic Render Driver`(`Win11 DirectX 12 WARP`)と`Mesa llvmpipe`(`Linux Vulkan`)の間では、1.591%のピクセルが異なった(`PSNR` `70.35 dB`、$\Delta_{\max} = 2$)。これに対し、浮動小数点演算を用いない整数ソフトウェアラスタライザ`CPU Q16.16`は、4つのOS/ISAホスト(`macOS arm64`、`Linux AMD x86_64`、`Linux Intel x86_64`、`Windows 11 x86_64`)にわたり、`SHA-256`フレームバッファの不一致を**0件**に抑えた(ティック`0`では`9c693a38...`、ティック`10,000`では`ce3b2cec...`)。
 
-<div id="64-playable-joule-native-q3232-chrono-budget-arena-livinggame-engines" class="anchor-alias" aria-hidden="true"></div>
+<div id="64-ge-h4-form-encoded-behavior-rules-across-17-modules-and-4-languages-haunted-jaunt-survival-shooter-tanks" class="anchor-alias" aria-hidden="true"></div>
 
-### 6.4 プレイ可能な joule ネイティブ `Q32.32` Chrono-Budget アリーナ（`/living/game-engines/`）
+### 6.4 `GE-H4`：17モジュールと4言語にわたるフォーム符号化の行動規則（`Haunted Jaunt`、`Survival Shooter`、`Tanks`）
+
+*本検証は、事前登録ファイル `PREREG_wave5_ge_h4_h9.json`（`SHA-256: 7d02115e37d3...`）に基づいて実施した。すべての `.rce` モジュールは、ゲート段階において `openIE-dev/rce`（コミット `1762fb4bb65a`、仕様草案 `0.9`）により、`rce check` および `rce test` で検査と試験を受けた。*
+
+一般目的の `.rce` フォームが GameRule が研究した厳密な 3 つの参照ゲーム（2.1 節）において少なくとも `50%` の動作コード削減を達成しつつ複数のエンジンパラダイムに投影できるかどうかを検証するため **17** 個の全アクターおよびディレクター動作 `Haunted Jaunt`（`PlayerStealth`、`GhostPatrol`、`GargoyleSpotter`、`ObserverLineOfSight`、`ExitTrigger`）、**Survival Shooter**（`PlayerAvatar`、`GunRaycaster`、`ZombunnyChaser`、`ZomBearBruiser`、`HellephantBoss`、`WaveSpawner`、`ScoreHUD`）、および **Tanks**（`TankChassis`、`ShellBallisticsQ32`、`ExplosionFalloff`、`TankHealthShield`、`RoundDirector`）を `.rce` フォームとして記述し、動作的に同一の慣用的な実装と対にした。これらの実装は **Unity `MonoBehaviour` C#**（Microsoft Visual C# `csc.exe 4.0.30319` でコンパイルおよび Windows 11 上で実行）、**Godot 4 `Node` GDScript**（`Godot 4.7.2 --headless` で Linux 上で実行）、および **Bevy スタイルの Rust `ECS`**（`Component` + `Event` + `Query` システム、`rustc 1.100` でコンパイル）である。モジュールごとに `10` 個の決定論的 20 イベントトレース（`170` トレース × `4` ツールチェーン = `680` 実行）において言語間の状態ダイジェスト不整合は **`0 / 680`** であった：
+
+| ゲームスイート（`modules`） | `.rce` フォーム挙動 `SLOC`（`intent`付き） | Unity `MonoBehaviour` C# `SLOC` | Bevy Rust `ECS` `SLOC` | Godot 4 `Node` GDScript `SLOC` | Unity C# との差分（`intent`付き） | Rust `ECS` / GDScript との差分 | Glue 行数（`.rce` / C# / `ECS` / `.gd`） |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| **Haunted Jaunt (`5`)** | **`90`** (`105`) | `391` | `238` | `190` | **`−76.98%`** (`−73.15%`) | `−62.18%` / `−52.63%` | `17` / `230` / `112` / `54` |
+| **Survival Shooter (`7`)** | **`148`** (`169`) | `590` | `367` | `288` | **`−74.92%`** (`−71.36%`) | `−59.67%` / `−48.61%` | `27` / `351` / `168` / `81` |
+| **Tanks (`5`)** | **`88`** (`103`) | `390` | `241` | `201` | **`−77.44%`** (`−73.59%`) | `−63.49%` / `−56.22%` | `17` / `233` / `111` / `57` |
+| **総計（`17` modules）** | **`326`** (`377`) | **`1,371`** | **`846`** | **`679`** | **`−76.22%`** (`−72.50%`) | **`−61.47%` / `−51.99%`** | **`61` / `814` / `391` / `192`** |
+
+- **`>= 50%` の閾値の通過と、GameRule が `81.3%` に到達した理由の切り分け**: 純粋な `.rce` の振る舞いルールは、慣用的な Unity `MonoBehaviour` C# に対して `SLOC` を **`76.22%`** 削減する。また、三つの基準スクリプトのいずれも持たない埋め込みの `intent` 51 行と、ゲート検査付きの `example` アサーション 34 件を `.rce` 側に含めて数えた場合でも、削減率は **`72.50%`** にとどまる。字句トークンは **`66.15%`** (`2,348` 対 `6,937`) 減少し、ライフサイクル、キュー、シリアライズの定型部分 (`61` 対 `814` 行) は **`92.51%`** 排除される。GameRule の `81.3%` (`572 -> 107` 行) との約 `5` ポイントの差は、表現力の汎用性に起因する。GameRule は Unity の CRUD 動詞 14 個を C# 内にハードコードしているのに対し、`.rce` は任意の算術演算、ビットマスク、`Q32.32` の弾道計算を言語で直接表現する。三つの別々のエンジン向けコードベース (合計 `2,896` SLOC) を一つの `.rce` Form に置き換えることで、維持対象となる振る舞いの `SLOC` は **`88.74%`** 削減される。
+
+<div id="65-ge-h5-multi-actor-q3232-runtime-scaling-and-rapl-energy-across-5-projection-tiers-n--64-to-10000" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.5 `GE-H5`: 5つの投影階層（`N = 64` から `10,000`）における多アクター `Q32.32` 実行時スケーリングと `RAPL` エネルギー
+
+Form 投影が GameRule の `~308` アクター（`20 ms`）規則解釈上限を突破するかを検証するため、`Q32.32` の 2 次元アリーナ Form（`ge_h5_actor_arena.rce`、`rce check` で検査）を用いた。この Form は、`16 × 16` の一様空間格子（`[-64, +64]^2` 上の `256` セル）と、巡回、追跡、混雑回避、パルス冷却遷移を組み合わせたものである。$N \in \{64, 128, 256, 300, 350, 500, 1{,}000, 2{,}500, 5{,}000, 10{,}000\}$ の各条件について、アイドル状態の `Intel Core i9-13900H`（`Linux 7.0`、`SATB` `L2` `intel-rapl:0` のソケットおよびコアの `energy_uj`、`measured_j = None`、`board_metered = false`）上で **`500` ティック** 進行させ、5 つの Form 投影階層で比較した。
+
+| 投影階層 | 中央値 `p50 ms/tick`（`N = 300`） | 中央値 `p50 ms/tick`（`N = 350`） | 中央値 `p50 ms/tick`（`N = 1,000`） | 中央値 / `p99 ms/tick`（`N = 10,000`） | `L2` `RAPL` パッケージ `mJ/tick`（`N = 10,000`） | アクター上限 $N_{20\text{ms}}$ | `500` ティックの `SHA-256` 一致 |
+|---|---:|---:|---:|---:|---:|---:|:---:|
+| **`rce emit python`（`CPython 3.14`）** | `13.662` | `18.115` | `55.525` | `564.575` / `648.061` | `13,090.57`（コア `10,826.87`） | **`390`**（実測） | `10 / 10` |
+| **`rce emit js`（`Node.js v22.22.1`）** | `1.479` | `1.846` | `4.769` | `57.050` / `66.313` | `1,559.77`（コア `1,183.86`） | **`3,906`**（実測、`11.2×`） | `10 / 10` |
+| **Form `Rust -> Wasm32`（`Node V8`）** | `0.0040` | `0.0044` | `0.0089` | **`0.0724`** / `0.0810` | **`2.211`**（コア `1.908`） | **`> 10,000`**（線形外挿 `~2.76M`） | `10 / 10` |
+| **Form `C++20`（`clang++ -O3`）** | `0.0033` | `0.0036` | `0.0073` | **`0.0583`** / `0.0654` | **`1.694`**（コア `1.454`） | **`> 10,000`**（線形外挿 `~3.43M`） | `10 / 10` |
+| **Form `Rust`（`rustc -C opt-level=3`）** | `0.0035` | `0.0041` | `0.0129` | **`0.1248`** / `0.1274` | **`3.673`**（コア `3.156`） | **`> 10,000`**（線形外挿 `~1.60M`） | `10 / 10` |
+
+- **`300` アクター上限の説明と突破**: 参照実装の `rce emit python`（`rt.py`。整数をボックス化し、すべての式で範囲とフューエルの不変条件を検査する）は、アクターあたり `45.5`-`56.5 µs` を要し、`20.0 ms` を $N_{20\text{ms}} = 390$ で超えた。これは GameRule が測定した厳密な解釈器の領域（`65 µs`/アクター、$N_{\max} \approx 308$）を再現するものである。V8 の `BigInt` JIT（`rce emit js`）に切り替えると $N_{20\text{ms}}$ は `10.0×` 増加して **`3,906` アクター** となった。一方、ボックス化されない컴파일済み投影（`Wasm32`、`C++20 -O3`、`Rust -O3`）は **`10,000` アクターを `0.058`-`0.125 ms` で処理**した（アクターあたり `5.8`-`12.5 ns`）。これは `10,000` アクターで `20 ms` 予算の `< 0.63%` に相当し、ソケット `RAPL` の `reported_j`/ティックを `rce emit python` に対して `3,564×` から `7,728×` 削減した。その間、状態の `SHA-256` 不一致は **`0 / 50`** であった。
+
+<div id="66-ge-h6-static-4-edge-interface-checking-across-26-defect-patterns-260-modules-zero-runtime-ticks" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.6 `GE-H6`: 26の欠陥パターンにわたる静的4エッジインタフェース検査 (`260`モジュール, ランタイムティック数ゼロ)
+
+第5.4節の4辺チェッカーを第2.3節のMageの病理（「コンパイルが通ることは正しいことと同じではない」）に対して検証するため、26種のゲームインターフェース欠陥パターン（`P01` ノードパスの誤記、`P02` シグナルハンドラの欠落、`P03` シグナルのペイロード引数数の不一致、`P04` ペイロード型の不一致、`P05` 方向付き物理のレイヤー/マスクの反転、`P06` 未処理の `kind` バリアント、`P07` nullのシーンリソースハンドル、`P08` エンティティタグの誤記、`P09` アニメーションコールバックのイベント欠落、`P10` ミリ秒と秒のデルタ時間の不一致、`P11` 描画パスによるシミュレーション状態 $S$ の変更、`P12` セーブスキーマのフィールド欠落、`P13` ネットワークパケットのフィールド順序の入れ替え、`P14` 未マップのホスト入力アクション、`P15` `u64` クールダウンのアンダーフロー、`P16` 死亡エンティティへのアクションディスパッチ、`P17` シングルトンの起動順序による読み取り競合、`P18` 参照切れのアセット識別子、`P19` ローカル座標とワールド座標の混同、`P20` 衝突走査中の再入的な削除、`P21` WGSLのuniformバインディングの欠落、`P22` WGSLの `vec3`/`vec4` における `16` バイトUBOアライメントの不一致、`P23` 未宣言のオーディオバス、`P24` 古いHUD状態バインディング、`P25` インベントリスロットのオーバーフロー、`P26` ポータル遷移時の永続状態の欠落）を、**`260` 個の具体的なモジュールバンドル**（パターンごとに故障注入の `5` 件と正常対照の `5` 件、すなわち故障 `130` 件と正常 `130` 件）として実体化した。
+
+| 検証ゲート（エンジン実行ティック `0`） | `TP`（`/ 130`） | `FP`（`/ 130`） | `FN`（`/ 130`） | `TN`（`/ 130`） | 欠陥検出再現率（%） | 適合率（%） | 欠陥 `F1` | 採用済みプールにおける有効データ比率 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| **静的フォーム検査（`rce check` + `rce test`）+ 4辺マニフェスト検証器** | **`128`** | **`0`** | **`2`** | **`130`** | **`98.46%`**（`≥ 90%` ゲート） | **`100.00%`** | **`0.9922`** | **`0.9848`**（`130 / 132`） |
+| **未型付け動的スクリプト構文解析ベースライン（`godot --headless --check-only`）** | `8` | `0` | `122` | `130` | `6.15%` | `100.00%` | **`0.1159`** | `0.5159`（`130 / 252`） |
+
+- **構文解析のみの動的検査が `F1 = 0.1159`（`≈ 0.12`）にとどまる理由**: `Godot 4.7.2 --headless --check-only` の実行で検出されたのは、直接的なGDScript呼び出しにおいて引数数（`P03`）または静的な `int`/`String` 型注釈（`P04`）が衝突する `8` 個のモジュールに限られた。その一方で、文字列キーによる `get_node("...")` および `emit_signal("...")`、物理マスク、UBOオフセット、セーブ/ネットワーク辞書、不変条件に関する `122` 件の欠陥は、すべて検出されずに通過した。
+- **静的フォーム検査の正確な境界（検査可能な `FN` は `2 / 130` 件）**: 実際の `rce check` と `rce test`（`W-STEP-2`、`W-TY-1`、`W-NAME-1`、`W-INT-1`、検査付き `u64` 減算）に4辺マニフェスト検証器を加えた検査により、`128 / 130` 件の欠陥を、偽陽性 `0` 件で検出した。残る2件の欠陥（`P10_fault_5` と `P19_fault_5`）は、`LocalX`/`WorldX` のニュータイプ構造体で包まれていない裸の `i64` スカラーであり、かつ非ゼロの `example` アサーションを欠くために生じたものである。このことは、次元の誤りと座標系の誤りを静的に検出するには、個別のニュータイプによるラップか、定量的な `intent` の例示が必要であることを示している。
+
+<div id="67-ge-h7-full-lnδδ0-lyapunov-slope-sweep-across-3-chaotic-physics-templates-840-trajectories" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.7 `GE-H7`: 3つのカオス物理テンプレートにわたる完全 $\ln(\Delta / \delta_0)$ リヤプノフ勾配掃引 (`840` 軌道)
+
+第3節の対数的視界 $t^* = (1/\Lambda)\ln(\Delta/\delta_0)$ を連続物理トポロジーにわたって直接検証するため, `60 Hz` `IEEE 754` `binary64` (`-fp-contract=off`) テンプレート3種, すなわち **`GE-T1`** (5個の凸Sinaiバンパーをもつ`16-Body Chaotic Bumper Arena`), **`GE-T2`** (重力下の弾性床復帰を伴う`12-Peg Galton/Pinball Elastic Lattice`), および **`GE-T3`** (立方硬化ばねと中央橋脚をもつ`8-Node Coupled Spring-Pendulum Bridge`) を, `40` 個の決定論的シード×`7` 個の単一座標摂動 $\delta_0 \in \{2^{-52}, 2^{-44}, 2^{-36}, 2^{-28}, 2^{-23}, 2^{-16}, 2^{-10}\}$ から段階的に実行した (`840` 対の参照対摂動軌道, マクロ発散閾値 $\Delta = 1.0$ アリーナ単位, サブ単位初期 `|x_0| < 1` であるため `+2^-52` は初回接触以前に丸め離脱しない):
+
+| テンプレート (`280` 軌道ずつ, `0` 右側打ち切り) | $\delta_0 = 2^{-10}$ における平均 $t^*$ (`s`) | $\delta_0 = 2^{-23}$ における平均 $t^*$ (`f32` ULP, `s`) | $\delta_0 = 2^{-52}$ における平均 $t^*$ (`f64` ULP, `s`) | OLS勾配 $\hat{\beta} = 1/\hat{\Lambda}$ (`s/nat`, `95%` ブートストラップ CI) | 示唆される $\hat{\Lambda}$ ($\text{s}^{-1}$, `95%` ブートストラップ CI) | $R^2_{\text{traj}}$ / $R^2_{\text{mean}}$ | 両側 $t_{278}$ ($p$値) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| **`GE-T1`: 16-Body Bumper Arena** | `2.80 ± 0.92` | `6.52 ± 1.38` | `14.49 ± 2.43` | **`0.4025`** (`[0.3823, 0.4246]`) | **`2.4846`** (`[2.3554, 2.6157]`) | `0.8569` / **`0.99953`** | `40.81` (**$10^{-118.7}$**) |
+| **`GE-T2`: 12-Peg Galton Lattice** | `1.85 ± 0.61` | `3.88 ± 0.98` | `7.57 ± 1.64` | **`0.1974`** (`[0.1804, 0.2145]`) | **`5.0671`** (`[4.6611, 5.5436]`) | `0.7176` / **`0.99629`** | `26.58` (**$10^{-77.6}$**) |
+| **`GE-T3`: 8-Node Coupled Bridge** | `2.94 ± 1.14` | `7.99 ± 2.02` | `17.36 ± 3.16` | **`0.5121`** (`[0.4802, 0.5440]`) | **`1.9528`** (`[1.8382, 2.0823]`) | `0.8169` / **`0.99395`** | `35.21` (**$10^{-103.7}$**) |
+
+- **近似浮動小数点一致がなぜ失敗するかの経験的確認**: $\delta_0$ の`12.6` 桁にわたって ($2^{-10}$ から $2^{-52}$ への $4.2 \times 10^{12}$ 倍減少), セル平均発散時間は $\ln(\Delta/\delta_0)$ に対して厳密に線形に増大する ($R^2_{\text{mean}} \in [0.9940, 0.9995]$, $p \le 10^{-77.6}$)。単精度 (`2^-23`) から倍精度 (`2^-52`, $5.37 \times 10^8$ 倍小さな摂動) への更新は, 可視的マクロ発散を `GE-T2` でわずか **`3.69 s`**, `GE-T1` で **`7.97 s`**, `GE-T3` で **`9.37 s`** しか遅らせない。
+
+<div id="68-ge-h8-complete-1-hour-216000-tick-replay-from-compact-input-stream-d-alone-across-3-oss" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.8 `GE-H8`: 3つのOSにおける、入力ストリーム$D$のみからの完全な1時間(`216,000`ティック)再生
+
+長時間にわたる複数サブシステムのゲームプレイセッションが、隠れたエンジン状態に依存せず入力ストリーム$D$のみから完全に再生できることを検証するため、3つの**1時間(`60 Hz`で`216,000`ティック)**の`Q32.32`セッション(`HauntedJaunt_1h`、`SurvivalShooter_1h`、`TanksQ32_1h`)を再生した。入力ログは同一のバイナリ形式で、サイズは各`432,024`バイト(`24`バイトのヘッダ + ティックあたり`2`バイト)である。再生は**`macOS 27.2.1 arm64`**(`Apple M5 Max`)、**`Linux 7.0 x86_64`**(`Intel Core i9-13900H`)、**`Windows 11 Pro 26300 x86_64`**(`Intel Core i7-1165G7`)の3環境で実施した。
+
+| 1時間セッション(`60 Hz`で`216,000`ティック) | 生 / gzip圧縮の$|D|$ | 生 / gzip圧縮の全状態ストリーム | gzipサイズ比(`Snap / D`) | 再生壁時計時間`ms`(`macOS` / `Win11`) | `3`OSストライド`100`チェックポイント | 最終1時間`SHA-256`(`tick 216,000`、3OS全体) |
+|---|---:|---:|---:|---:|:---:|---|
+| **`HauntedJaunt_1h`**(`169`B状態) | `432.0 KB` / **`44.60 KB`** | `36.50 MB` / `5.19 MB` | **`116.28×`**(生で`84.5×`) | `4.19` / `7.30 ms` | **`2,160 / 2,160`** | `b4120d81a8fb5b6916ef443b2e3ebc59...` |
+| **`SurvivalShooter_1h`**(`365`B状態) | `432.0 KB` / **`44.60 KB`** | `78.84 MB` / `7.00 MB` | **`156.97×`**(生で`182.5×`) | `8.32` / `11.02 ms` | **`2,160 / 2,160`** | `6cce1282304dfdc5b623ad5be42357de...` |
+| **`TanksQ32_1h`**(`222`B状態) | `432.0 KB` / **`44.58 KB`** | `47.95 MB` / `13.03 MB` | **`292.27×`**(生で`111.0×`) | `3.90` / `4.94 ms` | **`2,160 / 2,160`** | `ca627edaf8cb56532a33ee83997a8487...` |
+
+- **OS間のドリフトの不在と、周囲ホスト漏洩に対する正の反証**: 純粋形式(Pure Form)の再生は、`macOS arm64`、`Linux x86_64`、`Windows 11 x86_64`の間で**`0 / 6,480`件**のチェックポイント`SHA-256`不一致を達成した。`44.6 KB`の圧縮ログから、`60 Hz`で1時間分のゲームプレイを`3.9`-`11.0 ms`で再シミュレーションした。一方、`HauntedJaunt_1h`において4種の周囲ホスト漏洩制御(`GE-L1`の壁時計ナノ秒、`GE-L2`のスタックアドレスエントロピー、`GE-L3`のランダム化された`HashMap`反復順序、`GE-L4`のホスト`f64::sin`)のいずれかを有効化すると、入力$D$からの再生は**`t_div = 1`**で破綻した。特に`GE-L4`(`f64::sin`)は、`macOS`(`0d1722cf...`)、`Linux`(`50f9ff25...`)、`Windows 11`(`54d0f774...`)において、互いに異なる3つの1時間ダイジェストを生じた。
+
+<div id="69-ge-h9-form-to-godot-472-headless-gdscript-emitter-and-36-task-parity-suite" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.9 `GE-H9`: フォームからGodot 4.7.2 ヘッドレス GDScript エミッタおよび36タスク等価性スイート
+
+- **外部 `GameCraft-Bench` 140タスクアーカイブの率直な監査**: [`FreedomIntelligence/gamecraft-bench`](https://github.com/FreedomIntelligence/gamecraft-bench) の直接検査により、`15` の2Dゲームファミリにわたる全`140` タスクディレクトリ（`instruction.md`、`tests/rubric.json`、およびオラクル `solution/files/`）がGitHub上で公開ダウンロード可能であることが確認された。しかし、各タスクは形式的な遷移仕様ではなくオープンエンドの自然言語ゲームプロンプトであり、その公式検証器（`gamecraft_bench.verifier`）はエージェント生成の `demo_outputs/*.json` トレースを `Xvfb`、`xdotool`、`ffmpeg`（`x11grab`）の下で再生した後、外部のマルチモーダルVLM判定器（`GAMECRAFT_BENCH_JUDGE`、`140`タスクエージェント実行あたり`148.5M`-`2.24B` LLMトークンを消費）で捕捉したビデオフレームを採点する。エンドツーエンドのLLM+VLMビデオルーブリック評価は、自然言語合成およびVLM判定器の分散をコンパイラの正しさと混同する。
+- **決定論的36タスク Form-to-Godot 4.7.2（`godot --headless`）等価性ベンチマーク**: フォームからエンジンへのエミッションをGodot 4の実ランタイム内で直接試験するため、`form_to_gdscript.py` は受理された `.rce` Form（`openIE-dev/rce` コミット `1762fb4bb65a` 由来の `rce emit form` JSON AST 経由）を、64ビット `int` 強制変換、`Q32.32` リム分割ヘルパ、およびトランザクション的 `fail`/`kept` 状態ロールバックを伴うスタンドアロン静的型付け **Godot 4 GDScript**（`extends SceneTree`）にコンパイルする。**36の決定論的ゲームプレイタスク** にわたり、`GameCraft-Bench` の`15` ファミリ（`Platformer`、`Strategy`、`Tycoon`、`Open-world`、`Roguelike`、`Visual novel`、`Puzzle`、`Shooter`、`Simulation`、`Card game`、`Horror`（`horror-signal-lost` のラジオ電池ジャミング機構を含む）、`Rhythm`、`Idle`、`Racing`、`Sports`）の各々から`2` タスクに加え、`6` の参照およびマルチプレイヤシステム（`Haunted Jaunt`、`Survival Shooter`、`Tanks Q32.32`、`Inventory/Crafting`、`Quest DAG`、`4-Player Lockstep Arena`）について、FormエミットGDScriptと独立に記述された慣用的なネイティブGDScript実装の両方を `Godot Engine v4.7.2.stable.official.ed1daf0bf --headless` の下でタスクあたり`500` の決定論的入力イベント（片腕あたり`18,000` ティック＝`36,000` Godot VMティック）で実行した：
+  - **Form受理（`rce check` + `rce test`）**: **`36 / 36`（`100.0%`）**。
+  - **Godot 4.7.2 `--headless` 実行パス率**: Formエミット **`36 / 36`（`100.0%`）** 対 ネイティブGDScript **`36 / 36`（`100.0%`）**。
+  - **ティックごとおよびローリング `SHA-256` 状態トレース等価性**: **`36 / 36` タスク（ティックごと `0 / 18,000` の `SHA-256` 不一致）**。
+
+<a id="playable-joule-native-q3232-chrono-budget-arena-livinggame-engines"></a>
+
+<div id="610-playable-joule-native-q3232-chrono-budget-arena-livinggame-engines" class="anchor-alias" aria-hidden="true"></div>
+
+### 6.10 プレイ可能なジュール・ネイティブ `Q32.32` クロノ予算アリーナ（`/living/game-engines/`）
 
 本研究の厳密な `Q32.32` 再生契約と、[『Time as an Index』](/papers/time-as-an-index/)（第9.2節）のエネルギーネイティブな時間機構を結合し、[ゲームエンジン実験場（`/living/game-engines/`）](/living/game-engines/)の計器4は、JavaScript の `BigInt` で動作する `60 Hz` の決定論的軌道航行およびピックアップ防衛ミニゲームを提供する(シミュレーション内の浮動小数点演算は `0` 回である)。
 
@@ -308,26 +395,21 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
 <div id="7-infeasibility-flags" class="anchor-alias" aria-hidden="true"></div>
 
-## 7. 実現不可能性の判定
+## 7. 実現不可能フラグ
 
-1. **GPU とグラフィックス API をまたぐビット単位で一致するハードウェア描画：実現不可能**。ハードウェアの `GPU × API` 組合せ `28` 通りのうち `27` 通りが、`GE-H3` において生の `SHA-256` で発散した（同一 GPU 上の `DirectX 12` と `Vulkan` の組合せ `2` 通りを含む `2 / 2`）。一方、GPU の出力が $S$ へフィードバックされない場合、有界な知覚的許容誤差（`PSNR >= 64.16 dB`、`SSIM >= 0.99983`、$\Delta_{\max} \le 2$）は `DirectX 12`、`Metal`、`Vulkan` の全域で成立する。
-
-2. **標準的な浮動小数点設定による、プラットフォームをまたぐ厳密な物理演算：`Windows`、`macOS`、`Linux` の間では実現不可能**。`-ffast-math` や `/fp:fast` を用いない場合でも、標準の `std::sin`/`std::cos` は `Windows UCRT`、`Apple libSystem`、`GNU glibc` の間で3者間の発散の三角形を形成する（`t_div = 10` から `37`）。また、既定の `MSVC /fp:precise` と `Clang -ffp-contract=fast` は `x86_64` 上で `t_div = 192` において発散し、ISA をまたぐ `FMA`（`x86_64` と `arm64`）は `t_div = 406` において発散する。これらは `8,869` から `11,205` ティック以内にゲームプレイの非同期化へと波及する（`GE-H2`）。
-
-3. **シミュレーション内部における GPU 計算：厳密な意味では実現不可能であり、決定論的リダクションを用いる場合に限り実現可能**。これは引用されたハードウェア上で約 0.2% から 7.8% のコストが測定されている。ただし、各命令に対してコンパイラの演算融合（contraction）を抑止（SPIR-V NoContraction）しない限り、すべての対象環境においてコンパイラによる演算融合の影響を受ける。
-
-4. **エンジン間で移植可能な振る舞い：読み込んだ外部資料では実証されていない。2D 物理カーネルの水準では `GE-H1` において実証されており、これは `30` 通りの対象×ホストの組合せ（`6` 台のマシン、`3` 種の OS `macOS`/`Linux`/`Windows 11`、`3` 種の ISA、`7` 種のランタイム/コンパイラ）にわたる。ただし、エンジン全体への投影（`GE-H4`、`GE-H9`）は未解決のままである。**
-
-5. **大量のアクタ数における解釈されたルール：制約がある**。GameRule の測定結果から、20 ms において約 300 アクタ付近に上限があることが示唆される。また `GE-H1` は、Python の `int` が Linux/macOS において native Rust の `reported_j` の `73×` から `132×` のコストを要し、Windows 11 においては壁時計時間で `179×` を要することをさらに示す。規模を拡大する場合には、コンパイル済みのネイティブ実装または WebAssembly への投影が必要である。
-
-6. **厳密な対象としての、プロプライエタリなサードパーティ製ゲームエンジン：未検証**。第6節においてベアメタルの Windows 11 `PE`（`rustc` および `MSVC`）と `DirectX 12`（`wgpu`）による実行は検証されている一方、GameRule が引用する Unity のマニュアルは順序保証を否定している。また、Unity および Unreal のテンプレートカタログは読み込めなかった（当該ページがクライアントサイドで描画されるため）。さらに、Unreal の実行順序に関する資料は一件も読み込めていない。
+1. **GPU と API を跨いだビット単位のハードウェア描画: 不可能 (`27 / 28` ハードウェア `GPU × API` ペア、`2 / 2` 同一 GPU の `DirectX 12` 対 `Vulkan` ペアを含む、`GE-H3` において生の `SHA-256` が分岐) 一方で、知覚的許容誤差 (`PSNR >= 64.16 dB`, `SSIM >= 0.99983`, $\Delta_{\max} \le 2$) は `DirectX 12`, `Metal`, `Vulkan` 全てで保持され、GPU 出力が $S$ にフィードバックしない限り成立する。**
+2. **標準浮動小数点設定でのクロスプラットフォーム正確物理シミュレーション: 不可能 (`Windows`, `macOS`, `Linux` 間)。** `-ffast-math` や `/fp:fast` を使用しなくても、標準 `std::sin`/`std::cos` は `Windows UCRT`, `Apple libSystem`, `GNU glibc` の間で 3 項分岐三角形を形成し (`t_div = 10` から `37`)、デフォルト `MSVC /fp:precise` と `Clang -ffp-contract=fast` は `x86_64` 上で `t_div = 192` に分岐し、ISA 間 `FMA` (`x86_64` 対 `arm64`) は `t_div = 406` (`GE-H2`) で分岐し、`840` のカオス軌道は $t^* \propto \ln(\Delta/\delta_0)$ を示し、$\hat{\Lambda} = 1.95$-$5.07\ \text{s}^{-1}$ (`GE-H7`) である。
+3. **シミュレーション内部の GPU 計算: 正確性は不可能であり、決定的リダクションのみで実現可能**。測定されたコストは対象ハードウェア上で約 0.2% から 7.8% であり、全ターゲットで命令単位の保護 (SPIR-V NoContraction) がなければコンパイラ収縮の影響を受ける。
+4. **マルチエンジン決定的挙動の出力: `GE-H4`, `GE-H8`, `GE-H9` の検査済み Form からは実現可能、型なし文字列キーのスクリプト (`GE-H6`) からは不可能。** `17` 種類のゲーム挙動 (`.rce`, Windows 11 C#, Godot 4 GDScript, Rust `ECS` の間で `0 / 680` 不一致) と `36` のヘッドレス `Godot 4.7.2` タスク (`0 / 18,000` ティック不一致) に対し、Form 投影はビット単位の挙動同等性を保つが、パースのみの動的チェックは注入されたクロスレイヤー・セマンティック障害の `93.85%` (`122 / 130`) を見逃し、`F1 = 0.1159` を示す。
+5. **大量アクターに対する解釈ルール: ボックス化インタプリタでは制約あり (`N_20ms = 390` in `rce emit python`)、JIT またはコンパイル投影 (`GE-H5`) により解決。** ボックス化されていない `Wasm32`, `C++20 -O3`, `Rust -O3` 投影は `10,000` `Q32.32` アクターを `0.058`-`0.125 ms`/ティックでステップし (`3,564×`-`7,728×` の低速 Linux `RAPL` `reported_j`/ティック vs `rce emit python`)、`SHA-256` ドリフトはゼロである。
+6. **プロプライエタリなサードパーティゲームエンジンの内部スケジューラを保護なし正確ホストとして利用: 未検証。** ベアメタル Windows 11 `PE` (`rustc`, `MSVC`, `csc.exe`)、`DirectX 12` (`wgpu`)、ヘッドレス `Godot 4.7.2` `SceneTree` の実行は第 6 節で検証済みであるが、Unity のマニュアルは GameRule に引用される限り `MonoBehaviour` スクリプトの順序保証を否定しており、単一決定的スケジューラループから駆動されない限り保証されない。Unity および Unreal のテンプレートカタログはクライアント側でレンダリングされ読むことができず、Unreal の実行順序ソースも取得できなかった。
 
 <div id="8-sources-and-limits" class="anchor-alias" aria-hidden="true"></div>
 
 ## 8. 出典と限界
 
-上記のすべての情報源は、引用された箇所において全文を読んだが、以下を除く：GameCraft-Bench 論文（要旨およびリポジトリの README を読んだ）、RCE の概要ページ（要約ページを読んだ）、および Capcom のプレスストーリー（1 記事）。テレメトリレベル（`SATB`）とジュール予算制御の時間的ゲームメカニクスに関する同伴ハウスの研究は、[Time as an Index](/papers/time-as-an-index/) と [Satiation Tiered Benchmark Harness](/papers/satb-harness/)（`[same house]`）である。証拠として引用されなかったが参照した情報源は、ゲームを構造化されたルーデムの集合として記述する [Ludii portal](https://ludii.games/) 、Game Grammar のホビーリポジトリ、そしてレンダリングライブラリを記述する [PlayCanvas](https://github.com/playcanvas/engine)、[Babylon.js](https://github.com/BabylonJS/Babylon.js) および [three.js](https://github.com/mrdoob/three.js) の README である。
+上記のすべての出典は、引用した箇所に限って全文を読んだ。ただし次の例外がある。GameCraft-Bench 論文については、概要、リポジトリの README、タスクディレクトリの構成、および `tests/test.sh` 検証スクリプトを読んだ。RCE の概要ページは、`openIE-dev/rce` のコミット `1762fb4bb65a` の仕様およびチェッカーのソースとあわせて読んだ。Capcom のプレスストーリーについては、記事1本のみを読んだ。時間の段階に関する計測レベル（`SATB`）およびジュール予算による時間的ゲーム機構について引用した姉妹研究は、[Time as an Index](/papers/time-as-an-index/) と [Satiation Tiered Benchmark Harness](/papers/satb-harness/)（`[same house]`）である。参照したが証拠としては引用しなかった出典は次のとおりである。ゲームを構造化されたルードム集合として記述する [Ludii ポータル](https://ludii.games/)、ホビー的な Game Grammar リポジトリ、そして描画ライブラリを説明するものであり、ゲーム記述形式を説明するものではない [PlayCanvas](https://github.com/playcanvas/engine)、[Babylon.js](https://github.com/BabylonJS/Babylon.js)、[three.js](https://github.com/mrdoob/three.js) の各 README である。
 
 未読、課金壁またはその他入手できない情報源は、T. Schaul, "A Video Game Description Language for Model-based or Interactive Learning," IEEE CIG 2013, doi:10.1109/CIG.2013.6633610; J. Gregory, *Game Engine Architecture*, doi:10.1201/9781315267845; M. Ebner et al., "Towards a Video Game Description Language," doi:10.4230/DFU.Vol6.12191.85 であり、後者はオープンアクセスであるが本研究のためには読まれなかった。
 
-第6節では、`GE-H1`、`GE-H2`、および`GE-H3`は6台の全機械において`measured_j = None`および`board_metered = false`のままとする（macOSの`L3`プロセスごとの`ri_energy_nj`、Linuxの`L2`ソケット/コアの`RAPL` `reported_j`、およびWindows 11の`L3` `GetProcessTimes`/`QueryProcessCycleTime`活動カウンタを分離し、Chrono-Budget Arenaの`est_j`機構を厳密に解析的なものに保つ）。完全なマルチエンジンシーン/動作エミッタ（`GE-H4`-`GE-H9`）は未解決の課題のままである。
+全9件の実証スイート（`GE-H1` から `GE-H9`）において、6台のホストすべてで `measured_j = None` かつ `board_metered = false` である。これは、macOS の `L3` におけるプロセス単位の `ri_energy_nj`、Linux の `L2` におけるソケット/コア単位の RAPL `reported_j`、Windows 11 の `L3` における `GetProcessTimes` / `QueryProcessCycleTime` による活動量カウンタを厳密に区別するとともに、Chrono-Budget Arena の `est_j` の算出機構を厳密に解析的なものにとどめた結果である。静的な制約として2点が文書化されたまま残されている。第一に、`GE-H6` では、単位や座標空間を表すnewtype構造体を伴わない裸の無タグ `i64` スカラーが、130件中2件の偽陰性を生じさせた。第二に、`GE-H9` では、140件の自然言語プロンプトに対する公式 `GameCraft-Bench` のVLM判定による視覚的採点は実施していない。同評価は、開かれた形式のLLMによるアセット・プロジェクト合成と外部VLMルーブリックによる採点を対象とするものであり、決定論的なForm-to-engine振る舞いのコンパイルを対象とするものではないためである。

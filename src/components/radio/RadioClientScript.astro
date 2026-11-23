@@ -1,0 +1,541 @@
+---
+interface Props {
+  feed: any;
+  radar: any;
+  foundry: any;
+}
+
+const { feed, radar, foundry } = Astro.props;
+const payloadJson = JSON.stringify({ feed, radar, foundry }).replace(/</g, '\\u003c');
+---
+
+<script type="application/json" id="openie-radio-payload" set:html={payloadJson}></script>
+
+<script is:inline>
+(function () {
+  'use strict';
+
+  var rawEl = document.getElementById('openie-radio-payload');
+  if (!rawEl) return;
+  var DATA = JSON.parse(rawEl.textContent || '{}');
+  var FEED = DATA.feed || { episodes: [], rotation_epoch_unix: 1763856000 };
+  var RADAR = DATA.radar || { items: [] };
+  var FOUNDRY = DATA.foundry || { topics: [] };
+  var EPISODES = FEED.episodes || [];
+  if (!EPISODES.length) return;
+
+  var audio = document.getElementById('radio-audio');
+  var vttTrack = document.getElementById('radio-vtt-track');
+  var playBtn = document.getElementById('play-pause-btn');
+  var backBtn = document.getElementById('seek-back-btn');
+  var fwdBtn = document.getElementById('seek-fwd-btn');
+  var scrubber = document.getElementById('deck-scrubber');
+  var curTimeEl = document.getElementById('deck-cur-time');
+  var durTimeEl = document.getElementById('deck-dur-time');
+  var dlLink = document.getElementById('deck-download-link');
+  var kickerEl = document.getElementById('deck-ep-kicker');
+  var titleEl = document.getElementById('deck-ep-title');
+  var subEl = document.getElementById('deck-ep-subtitle');
+  var speakerChip = document.getElementById('active-turn-speaker-chip');
+  var transcriptBox = document.getElementById('transcript-container');
+  var cardsBox = document.getElementById('cards-container');
+  var modePill = document.getElementById('playback-mode-pill');
+  var liveTitleEl = document.getElementById('live-ep-title');
+  var liveClockEl = document.getElementById('live-ep-clock');
+  var liveSpeakerEl = document.getElementById('live-speaker-badge');
+  var tuneLiveBtn = document.getElementById('tune-in-live-btn');
+  var canvas = document.getElementById('radio-visualizer');
+
+  var currentEp = EPISODES[0];
+  var currentRate = 1.0;
+  var isScrubbing = false;
+  var lastHighlightedTurn = -1;
+  var totalLoopSec = Math.max(1, FEED.total_duration_sec || EPISODES.reduce(function (s, e) { return s + (e.duration_sec || 180); }, 0));
+
+  function fmtSec(sec) {
+    var s = Math.max(0, Math.floor(sec || 0));
+    return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }
+
+  function findTurnAt(ep, sec) {
+    var turns = (ep && ep.turns) || [];
+    for (var i = 0; i < turns.length; i++) {
+      if (sec >= turns[i].start_sec && sec <= turns[i].end_sec + 0.35) return turns[i];
+    }
+    return turns[0] || null;
+  }
+
+  function getLiveRotationState() {
+    var nowSec = Date.now() / 1000;
+    var epoch = FEED.rotation_epoch_unix || 1763856000;
+    var pos = ((nowSec - epoch) % totalLoopSec + totalLoopSec) % totalLoopSec;
+    var acc = 0;
+    for (var i = 0; i < EPISODES.length; i++) {
+      var dur = EPISODES[i].duration_sec || 180;
+      if (pos < acc + dur || i === EPISODES.length - 1) {
+        var offset = Math.max(0, Math.min(dur - 0.5, pos - acc));
+        var activeTurn = findTurnAt(EPISODES[i], offset);
+        return {
+          episode: EPISODES[i],
+          offset_sec: Number(offset.toFixed(2)),
+          speaker: activeTurn ? activeTurn.speaker : 'Elena',
+          turn: activeTurn
+        };
+      }
+      acc += dur;
+    }
+    return { episode: EPISODES[0], offset_sec: 0, speaker: 'Elena', turn: null };
+  }
+
+  function updateLiveBanner() {
+    var st = getLiveRotationState();
+    if (liveTitleEl) liveTitleEl.textContent = 'EP 0' + st.episode.number + ' · ' + st.episode.title;
+    if (liveClockEl) liveClockEl.textContent = fmtSec(st.offset_sec) + ' / ' + fmtSec(st.episode.duration_sec);
+    if (liveSpeakerEl) liveSpeakerEl.textContent = st.speaker;
+  }
+  updateLiveBanner();
+  setInterval(updateLiveBanner, 1000);
+
+  function speakerClass(sp) {
+    if (sp === 'Elena') return 'text-brand-cyan font-bold';
+    if (sp === 'Marcus') return 'text-brand-amber font-bold';
+    return 'text-brand-indigo font-bold';
+  }
+
+  function renderEpisodeDom(ep) {
+    if (kickerEl) kickerEl.textContent = 'Episode ' + ep.number + ' of ' + EPISODES.length;
+    if (titleEl) titleEl.textContent = ep.title;
+    if (subEl) subEl.textContent = ep.subtitle;
+    if (durTimeEl) durTimeEl.textContent = ep.duration_human || fmtSec(ep.duration_sec);
+    if (dlLink) dlLink.setAttribute('href', ep.audio_url);
+    if (vttTrack) vttTrack.setAttribute('src', ep.captions_url);
+
+    document.querySelectorAll('.ep-select-btn').forEach(function (b) {
+      var active = b.getAttribute('data-ep-id') === ep.id;
+      b.className = 'ep-select-btn w-full text-left p-3 rounded-lg border transition-all cursor-pointer block ' +
+        (active ? 'border-brand-amber/60 bg-brand-amber/10' : 'border-brand-border bg-white/[0.015] hover:border-brand-cyan/40');
+    });
+
+    if (transcriptBox) {
+      transcriptBox.innerHTML = '';
+      (ep.turns || []).forEach(function (t) {
+        var row = document.createElement('div');
+        row.className = 'transcript-turn p-3 rounded-lg border border-brand-border bg-white/[0.015] hover:border-brand-cyan/40 cursor-pointer transition-all';
+        row.setAttribute('data-turn-idx', String(t.turn_index));
+        row.setAttribute('data-start', String(t.start_sec));
+        var hdr = document.createElement('div');
+        hdr.className = 'flex items-center justify-between font-mono text-[10px] mb-1';
+        var sp = document.createElement('span');
+        sp.className = speakerClass(t.speaker);
+        sp.textContent = t.speaker;
+        var ts = document.createElement('span');
+        ts.className = 'text-brand-gray';
+        ts.textContent = fmtSec(t.start_sec);
+        hdr.appendChild(sp);
+        hdr.appendChild(ts);
+        var p = document.createElement('p');
+        p.className = 'font-body text-xs sm:text-[13px] text-brand-light leading-relaxed m-0';
+        p.textContent = t.text;
+        row.appendChild(hdr);
+        row.appendChild(p);
+        row.addEventListener('click', function () { seekAndPlay(t.start_sec); });
+        transcriptBox.appendChild(row);
+      });
+    }
+
+    if (cardsBox) {
+      cardsBox.innerHTML = '';
+      (ep.cards || []).forEach(function (c) {
+        var card = document.createElement('div');
+        card.className = 'citation-card p-3 rounded-lg border border-brand-border bg-white/[0.02] transition-all';
+        card.setAttribute('data-card-id', c.id);
+        card.setAttribute('data-at', String(c.at_sec));
+
+        var top = document.createElement('div');
+        top.className = 'flex items-center justify-between gap-1 font-mono text-[10px] mb-1.5';
+        var bdg = document.createElement('span');
+        bdg.className = 'px-1.5 py-0.5 rounded bg-brand-amber/15 text-brand-amber border border-brand-amber/30';
+        bdg.textContent = c.badge;
+        var jump = document.createElement('button');
+        jump.type = 'button';
+        jump.className = 'text-brand-cyan hover:underline cursor-pointer bg-transparent border-0 p-0 font-mono text-[10px]';
+        jump.textContent = '@' + fmtSec(c.at_sec);
+        jump.addEventListener('click', function () { seekAndPlay(c.at_sec); });
+        top.appendChild(bdg);
+        top.appendChild(jump);
+
+        var ct = document.createElement('div');
+        ct.className = 'font-display text-xs font-bold text-brand-white mb-1';
+        ct.textContent = c.title;
+        var dt = document.createElement('p');
+        dt.className = 'font-body text-[11px] text-brand-slate leading-snug mb-2';
+        dt.textContent = c.detail;
+        var lnk = document.createElement('a');
+        lnk.href = c.href;
+        if (String(c.href).indexOf('http') === 0) {
+          lnk.target = '_blank';
+          lnk.rel = 'noopener noreferrer';
+        }
+        lnk.className = 'font-mono text-[10px] text-brand-cyan no-underline hover:underline';
+        lnk.textContent = 'Inspect artifact →';
+
+        card.appendChild(top);
+        card.appendChild(ct);
+        card.appendChild(dt);
+        card.appendChild(lnk);
+        cardsBox.appendChild(card);
+      });
+    }
+  }
+
+  function loadEpisode(epId, seekSec, autoPlay, modeLabel) {
+    var target = EPISODES.find(function (e) { return e.id === epId; }) || EPISODES[0];
+    var changed = currentEp.id !== target.id;
+    currentEp = target;
+    lastHighlightedTurn = -1;
+    renderEpisodeDom(target);
+    if (modePill && modeLabel) modePill.textContent = modeLabel;
+
+    if (!audio) return;
+    if (changed || audio.getAttribute('src') !== target.audio_url) {
+      audio.src = target.audio_url;
+      audio.playbackRate = currentRate;
+    }
+
+    var applySeek = function () {
+      audio.playbackRate = currentRate;
+      if (typeof seekSec === 'number' && seekSec >= 0) {
+        try { audio.currentTime = seekSec; } catch (_) {}
+      }
+      if (autoPlay) {
+        ensureWebAudio();
+        audio.play().catch(function () {});
+      }
+    };
+
+    if (audio.readyState >= 1) applySeek();
+    else audio.addEventListener('loadedmetadata', applySeek, { once: true });
+  }
+
+  function seekAndPlay(sec) {
+    if (!audio) return;
+    ensureWebAudio();
+    if (modePill) modePill.textContent = 'Mode: On-Demand';
+    if (audio.readyState >= 1) {
+      audio.currentTime = sec;
+      audio.play().catch(function () {});
+    } else {
+      audio.addEventListener('loadedmetadata', function () {
+        audio.currentTime = sec;
+        audio.play().catch(function () {});
+      }, { once: true });
+      audio.load();
+    }
+  }
+
+  // Bind initial SSR transcript & card buttons
+  document.querySelectorAll('.transcript-turn').forEach(function (el) {
+    el.addEventListener('click', function () { seekAndPlay(parseFloat(el.getAttribute('data-start') || '0')); });
+  });
+  document.querySelectorAll('[data-seek-sec]').forEach(function (el) {
+    el.addEventListener('click', function () { seekAndPlay(parseFloat(el.getAttribute('data-seek-sec') || '0')); });
+  });
+  document.querySelectorAll('.ep-select-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      loadEpisode(btn.getAttribute('data-ep-id'), 0, true, 'Mode: On-Demand');
+    });
+  });
+
+  if (tuneLiveBtn) {
+    tuneLiveBtn.addEventListener('click', function () {
+      var live = getLiveRotationState();
+      loadEpisode(live.episode.id, live.offset_sec, true, 'Mode: LIVE SYNCED');
+    });
+  }
+
+  if (playBtn && audio) {
+    playBtn.addEventListener('click', function () {
+      ensureWebAudio();
+      if (audio.paused) audio.play().catch(function () {});
+      else audio.pause();
+    });
+    audio.addEventListener('play', function () { playBtn.textContent = '❚❚ Pause'; ensureWebAudio(); });
+    audio.addEventListener('pause', function () { playBtn.textContent = '▶ Play'; });
+    audio.addEventListener('ended', function () {
+      var idx = EPISODES.findIndex(function (e) { return e.id === currentEp.id; });
+      var nextEp = EPISODES[(idx + 1) % EPISODES.length];
+      loadEpisode(nextEp.id, 0, true, modePill ? modePill.textContent : 'Mode: Auto-Advance');
+    });
+  }
+
+  if (backBtn && audio) backBtn.addEventListener('click', function () { audio.currentTime = Math.max(0, (audio.currentTime || 0) - 15); });
+  if (fwdBtn && audio) fwdBtn.addEventListener('click', function () { audio.currentTime = Math.min(currentEp.duration_sec || 300, (audio.currentTime || 0) + 15); });
+
+  if (scrubber && audio) {
+    scrubber.addEventListener('input', function () { isScrubbing = true; });
+    scrubber.addEventListener('change', function () {
+      var dur = audio.duration || currentEp.duration_sec || 1;
+      audio.currentTime = (parseFloat(scrubber.value) / 1000) * dur;
+      isScrubbing = false;
+    });
+  }
+
+  document.querySelectorAll('.speed-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      currentRate = parseFloat(btn.getAttribute('data-speed') || '1');
+      if (audio) audio.playbackRate = currentRate;
+      document.querySelectorAll('.speed-btn').forEach(function (b) {
+        var on = b === btn;
+        b.className = 'speed-btn font-mono text-xs px-2.5 py-1 rounded border cursor-pointer transition-colors ' +
+          (on ? 'border-brand-cyan bg-brand-cyan/15 text-brand-cyan' : 'border-brand-border text-brand-slate hover:text-brand-white');
+      });
+    });
+  });
+
+  // Sync transcript & pop-up citation cards on timeupdate
+  if (audio) {
+    audio.addEventListener('timeupdate', function () {
+      var t = audio.currentTime || 0;
+      var dur = audio.duration || currentEp.duration_sec || 1;
+      if (curTimeEl) curTimeEl.textContent = fmtSec(t);
+      if (scrubber && !isScrubbing) scrubber.value = String(Math.round((t / dur) * 1000));
+
+      var activeTurn = findTurnAt(currentEp, t);
+      if (activeTurn && activeTurn.turn_index !== lastHighlightedTurn) {
+        lastHighlightedTurn = activeTurn.turn_index;
+        if (speakerChip) speakerChip.textContent = activeTurn.speaker + ' · Speaking';
+        if (transcriptBox) {
+          transcriptBox.querySelectorAll('.transcript-turn').forEach(function (row) {
+            var match = parseInt(row.getAttribute('data-turn-idx') || '-1', 10) === activeTurn.turn_index;
+            row.classList.toggle('border-brand-cyan', match);
+            row.classList.toggle('bg-brand-cyan/10', match);
+            if (match) row.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          });
+        }
+      }
+
+      if (cardsBox) {
+        cardsBox.querySelectorAll('.citation-card').forEach(function (cardEl) {
+          var at = parseFloat(cardEl.getAttribute('data-at') || '0');
+          var hot = t >= at && t <= at + 18.0;
+          cardEl.classList.toggle('border-brand-amber', hot);
+          cardEl.classList.toggle('bg-brand-amber/10', hot);
+        });
+      }
+    });
+  }
+
+  // Real-Time WebAudio Canvas Spectrum + Oscilloscope
+  var audioCtx = null;
+  var analyser = null;
+  var freqData = null;
+  var waveData = null;
+
+  function ensureWebAudio() {
+    if (!audio || !canvas) return;
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    if (!audioCtx) {
+      try {
+        audioCtx = new AC();
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 256;
+        var srcNode = audioCtx.createMediaElementSource(audio);
+        srcNode.connect(analyser);
+        analyser.connect(audioCtx.destination);
+        freqData = new Uint8Array(analyser.frequencyBinCount);
+        waveData = new Uint8Array(analyser.fftSize);
+      } catch (_) {}
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume().catch(function () {});
+    }
+  }
+
+  if (canvas) {
+    var ctx = canvas.getContext('2d');
+    var phase = 0;
+    var drawFrame = function () {
+      requestAnimationFrame(drawFrame);
+      if (!ctx) return;
+      var w = canvas.width;
+      var h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      var playing = audio && !audio.paused && analyser && freqData && waveData;
+      if (playing) {
+        analyser.getByteFrequencyData(freqData);
+        analyser.getByteTimeDomainData(waveData);
+        var bars = 64;
+        var bw = w / bars;
+        for (var i = 0; i < bars; i++) {
+          var v = freqData[i] / 255.0;
+          var bh = Math.max(3, v * (h * 0.78));
+          ctx.fillStyle = i < 24 ? 'rgba(0, 212, 170, 0.52)' : i < 46 ? 'rgba(245, 158, 11, 0.48)' : 'rgba(129, 140, 248, 0.52)';
+          ctx.fillRect(i * bw + 1, h - bh, bw - 2, bh);
+        }
+        ctx.beginPath();
+        ctx.strokeStyle = '#00D4AA';
+        ctx.lineWidth = 2;
+        for (var j = 0; j < waveData.length; j++) {
+          var x = (j / (waveData.length - 1)) * w;
+          var y = (waveData[j] / 255.0) * h;
+          if (j === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      } else {
+        phase += 0.035;
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(0, 212, 170, 0.4)';
+        ctx.lineWidth = 1.6;
+        for (var k = 0; k <= 120; k++) {
+          var px = (k / 120) * w;
+          var py = h * 0.55 + Math.sin(k * 0.14 + phase) * 8 + Math.cos(k * 0.07 - phase * 0.8) * 5;
+          if (k === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+      }
+    };
+    drawFrame();
+  }
+
+  // Tabs, Copy RSS, Radar & Foundry Filters
+  var copyBtn = document.getElementById('copy-rss-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var url = copyBtn.getAttribute('data-rss') || 'https://research.openie.dev/radio/rss.xml';
+      if (navigator.clipboard) navigator.clipboard.writeText(url).catch(function () {});
+      copyBtn.textContent = 'Copied RSS URL ✓';
+      setTimeout(function () { copyBtn.textContent = 'Copy RSS URL'; }, 2200);
+    });
+  }
+
+  var pStudio = document.getElementById('radio-panel-studio');
+  var pRadar = document.getElementById('radar');
+  var pFoundry = document.getElementById('foundry');
+  document.querySelectorAll('.radio-tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tab = btn.getAttribute('data-radio-tab') || 'all';
+      if (pStudio) pStudio.classList.toggle('hidden', tab !== 'all' && tab !== 'studio');
+      if (pRadar) pRadar.classList.toggle('hidden', tab !== 'all' && tab !== 'radar');
+      if (pFoundry) pFoundry.classList.toggle('hidden', tab !== 'all' && tab !== 'foundry');
+      document.querySelectorAll('.radio-tab-btn').forEach(function (b) {
+        var on = b === btn;
+        b.className = 'radio-tab-btn font-mono text-xs px-3.5 py-2 rounded-lg border cursor-pointer ' +
+          (on ? 'border-brand-amber/50 bg-brand-amber/15 text-brand-amber' : 'border-brand-border text-brand-slate hover:text-brand-white');
+      });
+    });
+  });
+
+  var activeCls = 'ALL';
+  var radarBadgeSel = document.getElementById('radar-badge-select');
+  var radarSearch = document.getElementById('radar-search-input');
+  var radarEmpty = document.getElementById('radar-empty-msg');
+
+  function applyRadarFilters() {
+    var bdg = radarBadgeSel ? radarBadgeSel.value : 'ALL';
+    var q = radarSearch ? radarSearch.value.toLowerCase().trim() : '';
+    var shown = 0;
+    document.querySelectorAll('.radar-item').forEach(function (el) {
+      var okCls = activeCls === 'ALL' || el.getAttribute('data-cls') === activeCls;
+      var okBdg = bdg === 'ALL' || el.getAttribute('data-badge') === bdg;
+      var okQ = !q || (el.getAttribute('data-hay') || '').indexOf(q) !== -1;
+      var show = okCls && okBdg && okQ;
+      el.classList.toggle('hidden', !show);
+      if (show) shown++;
+    });
+    if (radarEmpty) radarEmpty.classList.toggle('hidden', shown > 0);
+  }
+
+  document.querySelectorAll('.radar-cls-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      activeCls = btn.getAttribute('data-radar-cls') || 'ALL';
+      document.querySelectorAll('.radar-cls-btn').forEach(function (b) {
+        b.classList.toggle('bg-brand-amber/15', b === btn);
+        b.classList.toggle('border-brand-amber', b === btn);
+      });
+      applyRadarFilters();
+    });
+  });
+  if (radarBadgeSel) radarBadgeSel.addEventListener('change', applyRadarFilters);
+  if (radarSearch) radarSearch.addEventListener('input', applyRadarFilters);
+
+  document.querySelectorAll('.foundry-st-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var st = btn.getAttribute('data-foundry-st') || 'ALL';
+      document.querySelectorAll('.foundry-card').forEach(function (c) {
+        c.classList.toggle('hidden', st !== 'ALL' && c.getAttribute('data-status') !== st);
+      });
+    });
+  });
+
+  // Hash deep-link support (#ep04-deterministic-null-satb)
+  if (window.location.hash) {
+    var hid = window.location.hash.slice(1);
+    var matchedEp = EPISODES.find(function (e) { return e.id === hid; });
+    if (matchedEp) loadEpisode(matchedEp.id, 0, false, 'Mode: On-Demand');
+  }
+
+  // WebMCP & Agent Discovery API: window.openieRadio
+  window.openieRadio = {
+    aiDisclosure: FEED.ai_disclosure,
+    rssUrl: 'https://research.openie.dev/radio/rss.xml',
+    getNowPlaying: function () {
+      var live = getLiveRotationState();
+      var deckSec = audio ? Number((audio.currentTime || 0).toFixed(2)) : 0;
+      return {
+        live_broadcast: {
+          episode_id: live.episode.id,
+          episode_title: live.episode.title,
+          offset_sec: live.offset_sec,
+          speaker: live.speaker
+        },
+        studio_deck: {
+          episode_id: currentEp.id,
+          episode_title: currentEp.title,
+          paused: audio ? audio.paused : true,
+          current_sec: deckSec,
+          playback_rate: currentRate,
+          active_turn: findTurnAt(currentEp, deckSec)
+        }
+      };
+    },
+    listEpisodes: function () {
+      return EPISODES.map(function (e) {
+        return {
+          id: e.id,
+          number: e.number,
+          title: e.title,
+          subtitle: e.subtitle,
+          duration_sec: e.duration_sec,
+          duration_human: e.duration_human,
+          audio_url: e.audio_url,
+          captions_url: e.captions_url,
+          transcript_url: e.transcript_url,
+          card_count: e.card_count
+        };
+      });
+    },
+    listFoundryTopics: function (statusFilter) {
+      var all = FOUNDRY.topics || [];
+      if (!statusFilter || statusFilter === 'ALL') return all;
+      return all.filter(function (t) { return t.status === statusFilter; });
+    },
+    listRadarPapers: function (query) {
+      var all = RADAR.items || [];
+      if (!query) return all;
+      var q = String(query).toLowerCase();
+      return all.filter(function (it) {
+        return (it.title + ' ' + it.external_id + ' ' + it.classification + ' ' + it.epistemic_badge + ' ' + it.source).toLowerCase().indexOf(q) !== -1;
+      });
+    },
+    tuneInLive: function () {
+      var live = getLiveRotationState();
+      loadEpisode(live.episode.id, live.offset_sec, true, 'Mode: LIVE SYNCED');
+      return live;
+    }
+  };
+})();
+</script>

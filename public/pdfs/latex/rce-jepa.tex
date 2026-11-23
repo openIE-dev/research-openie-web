@@ -158,7 +158,7 @@
 \title{\vspace{-1.2em}\textbf{RCE-JEPA: World Coding, with JEPA as Premise}}
 \author{\textbf{David Charlot, Open Interface Engineering}\\[0.15em]
 {\small Research paper · open topic $\cdot$ Open Interface Engineering $\cdot$ \href{https://research.openie.dev}{research.openie.dev}}}
-\date{\small Revision \texttt{1561a2a} (22 November 2026) $\cdot$ Web: \href{https://research.openie.dev/papers/rce-jepa/}{research.openie.dev/papers/rce-jepa/} $\cdot$ Archival LaTeX: \href{https://research.openie.dev/pdfs/latex/rce-jepa.pdf}{/pdfs/latex/rce-jepa.pdf} (\href{https://research.openie.dev/pdfs/latex/rce-jepa.tex}{.tex})}
+\date{\small Revision \texttt{5c50a85} (23 November 2026) $\cdot$ Web: \href{https://research.openie.dev/papers/rce-jepa/}{research.openie.dev/papers/rce-jepa/} $\cdot$ Archival LaTeX: \href{https://research.openie.dev/pdfs/latex/rce-jepa.pdf}{/pdfs/latex/rce-jepa.pdf} (\href{https://research.openie.dev/pdfs/latex/rce-jepa.tex}{.tex})}
 
 \begin{document}
 \maketitle
@@ -168,7 +168,7 @@
 \noindent\fcolorbox{openieAmberBorder}{openieAmberBg}{%
   \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
     \small\color{openieDark}%
-    \textbf{Measurement.} Research paper, open topic, not a journal final. Phase~0 deterministic floors (\texttt{H1} median $\rho = 9.34$ over \texttt{185} Forms, \texttt{H7} \texttt{0/1,275} fuzzed violations, \texttt{H8} \texttt{0/10,500} six-target stream mismatches, \texttt{H14} \texttt{111/151 = 73.5\%} zero-model ladder closes), \textbf{\texttt{H2}} (\texttt{C\_check / E\_model = 0.04904 J / 84.25 J = 0.000582 <= 0.05}, \texttt{1,718$\times$} cheaper on Apple M5 Max \texttt{reported\_j}), \textbf{\texttt{H15}} (single-shot \texttt{17/40} to \texttt{34/40} and bounded 5-turn \textbf{\texttt{H15-Iterative}} closing \textbf{\texttt{40 / 40}} residual tasks with \texttt{0} contradictions on \texttt{Opus 5.5}/\texttt{Sonnet 5.5} [\texttt{39/40} \texttt{Grok 4.20}], warm \texttt{DNULLMM1} Gear-0~v2 replaying \texttt{40/40} at \texttt{0} calls and \texttt{1.771 \textmu J}, and \texttt{200/200} 3-Gear \texttt{Zipf(0.85)} stream closes at \texttt{16.67$\times$} fewer frontier episodes), \textbf{\texttt{FormJEPA-v1}} (\texttt{8.42M} trainable parameters on \texttt{1,387} disjoint Forms; \texttt{177/200} synthetic defects; \texttt{27/40} at $k=16$ at \texttt{474.76 mJ} Linux \texttt{x86-64} RAPL core \texttt{reported\_j}), \textbf{\texttt{FormEBM-v2}} (\texttt{5.85M} trainable parameters; \textbf{\texttt{H5}} \texttt{AUROC = 0.8922 >= 0.85}, \texttt{2.39$\times$} fewer \texttt{rce check} calls; \textbf{\texttt{H11}} \textbf{\texttt{93.0\% >= 80.0\%}} strict 5-step monotonicity, Spearman $\rho = 0.9931$), and the 151-task \textbf{\texttt{rce repair} rung-\texttt{f}} criterion audit (\texttt{holds: false}, \texttt{3/119 = 2.5\% > 2.0\%}, keeping rung~\texttt{f} in \texttt{observe} mode) report on-chip \texttt{reported\_j} counters; cloud server joules are \texttt{not\_available}. No hardware rail or wall meter was attached (\texttt{measured\_j = None}, \texttt{board\_metered = false}). No fabricated citations.
+    \textbf{Measurement.} Research paper, open topic, not a journal final. \textbf{\texttt{H2}} (\texttt{0.04904 J / 84.25 J = 0.000582 <= 0.05}, \texttt{1,718$\times$} cheaper), \textbf{\texttt{H15}} (single-shot and bounded 5-turn \textbf{\texttt{H15-Iterative}} closing \textbf{\texttt{40 / 40}} residual tasks with \texttt{0} contradictions plus warm \texttt{DNULLMM1} Gear-0~v2), \textbf{\texttt{FormJEPA-v1}} (\texttt{8.42M} trainable parameters), \textbf{\texttt{FormEBM-v2}} (\texttt{5.85M} parameters), and span-normalized \textbf{\texttt{FormEBM-v3}} (\texttt{6.05M} parameters; \textbf{\texttt{H5 AUROC = 0.9437}}, \textbf{\texttt{H11 = 94.0\%}} strict 5-step monotonicity, OOD \texttt{H15} inversion resolved \texttt{0.2585 $\to$ 0.5278}) on \texttt{1,387} disjoint Forms, plus the 151-task \textbf{\texttt{rce repair} rung-\texttt{f}} audit (\texttt{holds: false}, \texttt{observe} mode) report Apple M5 Max and Linux \texttt{x86-64} \texttt{RAPL} on-chip \texttt{reported\_j} counters; cloud server joules are \texttt{not\_available}. No hardware rail or wall meter was attached (\texttt{measured\_j = None}, \texttt{board\_metered = false}). No fabricated citations.
   }%
 }
 
@@ -177,7 +177,7 @@
 \noindent{\color{openieAmber}\vrule width 3pt}\hspace{8pt}%
 \parbox{\dimexpr\linewidth-11pt\relax}{%
   \small\itshape\color{openieSlate}%
-  RCE-JEPA (RCE is the Reality Code Engine; JEPA is a Joint Embedding Predictive Architecture) keeps its name so the work stays findable. The subject is World Coding. JEPA is the premise: a learned model predicts a compact summary of a program instead of writing the next word-piece of text. A World of Code is the space of canonical program Forms plus the exact transition and acceptance rules (the Laws of Coding). The proposer slot is any learned model. The checker decides. Hypotheses H1 to H15 are stated in the paper. Measured results now cover H1 (median description-length ratio 9.34 over 185 hand-written programs), H2 (checker-to-model energy ratio 0.000582, or 1,718 times cheaper on Apple M5 Max in on-chip reported\_j), H5 and H11 on unseen disjoint Form shapes via FormEBM-v2 (5.85M parameters: area under the receiver operating characteristic curve (AUROC) 0.8922 >= 0.85, 84.05\% solvable top-1 accuracy, 2.39 times fewer checker calls, and 93.0\% >= 80\% strict 5-step cumulative defect monotonicity at Spearman 0.9931 and 47.09 mJ per candidate core reported\_j), H7 fuzzed arm (0 invariant violations among 1,275 mutants), H8 (0 replay mismatches on 10,500 streams across six targets), H14 (deterministic ladder closing 111 of 151 tasks, 73.5\%, at zero model calls, leaving 40 residual tasks), H15 single-shot and bounded checker-feedback H15-Iterative across those 40 residual tasks (17/40 to 34/40 single-shot; 22/40 at k=1 and 27/40 at k=16 for 8.42M FormJEPA-v1; 40/40 closed on Claude Opus 5.5 and Claude Sonnet 5.5 with 0 contradictions under bounded checker feedback plus public standard-library headers, 39/40 on xAI Grok 4.20 Reasoning; 40/40 Gear-0 replay at 0 calls and 0.325 microseconds per lookup; and 200/200 Zipf(0.85) 3-Gear stream admissions with 16.67 times fewer frontier episodes), and the 151-task rce repair rung f promotion audit (3/119 = 2.5\% > 2.0\%, 0 contradictions, keeping rung f in observe mode). Full intent-to-Form synthesis (H3), multi-line out-of-distribution energy calibration, and external wall-meter energy (measured\_j) remain open.
+  RCE-JEPA (RCE is the Reality Code Engine; JEPA is a Joint Embedding Predictive Architecture) keeps its name so the work stays findable. The subject is World Coding. JEPA is the premise: a learned model predicts a compact summary of a program instead of writing the next word-piece of text. A World of Code is the space of canonical program Forms plus the exact transition and acceptance rules (the Laws of Coding). The proposer slot is any learned model. The checker decides. Hypotheses H1 to H15 are stated in the paper. Measured results now cover H1 (median description-length ratio 9.34 over 185 hand-written programs), H2 (checker-to-model energy ratio 0.000582, or 1,718 times cheaper on Apple M5 Max in on-chip reported\_j), H5 and H11 on unseen disjoint Form shapes via FormEBM-v2 (5.85M parameters: area under the receiver operating characteristic curve (AUROC) 0.8922 >= 0.85, 84.05\% solvable top-1 accuracy, 2.39 times fewer checker calls, and 93.0\% >= 80\% strict 5-step cumulative defect monotonicity at Spearman 0.9931 and 47.09 mJ per candidate core reported\_j) and span-normalized decomposed FormEBM-v3 (6.05M parameters: unseen-shape H5 AUROC 0.9437 >= 0.85, 83.44\% defect-head and 80.98\% composite solvable top-1 accuracy, H11 strict 5-step monotonicity 94.0\% on E\_depth at Spearman 0.9966 and 92.0\% on E\_total at Spearman 0.9846, and zero-shot out-of-distribution H15 multi-proposer pooled AUROC lifted from 0.2585 to 0.5278, 0.6018 on large-span valid versus short invalid candidates, at 232.45 mJ per candidate core reported\_j), H7 fuzzed arm (0 invariant violations among 1,275 mutants), H8 (0 replay mismatches on 10,500 streams across six targets), H14 (deterministic ladder closing 111 of 151 tasks, 73.5\%, at zero model calls, leaving 40 residual tasks), H15 single-shot and bounded checker-feedback H15-Iterative across those 40 residual tasks (17/40 to 34/40 single-shot; 22/40 at k=1 and 27/40 at k=16 for 8.42M FormJEPA-v1; 40/40 closed on Claude Opus 5.5 and Claude Sonnet 5.5 with 0 contradictions under bounded checker feedback plus public standard-library headers, 39/40 on xAI Grok 4.20 Reasoning; 40/40 Gear-0 replay at 0 calls and 0.325 microseconds per lookup; and 200/200 Zipf(0.85) 3-Gear stream admissions with 16.67 times fewer frontier episodes), and the 151-task rce repair rung f promotion audit (3/119 = 2.5\% > 2.0\%, 0 contradictions, keeping rung f in observe mode). Full intent-to-Form synthesis (H3), cross-module signature-and-trace out-of-distribution energy calibration beyond 0.5278, and external wall-meter energy (measured\_j) remain open.
 }
 \vspace{6pt}
 
@@ -226,20 +226,30 @@ solvable top-1 accuracy and \texttt{2.39×} fewer checker calls, and
 lifting unseen-chain \textbf{H11} strict 5-step edit monotonicity from
 \texttt{36.0\%} to \textbf{\texttt{93.0\%\ \textgreater{}=\ 80\%}} at
 Spearman \texttt{0.9931} and \texttt{47.09\ mJ}/\allowbreak{}candidate core
+\texttt{reported\_\allowbreak{}j}), the span-normalized two-head decomposed scorer
+\textbf{\texttt{FormEBM-\allowbreak{}v3}} (\texttt{6.05M} trainable parameters on the
+identical split, raising unseen-shape \textbf{H5} AUROC to
+\textbf{\texttt{0.9437\ \textgreater{}=\ 0.85}} with \texttt{83.44\%}
+defect-head and \texttt{80.98\%} composite solvable top-1 accuracy,
+raising unseen-chain \textbf{H11} strict 5-step monotonicity to
+\textbf{\texttt{94.0\%}} on \texttt{E\_depth} at Spearman
+\texttt{0.9966} and \textbf{\texttt{92.0\%}} on \texttt{E\_total} at
+Spearman \texttt{0.9846}, and eliminating Wave-4 cross-task edit-span
+inversion on zero-shot out-of-distribution (OOD) \textbf{H15} by lifting
+multi-proposer pooled AUROC from \texttt{0.2585} to
+\textbf{\texttt{0.5278}} and large-span valid versus short invalid AUROC
+to \textbf{\texttt{0.6018}} at \texttt{232.\allowbreak{}45\ mJ}/candidate core
 \texttt{reported\_\allowbreak{}j}), and the pre-registered 151-task
 \textbf{\texttt{rce\ repair} rung \texttt{f}} promotion audit
 (\texttt{3/119\ =\ 2.5\%\ \textgreater{}\ 2.0\%} stochastic share,
 \texttt{3/3} passing \texttt{W-MUT-1}, \texttt{0} contradictions,
 confirming rung \texttt{f} remains in \texttt{observe} mode). Honest
 disclosure: full intent-to-Form synthesis (H3), end-to-end joule parity
-(H4), out-of-distribution (OOD) multi-line energy calibration across
-heterogeneous git-history rewrites (where single-line-trained
-\texttt{FormEBM-\allowbreak{}v2} lifts within-task \texttt{k\ =\ 1} typed reranking
-from \texttt{22/40} to \texttt{25/40} while cross-task pooled AUROC is
-\texttt{0.2630}), reference-app encoding (H6), cost-table prediction
-(H9), quotient data-saving (H10), decision-head calibration (H12),
-discrete-versus-continuous long-horizon planning (H13),
-diffusion/evolutionary H15 arms, and external wall-meter
+(H4), cross-module signature-and-trace OOD energy calibration beyond
+\texttt{0.5278} across multi-module git-history rewrites, reference-app
+encoding (H6), cost-table prediction (H9), quotient data-saving (H10),
+decision-head calibration (H12), discrete-versus-continuous long-horizon
+planning (H13), diffusion/evolutionary H15 arms, and external wall-meter
 \texttt{measured\_\allowbreak{}j} remain open. JEPA is the premise: predict a summary
 of meaning, not the surface text. The subject is World Coding, any
 learned proposer over Forms, with the Laws of Coding as the acceptance
@@ -306,12 +316,17 @@ remote cloud server energy is recorded as \texttt{not\_\allowbreak{}available}. 
   \textbf{\texttt{40/40} into Gear 0 (\texttt{DNULLMM1})} for zero-call
   replay, purpose-trained \texttt{FormJEPA-\allowbreak{}v1} (\texttt{8.42M}
   parameters) admits \texttt{27/40} at \texttt{k\ =\ 16} while
-  contrastive \texttt{FormEBM-\allowbreak{}v2} (\texttt{5.85M} parameters) reaches
-  unseen-shape AUROC \texttt{0.8922} (H5) and \texttt{93.0\%} strict
-  5-step monotonicity (H11), and the \textbf{3-Gear Cascade} admits
-  \texttt{200/200} recurring \texttt{Zipf(\allowbreak{}0.\allowbreak{}85)} arrivals with
-  \texttt{16.67×} fewer frontier episodes (\texttt{12} vs \texttt{200}).
-  \texttt{rce\ repair} rung \texttt{f} stays in \texttt{observe} mode
+  contrastive \texttt{FormEBM-\allowbreak{}v2} (\texttt{5.85M} parameters: AUROC
+  \texttt{0.8922}, \texttt{93.0\%} monotonicity) and span-normalized
+  \texttt{FormEBM-\allowbreak{}v3} (\texttt{6.05M} parameters: unseen-shape AUROC
+  \texttt{0.9437} on H5, \texttt{94.0\%} \texttt{E\_depth} /
+  \texttt{92.0\%} \texttt{E\_total} monotonicity on H11, and zero-shot
+  H15 pooled AUROC lifted from \texttt{0.2585} to \texttt{0.5278}) rank
+  Form candidates without invoking the checker, and the \textbf{3-Gear
+  Cascade} admits \texttt{200/200} recurring \texttt{Zipf(\allowbreak{}0.\allowbreak{}85)}
+  arrivals with \texttt{16.67×} fewer frontier episodes (\texttt{12} vs
+  \texttt{200}). \texttt{rce\ repair} rung \texttt{f} stays in
+  \texttt{observe} mode
   (\texttt{3/119\ =\ 2.5\%\ \textgreater{}\ 2.0\%}, \texttt{0}
   contradictions), and no external wall-meter reading
   (\texttt{measured\_\allowbreak{}j}) is claimed.
@@ -508,6 +523,8 @@ listed.
 \item
   ROC: receiver operating characteristic
 \item
+  ROCm: Radeon Open Compute platform
+\item
   SAT: Boolean satisfiability
 \item
   SATB: Satiation Benchmark telemetry and harness discipline
@@ -619,9 +636,13 @@ in one table in
   H5. Energy ranking concentrates mass on valid Forms. (Contrastive
   \texttt{FormEBM-\allowbreak{}v2} reaches AUROC
   \texttt{0.8922\ \textgreater{}=\ 0.85} and \texttt{84.05\%} solvable
-  top-1 accuracy, \texttt{68.5\%} raw across all 200 beams, on unseen
-  test Form shapes vs \texttt{0.618} for uncalibrated
-  \texttt{FormJEPA-\allowbreak{}v1}; OOD multi-line pool calibration open.)
+  top-1 accuracy, and span-normalized \texttt{FormEBM-\allowbreak{}v3} raises
+  unseen-shape AUROC to \texttt{0.9437\ \textgreater{}=\ 0.85} with
+  \texttt{83.44\%} defect-head and \texttt{80.98\%} composite solvable
+  top-1 accuracy vs \texttt{0.618} for uncalibrated
+  \texttt{FormJEPA-\allowbreak{}v1}; zero-shot OOD H15 pooled AUROC rises from
+  \texttt{0.2585} to \texttt{0.5278}, while cross-module signature/trace
+  calibration beyond \texttt{0.5278} remains open.)
 \item
   H6. The reference apps are encodable as Forms.
 \item
@@ -637,10 +658,12 @@ in one table in
 \item
   H11. Energy is monotone in edit distance. (Contrastive
   \texttt{FormEBM-\allowbreak{}v2} reaches \texttt{93.0\%\ \textgreater{}=\ 80\%}
-  strict 5-step monotonicity and Spearman \texttt{0.9931} on 100 unseen
-  cumulative defect chains vs \texttt{36.0\%} for \texttt{FormJEPA-\allowbreak{}v1};
-  unconstrained same-line random-walk slice is \texttt{38.0\%} strict
-  with Spearman \texttt{0.8513}.)
+  strict 5-step monotonicity, and decomposed \texttt{FormEBM-\allowbreak{}v3} reaches
+  \texttt{94.0\%} on \texttt{E\_depth} at Spearman \texttt{0.9966} and
+  \texttt{92.0\%} on \texttt{E\_total} at Spearman \texttt{0.9846}
+  across 100 unseen cumulative defect chains vs \texttt{36.0\%} for
+  \texttt{FormJEPA-\allowbreak{}v1}; unconstrained same-line random-walk slices
+  remain below \texttt{80\%}.)
 \item
   H12. The decision head is calibrated on gate outcomes.
 \item
@@ -658,8 +681,10 @@ in one table in
   Cascade. Benchmarked across six single-shot cloud/local proposers
   (\texttt{17/40} to \texttt{34/40}), purpose-trained
   \texttt{FormJEPA-\allowbreak{}v1} (\texttt{22/40} at \texttt{k\ =\ 1},
-  \texttt{27/40} at \texttt{k\ =\ 16}; \texttt{25/40} at
-  \texttt{k\ =\ 1} with \texttt{FormEBM-\allowbreak{}v2} reranking), bounded
+  \texttt{27/40} at \texttt{k\ =\ 16}; \texttt{25/40} typed
+  \texttt{k\ =\ 1} with \texttt{FormEBM-\allowbreak{}v2} reranking; \texttt{24/40}
+  typed \texttt{k\ =\ 1} and \texttt{27/40} multi-proposer
+  \texttt{k\ =\ 1} under \texttt{FormEBM-\allowbreak{}v3} \texttt{E\_def}), bounded
   checker-feedback \texttt{H15-\allowbreak{}Iterative} with public standard-library
   headers (\texttt{40/40} on \texttt{Opus\ 5.5} and \texttt{Sonnet\ 5.\allowbreak{}5}
   with \texttt{0} contradictions, \texttt{39/40} on
@@ -731,13 +756,21 @@ margin energy scorer (\texttt{FormEBM-\allowbreak{}v2}, \texttt{5.85M} parameter
 the same disjoint \texttt{1,387}-Form split, reaching unseen-shape H5
 AUROC \texttt{0.8922} and \texttt{93.0\%} strict 5-step edit
 monotonicity on H11 while cutting solvable check calls by
-\texttt{2.39×}), and bounded checker-feedback residual closure with
-public standard-library headers (\texttt{H15-\allowbreak{}Iterative}, closing
-\texttt{40/40} residual tasks with \texttt{0} contradictions and
-\texttt{40/40} zero-call Gear-0 replay; interactive instruments at
+\texttt{2.39×}), the span-normalized two-head decomposed scorer
+(\texttt{FormEBM-\allowbreak{}v3}, \texttt{6.05M} parameters on the identical split,
+lifting unseen-shape H5 AUROC to \texttt{0.9437}, H11 strict 5-step
+monotonicity to \texttt{94.0\%} on \texttt{E\_depth} and \texttt{92.0\%}
+on \texttt{E\_total}, and zero-shot out-of-distribution H15
+multi-proposer pooled AUROC from \texttt{0.2585} to \texttt{0.5278},
+\texttt{0.6018} on large-span valid versus short invalid rewrites), and
+bounded checker-feedback residual closure with public standard-library
+headers (\texttt{H15-\allowbreak{}Iterative}, closing \texttt{40/40} residual tasks
+with \texttt{0} contradictions and \texttt{40/40} zero-call Gear-0
+replay; interactive instruments at
 \href{https://research.openie.dev/living/rce-jepa/}{/living/rce-jepa/}),
-while full intent-to-Form synthesis, multi-line out-of-distribution
-energy calibration, and the gate-receipt decision head remain open.
+while full intent-to-Form synthesis, cross-module signature-and-trace
+out-of-distribution energy calibration, and the gate-receipt decision
+head remain open.
 
 \subsection{Deterministic first: the ladder beneath the
 proposer}\label{deterministic-first-the-ladder-beneath-the-proposer}
@@ -1596,6 +1629,21 @@ on 14 October 2026.
   \texttt{sha256:\ a7774d3b\allowbreak{}d03ae450.\allowbreak{}.\allowbreak{}.\allowbreak{}}) on \texttt{openIE-\allowbreak{}dev/\allowbreak{}rce} at
   commit \texttt{1762fb4b} (Linux x86\_64 binary
   \texttt{sha256:\ 33146449\allowbreak{}6009d98a.\allowbreak{}.\allowbreak{}.\allowbreak{}}), AMD Ryzen AI Max+ 395 / Radeon
+  8060S Linux powercap RAPL \texttt{reported\_\allowbreak{}j} receipts
+  (\texttt{measured\_\allowbreak{}j\ =\ None}, \texttt{board\_\allowbreak{}metered\ =\ false}).
+  \href{https://research.openie.dev/living/rce-jepa/}{research.openie.dev/living/rce-jepa/}
+  ·
+  \href{https://research.openie.dev/data/\#rce-jepa}{research.openie.dev/data/}.
+  Full.
+\item
+  {[}B36{]} Open Interface Engineering, ``FormEBM-v3 span-normalized
+  two-head decomposed contrastive energy scorer (H5, H11, and zero-shot
+  OOD H15 cross-span transfer)'', registered 23 November 2026
+  (\texttt{rce-\allowbreak{}jepa-\allowbreak{}form-\allowbreak{}ebm-\allowbreak{}v3-\allowbreak{}2026-\allowbreak{}11-\allowbreak{}23},
+  \texttt{sha256:\ cb7ee1ac\allowbreak{}8dc5c594.\allowbreak{}.\allowbreak{}.\allowbreak{}}) on \texttt{openIE-\allowbreak{}dev/\allowbreak{}rce} at
+  commit \texttt{1762fb4b} (Linux x86\_64 binary
+  \texttt{sha256:\ 386be0c2\allowbreak{}6389550e.\allowbreak{}.\allowbreak{}.\allowbreak{}}; checkpoint
+  \texttt{sha256:\ 71e642f1\allowbreak{}bb0b9c06.\allowbreak{}.\allowbreak{}.\allowbreak{}}), AMD Ryzen AI Max+ 395 / Radeon
   8060S Linux powercap RAPL \texttt{reported\_\allowbreak{}j} receipts
   (\texttt{measured\_\allowbreak{}j\ =\ None}, \texttt{board\_\allowbreak{}metered\ =\ false}).
   \href{https://research.openie.dev/living/rce-jepa/}{research.openie.dev/living/rce-jepa/}
@@ -4092,22 +4140,29 @@ This project, the Laws of Coding & A canonical Form is the object.
 Surface text is a projection. Cost is counted. Measured results: H1
 median rho 9.34 over 185 programs; H2
 \texttt{C\_check\ /\ E\_model\ =\ 0.000582\ \textless{}=\ 0.05}
-(\texttt{1,718×} cheaper on M5 Max); H7, 1,275 mutants and 0 violations
-on the fuzzed arm; H8, 10,500 streams, six targets, 0 mismatches; H14
-run 3, 111 of 151 (73.5\%) closed at 0 model calls; H15 across the 40
-residual tasks, 17/40 to 34/40 across six off-the-shelf proposers,
-\texttt{22/40} (\texttt{k\ =\ 1}) and \texttt{27/40} (\texttt{k\ =\ 16})
-for purpose-trained \texttt{FormJEPA-\allowbreak{}v1} (\texttt{8.42M} params,
-\texttt{58.65\ mJ} / \texttt{474.\allowbreak{}76\ mJ} RAPL core \texttt{reported\_\allowbreak{}j};
-\texttt{177/200} on disjoint synthetic defects), 34/40 0-call Gear-0
-replay (\texttt{0.325\ µs}, \texttt{1.77\ µJ}/\allowbreak{}probe), \texttt{8.70×}
-3-Gear frontier-call reduction on \texttt{Zipf(\allowbreak{}0.\allowbreak{}85)}, and 151-task
-\texttt{rce\ repair} rung \texttt{f} audit
+(\texttt{1,718×} cheaper on M5 Max); H5 \& H11 on unseen disjoint Form
+shapes via \texttt{FormEBM-\allowbreak{}v2} (AUROC \texttt{0.8922}, \texttt{93.0\%}
+5-step monotonicity) and span-normalized \texttt{FormEBM-\allowbreak{}v3}
+(\texttt{6.05M} params: AUROC \texttt{0.9437}, \texttt{94.0\%}
+\texttt{E\_depth} / \texttt{92.0\%} \texttt{E\_total} monotonicity,
+zero-shot OOD H15 pooled AUROC lifted from \texttt{0.2585} to
+\texttt{0.5278}); H7, 1,275 mutants and 0 violations on the fuzzed arm;
+H8, 10,500 streams, six targets, 0 mismatches; H14 run 3, 111 of 151
+(73.5\%) closed at 0 model calls; H15 across the 40 residual tasks,
+17/40 to 34/40 single-shot, \texttt{27/40} (\texttt{k\ =\ 16}) for
+\texttt{FormJEPA-\allowbreak{}v1} (\texttt{8.42M} params, \texttt{474.\allowbreak{}76\ mJ} RAPL
+core \texttt{reported\_\allowbreak{}j}), \texttt{40/40} (\texttt{0} contradictions)
+in \texttt{H15-\allowbreak{}Iterative} on \texttt{Opus\ 5.5} and
+\texttt{Sonnet\ 5.\allowbreak{}5}, \texttt{40/40} 0-call Gear-0 replay
+(\texttt{0.325\ µs}, \texttt{1.77\ µJ}/\allowbreak{}probe), \texttt{16.67×} 3-Gear
+episode reduction on \texttt{Zipf(\allowbreak{}0.\allowbreak{}85)} (\texttt{200/200} admitted),
+and 151-task \texttt{rce\ repair} rung \texttt{f} audit
 (\texttt{3/119\ =\ 2.5\%\ \textgreater{}\ 2.0\%}, \texttt{0}
 contradictions, stays in \texttt{observe}). & Full intent-to-Form
-synthesis (H3), calibrated multi-term energy ranking (H5, H11), H4, H6,
-H9, H10, H12, H13, the diffusion and evolutionary arms of H15, and
-wall-meter \texttt{measured\_\allowbreak{}j} remain open. \\
+synthesis (H3), cross-module signature-and-trace OOD energy calibration
+beyond \texttt{0.5278}, H4, H6, H9, H10, H12, H13, the diffusion and
+evolutionary arms of H15, and wall-meter \texttt{measured\_\allowbreak{}j} remain
+open. \\
 \end{longtable}
 }
 
@@ -4602,14 +4657,21 @@ H4 & Energy per accepted program falls & J\textsubscript{acc}(RCE-JEPA)
 H5 & Energy ranking concentrates mass on valid Forms. \textbf{AUROC
 threshold met on unseen test Form shapes}: contrastive
 \texttt{FormEBM-\allowbreak{}v2} (\texttt{5.85M} params) reaches AUROC
-\textbf{\texttt{0.8922\ \textgreater{}=\ 0.85}} across \texttt{3,064}
-candidates on \texttt{200} unseen test beams (vs \texttt{0.618} for
-uncalibrated \texttt{FormJEPA-\allowbreak{}v1}), with \texttt{84.05\%} solvable top-1
-accuracy (\texttt{137/163}; \texttt{68.5\%} raw across all \texttt{200}
-beams) and \texttt{2.39×} fewer \texttt{rce\ check} calls; OOD
-multi-line residual pool calibration remains open (\texttt{0.2630}) &
-top-1 type-check rate; AUROC of E for accepted vs requires change & ≥
-0.8 top-1 valid; AUROC ≥ 0.85 & AUROC ≤ 0.6 \\
+\textbf{\texttt{0.8922\ \textgreater{}=\ 0.85}} (\texttt{84.05\%}
+solvable top-1 accuracy), and span-normalized decomposed
+\texttt{FormEBM-\allowbreak{}v3} (\texttt{6.05M} params) raises unseen-shape AUROC to
+\textbf{\texttt{0.9437\ \textgreater{}=\ 0.85}} (\texttt{0.9386} on
+\texttt{E\_def} alone) across \texttt{3,064} candidates on \texttt{200}
+unseen test beams (vs \texttt{0.618} for uncalibrated
+\texttt{FormJEPA-\allowbreak{}v1}), with \texttt{83.44\%} \texttt{E\_def} and
+\texttt{80.98\%} \texttt{E\_total} solvable top-1 accuracy
+(\texttt{68.0\%} / \texttt{66.0\%} raw across all \texttt{200} beams)
+and \texttt{2.23×} / \texttt{2.14×} fewer \texttt{rce\ check} calls;
+zero-shot OOD H15 pooled AUROC rises from \texttt{0.2585} to
+\texttt{0.5278} (\texttt{0.6018} on large-span valid vs short invalid),
+while cross-module signature/trace OOD calibration remains open & top-1
+type-check rate; AUROC of E for accepted vs requires change & ≥ 0.8
+top-1 valid; AUROC ≥ 0.85 & AUROC ≤ 0.6 \\
 H6 & The reference apps are encodable & share of the 6 reference apps
 plus RCEdb fully expressed as Forms that pass the checker and replay
 bit-identically & 7 of 7 & any app requires an escape hatch outside the
@@ -4632,13 +4694,18 @@ rate as one of equal size trained on surface code & at most half (a
 saving of 2 times or more) & a saving below 1.25 times \\
 H11 & Energy is monotone in edit distance. \textbf{Supported on unseen
 5-step cumulative defect chains}: contrastive \texttt{FormEBM-\allowbreak{}v2}
-reaches \textbf{\texttt{93.0\%\ \textgreater{}=\ 80\%}} strict 5-step
-monotonicity (\texttt{93/100} unseen chains, Spearman
-\texttt{ρ\ =\ 0.\allowbreak{}9931}, vs \texttt{36.0\%} for uncalibrated
-\texttt{FormJEPA-\allowbreak{}v1}); unconstrained same-line random-walk slice reaches
-\texttt{38.0\%} strict (\texttt{46.0\%} non-decreasing, Spearman
-\texttt{ρ\ =\ 0.\allowbreak{}8513}) & Share of test families in which energy E rises
-with edit distance 1 to k from an accepted fit & ≥ 80\% of families &
+reaches \texttt{93.0\%\ \textgreater{}=\ 80\%} strict 5-step
+monotonicity (Spearman \texttt{ρ\ =\ 0.\allowbreak{}9931}), and two-head
+\texttt{FormEBM-\allowbreak{}v3} reaches
+\textbf{\texttt{94.0\%\ \textgreater{}=\ 80\%}} on \texttt{E\_depth}
+(\texttt{94/100}, Spearman \texttt{ρ\ =\ 0.\allowbreak{}9966}) and
+\textbf{\texttt{92.0\%\ \textgreater{}=\ 80\%}} on composite
+\texttt{E\_total} (\texttt{92/100}, Spearman \texttt{ρ\ =\ 0.\allowbreak{}9846}, vs
+\texttt{36.0\%} for uncalibrated \texttt{FormJEPA-\allowbreak{}v1}); unconstrained
+same-line random-walk slices reach \texttt{38.0\%} (\texttt{v2}) and
+\texttt{32.0\%} / \texttt{18.0\%} (\texttt{v3} \texttt{E\_depth} /
+\texttt{E\_total}) & Share of test families in which energy E rises with
+edit distance 1 to k from an accepted fit & ≥ 80\% of families &
 \textless{} 80\% of families \\
 H12 & The decision head is calibrated on gate outcomes & ECE per
 decision type, after 10\textsuperscript{4} receipts & ECE ≤ 0.1 and
@@ -4664,11 +4731,13 @@ paper. Not met in any run. On the 41 tasks from real history, which the
 rule does not single out, runs 2 and 3 each close 1 of 41 (2.4\%) \\
 H15 & Proposer classes differ on the 40-task residual. \textbf{Measured
 across single-shot proposers {[}B33{]}, \texttt{FormJEPA-\allowbreak{}v1} {[}B34{]},
-and bounded checker-feedback \texttt{H15-\allowbreak{}Iterative} +
-\texttt{FormEBM-\allowbreak{}v2} {[}B35{]}}: single-shot models admit \texttt{17/40}
-to \texttt{34/40}, \texttt{FormJEPA-\allowbreak{}v1} admits \texttt{22/40}
-(\texttt{k\ =\ 1}; \texttt{25/40} with \texttt{FormEBM-\allowbreak{}v2} rerank) and
-\texttt{27/40} (\texttt{k\ =\ 16}), \texttt{H15-\allowbreak{}Iterative} closes
+bounded checker-feedback \texttt{H15-\allowbreak{}Iterative} + \texttt{FormEBM-\allowbreak{}v2}
+{[}B35{]}, and span-normalized \texttt{FormEBM-\allowbreak{}v3} {[}B36{]}}:
+single-shot models admit \texttt{17/40} to \texttt{34/40},
+\texttt{FormJEPA-\allowbreak{}v1} admits \texttt{22/40} (\texttt{k\ =\ 1};
+\texttt{25/40} with \texttt{FormEBM-\allowbreak{}v2}, \texttt{24/40} typed /
+\texttt{27/40} multi-proposer with \texttt{FormEBM-\allowbreak{}v3} \texttt{E\_def})
+and \texttt{27/40} (\texttt{k\ =\ 16}), \texttt{H15-\allowbreak{}Iterative} closes
 \textbf{\texttt{40/40} (\texttt{100.0\%})} on \texttt{Opus\ 5.5} and
 \texttt{Sonnet\ 5.\allowbreak{}5} with \texttt{0} contradictions (\texttt{39/40} on
 \texttt{Grok\ 4.\allowbreak{}20}), warm \texttt{DNULLMM1} Gear-0 replays
@@ -4679,9 +4748,9 @@ wall-meter arms remain open & Gate-accepted share (\texttt{C(\allowbreak{}z)\ =\
 of the 40 residual tasks from the plain arm of H14 run 3, audited by
 \texttt{rce\ check}, obligation preservation, \texttt{rce\ hash}, and
 \texttt{rce\ equiv} & Registered runs report per-arm shares and local
-\texttt{reported\_\allowbreak{}j} {[}B33, B34, B35{]}; diffusion/evolutionary arms
-and server wall-meter parity remain open & Classes scored on different
-tasks or unverified outputs \\
+\texttt{reported\_\allowbreak{}j} {[}B33, B34, B35, B36{]}; diffusion/evolutionary
+arms and server wall-meter parity remain open & Classes scored on
+different tasks or unverified outputs \\
 \end{longtable}
 }
 
@@ -5128,6 +5197,102 @@ from single-shot H15.
   \textless/ul\textgreater{}
 \end{itemize}
 
+\textbf{Span-normalized two-head decomposed scorer (\texttt{FormEBM-\allowbreak{}v3},
+H5, H11, and zero-shot OOD H15 cross-span transfer), measured
+{[}B36{]}.} Pre-registered before synthetic multi-span pair generation,
+weight initialization, and evaluation
+(\texttt{rce-\allowbreak{}jepa-\allowbreak{}form-\allowbreak{}ebm-\allowbreak{}v3-\allowbreak{}2026-\allowbreak{}11-\allowbreak{}23},
+\texttt{sha256:\ cb7ee1ac\allowbreak{}8dc5c594.\allowbreak{}.\allowbreak{}.\allowbreak{}}) against \texttt{openIE-\allowbreak{}dev/\allowbreak{}rce}
+commit \texttt{1762fb4b} (Linux x86\_64 binary
+\texttt{sha256:\ 386be0c2\allowbreak{}6389550e.\allowbreak{}.\allowbreak{}.\allowbreak{}}), \texttt{FormEBM-\allowbreak{}v3}
+(\texttt{6,052,802} trainable parameters, pure-\texttt{float32} ROCm
+\texttt{Radeon\ 8060S} checkpoint \texttt{sha256:\ 71e642f1\allowbreak{}bb0b9c06.\allowbreak{}.\allowbreak{}.\allowbreak{}};
+\texttt{2,\allowbreak{}528.\allowbreak{}3\ s} training at \texttt{13,\allowbreak{}312.\allowbreak{}3\ J} core RAPL and
+\texttt{48,\allowbreak{}422.\allowbreak{}2\ J} APU package RAPL) tests whether decoupling defect
+validity from cumulative edit depth over the identical strictly disjoint
+\texttt{1,387}-Form split (\texttt{1,106} train, \texttt{144}
+validation, \texttt{137} unseen test shapes; \texttt{0} overlap with the
+151 ladder or 40 H15 tasks, and \texttt{0} \texttt{rce\ check} calls
+during scoring) resolves \texttt{FormEBM-\allowbreak{}v2}'s cross-task OOD edit-size
+inversion (\texttt{0.2585}) without regressing H5 or H11:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Alignment-aware tokenization and two-head decomposition:}
+  \texttt{PairFormTokenizerv3} (\texttt{max\_\allowbreak{}seq\_\allowbreak{}len\ =\ 384},
+  \texttt{560} active tokens) replaces raw line-index comparison with
+  line-shift-invariant sequence alignment, separates lexically
+  bound/imported new identifiers
+  (\texttt{\textless{}BOUND\_NEW\_ID:0..31\textgreater{}}) from unbound
+  free symbols
+  (\texttt{\textless{}UNBOUND\_NEW\_ID:0..15\textgreater{}}), and
+  computes explicit normalized diff fraction
+  \texttt{ρ\_\allowbreak{}diff\ =\ Δ\_\allowbreak{}tok\ /\allowbreak{}\ max(\allowbreak{}1,\allowbreak{}\ L\_\allowbreak{}cand)}. Over the shared
+  5-layer Siamese encoder and cross-difference block, a span-invariant
+  defect head
+  \texttt{E\_\allowbreak{}def(\allowbreak{}x,\allowbreak{}\ y,\allowbreak{}\ r)\ =\ softplus(\allowbreak{}g\_\allowbreak{}def(\allowbreak{}feats\_\allowbreak{}def))} (trained
+  with within-beam plus all-pairs cross-task batch margin
+  \texttt{m\ =\ 2.5} and L\textsubscript{2} positive anchor across
+  \texttt{4,983} pairs including \texttt{219} \texttt{k\ =\ 2.\allowbreak{}.\allowbreak{}10}
+  multi-span valid rewrites strictly from \texttt{train\_\allowbreak{}forms}) is
+  separated from a cumulative corruption-depth head
+  \texttt{E\_\allowbreak{}depth(\allowbreak{}y\_\allowbreak{}0,\allowbreak{}\ y\_\allowbreak{}d)\ =\ softplus(\allowbreak{}g\_\allowbreak{}depth(\allowbreak{}feats\_\allowbreak{}depth))},
+  combined via
+  \texttt{E\_\allowbreak{}total\ =\ E\_\allowbreak{}def\ +\ 0.\allowbreak{}15\ ·\ E\_\allowbreak{}depth\ /\allowbreak{}\ log2(\allowbreak{}2\ +\ Δ\_\allowbreak{}tok)}
+  (VICReg effective rank \texttt{42.79} on \texttt{z\_ref} and
+  \texttt{57.93} on \texttt{z\_cand}, coordinate standard deviation
+  \texttt{0.3332\ /\ 0.3113\ \textgreater{}=\ 0.25}).
+\item
+  \textbf{Strengthened unseen-shape H5 (\texttt{0.9437}) and
+  unseen-chain H11 (\texttt{94.0\%} / \texttt{92.0\%}):} On the
+  \texttt{200} unseen held-out test beams (\texttt{3,064} candidates),
+  \texttt{FormEBM-\allowbreak{}v3} lifts \textbf{H5 AUROC from \texttt{0.8922}
+  (\texttt{FormEBM-\allowbreak{}v2}) to \texttt{0.9437\ \textgreater{}=\ 0.85}}
+  (\texttt{0.9386} on \texttt{E\_def} alone, reaching
+  \texttt{TPR\ =\ 78.\allowbreak{}9\%} at \texttt{FPR\ =\ 4.\allowbreak{}6\%}), achieves
+  \textbf{\texttt{83.44\%} (\texttt{136/163}, \texttt{E\_def}) and
+  \texttt{80.98\%} (\texttt{132/163}, \texttt{E\_total}) solvable top-1
+  accuracy} (both \texttt{\textgreater{}=\ 80.0\%}; \texttt{1.601} /
+  \texttt{1.669} mean \texttt{rce\ check} calls vs \texttt{3.577}
+  unreranked), and lifts \textbf{H11 strict 5-step monotonicity on
+  \texttt{100} unseen corruption chains to \texttt{94.0\%} on
+  \texttt{E\_depth} (Spearman \texttt{ρ\ =\ 0.\allowbreak{}9966}, median
+  \texttt{1.0000}) and \texttt{92.0\%} on \texttt{E\_total}
+  (\texttt{ρ\ =\ 0.\allowbreak{}9846}, median \texttt{1.0000})}. Ten-thread CPU
+  scoring at \texttt{max\_\allowbreak{}seq\_\allowbreak{}len\ =\ 384} costs \texttt{232.\allowbreak{}45\ mJ}
+  core RAPL per candidate (\texttt{32.55\ ms}, \texttt{362×} lower than
+  local 35B generation;
+  \texttt{derived\_\allowbreak{}marginal\_\allowbreak{}pkg\_\allowbreak{}reported\_\allowbreak{}j\ =\ None} at
+  \texttt{37.7\%} co-tenant package drift).
+\item
+  \textbf{Zero-shot OOD H15 inversion resolved
+  (\texttt{0.\allowbreak{}2585\ →\ 0.\allowbreak{}5278}), and candid cross-module boundary:}
+  Transferred zero-shot to the \texttt{40}-task git-history residual
+  (\texttt{303} multi-proposer candidates including all \texttt{40/40}
+  closed multi-hundred-line \texttt{hpke}, \texttt{mls}, \texttt{pq},
+  and \texttt{pqxdh} migrations), \texttt{FormEBM-\allowbreak{}v3} lifts pooled
+  cross-task AUROC from \texttt{0.2585} (\texttt{FormEBM-\allowbreak{}v2}) to
+  \textbf{\texttt{0.5278}} (\texttt{+0.2693}, clearing Falsifier F4
+  \texttt{\textgreater{}\ 0.50}; \textbf{\texttt{0.6018}} on large-span
+  valid rewrites with \texttt{Δ\_tok\ \textgreater{}=\ 10} vs short
+  \texttt{0/1}-token invalid candidates, and \texttt{0.\allowbreak{}2630\ →\ 0.\allowbreak{}4985}
+  on the \texttt{286}-item typed-edit pool), while reaching
+  \textbf{\texttt{27/40} multi-proposer and \texttt{24/40} typed-edit
+  within-task \texttt{k\ =\ 1} admissions under \texttt{E\_def}}
+  (\texttt{25/40} and \texttt{22/40} under \texttt{E\_total}, cutting
+  mean typed-beam checks from \texttt{5.55} to \texttt{5.10}). On the
+  279-line \texttt{stdlib/\allowbreak{}lib/\allowbreak{}hpke.\allowbreak{}rce} migration
+  (\texttt{Δ\_\allowbreak{}tok\ =\ 146}), valid energy drops to
+  \texttt{E\_\allowbreak{}total\ =\ 0.\allowbreak{}9645} (\texttt{E\_\allowbreak{}def\ =\ 0.\allowbreak{}8826}), yet across
+  unseen multi-module cryptographic APIs (\texttt{mls.rce},
+  \texttt{pq.rce}, \texttt{pqxdh.rce}) and vacuous-example obligations
+  (\texttt{washer.\allowbreak{}rce}), zero-shot pooled calibration plateaus near
+  \texttt{0.53} because single-file syntax without imported
+  \texttt{stdlib/\allowbreak{}lib} type signatures or exact \texttt{rce\ trace}
+  rollouts cannot verify cross-module call contracts.
+\end{itemize}
+
 \subsection{Falsifiers RJ-F1 to RJ-F6 for the premise
 itself}\label{falsifiers-rj-f1-to-rj-f6-for-the-premise-itself}
 
@@ -5165,8 +5330,10 @@ not \\
 RJ-F4 & H11 fails and search does not reach accepted Forms within the
 beam budget & Energy-guided planning in Form space (not triggered on
 unseen cumulative 1..5-defect chains: \texttt{FormEBM-\allowbreak{}v2} reaches
-\texttt{93.0\%} strict monotonicity and cuts solvable check calls by
-\texttt{2.39×}; multi-line OOD energy calibration remains open) \\
+\texttt{93.0\%} and \texttt{FormEBM-\allowbreak{}v3} reaches \texttt{94.0\%}
+\texttt{E\_depth} / \texttt{92.0\%} \texttt{E\_total} strict
+monotonicity with \texttt{0.9437} H5 AUROC; cross-module signature/trace
+OOD energy calibration beyond \texttt{0.5278} remains open) \\
 RJ-F5 & The decision head's calibration never beats a frequency table
 over shape hashes & The decision-model leg; it adds nothing over
 promoted-handler statistics \\
@@ -5261,7 +5428,7 @@ supported across three registered runs of \texttt{rce\ repair} {[}B30,
 B31, B32{]}, closing \texttt{111} of \texttt{151} tasks
 (\texttt{73.5\%}) at zero model calls in the plain arm of run 3 and
 leaving \texttt{40} open git-history residual tasks. On 22--23 November
-2026 {[}B33, B34, B35{]}, Apple M5 Max and AMD Ryzen AI Max+ 395 /
+2026 {[}B33, B34, B35, B36{]}, Apple M5 Max and AMD Ryzen AI Max+ 395 /
 Radeon 8060S \texttt{reported\_\allowbreak{}j} receipts
 (\texttt{measured\_\allowbreak{}j\ =\ None}, \texttt{board\_\allowbreak{}metered\ =\ false})
 established \textbf{H2 supported}
@@ -5271,14 +5438,23 @@ established \textbf{H2 supported}
 (\texttt{8.42M} parameters: \texttt{177/200} unseen synthetic defects,
 \texttt{22/40} at \texttt{k\ =\ 1} and \texttt{27/40} at
 \texttt{k\ =\ 16} on H15 at \texttt{58.\allowbreak{}65–474.\allowbreak{}76\ mJ} RAPL core
-\texttt{reported\_\allowbreak{}j}) and contrastive \textbf{\texttt{FormEBM-\allowbreak{}v2}}
-(\texttt{5.85M} parameters on the identical disjoint \texttt{1,387}-Form
-split: \textbf{H5 AUROC \texttt{0.8922\ \textgreater{}=\ 0.85}} on
-unseen test shapes with \texttt{84.05\%} solvable top-1 accuracy and
-\texttt{2.39×} fewer checker calls, \textbf{H11
-\texttt{93.0\%\ \textgreater{}=\ 80\%}} strict 5-step cumulative defect
-monotonicity at Spearman \texttt{0.9931}, and
-\texttt{47.09\ mJ}/\allowbreak{}candidate core \texttt{reported\_\allowbreak{}j}), closed
+\texttt{reported\_\allowbreak{}j}), contrastive \textbf{\texttt{FormEBM-\allowbreak{}v2}}
+(\texttt{5.85M} parameters: \textbf{H5 AUROC
+\texttt{0.8922\ \textgreater{}=\ 0.85}}, \texttt{84.05\%} solvable top-1
+accuracy, \textbf{H11 \texttt{93.0\%\ \textgreater{}=\ 80\%}} strict
+5-step monotonicity at Spearman \texttt{0.9931}, \texttt{47.09\ mJ}/\allowbreak{}cand
+core \texttt{reported\_\allowbreak{}j}), and span-normalized decomposed
+\textbf{\texttt{FormEBM-\allowbreak{}v3}} (\texttt{6.05M} parameters on the identical
+disjoint \texttt{1,387}-Form split: \textbf{H5 AUROC
+\texttt{0.9437\ \textgreater{}=\ 0.85}} with \texttt{83.44\%}
+\texttt{E\_def} and \texttt{80.98\%} \texttt{E\_total} solvable top-1
+accuracy, \textbf{H11 \texttt{94.0\%}} strict 5-step monotonicity on
+\texttt{E\_depth} at Spearman \texttt{0.9966} and
+\textbf{\texttt{92.0\%}} on \texttt{E\_total} at Spearman
+\texttt{0.9846}, and zero-shot OOD H15 multi-proposer pooled AUROC
+lifted from \texttt{0.2585} to \textbf{\texttt{0.5278}}, \texttt{0.6018}
+on large-span valid vs short invalid rewrites, at
+\texttt{232.\allowbreak{}45\ mJ}/cand core \texttt{reported\_\allowbreak{}j}), closed
 \textbf{\texttt{40/40} (\texttt{100.0\%})} of the open residual tasks in
 \textbf{\texttt{H15-\allowbreak{}Iterative}} under bounded
 \texttt{\textless{}=\ 5}-turn checker feedback + public
@@ -5294,13 +5470,13 @@ model calls, \texttt{0.325\ µs} / \texttt{1.77\ µJ} probe;
 (\texttt{3/119\ =\ 2.5\%\ \textgreater{}\ 2.0\%}, \texttt{3/3} passing
 \texttt{W-MUT-1}, \texttt{0} contradictions, confirming rung \texttt{f}
 remains in \texttt{observe} mode). Still open: full intent-to-Form
-synthesis (H3), end-to-end joule parity (H4), OOD multi-line energy
-calibration across heterogeneous git-history rewrites (\texttt{0.2630}
-pooled AUROC), reference-app encoding (H6), cost-table prediction (H9),
-quotient sample-efficiency (H10), gate-receipt decision-head calibration
-(H12), discrete-versus-continuous long-horizon planning (H13),
-diffusion/evolutionary H15 arms, and external hardware-rail power
-metering (\texttt{measured\_\allowbreak{}j}).
+synthesis (H3), end-to-end joule parity (H4), cross-module
+signature-and-trace OOD energy calibration beyond \texttt{0.5278} across
+multi-module git-history rewrites, reference-app encoding (H6),
+cost-table prediction (H9), quotient sample-efficiency (H10),
+gate-receipt decision-head calibration (H12), discrete-versus-continuous
+long-horizon planning (H13), diffusion/evolutionary H15 arms, and
+external hardware-rail power metering (\texttt{measured\_\allowbreak{}j}).
 
 \section{References}\label{references}
 

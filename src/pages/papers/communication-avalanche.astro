@@ -1,0 +1,22 @@
+---
+import PaperLayout from '../../layouts/PaperLayout.astro';
+import { Content, getHeadings, frontmatter } from '../../content/papers/communication-avalanche.md';
+
+const headings = getHeadings();
+---
+
+<PaperLayout
+  title={frontmatter.title}
+  deck={frontmatter.deck}
+  status={frontmatter.status}
+  author={frontmatter.author}
+  figuresHref={frontmatter.figures}
+  pdfHref={frontmatter.pdf}
+  description="The Communication Tool Avalanche: a formal, biological, and hardware-counter study of externalized signal ratchets from Archaean quorum switches to event-driven attested orchestration graphs and closed-loop neural interfaces."
+  headings={headings}
+  paperId={frontmatter.id}
+  basePath="/papers/"
+  genre="Research study, draft: evolutionary communication ladder, Lean 4 ratchet and min-cost flow theorems, event-driven attested orchestration benchmarks, and neural interface audit"
+>
+  <Content />
+</PaperLayout>

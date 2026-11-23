@@ -82,6 +82,7 @@
 \newunicodechar{Ω}{\ensuremath{\Omega}}
 \newunicodechar{α}{\ensuremath{\alpha}}
 \newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
 \newunicodechar{δ}{\ensuremath{\delta}}
 \newunicodechar{ε}{\ensuremath{\varepsilon}}
 \newunicodechar{θ}{\ensuremath{\theta}}
@@ -157,7 +158,7 @@
 \title{\vspace{-1.2em}\textbf{Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins}}
 \author{\textbf{David Charlot, Open Interface Engineering}\\[0.15em]
 {\small Research study $\cdot$ Open Interface Engineering $\cdot$ \href{https://research.openie.dev}{research.openie.dev}}}
-\date{\small Revision \texttt{1561a2a} (22 November 2026) $\cdot$ Web: \href{https://research.openie.dev/papers/game-engines/}{research.openie.dev/papers/game-engines/} $\cdot$ Archival LaTeX: \href{https://research.openie.dev/pdfs/latex/game-engines.pdf}{/pdfs/latex/game-engines.pdf} (\href{https://research.openie.dev/pdfs/latex/game-engines.tex}{.tex})}
+\date{\small Revision \texttt{5c50a85} (23 November 2026) $\cdot$ Web: \href{https://research.openie.dev/papers/game-engines/}{research.openie.dev/papers/game-engines/} $\cdot$ Archival LaTeX: \href{https://research.openie.dev/pdfs/latex/game-engines.pdf}{/pdfs/latex/game-engines.pdf} (\href{https://research.openie.dev/pdfs/latex/game-engines.tex}{.tex})}
 
 \begin{document}
 \maketitle
@@ -167,7 +168,7 @@
 \noindent\fcolorbox{openieAmberBorder}{openieAmberBg}{%
   \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
     \small\color{openieDark}%
-    \textbf{Measurement.} Research study, draft, not a journal final. \textbf{\texttt{GE-H1}} (\texttt{30} target $\times$ host cells across \texttt{6} physical machines, \texttt{3} OSs [\texttt{macOS 27.2.1}, \texttt{Linux 6.8/7.0}, \texttt{Windows 11 Pro 26300}], \texttt{3} ISAs, and \texttt{7} language/compiler projections, \texttt{100,000} \texttt{Q32.32} fixed-point ticks, \textbf{\texttt{0 / 25,500}} \texttt{SHA-256} checkpoint mismatches), \textbf{\texttt{GE-H2}} (\texttt{25,000}-tick 3-OS and cross-ISA \texttt{f64} drift horizons: \texttt{Windows UCRT} vs.\ \texttt{glibc} tick~\texttt{10}, \texttt{Apple libSystem} vs.\ \texttt{glibc} tick~\texttt{10}, \texttt{Windows UCRT} vs.\ \texttt{Apple libSystem} tick~\texttt{37}, \texttt{MSVC /fp:precise} vs.\ \texttt{Clang} \texttt{FMA} tick~\texttt{192}, cross-ISA \texttt{FMA} tick~\texttt{406}), and \textbf{\texttt{GE-H3}} (\texttt{8} hardware \texttt{GPU $\times$ API} endpoints across \texttt{DirectX 12}, \texttt{Metal}, and \texttt{Vulkan}: \textbf{\texttt{28 / 28}} hardware pairs pass at \texttt{PSNR >= 64.16 dB}, \texttt{SSIM >= 0.999833}, max $|\Delta| \le 2$, isolating same-GPU \texttt{DX12} vs.\ \texttt{Vulkan} shader-compiler drift at \texttt{79.52--108.34 dB}) were measured on physical hosts using \texttt{L2}/\texttt{L3} \texttt{reported\_j} and Win32 cycle counters. \texttt{GE-H4} to \texttt{GE-H9} remain open. No hardware rail or wall meter was attached (\texttt{measured\_j = None}, \texttt{board\_metered = false}).
+    \textbf{Measurement.} Research study, draft, not a journal final. All nine empirical suites (\textbf{\texttt{GE-H1}} through \textbf{\texttt{GE-H9}}) are executed across \texttt{macOS}, \texttt{Linux}, and bare-metal \texttt{Windows 11}: \texttt{GE-H1} (\texttt{30} cells, \texttt{6} hosts, \texttt{0 / 25,500} \texttt{Q32.32} \texttt{SHA-256} mismatches), \texttt{GE-H2} (3-OS \texttt{UCRT}/\texttt{libSystem}/\texttt{glibc} and \texttt{MSVC}/\texttt{Clang} \texttt{FMA} float drift), \texttt{GE-H3} (\texttt{8} \texttt{GPU $\times$ API} endpoints across \texttt{DirectX 12}/\texttt{Metal}/\texttt{Vulkan}, \texttt{28 / 28} pairs $\ge 64.16\;\text{dB}$ \texttt{PSNR}), \texttt{GE-H4} (\texttt{17} modules, \texttt{-76.22\%} \texttt{SLOC} vs.\ Unity C\#, \texttt{0 / 680} 4-language mismatches), \texttt{GE-H5} (\texttt{10,000} actors in \texttt{0.058--0.125 ms}/tick, \texttt{3,564$\times$--7,728$\times$} lower Linux \texttt{RAPL} \texttt{reported\_j}), \texttt{GE-H6} (\texttt{260} bundles, \texttt{F1 = 0.9922} vs.\ \texttt{0.1159}), \texttt{GE-H7} (\texttt{840} chaotic trajectories, $R^2_{\text{mean}} = 0.9940\text{--}0.9995$), \texttt{GE-H8} (1-hour \texttt{216,000}-tick 3-OS replay from $D$, \texttt{0 / 6,480} mismatches), and \texttt{GE-H9} (\texttt{36 / 36} headless \texttt{Godot 4.7.2} parity, \texttt{0 / 18,000} tick mismatches; VLM-judged \texttt{GameCraft-Bench} rubric not run). Host counters are \texttt{L2}/\texttt{L3} \texttt{reported\_j}; no rail or wall meter was attached (\texttt{measured\_j = None}, \texttt{board\_metered = false}).
   }%
 }
 
@@ -176,7 +177,7 @@
 \noindent{\color{openieAmber}\vrule width 3pt}\hspace{8pt}%
 \parbox{\dimexpr\linewidth-11pt\relax}{%
   \small\itshape\color{openieSlate}%
-  Can a game be written once as a checked state machine and projected into several engines, instruction sets, operating systems, and graphics stacks? Executed across 30 multi-ISA target × host cells for 100,000 ticks under Q32.32 integer physics (GE-H1: 0 / 25,500 state-digest mismatches across arm64 macOS, aarch64 Linux, Zen 5 and Raptor Lake x86\_64 Linux, and Tiger Lake x86\_64 Windows 11), 25,000 cross-platform floating-point ticks (GE-H2: t\_div = 10 Windows Universal C Runtime and Apple libm vs Linux glibc sin/cos, t\_div = 192–406 fused multiply-add lowering without -ffast-math), and 8 hardware graphics endpoints across Metal, Vulkan, and DirectX 12 (GE-H3: 0.00\%–9.34\% pixel drift, Δ\_max ≤ 2, peak signal-to-noise ratio ≥ 64.2 dB, structural similarity ≥ 0.99983 across all 28 pairs), paired with a playable joule-budgeted Q32.32 prototype.
+  Can a game be written once as a checked state machine and projected into several engines, instruction sets, operating systems, and graphics stacks? Executed across all nine pre-registered falsifier suites: 30 multi-architecture target × host cells for 100,000 ticks under Q32.32 integer physics (GE-H1: 0 / 25,500 state-digest mismatches across arm64 macOS, aarch64 Linux, Zen 5 and Raptor Lake x86\_64 Linux, and Tiger Lake x86\_64 Windows 11), 25,000 cross-platform floating-point ticks (GE-H2: t\_div = 10 Windows Universal C Runtime and Apple libm vs Linux glibc sin/cos, t\_div = 192–406 fused multiply-add lowering without -ffast-math), 8 hardware graphics endpoints across Metal, Vulkan, and DirectX 12 (GE-H3: 0.00\%–9.34\% pixel drift, Δ\_max ≤ 2, peak signal-to-noise ratio ≥ 64.2 dB, structural similarity ≥ 0.99983 across all 28 pairs), 17 multi-engine game behaviors (GE-H4: −76.2\% source lines vs Unity C\#, 0 / 680 trace mismatches), 10,000-actor scaling (GE-H5: 0.058–0.125 ms/tick compiled vs N\_20ms = 390 interpreted Python), 260 interface fault modules (GE-H6: 98.46\% recall, F1 = 0.9922 vs 0.1159 parse-only), 840 chaotic Lyapunov trajectories (GE-H7: R²\_mean = 0.994–1.000), three 1-hour 216,000-tick three-system replays from compact input logs alone (GE-H8: 0 / 6,480 mismatches), and 36 headless Godot 4.7.2 tasks (GE-H9: 36 / 36 exact trace parity).
 }
 \vspace{6pt}
 
@@ -190,9 +191,10 @@
 \vspace{8pt}
 
 \emph{Revision
-\href{https://github.com/openIE-dev/research-openie-web/commits/main/src/content/papers/game-engines.md}{\texttt{1561a2a}},
-22 November 2026. Interactive explorer, 3-OS / 3-API cross-GPU
-inspector, and playable \texttt{Q32.32} Chrono-Budget Arena:
+\href{https://github.com/openIE-dev/research-openie-web/commits/main/src/content/papers/game-engines.md}{\texttt{5c50a85}},
+23 November 2026. Interactive explorer, 3-OS / 3-API cross-GPU
+inspector, \texttt{GE-H4}--\texttt{GE-H9} empirical closure observatory,
+and playable \texttt{Q32.32} Chrono-Budget Arena:
 \href{https://research.openie.dev/living/game-engines/}{research.openie.dev/living/game-engines/}.}
 
 \section{Abstract}\label{abstract}
@@ -201,35 +203,73 @@ This study asks whether a game can be written once as a checked state
 machine and then projected across languages, each operating system (OS),
 each central processing unit (CPU) instruction set architecture (ISA),
 and each graphics processing unit (GPU) application programming
-interface (API). Both the surveyed specifications and three executed
-empirical falsifier suites give a sharp boundary: \textbf{yes} for game
-rules and simulation under pinned fixed-point integer arithmetic
-(\texttt{(GE-H1)}: \texttt{0\ /\allowbreak{}\ 25,\allowbreak{}500} Secure Hash Algorithm 256-bit
-(\texttt{SHA-256}) checkpoint mismatches across \texttt{100,000} ticks
-of a 16-body 2D arena projected across \texttt{30} target × host cells
-spanning three operating systems and three instruction sets ---
+interface (API). Both the surveyed specifications and all nine executed
+empirical falsifier suites (\texttt{GE-H1} to \texttt{GE-H9}) establish
+a sharp, closed boundary: \textbf{yes} for game rules, multi-engine
+behavior emission, high-actor simulation, and hour-long cross-OS replay
+under pinned fixed-point integer arithmetic (\texttt{(GE-H1)}:
+\texttt{0\ /\allowbreak{}\ 25,\allowbreak{}500} Secure Hash Algorithm 256-bit (\texttt{SHA-256})
+checkpoint mismatches across \texttt{100,000} ticks of a 16-body 2D
+arena projected across \texttt{30} target × host cells spanning
 \texttt{arm64} \texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1}, \texttt{aarch64}
 \texttt{Linux\ 6.\allowbreak{}8}, Advanced Micro Devices (\texttt{AMD}) Zen 5 and
 Intel Raptor Lake \texttt{x86\_64} \texttt{Linux\ 7.\allowbreak{}0}, and bare-metal
 Intel Tiger Lake \texttt{x86\_64} \texttt{Windows\ 11} build
 \texttt{26300} including Microsoft Visual C++ (\texttt{MSVC})
-\texttt{cl.exe} --- spanning \texttt{0.073\ J} to \texttt{13.60\ J} in
+\texttt{cl.exe}, spanning \texttt{0.073\ J} to \texttt{13.60\ J} in
 macOS per-process \texttt{reported\_\allowbreak{}j} and \texttt{1.89\ J} to
 \texttt{181.87\ J} in Linux Running Average Power Limit (\texttt{RAPL})
-package \texttt{reported\_\allowbreak{}j}); \textbf{no} when unpinned floating-point
+package \texttt{reported\_\allowbreak{}j}; \texttt{(GE-H4)}: authoring \texttt{17}
+behaviors across \emph{Haunted Jaunt}, \emph{Survival Shooter}, and
+\emph{Tanks} in Reality Code Engine (\texttt{RCE}) Forms cuts
+non-comment source lines of code (\texttt{SLOC}) by \texttt{76.22\%}
+against idiomatic Unity \texttt{MonoBehaviour} C\# (\texttt{326} vs
+\texttt{1,371} \texttt{SLOC}; \texttt{92.51\%} fewer glue lines),
+\texttt{61.47\%} against Bevy-style Rust entity component system
+(\texttt{ECS}) code (\texttt{846} \texttt{SLOC}), and \texttt{51.99\%}
+against Godot 4 \texttt{Node} GDScript (\texttt{679} \texttt{SLOC}),
+with \texttt{0\ /\ 680} trace mismatches; \texttt{(GE-H5)}: across
+\(N \in [64, 10{,}000]\) actors over \texttt{500} ticks, reference
+\texttt{rce\ emit\ python} crosses the \texttt{20\ ms} budget at
+\(N_{20\text{ms}} = 390\) near GameRule's \texttt{308}-actor ceiling,
+\texttt{rce\ emit\ js} reaches \(N_{20\text{ms}} = 3{,}906\), and
+compiled WebAssembly (\texttt{Wasm}), C++20 \texttt{-O3}, and native
+Rust \texttt{-O3} projections run \(N = 10{,}000\) in
+\texttt{0.058}--\texttt{0.125\ ms}/\allowbreak{}tick at
+\texttt{1.69}--\texttt{3.67\ mJ}/\allowbreak{}tick Linux \texttt{RAPL} package
+\texttt{reported\_\allowbreak{}j} (\texttt{0\ /\ 50} \texttt{SHA-256} mismatches);
+\texttt{(GE-H6)}: across \texttt{260} modules spanning \texttt{26}
+interface defect patterns, static Form plus four-edge manifest checking
+catches \texttt{128\ /\allowbreak{}\ 130} injected faults (\texttt{98.46\%} recall,
+\texttt{0} false positives, fault \texttt{F1\ =\ 0.\allowbreak{}9922}) versus
+\texttt{8\ /\ 130} (\texttt{6.15\%}, \texttt{F1\ =\ 0.\allowbreak{}1159}) for
+parse-only dynamic checking without an intermediate representation
+(\texttt{IR}); \texttt{(GE-H8)}: three 1-hour (\texttt{216,000}-tick at
+\texttt{60\ Hz}) sessions replay from \texttt{44.6} kilobyte
+(\texttt{KB}) compressed input logs \(D\) alone
+(\texttt{116×}--\texttt{292×} smaller than compressed state snapshots)
+with \texttt{0\ /\allowbreak{}\ 6,\allowbreak{}480} checkpoint \texttt{SHA-256} mismatches across
+\texttt{macOS\ arm64}, \texttt{Linux\ x86\_\allowbreak{}64}, and
+\texttt{Windows\ 11\ x86\_\allowbreak{}64}; and \texttt{(GE-H9)}: a Form-to-Godot 4
+emitter achieves \texttt{36\ /\ 36} (\texttt{100.0\%},
+\texttt{0\ /\allowbreak{}\ 18,\allowbreak{}000} tick-hash mismatches) headless parity under
+\texttt{Godot\ 4.\allowbreak{}7.\allowbreak{}2}); \textbf{no} when unpinned floating-point
 transcendentals or fused multiply-add (\texttt{FMA}) lowering enter
-chaotic multi-body collisions (\texttt{(GE-H2)}: even \emph{without}
-\texttt{-\allowbreak{}ffast-\allowbreak{}math} or \texttt{/fp:fast}, all three desktop OS math
-libraries form a pairwise-divergent triangle --- Windows Universal C
-Runtime (\texttt{UCRT}) vs Linux system \texttt{glibc}
-\texttt{std::sin}/\allowbreak{}\texttt{std::cos} diverges on the same
-\texttt{x86\_64} ISA at tick \texttt{10}, Apple \texttt{libSystem}
-\texttt{libm} vs Linux \texttt{glibc} diverges at tick \texttt{10}, and
-Windows \texttt{UCRT} vs Apple \texttt{libm} diverges at tick
-\texttt{37} --- while \texttt{MSVC} \texttt{/\allowbreak{}fp:precise} vs
-\texttt{Clang} \texttt{-\allowbreak{}ffp-\allowbreak{}contract=fast} diverges on \texttt{x86\_64}
-at tick \texttt{192} and \texttt{x86\_64} \texttt{-\allowbreak{}mavx2\ -\allowbreak{}mfma} vs
-\texttt{arm64} \texttt{fmadd} diverges at tick \texttt{406}); and
+chaotic dynamics (\texttt{(GE-H2)}: even \emph{without}
+\texttt{-\allowbreak{}ffast-\allowbreak{}math} or \texttt{/fp:fast}, Windows Universal C Runtime
+(\texttt{UCRT}), Apple \texttt{libSystem} \texttt{libm}, and Linux
+\texttt{glibc} \texttt{std::sin}/\allowbreak{}\texttt{std::cos} form a 3-way
+divergent triangle at ticks \texttt{10} to \texttt{37}, while
+\texttt{MSVC} \texttt{/\allowbreak{}fp:precise} vs \texttt{Clang}
+\texttt{-\allowbreak{}ffp-\allowbreak{}contract=fast} diverges at tick \texttt{192} and
+\texttt{x86\_64} vs \texttt{arm64} \texttt{FMA} at tick \texttt{406};
+\texttt{(GE-H7)}: across \texttt{840} paired trajectories spanning
+\(\delta_0 \in [2^{-52}, 2^{-10}]\) on three chaotic physics templates,
+macro-divergence time \(t^*\) obeys
+\(t^* = \hat{\alpha} + (1/\hat{\Lambda})\ln(\Delta/\delta_0)\) with
+implied Lyapunov exponents
+\(\hat{\Lambda} \in \{1.95, 2.48, 5.07\}\ \text{s}^{-1}\), cell-mean
+\(R^2 \in [0.9940, 0.9995]\), and two-sided \(p \le 10^{-77.6}\)); and
 \textbf{no} for bit-exact pixels across GPU back ends, yet \textbf{yes}
 under a bounded one-way tolerance gate (\texttt{(GE-H3)}: across eight
 hardware \texttt{GPU\ ×\ API} endpoints spanning Apple \texttt{Metal},
@@ -237,15 +277,12 @@ Linux Mesa Radeon Vulkan (\texttt{RADV}), Nvidia (\texttt{NVIDIA}) Linux
 and Windows \texttt{Vulkan} and Windows DirectX 12 (\texttt{DX12}), and
 Intel Linux Mesa Vulkan (\texttt{ANV}) and Windows \texttt{Vulkan} and
 \texttt{DX12} at \texttt{512×512} \texttt{RGBA8Unorm},
-\texttt{27\ /\ 28} hardware pairs --- including the \textbf{same
-physical GPU} across \texttt{DX12} vs \texttt{Vulkan} on both
-\texttt{GeForce\ 2060} and \texttt{Iris\ Xe} --- differ in raw
-\texttt{SHA-256}, yet all \texttt{28\ /\ 28} hardware pairs keep maximum
-per-channel error \(\Delta_{\max} \le 2 / 255\), peak signal-to-noise
-ratio (\texttt{PSNR}) \texttt{\textgreater{}=\ 64.16\ dB}, and
-structural similarity (\texttt{SSIM}) \texttt{\textgreater{}=\ 0.99983},
-with \texttt{measured\_\allowbreak{}j\ =\ None} and
-\texttt{board\_\allowbreak{}metered\ =\ false}).
+\texttt{27\ /\ 28} hardware pairs differ in raw \texttt{SHA-256}, yet
+all \texttt{28\ /\ 28} keep maximum per-channel error
+\(\Delta_{\max} \le 2 / 255\), peak signal-to-noise ratio
+(\texttt{PSNR}) \texttt{\textgreater{}=\ 64.16\ dB}, and structural
+similarity (\texttt{SSIM}) \texttt{\textgreater{}=\ 0.99983}, with
+\texttt{measured\_\allowbreak{}j\ =\ None} and \texttt{board\_\allowbreak{}metered\ =\ false}).
 
 \textbf{In plain words}
 
@@ -253,32 +290,43 @@ with \texttt{measured\_\allowbreak{}j\ =\ None} and
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Exact simulation across operating systems, chips, and
-  languages works when arithmetic is integer-pinned.} Over
-  \texttt{100,000} ticks (\texttt{25,500} verified \texttt{SHA-256}
-  checkpoints across \texttt{30} cells), native Rust, C++20
-  (\texttt{Clang}, the compiler collection (\texttt{GCC}), and Windows
-  \texttt{MSVC}), WebAssembly (\texttt{Wasm}), JavaScript
-  \texttt{BigInt}, and Python replay the exact same 732-byte state
-  bit-for-bit across \texttt{macOS} (\texttt{arm64}), \texttt{Linux}
-  (\texttt{aarch64} and \texttt{x86\_64}), and \texttt{Windows\ 11}
-  (\texttt{x86\_64}) with zero mismatches.
+  \textbf{Exact simulation, compact rules, high actor counts, and
+  hour-long replay all hold when arithmetic and effects stay inside a
+  checked Form.} Over \texttt{100,000} physics ticks (\texttt{GE-H1},
+  \texttt{0\ /\allowbreak{}\ 25,\allowbreak{}500} mismatches across \texttt{30} cells spanning
+  native Rust, C++20 with \texttt{Clang}, the compiler collection
+  (\texttt{GCC}), and \texttt{MSVC}, \texttt{Wasm}, JavaScript
+  \texttt{BigInt}, and Python), three 1-hour \texttt{216,000}-tick
+  gameplay sessions replayed from \texttt{44.6\ KB} compressed input
+  logs alone (\texttt{GE-H8}, \texttt{0\ /\allowbreak{}\ 6,\allowbreak{}480} mismatches across
+  \texttt{macOS}, \texttt{Linux}, and \texttt{Windows\ 11}), \texttt{17}
+  multi-engine game behaviors (\texttt{GE-H4}, \texttt{76.2\%} fewer
+  behavior lines than Unity C\# and \texttt{88.7\%} fewer than
+  maintaining C\# + GDScript + Rust \texttt{ECS} separately),
+  \texttt{10,000}-actor spatial-grid arenas (\texttt{GE-H5},
+  \texttt{0.058\ ms}/\allowbreak{}tick and \texttt{1.69\ mJ}/\allowbreak{}tick in compiled C++20
+  vs \texttt{564.6\ ms} and \texttt{13.09\ J}/\allowbreak{}tick in interpreted
+  Python), \texttt{260} static interface fault tests (\texttt{GE-H6},
+  \texttt{98.46\%} detection vs \texttt{6.15\%} parse-only), and
+  \texttt{36} headless \texttt{Godot\ 4.\allowbreak{}7.\allowbreak{}2} tasks (\texttt{GE-H9},
+  \texttt{36\ /\ 36} exact trace parity), every projection reproduces
+  the exact same canonical state hashes.
 \item
-  \textbf{Standard floating-point physics drifts across
-  \texttt{Windows}, \texttt{macOS}, and \texttt{Linux} even without
-  fast-math flags.} Pure algebraic \texttt{+}, \texttt{-}, \texttt{*},
-  \texttt{/}, and \texttt{sqrt} with \texttt{FMA} disabled
+  \textbf{Standard floating-point physics drifts logarithmically fast
+  across \texttt{Windows}, \texttt{macOS}, and \texttt{Linux} even
+  without fast-math flags.} Pure algebraic \texttt{+}, \texttt{-},
+  \texttt{*}, \texttt{/}, and \texttt{sqrt} with \texttt{FMA} disabled
   (\texttt{/\allowbreak{}fp:strict} and \texttt{-\allowbreak{}ffp-\allowbreak{}contract=off}) match across
-  every tested OS and ISA for all \texttt{25,000} ticks, but calling
+  every tested OS and ISA for all \texttt{25,000} ticks, but
   \texttt{std::sin}/\allowbreak{}\texttt{std::cos} across Windows \texttt{UCRT},
   macOS \texttt{libm}, and Linux \texttt{glibc} flips a bit within
-  \texttt{10} to \texttt{37} ticks (\texttt{0.\allowbreak{}17–0.\allowbreak{}62\ s} at
-  \texttt{60\ Hz}) and desynchronizes gameplay scores by tick
-  \texttt{9,798}--\texttt{10,392} (\texttt{163.\allowbreak{}3–173.\allowbreak{}2\ s}), while
-  default compiler \texttt{FMA} rules diverge between \texttt{MSVC}
-  (\texttt{/\allowbreak{}fp:precise}) and \texttt{Clang}
-  (\texttt{-\allowbreak{}ffp-\allowbreak{}contract=fast}) at tick \texttt{192} and between
-  \texttt{x86\_64} and \texttt{arm64} at tick \texttt{406}.
+  \texttt{10} to \texttt{37} ticks (\texttt{GE-H2}), default
+  \texttt{FMA} rules diverge at ticks \texttt{192} to \texttt{406}, and
+  \texttt{840} controlled perturbation trajectories (\texttt{GE-H7})
+  confirm that shrinking \(\delta_0\) from \(2^{-10}\) down to Institute
+  of Electrical and Electronics Engineers (\texttt{IEEE}) \texttt{754}
+  \texttt{binary64} epsilon \(2^{-52}\) buys only \texttt{5.7} to
+  \texttt{14.4} extra seconds (\(R^2_{\text{mean}} \ge 0.994\)).
 \item
   \textbf{Even the same graphics card can flip pixel bits between
   \texttt{DirectX\ 12} and \texttt{Vulkan}, so rendering belongs
@@ -294,7 +342,7 @@ with \texttt{measured\_\allowbreak{}j\ =\ None} and
   \texttt{9.34\%} of pixels by \texttt{\textless{}=\ 2} \texttt{LSB}
   (\texttt{PSNR\ \textgreater{}=\ 64.16\ dB},
   \texttt{SSIM\ \textgreater{}=\ 0.99983}) without ever corrupting
-  simulation state.
+  simulation state (\texttt{GE-H3}).
 \end{enumerate}
 
 
@@ -325,9 +373,10 @@ test}\label{terms-notation-and-the-idea-under-test}
 \begin{itemize}
 \tightlist
 \item
-  RCE, IR, ECS, FSM, SDF: Reality Code Engine {[}same house{]},
-  intermediate representation, entity component system, finite-state
-  machine, and signed distance field
+  RCE, IR, ECS, FSM, SDF, AST, DAG, LCG: Reality Code Engine {[}same
+  house{]}, intermediate representation, entity component system,
+  finite-state machine, signed distance field, abstract syntax tree,
+  directed acyclic graph, and linear congruential generator
 \item
   CPU, GPU, ISA, ISAs, SIMD, AVX2, NEON, SFU, ROP, RPL, TGL: central
   processing unit, graphics processing unit, instruction set
@@ -337,18 +386,20 @@ test}\label{terms-notation-and-the-idea-under-test}
   Tiger Lake mobile architecture
 \item
   IEEE, FMA, VFMADD, VFNMADD, FMADD, FMSUB, ULP, LSB, SHA, MAE, RMSE,
-  PSNR, SSIM, SD, RGBA8: Institute of Electrical and Electronics
-  Engineers (as in IEEE 754 floating-point), fused multiply-add, x86\_64
-  vector fused multiply-add and negated multiply-add opcodes, AArch64
-  scalar fused multiply-add and multiply-subtract opcodes, unit in the
-  last place, least significant bit, Secure Hash Algorithm
-  (\texttt{SHA-256}), mean absolute error, root mean squared error, peak
-  signal-to-noise ratio, structural similarity index, standard
-  deviation, and 8-bit-per-channel red-green-blue-alpha framebuffer
+  PSNR, SSIM, SD, OLS, CI, TP, FP, FN, TN, RGBA8: Institute of
+  Electrical and Electronics Engineers (as in IEEE 754 floating-point),
+  fused multiply-add, x86\_64 vector fused multiply-add and negated
+  multiply-add opcodes, AArch64 scalar fused multiply-add and
+  multiply-subtract opcodes, unit in the last place, least significant
+  bit, Secure Hash Algorithm (\texttt{SHA-256}), mean absolute error,
+  root mean squared error, peak signal-to-noise ratio, structural
+  similarity index, standard deviation, ordinary least squares,
+  confidence interval, true positive, false positive, false negative,
+  true negative, and 8-bit-per-channel red-green-blue-alpha framebuffer
   format
 \item
   WGSL, WESL, SPIR-V, GLSL, HLSL, MSL, D3D11, D3D12, DX12, VULKAN,
-  METAL, DXIL, DXBC, DXC, FXC, WARP, WDDM, CUDA: WebGPU Shading
+  METAL, DXIL, DXBC, DXC, FXC, WARP, WDDM, CUDA, UBO: WebGPU Shading
   Language, WebGPU Extended Shading Language, Standard Portable
   Intermediate Representation V, OpenGL Shading Language, High-Level
   Shading Language, Metal Shading Language, Direct3D 11, Direct3D 12,
@@ -356,23 +407,31 @@ test}\label{terms-notation-and-the-idea-under-test}
   \texttt{wgpu::Backends::METAL} back-end flags, DirectX Intermediate
   Language, DirectX Bytecode, DirectX Shader Compiler, legacy Direct3D
   Effect-Compiler Tool, Windows Advanced Rasterization Platform software
-  DirectX 12 rasterizer, Windows Display Driver Model, and Compute
-  Unified Device Architecture
+  DirectX 12 rasterizer, Windows Display Driver Model, Compute Unified
+  Device Architecture, and uniform buffer object
 \item
   RADV, ANV, LLVM, GNU, GCC, MSVC, UCRT, NT, PE, OS, OSs, API, APIs,
-  JIT, WebXR, WebMCP, URL, JSON, YAML, README, MB, CS0246, RE, ENGINE,
-  DFU: Mesa Radeon Vulkan driver, Mesa Intel Vulkan driver, Low Level
-  Virtual Machine compiler infrastructure, GNU's Not Unix project, GNU
-  Compiler Collection, Microsoft Visual C++ compiler (\texttt{cl.exe}),
-  Windows Universal C Runtime (\texttt{ucrtbase.\allowbreak{}dll}), Windows New
-  Technology kernel (\texttt{Windows\ NT}), Windows Portable Executable,
-  operating system(s), application programming interface(s),
-  just-in-time compiler, Web Extended Reality API, Web Model Context
-  Protocol, Uniform Resource Locator, JavaScript Object Notation, YAML
-  Ain't Markup Language, repository README documentation file,
-  megabytes, C\# compiler missing-type diagnostic CS0246, Capcom RE
-  ENGINE (``Reach for the Moon'' / ``RE neXt'' engine branding), and
-  Dagstuhl Follow-Ups DOI prefix
+  JIT, VM, SLOC, HUD, UI, SFX, LOS, AABB, HP, XP, AP, KB, MB, CRUD, NL,
+  VLM, LLM, GFW, Xvfb, WebXR, WebMCP, URL, JSON, YAML, README, NTFS,
+  CRLF, CS0246, RE, ENGINE, DFU: Mesa Radeon Vulkan driver, Mesa Intel
+  Vulkan driver, Low Level Virtual Machine compiler infrastructure,
+  GNU's Not Unix project, GNU Compiler Collection, Microsoft Visual C++
+  compiler (\texttt{cl.exe}), Windows Universal C Runtime
+  (\texttt{ucrtbase.\allowbreak{}dll}), Windows New Technology kernel
+  (\texttt{Windows\ NT}), Windows Portable Executable, operating
+  system(s), application programming interface(s), just-in-time
+  compiler, virtual machine, non-comment non-blank source lines of code,
+  heads-up display, user interface, sound effects, line of sight,
+  axis-aligned bounding box, hit points, experience points, action
+  points, kilobytes, megabytes, create/read/update/delete operations,
+  natural language, vision-language model, large language model, Great
+  Firewall network filter, X virtual framebuffer display server, Web
+  Extended Reality API, Web Model Context Protocol, Uniform Resource
+  Locator, JavaScript Object Notation, YAML Ain't Markup Language,
+  repository README documentation file, New Technology File System,
+  carriage-return line-feed sequence, C\# compiler missing-type
+  diagnostic CS0246, Capcom RE ENGINE (``Reach for the Moon'' / ``RE
+  neXt'' engine branding), and Dagstuhl Follow-Ups DOI prefix
 \item
   SCXML, GDL, VGDL, BSN, BSL, MLIR, ACID, GGPO, glTF, OpenUSD, USD, LAN,
   AI, CIG: State Chart XML, Game Description Language, Video Game
@@ -398,9 +457,10 @@ To keep forward references transparent from top to bottom, Section 1
 defines the Form notation, Section 2 surveys existing game
 representations, Section 3 analyzes floating-point divergence, Section 4
 tabulates intermediate representations, Section 5 states the proposed
-layer split, Section 6 reports the 3-OS multi-ISA and 3-API cross-GPU
-falsifier runs, Section 7 lists infeasibility flags, and Section 8
-documents sources and limits.
+layer split, Section 6 reports all nine executed falsifier suites
+(\texttt{GE-H1} through \texttt{GE-H9}) across three OSs, three ISAs,
+three GPU APIs, and four game-behavior toolchains, Section 7 lists
+infeasibility flags, and Section 8 documents sources and limits.
 
 The \href{https://research.openie.dev/about/rce/}{Reality Code Engine
 (RCE)} treats a program as a state machine called a Form, written
@@ -423,10 +483,13 @@ The \href{https://research.openie.dev/about/rce/}{Reality Code Engine
 A strict checker either accepts a Form or names the rule it breaks.
 Emitters then project the accepted Form into Rust, Python, JavaScript
 and Scala. XState (a JavaScript and TypeScript statechart library),
-SCXML (a World Wide Web Consortium Recommendation) and WebAssembly
-(\texttt{Wasm}) are not among the emitters' targets; this study treats
-them as candidate projections. Because every step lands in \(D\), any
-run can be replayed.
+SCXML (a World Wide Web Consortium Recommendation), WebAssembly
+(\texttt{Wasm}), and Godot 4 GDScript are not built-in
+\texttt{rce\ emit} targets in the core checker; Section 6 tests compiled
+\texttt{Wasm} projections (\texttt{GE-H1}, \texttt{GE-H5}) and builds a
+standalone Form-to-Godot 4 GDScript emitter over
+\texttt{rce\ emit\ form} (\texttt{GE-H9}) directly. Because every step
+lands in \(D\), any run can be replayed.
 
 A game engine is a much larger machine. It runs a fixed-step simulation,
 a scripting layer, a scene description, and a rendering pipeline on a
@@ -515,8 +578,8 @@ GameCraft-Bench
 \href{https://github.com/FreedomIntelligence/gamecraft-bench}{repository})
 offers 140 Godot 4 two-dimensional tasks in 15 families. Submissions
 carry replayable input traces. The strongest agent in the paper scored
-41.46\%, and the repository later reports 65.70\%. It does not cover
-Unity, Unreal, 3D, multiplayer, or large physics scenes.
+41.46\%, and the repository later reports 65.70\% to 75.86\%. It does
+not cover Unity, Unreal, 3D, multiplayer, or large physics scenes.
 \href{https://www.summerengine.com/templates}{Summer Engine} publishes
 17 open-source game templates (rally, platformer, tower defense,
 metroidvania, survivors, first-person shooter, LAN multiplayer, voxel,
@@ -613,7 +676,8 @@ logarithm is the key: shrinking \(\delta_0\) a millionfold buys only
 about 6.9 more seconds. Approximate agreement therefore cannot rescue
 simulation. Either the state is bitwise identical or it eventually
 diverges --- a prediction tested directly across 25,000 multi-ISA and
-3-OS collision ticks below (\texttt{GE-H2}).
+3-OS collision ticks (\texttt{GE-H2}) and an 840-trajectory
+\(\ln(\Delta/\delta_0)\) slope sweep (\texttt{GE-H7}) below.
 
 Practice agrees.
 \href{https://gafferongames.com/post/floating_point_determinism/}{Gaffer
@@ -742,10 +806,12 @@ only; no client rendering or scene \\
   \textbf{Scripting projection (exact).} Designer scripts compile to
   guards and actions over \(S\), emitted as
   \href{https://rhai.rs/book/about/features.html}{Rhai} (sandboxed, with
-  a ``Don't Panic'' guarantee, no-std and Wasm support), Lua, or
+  a ``Don't Panic'' guarantee, no-std and Wasm support), Lua,
   \href{https://luau.org/}{Luau} (sandboxed by default, with gradual
-  types). Scripts may only call \(\delta\) through declared actions.
-  They cannot read clocks, random sources, or GPU results directly.
+  types), or typed engine scripts such as Godot 4 GDScript
+  (\texttt{GE-H9}). Scripts may only call \(\delta\) through declared
+  actions. They cannot read clocks, random sources, or GPU results
+  directly.
 \item
   \textbf{Scene projection (tolerance downstream).} \(\lambda\) maps
   \(S\) to a BSN-like patch tree whose component schema is part of the
@@ -767,9 +833,10 @@ interface schemas. Outside, as logged events: device input, wall-clock
 time, network packets, audio output, asset input and output, GPU draws,
 and any third-party physics used for cosmetic effects. Replay feeds
 \(D\) back through \(\delta\) rather than touching devices. Storage cost
-is modest. At a tick rate \(f_{\text{tick}} = 60\) Hz and \(b = 16\)
-bytes of input per tick, the log grows at
-\(f_{\text{tick}} \cdot b = 960\) B/s, about 3.5 MB per hour.
+is modest. At a tick rate \(f_{\text{tick}} = 60\) Hz and \(b = 2\) to
+\(16\) bytes of input per tick, the raw log grows at \(120\) to \(960\)
+B/s (\texttt{0.43} to \texttt{3.5} MB per hour raw, and
+\texttt{44.6\ KB} per hour gzip-compressed in Section 6.8).
 
 \subsection{5.3 Determinism boundary}\label{determinism-boundary}
 
@@ -811,29 +878,27 @@ producible by some transition or host source. Mage's finding (Section
 2.3) is the reason edge checks are judged by behavior traces, not by
 compile success.
 
-\section{6. Falsifier-first test plan and executed 3-OS / 3-ISA / 3-API
-results}\label{falsifier-first-test-plan-and-executed-3-os-3-isa-3-api-results}
+\section{\texorpdfstring{6. Falsifier-first test plan and full
+\texttt{GE-H1}--\texttt{GE-H9} empirical
+closure}{6. Falsifier-first test plan and full GE-H1--GE-H9 empirical closure}}\label{falsifier-first-test-plan-and-full-ge-h1ge-h9-empirical-closure}
 
 Each hypothesis is listed with its kill criterion. If the criterion is
-met, the claim is withdrawn. Subsections 6.1 to 6.4 report the three
-executed empirical falsifier suites (\texttt{GE-H1} 3-OS × 3-ISA
-\texttt{Q32.32} replay across \texttt{30} target × host cells,
-\texttt{GE-H2} 3-OS × 3-ISA floating-point drift across
-\texttt{Windows\ 11\ UCRT}, \texttt{macOS\ libSystem}, and
-\texttt{Linux\ glibc}, and \texttt{GE-H3} 3-OS × 3-API headless
-\texttt{wgpu} rendering tolerance across \texttt{DirectX\ 12},
-\texttt{Metal}, and \texttt{Vulkan}), plus an interactive joule-budgeted
-\texttt{Q32.32} prototype (\texttt{GE-H4} through \texttt{GE-H9} remain
-open).
+met, the claim is withdrawn. Subsections 6.1 to 6.10 report all nine
+executed empirical falsifier suites (\texttt{GE-H1} through
+\texttt{GE-H9}, pre-registered under
+\texttt{PREREG\_\allowbreak{}wave3\_\allowbreak{}multi\_\allowbreak{}isa\_\allowbreak{}wgpu.\allowbreak{}json} \texttt{1721e5bdffaf.\allowbreak{}.\allowbreak{}.\allowbreak{}}
+and \texttt{PREREG\_\allowbreak{}wave5\_\allowbreak{}ge\_\allowbreak{}h4\_\allowbreak{}h9.\allowbreak{}json} \texttt{7d02115e37d3.\allowbreak{}.\allowbreak{}.\allowbreak{}})
+alongside the interactive joule-budgeted \texttt{Q32.32} Chrono-Budget
+Arena.
 
 {\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0356}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1733}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2311}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2133}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1822}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1644}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0332}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1618}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2158}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1992}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1743}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2158}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{ID}
@@ -885,26 +950,67 @@ RMSE, \texttt{PSNR}, and \texttt{SSIM} & Any physical GPU pair failing
 \textbf{Executed (\texttt{28/28} pairs = \texttt{112/112} frames pass
 gate: \texttt{PSNR\ ≥\ 64.\allowbreak{}16\ dB}, \texttt{SSIM\ ≥\ 0.\allowbreak{}99983}, Section
 6.3)} \\
-GE-H4 & Form-encoded rules cut code as GameRule did & Haunted Jaunt,
-Survival Shooter, Tanks behaviors & Lines of behavior code & Reduction
-under 50\% (GameRule reached 81.3\%) & Open \\
-GE-H5 & Form runtime exceeds the GameRule ceiling & Synthetic actor
-scaling & Step time against \(N\) & Step time over 20 ms below
-\(N = 350\) & Open \\
-GE-H6 & Interface checks catch real defects & Mage's 26 patterns;
-injected binding and schema faults & Detection rate; mechanism F1 &
-Detection below 90\% of injected faults, or F1 no better than the no-IR
-0.12 & Open \\
-GE-H7 & Full \(\ln(\Delta/\delta_0)\) slope sweep on Summer Engine
-templates & Physics-heavy Summer Engine templates re-expressed as Forms
-& Divergence time against injected \(\delta_0\) & Slope of \(t^{*}\)
-against \(\ln(1/\delta_0)\) not distinguishable from zero & Open \\
-GE-H8 & Replay is complete & One-hour recorded sessions & Final hash
-reproduced from \(D\) alone & Any replay that needs state not in \(D\) &
-Open \\
-GE-H9 & Benchmark parity & GameCraft-Bench 140 tasks via a Form-to-Godot
-emitter & Pass rate against native Godot submissions & Lower pass rate
-on behavior-identical inputs & Open \\
+GE-H4 & Form-encoded rules cut code as GameRule did & \texttt{17}
+behaviors across \emph{Haunted Jaunt} (\texttt{5}), \emph{Survival
+Shooter} (\texttt{7}), and \emph{Tanks} (\texttt{5}) × \texttt{4}
+languages (\texttt{68} modules, \texttt{680} traces) & Non-comment
+\texttt{SLOC}, lexical tokens, glue lines, cross-language trace parity &
+Behavior \texttt{SLOC} reduction \texttt{\textless{}\ 50\%} vs Unity C\#
+(GameRule: \texttt{81.3\%}) or \texttt{\textgreater{}\ 0} trace
+mismatches & \textbf{Executed (\texttt{−76.22\%} SLOC vs Unity C\#,
+\texttt{−61.47\%} vs Rust ECS, \texttt{−51.99\%} vs GDScript;
+\texttt{0\ /\ 680} mismatches, Section 6.4)} \\
+GE-H5 & Form runtime exceeds the GameRule ceiling & Multi-actor
+\texttt{Q32.32} \texttt{16×16} spatial-grid arena
+(\texttt{N\ =\ 64.\allowbreak{}.\allowbreak{}10,\allowbreak{}000}, \texttt{500} ticks/cell, \texttt{5} tiers +
+Linux \texttt{RAPL} \texttt{reported\_\allowbreak{}j}) & p50/p99 step
+\texttt{ms/tick}, \texttt{RAPL} \texttt{mJ/tick}, \(N_{20\text{ms}}\),
+cross-tier \texttt{SHA-256} & Compiled Form step time
+\texttt{\textgreater{}\ 20\ ms} below \(N = 350\), or
+\texttt{\textgreater{}\ 0} hash mismatches & \textbf{Executed
+(\texttt{N\_\allowbreak{}20ms\ =\ 390} Py, \texttt{3,906} Node.js; compiled
+\texttt{0.\allowbreak{}058–0.\allowbreak{}125\ ms/\allowbreak{}tick} at \texttt{N\ =\ 10,\allowbreak{}000},
+\texttt{0\ /\ 50} mismatches, Section 6.5)} \\
+GE-H6 & Interface checks catch real defects & \texttt{26} defect
+patterns × \texttt{10} modules (\texttt{130} injected faults +
+\texttt{130} valid controls = \texttt{260} modules) & \texttt{TP},
+\texttt{FP}, \texttt{FN}, \texttt{TN}, detection recall \texttt{\%},
+precision \texttt{\%}, fault \texttt{F1} & Detection
+\texttt{\textless{}\ 90\%} of injected faults, or \texttt{F1} no better
+than no-IR \texttt{0.12} & \textbf{Executed (\texttt{128\ /\allowbreak{}\ 130} =
+\texttt{98.46\%} recall, \texttt{0} FP, \texttt{F1\ =\ 0.\allowbreak{}9922} vs
+\texttt{0.1159} parse-only baseline, Section 6.6)} \\
+GE-H7 & Full \(\ln(\Delta/\delta_0)\) slope sweep on chaotic physics
+templates & \texttt{3} chaotic templates
+(\texttt{GE-T1}..\texttt{GE-T3}) × \texttt{7} perturbations
+\(\delta_0 \in [2^{-52}, 2^{-10}]\) × \texttt{40} seeds (\texttt{840}
+trajectories, \texttt{60\ Hz}) & OLS slope
+\(\hat{\beta} = 1/\hat{\Lambda}\), implied \(\hat{\Lambda}\), \(R^2\),
+95\% bootstrap CI, two-sided \(p\) & Slope of \(t^*\) against
+\(\ln(\Delta/\delta_0)\) not distinguishable from zero (\(p \ge 0.01\))
+& \textbf{Executed
+(\(\hat{\Lambda} \in \{1.95, 2.48, 5.07\}\ \text{s}^{-1}\),
+\(R^2_{\text{mean}} = 0.9940\text{–}0.9995\), \(p \le 10^{-77.6}\),
+Section 6.7)} \\
+GE-H8 & Replay is complete & Three 1-hour (\texttt{216,000}-tick at
+\texttt{60\ Hz}) sessions replayed from compact input log \(D\) alone
+across \texttt{macOS}, \texttt{Linux}, and \texttt{Windows\ 11} +
+\texttt{4} leak controls & \texttt{2,160} stride-\texttt{100} + final
+\texttt{SHA-256} digests, compressed \(\lvert D \rvert\) vs state stream
+& Any cross-OS hash mismatch from \(D\) alone, or leak controls failing
+to diverge & \textbf{Executed (\texttt{0\ /\allowbreak{}\ 6,\allowbreak{}480} checkpoint
+mismatches across \texttt{3} OSs; \texttt{44.6\ KB} gzip \(D\) =
+\texttt{116×–292×} smaller; \texttt{4/4} leaks diverge at
+\texttt{t\ =\ 1}, Section 6.8)} \\
+GE-H9 & Benchmark parity & \texttt{form\_\allowbreak{}to\_\allowbreak{}gdscript.\allowbreak{}py} across
+\texttt{36} deterministic tasks (\texttt{15} GameCraft-Bench families ×
+\texttt{2} + \texttt{6} core systems, \texttt{18,000} ticks) in
+\texttt{Godot\ 4.\allowbreak{}7.\allowbreak{}2\ -\allowbreak{}\/\allowbreak{}-\allowbreak{}headless} + 140-task archive audit & Pass rate
+\& per-tick \texttt{SHA-256} parity vs hand-written native GDScript &
+Lower pass rate or \texttt{\textgreater{}\ 0} state-trace mismatches on
+identical input streams & \textbf{Executed (\texttt{36\ /\ 36} =
+\texttt{100.0\%} pass parity, \texttt{0\ /\allowbreak{}\ 18,\allowbreak{}000} tick-hash
+mismatches, Section 6.9)} \\
 \end{longtable}
 }
 
@@ -928,6 +1034,18 @@ via shader lowering (\texttt{79.\allowbreak{}5–108.\allowbreak{}3\ dB} \texttt
 above \texttt{64.16\ dB} \texttt{PSNR} and \texttt{0.99983}
 \texttt{SSIM} (\texttt{measured\_\allowbreak{}j\ =\ None},
 \texttt{board\_\allowbreak{}metered\ =\ false}).}
+
+
+\begin{center}
+\openiefig{fig/game-engines-fig04-ge-h4-h9-closure.png}{0.94}{https://research.openie.dev/figures/game-engines/ge-h4-h9-closure.svg}
+\end{center}
+
+
+\emph{Figure 4. Full empirical closure of \texttt{GE-H4} through
+\texttt{GE-H9} (\texttt{openIE-\allowbreak{}dev/\allowbreak{}rce} commit \texttt{1762fb4b},
+\texttt{Godot\ 4.\allowbreak{}7.\allowbreak{}2\ -\allowbreak{}\/\allowbreak{}-\allowbreak{}headless}, \texttt{macOS\ arm64},
+\texttt{Linux\ x86\_\allowbreak{}64}, and \texttt{Windows\ 11\ x86\_\allowbreak{}64};
+\texttt{measured\_\allowbreak{}j\ =\ None}, \texttt{board\_\allowbreak{}metered\ =\ false}).}
 
 \subsection{\texorpdfstring{6.1 \texttt{GE-H1}: Three-OS and three-ISA
 100,000-tick determinism (\texttt{Q32.32} integer
@@ -1476,9 +1594,575 @@ hosts)} & \texttt{20.400\%} -- \texttt{27.626\%} & \texttt{2} &
   \texttt{0}, \texttt{ce3b2cec.\allowbreak{}.\allowbreak{}.\allowbreak{}} at tick \texttt{10,000}).
 \end{itemize}
 
-\subsection{\texorpdfstring{6.4 Playable joule-native \texttt{Q32.32}
+\subsection{\texorpdfstring{6.4 \texttt{GE-H4}: Form-encoded behavior
+rules across 17 modules and 4 languages (\texttt{Haunted\ Jaunt},
+\texttt{Survival\ Shooter},
+\texttt{Tanks})}{6.4 GE-H4: Form-encoded behavior rules across 17 modules and 4 languages (Haunted Jaunt, Survival Shooter, Tanks)}}\label{ge-h4-form-encoded-behavior-rules-across-17-modules-and-4-languages-haunted-jaunt-survival-shooter-tanks}
+
+\emph{Pre-registered under \texttt{PREREG\_\allowbreak{}wave5\_\allowbreak{}ge\_\allowbreak{}h4\_\allowbreak{}h9.\allowbreak{}json}
+(\texttt{SHA-\allowbreak{}256:\ 7d02115e37d3.\allowbreak{}.\allowbreak{}.\allowbreak{}}). Every \texttt{.rce} module is
+checked and tested at the gate by \texttt{openIE-\allowbreak{}dev/\allowbreak{}rce}
+(\texttt{commit\ 1762fb4bb65a}, spec draft \texttt{0.9}) via
+\texttt{rce\ check} and \texttt{rce\ test}.}
+
+To test whether general-purpose \texttt{.rce} Forms achieve at least a
+\texttt{50\%} behavior-code reduction on the exact three reference games
+studied by GameRule (Section 2.1) while projecting across multiple
+engine paradigms, all \textbf{17} actor and director behaviors ---
+\textbf{Haunted Jaunt} (\texttt{PlayerStealth}, \texttt{GhostPatrol},
+\texttt{GargoyleSpotter}, \texttt{ObserverLineOfSight},
+\texttt{ExitTrigger}), \textbf{Survival Shooter} (\texttt{PlayerAvatar},
+\texttt{GunRaycaster}, \texttt{ZombunnyChaser}, \texttt{ZomBearBruiser},
+\texttt{HellephantBoss}, \texttt{WaveSpawner}, \texttt{ScoreHUD}), and
+\textbf{Tanks} (\texttt{TankChassis}, \texttt{ShellBallisticsQ32},
+\texttt{ExplosionFalloff}, \texttt{TankHealthShield},
+\texttt{RoundDirector}) --- were authored as \texttt{.rce} Forms and
+paired with behavior-identical idiomatic implementations in
+\textbf{Unity \texttt{MonoBehaviour} C\#} (compiled and executed via
+Microsoft Visual C\# \texttt{csc.\allowbreak{}exe\ 4.\allowbreak{}0.\allowbreak{}30319} on Windows 11),
+\textbf{Godot 4 \texttt{Node} GDScript} (executed via
+\texttt{Godot\ 4.\allowbreak{}7.\allowbreak{}2\ -\allowbreak{}\/\allowbreak{}-\allowbreak{}headless} on Linux), and \textbf{Bevy-style
+Rust \texttt{ECS}} (\texttt{Component} + \texttt{Event} + \texttt{Query}
+system, compiled via \texttt{rustc\ 1.\allowbreak{}100}). Across \texttt{10}
+deterministic 20-event traces per module (\texttt{170} traces ×
+\texttt{4} toolchains = \texttt{680} executions), cross-language
+state-digest mismatches were \textbf{\texttt{0\ /\ 680}}:
+
+{\scriptsize\setlength{\tabcolsep}{2.4pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1040}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1503}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1272}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0983}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1214}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1329}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1214}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1445}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Game suite (\texttt{modules})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{.rce} Form behavior \texttt{SLOC} (with
+\texttt{intent})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Unity \texttt{MonoBehaviour} C\# \texttt{SLOC}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Bevy Rust \texttt{ECS} \texttt{SLOC}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Godot 4 \texttt{Node} GDScript \texttt{SLOC}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Cut vs Unity C\# (\texttt{with\ intent})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Cut vs Rust \texttt{ECS} / GDScript}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Glue lines (\texttt{.rce} / C\# / \texttt{ECS} / \texttt{.gd})}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Haunted Jaunt (\texttt{5})} & \textbf{\texttt{90}}
+(\texttt{105}) & \texttt{391} & \texttt{238} & \texttt{190} &
+\textbf{\texttt{−76.98\%}} (\texttt{−73.15\%}) & \texttt{−62.18\%} /
+\texttt{−52.63\%} & \texttt{17} / \texttt{230} / \texttt{112} /
+\texttt{54} \\
+\textbf{Survival Shooter (\texttt{7})} & \textbf{\texttt{148}}
+(\texttt{169}) & \texttt{590} & \texttt{367} & \texttt{288} &
+\textbf{\texttt{−74.92\%}} (\texttt{−71.36\%}) & \texttt{−59.67\%} /
+\texttt{−48.61\%} & \texttt{27} / \texttt{351} / \texttt{168} /
+\texttt{81} \\
+\textbf{Tanks (\texttt{5})} & \textbf{\texttt{88}} (\texttt{103}) &
+\texttt{390} & \texttt{241} & \texttt{201} & \textbf{\texttt{−77.44\%}}
+(\texttt{−73.59\%}) & \texttt{−63.49\%} / \texttt{−56.22\%} &
+\texttt{17} / \texttt{233} / \texttt{111} / \texttt{57} \\
+\textbf{Total (\texttt{17} modules)} & \textbf{\texttt{326}}
+(\texttt{377}) & \textbf{\texttt{1,371}} & \textbf{\texttt{846}} &
+\textbf{\texttt{679}} & \textbf{\texttt{−76.22\%}} (\texttt{−72.50\%}) &
+\textbf{\texttt{−61.47\%} / \texttt{−51.99\%}} & \textbf{\texttt{61} /
+\texttt{814} / \texttt{391} / \texttt{192}} \\
+\end{longtable}
+}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Passing the \texttt{\textgreater{}=\ 50\%} threshold and
+  isolating why GameRule reached \texttt{81.3\%}}: Pure \texttt{.rce}
+  behavior rules shrink \texttt{SLOC} by \textbf{\texttt{76.22\%}}
+  against idiomatic Unity \texttt{MonoBehaviour} C\# (\texttt{72.50\%}
+  even when counting \texttt{.rce}'s \texttt{51} lines of embedded
+  \texttt{intent} and \texttt{34} gate-checked \texttt{example}
+  assertions, which none of the three baseline scripts carry), cut
+  lexical tokens by \textbf{\texttt{66.15\%}} (\texttt{2,348} vs
+  \texttt{6,937}), and eliminate \textbf{\texttt{92.51\%}} of lifecycle,
+  queue, and serialization glue (\texttt{61} vs \texttt{814} lines). The
+  \textasciitilde{}\texttt{5} percentage-point gap relative to
+  GameRule's \texttt{81.3\%} (\texttt{572\ -\textgreater{}\ 107} lines)
+  reflects expressive generality: GameRule hard-codes 14 Unity CRUD
+  verbs in C\#, whereas \texttt{.rce} expresses arbitrary arithmetic,
+  bitwise masks, and \texttt{Q32.32} ballistics directly in the
+  language. Replacing three separate engine codebases (\texttt{2,896}
+  combined \texttt{SLOC}) with one \texttt{.rce} Form cuts maintained
+  behavior \texttt{SLOC} by \textbf{\texttt{88.74\%}}.
+\end{itemize}
+
+\subsection{\texorpdfstring{6.5 \texttt{GE-H5}: Multi-actor
+\texttt{Q32.32} runtime scaling and \texttt{RAPL} energy across 5
+projection tiers (\texttt{N\ =\ 64} to
+\texttt{10,000})}{6.5 GE-H5: Multi-actor Q32.32 runtime scaling and RAPL energy across 5 projection tiers (N = 64 to 10,000)}}\label{ge-h5-multi-actor-q32.32-runtime-scaling-and-rapl-energy-across-5-projection-tiers-n-64-to-10000}
+
+To test whether Form projections break through GameRule's
+\texttt{\textasciitilde{}308}-actor (\texttt{20\ ms})
+rule-interpretation ceiling, a \texttt{Q32.32} 2D arena Form
+(\texttt{ge\_\allowbreak{}h5\_\allowbreak{}actor\_\allowbreak{}arena.\allowbreak{}rce}, checked by \texttt{rce\ check})
+combining a \texttt{16\ ×\ 16} uniform spatial grid (\texttt{256} cells
+over \texttt{{[}-64,\ +64{]}\^{}2}) with patrol, chase, crowding
+avoidance, and pulse-cooldown transitions was stepped for
+\textbf{\texttt{500} ticks} across
+\(N \in \{64, 128, 256, 300, 350, 500, 1{,}000, 2{,}500, 5{,}000, 10{,}000\}\)
+on an idle \texttt{Intel\ Core\ i9-\allowbreak{}13900H} (\texttt{Linux\ 7.\allowbreak{}0},
+\texttt{SATB} \texttt{L2} \texttt{intel-\allowbreak{}rapl:0} socket and core
+\texttt{energy\_\allowbreak{}uj}, \texttt{measured\_\allowbreak{}j\ =\ None},
+\texttt{board\_\allowbreak{}metered\ =\ false}) across five Form projection tiers:
+
+{\scriptsize\setlength{\tabcolsep}{2.4pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1345}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1170}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1345}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1404}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1345}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1170}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Projection tier}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{p50\ ms/\allowbreak{}tick} (\texttt{N\ =\ 300})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{p50\ ms/\allowbreak{}tick} (\texttt{N\ =\ 350})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{p50\ ms/\allowbreak{}tick} (\texttt{N\ =\ 1,\allowbreak{}000})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{p50} / \texttt{p99\ ms/\allowbreak{}tick} (\texttt{N\ =\ 10,\allowbreak{}000})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{L2} \texttt{RAPL} pkg \texttt{mJ/tick}
+(\texttt{N\ =\ 10,\allowbreak{}000})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Actor ceiling \(N_{20\text{ms}}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\texttt{500}-tick \texttt{SHA-256} parity}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{rce\ emit\ python} (\texttt{CPython\ 3.\allowbreak{}14})} &
+\texttt{13.662} & \texttt{18.115} & \texttt{55.525} & \texttt{564.575} /
+\texttt{648.061} & \texttt{13,090.57} (\texttt{core\ 10,\allowbreak{}826.\allowbreak{}87}) &
+\textbf{\texttt{390}} \emph{(measured)} & \texttt{10\ /\ 10} \\
+\textbf{\texttt{rce\ emit\ js} (\texttt{Node.\allowbreak{}js\ v22.\allowbreak{}22.\allowbreak{}1})} &
+\texttt{1.479} & \texttt{1.846} & \texttt{4.769} & \texttt{57.050} /
+\texttt{66.313} & \texttt{1,559.77} (\texttt{core\ 1,\allowbreak{}183.\allowbreak{}86}) &
+\textbf{\texttt{3,906}} \emph{(measured, \texttt{11.2×})} &
+\texttt{10\ /\ 10} \\
+\textbf{Form \texttt{Rust\ -\textgreater{}\ Wasm32} (\texttt{Node\ V8})}
+& \texttt{0.0040} & \texttt{0.0044} & \texttt{0.0089} &
+\textbf{\texttt{0.0724}} / \texttt{0.0810} & \textbf{\texttt{2.211}}
+(\texttt{core\ 1.\allowbreak{}908}) & \textbf{\texttt{\textgreater{}\ 10,000}}
+(\texttt{\textasciitilde{}2.76M} linear) & \texttt{10\ /\ 10} \\
+\textbf{Form \texttt{C++20} (\texttt{clang++\ -\allowbreak{}O3})} & \texttt{0.0033} &
+\texttt{0.0036} & \texttt{0.0073} & \textbf{\texttt{0.0583}} /
+\texttt{0.0654} & \textbf{\texttt{1.694}} (\texttt{core\ 1.\allowbreak{}454}) &
+\textbf{\texttt{\textgreater{}\ 10,000}}
+(\texttt{\textasciitilde{}3.43M} linear) & \texttt{10\ /\ 10} \\
+\textbf{Form \texttt{Rust} (\texttt{rustc\ -\allowbreak{}C\ opt-\allowbreak{}level=3})} &
+\texttt{0.0035} & \texttt{0.0041} & \texttt{0.0129} &
+\textbf{\texttt{0.1248}} / \texttt{0.1274} & \textbf{\texttt{3.673}}
+(\texttt{core\ 3.\allowbreak{}156}) & \textbf{\texttt{\textgreater{}\ 10,000}}
+(\texttt{\textasciitilde{}1.60M} linear) & \texttt{10\ /\ 10} \\
+\end{longtable}
+}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Explaining and exceeding the \texttt{300}-actor ceiling}:
+  Reference \texttt{rce\ emit\ python} (\texttt{rt.py}, which boxes
+  integers and checks range and fuel invariants on every expression)
+  costs \texttt{45.5}--\texttt{56.5\ µs}/\allowbreak{}actor and crosses
+  \texttt{20.0\ ms} at \textbf{\(N_{20\text{ms}} = 390\)} ---
+  reproducing the exact interpreter regime GameRule measured
+  (\texttt{65\ µs}/\allowbreak{}actor, \(N_{\max} \approx 308\)). Switching to V8's
+  \texttt{BigInt} JIT (\texttt{rce\ emit\ js}) raises
+  \(N_{20\text{ms}}\) by \texttt{10.0×} to \textbf{\texttt{3,906}
+  actors}, while unboxed compiled projections (\texttt{Wasm32},
+  \texttt{C++20\ -\allowbreak{}O3}, \texttt{Rust\ -O3}) step \textbf{\texttt{10,000}
+  actors in \texttt{0.058}--\texttt{0.125\ ms}}
+  (\texttt{5.8}--\texttt{12.5\ ns}/\allowbreak{}actor, using
+  \texttt{\textless{}\ 0.63\%} of the \texttt{20\ ms} budget at
+  \texttt{10,000} actors and cutting socket \texttt{RAPL}
+  \texttt{reported\_\allowbreak{}j}/tick by \textbf{\texttt{3,564×} to
+  \texttt{7,728×}} relative to \texttt{rce\ emit\ python}) with
+  \textbf{\texttt{0\ /\ 50} \texttt{SHA-256} state mismatches}.
+\end{itemize}
+
+\subsection{\texorpdfstring{6.6 \texttt{GE-H6}: Static 4-edge interface
+checking across 26 defect patterns (\texttt{260} modules, zero runtime
+ticks)}{6.6 GE-H6: Static 4-edge interface checking across 26 defect patterns (260 modules, zero runtime ticks)}}\label{ge-h6-static-4-edge-interface-checking-across-26-defect-patterns-260-modules-zero-runtime-ticks}
+
+To test Section 5.4's four-edge checker against Section 2.3's Mage
+pathology (``compiling is not the same as being right''), all
+\textbf{26} game-interface defect patterns (\texttt{P01} node-path typo,
+\texttt{P02} missing signal handler, \texttt{P03} signal payload arity
+mismatch, \texttt{P04} payload type mismatch, \texttt{P05} directional
+physics layer/mask inversion, \texttt{P06} unhandled \texttt{kind}
+variant, \texttt{P07} null scene resource handle, \texttt{P08} entity
+tag typo, \texttt{P09} animation callback missing event, \texttt{P10}
+millisecond-vs-second delta-time mismatch, \texttt{P11} render-pass
+mutation of simulation state \(S\), \texttt{P12} save-schema missing
+field, \texttt{P13} network packet field reorder, \texttt{P14} unmapped
+host input action, \texttt{P15} \texttt{u64} cooldown underflow,
+\texttt{P16} dead-entity action dispatch, \texttt{P17} singleton
+boot-order read race, \texttt{P18} dangling asset identifier,
+\texttt{P19} local-vs-world coordinate confusion, \texttt{P20}
+re-entrant collision traversal deletion, \texttt{P21} missing WGSL
+uniform binding, \texttt{P22} WGSL \texttt{vec3}/\allowbreak{}\texttt{vec4}
+\texttt{16}-byte UBO alignment mismatch, \texttt{P23} undeclared audio
+bus, \texttt{P24} stale HUD state binding, \texttt{P25} inventory slot
+overflow, and \texttt{P26} portal transition persistent-state drop) were
+instantiated as \textbf{\texttt{260} concrete module bundles}
+(\texttt{5} fault-injected + \texttt{5} valid controls per pattern =
+\texttt{130} faulty + \texttt{130} valid):
+
+{\scriptsize\setlength{\tabcolsep}{2.4pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.2484}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0784}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0784}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0784}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0784}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1373}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0915}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0719}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1373}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Verification gate (\texttt{0} engine runtime ticks)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{TP} (\texttt{/\ 130})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{FP} (\texttt{/\ 130})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{FN} (\texttt{/\ 130})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{TN} (\texttt{/\ 130})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Fault detection recall (\texttt{\%})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Precision (\texttt{\%})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Fault \texttt{F1}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Admitted-pool valid share}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Static Form (\texttt{rce\ check} + \texttt{rce\ test}) + 4-Edge
+Manifest Verifier} & \textbf{\texttt{128}} & \textbf{\texttt{0}} &
+\textbf{\texttt{2}} & \textbf{\texttt{130}} & \textbf{\texttt{98.46\%}}
+(\texttt{≥\ 90\%} gate) & \textbf{\texttt{100.00\%}} &
+\textbf{\texttt{0.9922}} & \textbf{\texttt{0.9848}}
+(\texttt{130\ /\allowbreak{}\ 132}) \\
+\textbf{Untyped Dynamic Scripting Parse Baseline
+(\texttt{godot\ -\allowbreak{}\/\allowbreak{}-\allowbreak{}headless\ -\allowbreak{}\/\allowbreak{}-\allowbreak{}check-\allowbreak{}only})} & \texttt{8} &
+\texttt{0} & \texttt{122} & \texttt{130} & \texttt{6.15\%} &
+\texttt{100.00\%} & \textbf{\texttt{0.1159}} & \texttt{0.5159}
+(\texttt{130\ /\allowbreak{}\ 252}) \\
+\end{longtable}
+}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Why parse-only dynamic checking lands at
+  \texttt{F1\ =\ 0.\allowbreak{}1159} (\texttt{≈\ 0.12})}: Running
+  \texttt{Godot\ 4.\allowbreak{}7.\allowbreak{}2\ -\allowbreak{}\/\allowbreak{}-\allowbreak{}headless\ -\allowbreak{}\/\allowbreak{}-\allowbreak{}check-\allowbreak{}only} caught only the
+  \texttt{8} modules where arity (\texttt{P03}) or static
+  \texttt{int}/\allowbreak{}\texttt{String} annotations (\texttt{P04}) clashed on
+  direct GDScript calls, silently passing all \texttt{122} string-keyed
+  \texttt{get\_\allowbreak{}node(\allowbreak{}".\allowbreak{}.\allowbreak{}.\allowbreak{}")}, \texttt{emit\_\allowbreak{}signal(\allowbreak{}".\allowbreak{}.\allowbreak{}.\allowbreak{}")}, physics mask,
+  UBO offset, save/network dictionary, and invariant defects.
+\item
+  \textbf{Exact boundary of static Form checking (\texttt{2\ /\ 130}
+  inspectable \texttt{FN}s)}: Real \texttt{rce\ check} and
+  \texttt{rce\ test} (\texttt{W-STEP-2}, \texttt{W-TY-1},
+  \texttt{W-NAME-1}, \texttt{W-INT-1}, checked \texttt{u64} subtraction)
+  plus the four-edge manifest verifier caught \texttt{128\ /\allowbreak{}\ 130}
+  faults with \texttt{0} false positives. The \texttt{2} surviving
+  faults (\texttt{P10\_\allowbreak{}fault\_\allowbreak{}5} and \texttt{P19\_\allowbreak{}fault\_\allowbreak{}5}) are
+  deliberately unwrapped \texttt{i64} scalars lacking
+  \texttt{LocalX}/\allowbreak{}\texttt{WorldX} newtype structs or nonzero
+  \texttt{example} assertions --- proving that dimensional and
+  coordinate-frame errors require distinct newtype wrappers or
+  quantitative \texttt{intent} examples to be caught statically.
+\end{itemize}
+
+\subsection{\texorpdfstring{6.7 \texttt{GE-H7}: Full
+\(\ln(\Delta / \delta_0)\) Lyapunov slope sweep across 3 chaotic physics
+templates (\texttt{840}
+trajectories)}{6.7 GE-H7: Full \textbackslash ln(\textbackslash Delta / \textbackslash delta\_0) Lyapunov slope sweep across 3 chaotic physics templates (840 trajectories)}}\label{ge-h7-full-lndelta-delta_0-lyapunov-slope-sweep-across-3-chaotic-physics-templates-840-trajectories}
+
+To test Section 3's logarithmic horizon
+\(t^* = (1/\Lambda)\ln(\Delta/\delta_0)\) directly across continuous
+physics topologies, three \texttt{60\ Hz} \texttt{IEEE\ 754}
+\texttt{binary64} (\texttt{-\allowbreak{}fp-\allowbreak{}contract=off}) templates ---
+\textbf{\texttt{GE-T1}} (\texttt{16-\allowbreak{}Body\ Chaotic\ Bumper\ Arena} with
+five convex Sinai bumpers), \textbf{\texttt{GE-T2}}
+(\texttt{12-\allowbreak{}Peg\ Galton/\allowbreak{}Pinball\ Elastic\ Lattice} under gravity and
+elastic floor return), and \textbf{\texttt{GE-T3}}
+(\texttt{8-\allowbreak{}Node\ Coupled\ Spring-\allowbreak{}Pendulum\ Bridge} with cubic-stiffening
+springs and central bridge piers) --- were stepped from \texttt{40}
+deterministic seeds × \texttt{7} single-coordinate perturbations
+\(\delta_0 \in \{2^{-52}, 2^{-44}, 2^{-36}, 2^{-28}, 2^{-23}, 2^{-16}, 2^{-10}\}\)
+(\texttt{840} paired reference-vs-perturbed trajectories,
+macro-divergence threshold \(\Delta = 1.0\) arena unit, sub-unit initial
+\texttt{\textbar{}x\_0\textbar{}\ \textless{}\ 1} so \texttt{+2\^{}-52}
+never rounds away prior to first contact):
+
+{\scriptsize\setlength{\tabcolsep}{2.4pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1336}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1121}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1509}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1379}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1164}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0991}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Template (\texttt{280} trajectories each, \texttt{0}
+right-censored)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Mean \(t^*\) at \(\delta_0 = 2^{-10}\) (\texttt{s})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Mean \(t^*\) at \(\delta_0 = 2^{-23}\) (\texttt{f32} ULP,
+\texttt{s})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Mean \(t^*\) at \(\delta_0 = 2^{-52}\) (\texttt{f64} ULP,
+\texttt{s})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{OLS slope \(\hat{\beta} = 1/\hat{\Lambda}\) (\texttt{s/nat},
+\texttt{95\%} boot CI)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Implied \(\hat{\Lambda}\) (\(\text{s}^{-1}\), \texttt{95\%} boot
+CI)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(R^2_{\text{traj}}\) / \(R^2_{\text{mean}}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Two-sided \(t_{278}\) (\(p\)-value)}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{GE-T1}: 16-Body Bumper Arena} & \texttt{2.\allowbreak{}80\ ±\ 0.\allowbreak{}92} &
+\texttt{6.\allowbreak{}52\ ±\ 1.\allowbreak{}38} & \texttt{14.\allowbreak{}49\ ±\ 2.\allowbreak{}43} &
+\textbf{\texttt{0.4025}} (\texttt{{[}0.3823,\ 0.4246{]}}) &
+\textbf{\texttt{2.4846}} (\texttt{{[}2.3554,\ 2.6157{]}}) &
+\texttt{0.8569} / \textbf{\texttt{0.99953}} & \texttt{40.81}
+(\textbf{\(10^{-118.7}\)}) \\
+\textbf{\texttt{GE-T2}: 12-Peg Galton Lattice} & \texttt{1.\allowbreak{}85\ ±\ 0.\allowbreak{}61}
+& \texttt{3.\allowbreak{}88\ ±\ 0.\allowbreak{}98} & \texttt{7.\allowbreak{}57\ ±\ 1.\allowbreak{}64} &
+\textbf{\texttt{0.1974}} (\texttt{{[}0.1804,\ 0.2145{]}}) &
+\textbf{\texttt{5.0671}} (\texttt{{[}4.6611,\ 5.5436{]}}) &
+\texttt{0.7176} / \textbf{\texttt{0.99629}} & \texttt{26.58}
+(\textbf{\(10^{-77.6}\)}) \\
+\textbf{\texttt{GE-T3}: 8-Node Coupled Bridge} & \texttt{2.\allowbreak{}94\ ±\ 1.\allowbreak{}14}
+& \texttt{7.\allowbreak{}99\ ±\ 2.\allowbreak{}02} & \texttt{17.\allowbreak{}36\ ±\ 3.\allowbreak{}16} &
+\textbf{\texttt{0.5121}} (\texttt{{[}0.4802,\ 0.5440{]}}) &
+\textbf{\texttt{1.9528}} (\texttt{{[}1.8382,\ 2.0823{]}}) &
+\texttt{0.8169} / \textbf{\texttt{0.99395}} & \texttt{35.21}
+(\textbf{\(10^{-103.7}\)}) \\
+\end{longtable}
+}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Empirical confirmation of why approximate float agreement
+  fails}: Across \texttt{12.6} orders of magnitude in \(\delta_0\)
+  (\(4.2 \times 10^{12}\)-fold reduction from \(2^{-10}\) to
+  \(2^{-52}\)), cell-mean divergence time grows strictly linearly in
+  \(\ln(\Delta/\delta_0)\) (\(R^2_{\text{mean}} \in [0.9940, 0.9995]\),
+  \(p \le 10^{-77.6}\)). Upgrading single precision (\texttt{2\^{}-23})
+  to double precision (\texttt{2\^{}-52}, \(5.37 \times 10^8\)-fold
+  smaller perturbation) delays visible macro-divergence by only
+  \textbf{\texttt{3.69\ s}} in \texttt{GE-T2}, \textbf{\texttt{7.97\ s}}
+  in \texttt{GE-T1}, and \textbf{\texttt{9.37\ s}} in \texttt{GE-T3}.
+\end{itemize}
+
+\subsection{\texorpdfstring{6.8 \texttt{GE-H8}: Complete 1-hour
+(\texttt{216,000}-tick) replay from compact input stream \(D\) alone
+across 3
+OSs}{6.8 GE-H8: Complete 1-hour (216,000-tick) replay from compact input stream D alone across 3 OSs}}\label{ge-h8-complete-1-hour-216000-tick-replay-from-compact-input-stream-d-alone-across-3-oss}
+
+To verify that long multi-subsystem gameplay sessions replay completely
+from input stream \(D\) alone without hidden engine state, three
+\textbf{1-hour (\texttt{216,000}-tick at \texttt{60\ Hz})}
+\texttt{Q32.32} sessions (\texttt{HauntedJaunt\_\allowbreak{}1h},
+\texttt{SurvivalShooter\_\allowbreak{}1h}, \texttt{TanksQ32\_\allowbreak{}1h}) were replayed from
+identical \texttt{432,024}-byte binary input logs (\texttt{24}-byte
+header + \texttt{2} bytes/tick) across
+\textbf{\texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1\ arm64}} (\texttt{Apple\ M5\ Max}),
+\textbf{\texttt{Linux\ 7.\allowbreak{}0\ x86\_\allowbreak{}64}} (\texttt{Intel\ Core\ i9-\allowbreak{}13900H}),
+and \textbf{\texttt{Windows\ 11\ Pro\ 26300\ x86\_\allowbreak{}64}}
+(\texttt{Intel\ Core\ i7-\allowbreak{}1165G7}):
+
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1576}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1333}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1333}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1273}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1394}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1758}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{1-Hour Session (\texttt{216,000} ticks @ \texttt{60\ Hz})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Raw / gzip \(\lvert D \rvert\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Raw / gzip full state stream}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Gzip size ratio (\texttt{Snap\ /\allowbreak{}\ D})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Replay wall \texttt{ms} (\texttt{macOS} / \texttt{Win11})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\texttt{3}-OS stride-\texttt{100} checkpoints}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Final 1-hour \texttt{SHA-256} (\texttt{tick\ 216,\allowbreak{}000}, all
+\texttt{3} OSs)}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{HauntedJaunt\_\allowbreak{}1h}} (\texttt{169}-B state) &
+\texttt{432.0\ KB} / \textbf{\texttt{44.60\ KB}} & \texttt{36.50\ MB} /
+\texttt{5.19\ MB} & \textbf{\texttt{116.28×}} (\texttt{84.5×} raw) &
+\texttt{4.19} / \texttt{7.30\ ms} & \textbf{\texttt{2,\allowbreak{}160\ /\allowbreak{}\ 2,\allowbreak{}160}} &
+\texttt{b4120d81\allowbreak{}a8fb5b69\allowbreak{}16ef443b\allowbreak{}2e3ebc59.\allowbreak{}.\allowbreak{}.\allowbreak{}} \\
+\textbf{\texttt{SurvivalShooter\_\allowbreak{}1h}} (\texttt{365}-B state) &
+\texttt{432.0\ KB} / \textbf{\texttt{44.60\ KB}} & \texttt{78.84\ MB} /
+\texttt{7.00\ MB} & \textbf{\texttt{156.97×}} (\texttt{182.5×} raw) &
+\texttt{8.32} / \texttt{11.02\ ms} & \textbf{\texttt{2,\allowbreak{}160\ /\allowbreak{}\ 2,\allowbreak{}160}} &
+\texttt{6cce1282\allowbreak{}304dfdc5\allowbreak{}b623ad5b\allowbreak{}e42357de.\allowbreak{}.\allowbreak{}.\allowbreak{}} \\
+\textbf{\texttt{TanksQ32\_\allowbreak{}1h}} (\texttt{222}-B state) &
+\texttt{432.0\ KB} / \textbf{\texttt{44.58\ KB}} & \texttt{47.95\ MB} /
+\texttt{13.03\ MB} & \textbf{\texttt{292.27×}} (\texttt{111.0×} raw) &
+\texttt{3.90} / \texttt{4.94\ ms} & \textbf{\texttt{2,\allowbreak{}160\ /\allowbreak{}\ 2,\allowbreak{}160}} &
+\texttt{ca627eda\allowbreak{}f8cb5653\allowbreak{}2a33ee83\allowbreak{}997a8487.\allowbreak{}.\allowbreak{}.\allowbreak{}} \\
+\end{longtable}
+}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Zero cross-OS drift and positive ambient-leak falsifier}: Pure
+  Form replay achieved \textbf{\texttt{0\ /\allowbreak{}\ 6,\allowbreak{}480} checkpoint
+  \texttt{SHA-256} mismatches} across \texttt{macOS\ arm64},
+  \texttt{Linux\ x86\_\allowbreak{}64}, and \texttt{Windows\ 11\ x86\_\allowbreak{}64},
+  re-simulating a full hour of \texttt{60\ Hz} gameplay in
+  \texttt{3.9}--\texttt{11.0\ ms} from a \texttt{44.6\ KB} compressed
+  log. Conversely, enabling any of the four ambient host-leak controls
+  on \texttt{HauntedJaunt\_\allowbreak{}1h} --- \texttt{GE-L1} wall-clock
+  nanoseconds, \texttt{GE-L2} stack-address entropy, \texttt{GE-L3}
+  randomized \texttt{HashMap} iteration order, or \texttt{GE-L4} host
+  \texttt{f64::sin} --- broke replay from \(D\) at
+  \textbf{\texttt{t\_\allowbreak{}div\ =\ 1}}, with \texttt{GE-L4}
+  (\texttt{f64::sin}) producing three mutually distinct 1-hour digests
+  across \texttt{macOS} (\texttt{0d1722cf.\allowbreak{}.\allowbreak{}.\allowbreak{}}), \texttt{Linux}
+  (\texttt{50f9ff25.\allowbreak{}.\allowbreak{}.\allowbreak{}}), and \texttt{Windows\ 11}
+  (\texttt{54d0f774.\allowbreak{}.\allowbreak{}.\allowbreak{}}).
+\end{itemize}
+
+\subsection{\texorpdfstring{6.9 \texttt{GE-H9}: Form-to-Godot 4.7.2
+headless GDScript emitter and 36-task parity
+suite}{6.9 GE-H9: Form-to-Godot 4.7.2 headless GDScript emitter and 36-task parity suite}}\label{ge-h9-form-to-godot-4.7.2-headless-gdscript-emitter-and-36-task-parity-suite}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Candid audit of the external \texttt{GameCraft-\allowbreak{}Bench} 140-task
+  archive}: Direct inspection of
+  \href{https://github.com/FreedomIntelligence/gamecraft-bench}{\texttt{FreedomIntelligence/\allowbreak{}gamecraft-\allowbreak{}bench}}
+  confirms that all \texttt{140} task directories across \texttt{15} 2D
+  game families (\texttt{instruction.\allowbreak{}md}, \texttt{tests/\allowbreak{}rubric.\allowbreak{}json},
+  and oracle \texttt{solution/\allowbreak{}files/\allowbreak{}}) are publicly downloadable on
+  GitHub. However, each task is an open-ended NL game prompt rather than
+  a formal transition specification, and its official verifier
+  (\texttt{gamecraft\_\allowbreak{}bench.\allowbreak{}verifier}) replays agent-generated
+  \texttt{demo\_\allowbreak{}outputs/\allowbreak{}*.\allowbreak{}json} traces under \texttt{Xvfb},
+  \texttt{xdotool}, and \texttt{ffmpeg} (\texttt{x11grab}) before
+  grading captured video frames with an external multimodal VLM judge
+  (\texttt{GAMECRAFT\_\allowbreak{}BENCH\_\allowbreak{}JUDGE}, consuming
+  \texttt{148.5M}--\texttt{2.24B} LLM tokens per 140-task agent run).
+  Evaluating an end-to-end LLM + VLM video rubric conflates
+  natural-language synthesis and VLM judge variance with compiler
+  correctness.
+\item
+  \textbf{Deterministic 36-task Form-to-Godot 4.7.2
+  (\texttt{godot\ -\allowbreak{}\/\allowbreak{}-\allowbreak{}headless}) parity benchmark}: To test
+  Form-to-engine emission directly inside Godot 4's real runtime,
+  \texttt{form\_\allowbreak{}to\_\allowbreak{}gdscript.\allowbreak{}py} compiles admitted \texttt{.rce} Forms
+  (via \texttt{rce\ emit\ form} JSON ASTs from \texttt{openIE-\allowbreak{}dev/\allowbreak{}rce}
+  commit \texttt{1762fb4bb65a}) into standalone statically typed
+  \textbf{Godot 4 GDScript} (\texttt{extends\ SceneTree}) with 64-bit
+  \texttt{int} coercion, \texttt{Q32.32} limb-split helpers, and
+  transactional \texttt{fail}/\allowbreak{}\texttt{kept} state rollback. Across
+  \textbf{36 deterministic gameplay tasks} --- \texttt{2} tasks in every
+  one of \texttt{GameCraft-\allowbreak{}Bench}'s \texttt{15} families
+  (\texttt{Platformer}, \texttt{Strategy}, \texttt{Tycoon},
+  \texttt{Open-\allowbreak{}world}, \texttt{Roguelike}, \texttt{Visual\ novel},
+  \texttt{Puzzle}, \texttt{Shooter}, \texttt{Simulation},
+  \texttt{Card\ game}, \texttt{Horror} including
+  \texttt{horror-\allowbreak{}signal-\allowbreak{}lost}'s radio-battery-jamming mechanic,
+  \texttt{Rhythm}, \texttt{Idle}, \texttt{Racing}, \texttt{Sports}) plus
+  \texttt{6} reference and multiplayer systems (\texttt{Haunted\ Jaunt},
+  \texttt{Survival\ Shooter}, \texttt{Tanks\ Q32.\allowbreak{}32},
+  \texttt{Inventory/\allowbreak{}Crafting}, \texttt{Quest\ DAG},
+  \texttt{4-\allowbreak{}Player\ Lockstep\ Arena}) --- both the Form-emitted GDScript
+  and an independently authored idiomatic native GDScript implementation
+  were executed under
+  \texttt{Godot\ Engine\ v4.\allowbreak{}7.\allowbreak{}2.\allowbreak{}stable.\allowbreak{}official.\allowbreak{}ed1daf0bf\ -\allowbreak{}\/\allowbreak{}-\allowbreak{}headless}
+  for \texttt{500} deterministic input events per task (\texttt{18,000}
+  ticks per arm = \texttt{36,000} Godot VM ticks):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Form admission (\texttt{rce\ check} + \texttt{rce\ test})}:
+    \textbf{\texttt{36\ /\ 36} (\texttt{100.0\%})}.
+  \item
+    \textbf{Godot 4.7.2 \texttt{-\allowbreak{}\/\allowbreak{}-\allowbreak{}headless} execution pass rate}:
+    \textbf{\texttt{36\ /\ 36} (\texttt{100.0\%})} Form-emitted vs
+    \textbf{\texttt{36\ /\ 36} (\texttt{100.0\%})} native GDScript.
+  \item
+    \textbf{Per-tick and rolling \texttt{SHA-256} state-trace parity}:
+    \textbf{\texttt{36\ /\ 36} tasks (\texttt{0\ /\allowbreak{}\ 18,\allowbreak{}000} per-tick
+    \texttt{SHA-256} mismatches)}.
+  \end{itemize}
+\end{itemize}
+
+\subsection{\texorpdfstring{6.10 Playable joule-native \texttt{Q32.32}
 Chrono-Budget Arena
-(\texttt{/\allowbreak{}living/\allowbreak{}game-\allowbreak{}engines/\allowbreak{}})}{6.4 Playable joule-native Q32.32 Chrono-Budget Arena (/living/game-engines/)}}\label{playable-joule-native-q32.32-chrono-budget-arena-livinggame-engines}
+(\texttt{/\allowbreak{}living/\allowbreak{}game-\allowbreak{}engines/\allowbreak{}})}{6.10 Playable joule-native Q32.32 Chrono-Budget Arena (/living/game-engines/)}}\label{playable-joule-native-q32.32-chrono-budget-arena-livinggame-engines}
 
 Joining this study's exact \texttt{Q32.32} replay contract with the
 energy-native temporal mechanics of
@@ -1534,10 +2218,11 @@ pickup-defense mini-game running in JavaScript \texttt{BigInt}
   \texttt{Apple\ libSystem}, and \texttt{GNU\ glibc}
   (\texttt{t\_\allowbreak{}div\ =\ 10} to \texttt{37}), default
   \texttt{MSVC\ /\allowbreak{}fp:precise} vs \texttt{Clang\ -\allowbreak{}ffp-\allowbreak{}contract=fast}
-  diverges on \texttt{x86\_64} at \texttt{t\_\allowbreak{}div\ =\ 192}, and cross-ISA
+  diverges on \texttt{x86\_64} at \texttt{t\_\allowbreak{}div\ =\ 192}, cross-ISA
   \texttt{FMA} (\texttt{x86\_64} vs \texttt{arm64}) diverges at
-  \texttt{t\_\allowbreak{}div\ =\ 406}, cascading into gameplay desynchronization
-  within \texttt{8,869}--\texttt{11,205} ticks (\texttt{GE-H2}).
+  \texttt{t\_\allowbreak{}div\ =\ 406} (\texttt{GE-H2}), and \texttt{840} chaotic
+  trajectories confirm \(t^* \propto \ln(\Delta/\delta_0)\) with
+  \(\hat{\Lambda} = 1.95\)--\(5.07\ \text{s}^{-1}\) (\texttt{GE-H7}).
 \item
   \textbf{GPU compute inside the simulation: infeasible as exact;
   feasible only with deterministic reductions} at a measured cost of
@@ -1545,37 +2230,48 @@ pickup-defense mini-game running in JavaScript \texttt{BigInt}
   compiler contraction unless guarded per instruction (SPIR-V
   NoContraction) on every target.
 \item
-  \textbf{Engine-portable behavior: not demonstrated in any external
-  source read; demonstrated at the 2D physics kernel level in
-  \texttt{GE-H1} across \texttt{30} target × host cells (\texttt{6}
-  machines, \texttt{3} OSs
-  \texttt{macOS}/\allowbreak{}\texttt{Linux}/\allowbreak{}\texttt{Windows\ 11}, \texttt{3} ISAs,
-  \texttt{7} runtimes/compilers), while full engine projections
-  (\texttt{GE-H4}, \texttt{GE-H9}) remain open.}
+  \textbf{Multi-engine deterministic behavior emission: feasible when
+  lowered from a checked Form (\texttt{GE-H4}, \texttt{GE-H8},
+  \texttt{GE-H9}), infeasible from untyped string-keyed scripts
+  (\texttt{GE-H6}).} Across \texttt{17} game behaviors
+  (\texttt{0\ /\ 680} mismatches across \texttt{.rce}, Windows 11 C\#,
+  Godot 4 GDScript, and Rust \texttt{ECS}) and \texttt{36} headless
+  \texttt{Godot\ 4.\allowbreak{}7.\allowbreak{}2} tasks (\texttt{0\ /\allowbreak{}\ 18,\allowbreak{}000} tick mismatches),
+  Form projection preserves bitwise behavior parity, whereas parse-only
+  dynamic checking misses \texttt{93.85\%} (\texttt{122\ /\allowbreak{}\ 130}) of
+  injected cross-layer and semantic faults (\texttt{F1\ =\ 0.\allowbreak{}1159}).
 \item
-  \textbf{Interpreted rules at large actor counts: constrained.} The
-  GameRule measurement implies a ceiling near 300 actors at 20 ms
-  (\texttt{GE-H1} further shows Python \texttt{int} costs
-  \texttt{73×}--\texttt{132×} native Rust \texttt{reported\_\allowbreak{}j} on
-  Linux/macOS and \texttt{179×} wall time on Windows 11); a compiled
-  native or WebAssembly projection is required at scale.
+  \textbf{Interpreted rules at large actor counts: constrained in boxed
+  interpreters (\texttt{N\_\allowbreak{}20ms\ =\ 390} in \texttt{rce\ emit\ python}),
+  resolved by JIT or compiled projections (\texttt{GE-H5}).} Unboxed
+  \texttt{Wasm32}, \texttt{C++20\ -\allowbreak{}O3}, and \texttt{Rust\ -O3}
+  projections step \texttt{10,000} \texttt{Q32.32} actors in
+  \texttt{0.058}--\texttt{0.125\ ms}/\allowbreak{}tick
+  (\texttt{3,564×}--\texttt{7,728×} lower Linux \texttt{RAPL}
+  \texttt{reported\_\allowbreak{}j}/tick than \texttt{rce\ emit\ python}) with zero
+  \texttt{SHA-256} drift.
 \item
-  \textbf{Proprietary third-party game engines as exact targets:
-  unverified.} While bare-metal Windows 11 \texttt{PE} (\texttt{rustc}
-  and \texttt{MSVC}) and \texttt{DirectX\ 12} (\texttt{wgpu}) execution
-  are verified in Section 6, Unity's manual, as quoted by GameRule,
-  disclaims ordering guarantees; the Unity and Unreal template catalogs
-  could not be read (their pages render client-side), and no Unreal
-  execution-order source was read.
+  \textbf{Proprietary third-party game engines' internal schedulers as
+  unguarded exact hosts: unverified.} While bare-metal Windows 11
+  \texttt{PE} (\texttt{rustc}, \texttt{MSVC}, and \texttt{csc.exe}),
+  \texttt{DirectX\ 12} (\texttt{wgpu}), and headless
+  \texttt{Godot\ 4.\allowbreak{}7.\allowbreak{}2} \texttt{SceneTree} execution are verified in
+  Section 6, Unity's manual, as quoted by GameRule, disclaims
+  \texttt{MonoBehaviour} script ordering guarantees unless driven from a
+  single deterministic scheduler loop; the Unity and Unreal template
+  catalogs could not be read (their pages render client-side), and no
+  Unreal execution-order source was read.
 \end{enumerate}
 
 \section{8. Sources and limits}\label{sources-and-limits}
 
 Every source above was read in full at the passage cited, except: the
-GameCraft-Bench paper (abstract and repository README read), the RCE
-about page (summary page read), and the Capcom press story (one
-article). Companion house studies cited for telemetry levels
-(\texttt{SATB}) and joule-budgeted temporal game mechanics are
+GameCraft-Bench paper (abstract, repository README, task directory
+layout, and \texttt{tests/\allowbreak{}test.\allowbreak{}sh} verifier script read), the RCE about
+page (summary page read alongside \texttt{openIE-\allowbreak{}dev/\allowbreak{}rce} commit
+\texttt{1762fb4bb65a} specification and checker sources), and the Capcom
+press story (one article). Companion house studies cited for telemetry
+levels (\texttt{SATB}) and joule-budgeted temporal game mechanics are
 \href{https://research.openie.dev/papers/time-as-an-index/}{Time as an
 Index} and the
 \href{https://research.openie.dev/papers/satb-harness/}{Satiation Tiered
@@ -1598,15 +2294,21 @@ M. Ebner et al., ``Towards a Video Game Description Language,''
 \href{https://doi.org/10.4230/DFU.Vol6.12191.85}{doi:10.4230/DFU.Vol6.12191.85},
 is open access but was not read for this study.
 
-In Section 6, \texttt{GE-H1}, \texttt{GE-H2}, and \texttt{GE-H3} leave
-\texttt{measured\_\allowbreak{}j\ =\ None} and \texttt{board\_\allowbreak{}metered\ =\ false}
-across all six machines (separating macOS \texttt{L3} per-process
-\texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj}, Linux \texttt{L2} socket/core \texttt{RAPL}
-\texttt{reported\_\allowbreak{}j}, and Windows 11 \texttt{L3}
-\texttt{GetProcessTimes}/\allowbreak{}\texttt{QueryProcessCycleTime} activity
-counters, and keeping the Chrono-Budget Arena's \texttt{est\_j}
-mechanics strictly analytical). Full multi-engine scene/behavior
-emitters (\texttt{GE-H4}--\texttt{GE-H9}) remain open work.
+Across all nine empirical suites (\texttt{GE-H1} through
+\texttt{GE-H9}), \texttt{measured\_\allowbreak{}j\ =\ None} and
+\texttt{board\_\allowbreak{}metered\ =\ false} on all six hosts (strictly separating
+macOS \texttt{L3} per-process \texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj}, Linux \texttt{L2}
+socket/core \texttt{RAPL} \texttt{reported\_\allowbreak{}j}, and Windows 11
+\texttt{L3} \texttt{GetProcessTimes}/\allowbreak{}\texttt{QueryProcessCycleTime}
+activity counters, and keeping the Chrono-Budget Arena's \texttt{est\_j}
+mechanics strictly analytical). Two deliberate static limits remain
+documented: in \texttt{GE-H6}, bare untagged \texttt{i64} scalars
+without unit or coordinate-space newtype structs accounted for
+\texttt{2\ /\ 130} false negatives; and in \texttt{GE-H9}, official
+\texttt{GameCraft-\allowbreak{}Bench} VLM-judged visual scoring over \texttt{140}
+natural-language prompts was not run because it evaluates open-ended LLM
+asset/project synthesis and external VLM rubric grading rather than
+deterministic Form-to-engine behavior compilation.
 
 
 \end{document}

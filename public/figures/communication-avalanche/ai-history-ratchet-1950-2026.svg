@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img" aria-labelledby="cta-ai-hist-t cta-ai-hist-d">
+  <title id="cta-ai-hist-t">Panoramic 76-Year AI History Mapped to the Externalization Ratchet (1950-2026)</title>
+  <desc id="cta-ai-hist-d">Seven-era stepped-ratchet timeline from 1950 Turing/IPL/Perceptron/Lisp through AI Winters I and II, deep learning, Transformers/MoE, JEPA/FunSearch/POLIS, to 2026 Shape-D, LUT6, RCE, and DES-10 Digital Enzymatic Synthesis, annotating the Signal Externalized, Gate Unlocked, and Why Prior Era Stalled at each step.</desc>
+  <defs>
+    <marker id="arr-cyan" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#22d3ee"/>
+    </marker>
+    <marker id="arr-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arr-emerald" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#10b981"/>
+    </marker>
+    <marker id="arr-rose" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f43f5e"/>
+    </marker>
+    <marker id="arr-violet" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a78bfa"/>
+    </marker>
+    <marker id="arr-slate" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect x="1.0" y="1.0" width="1198.0" height="738.0" rx="18.0" fill="#0b1120" stroke="#334155" stroke-width="2.00"/>
+  <text x="30.0" y="38.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="20.0" font-weight="800" fill="#f8fafc">76-Year AI History Mapped to the Externalization Ratchet (1950–2026)</text>
+  <text x="30.0" y="60.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.0" font-weight="500" fill="#94a3b8">Breakthroughs ignite when a compact signal substrate meets a sound gate; AI Winters strike when verification or tractability stalls</text>
+  <rect x="1002.0" y="18.0" width="172.0" height="28.0" rx="14.0" fill="#0f172a" stroke="#f59e0b" stroke-width="1.60"/>
+  <text x="1088.0" y="36.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#f59e0b" text-anchor="middle">7 Eras · 1950-2026</text>
+  <rect x="28.0" y="84.0" width="280.0" height="206.0" rx="10.0" fill="#111827" stroke="#22d3ee" stroke-width="1.60"/>
+  <rect x="40.0" y="95.0" width="168.0" height="22.0" rx="11.0" fill="#0f172a" stroke="#22d3ee" stroke-width="1.40"/>
+  <text x="124.0" y="110.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.6" font-weight="700" fill="#22d3ee" text-anchor="middle">ERA 1 · 1950–1965</text>
+  <text x="42.0" y="136.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.6" font-weight="800" fill="#f8fafc">Turing · IPL · Perceptron · Lisp</text>
+  <text x="42.0" y="159.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="400" fill="#22d3ee">Ext: Symbolic S-exprs &amp; linear weights</text>
+  <text x="42.0" y="180.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="400" fill="#10b981">Gate: Exact recursion &amp; step margin</text>
+  <line x1="42.0" y1="193.0" x2="294.0" y2="193.0" stroke="#1e293b" stroke-width="1.00"/>
+  <text x="42.0" y="212.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.8" font-weight="400" fill="#cbd5e1">Stall: Minsky-Papert single-layer XOR</text>
+  <text x="42.0" y="230.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.8" font-weight="400" fill="#94a3b8">&amp; exponential tree search blowup</text>
+  <text x="42.0" y="266.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.6" font-weight="400" fill="#10b981">Ratchet step locked into next era -&gt;</text>
+  <rect x="316.0" y="84.0" width="280.0" height="206.0" rx="10.0" fill="#111827" stroke="#f43f5e" stroke-width="1.60"/>
+  <rect x="328.0" y="95.0" width="168.0" height="22.0" rx="11.0" fill="#0f172a" stroke="#f43f5e" stroke-width="1.40"/>
+  <text x="412.0" y="110.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.6" font-weight="700" fill="#f43f5e" text-anchor="middle">ERA 2 · 1969–1981</text>
+  <text x="330.0" y="136.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.6" font-weight="800" fill="#f8fafc">MYCIN · Actors · Hearsay-II</text>
+  <text x="330.0" y="159.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="400" fill="#22d3ee">Ext: IF-THEN rules &amp; shared blackboard</text>
+  <text x="330.0" y="180.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="400" fill="#10b981">Gate: Ad-hoc certainty factors (CF)</text>
+  <line x1="330.0" y1="193.0" x2="582.0" y2="193.0" stroke="#1e293b" stroke-width="1.00"/>
+  <text x="330.0" y="212.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.8" font-weight="400" fill="#cbd5e1">Stall: Untyped blackboard O(N^2) lock</text>
+  <text x="330.0" y="230.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.8" font-weight="400" fill="#94a3b8">&amp; non-Bayesian CF drift across hops</text>
+  <rect x="330.0" y="246.0" width="252.0" height="30.0" rx="6.0" fill="#2a0f1d" stroke="#f43f5e" stroke-width="1.30"/>
+  <text x="456.0" y="265.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.2" font-weight="800" fill="#f43f5e" text-anchor="middle">AI WINTER I (1974–1980)</text>
+  <rect x="604.0" y="84.0" width="280.0" height="206.0" rx="10.0" fill="#111827" stroke="#f59e0b" stroke-width="1.60"/>
+  <rect x="616.0" y="95.0" width="168.0" height="22.0" rx="11.0" fill="#0f172a" stroke="#f59e0b" stroke-width="1.40"/>
+  <text x="700.0" y="110.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.6" font-weight="700" fill="#f59e0b" text-anchor="middle">ERA 3 · 1982–1998</text>
+  <text x="618.0" y="136.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.6" font-weight="800" fill="#f8fafc">Backprop · Bayes DAG · CNN · LSTM</text>
+  <text x="618.0" y="159.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="400" fill="#22d3ee">Ext: Error gradients &amp; d-sep DAGs</text>
+  <text x="618.0" y="180.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="400" fill="#10b981">Gate: Chain rule &amp; LSTM memory gates</text>
+  <line x1="618.0" y1="193.0" x2="870.0" y2="193.0" stroke="#1e293b" stroke-width="1.00"/>
+  <text x="618.0" y="212.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.8" font-weight="400" fill="#cbd5e1">Stall: LISP-hardware collapse, tiny data</text>
+  <text x="618.0" y="230.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.8" font-weight="400" fill="#94a3b8">&amp; deep vanishing gradients on CPUs</text>
+  <rect x="618.0" y="246.0" width="252.0" height="30.0" rx="6.0" fill="#2a0f1d" stroke="#f43f5e" stroke-width="1.30"/>
+  <text x="744.0" y="265.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.2" font-weight="800" fill="#f43f5e" text-anchor="middle">AI WINTER II (1988–1993)</text>
+  <rect x="892.0" y="84.0" width="280.0" height="206.0" rx="10.0" fill="#111827" stroke="#22d3ee" stroke-width="1.60"/>
+  <rect x="904.0" y="95.0" width="168.0" height="22.0" rx="11.0" fill="#0f172a" stroke="#22d3ee" stroke-width="1.40"/>
+  <text x="988.0" y="110.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.6" font-weight="700" fill="#22d3ee" text-anchor="middle">ERA 4 · 2006–2016</text>
+  <text x="906.0" y="136.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="11.6" font-weight="800" fill="#f8fafc">MCTS · ImageNet · ResNet · AlphaGo</text>
+  <text x="906.0" y="159.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="400" fill="#22d3ee">Ext: GPU tensors, skip paths &amp; rollouts</text>
+  <text x="906.0" y="180.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="400" fill="#10b981">Gate: Residual identity + value MCTS</text>
+  <line x1="906.0" y1="193.0" x2="1158.0" y2="193.0" stroke="#1e293b" stroke-width="1.00"/>
+  <text x="906.0" y="212.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.8" font-weight="400" fill="#cbd5e1">Stall: Narrow single-game training silos</text>
+  <text x="906.0" y="230.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="9.8" font-weight="400" fill="#94a3b8">&amp; opaque dense activations per task</text>
+  <text x="906.0" y="266.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.6" font-weight="400" fill="#10b981">Ratchet step locked into next era -&gt;</text>
+  <rect x="28.0" y="304.0" width="1144.0" height="118.0" rx="10.0" fill="#0f172a" stroke="#334155" stroke-width="1.40"/>
+  <text x="44.0" y="324.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.8" font-weight="800" fill="#f59e0b">STEPPED COHERENCE-PER-JOULE RATCHET TRAJECTORY (1950 -&gt; 2026)</text>
+  <polyline points="60.0,402.0 165.0,402.0 165.0,386.0 310.0,386.0 355.0,396.0 430.0,396.0 455.0,372.0 610.0,372.0 655.0,381.0 725.0,381.0 750.0,356.0 875.0,356.0 875.0,342.0 985.0,342.0 985.0,329.0 1080.0,329.0 1080.0,316.0 1152.0,316.0" fill="none" stroke="#10b981" stroke-width="3.00"/>
+  <circle cx="110.0" cy="402.0" r="4.8" fill="#22d3ee" stroke="#0b1120" stroke-width="1.40"/>
+  <text x="110.0" y="418.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="700" fill="#22d3ee" text-anchor="middle">1956 Lisp</text>
+  <circle cx="375.0" cy="396.0" r="4.8" fill="#f43f5e" stroke="#0b1120" stroke-width="1.40"/>
+  <text x="375.0" y="412.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="700" fill="#f43f5e" text-anchor="middle">1975 Winter I</text>
+  <circle cx="540.0" cy="372.0" r="4.8" fill="#f59e0b" stroke="#0b1120" stroke-width="1.40"/>
+  <text x="540.0" y="388.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="700" fill="#f59e0b" text-anchor="middle">1986 Backprop</text>
+  <circle cx="685.0" cy="381.0" r="4.8" fill="#f43f5e" stroke="#0b1120" stroke-width="1.40"/>
+  <text x="685.0" y="397.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="700" fill="#f43f5e" text-anchor="middle">1990 Winter II</text>
+  <circle cx="820.0" cy="356.0" r="4.8" fill="#22d3ee" stroke="#0b1120" stroke-width="1.40"/>
+  <text x="820.0" y="372.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="700" fill="#22d3ee" text-anchor="middle">2016 AlphaGo</text>
+  <circle cx="940.0" cy="342.0" r="4.8" fill="#a78bfa" stroke="#0b1120" stroke-width="1.40"/>
+  <text x="940.0" y="358.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="700" fill="#a78bfa" text-anchor="middle">2017/22 MoE</text>
+  <circle cx="1040.0" cy="329.0" r="4.8" fill="#f59e0b" stroke="#0b1120" stroke-width="1.40"/>
+  <text x="1040.0" y="345.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="700" fill="#f59e0b" text-anchor="middle">2024 FunSearch</text>
+  <circle cx="1135.0" cy="316.0" r="4.8" fill="#10b981" stroke="#0b1120" stroke-width="1.40"/>
+  <text x="1135.0" y="332.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="700" fill="#10b981" text-anchor="middle">2026 DES-10</text>
+  <rect x="28.0" y="436.0" width="368.0" height="224.0" rx="10.0" fill="#111827" stroke="#a78bfa" stroke-width="1.70"/>
+  <rect x="42.0" y="448.0" width="200.0" height="22.0" rx="11.0" fill="#0f172a" stroke="#a78bfa" stroke-width="1.40"/>
+  <text x="142.0" y="463.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="700" fill="#a78bfa" text-anchor="middle">ERA 5 · 2017–2022</text>
+  <text x="42.0" y="490.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.0" font-weight="800" fill="#f8fafc">Transformer · Sparse MoE · AlphaFold 2 · CoT</text>
+  <text x="42.0" y="514.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.1" font-weight="400" fill="#22d3ee">Ext: All-pairs KV attention, top-k MoE routing</text>
+  <text x="42.0" y="532.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.1" font-weight="400" fill="#22d3ee">(CL18: 3%-12% active weights) &amp; CoT scratchpads</text>
+  <text x="42.0" y="558.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.1" font-weight="400" fill="#10b981">Gate: Softmax router +MSA geometry + RLHF</text>
+  <line x1="42.0" y1="574.0" x2="382.0" y2="574.0" stroke="#1e293b" stroke-width="1.00"/>
+  <text x="42.0" y="598.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.2" font-weight="400" fill="#cbd5e1">Stall: O(L^2) KV joule cost; unverified NL</text>
+  <text x="42.0" y="618.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="400" fill="#94a3b8">scratchpads &amp; multi-agent chats suffer f^k drift</text>
+  <text x="42.0" y="644.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="400" fill="#94a3b8">Evidence: [E] Historical + [T] CTA-T1..T28</text>
+  <rect x="416.0" y="436.0" width="368.0" height="224.0" rx="10.0" fill="#111827" stroke="#f59e0b" stroke-width="1.70"/>
+  <rect x="430.0" y="448.0" width="200.0" height="22.0" rx="11.0" fill="#0f172a" stroke="#f59e0b" stroke-width="1.40"/>
+  <text x="530.0" y="463.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="700" fill="#f59e0b" text-anchor="middle">ERA 6 · 2023–2025</text>
+  <text x="430.0" y="490.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.0" font-weight="800" fill="#f8fafc">JEPA · FunSearch · AlphaGeometry · MCP · POLIS</text>
+  <text x="430.0" y="514.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.1" font-weight="400" fill="#22d3ee">Ext: Latent world states, evolutionary program</text>
+  <text x="430.0" y="532.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.1" font-weight="400" fill="#22d3ee">islands, MCP tool schemas &amp; POLIS peer memory</text>
+  <text x="430.0" y="558.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.1" font-weight="400" fill="#10b981">Gate: Exact sandbox test, DD+AR proof &amp; peer gate</text>
+  <line x1="430.0" y1="574.0" x2="770.0" y2="574.0" stroke="#1e293b" stroke-width="1.00"/>
+  <text x="430.0" y="598.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.2" font-weight="400" fill="#cbd5e1">Stall: Pairwise ad-hoc glue; ~15 J frontier LLM</text>
+  <text x="430.0" y="618.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="400" fill="#94a3b8">re-awakened on every repeat structural arrival</text>
+  <text x="430.0" y="644.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="400" fill="#94a3b8">Evidence: [E] Historical + [T] CTA-T1..T28</text>
+  <rect x="804.0" y="436.0" width="368.0" height="224.0" rx="10.0" fill="#111827" stroke="#10b981" stroke-width="1.70"/>
+  <rect x="818.0" y="448.0" width="200.0" height="22.0" rx="11.0" fill="#0f172a" stroke="#10b981" stroke-width="1.40"/>
+  <text x="918.0" y="463.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.8" font-weight="700" fill="#10b981" text-anchor="middle">ERA 7 · 2026 SYNTHESIS</text>
+  <text x="818.0" y="490.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.0" font-weight="800" fill="#f8fafc">Shape-D · LUT6 · RCE · DES-10 Enzymatic DAG</text>
+  <text x="818.0" y="514.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.1" font-weight="400" fill="#22d3ee">Ext: Canonical typed IR + 256b BLAKE3 + 64B</text>
+  <text x="818.0" y="532.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.1" font-weight="400" fill="#22d3ee">Ed25519 envelopes across all 10 AI camps (CL20)</text>
+  <text x="818.0" y="558.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.1" font-weight="400" fill="#10b981">Gate: &lt;1 mJ crypto + eventfd + SSP + exact oracle</text>
+  <line x1="818.0" y1="574.0" x2="1158.0" y2="574.0" stroke="#1e293b" stroke-width="1.00"/>
+  <text x="818.0" y="598.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.2" font-weight="700" fill="#10b981">Unlocked: 0 false commits; downward compile</text>
+  <text x="818.0" y="618.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.0" font-weight="400" fill="#f59e0b">15 J LLM -&gt; 15 mJ rule -&gt; 1.77 uJ -&gt; ~12 pJ LUT6</text>
+  <text x="818.0" y="644.0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.2" font-weight="400" fill="#94a3b8">Evidence: [E] Historical + [T] CTA-T1..T28</text>
+  <rect x="28.0" y="674.0" width="1144.0" height="44.0" rx="8.0" fill="#111827" stroke="#10b981" stroke-width="1.40"/>
+  <text x="600.0" y="701.0" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="10.6" font-weight="700" fill="#e2e8f0" text-anchor="middle">76-Year Invariant: Unverified Broadcast = Drift &amp; Winter (CTA-T1/T2)  |  Typed Substrate + Sound Verifier + Downward Store = Monotonic Ratchet (CTA-T5/T23)</text>
+</svg>

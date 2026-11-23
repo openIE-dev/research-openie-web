@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F59E0B">
+  <meta name="color-scheme" content="dark light">
+  <meta name="author" content="David Charlot">
+  <meta name="description" content="Interactive observatory for The Communication Tool Avalanche: simulate biological Hill/SepJ/Murmuration/Physarum threshold signaling, inspect Linux RAPL reported_j and BLAKE3+Ed25519 receipts across CTA-E1..E3, and explore agency-preserving N-mind BCI modulation.">
+  <link rel="canonical" href="https://research.openie.dev/living/communication-avalanche/">
+  <link rel="describedby" type="text/markdown" href="/llms.txt">
+  <link rel="alternate" type="text/markdown" title="The Communication Tool Avalanche (Markdown)" href="/papers/communication-avalanche.md">
+  <title>Living Figures · Communication Tool Avalanche &amp; Attested Orchestration Observatory | OpenIE Research</title>
+  <script src="/webmcp-tools.js" defer></script>
+  <link rel="stylesheet" href="openie.css">
+</head>
+<body class="grid-bg">
+  <nav class="nav-glass" aria-label="Main navigation">
+    <a href="https://research.openie.dev/" class="brand-logo">Open<span class="brand-cyan">IE</span> <span class="brand-amber">Research</span></a>
+    <div class="nav-links">
+      <a href="/papers/communication-avalanche/">Paper</a>
+      <a href="/papers/communication-avalanche.md">Markdown</a>
+      <a href="/living/communication-avalanche/" class="active">Figures (/living/)</a>
+      <a href="/about/communication-avalanche/">About</a>
+      <a href="/pdfs/communication-avalanche.pdf">PDF</a>
+      <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
+    </div>
+  </nav>
+
+  <main>
+    <div style="max-width: 68rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
+      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/communication-avalanche/ · interactive instruments</p>
+      <h1 class="hero-title" style="max-width: none;">Living Figures: Thresholded Signal Externalization, Event-Driven Attested Orchestration &amp; Coherence per Joule</h1>
+      <p class="author-line">Open Interface Engineering · Companion to <a href="/papers/communication-avalanche/" style="color: var(--color-brand-cyan);">/papers/communication-avalanche/</a> · Pre-reg SHA-256: <code id="prereg-pin">5739bcdd6c356628…</code></p>
+
+      <div class="measurement-box">
+        <strong>Measurement grammar on this page.</strong> Every instrument stamps its outputs by evidence basis:
+        <span class="chip chip-meas">Exact (BLAKE3, Ed25519 &amp; Oracle)</span> for <code>256</code>-bit <code>BLAKE3</code> + <code>64</code>-byte <code>Ed25519</code> channel verifications, Successive Shortest Path (<code>SSP</code>) min-cost flow schedules, <code>60</code>-task code-repair verdicts (<code>&gt;= 8</code> held-out test vectors per task), and <code>200</code> Byzantine fault injections;
+        <span class="chip chip-sim">Reported (Linux RAPL reported_j)</span> for <code>sysfs</code> <code>powercap</code> CPU socket (<code>intel-rapl:0</code> <code>package-0</code>), core (<code>intel-rapl:0:0</code>), and platform (<code>intel-rapl:1</code> <code>psys</code>) readings on <code>13th Gen Intel Core i9-13900H</code> (<code>measured_j = None</code>, <code>board_metered = false</code> on <code>RAPL/IOReport/NVML</code> hosts; inline <code>TI INA238 / INA3221</code> rail shunts stamped <code>measured_j</code> on <code>NVIDIA Jetson AGX Thor</code> in <code>ca-diag-04</code>; remote cloud API server energy = <code>not_available</code>); and
+        <span class="chip chip-est">Modelled (Biophysical &amp; BCI Curves)</span> for Hill quorum activation, <code>SepJ</code> nanopore gating, starling topological neighborhoods, <em>Physarum</em> conductance pruning, and agency-gated <code>N</code>-mind modulation.
+      </div>
+
+      <!-- Panel 1 (ca-diag-01): Biological Threshold & Stigmergic Channel Simulator -->
+      <section id="ca-diag-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ca-diag-01</code> · Biological Signal Externalization &amp; Threshold Simulator (<code>Hill / SepJ / Murmuration / Physarum</code>)</h2>
+          <span class="chip chip-est">Modelled Biophysical Dynamics</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Biological coordination scales by externalizing compact signals across <strong>gradient-and-threshold gates</strong> rather than synchronous clocks or all-to-all chatter. Select an evolutionary communication rung below to compare thresholded activation against unthresholded continuous broadcasting under channel noise.
+        </p>
+        <p id="bio-desc" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-brand-cyan); margin: 0.4rem 0 0;"></p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="sel-bio"><span>Evolutionary / Cross-Species Rung</span></label>
+            <select id="sel-bio">
+              <option value="hill_quorum" selected>1. Bacterial Quorum Sensing (LuxI/LuxR Hill Switch · ~3.5 Ga)</option>
+              <option value="sepj_nanopore">2. Cyanobacterial SepJ/SepI Ca²⁺ Nanopore Fault Gate (~3.0 Ga)</option>
+              <option value="starling_topo">3. Starling Topological Neighborhood (k ≈ 7 vs All-to-All Broadcast)</option>
+              <option value="physarum_flow">4. Physarum Stigmergic Tube Pruning (Min-Cost Network Flow)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="s-stim"><span>Normalized Signal Gradient (S / K₀)</span><span id="v-stim">1.40</span></label>
+            <input type="range" id="s-stim" min="0.05" max="4.00" step="0.05" value="1.40">
+          </div>
+          <div class="ctrl-box">
+            <label for="s-coop"><span>Cooperativity / Nonlinearity (n or γ)</span><span id="v-coop">3.2</span></label>
+            <input type="range" id="s-coop" min="1.0" max="6.0" step="0.1" value="3.2">
+          </div>
+          <div class="ctrl-box">
+            <label for="s-noise"><span>Sub-Threshold Channel Noise (σ)</span><span id="v-noise">0.18</span></label>
+            <input type="range" id="s-noise" min="0.00" max="0.50" step="0.02" value="0.18">
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">Thresholded Gate Response</div>
+            <div class="v" id="m-bio-act" style="color: var(--color-brand-cyan);">—</div>
+            <div class="s" id="m-bio-act-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Sub-Threshold Noise Rejection</div>
+            <div class="v" id="m-bio-rej">—</div>
+            <div class="s" id="m-bio-rej-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Signaling Metabolic Savings</div>
+            <div class="v" id="m-bio-save">—</div>
+            <div class="s" id="m-bio-save-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">CTA Engineering Isomorphism</div>
+            <div class="v" id="m-bio-iso" style="font-size: 0.95rem;">—</div>
+            <div class="s" id="m-bio-iso-sub">—</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem; overflow-x: auto;">
+          <svg id="bio-live-svg" viewBox="0 0 680 215" width="100%" height="auto" role="img" aria-label="Biological threshold response curve versus unthresholded signaling"></svg>
+        </div>
+      </section>
+
+      <!-- Panel 2 (ca-diag-02): Live Event-Driven Attested DAG, Min-Cost Flow & CTA-E1..E3 Receipt Explorer -->
+      <section id="ca-diag-02" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ca-diag-02</code> · Event-Driven Attested Orchestration DAG, <code>SSP</code> Min-Cost Flow &amp; <code>CTA-E1..E3</code> Receipts</h2>
+          <span class="chip chip-sim">Reported (RAPL pkg/core reported_j) + Exact Crypto</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Explore empirical hardware receipts from <code>Intel Core i9-13900H</code> across <strong><code>CTA-E1</code></strong> (16-node zero-clock <code>eventfd</code> threshold firing vs. <code>10–1,000 Hz</code> polling), <strong><code>CTA-E2</code></strong> (<code>60</code>-task Python code repair across <code>Det-Only</code>, <code>Monolithic-LLM</code>, <code>Unattested-4-Agent</code>, and <code>CTA-Orchestrator</code>), and <strong><code>CTA-E3</code></strong> (<code>200</code> Byzantine channel injections + <code>20</code> live <code>SSP</code> min-cost topology dropouts).
+        </p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="sel-duty"><span>CTA-E1 Bursty Duty Cycle</span></label>
+            <select id="sel-duty">
+              <option value="duty_01pct" selected>1% Active Duty Cycle (10.0 s × 5 reps)</option>
+              <option value="duty_05pct">5% Active Duty Cycle (10.0 s × 5 reps)</option>
+              <option value="duty_20pct">20% Active Duty Cycle (10.0 s × 5 reps)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="sel-cat"><span>CTA-E2 Task Slice (60 Tasks · 240 Episodes)</span></label>
+            <select id="sel-cat">
+              <option value="all" selected>★ All 60 Tasks (3 Categories Combined)</option>
+              <option value="cat1_syntax_import">Category 1: Syntax, Delimiter &amp; Import (20)</option>
+              <option value="cat2_scope_type_api">Category 2: Scope, Mutable-Default &amp; Type/API (20)</option>
+              <option value="cat3_algo_state_logic">Category 3: Algorithmic &amp; State-Machine Logic (20)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="sel-topo"><span>Live SSP Topology / Node Dropout State</span></label>
+            <select id="sel-topo">
+              <option value="nominal" selected>Epoch 0 Nominal (Det Primary Path Active)</option>
+              <option value="escalated">Threshold Escalation (V_esc ≥ θ_esc → LLM Proposer)</option>
+              <option value="drop_det">Dropout: det_patch_primary → Standby Reroute</option>
+              <option value="drop_multi">Dropout: 4 Primary Nodes Disabled → Full Standby Flow</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="sel-fault"><span>CTA-E3 Byzantine Channel Injection Probe</span></label>
+            <select id="sel-fault">
+              <option value="none" selected>Valid Attested Edge (200/200 Admitted)</option>
+              <option value="payload_bitflip_50">Inject Payload Bit-Flip (50 Tested · BLAKE3 Gate)</option>
+              <option value="spoofed_sender_50">Inject Spoofed Sender ID (50 Tested · Ed25519 Gate)</option>
+              <option value="truncated_frame_50">Inject Truncated AST Frame (50 Tested · Schema Gate)</option>
+              <option value="semantic_regression_50">Inject Semantic Regression Patch (50 Tested · Verifier Gate)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">CTA-E1 Event-Driven vs 1 kHz Poll</div>
+            <div class="v" id="m-e1-cmp" style="color: var(--color-brand-cyan);">—</div>
+            <div class="s" id="m-e1-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">CTA-E2 Coherence per Joule (Arm D)</div>
+            <div class="v" id="m-e2-cpj" style="color: var(--color-brand-cyan);">—</div>
+            <div class="s" id="m-e2-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">API Token &amp; USD Amplification</div>
+            <div class="v" id="m-e2-tok">—</div>
+            <div class="s" id="m-e2-tok-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">CTA-E3 Fault &amp; SSP Verdict</div>
+            <div class="v" id="m-e3-verdict">—</div>
+            <div class="s" id="m-e3-sub">—</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem; overflow-x: auto;">
+          <svg id="dag-live-svg" viewBox="0 0 760 240" width="100%" height="auto" role="img" aria-label="Interactive attested orchestration graph and Successive Shortest Path min-cost routing"></svg>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem;">
+          <div style="overflow-x: auto;">
+            <h3 style="font-size: 0.92rem; margin: 0 0 0.45rem; color: var(--color-brand-amber);"><code>CTA-E1</code> · Scheduling Regime Telemetry</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem;">
+              <thead>
+                <tr style="border-bottom: 1px solid rgba(148,163,184,0.3); text-align: left;">
+                  <th style="padding: 0.38rem;">Regime</th>
+                  <th style="padding: 0.38rem;">Pkg <code>reported_j</code></th>
+                  <th style="padding: 0.38rem;">Wakeups</th>
+                  <th style="padding: 0.38rem;">p50 / p99</th>
+                </tr>
+              </thead>
+              <tbody id="e1-tbody"></tbody>
+            </table>
+          </div>
+          <div style="overflow-x: auto;">
+            <h3 style="font-size: 0.92rem; margin: 0 0 0.45rem; color: var(--color-brand-cyan);"><code>CTA-E2</code> · 4-Arm Code-Repair Comparison</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem;">
+              <thead>
+                <tr style="border-bottom: 1px solid rgba(148,163,184,0.3); text-align: left;">
+                  <th style="padding: 0.38rem;">Arm</th>
+                  <th style="padding: 0.38rem;">Pass / False</th>
+                  <th style="padding: 0.38rem;">Pkg J / Calls</th>
+                  <th style="padding: 0.38rem;">CpJ / USD</th>
+                </tr>
+              </thead>
+              <tbody id="e2-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem; overflow-x: auto;">
+          <h3 style="font-size: 0.92rem; margin: 0 0 0.4rem;">Sample Attested Energy Ledger Receipts (<code>cta_e2_firing_ledger.jsonl</code>)</h3>
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.77rem; font-family: var(--font-mono);">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(148,163,184,0.3); text-align: left;">
+                <th style="padding: 0.35rem;">Trace · Step</th>
+                <th style="padding: 0.35rem;">Node</th>
+                <th style="padding: 0.35rem;">In / Out BLAKE3</th>
+                <th style="padding: 0.35rem;">Ed25519 Sig</th>
+                <th style="padding: 0.35rem;">Verify</th>
+                <th style="padding: 0.35rem;">Pkg mJ · Lat</th>
+                <th style="padding: 0.35rem;">V / θ</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Panel 3 (ca-diag-03): BCI Sensing-to-Modulation & Agency-Preserving N-Mind Explorer -->
+      <section id="ca-diag-03" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ca-diag-03</code> · Brain-Computer Interface Sensing-to-Modulation &amp; Agency-Preserving <code>N</code>-Mind Explorer</h2>
+          <span class="chip chip-est">Modelled Protocol Envelope</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Current neural interfaces emphasize unidirectional sensing (output decoding). Closing the loop requires threshold-gated modulation (input supplementation) across <code>2</code>-mind and <code>N</code>-mind bridges. Adjust participant count <code>N</code>, local sovereignty consent threshold <code>θ_agency</code>, and channel fidelity below to compare <strong>agency-preserving supplementation</strong> against <strong>ungated forced assimilation</strong>.
+        </p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="sel-bci"><span>Neural Bridge Architecture</span></label>
+            <select id="sel-bci">
+              <option value="read_only">1. Unidirectional Sensing Only (Read-Out BCI · Open Loop)</option>
+              <option value="supp_dyad">2. Bidirectional Supplementation (Healthy/Synthetic Counterpart)</option>
+              <option value="gated_nmind" selected>3. Consent-Gated N-Mind Attested Bridge (SepJ / Ed25519 Analog)</option>
+              <option value="ungated_assim">4. Ungated Broadcast Assimilation (No Ingress Threshold · Failure Mode)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="s-minds"><span>Connected Participants (N)</span><span id="v-minds">8 minds</span></label>
+            <input type="range" id="s-minds" min="1" max="32" step="1" value="8">
+          </div>
+          <div class="ctrl-box">
+            <label for="s-gate"><span>Local Sovereignty Gate (θ_agency)</span><span id="v-gate">0.72</span></label>
+            <input type="range" id="s-gate" min="0.05" max="0.95" step="0.05" value="0.72">
+          </div>
+          <div class="ctrl-box">
+            <label for="s-fid"><span>Channel Fidelity (1 − Loss)</span><span id="v-fid">0.85</span></label>
+            <input type="range" id="s-fid" min="0.10" max="0.98" step="0.02" value="0.85">
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">Retained Individual Agency</div>
+            <div class="v" id="m-bci-agency" style="color: var(--color-brand-cyan);">—</div>
+            <div class="s" id="m-bci-agency-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Collective Synthesis Gain</div>
+            <div class="v" id="m-bci-gain">—</div>
+            <div class="s" id="m-bci-gain-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Cascade Interference Risk</div>
+            <div class="v" id="m-bci-risk">—</div>
+            <div class="s" id="m-bci-risk-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Cultural Ratchet Compression</div>
+            <div class="v" id="m-bci-ratchet">—</div>
+            <div class="s" id="m-bci-ratchet-sub">—</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem; overflow-x: auto;">
+          <svg id="bci-live-svg" viewBox="0 0 680 205" width="100%" height="auto" role="img" aria-label="Retained individual agency and collective capability across participant count N"></svg>
+        </div>
+
+      </section>
+
+      <!-- Panel 4 (ca-diag-04): 10-Camp DES-10 Synthesizer, 1950-2026 AI Ratchet & Horizon Simulator -->
+      <section id="ca-diag-04" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ca-diag-04</code> · 10-Camp Digital Enzymatic Synthesizer (<code>DES-10</code>), <code>1950–2026</code> AI Ratchet &amp; Horizon Simulator</h2>
+          <span class="chip chip-meas" id="des-basis-chip">5-Host Fleet (RAPL reported_j + Thor INA238 measured_j)</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Simulate how <strong>Digital Enzymes</strong> (<code>&lt; 1 mJ</code> canonical <code>IR</code> + <code>BLAKE3/Ed25519</code> + sound verification) unify the <strong>10 siloed AI camps (<code>C1..C10</code>)</strong> into a downward-crystallizing cascade across a 5-host hardware fleet (including <strong>NVIDIA Jetson AGX Thor</strong> inline <code>TI INA238 / INA3221</code> <code>measured_j</code> rails). Toggle individual camps below to observe solo blind spots, false-commit gates, and exact <code>N*</code> amortization across <code>Month -&gt; Quarter -&gt; Year -&gt; Decade</code> horizons.
+        </p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="sel-host"><span>5-Host Hardware Energy Profile</span></label>
+            <select id="sel-host">
+              <option value="intel_core_i9_13900h_rapl" selected>1. Intel Core i9-13900H (Linux RAPL reported_j)</option>
+              <option value="nvidia_jetson_agx_thor_ina238">2. NVIDIA Jetson AGX Thor (INA238/INA3221 measured_j)</option>
+              <option value="apple_m5_max_ioreport">3. Apple M5 Max (macOS IOReport reported_j)</option>
+              <option value="amd_strix_halo_rapl">4. AMD Ryzen AI Max+ 395 (Strix Halo reported_j)</option>
+              <option value="win11_rtx2060_nvml">5. Windows 11 + RTX 2060 (NVML reported_j)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="sel-horizon"><span>Temporal Engineering / Clinical Horizon</span></label>
+            <select id="sel-horizon">
+              <option value="months_1_3">Months 1–3 · Attested Bus &amp; DNULLMM1 Store</option>
+              <option value="quarters_1_4" selected>Quarters 1–4 · 10-Camp DES-10 + FormEBM + LUT6</option>
+              <option value="years_1_5">Years 1–5 · Verified Stack, Event Silicon &amp; Gated BCI</option>
+              <option value="decade_1">Decade 1 (2026–2036) · Planetary Fabric &amp; Phase-III RCTs</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label for="s-arrivals"><span>Task Arrival Horizon (N)</span><span id="v-arrivals">1,000</span></label>
+            <input type="range" id="s-arrivals" min="50" max="5000" step="50" value="1000">
+          </div>
+          <div class="ctrl-box">
+            <label for="s-zipf"><span>Zipf Workload Skew (s)</span><span id="v-zipf">1.15</span></label>
+            <input type="range" id="s-zipf" min="0.40" max="1.80" step="0.05" value="1.15">
+          </div>
+          <div class="ctrl-box">
+            <label for="s-enz"><span>Digital Enzyme Overhead (c_enz)</span><span id="v-enz">0.65 mJ</span></label>
+            <input type="range" id="s-enz" min="0.10" max="5.00" step="0.05" value="0.65">
+          </div>
+        </div>
+
+        <div style="margin-top: 0.85rem; padding: 0.75rem 0.9rem; border-radius: 0.6rem; background: rgba(15,23,42,0.55); border: 1px solid rgba(148,163,184,0.22);">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-brand-amber); margin-bottom: 0.45rem; font-family: var(--font-mono);">
+            TOGGLE ACTIVE AI ORGANS (<code>C1..C10</code>) — Disable <code>C5/C8</code> to ablate downward crystallization or disable <code>C2+C10</code> to expose false commits:
+          </div>
+          <div id="camp-toggles" style="display: flex; flex-wrap: wrap; gap: 0.45rem; font-size: 0.78rem; font-family: var(--font-mono);">
+            <label style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.55rem;border-radius:999px;border:1px solid rgba(245,158,11,0.45);cursor:pointer;"><input type="checkbox" data-camp="C1" checked> C1 LLM</label>
+            <label style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.55rem;border-radius:999px;border:1px solid rgba(34,211,238,0.45);cursor:pointer;"><input type="checkbox" data-camp="C2" checked> C2 Symbolic/Lean</label>
+            <label style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.55rem;border-radius:999px;border:1px solid rgba(167,139,250,0.45);cursor:pointer;"><input type="checkbox" data-camp="C3" checked> C3 JEPA/FormEBM</label>
+            <label style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.55rem;border-radius:999px;border:1px solid rgba(34,211,238,0.45);cursor:pointer;"><input type="checkbox" data-camp="C4" checked> C4 RL/MCTS</label>
+            <label style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.55rem;border-radius:999px;border:1px solid rgba(16,185,129,0.55);cursor:pointer;"><input type="checkbox" data-camp="C5" checked> C5 Shape-D (1.77 µJ)</label>
+            <label style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.55rem;border-radius:999px;border:1px solid rgba(245,158,11,0.45);cursor:pointer;"><input type="checkbox" data-camp="C6" checked> C6 Evo Search</label>
+            <label style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.55rem;border-radius:999px;border:1px solid rgba(34,211,238,0.45);cursor:pointer;"><input type="checkbox" data-camp="C7" checked> C7 Do-Calculus</label>
+            <label style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.55rem;border-radius:999px;border:1px solid rgba(16,185,129,0.55);cursor:pointer;"><input type="checkbox" data-camp="C8" checked> C8 LUT6 (~12 pJ)</label>
+            <label style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.55rem;border-radius:999px;border:1px solid rgba(244,63,94,0.45);cursor:pointer;"><input type="checkbox" data-camp="C9"> C9 Unattested Chat</label>
+            <label style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.25rem 0.55rem;border-radius:999px;border:1px solid rgba(167,139,250,0.45);cursor:pointer;"><input type="checkbox" data-camp="C10" checked> C10 Sandbox Gate</label>
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-live="polite" style="margin-top: 1rem;">
+          <div class="metric-tile">
+            <div class="k">DES-10 Horizon Energy</div>
+            <div class="v" id="m-des-j" style="color: var(--color-brand-cyan);">—</div>
+            <div class="s" id="m-des-j-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">CpJ Gain &amp; Break-Even N*</div>
+            <div class="v" id="m-des-cpj" style="color: var(--color-brand-amber);">—</div>
+            <div class="s" id="m-des-cpj-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Gate Integrity &amp; Tier Share</div>
+            <div class="v" id="m-des-gate">—</div>
+            <div class="s" id="m-des-gate-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Horizon Contract &amp; Kill Gate</div>
+            <div class="v" id="m-des-hor" style="font-size: 0.95rem;">—</div>
+            <div class="s" id="m-des-hor-sub">—</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem; overflow-x: auto;">
+          <svg id="des10-live-svg" viewBox="0 0 760 245" width="100%" height="auto" role="img" aria-label="DES-10 cumulative joule trajectory versus monolithic LLM and tier execution share"></svg>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; margin-top: 1rem;">
+          <div style="overflow-x: auto;">
+            <h3 style="font-size: 0.92rem; margin: 0 0 0.45rem; color: var(--color-brand-amber);"><code>1950–2026</code> · Seven-Era AI Ratchet Ledger</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.77rem;">
+              <thead>
+                <tr style="border-bottom: 1px solid rgba(148,163,184,0.3); text-align: left;">
+                  <th style="padding: 0.34rem;">Era &amp; Milestones</th>
+                  <th style="padding: 0.34rem;">Signal &amp; Gate</th>
+                  <th style="padding: 0.34rem;">Stall / Unlock</th>
+                </tr>
+              </thead>
+              <tbody id="ai-era-tbody"></tbody>
+            </table>
+          </div>
+          <div style="overflow-x: auto;">
+            <h3 style="font-size: 0.92rem; margin: 0 0 0.45rem; color: var(--color-brand-cyan);"><code>C1..C10</code> · Active Organ Role &amp; Solo Blind Spot</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.77rem;">
+              <thead>
+                <tr style="border-bottom: 1px solid rgba(148,163,184,0.3); text-align: left;">
+                  <th style="padding: 0.34rem;">Camp</th>
+                  <th style="padding: 0.34rem;">Status</th>
+                  <th style="padding: 0.34rem;">Superpower vs. Blind Spot</th>
+                </tr>
+              </thead>
+              <tbody id="camps-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Full 10-Figure Zoomable Publication SVG Gallery -->
+      <section id="ca-svg-gallery" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;">Publication Vector Atlas (<code>Figure 1</code> to <code>Figure 10</code> · Click Any Diagram to Zoom)</h2>
+          <span class="chip chip-meas">10 Crisp Dark-Slate SVGs</span>
+        </div>
+        <p style="font-size: 0.88rem; margin-top: 0.5rem;">
+          Complete 10-figure visual sequence accompanying <a href="/papers/communication-avalanche/" style="color: var(--color-brand-cyan);">/papers/communication-avalanche/</a>. Click any figure below to inspect at <code>1:1</code> or up to <code>5×</code> vector zoom.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/communication-avalanche/biological-to-bci-avalanche.svg" loading="lazy" alt="Synthesis diagram across the 24-rung biological-to-BCI ladder and CA-M1..CA-M5 simulations">
+            <figcaption><strong>Figure 1.</strong> Conserved externalize-gate-transform loop across the 24-rung catalog (<code>CL01</code> to <code>CL24</code>), simulations (<code>CA-M1</code> to <code>CA-M5</code>), and neural interface horizon.</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/communication-avalanche/three-phase-ratchet-anatomy.svg" loading="lazy" alt="Four-row micro-anatomy of the conserved three-phase ratchet across bacteria, cyanobacteria, CTA kernels, and neural prostheses">
+            <figcaption><strong>Figure 2.</strong> Micro-anatomy of the conserved three-phase operator across <em>Vibrio</em>/<em>Pseudomonas</em> quorum switches, <em>Anabaena</em> <code>SepJ</code> nanopores, digital <code>CTA</code> kernels, and consent-gated closed-loop neural prostheses.</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/communication-avalanche/cross-species-thresholds-infographic.svg" loading="lazy" alt="Four-panel quantitative infographic of CA-M1 Hill cooperativity, CA-M2 SepJ survival, CA-M3 starling flocks, CA-M4 Physarum pruning, and CA-M5 cultural retention">
+            <figcaption><strong>Figure 3.</strong> Pre-registered biophysical and cultural ratchet simulations (<code>CA-M1</code> to <code>CA-M5</code>, <code>seed = 20261123</code>, <code>board_metered = false</code>).</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/communication-avalanche/ai-history-ratchet-1950-2026.svg" loading="lazy" alt="Panoramic 76-year AI history timeline from 1950 Turing and Lisp through AI Winters I and II to 2026 DES-10 enzymatic synthesis">
+            <figcaption><strong>Figure 4.</strong> Seventy-six years of artificial intelligence (<code>1950–2026</code>) mapped to signal externalization, gate soundness, AI Winters I &amp; II, and downward crystallization.</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/communication-avalanche/ten-siloed-ai-camps-map.svg" loading="lazy" alt="Comparative atlas of the 10 siloed AI camps versus Digital Enzymatic Synthesis DES-10">
+            <figcaption><strong>Figure 5.</strong> Atlas of the 10 siloed AI camps (<code>C1</code> to <code>C10</code>) showing solo failure modes versus <code>&lt; 1 mJ</code> Digital Enzymatic Synthesis (<code>DES-10</code>).</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/communication-avalanche/orchestration-coherence-per-joule.svg" loading="lazy" alt="Hardware benchmarks CTA-E1 zero-clock eventfd vs polling and CTA-E2 60-task code repair Coherence per Joule">
+            <figcaption><strong>Figure 6.</strong> Executed <code>Intel Core i9-13900H</code> Linux <code>RAPL</code> benchmarks (<code>CTA-E1</code> zero-clock <code>eventfd</code> vs. polling; <code>CTA-E2</code> 60-task code repair; <code>CTA-E3</code> Byzantine containment).</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/communication-avalanche/five-host-fleet-energy-and-des10.svg" loading="lazy" alt="Five-host hardware fleet energy telemetry including NVIDIA Jetson AGX Thor INA238/INA3221 measured_j and DES-10 benchmarks">
+            <figcaption><strong>Figure 7.</strong> Five-host fleet telemetry (including <code>NVIDIA Jetson AGX Thor</code> inline <code>INA238</code>/<code>INA3221</code> <code>measured_j</code> shunts alongside 4-host <code>reported_j</code>) and <code>DES-10</code> synthesis.</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/communication-avalanche/digital-enzymatic-forcing-function.svg" loading="lazy" alt="Catalytic reaction coordinate slashing handoff barrier below 1 mJ and 5-stage closed-loop forcing function">
+            <figcaption><strong>Figure 8.</strong> Computational reaction coordinate (<code>&gt;15 J</code> prose handoff vs. <code>&lt; 1 mJ</code> Digital Enzyme) and 5-stage closed-loop downward crystallization blueprint.</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/communication-avalanche/month-quarter-year-decade-roadmap.svg" loading="lazy" alt="Four-column Month, Quarter, Year, Decade engineering and clinical roadmap with CpJ targets, Lean theorems, and kill criteria">
+            <figcaption><strong>Figure 9.</strong> Falsifiable temporal roadmap (<code>Month -&gt; Quarter -&gt; Year -&gt; Decade</code>) pairing <code>CpJ</code> targets and Lean proof badges with explicit red kill criteria.</figcaption>
+          </figure>
+          <figure class="fig" style="margin: 0;">
+            <img src="/figures/communication-avalanche/bci-modulation-and-ev-boundary.svg" loading="lazy" alt="Two-panel scatter of 18 neural modalities BM01-BM18 and translational funnel of 16 paracrine EV studies EV01-EV16">
+            <figcaption><strong>Figure 10.</strong> Neural interface bandwidth-vs-invasiveness map (<code>BM01</code> to <code>BM18</code>, <code>CTA-T29</code> consent gate) and paracrine <code>EV</code> translational funnel (<code>EV01</code> to <code>EV16</code>, <code>0</code> Phase-III human <code>CNS</code> approvals).</figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-copy">© Open Interface Engineering, Inc. · Living figures · 4-host <code>reported_j</code> (<code>board_metered = false</code>) + <code>Jetson AGX Thor</code> <code>INA238/INA3221</code> <code>measured_j</code> · <a href="/papers/communication-avalanche/" style="color: var(--color-brand-cyan);">Back to paper</a></div>
+  </footer>
+
+  <script src="cta-data.js"></script>
+  <script src="cta-lab.js"></script>
+</body>
+</html>

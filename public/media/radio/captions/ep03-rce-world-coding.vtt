@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:01.830 --> 00:00:23.062
+<v Elena>Welcome to Episode Three of OpenIE Research Radio! As always, Elena, Marcus, and Devon are AI-synthesized OpenIE research personas speaking strictly from verified Open Interface Engineering studies. Today we're tackling World Coding: RCE, RCE-JEPA, RCE Compile, and RCE-VC.
+
+2
+00:00:23.257 --> 00:00:36.232
+<v Marcus>Let's start with the elephant in the server room. People hear JEPA — Joint Embedding Predictive Architecture — and assume we're trusting a neural latent space to decide whether software is correct. Are we?
+
+3
+00:00:36.507 --> 00:00:55.510
+<v Devon>Never! That's the entire subtitle of RCE-JEPA: World Coding, with JEPA as premise rather than the whole method. Any proposer — human, deterministic rule ladder, small latent predictor, or frontier model — may suggest a Form. Only the deterministic checker decides admission.
+
+4
+00:00:55.785 --> 00:01:14.461
+<v Elena>Look at that energy asymmetry on Apple M5 Max reported joules: checking a Form costs forty-nine point zero four millijoules, while generating one local thirty-five-billion-parameter Qwen 3.6 proposal costs eighty-four point two five joules — over seventeen hundred times more!
+
+5
+00:01:14.656 --> 00:01:22.112
+<v Marcus>And before calling ANY neural network at all, what happened when you ran the zero-model-call deterministic repair ladder?
+
+6
+00:01:22.387 --> 00:01:46.838
+<v Devon>The deterministic ladder closed one hundred and eleven out of one hundred and fifty-one broken Forms — seventy-three point five percent — with zero neural calls! Then we trained two tiny purpose-built models on one thousand three hundred eighty-seven strictly disjoint Forms: FormJEPA-v1 at eight point four two million parameters, and FormEBM-v2 at five point eight five million parameters.
+
+7
+00:01:47.113 --> 00:02:02.602
+<v Elena>Wait — an eight-point-four-million parameter latent model lifted repair from seventy-three point five percent up to ninety-one point four percent, and matched a thirty-five-billion-parameter model single-shot on H15 at twenty-seven out of forty?!
+
+8
+00:02:02.877 --> 00:02:21.399
+<v Devon>Yes, at four hundred seventy-four point eight millijoules of Linux RAPL core reported joules for sixteen candidates! And FormEBM-v2 scored candidate validity with AUROC zero point eight nine two two, cutting rce check invocations by two point three nine times.
+
+9
+00:02:21.594 --> 00:02:37.046
+<v Marcus>Now give me the headline H15-Iterative stress test — where frontier models get zero access to the original source file, only public standard-library headers and bounded deterministic checker diagnostics for at most five turns.
+
+10
+00:02:37.321 --> 00:03:01.661
+<v Devon>Claude Opus 5.5 and Claude Sonnet 5.5 both closed forty out of forty — one hundred percent, zero contradictions! xAI Grok 4.20 closed thirty-nine out of forty with zero contradictions. And once crystallized into warm Gear-0 case memory, all forty replay at zero model calls for one point seven seven one microjoules!
+
+11
+00:03:01.856 --> 00:03:09.563
+<v Marcus>Hold everything — you promised no cherry-picking! Tell the listeners what FAILED its promotion threshold in RCE-JEPA!
+
+12
+00:03:09.838 --> 00:03:29.389
+<v Devon>On the one-hundred-fifty-one-task rce repair Rung-F audit, our pre-registered error ceiling was two point zero percent. Rung F came back at three out of one hundred nineteen — two point five percent! So holds returned false, and we kept Rung F locked in observe mode instead of promoting it.
+
+13
+00:03:29.664 --> 00:03:42.579
+<v Elena>That same willingness to let data falsify a sweeping claim shaped RCE Compile too! We asked whether one candidate statement of compilation describes all twelve real-world compiler families.
+
+14
+00:03:42.854 --> 00:04:17.078
+<v Devon>And it failed as a universal description — because mainstream compilers omit explicit energy gates and linking digests — while holding cleanly as a seven-part normal form! Even better, across two hundred eighty checksum-verified Zen 5 RAPL cells, compiling Python to clang dash O3 pays back its compile energy after a median N-star of two thousand four hundred ninety runs, whereas thirty percent of clang and rustc O2-to-O3 optimizations NEVER pay back their extra compile joules!
+
+15
+00:04:17.273 --> 00:04:38.472
+<v Marcus>Thirty percent of dash O3 builds burn extra compiler electricity for zero runtime savings! Meanwhile, De Bruijn nameless SHA-256 memoization hit zero out of five hundred false collisions and slashed warm rustc compile energy by four hundred forty-eight point five times!
+
+16
+00:04:38.747 --> 00:04:59.694
+<v Elena>And RCE-VC closes the loop at version control: admitting non-overlapping changes against one hundred thousand name-free units in seventy microseconds at three hundred forty microjoules while keeping Git completely usable. Next up in Episode Four: Deterministic Null and physical shunt telemetry in SATB!

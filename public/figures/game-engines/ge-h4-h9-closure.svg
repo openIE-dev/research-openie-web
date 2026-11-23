@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="720" viewBox="0 0 1080 720" font-family="Helvetica,Arial,sans-serif">
+  <rect width="1080" height="720" rx="12" fill="#090d16"/>
+
+  <!-- Header -->
+  <text x="540" y="32" font-size="18.5" font-weight="bold" text-anchor="middle" fill="#f8fafc">
+    Full Empirical Closure (GE-H4 to GE-H9): Multi-Engine Projection, Scaling, Interface Gate, Chaos &amp; Replay
+  </text>
+  <text x="540" y="51" font-size="11.8" text-anchor="middle" fill="#94a3b8">
+    openIE-dev/rce (1762fb4b) · Godot 4.7.2 --headless · macOS arm64 + Linux x86_64 + Windows 11 x86_64 · measured_j = None, board_metered = false
+  </text>
+
+  <!-- ==================== PANEL A: GE-H4 (Top-Left) ==================== -->
+  <rect x="20" y="66" width="510" height="304" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="36" y="90" font-size="13.8" font-weight="bold" fill="#00d4aa">
+    GE-H4 · Behavior SLOC &amp; Glue Across 17 Modules (3 Reference Games)
+  </text>
+  <rect x="386" y="74" width="130" height="22" rx="4" fill="#064e3b" stroke="#00d4aa" stroke-width="1"/>
+  <text x="451" y="89" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#6ee7b7">0 / 680 MISMATCH</text>
+  <text x="36" y="108" font-size="11" fill="#94a3b8">
+    Haunted Jaunt (5) + Survival Shooter (7) + Tanks (5) · 10 traces × 20 events verified on 4 toolchains
+  </text>
+
+  <!-- Horizontal bar chart: scale max 1450 SLOC -> 280 px (0.193 px/SLOC), x0 = 182 -->
+  <g font-size="11.2" fill="#e2e8f0">
+    <!-- Row 1: RCE Form -->
+    <text x="174" y="138" text-anchor="end" font-weight="bold" fill="#00d4aa">RCE Form (.rce)</text>
+    <rect x="182" y="125" width="63" height="17" rx="3" fill="#00d4aa"/>
+    <rect x="245" y="125" width="10" height="17" rx="2" fill="#0d9488" opacity="0.65"/>
+    <text x="262" y="138" font-size="10.6" font-weight="bold" fill="#6ee7b7">326 SLOC (377 w/ intent · 61 glue)</text>
+
+    <!-- Row 2: Godot 4 GDScript -->
+    <text x="174" y="168" text-anchor="end">Godot 4 Node (.gd)</text>
+    <rect x="182" y="155" width="131" height="17" rx="3" fill="#38bdf8"/>
+    <text x="320" y="168" font-size="10.6" fill="#bae6fd">679 SLOC (−52.0% in Form · 192 glue)</text>
+
+    <!-- Row 3: Bevy Rust ECS -->
+    <text x="174" y="198" text-anchor="end">Bevy Rust ECS (.rs)</text>
+    <rect x="182" y="185" width="163" height="17" rx="3" fill="#a78bfa"/>
+    <text x="352" y="198" font-size="10.6" fill="#ddd6fe">846 SLOC (−61.5% in Form · 391 glue)</text>
+
+    <!-- Row 4: Unity MonoBehaviour C# -->
+    <text x="174" y="228" text-anchor="end">Unity C# (MonoBehaviour)</text>
+    <rect x="182" y="215" width="265" height="17" rx="3" fill="#f59e0b"/>
+    <text x="453" y="228" font-size="10.5" font-weight="bold" fill="#fde68a">1,371 (−76.2%)</text>
+  </g>
+
+  <!-- 50% Kill Threshold marker against C# (685.5 SLOC -> x = 182 + 132.3 = 314.3) -->
+  <line x1="314" y1="118" x2="314" y2="240" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="314" y="253" font-size="9.8" text-anchor="middle" fill="#fca5a5">50% C# Kill Threshold (686 SLOC)</text>
+
+  <!-- Per-game breakdown strip -->
+  <rect x="36" y="264" width="478" height="92" rx="6" fill="#0b1120" stroke="#1e293b"/>
+  <g font-size="10.6" font-family="Courier,monospace" fill="#cbd5e1">
+    <text x="48" y="283" fill="#00d4aa" font-weight="bold">Game Suite          RCE SLOC   Unity C#   Bevy ECS   Godot 4   Cut vs C#</text>
+    <text x="48" y="302">Haunted Jaunt (5)      90        391        238       190      −76.98%</text>
+    <text x="48" y="320">Survival Shooter (7)  148        590        367       288      −74.92%</text>
+    <text x="48" y="338">Tanks Q32 (5)          88        390        241       201      −77.44%</text>
+    <text x="48" y="352" fill="#fcd34d">1 Form (326) vs 3-Engine Sum (2,896 SLOC): −88.74% · Glue vs C#: −92.51%</text>
+  </g>
+
+  <!-- ==================== PANEL B: GE-H5 (Top-Right) ==================== -->
+  <rect x="550" y="66" width="510" height="304" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="566" y="90" font-size="13.8" font-weight="bold" fill="#f59e0b">
+    GE-H5 · Multi-Actor Q32.32 Step Time &amp; RAPL Scaling (N = 64..10,000)
+  </text>
+  <rect x="916" y="74" width="130" height="22" rx="4" fill="#064e3b" stroke="#00d4aa" stroke-width="1"/>
+  <text x="981" y="89" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#6ee7b7">0 / 50 SHA-256 DIFF</text>
+  <text x="566" y="108" font-size="11" fill="#94a3b8">
+    500 ticks/cell on idle Intel Core i9-13900H (SATB L2 RAPL) · Log-log p50 ms/tick vs N
+  </text>
+
+  <!-- Plot box: x from log10(64)=1.806 to log10(10000)=4.0 -> x_px = 616 + (log10(N)-1.8)*185 (width 407, 616..1023)
+       y from log10(0.0003)=-3.52 to log10(1000)=3.0 -> y_px = 310 - (log10(ms)+3.5)*28.5 (height 185, 125..310) -->
+  <rect x="616" y="122" width="416" height="190" rx="5" fill="#0b1120" stroke="#334155"/>
+
+  <!-- Grid lines & Y labels: 0.001ms (-3 -> y=295.8), 0.1ms (-1 -> y=238.8), 20ms (1.301 -> y=173.2), 500ms (2.699 -> y=133.3) -->
+  <line x1="616" y1="296" x2="1032" y2="296" stroke="#1e293b"/>
+  <line x1="616" y1="239" x2="1032" y2="239" stroke="#1e293b"/>
+  <line x1="616" y1="173" x2="1032" y2="173" stroke="#ef4444" stroke-width="1.6" stroke-dasharray="6,4"/>
+  <text x="611" y="299" font-size="9.5" text-anchor="end" fill="#64748b">1 µs</text>
+  <text x="611" y="242" font-size="9.5" text-anchor="end" fill="#64748b">0.1 ms</text>
+  <text x="611" y="176" font-size="9.5" font-weight="bold" text-anchor="end" fill="#f87171">20 ms</text>
+  <text x="611" y="136" font-size="9.5" text-anchor="end" fill="#64748b">500 ms</text>
+
+  <!-- X labels: 64 (617), 350 (754), 1000 (838), 10000 (1023) -->
+  <line x1="754" y1="122" x2="754" y2="312" stroke="#334155" stroke-dasharray="3,3"/>
+  <text x="620" y="325" font-size="9.5" text-anchor="middle" fill="#64748b">64</text>
+  <text x="754" y="325" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#cbd5e1">350 (GR)</text>
+  <text x="838" y="325" font-size="9.5" text-anchor="middle" fill="#64748b">1,000</text>
+  <text x="1020" y="325" font-size="9.5" text-anchor="middle" fill="#64748b">10,000 actors</text>
+
+  <!-- Tier 1: rce_python3: (64,3.07ms)->(617,196), (350,18.1ms)->(754,174), (1000,55.5ms)->(838,160), (10000,564.6ms)->(1023,132) -->
+  <polyline fill="none" stroke="#f87171" stroke-width="2.3" points="617,196 673,189 729,179 742,178 754,174 782,170 838,160 912,150 967,142 1023,132"/>
+  <circle cx="763" cy="173" r="4" fill="#f87171"/>
+  <text x="768" y="167" font-size="9.5" font-weight="bold" fill="#fca5a5">Py N_20ms=390</text>
+
+  <!-- Tier 2: rce_nodejs_v22: (64,0.287ms)->(617,226), (350,1.85ms)->(754,203), (1000,4.77ms)->(838,191), (3906,20ms)->(948,173), (10000,57.0ms)->(1023,160) -->
+  <polyline fill="none" stroke="#f59e0b" stroke-width="2.3" points="617,226 673,217 729,208 742,206 754,203 782,198 838,191 912,179 967,170 1023,160"/>
+  <circle cx="948" cy="173" r="4" fill="#f59e0b"/>
+  <text x="936" y="188" font-size="9.5" font-weight="bold" text-anchor="end" fill="#fde68a">Node N_20ms=3,906</text>
+
+  <!-- Tier 5: form_rust_o3: (64,0.0004ms)->(617,307), (350,0.0041ms)->(754,278), (1000,0.0129ms)->(838,264), (10000,0.125ms)->(1023,236) -->
+  <polyline fill="none" stroke="#a78bfa" stroke-width="2.1" points="617,307 673,297 729,285 754,278 782,273 838,264 912,251 967,245 1023,236"/>
+
+  <!-- Tier 3: form_wasm32_v8: (64,0.0006ms)->(617,302), (350,0.0044ms)->(754,277), (1000,0.0089ms)->(838,269), (10000,0.0724ms)->(1023,243) -->
+  <polyline fill="none" stroke="#38bdf8" stroke-width="2.1" points="617,302 673,294 729,283 754,277 782,274 838,269 912,258 967,250 1023,243"/>
+
+  <!-- Tier 4: form_cpp20_o3: (64,0.0004ms)->(617,307), (350,0.0036ms)->(754,280), (1000,0.0073ms)->(838,271), (10000,0.0583ms)->(1023,246) -->
+  <polyline fill="none" stroke="#00d4aa" stroke-width="2.4" points="617,307 673,296 729,285 754,280 782,276 838,271 912,261 967,253 1023,246"/>
+
+  <text x="1018" y="230" font-size="9.6" font-weight="bold" text-anchor="end" fill="#6ee7b7">
+    Wasm32 / C++20 / Rust @ 10k: 0.058–0.125 ms (1.69–3.67 mJ/tick RAPL)
+  </text>
+  <text x="566" y="352" font-size="10.4" font-family="Courier,monospace" fill="#cbd5e1">
+    @ N=10,000: C++20 0.058ms (1.69mJ) · Wasm32 0.072ms (2.21mJ) · Py 564.6ms (13,091mJ = 7,728× J)
+  </text>
+
+  <!-- ==================== PANEL C: GE-H6 & GE-H7 (Bottom-Left) ==================== -->
+  <rect x="20" y="386" width="510" height="314" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="36" y="410" font-size="13.8" font-weight="bold" fill="#38bdf8">
+    GE-H6 (26-Pattern Gate) &amp; GE-H7 (840-Run Lyapunov Slope Sweep)
+  </text>
+
+  <!-- Sub-box Left: GE-H6 -->
+  <rect x="34" y="422" width="222" height="264" rx="6" fill="#0b1120" stroke="#1e293b"/>
+  <text x="44" y="441" font-size="11.4" font-weight="bold" fill="#00d4aa">GE-H6 · 260 Interface Modules</text>
+  <text x="44" y="456" font-size="9.8" fill="#94a3b8">130 injected faults + 130 controls</text>
+
+  <!-- Bars for Detection Rate & F1 -->
+  <text x="44" y="479" font-size="10.3" font-weight="bold" fill="#e2e8f0">Form + 4-Edge Static Gate:</text>
+  <rect x="44" y="486" width="194" height="15" rx="3" fill="#00d4aa"/>
+  <text x="48" y="497" font-size="9.8" font-weight="bold" fill="#06281e">TP 128/130 (98.46%) · F1 = 0.9922</text>
+
+  <text x="44" y="523" font-size="10.3" font-weight="bold" fill="#e2e8f0">Dynamic Parse-Only Baseline:</text>
+  <rect x="44" y="530" width="13" height="15" rx="3" fill="#f87171"/>
+  <text x="63" y="541" font-size="9.8" font-weight="bold" fill="#fca5a5">TP 8/130 (6.15%) · F1 = 0.1159</text>
+
+  <g font-size="9.7" fill="#cbd5e1">
+    <text x="44" y="568">• FP on 130 valid controls: 0 / 130</text>
+    <text x="44" y="585">• Native RCE catches: W-STEP-2,</text>
+    <text x="52" y="599">W-TY-1, W-NAME-1, W-INT-1, u64</text>
+    <text x="44" y="616">• 4-Edge manifest catches: node</text>
+    <text x="52" y="630">paths, masks, WGSL align, wire</text>
+    <text x="44" y="647" fill="#fcd34d">• 2 FNs (P10_5, P19_5): bare i64</text>
+    <text x="52" y="661" fill="#fcd34d">without unit/coord newtypes</text>
+    <text x="44" y="678" fill="#6ee7b7" font-weight="bold">Kill gate ≥ 90% &amp; &gt;&gt; 0.12: PASS</text>
+  </g>
+
+  <!-- Sub-box Right: GE-H7 Lyapunov Regression -->
+  <rect x="268" y="422" width="248" height="264" rx="6" fill="#0b1120" stroke="#1e293b"/>
+  <text x="278" y="441" font-size="11.4" font-weight="bold" fill="#a78bfa">GE-H7 · t* vs ln(Δ / δ₀) (840 Runs)</text>
+  <text x="278" y="456" font-size="9.8" fill="#94a3b8">δ₀ ∈ [2⁻⁵², 2⁻¹⁰], 40 seeds/cell, 60 Hz</text>
+
+  <!-- Plot: x = ln(1/d0) in [5..38] -> 302 + (x-5)*5.8 (width 192, 302..494)
+             y = t* in [0..19s] -> 604 - y*7.2 (height 137, 467..604) -->
+  <line x1="302" y1="604" x2="500" y2="604" stroke="#475569"/>
+  <line x1="302" y1="467" x2="302" y2="604" stroke="#475569"/>
+  <text x="297" y="606" font-size="8.8" text-anchor="end" fill="#64748b">0s</text>
+  <text x="297" y="532" font-size="8.8" text-anchor="end" fill="#64748b">10s</text>
+  <text x="297" y="474" font-size="8.8" text-anchor="end" fill="#64748b">18s</text>
+  <text x="313" y="617" font-size="8.8" text-anchor="middle" fill="#64748b">2⁻¹⁰</text>
+  <text x="391" y="617" font-size="8.8" text-anchor="middle" fill="#64748b">2⁻²⁸</text>
+  <text x="482" y="617" font-size="8.8" text-anchor="middle" fill="#64748b">2⁻⁵² (ln=36)</text>
+
+  <!-- GE-T3 Bridge8: (6.93, 2.94s)->(313,583), (36.04, 17.36s)->(482,479) -->
+  <polyline fill="none" stroke="#a78bfa" stroke-width="2.2" points="313,583 337,570 365,546 385,534 418,513 450,493 482,479"/>
+  <!-- GE-T1 Bumper16: (6.93, 2.80s)->(313,584), (36.04, 14.49s)->(482,500) -->
+  <polyline fill="none" stroke="#00d4aa" stroke-width="2.2" points="313,584 337,573 365,557 385,549 418,532 450,516 482,500"/>
+  <!-- GE-T2 Galton12: (6.93, 1.85s)->(313,591), (36.04, 7.57s)->(482,550) -->
+  <polyline fill="none" stroke="#f59e0b" stroke-width="2.2" points="313,591 337,584 365,576 385,571 418,563 450,556 482,550"/>
+
+  <g font-size="9.3" font-family="Courier,monospace">
+    <text x="278" y="636" fill="#ddd6fe">GE-T3 Λ=1.95/s R²=0.994 p=10⁻¹⁰⁴</text>
+    <text x="278" y="652" fill="#6ee7b7">GE-T1 Λ=2.48/s R²=1.000 p=10⁻¹¹⁹</text>
+    <text x="278" y="668" fill="#fde68a">GE-T2 Λ=5.07/s R²=0.996 p=10⁻⁷⁸</text>
+    <text x="278" y="681" fill="#94a3b8">0 / 840 censored · all slopes &gt; 0</text>
+  </g>
+
+  <!-- ==================== PANEL D: GE-H8 & GE-H9 (Bottom-Right) ==================== -->
+  <rect x="550" y="386" width="510" height="314" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="566" y="410" font-size="13.8" font-weight="bold" fill="#00d4aa">
+    GE-H8 (1-Hour 3-OS Replay from D) &amp; GE-H9 (Godot 4.7.2 Headless Parity)
+  </text>
+
+  <!-- Top half: GE-H8 -->
+  <rect x="566" y="422" width="478" height="134" rx="6" fill="#0b1120" stroke="#1e293b"/>
+  <text x="578" y="441" font-size="11.4" font-weight="bold" fill="#00d4aa">
+    GE-H8 · Three 1-Hour (216,000-Tick @ 60 Hz) Sessions Across macOS, Linux &amp; Win11
+  </text>
+  <g font-size="10.2" font-family="Courier,monospace" fill="#cbd5e1">
+    <text x="578" y="460" fill="#94a3b8">Session             |D| gz    Snap gz   Ratio   3-OS Checkpoints   Final SHA-256</text>
+    <text x="578" y="477">HauntedJaunt_1h    44.6 KB   5.19 MB   116.3×    2,160 / 2,160    b4120d81a8fb…</text>
+    <text x="578" y="494">SurvivalShooter_1h 44.6 KB   7.00 MB   157.0×    2,160 / 2,160    6cce1282304d…</text>
+    <text x="578" y="511">TanksQ32_1h        44.6 KB  13.03 MB   292.3×    2,160 / 2,160    ca627edaf8cb…</text>
+    <text x="578" y="531" fill="#6ee7b7" font-weight="bold">Pure Form from D alone: 0 / 6,480 mismatches (2.8–11.0 ms/1h replay!)</text>
+    <text x="578" y="547" fill="#fca5a5">4 Ambient Leaks (clock, addr RNG, HashMap, f64::sin): 4/4 diverge @ t_div = 1</text>
+  </g>
+
+  <!-- Bottom half: GE-H9 -->
+  <rect x="566" y="566" width="478" height="120" rx="6" fill="#0b1120" stroke="#1e293b"/>
+  <text x="578" y="586" font-size="11.4" font-weight="bold" fill="#f59e0b">
+    GE-H9 · Form-to-Godot 4.7.2 (--headless) Emitter &amp; 36-Task Parity Suite
+  </text>
+  <rect x="904" y="572" width="128" height="20" rx="4" fill="#064e3b" stroke="#00d4aa"/>
+  <text x="968" y="586" font-size="10.2" font-weight="bold" text-anchor="middle" fill="#6ee7b7">36 / 36 (100.0%)</text>
+
+  <g font-size="10.3" fill="#cbd5e1">
+    <text x="578" y="606">• External archive audit: GameCraft-Bench's 140 NL tasks (15 families) are public on</text>
+    <text x="586" y="621">GitHub, scored via Xvfb + ffmpeg video + external VLM judge (GAMECRAFT_BENCH_JUDGE).</text>
+    <text x="578" y="640">• Deterministic compiler parity: form_to_gdscript.py compiled 36 RCE Forms (all 15</text>
+    <text x="586" y="655">families × 2 + 6 reference/multiplayer systems) to Godot 4.7.2 SceneTree scripts:</text>
+    <text x="586" y="674" font-family="Courier,monospace" font-weight="bold" fill="#6ee7b7">
+      36/36 rce check · 36/36 Godot pass · 0 / 18,000 per-tick SHA-256 mismatches
+    </text>
+  </g>
+</svg>
