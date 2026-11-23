@@ -1,0 +1,102 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — three-body (180s) Narrator Bill
+
+1
+00:00:00.360 --> 00:00:06.670
+First, most big computer failures happen at the handoffs between teams or parts, not inside them.
+
+2
+00:00:07.230 --> 00:00:13.125
+Second, the cause is usually a guess nobody wrote down, like which units a number uses.
+
+3
+00:00:13.685 --> 00:00:18.117
+Third, when every handoff guess is written down and machine-checked,
+
+4
+00:00:18.117 --> 00:00:20.138
+a fix in one place stays fixed.
+
+5
+00:00:20.698 --> 00:00:26.657
+Every software team knows the frustration: every unit test passes in isolation, the mathematical
+
+6
+00:00:26.657 --> 00:00:32.803
+theorem holds, the processor meets its datasheet, yet the combined system crashes in production—and
+
+7
+00:00:32.803 --> 00:00:38.825
+fixing one bug quietly breaks two downstream callers that depended on undocumented edge behavior.
+
+8
+00:00:39.385 --> 00:00:45.032
+In physics, two bodies orbit in clean closed form, yet adding a third led Henri Poincaré
+
+9
+00:00:45.032 --> 00:00:53.183
+to discover deterministic chaos where tiny mismatches grow exponentially. Still, Joseph-Louis Lagrange proved three bodies stay
+
+10
+00:00:53.183 --> 00:01:01.461
+stable at co-rotating triangle points where spacecraft now park—because stability lives in balanced relations between the bodies.
+
+11
+00:01:02.021 --> 00:01:10.233
+Computing has its own three coherent bodies: theorists who write specifications, makers who build hardware, compilers, and
+
+12
+00:01:10.233 --> 00:01:17.234
+libraries, and users who run real workloads and uncover unspoken needs. Mars Climate Orbiter was lost to
+
+13
+00:01:17.234 --> 00:01:25.109
+pound-versus-newton unit drift, and Ariane 5 broke up over an unstated velocity envelope reused from slower Ariane 4.
+
+14
+00:01:25.669 --> 00:01:34.778
+Decades of systems research—from Melvin Conway's org-chart mirroring and David Parnas's module boundaries to Tony Hoare's contracts, end-to-end
+
+15
+00:01:34.778 --> 00:01:42.358
+checks, and Nancy Leveson's interaction safety—converge on one clear proposition: a local repair stays fixed at its own
+
+16
+00:01:42.358 --> 00:01:49.428
+level and everywhere above it if and only if every assumption crossing a handoff is stated and machine-checked.
+
+17
+00:01:49.988 --> 00:01:58.120
+Our three-dimensional gyroscopic model renders specification, implementation, and operation as three coupled rings. When handoff
+
+18
+00:01:58.120 --> 00:02:05.616
+bands stay dashed and unwritten, tiny mismatches cascade across levels; when physical units, numeric ranges, interface
+
+19
+00:02:05.616 --> 00:02:12.286
+versions, and state transitions pass explicit machine gates at the center, all three rings hold lockstep.
+
+20
+00:02:12.846 --> 00:02:19.439
+Empirical landmarks confirm both sides of the boundary. John Regehr and Xuejun Yang's Csmith fuzzer found
+
+21
+00:02:19.439 --> 00:02:27.789
+hundreds of silent wrong-code bugs across mainstream C compilers, yet zero inside CompCert's machine-checked middle passes. Likewise,
+
+22
+00:02:27.789 --> 00:02:35.448
+the verified seL4 microkernel and formal cloud state blueprints eliminate whole defect classes inside their checked seams.
+
+23
+00:02:36.008 --> 00:02:43.835
+Even CompCert exhibited bugs inside its unverified C front-end parser, proving verification protects only what lies inside the
+
+24
+00:02:43.835 --> 00:02:51.601
+stated contract. Orbital gravity serves strictly as structural analogy rather than physical force, no energy meter is claimed
+
+25
+00:02:51.601 --> 00:02:59.428
+here, and pursuing general AI across the entire stack is what finally forces every handoff contract into machine-checked form.

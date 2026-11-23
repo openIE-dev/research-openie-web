@@ -1,16 +1,8 @@
 #!/usr/bin/env python3
 """
-OpenIE Research TV — 84-Film Master Render & Verification Orchestrator.
-Renders 21 studies × 4 bespoke depth tiers (5s, 30s, 60s, 90s) = 84 MP4 films,
-84 WebVTT caption tracks, 21 high-DPI 1280x720 JPG posters, and tv-catalog.json
-using the 21-presenter ElevenLabs v4 Global Studio Ensemble (with edge-tts fallback).
-
-Usage:
-  python3 manim/tv/render_tv_films.py \
-    --work-dir /path/to/scratch_work \
-    --cutaway-dir /path/to/cutaways_3d \
-    --media-dir /path/to/public/media/tv \
-    --catalog-out /path/to/src/data/tv-catalog.json
+OpenIE Research TV v3.0 — 84-Film Master Render & Verification Orchestrator.
+Renders 21 studies × 4 plain-language telescoping depth tiers (15s, 45s, 90s, 180s) = 84 MP4 films,
+84 WebVTT caption tracks, 21 high-DPI 1280x720 JPG posters, and tv-catalog.json.
 """
 import argparse
 import concurrent.futures as cf
@@ -29,13 +21,13 @@ from voices_and_labs import TUTORIAL_LAB_MAP, VOICE_ENSEMBLE
 from audio_studio import FPS, build_film_audio_and_vtt
 from visual_scenes import W, H, draw_chrome, load_cutaway_surfaces, render_poster_jpg, render_scene_body
 
-TIERS = ["5s", "30s", "60s", "90s"]
+TIERS = ["15s", "45s", "90s", "180s"]
 CATEGORIES = [
     "Foundations & Thermodynamics",
     "Reality Code Engine",
     "Null & Benchmarks",
     "Communication Avalanche & Bio",
-    "Hardware, LUT6 & OS",
+    "Hardware, Silicon & OS",
     "Economics & Cadence",
 ]
 
@@ -152,7 +144,7 @@ def main():
     ap.add_argument("--catalog-out", required=True)
     ap.add_argument("--tts-workers", type=int, default=5)
     ap.add_argument("--video-workers", type=int, default=12)
-    ap.add_argument("--tiers", default="5s,30s,60s,90s")
+    ap.add_argument("--tiers", default="15s,45s,90s,180s")
     ap.add_argument("--studies", default="", help="Optional comma-separated subset of study IDs to re-render")
     args = ap.parse_args()
     active_tiers = [t.strip() for t in args.tiers.split(",") if t.strip() in TIERS]
@@ -248,6 +240,7 @@ def main():
             "tutorial_lab_id": st["tutorial_lab_id"],
             "narrator_name": st["narrator_name"],
             "narrator_profile": st["narrator_profile"],
+            "plain_bullets": st["plain_bullets"],
             "headline_metric": st["headline_metric"],
             "epistemic_tags": st["epistemic_tags"],
             "energy_tier": st["energy_tier"],
@@ -259,13 +252,14 @@ def main():
 
     catalog = {
         "title": "OpenIE Research TV Catalog",
-        "version": "2.0.0",
+        "version": "3.0.0",
         "study_count": 21,
         "film_count": 84,
+        "tiers": TIERS,
         "tts_model": "ElevenLabs eleven_v4 (21-Presenter Global Studio Ensemble; edge-tts neural fallback)",
         "categories": CATEGORIES,
-        "studio_disclosure": "Narration features a 21-presenter global studio voice ensemble synthesized with ElevenLabs eleven_v4 and grounded strictly in verified OpenIE study artifacts. Every claim, equation, and energy figure links directly to its published paper, interactive figure, and artifact ledger.",
-        "metering_contract": "Physical hardware rail shunts earn measured_j (AMD Kria KV260 INA260 in gates; NVIDIA Jetson AGX Thor TI INA238/INA3221 in satb-harness and communication-avalanche). Host hardware/OS counters (RAPL, Darwin IOReport, NVML) are labeled reported_j. Analytical or datasheet figures are labeled est_j.",
+        "studio_disclosure": "Every study opens with its three plain-language takeaways—free of unexplained acronyms—and expands across four depth slots (15s, 45s, 90s, and 3 minutes) narrated by a 21-presenter global studio voice ensemble via ElevenLabs eleven_v4.",
+        "metering_contract": "Every energy number states in plain words how it was obtained: direct circuit-board power sensors (in Metered Commit Gates, Satiation Benchmark Harness, and The Communication Tool Avalanche), built-in computer chip counters, or mathematical physics bounds.",
         "studies": catalog_studies,
     }
     with open(args.catalog_out, "w", encoding="utf-8") as cf_out:

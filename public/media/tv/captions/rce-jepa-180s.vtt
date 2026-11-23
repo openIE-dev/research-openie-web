@@ -1,0 +1,110 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — rce-jepa (180s) Narrator Jyothi
+
+1
+00:00:00.360 --> 00:00:03.483
+First, instead of guessing raw code word by word,
+
+2
+00:00:03.483 --> 00:00:07.180
+small models predict compact summaries of program meaning.
+
+3
+00:00:07.740 --> 00:00:11.404
+Second, any AI model may propose a candidate program,
+
+4
+00:00:11.404 --> 00:00:14.653
+but a fast, strict checker decides what passes.
+
+5
+00:00:15.213 --> 00:00:20.259
+Third, checking uses seventeen hundred times less energy than generating,
+
+6
+00:00:20.259 --> 00:00:22.885
+and saved fixes slash big model calls.
+
+7
+00:00:23.445 --> 00:00:29.433
+For seventy years, computer science has chased one dream: describe what you want and get a
+
+8
+00:00:29.433 --> 00:00:36.752
+working program. Modern language models generate fluent text, yet predicting surface code word by word tangles
+
+9
+00:00:36.752 --> 00:00:43.738
+core meaning with punctuation trivia, burns tens of joules per guess, and quietly invents edge-case bugs.
+
+10
+00:00:44.298 --> 00:00:50.399
+In visual world models, joint embedding predictors plan ahead by predicting compact summaries of a
+
+11
+00:00:50.399 --> 00:00:56.376
+scene instead of rendering every blade of grass. Software needs one decisive addition: because a
+
+12
+00:00:56.376 --> 00:01:03.598
+single unhandled input breaks execution, a fast deterministic checker must inspect every candidate before admission.
+
+13
+00:01:04.158 --> 00:01:10.960
+Our World Coding cascade runs strictly from cheapest to dearest. First, exact deterministic rules close one
+
+14
+00:01:10.960 --> 00:01:20.240
+hundred eleven of one hundred fifty-one real-history tasks with zero neural calls. Second, an eight-point-four-million-parameter meaning predictor
+
+15
+00:01:20.240 --> 00:01:28.631
+and six-million-parameter energy scorer propose and rank blueprints in millijoules. Third, frontier models tackle only what remains.
+
+16
+00:01:29.191 --> 00:01:35.522
+On Apple M5 Max chip counters, checking one blueprint costs forty-nine millijoules versus eighty-four point two
+
+17
+00:01:35.522 --> 00:01:43.850
+five joules for a local thirty-five-billion-parameter draft—seventeen hundred eighteen times cheaper. Trained on strictly disjoint blueprints, our
+
+18
+00:01:43.850 --> 00:01:52.690
+span-normalized six-million-parameter energy scorer tracks five-step repair depth with ninety-four percent consistency, cutting checker calls over twofold.
+
+19
+00:01:53.250 --> 00:02:01.556
+In this three-dimensional architecture, every learned proposer—whether latent predictor, diffusion sampler, evolutionary search, or cloud
+
+20
+00:02:01.556 --> 00:02:09.013
+reasoner—lives outside the trust boundary. Accepted blueprints enter the verified polyhedron, replay bit-for-bit across ten
+
+21
+00:02:09.013 --> 00:02:16.106
+thousand five hundred six-language streams with zero mutant leaks, and crystallize into instant memory-mapped lookup.
+
+22
+00:02:16.666 --> 00:02:23.143
+Across the forty open tasks left by rules alone, up to five rounds of exact checker error feedback with public
+
+23
+00:02:23.143 --> 00:02:30.796
+standard-library signatures lift Claude Opus and Sonnet to forty out of forty with zero contradictions, and Grok to thirty-nine of
+
+24
+00:02:30.796 --> 00:02:39.569
+forty. Crystallized lookup replays in one point seven seven microjoules, cutting two hundred Zipf-distributed arrivals down to twelve frontier calls.
+
+25
+00:02:40.129 --> 00:02:47.215
+Pre-registered thresholds govern without exceptions: when the outside stochastic repair step closed three of one hundred
+
+26
+00:02:47.215 --> 00:02:53.180
+nineteen tasks—two point five percent against a strict two point zero percent cap—it stayed locked in
+
+27
+00:02:53.180 --> 00:03:01.152
+observation mode. Full from-scratch intent synthesis, multi-module energy calibration, and external wall-plug power meters remain open.

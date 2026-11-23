@@ -1,0 +1,98 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — satiation (180s) Narrator Gabriel
+
+1
+00:00:00.360 --> 00:00:06.175
+First, every job has a finish line, and extra computer work after that point is waste.
+
+2
+00:00:06.735 --> 00:00:13.462
+Second, cheaper computer work makes people start many more jobs, so total use can keep rising.
+
+3
+00:00:14.022 --> 00:00:20.854
+Third, money prices for AI are falling fast, but the electricity it burns is never free.
+
+4
+00:00:21.414 --> 00:00:28.045
+Today two loud stories talk past each other. Market bulls draw upward demand curves assuming every
+
+5
+00:00:28.045 --> 00:00:35.216
+single prompt wants ten times more compute forever, while skeptics argue that finite chores cap the entire
+
+6
+00:00:35.216 --> 00:00:41.576
+AI industry. Both get the math wrong because they blur one single job into the entire economy.
+
+7
+00:00:42.136 --> 00:00:49.986
+In eighteen sixty-five, economist William Stanley Jevons observed that more efficient steam engines cut the coal needed
+
+8
+00:00:49.986 --> 00:00:56.186
+for one factory task, yet drove Britain to burn far more coal overall as new industries became
+
+9
+00:00:56.186 --> 00:01:03.442
+affordable. One clean dish needs zero extra soap, even while cheaper soap opens busy new kitchens across town.
+
+10
+00:01:04.002 --> 00:01:12.651
+Turning consumer satiation theory into working software takes four steps. First, state a concrete completion check in
+
+11
+00:01:12.651 --> 00:01:22.040
+plain rules—tests green, ledger discrepancy zero, or hospital handoff checklist signed. Second, stop calling models the instant
+
+12
+00:01:22.040 --> 00:01:30.393
+that check turns true. Third, block extra calls that undo completion. Fourth, track new task arrivals separately.
+
+13
+00:01:30.953 --> 00:01:38.867
+John Maynard Keynes distinguished finite practical chores from open-ended status competition. On any finite chore, value
+
+14
+00:01:38.867 --> 00:01:45.395
+rises until the written check passes and then flattens to zero—or turns negative when extra chatter
+
+15
+00:01:45.395 --> 00:01:53.967
+introduces errors. Across the wider queue, however, forty-seven percent quarterly price drops invite previously uneconomic chores.
+
+16
+00:01:54.527 --> 00:02:01.951
+Our three-dimensional surface separates single-task effort along one axis from economy-wide task count along the second
+
+17
+00:02:01.951 --> 00:02:07.690
+and physical energy on the vertical axis. Past each job's finish line sits a flat zero-value
+
+18
+00:02:07.690 --> 00:02:15.674
+plateau, while total workload climbs above an unyielding thermodynamic floor of silicon memory movement and data-center cooling.
+
+19
+00:02:16.234 --> 00:02:24.404
+Epoch AI documents fixed-capability inference prices dropping roughly thirteen times a year since twenty twenty-three, and
+
+20
+00:02:24.404 --> 00:02:31.100
+nine to nine hundred times across benchmarks, aided by compact typed decision models. Yet as William
+
+21
+00:02:31.100 --> 00:02:39.805
+Baumol explained, cheaper digital text never makes nursing time, legal accountability, physical actuators, or grid megawatts free.
+
+22
+00:02:40.365 --> 00:02:48.874
+Scientific clarity demands stating what remains unmeasured. This paper establishes operational definitions and audits published price
+
+23
+00:02:48.874 --> 00:02:56.615
+series, historical technology cycles, attention markets, and silicon chip energy physics; it does not report a randomized
+
+24
+00:02:56.615 --> 00:03:04.483
+field trial, a completion-detector error rate, an econometric rebound fit, or any circuit-board or wall-plug power reading.

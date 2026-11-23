@@ -1,0 +1,42 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — lut-adapt (45s) Narrator Jenny
+
+1
+00:00:00.280 --> 00:00:03.026
+First, most requests repeat solved patterns,
+
+2
+00:00:03.026 --> 00:00:07.396
+so running a giant neural network every time wastes memory and energy.
+
+3
+00:00:07.836 --> 00:00:11.141
+Second, this cascade checks tiny truth tables first and
+
+4
+00:00:11.141 --> 00:00:14.867
+streams specialist model slices from storage only when needed.
+
+5
+00:00:15.307 --> 00:00:18.764
+Third, once an automated test certifies a new answer,
+
+6
+00:00:18.764 --> 00:00:22.352
+it compiles downward into a reusable millisecond skill.
+
+7
+00:00:22.792 --> 00:00:28.814
+Learning a tough piano measure takes slow concentration once, then turns into effortless muscle memory.
+
+8
+00:00:28.814 --> 00:00:35.478
+Yet computers usually keep sixty-six gigabytes of neural weights wired in RAM just to solve recurring coding bugs.
+
+9
+00:00:35.918 --> 00:00:42.443
+Streaming four-bit specialist slices holds a thirty-five-billion-parameter model inside nine hundred seventy megabytes of
+
+10
+00:00:42.443 --> 00:00:48.267
+active RAM while compiling verified fixes downward into sub-millisecond lookups with zero broken code edits.

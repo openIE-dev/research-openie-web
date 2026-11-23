@@ -1,0 +1,106 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — game-engines (180s) Narrator Charlie
+
+1
+00:00:00.360 --> 00:00:02.940
+First, with exact whole-number physics,
+
+2
+00:00:02.940 --> 00:00:08.694
+one game blueprint replays identically across Windows, macOS, Linux, and major engines.
+
+3
+00:00:09.254 --> 00:00:16.669
+Second, standard decimal math drifts across operating systems within thirty-seven frames, splitting chaotic collisions apart.
+
+4
+00:00:17.229 --> 00:00:20.181
+Third, graphics cards differ slightly on pixels,
+
+5
+00:00:20.181 --> 00:00:24.117
+so rendering sits safely behind a one-way visual tolerance gate.
+
+6
+00:00:24.677 --> 00:00:31.372
+Modern game engines tangle gameplay rules, rigid-body collisions, scene asset links, and graphics shaders into one
+
+7
+00:00:31.372 --> 00:00:37.950
+big loop. Even with strict floating-point compiler flags enabled, standard sine and cosine libraries on Windows,
+
+8
+00:00:37.950 --> 00:00:45.526
+macOS, and Linux disagree within ten to thirty-seven frames—shattering cross-machine multiplayer replays in less than one second.
+
+9
+00:00:46.086 --> 00:00:51.569
+Picture a break shot on a billiard table: every collision multiplies any microscopic angle error
+
+10
+00:00:51.569 --> 00:00:58.936
+exponentially along its chaos slope. Across eight hundred forty paired chaotic trajectories, tightening initial decimal precision
+
+11
+00:00:58.936 --> 00:01:05.447
+more than four trillionfold bought only six to fourteen extra seconds before simulated worlds diverged completely.
+
+12
+00:01:06.007 --> 00:01:12.340
+Our nine-suite empirical study draws a sharp architectural line. Upstream, simulation and gameplay scripts run in
+
+13
+00:01:12.340 --> 00:01:20.187
+sixty-four-bit fixed-point whole-number arithmetic inside one checked blueprint, while static manifest checks catch one hundred twenty-eight
+
+14
+00:01:20.187 --> 00:01:26.521
+of one hundred thirty broken scene and signal faults before launch. Downstream, graphics shaders only read state.
+
+15
+00:01:27.081 --> 00:01:33.758
+Upstream, deterministic whole-number arithmetic holds every state checkpoint identical across Rust, C plus plus,
+
+16
+00:01:33.758 --> 00:01:42.581
+WebAssembly, JavaScript, and Python—replaying three full one-hour, two-hundred-sixteen-thousand-frame sessions across Windows, Linux, and macOS from
+
+17
+00:01:42.581 --> 00:01:49.676
+forty-four-point-six-kilobyte input logs alone, up to two hundred ninety times smaller than compressed state snapshots.
+
+18
+00:01:50.236 --> 00:01:55.995
+This three-dimensional gyroscopic arena shows Apple Silicon macOS, Zen and Intel Linux, and bare-metal
+
+19
+00:01:55.995 --> 00:02:02.883
+Windows 11 locked in exact simulation phase across thirty host-and-language combinations—while an unguarded floating-point
+
+20
+00:02:02.883 --> 00:02:10.111
+ghost trajectory peels away within frames whenever transcendental functions or fused multiply-add instructions enter collisions.
+
+21
+00:02:10.671 --> 00:02:18.952
+Across seventeen game behaviors from Haunted Jaunt, Survival Shooter, and Tanks, blueprints cut behavior code seventy-six percent versus Unity
+
+22
+00:02:18.952 --> 00:02:26.534
+C-sharp, sixty-one percent versus Bevy Rust, and fifty-two percent versus Godot script with zero trace mismatches. Compiled C plus
+
+23
+00:02:26.534 --> 00:02:34.641
+plus steps ten thousand actors in fifty-eight microseconds and one point seven millijoules, and thirty-six Godot tasks match tick-for-tick.
+
+24
+00:02:35.201 --> 00:02:43.457
+Testing eight hardware graphics endpoints across DirectX 12, Apple Metal, and Vulkan proved a crucial negative boundary: even on the exact
+
+25
+00:02:43.457 --> 00:02:50.936
+same Nvidia or Intel card, switching DirectX 12 to Vulkan flips one tiny color step out of two hundred fifty-five. Perceptual
+
+26
+00:02:50.936 --> 00:02:59.432
+tolerance passes all twenty-eight hardware pairs cleanly, all nine falsifier suites stand closed, and chip counters claim no wall power meter.

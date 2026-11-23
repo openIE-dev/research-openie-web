@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — ai-reads-human (15s) Narrator Sean
+
+1
+00:00:00.240 --> 00:00:04.464
+First, computers often swap data in text formats written for human eyes,
+
+2
+00:00:04.464 --> 00:00:06.634
+forcing machines to spend extra work.
+
+3
+00:00:06.994 --> 00:00:10.707
+Second, reading indented configuration text took over two thousand
+
+4
+00:00:10.707 --> 00:00:14.082
+times more chip energy than reading compact machine numbers.
+
+5
+00:00:14.442 --> 00:00:17.995
+Third, chopping structured text into AI word pieces burned
+
+6
+00:00:17.995 --> 00:00:21.303
+twelve times more energy than parsing the text itself.

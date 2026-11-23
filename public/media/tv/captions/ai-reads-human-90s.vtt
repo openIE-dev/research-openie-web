@@ -1,46 +1,70 @@
 WEBVTT
-NOTE OpenIE Research TV — ai-reads-human (90s) Narrator Sean
+NOTE OpenIE Research TV v3.0 — ai-reads-human (90s) Narrator Sean
 
 1
-00:00:01.374 --> 00:00:08.872
-Modern MCP and JSON-RPC agent stacks convert typed memory into UTF-8 text,
+00:00:00.320 --> 00:00:05.127
+First, computers often swap data in text formats written for human eyes,
 
 2
-00:00:08.872 --> 00:00:12.824
-BPE tokens, and AST dicts on every hop.
+00:00:05.127 --> 00:00:07.598
+forcing machines to spend extra work.
 
 3
-00:00:16.263 --> 00:00:21.604
-By locking a 20,000-record corpus across 34 parsers and tokenizers,
+00:00:08.098 --> 00:00:12.320
+Second, reading indented configuration text took over two thousand
 
 4
-00:00:21.604 --> 00:00:26.149
-every layer of serialization overhead becomes measurable.
+00:00:12.320 --> 00:00:16.158
+times more chip energy than reading compact machine numbers.
 
 5
-00:00:29.588 --> 00:00:34.817
-This three-dimensional funnel contrasts sprawling JSON and YAML
+00:00:16.658 --> 00:00:20.702
+Third, chopping structured text into AI word pieces burned
 
 6
-00:00:34.817 --> 00:00:40.130
-token clouds against compact 280-nanojoule fixed binary records.
+00:00:20.702 --> 00:00:24.468
+twelve times more energy than parsing the text itself.
 
 7
-00:00:43.569 --> 00:00:50.326
-Even fast C libyaml burns 249 times more energy than binary structs,
+00:00:24.968 --> 00:00:30.489
+Formats full of curly braces, commas, and indented spaces were designed so people could
 
 8
-00:00:50.326 --> 00:00:55.892
-while BPE tokenization adds 27.7 microjoules per record.
+00:00:30.489 --> 00:00:36.074
+inspect files comfortably in text editors. Yet modern AI tool pipelines pass millions of
 
 9
-00:00:59.330 --> 00:01:08.148
-Executable specification tests expose real-world silent data corruption across loose text parsers alongside energy bloat.
+00:00:36.074 --> 00:00:41.722
+those verbose text records strictly from machine to machine without a human ever looking.
 
 10
-00:01:11.587 --> 00:01:19.413
-Dual-channel harnesses separate clean process L3 counters from noisy shared-host L2 windows,
+00:00:42.222 --> 00:00:46.964
+We named this extra work the impedance tax and tested thirty-four parsing and
 
 11
-00:01:19.413 --> 00:01:22.305
-leaving measured_j honestly unset.
+00:00:46.964 --> 00:00:53.615
+word-splitting workloads across twenty thousand records. Running each pass inside an isolated worker process
+
+12
+00:00:53.615 --> 00:00:59.589
+on an Apple processor cleanly separated tiny parsing costs from noisy background laptop activity.
+
+13
+00:01:00.089 --> 00:01:06.617
+Unpacking a twenty-three-byte binary record used two hundred eighty nanojoules. Standard bracketed text
+
+14
+00:01:06.617 --> 00:01:12.067
+used nearly eight times more, compiled indented text used two hundred forty-nine times
+
+15
+00:01:12.067 --> 00:01:17.771
+more, and pure Python indented text burned two thousand fifty-four times more chip energy.
+
+16
+00:01:18.271 --> 00:01:26.048
+Even adding two spaces of pretty indentation more than doubled AI word-splitting energy to seventy-one microjoules per record.
+
+17
+00:01:26.048 --> 00:01:31.355
+Keep internal machine pipes compact and binary, and format text only when people read.

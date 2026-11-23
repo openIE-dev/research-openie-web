@@ -1,0 +1,110 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — ai-reads-human (180s) Narrator Sean
+
+1
+00:00:00.360 --> 00:00:05.167
+First, computers often swap data in text formats written for human eyes,
+
+2
+00:00:05.167 --> 00:00:07.638
+forcing machines to spend extra work.
+
+3
+00:00:08.198 --> 00:00:12.420
+Second, reading indented configuration text took over two thousand
+
+4
+00:00:12.420 --> 00:00:16.258
+times more chip energy than reading compact machine numbers.
+
+5
+00:00:16.818 --> 00:00:20.862
+Third, chopping structured text into AI word pieces burned
+
+6
+00:00:20.862 --> 00:00:24.628
+twelve times more energy than parsing the text itself.
+
+7
+00:00:25.188 --> 00:00:32.186
+Why do two servers sitting inches apart exchange data in spelled-out English punctuation? Over four decades, web
+
+8
+00:00:32.186 --> 00:00:39.808
+specifications put human readability ahead of machine efficiency so engineers could inspect messages in text editors. When
+
+9
+00:00:39.808 --> 00:00:47.243
+autonomous AI agents arrived, developers stacked millions of automated tool calls right on top of those chatty formats.
+
+10
+00:00:47.803 --> 00:00:54.621
+Picture two factory robots turning every bolt measurement into a typed business letter, sealing the envelope, and
+
+11
+00:00:54.621 --> 00:00:59.870
+hiring a clerk on the other side to read every digit back into memory. Worse yet, loose
+
+12
+00:00:59.870 --> 00:01:07.472
+text rules smuggle silent bugs, like indented configuration parsers reading Norway's two-letter country code as a false value.
+
+13
+00:01:08.032 --> 00:01:14.099
+To put exact physical units on this impedance tax, we built a reproducible corpus of twenty thousand
+
+14
+00:01:14.099 --> 00:01:21.197
+structured records across twelve formats. Every parser and AI word-piece splitter ran five shuffled rounds inside its
+
+15
+00:01:21.197 --> 00:01:29.630
+own dedicated worker process, recording the operating system's built-in per-process chip energy counter alongside whole-chip power sensors.
+
+16
+00:01:30.190 --> 00:01:37.073
+The measured energy curve spans more than three orders of magnitude for the exact same underlying data. Fixed
+
+17
+00:01:37.073 --> 00:01:44.461
+binary unpacking sits at the floor at two hundred eighty nanojoules per record, standard bracketed text climbs nearly
+
+18
+00:01:44.461 --> 00:01:53.554
+eightfold, compiled indented text jumps two hundred forty-nine-fold, and pure Python indented text reaches five hundred seventy-six microjoules.
+
+19
+00:01:54.114 --> 00:02:03.409
+Our three-dimensional funnel contrasts sprawling clouds of braces, quotation marks, and repeated field names against dense twenty-three-byte binary
+
+20
+00:02:03.409 --> 00:02:10.555
+records backed by a shared word table. Simply adding two spaces of pretty indentation to structured text inflated
+
+21
+00:02:10.555 --> 00:02:17.511
+AI word-splitting energy two and a half times to seventy-one microjoules per record just to scan blank spaces.
+
+22
+00:02:18.071 --> 00:02:26.109
+Across all one hundred seventy measurement windows, chopping compact structured text into AI word pieces burned twenty-seven
+
+23
+00:02:26.109 --> 00:02:34.083
+thousand six hundred seventy-nine nanojoules per record. That single pre-processing step spent twelve and a half times more
+
+24
+00:02:34.083 --> 00:02:41.084
+CPU energy than parsing the text itself, and ninety-nine times more than reading binary, before any GPU ran.
+
+25
+00:02:41.644 --> 00:02:49.325
+Scientific rigor means stating clearly what counters can and cannot prove. Our five-percent idle-drift check caught background
+
+26
+00:02:49.325 --> 00:02:56.701
+co-tenant noise on one hundred nine of one hundred seventy whole-chip laptop windows, confirming why isolated per-process
+
+27
+00:02:56.701 --> 00:03:04.382
+chip counters were essential, while external wall-meter power probes and GPU model inference energy remain explicitly planned.

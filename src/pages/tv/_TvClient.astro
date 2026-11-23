@@ -10,12 +10,22 @@ const catalogJson = JSON.stringify(catalog);
 (function () {
   const CATALOG = JSON.parse(catalogJson);
   const STUDIES = CATALOG.studies || [];
-  const TIER_ORDER = ['5s', '30s', '60s', '90s'];
+  const TIER_ORDER = ['15s', '45s', '90s', '180s'];
+  const LEGACY_TIER_MAP = {
+    '5s': '15s',
+    '30s': '45s',
+    '60s': '90s',
+    '90s': '90s',
+    '15s': '15s',
+    '45s': '45s',
+    '180s': '180s',
+    '3m': '180s',
+  };
   const byId = Object.fromEntries(STUDIES.map((s) => [s.id, s]));
 
-  let activeStudyId = STUDIES[0]?.id || 'communication-avalanche';
-  let activeTier = '60s';
-  let playlistMode = null; // null | '60s' | '30s'
+  let activeStudyId = byId['communication-avalanche'] ? 'communication-avalanche' : (STUDIES[0]?.id || 'agency');
+  let activeTier = '90s';
+  let playlistMode = null; // null | '15s' | '90s'
   let activeCategory = 'All 21';
   let searchQuery = '';
   let playbackRate = 1.0;
@@ -25,6 +35,7 @@ const catalogJson = JSON.stringify(catalog);
   const titleEl = document.getElementById('tv-active-title');
   const catEl = document.getElementById('tv-active-category');
   const hookEl = document.getElementById('tv-active-hook');
+  const bulletsEl = document.getElementById('tv-active-bullets');
   const metricEl = document.getElementById('tv-active-metric');
   const energyBadgeEl = document.getElementById('tv-active-energy-tier');
   const energyDiscEl = document.getElementById('tv-active-energy-disc');
@@ -41,11 +52,20 @@ const catalogJson = JSON.stringify(catalog);
   const linkPdf = document.getElementById('tv-link-pdf');
   const linkAbout = document.getElementById('tv-link-about');
 
+  function normalizeTier(raw) {
+    if (!raw) return '90s';
+    return LEGACY_TIER_MAP[raw] || (TIER_ORDER.includes(raw) ? raw : '90s');
+  }
+
   function formatSec(sec) {
     const s = Math.max(0, Math.floor(sec));
     const m = Math.floor(s / 60);
     const r = s % 60;
     return String(m).padStart(2, '0') + ':' + String(r).padStart(2, '0');
+  }
+
+  function escHtml(s) {
+    return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
   function visibleStudyIds() {
@@ -56,8 +76,9 @@ const catalogJson = JSON.stringify(catalog);
       const hay = [
         s.id, s.title, s.short_title, s.category, s.headline_metric, s.energy_tier,
         s.narrator_name, s.narrator_profile,
-        s.tiers['5s']?.transcript, s.tiers['30s']?.transcript,
-        s.tiers['60s']?.transcript, s.tiers['90s']?.transcript,
+        ...(s.plain_bullets || []),
+        s.tiers['15s']?.transcript, s.tiers['45s']?.transcript,
+        s.tiers['90s']?.transcript, s.tiers['180s']?.transcript,
       ].join(' ').toLowerCase();
       return hay.includes(q);
     }).map((s) => s.id);
@@ -77,9 +98,7 @@ const catalogJson = JSON.stringify(catalog);
       btn.dataset.idx = String(idx);
       btn.innerHTML =
         '<span class="font-mono text-[11px] text-brand-cyan shrink-0 pt-0.5">' + formatSec(c.start) + '</span>' +
-        '<span class="font-body text-[13px] text-brand-light leading-snug">' +
-        c.text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
-        '</span>';
+        '<span class="font-body text-[13px] text-brand-light leading-snug">' + escHtml(c.text) + '</span>';
       btn.addEventListener('click', () => {
         if (videoEl) {
           videoEl.currentTime = c.start;
@@ -112,11 +131,16 @@ const catalogJson = JSON.stringify(catalog);
   function updateUIState(autoplay) {
     const study = byId[activeStudyId] || STUDIES[0];
     if (!study) return;
-    const tObj = study.tiers[activeTier] || study.tiers['60s'];
+    const tObj = study.tiers[activeTier] || study.tiers['90s'];
 
     if (titleEl) titleEl.textContent = study.title;
     if (catEl) catEl.textContent = study.category;
     if (hookEl) hookEl.textContent = tObj.hook;
+    if (bulletsEl) {
+      bulletsEl.innerHTML = (study.plain_bullets || [])
+        .map((b) => '<li>' + escHtml(b) + '</li>')
+        .join('');
+    }
     if (metricEl) metricEl.textContent = study.headline_metric;
     if (energyBadgeEl) energyBadgeEl.textContent = study.energy_tier;
     if (energyDiscEl) energyDiscEl.textContent = study.energy_disclosure;
@@ -129,8 +153,9 @@ const catalogJson = JSON.stringify(catalog);
     }
 
     if (epistEl) {
+      const tagMeanings = { T: 'Math Proof', E: 'Empirical Test', M: 'Model Run', S: 'Open Question' };
       epistEl.innerHTML = (study.epistemic_tags || [])
-        .map((tg) => '<span class="px-2 py-0.5 rounded font-mono text-[11px] border border-brand-cyan/40 text-brand-cyan bg-brand-cyan/10">[' + tg + ']</span>')
+        .map((tg) => '<span class="px-2 py-0.5 rounded font-mono text-[10.5px] border border-brand-cyan/35 text-brand-cyan bg-brand-cyan/10" title="' + escHtml(tagMeanings[tg] || tg) + '">' + escHtml(tagMeanings[tg] || tg) + '</span>')
         .join('');
     }
 
@@ -212,7 +237,6 @@ const catalogJson = JSON.stringify(catalog);
     updateUIState(autoplay);
   }
 
-  // Bind controls
   document.querySelectorAll('[data-tier-btn]').forEach((b) => {
     b.addEventListener('click', () => {
       const t = b.getAttribute('data-tier-btn');
@@ -270,7 +294,7 @@ const catalogJson = JSON.stringify(catalog);
   document.querySelectorAll('[data-card-play]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const sid = btn.getAttribute('data-study');
-      const tr = btn.getAttribute('data-tier') || activeTier;
+      const tr = normalizeTier(btn.getAttribute('data-tier') || activeTier);
       if (sid && byId[sid]) {
         playlistMode = null;
         activeStudyId = sid;
@@ -314,21 +338,19 @@ const catalogJson = JSON.stringify(catalog);
     }
   });
 
-  // Restore initial URL hash or query (?study=...&tier=... or #study:tier)
   const params = new URLSearchParams(window.location.search);
   const qStudy = params.get('study');
   const qTier = params.get('tier');
   const rawHash = (window.location.hash || '').replace(/^#/, '');
   if (qStudy && byId[qStudy]) {
     activeStudyId = qStudy;
-    if (qTier && TIER_ORDER.includes(qTier)) activeTier = qTier;
+    if (qTier) activeTier = normalizeTier(qTier);
   } else if (rawHash) {
     const [hId, hTier] = rawHash.split(':');
     if (hId && byId[hId]) activeStudyId = hId;
-    if (hTier && TIER_ORDER.includes(hTier)) activeTier = hTier;
+    if (hTier) activeTier = normalizeTier(hTier);
   }
 
-  // Expose WebMCP / agentic browser API on window.openieTV
   window.openieTV = {
     version: CATALOG.version,
     listFilms() {
@@ -348,6 +370,7 @@ const catalogJson = JSON.stringify(catalog);
             poster_url: s.poster_url,
             narrator_name: s.narrator_name,
             narrator_profile: s.narrator_profile,
+            plain_bullets: s.plain_bullets,
             tutorial_lab_id: s.tutorial_lab_id,
             headline_metric: s.headline_metric,
             epistemic_tags: s.epistemic_tags,
@@ -357,24 +380,25 @@ const catalogJson = JSON.stringify(catalog);
       }
       return out;
     },
-    play(studyId, tier = '60s') {
+    play(studyId, tier = '90s') {
       if (!byId[studyId]) throw new Error('Unknown studyId: ' + studyId);
-      const cleanTier = TIER_ORDER.includes(tier) ? tier : '60s';
+      const cleanTier = normalizeTier(tier);
       playlistMode = null;
       activeStudyId = studyId;
       activeTier = cleanTier;
       updateUIState(true);
       return { study_id: activeStudyId, tier: activeTier, video_url: byId[studyId].tiers[cleanTier].video_url };
     },
-    getTranscript(studyId, tier = '60s') {
+    getTranscript(studyId, tier = '90s') {
       const s = byId[studyId];
       if (!s) return null;
-      const cleanTier = TIER_ORDER.includes(tier) ? tier : '60s';
+      const cleanTier = normalizeTier(tier);
       const td = s.tiers[cleanTier];
       return {
         study_id: s.id,
         title: s.title,
         tier: cleanTier,
+        plain_bullets: s.plain_bullets,
         narrator_name: s.narrator_name,
         narrator_profile: s.narrator_profile,
         duration_s: td.duration_s,

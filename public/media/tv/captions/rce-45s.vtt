@@ -1,0 +1,46 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — rce (45s) Narrator Alice
+
+1
+00:00:00.280 --> 00:00:04.026
+First, you write a program once as one clear blueprint,
+
+2
+00:00:04.026 --> 00:00:07.976
+and the computer generates matching code across languages.
+
+3
+00:00:08.416 --> 00:00:13.172
+Second, every possible input must have a declared outcome up front,
+
+4
+00:00:13.172 --> 00:00:16.508
+preventing hidden crashes before anything runs.
+
+5
+00:00:16.948 --> 00:00:21.676
+Third, every repair that passes the checker is saved and reused,
+
+6
+00:00:21.676 --> 00:00:24.261
+so you never pay twice for one fix.
+
+7
+00:00:24.701 --> 00:00:30.654
+In ordinary software, even simple division of negative numbers gives different answers
+
+8
+00:00:30.654 --> 00:00:35.015
+in Python and C. Instead of rewriting logic four times by hand,
+
+9
+00:00:35.015 --> 00:00:40.345
+the Reality Code Engine checks one master blueprint and prints matching code.
+
+10
+00:00:40.785 --> 00:00:48.283
+Checking one blueprint takes just seven milliseconds and forty-nine millijoules on an Apple M5 Max chip counter,
+
+11
+00:00:48.283 --> 00:00:51.965
+turning software reliability into an upfront guarantee.

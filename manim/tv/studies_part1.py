@@ -1,9 +1,157 @@
 #!/usr/bin/env python3
 """
-OpenIE Research TV — Bespoke 4-Tier Film Scripts & Visual Directives (Part 1: Studies 1–7).
+OpenIE Research TV v3.0 — Plain-Words First, Telescoping Depth, Zero Acronym Soup (Part 1: Studies 1–7).
 Covers: agency, gates, deterministic-null, satb-harness, time-as-an-index,
         communication-avalanche, lut-adapt.
 """
+
+_AGENCY_OPENING = [
+    (
+        "bullet_focus_1",
+        "WHAT COUNTS AS AN AGENT",
+        "Key Point 1 of 3 · In Plain Words",
+        "First, an agent must aim at a goal, act on the world, and stay within an energy budget.",
+    ),
+    (
+        "bullet_focus_2",
+        "NATURE PRICES EVERY DECISION",
+        "Key Point 2 of 3 · In Plain Words",
+        "Second, physics prices every decision, creating one optimal pace between slow idle drain and frantic switching waste.",
+    ),
+    (
+        "bullet_focus_3",
+        "FINISH RIGHT, SPEND LESS",
+        "Key Point 3 of 3 · In Plain Words",
+        "Third, among systems that finish a task correctly, the smarter one is whichever spent less energy.",
+    ),
+]
+
+_GATES_OPENING = [
+    (
+        "bullet_focus_1",
+        "CHECK BEFORE IRREVERSIBLE ACTS",
+        "Key Point 1 of 3 · In Plain Words",
+        "First, a computer should not take an irreversible action until an independent check confirms it is safe.",
+    ),
+    (
+        "bullet_focus_2",
+        "TRY THE CHEAPEST METHOD FIRST",
+        "Key Point 2 of 3 · In Plain Words",
+        "Second, it should try the cheapest method first and wake a large AI model only when simpler tools miss.",
+    ),
+    (
+        "bullet_focus_3",
+        "EVERY DECISION LEAVES A RECEIPT",
+        "Key Point 3 of 3 · In Plain Words",
+        "Third, every decision is written to a receipt with the energy it used, so anyone can audit it later.",
+    ),
+]
+
+_DNULL_OPENING = [
+    (
+        "bullet_focus_1",
+        "THE MISSING CONTROL GROUP",
+        "Key Point 1 of 3 · In Plain Words",
+        "First, most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.",
+    ),
+    (
+        "bullet_focus_2",
+        "NINE OF TEN STRUCTURED TIES",
+        "Key Point 2 of 3 · In Plain Words",
+        "Second, on bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.",
+    ),
+    (
+        "bullet_focus_3",
+        "WHERE BIG MODELS TRULY SHINE",
+        "Key Point 3 of 3 · In Plain Words",
+        "Third, on open coding tasks AI leaped ahead, while caching verified answers cut repeat energy three point six times.",
+    ),
+]
+
+_SATB_OPENING = [
+    (
+        "bullet_focus_1",
+        "THE WRAPPER CHANGES THE SCORE",
+        "Key Point 1 of 3 · In Plain Words",
+        "First, changing the wrapper around an AI model can swing scores as much as swapping the model.",
+    ),
+    (
+        "bullet_focus_2",
+        "ONE IDENTICAL EXAM FOR ALL",
+        "Key Point 2 of 3 · In Plain Words",
+        "Second, this test harness locks prompts, memory trimming, and tools so every AI takes the exact same exam.",
+    ),
+    (
+        "bullet_focus_3",
+        "HONEST POWER ACROSS FIVE HOSTS",
+        "Key Point 3 of 3 · In Plain Words",
+        "Third, across five computer types, it separates real board sensors from chip counters and blocks noisy power estimates.",
+    ),
+]
+
+_TIME_OPENING = [
+    (
+        "bullet_focus_1",
+        "IF TIME LOOPS EXISTED",
+        "Key Point 1 of 3 · In Plain Words",
+        "First, inside a mathematical time loop, almost every digital lock would break at once except a one-time secret pad.",
+    ),
+    (
+        "bullet_focus_2",
+        "NO BACKWARD SIGNALS IN PHYSICS",
+        "Key Point 2 of 3 · In Plain Words",
+        "Second, in known physics, no quantum trick, analog circuit, or reported anomaly sends readable answers backward in time.",
+    ),
+    (
+        "bullet_focus_3",
+        "EVERY SHORTCUT IS PAID UPFRONT",
+        "Key Point 3 of 3 · In Plain Words",
+        "Third, every fast lookup of a future answer is work paid upfront, which fresh random values defeat immediately.",
+    ),
+]
+
+_AVALANCHE_OPENING = [
+    (
+        "bullet_focus_1",
+        "HOW COLLECTIVE MINDS SCALE",
+        "Key Point 1 of 3 · In Plain Words",
+        "First, from ancient microbes to modern AI, groups scale by sharing signals across strict thresholds and safety gates.",
+    ),
+    (
+        "bullet_focus_2",
+        "QUIET WAKEUPS, VERIFIED HANDOFFS",
+        "Key Point 2 of 3 · In Plain Words",
+        "Second, event-driven wakeups and signed checks block bad edits and deliver far more verified work per joule.",
+    ),
+    (
+        "bullet_focus_3",
+        "TEN AI METHODS, CONSENT FIRST",
+        "Key Point 3 of 3 · In Plain Words",
+        "Third, ten AI approaches unite through tiny compiled routines, while future brain links stay grounded in strict consent.",
+    ),
+]
+
+_LUT_OPENING = [
+    (
+        "bullet_focus_1",
+        "STOP RE-SOLVING OLD PATTERNS",
+        "Key Point 1 of 3 · In Plain Words",
+        "First, most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.",
+    ),
+    (
+        "bullet_focus_2",
+        "TINY TABLES FIRST, STREAM ON MISS",
+        "Key Point 2 of 3 · In Plain Words",
+        "Second, this cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.",
+    ),
+    (
+        "bullet_focus_3",
+        "CERTIFY ONCE, REPLAY IN MILLISECONDS",
+        "Key Point 3 of 3 · In Plain Words",
+        "Third, once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill.",
+    ),
+]
+
 
 STUDIES_PART1 = [
     {
@@ -15,67 +163,148 @@ STUDIES_PART1 = [
         "pdf_url": "/pdfs/agency.pdf",
         "figures_url": "/living/",
         "about_url": "/about/agency/",
-        "tutorial_lab_id": "agency",
-        "voice": "Ava (Premium)",
+        "tutorial_lab_id": "lab-01-quorum-sepj",
         "cutaway_3d": "07_thermodynamic_tempo_manifold",
-        "cutaway_labels": [
-            ("Optimal Tempo ν*", "Peak dP/dE ridge", "amber"),
-            ("Landauer Floor", "k_B T ln 2 irreversible bit", "cyan"),
-            ("Goal Gate", "Completed run check", "emerald"),
-            ("Over-Clock Waste", "Superlinear heat loss", "rose"),
-        ],
-        "headline_metric": "Max Progress / Joule at Optimal Tempo ν*",
         "epistemic_tags": ["T", "E", "M"],
-        "energy_tier": "reported_j + analytical",
-        "energy_disclosure": "Pre-registered desktop & Jetson runs (reported_j) + Landauer kinematic bounds; board_metered=false.",
+        "plain_bullets": [
+            "An agent must aim at a goal, act on the world, and stay within an energy budget.",
+            "Physics prices every decision, creating one optimal pace between slow idle drain and frantic switching waste.",
+            "Among systems that finish a task correctly, the smarter one is whichever spent less energy.",
+        ],
+        "analogy": (
+            "Highway Fuel Trap",
+            "Crawl at walking speed and baseline engine idle drains the tank; floor the pedal and wind drag burns fuel fast.",
+            "One Sweet-Spot Pace",
+            "Goal-holding agents face the exact same physics: baseline power punishes hesitation while rapid memory resets punish rushing.",
+            "Pass the finish line first, then rank every finisher by total joules spent.",
+        ),
+        "headline_metric": "Finish Right First, Then Rank by Joules",
+        "energy_tier": "Chip Energy Counter",
+        "energy_disclosure": "Built-in laptop chip energy counters and physics bounds; no external wall meter.",
         "nodes": [
-            ("Energy Grant", "Fixed Joule Budget", "amber"),
-            ("Sense & Erase", "Landauer k_B T ln 2", "cyan"),
-            ("Optimal Tempo ν*", "Balance Idle vs Drag", "emerald"),
-            ("Goal Verified", "Rank by Joules Spent", "emerald"),
+            ("Scoreboards Ignore Energy", "Raw accuracy hides massive power waste", "rose"),
+            ("Predict & Act on World", "Fix a testable target before acting", "amber"),
+            ("Pace at Sweet-Spot Tempo", "Balance idle drain against reset drag", "cyan"),
+            ("Gate First, Rank by Joules", "Refuse over-budget runs cleanly", "emerald"),
         ],
-        "equation": ("η(ν) = v(ν) / [ P_0 + c_1 ν + c_2 ν² ]", "Progress per Joule peaks where marginal dynamic drag equals static leak P_0", "tempo_peak"),
+        "equation": (
+            "Progress per Joule = Task Speed / (Idle Drain + Action Drag)",
+            "Efficiency peaks at the exact pace where rushing drag matches baseline idle power.",
+            "tempo_peak",
+        ),
         "bars": [
-            ("Too Slow (Idle Leak)", 34, "Static P_0 dominates", "rose"),
-            ("Unbounded Max Clock", 51, "Quadratic drag burn", "amber"),
-            ("σ-Selector Optimal ν*", 94, "Peak progress / joule", "emerald"),
+            ("Unguided Random Baseline", 36, "10.7 / 30 closed · cheap fast failures", "rose"),
+            ("Fixed Cheapest-First Cascade", 66, "19.9 / 30 closed · 0 budget overspends", "cyan"),
+            ("Threshold Selector Policy", 76, "22.7 / 30 closed · top gated finisher", "emerald"),
         ],
-        "falsifier": ("Acceptor Pre-Registration", "Tested across desktop and Jetson runs under fixed correctness gates.", "Board shunt unset; host counters logged as reported_j.", "HOLD · T+E"),
+        "cutaway_labels": [
+            ("Sweet-Spot Tempo Ridge", "Highest verified progress per joule", "amber"),
+            ("Minimum Bit-Reset Floor", "Heat paid each time memory updates", "cyan"),
+            ("Completion Check Gate", "Wrong or unfinished runs score zero", "emerald"),
+            ("Rushing Heat Penalty", "Extra energy lost when acting too fast", "rose"),
+        ],
+        "falsifier": (
+            "What Replicated — and What Needed Better Sensors",
+            "Across two laptops and over twenty thousand runs, budget guards held overspends to zero and gated joules beat raw bit rates.",
+            "Tight-budget selector gains did not replicate, and sub-millisecond steps beat built-in chip counters, requiring wall or board sensors next.",
+            "HONEST BOUNDARY",
+        ),
         "tiers": {
-            "5s": {
-                "hook": "Intelligence on a completed task ranks by progress per joule, peaking at one physical tempo.",
-                "scenes": [
-                    ("flash_kinetic", "OPTIMAL AGENCY TEMPO", "Max dP / dE · Physics-Bounded", "To count as an agent, hold a goal under an energy budget: among finishers, lowest joules wins."),
-                ],
+            "15s": {
+                "hook": "Three plain truths about what makes a system an agent, why pace matters, and how energy ranks intelligence.",
+                "scenes": list(_AGENCY_OPENING),
             },
-            "30s": {
-                "hook": "Why running an AI agent either too fast or too slow wastes its energy budget.",
-                "scenes": [
-                    ("hook_contrast", "WHAT DEFINES AN AGENT?", "Goal + Action + Finite Energy", "What separates a goal-holding agent from a script? It must finish a job inside a physical energy budget."),
-                    ("state_cascade", "THE TWO ENERGY TRAPS", "Idle Leakage vs Dynamic Drag", "Act too slowly and static baseline power drains your battery. Act too frantically and switching drag explodes."),
-                    ("benchmark_bars", "THE OPTIMAL TEMPO RIDGE", "Peak Progress per Joule", "Between those two traps sits an exact optimal tempo where useful progress per joule reaches its physical peak."),
-                    ("horizon_slate", "CORRECTNESS FIRST, JOULES SECOND", "Pre-Registered Acceptor Runs", "Correctness is the gate, and joules order every system that passes it across pre-registered runs."),
-                ],
-            },
-            "60s": {
-                "hook": "Deriving kinematic speed limits and optimal action tempo from Landauer bit-erasure and static leakage.",
-                "scenes": [
-                    ("hook_contrast", "PHYSICS PRICES EVERY DECISION", "Irreversible State Updates Cost Energy", "Every time an agent updates memory to steer toward a goal, thermodynamics charges an irreversible energy floor."),
-                    ("state_cascade", "GOAL-HOLDING FEEDBACK LOOP", "Sense -> Decide -> Act -> Verify", "The study defines agency operationally: hold a target state against disturbance while spending from a finite joule grant."),
-                    ("equation_curve", "KINEMATIC TEMPO EQUATION", "ν* Balances Static P_0 and Dynamic Loss", "Dividing task velocity by static leakage plus dynamic switching power reveals a concave efficiency curve with a unique optimal tempo."),
-                    ("benchmark_bars", "PRE-REGISTERED ACCEPTOR RUNS", "Desktop & Embedded Verification", "Across pre-registered acceptor runs on desktop and embedded silicon, tempo-selected policies finish more verified episodes per reported joule."),
-                    ("horizon_slate", "PLAIN-LANGUAGE TAKEAWAY", "Finish Correctly, Spend Less Energy", "Benchmarks that ignore energy reward brute waste. Measure completion first, then rank finishers by joules spent."),
+            "45s": {
+                "hook": "Why running an AI agent too slowly or too frantically wastes energy, explained through highway fuel pacing.",
+                "scenes": list(_AGENCY_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "LIKE HIGHWAY FUEL PACING",
+                        "Idle Engine Drain vs Wind Drag",
+                        "Think of driving a car across a desert on one tank of fuel. Crawl at walking speed and baseline engine idle drains the tank; floor the pedal and air drag burns fuel before you arrive.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "CAPABILITY IS THE GATE",
+                        "Correctness First · Joules Rank Finishers",
+                        "Capability means crossing the finish line at all; intelligence means how little energy that verified completion took, turning raw AI leaderboards into honest physical measurements.",
+                    ),
                 ],
             },
             "90s": {
-                "hook": "Full walkthrough of thermodynamic bounds, kinematic tempo manifolds, and pre-registered acceptor experiments.",
-                "scenes": [
-                    ("hook_contrast", "BEYOND TOKEN THROUGHPUT", "Why Raw FLOPS Misses Agency", "Modern AI leaderboards count tokens per second or raw score, ignoring whether the machine burned a kilowatt or a milliwatt."),
-                    ("equation_curve", "THERMODYNAMIC KINEMATICS", "Landauer Floor + Basal Leak P_0", "Thermodynamic Bounds for Goal-Holding Agents derives exact rate limits linking bit erasure, channel capacity, and action cadence."),
-                    ("cutaway_3d", "3D EFFICIENCY MANIFOLD", "Blender 5.3 Saddle & Tempo Ridge", "On this three-dimensional tempo manifold, static idle draw punishes hesitation while superlinear dissipation punishes panic, carving a golden optimal ridge."),
-                    ("state_cascade", "THE GATE-AND-ORDER PRINCIPLE", "Pass Check -> Rank by Energy", "Unfinished or wrong runs score zero. Among agents that cross the verification gate, intelligence reads as progress per joule."),
-                    ("benchmark_bars", "MULTI-MACHINE EMPIRICAL RUNS", "Acceptor Episodes & Selector Arms", "Two pre-registered experimental rounds across desktop and Jetson hosts confirm that adaptive tempo selectors preserve budget without sacrificing task closure."),
-                    ("falsifier_audit", "EPISTEMIC & METERING CONTRACT", "reported_j vs Physical Rail Shunts", "Host counters are explicitly labeled reported_j rather than board-shunt measured_j, anchoring every physical claim to reproducible artifacts."),
+                "hook": "How thermodynamics defines agency, sets an optimal action pace, and exposes a subtle trap in raw efficiency scores.",
+                "scenes": list(_AGENCY_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "THE DESERT FUEL ANALOGY",
+                        "Why Hesitation and Panic Both Lose",
+                        "Picture driving across a wide desert on a strict fuel grant. Idling in traffic burns baseline power without moving you forward, while sprinting at top speed multiplies switching heat until your tank runs dry before reaching town.",
+                    ),
+                    (
+                        "state_cascade",
+                        "FOUR CLAUSES OF REAL AGENCY",
+                        "Predict -> Act -> Update -> Obey Budget",
+                        "To qualify as an agent, a system locks in a testable prediction before acting, changes the outside world rather than editing its own sensors, updates its internal state from the outcome, and writes a clean refusal receipt whenever the energy budget falls short.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "TWENTY THOUSAND GUARDED RUNS",
+                        "Why Completion Must Come Before Joules",
+                        "Across more than twenty thousand puzzle episodes on two laptops, an unguided random baseline looked great on raw bits per joule only because its fast failures were cheap, whereas gating by full task completion ranked our goal-holding selectors accurately.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "THE PRACTICAL DESIGN RULE",
+                        "Check Completion, Then Count Every Joule",
+                        "Stop mistaking brute energy spend for intelligence. Demand a verified correct answer first, enforce hard energy budgets with transparent refusal receipts, and rank every passing system strictly by total joules spent.",
+                    ),
+                ],
+            },
+            "180s": {
+                "hook": "Three-minute deep dive into thermodynamic agency bounds, the three-dimensional tempo ridge, and twenty thousand pre-registered runs.",
+                "scenes": list(_AGENCY_OPENING) + [
+                    (
+                        "hook_contrast",
+                        "WHY AI LEADERBOARDS MISLEAD",
+                        "Capability Confused With Intelligence",
+                        "Today's AI scoreboards celebrate whichever system gets the highest raw score, ignoring whether one answer burned a thousand watts or a thousandth of a watt. Pouring more electricity into a machine can buy capability, yet true intelligence means solving the exact same problem parsimoniously with minimal energy.",
+                    ),
+                    (
+                        "analogy_spotlight",
+                        "PACING AGAINST DRIFT AND HEAT",
+                        "Balancing Standing Power Against Reset Drag",
+                        "Imagine balancing an upright broomstick on your palm while walking on a strict calorie budget. Wait too long between corrections and the stick tips away while baseline metabolism drains your reserves; twitch too frantically and every rapid muscle reset dumps extra heat into the air for tiny gains.",
+                    ),
+                    (
+                        "state_cascade",
+                        "DEFINITION, PACE, AND CALCULUS",
+                        "Four Strict Clauses Plus Refusal Receipts",
+                        "The framework stacks three layers in a fixed order. First comes eligibility: fix a discriminating prediction beforehand, physically push on the outside world rather than editing your own sensors, update internal memory from the result, and stay inside your joule grant or log a refusal receipt. Next come speed limits, then hindsight intelligence.",
+                    ),
+                    (
+                        "equation_curve",
+                        "THE SWEET-SPOT TEMPO CURVE",
+                        "Where Idle Leakage Meets Switching Drag",
+                        "Every time a machine compares an outcome and resets memory over a closed cycle, physics charges a minimum heat floor per erased bit while idle circuits leak steady baseline watts. Dividing useful task velocity by both costs combined traces a smooth arch peaking at one optimal action pace where marginal drag equals baseline drain.",
+                    ),
+                    (
+                        "cutaway_3d",
+                        "INSIDE THE 3D TEMPO LANDSCAPE",
+                        "Physical Floor, Completion Gate & Optimal Ridge",
+                        "In this three-dimensional landscape, the flat lower plane marks nature's minimum heat price for updating a single bit of memory at room temperature. Steep walls on either side show slow idle battery drain and frantic high-speed heat waste, framing one golden ridge where verified progress per joule reaches its physical maximum.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "LAPTOP AND LINUX REPLICATIONS",
+                        "Guarded Puzzle Runs Across Forty Seeds",
+                        "Across pre-registered forty-seed puzzle benchmarks on two computers, moving receipt writing inside the budget guard reduced overspends to zero across ten thousand eight hundred runs. Requiring task completion first stopped a cheap-failing random baseline from gaming raw bit rates, while our threshold selector closed more tasks than a fixed cascade at loose budgets.",
+                    ),
+                    (
+                        "falsifier_audit",
+                        "WHAT FAILED AND WHAT WE LEARNED",
+                        "Chip Counter Limits & Honest Boundaries",
+                        "Scientific honesty requires reporting every failed check alongside every success. Tight-budget selector gains from our first exploratory run did not replicate, shared tasks used equal energy, and built-in Linux chip counters missed sub-millisecond steps completely, proving why dedicated quiet hosts and external wall or circuit-board power sensors must come next.",
+                    ),
                 ],
             },
         },
@@ -89,67 +318,148 @@ STUDIES_PART1 = [
         "pdf_url": "/pdfs/gates.pdf",
         "figures_url": "/living/ni/",
         "about_url": "/about/gates/",
-        "tutorial_lab_id": "gates",
-        "voice": "Allison (Enhanced)",
+        "tutorial_lab_id": "lab-02-attested-orchestrator",
         "cutaway_3d": "01_silicon_kv260_lut6",
-        "cutaway_labels": [
-            ("KV260 INA260 Shunt", "11,428 pJ / gate cycle", "amber"),
-            ("Cheap Rung First", "Deterministic LUT / check", "cyan"),
-            ("Commit Latch", "Act only if check passes", "emerald"),
-            ("Refusal Receipt", "Unsafe act blocked", "rose"),
-        ],
-        "headline_metric": "11,428 pJ / cycle (KV260 measured_j)",
         "epistemic_tags": ["T", "E"],
-        "energy_tier": "measured_j",
-        "energy_disclosure": "KV260 INA260 physical board rail shunt measured_j (11,428 pJ/gate cycle, whole module) + software cascade receipts.",
+        "plain_bullets": [
+            "A computer should not take an irreversible action until an independent check confirms it is safe.",
+            "It should try the cheapest method first and wake a large AI model only when simpler tools miss.",
+            "Every decision is written to a receipt with the energy it used, so anyone can audit it later.",
+        ],
+        "analogy": (
+            "Apologizing After Damage",
+            "Letting an AI delete files or send money first and apologizing after a mistake cannot undo real-world harm.",
+            "Two-Key Safety Interlock",
+            "Like a cockpit lock that blocks unsafe switches before anything moves, a commit gate checks rules and budget upfront.",
+            "Proposals never authorize themselves; only verified actions cross into the real world.",
+        ),
+        "headline_metric": "11,428 Picojoules per Hardware Gate Check",
+        "energy_tier": "Board Power Sensor",
+        "energy_disclosure": "Direct circuit-board power sensor on vision module; software runs stay estimates.",
         "nodes": [
-            ("Cheap Rung 0", "Table / Rule Check", "cyan"),
-            ("Cascade Escalate", "Only on Miss", "amber"),
-            ("Commit Gate", "Verify Before Side Effect", "emerald"),
-            ("Signed Receipt", "11,428 pJ KV260 Shunt", "amber"),
+            ("Self-Approved AI Actions", "Unchecked guesses cause undoable harm", "rose"),
+            ("Cheapest Method First", "Try table lookup, formula, then solver", "cyan"),
+            ("Independent Safety Gate", "Check safety rule and energy budget", "amber"),
+            ("Verified Commit Receipt", "11,428 picojoules per board check", "emerald"),
         ],
-        "equation": ("ECC = Σ E_attempt / N_verified_commits", "Energy-to-Correct-Completion penalizes unverified retries and irreversible rollbacks", "cascade_drop"),
+        "equation": (
+            "Total Energy to Finish Right = All Attempt Energy / Verified Completions",
+            "Failed guesses and unsafe retries count against you, rewarding cheap early checks.",
+            "cascade_drop",
+        ),
         "bars": [
-            ("Ungated Frontier Retries", 92, "High energy + rollback risk", "rose"),
-            ("Software Cascade + Gate", 24, "Cheapest rung absorbs hits", "cyan"),
-            ("KV260 Hardware Gate Rung", 6, "11,428 pJ / cycle measured_j", "emerald"),
+            ("Ungated Model Retries", 90, "Repeated heavy runs + undoable side effects", "rose"),
+            ("Cheapest-First Software Cascade", 24, "0 unsafe allows across 209,261 checks", "cyan"),
+            ("Metered Hardware Gate Cycle", 6, "11,428 picojoules on board power sensor", "emerald"),
         ],
-        "falsifier": ("Board-Level Shunt Boundary", "KV260 INA260 measures whole-module 11,428 pJ per gate cycle.", "Software cascade arms stay labeled software/reported, never conflated with board shunts.", "MEASURED_J · KV260"),
+        "cutaway_labels": [
+            ("Circuit-Board Power Sensor", "11,428 picojoules per whole-board check", "amber"),
+            ("Fast Rule Lookup Table", "Checks safety rules without a big model", "cyan"),
+            ("Permission Latch", "Blocks side effects unless checks pass", "emerald"),
+            ("Typed Refusal Receipt", "Logs why an unsafe action was stopped", "rose"),
+        ],
+        "falsifier": (
+            "Whole-Module Sensor vs Isolated Chip Core",
+            "Direct circuit-board sensor measured 11,428 picojoules per gate cycle, and discrete checks allowed zero unsafe acts in 209,261 tests.",
+            "That reading covers the whole module supply rather than an isolated logic rail, and the tiny 98-picojoule seed test stayed inconclusive.",
+            "BOARD POWER VERIFIED",
+        ),
         "tiers": {
-            "5s": {
-                "hook": "Never execute an irreversible action until a deterministic gate passes—at 11,428 picojoules per cycle on KV260.",
-                "scenes": [
-                    ("flash_kinetic", "COMMIT GATE VERIFIED", "11,428 pJ / cycle · KV260 measured_j", "Check before every irreversible act: 11,428 picojoules per gate cycle on KV260."),
-                ],
+            "15s": {
+                "hook": "Why computers must check before taking undoable actions, start with the cheapest tool, and log every joule.",
+                "scenes": list(_GATES_OPENING),
             },
-            "30s": {
-                "hook": "How a Mixture-of-Limits cascade plus a hardware commit gate stops bad agent actions before they happen.",
-                "scenes": [
-                    ("hook_contrast", "UNDOABLE AGENT MISTAKES", "Why Guessing First Breaks Systems", "When an AI agent deletes data or sends money, guessing with a giant model and apologizing later fails."),
-                    ("state_cascade", "CHEAPEST RUNG FIRST", "Cascade + Deterministic Gate", "Metered Commit Gates puts a fast, cheap check in front of every irreversible side effect and escalates only when needed."),
-                    ("benchmark_bars", "BOARD-SHUNT SILICON READING", "11,428 pJ / Gate Cycle on KV260", "On an AMD Kria KV260 board with an INA260 rail sensor, one whole-module gate cycle reads 11,428 picojoules."),
-                    ("horizon_slate", "ADMIT OR REFUSE WITH RECEIPT", "Zero Silent Side Effects", "Every decision either passes the check or logs a clean refusal receipt with its energy cost."),
-                ],
-            },
-            "60s": {
-                "hook": "Energy-to-Correct-Completion, Mixture-of-Limits cascades, and KV260 INA260 board-level energy telemetry.",
-                "scenes": [
-                    ("hook_contrast", "THE COST OF WRONG ACTIONS", "Energy-to-Correct-Completion", "Cheap per-token inference still wastes joules if ten unverified guesses corrupt state and force human cleanup."),
-                    ("state_cascade", "MIXTURE OF LIMITS CASCADE", "Exact Lookup -> Small Solver -> Model", "A Mixture of Limits cascade tries deterministic tables and lightweight checks first, waking heavy models only on novel inputs."),
-                    ("equation_curve", "GATE INVARIANT & ECC CURVE", "Zero Side Effects Without Proof", "Before any external write commits, a deterministic verifier checks the postcondition, driving Energy-to-Correct-Completion sharply down."),
-                    ("benchmark_bars", "KV260 INA260 MEASURED_J", "11,428 pJ Whole-Module Gate Cycle", "Hardware measurements on the KV260 INA260 rail shunt record 11,428 picojoules per gate cycle across the whole module."),
-                    ("horizon_slate", "BROWSER WASM & GOLDEN VECTORS", "Reproducible Seed-1 Reference", "Every software cascade trace and KV260 board log ships with golden vectors and an interactive FPGA simulator."),
+            "45s": {
+                "hook": "How a cockpit-style safety lock and a cheapest-first tool ladder stop undoable AI mistakes before they happen.",
+                "scenes": list(_GATES_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "THE COCKPIT SAFETY INTERLOCK",
+                        "Why Proposals Cannot Approve Themselves",
+                        "When software moves money, edits records, or steers machinery, saying sorry after a bad guess cannot undo the damage. A commit gate acts like a physical cockpit lock that blocks unsafe switches before anything moves.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "MEASURED IN TRILLIONTHS OF A JOULE",
+                        "11,428 Picojoules per Board Gate Cycle",
+                        "Measured by an onboard circuit-board power sensor, checking safety rules costs about eleven thousand picojoules per cycle while leaving a permanent, auditable receipt for every single decision.",
+                    ),
                 ],
             },
             "90s": {
-                "hook": "Deep dive into commit-before-act architecture, KV260 INA260 shunt hardware telemetry, and refusal receipts.",
-                "scenes": [
-                    ("hook_contrast", "IRREVERSIBILITY IN AUTOMATION", "Side Effects Cannot Be Hallucinated Away", "In real software infrastructure, actions cross boundaries that cannot be rolled back by generating another polite paragraph."),
-                    ("equation_curve", "ENERGY TO CORRECT COMPLETION", "Accounting for Retries and Refusals", "Metered Commit Gates replaces raw token cost with Energy to Correct Completion, summing every joule spent until a verified outcome commits."),
-                    ("cutaway_3d", "3D KV260 & SHUNT CUTAWAY", "INA260 Rail Sensor + Gate Fabric", "This three-dimensional silicon cutaway highlights the physical INA260 board shunt feeding deterministic gate logic on KV260 hardware."),
-                    ("state_cascade", "CASCADE + REFUSAL PROTOCOL", "Try Cheap -> Check -> Admit or Refuse", "Inputs hit zero-hallucination lookup rungs first; proposals from higher rungs still pass through the exact same commit gate."),
-                    ("benchmark_bars", "MEASURED_J VS SOFTWARE TIERS", "11,428 pJ / Cycle Hardware Anchor", "Whole-module KV260 rail readings establish a true measured_j anchor at 11,428 picojoules per cycle alongside audited software cascades."),
-                    ("falsifier_audit", "STRICT METERING HONESTY", "Only Physical Shunts Earn measured_j", "Across the entire OpenIE corpus, only physical rail sensors like this KV260 shunt and Thor INA rails carry measured_j."),
+                "hook": "Inside Metered Commit Gates: cheapest-first cascades, zero unsafe approvals across two hundred thousand checks, and board power sensors.",
+                "scenes": list(_GATES_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "TWO KEYS BEFORE REAL ACTION",
+                        "Separating Creative Proposals From Permission",
+                        "Think of how a hospital pharmacy or airplane cockpit separates suggesting an action from executing it. An AI model can propose whatever clever step it likes, while an independent deterministic gate holds the sole key to external tools.",
+                    ),
+                    (
+                        "state_cascade",
+                        "CHEAPEST SUFFICIENT LADDER",
+                        "Lookup -> Formula -> Solver -> Model",
+                        "Instead of waking a massive neural network on routine tasks, our cascade tries table lookup first, then simple formulas, then exact solvers, and finally a model, stopping the instant a check passes or refusing cleanly when remaining budget runs low.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "ZERO UNSAFE ALLOWS & BOARD POWER",
+                        "209,261 Software Checks · 11,428 Picojoules",
+                        "Across more than two hundred nine thousand simulated control checks, the discrete safety gate allowed zero unsafe actions. On real programmable hardware with an inline circuit-board power sensor, one whole-module gate cycle measured eleven thousand four hundred twenty-eight picojoules.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "PROVENANCE NEVER GETS FAKED",
+                        "Model Guesses Stay Labeled Forever",
+                        "Model-generated suggestions are never silently relabeled as guaranteed rules, and every allowed or refused step writes its exact reason and labeled energy source to a permanent receipt for later inspection.",
+                    ),
+                ],
+            },
+            "180s": {
+                "hook": "Full documentary tour of commit-before-act safety gates, Simon-Kadane cheapest-first cascades, and physical circuit-board power metering.",
+                "scenes": list(_GATES_OPENING) + [
+                    (
+                        "hook_contrast",
+                        "WHEN POLITE APOLOGIES FAIL",
+                        "Irreversible Side Effects Need Runtime Law",
+                        "Chatbots can recover from a clumsy sentence by writing another polite paragraph, yet autonomous software tools cross real-world boundaries that cannot be rolled back once executed. Even cheap per-word AI becomes wasteful and dangerous when ten unverified guesses corrupt records, trigger expensive rollbacks, and force human cleanup afterward.",
+                    ),
+                    (
+                        "analogy_spotlight",
+                        "THE CIRCUIT BREAKER AND ESCALATOR",
+                        "Routine Work Stays Local, Risk Gets Checked",
+                        "Imagine a hospital pharmacy where routine refills follow an exact printed checklist, unusual prescriptions escalate to a specialist, and a physical barcode lock refuses to open the drawer if dosage or allergy limits fail. Neither raw speed nor model cleverness ever gets an informal side channel around that gate.",
+                    ),
+                    (
+                        "state_cascade",
+                        "PROPOSAL, CERTIFICATE, RECEIPT",
+                        "Four Steps That Govern Every External Tool",
+                        "Every irreversible action passes through four strict runtime records in our Rust reference implementation. First comes an untrusted proposal that cannot authorize itself. Second comes a joint certificate requiring table permission, energy budget headroom, and optional safety barriers. Third comes commit or typed refusal, and fourth comes a timestamped receipt.",
+                    ),
+                    (
+                        "equation_curve",
+                        "ENERGY TO CORRECT COMPLETION",
+                        "Ordering Tools by Pass Chance per Joule",
+                        "By classic sequential search theory, trying gears in decreasing order of pass probability divided by energy cost minimizes expected spend across every workload. Measuring total energy to correct completion penalizes every failed retry and refusal, showing clearly why spending picojoules on early deterministic checks saves whole joules of wasted model runs.",
+                    ),
+                    (
+                        "cutaway_3d",
+                        "3D HARDWARE GATE & POWER SENSOR",
+                        "Eight Parallel Checks at Twenty-Five Megahertz",
+                        "This three-dimensional hardware cutaway shows eight parallel safety gates checking rule tables, energy budgets, and safety barriers together at twenty-five megahertz on reconfigurable silicon, while an onboard circuit-board current sensor measures real module supply power across interleaved start-and-stop runs and matches software decisions step for step.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "SOFTWARE CHECKS AND SILICON DATA",
+                        "Zero False Allows · 11,428 Picojoules",
+                        "Across two hundred nine thousand two hundred sixty-one fixed-point control checks, the discrete gate recorded zero unsafe approvals and only seventy-nine cautious refusals, while blocking unsafe external tool calls before execution. Interleaved hardware board-sensor measurements recorded eleven thousand four hundred twenty-eight picojoules per gate cycle across four passes.",
+                    ),
+                    (
+                        "falsifier_audit",
+                        "STRICT HONESTY ABOUT POWER LABELS",
+                        "Whole-Module Supply vs Software Estimates",
+                        "Every energy figure states plainly how it was obtained and what remains unmeasured. Our eleven-thousand-picojoule hardware reading spans the whole vision module supply rather than an isolated core rail, a tiny ninety-eight-picojoule seed test stayed inconclusive near sensor resolution, and software operation counts stay clearly labeled as analytical estimates.",
+                    ),
                 ],
             },
         },
@@ -163,67 +473,148 @@ STUDIES_PART1 = [
         "pdf_url": "/pdfs/deterministic-null.pdf",
         "figures_url": "/living/deterministic-null/",
         "about_url": "/about/deterministic-null/",
-        "tutorial_lab_id": "deterministic-null",
-        "voice": "Ava (Premium)",
+        "tutorial_lab_id": "lab-07-deterministic-null",
         "cutaway_3d": "08_dnull_drand_crystal",
-        "cutaway_labels": [
-            ("DNULLMM1 Store", "Bit-exact in 5 languages", "cyan"),
-            ("drand + Bitcoin OTS", "Rounds 6663734 & 6664089", "amber"),
-            ("Frontier Lift", "+45.8 to +95.0 pp open tasks", "emerald"),
-            ("Track-A Null", "Excludes 9/10 bounded cells", "rose"),
-        ],
-        "headline_metric": "3.59x Call & reported_j Cut · 5-Lang Exact",
         "epistemic_tags": ["T", "E"],
-        "energy_tier": "reported_j",
-        "energy_disclosure": "Apple M5 Max counters logged as reported_j (no physical rail monitor attached; measured_j unset).",
+        "plain_bullets": [
+            "Most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.",
+            "On bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.",
+            "On open coding tasks AI leaped ahead, while caching verified answers cut repeat energy three point six times.",
+        ],
+        "analogy": (
+            "Drug Trials Without a Placebo",
+            "Testing one giant AI model only against another hides whether a simple lookup table could solve the same problem.",
+            "The Zero-Model Control Group",
+            "A frozen integer lookup table locked before public randomness beacons tests exactly where neural reasoning adds real value.",
+            "Use simple lookup for structured repeats, and save big models for genuinely new problems.",
+        ),
+        "headline_metric": "9 of 10 Bounded Ties · 3.59x Repeat Energy Cut",
+        "energy_tier": "Chip Energy Counter",
+        "energy_disclosure": "Built-in Apple chip energy counters; cloud server watts unavailable and unguessed.",
         "nodes": [
-            ("Pre-Register OTS", "Bitcoin + drand Beacon", "amber"),
-            ("Shape D Null Loop", "64-bit Integer Case Store", "cyan"),
-            ("Paired Frontier Test", "4,030 Held-Out Instances", "emerald"),
-            ("Zipf Crystallize", "3.59x Lower reported_j", "amber"),
+            ("Leaderboards Skip Controls", "No placebo baseline for giant AI models", "rose"),
+            ("Lock Before Public Beacon", "Timestamp hashes before test seeds exist", "amber"),
+            ("Five-Language Exact Table", "Identical integer lookup in five languages", "cyan"),
+            ("Save Verified New Answers", "3.59x lower repeat calls and chip energy", "emerald"),
         ],
-        "equation": ("Δ_neural = Acc(Substrate) − Acc(Shape D Null)", "Pre-registered control isolates genuine open-world neural lift from lookup-solvable structure", "zipf_decay"),
+        "equation": (
+            "True AI Gain = Model Accuracy Minus Zero-Model Control Accuracy",
+            "Separates genuine open-world synthesis from routine patterns a frozen lookup table solves.",
+            "zipf_decay",
+        ),
         "bars": [
-            ("Track-A Single-Turn Bounded", 10, "9/10 cells null-matched", "rose"),
-            ("U3-SAT DRAT w/ Clause Loop", 100, "50/50 verified closure", "cyan"),
-            ("SWE / BFCL / tau Neural Lift", 95, "+45.8 to +95.0 pp over null", "emerald"),
+            ("Bounded Math & Database Suite", 10, "AI beats lookup on only 1 of 10 cells", "rose"),
+            ("Multi-Turn Logic Proof Loop", 100, "50 / 50 solved · matched free by solver", "cyan"),
+            ("Open Coding & Tool Benchmarks", 95, "+44 to +95 percentage points over null", "emerald"),
         ],
-        "falsifier": ("Bitcoin + drand Pre-Registration", "Manifests anchored before drand rounds 6663734 & 6664089 across 5 languages.", "M5 Max energy is reported_j; zero board shunt claimed.", "5-LANG BIT-EXACT"),
+        "cutaway_labels": [
+            ("Frozen Integer Case Table", "Bit-identical across five languages", "cyan"),
+            ("Public Randomness Lock", "Anchored before 4,030 held-out tests", "amber"),
+            ("Open-World Coding Gain", "Up to 95 points above lookup control", "emerald"),
+            ("Online Answer Caching", "Cuts recurring energy spend 3.59 times", "amber"),
+        ],
+        "falsifier": (
+            "Pre-Registered Timestamps & Honest Energy Labels",
+            "Five languages matched bit-for-bit on one million records, and pre-registered tests cleanly split routine tasks from open coding.",
+            "Local Apple chip counters are not wall power meters, and remote cloud providers do not disclose per-query server joules.",
+            "5 LANGUAGES EXACT",
+        ),
         "tiers": {
-            "5s": {
-                "hook": "Every AI benchmark needs a zero-model-call placebo: Shape D exposes redundant calls and cuts Zipfian energy 3.59x.",
-                "scenes": [
-                    ("flash_kinetic", "THE ZERO-MODEL PLACEBO", "4,030 Held-Out · 3.59x Zipf Save", "Test a bit-exact integer null baseline first—cutting repeat spend 3.59 times."),
-                ],
+            "15s": {
+                "hook": "Why AI benchmarks need a placebo control group, and where giant models actually beat a simple lookup table.",
+                "scenes": list(_DNULL_OPENING),
             },
-            "30s": {
-                "hook": "What happens when you pit six frontier LLMs against a zero-model-call 64-bit integer case loop?",
-                "scenes": [
-                    ("hook_contrast", "WHERE IS THE CONTROL GROUP?", "Medicine Uses Placebos—AI Rarely Does", "Drug trials require a placebo control, yet AI benchmarks routinely credit giant models for tasks a lookup loop solves."),
-                    ("state_cascade", "FIVE-LANGUAGE SHAPE D NULL", "Bitcoin OTS + drand Randomness", "Deterministic Null pre-registers a 64-bit integer memory-mapped case loop verified bit-exact across Rust, C++, Go, Julia, and Python."),
-                    ("benchmark_bars", "WHERE MODELS WIN—AND DON'T", "9/10 Bounded vs +95 pp Open Tasks", "On bounded Track-A cells, single-turn models fail to beat the null on nine of ten, while public coding suites jump up to 95 points."),
-                    ("horizon_slate", "CRYSTALLIZE THE REPEATS", "3.59x Fewer Calls & reported_j", "Saving verified neural answers back into the null store cuts Zipfian repeat calls and reported joules by 3.59 times."),
-                ],
-            },
-            "60s": {
-                "hook": "How Bitcoin OpenTimestamps, League of Entropy drand beacons, and five-language DNULLMM1 stores separate hype from lift.",
-                "scenes": [
-                    ("hook_contrast", "CONTAMINATION & OVERKILL", "Testing 4,030 Post-Freeze Instances", "Without pre-registration and a non-neural baseline, benchmark scores mix memorized training data with genuine reasoning."),
-                    ("state_cascade", "CRYPTOGRAPHIC PRE-REGISTRATION", "OTS Calendar + drand 6663734 / 6664089", "Hash manifests were anchored to Bitcoin OpenTimestamps before League of Entropy drand beacons generated 4,030 fresh test instances."),
-                    ("equation_curve", "PAIRED NEURAL INCREMENT", "Strict N0, Dev N1 & Online Zipf Cache", "Measuring accuracy above Shape D separates bounded algebraic routines from open-world synthesis across six frontier and open models."),
-                    ("benchmark_bars", "TRACK-A, DRAT & PUBLIC SUITES", "50/50 Clause Loop · +45.8–95.0 pp Lift", "Clause feedback closes 50 of 50 Unique 3-SAT DRAT proofs, while BFCL, tau-bench, BigCodeBench, and SWE-bench show massive neural lift."),
-                    ("horizon_slate", "HONEST METERING DISCLOSURE", "3.59x Zipfian Savings in reported_j", "Online crystallization slashes repeat spend 3.59x, with Apple M5 Max counters transparently reported as reported_j."),
+            "45s": {
+                "hook": "Just like medicine tests new drugs against a placebo pill, we tested frontier AI models against a frozen lookup loop.",
+                "scenes": list(_DNULL_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "MEDICINE'S PLACEBO RULE FOR AI",
+                        "Model vs Model Hides Simple Baselines",
+                        "Doctors never approve a new drug without testing it against a sugar pill. Yet AI leaderboards routinely pit one giant neural model against another without asking what a fast recipe book of verified examples solves.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "COMBINE LOOKUP WITH SYNTHESIS",
+                        "Save Big Models for Unseen Problems",
+                        "Testing a zero-model baseline first separates marketing hype from real reasoning, and saving verified answers turns expensive breakthroughs into cheap instant lookups the next time they appear.",
+                    ),
                 ],
             },
             "90s": {
-                "hook": "Complete documentary tour of Deterministic Null: 5-language bit-exactness, Bitcoin/drand proofs, 6 models, and Zipf crystallization.",
-                "scenes": [
-                    ("hook_contrast", "SCIENTIFIC CONTROLS FOR AI", "Isolating True Neural Value", "When a hundred-billion-parameter model solves a structured task, how much required neural synthesis and how much needed clean indexing?"),
-                    ("equation_curve", "GOOD-TURING & ZIPFIAN REUSE", "Why Real Workloads Repeat Patterns", "Under skewed Zipfian arrival streams, verified solutions written into a deterministic memory-mapped store amortize frontier calls."),
-                    ("cutaway_3d", "3D DNULLMM1 CRYSTAL & BEACON", "5-Language Bit-Exact Hash Monolith", "This three-dimensional crystal depicts the frozen DNULLMM1 store, reproducing checksum 15027705736 identically in Rust, C++20, Go, Julia, and Python."),
-                    ("state_cascade", "SIX MODELS UNDER LOCKED SEEDS", "Opus 5.5, Sonnet 5.5, Grok 4.20, Qwen, Gemma", "Locked drand beacons drive paired evaluations across bounded formal classes, DRAT proof loops, and six real SWE-bench Verified repositories."),
-                    ("benchmark_bars", "THE SHARP EMPIRICAL SPLIT", "Bounded Null Parity vs Open-World Lift", "Single-turn neural calls add nothing on nine of ten bounded cells, yet deliver 45.8 to 95.0 percentage points on messy external software."),
-                    ("falsifier_audit", "PRE-REGISTRATION & METERING", "OpenTimestamps .ots + reported_j", "Every manifest carries verifiable Bitcoin calendar proofs, and local Apple M5 Max telemetry is strictly labeled reported_j."),
+                "hook": "Across 4,030 pre-registered test cases, a five-language integer lookup loop reveals exactly when neural AI is needed.",
+                "scenes": list(_DNULL_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "WHY AI NEEDS A PLACEBO TEST",
+                        "Separating Memorized Patterns From Reasoning",
+                        "If two hundred-billion-parameter models both score ninety-nine percent on a structured benchmark, did either one actually need a neural network at decision time? Without a zero-model control group on the exact same exam, nobody can tell the difference.",
+                    ),
+                    (
+                        "state_cascade",
+                        "LOCKED BEFORE TEST SEEDS EXISTED",
+                        "Public Timestamps + Five-Language Table",
+                        "We built an eight-step integer lookup table verified bit-for-bit across Rust, Go, Python, Julia, and C plus plus, then anchored its digital fingerprints onto public Bitcoin calendar proofs before public randomness beacons generated four thousand thirty fresh held-out problems.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "TWO CLEAR EMPIRICAL WORLDS",
+                        "9 of 10 Ties vs +95 Points on Open Code",
+                        "Across two thousand eight hundred forty bounded math and database problems, cloud models beat the frozen table on only unindexed customer phrasing, yet jumped forty-four to ninety-five percentage points ahead across four externally authored software engineering benchmarks.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "CRYSTALLIZE VERIFIED ANSWERS",
+                        "3.59x Fewer Repeat Calls & Joules",
+                        "When newly verified neural fixes are written back into the lookup store, realistic skewed workloads cut recurring model calls and local chip energy by three point five nine times.",
+                    ),
+                ],
+            },
+            "180s": {
+                "hook": "Complete three-minute documentary on Deterministic Null: pre-beacon registration, five-language bit-exactness, and multi-vendor cloud tests.",
+                "scenes": list(_DNULL_OPENING) + [
+                    (
+                        "hook_contrast",
+                        "THE BLIND SPOT IN AI BENCHMARKS",
+                        "Comparing Models Without a Zero-Model Control",
+                        "Modern AI evaluations routinely compare one language model against another, leaving a foundational scientific question unmeasured: how much task completion actually needed a neural network at decision time, and how much could a fixed integer lookup procedure over verified prior examples already solve for free?",
+                    ),
+                    (
+                        "analogy_spotlight",
+                        "A SCIENTIFIC PLACEBO FOR AGENTS",
+                        "Anti-Cheating Rules and Public Randomness",
+                        "Just as clinical drug trials seal their treatment protocols before patients enroll, we anchored our frozen lookup store's digital fingerprint onto Bitcoin calendar proofs before public randomness beacons existed, and capped per-task helper code at four kilobytes and fifty thousand operations so no hidden solver could sneak inside.",
+                    ),
+                    (
+                        "state_cascade",
+                        "EIGHT INTEGER STEPS, FIVE LANGUAGES",
+                        "Zero Floating-Point Drift, Zero Model Calls",
+                        "At test time, the control loop observes an input, reduces features using pure sixty-four-bit signed integers with zero floating-point instructions, probes a read-only memory-mapped hash table in half a microsecond, and acts with zero model calls. Rust, Go, Python, Julia, and C plus plus match bit-for-bit across one million records.",
+                    ),
+                    (
+                        "equation_curve",
+                        "WHEN UNSEEN PATTERNS RUN DRY",
+                        "Unseen Pattern Rate Predicts Neural Value",
+                        "Subtracting control accuracy from neural accuracy reveals a sharp boundary governed by how often genuinely unseen patterns arrive in the workload stream. Where structural templates saturate early, frozen integer lookup matches giant models at zero call cost; where open-world software recombines freely, neural synthesis shines and then seeds future instant lookups.",
+                    ),
+                    (
+                        "cutaway_3d",
+                        "3D FROZEN STORE & BEACON LATTICE",
+                        "Immutable Checksums and Paired Arms",
+                        "This three-dimensional crystal depicts our frozen binary lookup table locked before public randomness rounds existed. Paired evaluation lanes route every fresh test problem simultaneously to zero-model controls, classical deductive solvers, local open-weight models on Apple Silicon, and six multi-vendor cloud frontier systems under identical scoring rules.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "FOUR THOUSAND THIRTY HELD-OUT TESTS",
+                        "Bounded Parity, Proof Loops & GitHub Fixes",
+                        "Single-turn cloud models beat the frozen table on just one of ten bounded cells, while multi-turn clause feedback solved fifty of fifty logic formulas that a free classical solver also closed. Across public coding suites and six real upstream repository bugs—five patched and replayed at zero model calls—frontier models leaped up to ninety-five points ahead.",
+                    ),
+                    (
+                        "falsifier_audit",
+                        "STRICT ENERGY AND SCOPE HONESTY",
+                        "Chip Counters Kept Separate From Cloud Servers",
+                        "Every measurement boundary stays completely transparent from start to finish. Local workstation energy comes from built-in Apple chip counters rather than an external wall meter, closed cloud server watts are recorded strictly as unavailable instead of guessed from fleet averages, and busy-host baseline drift drops net subtractions automatically.",
+                    ),
                 ],
             },
         },
@@ -237,67 +628,148 @@ STUDIES_PART1 = [
         "pdf_url": "/pdfs/satb-harness.pdf",
         "figures_url": "/living/satb-harness/",
         "about_url": "/about/satb-harness/",
-        "tutorial_lab_id": "satb-harness",
-        "voice": "Allison (Enhanced)",
+        "tutorial_lab_id": "lab-07-deterministic-null",
         "cutaway_3d": "08_dnull_drand_crystal",
-        "cutaway_labels": [
-            ("Jetson AGX Thor", "INA238 + INA3221 measured_j", "amber"),
-            ("12/12 Checks C1-C12", "0 replay diffs on 5 hosts", "emerald"),
-            ("5 OS/Silicon Hosts", "macOS, Tegra, Zen5, i9, Win11", "cyan"),
-            ("Kepler Split Error", "32.6%–89.9% misattribution", "rose"),
-        ],
-        "headline_metric": "12/12 C1–C12 · 5 Hosts · Thor INA measured_j",
         "epistemic_tags": ["T", "E"],
-        "energy_tier": "measured_j + reported_j",
-        "energy_disclosure": "Jetson AGX Thor TI INA238/INA3221 physical shunt measured_j + M5 Max IOReport, Zen 5 / i9 RAPL, and Win11 NVML reported_j.",
+        "plain_bullets": [
+            "Changing the wrapper around an AI model can swing scores as much as swapping the model.",
+            "This test harness locks prompts, memory trimming, and tools so every AI takes the exact same exam.",
+            "Across five computer types, it separates real board sensors from chip counters and blocks noisy power estimates.",
+        ],
+        "analogy": (
+            "Uneven Track & Fuzzy Split Bills",
+            "Wrapping the same model in a different prompt loop moved scores 17 points, while splitting power by CPU time erred by 90 percent.",
+            "Same Exam & Labeled Meters",
+            "One locked Rust wrapper gives every model identical rules and labels board sensors separately from built-in chip counters.",
+            "Fair benchmarks hold the wrapper steady and refuse to guess when background noise muddies power readings.",
+        ),
+        "headline_metric": "12 of 12 Checks · 5 Computers · 0 Replay Drift",
+        "energy_tier": "Board Sensor + Chip Counter",
+        "energy_disclosure": "Board power shunts on Tegra kit plus chip counters on four hosts; never summed.",
         "nodes": [
-            ("Lane B Rust Harness", "80% Elide + 8+8 KiB Trunc", "cyan"),
-            ("Loopback Proxy", "Shapes D, M, H, and I", "cyan"),
-            ("L0–L4 × A1–N Meter", "Thor Shunt + RAPL/IOReport", "amber"),
-            ("Falsifier 6 Gate", "Withholds Noisy Shared Net", "emerald"),
+            ("Wrapper & Sensor Confusion", "Different wrappers shift scores 17 points", "rose"),
+            ("Locked Sequential Wrapper", "Fixed memory trimming without extra AI calls", "cyan"),
+            ("Single Audited Tool Proxy", "Tests raw models and external agents alike", "amber"),
+            ("Honest Five-Host Metering", "12 checks pass with zero byte differences", "emerald"),
         ],
-        "equation": ("Err(Kepler_CPU) = 32.59% .. 89.88%  |  F6: Drift > τ ⇒ A_net = ∅", "CPU-proportional power splitting fails on GPU/idle loads; Falsifier 6 refuses dishonest net attribution", "cascade_drop"),
+        "equation": (
+            "CPU Share Power Guess Error = 32.6% to 89.9% on Mixed Workloads",
+            "Splitting server energy by CPU time fails when storage or graphics run; noisy baselines get withheld.",
+            "cascade_drop",
+        ),
         "bars": [
-            ("Kepler CPU-Ratio Error", 89, "Up to 89.88% attribution error", "rose"),
-            ("Win11 Tick-Aliasing Drift", 90, "-89.88% at 15.625 ms ticks", "amber"),
-            ("SATB C1–C12 Replay Parity", 100, "12/12 pass · 0 diffs on 5 hosts", "emerald"),
+            ("Naive CPU Share Power Split", 90, "32.6% to 89.9% attribution error", "rose"),
+            ("Cloud Zero-Temperature Repeat", 13, "Drifted across repeated identical calls", "amber"),
+            ("Locked Harness 5-Host Replay", 100, "12 / 12 checks · 0 byte differences", "emerald"),
         ],
-        "falsifier": ("Falsifiers 3 & 6 Active", "Win32 15.625 ms tick aliasing caught (-89.88%); Falsifier 6 withholds noisy shared-host net splits.", "Raw Thor INA238/INA3221 measured_j and RAPL/IOReport/NVML reported_j preserved.", "5-HOST VERIFIED"),
+        "cutaway_labels": [
+            ("Tegra Board Power Shunts", "Direct processor and graphics rail joules", "amber"),
+            ("Zero-Drift Transcript Replay", "149,747 bytes match across 3 OS families", "emerald"),
+            ("Five Computer Archetypes", "macOS, Linux workstations, and Windows 11", "cyan"),
+            ("Noise Withholding Guard", "Drops net power claims when hosts are busy", "rose"),
+        ],
+        "falsifier": (
+            "Shared-Host Noise & Missing Cloud Joules Disclosed",
+            "All five computers matched byte-for-byte on replay, exposed CPU share power errors up to 89.9 percent, and cleaned up tasks in milliseconds.",
+            "Because background jobs shared the machines, net subtracted power is withheld, and closed cloud or locked Windows CPU watts stay blank.",
+            "5 COMPUTERS AUDITED",
+        ),
         "tiers": {
-            "5s": {
-                "hook": "Five silicon archetypes, twelve conformance checks, zero replay diffs—and physical INA shunt telemetry on Jetson AGX Thor.",
-                "scenes": [
-                    ("flash_kinetic", "5-HOST HARNESS VERIFIED", "12/12 Checks · Thor INA measured_j", "Twelve conformance checks pass with zero replay diffs across five silicon hosts, anchored by physical Thor rail shunts."),
-                ],
+            "15s": {
+                "hook": "How to stop agent wrappers and sloppy power estimates from distorting AI benchmark leaderboards.",
+                "scenes": list(_SATB_OPENING),
             },
-            "30s": {
-                "hook": "Why standard container energy estimators err by up to 90%, and how SATB audits five OS and silicon archetypes.",
-                "scenes": [
-                    ("hook_contrast", "BROKEN ENERGY ATTRIBUTION", "Why CPU-Ratio Guessing Fails by 90%", "Popular cloud tools split server power by CPU percentage—erring by 33 to 90 percent when GPUs or short bursts run."),
-                    ("state_cascade", "RUST LANE B + PROXY BRIDGE", "Deterministic Context & 12 Checks", "The Satiation Benchmark reference harness enforces deterministic truncation, a loopback proxy, and twelve strict conformance checks."),
-                    ("benchmark_bars", "FIVE SILICON & OS ARCHETYPES", "Thor INA Shunts + M5, Zen 5, i9, Win11", "Across Apple Silicon, Jetson AGX Thor physical INA shunts, AMD Zen 5, Intel Raptor Lake, and Windows 11 NVML, replay hits zero diffs."),
-                    ("horizon_slate", "HONESTY BUILT INTO CODE", "Falsifier 6 Refuses Noisy Attribution", "When shared-host background noise exceeds tolerance, Falsifier 6 withholds net claims while preserving raw sensor logs."),
-                ],
-            },
-            "60s": {
-                "hook": "Inside the SATB evaluation stack: Lane B context elision, L0–L4 × A1–N telemetry matrix, Thor INA3221 shunts, and Win11 NVML.",
-                "scenes": [
-                    ("hook_contrast", "HARNESS DRIFT CORRUPTS SCORES", "Context Bloat & Observer Overhead", "Two agent harnesses running the exact same model get different scores and energy readings if tool outputs or polling drift."),
-                    ("state_cascade", "SEQUENTIAL RUST HARNESS", "ContextRule_v0 + Five-Block Fingerprint", "SATB locks down 80 percent oldest-output elision, 8-plus-8 kilobyte truncation, and a five-block hardware-software fingerprint."),
-                    ("equation_curve", "L0–L4 × A1–N TELEMETRY MATRIX", "Observer Curve & Tick-Aliasing Proof", "Crossing five sensor levels with attribution classes exposes Windows 15.6 millisecond tick aliasing and observer-effect overhead."),
-                    ("benchmark_bars", "MULTI-HOST SHUNT & RAPL AUDIT", "Thor INA238/3221 measured_j + 4 Hosts", "Physical TI INA238 and 3-channel INA3221 shunts on Jetson AGX Thor pair with Darwin IOReport, Linux RAPL, and Windows NVML."),
-                    ("horizon_slate", "ZERO-DIFF DETERMINISTIC REPLAY", "149,747-Byte C9 & Shape D Parity", "All twelve C1 through C12 conformance checks pass with byte-identical transcripts across macOS, Linux, and bare-metal Windows 11."),
+            "45s": {
+                "hook": "Why swapping an agent's software wrapper shifted scores by 17 points, and why splitting power by CPU time errs by 90 percent.",
+                "scenes": list(_SATB_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "SAME RUNNER, DIFFERENT TRACK",
+                        "17-Point Score Swing & 90% Power Error",
+                        "Giving the exact same language model a different command wrapper shifted coding scores by seventeen points, while popular cloud tools that split server power by CPU share erred by up to ninety percent.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "FAIR RULES, LABELED SENSORS",
+                        "Zero Replay Drift Across Five Computers",
+                        "Locking the wrapper in Rust and labeling board sensors separately from chip counters makes model comparisons genuinely reproducible across macOS, Linux, and Windows machines.",
+                    ),
                 ],
             },
             "90s": {
-                "hook": "Full hardware audit of SATB across Apple M5 Max, NVIDIA Jetson AGX Thor shunts, AMD Strix Halo, Intel Raptor Lake, and Windows 11.",
-                "scenes": [
-                    ("hook_contrast", "MEASURING AGENTS WITHOUT ROOT", "Why Telemetry Needs Falsifiers", "Benchmarking autonomous coding agents across laptops, edge modules, and workstations usually collapses into incompatible ad-hoc scripts."),
-                    ("equation_curve", "KEPLER ERROR & TICK ALIASING", "32.59%–89.88% Split Error Exposed", "Empirical audits show CPU-proportional power splitting errs up to 89.88 percent, matching Windows GetProcessTimes tick-aliasing loss."),
-                    ("cutaway_3d", "3D FIVE-ARCHETYPE TELEMETRY RING", "Thor Physical Shunts to Win11 NVML", "Five hardware satellites surround one deterministic core: Jetson AGX Thor physical rail shunts, M5 Max, Strix Halo Zen 5, Raptor Lake, and Windows 11."),
-                    ("state_cascade", "PLATYPUS-SAFE & ROOTLESS DESIGN", "0440 root:energy RAPL + JobObjects", "Linux hosts isolate RAPL under 0440 energy permissions, while Windows 11 pairs 2.46-millisecond JobObject teardown with rootless NVML."),
-                    ("benchmark_bars", "TWELVE CONFORMANCE CHECKS PASS", "C1–C12 · Claude Code 2.1.330 Parity", "Every host replays Shape D checksum 15027705736 and C9's 149,747-byte payload with zero diffs, plus live adapter parity."),
-                    ("falsifier_audit", "FALSIFIER 6 WITHHOLDING GATE", "Separating measured_j from reported_j", "Whenever shared-host drift crosses threshold, Falsifier 6 withholds net process claims while keeping raw measured_j and reported_j intact."),
+                "hook": "How our open Rust harness standardizes prompts, sandboxes, and five-host power attribution across macOS, Linux, and Windows 11.",
+                "scenes": list(_SATB_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "STOP MEASURING THE PLUMBING",
+                        "Wrappers and Split Bills Distort Truth",
+                        "Imagine timing sprinters on tracks of different lengths and then guessing their calorie burn by shoe size. That happens whenever AI benchmarks mix different history-trimming wrappers and split shared server watts by processor time alone.",
+                    ),
+                    (
+                        "state_cascade",
+                        "LOCKED WRAPPER AND PROXY BRIDGE",
+                        "Deterministic Trimming + Five-Part Identity",
+                        "Our sequential Rust harness fixes six safe workspace tools, trims old outputs above eighty percent window capacity using zero hidden model calls, hashes a five-part system fingerprint, and routes external command-line coding agents through one audited local proxy.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "TESTED LIVE ON FIVE COMPUTERS",
+                        "12 Checks Pass · Cloud Drift Exposed",
+                        "Across Apple Silicon, Tegra circuit-board power shunts, two Linux workstations, and bare-metal Windows eleven, replay transcripts matched to the exact byte across twelve checks, while live endpoint probes caught cloud models drifting even when temperature was locked to zero.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "REFUSING DISHONEST POWER NUMBERS",
+                        "Raw Channels Kept · Noisy Splits Dropped",
+                        "Physical board shunt joules, built-in chip counters, and logical token counts never get blended into one fuzzy number, and automatic drift checks withhold net attribution whenever background jobs share the host.",
+                    ),
+                ],
+            },
+            "180s": {
+                "hook": "Full five-computer hardware audit of the Satiation Benchmark harness, deterministic replay, and honest power attribution.",
+                "scenes": list(_SATB_OPENING) + [
+                    (
+                        "hook_contrast",
+                        "WHY TWO BENCHMARKS DISAGREE",
+                        "Hidden Summarizers and Sloppy Power Math",
+                        "When two engineering teams test the exact same AI model and report wildly different pass rates or energy bills, the model itself often is not the cause at all. Hidden conversation summarizers, shell-quoting failures, and uncalibrated power formulas quietly alter the exam behind the scenes without ever appearing on the public leaderboard.",
+                    ),
+                    (
+                        "analogy_spotlight",
+                        "STANDARDIZED TRACK, ITEMIZED RECEIPTS",
+                        "Holding the Wrapper Constant Across Models",
+                        "On a public terminal coding benchmark, changing only the surrounding wrapper shifted the very same model's task score by seventeen percentage points. Our evaluation contract holds one sequential Rust wrapper completely fixed for raw models while auditing third-party coding tools as complete systems behind one local proxy bridge.",
+                    ),
+                    (
+                        "state_cascade",
+                        "DETERMINISTIC CONTEXT AND SANDBOXING",
+                        "Zero-Call Memory Trimming & Fast Cleanup",
+                        "Inside every attempt, the harness executes strictly one tool call at a time inside a network-blocked workspace with eight-kilobyte head-and-tail output caps. Whenever conversation history exceeds eighty percent capacity, it deterministically replaces the oldest tool outputs while keeping the eight newest intact, terminating stray process trees cleanly inside ten milliseconds.",
+                    ),
+                    (
+                        "equation_curve",
+                        "WHY CPU SHARE POWER SPLITTING FAILS",
+                        "32.6% to 89.9% Error on Real Phases",
+                        "Many cloud sustainability dashboards estimate a program's energy bill by multiplying whole-server power by its processor time share. Across sequential compute-and-storage phases and Windows fifteen-millisecond clock ticks, our live hardware audit proved that shortcut misattributes energy by thirty-two point six to eighty-nine point nine percent.",
+                    ),
+                    (
+                        "cutaway_3d",
+                        "FIVE COMPUTERS, ONE EXACT CORE",
+                        "Physical Rail Shunts to Rootless Counters",
+                        "This three-dimensional ring connects five live computers around one deterministic core: a Tegra developer kit wired with physical whole-board and three-channel current shunts, an Apple workstation, two Linux desktops with isolated energy-group permissions, and a bare-metal Windows eleven laptop reading rootless discrete graphics counters with millisecond job cleanup.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "TWELVE CHECKS AND CLOUD DRIFT",
+                        "Zero Byte Diffs · 32 Live Endpoint Probes",
+                        "All five computers reproduced our million-record lookup checksum and a hundred-fifty-kilobyte fourteen-turn transcript with zero byte or newline differences across operating systems, matched external coding agent completion at up to three-times lower prompt and cache token volume, and caught repeated zero-temperature output drift across three cloud vendors.",
+                    ),
+                    (
+                        "falsifier_audit",
+                        "WHAT WE REFUSE TO CLAIM",
+                        "Separating Board Shunts, Chip Counters & Blanks",
+                        "Physical circuit-board shunt joules on the Tegra kit stay strictly separated from built-in chip counters on the other four machines and are never summed into one blended column. Because background services shared the hosts during capture, net subtracted claims are withheld, and unavailable cloud or unprivileged Windows CPU watts stay honestly blank.",
+                    ),
                 ],
             },
         },
@@ -311,67 +783,148 @@ STUDIES_PART1 = [
         "pdf_url": "/pdfs/time-as-an-index.pdf",
         "figures_url": "/living/time-as-an-index/",
         "about_url": "/about/time-as-an-index/",
-        "tutorial_lab_id": "time-as-an-index",
-        "voice": "Ava (Premium)",
+        "tutorial_lab_id": "lab-10-time-index",
         "cutaway_3d": "06_ctc_hellman_torus",
-        "cutaway_labels": [
-            ("CTC Complexity", "D-CTC = PSPACE · P-CTC = PP", "cyan"),
-            ("Hellman Tradeoff", "T · M² = N² precomputation", "amber"),
-            ("31 Lean 4 Theorems", "Horizon.lean + Paradox.lean", "emerald"),
-            ("SHA-256 Spectral F5", "0 / 65,536 anomalous bins", "rose"),
-        ],
-        "headline_metric": "31 Lean 4 Theorems (0 sorry) · 195 Catalog Entries",
         "epistemic_tags": ["T", "M", "S"],
-        "energy_tier": "analytical",
-        "energy_disclosure": "31 Lean 4.36.0 theorems + deterministic M1–M8 / SHA-256 spectral runs; board_metered=false, measured_j unset.",
+        "plain_bullets": [
+            "Inside a mathematical time loop, almost every digital lock would break at once except a one-time secret pad.",
+            "In known physics, no quantum trick, analog circuit, or reported anomaly sends readable answers backward in time.",
+            "Every fast lookup of a future answer is work paid upfront, which fresh random values defeat immediately.",
+        ],
+        "analogy": (
+            "Looking Up Tomorrow's Answer",
+            "Digital security assumes nobody can flip ahead to the last page of a calculation without running the steps in between.",
+            "Cheat Sheets Paid in Advance",
+            "Every real shortcut is a giant lookup table computed ahead of time, trading memory space against search time.",
+            "Add a fresh random value at the start, and every pre-built cheat sheet becomes useless.",
+        ),
+        "headline_metric": "31 Machine-Checked Proofs · 0 Time Shortcuts",
+        "energy_tier": "Physics Math Bound",
+        "energy_disclosure": "Mathematical proofs and physics simulations only; no hardware power meter used.",
         "nodes": [
-            ("CTC Time Loop", "PSPACE Breaks Math Ciphers", "rose"),
-            ("Physical Horizon", "No-Signalling Blocks Oracle", "emerald"),
-            ("Hellman Table", "T · M² = N² Paid Upfront", "amber"),
-            ("Fresh Salt / Hash", "Stops Pre-Index Before t_0", "cyan"),
+            ("Could Tomorrow Have an Address?", "If so, digital locks would open at once", "rose"),
+            ("Quantum & Analog Limits", "No backward signals; discarded runs pile up", "cyan"),
+            ("Upfront Lookup Tables", "Fast search only after full prior work", "amber"),
+            ("Fresh Random Salt Wins", "0% table reuse when questions stay fresh", "emerald"),
         ],
-        "equation": ("T · M² = N²   (Hellman)   |   D-CTC = PSPACE", "Without closed timelike curves, every fast lookup is upfront space-time work defeated by fresh salts", "hellman_tradeoff"),
+        "equation": (
+            "Lookup Time × Memory Squared = Total Search Space Squared",
+            "Fast table lookups must pay the full search upfront and fail when fresh randomness arrives.",
+            "hellman_tradeoff",
+        ),
         "bars": [
-            ("SHA-256 Spectral Anomaly Bins", 0, "0 / 65,536 below p = 10⁻⁶", "emerald"),
-            ("Lean 4.36.0 Kernel Theorems", 100, "31 / 31 checked · 0 sorry", "cyan"),
-            ("Cataloged Paradox & Edge Cases", 98, "195 entries (TA + AA + P)", "amber"),
+            ("Hash Shortcut Frequency Scan", 0, "0 / 65,536 bins show hidden shortcuts", "emerald"),
+            ("Salted Fresh-Challenge Reuse", 0, "0.0% precomputed table hits on 200 runs", "cyan"),
+            ("Machine-Checked Math Proofs", 100, "31 / 31 Lean 4 theorems · 0 gaps", "amber"),
         ],
-        "falsifier": ("Spectral Falsifier F5 & Horizon", "65,536 SHA-256 digests show zero frequency shortcut bins below corrected p = 10⁻⁶.", "No hardware power meter attached; board_metered is false.", "31 LEAN 4 PROOFS"),
+        "cutaway_labels": [
+            ("Theoretical Time-Loop Ring", "Breaks math ciphers; spares one-time pads", "rose"),
+            ("Light-Speed Causal Horizon", "Blocks backward messages in real physics", "emerald"),
+            ("Precomputed Lookup Cube", "Trades memory size against lookup speed", "amber"),
+            ("195 Audited Anomaly Cases", "Zero verified signals from the future", "cyan"),
+        ],
+        "falsifier": (
+            "Formal Time Loops Separated from Laboratory Physics",
+            "Thirty-one machine-checked Lean 4 proofs, 65,536 hash tests, and 195 audited reports confirm zero free shortcuts into tomorrow.",
+            "This study claims zero hardware power measurements and zero harvestable vacuum energy over any closed physical cycle.",
+            "31 PROOFS VERIFIED",
+        ),
         "tiers": {
-            "5s": {
-                "hook": "Nothing in known physics indexes tomorrow early: 31 Lean 4 theorems prove every real lookup is paid ahead of time.",
-                "scenes": [
-                    ("flash_kinetic", "CAN YOU INDEX TOMORROW?", "31 Lean 4 Proofs · 0 Spectral Leaks", "Inside a time loop math ciphers shatter; in real physics, fresh salts force every lookup to wait for today."),
-                ],
+            "15s": {
+                "hook": "What would happen to digital security if tomorrow's calculations could be looked up like a table today?",
+                "scenes": list(_TIME_OPENING),
             },
-            "30s": {
-                "hook": "Why cryptography relies on future states being unindexed—tested across CTC complexity, Lean 4, and SHA-256 spectra.",
-                "scenes": [
-                    ("hook_contrast", "WHY BRUTE FORCE TAKES TIME", "What If Future States Had an Address?", "Sequential cryptography assumes you cannot look up the answer to a calculation before paying the steps to run it."),
-                    ("state_cascade", "TIME LOOPS VS KNOWN PHYSICS", "PSPACE Oracles vs No-Signalling", "Inside mathematical closed timelike curves, computational ciphers break at once—leaving only information-theoretic one-time pads."),
-                    ("benchmark_bars", "31 LEAN 4 THEOREMS & SHA-256", "Zero Sorry · 0 / 65,536 Spectral Leaks", "Thirty-one kernel-checked Lean 4 theorems and 65,536 SHA-256 spectral runs confirm zero free shortcuts in known physics."),
-                    ("horizon_slate", "PRECOMPUTATION NEEDS EARLY ACCESS", "Fresh Salts Defeat Hellman Tables", "Every real fast lookup is Hellman precomputation paid upfront—and a fresh random salt stops tables before they start."),
-                ],
-            },
-            "60s": {
-                "hook": "From Deutsch/Aaronson CTC complexity and quantum no-signalling to Hellman T·M²=N² tradeoffs and 31 Lean 4 proofs.",
-                "scenes": [
-                    ("hook_contrast", "TREATING TIME AS AN ARRAY", "Could Physics Skip Sequential Steps?", "Time as an Index asks a foundational question: what physical assumptions keep tomorrow's computation from being read like memory?"),
-                    ("state_cascade", "FOUR PHYSICAL & MATH REGIMES", "CTCs, Quantum, Analog, Precomputation", "Comparing closed timelike curves, quantum no-signalling, analog relaxation, and Hellman rainbow tables isolates where speedups actually come from."),
-                    ("equation_curve", "HELLMAN BOUND & HORIZON THEOREM", "T · M² = N² Requires Prior Specification", "Hellman's tradeoff trades lookup time against squared memory, but Horizon.lean proves no table can index a salt chosen after setup."),
-                    ("benchmark_bars", "FORMAL & EMPIRICAL AUDIT", "31 Lean Theorems · 195 Catalog Rows", "Lean 4.36 verifies 31 zero-sorry theorems, SHA-256 spectral falsifier F5 finds zero leaks, and 195 temporal anomalies are cataloged."),
-                    ("horizon_slate", "PRACTICAL SECURITY LESSON", "One-Time Pads & Fresh Block Entropy", "Only fresh entropy and nonces bind computation to the present moment; board_metered is explicitly false."),
+            "45s": {
+                "hook": "Why modern passwords and digital locks depend on tomorrow having no lookup address, and how fresh randomness protects them.",
+                "scenes": list(_TIME_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "PRE-PRINTED PUZZLE CHEAT BOOKS",
+                        "Why Fresh Dice Defeat Precomputation",
+                        "You can print a giant answer book for fixed puzzles only by solving every single puzzle ahead of time. Roll fresh dice right before asking the question, and that entire pre-printed book stops working.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "SECURITY BOUND TO THE PRESENT",
+                        "31 Verified Proofs · Fresh Randomness Wins",
+                        "Thirty-one machine-checked mathematical proofs confirm that without physical time loops, fresh random challenges and information-theoretic one-time secret pads keep future states safely unindexed.",
+                    ),
                 ],
             },
             "90s": {
-                "hook": "Documentary exploration of closed timelike curves, Horizon.lean, Paradox.lean, 195 cataloged anomalies, and spectral falsifiers.",
-                "scenes": [
-                    ("hook_contrast", "THE HIDDEN PREMISE OF SECURITY", "Unindexed Future States", "Every hash puzzle, time-lock cipher, and sequential proof assumes nature provides no index into future computational states."),
-                    ("equation_curve", "CTC COLLAPSE VS HORIZON BOUNDS", "D-CTC = PSPACE · P-CTC = PP", "If closed timelike curves existed, PSPACE collapse would break key-based math ciphers instantly, sparing only one-time pads."),
-                    ("cutaway_3d", "3D SPACETIME & HELLMAN TORUS", "Light-Cone Horizon + Rainbow Matrix", "This three-dimensional torus contrasts closed timelike geodesics with physical causal horizons and upfront Hellman precomputation cubes."),
-                    ("state_cascade", "KERNEL-CHECKED IN LEAN 4.36.0", "Horizon.lean (17) + Paradox.lean (14)", "Thirty-one machine-checked theorems formalize fixed-point paradoxes, pigeonhole incompressibility, coarse horizons, and salt non-amortization."),
-                    ("benchmark_bars", "MODELS M1–M8 & 195-ROW LEDGER", "81 Anomalies · 40 Edge Frequencies · 74 Paradoxes", "Eight deterministic simulation suites and 65,536 spectral hash digests pair with structured CSV ledgers of 195 anomalies and paradoxes."),
-                    ("falsifier_audit", "ZERO SPECTRAL SHORTCUTS", "F5 p > 10⁻⁶ · board_metered = false", "Corrected spectral tests find zero predictive frequency bins in SHA-256, and the study honestly records zero hardware power claims."),
+                "hook": "Testing whether future states can be indexed across time-loop math, quantum physics, 31 Lean 4 proofs, and 195 anomaly reports.",
+                "scenes": list(_TIME_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "FLIPPING TO THE LAST PAGE",
+                        "The Hidden Premise Behind Digital Locks",
+                        "Every password hash, digital signature, and time-locked puzzle assumes nature offers no index into the end of a calculation without running the steps in between. If future states had addresses, sequential brute-force security would vanish overnight.",
+                    ),
+                    (
+                        "state_cascade",
+                        "FOUR WAYS PEOPLE TRY TO SKIP TIME",
+                        "Time Loops, Quantum Postselection, Analog, Tables",
+                        "We audited four candidate shortcuts: mathematical time loops, quantum retrocausal circuits, analog settling hardware, and precomputed lookup tables. Outside theoretical time loops, every apparent shortcut pays upfront in discarded runs, exponential energy noise, or full prior search.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "PROOFS, SPECTRA & 195 CATALOG CASES",
+                        "Zero Frequency Leaks · Zero Future Signals",
+                        "Thirty-one machine-checked theorems verify our horizon bounds with zero unproven gaps, sixty-five thousand five hundred thirty-six cryptographic hash tests show zero frequency shortcuts, and auditing one hundred ninety-five anomaly and paradox reports leaves zero verified signals from tomorrow.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "HOW TO LOCK WORK TO TODAY",
+                        "Fresh Salts & Previous-Block Randomness",
+                        "Adding a fresh random value at query time dropped precomputed table hits from thirty-four percent all the way down to zero across two hundred trials, binding computation firmly to the present moment.",
+                    ),
+                ],
+            },
+            "180s": {
+                "hook": "Three-minute journey through time-loop complexity, quantum no-signalling, Hellman space-time tradeoffs, and 195 audited anomalies.",
+                "scenes": list(_TIME_OPENING) + [
+                    (
+                        "hook_contrast",
+                        "WHAT PROTECTS A DIGITAL SECRET?",
+                        "Unindexed Future States vs Brute Search",
+                        "Software already indexes recorded history in temporal databases and deterministic replay debuggers. So what stops a machine from indexing tomorrow's state the exact same way? If future states could be queried directly like rows in a table, public-key signatures, symmetric block ciphers, and proof-of-work puzzles would shatter in one query.",
+                    ),
+                    (
+                        "analogy_spotlight",
+                        "SELF-CONSISTENT LOOPS VS REAL LABS",
+                        "Why Nature Charges Full Price Outside Loops",
+                        "In formal time-loop math, forcing a classical or quantum bit sent into its own past to return unchanged creates a self-consistent fixed point that surfaces hard answers without running the search—sparing only information-theoretic one-time pads whose random keys carry zero mathematical link to the secret message.",
+                    ),
+                    (
+                        "state_cascade",
+                        "AUDITING QUANTUM AND ANALOG SHORTCUTS",
+                        "No-Signalling, Postselection & Settling Costs",
+                        "In real laboratory physics, quantum delayed-choice experiments obey exact marginal no-signalling so future measurement choices never shift earlier statistics. Postselected teleportation discards exponentially many failed trials—needing four thousand ninety-six runs on six-bit circuits where simple guessing needs thirty-two—while analog settling hardware shifts exponential hardness into thermal noise or frequency precision.",
+                    ),
+                    (
+                        "equation_curve",
+                        "THE SPACE-TIME PRECOMPUTATION LAW",
+                        "Trading Memory Against Online Search Steps",
+                        "Without physical time loops, every working fast lookup of a deterministic function is precomputation paid in advance. Online lookup steps multiplied by squared memory equals the squared state space, achieved only after paying the full exhaustive table fill upfront and dissipating nature's minimum heat floor for every erased bit.",
+                    ),
+                    (
+                        "cutaway_3d",
+                        "3D CAUSAL HORIZON & LOOKUP TORUS",
+                        "Closed Loops Contrasted With Light Cones",
+                        "This three-dimensional torus contrasts theoretical closed time loops along the outer ring against relativistic light-cone causal horizons and upfront lookup cubes at the center, illustrating visually why rewriting past steps incurs causal replay overhead and why no precomputed table can index a fresh random salt chosen after setup.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "31 PROOFS, HASH SCANS & 195 LEDGER ROWS",
+                        "Zero Spectral Shortcuts · Zero Future Leaks",
+                        "Lean four mechanically checked thirty-one horizon and paradox theorems with zero unproven placeholders or custom axioms. Sixty-five thousand five hundred thirty-six consecutive cryptographic digests showed zero anomalous frequency bins, fresh block challenges drove table reuse from thirty-four percent down to zero, and auditing one hundred ninety-five anomaly and paradox entries found zero future signals.",
+                    ),
+                    (
+                        "falsifier_audit",
+                        "CLEAR EPISTEMIC & ENERGY BOUNDARIES",
+                        "Math Proofs Distinguished From Physical Claims",
+                        "Every substantive claim across the study carries an explicit tag separating established physics, machine-checked theorems, testable conjectures, and debunked folklore. No hardware power sensor was attached, no real-world time loop is claimed in nature, and net vacuum energy harvest over any closed physical cycle equals strictly zero.",
+                    ),
                 ],
             },
         },
@@ -385,67 +938,148 @@ STUDIES_PART1 = [
         "pdf_url": "/pdfs/communication-avalanche.pdf",
         "figures_url": "/living/communication-avalanche/",
         "about_url": "/about/communication-avalanche/",
-        "tutorial_lab_id": "communication-avalanche",
-        "voice": "Allison (Enhanced)",
+        "tutorial_lab_id": "lab-04-digital-enzymatic",
         "cutaway_3d": "02_bio_sepj_neural_ratchet",
-        "cutaway_labels": [
-            ("SepJ Pore ≤ 0.30s", "95% vs 0% survival", "emerald"),
-            ("BLAKE3 + Ed25519", "25.95 µs · 0/200 Byzantine", "cyan"),
-            ("DES-10 & 5-Host", "14.97x / 43.69x CpJ + Thor INA", "amber"),
-            ("Opt-In BCI Proofs", "31 Lean 4 · 0 sorry · 0 axioms", "emerald"),
-        ],
-        "headline_metric": "59/60 Pass · 14.97x CpJ · 0/200 Byzantine",
         "epistemic_tags": ["T", "E", "M", "S"],
-        "energy_tier": "measured_j + reported_j",
-        "energy_disclosure": "Linux RAPL reported_j (CTA-E1..E3) + 5-host fleet w/ Jetson AGX Thor INA238/INA3221 measured_j + 12 pJ est_j hot-path analytical.",
+        "plain_bullets": [
+            "From ancient microbes to modern AI, groups scale by sharing signals across strict thresholds and safety gates.",
+            "Event-driven wakeups and signed checks block bad edits and deliver far more verified work per joule.",
+            "Ten AI approaches unite through tiny compiled routines, while future brain links stay grounded in strict consent.",
+        ],
+        "analogy": (
+            "Open-Mic Group Rumors",
+            "Chaining four unverified AI agents bloats messages nearly fourfold and lets broken code slip through eight times in sixty.",
+            "Watertight Safety Bulkheads",
+            "Like microbial pores that slam shut when a cell ruptures, fast cryptographic gates isolate bad signals in microseconds.",
+            "Quiet event wakeups and verified handoffs turn noisy crowds into reliable collective intelligence.",
+        ),
+        "headline_metric": "59 of 60 Fixes · 0 Bad Commits · 98% Combined",
+        "energy_tier": "Board Sensor + Chip Counter",
+        "energy_disclosure": "Tegra board power shunts plus chip counters across four workstations; separated.",
         "nodes": [
-            ("Externalize Signal", "24 Bio Rungs + Quorum", "amber"),
-            ("Attested Ingest", "25.95 µs BLAKE3+Ed25519", "cyan"),
-            ("DES-10 Transform", "eventfd + SSP Min-Cost", "emerald"),
-            ("Opt-In BCI Horizon", "Month->Decade · 31 Proofs", "emerald"),
+            ("Noisy Unchecked Agent Chains", "Errors snowball and idle polling burns watts", "rose"),
+            ("Share Above Threshold Only", "Sleep quietly until real work arrives", "amber"),
+            ("Verify Every Handoff Fast", "26-microsecond signature check blocks faults", "cyan"),
+            ("Lock In Reusable Routines", "98 of 100 solved across ten AI methods", "emerald"),
         ],
-        "equation": ("CpJ = Verified_Coherence / E_total   |   DES-10 Zipf: 43.69x CpJ", "Externalize-Ingest-Transform ratchet scales collective intelligence only when gates block drift", "hill_switch"),
+        "equation": (
+            "Verified Work per Joule = Confirmed Fixes / (Compute + Chat + Idle Energy)",
+            "Event wakeups and fast signature gates stop error snowballs and slash wasted chatter.",
+            "hill_switch",
+        ),
         "bars": [
-            ("Unattested 4-Agent Cascade", 18, "86.7% pass · 8/60 false commits", "rose"),
-            ("Monolithic Sonnet 5.5", 48, "59/60 pass · 1.0x baseline CpJ", "amber"),
-            ("Attested SSP + eventfd DAG", 98, "59/60 · 0 false · 2.09x / 14.97x CpJ", "emerald"),
+            ("Unchecked 4-Agent Chat Chain", 18, "52 / 60 pass · 8 broken commits", "rose"),
+            ("Single Giant Frontier Model", 48, "59 / 60 pass · 902.5 joules spent", "amber"),
+            ("Gated Event-Driven Team", 98, "59 / 60 pass · 0 broken · 14.97x efficiency", "emerald"),
         ],
-        "falsifier": ("200/200 Byzantine Contained", "0/200 corrupted edges propagate; Lean 4 CTA-T29..T31 prove zero-axiom opt-in BCI agency preservation.", "RAPL reported_j separated from 5-host Thor INA238/3221 measured_j and 12 pJ est_j.", "31 LEAN 4 · DES-10"),
+        "cutaway_labels": [
+            ("Microbial Safety Pore", "Closes in 0.3s · saves 95% of colony", "emerald"),
+            ("26-Microsecond Gate Check", "Blocks 200 of 200 corrupted messages", "cyan"),
+            ("Ten-Method Compiled Bridge", "Lifts solo 49% ceiling to 98% pass", "amber"),
+            ("Consent-First Brain Guard", "45 Lean 4 proofs · animal vs human split", "emerald"),
+        ],
+        "falsifier": (
+            "Animal Models Separated from Human Brain Limits",
+            "Forty-five Lean 4 proofs and five-computer tests confirm 200 of 200 fault blocks, 59 of 60 repairs, and 98 of 100 ten-method synthesis.",
+            "Human brain implants read roughly 15 to 19 bits per second today, and all 16 cellular vesicle rescue studies remain preclinical animal tests.",
+            "45 PROOFS · 5 HOSTS",
+        ),
         "tiers": {
-            "5s": {
-                "hook": "From Archaean quorum pores to DES-10 attested agents: 59/60 repair at 14.97x Coherence per Joule and zero Byzantine leaks.",
-                "scenes": [
-                    ("flash_kinetic", "COHERENCE PER JOULE", "59/60 Pass · 14.97x CpJ · 0/200 Faults", "Fast cryptographic gates hit 59 of 60 repairs at 14.97x Coherence per Joule."),
-                ],
+            "15s": {
+                "hook": "One scaling rule connects ancient bacteria, multi-agent AI teams, and consent-gated brain interfaces.",
+                "scenes": list(_AVALANCHE_OPENING),
             },
-            "30s": {
-                "hook": "Why unverified multi-agent chat cascades hallucinate, and how nature's 3-phase ratchet fixes orchestration.",
-                "scenes": [
-                    ("hook_contrast", "CHATTY SWARMS BURN & DRIFT", "8/60 False Commits in Unattested Chains", "Chaining four unverified AI agents bloats transcripts 3.7x and commits eight broken patches out of sixty."),
-                    ("state_cascade", "THE 3-PHASE BIO-TO-AI RATCHET", "Externalize -> Ingest -> Transform", "Across 24 evolutionary rungs and 1950-to-2026 AI history, collective scale requires thresholded signals and fast isolation gates."),
-                    ("benchmark_bars", "25.95 µs GATES & 2.21x EVENTFD", "59/60 Pass · 2.09x & 14.97x CpJ", "BLAKE3 plus Ed25519 attestation in 25.95 microseconds and zero-clock eventfd match 59 of 60 repairs at 14.97x higher Coherence per Joule."),
-                    ("horizon_slate", "DES-10 TO OPT-IN BCI HORIZON", "0/200 Byzantine · Month-to-Decade Map", "Digital Enzymatic Synthesis unifies ten AI camps while 31 Lean 4 theorems guarantee opt-in neural agency."),
-                ],
-            },
-            "60s": {
-                "hook": "24 biological rungs, 1950–2026 AI history, DES-10 enzymatic synthesis, Rust BLAKE3+Ed25519+SSP benchmarks, and Lean 4 BCI proofs.",
-                "scenes": [
-                    ("hook_contrast", "24 BIO RUNGS & 76 YEARS OF AI", "Why MYCIN & Hearsay Stalled vs AlphaGo", "Bacteria save 99 percent ATP via quorum thresholds and SepJ nanopores; early AI blackboard systems stalled when unverified noise compounded."),
-                    ("state_cascade", "UNIFYING 10 SILOED AI CAMPS", "DES-10 Digital Enzymatic Synthesis", "DES-10 bridges ten isolated AI camps—catalyzing frontier reasoning downward into 1.77-microjoule memory-mapped enzymes."),
-                    ("equation_curve", "EVENTFD + MIN-COST FLOW RATCHET", "25.95 µs Attest · 43.69x Zipfian CpJ", "Zero-clock eventfd cuts idle socket joules 2.21x vs 1,000 Hz polling, while Zipfian crystallization reaches 43.69x Coherence per Joule."),
-                    ("benchmark_bars", "CTA-E2 HARDWARE LEDGER & FLEET", "59/60 · 0 False · 0/200 Byzantine", "On 60 code repairs, attested min-cost flow hits 59 of 60 with zero false commits, 2.09x monolithic CpJ, and 200 of 200 faults contained."),
-                    ("horizon_slate", "OPT-IN BCI & DECADE BLUEPRINT", "31 Lean Proofs · Thor Shunt + RAPL", "Thirty-one Lean 4 proofs enforce zero-axiom opt-in BCI sovereignty across 18 neural modalities and a Month-to-Decade roadmap."),
+            "45s": {
+                "hook": "Why chatty multi-agent AI teams snowball errors, and how nature's watertight safety gates fix orchestration.",
+                "scenes": list(_AVALANCHE_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "WATERTIGHT PORES VS RUMOR CHAINS",
+                        "Nature Never Shares Without a Circuit Breaker",
+                        "Chaining four unchecked AI agents acts like a noisy game of telephone, letting eight broken code edits slip through out of sixty. Living cell colonies survive by slamming microscopic pores shut the instant a neighbor ruptures.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "MORE VERIFIED WORK PER JOULE",
+                        "59 of 60 Fixes · Zero Broken Commits",
+                        "Combining quiet event wakeups with twenty-six-microsecond cryptographic checks matched a giant model's fifty-nine of sixty repairs while delivering nearly fifteen times better verified work per joule than unchecked chains.",
+                    ),
                 ],
             },
             "90s": {
-                "hook": "The Lab Cut: SepJ nanopores, 1950–2026 AI ratchet, DES-10 10-camp synthesis, 5-host Thor INA shunts + RAPL, and opt-in BCI Lean 4 proofs.",
-                "scenes": [
-                    ("hook_contrast", "ONE CONSERVED SCALING OPERATOR", "Archaean Quorum to Neural Interfaces", "Across 3.5 billion years of biology and 76 years of AI from MYCIN to FunSearch, externalized symbols scale minds only behind strict gates."),
-                    ("equation_curve", "BIOPHYSICAL & ENZYMATIC BOUNDS", "99.17% ATP Saved · DES-10 43.69x CpJ", "Models CA-M1 to M5 confirm quorum ATP savings, 95 percent SepJ survival under 0.30-second pore closure, and 100 percent attested cultural retention."),
-                    ("cutaway_3d", "3D SEPJ PORE & NEURAL BRIDGE", "Blender 5.3 Nanopore + Electrode Array", "This three-dimensional cutaway pairs calcium-gated cyanobacterial SepJ filaments with an opt-in multi-electrode neural bridge."),
-                    ("state_cascade", "DES-10 & RUST SSP ORCHESTRATOR", "10 AI Camps · 25.95 µs BLAKE3+Ed25519", "Ten siloed AI camps converge in Digital Enzymatic Synthesis, backed by 25.95-microsecond Rust edge verification and eventfd wakeups."),
-                    ("benchmark_bars", "5-HOST TELEMETRY & 60-TASK SUITE", "59/60 Pass · 2.09x / 14.97x CpJ · Thor INA", "Linux RAPL benchmarks and five-host fleet profiles with Jetson AGX Thor INA238 shunts verify 59 of 60 repairs and zero Byzantine cascades."),
-                    ("falsifier_audit", "LEAN 4 OPT-IN BCI & ROADMAP", "CTA-T29..T31 Zero-Axiom · Month->Decade", "Zero-axiom Lean 4 proofs block coercive neural pulses across 18 BCI and 16 vesicle studies, anchoring the Month-Quarter-Year-Decade blueprint."),
+                "hook": "Tracing nature's three-step communication ratchet across 3.8 billion years of biology, 76 years of AI, and five computer hosts.",
+                "scenes": list(_AVALANCHE_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "ANCIENT MICROBES TO AGENT SWARMS",
+                        "Quorum Thresholds and 0.3-Second Safety Plugs",
+                        "Bacteria save up to ninety-nine percent of signaling energy by waiting for a chemical quorum before acting, and filamentous microbes seal damaged neighbors in zero point three seconds—saving ninety-five percent of the colony versus zero percent without gates.",
+                    ),
+                    (
+                        "state_cascade",
+                        "SHARE, GATE, AND LOCK IN GAINS",
+                        "Event Wakeups + 26-Microsecond Signatures",
+                        "Our orchestrator applies that exact three-phase ratchet to software agents: sleep at zero polling cost until incoming signals cross a threshold, verify signed envelopes in twenty-six microseconds, and compile solved discoveries downward into tiny reusable digital routines.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "60 CODE REPAIRS & 10 AI PARADIGMS",
+                        "59/60 Verified · 98/100 Combined Synthesis",
+                        "On sixty Python code repairs, gated routing hit fifty-nine passes with zero bad commits and contained all two hundred injected channel faults. Across a hundred-task suite where ten isolated AI approaches each stalled below forty-nine percent, compiled synthesis reached ninety-eight percent.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "STRICT CONSENT & CLINICAL REALISM",
+                        "45 Lean Proofs · Animal vs Human Evidence",
+                        "Forty-five machine-checked mathematical proofs guarantee strict opt-in autonomy for future neural interfaces while clearly separating preclinical rodent cellular rescue studies from unproven human clinical treatments today.",
+                    ),
+                ],
+            },
+            "180s": {
+                "hook": "Full documentary across 24 evolutionary rungs, 38 AI history milestones, five-host shunt telemetry, and consent-gated brain interfaces.",
+                "scenes": list(_AVALANCHE_OPENING) + [
+                    (
+                        "hook_contrast",
+                        "WHY BIGGER BRAINS ALONE PLATEAU",
+                        "Isolated Size vs Gated Communication",
+                        "Across three point eight billion years of biological evolution and seventy-six years of artificial intelligence, simply growing an isolated cell or single model hits steep metabolic walls long before complex problems are solved. Yet wiring unverified AI chatbots into an open group chat backfires badly, multiplying errors down the chain while constant polling burns watts.",
+                    ),
+                    (
+                        "analogy_spotlight",
+                        "BIOLOGY'S THREE-PHASE RATCHET",
+                        "Quorum Switches, Nanopores & Flocks",
+                        "Pre-registered simulations across twenty-four evolutionary transitions confirm one conserved scaling operator: bacteria save ninety-nine percent of metabolic cost behind quorum thresholds, calcium-gated pores lift colony survival from zero to ninety-five percent, topological flocks stay connected under fourfold expansion, and verified external archives preserve one hundred percent of cultural skill.",
+                    ),
+                    (
+                        "state_cascade",
+                        "EVENT WAKEUPS & DIGITAL ENZYMES",
+                        "Unifying Ten Siloed AI Schools",
+                        "Auditing thirty-eight AI milestones from early expert systems to modern language models reveals why isolated paradigms stall. Replacing verbose natural-language chat handoffs with twenty-six-microsecond cryptographic checks, quiet kernel event wakeups, and tiny compiled binary routines makes cross-agent handoffs more than seventy-five thousand times leaner and faster.",
+                    ),
+                    (
+                        "equation_curve",
+                        "MEASURING VERIFIED WORK PER JOULE",
+                        "Counting Compute, Messaging & Idle Drain",
+                        "Coherence per joule divides confirmed task completions by compute, messaging, and idle energy combined across every participant. Zero-clock event wakeups eliminate empty polls and cut Linux socket energy more than twofold compared with thousand-hertz polling, while minimum-cost flow routing automatically bypasses corrupted channels in just two point four microseconds.",
+                    ),
+                    (
+                        "cutaway_3d",
+                        "3D NANOPORE & OPT-IN NEURAL BRIDGE",
+                        "Biological Circuit Breakers Meet Silicon Gates",
+                        "This three-dimensional cutaway pairs a calcium-gated cyanobacterial pore assembly on the left with an opt-in multi-electrode neural bridge on the right, showing visually why reversible physical and cryptographic circuit breakers must stand in place before living cells, software agents, or future neural interfaces ever share state.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "FIVE COMPUTERS & TEN AI CAMPS",
+                        "59/60 Code Fixes · 98/100 Unified Score",
+                        "Tested across five computers—including direct Tegra circuit-board power shunts measuring nine hundred twenty-seven microjoules per signed kilobyte edge—gated orchestration matched fifty-nine of sixty code fixes at twice a giant model's efficiency, contained all two hundred injected faults, and lifted ten-method synthesis from forty-nine to ninety-eight percent.",
+                    ),
+                    (
+                        "falsifier_audit",
+                        "FORTY-FIVE PROOFS & MEDICAL HONESTY",
+                        "Separating Shunt Joules, Chip Counters & Hype",
+                        "Forty-five zero-gap Lean four theorems prove opt-in autonomy invariants that block coercive neural input without custom axioms. Tegra board shunt joules stay strictly separated from workstation chip counters, current human intracortical readout is stated honestly at fifteen to nineteen bits per second, and all sixteen cellular vesicle studies remain preclinical animal models.",
+                    ),
                 ],
             },
         },
@@ -453,73 +1087,154 @@ STUDIES_PART1 = [
     {
         "id": "lut-adapt",
         "title": "Downward LUT6 Compilation in a Mixture of Limits Cascade: Beneš-Routed Boolean Fabrics, Conformal Wake Gates, and Frontier Sparse-MoE NVMe Streaming",
-        "short_title": "Downward LUT6 Compilation",
-        "category": "Hardware, LUT6 & OS",
+        "short_title": "Downward Lookup Compilation",
+        "category": "Hardware, Silicon & OS",
         "paper_url": "/papers/lut-adapt/",
         "pdf_url": "/pdfs/lut-adapt.pdf",
         "figures_url": "/living/lut-adapt/",
         "about_url": "/about/lut-adapt/",
-        "tutorial_lab_id": "lut-adapt",
-        "voice": "Ava (Premium)",
+        "tutorial_lab_id": "lab-09-lut6-benes",
         "cutaway_3d": "01_silicon_kv260_lut6",
-        "cutaway_labels": [
-            ("81 RAMB36E2 Blocks", "Beneš-routed xck26 RTL", "cyan"),
-            ("Metal INT4 AirMoL", "970 MB = 1.47% FP16 RAM", "amber"),
-            ("Verified Bakeoff", "87.50% (42/48) · 0% broken", "emerald"),
-            ("Wave-3 Replay", "2.89 ms · 0.0424 J reported_j", "emerald"),
-        ],
-        "headline_metric": "970 MB (1.47% RAM) · 87.5% Pass · 0% Broken",
         "epistemic_tags": ["T", "E", "M"],
-        "energy_tier": "reported_j + est_j",
-        "energy_disclosure": "Apple M5 Max dual-channel reported_j (6.773 J/tok & 0.0424 J replay) + xck26 RTL est_j; measured_j unset.",
+        "plain_bullets": [
+            "Most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.",
+            "This cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.",
+            "Once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill.",
+        ],
+        "analogy": (
+            "Reloading the Whole Library",
+            "Keeping a 35-billion-parameter coding model wired in memory normally demands 66 gigabytes even for routine edits.",
+            "Stream Once, Compile to Reflex",
+            "Stream only the needed 4-bit specialist weights in 970 megabytes, verify the fix, and compile it into a fast table.",
+            "Big models handle novel surprises while certified answers turn into instant, zero-mistake reflexes.",
+        ),
+        "headline_metric": "970 MB Active RAM · 91.7% Verified · 0% Broken",
+        "energy_tier": "Chip Energy Counter",
+        "energy_disclosure": "Built-in Apple chip counters and simulated circuit estimates; no board shunt.",
         "nodes": [
-            ("LUT6 + Beneš Rung", "81 RAMB36E2 Zero-MAC", "cyan"),
-            ("Conformal Wake Gate", "Escalate Only Uncertain", "amber"),
-            ("NVMe INT4 AirMoL", "35B MoE in 970 MB RAM", "amber"),
-            ("Downward Compile", "0.0424 J Canonical Replay", "emerald"),
+            ("66-Gigabyte Memory Wall", "Re-running giant models wastes RAM and watts", "rose"),
+            ("Fast Truth-Table Rung", "0.15-millisecond Rust lookup checks first", "cyan"),
+            ("Stream Specialist Slices", "35-billion model runs in 970 MB RAM", "amber"),
+            ("Compile Certified Skills", "91.7% verified pass · 0% broken edits", "emerald"),
         ],
-        "equation": ("RAM_active = 970 MB (1.47% FP16)   |   NVMe Traffic ÷ 12.30×", "Sparse-MoE expert streaming + downward LUT6/skill compilation collapses frontier memory & replay cost", "cascade_drop"),
+        "equation": (
+            "Compile Downward When Repeat Savings Exceed One-Time Compilation Cost",
+            "Streaming 4-bit specialists cuts storage reads 12.3x while certified replays take milliseconds.",
+            "cascade_drop",
+        ),
         "bars": [
-            ("35B Dense FP16 Residency", 100, "66 GB RAM baseline", "rose"),
-            ("Qwen3.6-35B-A3B INT4 AirMoL", 15, "970 MB RAM · 6.773 J/tok", "amber"),
-            ("Compiled .mol Wave-3 Replay", 3, "2.89 ms · 0.0424 J reported_j", "emerald"),
+            ("Full 16-Bit Model in Memory", 100, "66 GB RAM required continuously", "rose"),
+            ("Streamed 35-Billion Specialist", 15, "970 MB RAM · 12.3x less storage traffic", "amber"),
+            ("Compiled Skill Replay", 3, "0.15 ms lookup · 0% broken commits", "emerald"),
         ],
-        "falsifier": ("100% Exact Token Parity & RTL", "Custom Metal INT4 MoE + GatedDeltaNet shaders keep 100.0% exact token parity; Yosys xck26 synthesizes 67,366 LUTs.", "Isolated KV260 board shunt not claimed here; measured_j is unset.", "0.00% BROKEN COMMITS"),
+        "cutaway_labels": [
+            ("81 Dual-Port Memory Blocks", "Holds hot-swappable truth-table pages", "cyan"),
+            ("Non-Blocking Switch Fabric", "Routes 480 table inputs without rewiring", "amber"),
+            ("4-Stage 250 MHz Pipeline", "Cuts simulated idle switching power 4.1x", "emerald"),
+            ("120-Billion Scale Ceiling", "22.2 tokens/s · 62.5% verified hard suite", "amber"),
+        ],
+        "falsifier": (
+            "Chip Counters & Circuit Simulation vs Board Power",
+            "Twenty-seven Lean 4 proofs, 970 MB 35-billion streaming, 22.2 tokens/s at 120-billion scale, and 0% broken commits all held.",
+            "Hardware logic figures come from cycle-accurate simulation rather than a wired circuit-board power shunt in this repository.",
+            "27 PROOFS · 0% BROKEN",
+        ),
         "tiers": {
-            "5s": {
-                "hook": "Stream a 35B MoE in 970 MB RAM, verify every patch, and compile wakes downward into 42-millijoule replays.",
-                "scenes": [
-                    ("flash_kinetic", "DOWNWARD LUT6 CASCADE", "970 MB 35B MoE · 0.0424 J Replay", "Stream a 35B model in 970 megabytes and replay verified skills in 2.9 milliseconds."),
-                ],
+            "15s": {
+                "hook": "How to run giant coding models inside tiny laptop memory and turn verified answers into millisecond reflexes.",
+                "scenes": list(_LUT_OPENING),
             },
-            "30s": {
-                "hook": "How a laptop streams a 35B-parameter MoE from NVMe in 970 MB of RAM and compiles verified wakes downward.",
-                "scenes": [
-                    ("hook_contrast", "THE 66-GIGABYTE MEMORY WALL", "Why Frontier Local Coding Stalls", "Running a 35-billion-parameter coding model normally demands tens of gigabytes of wired GPU memory on every query."),
-                    ("state_cascade", "LUT6 + CONFORMAL WAKE + AIRMOL", "Boolean Fabric Fronts NVMe MoE", "Downward LUT6 Compilation places Beneš-routed lookup fabrics and conformal wake gates in front of NVMe-streamed sparse experts."),
-                    ("benchmark_bars", "1.47% RAM & 87.5% VERIFIED CODE", "970 MB Resident · 0.00% Broken Commits", "Custom Apple Metal INT4 shaders stream Qwen 3.6 35B in 970 megabytes at 100 percent token parity and 87.5 percent coding pass."),
-                    ("horizon_slate", "COMPILE WAKES DOWNWARD", "2.89 ms · 0.0424 J Wave-3 Replay", "Once a frontier wake passes pytest verification, it compiles into canonical skill and xck26 LUT6 pages."),
-                ],
-            },
-            "60s": {
-                "hook": "Inside AirMoL NVMe streaming, Metal GatedDeltaNet INT4 shaders, 81-RAMB36E2 Beneš RTL, and SWE-Mini verification.",
-                "scenes": [
-                    ("hook_contrast", "STOP PAYING FRONTIER WEIGHTS TWICE", "Memory Capacity + Repeat Inference Waste", "Edge workstations face twin bottlenecks: huge static weight footprints and re-running billion-parameter attention on recurring bugs."),
-                    ("state_cascade", "FOUR-TIER MIXTURE OF LIMITS", "LUT6 -> Mamba-3 -> Small -> 35B AirMoL", "A reconfigurable 6-input truth-table tier and conformal wake gate escalate only novel tasks to NVMe-streamed sparse MoE models."),
-                    ("equation_curve", "F_NOCACHE NVME & METAL SHADERS", "12.30× Less NVMe · 6.773 J/tok", "Bypassing OS page-cache illusions with Darwin F_NOCACHE and custom INT4 GatedDeltaNet shaders cuts NVMe reads 12.3x."),
-                    ("benchmark_bars", "48-TASK BAKEOFF & SWE-MINI", "42/48 & 14/16 Pass · 0% Broken", "Deterministic commit gates achieve 87.5 percent verified pass on both coding suites while calling the 35B tier on 22.9 percent of tasks."),
-                    ("horizon_slate", "YOSYS XCK26 RTL & MOL-AGENT", "81 RAMB36E2s · OpenAI + MCP Server", "Synthesized xck26 RTL maps 81 RAMB36E2 blocks, with host joules reported honestly as reported_j and RTL analytical est_j."),
+            "45s": {
+                "hook": "Like turning slow sheet-music reading into instant piano muscle memory, while holding a 35-billion model in 970 megabytes.",
+                "scenes": list(_LUT_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "FROM SHEET MUSIC TO MUSCLE MEMORY",
+                        "Stop Paying 66 Gigabytes for Routine Work",
+                        "Learning a tough piano measure takes slow concentration once, then turns into effortless muscle memory. Yet computers usually keep sixty-six gigabytes of neural weights wired in RAM just to solve recurring coding bugs.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "970 MEGABYTES & ZERO BROKEN CODE",
+                        "Stream on Surprise · Replay in Milliseconds",
+                        "Streaming four-bit specialist slices holds a thirty-five-billion-parameter model inside nine hundred seventy megabytes of active RAM while compiling verified fixes downward into sub-millisecond lookups with zero broken code edits.",
+                    ),
                 ],
             },
             "90s": {
-                "hook": "Complete architectural cut of LUT6 Beneš fabrics, Sub1Bit zero-MAC lookups, Metal INT4 35B MoE streaming, and xck26 synthesis.",
-                "scenes": [
-                    ("hook_contrast", "FROM CLOUD GPUS TO BOOLEAN TABLES", "Inverting the Inference Pyramid", "Instead of keeping massive neural weights hot in HBM, what if frontier models woke briefly from flash to compile Boolean skills?"),
-                    ("equation_curve", "EXPERT-AIRMOL & CONFORMAL GATES", "970 MB Active RAM · 100.0% Parity", "Streaming active 4-bit experts directly from NVMe holds Qwen 3.6 35B-A3B inside 970 megabytes—just 1.47 percent of FP16 RAM."),
-                    ("cutaway_3d", "3D XCK26 BENES & RAMB36E2 DIE", "67,366 CLB LUTs · 81 Block RAMs", "This three-dimensional FPGA cutaway visualizes the synthesized xck26 subsystem: 81 RAMB36E2 blocks wired across a hot-swappable Beneš network."),
-                    ("state_cascade", "MOL-AGENT OPENAI & MCP SERVER", "Drop-In JSON-RPC 2.0 + Git Patch Gate", "Every candidate patch must clear deterministic AST and pytest verifiers before committing, guaranteeing zero broken commits."),
-                    ("benchmark_bars", "WAVE-3 CRYSTALLIZED REPLAY", "2.89 ms & 0.0424 J vs 6.773 J/tok", "Certified wakes compile downward into .mol skill pages that replay Wave-3 arrivals in 2.89 milliseconds and 42.4 millijoules."),
-                    ("falsifier_audit", "SUB1BIT-LUT6 & METERING BOUNDARY", "Zero-MAC Audit + measured_j Unset", "Zero-MAC Sub1Bit-LUT6 benchmarks against LittleBit-2 and Vivado OOC Tcl scripts ship openly, with isolated board power left unset."),
+                "hook": "Inside our four-step downward compilation cascade: truth-table lookups, 970-megabyte model streaming, and zero broken commits.",
+                "scenes": list(_LUT_OPENING) + [
+                    (
+                        "analogy_spotlight",
+                        "THINK HARD ONCE, REMEMBER FAST",
+                        "Breaking Both Memory and Repeat-Compute Walls",
+                        "Local developer workstations hit two steep walls at the exact same time: giant coding models normally demand tens of gigabytes of wired memory, and re-running them from scratch on repeating software bugs wastes energy over and over again.",
+                    ),
+                    (
+                        "state_cascade",
+                        "FOUR TIERS PLUS SLEEP COMPILER",
+                        "Tables -> Sequence State -> Novelty Gate -> Model",
+                        "Incoming requests first check a zero-multiply Boolean truth-table switch and a tiny constant-size sequence memory. A calibrated novelty detector wakes four-bit storage-streamed models up to a hundred twenty billion parameters only on unfamiliar problems, then compiles certified wins downward.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "91.7% VERIFIED & 12.3X LESS STORAGE READ",
+                        "970 MB RAM on 35B · 22.2 Tokens/s on 120B",
+                        "Custom Apple Metal and portable Rust GPU shaders cut unbuffered flash storage reads twelve point three times at exact token parity, reaching ninety-one point seven percent verified coding pass and fifty percent on real symbolic math repositories with zero broken commits.",
+                    ),
+                    (
+                        "horizon_slate",
+                        "PROVEN SAFE BY 27 MATH THEOREMS",
+                        "Model Guesses Never Fake Guaranteed Rules",
+                        "Twenty-seven machine-checked mathematical proofs guarantee lossless target verification on every emitted token and ensure statistical wake tables are never silently mislabeled as exact deterministic rules across deployments.",
+                    ),
+                ],
+            },
+            "180s": {
+                "hook": "Three-minute architectural tour of non-blocking Boolean switch fabrics, 970-megabyte 35-billion streaming, 120-billion scaling, and 27 Lean proofs.",
+                "scenes": list(_LUT_OPENING) + [
+                    (
+                        "hook_contrast",
+                        "INVERTING THE AI MEMORY PYRAMID",
+                        "Why Keep Billions of Weights Hot in RAM?",
+                        "Running a thirty-five-billion-parameter coding model locally normally locks up sixty-six gigabytes of sixteen-bit memory even when most incoming edits repeat familiar patterns. Static hardware lookup networks hit the opposite wall: whenever real-world input traffic shifts, rewiring chip logic from scratch takes hours of vendor synthesis.",
+                    ),
+                    (
+                        "analogy_spotlight",
+                        "HOT-SWAPPABLE MUSCLE MEMORY",
+                        "Specialist Paging Plus Instant Reflex Pages",
+                        "Picture an experienced surgeon who checks fast laminated checklists for routine steps, pulls only the exact specialist manual chapter from storage for rare cases, and compiles every newly verified procedure into a fresh checklist card overnight without ever halting or rebuilding the operating room.",
+                    ),
+                    (
+                        "state_cascade",
+                        "FOUR RUNGS AND CONFORMAL GATING",
+                        "0.15-Millisecond Rust Lookup to 120B Apex",
+                        "A single-binary Rust server checks truth-table and canonical skill pages in zero point one five milliseconds—seventeen times faster than Python—then steps up to forty-eight-kilobyte state-space tracking, runs an adaptive statistical novelty gate that caught shifted traffic with zero false risk, and wakes large specialist models only last.",
+                    ),
+                    (
+                        "equation_curve",
+                        "WHEN DOWNWARD COMPILATION PAYS OFF",
+                        "12.3x Less Flash Traffic · Exact Token Parity",
+                        "Twenty-seven Lean four theorems prove downward compilation saves net energy whenever recurring hits over a stationary horizon outweigh one-time synthesis cost, and prove joint truth-table synthesis avoids invalid blended tokens. Unbuffered four-bit specialist streaming plus truth-table drafting cuts flash reads twelve point three times inside nine hundred seventy megabytes at exact token parity.",
+                    ),
+                    (
+                        "cutaway_3d",
+                        "3D SWITCH FABRIC & MEMORY BLOCKS",
+                        "81 Dual-Port Memories · 4-Stage 250 MHz Core",
+                        "This three-dimensional chip layout shows eighty-one dual-port block memories feeding eighty six-input truth tables across a forty-three-stage non-blocking multicast switch fabric that swaps shadow pages in one cycle without vendor rewiring. Clock-enable bubble gating shrinks single-cycle logic depth fourfold and cuts simulated idle switching power four point one times at two hundred fifty megahertz.",
+                    ),
+                    (
+                        "benchmark_bars",
+                        "FROM 35B STREAMING TO 120B APEX",
+                        "91.7% Bakeoff · 90.6% Public Coding · 0% Broken",
+                        "Gating every candidate code patch behind automated unit tests reached ninety-one point seven percent on our forty-eight-task bakeoff, ninety point six percent on public function coding, two-point-five-times standalone pass across four open-source repositories, and twenty-two point two tokens per second with sixty-two point five percent verified pass on a hundred-twenty-billion-parameter model.",
+                    ),
+                    (
+                        "falsifier_audit",
+                        "SIMULATION VS PHYSICAL BOARD POWER",
+                        "Honest Boundaries on Chip Counters & Timing",
+                        "Every measurement boundary stays completely explicit from software to silicon: workstation joules come from built-in Apple and Linux chip counters, hardware switching milliwatts come from cycle-accurate waveform activity rather than an isolated circuit-board power shunt or commercial post-route timing signoff in this repository, and zero broken commits ever cross the gate.",
+                    ),
                 ],
             },
         },

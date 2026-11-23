@@ -1,50 +1,70 @@
 WEBVTT
-NOTE OpenIE Research TV — gates (90s) Narrator George
+NOTE OpenIE Research TV v3.0 — gates (90s) Narrator George
 
 1
-00:00:01.334 --> 00:00:03.557
-In real software infrastructure,
+00:00:00.320 --> 00:00:03.531
+First, a computer should not take an irreversible
 
 2
-00:00:03.557 --> 00:00:09.877
-actions cross boundaries that cannot be rolled back by generating another polite paragraph.
+00:00:03.531 --> 00:00:07.069
+action until an independent check confirms it is safe.
 
 3
-00:00:13.203 --> 00:00:19.141
-Metered Commit Gates replaces raw token cost with Energy to Correct Completion,
+00:00:07.569 --> 00:00:11.005
+Second, it should try the cheapest method first and
 
 4
-00:00:19.141 --> 00:00:23.576
-summing every joule spent until a verified outcome commits.
+00:00:11.005 --> 00:00:14.442
+wake a large AI model only when simpler tools miss.
 
 5
-00:00:26.901 --> 00:00:32.864
-This three-dimensional silicon cutaway highlights the physical INA260
+00:00:14.942 --> 00:00:19.779
+Third, every decision is written to a receipt with the energy it used,
 
 6
-00:00:32.864 --> 00:00:38.308
-board shunt feeding deterministic gate logic on KV260 hardware.
+00:00:19.779 --> 00:00:21.782
+so anyone can audit it later.
 
 7
-00:00:41.634 --> 00:00:45.313
-Inputs hit zero-hallucination lookup rungs first;
+00:00:22.282 --> 00:00:27.497
+Think of how a hospital pharmacy or airplane cockpit separates suggesting an
 
 8
-00:00:45.313 --> 00:00:50.869
-proposals from higher rungs still pass through the exact same commit gate.
+00:00:27.497 --> 00:00:32.505
+action from executing it. An AI model can propose whatever clever step it
 
 9
-00:00:54.195 --> 00:01:00.920
-Whole-module KV260 rail readings establish a true measured_j anchor
+00:00:32.505 --> 00:00:38.268
+likes, while an independent deterministic gate holds the sole key to external tools.
 
 10
-00:01:00.920 --> 00:01:07.644
-at 11,428 picojoules per cycle alongside audited software cascades.
+00:00:38.768 --> 00:00:44.265
+Instead of waking a massive neural network on routine tasks, our cascade tries
 
 11
-00:01:10.970 --> 00:01:14.090
-Across the entire OpenIE corpus,
+00:00:44.265 --> 00:00:50.045
+table lookup first, then simple formulas, then exact solvers, and finally a model,
 
 12
-00:01:14.090 --> 00:01:22.378
-only physical rail sensors like this KV260 shunt and Thor INA rails carry measured_j.
+00:00:50.045 --> 00:00:56.176
+stopping the instant a check passes or refusing cleanly when remaining budget runs low.
+
+13
+00:00:56.676 --> 00:01:02.370
+Across more than two hundred nine thousand simulated control checks, the discrete safety
+
+14
+00:01:02.370 --> 00:01:08.322
+gate allowed zero unsafe actions. On real programmable hardware with an inline circuit-board
+
+15
+00:01:08.322 --> 00:01:15.051
+power sensor, one whole-module gate cycle measured eleven thousand four hundred twenty-eight picojoules.
+
+16
+00:01:15.551 --> 00:01:22.965
+Model-generated suggestions are never silently relabeled as guaranteed rules, and every allowed or refused step
+
+17
+00:01:22.965 --> 00:01:29.243
+writes its exact reason and labeled energy source to a permanent receipt for later inspection.

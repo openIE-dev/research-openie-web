@@ -1,0 +1,110 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — lut-adapt (180s) Narrator Jenny
+
+1
+00:00:00.360 --> 00:00:03.484
+First, most requests repeat solved patterns,
+
+2
+00:00:03.484 --> 00:00:08.454
+so running a giant neural network every time wastes memory and energy.
+
+3
+00:00:09.014 --> 00:00:12.772
+Second, this cascade checks tiny truth tables first and
+
+4
+00:00:12.772 --> 00:00:17.009
+streams specialist model slices from storage only when needed.
+
+5
+00:00:17.569 --> 00:00:21.502
+Third, once an automated test certifies a new answer,
+
+6
+00:00:21.502 --> 00:00:25.585
+it compiles downward into a reusable millisecond skill.
+
+7
+00:00:26.145 --> 00:00:34.254
+Running a thirty-five-billion-parameter coding model locally normally locks up sixty-six gigabytes of sixteen-bit memory even
+
+8
+00:00:34.254 --> 00:00:41.066
+when most incoming edits repeat familiar patterns. Static hardware lookup networks hit the opposite wall:
+
+9
+00:00:41.066 --> 00:00:48.007
+whenever real-world input traffic shifts, rewiring chip logic from scratch takes hours of vendor synthesis.
+
+10
+00:00:48.567 --> 00:00:54.706
+Picture an experienced surgeon who checks fast laminated checklists for routine steps, pulls only
+
+11
+00:00:54.706 --> 00:01:00.908
+the exact specialist manual chapter from storage for rare cases, and compiles every newly verified
+
+12
+00:01:00.908 --> 00:01:07.363
+procedure into a fresh checklist card overnight without ever halting or rebuilding the operating room.
+
+13
+00:01:07.923 --> 00:01:13.884
+A single-binary Rust server checks truth-table and canonical skill pages in zero point one five
+
+14
+00:01:13.884 --> 00:01:22.919
+milliseconds—seventeen times faster than Python—then steps up to forty-eight-kilobyte state-space tracking, runs an adaptive statistical novelty
+
+15
+00:01:22.919 --> 00:01:29.131
+gate that caught shifted traffic with zero false risk, and wakes large specialist models only last.
+
+16
+00:01:29.691 --> 00:01:38.022
+Twenty-seven Lean four theorems prove downward compilation saves net energy whenever recurring hits over a stationary horizon
+
+17
+00:01:38.022 --> 00:01:47.885
+outweigh one-time synthesis cost, and prove joint truth-table synthesis avoids invalid blended tokens. Unbuffered four-bit specialist streaming plus
+
+18
+00:01:47.885 --> 00:01:56.082
+truth-table drafting cuts flash reads twelve point three times inside nine hundred seventy megabytes at exact token parity.
+
+19
+00:01:56.642 --> 00:02:06.083
+This three-dimensional chip layout shows eighty-one dual-port block memories feeding eighty six-input truth tables across a forty-three-stage non-blocking
+
+20
+00:02:06.083 --> 00:02:14.236
+multicast switch fabric that swaps shadow pages in one cycle without vendor rewiring. Clock-enable bubble gating shrinks single-cycle
+
+21
+00:02:14.236 --> 00:02:21.164
+logic depth fourfold and cuts simulated idle switching power four point one times at two hundred fifty megahertz.
+
+22
+00:02:21.724 --> 00:02:29.265
+Gating every candidate code patch behind automated unit tests reached ninety-one point seven percent on our forty-eight-task
+
+23
+00:02:29.265 --> 00:02:37.719
+bakeoff, ninety point six percent on public function coding, two-point-five-times standalone pass across four open-source repositories, and
+
+24
+00:02:37.719 --> 00:02:45.687
+twenty-two point two tokens per second with sixty-two point five percent verified pass on a hundred-twenty-billion-parameter model.
+
+25
+00:02:46.247 --> 00:02:53.976
+Every measurement boundary stays completely explicit from software to silicon: workstation joules come from built-in Apple and
+
+26
+00:02:53.976 --> 00:03:02.379
+Linux chip counters, hardware switching milliwatts come from cycle-accurate waveform activity rather than an isolated circuit-board power
+
+27
+00:03:02.379 --> 00:03:09.127
+shunt or commercial post-route timing signoff in this repository, and zero broken commits ever cross the gate.

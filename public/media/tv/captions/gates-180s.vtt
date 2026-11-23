@@ -1,0 +1,110 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — gates (180s) Narrator George
+
+1
+00:00:00.360 --> 00:00:03.571
+First, a computer should not take an irreversible
+
+2
+00:00:03.571 --> 00:00:07.109
+action until an independent check confirms it is safe.
+
+3
+00:00:07.669 --> 00:00:11.105
+Second, it should try the cheapest method first and
+
+4
+00:00:11.105 --> 00:00:14.542
+wake a large AI model only when simpler tools miss.
+
+5
+00:00:15.102 --> 00:00:19.939
+Third, every decision is written to a receipt with the energy it used,
+
+6
+00:00:19.939 --> 00:00:21.942
+so anyone can audit it later.
+
+7
+00:00:22.502 --> 00:00:30.037
+Chatbots can recover from a clumsy sentence by writing another polite paragraph, yet autonomous software tools
+
+8
+00:00:30.037 --> 00:00:37.504
+cross real-world boundaries that cannot be rolled back once executed. Even cheap per-word AI becomes wasteful
+
+9
+00:00:37.504 --> 00:00:45.861
+and dangerous when ten unverified guesses corrupt records, trigger expensive rollbacks, and force human cleanup afterward.
+
+10
+00:00:46.421 --> 00:00:54.322
+Imagine a hospital pharmacy where routine refills follow an exact printed checklist, unusual prescriptions escalate to
+
+11
+00:00:54.322 --> 00:01:00.281
+a specialist, and a physical barcode lock refuses to open the drawer if dosage or allergy
+
+12
+00:01:00.281 --> 00:01:07.245
+limits fail. Neither raw speed nor model cleverness ever gets an informal side channel around that gate.
+
+13
+00:01:07.805 --> 00:01:15.562
+Every irreversible action passes through four strict runtime records in our Rust reference implementation. First comes
+
+14
+00:01:15.562 --> 00:01:23.845
+an untrusted proposal that cannot authorize itself. Second comes a joint certificate requiring table permission, energy budget
+
+15
+00:01:23.845 --> 00:01:31.471
+headroom, and optional safety barriers. Third comes commit or typed refusal, and fourth comes a timestamped receipt.
+
+16
+00:01:32.031 --> 00:01:39.760
+By classic sequential search theory, trying gears in decreasing order of pass probability divided by energy cost
+
+17
+00:01:39.760 --> 00:01:48.386
+minimizes expected spend across every workload. Measuring total energy to correct completion penalizes every failed retry and
+
+18
+00:01:48.386 --> 00:01:56.597
+refusal, showing clearly why spending picojoules on early deterministic checks saves whole joules of wasted model runs.
+
+19
+00:01:57.157 --> 00:02:04.333
+This three-dimensional hardware cutaway shows eight parallel safety gates checking rule tables, energy budgets, and
+
+20
+00:02:04.333 --> 00:02:11.946
+safety barriers together at twenty-five megahertz on reconfigurable silicon, while an onboard circuit-board current sensor
+
+21
+00:02:11.946 --> 00:02:19.309
+measures real module supply power across interleaved start-and-stop runs and matches software decisions step for step.
+
+22
+00:02:19.869 --> 00:02:27.344
+Across two hundred nine thousand two hundred sixty-one fixed-point control checks, the discrete gate recorded zero
+
+23
+00:02:27.344 --> 00:02:35.801
+unsafe approvals and only seventy-nine cautious refusals, while blocking unsafe external tool calls before execution. Interleaved
+
+24
+00:02:35.801 --> 00:02:44.390
+hardware board-sensor measurements recorded eleven thousand four hundred twenty-eight picojoules per gate cycle across four passes.
+
+25
+00:02:44.950 --> 00:02:52.932
+Every energy figure states plainly how it was obtained and what remains unmeasured. Our eleven-thousand-picojoule hardware
+
+26
+00:02:52.932 --> 00:03:00.064
+reading spans the whole vision module supply rather than an isolated core rail, a tiny ninety-eight-picojoule
+
+27
+00:03:00.064 --> 00:03:08.504
+seed test stayed inconclusive near sensor resolution, and software operation counts stay clearly labeled as analytical estimates.

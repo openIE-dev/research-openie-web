@@ -1,0 +1,110 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — satb-harness (180s) Narrator Mia
+
+1
+00:00:00.360 --> 00:00:03.426
+First, changing the wrapper around an AI model
+
+2
+00:00:03.426 --> 00:00:06.558
+can swing scores as much as swapping the model.
+
+3
+00:00:07.118 --> 00:00:11.466
+Second, this test harness locks prompts, memory trimming,
+
+4
+00:00:11.466 --> 00:00:15.127
+and tools so every AI takes the exact same exam.
+
+5
+00:00:15.687 --> 00:00:18.026
+Third, across five computer types,
+
+6
+00:00:18.026 --> 00:00:23.806
+it separates real board sensors from chip counters and blocks noisy power estimates.
+
+7
+00:00:24.366 --> 00:00:30.439
+When two engineering teams test the exact same AI model and report wildly different pass rates or
+
+8
+00:00:30.439 --> 00:00:37.828
+energy bills, the model itself often is not the cause at all. Hidden conversation summarizers, shell-quoting failures,
+
+9
+00:00:37.828 --> 00:00:45.466
+and uncalibrated power formulas quietly alter the exam behind the scenes without ever appearing on the public leaderboard.
+
+10
+00:00:46.026 --> 00:00:52.736
+On a public terminal coding benchmark, changing only the surrounding wrapper shifted the very same model's
+
+11
+00:00:52.736 --> 00:01:00.141
+task score by seventeen percentage points. Our evaluation contract holds one sequential Rust wrapper completely fixed
+
+12
+00:01:00.141 --> 00:01:06.788
+for raw models while auditing third-party coding tools as complete systems behind one local proxy bridge.
+
+13
+00:01:07.348 --> 00:01:13.263
+Inside every attempt, the harness executes strictly one tool call at a time inside a network-blocked
+
+14
+00:01:13.263 --> 00:01:22.313
+workspace with eight-kilobyte head-and-tail output caps. Whenever conversation history exceeds eighty percent capacity, it deterministically replaces the
+
+15
+00:01:22.313 --> 00:01:29.589
+oldest tool outputs while keeping the eight newest intact, terminating stray process trees cleanly inside ten milliseconds.
+
+16
+00:01:30.149 --> 00:01:36.933
+Many cloud sustainability dashboards estimate a program's energy bill by multiplying whole-server power by its
+
+17
+00:01:36.933 --> 00:01:44.888
+processor time share. Across sequential compute-and-storage phases and Windows fifteen-millisecond clock ticks, our live hardware
+
+18
+00:01:44.888 --> 00:01:51.425
+audit proved that shortcut misattributes energy by thirty-two point six to eighty-nine point nine percent.
+
+19
+00:01:51.985 --> 00:01:58.711
+This three-dimensional ring connects five live computers around one deterministic core: a Tegra developer kit wired
+
+20
+00:01:58.711 --> 00:02:06.139
+with physical whole-board and three-channel current shunts, an Apple workstation, two Linux desktops with isolated energy-group
+
+21
+00:02:06.139 --> 00:02:13.449
+permissions, and a bare-metal Windows eleven laptop reading rootless discrete graphics counters with millisecond job cleanup.
+
+22
+00:02:14.009 --> 00:02:21.568
+All five computers reproduced our million-record lookup checksum and a hundred-fifty-kilobyte fourteen-turn transcript with zero
+
+23
+00:02:21.568 --> 00:02:28.358
+byte or newline differences across operating systems, matched external coding agent completion at up to three-times
+
+24
+00:02:28.358 --> 00:02:35.090
+lower prompt and cache token volume, and caught repeated zero-temperature output drift across three cloud vendors.
+
+25
+00:02:35.650 --> 00:02:42.335
+Physical circuit-board shunt joules on the Tegra kit stay strictly separated from built-in chip counters on the
+
+26
+00:02:42.335 --> 00:02:48.960
+other four machines and are never summed into one blended column. Because background services shared the hosts
+
+27
+00:02:48.960 --> 00:02:56.670
+during capture, net subtracted claims are withheld, and unavailable cloud or unprivileged Windows CPU watts stay honestly blank.

@@ -1,46 +1,58 @@
 WEBVTT
-NOTE OpenIE Research TV — satiation (90s) Narrator Gabriel
+NOTE OpenIE Research TV v3.0 — satiation (90s) Narrator Gabriel
 
 1
-00:00:01.538 --> 00:00:09.113
-Sorting a sorted array twice or re-proving a checked theorem produces zero marginal value:
+00:00:00.320 --> 00:00:06.135
+First, every job has a finish line, and extra computer work after that point is waste.
 
 2
-00:00:09.113 --> 00:00:10.880
-the task is satiated.
+00:00:06.635 --> 00:00:13.362
+Second, cheaper computer work makes people start many more jobs, so total use can keep rising.
 
 3
-00:00:14.788 --> 00:00:21.952
-Formalizing intensive per-task satiation alongside extensive task-entry elasticity shows
+00:00:13.862 --> 00:00:20.694
+Third, money prices for AI are falling fast, but the electricity it burns is never free.
 
 4
-00:00:21.952 --> 00:00:26.755
-how falling per-task joules coexist with rising total load.
+00:00:21.194 --> 00:00:26.588
+Once an accounting ledger balances or a bug patch passes its tests, running an AI
 
 5
-00:00:30.663 --> 00:00:36.214
-This three-dimensional surface contrasts the flat post-completion plateau of a
+00:00:26.588 --> 00:00:32.249
+loop longer adds zero value and can even undo working code. Confusing the finish line
 
 6
-00:00:36.214 --> 00:00:41.197
-single task against expanding task horizons and physical power floors.
+00:00:32.249 --> 00:00:38.974
+of one task with all tasks across an economy distorts both software pricing and power-grid forecasts.
 
 7
-00:00:45.105 --> 00:00:55.020
-Per-token billing rewards verbose retries past satiation, whereas completion-gated systems halt the moment verification succeeds.
+00:00:39.474 --> 00:00:44.882
+We split total computing demand into two distinct numbers: effort per job and total
 
 8
-00:00:58.928 --> 00:01:06.173
-Empirical inference pricing curves fall orders of magnitude faster than silicon joules per operation,
+00:00:44.882 --> 00:00:50.160
+number of jobs. A written completion check puts a hard ceiling on each individual
 
 9
-00:01:06.173 --> 00:01:08.182
-exposing the physical floor.
+00:00:50.160 --> 00:00:56.350
+chore, while plunging unit prices steadily pull millions of brand-new chores off the sidelines.
 
 10
-00:01:12.090 --> 00:01:17.646
-Interactive satiation curves let readers test elasticity regimes directly;
+00:00:56.850 --> 00:01:02.318
+Published industry series show the dollar cost of fixed AI benchmark performance falling
 
 11
-00:01:17.646 --> 00:01:22.000
-all energy terms are analytical rather than board-shunted.
+00:01:02.318 --> 00:01:08.160
+roughly thirteenfold per year since twenty twenty-three. Yet moving data across silicon memory
+
+12
+00:01:08.160 --> 00:01:13.939
+chips, driving physical motors, and delivering trusted human clinical care never become free.
+
+13
+00:01:14.439 --> 00:01:21.315
+Products that optimize time-on-screen or bill by raw word counts reward wasted retries past the finish line,
+
+14
+00:01:21.315 --> 00:01:26.155
+whereas completion-gated systems stop immediately and save real electricity.

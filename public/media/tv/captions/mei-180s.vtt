@@ -1,0 +1,106 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — mei (180s) Narrator Nylo
+
+1
+00:00:00.360 --> 00:00:04.101
+First, give a computer a fixed energy budget upfront,
+
+2
+00:00:04.101 --> 00:00:07.065
+and get the best answer inside that limit.
+
+3
+00:00:07.625 --> 00:00:10.917
+Second, a tiny food tag can refuse routine
+
+4
+00:00:10.917 --> 00:00:15.385
+radio chatter in freezing cargo so safety alerts survive.
+
+5
+00:00:15.945 --> 00:00:22.854
+Third, a data center can obey power-grid caps by pausing flexible work without giving wrong answers.
+
+6
+00:00:23.414 --> 00:00:31.229
+Conventional computers treat energy as an accounting bill read only after the work finishes, running full tilt until a
+
+7
+00:00:31.229 --> 00:00:38.581
+coin battery browns out or a power breaker trips. Yet physics shows moving data costs far more than arithmetic,
+
+8
+00:00:38.581 --> 00:00:46.662
+and information value theory proves an observation isn't worth spending joules on unless it can change your next decision.
+
+9
+00:00:47.222 --> 00:00:54.596
+A food-freshness sensor tag inside a minus-twenty-degree cargo container and a hundred-megawatt AI campus during a
+
+10
+00:00:54.596 --> 00:01:01.453
+summer grid peak face the exact same structural challenge. Both operate under hard physical power ceilings
+
+11
+00:01:01.453 --> 00:01:08.698
+where naive bursts crash the system unless routine background work yields smoothly to urgent safety commitments.
+
+12
+00:01:09.258 --> 00:01:17.471
+Metabolic Intelligence turns budgeting into four concrete calculations: pick a stored lookup or closed formula whenever
+
+13
+00:01:17.471 --> 00:01:24.234
+it closes the decision, space sensor readings to match how fast freshness drifts, reserve a signed
+
+14
+00:01:24.234 --> 00:01:32.378
+two-phase energy hold before waking the radio, and settle the exact used remainder into non-volatile memory afterward.
+
+15
+00:01:32.938 --> 00:01:39.452
+At data-center scale, streaming chat words three times faster than any person can read shrinks GPU
+
+16
+00:01:39.452 --> 00:01:46.431
+batch sizes and multiplies energy per answer nearly fivefold. Matching output speed to human reading pace
+
+17
+00:01:46.431 --> 00:01:53.875
+and routing routine questions to smaller models roughly doubles useful work per megawatt across modern clusters.
+
+18
+00:01:54.435 --> 00:02:02.350
+Our three-dimensional cutaway inspects the open reference tag package: a thirty-two-by-twenty-four-millimeter two-layer circuit
+
+19
+00:02:02.350 --> 00:02:09.206
+board certified with zero design-rule errors, a low-power Bluetooth microcontroller, a hundred-milliohm inline
+
+20
+00:02:09.206 --> 00:02:17.558
+current sensor, non-volatile receipt memory, and a vented thirty-six-by-twenty-eight-millimeter snap-fit enclosure with lanyard mount.
+
+21
+00:02:18.118 --> 00:02:27.365
+When minus-twenty-degree cold raised modeled coin-battery resistance nearly sixfold to seventy-two ohms, two-phase budget gates refused four hundred
+
+22
+00:02:27.365 --> 00:02:34.051
+ninety of five hundred routine beacons so forty out of forty safety alerts survived across two thousand six
+
+23
+00:02:34.051 --> 00:02:41.923
+hundred eighty signed receipts, while node sleep kept every modeled hundred-megawatt campus scenario at zero minutes over cap.
+
+24
+00:02:42.483 --> 00:02:49.401
+Every single number carries its true provenance: our circuit board manufacturing files, bill of materials, component
+
+25
+00:02:49.401 --> 00:02:57.214
+placement tables, and three-dimensional enclosure geometry are open fabrication designs, and our cold-chain battery runs and campus
+
+26
+00:02:57.214 --> 00:03:05.265
+caps are electro-thermal and plant simulations until assembled boards return from fabrication for physical cold-chamber bench metering.

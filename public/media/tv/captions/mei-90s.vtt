@@ -1,46 +1,66 @@
 WEBVTT
-NOTE OpenIE Research TV — mei (90s) Narrator Nylo
+NOTE OpenIE Research TV v3.0 — mei (90s) Narrator Nylo
 
 1
-00:00:01.265 --> 00:00:04.682
-Edge sensors freeze in cargo holds while data
+00:00:00.320 --> 00:00:04.061
+First, give a computer a fixed energy budget upfront,
 
 2
-00:00:04.682 --> 00:00:10.149
-centers hit transformer caps—both fail without native energy scheduling.
+00:00:04.061 --> 00:00:07.025
+and get the best answer inside that limit.
 
 3
-00:00:13.279 --> 00:00:18.816
-By modeling CR2032 internal impedance at minus 20 Celsius,
+00:00:07.525 --> 00:00:10.817
+Second, a tiny food tag can refuse routine
 
 4
-00:00:18.816 --> 00:00:25.882
-JCP holds defer non-critical telemetry while guaranteeing critical alarms.
+00:00:10.817 --> 00:00:15.285
+radio chatter in freezing cargo so safety alerts survive.
 
 5
-00:00:29.011 --> 00:00:36.066
-This three-dimensional cutaway shows the DRC-certified 2-layer PCB,
+00:00:15.785 --> 00:00:22.694
+Third, a data center can obey power-grid caps by pausing flexible work without giving wrong answers.
 
 6
-00:00:36.066 --> 00:00:43.648
-coin-cell bay, INA238 monitor, FRAM, and 36-by-28-millimeter STEP shell.
+00:00:23.194 --> 00:00:28.839
+At room temperature, a ten-microwatt sensing schedule lets a coin battery run roughly
 
 7
-00:00:46.778 --> 00:00:48.605
-Every hold, refusal,
+00:00:28.839 --> 00:00:36.011
+eight years. Inside a minus-twenty-degree freezer truck, internal battery resistance jumps nearly sixfold to
 
 8
-00:00:48.605 --> 00:00:57.104
-and settlement emits a deterministic CBOR receipt verifiable across embedded and cloud nodes.
+00:00:36.011 --> 00:00:41.989
+seventy-two ohms, causing unbudgeted wireless bursts to sag below two volts and brown out.
 
 9
-00:01:00.233 --> 00:01:04.452
-The exact same hold-and-settle state machine scales upward
+00:00:42.489 --> 00:00:48.006
+Metabolic Intelligence prices both energy spent and decision error before acting. On the
 
 10
-00:01:04.452 --> 00:01:09.325
-to schedule batch inference inside grid-following campus envelopes.
+00:00:48.006 --> 00:00:54.715
+tag, a lightweight binding classifier needs just one thousand seven hundred twenty-three instructions—about
 
 11
-00:01:12.454 --> 00:01:22.506
-Manufacturing Gerbers, BOM, pick-and-place, and CAD files are downloadable today, with zero unmeasured bench claims.
+00:00:54.715 --> 00:01:02.928
+ninety-two nanojoules—while split energy grants protect a dedicated thirty-five-millijoule reserve for critical temperature alarms.
+
+12
+00:01:03.428 --> 00:01:09.713
+Across ten thousand simulated cold-chain wakeups, refusing four hundred ninety routine beacons
+
+13
+00:01:09.713 --> 00:01:15.931
+preserved all forty safety alerts without fail. On a modeled hundred-megawatt campus speaking
+
+14
+00:01:15.931 --> 00:01:22.148
+real grid-signaling protocols, ordered controls plus server sleep held zero minutes over cap.
+
+15
+00:01:22.648 --> 00:01:29.629
+Complete two-layer circuit board layouts, component tables, and three-dimensional enclosure models ship openly,
+
+16
+00:01:29.629 --> 00:01:36.295
+with every single figure labeled as datasheet or simulation until physical boards return from fabrication.

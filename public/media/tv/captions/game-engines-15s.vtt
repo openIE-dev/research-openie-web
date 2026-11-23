@@ -1,0 +1,22 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — game-engines (15s) Narrator Charlie
+
+1
+00:00:00.240 --> 00:00:02.741
+First, with exact whole-number physics,
+
+2
+00:00:02.741 --> 00:00:08.320
+one game blueprint replays identically across Windows, macOS, Linux, and major engines.
+
+3
+00:00:08.680 --> 00:00:15.873
+Second, standard decimal math drifts across operating systems within thirty-seven frames, splitting chaotic collisions apart.
+
+4
+00:00:16.233 --> 00:00:19.095
+Third, graphics cards differ slightly on pixels,
+
+5
+00:00:19.095 --> 00:00:22.911
+so rendering sits safely behind a one-way visual tolerance gate.

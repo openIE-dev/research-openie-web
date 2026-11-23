@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-OpenIE Research TV — ElevenLabs v4 Global Studio Ensemble & Sound Design Engine.
-Synthesizes human-grade voiceover cues via ElevenLabs eleven_v4 (mp3_44100_192)
-with SHA-256 disk caching, plus an automatic zero-key edge-tts multicultural
-neural fallback (never robotic OS speech). Applies gentle pitch-preserving
-ffmpeg atempo when needed to fit exact tier windows, mixes a -30 dB warm
-harmonic synth pad + transition chimes, EBU R128 loudnorm, and WebVTT captions.
+OpenIE Research TV — ElevenLabs v4 Global Studio Ensemble & Sound Design Engine (v3.0).
+Synthesizes natural, unhurried documentary voiceover cues via ElevenLabs eleven_v4
+(mp3_44100_192) with SHA-256 disk caching, plus an automatic zero-key edge-tts
+multicultural neural fallback (never robotic OS speech).
+Tiers: 15s (3 Plain Points), 45s (Plain + Example), 90s (Full Briefing), 180s (3m Deep Cut).
 """
 import hashlib
 import json
@@ -24,37 +23,22 @@ FPS = 30
 ELEVEN_MODEL_ID = "eleven_v4"
 ELEVEN_OUTPUT_FMT = "mp3_44100_192"
 ELEVEN_SETTINGS = {
-    "stability": 0.50,
+    "stability": 0.52,
     "similarity_boost": 0.78,
-    "style": 0.22,
+    "style": 0.20,
     "use_speaker_boost": True,
 }
 
+# (min_dur, max_dur, target_mid_dur, lead_in, inter_scene_gap, tail_out)
 TIER_BOUNDS = {
-    "5s": (5.05, 6.95, 5.95, 0.18, 0.00, 0.28),
-    "30s": (27.40, 34.60, 31.00, 0.26, 0.42, 0.48),
-    "60s": (55.40, 65.40, 60.20, 0.32, 0.52, 0.62),
-    "90s": (84.60, 97.40, 90.50, 0.38, 0.60, 0.75),
+    "15s": (14.50, 23.50, 18.20, 0.24, 0.36, 0.44),
+    "45s": (40.00, 53.50, 46.00, 0.28, 0.44, 0.54),
+    "90s": (81.00, 99.50, 90.00, 0.32, 0.50, 0.65),
+    "180s": (162.00, 198.00, 180.00, 0.36, 0.56, 0.78),
 }
 
-# Natural human phrasing substitutions for eleven_v4 and neural TTS (zero letter-by-letter spacing)
 PHONETIC_SUBS = [
-    (r"\bOpenIE\b", "Open-I-E"),
-    (r"\bBeneš\b", "Benesh"),
-    (r"\bDNULLMM1\b", "D-null M-M-1"),
-    (r"\beventfd\b", "event-FD"),
-    (r"\bSepJ\b", "Sep-J"),
-    (r"\bCpJ\b", "Coherence per Joule"),
-    (r"\bmeasured_j\b", "measured joules"),
-    (r"\breported_j\b", "reported joules"),
-    (r"\best_j\b", "estimated joules"),
-    (r"\best_uj\b", "estimated microjoules"),
-    (r"\bboard_metered\b", "board metered"),
-    (r"\bQ32\.32\b", "Q32-point-32"),
-    (r"\bSLOC\b", "source lines"),
-    (r"\bcl100k_base\b", "cl100k-base"),
-    (r"\bdet-CBOR\b", "deterministic CBOR"),
-    (r"\brustc\b", "rust-c"),
+    (r"\bOpenIE\b", "Open Interface Engineering"),
     (r"−20\s*°C|-20\s*°C", "minus 20 degrees Celsius"),
     (r"\b(\d+(?:\.\d+)?)x\b", r"\1 times"),
     (r"×", " times "),
@@ -161,8 +145,19 @@ def format_vtt_ts(sec: float) -> str:
 
 def split_caption_clauses(text: str, start_s: float, end_s: float):
     words = text.split()
-    if len(words) <= 15 or (end_s - start_s) < 4.2:
+    if len(words) <= 16 or (end_s - start_s) < 4.5:
         return [(start_s, end_s, text)]
+    if len(words) > 34 and (end_s - start_s) >= 9.0:
+        # Split into 3 comfortable caption chunks for longer documentary sentences
+        third = len(words) // 3
+        two_third = (2 * len(words)) // 3
+        p1 = " ".join(words[:third])
+        p2 = " ".join(words[third:two_third])
+        p3 = " ".join(words[two_third:])
+        tot = max(1, len(p1) + len(p2) + len(p3))
+        t1 = start_s + (end_s - start_s) * (len(p1) / tot)
+        t2 = t1 + (end_s - start_s) * (len(p2) / tot)
+        return [(start_s, t1, p1), (t1, t2, p2), (t2, end_s, p3)]
     mid = len(words) // 2
     best = mid
     for offset in range(0, min(6, mid)):
@@ -190,13 +185,13 @@ def build_film_audio_and_vtt(study_id: str, tier: str, scenes, voice_tuple, cach
     arrays = [decode_mp3_mono_float(p, 1.0) for p in mp3_paths]
     speech_s = sum(len(a) / SR for a in arrays)
 
-    # Pitch-preserving atempo adjustment on cached audio if outside tier bounds (never re-calls API)
+    # Gentle pitch-preserving pacing adjustment only if outside comfortable tier window
     if speech_s + fixed_pad > max_d or speech_s + fixed_pad < min_d:
-        desired_speech = max(1.5, mid_d - fixed_pad)
-        atempo = max(0.88, min(1.18, speech_s / desired_speech))
-        min_fixed = lead_in + tail_out + max(0, n_sc - 1) * 0.14
+        desired_speech = max(2.0, mid_d - fixed_pad)
+        atempo = max(0.90, min(1.14, speech_s / desired_speech))
+        min_fixed = lead_in + tail_out + max(0, n_sc - 1) * 0.18
         if speech_s / atempo + min_fixed > max_d:
-            atempo = min(1.48, speech_s / max(1.2, max_d - min_fixed - 0.12))
+            atempo = min(1.24, speech_s / max(2.0, max_d - min_fixed - 0.15))
         if abs(atempo - 1.0) >= 0.02:
             arrays = [decode_mp3_mono_float(p, atempo) for p in mp3_paths]
             speech_s = sum(len(a) / SR for a in arrays)
@@ -207,8 +202,8 @@ def build_film_audio_and_vtt(study_id: str, tier: str, scenes, voice_tuple, cach
         extra_per_scene = (min_d + 0.30 - total_raw) / n_sc
         total_raw = speech_s + fixed_pad + extra_per_scene * n_sc
     elif total_raw > max_d and n_sc > 1:
-        shrink = min(base_gap - 0.12, (total_raw - max_d + 0.12) / (n_sc - 1))
-        base_gap = max(0.12, base_gap - shrink)
+        shrink = min(base_gap - 0.16, (total_raw - max_d + 0.12) / (n_sc - 1))
+        base_gap = max(0.16, base_gap - shrink)
         total_raw = speech_s + lead_in + tail_out + (n_sc - 1) * base_gap
 
     total_frames = max(int(math.ceil(min_d * FPS)), int(round(total_raw * FPS)))
@@ -255,7 +250,7 @@ def build_film_audio_and_vtt(study_id: str, tier: str, scenes, voice_tuple, cach
         + 0.16 * np.sin(2.0 * np.pi * 146.83 * t + 0.5) * lfo1
         + 0.06 * np.sin(2.0 * np.pi * 184.997 * t)
     )
-    drone_amp = 0.026 * env_duck
+    drone_amp = 0.024 * env_duck
     master_env = np.clip(np.minimum(1.0, t / 0.30) * np.minimum(1.0, (total_dur - t) / 0.42), 0.0, 1.0)
     mix_l = voice_track + pad_l * drone_amp * master_env
     mix_r = voice_track + pad_r * drone_amp * master_env
@@ -263,7 +258,7 @@ def build_film_audio_and_vtt(study_id: str, tier: str, scenes, voice_tuple, cach
     chime_n = int(0.36 * SR)
     ct = np.arange(chime_n, dtype=np.float32) / float(SR)
     c_env = np.minimum(1.0, ct / 0.015) * np.exp(-ct * 8.5)
-    chime = (0.65 * np.sin(2.0 * np.pi * 587.33 * ct) + 0.35 * np.sin(2.0 * np.pi * 880.0 * ct)) * c_env * 0.038
+    chime = (0.65 * np.sin(2.0 * np.pi * 587.33 * ct) + 0.35 * np.sin(2.0 * np.pi * 880.0 * ct)) * c_env * 0.035
     for idx, (sc_s, _) in enumerate(scene_windows):
         c0 = int(round(sc_s * SR))
         c1 = min(total_samples, c0 + chime_n)
@@ -289,7 +284,7 @@ def build_film_audio_and_vtt(study_id: str, tier: str, scenes, voice_tuple, cach
         pass
 
     narrator_name = voice_tuple[0]
-    vtt_lines = ["WEBVTT", f"NOTE OpenIE Research TV — {study_id} ({tier}) Narrator {narrator_name}", ""]
+    vtt_lines = ["WEBVTT", f"NOTE OpenIE Research TV v3.0 — {study_id} ({tier}) Narrator {narrator_name}", ""]
     for i, (ts0, ts1, txt) in enumerate(vtt_entries, 1):
         vtt_lines.append(str(i))
         vtt_lines.append(f"{format_vtt_ts(ts0)} --> {format_vtt_ts(ts1)}")

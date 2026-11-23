@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — gates (15s) Narrator George
+
+1
+00:00:00.240 --> 00:00:03.451
+First, a computer should not take an irreversible
+
+2
+00:00:03.451 --> 00:00:06.989
+action until an independent check confirms it is safe.
+
+3
+00:00:07.349 --> 00:00:10.785
+Second, it should try the cheapest method first and
+
+4
+00:00:10.785 --> 00:00:14.222
+wake a large AI model only when simpler tools miss.
+
+5
+00:00:14.582 --> 00:00:19.419
+Third, every decision is written to a receipt with the energy it used,
+
+6
+00:00:19.419 --> 00:00:21.422
+so anyone can audit it later.

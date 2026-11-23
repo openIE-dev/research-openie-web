@@ -1,0 +1,30 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — interface-economics (45s) Narrator Edwin
+
+1
+00:00:00.280 --> 00:00:07.579
+First, single handoff failures carry exact price tags, like losing a Mars mission over mismatched units.
+
+2
+00:00:08.019 --> 00:00:15.888
+Second, giant national software-failure numbers come from broad surveys and models, never counting handoffs alone.
+
+3
+00:00:16.328 --> 00:00:23.290
+Third, checking what each side assumes is cheap, but one team pays while everyone else benefits.
+
+4
+00:00:23.730 --> 00:00:31.342
+On the Mars Climate Orbiter, one team sent thruster data in pound-force seconds while navigation read newton-seconds.
+
+5
+00:00:31.342 --> 00:00:39.864
+Each program worked on its own, yet an unwritten handoff assumption cost a three-hundred-twenty-eight-million-dollar space project.
+
+6
+00:00:40.304 --> 00:00:44.678
+Because AI generated code crosses these exact same seams even faster,
+
+7
+00:00:44.678 --> 00:00:51.524
+embedding units and ranges into machine-checked contracts makes closing handoffs cheaper than skipping them.

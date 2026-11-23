@@ -1,0 +1,106 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — rce-compile (180s) Narrator Lem
+
+1
+00:00:00.360 --> 00:00:06.867
+First, real compilers break any single descriptive law, so this study defines a seven-part yardstick instead.
+
+2
+00:00:07.427 --> 00:00:11.685
+Second, maximum compiler optimization burns upfront energy that
+
+3
+00:00:11.685 --> 00:00:15.132
+never pays back on thirty percent of test programs.
+
+4
+00:00:15.692 --> 00:00:21.067
+Third, fingerprinting code by variable position reuses builds with zero mix-ups,
+
+5
+00:00:21.067 --> 00:00:24.090
+cutting Rust compile energy four hundredfold.
+
+6
+00:00:24.650 --> 00:00:31.197
+An assistant system proposed a sweeping Law of Compilation claiming every compiler preserves meaning
+
+7
+00:00:31.197 --> 00:00:38.988
+across canonical forms toward physical Landauer limits. Checked against twelve real compiler families—spanning C, Rust,
+
+8
+00:00:38.988 --> 00:00:46.909
+Fortran, Haskell, verified CompCert, and tensor compilers—that universal description flatly failed on every major clause.
+
+9
+00:00:47.469 --> 00:00:52.793
+Claiming every building already has fire sprinklers is false; writing a clear fire code
+
+10
+00:00:52.793 --> 00:00:59.341
+lets inspectors measure every building honestly. Rewriting three clauses turns the refuted description into
+
+11
+00:00:59.341 --> 00:01:05.521
+a seven-part normal form with four explicit equivalence levels and computable size and energy bounds.
+
+12
+00:01:06.081 --> 00:01:13.766
+We compiled and executed twenty deterministic integer and fixed-point kernels across fifteen toolchains, verifying all three hundred
+
+13
+00:01:13.766 --> 00:01:20.461
+output checksums. Pre-compiling the Reality Code Engine runtime once into a shared library cut emitted Rust compile
+
+14
+00:01:20.461 --> 00:01:28.496
+energy twenty-point-one times, dropping its payback horizon against JavaScript from thirty-one thousand runs to one thousand seventy-nine.
+
+15
+00:01:29.056 --> 00:01:37.468
+Lowering from Python to optimized C pays back after a median of twenty-four hundred ninety runs, whereas jumping from unoptimized builds to
+
+16
+00:01:37.468 --> 00:01:46.788
+level-three optimization demands fifty-three thousand to one hundred two thousand runs—and stepping from level two to level three never recovers its extra
+
+17
+00:01:46.788 --> 00:01:55.806
+compile energy on up to thirty percent of kernels. Meanwhile static code size predicts runtime energy poorly compared with timed execution profiling.
+
+18
+00:01:56.366 --> 00:02:04.597
+Our three-dimensional model traces source lowering through explicit equivalence levels into a name-free positional fingerprint. Rather
+
+19
+00:02:04.597 --> 00:02:11.969
+than keying build caches on developer variable names—or blindly stripping names—De Bruijn indexing numbers each variable
+
+20
+00:02:11.969 --> 00:02:19.033
+by how many binding scopes away it was declared, preserving exact data-flow wiring while ignoring harmless renames.
+
+21
+00:02:19.593 --> 00:02:27.760
+Scaled across one hundred eighty-five Reality Code Engine blueprints, sixty C, Rust, and Python kernels, and five hundred test-verified
+
+22
+00:02:27.760 --> 00:02:37.499
+semantic mutants, naive name-stripping suffered one hundred fifty collisions—failing on every single swapped-variable pair. Positional De Bruijn hashing achieved
+
+23
+00:02:37.499 --> 00:02:45.060
+zero false matches while cutting warm C rebuild energy one hundred sixty-eight times and Rust four hundred forty-eight times.
+
+24
+00:02:45.620 --> 00:02:52.824
+Three honest boundaries remain: byte-for-byte compiler output comparisons across three machines left unexplained binary
+
+25
+00:02:52.824 --> 00:02:59.000
+differences even after path remapping, all energy figures come from on-chip Linux counters rather than
+
+26
+00:02:59.000 --> 00:03:05.114
+a wall wattmeter, and external sources seen only as search snippets carry explicit disclosure badges.

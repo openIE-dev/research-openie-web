@@ -1,0 +1,102 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — latency (180s) Narrator Julius
+
+1
+00:00:00.360 --> 00:00:04.081
+First, open methods make AI cheaper on older machines,
+
+2
+00:00:04.081 --> 00:00:07.251
+yet shipped products adopt them after a delay.
+
+3
+00:00:07.811 --> 00:00:14.512
+Second, paying for the computer hardware dominates task cost, far exceeding the price of plug electricity.
+
+4
+00:00:15.072 --> 00:00:21.984
+Third, quarterly calendars slow deployment until automation tools cut switching costs and force faster adoption.
+
+5
+00:00:22.544 --> 00:00:28.765
+Public research halves the compute needed to reach a fixed language-model score roughly every eight months, and
+
+6
+00:00:28.765 --> 00:00:34.818
+open-weight models on a single consumer graphics card match frontier scores within six to twelve months. Yet
+
+7
+00:00:34.818 --> 00:00:42.272
+commercial products routinely wait ten to twenty-four months to ship published speedups like fast attention and speculative decoding.
+
+8
+00:00:42.832 --> 00:00:50.157
+Just as factories took decades to reorganize around individual electric motors, enterprises today face real adoption
+
+9
+00:00:50.157 --> 00:00:57.481
+drag—official surveys read in eight original languages show only eighteen to twenty percent of American and European
+
+10
+00:00:57.481 --> 00:01:04.932
+firms using AI by early 2026, while listed executives admit delaying worthwhile projects to smooth quarterly earnings.
+
+11
+00:01:05.492 --> 00:01:13.008
+A bottom-up infrastructure model across seventy-four frontier sites finds median capital near thirty-three thousand three hundred
+
+12
+00:01:13.008 --> 00:01:19.650
+dollars and eight hundred eighty facility watts per chip. Over four-to-six-year server lives, raw plug electricity
+
+13
+00:01:19.650 --> 00:01:27.283
+is just one-point-five to eleven-point-eight percent of an accelerator hour—hardware capital dominates eight to seventy times over.
+
+14
+00:01:27.843 --> 00:01:34.117
+Because electricity is under one eighth of task cost, cheaper power alone barely moves dollar prices.
+
+15
+00:01:34.117 --> 00:01:42.067
+Cutting the chip time a task occupies slashes capital cost directly—explaining why two-hundred-eighty-fold inference price drops
+
+16
+00:01:42.067 --> 00:01:49.086
+outpaced two-fold hardware improvements by a factor of roughly one hundred forty-one across just under two years.
+
+17
+00:01:49.646 --> 00:01:58.784
+Our three-dimensional global cadence view maps fourteen point one gigawatts of listed frontier sites alongside multi-billion-dollar commitments linking
+
+18
+00:01:58.784 --> 00:02:06.349
+chipmakers, clouds, and AI labs. A closed-loop filing test proves supplier-provided capital could fund at most nineteen point
+
+19
+00:02:06.349 --> 00:02:16.335
+five percent of the largest chipmaker's two-hundred-sixteen-billion-dollar annual revenue, while world data centers drew roughly four hundred fifteen terawatt-hours.
+
+20
+00:02:16.895 --> 00:02:23.087
+Regulatory filings cut against both simple extremes: the four largest cloud buyers fund capital spending
+
+21
+00:02:23.087 --> 00:02:30.529
+comfortably out of operating cash flow, whereas two debt-heavy cloud builders spend one-point-seven to three-point-four times
+
+22
+00:02:30.529 --> 00:02:36.066
+operating cash and rely on a single customer for up to sixty-seven percent of annual revenue.
+
+23
+00:02:36.626 --> 00:02:42.969
+Every source across eight languages is sorted strictly as proven, demonstrated, or opinion, and every model
+
+24
+00:02:42.969 --> 00:02:50.973
+output prints its exact hand-checked arithmetic. Twelve refutable predictions specify which future release calendars, older-chip rental
+
+25
+00:02:50.973 --> 00:02:58.621
+prices, or corporate filing ratios would falsify this cadence model—and show how automated porting compresses switching friction.

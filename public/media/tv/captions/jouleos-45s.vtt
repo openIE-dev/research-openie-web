@@ -1,0 +1,34 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — jouleos (45s) Narrator Bobby
+
+1
+00:00:00.280 --> 00:00:07.061
+First, today's computers stack many separate layers, and AI agents are bolted on top unchanged.
+
+2
+00:00:07.501 --> 00:00:13.958
+Second, none of those layers asks beforehand how much energy an agent's action will actually spend.
+
+3
+00:00:14.398 --> 00:00:21.294
+Third, an agent machine must measure energy, enforce strict budgets, and refuse actions that break them.
+
+4
+00:00:21.734 --> 00:00:25.810
+Wrapping a new policy sandbox around a fifty-year-old kernel is like
+
+5
+00:00:25.810 --> 00:00:30.546
+putting a turnstile in front of an unmetered power plant. Counting milliseconds
+
+6
+00:00:30.546 --> 00:00:34.742
+or instructions treats idle waiting and a full GPU burst as identical.
+
+7
+00:00:35.182 --> 00:00:39.948
+The Search for Joule Operating System sets ten checkable architectural rules and
+
+8
+00:00:39.948 --> 00:00:45.668
+verifies a three-hundred-ten-test Rust reference spine that reserves budgets before actions run.

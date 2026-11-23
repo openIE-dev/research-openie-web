@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — rce (15s) Narrator Alice
+
+1
+00:00:00.240 --> 00:00:03.540
+First, you write a program once as one clear blueprint,
+
+2
+00:00:03.540 --> 00:00:07.020
+and the computer generates matching code across languages.
+
+3
+00:00:07.380 --> 00:00:11.566
+Second, every possible input must have a declared outcome up front,
+
+4
+00:00:11.566 --> 00:00:14.503
+preventing hidden crashes before anything runs.
+
+5
+00:00:14.863 --> 00:00:19.017
+Third, every repair that passes the checker is saved and reused,
+
+6
+00:00:19.017 --> 00:00:21.289
+so you never pay twice for one fix.

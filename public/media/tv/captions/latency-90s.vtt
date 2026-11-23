@@ -1,46 +1,62 @@
 WEBVTT
-NOTE OpenIE Research TV — latency (90s) Narrator Julius
+NOTE OpenIE Research TV v3.0 — latency (90s) Narrator Julius
 
 1
-00:00:02.041 --> 00:00:07.062
-Across quantization, attention kernels, and Mixture-of-Limits cascades,
+00:00:00.320 --> 00:00:04.041
+First, open methods make AI cheaper on older machines,
 
 2
-00:00:07.062 --> 00:00:10.880
-what works in artifacts lags what ships in production.
+00:00:04.041 --> 00:00:07.211
+yet shipped products adopt them after a delay.
 
 3
-00:00:16.226 --> 00:00:24.344
-Modeling engineering rewrite effort alongside quarterly reporting clocks explains staircase adoption curves across the industry.
+00:00:07.711 --> 00:00:14.412
+Second, paying for the computer hardware dominates task cost, far exceeding the price of plug electricity.
 
 4
-00:00:29.690 --> 00:00:34.674
-This three-dimensional globe maps compute corridors, grid power constraints,
+00:00:14.912 --> 00:00:21.824
+Third, quarterly calendars slow deployment until automation tools cut switching costs and force faster adoption.
 
 5
-00:00:34.674 --> 00:00:38.478
-and quantized calendar rings around global infrastructure.
+00:00:22.324 --> 00:00:27.791
+Between late 2022 and late 2024, benchmark AI inference prices fell two hundred
 
 6
-00:00:43.824 --> 00:00:48.231
-Auditing public disclosures among frontier labs, hyperscalers,
+00:00:27.791 --> 00:00:33.604
+eighty times while hardware cost and chip energy efficiency each improved only about
 
 7
-00:00:48.231 --> 00:00:53.491
-and silicon vendors separates net external demand from circular financing.
+00:00:33.604 --> 00:00:40.733
+twofold, leaving a roughly hundred-forty-fold gain driven by software, utilization, and smaller models.
 
 8
-00:00:58.837 --> 00:01:03.124
-Comparing open weights on alternative silicon against incumbent
+00:00:41.233 --> 00:00:46.814
+Across seventy-four frontier data centers, one utilized accelerator hour costs between eighty-three
 
 9
-00:01:03.124 --> 00:01:07.139
-clusters pinpoints where margin sits above physical energy.
+00:00:46.814 --> 00:00:51.380
+cents and two-and-a-half dollars, and plug electricity is under twelve percent of
 
 10
-00:01:12.485 --> 00:01:17.204
-As verified translation and coding tools automate stack migration,
+00:00:51.380 --> 00:00:58.258
+that bill. Amortizing thirty-three-thousand-dollar machine capital and smoothing quarterly earnings sets deployment speed.
 
 11
-00:01:17.204 --> 00:01:21.065
-the gap between possible and deployed narrows sharply.
+00:00:58.758 --> 00:01:04.563
+Auditing public regulatory filings bounds supplier-funded chip revenue below twenty percent at the
+
+12
+00:01:04.563 --> 00:01:09.538
+leading chipmaker and shows major tech platforms paying out of operating cash, while
+
+13
+00:01:09.538 --> 00:01:15.758
+exposing heavy leverage at specialized clouds whose purchase backlogs exceed eleven times annual revenue.
+
+14
+00:01:16.258 --> 00:01:24.242
+When automated porting tools let buyers move workloads onto open methods and existing hardware without rewriting software stacks by hand,
+
+15
+00:01:24.242 --> 00:01:29.254
+waiting stops paying and deployed prices snap downward toward the capability frontier.

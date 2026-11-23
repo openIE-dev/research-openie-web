@@ -1,0 +1,42 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — ai-reads-human (45s) Narrator Sean
+
+1
+00:00:00.280 --> 00:00:05.087
+First, computers often swap data in text formats written for human eyes,
+
+2
+00:00:05.087 --> 00:00:07.558
+forcing machines to spend extra work.
+
+3
+00:00:07.998 --> 00:00:12.220
+Second, reading indented configuration text took over two thousand
+
+4
+00:00:12.220 --> 00:00:16.058
+times more chip energy than reading compact machine numbers.
+
+5
+00:00:16.498 --> 00:00:20.542
+Third, chopping structured text into AI word pieces burned
+
+6
+00:00:20.542 --> 00:00:24.308
+twelve times more energy than parsing the text itself.
+
+7
+00:00:24.748 --> 00:00:31.152
+Imagine two calculators mailing spelled-out paragraphs to each other instead of passing numbers directly.
+
+8
+00:00:31.152 --> 00:00:38.593
+Software agents routinely turn clean memory into punctuated text, only for the next program to parse every character back.
+
+9
+00:00:39.033 --> 00:00:44.772
+The practical fix is clear: let machines exchange compact binary records with other machines,
+
+10
+00:00:44.772 --> 00:00:49.092
+and render friendly text only on screen when a person asks to read it.

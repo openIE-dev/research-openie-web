@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — jouleos (15s) Narrator Bobby
+
+1
+00:00:00.240 --> 00:00:07.021
+First, today's computers stack many separate layers, and AI agents are bolted on top unchanged.
+
+2
+00:00:07.381 --> 00:00:13.838
+Second, none of those layers asks beforehand how much energy an agent's action will actually spend.
+
+3
+00:00:14.198 --> 00:00:21.332
+Third, an agent machine must measure energy, enforce strict budgets, and refuse actions that break them.

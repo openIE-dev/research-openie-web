@@ -1,0 +1,46 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — gates (45s) Narrator George
+
+1
+00:00:00.280 --> 00:00:03.491
+First, a computer should not take an irreversible
+
+2
+00:00:03.491 --> 00:00:07.029
+action until an independent check confirms it is safe.
+
+3
+00:00:07.469 --> 00:00:10.905
+Second, it should try the cheapest method first and
+
+4
+00:00:10.905 --> 00:00:14.342
+wake a large AI model only when simpler tools miss.
+
+5
+00:00:14.782 --> 00:00:19.619
+Third, every decision is written to a receipt with the energy it used,
+
+6
+00:00:19.619 --> 00:00:21.622
+so anyone can audit it later.
+
+7
+00:00:22.062 --> 00:00:27.233
+When software moves money, edits records, or steers machinery, saying sorry
+
+8
+00:00:27.233 --> 00:00:31.370
+after a bad guess cannot undo the damage. A commit gate acts
+
+9
+00:00:31.370 --> 00:00:36.817
+like a physical cockpit lock that blocks unsafe switches before anything moves.
+
+10
+00:00:37.257 --> 00:00:42.929
+Measured by an onboard circuit-board power sensor, checking safety rules costs about eleven
+
+11
+00:00:42.929 --> 00:00:49.225
+thousand picojoules per cycle while leaving a permanent, auditable receipt for every single decision.

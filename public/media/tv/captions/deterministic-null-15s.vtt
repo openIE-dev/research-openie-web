@@ -1,0 +1,22 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — deterministic-null (15s) Narrator Hari
+
+1
+00:00:00.240 --> 00:00:07.069
+First, most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.
+
+2
+00:00:07.429 --> 00:00:10.449
+Second, on bounded math and database tasks,
+
+3
+00:00:10.449 --> 00:00:14.662
+a frozen lookup table matched cloud AI on nine of ten tests.
+
+4
+00:00:15.022 --> 00:00:18.083
+Third, on open coding tasks AI leaped ahead,
+
+5
+00:00:18.083 --> 00:00:23.022
+while caching verified answers cut repeat energy three point six times.

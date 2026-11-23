@@ -1,0 +1,34 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — latency (45s) Narrator Julius
+
+1
+00:00:00.280 --> 00:00:04.001
+First, open methods make AI cheaper on older machines,
+
+2
+00:00:04.001 --> 00:00:07.171
+yet shipped products adopt them after a delay.
+
+3
+00:00:07.611 --> 00:00:14.312
+Second, paying for the computer hardware dominates task cost, far exceeding the price of plug electricity.
+
+4
+00:00:14.752 --> 00:00:21.664
+Third, quarterly calendars slow deployment until automation tools cut switching costs and force faster adoption.
+
+5
+00:00:22.104 --> 00:00:27.262
+Faster attention kernels took ten months to ship and speculative decoding took two years.
+
+6
+00:00:27.262 --> 00:00:34.508
+Beyond engineering work, listed companies gate releases around quarterly earnings targets and multi-year server depreciation.
+
+7
+00:00:34.948 --> 00:00:39.039
+Once open algorithms make raw computation cheap on older chips,
+
+8
+00:00:39.039 --> 00:00:44.884
+sellers charge mainly for the pain of switching away—and automation tools erase that pain.

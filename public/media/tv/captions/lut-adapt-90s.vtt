@@ -1,50 +1,70 @@
 WEBVTT
-NOTE OpenIE Research TV — lut-adapt (90s) Narrator Jenny
+NOTE OpenIE Research TV v3.0 — lut-adapt (90s) Narrator Jenny
 
 1
-00:00:00.717 --> 00:00:04.823
-Instead of keeping massive neural weights hot in HBM,
+00:00:00.320 --> 00:00:03.444
+First, most requests repeat solved patterns,
 
 2
-00:00:04.823 --> 00:00:10.556
-what if frontier models woke briefly from flash to compile Boolean skills?
+00:00:03.444 --> 00:00:08.414
+so running a giant neural network every time wastes memory and energy.
 
 3
-00:00:12.120 --> 00:00:19.784
-Streaming active 4-bit experts directly from NVMe holds Qwen
+00:00:08.914 --> 00:00:12.672
+Second, this cascade checks tiny truth tables first and
 
 4
-00:00:19.784 --> 00:00:27.832
-3.6 35B-A3B inside 970 megabytes—just 1.47 percent of FP16 RAM.
+00:00:12.672 --> 00:00:16.909
+streams specialist model slices from storage only when needed.
 
 5
-00:00:29.396 --> 00:00:37.849
-This three-dimensional FPGA cutaway visualizes the synthesized xck26 subsystem:
+00:00:17.409 --> 00:00:21.342
+Third, once an automated test certifies a new answer,
 
 6
-00:00:37.849 --> 00:00:44.483
-81 RAMB36E2 blocks wired across a hot-swappable Beneš network.
+00:00:21.342 --> 00:00:25.425
+it compiles downward into a reusable millisecond skill.
 
 7
-00:00:46.047 --> 00:00:53.353
-Every candidate patch must clear deterministic AST and pytest verifiers before committing,
+00:00:25.925 --> 00:00:30.731
+Local developer workstations hit two steep walls at the exact same time:
 
 8
-00:00:53.353 --> 00:00:56.031
-guaranteeing zero broken commits.
+00:00:30.731 --> 00:00:36.405
+giant coding models normally demand tens of gigabytes of wired memory, and re-running
 
 9
-00:00:57.595 --> 00:01:02.959
-Certified wakes compile downward into .mol skill pages that
+00:00:36.405 --> 00:00:41.678
+them from scratch on repeating software bugs wastes energy over and over again.
 
 10
-00:01:02.959 --> 00:01:08.868
-replay Wave-3 arrivals in 2.89 milliseconds and 42.4 millijoules.
+00:00:42.178 --> 00:00:48.472
+Incoming requests first check a zero-multiply Boolean truth-table switch and a tiny constant-size
 
 11
-00:01:10.432 --> 00:01:19.769
-Zero-MAC Sub1Bit-LUT6 benchmarks against LittleBit-2 and Vivado OOC Tcl scripts ship openly,
+00:00:48.472 --> 00:00:54.505
+sequence memory. A calibrated novelty detector wakes four-bit storage-streamed models up to a
 
 12
-00:01:19.769 --> 00:01:23.524
-with isolated board power left unset.
+00:00:54.505 --> 00:01:01.058
+hundred twenty billion parameters only on unfamiliar problems, then compiles certified wins downward.
+
+13
+00:01:01.558 --> 00:01:07.047
+Custom Apple Metal and portable Rust GPU shaders cut unbuffered flash storage reads
+
+14
+00:01:07.047 --> 00:01:13.397
+twelve point three times at exact token parity, reaching ninety-one point seven percent verified
+
+15
+00:01:13.397 --> 00:01:19.349
+coding pass and fifty percent on real symbolic math repositories with zero broken commits.
+
+16
+00:01:19.849 --> 00:01:26.970
+Twenty-seven machine-checked mathematical proofs guarantee lossless target verification on every emitted token and
+
+17
+00:01:26.970 --> 00:01:33.779
+ensure statistical wake tables are never silently mislabeled as exact deterministic rules across deployments.

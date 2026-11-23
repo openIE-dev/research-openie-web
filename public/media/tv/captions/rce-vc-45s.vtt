@@ -1,0 +1,38 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — rce-vc (45s) Narrator River
+
+1
+00:00:00.280 --> 00:00:03.729
+First, many people and AI agents write at once,
+
+2
+00:00:03.729 --> 00:00:07.252
+and a named check admits changes or records why.
+
+3
+00:00:07.692 --> 00:00:11.456
+Second, tracking name-free functions instead of text lines
+
+4
+00:00:11.456 --> 00:00:15.350
+lets unrelated edits pass together without false merge wars.
+
+5
+00:00:15.790 --> 00:00:23.152
+Third, developers stay on ordinary Git while checking against one hundred thousand items takes seventy microseconds.
+
+6
+00:00:23.592 --> 00:00:28.912
+When ten AI coding helpers improve ten separate functions inside one Python file,
+
+7
+00:00:28.912 --> 00:00:38.502
+line-based Git panics like ten chefs fighting over one sheet of paper. Indexing individual functions lets every non-overlapping edit land cleanly.
+
+8
+00:00:38.942 --> 00:00:43.421
+Teams keep their everyday Git commands while a standalone Rust engine gates
+
+9
+00:00:43.421 --> 00:00:48.615
+every change in three hundred seventeen microjoules and reuses accepted conflict fixes.

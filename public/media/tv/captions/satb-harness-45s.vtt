@@ -1,0 +1,42 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — satb-harness (45s) Narrator Mia
+
+1
+00:00:00.280 --> 00:00:03.346
+First, changing the wrapper around an AI model
+
+2
+00:00:03.346 --> 00:00:06.478
+can swing scores as much as swapping the model.
+
+3
+00:00:06.918 --> 00:00:11.266
+Second, this test harness locks prompts, memory trimming,
+
+4
+00:00:11.266 --> 00:00:14.927
+and tools so every AI takes the exact same exam.
+
+5
+00:00:15.367 --> 00:00:17.706
+Third, across five computer types,
+
+6
+00:00:17.706 --> 00:00:23.486
+it separates real board sensors from chip counters and blocks noisy power estimates.
+
+7
+00:00:23.926 --> 00:00:30.641
+Giving the exact same language model a different command wrapper shifted coding scores by seventeen points,
+
+8
+00:00:30.641 --> 00:00:36.477
+while popular cloud tools that split server power by CPU share erred by up to ninety percent.
+
+9
+00:00:36.917 --> 00:00:41.743
+Locking the wrapper in Rust and labeling board sensors separately from chip
+
+10
+00:00:41.743 --> 00:00:48.048
+counters makes model comparisons genuinely reproducible across macOS, Linux, and Windows machines.

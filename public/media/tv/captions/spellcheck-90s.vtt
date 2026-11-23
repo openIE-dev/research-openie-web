@@ -1,46 +1,66 @@
 WEBVTT
-NOTE OpenIE Research TV — spellcheck (90s) Narrator Misha
+NOTE OpenIE Research TV v3.0 — spellcheck (90s) Narrator Misha
 
 1
-00:00:01.714 --> 00:00:05.486
-Nobody budgets tokens before fixing a typo today,
+00:00:00.320 --> 00:00:05.402
+First, people once paid hundreds of dollars for standalone spell check,
 
 2
-00:00:05.486 --> 00:00:10.797
-yet early spell checkers were marketed as elite productivity engines.
+00:00:05.402 --> 00:00:07.907
+yet today it comes free everywhere.
 
 3
-00:00:15.208 --> 00:00:19.966
-Dated catalogs from CP/M and DOS through modern mobile
+00:00:08.407 --> 00:00:11.956
+Second, it became free because checking a word costs
 
 4
-00:00:19.966 --> 00:00:26.398
-OSes trace an exact economic transition driven by algorithmic efficiency.
+00:00:11.956 --> 00:00:15.437
+almost nothing to run inside tools you already use.
 
 5
-00:00:30.809 --> 00:00:35.913
-This three-dimensional globe contrasts centralized high-watt server hubs
+00:00:15.937 --> 00:00:20.585
+Third, new computer intelligence reaches seven billion people only
 
 6
-00:00:35.913 --> 00:00:40.663
-with lightweight skills running locally across billions of devices.
+00:00:20.585 --> 00:00:24.177
+when it runs cheaply on devices people already own.
 
 7
-00:00:45.073 --> 00:00:48.923
-Inline tools succeed when latency is imperceptible,
+00:00:24.677 --> 00:00:30.000
+Imagine mailing every sentence you write to a distant typing bureau and paying by
 
 8
-00:00:48.923 --> 00:00:53.602
-false positives are bounded, and battery drain goes unnoticed.
+00:00:30.000 --> 00:00:34.995
+the word just to spot a typo. That sounds ridiculous for spelling today, yet
 
 9
-00:00:58.012 --> 00:01:04.233
-Today's frontier AI resembles standalone 1982 software: impressive,
+00:00:34.995 --> 00:00:40.384
+renting every answer from a remote cloud server is still how frontier AI operates.
 
 10
-00:01:04.233 --> 00:01:08.597
-power-hungry, and priced per seat or per token.
+00:00:40.884 --> 00:00:48.348
+In 1982, engineers compressed thirty thousand English words into twenty-six thousand sixteen-bit machine words
 
 11
-00:01:13.008 --> 00:01:21.673
-Compiling verified capabilities into sub-millijoule local tables repeats the spell-check trajectory for computer intelligence.
+00:00:48.348 --> 00:00:54.862
+so ordinary minicomputers could check documents locally without a network. Within a decade, word
+
+12
+00:00:54.862 --> 00:01:01.987
+processors, web browsers, and mobile keyboards absorbed spell checking completely at zero separate price.
+
+13
+00:01:02.487 --> 00:01:11.692
+Our dated price ledger tracks electronic calculators from four-thousand-nine-hundred-dollar desktop units and standalone two-hundred-dollar spell checkers
+
+14
+00:01:11.692 --> 00:01:19.642
+in 1981 down through eighty-nine-dollar grammar packages to open libraries and compact one-point-four-megabyte phone keyboard models.
+
+15
+00:01:20.142 --> 00:01:26.802
+Global reach follows the everyday hardware people already carry in their hands—nearly six billion mobile
+
+16
+00:01:26.802 --> 00:01:33.974
+subscribers and over three hundred billion embedded chips—once verified skills run locally at negligible energy.

@@ -1,50 +1,66 @@
 WEBVTT
-NOTE OpenIE Research TV — agency (90s) Narrator Joy
+NOTE OpenIE Research TV v3.0 — agency (90s) Narrator Joy
 
 1
-00:00:01.080 --> 00:00:05.694
-Modern AI leaderboards count tokens per second or raw score,
+00:00:00.320 --> 00:00:03.102
+First, an agent must aim at a goal,
 
 2
-00:00:05.694 --> 00:00:10.461
-ignoring whether the machine burned a kilowatt or a milliwatt.
+00:00:03.102 --> 00:00:07.157
+act on the world, and stay within an energy budget.
 
 3
-00:00:13.060 --> 00:00:20.584
-Thermodynamic Bounds for Goal-Holding Agents derives exact rate limits linking bit erasure,
+00:00:07.657 --> 00:00:10.807
+Second, physics prices every decision,
 
 4
-00:00:20.584 --> 00:00:23.643
-channel capacity, and action cadence.
+00:00:10.807 --> 00:00:17.273
+creating one optimal pace between slow idle drain and frantic switching waste.
 
 5
-00:00:26.241 --> 00:00:29.889
-On this three-dimensional tempo manifold,
+00:00:17.773 --> 00:00:25.106
+Third, among systems that finish a task correctly, the smarter one is whichever spent less energy.
 
 6
-00:00:29.889 --> 00:00:40.033
-static idle draw punishes hesitation while superlinear dissipation punishes panic, carving a golden optimal ridge.
+00:00:25.606 --> 00:00:30.158
+Picture driving across a wide desert on a strict fuel grant. Idling
 
 7
-00:00:42.631 --> 00:00:45.646
-Unfinished or wrong runs score zero.
+00:00:30.158 --> 00:00:35.456
+in traffic burns baseline power without moving you forward, while sprinting at
 
 8
-00:00:45.646 --> 00:00:53.015
-Among agents that cross the verification gate, intelligence reads as progress per joule.
+00:00:35.456 --> 00:00:41.027
+top speed multiplies switching heat until your tank runs dry before reaching town.
 
 9
-00:00:55.614 --> 00:01:01.925
-Two pre-registered experimental rounds across desktop and Jetson hosts confirm
+00:00:41.527 --> 00:00:46.841
+To qualify as an agent, a system locks in a testable prediction before acting,
 
 10
-00:01:01.925 --> 00:01:08.318
-that adaptive tempo selectors preserve budget without sacrificing task closure.
+00:00:46.841 --> 00:00:52.905
+changes the outside world rather than editing its own sensors, updates its internal state
 
 11
-00:01:10.917 --> 00:01:17.992
-Host counters are explicitly labeled reported_j rather than board-shunt measured_j,
+00:00:52.905 --> 00:00:59.174
+from the outcome, and writes a clean refusal receipt whenever the energy budget falls short.
 
 12
-00:01:17.992 --> 00:01:22.851
-anchoring every physical claim to reproducible artifacts.
+00:00:59.674 --> 00:01:05.402
+Across more than twenty thousand puzzle episodes on two laptops, an unguided random
+
+13
+00:01:05.402 --> 00:01:10.508
+baseline looked great on raw bits per joule only because its fast failures
+
+14
+00:01:10.508 --> 00:01:17.134
+were cheap, whereas gating by full task completion ranked our goal-holding selectors accurately.
+
+15
+00:01:17.634 --> 00:01:24.469
+Stop mistaking brute energy spend for intelligence. Demand a verified correct answer first,
+
+16
+00:01:24.469 --> 00:01:33.784
+enforce hard energy budgets with transparent refusal receipts, and rank every passing system strictly by total joules spent.

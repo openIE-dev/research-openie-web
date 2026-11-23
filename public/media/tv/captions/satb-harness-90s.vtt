@@ -1,50 +1,70 @@
 WEBVTT
-NOTE OpenIE Research TV — satb-harness (90s) Narrator Mia
+NOTE OpenIE Research TV v3.0 — satb-harness (90s) Narrator Mia
 
 1
-00:00:00.660 --> 00:00:05.768
-Benchmarking autonomous coding agents across laptops, edge modules,
+00:00:00.320 --> 00:00:03.386
+First, changing the wrapper around an AI model
 
 2
-00:00:05.768 --> 00:00:10.952
-and workstations usually collapses into incompatible ad-hoc scripts.
+00:00:03.386 --> 00:00:06.518
+can swing scores as much as swapping the model.
 
 3
-00:00:12.352 --> 00:00:19.585
-Empirical audits show CPU-proportional power splitting errs up to 89.88 percent,
+00:00:07.018 --> 00:00:11.366
+Second, this test harness locks prompts, memory trimming,
 
 4
-00:00:19.585 --> 00:00:24.286
-matching Windows GetProcessTimes tick-aliasing loss.
+00:00:11.366 --> 00:00:15.027
+and tools so every AI takes the exact same exam.
 
 5
-00:00:25.686 --> 00:00:34.465
-Five hardware satellites surround one deterministic core: Jetson AGX Thor physical rail shunts,
+00:00:15.527 --> 00:00:17.866
+Third, across five computer types,
 
 6
-00:00:34.465 --> 00:00:39.455
-M5 Max, Strix Halo Zen 5, Raptor Lake, and Windows 11.
+00:00:17.866 --> 00:00:23.646
+it separates real board sensors from chip counters and blocks noisy power estimates.
 
 7
-00:00:40.855 --> 00:00:46.177
-Linux hosts isolate RAPL under 0440 energy permissions,
+00:00:24.146 --> 00:00:28.526
+Imagine timing sprinters on tracks of different lengths and then guessing
 
 8
-00:00:46.177 --> 00:00:53.725
-while Windows 11 pairs 2.46-millisecond JobObject teardown with rootless NVML.
+00:00:28.526 --> 00:00:32.845
+their calorie burn by shoe size. That happens whenever AI benchmarks mix
 
 9
-00:00:55.124 --> 00:01:07.825
-Every host replays Shape D checksum 15027705736 and C9's 149,747-byte payload with zero diffs,
+00:00:32.845 --> 00:00:38.244
+different history-trimming wrappers and split shared server watts by processor time alone.
 
 10
-00:01:07.825 --> 00:01:11.202
-plus live adapter parity.
+00:00:38.744 --> 00:00:43.540
+Our sequential Rust harness fixes six safe workspace tools, trims old outputs
 
 11
-00:01:12.602 --> 00:01:16.225
-Whenever shared-host drift crosses threshold,
+00:00:43.540 --> 00:00:48.896
+above eighty percent window capacity using zero hidden model calls, hashes a five-part
 
 12
-00:01:16.225 --> 00:01:23.630
-Falsifier 6 withholds net process claims while keeping raw measured_j and reported_j intact.
+00:00:48.896 --> 00:00:55.063
+system fingerprint, and routes external command-line coding agents through one audited local proxy.
+
+13
+00:00:55.563 --> 00:01:01.611
+Across Apple Silicon, Tegra circuit-board power shunts, two Linux workstations, and bare-metal Windows
+
+14
+00:01:01.611 --> 00:01:06.651
+eleven, replay transcripts matched to the exact byte across twelve checks, while live
+
+15
+00:01:06.651 --> 00:01:11.750
+endpoint probes caught cloud models drifting even when temperature was locked to zero.
+
+16
+00:01:12.250 --> 00:01:19.544
+Physical board shunt joules, built-in chip counters, and logical token counts never get blended into one fuzzy number,
+
+17
+00:01:19.544 --> 00:01:25.231
+and automatic drift checks withhold net attribution whenever background jobs share the host.

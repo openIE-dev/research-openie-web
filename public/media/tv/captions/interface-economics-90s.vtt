@@ -1,38 +1,62 @@
 WEBVTT
-NOTE OpenIE Research TV — interface-economics (90s) Narrator Edwin
+NOTE OpenIE Research TV v3.0 — interface-economics (90s) Narrator Edwin
 
 1
-00:00:01.738 --> 00:00:04.930
-In Ariane 501 and Mars Climate Orbiter,
+00:00:00.320 --> 00:00:07.619
+First, single handoff failures carry exact price tags, like losing a Mars mission over mismatched units.
 
 2
-00:00:04.930 --> 00:00:12.295
-individual modules behaved exactly as coded while unwritten interface contracts shattered.
+00:00:08.119 --> 00:00:15.988
+Second, giant national software-failure numbers come from broad surveys and models, never counting handoffs alone.
 
 3
-00:00:16.775 --> 00:00:18.517
-Under deadline pressure,
+00:00:16.488 --> 00:00:23.450
+Third, checking what each side assumes is cheap, but one team pays while everyone else benefits.
 
 4
-00:00:18.517 --> 00:00:26.791
-documenting and proving boundary invariants penalizes the upstream schedule while downstream teams reap stability.
+00:00:23.950 --> 00:00:28.253
+On Ariane 5's first flight, guidance software reused from Ariane 4
 
 5
-00:00:31.271 --> 00:00:40.830
-This three-dimensional gate illustrates untyped cross-team payloads compressed through explicit unit, range, and totality contracts.
+00:00:28.253 --> 00:00:33.663
+assumed a smaller horizontal velocity than the new rocket produced, destroying four
 
 6
-00:00:45.309 --> 00:00:51.025
-Side-by-side visual ledgers classify every published figure honestly,
+00:00:33.663 --> 00:00:40.834
+science satellites and forcing a two-hundred-fourteen-million European-currency recovery mission to fly again.
 
 7
-00:00:51.025 --> 00:00:55.167
-refusing to add apples, models, and opinion polls.
+00:00:41.334 --> 00:00:47.601
+Industry presentations routinely mash audited accident budgets together with executive opinion polls
 
 8
-00:00:59.647 --> 00:01:09.005
-Across aerospace, finance, and enterprise stacks, boundary reconciliation consumes a massive share of engineering budgets.
+00:00:47.601 --> 00:00:53.681
+into fake multi-trillion-dollar totals. Our ledger keeps exact accounted losses strictly separate
 
 9
-00:01:13.484 --> 00:01:21.628
-Lowering verification cost via total Forms and static manifest checks solves the public-good bottleneck directly.
+00:00:53.681 --> 00:01:03.458
+from fifty-nine-point-five-billion-dollar testing models, eighty-five-billion-dollar developer time surveys, and trillion-dollar software quality estimates.
+
+10
+00:01:03.958 --> 00:01:10.648
+Standards economics explains why fragile handoffs persist year after year: a checked interface is
+
+11
+00:01:10.648 --> 00:01:16.373
+a public good with private upfront costs. One upstream team pays sprint hours today
+
+12
+00:01:16.373 --> 00:01:22.719
+to specify exact units and bounds, while every downstream user collects the avoided outages.
+
+13
+00:01:23.219 --> 00:01:29.423
+When shared machine-checked representations carry units, versions, and operating ranges automatically
+
+14
+00:01:29.423 --> 00:01:33.415
+by construction, the private cost to any single team of closing a
+
+15
+00:01:33.415 --> 00:01:37.837
+software handoff drops toward the tiny cost of running the check itself.

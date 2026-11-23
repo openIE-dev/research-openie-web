@@ -1,50 +1,66 @@
 WEBVTT
-NOTE OpenIE Research TV — rce-compile (90s) Narrator Lem
+NOTE OpenIE Research TV v3.0 — rce-compile (90s) Narrator Lem
 
 1
-00:00:00.419 --> 00:00:06.252
-Checked honestly against twelve production and verified compiler families,
+00:00:00.320 --> 00:00:06.962
+First, real compilers break any single descriptive law, so this study defines a seven-part yardstick instead.
 
 2
-00:00:06.252 --> 00:00:11.060
-no single descriptive rule covers how compilers behave today.
+00:00:07.462 --> 00:00:11.811
+Second, maximum compiler optimization burns upfront energy that
 
 3
-00:00:11.770 --> 00:00:21.456
-Static WebAssembly IR size predicts runtime energy poorly at R-squared 0.1154,
+00:00:11.811 --> 00:00:15.332
+never pays back on thirty percent of test programs.
 
 4
-00:00:21.456 --> 00:00:27.540
-whereas Regime-B execution profiling hits 0.9999.
+00:00:15.832 --> 00:00:21.320
+Third, fingerprinting code by variable position reuses builds with zero mix-ups,
 
 5
-00:00:28.251 --> 00:00:35.413
-This three-dimensional prism traces source lowering through explicit equivalence levels,
+00:00:21.320 --> 00:00:24.406
+cutting Rust compile energy four hundredfold.
 
 6
-00:00:35.413 --> 00:00:39.319
-trusted-base digests, and nameless binary reuse.
+00:00:24.906 --> 00:00:30.756
+We tested a sweeping claim—that every compiler lowers canonical forms while tracking energy
 
 7
-00:00:40.030 --> 00:00:46.405
-Every optimization tier from CPython and PyPy to Clang, GCC,
+00:00:30.756 --> 00:00:37.120
+and preserving meaning—against twelve real compiler families. In practice, none tracks joules, none
 
 8
-00:00:46.405 --> 00:00:52.886
-and Rustc was checksum-verified on Linux Zen 5 RAPL counters.
+00:00:37.120 --> 00:00:42.841
+hashes name-free code, and automated fuzzers have uncovered thousands of C compiler bugs.
 
 9
-00:00:53.597 --> 00:01:02.583
-While aggressive O3 flags often lose energy on short-lived binaries,
+00:00:43.341 --> 00:00:48.849
+Restating compilation as a seven-part standard lets us measure exact payback horizons
 
 10
-00:01:02.583 --> 00:01:11.438
-De Bruijn SHA-256 caching cuts Clang O3 167.8x and Rustc O3 448.5x.
+00:00:48.849 --> 00:00:54.098
+across twenty kernels and fifteen toolchain tiers: optimized C beats Python after
 
 11
-00:01:12.149 --> 00:01:19.155
-Five hundred execution-verified semantic mutants confirm De Bruijn safety,
+00:00:54.098 --> 00:01:00.384
+twenty-four hundred ninety runs, while shared Rust runtime libraries cut build energy twentyfold.
 
 12
-00:01:19.155 --> 00:01:24.078
-with Zen 5 RAPL figures strictly labeled reported_j.
+00:01:00.884 --> 00:01:07.710
+Simply erasing variable names caused one hundred fifty dangerous cache collisions whenever two variables swapped
+
+13
+00:01:07.710 --> 00:01:13.682
+roles. Replacing names with De Bruijn binding positions hit zero false matches across five hundred
+
+14
+00:01:13.682 --> 00:01:18.984
+verified mutants and cut warm C and Rust rebuilds up to four hundred forty-eight times.
+
+15
+00:01:19.484 --> 00:01:25.493
+All energy figures come from built-in Linux processor counters rather than an external wall wattmeter,
+
+16
+00:01:25.493 --> 00:01:29.440
+and every external citation carries an explicit verification badge.

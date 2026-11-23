@@ -1,0 +1,106 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — deterministic-null (180s) Narrator Hari
+
+1
+00:00:00.360 --> 00:00:07.189
+First, most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.
+
+2
+00:00:07.749 --> 00:00:10.769
+Second, on bounded math and database tasks,
+
+3
+00:00:10.769 --> 00:00:14.982
+a frozen lookup table matched cloud AI on nine of ten tests.
+
+4
+00:00:15.542 --> 00:00:18.603
+Third, on open coding tasks AI leaped ahead,
+
+5
+00:00:18.603 --> 00:00:23.542
+while caching verified answers cut repeat energy three point six times.
+
+6
+00:00:24.102 --> 00:00:31.098
+Modern AI evaluations routinely compare one language model against another, leaving a foundational scientific question
+
+7
+00:00:31.098 --> 00:00:36.730
+unmeasured: how much task completion actually needed a neural network at decision time, and how
+
+8
+00:00:36.730 --> 00:00:42.422
+much could a fixed integer lookup procedure over verified prior examples already solve for free?
+
+9
+00:00:42.982 --> 00:00:49.160
+Just as clinical drug trials seal their treatment protocols before patients enroll, we anchored our frozen
+
+10
+00:00:49.160 --> 00:00:56.445
+lookup store's digital fingerprint onto Bitcoin calendar proofs before public randomness beacons existed, and capped per-task
+
+11
+00:00:56.445 --> 00:01:02.215
+helper code at four kilobytes and fifty thousand operations so no hidden solver could sneak inside.
+
+12
+00:01:02.775 --> 00:01:09.530
+At test time, the control loop observes an input, reduces features using pure sixty-four-bit signed integers
+
+13
+00:01:09.530 --> 00:01:16.973
+with zero floating-point instructions, probes a read-only memory-mapped hash table in half a microsecond, and acts with
+
+14
+00:01:16.973 --> 00:01:23.478
+zero model calls. Rust, Go, Python, Julia, and C plus plus match bit-for-bit across one million records.
+
+15
+00:01:24.038 --> 00:01:31.689
+Subtracting control accuracy from neural accuracy reveals a sharp boundary governed by how often genuinely unseen patterns
+
+16
+00:01:31.689 --> 00:01:39.152
+arrive in the workload stream. Where structural templates saturate early, frozen integer lookup matches giant models at
+
+17
+00:01:39.152 --> 00:01:46.866
+zero call cost; where open-world software recombines freely, neural synthesis shines and then seeds future instant lookups.
+
+18
+00:01:47.426 --> 00:01:54.350
+This three-dimensional crystal depicts our frozen binary lookup table locked before public randomness rounds existed.
+
+19
+00:01:54.350 --> 00:02:01.570
+Paired evaluation lanes route every fresh test problem simultaneously to zero-model controls, classical deductive solvers,
+
+20
+00:02:01.570 --> 00:02:08.495
+local open-weight models on Apple Silicon, and six multi-vendor cloud frontier systems under identical scoring rules.
+
+21
+00:02:09.055 --> 00:02:15.935
+Single-turn cloud models beat the frozen table on just one of ten bounded cells, while multi-turn clause feedback
+
+22
+00:02:15.935 --> 00:02:22.633
+solved fifty of fifty logic formulas that a free classical solver also closed. Across public coding suites and
+
+23
+00:02:22.633 --> 00:02:30.792
+six real upstream repository bugs—five patched and replayed at zero model calls—frontier models leaped up to ninety-five points ahead.
+
+24
+00:02:31.352 --> 00:02:38.071
+Every measurement boundary stays completely transparent from start to finish. Local workstation energy comes from built-in
+
+25
+00:02:38.071 --> 00:02:43.745
+Apple chip counters rather than an external wall meter, closed cloud server watts are recorded strictly
+
+26
+00:02:43.745 --> 00:02:50.409
+as unavailable instead of guessed from fleet averages, and busy-host baseline drift drops net subtractions automatically.

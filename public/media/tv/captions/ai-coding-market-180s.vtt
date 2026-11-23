@@ -1,0 +1,102 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — ai-coding-market (180s) Narrator Osato
+
+1
+00:00:00.360 --> 00:00:07.491
+First, headline trillion-dollar figures for AI coding are future guesses, not counts of money already earned.
+
+2
+00:00:08.051 --> 00:00:14.878
+Second, almost every forecast assumes developers will pay a giant AI model by the word forever.
+
+3
+00:00:15.438 --> 00:00:21.291
+Third, saving and reusing working code drives repeated jobs toward electricity cost,
+
+4
+00:00:21.291 --> 00:00:23.520
+making those forecasts too high.
+
+5
+00:00:24.080 --> 00:00:31.716
+Venture and consulting slides arrive at trillions by multiplying roughly thirty million professional developers—or six times that
+
+6
+00:00:31.716 --> 00:00:40.653
+many open-source accounts—by assumed hundred-thousand-dollar output gains across the world economy. Meanwhile, actual buyer surveys put 2025 enterprise
+
+7
+00:00:40.653 --> 00:00:48.347
+coding-tool spend at four billion dollars, and leading coding assistants report annualized run rates in the single-digit billions.
+
+8
+00:00:48.907 --> 00:00:55.861
+At published list rates, one agentic coding query with a hundred-thousand-word context and ten thousand output words
+
+9
+00:00:55.861 --> 00:01:02.695
+costs two dollars and twenty-five cents—nearly ten thousand dollars a year per developer at three queries an hour.
+
+10
+00:01:02.695 --> 00:01:09.649
+Companies blow through annual budgets by spring because every recurring migration or bug fix is billed from scratch.
+
+11
+00:01:10.209 --> 00:01:15.916
+To stop blending forecasts with bank statements, our study tags every single claim with one
+
+12
+00:01:15.916 --> 00:01:24.068
+of five strict labels: assumption-driven projections, company-reported run rates and valuations, buyer surveys, audited regulatory
+
+13
+00:01:24.068 --> 00:01:31.468
+filings such as multi-billion-dollar quarterly equity losses, and reproducible measured runs whose artifacts are kept.
+
+14
+00:01:32.028 --> 00:01:38.690
+Even without reuse, fierce competition and open weights have driven the price of reaching a fixed coding
+
+15
+00:01:38.690 --> 00:01:45.287
+benchmark down roughly ten to thirteen times per year since 2023. Verified reuse adds a second, steeper
+
+16
+00:01:45.287 --> 00:01:52.205
+drop: once a checked fix becomes a deterministic local routine, every repeat arrival needs zero model calls.
+
+17
+00:01:52.765 --> 00:01:59.628
+In our three-dimensional global compute model, large cloud models remain genuinely valuable when exploring unfamiliar
+
+18
+00:01:59.628 --> 00:02:06.255
+specifications for the first time, while recurring code transformations crystallize into tiny checked programs on
+
+19
+00:02:06.255 --> 00:02:12.355
+local machines. Economic value shifts away from metered word volume and toward verified problem closure.
+
+20
+00:02:12.915 --> 00:02:20.571
+Compilers, relational databases, and open operating systems created trillions of dollars in global economic surplus without
+
+21
+00:02:20.571 --> 00:02:27.418
+charging programmers a toll every time code compiled. Measured studies across eight coding models already show
+
+22
+00:02:27.418 --> 00:02:34.451
+agent loops burning a thousand times more words than chat, varying thirtyfold per run without improving accuracy.
+
+23
+00:02:35.011 --> 00:02:41.814
+Our essay makes no stock-market predictions and claims no external hardware power meter. Instead, it sets out
+
+24
+00:02:41.814 --> 00:02:49.990
+clean, refutable propositions on public numbers: if verified software reuse works as engineering expects, model calls, dollars, and
+
+25
+00:02:49.990 --> 00:02:57.666
+joules per merged repository change will fall steadily toward local electricity cost even as world software output expands.

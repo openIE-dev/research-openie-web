@@ -1,42 +1,66 @@
 WEBVTT
-NOTE OpenIE Research TV — rce-vc (90s) Narrator River
+NOTE OpenIE Research TV v3.0 — rce-vc (90s) Narrator River
 
 1
-00:00:01.794 --> 00:00:05.047
-Human teams merge a few pull requests an hour;
+00:00:00.320 --> 00:00:03.769
+First, many people and AI agents write at once,
 
 2
-00:00:05.047 --> 00:00:10.561
-autonomous coding swarms submit hundreds of concurrent micro-patches a second.
+00:00:03.769 --> 00:00:07.292
+and a named check admits changes or records why.
 
 3
-00:00:15.202 --> 00:00:19.834
-Replacing mutable file paths with canonical dependency digests
+00:00:07.792 --> 00:00:11.556
+Second, tracking name-free functions instead of text lines
 
 4
-00:00:19.834 --> 00:00:24.765
-separates genuine semantic overlap from accidental file adjacency.
+00:00:11.556 --> 00:00:15.450
+lets unrelated edits pass together without false merge wars.
 
 5
-00:00:29.406 --> 00:00:34.552
-This three-dimensional hub shows concurrent submissions entering the deterministic
+00:00:15.950 --> 00:00:23.312
+Third, developers stay on ordinary Git while checking against one hundred thousand items takes seventy microseconds.
 
 6
-00:00:34.552 --> 00:00:38.255
-admission ring while projecting lossless views back to Git.
+00:00:23.812 --> 00:00:28.427
+Branching and line-diffing worked fine when small human teams merged a few
 
 7
-00:00:42.896 --> 00:00:52.370
-Forty-nine offline verification tests validate canonical hashing, conflict detection, refusal receipts, and round-trip Git projection.
+00:00:28.427 --> 00:00:33.355
+pull requests a day. When dozens of automated tools refactor comments, variable
 
 8
-00:00:57.011 --> 00:01:06.765
-Single-core Apple M5 Max benchmarks sustain over 13,000 admissions per second against 100,000-unit repositories.
+00:00:33.355 --> 00:00:38.843
+names, and helper functions every second, text lines manufacture fake conflicts nonstop.
 
 9
-00:01:11.406 --> 00:01:18.050
-The study explicitly notes existing VCS tools do not follow this contract automatically,
+00:00:39.343 --> 00:00:44.671
+Our standalone Rust reference splits Rust and Python files into top-level items keyed
 
 10
-00:01:18.050 --> 00:01:21.523
-and separates L3 reported_j from board shunts.
+00:00:44.671 --> 00:00:51.315
+by normalized structure rather than names. Non-overlapping dependency closures merge without waiting, real
+
+11
+00:00:51.315 --> 00:00:56.266
+overlaps rank by pre-stated cost, and exact original bytes project back to Git.
+
+12
+00:00:56.766 --> 00:01:01.918
+Across forty-nine offline tests with unsafe Rust forbidden, admitting a change into a
+
+13
+00:01:01.918 --> 00:01:08.887
+one-hundred-thousand-unit repository takes sixty-nine point seven to seventy-three point six microseconds and three
+
+14
+00:01:08.887 --> 00:01:14.341
+hundred seventeen to three hundred sixty-five microjoules on an Apple M5 Max chip counter.
+
+15
+00:01:14.841 --> 00:01:22.143
+This standalone reference runs on ordinary Rust and Python repositories today without requiring the Reality Code Engine language,
+
+16
+00:01:22.143 --> 00:01:26.955
+while keeping kernel chip energy readings strictly separate from nominal cost tables.

@@ -1,46 +1,66 @@
 WEBVTT
-NOTE OpenIE Research TV — game-engines (90s) Narrator Charlie
+NOTE OpenIE Research TV v3.0 — game-engines (90s) Narrator Charlie
 
 1
-00:00:00.604 --> 00:00:09.437
-Cross-platform engines mingle deterministic game rules with vendor-specific math libraries, shader compilers, and rasterizers.
+00:00:00.320 --> 00:00:03.164
+First, with exact whole-number physics,
 
 2
-00:00:10.676 --> 00:00:14.133
-Across 840 chaotic trajectories,
+00:00:03.164 --> 00:00:09.507
+one game blueprint replays identically across Windows, macOS, Linux, and major engines.
 
 3
-00:00:14.133 --> 00:00:24.717
-floating-point ULP differences diverge predictably at ticks 10 to 192, while Q32.32 holds forever.
+00:00:10.007 --> 00:00:18.180
+Second, standard decimal math drifts across operating systems within thirty-seven frames, splitting chaotic collisions apart.
 
 4
-00:00:25.956 --> 00:00:30.297
-This three-dimensional arena shows macOS, Linux,
+00:00:18.680 --> 00:00:21.937
+Third, graphics cards differ slightly on pixels,
 
 5
-00:00:30.297 --> 00:00:38.709
-and Windows 11 DirectX 12 rings locked in Q32.32 phase while an unguarded float ghost drifts.
+00:00:21.937 --> 00:00:26.280
+so rendering sits safely behind a one-way visual tolerance gate.
 
 6
-00:00:39.948 --> 00:00:46.606
-Projecting 17 game Forms cuts behavior code 76.2 percent vs Unity
+00:00:26.780 --> 00:00:31.887
+Game studios burn fortunes rewriting the same gameplay across Unity, Unreal,
 
 7
-00:00:46.606 --> 00:00:53.265
-C-sharp and 61.5 percent vs Bevy Rust with zero trace mismatches.
+00:00:31.887 --> 00:00:39.010
+Bevy, and Godot—or hunting baffling multiplayer desynchronizations. The breakthrough comes from separating
 
 8
-00:00:54.504 --> 00:01:01.935
-Compiled projections step 10,000 actors in 0.058 milliseconds,
+00:00:39.010 --> 00:00:44.588
+layers that require exact bit-for-bit agreement from layers that only paint pixels.
 
 9
-00:01:01.935 --> 00:01:10.325
-replay 216,000 ticks from 44.6 kilobytes, and pass 28 of 28 GPU pairs.
+00:00:45.088 --> 00:00:50.219
+We place physics simulation and gameplay scripts inside one checked Reality Code Engine
 
 10
-00:01:11.565 --> 00:01:18.203
-With 36 of 36 Godot 4.7.2 headless tasks matching native GDScript,
+00:00:50.219 --> 00:00:56.588
+blueprint using sixty-four-bit fixed-point whole numbers, static wiring checks that catch ninety-eight point
 
 11
-00:01:18.203 --> 00:01:23.734
-all nine falsifiers stand closed and playable in WebXR.
+00:00:56.588 --> 00:01:01.483
+five percent of broken scene and signal links, and a strict one-way rendering wall.
+
+12
+00:01:01.983 --> 00:01:09.254
+Across thirty compiler-and-machine combinations and three one-hour replays driven by forty-five-kilobyte input
+
+13
+00:01:09.254 --> 00:01:15.665
+logs alone, whole-number simulation hit zero state mismatches. Meanwhile all twenty-eight DirectX
+
+14
+00:01:15.665 --> 00:01:20.821
+12, Apple Metal, and Vulkan hardware pairs stayed within two tiny color steps.
+
+15
+00:01:21.321 --> 00:01:28.351
+Compiled C plus plus projections step ten thousand actors in point zero five eight milliseconds—using over seven
+
+16
+00:01:28.351 --> 00:01:35.633
+thousand times less chip energy than interpreted Python—and match all thirty-six headless Godot tasks tick for tick.

@@ -1,0 +1,42 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — deterministic-null (45s) Narrator Hari
+
+1
+00:00:00.280 --> 00:00:07.109
+First, most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.
+
+2
+00:00:07.549 --> 00:00:10.569
+Second, on bounded math and database tasks,
+
+3
+00:00:10.569 --> 00:00:14.782
+a frozen lookup table matched cloud AI on nine of ten tests.
+
+4
+00:00:15.222 --> 00:00:18.283
+Third, on open coding tasks AI leaped ahead,
+
+5
+00:00:18.283 --> 00:00:23.222
+while caching verified answers cut repeat energy three point six times.
+
+6
+00:00:23.662 --> 00:00:27.386
+Doctors never approve a new drug without testing it against a
+
+7
+00:00:27.386 --> 00:00:32.026
+sugar pill. Yet AI leaderboards routinely pit one giant neural model against
+
+8
+00:00:32.026 --> 00:00:36.605
+another without asking what a fast recipe book of verified examples solves.
+
+9
+00:00:37.045 --> 00:00:41.828
+Testing a zero-model baseline first separates marketing hype from real reasoning,
+
+10
+00:00:41.828 --> 00:00:48.384
+and saving verified answers turns expensive breakthroughs into cheap instant lookups the next time they appear.

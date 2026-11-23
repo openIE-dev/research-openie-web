@@ -1,46 +1,70 @@
 WEBVTT
-NOTE OpenIE Research TV — rce-jepa (90s) Narrator Jyothi
+NOTE OpenIE Research TV v3.0 — rce-jepa (90s) Narrator Jyothi
 
 1
-00:00:00.591 --> 00:00:11.239
-Joint Embedding Predictive Architectures predict cleanly in latent space—but code execution demands exact discrete correctness.
+00:00:00.320 --> 00:00:03.871
+First, instead of guessing raw code word by word,
 
 2
-00:00:12.443 --> 00:00:19.644
-Over 185 programs, lossless Forms compress boilerplate 9.34x,
+00:00:03.871 --> 00:00:08.073
+small models predict compact summaries of program meaning.
 
 3
-00:00:19.644 --> 00:00:28.142
-making deterministic verification 1,718x cheaper than neural generation.
+00:00:08.573 --> 00:00:12.742
+Second, any AI model may propose a candidate program,
 
 4
-00:00:29.346 --> 00:00:34.594
-This three-dimensional core shows candidate proposals scored in latent
+00:00:12.742 --> 00:00:16.438
+but a fast, strict checker decides what passes.
 
 5
-00:00:34.594 --> 00:00:39.617
-space and filtered by the RCE checker before multi-target emission.
+00:00:16.938 --> 00:00:22.675
+Third, checking uses seventeen hundred times less energy than generating,
 
 6
-00:00:40.821 --> 00:00:46.449
-At 47.09 millijoules RAPL core reported_j,
+00:00:22.675 --> 00:00:25.662
+and saved fixes slash big model calls.
 
 7
-00:00:46.449 --> 00:00:58.776
-FormEBM-v2 ranks 84.05 percent top-1 valid beams with Spearman rho 0.9931 across edit steps.
+00:00:26.162 --> 00:00:32.006
+Ordinary source files bury real program logic under formatting, imports, and language
 
 8
-00:00:59.980 --> 00:01:07.951
-Bounded checker diagnostics close 100 percent of residual tasks with zero contradictions,
+00:00:32.006 --> 00:00:39.636
+quirks. Across one hundred eighty-five hand-written programs, Reality Code Engine blueprints shrink description
 
 9
-00:01:07.951 --> 00:01:11.802
-replaying in 1.771 microjoules from Gear-0.
+00:00:39.636 --> 00:00:45.480
+length more than nine times, giving small neural models a compact, noise-free target.
 
 10
-00:01:13.006 --> 00:01:19.576
-Because rung-f exceeded its pre-registered 2.0 percent bound by half a point,
+00:00:45.980 --> 00:00:53.206
+First, deterministic rules close one hundred eleven of one hundred fifty-one real-history tasks
 
 11
-00:01:19.576 --> 00:01:23.757
-it remains gated in observe mode—zero exceptions.
+00:00:53.206 --> 00:01:01.345
+with zero AI calls. Second, tiny six-to-eight-million-parameter meaning predictors and energy scorers solve
+
+12
+00:01:01.345 --> 00:01:07.659
+repairs under half a joule. Third, only remaining open tasks call a frontier model.
+
+13
+00:01:08.159 --> 00:01:14.167
+Given up to five turns of exact checker diagnostics and public library headers, Claude
+
+14
+00:01:14.167 --> 00:01:20.386
+Opus and Sonnet close all forty hard residual tasks with zero contradictions. Zero fuzzed
+
+15
+00:01:20.386 --> 00:01:27.163
+bugs slip past the gate, and saved lookup cuts recurring frontier runs sixteen-point-seven times.
+
+16
+00:01:27.663 --> 00:01:34.978
+When an outside stochastic repair step hit two point five percent against its pre-registered two percent ceiling,
+
+17
+00:01:34.978 --> 00:01:38.150
+our harness honestly kept it in observation mode.

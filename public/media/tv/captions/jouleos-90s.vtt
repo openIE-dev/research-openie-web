@@ -1,50 +1,58 @@
 WEBVTT
-NOTE OpenIE Research TV — jouleos (90s) Narrator Bobby
+NOTE OpenIE Research TV v3.0 — jouleos (90s) Narrator Bobby
 
 1
-00:00:01.495 --> 00:00:07.185
-Wall-clock quotas treat a quiet sleep and a full tensor-core burst identically,
+00:00:00.320 --> 00:00:07.101
+First, today's computers stack many separate layers, and AI agents are bolted on top unchanged.
 
 2
-00:00:07.185 --> 00:00:10.642
-leaving agent sandboxes blind to physical power.
+00:00:07.601 --> 00:00:14.058
+Second, none of those layers asks beforehand how much energy an agent's action will actually spend.
 
 3
-00:00:14.429 --> 00:00:21.701
-When one pipeline stage has rail-shunt measured_j and another has analytical est_j,
+00:00:14.558 --> 00:00:21.454
+Third, an agent machine must measure energy, enforce strict budgets, and refuse actions that break them.
 
 4
-00:00:21.701 --> 00:00:26.432
-the 78,400-pair meet operator labels the sum honestly.
+00:00:21.954 --> 00:00:27.146
+Modern agent sandboxes jail file access or count virtual instructions, yet elevated
 
 5
-00:00:30.219 --> 00:00:36.838
-This three-dimensional hardware-software stack traces rail telemetry up
+00:00:27.146 --> 00:00:32.024
+commands still escape onto the host kernel, and one virtual instruction spends
 
 6
-00:00:36.838 --> 00:00:42.059
-through SATB-IO drift gates into Ed25519 JCR-1 receipts.
+00:00:32.024 --> 00:00:37.966
+wildly different physical energy depending on memory traffic, cache misses, and chip frequency.
 
 7
-00:00:45.846 --> 00:00:48.950
-Child holds cannot exceed parent grants,
+00:00:38.466 --> 00:00:43.381
+Our review maps ten distinct jobs from bare silicon up to the human screen. It
 
 8
-00:00:48.950 --> 00:00:55.935
-settlements reconcile exact remainders, and noisy shared-host windows withhold net splits.
+00:00:43.381 --> 00:00:50.186
+specifies a schedule that tries cheap deterministic checks before language models, signed energy grants that
 
 9
-00:00:59.721 --> 00:01:05.353
-All 310 Rust workspace tests pass cleanly across receipt serialization,
+00:00:50.186 --> 00:00:56.550
+only shrink when delegated to sub-tasks, and tool outputs treated strictly as passive untrusted data.
 
 10
-00:01:05.353 --> 00:01:09.239
-signature tampering rejection, and stage rollups.
+00:00:57.050 --> 00:01:01.979
+Our reference Rust spine passes all three hundred ten conformance tests for crash-safe
 
 11
-00:01:13.026 --> 00:01:19.355
-By separating what today's OSes lack from what the verified Rust spine already checks,
+00:01:01.979 --> 00:01:08.112
+two-phase energy holds and signed binary receipts, while proving exhaustively across seventy-eight thousand
 
 12
-00:01:19.355 --> 00:01:22.078
-JouleOS charts a concrete build path.
+00:01:08.112 --> 00:01:13.728
+four hundred pairs that software estimates can never masquerade as physical hardware measurements.
+
+13
+00:01:14.228 --> 00:01:19.083
+By separating verified software checks from unverified bare-metal kernel claims,
+
+14
+00:01:19.083 --> 00:01:26.669
+this design guide gives systems engineers a concrete, checkable blueprint for building agent machines governed by energy law.

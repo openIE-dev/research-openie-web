@@ -1,0 +1,106 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — agency (180s) Narrator Joy
+
+1
+00:00:00.360 --> 00:00:03.142
+First, an agent must aim at a goal,
+
+2
+00:00:03.142 --> 00:00:07.197
+act on the world, and stay within an energy budget.
+
+3
+00:00:07.757 --> 00:00:10.907
+Second, physics prices every decision,
+
+4
+00:00:10.907 --> 00:00:17.373
+creating one optimal pace between slow idle drain and frantic switching waste.
+
+5
+00:00:17.933 --> 00:00:25.266
+Third, among systems that finish a task correctly, the smarter one is whichever spent less energy.
+
+6
+00:00:25.826 --> 00:00:33.098
+Today's AI scoreboards celebrate whichever system gets the highest raw score, ignoring whether one answer
+
+7
+00:00:33.098 --> 00:00:39.331
+burned a thousand watts or a thousandth of a watt. Pouring more electricity into a machine
+
+8
+00:00:39.331 --> 00:00:47.226
+can buy capability, yet true intelligence means solving the exact same problem parsimoniously with minimal energy.
+
+9
+00:00:47.786 --> 00:00:54.497
+Imagine balancing an upright broomstick on your palm while walking on a strict calorie budget. Wait
+
+10
+00:00:54.497 --> 00:01:01.749
+too long between corrections and the stick tips away while baseline metabolism drains your reserves; twitch
+
+11
+00:01:01.749 --> 00:01:07.850
+too frantically and every rapid muscle reset dumps extra heat into the air for tiny gains.
+
+12
+00:01:08.410 --> 00:01:17.005
+The framework stacks three layers in a fixed order. First comes eligibility: fix a discriminating prediction beforehand,
+
+13
+00:01:17.005 --> 00:01:25.171
+physically push on the outside world rather than editing your own sensors, update internal memory from the result,
+
+14
+00:01:25.171 --> 00:01:33.122
+and stay inside your joule grant or log a refusal receipt. Next come speed limits, then hindsight intelligence.
+
+15
+00:01:33.682 --> 00:01:41.402
+Every time a machine compares an outcome and resets memory over a closed cycle, physics charges a minimum
+
+16
+00:01:41.402 --> 00:01:49.562
+heat floor per erased bit while idle circuits leak steady baseline watts. Dividing useful task velocity by both
+
+17
+00:01:49.562 --> 00:01:57.869
+costs combined traces a smooth arch peaking at one optimal action pace where marginal drag equals baseline drain.
+
+18
+00:01:58.429 --> 00:02:06.275
+In this three-dimensional landscape, the flat lower plane marks nature's minimum heat price for updating a single
+
+19
+00:02:06.275 --> 00:02:12.801
+bit of memory at room temperature. Steep walls on either side show slow idle battery drain and
+
+20
+00:02:12.801 --> 00:02:21.063
+frantic high-speed heat waste, framing one golden ridge where verified progress per joule reaches its physical maximum.
+
+21
+00:02:21.623 --> 00:02:30.728
+Across pre-registered forty-seed puzzle benchmarks on two computers, moving receipt writing inside the budget guard reduced overspends
+
+22
+00:02:30.728 --> 00:02:39.154
+to zero across ten thousand eight hundred runs. Requiring task completion first stopped a cheap-failing random baseline from
+
+23
+00:02:39.154 --> 00:02:46.425
+gaming raw bit rates, while our threshold selector closed more tasks than a fixed cascade at loose budgets.
+
+24
+00:02:46.985 --> 00:02:56.028
+Scientific honesty requires reporting every failed check alongside every success. Tight-budget selector gains from our first
+
+25
+00:02:56.028 --> 00:03:04.925
+exploratory run did not replicate, shared tasks used equal energy, and built-in Linux chip counters missed sub-millisecond
+
+26
+00:03:04.925 --> 00:03:13.385
+steps completely, proving why dedicated quiet hosts and external wall or circuit-board power sensors must come next.

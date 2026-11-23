@@ -1,0 +1,110 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — rce (180s) Narrator Alice
+
+1
+00:00:00.360 --> 00:00:04.106
+First, you write a program once as one clear blueprint,
+
+2
+00:00:04.106 --> 00:00:08.056
+and the computer generates matching code across languages.
+
+3
+00:00:08.616 --> 00:00:13.372
+Second, every possible input must have a declared outcome up front,
+
+4
+00:00:13.372 --> 00:00:16.708
+preventing hidden crashes before anything runs.
+
+5
+00:00:17.268 --> 00:00:21.996
+Third, every repair that passes the checker is saved and reused,
+
+6
+00:00:21.996 --> 00:00:24.581
+so you never pay twice for one fix.
+
+7
+00:00:25.141 --> 00:00:30.042
+Ask a large language model to write code from scratch on every ticket and you
+
+8
+00:00:30.042 --> 00:00:36.025
+pay full energy to sample a fresh statistical guess each time—even though empirical studies of
+
+9
+00:00:36.025 --> 00:00:42.899
+public repositories show roughly seventy percent of files are close clones of work already solved elsewhere.
+
+10
+00:00:43.459 --> 00:00:51.589
+Human requests carry wide ambiguity, yet every processor ultimately executes simple loads, stores, arithmetic,
+
+11
+00:00:51.589 --> 00:00:59.646
+and jumps. Translating intent across hundreds of surface languages injects silent mismatches at the seams—for
+
+12
+00:00:59.646 --> 00:01:06.150
+instance, negative three modulo two equals positive one in Python yet negative one in C.
+
+13
+00:01:06.710 --> 00:01:15.239
+The Reality Code Engine replaces that leaky translation funnel with four steps. First, author intent once as
+
+14
+00:01:15.239 --> 00:01:23.610
+a lossless state machine called a Form, carrying states, events, and an append-only step log. Second, pass
+
+15
+00:01:23.610 --> 00:01:34.587
+grammar, type, ownership, and mutation checks. Third, emit byte-matching Rust, Python, JavaScript, and Scala. Fourth, store accepted fixes.
+
+16
+00:01:35.147 --> 00:01:42.203
+By construction, every input must either step cleanly to a declared state or record an explicit
+
+17
+00:01:42.203 --> 00:01:50.669
+kept step—eliminating undefined crashes. When solving or repairing tasks, mechanisms run in strict order of energy
+
+18
+00:01:50.669 --> 00:01:59.210
+cost: microsecond lookup first, guarded rewrite rules second, constraint search third, and neural models only last.
+
+19
+00:01:59.770 --> 00:02:07.991
+Our three-dimensional polyhedron illustrates one checked state-machine core anchored by a hash-chained event log. Rather than
+
+20
+00:02:07.991 --> 00:02:15.093
+maintaining four separate codebases that drift from their comments and from one another over years of edits,
+
+21
+00:02:15.093 --> 00:02:22.919
+every target runtime is a verified mathematical projection of one master blueprint that replays identical event traces.
+
+22
+00:02:23.479 --> 00:02:33.734
+At public commit one-seven-six-two-f-b-four-b, the Lean 4 audit verifies five thousand five hundred thirty-seven theorem constants across sixty-four
+
+23
+00:02:33.734 --> 00:02:43.573
+modules with zero unproven placeholders. Two thousand two hundred twenty-one conformance checks and eight hundred thirty-seven Rust unit tests
+
+24
+00:02:43.573 --> 00:02:52.996
+pass with zero failures, costing forty-nine millijoules per check and fifteen point four joules across all sixty-two example blueprints.
+
+25
+00:02:53.556 --> 00:03:02.596
+Every open boundary is stated plainly: twelve newer draft-zero-point-nine theorems remain unproved, no production optimizing compiler
+
+26
+00:03:02.596 --> 00:03:09.801
+ships yet, outside stochastic repairs reached two point five percent above their two percent promotion cap
+
+27
+00:03:09.801 --> 00:03:16.734
+and remained in observation mode, and all energy figures come from chip counters without a wall meter.

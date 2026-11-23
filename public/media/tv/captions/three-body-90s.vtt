@@ -1,46 +1,62 @@
 WEBVTT
-NOTE OpenIE Research TV — three-body (90s) Narrator Bill
+NOTE OpenIE Research TV v3.0 — three-body (90s) Narrator Bill
 
 1
-00:00:01.412 --> 00:00:03.966
-Two bodies orbit in closed form;
+00:00:00.320 --> 00:00:06.778
+First, most big computer failures happen at the handoffs between teams or parts, not inside them.
 
 2
-00:00:03.966 --> 00:00:10.510
-add a third coupled body and small perturbations trigger long-horizon instability.
+00:00:07.278 --> 00:00:13.298
+Second, the cause is usually a guess nobody wrote down, like which units a number uses.
 
 3
-00:00:14.058 --> 00:00:19.510
-Parnas hid internal secrets, Conway mapped org charts to modules,
+00:00:13.798 --> 00:00:18.328
+Third, when every handoff guess is written down and machine-checked,
 
 4
-00:00:19.510 --> 00:00:25.130
-yet neither prevented silent semantic mismatches across boundaries.
+00:00:18.328 --> 00:00:20.394
+a fix in one place stays fixed.
 
 5
-00:00:28.677 --> 00:00:35.320
-This three-dimensional gyroscopic model shows three coupled rings—specification,
+00:00:20.894 --> 00:00:26.206
+The Ariane 5 rocket broke apart forty seconds into its maiden flight because inertial
 
 6
-00:00:35.320 --> 00:00:40.801
-implementation, and operation—locked into phase by explicit gates.
+00:00:26.206 --> 00:00:32.267
+guidance code reused from slower Ariane 4 overflowed a sixteen-bit velocity number. Earlier, Mars
 
 7
-00:00:44.348 --> 00:00:48.825
-Where assumptions are mechanized, defect classes vanish;
+00:00:32.267 --> 00:00:39.329
+Climate Orbiter burned up over pound-versus-newton thruster units—both unwritten guesses crossing a team handoff.
 
 8
-00:00:48.825 --> 00:00:54.180
-where boundaries remain informal, bugs migrate straight to the gap.
+00:00:39.829 --> 00:00:46.459
+Computing couples three distinct roles: theorists who state mathematical models, makers who build chips
 
 9
-00:00:57.728 --> 00:01:03.418
-Independent studies confirm that explicitly naming linking, hardware,
+00:00:46.459 --> 00:00:52.702
+and compilers, and users who run real workloads. Just as Lagrange points stabilize three orbiting
 
 10
-00:01:03.418 --> 00:01:08.943
-and unit contracts turns chaotic debugging into monotonic progress.
+00:00:52.702 --> 00:01:00.104
+bodies by locking their relative frame, explicit machine-checked contracts prevent boundary drift across all three.
 
 11
-00:01:12.491 --> 00:01:22.234
-Verification stabilizes only what is stated inside the boundary—motivating total, interface-checked forms across the stack.
+00:01:00.604 --> 00:01:05.841
+Independent Csmith fuzzing uncovered hundreds of wrong-code bugs in every C compiler
+
+12
+00:01:05.841 --> 00:01:12.263
+tested except CompCert's machine-checked middle passes, while the verified seL4 operating-system kernel
+
+13
+00:01:12.263 --> 00:01:17.687
+and formal cloud blueprints eliminated whole bug classes inside their stated contracts.
+
+14
+00:01:18.187 --> 00:01:23.509
+Pursuing artificial general intelligence across every layer of the software stack leaves
+
+15
+00:01:23.509 --> 00:01:29.496
+zero room for hallway folklore—turning chaotic whack-a-mole debugging into steady, lasting repairs.

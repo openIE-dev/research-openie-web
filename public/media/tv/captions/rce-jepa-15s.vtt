@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — rce-jepa (15s) Narrator Jyothi
+
+1
+00:00:00.240 --> 00:00:03.363
+First, instead of guessing raw code word by word,
+
+2
+00:00:03.363 --> 00:00:07.060
+small models predict compact summaries of program meaning.
+
+3
+00:00:07.420 --> 00:00:11.084
+Second, any AI model may propose a candidate program,
+
+4
+00:00:11.084 --> 00:00:14.333
+but a fast, strict checker decides what passes.
+
+5
+00:00:14.693 --> 00:00:19.730
+Third, checking uses seventeen hundred times less energy than generating,
+
+6
+00:00:19.730 --> 00:00:22.352
+and saved fixes slash big model calls.

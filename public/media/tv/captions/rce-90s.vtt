@@ -1,50 +1,70 @@
 WEBVTT
-NOTE OpenIE Research TV — rce (90s) Narrator Alice
+NOTE OpenIE Research TV v3.0 — rce (90s) Narrator Alice
 
 1
-00:00:00.864 --> 00:00:07.564
-Every translation between human prose and imperative source languages injects entropy,
+00:00:00.320 --> 00:00:04.066
+First, you write a program once as one clear blueprint,
 
 2
-00:00:07.564 --> 00:00:10.525
-edge-case gaps, and duplicated energy.
+00:00:04.066 --> 00:00:08.016
+and the computer generates matching code across languages.
 
 3
-00:00:12.509 --> 00:00:18.197
-RCE enforces exhaustive outcome coverage and deterministic transition
+00:00:08.516 --> 00:00:13.272
+Second, every possible input must have a declared outcome up front,
 
 4
-00:00:18.197 --> 00:00:22.813
-semantics before a single native instruction is emitted.
+00:00:13.272 --> 00:00:16.608
+preventing hidden crashes before anything runs.
 
 5
-00:00:24.797 --> 00:00:35.245
-This three-dimensional state polyhedron illustrates one verified Form projecting deterministic code across Rust,
+00:00:17.108 --> 00:00:21.836
+Third, every repair that passes the checker is saved and reused,
 
 6
-00:00:35.245 --> 00:00:38.137
-C++, Go, Wasm, and GPU targets.
+00:00:21.836 --> 00:00:24.421
+so you never pay twice for one fix.
 
 7
-00:00:40.121 --> 00:00:45.876
-Sixty-three theorem families totaling 5,537 Lean 4 kernel
+00:00:24.921 --> 00:00:30.208
+A short request like make checkout faster can mean ten different things, and
 
 8
-00:00:45.876 --> 00:00:51.934
-constants anchor the reference Rust and WebAssembly checker.
+00:00:30.208 --> 00:00:36.400
+rewriting it across server, browser, and mobile languages loses edge cases at every step.
 
 9
-00:00:53.917 --> 00:01:01.638
-Across 2,221 active conformance checks and 837 Rust unit tests,
+00:00:36.400 --> 00:00:43.634
+Writing one complete state-machine blueprint captures exact meaning once and keeps every target aligned.
 
 10
-00:01:01.638 --> 00:01:10.461
-zero checks fail and full 62-Form multi-target suites take 15.44 joules.
+00:00:44.134 --> 00:00:49.440
+Every program in the Reality Code Engine is a total functional state machine.
 
 11
-00:01:12.445 --> 00:01:18.339
-Checked fixes persist so recurring defects are never solved twice,
+00:00:49.440 --> 00:00:55.022
+Each incoming event either advances the state cleanly or records an explicit kept
 
 12
-00:01:18.339 --> 00:01:23.251
-with M5 Max counters explicitly recorded as reported_j.
+00:00:55.022 --> 00:01:02.257
+step that leaves state untouched—and emitters then generate matching Rust, Python, JavaScript, and Scala.
+
+13
+00:01:02.757 --> 00:01:09.126
+Across sixty-four Lean 4 proof modules totaling five thousand five hundred thirty-seven theorem
+
+14
+00:01:09.126 --> 00:01:15.630
+constants and two thousand two hundred twenty-one active conformance checks, zero checks fail—and
+
+15
+00:01:15.630 --> 00:01:22.133
+checking, running, and emitting all sixty-two example blueprints costs fifteen point four joules.
+
+16
+00:01:22.633 --> 00:01:28.437
+Because accepted repairs are stored by structural shape and replayed in microseconds,
+
+17
+00:01:28.437 --> 00:01:33.285
+the engine calls an AI model only when no stored solution or rule fits.

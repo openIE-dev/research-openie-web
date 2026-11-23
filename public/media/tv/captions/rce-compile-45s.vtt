@@ -1,0 +1,38 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — rce-compile (45s) Narrator Lem
+
+1
+00:00:00.280 --> 00:00:07.696
+First, real compilers break any single descriptive law, so this study defines a seven-part yardstick instead.
+
+2
+00:00:08.136 --> 00:00:12.980
+Second, maximum compiler optimization burns upfront energy that
+
+3
+00:00:12.980 --> 00:00:16.901
+never pays back on thirty percent of test programs.
+
+4
+00:00:17.341 --> 00:00:23.459
+Third, fingerprinting code by variable position reuses builds with zero mix-ups,
+
+5
+00:00:23.459 --> 00:00:26.901
+cutting Rust compile energy four hundredfold.
+
+6
+00:00:27.341 --> 00:00:34.656
+Developers turn on maximum optimization out of habit. Yet spending tens of joules compiling a short-lived
+
+7
+00:00:34.656 --> 00:00:40.438
+tool is like grinding an axe for hours to chop one twig—unless you reuse the blade.
+
+8
+00:00:40.878 --> 00:00:45.759
+Pre-compiling shared runtime code once and indexing builds by variable
+
+9
+00:00:45.759 --> 00:00:51.825
+binding positions slashes compilation energy while catching every swapped-variable bug.

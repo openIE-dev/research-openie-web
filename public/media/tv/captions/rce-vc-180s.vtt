@@ -1,0 +1,106 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — rce-vc (180s) Narrator River
+
+1
+00:00:00.360 --> 00:00:03.809
+First, many people and AI agents write at once,
+
+2
+00:00:03.809 --> 00:00:07.332
+and a named check admits changes or records why.
+
+3
+00:00:07.892 --> 00:00:11.656
+Second, tracking name-free functions instead of text lines
+
+4
+00:00:11.656 --> 00:00:15.550
+lets unrelated edits pass together without false merge wars.
+
+5
+00:00:16.110 --> 00:00:23.472
+Third, developers stay on ordinary Git while checking against one hundred thousand items takes seventy microseconds.
+
+6
+00:00:24.032 --> 00:00:30.423
+Traditional version control was built around files, folder paths, and line numbers. Rename a helper function,
+
+7
+00:00:30.423 --> 00:00:37.048
+adjust formatting, or let twenty coding agents improve distinct functions inside one module, and classic branches
+
+8
+00:00:37.048 --> 00:00:43.087
+stall waiting for humans to untangle false text conflicts that have nothing to do with program meaning.
+
+9
+00:00:43.647 --> 00:00:49.481
+Imagine a kitchen library where fixing one recipe forced you to lock the entire cookbook shelf.
+
+10
+00:00:49.481 --> 00:00:56.297
+By splitting Rust and Python source files into top-level structural items while preserving exact original bytes
+
+11
+00:00:56.297 --> 00:01:03.543
+alongside them, writers continue using ordinary Git files and commands while the engine tracks true item dependencies.
+
+12
+00:01:04.103 --> 00:01:11.244
+Implemented in pure safe Rust with forty-nine offline tests and zero network dependencies, the workspace combines three
+
+13
+00:01:11.244 --> 00:01:18.505
+focused crates: a deterministic core with persistent hash trees and an assurance boundary that blocks stale race updates,
+
+14
+00:01:18.505 --> 00:01:25.405
+an offline parser that extracts name-free item keys, and a lossless Git history bridge with atomic reference swaps.
+
+15
+00:01:25.965 --> 00:01:32.773
+Two concurrent changes commute whenever neither writes into the dependency neighborhood read or affected by the
+
+16
+00:01:32.773 --> 00:01:41.114
+other—guaranteeing identical repository roots in either arrival order. Because unchanged subtrees share cryptographic hashes in constant
+
+17
+00:01:41.114 --> 00:01:49.025
+time, diffing a hundred-thousand-item repository walks only the tiny slice that actually changed rather than scanning everything.
+
+18
+00:01:49.585 --> 00:01:56.989
+This three-dimensional view shows concurrent writers submitting against one canonical state ring. Every submission appends an
+
+19
+00:01:56.989 --> 00:02:04.333
+auditable hash-chained log entry—either admitted with a cost receipt or refused with a recorded reason—and accepted conflict
+
+20
+00:02:04.333 --> 00:02:10.967
+fixes are stored by name-free signature so recurring clashes resolve automatically before any AI model is asked.
+
+21
+00:02:11.527 --> 00:02:19.926
+Against a repository of one hundred thousand units across ten thousand modules at commit a-b-a-nine-nine-f-c-e, initial
+
+22
+00:02:19.926 --> 00:02:27.901
+sealing finishes in one point two four seconds, and each admission completes in roughly seventy microseconds—over
+
+23
+00:02:27.901 --> 00:02:37.005
+thirteen thousand admissions per second on a single core—burning three hundred seventeen to three hundred sixty-five microjoules.
+
+24
+00:02:37.565 --> 00:02:43.335
+This reference is completely independent of the Reality Code Engine language, and it keeps Apple
+
+25
+00:02:43.335 --> 00:02:49.406
+M5 Max kernel energy counters strictly separate from its internal integer cost table. TypeScript item
+
+26
+00:02:49.406 --> 00:02:57.761
+splitting, Git packfile compression, thousand-repository replay corpora, and external wall-plug power meters remain open future milestones.

@@ -1,0 +1,98 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — interface-economics (180s) Narrator Edwin
+
+1
+00:00:00.360 --> 00:00:07.659
+First, single handoff failures carry exact price tags, like losing a Mars mission over mismatched units.
+
+2
+00:00:08.219 --> 00:00:16.088
+Second, giant national software-failure numbers come from broad surveys and models, never counting handoffs alone.
+
+3
+00:00:16.648 --> 00:00:23.610
+Third, checking what each side assumes is cheap, but one team pays while everyone else benefits.
+
+4
+00:00:24.170 --> 00:00:31.885
+An interface is any handoff where one group's output becomes another group's input—from theorists who specify behavior
+
+5
+00:00:31.885 --> 00:00:38.749
+to builders who write code, or between two levels of a software and hardware stack. Catastrophic failures
+
+6
+00:00:38.749 --> 00:00:47.640
+routinely strike not because one module miscalculated internally, but because both sides trusted an unwritten assumption nobody checked.
+
+7
+00:00:48.200 --> 00:00:55.668
+The space agency's Mars Surveyor 1998 project spent three hundred twenty-seven point six million dollars before
+
+8
+00:00:55.668 --> 00:01:03.607
+thruster impulses sent in pound-force seconds were read as metric newton-seconds. Three years earlier, Ariane 5 Flight
+
+9
+00:01:03.607 --> 00:01:11.949
+501 lost four Cluster satellites when reused guidance software exceeded an unchecked horizontal velocity envelope on launch.
+
+10
+00:01:12.509 --> 00:01:19.576
+Our study enforces one strict accounting rule: every published figure carries its exact evidence kind and is
+
+11
+00:01:19.576 --> 00:01:28.606
+never added to incompatible estimates. Audited single-incident losses sit beside national economic models—like fifteen point eight billion
+
+12
+00:01:28.606 --> 00:01:37.113
+dollars a year for construction interoperability and two point four one trillion for poor software quality—without synthetic sums.
+
+13
+00:01:37.673 --> 00:01:44.415
+When an unexamined mismatch slips past a boundary, it travels upward looking like well-formed input to
+
+14
+00:01:44.415 --> 00:01:52.280
+every layer above it, charging technical-debt interest on every later change. Formally, an explicit boundary check pays
+
+15
+00:01:52.280 --> 00:02:00.410
+off whenever its tiny per-crossing cost stays below violation probability times summed losses across all downstream levels.
+
+16
+00:02:00.970 --> 00:02:09.216
+Our three-dimensional funnel visualizes cross-team payloads passing through a machine-checked boundary gate that verifies physical
+
+17
+00:02:09.216 --> 00:02:17.336
+units, numeric bounds, and operating envelopes before commit. In machine-learning pipelines and automated code generation alike,
+
+18
+00:02:17.336 --> 00:02:24.314
+most hidden technical debt sits in glue code, configuration, and undeclared consumers right outside the model.
+
+19
+00:02:24.874 --> 00:02:33.472
+Decades of compatibility economics prove why rational teams under-provide interface specs: writing and checking boundary invariants
+
+20
+00:02:33.472 --> 00:02:39.510
+is a private cost today that produces a shared public good for everyone else. Automated code
+
+21
+00:02:39.510 --> 00:02:47.977
+generators cross these exact same seams, so generating code faster without checking boundaries simply compounds integration debt.
+
+22
+00:02:48.537 --> 00:02:55.942
+Because no primary source isolates a single national dollar figure for interface failures alone, this essay
+
+23
+00:02:55.942 --> 00:03:04.316
+refuses to invent one. Instead, Section 7 defines three checkable protocols—blind mishap coding with bootstrap intervals,
+
+24
+00:03:04.316 --> 00:03:14.212
+seeded fault injection measured in both joules and dollars, and prose-versus-machine-checked handoff trials—to test every proposition directly.

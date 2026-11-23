@@ -1,0 +1,42 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — rce-jepa (45s) Narrator Jyothi
+
+1
+00:00:00.280 --> 00:00:03.403
+First, instead of guessing raw code word by word,
+
+2
+00:00:03.403 --> 00:00:07.100
+small models predict compact summaries of program meaning.
+
+3
+00:00:07.540 --> 00:00:11.204
+Second, any AI model may propose a candidate program,
+
+4
+00:00:11.204 --> 00:00:14.453
+but a fast, strict checker decides what passes.
+
+5
+00:00:14.893 --> 00:00:19.939
+Third, checking uses seventeen hundred times less energy than generating,
+
+6
+00:00:19.939 --> 00:00:22.565
+and saved fixes slash big model calls.
+
+7
+00:00:23.005 --> 00:00:30.720
+Generating one candidate with a local thirty-five-billion-parameter model burns eighty-four joules with zero safety guarantees.
+
+8
+00:00:30.720 --> 00:00:38.496
+Checking a Reality Code Engine blueprint takes forty-nine millijoules—so any model can suggest, while only the inspector admits.
+
+9
+00:00:38.936 --> 00:00:41.981
+With up to five rounds of exact checker feedback,
+
+10
+00:00:41.981 --> 00:00:48.631
+frontier models close all forty open repair tasks, and saving those fixes cuts recurring calls sixteenfold.

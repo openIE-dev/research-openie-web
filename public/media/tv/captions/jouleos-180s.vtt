@@ -1,0 +1,98 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — jouleos (180s) Narrator Bobby
+
+1
+00:00:00.360 --> 00:00:07.141
+First, today's computers stack many separate layers, and AI agents are bolted on top unchanged.
+
+2
+00:00:07.701 --> 00:00:14.158
+Second, none of those layers asks beforehand how much energy an agent's action will actually spend.
+
+3
+00:00:14.718 --> 00:00:21.614
+Third, an agent machine must measure energy, enforce strict budgets, and refuse actions that break them.
+
+4
+00:00:22.174 --> 00:00:29.683
+New agent-safety platforms add sandboxes, external watchdogs, and policy wrappers on top of Linux, macOS, or Windows
+
+5
+00:00:29.683 --> 00:00:37.580
+kernels. That engineering solves real file and network containment problems, yet it treats the underlying process model as
+
+6
+00:00:37.580 --> 00:00:45.477
+permanently fixed—where an agent remains an ordinary guest program and no kernel gates commits on certified energy bounds.
+
+7
+00:00:46.037 --> 00:00:52.918
+Before naming any commercial product, our study teaches the ten-step stack from bare silicon, chip, board, and
+
+8
+00:00:52.918 --> 00:01:00.863
+firmware through instruction sets, hardware abstraction, kernels, compilers, and programs right up to the human interface. Even
+
+9
+00:01:00.863 --> 00:01:08.620
+formally verified microkernels prove functional C code correctness while saying nothing at all about joules or power limits.
+
+10
+00:01:09.180 --> 00:01:17.960
+Closing that architectural gap requires four linked open contracts: an energy-oriented schedule ordered cheapest operator first rather
+
+11
+00:01:17.960 --> 00:01:27.002
+than billed in tokens, narrowing capability-and-joule grants checked outside the AI model, transactional commits bounded by preconditions,
+
+12
+00:01:27.002 --> 00:01:35.651
+postconditions, invariants, and joule ceilings, and an eight-step isolation ladder carrying honest hardware or estimator meter tags.
+
+13
+00:01:36.211 --> 00:01:42.687
+Even built-in processor energy counters on modern chips are partly mathematical models rather than inline wire
+
+14
+00:01:42.687 --> 00:01:50.457
+shunts, missing operand-level variations. Our monotone lattice algebra tests all seventy-eight thousand four hundred pairs of sensor
+
+15
+00:01:50.457 --> 00:01:57.168
+boundaries and attribution rules so combining a hardware shunt with an estimate always preserves the weaker label.
+
+16
+00:01:57.728 --> 00:02:04.971
+In our three-dimensional stack view, authorization runs strictly outside the language model, and every tool response
+
+17
+00:02:04.971 --> 00:02:12.839
+arrives tagged as untrusted passive data rather than executable instructions so poisoned prompts cannot hijack control. Before
+
+18
+00:02:12.839 --> 00:02:20.769
+any actuation begins, the runtime reserves a crash-safe energy hold and settles a hash-chained cryptographic receipt afterward.
+
+19
+00:02:21.329 --> 00:02:28.782
+Across seven Rust workspace crates, three hundred ten automated conformance tests verify deterministic binary encoding
+
+20
+00:02:28.782 --> 00:02:36.803
+without floating-point ambiguity, reject revoked, duplicate, or over-budget calls, replay exact ledger balances after simulated
+
+21
+00:02:36.803 --> 00:02:43.308
+power loss, and automatically drop net energy splits whenever host idle power drifts past five percent.
+
+22
+00:02:43.868 --> 00:02:50.256
+This white paper is written as an honest architectural review and requirement guide, never an inflated
+
+23
+00:02:50.256 --> 00:02:58.837
+product pitch. Ratios cited from the private Joule Operating System repository—such as hundred-thousand-fold corpus efficiency claims—are
+
+24
+00:02:58.837 --> 00:03:06.791
+explicitly flagged as unverified project claims rather than measurements, and bare-metal external power metering remains unset.
