@@ -116,7 +116,8 @@
           <div class="ctrl-box">
             <label><span>Select RTL Architecture (Claims LA-3 &amp; LA-16)</span></label>
             <select id="rtl-select">
-              <option value="p4axis" selected>P4-AXIS · 4-Stage 250 MHz-Pipelined IOB-Safe Top (13 levels, 170 IOBs, Reference)</option>
+              <option value="p4axisce" selected>P4-AXIS-CE · CE-Gated 4-Stage 250 MHz Top (15.59 est_mW idle [4.10× cut], 13 levels, Reference)</option>
+              <option value="p4axis">P4-AXIS · Ungated 4-Stage 250 MHz IOB-Safe Top (63.99 est_mW idle, 13 levels)</option>
               <option value="ours">P3 · 1-Cycle 512×512 Beneš–Copy–Beneš + 81 RAMB36E2 OOC (52 levels, Reference)</option>
               <option value="benes1">2D · Single-Page 512×512 Beneš–Copy–Beneš (AXIlite 82-cyc reload)</option>
               <option value="flat64">2A · Flat 512:1 Crossbar (64 LUT6, 384 ports — OVERFLOW)</option>
@@ -162,6 +163,7 @@
           <div class="ctrl-box">
             <label><span>2026 Open-Weights Checkpoint</span></label>
             <select id="hf-model">
+              <option value="nem120b">nvidia/Nemotron-3-Super-120B-A12B · 120B Total / 12B Active Hybrid MoE (58,075.4 MB RSS · 22.17 tok/s)</option>
               <option value="qwen35b_metal" selected>Qwen/Qwen3.6-35B-A3B · Metal-Fused INT4 + GatedDeltaNet (970.0 MB = 1.47% FP16 · 6.773 J/tok reported_j)</option>
               <option value="lfm8b_metal">LiquidAI/LFM2.5-8B-A1B · Metal-Fused INT4 MoE (500.0 MB RAM · 3.493 J/tok reported_j)</option>
               <option value="qwen35b">Qwen/Qwen3.6-35B-A3B (2026 · 34.66B 256-Expert MoE · PyTorch Expert-AirMoL)</option>
@@ -294,7 +296,8 @@
     // Widget 2: KV260 RTL table
     (function(){
       var data = {
-        p4axis: { luts: '41,459', pct: '35.40% of xck26 · 170/189 IOBs (FITS)', bram: '81 / 144', bpct: '56.25% of xck26 · 0 DSP48', cyc: 'CPI = 1.00 (13 lvl)', ns: '4.00× shallower logic · 256/256 beats', acc: '100.0% parity', note: 'IOB-safe 4-stage 250 MHz AXI-Stream top' },
+        p4axisce: { luts: '41,465', pct: '35.40% of xck26 · 170/189 IOBs (FITS)', bram: '81 / 144', bpct: 'ENARDEN gated · 0 DSP48', cyc: 'CPI = 1.00 (13 lvl)', ns: '15.59 est_mW idle (4.10× cut) · 25.84 mW stream', acc: '100.0% (320/320)', note: 'CE-gated 4-stage 250 MHz AXI-Stream top' },
+        p4axis: { luts: '41,456', pct: '35.40% of xck26 · 170/189 IOBs (FITS)', bram: '81 / 144', bpct: '56.25% of xck26 · 0 DSP48', cyc: 'CPI = 1.00 (13 lvl)', ns: '63.99 est_mW idle · 256/256 beats', acc: '100.0% parity', note: 'Ungated 4-stage 250 MHz AXI-Stream top' },
         ours:   { luts: '41,186', pct: '35.17% of xck26 OOC (FITS)', bram: '81 / 144', bpct: '56.25% of xck26 · 0 DSP48', cyc: '1 cycle (52 lvl)', ns: '4.0 ns @ 250 MHz sim (CPI = 1.0)', acc: '98.44%', note: '512 resident context pages' },
         benes1: { luts: '40,155', pct: '34.29% of xck26 (FITS)', bram: '0 / 144',  bpct: '0.0% BRAM · 0 DSP48', cyc: '82 cycles', ns: '328.0 ns AXI4-Lite reload stall', acc: '98.44%', note: '1 resident page only' },
         flat64: { luts: '119,478', pct: '102.01% of xck26 (OVERFLOW!)', bram: '0 / 144', bpct: '0.0% BRAM · 0 DSP48', cyc: '82 cycles', ns: 'Exceeds KV260 logic capacity', acc: '98.44%', note: '384 mux ports overflow xck26' },
@@ -322,6 +325,13 @@
     // Widget 3: AirMoL 2026 HF data
     (function(){
       var hf = {
+        nem120b: {
+          ram: '58,075.4 MB RSS (9,674 MB Anon)', rampct: '120B Total / 12B Active Hybrid Mamba-Attention Sparse-MoE (M5 Max 128 GiB)',
+          t1:   { tpsw: '1.00 tok', cpsw: '43.75% 1-shot pass', gb: '56.9 GiB GGUF', sw: '56.25% broken commits (1-shot)', toks: '22.17 tok/s', par: 'Standalone 120B-A12B on 16-eval Hard Suite' },
+          pld:  { tpsw: '1.00 tok', cpsw: '31.25% 1-shot pass', gb: '13.4 GiB GGUF', sw: '68.75% broken commits (Devstral-24B)', toks: '22.37 tok/s', par: 'Standalone Devstral-Small-2-24B' },
+          cold: { tpsw: 'C(z) Gated', cpsw: '62.50% W1 verified pass', gb: '0.0% broken commits', sw: 'Closes BigCodeBench/8 via CxRepair', toks: '22.17 tok/s', par: 'MoL Apex 24B+120B Cascade (Wave 1)' },
+          wake: { tpsw: 'BenesLUT6 .mol/', cpsw: '62.50% W2 verified pass', gb: '0.012–0.027 J/hit', sw: '100% of W1 solves hit .mol/ in 5.5–70 ms', toks: '0.154 ms Rust MCP', par: '0.00% broken · +18.75 pp over 120B 1-shot' }
+        },
         qwen35b_metal: {
           ram: '970.0 MB', rampct: '1.47% of 66,110 MB FP16 (Metal INT4 + GatedDeltaNet)',
           t1:   { tpsw: '1.00 tok', cpsw: '2.25 code chars / sweep', gb: '2.353 GB/tok', sw: '20.765 J/tok reported_j (PyTorch T=1)', toks: '0.19 tok/s', par: '100.0% parity (2,434.7 MB PyTorch RAM)' },
