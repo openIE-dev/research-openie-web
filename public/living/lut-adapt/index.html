@@ -114,9 +114,10 @@
         </p>
         <div class="ctrl-grid">
           <div class="ctrl-box">
-            <label><span>Select RTL Architecture (Claim LA-3)</span></label>
+            <label><span>Select RTL Architecture (Claims LA-3 &amp; LA-16)</span></label>
             <select id="rtl-select">
-              <option value="ours" selected>P3 · 512×512 Beneš–Copy–Beneš + 81 RAMB36E2 (512 pages, Ours)</option>
+              <option value="p4axis" selected>P4-AXIS · 4-Stage 250 MHz-Pipelined IOB-Safe Top (13 levels, 170 IOBs, Reference)</option>
+              <option value="ours">P3 · 1-Cycle 512×512 Beneš–Copy–Beneš + 81 RAMB36E2 OOC (52 levels, Reference)</option>
               <option value="benes1">2D · Single-Page 512×512 Beneš–Copy–Beneš (AXIlite 82-cyc reload)</option>
               <option value="flat64">2A · Flat 512:1 Crossbar (64 LUT6, 384 ports — OVERFLOW)</option>
               <option value="ff512">P2 · Distributed FF + 512:1 Mux (512 pages — 7.9× OVERFLOW)</option>
@@ -293,7 +294,8 @@
     // Widget 2: KV260 RTL table
     (function(){
       var data = {
-        ours:   { luts: '41,186', pct: '35.17% of xck26 (FITS)', bram: '81 / 144', bpct: '56.25% of xck26 · 0 DSP48', cyc: '1 cycle', ns: '4.0 ns @ 250 MHz sim (CPI = 1.0)', acc: '98.44%', note: '512 resident context pages' },
+        p4axis: { luts: '41,459', pct: '35.40% of xck26 · 170/189 IOBs (FITS)', bram: '81 / 144', bpct: '56.25% of xck26 · 0 DSP48', cyc: 'CPI = 1.00 (13 lvl)', ns: '4.00× shallower logic · 256/256 beats', acc: '100.0% parity', note: 'IOB-safe 4-stage 250 MHz AXI-Stream top' },
+        ours:   { luts: '41,186', pct: '35.17% of xck26 OOC (FITS)', bram: '81 / 144', bpct: '56.25% of xck26 · 0 DSP48', cyc: '1 cycle (52 lvl)', ns: '4.0 ns @ 250 MHz sim (CPI = 1.0)', acc: '98.44%', note: '512 resident context pages' },
         benes1: { luts: '40,155', pct: '34.29% of xck26 (FITS)', bram: '0 / 144',  bpct: '0.0% BRAM · 0 DSP48', cyc: '82 cycles', ns: '328.0 ns AXI4-Lite reload stall', acc: '98.44%', note: '1 resident page only' },
         flat64: { luts: '119,478', pct: '102.01% of xck26 (OVERFLOW!)', bram: '0 / 144', bpct: '0.0% BRAM · 0 DSP48', cyc: '82 cycles', ns: 'Exceeds KV260 logic capacity', acc: '98.44%', note: '384 mux ports overflow xck26' },
         ff512:  { luts: '926,619', pct: '791.17% of xck26 (OVERFLOW!)', bram: '0 / 144', bpct: '2,690,051 FFs · 0 DSP48', cyc: '1 cycle', ns: 'Unroutable distributed FF mux', acc: '98.44%', note: '22.5× larger than RAMB36E2 core' },
