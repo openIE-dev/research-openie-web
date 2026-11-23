@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits 级联中的向下 LUT6 编译：Beneš 路由布尔架构、共形唤醒门槛与前沿稀疏 MoE NVMe 按层流式传输"
-deck: "Mixture of Limits 级联中的向下 LUT6 编译：Beneš 路由布尔架构、共形唤醒门槛与前沿稀疏 MoE NVMe 按层流式传输  一种 Mixture of Limits 级联，它首先尝试零浮点运算（FLOP）的分页 6 输入查找表（LUT6）电路，仅在缺失时流式传输 4 位 Non-Volatile Memory Express (NVMe) 混合与稀疏 Mixture-of-Experts (MoE) 2026 年底模型（参数量高达 34.66B），通过确定性验证器门控提交，并将认证唤醒向下编译为 Beneš 路由的 36-Kbit Block RAM (RAMB36E2) 页。报告了来自 openIE-dev/lut-adapt-ai 在提交 a5e9bc1 的壁钟时间、未缓冲 Darwin F_NOCACHE（未缓冲文件读取）字节计数、活动随机存取内存 (RAM)、整个系统 macOS 电源管理单元 (PMU) 累积增量，以及 Yosys/Verilator xck26 寄存器传输级 (RTL) 仿真。每任务能耗数据为分析性的 est_j 估计值；未测量隔离板级电源轨功率。"
+deck: "基于 Mixture of Limits 的级联结构首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路。仅在未命中时，它才借助定制的 Apple Metal Shading Language（MSL）着色器，通过非易失性内存高速接口（NVMe）以 4 位精度流式加载参数量最高达 34.66B 的混合与稀疏 Mixture-of-Experts（MoE）2026 年末模型。随后，确定性验证器对提交进行门控，并将已认证的唤醒（wake）向下编译为 Beneš 路由的 36 Kbit 块随机存储器（RAMB36E2）以及规范化的技能页面。墙钟时间、未缓冲的 Darwin F_NOCACHE（未缓冲文件读取）字节数、活动随机存取存储器（RAM 降至 970.0 兆字节，即 34.66B 模型中 16 位浮点权重的 1.47%）、双通道 Apple M5 Max 片上能量计数器（reported_j）、解析能量估计（est_j）以及 Yosys/Verilator xck26 寄存器传输级（RTL）仿真结果，均取自 openIE-dev/lut-adapt-ai 仓库的 af152ba 提交。未测得独立板级电源轨功耗（measured_j 未设置）。"
 lang: "zh-Hans"
 source: "lut-adapt"
 complete: true
@@ -8,82 +8,83 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*修订版 30613ef，2026年11月22日。参考实现与配套制品：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)，版本 [`a5e9bc1de280f973bc9051b4cc58942820a67eeb`](https://github.com/openIE-dev/lut-adapt-ai/tree/a5e9bc1de280f973bc9051b4cc58942820a67eeb)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
+*修订 ff18890，2026年11月22日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`af152ba2e63b5c55bcfad9b2fa41e675e8e3946c`](https://github.com/openIE-dev/lut-adapt-ai/tree/af152ba2e63b5c55bcfad9b2fa41e675e8e3946c)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
-## 0. 概览
+## 0. 概述
 
-本研究考察计算系统如何将重复的神经模型工作向下编译为快速布尔表查找，同时不失去精确的输出一致性，也不将未经验证的猜测提升为可信规则。它报告了软件测量、寄存器传输级综合和周期仿真，以及标记的分析能量估计（`est_j`）。在此仓库中未连接墙功或轨功监视器（`measured_j` 未设置；`board_metered` 为 false）。
+本研究考察计算系统如何将重复的神经模型工作向下编译为快速布尔查找表并获得经过认证的规范技能，而不失去精确输出等价性，也不将未经验证的猜测提升为可信规则。它报告了软件和无缓冲输入/输出测量、寄存器传输级综合与周期仿真、双通道操作系统/芯片上能量计数器读数（`reported_j` 在 Apple M5 Max 和 Linux 平均功率限制计数器），以及标记的分析能量估计（`est_j`）。本仓库未连接墙式或轨式焦耳监视器（`measured_j` 未设置；`board_metered` 为 false）。
 
 **用通俗的话**
 
-1. 大多数部署系统所接收到的输入会出现已被解决的重复模式，因此在每一步都运行完整的浮点神经网络会浪费计算和内存带宽。  
-2. 参考实现将在流式状态空间和基础模型之前放置一个可重构的 6 输入真值表（`LUT6`）查找层，并仅在显式检查通过后将答案向下编译为查找内存页。  
-3. 当2026 年底的混合稀疏专家混合模型语言模型规模高达 `34.66B` 参数，并从固态存储流式传输 4 位权重时，路由稀疏专家读取与零 FLOP `LUT6` 起草器配对，可将磁盘读取量降低至最高 `12.30×`（令牌吞吐速率提升 `6.50×`），在 `2.53` GB 的活跃内存中实现且输出令牌保持零变化；在确定性检查之后进行门控代码提交，能够超越独立 `35B` 的准确度且不接受任何 `0.00%` 的破损提交，并将结晶化的 Wave-3 任务加速至 `35,590×`。
+1. 大多数输入的部署系统会看到已经解决过的重复模式，因此在每一步上运行完整的浮点神经网络会浪费计算和内存带宽。  
+2. 参考在流式状态空间和基础模型之前放置一个可重构的 6 输入真值表（`LUT6`）查找层，并仅在显式检查认证后将答案向下编译到查找内存页。  
+3. 当 2026 年底的混合稀疏专家模型语言模型规模达到 `34.66B` 参数，并通过自定义融合的 Apple Metal 着色器从固态存储流式传输 4 位权重时，路由稀疏专家读取配合该零 FLOP `LUT6` 起草器可将磁盘读取削减至最高 `12.30×`，并在 `970.0` 兆字节的活跃权重内存（占其 `66.11`-千兆字节 16 位浮点占用的 `1.47%`）下以 `6.773 J/tok` 的片上 `reported_j` 保持 `Qwen/Qwen3.6-35B-A3B`，对输出 token 零影响；在确定性的 `pytest` 检查之后，将门控代码和多文件 git 仓库提交置于其后，可在 `48` 任务（`16` 规格 × `3` 波）前沿编码竞赛和 `16` 任务（`8` git 仓库 × `2` 波）仓库补丁基准中实现 **`87.50%` 验证通过率**，且 **`0.00%` 损坏提交** 被接受，从而将结晶化 Wave-3 求解加速 **`15,401×`**（`2.89 ms`, `0.0424 J` `reported_j`）。
 
 <div id="1-terms-acronyms-and-measurement-labels" class="anchor-alias" aria-hidden="true"></div>
 
-## 1. 术语、首字母缩写词和测量标签
+## 1. 术语、首字母缩略词和测量标签
 
 <ul id="terms">
 <li>MoL: Mixture of Limits，即 Metered Commit Gates 第二部分中的级联规则 [同系列]</li>
-<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-11、LA-F1 至 LA-F11）</li>
+<li>LA：本研究使用的主张与证伪前缀（LA-1 至 LA-14，LA-F1 至 LA-F14）</li>
 <li>LUT、LUT6、INIT: 查找表（look-up table）、6 输入 Xilinx UltraScale+ 布尔原语，以及其 64 位真值表初始化掩码</li>
 <li>BRAM、RAMB36E2、URAM: 块随机存储器（Block RAM）、36 Kbit 双端口 UltraScale+ 块 RAM 原语（xck26 上为 144 个），以及 UltraRAM</li>
 <li>CLB、FF、DSP、DSP48、KV260: 可配置逻辑块（configurable logic block）、触发器（flip-flop）、数字信号处理片（digital signal processing slice）、DSP48 原语，以及 AMD Kria KV260 开发板（xck26）</li>
 <li>FPGA、ASIC、RTL、CPI、PAR、WNS、FPL: 现场可编程门阵列（field-programmable gate array）、专用集成电路（application-specific integrated circuit）、寄存器传输级（register-transfer level）、每次查找周期数（cycles per lookup）、布局布线（place-and-route）、最差负时序裕量（worst negative slack），以及现场可编程逻辑会议（Field-Programmable Logic conference）</li>
-<li>AXI、PS、PL、SOM、INA260、VCC、RAPL、NVML、PMU: 高级可扩展接口（Advanced eXtensible Interface）、Zynq 处理系统（Zynq processing system）、可编程逻辑（programmable logic）、系统级模块（system-on-module）、板载功率监测芯片（onboard power monitor IC）、供电轨（supply rail）、Intel 运行平均功率限制（Intel Running Average Power Limit）、NVIDIA 管理库（NVIDIA Management Library），以及 macOS 电源管理单元（macOS power management unit）</li>
+<li>AXI、PS、PL、SOM、INA260、VCC、RAPL、NVML、PMU、SMC、L2、L3：高级可扩展接口、Zynq 处理系统、可编程逻辑、系统级模块、板载功率监测芯片、供电轨、英特尔平均功耗限制（Running Average Power Limit）、NVIDIA 管理库、macOS 电源管理单元、Apple 系统管理控制器、二级子系统能耗计数器（Apple IOReport GPU Energy），以及三级单进程 CPU 能耗计数器（Darwin proc_pid_rusage RUSAGE_INFO_V6 ri_energy_nj）</li>
 <li>SSD、SSM、MIMO、RoPE、SwiGLU、GQA、KV、BPE、LLM、LLMs、MoE、MLP、CFG: 状态空间对偶（State Space Duality）、状态空间模型（state-space model）、多输入多输出（multiple-input multiple-output）、旋转位置编码（rotary position embedding）、门控线性单元激活（gated linear unit activation）、分组查询注意力（grouped-query attention）、键值缓存（key-value cache）、字节对编码（byte-pair encoding）、大语言模型（large language model）、混合专家模型（Mixture-of-Experts）、多层感知机（multilayer perceptron），以及上下文无关文法（context-free grammar）</li>
 <li>HC、SOINN、WNN、DWN: 层级上下文自组织增量神经网络（hierarchy-context Self-Organizing Incremental Neural Network）、无权重神经网络（weightless neural network），以及可微无权重神经网络（Differentiable Weightless Neural Network）</li>
 <li>JEPA、EBRM、ACI、OOD、AUROC、AUC、MSP、MC: 联合嵌入预测架构（Joint-Embedding Predictive Architecture）、基于能量的推理模型（Energy-Based Reasoning Model）、自适应共形推断（Adaptive Conformal Inference）、分布外（out-of-distribution）、接收者操作特征曲线下面积（area under the receiver operating characteristic）、曲线下面积（area under the curve）、最大 softmax 概率（maximum softmax probability），以及蒙特卡洛（Monte Carlo）</li>
 <li>PLD、REST、EAGLE、LFM2、LFM3、HF: 提示查找解码（Prompt Lookup Decoding）、基于检索的投机解码（Retrieval-Based Speculative Decoding）、面向更高语言模型效率的外推算法（Extrapolation Algorithm for Greater Language-model Efficiency）、Liquid Foundation Model 2.5（LFM2.5-350M 与 LFM2.5-8B-A1B）、Liquid Foundation Model 3（2026 年 10 月发布的 LiquidAI/LFM3-1.7B），以及 HuggingFace</li>
 <li>SVD、ITQ、SVID、QAT、PTQ、PPL、SNR: 奇异值分解（singular value decomposition）、超立方体旋转的迭代量化 Procrustes 方法（Iterative Quantization Procrustes hypercube rotation）、符号值独立分解（sign-value-independent decomposition）、量化感知训练（quantization-aware training）、训练后量化（post-training quantization）、困惑度（perplexity），以及信噪比（signal-to-noise ratio）</li>
-<li>NVMe、NOCACHE、POSIX、RAM、DRAM、SRAM、IO、KB、MB、GB: 非易失性内存快速访问存储（Non-Volatile Memory Express storage）、Darwin 的 F_NOCACHE 非缓冲文件标志（Darwin F_NOCACHE unbuffered file flag）、可移植操作系统接口（Portable Operating System Interface）、随机存取存储器（random-access memory）、动态随机存取存储器（dynamic RAM）、静态随机存取存储器（static RAM）、输入/输出（input/output）、千字节（kilobyte）、兆字节（megabyte），以及吉字节（gigabyte）</li>
-<li>FLOP, FLOPs, MFLOP, MFLOPs, MAC, MACs, SIMD, AD, FD, BPB, FP16, FP32, INT4: 浮点运算（次），百万 FLOP，乘加运算（次），单指令多数据，自动微分，有限差分，每字节位数，16/32 位浮点数，和 4 位整数</li>
+<li>NVMe、NOCACHE、POSIX、RAM、DRAM、SRAM、IO、KB、MB、GB、GiB：非易失性存储器快速访问（NVMe）存储、Darwin F_NOCACHE 非缓冲文件标志、可移植操作系统接口（POSIX）、随机存取存储器（RAM）、动态随机存取存储器（DRAM）、静态随机存取存储器（SRAM）、输入/输出（IO）、千字节（KB）、兆字节（MB）、吉字节（GB）和吉比字节（GiB）</li>
+<li>FLOP、FLOPs、MFLOP、MFLOPs、MAC、MACs、SIMD、AD、FD、BPB、BF16、FP16、FP32、INT4、ULP、MSL、MPS：浮点运算、百万浮点运算、乘累加运算、单指令多数据、自动微分、有限差分、每字节位数、脑浮点 16、16/32 位 IEEE 浮点数、4 位整数、末位单位、Apple Metal 着色语言和 PyTorch Metal 性能着色器</li>
 <li>RCE, WCA, VC, SWE: Reality Code Engine [same house]，Wise Computer Automation [same house]，已验证完成，和 software-engineering benchmark 前缀</li>
-<li>CLI, HTTP, SSE, API, ACL, ICML, ICLR, EMNLP, NAACL, CVPR, ICPE, ISSCC, JSAC, JASA, ACM, OS, CPU, GPU, SW: 命令行界面，超文本传输协议，服务器发送事件，应用程序编程接口，学术计算机科学/工程会议，操作系统，中央/图形处理单元，和软件</li>
-<li>VLAN, IEEE, TLS, DPI, AST, JSON, CSV, SHA, CRC, ATM, RFC, SQL, DWARF, SLEB, CAM, XNOR: 虚拟局域网（IEEE 802.1Q），传输层安全，深度报文检查，抽象语法树，JavaScript 对象表示法，逗号分隔值，安全散列算法，循环冗余校验，异步传输模式（CRC-8/ATM），请求评论，结构化查询语言，DWARF 符号小端 base-128 编码，内容可寻址存储器，和异或非（XNOR）</li>
+<li>CLI、HTTP、GET、POST、SSE、API、MCP、RPC、IDE、SDK、CORS、ACL、ICML、ICLR、EMNLP、NAACL、CVPR、ICPE、ISSCC、JSAC、JASA、ACM、OS、CPU、GPU、SW、TDP：命令行界面、超文本传输协议及其 GET/POST 请求方法、服务器发送事件、应用程序编程接口、模型上下文协议、远程过程调用（JSON-RPC 2.0）、集成开发环境、软件开发工具包、跨源资源共享、学术计算机科学/工程会议、操作系统、中央/图形处理器、软件和热设计功耗</li>
+<li>VLAN、IEEE、TLS、DPI、AST、JSON、CSV、SHA、CRC、ATM、RFC、SQL、DWARF、SLEB、CAM、XNOR、JWT、HMAC、DAG、CIDR、LRU、TTL、WAL、ETL：虚拟局域网（IEEE 802.1Q）、传输层安全、深度包检测、抽象语法树、JavaScript 对象表示法、逗号分隔值、安全哈希算法、循环冗余校验、异步传输模式（CRC-8/ATM）、请求评议、结构化查询语言、DWARF 有符号小端基数 128 编码、内容可寻址存储器、异或非、JSON Web 令牌、基于哈希的消息认证码、有向无环图、无类别域间路由、最久未使用缓存、存活时间过期、预写日志和抽取-转换-加载流水线</li>
 <li>JTAG, XSDB, DAP, USB, FTDI, FT2232C, UART, FIFO, IC, EDA, OOC, AMBA, AXI4, IOB, IBUF, OBUF, FDRE, FDSE, LUT1, LUT2, LUT3, LUT4, LUT5, MUXF7, MUXF8, CARRY4, DSP48E2, URAM288, AMD: Joint Test Action Group 调试端口，Xilinx 软件命令行工具调试器，调试访问端口，通用串行总线，Future Technology Devices International 及其 FT2232C 双 UART/FIFO 桥接 IC，通用异步收发器，先进先出缓冲区，集成电路，电子设计自动化，场景外综合模式，Advanced Microcontroller Bus Architecture，AXI4-Lite/AXI4-Stream 互连，输入/输出块，输入/输出缓冲器，同步复位/置位 D 触发器，1 到 5 输入 UltraScale+ 查找表，7/8 输入 UltraScale+ 多路复用器，4 位快速进位链，UltraScale+ DSP 切片，288 Kbit UltraRAM，和 Advanced Micro Devices</li>
 </ul>
 
-三类证据在下表中始终保持分离:
+四类证据在下文每一张表格中保持分离:
 
 | 证据标签 | 本研究中的含义 |
 | :--- | :--- |
-| **`Measured (SW / NVMe I/O / OS PMU)`** | 通过 Darwin `F_NOCACHE` 下的 `os.pread` 读取或写入的精确字节数、常驻内存分配、挂钟秒数、Apple M5 Max 上全机 macOS `PMU`（`AppleSmartBattery.PowerTelemetryData`）累计能量增量，以及精确的比特与词元一致性。`measured_j` 未设置（`None`）。 |
-| **`Simulated (RTL)`** | 来自 Yosys `0.71+`（`synth_xilinx -family xcup`，面向 Kria KV260 `xck26`）的结构化网表计数，以及来自 Verilator `5.054` 的周期计数（`CPI = 1`）。不是 Vivado 时序收敛结果，也不是板级功耗（`board_metered = false`）。 |
-| **`Estimated (est_j)`** | 由操作计数或热设计功耗时间替代量计算得到的解析焦耳值（在 macOS 上缺少 `RAPL`/`NVML` 硬件计数器时，采用 `joule_meter.py` 回退方案）。仅可在同一公式内的各实验组之间比较，绝不代表硅片功率（瓦特）。 |
+| **`Measured (SW / NVMe I/O / OS PMU)`** | 通过 Darwin `F_NOCACHE` 下的 `os.pread` 读取或写入的精确字节数、常驻内存分配、挂钟秒数、Apple M5 Max 上全机 macOS `PMU`（`AppleSmartBattery.PowerTelemetryData`）的累计能量增量，以及精确的比特与词元一致性。`measured_j` 未设置（`None`）。 |
+| **`Reported (OS / On-Chip Counter, reported_j)`** | 无特权的操作系统与片上遥测计数器：在 Apple M5 Max 上（`joule_meter.py`），为双通道 `libIOReport.dylib` 的 "Energy Model" 与 'GPU Energy'（`L2`，纳秒分辨率的 `nJ`），以及 `proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj`（`L3`，每进程 CPU `nJ`）；在下文 `xck26` EDA 综合审计所用的 `x86-64` Linux 上，为 `RAPL` `package-0` 的焦耳值。二者从不与 `measured_j`（`None`）合并。 |
+| **`Simulated (RTL)`** | Yosys `0.71+` 的结构化网表计数（以 `synth_xilinx -family xcup` 面向 Kria KV260 `xck26`），以及 Verilator `5.054` 的周期计数（`CPI = 1`）。不是 Vivado 时序收敛结果，也不是板级功耗（`board_metered = false`）。 |
+| **`Estimated (est_j)`** | 由操作计数或热设计功耗时间代理量（`joule_meter.py`）计算得到的解析焦耳值。仅可在同一公式内的各组之间比较;绝不代表硅片瓦数。 |
 
 <div id="11-architectural-background-and-contributions" class="anchor-alias" aria-hidden="true"></div>
 
-### 1.1 架构背景与主要贡献
+### 1.1 架构背景与贡献
 
 在[计量提交门](/papers/gates/)`[同系列]`中，第二部分定义了**极限混合（Mixture of Limits）**：按每焦耳通过概率 $p_i / c_i$ 递减的顺序尝试各档位（Simon and Kadane, 1975），一旦任务完成谓词 $C(z) = 1$ 成立即停止，并禁止将 `ModelGenerated` 输出强化为 `Deterministic`。然而，静态查找层仅覆盖部署前写入其中的条目。相反，现有的查找表神经网络，包括 LogicNets（Umuroglu et al., 2020）、DiffLogic（Petersen et al., 2022）以及可微无权神经网络（Bacellar et al., 2024），都将连线拓扑固定在静态 FPGA 布线之中，因而每当输入分布发生偏移，就必须重新进行厂商布局布线。
 
 `lut-adapt-ai` 参考实现通过**在线向下 `LUT6` 编译**闭合了级联顶层与底层之间的回路：
 
-- **第 0 级（查找，分页 Beneš + `LUT6`）**：对 64 位真值表掩码进行求值，这些掩码经由无阻塞的 $512 \times 512$ **Beneš-Copy-Beneš** 多播交换机路由，并缓存于 $81 \times \texttt{RAMB36E2}$ 双端口块存储器中（浮点运算次数为 `0`，在 Verilator 仿真中实现单周期页面切换）。
-- **第 1 级（流式，`Mamba-3` 复数 MIMO 状态空间对偶）**：利用常数规模的 $O(1)$ 循环状态（在 `14.3M` 参数参考模型中为 `48 KB` 固定内存）处理依赖序列历史的未命中情况，避免 $O(L)$ 键值缓存的增长。
-- **第 2 级（拓扑，`HC-SOINN`）**：在潜在嵌入上维护在线原型拓扑，隔离机制边界，并在出现无标签分布偏移时触发断路器（`Refuse` / 上报）。
-- **第 3 级（模型最后手段，`JEPA-EBRM`、`AirMoL` 与 `Expert-AirMoL` 4 位 NVMe 流式传输）**：仅当较低级别放弃或需要精确的目标验证时，才调用潜在能量模型验证，或流式加载预训练的 2026 年末混合型与稀疏 MoE 基础模型（`LiquidAI/LFM3-1.7B`、`google/gemma-4-E2B-it`、`LiquidAI/LFM2.5-8B-A1B` 与 `Qwen/Qwen3.6-35B-A3B`，以及 `LiquidAI/LFM2.5-350M` 和 `Qwen/Qwen3.5-0.8B-Base`）。
-- **向下的 `SleepCrystallizer`**：利用 Walsh-Hadamard 谱热启动、联合模式极小项真值表以及 Waksman 交换调度提取反复出现的唤醒轨迹，并切换影子块存储器存储体，无需中断推理，也无需运行 FPGA 布局布线。
+- **第 0 梯级（查找，分页 Beneš + `LUT6`）**：通过无阻塞的 $512 \times 512$ **Beneš-Copy-Beneš** 多播交换机路由 64 位真值表掩码，并在 $81 \times \texttt{RAMB36E2}$ 双端口块存储器上进行缓存（`0` 浮点操作，在 Verilator 仿真中实现单周期页面切换）。
+- **第 1 梯级（流式传输，`Mamba-3` 复数 MIMO 状态空间对偶性）**：使用常数规模 $O(1)$ 循环状态（参考模型中为 `48 KB` 固定内存，参数量 `14.3M`）处理依赖于序列历史的缺失，避免 $O(L)$ 键值缓存增长。
+- **第 2 梯级（拓扑，`HC-SOINN`）**：在潜在嵌入上维护在线原型拓扑，隔离体制边界，并在出现未标记分布偏移时触发断路器（`Refuse` / 升级）。
+- **第 3 梯级（模型最后，`JEPA-EBRM`、`AirMoL` 以及金属融合 `Expert-AirMoL` 4 位 NVMe 流式传输）**：仅在较低梯级弃权或需要精确目标验证时，通过自定义 Apple Metal `MSL` 计算着色器调用潜在能量基验证，或流式传输预训练的 2026 年晚期混合与稀疏 MoE 基础模型（`LiquidAI/LFM3-1.7B`、`google/gemma-4-E2B-it`、`LiquidAI/LFM2.5-8B-A1B` 和 `Qwen/Qwen3.6-35B-A3B`，以及 `LiquidAI/LFM2.5-350M` 和 `Qwen/Qwen3.5-0.8B-Base`）。
+- **向下 `SleepCrystallizer`**：使用 Walsh-Hadamard 谱热启动、联合模式最小项真值表、规范 AST 技能和 Waksman 交换机调度提取循环唤醒轨迹，在不中断推理或运行 FPGA 布局布线的情况下翻转影子块存储器组。
 
 <div id="12-contributions" class="anchor-alias" aria-hidden="true"></div>
 
 ### 1.2 贡献
 
-1. **摊销的向下编译条件**: 将 Simon-Kadane $p_i/c_i$ 排序扩展为在静止视口 $\Delta T$ 上具有显式编译成本 $E_{\text{compile}}$。
+1. **分摊向下编译条件**：将 Simon-Kadane $p_i/c_i$ 排序扩展为在平稳视界 $\Delta T$ 上显式包含编译代价 $E_{\text{compile}}$。
 
-2. **非阻塞 $512 \times 512$ Beneš-Copy-Beneš 与 `81`-`RAMB36E2` RTL 架构**: 消除 `102.0%` Kria KV260 逻辑溢出（平面交叉开关 `119,478` LUT）以及 `926,619` LUT 的翻转-页多路复用器爆炸，在仿真中综合得到 `41,186` UltraScale+ CLB LUT（占 `xck26` 的 `35.2%`），`81` 个 `RAMB36E2` 块（`56.2%`），以及 `0` 个 `DSP48` 切片，具备 `1`-cycle（在标称 `250 MHz` 下为 `4.0 ns`）的页切换。
+2. **非阻塞 $512 \times 512$ Beneš-Copy-Beneš 和 `81`-`RAMB36E2` RTL 架构**：消除了平面交叉开关（`119,478` LUT）的 `102.0%` Kria KV260 逻辑溢出以及触发器页复用器的 `926,619`-LUT 爆炸，在仿真中综合为 `41,186` UltraScale+ CLB LUT（`xck26` 的 `35.2%`）、`81` 个 `RAMB36E2` 块（`56.2%`）和 `0` 个 `DSP48` 片，实现 `1` 周期（`250 MHz` 标称下 `4.0 ns`）的页切换。
 
-3. **通用 $\le 64$ 位联合模式最小项合成**: 表明联合模式最小项查找在相关分支上的边缘位平面 DiffLogic 舍入中占主导，并将 $K = \lfloor 64 / \lceil \log_2 |V| \rceil \rfloor$ 子词记号打包进一个 `uint64` 词（`|V| = 65,536` 时 `16b × 4 = 64b`；`|V| = 128,000` 时 `17b × 3 = 51b`；`|V| = 248,320` 时 `18b × 3 = 54b`）。
+3. **通用 $\le 64$ 位联合模式最小项综合**：表明联合模式最小项查找在相关分支上主导边际比特平面 DiffLogic 舍入，并将 $K = \lfloor 64 / \lceil \log_2 |V| \rceil \rfloor$ 个子字词元打包到一个 `uint64` 字中（对于 `|V| = 65,536` 为 `16b × 4 = 64b`；对于 `|V| = 128,000` 为 `17b × 3 = 51b`；对于 `|V| = 248,320` 为 `18b × 3 = 54b`）。
 
-4. **无预言机 Split-Conformal + 在线 ACI 晶化门**: 将径向正则化的潜在 `JEPA-EBRM` 非一致性得分与 Split Conformal 校准及自适应一致推断（Gibbs 与 Candès, 2021）配对，在偏移流量上记录 `0.00%` 的错误晶化风险和 `1.0000` OOD AUROC，而 softmax 与 MC-Dropout 基线记录 `17.62%-24.28%` 的错误风险。
+4. **无预言机拆分共形 + 在线 ACI 结晶门**：将径向正则化的潜在 `JEPA-EBRM` 非一致性分数与拆分共形校准和自适应共形推断（Gibbs 和 Candès, 2021）配对，在偏移流量上记录 `0.00%` 虚假结晶风险和 `1.0000` OOD AUROC，而 softmax 和 MC-Dropout 基线记录 `17.62%-24.28%` 虚假风险。
 
-5. **`AirMoL` 和 `Expert-AirMoL` 4 位 NVMe 流式传输，最高可达 `34.66B` 稀疏 MoE**: 结合 Darwin `F_NOCACHE` `os.pread` 4 位分片、路由器索引的 `.experts.pack4` 字节步长专家读取、混合状态回滚以及在线 token-`LUT6` 爆发式推测，跨 2026 年十月的 `LiquidAI/LFM3-1.7B`（在 FP32 RAM 的 `3.79%` 中实现 `2.74×` NVMe 减少）、`LiquidAI/LFM2.5-8B-A1B`（`8.47B`；实现 `6.90×` NVMe 减少）以及 `Qwen/Qwen3.6-35B-A3B`（`34.66B`；**`12.30×` NVMe reduction**，**`2,530.7 MB` RAM = `3.83%` of FP16**，**`6.50×` speedup**）在 `100.0%` 精确 token 等价下运行。
+5. **定制 Apple Metal `INT4` 稀疏 MoE 和 `GatedDeltaNet` 着色器 + `AirMoL` / `Expert-AirMoL` 至 `34.66B`**：结合 Darwin `F_NOCACHE` `os.pread` 4 位分片、定制 `MSL` `q4_moe_*`（`43.45×` 更快）和 `gated_delta_recurrent_k128`（`20.66×` 更快）计算着色器、队列深度 `8` 并行 `pread`，以及跨 2026 年 10 月 `LiquidAI/LFM3-1.7B`（`3.79%` FP32 RAM 中 `2.74×` NVMe 减少）、`LiquidAI/LFM2.5-8B-A1B`（`500.0 MB` RAM，`3.493 J/tok` `reported_j`）和 `Qwen/Qwen3.6-35B-A3B`（`34.66B`；**`12.30×` NVMe 减少**，**`970.0 MB` RAM = FP16 的 `1.47%`**，**`6.773 J/tok` `reported_j`**，**`15.7 tok/s`** 统一内存 `Q4`）的 `BenesLUT6` 突发推测，实现 `100.0%` 精确词元一致性。
 
-6. **Zero-MAC `Sub1Bit-LUT6` 与 `LittleBit` 以及验证器门控的 2026 年后期前沿编码级联**: 用零 MAC 的 `6` 输入 `LUT6` 部分和查找（`< 4 × 10⁻⁶` 错误，`MoL` 目标验证在 `0` QAT epoch 中保持 `100.0%` 等价）取代 `LittleBit-1 / LittleBit-2` 的 `1.98M` 运行时二进制 MAC（`0.576` 位/权重；Lee et al., 2025；Lee and Kim, 2026），并在 `48` 任务（`16` 规格 × `3` 波）编码基准中优于独立的 `LittleBit-2 0.55bpw`、`LFM3-1.7B`、`Gemma-4-E2B-it`、`LFM2.5-8B-A1B`、`Qwen3.6-35B-A3B` 与 `RouteLLM`（`43.75%` 对比 `0.00%-33.33%`），实现 **`0.00%` 已接受的破坏提交** 和 **`35,590×` Wave-3 晶化技能加速**，并得到五语言多语验证的支持。
+6. **零 MAC `Sub1Bit-LUT6` 与 `LittleBit`、`87.50%` 验证器门控前沿编码及 `SWE-Mini` git 仓库级联，以及 OpenAI / `MCP` `mol-agent`**：将 `LittleBit-1 / LittleBit-2`（`0.576` 位/权重；Lee et al., 2025；Lee and Kim, 2026）的 `1.98M` 运行时二进制 MAC 替换为零 MAC `6` 输入 `LUT6` 部分和查找（`< 4 × 10⁻⁶` 误差，在 `0` 个 QAT 周期下针对 `MoL` 目标验证的 `100.0%` 奇偶性），在 `48` 任务的 2026 年晚期编码烘焙测试中实现 **`87.50%`（`42 / 48`）验证通过**（`0.00%` 损坏提交，`22.92%` `35B` 调用，`2.89 ms` / `0.0424 J` `reported_j` Wave-3 晶化重放 = `15,401×` 快于 `35B`），在 `16` 任务（`8` 个多文件 git 仓库 × `2` 波）的 `SWE-Mini` `pytest` 基准测试中实现 **`87.50%`（`14 / 16`）**（`0.00%` 损坏补丁），并公开一个即插即用的 OpenAI `/v1/chat/completions` + `MCP`（`JSON-RPC 2.0`）`mol-agent` 服务器（`26 / 26` `pytest` 测试通过）。
 
 <div id="13-same-house-disclosure-and-provenance-boundaries" class="anchor-alias" aria-hidden="true"></div>
 
@@ -290,9 +291,9 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 <div id="48-claim-la-8-live-cli-and-httpsse-streaming-server-mol_code_clipy" class="anchor-alias" aria-hidden="true"></div>
 
-### 4.8 声明 LA-8：实时 CLI 与 HTTP/SSE 流式服务器（`mol_code_cli.py`）
+### 4.8 主张 LA-8：实时 CLI 与 HTTP/SSE 流式服务器 (`mol_code_cli.py`)
 
-`scripts/mol_code_cli.py` 通过 CLI 和 SSE 端点（`/v1/health`、`/v1/complete`、`/v1/crystallize`）提供 `--backend {mamba3,lfm2.5-350m,qwen3.5-0.8b,lfm3-1.7b,lfm2.5-8b-a1b,qwen3.6-35b-a3b}` 与 `--air-nvme` 服务，并在实时运行中将 RAMB36E2 槽位驻留从 `438/512` 推进至 `460/512`，`tests/` 中 `22/22` 项测试通过。
+`scripts/mol_code_cli.py` 提供 `--backend {mamba3,lfm2.5-350m,qwen3.5-0.8b,lfm3-1.7b,lfm2.5-8b-a1b,qwen3.6-35b-a3b}` 和 `--air-nvme`，通过 CLI 和 SSE 端点（`/v1/health`、`/v1/complete`、`/v1/crystallize`）服务，将 `RAMB36E2` 插槽驻留从 `438/512` 提升至 `460/512`，实时通过 `26/26` 的测试在 `tests/` 中。
 
 <div id="49-claim-la-9-frontier-sparse-moe-expert-airmol-liquidailfm25-8b-a1b-847b--qwenqwen36-35b-a3b-3466b" class="anchor-alias" aria-hidden="true"></div>
 
@@ -327,82 +328,123 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 <div id="411-claim-la-11-48-task-16-specifications--3-waves-late-2026-frontier-coding-bakeoff" class="anchor-alias" aria-hidden="true"></div>
 
-### 4.11 主张 LA-11：`48` 项任务（`16` 个规约 × `3` 个波次）的 `2026` 年末前沿编码对比测试
+### 4.11 主张 LA-11：`48` 任务（`16` 规格 × `3` 波）2026 年后期前沿编码比拼
 
-| 2026 年末系统组（`48` 项任务 = `16` 个规约 × `3` 个波次） | W1 冷启动 | W2 适应 | W3 热启动 | 总体通过率 | 破损提交率 | W3 `Rung 0/1` 占比 | `35B` 调用率 | W3 平均延迟 |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| `A` `LittleBit-2` `Qwen3-8B` `0.55 bpw` QAT（`1`-Shot） | `0.00%` | `0.00%` | `0.00%` | `0.00%` | `100.00%` | `0.00%` | `0.0%` | `19,946 ms` |
-| `B` `LiquidAI/LFM3-1.7B`（2026年10月 三混合架构，`1`-Shot） | `18.75%` | `6.25%` | `6.25%` | `10.42%` | `89.58%` | `0.00%` | `0.0%` | `3,561 ms` |
-| `C` `google/gemma-4-E2B-it`（`2026` 混合架构，`1`-Shot） | `6.25%` | `0.00%` | `0.00%` | `2.08%` | `97.92%` | `0.00%` | `0.0%` | `8,886 ms` |
-| `D` `LiquidAI/LFM2.5-8B-A1B`（`8.47B` MoE，`1`-Shot） | `18.75%` | `12.50%` | `12.50%` | `14.58%` | `85.42%` | `0.00%` | `0.0%` | `14,221 ms` |
-| `E` `Qwen/Qwen3.6-35B-A3B`（`34.66B` `Expert-AirMoL`，`1`-Shot） | `37.50%` | `31.25%` | `31.25%` | `33.33%` | `66.67%` | `0.00%` | `100.0%` | `98,435 ms` |
-| `F` `RouteLLM` 置信度路由器（`LFM3` $\to$ `Gemma4` $\to$ `8B`） | `18.75%` | `6.25%` | `6.25%` | `10.42%` | `89.58%` | `0.00%` | `0.0%` | `3,561 ms` |
-| **`G` `MoL` `VerifiedCodeCascade`（参考基线）** | **`43.75%`** | **`43.75%`** | **`43.75%`** | **`43.75%`** | **`0.00%`** | **`43.75%`** | **`62.5%`** | **`143,649 ms`（已解决部分为 `2.54 ms`）** |
+| 2026 年后期系统臂（`48` 任务 = `16` 规格 × `3` 波） | W1 冷 | W2 适配 | W3 暖 | 整体通过率 | 破损提交率 | W3 `Rung 0/1` 占比 | `35B` 调用次数 | 平均 W1 / W3（`ms`） | `reported_j` / 求解（`est_j`） |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `A` `LittleBit-2` `Qwen3-8B` `0.55 bpw` QAT (`1`-Shot) | `0.00%` | `0.00%` | `0.00%` | `0.00%` | `100.00%` | `0.00%` | `0.0%` | `22,413` / `22,708` | `8,020.13` (`32,558 est_j`) |
+| `B` `LiquidAI/LFM3-1.7B` (Oct 2026 Tri-Hybrid, `1`-Shot) | `43.75%` | `25.00%` | `25.00%` | `31.25%` | `68.75%` | `0.00%` | `0.0%` | `8,460` / `9,791` | `152.77` (`957.21 est_j`) |
+| `C` `google/gemma-4-E2B-it` (`2026` Hybrid, `1`-Shot) | `37.50%` | `18.75%` | `18.75%` | `25.00%` | `75.00%` | `0.00%` | `0.0%` | `18,924` / `23,578` | `5,800.68*` (`3,700.44 est_j`) |
+| `D` `LiquidAI/LFM2.5-8B-A1B` (`8.47B` MoE, `1`-Shot) | `6.25%` | `6.25%` | `6.25%` | `6.25%` | `93.75%` | `0.00%` | `0.0%` | `53,123` / `53,885` | `33,415.04` (`47,196 est_j`) |
+| `E` `Qwen/Qwen3.6-35B-A3B` Metal `AirMoL` (`1`-Shot) | `81.25%` | `75.00%` | `75.00%` | `77.08%` | `22.92%` | `0.00%` | `100.0%` | `49,887` / `44,447` | `1,069.65` (`5,701.32 est_j`) |
+| `F` `RouteLLM` Confidence Router (`LFM3` $\to$ `Gemma4` $\to$ `8B`) | `43.75%` | `25.00%` | `25.00%` | `31.25%` | `68.75%` | `0.00%` | `0.0%` | `9,735` / `11,294` | `171.09` (`1,148.96 est_j`) |
+| **`G` `MoL` `VerifiedCodeCascade` (Reference)** | **`87.50%`** | **`87.50%`** | **`87.50%`** | **`87.50%`** | **`0.00%`** | **`87.50%`** | **`22.92%`** | **`116,626` / `44,052` (`2.89 ms` solved)** | **`3,655.51*` (`0.0424 J` in W3)** |
 
-在 `48` 项任务的协议与算法基准测试中（涵盖 RFC 1982 序列号算术、加权区间扫描线、循环安全的字典序拓扑排序、纳秒级令牌桶、CRC-8/ATM 与变异 `0xFF` CRC-8、RFC 6901 JSON Pointer `~01` 反转义、跳数受限的 Bellman-Ford、`>2⁵³` 精确窗口中位数、无限制 Damerau-Levenshtein 距离、`4×4` Beneš 路由、SQL 字面量参数化、基于单调队列的子序列和、DWARF SLEB128、SHA-256 一致性哈希以及共形分位数；全系统 macOS `PMU` 能耗增量为 `126,947.30 J`）中，`VerifiedCodeCascade` 在每个波次上都超过了所有独立模型与路由器（`43.75%` 对比 `33.33%`，后者为 `35B`），破损提交率为 **`0.00%`**（对比 `66.67%-100.00%`），并且通过 $C(z)$ 安全拦截了全部 `3` 次 W2/W3 对抗性规约漂移查询。同时，在 `7` 项已固化技能上，W3 平均延迟由 **`90,324.2 ms`** 降至 **`2.54 ms`**（加速 `35,590×`）。
+在 **`48` 项**协议与算法基准测试中（涵盖 RFC 1982 序列号算术、加权区间扫描线、循环安全的字典序拓扑排序、纳秒级令牌桶、CRC-8/ATM 与变异 `0xFF` 的 CRC-8、RFC 6901 JSON Pointer 的 `~01` 反转义、跳数受限的 Bellman-Ford、`>2⁵³` 精确窗口中位数、无限制 Damerau-Levenshtein 距离、`4×4` Beneš 路由、SQL 字面量参数化、单调双端队列子序列和、DWARF SLEB128、SHA-256 一致性哈希以及共形分位数；全系统 macOS `PMU` 能耗增量为 `117,166.40 J`，共 `6,646` 个采样周期）中，`VerifiedCodeCascade` 在三个批次中的总体通过率达到 **`87.50%`（`42 / 48`）**，超过独立运行的 `Qwen3.6-35B-A3B`（`77.08%`）。该系统仅在 **`22.92%`（`11 / 48`）** 的任务上调用 `35B` 模型。其中，`LFM3-1.7B` 直接解决了 `7` 项第一批次规范；`Gemma-4-E2B-it` 结合结构化反例修复解决了 `3` 项；`Metal-Qwen3.6-35B-A3B` 解决了 `4` 项，并解决了变异后的 `W2_01`。系统提交的破损提交率为 **`0.00%`**（对比基线的 `22.92%-100.00%`）。通过 $C(z)$ 检验，系统捕获了两项第二批次对抗性规范变异，并在 `artifacts/.mol_verified_skills` 中认证了 `16` 项技能。在 **`14` 项已固化求解（`87.50%`）** 上，第三批次的平均重放耗时降至 **`2.89 ms`**，`reported_j` 降至 **`0.0424 J`**（相较独立运行的 `35B`，速度提升 `15,401×`，`reported_j` 降低 `25,227×`）。*（脚注 `*`：一次 `W2_10` 的 `Gemma-4` 调用遇到了非特权 macOS `IOReport` `'GPU Energy'` 硬件累加器回绕尖峰，峰值为 `+59.2 kJ`。该数据已原样保留在 `frontier_ai_head_to_head_bakeoff.csv` 中，并在后续运行中被 `joule_meter.py` 的 `> 450 W` 回绕防护机制过滤。）*
 
-<div id="412-xck26-sfvc784-2lv-c-full-subsystem-primitive-breakdown-topological-depth-and-vivado-20261-hardware-probe" class="anchor-alias" aria-hidden="true"></div>
+<div id="412-claim-la-12-native-apple-metal-msl-fused-int4-sparse-moe--gateddeltanet-shaders--dual-channel-reported_j" class="anchor-alias" aria-hidden="true"></div>
 
-### 4.12 `xck26-sfvc784-2LV-c` 完整子系统原语拆分、拓扑深度以及 `Vivado 2026.1` 硬件探针
+### 4.12 声明 LA-12：原生 Apple Metal (`MSL`) 融合 `INT4` 稀疏 MoE 与 `GatedDeltaNet` 着色器 + 双通道 `reported_j`
 
-为了审计独立的 `512` 页投机核心（`clai_benes_paged_hotswap_core` 位于 `hw/kv260/rtl/clai_benes_hotswap_core.sv`）以及完整的高级微控制器总线架构（`AMBA`）`AXI4-Lite` + `AXI4-Stream` Rung-0 子系统（`clai_kv260_axi_top` 位于 `hw/kv260/rtl/clai_kv260_axi_top.sv`、`clai_engram_streamer.sv`、`clai_rung0_hotswap_core.sv`，以及 `artifacts/clai_rung0_kv260.v`，提交为 `a5e9bc1de280`），相对于精确的 AMD Kria KV260 器件（`xck26-sfvc784-2LV-c`：`117,120` CLB LUT、`234,240` CLB 触发器、`144` `RAMB36E2` 块、`64` 288-Kbit UltraRAM（`URAM288`）块、`1,248` UltraScale+ 数字信号处理（`DSP48E2`）切片，以及 `189` 用户输入/输出块（`IOB`s）），我们在一台 `Intel Core i9-13900H`（`Linux 7.0.0-43-generic x86-64`）工作站上执行了三项硬件和电子设计自动化（`EDA`）检查：
+`src/clai/frontier/metal_moe_kernels.py` 和 `scripts/run_metal_moe_benchmark.py`（`artifacts/metal_moe_air_mol_speedup.csv`、`artifacts/metal_moe_air_mol_meta.json`）通过 `torch.mps.compile_shader` 编译了三个自定义 `MSL` 内核：（i）`gated_delta_recurrent_k128`，利用递归状态 $\mathbf{S}[b, h_v, :, v]$ 在 $v \in \{0, \dots, V_{\text{dim}}-1\}$ 上的列独立性，将 `128` 个 `FP32` 状态元素保存在 GPU 寄存器中，跨所有 $T$ 令牌 **`20.66×` 加速**：`34.523` 毫秒降至 `1.671 ms`，**`46.2×` 降低 `reported_j`**：`1.4989` 降至 `0.0325 J`，最大状态误差 `1.19 × 10⁻⁷`；以及（ii）`q4_moe_gate_up_silu` + `q4_moe_down_weighted`，在 `simd_sum` 寄存器内直接对 `4.50 bpw` `INT4` 块-64 专家权重进行解量化，零 `FP16`/`FP32` 权重分配 **`43.45×` 加速**：在 `28` 个活跃专家上从 `22.408` 降至 `0.516 ms`，**`29.8×` 降低 `reported_j`**：`0.3959` 降至 `0.0133 J`，最大 `FP32` 误差 `7.2 × 10⁻⁷`，`BF16` 误差 `≤ 1 ULP`，并配合深度为 `8` 的并行 `pread` 与 `BenesLUT6` 符号草图路由器前瞻：
 
-1. **只读联合测试行动组 (`JTAG`) 与通用串行总线 (`USB`) 探针 (`Xilinx hw_server v2026.1` + Xilinx 软件命令行工具 (`XSDB`))**：虽然 `lsusb` 报告了已连接的 Future Technology Devices International (`FTDI`) `0403:6010` (`FT2232C/D/H` 双通用异步收发器 (`UART`) / 先入先出 (`FIFO`) 集成电路 (`IC`)) 桥接器，但检查 Linux `sysfs` USB 供应商/产品字符串 (`idVendor = 0403`, `idProduct = 6010`) 后，确定该设备为 `Manufacturer = "Particle"`, `Product = "tachyon-dbg-1.0"` 而非 Kria KV260 载板。通过 `xsdb` (`connect; jtag targets; targets`) 查询 `hw_server v2026.1` (Build May 29, 2026) 返回了 **0 个 Xilinx `JTAG` 设备和 0 个调试访问端口 (`DAP`) 目标** (`board_metered = false`, `measured_j = None`)。
-2. **`Vivado 2026.1` 批处理综合与许可门控 (`SW Build 6511674`)**：一个可复现的低占用非工程批处理脚本 (`scripts/run_vivado_xck26.tcl`, `set_param general.maxThreads 4`, 针对 `xck26-sfvc784-2LV-c` 在 250.0 MHz / 4.000 ns 的上下文外 (`OOC`) 模式) 已针对 `/tools/Xilinx/2026.1/Vivado/bin/vivado` 进行准备。以批处理模式启动 `vivado v2026.1` 在 `synth_design` 之前退出 (`ERROR: Vivado Design Suite cannot be launched because a valid license was not found`)，因为 AMD `Vivado 2025.1+` / `2026.1` 即使对于标准层 `xck26` 器件也需要显式用户生成的 Standard/Enterprise `.lic` 文件 (`~/.Xilinx/Xilinx.lic` 或 `XILINXD_LICENSE_FILE`)，而工作站上未安装任何 `.lic` 文件。根据严格测量规则，后布线 `WNS`、布局布线后最高时钟频率以及矢量无关 `report_power` (`est_j`) 在提供 Standard `.lic` 文件之前仍记录为 `not_available`。
-3. **全子系统 UltraScale+ `xcup` 原语分解、`IOB` 预算与拓扑逻辑级审计 (`Yosys 0.71+`)**：通过 `synth_xilinx -family xcup` 和 `ltp -noff` 综合 `clai_benes_paged_hotswap_core` 和 `clai_kv260_axi_top` (同时严格将主机 `RAPL package-0` `reported_j` 记录为 `x86-64` `EDA` 编译成本 $E_{\text{compile}}$，而非 FPGA 硅功耗) 确立了精确单元计数和关键路径组合深度：
+| 稀疏-MoE 检查点 & 冷-NVMe 引擎变体 | 一致性 | 令牌 / 扫描 | NVMe 读取 / 令牌 | 峰值活跃 RAM | `tok/s` (`× PyTorch`) | 芯片上 `reported_j / tok` (`GPU` + `CPU`) | `est_j / tok` |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `LFM2.5-8B-A1B` · `1` PyTorch-Ref `Expert-AirMoL` (`T=1`) | `100%` | `1.00` | `1.257 GB` | `1,408.3 MB` | `0.394` (`1.00×`) | `10.978 J` (`5.25` + `5.73`) | `266.66` |
+| `LFM2.5-8B-A1B` · `2` Metal-Fused `Expert-AirMoL` (`T=1`) | `100%` | `1.00` | `1.257 GB` | **`500.0 MB`** | `0.689` (`1.75×`) | `6.979 J` (`1.30` + `5.68`) | `152.42` |
+| **`LFM2.5-8B-A1B` · `3` Metal-Fused + `BenesLUT6`（参考）** | **`100%`** | **`2.67`** | **`0.791 GB`** | **`500.0 MB`** | **`1.671` (`4.24×`)** | **`3.493 J` (`1.22` + `2.28`)** | **`62.85`** |
+| `Qwen3.6-35B-A3B` · `1` PyTorch-Ref `Expert-AirMoL` (`T=1`) | `100%` | `1.00` | `2.353 GB` | `2,434.7 MB` | `0.191` (`1.00×`) | `20.765 J` (`8.76` + `12.00`) | `549.49` |
+| `Qwen3.6-35B-A3B` · `2` Metal-Fused `Expert-AirMoL` (`T=1`) | `100%` | `1.00` | `2.353 GB` | **`970.0 MB` (`1.47%`)** | `0.241` (`1.26×`) | `15.440 J` (`3.93` + `11.51`) | `436.26` |
+| **`Qwen3.6-35B-A3B` · `3` Metal-Fused + `BenesLUT6`（参考）** | **`100%`** | **`2.67`** | **`1.447 GB`** | **`970.0 MB` (`1.47%`)** | **`0.621` (`3.25×`)** | **`6.773 J` (`2.31` + `4.47`)** | **`169.03`** |
 
-| `xck26-sfvc784-2LV-c` 目标模块 | CLB LUT（`% xck26`） | 主要 LUT 原语 | CLB 寄存器（`FDRE`/`FDSE`） | `RAMB36E2`（`%`） | `DSP48E2` | 顶层端口（`IBUF`+`OBUF`） | 组合深度（`ltp`） | 主机综合 `RAPL`（`reported_j`） |
+消除 `FP16`/`FP32` 专家解包将 `Qwen/Qwen3.6-35B-A3B` 上的冷-NVMe 峰值活跃权重 RAM 降低 **`2.51×`** 至 **`970.0 MB`（`1.47%` 的 `66.11 GB` FP16）**，并将双通道 `reported_j / tok` **`3.07×`**（从 `20.765` 降至 **`6.773 J/tok`**）在 `100.0%` 完全令牌一致性下实现（在 `>= 36 GiB` 工作站上保持 `16.8 GB` `INT4` 专家包在统一内存中固定时，可达 **`15.7 tok/s`**）。
+
+<div id="413-claim-la-13-16-task-8-multi-file-git-repositories--2-waves-swe-mini-pytest-patching-benchmark" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.13 声明 LA-13：`16` 任务（`8` 多文件 git 仓库 × `2` 波）`SWE-Mini` `pytest` 补丁基准
+
+`src/clai/frontier/repo_patch_cascade.py` 与 `scripts/run_repo_patch_benchmark.py`（`artifacts/repo_patch_swebench_mini.csv`, `artifacts/repo_patch_swebench_mini_traces.json`）评估跨模块仓库错误修复，覆盖 `8` 个独立 git 仓库（`billing`、`scheduler` DAG、`auth` JWT/HMAC、`wal` CRC32、`http_client` CIDR、`semver`、`ttlcache` LRU/TTL、以及 `etl` CSV）× `2` 波（共 `16` 次评估，包含对 `R03_jwt_clock_skew` 的 Wave-2 安全突变，即添加对未来 `iat` 的拒绝），其中 $C(z)$ 强制 `tests/` 字节一致并运行子进程 `pytest -q`：
+
+| 多文件 Git 仓库臂 (`16` 任务 = `8` 仓库 × `2` 波) | W1 冷启动 | W2 热启动 | 综合通过率 | 破损补丁 | W2 `.mol/` 命中份额 | 平均 W1 / W2（`ms`） | `reported_j` / 修复 (`est_j`) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `A` `LiquidAI/LFM3-1.7B`（`1`-Shot 仓库补丁） | `25.00%` | `25.00%` | `25.00%` | `75.00%` | `0.00%` | `4,943` / `5,020` | `371.61 J`（`637.68 est_j`） |
+| `B` `google/gemma-4-E2B-it`（`1`-Shot 仓库补丁） | `62.50%` | `62.50%` | `62.50%` | `37.50%` | `0.00%` | `6,865` / `7,117` | `133.48 J`（`469.79 est_j`） |
+| `C` `LiquidAI/LFM2.5-8B-A1B`（`1`-Shot 仓库补丁） | `0.00%` | `0.00%` | `0.00%` | `100.00%` | `0.00%` | `61,430` / `61,416` | `17,882.33 J`（`54,052 est_j`） |
+| `D` `Qwen/Qwen3.6-35B-A3B` 金属 `AirMoL`（`1`-Shot） | `62.50%` | `62.50%` | `62.50%` | `37.50%` | `0.00%` | `20,270` / `20,502` | `288.39 J`（`3,098.71 est_j`） |
+| **`E` `MoL` `RepoPatchCascade`（参考）** | **`87.50%`** | **`87.50%`** | **`87.50%`** | **`0.00%`** | **`75.00%`** | **`59,341` / `30,663`（`594 ms` `.mol/`）** | **`692.38 J`（`1.10 J` `.mol/`）** |
+
+`RepoPatchCascade` 解决 **`87.50%`（`14 / 16`）** 的多文件仓库错误（比独立 `35B` 与 `Gemma 4` 高 `25.0` 百分点），提交 **`0.00%` 破损补丁**，通过子进程 `pytest` $C(z)$ 捕获 Wave-2 `R03` 规范突变并重新结晶 `Patch#8`（`2,905 ms`），并在 **`594.0 ms`（`1.10 J` `reported_j`，包括 `git init` + `pytest`）** 内重放 `6` 条重复的 Wave-2 `.mol/` 补丁，相较于 Wave 1 的 `38,937.5 ms`（`590.38 J` `reported_j`）实现 **`65.6×` 加速，`537×` 降低 `reported_j`**。
+
+<div id="414-claim-la-14-drop-in-openai-v1chatcompletions-and-mcp-json-rpc-20-local-coding-agent-mol-agent" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.14 声明 LA-14：兼容 OpenAI（`/v1/chat/completions`）与 `MCP`（`JSON-RPC 2.0`）的本地编码智能体（`mol-agent`）
+
+`src/clai/service/openai_mcp_agent.py` 与 `scripts/mol_agent_server.py`（`mol-agent` 命令行入口）将级联能力暴露给 `IDE` 及终端编码工具（`Cursor`、`Continue.dev`、`Claude Code`、`Antigravity`、OpenAI `SDK`），且不依赖任何第三方 Web 组件。具体包括：(i) 兼容 OpenAI 的 `GET /v1/models` 与 `POST /v1/chat/completions` 接口，支持 `stream: true/false` 的 `SSE` 流式输出、CORS 响应头、可选的 `x_mol_contract` 确定性验证器，以及报告档位（rung）、`skill_id`、`est_j`、`reported_j` 和 `measured_j: null` 的 `x_mol_receipt` 回执；(ii) 通过 `--mcp-stdio` 与 `POST /mcp` 提供的 Model Context Protocol（`MCP`，`JSON-RPC 2.0`）接口，暴露 `mol_synthesize_verified_function`、`mol_repair_repo_pytest`、`mol_lookup_crystallized_skill` 与 `mol_energy_telemetry` 四个工具，其后端由持久化的 `.mol/skills_v1.json` 与 `.mol/benes_lut6_router.npz` 支撑（`26 / 26` 个 `pytest` 测试通过）。
+
+<div id="415-xck26-sfvc784-2lv-c-full-subsystem-primitive-breakdown-topological-depth-and-vivado-20261-hardware-probe" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.15 `xck26-sfvc784-2LV-c` 全子系统原语分解、拓扑深度与 `Vivado 2026.1` 硬件探测
+
+为审计独立的 `512` 页推测核心（`hw/kv260/rtl/clai_benes_hotswap_core.sv` 中的 `clai_benes_paged_hotswap_core`）以及完整的 Advanced Microcontroller Bus Architecture (`AMBA`) `AXI4-Lite` + `AXI4-Stream` Rung-0 子系统（`hw/kv260/rtl/clai_kv260_axi_top.sv`、`clai_engram_streamer.sv`、`clai_rung0_hotswap_core.sv` 以及 `artifacts/clai_rung0_kv260.v`，提交 `a5e9bc1de280`，在 `af152ba` 中未更改），针对精确的 AMD Kria KV260 器件（`xck26-sfvc784-2LV-c`：`117,120` 个 CLB LUT、`234,240` 个 CLB 触发器、`144` 个 `RAMB36E2` 块、`64` 个 288-Kbit UltraRAM (`URAM288`) 块、`1,248` 个 UltraScale+ 数字信号处理 (`DSP48E2`) 片以及 `189` 个用户输入/输出块 (`IOB`)），在 `Intel Core i9-13900H` (`Linux 7.0.0-43-generic x86-64`) 工作站上执行了三项硬件和电子设计自动化 (`EDA`) 检查：
+
+1. **只读联合测试行动组（`JTAG`）与通用串行总线（`USB`）探针（`Xilinx hw_server v2026.1` + Xilinx 软件命令行工具（`XSDB`））**：尽管 `lsusb` 报告检测到一个未来技术设备公司（`FTDI`）`0403:6010`（`FT2232C/D/H` 双路通用异步收发器（`UART`）/先进先出（`FIFO`）集成电路（`IC`））桥接器，检查 Linux `sysfs` USB 厂商/产品字符串（`idVendor = 0403`，`idProduct = 6010`）后确认设备的 `Manufacturer = "Particle"`，`Product = "tachyon-dbg-1.0"`，而非 Kria KV260 承载板。通过 `xsdb` 查询 `hw_server v2026.1`（构建日期 2026 年 5 月 29 日）(`connect; jtag targets; targets`) 返回 **`0` Xilinx `JTAG` 设备以及 `0` 调试访问端口（`DAP`）目标**（`board_metered = false`，`measured_j = None`）。
+2. **`Vivado 2026.1` 批量综合与授权门（`SW Build 6511674`）**：一个可复现的低占用非项目批处理脚本（`scripts/run_vivado_xck26.tcl`，`set_param general.maxThreads 4`，针对 `xck26-sfvc784-2LV-c` 在 `250.0 MHz` / `4.000 ns` 的上下文外（`OOC`）模式）已在 `/tools/Xilinx/2026.1/Vivado/bin/vivado` 上排队。以批处理模式启动 `vivado v2026.1` 在进入 `synth_design` 前即退出（`ERROR: Vivado Design Suite cannot be launched because a valid license was not found`），因为 AMD `Vivado 2025.1+` / `2026.1` 对 Standard/Enterprise `.lic` 文件（`~/.Xilinx/Xilinx.lic` 或 `XILINXD_LICENSE_FILE`）有明确要求，即使是 Standard 级别的 `xck26` 器件也需要此文件，而工作站上未安装任何 `.lic` 文件。根据严格的测量规则，后布线 `WNS`、放置与布线后的最大时钟频率以及无向量 `report_power`（`est_j`）均记录为 `not_available`，直至提供 Standard `.lic` 文件为止。
+3. **完整子系统 UltraScale+ `xcup` 原语拆解、`IOB` 预算以及拓扑逻辑层审计（`Yosys 0.71+`）**：通过 `synth_xilinx -family xcup` 和 `ltp -noff` 对 `clai_benes_paged_hotswap_core` 与 `clai_kv260_axi_top` 进行综合（同时严格记录主机 `RAPL package-0` `reported_j` 为 `x86-64` `EDA` 编译成本 $E_{\text{compile}}$，而非 FPGA 硅功耗），建立了精确的单元计数和关键路径组合深度：
+
+| `xck26-sfvc784-2LV-c` 目标模块 | CLB LUTs（`% xck26`） | 主导 LUT 基元 | CLB 寄存器（`FDRE`/`FDSE`） | `RAMB36E2`（`%`） | `DSP48E2` | 顶层端口（`IBUF`+`OBUF`） | 组合深度（`ltp`） | 主机综合 `RAPL`（`reported_j`） |
 | :--- | ---: | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| **`clai_benes_paged_hotswap_core`**（`512` 页） | **`41,185`**（`35.17%`） | `19,982 LUT3`、`7,804 LUT6`、`7,714 LUT5`、`36 MUXF7`、`18 MUXF8` | **`36,464`**（`15.57%`） | **`81`**（`56.25%`） | **`0`** | `1,599`（`OOC` / 内部总线） | **`81` 级** | `7,297.3 J`（`144.8 s`） |
-| **`clai_kv260_axi_top`**（`AXI4` Rung-0 子系统） | **`67,366`**（`57.52%`） | `25,557 LUT6`、`25,333 LUT5`、`7,918 LUT3`、`569 CARRY4` | **`16,619`**（`7.09%`） | **`4`**（`2.78%`） | **`0`** | `126`（`<= 189` 个 `IOB`；`PS-PL`） | **`73` 级** | `10,089.4 J`（`214.8 s`） |
+| **`clai_benes_paged_hotswap_core`**（`512` 页） | **`41,185`**（`35.17%`） | `19,982 LUT3`、`7,804 LUT6`、`7,714 LUT5`、`36 MUXF7`、`18 MUXF8` | **`36,464`**（`15.57%`） | **`81`**（`56.25%`） | **`0`** | `1,599`（`OOC` / 内部总线） | **`81` 层** | `7,297.3 J`（`144.8 s`） |
+| **`clai_kv260_axi_top`**（`AXI4` Rung-0 子系统） | **`67,366`**（`57.52%`） | `25,557 LUT6`、`25,333 LUT5`、`7,918 LUT3`、`569 CARRY4` | **`16,619`**（`7.09%`） | **`4`**（`2.78%`） | **`0`** | `126`（`<= 189` `IOB`；`PS-PL`） | **`73` 层** | `10,089.4 J`（`214.8 s`） |
 
-由 `xcup` 原语与 `ltp` 审计可归纳出两项具体的物理设计约束：
-
-- **引脚预算约束（`OOC` 与 `PS-PL` `AXI` 封装）**：由于 `clai_benes_paged_hotswap_core` 直接暴露原始的 `512` 位 `CodeBitBus` 以及宽位移影子配置向量（`1,379` 个输入缓冲器（`IBUF`）+ `220` 个输出缓冲器（`OBUF`）= `1,599` 个端口，而 `xck26-sfvc784-2LV-c` 封装仅有 `189` 个 `IOB`），独立的厂商实现必须使用 `synth_design -mode out_of_context` 运行，或置于 `AXI4-Stream` / `zynq_ultra_ps_e` 封装之内，例如 `clai_kv260_axi_top`（`126` 个端口，`57.52%` LUT 利用率）。
-- **未流水化的组合深度（`81` 与 `73` 级）与 `250 MHz`（`4.000 ns`）`-2LV` 时序收敛**：虽然 Verilator `5.054` 验证了周期精确的 `CPI = 1.0`（每个时钟周期 `1` 次查找），但若在单个组合周期内穿越 `17` 个 `Beneš-1` 级、`9` 个前缀复制级、`17` 个 `Beneš-2` 级、动态 `LUT6` 真值表多路复用以及 `5` 路投票多数归约，则跨越 **`81` 个原语级**（在 `clai_kv260_axi_top` 的组合式 `64` 输入 popcount 与 `8` 类裕量比较器中为 `73` 级）。要在低电压（`0.72 V`）`-2LV` 硅片上于布局布线后收敛 `250 MHz`（`4.000 ns`），因此宜在 $\mathcal{B}_1 \to \mathcal{C} \to \mathcal{B}_2$ 之间插入 `2` 至 `3` 个流水寄存器级，并在 `64` 线 popcount 树与 top-`2` 比较器之间插入 `1` 个寄存器级，在 `3`-`4` 个周期的流水线延迟下保持 `CPI = 1.0` 的吞吐量（每时钟 `1` 个上下文）。
+出现的两个具体物理设计约束来自 `xcup` 基元和 `ltp` 审计：
+- **引脚预算限制（`OOC` 与 `PS-PL` `AXI` 包装器）**：因为 `clai_benes_paged_hotswap_core` 暴露原始的 `512` 位 `CodeBitBus` 与宽影子配置向量（`1,379` 输入缓冲（`IBUF`）+ `220` 输出缓冲（`OBUF`）= `1,599` 端口，而 `xck26-sfvc784-2LV-c` 包装只有 `189` 个 `IOB`），单独的厂商实现必须在 `synth_design -mode out_of_context` 下运行，或在 `AXI4-Stream` / `zynq_ultra_ps_e` 包装器（如 `clai_kv260_axi_top`，`126` 端口，`57.52%` LUT 利用率）内部使用。
+- **无流水线的组合深度（`81` 与 `73` 层）相对于 `250 MHz`（`4.000 ns`）`-2LV` 闭合**：虽然 Verilator `5.054` 验证循环精确的 `CPI = 1.0`（每时钟周期一次查表），遍历 `17` 个 `Beneš-1` 阶段 + `9` 个前缀复制阶段 + `17` 个 `Beneš-2` 阶段 + 动态 `LUT6` 真值表多路复用 + `5`-投票多数归约在单个组合周期内跨 **`81` 原语层**（在 `clai_kv260_axi_top` 中，`64` 输入的流行计数与 `8` 类比较器的组合为 **`73` 层**）。在低电压（`0.72 V`）`-2LV` 硅上实现 `250 MHz`（`4.000 ns`）后布局布线闭合因此倾向于在 $\mathcal{B}_1 \to \mathcal{C} \to \mathcal{B}_2$ 之间插入 `2` 到 `3` 级流水线寄存器（以及在 `64` 线流行计数树与顶部 `2` 比较器之间插入 `1` 级寄存器），以在 `3`-`4` 周期的流水线延迟下保持 `CPI = 1.0` 吞吐量（每时钟一次上下文）。
 
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
 
-## 5. 相关工作与收敛观察
+## 5. 相关工作与收敛性观察
 
-| 系统 | 编号 / 发表场所 | 确立的内容 | 报告成本 | 本参考的差异 |
+| 系统 | ID / 场地 | 其确立内容 | 报告的成本 | 本参考文献中的差异 |
 | :--- | :--- | :--- | :--- | :--- |
-| **LogicNets**（Umuroglu 等，2020） | `arXiv:2004.03021` · FPL 2020 | 编译为 FPGA LUT 的稀疏量化神经层。 | FPGA LUT 与 Fmax 综合结果。 | 静态连线在移位时需要 Vivado 重新布局布线，而本文方案为 `1` 周期 Beneš 加 `RAMB36E2`。 |
-| **DiffLogic**（Petersen 等，2022）与 **DWN**（Bacellar 等，2024） | `arXiv:2210.08277` · `arXiv:2410.11112` | 可微布尔门与无权重 LUT 网络。 | 门数与精度。 | 静态路由在 VLAN 移位时降至 `52.34%`，并出现边际位平面嵌合伪影。 |
-| **T-MAC**（Wei 等，2024）与 **TeLLMe**（Qiao 等，2025） | `arXiv:2407.00088` · `arXiv:2504.16266` | 基于 CPU/FPGA 查表实现的三值与低比特矩阵乘积。 | 延迟与 FPGA 功耗。 | 加速模型"档位"内的线性代数运算，但不绕过模型调用。 |
-| **LittleBit**（Lee 等，2025）与 **LittleBit-2**（Lee 和 Kim，2026） | `arXiv:2506.13771` · `arXiv:2603.00042` | 通过 `SVD` / `ITQ` 与 `5` 轮 QAT 实现的亚 1 比特（`0.1-0.58` bits/weight）二值潜在分解。 | 压缩比（`11.6×-31×`）、PPL 与 QAT 精度。 | 将位包解包为稠密运行时二值 MAC，并在精确编码上降至 `0.00%`（`Claim LA-11`）；`Sub1Bit-LUT6` 使用 `0` 次二值 MAC，且 `MoL` 在 `0` 轮 QAT 中恢复 `100.0%` 的对等精度。 |
-| **FrugalGPT**（Chen 等，2023）与 **RouteLLM**（Ong 等，2024） | `arXiv:2305.05176` · `arXiv:2406.18665` | 弱到强的 LLM 级联与偏好路由器。 | API 美元价格与质量对比。 | 缺少确定性 $C(z)$ 门（`Claim LA-11` 中 `89.58%` 的失效提交），也没有 `LUT6` 向下编译器。 |
-| **GreenServ**（2026）与 **VoltanaLLM**（2025） | `arXiv:2601.17551` · `arXiv:2509.04827` | 多 LLM 赌博机路由与频率缩放服务。 | 作者报告的 GPU Wh（`Zeus` / `pyNVML`）。 | 优化 GPU 服务；本参考将唤醒编译为 `0`-FLOP `LUT6` 页面（`est_j`）。 |
-| **Medusa**（2024）、**EAGLE-2**（2024）、**HCSpec**（2026） | `arXiv:2401.10774` · `arXiv:2406.16858` · ACL 2026 | 神经 MLP、草稿树与级联推测草稿器。 | 墙钟加速比。 | 需要草稿 FLOP 与权重读取，对比 `0`-FLOP `uint64` `LUT6` 页面。 |
-| **PLD**（Saxena，2023）与 **REST**（He 等，2024） | GitHub · `arXiv:2311.08252` | 零 FLOP 的提示 n-gram 与数据存储后缀树草稿器。 | 延迟加速（`0` FLOPs）。 | `PLD` 无法覆盖提示之外的词元；`REST` 使用可变树结构，对比 `RAMB36E2` 页面。 |
-| **AirLLM**（lyogavin，2023） | 开源 SSD 流式传输器 | 在小内存中基于 SSD 的逐层权重流式传输。 | 活动内存占用。 | 纯 `T=1`（`1.0 tok/sweep`）加 KV 溢出，对比 `AirMoL` 的 `2.74×-2.86×` 扫描次数缩减。 |
-| **Metered Commit Gates** 与 **RCE-JEPA** `[同一团队]` | `/papers/gates/` · `/papers/rce-jepa/` | 提交门（KV260 `INA260` SOM 读数 `11,428 pJ`）、MoL $p_i/c_i$ 与 `RCE-JEPA`。 | KV260 SOM `measured_j` 与 `est_j`。 | 同团队的基础工作；本文在此扩展了 Beneš `LUT6` 向下编译与 `AirMoL`。 |
+| **LogicNets** (Umuroglu et al., 2020) | `arXiv:2004.03021` · FPL 2020 | 稀疏量化神经层编译为 FPGA LUT。 | FPGA LUT 和 Fmax 综合。 | 静态连线需要 Vivado 在移位时重新 PAR，而非 `1` 周期 Beneš + `RAMB36E2`。 |
+| **DiffLogic** (Petersen et al., 2022) & **DWN** (Bacellar et al., 2024) | `arXiv:2210.08277` · `arXiv:2410.11112` | 可微分布尔门和无权重 LUT 网络。 | 门计数和准确率。 | 静态路由在 VLAN 移位时下降至 `52.34%`，并出现边缘位平面嵌合体。 |
+| **T-MAC** (Wei et al., 2024) & **TeLLMe** (Qiao et al., 2025) | `arXiv:2407.00088` · `arXiv:2504.16266` | 通过 CPU/FPGA 表查找实现的三值 / 低比特矩阵乘积。 | 延迟和 FPGA 功耗。 | 在模型齿轮内加速线性代数；不绕过模型调用。 |
+| **LittleBit** (Lee et al., 2025) & **LittleBit-2** (Lee and Kim, 2026) | `arXiv:2506.13771` · `arXiv:2603.00042` | 通过 `SVD` / `ITQ` + `5` 轮 QAT 实现的亚 1 比特 (`0.1-0.58` 比特/权重) 二值潜在因子分解。 | 压缩 (`11.6×-31×`)、PPL 和 QAT 准确率。 | 将位打包解包为稠密运行时二值 MAC 并在精确编码时下降至 `0.00%` (`Claim LA-11`)；`Sub1Bit-LUT6` 使用 `0` 个二值 MAC 且 `MoL` 在 `0` 个 QAT 轮次中恢复 `100.0%` 奇偶性。 |
+| **FrugalGPT** (Chen et al., 2023) & **RouteLLM** (Ong et al., 2024) | `arXiv:2305.05176` · `arXiv:2406.18665` | 弱到强 LLM 级联和偏好路由器。 | API 美元价格与质量。 | 缺少确定性 $C(z)$ 门 (`Claim LA-11` 中 `68.75%` 损坏提交) 且没有 `LUT6` 向下编译器。 |
+| **GreenServ** (2026) & **VoltanaLLM** (2025) | `arXiv:2601.17551` · `arXiv:2509.04827` | 多 LLM 赌博路由和频率缩放服务。 | 作者的 GPU Wh (`Zeus` / `pyNVML`)。 | 优化 GPU 服务；本参考文献将唤醒编译为 `0`-FLOP `LUT6` 和规范技能页 (`reported_j` / `est_j`)。 |
+| **Medusa** (2024), **EAGLE-2** (2024), **HCSpec** (2026) | `arXiv:2401.10774` · `arXiv:2406.16858` · ACL 2026 | 神经 MLP、草稿树和级联推测草稿器。 | 挂钟加速。 | 需要草稿 FLOP 和权重读取，而非 `0`-FLOP `uint64` `LUT6` 页。 |
+| **PLD** (Saxena, 2023) & **REST** (He et al., 2024) | GitHub · `arXiv:2311.08252` | 零 FLOP 提示 n-gram 和数据存储后缀 trie 草稿器。 | 延迟加速 (`0` FLOP)。 | `PLD` 遗漏非提示令牌；`REST` 使用可变 trie 而非 `RAMB36E2` 页。 |
+| **AirLLM** (lyogavin, 2023) | 开源 SSD 流式传输器 | 小 RAM 中逐层 SSD 权重流式传输。 | 活动 RAM 占用。 | 纯 `T=1` (`1.0 tok/sweep`) + KV 溢出，而非 `AirMoL` `2.74×-12.30×` I/O 减少和 `970 MB` Metal `INT4` RAM。 |
+| **Metered Commit Gates** & **RCE-JEPA** `[same house]` | `/papers/gates/` · `/papers/rce-jepa/` | Commit 门 (`11,428 pJ` KV260 `INA260` SOM 读数)、MoL $p_i/c_i$ 和 `RCE-JEPA`。 | KV260 SOM `measured_j` + `reported_j` / `est_j`。 | 同屋基础；在此通过 Beneš `LUT6` 向下编译、Metal `Expert-AirMoL` 和 `mol-agent` 进行扩展。 |
 
 ---
 
 <div id="6-limits-threats-to-validity-not-claimed-and-falsifiers" class="anchor-alias" aria-hidden="true"></div>
 
-## 6. 局限性、有效性威胁、未主张事项与证伪条件
+## 6. 局限、有效性威胁、未声明以及证伪者
 
 **内部效度与构念效度。** 在均匀随机噪声或逐步对抗性扰动（$\Delta T = 1$）下，命题 1 给出的向下编译节省为零，并退化为 `1.00 tok/sweep`。无损一致性（`100.0%`）保证了与贪心目标解码逐位一致，但并不能提升 `350M` 或 `0.8B` 基础检查点的能力上限。
 
-**测量效度与未主张事项。** 逐任务焦耳数值（`est_j/VC`、`est_j/tok`、`est_mJ/Byte`）均为解析性 `est_j` 估计值（`measured_j = None`）；macOS `PMU` 累积增量包含整机显示、SSD 与操作系统后台负载，而非孤立的芯片供电轨功率。Yosys `0.71+` 与 Verilator `5.054` 仅能证明面向 `xck26` 的结构化网表综合与 `CPI = 1` 周期级仿真，不能证明 Vivado 布局布线后 `250 MHz` 时序收敛，也不能给出 KV260 实际供电轨功率（`board_metered = false`）。以下内容均不作主张：硅级能效领先；将 `ModelGenerated` 输出提升为 `Deterministic`；超出 `48` 项合同基准之外的全仓库规模 `SWE-bench` 评测；以及 `70B` 的实测运行（`air_mol_nvme_baselines.csv` 中的 `70B` 数据为解析投影，超出了实测 `34.66B` `Qwen3.6-35B-A3B` 运行的范围）。
+**测量有效性未声明。** 分析焦耳数 (`est_j/VC`、`est_j/tok`、`est_mJ/Byte`)、操作系统/芯片内计数器读取 (`reported_j` 来自 Apple Silicon `L2` `libIOReport` `'GPU Energy'` + `L3` `proc_pid_rusage` `ri_energy_nj`，以及文档于 `Claim LA-11` 中的 `> 450 W` 窄寄存器回绕过滤器)，以及整机 macOS `PMU` 累计增量均严格与物理轨道测量 (`measured_j = None`) 分离。Yosys `0.71+` 与 Verilator `5.054` 实现结构化 `xck26` 网表合成和 `CPI = 1` 周期仿真，而非 Vivado 后 PAR `250 MHz` 时序闭合，也不涉及物理 KV260 轨道瓦特 (`board_metered = false`)。硅能耗领先、将 `ModelGenerated` 输出提升为 `Deterministic`、超出 `48` 任务合同基准 (`Claim LA-11`) 的 `500` 任务 `SWE-bench Verified` 容器评估，以及超出 `16` 任务多文件 git 仓库 `SWE-Mini` `pytest` 基准 (`Claim LA-13`) 的评估，和测得的 `70B` 运行 (`air_mol_nvme_baselines.csv` 报告的分析 `70B` 投影超出测量的 `34.66B` `Qwen3.6-35B-A3B` 运行) 均未声明。
 
-| ID | 声明 | 精确证伪 / 证伪条件 |
+| 编号 | 主张 | 精确反驳 / 证伪条件 |
 | :--- | :--- | :--- |
-| **`LA-F1`** | `Claim LA-1` (`.pcap` + RTL) | `scripts/run_realworld_domain.py` 无法在 `5,120` 个数据包上达到 `100.0%` Verilator 一致性，或错过数据包-`2,500` VLAN 偏移。 |
-| **`LA-F2`** | `Claim LA-2` (Polyglot suite) | Zig 分配 `> 0` 热循环堆字节，Go 报告 `> 0 allocs/op`，或 Julia Enzyme 超过 `1e-7` FD 误差。 |
-| **`LA-F3`** | `Claim LA-3` (KV260 paged RTL) | `scripts/verify_paged_bram_rtl.py` 超过 `117,120` LUTs、`144` `RAMB36E2`s、`0` `DSP48`s，或每页切换 `1` 个周期。 |
-| **`LA-F4`** | `Claim LA-4` (Conformal ACI) | `scripts/run_frontier_benchmarks.py` 在偏移流量上超过目标虚假风险 $\alpha = 0.02$，或标记 `Deterministic`。 |
-| **`LA-F5`** | `Claim LA-5` (Byte speculation) | `scripts/run_code_corpus_benchmark.py` 在 `48` 个未见提示上产生相对于贪婪 `Mamba3CodeLM` 的 `< 100.0%` 精确字节一致性。 |
-| **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` 在 `F_NOCACHE` 下无法达到 `100%` 一致性，或读取比 `AirLLM` 4-Bit `T=1` 更多的 NVMe 字节。 |
-| **`LA-F7`** | `Claim LA-7` (2026 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`、`scripts/run_hf_air_mol_pretrained.py` 或 `scripts/run_hf_qwen35_air_mol.py` 与贪婪目标偏离 $\ge 1$ 个 BPE 词元。 |
-| **`LA-F8`** | `Claim LA-8` (Regression suite) | `pytest -v` 未能通过 `tests/` 中 `22` 个测试中的任意一个。 |
-| **`LA-F9`** | `Claim LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` 与 `100%` 词元一致性偏离，或读取比 `AirLLM` 或 `Expert-AirLLM` 更多的 NVMe 字节。 |
-| **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` 相对于稠密 `ITQ` 二值矩阵乘法的最大误差超过 `1e-3`，或未能通过 `100%` 验证一致性。 |
-| **`LA-F11`** | `Claim LA-11` (`48`-Task Bakeoff) | `scripts/run_frontier_ai_bakeoff.py` 承认 `> 0%` 损坏提交，或承认在 Wave-2 规范变异下存在过时的 Wave-1 技能。 |
+| **`LA-F1`** | `Claim LA-1` (`.pcap` + RTL) | `scripts/run_realworld_domain.py` 在 `5,120` 个数据包上未达到 `100.0%` Verilator 一致性，或遗漏第 `2,500` 号数据包处的 VLAN 偏移。 |
+| **`LA-F2`** | `Claim LA-2` (多语言套件) | Zig 在热循环中分配了 `> 0` 字节堆内存，Go 报告 `> 0 allocs/op`，或 Julia Enzyme 的有限差分误差超过 `1e-7`。 |
+| **`LA-F3`** | `Claim LA-3` (KV260 分页 RTL) | `scripts/verify_paged_bram_rtl.py` 超过 `117,120` 个 LUT、`144` 个 `RAMB36E2`、`0` 个 `DSP48`，或每次页切换耗时 `1` 个周期。 |
+| **`LA-F4`** | `Claim LA-4` (共形 ACI) | `scripts/run_frontier_benchmarks.py` 在偏移流量上超过目标错误风险 $\alpha = 0.02$，或标记为 `Deterministic`。 |
+| **`LA-F5`** | `Claim LA-5` (字节推测) | `scripts/run_code_corpus_benchmark.py` 在 `48` 个未见提示上，相对贪婪解码 `Mamba3CodeLM` 的精确字节一致性为 `< 100.0%`。 |
+| **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` 在 `F_NOCACHE` 下未达到 `100%` 一致性，或读取的 NVMe 字节数多于 `AirLLM` 4-Bit `T=1`。 |
+| **`LA-F7`** | `Claim LA-7` (2026 年 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`、`scripts/run_hf_air_mol_pretrained.py` 或 `scripts/run_hf_qwen35_air_mol.py` 与贪婪目标相比偏离 $\ge 1$ 个 BPE token。 |
+| **`LA-F8`** | `Claim LA-8` (回归套件) | `pytest -v` 在 `tests/` 的 `26` 个测试中任一失败。 |
+| **`LA-F9`** | `Claim LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` 的 token 一致性偏离 `100%`，或读取的 NVMe 字节数多于 `AirLLM` 或 `Expert-AirLLM`。 |
+| **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` 相对稠密 `ITQ` 二值矩阵乘法的最大误差超过 `1e-3`，或未通过 `100%` 已验证一致性。 |
+| **`LA-F11`** | `Claim LA-11` (`48` 任务对比评测) | `scripts/run_frontier_ai_bakeoff.py` 接受了 `> 0%` 的损坏提交，或在 Wave-2 规格变异下接受了过时的 Wave-1 技能。 |
+| **`LA-F12`** | `Claim LA-12` (Metal `INT4` MoE) | `scripts/run_metal_moe_benchmark.py` 的 `FP32` 着色器误差超过 `1e-4`，或在 `8.5B` 或 `35B` 上偏离 `100%` 贪婪 token 一致性。 |
+| **`LA-F13`** | `Claim LA-13` (`SWE-Mini` Git) | `scripts/run_repo_patch_benchmark.py` 接受了 `> 0%` 的损坏补丁、修改了 `tests/`，或未能捕获 Wave-2 的 `R03` 规格变异。 |
+| **`LA-F14`** | `Claim LA-14` (`mol-agent` MCP) | `pytest tests/test_phase26_metal_ioreport_mcp.py` 在 OpenAI REST/SSE、`MCP` `JSON-RPC 2.0`、`.mol/` 重载上失败，或写入了 `measured_j`。 |
 
 ---
 
@@ -456,7 +498,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## 附录 A. 可复现性
 
-从 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 的检出版本(`commit a5e9bc1`)开始:
+在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 的代码检出版本(提交 `af152ba`)中:
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
@@ -471,5 +513,8 @@ PYTHONPATH=src .venv/bin/python scripts/run_hf_air_mol_pretrained.py
 PYTHONPATH=src .venv/bin/python scripts/run_hf_qwen35_air_mol.py
 PYTHONPATH=src .venv/bin/python scripts/run_hf_moe_8b_35b_air_mol.py
 PYTHONPATH=src .venv/bin/python scripts/run_sub1bit_lut_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_metal_moe_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_frontier_ai_bakeoff.py
+PYTHONPATH=src .venv/bin/python scripts/run_repo_patch_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/mol_agent_server.py --host 127.0.0.1 --port 8090 --mol-dir .mol
 ```

@@ -1,0 +1,1119 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{xcolor}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{textcomp}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{longtable,booktabs,array,calc}
+\usepackage{caption}
+\captionsetup[table]{skip=6pt,font=small,labelfont=bf}
+\captionsetup[figure]{font=small,labelfont=bf}
+\newcounter{none}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\footnotesize}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\footnotesize}
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.80,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.80,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+
+\usepackage{newunicodechar}
+\newunicodechar{µ}{\ifmmode\mu\else\textmu\fi}
+\newunicodechar{°}{\ifmmode^\circ\else\textdegree\fi}
+\newunicodechar{·}{\ifmmode\cdot\else\textperiodcentered\fi}
+\newunicodechar{²}{\ensuremath{^{2}}}
+\newunicodechar{³}{\ensuremath{^{3}}}
+\newunicodechar{¹}{\ensuremath{^{1}}}
+\newunicodechar{⁴}{\ensuremath{^{4}}}
+\newunicodechar{⁶}{\ensuremath{^{6}}}
+\newunicodechar{⁻}{\ensuremath{^{-}}}
+\newunicodechar{₀}{\ensuremath{_{0}}}
+\newunicodechar{ₙ}{\ensuremath{_{n}}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Ω}{\ensuremath{\Omega}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{∧}{\ensuremath{\wedge}}
+\newunicodechar{∫}{\ensuremath{\int}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{⊆}{\ensuremath{\subseteq}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{≪}{\ensuremath{\ll}}
+\newunicodechar{↛}{\ensuremath{\nrightarrow}}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{∪}{\ensuremath{\cup}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\newunicodechar{・}{\textperiodcentered}
+
+\usepackage{xurl}
+\usepackage{bookmark}
+\usepackage{hyperref}
+
+\setcounter{secnumdepth}{-\maxdimen}
+\providecommand{\tightlist}{\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}}
+
+\definecolor{openieAmber}{HTML}{D97706}
+\definecolor{openieAmberBg}{HTML}{FFFBEB}
+\definecolor{openieAmberBorder}{HTML}{F59E0B}
+\definecolor{openieSlate}{HTML}{334155}
+\definecolor{openieDark}{HTML}{0F172A}
+\definecolor{openieCodeBg}{HTML}{F8FAFC}
+\definecolor{openieCodeBorder}{HTML}{CBD5E1}
+\definecolor{openieBlue}{HTML}{0057B8}
+
+\hypersetup{
+  pdftitle={Metabolic Intelligence: Budget-Native Compute from Tag to Campus},
+  pdfauthor={David Charlot, Open Interface Engineering},
+  colorlinks=true,
+  linkcolor=openieBlue,
+  citecolor=openieBlue,
+  urlcolor=openieBlue,
+  pdfcreator={XeTeX / Tectonic — Open Interface Engineering}
+}
+
+\urlstyle{same}
+\setlength{\emergencystretch}{3em}
+\hfuzz=6pt
+\sloppy
+
+\newcommand{\openiefig}[3]{%
+  \IfFileExists{#1}{%
+    \includegraphics[width=#2\linewidth,height=0.70\textheight,keepaspectratio]{#1}%
+  }{%
+    \fcolorbox{openieCodeBorder}{openieCodeBg}{%
+      \parbox{0.92\linewidth}{\footnotesize\ttfamily Figure asset embedded in archival PDF; interactive/vector source: \url{#3}}%
+    }%
+  }%
+}
+
+\title{\vspace{-1.2em}\textbf{Metabolic Intelligence: Budget-Native Compute from Tag to Campus}}
+\author{\textbf{David Charlot, Open Interface Engineering}\\[0.15em]
+{\small Product white paper $\cdot$ Open Interface Engineering $\cdot$ \href{https://research.openie.dev}{research.openie.dev}}}
+\date{\small Revision \texttt{1561a2a} (22 November 2026) $\cdot$ Web: \href{https://research.openie.dev/products/mei/}{research.openie.dev/products/mei/} $\cdot$ Archival LaTeX: \href{https://research.openie.dev/pdfs/latex/mei.pdf}{/pdfs/latex/mei.pdf} (\href{https://research.openie.dev/pdfs/latex/mei.tex}{.tex})}
+
+\begin{document}
+\maketitle
+\vspace{-0.6em}
+
+% OpenIE Measurement Honesty Callout Box
+\noindent\fcolorbox{openieAmberBorder}{openieAmberBg}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+    \small\color{openieDark}%
+    \textbf{Measurement.} Product white paper, kept apart from the research catalog; not a journal final. Combines emulator instruction counts, datasheet energy schedules (\texttt{est\_j}), a grid-following campus protocol test, and the open \textbf{\texttt{MEI-JCP-Tag-v1}} sovereign hardware reference package: a \texttt{DRC}-certified (\textbf{\texttt{0} violations}) \texttt{32 $\times$ 24 mm} 2-layer \texttt{STM32WBA52} + \texttt{TI INA238} + \texttt{FRAM} PCB (Gerber \texttt{RS-274X}, KiCad, BOM/CPL), a \texttt{36 $\times$ 28 $\times$ 7.5 mm} 3D NURBS B-Rep enclosure (\texttt{STEP}/\texttt{STL}), and a \textbf{\texttt{10,000}-wakeup} \texttt{CR2032} electro-thermal \texttt{JCP} \texttt{hold}/\texttt{settle} verification preserving \texttt{100\%} of critical alerts at \texttt{-20 \textdegree C} across \texttt{2,680} \texttt{Ed25519} canonical \texttt{det-CBOR} \texttt{JCR-1} receipts. Host build counters are \texttt{reported\_j}; physical tag bench power has not been measured (\texttt{board\_metered = false}, \texttt{measured\_j = None}). No fabricated citations.
+  }%
+}
+
+\vspace{6pt}
+% OpenIE Amber Left-Rule Summary Quote
+\noindent{\color{openieAmber}\vrule width 3pt}\hspace{8pt}%
+\parbox{\dimexpr\linewidth-11pt\relax}{%
+  \small\itshape\color{openieSlate}%
+  Computer intelligence designed to run inside a fixed energy budget, measured on a cold-chain sensor tag and modeled for a grid-following data center, with every number labeled by how it was obtained.
+}
+\vspace{6pt}
+
+{
+\small
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\vspace{4pt}
+\hrule
+\vspace{8pt}
+
+\section{Abstract}\label{abstract}
+
+Metabolic Intelligence (MEI) is computer intelligence designed to run
+inside a fixed energy budget. This paper defines it, reports emulator,
+datasheet, and computer-aided design (CAD) verification results for a
+cold-chain sensor tag, and reports a protocol-level test of a data
+center that follows grid power caps. Every number carries the method
+that produced it.
+
+\textbf{In plain words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Give a computer a fixed energy budget, and design it to give the best
+  answer it can inside that budget.
+\item
+  A tiny sensor tag that checks food freshness can then run for about
+  eight years on a coin battery at room temperature, and under
+  cold-chain voltage sag a signed budget gate refuses routine radio
+  beacons so safety-critical alerts still get through.
+\item
+  A data center can cut its power use when the electricity grid asks, by
+  pausing or shrinking work, without giving wrong answers.
+\end{enumerate}
+
+\section{1. Introduction}\label{introduction}
+
+A computing system usually treats energy as a cost reported after the
+work. Here energy is a condition stated before the work: a budget \(B\),
+in joules (J) for a task or in watts (W) for a sustained load. The
+design question is which answers can be obtained inside \(B\), and how
+to obtain them at the least energy.
+
+Three established results set the frame.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Landauer (1961).} Erasing one bit at temperature \(T\)
+  dissipates at least \(k_B T \ln 2\), with
+  \(k_B = 1.380649 \times 10^{-23}\) J/K. At \(T = 300\) K this is
+  \(2.87 \times 10^{-21}\) J.
+\item
+  \textbf{Horowitz (2014).} Practical CMOS operations cost many orders
+  of magnitude more: about 0.9 pJ for a 32-bit floating-point add and
+  about 640 pJ for a 32-bit DRAM read at 45 nm. Data movement, not
+  arithmetic, dominates.
+\item
+  \textbf{Howard (1966).} The value of information (VoI) of an
+  observation is the expected gain in a decision's payoff from making it
+  before deciding, minus its cost. An observation with VoI ≤ 0 is not
+  worth making.
+\end{itemize}
+
+Together they say that energy per answer has a physical floor far below
+current practice, that most of the gap is data movement, and that an
+observation or computation is worth its joules only when it can change a
+decision.
+
+The paper studies two scales.
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1905}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1905}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3095}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3095}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Scale}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Budget unit}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Controls}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Measured outcome}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Sensor tag & µW sustained; nJ to mJ per event & Heater duty, MCU sleep,
+classifier early exit, two-phase radio budget gate & Battery life;
+accuracy under sequential learning; cold-chain alert survival \\
+Data center (100 MW, grid-capped) & MW import cap & Pause, speed, model
+choice, effort, battery, shed & Minutes over cap; share of interactive
+requests served \\
+\end{longtable}
+}
+}
+
+\section{2. Definitions}\label{definitions}
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2708}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7292}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Term}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Definition}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Budget \(B\) & The energy (J) or power (W) available to a task or a
+site, fixed before the work. \\
+Utility \(U(a)\) & A stated score of answer \(a\): accuracy, a
+completeness test, or a served request. \\
+Completeness predicate \(C(z)\) & A written test that maps a task state
+\(z\) to 0 or 1. The task is complete when \(C(z) = 1\). \\
+Obtain mechanism \(m\) & How an input to a decision is acquired: Lookup
+(read a stored value), Formula (evaluate a closed form), Solver (run a
+search or optimizer), Model (run a learned model), Guess (use a
+prior). \\
+Binding classifier & A recognition unit with a binding site (a template
+over input features), an abundance (a learned weight), a context switch
+that gates which units are active, a Hill exponent for cooperative
+response, and a counted cost per binding check. Tables use the short
+label ``enzyme''. A bit-level variant uses no multiplications. \\
+Metabolic schedule & A duty cycle for sensing and heating that meets a
+monitoring objective at minimum average power. \\
+Grid-following service & A control program that receives grid signals
+and applies ordered controls so site import stays under the cap. \\
+\end{longtable}
+}
+}
+
+\textbf{Evidence classes.} Every number in this paper carries one of
+these labels.
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1919}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4646}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3434}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Label}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Meaning}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{What it can support}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+real protocol & Exchanged messages with a real server or broker &
+Interoperability, not watts \\
+emulator-measured & Instruction counts from the compiled binary run
+under an emulator & Relative cost, not board joules \\
+datasheet & Vendor electrical tables & Inputs to a schedule model \\
+cad-verified & Programmatic electronic design automation, design-rule
+check, solid geometry, and electro-thermal simulation & Fabrication
+readiness and modeled derating, not bench \texttt{measured\_j} \\
+host-counter (\texttt{reported\_j}) & Package energy register delta
+(Linux Running Average Power Limit, RAPL) on the CAD build workstation &
+Build-pipeline host compute reporting, not tag board joules \\
+measured-kernel model & Throughput from measured GPU kernels combined
+with published power & Energy-per-answer estimates with bands \\
+looked-up & Published medians (for example served tokens per second) &
+Baselines \\
+calculation & Algebra from stated inputs & Consequences of the inputs \\
+plant model & A simulator of site power and thermal behavior & Scenario
+comparisons under stated assumptions \\
+\end{longtable}
+}
+}
+
+No figure in this paper is a reading from an external energy meter on a
+fabricated tag or GPU rack. The page flag \texttt{board\_metered} is
+false, and \texttt{measured\_j} remains absent (\texttt{null})
+throughout.
+
+\section{\texorpdfstring{3. The obtain cost
+\(J(m \mid q)\)}{3. The obtain cost J(m \textbackslash mid q)}}\label{the-obtain-cost-jm-mid-q}
+
+A decision \(y\) depends on an input quantity \(q\). Mechanism \(m\)
+obtains \(q\) with energy \(E_m\) (J), a standard deviation \(\sigma_m\)
+in relative units, a staleness rate \(\kappa_q\) (relative variance per
+second) and an age \(t\) (s). Let
+\(S_q = \partial \ln y / \partial \ln q\) be the elasticity of the
+decision with respect to the input, and let \(\lambda\) (J) be the
+energy at stake in the decision. To second order, the expected loss from
+an input error of relative variance \(v\) is
+\(\tfrac{1}{2}\lambda S_q^2 v\). The obtain cost is energy plus that
+loss:
+
+\[J(m \mid q) = E_m + \tfrac{1}{2}\,\lambda\, S_q^2\, \mathrm{var}_m(t), \qquad \mathrm{var}_m(t) = (\sigma_m^2 + \kappa_q t)\,(1 + 3 p_m),\]
+
+and the chosen mechanism is \(m^* = \arg\min_m J(m \mid q)\). The factor
+\((1 + 3p_m)\) inflates variance by the probability \(p_m\) that the
+mechanism is applied outside its valid range; the coefficient 3 is a
+modeling choice, stated as such. \(S_q\) is computed by central
+differences on the decision function, not assumed.
+
+\textbf{Lemma A (dominance).} If \(m_1\) and \(m_2\) obtain the same
+\(q\) with \(E_{m_1} < E_{m_2}\) and
+\(\mathrm{var}_{m_1} \le \mathrm{var}_{m_2}\), then
+\(J(m_1 \mid q) < J(m_2 \mid q)\) for all \(\lambda, S_q \ge 0\).
+\emph{Proof:} both terms are weakly smaller for \(m_1\) and the first
+strictly. So a table lookup beats a calculation of the same value, and a
+closed form beats a learned model of the same value.
+
+\textbf{Lemma B (precision to buy).} Setting the loss term equal to a
+tolerated excess cost \(\varepsilon\) (J) gives
+\(\tfrac{1}{2}\lambda S_q^2 \sigma^2 = \varepsilon\), so
+\(\sigma^* = \sqrt{2\varepsilon / (\lambda S_q^2)}\). Precision finer
+than \(\sigma^*\) costs energy without reducing the loss below
+\(\varepsilon\).
+
+\textbf{Lemma C (refresh interval).} With staleness alone, the loss
+grows as \(\tfrac{1}{2}\lambda S_q^2 \kappa_q t\) (J). Refreshing when
+that loss equals the cost \(E\) of a new reading gives
+\(t^* = 2E / (\lambda S_q^2 \kappa_q)\) (s). A sensor's sampling
+interval and a cache's lifetime are the same quantity at different
+\(\lambda\).
+
+The estimator of \(J\) must itself be cheap: it is evaluated by Lookup
+or Formula with a fixed energy cap, and when the cap is reached the
+default mechanism is used.
+
+\section{4. Sensor tag}\label{sensor-tag}
+
+\subsection{4.1 Classifier cost}\label{classifier-cost}
+
+Instruction counts per decision on an Arm Cortex-M4 with 12 input
+features (emulator-measured):
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6042}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3958}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Classifier}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Instructions per decision}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Binding classifiers with family index and early exit & 1,723 \\
+int8 multilayer perceptron (MLP) & 2,451 \\
+Binding classifiers, first version without early exit & 6,948 \\
+\end{longtable}
+}
+}
+
+\textbf{Energy per decision (calculation).} The STM32U3 datasheet gives
+15.5 µA/MHz at 3.3 V, so one clock cycle costs
+\(15.5 \times 10^{-6}\,\text{A} \times 3.3\,\text{V} / 10^6\,\text{Hz} = 51\)
+pJ. At about one instruction per cycle, 1,723 instructions cost about
+\(1{,}800 \times 51\,\text{pJ} \approx 92\) nJ.
+
+\subsection{4.2 Accuracy}\label{accuracy}
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3394}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4312}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2294}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Test}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Result}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Evidence}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Same simulated features, 3 seeds & Binding classifiers 82.9 / 86.9 /
+88.7\%; MLP 82.2 / 78.0 / 87.4\% & Real protocol on simulated
+features \\
+Late life (days 90 to 180) with drift-invariant features & LDA 94.9\%,
+MLP 93.4\%, binding classifiers 90.0\% (80.8\% without these features),
+Tsetlin machine 89.1\% & Simulation \\
+SmellNet, 50 foods learned in 5 groups, no revisiting earlier groups &
+Binding classifiers 77.7\%; MLP without replay or regularization 18.4\%
+& Public dataset \\
+SmellNet across days & MLP 85.5\%; binding classifiers 79.8\% (same on
+Cortex-M4) & Public dataset \\
+\end{longtable}
+}
+}
+
+The 18.4\% MLP is the catastrophic-forgetting floor, not a
+continual-learning baseline. The fair comparison runs elastic weight
+consolidation (Kirkpatrick et al., 2017), experience replay with a small
+buffer (Rolnick et al., 2019) and iCaRL (Rebuffi et al., 2017) under the
+same memory and energy budget, scored for retained accuracy and energy
+per inference under MLPerf Tiny rules (Banbury et al., 2021). That
+comparison is specified and not yet run. On cross-day SmellNet the MLP
+is more accurate. Drift-invariant features add 9 to 11 points of
+late-life accuracy to binding classifiers, bit-level binding classifiers
+and Tsetlin machines. A chicken-spoilage dataset (Anwar and Anwar, 2025)
+was used internally; it has no licence for publication, so no result
+from it appears here.
+
+\subsection{4.3 Power budget and battery
+life}\label{power-budget-and-battery-life}
+
+One reading of a metal-oxide gas sensor costs 0.5 to 27 mJ depending on
+the part (datasheets). The schedule takes about 9.6 readings per day.
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4062}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2292}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3646}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Term}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Average power}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Evidence}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Heater (Bosch BME690) & 3.0 µW & Datasheet and schedule model \\
+MCU sleep (ST STM32U3) & 6.9 µW & Datasheet \\
+Total & 9.9 µW & Sum \\
+Same tag with Nordic nRF54L15 sleep & 5.1 µW & Datasheet \\
+\end{longtable}
+}
+}
+
+\textbf{Check of the heater term.}
+\(3.0\,\mu\text{W} \times 86{,}400\,\text{s/day} / 9.6\,\text{readings/day} = 27\)
+mJ per reading, the upper end of the datasheet range. Classification at
+92 nJ × 9.6 per day averages \(1.0 \times 10^{-11}\) W, negligible. At
+this schedule sleep current, not heating or classification, is the
+largest term, so the MCU is chosen for sleep current.
+
+\textbf{Battery life (calculation).} A CR2032 cell holds about 235 mAh
+to 2.0 V at 21 °C at 3.0 V nominal (Energizer datasheet), so
+\(0.235\,\text{A·h} \times 3600\,\text{s/h} \times 3.0\,\text{V} = 2.54\)
+kJ. The tag uses
+\(9.9 \times 10^{-6}\,\text{W} \times 3.156 \times 10^7\,\text{s/yr} = 312\)
+J per year, so the life is \(2540 / 312 = 8.1\) years without
+self-discharge and about 7.5 years with 1\% per year self-discharge.
+Lithium coin cells deliver less below 21 °C; Section 4.4 models that
+electro-thermal sag across \(-20\text{ °C}\), \(+4\text{ °C}\), and
+\(+25\text{ °C}\) and gates radio transmissions against it, while
+physical bench discharge at cold-chain temperature remains a measurement
+still to make. The 3.0 µW heater average implies a very low duty cycle
+for a sensor that draws milliwatts when on. Whether sensing response
+holds at that duty is also a measurement still to make.
+
+\subsection{4.4 Reference hardware, cold-chain derating, and
+cryptographic budget
+receipts}\label{reference-hardware-cold-chain-derating-and-cryptographic-budget-receipts}
+
+To verify that the tag architecture closes electrically, mechanically,
+and under low-temperature coin-cell impedance rise, this study generates
+an open reference package (\texttt{MEI-JCP-Tag-v1}) programmatically
+through \texttt{openie-cad} (\texttt{cad-eda}, \texttt{cad-router},
+\texttt{cad-kernel}, \texttt{cad-sim}, \texttt{cad-mfg},
+\texttt{cad-interop}, and \texttt{cad-joules}) paired with the Joule
+Context Protocol (\texttt{JCP}, draft specification \texttt{JCR-1}) and
+the System-and-Task-Boundary Input/Output (\texttt{SATB-IO}) provenance
+lattice (\texttt{jcp-\allowbreak{}satb-\allowbreak{}cad-\allowbreak{}spine}). The board is an exported
+fabrication package, not yet physically assembled on a bench
+(\texttt{board\_\allowbreak{}metered:\ false}, \texttt{measured\_\allowbreak{}j:\ null}).
+
+
+\begin{center}
+\openiefig{fig/mei-fig01-mei-jcp-tag-pcb.png}{0.94}{https://research.openie.dev/figures/mei/mei-jcp-tag-pcb.svg}
+\end{center}
+
+
+\textbf{2-layer printed circuit board (PCB) and 3D enclosure
+(\texttt{cad-verified}).} The \texttt{MEI-JCP-Tag-v1} board measures
+\(32.0\text{ mm} \times 24.0\text{ mm}\) on 2-layer 1.6 mm FR-4
+(\texttt{0.18\ mm} signal traces, \texttt{0.\allowbreak{}30\ mm\ /\allowbreak{}\ 0.\allowbreak{}56\ mm} plated
+through-vias). Ten components realize the sensing, inline rail
+accounting, and hash-chained receipt storage loop:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{U1} (\texttt{STM32WBA52CGU}): ultra-low-power microcontroller
+  and long-range Bluetooth Low Energy radio gate on \texttt{F.Cu}.
+\item
+  \texttt{U2} (\texttt{INA238AIDR}) + \texttt{R\_SHUNT}
+  (\texttt{100\ mΩ}, \texttt{0.1\%}, \texttt{25\ ppm/°C}): 16-bit
+  inter-integrated circuit (\texttt{I2C}) shunt monitor across the raw
+  \texttt{CR2032} feed (\texttt{VBAT\_RAW} to \texttt{VDD\_SYS}) with
+  hardware alert pin \texttt{JCP\_ALERT}.
+\item
+  \texttt{U3} (\texttt{MB85RS256B}): 256-kilobit serial peripheral
+  interface (\texttt{SPI}) ferroelectric random-access memory
+  (\texttt{FRAM}) storing the hash-chained \texttt{JCR-1} receipt ring
+  across brownouts.
+\item
+  \texttt{RT1} + \texttt{R\_BIAS} (\texttt{10\ kΩ} negative temperature
+  coefficient, \texttt{NTC}, thermistor divider), \texttt{C1}
+  (\texttt{100\ nF}), \texttt{C2} (\texttt{1\ µF}), \texttt{J1} (5-pin
+  serial wire debug and receipt-dump universal asynchronous
+  receiver-transmitter header), and \texttt{BT1}
+  (\texttt{Keystone\ 3034} \texttt{CR2032} holder on \texttt{B.Cu}).
+\end{enumerate}
+
+\texttt{cad-router} decomposes all 14 nets into 32 Steiner connections
+and routes 100.0\% (\texttt{135} copper segments totaling
+\texttt{280.23\ mm}, \texttt{14} vias). \texttt{cad-eda} Design Rule
+Check (\texttt{DRC}) and certification pass with \textbf{0 errors and 0
+warnings (\texttt{CERTIFIED})}, round-trip verified through
+\texttt{.kicad\_pcb} import/export alongside RS-274X Gerbers, Excellon
+\texttt{.drl}, bill of materials (\texttt{bom.csv}), and component
+placement (\texttt{cpl.csv}). In \texttt{cad-kernel}, the snap-fit
+vented enclosure (\texttt{36.\allowbreak{}0\ mm\ ×\ 28.\allowbreak{}0\ mm\ ×\ 7.\allowbreak{}5\ mm} main shell,
+\texttt{41.5\ mm} overall X span with a \texttt{Ø4.0\ mm} lanyard
+mounting ear, convective airflow slot over \texttt{RT1}, and four
+internal standoffs) evaluates as a closed outward-facing Boundary
+Representation (\texttt{B-Rep}) solid of volume \texttt{2,702.12\ mm³}
+(\texttt{2.837\ g} in acrylonitrile butadiene styrene, \texttt{ABS}),
+exported to ISO-10303 \texttt{STEP} (\texttt{174,694\ B}) and binary
+\texttt{STL} (\texttt{852} triangles).
+
+\textbf{Cold-chain \texttt{CR2032} electrochemistry and
+\texttt{10,000}-wakeup \texttt{JCP} two-phase gate
+(\texttt{cad-verified}, \texttt{est\_j}).} Evaluating
+\texttt{cad-\allowbreak{}sim::battery} on a calibrated \texttt{CR2032} model
+(\texttt{3.0\ V}, \texttt{225\ mAh} = \texttt{2,430\ J} nominal,
+\(R_{\text{int}}(50\%\text{ SOC}, 25\text{ °C}) = 12.0\ \Omega\),
+Peukert exponent \(1.12\)) quantifies why cold-chain tags fail when
+routine radio bursts are unbudgeted:
+
+{\def\LTcaptype{none} % do not increment counter
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0843}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1461}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1517}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1798}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1685}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1573}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1124}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Ambient \(T\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\(R_{\text{int}}\) at 50\% SOC (\texttt{cad-sim})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{12 mA TX terminal voltage (50\% SOC)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Usable energy to 2.00 V at 12 mA (\texttt{est\_j})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\texttt{10,000}-wakeup routine beacons
+(\texttt{allow\ /\allowbreak{}\ refused})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Safety-critical alerts (\texttt{allow\ /\allowbreak{}\ attempts})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Verified \texttt{JCR-1} receipts}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(+25\text{ °C}\) & \(12.00\ \Omega\) & \(2.669\text{ V}\)
+(\(144.0\text{ mV}\) sag) & \(2{,}193.12\text{ J}\) (\(90.25\%\)) &
+\(500 / 0\) & \(40 / 40\) (\(100.0\%\)) & \(1{,}080\) \\
+\(+4\text{ °C}\) & \(25.72\ \Omega\) & \(2.504\text{ V}\)
+(\(308.7\text{ mV}\) sag) & \(2{,}059.23\text{ J}\) (\(84.74\%\)) &
+\(430 / 70\) & \(40 / 40\) (\(100.0\%\)) & \(1{,}010\) \\
+\(-20\text{ °C}\) & \(71.78\ \Omega\) & \(1.951\text{ V}\)
+(\(861.3\text{ mV}\) sag) & \(0.00\text{ J}\) (unbuffered pulse
+\(< 2.00\text{ V}\)) & \(10 / 490\) & \(40 / 40\) (\(100.0\%\)) &
+\(590\) \\
+\end{longtable}
+}
+}
+
+At \(-20\text{ °C}\), Arrhenius impedance growth raises
+\(R_{\text{int}}\) nearly six-fold (\(71.78\ \Omega\) at 50\% state of
+charge), pulling an unbuffered \(12\text{ mA}\) radio burst down to
+\(1.951\text{ V}\) (below the \(2.00\text{ V}\) brownout threshold).
+Sharding the mission grant via \texttt{jcp\_\allowbreak{}grant::shard} into an
+attenuated routine-beacon child grant and an isolated \(35\text{ mJ}\)
+safety-excursion child grant --- enforced before every transmission via
+\texttt{jcp\_\allowbreak{}runtime::Runtime::hold\_\allowbreak{}chained} and resolved afterward via
+\texttt{settle\_chained} --- deterministically refuses \(490\) of
+\(500\) non-essential routine beacons under \(-20\text{ °C}\) derating
+while preserving \textbf{40 of 40 (100.0\%)} safety-critical thermal
+excursion alerts across all \(10{,}000\) wakeups. Every run passes
+Ed25519 \texttt{COSE\_Sign1} verification
+(\texttt{jcp\_\allowbreak{}receipt::verify\_\allowbreak{}log}) and crash-recovery ledger
+reconstruction (\texttt{jcp\_\allowbreak{}receipt::replay\_\allowbreak{}ledger}).
+
+
+\begin{center}
+\openiefig{fig/mei-fig02-jcp-satb-cad-spine.png}{0.94}{https://research.openie.dev/figures/mei/jcp-satb-cad-spine.svg}
+\end{center}
+
+
+\textbf{Provenance meet-semilattice and build-pipeline accounting
+(\texttt{reported\_j} vs \texttt{est\_j}).} Across the 7-stage
+\texttt{openie-cad} build on a 32-core Linux workstation
+(\texttt{6.93\ s} wall time), \texttt{jcp-\allowbreak{}satb-\allowbreak{}cad-\allowbreak{}spine} enforces a
+monotone meet-semilattice over \texttt{280\ ×\ 280\ =\ 78,\allowbreak{}400} tested
+\texttt{(\allowbreak{}SATB\ boundary\ ×\ attribution\ ×\ mechanism)} pairs
+(\texttt{0} silent provenance or rail-coverage promotions),
+\texttt{SATB} Falsifier 6 (\texttt{\textgreater{}\ 5.00\%} pre/post idle
+baseline drift omits \texttt{satb\_\allowbreak{}derived\_\allowbreak{}marginal\_\allowbreak{}uj} from the
+signed canonical deterministic Concise Binary Object Representation,
+\texttt{det-CBOR}, core while retaining
+\texttt{satb\_\allowbreak{}raw\_\allowbreak{}counter\_\allowbreak{}uj}), and \texttt{SATB} Step 7
+(\texttt{\textbar{}sum(phases)\ -\ window\textbar{}\ \textless{}=\ 1\ µJ},
+observed residual \texttt{0\ µJ}). Host Linux \texttt{RAPL}
+(\texttt{package-0}) recorded \texttt{380.20\ J} (\texttt{reported\_j},
+vendor-opaque \texttt{HwShunt} \texttt{Partial}) alongside
+\texttt{242.07\ J} analytical \texttt{est\_j} (\texttt{45.15\ J}
+embodied FR-4 + ABS material estimate, \texttt{14.50\ J} surface-mount
+assembly batch estimate, and \texttt{182.42\ J} analytical compute
+estimate), sealed in \texttt{8} verified \texttt{JCR-1} receipts
+(\texttt{head\ =\ d5b3827b.\allowbreak{}.\allowbreak{}.\allowbreak{}01b2cd}), while physical tag
+\texttt{measured\_j} stays \texttt{null}.
+
+\section{5. Data center energy per
+answer}\label{data-center-energy-per-answer}
+
+\textbf{Method.} Energy per answer (Wh) = output tokens × power per GPU
+(kW) ÷ output tokens per second per GPU ÷ 3600. Throughput comes from
+NVIDIA AI Configurator 0.12.0 (measured GPU kernels, SGLang, NVFP4).
+Power per GPU is published throughput per chip divided by published
+throughput per MW (InferenceX): GB300 2.12 kW, B300 1.90 kW, B200 1.71
+kW, Vera Rubin 3.30 kW, MI355X 2.09 kW. Served speeds per user are
+Artificial Analysis medians: DeepSeek V4 Pro 79 tokens/s, V4 Flash 125,
+Qwen3-VL 48.5.
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3750}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3750}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Workload (GB300)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Energy per answer}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Evidence}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Chat, DeepSeek V4 Pro (2k tokens in, 500 out) & 0.32 Wh at 50
+tokens/s/user; 0.92 at 79; 4.57 at 159 & Measured-kernel model \\
+Same, fused estimate & 0.20 Wh (10th to 90th percentile 0.04 to 0.68) &
+Model and looked-up \\
+Chat, V4 Flash & 49 mWh at 50 tokens/s/user; 180 mWh at 159 &
+Measured-kernel model \\
+Agent turn, V4 Flash (32k in, 28k cached, 1k out) & 0.16 Wh at 96
+tokens/s/user & Measured-kernel model \\
+Video clip, 8 s at 720p (Wan 2.2) & 390 Wh & Model \\
+\end{longtable}
+}
+}
+
+Energy per answer rises steeply with speed per user because higher
+per-user speed lowers the batch each GPU serves. Matching stream speed
+to human reading speed raises work per MW by an estimated 1.92× on GB300
+(band 1.19 to 2.93) and 2.0× on Vera Rubin (band 1.2 to 3.4). Routing
+most chat to the smaller model plus speed matching gives an estimated
+2.3 to 4.4×. Speculative decoding with a modeled accept length of 2.8
+lowers energy per output token by about 1.55×, after which speed
+matching adds only 1.4 to 1.8×. These are estimates with bands; the
+measurement that would narrow them most is a day of metered energy on
+one GPU pool.
+
+\section{6. Grid-following data
+center}\label{grid-following-data-center}
+
+\subsection{6.1 Controls and their
+order}\label{controls-and-their-order}
+
+When the grid asks for a cut, deferrable work is acted on in a fixed
+order: pause deferrable work, lower per-user speed, route to a smaller
+model, lower reasoning effort, discharge battery, shed load. Interactive
+and certified work runs to completion or is refused; it is not degraded.
+A contract declares invariants (for example
+\texttt{never\_\allowbreak{}lower\_\allowbreak{}precision}, \texttt{max\_deferral}), and shedding
+is used only outside them. Routing to a smaller model changes which
+model answers deferrable work; it is not assumed to be free of quality
+loss (V4 Flash trails V4 Pro by about 1.5 points on GPQA).
+
+\subsection{6.2 System}\label{system}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Grid input:} an OpenADR 3.1 client (OAuth2, polling, demand
+  reports) tested against the open-source openleadr-rs server. Real
+  protocol.
+\item
+  \textbf{Backstop:} a DSX Flex client over MQTT with CloudEvents and
+  JWS ES256 signatures, tested against a real broker and schemas. Real
+  protocol.
+\item
+  \textbf{Controls:} GPU power budgets in the Dynamo planner, a gateway
+  that caps in-flight requests and sets routing, effort and speed tiers,
+  job pause, Redfish node sleep, battery converter.
+\item
+  \textbf{Learning:} per-pool speed curves by recursive least squares; a
+  bias correction on the power model (it learned +5 MW on a hot day).
+\item
+  \textbf{Plant:} a model of a 100 MW GB300 site. Plant model.
+\end{itemize}
+
+\subsection{6.3 Results}\label{results}
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3299}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1753}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1856}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3093}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Scenario}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Minutes over cap}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Interactive served}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Note}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+A to C: 60/70\% cut, with notice, feedforward, or no notice & 0 & 100\%
+& Notice mainly saves battery \\
+D: 90/95\% cut, fast site (159 tokens/s/user) & 0 & 100\% & All
+knowledge chat routed; effort low \\
+E: 90/95\% cut without node sleep & 96 & 1\% & Idle GPUs alone exceed
+the 10 MW cap \\
+L to M: looked-up speeds, 60/70\% and 90/95\% cuts & 0 & 100\% / 52.6\%
+& Speed already low cannot be lowered further \\
+N: no notice, no battery, 10 min response & 7.5 & 99.8\% & Under cap
+within 225 s \\
+O: 60\% cut for 10 h & 0 & 100\% & Deadlines kept \\
+P: new cap every 5 min for 3 h & 0 & 98.8\% & \\
+Q: recovery ramp limited to 2 MW/min & 0 & 100\% & Maximum rise 2.9
+MW/min against 29 to 47 unlimited \\
+R: 90\% cut for 10 h & 0 & 13\% & Video deadlines take priority by
+policy \\
+\end{longtable}
+}
+}
+
+In every run no control call failed, the server accepted every OpenADR
+report, and no DSX message was rejected. With node sleep available, time
+over the cap was zero in every scenario. The cost of holding the cap is
+measured as availability: the interactive share served falls to 52.6\%,
+13\% and 1\% in scenarios M, R and E. Refused and deferred work is
+counted, not hidden.
+
+\textbf{Lemma D (sleep is required at deep cuts).} If idle import
+\(P_{\text{idle}}\) exceeds the cap \(P_{\text{cap}}\), no combination
+of speed, routing or effort controls that leaves nodes powered meets the
+cap, because those controls act only on power above idle. Scenario E is
+the instance: about 10 MW cap, idle import above it, 96 minutes over.
+
+\subsection{6.4 The stop rule}\label{the-stop-rule}
+
+When \(C(z) = 1\) and further work has VoI ≤ 0, further energy buys
+nothing on the stated objective. The system enacts that stop at four
+points: do not run a model when Lookup or Formula closes the input; do
+not stream faster than a human reads when the consumer is a human; pause
+or shed when the import cap binds, in order of least service lost per
+MW; skip a heater pulse when the expected change in the reading is below
+threshold and the battery budget binds.
+
+\section{7. Related work}\label{related-work}
+
+\textbf{Energy-based and associative models.} Hopfield (1982) cast
+associative memory as descent on an energy. Krotov and Hopfield (2016)
+raised capacity with higher-order energies (Dense Associative Memory).
+Ramsauer et al.~(2020) showed softmax attention is a modern Hopfield
+update. Hoover et al.~(2023) built attention layers that minimize a
+token energy, and Gladstone et al.~(2025) trained transformers that
+predict by minimizing a learned energy. Bodnia and Hanin (2026) describe
+a reasoning model scored by an energy over traces. In all of these the
+``energy'' is a scalar objective, not joules.
+
+\textbf{Latent world models.} LeCun (2022) proposed joint-embedding
+predictive architectures. V-JEPA 2-AC (Assran et al., 2025) plans a
+robot arm from image goals after large video pretraining plus under 62
+hours of robot video. The no-pretraining property of the binding
+classifiers in Section 4 applies only to that path; latent world models
+depend on large pretraining.
+
+\textbf{Efficient sequence models.} Mamba (Gu and Dao, 2023) and Mamba-2
+(Dao and Gu, 2024) scale linearly in sequence length with constant-size
+state.
+
+\textbf{Edge classifiers.} Tsetlin machines (Granmo, 2018) learn
+propositional clauses; an all-digital 65 nm accelerator reaches 8.6 nJ
+per MNIST frame (Tunheim et al., 2025). Hyperdimensional computing
+(Kanerva, 2009) computes on high-dimensional random vectors.
+
+\textbf{Substrates.} Intel's Hala Point has 1,152 Loihi 2 processors and
+a stated maximum of 2,600 W (Intel, 2024). Chen et al.~(2025) ran ALBERT
+on a 14 nm analog in-memory chip. Ahmed et al.~(2025) ran ResNet, BERT
+and an Atari agent on a photonic processor. No published neuromorphic
+gas-sensing energy figure was found.
+
+\textbf{Energy-aware serving.} PEARL, OmniRouter (2025) and energy-aware
+reasoning-model routing (2026) choose which language model answers.
+NVIDIA Dynamo 1.5 adds power-aware scaling, and DSX Flex (Emerald AI,
+2026) offers site flexibility to the grid. The obtain cost of Section 3
+differs in choosing among non-model mechanisms before any model runs.
+
+\textbf{Price and energy.} The money price of fixed inference capability
+has fallen sharply (Epoch AI, 2025). A falling price does not lower the
+physical energy per operation, which Landauer and Horowitz bound from
+below.
+
+\section{8. Limits}\label{limits}
+
+\begin{itemize}
+\tightlist
+\item
+  No figure is from an external energy meter on a physically assembled
+  tag or GPU pool (\texttt{board\_\allowbreak{}metered:\ false},
+  \texttt{measured\_\allowbreak{}j:\ null}). Tag steady-state power is datasheet plus
+  schedule model; instruction counts are emulator-measured; the
+  \texttt{MEI-JCP-Tag-v1} 2-layer PCB, 3D enclosure, and
+  \texttt{-\allowbreak{}20\ °C\ /\allowbreak{}\ +4\ °C\ /\allowbreak{}\ +25\ °C} coin-cell impedance curves are
+  CAD-verified fabrication exports and electrochemical simulations
+  (\texttt{est\_j}), with Linux \texttt{RAPL} host build counters kept
+  strictly in \texttt{reported\_j}; data center power is a plant model
+  driven through real protocols.
+\item
+  While Section 4.4 models \texttt{CR2032} Arrhenius impedance sag and
+  verifies \texttt{10,000}-wakeup \texttt{JCP} radio refusal against it
+  in simulation, physical chamber discharge of assembled
+  \texttt{MEI-JCP-Tag-v1} boards and gas-sensor response at the stated
+  heater duty remain bench measurements still to make.
+\item
+  The sequential-learning comparison uses an MLP without
+  continual-learning methods; the fair comparison is specified and not
+  run.
+\item
+  Energy-per-answer figures are estimates with 10th to 90th percentile
+  bands.
+\item
+  No claim is made about water saved or about equivalence with an
+  uncapped site serving the same workload.
+\end{itemize}
+
+\section{9. Conclusion}\label{conclusion}
+
+Stating energy as a budget before the work turns several design choices
+into calculations: which mechanism obtains an input (Section 3), how
+often a sensor samples (Lemma C), which radio transmissions a cold-chain
+tag admits when low-temperature cell impedance rises (Section 4.4), and
+which controls a site applies under a grid cap (Section 6). On the tag
+the room-temperature schedule gives about 8 years on a coin cell at 9.9
+µW, and the DRC-clean \texttt{MEI-JCP-Tag-v1} reference package
+(\texttt{32\ mm\ ×\ 24\ mm} 2-layer PCB + vented
+\texttt{36\ mm\ ×\ 28\ mm\ ×\ 7.\allowbreak{}5\ mm} enclosure + Ed25519
+\texttt{JCR-1} receipt ring) verifies in simulation that two-phase
+\texttt{hold} / \texttt{settle} sharding preserves 100\% of
+safety-critical excursion alerts when \(-20\text{ °C}\) voltage sag
+forces routine beacons to be refused. At the site, controls applied in a
+fixed order kept import under the cap in every modeled scenario with
+node sleep, at a measured cost in interactive service. The next
+measurements need an external energy meter: assembled
+\texttt{MEI-JCP-Tag-v1} board shunts in a cold chamber, and a day of
+energy on one GPU pool.
+
+\section{Appendix A. Notation}\label{appendix-a.-notation}
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2268}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5464}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2268}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Symbol}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Meaning}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Unit}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(B\) & Energy or power budget & J or W \\
+\(C(z)\) & Completeness predicate & 0 or 1 \\
+\(q\), \(y\) & Input quantity and decision & \\
+\(m\) & Obtain mechanism & \\
+\(E_m\) & Energy of mechanism \(m\) & J \\
+\(S_q\) & Elasticity \(\partial \ln y / \partial \ln q\) &
+dimensionless \\
+\(\lambda\) & Energy at stake & J \\
+\(\sigma_m\) & Standard deviation of the obtained value & relative \\
+\(\kappa_q\) & Staleness rate & relative variance per s \\
+\(t\) & Age of the value & s \\
+\(p_m\) & Probability of use outside the valid range & \\
+\(J(m \mid q)\) & Obtain cost & J \\
+\(P_{\text{cap}}\), \(P_{\text{idle}}\) & Grid cap and idle import &
+W \\
+\end{longtable}
+}
+}
+
+\section{References}\label{references}
+
+Ahmed, S. R., et al.~(2025). Universal photonic artificial intelligence
+acceleration. \emph{Nature}.
+\url{https://doi.org/10.1038/s41586-025-08854-x}
+
+Assran, M., et al.~(2025). V-JEPA 2: Self-Supervised Video Models Enable
+Understanding, Prediction and Planning. arXiv:2506.09985.
+
+Banbury, C., et al.~(2021). MLPerf Tiny Benchmark. arXiv:2106.07597.
+
+Bodnia, E., and Hanin, B. (2026). Energy-Based Models for Reasoning,
+LLMs for the Interface.
+\url{https://logicalintelligence.com/blog/energy-based-models-for-reasoning}
+
+Bosch Sensortec BME690; Renesas ZMOD4410; Sensirion SGP41; ST STM32U3;
+ST STM32WBA52; Nordic nRF54L15; Texas Instruments INA238; Fujitsu
+MB85RS256B. Product datasheets, 2026.
+
+Chen, A., et al.~(2025). Demonstration of transformer-based ALBERT model
+on a 14nm analog AI inference chip. \emph{Nature Communications}.
+\url{https://doi.org/10.1038/s41467-025-63794-4}
+
+Dao, T., and Gu, A. (2024). Transformers are SSMs: Generalized Models
+and Efficient Algorithms Through Structured State Space Duality.
+arXiv:2405.21060.
+
+Emerald AI (2026). DSX Flex deployment with NVIDIA and Silicon Valley
+Power. \url{https://www.emeraldai.co/blog/nvidia-dsx-pilot-framework}
+
+Energizer. CR2032 product datasheet.
+\url{https://data.energizer.com/pdfs/cr2032.pdf}
+
+Epoch AI (2025). LLM inference prices.
+\url{https://epoch.ai/data-insights}
+
+Gladstone, A., et al.~(2025). Energy-Based Transformers are Scalable
+Learners and Thinkers. arXiv:2507.02092.
+
+Granmo, O.-C. (2018). The Tsetlin Machine. arXiv:1804.01508.
+
+Gu, A., and Dao, T. (2023). Mamba: Linear-Time Sequence Modeling with
+Selective State Spaces. arXiv:2312.00752.
+
+Hoover, B., et al.~(2023). Energy Transformer. NeurIPS.
+arXiv:2302.07253.
+
+Hopfield, J. J. (1982). Neural networks and physical systems with
+emergent collective computational abilities. \emph{PNAS}
+79(8):2554-2558.
+
+Horowitz, M. (2014). Computing's energy problem (and what we can do
+about it). ISSCC, 10-14.
+
+Howard, R. A. (1966). Information Value Theory. \emph{IEEE Transactions
+on Systems Science and Cybernetics} 2(1):22-26.
+
+InferenceX (2026). Vera Rubin NVL72 agentic inference.
+\url{https://inferencex.semianalysis.com/blog/vera-rubin-nvl72-agentic-inference}
+
+Intel (2024). Hala Point neuromorphic system.
+\url{https://newsroom.intel.com/artificial-intelligence/intel-builds-worlds-largest-neuromorphic-system-to-enable-more-sustainable-ai}
+
+Kanerva, P. (2009). Hyperdimensional Computing. \emph{Cognitive
+Computation} 1:139-159.
+
+Kirkpatrick, J., et al.~(2017). Overcoming catastrophic forgetting in
+neural networks. \emph{PNAS} 114(13):3521-3526.
+
+Krotov, D., and Hopfield, J. J. (2016). Dense Associative Memory for
+Pattern Recognition. arXiv:1606.01164.
+
+Landauer, R. (1961). Irreversibility and Heat Generation in the
+Computing Process. \emph{IBM Journal of Research and Development}
+5(3):183-191.
+
+LeCun, Y. (2022). A Path Towards Autonomous Machine Intelligence,
+version 0.9.2. \url{https://openreview.net/pdf?id=BZ5a1r-kVsf}
+
+NVIDIA (2026). Dynamo 1.5 documentation.
+\url{https://docs.nvidia.com/dynamo}
+
+OmniRouter (2025). arXiv:2502.20576.
+
+OpenADR Alliance. OpenADR 3.1 specification; openleadr-rs reference
+server.
+
+Ramsauer, H., et al.~(2020). Hopfield Networks is All You Need.
+arXiv:2008.02217.
+
+Rebuffi, S.-A., et al.~(2017). iCaRL: Incremental Classifier and
+Representation Learning. CVPR.
+
+Rolnick, D., et al.~(2019). Experience Replay for Continual Learning.
+NeurIPS. arXiv:1811.11682.
+
+Transaction Science (2026). Joule Context Protocol (\texttt{JCP} /
+\texttt{JCR-1}) draft specification.
+\url{https://jcp.transaction.science/}
+
+Tunheim, S. A., et al.~(2025). An All-digital 65-nm Tsetlin Machine
+Image Classification Accelerator with 8.6 nJ per MNIST Frame.
+arXiv:2501.19347.
+
+
+\end{document}

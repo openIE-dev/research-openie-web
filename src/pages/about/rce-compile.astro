@@ -19,19 +19,27 @@ import Layout from '../../layouts/Layout.astro';
       <ol class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-slate leading-relaxed">
         <li>It claims that the candidate, as first stated, is falsified as a description of real compilers, and gives the evidence part by part.</li>
         <li>It states a refined standard with seven parts, four equivalence levels and a gate that names what it preserves and the evidence it accepts on, and seven hypotheses with falsifiers.</li>
-        <li>It reports the three experiments run so far. Byte comparisons of compiler outputs on three machines leave the hypothesis that lowering is deterministic neither supported nor falsified. Erasure and description length were counted for 96 builds on a machine with no energy counter. A name-free hash matched renamed programs more often than keys over output bytes or source text and matched no builds of two different kernels, which supports its hypothesis on a corpus of 16 small kernels and 4 programs only; an equal machine-code identifier from it establishes no equivalence on its own.</li>
-        <li>It does not claim a measured energy result, a measured 98/2 split, or priority over earlier work: two primary sources (Hoare, He and Sampaio, 1993; Ershov, 1977) have not yet been read in full, and almost every external source was seen only as a search result.</li>
+        <li>It reports the three empirical tracks run so far. Byte comparisons of compiler outputs on three machines leave the hypothesis that lowering is deterministic neither supported nor falsified. Alongside the original 96-row WebAssembly erasure counts, pre-registered Linux RAPL on-chip <code>reported_j</code> measurements across 20 deterministic kernels and 14 compiler tiers (280 of 280 checksum-verified) show that lowering from Python to <code>clang -O3</code> pays back after a median of 2,490 runs, <code>-O0</code> to <code>-O3</code> needs 53,464 to 102,720 runs, and <code>-O2</code> to <code>-O3</code> never recovers its extra compile joules on 4 to 6 of the 20 kernels, while Regime-B time multiplied by power explains far more variance than static IR size (0.9999 against 0.1154). De Bruijn name-free hashing scaled across 185 RCE Forms, 60 C/Rust/Python kernels, and 500 verified semantic mutants yields 0 of 500 (0.00%) false hits and 167.8× to 448.5× warm rebuild savings, whereas naive identifier-stripping collides on 150 of 150 variable-binding swaps.</li>
+        <li>It does not claim board-level supply wattmeter readings (<code>board_metered = false</code>, <code>measured_j = None</code>), Regime-A or Regime-C hardware measurements, a measured 98/2 split, or priority over earlier work: two primary sources (Hoare, He and Sampaio, 1993; Ershov, 1977) have not yet been read in full, and almost every external source was seen only as a search result.</li>
       </ol>
     </div>
 
     <figure class="mt-10 glass-card p-4 fig-wide">
       <a class="fig-zoom" href="/figures/rce-compile/form-evidence.svg" aria-label="Enlarge figure"><img src="/figures/rce-compile/form-evidence.svg" alt="Grid of twelve compiler families against the seven parts of the Compiler Form; energy is absent in every row." class="fig-img w-full rounded bg-white" loading="lazy" decoding="async" /></a>
-      <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Where each part of the Compiler Form is found, by compiler family. Qualitative; almost every cell rests on search-result or memory evidence.</figcaption>
+      <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Figure 1. Where each part of the Compiler Form is found, by compiler family. Qualitative; almost every cell rests on search-result or memory evidence.</figcaption>
+    </figure>
+
+    <figure class="mt-8 glass-card p-4 fig-wide">
+      <a class="fig-zoom" href="/figures/rce-compile/compile-energy-payback.svg" aria-label="Enlarge figure"><img src="/figures/rce-compile/compile-energy-payback.svg" alt="Lifecycle energy crossover curves, -O2 to -O3 payback outcomes across 20 kernels, and E5-Scale soundness across 500 verified semantic mutants." class="fig-img w-full rounded bg-white" loading="lazy" decoding="async" /></a>
+      <figcaption class="mt-3 font-body text-sm text-brand-slate leading-relaxed">Figure 2. Pre-registered Wave 4 E4-Energy payback horizons (Linux RAPL core <code>reported_j</code>; <code>board_metered = false</code>) and E5-Scale De Bruijn reuse soundness across 245 programs and 500 semantic mutants.</figcaption>
     </figure>
 
     <div class="mt-10 flex flex-wrap gap-3">
       <a href="/papers/rce-compile/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
         Read → /papers/rce-compile/
+      </a>
+      <a href="/living/rce-compile/" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
+        Interactive Observatory → /living/rce-compile/
       </a>
       <a href="/pdfs/rce-compile.pdf" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors" download>
         Download PDF

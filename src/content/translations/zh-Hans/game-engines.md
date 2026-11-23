@@ -1,6 +1,6 @@
 ---
 title: "一次编写游戏，随处运行：精确重放止于何处、容差始于何处"
-deck: "一次编写游戏，作为已校验的状态机并投影到多个引擎、指令集和图形栈中是否可行？该游戏在 25 个多 ISA 目标 × 主机单元上以 Q32.32 整数物理执行 100,000 个时钟周期（GE-H1：在 arm64 macOS、aarch64 Linux 和 AMD/Intel x86_64 Linux 上出现 0 / 20,500 个 SHA-256 不匹配），25,000 个跨 ISA 浮点时钟周期（GE-H2：t_div = 10 的 Apple libm 与 GNU glibc sin/cos，t_div = 406 的 x86_64 FMA 与 arm64 fmadd（未使用 -ffast-math）），以及 4 个物理 GPU（跨越 Metal 和 Vulkan）（GE-H3：1.3%-9.3% LSB 像素漂移，Δ_max ≤ 2，PSNR 64.2-72.1 dB，SSIM ≥ 0.99983），并搭配一个可玩的、焦耳预算的 Q32.32 WebXR/Canvas 原型。"
+deck: "一次编写的游戏可以作为已检查的状态机投射到多个引擎、指令集、操作系统和图形栈吗？在 Q32.32 整数物理下跨 30 个多 ISA 目标 × 主机单元执行 100 000 个 tick（GE-H1：在 arm64 macOS、aarch64 Linux、Zen 5 与 Raptor Lake x86_64 Linux、以及 Tiger Lake x86_64 Windows 11 上出现 0 / 25 500 次状态摘要不匹配），25 000 个跨平台浮点 tick（GE-H2：t_div = 10 Windows Universal C Runtime 和 Apple libm 与 Linux glibc sin/cos 的差异，t_div = 192-406 融合乘加在未使用 -ffast-math 的情况下的降低），以及 8 条硬件图形终端跨 Metal、Vulkan 和 DirectX 12（GE-H3：0.00%-9.34% 像素漂移，Δ_max ≤ 2，峰值信噪比 ≥ 64.2 dB，结构相似度 ≥ 0.99983，全部 28 对均符合），并配有可玩性焦耳预算的 Q32.32 原型。"
 lang: "zh-Hans"
 source: "game-engines"
 complete: true
@@ -8,19 +8,21 @@ complete: true
 
 <div id="writing-a-game-once-and-running-it-everywhere-where-exact-replay-ends-and-tolerance-begins" class="anchor-alias" aria-hidden="true"></div>
 
-*修订版 af57f48，2026 年 11 月 22 日。交互式浏览器、跨 GPU 检查器，以及可游玩的 `Q32.32` Chrono-Budget Arena：[research.openie.dev/living/game-engines/](/living/game-engines/)。*
+*修订 1561a2a，2026年11月22日。交互式浏览器，3-OS / 3-API 跨 GPU 检查器，以及可玩 `Q32.32` 时间预算竞技场：[research.openie.dev/living/game-engines/](/living/game-engines/)。
 
 <div id="abstract" class="anchor-alias" aria-hidden="true"></div>
 
 ## 摘要
 
-对所调查的规范以及已执行的三套经验性反例套件的分析给出了明确的界限：**是** 在固定点整数算术下对游戏规则和仿真 (`(GE-H1)`: `0 / 20,500` Secure Hash Algorithm 256-bit (`SHA-256`) 检查点不匹配，跨 `100,000` 计时、在 16 体 2D 竞技场上投射至 `25` 目标×主机单元，运行于 `arm64` `macOS 27.2.1`、`aarch64` `Linux 6.8`、以及 Advanced Micro Devices (`AMD`) Zen 5 和 Intel Raptor Lake `x86_64` `Linux 7.0`，在 macOS 每进程 `reported_j` 能耗范围 `0.073 J` 至 `13.60 J`，在 Linux Running Average Power Limit (`RAPL`) 包 `reported_j` 能耗范围 `1.89 J` 至 `181.87 J`); **否** 当未固定的浮点超越函数或融合乘加 (`FMA`) 降低导致混沌多体碰撞时 (`(GE-H2)`: 即使 *without* `-ffast-math`，Apple `libSystem` `libm` 与 Linux 系统 `glibc` `std::sin`/`std::cos` 在计时 `10` 处出现分歧，跨 ISA `x86_64` `-mavx2 -mfma` 与 `arm64` `fmadd` 在计时 `406` 处出现分歧，且 V8 `Math.sin` 在计时 `66` 处跨 ISA 出现分歧); **否** 对跨 GPU 供应商的位精确像素，但在有界单向容差门下 **是** (`(GE-H3)`: 在 Apple `Metal`、`AMD` Mesa Radeon Vulkan (`RADV`)、Nvidia Vulkan (`NVIDIA`) 和 Intel Mesa Vulkan (`ANV`) 上，分辨率 `512×512` `RGBA8Unorm`，`24 / 24` 跨 GPU 帧对在原始 `SHA-256` 上在 `1.30%`-`9.34%` 像素上存在差异，但保持每通道最大误差 $\Delta_{\max} \le 2 / 255$，峰值信噪比 (`PSNR`) `64.16`-`72.06 dB`，结构相似度 (`SSIM`) `0.99983`-`0.99999`，且 `measured_j = None`、`board_metered = false`).
+本研究探讨是否可以一次编写为受检状态机的游戏，然后跨语言、每种操作系统（OS）、每种中央处理器（CPU）指令集架构（ISA）以及每种图形处理器（GPU）应用程序接口（API）进行投射。调查的规范以及三个已执行的经验否证套件给出了明确的界限：**是**，用于在固定点整数算术下的游戏规则和仿真（`(GE-H1)`：在 `100,000` 计时的 16 体 2D 竞技场中，跨 `30` 个目标×主机单元，涵盖三种操作系统和三种指令集，`arm64` `macOS 27.2.1`、`aarch64` `Linux 6.8`、AMD Zen 5 与 Intel Raptor Lake `x86_64` `Linux 7.0`，以及裸机 Intel Tiger Lake `x86_64` `Windows 11` 构建 `26300` 包含 Microsoft Visual C++ (`MSVC`) `cl.exe`，在 macOS 每进程 `reported_j` 为 `0.073 J` 至 `13.60 J`，在 Linux Running Average Power Limit (`RAPL`) 包 `reported_j` 为 `1.89 J` 至 `181.87 J`，且 **安全哈希算法 256 位 (`SHA-256`)** 检查点不出现不匹配）；**否**，当未钉住的浮点超越函数或融合乘加 (`FMA`) 降低导致混沌多体碰撞时（`(GE-H2)`：即使 **不使用** `-ffast-math` 或 `/fp:fast`，三种桌面 OS 的数学库形成配对发散三角形，Windows Universal C Runtime (`UCRT`) 与 Linux 系统 `glibc` `std::sin`/`std::cos` 在相同 `x86_64` ISA 的第 `10` 计时点出现分歧，Apple `libSystem` `libm` 与 Linux `glibc` 在第 `10` 计时点分歧，Windows `UCRT` 与 Apple `libm` 在第 `37` 计时点分歧，而 `MSVC` `/fp:precise` 与 `Clang` `-ffp-contract=fast` 在 `x86_64` 第 `192` 计时点分歧，`x86_64` `-mavx2 -mfma` 与 `arm64` `fmadd` 在第 `406` 计时点分歧）；以及 **否**，针对 GPU 后端的像素位精确匹配，**但**在有界单向容差门下为 **是**（`(GE-H3)`：跨八个硬件 `GPU × API` 端点，涵盖 Apple `Metal`、Linux Mesa Radeon Vulkan (`RADV`)、Nvidia (`NVIDIA`) Linux 与 Windows `Vulkan`、Windows DirectX 12 (`DX12`)、以及 Intel Linux Mesa Vulkan (`ANV`) 与 Windows `Vulkan` 与 `DX12`，在 `512×512` `RGBA8Unorm` 下，`27 / 28` 硬件对包括 **相同物理 GPU** 在 `DX12` 与 `Vulkan` 上的 `GeForce 2060` 与 `Iris Xe`，在原始 `SHA-256` 上存在差异，但所有 `28 / 28` 硬件对保持最大每通道误差 $\Delta_{\max} \le 2 / 255$，峰值信噪比 (`PSNR`) `>= 64.16 dB`，结构相似性 (`SSIM`) `>= 0.99983`，且 `measured_j = None`、`board_metered = false`）。
 
 **简言之**
 
-1. **跨芯片和语言的精确模拟在算术被整数固定时有效。** 在超过 `100,000` 个时钟周期（`20,500` 个已验证的 `SHA-256` 检查点）中，原生 Rust、C++20（`Clang` 和编译器集合（`GCC`））、WebAssembly（`Wasm`）、JavaScript `BigInt` 以及 Python 在 Apple Silicon（`arm64`）、NVIDIA Jetson Thor（`aarch64`）、AMD Zen 5（`x86_64`）和 Intel Raptor Lake（`x86_64`）上以位对位方式重放完全相同的 732 字节状态，零失配。
-2. **标准浮点物理即使在未使用 `-ffast-math` 时也会跨操作系统和 CPU 系列发生漂移。** 纯代数 `+`、`-`、`*`、`/` 和 `sqrt` 在禁用 `FMA`（`-ffp-contract=off`）的情况下，在所有 `25,000` 个测试时钟周期内于 `x86_64` 和 `arm64` 上匹配，但跨 macOS `libm` 与 Linux `glibc` 调用 `std::sin`/`std::cos` 会在第 `10` 个时钟周期（`60 Hz` 下 `0.17 s`）翻转一位，并在第 `9,798` 个时钟周期（`163.3 s`）导致游戏分数去同步；而启用默认 `FMA` 收缩（`-ffp-contract=fast`）则会在第 `406` 个时钟周期于 `x86_64` 和 `arm64` 之间产生分歧，并在第 `11,205` 个时钟周期导致游戏去同步。
-3. **图形卡不会绘制完全相同的位，因此渲染属于单向容差门下游。** 在 Apple `Metal`、AMD `RADV` Vulkan、NVIDIA Vulkan 和 Intel `ANV` Vulkan 中，`1.3%` 至 `9.3%` 的像素在最低有效位（`LSB`）上相差 `1` 至 `2` 位，这会破坏朴素的帧缓冲 `SHA-256` 检查，但通过感知容差（`PSNR > 64 dB`，`SSIM > 0.9998`），因为没有任何 GPU 值会回流到模拟状态中。
+1. **跨操作系统、芯片和语言的精确仿真在算术为整数限定时可实现。** 在 `100,000` 计时点（`25,500` 经过验证的 `SHA-256` 检查点遍及 `30` 单元）中，原生 Rust、C++20（`Clang`、编译器套件（`GCC`）以及 Windows `MSVC`）、WebAssembly（`Wasm`）、JavaScript `BigInt` 与 Python 在 `macOS`（`arm64`）、`Linux`（`aarch64` 与 `x86_64`）和 `Windows 11`（`x86_64`）上均能逐位重放相同的 732 字节状态，零不匹配。
+
+2. **标准浮点物理在 `Windows`、`macOS` 与 `Linux` 上会出现漂移，即使未使用 fast-math 标志。** 纯代数的 `+`、`-`、`*`、`/` 与 `sqrt` 在禁用 `FMA`（`/fp:strict` 与 `-ffp-contract=off`）的情况下，可在所有测试的操作系统和指令集上对齐 `25,000` 计时点的结果，但调用 `std::sin`/`std::cos` 时，在 Windows `UCRT`、macOS `libm` 与 Linux `glibc` 之间会在 `10` 至 `37` 计时点内翻转位（`0.17-0.62 s`，`60 Hz`），导致游戏得分在第 `9,798`-`10,392` 计时点（`163.3-173.2 s`）不同步；同时，默认编译器的 `FMA` 规则在 `MSVC`（`/fp:precise`）与 `Clang`（`-ffp-contract=fast`）之间于第 `192` 计时点出现分歧，在 `x86_64` 与 `arm64` 之间于第 `406` 计时点出现分歧。
+
+3. **即使是相同显卡，在 `DirectX 12` 与 `Vulkan` 之间也可能翻转像素位，因此渲染属于单向容差门的下游。** 在八个硬件 `GPU × API` 端点（`Metal`、`Vulkan` 与 `DirectX 12`）以及 Windows 高级光栅化平台（`WARP`）和 `Mesa llvmpipe` 中，对完全相同的 `NVIDIA GeForce 2060`（`108.34 dB` `PSNR`）或 `Intel Iris Xe`（`79.52 dB` `PSNR`）切换 `DirectX 12` 与 `Vulkan` 会通过着色器编译器降级导致 `1` 个最低有效位（`LSB`）翻转；跨厂商组合在 `0.00%`-`9.34%` 的像素上出现最多 `2` 个 `LSB` 差异（`PSNR >= 64.16 dB`，`SSIM >= 0.99983`），但从不破坏仿真状态。
 
 ![拟议拆分的示意图。顶部方框包含游戏形式 P 等于 S、E、delta、D、lambda，带有类型化接口模式和严格检查器。箭头指向四个投影：左侧精确区域中的模拟（Rust、WebAssembly、XState、SCXML、Python）和脚本（Rhai、Lua、Luau），由每时钟周期状态哈希判断；右侧容差区域中的场景（BSN 类、glTF、OpenUSD）和渲染（Slang、WGSL、WESL），由每像素误差判断。一条虚线垂直线标记确定性边界。底部带列出仅作为记录事件进入的主机效应：输入、时钟、音频、网络、资产输入和输出、GPU 绘制、装饰物理。](/figures/game-engines/architecture.svg)
 
@@ -32,33 +34,33 @@ complete: true
 
 <div id="1-terms-notation-and-the-idea-under-test" class="anchor-alias" aria-hidden="true"></div>
 
-## 1. 术语、符号与待检验的概念
+## 1. 术语、记号与待检验的思路
 
 <ul id="terms">
 <li>RCE, IR, ECS, FSM, SDF：现实代码引擎[同一家]、中间表示、实体组件系统、有限状态机和有符号距离场</li>
-<li>CPU, GPU, ISA, ISAs, SIMD, AVX2, NEON, SFU, ROP, RPL：中央处理器、图形处理器、指令集架构（复数）、单指令多数据、高级向量扩展 2、Arm 高级单指令多数据、特殊函数单元、光栅操作流水线和英特尔 Raptor Lake 移动架构</li>
+<li>中央处理器, 图形处理器, 指令集架构, 指令集架构, 单指令多数据, 高级向量扩展 2, Arm 高级单指令多数据, 特殊功能单元, 光栅操作流水线, Intel 猛禽湖移动架构, Intel 虎湖移动架构</li>
 <li>IEEE, FMA, VFMADD, VFNMADD, FMADD, FMSUB, ULP, LSB, SHA, MAE, RMSE, PSNR, SSIM, SD, RGBA8：电气和电子工程师协会（IEEE 754 浮点数标准）、融合乘加、x86_64 向量融合乘加和取反乘加操作码、AArch64 标量融合乘加和乘减操作码、末位单位、最低有效位、安全散列算法（`SHA-256`）、平均绝对误差、均方根误差、峰值信噪比、结构相似性指数、标准差和每通道 8 位红绿蓝阿尔法帧缓冲格式</li>
-<li>WGSL, WESL, SPIR-V, GLSL, HLSL, MSL, D3D11, D3D12, CUDA：WebGPU 着色语言、WebGPU 扩展着色语言、标准可移植中间表示 V、OpenGL 着色语言、高级着色语言、Metal 着色语言、Direct3D 11、Direct3D 12 和统一计算设备架构</li>
-<li>RADV, ANV, LLVM, GNU, GCC, PE, OS, API, APIs, WebXR, WebMCP, URL, JSON, YAML, README, MB, CS0246, RE, ENGINE, DFU：Mesa Radeon Vulkan 驱动、Mesa Intel Vulkan 驱动、低级虚拟机编译器基础设施、GNU's Not Unix 项目、GNU 编译器集合、Windows 可移植可执行文件、操作系统、应用程序编程接口（复数）、Web 扩展现实 API、Web 模型上下文协议、统一资源定位符、JavaScript 对象表示法、YAML Ain't Markup Language、仓库 README 文档文件、兆字节、C# 编译器缺失类型诊断 CS0246、Capcom RE ENGINE（“Reach for the Moon” / “RE neXt” 引擎品牌）和 Dagstuhl Follow-Ups DOI 前缀</li>
+<li>WebGPU 着色语言, WebGPU 扩展着色语言, 标准可移植中间表示 V, OpenGL 着色语言, 高级着色语言, Metal 着色语言, Direct3D 11, Direct3D 12, DirectX 12, `wgpu::Backends::VULKAN` 和 `wgpu::Backends::METAL` 后端标志, DirectX 中间语言, DirectX 字节码, DirectX 着色器编译器, 传统 Direct3D 效果编译器工具, Windows 高级光栅化平台软件 DirectX 12 光栅化器, Windows 显示驱动程序模型, 计算统一设备架构</li>
+<li>Mesa Radeon Vulkan 驱动程序, Mesa Intel Vulkan 驱动程序, 低级虚拟机编译器基础设施, GNU's Not Unix 项目, GNU 编译器集合, Microsoft Visual C++ 编译器 (`cl.exe`), Windows 通用 C 运行时 (`ucrtbase.dll`), Windows 新技术内核 (`Windows NT`), Windows 可移植可执行文件, 操作系统, 应用程序编程接口, 即时编译器, Web 扩展现实 API, Web 模型上下文协议, 统一资源定位符, JavaScript 对象表示法, YAML Ain't Markup Language, 仓库 README 文档文件, 兆字节, C# 编译器缺失类型诊断 CS0246, Capcom RE ENGINE (“Reach for the Moon” / “RE neXt” 引擎品牌), Dagstuhl Follow-Ups DOI 前缀</li>
 <li>SCXML, GDL, VGDL, BSN, BSL, MLIR, ACID, GGPO, glTF, OpenUSD, USD, LAN, AI, CIG：状态图 XML、游戏描述语言、视频游戏描述语言、Bevy 场景表示法、Boldsea 语义语言、多级中间表示、原子性/一致性/隔离性/持久性事务、Good Game Peace Out 回滚网络库、图形语言传输格式（ISO/IEC 12113:2022）、开放通用场景描述、通用场景描述、局域网、人工智能和计算智能与游戏</li>
-<li>SATB、RAPL、MSR、PID、RUSAGE、V6、AMD、NVIDIA、V100、GH200、CTC：饱和分层基准（Satiation Tiered Benchmark）遥测等级（`L2` 套接字/封装计数器，`L3` 每进程内核计数器）[同一机构]、运行平均功率限制、模型特定寄存器、进程标识符、`proc_pid_rusage`（`RUSAGE_INFO_V6`）、超威半导体公司、英伟达公司、Volta V100 图形处理器、Grace Hopper GH200 超级芯片和闭合类时曲线</li>
+<li>SATB, RAPL, MSR, PID, RUSAGE, V6, AMD, NVIDIA, RTX, V100, GH200, CTC: 饱和分层基准遥测级别（`L2` 插座/封装计数器，`L3` 每进程内核计数器）[同一家]，运行平均功率限制，特定模型寄存器，进程标识符，`proc_pid_rusage` (`RUSAGE_INFO_V6`)，超威半导体，NVIDIA 公司，NVIDIA GeForce RTX GPU 系列，Volta V100 GPU，Grace Hopper GH200 超芯片，以及闭时间曲线</li>
 </ul>
 
-为了使前向引用从上至下保持透明，第1节定义了 Form 符号，第2节审视现有的游戏表示，第3节分析浮点数分歧，第4节列举中间表示，第5节阐述提出的层拆分，第6节报告多 ISA 与跨 GPU 的伪造器运行，第7节列出不可行性标志，第8节记录来源与限制。
+为了使前向引用自上而下透明，第 1 节定义 Form 符号，第 2 节概述现有游戏表示，第 3 节分析浮点数分歧，第 4 节列举中间表示，第 5 节阐述所提层划分，第 6 节报告 3-OS 多 ISA 与 3-API 跨 GPU 伪造器运行结果，第 7 节列出不可行标记，第 8 节记录来源与限制。
 
-[Reality Code Engine (RCE)](https://research.openie.dev/about/rce/) 将程序视为一种称为 Form 的状态机，记作 $P = (S, E, \delta, D, \lambda)$：
+[Reality Code Engine (RCE)](https://research.openie.dev/about/rce/) 将程序视为名为 Form 的状态机，记为 $P = (S, E, \delta, D, \lambda)$：
 
-- $S$: 状态集合;
-- $E$: 事件（输入）集合;
-- $\delta : S \times E \to S$: 转移函数;
-- $D$: 记录每一步的追加式日志;
-- $\lambda$: 从状态到可观察输出的映射。
+- $S$：状态集合；
+- $E$：事件（输入）集合；
+- $\delta : S \times E \to S$：转移函数；
+- $D$：记录每一步的追加日志；
+- $\lambda$：从状态到可观测输出的映射。
 
-严格检查器要么接受 Form，要么指出其违背的规则。随后，发射器将接受的 Form 投射为 Rust、Python、JavaScript 和 Scala。XState（一个 JavaScript 与 TypeScript 状态图库）、SCXML（万维网联盟推荐标准）以及 WebAssembly（`Wasm`）不在发射器的目标之列；本研究将其视为候选投射。由于每一步都记录在 $D$ 中，任何运行都可以重放。
+严格检查器要么接受一个 Form，要么指明其违背的规则。随后发射器将接受的 Form 投射为 Rust、Python、JavaScript 和 Scala。XState（一个 JavaScript 与 TypeScript 状态图库）、SCXML（万维网联盟推荐标准）以及 WebAssembly（`Wasm`）并非发射器的目标；本研究将它们视为候选投射。由于每一步都记录在 $D$ 中，任何运行都可被重放。
 
-游戏引擎是一个更大的机器。它在 GPU 上运行固定步长仿真、脚本层、场景描述以及渲染管线。第1至第8节探讨这些层中哪些可以嵌入 Form，哪些必须作为主机效应保持在外，以及在何处精确性必须让位于容差。
+游戏引擎是更庞大的机器。它在 GPU 上运行固定步长仿真、脚本层、场景描述以及渲染管线。第 1-8 节探讨哪些层可以放入 Form，哪些必须作为宿主效应保留在外，以及何时必须从精确性转向容差。
 
-这一思想源远流长。斯坦福大学的 [Game Description Language (GDL) 规范](http://ggp.stanford.edu/readings/gdl_spec.pdf) 涵盖“有限、离散、确定性的多玩家完全信息游戏”，并指出此类游戏的自然底层模型“是有限状态机”。在游戏引擎中新出现的并非状态机本身，而是围绕它的一切：浮点物理、脚本、场景以及 GPU。
+该思想有悠久的渊源。斯坦福的 [Game Description Language (GDL) 规范](http://ggp.stanford.edu/readings/gdl_spec.pdf) 涵盖“有限、离散、确定性的多玩家完全信息游戏”，并指出此类游戏的自然底层模型“是有限状态机”。在游戏引擎中新出现的不是状态机本身，而是其周围的一切：浮点物理、脚本、场景和 GPU。
 
 <div id="2-what-the-landscape-shows" class="anchor-alias" aria-hidden="true"></div>
 
@@ -108,7 +110,7 @@ GameCraft-Bench ([arXiv:2606.17861](https://arxiv.org/abs/2606.17861); [代码�
 
 <div id="3-the-physics-of-divergence-why-exactness-is-binary" class="anchor-alias" aria-hidden="true"></div>
 
-## 3. 分歧的物理机制：为何精确性是二元的
+## 3. 分歧的物理学：为什么精确性是二元的
 
 浮点加法不满足结合律。在并行硬件上，归约的执行顺序会因运行而异。一项关于并行硬件上浮点非结合性的研究（[arXiv:2408.05148](https://arxiv.org/abs/2408.05148)）定义了标量变异性
 
@@ -124,7 +126,7 @@ $$\delta(t) = \delta_0 \, e^{\Lambda t},$$
 
 $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
-*示意模型：* 取 $\delta_0 \approx 6 \times 10^{-8}$（单精度相对意义下的一个 ULP）、$\Delta = 1$（物体位于墙的另一侧），并假定 $\Lambda = 2\ \text{s}^{-1}$。于是 $t^{*} \approx 0.5 \ln(1.7 \times 10^{7}) \approx 8.3$ s。关键在于对数：将 $\delta_0$ 缩小一百万倍，仅能再延长约 6.9 s。因此，近似一致无法挽救仿真。状态要么逐位相同，要么最终必然发散。下文将在 25,000 个跨指令集碰撞时间步上直接检验这一预测（`GE-H2`）。
+*说明性模型：* 取 $\delta_0 \approx 6 \times 10^{-8}$（单精度的一个ULP，相对值），$\Delta = 1$（墙另一侧的一个物体），以及假设的 $\Lambda = 2\ \text{s}^{-1}$。则 $t^{*} \approx 0.5 \ln(1.7 \times 10^{7}) \approx 8.3$ s。对数是关键：将 $\delta_0$ 缩小一百万倍仅能多获得约 6.9 秒。因此近似一致无法挽救仿真。要么状态按位完全相同，要么最终发生偏离，这一预测在下面 25,000 个多 ISA 和 3-OS 碰撞时钟中直接进行了测试（`GE-H2`）。
 
 实践也印证了这一点。[Gaffer On Games](https://gafferongames.com/post/floating_point_determinism/) 指出，跨机器的确定性要求相同的编译器与指令集；Battlezone 2 曾遭遇 AMD 与 Intel 在超越函数上的差异；MotoGP 的回放数据无法在 Xbox 与个人电脑之间共享。该文还引述了 Markstein 的建议，即禁止 FMA 收缩与重结合。[Rapier 指南](https://rapier.rs/docs/user_guides/rust/determinism/) 展示了一条可行路径：只有启用其 `enhanced-determinism` 特性（与 `simd8` 不兼容）、运行于 IEEE 754-2008 目标平台（Wasm 符合要求）并使用软件实现的超越函数时，跨平台确定性才能成立。
 
@@ -158,12 +160,12 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
 <div id="51-layer-split" class="anchor-alias" aria-hidden="true"></div>
 
-### 5.1 层拆分
+### 5.1 层划分
 
-1. **仿真形式（精确）。** $S$ 持有定点数或严格 IEEE 754 值，禁用 FMA 和重关联，转导函数以整数或固定的软件例程实现。$E$ 持有 tick 事件和已记录的输入。$\delta$ 采用 SCXML 宏步语义：每个 tick 按队列顺序处理事件，按文档顺序解决冲突，串行运行并行区域。集合按声明顺序迭代，遵循 GameRule 的契约（声明顺序，最后写入胜出，结构变更推迟到 tick 结束）。在需要并行性的地方，检查器只接受满足 Core ECS 不相交性条件的调度。
-2. **脚本投影（精确）。** 设计者脚本编译为作用于 $S$ 的守卫和动作，以 [Rhai](https://rhai.rs/book/about/features.html)（沙箱化，具有“Don’t Panic”保证，支持 no-std 和 Wasm）、Lua 或 [Luau](https://luau.org/)（默认沙箱化，支持渐进类型）形式发出。脚本只能通过声明的动作调用 $\delta$。它们不能直接读取时钟、随机源或 GPU 结果。
-3. **场景投影（下游容差）。** $\lambda$ 将 $S$ 映射为 BSN 风格的补丁树，其组件模式是 Form 的一部分。glTF 和 OpenUSD 作为资产的导出目标。
-4. **渲染投影（容差）。** 材质和 pass 使用 Slang 或 WGSL 编写，并通过 Slang 或 Naga 发出到 Metal 和 Vulkan 后端。渲染是 $\lambda(s)$ 的纯函数。GPU 结果永不回流到 $S$。
+1. **仿真形式（精确）。** $S$ 保存定点或严格 IEEE 754 值，禁用 FMA 与重新关联，并在整数或固定软件例程中实现超越函数。$E$ 保存时钟事件和已记录的输入。$\delta$ 使用 SCXML 宏步语义：每个时钟，按队列顺序处理事件，按文档顺序解决冲突，串行运行并行区域。集合按声明顺序迭代，遵循 GameRule 的约定（声明顺序、后写优先、结构变更延后至时钟结束）。在需要并行时，检查器仅接受满足 Core ECS 不相交条件的调度。
+2. **脚本投影（精确）。** 设计者脚本编译为针对 $S$ 的守卫和动作，输出为 [Rhai](https://rhai.rs/book/about/features.html)（沙箱化，具 “Don’t Panic” 保证，no-std 与 Wasm 支持）、Lua 或 [Luau](https://luau.org/)（默认沙箱化，支持渐进类型）。脚本只能通过声明的动作调用 $\delta$。它们不能直接读取时钟、随机源或 GPU 结果。
+3. **场景投影（下游容差）。** $\lambda$ 将 $S$ 映射为类似 BSN 的补丁树，其组件模式是 Form 的一部分。glTF 与 OpenUSD 用作资产的导出目标。
+4. **渲染投影（容差）。** 材质和通道使用 Slang 或 WGSL 编写，并通过 Slang 或 Naga 输出到 `DirectX 12`、`Metal` 与 `Vulkan` 后端。渲染是 $\lambda(s)$ 的纯函数。GPU 结果永不回流至 $S$。
 
 <div id="52-inside-the-form-versus-host-effects" class="anchor-alias" aria-hidden="true"></div>
 
@@ -173,11 +175,11 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
 <div id="53-determinism-boundary" class="anchor-alias" aria-hidden="true"></div>
 
-### 5.3 确定性边界
+### 5.3 决定性边界
 
-- **精确区判据:** 对于目标 A 与 B 以及每个时刻 $t$,有 $H(s_t^A) = H(s_t^B)$,其中 $H$ 为对 $S$ 的规范化序列化结果计算的密码学哈希。
-- **容差区判据:** 对于同一 $s_t$ 渲染得到的帧 $I^A$ 与 $I^B$,单通道误差超过 $\varepsilon$ 的像素比例不得超过 $p_{\max}$,并同时满足结构相似性(`SSIM`)与峰值信噪比(`PSNR`)的下界约束。第 6.3 节在四种 GPU 架构(`Metal`、`RADV` Vulkan、`NVIDIA` Vulkan 与 `ANV` Vulkan)上执行了该校准。
-- 基于 [GGPO](https://github.com/pond3r/ggpo) 风格的回滚网络依赖输入预测与推测执行,仅在该边界的精确一侧有效。
+- **精确区准则：** 对于目标 A 和 B 的每个 tick $t$，$H(s_t^A) = H(s_t^B)$，其中 $H$ 是对 $S$ 的规范序列化进行的密码学哈希。
+- **容差区准则：** 对于相同 $s_t$ 的渲染帧 $I^A$ 与 $I^B$，每通道误差超过 $\varepsilon$ 的像素比例不得超过 $p_{\max}$，并配合受限的结构相似度（`SSIM`）和峰值信噪比（`PSNR`）下限。第 6.3 节在八个硬件 `GPU × API` 端点上执行此校准，覆盖 `DirectX 12`、`Metal` 与 `Vulkan`（`Apple Metal`、`AMD RADV Vulkan`、`NVIDIA` Linux/Windows `Vulkan` 与 Windows `DX12`，以及 `Intel` Linux `ANV Vulkan` 与 Windows `Vulkan` / `DX12`）。
+- 回滚网络采用 [GGPO](https://github.com/pond3r/ggpo) 风格，依赖输入预测和投机执行，仅在该边界的精确侧有效。
 
 <div id="54-cross-layer-interface-checking" class="anchor-alias" aria-hidden="true"></div>
 
@@ -185,95 +187,107 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
 在任何产物输出之前，检查器会验证四类有类型的边。(a) 脚本到仿真:每个动作都必须指向一个已声明的转移，且参数类型一致;(b) 仿真到场景:$\lambda$ 的输出必须与组件模式相匹配;(c) 场景到渲染:每个材质绑定都必须对应一个类型、组与绑定索引兼容的 Slang 或 WGSL 资源;(d) 事件覆盖:脚本监听的每个事件都必须能由某个转移或宿主来源产生。正因为 Mage 的发现(见第 2.3 节),这些边的检查以行为轨迹而非编译是否通过为判定依据。
 
-<div id="6-falsifier-first-test-plan-and-executed-multi-isa--cross-gpu-results" class="anchor-alias" aria-hidden="true"></div>
+<div id="6-falsifier-first-test-plan-and-executed-3-os--3-isa--3-api-results" class="anchor-alias" aria-hidden="true"></div>
 
-## 6. 伪造者首要测试计划与已执行的多ISA/跨GPU结果
+## 6. 证伪优先的测试方案与已执行的 3-OS / 3-ISA / 3-API 结果
 
-每个假设均列出其淘汰标准。若满足该标准，则该主张被撤回。第6.1至6.4节报告了已执行的三套经验性伪造者套件（`GE-H1` 多ISA `Q32.32` 重放，覆盖 25 个目标×宿主单元；`GE-H2` 跨ISA 浮点漂移，涉及 `x86_64` 与 `arm64`/`aarch64`；`GE-H3` 跨GPU 无头 `wgpu` 渲染容差，跨 Apple `Metal`、AMD、NVIDIA 和 Intel `Vulkan`），以及一个交互式功耗预算的 `Q32.32` 原型（`GE-H4` 至 `GE-H9` 仍未完成）。
+每项假设均列出其证伪判据。若满足判据，则撤回相应主张。第 6.1 至 6.4 节报告三组已执行的经验证伪测试套件（`GE-H1`：跨 `30` 个目标×宿主单元的 3-OS × 3-ISA `Q32.32` 重放；`GE-H2`：跨 `Windows 11 UCRT`、`macOS libSystem` 与 `Linux glibc` 的 3-OS × 3-ISA 浮点漂移；`GE-H3`：跨 `DirectX 12`、`Metal` 与 `Vulkan` 的 3-OS × 3-API 无头 `wgpu` 渲染容差），并给出一个交互式、焦耳预算受限的 `Q32.32` 原型（`GE-H4` 至 `GE-H9` 仍处于开放状态）。
 
 | ID | 假设 | 测试语料 | 度量 | 终止准则 | 状态 |
 |---|---|---|---|---|---|
-| GE-H1 | 模拟投影在语言、操作系统和 CPU ISA 间按位完全相同 | 16 体 2D 竞技场 Form（`Q32.32` 定点数，`732` 字节状态），跨越 `arm64` macOS、`aarch64` Linux 以及 AMD/Intel `x86_64` Linux | Rust、Wasm32、C++20（`Clang`/`GCC`）、Node.js `BigInt`、Python 3 下 $10^5$ 步（`25` 个格子）的 $H(s_t)$ | 任何 `(host, target)` 格子在任意检查点出现哈希不匹配 | **已执行（`0 / 20,500` 不匹配，第 6.1 节）** |
-| GE-H2 | 严格模式与跨 ISA 浮点边界及库/FMA 漂移 | 16 体 2D 混沌竞技场（跨越 `arm64` macOS、`aarch64` Linux 以及 AMD/Intel `x86_64` Linux 的 `25,000` 步） | 严格 `f64`、跨 OS `libm` `sin/cos`、跨 ISA `FMA`、V8 `Math.sin` 及 `f32` 下的精确发散步数 `t_div` | 在固定代数运算下出现意外不匹配，或出现未预测的静默漂移 | **已在 `arm64`、`aarch64` 和 `x86_64` 上执行（第 6.2 节）** |
-| GE-H3 | 跨 GPU 渲染保持在有界容差内（`wgpu` / WGSL） | 在 4 个物理 GPU（`Metal`、`RADV`、`NVIDIA`、`ANV`）+ `llvmpipe` + `CPU Q16.16` 上以 `512×512` `RGBA8Unorm` 渲染的 4 个规范 `Q32.32` 状态（`t = 0, 250, 1k, 10k`） | 帧缓冲 `SHA-256`、不同像素百分比、$\Delta_{\max}$、MAE、RMSE、`PSNR` 和 `SSIM` | 任意物理 GPU 对未能满足 `PSNR > 40 dB`、`SSIM > 0.999` 或 $p(\Delta > 8) \le 0.001$ | **已执行（`24/24` 通过门限：`PSNR 64.2-72.1 dB`，`SSIM ≥ 0.99983`，第 6.3 节）** |
-| GE-H4 | Form 编码规则对代码的精简程度与 GameRule 相当 | Haunted Jaunt、Survival Shooter、Tanks 行为 | 行为代码行数 | 精简率低于 50%（GameRule 达到 81.3%） | 开放 |
+| GE-H1 | 模拟投影在语言、操作系统和 CPU ISA 间按位完全相同 | 16 体 2D 竞技场 Form（`Q32.32` 定点数，`732` 字节状态），跨越 `arm64` macOS、`aarch64` Linux、AMD/Intel `x86_64` Linux 以及 Tiger Lake `x86_64` Windows 11 | $H(s_t)$，在 Rust、Wasm32、C++20（`Clang`/`GCC`/`MSVC`）、Node.js `BigInt`、Python 3 下运行 $10^5$ 步（`30` 个单元） | 任何检查点上任何 `(host, target)` 单元出现哈希不匹配 | **已执行（`0 / 25,500` 个不匹配，跨越 `3` 个 OS 与 `3` 个 ISA，6.1 节）** |
+| GE-H2 | 严格模式与 3-OS / 跨 ISA 浮点边界及库/FMA 漂移 | 16 体 2D 混沌竞技场（跨越 `arm64` macOS、`aarch64` Linux、`x86_64` Linux 以及 `x86_64` Windows 11 的 `25,000` 步） | 严格 `f64`、3-OS `UCRT`/`libSystem`/`glibc` `sin/cos`、`MSVC` 与 `Clang` `FMA`、V8 `Math.sin` 以及 `f32` 下的精确分歧步数 `t_div` | 在固定代数运算下出现意外不匹配，或出现未预测的静默漂移 | **已在 macOS、Linux 和 Windows 11 上执行（6.2 节）** |
+| GE-H3 | 跨 GPU 与跨 API 渲染保持在有界容差内（`wgpu` / WGSL） | 4 个规范 `Q32.32` 状态（`t = 0, 250, 1k, 10k`），在 `512×512` `RGBA8Unorm` 下于 `8` 个硬件 `GPU × API` 端点（`DX12`、`Metal`、`Vulkan`）+ `WARP` + `llvmpipe` + `CPU Q16.16` 上渲染 | 帧缓冲 `SHA-256`、不同像素 `%`、$\Delta_{\max}$、MAE、RMSE、`PSNR` 以及 `SSIM` | 任何物理 GPU 对未能满足 `PSNR > 40 dB`、`SSIM > 0.999` 或 $p(\Delta > 8) \le 0.001$ | **已执行（`28/28` 对 = `112/112` 帧通过门限：`PSNR ≥ 64.16 dB`，`SSIM ≥ 0.99983`，6.3 节）** |
+| GE-H4 | Form 编码规则缩减代码量与 GameRule 相当 | Haunted Jaunt、Survival Shooter、Tanks 行为 | 行为代码行数 | 缩减率低于 50%（GameRule 达到 81.3%） | 开放 |
 | GE-H5 | Form 运行时超过 GameRule 上限 | 合成 Actor 缩放 | 针对 $N$ 的步进时间 | 在 $N = 350$ 以下步进时间超过 20 ms | 开放 |
-| GE-H6 | 接口检查能捕获真实缺陷 | Mage 的 26 个模式；注入的绑定与模式错误 | 检测率；机制 F1 | 对注入错误的检测率低于 90%，或 F1 不优于无 IR 的 0.12 | 开放 |
-| GE-H7 | 对 Summer Engine 模板进行完整的 $\ln(\Delta/\delta_0)$ 斜率扫描 | 物理密集型 Summer Engine 模板重新表达为 Form | 针对注入 $\delta_0$ 的发散时间 | $t^{*}$ 对 $\ln(1/\delta_0)$ 的斜率与零无显著差异 | 开放 |
+| GE-H6 | 接口检查能捕获真实缺陷 | Mage 的 26 个模式；注入的绑定与模式错误 | 检测率；机制 F1 | 检测率低于注入错误的 90%，或 F1 不优于无 IR 的 0.12 | 开放 |
+| GE-H7 | 对 Summer Engine 模板进行完整的 $\ln(\Delta/\delta_0)$ 斜率扫描 | 物理密集型 Summer Engine 模板重新表达为 Form | 针对注入 $\delta_0$ 的分歧时间 | $t^{*}$ 对 $\ln(1/\delta_0)$ 的斜率与零无法区分 | 开放 |
 | GE-H8 | 重放是完备的 | 一小时录制会话 | 仅从 $D$ 即可重现最终哈希 | 任何需要 $D$ 中不存在的状态的重放 | 开放 |
-| GE-H9 | 基准一致性 | 通过 Form-to-Godot 发射器执行的 GameCraft-Bench 140 项任务 | 与原生 Godot 提交相比的通过率 | 在行为完全相同的输入上通过率更低 | 开放 |
+| GE-H9 | 基准一致性 | 通过 Form-to-Godot 发射器处理的 GameCraft-Bench 140 项任务 | 与原生 Godot 提交相比的通过率 | 在行为完全相同的输入上通过率更低 | 开放 |
 
-![跨确定性边界的双面板经验总结。左面板为精确区 GE-H1（在 arm64 macOS、aarch64 Linux 以及 AMD/Intel x86_64 Linux 上，25 个单元共 20,500 个 SHA-256 检查点，0 次不匹配）与 GE-H2 跨 ISA f64 发散刻度（Apple libm 与 GNU glibc 的 sin/cos 相比 t_div = 10；x86_64 VFMADD 与 arm64 FMADD 在未启用 -ffast-math 时 t_div = 406）。右面板为容差区 GE-H3 在全部 6 个物理 GPU 组合（Apple Metal、AMD RADV Vulkan、Intel ANV Vulkan、NVIDIA Vulkan）上的最小 PSNR 柱状图，范围为 64.2 至 72.1 dB，远高于 40 dB 门限，像素差异为 1.3% 至 9.3%，差值为 1 至 2 个 LSB。](/figures/game-engines/cross-gpu-tolerance.svg)
+![跨越确定性边界的双面板实证摘要。左面板展示精确区 GE-H1（在 arm64 macOS、aarch64 Linux、AMD/Intel x86_64 Linux 以及 Intel x86_64 Windows 11 上，30 个单元共 25,500 个 SHA-256 检查点，不匹配数为 0）以及 GE-H2 三操作系统 f64 发散刻度（Windows UCRT 与 Apple libm 相对 GNU glibc sin/cos 的 t_div = 10；Windows UCRT 与 Apple libm 的 t_div = 37；MSVC /fp:precise 与 Clang -ffp-contract=fast 的 t_div = 192；x86_64 VFMADD 与 arm64 FMADD 的 t_div = 406）。右面板展示容差区 GE-H3 在 8 个硬件 GPU×API 端点上的最小 PSNR 柱状图，涵盖 DirectX 12、Metal 和 Vulkan，并将同一 GPU 上 DX12 与 Vulkan 编译器漂移（RTX 2060 为 108.3 dB，Iris Xe 为 79.5 dB）与跨厂商光栅化差异（64.2 至 72.1 dB）区分开来，所有数值均远高于 40 dB 的门限。](/figures/game-engines/cross-gpu-tolerance.svg)
 
-*图 3. `GE-H1`、`GE-H2` 与 `GE-H3` 的经验边界。上游 `Q32.32` 仿真状态（`S`）在五台机器、三种 ISA 上实现 `0 / 20,500` 次 `SHA-256` 检查点不匹配，而未固定的 `f64` `sin/cos` 与 `FMA` 在跨操作系统/ISA 边界时于 `10` 至 `406` 个刻度内发生发散。在 $\lambda(s_t)$ 的下游，四种 GPU 架构产生各不相同的 `RGBA8Unorm` `SHA-256` 摘要（像素差异 `1.3%`-`9.3%`，差值为 `1-2` LSB），同时严格高于 `64.1 dB` 的 `PSNR` 与 `0.99983` 的 `SSIM`（`measured_j = None`，`board_metered = false`）。*
+*图 3. `GE-H1`、`GE-H2` 和 `GE-H3` 的实证边界。上游 `Q32.32` 仿真状态 (`S`) 在六台机器、三种操作系统（`macOS`、`Linux`、`Windows 11`）和三种 ISA 上实现了 `0 / 25,500` 次 `SHA-256` 检查点不匹配，而未固定的 `f64` `sin/cos` 和 `FMA` 在 `10` 到 `406` tick 之间跨 OS/编译器/ISA 边界出现偏差。下游的 $\lambda(s_t)$，在完全相同的 Windows 11 GPU 上切换 `DirectX 12` 与 `Vulkan` 会通过着色器降低导致 `1` 个最低有效位翻转（`79.5-108.3 dB` `PSNR`），同时所有 `28 / 28` 硬件 `GPU × API` 对的 `PSNR` 严格保持在 `64.16 dB` 以上，`SSIM` 为 `0.99983`（`measured_j = None`，`board_metered = false`）。*
 
-<div id="61-ge-h1-multi-isa-and-multi-os-100000-tick-determinism-q3232-integer-physics" class="anchor-alias" aria-hidden="true"></div>
+<div id="61-ge-h1-three-os-and-three-isa-100000-tick-determinism-q3232-integer-physics" class="anchor-alias" aria-hidden="true"></div>
 
-### 6.1 `GE-H1`: 多 ISA 与多 OS 的 100,000 tick 确定性（`Q32.32` 整数物理）
+### 6.1 `GE-H1`:三操作系统与三指令集架构的 10 万 tick 确定性（`Q32.32` 整数物理）
 
-*预先注册于 `PREREG_wave3_multi_isa_wgpu.json` (`SHA-256: 1721e5bdffaf...`). 遥测严格区分 `SATB` 等级 `L2` 与 `L3` `reported_j` (`L2`：Linux `/sys/class/powercap/intel-rapl:0/energy_uj` 套接字/包和核心计数器；`L3`：macOS per-PID `proc_pid_rusage(child_pid, RUSAGE_INFO_V6).ri_energy_nj`；`measured_j = None`，`board_metered = false`)。交互式浏览器和原始 JSON：[`/living/game-engines/`](/living/game-engines/)（[`results.json`](/living/game-engines/results.json)）。*
+*预注册于 `PREREG_wave3_multi_isa_wgpu.json`（`SHA-256: 1721e5bdffaf...`）。遥测严格区分 `SATB` 等级 `L2` 与 `L3` 的 `reported_j`。`L2` 为 Linux 下的 `/sys/class/powercap/intel-rapl:0/energy_uj` 套接字/封装（socket/package）及核心计数器；`L3` 为 macOS 下按进程（per-PID）调用 `proc_pid_rusage(child_pid, RUSAGE_INFO_V6).ri_energy_nj` 所得数据，以及 Windows 11 上基于 Win32 `GetProcessTimes` 与 `QueryProcessCycleTime` 的活动记账（该系统上非特权 ring-3 的 `RAPL` `MSR` 访问被阻止）。此时 `measured_j = None`，`board_metered = false`。交互式探索器与原始 JSON 见 [`/living/game-engines/`](/living/game-engines/)（[`results.json`](/living/game-engines/results.json)）。*
 
-在 **五台机器、三种 ISA（`arm64`/`AArch64`、`x86_64`、`wasm32`）、两种操作系统（`macOS 27.2.1`、`Ubuntu Linux 6.8 / 7.0`）以及六种语言/编译器投影（`25` 目标 × 主机单元）** 上，执行了一个 16 体 + 4 拾取的 2D 弹性碰撞与冷却 FSM 竞技场 Form（`Q32.32` 有符号 64 位定点坐标，范围 `[-64, +64]`，`128` 位中间乘积，整数向下取整平方根 `isqrt_u128`，延迟结构化拾取重生，`732` 字节小端序规范状态向量），共计 `100,000` tick：
+一个 16 体 + 4 拾取物的二维弹性碰撞与冷却有限状态机竞技场形式（`Q32.32` 有符号 64 位定点坐标，取值范围 `[-64, +64]`，`128` 位中间乘积，整数向下取整平方根 `isqrt_u128`，延迟的结构性拾取物重生，`732` 字节小端序规范状态向量）在 **六台机器、三种指令集架构（`arm64`/`AArch64`、`x86_64`、`wasm32`）、三种操作系统（`macOS 27.2.1`、`Ubuntu Linux 6.8 / 7.0`、`Microsoft Windows 11 Pro` 构建版本 `26300`）以及七种语言/编译器投影（`30` 个目标 × 宿主单元）** 上执行了 `100,000` 个时钟周期：
 
-| 主机（`ISA` · `OS`） | 目标投影 | 墙钟时间 ms / `100k`（均值 ± 标准差） | `ns / tick` | 遥测通道（`reported_j`） | `reported_j` / `100k`（J） | 经验证的 `SHA-256` 检查点 |
+| 主机（`ISA` · `OS`） | 目标投影 | 壁钟 ms / `100k`（均值 ± 标准差） | `ns / tick` | 遥测通道（`reported_j`） | `reported_j` / `100k`（J） | 已验证 `SHA-256` 检查点 |
 |---|---|---:|---:|---|---:|:---:|
-| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `rust_native`（`rustc 1.100 -O`） | `22.333 ± 5.043` | `223.3` | `L3` 按 PID `ri_energy_nj` | **`0.1028 ± 0.0247`** | `100 / 100`（`stride 1,000`） |
-| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `cpp20_clang_o3`（`Apple Clang 21`） | `21.022 ± 1.657` | `210.2` | `L3` 按 PID `ri_energy_nj` | **`0.1090 ± 0.0134`** | `100 / 100`（`stride 1,000`） |
-| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `rust_wasm32_node`（`Node v26.13`） | `84.300 ± 11.334` | `843.0` | `L3` 按 PID `ri_energy_nj` | **`0.4480 ± 0.0881`** | `100 / 100`（`stride 1,000`） |
-| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `javascript_bigint_node`（`ES2024`） | `717.955 ± 36.304` | `7,179.6` | `L3` 按 PID `ri_energy_nj` | **`4.4021 ± 0.4048`** | `100 / 100`（`stride 1,000`） |
-| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `python_3_13`（`CPython 3.13.14`） | `2,945.816 ± 284.033` | `29,458.2` | `L3` 按 PID `ri_energy_nj` | **`13.5999 ± 1.9086`** | `100 / 100`（`stride 1,000`） |
-| **Apple M3 Ultra**（`arm64` · `macOS 27.2.1`） | `rust_native` / `cpp20_clang_o3` | `32.711` / `33.727` | `327.1` / `337.3` | `L3` 按 PID `ri_energy_nj` | **`0.0729` / `0.0755`** | `2 × 1,000 / 1,000`（`stride 100`） |
-| **AMD Ryzen AI Max+ 395**（`Zen 5` `x86_64` · `Linux 7.0`） | `rust_native` / `cpp20_clang_o3` / `cpp20_gcc_o3` | `21.793` / `23.061` / `26.677` | `217.9` - `266.8` | `L2` AMD RAPL pkg（核心 `0.13`-`0.21 J`） | **`1.958` / `2.349` / `2.932`** | `3 × 1,000 / 1,000`（`stride 100`） |
-| **AMD Ryzen AI Max+ 395**（`Zen 5` `x86_64` · `Linux 7.0`） | `rust_wasm32` / `js_bigint` / `python_3_14` | `145.29` / `1,347.80` / `2,546.42` | `1,452.9` - `25,464.2` | `L2` AMD RAPL pkg（核心 `1.01`-`12.23 J`） | **`14.44` / `115.81` / `181.87`** | `3 × 1,000 / 1,000`（`stride 100`） |
-| **Intel Core i9-13900H**（`Raptor Lake` `x86_64` · `Linux 7.0`） | `rust_native` / `cpp20_clang_o3` / `cpp20_gcc_o3` | `39.718` / `36.868` / `58.792` | `368.7` - `587.9` | `L2` Intel RAPL pkg（核心 `1.64`-`2.68 J`） | **`2.062` / `1.888` / `3.026`** | `3 × 1,000 / 1,000`（`stride 100`） |
-| **Intel Core i9-13900H**（`Raptor Lake` `x86_64` · `Linux 7.0`） | `rust_wasm32` / `js_bigint` / `python_3_14` | `158.35` / `1,390.46` / `3,375.07` | `1,583.5` - `33,750.7` | `L2` Intel RAPL pkg（核心 `5.65`-`124.90 J`） | **`6.89` / `60.79` / `149.48`** | `3 × 1,000 / 1,000`（`stride 100`） |
-| **NVIDIA Jetson Thor**（`Armv9-A` `aarch64` · `Linux 6.8`） | `rust_native` / `clang` / `gcc` / `wasm32` / `js` / `py3.12` | `39.28`（`GCC`） - `4,407.89`（`Py`） | `392.8` - `44,078.9` | 仅 CPU（`reported_j = null`，GPU 未触碰） | `null` | `6 × 1,000 / 1,000`（`stride 100`） |
+| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `rust_native`（`rustc 1.100 -O`） | `22.333 ± 5.043` | `223.3` | 每PID `ri_energy_nj` 的 `L3` | **`0.1028 ± 0.0247`** | `100 / 100`（`stride 1,000`） |
+| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `cpp20_clang_o3`（`Apple Clang 21`） | `21.022 ± 1.657` | `210.2` | 每PID `ri_energy_nj` 的 `L3` | **`0.1090 ± 0.0134`** | `100 / 100`（`stride 1,000`） |
+| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `rust_wasm32_node`（`Node v26.13`） | `84.300 ± 11.334` | `843.0` | 每PID `ri_energy_nj` 的 `L3` | **`0.4480 ± 0.0881`** | `100 / 100`（`stride 1,000`） |
+| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `javascript_bigint_node`（`ES2024`） | `717.955 ± 36.304` | `7,179.6` | 每PID `ri_energy_nj` 的 `L3` | **`4.4021 ± 0.4048`** | `100 / 100`（`stride 1,000`） |
+| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `python_3_13`（`CPython 3.13.14`） | `2,945.816 ± 284.033` | `29,458.2` | 每PID `ri_energy_nj` 的 `L3` | **`13.5999 ± 1.9086`** | `100 / 100`（`stride 1,000`） |
+| **Apple M3 Ultra**（`arm64` · `macOS 27.2.1`） | `rust_native` / `cpp20_clang_o3` | `32.711` / `33.727` | `327.1` / `337.3` | 每PID `ri_energy_nj` 的 `L3` | **`0.0729` / `0.0755`** | `2 × 1,000 / 1,000`（`stride 100`） |
+| **AMD Ryzen AI Max+ 395**（`Zen 5` `x86_64` · `Linux 7.0`） | `rust_native` / `cpp20_clang_o3` / `cpp20_gcc_o3` | `21.793` / `23.061` / `26.677` | `217.9` - `266.8` | `L2` AMD RAPL 包（核心 `0.13`-`0.21 J`） | **`1.958` / `2.349` / `2.932`** | `3 × 1,000 / 1,000`（`stride 100`） |
+| **AMD Ryzen AI Max+ 395**（`Zen 5` `x86_64` · `Linux 7.0`） | `rust_wasm32` / `js_bigint` / `python_3_14` | `145.29` / `1,347.80` / `2,546.42` | `1,452.9` - `25,464.2` | `L2` AMD RAPL 包（核心 `1.01`-`12.23 J`） | **`14.44` / `115.81` / `181.87`** | `3 × 1,000 / 1,000`（`stride 100`） |
+| **Intel Core i9-13900H**（`Raptor Lake` `x86_64` · `Linux 7.0`） | `rust_native` / `cpp20_clang_o3` / `cpp20_gcc_o3` | `39.718` / `36.868` / `58.792` | `368.7` - `587.9` | `L2` Intel RAPL 包（核心 `1.64`-`2.68 J`） | **`2.062` / `1.888` / `3.026`** | `3 × 1,000 / 1,000`（`stride 100`） |
+| **Intel Core i9-13900H**（`Raptor Lake` `x86_64` · `Linux 7.0`） | `rust_wasm32` / `js_bigint` / `python_3_14` | `158.35` / `1,390.46` / `3,375.07` | `1,583.5` - `33,750.7` | `L2` Intel RAPL 包（核心 `5.65`-`124.90 J`） | **`6.89` / `60.79` / `149.48`** | `3 × 1,000 / 1,000`（`stride 100`） |
+| **NVIDIA Jetson Thor**（`Armv9-A` `aarch64` · `Linux 6.8`） | `rust_native` / `clang` / `gcc` / `wasm32` / `js` / `py3.12` | `39.28`（`GCC`）- `4,407.89`（`Py`） | `392.8` - `44,078.9` | 仅CPU（`reported_j = null`，GPU未触及） | `null` | `6 × 1,000 / 1,000`（`stride 100`） |
+| **Intel Core i7-1165G7**（`Tiger Lake` `x86_64` · `Windows 11 26300`） | `rust_native`（`x86_64-pc-windows-msvc`） / `cpp20_msvc_o2`（`cl.exe 19.44`） | `49.730 ± 1.727` / `343.363 ± 3.827` | `497.3` / `3,433.6` | Win32 `L3` 周期（`138.9M` / `958.9M`；CPU `RAPL` 被阻止） | `null` | `2 × 1,000 / 1,000`（`stride 100`） |
+| **Intel Core i7-1165G7**（`Tiger Lake` `x86_64` · `Windows 11 26300`） | `rust_wasm32`（`Node v26.13`） / `js_bigint` / `python_3_10` | `198.01` / `1,776.96` / `8,899.23` | `1,980.1` - `88,992.3` | Win32 `L3` 周期（`553.8M` - `24,722.2M`；CPU `RAPL` 被阻止） | `null` | `3 × 1,000 / 1,000`（`stride 100`） |
 
-- **结论**: **`PASS_ZERO_MISMATCHES`(`0 / 20,500` 个已验证的 `SHA-256` 检查点;20 个完整轨迹第三波单元的 `0 / 190,000` 次成对步长为 `100` 的比较)**。每个目标在每台主机上都在第 `100` 个 tick 产生 `2683c3f7cb8b...`,在第 `1,000` 个 tick 产生 `21fa688e4ee8...`,在第 `50,000` 个 tick 产生 `ea01ba793841...`,在第 `100,000` 个 tick 产生 `82e404df6475d64d...`。
-- **遥测范围与操作系统覆盖**: 必须注意 `L2` 与 `L3` 的 `reported_j` 绝不可混为一谈。Apple 的 `L3` `ri_energy_nj` 严格将 CPU 核心能耗归因于被测子进程 PID(原生 Rust/C++ 为 `0.073`-`0.109 J`),而 Linux 的 `/sys/class/powercap/intel-rapl:0`(`L2`)则对整个插槽范围内所有后台守护进程的封装功率进行积分(封装功率为 `1.89`-`2.06 J`,`core` 子域为 `0.13`-`1.83 J`)。在共享 Linux 运行器上,已检查 `x86_64-w64-mingw32-g++` / `wine64` 的交叉编译环境,二者均不存在;并且运行期间裸机 Windows `x86_64` 主机处于关机状态。因此,Windows PE 的执行在裸机上仍未得到验证。不过,与操作系统无关的 `wasm32-unknown-unknown` 在 macOS 与 Linux 上、于 arm64 与 x86_64 两种架构下结果完全一致。
+- **判定**：**`PASS_ZERO_MISMATCHES`（`0 / 25,500` 已验证 `SHA-256` 检查点遍及 `30` 单元格；`0 / 300,000` 成对 stride-`100` 比较遍及 `25` 完整轨迹单元格，涵盖 `macOS`、`Linux` 与 `Windows 11`）**。每个目标在每台主机上均在 tick `100` 时产生 `2683c3f7cb8b...`，在 tick `1,000` 时产生 `21fa688e4ee8...`，在 tick `50,000` 时产生 `ea01ba793841...`，在 tick `100,000` 时产生 `82e404df6475d64d...`。
+- **Windows `MSVC` `<__msvc_int128.hpp>` 与 `LLVM` `i128` 代码生成**：在裸机 Windows 11（`x86_64` `PE`）上，`MSVC`（`cl.exe 19.44.35207 /std:c++20 /O2 /fp:strict`）缺乏内建 `__int128` 标量类型，将 `<__msvc_int128.hpp>` 中的 `std::_Signed128` 与 `std::_Unsigned128` 算术降级为多字库例程（`343.36 ms`、`958.9M` CPU 周期每 `100k` tick，较 `rustc 1.100` LLVM 本地 `x86_64-pc-windows-msvc` 的 `49.73 ms` / `138.9M` 周期慢 `6.90×`，且较 `Node.js` `Wasm32` JIT 的 `198.01 ms` 慢 `1.73×`），但在全部 `1,000` 检查点上仍保持 `100%` 位对位状态一致性。
+- **跨 `macOS`、`Linux` 与 `Windows 11` 的遥测范围**：请注意为何 `L2` 与 `L3` 通道绝不可混用：Apple `L3` `ri_energy_nj` 将 CPU 核心能耗严格归属到基准子进程 PID（原生 Rust/C++ 为 `0.073`-`0.109 J`），Linux `/sys/class/powercap/intel-rapl:0`（`L2`）汇总整个插槽的封装功耗（封装 `1.89`-`2.06 J` 对比 `core` `0.13`-`1.83 J`），而 Windows `NT 10.0.26300` 在未加载环-0 内核驱动的情况下阻止非特权用户模式的 Intel `RAPL` `MSR` 读取，同时提供精确的每 PID `L3` 周期计数（`QueryProcessCycleTime`）。
 
-<div id="62-ge-h2-cross-isa-and-cross-os-25000-tick-floating-point-drift-ieee-754-f64" class="anchor-alias" aria-hidden="true"></div>
+<div id="62-ge-h2-three-os-and-cross-isa-25000-tick-floating-point-drift-ieee-754-f64" class="anchor-alias" aria-hidden="true"></div>
 
-### 6.2 `GE-H2`：跨 ISA 与跨 OS 的 25,000 tick 浮点漂移（`IEEE 754` `f64`）
+### 6.2 `GE-H2`：三操作系统及跨指令集的 25,000 tick 浮点漂移（`IEEE 754` `f64`）
 
-为了测试在禁用 `-ffast-math` 的情况下，`IEEE 754` `binary64`（`f64`）仿真在 `x86_64` 与 `arm64`/`aarch64` 上是否能够保持同步，对相同的 16 体混沌竞技场执行了 `25,000` tick（在 `60 Hz` 下约 `6.94` 分钟）的步进，在每个 tick 上对标准化的 `IEEE 754` 位（`t_div_ieee_bits`）、量化至 `10^-3` 竞技场单位位置（`t_div_macro_1e3`）以及离散的游戏状态（`t_div_gameplay`）进行哈希：
+为检验在禁用 `-ffast-math` 与 `/fp:fast` 的前提下，`IEEE 754` `binary64`（`f64`）模拟能否在 `Windows 11`、`macOS` 和 `Linux`（`x86_64` 与 `arm64`/`aarch64`）之间保持同步，我们将同一个 16 体混沌竞技场推进 `25,000` 个 tick（按 `60 Hz` 计，合 `~6.94` 分钟）。在每一个 tick 上，我们分别对规范化的 `IEEE 754` 比特位（`t_div_ieee_bits`）、量化至 `10^-3` 竞技场单位的位置（`t_div_macro_1e3`）以及离散的游戏玩法状态（`t_div_gameplay`）计算哈希。
 
 | 主机 / 目标 A | 主机 / 目标 B | 扰动机制 | `t_div_ieee_bits` | `t_div_macro_1e3` | `t_div_gameplay` |
 |---|---|---|---:|---:|---:|
-| `arm64` macOS `Clang 21` (`f64_strict`) | AMD Zen 5 & Intel RPL `x86_64` Linux `Clang 21` / `GCC 15.2` | 跨 ISA 与跨 OS `f64` 代数 + `sqrt`，`FMA` 关闭（`-ffp-contract=off`，无三角函数） | `无（>25,000）` | `无（>25,000）` | `无（>25,000）` |
-| `x86_64` Linux `glibc 2.43` (`f64_trig`) | `aarch64` Linux `glibc 2.39` (`f64_trig`) | 跨 ISA Linux GNU `glibc` `std::sin/cos`（`-ffp-contract=off`，无 `-ffast-math`） | `无（>25,000）` | `无（>25,000）` | `无（>25,000）` |
-| **Apple `arm64` macOS (`f64_trig`, `-ffp-contract=off`)** | **AMD/Intel `x86_64` & Thor `aarch64` Linux (`f64_trig`, `-ffp-contract=off`)** | **跨 OS 标准 `libm` `std::sin/cos`（`Apple libSystem` 对比 `GNU glibc`，无 `-ffast-math`）** | **`10` (`0.17 s`)** | **`5,900`** | **`9,798` (`163.3 s`)** |
-| **`x86_64` Linux (`-O3 -mavx2 -mfma -ffp-contract=fast`)** | **Apple `arm64` & Thor `aarch64` (`-O3 -ffp-contract=fast`)** | **跨 ISA `FMA` 降级（`x86_64 VFMADD/VFNMADD` 对比 `AArch64 FMADD/FMSUB`，仅代数，未使用 `-ffast-math`）** | **`406` (`6.77 s`)** | **`7,422`** | **`11,205` (`186.8 s`)** |
-| **`x86_64` Linux `Node v22.22` (`f64_trig`)** | **`aarch64` Linux `Node v24.22` (`f64_trig`)** | **跨 ISA Node.js V8 `Math.sin/cos`（`x86_64` 对比 `aarch64`）** | **`66` (`1.10 s`)** | **`7,617`** | **`10,093` (`168.2 s`)** |
-| **`cpp_f64_strict` (`-ffp-contract=off`)** | **`cpp_f64_fma` / `-ffast-math`** | **同主机 `FMA` 合并（`-ffp-contract=off` 对比 `-ffp-contract=fast`）** | **`192` (`3.20 s`)** | **`5,927`-`6,576`** | **`8,869`-`10,093`** |
-| **`cpp_f64_strict` / `trig`** | **`cpp_f32_strict` / `trig`** | **精度降级（`binary64` `f64` 对比 `binary32` `f32`）** | **`1`** | **`8`-`9`** | **`1,370`-`2,240`** |
+| `Windows 11 x86_64` (`MSVC /fp:strict`, `Rust`, `V8`, `Py`) | `arm64 macOS` & `x86_64`/`aarch64 Linux` (`Clang`/`GCC`/`Rust`) | 3-OS & 3-ISA `f64` & `f32` 代数运算 + `sqrt`，`FMA` 关闭 (`/fp:strict`, `-ffp-contract=off`，无三角函数) | `None (>25,000)` | `None (>25,000)` | `None (>25,000)` |
+| `x86_64 Linux glibc 2.43` (`f64_trig`) | `aarch64 Linux glibc 2.39` (`f64_trig`) | 跨 ISA Linux GNU `glibc` `std::sin/cos` (`-ffp-contract=off`，无 `-ffast-math`) | `None (>25,000)` | `None (>25,000)` | `None (>25,000)` |
+| **`Windows 11 x86_64 UCRT` (`MSVC /fp:strict` & `Rust`)** | **`x86_64 Linux GNU glibc 2.43` (`Clang` & `Rust`, `-ffp-contract=off`)** | **跨 OS 同 ISA (`x86_64`) `std::sin/cos` (`ucrtbase.dll` vs `glibc`，无 fast-math)** | **`10`** (`0.17 s`) | **`7,899`** | **`10,392`** (`173.2 s`) |
+| **Apple `arm64` macOS (`f64_trig`, `-ffp-contract=off`)** | **AMD/Intel `x86_64` & Thor `aarch64` Linux (`f64_trig`, `-ffp-contract=off`)** | **跨 OS 标准 `libm` `std::sin/cos` (`Apple libSystem` vs `GNU glibc`，无 `-ffast-math`)** | **`10`** (`0.17 s`) | **`5,900`** | **`9,798`** (`163.3 s`) |
+| **`Windows 11 x86_64 UCRT` (`MSVC /fp:strict` & `Rust`)** | **Apple `arm64` macOS (`libSystem`, `-ffp-contract=off`)** | **跨 OS & 跨 ISA `std::sin/cos` (`Windows UCRT` vs `Apple libSystem`，无 fast-math)** | **`37`** (`0.62 s`) | **`5,900`** | **`9,798`** (`163.3 s`) |
+| **`Windows 11 MSVC` (`/O2 /arch:AVX2 /fp:precise` 默认)** | **`x86_64 Linux Clang 21` (`-O3 -mavx2 -mfma -ffp-contract=fast` 默认)** | **跨编译器 `x86_64` `FMA` 默认 (`MSVC /fp:precise` 无收缩 vs `Clang` `FMA`，仅代数运算)** | **`192`** (`3.20 s`) | **`5,927`** | **`8,869`** (`147.8 s`) |
+| **`x86_64` Linux (`-O3 -mavx2 -mfma -ffp-contract=fast`)** | **Apple `arm64` & Thor `aarch64` (`-O3 -ffp-contract=fast`)** | **跨 ISA `FMA` 降低 (`x86_64 VFMADD/VFNMADD` vs `AArch64 FMADD/FMSUB`，仅代数运算，无 `-ffast-math`)** | **`406`** (`6.77 s`) | **`7,422`** | **`11,205`** (`186.8 s`) |
+| **`Windows 11` & `Linux x86_64` `Node.js` (`V8 Math.sin/cos`)** | **`macOS arm64` & `Linux aarch64` `Node.js` (`V8 Math.sin/cos`)** | **跨 ISA Node.js V8 `Math.sin/cos` (`0` 漂移 Win11 vs Linux `x86_64`；与 `arm64`/`aarch64` 发散)** | **`66`** (`1.10 s`) | **`7,617`** | **`10,093`** (`168.2 s`) |
+| **`cpp_f64_strict` (`/fp:strict`, `-ffp-contract=off`)** | **`MSVC /fp:fast`, `Rust mul_add`, 或 `Clang -ffast-math`** | **同主机 `FMA` 收缩 (`/fp:strict` vs `/fp:fast` 或显式 `mul_add`)** | **`192`** (`3.20 s`) | **`5,927`-`6,576`** | **`8,869`-`10,093`** |
+| **`cpp_f64_strict` / `trig`** | **`cpp_f32_strict` / `trig`** | **精度降级 (`binary64` `f64` vs `binary32` `f32`)** | **`1`** | **`8`-`9`** | **`1,370`-`2,240`** |
 
-三次跨 ISA 的显著发现如下：
+四项尖锐的 3-OS 与跨 ISA 发现如下：
+1. **IEEE 754-2008 `+`, `-`, `*`, `/`, 与 `sqrt` 在禁用 `FMA`（`/fp:strict` 与 `-ffp-contract=off`）时在 `Windows 11`、`macOS` 与 `Linux` 上的 `x86_64` 与 `arm64`/`aarch64` 上实现位级可移植**（在 `MSVC`、`Clang`、`GCC`、`Rustc`、`V8` 与 `CPython` 上共计 `25,000` tick 中 `0` 次不匹配），因为所有五个操作均被规定向 `0.5` ULP 舍入。
+2. **所有三大 OS 数学库（`Windows UCRT`、`macOS libSystem` 与 `Linux GNU glibc`）在严格 `f64`（`no fast-math`）下形成两两分歧的三角形**：即使在同一 `x86_64` ISA 上，`Windows` 的 `ucrtbase.dll`（`10.0.26100.9711`）在 tick `10`（`t_div_gameplay = 10,392`）即与 `Linux glibc 2.43` 分歧，而 `Windows UCRT` 在 tick `37`（`t_div_gameplay = 9,798`）与 `Apple libSystem` 分歧，`Apple libSystem` 在 tick `10`（`t_div_gameplay = 9,798`）又与 `glibc` 分歧。于 `Windows 11` 中，`MSVC /fp:strict`、`Rust x86_64-pc-windows-msvc` 与 `CPython 3.10` 均链接 `ucrtbase.dll` 并在 `> 25,000` tick 上保持一致（`b1fbc91788a59cff`），但在 tick `149` 与 `Windows Node.js V8` 分歧。
+3. **默认编译器 `FMA` 策略在相同 `x86_64` ISA 上的 `MSVC` 与 `Clang`（`t = 192`）以及跨 `x86_64` 与 `AArch64`（`t = 406`）之间出现分歧**：`MSVC` 的默认 `/O2 /arch:AVX2 /fp:precise` 不会折叠 `a + b * c`（`> 25,000` tick 与 `/fp:strict` 完全相同），因此在 tick `192`（`t_div_gameplay = 8,869`）与 `Clang 21` 的默认 `-O3 -mavx2 -mfma`（默认开启 `-ffp-contract=fast`）产生分歧。即使两者均启用折叠，LLVM 在 `x86_64`（`VFMADD`/`VFNMADD`）与 `AArch64`（`FMADD`/`FMSUB`）上对取负乘减的降级方式不同，也在 tick `406`（`t_div_gameplay = 11,205`）出现分歧。
+4. **JavaScript V8 的 `Math.sin`/`Math.cos` 在 `x86_64` 上的 OS 无关（`Windows 11 Node v26.13` 与 `Linux x86_64 Node v22.22` 在 `> 25,000` tick 上保持一致），但在 ISA 上存在依赖（`x86_64` 与 `arm64`/`aarch64` 在 tick `66` 分歧）**。
 
-1. **IEEE 754-2008 `+`、`-`、`*`、`/` 以及 `sqrt` 在禁用 `FMA`（`-ffp-contract=off`）时可在 `x86_64` 与 `arm64`/`aarch64` 之间实现按位可移植**（在 `Clang`、`GCC`、`Rustc` 和 `V8` 上对 `25,000` 个时钟周期的测试中 `0` 次失配），因为这五种运算均被强制要求舍入到 `0.5` ULP。
-2. **标准 C++ `std::sin`/`std::cos` 即使在 `-ffp-contract=off -fno-fast-math` 下也会在第 `10` 个时钟周期（`0.17 s`）打破跨操作系统确定性**：Apple 的 `libSystem` `libm` 与 GNU `glibc` 在第 `10` 个时钟周期对转向冲量的舍入相差 `1` ULP，这种差异被混沌的 16 体碰撞放大为第 `5,900` 个时钟周期时超过 `10^-3` 的位置误差，并在第 `9,798` 个时钟周期（`163.3 s`）导致离散得分/拾取物不同步。
-3. **编译器默认的 `FMA` 融合（`-ffp-contract=fast`，不使用 `-ffast-math` 或任何三角函数）在第 `406` 个时钟周期（`6.77 s`）打破跨 ISA 确定性**：虽然 AMD Zen 5 和 Intel Raptor Lake 在 `x86_64` 上按位完全一致（`844172b5...`），Apple M3 Ultra 和 Jetson Thor 在 `AArch64` 上也按位完全一致（`deeb446c...`），但 LLVM 对取反乘减表达式的 lowering 在 `x86_64`（`AVX2` `VFMADD`/`VFNMADD`）与 `AArch64`（`NEON` `FMADD`/`FMSUB`）之间存在差异，导致游戏在第 `11,205` 个时钟周期出现不同步。
+<div id="63-ge-h3-three-os-three-api-headless-wgpu-directx-12--metal--vulkan-rendering-tolerance" class="anchor-alias" aria-hidden="true"></div>
 
-<div id="63-ge-h3-cross-gpu-headless-wgpu-metal--vulkan-rendering-tolerance" class="anchor-alias" aria-hidden="true"></div>
+### 6.3 `GE-H3`：三系统、三 API 无头 `wgpu`（`DirectX 12` / `Metal` / `Vulkan`）渲染容差
 
-### 6.3 `GE-H3`：跨 GPU 无头 `wgpu`（`Metal` / `Vulkan`）渲染容差
+为检验图 1 右侧在三大主流桌面图形 API 上的情况，`ge_h3_wgpu_bench`（`wgpu v22.1.0`，`Backends::DX12 | Backends::VULKAN | Backends::METAL`）通过同一套两遍式 WGSL 着色器，将四个标准 `Q32.32` 仿真快照（`ticks 0, 250, 1,000, 10,000`）渲染到 `512×512` 的 `RGBA8Unorm` 帧缓冲中（每帧 `262,144` 像素，`1,048,576` 字节）。测试覆盖八个硬件 **`GPU × API` 端点**（`Apple M3 Ultra Metal`、`AMD Radeon 8060S Linux RADV Vulkan`、`Intel Iris Xe RPL-P Linux ANV Vulkan`、`NVIDIA RTX 4050 Linux Vulkan`、`NVIDIA RTX 2060 Win11 DirectX 12`、`NVIDIA RTX 2060 Win11 Vulkan`、`Intel Iris Xe TGL Win11 DirectX 12` 和 `Intel Iris Xe TGL Win11 Vulkan`），并纳入 **`Microsoft Basic Render Driver`（`Win11 DirectX 12 WARP`）**、**`Mesa llvmpipe`（`Linux CPU Vulkan`）** 以及零浮点的 **`CPU Q16.16`** 整数参考光栅化器作为对照。
 
-为了对图 1 右侧的情形进行实证检验，我们使用一个自包含的 Rust 无头 `wgpu`（`v22.1.0`）基准程序（`ge_h3_wgpu_bench`），将四个典型的 `Q32.32` 仿真快照（`ticks 0, 250, 1,000, 10,000`）渲染到 `512×512` 的 `RGBA8Unorm` 帧缓冲区中（每帧 `262,144` 像素，`1,048,576` 字节）。渲染采用两遍 WGSL 流水线：先绘制基于三角函数的程序化雷达/网格背景，再以声明顺序依次叠加 `20` 个采用 `SrcAlpha / OneMinusSrcAlpha` 混合的 SDF 图元与 Blinn-Phong 光照的三维球体/环面实体。同时，我们还运行了一个零浮点的 `CPU Q16.16` 整数软件参考光栅化器作为对照。
-
-| 适配器 A（`API` · 驱动） | 适配器 B（`API` · 驱动） | 平均差异像素（`%`） | 最大 $|\Delta|$（`0..255`） | 平均 MAE（`u8`） | 平均 RMSE（`u8`） | 最小 `PSNR`（`dB`） | 最小 `SSIM` | `GE-H3` 判定 |
+| 适配器 A (`OS` · `API` · 驱动) | 适配器 B (`OS` · `API` · 驱动) | 平均差异像素 (`%`) | 最大 $|\Delta|$ (`0..255`) | 平均 MAE (`u8`) | 平均 RMSE (`u8`) | 最小 `PSNR` (`dB`) | 最小 `SSIM` | `GE-H3` 门限 |
 |---|---|---:|---:|---:|---:|---:|---:|:---:|
-| **Apple M3 Ultra（`Metal` 4）** | **Intel Iris Xe（`Vulkan` · Mesa `ANV` 26.0.8）** | `1.301%` | `2` | `0.00386` | `0.06215` | **`72.06`** | **`0.999986`** | **通过** |
-| **AMD Radeon 8060S（`Vulkan` · Mesa `RADV` 26.0.8）** | **Apple M3 Ultra（`Metal` 4）** | `3.103%` | `1` | `0.00788` | `0.08876` | **`69.09`** | **`0.999956`** | **通过** |
-| **AMD Radeon 8060S（`Vulkan` · Mesa `RADV` 26.0.8）** | **Intel Iris Xe（`Vulkan` · Mesa `ANV` 26.0.8）** | `3.774%` | `2` | `0.01022` | `0.10116` | **`67.97`** | **`0.999951`** | **通过** |
-| **AMD Radeon 8060S（`Vulkan` · Mesa `RADV` 26.0.8）** | **NVIDIA GeForce RTX 4050（`Vulkan` · `595.99.02`）** | `6.553%` | `2` | `0.01735` | `0.13179` | **`65.64`** | **`0.999874`** | **通过** |
-| **Intel Iris Xe（`Vulkan` · Mesa `ANV` 26.0.8）** | **NVIDIA GeForce RTX 4050（`Vulkan` · `595.99.02`）** | `8.280%` | `2` | `0.02149` | `0.14667` | **`64.79`** | **`0.999844`** | **通过** |
-| **Apple M3 Ultra（`Metal` 4）** | **NVIDIA GeForce RTX 4050（`Vulkan` · `595.99.02`）** | `9.337%` | `2` | `0.02467` | `0.15720` | **`64.16`** | **`0.999833`** | **通过** |
-| 物理 GPU（`4` 家厂商） | `Mesa llvmpipe`（`LLVM 21.1.8` CPU `Vulkan`） | `1.541%` - `9.633%` | `2` - `3` | `0.00477` - `0.02601` | `0.06895` - `0.16173` | `63.86` - `70.87` | `0.999828` - `0.999984` | **通过** |
-| 物理 GPU（`4` 家厂商） | `CPU Q16.16` 零浮点整数参考实现 | `20.400%` - `27.626%` | `2` | `0.05612` - `0.07864` | `0.23689` - `0.28068` | `59.13` - `60.58` | `0.999556` - `0.999693` | **通过** |
+| **NVIDIA RTX 2060 (`Win11 DirectX 12` · `591.74`)** | **NVIDIA RTX 4050 (`Linux Vulkan` · `595.99.02`)** | **`0.000%`** (`0` px) | **`0`** | `0.00000` | `0.00000` | **`∞` (`4/4` 精确)** | **`1.000000`** | **通过** |
+| **NVIDIA RTX 2060 (`Win11 DirectX 12` · `HLSL`/`DXIL`)** | **NVIDIA RTX 2060 (`Win11 Vulkan` · `SPIR-V`)** *(同一 GPU)* | **`0.0002%`** (`0-1` px) | **`1`** | `0.000001` | `0.00049` | **`108.34`** | **`1.000000`** | **通过** |
+| **Intel Iris Xe (`Win11 DirectX 12` · `31.0.101.3222`)** | **Intel Iris Xe (`Linux Vulkan` · Mesa `ANV` 26.0.8)** | `0.0003%` | `1` | `0.000001` | `0.00059` | **`105.33`** | **`1.000000`** | **通过** |
+| **Intel Iris Xe (`Win11 DirectX 12` · `HLSL`/`DXIL`)** | **Intel Iris Xe (`Win11 Vulkan` · `SPIR-V`)** *(同一 GPU)* | **`0.283%`** (`729-758` px) | **`1`** | `0.00071` | `0.02665` | **`79.52`** | **`0.999996`** | **通过** |
+| **Apple M3 Ultra (`macOS Metal` 4)** | **Intel Iris Xe (`Win11 DirectX 12` / `Linux ANV Vulkan`)** | `1.301%` | `2` | `0.00386` | `0.06215` | **`72.06`** | **`0.999986`** | **通过** |
+| **Apple M3 Ultra (`macOS Metal` 4)** | **Intel Iris Xe (`Win11 Vulkan` · `31.0.101.3222`)** | `1.573%` | `2` | `0.00455` | `0.06743` | **`71.39`** | **`0.999982`** | **通过** |
+| **AMD Radeon 8060S (`Linux Vulkan` · Mesa `RADV`)** | **Apple M3 Ultra (`macOS Metal` 4)** | `3.103%` | `1` | `0.00788` | `0.08876` | **`69.09`** | **`0.999956`** | **通过** |
+| **AMD Radeon 8060S (`Linux Vulkan` · Mesa `RADV`)** | **Intel Iris Xe (`Win11 DirectX 12` / `Win11 Vulkan`)** | `3.774%` / `3.565%` | `2` | `0.01022` / `0.00968` | `0.10116` / `0.09844` | **`67.97`** / **`68.20`** | **`0.999951`** | **通过** |
+| **AMD Radeon 8060S (`Linux Vulkan` · Mesa `RADV`)** | **NVIDIA RTX 2060 (`Win11 DX12` / `Vulkan`) & RTX 4050** | `6.554%` | `2` | `0.01735` | `0.13180` | **`65.64`** | **`0.999874`** | **通过** |
+| **NVIDIA RTX 2060 (`Win11 DirectX 12`)** | **Intel Iris Xe (`Win11 DirectX 12`)** *(同一 Win11 主机)* | `8.279%` | `2` | `0.02149` | `0.14667` | **`64.79`** | **`0.999844`** | **通过** |
+| **Apple M3 Ultra (`macOS Metal` 4)** | **NVIDIA RTX 2060 (`Win11 DX12` / `Vulkan`) & RTX 4050** | `9.337%` | `2` | `0.02467` | `0.15721` | **`64.16`** | **`0.999833`** | **通过** |
+| **Apple M3 Ultra (`macOS Metal` 4)** | **`Microsoft WARP` (`Win11 DirectX 12` CPU)** | `0.003%` | `1` | `0.000008` | `0.00271` | **`98.79`** | **`1.000000`** | **通过** |
+| **`Microsoft WARP` (`Win11 DirectX 12` CPU)** | **`Mesa llvmpipe` (`Linux LLVM 21.1.8` CPU `Vulkan`)** | `1.591%` | `2` | `0.00543` | `0.07359` | **`70.35`** | **`0.999983`** | **通过** |
+| 硬件 GPU (`DX12`/`Metal`/`Vulkan` 上的 `8` 个端点) | **`CPU Q16.16` 零浮点整数参考 (`4` 台主机)** | `20.400%` - `27.626%` | `2` | `0.05612` - `0.07864` | `0.23689` - `0.28068` | `59.13` - `60.58` | `0.999556` - `0.999693` | **通过** |
 
-- **比特精确性被证伪，已确认有界容差（`24 / 24` 物理 GPU 帧对）**: 每个物理 GPU 对产生了不同的原始 `RGBA8` `SHA-256` 摘要（`0 / 24` 位匹配），原因是硬件 SFU `sin`/`cos`/`pow` 近似以及 `unorm8` ROP 混合取整，然而 **任何物理 GPU 对上没有像素的差异超过 `2 / 255`** ($p(|\Delta| > 8) = 0.000000 \le 0.001$)，`PSNR` 超过 `64.16 dB`（`> 40.0 dB` 门限），`SSIM` 超过 `0.999833`（`> 0.999` 门限）且每帧耗时 `0.31`-`2.80 ms`。
-
-- **软件光栅化器对比**: 零浮点 `CPU Q16.16` 整数软件光栅化器在 `Apple M3 Ultra`（`arm64`）、`AMD Zen 5`（`x86_64`）和 `Intel Raptor Lake`（`x86_64`）上实现了 `0` `SHA-256` 帧缓冲不匹配（`9c693a38...` 在 tick `0`，`ce3b2cec...` 在 tick `10,000`），而 `Mesa llvmpipe`（`LLVM 21.1.8`）在 AMD 与 Intel `x86_64` 主机之间实现了位匹配（`ccb291f6...` 在 tick `0`），说明像素差异特定来源于 GPU 着色器/ROP 硬件的可变性，而非场景投影 $\lambda(s_t)$。
+- **隔离着色器编译器（`DX12` `HLSL`/`DXIL` 与 `Vulkan` `SPIR-V`）漂移与 GPU 硅片差异**：在**完全相同的物理 GPU 和完全相同的 Windows 11 机器**上对比 `DirectX 12` 与 `Vulkan`，可将编译器翻译（`Naga` `WGSL -> HLSL` 与 `WGSL -> SPIR-V`）与硬件 SFU/ROP 设计区分开来。在 `NVIDIA GeForce RTX 2060` 上，`Win11 DirectX 12` 与 `Win11 Vulkan` 在第 `0` 和 `250` 拍产生位完全相同的 `SHA-256` 帧缓冲，随后在第 `1,000` 和 `10,000` 拍于单个掠射镜面像素上以 `1` LSB 发生偏离（均值差异 `0.0002%`，`PSNR` 为 `108.34 dB`），而 `RTX 2060 (Win11 DirectX 12)` 与 `RTX 4050 (Linux Vulkan)` 在 `4 / 4` 帧上实现位完全匹配（Turing 与 Ada Lovelace 架构以及 Windows `DX12` 与 Linux `Vulkan` 之间 `0` 个差异像素）！在 `Intel Iris Xe Graphics`（`Tiger Lake`）上，`Win11 DirectX 12` 与 `Win11 Vulkan` 在全部 `4` 帧中存在 `0.283%` 像素差异（`PSNR` 为 `79.52 dB`，$\Delta_{\max} = 1$），而 `Win11 DirectX 12` 与 `Linux Mesa ANV Vulkan` 的差异仅为 `0.0003%`（`PSNR` 为 `105.33 dB`，在第 `0` 和 `1,000` 拍实现位完全相同）。
+- **在全部 `28 / 28` 硬件 `GPU × API` 配对（`112 / 112` 帧）中确认有界容差**：`27 / 28` 硬件端点配对的原始 `RGBA8` `SHA-256` 摘要存在差异，然而**任何硬件配对在 `DirectX 12`、`Metal` 和 `Vulkan` 下均无像素差异超过 `2 / 255`**（$p(|\Delta| > 8) = 0.000000 \le 0.001$），`PSNR` 超过 `64.16 dB`（比 `> 40.0 dB` 门限高 `+24.16 dB`），且 `SSIM` 超过 `0.999833`（高于 `0.999` 门限），单帧耗时为 `0.29`-`6.04 ms`。
+- **软件光栅化器对比（`WARP` 与 `llvmpipe` 与 `CPU Q16.16`）**：即使是软件 CPU GPU-API 模拟器也会跨 API 产生差异，`Microsoft Basic Render Driver`（`Win11 DirectX 12 WARP`）与 `Mesa llvmpipe`（`Linux Vulkan`）存在 `1.591%` 像素差异（`PSNR` 为 `70.35 dB`，$\Delta_{\max} = 2$），而零浮点 `CPU Q16.16` 整数软件光栅化器在**全部四个 OS/ISA 宿主机上均实现 `0` 个 `SHA-256` 帧缓冲失配**（`macOS arm64`、`Linux AMD x86_64`、`Linux Intel x86_64` 以及 `Windows 11 x86_64`：第 `0` 拍为 `9c693a38...`，第 `10,000` 拍为 `ce3b2cec...`）。
 
 <div id="64-playable-joule-native-q3232-chrono-budget-arena-livinggame-engines" class="anchor-alias" aria-hidden="true"></div>
 
@@ -286,14 +300,14 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
 <div id="7-infeasibility-flags" class="anchor-alias" aria-hidden="true"></div>
 
-## 7. 不可行性标记
+## 7. 不可行性标志
 
-1. **跨 GPU 的逐位相同硬件渲染:不可行(在 `GE-H3` 中,跨 `Metal`、`RADV`、`NVIDIA` 与 `ANV` 的 `SHA-256` 匹配数为 `0 / 24`),而当 GPU 输出从不回馈到 $S$ 时,有界感知容差(`PSNR > 64 dB`、`SSIM > 0.9998`、$\Delta_{\max} \le 2$)成立。**
-2. **在默认浮点设置下实现跨平台精确物理:不可行。** 即使*不*使用 `-ffast-math`,跨操作系统的 `std::sin`/`std::cos`(`Apple libm` 与 `GNU glibc`)仍在第 `10` 个 tick 出现分歧,跨指令集的 `FMA` 降级(`x86_64` 与 `arm64` 上的 `-ffp-contract=fast`)则在第 `406` 个 tick 出现分歧,并在 `9,798`-`11,205` 个 tick 内级联为玩法层面的失步(`GE-H2`)。
-3. **模拟内部的 GPU 计算:作为精确计算不可行;仅在采用确定性归约时可行**,在所引用硬件上的测得开销约为 0.2% 至 7.8%。此外,除非在每条指令上于所有目标平台启用防护(SPIR-V NoContraction),否则仍受编译器收缩(contraction)影响。
-4. **引擎可移植行为:在所读取的任何外部来源中均未得到证明;在 `GE-H1` 中,于 2D 物理内核层面在 `25` 个目标 × 宿主单元(`5` 台机器、`3` 种指令集、`6` 种运行时/编译器)上得到验证,而完整的引擎投影(`GE-H4`、`GE-H9`)仍属未决。**
-5. **大规模角色数量下的解释型规则:受限。** GameRule 的测量表明,在 20 ms 下的上限约为 300 个角色(`GE-H1` 进一步显示,在 Intel、AMD 与 Apple Silicon 上,Python `int` 的开销是原生 Rust `reported_j` 的 `73×`-`132×`);规模化运行需要编译型原生或 WebAssembly 投影。
-6. **将专有引擎与裸机 Windows 目标作为精确目标:未经验证。** GameRule 所引用的 Unity 手册声明不提供执行顺序保证;Unity 与 Unreal 的模板目录无法读取(其页面为客户端渲染);未读取到任何 Unreal 执行顺序的来源;并且在 Wave 3 的 Linux/macOS 运行器池中,裸机 Windows `PE` 执行未被激活。
+1. **跨 GPU 与跨 API 位精确硬件渲染：不可行（`27 / 28` 硬件 `GPU × API` 配对，包含 `2 / 2` 同 GPU `DirectX 12` 与 `Vulkan` 配对，在 `GE-H3` 中的原始 `SHA-256` 不一致），而有界感知容差（`PSNR >= 64.16 dB`，`SSIM >= 0.99983`，$\Delta_{\max} \le 2$）在 `DirectX 12`、`Metal` 与 `Vulkan` 上保持，只要 GPU 输出从不反馈到 $S$。**
+2. **跨平台精确物理且使用默认浮点设置：在 `Windows`、`macOS` 与 `Linux` 上不可行。** 即使*不使用* `-ffast-math` 或 `/fp:fast`，标准 `std::sin`/`std::cos` 在 `Windows UCRT`、`Apple libSystem` 与 `GNU glibc` 之间形成 3 路分歧三角形（`t_div = 10` 到 `37`），默认 `MSVC /fp:precise` 与 `Clang -ffp-contract=fast` 在 `x86_64` 上于 `t_div = 192` 处出现分歧，跨 ISA `FMA`（`x86_64` 与 `arm64`）在 `t_div = 406` 处分歧，进而导致 `8,869`-`11,205` tick 内的游戏不同步（`GE-H2`）。
+3. **模拟内部的 GPU 计算：不可作为精确实现；仅在确定性归约下可行**，测得成本约为所引用硬件的 0.2% 到 7.8%，且除非在每条指令上使用 SPIR-V NoContraction 否则仍会受到编译器收缩的影响。
+4. **引擎可移植行为：在任何外部来源中未见证明；在 `GE-H1` 的 2D 物理内核层面上已在 `30` 个目标 × 主机单元（`6` 台机器，`3` 种 OS `macOS`/`Linux`/`Windows 11`，`3` 种 ISA，`7` 种运行时/编译器）中展示，而完整引擎投影（`GE-H4`、`GE-H9`）仍未完成。
+5. **大规模参与者的解释型规则：受限。** GameRule 测量暗示在 20 ms 内演员数量上限约为 300（`GE-H1` 进一步显示 Python `int` 在 Linux/macOS 上相较于本机 Rust `reported_j` 耗时 `73×`-`132×`，在 Windows 11 上耗时 `179×` 墙时）；在规模化时需要编译成本地或 WebAssembly 的投影。
+6. **专有第三方游戏引擎作为精确目标：未验证。** 虽然第 6 节已验证裸金属 Windows 11 `PE`（`rustc` 与 `MSVC`）以及 `DirectX 12`（`wgpu`）的执行，但 Unity 手册（由 GameRule 引用）声明没有顺序保证；Unity 与 Unreal 的模板目录无法读取（页面在客户端渲染），且未读取到任何 Unreal 执行顺序的来源。
 
 <div id="8-sources-and-limits" class="anchor-alias" aria-hidden="true"></div>
 
@@ -303,4 +317,4 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
 未阅读、付费墙阻挡或其他方式不可获取的文献有：T. Schaul, “A Video Game Description Language for Model-based or Interactive Learning,” IEEE CIG 2013, doi:10.1109/CIG.2013.6633610；J. Gregory, *Game Engine Architecture*, doi:10.1201/9781315267845。M. Ebner 等, “Towards a Video Game Description Language,” doi:10.4230/DFU.Vol6.12191.85，虽为开放获取但本研究未阅读。
 
-在第 6 节中，`GE-H1`、`GE-H2` 与 `GE-H3` 在所有运行中保持 `measured_j = None` 且 `board_metered = false`（将 macOS `L3` 每进程 `ri_energy_nj` 与 Linux `L2` 插槽/核心 `RAPL` `reported_j` 分离，并使 Chrono-Budget Arena 的 `est_j` 机制严格保持分析性）。裸机 Windows `PE` 执行、Direct3D 12 `wgpu` 渲染以及多引擎发射器（`GE-H4`-`GE-H9`）仍属未完成工作。
+在第6节中，`GE-H1`、`GE-H2` 和 `GE-H3` 在全部六台机器上均保持 `measured_j = None` 与 `board_metered = false`：区分 macOS 的 L3 每进程 `ri_energy_nj`、Linux 的 L2 套接字/核心 RAPL `reported_j`，以及 Windows 11 的 L3 `GetProcessTimes`/`QueryProcessCycleTime` 活动计数器，并使 Chrono-Budget Arena 的 `est_j` 机制严格保持为解析性质。完整的多引擎场景/行为发射器（`GE-H4`-`GE-H9`）仍属于待完成的工作。

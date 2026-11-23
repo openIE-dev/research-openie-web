@@ -1,6 +1,6 @@
 ---
 title: "Satiation Benchmark：リファレンスハーネス、アダプタ、およびテレメトリ帰属"
-deck: "固定順次型Rustリファレンスハーネス（Lane B）、単一のプロキシ強制型アダプタブリッジ（Shapes D, M, H, およびI）、12チェック適合性スイート（C1からC12）、および5レベルルートレス型テレメトリ帰属エンジン（L0からL4とラベルA1からNの交差）。4つのハードウェア原型にわたって経験的に検証した：Apple M5 Max（arm64 macOS IOReportおよびproc_pid_rusage reported_j）、NVIDIA Jetson AGX Thor（aarch64 Tegra Linux物理INA238全基板およびINA3221レール分離シャントmeasured_j）、Framework Desktop AMD Ryzen AI Max+ 395 Strix Halo（x86-64 Linux 0440 root:energy PLATYPUS分離RAPL reported_jに加えてamdgpu PPT）、およびIntel Core i9-13900H Raptor Lake（x86-64 Linux RAPL psys L1およびpackage-0 L2 reported_j）。生のmeasured_j、reported_j、およびL4論理チャネルは厳密に分離されたままであり、決して合計されない；共有ホスト上でコテナントワークロードが実行されたため（dedicated_hostはfalse）、A2ネット配置帰属はFalsifier 6に従って保留される。"
+deck: "Lane B（固定順次実行のRust参照ハーネス）、単一のプロキシ強制アダプタブリッジ（Shapes D、M、H、およびI）、12項目の適合性検査スイート（C1からC12）、および5段階のルートレス・テレメトリ帰属エンジン（L0からL4までのレベルとAからNまでのラベルの組み合わせ）を提示する。これらは5種類のハードウェア・アーキタイプにおいて実証的に検証した。対象は、Apple M5 Max（arm64 macOS の IOReport と proc_pid_rusage による reported_j）、Tegra aarch64 Jetson Thor（全ボードの物理計測値と、レール分離型の電流シャント3チャネルによる measured_j）、Framework Desktop Strix Halo（x86-64 Linux において 0440 root:energy のグループ分離により取得するパッケージエネルギーの reported_j と、グラフィックスパッケージ電力の追跡）、Intel Core i9-13900H Raptor Lake（x86-64 Linux のプラットフォームレベル L1 およびパッケージ0 の L2 による reported_j）、そして Windows 11 上の Intel Core i7-1165G7 Tiger Lake と GeForce 2060 の組み合わせ（x86-64 ビルド26300 におけるルートレスの累積型ディスクリートグラフィックス L2 reported_j、Win32 Job Object およびサイクル会計、ならびにプロセッサパッケージのラベル N）である。生の measured_j、reported_j、および L4 の論理チャネルは厳密に分離して保持し、決して合算しない。協調テナントのワークロードが共有ホスト上で稼働していたため（dedicated_host は false）、Falsifier 6 に従い A2 のネット配置帰属は保留とする。"
 lang: "ja"
 source: "satb-harness"
 complete: true
@@ -16,13 +16,15 @@ complete: true
 
 2つの agent 評価がタスク完了率やエネルギー値で異なる結果を報告する場合、その差異はモデル自体よりも、モデルをどのように包んだか(ラッピング)とホスト側カウンタをどのように帰属させたかに由来することが多い。`Terminal-Bench 2` において、周囲のハーネスのみを変更しただけで `Gemini 2.5 Pro` のタスク解決率が `17` パーセントポイント変動した。また、ドリフトしたアイドルベースラインを減算する処理や、共有シリコンレールをプロセッサ時間で按分する処理は、エネルギー帰属を `30%` 以上歪めうる。
 
-本研究では **Satiation Benchmark (`SATB`)** の評価契約を仕様化し、実証的に検証する。構成要素は、固定された逐次実行の Rust リファレンスハーネス(**`Lane B`**)、ゼロモデル対照実験ならびに生のモデルエンドポイント、外部コマンドラインハーネス、公開ベンチマーク solver のためのプロキシ隔離アダプタブリッジ(**`Shapes D, M, H, and I`**)、5ブロックからなる被験システム(`SUT`)の暗号学的フィンガープリント、12の必須適合性検査、そして5段階のルートレス・テレメトリエンジンである。設計を未測定のまま残すのではなく、**4種のハードウェア類型**にわたって実稼働の適合性検査およびファルシファイア・ベンチマークを実行した。対象は、`Apple M5 Max` ワークステーション(統合メモリ `128` ギガバイト、`macOS 27.2.1`、オンチップ `IOReport` およびカーネルの `proc_pid_rusage` による `reported_j`)、Tegra `aarch64` 開発キット(`Jetson Thor`、`Linux 6.8.12-1021-tegra`、物理的な Texas Instruments の全基板および3チャネルのレール分離型電流シャント計測による `measured_j`)、`Framework` Desktop `Strix Halo` ワークステーション(`Ryzen Max+ 395`、`Linux 7.0.0-43-generic x86-64`、`0440 root:energy` のグループ隔離によるパッケージエネルギー `reported_j` および `amdgpu` パッケージ電力追跡)、`Raptor Lake` ワークステーション(`Intel Core i9-13900H`、`Linux 7.0.0-43-generic x86-64`、プラットフォームおよびパッケージのエネルギー `reported_j`)である。一方、クローズドなクラウドサーバのエネルギーは厳密に `not_available` と表示する。
+本研究は、**Satiation Benchmark（`SATB`）**の評価契約を規定し、その有効性を実証的に検証する。本契約は、単一の固定逐次型Rustリファレンスハーネス（**`Lane B`**）、ゼロモデル統制実験、生のモデルエンドポイント、外部コマンドラインハーネス、公開ベンチマークソルバーを対象とするプロキシ隔離型アダプタブリッジ（**`Shapes D, M, H, and I`**）、5ブロックからなるシステム・アンダー・テスト（`SUT`）の暗号学的フィンガープリント、12項目の必須適合性検査、5段階のルートレス・テレメトリエンジンから構成される。設計を未測定のまま残すのではなく、`macOS`、`Linux`、`Windows 11`にまたがる5種類のハードウェア類型において、適合性検査と反証検査を実行した。対象は、`Apple M5 Max`ワークステーション（統合メモリ`128`ギガバイト、`macOS 27.2.1`、オンチップの`IOReport`およびカーネルの`proc_pid_rusage`による`reported_j`）、Tegra `aarch64`開発キット（`Jetson Thor`、`Linux 6.8.12-1021-tegra`、Texas Instruments製のボード全体および3チャネルのレール分離型電流シャントによる物理的な`measured_j`）、`Framework` Desktop `Strix Halo`ワークステーション（`Ryzen Max+ 395`、`Linux 7.0.0-43-generic x86-64`、`0440 root:energy`によるグループ隔離されたパッケージエネルギー`reported_j`と`amdgpu`のパッケージ電力追跡）、`Raptor Lake`ワークステーション（`Intel Core i9-13900H`、`Linux 7.0.0-43-generic x86-64`、プラットフォームおよびパッケージのエネルギー`reported_j`）、ベアメタルの`Windows 11`ワークステーション（`Intel Core i7-1165G7`と`GeForce 2060`、`Windows 11`ビルド`26300` `x86-64`、ルートレスな累積型ディスクリートグラフィックスの`reported_j`、Win32ジョブオブジェクトによる閉じ込め、および特権を要しないプロセッサパッケージのエネルギーであり、後者は厳密に`not_available`と明示）である。クローズドなクラウドサーバーのエネルギーは、これらとは別に`not_available`として扱った。
 
 **平易に言えば**
 
-1. エージェントのプロンプトループ、コンテキストトリミング規則、ツールサンドボックスは、基礎モデルを交換するのと同等にベンチマークスコアを左右できるため、`Lane B` はラッパーを決定論的 Rust で完全に固定し、`Lane O` は外部ラッパーを監査済みプロキシプラグ経由で強制するである。  
-2. エネルギーチャネルは、実際の物理境界、全壁プラグ、基板入力、チップパッケージ、OSプロセスの推定、あるいは論理トークン台帳において生データとして記録され、証拠クラス（`measured_j` と `reported_j` と `est_j`）を跨いで単一のラベルなし数値に合算されたり、フリートの持続可能性平均で後補されたりすることはないである。  
-3. 4 つのシリコンプラットフォームにまたがるライブテストは、正確な `Shape D` の百万レコードメモリマップ（`15027705736`）と `C9` のリプレイ（`149,747 B`, `0` バイト差分）の決定性、`0.87-9.54 ms` のプロセスツリー kill クリーンアップ、3 社にまたがるクラウド `temperature = 0` の非決定性、ハードウェアセンサー周期上限（`24.3-45.4 µs` の `x86-64` カウンタ読み取りが `94-97 Hz`、`Jetson Thor` のシリアルバスシャント読み取りが `2.95 ms` で `66.6 Hz`、`~8 Hz` の `macmon` `IOReport`）、`Falsifier 3` におけるプロセッサ時間で順次計算＋ストレージフェーズを分割した際の `32.59%-72.89%` エラー、そして `Falsifier 6` の共有ホストドリフトゲーティングに伴う物理的グラフィックス対プロセッサシャントレールの分離（`dedicated_host = false`）を検証したである。
+1. エージェントのプロンプトループ、コンテキスト削減規則、およびツールサンドボックスは、基盤モデルの差し替えと同程度にベンチマークスコアを大きく変動させうる。そのため`Lane B`では、そのラッパー全体を決定論的なRustで実装して完全に固定する。一方、`Lane O`では外部ラッパーを、監査済みの単一プロキシプラグを経由させる。
+
+2. エネルギーチャネルは、その真の物理的境界において生データとして記録される。すなわち、ウォールプラグ全体、ボード入力、チップパッケージ、オペレーティングシステムのプロセス推定値、または論理トークン台帳である。これらを単一のラベルなし数値に統合すること、証拠クラス（`measured_j` 対 `reported_j` 対 `est_j`）を横断して合算すること、およびフリート全体の持続可能性平均で欠損値を補完することは行わない。
+
+3. 本研究では、五つのシリコンおよびオペレーティングシステムのプラットフォーム（`macOS`、`Linux`、および`Windows 11`）にまたがる実機試験により、以下の事項を検証する。第一に、厳密な`Shape D`の百万レコード規模メモリマップ（`15027705736`）および`C9`リプレイ（`149,747 B`、改行またはバイト差分`0`）の決定性である。第二に、`0.87-9.54 ms`のカーネルプロセスツリー清掃（`Windows 11`上のWin32 Job Objectsでは`2.46 ms`）である。第三に、三ベンダーにおけるクラウドの`temperature = 0`の非決定性である。第四に、ハードウェアセンサのサンプリング周期の上限である。具体的には、Linuxのカウンタ読み出し`24.3-45.4 µs`（`94-97 Hz`）、Windowsのインプロセスのグラフィックスカウンタ読み出し`1.17 ms`（`64.6 Hz`）、`Jetson Thor`上のシリアルバス分流器読み出し`2.95 ms`（`66.6 Hz`）、および`macmon`の`IOReport`（約`8 Hz`）の各値を比較する。第五に、逐次的な計算フェーズとストレージフェーズをプロセッサ時間で分割した際に生じる`32.59%-89.88%`の誤差（`Falsifier 3`）である。第六に、グラフィックスとプロセッサの物理的な分流器レールの分離、および`Falsifier 6`による共有ホストのドリフト・ゲーティング（`dedicated_host = false`）である。
 
 <div id="1-terms-acronyms-and-attribution-labels" class="anchor-alias" aria-hidden="true"></div>
 
@@ -32,23 +34,23 @@ complete: true
 <li>SATB, SUT, PFRK, OQ, SPEC, BUNDLE, SUBMIT, REFUSE, STOP: Satiation Benchmark ハーネスおよび帰属仕様、被験システム (system under test)、4 分類の試行結果 (合格、不合格、拒否、強制終了)、解決済みの仕様上の未決事項、規範的仕様文書、タスクバンドルファイル、終端的な解答提出呼び出し、終端的な拒否呼び出し、および逐次ループ停止トークン</li>
 <li>ACI, SWE, CLI, MCP, SDK, ACP, ARC, AGI, GUI: Agent-Computer Interface (エージェント・計算機インタフェース)、ソフトウェア工学ベンチマークの接頭辞、コマンドラインインタフェース、Model Context Protocol、ソフトウェア開発キット、Agent Client Protocol、Abstraction and Reasoning Corpus、汎用人工知能ベンチマークスイート (artificial general intelligence benchmark suite)、およびグラフィカルユーザインタフェース</li>
 <li>IO, JSON, JSONL, RPC, JCS, UTF, HTTP, SSE, URL: 入出力プロトコル、JavaScript Object Notation、行区切り JSON (line-delimited JSON)、リモートプロシージャコール、JSON Canonicalization Scheme (RFC 8785)、Unicode Transformation Format、Hypertext Transfer Protocol、Server-Sent Events、および Uniform Resource Locator</li>
-<li>POSIX, MMAP, DNULLMM1, SHA, SIGKILL, ESRCH, EACCES, EOF: Portable Operating System Interface、メモリマップトファイルインタフェース、バイナリ形式のメモリマップト決定論的 Null インデックス形式 (binary memory-mapped Deterministic Null index format)、Secure Hash Algorithm (SHA-256)、捕捉不能な POSIX プロセス終了シグナル、カーネルにおけるプロセス不存在ステータス、POSIX のアクセス拒否エラーステータス、およびヒアドキュメントの終端区切り (end-of-file heredoc delimiter)</li>
+<li>POSIX、MMAP、DNULLMM1、SHA、SIGKILL、ESRCH、EACCES、EOF、NT、NTFS、CRLF、MSVC、UCRT、FFI、DLL：Portable Operating System Interface、メモリマップドファイルインターフェイス、バイナリメモリマップド決定的ヌルインデックス形式、Secure Hash Algorithm（SHA-256）、捕捉不可のPOSIXプロセス終了シグナル、カーネルの「プロセスなし」ステータス、POSIXの権限拒否エラー状態、ファイル終端ヒアドック区切り子、Windows New Technology カーネル（Windows NT）、New Technology File System、キャリッジリターン・ラインフィード（\r\n）改行シーケンス、Microsoft Visual C++ コンパイラ（cl.exe）、Windows Universal C Runtime（ucrtbase.dll）、外部関数インターフェイス、動的リンクライブラリ</li>
 <li>AI, ML, LLM, MLX, GGUF, KV, TP, ENERGY: 人工知能、機械学習、大規模言語モデル、ローカル推論向け Apple 配列フレームワーク (Apple array framework for local inference)、GPT-Generated Unified Format の量子化重み、キーバリューキャッシュ (key-value cache)、テンソル並列 (tensor parallelism)、および ML.ENERGY GPU 電力ベンチマークコンソーシアム</li>
-<li>CPU, GPU, APU, ANE, SoC, ALU, ISA, IPC, PID, UID, GID, OS, VM, EC, GB: 中央処理装置、グラフィックス処理装置、統合型加速処理装置 (accelerated processing unit)、Apple Neural Engine、システムオンチップ、算術論理演算装置、命令セットアーキテクチャ、サイクル当たり命令数 (instructions per cycle)、プロセス識別子、ユーザ識別子、グループ識別子、オペレーティングシステム、仮想マシン、組込みコントローラ (embedded controller)、およびギガバイト</li>
-<li>RAM, DRAM, SLC, NVMe, PSU, PDU, AC, DC, DVFS, MSR, MMIO: ランダムアクセスメモリ、動的 RAM、システムレベルキャッシュ (system-level cache)、Non-Volatile Memory Express、電源ユニット、配電ユニット (power distribution unit)、交流、直流、動的電圧・周波数制御 (dynamic voltage and frequency scaling)、モデル固有レジスタ (model-specific register)、およびメモリマップト入出力</li>
+<li>CPU、GPU、APU、ANE、SoC、ALU、ISA、IPC、PID、UID、GID、OS、VM、EC、GB、TGL、RTX：中央処理装置、グラフィックス処理装置、加速処理装置、Apple Neural Engine、システムオンチップ、算術論理装置、命令セットアーキテクチャ、サイクルあたり命令数、プロセス識別子、ユーザー識別子、グループ識別子、オペレーティングシステム、仮想マシン、組込コントローラ、ギガバイト、Intel Tiger Lake モバイルアーキテクチャ、NVIDIA GeForce RTX 離散 GPU ファミリ</li>
+<li>RAM、DRAM、SLC、NVMe、PSU、PDU、AC、DC、DVFS、MSR、MMIO、RDTSC、HVCI、WMI、EMI、SRUM：ランダムアクセスメモリ、ダイナミックRAM、システムレベルキャッシュ、Non-Volatile Memory Express、電源ユニット、電源配電ユニット、交流、直流、動的電圧・周波数制御、モデル固有レジスタ、メモリマップド入出力、x86 Read Time-Stamp Counter命令、Windows Hypervisor-Protected Code Integrity、Windows Management Instrumentation、Windows Energy Metering Interface（`\\.\EnergyMeter`）、およびWindowsシステムリソース使用状況モニタ</li>
 <li>RAPL, NVML, PPT, TI, I2C, ADC, INA, INA238, INA3221, AGX, VDD, SOC, MSS, VIN, SYS, PLATYPUS: Intel/AMD の Running Average Power Limit、NVIDIA Management Library、AMD Package Power Tracking、Texas Instruments (テキサス・インスツルメンツ)、Inter-Integrated Circuit バス、アナログデジタル変換器 (analog-to-digital converter)、Texas Instruments の電流・電力モニタファミリ (`INA238`、`INA3221`)、NVIDIA Jetson AGX モジュールの階層、ドレイン電源電圧レール (drain supply voltage rail)、システムオンチップ電圧レール (system-on-chip rail)、メモリサブシステム電圧レール (memory subsystem rail)、入力システム電圧レール (input system voltage rail)、およびソフトウェアによるプロセッサ標的型電力漏洩攻撃 (Power Leakage Attacks: Targeting Your Processor Using Software)</li>
 <li>API, USD, CNCF, AISI, UK, AMD, NVIDIA: アプリケーションプログラミングインタフェース、米ドル、クラウドネイティブコンピューティング財団、AI安全性研究所、イギリス、アドバンスト・マイクロ・デバイス、NVIDIA社</li>
 <li>RCE, MoL, WCA, LUT6: Reality Code Engine [同一組織]、Mixture of Limits [同一組織]、Wise Computer Automation [同一組織]、6入力ブール型ルックアップテーブル</li>
 </ul>
 
-テレメトリレベル L0 から L4 にわたり、`SATB` レシートに記録されるすべてのチャネルは、物理的境界と、以下の4つの厳格なエビデンスクラスのいずれか1つの両方を備える。
+テレメトリレベル L0 から L4 にわたり、`SATB` レシートに記録されるすべてのチャネルは、その物理的境界と、次の 4 つの厳格なエビデンスクラスのいずれかを併せ持つ。
 
 | エビデンスクラス | `SATB` レシートおよび表における適用範囲 |
 | :--- | :--- |
-| **`Exact (L4 Logical & Cryptographic)`** | タスクバンドル、5ブロックの `SUT` フィンガープリント、およびリプレイトランスクリプトの `SHA-256` と `JCS` (`RFC 8785`) 正規化ダイジェスト、プロキシでログ記録されたプロンプト、キャッシュ、推論、および補完のトークン数、実時間の経過時間、ならびに日付付きの `API` 定価 `USD`。 |
-| **`Measured Hardware Rail (measured_j: L0, L1, L2)`** | 校正済みの外部 `AC` ウォールアナライザ (`L0`) または物理ボードの電流シャントモニタ (`L1`/`L2`) からのみ値が設定される。`NVIDIA Jetson AGX Thor` 上で、`TI` `INA238` (`hwmon6` `VIN`、`L1`) および `INA3221` (`hwmon5` `ch1 VDD_GPU`、`ch2 VDD_CPU_SOC_MSS`、`ch3 VIN_SYS_5V0`、`L2`/`L1`; `board_metered = true`) を介して実機で検証した。取得中にアクティブな共同テナントが `VDD_GPU` を占有していたため (`dedicated_host = false`)、生のレール `measured_j` は保持される一方、`A2` の正味配置帰属は保留される。`Apple M5 Max`、`AMD Strix Halo`、`Intel Raptor Lake` では `measured_j` は `None` のままであり、`L0` のウォール電力は全体を通じて未設定である。 |
-| **`Reported Counter (reported_j: L1, L2 & L3)`** | ルート権限不要のオンチップテレメトリカウンタ (`Apple M5 Max` の `IOReport` `sys_power` (`L1`) および `macmon` 経由の `chip_power`/`cpu_power`/`gpu_power` (`L2`)、`Intel Raptor Lake` の `RAPL` `psys` (`L1`) および `package-0`/`core`/`uncore` (`L2`)、`Framework AMD Strix Halo` の `RAPL` `package-0`/`core` (`L2`) と `amdgpu` `PPT` ワット値) と、`OS` がモデル化するプロセス単位の推定値 (`macOS proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj` (`L3`)、ラベル `D`)。`measured_j` や `est_j` と合算されることはない。 |
-| **`Provider-Attested (P) vs. Not Available (N)`** | クローズド `API` のリモートサーバエネルギーは、プロバイダがリクエスト単位のエネルギー値を方法論の原文とともに返す場合にのみ `P` として記録され、それ以外の場合は文字どおり `"not_available"` (ラベル `N`) と記録される。`5.0%` のドリフト境界 (`Falsifier 6`) または `Step 7` の総和検査を満たさない派生ベースライン減算は自動的に破棄され、生のチャネルはそのまま保持される。 |
+| **`Exact (L4 Logical & Cryptographic)`** | タスクバンドル、5 ブロックの `SUT` フィンガープリント、およびリプレイトランスクリプトの `SHA-256` と `JCS` (`RFC 8785`) 正規化ダイジェスト。プロキシが記録したプロンプト、キャッシュ、推論、および補完のトークン数。実時間の所要時間。日付付きの `API` 定価 `USD`。 |
+| **`Measured Hardware Rail (measured_j: L0, L1, L2)`** | 較正済みの外部 `AC` 壁面アナライザ (`L0`) または物理ボードの電流シャントモニタ (`L1`/`L2`) からのみ値が入力される。`NVIDIA Jetson AGX Thor` 上で、`TI` `INA238` (`hwmon6` `VIN`, `L1`) および `INA3221` (`hwmon5` `ch1 VDD_GPU`, `ch2 VDD_CPU_SOC_MSS`, `ch3 VIN_SYS_5V0`, `L2`/`L1`; `board_metered = true`) を介して実機で検証した。取得中にアクティブな同居プロセスが `VDD_GPU` を占有していたため (`dedicated_host = false`)、レール生値の `measured_j` は保持する一方、`A2` の正味配置帰属は留保する。`Apple M5 Max`、`AMD Strix Halo`、`Intel Raptor Lake`、`Windows 11` (`i7-1165G7` + `RTX 2060`) では `measured_j` は `None` のままであり、`L0` の壁面電力は全体を通じて未設定である。 |
+| **`Reported Counter (reported_j: L1, L2 & L3)`** | ルート権限を要しないオンチップのテレメトリカウンタ (`Apple M5 Max` の `IOReport` `sys_power` (`L1`) および `macmon` 経由の `chip_power`/`cpu_power`/`gpu_power` (`L2`)。`Intel Raptor Lake` の `RAPL` `psys` (`L1`) および `package-0`/`core`/`uncore` (`L2`)。`Framework AMD Strix Halo` の `RAPL` `package-0`/`core` (`L2`) と `amdgpu` `PPT` のワット値。`Windows 11` の、ルート権限を要しない `NVML` `nvmlDeviceGetTotalEnergyConsumption` による `NVIDIA GeForce RTX 2060` 上の累積 `mJ` (`L2`)) と、`OS` がモデル化したプロセス単位の推定値 (`macOS proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj` (`L3`)、ラベル `D`)。`measured_j` や `est_j` とは決して合算しない。 |
+| **`Provider-Attested (P) vs. Not Available (N)`** | クローズドな `API` のリモートサーバエネルギー (およびリング 0 の `RAPL` `MSR` ドライバが禁止されている `Windows 11` のユーザモード `CPU` パッケージエネルギー) は、プロバイダがリクエスト単位のエネルギー値を方法論の原文とともに返す場合にのみ `P` として記録し、それ以外は文字どおり `"not_available"` (ラベル `N`) と記録する。`5.0%` のドリフト境界 (`Falsifier 6`) または `Step 7` の総和検査を満たさない、導出されたベースライン減算値は自動的に破棄され、生のチャネルはそのまま保持される。 |
 
 <div id="11-lineage-design-invariants-and-same-house-disclosure" class="anchor-alias" aria-hidden="true"></div>
 
@@ -69,28 +71,26 @@ complete: true
 
 ## 2. エージェントハーネスの調査およびコンテキストポリシがシステムの一部である理由
 
-現代のコーディング、ターミナル、およびコンピュータ利用ハーネスは、ツールの公開方法、ファイル編集のゲーティング、および拡大する会話履歴の圧縮方法において大きく異なる：
+現代のコーディング、ターミナル、およびコンピュータ利用ハーネスは、ツールの公開方法、ファイル編集のゲート制御、および拡大する会話履歴の圧縮方法において著しく異なる：
 
 | ハーネス | ループおよびツール表面 | コンテキストおよび履歴ポリシ |
 | :--- | :--- | :--- |
-| **`mini-swe-agent`** | `Bash` のみ。すべてのアクションが新しいステートレスな `subprocess.run` を生成する。 | 厳密に線形な追記のみのメッセージ履歴；自動圧縮なし。 |
-| **`SWE-agent` (`ACI`)** | 100行のウィンドウ付きファイルビューア、リンタによるゲート付き編集コマンド、簡潔な検索。 | 履歴プロセッサが古い環境観測を有界な要約に折り畳む。 |
-| **`Inspect react()`** | `submit()` までの逐次ツールループ：`bash()`、`text_editor()`、`MCP` ツール。 | 編集可能なメッセージ状態と、プラグイン可能な履歴切り詰めまたは圧縮ソルバ。 |
+| **`mini-swe-agent`** | `Bash` のみ。すべてのアクションが新しいステートレスな `subprocess.run` を生成する。 | 厳密に線形な追記のみのメッセージ履歴。自動圧縮なし。 |
+| **`SWE-agent` (`ACI`)** | 100行のウィンドウ付きファイルビューア、リンタゲート付き編集コマンド、簡潔な検索。 | 履歴プロセッサが古い環境観測を有界な要約に折り畳む。 |
+| **`Inspect react()`** | `submit()` までの逐次ツールループ：`bash()`、`text_editor()`、`MCP` ツール。 | 編集可能なメッセージ状態と、プラグ可能な履歴切り詰めまたは圧縮ソルバ。 |
 | **`Inspect Agent Bridge`** | `Claude Code`、`Codex CLI`、`Gemini CLI`、およびカスタム `SDK` エージェントをローカルプロキシの背後にラップする。 | コンテキスト管理を完全にラップされた外部ハーネスに委譲する。 |
-| **`Terminus-2` (`Harbor`)** | 単一ツール：生のキーストロークを受け取る永続的な `tmux` ターミナルセッション。 | 3段階のコンテキスト要約（`3-stage` 漸進的トランスクリプト圧縮）。 |
+| **`Terminus-2` (`Harbor`)** | 単一ツール：生のキーストロークを受信する永続的 `tmux` ターミナルセッション。 | 3段階のコンテキスト要約（`3-stage` 漸進的トランスクリプト圧縮）。 |
 | **`Codex CLI`** | サンドボックス化されたシェル（`Landlock`/`seccomp` または `seatbelt`）、構造化された `apply_patch`、`MCP`。 | モデルウィンドウ制限付近でトリガされるネイティブなローリングコンテキスト圧縮。 |
-| **`Claude Code`** | `Bash`、構造化されたファイルツール（`Read`、`Write`、`Edit`、`Glob`、`Grep`）、`MCP`。 | 自動的な LLM 主導の会話圧縮（`auto-compact`）およびプロンプトキャッシング。 |
-| **`OpenHands`** | 任意の `ACP` または `CodeAct` コーディングエージェントをコンテナ内で実行するイベントストリームランタイム。 | 設定可能なコンテキスト凝縮器（`LLM` 要約またはウィンドウマスキング）。 |
+| **`Claude Code`** | `Bash`、構造化ファイルツール（`Read`、`Write`、`Edit`、`Glob`、`Grep`）、`MCP`。 | 自動的な LLM 主導の会話圧縮（`auto-compact`）およびプロンプトキャッシング。 |
+| **`OpenHands`** | コンテナ内で任意の `ACP` または `CodeAct` コーディングエージェントを実行するイベントストリームランタイム。 | 設定可能なコンテキスト凝縮器（`LLM` 要約またはウィンドウマスキング）。 |
 | **`ARC-AGI-3` runner** | 標準ハーネス対プロバイダアダプタハーネス（対話型グリッド状態上）。 | アダプタトラックごとに宣言される有界な視覚/グリッド状態軌跡ウィンドウ。 |
-| **`OSWorld run.py`** | デスクトップ `GUI` ループが VM スクリーンショット上で `pyautogui` マウス/キーボードアクションを発行する。 | 直近の $K$ 個のスクリーンショットとアクションのみを保持するスライド式軌跡ウィンドウ。 |
+| **`OSWorld run.py`** | デスクトップ `GUI` ループが VM スクリーンショット上で `pyautogui` マウス/キーボードアクションを発行する。 | 直近の $K$ 個のスクリーンショットおよびアクションのみを保持するスライド式軌跡ウィンドウ。 |
 
-`Terminal-Bench 2` において、`Gemini 2.5 Pro` は `OpenHands` とペアリングした場合に比べて `Terminus-2` とペアリングした場合に **`17%` 多くのタスク**を解決した（基盤モデルチェックポイントを一定に保った場合）。したがって、コンテキスト管理、出力切り詰め、編集リンティング、および再試行ルールは、評価されるシステムの一等級の構成要素であり、中立的な配管ではない。`SATB` はこの交絡を、評価を2つの明示的なレーンに分割し、未解決の質問 `OQ-1` および `OQ-2` を閉じることで解決する：
+`Terminal-Bench 2` において、`Gemini 2.5 Pro` は `OpenHands` とペアリングした場合に比べて `Terminus-2` とペアリングした場合に **`17%` 多くのタスク**を解決した（基礎となるモデルチェックポイントを一定に保った場合）。したがって、コンテキスト管理、出力切り詰め、編集リンティング、および再試行ルールは、評価されるシステムの一等級の構成要素であり、中立的な配管ではない。`SATB` はこの交絡を、評価を2つの明示的なレーンに分割し、未解決の質問 `OQ-1` および `OQ-2` を閉じることで解決する：
 
-1. **固定ラッパー（`Lane B`）と外部ラッパーの評価（`Lane O`）の対比**: `Lane B`（`satb-agent`）は、全モデルに対して監査可能な単一のRust製ループを固定する。一方、`Lane O`は`Claude Code`、`Codex CLI`、`OpenHands`、`Terminus-2`、`Inspect`といった完全な第三者ハーネスを、ブラックボックスの`SUT`として扱う。これらの内部プロンプトやコンパクション呼び出しは`harness`フィンガープリントブロックにハッシュ化され、通信はすべて`satb-proxy`を経由して100%経路化される。
-
-2. **コンテキスト方針の確定（`OQ-1`: `ContextRule_v0`）**: 省略を一切行わずに試行を強制終了すると、多段階の推論と冗長なツール出力が区別されなくなる。また、`Claude Code`の自動コンパクトのようなLLMによる要約は、非公開の確率的モデル呼び出しを挿入するため、決定論的なハーネス再現を損なう。`Lane B`は**`ContextRule_v0`**を採用する。累積会話量が宣言されたコンテキストウィンドウの**`80%`**を超えるたびに、ハーネスは最も古いツール出力を決定論的に`"[ELIDED_BY_CONTEXT_RULE_V0]"`で置換する。その際、`system(TEMPLATE_v0)`、初期の`user(render(bundle))`、および直近の**`8`件のツール出力**は原文のまま保持し、モデル呼び出しは一切行わない。保持対象のメッセージだけでウィンドウの`100%`を超える場合に限り、ハードな`killed(context_ceiling)`が発火する。
-
-3. **ツール面の確定（`OQ-2`: `TOOLS_v0`）**: `exec`のみからなる構成（`mini`型）では、複数行のソースパッチや代数的証明を記述するためにシェルエスケープ（`cat << 'EOF'`）が必要となる。その結果、タスクの推論とは無関係なシェル引用符の失敗が生じるうえ、`macOS`と`Linux`にまたがる可搬的なrootlessサンドボックス化も複雑になる。`Lane B`は**`TOOLS_v0`**を固定する。これは、ワークスペースツール4種（`exec`、`read_file`、`write_file`、`list_dir`）と端末ツール2種（`submit`、`refuse`）から構成され、`JCS`により正規化されて`tools_hash`（`d5b102...`）となる。
+1. **ラッパーを固定した状態（`Lane B`）と外部ラッパーを評価する場合（`Lane O`）**：`Lane B`（`satb-agent`）はすべてのモデルに対して単一の監査可能な Rust ループを固定する。一方、`Lane O` はサードパーティハーネス（`Claude Code`、`Codex CLI`、`OpenHands`、`Terminus-2`、`Inspect`）をブラックボックス `SUT` としてラップし、その内部プロンプトとコンパクション呼び出しを `harness` の指紋ブロックにハッシュ化し、`satb-proxy` を介して 100% ルーティングする。  
+2. **コンテキストポリシー解決（`OQ-1`：`ContextRule_v0`）**：ゼロ省略で試行をハードキルすることは、マルチステップ推論と冗長なツール出力を同一視し、`LLM` 生成要約（`Claude Code` の自動コンパクト）が隠れた確率的モデル呼び出しを注入し、決定的ハーネスのリプレイを破壊する。`Lane B` は **`ContextRule_v0`** を採用する：蓄積された会話サイズが宣言されたコンテキストウィンドウの **`80%`** を超えるたびに、ハーネスは決定的に最も古いツール出力を `"[ELIDED_BY_CONTEXT_RULE_V0]"` に置換し、`system(TEMPLATE_v0)`、初期 `user(render(bundle))`、および **直近の `8` 件のツール出力** をそのまま保持し、**モデル呼び出しをゼロにする**。`hard killed(context_ceiling)` は、保持されたメッセージだけでウィンドウの **`100%`** を超える場合にのみ発火する。  
+3. **ツール表面解決（`OQ-2`：`TOOLS_v0`）**：純粋な `exec` のみ（`mini` スタイル）は、モデルに対してマルチラインソースパッチや代数的証明（`cat << 'EOF'`）をシェルエスケープさせ、シェル引用の失敗をタスク推論とは無関係に導入し、`macOS`、`Linux`、`Windows` 間でのポータブルなルートレスサンドボックス化を複雑にする。`Lane B` は **`TOOLS_v0`** を固定し、4 つのワークスペースツール（`exec`、`read_file`、`write_file`、`list_dir`）と 2 つのターミナルツール（`submit`、`refuse`）を提供し、`JCS` によって正規化された `tools_hash`（`d5b102...`）を使用する。
 
 ---
 
@@ -152,16 +152,16 @@ loop:
 
 <div id="41-four-adapter-shapes-behind-one-supervisor-and-proxy" class="anchor-alias" aria-hidden="true"></div>
 
-### 4.1 唯一のスーパーバイザおよびプロキシの背後にある4つのアダプタ形態
+### 4.1 単一のスーパーバイザおよびプロキシの背後にある4種類のアダプタ形態
 
 `Lane B` の外部にあるすべてのシステムは、以下の4つのアダプタ形態のいずれかを介して `satb-supervisor` に接続する。
 
-| アダプタ形態 | 対象システム | 実行および隔離の契約 | 再利用する標準 |
+| アダプタ形態 | 対象システム | 実行および隔離の規約 | 再利用される標準 |
 | :--- | :--- | :--- | :--- |
-| **`Shape D`（`dnull` 対照）** | 凍結された `DNULLMM1` `mmap` ストア上の Deterministic Null（`N0` 厳密なモデル非依存型および `N1` 開発時結晶化型） | 同一の `TOOLS_v0` および `Verifier` 規則の下で `/work` 内において実行され、決定時の代理モデル呼び出しは **`0` 回**である。 | `POSIX mmap`、`SPEC v0.4` の64ビット整数ループ |
-| **`Shape M`（モデルエンドポイント）** | ローカルのオープンウェイトサーバおよびクラウド上のクローズド `API` | `Chat Completions` または `Messages` を介して、ツール呼び出しおよび必須の `usage` を伴い `Lane B` の `satb-agent` を実行し、100% を `satb-proxy` 経由で経路付ける。 | OpenAI 互換 `API`（`llama.cpp`、`mlx_lm`、`vLLM`）、`Anthropic`、`Gemini`、`xAI` の変換器 |
-| **`Shape H`（ボックス内ハーネス）** | `Claude Code`、`Codex CLI`、`Gemini CLI`、`OpenHands`、`Terminus-2` | タスクは `/work/task/BUNDLE.md` に記述される。ベース `URL` は `satb-proxy`（`127.0.0.1:<port>`）に向けられ、実際の `API` 鍵は `/work` から秘匿される。終了は `MCP` の `submit` または `refuse` を介して行われ、それ以外の外部への通信は行わない。 | `Inspect` サンドボックスのブリッジ環境変数、`--strict-mcp-config` の `MCP`、任意の `ACP` |
-| **`Shape I`（`Inspect` エージェント）** | 既存の公開ベンチマーク `Inspect` ソルバ | `attempts = 1` の下で、`submit` および `refuse` ツールを備えた `SATB` タスクバンドルをラップし、モデル呼び出しを `satb-proxy` 経由で経路付ける。 | `UK AISI Inspect` の `Task` および `Solver` インタフェース |
+| **`Shape D`（`dnull` 対照）** | 凍結済み `DNULLMM1` `mmap` ストア上の決定論的ヌル（`N0` 厳密なモデル非依存型および `N1` 開発時結晶化型） | `TOOLS_v0` および `Verifier` の規則を同一に適用しつつ、`/work` 内で実行される。意思決定時のプロキシモデル呼び出しは **`0` 回** である。 | `POSIX mmap` / Win32 `MapViewOfFile`、`SPEC v0.4` の 64 ビット整数ループ |
+| **`Shape M`（モデルエンドポイント）** | ローカルのオープンウェイトサーバおよびクローズドなクラウド `API` | `Chat Completions` または `Messages` 上でツール呼び出しと必須の `usage` を伴い `Lane B` の `satb-agent` を実行し、全トラフィックを `satb-proxy` 経由で 100% 経路指定する。 | OpenAI 互換 `API`（`llama.cpp`、`mlx_lm`、`vLLM`）、`Anthropic`、`Gemini`、`xAI` の変換器 |
+| **`Shape H`（箱入りハーネス）** | `Claude Code`、`Codex CLI`、`Gemini CLI`、`OpenHands`、`Terminus-2` | タスクは `/work/task/BUNDLE.md` に記述される。ベース `URL` は `satb-proxy`（`127.0.0.1:<port>`）へ向けられ、実際の `API` キーは `/work` から秘匿される。終了は `MCP` の `submit` または `refuse` による。それ以外の外部通信は一切行わない。 | `Inspect` サンドボックスのブリッジ環境変数、`--strict-mcp-config` の `MCP`、任意の `ACP` |
+| **`Shape I`（`Inspect` エージェント）** | 既存の公開ベンチマーク `Inspect` ソルバ | `attempts = 1` の下で `submit` および `refuse` ツールを備えた `SATB` タスクバンドルを包み、モデル呼び出しを `satb-proxy` 経由で経路指定する。 | `UK AISI Inspect` の `Task` および `Solver` インタフェース |
 
 <div id="42-five-block-sut-fingerprint-and-session-validity" class="anchor-alias" aria-hidden="true"></div>
 
@@ -185,20 +185,20 @@ loop:
 
 アダプタもハーネスも、12個の適合性チェック（`C1`から`C12`）をすべて通過するまで評価に入らない：
 
-| チェック | 通過のための要件 |
+| 検査項目 | 合格要件 |
 | :--- | :--- |
-| **`C1` バンドル往復** | アダプタは入力タスクバンドルの正確な `JCS` `SHA-256` ダイジェストをエコーする。 |
-| **`C2` 送信パス** | 外部 `Verifier` は `satb-proxy` / `MCP` 端末キャプチャに記録された正確なバイト列を受信する。 |
-| **`C3` 拒否パス** | 指示された拒否が `refuse`（`sub_reason = "other"`、`completion_score = 0`）として正常に到着する。 |
-| **`C4` 1回の端末呼び出し** | 最初の `submit` または `refuse` の後に発せられたツール呼び出しまたは端末呼び出しはすべて無視され、カウントされる。 |
-| **`C5` オラクルなし** | `Verifier` および `satb-supervisor` のディレクトリ、ソケット、および親パス（`..`）は `/work` から到達不能である。 |
-| **`C6` 出口** | モデルトラフィックに対して到達可能なのは `satb-proxy`（`127.0.0.1:<port>`）のみであり、`/work` サブプロセスは外部ネットワークアクセスがゼロであり、上流 `API` キーがゼロである。 |
-| **`C7` 使用量の存在** | すべてのモデル呼び出しは `usage` を伴う（`missing -> killed(usage_missing)`）；プロキシのトークン合計は上流エンジンのカウントと正確に一致する。 |
-| **`C8` フィンガープリント安定** | 5ブロック `SUT` フィンガープリント `SHA-256` は、3回試行のドライラン前後で同一である。 |
-| **`C9` ハーネスリプレイ** | 記録された `satb-proxy` 応答をリプレイすると、バイト的に同一のトランスクリプト（`0` バイト差）が再現される（`Lane B` では必須）。 |
-| **`C10` 強制終了パス** | 暴走する `/work` プロセスツリー（デタッチされた子プロセスを含む）は `< 2,000 ms` 以内に刈り取られ、`killed` として記録される。 |
-| **`C11` テレメトリハンドシェイク** | ルートレス `L3` プロセスカウンタ（`cgroup v2` または `proc_pid_rusage`）が読み取り可能であり、フェーズマーカが到着し、単調時計から実時間時計へのオフセットが記録される。 |
-| **`C12` 決定性プローブ** | `8` 個の同一リクエストを実行し、異なる出力の数を経験的な `SUT` 特性として記録する。 |
+| **`C1` バンドル往復** | アダプタが、入力タスクバンドルの `JCS` の `SHA-256` ダイジェストを正確にエコーバックすること。 |
+| **`C2` 提出経路** | 外部 `Verifier` が、`satb-proxy` / `MCP` のターミナルキャプチャに記録されたバイト列と完全に同一のバイト列を受信すること。 |
+| **`C3` 拒否経路** | 指示された拒否が、`refuse`(`sub_reason = "other"`、`completion_score = 0`)として正しく到着すること。 |
+| **`C4` 終端呼び出しの一回性** | 最初の `submit` または `refuse` の後に発行されたツール呼び出しやターミナル呼び出しはすべて無視され、計数されること。 |
+| **`C5` オラクル不在** | `Verifier` および `satb-supervisor` のディレクトリ、ソケット、親パス(`..`)が `/work` から到達不能であること。 |
+| **`C6` 外向き通信** | モデル通信に到達可能なのは `satb-proxy`(`127.0.0.1:<port>`)のみであり、`/work` のサブプロセスは外部ネットワークアクセスおよび上流 `API` キーを一切持たないこと。 |
+| **`C7` usage の存在** | すべてのモデル呼び出しが `usage` を伴うこと(欠落時は `missing -> killed(usage_missing)`)、および proxy のトークン合計が上流エンジンの計数と厳密に一致すること。 |
+| **`C8` フィンガープリントの安定性** | 3 回の試行によるドライラン前後で、五ブロック構成の `SUT` フィンガープリントの `SHA-256` が同一であること。 |
+| **`C9` ハーネス再生** | 記録された `satb-proxy` の応答を再生した際、バイト単位で同一のトランスクリプトが再現されること(`0` バイトまたは `CRLF` の差分のみ許容。`Lane B` では必須)。 |
+| **`C10` 強制終了経路** | `/work` の暴走プロセスツリー(`POSIX` のプロセスグループまたは Win32 Job Object。デタッチされた子プロセスを含む)が `< 2,000 ms` 以内に回収され、`killed` として記録されること。 |
+| **`C11` テレメトリのハンドシェイク** | ルートレスの `L3` プロセスカウンタ(`cgroup v2`、`proc_pid_rusage`、または Win32 の `GetProcessTimes` / `QueryProcessCycleTime`)が読み取り可能であり、フェーズマーカーが到着し、単調時計と壁時計の差分が記録されること。 |
+| **`C12` 決定性プローブ** | 同一のリクエストを `8` 回実行し、異なる出力の数を `SUT` の経験的性質として記録すること。 |
 
 ---
 
@@ -213,17 +213,17 @@ loop:
 
 <div id="51-telemetry-boundaries-l0l4-and-attribution-labels-a1n" class="anchor-alias" aria-hidden="true"></div>
 
-### 5.1 テレメトリ境界（`L0-L4`）および帰属ラベル（`A1-N`）
+### 5.1 テレメトリ境界（`L0-L4`）と帰属ラベル（`A1-N`）
 
 エネルギーおよび活動センサは、物理的に異なる量を測定する5つの明確な境界に位置しており、これらを合計したり混同したりしてはならない：
 
-| レベル | 物理的・論理的境界 | 代表的なセンサ | チャネルが正当に帰属できるもの |
+| レベル | 物理的/論理的境界 | 代表的なセンサ | チャネルが誠実に帰属できる対象 |
 | :--- | :--- | :--- | :--- |
-| **`L0` wall** | 壁コンセントにおける`AC` | スマートプラグまたは`PDU`（`Shelly` `apower`, `aenergy`; `Yokogawa` アナライザ） | `PSU`変換熱、ファン、`DRAM`、および`NVMe`を含む全機械；`~1 s`間隔。 |
-| **`L1` platform** | ボード`DC`入力レール | `Jetson Thor INA238`キャリア；`Mac sys_power`；`RAPL psys` | 電源ブリックまたは`PSU`の下流にある`DC`側の全コンピュータ。 |
-| **`L2` package / SoC** | `CPU`パッケージ、`GPU`、および`SoC`レール | `RAPL pkg`；ルートレス`macmon IOReport`；`Thor INA3221`；`amdgpu hwmon`；`NVML`累積エネルギー（`mJ`） | `SoC`上の全`SUT`（`A2`）、またはレールが物理的に排他的である場合の推論エンジン単独（`A1`）。 |
-| **`L3` process / cgroup** | 単一の`OS`プロセスツリー | `Linux cgroup v2`（`cpu.stat`, `memory.peak`, `io.stat`）、`perf`；`macOS proc_pid_rusage` `ri_energy_nj` | リソース活動の共有（`C`）、または`OS`カーネル自身の内部的なプロセスごとのエネルギー・モデル（`D`）。 |
-| **`L4` logical** | モデル・ツールの会話 | `satb-proxy`トークン数および呼び出し遅延；ハーネスのターン、ツール呼び出し、および`ContextRule_v0`省略 | 例外なくすべての`SUT`における正確なカウント（クローズドクラウド`API`を含む）。 |
+| **`L0` 壁** | 壁面コンセントにおける `AC` | スマートプラグまたは `PDU`（`Shelly` の `apower`、`aenergy`；`Yokogawa` アナライザ） | `PSU` の変換損失、ファン、`DRAM`、`NVMe` を含む機械全体；`~1 s` 周期。 |
+| **`L1` プラットフォーム** | ボードの `DC` 入力レール | `Jetson Thor INA238` キャリア；`Mac sys_power`；`RAPL psys` | 電源ブリックまたは `PSU` の下流にある `DC` 側で見た計算機全体。 |
+| **`L2` パッケージ/SoC** | `CPU` パッケージ、`GPU`、`SoC` レール | `RAPL pkg`；ルートレスの `macmon IOReport`；`Thor INA3221`；`amdgpu hwmon`；`NVML` の累積エネルギー（`mJ`） | `SoC` 上の `SUT` 全体（`A2`）、またはレールが物理的に排他的である場合は推論エンジン単独（`A1`）。 |
+| **`L3` プロセス/cgroup** | 単一の `OS` プロセスツリー | `Linux cgroup v2`（`cpu.stat`、`memory.peak`、`io.stat`）、`perf`；`macOS proc_pid_rusage` の `ri_energy_nj`；Win32 の `GetProcessTimes` と `QueryProcessCycleTime` | リソース活動の比率（`C`）、または `OS` カーネル自身のプロセス別内部エネルギーモデル（`D`）。 |
+| **`L4` 論理** | モデルおよびツールとの対話 | `satb-proxy` のトークン数とコール遅延；ハーネスのターン、ツール呼び出し、`ContextRule_v0` による省略 | クラウド `API` を含め、すべての `SUT` について例外なく正確なカウント。 |
 
 レシート内のすべてのエネルギー値は、7つの帰属ラベルのいずれかを持つ：
 
@@ -237,7 +237,7 @@ loop:
 
 <div id="52-seven-step-counter-discipline-rootless-collection-oq-5-and-platform-maps" class="anchor-alias" aria-hidden="true"></div>
 
-### 5.2 七段階カウンタ規律、rootless 収集（`OQ-5`）、およびプラットフォーム対応表
+### 5.2 7段階カウンタ規律、無根収集（`OQ-5`）、およびプラットフォームマップ
 
 `satb-meter` は各試行を、順序付けられた七つの段階で処理する。
 1. **すべてのイベント境界で累積カウンタを読み取る**（`attempt.start`、各 `model_call` および `tool_call`、`attempt.close`、ならびに `100 ms` の参照ティック）。これにより、ウィンドウ内エネルギーを厳密なカウンタ差分 $\Delta E = E(t_{\text{end}}) - E(t_{\text{start}})$ として得る。
@@ -248,42 +248,53 @@ loop:
 6. **ベースラインを導出チャネルとして保存する**：セッションの前後に常駐ベースラインを置いて挟む。前後のアイドル電力のドリフトが `5.0%`（`Falsifier 6`）を超える場合は、導出された正味のアイドル超過値を破棄し、生のチャネルはそのまま保持する。
 7. **総和検査（`Falsifier 2`）を実行する**：導出されたフェーズ成分の和が、生の試行カウンタ差分に一つのセンサ量子（`1 mJ`）の範囲内で一致することを検証する。一致しない場合は導出された分割を破棄し、生のチャネルのみを保持する。
 
-**rootless 収集規則（`OQ-5`）。** ベンチマークは、`SUT` のオーケストレーションを決して `root` として実行してはならない。`macOS` では、`satb-meter` は rootless の `macmon`（`IOReport` 購読）および `libSystem` の `proc_pid_rusage(RUSAGE_INFO_V6)` を用い、`sudo` や `powermetrics` は使用しない。`Linux` では（`PLATYPUS` を受けてカーネル `5.10` 以降 `/sys/class/powercap/intel-rapl` が root 限定となった），管理者による一度限りの `udev` ルールにより、**`satb-supervisor` の `UID` のみ**を含む専用の `satb-meter` グループに読み取り権限を付与する。これにより、`/work` サンドボックス内のプロセスが `RAPL` をサイドチャネルとして利用することも、自身のエネルギーメータを読み取ることも、いずれもできないことを保証する。
+**ルートレス収集ルール (`OQ-5`).** ベンチマークは決して `SUT` のオーケストレーションを `root` で実行したり、カスタムリング0ドライバをロードしたりしてはならない。`macOS` では `satb-meter` がルートレス `macmon` (`IOReport` サブスクリプション) と `libSystem` の `proc_pid_rusage(RUSAGE_INFO_V6)` を使用し、`sudo` や `powermetrics` は一切用いない。`Linux` (カーネル `5.10` で `/sys/class/powercap/intel-rapl` が `PLATYPUS` に続いて root のみとなった環境) では、一度だけ管理者が設定する `udev` ルールが専用の `satb-meter` グループへ読み取り権限を付与し、そのグループには **`satb-supervisor` の `UID` のみ** が含まれる。これにより `/work` サンドボックスプロセスは `RAPL` をサイドチャネルで利用したり、自身のエネルギーメータを読み取ったりできない。`Windows 11` (`NT 10.0.26300`) では、権限の低い Basic User トークン (`0x20000`) が `nvml.dll` (`nvmlDeviceGetTotalEnergyConsumption`) を介して離散 `GPU` の累積エネルギー (`mJ`) を直接取得し、Win32 の `QueryProcessCycleTime` を用いて `L3` プロセスサイクルを取得する。一方、Intel `RAPL` `MSR` `0x611` はリング0 カーネルドライバを必要とし、`OQ-5` と `HVCI` により禁止されているため、Windows の `CPU` パッケージエネルギーは `"not_available"` として厳格にラベル `N` が付与される。
 
-| 対象プラットフォーム | `L0` / `L1` 全システムチャンネル | `L2` パッケージ / `SoC` チャンネル | `L3` プロセス & `L4` 論理チャンネル | 主要な検証状態 |
+| 対象プラットフォーム | `L0` / `L1` システム全体チャネル | `L2` パッケージ / `SoC` チャネル | `L3` プロセスおよび `L4` 論理チャネル | 主要な検証状況 |
 | :--- | :--- | :--- | :--- | :--- |
-| **Apple Silicon Mac** (`M5 Max` 検証済み) | `L0`: `Shelly` `PDU` (`not_available` が未接続時); `L1`: `macmon sys_power` (`reported_j`) | `macmon IOReport`: `chip_power`, `cpu_power`, `gpu_power`, `ane_power`, `ram_power` (`reported_j`) | `L3`: `proc_pid_rusage` `ri_energy_nj` (`D`), `ri_instructions`, `ri_diskio_*`; `L4`: `satb-proxy` | Rootless `L1`-`L4` が `Apple M5 Max` 上でライブ検証済み; `L0` プラグは開放状態である |
-| **Framework AMD Strix Halo** (`Ryzen AI Max+ 395`, `Linux x86-64` 検証済み) | `L0`: `Shelly` `PDU` (`not_available` が未接続時); `L1`: `cros_ec` (`0` 電力属性) | `RAPL package-0` と `core` (`0440 root:energy` `udev`) `reported_j` + `amdgpu` `PPT` `power1_input` (`0444`; `energy1_input` がなし) | `L3`: `cgroup v2` / `getrusage` (`C` 活動シェア); `L4`: `satb-proxy` | ライブ検証済み (`0440 root:energy` `PLATYPUS` 分離; `amdgpu PPT` `0444`) |
-| **Intel Raptor Lake** (`Core i9-13900H`, `Linux x86-64` 検証済み) | `L0`: `not_available`; `L1`: `RAPL psys` (`intel-rapl:1/energy_uj`, `0444` `reported_j`) | `RAPL package-0`, `core`, と `uncore` (`MSR` + `MMIO` `energy_uj`, `0444` `reported_j`) | `L3`: `cgroup v2` / `getrusage` (`C` 活動シェア); `L4`: `satb-proxy` | ライブ検証済み (`0 µJ` `Step 7` 残留が `psys` `L1` と `package-0` `L2` に跨る) |
-| **NVIDIA Jetson AGX Thor** (`Linux aarch64` Tegra 検証済み) | `L1`: `TI INA238` (`hwmon6` `VIN`, `0444` `measured_j`) + `INA3221 ch3 VIN_SYS_5V0` (`0444` `measured_j`) | `INA3221 ch1 VDD_GPU` (`0444` `measured_j`, `A1` が排他時); `ch2 VDD_CPU_SOC_MSS` (`0444` `measured_j`); `NVML` (`未検証`) | `L3`: `cgroup v2` / `getrusage` (`C` 活動シェア); `L4`: `satb-proxy` | ライブ検証済み (`INA238` と `INA3221 ch1-ch3` `0444` ルートレス; GPU `NVML` が共テナントロック下でオープン) |
-| **Closed Cloud `API`** (`Anthropic`, `xAI`, `Cerebras`, `OpenAI`, `Google`) | ローカル `L0`-`L1` がクライアントホストのみを測定 (サーバー推論からは除外) | リモートサーバー `L2`: 厳密に **`N` (`not_available`)** またはリクエストごに **`P`** (`OQ-6`) | ローカル `/work` `L3` (`D`/`C`) がサンドボックスツール向け; `L4`: **正確な** `satb-proxy` トークン、呼び出し、`USD` | `satb-proxy` を介して `Anthropic`, `Cerebras`, `xAI` 全体でライブ検証済み |
+| **Apple Silicon Mac**（`M5 Max` で検証） | `L0`: `Shelly` `PDU`（未接続時は `not_available`）; `L1`: `macmon sys_power`（`reported_j`） | `macmon IOReport`: `chip_power`, `cpu_power`, `gpu_power`, `ane_power`, `ram_power`（`reported_j`） | `L3`: `proc_pid_rusage` `ri_energy_nj`（`D`），`ri_instructions`，`ri_diskio_*`; `L4`: `satb-proxy` | `Apple M5 Max` 上で `L1`-`L4` をルートレス権限にて実機検証済み。`L0` のプラグ接続は未完了。 |
+| **Framework AMD Strix Halo**（`Ryzen AI Max+ 395`，`Linux x86-64` で検証） | `L0`: `Shelly` `PDU`（未接続時は `not_available`）; `L1`: `cros_ec`（電力属性 `0` 件） | `RAPL package-0` および `core`（`udev` による `0440 root:energy`）`reported_j` ならびに `amdgpu` `PPT` `power1_input`（`0444`；`energy1_input` は存在せず） | `L3`: `cgroup v2` / `getrusage`（`C` 活動シェア）; `L4`: `satb-proxy` | 実機検証済み（`0440 root:energy` による `PLATYPUS` 隔離；`amdgpu PPT` `0444`）。 |
+| **Intel Raptor Lake**（`Core i9-13900H`，`Linux x86-64` で検証） | `L0`: `not_available`; `L1`: `RAPL psys`（`intel-rapl:1/energy_uj`，`0444` `reported_j`） | `RAPL package-0`，`core`，および `uncore`（`MSR` および `MMIO` の `energy_uj`，`0444` `reported_j`） | `L3`: `cgroup v2` / `getrusage`（`C` 活動シェア）; `L4`: `satb-proxy` | 実機検証済み（`psys` の `L1` および `package-0` の `L2` にわたり `Step 7` 残差 `0 µJ`）。 |
+| **NVIDIA Jetson AGX Thor**（`Linux aarch64` Tegra で検証） | `L1`: `TI INA238`（`hwmon6` `VIN`，`0444` `measured_j`）＋ `INA3221 ch3 VIN_SYS_5V0`（`0444` `measured_j`） | `INA3221 ch1 VDD_GPU`（`0444` `measured_j`，排他実行時は `A1`）; `ch2 VDD_CPU_SOC_MSS`（`0444` `measured_j`）; `NVML`（`unverified`） | `L3`: `cgroup v2` / `getrusage`（`C` 活動シェア）; `L4`: `satb-proxy` | 実機検証済み（`INA238` および `INA3221 ch1-ch3` を `0444` によりルートレスで計測；GPU の `NVML` は共有テナントロック下で未完了）。 |
+| **Windows 11 `x86-64` ＋ 外付け `RTX`**（`i7-1165G7` ＋ `RTX 2060`，`NT 26300` で検証） | `L0`: `not_available`; `L1`: `WMI` `EMI` `PowerMeter`（`0` 件 → `not_available`） | `RTX 2060`: ルートレス `nvml.dll` の累積 `mJ`（`reported_j`）; `CPU` `RAPL` `MSR 0x611`: **`N`（リングゼロドライバなしでは `not_available`）** | `L3`: Win32 `GetProcessTimes` ＋ `QueryProcessCycleTime`（`C` シェア；粗粒度の `SRUM` による `OS` バックグラウンドは除外）; `L4`: `satb-proxy` | Basic User `0x20000` トークンの下で実機検証済み（`Step 7` 残差 `0 mJ`；Job Object による `2.46 ms` での強制終了）。 |
+| **クローズドクラウド `API`**（`Anthropic`，`xAI`，`Cerebras`，`OpenAI`，`Google`） | ローカルの `L0`-`L1` はクライアントホストのみを計測（サーバ推論からは除外） | リモートサーバの `L2`: 厳密には **`N`（`not_available`）** または要求ごとの **`P`**（`OQ-6`） | ローカルの `/work` における `L3`（`D`/`C`）をサンドボックスツールに適用; `L4`: **厳密な** `satb-proxy` トークン数、呼び出し回数、`USD` | `satb-proxy` を介して `Anthropic`，`Cerebras`，`xAI` にわたり実機検証済み。 |
 
 <div id="53-eight-hardware-measurement-pitfalls-and-seven-non-attributable-quantities" class="anchor-alias" aria-hidden="true"></div>
 
-### 5.3 8つのハードウェア測定の落とし穴と7つの非帰属量
+### 5.3 ハードウェア計測上の8つの落とし穴と7つの帰属不能な量
 
 標準的な電力測定の近道は、現代の`SoC`および`GPU`において体系的に失敗する：
 
-| ハードウェアテレメトリの落とし穴 | `SATB`緩和策 |
+| ハードウェアテレメトリの落とし穴 | `SATB` 緩和策 |
 | :--- | :--- |
-| **アイドル電力がダイ温度、ファン、`DVFS`、およびターボとともにドリフトする** | `GPU`の冷却を待機する（`<= 1.5 W`）、あらゆる測定窓を事前/事後ベースラインで挟み、`GPU`のピーク温度を記録し、5.0%を超えるドリフトがある派生正味ジュールは無効化する（`Falsifier 6`）。 |
-| **コールドマシンアイドルと重み常駐アイドルの間の曖昧性** | `Step 6`において両者を明示的に測定・ラベル付けし、一方を暗黙的に減算しない。 |
-| **`Active - idle`減算は低速実行を美化する** | 全体`SUT`の生測定窓エネルギー（`A2`）が主要な配置指標のままである（`OQ-4`）。 |
-| **サブ周期窓がゼロ、負、または量子化ノイズとして読み取られる** | センサ周期の10未満の窓を`"below_resolution"`とマークする（例：`~8 Hz`の`macmon`では`< 1.2 s`、または`1 Hz`のスマートプラグでは`< 10 s`）。 |
-| **高レートテレメトリサンプラは有意な`CPU`電力を消費する** | イベント境界で累積カウンタを読み取り（`0 Hz`で`0.011 mW`）、`100 ms`のティックを加え、`observer_only`ベースラインを記録する。 |
-| **`A100`/`H100`上の`NVML`瞬間電力ゲージはランタイムの`~25%`しかサンプリングしない** | 累積`nvmlDeviceGetTotalEnergyConsumption`（`mJ`）を読み取り、瞬間`nvmlDeviceGetPowerUsage`のポーリングは決して行わない（Chung et al.; Yang et al.）。 |
-| **外部`L0`壁コンセントは非同期クロックで動作する** | `session.open`および`session.close`で決定論的な`50%`デューティ較正負荷パルスを発し、タイムスタンプを相互相関する。 |
-| **共有ホストのバックグラウンドデーモンまたは同時テナントジョブ** | プロセスリストをログし、`Falsifier 6`により共有`L2`派生減算を格下げし、同時テナント隔離`L3`の`ri_energy_nj`（`D`）を生`L2`とともに記録する。 |
+| **アイドル電力がダイ温度、ファン、`DVFS`、およびターボとともにドリフトする** | `GPU` 冷却待ち（`<= 1.5 W`）を行い、すべての測定窓を前後ベースラインで挟み、ピーク `GPU` 温度を記録し、5.0% 以上のドリフトが生じた導出正味ジュールは無効化する（`Falsifier 6`）。 |
+| **コールドマシンアイドルと重み常駐アイドルの曖昧性** | `Step 6` において両者を明示的に測定・ラベル付けし、一方を暗黙的に減算しない。 |
+| **`Active - idle` 減算は低速実行を美化する** | 全体 `SUT` 生窓エネルギー（`A2`）が主要配置指標のままとする（`OQ-4`）。 |
+| **サブ期間窓がゼロ、負、または量子化ノイズとして読み取られる** | センサ期間の 10 未満の窓をすべて `"below_resolution"` とマークする（例：`~8 Hz` `macmon` では `< 1.2 s`、`1 Hz` スマートプラグでは `< 10 s`）。 |
+| **高レートテレメトリサンプラが大きな `CPU` 電力を消費する** | イベント境界で累積カウンタを読み取り（`0 Hz` で `0.011 mW`）、`100 ms` ティックを加え、`observer_only` ベースラインを記録する。 |
+| **`A100`/`H100` 上の `NVML` 瞬時電力ゲージはランタイムの `~25%` のみサンプリングする** | プロセス内 `FFI` 経由で累積 `nvmlDeviceGetTotalEnergyConsumption`（`mJ`）を読み取り（`RTX 2060` で `1.17 ms`、`43.88 ms` の `nvidia-smi` サブプロセスに対し）、瞬時 `nvmlDeviceGetPowerUsage` ポーリングは決して用いない（Chung et al.; Yang et al.）。 |
+| **外部 `L0` 壁コンセントは非同期クロックで動作する** | `session.open` および `session.close` で決定論的 `50%` デューティ較正負荷パルスを発し、タイムスタンプを相互相関する。 |
+| **共有ホストのバックグラウンドデーモンまたは同時テナントジョブ** | プロセスリストをログし、`Falsifier 6` により共有 `L2` 導出減算を降格させ、同時テナント隔離 `L3` `ri_energy_nj`（`D`）を生 `L2` とともに記録する。 |
 
-その結果、**7つの量は正直に帰属することができず**、`SATB`主張から除外される：(1) 裏付けのない閉鎖`API`サーバエネルギー（`N`または`P`のみ）；(2) 共有`SoC`または統一メモリレール上の正確なプロセスごとの物理ジュール（`C`および`D`はモデルである）；(3) サービングカーネル、量子化、バッチ処理、およびシリコンから分離されたモデル重み；(4) `OS`アイドルフロアおよび`DRAM`常駐重み電力の所有権（独立チャネルとして報告される）；(5) センサ周期より短い個別イベント（例：`1 s`プラグ下の`30 ms`ツール呼び出し）；(6) ホストハードウェアカウンタを欠く共有クラウド`VM`；および(7) 暗黙のセッション中プロバイダ重み交換（開始/終了カナリアによりフラグ付けされ、事前に除外されない）。特に（`OQ-6`）、**プロバイダの持続可能性開示は艦隊中央値であり、リクエストごとの測定ではなく、`SATB`領収書に入ることは決してない**。これにはGoogleの`0.24 Wh`中央値`Gemini Apps`プロンプト、OpenAIの`0.34 Wh`数値（方法論なしで公表）、およびMistralの`400`トークン応答あたり`1.14 gCO2e`が含まれる。
+その結果、以下の7つの量は誠実に帰属させることができず、`SATB` の主張から除外される。
+
+1. 検証されていないクローズドな`API`サーバーのエネルギー（`N` または `P` のみが得られる場合）
+2. 共有`SoC`または統合メモリ電源レール上における、プロセス単位の正確な物理ジュール値（`C` と `D` はモデルによる推定値である）
+3. サービング用カーネル、量子化、バッチ処理、シリコンから分離されたモデル重みの寄与
+4. `OS`のアイドル床および`DRAM`常駐の重み電力の帰属（独立したチャネルとして報告される）
+5. センサー周期より短い個別イベント（`1 s` のプラグ下での `30 ms` のツール呼び出しなど）
+6. ユーザーモードのハードウェアカウンタを欠く共有クラウド`VM`、または非特権Windows `CPU`ドメイン
+7. セッション途中における無通告のプロバイダ側での重み差し替え（開始時と終了時のカナリアによって検出されるが、事前に排除されるものではない）
+
+特に（`OQ-6`）、プロバイダの持続可能性に関する開示は、リクエスト単位の測定値ではなく機群（フリート）の中央値であり、いかなる場合も `SATB` の受領記録（receipt）には含まれない。これには、Googleの `Gemini Apps` プロンプトにおける `0.24 Wh` の中央値、OpenAIの（方法論が公表されていない）`0.34 Wh` という数値、およびMistralの `400` トークン応答あたり `1.14 gCO2e` が含まれる。
 
 ---
 
 <div id="6-measured-conformance-determinism-observer-effect-and-multi-host-attribution-results" class="anchor-alias" aria-hidden="true"></div>
 
-## 6. 測定された適合性、決定性、観測者効果、およびマルチホスト帰属結果
+## 6. 測定による適合性、決定性、観測者効果、およびマルチホスト帰属の結果
 
-測定されない設計仮定を監査可能なレシートに置き換えるため、完全な `SATB` 適合性スイートおよび偽造ハーネス (`bench_satb_falsifiers.py` $\to$ `satb_empirical_receipts.json`, 総実行時間 `175.69 s`) を `Apple M5 Max` ワークステーション (`arm64`, `128 GB` 統合メモリ, `macOS 27.2.1`, `macmon 0.12.0`) 上で実行し、188 ウィンドウのクロススタディ監査を並行して実施した。
+設計上の未検証の仮定を、監査可能な証跡によって置き換えるため、完全な `SATB` 適合性スイートおよび反証ハーネス(`bench_satb_falsifiers.py` $\to$ `satb_empirical_receipts.json`、総実行時間 `175.69 s`)を実行した。実行環境は `Apple M5 Max` ワークステーション(`arm64`、`128 GB` ユニファイドメモリ、`macOS 27.2.1`、`macmon 0.12.0`)であり、これに加えて `188` ウィンドウの横断的監査、および `Linux` と `Windows 11` にまたがる実機の複数 OS・多種シリコンでの実行を行った。
 
 <div id="61-c1c12-conformance-c9-deterministic-replay-and-c10-process-tree-cleanup" class="anchor-alias" aria-hidden="true"></div>
 
@@ -353,59 +364,62 @@ loop:
 1. **`Falsifier 6` ベースラインドリフト監査（`188` ウィンドウ）**: `exp-001` の `11` ウィンドウ（`5.0%` 以内が `1`、最大 `44.5%` までドリフトしたものが `10`）、`exp-002` と multi-turn の `7` ウィンドウ（`5.0%` 以内が `2`。`1,190` インスタンスの `dnull` バッチは `3.09%`、`Qwen 3.6` による `BigCodeBench` は `1.02%` のドリフトにとどまった。残る `5` ウィンドウは、並行実行された `yosys-abc` 合成の影響下で `12.16%-65.11%` ドリフトした）、および `ai-reads-human` の `170` ウィンドウ（`loadavg_1m = 12.92`。`5.0%` 以内が `61`、ドリフトしたものが `109`）を対象とした。その結果、`188` 中 `64` ウィンドウ（`34.04%`）は有効な `derived_marginal_j` を保持し、`124` ウィンドウ（`65.96%`）はアイドル超過分の減算を自動的に無効化された。この過程で、生の `L2` 読み取り値およびプロセス単位 `L3` の `reported_j` 読み取り値は 1 件も失われなかった（`188 / 188 = 100.0%` の生データ保持）。
 2. **`Falsifier 8`（`Lane B` 対 `Shape H`、`Claude Code 2.1.330`）**: `/work` の形式的ポリシーバンドルと `SQLite` のポリシーバンドルからなる `24` 組の対応評価において、`Lane B` は `Claude Opus 5.5`（`44` 回のモデル呼び出し、`63,568` 個のプロンプトおよびキャッシュトークン、`\$0.5477`）と `Claude Sonnet 5.5`（`43` 回、`60,284` トークン、`\$0.3413`) の双方で **`24 / 24`（`100.0%`）** を達成した。これは `Shape H`（`Claude Code 2.1.330`: `Opus 5.5` では `89` 回・`218,449` トークン、`Sonnet 5.5` では `83` 回・`196,128` トークン、いずれも **`24 / 24`**）と同等であり、プロンプトおよびキャッシュのトークン量はそれぞれ **`3.44×` と `3.25×`** 削減された。未見の多ファイル Python バグ修正リポジトリ `6` 件（`config-defaults`、`interval-merge`、`pagination`、`precedence`、`rate-window`、`retry-backoff`）においても、`Lane B` は `Shape H`（`Claude Code 2.1.330` + `Opus 5.5`: **`6 / 6`**、`30` 回・`86,744` トークン、トークン量は `1.67×` 多い）と再び同等の成功率を示した。具体的には、`Lane B` の `Opus 5.5` は `28` 回・`52,045` トークン、`Sonnet 5.5` は `31` 回、ローカルの `Qwen 3.6 35B-A3B` は `42` 回・`2,342.05 J` の `L2` を記録した。これにより、`Lane B` が機能を制限された下限ハーネスではないことが確認された。
 
-<div id="66-multi-platform-hardware-attribution-across-four-silicon-archetypes" class="anchor-alias" aria-hidden="true"></div>
+<div id="66-multi-platform-hardware-attribution-across-five-silicon-and-os-archetypes" class="anchor-alias" aria-hidden="true"></div>
 
-### 6.6 4つのシリコン原型にわたるマルチプラットフォームハードウェア帰属
+### 6.6 5つのシリコンおよびOSアーキタイプにわたるマルチプラットフォームのハードウェア帰属
 
-`SATB`適合性、`Shape D`固定小数点決定性、ルートレス`PLATYPUS`許可境界、および物理シャントレール分離が`macOS`および`Apple Silicon`の外部でも成立することを検証するため、`Apple M5 Max`とともに3つの追加`Linux`ハードウェア原型にわたって`run_multi_host_satb.py`（`multi_host_satb_receipts.json`）を実行した。
+`SATB` 適合性、`Shape D` の固定小数点決定性、ルートレスな `PLATYPUS` / `HVCI` の権限境界、ならびに物理シャントまたは累積 `NVML` による帰属が `macOS`、`Linux`、`Windows 11` の全体で成立することを検証するため、`run_multi_host_satb.py`（`multi_host_satb_receipts.json`）および `run_windows_suite.py`（`windows_satb_receipts.json`）を実行した。対象は `Apple M5 Max` に加えて、追加の `Linux` および `Windows 11` のハードウェアアーキタイプ4種である。
 
-| ハードウェア原型および`OS`カーネル | ルートレスセンサ境界およびエビデンスクラス | `Shape D` `1M` `DNULLMM1`（`10k`プローブ） | `C9`リプレイおよび`C10` `SIGKILL`平均 | 単一読取りレイテンシおよび`100 Hz`達成 | `Step 7`残差および`Falsifier 3`（`C`対`B`） |
+| ハードウェアアーキタイプと`OS`カーネル | ルートレス センサ境界と証拠クラス | `Shape D` `1M` `DNULLMM1`（`10k`プローブ） | `C9`リプレイと`C10`ツリー強制終了の平均 | 単一読み出し遅延と`100 Hz`達成値 | `Step 7`残差と`Falsifier 3`（`C`対`B`） |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **`Apple M5 Max`**（`arm64`、`128 GB`、`macOS 27.2.1`） | `IOReport` `L1`/`L2` + `rusage` `L3`（`reported_j`；`measured_j = None`） | `15027705736`（`388.43 ns` `C++`、`582.57 ns` Rust） | `149,747 B`（`0`差分）・`2.073 ms`（`0` `PID`） | `~120 ms` `IOReport`・**`7.44 Hz`** | `<= 1 µJ`・**`-32.59%`** Phase 2（`+35.86%` Ph. 1） |
-| **`NVIDIA Jetson AGX Thor`**（`aarch64`、`122.9 GiB`、`Linux 6.8.12-1021-tegra`） | `TI INA238`（`hwmon6` `VIN` `L1`）+ `INA3221`（`hwmon5` `ch1-ch3` `L2`/`L1`、`0444` **`measured_j`**） | `15027705736`（`984.86 ns` `C -O3`、`2,489.4 ns` Py） | `149,747 B`（`0`差分）・`9.544 ms`（`0` `PID`） | `2,948.8 µs` `I2C`・**`66.55 Hz`** | `0.0 µJ`・**`-70.01%`** `ch2`（`-67.02%` `VIN`） |
-| **`Framework AMD Ryzen AI Max+ 395`**（`x86-64`、`122.8 GiB`、`Linux 7.0.0-43`） | `RAPL package-0`および`core`（`0440 root:energy` **`reported_j`**）+ `amdgpu PPT`（`0444`；`measured_j = None`） | `15027705736`（`376.61 ns` `C -O3`、`1,341.7 ns` Py） | `149,747 B`（`0`差分）・`0.868 ms`（`0` `PID`） | `24.34 µs` `sysfs`・**`94.28 Hz`** | `0 µJ`・**`-71.61%`** `pkg-0`（`-63.34%` `core`） |
-| **`Intel Core i9-13900H`**（`x86-64`、`14.7 GiB`、`Linux 7.0.0-43`） | `RAPL psys`（`L1`）+ `package-0`、`core`、`uncore`（`L2`、`0444` **`reported_j`**；`measured_j = None`） | `15027705736`（`420.93 ns` `C -O3`、`863.6 ns` Py） | `149,747 B`（`0`差分）・`1.120 ms`（`0` `PID`） | `45.37 µs` `sysfs`・**`97.12 Hz`** | `0 µJ`・**`-72.89%`** `pkg-0`（`-73.62%` `psys`） |
+| **`Apple M5 Max`**（`arm64`、`128 GB`、`macOS 27.2.1`） | `IOReport` `L1`/`L2` + `rusage` `L3`（`reported_j`；`measured_j = None`） | `15027705736`（`388.43 ns` `C++`、`582.57 ns` Rust） | `149,747 B`（差分`0`）· `2.073 ms`（`0`個の`PID`） | 約`120 ms` `IOReport` · **`7.44 Hz`** | `<= 1 µJ` · **`-32.59%`**（フェーズ2）（フェーズ1では`+35.86%`） |
+| **`NVIDIA Jetson AGX Thor`**（`aarch64`、`122.9 GiB`、`Linux 6.8.12-1021-tegra`） | `TI INA238`（`hwmon6` `VIN` `L1`）+ `INA3221`（`hwmon5` `ch1-ch3` `L2`/`L1`、`0444` **`measured_j`**） | `15027705736`（`984.86 ns` `C -O3`、`2,489.4 ns` Py） | `149,747 B`（差分`0`）· `9.544 ms`（`0`個の`PID`） | `2,948.8 µs` `I2C` · **`66.55 Hz`** | `0.0 µJ` · **`-70.01%`**（`ch2`）（`VIN`では`-67.02%`） |
+| **`Framework AMD Ryzen AI Max+ 395`**（`x86-64`、`122.8 GiB`、`Linux 7.0.0-43`） | `RAPL package-0` および `core`（`0440 root:energy` **`reported_j`**）+ `amdgpu PPT`（`0444`；`measured_j = None`） | `15027705736`（`376.61 ns` `C -O3`、`1,341.7 ns` Py） | `149,747 B`（差分`0`）· `0.868 ms`（`0`個の`PID`） | `24.34 µs` `sysfs` · **`94.28 Hz`** | `0 µJ` · **`-71.61%`**（`pkg-0`）（`core`では`-63.34%`） |
+| **`Intel Core i9-13900H`**（`x86-64`、`14.7 GiB`、`Linux 7.0.0-43`） | `RAPL psys`（`L1`）+ `package-0`、`core`、`uncore`（`L2`、`0444` **`reported_j`**；`measured_j = None`） | `15027705736`（`420.93 ns` `C -O3`、`863.6 ns` Py） | `149,747 B`（差分`0`）· `1.120 ms`（`0`個の`PID`） | `45.37 µs` `sysfs` · **`97.12 Hz`** | `0 µJ` · **`-72.89%`**（`pkg-0`）（`psys`では`-73.62%`） |
+| **`Intel Core i7-1165G7 + RTX 2060`**（`x86-64`、`63.7 GiB`、`Windows 11 26300`） | `nvml.dll` `RTX 2060` 累積`mJ`（`L2` **`reported_j`**）+ Win32 `L3`；`CPU RAPL` = `N`（`measured_j = None`） | `15027705736`（`1,474.22 ns` `MSVC /O2`、`2,885.6 ns` Py） | `149,747 B`（`0` `CRLF`）· `2.458 ms` JobObj（`0`個の`PID`） | `1,174.2 µs` `NVML` · **`64.64 Hz`**（`NT` ティック） | `0 mJ` · **`-89.88%`**（時間）（`RDTSC`では`-77.05%`） |
 
-これらのライブレシートから4つのクロスプラットフォームハードウェア所見が浮かび上がる。
+これらのライブ受領記録から、以下5つのクロスプラットフォームにおけるハードウェアおよびオペレーティングシステムの知見が得られた:
 
-1. **ビット単位で厳密な `Shape D` および `Lane B` リプレイ不変性（`arm64`/`aarch64` および `x86-64` 間）**：4台のホストすべてが、厳密に同一の `10,000` プローブ `DNULLMM1` チェックサム **`15027705736`**、厳密に同一の `test.setpoint` 凍結ダイジェスト `0da4df8d9ccbce1e...4485781`、および厳密に同一の `149,747` バイト `C9` トランスクリプト（`SHA-256` `d697ed1476129939...`、差分 `0` バイト）を生成した。また、`SIGKILL` により `4` 個の PID 暴走プロセスグループを `0.868 ms` から `9.544 ms` で刈り取り（`Jetson AGX Thor` 上の `loadavg_1m = 52.39` 時でも `2,000 ms` 仕様上限に対して `> 200×` 高速）した。
-2. **物理 `INA238` / `INA3221` シャント分離およびライブ `GPU` 同時占有下での `Falsifier 6`（`NVIDIA Jetson AGX Thor` 上）**：`Linux 6.8.12-1021-tegra` において、`hwmon6`（`ti,ina238` at `i2c@c600000/ina238@44`、`VIN` 基板全体 `DC` 入力 `~27.97 V`）および `hwmon5` の3チャネルすべて（`ina3221@40`：`ch1 VDD_GPU`、`ch2 VDD_CPU_SOC_MSS`、`ch3 VIN_SYS_5V0`）が `sudo` 不要でワールドリーダブル（`0444`）である。厳密に `CPU` のみを用いたプローブ（`dedicated_host = false`）の間、独立した同時占有プロセス `llama-server` がホスト `GPU` ロックを保持していた：
+1. **ビット単位で厳密な `Shape D` および `Lane B` リプレイ不変性（`macOS`、`Linux`、`Windows 11`（`arm64`/`aarch64` および `x86-64`）横断）**: 5台の全ホスト（`MSVC 19.44 /O2` でコンパイルされた Win32 `CreateFileMappingA` + `MapViewOfFile` および `Windows 11`（`NT 10.0.26300`）上の `NTFS` ファイル I/O を含む）は、厳密に同一の `10,000` プローブ `DNULLMM1` チェックサム **`15027705736`**、厳密に同一の `test.setpoint` 凍結ダイジェスト `0da4df8d9ccbce1e...4485781`、および厳密に同一の `149,747` バイト `C9` トランスクリプト（`SHA-256` `d697ed1476129939...`、**`0`** 個の `NTFS` `CRLF` バイトドリフト）を生成した。同時に、カーネルプリミティブ（`macOS`/`Linux` では `SIGKILL`、`Windows 11` では Win32 `TerminateJobObject`）により `4` 個の PID 暴走プロセスツリーを `0.868 ms` から `9.544 ms` で刈り取り、`Windows 11` では **`2.458 ms` 平均**（`taskkill.exe /F /T /PID` の `122.817 ms` 平均より **`50.0×` 高速**、仕様上限 `2,000 ms` の `> 200×` 以内）であった。
 
-| `Jetson AGX Thor` 物理シャントチャネル（`0444` rootless `sysfs`） | 境界 | 事前ベースライン（`W`） | フェーズ1 計算（`measured_j` / `W`） | フェーズ2 `DRAM+fsync`（`measured_j` / `W`） | 事後ベースライン（`W`） | ドリフト（`F6`）および `Kepler` `C` フェーズ2誤差 |
+2. **物理 `INA238` / `INA3221` シャント分離およびライブ `GPU` 同時占有下での `Falsifier 6`（`NVIDIA Jetson AGX Thor` 上）**: `Linux 6.8.12-1021-tegra` 上で、`hwmon6`（`ti,ina238` at `i2c@c600000/ina238@44`、`VIN` 全体ボード `DC` 入力 `~27.97 V`）および `hwmon5` の全 3 チャネル（`ina3221@40`: `ch1 VDD_GPU`、`ch2 VDD_CPU_SOC_MSS`、`ch3 VIN_SYS_5V0`）は `sudo` なしでワールドリーダブル（`0444`）である。厳密に `CPU` のみによるプローブ（`dedicated_host = false`）の間、独立した同時占有プロセス `llama-server` がホスト `GPU` ロックを保持していた：
+
+| `Jetson AGX Thor` 物理シャントチャネル（`0444` rootless `sysfs`） | 境界 | 事前ベースライン（`W`） | フェーズ 1 計算（`measured_j` / `W`） | フェーズ 2 `DRAM+fsync`（`measured_j` / `W`） | 事後ベースライン（`W`） | ドリフト（`F6`）および `Kepler` `C` フェーズ 2 誤差 |
 | :--- | :---: | ---: | ---: | ---: | ---: | :--- |
-| **`hwmon6` `INA238` `VIN`**（モジュール＋キャリア入力） | **`L1`** | `100.70 W` | `122.12 J`（`101.66 W`） | `99.02 J`（`81.94 W`） | `97.21 W` | `3.47%`（`A2` 保留：同時占有）・**`-67.02%`** |
-| **`hwmon5` `INA3221 ch1` `VDD_GPU`**（同時占有 `LLM`） | **`L2`** | `29.26 W` | `40.29 J`（`33.54 W`） | `26.00 J`（`21.52 W`） | `28.13 W` | 外部 `GPU` 同時占有（`F5` における `-36.1%` 変動） |
-| **`hwmon5` `INA3221 ch2` `VDD_CPU_SOC_MSS`** | **`L2`** | `36.68 W` | `45.73 J`（`38.07 W`） | `44.37 J`（`36.71 W`） | `36.08 W` | `1.64%`（`CPU`/`SoC`/`MSS` ドメイン）・**`-70.01%`** |
-| **`hwmon5` `INA3221 ch3` `VIN_SYS_5V0`**（`5.08 V` レール） | **`L1`** | `14.89 W` | `18.66 J`（`15.53 W`） | `16.82 J`（`13.92 W`） | `13.98 W` | **`6.13% > 5.0%`（`F6` トリガ）**・**`-68.85%`** |
+| **`hwmon6` `INA238` `VIN`**（モジュール + キャリア入力） | **`L1`** | `100.70 W` | `122.12 J`（`101.66 W`） | `99.02 J`（`81.94 W`） | `97.21 W` | `3.47%`（`A2` 保留：同時占有）・**-67.02%** |
+| **`hwmon5` `INA3221 ch1` `VDD_GPU`**（同時占有 `LLM`） | **`L2`** | `29.26 W` | `40.29 J`（`33.54 W`） | `26.00 J`（`21.52 W`） | `28.13 W` | 外部 `GPU` 同時占有（`F5` での `-36.1%` 振幅） |
+| **`hwmon5` `INA3221 ch2` `VDD_CPU_SOC_MSS`** | **`L2`** | `36.68 W` | `45.73 J`（`38.07 W`） | `44.37 J`（`36.71 W`） | `36.08 W` | `1.64%`（`CPU`/`SoC`/`MSS` ドメイン）・**-70.01%** |
+| **`hwmon5` `INA3221 ch3` `VIN_SYS_5V0`**（`5.08 V` レール） | **`L1`** | `14.89 W` | `18.66 J`（`15.53 W`） | `16.82 J`（`13.92 W`） | `13.98 W` | **`6.13% > 5.0%`（`F6` トリガ）**・**-68.85%** |
 
-`Falsifier 5` の4つのケイデンス・ウィンドウにわたり、変動する共存テナントの `LLM` 要求によって `ch1 VDD_GPU` は `35.36 J` から `22.60 J`（`-36.1%`）へ低下し、ボード全体の `INA238 VIN`（`L1`）も `107.48 J` から `81.73 J`（`-24.0%`）へ低下した。この間も `ch2 VDD_CPU_SOC_MSS` は `35.76-39.31 J` の範囲に留まった。`dedicated_host = false` であり（かつ `ch3 VIN_SYS_5V0` は `6.13%` で `5.0%` のドリフトを超えた）、`SATB` は、正確なレール別 `measured_j` を保持する（`L1` と `L2` のチャネルは決して合算しない）一方で、`A2`（`SUT` 全体のネット配置の主張）を保留する。
+4つの`Falsifier 5`ケイデンスウィンドウ全体にわたって、変動する共同テナント`LLM`要求は`ch1 VDD_GPU`を`35.36 J`から`22.60 J`（`-36.1%`）へシフトさせ、全体ボードの`INA238 VIN`（`L1`）を`107.48 J`から`81.73 J`（`-24.0%`）へ引き下げたが、`ch2 VDD_CPU_SOC_MSS`は`35.76-39.31 J`の範囲内に留まったままであった。`dedicated_host = false`（および`ch3 VIN_SYS_5V0`が`6.13%`で`5.0%`ドリフトを超過した）ため、`SATB`は`A2`全体`SUT`ネット配置主張を保留する一方で、レール分離された正確な`measured_j`（`L1`および`L2`チャネルは決して合計されない）を保持する。
 
-3. **`PLATYPUS` の `0440 root:energy` による隔離と、`Framework` `AMD` 上での `Strix Halo` `APU` ドメインの検証**: `Framework` Desktop（`AMD Ryzen AI Max+ 395 w/ Radeon 8060S`、`Linux 7.0.0-43-generic`）において、`udev` ルール `90-energy-read.rules` は `/sys/class/powercap/intel-rapl:0/energy_uj`（`package-0`）および `intel-rapl:0:0/energy_uj`（`core`）のモードを **`0440`（`root:energy`、`world_readable = false`）** に設定する。グループに属さない `/work` サンドボックスの `UID` は `EACCES` を受け取る（これにより `PLATYPUS` のサイドチャネルを遮断する）。一方、監督者の `GID`（`energy`）は、中央値 `24.34 µs` の遅延で累積マイクロジュールを権限昇格なしに読み取る（`Step 7` の残差は `0 µJ`）。`hwmon9`（`amdgpu`）を検査した結果、未解決であった仕様上の詳細がさらに解明された。`Strix Halo` の統合 `Radeon 8060S` は、個別の `energy1_input` カウンタを持たず、全ユーザーが読み取り可能（`0444`）な `PPT` 電力を公開する（`µW` 単位の `power1_input` / `power1_average`、フェーズ1で `75.38 W`、フェーズ2で `69.72 W`）。一方、`cros_ec`（`hwmon8`）はファンおよび基板の温度のみを公開する。
+3. **`PLATYPUS` `0440 root:energy`分離および`Strix Halo` `APU`ドメイン検証（`Framework` `AMD`上）**: `Framework` Desktop（`AMD Ryzen AI Max+ 395 w/ Radeon 8060S`、`Linux 7.0.0-43-generic`）において、`udev`ルール`90-energy-read.rules`は`/sys/class/powercap/intel-rapl:0/energy_uj`（`package-0`）および`intel-rapl:0:0/energy_uj`（`core`）をモード **`0440`（`root:energy`、`world_readable = false`）** に設定する: グループ化されていない`/work`サンドボックス`UID`は`EACCES`を受け取り（`PLATYPUS`サイドチャネルをブロック）、一方でスーパーバイザ`GID`（`energy`）は累積マイクロジュールをルートレスに`24.34 µs`中央値レイテンシ（`0 µJ` `Step 7`残差）で読み取る。`hwmon9`（`amdgpu`）をさらに検査した結果、未解決の仕様詳細が明らかになった: `Strix Halo`の統合`Radeon 8060S`は世界読み取り可能（`0444`）な`PPT`電力（`power1_input` / `power1_average`、`µW`単位、`75.38 W` Phase 1 / `69.72 W` Phase 2）を公開するが、別個の`energy1_input`カウンタではなく、`cros_ec`（`hwmon8`）はファンおよびボード温度のみを公開する。
 
-4. **センサバスのケイデンス物理（`I2C` 対 `MSR`/`MMIO` 対 `IOReport`）と普遍的な `Falsifier 3` トリガ**: `x86-64` の `powercap` `sysfs` 読み取りは `24.34-45.37 µs` で完了し（公称 `100 Hz` に対して `94.28-97.12 Hz` を達成）、一方、`Jetson AGX Thor` 上で9レジスタからなる `INA238`+`INA3221` のスナップショットは、物理的な `i2c@c600000` を中央値 **`2,948.8 µs`**（平均 `4.48 ms`）で通過する。そのため `100 Hz` のポーリングは **`66.55 Hz`** に制限される（これは `macmon` の `IOReport` の上限 `7.44 Hz` の `8.9×` に相当する）。これに対し、`SATB` の `100 ms`（`10 Hz`）の基準ティックでは **`9.49 Hz`** を問題なく達成する。3つの `Linux` ホストすべてにおいて、`Kepler` 型の `CPU` 時間比例分割（`C`）は、`192 MiB` の `DRAM` と `fsync` のフェーズを **`67.02%` から `73.62%`** 過小に計上した。これは4種のシリコン・アーキテクチャにわたって、`SATB` が `C` を重複する並列実行に限定する理由を裏付けるものである。
+4. **ベアメタル`Windows 11`ルートレス境界（`0x20000` Basic User `NVML`対ring-0 `RAPL`ブロック）および`15.625 ms` `NT`クロックティックエイリアシング**: 明示的に降格されたBasic Userトークン（`runas.exe /trustlevel:0x20000`、`IsUserAnAdmin() == false`）下の`Windows 11 Pro`（`NT 10.0.26300`、`Intel Core i7-1165G7` + `NVIDIA GeForce RTX 2060`）において、プロセス内`FFI`呼び出しによる`nvml.dll` `nvmlDeviceGetTotalEnergyConsumption`（`mJ`）および`nvmlDeviceGetPowerUsage`（`mW`）はルートレスに **`1,174.15 µs`中央値** で成功し（`nvidia-smi.exe`を呼び出す場合の`43.88 ms`呼び出しあたりより**`37.4×`高速**）、`Step 7`を **`0 mJ`残差** でクリアした（`8.769 J + 8.816 J = 17.585 J`、`3.0%`前後ドリフト）。対照的に、Intel `RAPL` `MSR 0x611`の非特権ユーザモード読み取りは署名付きring-0ドライバなしでは`Windows NT`カーネルによりブロックされ（`OQ-5`および`HVCI`により禁止）、`WMI` `EMI`（`\\.\EnergyMeter` / `Win32_PerfRawData_Counters_PowerMeter`）は`0`インスタンスを公開するため、Windows `CPU`パッケージ`L2`を厳密に`Label N`（`"not_available"`）に置く。さらに、未調整の`Windows NT`が`~15.625 ms`クロック割り込みで`GetProcessTimes`を更新するため、Phase 2の`8 ms`スリーププラス`FlushFileBuffers`バーストは`62.5 ms`へエイリアスされ（`5.06%` `CPU`シェア対Phase 1の`1,171.9 ms`）、`Kepler` `C`帰属を**-89.88%** 誤差とする（サブティック`RDTSC` `QueryProcessCycleTime`サイクルを`11.48%`シェアで使用した場合でも`-77.05%`）。
+
+5. **全5プラットフォームにおけるセンサバスおよび `OS` タイマー周期の物理特性**: Linux `x86-64` の `powercap` `sysfs` 読み出しは `24.34-45.37 µs` で完了し(`100 Hz` 設定で `94.28-97.12 Hz` を達成)、一方で `Windows NT` の既定の `15.625 ms` スリープ量子は、無調整の `10 ms` `NVML` ループを **`64.64 Hz`** に制限する。`SATB` の `100 ms` (`10 Hz`) 参照周期では **`9.45 Hz`** を安定して提供する。これは `Jetson AGX Thor` の `66.55 Hz` の `I2C` シャント上限(`100 ms` 参照で `9.49 Hz`)と一致し、`macmon` の `7.44 Hz` の `IOReport` 上限とは対照的である。**`5 / 5` のシリコンおよび `OS` アーキテクチャ全体**にわたり、`CPU` 比例配分(`C`)は `192 MiB` の `DRAM` およびディスク同期フェーズを **`32.59%` から `89.88%`** 過小評価していた。このことは、`SATB` が `C` を重複する並列実行に限定する理由が普遍的に成立することを裏付ける。
 
 ---
 
 <div id="7-open-hardware-verification-and-limitations" class="anchor-alias" aria-hidden="true"></div>
 
-## 7. オープンハードウェア検証と制限
+## 7. オープンハードウェアによる検証と限界
 
-| セッション偽装検出器 | トリガー時の結果 | 本研究における経験的状況 |
+| セッション反証条件 | トリガー時の帰結 | 本研究における実証的状態 |
 | :--- | :--- | :--- |
-| **`F1` リプレイ不一致 (`C9`)** | リファレンスハーネスは非決定的である | **`4/4` ホストでクリア（`149,747 B` 全体で `0` バイト差、`14` ターン）** |
-| **`F2` 合計チェックが `> 5%` の試行で失敗** | ホスト上で帰属分割が破損する | **`4/4` ホストでクリア（`0 µJ` Linux `RAPL`/シャント; `<= 1 µJ` `M5 Max`）** |
-| **`F3` `B` と `C` が逐次 `> 20%` の不一致** | ホスト上で `C`（`Kepler`）が信頼できないとマークされる | **`4/4` ホストでトリガー（エラー `32.59%-73.62%`）；`C` が制限される** |
-| **`F4` 既知のパルス負荷がセンサー精度外** | セッションのためにセンサーが格下げされる | **オープン（`L0` スマートプラグ同期パルス装置は未接続）** |
-| **`F5` `10 ms` 対 `1 s` ティックがウィンドウエネルギーをシフト** | テレメトリ観測効果 | **クリア（`0.76%` `M5 Max` `L2` デルタ；`100 ms` 基準で `9.49-10.48 Hz` 達成）** |
-| **`F6` 前後のレジデントベースラインが `> 5.0%` ドリフト** | 派生ネットチャネルが無効化される | **アクティブ（`124/188` `M5 Max` ウィンドウ + Linux 共同テナントのドリフトがクリーンにゲート）** |
-| **`F7` アダプタが `C1`-`C12` を合格、カナリアが失敗** | 適合性が不十分で、セッションが `void` | **シミュレーションで検証（`session_void = true` がスワップ時に）** |
-| **`F8` `Lane B` が強力な `Lane O` ハーネスより下位に配置** | `Lane B` は厳密にフロアとして報告される | **クリア（`Claude Code 2.1.330` に対し `24/24` と `6/6` のパリティ）** |
+| **`F1` リプレイ不一致（`C9`）** | リファレンスハーネスが非決定的である | **`5/5` ホストで反証不成立（`149,747 B`、`14` ターンにわたり `0` バイト/`CRLF` 差分）** |
+| **`F2` 試行の `> 5%` で総和検査が失敗** | ホスト上で帰属分割が破綻する | **`5/5` ホストで反証不成立（Linux では `0 µJ`、Win11 `NVML` では `0 mJ`、`M5 Max` では `<= 1 µJ`）** |
+| **`F3` `B` と `C` が逐次的に `> 20%` 乖離する** | `C`（`Kepler`）をホスト上で信頼性なしと判定 | **`5/5` ホストで発火（誤差 `32.59%-89.88%`）; `C` は利用制限** |
+| **`F4` 既知のパルス負荷がセンサ精度の範囲外** | セッション中センサを格下げ | **未決（`L0` スマートプラグ同期パルス装置は未接続）** |
+| **`F5` `10 ms` 対 `1 s` のティックがウィンドウエネルギーを変化させる** | テレメトリの観測者効果 | **反証不成立（`M5 Max` の `L2` 差分 `0.76%`; `100 ms` 基準で `9.45-10.48 Hz` を達成）** |
+| **`F6` 常駐ベースラインの前後変動が `> 5.0%`** | 導出された正味チャネルが無効化される | **発火中（`M5 Max` の `124/188` ウィンドウ、および Linux 同居ワークロードによる変動は明確にゲートされた）** |
+| **`F7` アダプタは `C1`-`C12` を通過するがカナリアに失敗** | 適合性検査では不十分; セッションは `void`（無効） | **シミュレーションで検証済み（入替時に `session_void = true`）** |
+| **`F8` `Lane B` が強力な `Lane O` ハーネスを下回る** | `Lane B` は厳密に下限として報告 | **反証不成立（`Claude Code 2.1.330` に対し `24/24` および `6/6` で同等）** |
 
-具体的なハードウェアおよびアダプタ項目が `OQ-5` として 3 件未解決である：
-
-1. **専用の静止 `A2` セッションと `L0` `AC` 壁プラグ較正**：物理的な `TI INA238`（`L1`）および `INA3221`（`L2`/`L1`）シャント `measured_j` レールは、`NVIDIA Jetson AGX Thor` 上でライブ検証され、`Apple M5 Max`、`Framework AMD Strix Halo`、`Intel Raptor Lake` のルートレス `reported_j` カウンタと共に動作しているが、4 台すべてのベンチマシンが同時に共同テナントワークロードを実行（`dedicated_host = false`）しており、`A2` 全体の `SUT` 配置主張を保留している。静止専用ホストに同期パルス付き `L0` `AC` メータ（`Shelly` / `Yokogawa`）を接続することが次の課題である。
-2. **統合 `GPU` `NVML` カウンタチェック on `Jetson AGX Thor`**：`INA238` と `INA3221 ch1-ch3`（`VDD_GPU`、`VDD_CPU_SOC_MSS`、`VIN_SYS_5V0`）のルートレス `sysfs` 権限（`0444`）および `Framework AMD Strix Halo` の `0440 root:energy` `RAPL` + `amdgpu PPT`（`energy1_input` が欠如）は現在デバイス上で検証済みである；`Jetson AGX Thor` 上で `nvmlDeviceGetTotalEnergyConsumption` をプロービングするには、共有 `GPU` ロックが解放されたアイドルウィンドウを待つ必要がある。
-3. **より広範な `Shape H` と `Shape I` のライブロスター**：本研究のライブ外部ハーネス実行は、`Claude Code 2.1.330` 上で `Shape H` を `Lane B` および `Shape D` と共に実施した；ライブの `C1-C12` 認証を `Codex CLI`、`OpenHands`、`Terminus-2`、および `Shape I` `Inspect` ソルバーで実行することが次の課題である。
+未解決のハードウェアおよびアダプタ項目が3件残存する（`OQ-5`）:
+1. **静穏化された専用 `A2` セッションおよび `L0` `AC` コンセントプラグ校正**: 物理的な `TI INA238`（`L1`）および `INA3221`（`L2`/`L1`）のシャント `measured_j` レールは、`NVIDIA Jetson AGX Thor` 上で稼働検証済みであり、`Apple M5 Max`、`Framework AMD Strix Halo`、`Intel Raptor Lake`、`Windows 11`（`RTX 2060` `NVML`）上の rootless `reported_j` カウンタと併用されている。しかし、5台すべてのベンチマーク機が共有サービスまたは同居ワークロードを実行しており（`dedicated_host = false`）、`A2` の SUT 全体配置に関する主張は保留されている。次段階は、静穏化された専用ホスト上で同期パルス付き `L0` `AC` メータ（`Shelly` / `Yokogawa`）を接続することである。
+2. **`Jetson AGX Thor` 上の統合型 `GPU` に対する `NVML` カウンタ検査**: 離散型 `GPU` については `nvmlDeviceGetTotalEnergyConsumption`（`mJ`）が `Windows 11` 上の `NVIDIA GeForce RTX 2060` において `nvml.dll` 経由で rootless に検証済みである。一方、`Jetson AGX Thor` の統合型 Tegra `GPU` に対する `NVML` 累積エネルギーの探索は、検証済みの `0444` `INA3221 ch1 VDD_GPU` シャントと併せて、共有 `GPU` ロックが解放された際のアイドル時間帯を待機している。
+3. **`Shape H` および `Shape I` のライブ構成の拡充**: 本研究における外部ハーネスのライブ実行では、`Lane B` および `Shape D` とともに `Claude Code 2.1.330` 上で `Shape H` を検証した。次段階は、`Codex CLI`、`OpenHands`、`Terminus-2`、および `Shape I` の `Inspect` ソルバに対してライブの `C1-C12` 適合認定を実行することである。
 
 <div id="references" class="anchor-alias" aria-hidden="true"></div>
 

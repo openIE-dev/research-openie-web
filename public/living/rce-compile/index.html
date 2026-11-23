@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F59E0B">
+  <meta name="color-scheme" content="dark light">
+  <meta name="author" content="David Charlot">
+  <meta name="description" content="Interactive observatory for RCE Compile: explore E4-Energy RAPL reported_j compilation vs runtime payback horizons across 20 kernels and 14 compiler tiers, test live De Bruijn name-free hashing against naive identifier-stripping, and audit 12 compiler families against the Compiler Form.">
+  <link rel="canonical" href="https://research.openie.dev/living/rce-compile/">
+  <link rel="describedby" type="text/markdown" href="/llms.txt">
+  <link rel="alternate" type="text/markdown" title="RCE Compile (Markdown)" href="/papers/rce-compile.md">
+  <title>Living Figures · RCE Compile Normal-Form, Energy &amp; Reuse Observatory | OpenIE Research</title>
+  <script src="/webmcp-tools.js" defer></script>
+  <link rel="stylesheet" href="openie.css">
+</head>
+<body class="grid-bg">
+  <nav class="nav-glass" aria-label="Main navigation">
+    <a href="https://research.openie.dev/" class="brand-logo">Open<span class="brand-cyan">IE</span> <span class="brand-amber">Research</span></a>
+    <div class="nav-links">
+      <a href="/papers/rce-compile/">Paper</a>
+      <a href="/papers/rce-compile.md">Markdown</a>
+      <a href="/living/rce-compile/" class="active">Figures (/living/)</a>
+      <a href="/about/rce-compile/">About</a>
+      <a href="/pdfs/rce-compile.pdf">PDF</a>
+      <a href="https://github.com/openIE-dev/rce/tree/main/compile" class="pill-cyan">GitHub compile/</a>
+      <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
+    </div>
+  </nav>
+
+  <main>
+    <div style="max-width: 68rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
+      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/rce-compile/ · interactive instruments</p>
+      <h1 class="hero-title" style="max-width: none;">Living Figures: RCE Compile Normal-Form, Energy &amp; Reuse Observatory</h1>
+      <p class="author-line">Open Interface Engineering · Companion to <a href="/papers/rce-compile/" style="color: var(--color-brand-cyan);">/papers/rce-compile/</a> · Engine pin: <code>openIE-dev/rce @ 1762fb4b</code> · Pre-reg SHA-256: <code>165a12cda4d9c304…</code></p>
+
+      <div class="measurement-box">
+        <strong>Measurement grammar on this page.</strong> Every widget stamps its numbers by evidence basis:
+        <span class="chip chip-meas">Exact (Bitwise Checksum &amp; SHA-256)</span> for <code>280 / 280</code> checksum-verified kernel builds, <code>245</code> base programs, and <code>500</code> test-vector-verified semantic mutants;
+        <span class="chip chip-sim">Reported (RAPL reported_j)</span> for Linux <code>powercap</code> CPU core (<code>intel-rapl:0:0/energy_uj</code>, pinned CPU 0) and APU package (<code>intel-rapl:0/energy_uj</code>) readings on <code>AMD Ryzen AI Max+ 395</code>; and
+        <span class="chip chip-est">Modelled (Lifecycle N)</span> for adjustable deployment horizon projections <code>E_compile + N · E_run</code>. <code>measured_j = None</code>; <code>board_metered = false</code>.
+      </div>
+
+      <!-- Panel 1 (rc-diag-01): Interactive E4-Energy Compiler Payback Horizon Explorer -->
+      <section id="rc-diag-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>rc-diag-01</code> · <code>E4-Energy</code> Compiler Payback Horizon Explorer (<code>N* = ΔE_compile / ΔE_run</code>)</h2>
+          <span class="chip chip-sim">Reported (RAPL core &amp; pkg reported_j)</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Inspect measured compilation energy <code>E_compile</code> and per-invocation runtime energy <code>E_run</code> across <strong><code>20</code> exact-integer and fixed-point kernels × <code>14</code> compiler tiers</strong> (<code>gcc</code>, <code>clang</code>, <code>rustc</code>, <code>wasm32</code> in Node, <code>python3</code>, and <code>rce</code> at <code>1762fb4b</code>). Adjust deployment invocations <code>N ∈ [1, 10⁹]</code> to see when aggressive optimization pays back — and when <code>-O3</code> vs <code>-O2</code> never recovers its extra compile joules (<code>6/20</code> kernels on Clang and Rust, <code>4/20</code> on GCC).
+        </p>
+        <p id="k-desc" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-brand-cyan); margin: 0.4rem 0 0;"></p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="sel-kernel"><span>Benchmark Kernel (20 + Median)</span></label>
+            <select id="sel-kernel"></select>
+          </div>
+          <div class="ctrl-box">
+            <label for="sel-low"><span>Baseline Tier (Low / Fast Build)</span></label>
+            <select id="sel-low"></select>
+          </div>
+          <div class="ctrl-box">
+            <label for="sel-high"><span>Candidate Tier (Optimized / Lowered)</span></label>
+            <select id="sel-high"></select>
+          </div>
+          <div class="ctrl-box">
+            <label for="sel-rail"><span>RAPL Counter Domain</span></label>
+            <select id="sel-rail">
+              <option value="core" selected>CPU Core (intel-rapl:0:0 · pinned CPU 0)</option>
+              <option value="pkg">APU Package (intel-rapl:0 · full socket)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ctrl-box" style="margin-top: 0.85rem;">
+          <label for="s-logn"><span>Expected Deployment Invocations N</span><span id="v-logn">100,000 (10^5.00)</span></label>
+          <input type="range" id="s-logn" min="0" max="9" step="0.05" value="5.0">
+        </div>
+
+        <div class="metric-grid" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">Baseline Lifecycle Energy</div>
+            <div class="v" id="m-low-tot">—</div>
+            <div class="s" id="m-low-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Candidate Lifecycle Energy</div>
+            <div class="v" id="m-high-tot" style="color: var(--color-brand-cyan);">—</div>
+            <div class="s" id="m-high-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Empirical Crossover Horizon N*</div>
+            <div class="v" id="m-nstar">—</div>
+            <div class="s" id="m-nstar-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Lifecycle Gate Verdict @ N</div>
+            <div class="v" id="m-verdict">—</div>
+            <div class="s" id="m-verdict-sub">—</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem; overflow-x: auto;">
+          <svg id="payback-live-svg" viewBox="0 0 680 210" width="100%" height="auto" role="img" aria-label="Live log-log lifecycle energy crossover curve"></svg>
+        </div>
+      </section>
+
+      <!-- Panel 2 (rc-diag-02): Live In-Browser E5 De Bruijn Name-Free Hash vs Naive Identifier-Strip Comparator -->
+      <section id="rc-diag-02" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>rc-diag-02</code> · Live <code>E5</code> De Bruijn Name-Free Hash vs. Naive Identifier-Strip Comparator</h2>
+          <span class="chip chip-meas">Exact In-Browser SHA-256</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Why does Compiler Form Part <code>R</code> require <strong>positional / De Bruijn binder indices</strong> rather than simply stripping identifier names from an AST? In <code>E5-Scale</code> (<code>185</code> <code>W1</code> RCE Forms + <code>60</code> C/Rust/Python kernels + <code>500</code> verified semantic mutants), naive AST identifier-stripping suffered <strong><code>150 / 150</code> (<code>100.0%</code>) false-positive cache collisions</strong> on variable-binding swaps (<code>x - y → y - x</code>), whereas De Bruijn nameless hashing achieved <strong><code>0 / 500</code> (<code>0.00%</code>) false hits</strong> and cut cold compilation <code>reported_j</code> by <code>167.8×</code> (<code>clang -O3</code>) and <code>448.5×</code> (<code>rustc -O3</code>). Try the preset transforms or edit either pane live below.
+        </p>
+
+        <div class="ctrl-grid" style="align-items: end;">
+          <div class="ctrl-box">
+            <label for="sel-snippet"><span>Select Kernel / RCE Form Snippet</span></label>
+            <select id="sel-snippet"></select>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.45rem;">
+            <button type="button" class="theme-btn mut-btn" data-mut="alpha">1. Alpha-Rename (Equiv)</button>
+            <button type="button" class="theme-btn mut-btn" data-mut="fmt">2. Comment/WS Shift (Equiv)</button>
+            <button type="button" class="theme-btn mut-btn" data-mut="swap">3. Binding Swap x−y → y−x (BUG!)</button>
+            <button type="button" class="theme-btn mut-btn" data-mut="opbug">4. Operator/Guard Bug</button>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin-top: 1rem;">
+          <div>
+            <label for="code-a" style="display:block;font-family:var(--font-mono);font-size:11px;color:var(--color-brand-amber);margin-bottom:0.35rem;">Program A (Original Reference)</label>
+            <textarea id="code-a" rows="10" style="width:100%;font-family:var(--font-mono);font-size:12px;padding:0.65rem;border-radius:8px;border:1px solid var(--color-brand-border);background:rgba(10,10,15,0.65);color:var(--color-brand-light);"></textarea>
+            <div style="margin-top:0.35rem;font-family:var(--font-mono);font-size:10.5px;color:var(--color-brand-gray);">De Bruijn projection A: <code id="db-proj-a" style="color:var(--color-brand-cyan);"></code></div>
+          </div>
+          <div>
+            <label for="code-b" style="display:block;font-family:var(--font-mono);font-size:11px;color:var(--color-brand-cyan);margin-bottom:0.35rem;">Program B (Candidate / Renamed / Mutant)</label>
+            <textarea id="code-b" rows="10" style="width:100%;font-family:var(--font-mono);font-size:12px;padding:0.65rem;border-radius:8px;border:1px solid var(--color-brand-border);background:rgba(10,10,15,0.65);color:var(--color-brand-light);"></textarea>
+            <div style="margin-top:0.35rem;font-family:var(--font-mono);font-size:10.5px;color:var(--color-brand-gray);">De Bruijn projection B: <code id="db-proj-b" style="color:var(--color-brand-cyan);"></code></div>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto; margin-top: 1rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.84rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(148,163,184,0.3); text-align: left;">
+                <th style="padding: 0.45rem;">Cache Key Function</th>
+                <th style="padding: 0.45rem;">Digest A</th>
+                <th style="padding: 0.45rem;">Digest B</th>
+                <th style="padding: 0.45rem;">Cache &amp; Soundness Verdict</th>
+              </tr>
+            </thead>
+            <tbody id="hash-cmp-tbody" aria-live="polite"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Panel 3 (rc-diag-03): Interactive 12-Compiler Normal-Form Audit Matrix & Zoomable Figures -->
+      <section id="rc-diag-03" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>rc-diag-03</code> · 12-Compiler Normal-Form Audit Matrix (<code>R, L, C, K, U, E, G</code>) &amp; Publication Diagrams</h2>
+          <span class="chip chip-est">Survey + E1/E4/E5 Receipts</span>
+        </div>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="sel-family"><span>Filter Compiler Family</span></label>
+            <select id="sel-family"></select>
+          </div>
+          <div class="ctrl-box" style="display:flex;align-items:center;">
+            <p id="fam-note" style="margin:0;font-size:0.84rem;color:var(--color-brand-light);"></p>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto; margin-top: 1rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(148,163,184,0.3); text-align: left;">
+                <th style="padding:0.45rem;">Compiler Family</th>
+                <th style="padding:0.45rem;">R (Repr)</th>
+                <th style="padding:0.45rem;">L (Lower)</th>
+                <th style="padding:0.45rem;">C (Cost)</th>
+                <th style="padding:0.45rem;">K (Check)</th>
+                <th style="padding:0.45rem;">U (Reuse)</th>
+                <th style="padding:0.45rem;">E (Energy)</th>
+                <th style="padding:0.45rem;">G (Gate)</th>
+              </tr>
+            </thead>
+            <tbody id="audit-tbody"></tbody>
+          </table>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Publication Vector Diagrams (Click to Zoom)</h3>
+          <figure class="fig">
+            <img src="/figures/rce-compile/form-evidence.svg" alt="Twelve compiler families audited against the seven parts of the Compiler Form">
+            <figcaption><strong>Figure 1.</strong> Qualitative audit of twelve production compiler families against the seven parts of the Compiler Form (<code>R, L, C, K, U, E, G</code>). Energy (<code>E</code>) is absent in every shipping compiler family surveyed.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="/figures/rce-compile/compile-energy-payback.svg" alt="Compilation energy payback horizons N* and E5-Scale name-free reuse soundness">
+            <figcaption><strong>Figure 2.</strong> Wave 4 <code>E4-Energy</code> lifecycle curves <code>E_compile + N · E_run</code> (Linux RAPL core <code>reported_j</code>, <code>board_metered = false</code>), <code>-O2 → -O3</code> non-paying optimization shares across <code>20</code> kernels, and <code>E5-Scale</code> soundness across <code>245</code> base programs and <code>500</code> verified semantic mutants.</figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-copy">© Open Interface Engineering, Inc. · Living figures · Linux RAPL <code>reported_j</code> only (<code>board_metered = false</code>, <code>measured_j = None</code>) · <a href="/papers/rce-compile/" style="color: var(--color-brand-cyan);">Back to paper</a></div>
+  </footer>
+
+  <script src="rce-compile-data.js"></script>
+  <script src="rce-compile-lab.js"></script>
+</body>
+</html>

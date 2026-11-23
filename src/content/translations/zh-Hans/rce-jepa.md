@@ -1,6 +1,6 @@
 ---
 title: "RCE-JEPA：世界编码，以 JEPA 为前提"
-deck: "RCE-JEPA（RCE 为现实代码引擎；JEPA 为联合嵌入预测架构）保留原名以确保研究可被检索。主题为世界编码。JEPA 是前提：一个已学习的模型预测程序的紧凑摘要，而非逐词生成文本。代码世界是规范程序形式的空间，加上精确的转换与接受规则（编码法则）。提议槽可为任意已学习模型，由检查器作出决定。论文中陈述了假设 H1 至 H15。已测量结果现涵盖：H1（185 个手写程序的描述长度比中位数为 9.34）、H2（检查器与模型的能耗比为 0.000582，即在 Apple M5 Max 片上 `reported_j` 下便宜 1,718 倍）、H7 模糊测试分支（1,275 个变异体中 0 次不变量违反）、H8（六个目标上 10,500 条流中 0 次重放不匹配）、H14（确定性阶梯在零模型调用下关闭 151 个任务中的 111 个，占 73.5%，剩余 40 个残余任务）、H15 加形状 D 零档跨越上述 40 个残余任务（六个现成提议器从 17/40 到 34/40，首个专用训练的 8.42M 参数 FormJEPA-v1 修复提议器在 k=1 时达 22/40、k=16 时达 27/40，片上核心 `reported_j` 为 58.65 mJ / 474.76 mJ，零档重放达 34/40，每次查找 0 次调用且耗时 0.325 微秒，在三档 Zipf 流下前沿调用减少 8.70 倍），以及 151 任务 `rce repair rung f` 晋级审计（3/119 = 2.5% > 2.0%，0 次矛盾，`rung f` 保持观察模式）。完整意图到形式的合成（H3）、经校准的多项能耗排名（H5、H11）以及外部墙表能耗（`measured_j`）仍为开放问题。"
+deck: "RCE-JEPA（RCE 为 Reality Code Engine；JEPA 为 Joint Embedding Predictive Architecture）保留其名称以保持工作可检索。主题是世界编码。JEPA 为前提：学习模型预测程序的紧凑摘要，而不是输出下一个文本子词。World of Code 是规范程序形式以及精确转移和接受规则（Coding 法则）的空间。proposer 插槽是任何学习模型。checker 决定。论文中给出了假设 H1 至 H15。已测量的结果覆盖 H1（在 185 个手写程序上，median description-length ratio 为 9.34），H2（checker-to-model 能耗比为 0.000582，或在 Apple M5 Max 上的 on-chip `reported_j` 中比模型便宜 1,718 倍），H5 与 H11 在未见的独立 Form 形状上通过 FormEBM-v2（5.85M 参数：receiver operating characteristic curve 下的面积（AUROC）为 0.8922 ≥ 0.85，top-1 可解率为 84.05%，checker 调用次数减少 2.39 倍，且在 Spearman 0.9931 下严格 5 步累计缺陷单调性 ≥ 80% 的 93.0%，每个候选 core `reported_j` 消耗 47.09 mJ），H7 在 1,275 个 mutants 中 fuzzed arm 未出现不变式违例，H8 在跨六个目标的 10,500 条流上未出现 replay 不匹配，H14 在零模型调用下确定性 ladder 关闭了 151 项任务中的 111 项（73.5%，剩余 40 项），H15 单次和有界 checker-feedback H15-Iterative 在这 40 项残余任务上（单次 17/40 至 34/40；k=1 时 22/40，k=16 时 27/40，对 8.42M FormJEPA-v1；在 Claude Opus 5.5 和 Claude Sonnet 5.5 上 40/40 完全闭合且无矛盾，在有界 checker feedback 加公共标准库头文件的情况下；在 xAI Grok 4.20 Reasoning 上 39/40；Gear-0 replay 在 0 次调用且每次查找 0.325 µs；以及 200/200 Zipf(0.85) 3-Gear 流入许可，前沿 episode 减少 16.67 倍），以及 151 项任务的 rce repair rung f 推广审计（3/119 = 2.5% > 2.0%，0 矛盾，保持 rung f 处于 observe 模式）。完整的 intent-to-Form 合成（H3）、多行分布外能量校准以及外部 wall-meter 能量（`measured_j`）仍未完成。"
 lang: "zh-Hans"
 source: "rce-jepa"
 complete: true
@@ -8,17 +8,19 @@ complete: true
 
 <div id="rce-jepa-world-coding-with-jepa-as-premise" class="anchor-alias" aria-hidden="true"></div>
 
-**状态。** 本文提出一个论点，十五个假设（H1 至 H15），六个反驳者以及一个工作计划。其已测量的结果目前覆盖了 Phase 0 确定性层（Form 语料库和 H1，H7 的对抗模糊臂部，H8 的六目标确定性流，以及 H14 的确定性修复阶梯），本地 Apple M5 Max 检查器与模型 `reported_j` 比率 **H2**（`C_check / E_model = 0.000582 <= 0.05`，`1,718` 倍更便宜），六提议者即插即用 **H15** 加上内存映射 Gear-0 晶体基准跨 **40 个开放残余任务**（`17/40` 至 `34/40` 被接受；Gear-0 在 `0` 次模型调用下重放 `34/40`，每次查找 `0.325 µs`），首个目的训练的潜在 Form JEPA 修复提议者 **`FormJEPA-v1`**（在不相交的 Form S-表达式上拥有 `8.42M` 可训练参数，接受 `177/200` 保留的合成缺陷，在 40 个残余任务上 `k = 1` 时关闭 `22/40`，`k = 16` 时关闭 `27/40`，芯片核心 `reported_j` 能耗分别为 `58.65 mJ` / `474.76 mJ`，并将重复的 `Zipf(0.85)` 前沿调用从 `200` 降至 `23`，提升 `8.70×`，在 3‑Gear Cascade 中），以及预注册的 151 任务 **`rce repair`** 阶段 `f` 推广审计（`3/119 = 2.5% > 2.0%` 随机份额，`3/3` 通过 `W-MUT-1`，`0` 矛盾，确认阶段 `f` 仍保持在 `observe` 模式）。诚实披露：完整的意向到 Form 合成（H3），端到端焦耳等价（H4），校准的多项能量排序（H5、H11；未校准的潜在距离在接收者操作特征曲线下面积 (AUROC) 为 `0.618`，并且 5 步单调性为 `36.0%`），参考应用编码（H6），成本表预测（H9），商数数据节省（H10），决策头校准（H12），离散与连续长时程规划（H13），扩散/进化 H15 臂部，以及外部墙表计 `measured_j` 仍未解决。JEPA 是前提：预测意义的摘要，而非表层文本。主题是世界编码，任何在 Forms 上学习的提议者，遵循编码法则作为接受规则。决定性部分（提交门、精确重放、投影以及整数成本单元）在 [the RCE paper](/papers/rce/) 中描述；本文关注提议者：一个学习模型在 Forms 上引导搜索，而引擎渲染每个目标。任何环路中的模型，无论托管还是本地，仅负责提议，安全性永不依赖于它。
+**状态。** 本文提出一项论点、十五项假设（H1 至 H15）、六项证伪条件和一项工作计划，并附有[交互式工具](/living/rce-jepa/)。目前的实测结果包括：第 0 阶段的确定性基线，即 Form 语料库与 H1、H7 的对抗模糊化分支、H8 的六目标确定性流，以及 H14 的确定性修复阶梯；本地 Apple M5 Max 上检查器与模型的 `reported_j` 比值 **H2**（`C_check / E_model = 0.000582 <= 0.05`，便宜 `1,718` 倍）；在 **40 个开放残留任务**上的单次尝试与有界检查器反馈 **H15**（单次尝试为 `17/40` 至 `34/40`；在 `Claude Opus 5.5` 与 `Claude Sonnet 5.5` 上，于 `H15-Iterative` 中采用 `<= 5` 轮有界检查器反馈加公开标准库签名头，结果为 **`40/40`（`100.0%`）**且 `0` 项矛盾；在 `xAI Grok 4.20 Reasoning` 上为 `39/40`；从内存映射的 Gear-0 进行的零调用重放为 `0.325 µs` / `1.77 µJ`，结果为 **`40/40`**）；专为训练而设计的潜在 Form JEPA 修复提议器 **`FormJEPA-v1`**（在互不相交的 Form S 表达式上有 `8.42M` 个可训练参数，在 `k = 16` 时于 `200` 个保留的合成缺陷中通过 `177/200` 个，并在 `27/40` 个残留任务中通过，将反复出现的 `Zipf(0.85)` Gear-2 片段从 `200` 降至 `12`，即 `16.67×`；与 `H15-Iterative` 配合时流式通过率为 `200/200`）；对比式多步间隔能量模型（EBM）打分器 **`FormEBM-v2`**（在完全严格互不相交的 `1,387` 个 Form 划分上有 `5.85M` 个可训练参数，将未见形状的 **H5** 受试者工作特征曲线下面积（AUROC）从 `0.618` 提升至 **`0.8922 >= 0.85`**，可解任务的 top-1 准确率为 `84.05%`，检查器调用次数减少 `2.39×`；并将未见链条的 **H11** 严格 5 步编辑单调性从 `36.0%` 提升至 **`93.0% >= 80%`**，Spearman 相关系数为 `0.9931`，每个候选的核心 `reported_j` 为 `47.09 mJ`）；以及预先注册的 151 项任务 **`rce repair` 第 `f` 级**晋级审计（随机份额为 `3/119 = 2.5% > 2.0%`，`3/3` 通过 `W-MUT-1`，`0` 项矛盾，确认第 `f` 级仍处于 `observe` 模式）。
 
-![Pipeline: stated intent goes to any learned proposer, with JEPA shown, a decoder proposes candidate program forms ranked by energy score, a deterministic checker accepts or names the broken rule, and accepted forms go to the engine for exact replay, proofs, code in other languages and placement](/figures/rce-jepa/pipeline.svg)
+**诚实披露：** 以下内容仍未解决：完整的意图到 Form 的合成（H3）、端到端焦耳对等（H4）、跨异构 git 历史重写的分布外（OOD）多行能量校准（其中仅以单行数据训练的 `FormEBM-v2` 将任务内 `k = 1` 类型重排序从 `22/40` 提升至 `25/40`，而跨任务汇总 AUROC 为 `0.2630`）、参考应用编码（H6）、成本表预测（H9）、商空间数据节省（H10）、决策头校准（H12）、离散与连续长时程规划的对比（H13）、扩散式与进化式 H15 分支，以及外部壁式电表的 `measured_j`。JEPA 是本文的前提：预测意义的摘要，而非表层文本。本文的主题是 World Coding（世界编码），即任何在 Form 上进行搜索的学习型提议器，并以编码定律作为接受规则。决定性的一半（提交门、精确重放、投影与整数成本单位）已在 [RCE 论文](/papers/rce/)中描述；本文关注提议器：一种学习型模型，它引导 Form 上的搜索，而引擎负责渲染每个目标。循环中的任何模型，无论托管还是本地，都只负责提议，安全性从不依赖于它。
 
-图 1. 提议的流水线。任何经过学习的提议器（proposer）将陈述的意图映射为候选程序。图中绘制的实例是 JEPA，它在潜空间中进行预测。解码器将该提议转换为固定形状的候选程序，并根据能量得分（越低表示拟合度越好）对其进行排序。确定性检查器接受每个候选程序或报告其需要修改，并返回违反的规则以供重新排序。虚线框内的所有内容都是经过学习且不可信的；只有被接受的程序才能到达引擎。本地 Apple M5 Max 计数器严格记录为 `reported_j`（`measured_j = None`，`board_metered = false`），远程云服务器能量记录为 `not_available`。
+![流程图：陈述的意图交给任意可学习的提议器，图中以 JEPA 为例。解码器提出按能量分数排序的候选程序形式，确定性检查器接受候选或指出违反的规则，被接受的形式交给引擎进行精确重放、证明、其他语言的代码生成与放置](/figures/rce-jepa/pipeline.svg)
 
-**用平常话说**
+*图 1. 所提出的流程。任意可学习的提议器将陈述的意图映射为候选程序。图中绘出的实例是 JEPA，它在潜空间中进行预测。解码器将该提议转换为固定形式的候选程序，并按能量分数（越低表示拟合越好）排序。确定性检查器接受每个候选，或报告其需要修改，并返回违反的规则以供重新排序。虚线框内的全部内容都是可学习且不可信的，只有被接受的程序才会进入引擎。本地 Apple M5 Max 计数器的读数严格记录为 `reported_j`（`measured_j = None`，`board_metered = false`），远程云服务器的能耗记录为 `not_available`。*
 
-1. 主题是世界编码（World Coding）。代码世界（World of Code）是程序形式（Forms）的空间，加上关于下一状态和何为被接受的精确规则（编码定律）。JEPA 是前提，而非全部方法：预测意义的摘要，而不是代码的下一个词。此处的 AI（人工智能）指代任何经过学习的提议器，而非单一架构。
-2. 模型提议，检查器决定。追踪训练的解码器、扩散模型、证明检查器内的强化学习、进化搜索、库学习和受限解码都可以置于该位置。当提议器改变时，闸门不会改变。安全性并不依赖于提议器的正确性。
-3. 测量基准和残差基准保持严格标记。在 185 个手写程序中，中值描述长度比为 9.34 (H1)；在提交版本 `1762fb4b` 的 Apple M5 Max 上，检查一个形式（Form）的成本为 `49.04 mJ`，而本地 35B 候选生成成本为 `84.25 J`（便宜 `1,718×`，支持 H2）；模糊检查在 1,275 个被接受的变体中发现 0 个违反的不变量 (H7)；重放匹配了跨六个目标的 10,500 个流 (H8)；确定性阶梯在零模型调用的情况下完成了 151 个任务中的 111 个 (73.5%)，剩下 40 个真实历史任务 (H14)。在这些残差任务 (H15) 中，现成的云端和本地提议器在 `k = 1` 时接纳率为 `17/40` 到 `34/40`，第一个专门训练的潜形式 JEPA 修复提议器（`FormJEPA-v1`，`8.42M` 可训练参数，零任务重叠）在 `k = 1` 时接纳 `22/40`，在 `k = 16` 时接纳 `27/40`（片上核心 `reported_j` 为 `58.65 mJ` / `474.76 mJ`；在不相交的合成缺陷上为 `177/200`），并且结合 **1 档 (`DNULLMM1`) → 2 档 (`FormJEPA-v1`) → 3 档 (`Opus 5.5`)** 将循环的 `Zipf(0.85)` 前沿调用从 `200` 次减少到 `23` 次 (`8.70×`)。开放式多模块标准库综合仍需要 3 档前沿提议器，`rce repair` 阶梯 `f` 保持在 `observe` 模式（`3/119 = 2.5% > 2.0%`，`0` 个矛盾），且不声明任何外部墙插电表读数 (`measured_j`)。
+通俗地说
+
+1. 主题是世界编码。代码世界是程序形式的空间，加上下一状态的精确规则以及何者被接受（编码定律）。JEPA 是前提，而非整个方法：预测意义的摘要而非代码的下一个词。此处的 AI（人工智能）指任何习得的提议器，而非某种特定架构。
+2. 模型进行提议，检查器进行判定。轨迹训练的解码器、扩散、在证明检查器内部的强化学习、进化搜索、库学习和约束解码均可置于该位置。当提议器变化时，门控不变。安全性不依赖于提议器是否正确。
+3. 测量的基线和残差基准保持严格标记。在超过 185 个手写程序上，中位描述长度比为 9.34（H1）；在 commit `1762fb4b` 的 Apple M5 Max 上，检查一个形式耗费 `49.04 mJ`，而本地 35B 候选生成每次耗费 `84.25 J`（`1,718×` 更廉价，支持 H2）；模糊检查在 1,275 个被接受的变异体中发现 0 个破坏的不变式（H7）；回放匹配了跨越六个目标的 10,500 个流（H8）；确定性阶梯以零模型调用关闭了 151 个任务中的 111 个（73.5%），留下 40 个真实历史任务（H14）。在这 40 个残差任务（H15）中，单次提议器接纳 `17/40` 至 `34/40`，带有公开标准库头文件的有界检查器反馈（`H15-Iterative`，对原始形式零访问）在 `Claude Opus 5.5` 和 `Claude Sonnet 5.5` 上关闭 **`40/40` (`100.0%`)**，且矛盾数为 `0`（`xAI Grok 4.20 Reasoning` 上为 `39/40`），并将 **`40/40`** 晶化到齿轮 0（`DNULLMM1`）以实现零调用回放，目的训练的 `FormJEPA-v1`（`8.42M` 参数）在 `k = 16` 时接纳 `27/40`，而对比的 `FormEBM-v2`（`5.85M` 参数）达到未见形状 AUROC `0.8922`（H5）和 `93.0%` 严格 5 步单调性（H11），且 **3 齿轮级联** 以 `16.67×` 更少的边界片段（`12` 对 `200`）接纳 `200/200` 循环出现的 `Zipf(0.85)` 到达。`rce repair` 梯级 `f` 保持在 `observe` 模式（`3/119 = 2.5% > 2.0%`，`0` 矛盾），且未宣称任何外部壁表读数（`measured_j`）。
 
 <div id="principles" class="anchor-alias" aria-hidden="true"></div>
 
@@ -36,7 +38,7 @@ complete: true
 
 ## 本页使用的术语与缩略语
 
-在此列出，以便在使用前先行定义。仅在参考文献条目（期刊、报告系列）中出现的缩写不在此列。
+为使每个术语在使用前均已有定义，此处予以列出。仅出现在参考文献条目中的缩略语（如会议名称、报告系列）不在此列。
 
 <ul id="terms">
 <li>AGX: NVIDIA 的 Jetson AGX 系列嵌入式计算机</li>
@@ -47,6 +49,7 @@ complete: true
 <li>AMD: 超威半导体公司</li>
 <li>ANDF: 架构中立分发格式</li>
 <li>API: 应用程序编程接口</li>
+<li>APU：加速处理单元，将 CPU 核心与集成 GPU 合并于同一封装</li>
 <li>ARC: 抽象与推理语料库，Chollet 度量和 ARC 奖使用的任务集</li>
 <li>AST: 抽象语法树</li>
 <li>AUROC: 接收者操作特征曲线下面积</li>
@@ -62,12 +65,14 @@ complete: true
 <li>DIR: 传递给命令的目录路径</li>
 <li>DNULLMM1: 开放寻址二进制内存映射哈希表存储格式（64 字节头部加 48 字节槽位）</li>
 <li>EB-JEPA: 基于能量的 JEPA 库（项目名称）</li>
+<li>EBM：基于能量的模型</li>
 <li>ECE: 期望校准误差</li>
 <li>e-graph: 等式图，一种包含许多等价程序的结构</li>
 <li>EMA: 指数移动平均</li>
 <li>EWD: Edsger W. Dijkstra 的编号手稿系列</li>
 <li>ESBMC: 高效基于 SMT 的有界模型检查器</li>
 <li>FAIR: Meta 的基础人工智能研究组</li>
+<li>FPR：假阳性率</li>
 <li>GELU: 高斯误差线性单元激活函数</li>
 <li>GPT: 生成式预训练变换模型，OpenAI 的模型系列</li>
 <li>GPU: 图形处理单元</li>
@@ -77,6 +82,7 @@ complete: true
 <li>IBM: 国际商业机器公司</li>
 <li>ICOT: 日本新一代计算机技术研究所</li>
 <li>IEEE: 电气与电子工程师学会</li>
+<li>IQR：四分位距</li>
 <li>JACM: ACM 期刊（计算机协会）</li>
 <li>LCM: 大概念模型，一种在句子嵌入空间而非词元上进行预测的模型</li>
 <li>LHS: 示例事件轨迹的左侧</li>
@@ -93,6 +99,7 @@ complete: true
 <li>NAIL: 一种规范形式的编程语言（项目名称）</li>
 <li>NVIDIA: GPU 制造商</li>
 <li>OMG: 对象管理组</li>
+<li>OOD：分布外（out-of-distribution）</li>
 <li>PAR: 基于模式的自动程序修复</li>
 <li>PID: 操作系统中的进程标识符</li>
 <li>POSIX: 可移植操作系统接口</li>
@@ -105,6 +112,8 @@ complete: true
 <li>RISC-V: 一种开放的精简指令集计算机架构</li>
 <li>RJ-F: RCE-JEPA 前提的证伪者标签</li>
 <li>RL: 强化学习</li>
+<li>RMS：均方根（root mean square）</li>
+<li>ROC：受试者工作特征（receiver operating characteristic）</li>
 <li>SAT: 布尔可满足性</li>
 <li>SATB: 饱和度基准遥测和测试规范</li>
 <li>SFT: 监督式微调</li>
@@ -117,6 +126,7 @@ complete: true
 <li>SUT: 被测系统</li>
 <li>SWE-bench: 一个基于真实代码仓库问题的基准测试集。SWE-bench Verified 是其经过人工审核的子集，多份代码报告在该子集上给出了 pass@1 指标</li>
 <li>TOPLAS: ACM 编程语言与系统汇刊</li>
+<li>TPR：真阳性率（true positive rate）</li>
 <li>UNCOL: 通用计算机导向语言</li>
 <li>USD: 美元</li>
 <li>VAX: 数字设备公司的虚拟地址扩展计算机系列</li>
@@ -150,21 +160,21 @@ complete: true
 
 本页面测试十五个假设，H1 至 H15，在讨论任何一个之前先在此完整列出。每个假设均附有其度量指标与阈值，汇总于[第 8 节](#hypotheses)的一张表中，随后列出证伪项 RJ-F1 至 RJ-F6。
 
-1. H1. 对于相同程序，形式空间远小于源代码空间。（在 185 个手写程序上得到支持：中位数 rho 为 9.34。）
-2. H2. 检查器相对于生成过程代价低廉。（在 Apple M5 Max 上以 `reported_j` 为单位得到支持：`C_check / E_model = 0.000582 <= 0.05`，低廉 `1,718×`。）
-3. H3. 在表示空间中的预测可达到有效的接受率。
-4. H4. 每个被接受程序的能耗下降。
-5. H5. 能量排序将质量集中于有效形式上。（未校准的 `FormJEPA-v1` 潜在距离所达 AUROC 为 `0.618`，结论不明确；已校准的多项式头部尚未开放。）
-6. H6. 参考应用可被编码为形式。
-7. H7. 安全性不依赖于模型。（模糊测试臂已测量：在 1,275 个变异体中出现 0 次违规。）
-8. H8. 每个被接受的形式均可确定性地重放。（在六个目标上的 10,500 条流中得到支持：0 次不匹配。）
-9. H9. 成本在执行前即可预测。
-10. H10. 在商（规范形式）上学习可节省训练数据。
-11. H11. 能量在编辑距离上单调递增。（手工定义的编辑得分 `76.8% < 80%`；未校准的 `FormJEPA-v1` 潜在距离在距离 `0..4` 上呈上升趋势，其中 `36.0%` 的 5 步链严格单调；已校准头部尚未开放。）
-12. H12. 决策头部在门控结果上经过校准。
-13. H13. 在长编辑序列上，离散潜变量的规划效果优于连续潜变量。
-14. H14. 一个公开的确定性精确提议器阶梯，在零模型调用的情况下，能够关闭已注册任务集中可测量的一部分任务，该比例即为学习型提议器在剩余任务上必须超越的基线。（得到支持：151 个任务中的 111 个，占 73.5%，剩余 40 个任务未关闭。）
-15. H15. 在匹配预算下，对 40 个剩余任务的残差集上比较各提议器类别，同时评估 Gear-0 结晶化与三档级联（3-Gear Cascade）。基准测试涵盖六个现成的云端/本地提议器（在 `k = 1` 时为 `17/40` 至 `34/40`）、专门训练的 `FormJEPA-v1`（在 `k = 1` 时为 `22/40`，在 `k = 16` 时为 `27/40`），以及形状 D（`DNULLMM1`）Gear-0 重放（在 `0` 次调用时为 `34/40`；在 `Zipf(0.85)` 分布下实现 `8.70×` 的三档前沿调用缩减）；扩散臂与进化臂仍处于开放状态。
+1. H1. 对于相同程序，形式空间远小于源空间。（在185个手写程序上支持：中位 rho 为 9.34。）
+2. H2. 检查器相对于生成器成本低廉。（在 Apple M5 Max 上的 `reported_j` 中支持：`C_check / E_model = 0.000582 <= 0.05`，便宜 `1,718×`。）
+3. H3. 在表示空间的预测达到了有用的接受度。
+4. H4. 每接受一个程序的能耗下降。
+5. H5. 能量排序将质量集中于有效的 Form。（对比式 `FormEBM-v2` 达到 AUROC `0.8922 >= 0.85` 且可解 top-1 准确率 `84.05%`，在全部 200 条束中原始准确率 `68.5%`，在未见过的测试 Form 形状上相较于未校准的 `FormJEPA-v1` 的 `0.618`；OOD 多行池校准仍在开放中。）
+6. H6. 参考应用可以编码为 Form。
+7. H7. 安全性不依赖于模型。（在模糊测试的 arm 上测得：在 1,275 个突变体中 0 次违例。）
+8. H8. 每个被接受的 Form 均可确定性重放。（在六个目标上共 10,500 条流支持：0 次不匹配。）
+9. H9. 成本可在执行前预测。
+10. H10. 在商空间（规范 Form）上学习可节省训练数据。
+11. H11. 能量随编辑距离单调递增。（对比式 `FormEBM-v2` 在 100 条未见累计缺陷链上实现 `93.0% >= 80%` 的严格 5 步单调性，并得到 Spearman `0.9931`，而 `FormJEPA-v1` 为 `36.0%`；在同线随机漫步切片上无约束情况下为 `38.0%` 严格单调，Spearman `0.8513`。）
+12. H12. 决策头在门结果上进行了校准。
+13. H13. 离散潜在计划在长编辑序列上优于连续计划。
+14. H14. 一个公开的确定性梯级精确提议者能够在无需模型调用的情况下关闭已注册任务集的可测量份额，该份额即为学习型提议者在剩余任务上必须超越的基线。（支持：151 项任务中 111 项，比例 73.5%，剩余 40 项任务未完成。）
+15. H15. 在匹配预算下，对 40 项剩余任务的提议者类别进行比较，同时考虑 Gear-0 结晶和 3-Gear 连锁。基准测试覆盖六种单次云/本地提议者（`17/40` 至 `34/40`），专用训练的 `FormJEPA-v1`（`k = 1` 时 `22/40`，`k = 16` 时 `27/40`；使用 `FormEBM-v2` 重新排序时 `k = 1` 为 `25/40`），受限检查反馈的 `H15-Iterative` 与公开标准库头文件（在 `Opus 5.5` 和 `Sonnet 5.5` 上 `40/40`，无矛盾；在 `Grok 4.20` 上 `39/40`），以及 Shape D（`DNULLMM1`）Gear-0 重放（`0` 次调用下 `40/40`，实现 `16.67×` 的 3-Gear 集合减少以及 `200/200` 在 `Zipf(0.85)` 上的录取）；扩散和进化臂仍未完成。
 
 <div id="falsifiers-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -181,17 +191,17 @@ complete: true
 
 <div id="proposer" class="anchor-alias" aria-hidden="true"></div>
 
-## 已有成果与本页主题
+## 已有的内容以及本页的主题
 
 Reality Code Engine 在其公共参考检查器和引擎设计中保留了决定问题一半的内容。其公开论文[The Reality Code Engine](/papers/rce/) 描述了该部分的设计：一个在入口处检查每个候选的提交门、精确回放（运行时状态是对日志的转移函数的左折叠）、一种 Form 到其他语言的投影，以及整数成本核算（`est_j`），并严格与操作系统/芯片计数器读数（`reported_j`，首次在 Apple M5 Max 上的提交 `1762fb4b` 记录）以及外部墙表读数（`measured_j`，RCE 没有此类读数）分离。核心定理在 Lean 4 中得到检验，这是一种交互式证明助理（在 `1762fb4b` 处的 `64` 个模块中共有 `5,537` 个内核定理常量），其规范和 Lean 库均为公开。此页面仅引用该论文中模型提议者运行的公开记录，其余内容视为设计背景。
 
-**本页关注提议者：** 即学习部分，负责建议尝试哪种 Form。检查器、回放以及到其他语言的投影都是公开代码，发动机的门和其 `est_j` 核算是已指定的设计；下面第 8 节报告了六模型即插即用基准加上内存映射 Gear-0 晶化，以及首个针对特定目的训练的潜在 Form JEPA 修复提议者（`FormJEPA-v1`，在不相交的规范 Form S-表达式上拥有 `8.42M` 可训练参数，能够接受 `177/200` 的保留合成 Form 缺陷和 `27/40` 的开放残余任务，耗能在子焦耳核心 `reported_j` 范围内），而完整的意图到 Form 的合成、校准的多项能量排序以及门‑收据决策头仍待研究。
+**本页面讨论的是提议器（proposer）：** 这是学习得到的部分，负责建议应尝试哪种 Form。检查器、重放机制以及向其他语言的投影均为公开代码，引擎的门控（gate）及其 `est_j` 计量则是已规定的设计。第 8 节现报告六模型的现成基准测试，以及内存映射的 Gear-0 结晶化结果；首个专门训练的潜在 Form JEPA 修复提议器 `FormJEPA-v1`（8.42M 个可训练参数，训练数据为互不相交的规范 Form S 表达式）在 200 个保留的合成 Form 缺陷中修复了 177/200 个，在 40 个开放残余任务中修复了 27/40 个，其核心 reported_j 低于一焦耳；对比式多步间隔能量评分器 `FormEBM-v2`（5.85M 个参数，基于相同的 1,387 个 Form 互不相交划分）在未见形状的 H5 AUROC 上达到 0.8922，在 H11 上实现 93.0% 的严格五步编辑单调性，同时将可求解案例的检查调用次数减少至原来的 1/2.39；以及利用公共标准库头文件的有界检查器反馈残余闭合 `H15-Iterative`，闭合 40/40 个残余任务，零矛盾，且 40/40 次零调用 Gear-0 重放（交互式仪器见 [交互式实验台](/living/rce-jepa/)）。而完整的意图到 Form 的合成、多行分布外能量校准，以及门控收据决策头仍未完成。
 
 <div id="ladder" class="anchor-alias" aria-hidden="true"></div>
 
 ### 确定性优先：提议器之下的阶梯
 
-自动化的第一条规则是拥有一个可行的手动过程。RCE‑JEPA 所提出的内容只有在已经可行的手动变体或确定性自动化变体之上才有意义；学习得到的提议者是添加在其上的，而不是取代它。因而设计将提议者按梯级排序，精确的提议者首先执行：
+自动化的第一条规则是拥有一个可行的手动过程。RCE-JEPA 所提出的内容只有在已经可行的手动变体或确定性自动化变体之上才有意义；学习得到的提议者是添加在其上的，而不是取代它。因而设计将提议者按梯级排序，精确的提议者首先执行：
 
 1. **复用。** 内容哈希（其规范文本的哈希）或无名形状（将每个名称替换为其位置的 Form，使得重命名不改变它）与已存 Form 匹配的 Form 将原样复用。
 2. **按类型查找。** `rce search` 查找类型与任务所需类型匹配的已存处理器。
@@ -199,11 +209,11 @@ Reality Code Engine 在其公共参考检查器和引擎设计中保留了决定
 4. **有界枚举。** 在规范的无名投影中枚举所有不超过固定上限的微小编辑，每个候选由检查器评判。
 5. **重命名。** 将一个值名称在其作用域内变为另一个值名称，或将一个绑定变为检查器报告中命名的名称，最多到固定上限，每个候选由检查器评判。
 
-学习得到的提议者仅作用于梯级未覆盖的残余任务。它在规范 Form 编辑空间中提出编辑，且同一检查器对每个提议的评判方式与对梯级候选的评判完全相同。降低随机模型需要完成的工作量会缩小其动作空间，而较小的动作空间更易于掌握。这就是预期 H10（在商上学习可节省数据）成立的原因，也解释了 H14 为什么让梯级的基准份额成为学习提议者在残余上必须超越的基准。梯级是公开的，位于 `rce repair` 的 openIE‑dev/rce 中，并在 openie‑research‑experiments 的 `rce/bench/ladder` 下注册了三次运行，其文件将梯级 1‑5 标记为 a‑e；第 5 阶梯为第三次运行新增。它们的结果在下文第 8 节与 H14 一起报告，表明它关闭了其梯级所逆转的突变类，并且在真实历史的 41 项变更中关闭了 1 项，因此残余几乎覆盖了所有真实缺陷。
+学习得到的提议者仅作用于梯级未覆盖的残余任务。它在规范 Form 编辑空间中提出编辑，且同一检查器对每个提议的评判方式与对梯级候选的评判完全相同。降低随机模型需要完成的工作量会缩小其动作空间，而较小的动作空间更易于掌握。这就是预期 H10（在商上学习可节省数据）成立的原因，也解释了 H14 为什么让梯级的基准份额成为学习提议者在残余上必须超越的基准。梯级是公开的，位于 `rce repair` 的 openIE-dev/rce 中，并在 openie-research-experiments 的 `rce/bench/ladder` 下注册了三次运行，其文件将梯级 1-5 标记为 a-e；第 5 阶梯为第三次运行新增。它们的结果在下文第 8 节与 H14 一起报告，表明它关闭了其梯级所逆转的突变类，并且在真实历史的 41 项变更中关闭了 1 项，因此残余几乎覆盖了所有真实缺陷。
 
 <div id="rung-f" class="anchor-alias" aria-hidden="true"></div>
 
-`rce repair` 在 openIE‑dev/rce 主分支上拥有第六层梯级，标记为 f，仅在梯级 1‑5 未关闭任何内容时运行。梯级 f 本身不调用模型。由模型在托管服务或本地机器上、或由人工在 RCE 之外编写的程序，仅以输入文件的形式到达此处，每个文件带有标记其来源的标签，并通过其 SHA‑256 摘要记录。检查器对每个文件的评判方式与对梯级候选的评判相同，包括突变门：：该门拒绝任何示例或检查能够通过单一微小编辑使程序失效的程序；在检查器判断之前，改变示例、检查或法律的提议会被直接拒绝。梯级的模式由规范中的数据决定，可为 `off`、`observe` 或 `auto`，当前保持在 `observe`：每个提议都会被评判，检查器接受的每个提议都会随其 diff、摘要和来源一起报告，程序保持开放，且不会覆盖任何源文件。在 `auto` 模式下，首个被接受的提议将关闭程序，报告会将该关闭标记为随机的。
+`rce repair` 在 openIE-dev/rce 主分支上拥有第六层梯级，标记为 f，仅在梯级 1-5 未关闭任何内容时运行。梯级 f 本身不调用模型。由模型在托管服务或本地机器上、或由人工在 RCE 之外编写的程序，仅以输入文件的形式到达此处，每个文件带有标记其来源的标签，并通过其 SHA-256 摘要记录。检查器对每个文件的评判方式与对梯级候选的评判相同，包括突变门：：该门拒绝任何示例或检查能够通过单一微小编辑使程序失效的程序；在检查器判断之前，改变示例、检查或法律的提议会被直接拒绝。梯级的模式由规范中的数据决定，可为 `off`、`observe` 或 `auto`，当前保持在 `observe`：每个提议都会被评判，检查器接受的每个提议都会随其 diff、摘要和来源一起报告，程序保持开放，且不会覆盖任何源文件。在 `auto` 模式下，首个被接受的提议将关闭程序，报告会将该关闭标记为随机的。
 
 规范仅在记录的评估满足提升准则时才允许将 `observe` 更改为 `auto`。该准则已在 openIE-dev/rce 中于任何观察之前注册（`rce-repair-rung-f-promotion-2026-11-03`，`sha256: abf7f131f240e3f9...`），并在其旁边标注了 SHA-256，遵循的规则是：至少 98% 的关闭来自确定性 rung，至多 2% 来自随机 rung，且每个随机输出均受门控。在第 2、3 轮的 151 项任务中，每轮使用任务的原始程序作为已知良好版本，最多 2% 的关闭可来自 rung f；每个被观察为已接受的提案也必须通过突变门；且任何提案都不得与原始程序相矛盾，即在某些事件序列后表现不同。确定性命令 `rce repair criterion` 从观察记录中评估该准则，规范自身的检查在记录的评估满足准则之前会拒绝 `auto` 模式。在提交 `1762fb4b` 的已注册 151 项任务评估中（在下文第 8 节报告），rung 1 到 5 为每项任务的已知良好原始关闭提供了 `116` 项任务的 `0` 次模型调用，留下 `35` 项未完成任务（其中 `25` 项不可解析的 `W-SYN-1` 文件被 rung f 跳过，`10` 项为未完成的解析任务）。将组合的外部提案（`FormJEPA-v1` 加上记录的残余修复，`91` 项提案被评估）输入后得到 `3` 项观察到的 rung-f 接受：`3/3`（`100.0%`）通过突变门，且 `0` 项与原始冲突（`3/3` 已恢复），然而 `119` 项关闭中有 `3` 项为 `2.5% > 2.0%`，因此 `rce repair criterion` 确定返回 `holds: false` 并保持 rung f 处于 `observe` 模式。
 
@@ -288,9 +298,9 @@ V-JEPA 2 对非常大的被动预训练与一个小的动作条件集合 [B1]。
 | 被动：形式与痕迹 | 从已固定的公共语料库中提升的形式，依据 RCE 论文（第 6 节）在代码公开后提升；来自该论文生态系统协议的种子生成器的形式（第 2.3 节），以及每个被提升的处理器 | $10^5$ 到 $10^6$ 形式带痕迹 | 形式编码器，通过在潜在空间中预测掩码规则和掩码痕迹段 |
 | 配对：意图与适配 | 附加到提升程序的测试和合约；形式自身的痕迹作为自生成规范；预注册的棕地应用；以形式编写的基准规范 | $10^4$ 对开始 | 意图编码器和提议器 |
 | 决策收据 | 每一次门控决策 | 无上限，无标注成本 | 决策头的校准 |
-| 硬负例 | 需要更改的裁决，带有命名的破坏规则；模型提出的等价但门未接受的等价（在 RCE 论文第 5.5 节的模型‑提议者运行公开记录中，18 个提议中 15 个，12 种不同改写） | 随每次运行增长 | 对比信号：有效对无效，有等价对无等价 |
+| 硬负例 | 需要更改的裁决，带有命名的破坏规则；模型提出的等价但门未接受的等价（在 RCE 论文第 5.5 节的模型-提议者运行公开记录中，18 个提议中 15 个，12 种不同改写） | 随每次运行增长 | 对比信号：有效对无效，有等价对无等价 |
 
-近似重复的 Form 在任何拆分之前通过形状哈希去除，保留集的拆分也基于形状哈希，而非表面文本。第一个语料库已存在：Form 语料库第 1 版（2026 年 10 月 23 日）包含来自公共仓库（第 4 版，2026 年 10 月 24 日）的 192 种不同手写程序形状，其中 55 种带有意图块，负例 3,456 条（343 条需要更改的符合性程序，每条都有其诊断码，以及 3,113 条检查器验证的突变体，包含空白标记和类型信息，需要跨 31 种诊断码进行更改），配有数据集卡和基于形状哈希的拆分；其生成器位于仓库中的 `scripts/corpus.py`，数据行位于 [research.openie.dev/data/](/data/#rce-jepa)。这是配对和硬负例层级中最小的规模；被动层级（提升的程序）为空，直至提升流水线公开。在此基础上，H1 有首次测量，已在运行前预注册：185 个程序的 rho = b(code)/b(P) 中位数为 9.34，相对于生成的 Python（四分位距 8.45 到 10.81；第 1 版在 173 个程序上为 9.31，Rust 为 17.33，JavaScript 为 11.06，Scala 为 13.66），高于阈值 5；前 173 个程序中有 171 个超过 5（Wilson 95% 区间 0.96 到 1.00）。在压缩描述长度（gzip）下，Python 的比率为 3.57，Rust 为 5.73，随后在主要指标旁报告，以免将该数值误解为信息内容的声明：H1 关注的是提案者搜索的空间，即其词汇表下的 token 数量。生成的源代码是参考检查器自身的，排除共享运行时，且在人口中不存在提升或模型编写的程序。在 Apple M5 Max 上，提交 `1762fb4b`，H2 现在在操作系统/芯片 `reported_j` 中测量：`rce check` 对每个 Form 检查的中位耗时为 `7.32 ms`，能耗为 `0.04904 J`（内核 `ri_energy_nj`），相较于本地 `Qwen 3.6 35B-A3B` 上每个候选的 `84.25 J`（`C_check / E_model = 0.000582 <= 0.05`；详情见下文第 8 节）。以及意图块带来的收益测量，RJ‑F2 和 H7 均基于此：在会改变程序行为的突变体中，其自身示例行捕获了 392 中的 317 条（0.81，Wilson 95% 区间 0.77 到 0.85；54 个程序中有 24 个捕获全部），未捕获的更改几乎全部是一个常量被移动了一位，而没有任何示例对其进行练习。
+近似重复的 Form 在任何拆分之前通过形状哈希去除，保留集的拆分也基于形状哈希，而非表面文本。第一个语料库已存在：Form 语料库第 1 版（2026 年 10 月 23 日）包含来自公共仓库（第 4 版，2026 年 10 月 24 日）的 192 种不同手写程序形状，其中 55 种带有意图块，负例 3,456 条（343 条需要更改的符合性程序，每条都有其诊断码，以及 3,113 条检查器验证的突变体，包含空白标记和类型信息，需要跨 31 种诊断码进行更改），配有数据集卡和基于形状哈希的拆分；其生成器位于仓库中的 `scripts/corpus.py`，数据行位于 [research.openie.dev/data/](/data/#rce-jepa)。这是配对和硬负例层级中最小的规模；被动层级（提升的程序）为空，直至提升流水线公开。在此基础上，H1 有首次测量，已在运行前预注册：185 个程序的 rho = b(code)/b(P) 中位数为 9.34，相对于生成的 Python（四分位距 8.45 到 10.81；第 1 版在 173 个程序上为 9.31，Rust 为 17.33，JavaScript 为 11.06，Scala 为 13.66），高于阈值 5；前 173 个程序中有 171 个超过 5（Wilson 95% 区间 0.96 到 1.00）。在压缩描述长度（gzip）下，Python 的比率为 3.57，Rust 为 5.73，随后在主要指标旁报告，以免将该数值误解为信息内容的声明：H1 关注的是提案者搜索的空间，即其词汇表下的 token 数量。生成的源代码是参考检查器自身的，排除共享运行时，且在人口中不存在提升或模型编写的程序。在 Apple M5 Max 上，提交 `1762fb4b`，H2 现在在操作系统/芯片 `reported_j` 中测量：`rce check` 对每个 Form 检查的中位耗时为 `7.32 ms`，能耗为 `0.04904 J`（内核 `ri_energy_nj`），相较于本地 `Qwen 3.6 35B-A3B` 上每个候选的 `84.25 J`（`C_check / E_model = 0.000582 <= 0.05`；详情见下文第 8 节）。以及意图块带来的收益测量，RJ-F2 和 H7 均基于此：在会改变程序行为的突变体中，其自身示例行捕获了 392 中的 317 条（0.81，Wilson 95% 区间 0.77 到 0.85；54 个程序中有 24 个捕获全部），未捕获的更改几乎全部是一个常量被移动了一位，而没有任何示例对其进行练习。
 
 <div id="training" class="anchor-alias" aria-hidden="true"></div>
 
@@ -353,53 +363,88 @@ H3 控制现在已固定：使用相同的门和相同的成本核算，Qwen2.5-
 | 各向同性先验不匹配低维 Form 空间 | [B13]; [B14] | SIGReg 与对比逆动力学臂并列使用，需记住逆动力学臂在离散谜题状态上较弱 [B14] |
 | 能量项不具可比性 | [T2, Sec. 1.3] | 为每个实验拟合 $\alpha,\beta,\gamma$ 并公开发布 |
 | 决策头在填充状态下退化 | 类的已记录弱点 [B8, B12] | 仅输入规范的 Form JSON 并进行追踪 |
-| 表达能力上限 | Rice 定理 [T3]; 受限语言 | 提升覆盖率即为度量；RJ‑F1 为否定者 |
-| 规范成本占主导 | seL4 工作量（下文第 2 节）；不变约束不足 [B27] | RJ‑F2；捕获运行程序追踪并推断合约的工具，作为独立交付物 |
+| 表达能力上限 | Rice 定理 [T3]; 受限语言 | 提升覆盖率即为度量；RJ-F1 为否定者 |
+| 规范成本占主导 | seL4 工作量（下文第 2 节）；不变约束不足 [B27] | RJ-F2；捕获运行程序追踪并推断合约的工具，作为独立交付物 |
 | 基准预言机弱点 | PatchDiff（Wang、Pradel 与 Liu，第 3 节）：7.8% 被计为正确的补丁在开发者测试中失败，解决率被高估约 6.4 点。METR 对 2025 年初工具的试验（Becker 等，第 3 节）：16 位开发者，246 项任务，测得完成时间高出 19%。预测值低 24%。事后估计低 20% | 接受即为门控加回放，而非测试套件。第 8 节 (H15) 强制 `rce check` 加上对每个候选的义务保持 |
-| 学习的规划延迟 | V‑JEPA 2 模型预测控制每个动作约耗时 16 秒 [B1] | 在 Form 上搜索并使用精确检查器（Apple M5 Max 上 `7.32 ms` / `49.04 mJ`）以及 Gear‑0 晶体化（每次查找 `0.325 µs` / `1.77 µJ`）以限制重复 rollout |
+| 学习的规划延迟 | V-JEPA 2 模型预测控制每个动作约耗时 16 秒 [B1] | 在 Form 上搜索并使用精确检查器（Apple M5 Max 上 `7.32 ms` / `49.04 mJ`）以及 Gear-0 晶体化（每次查找 `0.325 µs` / `1.77 µJ`）以限制重复 rollout |
 
-分阶段试点计划从数据引擎到收敛，针对每一阶段设定预注册和退出标准，随项目工作笔记保存并在此概述：Phase 0 构建提升语料库和接收数据集，并测量 H14 的确定性阶梯，该阶段无需学习型提议者；Phase 1 训练 Form 编码器并测试 H1、H5 与 H11；Phase 2 构建并校准决策头 (H12)；Phase 3 训练专用 JEPA 提议者和规划器以满足令牌控制 (H3、H4、H10、H13)，扩展第 8 节报告的首个单次离线 H15 基线；Phase 4 将芯片上 `reported_j` (H2) 扩展至外部墙表计 `measured_j` (H8、H9)；Phase 5 运行收敛协议，其中 Gear‑0 提升使模型在每个闭合形状上脱离循环。与 Phase 0 同时进行的是 vericoding 基准的一个切片（来源 C34，列于下文“通过承诺实现收敛”），选取其在 Dafny、Verus 与 Lean 中的状态机形任务，将其提升为 Forms 并在 RCE 门控下与已发布的 vericoding 结果一起评分，作为从规范到 Form 步骤的外部基准 (H6、H7 与 H8)。
+分阶段试点计划从数据引擎到收敛，针对每一阶段设定预注册和退出标准，随项目工作笔记保存并在此概述：Phase 0 构建提升语料库和接收数据集，并测量 H14 的确定性阶梯，该阶段无需学习型提议者；Phase 1 训练 Form 编码器并测试 H1、H5 与 H11；Phase 2 构建并校准决策头 (H12)；Phase 3 训练专用 JEPA 提议者和规划器以满足令牌控制 (H3、H4、H10、H13)，扩展第 8 节报告的首个单次离线 H15 基线；Phase 4 将芯片上 `reported_j` (H2) 扩展至外部墙表计 `measured_j` (H8、H9)；Phase 5 运行收敛协议，其中 Gear-0 提升使模型在每个闭合形状上脱离循环。与 Phase 0 同时进行的是 vericoding 基准的一个切片（来源 C34，列于下文“通过承诺实现收敛”），选取其在 Dafny、Verus 与 Lean 中的状态机形任务，将其提升为 Forms 并在 RCE 门控下与已发布的 vericoding 结果一起评分，作为从规范到 Form 步骤的外部基准 (H6、H7 与 H8)。
 
 <div id="proposer-references" class="anchor-alias" aria-hidden="true"></div>
 
-### 提议器参考文献
+### 提议者参考文献
 
 标注 [T] 的参考文献列于下方论文参考文献部分；对第 2、3 及 5 节的引用均指本页下方对应章节。标签遵循下方主参考文献的命名惯例。此处**完整**指通读了全文，包括参考文献与附录；B9 与 B10 的在线模型卡及 README 于 2026 年 10 月 14 日读取。
 
-1. [B1] M. Assran et al., "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning", 2025. [arXiv:2506.09985](https://arxiv.org/abs/2506.09985). Full.
-2. [B2] R. Balestriero and Y. LeCun, "LeJEPA: Provable and Scalable Self-Supervised Learning Without the Heuristics", 2025. [arXiv:2511.08544](https://arxiv.org/abs/2511.08544). Full.
-3. [B3] J. Baek et al., "Discrete JEPA: Learning Discrete Token Representations without Reconstruction", 2025. [arXiv:2506.14373](https://arxiv.org/abs/2506.14373). Full.
-4. [B4] D. Bizzaro and L. Serafini, "Discrete World Models via Regularization", 2026. [arXiv:2603.01748](https://arxiv.org/abs/2603.01748). Full.
-5. [B5] Y. He et al., "SC-JEPA: Stabilizing Latent Predictive Learning for Time-Series Anomaly Prediction", 2026. [arXiv:2602.04643](https://arxiv.org/abs/2602.04643). Full.
-6. [B6] M. Fu et al., "LeWAM: End-to-End World and Action Modeling with JEPAs", 2026. [arXiv:2610.12818](https://arxiv.org/abs/2610.12818). Full.
-7. [B7] T. Deußer, L. Sparrenberg and R. Sifa, "Evaluating and Benchmarking the System One Model Jev", 2026. [arXiv:2609.37647](https://arxiv.org/abs/2609.37647). Full.
-8. [B8] W. Wu, "Jev vs Laya: Comparing and Choosing Between Closed-Source and Open-Source System One Decision Models", 23 September 2026. [wilsonwu.me](https://wilsonwu.me/en/blog/2026/jev-vs-laya/). Full.
-9. [B9] Nandakishor M (Convai Innovations), Laya model card. [Hugging Face](https://huggingface.co/convaiinnovations/laya). Full (read live 14 October 2026).
+1. [B1] M. Assran 等, “V-JEPA 2：自监督视频模型实现理解、预测与规划”, 2025. [arXiv:2506.09985](https://arxiv.org/abs/2506.09985). Full.
+
+2. [B2] R. Balestriero 和 Y. LeCun, “LeJEPA：无需启发式的可证明且可扩展的自监督学习”, 2025. [arXiv:2511.08544](https://arxiv.org/abs/2511.08544). Full.
+
+3. [B3] J. Baek 等, “离散 JEPA：在不进行重建的情况下学习离散令牌表示”, 2025. [arXiv:2506.14373](https://arxiv.org/abs/2506.14373). Full.
+
+4. [B4] D. Bizzaro 和 L. Serafini, “通过正则化实现离散世界模型”, 2026. [arXiv:2603.01748](https://arxiv.org/abs/2603.01748). Full.
+
+5. [B5] Y. He 等, “SC-JEPA：用于时间序列异常预测的潜在预测学习稳定化”, 2026. [arXiv:2602.04643](https://arxiv.org/abs/2602.04643). Full.
+
+6. [B6] M. Fu 等, “LeWAM：端到端的世界与动作建模框架（基于 JEPAs）”, 2026. [arXiv:2610.12818](https://arxiv.org/abs/2610.12818). Full.
+
+7. [B7] T. Deußer、L. Sparrenberg 和 R. Sifa, “系统一模型 Jev 的评估与基准测试”, 2026. [arXiv:2609.37647](https://arxiv.org/abs/2609.37647). Full.
+
+8. [B8] W. Wu, “Jev 与 Laya：闭源与开源系统一决策模型的比较与选择”, 2026年9月23日. [wilsonwu.me](https://wilsonwu.me/en/blog/2026/jev-vs-laya/). Full.
+
+9. [B9] Nandakishor M（Convai Innovations），Laya 模型卡. [Hugging Face](https://huggingface.co/convaiinnovations/laya). Full (read live 14 October 2026).
+
 10. [B10] J. Palmer, Kev. [GitHub](https://github.com/jaredpalmer/kev). Full (README, read live 14 October 2026).
-11. [B11] Liquid AI, "Open d1: Edge decision models for text, vision, and audio", 7 October 2026. [liquid.ai](https://www.liquid.ai/blog/d1-open). Full.
-12. [B12] Sanity, "Decision model" (glossary). [sanity.io](https://www.sanity.io/glossary/decision-model). Full.
-13. [B13] L. Maes, Q. Le Lidec, D. Scieur, Y. LeCun and R. Balestriero, "LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels", 2026. [arXiv:2603.19312](https://arxiv.org/abs/2603.19312). Full.
-14. [B14] J. Boylan and C. Hokamp, "No Gaussian Required: Contrastive Inverse Dynamics for JEPA World Models", 2026. [arXiv:2608.17542](https://arxiv.org/abs/2608.17542). Full.
-15. [B15] P. Zhu et al., "Spectral-Target Physical Latent Structuring for JEPA-Style World Models", 2026. [arXiv:2609.04264](https://arxiv.org/abs/2609.04264). Full.
-16. [B16] B. Terver et al., "A Lightweight Library for Energy-Based Joint-Embedding Predictive Architectures", 2026. [arXiv:2602.03604](https://arxiv.org/abs/2602.03604). Full.
-17. [B17] A. Zholus et al., "RoboJEPA: Scaling Robotic Latent World Models", 2026. [arXiv:2610.10515](https://arxiv.org/abs/2610.10515). Full.
-18. [B18] J. Bai and J. Xiong, "Temporal-Distance JEPA: Plan-Aware Representation Learning for Latent World Model Predictive Control", 2026. [arXiv:2607.25337](https://arxiv.org/abs/2607.25337). Full.
-19. [B19] A. Chahe, S. Cai and L. Zhou, "Latent World Models with Monotone Planning Costs for Image-Goal Navigation", 2026. [arXiv:2608.09073](https://arxiv.org/abs/2608.09073). Full.
-20. [B20] Y. Zhu et al., "MoRAE: Flow-Friendly Self-Supervised Latents for Text-to-Motion Generation", 2026. [arXiv:2607.29180](https://arxiv.org/abs/2607.29180). Full.
-21. [B21] J. Hong, D. Dohan, R. Singh, C. Sutton and M. Zaheer, "Latent Programmer: Discrete Latent Codes for Program Synthesis", ICML 2021. [PMLR PDF](https://proceedings.mlr.press/v139/hong21a/hong21a.pdf). Full.
-22. [B22] X. Chen, D. Song and Y. Tian, "Latent Execution for Neural Program Synthesis", NeurIPS 2021. [arXiv:2107.00101](https://arxiv.org/abs/2107.00101). Full.
-23. [B23] Meta FAIR CodeGen Team, "CWM: An Open-Weights LLM for Research on Code Generation with World Models", 2025. [arXiv:2510.02387](https://arxiv.org/abs/2510.02387). Full.
-24. [B24] B. Rahmani, "Debugging Code World Models", 2026. [arXiv:2602.07672](https://arxiv.org/abs/2602.07672). Full.
-25. [B25] M. Allamanis, P. Chanthirasegaran, P. Kohli and C. Sutton, "Learning Continuous Semantic Representations of Symbolic Expressions", ICML 2017. [arXiv:1611.01423](https://arxiv.org/abs/1611.01423). Full.
-26. [B26] Y. Sun, J. Liu, D. Kroening and J. Xue, "Agentic Model Checking", 2026. [arXiv:2605.21434](https://arxiv.org/abs/2605.21434). Full.
-27. [B27] A. Cunha, "Verified LLM-Driven Synthesis for Concept Design", 2026. [arXiv:2607.15718](https://arxiv.org/abs/2607.15718). Full.
-28. [B28] B. K. Liu, Z. P. Chen and D. P. Woodruff, "JEPA-Reasoner: Decoupling Latent Reasoning from Token Generation", 2025. [arXiv:2512.19171](https://arxiv.org/abs/2512.19171). Full.
-29. [B29] H. Pan et al., "Toward Compiler World Models: Learning Latent Dynamics for Efficient Tensor Program Search", 2026. [arXiv:2606.09312](https://arxiv.org/abs/2606.09312). Full.
-30. [B30] Open Interface Engineering, "Exact-proposer ladder: registered run", openIE-dev/openie-research-experiments, `rce/bench/ladder/exact-proposers/`: registration committed before the run at `3030469d`, results at `70a0a776` (pull request #21); ladder openIE-dev/rce `6d04a096`. [GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/exact-proposers). Full.
-31. [B31] Open Interface Engineering, "Exact-proposer ladder on real defects: registered run", openIE-dev/openie-research-experiments, `rce/bench/ladder/real-defects/`: registration committed before the run at `64e70389`, results at `00e3b005` (pull request #22); ladder openIE-dev/rce `7dc4eded`. [GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/real-defects). Full.
-32. [B32] Open Interface Engineering, "Exact-proposer ladder with renames: registered run", openIE-dev/openie-research-experiments, `rce/bench/ladder/rung-e/`: registration committed before the run at `be5f370d`, results at `3a5227c2`, merged at `f76ba9d8` (pull request #23); ladder openIE-dev/rce `8a5d90ea`. [GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/f76ba9d8d02d57b773afbf105333417d55f72e2c/rce/bench/ladder/rung-e). Full.
-33. [B33] Open Interface Engineering, "RCE-JEPA H2, single-shot H15, and Shape D (DNULLMM1) Gear-0 on the 40 open residual tasks", registered 22 November 2026 (`rce-jepa-h15-and-shape-d-gear0-2026-11-22`, `sha256: b64c4c671ae85755...`) on `openIE-dev/rce` at commit `1762fb4b` (20 November 2026, binary `sha256: 1d3b0d07ff5b2e8f...`), Apple M5 Max dual-channel `reported_j` receipts (`measured_j = None`, `board_metered = false`). [research.openie.dev/data/](/data/#rce-jepa). Full.
-34. [B34] Open Interface Engineering, "FormJEPA-v1 latent Form repair proposer, 3-Gear Cascade, and rce repair rung f criterion evaluation on the 151-task ladder and 40 residual tasks", registered 22 November 2026 (`rce-jepa-form-jepa-v1-2026-11-22`, `sha256: 22682e6e936ec120...`; `rce-repair-rung-f-wave3-eval-2026-11-22`, `sha256: 04aff4b2b44cdbea...`) on `openIE-dev/rce` at commit `1762fb4b` (Linux x86_64 binary `sha256: 5ef9931ff23a310f...`), AMD Ryzen AI Max+ 395 Linux powercap RAPL `reported_j` receipts (`measured_j = None`, `board_metered = false`). [research.openie.dev/data/](/data/#rce-jepa). Full.
+
+11. [B11] Liquid AI, “Open d1：用于文本、视觉和音频的边缘决策模型”, 2026年10月7日. [liquid.ai](https://www.liquid.ai/blog/d1-open). Full.
+
+12. [B12] Sanity, “Decision model”（术语表）. [sanity.io](https://www.sanity.io/glossary/decision-model). Full.
+
+13. [B13] L. Maes、Q. Le Lidec、D. Scieur、Y. LeCun 和 R. Balestriero, “LeWorldModel：基于像素的稳定端到端联合嵌入预测架构”, 2026. [arXiv:2603.19312](https://arxiv.org/abs/2603.19312). Full.
+
+14. [B14] J. Boylan 和 C. Hokamp, “无需高斯假设：用于 JEPA 世界模型的对比逆动力学”, 2026. [arXiv:2608.17542](https://arxiv.org/abs/2608.17542). Full.
+
+15. [B15] P. Zhu 等, “面向 JEPA 风格世界模型的光谱目标物理潜在结构化”, 2026. [arXiv:2609.04264](https://arxiv.org/abs/2609.04264). Full.
+
+16. [B16] B. Terver 等, “轻量化能量基联合嵌入预测架构库”, 2026. [arXiv:2602.03604](https://arxiv.org/abs/2602.03604). Full.
+
+17. [B17] A. Zholus 等, “RoboJEPA：可扩展的机器人潜在世界模型”, 2026. [arXiv:2610.10515](https://arxiv.org/abs/2610.10515). Full.
+
+18. [B18] J. Bai 和 J. Xiong, “时距 JEPA：面向计划的潜在世界模型预测控制表征学习”, 2026. [arXiv:2607.25337](https://arxiv.org/abs/2607.25337). Full.
+
+19. [B19] A. Chahe、S. Cai 和 L. Zhou, “带单调规划成本的潜在世界模型用于图像目标导航”, 2026. [arXiv:2608.09073](https://arxiv.org/abs/2608.09073). Full.
+
+20. [B20] Y. Zhu 等, “MoRAE：适用于文本到动作生成的流友好自监督潜在”, 2026. [arXiv:2607.29180](https://arxiv.org/abs/2607.29180). Full.
+
+21. [B21] J. Hong, D. Dohan, R. Singh, C. Sutton 与 M. Zaheer, "Latent Programmer: Discrete Latent Codes for Program Synthesis", ICML 2021. [PMLR PDF](https://proceedings.mlr.press/v139/hong21a/hong21a.pdf)。完整文本。
+
+22. [B22] X. Chen, D. Song 与 Y. Tian, "Latent Execution for Neural Program Synthesis", NeurIPS 2021. [arXiv:2107.00101](https://arxiv.org/abs/2107.00101)。完整文本。
+
+23. [B23] Meta FAIR CodeGen Team, "CWM: An Open-Weights LLM for Research on Code Generation with World Models", 2025. [arXiv:2510.02387](https://arxiv.org/abs/2510.02387)。完整文本。
+
+24. [B24] B. Rahmani, "Debugging Code World Models", 2026. [arXiv:2602.07672](https://arxiv.org/abs/2602.07672)。完整文本。
+
+25. [B25] M. Allamanis, P. Chanthirasegaran, P. Kohli 与 C. Sutton, "Learning Continuous Semantic Representations of Symbolic Expressions", ICML 2017. [arXiv:1611.01423](https://arxiv.org/abs/1611.01423)。完整文本。
+
+26. [B26] Y. Sun, J. Liu, D. Kroening 与 J. Xue, "Agentic Model Checking", 2026. [arXiv:2605.21434](https://arxiv.org/abs/2605.21434)。完整文本。
+
+27. [B27] A. Cunha, "Verified LLM-Driven Synthesis for Concept Design", 2026. [arXiv:2607.15718](https://arxiv.org/abs/2607.15718)。完整文本。
+
+28. [B28] B. K. Liu, Z. P. Chen 与 D. P. Woodruff, "JEPA-Reasoner: Decoupling Latent Reasoning from Token Generation", 2025. [arXiv:2512.19171](https://arxiv.org/abs/2512.19171)。完整文本。
+
+29. [B29] H. Pan 等, "Toward Compiler World Models: Learning Latent Dynamics for Efficient Tensor Program Search", 2026. [arXiv:2606.09312](https://arxiv.org/abs/2606.09312)。完整文本。
+
+30. [B30] Open Interface Engineering, "Exact-proposer ladder: registered run", openIE-dev/openie-research-experiments, `rce/bench/ladder/exact-proposers/`: 登记提交于运行前的 `3030469d`，结果提交于 `70a0a776`（拉取请求 #21）；ladder 为 openIE-dev/rce `6d04a096`。[GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/exact-proposers)。完整文本。
+
+31. [B31] Open Interface Engineering, "Exact-proposer ladder on real defects: registered run", openIE-dev/openie-research-experiments, `rce/bench/ladder/real-defects/`: 登记提交于运行前的 `64e70389`，结果提交于 `00e3b005`（拉取请求 #22）；ladder 为 openIE-dev/rce `7dc4eded`。[GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/real-defects)。完整文本。
+
+32. [B32] Open Interface Engineering, "Exact-proposer ladder with renames: registered run", openIE-dev/openie-research-experiments, `rce/bench/ladder/rung-e/`: 登记提交于运行前的 `be5f370d`，结果提交于 `3a5227c2`，合并于 `f76ba9d8`（拉取请求 #23）；ladder 为 openIE-dev/rce `8a5d90ea`。[GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/f76ba9d8d02d57b773afbf105333417d55f72e2c/rce/bench/ladder/rung-e)。完整文本。
+
+33. [B33] Open Interface Engineering, "RCE-JEPA H2, single-shot H15, and Shape D (DNULLMM1) Gear-0 on the 40 open residual tasks"，于2026年11月22日登记（`rce-jepa-h15-and-shape-d-gear0-2026-11-22`，`sha256: b64c4c671ae85755...`），登记于 `openIE-dev/rce` 的提交 `1762fb4b`（2026年11月20日，二进制 `sha256: 1d3b0d07ff5b2e8f...`），Apple M5 Max 双通道 `reported_j` 记录（`measured_j = None`，`board_metered = false`）。[research.openie.dev/data/](/data/#rce-jepa)。完整文本。
+
+34. [B34] Open Interface Engineering，《FormJEPA-v1 潜在形式修复提议器、3 档级联，以及 rce 修复 rung f 准则在 151 项任务阶梯和 40 项残余任务上的评估》，于 2026 年 11 月 22 日登记（`rce-jepa-form-jepa-v1-2026-11-22`，`sha256: 22682e6e936ec120...`；`rce-repair-rung-f-wave3-eval-2026-11-22`，`sha256: 04aff4b2b44cdbea...`），基于 `openIE-dev/rce` 仓库 commit `1762fb4b`（Linux x86_64 二进制文件 `sha256: 5ef9931ff23a310f...`），AMD Ryzen AI Max+ 395 Linux powercap RAPL `reported_j` 凭证（`measured_j = None`，`board_metered = false`）。[research.openie.dev/data/](/data/#rce-jepa)。全文。
+
+35. [B35] Open Interface Engineering，《FormEBM-v2 对比式多步间隔潜在能量评分器（H5、H11），以及 H15-Iterative 有界检查器反馈残差闭合（40/40）与 DNULLMM1 Gear-0 v2 结晶化》，于 2026 年 11 月 23 日登记（`rce-jepa-form-ebm-v2-2026-11-23`，`sha256: 128f17e69361ea89...`；`rce-jepa-h15-iterative-2026-11-23`，`sha256: a7774d3bd03ae450...`），基于 `openIE-dev/rce` 仓库 commit `1762fb4b`（Linux x86_64 二进制文件 `sha256: 331464496009d98a...`），AMD Ryzen AI Max+ 395 / Radeon 8060S Linux powercap RAPL `reported_j` 凭证（`measured_j = None`，`board_metered = false`）。[research.openie.dev/living/rce-jepa/](/living/rce-jepa/) · [research.openie.dev/data/](/data/#rce-jepa)。全文。
 
 <div id="thesis" class="anchor-alias" aria-hidden="true"></div>
 
@@ -634,7 +679,7 @@ $$\mathcal{E}(I,f)=\alpha\,V(f)+\beta\,d\big(\tau(f),\sigma(I)\big)+\gamma\,C(f)
 - **Unison。** 定义是其语法树的哈希。名称是一种视图。两个具有相同树的文本是相同的定义。这是规范形式的同一性一半。
 - **egg。** e-graph 将一组等价程序作为一个结构保存（Willsey 等，下面第 3 节）。编码法则使用相同的商：许多表面程序，一个形式。
 - **Interaction nets。** HVM2（Higher Order Company 的交互组合子模型）将计算视为局部重写，模型中固有并行。第 3 节引用了该模型，但未包含该论文的图示。
-- **Proof assistants。** Lean、Dafny 和 Verus 将正确性设为可检查对象。vericoding 基准是第 3 节引用的测得底线。AlphaProof、DeepSeek‑Prover‑V2、Kimina‑Prover Preview 和 Goedel‑Prover 使用 Lean 内核作为入口。在此处阅读的报告中，领域是数学。
+- **Proof assistants。** Lean、Dafny 和 Verus 将正确性设为可检查对象。vericoding 基准是第 3 节引用的测得底线。AlphaProof、DeepSeek-Prover-V2、Kimina-Prover Preview 和 Goedel-Prover 使用 Lean 内核作为入口。在此处阅读的报告中，领域是数学。
 - **Elliott，denotational design。** “实例的意义是意义的实例”。语义模型定义正确性并将其传递到实现（Elliott，2009，2016 年修订）。这是一种手工学科。它与形式必须只有一种意义的要求相同。
 - **Propagators。** Radul 和 Sussman（2009）将计算描述为向共享单元添加信息的自治机器，统一表达式和约束。报告为理论，附有 Scheme 实现。
 - **Lean，作为工程项目。** Lean FRO（Focused Research Organization）第 1 年路线图，2023 年 8 月至 2024 年 7 月，列出标准库、模块系统、Lake 与 Reservoir、证明自动化、机器学习集成以及新代码生成器。后续年份此处未使用。
@@ -759,7 +804,7 @@ RCE 论文基于七项承诺。每项承诺都是由不同的人独立达成的�
 | 项目 | 建立的内容 | 停止的地方 |
 | --- | --- | --- |
 | FORTRAN，Backus 等，1957；演绎合成，Manna 和 Waldinger，1980 [C31; C32] | 从公式自动生成代码；从构造性证明中提取程序 | FORTRAN 成为编译器；演绎合成当时没有实现 |
-| 规范驱动开发，Böckeler 分类 [C33] | 三个层次：spec‑first、spec‑anchored 和 spec‑as‑source，其中“只有规范由人编辑，人从不接触代码”；在 Kiro、spec‑kit 和 Tessl 中，只有 Tessl 探索 spec‑as‑source | 规范是自然语言，Böckeler 看到从同一规范重复生成的代码不同；没有检查代码是否等同于规范 |
+| 规范驱动开发，Böckeler 分类 [C33] | 三个层次：spec-first、spec-anchored 和 spec-as-source，其中“只有规范由人编辑，人从不接触代码”；在 Kiro、spec-kit 和 Tessl 中，只有 Tessl 探索 spec-as-source | 规范是自然语言，Böckeler 看到从同一规范重复生成的代码不同；没有检查代码是否等同于规范 |
 | Vericoding 基准，2025 [C34] | 12,504 条 Dafny、Verus 和 Lean 的形式规范；至少一种九种现成 LLM，每种尝试五次，分别解决了 82%（Dafny）、44%（Verus）和 27%（Lean）的任务，最佳单模型达到了 67.5%、30.9% 和 17.9%（表 3）；在测试的一个子集（Verina，157 任务；第 4.1 节）中加入自然语言描述未产生统计显著的提升 | 规范语言即证明语言；没有运行时形式或多目标输出；在成功案例中约 9% 的规范过于薄弱，未能捕获意图（第 4 节） |
 | Codifide [C7] | 每个定义都携带编译永不丢弃的意图 | 合约与分派范围 |
 
@@ -904,12 +949,12 @@ RCE 论文基于七项承诺。每项承诺都是由不同的人独立达成的�
 *图 9. 将意图声明转化为可运行程序的尝试。CASE 代表计算机辅助软件工程；UML 代表统一建模语言；Z、B 和 VDM（维也纳开发方法）是数学规范方法；Coq 是证明助理。绿色：机器检验系统。琥珀色：学习模型。蓝色：本主题研究的问题。*
 
 - **自动编程，1950 年代。** FORTRAN（FORmula TRANslation）被称为 “The FORTRAN Automatic Coding System”。其作者写道，其目的是让 IBM 704 “自行编码问题并产生与人类编码员同等质量的程序（但没有错误）”（Backus 等，1957，第 188 页；PDF 第 2 页）。示例：科学家写出一个公式；系统生成机器码。今天这被称为编译器，而不是自动编程。  
-- **演绎综合，1960‑80 年代。** Simon 的启发式编译器（1963）将编程视为启发式问题求解：一种基于通用问题求解器（GPS）的手段‑目标搜索，通过 “selective trial-and-error search” 编写例程（Simon，RAND RM-3588-PR，1963，Summary，第 vii 页）。Manna 和 Waldinger（1980）将程序视为从构造性证明中提取的产物，证明表明规范可以实现：“从这样的证明中，可以提取计算 z 的程序”（Manna 和 Waldinger，STAN‑CS‑78‑690，1978，Specification 部分；同一句出现在 TOPLAS 文章，1980，第 92 页）；两个版本均指出 “不存在实现”（报告，Motivation，第 2 页；TOPLAS，第 91 页）。JACM 文章直接引用 Simon 的结论：“编译任务：：至少是简单的编译任务：：可以有益地被视为问题求解任务”（Simon，1963，Summary，第 505 页），且未作实际声明：“不会对本文所述的启发式编程过程作出作为编译器构建的实用方法的声明”（Introduction，第 493 页）。Manna 和 Waldinger 观察到，当足够强大的自动定理证明器的开发陷入停滞时，定理证明已被 “作为程序综合方法而被放弃”（TOPLAS，1980，第 120 页）。上述四篇文献均已全文阅读。  
-- **程序推导，1975‑86 年。** Dijkstra 将受保护命令 “作为程序的构建块” 引入，并提出从最终状态条件出发的 “程序的形式化推导”（Dijkstra，EWD 472，abstract）。Bird 的列表演算（Bird‑Meertens 形式主义） “通过代数恒等式的重写来导出高效解”（Bird，1986，PDF 第 3 页）。示例：对于 Gries 的问题 “计算列表所有段的和的最小值”，直接程序需要 O(n³) 步，而使用演算重写可得到 “线性时间算法”（Sec. 4.2，PDF 第 34 页）。  
-- **第四代语言、CASE 工具与专家系统，1980 年代。** 报表生成器、表单构建器和图形工具承诺从屏幕和图形直接生成程序。Brooks 在 1986 年回顾图形编程、自动编程和专家系统时指出，它们 “都未能带来数量级的改进”（Brooks，1986，PDF 第 1、8‑11 页）。Kemerer 报告称，引用早期研究显示 “引入一年后，70% 的 CASE 工具和技术从未被使用”，且 “使用集成 CASE 工具编写的首个项目通常未能交付改进的结果”；他将部分放弃归因于学习曲线在超过旧技术之前先下降（Kemerer，1992，第 23‑24 页，图 1）。  
-- **日本第五代计算机系统项目，1982‑92 年。** 该国家级计划基于 Prolog 系列的逻辑编程；ICOT 在十年间花费 “约 540 亿日元，即约 4.5 亿美元”（van de Riet，1993，第 1 节，第 83 页）。1981 年计划中的一个目标是 “减轻软件生成的负担，使高级需求规格足以进行自动处理”（第 3 节，第 85 页）。并行推理机达到了 100 MLIPS 的目标，但 van de Riet 将 “架构突破” 与 “软件突破” 评为失败，并将技术影响评为 “小”（第 6 节，第 103 页）；关于编程所需的努力，“几乎没有证据”（第 4.1 节，第 86 页）。  
-- **细化与模型驱动方法，1980 年代‑2000 年代。** Z、B 和 VDM 通过逐步细化数学规范直至代码。对象管理组织（OMG）的模型驱动架构指南 “规定了系统的三种视角：计算无关视角、平台无关视角和平台特定视角”（OMG，2003，第 2.2.5 节，PDF 第 13 页）。示例：一次绘制类图即可生成 Java 和 SQL（结构化查询语言）。Hutchinson 等人指出，MDE “在缺乏实证数据支持的情况下大多被开发”（2011，第 1 节，第 471 页）；在对 250 多名从业者的调查中，74% 表示 MDE “需要他们进行显著的额外培训”（第 4.3.1 节，第 475 页），且一位受访者报告内部生产率提升 4‑8 倍，而对外宣称 “1.5‑2 倍”（第 5.2.6 节，第 478 页）。作者将其结果称为 “有趣且具启示性，而非决定性的”（第 3.1 节，第 473 页）。  
-- **机器检查系统，2008‑09 年。** CompCert 是一个 C 编译器，其 “语义保持证明” 在 Coq 证明助理中完成（Leroy，2009，abstract，PDF 第 1 页）。seL4 是一个 “8,700 行 C 代码” 的微内核，拥有机器检查的 “功能正确性证明”（abstract，PDF 第 1 页）；该证明耗时约 “20 人年”（Klein 等，2009，第 5.2 节，PDF 第 13 页）。Coq 能将已证明的函数提取为普通代码，目标语言包括 “Ocaml、Haskell 或 Scheme 等函数式语言”（Letouzey，2008，第 1 节，PDF 第 1 页）；提取步骤本身尚未机械化验证，其正确性仍依赖纸面证明（第 6 节，PDF 第 10 页）。
+- **演绎综合，1960-80 年代。** Simon 的启发式编译器（1963）将编程视为启发式问题求解：一种基于通用问题求解器（GPS）的手段-目标搜索，通过 “selective trial-and-error search” 编写例程（Simon，RAND RM-3588-PR，1963，Summary，第 vii 页）。Manna 和 Waldinger（1980）将程序视为从构造性证明中提取的产物，证明表明规范可以实现：“从这样的证明中，可以提取计算 z 的程序”（Manna 和 Waldinger，STAN-CS-78-690，1978，Specification 部分；同一句出现在 TOPLAS 文章，1980，第 92 页）；两个版本均指出 “不存在实现”（报告，Motivation，第 2 页；TOPLAS，第 91 页）。JACM 文章直接引用 Simon 的结论：“编译任务：：至少是简单的编译任务：：可以有益地被视为问题求解任务”（Simon，1963，Summary，第 505 页），且未作实际声明：“不会对本文所述的启发式编程过程作出作为编译器构建的实用方法的声明”（Introduction，第 493 页）。Manna 和 Waldinger 观察到，当足够强大的自动定理证明器的开发陷入停滞时，定理证明已被 “作为程序综合方法而被放弃”（TOPLAS，1980，第 120 页）。上述四篇文献均已全文阅读。  
+- **程序推导，1975-86 年。** Dijkstra 将受保护命令 “作为程序的构建块” 引入，并提出从最终状态条件出发的 “程序的形式化推导”（Dijkstra，EWD 472，abstract）。Bird 的列表演算（Bird-Meertens 形式主义） “通过代数恒等式的重写来导出高效解”（Bird，1986，PDF 第 3 页）。示例：对于 Gries 的问题 “计算列表所有段的和的最小值”，直接程序需要 O(n³) 步，而使用演算重写可得到 “线性时间算法”（Sec. 4.2，PDF 第 34 页）。  
+- **第四代语言、CASE 工具与专家系统，1980 年代。** 报表生成器、表单构建器和图形工具承诺从屏幕和图形直接生成程序。Brooks 在 1986 年回顾图形编程、自动编程和专家系统时指出，它们 “都未能带来数量级的改进”（Brooks，1986，PDF 第 1、8-11 页）。Kemerer 报告称，引用早期研究显示 “引入一年后，70% 的 CASE 工具和技术从未被使用”，且 “使用集成 CASE 工具编写的首个项目通常未能交付改进的结果”；他将部分放弃归因于学习曲线在超过旧技术之前先下降（Kemerer，1992，第 23-24 页，图 1）。  
+- **日本第五代计算机系统项目，1982-92 年。** 该国家级计划基于 Prolog 系列的逻辑编程；ICOT 在十年间花费 “约 540 亿日元，即约 4.5 亿美元”（van de Riet，1993，第 1 节，第 83 页）。1981 年计划中的一个目标是 “减轻软件生成的负担，使高级需求规格足以进行自动处理”（第 3 节，第 85 页）。并行推理机达到了 100 MLIPS 的目标，但 van de Riet 将 “架构突破” 与 “软件突破” 评为失败，并将技术影响评为 “小”（第 6 节，第 103 页）；关于编程所需的努力，“几乎没有证据”（第 4.1 节，第 86 页）。  
+- **细化与模型驱动方法，1980 年代-2000 年代。** Z、B 和 VDM 通过逐步细化数学规范直至代码。对象管理组织（OMG）的模型驱动架构指南 “规定了系统的三种视角：计算无关视角、平台无关视角和平台特定视角”（OMG，2003，第 2.2.5 节，PDF 第 13 页）。示例：一次绘制类图即可生成 Java 和 SQL（结构化查询语言）。Hutchinson 等人指出，MDE “在缺乏实证数据支持的情况下大多被开发”（2011，第 1 节，第 471 页）；在对 250 多名从业者的调查中，74% 表示 MDE “需要他们进行显著的额外培训”（第 4.3.1 节，第 475 页），且一位受访者报告内部生产率提升 4-8 倍，而对外宣称 “1.5-2 倍”（第 5.2.6 节，第 478 页）。作者将其结果称为 “有趣且具启示性，而非决定性的”（第 3.1 节，第 473 页）。  
+- **机器检查系统，2008-09 年。** CompCert 是一个 C 编译器，其 “语义保持证明” 在 Coq 证明助理中完成（Leroy，2009，abstract，PDF 第 1 页）。seL4 是一个 “8,700 行 C 代码” 的微内核，拥有机器检查的 “功能正确性证明”（abstract，PDF 第 1 页）；该证明耗时约 “20 人年”（Klein 等，2009，第 5.2 节，PDF 第 13 页）。Coq 能将已证明的函数提取为普通代码，目标语言包括 “Ocaml、Haskell 或 Scheme 等函数式语言”（Letouzey，2008，第 1 节，PDF 第 1 页）；提取步骤本身尚未机械化验证，其正确性仍依赖纸面证明（第 6 节，PDF 第 10 页）。
 
 <div id="2-why-the-earlier-attempts-stalled" class="anchor-alias" aria-hidden="true"></div>
 
@@ -917,9 +962,9 @@ RCE 论文基于七项承诺。每项承诺都是由不同的人独立达成的�
 
 - **本质复杂度与偶然复杂度。** Brooks 将“本质任务，即构成抽象软件实体的复杂概念结构的构造”与“偶然任务，即在编程语言中表示这些抽象实体”（摘要，PDF 第 1 页）区分开来。他引用 Parnas 的话：“自动编程一直是对使用比当时程序员可用的语言更高级的语言进行编程的委婉说法”（PDF 第 9 页），并写道“即使是完美的程序验证也只能证明程序满足其规范”（PDF 第 11 页）（Brooks，1986）。例子：更好的工资规则记号并不能决定规则本身应为何。
 - **自然语言是模糊的。** Dijkstra 认为形式化文本是，“当你仔细想想时，是一种极其有效的工具，用来排除所有在使用母语时几乎不可能避免的荒唐之事”（Dijkstra，EWD 667，第 6 段）。例子：“按姓名和日期对用户进行排序”至少有两种解释。
-- **规格成本与程序本身等同。** 在 seL4 中，抽象规格花费“大约 4 个人月”，而证明花费约 20 人年，相比之下“包括 Haskell 工作在内的总成本为 2.2 人年”用于构建内核本身（Klein 等，2009，第 5.2 节，PDF 第 12‑13 页）。这 20 人年中约有 9 人年用于研究和可重用的证明工具；seL4 特定的证明“为 11 人年”（PDF 第 13 页）。
+- **规格成本与程序本身等同。** 在 seL4 中，抽象规格花费“大约 4 个人月”，而证明花费约 20 人年，相比之下“包括 Haskell 工作在内的总成本为 2.2 人年”用于构建内核本身（Klein 等，2009，第 5.2 节，PDF 第 12-13 页）。这 20 人年中约有 9 人年用于研究和可重用的证明工具；seL4 特定的证明“为 11 人年”（PDF 第 13 页）。
 - **组合搜索。** 搜索所有程序的复杂度随程序长度呈指数增长。DreamCoder 通过学习可重用片段库和神经网络“引导程序搜索”，在“醒-睡”循环中实现此目标（Ellis 等，2021，摘要，PDF 第 1 页）；论文称此类搜索“对通用算法而言是不可解的，因为搜索空间的组合性质”（引言，PDF 第 2 页）；补充材料再次指出寻找程序“困难在于无限大、组合性的搜索景观”（补充材料 S4.1，PDF 第 42 页），这正是限制演绎合成的同类搜索问题。
-- **脆弱性与采纳。** 图到代码的工具生成的代码随后被手工编辑，导致模型与代码之间产生漂移。Petre 报告早期调查显示“模型中心方法最大的感知问题是保持模型与代码同步（68% 同意）”（Forward 和 Lethbridge，Petre 报告，2013，作者稿第 3 页）；在 Petre 的 50 位受访者中，35 人未使用 UML（统一建模语言），3 人使用自动代码生成（第 4‑5 页）。CASE 和模型驱动工程的采纳研究列在账本中但未阅读，因此未引用其中的数据。
+- **脆弱性与采纳。** 图到代码的工具生成的代码随后被手工编辑，导致模型与代码之间产生漂移。Petre 报告早期调查显示“模型中心方法最大的感知问题是保持模型与代码同步（68% 同意）”（Forward 和 Lethbridge，Petre 报告，2013，作者稿第 3 页）；在 Petre 的 50 位受访者中，35 人未使用 UML（统一建模语言），3 人使用自动代码生成（第 4-5 页）。CASE 和模型驱动工程的采纳研究列在账本中但未阅读，因此未引用其中的数据。
 - **观点。** 共同的线索是，每种方法都解决了一个成本（记号、证明、生成），而另一个环节仍需手工完成：编写规格、搜索程序或检查结果。
 
 <div id="3-three-lanes" class="anchor-alias" aria-hidden="true"></div>
@@ -985,7 +1030,7 @@ RCE 论文基于七项承诺。每项承诺都是由不同的人独立达成的�
 | Conal Elliott，指称设计 | “实例的意义是意义的实例”。语义模型定义正确性并将其传递到实现。该注释来自 2009 年，2016 年修订。 | 手动设计规范。 |
 | Radul 与 Sussman，传播器 | 计算视为向共享单元添加信息的自主机器。该阐述统一了表达式式编程和约束编程，包括增量分布式搜索。2009 年技术报告，附 Scheme 实现。 | 采用情况。 |
 | Chollet，关于智能度量 [T37] | 智能被视为技能获取效率。ARC 是度量标准。程序合成是其框架。引用的是 2019 年论文。后续关于任务时刻进行合成的演讲未单独引用。ARC 奖 2024 报告中提到深度学习引导的程序合成，该报告即为引用。 | 正式度量仅在 ARC 中实现，未在本行摘要中进一步操作。 |
-| 本项目，编码法则 | 规范形式是对象。表层文本是投影。成本被计数。测量结果：H1 中位数 rho 为 9.34（185 个程序）；H2 `C_check / E_model = 0.000582 <= 0.05`（在 M5 Max 上便宜 1,718 倍）；H7，1,275 个突变体且在模糊臂上 0 次违规；H8，10,500 条流、六个目标，0 次不匹配；H14 第 3 轮，151 中 111（73.5%）在 0 次模型调用后关闭；H15 在 40 个残余任务中，使用六个现成提议器时 17/40 至 34/40，`k = 1` 时为 `22/40`，`k = 16` 时为 `27/40`，针对特训的 `FormJEPA-v1`（`8.42M` 参数，`58.65 mJ` / `474.76 mJ` RAPL 核 `reported_j`；在不相交的合成缺陷上为 `177/200`），34/40 零调用 Gear-0 重放（`0.325 µs`，`1.77 µJ`/探针），在 `Zipf(0.85)` 上实现 `8.70×` 的 3‑Gear 前沿调用降低，以及 151 任务 `rce repair` 轮 `f` 审计（`3/119 = 2.5% > 2.0%`，`0` 矛盾，保持在 `observe` 中）。 | 完整的意图到形式的合成（H3）、校准的多项能量排序（H5、H11）、H4、H6、H9、H10、H12、H13、H15 的扩散与进化分支，以及壁表计 `measured_j` 仍未完成。 |
+| 本项目，编码法则 | 规范形式是对象。表层文本是投影。成本被计数。测量结果：H1 中位数 rho 为 9.34（185 个程序）；H2 `C_check / E_model = 0.000582 <= 0.05`（在 M5 Max 上便宜 1,718 倍）；H7，1,275 个突变体且在模糊臂上 0 次违规；H8，10,500 条流、六个目标，0 次不匹配；H14 第 3 轮，151 中 111（73.5%）在 0 次模型调用后关闭；H15 在 40 个残余任务中，使用六个现成提议器时 17/40 至 34/40，`k = 1` 时为 `22/40`，`k = 16` 时为 `27/40`，针对特训的 `FormJEPA-v1`（`8.42M` 参数，`58.65 mJ` / `474.76 mJ` RAPL 核 `reported_j`；在不相交的合成缺陷上为 `177/200`），34/40 零调用 Gear-0 重放（`0.325 µs`，`1.77 µJ`/探针），在 `Zipf(0.85)` 上实现 `8.70×` 的 3-Gear 前沿调用降低，以及 151 任务 `rce repair` 轮 `f` 审计（`3/119 = 2.5% > 2.0%`，`0` 矛盾，保持在 `observe` 中）。 | 完整的意图到形式的合成（H3）、校准的多项能量排序（H5、H11）、H4、H6、H9、H10、H12、H13、H15 的扩散与进化分支，以及壁表计 `measured_j` 仍未完成。 |
 
 **通道读取。** Unison（身份是结构的哈希）、egg（程序作为等价类）、interaction nets（计算作为局部重写）和 proof assistants（正确性作为对象）各自持有《编码法则》共同阐述的一个要素：一个规范形式、精确重放、投射到目标以及可检查的接受。Elliott 的指示性设计和 propagator 说明是同一需求的早期表述：意义决定实现，计算添加信息而非仅仅输出文本。它们是独立的收敛，各自源自不同的起点。Chollet 的度量指出要计数的对象是系统获取技能的效率，这也是提案者比较同时跟踪调用预算和物理能量的原因（第 8 节）。
 
@@ -997,10 +1042,10 @@ RCE 论文基于七项承诺。每项承诺都是由不同的人独立达成的�
 
 - **检查器廉价且可靠，弥补了早期尝试的不足。** 使用随机程序生成器 Csmith，作者发现 CompCert 是“我们测试的唯一一个 Csmith 找不到错误代码的编译器”，在“大约六 CPU 年”的尝试后（Yang 等，2011，Sec. 3.1，PDF 第 6 页）。机器检查的规则可以提供生成器无法提供的信任。CompCert 本身采用了这种模式：其寄存器分配器运行未经验证的图着色启发式算法，并使用在 Coq 中证明正确的验证器检查每个结果，因为图着色“比直接证明正确更容易事后验证”（Leroy，2009，Sec. 4.2，PDF 第 7 页）。
 - **确定性语义解决非确定性问题。** 如果允许生成器变化，但接受的产物被精确检查并重放，则模型的运行间差异对结果不再重要。
-- **循环验证证据已存在。** AlphaCode 的行为过滤、Codex‑S 的 oracle 测试选择（77.5% 对比 44.5% 的对数概率排序）、Clover、AutoVerus 和 AlphaProof 在检查选择提案时均显示出显著提升。第 3 节记录了后续系统的相同模式：模型提出，评估器、证明内核或类型系统决定。
-- **学习预测器现在在潜在空间工作。** I‑JEPA 和 V‑JEPA 2 表明，预测目标的摘要而非每个细节，在这些任务上表现良好：V‑JEPA 2 在 5 项机器人任务中有 4 项成功率更高（1 项持平），并且在比较中规划速度约为生成式视频模型的 15 倍（表 3，PDF 第 15 页）。在程序中，标识符拼写、格式和目标语言等细节可以在结构确定后 deterministically 填充。第 5 节阐述了前提以及在出现 Forms 与 Coding 法则后其停止的条件。
-- **逐标记生成成本高昂。** LLaMA 65B 在 8 到 32 块 V100 GPU 上分片运行，输出限制为 512 标记，使用“约 3‑4 焦耳每个输出标记”，仅计入 GPU 能耗（Samsi 等，2023，Secs. III‑C 和 IV‑C，PDF 第 4‑6 页）。在对 88 种模型的研究中，文本生成模型平均每 1,000 次查询消耗 0.047 kWh（千瓦时），每次查询仅生成 10 个新标记（表 2），并且“多用途生成架构的成本比特定任务系统高出数个数量级”，部分原因是生成器需要在“整个词汇表”中进行选择（Luccioni 等，2024，abstract，PDF 第 1 页；Sec. 4.1 和表 2，PDF 第 6 页；Sec. 4.2.1，PDF 第 8 页）。
-- **同主机检查‑模型比较（第 8 节，H2）。** 与其将外部 V100 数据与本地笔记本时间混合，第 8 节在同一 Apple M5 Max 主机上测量两者：每次 Form 检查 `0.04904 J`，而本地 `Qwen 3.6 35B‑A3B` 的每个候选耗费 `84.25 J`（每次批准的残余修复 `124.81 J`）。
+- **循环验证证据已存在。** AlphaCode 的行为过滤、Codex-S 的 oracle 测试选择（77.5% 对比 44.5% 的对数概率排序）、Clover、AutoVerus 和 AlphaProof 在检查选择提案时均显示出显著提升。第 3 节记录了后续系统的相同模式：模型提出，评估器、证明内核或类型系统决定。
+- **学习预测器现在在潜在空间工作。** I-JEPA 和 V-JEPA 2 表明，预测目标的摘要而非每个细节，在这些任务上表现良好：V-JEPA 2 在 5 项机器人任务中有 4 项成功率更高（1 项持平），并且在比较中规划速度约为生成式视频模型的 15 倍（表 3，PDF 第 15 页）。在程序中，标识符拼写、格式和目标语言等细节可以在结构确定后 deterministically 填充。第 5 节阐述了前提以及在出现 Forms 与 Coding 法则后其停止的条件。
+- **逐标记生成成本高昂。** LLaMA 65B 在 8 到 32 块 V100 GPU 上分片运行，输出限制为 512 标记，使用“约 3-4 焦耳每个输出标记”，仅计入 GPU 能耗（Samsi 等，2023，Secs. III-C 和 IV-C，PDF 第 4-6 页）。在对 88 种模型的研究中，文本生成模型平均每 1,000 次查询消耗 0.047 kWh（千瓦时），每次查询仅生成 10 个新标记（表 2），并且“多用途生成架构的成本比特定任务系统高出数个数量级”，部分原因是生成器需要在“整个词汇表”中进行选择（Luccioni 等，2024，abstract，PDF 第 1 页；Sec. 4.1 和表 2，PDF 第 6 页；Sec. 4.2.1，PDF 第 8 页）。
+- **同主机检查-模型比较（第 8 节，H2）。** 与其将外部 V100 数据与本地笔记本时间混合，第 8 节在同一 Apple M5 Max 主机上测量两者：每次 Form 检查 `0.04904 J`，而本地 `Qwen 3.6 35B-A3B` 的每个候选耗费 `84.25 J`（每次批准的残余修复 `124.81 J`）。
 
 <div id="what-could-still-fail" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1018,16 +1063,16 @@ RCE 论文基于七项承诺。每项承诺都是由不同的人独立达成的�
 
 ## 5. JEPA 作为前提及其边界
 
-前提保持不变。JEPA 在嵌入空间中进行预测，而不是在原始输入空间中。论文引用了 LeCun 2022 年关于该思想的表述。V‑JEPA 2 报告了 62 小时的机器人视频以及从 65% 到 80% 的零样本抓取‑放置成功率 [B1]。正如同一报告的提议者章节所述，动作条件预测器的训练使用的未标记机器人视频不足 62 小时。LLM‑JEPA 报告称，在自然语言到正则表达式任务、GSM8K（小学数学集合）和 Spider（文本到数据库查询集合）上，嵌入空间损失优于 token 损失，规模为 10 亿参数（Huang、LeCun 和 Balestriero，2025）。对于代码，这与有用对象是意义而非 token 的直觉相吻合。
+前提保持不变。JEPA 在嵌入空间中进行预测，而不是在原始输入空间中。论文引用了 LeCun 2022 年关于该思想的表述。V-JEPA 2 报告了 62 小时的机器人视频以及从 65% 到 80% 的零样本抓取-放置成功率 [B1]。正如同一报告的提议者章节所述，动作条件预测器的训练使用的未标记机器人视频不足 62 小时。LLM-JEPA 报告称，在自然语言到正则表达式任务、GSM8K（小学数学集合）和 Spider（文本到数据库查询集合）上，嵌入空间损失优于 token 损失，规模为 10 亿参数（Huang、LeCun 和 Balestriero，2025）。对于代码，这与有用对象是意义而非 token 的直觉相吻合。
 
 一旦 Form 存在，并且一旦编码法则固定了等价性和接受性，该前提就不是整个方法。随后列出六个限制，它们是扩展提议者的理由，而非放弃前提的理由。
 
 1. **一种可以精确计算的近似几何。** JEPA 学习近似的潜在几何。编码法则提供了精确的几何：规范 Form 以及检查器已经决定的等价关系。通过自监督学习这些内容会在本可以直接计算的映射上消耗数据。H10 是检验在商空间上学习是否节省数据的测试。H10 尚未运行。
 2. **坍塌。** 表征坍塌以及针对其的正则化器是 JEPA 训练中的未解问题。精确的规范化器不会坍塌。它通过规则而非损失将每个表层程序映射到一个 Form。
 3. **缺乏原生接受。** JEPA 没有原生解码器，也没有接受步骤。代码需要离散、可检查的输出。能量分数对候选项进行排序，但不决定最终结果。检查器负责决定。
-4. **点而非商。** 替代 Form 构成一个商。许多表层程序可以对应同一个 Form，而一个 Form 可以投射到多个目标。JEPA 嵌入的是点，它并不证明两个点属于同一 Form。e‑graph 能做到，结构哈希也能做到。在第 8 节中，`rce fmt nameless` 将 `9` 个 alpha‑重命名的局部变量突变中的 `7` 个映射到相同的内存映射 Gear‑0（`DNULLMM1`）槽，模型调用次数为零。
-5. **证据规模。** LLM‑JEPA 的证据规模在 10 亿到 20 亿参数之间，且使用的是小数据集。此页的任何来源都未显示 JEPA 在仓库规模代码上的训练情况。
-6. **学习规划的成本。** V‑JEPA 2 的模型预测控制（MPC）每个动作约耗时 16 秒 [B1]。在使用廉价精确检查器（`7.32 ms`、`49.04 mJ` L3 `reported_j` 在 M5 Max 上）和 Gear‑0 查找（`0.325 µs`、`1.77 µJ`）的情况下，对 Form 的搜索在任何学习规划器训练之前就已经限制了重复 rollout 的成本。
+4. **点而非商。** 替代 Form 构成一个商。许多表层程序可以对应同一个 Form，而一个 Form 可以投射到多个目标。JEPA 嵌入的是点，它并不证明两个点属于同一 Form。e-graph 能做到，结构哈希也能做到。在第 8 节中，`rce fmt nameless` 将 `9` 个 alpha-重命名的局部变量突变中的 `7` 个映射到相同的内存映射 Gear-0（`DNULLMM1`）槽，模型调用次数为零。
+5. **证据规模。** LLM-JEPA 的证据规模在 10 亿到 20 亿参数之间，且使用的是小数据集。此页的任何来源都未显示 JEPA 在仓库规模代码上的训练情况。
+6. **学习规划的成本。** V-JEPA 2 的模型预测控制（MPC）每个动作约耗时 16 秒 [B1]。在使用廉价精确检查器（`7.32 ms`、`49.04 mJ` L3 `reported_j` 在 M5 Max 上）和 Gear-0 查找（`0.325 µs`、`1.77 µJ`）的情况下，对 Form 的搜索在任何学习规划器训练之前就已经限制了重复 rollout 的成本。
 
 **后果。** JEPA 仍然是前提：预测意义，而非文本。提议者槽可以推广到任何基于 Form 的学习提议者。第 3 节中命名的实例包括在训练中期执行的自回归模型（CWM）、扩散代码模型、形式环境中的强化学习（AlphaProof 与 Lean prover）、进化搜索（AlphaEvolve）、库学习（DreamCoder 与 LILO）以及受约束的解码。大型概念模型在语言上与前提并列，尚未在代码上实现。所有这些的门槛是相同的。第 6 节给出了分类法。第 7 节说明了它们所提议的世界。
 
@@ -1100,21 +1145,21 @@ RCE 是一种封闭的程序形式，可能还有其他形式；上述问题适�
 
 | ID | 假设 | 指标 | 支持条件 | 反驳条件 |
 | --- | --- | --- | --- | --- |
-| H1 | 形式空间相对于相同程序的源空间要小得多。**在手写语料库上得到支持**（median ρ = 9.34 over 185 programs） | ρ = b(code)/b(P), median over corpus | ρ ≥ 5 | ρ < 2 |
-| H2 | 检查器相对于生成而言成本低廉。**在 Apple M5 Max 上的 `reported_j` 中得到支持**: `C_check / E_model = 0.04904 J / 84.25 J = 0.000582` (`1,718×` cheaper; `measured_j = None`) | C<sub>check</sub> / E<sub>model</sub> per candidate (joules) | ≤ 0.05 | ≥ 0.5 |
-| H3 | 表示空间预测达到有用的接受度 | pass@1 accepted Forms on held-out intent-to-Form tasks | ≥ baseline pass@1 on the same tasks | < 0.5 × baseline |
-| H4 | 每个被接受程序的能量下降 | J<sub>acc</sub>(RCE-JEPA) / J<sub>acc</sub>(baseline) | ≤ 0.1 | ≥ 1 |
-| H5 | 能量排序将质量集中在有效的 Form 上（未校准的 `FormJEPA-v1` 潜在 L2 距离在 925 个 beam 候选上：AUROC `0.618`，结论不确定；已校准的多项头未打开） | top-1 type-check rate; AUROC of E for accepted vs requires change | ≥ 0.8 top-1 valid; AUROC ≥ 0.85 | AUROC ≤ 0.6 |
-| H6 | 参考应用可编码 | 6 个参考应用加 RCEdb 完全以 Form 表达且通过检查器并位级重放的比例 | 7 of 7 | any app requires an escape hatch outside the Form |
-| H7 | 安全性与模型无关（模糊化分支：在 1,275 个突变体中 0 次违规；模型分支未打开） | adversarial Forms (fuzzed and model-generated) accepted by the checker that violate a stated invariant | 0 | ≥ 1 confirmed |
-| H8 | 确定性：每个被接受的 Form 重放为位级相同的轨迹和输出。**Supported**（0 mismatches on 10,500 streams across 6 targets） | mismatches over at least 10,000 recorded event streams on at least 3 different machines and operating systems | 0 | a single mismatch |
-| H9 | 成本在执行前即可预测 | median error of the cost-table prediction against measured energy (J, named meter) for a stated machine, over the test families | ≤ 20% | > 50% |
-| H10 | 在商空间上的学习节省数据 | training examples a predictor of canonical Forms needs to reach the same test acceptance rate as one of equal size trained on surface code | at most half (a saving of 2 times or more) | a saving below 1.25 times |
-| H11 | 能量随编辑距离单调（手工定义的编辑分数：`76.8% < 80%`；未校准的 `FormJEPA-v1` 潜在 L2 在距离 `0..4` 上上升，严格的 5 步单调性为 `36.0%`；已校准的头未打开） | Share of test families in which energy E rises with edit distance 1 to k from an accepted fit | ≥ 80% of families | < 80% of families |
-| H12 | 决策头在门控结果上经过校准 | 每种决策类型的 ECE，经过 10<sup>4</sup> 次收据后 | ECE ≤ 0.1 且低于形状哈希频率表 | ECE > 0.2，或不优于频率表 |
-| H13 | 离散潜在规划在长编辑序列上优于连续规划 | 编辑序列长度为 1、5 和 20 时的规划成功率，离散臂对比连续 SIGReg 臂 | 离散臂在长度 20 时更高 | 两臂均未达到 H3 阈值 |
-| H14 | 确定性阶梯在无模型调用的情况下完成一定比例的任务。**由其已注册规则支持**：三次已注册运行 [B30, B31, B32]，报告于表格下方 | 公开确定性阶梯（复用、按类型查找、确定性重写、有界枚举）在冻结阶梯提交下以零模型调用完成的已注册任务集比例，每次完成均经过检查器认可 | 已注册任务中 ≥ 10%，并报告完成各任务的梯级（已注册阈值，未更改）。实测：运行 1，120 中完成 118（98.3%），针对阶梯按构造可逆的变异；运行 2，151 中完成 31（20.5%），其中 27 个为守卫否定；运行 3，普通臂，151 中完成 111（73.5%），其中 110 个为守卫否定和重命名 | 已注册任务中 < 10%，与 RCE 论文中伪证者 RCE-F1 的下限相同。任何运行均未满足。对于规则未单独筛选的来自真实历史的 41 个任务，运行 2 和运行 3 各完成 41 中的 1 个（2.4%） |
-| H15 | 提议器类别在 40 任务残差上存在差异。**跨现成提议器 [B33] 和专门训练的 `FormJEPA-v1` + 三档级联 [B34] 实测**：六个云端/本地模型在 `k = 1` 时接受 `17/40` 至 `34/40`，`FormJEPA-v1`（`8.42M` 参数）在 `k = 1` 时接受 `22/40`，在亚焦耳核心 `reported_j` 下 `k = 16` 时接受 `27/40`，三档级联将 `Zipf(0.85)` 前沿调用减少 `8.70×`；扩散、进化和墙表臂仍开放 | H14 运行 3 普通臂中 40 个残差任务的门控接受比例（`C(z) = 1`），经 `rce check`、义务保留、`rce hash` 和 `rce equiv` 审计 | 已注册运行报告每臂比例及本地 `reported_j` [B33, B34]；扩散/进化臂及服务器墙表奇偶性仍开放 | 各类别在不同任务上评分或输出未经验证 |
+| H1 | Form space is much smaller than source space for the same programs. **Supported on hand-written corpus** (median ρ = 9.34 over 185 programs) | ρ = b(code)/b(P)，语料库中位数 | ρ ≥ 5 | ρ < 2 |
+| H2 | Checker is cheap relative to generation. **Supported in `reported_j` on Apple M5 Max**: `C_check / E_model = 0.04904 J / 84.25 J = 0.000582` (`1,718×` cheaper; `measured_j = None`) | 每个候选的 C<sub>check</sub> / E<sub>model</sub>（焦耳） | ≤ 0.05 | ≥ 0.5 |
+| H3 | Representation-space prediction reaches useful acceptance | 在未见的 intent-to-Form 任务上通过 @1 接受的 Form 数 | ≥ baseline pass@1 on the same tasks | < 0.5 × baseline |
+| H4 | Energy per accepted program falls | J<sub>acc</sub>(RCE-JEPA) / J<sub>acc</sub>(baseline) | ≤ 0.1 | ≥ 1 |
+| H5 | Energy ranking concentrates mass on valid Forms. **AUROC threshold met on unseen test Form shapes**: contrastive `FormEBM-v2` (`5.85M` params) reaches AUROC **`0.8922 >= 0.85`** across `3,064` candidates on `200` unseen test beams (vs `0.618` for uncalibrated `FormJEPA-v1`), with `84.05%` solvable top-1 accuracy (`137/163`; `68.5%` raw across all `200` beams) and `2.39×` fewer `rce check` calls; OOD multi-line residual pool calibration remains open (`0.2630`) | top-1 type-check rate; AUROC of E for accepted vs requires change | ≥ 0.8 top-1 valid; AUROC ≥ 0.85 | AUROC ≤ 0.6 |
+| H6 | The reference apps are encodable | 6 个参考应用加 RCEdb 完全以 Form 表达并通过检查器且位级重放的比例 | 7 of 7 | any app requires an escape hatch outside the Form |
+| H7 | Security is model-independent (fuzzed arm: 0 violations in 1,275 mutants; model arm open) | 被检查器接受且违反声明不变量的对抗性 Form（模糊化和模型生成） | 0 | ≥ 1 confirmed |
+| H8 | Determinism: every accepted Form replays to a bit-identical trajectory and output. **Supported** (0 mismatches on 10,500 streams across 6 targets) | 在至少 3 台不同机器和操作系统上记录的至少 10,000 条事件流中的不匹配次数 | 0 | 单次不匹配 |
+| H9 | Cost is predicted before execution | 在测试族上针对给定机器，成本表预测与测量能量（J，命名计量器）的中位误差 | ≤ 20% | > 50% |
+| H10 | Learning on the quotient saves data | 预测规范 Form 的训练样本数量，需要达到与在表层编码上训练的等量模型相同的测试接受率 | 最多为一半（节省 2 倍或以上） | 节省低于 1.25 倍 |
+| H11 | Energy is monotone in edit distance. **Supported on unseen 5-step cumulative defect chains**: contrastive `FormEBM-v2` reaches **`93.0% >= 80%`** strict 5-step monotonicity (`93/100` unseen chains, Spearman `ρ = 0.9931`, vs `36.0%` for uncalibrated `FormJEPA-v1`); unconstrained same-line random-walk slice reaches `38.0%` strict (`46.0%` non-decreasing, Spearman `ρ = 0.8513`) | 在测试族中，能量 E 随编辑距离 1 到 k 从已接受的拟合上升的比例 | ≥ 80% of families | < 80% of families |
+| H12 | The decision head is calibrated on gate outcomes | 在 10<sup>4</sup> 次接收后，每种决策类型的 ECE | ECE ≤ 0.1 and below a frequency table over shape hashes | ECE > 0.2, or no better than the frequency table |
+| H13 | A discrete latent plans better than a continuous one over long edit sequences | 在编辑序列长度 1、5、20 上的规划成功率，离散分支对比连续 SIGReg 分支 | Discrete arm higher at length 20 | Neither arm reaches the H3 threshold |
+| H14 | A deterministic ladder closes a share of tasks with no model call. **Supported by its registered rule**: three registered runs [B30, B31, B32], reported below the table | 公共确定性 ladder（复用、按类型查找、确定性重写、有界枚举）在零模型调用下闭合且全部被检查器接受的已注册任务集合比例，使用冻结的 ladder commit | ≥ 10% of the registered tasks, reported with the rung that closed each (registered threshold, unchanged). Measured: run 1, 118 of 120 (98.3%), on mutations the ladder inverts by construction; run 2, 31 of 151 (20.5%), 27 of them guard negations; run 3, plain arm, 111 of 151 (73.5%), 110 of them guard negations and renames | < 10% of the registered tasks, the same floor as falsifier RCE-F1 of the RCE paper. Not met in any run. On the 41 tasks from real history, which the rule does not single out, runs 2 and 3 each close 1 of 41 (2.4%) |
+| H15 | Proposer classes differ on the 40-task residual. **Measured across single-shot proposers [B33], `FormJEPA-v1` [B34], and bounded checker-feedback `H15-Iterative` + `FormEBM-v2` [B35]**: single-shot models admit `17/40` to `34/40`, `FormJEPA-v1` admits `22/40` (`k = 1`; `25/40` with `FormEBM-v2` rerank) and `27/40` (`k = 16`), `H15-Iterative` closes **`40/40` (`100.0%`)** on `Opus 5.5` and `Sonnet 5.5` with `0` contradictions (`39/40` on `Grok 4.20`), warm `DNULLMM1` Gear-0 replays **`40/40` at `0` calls**, and the 3-Gear Cascade admits `200/200` `Zipf(0.85)` arrivals with `16.67×` fewer Gear-2 episodes; diffusion, evolutionary, and wall-meter arms remain open | Gate-accepted share (`C(z) = 1`) of the 40 residual tasks from the plain arm of H14 run 3, audited by `rce check`, obligation preservation, `rce hash`, and `rce equiv` | Registered runs report per-arm shares and local `reported_j` [B33, B34, B35]; diffusion/evolutionary arms and server wall-meter parity remain open | Classes scored on different tasks or unverified outputs |
 
 <div id="h14-result" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1124,48 +1169,66 @@ RCE 是一种封闭的程序形式，可能还有其他形式；上述问题适�
 
 **H2、单次 H15 和 Shape D（`DNULLMM1`）Gear-0 在 40 项开放残差任务上的测量 [B33]。** 在执行前已注册（`rce-jepa-h15-and-shape-d-gear0-2026-11-22`，`sha256: b64c4c671ae85755...`），相对于 `openIE-dev/rce` 提交 `1762fb4b`（`2026-11-20`，二进制 `sha256: 1d3b0d07ff5b2e8f...`），这 40 项残差任务（`sha256: 3ca3a32769145e9b...`；`25` `W-SYN-1`，`5` `W-LEN-1`，`4` `W-NAME-1,W-TY-1`，`3` `W-NAME-1`，`1` `W-WORLD-1`，`1` `W-CAP-3,W-WORLD-1`，`1` `W-INT-1`）在严格门限谓词 `C(z) = 1` 下评估：(1) `rce check candidate.rce` 退出 `0`（强制 `W-UI-1` 和 `W-MUT-1` 非空），(2) `no_spec_deletion` 保留所有声明的 `state`、`event`、`error`、`struct`、`kind`、`fn`、`extern` 和 `step` 头部以及每个 `example` 左侧轨迹和突变体的 `check` 计数，(3) 通过 `rce hash`（`restored`）、`rce equiv fuel 2000`（`behaviour-equal`）和 `rce repair` 运行 `f` `observe` 模式进行二次等价审计。
 
-| Arm / Architecture Family | Model | Calls | Admitted (`C(z)=1`) | Restored + Beh-Eq | In / Out Tokens | Cost (\$) | On-Chip `reported_j` |
+| 臂 / 架构族 | 模型 | 调用次数 | 接纳数（`C(z)=1`） | 恢复 + 行为等价 | 输入 / 输出 Token | 成本（\$） | 片上 `reported_j` |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Arm 0**: Shape D 冷静静态 Gear-0 | `DNULLMM1` (0 records) + `a..e` | 0 | 0 / 40 (0.0%) | 0 | 0 / 0 | \$0.0000 | < 0.001 J (37.7 µs) |
-| **Arm 1a**: 云自回归 + 自适应思考 | `claude-opus-5-5` | 40 | **34 / 40 (85.0%)** | 33 (30 + 3) | 114,855 / 32,159 | \$1.3783 | `not_available` (N) |
-| **Arm 1b**: 云自回归 + 自适应思考 | `claude-sonnet-5-5` | 40 | **32 / 40 (80.0%)** | 32 (30 + 2) | 114,855 / 30,764 | \$0.8060 | `not_available` (N) |
-| **Arm 2c**: 云推理 Transformer | `xai:grok-4.20-0309-reasoning` | 40 | **31 / 40 (77.5%)** | 30 (28 + 2) | 76,546 / 18,474 | \$0.2747 | `not_available` (N) |
-| **Arm 2a**: 云推理 MoE（Cerebras） | `cerebras:gpt-oss-120b` | 40 | **29 / 40 (72.5%)** | 27 (25 + 2) | 78,825 / 43,596 | \$0.1340 | `not_available` (N) |
-| **Arm 3**: 本地混合门控-DeltaNet + 稀疏 MoE | `Qwen3.6-35B-A3B` (量化 `Q5_K_M`) | 40 | **27 / 40 (67.5%)** | 26 (25 + 1) | 82,330 / 18,411 | \$0.0000 | **3,369.89 J** system-under-test (`124.81 J/adm`) |
-| **Arm 2b**: 云多头潜在注意力（MLA）稀疏 MoE（Fireworks） | `deepseek-v4p1-flash` | 40 | **17 / 40 (42.5%)** | 16 (15 + 1) | 63,446 / 64,215 | \$0.0930 | `not_available` (N) |
-| **Arm 5a**: 目的训练潜在形式 JEPA（`k = 1`） [B34] | `FormJEPA-v1` (`8.42M` 参数，贪婪) | 40 | **22 / 40 (55.0%)** | 22 (20 + 2) | Form S-expr | \$0.0000 | **58.65 mJ** core / **1.19 J** pkg RAPL/prop |
-| **Arm 5b**: 目的训练潜在形式 JEPA（`k = 16`） [B34] | `FormJEPA-v1` (`8.42M` 参数，潜在束搜索) | 40 | **27 / 40 (67.5%)** | 27 (25 + 2) | Form S-expr | \$0.0000 | **474.76 mJ** core / **6.74 J** pkg RAPL/prop |
-| **Arm 6**: 3‑Gear 级联（`t = 1` 冷 Gear-0 → `FormJEPA-v1` → `Opus 5.5`） [B34] | `DNULLMM1` + `FormJEPA-v1` + `Opus 5.5` | 13 G2 | **34 / 40 (85.0%)** | 33 | Form + 13 cloud | **\$0.8108** | `FormJEPA` RAPL + 13 cloud (N) |
-| **Arm 4**: Shape D 温 Gear-0（`t = 2` 重放） | `DNULLMM1` (34 已结晶) | **0** | **34 / 40 (85.0%)** | 33 | 0 / 0 | **\$0.0000** | **0.325 µs / 1.77 µJ** probe + `rce check` |
+| **Arm 0**：冷启动静态 Shape D Gear-0 | `DNULLMM1`（0 条记录）+ `a..e` | 0 | 0 / 40（0.0%） | 0 | 0 / 0 | \$0.0000 | < 0.001 J（37.7 µs） |
+| **Arm 1a**：云端自回归 + 自适应思考 | `claude-opus-5-5` | 40 | **34 / 40（85.0%）** | 33（30 + 3） | 114,855 / 32,159 | \$1.3783 | `not_available`（N） |
+| **Arm 1b**：云端自回归 + 自适应思考 | `claude-sonnet-5-5` | 40 | **32 / 40（80.0%）** | 32（30 + 2） | 114,855 / 30,764 | \$0.8060 | `not_available`（N） |
+| **Arm 2c**：云端推理 Transformer | `xai:grok-4.20-0309-reasoning` | 40 | **31 / 40（77.5%）** | 30（28 + 2） | 76,546 / 18,474 | \$0.2747 | `not_available`（N） |
+| **Arm 2a**：云端推理 MoE（Cerebras） | `cerebras:gpt-oss-120b` | 40 | **29 / 40（72.5%）** | 27（25 + 2） | 78,825 / 43,596 | \$0.1340 | `not_available`（N） |
+| **Arm 3**：本地混合 Gated-DeltaNet + 稀疏 MoE | `Qwen3.6-35B-A3B`（量化 `Q5_K_M`） | 40 | **27 / 40（67.5%）** | 26（25 + 1） | 82,330 / 18,411 | \$0.0000 | **3,369.89 J** 被测系统（`124.81 J/adm`） |
+| **Arm 2b**：云端多头潜在注意力（MLA）稀疏 MoE（Fireworks） | `deepseek-v4p1-flash` | 40 | **17 / 40（42.5%）** | 16（15 + 1） | 63,446 / 64,215 | \$0.0930 | `not_available`（N） |
+| **Arm 5a**：专门训练的潜在 Form JEPA（`k = 1`）[B34] | `FormJEPA-v1`（`8.42M` 参数，贪心解码） | 40 | **22 / 40（55.0%）** | 22（20 + 2） | Form S 表达式 | \$0.0000 | **58.65 mJ** 核心 / **1.19 J** 封装 RAPL/prop |
+| **Arm 5b**：专门训练的潜在 Form JEPA（`k = 16`）[B34] | `FormJEPA-v1`（`8.42M` 参数，潜在束搜索） | 40 | **27 / 40（67.5%）** | 27（25 + 2） | Form S 表达式 | \$0.0000 | **474.76 mJ** 核心 / **6.74 J** 封装 RAPL/prop |
+| **Arm 6**：三档级联 v1（`t = 1` 冷启动 Gear-0 → `FormJEPA-v1` → 单次 `Opus 5.5`）[B34] | `DNULLMM1` + `FormJEPA-v1` + `Opus 5.5` | 13 G2 | **34 / 40（85.0%）** | 33 | Form + 13 次云端调用 | **\$0.8108** | `FormJEPA` RAPL + 13 次云端调用（N） |
+| **Arm 4a**：温启动 Gear-0 v1（`t = 2` 回放）[B33] | `DNULLMM1`（34 个已结晶） | **0** | **34 / 40（85.0%）** | 33 | 0 / 0 | **\$0.0000** | **0.325 µs / 1.77 µJ** 探针 + `rce check` |
+| **Arm 7a**：有界检查器反馈 + 标准库头文件（`<= 5` 轮）[B35] | `claude-opus-5-5`（`H15-Iterative`） | 42 | **40 / 40（100.0%）** | 39（34 + 5） | 133,527 / 45,711 | \$1.8104 | `not_available`（N） |
+| **Arm 7b**：有界检查器反馈 + 标准库头文件（`<= 5` 轮）[B35] | `claude-sonnet-5-5`（`H15-Iterative`） | 43 | **40 / 40（100.0%）** | 39（35 + 4） | 137,385 / 46,668 | **\$1.1122** | `not_available`（N） |
+| **Arm 7c**：有界检查器反馈 + 标准库头文件（`<= 5` 轮）[B35] | `xai:grok-4.20-0309-reasoning`（`H15-Iterative`） | 50 | **39 / 40（97.5%）** | 37（30 + 7） | 269,930 / 28,903 | \$4.0555 | `not_available`（N） |
+| **Arm 4b**：温启动 Gear-0 v2（`t = 2` 完整回放）[B35] | `DNULLMM1`（40 个已结晶） | **0** | **40 / 40（100.0%）** | 39（34 + 5） | 0 / 0 | **\$0.0000** | **0.325 µs / 1.77 µJ** 探针 + `rce check` |
 
 - **假设 H2 得到支持（本地检查相对于模型的能量优势为 1,718 倍）：** 在 Apple M5 Max 上，逐表单检查成本 `C_check = 0.049038 J`（L3 `ri_energy_nj`，`7.32 ms`），而一次本地 `Qwen 3.6 35B-A3B` 候选生成成本 `E_model = 84.247 J`（`3,303.62 J` L2 GPU + `66.26 J` L3 `llama-server` PID，跨 40 个候选；`14,476.18 J` 粗略 L2 SoC，`derived_marginal_j` 被 Falsifier 6 在 `68.31%` 空闲漂移时作废），得到 **`C_check / E_model = 0.000582 <= 0.05`**（`measured_j = None`，`board_metered = false`）。
-- **形状 D（`DNULLMM1`）Gear-0 延迟、能量、无名不变性以及 `Zipf(0.85)` 摊销：** 对 40,000 次便携式操作系统接口（POSIX）`mmap` 查询针对冻结的 34 条记录存储（`sha256: d92a57b40de0b0ec...`，验证前后字节完全相同），平均探测延迟为 **`0.3246 µs`**（`324.6 ns`，`9,516.5` 条指令）和 **`1.771 µJ`**（`1,771.3 nJ` L3 `ri_energy_nj`）。按 `rce fmt nameless`（定理 T7）对槽位进行键控时，当本地变量进行 α 重命名时，可实现 **`7 / 9`（`77.8%`）** 的零调用命中率。在经验证的仅结晶化的 `Zipf(s = 0.85)` 递归流中，200 次到达的情况下，2‑Gear `DNULLMM1` 将模型调用从 `200` 减少至 **`48`（`4.17×` 缩减）**，对应 `Opus 5.5`（`$6.81` 降至 `$2.63`；`5.41×` / `37` 次调用伴随未命中去重），`Sonnet 5.5` 为 `56`（`3.57×`），`Grok 4.20` 为 `57`（`3.51×`），`GPT-OSS-120B` 为 `66`（`3.03×`），本地 `Qwen 3.6` 为 `94`（`2.13×` 调用，**`1.56×` 本地能量降低**：`16,457.9 J` 降至 `10,553.5 J`）。
+- **形状 D（`DNULLMM1`）Gear-0 延迟、能量、无名不变性以及 `Zipf(0.85)` 摊销：** 对 40,000 次便携式操作系统接口（POSIX）`mmap` 查询针对冻结的 34 条记录存储（`sha256: d92a57b40de0b0ec...`，验证前后字节完全相同），平均探测延迟为 **`0.3246 µs`**（`324.6 ns`，`9,516.5` 条指令）和 **`1.771 µJ`**（`1,771.3 nJ` L3 `ri_energy_nj`）。按 `rce fmt nameless`（定理 T7）对槽位进行键控时，当本地变量进行 α 重命名时，可实现 **`7 / 9`（`77.8%`）** 的零调用命中率。在经验证的仅结晶化的 `Zipf(s = 0.85)` 递归流中，200 次到达的情况下，2-Gear `DNULLMM1` 将模型调用从 `200` 减少至 **`48`（`4.17×` 缩减）**，对应 `Opus 5.5`（`$6.81` 降至 `$2.63`；`5.41×` / `37` 次调用伴随未命中去重），`Sonnet 5.5` 为 `56`（`3.57×`），`Grok 4.20` 为 `57`（`3.51×`），`GPT-OSS-120B` 为 `66`（`3.03×`），本地 `Qwen 3.6` 为 `94`（`2.13×` 调用，**`1.56×` 本地能量降低**：`16,457.9 J` 降至 `10,553.5 J`）。
 - **关于 H15 的范围披露：** 40 条历史原始记录中有两条早于 `W-MUT-1` 空洞示例规则（`spec/examples/57_float_vectors.rce@b2b932da` 和 `programs/multi/washer.rce@2cc82de7`），占接近 `34/40` 上限的一部分。扩散代码模型、进化表单搜索以及硬件墙表计 `measured_j` 仍保持开放。
 
 <div id="form-jepa-and-rung-f-result" class="anchor-alias" aria-hidden="true"></div>
 
-**`FormJEPA-v1` 潜在 Form 修复提议器、3 级级联与 151 任务 `rce repair` 阶梯 `f` 晋级审计，实测 [B34]。** 预注册于数据集生成、权重初始化及阶梯 `f` 执行之前（`rce-jepa-form-jepa-v1-2026-11-22`，`sha256: 22682e6e936ec120...`；`rce-repair-rung-f-wave3-eval-2026-11-22`，`sha256: 04aff4b2b44cdbea...`），对应 `openIE-dev/rce` 提交 `1762fb4b`（Linux x86_64 二进制文件 `sha256: 5ef9931ff23a310f...`）。`FormJEPA-v1`（可训练参数 `8,424,073` 个，含 EMA 目标缓冲区共 `13,917,577` 个；检查点 `sha256: cbfbf2274175c737...`）从随机初始化（`seed = 20261122`）出发，在跨越 `1,106` 个互不相交有效 Form 形状的 `6,329` 个经校验器验证的缺陷对上完成训练（这些形状从 `1,387` 个唯一 Form 形状中提取，经过四层路径、slug、声明名称及 `458` 摘要 `rce fmt nameless` 排除处理，与 151 个阶梯任务或 40 个残差任务之间重叠数为 `0`）。该模型将一个 6 层 Pre-LN Transformer 上下文编码器（`d = 256`，作用于商归一化 Form AST S 表达式词元）与一个 EMA 目标编码器（`τ = 0.996`）相结合，配备一个 3 层残差 MLP 潜在预测器，在 Smooth-L<sub>1</sub> 损失加 VICReg 方差-协方差反坍缩正则化下训练（上下文有效秩从第 0 轮的 `32.90` 提升至训练后的 **`85.24`**，坐标标准差从 `0.1038` 提升至 `0.3830`，正样本对潜在 L<sub>2</sub> 能量从 `149.25` 降至 `10.57`，而随机样本对为 `13.02`），并配备一个 2 层潜在条件化类型化编辑解码器，以 `||z_hat_y - E_ema(y_cand)||_2^2` 进行重排序。
+**`FormJEPA-v1` 潜在 Form 修复提议器、三档级联与 151 项任务 `rce repair` 第 `f` 级晋升审计，实测 [B34]。** 预先注册于数据集生成、权重初始化和第 `f` 级执行之前（`rce-jepa-form-jepa-v1-2026-11-22`，`sha256: 22682e6e936ec120...`；`rce-repair-rung-f-wave3-eval-2026-11-22`，`sha256: 04aff4b2b44cdbea...`），针对 `openIE-dev/rce` 提交 `1762fb4b`（Linux x86_64 二进制 `sha256: 5ef9931ff23a310f...`）。`FormJEPA-v1`（可训练参数 `8,424,073` 个，含 EMA 目标缓冲区为 `13,917,577` 个；检查点 `sha256: cbfbf2274175c737...`）以随机初始化（`seed = 20261122`）开始训练，所用数据为 `6,329` 个经检查器验证的缺陷对，覆盖 `1,106` 个互不重叠的有效 Form 形状。这些形状取自 `1,387` 个唯一 Form 形状，经四层路径、slug、声明名称及 `458` 个摘要的 `rce fmt nameless` 排除后得到，与 151 项阶梯任务或 40 项残余任务的重叠数为 `0`。该模型将一个 6 层 Pre-LN Transformer 上下文编码器（`d = 256`，作用于商归一化的 Form AST S 表达式词元）与一个 EMA 目标编码器（`τ = 0.996`）配对，并使用 3 层残差 MLP 潜在预测器，训练时采用 Smooth-L<sub>1</sub> 损失以及 VICReg 方差-协方差防坍缩正则化。训练后，上下文有效秩由第 0 轮的 `32.90` 提升至 **`85.24`**，坐标标准差由 `0.1038` 增至 `0.3830`，正例对的潜在 L<sub>2</sub> 能量由 `149.25` 降至 `10.57`，随机对则为 `13.02`。此外，模型包含一个 2 层、以潜在变量为条件的类型化编辑解码器，其候选按 `||z_hat_y - E_ema(y_cand)||_2^2` 重新排序。
 
-- **不相交合成、151 阶梯、以及 40 残差任务的准确率随模型规模的变化:** 在 `200` 个未见 `shape_hash` 的持出不相交合成 Form 缺陷上，`FormJEPA-v1` 在 `k = 1` 时取得 **`156/200`（`78.0%`）**，在 `k = 16` 时取得 **`177/200`（`88.5%`）**。在 151 任务阶梯（普通臂）上，独立的 `FormJEPA-v1` 在 `k = 1` 时取得 `27/151`（`k = 1`），在 `k = 16` 时取得 `57/151`（`k = 16`），将组合确定性阶梯（`111/151`）加上 `FormJEPA-v1 (k = 16)` 提升至 **`138/151`（`91.4%`）**，且无需前沿调用。 在 40 项开放残差任务（H15）上，`FormJEPA-v1` 在 `k = 1` 时取得 **`22/40`（`55.0%`）**，在 `k = 16` 时取得 **`27/40`（`67.5%`）**（`25` 项已恢复 + `2` 项行为相等 = `27/27` 行为相同，平均每任务 `5.33` 次 `rce check` 调用），匹配本地 `Qwen 3.6 35B-A3B`（`27/40`）在结构化语法、长度方法和能力修复（`24/25` `W-SYN-1`，`2/5` `W-LEN-1`，`1/1` `W-WORLD-1`）上的表现，同时关闭 `0/9` 多模块密码学标准库迁移（`W-NAME-1` / `W-TY-1` 跨 `hpke`、`mls`、`pq`、`pqxdh`、`energy`），复合任务 `W-CAP-3,W-WORLD-1`，以及在 Gear-2 前沿提议仍然必需的空例合成任务。
+- **离散合成、151 阶梯和 40 残差任务的准确率随模型规模变化:** 在 `200` 个未见 `shape_hash` 的离散合成 Form 缺陷上，`FormJEPA-v1` 在 `k = 1` 时取得 **`156/200` (`78.0%`)**，在 `k = 16` 时取得 **`177/200` (`88.5%`)**。在 151 任务阶梯（普通臂）上，单独的 `FormJEPA-v1` 在 `k = 1` 时取得 `27/151`，在 `k = 16` 时取得 `57/151`，将组合确定性阶梯（`111/151`）加上 `FormJEPA-v1 (k = 16)` 提升至 **`138/151` (`91.4%`)**，且未调用任何前沿函数。在 40 项开放残差任务（H15）上，`FormJEPA-v1` 在 `k = 1` 时取得 **`22/40` (`55.0%`)**，在 `k = 16` 时取得 **`27/40` (`67.5%`)**（`25` 项恢复 + `2` 项行为相等 = `27/27` 行为相同，平均每任务 `5.33` 次 `rce check` 调用），匹配本地 `Qwen 3.6 35B-A3B`（`27/40`）在结构化语法、长度方法和能力修复（`24/25` `W-SYN-1`，`2/5` `W-LEN-1`，`1/1` `W-WORLD-1`）上的表现，同时关闭 `0/9` 多模块密码学标准库迁移（`W-NAME-1` / `W-TY-1` 涉及 `hpke`、`mls`、`pq`、`pqxdh`、`energy`），复合任务 `W-CAP-3,W-WORLD-1`，以及在 Gear-2 前沿提议仍然必需的空示例合成任务。
 
-- **推理 `reported_j`、3‑Gear 级联以及诚实的 H5/H11 诊断:** 在 AMD Ryzen AI Max+ 395 Linux `powercap` RAPL 计数器上（`measured_j = None`，`board_metered = false`，`derived_marginal_pkg_reported_j = None`，在 Falsifier 6 下 `33.38%` 共租包漂移），每个提议的 CPU 推理成本在 `k = 1` 时为 **`58.65 mJ`** RAPL 核心（`1.194 J` 粗包装，`10.15 ms`），在 `k = 16` 时为 **`474.76 mJ`** RAPL 核心（`6.736 J` 粗包装，`67.51 ms`）：：相较于本地 35B 候选者（`84.25 J`），在 `k = 1` 时低 `70.6×` 到 `1,436×`，在 `k = 16` 时低 `12.5×` 到 `177.5×`。将 `FormJEPA-v1 (k = 16)` 作为 Gear 1 插入在 `DNULLMM1` Gear 0 与 `Claude Opus 5.5` Gear 2 之间，可保持 `34/40` 单次闭合，同时将 `Opus 5.5` 调用次数从 `40` 降至 `13`（`$1.38` 降至 `$0.81`），在 200 次到达的 `Zipf(0.85)` 流中将 Gear-2 前沿调用从 `200`（无状态）和 `48`（2‑Gear）削减至 **`23` 次（`8.70×` 减少；`152` Gear-0 命中，`25` Gear-1 接纳，`7` Gear-2 接纳）**；使用本地 `Qwen 3.6` 作为 Gear 2 时，`Zipf(0.85)` 35B 调用降至 `49`（`4.08×` 减少），接纳的到达数从 `141/200` 上升至 `154/200`。仅未校准的负潜在 L<sub>2</sub> 距离即可在 `925` 条束候选上实现 AUROC **`0.618`**（H5 结果不确定：高于 `0.60` 否定下限，低于 `0.85` 支持阈值），并随累计编辑距离 `0..4` 上升（`0.00, 0.99, 2.26, 3.27, 3.89`，随后在 `d = 5` 时为 `3.72`；`18/50 = 36.0% < 80%` 的严格 5 步单调性在 H11 上），表明此处的修复准确率来源于将类型化编辑解码器条件化于 `(z_x, z_hat_y)`，而非仅平滑的未校准潜在能量。
+- **推理 `reported_j`、3-Gear 级联以及诚实的 H5/H11 诊断:** 在 AMD Ryzen AI Max+ 395 Linux `powercap` RAPL 计数器（`measured_j = None`，`board_metered = false`，`derived_marginal_pkg_reported_j = None`，在 Falsifier 6 下 `33.38%` 共租包漂移）中，每个提议的 CPU 推理成本为 **`58.65 mJ`** RAPL 核心（`1.194 J` 整体封装，`10.15 ms`）在 `k = 1` 时，以及 **`474.76 mJ`** RAPL 核心（`6.736 J` 整体封装，`67.51 ms`）在 `k = 16` 时，分别比本地 35B 候选模型（`84.25 J`）低 `70.6×` 到 `1,436×`（`k = 1` 时 `12.5×` 到 `177.5×`，`k = 16` 时）。将 `FormJEPA-v1 (k = 16)` 作为 Gear 1 插入 `DNULLMM1` Gear 0 与 `Claude Opus 5.5` Gear 2 之间，可保持 `34/40` 单通路闭合，同时将 `Opus 5.5` 的调用次数从 `40` 降至 `13`（`$1.38` 到 `$0.81`），在 `200` 条 `Zipf(0.85)` 流中将 Gear-2 前沿调用从 `200`（无状态）和 `48`（2-Gear）削减至 **`23` 次（`8.70×` 缩减；`152` Gear-0 命中，`25` Gear-1 接纳，`7` Gear-2 接纳）**；使用本地 `Qwen 3.6` 作为 Gear 2 时，`Zipf(0.85)` 35B 调用降至 `49`（`4.08×` 缩减），接纳的到达次数从 `141/200` 增至 `154/200`。未校准的负 Latent L<sub>2</sub> 距离单独即可在 `925` 条束候选上获得 AUROC **`0.618`**（H5 结果不确定：高于 `0.60` 否定下限，低于 `0.85` 支持上限），并随累计编辑距离 `0..4` 上升（`0.00, 0.99, 2.26, 3.27, 3.89`，随后在 `d = 5` 为 `3.72`；`18/50 = 36.0% < 80%` 严格 5 步单调性在 H11 上），表明此处的修复准确率来源于将类型化编辑解码器条件化于 `(z_x, z_hat_y)`，而非仅靠平滑的未校准潜在能量。
 
-- **151 任务 `rce repair` 阶梯 `f` 提升判决:** 在 `observe` 模式下运行 `rce repair`（`bound 2000`，给定每个任务的已知良好原始文件和外部提议文件），遍历全部 151 阶梯任务，并将 `rce repair` 标准与 2026 年 11 月 3 日注册的固定版本（`sha256: abf7f131f240e3f9...`）对比，记录 `116/151` 项通过 `a..e` 阶梯的精确闭合，`35` 项保持开放（其中 `25` 项不可解析的 `W-SYN-1` 文件因规则 RF-2 被跳过，`10` 项开放解析任务判为缺失覆盖为 `0`）。在组合外部提议（`FormJEPA-v1` + 已记录的 H15 修复，`91` 项提议被评估）下，`f` 阶梯观察到 **`3` 项接纳任务**（`hpke`、`mls_key_schedule`、`energy`），**`3/3`（`100.0%`）** 通过 `W-MUT-1` 突变门，且 **`0` 项与已知良好原始冲突**（`3/3` 已恢复）；由于 `3 / 119 = 2.5% > 2.0%`，`rce repair` 标准返回 **`holds: false`**（`exit = 1`），保持 `f` 阶梯在 `observe` 模式。
+- **151 任务 `rce repair` 阶梯 `f` 提升判决:** 在 `observe` 模式下运行 `rce repair`（`bound 2000`，针对每个任务的已知良好原始文件和外部提议文件）遍历全部 151 阶梯任务，并依据 2026 年 11 月 3 日注册的 `rce repair` 标准（`sha256: abf7f131f240e3f9...`）评估 `rce repair criterion`，记录 `116/151` 项精确闭合（由阶梯 `a..e` 完成）以及 `35` 项未完成任务（`25` 项不可解析的 `W-SYN-1` 文件因规则 RF-2 被跳过，`10` 项开放解析任务判定为缺失覆盖为 `0`）。在合并外部提议（`FormJEPA-v1` + 已记录的 H15 修复，共计 `91` 项提议）下，阶梯 `f` 观察到 **`3` 项接纳任务**（`hpke`、`mls_key_schedule`、`energy`），**`3/3`（`100.0%`）** 通过 `W-MUT-1` 突变门，并且 **`0`** 与已知良好原始相冲突（`3/3` 已恢复）；由于 `3 / 119 = 2.5% > 2.0%`，`rce repair criterion` 返回 **`holds: false`**（`exit = 1`），保持阶梯 `f` 处于 `observe` 模式。
+
+![左：通过 Gear 0 DNULLMM1（40/40 预热重放）、Gear 1 FormJEPA-v1 加 FormEBM-v2、以及 Gear 2 H15-Iterative 在确定性提交门后产生的三个齿轮残差级联，从精确梯级 `a` 到 `e`（共 200 次 Zipf(0.85) 到达）。右：测量得到的 FormEBM-v2 H5 ROC 曲线（AUROC 0.8922 对比 Siamese L2 0.7208）以及 H11 5 步编辑距离能量图（严格单调性 93.0%，Spearman rho 0.9931）](/figures/rce-jepa/three-gear-and-ebm.svg)
+
+*图 10. 测量的三齿轮残差级联及 `FormEBM-v2` 潜在能量诊断，位于 `openIE-dev/rce` 提交 `1762fb4b` [B35]。左：确定性梯级 `a..e`（`111/151`），Gear 0 `DNULLMM1`（`40/40` 预热零调用重放），Gear 1 `FormJEPA-v1` + `FormEBM-v2`，以及 Gear 2 `H15-Iterative` 由 `rce check` + `W-MUT-1` + `no_spec_deletion` 门控（`200/200` 在 `Zipf(0.85)` 上被接受，出现次数比 Gear-2 少 `16.67×`）。右：未见形状 H5 ROC 曲线（`AUROC = 0.8922`）和未见链路 H11 5 步累计缺陷能量曲线（严格单调性 `93.0%`，IQR 阴影）。交互式浏览器：[/living/rce-jepa/](/living/rce-jepa/).*
+
+<div id="form-ebm-and-h15-iterative-result" class="anchor-alias" aria-hidden="true"></div>
+
+**对比式多步间隔能量评分器（FormEBM-v2，H5 与 H11）与 40/40 有界检查器反馈残差闭合（H15-Iterative + Gear-0 v2），测量结果 [B35]。** 两项针对性评估均在语料生成、权重初始化和 API 执行之前预先注册（rce-jepa-form-ebm-v2-2026-11-23，sha256: 128f17e69361ea89...；rce-jepa-h15-iterative-2026-11-23，sha256: a7774d3bd03ae450...），并基于 openIE-dev/rce 提交 1762fb4b（Linux x86_64 二进制文件 sha256: 331464496009d98a...）进行。两项评估分别检验：(A) 在完全相同且严格不相交的 1,387 个 Form 划分上，以对比式加成对编辑深度间隔能量头取代未经校准的坐标距离，能否闭合 H5 与 H11；(B) 提供公开的 stdlib/lib 模块头文件以及有界的确定性检查器诊断信息（max_turns = 5，完全不访问 original），能否闭合单次 H15 遗留的六个残余任务。
+
+- **`FormEBM-v2` 架构、分词器修复，以及未见形状的 H5 / H11 结果（`137` 个未见测试 Form 形状，`0` 重叠）：** 两个结构性原因解释了 `FormJEPA-v1` 在 H5 上仅达到 `0.618` AUROC、在 H11 上仅达到 `36.0%` 严格 5 步单调性的原因。其一，其单文件 S 表达式分词器把活跃但未使用的绑定（`let x`，被 `W-UNUSED-1` 拒绝）与下划线前缀绑定（`let _x`，被接受）映射到同一个 `<ID:k>` 槽位，并且每当出现未绑定标识符时都会移动后续 `<ID:j>` 的索引。其二，其坐标式 Smooth-L<sub>1</sub> 损失不包含对比有效性或编辑深度间隔。`FormEBM-v2` 拥有 `5,851,649` 个可训练参数，检查点 `sha256: 2204a0b9cbd0d96c...`，在 AMD Ryzen AI Max+ 395 / Radeon 8060S APU 上训练耗时 `857.2 s`，核心 RAPL 为 `5,375.0 J`，APU 封装 RAPL 为 `40,602.4 J`。它引入了以参考为锚点的 `PairFormTokenizer`（`504` 个活跃令牌，区分下划线前缀绑定、新引入的标识符槽位，以及模 32 的整数类别，并使用纯句法的差异标签且不调用检查器）、一个 5 层共享孪生 Transformer、一个 1 层交叉注意力 RMS 差分模块，以及一个 softplus 能量头。该能量头仅在 `1,106` 个训练 Form 上训练，使用 `5,955` 个有效性间隔三元组（`m = 1.0`）和 `600` 条 5 步累积破坏链（`γ = 0.50(j − i)`）。VICReg 有效秩在 `z_ref` 上由 `26.48` 扩展到 `55.70`，在 `z_cand` 上由 `46.44` 扩展到 `74.72`。在 `137` 个未见的留出测试 Form 形状上：
+  - **H5（`N = 200` 个未见测试束，`3,064` 个候选）：** 标量能量达到 **AUROC `0.8922 >= 0.85`**（对比 `FormJEPA-v1` 的 `0.6180` 和未校准孪生 L<sub>2</sub> 的 `0.7208`）。在不对束内条目调用 `rce check` 的前提下（`k = 1`），前一位有效选择率从未重排序时的 `22.5%`（`45/200`）和孪生 L<sub>2</sub> 的 `25.0%`（`50/200`）提升至可解束上的 **`84.05%`**（`137/163`；全部 `200` 个束的原始率为 `68.50%`）。同时，首个有效 Form 所需的平均 `rce check` 调用次数降低了 **`2.39×`**（每束 `3.577` 次降至 `1.497` 次）。十线程 CPU 打分每个候选的核心 RAPL 成本为 **`47.09 mJ`**（`6.30 ms`）；每个 16 项束的核心能耗为 `752.03 mJ`，封装总能耗为 `11.88 J`。在 Falsifier 6 下，由于 `13.7%` 的空闲漂移，`derived_marginal_pkg_reported_j = None`。
+  - **H11（`N = 100` 条未见的 5 步累积缺陷链）：** 严格 5 步单调性（`E_0 < E_1 < E_2 < E_3 < E_4 < E_5`）从 `FormJEPA-v1` 的 `36.0%` 和孪生 L<sub>2</sub> 的 `18.0%` 提升至 **`93.0%`（`93/100 >= 80%`）**。平均 Spearman 秩相关系数为 **`ρ = 0.9931`**（中位数 `1.0000`），在 `d = 0..5` 上的平均能量为 `[0.0007, 2.36, 5.16, 7.99, 12.21, 17.25]`，且没有 `d = 5` 的回绕。
+  - **坦率的领域边界：** 在无约束的 5 步随机游走（`N = 50`）上，允许对已损坏的行进行两次覆写而不增加新的 AST 缺陷，平均能量仍从 `0.0007` 攀升至 `7.07`（平均 `ρ = 0.8513`，中位数 `0.9429`），但逐步严格递增的比例仅为 `38.0%`（非递减比例为 `46.0%`）。对 OOD 的 `40` 个任务 git 历史残差的零样本迁移，使任务内 `k = 1` 类型化编辑的通过数从 `FormJEPA-v1` 的 `22/40` 提升至 `25/40`（束容量为 `30/40`）。然而，跨任务合并 AUROC 反转为 `0.2630`（在 `332` 个多提议者候选上为 `0.2585`），原因是单行编辑深度训练会给大型有效多行标准库迁移分配比 1 个令牌的句法编辑更高的原始能量。
+- **`H15-Iterative` 有界检查器反馈 + 公开 `stdlib/lib` 头文件（`40 / 40` 已关闭，`0` 处矛盾，`40 / 40` Gear-0 重放）：** 为导入的 `stdlib/lib` 模块（`crypto.cat`、`crypto.unhex`、`crypto.tohex`、`core.bytes`、`pq`）提供公开声明签名（`pub const`、`pub struct`、`pub kind`、`pub fn`，函数体已剥离，严格排除任务文件本身），并在最多 `max_turns = 5` 的范围内提供逐字的确定性 `rce check` 与 `W-MUT-1` 诊断（且不访问 `original`），可将准入率从单次尝试的 `34/40` 提升至 **`40/40`（`100.0%`）**。这一结果在 **`Claude Opus 5.5`** 上成立（第 1 轮 `38` 个，第 2 轮 `2` 个；共 `42` 次调用，`1.8104 美元`；`34` 个精确恢复加 `5` 个行为等价，即 `39` 个行为一致，**`0` 处矛盾**），在 **`Claude Sonnet 5.5`** 上亦然（第 1 轮 `38` 个，第 2 轮 `1` 个，第 3 轮 `1` 个；共 `43` 次调用，**`1.1122 美元`**；`35` 个精确恢复加 `4` 个行为等价，**`0` 处矛盾**）。在 **xAI Grok 4.20 Reasoning** 上为 **`39/40`（`97.5%`）**（第 1 轮 `35` 个，第 2 轮 `2` 个，第 3 轮 `2` 个；共 `50` 次调用，`4.0555 美元`，**`0` 处矛盾**）。此前未解决的四个密码学迁移（`stdlib/lib/hpke.rce`、`stdlib/lib/mls.rce`、`stdlib/lib/pq.rce`、`programs/ecosystem/pqxdh.rce`）全部实现了**精确哈希 `restored`**（在 `Opus 5.5` 和 `Sonnet 5.5` 上于第 1 轮完成，在 `Grok 4.20` 上于第 1 至 3 轮完成）。两个历史上存在 `W-MUT-1` 之前空洞示例问题的任务（`57_float_vectors.rce`、`washer.rce`）均在 `rce equiv fuel 2000` 下以 **`behaviour-equal`** 关闭（仅 `washer.rce` 在 `Grok 4.20` 上经过 5 轮后仍未关闭）。将全部 40 个已验证修复固化为 `DNULLMM1` Gear-0 v2（`sha256: 80cf265038bcd5eb...`）后，重放可达 **`40/40`（`100.0%`）**，且**模型调用为 `0` 次**。在更新后的三档 `Zipf(0.85)` 请求流（`M = 200` 个到达）中，系统准入了 **`200/200`（`100.0%`）** 的到达请求，其中包括 `163` 次 Gear-0 命中、`25` 次本地 Gear-1 准入，以及 `12` 个 Gear-2 片段，共消耗 `14` 轮 API 调用，费用为 `0.9822 美元`。与无状态的 `200` 次调用相比，片段数减少了 **`16.67×`**。
 
 <div id="falsifiers" class="anchor-alias" aria-hidden="true"></div>
 
-### 针对前提本身的证伪条件 RJ-F1 至 RJ-F6
+### 对前提本身的证伪者 RJ-F1 至 RJ-F6
 
 每个伪造者都是一种会削弱前提部分的观测；其中若干以上述假设的形式给出（RJ-F3 对 H3，RJ-F4 对 H11，RJ-F6 对 H3 和 H10）。
 
-| ID | 观测 | 削弱对象 |
+| 编号 | 观察结果 | 所驳斥的主张 |
 | --- | --- | --- |
-| RJ-F1 | 在任意五种目标语言上，当构造列表耗尽后，提升覆盖率在 80% 以下出现平台期 | 所有代码都可以从 RCE 发出，以及随之而来的表单上自主编码的范围 |
-| RJ-F2 | 为 7 个参考应用编写 σ(I) 所需的人时比手工编写其表单更多 | 闭包消除了规范成本，而不是转移了规范成本 |
-| RJ-F3 | H3 失效而 token arm 在同一门仍通过 | 表单空间中的潜在提议；门仍然存在，JEPA 部分未通过 |
-| RJ-F4 | H11 失效且搜索在束宽预算内未能达到接受的表单 | 表单空间中的能量引导规划（在手工定义的编辑分数上观察到；对学习的能量头仍待验证） |
-| RJ-F5 | 决策头的校准始终不如形状哈希的频率表 | 决策模型部分；相较于提升的处理器统计没有任何增益 |
-| RJ-F6 | 一个使用执行轨迹训练的 token-space 模型，属于 CWM 类，在相同能量和与接受规则相同的门下，关闭了 H14 第三次运行的普通臂的 40 项任务残差 | 表单商在训练/提议期间为提议者添加了额外信息的主张（注：对于 Gear-0 重用，`rce fmt nameless` 已在 0 次调用下恢复了 `7/9` 的 alpha 重命名；针对 H3/H10 的训练提议者等价性仍待训练的 JEPA 臂验证） |
+| RJ-F1 | 在构造清单耗尽后，五种目标语言中任一语言的 lift 覆盖率都停滞在 80% 以下 | 所有代码都可由 RCE 生成的主张，以及基于 Form 进行自主编码的适用范围 |
+| RJ-F2 | 为 7 个参考应用编写 σ(I) 所需的人时成本，高于手工编写其 Form 所需的人时成本 | 闭包消除而非转移规约成本的主张 |
+| RJ-F3 | 在同一门限下，H3 失败而 token 分支通过 | Form 空间上的潜在提议；门限本身仍然成立，JEPA 的一半并不成立 |
+| RJ-F4 | H11 失败，且搜索未能在束预算内到达已接受的 Form | Form 空间中的能量引导规划（在未见过的累积 1..5 缺陷链上未被触发：`FormEBM-v2` 达到 `93.0%` 的严格单调性，并将可解检查调用减少 `2.39×`；多行 OOD 能量校准仍有待解决） |
+| RJ-F5 | 决策头的校准从未超过基于形状哈希的频率表 | 决策模型一支的主张；相对于已提升处理器的统计信息，它并无增益 |
+| RJ-F6 | 以执行轨迹训练的 token 空间模型（CWM 一类）在相同能量下，并以同一门限作为接受规则，消除了 H14 第 3 轮普通分支遗留的 40 个任务 | Form 商空间在训练或提议阶段对提议者有所助益的主张（注：对于 Gear-0 复用，`rce fmt nameless` 已可在 0 次调用下恢复 `7/9` 个 alpha 重命名；与 H3/H10 的训练提议者对等性，仍有待经训练的 JEPA 分支验证） |
 
 如果 H4 失效（每个接受的程序没有焦耳优势）或 H6 失效（表单无法表达参考应用），则整体论点被否定。任一单独失效即足以否定。
 
@@ -1188,7 +1251,9 @@ RCE 是一种封闭的程序形式，可能还有其他形式；上述问题适�
 
 ## 状态
 
-研究课题开放，于 2026 年 11 月 22 日依据 `openIE-dev/rce` 提交 `1762fb4b`（2026 年 11 月 20 日；`64` 个模块中共 `5,537` 个 Lean 4 定理常量，定理 T1 至 T63，`2,221/2,236` 项合规测试通过，`0` 项失败，`837` 项 Rust 检查器单元测试）更新。第 0 阶段确定性基准已完成测量：H1 在手写程序集上得到支持，185 个程序的中位 rho 为 `9.34`（W1 版本 1 在 173 个程序上为 `9.31`）；H8 在六个目标上跨 `10,500` 个种子事件流得到支持，`0` 项不匹配（`rce/bench/determinism/`）；H7 的模糊测试分支在 `1,275` 个检查器接受的变异体中发现 `0` 项不变量违反（`rce/bench/adversarial/`）；H14 在 `rce repair` 的三次注册运行 [B30, B31, B32] 中得到支持，在第 3 次运行的普通分支中以零模型调用关闭了 `151` 项任务中的 `111` 项（`73.5%`），并留下 `40` 项开放的 git 历史残余任务。2026 年 11 月 22 日 [B33, B34]，Apple M5 Max 双通道 `reported_j` 收据（L2 `IOReport` + L3 `ri_energy_nj`，`measured_j = None`，`board_metered = false`）确立了 **H2 得到支持**（`C_check / E_model = 0.04904 J / 84.25 J = 0.000582 <= 0.05`，成本降低 `1,718×`；完整 62-Form 检查+运行+输出套件 `15.44 J`），在 `k = 1` 条件下对六种现成云端及本地提议器进行了基准测试（**H15**：`17/40` 至 `34/40`），并完成了 **Shape D（`DNULLMM1`）Gear-0 结晶**（`34/40`，`0` 次调用，每次查找 `0.325 µs` / `1.77 µJ`，`7/9` 次 alpha 重命名命中），训练并评估了首个专用潜在 Form JEPA 修复提议器 **`FormJEPA-v1`**（在 `6,329` 个不相交 Form 缺陷对上具有 `8.42M` 个可训练参数：在保留合成缺陷上达到 `177/200`，在 H15 上 `k = 1` 时为 `22/40`，`k = 16` 时为 `27/40`，RAPL 核心 `reported_j` 为 `58.65 mJ` / `474.76 mJ`，组合梯级关闭 `138/151`，以及在三档级联中实现 `8.70×` 的 `Zipf(0.85)` 前沿调用削减），并审计了 151 任务 **`rce repair`** 梯级 `f` 晋升情况（`3/119 = 2.5% > 2.0%`，`3/3` 通过 `W-MUT-1`，`0` 项矛盾，确认梯级 `f` 仍处于 `observe` 模式）。仍待解决的问题包括：完整意图到 Form 的合成（H3）、端到端焦耳奇偶校验（H4）、校准多项能量排序（H5、H11）、参考应用编码（H6）、成本表预测（H9）、商空间样本效率（H10）、门收据决策头校准（H12）、离散与连续长时域规划（H13）、扩散/进化 H15 分支，以及外部硬件电源轨功率计量（`measured_j`）。
+研究课题公开，更新于 2026 年 11 月 23 日，对应 `openIE-dev/rce` 提交 `1762fb4b`（2026 年 11 月 20 日；`5,537` 个 Lean 4 定理常量，分布于 `64` 个模块，定理 T1 至 T63，`2,221/2,236` 项一致性测试通过且 `0` 项失败，`837` 项 Rust 检查器单元测试）。交互式观测台见 [交互式观测台](/living/rce-jepa/)。阶段 0 的确定性下界已测得：H1 在手写总体上获得支持，185 个程序上的中位 rho 为 `9.34`（W1 第 1 版在 173 个程序上为 `9.31`）；H8 在六个目标上的 `10,500` 个带种子的事件流中获得支持，`0` 次不匹配（`rce/bench/determinism/`）；H7 的模糊测试分支在 `1,275` 个通过检查器接受的变异体中发现 `0` 次不变式违反（`rce/bench/adversarial/`）；H14 在 `rce repair` 的三次注册运行 [B30, B31, B32] 中获得支持，其中第 3 次运行的朴素（plain）分支在零次模型调用下关闭了 `111` 项任务（共 `151` 项，`73.5%`），并留下 `40` 项开放的 git 历史残余任务。2026 年 11 月 22 日至 23 日 [B33, B34, B35]，Apple M5 Max 与 AMD Ryzen AI Max+ 395 / Radeon 8060S 上的 `reported_j` 凭证（`measured_j = None`，`board_metered = false`）确立了 **H2 获得支持**（`C_check / E_model = 0.04904 J / 84.25 J = 0.000582 <= 0.05`，便宜 `1,718×`；完整的 62 个 Form 检查、运行与输出套件耗能 `15.44 J`）。团队还训练并评估了 **`FormJEPA-v1`**（`8.42M` 参数：在 H15 上，`177/200` 个未见合成缺陷被识别，`k = 1` 时为 `22/40`，`k = 16` 时为 `27/40`，RAPL 核心 `reported_j` 为 `58.65-474.76 mJ`），以及对比式 **`FormEBM-v2`**（`5.85M` 参数，在完全相同且互不重叠的 `1,387` 个 Form 划分上：未见测试形状上 **H5 AUROC `0.8922 >= 0.85`**，可解题 top-1 准确率为 `84.05%`，检查器调用次数减少 `2.39×`；**H11 `93.0% >= 80%`**，即严格 5 步累积缺陷单调性，Spearman 为 `0.9931`；每个候选的 RAPL 核心 `reported_j` 为 `47.09 mJ`）。在 **`H15-Iterative`** 中，通过有界的 `<= 5` 轮检查器反馈加上公开的 `stdlib/lib` 签名头，团队在 `Claude Opus 5.5`（1.81 美元）与 `Claude Sonnet 5.5`（1.11 美元）上关闭了其中 **`40/40`（`100.0%`）** 项开放的残余任务，且 **`0` 次矛盾**（在 `xAI Grok 4.20 Reasoning` 上为 `39/40`）；所有 **`40/40`** 项均被固化为 **`DNULLMM1` Gear-0 v2**（`0` 次模型调用，`0.325 µs` / `1.77 µJ` 探测开销；在 `200/200` 次 `Zipf(0.85)` 三级 Gear 流准入中，Gear-2 episode 减少 `16.67×`）。团队还审计了 151 项任务的 **`rce repair` rung `f`** 晋升情况（`3/119 = 2.5% > 2.0%`，`3/3` 通过 `W-MUT-1`，`0` 次矛盾），确认 rung `f` 仍处于观察（observe）模式。
+
+仍未解决的问题包括：完整的意图到 Form 合成（H3）、端到端焦耳对等（H4）、跨异构 git 历史重写的 OOD 多行能量校准（汇总 AUROC 为 `0.2630`）、参考应用编码（H6）、成本表预测（H9）、商空间样本效率（H10）、门控凭证决策头校准（H12）、离散与连续长视野规划的对比（H13）、扩散式与进化式 H15 分支，以及外部硬件电源轨功率计量（`measured_j`）。
 
 <div id="references" class="anchor-alias" aria-hidden="true"></div>
 

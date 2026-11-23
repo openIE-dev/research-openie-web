@@ -186,7 +186,7 @@ elif id_ == "rce-jepa":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research paper, open topic, not a journal final.\n"
-        "H2, H15 (40 residual tasks across multi-vendor cloud/local proposers and Shape D Gear-0), FormJEPA-v1 (8.42M trainable parameters on 1,387 disjoint Forms), and the 151-task rce repair rung-f criterion audit report Apple M5 Max and Linux x86-64 RAPL on-chip reported_j counters. No hardware rail or wall meter was attached (measured_j = None).\n"
+        "H2, H15 (single-shot and bounded 5-turn H15-Iterative closing 40/40 residual tasks with 0 contradictions plus DNULLMM1 Gear-0 v2), FormJEPA-v1 (8.42M trainable parameters) and FormEBM-v2 (5.85M trainable parameters; H5 AUROC 0.8922, H11 93.0% strict 5-step monotonicity) on 1,387 disjoint Forms, and the 151-task rce repair rung-f criterion audit report Apple M5 Max and Linux x86-64 RAPL on-chip reported_j counters. No hardware rail or wall meter was attached (measured_j = None).\n"
         "</div>\n"
     )
 elif id_ == "rce-vc":
@@ -200,7 +200,7 @@ elif id_ == "rce-compile":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
-        "No energy was measured. The measured results are byte comparisons of compiler outputs (E1), erasure and description-length counts on a machine with no energy counter (E4), and comparisons of name-free hashes (E5), all in Section 8. Almost every external source was seen only as a search result; each reference states how it was checked.\n"
+        "Byte reproducibility (E1), 20-kernel x 14-tier Linux Zen 5 RAPL core and package reported_j compilation vs execution energy payback horizons N* and H4 Regime-B checks (E4-Energy), and 245-program / 500-mutant De Bruijn nameless cache soundness plus warm-cache avoided compilation reported_j (E5-Scale) are reported in Section 8. No hardware power rail or wall meter was attached (measured_j = None, board_metered = false).\n"
         "</div>\n"
     )
 elif id_ == "rce":
@@ -215,7 +215,7 @@ elif id_ == "game-engines":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, draft, not a journal final.\n"
-        "GE-H1 (25 target x host cells across 5 machines and 3 ISAs, 100,000 Q32.32 ticks, 0/20,500 SHA-256 checkpoint mismatches), GE-H2 (25,000-tick cross-ISA/OS float drift horizons), and GE-H3 (4-vendor headless wgpu Metal/Vulkan rendering tolerance) were measured on physical hosts using L2/L3 reported_j counters. Bare-metal Windows x86-64 and GE-H4 to GE-H9 remain open. No hardware rail or wall meter was attached (measured_j = None).\n"
+        "GE-H1 (30 target x host cells across 6 machines, 3 OSs [macOS, Linux, Windows 11], and 3 ISAs, 100,000 Q32.32 ticks, 0/25,500 SHA-256 checkpoint mismatches), GE-H2 (25,000-tick 3-OS UCRT/libSystem/glibc and MSVC/Clang FMA drift horizons), and GE-H3 (8 hardware GPU x API endpoints across DirectX 12, Metal, and Vulkan passing 28/28 hardware pairs) were measured on physical hosts using L2/L3 reported_j counters. GE-H4 to GE-H9 remain open. No hardware rail or wall meter was attached (measured_j = None).\n"
         "</div>\n"
     )
 elif id_ == "deterministic-null":
@@ -229,7 +229,7 @@ elif id_ == "satb-harness":
     measure = (
         '<div class="measurement">\n'
         "<strong>Measurement.</strong> Research study, not a journal final.\n"
-        "Verified across four hardware archetypes: physical Texas Instruments INA238 (VIN L1) and three-channel INA3221 (VDD_GPU, VDD_CPU_SOC_MSS, VIN_SYS_5V0 L2) shunt measured_j on NVIDIA Jetson AGX Thor (shared host; A2 net placement attribution withheld per Falsifier 6), plus on-chip reported_j on Apple M5 Max (IOReport/proc_pid_rusage), Framework AMD Ryzen AI Max+ 395 (0440 root:energy RAPL + Radeon 8060S PPT), and Intel Core i9-13900H (psys L1 + package-0 L2 RAPL). Closed-API server joules remain not_available. No fabricated citations.\n"
+        "Verified across five hardware and OS archetypes: physical Texas Instruments INA238 (VIN L1) and three-channel INA3221 (VDD_GPU, VDD_CPU_SOC_MSS, VIN_SYS_5V0 L2) shunt measured_j on NVIDIA Jetson AGX Thor (shared host; A2 net placement attribution withheld per Falsifier 6), plus on-chip reported_j on Apple M5 Max (IOReport/proc_pid_rusage), Framework AMD Ryzen AI Max+ 395 (0440 root:energy RAPL + Radeon 8060S PPT), Intel Core i9-13900H (psys L1 + package-0 L2 RAPL), and bare-metal Windows 11 Pro x86-64 (Intel Core i7-1165G7 + RTX 2060 rootless nvml.dll cumulative mJ L2 reported_j + Win32 Job Objects). Closed-API server joules remain not_available. No fabricated citations.\n"
         "</div>\n"
     )
 elif id_ == "time-as-an-index":

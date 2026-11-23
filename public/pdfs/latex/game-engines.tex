@@ -1,0 +1,1612 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{xcolor}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{textcomp}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{longtable,booktabs,array,calc}
+\usepackage{caption}
+\captionsetup[table]{skip=6pt,font=small,labelfont=bf}
+\captionsetup[figure]{font=small,labelfont=bf}
+\newcounter{none}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\footnotesize}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\footnotesize}
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.80,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.80,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+
+\usepackage{newunicodechar}
+\newunicodechar{µ}{\ifmmode\mu\else\textmu\fi}
+\newunicodechar{°}{\ifmmode^\circ\else\textdegree\fi}
+\newunicodechar{·}{\ifmmode\cdot\else\textperiodcentered\fi}
+\newunicodechar{²}{\ensuremath{^{2}}}
+\newunicodechar{³}{\ensuremath{^{3}}}
+\newunicodechar{¹}{\ensuremath{^{1}}}
+\newunicodechar{⁰}{\ensuremath{^{0}}}
+\newunicodechar{⁴}{\ensuremath{^{4}}}
+\newunicodechar{⁵}{\ensuremath{^{5}}}
+\newunicodechar{⁶}{\ensuremath{^{6}}}
+\newunicodechar{⁷}{\ensuremath{^{7}}}
+\newunicodechar{⁸}{\ensuremath{^{8}}}
+\newunicodechar{⁹}{\ensuremath{^{9}}}
+\newunicodechar{⁺}{\ensuremath{^{+}}}
+\newunicodechar{⁻}{\ensuremath{^{-}}}
+\newunicodechar{₀}{\ensuremath{_{0}}}
+\newunicodechar{₁}{\ensuremath{_{1}}}
+\newunicodechar{₂}{\ensuremath{_{2}}}
+\newunicodechar{₃}{\ensuremath{_{3}}}
+\newunicodechar{₄}{\ensuremath{_{4}}}
+\newunicodechar{ₙ}{\ensuremath{_{n}}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Ω}{\ensuremath{\Omega}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{∧}{\ensuremath{\wedge}}
+\newunicodechar{∫}{\ensuremath{\int}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{⊆}{\ensuremath{\subseteq}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{š}{\ifmmode\check{s}\else\v{s}\fi}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{≪}{\ensuremath{\ll}}
+\newunicodechar{↛}{\ensuremath{\nrightarrow}}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{∪}{\ensuremath{\cup}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\newunicodechar{・}{\textperiodcentered}
+
+\usepackage{xurl}
+\usepackage{bookmark}
+\usepackage{hyperref}
+
+\setcounter{secnumdepth}{-\maxdimen}
+\providecommand{\tightlist}{\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}}
+
+\definecolor{openieAmber}{HTML}{D97706}
+\definecolor{openieAmberBg}{HTML}{FFFBEB}
+\definecolor{openieAmberBorder}{HTML}{F59E0B}
+\definecolor{openieSlate}{HTML}{334155}
+\definecolor{openieDark}{HTML}{0F172A}
+\definecolor{openieCodeBg}{HTML}{F8FAFC}
+\definecolor{openieCodeBorder}{HTML}{CBD5E1}
+\definecolor{openieBlue}{HTML}{0057B8}
+
+\hypersetup{
+  pdftitle={Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins},
+  pdfauthor={David Charlot, Open Interface Engineering},
+  colorlinks=true,
+  linkcolor=openieBlue,
+  citecolor=openieBlue,
+  urlcolor=openieBlue,
+  pdfcreator={XeTeX / Tectonic — Open Interface Engineering}
+}
+
+\urlstyle{same}
+\setlength{\emergencystretch}{3em}
+\hfuzz=6pt
+\sloppy
+
+\newcommand{\openiefig}[3]{%
+  \IfFileExists{#1}{%
+    \includegraphics[width=#2\linewidth,height=0.70\textheight,keepaspectratio]{#1}%
+  }{%
+    \fcolorbox{openieCodeBorder}{openieCodeBg}{%
+      \parbox{0.92\linewidth}{\footnotesize\ttfamily Figure asset embedded in archival PDF; interactive/vector source: \url{#3}}%
+    }%
+  }%
+}
+
+\title{\vspace{-1.2em}\textbf{Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins}}
+\author{\textbf{David Charlot, Open Interface Engineering}\\[0.15em]
+{\small Research study $\cdot$ Open Interface Engineering $\cdot$ \href{https://research.openie.dev}{research.openie.dev}}}
+\date{\small Revision \texttt{1561a2a} (22 November 2026) $\cdot$ Web: \href{https://research.openie.dev/papers/game-engines/}{research.openie.dev/papers/game-engines/} $\cdot$ Archival LaTeX: \href{https://research.openie.dev/pdfs/latex/game-engines.pdf}{/pdfs/latex/game-engines.pdf} (\href{https://research.openie.dev/pdfs/latex/game-engines.tex}{.tex})}
+
+\begin{document}
+\maketitle
+\vspace{-0.6em}
+
+% OpenIE Measurement Honesty Callout Box
+\noindent\fcolorbox{openieAmberBorder}{openieAmberBg}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+    \small\color{openieDark}%
+    \textbf{Measurement.} Research study, draft, not a journal final. \textbf{\texttt{GE-H1}} (\texttt{30} target $\times$ host cells across \texttt{6} physical machines, \texttt{3} OSs [\texttt{macOS 27.2.1}, \texttt{Linux 6.8/7.0}, \texttt{Windows 11 Pro 26300}], \texttt{3} ISAs, and \texttt{7} language/compiler projections, \texttt{100,000} \texttt{Q32.32} fixed-point ticks, \textbf{\texttt{0 / 25,500}} \texttt{SHA-256} checkpoint mismatches), \textbf{\texttt{GE-H2}} (\texttt{25,000}-tick 3-OS and cross-ISA \texttt{f64} drift horizons: \texttt{Windows UCRT} vs.\ \texttt{glibc} tick~\texttt{10}, \texttt{Apple libSystem} vs.\ \texttt{glibc} tick~\texttt{10}, \texttt{Windows UCRT} vs.\ \texttt{Apple libSystem} tick~\texttt{37}, \texttt{MSVC /fp:precise} vs.\ \texttt{Clang} \texttt{FMA} tick~\texttt{192}, cross-ISA \texttt{FMA} tick~\texttt{406}), and \textbf{\texttt{GE-H3}} (\texttt{8} hardware \texttt{GPU $\times$ API} endpoints across \texttt{DirectX 12}, \texttt{Metal}, and \texttt{Vulkan}: \textbf{\texttt{28 / 28}} hardware pairs pass at \texttt{PSNR >= 64.16 dB}, \texttt{SSIM >= 0.999833}, max $|\Delta| \le 2$, isolating same-GPU \texttt{DX12} vs.\ \texttt{Vulkan} shader-compiler drift at \texttt{79.52--108.34 dB}) were measured on physical hosts using \texttt{L2}/\texttt{L3} \texttt{reported\_j} and Win32 cycle counters. \texttt{GE-H4} to \texttt{GE-H9} remain open. No hardware rail or wall meter was attached (\texttt{measured\_j = None}, \texttt{board\_metered = false}).
+  }%
+}
+
+\vspace{6pt}
+% OpenIE Amber Left-Rule Summary Quote
+\noindent{\color{openieAmber}\vrule width 3pt}\hspace{8pt}%
+\parbox{\dimexpr\linewidth-11pt\relax}{%
+  \small\itshape\color{openieSlate}%
+  Can a game be written once as a checked state machine and projected into several engines, instruction sets, operating systems, and graphics stacks? Executed across 30 multi-ISA target × host cells for 100,000 ticks under Q32.32 integer physics (GE-H1: 0 / 25,500 state-digest mismatches across arm64 macOS, aarch64 Linux, Zen 5 and Raptor Lake x86\_64 Linux, and Tiger Lake x86\_64 Windows 11), 25,000 cross-platform floating-point ticks (GE-H2: t\_div = 10 Windows Universal C Runtime and Apple libm vs Linux glibc sin/cos, t\_div = 192–406 fused multiply-add lowering without -ffast-math), and 8 hardware graphics endpoints across Metal, Vulkan, and DirectX 12 (GE-H3: 0.00\%–9.34\% pixel drift, Δ\_max ≤ 2, peak signal-to-noise ratio ≥ 64.2 dB, structural similarity ≥ 0.99983 across all 28 pairs), paired with a playable joule-budgeted Q32.32 prototype.
+}
+\vspace{6pt}
+
+{
+\small
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\vspace{4pt}
+\hrule
+\vspace{8pt}
+
+\emph{Revision
+\href{https://github.com/openIE-dev/research-openie-web/commits/main/src/content/papers/game-engines.md}{\texttt{1561a2a}},
+22 November 2026. Interactive explorer, 3-OS / 3-API cross-GPU
+inspector, and playable \texttt{Q32.32} Chrono-Budget Arena:
+\href{https://research.openie.dev/living/game-engines/}{research.openie.dev/living/game-engines/}.}
+
+\section{Abstract}\label{abstract}
+
+This study asks whether a game can be written once as a checked state
+machine and then projected across languages, each operating system (OS),
+each central processing unit (CPU) instruction set architecture (ISA),
+and each graphics processing unit (GPU) application programming
+interface (API). Both the surveyed specifications and three executed
+empirical falsifier suites give a sharp boundary: \textbf{yes} for game
+rules and simulation under pinned fixed-point integer arithmetic
+(\texttt{(GE-H1)}: \texttt{0\ /\allowbreak{}\ 25,\allowbreak{}500} Secure Hash Algorithm 256-bit
+(\texttt{SHA-256}) checkpoint mismatches across \texttt{100,000} ticks
+of a 16-body 2D arena projected across \texttt{30} target × host cells
+spanning three operating systems and three instruction sets ---
+\texttt{arm64} \texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1}, \texttt{aarch64}
+\texttt{Linux\ 6.\allowbreak{}8}, Advanced Micro Devices (\texttt{AMD}) Zen 5 and
+Intel Raptor Lake \texttt{x86\_64} \texttt{Linux\ 7.\allowbreak{}0}, and bare-metal
+Intel Tiger Lake \texttt{x86\_64} \texttt{Windows\ 11} build
+\texttt{26300} including Microsoft Visual C++ (\texttt{MSVC})
+\texttt{cl.exe} --- spanning \texttt{0.073\ J} to \texttt{13.60\ J} in
+macOS per-process \texttt{reported\_\allowbreak{}j} and \texttt{1.89\ J} to
+\texttt{181.87\ J} in Linux Running Average Power Limit (\texttt{RAPL})
+package \texttt{reported\_\allowbreak{}j}); \textbf{no} when unpinned floating-point
+transcendentals or fused multiply-add (\texttt{FMA}) lowering enter
+chaotic multi-body collisions (\texttt{(GE-H2)}: even \emph{without}
+\texttt{-\allowbreak{}ffast-\allowbreak{}math} or \texttt{/fp:fast}, all three desktop OS math
+libraries form a pairwise-divergent triangle --- Windows Universal C
+Runtime (\texttt{UCRT}) vs Linux system \texttt{glibc}
+\texttt{std::sin}/\allowbreak{}\texttt{std::cos} diverges on the same
+\texttt{x86\_64} ISA at tick \texttt{10}, Apple \texttt{libSystem}
+\texttt{libm} vs Linux \texttt{glibc} diverges at tick \texttt{10}, and
+Windows \texttt{UCRT} vs Apple \texttt{libm} diverges at tick
+\texttt{37} --- while \texttt{MSVC} \texttt{/\allowbreak{}fp:precise} vs
+\texttt{Clang} \texttt{-\allowbreak{}ffp-\allowbreak{}contract=fast} diverges on \texttt{x86\_64}
+at tick \texttt{192} and \texttt{x86\_64} \texttt{-\allowbreak{}mavx2\ -\allowbreak{}mfma} vs
+\texttt{arm64} \texttt{fmadd} diverges at tick \texttt{406}); and
+\textbf{no} for bit-exact pixels across GPU back ends, yet \textbf{yes}
+under a bounded one-way tolerance gate (\texttt{(GE-H3)}: across eight
+hardware \texttt{GPU\ ×\ API} endpoints spanning Apple \texttt{Metal},
+Linux Mesa Radeon Vulkan (\texttt{RADV}), Nvidia (\texttt{NVIDIA}) Linux
+and Windows \texttt{Vulkan} and Windows DirectX 12 (\texttt{DX12}), and
+Intel Linux Mesa Vulkan (\texttt{ANV}) and Windows \texttt{Vulkan} and
+\texttt{DX12} at \texttt{512×512} \texttt{RGBA8Unorm},
+\texttt{27\ /\ 28} hardware pairs --- including the \textbf{same
+physical GPU} across \texttt{DX12} vs \texttt{Vulkan} on both
+\texttt{GeForce\ 2060} and \texttt{Iris\ Xe} --- differ in raw
+\texttt{SHA-256}, yet all \texttt{28\ /\ 28} hardware pairs keep maximum
+per-channel error \(\Delta_{\max} \le 2 / 255\), peak signal-to-noise
+ratio (\texttt{PSNR}) \texttt{\textgreater{}=\ 64.16\ dB}, and
+structural similarity (\texttt{SSIM}) \texttt{\textgreater{}=\ 0.99983},
+with \texttt{measured\_\allowbreak{}j\ =\ None} and
+\texttt{board\_\allowbreak{}metered\ =\ false}).
+
+\textbf{In plain words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Exact simulation across operating systems, chips, and
+  languages works when arithmetic is integer-pinned.} Over
+  \texttt{100,000} ticks (\texttt{25,500} verified \texttt{SHA-256}
+  checkpoints across \texttt{30} cells), native Rust, C++20
+  (\texttt{Clang}, the compiler collection (\texttt{GCC}), and Windows
+  \texttt{MSVC}), WebAssembly (\texttt{Wasm}), JavaScript
+  \texttt{BigInt}, and Python replay the exact same 732-byte state
+  bit-for-bit across \texttt{macOS} (\texttt{arm64}), \texttt{Linux}
+  (\texttt{aarch64} and \texttt{x86\_64}), and \texttt{Windows\ 11}
+  (\texttt{x86\_64}) with zero mismatches.
+\item
+  \textbf{Standard floating-point physics drifts across
+  \texttt{Windows}, \texttt{macOS}, and \texttt{Linux} even without
+  fast-math flags.} Pure algebraic \texttt{+}, \texttt{-}, \texttt{*},
+  \texttt{/}, and \texttt{sqrt} with \texttt{FMA} disabled
+  (\texttt{/\allowbreak{}fp:strict} and \texttt{-\allowbreak{}ffp-\allowbreak{}contract=off}) match across
+  every tested OS and ISA for all \texttt{25,000} ticks, but calling
+  \texttt{std::sin}/\allowbreak{}\texttt{std::cos} across Windows \texttt{UCRT},
+  macOS \texttt{libm}, and Linux \texttt{glibc} flips a bit within
+  \texttt{10} to \texttt{37} ticks (\texttt{0.\allowbreak{}17–0.\allowbreak{}62\ s} at
+  \texttt{60\ Hz}) and desynchronizes gameplay scores by tick
+  \texttt{9,798}--\texttt{10,392} (\texttt{163.\allowbreak{}3–173.\allowbreak{}2\ s}), while
+  default compiler \texttt{FMA} rules diverge between \texttt{MSVC}
+  (\texttt{/\allowbreak{}fp:precise}) and \texttt{Clang}
+  (\texttt{-\allowbreak{}ffp-\allowbreak{}contract=fast}) at tick \texttt{192} and between
+  \texttt{x86\_64} and \texttt{arm64} at tick \texttt{406}.
+\item
+  \textbf{Even the same graphics card can flip pixel bits between
+  \texttt{DirectX\ 12} and \texttt{Vulkan}, so rendering belongs
+  downstream of a one-way tolerance gate.} Across eight hardware
+  \texttt{GPU\ ×\ API} endpoints (\texttt{Metal}, \texttt{Vulkan}, and
+  \texttt{DirectX\ 12}) plus Windows Advanced Rasterization Platform
+  (\texttt{WARP}) and \texttt{Mesa\ llvmpipe}, switching
+  \texttt{DirectX\ 12} vs \texttt{Vulkan} on the exact same
+  \texttt{NVIDIA\ GeForce\ 2060} (\texttt{108.\allowbreak{}34\ dB} \texttt{PSNR}) or
+  \texttt{Intel\ Iris\ Xe} (\texttt{79.52\ dB} \texttt{PSNR}) alters
+  \texttt{1} least significant bit (\texttt{LSB}) via shader-compiler
+  lowering, while cross-vendor pairs differ on \texttt{0.00\%} to
+  \texttt{9.34\%} of pixels by \texttt{\textless{}=\ 2} \texttt{LSB}
+  (\texttt{PSNR\ \textgreater{}=\ 64.16\ dB},
+  \texttt{SSIM\ \textgreater{}=\ 0.99983}) without ever corrupting
+  simulation state.
+\end{enumerate}
+
+
+\begin{center}
+\openiefig{fig/game-engines-fig01-architecture.png}{0.94}{https://research.openie.dev/figures/game-engines/architecture.svg}
+\end{center}
+
+
+\emph{Figure 1. Proposed split. One Form feeds four projections.
+Simulation and scripting sit in the exact zone, judged by per-tick state
+hashes. Scene and rendering sit in the tolerance zone, judged by
+per-pixel error. Host effects enter only as logged events.}
+
+
+\begin{center}
+\openiefig{fig/game-engines-fig02-coverage.png}{0.94}{https://research.openie.dev/figures/game-engines/coverage.svg}
+\end{center}
+
+
+\emph{Figure 2. Coverage of existing representations, scored only from
+the documents read for this study. Green: documented capability. Amber:
+partial. Grey: absent or undocumented. The rightmost column, cross-layer
+checking, is nearly empty.}
+
+\section{1. Terms, notation, and the idea under
+test}\label{terms-notation-and-the-idea-under-test}
+
+\begin{itemize}
+\tightlist
+\item
+  RCE, IR, ECS, FSM, SDF: Reality Code Engine {[}same house{]},
+  intermediate representation, entity component system, finite-state
+  machine, and signed distance field
+\item
+  CPU, GPU, ISA, ISAs, SIMD, AVX2, NEON, SFU, ROP, RPL, TGL: central
+  processing unit, graphics processing unit, instruction set
+  architecture(s), single instruction multiple data, Advanced Vector
+  Extensions 2, Arm Advanced SIMD, special function unit, raster
+  operations pipeline, Intel Raptor Lake mobile architecture, and Intel
+  Tiger Lake mobile architecture
+\item
+  IEEE, FMA, VFMADD, VFNMADD, FMADD, FMSUB, ULP, LSB, SHA, MAE, RMSE,
+  PSNR, SSIM, SD, RGBA8: Institute of Electrical and Electronics
+  Engineers (as in IEEE 754 floating-point), fused multiply-add, x86\_64
+  vector fused multiply-add and negated multiply-add opcodes, AArch64
+  scalar fused multiply-add and multiply-subtract opcodes, unit in the
+  last place, least significant bit, Secure Hash Algorithm
+  (\texttt{SHA-256}), mean absolute error, root mean squared error, peak
+  signal-to-noise ratio, structural similarity index, standard
+  deviation, and 8-bit-per-channel red-green-blue-alpha framebuffer
+  format
+\item
+  WGSL, WESL, SPIR-V, GLSL, HLSL, MSL, D3D11, D3D12, DX12, VULKAN,
+  METAL, DXIL, DXBC, DXC, FXC, WARP, WDDM, CUDA: WebGPU Shading
+  Language, WebGPU Extended Shading Language, Standard Portable
+  Intermediate Representation V, OpenGL Shading Language, High-Level
+  Shading Language, Metal Shading Language, Direct3D 11, Direct3D 12,
+  DirectX 12, \texttt{wgpu::Backends::VULKAN} and
+  \texttt{wgpu::Backends::METAL} back-end flags, DirectX Intermediate
+  Language, DirectX Bytecode, DirectX Shader Compiler, legacy Direct3D
+  Effect-Compiler Tool, Windows Advanced Rasterization Platform software
+  DirectX 12 rasterizer, Windows Display Driver Model, and Compute
+  Unified Device Architecture
+\item
+  RADV, ANV, LLVM, GNU, GCC, MSVC, UCRT, NT, PE, OS, OSs, API, APIs,
+  JIT, WebXR, WebMCP, URL, JSON, YAML, README, MB, CS0246, RE, ENGINE,
+  DFU: Mesa Radeon Vulkan driver, Mesa Intel Vulkan driver, Low Level
+  Virtual Machine compiler infrastructure, GNU's Not Unix project, GNU
+  Compiler Collection, Microsoft Visual C++ compiler (\texttt{cl.exe}),
+  Windows Universal C Runtime (\texttt{ucrtbase.\allowbreak{}dll}), Windows New
+  Technology kernel (\texttt{Windows\ NT}), Windows Portable Executable,
+  operating system(s), application programming interface(s),
+  just-in-time compiler, Web Extended Reality API, Web Model Context
+  Protocol, Uniform Resource Locator, JavaScript Object Notation, YAML
+  Ain't Markup Language, repository README documentation file,
+  megabytes, C\# compiler missing-type diagnostic CS0246, Capcom RE
+  ENGINE (``Reach for the Moon'' / ``RE neXt'' engine branding), and
+  Dagstuhl Follow-Ups DOI prefix
+\item
+  SCXML, GDL, VGDL, BSN, BSL, MLIR, ACID, GGPO, glTF, OpenUSD, USD, LAN,
+  AI, CIG: State Chart XML, Game Description Language, Video Game
+  Description Language, Bevy Scene Notation, Boldsea Semantic Language,
+  Multi-Level Intermediate Representation,
+  atomic/consistent/isolated/durable transactions, Good Game Peace Out
+  rollback networking library, Graphics Language Transmission Format
+  (ISO/IEC 12113:2022), Open Universal Scene Description, Universal
+  Scene Description, local area network, artificial intelligence, and
+  Computational Intelligence and Games
+\item
+  SATB, RAPL, MSR, PID, RUSAGE, V6, AMD, NVIDIA, RTX, V100, GH200, CTC:
+  Satiation Tiered Benchmark telemetry levels (\texttt{L2}
+  socket/package counter, \texttt{L3} per-process kernel counter)
+  {[}same house{]}, Running Average Power Limit, model-specific
+  register, process identifier, \texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage}
+  (\texttt{RUSAGE\_\allowbreak{}INFO\_\allowbreak{}V6}), Advanced Micro Devices, NVIDIA
+  Corporation, NVIDIA GeForce RTX GPU family, Volta V100 GPU, Grace
+  Hopper GH200 superchip, and closed timelike curve
+\end{itemize}
+
+To keep forward references transparent from top to bottom, Section 1
+defines the Form notation, Section 2 surveys existing game
+representations, Section 3 analyzes floating-point divergence, Section 4
+tabulates intermediate representations, Section 5 states the proposed
+layer split, Section 6 reports the 3-OS multi-ISA and 3-API cross-GPU
+falsifier runs, Section 7 lists infeasibility flags, and Section 8
+documents sources and limits.
+
+The \href{https://research.openie.dev/about/rce/}{Reality Code Engine
+(RCE)} treats a program as a state machine called a Form, written
+\(P = (S, E, \delta, D, \lambda)\):
+
+\begin{itemize}
+\tightlist
+\item
+  \(S\): the set of states;
+\item
+  \(E\): the set of events (inputs);
+\item
+  \(\delta : S \times E \to S\): the transition function;
+\item
+  \(D\): an append-only log of every step taken;
+\item
+  \(\lambda\): the output map from state to observable output.
+\end{itemize}
+
+A strict checker either accepts a Form or names the rule it breaks.
+Emitters then project the accepted Form into Rust, Python, JavaScript
+and Scala. XState (a JavaScript and TypeScript statechart library),
+SCXML (a World Wide Web Consortium Recommendation) and WebAssembly
+(\texttt{Wasm}) are not among the emitters' targets; this study treats
+them as candidate projections. Because every step lands in \(D\), any
+run can be replayed.
+
+A game engine is a much larger machine. It runs a fixed-step simulation,
+a scripting layer, a scene description, and a rendering pipeline on a
+GPU. Sections 1 to 8 ask which of those layers can live inside a Form,
+which must stay outside as host effects, and where exactness has to give
+way to tolerance.
+
+The idea has a long pedigree. The Stanford
+\href{http://ggp.stanford.edu/readings/gdl_spec.pdf}{Game Description
+Language (GDL) specification} covers ``finite, discrete, deterministic
+multi-player games of complete information'' and observes that the
+natural underlying model of such games ``is a finite state machine.''
+What is new in a game engine is not the state machine but everything
+around it: floating-point physics, scripts, scenes, and GPUs.
+
+\section{2. What the landscape shows}\label{what-the-landscape-shows}
+
+\subsection{2.1 Game logic as data already works, on one
+backend}\label{game-logic-as-data-already-works-on-one-backend}
+
+GameRule (\href{https://doi.org/10.1007/s00530-026-02629-8}{Multimedia
+Systems 32:564, 2026}) expresses behavior as per-actor \emph{when-do}
+rules over 14 create, read, update and delete actions and 6 conditions.
+Its deterministic contract is concrete: one central scheduler runs from
+a single FixedUpdate in declaration order, the last write wins, and
+spawns and deletes are deferred to the end of the traversal. The authors
+justify the contract by quoting Unity's manual, which says script
+execution order ``isn't guaranteed across builds, machines, or Unity
+versions.'' Across three Unity sample games (Haunted Jaunt, Survival
+Shooter, Tanks), behavior code shrank from 572 to 107 lines (−81.3\%).
+
+The price is measured. Rule interpretation costs about
+\(c \approx 65\ \mu\text{s}\) per actor per step. With a step budget
+\(T = 20\) ms, the actor ceiling is
+
+\[N_{\max} = \frac{T}{c} = \frac{20\ \text{ms}}{65\ \mu\text{s}} \approx 308,\]
+
+which agrees with the paper's observation that the budget is exceeded
+between 200 and 350 actors (23.872 ms at 350). Only a Unity backend
+exists, so portability across engines is argued but not demonstrated.
+
+\subsection{2.2 Order of execution can be made deterministic by
+construction}\label{order-of-execution-can-be-made-deterministic-by-construction}
+
+The ECS pattern stores game state as components attached to entity
+identifiers and runs behavior as systems over them. Redmond, Castello,
+Calderón Trilla and Kuper give it a formal model, Core ECS
+(\href{https://arxiv.org/abs/2508.15264}{arXiv:2508.15264}). They prove
+that a schedule in which every concurrent pair of mutations commutes is
+deterministic, and that two sub-schedules writing disjoint sets of
+component labels may run in parallel without changing the result.
+Surveying Bevy ECS, EnTT, Flecs, Specs and apecs, they find that none
+allows attaching a new component concurrently with another mutation;
+such structural changes are deferred and applied serially. Tasnim and
+Zhao
+(\href{https://doi.org/10.1145/3748522.3779910\%5D(https://doi.org/10.1145/3748522.3779910)}{SAC
+2026,
+{[}doi:10.1145/3748522.3779910{]}(https://doi.org/10.1145/3748522.3779910))})
+add an operational semantics and a type system for archetype ECS that
+tracks read and write sets per system, and report on a Tower Defense
+simulation that a parallel archetype layout reached 109.54 frames per
+second against 36.13 for an object-oriented baseline. GameRule's
+deferred spawn and delete is the same discipline, reached independently.
+
+\subsection{2.3 Compiling is not the same as being
+right}\label{compiling-is-not-the-same-as-being-right}
+
+The Mage benchmark
+(\href{https://arxiv.org/abs/2605.07342}{arXiv:2605.07342}) ran 858
+generation attempts over 26 Unity mechanic patterns. Without an IR, 43\%
+of outputs passed at runtime, yet mechanism F1 (agreement between
+requested and implemented mechanics) was only about 0.12. Conditioning
+on an IR dropped runtime pass to 14\% to 21\% but lifted mechanism F1 to
+0.82 to 1.00. Compile rate was anti-correlated with functional
+correctness: the missing-type error CS0246 appeared 469 times under IR
+conditioning and zero times without it. A behavior-only IR and a
+full-scene IR were statistically indistinguishable (McNemar p = 1.0).
+The lesson for RCE: a checker that only proves ``it compiles'' measures
+the wrong quantity. Interface checks must be behavioral.
+
+\subsection{2.4 Public benchmarks with replayable traces
+exist}\label{public-benchmarks-with-replayable-traces-exist}
+
+GameCraft-Bench
+(\href{https://arxiv.org/abs/2606.17861}{arXiv:2606.17861};
+\href{https://github.com/FreedomIntelligence/gamecraft-bench}{repository})
+offers 140 Godot 4 two-dimensional tasks in 15 families. Submissions
+carry replayable input traces. The strongest agent in the paper scored
+41.46\%, and the repository later reports 65.70\%. It does not cover
+Unity, Unreal, 3D, multiplayer, or large physics scenes.
+\href{https://www.summerengine.com/templates}{Summer Engine} publishes
+17 open-source game templates (rally, platformer, tower defense,
+metroidvania, survivors, first-person shooter, LAN multiplayer, voxel,
+and others). The General Video Game AI framework and its VGDL
+(\href{https://arxiv.org/abs/1802.10363}{arXiv:1802.10363}) supply 120
+single-player and 60 two-player games defined by sprite, interaction,
+termination, and level-mapping sets.
+
+\subsection{2.5 Convergence across industry and
+research}\label{convergence-across-industry-and-research}
+
+Several efforts are converging on the same shape: declarative scene and
+pipeline files, a sandboxed scripting layer, a modern shader language,
+and an event log.
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com/poro/nAIVE}{nAIVE} is built in Rust on
+  \texttt{wgpu} with an ECS (hecs), YAML scenes, materials and render
+  pipelines, Lua 5.4 with per-entity sandboxing, Slang shaders
+  cross-compiled to WGSL, Rapier physics, an event bus with YAML schema
+  validation, and a headless test runner. Its
+  \href{https://naive.dev/}{site} shows a 92-line YAML file declaring a
+  five-pass deferred pipeline. Its README also describes GPU compute
+  simulation driving 50,000+ entities, a choice that places that
+  simulation on the tolerance side of the boundary drawn next.
+\item
+  Capcom describes REX (``RE neXt Engine'') as a staged evolution of RE
+  ENGINE involving about 200 engineers
+  (\href{https://www.capcom.co.jp/ir/english/data/oar/2025/re-engine.html}{Capcom
+  IR}). Press coverage
+  (\href{https://www.pcgamer.com/gaming-industry/game-development/capcom-announces-plans-to-transform-its-re-engine-into-an-ai-generation-game-engine/}{PC
+  Gamer}) reports six programs, among them Re:Dox, which translates
+  different types of data into a common set of rules, and RE:Flows,
+  which converts game mechanic ideas into a standardised programming
+  language; it also reports that more than 2,000 people use RE Engine.
+\item
+  Bevy's BSN proposal
+  (\href{https://github.com/bevyengine/bevy/discussions/14437}{discussion
+  14437}) defines scenes as composable Patch, EntityPatch, and
+  DynamicScene values with a \texttt{bsn!} macro and an asset format,
+  while leaving event handlers unresolved.
+\item
+  \href{https://github.com/clockworklabs/SpacetimeDB}{SpacetimeDB} runs
+  game logic as reducers that execute as ACID transactions over tables
+  and replays a commit log, which is the RCE log \(D\) under another
+  name.
+\item
+  Executable Ontologies
+  (\href{https://doi.org/10.48550/arXiv.2601.07964}{doi:10.48550/arXiv.2601.07964})
+  model game behavior in BSL over an append-only, immutable event graph.
+  The paper recommends a hybrid in which physics, rendering and
+  animation keep traditional high-frequency approaches while quests and
+  decisions run on the event graph, joined through aggregated events.
+  That is the same layer split proposed here.
+\end{itemize}
+
+\section{3. The physics of divergence: why exactness is
+binary}\label{the-physics-of-divergence-why-exactness-is-binary}
+
+Floating-point addition is not associative. On parallel hardware the
+order of a reduction varies run to run. A study of floating-point
+non-associativity on parallel hardware
+(\href{https://arxiv.org/abs/2408.05148}{arXiv:2408.05148}) defines the
+scalar variability
+
+\[V_s = 1 - \left| \frac{f_{nd}}{f_d} \right|,\]
+
+where \(f_d\) is a deterministic reduction and \(f_{nd}\) a
+nondeterministic one. Permuting a sum of \(10^6\) normally distributed
+double-precision values changed the result by up to about
+\(4.26 \times 10^{-13}\), and the maximum \(|V_s|\) grew as
+\(\sqrt{n}\). A deterministic tree reduction cost about 0.2\% relative
+to atomic accumulation on an NVIDIA V100 and up to 7.8\% on a GH200. In
+1,000 graph-network training runs, every run produced distinct weights.
+
+A game turns such tiny differences into visible ones. Rigid-body contact
+and many-body dynamics are typically chaotic. Under a local Lyapunov
+exponent \(\Lambda\), a perturbation grows as
+
+\[\delta(t) = \delta_0 \, e^{\Lambda t},\]
+
+so the time until it reaches a gameplay-visible size \(\Delta\) is
+
+\[t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.\]
+
+\emph{Illustrative model:} take \(\delta_0 \approx 6 \times 10^{-8}\)
+(one ULP of single precision, relative), \(\Delta = 1\) (an object on
+the other side of a wall), and an assumed
+\(\Lambda = 2\ \text{s}^{-1}\). Then
+\(t^{*} \approx 0.5 \ln(1.7 \times 10^{7}) \approx 8.3\) s. The
+logarithm is the key: shrinking \(\delta_0\) a millionfold buys only
+about 6.9 more seconds. Approximate agreement therefore cannot rescue
+simulation. Either the state is bitwise identical or it eventually
+diverges --- a prediction tested directly across 25,000 multi-ISA and
+3-OS collision ticks below (\texttt{GE-H2}).
+
+Practice agrees.
+\href{https://gafferongames.com/post/floating_point_determinism/}{Gaffer
+On Games} records that cross-machine determinism requires the same
+compiler and instruction set, that Battlezone 2 hit AMD versus Intel
+differences in transcendental functions, and that MotoGP replays could
+not be shared between Xbox and personal computers. It cites Markstein's
+advice to forbid FMA contraction and reassociation. The
+\href{https://rapier.rs/docs/user_guides/rust/determinism/}{Rapier
+guide} shows a working path: cross-platform determinism holds only with
+its \texttt{enhanced-\allowbreak{}determinism} feature (incompatible with
+\texttt{simd8}), on IEEE 754-2008 targets (Wasm qualifies), using
+software transcendentals.
+
+For rendering, the \href{https://www.w3.org/TR/WGSL/}{WGSL
+specification} states that ``WGSL sometimes permits several possible
+behaviors for a given feature. This is a portability hazard.'' Its
+floating-point section goes further: ``WGSL does not specify a rounding
+mode''; ``An implementation may reassociate operations''; it ``may fuse
+operations if the transformed expression is at least as accurate as the
+original''; subnormal inputs and outputs of many operations ``may be
+flushed to zero''; and the \texttt{fma} built-in ``may expand to an
+ordinary multiply \ldots{} and an add.'' Pixels are thus specified to
+differ across implementations. The
+\href{https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html}{SPIR-V
+specification} offers a narrower tool: its NoContraction decoration
+marks an arithmetic instruction that ``cannot be combined with another
+instruction to form a single operation,'' and such operations ``are not
+allowed to reassociate.'' That is a per-instruction guard on one back
+end, not a portable guarantee for a whole shader.
+
+\section{4. The IR table}\label{the-ir-table}
+
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1442}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1442}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3750}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3365}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Representation}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Layer}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Strongest property (documented)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{What it lacks for a Form}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\href{https://shader-slang.org/}{Slang} & Shaders & Module IR; back ends
+for D3D12, Vulkan, Metal, D3D11, OpenGL, CUDA, WebGPU, CPU; capability
+system & No game state, no events, no exact-semantics guarantee for
+floats \\
+\href{https://github.com/gfx-rs/wgpu/tree/trunk/naga}{Naga} & Shaders &
+Validated IR; WGSL, SPIR-V and GLSL in; SPIR-V, WGSL, MSL, HLSL and GLSL
+out & Same; no link to a scene schema \\
+\href{https://www.w3.org/TR/WGSL/}{WGSL} /
+\href{https://wesl-lang.dev/}{WESL} & Shaders & Uniformity analysis;
+WESL adds imports, conditional compilation, packages, \texttt{wgsl-test}
+& Permits reassociation, fusion and flush-to-zero; no host-side types \\
+\href{https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html}{SPIR-V}
+& Shader binary IR & NoContraction decoration forbids fusion and
+reassociation per instruction & Per-instruction only; no game
+semantics \\
+\href{https://mlir.llvm.org/}{MLIR} & Compiler infrastructure &
+Multi-level dialects for lowering & Not a game model; semantics left to
+each dialect \\
+\href{https://www.khronos.org/gltf/}{glTF 2.0} (ISO/IEC 12113:2022) &
+Assets and scene & Interchange standard across tools & No behavior, no
+execution order \\
+\href{https://openusd.org/release/intro.html}{OpenUSD} & Scene &
+Composition arcs, namespace paths & Self-described ``Not a rigging
+system''; no simulation semantics \\
+\href{https://github.com/bevyengine/bevy/discussions/14437}{BSN} & Scene
+& Typed patches over components, versioned imports & Event handlers
+unresolved; Bevy only \\
+\href{https://www.w3.org/TR/scxml/}{SCXML} /
+\href{https://stately.ai/docs/xstate}{XState} & Behavior & Microstep and
+macrostep semantics, document-order priority, serial parallel regions &
+Data model is platform-specific; no numeric discipline, no scene or
+shader \\
+\href{http://ggp.stanford.edu/readings/gdl_spec.pdf}{GDL} & Rules &
+Logic description of finite, discrete, deterministic games & No
+continuous physics, no rendering \\
+\href{https://arxiv.org/abs/1802.10363}{VGDL} & Rules & Compact 2D grid
+games, large public corpus & 2D grid only; no rendering or physics
+fidelity \\
+\href{https://arxiv.org/abs/2508.15264}{Core ECS} & Execution order &
+Theorem giving a condition for deterministic concurrent schedules & A
+formal model, not an engine format; no scene or shader \\
+\href{https://doi.org/10.1007/s00530-026-02629-8}{GameRule} & Rules &
+Deterministic scheduler contract, measured code savings & Unity only;
+about 65 µs per actor; no formal checker \\
+\href{https://github.com/poro/nAIVE}{nAIVE} & Whole engine & YAML scenes
+and pipelines, Lua, Slang, event schema validation & No published formal
+semantics or cross-layer type check \\
+\href{https://github.com/clockworklabs/SpacetimeDB}{SpacetimeDB} &
+Server logic & Reducers as transactions, commit-log replay & Server side
+only; no client rendering or scene \\
+\end{longtable}
+}
+
+\section{5. Proposed architecture}\label{proposed-architecture}
+
+\subsection{5.1 Layer split}\label{layer-split}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Simulation Form (exact).} \(S\) holds fixed-point or strict
+  IEEE 754 values, with FMA and reassociation disabled and
+  transcendentals implemented in integer or pinned software routines.
+  \(E\) holds tick events and logged inputs. \(\delta\) uses SCXML
+  macrostep semantics: per tick, process events in queue order, resolve
+  conflicts by document order, run parallel regions serially.
+  Collections iterate in a declared order, following GameRule's contract
+  (declaration order, last write wins, structural changes deferred to
+  the end of the tick). Where parallelism is wanted, the checker admits
+  only schedules that satisfy the Core ECS disjointness condition.
+\item
+  \textbf{Scripting projection (exact).} Designer scripts compile to
+  guards and actions over \(S\), emitted as
+  \href{https://rhai.rs/book/about/features.html}{Rhai} (sandboxed, with
+  a ``Don't Panic'' guarantee, no-std and Wasm support), Lua, or
+  \href{https://luau.org/}{Luau} (sandboxed by default, with gradual
+  types). Scripts may only call \(\delta\) through declared actions.
+  They cannot read clocks, random sources, or GPU results directly.
+\item
+  \textbf{Scene projection (tolerance downstream).} \(\lambda\) maps
+  \(S\) to a BSN-like patch tree whose component schema is part of the
+  Form. glTF and OpenUSD serve as export targets for assets.
+\item
+  \textbf{Rendering projection (tolerance).} Materials and passes are
+  authored in Slang or WGSL, and emitted through Slang or Naga to
+  \texttt{DirectX\ 12}, \texttt{Metal}, and \texttt{Vulkan} back ends.
+  Rendering is a pure function of \(\lambda(s)\). No GPU result ever
+  flows back into \(S\).
+\end{enumerate}
+
+\subsection{5.2 Inside the Form versus host
+effects}\label{inside-the-form-versus-host-effects}
+
+Inside: state, transitions, rule order, fixed-point physics for
+gameplay-relevant bodies, the random generator with its seed in \(S\),
+interface schemas. Outside, as logged events: device input, wall-clock
+time, network packets, audio output, asset input and output, GPU draws,
+and any third-party physics used for cosmetic effects. Replay feeds
+\(D\) back through \(\delta\) rather than touching devices. Storage cost
+is modest. At a tick rate \(f_{\text{tick}} = 60\) Hz and \(b = 16\)
+bytes of input per tick, the log grows at
+\(f_{\text{tick}} \cdot b = 960\) B/s, about 3.5 MB per hour.
+
+\subsection{5.3 Determinism boundary}\label{determinism-boundary}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Exact zone criterion:} for targets A and B and every tick
+  \(t\), \(H(s_t^A) = H(s_t^B)\), where \(H\) is a cryptographic hash
+  over a canonical serialization of \(S\).
+\item
+  \textbf{Tolerance zone criterion:} for rendered frames \(I^A\) and
+  \(I^B\) of the same \(s_t\), the fraction of pixels with per-channel
+  error above \(\varepsilon\) must not exceed \(p_{\max}\), paired with
+  bounded structural similarity (\texttt{SSIM}) and peak signal-to-noise
+  ratio (\texttt{PSNR}) floors. Section 6.3 executes this calibration
+  across eight hardware \texttt{GPU\ ×\ API} endpoints spanning
+  \texttt{DirectX\ 12}, \texttt{Metal}, and \texttt{Vulkan}
+  (\texttt{Apple\ Metal}, \texttt{AMD\ RADV\ Vulkan}, \texttt{NVIDIA}
+  Linux/Windows \texttt{Vulkan} and Windows \texttt{DX12}, and
+  \texttt{Intel} Linux \texttt{ANV\ Vulkan} and Windows \texttt{Vulkan}
+  / \texttt{DX12}).
+\item
+  Rollback networking in the style of
+  \href{https://github.com/pond3r/ggpo}{GGPO}, which relies on input
+  prediction and speculative execution, is valid only on the exact side
+  of this boundary.
+\end{itemize}
+
+\subsection{5.4 Cross-layer interface
+checking}\label{cross-layer-interface-checking}
+
+The checker validates four typed edges before any emission: (a) script
+to simulation: every action names a declared transition with matching
+argument types; (b) simulation to scene: the output of \(\lambda\)
+matches the component schema; (c) scene to rendering: every material
+binding matches a Slang or WGSL resource of compatible type, group, and
+binding index; (d) event coverage: every event a script listens for is
+producible by some transition or host source. Mage's finding (Section
+2.3) is the reason edge checks are judged by behavior traces, not by
+compile success.
+
+\section{6. Falsifier-first test plan and executed 3-OS / 3-ISA / 3-API
+results}\label{falsifier-first-test-plan-and-executed-3-os-3-isa-3-api-results}
+
+Each hypothesis is listed with its kill criterion. If the criterion is
+met, the claim is withdrawn. Subsections 6.1 to 6.4 report the three
+executed empirical falsifier suites (\texttt{GE-H1} 3-OS × 3-ISA
+\texttt{Q32.32} replay across \texttt{30} target × host cells,
+\texttt{GE-H2} 3-OS × 3-ISA floating-point drift across
+\texttt{Windows\ 11\ UCRT}, \texttt{macOS\ libSystem}, and
+\texttt{Linux\ glibc}, and \texttt{GE-H3} 3-OS × 3-API headless
+\texttt{wgpu} rendering tolerance across \texttt{DirectX\ 12},
+\texttt{Metal}, and \texttt{Vulkan}), plus an interactive joule-budgeted
+\texttt{Q32.32} prototype (\texttt{GE-H4} through \texttt{GE-H9} remain
+open).
+
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0356}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1733}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2311}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2133}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1822}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1644}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{ID}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Hypothesis}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Test corpus}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Measure}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Kill criterion}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Status}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+GE-H1 & Simulation projections are bitwise identical across languages,
+OSs, and CPU ISAs & 16-body 2D arena Form (\texttt{Q32.32} fixed-point,
+\texttt{732}-byte state) across \texttt{arm64} macOS, \texttt{aarch64}
+Linux, AMD/Intel \texttt{x86\_64} Linux, and Tiger Lake \texttt{x86\_64}
+Windows 11 & \(H(s_t)\) across Rust, Wasm32, C++20
+(\texttt{Clang}/\allowbreak{}\texttt{GCC}/\allowbreak{}\texttt{MSVC}), Node.js \texttt{BigInt},
+Python 3 for \(10^5\) ticks (\texttt{30} cells) & Any hash mismatch at
+any checkpoint on any \texttt{(\allowbreak{}host,\allowbreak{}\ target)} cell & \textbf{Executed
+(\texttt{0\ /\allowbreak{}\ 25,\allowbreak{}500} mismatches across \texttt{3} OSs \& \texttt{3}
+ISAs, Section 6.1)} \\
+GE-H2 & Strict mode vs 3-OS / cross-ISA floating-point boundary \&
+library/FMA drift & 16-body 2D chaotic arena (\texttt{25,000} ticks
+across \texttt{arm64} macOS, \texttt{aarch64} Linux, \texttt{x86\_64}
+Linux, and \texttt{x86\_64} Windows 11) & Exact divergence ticks
+\texttt{t\_div} across strict \texttt{f64}, 3-OS
+\texttt{UCRT}/\allowbreak{}\texttt{libSystem}/\allowbreak{}\texttt{glibc} \texttt{sin/cos},
+\texttt{MSVC} vs \texttt{Clang} \texttt{FMA}, V8 \texttt{Math.sin}, and
+\texttt{f32} & Unexpected mismatch under pinned algebraic arithmetic, or
+unpredicted silent drift & \textbf{Executed across \texttt{macOS},
+\texttt{Linux}, and \texttt{Windows\ 11} (Section 6.2)} \\
+GE-H3 & Cross-GPU \& cross-API rendering stays within bounded tolerance
+(\texttt{wgpu} / WGSL) & 4 canonical \texttt{Q32.32} states
+(\texttt{t\ =\ 0,\allowbreak{}\ 250,\allowbreak{}\ 1k,\allowbreak{}\ 10k}) rendered at \texttt{512×512}
+\texttt{RGBA8Unorm} on \texttt{8} hardware \texttt{GPU\ ×\ API}
+endpoints (\texttt{DX12}, \texttt{Metal}, \texttt{Vulkan}) +
+\texttt{WARP} + \texttt{llvmpipe} + \texttt{CPU\ Q16.\allowbreak{}16} & Framebuffer
+\texttt{SHA-256}, differing pixel \texttt{\%}, \(\Delta_{\max}\), MAE,
+RMSE, \texttt{PSNR}, and \texttt{SSIM} & Any physical GPU pair failing
+\texttt{PSNR\ \textgreater{}\ 40\ dB},
+\texttt{SSIM\ \textgreater{}\ 0.999}, or \(p(\Delta > 8) \le 0.001\) &
+\textbf{Executed (\texttt{28/28} pairs = \texttt{112/112} frames pass
+gate: \texttt{PSNR\ ≥\ 64.\allowbreak{}16\ dB}, \texttt{SSIM\ ≥\ 0.\allowbreak{}99983}, Section
+6.3)} \\
+GE-H4 & Form-encoded rules cut code as GameRule did & Haunted Jaunt,
+Survival Shooter, Tanks behaviors & Lines of behavior code & Reduction
+under 50\% (GameRule reached 81.3\%) & Open \\
+GE-H5 & Form runtime exceeds the GameRule ceiling & Synthetic actor
+scaling & Step time against \(N\) & Step time over 20 ms below
+\(N = 350\) & Open \\
+GE-H6 & Interface checks catch real defects & Mage's 26 patterns;
+injected binding and schema faults & Detection rate; mechanism F1 &
+Detection below 90\% of injected faults, or F1 no better than the no-IR
+0.12 & Open \\
+GE-H7 & Full \(\ln(\Delta/\delta_0)\) slope sweep on Summer Engine
+templates & Physics-heavy Summer Engine templates re-expressed as Forms
+& Divergence time against injected \(\delta_0\) & Slope of \(t^{*}\)
+against \(\ln(1/\delta_0)\) not distinguishable from zero & Open \\
+GE-H8 & Replay is complete & One-hour recorded sessions & Final hash
+reproduced from \(D\) alone & Any replay that needs state not in \(D\) &
+Open \\
+GE-H9 & Benchmark parity & GameCraft-Bench 140 tasks via a Form-to-Godot
+emitter & Pass rate against native Godot submissions & Lower pass rate
+on behavior-identical inputs & Open \\
+\end{longtable}
+}
+
+
+\begin{center}
+\openiefig{fig/game-engines-fig03-cross-gpu-tolerance.png}{0.94}{https://research.openie.dev/figures/game-engines/cross-gpu-tolerance.svg}
+\end{center}
+
+
+\emph{Figure 3. Empirical boundary across \texttt{GE-H1},
+\texttt{GE-H2}, and \texttt{GE-H3}. Upstream \texttt{Q32.32} simulation
+state (\texttt{S}) achieves \texttt{0\ /\allowbreak{}\ 25,\allowbreak{}500} \texttt{SHA-256}
+checkpoint mismatches across six machines, three OSs (\texttt{macOS},
+\texttt{Linux}, \texttt{Windows\ 11}), and three ISAs, whereas unpinned
+\texttt{f64} \texttt{sin/cos} and \texttt{FMA} diverge across
+OS/compiler/ISA boundaries within \texttt{10} to \texttt{406} ticks.
+Downstream of \(\lambda(s_t)\), switching \texttt{DirectX\ 12} vs
+\texttt{Vulkan} on the exact same Windows 11 GPU flips \texttt{1} LSB
+via shader lowering (\texttt{79.\allowbreak{}5–108.\allowbreak{}3\ dB} \texttt{PSNR}), while all
+\texttt{28\ /\ 28} hardware \texttt{GPU\ ×\ API} pairs stay strictly
+above \texttt{64.16\ dB} \texttt{PSNR} and \texttt{0.99983}
+\texttt{SSIM} (\texttt{measured\_\allowbreak{}j\ =\ None},
+\texttt{board\_\allowbreak{}metered\ =\ false}).}
+
+\subsection{\texorpdfstring{6.1 \texttt{GE-H1}: Three-OS and three-ISA
+100,000-tick determinism (\texttt{Q32.32} integer
+physics)}{6.1 GE-H1: Three-OS and three-ISA 100,000-tick determinism (Q32.32 integer physics)}}\label{ge-h1-three-os-and-three-isa-100000-tick-determinism-q32.32-integer-physics}
+
+\emph{Pre-registered under \texttt{PREREG\_\allowbreak{}wave3\_\allowbreak{}multi\_\allowbreak{}isa\_\allowbreak{}wgpu.\allowbreak{}json}
+(\texttt{SHA-\allowbreak{}256:\ 1721e5bdffaf.\allowbreak{}.\allowbreak{}.\allowbreak{}}). Telemetry strictly separates
+\texttt{SATB} levels \texttt{L2} and \texttt{L3} \texttt{reported\_\allowbreak{}j}
+(\texttt{L2}: Linux \texttt{/\allowbreak{}sys/\allowbreak{}class/\allowbreak{}powercap/\allowbreak{}intel-\allowbreak{}rapl:0/\allowbreak{}energy\_\allowbreak{}uj}
+socket/package and core counters; \texttt{L3}: macOS per-PID
+\texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage(\allowbreak{}child\_\allowbreak{}pid,\allowbreak{}\ RUSAGE\_\allowbreak{}INFO\_\allowbreak{}V6).\allowbreak{}ri\_\allowbreak{}energy\_\allowbreak{}nj},
+plus Win32 \texttt{GetProcessTimes} and \texttt{QueryProcessCycleTime}
+activity accounting on Windows 11 where unprivileged ring-3
+\texttt{RAPL} \texttt{MSR} access is blocked;
+\texttt{measured\_\allowbreak{}j\ =\ None}, \texttt{board\_\allowbreak{}metered\ =\ false}).
+Interactive explorer and raw JSON:
+\href{https://research.openie.dev/living/game-engines/}{\texttt{/\allowbreak{}living/\allowbreak{}game-\allowbreak{}engines/\allowbreak{}}}
+(\href{https://research.openie.dev/living/game-engines/results.json}{\texttt{results.\allowbreak{}json}}).}
+
+A 16-body + 4-pickup 2D elastic-collision and cooldown-FSM arena Form
+(\texttt{Q32.32} signed 64-bit fixed-point coordinates in
+\texttt{{[}-64,\ +64{]}}, \texttt{128}-bit intermediate products,
+integer floor square root \texttt{isqrt\_\allowbreak{}u128}, deferred structural
+pickup respawn, \texttt{732}-byte little-endian canonical state vector)
+was executed for \texttt{100,000} ticks across \textbf{six machines,
+three ISAs (\texttt{arm64}/\allowbreak{}\texttt{AArch64}, \texttt{x86\_64},
+\texttt{wasm32}), three operating systems (\texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1},
+\texttt{Ubuntu\ Linux\ 6.\allowbreak{}8\ /\allowbreak{}\ 7.\allowbreak{}0},
+\texttt{Microsoft\ Windows\ 11\ Pro} build \texttt{26300}), and seven
+language/compiler projections (\texttt{30} target × host cells)}:
+
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1871}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1754}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1287}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0994}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1637}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1345}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Host (\texttt{ISA} · \texttt{OS})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Target projection}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Wall ms / \texttt{100k} (mean ± SD)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{ns\ /\allowbreak{}\ tick}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Telemetry channel (\texttt{reported\_\allowbreak{}j})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{reported\_\allowbreak{}j} / \texttt{100k} (J)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Verified \texttt{SHA-256} checkpoints}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Apple M5 Max} (\texttt{arm64} · \texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1}) &
+\texttt{rust\_\allowbreak{}native} (\texttt{rustc\ 1.\allowbreak{}100\ -\allowbreak{}O}) &
+\texttt{22.\allowbreak{}333\ ±\ 5.\allowbreak{}043} & \texttt{223.3} & \texttt{L3} per-PID
+\texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj} & \textbf{\texttt{0.\allowbreak{}1028\ ±\ 0.\allowbreak{}0247}} &
+\texttt{100\ /\allowbreak{}\ 100} (\texttt{stride\ 1,\allowbreak{}000}) \\
+\textbf{Apple M5 Max} (\texttt{arm64} · \texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1}) &
+\texttt{cpp20\_\allowbreak{}clang\_\allowbreak{}o3} (\texttt{Apple\ Clang\ 21}) &
+\texttt{21.\allowbreak{}022\ ±\ 1.\allowbreak{}657} & \texttt{210.2} & \texttt{L3} per-PID
+\texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj} & \textbf{\texttt{0.\allowbreak{}1090\ ±\ 0.\allowbreak{}0134}} &
+\texttt{100\ /\allowbreak{}\ 100} (\texttt{stride\ 1,\allowbreak{}000}) \\
+\textbf{Apple M5 Max} (\texttt{arm64} · \texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1}) &
+\texttt{rust\_\allowbreak{}wasm32\_\allowbreak{}node} (\texttt{Node\ v26.\allowbreak{}13}) &
+\texttt{84.\allowbreak{}300\ ±\ 11.\allowbreak{}334} & \texttt{843.0} & \texttt{L3} per-PID
+\texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj} & \textbf{\texttt{0.\allowbreak{}4480\ ±\ 0.\allowbreak{}0881}} &
+\texttt{100\ /\allowbreak{}\ 100} (\texttt{stride\ 1,\allowbreak{}000}) \\
+\textbf{Apple M5 Max} (\texttt{arm64} · \texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1}) &
+\texttt{javascript\_\allowbreak{}bigint\_\allowbreak{}node} (\texttt{ES2024}) &
+\texttt{717.\allowbreak{}955\ ±\ 36.\allowbreak{}304} & \texttt{7,179.6} & \texttt{L3} per-PID
+\texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj} & \textbf{\texttt{4.\allowbreak{}4021\ ±\ 0.\allowbreak{}4048}} &
+\texttt{100\ /\allowbreak{}\ 100} (\texttt{stride\ 1,\allowbreak{}000}) \\
+\textbf{Apple M5 Max} (\texttt{arm64} · \texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1}) &
+\texttt{python\_\allowbreak{}3\_\allowbreak{}13} (\texttt{CPython\ 3.\allowbreak{}13.\allowbreak{}14}) &
+\texttt{2,\allowbreak{}945.\allowbreak{}816\ ±\ 284.\allowbreak{}033} & \texttt{29,458.2} & \texttt{L3} per-PID
+\texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj} & \textbf{\texttt{13.\allowbreak{}5999\ ±\ 1.\allowbreak{}9086}} &
+\texttt{100\ /\allowbreak{}\ 100} (\texttt{stride\ 1,\allowbreak{}000}) \\
+\textbf{Apple M3 Ultra} (\texttt{arm64} · \texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1}) &
+\texttt{rust\_\allowbreak{}native} / \texttt{cpp20\_\allowbreak{}clang\_\allowbreak{}o3} & \texttt{32.711} /
+\texttt{33.727} & \texttt{327.1} / \texttt{337.3} & \texttt{L3} per-PID
+\texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj} & \textbf{\texttt{0.0729} / \texttt{0.0755}} &
+\texttt{2\ ×\ 1,\allowbreak{}000\ /\allowbreak{}\ 1,\allowbreak{}000} (\texttt{stride\ 100}) \\
+\textbf{AMD Ryzen AI Max+ 395} (\texttt{Zen\ 5} \texttt{x86\_64} ·
+\texttt{Linux\ 7.\allowbreak{}0}) & \texttt{rust\_\allowbreak{}native} / \texttt{cpp20\_\allowbreak{}clang\_\allowbreak{}o3}
+/ \texttt{cpp20\_\allowbreak{}gcc\_\allowbreak{}o3} & \texttt{21.793} / \texttt{23.061} /
+\texttt{26.677} & \texttt{217.9} -- \texttt{266.8} & \texttt{L2} AMD
+RAPL pkg (core \texttt{0.13}--\texttt{0.21\ J}) & \textbf{\texttt{1.958}
+/ \texttt{2.349} / \texttt{2.932}} & \texttt{3\ ×\ 1,\allowbreak{}000\ /\allowbreak{}\ 1,\allowbreak{}000}
+(\texttt{stride\ 100}) \\
+\textbf{AMD Ryzen AI Max+ 395} (\texttt{Zen\ 5} \texttt{x86\_64} ·
+\texttt{Linux\ 7.\allowbreak{}0}) & \texttt{rust\_\allowbreak{}wasm32} / \texttt{js\_\allowbreak{}bigint} /
+\texttt{python\_\allowbreak{}3\_\allowbreak{}14} & \texttt{145.29} / \texttt{1,347.80} /
+\texttt{2,546.42} & \texttt{1,452.9} -- \texttt{25,464.2} & \texttt{L2}
+AMD RAPL pkg (core \texttt{1.01}--\texttt{12.23\ J}) &
+\textbf{\texttt{14.44} / \texttt{115.81} / \texttt{181.87}} &
+\texttt{3\ ×\ 1,\allowbreak{}000\ /\allowbreak{}\ 1,\allowbreak{}000} (\texttt{stride\ 100}) \\
+\textbf{Intel Core i9-13900H} (\texttt{Raptor\ Lake} \texttt{x86\_64} ·
+\texttt{Linux\ 7.\allowbreak{}0}) & \texttt{rust\_\allowbreak{}native} / \texttt{cpp20\_\allowbreak{}clang\_\allowbreak{}o3}
+/ \texttt{cpp20\_\allowbreak{}gcc\_\allowbreak{}o3} & \texttt{39.718} / \texttt{36.868} /
+\texttt{58.792} & \texttt{368.7} -- \texttt{587.9} & \texttt{L2} Intel
+RAPL pkg (core \texttt{1.64}--\texttt{2.68\ J}) & \textbf{\texttt{2.062}
+/ \texttt{1.888} / \texttt{3.026}} & \texttt{3\ ×\ 1,\allowbreak{}000\ /\allowbreak{}\ 1,\allowbreak{}000}
+(\texttt{stride\ 100}) \\
+\textbf{Intel Core i9-13900H} (\texttt{Raptor\ Lake} \texttt{x86\_64} ·
+\texttt{Linux\ 7.\allowbreak{}0}) & \texttt{rust\_\allowbreak{}wasm32} / \texttt{js\_\allowbreak{}bigint} /
+\texttt{python\_\allowbreak{}3\_\allowbreak{}14} & \texttt{158.35} / \texttt{1,390.46} /
+\texttt{3,375.07} & \texttt{1,583.5} -- \texttt{33,750.7} & \texttt{L2}
+Intel RAPL pkg (core \texttt{5.65}--\texttt{124.90\ J}) &
+\textbf{\texttt{6.89} / \texttt{60.79} / \texttt{149.48}} &
+\texttt{3\ ×\ 1,\allowbreak{}000\ /\allowbreak{}\ 1,\allowbreak{}000} (\texttt{stride\ 100}) \\
+\textbf{NVIDIA Jetson Thor} (\texttt{Armv9-A} \texttt{aarch64} ·
+\texttt{Linux\ 6.\allowbreak{}8}) & \texttt{rust\_\allowbreak{}native} / \texttt{clang} /
+\texttt{gcc} / \texttt{wasm32} / \texttt{js} / \texttt{py3.12} &
+\texttt{39.28} (\texttt{GCC}) -- \texttt{4,407.89} (\texttt{Py}) &
+\texttt{392.8} -- \texttt{44,078.9} & CPU-only
+(\texttt{reported\_\allowbreak{}j\ =\ null}, GPU untouched) & \texttt{null} &
+\texttt{6\ ×\ 1,\allowbreak{}000\ /\allowbreak{}\ 1,\allowbreak{}000} (\texttt{stride\ 100}) \\
+\textbf{Intel Core i7-1165G7} (\texttt{Tiger\ Lake} \texttt{x86\_64} ·
+\texttt{Windows\ 11\ 26300}) & \texttt{rust\_\allowbreak{}native}
+(\texttt{x86\_\allowbreak{}64-\allowbreak{}pc-\allowbreak{}windows-\allowbreak{}msvc}) / \texttt{cpp20\_\allowbreak{}msvc\_\allowbreak{}o2}
+(\texttt{cl.\allowbreak{}exe\ 19.\allowbreak{}44}) & \texttt{49.\allowbreak{}730\ ±\ 1.\allowbreak{}727} /
+\texttt{343.\allowbreak{}363\ ±\ 3.\allowbreak{}827} & \texttt{497.3} / \texttt{3,433.6} & Win32
+\texttt{L3} cycles (\texttt{138.9M} / \texttt{958.9M}; CPU \texttt{RAPL}
+blocked) & \texttt{null} & \texttt{2\ ×\ 1,\allowbreak{}000\ /\allowbreak{}\ 1,\allowbreak{}000}
+(\texttt{stride\ 100}) \\
+\textbf{Intel Core i7-1165G7} (\texttt{Tiger\ Lake} \texttt{x86\_64} ·
+\texttt{Windows\ 11\ 26300}) & \texttt{rust\_\allowbreak{}wasm32}
+(\texttt{Node\ v26.\allowbreak{}13}) / \texttt{js\_\allowbreak{}bigint} / \texttt{python\_\allowbreak{}3\_\allowbreak{}10} &
+\texttt{198.01} / \texttt{1,776.96} / \texttt{8,899.23} &
+\texttt{1,980.1} -- \texttt{88,992.3} & Win32 \texttt{L3} cycles
+(\texttt{553.8M} -- \texttt{24,722.2M}; CPU \texttt{RAPL} blocked) &
+\texttt{null} & \texttt{3\ ×\ 1,\allowbreak{}000\ /\allowbreak{}\ 1,\allowbreak{}000} (\texttt{stride\ 100}) \\
+\end{longtable}
+}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Verdict}: \textbf{\texttt{PASS\_\allowbreak{}ZERO\_\allowbreak{}MISMATCHES}
+  (\texttt{0\ /\allowbreak{}\ 25,\allowbreak{}500} verified \texttt{SHA-256} checkpoints across
+  \texttt{30} cells; \texttt{0\ /\allowbreak{}\ 300,\allowbreak{}000} pairwise stride-\texttt{100}
+  comparisons across the \texttt{25} full-trace cells spanning
+  \texttt{macOS}, \texttt{Linux}, and \texttt{Windows\ 11})}. Every
+  target on every host produced \texttt{2683c3f7cb8b.\allowbreak{}.\allowbreak{}.\allowbreak{}} at tick
+  \texttt{100}, \texttt{21fa688e4ee8.\allowbreak{}.\allowbreak{}.\allowbreak{}} at tick \texttt{1,000},
+  \texttt{ea01ba793841.\allowbreak{}.\allowbreak{}.\allowbreak{}} at tick \texttt{50,000}, and
+  \texttt{82e404df\allowbreak{}6475d64d.\allowbreak{}.\allowbreak{}.\allowbreak{}} at tick \texttt{100,000}.
+\item
+  \textbf{Windows \texttt{MSVC}
+  \texttt{\textless{}\_\_msvc\_int128.hpp\textgreater{}} vs
+  \texttt{LLVM} \texttt{i128} codegen}: On bare-metal Windows 11
+  (\texttt{x86\_64} \texttt{PE}), \texttt{MSVC}
+  (\texttt{cl.\allowbreak{}exe\ 19.\allowbreak{}44.\allowbreak{}35207\ /\allowbreak{}std:c++20\ /\allowbreak{}O2\ /\allowbreak{}fp:strict}) lacks
+  built-in \texttt{\_\allowbreak{}\_\allowbreak{}int128} scalar types and lowers
+  \texttt{\textless{}\_\_msvc\_int128.hpp\textgreater{}}
+  \texttt{std::\_\allowbreak{}Signed128} and \texttt{std::\_\allowbreak{}Unsigned128} arithmetic
+  to multi-word library routines (\texttt{343.\allowbreak{}36\ ms}, \texttt{958.9M}
+  CPU cycles per \texttt{100k} ticks --- \texttt{6.90×} slower than
+  \texttt{rustc\ 1.\allowbreak{}100} LLVM native \texttt{x86\_\allowbreak{}64-\allowbreak{}pc-\allowbreak{}windows-\allowbreak{}msvc} at
+  \texttt{49.73\ ms} / \texttt{138.9M} cycles, and \texttt{1.73×} slower
+  than \texttt{Node.js} \texttt{Wasm32} JIT at \texttt{198.\allowbreak{}01\ ms}), yet
+  preserves \texttt{100\%} bit-for-bit state parity across all
+  \texttt{1,000} checkpoints.
+\item
+  \textbf{Telemetry scope across \texttt{macOS}, \texttt{Linux}, and
+  \texttt{Windows\ 11}}: Notice why \texttt{L2} and \texttt{L3} channels
+  must never be conflated: Apple \texttt{L3} \texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj}
+  attributes CPU core energy strictly to the benchmarked child PID
+  (\texttt{0.073}--\texttt{0.109\ J} for native Rust/C++), Linux
+  \texttt{/\allowbreak{}sys/\allowbreak{}class/\allowbreak{}powercap/\allowbreak{}intel-\allowbreak{}rapl:0} (\texttt{L2}) integrates
+  socket-wide package power (\texttt{1.89}--\texttt{2.06\ J} package vs
+  \texttt{0.13}--\texttt{1.83\ J} \texttt{core}), and Windows
+  \texttt{NT\ 10.\allowbreak{}0.\allowbreak{}26300} blocks unprivileged user-mode Intel
+  \texttt{RAPL} \texttt{MSR} reads without a ring-0 kernel driver while
+  exposing exact per-PID \texttt{L3} cycle counts
+  (\texttt{QueryProcessCycleTime}).
+\end{itemize}
+
+\subsection{\texorpdfstring{6.2 \texttt{GE-H2}: Three-OS and cross-ISA
+25,000-tick floating-point drift (\texttt{IEEE\ 754}
+\texttt{f64})}{6.2 GE-H2: Three-OS and cross-ISA 25,000-tick floating-point drift (IEEE 754 f64)}}\label{ge-h2-three-os-and-cross-isa-25000-tick-floating-point-drift-ieee-754-f64}
+
+To test whether \texttt{IEEE\ 754} \texttt{binary64} (\texttt{f64})
+simulations stay synchronized across \texttt{Windows\ 11},
+\texttt{macOS}, and \texttt{Linux} (\texttt{x86\_64} and
+\texttt{arm64}/\allowbreak{}\texttt{aarch64}) when \texttt{-\allowbreak{}ffast-\allowbreak{}math} and
+\texttt{/fp:fast} are \emph{forbidden}, the identical 16-body chaotic
+arena was stepped for \texttt{25,000} ticks
+(\texttt{\textasciitilde{}6.94} minutes at \texttt{60\ Hz}), hashing
+canonical \texttt{IEEE\ 754} bits (\texttt{t\_\allowbreak{}div\_\allowbreak{}ieee\_\allowbreak{}bits}),
+quantized \texttt{10\^{}-3} arena-unit positions
+(\texttt{t\_\allowbreak{}div\_\allowbreak{}macro\_\allowbreak{}1e3}), and discrete gameplay state
+(\texttt{t\_\allowbreak{}div\_\allowbreak{}gameplay}) at every single tick:
+
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2026}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2876}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0915}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0915}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1046}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Host / Target A}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Host / Target B}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Perturbation mechanism}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{t\_\allowbreak{}div\_\allowbreak{}ieee\_\allowbreak{}bits}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{t\_\allowbreak{}div\_\allowbreak{}macro\_\allowbreak{}1e3}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{t\_\allowbreak{}div\_\allowbreak{}gameplay}}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{Windows\ 11\ x86\_\allowbreak{}64} (\texttt{MSVC\ /\allowbreak{}fp:strict}, \texttt{Rust},
+\texttt{V8}, \texttt{Py}) & \texttt{arm64\ macOS} \&
+\texttt{x86\_64}/\allowbreak{}\texttt{aarch64\ Linux}
+(\texttt{Clang}/\allowbreak{}\texttt{GCC}/\allowbreak{}\texttt{Rust}) & 3-OS \& 3-ISA \texttt{f64}
+\& \texttt{f32} algebraic + \texttt{sqrt}, \texttt{FMA} off
+(\texttt{/\allowbreak{}fp:strict}, \texttt{-\allowbreak{}ffp-\allowbreak{}contract=off}, no trig) &
+\texttt{None\ (\textgreater{}25,000)} &
+\texttt{None\ (\textgreater{}25,000)} &
+\texttt{None\ (\textgreater{}25,000)} \\
+\texttt{x86\_\allowbreak{}64\ Linux\ glibc\ 2.\allowbreak{}43} (\texttt{f64\_trig}) &
+\texttt{aarch64\ Linux\ glibc\ 2.\allowbreak{}39} (\texttt{f64\_trig}) & Cross-ISA
+Linux GNU \texttt{glibc} \texttt{std::sin/\allowbreak{}cos}
+(\texttt{-\allowbreak{}ffp-\allowbreak{}contract=off}, no \texttt{-\allowbreak{}ffast-\allowbreak{}math}) &
+\texttt{None\ (\textgreater{}25,000)} &
+\texttt{None\ (\textgreater{}25,000)} &
+\texttt{None\ (\textgreater{}25,000)} \\
+\textbf{\texttt{Windows\ 11\ x86\_\allowbreak{}64\ UCRT} (\texttt{MSVC\ /\allowbreak{}fp:strict}
+\& \texttt{Rust})} & \textbf{\texttt{x86\_\allowbreak{}64\ Linux\ GNU\ glibc\ 2.\allowbreak{}43}
+(\texttt{Clang} \& \texttt{Rust}, \texttt{-\allowbreak{}ffp-\allowbreak{}contract=off})} &
+\textbf{Cross-OS same-ISA (\texttt{x86\_64}) \texttt{std::sin/\allowbreak{}cos}
+(\texttt{ucrtbase.\allowbreak{}dll} vs \texttt{glibc}, no fast-math)} &
+\textbf{\texttt{10}} (\texttt{0.17\ s}) & \textbf{\texttt{7,899}} &
+\textbf{\texttt{10,392}} (\texttt{173.2\ s}) \\
+\textbf{Apple \texttt{arm64} macOS (\texttt{f64\_trig},
+\texttt{-\allowbreak{}ffp-\allowbreak{}contract=off})} & \textbf{AMD/Intel \texttt{x86\_64} \&
+Thor \texttt{aarch64} Linux (\texttt{f64\_trig},
+\texttt{-\allowbreak{}ffp-\allowbreak{}contract=off})} & \textbf{Cross-OS standard \texttt{libm}
+\texttt{std::sin/\allowbreak{}cos} (\texttt{Apple\ libSystem} vs \texttt{GNU\ glibc},
+no \texttt{-\allowbreak{}ffast-\allowbreak{}math})} & \textbf{\texttt{10}} (\texttt{0.17\ s}) &
+\textbf{\texttt{5,900}} & \textbf{\texttt{9,798}} (\texttt{163.3\ s}) \\
+\textbf{\texttt{Windows\ 11\ x86\_\allowbreak{}64\ UCRT} (\texttt{MSVC\ /\allowbreak{}fp:strict}
+\& \texttt{Rust})} & \textbf{Apple \texttt{arm64} macOS
+(\texttt{libSystem}, \texttt{-\allowbreak{}ffp-\allowbreak{}contract=off})} & \textbf{Cross-OS \&
+Cross-ISA \texttt{std::sin/\allowbreak{}cos} (\texttt{Windows\ UCRT} vs
+\texttt{Apple\ libSystem}, no fast-math)} & \textbf{\texttt{37}}
+(\texttt{0.62\ s}) & \textbf{\texttt{5,900}} & \textbf{\texttt{9,798}}
+(\texttt{163.3\ s}) \\
+\textbf{\texttt{Windows\ 11\ MSVC}
+(\texttt{/\allowbreak{}O2\ /\allowbreak{}arch:AVX2\ /\allowbreak{}fp:precise} default)} &
+\textbf{\texttt{x86\_\allowbreak{}64\ Linux\ Clang\ 21}
+(\texttt{-\allowbreak{}O3\ -\allowbreak{}mavx2\ -\allowbreak{}mfma\ -\allowbreak{}ffp-\allowbreak{}contract=fast} default)} &
+\textbf{Cross-compiler \texttt{x86\_64} \texttt{FMA} default
+(\texttt{MSVC\ /\allowbreak{}fp:precise} no-contract vs \texttt{Clang} \texttt{FMA},
+algebraic only)} & \textbf{\texttt{192}} (\texttt{3.20\ s}) &
+\textbf{\texttt{5,927}} & \textbf{\texttt{8,869}} (\texttt{147.8\ s}) \\
+\textbf{\texttt{x86\_64} Linux
+(\texttt{-\allowbreak{}O3\ -\allowbreak{}mavx2\ -\allowbreak{}mfma\ -\allowbreak{}ffp-\allowbreak{}contract=fast})} & \textbf{Apple
+\texttt{arm64} \& Thor \texttt{aarch64}
+(\texttt{-\allowbreak{}O3\ -\allowbreak{}ffp-\allowbreak{}contract=fast})} & \textbf{Cross-ISA \texttt{FMA}
+lowering (\texttt{x86\_\allowbreak{}64\ VFMADD/\allowbreak{}VFNMADD} vs
+\texttt{AArch64\ FMADD/\allowbreak{}FMSUB}, algebraic only, no \texttt{-\allowbreak{}ffast-\allowbreak{}math})}
+& \textbf{\texttt{406}} (\texttt{6.77\ s}) & \textbf{\texttt{7,422}} &
+\textbf{\texttt{11,205}} (\texttt{186.8\ s}) \\
+\textbf{\texttt{Windows\ 11} \& \texttt{Linux\ x86\_\allowbreak{}64} \texttt{Node.js}
+(\texttt{V8\ Math.\allowbreak{}sin/\allowbreak{}cos})} & \textbf{\texttt{macOS\ arm64} \&
+\texttt{Linux\ aarch64} \texttt{Node.js} (\texttt{V8\ Math.\allowbreak{}sin/\allowbreak{}cos})} &
+\textbf{Cross-ISA Node.js V8 \texttt{Math.\allowbreak{}sin/\allowbreak{}cos} (\texttt{0} drift
+Win11 vs Linux \texttt{x86\_64}; diverges vs
+\texttt{arm64}/\allowbreak{}\texttt{aarch64})} & \textbf{\texttt{66}}
+(\texttt{1.10\ s}) & \textbf{\texttt{7,617}} & \textbf{\texttt{10,093}}
+(\texttt{168.2\ s}) \\
+\textbf{\texttt{cpp\_\allowbreak{}f64\_\allowbreak{}strict} (\texttt{/\allowbreak{}fp:strict},
+\texttt{-\allowbreak{}ffp-\allowbreak{}contract=off})} & \textbf{\texttt{MSVC\ /\allowbreak{}fp:fast},
+\texttt{Rust\ mul\_\allowbreak{}add}, or \texttt{Clang\ -\allowbreak{}ffast-\allowbreak{}math}} &
+\textbf{Same-host \texttt{FMA} contraction (\texttt{/\allowbreak{}fp:strict} vs
+\texttt{/fp:fast} or explicit \texttt{mul\_add})} &
+\textbf{\texttt{192}} (\texttt{3.20\ s}) &
+\textbf{\texttt{5,927}--\texttt{6,576}} &
+\textbf{\texttt{8,869}--\texttt{10,093}} \\
+\textbf{\texttt{cpp\_\allowbreak{}f64\_\allowbreak{}strict} / \texttt{trig}} &
+\textbf{\texttt{cpp\_\allowbreak{}f32\_\allowbreak{}strict} / \texttt{trig}} & \textbf{Precision
+step-down (\texttt{binary64} \texttt{f64} vs \texttt{binary32}
+\texttt{f32})} & \textbf{\texttt{1}} & \textbf{\texttt{8}--\texttt{9}} &
+\textbf{\texttt{1,370}--\texttt{2,240}} \\
+\end{longtable}
+}
+
+Four sharp 3-OS and cross-ISA findings emerge:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{IEEE 754-2008 \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/},
+  and \texttt{sqrt} with \texttt{FMA} disabled (\texttt{/\allowbreak{}fp:strict} and
+  \texttt{-\allowbreak{}ffp-\allowbreak{}contract=off}) are bitwise portable across
+  \texttt{Windows\ 11}, \texttt{macOS}, and \texttt{Linux} on both
+  \texttt{x86\_64} and \texttt{arm64}/\allowbreak{}\texttt{aarch64}} (\texttt{0}
+  mismatches over \texttt{25,000} ticks across \texttt{MSVC},
+  \texttt{Clang}, \texttt{GCC}, \texttt{Rustc}, \texttt{V8}, and
+  \texttt{CPython}), because all five operations are mandated to round
+  to \texttt{0.5} ULP.
+\item
+  \textbf{All three major OS math libraries (\texttt{Windows\ UCRT},
+  \texttt{macOS\ libSystem}, and \texttt{Linux\ GNU\ glibc}) form a
+  pairwise-divergent triangle under strict \texttt{f64}
+  (\texttt{no\ fast-\allowbreak{}math})}: even on the \emph{same} \texttt{x86\_64}
+  ISA, Windows \texttt{ucrtbase.\allowbreak{}dll} (\texttt{10.\allowbreak{}0.\allowbreak{}26100.\allowbreak{}9711}) diverges
+  from Linux \texttt{glibc\ 2.\allowbreak{}43} at tick \texttt{10}
+  (\texttt{t\_\allowbreak{}div\_\allowbreak{}gameplay\ =\ 10,\allowbreak{}392}), while \texttt{Windows\ UCRT}
+  diverges from \texttt{Apple\ libSystem} at tick \texttt{37}
+  (\texttt{t\_\allowbreak{}div\_\allowbreak{}gameplay\ =\ 9,\allowbreak{}798}) and \texttt{Apple\ libSystem}
+  diverges from \texttt{glibc} at tick \texttt{10}
+  (\texttt{t\_\allowbreak{}div\_\allowbreak{}gameplay\ =\ 9,\allowbreak{}798}). Within Windows 11,
+  \texttt{MSVC\ /\allowbreak{}fp:strict}, \texttt{Rust\ x86\_\allowbreak{}64-\allowbreak{}pc-\allowbreak{}windows-\allowbreak{}msvc}, and
+  \texttt{CPython\ 3.\allowbreak{}10} all link \texttt{ucrtbase.\allowbreak{}dll} and agree for
+  \texttt{\textgreater{}\ 25,000} ticks (\texttt{b1fbc917\allowbreak{}88a59cff}), but
+  diverge from Windows \texttt{Node.\allowbreak{}js\ V8} at tick \texttt{149}.
+\item
+  \textbf{Default compiler \texttt{FMA} policy diverges across
+  \texttt{MSVC} and \texttt{Clang} on the same \texttt{x86\_64} ISA
+  (\texttt{t\ =\ 192}), and across \texttt{x86\_64} and \texttt{AArch64}
+  (\texttt{t\ =\ 406})}: \texttt{MSVC}'s default
+  \texttt{/\allowbreak{}O2\ /\allowbreak{}arch:AVX2\ /\allowbreak{}fp:precise} does \emph{not} contract
+  \texttt{a\ +\ b\ *\ c} (\texttt{\textgreater{}\ 25,000} ticks
+  identical to \texttt{/\allowbreak{}fp:strict}), so it diverges at tick \texttt{192}
+  (\texttt{t\_\allowbreak{}div\_\allowbreak{}gameplay\ =\ 8,\allowbreak{}869}) from \texttt{Clang\ 21}'s
+  default \texttt{-\allowbreak{}O3\ -\allowbreak{}mavx2\ -\allowbreak{}mfma} (\texttt{-\allowbreak{}ffp-\allowbreak{}contract=fast} on by
+  default). Even when both compilers enable contraction, LLVM lowers
+  negated multiply-subtract differently across \texttt{x86\_64}
+  (\texttt{VFMADD}/\allowbreak{}\texttt{VFNMADD}) and \texttt{AArch64}
+  (\texttt{FMADD}/\allowbreak{}\texttt{FMSUB}), diverging at tick \texttt{406}
+  (\texttt{t\_\allowbreak{}div\_\allowbreak{}gameplay\ =\ 11,\allowbreak{}205}).
+\item
+  \textbf{JavaScript V8 \texttt{Math.sin}/\allowbreak{}\texttt{Math.cos} is
+  OS-independent on \texttt{x86\_64} (\texttt{Windows\ 11\ Node\ v26.\allowbreak{}13}
+  matches \texttt{Linux\ x86\_\allowbreak{}64\ Node\ v22.\allowbreak{}22} for
+  \texttt{\textgreater{}\ 25,000} ticks) yet ISA-dependent
+  (\texttt{x86\_64} vs \texttt{arm64}/\allowbreak{}\texttt{aarch64} diverges at tick
+  \texttt{66})}.
+\end{enumerate}
+
+\subsection{\texorpdfstring{6.3 \texttt{GE-H3}: Three-OS, three-API
+headless \texttt{wgpu} (\texttt{DirectX\ 12} / \texttt{Metal} /
+\texttt{Vulkan}) rendering
+tolerance}{6.3 GE-H3: Three-OS, three-API headless wgpu (DirectX 12 / Metal / Vulkan) rendering tolerance}}\label{ge-h3-three-os-three-api-headless-wgpu-directx-12-metal-vulkan-rendering-tolerance}
+
+To test the right-hand side of Figure 1 across all three major desktop
+graphics APIs, \texttt{ge\_\allowbreak{}h3\_\allowbreak{}wgpu\_\allowbreak{}bench} (\texttt{wgpu\ v22.\allowbreak{}1.\allowbreak{}0} with
+\texttt{Backends::DX12\ \textbar{}\ Backends::VULKAN\ \textbar{}\ Backends::METAL})
+rendered the four canonical \texttt{Q32.32} simulation snapshots
+(\texttt{ticks\ 0,\allowbreak{}\ 250,\allowbreak{}\ 1,\allowbreak{}000,\allowbreak{}\ 10,\allowbreak{}000}) into \texttt{512×512}
+\texttt{RGBA8Unorm} framebuffers (\texttt{262,144} pixels,
+\texttt{1,048,576} bytes/frame) via the identical two-pass WGSL shader
+across \textbf{eight hardware \texttt{GPU\ ×\ API} endpoints}
+(\texttt{Apple\ M3\ Ultra\ Metal},
+\texttt{AMD\ Radeon\ 8060S\ Linux\ RADV\ Vulkan},
+\texttt{Intel\ Iris\ Xe\ RPL-\allowbreak{}P\ Linux\ ANV\ Vulkan},
+\texttt{NVIDIA\ RTX\ 4050\ Linux\ Vulkan},
+\texttt{NVIDIA\ RTX\ 2060\ Win11\ DirectX\ 12},
+\texttt{NVIDIA\ RTX\ 2060\ Win11\ Vulkan},
+\texttt{Intel\ Iris\ Xe\ TGL\ Win11\ DirectX\ 12}, and
+\texttt{Intel\ Iris\ Xe\ TGL\ Win11\ Vulkan}), alongside
+\textbf{\texttt{Microsoft\ Basic\ Render\ Driver}
+(\texttt{Win11\ DirectX\ 12\ WARP})}, \textbf{\texttt{Mesa\ llvmpipe}
+(\texttt{Linux\ CPU\ Vulkan})}, and the zero-float
+\textbf{\texttt{CPU\ Q16.\allowbreak{}16}} integer reference rasterizer:
+
+{\scriptsize\setlength{\tabcolsep}{2.4pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1686}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1802}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1221}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1453}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0814}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0872}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0814}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0640}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.0698}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Adapter A (\texttt{OS} · \texttt{API} · Driver)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Adapter B (\texttt{OS} · \texttt{API} · Driver)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Mean differing pixels (\texttt{\%})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Max \(\lvert \Delta \rvert\) (\texttt{0..255})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Mean MAE (\texttt{u8})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Mean RMSE (\texttt{u8})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Min \texttt{PSNR} (\texttt{dB})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Min \texttt{SSIM}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\texttt{GE-H3} Gate}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{NVIDIA RTX 2060 (\texttt{Win11\ DirectX\ 12} · \texttt{591.74})}
+& \textbf{NVIDIA RTX 4050 (\texttt{Linux\ Vulkan} · \texttt{595.99.02})}
+& \textbf{\texttt{0.000\%}} (\texttt{0} px) & \textbf{\texttt{0}} &
+\texttt{0.00000} & \texttt{0.00000} & \textbf{\texttt{∞} (\texttt{4/4}
+exact)} & \textbf{\texttt{1.000000}} & \textbf{Pass} \\
+\textbf{NVIDIA RTX 2060 (\texttt{Win11\ DirectX\ 12} ·
+\texttt{HLSL}/\allowbreak{}\texttt{DXIL})} & \textbf{NVIDIA RTX 2060
+(\texttt{Win11\ Vulkan} · \texttt{SPIR-V})} \emph{(same GPU)} &
+\textbf{\texttt{0.0002\%}} (\texttt{0–1} px) & \textbf{\texttt{1}} &
+\texttt{0.000001} & \texttt{0.00049} & \textbf{\texttt{108.34}} &
+\textbf{\texttt{1.000000}} & \textbf{Pass} \\
+\textbf{Intel Iris Xe (\texttt{Win11\ DirectX\ 12} ·
+\texttt{31.\allowbreak{}0.\allowbreak{}101.\allowbreak{}3222})} & \textbf{Intel Iris Xe (\texttt{Linux\ Vulkan}
+· Mesa \texttt{ANV} 26.0.8)} & \texttt{0.0003\%} & \texttt{1} &
+\texttt{0.000001} & \texttt{0.00059} & \textbf{\texttt{105.33}} &
+\textbf{\texttt{1.000000}} & \textbf{Pass} \\
+\textbf{Intel Iris Xe (\texttt{Win11\ DirectX\ 12} ·
+\texttt{HLSL}/\allowbreak{}\texttt{DXIL})} & \textbf{Intel Iris Xe
+(\texttt{Win11\ Vulkan} · \texttt{SPIR-V})} \emph{(same GPU)} &
+\textbf{\texttt{0.283\%}} (\texttt{729–758} px) & \textbf{\texttt{1}} &
+\texttt{0.00071} & \texttt{0.02665} & \textbf{\texttt{79.52}} &
+\textbf{\texttt{0.999996}} & \textbf{Pass} \\
+\textbf{Apple M3 Ultra (\texttt{macOS\ Metal} 4)} & \textbf{Intel Iris
+Xe (\texttt{Win11\ DirectX\ 12} / \texttt{Linux\ ANV\ Vulkan})} &
+\texttt{1.301\%} & \texttt{2} & \texttt{0.00386} & \texttt{0.06215} &
+\textbf{\texttt{72.06}} & \textbf{\texttt{0.999986}} & \textbf{Pass} \\
+\textbf{Apple M3 Ultra (\texttt{macOS\ Metal} 4)} & \textbf{Intel Iris
+Xe (\texttt{Win11\ Vulkan} · \texttt{31.\allowbreak{}0.\allowbreak{}101.\allowbreak{}3222})} & \texttt{1.573\%}
+& \texttt{2} & \texttt{0.00455} & \texttt{0.06743} &
+\textbf{\texttt{71.39}} & \textbf{\texttt{0.999982}} & \textbf{Pass} \\
+\textbf{AMD Radeon 8060S (\texttt{Linux\ Vulkan} · Mesa \texttt{RADV})}
+& \textbf{Apple M3 Ultra (\texttt{macOS\ Metal} 4)} & \texttt{3.103\%} &
+\texttt{1} & \texttt{0.00788} & \texttt{0.08876} &
+\textbf{\texttt{69.09}} & \textbf{\texttt{0.999956}} & \textbf{Pass} \\
+\textbf{AMD Radeon 8060S (\texttt{Linux\ Vulkan} · Mesa \texttt{RADV})}
+& \textbf{Intel Iris Xe (\texttt{Win11\ DirectX\ 12} /
+\texttt{Win11\ Vulkan})} & \texttt{3.774\%} / \texttt{3.565\%} &
+\texttt{2} & \texttt{0.01022} / \texttt{0.00968} & \texttt{0.10116} /
+\texttt{0.09844} & \textbf{\texttt{67.97}} / \textbf{\texttt{68.20}} &
+\textbf{\texttt{0.999951}} & \textbf{Pass} \\
+\textbf{AMD Radeon 8060S (\texttt{Linux\ Vulkan} · Mesa \texttt{RADV})}
+& \textbf{NVIDIA RTX 2060 (\texttt{Win11\ DX12} / \texttt{Vulkan}) \&
+RTX 4050} & \texttt{6.554\%} & \texttt{2} & \texttt{0.01735} &
+\texttt{0.13180} & \textbf{\texttt{65.64}} & \textbf{\texttt{0.999874}}
+& \textbf{Pass} \\
+\textbf{NVIDIA RTX 2060 (\texttt{Win11\ DirectX\ 12})} & \textbf{Intel
+Iris Xe (\texttt{Win11\ DirectX\ 12})} \emph{(same Win11 host)} &
+\texttt{8.279\%} & \texttt{2} & \texttt{0.02149} & \texttt{0.14667} &
+\textbf{\texttt{64.79}} & \textbf{\texttt{0.999844}} & \textbf{Pass} \\
+\textbf{Apple M3 Ultra (\texttt{macOS\ Metal} 4)} & \textbf{NVIDIA RTX
+2060 (\texttt{Win11\ DX12} / \texttt{Vulkan}) \& RTX 4050} &
+\texttt{9.337\%} & \texttt{2} & \texttt{0.02467} & \texttt{0.15721} &
+\textbf{\texttt{64.16}} & \textbf{\texttt{0.999833}} & \textbf{Pass} \\
+\textbf{Apple M3 Ultra (\texttt{macOS\ Metal} 4)} &
+\textbf{\texttt{Microsoft\ WARP} (\texttt{Win11\ DirectX\ 12} CPU)} &
+\texttt{0.003\%} & \texttt{1} & \texttt{0.000008} & \texttt{0.00271} &
+\textbf{\texttt{98.79}} & \textbf{\texttt{1.000000}} & \textbf{Pass} \\
+\textbf{\texttt{Microsoft\ WARP} (\texttt{Win11\ DirectX\ 12} CPU)} &
+\textbf{\texttt{Mesa\ llvmpipe} (\texttt{Linux\ LLVM\ 21.\allowbreak{}1.\allowbreak{}8} CPU
+\texttt{Vulkan})} & \texttt{1.591\%} & \texttt{2} & \texttt{0.00543} &
+\texttt{0.07359} & \textbf{\texttt{70.35}} & \textbf{\texttt{0.999983}}
+& \textbf{Pass} \\
+Hardware GPUs (\texttt{8} endpoints across
+\texttt{DX12}/\allowbreak{}\texttt{Metal}/\allowbreak{}\texttt{Vulkan}) &
+\textbf{\texttt{CPU\ Q16.\allowbreak{}16} Zero-Float Integer Reference (\texttt{4}
+hosts)} & \texttt{20.400\%} -- \texttt{27.626\%} & \texttt{2} &
+\texttt{0.05612} -- \texttt{0.07864} & \texttt{0.23689} --
+\texttt{0.28068} & \texttt{59.13} -- \texttt{60.58} & \texttt{0.999556}
+-- \texttt{0.999693} & \textbf{Pass} \\
+\end{longtable}
+}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Isolating shader-compiler (\texttt{DX12}
+  \texttt{HLSL}/\allowbreak{}\texttt{DXIL} vs \texttt{Vulkan} \texttt{SPIR-V}) drift
+  from GPU silicon}: Comparing the \textbf{exact same physical GPU on
+  the exact same Windows 11 machine} across \texttt{DirectX\ 12} and
+  \texttt{Vulkan} separates compiler translation (\texttt{Naga}
+  \texttt{WGSL\ -\textgreater{}\ HLSL} vs
+  \texttt{WGSL\ -\textgreater{}\ SPIR-V}) from hardware SFU/ROP design.
+  On \texttt{NVIDIA\ GeForce\ RTX\ 2060}, \texttt{Win11\ DirectX\ 12}
+  and \texttt{Win11\ Vulkan} produce bit-identical \texttt{SHA-256}
+  framebuffers at ticks \texttt{0} and \texttt{250}, then diverge by
+  \texttt{1} LSB on a single grazing specular pixel at ticks
+  \texttt{1,000} and \texttt{10,000} (\texttt{0.0002\%} mean diff,
+  \texttt{108.\allowbreak{}34\ dB} \texttt{PSNR}) --- while
+  \texttt{RTX\ 2060\ (\allowbreak{}Win11\ DirectX\ 12)} matches
+  \texttt{RTX\ 4050\ (\allowbreak{}Linux\ Vulkan)} \texttt{4\ /\ 4} frames
+  bit-for-bit (\texttt{0} differing pixels across Turing vs Ada Lovelace
+  and Windows \texttt{DX12} vs Linux \texttt{Vulkan})! On
+  \texttt{Intel\ Iris\ Xe\ Graphics} (\texttt{Tiger\ Lake}),
+  \texttt{Win11\ DirectX\ 12} vs \texttt{Win11\ Vulkan} differs on
+  \texttt{0.283\%} of pixels (\texttt{79.52\ dB} \texttt{PSNR},
+  \(\Delta_{\max} = 1\)) across all \texttt{4} frames, whereas
+  \texttt{Win11\ DirectX\ 12} vs \texttt{Linux\ Mesa\ ANV\ Vulkan}
+  differs on just \texttt{0.0003\%} (\texttt{105.\allowbreak{}33\ dB}, bit-identical
+  on ticks \texttt{0} and \texttt{1,000}).
+\item
+  \textbf{Bounded tolerance confirmed across all \texttt{28\ /\ 28}
+  hardware \texttt{GPU\ ×\ API} pairs (\texttt{112\ /\allowbreak{}\ 112} frames)}:
+  \texttt{27\ /\ 28} hardware endpoint pairs differ in raw
+  \texttt{RGBA8} \texttt{SHA-256} digests, yet \textbf{zero pixels on
+  any hardware pair across \texttt{DirectX\ 12}, \texttt{Metal}, and
+  \texttt{Vulkan} differed by more than \texttt{2\ /\ 255}}
+  (\(p(|\Delta| > 8) = 0.000000 \le 0.001\)), \texttt{PSNR} exceeded
+  \texttt{64.16\ dB} (\texttt{\textgreater{}\ 40.0\ dB} gate by
+  \texttt{+24.\allowbreak{}16\ dB}), and \texttt{SSIM} exceeded \texttt{0.999833}
+  (\texttt{\textgreater{}\ 0.999} gate) at
+  \texttt{0.29}--\texttt{6.04\ ms} per frame.
+\item
+  \textbf{Software rasterizer contrast (\texttt{WARP} vs
+  \texttt{llvmpipe} vs \texttt{CPU\ Q16.\allowbreak{}16})}: Even software CPU GPU-API
+  emulators diverge across APIs ---
+  \texttt{Microsoft\ Basic\ Render\ Driver}
+  (\texttt{Win11\ DirectX\ 12\ WARP}) vs \texttt{Mesa\ llvmpipe}
+  (\texttt{Linux\ Vulkan}) differs on \texttt{1.591\%} of pixels
+  (\texttt{70.35\ dB} \texttt{PSNR}, \(\Delta_{\max} = 2\)) --- whereas
+  the zero-float \texttt{CPU\ Q16.\allowbreak{}16} integer software rasterizer
+  achieved \textbf{\texttt{0} \texttt{SHA-256} framebuffer mismatches
+  across all four OS/ISA hosts} (\texttt{macOS\ arm64},
+  \texttt{Linux\ AMD\ x86\_\allowbreak{}64}, \texttt{Linux\ Intel\ x86\_\allowbreak{}64}, and
+  \texttt{Windows\ 11\ x86\_\allowbreak{}64}: \texttt{9c693a38.\allowbreak{}.\allowbreak{}.\allowbreak{}} at tick
+  \texttt{0}, \texttt{ce3b2cec.\allowbreak{}.\allowbreak{}.\allowbreak{}} at tick \texttt{10,000}).
+\end{itemize}
+
+\subsection{\texorpdfstring{6.4 Playable joule-native \texttt{Q32.32}
+Chrono-Budget Arena
+(\texttt{/\allowbreak{}living/\allowbreak{}game-\allowbreak{}engines/\allowbreak{}})}{6.4 Playable joule-native Q32.32 Chrono-Budget Arena (/living/game-engines/)}}\label{playable-joule-native-q32.32-chrono-budget-arena-livinggame-engines}
+
+Joining this study's exact \texttt{Q32.32} replay contract with the
+energy-native temporal mechanics of
+\href{https://research.openie.dev/papers/time-as-an-index/}{Time as an
+Index} (Section 9.2), Instrument 4 of
+\href{https://research.openie.dev/living/game-engines/}{\texttt{/\allowbreak{}living/\allowbreak{}game-\allowbreak{}engines/\allowbreak{}}}
+ships a playable \texttt{60\ Hz} deterministic orbital-navigation and
+pickup-defense mini-game running in JavaScript \texttt{BigInt}
+(\texttt{0} floating-point operations inside simulation):
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Live \texttt{SHA-256} state tape \& deterministic replay}:
+  Every tick updates a rolling \texttt{SHA-256} state digest and records
+  compact 1-byte player input events into \(D\); clicking
+  \texttt{Replay\ \&\ Verify\ SHA-\allowbreak{}256} re-executes the entire match from
+  \texttt{(\allowbreak{}seed,\allowbreak{}\ D)} and verifies bitwise hash equality
+  (\texttt{replayed\_\allowbreak{}sha256\ ===\ live\_\allowbreak{}sha256}).
+\item
+  \textbf{Joule-budgeted temporal lookahead \& rewind (\texttt{est\_j}
+  design model)}: Querying future trajectories
+  (\texttt{Hellman\ Branch\ Preview}, simulating \texttt{3} candidate
+  steering branches \texttt{K} ticks ahead) or rewinding to a persistent
+  causal checkpoint debits an explicit microjoule (\texttt{µJ}) battery
+  (\texttt{step\_\allowbreak{}cost\_\allowbreak{}uj} per speculative tick plus Landauer
+  branch-erasure cost when non-chosen futures or rewound timelines are
+  discarded), playable via keyboard, mouse/touch, and \texttt{WebXR} /
+  \texttt{Gamepad} controllers (including Meta Quest Browser).
+\end{itemize}
+
+\section{7. Infeasibility flags}\label{infeasibility-flags}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Cross-GPU and cross-API bit-exact hardware rendering:
+  infeasible (\texttt{27\ /\ 28} hardware \texttt{GPU\ ×\ API} pairs ---
+  including \texttt{2\ /\ 2} same-GPU \texttt{DirectX\ 12} vs
+  \texttt{Vulkan} pairs --- diverge in raw \texttt{SHA-256} in
+  \texttt{GE-H3}), whereas bounded perceptual tolerance
+  (\texttt{PSNR\ \textgreater{}=\ 64.16\ dB},
+  \texttt{SSIM\ \textgreater{}=\ 0.99983}, \(\Delta_{\max} \le 2\))
+  holds across \texttt{DirectX\ 12}, \texttt{Metal}, and \texttt{Vulkan}
+  when GPU outputs never feed back into \(S\).}
+\item
+  \textbf{Cross-platform exact physics with stock floating-point
+  settings: infeasible across \texttt{Windows}, \texttt{macOS}, and
+  \texttt{Linux}.} Even \emph{without} \texttt{-\allowbreak{}ffast-\allowbreak{}math} or
+  \texttt{/fp:fast}, standard \texttt{std::sin}/\allowbreak{}\texttt{std::cos} forms
+  a 3-way divergent triangle across \texttt{Windows\ UCRT},
+  \texttt{Apple\ libSystem}, and \texttt{GNU\ glibc}
+  (\texttt{t\_\allowbreak{}div\ =\ 10} to \texttt{37}), default
+  \texttt{MSVC\ /\allowbreak{}fp:precise} vs \texttt{Clang\ -\allowbreak{}ffp-\allowbreak{}contract=fast}
+  diverges on \texttt{x86\_64} at \texttt{t\_\allowbreak{}div\ =\ 192}, and cross-ISA
+  \texttt{FMA} (\texttt{x86\_64} vs \texttt{arm64}) diverges at
+  \texttt{t\_\allowbreak{}div\ =\ 406}, cascading into gameplay desynchronization
+  within \texttt{8,869}--\texttt{11,205} ticks (\texttt{GE-H2}).
+\item
+  \textbf{GPU compute inside the simulation: infeasible as exact;
+  feasible only with deterministic reductions} at a measured cost of
+  about 0.2\% to 7.8\% on the cited hardware, and still subject to
+  compiler contraction unless guarded per instruction (SPIR-V
+  NoContraction) on every target.
+\item
+  \textbf{Engine-portable behavior: not demonstrated in any external
+  source read; demonstrated at the 2D physics kernel level in
+  \texttt{GE-H1} across \texttt{30} target × host cells (\texttt{6}
+  machines, \texttt{3} OSs
+  \texttt{macOS}/\allowbreak{}\texttt{Linux}/\allowbreak{}\texttt{Windows\ 11}, \texttt{3} ISAs,
+  \texttt{7} runtimes/compilers), while full engine projections
+  (\texttt{GE-H4}, \texttt{GE-H9}) remain open.}
+\item
+  \textbf{Interpreted rules at large actor counts: constrained.} The
+  GameRule measurement implies a ceiling near 300 actors at 20 ms
+  (\texttt{GE-H1} further shows Python \texttt{int} costs
+  \texttt{73×}--\texttt{132×} native Rust \texttt{reported\_\allowbreak{}j} on
+  Linux/macOS and \texttt{179×} wall time on Windows 11); a compiled
+  native or WebAssembly projection is required at scale.
+\item
+  \textbf{Proprietary third-party game engines as exact targets:
+  unverified.} While bare-metal Windows 11 \texttt{PE} (\texttt{rustc}
+  and \texttt{MSVC}) and \texttt{DirectX\ 12} (\texttt{wgpu}) execution
+  are verified in Section 6, Unity's manual, as quoted by GameRule,
+  disclaims ordering guarantees; the Unity and Unreal template catalogs
+  could not be read (their pages render client-side), and no Unreal
+  execution-order source was read.
+\end{enumerate}
+
+\section{8. Sources and limits}\label{sources-and-limits}
+
+Every source above was read in full at the passage cited, except: the
+GameCraft-Bench paper (abstract and repository README read), the RCE
+about page (summary page read), and the Capcom press story (one
+article). Companion house studies cited for telemetry levels
+(\texttt{SATB}) and joule-budgeted temporal game mechanics are
+\href{https://research.openie.dev/papers/time-as-an-index/}{Time as an
+Index} and the
+\href{https://research.openie.dev/papers/satb-harness/}{Satiation Tiered
+Benchmark Harness} (\texttt{{[}same\ house{]}}). Sources consulted but
+not cited as evidence: the \href{https://ludii.games/}{Ludii portal},
+which describes games as structured sets of ludemes; the Game Grammar
+hobby repository; and the
+\href{https://github.com/playcanvas/engine}{PlayCanvas},
+\href{https://github.com/BabylonJS/Babylon.js}{Babylon.js} and
+\href{https://github.com/mrdoob/three.js}{three.js} READMEs, which
+describe rendering libraries rather than game description formats.
+
+Not read, paywalled or otherwise unavailable: T. Schaul, ``A Video Game
+Description Language for Model-based or Interactive Learning,'' IEEE CIG
+2013,
+\href{https://doi.org/10.1109/CIG.2013.6633610}{doi:10.1109/CIG.2013.6633610};
+J. Gregory, \emph{Game Engine Architecture},
+\href{https://doi.org/10.1201/9781315267845}{doi:10.1201/9781315267845}.
+M. Ebner et al., ``Towards a Video Game Description Language,''
+\href{https://doi.org/10.4230/DFU.Vol6.12191.85}{doi:10.4230/DFU.Vol6.12191.85},
+is open access but was not read for this study.
+
+In Section 6, \texttt{GE-H1}, \texttt{GE-H2}, and \texttt{GE-H3} leave
+\texttt{measured\_\allowbreak{}j\ =\ None} and \texttt{board\_\allowbreak{}metered\ =\ false}
+across all six machines (separating macOS \texttt{L3} per-process
+\texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj}, Linux \texttt{L2} socket/core \texttt{RAPL}
+\texttt{reported\_\allowbreak{}j}, and Windows 11 \texttt{L3}
+\texttt{GetProcessTimes}/\allowbreak{}\texttt{QueryProcessCycleTime} activity
+counters, and keeping the Chrono-Budget Arena's \texttt{est\_j}
+mechanics strictly analytical). Full multi-engine scene/behavior
+emitters (\texttt{GE-H4}--\texttt{GE-H9}) remain open work.
+
+
+\end{document}

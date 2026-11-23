@@ -1,6 +1,6 @@
 ---
 title: "ゲームを一度書いてどこでも動かす：厳密な再生が終わり許容誤差が始まる境界"
-deck: "ゲームを1度だけチェック済み状態機械として記述し、複数のエンジン、命令セット、グラフィックススタックへ射影することは可能か。Q32.32整数物理演算下で25のマルチISAターゲット×ホストセルにおいて100,000ティック実行し（GE-H1: 0/20,500 SHA-256不一致（arm64 macOS、aarch64 Linux、AMD/Intel x86_64 Linux））、25,000回のクロスISA浮動小数点ティック（GE-H2: t_div = 10 Apple libm対GNU glibc sin/cos、t_div = 406 x86_64 FMA対arm64 fmadd（-ffast-mathなし））、およびMetalとVulkanに跨る4つの物理GPU（GE-H3: 1.3%-9.3% LSBピクセルドリフト、Δ_max ≤ 2、PSNR 64.2-72.1 dB、SSIM ≥ 0.99983）で検証され、遊べるジュール予算型Q32.32 WebXR/Canvasプロトタイプと対になっている。"
+deck: "ゲームは一度だけチェックされた状態機械として記述され、複数のエンジン、命令セット、オペレーティングシステム、グラフィックススタックへと投影できるか。30 のマルチ ISA ターゲット × ホストセル上で 100,000 ティックを実行し、Q32.32 整数物理を適用した結果（GE-H1: 0 / 25,500 の状態ダイジェスト不一致が arm64 macOS、aarch64 Linux、Zen 5 および Raptor Lake x86_64 Linux、Tiger Lake x86_64 Windows 11 に跨って観測された）、25,000 のクロスプラットフォーム浮動小数点ティックにおいて（GE-H2: t_div = 10 が Windows Universal C Runtime と Apple libm と Linux glibc の sin/cos とで差異、t_div = 192-406 の融合乗算加算低減が -ffast-math を使用しない条件下で実施された）、そして Metal、Vulkan、DirectX 12 の 8 つのハードウェアグラフィックスエンドポイントに対して（GE-H3: ピクセルドリフトが 0.00%-9.34%、Δ_max ≤ 2、ピーク信号対雑音比 ≥ 64.2 dB、構造類似度 ≥ 0.99983 が全 28 ペアで維持された）実行された結果、プレイ可能なジュール予算制限付き Q32.32 プロトタイプと組み合わせて評価された。"
 lang: "ja"
 source: "game-engines"
 complete: true
@@ -8,19 +8,25 @@ complete: true
 
 <div id="writing-a-game-once-and-running-it-everywhere-where-exact-replay-ends-and-tolerance-begins" class="anchor-alias" aria-hidden="true"></div>
 
-*改訂 af57f48、2026年11月22日。対話型エクスプローラ、クロスGPU検査器、および操作可能な `Q32.32` Chrono-Budget Arena: [research.openie.dev/living/game-engines/](/living/game-engines/)。*
+*改訂 1561a2a, 2026年11月22日。インタラクティブエクスプローラ、3-OS / 3-API クロスGPUインスペクタ、そしてプレイ可能な `Q32.32` クロノ・バジェットアリーナ: [research.openie.dev/living/game-engines/](/living/game-engines/).*
 
 <div id="abstract" class="anchor-alias" aria-hidden="true"></div>
 
-## 要約
+## 要旨
 
-本研究は、検査済み状態機械として一度だけ記述されたゲームを、言語、中央処理装置（CPU）命令セットアーキテクチャ（ISA）、およびグラフィックス処理装置（GPU）バックエンドにわたって射影できるかどうかを問うものである。調査した仕様および3つの実行された経験的反証スイートは、いずれも明確な境界を示している：ゲーム規則および固定小数点整数演算で固定されたシミュレーションについては**肯定**（`(GE-H1)`：`0 / 20,500`個のSecure Hash Algorithm 256ビット（`SHA-256`）チェックポイント不一致が、`100,000`ティックの16物体2次元アリーナを`25`個のターゲット×ホストセルにわたって`arm64` `macOS 27.2.1`、`aarch64` `Linux 6.8`、およびAdvanced Micro Devices（`AMD`）Zen 5とIntel Raptor Lake `x86_64` `Linux 7.0`に射影した結果、`macOS`プロセスごとの`reported_j`で`0.073 J`から`13.60 J`、`Linux` Running Average Power Limit（`RAPL`）パッケージ`reported_j`で`1.89 J`から`181.87 J`の範囲）；ピン留めされていない浮動小数点超越関数または融合積和（`FMA`）低レベル化が混沌とした多物体衝突に入る場合には**否定**（`(GE-H2)`：`-ffast-math`を*使用しない*場合でも、Apple `libSystem` `libm`対Linuxシステム`glibc`の`std::sin`/`std::cos`がティック`10`で発散し、クロスISAの`x86_64` `-mavx2 -mfma`対`arm64` `fmadd`がティック`406`で発散し、V8 `Math.sin`がISA間でティック`66`で発散する）；GPUベンダー間のビット完全な画素については**否定**であるが、有界一方向許容ゲートの下では**肯定**（`(GE-H3)`：Apple `Metal`、`AMD` Mesa Radeon Vulkan（`RADV`）、Nvidia Vulkan（`NVIDIA`）、およびIntel Mesa Vulkan（`ANV`）にわたる`512×512` `RGBA8Unorm`で、`24 / 24`のクロスGPUフレーム対のうち生`SHA-256`で`1.30%`-`9.34%`の画素が異なるが、最大チャネルごと誤差$\Delta_{\max} \le 2 / 255$、ピーク信号対雑音比（`PSNR`）`64.16`-`72.06 dB`、および構造的類似性（`SSIM`）`0.99983`-`0.99999`を維持し、`measured_j = None`および`board_metered = false`である）。
+本研究は、ゲームを検査可能な状態機械として一度記述し、それを各言語、各オペレーティングシステム（OS）、各中央処理装置（CPU）命令セットアーキテクチャ（ISA）、各グラフィックス処理装置（GPU）アプリケーションプログラミングインターフェース（API）へ投影できるかを問う。調査対象の仕様と、実行された3種類の経験的反証スイートの双方が明確な境界を示した。固定小数点整数演算を固定（pinned）した場合のゲーム規則およびシミュレーションについては**可能**である（`(GE-H1)`：3つのオペレーティングシステムと3つの命令セットにまたがる30の対象×ホストの組（`arm64` `macOS 27.2.1`、`aarch64` `Linux 6.8`、Advanced Micro Devices（`AMD`）Zen 5およびIntel Raptor Lake `x86_64` `Linux 7.0`、ならびにMicrosoft Visual C++（`MSVC`）`cl.exe`を用いたベアメタルのIntel Tiger Lake `x86_64` `Windows 11` ビルド`26300`を含む）に投影した16体の2次元アリーナの`100,000`ティックにわたり、チェックポイントの`SHA-256`不一致は`0 / 25,500`であった。消費電力は、macOSのプロセス単位`reported_j`で`0.073 J`から`13.60 J`、LinuxのRunning Average Power Limit（`RAPL`）パッケージ`reported_j`で`1.89 J`から`181.87 J`に及ぶ）。
+
+浮動小数点の超越関数または融合積和（`FMA`）の下位化が固定されていない場合、多体衝突はカオス的に発展するため**不可能**である（`(GE-H2)`：*用いなくても*、`-ffast-math`や`/fp:fast`を指定しないときでも、3つのデスクトップOSの数学ライブラリはいずれも互いに発散する三角形を形成する。同一の`x86_64` ISA上で、Windows Universal C Runtime（`UCRT`）とLinuxのシステム`glibc`の`std::sin`/`std::cos`はティック`10`で発散し、Apple `libSystem`の`libm`とLinuxの`glibc`もティック`10`で発散し、WindowsのUCRTとApple `libm`はティック`37`で発散する。また、`MSVC`の`/fp:precise`と`Clang`の`-ffp-contract=fast`はx86_64上でティック`192`において、`x86_64`の`-mavx2 -mfma`と`arm64`の`fmadd`はティック`406`において発散する）。
+
+GPUバックエンド間でのビット単位で一致するピクセルは**不可能**である。一方、有界な一方向の許容誤差ゲートの下では**可能**である（`(GE-H3)`：Apple `Metal`、Linux Mesa Radeon Vulkan（`RADV`）、Nvidia（`NVIDIA`）のLinuxおよびWindowsの`Vulkan`とWindowsのDirectX 12（`DX12`）、ならびにIntel Linux Mesa Vulkan（`ANV`）およびWindowsの`Vulkan`と`DX12`にまたがる8つのハードウェアの`GPU × API`エンドポイントにおいて、`512×512` `RGBA8Unorm`で測定した。`GeForce 2060`と`Iris Xe`のそれぞれについて`DX12`と`Vulkan`の間で同一の物理GPUを用いた組を含め、`28`組中`27`組のハードウェア対は生の`SHA-256`が異なった。それにもかかわらず、`28 / 28`のハードウェア対すべてにおいて、最大チャネル誤差$\Delta_{\max} \le 2 / 255$、ピーク信号対雑音比（`PSNR`）`>= 64.16 dB`、構造的類似性（`SSIM`）`>= 0.99983`を満たした。なお、測定値は`measured_j = None`、`board_metered = false`である）。
 
 **平易な言葉で**
 
-1. **整数固定演算の場合、チップおよび言語をまたいだ厳密なシミュレーションは機能する。** `100,000` ティック（`20,500` 個の検証済み `SHA-256` チェックポイント）を超える範囲で、ネイティブ Rust、C++20（`Clang` および GCC）、WebAssembly（`Wasm`）、JavaScript `BigInt`、Python が、Apple Silicon（`arm64`）、NVIDIA Jetson Thor（`aarch64`）、AMD Zen 5（`x86_64`）、Intel Raptor Lake（`x86_64`）の各環境において、732 バイトの状態をビット単位で完全に同一に再現し、不一致はゼロであった。
-2. **標準浮動小数点物理演算は、`-ffast-math` を用いなくともオペレーティングシステムおよび CPU ファミリ間でドリフトする。** 純粋代数的な `+`、`-`、`*`、`/` および `sqrt` を FMA 無効化（`-ffp-contract=off`）で用いた場合、`x86_64` と `arm64` の間で `25,000` ティックすべてにおいて一致するが、`std::sin`/`std::cos` を macOS `libm` と Linux `glibc` で呼び出すとティック `10`（`60 Hz` で `0.17 s`）でビットが反転し、ティック `9,798`（`163.3 s`）でゲームプレイスコアが非同期化する。一方、デフォルトの FMA 縮約を有効化（`-ffp-contract=fast`）すると `x86_64` と `arm64` の間でティック `406` で発散し、ティック `11,205` でゲームプレイが非同期化する。
-3. **グラフィックスカードは同一のビットを描画しないため、レンダリングは一方向の許容誤差ゲートの下流に置くべきである。** Apple `Metal`、AMD `RADV` Vulkan、NVIDIA Vulkan、Intel `ANV` Vulkan の間で、`1.3%` から `9.3%` のピクセルが `1` から `2` LSB だけ異なる。このため、素朴なフレームバッファ `SHA-256` チェックは破綻するが、知覚的許容範囲（`PSNR > 64 dB`、`SSIM > 0.9998`）は満たされる。なぜなら、GPU 値がシミュレーション状態に逆流することはないからである。
+1. **整数で固定された演算を用いれば、オペレーティングシステム、チップ、言語をまたぐ厳密なシミュレーションが成立する。** 100,000ティック(30セルにわたる25,500個の検証済み`SHA-256`チェックポイント)にわたり、ネイティブRust、C++20(`Clang`、コンパイラコレクション(`GCC`)、Windowsの`MSVC`)、WebAssembly(`Wasm`)、JavaScriptの`BigInt`、Pythonは、`macOS`(`arm64`)、`Linux`(`aarch64`および`x86_64`)、`Windows 11`(`x86_64`)上で、732バイトの同一の状態をビット単位で完全に再現した。不一致は0件であった。
+
+2. **標準的な浮動小数点物理演算は、fast-mathフラグを使用しなくても、`Windows`、`macOS`、`Linux`の間で乖離する。** FMAを無効化した(`/fp:strict`および`-ffp-contract=off`)純粋な代数演算`+`、`-`、`*`、`/`、`sqrt`は、検証したすべてのOSおよびISAにおいて25,000ティックにわたり一致した。一方、`std::sin`および`std::cos`を呼び出すと、Windowsの`UCRT`、macOSの`libm`、Linuxの`glibc`の間でビットが10〜37ティックの範囲で反転した(60Hzで0.17〜0.62秒)。その結果、ゲームプレイのスコアは9,798〜10,392ティック(163.3〜173.2秒)の時点で非同期化した。さらに、コンパイラ既定のFMA規則は、`MSVC`(`/fp:precise`)と`Clang`(`-ffp-contract=fast`)の間では192ティック目で、`x86_64`と`arm64`の間では406ティック目で乖離した。
+
+3. **同一のグラフィックスカードであっても、`DirectX 12`と`Vulkan`の間でピクセルのビットが反転しうるため、描画は一方向の許容誤差ゲートの下流に配置すべきである。** `Metal`、`Vulkan`、`DirectX 12`によるハードウェアの`GPU × API`の8つの実行環境に加え、Windowsの Advanced Rasterization Platform(`WARP`)および`Mesa llvmpipe`を対象に検証した。同一の`NVIDIA GeForce 2060`(`PSNR` 108.34 dB)または`Intel Iris Xe`(`PSNR` 79.52 dB)上で`DirectX 12`と`Vulkan`を切り替えると、シェーダーコンパイラの低位化により最下位ビット(`LSB`)が1だけ変化した。異なるベンダー間の組み合わせでは、ピクセルの0.00%から9.34%が`<= 2` `LSB`の差異を示した(PSNR >= 64.16 dB、SSIM >= 0.99983)。ただし、これらのいずれもシミュレーション状態を破損させることはなかった。
 
 ![提案された分割の図。上の箱にはゲームの Form P = S, E, delta, D, lambda が入っており、型付けされたインタフェーススキーマと厳密なチェッカーを備える。矢印は 4 つの射影へ分岐する：左側の厳密領域にあるシミュレーション（Rust、WebAssembly、XState、SCXML、Python）およびスクリプティング（Rhai、Lua、Luau）はティックごとの状態ハッシュで判定され、右側の許容領域にあるシーン（BSN 類似、glTF、OpenUSD）およびレンダリング（Slang、WGSL、WESL）はピクセルごとの誤差で判定される。破線の垂直線が決定論的境界を示す。下部の帯には、ログ化されたイベントとしてのみ入力されるホスト効果（入力、クロック、オーディオ、ネットワーク、アセット入出力、GPU 描画、化粧的物理演算）が列挙されている。](/figures/game-engines/architecture.svg)
 
@@ -32,33 +38,33 @@ complete: true
 
 <div id="1-terms-notation-and-the-idea-under-test" class="anchor-alias" aria-hidden="true"></div>
 
-## 1. 用語・記法、及び検証対象の概念
+## 1. 用語、表記法、および検証対象の考え方
 
 <ul id="terms">
 <li>RCE, IR, ECS, FSM, SDF: 現実コードエンジン[同一家], 中間表現, エンティティコンポーネントシステム, 有限状態機械, 符号付き距離場</li>
-<li>CPU, GPU, ISA, ISAs, SIMD, AVX2, NEON, SFU, ROP, RPL: 中央処理装置, グラフィックス処理装置, 命令セットアーキテクチャ(群), 単一命令複数データ, Advanced Vector Extensions 2, Arm Advanced SIMD, 特殊関数ユニット, ラスター演算パイプライン, Intel Raptor Lakeモバイルアーキテクチャ</li>
+<li>CPU, GPU, ISA, ISAs, SIMD, AVX2, NEON, SFU, ROP, RPL, TGL: 中央処理装置, グラフィックス処理装置, 命令セットアーキテクチャ(複数形), 単一命令多データ, Advanced Vector Extensions 2, Arm Advanced SIMD, 特殊機能ユニット, ラスタ操作パイプライン, Intel Raptor Lake モバイルアーキテクチャ, Intel Tiger Lake モバイルアーキテクチャ</li>
 <li>IEEE, FMA, VFMADD, VFNMADD, FMADD, FMSUB, ULP, LSB, SHA, MAE, RMSE, PSNR, SSIM, SD, RGBA8: Institute of Electrical and Electronics Engineers (IEEE 754浮動小数点におけるもの), 融合積和演算, x86_64ベクトル融合積和および否定積和オペコード, AArch64スカラー融合積和および積減算オペコード, 最終桁単位, 最下位ビット, Secure Hash Algorithm (`SHA-256`), 平均絶対誤差, 二乗平均平方根誤差, ピーク信号対雑音比, 構造的類似性指標, 標準偏差, および8ビット毎チャネル赤緑青アルファフレームバッファ形式</li>
-<li>WGSL, WESL, SPIR-V, GLSL, HLSL, MSL, D3D11, D3D12, CUDA: WebGPUシェーディング言語, WebGPU拡張シェーディング言語, Standard Portable Intermediate Representation V, OpenGLシェーディング言語, High-Levelシェーディング言語, Metalシェーディング言語, Direct3D 11, Direct3D 12, およびCompute Unified Device Architecture</li>
-<li>RADV, ANV, LLVM, GNU, GCC, PE, OS, API, APIs, WebXR, WebMCP, URL, JSON, YAML, README, MB, CS0246, RE, ENGINE, DFU: Mesa Radeon Vulkanドライバ, Mesa Intel Vulkanドライバ, Low Level Virtual Machineコンパイラ基盤, GNU's Not Unixプロジェクト, GNU Compiler Collection, Windows Portable Executable, オペレーティングシステム, アプリケーションプログラミングインタフェース(群), Web拡張現実API, Web Model Context Protocol, Uniform Resource Locator, JavaScript Object Notation, YAML Ain't Markup Language, リポジトリREADME文書ファイル, メガバイト, C#コンパイラ欠落型診断CS0246, Capcom RE ENGINE ("Reach for the Moon" / "RE neXt"エンジンブランディング), およびDagstuhl Follow-Ups DOI接頭辞</li>
+<li>WGSL, WESL, SPIR-V, GLSL, HLSL, MSL, D3D11, D3D12, DX12, VULKAN, METAL, DXIL, DXBC, DXC, FXC, WARP, WDDM, CUDA: WebGPU Shading Language, WebGPU Extended Shading Language, Standard Portable Intermediate Representation V, OpenGL Shading Language, High-Level Shading Language, Metal Shading Language, Direct3D 11, Direct3D 12, DirectX 12, `wgpu::Backends::VULKAN` と `wgpu::Backends::METAL` バックエンドフラグ, DirectX Intermediate Language, DirectX バイトコード, DirectX Shader Compiler, 従来の Direct3D Effect-Compiler ツール, Windows Advanced Rasterization Platform ソフトウェア DirectX 12 ラスタライザ, Windows Display Driver Model, Compute Unified Device Architecture</li>
+<li>RADV, ANV, LLVM, GNU, GCC, MSVC, UCRT, NT, PE, OS, OSs, API, APIs, JIT, WebXR, WebMCP, URL, JSON, YAML, README, MB, CS0246, RE, ENGINE, DFU: Mesa Radeon Vulkan ドライバ, Mesa Intel Vulkan ドライバ, Low Level Virtual Machine コンパイラ基盤, GNU's Not Unix プロジェクト, GNU Compiler Collection, Microsoft Visual C++ コンパイラ (`cl.exe`), Windows Universal C Runtime (`ucrtbase.dll`), Windows New Technology カーネル (`Windows NT`), Windows Portable Executable, オペレーティングシステム(複数形), アプリケーションプログラミングインタフェース(複数形), just-in-time コンパイラ, Web Extended Reality API, Web Model Context Protocol, Uniform Resource Locator, JavaScript Object Notation, YAML Ain't Markup Language, リポジトリ README 文書ファイル, メガバイト, C# コンパイラ欠如型診断 CS0246, Capcom RE ENGINE (「Reach for the Moon」／「RE neXt」エンジンブランディング), および Dagstuhl Follow-Ups DOI プレフィックス</li>
 <li>SCXML, GDL, VGDL, BSN, BSL, MLIR, ACID, GGPO, glTF, OpenUSD, USD, LAN, AI, CIG: State Chart XML, Game Description Language, Video Game Description Language, Bevy Scene Notation, Boldsea Semantic Language, Multi-Level Intermediate Representation, 原子性/一貫性/隔離性/永続性トランザクション, Good Game Peace Outロールバックネットワークライブラリ, Graphics Language Transmission Format (ISO/IEC 12113:2022), Open Universal Scene Description, Universal Scene Description, ローカルエリアネットワーク, 人工知能, およびComputational Intelligence and Games</li>
-<li>SATB、RAPL、MSR、PID、RUSAGE、V6、AMD、NVIDIA、V100、GH200、CTC: Satiation Tiered Benchmark のテレメトリ水準（`L2` ソケット/パッケージ・カウンタ、`L3` プロセス単位のカーネル・カウンタ）[同一機関]、Running Average Power Limit、機種固有レジスタ（model-specific register）、プロセス識別子（process identifier）、`proc_pid_rusage`（`RUSAGE_INFO_V6`）、Advanced Micro Devices、NVIDIA Corporation、Volta V100 GPU、Grace Hopper GH200 スーパーチップ、および閉じた時間的曲線</li>
+<li>SATB, RAPL, MSR, PID, RUSAGE, V6, AMD, NVIDIA, RTX, V100, GH200, CTC: Satiation Tiered Benchmark（SATB）のテレメトリ水準（`L2` はソケット/パッケージのカウンタ、`L3` はプロセス単位のカーネルカウンタ）[同一組織]、Running Average Power Limit（平均電力制限）、モデル固有レジスタ（model-specific register）、プロセス識別子（process identifier）、`proc_pid_rusage`（`RUSAGE_INFO_V6`）、Advanced Micro Devices（AMD社）、NVIDIA Corporation（NVIDIA社）、NVIDIA GeForce RTX GPUファミリ、Volta V100 GPU、Grace Hopper GH200スーパーチップ、および閉じた時間的曲線（closed timelike curve）</li>
 </ul>
 
-前方参照を上から下へ明瞭に保つために、セクション1ではForm表記を定義し、セクション2では既存のゲーム表現を概観し、セクション3では浮動小数点の発散を分析し、セクション4では中間表現を表として示し、セクション5では提案されたレイヤ分割を述べ、セクション6ではマルチISAおよびクロスGPU偽装実行を報告し、セクション7では実現不可能フラグを列挙し、セクション8では情報源と制限を文書化する。
+前方参照を上から下へ見通しやすくするため、第1節ではForm表記を定義し、第2節では既存のゲーム表現を概観し、第3節では浮動小数点数による乖離を分析し、第4節では中間表現を一覧にし、第5節では提案する階層分割を述べ、第6節では3 OS・複数ISA・3 APIにわたるクロスGPUの反証実験の結果を報告し、第7節では実現不可能性のフラグを列挙し、第8節では出典と限界を記録する。
 
-[Reality Code Engine（RCE）](https://research.openie.dev/about/rce/) はプログラムをFormと呼ばれる状態機械として取り扱い、$P = (S, E, \delta, D, \lambda)$ と表記する。
+[現実コードエンジン (RCE)](https://research.openie.dev/about/rce/)は、プログラムを状態機械として扱う。この状態機械をFormと呼び、$P = (S, E, \delta, D, \lambda)$ と記述する。
 
-- $S$: 状態の集合；
-- $E$: イベント（入力）の集合；
-- $\delta : S \times E \to S$: 遷移関数；
-- $D$: 取られたすべてのステップを追記専用で記録するログ；
+- $S$: 状態の集合;
+- $E$: 事象(入力)の集合;
+- $\delta : S \times E \to S$: 遷移関数;
+- $D$: 実行されたすべてのステップを記録する追記専用のログ;
 - $\lambda$: 状態から観測可能な出力への写像。
 
-厳密なチェッカはFormを受理するか、違反した規則を指摘する。エミッタは受理されたFormをRust、Python、JavaScript、Scalaに射影する。XState（JavaScriptおよびTypeScript用のステートチャートライブラリ）、SCXML（World Wide Web Consortium勧告）、WebAssembly（`Wasm`）はエミッタの対象には含まれず、本研究ではそれらを候補射影として扱う。すべてのステップが$D$に記録されるため、任意の実行は再現可能である。
+厳密な検査器は、Formを受理するか、違反した規則を明示して拒否する。受理されたFormは、エミッタによってRust、Python、JavaScript、Scalaへ射影される。XState(JavaScriptおよびTypeScript向けのステートチャートライブラリ)、SCXML(World Wide Web Consortiumの勧告)、WebAssembly(`Wasm`)は、エミッタの対象には含まれていない。本研究では、これらを射影先の候補として扱う。すべてのステップは $D$ に記録されるため、任意の実行を再生できる。
 
-ゲームエンジンははるかに大規模な機械である。固定ステップのシミュレーション、スクリプト層、シーン記述、そしてGPU上のレンダリングパイプラインを実行する。セクション1〜8では、これらの層のうちどれがForm内部に収容でき、どれがホスト効果として外部に留まるべきか、そして正確性が許容誤差に譲らねばならない場所を問う。
+ゲームエンジンは、はるかに大きな機械である。固定ステップのシミュレーション、スクリプト層、シーン記述、そしてGPU上のレンダリングパイプラインを実行する。第1節から第8節では、これらの層のうちどれをForm内に置けるか、どれを外部のホスト効果として外に置くべきか、そして厳密性がどこで許容誤差に譲歩しなければならないかを検討する。
 
-この概念は長い系譜を有する。スタンフォード大学の[ゲーム記述言語（GDL）仕様](http://ggp.stanford.edu/readings/gdl_spec.pdf)は「有限で離散的な決定論的マルチプレイヤーゲーム（完全情報）」を扱い、自然な基底モデルが「有限状態機械」であることを指摘している。ゲームエンジンにおいて新しいのは状態機械そのものではなく、その周辺すべて, 浮動小数点物理、スクリプト、シーン、GPUである。
+この着想には長い系譜がある。スタンフォード大学の[Game Description Language (GDL)仕様書](http://ggp.stanford.edu/readings/gdl_spec.pdf)は、対象を「有限・離散・決定論的な、完全情報をもつ複数プレイヤーのゲーム」と定め、そのようなゲームの自然な基礎モデルは「有限状態機械である」と指摘している。ゲームエンジンにおいて新しいのは状態機械そのものではなく、その周囲にある要素、すなわち浮動小数点数による物理演算、スクリプト、シーン、そしてGPUである。
 
 <div id="2-what-the-landscape-shows" class="anchor-alias" aria-hidden="true"></div>
 
@@ -110,7 +116,7 @@ GameCraft-Bench ([arXiv:2606.17861](https://arxiv.org/abs/2606.17861); [リポ�
 
 <div id="3-the-physics-of-divergence-why-exactness-is-binary" class="anchor-alias" aria-hidden="true"></div>
 
-## 3. 発散の物理学: 厳密性がなぜ二値的なのか
+## 3. 発散の物理学：厳密性が二値的である理由
 
 浮動小数点加算は結合則を満たさない。並列ハードウェア上では、リダクションの順序が実行ごとに変動しうる。浮動小数点の非結合性を並列ハードウェア上で調べた研究([arXiv:2408.05148](https://arxiv.org/abs/2408.05148))は、スカラー変動量を次式で定義している。
 
@@ -126,7 +132,7 @@ $$\delta(t) = \delta_0 \, e^{\Lambda t},$$
 
 $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
-*例示的モデル:* $\delta_0 \approx 6 \times 10^{-8}$(単精度の相対的な 1 ULP)、$\Delta = 1$(壁の反対側にある物体)、仮定した $\Lambda = 2\ \text{s}^{-1}$ を取る。このとき $t^{*} \approx 0.5 \ln(1.7 \times 10^{7}) \approx 8.3$ s となる。ここで重要なのは対数である。$\delta_0$ を百万分の一に縮小しても、得られる時間の延長は約 6.9 s にすぎない。したがって、近似的な一致によってシミュレーションを救済することはできない。状態は、ビット単位で完全に同一であるか、さもなければやがて発散するかのいずれかである。この予測は、以下の 25,000 回のマルチ ISA 衝突ティックにわたって直接検証する(`GE-H2`)。
+*例示モデル:* $\delta_0 \approx 6 \times 10^{-8}$ (単精度の 1 ULP、相対) 、$\Delta = 1$ (壁の向こう側のオブジェクト) 、仮定された $\Lambda = 2\ \text{s}^{-1}$ とする。すると $t^{*} \approx 0.5 \ln(1.7 \times 10^{7}) \approx 8.3$ s になる。対数が鍵であり、$\delta_0$ を百万倍縮小しても約 6.9 秒しか増えない。したがって近似的一致はシミュレーションを救うことはできない。状態はビット単位で同一であるか、最終的に発散するかのいずれかであり、この予測は 25,000 のマルチ ISA と 3-OS の衝突ティック以下で直接検証された (`GE-H2`)。
 
 実践もこの見方と一致している。[Gaffer On Games](https://gafferongames.com/post/floating_point_determinism/) は、機器間の決定性にはコンパイラと命令セットの一致が必要であること、Battlezone 2 では AMD と Intel の間で超越関数の差異に直面したこと、MotoGP のリプレイは Xbox と個人用コンピュータの間で共有できなかったことを記録している。また、FMA の縮約と再結合を禁止すべきとする Markstein の助言を引用している。[Rapier ガイド](https://rapier.rs/docs/user_guides/rust/determinism/) は、動作する方法を示している。すなわち、クロスプラットフォームの決定性は、`enhanced-determinism` 機能(`simd8` とは非互換)を用い、IEEE 754-2008 対応のターゲット(Wasm は該当する)上で、ソフトウェアによる超越関数を使用する場合にのみ成立する。
 
@@ -162,10 +168,10 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
 ### 5.1 レイヤ分割
 
-1. **シミュレーション形式（厳密）.** $S$ は固定小数点または厳密な IEEE 754 値を保持し、FMA および再結合を無効化し、超越関数は整数または固定されたソフトウェアルーチンで実装される。$E$ はティックイベントと記録された入力を保持する。$\delta$ は SCXML マクロステップ意味論を用いる：各ティックごとに、キュー順序でイベントを処理し、文書順序で競合を解決し、並列領域を直列に実行する。コレクションは宣言された順序で反復し、GameRule の契約（宣言順序、最終書き込みが勝つ、構造的変更はティックの終了まで遅延）に従う。並列性が求められる場合、チェッカーは Core ECS の非交差条件を満たすスケジュールのみを許容する。
-2. **スクリプティング射影（厳密）.** デザイナースクリプトは $S$ 上のガードおよびアクションにコンパイルされ、[Rhai](https://rhai.rs/book/about/features.html)（サンドボックス化され、「Don't Panic」保証、no-std および Wasm 対応）、Lua、または [Luau](https://luau.org/)（デフォルトでサンドボックス化され、段階的型付けを持つ）として出力される。スクリプトは宣言されたアクションを通じてのみ $\delta$ を呼び出せる。時計、ランダムソース、または GPU 結果を直接読み取ることはできない。
-3. **シーン射影（下流で許容誤差）.** $\lambda$ は $S$ を BSN 類似のパッチツリーに写像し、その構成要素スキーマは Form の一部である。glTF および OpenUSD はアセットのエクスポート対象として機能する。
-4. **レンダリング射影（許容誤差）.** マテリアルおよびパスは Slang または WGSL で記述され、Slang または Naga を介して Metal および Vulkan バックエンドに出力される。レンダリングは $\lambda(s)$ の純粋関数である。GPU 結果が $S$ に逆流することはない。
+1. **シミュレーション形式（厳密）。** $S$ は固定小数点または厳密な IEEE 754 値を保持し、FMA および再結合を無効化する。超越関数は整数演算またはピン留めされたソフトウェアルーチンで実装する。$E$ はティックイベントと記録された入力を保持する。$\delta$ は SCXML のマクロステップ意味論に従う。すなわち各ティックにおいて、イベントをキューの順序で処理し、競合は文書順序によって解決し、並列領域は直列に実行する。コレクションは宣言された順序で反復する。これは GameRule の契約（宣言順序、後勝ちの書き込み、構造変更はティックの末尾に遅延）に従う。並列性が望まれる場合、検査器は Core ECS の非交差条件を満たすスケジュールのみを許容する。
+2. **スクリプト射影（厳密）。** 設計者のスクリプトは $S$ 上のガードおよびアクションにコンパイルされ、[Rhai](https://rhai.rs/book/about/features.html)（サンドボックス化され、"Don't Panic" 保証、no-std および Wasm 対応）、Lua、または [Luau](https://luau.org/)（既定でサンドボックス化され、漸進的型を備える）として出力される。スクリプトは宣言されたアクションを通じてのみ $\delta$ を呼び出せる。時計、乱数源、GPU の結果を直接読むことはできない。
+3. **シーン射影（下流における許容誤差）。** $\lambda$ は $S$ を BSN 風のパッチ木へ写像する。その構成要素スキーマは形式の一部である。アセットの書き出し先として glTF および OpenUSD を用いる。
+4. **描画射影（許容誤差）。** マテリアルおよびパスは Slang または WGSL で記述し、Slang または Naga を経由して `DirectX 12`、`Metal`、`Vulkan` の各バックエンドへ出力する。描画は $\lambda(s)$ の純粋関数である。GPU の結果が $S$ へ逆流することはない。
 
 <div id="52-inside-the-form-versus-host-effects" class="anchor-alias" aria-hidden="true"></div>
 
@@ -175,11 +181,11 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
 <div id="53-determinism-boundary" class="anchor-alias" aria-hidden="true"></div>
 
-### 5.3 決定論的境界
+### 5.3 決定性の境界
 
-- **厳密ゾーンの基準:** 対象AおよびBの任意のティック$t$について、$H(s_t^A) = H(s_t^B)$が成立しなければならない。ここで$H$は$S$の正準直列化に対する暗号学的ハッシュである。
-- **許容誤差ゾーンの基準:** 同一の$s_t$から得られた描画フレーム$I^A$と$I^B$について、チャンネルごとの誤差が$\varepsilon$を超える画素の割合は$p_{\max}$を超えてはならない。これに、有界な構造類似度(`SSIM`)とピーク信号対雑音比(`PSNR`)の下限を併用する。第6.3節では、この較正を4種のGPUアーキテクチャ(`Metal`、`RADV` Vulkan、`NVIDIA` Vulkan、`ANV` Vulkan)にわたって実施する。
-- [GGPO](https://github.com/pond3r/ggpo)に代表される、入力予測と投機的実行に依拠するロールバック型ネットワーキングは、この境界の厳密側においてのみ有効である。
+- **厳密領域の判定基準:** 対象 A と B のすべての tick $t$ について、$H(s_t^A) = H(s_t^B)$ が成り立つ。ここで $H$ は $S$ の正準直列化に対する暗号学的ハッシュ関数である。
+- **許容誤差領域の判定基準:** 同一の $s_t$ から得られた描画フレーム $I^A$ と $I^B$ について、チャネルごとの誤差が $\varepsilon$ を超えるピクセルの割合は $p_{\max}$ を超えてはならない。さらに、構造的類似度 (`SSIM`) およびピーク信号対雑音比 (`PSNR`) の下限を併せて課す。第6.3節では、`DirectX 12`、`Metal`、`Vulkan` にまたがる8種類のハードウェア `GPU × API` エンドポイント（`Apple Metal`、`AMD RADV Vulkan`、`NVIDIA` の Linux/Windows `Vulkan` および Windows `DX12`、`Intel` の Linux `ANV Vulkan` および Windows `Vulkan` / `DX12`）を対象として、このキャリブレーションを実施する。
+- [GGPO](https://github.com/pond3r/ggpo) の様式に倣ったロールバックネットワーキングは、入力予測と投機的実行に依拠するため、この境界の厳密側においてのみ有効である。
 
 <div id="54-cross-layer-interface-checking" class="anchor-alias" aria-hidden="true"></div>
 
@@ -187,95 +193,109 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
 チェッカは、任意のエミッションの前に4種類の型付きエッジを検証する：(a) スクリプトからシミュレーションへ：すべてのアクションが、引数型が一致する宣言済み遷移を指名すること；(b) シミュレーションからシーンへ：$\lambda$の出力がコンポーネントスキーマに一致すること；(c) シーンからレンダリングへ：すべてのマテリアルバインディングが、互換性のある型、グループ、およびバインディングインデックスを持つSlangまたはWGSLリソースに一致すること；(d) イベントカバレッジ：スクリプトがリッスンするすべてのイベントが、何らかの遷移またはホストソースによって生成可能であること。Mageの発見（2.3節）が、エッジ検査をコンパイル成功ではなく動作トレースによって判定する理由である。
 
-<div id="6-falsifier-first-test-plan-and-executed-multi-isa--cross-gpu-results" class="anchor-alias" aria-hidden="true"></div>
+<div id="6-falsifier-first-test-plan-and-executed-3-os--3-isa--3-api-results" class="anchor-alias" aria-hidden="true"></div>
 
-## 6. フォルスファイア先行テスト計画と実行されたマルチISA/クロスGPU結果
+## 6. 偽造者優先テスト計画および実行された3-OS/3-ISA/3-API結果
 
-各仮説はその排除基準とともに列挙されている。基準が満たされた場合、該当する主張は取り下げられるである。サブセクション 6.1 から 6.4 は、実行された三つの実証的フォルスファイアスイート（`GE-H1` マルチISA `Q32.32` リプレイが 25 のターゲット × ホストセルにまたがる、`GE-H2` クロスISA 浮動小数点ドリフトが `x86_64` と `arm64`/`aarch64` にまたがる、`GE-H3` クロスGPU ヘッドレス `wgpu` レンダリング許容誤差が Apple `Metal` および AMD, NVIDIA, Intel `Vulkan` にまたがる）と、インタラクティブなジュール予算付き `Q32.32` プロトタイプ（`GE-H4` から `GE-H9` は未完成である）を報告するである
+各仮説は、その殺却基準とともに列挙される。基準が満たされた場合、主張は撤回される。6.1節から6.4節は、3つの実行された経験的偽造者スイート（`GE-H1` 3-OS×3-ISA `Q32.32` リプレイ（30のターゲット×ホストセル間）、`GE-H2` 3-OS×3-ISA浮動小数点ドリフト（`Windows 11 UCRT`、`macOS libSystem`、および`Linux glibc`間）、および`GE-H3` 3-OS×3-APIヘッドレス`wgpu`レンダリング許容誤差（`DirectX 12`、`Metal`、および`Vulkan`間））、ならびにインタラクティブなジュール予算付き`Q32.32`プロトタイプ（`GE-H4`から`GE-H9`は未解決のまま）を報告する。
 
-| ID | 仮説 | 検証コーパス | 測定量 | 棄却基準 | 状態 |
+| ID | 仮説 | テストコーパス | 測定量 | 棄却基準 | ステータス |
 |---|---|---|---|---|---|
-| GE-H1 | シミュレーション射影は、言語、OS、CPU ISA をまたいでビット単位で同一である | `arm64` macOS、`aarch64` Linux、AMD/Intel `x86_64` Linux 上の 16 体 2D アリーナ Form (`Q32.32` 固定小数点、`732` バイト状態) | Rust、Wasm32、C++20 (`Clang`/`GCC`)、Node.js `BigInt`、Python 3 における $10^5$ ティックにわたる $H(s_t)$ (`25` セル) | 任意の `(host, target)` セルの任意のチェックポイントでハッシュが 1 件でも不一致となること | **実施済み (`0 / 20,500` 件の不一致、6.1節)** |
-| GE-H2 | 厳密モードと、ISA をまたぐ浮動小数点の境界および ライブラリ/FMA のドリフト | 16 体 2D カオス的アリーナ (`arm64` macOS、`aarch64` Linux、AMD/Intel `x86_64` Linux をまたぐ `25,000` ティック) | 厳密 `f64`、OS 間 `libm` の `sin/cos`、ISA 間 `FMA`、V8 `Math.sin`、`f32` における正確な発散ティック `t_div` | 固定された代数的算術の下での想定外の不一致、または予測されなかった無音のドリフト | **`arm64`、`aarch64`、`x86_64` にわたり実施済み (6.2節)** |
-| GE-H3 | GPU 間のレンダリングが有界な許容誤差内に収まる (`wgpu` / WGSL) | 4 基の物理 GPU (`Metal`、`RADV`、`NVIDIA`、`ANV`) と `llvmpipe` および `CPU Q16.16` 上で `512×512` の `RGBA8Unorm` として描画した 4 つの標準 `Q32.32` 状態 (`t = 0, 250, 1k, 10k`) | フレームバッファの `SHA-256`、相違ピクセルの割合、$\Delta_{\max}$、MAE、RMSE、`PSNR`、`SSIM` | 任意の物理 GPU の組が `PSNR > 40 dB`、`SSIM > 0.999`、または $p(\Delta > 8) \le 0.001$ を満たさないこと | **実施済み (`24/24` が合格ゲートを通過: `PSNR 64.2-72.1 dB`、`SSIM ≥ 0.99983`、6.3節)** |
-| GE-H4 | GameRule と同様に、Form で符号化したルールがコード量を削減する | Haunted Jaunt、Survival Shooter、Tanks の各挙動 | 挙動コードの行数 | 削減率が 50% 未満 (GameRule は 81.3% を達成) | 未着手 |
-| GE-H5 | Form ランタイムが GameRule の上限を上回る | 合成アクターによるスケーリング | $N$ に対するステップ時間 | $N = 350$ 未満でステップ時間が 20 ms を超えること | 未着手 |
-| GE-H6 | インターフェース検査が実際の欠陥を検出する | Mage の 26 パターン、注入したバインディング欠陥およびスキーマ欠陥 | 検出率、機構の F1 | 注入欠陥の検出率が 90% 未満、または F1 が IR なしの 0.12 を上回らないこと | 未着手 |
-| GE-H7 | Summer Engine テンプレートにおける $\ln(\Delta/\delta_0)$ 傾きの全面掃引 | Form として再表現した、物理演算を多用する Summer Engine テンプレート | 注入した $\delta_0$ に対する発散時間 | $t^{*}$ の $\ln(1/\delta_0)$ に対する傾きがゼロと区別できないこと | 未着手 |
-| GE-H8 | 再生が完全である | 1 時間分の記録セッション | $D$ のみから再現される最終ハッシュ | $D$ に含まれない状態を必要とする再生が 1 件でもあること | 未着手 |
-| GE-H9 | ベンチマーク同等性 | Form から Godot へのエミッタを介した GameCraft-Bench の 140 タスク | ネイティブ Godot 提出物に対する合格率 | 挙動が同一の入力で合格率が低いこと | 未着手 |
+| GE-H1 | シミュレーションの射影は言語・OS・CPU ISA を横断してビット単位で同一である | 16体 2D アリーナ Form（`Q32.32` 固定小数点、`732` バイトの状態）を `arm64` macOS、`aarch64` Linux、AMD/Intel `x86_64` Linux、Tiger Lake `x86_64` Windows 11 上で実行 | Rust、Wasm32、C++20（`Clang`/`GCC`/`MSVC`）、Node.js `BigInt`、Python 3 にわたる $10^5$ ティックの $H(s_t)$（`30` セル） | 任意の `(host, target)` セルの任意のチェックポイントでハッシュ不一致が生じた場合 | **実施済み（`3` OS・`3` ISA にわたり `0 / 25,500` 件の不一致、第6.1節）** |
+| GE-H2 | 厳密モードと、3 OS・クロス ISA における浮動小数点の境界およびライブラリ/FMA によるドリフトとの比較 | 16体 2D カオティックアリーナ（`arm64` macOS、`aarch64` Linux、`x86_64` Linux、`x86_64` Windows 11 にわたる `25,000` ティック） | 厳密な `f64`、3 OS の `UCRT`/`libSystem`/`glibc` による `sin/cos`、`MSVC` 対 `Clang` の `FMA`、V8 の `Math.sin`、および `f32` にわたる厳密な乖離ティック `t_div` | 固定された代数演算の下での予期しない不一致、または予測されなかった無音のドリフト | **`macOS`、`Linux`、`Windows 11` にわたり実施済み（第6.2節）** |
+| GE-H3 | GPU・API を横断したレンダリングは有界な許容誤差内に収まる（`wgpu` / WGSL） | 正準 `Q32.32` 状態 4 件（`t = 0, 250, 1k, 10k`）を、`8` 個の `GPU × API` エンドポイント（`DX12`、`Metal`、`Vulkan`）、`WARP`、`llvmpipe`、`CPU Q16.16` 上で `512×512` の `RGBA8Unorm` にレンダリング | フレームバッファの `SHA-256`、差分ピクセルの `%`、$\Delta_{\max}$、MAE、RMSE、`PSNR`、`SSIM` | いずれかの物理 GPU の組で `PSNR > 40 dB`、`SSIM > 0.999`、または $p(\Delta > 8) \le 0.001$ を満たさない場合 | **実施済み（`28/28` の組、すなわち `112/112` フレームが合格基準を満たす：`PSNR ≥ 64.16 dB`、`SSIM ≥ 0.99983`、第6.3節）** |
+| GE-H4 | Form で符号化された規則は、GameRule と同程度にコードを削減する | Haunted Jaunt、Survival Shooter、Tanks の振る舞い | 振る舞いコードの行数 | 削減率が 50% 未満である場合（GameRule は 81.3% に到達） | 未着手 |
+| GE-H5 | Form ランタイムは GameRule の上限を超える | 合成アクタのスケーリング | アクタ数 $N$ に対するステップ時間 | $N = 350$ 未満で、ステップ時間が 20 ms を超える場合 | 未着手 |
+| GE-H6 | インタフェース検査は実際の欠陥を検出する | Mage の 26 パターン、および注入されたバインディングおよびスキーマの欠陥 | 検出率、メカニズム F1 | 注入された欠陥の検出率が 90% 未満である場合、または F1 が IR を用いない場合の 0.12 を上回らない場合 | 未着手 |
+| GE-H7 | Summer Engine のテンプレートに対する完全な $\ln(\Delta/\delta_0)$ の傾き掃引 | 物理演算を多用する Summer Engine のテンプレートを Form として再表現したもの | 注入された $\delta_0$ に対する乖離時刻 | $t^{*}$ と $\ln(1/\delta_0)$ の傾きが 0 と区別できない場合 | 未着手 |
+| GE-H8 | リプレイは完全である | 1 時間分の記録されたセッション | $D$ のみから再現された最終ハッシュ | $D$ に含まれない状態を必要とするリプレイが存在する場合 | 未着手 |
+| GE-H9 | ベンチマークの同等性 | Form-to-Godot エミッタを経由した GameCraft-Bench の 140 タスク | ネイティブ Godot による提出との合格率の比較 | 振る舞いが同一の入力に対して合格率が低い場合 | 未着手 |
 
-![決定性境界をまたぐ2パネルの実証的要約。左パネルは厳密ゾーン GE-H1 (arm64 macOS, aarch64 Linux, AMD/Intel x86_64 Linux にわたる25セルで、20,500個の SHA-256 チェックポイントにおける不一致が0件) と、GE-H2 のクロスISA f64 発散の目盛り (Apple libm と GNU glibc の sin/cos では t_div = 10、-ffast-math を用いない x86_64 VFMADD と arm64 FMADD では t_div = 406) を示す。右パネルは許容ゾーン GE-H3 の最小 PSNR 棒グラフであり、6つの物理GPUペア (Apple Metal, AMD RADV Vulkan, Intel ANV Vulkan, NVIDIA Vulkan) にわたって 64.2 dB から 72.1 dB の範囲に分布し、40 dB のゲートを十分に上回る。1-2 LSB のピクセル差は 1.3% から 9.3% である。](/figures/game-engines/cross-gpu-tolerance.svg)
+![決定性境界を横断する2パネルの実証的要約。左パネルは厳密領域 GE-H1 (arm64 macOS、aarch64 Linux、AMD/Intel x86_64 Linux、Intel x86_64 Windows 11 の4環境、30セルにわたる25,500個の SHA-256 チェックポイントで不一致0件) と GE-H2 の3 OS における f64 発散時刻 (Windows UCRT と Apple libm の sin/cos を GNU glibc と比較した場合は t_div = 10、Windows UCRT と Apple libm の比較では t_div = 37、MSVC /fp:precise と Clang -ffp-contract=fast の比較では t_div = 192、x86_64 VFMADD と arm64 FMADD の比較では t_div = 406) を示す。右パネルは許容領域 GE-H3 の最小 PSNR 棒グラフであり、DirectX 12、Metal、Vulkan にまたがる8つのハードウェア GPU × API の組み合わせを示す。同一 GPU 上での DX12 と Vulkan のコンパイラ差異 (RTX 2060 で 108.3 dB、Iris Xe で 79.5 dB) と、ベンダー間のラスタライズ差異 (64.2 から 72.1 dB) を分離しており、いずれも 40 dB のゲート値を大きく上回る。](/figures/game-engines/cross-gpu-tolerance.svg)
 
-*図3. GE-H1, GE-H2, GE-H3 にまたがる実証的境界。上流の `Q32.32` シミュレーション状態 (`S`) は、3つのISAにまたがる5台のマシン上で `0 / 20,500` 件の `SHA-256` チェックポイント不一致を達成する。これに対し、ピン留めされていない `f64` の `sin/cos` と `FMA` は、OS/ISA の境界をまたぐと `10` から `406` ティック以内で発散する。$\lambda(s_t)$ の下流では、4つのGPUアーキテクチャすべてが相異なる `RGBA8Unorm` の `SHA-256` ダイジェストを生成する (1-2 LSB の `1.3%`-`9.3%` のピクセル差)。それにもかかわらず、`64.1 dB` を厳密に上回る `PSNR` と `0.99983` の `SSIM` を維持する (`measured_j = None`, `board_metered = false`)。*
+*図3. `GE-H1`、`GE-H2`、`GE-H3` にわたる経験的境界。上流の `Q32.32` シミュレーション状態（`S`）は、6台のマシン、3種のOS（`macOS`、`Linux`、`Windows 11`）、3種のISAにまたがって `0 / 25,500` の `SHA-256` チェックポイント不一致を達成する。一方、固定されていない `f64` の `sin/cos` と `FMA` は、OS・コンパイラ・ISAの境界をまたぐと `10` から `406` ティック以内に乖離する。$\lambda(s_t)$ の下流では、同一の Windows 11 GPU上で `DirectX 12` と `Vulkan` を切り替えると、シェーダーのローワリングにより 1 LSB の差が生じる（`79.5-108.3 dB` の PSNR）。その一方で、全 `28 / 28` のハードウェア `GPU × API` の組み合わせは、いずれも `64.16 dB` を厳密に上回る PSNR と、0.99983 を上回る SSIM を維持した（`measured_j = None`、`board_metered = false`）。*
 
-<div id="61-ge-h1-multi-isa-and-multi-os-100000-tick-determinism-q3232-integer-physics" class="anchor-alias" aria-hidden="true"></div>
+<div id="61-ge-h1-three-os-and-three-isa-100000-tick-determinism-q3232-integer-physics" class="anchor-alias" aria-hidden="true"></div>
 
-### 6.1 `GE-H1`: マルチISA とマルチOS の 100,000 ティック決定論 (`Q32.32` 整数物理)
+### 6.1 `GE-H1`: 3OSおよび3ISAにおける100,000ティック決定性 (`Q32.32`整数物理)
 
-*プリ登録は `PREREG_wave3_multi_isa_wgpu.json` (`SHA-256: 1721e5bdffaf...`) に基づく。テレメトリは `SATB` レベル `L2` と `L3` の `reported_j` を厳密に分離する (`L2`: Linux `/sys/class/powercap/intel-rapl:0/energy_uj` ソケット/パッケージおよびコアカウンタ；`L3`: macOS per-PID `proc_pid_rusage(child_pid, RUSAGE_INFO_V6).ri_energy_nj`；`measured_j = None`、`board_metered = false`)。インタラクティブエクスプローラと生 JSON: [`/living/game-engines/`](/living/game-engines/) ([`results.json`](/living/game-engines/results.json))。*
+*`PREREG_wave3_multi_isa_wgpu.json` (`SHA-256: 1721e5bdffaf...`) の下で事前登録済みである。テレメトリは `SATB` レベル `L2` と `L3` の `reported_j` を厳密に分離する (`L2`: Linux `/sys/class/powercap/intel-rapl:0/energy_uj` ソケット/パッケージおよびコアカウンタ; `L3`: macOS per-PID `proc_pid_rusage(child_pid, RUSAGE_INFO_V6).ri_energy_nj` および Windows 11 上の Win32 `GetProcessTimes` と `QueryProcessCycleTime` による活動量計測; ただし特権のないリング3 `RAPL` `MSR` アクセスがブロックされるため `measured_j = None`, `board_metered = false` である)。対話的エクスプローラおよび生JSON: [`/living/game-engines/`](/living/game-engines/) ([`results.json`](/living/game-engines/results.json))。*
 
-16体 + 4ピックアップの 2D 弾性衝突およびクールダウン FSM アリーナ Form (`Q32.32` 符号付き 64 ビット固定小数点座標 `[-64, +64]`、`128` ビット中間積、整数フロア平方根 `isqrt_u128`、遅延構造ピックアップリスポーン、`732` バイトリトルエンディアン正規状態ベクトル) を `100,000` ティック実行した。対象は **5 台のマシン、3 つの ISA (`arm64`/`AArch64`、`x86_64`、`wasm32`)、2 つの OS (`macOS 27.2.1`、`Ubuntu Linux 6.8 / 7.0`)、および 6 種類の言語/コンパイラ投射 (`25` ターゲット × ホストセル)**:
+16体 + 4ピックアップの 2D 弾性衝突およびクールダウン FSM アリーナ Form（座標は `[-64, +64]` の `Q32.32` 符号付き 64 ビット固定小数点、`128` ビット中間積、整数床平方根 `isqrt_u128`、構造ピックアップの遅延リスポーン、`732` バイトのリトルエンディアン正規状態ベクタ）を `100,000` ティック実行した。対象は **6 台のマシン、3 種類の ISA（`arm64`/`AArch64`、`x86_64`、`wasm32`）、3 種類の OS（`macOS 27.2.1`、`Ubuntu Linux 6.8 / 7.0`、`Microsoft Windows 11 Pro` ビルド `26300`）および 7 種類の言語/コンパイラ投影（`30` ターゲット × ホストセル）** である。
 
-| ホスト (`ISA` · `OS`) | ターゲット射影 | 壁掛け時間 ms / `100k` (平均 ± SD) | `ns / tick` | テレメトリーチャネル (`reported_j`) | `reported_j` / `100k` (J) | 検証済み `SHA-256` チェックポイント |
+| ホスト（`ISA` · `OS`） | 対象射影 | 実時間 ms / `100k`（平均 ± 標準偏差） | `ns / tick` | 計測チャネル（`reported_j`） | `reported_j` / `100k`（J） | 検証済み `SHA-256` チェックポイント |
 |---|---|---:|---:|---|---:|:---:|
-| **Apple M5 Max** (`arm64` · `macOS 27.2.1`) | `rust_native` (`rustc 1.100 -O`) | `22.333 ± 5.043` | `223.3` | `L3` per-PID `ri_energy_nj` | **`0.1028 ± 0.0247`** | `100 / 100` (`stride 1,000`) |
-| **Apple M5 Max** (`arm64` · `macOS 27.2.1`) | `cpp20_clang_o3` (`Apple Clang 21`) | `21.022 ± 1.657` | `210.2` | `L3` per-PID `ri_energy_nj` | **`0.1090 ± 0.0134`** | `100 / 100` (`stride 1,000`) |
-| **Apple M5 Max** (`arm64` · `macOS 27.2.1`) | `rust_wasm32_node` (`Node v26.13`) | `84.300 ± 11.334` | `843.0` | `L3` per-PID `ri_energy_nj` | **`0.4480 ± 0.0881`** | `100 / 100` (`stride 1,000`) |
-| **Apple M5 Max** (`arm64` · `macOS 27.2.1`) | `javascript_bigint_node` (`ES2024`) | `717.955 ± 36.304` | `7,179.6` | `L3` per-PID `ri_energy_nj` | **`4.4021 ± 0.4048`** | `100 / 100` (`stride 1,000`) |
-| **Apple M5 Max** (`arm64` · `macOS 27.2.1`) | `python_3_13` (`CPython 3.13.14`) | `2,945.816 ± 284.033` | `29,458.2` | `L3` per-PID `ri_energy_nj` | **`13.5999 ± 1.9086`** | `100 / 100` (`stride 1,000`) |
-| **Apple M3 Ultra** (`arm64` · `macOS 27.2.1`) | `rust_native` / `cpp20_clang_o3` | `32.711` / `33.727` | `327.1` / `337.3` | `L3` per-PID `ri_energy_nj` | **`0.0729` / `0.0755`** | `2 × 1,000 / 1,000` (`stride 100`) |
-| **AMD Ryzen AI Max+ 395** (`Zen 5` `x86_64` · `Linux 7.0`) | `rust_native` / `cpp20_clang_o3` / `cpp20_gcc_o3` | `21.793` / `23.061` / `26.677` | `217.9` - `266.8` | `L2` AMD RAPL pkg (core `0.13`-`0.21 J`) | **`1.958` / `2.349` / `2.932`** | `3 × 1,000 / 1,000` (`stride 100`) |
-| **AMD Ryzen AI Max+ 395** (`Zen 5` `x86_64` · `Linux 7.0`) | `rust_wasm32` / `js_bigint` / `python_3_14` | `145.29` / `1,347.80` / `2,546.42` | `1,452.9` - `25,464.2` | `L2` AMD RAPL pkg (core `1.01`-`12.23 J`) | **`14.44` / `115.81` / `181.87`** | `3 × 1,000 / 1,000` (`stride 100`) |
-| **Intel Core i9-13900H** (`Raptor Lake` `x86_64` · `Linux 7.0`) | `rust_native` / `cpp20_clang_o3` / `cpp20_gcc_o3` | `39.718` / `36.868` / `58.792` | `368.7` - `587.9` | `L2` Intel RAPL pkg (core `1.64`-`2.68 J`) | **`2.062` / `1.888` / `3.026`** | `3 × 1,000 / 1,000` (`stride 100`) |
-| **Intel Core i9-13900H** (`Raptor Lake` `x86_64` · `Linux 7.0`) | `rust_wasm32` / `js_bigint` / `python_3_14` | `158.35` / `1,390.46` / `3,375.07` | `1,583.5` - `33,750.7` | `L2` Intel RAPL pkg (core `5.65`-`124.90 J`) | **`6.89` / `60.79` / `149.48`** | `3 × 1,000 / 1,000` (`stride 100`) |
-| **NVIDIA Jetson Thor** (`Armv9-A` `aarch64` · `Linux 6.8`) | `rust_native` / `clang` / `gcc` / `wasm32` / `js` / `py3.12` | `39.28` (`GCC`) - `4,407.89` (`Py`) | `392.8` - `44,078.9` | CPUのみ (`reported_j = null`, GPU未使用) | `null` | `6 × 1,000 / 1,000` (`stride 100`) |
+| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `rust_native`（`rustc 1.100 -O`） | `22.333 ± 5.043` | `223.3` | `L3` プロセス別 `ri_energy_nj` | **`0.1028 ± 0.0247`** | `100 / 100`（`stride 1,000`） |
+| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `cpp20_clang_o3`（`Apple Clang 21`） | `21.022 ± 1.657` | `210.2` | `L3` プロセス別 `ri_energy_nj` | **`0.1090 ± 0.0134`** | `100 / 100`（`stride 1,000`） |
+| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `rust_wasm32_node`（`Node v26.13`） | `84.300 ± 11.334` | `843.0` | `L3` プロセス別 `ri_energy_nj` | **`0.4480 ± 0.0881`** | `100 / 100`（`stride 1,000`） |
+| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `javascript_bigint_node`（`ES2024`） | `717.955 ± 36.304` | `7,179.6` | `L3` プロセス別 `ri_energy_nj` | **`4.4021 ± 0.4048`** | `100 / 100`（`stride 1,000`） |
+| **Apple M5 Max**（`arm64` · `macOS 27.2.1`） | `python_3_13`（`CPython 3.13.14`） | `2,945.816 ± 284.033` | `29,458.2` | `L3` プロセス別 `ri_energy_nj` | **`13.5999 ± 1.9086`** | `100 / 100`（`stride 1,000`） |
+| **Apple M3 Ultra**（`arm64` · `macOS 27.2.1`） | `rust_native` / `cpp20_clang_o3` | `32.711` / `33.727` | `327.1` / `337.3` | `L3` プロセス別 `ri_energy_nj` | **`0.0729` / `0.0755`** | `2 × 1,000 / 1,000`（`stride 100`） |
+| **AMD Ryzen AI Max+ 395**（`Zen 5` `x86_64` · `Linux 7.0`） | `rust_native` / `cpp20_clang_o3` / `cpp20_gcc_o3` | `21.793` / `23.061` / `26.677` | `217.9` - `266.8` | `L2` AMD RAPL パッケージ（コア `0.13`-`0.21 J`） | **`1.958` / `2.349` / `2.932`** | `3 × 1,000 / 1,000`（`stride 100`） |
+| **AMD Ryzen AI Max+ 395**（`Zen 5` `x86_64` · `Linux 7.0`） | `rust_wasm32` / `js_bigint` / `python_3_14` | `145.29` / `1,347.80` / `2,546.42` | `1,452.9` - `25,464.2` | `L2` AMD RAPL パッケージ（コア `1.01`-`12.23 J`） | **`14.44` / `115.81` / `181.87`** | `3 × 1,000 / 1,000`（`stride 100`） |
+| **Intel Core i9-13900H**（`Raptor Lake` `x86_64` · `Linux 7.0`） | `rust_native` / `cpp20_clang_o3` / `cpp20_gcc_o3` | `39.718` / `36.868` / `58.792` | `368.7` - `587.9` | `L2` Intel RAPL パッケージ（コア `1.64`-`2.68 J`） | **`2.062` / `1.888` / `3.026`** | `3 × 1,000 / 1,000`（`stride 100`） |
+| **Intel Core i9-13900H**（`Raptor Lake` `x86_64` · `Linux 7.0`） | `rust_wasm32` / `js_bigint` / `python_3_14` | `158.35` / `1,390.46` / `3,375.07` | `1,583.5` - `33,750.7` | `L2` Intel RAPL パッケージ（コア `5.65`-`124.90 J`） | **`6.89` / `60.79` / `149.48`** | `3 × 1,000 / 1,000`（`stride 100`） |
+| **NVIDIA Jetson Thor**（`Armv9-A` `aarch64` · `Linux 6.8`） | `rust_native` / `clang` / `gcc` / `wasm32` / `js` / `py3.12` | `39.28`（`GCC`） - `4,407.89`（`Py`） | `392.8` - `44,078.9` | CPU のみ（`reported_j = null`、GPU は未計測） | `null` | `6 × 1,000 / 1,000`（`stride 100`） |
+| **Intel Core i7-1165G7**（`Tiger Lake` `x86_64` · `Windows 11 26300`） | `rust_native`（`x86_64-pc-windows-msvc`） / `cpp20_msvc_o2`（`cl.exe 19.44`） | `49.730 ± 1.727` / `343.363 ± 3.827` | `497.3` / `3,433.6` | Win32 `L3` サイクル数（`138.9M` / `958.9M`；CPU `RAPL` はブロック） | `null` | `2 × 1,000 / 1,000`（`stride 100`） |
+| **Intel Core i7-1165G7**（`Tiger Lake` `x86_64` · `Windows 11 26300`） | `rust_wasm32`（`Node v26.13`） / `js_bigint` / `python_3_10` | `198.01` / `1,776.96` / `8,899.23` | `1,980.1` - `88,992.3` | Win32 `L3` サイクル数（`553.8M` - `24,722.2M`；CPU `RAPL` はブロック） | `null` | `3 × 1,000 / 1,000`（`stride 100`） |
 
-- **判定**: **`PASS_ZERO_MISMATCHES`(検証済み `SHA-256` チェックポイント `0 / 20,500`;Wave 3 の完全トレース `20` セルにおける対ごとのストライド `100` 比較 `0 / 190,000`)**。すべてのホストにおけるすべてのターゲットが、tick `100` で `2683c3f7cb8b...`、tick `1,000` で `21fa688e4ee8...`、tick `50,000` で `ea01ba793841...`、tick `100,000` で `82e404df6475d64d...` を生成した。
-- **テレメトリの範囲と OS の対応範囲**: `L2` と `L3` の `reported_j` を混同してはならない点に留意されたい。Apple の `L3` `ri_energy_nj` は CPU コアのエネルギーをベンチマーク対象の子 PID に厳密に帰属させる(ネイティブ Rust/C++ で `0.073`-`0.109 J`)。一方、Linux の `/sys/class/powercap/intel-rapl:0`(`L2`)は、すべてのバックグラウンドデーモンを含むソケット全体のパッケージ電力を積算する(パッケージ `1.89`-`2.06 J`、`core` サブドメイン `0.13`-`1.83 J`)。`x86_64-w64-mingw32-g++` / `wine64` によるクロスコンパイルは共有 Linux ランナーで確認したところ存在せず、ベアメタルの Windows `x86_64` ホストは実行中に電源が切られていた。したがって Windows PE の実行はベアメタル上では未検証のままである。ただし、OS に依存しない `wasm32-unknown-unknown` は、`arm64` と `x86_64` の双方において macOS と Linux で同一の結果を示した。
+- **判定**: **`PASS_ZERO_MISMATCHES`(`30` セルにわたる検証済み `SHA-256` チェックポイント `0 / 25,500` 件、ならびに `macOS`、`Linux`、`Windows 11` にまたがる `25` の全トレースセルにおけるストライド `100` の対比較 `0 / 300,000` 件)**。すべてのホストにおけるすべてのターゲットが、tick `100` で `2683c3f7cb8b...`、tick `1,000` で `21fa688e4ee8...`、tick `50,000` で `ea01ba793841...`、tick `100,000` で `82e404df6475d64d...` を生成した。
+- **Windows における `MSVC` `<__msvc_int128.hpp>` と `LLVM` `i128` のコード生成の比較**: ベアメタルの Windows 11 (`x86_64` `PE`) 上では、`MSVC` (`cl.exe 19.44.35207 /std:c++20 /O2 /fp:strict`) は組み込みの `__int128` スカラー型を備えておらず、`<__msvc_int128.hpp>` の `std::_Signed128` および `std::_Unsigned128` の演算を複数ワードのライブラリルーチンへと lower する。その結果、10 万 tick あたり `343.36 ms`、`958.9M` CPU サイクルを要し、`rustc 1.100` の LLVM ネイティブ `x86_64-pc-windows-msvc` (`49.73 ms`、`138.9M` サイクル) に比べて `6.90×` 遅く、`Node.js` の `Wasm32` JIT (`198.01 ms`) に比べて `1.73×` 遅い。それでも、全 `1,000` チェックポイントにおいて `100%` のビット単位の状態一致を保持する。
+- **`macOS`、`Linux`、`Windows 11` にわたるテレメトリの対象範囲**: `L2` チャネルと `L3` チャネルを混同してはならない理由に注意が必要である。Apple の `L3` `ri_energy_nj` は CPU コアのエネルギーを、ベンチマーク対象の子 PID のみに厳密に帰属させる(ネイティブの Rust/C++ で `0.073`-`0.109 J`)。Linux の `/sys/class/powercap/intel-rapl:0` (`L2`) はソケット全体のパッケージ電力を積算する(パッケージで `1.89`-`2.06 J`、`core` で `0.13`-`1.83 J`)。Windows `NT 10.0.26300` は、ring-0 のカーネルドライバなしでは非特権のユーザモードからの Intel `RAPL` `MSR` 読み取りをブロックする一方で、`QueryProcessCycleTime` により PID 単位の正確な `L3` サイクル数を提供する。
 
-<div id="62-ge-h2-cross-isa-and-cross-os-25000-tick-floating-point-drift-ieee-754-f64" class="anchor-alias" aria-hidden="true"></div>
+<div id="62-ge-h2-three-os-and-cross-isa-25000-tick-floating-point-drift-ieee-754-f64" class="anchor-alias" aria-hidden="true"></div>
 
-### 6.2 `GE-H2`: クロスISAおよびクロスOS 25,000ティックの浮動小数点ドリフト（`IEEE 754` `f64`）
+### 6.2 `GE-H2`: 3OSおよびクロスISAにおける25,000ティックの浮動小数点ドリフト (`IEEE 754` `f64`)
 
-`IEEE 754` `binary64` (`f64`) シミュレーションが `-ffast-math` が *禁止* された状態で `x86_64` と `arm64`/`aarch64` 間で同期を保つかどうかを検証するため、同一の 16 ボディ混沌アリーナを `25,000` ティック（`~6.94` 分、`60 Hz`）実行し、各ティックで正規化された `IEEE 754` ビット（`t_div_ieee_bits`）、量子化された `10^-3` アリーナ単位位置（`t_div_macro_1e3`）、および離散ゲームプレイ状態（`t_div_gameplay`）をハッシュした。
+`IEEE 754` `binary64` (`f64`) シミュレーションが `-ffast-math` および `/fp:fast` を*禁止*した場合に `Windows 11`、`macOS`、および `Linux` (`x86_64` および `arm64`/`aarch64`) 間で同期を維持するかどうかを検証するため、同一の16体カオスアリーナを25,000ティック (`60 Hz` で `~6.94` 分) ステップ実行し、すべてのティックにおいて正準 `IEEE 754` ビット (`t_div_ieee_bits`)、量子化された `10^-3` アリーナ単位位置 (`t_div_macro_1e3`)、および離散的なゲームプレイ状態 (`t_div_gameplay`) をハッシュ化した。
 
 | ホスト / ターゲット A | ホスト / ターゲット B | 摂動メカニズム | `t_div_ieee_bits` | `t_div_macro_1e3` | `t_div_gameplay` |
 |---|---|---|---:|---:|---:|
-| `arm64` macOS `Clang 21` (`f64_strict`) | AMD Zen 5 & Intel RPL `x86_64` Linux `Clang 21` / `GCC 15.2` | クロスISAおよびクロスOS `f64` 代数演算 + `sqrt`、`FMA` オフ（`-ffp-contract=off`、三角関数なし） | `None (>25,000)` | `None (>25,000)` | `None (>25,000)` |
-| `x86_64` Linux `glibc 2.43` (`f64_trig`) | `aarch64` Linux `glibc 2.39` (`f64_trig`) | クロスISA Linux GNU `glibc` `std::sin/cos`（`-ffp-contract=off`、`-ffast-math` なし) | `None (>25,000)` | `None (>25,000)` | `None (>25,000)` |
-| **Apple `arm64` macOS (`f64_trig`, `-ffp-contract=off`)** | **AMD/Intel `x86_64` & Thor `aarch64` Linux (`f64_trig`, `-ffp-contract=off`)** | **クロスOS 標準 `libm` `std::sin/cos`（`Apple libSystem` 対 `GNU glibc`、`-ffast-math` なし)** | **`10`** (`0.17 s`) | **`5,900`** | **`9,798`** (`163.3 s`) |
-| **`x86_64` Linux (`-O3 -mavx2 -mfma -ffp-contract=fast`)** | **Apple `arm64` & Thor `aarch64` (`-O3 -ffp-contract=fast`)** | **クロスISA `FMA` 低減（`x86_64 VFMADD/VFNMADD` 対 `AArch64 FMADD/FMSUB`、代数演算のみ、`-ffast-math` なし)** | **`406`** (`6.77 s`) | **`7,422`** | **`11,205`** (`186.8 s`) |
-| **`x86_64` Linux `Node v22.22` (`f64_trig`)** | **`aarch64` Linux `Node v24.22` (`f64_trig`)** | **クロスISA Node.js V8 `Math.sin/cos`（`x86_64` 対 `aarch64`）** | **`66`** (`1.10 s`) | **`7,617`** | **`10,093`** (`168.2 s`) |
-| **`cpp_f64_strict` (`-ffp-contract=off`)** | **`cpp_f64_fma` / `-ffast-math`** | **同一ホスト `FMA` 縮小（`-ffp-contract=off` 対 `-ffp-contract=fast`）** | **`192`** (`3.20 s`) | **`5,927`-`6,576`** | **`8,869`-`10,093`** |
-| **`cpp_f64_strict` / `trig`** | **`cpp_f32_strict` / `trig`** | **精度ステップダウン（`binary64` `f64` 対 `binary32` `f32`）** | **`1`** | **`8`-`9`** | **`1,370`-`2,240`** |
+| `Windows 11 x86_64` (`MSVC /fp:strict`, `Rust`, `V8`, `Py`) | `arm64 macOS` & `x86_64`/`aarch64 Linux` (`Clang`/`GCC`/`Rust`) | 3-OS と 3-ISA の `f64` と `f32` 代数演算 + `sqrt`, `FMA` 無効 (`/fp:strict`, `-ffp-contract=off`, 三角関数なし) | `None (>25,000)` | `None (>25,000)` | `None (>25,000)` |
+| `x86_64 Linux glibc 2.43` (`f64_trig`) | `aarch64 Linux glibc 2.39` (`f64_trig`) | クロス ISA Linux GNU `glibc` `std::sin/cos` (`-ffp-contract=off`, `-ffast-math` 無し) | `None (>25,000)` | `None (>25,000)` | `None (>25,000)` |
+| **`Windows 11 x86_64 UCRT` (`MSVC /fp:strict` & `Rust`)** | **`x86_64 Linux GNU glibc 2.43` (`Clang` & `Rust`, `-ffp-contract=off`)** | **クロス OS 同一 ISA (`x86_64`) `std::sin/cos` (`ucrtbase.dll` vs `glibc`, fast-math 無し)** | **`10`** (`0.17 s`) | **`7,899`** | **`10,392`** (`173.2 s`) |
+| **Apple `arm64` macOS (`f64_trig`, `-ffp-contract=off`)** | **AMD/Intel `x86_64` & Thor `aarch64` Linux (`f64_trig`, `-ffp-contract=off`)** | **クロス OS 標準 `libm` `std::sin/cos` (`Apple libSystem` vs `GNU glibc`, `-ffast-math` 無し)** | **`10`** (`0.17 s`) | **`5,900`** | **`9,798`** (`163.3 s`) |
+| **`Windows 11 x86_64 UCRT` (`MSVC /fp:strict` & `Rust`)** | **Apple `arm64` macOS (`libSystem`, `-ffp-contract=off`)** | **クロス OS・クロス ISA `std::sin/cos` (`Windows UCRT` vs `Apple libSystem`, fast-math 無し)** | **`37`** (`0.62 s`) | **`5,900`** | **`9,798`** (`163.3 s`) |
+| **`Windows 11 MSVC` (`/O2 /arch:AVX2 /fp:precise` default)** | **`x86_64 Linux Clang 21` (`-O3 -mavx2 -mfma -ffp-contract=fast` default)** | **クロスコンパイラ `x86_64` `FMA` デフォルト (`MSVC /fp:precise` 無契約 vs `Clang` `FMA`, 代数のみ)** | **`192`** (`3.20 s`) | **`5,927`** | **`8,869`** (`147.8 s`) |
+| **`x86_64` Linux (`-O3 -mavx2 -mfma -ffp-contract=fast`)** | **Apple `arm64` & Thor `aarch64` (`-O3 -ffp-contract=fast`)** | **クロス ISA `FMA` 降格 (`x86_64 VFMADD/VFNMADD` vs `AArch64 FMADD/FMSUB`, 代数のみ, `-ffast-math` 無し)** | **`406`** (`6.77 s`) | **`7,422`** | **`11,205`** (`186.8 s`) |
+| **`Windows 11` & `Linux x86_64` `Node.js` (`V8 Math.sin/cos`)** | **`macOS arm64` & `Linux aarch64` `Node.js` (`V8 Math.sin/cos`)** | **クロス ISA Node.js V8 `Math.sin/cos` (`0` ドリフト Win11 vs Linux `x86_64`; arm64/aarch64 では乖離)** | **`66`** (`1.10 s`) | **`7,617`** | **`10,093`** (`168.2 s`) |
+| **`cpp_f64_strict` (`/fp:strict`, `-ffp-contract=off`)** | **`MSVC /fp:fast`, `Rust mul_add`, or `Clang -ffast-math`** | **同一ホスト `FMA` 縮約 (`/fp:strict` vs `/fp:fast` または明示的 `mul_add`)** | **`192`** (`3.20 s`) | **`5,927`-`6,576`** | **`8,869`-`10,093`** |
+| **`cpp_f64_strict` / `trig`** | **`cpp_f32_strict` / `trig`** | **精度ステップダウン (`binary64` `f64` vs `binary32` `f32`)** | **`1`** | **`8`-`9`** | **`1,370`-`2,240`** |
 
-3つの鋭いクロスISAの発見が浮かび上がる：
+1. **IEEE 754-2008 の `+`、`-`、`*`、`/`、`sqrt` は、`FMA` を無効化した状態（`/fp:strict` および `-ffp-contract=off`）では、`x86_64` と `arm64`/`aarch64` の両ISAにおいて、`Windows 11`、`macOS`、`Linux` の間でビット単位の移植性を持つ**（`MSVC`、`Clang`、`GCC`、`Rustc`、`V8`、`CPython` にわたる `25,000` ティックで不一致は `0` 件）。これは、この5つの演算がいずれも `0.5` ULP への丸めを義務づけられているためである。
 
-1. **IEEE 754-2008における`+`, `-`, `*`, `/`, および`sqrt`は`FMA`を無効化した場合（`-ffp-contract=off`）に`x86_64`と`arm64`/`aarch64`の間でビット単位で移植可能である**（`Clang`, `GCC`, `Rustc`, `V8`の全組み合わせで`25,000`ティックにわたり`0`不一致）。これは5つの演算すべてが`0.5` ULPへの丸めを義務付けられているためである。
-2. **標準C++の`std::sin`/`std::cos`は`-ffp-contract=off -fno-fast-math`を指定してもティック`10`（`0.17 s`）でクロスOS決定性を破る**：Appleの`libSystem` `libm`とGNU `glibc`はティック`10`において操舵インパルスを`1` ULP異なる丸めを行い、これが16物体衝突の混沌によってティック`5,900`までに`> 10^-3`の位置誤差へ増幅され、ティック`9,798`（`163.3 s`）で離散的なスコア/ピックアップの非同期化を引き起こす。
-3. **コンパイラのデフォルト`FMA`縮約（`-ffp-contract=fast`、`-ffast-math`や三角関数なし）はティック`406`（`6.77 s`）でクロスISA決定性を破る**：AMD Zen 5とIntel Raptor Lakeは`x86_64`上でビット単位で完全に一致し（`844172b5...`）、Apple M3 UltraとJetson Thorは`AArch64`上でビット単位で完全に一致する（`deeb446c...`）一方、LLVMは否定付き乗算減算式を`x86_64`（`AVX2` `VFMADD`/`VFNMADD`）と`AArch64`（`NEON` `FMADD`/`FMSUB`）で異なって低レベル化するため、ティック`11,205`でゲームプレイを非同期化する。
+2. **3大OSの数学ライブラリ（`Windows UCRT`、`macOS libSystem`、`Linux GNU glibc`）は、厳密な `f64`（fast-math 無効）のもとで、両対ごとに乖離する三角形を形成する**。同一の `x86_64` ISA であっても、Windows の `ucrtbase.dll`（`10.0.26100.9711`）は Linux の `glibc 2.43` とティック `10`（`t_div_gameplay = 10,392`）で乖離する。また、`Windows UCRT` は `Apple libSystem` とティック `37`（`t_div_gameplay = 9,798`）で乖離し、`Apple libSystem` は `glibc` とティック `10`（`t_div_gameplay = 9,798`）で乖離する。Windows 11 内では、`MSVC /fp:strict`、`Rust x86_64-pc-windows-msvc`、`CPython 3.10` がいずれも `ucrtbase.dll` にリンクし、`> 25,000` ティックにわたって一致する（`b1fbc91788a59cff`）一方、Windows 上の `Node.js V8` とはティック `149` で乖離する。
 
-<div id="63-ge-h3-cross-gpu-headless-wgpu-metal--vulkan-rendering-tolerance" class="anchor-alias" aria-hidden="true"></div>
+3. **既定のコンパイラにおける `FMA` の方針は、同一の `x86_64` ISA 上でも `MSVC` と `Clang` の間で乖離し（`t = 192`）、`x86_64` と `AArch64` の間でも乖離する（`t = 406`）**。`MSVC` の既定である `/O2 /arch:AVX2 /fp:precise` は `a + b * c` を縮約しない（`/fp:strict` と `> 25,000` ティックにわたり同一）。そのため、`Clang 21` の既定である `-O3 -mavx2 -mfma`（既定で `-ffp-contract=fast` が有効）とはティック `192`（`t_div_gameplay = 8,869`）で乖離する。両コンパイラがともに縮約を有効にした場合でも、LLVM は符号反転を伴う乗算減算の lowering を `x86_64`（`VFMADD`/`VFNMADD`）と `AArch64`（`FMADD`/`FMSUB`）で異なるように行い、ティック `406`（`t_div_gameplay = 11,205`）で乖離する。
 
-### 6.3 `GE-H3`: 相互GPU間のヘッドレス`wgpu`（`Metal` / `Vulkan`）レンダリングにおける許容誤差
+4. **JavaScript V8 の `Math.sin`/`Math.cos` は、`x86_64` 上では OS に依存しない**（`Windows 11 Node v26.13` は `> 25,000` ティックにわたり `Linux x86_64 Node v22.22` と一致する）。一方で、ISA には依存する（`x86_64` と `arm64`/`aarch64` はティック `66` で乖離する）。
 
-図1の右辺を実証的に検証するため、自己完結型のRust製ヘッドレス`wgpu`（`v22.1.0`）ベンチマーク（`ge_h3_wgpu_bench`）を実装した。本ベンチマークは、4つの標準的な`Q32.32`シミュレーションスナップショット（`ticks 0, 250, 1,000, 10,000`）を、`512×512`の`RGBA8Unorm`フレームバッファ（`262,144`画素、`1,048,576`バイト/フレーム）に描画する。描画は2段階のWGSLパイプラインにより行われる。第1段階は三角関数に基づく手続き的なレーダー・格子背景であり、第2段階は宣言順に適用される`20`個の`SrcAlpha / OneMinusSrcAlpha`アルファブレンディングによるSDFエンティティおよびBlinn-Phong陰影付き3D球体・トーラスである。これと並行して、浮動小数点演算を用いない`CPU Q16.16`整数ソフトウェア参照ラスタライザを基準として用いた。
+<div id="63-ge-h3-three-os-three-api-headless-wgpu-directx-12--metal--vulkan-rendering-tolerance" class="anchor-alias" aria-hidden="true"></div>
 
-| Adapter A（`API` · ドライバ） | Adapter B（`API` · ドライバ） | 平均差異画素率（`%`） | 最大 $|\Delta|$（`0..255`） | 平均MAE（`u8`） | 平均RMSE（`u8`） | 最小`PSNR`（`dB`） | 最小`SSIM` | `GE-H3` ゲート |
+### 6.3 `GE-H3`: 三 OS・三 API にまたがるヘッドレス `wgpu`（`DirectX 12` / `Metal` / `Vulkan`）のレンダリング許容誤差
+
+図1の右側に対応する許容誤差の領域を、主要なデスクトップ向けグラフィックス API の三者すべてについて検証するため、`ge_h3_wgpu_bench`（`wgpu v22.1.0` を `Backends::DX12 | Backends::VULKAN | Backends::METAL` 指定で使用）は、4 つの標準的な `Q32.32` シミュレーションスナップショット（`ticks 0, 250, 1,000, 10,000`）を、同一の二パス WGSL シェーダを用いて `512×512` の `RGBA8Unorm` フレームバッファ（`262,144` ピクセル、`1,048,576` バイト/フレーム）へ描画した。描画は **8 つのハードウェア `GPU × API` エンドポイント**（`Apple M3 Ultra Metal`、`AMD Radeon 8060S Linux RADV Vulkan`、`Intel Iris Xe RPL-P Linux ANV Vulkan`、`NVIDIA RTX 4050 Linux Vulkan`、`NVIDIA RTX 2060 Win11 DirectX 12`、`NVIDIA RTX 2060 Win11 Vulkan`、`Intel Iris Xe TGL Win11 DirectX 12`、`Intel Iris Xe TGL Win11 Vulkan`）に加え、**`Microsoft Basic Render Driver`（`Win11 DirectX 12 WARP`）**、**`Mesa llvmpipe`（`Linux CPU Vulkan`）**、そして浮動小数点を一切用いない整数参照ラスタライザである **`CPU Q16.16`** において実施した。
+
+| アダプタ A (`OS` · `API` · ドライバ) | アダプタ B (`OS` · `API` · ドライバ) | 平均異なる画素数 (`%`) | 最大 $|\Delta|$ (`0..255`) | 平均 MAE (`u8`) | 平均 RMSE (`u8`) | 最小 `PSNR` (`dB`) | 最小 `SSIM` | `GE-H3` ゲート |
 |---|---|---:|---:|---:|---:|---:|---:|:---:|
-| **Apple M3 Ultra（`Metal` 4）** | **Intel Iris Xe（`Vulkan` · Mesa `ANV` 26.0.8）** | `1.301%` | `2` | `0.00386` | `0.06215` | **`72.06`** | **`0.999986`** | **合格** |
-| **AMD Radeon 8060S（`Vulkan` · Mesa `RADV` 26.0.8）** | **Apple M3 Ultra（`Metal` 4）** | `3.103%` | `1` | `0.00788` | `0.08876` | **`69.09`** | **`0.999956`** | **合格** |
-| **AMD Radeon 8060S（`Vulkan` · Mesa `RADV` 26.0.8）** | **Intel Iris Xe（`Vulkan` · Mesa `ANV` 26.0.8）** | `3.774%` | `2` | `0.01022` | `0.10116` | **`67.97`** | **`0.999951`** | **合格** |
-| **AMD Radeon 8060S（`Vulkan` · Mesa `RADV` 26.0.8）** | **NVIDIA GeForce RTX 4050（`Vulkan` · `595.99.02`）** | `6.553%` | `2` | `0.01735` | `0.13179` | **`65.64`** | **`0.999874`** | **合格** |
-| **Intel Iris Xe（`Vulkan` · Mesa `ANV` 26.0.8）** | **NVIDIA GeForce RTX 4050（`Vulkan` · `595.99.02`）** | `8.280%` | `2` | `0.02149` | `0.14667` | **`64.79`** | **`0.999844`** | **合格** |
-| **Apple M3 Ultra（`Metal` 4）** | **NVIDIA GeForce RTX 4050（`Vulkan` · `595.99.02`）** | `9.337%` | `2` | `0.02467` | `0.15720` | **`64.16`** | **`0.999833`** | **合格** |
-| 物理GPU（`4` ベンダー） | `Mesa llvmpipe`（`LLVM 21.1.8` CPU・`Vulkan`） | `1.541%` - `9.633%` | `2` - `3` | `0.00477` - `0.02601` | `0.06895` - `0.16173` | `63.86` - `70.87` | `0.999828` - `0.999984` | **合格** |
-| 物理GPU（`4` ベンダー） | `CPU Q16.16` ゼロ浮動小数点整数参照実装 | `20.400%` - `27.626%` | `2` | `0.05612` - `0.07864` | `0.23689` - `0.28068` | `59.13` - `60.58` | `0.999556` - `0.999693` | **合格** |
+| **NVIDIA RTX 2060 (`Win11 DirectX 12` · `591.74`)** | **NVIDIA RTX 4050 (`Linux Vulkan` · `595.99.02`)** | **`0.000%`** (`0` px) | **`0`** | `0.00000` | `0.00000` | **`∞` (`4/4` exact)** | **`1.000000`** | **Pass** |
+| **NVIDIA RTX 2060 (`Win11 DirectX 12` · `HLSL`/`DXIL`)** | **NVIDIA RTX 2060 (`Win11 Vulkan` · `SPIR-V`)** *(同一 GPU)* | **`0.0002%`** (`0-1` px) | **`1`** | `0.000001` | `0.00049` | **`108.34`** | **`1.000000`** | **Pass** |
+| **Intel Iris Xe (`Win11 DirectX 12` · `31.0.101.3222`)** | **Intel Iris Xe (`Linux Vulkan` · Mesa `ANV` 26.0.8)** | `0.0003%` | `1` | `0.000001` | `0.00059` | **`105.33`** | **`1.000000`** | **Pass** |
+| **Intel Iris Xe (`Win11 DirectX 12` · `HLSL`/`DXIL`)** | **Intel Iris Xe (`Win11 Vulkan` · `SPIR-V`)** *(同一 GPU)* | **`0.283%`** (`729-758` px) | **`1`** | `0.00071` | `0.02665` | **`79.52`** | **`0.999996`** | **Pass** |
+| **Apple M3 Ultra (`macOS Metal` 4)** | **Intel Iris Xe (`Win11 DirectX 12` / `Linux ANV Vulkan`)** | `1.301%` | `2` | `0.00386` | `0.06215` | **`72.06`** | **`0.999986`** | **Pass** |
+| **Apple M3 Ultra (`macOS Metal` 4)** | **Intel Iris Xe (`Win11 Vulkan` · `31.0.101.3222`)** | `1.573%` | `2` | `0.00455` | `0.06743` | **`71.39`** | **`0.999982`** | **Pass** |
+| **AMD Radeon 8060S (`Linux Vulkan` · Mesa `RADV`)** | **Apple M3 Ultra (`macOS Metal` 4)** | `3.103%` | `1` | `0.00788` | `0.08876` | **`69.09`** | **`0.999956`** | **Pass** |
+| **AMD Radeon 8060S (`Linux Vulkan` · Mesa `RADV`)** | **Intel Iris Xe (`Win11 DirectX 12` / `Win11 Vulkan`)** | `3.774%` / `3.565%` | `2` | `0.01022` / `0.00968` | `0.10116` / `0.09844` | **`67.97`** / **`68.20`** | **`0.999951`** | **Pass** |
+| **AMD Radeon 8060S (`Linux Vulkan` · Mesa `RADV`)** | **NVIDIA RTX 2060 (`Win11 DX12` / `Vulkan`) & RTX 4050** | `6.554%` | `2` | `0.01735` | `0.13180` | **`65.64`** | **`0.999874`** | **Pass** |
+| **NVIDIA RTX 2060 (`Win11 DirectX 12`)** | **Intel Iris Xe (`Win11 DirectX 12`)** *(同一 Win11 ホスト)* | `8.279%` | `2` | `0.02149` | `0.14667` | **`64.79`** | **`0.999844`** | **Pass** |
+| **Apple M3 Ultra (`macOS Metal` 4)** | **NVIDIA RTX 2060 (`Win11 DX12` / `Vulkan`) & RTX 4050** | `9.337%` | `2` | `0.02467` | `0.15721` | **`64.16`** | **`0.999833`** | **Pass** |
+| **Apple M3 Ultra (`macOS Metal` 4)** | **`Microsoft WARP` (`Win11 DirectX 12` CPU)** | `0.003%` | `1` | `0.000008` | `0.00271` | **`98.79`** | **`1.000000`** | **Pass** |
+| **`Microsoft WARP` (`Win11 DirectX 12` CPU)** | **`Mesa llvmpipe` (`Linux LLVM 21.1.8` CPU `Vulkan`)** | `1.591%` | `2` | `0.00543` | `0.07359` | **`70.35`** | **`0.999983`** | **Pass** |
+| ハードウェア GPU (`8` エンドポイント `DX12`/`Metal`/`Vulkan` 間) | **`CPU Q16.16` ゼロ浮動小数点整数参照 (`4` ホスト)** | `20.400%` - `27.626%` | `2` | `0.05612` - `0.07864` | `0.23689` - `0.28068` | `59.13` - `60.58` | `0.999556` - `0.999693` | **Pass** |
 
-- **ビット完全性は否定され、限定トレランスは確認された (`24 / 24` 物理GPUフレームペア)**: すべての物理GPUペアは異なる生 `RGBA8` `SHA-256` ダイジェストを生成した (`0 / 24` ビット単位で一致) であり、ハードウェアSFUの `sin`/`cos`/`pow` 近似や `unorm8` ROP ブレンドの丸めによるものである。しかし **任意の物理GPUペアにおいてピクセルが `2 / 255` を超えて変化したものはゼロである** ($p(|\Delta| > 8) = 0.000000 \le 0.001$)、`PSNR` は `64.16 dB` を超え (`> 40.0 dB` の閾値)、`SSIM` は `0.999833` を超え (`> 0.999` の閾値) であり、フレームあたり `0.31`-`2.80 ms` の処理時間であった。
-
-- **ソフトウェアラスタライザの対照**: ゼロフロート `CPU Q16.16` 整数ソフトウェアラスタライザは `Apple M3 Ultra` (`arm64`)、`AMD Zen 5` (`x86_64`)、`Intel Raptor Lake` (`x86_64`) 上で `0` `SHA-256` フレームバッファ不一致を達成した (`9c693a38...` が tick `0`、`ce3b2cec...` が tick `10,000`)。さらに `Mesa llvmpipe` (`LLVM 21.1.8`) は AMD と Intel `x86_64` ホスト間でビット単位の一致を示し (`ccb291f6...` が tick `0`)、ピクセルの分岐は GPU シェーダ／ROP ハードウェアの変動に起因し、シーン投影 $\lambda(s_t)$ には起因しないことを示した。
+- **同一GPU上での`DX12`(`HLSL`/`DXIL`)と`Vulkan`(`SPIR-V`)のドリフトの切り分け: 物理GPUに由来する差異の分離**: 同一のWindows 11マシン上で、同一の物理GPUを`DirectX 12`と`Vulkan`で比較することにより、コンパイラの変換処理(`Naga`による`WGSL -> HLSL`と`WGSL -> SPIR-V`)とハードウェアのSFUやROPの設計に由来する差異を切り分けた。`NVIDIA GeForce RTX 2060`では、`Win11 DirectX 12`と`Win11 Vulkan`がティック`0`および`250`でビット単位で同一の`SHA-256`フレームバッファを生成した。一方、ティック`1,000`および`10,000`では、斜めに入射する鏡面反射の1ピクセルにおいて`1` LSBの差異が生じた(平均差異`0.0002%`、`PSNR` `108.34 dB`)。また、`RTX 2060 (Win11 DirectX 12)`は`RTX 4050 (Linux Vulkan)`と`4 / 4`フレームすべてでビット単位で一致した(差異ピクセル`0`。Turingと Ada Lovelace の比較、およびWindowsの`DX12`とLinuxの`Vulkan`の比較にまたがる)。`Intel Iris Xe Graphics`(`Tiger Lake`)では、`Win11 DirectX 12`と`Win11 Vulkan`の間で、全4フレームにわたり`0.283%`のピクセルが異なった(`PSNR` `79.52 dB`、$\Delta_{\max} = 1$)。これに対し、`Win11 DirectX 12`と`Linux Mesa ANV Vulkan`の間の差異は`0.0003%`にとどまり(`105.33 dB`、ティック`0`および`1,000`ではビット単位で同一)であった。
+- **全`28 / 28`のハードウェア`GPU × API`組合せ(`112 / 112`フレーム)における許容誤差の有界性の確認**: `27 / 28`のハードウェア端点の組合せでは、生の`RGBA8`の`SHA-256`ダイジェストが異なった。しかし、`DirectX 12`、`Metal`、`Vulkan`にまたがるいずれのハードウェアの組合せにおいても、`2 / 255`を超えて異なったピクセルは皆無であった($p(|\Delta| > 8) = 0.000000 \le 0.001$)。`PSNR`は`64.16 dB`を超え(`> 40.0 dB`の判定基準を`+24.16 dB`上回る)、`SSIM`は`0.999833`を超えた(`> 0.999`の判定基準)。処理時間はフレームあたり`0.29`-`6.04 ms`であった。
+- **ソフトウェアラスタライザとの対比(`WARP`、`llvmpipe`、`CPU Q16.16`)**: CPU上で動作するソフトウェアのGPU APIエミュレータであっても、APIごとに結果は乖離する。`Microsoft Basic Render Driver`(`Win11 DirectX 12 WARP`)と`Mesa llvmpipe`(`Linux Vulkan`)の間では、1.591%のピクセルが異なった(`PSNR` `70.35 dB`、$\Delta_{\max} = 2$)。これに対し、浮動小数点演算を用いない整数ソフトウェアラスタライザ`CPU Q16.16`は、4つのOS/ISAホスト(`macOS arm64`、`Linux AMD x86_64`、`Linux Intel x86_64`、`Windows 11 x86_64`)にわたり、`SHA-256`フレームバッファの不一致を**0件**に抑えた(ティック`0`では`9c693a38...`、ティック`10,000`では`ce3b2cec...`)。
 
 <div id="64-playable-joule-native-q3232-chrono-budget-arena-livinggame-engines" class="anchor-alias" aria-hidden="true"></div>
 
@@ -288,21 +308,26 @@ $$t^{*} = \frac{1}{\Lambda} \ln\frac{\Delta}{\delta_0}.$$
 
 <div id="7-infeasibility-flags" class="anchor-alias" aria-hidden="true"></div>
 
-## 7. 実現不可能性に関するフラグ
+## 7. 実現不可能性の判定
 
-1. **ハードウェアによるクロスGPUのビット単位一致レンダリング: 実現不可能(`GE-H3`において`Metal`、`RADV`、`NVIDIA`、`ANV`の全24組で`SHA-256`一致数は`0 / 24`)。一方、GPU出力が$S$に再投入されない場合には、有界な知覚的許容誤差(`PSNR > 64 dB`、`SSIM > 0.9998`、$\Delta_{\max} \le 2$)が成立する。**
-2. **標準的な浮動小数点設定によるクロスプラットフォームの厳密な物理演算: 実現不可能。** `-ffast-math`を用いない場合でも、OS間の`std::sin`/`std::cos`(`Apple libm`と`GNU glibc`)は第10ティックで乖離し、ISA間の`FMA`の下位化(`x86_64`と`arm64`における`-ffp-contract=fast`)は第406ティックで乖離する。この乖離は`9,798`から`11,205`ティックの間にゲームプレイの非同期へと波及する(`GE-H2`)。
-3. **シミュレーション内部でのGPU計算: 厳密な意味では実現不可能であり、決定論的リダクションを用いる場合に限り実現可能である。** 測定された対象ハードウェア上のコストは約0.2%から7.8%である。ただし、全ターゲットにおいて命令単位で保護(SPIR-V NoContraction)しない限り、コンパイラによる縮約(contraction)の影響を受ける。
-4. **エンジン間で移植可能な振る舞い: 読解した外部資料では実証されていない。** 2次元物理演算カーネルのレベルでは、`GE-H1`において`25`組(ターゲット×ホスト、`5`台のマシン、`3`種のISA、`6`種のランタイムおよびコンパイラ)にわたり実証されている。一方、エンジン全体への投影(`GE-H4`、`GE-H9`)は未解決のままである。
-5. **大規模なアクター数における解釈型ルール: 制約がある。** GameRuleの測定から、20 msにおけるアクター数の上限は約300と推定される。さらに`GE-H1`は、Pythonの`int`がIntel、AMD、Apple Silicon上で、ネイティブRustの`reported_j`と比較して`73×`から`132×`のコストを要することを示している。大規模な運用には、コンパイル済みのネイティブ実装またはWebAssemblyへの投影が必要である。
-6. **厳密な対象としての独自エンジンおよびベアメタルWindowsターゲット: 未検証。** GameRuleが引用したUnityマニュアルは実行順序の保証を否認している。また、UnityおよびUnrealのテンプレートカタログは(ページがクライアントサイドで描画されるため)読解できなかった。Unreal の実行順序に関する資料も読解していない。さらに、ベアメタルWindowsの`PE`実行は、Wave 3のLinux/macOSランナープールでは稼働していなかった。
+1. **GPU とグラフィックス API をまたぐビット単位で一致するハードウェア描画：実現不可能**。ハードウェアの `GPU × API` 組合せ `28` 通りのうち `27` 通りが、`GE-H3` において生の `SHA-256` で発散した（同一 GPU 上の `DirectX 12` と `Vulkan` の組合せ `2` 通りを含む `2 / 2`）。一方、GPU の出力が $S$ へフィードバックされない場合、有界な知覚的許容誤差（`PSNR >= 64.16 dB`、`SSIM >= 0.99983`、$\Delta_{\max} \le 2$）は `DirectX 12`、`Metal`、`Vulkan` の全域で成立する。
+
+2. **標準的な浮動小数点設定による、プラットフォームをまたぐ厳密な物理演算：`Windows`、`macOS`、`Linux` の間では実現不可能**。`-ffast-math` や `/fp:fast` を用いない場合でも、標準の `std::sin`/`std::cos` は `Windows UCRT`、`Apple libSystem`、`GNU glibc` の間で3者間の発散の三角形を形成する（`t_div = 10` から `37`）。また、既定の `MSVC /fp:precise` と `Clang -ffp-contract=fast` は `x86_64` 上で `t_div = 192` において発散し、ISA をまたぐ `FMA`（`x86_64` と `arm64`）は `t_div = 406` において発散する。これらは `8,869` から `11,205` ティック以内にゲームプレイの非同期化へと波及する（`GE-H2`）。
+
+3. **シミュレーション内部における GPU 計算：厳密な意味では実現不可能であり、決定論的リダクションを用いる場合に限り実現可能**。これは引用されたハードウェア上で約 0.2% から 7.8% のコストが測定されている。ただし、各命令に対してコンパイラの演算融合（contraction）を抑止（SPIR-V NoContraction）しない限り、すべての対象環境においてコンパイラによる演算融合の影響を受ける。
+
+4. **エンジン間で移植可能な振る舞い：読み込んだ外部資料では実証されていない。2D 物理カーネルの水準では `GE-H1` において実証されており、これは `30` 通りの対象×ホストの組合せ（`6` 台のマシン、`3` 種の OS `macOS`/`Linux`/`Windows 11`、`3` 種の ISA、`7` 種のランタイム/コンパイラ）にわたる。ただし、エンジン全体への投影（`GE-H4`、`GE-H9`）は未解決のままである。**
+
+5. **大量のアクタ数における解釈されたルール：制約がある**。GameRule の測定結果から、20 ms において約 300 アクタ付近に上限があることが示唆される。また `GE-H1` は、Python の `int` が Linux/macOS において native Rust の `reported_j` の `73×` から `132×` のコストを要し、Windows 11 においては壁時計時間で `179×` を要することをさらに示す。規模を拡大する場合には、コンパイル済みのネイティブ実装または WebAssembly への投影が必要である。
+
+6. **厳密な対象としての、プロプライエタリなサードパーティ製ゲームエンジン：未検証**。第6節においてベアメタルの Windows 11 `PE`（`rustc` および `MSVC`）と `DirectX 12`（`wgpu`）による実行は検証されている一方、GameRule が引用する Unity のマニュアルは順序保証を否定している。また、Unity および Unreal のテンプレートカタログは読み込めなかった（当該ページがクライアントサイドで描画されるため）。さらに、Unreal の実行順序に関する資料は一件も読み込めていない。
 
 <div id="8-sources-and-limits" class="anchor-alias" aria-hidden="true"></div>
 
-## 8. 情報源と限界
+## 8. 出典と限界
 
 上記のすべての情報源は、引用された箇所において全文を読んだが、以下を除く：GameCraft-Bench 論文（要旨およびリポジトリの README を読んだ）、RCE の概要ページ（要約ページを読んだ）、および Capcom のプレスストーリー（1 記事）。テレメトリレベル（`SATB`）とジュール予算制御の時間的ゲームメカニクスに関する同伴ハウスの研究は、[Time as an Index](/papers/time-as-an-index/) と [Satiation Tiered Benchmark Harness](/papers/satb-harness/)（`[same house]`）である。証拠として引用されなかったが参照した情報源は、ゲームを構造化されたルーデムの集合として記述する [Ludii portal](https://ludii.games/) 、Game Grammar のホビーリポジトリ、そしてレンダリングライブラリを記述する [PlayCanvas](https://github.com/playcanvas/engine)、[Babylon.js](https://github.com/BabylonJS/Babylon.js) および [three.js](https://github.com/mrdoob/three.js) の README である。
 
 未読、課金壁またはその他入手できない情報源は、T. Schaul, "A Video Game Description Language for Model-based or Interactive Learning," IEEE CIG 2013, doi:10.1109/CIG.2013.6633610; J. Gregory, *Game Engine Architecture*, doi:10.1201/9781315267845; M. Ebner et al., "Towards a Video Game Description Language," doi:10.4230/DFU.Vol6.12191.85 であり、後者はオープンアクセスであるが本研究のためには読まれなかった。
 
-第6節では、`GE-H1`、`GE-H2`、`GE-H3` がすべての実行において `measured_j = None` と `board_metered = false` を保持し（macOS `L3` のプロセス単位 `ri_energy_nj` と Linux `L2` のソケット/コア `RAPL` `reported_j` を切り離し、Chrono-Budget Arena の `est_j` メカニクスを厳密に解析的に保つ）、ベアメタル Windows `PE` 実行、Direct3D 12 `wgpu` レンダリング、およびマルチエンジンエミッタ（`GE-H4`-`GE-H9`）は依然として未解決の課題である。
+第6節では、`GE-H1`、`GE-H2`、および`GE-H3`は6台の全機械において`measured_j = None`および`board_metered = false`のままとする（macOSの`L3`プロセスごとの`ri_energy_nj`、Linuxの`L2`ソケット/コアの`RAPL` `reported_j`、およびWindows 11の`L3` `GetProcessTimes`/`QueryProcessCycleTime`活動カウンタを分離し、Chrono-Budget Arenaの`est_j`機構を厳密に解析的なものに保つ）。完全なマルチエンジンシーン/動作エミッタ（`GE-H4`-`GE-H9`）は未解決の課題のままである。

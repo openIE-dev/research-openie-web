@@ -1,132 +1,2149 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 \documentclass[10pt,letterpaper]{article}
 
-\usepackage[margin=0.72in]{geometry}
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{array}
-\usepackage{graphicx}
 \usepackage{xcolor}
-\usepackage{hyperref}
-\usepackage{enumitem}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{textcomp}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{longtable,booktabs,array,calc}
 \usepackage{caption}
+\captionsetup[table]{skip=6pt,font=small,labelfont=bf}
+\captionsetup[figure]{font=small,labelfont=bf}
+\newcounter{none}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\footnotesize}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\footnotesize}
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.80,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.80,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
 
-\definecolor{satbblue}{HTML}{1B4965}
-\definecolor{satbteal}{HTML}{0F766E}
-\definecolor{satbamber}{HTML}{B45309}
-\definecolor{satbgray}{HTML}{475569}
+\usepackage{newunicodechar}
+\newunicodechar{µ}{\ifmmode\mu\else\textmu\fi}
+\newunicodechar{°}{\ifmmode^\circ\else\textdegree\fi}
+\newunicodechar{·}{\ifmmode\cdot\else\textperiodcentered\fi}
+\newunicodechar{²}{\ensuremath{^{2}}}
+\newunicodechar{³}{\ensuremath{^{3}}}
+\newunicodechar{¹}{\ensuremath{^{1}}}
+\newunicodechar{⁰}{\ensuremath{^{0}}}
+\newunicodechar{⁴}{\ensuremath{^{4}}}
+\newunicodechar{⁵}{\ensuremath{^{5}}}
+\newunicodechar{⁶}{\ensuremath{^{6}}}
+\newunicodechar{⁷}{\ensuremath{^{7}}}
+\newunicodechar{⁸}{\ensuremath{^{8}}}
+\newunicodechar{⁹}{\ensuremath{^{9}}}
+\newunicodechar{⁺}{\ensuremath{^{+}}}
+\newunicodechar{⁻}{\ensuremath{^{-}}}
+\newunicodechar{₀}{\ensuremath{_{0}}}
+\newunicodechar{₁}{\ensuremath{_{1}}}
+\newunicodechar{₂}{\ensuremath{_{2}}}
+\newunicodechar{₃}{\ensuremath{_{3}}}
+\newunicodechar{₄}{\ensuremath{_{4}}}
+\newunicodechar{ₙ}{\ensuremath{_{n}}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Ω}{\ensuremath{\Omega}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{∧}{\ensuremath{\wedge}}
+\newunicodechar{∫}{\ensuremath{\int}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{⊆}{\ensuremath{\subseteq}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{š}{\ifmmode\check{s}\else\v{s}\fi}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{≪}{\ensuremath{\ll}}
+\newunicodechar{↛}{\ensuremath{\nrightarrow}}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{∪}{\ensuremath{\cup}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\newunicodechar{・}{\textperiodcentered}
+
+\usepackage{xurl}
+\usepackage{bookmark}
+\usepackage{hyperref}
+
+\setcounter{secnumdepth}{-\maxdimen}
+\providecommand{\tightlist}{\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}}
+
+\definecolor{openieAmber}{HTML}{D97706}
+\definecolor{openieAmberBg}{HTML}{FFFBEB}
+\definecolor{openieAmberBorder}{HTML}{F59E0B}
+\definecolor{openieSlate}{HTML}{334155}
+\definecolor{openieDark}{HTML}{0F172A}
+\definecolor{openieCodeBg}{HTML}{F8FAFC}
+\definecolor{openieCodeBorder}{HTML}{CBD5E1}
+\definecolor{openieBlue}{HTML}{0057B8}
 
 \hypersetup{
-  colorlinks=true,
-  linkcolor=satbblue,
-  urlcolor=satbblue,
-  citecolor=satbblue,
   pdftitle={Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution},
-  pdfauthor={Open Interface Engineering}
+  pdfauthor={David Charlot, Open Interface Engineering},
+  colorlinks=true,
+  linkcolor=openieBlue,
+  citecolor=openieBlue,
+  urlcolor=openieBlue,
+  pdfcreator={XeTeX / Tectonic — Open Interface Engineering}
 }
 
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{3.8pt}
-\captionsetup{font=small,labelfont=bf}
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\urlstyle{same}
+\setlength{\emergencystretch}{3em}
+\hfuzz=6pt
+\sloppy
 
-\title{\vspace{-1.4em}\textbf{Satiation Benchmark (\texttt{SATB}): Reference Harness, Adapter Bridge, and Five-Level Telemetry Attribution}\\[0.30em]
-\large Deterministic Sequential Rust Wrapper (\texttt{Lane B}), \texttt{C1--C12} Conformance, Multi-Vendor Determinism Probes,\\[-0.1em]\large Observer-Effect Cadences, and \texttt{B}-vs-\texttt{C} Attribution Falsifiers on Apple M5 Max}
-\author{Open Interface Engineering\\[-0.15em]\small(\texttt{satb-harness} Archival Twin $\cdot$ Companion to \texttt{/papers/satb-harness/} $\cdot$ \texttt{board\_metered = false} $\cdot$ \texttt{measured\_j = None})}
-\date{November 22, 2026 \quad|\quad Status: \textbf{Research Study $\cdot$ Draft (\texttt{12/12 C1--C12} \& Falsifiers Measured)}}
+\newcommand{\openiefig}[3]{%
+  \IfFileExists{#1}{%
+    \includegraphics[width=#2\linewidth,height=0.70\textheight,keepaspectratio]{#1}%
+  }{%
+    \fcolorbox{openieCodeBorder}{openieCodeBg}{%
+      \parbox{0.92\linewidth}{\footnotesize\ttfamily Figure asset embedded in archival PDF; interactive/vector source: \url{#3}}%
+    }%
+  }%
+}
+
+\title{\vspace{-1.2em}\textbf{Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution}}
+\author{\textbf{David Charlot, Open Interface Engineering}\\[0.15em]
+{\small Research study · draft $\cdot$ Open Interface Engineering $\cdot$ \href{https://research.openie.dev}{research.openie.dev}}}
+\date{\small Revision \texttt{1561a2a} (22 November 2026) $\cdot$ Web: \href{https://research.openie.dev/papers/satb-harness/}{research.openie.dev/papers/satb-harness/} $\cdot$ Archival LaTeX: \href{https://research.openie.dev/pdfs/latex/satb-harness.pdf}{/pdfs/latex/satb-harness.pdf} (\href{https://research.openie.dev/pdfs/latex/satb-harness.tex}{.tex})}
 
 \begin{document}
-\sloppy
-\emergencystretch=3em
 \maketitle
-\vspace{-1.1em}
+\vspace{-0.6em}
 
-\begin{abstract}
-\noindent
-Benchmark comparisons across language models and coding agents routinely conflate neural capability with wrapper policy and conflate shared-host operating-system counters with physical rail joules. On \texttt{Terminal-Bench 2}, swapping only the surrounding harness shifted \texttt{Gemini 2.5 Pro} task resolution by $17$ percentage points (\texttt{Terminus-2} vs.\ \texttt{OpenHands}). This paper specifies and empirically audits the \textbf{Satiation Benchmark (\texttt{SATB})} harness and telemetry architecture: (1) a fixed sequential Rust reference harness (\textbf{\texttt{Lane B}}: \texttt{TEMPLATE\_v0}, deterministic $80\%$-window oldest-tool-output elision \texttt{ContextRule\_v0} making zero compaction model calls, sequential \texttt{TOOLS\_v0} inside a network-isolated \texttt{/work} sandbox with \texttt{Truncate\_v0} $8+8\;\text{KiB}$ bounds, and canonical outcomes \texttt{pass | fail | refuse | killed}); (2) a single loopback proxy bridge (\textbf{\texttt{Shapes D, M, H, I}}) enforcing mandatory token usage (\texttt{C7}) and isolating upstream API keys from \texttt{/work} (\texttt{C6}); (3) a five-block \texttt{JCS} (\texttt{RFC 8785}) \texttt{SUT} fingerprint and start/end canary gate; and (4) a five-level rootless telemetry engine (\textbf{\texttt{L0--L4}} crossed with attribution labels \textbf{\texttt{A1--N}}). Live verification on an \texttt{Apple M5 Max} workstation ($128\;\text{GB}$ unified memory, \texttt{macOS 27.2.1}, \texttt{macmon 0.12.0}; on-chip counters recorded as \texttt{reported\_j}) confirms \textbf{12/12} \texttt{C1--C12} checks ($0$-byte replay drift across $14$ turns and $149{,}747\;\text{B}$; $2.073\;\text{ms}$ mean 4-PID process-group \texttt{SIGKILL} cleanup vs.\ $2{,}000\;\text{ms}$ ceiling), exposes \texttt{HTTP 400} \texttt{temperature = 0} deprecation on \texttt{Claude Opus 5.5}/\texttt{Sonnet 5.5} and residual \texttt{seed = 42} variance on \texttt{Cerebras gpt-oss-120b} ($2/8$ distinct outputs), measures boundary \texttt{rusage} observer overhead at $\mathbf{0.011\;\text{mW}}$ ($108\;\mu\text{J}/10\;\text{s}$) vs.\ $66.44\;\text{mW}$ ($0.177\%$) at $10\;\text{Hz}$, demonstrates \texttt{CPU}-proportional (\texttt{Kepler}, label \texttt{C}) splitting diverging from sequential boundary counters (\texttt{B}) by $\mathbf{32.59\%\text{--}35.86\%}$ on \texttt{L2} (\texttt{Falsifier 3}), and audits \textbf{188} shared-host \texttt{L2} windows (\texttt{Falsifier 6} dropping $124$ drifted net subtractions while preserving $100\%$ of raw \texttt{L2}/\texttt{L3} \texttt{reported\_j} channels) alongside $24/24$ and $6/6$ multi-file completion parity against \texttt{Claude Code 2.1.330} (\texttt{Falsifier 8}).
-\end{abstract}
+% OpenIE Measurement Honesty Callout Box
+\noindent\fcolorbox{openieAmberBorder}{openieAmberBg}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+    \small\color{openieDark}%
+    \textbf{Measurement.} Research study, not a journal final. Verified across \textbf{\texttt{5 / 5} silicon and OS archetypes}: physical Texas Instruments \texttt{INA238} (\texttt{VIN L1}) and three-channel \texttt{INA3221} (\texttt{VDD\_GPU}, \texttt{VDD\_CPU\_SOC\_MSS}, \texttt{VIN\_SYS\_5V0 L2}) shunt \textbf{\texttt{measured\_j}} on \textbf{\texttt{NVIDIA Jetson AGX Thor}} (\texttt{aarch64} Tegra Linux, shared host; \texttt{A2} net placement attribution withheld per \texttt{Falsifier 6}), plus rootless on-chip \textbf{\texttt{reported\_j}} on \textbf{\texttt{Apple M5 Max}} (\texttt{macOS 27.2.1} \texttt{IOReport L2} + \texttt{proc\_pid\_rusage L3}), \textbf{\texttt{Framework AMD Ryzen AI Max+ 395}} Strix Halo (\texttt{0440 root:energy} \texttt{PLATYPUS}-isolated \texttt{RAPL L2} + \texttt{Radeon 8060S PPT}), \textbf{\texttt{Intel Core i9-13900H}} Raptor Lake (\texttt{RAPL psys L1} + \texttt{package-0 L2}), and \textbf{\texttt{Intel Core i7-1165G7 + NVIDIA RTX 2060}} on \textbf{\texttt{Windows 11 Pro}} (build~\texttt{26300}, rootless \texttt{0x20000} \texttt{nvml.dll} cumulative \texttt{mJ} \texttt{L2} + Win32 \texttt{L3}; user-mode \texttt{CPU RAPL} = \texttt{not\_available}). Closed-API server joules remain \texttt{not\_available} (\texttt{N}). No fabricated citations.
+  }%
+}
 
-\section{Harness Survey, Design Closures (\texttt{OQ-1..OQ-6}), and \texttt{Lane B} Protocol}
+\vspace{6pt}
+% OpenIE Amber Left-Rule Summary Quote
+\noindent{\color{openieAmber}\vrule width 3pt}\hspace{8pt}%
+\parbox{\dimexpr\linewidth-11pt\relax}{%
+  \small\itshape\color{openieSlate}%
+  A fixed sequential Rust reference harness (Lane B), a single proxy-enforced adapter bridge (Shapes D, M, H, and I), a twelve-check conformance suite (C1 to C12), and a five-level rootless telemetry attribution engine (L0 to L4 crossed with labels A1 to N). Verified empirically across five hardware archetypes: Apple M5 Max (arm64 macOS IOReport and proc\_pid\_rusage reported\_j), Tegra aarch64 Jetson Thor (physical whole-board and three-channel rail-separated current-shunt measured\_j), Framework Desktop Strix Halo (x86-64 Linux 0440 root:energy group-isolated package-energy reported\_j plus graphics-package power tracking), Intel Core i9-13900H Raptor Lake (x86-64 Linux platform L1 and package-0 L2 reported\_j), and Intel Core i7-1165G7 Tiger Lake plus GeForce 2060 on Windows 11 (x86-64 build 26300 rootless cumulative discrete-graphics L2 reported\_j, Win32 Job Object and cycle accounting, and processor-package Label N). Raw measured\_j, reported\_j, and L4 logical channels stay strictly separated and are never summed; because co-tenant workloads ran on the shared hosts (dedicated\_host is false), A2 net placement attribution is withheld per Falsifier 6.
+}
+\vspace{6pt}
 
-Production and benchmark agent wrappers---including \texttt{mini-swe-agent} (stateless \texttt{subprocess.run}, linear history), \texttt{SWE-agent ACI} (100-line viewer, linter-gated edits, history folding), \texttt{UK AISI Inspect react()} and \texttt{Inspect Agent Bridge}, \texttt{Terminus-2 / Harbor} (\texttt{tmux} keystrokes + 3-stage summarization), \texttt{Codex CLI} (\texttt{Landlock}/\texttt{Seatbelt} + \texttt{apply\_patch}), \texttt{Claude Code} (\texttt{Bash} + file tools + \texttt{auto-compact}), \texttt{OpenHands} (\texttt{ACP} containers + condenser), \texttt{ARC-AGI-3}, and \texttt{OSWorld} (\texttt{pyautogui} sliding trajectory)---embed distinct context-compaction and retry policies. \texttt{SATB} eliminates this confound via six normative closures:
-\begin{enumerate}[leftmargin=1.5em,itemsep=1.5pt,topsep=1.5pt]
-  \item \textbf{\texttt{ContextRule\_v0} (\texttt{OQ-1}):} At $\ge 80\%$ of the declared context window, \texttt{Lane B} deterministically replaces oldest tool outputs with \texttt{[ELIDED\_BY\_CONTEXT\_RULE\_V0]} while keeping \texttt{system(TEMPLATE\_v0)}, initial \texttt{user(bundle)}, and the last $8$ tool outputs verbatim with \emph{zero} model calls (\texttt{killed(context\_ceiling)} fires only if retained messages exceed $100\%$).
-  \item \textbf{\texttt{TOOLS\_v0} (\texttt{OQ-2}):} Six \texttt{JCS}-hashed schemas (\texttt{exec}, \texttt{read\_file}, \texttt{write\_file}, \texttt{list\_dir}, \texttt{submit}, \texttt{refuse}) with byte-safe \texttt{Truncate\_v0} ($8\;\text{KiB}$ head $+$ $8\;\text{KiB}$ tail) inside network-blocked \texttt{/work}, avoiding \texttt{mini}-style shell-escaping failures.
-  \item \textbf{Surjective 5-to-4 Outcome Mapping (\texttt{OQ-3}):} Maps \texttt{\{completed, incorrect, malformed, refused, no\_\allowbreak submission\}} onto \texttt{\{pass, fail, refuse, killed\}} with lossless \texttt{sub\_\allowbreak reason} (\texttt{malformed} $\to$ \texttt{fail:\allowbreak malformed\_\allowbreak submission}; missing usage $\to$ \texttt{killed:\allowbreak usage\_\allowbreak missing}), keeping all four outcomes in denominator $n$ with zero test-time verifier feedback.
-  \item \textbf{Primary Energy Boundary (\texttt{OQ-4}), Rootless Rule (\texttt{OQ-5}), and Closed-API Rule (\texttt{OQ-6}):} Whole-\texttt{SUT} raw window energy (\texttt{A2}) is primary; collection is strictly rootless (\texttt{macmon} + \texttt{proc\_\allowbreak pid\_\allowbreak rusage} on macOS, zero \texttt{sudo}; \texttt{PLATYPUS}-isolated supervisor-\texttt{UID} \texttt{udev} group on Linux); closed-API server energy is written literally as \texttt{"not\_\allowbreak available"} (label \texttt{N}) unless per-request provider-attested (\texttt{P}), barring fleet sustainability medians ($0.24\;\text{Wh}$, $0.34\;\text{Wh}$, $1.14\;\text{gCO}_2\text{e}$).
+{
+\small
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\vspace{4pt}
+\hrule
+\vspace{8pt}
+
+\emph{Revision
+\href{https://github.com/openIE-dev/research-openie-web/commits/main/src/content/papers/satb-harness.md}{\texttt{1561a2a}},
+22 November 2026. Data and digest summary:
+\href{https://research.openie.dev/data/\#satb-harness}{/data/\#satb-harness}.
+Interactive living figures:
+\href{https://research.openie.dev/living/satb-harness/}{/living/satb-harness/}.
+LaTeX archival twin:
+\href{https://research.openie.dev/pdfs/latex/satb-harness.pdf}{/pdfs/latex/satb-harness.pdf}
+(\href{https://research.openie.dev/pdfs/latex/satb-harness.tex}{source}).}
+
+\section{0. Overview}\label{overview}
+
+When two agent evaluations report different task-completion rates or
+different energy figures, the gap frequently comes from how the model
+was wrapped and how the host counters were attributed rather than from
+the model itself. Changing only the surrounding harness shifted
+\texttt{Gemini\ 2.\allowbreak{}5\ Pro} task resolution by \texttt{17} percentage
+points on \texttt{Terminal-\allowbreak{}Bench\ 2}, while subtracting a drifted idle
+baseline or splitting a shared silicon rail by processor time can
+distort energy attribution by more than \texttt{30\%}.
+
+This study specifies and empirically verifies the \textbf{Satiation
+Benchmark (\texttt{SATB})} evaluation contract: one fixed sequential
+Rust reference harness (\textbf{\texttt{Lane\ B}}), one proxy-isolated
+adapter bridge (\textbf{\texttt{Shapes\ D,\allowbreak{}\ M,\allowbreak{}\ H,\allowbreak{}\ and\ I}}) for
+zero-model controls, raw model endpoints, external command-line
+harnesses, and public benchmark solvers, a five-block system-under-test
+(\texttt{SUT}) cryptographic fingerprint, twelve mandatory conformance
+checks, and a five-level rootless telemetry engine. Rather than leaving
+the design unmeasured, we execute live conformance and falsifier
+benchmarks across \textbf{five hardware archetypes} spanning
+\texttt{macOS}, \texttt{Linux}, and \texttt{Windows\ 11}: an
+\texttt{Apple\ M5\ Max} workstation (\texttt{128} gigabytes of unified
+memory, \texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1}, on-chip \texttt{IOReport} and kernel
+\texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage} \texttt{reported\_\allowbreak{}j}), a Tegra
+\texttt{aarch64} developer kit (\texttt{Jetson\ Thor},
+\texttt{Linux\ 6.\allowbreak{}8.\allowbreak{}12-\allowbreak{}1021-\allowbreak{}tegra}, physical Texas Instruments
+whole-board and three-channel rail-separated current-shunt
+\texttt{measured\_\allowbreak{}j}), a \texttt{Framework} Desktop \texttt{Strix\ Halo}
+workstation (\texttt{Ryzen\ Max+\ 395},
+\texttt{Linux\ 7.\allowbreak{}0.\allowbreak{}0-\allowbreak{}43-\allowbreak{}generic\ x86-\allowbreak{}64}, \texttt{0440\ root:energy}
+group-isolated package-energy \texttt{reported\_\allowbreak{}j} plus \texttt{amdgpu}
+package-power tracking), a \texttt{Raptor\ Lake} workstation
+(\texttt{Intel\ Core\ i9-\allowbreak{}13900H},
+\texttt{Linux\ 7.\allowbreak{}0.\allowbreak{}0-\allowbreak{}43-\allowbreak{}generic\ x86-\allowbreak{}64}, platform and package energy
+\texttt{reported\_\allowbreak{}j}), and a bare-metal \texttt{Windows\ 11} workstation
+(\texttt{Intel\ Core\ i7-\allowbreak{}1165G7} plus \texttt{GeForce\ 2060},
+\texttt{Windows\ 11} build \texttt{26300} \texttt{x86-64}, rootless
+cumulative discrete-graphics \texttt{reported\_\allowbreak{}j}, Win32 Job Object
+confinement, and unprivileged processor-package energy strictly marked
+\texttt{not\_\allowbreak{}available}), alongside closed cloud server energy
+(\texttt{not\_\allowbreak{}available}).
+
+\textbf{In plain words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  An agent's prompt loop, context-trimming rule, and tool sandbox can
+  swing benchmark scores as much as swapping the underlying model, so
+  \texttt{Lane\ B} holds that wrapper completely fixed in deterministic
+  Rust while \texttt{Lane\ O} forces external wrappers through one
+  audited proxy plug.
+\item
+  Energy channels are recorded raw at their true physical boundary ---
+  whole wall plug, board input, chip package, operating-system process
+  estimate, or logical token ledger --- and are never blended into a
+  single unlabelled number, summed across evidence classes
+  (\texttt{measured\_\allowbreak{}j} vs.~\texttt{reported\_\allowbreak{}j} vs.~\texttt{est\_j}),
+  or back-filled with fleet sustainability averages.
+\item
+  Live tests across five silicon and operating-system platforms
+  (\texttt{macOS}, \texttt{Linux}, and \texttt{Windows\ 11}) verify
+  exact \texttt{Shape\ D} million-record memory-mapped
+  (\texttt{15027705736}) and \texttt{C9} replay (\texttt{149,\allowbreak{}747\ B},
+  \texttt{0} newline or byte diffs) determinism, \texttt{0.\allowbreak{}87–9.\allowbreak{}54\ ms}
+  kernel process-tree cleanup (\texttt{2.46\ ms} via Win32 Job Objects
+  on \texttt{Windows\ 11}), cloud \texttt{temperature\ =\ 0}
+  non-determinism across three vendors, hardware sensor cadence ceilings
+  (\texttt{24.\allowbreak{}3–45.\allowbreak{}4\ µs} Linux counter reads at \texttt{94–97\ Hz}
+  vs.~\texttt{1.17\ ms} Windows in-process graphics-counter reads at
+  \texttt{64.6\ Hz} vs.~\texttt{2.95\ ms} serial-bus shunt reads at
+  \texttt{66.6\ Hz} on \texttt{Jetson\ Thor}
+  vs.~\texttt{\textasciitilde{}8\ Hz} \texttt{macmon}
+  \texttt{IOReport}), \texttt{32.\allowbreak{}59\%–89.\allowbreak{}88\%} error when splitting
+  sequential compute-plus-storage phases by processor time
+  (\texttt{Falsifier\ 3}), and physical graphics-versus-processor shunt
+  rail separation alongside \texttt{Falsifier\ 6} shared-host drift
+  gating (\texttt{dedicated\_\allowbreak{}host\ =\ false}).
 \end{enumerate}
 
-\section{Adapter Bridge (\texttt{Shapes D, M, H, I}), Five-Block Fingerprint, and \texttt{C1--C12}}
+\section{1. Terms, acronyms, and attribution
+labels}\label{terms-acronyms-and-attribution-labels}
 
-External systems attach to \texttt{satb-\allowbreak supervisor} via four shapes: \textbf{\texttt{Shape D}} (\texttt{Deterministic Null} \texttt{N0}/\texttt{N1} over frozen \texttt{DNULLMM1} \texttt{mmap} stores, $0$ proxy calls), \textbf{\texttt{Shape M}} (OpenAI-compatible or translated \texttt{Anthropic}/\allowbreak\texttt{Gemini}/\allowbreak\texttt{xAI} endpoints), \textbf{\texttt{Shape H}} (harness-in-a-box \texttt{CLI}s such as \texttt{Claude Code}, \texttt{Codex CLI}, \texttt{OpenHands}, and \texttt{Terminus-2} reading \texttt{/work/\allowbreak task/\allowbreak BUNDLE.md} with base URL locked to \texttt{satb-\allowbreak proxy} and \texttt{--strict-\allowbreak mcp-\allowbreak config} \texttt{submit}/\texttt{refuse}), and \textbf{\texttt{Shape I}} (\texttt{Inspect} solvers at \texttt{attempts = 1}). Every session locks a five-block \texttt{JCS} fingerprint (\texttt{model}, \texttt{serving}, \texttt{sampling}, \texttt{harness}, \texttt{envelope}; unknown fields set to \texttt{"not\_\allowbreak available"}); any mid-session hash or \texttt{system\_\allowbreak fingerprint} drift marks session receipts \texttt{void}. Table~\ref{tab:c12} reports our \texttt{C1--C12} verification and live \texttt{C12} probes.
+\begin{itemize}
+\tightlist
+\item
+  SATB, SUT, PFRK, OQ, SPEC, BUNDLE, SUBMIT, REFUSE, STOP: Satiation
+  Benchmark harness and attribution specification, system under test,
+  four-way attempt outcomes (pass, fail, refuse, killed), resolved
+  specification open question, normative specification document, task
+  bundle file, terminal answer submission call, terminal refusal call,
+  and sequential loop halt token
+\item
+  ACI, SWE, CLI, MCP, SDK, ACP, ARC, AGI, GUI: Agent-Computer Interface,
+  software-engineering benchmark prefix, command-line interface, Model
+  Context Protocol, software development kit, Agent Client Protocol,
+  Abstraction and Reasoning Corpus, artificial general intelligence
+  benchmark suite, and graphical user interface
+\item
+  IO, JSON, JSONL, RPC, JCS, UTF, HTTP, SSE, URL: input/output protocol,
+  JavaScript Object Notation, line-delimited JSON, remote procedure
+  call, JSON Canonicalization Scheme (RFC 8785), Unicode Transformation
+  Format, Hypertext Transfer Protocol, Server-Sent Events, and Uniform
+  Resource Locator
+\item
+  POSIX, MMAP, DNULLMM1, SHA, SIGKILL, ESRCH, EACCES, EOF, NT, NTFS,
+  CRLF, MSVC, UCRT, FFI, DLL: Portable Operating System Interface,
+  memory-mapped file interface, binary memory-mapped Deterministic Null
+  index format, Secure Hash Algorithm (SHA-256), non-catchable POSIX
+  process termination signal, kernel no-such-process status, POSIX
+  permission-denied error status, end-of-file heredoc delimiter, Windows
+  New Technology kernel (\texttt{Windows\ NT}), New Technology File
+  System, carriage-return line-feed
+  (\texttt{\textbackslash{}r\textbackslash{}n}) newline sequence,
+  Microsoft Visual C++ compiler (\texttt{cl.exe}), Windows Universal C
+  Runtime (\texttt{ucrtbase.\allowbreak{}dll}), foreign function interface, and
+  dynamic-link library
+\item
+  AI, ML, LLM, MLX, GGUF, KV, TP, ENERGY: artificial intelligence,
+  machine learning, large language model, Apple array framework for
+  local inference, GPT-Generated Unified Format quantized weights,
+  key-value cache, tensor parallelism, and the ML.ENERGY GPU power
+  benchmark consortium
+\item
+  CPU, GPU, APU, ANE, SoC, ALU, ISA, IPC, PID, UID, GID, OS, VM, EC, GB,
+  TGL, RTX: central processing unit, graphics processing unit,
+  accelerated processing unit, Apple Neural Engine, system-on-chip,
+  arithmetic logic unit, instruction set architecture, instructions per
+  cycle, process identifier, user identifier, group identifier,
+  operating system, virtual machine, embedded controller, gigabytes,
+  Intel Tiger Lake mobile architecture, and NVIDIA GeForce RTX discrete
+  GPU family
+\item
+  RAM, DRAM, SLC, NVMe, PSU, PDU, AC, DC, DVFS, MSR, MMIO, RDTSC, HVCI,
+  WMI, EMI, SRUM: random-access memory, dynamic RAM, system-level cache,
+  Non-Volatile Memory Express, power supply unit, power distribution
+  unit, alternating current, direct current, dynamic voltage and
+  frequency scaling, model-specific register, memory-mapped
+  input/output, x86 Read Time-Stamp Counter instruction, Windows
+  Hypervisor-Protected Code Integrity, Windows Management
+  Instrumentation, Windows Energy Metering Interface
+  (\texttt{\textbackslash{}\textbackslash{}.\textbackslash{}EnergyMeter}),
+  and Windows System Resource Usage Monitor
+\item
+  RAPL, NVML, PPT, TI, I2C, ADC, INA, INA238, INA3221, AGX, VDD, SOC,
+  MSS, VIN, SYS, PLATYPUS: Intel/AMD Running Average Power Limit, NVIDIA
+  Management Library, AMD Package Power Tracking, Texas Instruments,
+  Inter-Integrated Circuit bus, analog-to-digital converter, Texas
+  Instruments current/power monitor family (\texttt{INA238},
+  \texttt{INA3221}), NVIDIA Jetson AGX module tier, drain supply voltage
+  rail, system-on-chip rail, memory subsystem rail, input system voltage
+  rail, and Power Leakage Attacks: Targeting Your Processor Using
+  Software
+\item
+  API, USD, CNCF, AISI, UK, AMD, NVIDIA: application programming
+  interface, United States dollars, Cloud Native Computing Foundation,
+  AI Safety Institute, United Kingdom, Advanced Micro Devices, and
+  NVIDIA Corporation
+\item
+  RCE, MoL, WCA, LUT6: Reality Code Engine {[}same house{]}, Mixture of
+  Limits {[}same house{]}, Wise Computer Automation {[}same house{]},
+  and 6-input Boolean look-up table
+\end{itemize}
 
-\begin{table}[h!]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{3.6pt}
-\caption{\textbf{Measured \texttt{C12} Eight-Request Determinism Probes} routed 100\% through loopback \texttt{satb-proxy} ($32$ live cloud API calls $+$ $8$ local \texttt{Shape D} runs; $100\%$ exact \texttt{C7} token parity across all $32/32$ calls; unlisted route blocked with \texttt{HTTP 404} per \texttt{C6}).}
-\label{tab:c12}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{l c l c c l r}
-\toprule
-\textbf{\texttt{SUT} / Endpoint via \texttt{satb-proxy}} & \textbf{\texttt{T=0} HTTP} & \textbf{Recorded \texttt{sampling.temperature}} & \textbf{Distinct Raw (\texttt{/8})} & \textbf{Distinct Algebraic (\texttt{/8})} & \textbf{Echoed \texttt{system\_fingerprint}} & \textbf{Mean Latency} \\
-\midrule
-\textbf{Shape D}: \texttt{dnull N1} (Rust local) & Exact \texttt{i64} & \texttt{0 (exact\_i64\_q1e6)} & $\mathbf{1 / 8}$ & $\mathbf{1 / 8}$ & \texttt{0da4df8d9ccbce1e...} & $1{,}474.0\;\text{ms}$ \\
-\textbf{Anthropic}: \texttt{claude-opus-5-5} & \textbf{HTTP 400} & \texttt{not\_available} (deprecated) & $\mathbf{8 / 8}$ & $\mathbf{4 / 8}$ & \texttt{not\_available} & $3{,}389.1\;\text{ms}$ \\
-\textbf{Anthropic}: \texttt{claude-sonnet-5-5} & \textbf{HTTP 400} & \texttt{not\_available} (deprecated) & $\mathbf{8 / 8}$ & $\mathbf{2 / 8}$ & \texttt{not\_available} & $2{,}914.3\;\text{ms}$ \\
-\textbf{Cerebras}: \texttt{gpt-oss-120b} & HTTP 200 & \texttt{0.0 (seed=42)} & $\mathbf{2 / 8}$ & $\mathbf{2 / 8}$ & \texttt{fp\_fd4dff7eed92aaf38281} & $484.2\;\text{ms}$ \\
-\textbf{xAI}: \texttt{grok-4.20-0309-non-reasoning} & HTTP 200 & \texttt{0.0 (seed=42)} & $\mathbf{8 / 8}$ & $\mathbf{1 / 8}$ & \texttt{fp\_9974b11849} & $942.7\;\text{ms}$ \\
-\bottomrule
-\end{tabular}%
+Across telemetry levels L0 to L4, every channel recorded in a
+\texttt{SATB} receipt carries both its physical boundary and one of four
+strict evidence classes:
+
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3542}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6458}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Evidence class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Scope in \texttt{SATB} receipts and tables}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{Exact\ (\allowbreak{}L4\ Logical\ \&\ Cryptographic)}} &
+\texttt{SHA-256} and \texttt{JCS} (\texttt{RFC\ 8785}) canonical digests
+of task bundles, five-block \texttt{SUT} fingerprints, and replay
+transcripts; proxy-logged prompt, cache, reasoning, and completion token
+counts; wall-clock durations; and dated \texttt{API} list-price
+\texttt{USD}. \\
+\textbf{\texttt{Measured\ Hardware\ Rail\ (\allowbreak{}measured\_\allowbreak{}j:\ L0,\allowbreak{}\ L1,\allowbreak{}\ L2)}}
+& Populated only from a calibrated external \texttt{AC} wall analyzer
+(\texttt{L0}) or physical board current-shunt monitor
+(\texttt{L1}/\allowbreak{}\texttt{L2}). Verified live on
+\texttt{NVIDIA\ Jetson\ AGX\ Thor} via \texttt{TI} \texttt{INA238}
+(\texttt{hwmon6} \texttt{VIN}, \texttt{L1}) and \texttt{INA3221}
+(\texttt{hwmon5} \texttt{ch1\ VDD\_\allowbreak{}GPU},
+\texttt{ch2\ VDD\_\allowbreak{}CPU\_\allowbreak{}SOC\_\allowbreak{}MSS}, \texttt{ch3\ VIN\_\allowbreak{}SYS\_\allowbreak{}5V0},
+\texttt{L2}/\allowbreak{}\texttt{L1}; \texttt{board\_\allowbreak{}metered\ =\ true}). Because an
+active co-tenant held \texttt{VDD\_GPU} during capture
+(\texttt{dedicated\_\allowbreak{}host\ =\ false}), raw rail \texttt{measured\_\allowbreak{}j} is
+preserved while \texttt{A2} net placement attribution is withheld;
+\texttt{measured\_\allowbreak{}j} remains \texttt{None} on \texttt{Apple\ M5\ Max},
+\texttt{AMD\ Strix\ Halo}, \texttt{Intel\ Raptor\ Lake}, and
+\texttt{Windows\ 11} (\texttt{i7-1165G7} + \texttt{RTX\ 2060}), and
+\texttt{L0} wall power is unset throughout. \\
+\textbf{\texttt{Reported\ Counter\ (\allowbreak{}reported\_\allowbreak{}j:\ L1,\allowbreak{}\ L2\ \&\ L3)}} &
+Rootless on-chip telemetry counters (\texttt{Apple\ M5\ Max}
+\texttt{IOReport} \texttt{sys\_\allowbreak{}power} at \texttt{L1} and
+\texttt{chip\_\allowbreak{}power}/\texttt{cpu\_\allowbreak{}power}/\texttt{gpu\_\allowbreak{}power} at
+\texttt{L2} via \texttt{macmon}; \texttt{Intel\ Raptor\ Lake}
+\texttt{RAPL} \texttt{psys} at \texttt{L1} and
+\texttt{package-0}/\allowbreak{}\texttt{core}/\allowbreak{}\texttt{uncore} at \texttt{L2};
+\texttt{Framework\ AMD\ Strix\ Halo} \texttt{RAPL}
+\texttt{package-0}/\allowbreak{}\texttt{core} at \texttt{L2} plus \texttt{amdgpu}
+\texttt{PPT} watts; \texttt{Windows\ 11} rootless \texttt{NVML}
+\texttt{nvmlDeviceGetTotalEnergyConsumption} cumulative \texttt{mJ} on
+\texttt{NVIDIA\ GeForce\ RTX\ 2060} at \texttt{L2}) and
+\texttt{OS}-modelled per-process estimates
+(\texttt{macOS\ proc\_\allowbreak{}pid\_\allowbreak{}rusage(\allowbreak{}RUSAGE\_\allowbreak{}INFO\_\allowbreak{}V6).\allowbreak{}ri\_\allowbreak{}energy\_\allowbreak{}nj} at
+\texttt{L3}, label \texttt{D}). Never summed with \texttt{measured\_\allowbreak{}j}
+or \texttt{est\_j}. \\
+\textbf{\texttt{Provider-\allowbreak{}Attested\ (\allowbreak{}P)\ vs.\allowbreak{}\ Not\ Available\ (\allowbreak{}N)}} &
+Closed-\texttt{API} remote server energy (and Windows 11 user-mode
+\texttt{CPU} package energy where ring-0 \texttt{RAPL} \texttt{MSR}
+drivers are barred) is written as \texttt{P} only when a provider
+returns a per-request energy figure with verbatim methodology, and
+otherwise literally as \texttt{"not\_\allowbreak{}available"} (label \texttt{N}).
+Derived baseline subtractions failing the \texttt{5.0\%} drift bound
+(\texttt{Falsifier\ 6}) or the \texttt{Step\ 7} sum check are
+automatically dropped while raw channels remain intact. \\
+\end{longtable}
 }
-\end{table}
 
-\section{Telemetry Attribution (\texttt{L0--L4} $\times$ \texttt{A1--N}) and Empirical Falsifiers on Apple M5 Max}
+\subsection{1.1 Lineage, design invariants, and same-house
+disclosure}\label{lineage-design-invariants-and-same-house-disclosure}
 
-\texttt{satb-\allowbreak meter} separates \texttt{L0 wall} (\texttt{AC} plug, \texttt{A2}), \texttt{L1 platform} (\texttt{INA238}, \texttt{Mac sys\_\allowbreak power}, \texttt{RAPL psys}, \texttt{A2}), \texttt{L2 package/\allowbreak SoC} (\texttt{RAPL}, \texttt{macmon IOReport}, \texttt{INA3221}, \texttt{amdgpu hwmon}, cumulative \texttt{NVML mJ}, \texttt{A1/\allowbreak A2/\allowbreak B/\allowbreak C}), \texttt{L3 process/\allowbreak cgroup} (\texttt{cgroup v2} shares \texttt{C}; \texttt{macOS ri\_\allowbreak energy\_\allowbreak nj} \texttt{D}), and \texttt{L4 logical} (exact tokens and timings) via a 7-step raw-first pipeline that isolates \texttt{engine\_\allowbreak resident\_\allowbreak during\_\allowbreak tools} in its own unassigned channel, drops drifted net baselines ($>5.0\%$, \texttt{Falsifier 6}), and enforces the \texttt{Step 7} sum check ($\le 1\;\text{mJ}$). Tables~\ref{tab:obs} and~\ref{tab:bvc} report our empirical \texttt{Apple M5 Max} benchmarks.
+\texttt{SATB} builds directly on public agent-evaluation and
+power-attribution work rather than inventing bespoke protocols where
+standards exist: minimal stateless shell execution follows
+\texttt{mini-\allowbreak{}swe-\allowbreak{}agent}; solver and external-CLI bridging draw on
+\texttt{UK\ AISI\ Inspect} (\texttt{react()} and
+\texttt{Inspect\ Agent\ Bridge}) and \texttt{Terminal-\allowbreak{}Bench}
+(\texttt{Harbor} / \texttt{Terminus-\allowbreak{}2}); tool schemas use \texttt{MCP}
+canonicalized via \texttt{RFC\ 8785} (\texttt{JCS}); GPU cumulative
+counter discipline follows Chung et al.~(\texttt{ML.ENERGY} /
+\texttt{Zeus}) and Yang et al.~on \texttt{nvidia-\allowbreak{}smi} part-time sampling
+pitfalls; proportional \texttt{CPU} splitting (\texttt{label\ C}) is
+evaluated against the \texttt{CNCF\ Kepler} model; and Linux
+\texttt{RAPL} permission isolation follows Lipp et
+al.~(\texttt{PLATYPUS}). Companion Open Interface Engineering studies
+--- \href{https://research.openie.dev/papers/gates/}{Metered Commit
+Gates}, \href{https://research.openie.dev/papers/satiation/}{Task
+Satiation vs.~Aggregate Rebound}, and
+\href{https://research.openie.dev/papers/deterministic-null/}{Deterministic
+Null} --- are \texttt{{[}same\ house{]}} works cited strictly for shared
+architectural definitions:
 
-\begin{table}[h!]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{4.0pt}
-\caption{\textbf{Falsifier 5 Observer-Effect Cadence Benchmark} across interleaved $10.0\;\text{s}$ windows on \texttt{Apple M5 Max} (\texttt{Python} reader $+$ child \texttt{macmon 0.12.0} \texttt{IOReport} process tree). Requesting \texttt{-i 10} ($100\;\text{Hz}$) saturates at $7.44\;\text{Hz}$ due to the $\sim\!120\;\text{ms}$ \texttt{IOReport} subscription cycle.}
-\label{tab:obs}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{l r r r r r r}
-\toprule
-\textbf{Sampling Cadence ($10.0\;\text{s}$ Window)} & \textbf{Achieved Rate} & \textbf{Sampler CPU Time} & \textbf{Observer \texttt{L3 reported\_j}} & \textbf{Observer Power} & \textbf{Share of \texttt{L2} Window} & \textbf{Whole-SoC \texttt{L2 reported\_j}} \\
-\midrule
-\textbf{\texttt{0 Hz} Boundary-Only} ($2$ \texttt{rusage} syscalls) & $0.20\;\text{Hz}$ & $\mathbf{0.004\;\text{ms}}$ & $\mathbf{0.000108\;\text{J}}$ & $\mathbf{0.011\;\text{mW}}$ & $\mathbf{0.0000\%}$ & --- (no \texttt{IOReport} daemon) \\
-\textbf{\texttt{1 Hz} Polling} ($1{,}000\;\text{ms}$ tick) & $0.90\;\text{Hz}$ & $9.323\;\text{ms}$ & $0.194237\;\text{J}$ & $19.371\;\text{mW}$ & $0.0521\%$ & $372.769\;\text{J}$ ($37.17\;\text{W}$) \\
-\textbf{\texttt{10 Hz} Reference Tick} ($100\;\text{ms}$ \texttt{SATB} default) & $8.12\;\text{Hz}$ & $36.434\;\text{ms}$ & $0.666596\;\text{J}$ & $\mathbf{66.439\;\text{mW}}$ & $\mathbf{0.1770\%}$ & $376.603\;\text{J}$ ($37.53\;\text{W}$) \\
-\textbf{\texttt{100 Hz} Stress Falsifier} ($10\;\text{ms}$ requested) & $7.44\;\text{Hz}$ & $35.636\;\text{ms}$ & $0.598721\;\text{J}$ & $58.971\;\text{mW}$ & $0.1618\%$ & $369.926\;\text{J}$ ($36.44\;\text{W}$) \\
-\bottomrule
-\end{tabular}%
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2604}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7396}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Contract axis}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Invariant preserved across all lanes}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Attempt protocol} & Fixed task ladder; at most one terminal
+\texttt{SUBMIT} or \texttt{REFUSE} per attempt; one immutable
+\texttt{SHA-256} receipt per attempt; canonical outcomes \texttt{pass},
+\texttt{fail}, \texttt{refuse}, \texttt{killed}; zero verifier feedback
+during test attempts. \\
+\textbf{System identity} & Five-block \texttt{SUT} fingerprint
+(\texttt{model} + \texttt{serving} + \texttt{sampling} +
+\texttt{harness} + \texttt{envelope}), hashed at \texttt{session.\allowbreak{}open}
+and re-hashed at \texttt{session.\allowbreak{}close}. \\
+\textbf{Attributable energy} & Whole-\texttt{SUT} raw window energy
+(\texttt{A2}) on a quiesced dedicated host; inference-engine energy on
+an exclusive physical rail (\texttt{A1}); sequential model-vs-tool phase
+energy (\texttt{B}) under \texttt{Lane\ B}. \\
+\textbf{Non-attributable} & Unattested closed-\texttt{API} server joules
+(\texttt{N}); exact per-process joule shares of a shared \texttt{SoC} or
+unified-memory rail (\texttt{C} and \texttt{D} are models, not physical
+rail meters); model weights divorced from engine kernels and silicon. \\
+\end{longtable}
 }
-\end{table}
 
-\begin{table}[h!]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{3.8pt}
-\caption{\textbf{Conformance, Falsifier 3 (\texttt{B} vs.\ \texttt{C} \texttt{Kepler}), Falsifier 6 ($188$ Windows), and Falsifier 8 (\texttt{Lane B} vs.\ \texttt{Shape H})} on \texttt{Apple M5 Max}.}
-\label{tab:bvc}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{l l l l}
-\toprule
-\textbf{Empirical Test / Audit} & \textbf{Protocol \& Sample} & \textbf{Measured \texttt{Apple M5 Max} Result} & \textbf{Verdict} \\
-\midrule
-\textbf{\texttt{C9} Deterministic Replay} & $14$ turns, $24\;\text{KiB}$ outputs, $48\text{k}$ window & $149{,}747\;\text{B}$ (\texttt{d697ed14...}), $5$ elided, $0$ model calls, $\mathbf{0}$ byte diffs & \textbf{Cleared (\texttt{F1})} \\
-\textbf{\texttt{C10} Process-Group \texttt{SIGKILL}} & $5$ trials $\times$ $4$-PID detached tree & $\mathbf{2.073\;\text{ms}}$ mean ($1.429\text{--}2.571\;\text{ms}$ $< 2{,}000\;\text{ms}$), $0$ survivors & \textbf{Passed (\texttt{C10})} \\
-\textbf{\texttt{Step 7} Boundary Sum Check} & $3$ two-phase sequential replicates & Residuals $0\;\mu\text{J}, 1\;\mu\text{J}, 0\;\mu\text{J}$ ($\le 1{,}000\;\mu\text{J}$ sensor quantum) & \textbf{$100\%$ Pass (\texttt{F2})} \\
-\textbf{\texttt{F3}: \texttt{B} Temporal vs.\ \texttt{C} (\texttt{Kepler})} & Phase 1 ALU ($2.5\;\text{s}$) vs.\ Phase 2 DRAM+\texttt{fsync} ($2.5\;\text{s}$) & \texttt{L2}: $+35.86\%$ (P1) / $-32.59\%$ (P2) err; \texttt{L3}: $+25.21\%$ (P2) err & \textbf{Triggered ($>20\%$)} \\
-\textbf{\texttt{F6}: Shared-Host Drift Gate} & $188$ \texttt{L2} windows (\texttt{exp-001/002} $+$ $170$ \texttt{ai-reads-human}) & $64$ valid ($\le 5\%$), $\mathbf{124}$ drifted dropped; $188/188$ raw preserved & \textbf{Enforced (\texttt{F6})} \\
-\textbf{\texttt{F8}: \texttt{Lane B} vs.\ \texttt{Claude Code 2.1.330}} & $24$ \texttt{/work} bundles $+$ $6$ multi-file Python repos & Both $\mathbf{24/24}$ \& $\mathbf{6/6}$ ($100\%$); \texttt{Lane B} uses $1.67\times\text{--}3.44\times$ fewer tokens & \textbf{Cleared (\texttt{F8})} \\
-\bottomrule
-\end{tabular}%
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2. Survey of Agent Harnesses and Why Context Policy Is Part of
+the
+System}\label{survey-of-agent-harnesses-and-why-context-policy-is-part-of-the-system}
+
+Modern coding, terminal, and computer-use harnesses differ sharply in
+how they expose tools, gate file edits, and compact growing conversation
+histories:
+
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4167}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4167}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Harness}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Loop and tool surface}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Context and history policy}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{mini-\allowbreak{}swe-\allowbreak{}agent}} & \texttt{Bash} only. Every action
+spawns a fresh stateless \texttt{subprocess.\allowbreak{}run}. & Strictly linear
+append-only message history; no automatic compaction. \\
+\textbf{\texttt{SWE-agent} (\texttt{ACI})} & 100-line windowed file
+viewer, linter-gated edit command, succinct search. & History processor
+folds older environment observations to bounded summaries. \\
+\textbf{\texttt{Inspect\ react(\allowbreak{})}} & Sequential tool loop until
+\texttt{submit()}: \texttt{bash()}, \texttt{text\_\allowbreak{}editor(\allowbreak{})},
+\texttt{MCP} tools. & Editable message state with pluggable history
+truncation or compaction solvers. \\
+\textbf{\texttt{Inspect\ Agent\ Bridge}} & Wraps \texttt{Claude\ Code},
+\texttt{Codex\ CLI}, \texttt{Gemini\ CLI}, and custom \texttt{SDK}
+agents behind a local proxy. & Delegates context management entirely to
+the wrapped external harness. \\
+\textbf{\texttt{Terminus-\allowbreak{}2} (\texttt{Harbor})} & Single tool: persistent
+\texttt{tmux} terminal session receiving raw keystrokes. & Three-stage
+context summarization (\texttt{3-stage} progressive transcript
+compression). \\
+\textbf{\texttt{Codex\ CLI}} & Sandboxed shell
+(\texttt{Landlock}/\allowbreak{}\texttt{seccomp} or \texttt{seatbelt}), structured
+\texttt{apply\_\allowbreak{}patch}, \texttt{MCP}. & Native rolling context compaction
+triggered near model window limits. \\
+\textbf{\texttt{Claude\ Code}} & \texttt{Bash}, structured file tools
+(\texttt{Read}, \texttt{Write}, \texttt{Edit}, \texttt{Glob},
+\texttt{Grep}), \texttt{MCP}. & Automatic LLM-driven conversation
+compaction (\texttt{auto-\allowbreak{}compact}) plus prompt caching. \\
+\textbf{\texttt{OpenHands}} & Event-stream runtime executing any
+\texttt{ACP} or \texttt{CodeAct} coding agent in containers. &
+Configurable context condenser (\texttt{LLM} summarization or window
+masking). \\
+\textbf{\texttt{ARC-AGI-3} runner} & Standard harness vs.~Provider
+Adapter harnesses over interactive grid states. & Bounded visual/grid
+state trajectory window declared per adapter track. \\
+\textbf{\texttt{OSWorld\ run.\allowbreak{}py}} & Desktop \texttt{GUI} loop emitting
+\texttt{pyautogui} mouse/keyboard actions over VM screenshots. & Sliding
+trajectory window retaining only the most recent \(K\) screenshots and
+actions. \\
+\end{longtable}
 }
-\end{table}
 
-\textbf{Limitations and Open Hardware Items (\texttt{OQ-5}).} Because no external \texttt{L0} smart plug or physical rail shunt was attached during these runs (\texttt{board\_metered = false}, \texttt{measured\_j = None}), all \texttt{Apple M5 Max} joule values remain on-chip/kernel \texttt{reported\_j} counters. Physical verification of \texttt{L0} sync-pulse \texttt{PDU} calibration (\texttt{Falsifier 4}), \texttt{NVIDIA Jetson Thor} \texttt{INA3221 ch3}/\texttt{NVML} permissions, \texttt{Framework AMD} \texttt{RAPL}/\texttt{amdgpu} domains, and live \texttt{C1--C12} certification of \texttt{Codex CLI}, \texttt{OpenHands}, \texttt{Terminus-2}, and \texttt{Shape I} \texttt{Inspect} solvers remain open.
+On \texttt{Terminal-\allowbreak{}Bench\ 2}, \texttt{Gemini\ 2.\allowbreak{}5\ Pro} resolved
+\textbf{\texttt{17\%} more tasks} when paired with \texttt{Terminus-\allowbreak{}2}
+than when paired with \texttt{OpenHands} --- holding the underlying
+model checkpoint constant. Context management, output truncation, edit
+linting, and retry rules are therefore first-order components of the
+evaluated system rather than neutral plumbing. \texttt{SATB} resolves
+this confound by splitting evaluation into two explicit lanes and
+closing Open Questions \texttt{OQ-1} and \texttt{OQ-2}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Holding the wrapper constant (\texttt{Lane\ B}) vs.~evaluating
+  external wrappers (\texttt{Lane\ O})}: \texttt{Lane\ B}
+  (\texttt{satb-\allowbreak{}agent}) fixes a single auditable Rust loop across all
+  models, whereas \texttt{Lane\ O} wraps complete third-party harnesses
+  (\texttt{Claude\ Code}, \texttt{Codex\ CLI}, \texttt{OpenHands},
+  \texttt{Terminus-\allowbreak{}2}, \texttt{Inspect}) as black-box \texttt{SUT}s
+  whose internal prompts and compaction calls are hashed into the
+  \texttt{harness} fingerprint block and routed 100\% through
+  \texttt{satb-\allowbreak{}proxy}.
+\item
+  \textbf{Context policy resolution (\texttt{OQ-1}:
+  \texttt{ContextRule\_\allowbreak{}v0})}: Hard-killing an attempt with zero elision
+  conflates multi-step reasoning with verbose tool output, whereas
+  \texttt{LLM}-generated summarization (\texttt{Claude\ Code}
+  auto-compact) injects hidden stochastic model calls that break
+  deterministic harness replay. \texttt{Lane\ B} adopts
+  \textbf{\texttt{ContextRule\_\allowbreak{}v0}}: whenever accumulated conversation
+  size exceeds \textbf{\texttt{80\%}} of the declared context window,
+  the harness deterministically replaces the oldest tool outputs with
+  \texttt{"{[}ELIDED\_BY\_CONTEXT\_RULE\_V0{]}"} while keeping
+  \texttt{system(\allowbreak{}TEMPLATE\_\allowbreak{}v0)}, the initial
+  \texttt{user(\allowbreak{}render(\allowbreak{}bundle))}, and the \textbf{most recent \texttt{8}
+  tool outputs} verbatim, making \textbf{zero model calls}. Hard
+  \texttt{killed(\allowbreak{}context\_\allowbreak{}ceiling)} fires only if those retained
+  messages alone exceed \texttt{100\%} of the window.
+\item
+  \textbf{Tool surface resolution (\texttt{OQ-2}: \texttt{TOOLS\_v0})}:
+  Pure \texttt{exec}-only (\texttt{mini}-style) forces models to
+  shell-escape multi-line source patches and algebraic proofs
+  (\texttt{cat\ \textless{}\textless{}\ \textquotesingle{}EOF\textquotesingle{}}),
+  introducing shell-quoting failures orthogonal to task reasoning and
+  complicating portable rootless sandboxing across \texttt{macOS},
+  \texttt{Linux}, and \texttt{Windows}. \texttt{Lane\ B} fixes
+  \textbf{\texttt{TOOLS\_v0}} --- four workspace tools (\texttt{exec},
+  \texttt{read\_\allowbreak{}file}, \texttt{write\_\allowbreak{}file}, \texttt{list\_dir}) plus
+  two terminal tools (\texttt{submit}, \texttt{refuse}), canonicalized
+  via \texttt{JCS} into \texttt{tools\_\allowbreak{}hash} (\texttt{d5b102...}).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{3. Reference Harness (\texttt{Lane\ B}),
+\texttt{ContextRule\_\allowbreak{}v0}, and \texttt{SATB-IO}
+Protocol}{3. Reference Harness (Lane B), ContextRule\_v0, and SATB-IO Protocol}}\label{reference-harness-lane-b-contextrule_v0-and-satb-io-protocol}
+
+
+\begin{center}
+\openiefig{fig/satb-harness-fig01-satb-lane-b-architecture.png}{0.94}{https://research.openie.dev/figures/satb-harness/satb-lane-b-architecture.svg}
+\end{center}
+
+
+\emph{Figure 1. Left: \texttt{Lane\ B} component isolation separating
+rootless \texttt{satb-\allowbreak{}meter}, \texttt{satb-\allowbreak{}supervisor},
+\texttt{satb-\allowbreak{}agent}, network-blocked \texttt{satb-\allowbreak{}sandbox},
+credential-holding \texttt{satb-\allowbreak{}proxy}, and the unreachable external
+\texttt{Verifier}. Right: deterministic \texttt{SATB-IO} session and
+attempt sequence.}
+
+\subsection{3.1 Sequential execution loop and fixed-versus-configurable
+split}\label{sequential-execution-loop-and-fixed-versus-configurable-split}
+
+Inside \texttt{satb-\allowbreak{}agent}, every attempt executes a strictly sequential
+single-agent loop with no overlapping background tool threads, no
+\texttt{best-of-k} voting, and no verifier oracle feedback:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{msgs \textless{}{-} [system(TEMPLATE\_v0), user(render(bundle))]}
+\NormalTok{loop:}
+\NormalTok{  ContextRule\_v0(msgs)        \# \textgreater{}= 80\% window {-}\textgreater{} elide oldest tool outputs; keep last 8; 0}
+\NormalTok{    model calls}
+\NormalTok{  r \textless{}{-} proxy.chat(msgs, TOOLS\_v0)   \# missing usage {-}\textgreater{} immediate killed(usage\_missing)}
+\NormalTok{  if no tool calls: append CONTINUE\_v0; continue}
+\NormalTok{  for call in r.tool\_calls (sequential):}
+\NormalTok{    submit | refuse {-}\textgreater{} attempt.close; ignore trailing calls (C4); STOP}
+\NormalTok{    exec | read\_file | write\_file | list\_dir {-}\textgreater{} fresh sandboxed process in /work,}
+\NormalTok{      Truncate\_v0 (8 KiB head + 8 KiB tail), no network egress (C6)}
+\NormalTok{  envelope ceiling reached {-}\textgreater{} killed(wall\_ceiling | token\_ceiling | turn\_ceiling |}
+\NormalTok{    context\_ceiling)}
+\end{Highlighting}
+\end{Shaded}
+
+Every \texttt{Lane\ B} run separates fixed benchmark constants (hashed
+into \texttt{harness\_\allowbreak{}id}) from declared \texttt{SUT} parameters (hashed
+into \texttt{sut\_\allowbreak{}fingerprint\_\allowbreak{}sha256}):
+
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5104}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4896}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Fixed across all \texttt{Lane\ B} runs (\texttt{harness\_\allowbreak{}id})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Configurable per \texttt{SUT}
+(\texttt{sut\_\allowbreak{}fingerprint\_\allowbreak{}sha256})}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{TEMPLATE\_\allowbreak{}v0} prompt, bundle renderer, and \texttt{CONTINUE\_\allowbreak{}v0}
+nudge & \texttt{model\_id}, provider snapshot date, or local
+\texttt{GGUF}/\allowbreak{}safetensors \texttt{SHA-256} \\
+\texttt{TOOLS\_v0} schemas (\texttt{tools/\allowbreak{}list} \texttt{JCS} digest) and
+sequential dispatch & Sampling parameters: \texttt{temperature},
+\texttt{top\_p}, \texttt{top\_k}, \texttt{seed}, \texttt{max\_\allowbreak{}tokens},
+\texttt{reasoning\_\allowbreak{}effort} \\
+\texttt{ContextRule\_\allowbreak{}v0} (\texttt{80\%} threshold, keep last \texttt{8})
+and \texttt{Truncate\_\allowbreak{}v0} (\texttt{8\ +\ 8\ KiB}) & Serving engine
+(\texttt{llama.cpp}, \texttt{MLX}, \texttt{vLLM}, cloud \texttt{API})
+and batch/cache flags \\
+Single attempt (\texttt{attempts\ =\ 1}), zero verifier feedback, zero
+internal voting & Envelope ceilings: \texttt{wall\_ms},
+\texttt{max\_\allowbreak{}total\_\allowbreak{}tokens}, \texttt{max\_\allowbreak{}turns} \\
+\texttt{satb-\allowbreak{}sandbox}: \texttt{/work} confinement, stripped environment,
+zero network egress & Sandbox \texttt{CPU}/\allowbreak{}\texttt{RAM} quotas, host
+silicon, \texttt{OS} kernel, and isolation tier \\
+\end{longtable}
+}
+
+\subsection{\texorpdfstring{3.2 Canonical four-way outcome mapping
+(\texttt{OQ-3})}{3.2 Canonical four-way outcome mapping (OQ-3)}}\label{canonical-four-way-outcome-mapping-oq-3}
+
+To prevent benchmarks from silently dropping crashed runs or conflating
+voluntary bad answers with infrastructure timeouts, \texttt{SATB} maps
+legacy five-state completion codes losslessly onto
+\textbf{\texttt{\{pass,\ fail,\ refuse,\ killed\}}} (\texttt{PFRK}),
+preserving the exact \texttt{sub\_\allowbreak{}reason} in every receipt:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{\texttt{completed} \(\to\) \texttt{pass}
+  (\texttt{sub\_\allowbreak{}reason:\ "verified"}, score \texttt{1})}: \texttt{SUT}
+  called \texttt{submit(\allowbreak{}bytes)} prior to ceiling expiration and the
+  external \texttt{Verifier} accepted \texttt{bytes} after
+  \texttt{attempt.\allowbreak{}close}.
+\item
+  \textbf{\texttt{incorrect} \(\to\) \texttt{fail}
+  (\texttt{sub\_\allowbreak{}reason:\ "incorrect"}, score \texttt{0})}: \texttt{SUT}
+  called \texttt{submit(\allowbreak{}bytes)} cleanly; external \texttt{Verifier}
+  rejected the candidate.
+\item
+  \textbf{\texttt{malformed} \(\to\) \texttt{fail}
+  (\texttt{sub\_\allowbreak{}reason:\ "malformed\_\allowbreak{}submission"}, score \texttt{0})}:
+  \texttt{SUT} voluntarily called \texttt{submit(\allowbreak{}bytes)} with
+  unparseable or schema-invalid content. A bad submission authored by
+  the \texttt{SUT} is an accuracy failure, never an infrastructure kill.
+\item
+  \textbf{\texttt{refused} \(\to\) \texttt{refuse}
+  (\texttt{sub\_reason:\ "policy"\ \textbar{}\ "capability"\ \textbar{}\ "other"},
+  score \texttt{0})}: \texttt{SUT} explicitly invoked
+  \texttt{refuse(\allowbreak{}reason)}.
+\item
+  \textbf{\texttt{no\_\allowbreak{}submission} \(\to\) \texttt{killed}
+  (\texttt{sub\_reason:\ "wall\_ceiling"\ \textbar{}\ "token\_ceiling"\ \textbar{}\ "turn\_ceiling"\ \textbar{}\ "context\_ceiling"\ \textbar{}\ "usage\_missing"\ \textbar{}\ "exec\_timeout\_killed"\ \textbar{}\ "process\_crash"},
+  score \texttt{0})}: \texttt{satb-\allowbreak{}supervisor} terminated the attempt
+  before any terminal tool call arrived. All four outcomes remain in the
+  denominator \(n\).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{4. Adapter Bridge
+(\texttt{Shapes\ D,\allowbreak{}\ M,\allowbreak{}\ H,\allowbreak{}\ I}), Five-Block \texttt{SUT} Fingerprint,
+and \texttt{C1–C12}
+Conformance}{4. Adapter Bridge (Shapes D, M, H, I), Five-Block SUT Fingerprint, and C1--C12 Conformance}}\label{adapter-bridge-shapes-d-m-h-i-five-block-sut-fingerprint-and-c1c12-conformance}
+
+\subsection{4.1 Four adapter shapes behind one supervisor and
+proxy}\label{four-adapter-shapes-behind-one-supervisor-and-proxy}
+
+Any system outside \texttt{Lane\ B} connects to \texttt{satb-\allowbreak{}supervisor}
+through one of four adapter shapes:
+
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1312}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2875}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2562}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Adapter shape}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Target systems}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Execution and isolation contract}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Standards reused}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{Shape\ D} (\texttt{dnull} control)} & Deterministic Null
+(\texttt{N0} strict model-free and \texttt{N1} dev-crystallized) over
+frozen \texttt{DNULLMM1} \texttt{mmap} stores & Executes inside
+\texttt{/work} under identical \texttt{TOOLS\_v0} and \texttt{Verifier}
+rules with \textbf{\texttt{0} proxy model calls} at decision time. &
+\texttt{POSIX\ mmap} / Win32 \texttt{MapViewOfFile}, \texttt{SPEC\ v0.\allowbreak{}4}
+64-bit integer loop \\
+\textbf{\texttt{Shape\ M} (Model endpoint)} & Local open-weight servers
+and closed cloud \texttt{API}s & Runs \texttt{Lane\ B}
+\texttt{satb-\allowbreak{}agent} over \texttt{Chat\ Completions} or \texttt{Messages}
+with tool calls and mandatory \texttt{usage}, routed 100\% via
+\texttt{satb-\allowbreak{}proxy}. & OpenAI-compatible \texttt{API}
+(\texttt{llama.cpp}, \texttt{mlx\_lm}, \texttt{vLLM});
+\texttt{Anthropic}, \texttt{Gemini}, \texttt{xAI} translators \\
+\textbf{\texttt{Shape\ H} (Harness in a box)} & \texttt{Claude\ Code},
+\texttt{Codex\ CLI}, \texttt{Gemini\ CLI}, \texttt{OpenHands},
+\texttt{Terminus-\allowbreak{}2} & Task written to \texttt{/\allowbreak{}work/\allowbreak{}task/\allowbreak{}BUNDLE.\allowbreak{}md}.
+Base \texttt{URL} pointed at \texttt{satb-\allowbreak{}proxy}
+(\texttt{127.0.0.1:\textless{}port\textgreater{}}); real \texttt{API}
+keys withheld from \texttt{/work}; ends via \texttt{MCP} \texttt{submit}
+or \texttt{refuse}; zero other egress. & \texttt{Inspect} sandbox bridge
+env vars; \texttt{-\allowbreak{}\/\allowbreak{}-\allowbreak{}strict-\allowbreak{}mcp-\allowbreak{}config} \texttt{MCP}; optional
+\texttt{ACP} \\
+\textbf{\texttt{Shape\ I} (\texttt{Inspect} agent)} & Existing public
+benchmark \texttt{Inspect} solvers & Wraps \texttt{SATB} task bundle
+with \texttt{submit} and \texttt{refuse} tools at
+\texttt{attempts\ =\ 1}, routing model calls through
+\texttt{satb-\allowbreak{}proxy}. & \texttt{UK\ AISI\ Inspect} \texttt{Task} and
+\texttt{Solver} interface \\
+\end{longtable}
+}
+
+\subsection{\texorpdfstring{4.2 Five-block \texttt{SUT} fingerprint and
+session
+validity}{4.2 Five-block SUT fingerprint and session validity}}\label{five-block-sut-fingerprint-and-session-validity}
+
+Before \texttt{attempt.\allowbreak{}start} can fire, the adapter returns a five-block
+JSON structure whose canonical \texttt{JCS} \texttt{SHA-256} digest
+defines the \texttt{SUT}. Unknown or unobservable fields must be written
+literally as \texttt{"not\_\allowbreak{}available"}, never omitted or guessed:
+
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2604}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7396}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Fingerprint block}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Required fields (unavailable values written literally as
+\texttt{"not\_\allowbreak{}available"})}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{model}} & \texttt{provider}, \texttt{model\_id},
+\texttt{snapshot\_\allowbreak{}date}, \texttt{weights\_\allowbreak{}sha256},
+\texttt{quantisation}, \texttt{tokenizer\_\allowbreak{}hash},
+\texttt{chat\_\allowbreak{}template\_\allowbreak{}hash}, \texttt{context\_\allowbreak{}window},
+\texttt{system\_\allowbreak{}fingerprint} \\
+\textbf{\texttt{serving}} & \texttt{engine}, \texttt{version},
+\texttt{commit}, \texttt{binary\_\allowbreak{}hash}, \texttt{flags\_\allowbreak{}hash}
+(\texttt{cache\_\allowbreak{}prompt}, \texttt{slots}, \texttt{batch\_\allowbreak{}invariance},
+\texttt{TP}), \texttt{drivers}, \texttt{devices} \\
+\textbf{\texttt{sampling}} & \texttt{temperature}, \texttt{top\_p},
+\texttt{top\_k}, \texttt{seed}, \texttt{max\_\allowbreak{}tokens}, \texttt{stop},
+\texttt{reasoning\_\allowbreak{}effort}, \texttt{tool\_\allowbreak{}choice} \\
+\textbf{\texttt{harness}} & \texttt{name}, \texttt{version},
+\texttt{commit}, \texttt{binary\_\allowbreak{}hash}, \texttt{prompt\_\allowbreak{}hash},
+\texttt{tools\_\allowbreak{}hash}, \texttt{context\_\allowbreak{}policy},
+\texttt{internal\_\allowbreak{}voting}, \texttt{sub\_\allowbreak{}agents},
+\texttt{config\_\allowbreak{}hash} \\
+\textbf{\texttt{envelope}} & \texttt{hardware}, \texttt{os\_\allowbreak{}kernel},
+\texttt{isolation\_\allowbreak{}tier}, \texttt{cgroup\_\allowbreak{}limits}, \texttt{cpuset},
+\texttt{network\_\allowbreak{}policy}, \texttt{ceilings},
+\texttt{telemetry\_\allowbreak{}config\_\allowbreak{}hash} \\
+\end{longtable}
+}
+
+\textbf{Session voiding and start/end canaries.} Any changed block
+digest at \texttt{session.\allowbreak{}close}, any \texttt{MCP}
+\texttt{tools/\allowbreak{}list\_\allowbreak{}changed} notification, an inference-engine restart,
+an \texttt{NVML} counter reset, a changed echoed \texttt{model} or
+\texttt{system\_\allowbreak{}fingerprint} mid-session, or an \texttt{OS}/\allowbreak{}driver
+update marks \textbf{every receipt in the session \texttt{void}}. Void
+receipts remain in the public archive for auditability but are excluded
+from benchmark placement. Because a cloud provider can swap weights or
+quantization behind a fixed \texttt{model\_id} without updating
+\texttt{system\_\allowbreak{}fingerprint}, every session also brackets evaluation
+with a deterministic canary rung at \texttt{session.\allowbreak{}open} and
+\texttt{session.\allowbreak{}close}.
+
+\subsection{\texorpdfstring{4.3 Mandatory \texttt{C1–C12} adapter
+conformance
+suite}{4.3 Mandatory C1--C12 adapter conformance suite}}\label{mandatory-c1c12-adapter-conformance-suite}
+
+No adapter or harness enters evaluation until it passes all twelve
+conformance checks (\texttt{C1} to \texttt{C12}):
+
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2708}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7292}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Check}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Requirement for passing}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{C1} Bundle round-trip} & Adapter echoes the exact
+\texttt{JCS} \texttt{SHA-256} digest of the input task bundle. \\
+\textbf{\texttt{C2} Submit path} & External \texttt{Verifier} receives
+the exact byte sequence logged at \texttt{satb-\allowbreak{}proxy} / \texttt{MCP}
+terminal capture. \\
+\textbf{\texttt{C3} Refuse path} & An instructed refusal arrives cleanly
+as \texttt{refuse} (\texttt{sub\_\allowbreak{}reason\ =\ "other"},
+\texttt{completion\_\allowbreak{}score\ =\ 0}). \\
+\textbf{\texttt{C4} One terminal call} & Any tool or terminal calls
+emitted after the first \texttt{submit} or \texttt{refuse} are ignored
+and counted. \\
+\textbf{\texttt{C5} No oracle} & \texttt{Verifier} and
+\texttt{satb-\allowbreak{}supervisor} directories, sockets, and parent paths
+(\texttt{..}) are unreachable from \texttt{/work}. \\
+\textbf{\texttt{C6} Egress} & Only \texttt{satb-\allowbreak{}proxy}
+(\texttt{127.0.0.1:\textless{}port\textgreater{}}) is reachable for
+model traffic; \texttt{/work} subprocesses have zero external network
+access and zero upstream \texttt{API} keys. \\
+\textbf{\texttt{C7} Usage present} & Every model call carries
+\texttt{usage}
+(\texttt{missing\ -\textgreater{}\ killed(usage\_missing)}); proxy token
+totals match upstream engine counts exactly. \\
+\textbf{\texttt{C8} Fingerprint stable} & Five-block \texttt{SUT}
+fingerprint \texttt{SHA-256} is identical before and after a 3-attempt
+dry run. \\
+\textbf{\texttt{C9} Harness replay} & Replaying recorded
+\texttt{satb-\allowbreak{}proxy} responses reproduces a byte-identical transcript
+(\texttt{0} byte or \texttt{CRLF} diffs; mandatory for
+\texttt{Lane\ B}). \\
+\textbf{\texttt{C10} Kill path} & Runaway \texttt{/work} process tree
+(\texttt{POSIX} process group or Win32 Job Object, including detached
+child processes) is reaped within \texttt{\textless{}\ 2,000\ ms} and
+recorded as \texttt{killed}. \\
+\textbf{\texttt{C11} Telemetry handshake} & Rootless \texttt{L3} process
+counters (\texttt{cgroup\ v2}, \texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage}, or Win32
+\texttt{GetProcessTimes}/\allowbreak{}\texttt{QueryProcessCycleTime}) are readable,
+phase markers arrive, and monotonic-to-wall clock offset is recorded. \\
+\textbf{\texttt{C12} Determinism probe} & \texttt{8} identical requests
+are executed and the count of distinct outputs is recorded as an
+empirical \texttt{SUT} property. \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{5. Five-Level Telemetry Attribution
+(\texttt{L0–L4\ ×\ A1–N}), Platform Channel Maps, and What Cannot Be
+Attributed}{5. Five-Level Telemetry Attribution (L0--L4 × A1--N), Platform Channel Maps, and What Cannot Be Attributed}}\label{five-level-telemetry-attribution-l0l4-a1n-platform-channel-maps-and-what-cannot-be-attributed}
+
+
+\begin{center}
+\openiefig{fig/satb-harness-fig02-satb-telemetry-attribution.png}{0.94}{https://research.openie.dev/figures/satb-harness/satb-telemetry-attribution.svg}
+\end{center}
+
+
+\emph{Figure 2. Left: physical and logical telemetry levels
+\texttt{L0}--\texttt{L4} mapped to attribution labels
+\texttt{A1}--\texttt{N}. Right: seven-step raw-first counter discipline
+enforcing pre/post baseline drift bounds (\texttt{Falsifier\ 6}) and the
+\texttt{Step\ 7} sum check.}
+
+\subsection{\texorpdfstring{5.1 Telemetry boundaries (\texttt{L0–L4})
+and attribution labels
+(\texttt{A1–N})}{5.1 Telemetry boundaries (L0--L4) and attribution labels (A1--N)}}\label{telemetry-boundaries-l0l4-and-attribution-labels-a1n}
+
+Energy and activity sensors sit at five distinct boundaries that measure
+physically different quantities and must never be summed or conflated:
+
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1260}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1732}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3543}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3465}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Level}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Physical / logical boundary}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Representative sensors}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{What the channel can honestly attribute}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{L0} wall} & \texttt{AC} at the wall receptacle & Smart
+plug or \texttt{PDU} (\texttt{Shelly} \texttt{apower}, \texttt{aenergy};
+\texttt{Yokogawa} analyzer) & Whole machine including \texttt{PSU}
+conversion heat, fans, \texttt{DRAM}, and \texttt{NVMe};
+\texttt{\textasciitilde{}1\ s} cadence. \\
+\textbf{\texttt{L1} platform} & Board \texttt{DC} input rail &
+\texttt{Jetson\ Thor\ INA238} carrier; \texttt{Mac\ sys\_\allowbreak{}power};
+\texttt{RAPL\ psys} & Whole computer on the \texttt{DC} side downstream
+of the power brick or \texttt{PSU}. \\
+\textbf{\texttt{L2} package / SoC} & \texttt{CPU} package, \texttt{GPU},
+and \texttt{SoC} rails & \texttt{RAPL\ pkg}; rootless
+\texttt{macmon\ IOReport}; \texttt{Thor\ INA3221};
+\texttt{amdgpu\ hwmon}; \texttt{NVML} cumulative energy (\texttt{mJ}) &
+Whole \texttt{SUT} on \texttt{SoC} (\texttt{A2}), or inference engine
+alone when a rail is physically exclusive (\texttt{A1}). \\
+\textbf{\texttt{L3} process / cgroup} & Single \texttt{OS} process tree
+& \texttt{Linux\ cgroup\ v2} (\texttt{cpu.stat}, \texttt{memory.\allowbreak{}peak},
+\texttt{io.stat}), \texttt{perf}; \texttt{macOS\ proc\_\allowbreak{}pid\_\allowbreak{}rusage}
+\texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj}; Win32 \texttt{GetProcessTimes} +
+\texttt{QueryProcessCycleTime} & Resource activity shares (\texttt{C}),
+or the \texttt{OS} kernel's own internal per-process energy model
+(\texttt{D}). \\
+\textbf{\texttt{L4} logical} & The model/tool conversation &
+\texttt{satb-\allowbreak{}proxy} token counts and call latencies; harness turns, tool
+calls, and \texttt{ContextRule\_\allowbreak{}v0} elisions & Exact counts on every
+\texttt{SUT} without exception, including closed cloud \texttt{API}s. \\
+\end{longtable}
+}
+
+Every energy value in a receipt carries one of seven attribution labels:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{A1} (Exclusive physical rail)}: A hardware rail sensor
+  touched exclusively by one partition during the measurement window
+  (e.g., \texttt{Jetson\ Thor\ INA3221\ ch1\ VDD\_\allowbreak{}GPU} when only the
+  local inference engine has \texttt{GPU} device access).
+\item
+  \textbf{\texttt{A2} (Dedicated whole-system boundary)}: A
+  whole-machine (\texttt{L0}/\allowbreak{}\texttt{L1}) or whole-package (\texttt{L2})
+  counter on a quiesced dedicated machine (\texttt{SUT} plus idle
+  \texttt{OS} floor). \textbf{Per \texttt{OQ-4}, whole-\texttt{SUT} raw
+  window energy at \texttt{A2} is the primary physical energy metric for
+  placement}, preventing thin models from offloading uncounted
+  brute-force search into \texttt{/work} subprocesses and preventing
+  \texttt{active\ -\allowbreak{}\ idle} subtraction from flattering slow runs.
+\item
+  \textbf{\texttt{B} (Temporal phase split)}: Counter differences across
+  non-overlapping time windows delimited by sequential phase markers
+  (\texttt{model\_\allowbreak{}call} vs.~\texttt{tool\_\allowbreak{}call} in \texttt{Lane\ B}).
+\item
+  \textbf{\texttt{C} (Proportional share --- the \texttt{Kepler}
+  model)}: A shared hardware counter partitioned by
+  \(\Delta \text{CPU}_{\text{partition}} / \Delta \text{CPU}_{\text{total}}\)
+  or \texttt{GPU} utilization when parallel processes overlap
+  (\texttt{Lane\ O} \texttt{Shape\ H}).
+\item
+  \textbf{\texttt{D} (\texttt{OS}-modelled estimate)}: The kernel's
+  internal per-process energy model (\texttt{macOS\ ri\_\allowbreak{}energy\_\allowbreak{}nj}).
+  Isolates a process tree from \texttt{CPU} co-tenants, but remains a
+  firmware/kernel model rather than a physical shunt reading.
+\item
+  \textbf{\texttt{P} (Provider-attested)}: A per-request server energy
+  number returned by a cloud provider alongside its verbatim measurement
+  methodology.
+\item
+  \textbf{\texttt{N} (\texttt{not\_\allowbreak{}available})}: Unobserved and
+  \textbf{never estimated}.
+\end{itemize}
+
+\subsection{\texorpdfstring{5.2 Seven-step counter discipline, rootless
+collection (\texttt{OQ-5}), and platform
+maps}{5.2 Seven-step counter discipline, rootless collection (OQ-5), and platform maps}}\label{seven-step-counter-discipline-rootless-collection-oq-5-and-platform-maps}
+
+\texttt{satb-\allowbreak{}meter} processes every attempt through seven ordered steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Read cumulative counters at every event boundary}
+  (\texttt{attempt.\allowbreak{}start}, each \texttt{model\_\allowbreak{}call} and
+  \texttt{tool\_\allowbreak{}call}, \texttt{attempt.\allowbreak{}close}, plus a \texttt{100\ ms}
+  reference tick) so window energy is an exact counter difference
+  \(\Delta E = E(t_{\text{end}}) - E(t_{\text{start}})\).
+\item
+  \textbf{Write raw channels first}: record boundary, sensor, start/end
+  readings, counter wraps, and sample count; mark windows shorter than
+  \texttt{10} sensor periods \texttt{"below\_\allowbreak{}resolution"} and absent
+  hardware \texttt{"not\_\allowbreak{}available"}.
+\item
+  \textbf{Split sequential phases (\texttt{B})}: in \texttt{Lane\ B},
+  model inference and \texttt{/work} tool calls never overlap; parallel
+  \texttt{Lane\ O} harnesses drop phase splits to \texttt{C} or
+  \texttt{N}.
+\item
+  \textbf{Isolate \texttt{engine\_\allowbreak{}resident\_\allowbreak{}during\_\allowbreak{}tools}}: while a
+  \texttt{/work} tool runs, a local model server (\texttt{llama-\allowbreak{}server},
+  \texttt{vLLM}) holds weights resident on the
+  \texttt{GPU}/\allowbreak{}\texttt{DRAM}. Its idle draw during the tool window is
+  placed in \texttt{engine\_\allowbreak{}resident\_\allowbreak{}during\_\allowbreak{}tools} and charged neither
+  to model active inference nor to tool execution.
+\item
+  \textbf{Split by proportion (\texttt{C}) only where partitions
+  overlap}: apply \(\Delta \text{CPU}\) ratios strictly as a
+  characterisation fallback, recognizing that \texttt{C}-states, turbo
+  \texttt{DVFS}, and \texttt{DRAM}/\allowbreak{}storage stalls violate
+  proportionality.
+\item
+  \textbf{Store baselines as derived channels}: bracket sessions with
+  pre/post resident baselines; if pre/post idle power drifts beyond
+  \texttt{5.0\%} (\texttt{Falsifier\ 6}), drop derived net-above-idle
+  values while keeping raw channels intact.
+\item
+  \textbf{Run the sum check (\texttt{Falsifier\ 2})}: verify that
+  derived phase components sum back to the raw attempt counter delta
+  within one sensor quantum (\texttt{1\ mJ}); if they do not, discard
+  the derived split and retain only the raw channel.
+\end{enumerate}
+
+\textbf{Rootless collection rule (\texttt{OQ-5}).} Benchmarks must never
+run \texttt{SUT} orchestration as \texttt{root} or load custom ring-0
+drivers. On \texttt{macOS}, \texttt{satb-\allowbreak{}meter} uses rootless
+\texttt{macmon} (\texttt{IOReport} subscription) and \texttt{libSystem}
+\texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage(\allowbreak{}RUSAGE\_\allowbreak{}INFO\_\allowbreak{}V6)}, never \texttt{sudo} or
+\texttt{powermetrics}. On \texttt{Linux} (where
+\texttt{/\allowbreak{}sys/\allowbreak{}class/\allowbreak{}powercap/\allowbreak{}intel-\allowbreak{}rapl} became root-only in kernel
+\texttt{5.10} following \texttt{PLATYPUS}), a one-time administrator
+\texttt{udev} rule grants read access to a dedicated \texttt{satb-\allowbreak{}meter}
+group containing \textbf{only \texttt{satb-\allowbreak{}supervisor}'s \texttt{UID}},
+ensuring \texttt{/work} sandbox processes can neither side-channel
+\texttt{RAPL} nor read their own energy meter. On \texttt{Windows\ 11}
+(\texttt{NT\ 10.\allowbreak{}0.\allowbreak{}26300}), unprivileged Basic User tokens
+(\texttt{0x20000}) read discrete-\texttt{GPU} cumulative energy
+(\texttt{mJ}) directly via \texttt{nvml.dll}
+(\texttt{nvmlDeviceGetTotalEnergyConsumption}) and \texttt{L3} process
+cycles via Win32 \texttt{QueryProcessCycleTime}, whereas Intel
+\texttt{RAPL} \texttt{MSR} \texttt{0x611} requires a ring-0 kernel
+driver barred by \texttt{OQ-5} and \texttt{HVCI} (placing Windows
+\texttt{CPU} package energy strictly in \texttt{"not\_\allowbreak{}available"}, label
+\texttt{N}):
+
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1779}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2308}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1923}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2115}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Target platform}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\texttt{L0} / \texttt{L1} whole-system channels}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\texttt{L2} package / \texttt{SoC} channels}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\texttt{L3} process \& \texttt{L4} logical channels}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Key verification status}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Apple Silicon Mac} (\texttt{M5\ Max} verified) & \texttt{L0}:
+\texttt{Shelly} \texttt{PDU} (\texttt{not\_\allowbreak{}available} if unplugged);
+\texttt{L1}: \texttt{macmon\ sys\_\allowbreak{}power} (\texttt{reported\_\allowbreak{}j}) &
+\texttt{macmon\ IOReport}: \texttt{chip\_\allowbreak{}power}, \texttt{cpu\_\allowbreak{}power},
+\texttt{gpu\_\allowbreak{}power}, \texttt{ane\_\allowbreak{}power}, \texttt{ram\_\allowbreak{}power}
+(\texttt{reported\_\allowbreak{}j}) & \texttt{L3}: \texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage}
+\texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj} (\texttt{D}), \texttt{ri\_\allowbreak{}instructions},
+\texttt{ri\_\allowbreak{}diskio\_\allowbreak{}*}; \texttt{L4}: \texttt{satb-\allowbreak{}proxy} & Rootless
+\texttt{L1}--\texttt{L4} verified live on \texttt{Apple\ M5\ Max};
+\texttt{L0} plug open. \\
+\textbf{Framework AMD Strix Halo} (\texttt{Ryzen\ AI\ Max+\ 395},
+\texttt{Linux\ x86-\allowbreak{}64} verified) & \texttt{L0}: \texttt{Shelly}
+\texttt{PDU} (\texttt{not\_\allowbreak{}available} if unplugged); \texttt{L1}:
+\texttt{cros\_ec} (\texttt{0} power attrs) & \texttt{RAPL\ package-\allowbreak{}0} \&
+\texttt{core} (\texttt{0440\ root:energy} \texttt{udev})
+\texttt{reported\_\allowbreak{}j} + \texttt{amdgpu} \texttt{PPT}
+\texttt{power1\_\allowbreak{}input} (\texttt{0444}; \texttt{energy1\_\allowbreak{}input} absent) &
+\texttt{L3}: \texttt{cgroup\ v2} / \texttt{getrusage} (\texttt{C}
+activity shares); \texttt{L4}: \texttt{satb-\allowbreak{}proxy} & Verified live
+(\texttt{0440\ root:energy} \texttt{PLATYPUS} isolation;
+\texttt{amdgpu\ PPT} \texttt{0444}). \\
+\textbf{Intel Raptor Lake} (\texttt{Core\ i9-\allowbreak{}13900H},
+\texttt{Linux\ x86-\allowbreak{}64} verified) & \texttt{L0}: \texttt{not\_\allowbreak{}available};
+\texttt{L1}: \texttt{RAPL\ psys} (\texttt{intel-\allowbreak{}rapl:1/\allowbreak{}energy\_\allowbreak{}uj},
+\texttt{0444} \texttt{reported\_\allowbreak{}j}) & \texttt{RAPL\ package-\allowbreak{}0},
+\texttt{core}, \& \texttt{uncore} (\texttt{MSR} + \texttt{MMIO}
+\texttt{energy\_\allowbreak{}uj}, \texttt{0444} \texttt{reported\_\allowbreak{}j}) & \texttt{L3}:
+\texttt{cgroup\ v2} / \texttt{getrusage} (\texttt{C} activity shares);
+\texttt{L4}: \texttt{satb-\allowbreak{}proxy} & Verified live (\texttt{0\ µJ}
+\texttt{Step\ 7} residual across \texttt{psys} \texttt{L1} and
+\texttt{package-0} \texttt{L2}). \\
+\textbf{NVIDIA Jetson AGX Thor} (\texttt{Linux\ aarch64} Tegra verified)
+& \texttt{L1}: \texttt{TI\ INA238} (\texttt{hwmon6} \texttt{VIN},
+\texttt{0444} \texttt{measured\_\allowbreak{}j}) +
+\texttt{INA3221\ ch3\ VIN\_\allowbreak{}SYS\_\allowbreak{}5V0} (\texttt{0444}
+\texttt{measured\_\allowbreak{}j}) & \texttt{INA3221\ ch1\ VDD\_\allowbreak{}GPU} (\texttt{0444}
+\texttt{measured\_\allowbreak{}j}, \texttt{A1} when exclusive);
+\texttt{ch2\ VDD\_\allowbreak{}CPU\_\allowbreak{}SOC\_\allowbreak{}MSS} (\texttt{0444} \texttt{measured\_\allowbreak{}j});
+\texttt{NVML} (\texttt{unverified}) & \texttt{L3}: \texttt{cgroup\ v2} /
+\texttt{getrusage} (\texttt{C} activity shares); \texttt{L4}:
+\texttt{satb-\allowbreak{}proxy} & Verified live (\texttt{INA238} +
+\texttt{INA3221\ ch1–ch3} \texttt{0444} rootless; GPU \texttt{NVML} open
+under co-tenant lock). \\
+\textbf{Windows 11 \texttt{x86-64} + Discrete \texttt{RTX}}
+(\texttt{i7-1165G7} + \texttt{RTX\ 2060}, \texttt{NT\ 26300} verified) &
+\texttt{L0}: \texttt{not\_\allowbreak{}available}; \texttt{L1}: \texttt{WMI}
+\texttt{EMI} \texttt{PowerMeter} (\texttt{0} instances -\textgreater{}
+\texttt{not\_\allowbreak{}available}) & \texttt{RTX\ 2060}: rootless
+\texttt{nvml.dll} cumulative \texttt{mJ} (\texttt{reported\_\allowbreak{}j});
+\texttt{CPU} \texttt{RAPL} \texttt{MSR\ 0x611}: \textbf{\texttt{N}
+(\texttt{not\_\allowbreak{}available} without ring-0 driver)} & \texttt{L3}: Win32
+\texttt{GetProcessTimes} + \texttt{QueryProcessCycleTime} (\texttt{C}
+shares; \texttt{SRUM} coarse \texttt{OS} background excluded);
+\texttt{L4}: \texttt{satb-\allowbreak{}proxy} & Verified live under Basic User
+\texttt{0x20000} token (\texttt{0\ mJ} \texttt{Step\ 7} residual;
+\texttt{2.46\ ms} Job Object kill). \\
+\textbf{Closed Cloud \texttt{API}} (\texttt{Anthropic}, \texttt{xAI},
+\texttt{Cerebras}, \texttt{OpenAI}, \texttt{Google}) & Local
+\texttt{L0}--\texttt{L1} measure client host only (excluded from server
+inference) & Remote server \texttt{L2}: strictly \textbf{\texttt{N}
+(\texttt{not\_\allowbreak{}available})} or per-request \textbf{\texttt{P}}
+(\texttt{OQ-6}) & Local \texttt{/work} \texttt{L3}
+(\texttt{D}/\allowbreak{}\texttt{C}) for sandbox tools; \texttt{L4}: \textbf{exact}
+\texttt{satb-\allowbreak{}proxy} tokens, calls, \texttt{USD} & Verified live across
+\texttt{Anthropic}, \texttt{Cerebras}, and \texttt{xAI} via
+\texttt{satb-\allowbreak{}proxy}. \\
+\end{longtable}
+}
+
+\subsection{5.3 Eight hardware measurement pitfalls and seven
+non-attributable
+quantities}\label{eight-hardware-measurement-pitfalls-and-seven-non-attributable-quantities}
+
+Standard power-measurement shortcuts fail systematically on modern
+\texttt{SoC}s and \texttt{GPU}s:
+
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4062}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5938}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Hardware telemetry pitfall}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\texttt{SATB} mitigation}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Idle power drifts with die temperature, fans, \texttt{DVFS}, and
+turbo} & Wait for \texttt{GPU} cooldown (\texttt{\textless{}=\ 1.5\ W}),
+bracket every window with pre/post baselines, record peak \texttt{GPU}
+temperature, and invalidate derived net joules above \texttt{5.0\%}
+drift (\texttt{Falsifier\ 6}). \\
+\textbf{Ambiguity between cold-machine idle and weights-resident idle} &
+Measure and label both explicitly in \texttt{Step\ 6} rather than
+silently subtracting one. \\
+\textbf{\texttt{Active\ -\allowbreak{}\ idle} subtraction flatters slow runs} &
+Whole-\texttt{SUT} raw window energy (\texttt{A2}) remains the primary
+placement figure (\texttt{OQ-4}). \\
+\textbf{Sub-period windows read as zero, negative, or quantization
+noise} & Mark any window shorter than \texttt{10} sensor periods
+\texttt{"below\_\allowbreak{}resolution"} (e.g., \texttt{\textless{}\ 1.2\ s} on
+\texttt{\textasciitilde{}8\ Hz} \texttt{macmon} or
+\texttt{\textless{}\ 10\ s} on a \texttt{1\ Hz} smart plug). \\
+\textbf{High-rate telemetry samplers burn significant \texttt{CPU}
+power} & Read cumulative counters at event boundaries
+(\texttt{0.011\ mW} at \texttt{0\ Hz}) plus a \texttt{100\ ms} tick;
+record \texttt{observer\_\allowbreak{}only} baseline. \\
+\textbf{\texttt{NVML} instantaneous power gauge on
+\texttt{A100}/\allowbreak{}\texttt{H100} samples only \texttt{\textasciitilde{}25\%}
+of runtime} & Read cumulative
+\texttt{nvmlDeviceGetTotalEnergyConsumption} (\texttt{mJ}) via
+in-process \texttt{FFI} (\texttt{1.17\ ms} on \texttt{RTX\ 2060}
+vs.~\texttt{43.88\ ms} \texttt{nvidia-\allowbreak{}smi} subprocess), never
+instantaneous \texttt{nvmlDeviceGetPowerUsage} polling (Chung et al.;
+Yang et al.). \\
+\textbf{External \texttt{L0} wall plug runs on an unsynchronized clock}
+& Emit a deterministic \texttt{50\%}-duty calibration load pulse at
+\texttt{session.\allowbreak{}open} and \texttt{session.\allowbreak{}close} and cross-correlate
+timestamps. \\
+\textbf{Shared-host background daemons or co-tenant jobs} & Log process
+list, downgrade shared \texttt{L2} derived subtractions via
+\texttt{Falsifier\ 6}, and record co-tenant-isolated \texttt{L3}
+\texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj} (\texttt{D}) alongside raw \texttt{L2}. \\
+\end{longtable}
+}
+
+Consequently, \textbf{seven quantities cannot be honestly attributed}
+and are barred from \texttt{SATB} claims: (1) unattested
+closed-\texttt{API} server energy (\texttt{N} or \texttt{P} only); (2)
+exact per-process physical joules on a shared \texttt{SoC} or
+unified-memory rail (\texttt{C} and \texttt{D} are models); (3) model
+weights isolated from serving kernels, quantization, batching, and
+silicon; (4) ownership of the \texttt{OS} idle floor and
+\texttt{DRAM}-resident weight power (reported as standalone channels);
+(5) individual events shorter than the sensor period (such as a
+\texttt{30\ ms} tool call under a \texttt{1\ s} plug); (6) shared cloud
+\texttt{VM}s or unprivileged Windows \texttt{CPU} domains lacking
+user-mode hardware counters; and (7) silent mid-session provider weight
+swaps (flagged by start/end canaries, never ruled out a priori). In
+particular (\texttt{OQ-6}), \textbf{provider sustainability disclosures
+are fleet medians rather than per-request measurements and never enter a
+\texttt{SATB} receipt} --- including Google's \texttt{0.24\ Wh} median
+\texttt{Gemini\ Apps} prompt, OpenAI's \texttt{0.34\ Wh} figure
+(published without methodology), and Mistral's \texttt{1.\allowbreak{}14\ gCO2e} per
+\texttt{400}-token response.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6. Measured Conformance, Determinism, Observer-Effect, and
+Multi-Host Attribution
+Results}\label{measured-conformance-determinism-observer-effect-and-multi-host-attribution-results}
+
+To replace unmeasured design assumptions with auditable receipts, we
+executed the complete \texttt{SATB} conformance suite and falsifier
+harness (\texttt{bench\_\allowbreak{}satb\_\allowbreak{}falsifiers.\allowbreak{}py} \(\to\)
+\texttt{satb\_\allowbreak{}empirical\_\allowbreak{}receipts.\allowbreak{}json}, total runtime
+\texttt{175.69\ s}) on an \texttt{Apple\ M5\ Max} workstation
+(\texttt{arm64}, \texttt{128\ GB} unified memory,
+\texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1}, \texttt{macmon\ 0.\allowbreak{}12.\allowbreak{}0}), alongside a
+\texttt{188}-window cross-study audit and live cross-OS multi-silicon
+runs across \texttt{Linux} and \texttt{Windows\ 11}.
+
+\subsection{\texorpdfstring{6.1 \texttt{C1–C12} conformance, \texttt{C9}
+deterministic replay, and \texttt{C10} process-tree
+cleanup}{6.1 C1--C12 conformance, C9 deterministic replay, and C10 process-tree cleanup}}\label{c1c12-conformance-c9-deterministic-replay-and-c10-process-tree-cleanup}
+
+All \textbf{\texttt{12\ /\ 12} Rust reference conformance checks}
+(\texttt{dnull\_\allowbreak{}cli\ satb-\allowbreak{}conformance}) and all extended
+operating-system checks passed:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Bundle, terminal, confinement, and fingerprint checks
+  (\texttt{C1}--\texttt{C8}, \texttt{C11})}: \texttt{C1} echoed
+  canonical bundle digest \texttt{455e941f\allowbreak{}51f8ffef}; \texttt{C2}
+  delivered byte-exact \texttt{submit} payloads across
+  \texttt{satb-\allowbreak{}proxy} to \texttt{Verifier}; \texttt{C3} mapped
+  empty/instructed refusals to \texttt{refuse:other}; \texttt{C4}
+  ignored trailing post-\texttt{submit} tool calls
+  (\texttt{ignored\_\allowbreak{}trailing\_\allowbreak{}calls\ =\ 1}); \texttt{C5} blocked
+  \texttt{../}, \texttt{/\allowbreak{}etc/\allowbreak{}passwd}, and \texttt{verifier\_\allowbreak{}oracle/\allowbreak{}*}
+  escapes; \texttt{C6} stripped proxy/credential environment variables
+  inside \texttt{/work} (\texttt{NP=*\textbar{}HTTP=}) while returning
+  \texttt{HTTP\ 404} on unlisted proxy paths; \texttt{C7} aborted
+  missing-usage responses immediately as
+  \texttt{killed(\allowbreak{}usage\_\allowbreak{}missing)}; \texttt{C8} preserved byte-identical
+  five-block fingerprint \texttt{8b741c27\allowbreak{}bf364e5d} across dry runs while
+  flagging simulated \texttt{system\_\allowbreak{}fingerprint} swaps with
+  \texttt{session\_\allowbreak{}void\ =\ true}; and \texttt{C11} verified rootless
+  \texttt{RUSAGE\_\allowbreak{}INFO\_\allowbreak{}V6} counter visibility
+  (\texttt{sudo\_\allowbreak{}invoked\ =\ false}).
+\item
+  \textbf{Extended \texttt{C9} multi-turn \texttt{ContextRule\_\allowbreak{}v0} +
+  \texttt{Truncate\_\allowbreak{}v0} replay}: Across a \texttt{14}-turn trace
+  generating \texttt{24\ KiB} raw file reads per turn (\texttt{14}
+  outputs truncated to \texttt{8,\allowbreak{}192\ B\ +\ 8,\allowbreak{}192\ B} by
+  \texttt{Truncate\_\allowbreak{}v0}) inside a \texttt{48,000}-token window
+  (\texttt{80\%} threshold = \texttt{38,400} tokens),
+  \texttt{ContextRule\_\allowbreak{}v0} deterministically elided the
+  \textbf{\texttt{5} oldest tool outputs} with \textbf{\texttt{0} extra
+  model calls}, producing a \texttt{149,747}-byte canonical transcript
+  (\texttt{SHA-256} \texttt{d697ed14\allowbreak{}76129939.\allowbreak{}.\allowbreak{}.\allowbreak{}}) with
+  \textbf{\texttt{0} byte differences} across independent \texttt{/work}
+  replays. Repeating the identical trace under a tight
+  \texttt{16,000}-token window (where \texttt{8} retained
+  \texttt{16\ KiB} outputs exceed \texttt{100\%}) deterministically
+  triggered \texttt{killed(\allowbreak{}context\_\allowbreak{}ceiling)}.
+\item
+  \textbf{Extended \texttt{C10} multi-process \texttt{SIGKILL} cleanup
+  (\texttt{\textless{}\ 2,000\ ms} specification ceiling)}: Across
+  \texttt{5} trials spawning a \texttt{4}-process tree (\texttt{sh}
+  parent plus \texttt{3} detached background Python sleepers in an
+  isolated process group), \texttt{SIGKILL} delivery and kernel reaping
+  completed in \textbf{\texttt{2.073\ ms} mean} (\texttt{1.429\ ms} min,
+  \texttt{2.571\ ms} max --- \textbf{\texttt{778×} below} the
+  \texttt{2,000\ ms} ceiling) with \textbf{\texttt{0} surviving
+  \texttt{PID}s} and outcome \texttt{killed(\allowbreak{}wall\_\allowbreak{}ceiling)}.
+\end{itemize}
+
+\subsection{\texorpdfstring{6.2 Live \texttt{C12} eight-request
+determinism probes across four model
+substrates}{6.2 Live C12 eight-request determinism probes across four model substrates}}\label{live-c12-eight-request-determinism-probes-across-four-model-substrates}
+
+Routing \texttt{8} identical algebraic-synthesis requests per model
+(\texttt{32} live cloud calls plus \texttt{8} local \texttt{Shape\ D}
+runs) through \texttt{satb-\allowbreak{}proxy} verified \texttt{100\%} exact
+\texttt{C7} token-count parity (\texttt{32/32} calls) and exposed three
+distinct determinism regimes:
+
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1620}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1479}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1620}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1479}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1620}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1197}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0986}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\texttt{SUT} / Endpoint via \texttt{satb-\allowbreak{}proxy}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\texttt{temperature\ =\ 0} preflight}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Recorded \texttt{sampling.\allowbreak{}temperature}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Distinct raw outputs (\texttt{/\ 8})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Distinct algebraic forms (\texttt{/\ 8})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\texttt{system\_\allowbreak{}fingerprint}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Mean latency}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{Shape\ D}: \texttt{dnull\ N1}} (Rust local) &
+\texttt{Exact\ i64} & \texttt{0\ (\allowbreak{}exact\_\allowbreak{}i64\_\allowbreak{}q1e6)} &
+\textbf{\texttt{1\ /\ 8}} & \textbf{\texttt{1\ /\ 8}} &
+\texttt{0da4df8d\allowbreak{}9ccbce1e…} & \texttt{1,\allowbreak{}474.\allowbreak{}0\ ms} \\
+\textbf{\texttt{Anthropic\ claude-\allowbreak{}opus-\allowbreak{}5-\allowbreak{}5}} &
+\textbf{\texttt{HTTP\ 400}} & \texttt{not\_\allowbreak{}available} (deprecated) &
+\textbf{\texttt{8\ /\ 8}} & \textbf{\texttt{4\ /\ 8}} &
+\texttt{not\_\allowbreak{}available} & \texttt{3,\allowbreak{}389.\allowbreak{}1\ ms} \\
+\textbf{\texttt{Anthropic\ claude-\allowbreak{}sonnet-\allowbreak{}5-\allowbreak{}5}} &
+\textbf{\texttt{HTTP\ 400}} & \texttt{not\_\allowbreak{}available} (deprecated) &
+\textbf{\texttt{8\ /\ 8}} & \textbf{\texttt{2\ /\ 8}} &
+\texttt{not\_\allowbreak{}available} & \texttt{2,\allowbreak{}914.\allowbreak{}3\ ms} \\
+\textbf{\texttt{Cerebras\ gpt-\allowbreak{}oss-\allowbreak{}120b}} & \texttt{HTTP\ 200} &
+\texttt{0.\allowbreak{}0\ (\allowbreak{}seed=42)} & \textbf{\texttt{2\ /\ 8}} &
+\textbf{\texttt{2\ /\ 8}} & \texttt{fp\_\allowbreak{}fd4dff7e\allowbreak{}ed92aaf38281} &
+\texttt{484.2\ ms} \\
+\textbf{\texttt{xAI\ grok-\allowbreak{}4.\allowbreak{}20-\allowbreak{}0309-\allowbreak{}non-\allowbreak{}reasoning}} & \texttt{HTTP\ 200}
+& \texttt{0.\allowbreak{}0\ (\allowbreak{}seed=42)} & \textbf{\texttt{8\ /\ 8}} &
+\textbf{\texttt{1\ /\ 8}} & \texttt{fp\_\allowbreak{}9974b11849} &
+\texttt{942.7\ ms} \\
+\end{longtable}
+}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Provider deprecation of \texttt{temperature\ =\ 0}}: Both
+  \texttt{claude-\allowbreak{}opus-\allowbreak{}5-\allowbreak{}5} and \texttt{claude-\allowbreak{}sonnet-\allowbreak{}5-\allowbreak{}5} rejected
+  \texttt{"temperature":\ 0.\allowbreak{}0} with \textbf{\texttt{HTTP\ 400}
+  (\texttt{"}temperature\texttt{is\ deprecated\ for\ this\ model.\allowbreak{}"})},
+  empirically validating \texttt{SATB}'s rule that unavailable sampling
+  controls be normalized to \texttt{"not\_\allowbreak{}available"} rather than
+  silently assumed to equal zero. Across \texttt{8} identical calls,
+  \texttt{claude-\allowbreak{}opus-\allowbreak{}5-\allowbreak{}5} (\texttt{1,047} adaptive thinking tokens)
+  emitted \texttt{8} distinct raw texts spanning \texttt{4}
+  algebraically distinct bitvector identities
+  (\texttt{(x\ \textbar{}\ y)\ -\ (x\ \&\ y)},
+  \texttt{(x\ \textbar{}\ y)\ \&\ \textasciitilde{}(x\ \&\ y)},
+  \texttt{(x\ \&\ \textasciitilde{}y)\ \textbar{}\ (\textasciitilde{}x\ \&\ y)},
+  and \texttt{(\allowbreak{}x\ +\ y)\ -\allowbreak{}\ (\allowbreak{}(\allowbreak{}x\ \&\ y)\ +\ (\allowbreak{}x\ \&\ y))}).
+\item
+  \textbf{Residual non-determinism under
+  \texttt{temperature\ =\ 0,\allowbreak{}\ seed\ =\ 42}}: Even when
+  \texttt{temperature\ =\ 0.\allowbreak{}0} and \texttt{seed\ =\ 42} were accepted
+  (\texttt{HTTP\ 200}) with a stable \texttt{system\_\allowbreak{}fingerprint},
+  \texttt{Cerebras\ gpt-\allowbreak{}oss-\allowbreak{}120b} (\texttt{2,976} reasoning tokens)
+  produced \texttt{2} distinct outputs across \texttt{8} identical
+  calls, while \texttt{xAI\ grok-\allowbreak{}4.\allowbreak{}20-\allowbreak{}0309-\allowbreak{}non-\allowbreak{}reasoning} stabilized on
+  \texttt{1} algebraic formula
+  (\texttt{(x\ \textbar{}\ y)\ \&\ \textasciitilde{}(x\ \&\ y)}) across
+  all \texttt{8} calls yet varied its prose proof sentence on all
+  \texttt{8/8} responses. Separating \textbf{harness determinism given
+  recorded responses (\texttt{C9})} from \textbf{measured \texttt{SUT}
+  output dispersion (\texttt{C12})} is therefore essential.
+\end{enumerate}
+
+\subsection{\texorpdfstring{6.3 Falsifier 5: Observer-effect benchmark
+across telemetry cadences (\texttt{10\ s}
+windows)}{6.3 Falsifier 5: Observer-effect benchmark across telemetry cadences (10 s windows)}}\label{falsifier-5-observer-effect-benchmark-across-telemetry-cadences-10-s-windows}
+
+Measuring combined sampler (\texttt{Python} + child \texttt{macmon}
+\texttt{IOReport} pipe) \texttt{CPU} time, \texttt{L3}
+\texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj} (\texttt{observer\_\allowbreak{}only} \texttt{reported\_\allowbreak{}j}),
+and whole-\texttt{SoC} \texttt{L2} \texttt{reported\_\allowbreak{}j} across
+interleaved \texttt{10.0\ s} windows on \texttt{Apple\ M5\ Max}
+quantified exact observer overhead:
+
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1898}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1022}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1460}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1387}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1314}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1241}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1679}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Sampling cadence}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Achieved rate}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Sampler \texttt{CPU} time / \texttt{10\ s}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Observer \texttt{L3} \texttt{reported\_\allowbreak{}j}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Observer power (\texttt{mW})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Share of \texttt{L2} window}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Whole-\texttt{SoC} \texttt{L2} window (\texttt{reported\_\allowbreak{}j})}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{0\ Hz} boundary-only} (\texttt{2} \texttt{rusage}
+syscalls) & \texttt{0.20\ Hz} & \textbf{\texttt{0.004\ ms}} &
+\textbf{\texttt{0.\allowbreak{}000108\ J}} & \textbf{\texttt{0.011\ mW}} &
+\textbf{\texttt{0.0000\%}} & \texttt{—} (zero \texttt{IOReport}
+daemon) \\
+\textbf{\texttt{1\ Hz} (\texttt{1,000\ ms} tick)} & \texttt{0.90\ Hz} &
+\texttt{9.323\ ms} & \texttt{0.\allowbreak{}194237\ J} & \texttt{19.\allowbreak{}371\ mW} &
+\texttt{0.0521\%} & \texttt{372.\allowbreak{}769\ J} (\texttt{37.17\ W}) \\
+\textbf{\texttt{10\ Hz} (\texttt{100\ ms} \texttt{SATB} reference tick)}
+& \texttt{8.12\ Hz} & \texttt{36.\allowbreak{}434\ ms} & \texttt{0.\allowbreak{}666596\ J} &
+\textbf{\texttt{66.\allowbreak{}439\ mW}} & \textbf{\texttt{0.1770\%}} &
+\texttt{376.\allowbreak{}603\ J} (\texttt{37.53\ W}) \\
+\textbf{\texttt{100\ Hz} (\texttt{10\ ms} stress falsifier)} &
+\texttt{7.44\ Hz} & \texttt{35.\allowbreak{}636\ ms} & \texttt{0.\allowbreak{}598721\ J} &
+\texttt{58.\allowbreak{}971\ mW} & \texttt{0.1618\%} & \texttt{369.\allowbreak{}926\ J}
+(\texttt{36.44\ W}) \\
+\end{longtable}
+}
+
+Two hardware facts emerge directly from this measurement:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Negligible perturbation (\texttt{\textless{}\ 0.18\%})}:
+  Boundary-only \texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage} reads consume
+  \texttt{108\ µJ} (\texttt{0.011\ mW}), \textbf{\texttt{6,040×} less
+  power} than \texttt{10\ Hz} \texttt{IOReport} polling
+  (\texttt{66.44\ mW}), and even the \texttt{100\ ms} reference tick
+  represents just \textbf{\texttt{0.177\%}} of whole-\texttt{SoC} window
+  energy (\texttt{0.76\%} total \texttt{L2} window difference between
+  \texttt{-i\ 10} and \texttt{-i\ 1000}, clearing
+  \texttt{Falsifier\ 5}).
+\item
+  \textbf{\texttt{IOReport} subscription cadence ceiling
+  (\texttt{\textasciitilde{}8\ Hz})}: Requesting \texttt{-i\ 10}
+  (\texttt{100\ Hz}) from \texttt{macmon\ 0.\allowbreak{}12.\allowbreak{}0} achieved
+  \textbf{\texttt{7.44\ Hz}} (\texttt{75.5} samples in
+  \texttt{10.15\ s}) because each rootless \texttt{IOReport}
+  subscription cycle blocks for \texttt{\textasciitilde{}120\ ms} in
+  macOS user space. Consequently, \texttt{Step\ 2}'s \texttt{10}-period
+  \texttt{below\_\allowbreak{}resolution} floor corresponds physically to
+  \textbf{\texttt{\textasciitilde{}1.2\ s}} on \texttt{macmon}
+  \texttt{L2} windows, whereas sub-second operations must rely on
+  \texttt{0\ Hz} boundary \texttt{L3} \texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj} counters
+  or batched windows.
+\end{enumerate}
+
+\subsection{\texorpdfstring{6.4 Falsifier 3 \& Step 7: \texttt{B}
+temporal boundary vs.~\texttt{C} proportional (\texttt{Kepler})
+attribution}{6.4 Falsifier 3 \& Step 7: B temporal boundary vs.~C proportional (Kepler) attribution}}\label{falsifier-3-step-7-b-temporal-boundary-vs.-c-proportional-kepler-attribution}
+
+Across \texttt{3} replicates on \texttt{Apple\ M5\ Max}, a single
+\texttt{SUT} executed \textbf{Phase 1} (\texttt{2.50\ s} ALU-dense
+\texttt{SHA-256} digest burst: \texttt{29.27\ ms} mean \texttt{CPU}
+time, \texttt{38.63\ mJ} per \texttt{CPU}-ms) followed sequentially by
+\textbf{Phase 2} (\texttt{2.51\ s} \texttt{192\ MiB} \texttt{DRAM}
+cache-miss sweep + synchronous \texttt{fsync} disk flushes and
+\texttt{8\ ms} \texttt{I/O} waits: \texttt{15.94\ ms} mean \texttt{CPU}
+time, \texttt{27.73\ mJ} per \texttt{CPU}-ms) alongside a steady
+duty-cycled background worker:
+
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3394}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1835}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2202}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2569}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Attribution check (\texttt{n\ =\ 3} sequential two-phase +
+co-tenant replicates)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Phase 1 (\texttt{Compute} \texttt{2.50\ s})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Phase 2 (\texttt{DRAM\ +\ fsync\ I/\allowbreak{}O} \texttt{2.51\ s})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Falsifier / Step-7 verdict}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Exact \texttt{B} temporal boundary \texttt{L3} delta
+(\texttt{reported\_\allowbreak{}j})} & \texttt{1.1272\ J} (\texttt{1,\allowbreak{}127,\allowbreak{}172\ µJ}) &
+\texttt{0.4433\ J} (\texttt{443,\allowbreak{}317\ µJ}) & \textbf{\texttt{Step\ 7}
+residual \texttt{\textless{}=\ 1\ µJ} (\texttt{3/3} pass)} \\
+\textbf{\texttt{C} (\texttt{Kepler} \(\Delta\text{CPU}\) share:
+\texttt{64.58\%} vs.~\texttt{35.42\%}) on \texttt{L3}} &
+\texttt{1.0145\ J} (\texttt{-10.00\%}) & \texttt{0.5560\ J}
+(\textbf{\texttt{+25.21\%} mean err}) & \texttt{DRAM}/\allowbreak{}stall energy/ms
+\(\ne\) \texttt{ALU} energy/ms \\
+\textbf{Exact \texttt{B} temporal \texttt{L2} whole-\texttt{SoC} window
+(\texttt{reported\_\allowbreak{}j})} & \texttt{82.246\ J} & \texttt{90.975\ J} &
+\texttt{DRAM}, \texttt{NVMe}, \& host draw persist in \texttt{I/O}
+wait \\
+\textbf{\texttt{C} (\texttt{Kepler} \(\Delta\text{CPU}\) share) applied
+to \texttt{L2} window} & \texttt{111.\allowbreak{}758\ J} (\textbf{\texttt{+35.86\%}
+err}) & \texttt{61.464\ J} (\textbf{\texttt{-32.59\%} err}) &
+\textbf{\texttt{Falsifier\ 3} triggered (\texttt{\textgreater{}\ 20\%}
+error)} \\
+\end{longtable}
+}
+
+While \texttt{Step\ 7}'s sum check held to \texttt{0–1\ µJ}
+(\texttt{100.0\%} of trials) under boundary counter differences
+(\texttt{B}), \texttt{CPU}-time proportional attribution (\texttt{C})
+over-credited the compute burst by \textbf{\texttt{+35.86\%}} and
+under-credited the memory-and-\texttt{fsync} phase by
+\textbf{\texttt{-32.59\%}} on shared \texttt{L2} (and erred by
+\textbf{\texttt{25.21\%}} even on per-process \texttt{L3}), empirically
+confirming why \texttt{SATB} restricts \texttt{C} to overlapping
+parallel harnesses (\texttt{Shape\ H}) and flags
+\texttt{\textgreater{}\ 20\%} sequential divergence via
+\texttt{Falsifier\ 3}.
+
+\subsection{\texorpdfstring{6.5 Multi-session \texttt{Falsifier\ 6}
+audit (\texttt{188} windows) and \texttt{Falsifier\ 8} harness-floor
+check}{6.5 Multi-session Falsifier 6 audit (188 windows) and Falsifier 8 harness-floor check}}\label{multi-session-falsifier-6-audit-188-windows-and-falsifier-8-harness-floor-check}
+
+Auditing \textbf{\texttt{188} real \texttt{L2} \texttt{IOReport}
+windows} collected across three experimental campaigns on the shared
+\texttt{Apple\ M5\ Max} host plus two paired \texttt{Lane\ B}
+vs.~\texttt{Shape\ H} (\texttt{Claude\ Code\ 2.\allowbreak{}1.\allowbreak{}330}) evaluations
+confirms both session-level safeguards:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{\texttt{Falsifier\ 6} baseline-drift audit (\texttt{188}
+  windows)}: Across \texttt{exp-001} (\texttt{11} windows: \texttt{1}
+  within \texttt{5.0\%}, \texttt{10} drifted up to \texttt{44.5\%}),
+  \texttt{exp-002} + multi-turn (\texttt{7} windows: \texttt{2} within
+  \texttt{5.0\%} --- \texttt{dnull} \texttt{1,190}-instance batch at
+  \texttt{3.09\%} drift and \texttt{BigCodeBench} \texttt{Qwen\ 3.6} at
+  \texttt{1.02\%} drift --- and \texttt{5} drifted
+  \texttt{12.\allowbreak{}16\%–65.\allowbreak{}11\%} under concurrent \texttt{yosys-abc}
+  synthesis), and \texttt{ai-\allowbreak{}reads-\allowbreak{}human} (\texttt{170} windows at
+  \texttt{loadavg\_\allowbreak{}1m\ =\ 12.\allowbreak{}92}: \texttt{61} within \texttt{5.0\%},
+  \texttt{109} drifted), \textbf{\texttt{64\ /\allowbreak{}\ 188} windows
+  (\texttt{34.04\%})} retained valid \texttt{derived\_\allowbreak{}marginal\_\allowbreak{}j} while
+  \textbf{\texttt{124\ /\allowbreak{}\ 188} (\texttt{65.96\%})} automatically
+  invalidated net-above-idle subtraction without losing a single raw
+  \texttt{L2} or per-\texttt{PID} \texttt{L3} \texttt{reported\_\allowbreak{}j}
+  reading (\texttt{188\ /\allowbreak{}\ 188\ =\ 100.\allowbreak{}0\%} raw survival).
+\item
+  \textbf{\texttt{Falsifier\ 8} (\texttt{Lane\ B} vs.~\texttt{Shape\ H}
+  \texttt{Claude\ Code\ 2.\allowbreak{}1.\allowbreak{}330})}: Across \texttt{24} paired
+  \texttt{/work} formal and \texttt{SQLite} policy bundles,
+  \texttt{Lane\ B} achieved \textbf{\texttt{24\ /\ 24}
+  (\texttt{100.0\%})} on both \texttt{Claude\ Opus\ 5.\allowbreak{}5} (\texttt{44}
+  model calls, \texttt{63,568} prompt+cache tokens,
+  \texttt{\textbackslash{}\$0.5477}) and \texttt{Claude\ Sonnet\ 5.\allowbreak{}5}
+  (\texttt{43} calls, \texttt{60,284} tokens,
+  \texttt{\textbackslash{}\$0.3413}), matching \texttt{Shape\ H}
+  (\texttt{Claude\ Code\ 2.\allowbreak{}1.\allowbreak{}330}: \textbf{\texttt{24\ /\ 24}},
+  \texttt{89} calls / \texttt{218,449} tokens on \texttt{Opus\ 5.5};
+  \texttt{83} calls / \texttt{196,128} tokens on \texttt{Sonnet\ 5.\allowbreak{}5})
+  while reducing prompt+cache token traffic by \textbf{\texttt{3.44×}
+  and \texttt{3.25×}}. On \texttt{6} unseen multi-file Python bug-repair
+  repositories (\texttt{config-\allowbreak{}defaults}, \texttt{interval-\allowbreak{}merge},
+  \texttt{pagination}, \texttt{precedence}, \texttt{rate-\allowbreak{}window},
+  \texttt{retry-\allowbreak{}backoff}), \texttt{Lane\ B} (\texttt{Opus\ 5.5}
+  \texttt{28} calls / \texttt{52,045} tokens; \texttt{Sonnet\ 5.\allowbreak{}5}
+  \texttt{31} calls; local \texttt{Qwen\ 3.\allowbreak{}6\ 35B-\allowbreak{}A3B} \texttt{42} calls
+  / \texttt{2,\allowbreak{}342.\allowbreak{}05\ J} \texttt{L2}) again matched \texttt{Shape\ H}
+  (\texttt{Claude\ Code\ 2.\allowbreak{}1.\allowbreak{}330} + \texttt{Opus\ 5.5}:
+  \textbf{\texttt{6\ /\ 6}}, \texttt{30} calls / \texttt{86,744} tokens,
+  \texttt{1.67×} more tokens), confirming that \texttt{Lane\ B} is
+  \textbf{not} a crippled harness floor.
+\end{enumerate}
+
+\subsection{6.6 Multi-platform hardware attribution across five silicon
+and OS
+archetypes}\label{multi-platform-hardware-attribution-across-five-silicon-and-os-archetypes}
+
+To verify that \texttt{SATB} conformance, \texttt{Shape\ D} fixed-point
+determinism, rootless \texttt{PLATYPUS} / \texttt{HVCI} permission
+boundaries, and physical shunt or cumulative \texttt{NVML} attribution
+hold across \texttt{macOS}, \texttt{Linux}, and \texttt{Windows\ 11}, we
+executed \texttt{run\_\allowbreak{}multi\_\allowbreak{}host\_\allowbreak{}satb.\allowbreak{}py}
+(\texttt{multi\_\allowbreak{}host\_\allowbreak{}satb\_\allowbreak{}receipts.\allowbreak{}json}) and
+\texttt{run\_\allowbreak{}windows\_\allowbreak{}suite.\allowbreak{}py} (\texttt{windows\_\allowbreak{}satb\_\allowbreak{}receipts.\allowbreak{}json})
+across four additional \texttt{Linux} and \texttt{Windows\ 11} hardware
+archetypes alongside \texttt{Apple\ M5\ Max}:
+
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1958}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2275}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1534}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1376}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Hardware archetype \& \texttt{OS} kernel}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Rootless sensor boundary \& evidence class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\texttt{Shape\ D} \texttt{1M} \texttt{DNULLMM1} (\texttt{10k}
+probes)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\texttt{C9} replay \& \texttt{C10} tree-kill mean}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Single-read latency \& \texttt{100\ Hz} achieved}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\texttt{Step\ 7} residual \& \texttt{Falsifier\ 3} (\texttt{C}
+vs.~\texttt{B})}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{Apple\ M5\ Max}} (\texttt{arm64}, \texttt{128\ GB},
+\texttt{macOS\ 27.\allowbreak{}2.\allowbreak{}1}) & \texttt{IOReport} \texttt{L1}/\allowbreak{}\texttt{L2} +
+\texttt{rusage} \texttt{L3} (\texttt{reported\_\allowbreak{}j};
+\texttt{measured\_\allowbreak{}j\ =\ None}) & \texttt{15027705736}
+(\texttt{388.\allowbreak{}43\ ns} \texttt{C++}, \texttt{582.\allowbreak{}57\ ns} Rust) &
+\texttt{149,\allowbreak{}747\ B} (\texttt{0} diffs) · \texttt{2.073\ ms} (\texttt{0}
+\texttt{PID}s) & \texttt{\textasciitilde{}120\ ms} \texttt{IOReport} ·
+\textbf{\texttt{7.44\ Hz}} & \texttt{\textless{}=\ 1\ µJ} ·
+\textbf{\texttt{-32.59\%}} Phase 2 (\texttt{+35.86\%} Ph. 1) \\
+\textbf{\texttt{NVIDIA\ Jetson\ AGX\ Thor}} (\texttt{aarch64},
+\texttt{122.\allowbreak{}9\ GiB}, \texttt{Linux\ 6.\allowbreak{}8.\allowbreak{}12-\allowbreak{}1021-\allowbreak{}tegra}) &
+\texttt{TI\ INA238} (\texttt{hwmon6} \texttt{VIN} \texttt{L1}) +
+\texttt{INA3221} (\texttt{hwmon5} \texttt{ch1–ch3}
+\texttt{L2}/\allowbreak{}\texttt{L1}, \texttt{0444} \textbf{\texttt{measured\_\allowbreak{}j}}) &
+\texttt{15027705736} (\texttt{984.\allowbreak{}86\ ns} \texttt{C\ -O3},
+\texttt{2,\allowbreak{}489.\allowbreak{}4\ ns} Py) & \texttt{149,\allowbreak{}747\ B} (\texttt{0} diffs) ·
+\texttt{9.544\ ms} (\texttt{0} \texttt{PID}s) & \texttt{2,\allowbreak{}948.\allowbreak{}8\ µs}
+\texttt{I2C} · \textbf{\texttt{66.55\ Hz}} & \texttt{0.0\ µJ} ·
+\textbf{\texttt{-70.01\%}} \texttt{ch2} (\texttt{-67.02\%}
+\texttt{VIN}) \\
+\textbf{\texttt{Framework\ AMD\ Ryzen\ AI\ Max+\ 395}} (\texttt{x86-64},
+\texttt{122.\allowbreak{}8\ GiB}, \texttt{Linux\ 7.\allowbreak{}0.\allowbreak{}0-\allowbreak{}43}) &
+\texttt{RAPL\ package-\allowbreak{}0} \& \texttt{core} (\texttt{0440\ root:energy}
+\textbf{\texttt{reported\_\allowbreak{}j}}) + \texttt{amdgpu\ PPT} (\texttt{0444};
+\texttt{measured\_\allowbreak{}j\ =\ None}) & \texttt{15027705736}
+(\texttt{376.\allowbreak{}61\ ns} \texttt{C\ -O3}, \texttt{1,\allowbreak{}341.\allowbreak{}7\ ns} Py) &
+\texttt{149,\allowbreak{}747\ B} (\texttt{0} diffs) · \texttt{0.868\ ms} (\texttt{0}
+\texttt{PID}s) & \texttt{24.34\ µs} \texttt{sysfs} ·
+\textbf{\texttt{94.28\ Hz}} & \texttt{0\ µJ} ·
+\textbf{\texttt{-71.61\%}} \texttt{pkg-0} (\texttt{-63.34\%}
+\texttt{core}) \\
+\textbf{\texttt{Intel\ Core\ i9-\allowbreak{}13900H}} (\texttt{x86-64},
+\texttt{14.7\ GiB}, \texttt{Linux\ 7.\allowbreak{}0.\allowbreak{}0-\allowbreak{}43}) & \texttt{RAPL\ psys}
+(\texttt{L1}) + \texttt{package-0}, \texttt{core}, \texttt{uncore}
+(\texttt{L2}, \texttt{0444} \textbf{\texttt{reported\_\allowbreak{}j}};
+\texttt{measured\_\allowbreak{}j\ =\ None}) & \texttt{15027705736}
+(\texttt{420.\allowbreak{}93\ ns} \texttt{C\ -O3}, \texttt{863.6\ ns} Py) &
+\texttt{149,\allowbreak{}747\ B} (\texttt{0} diffs) · \texttt{1.120\ ms} (\texttt{0}
+\texttt{PID}s) & \texttt{45.37\ µs} \texttt{sysfs} ·
+\textbf{\texttt{97.12\ Hz}} & \texttt{0\ µJ} ·
+\textbf{\texttt{-72.89\%}} \texttt{pkg-0} (\texttt{-73.62\%}
+\texttt{psys}) \\
+\textbf{\texttt{Intel\ Core\ i7-\allowbreak{}1165G7\ +\ RTX\ 2060}} (\texttt{x86-64},
+\texttt{63.7\ GiB}, \texttt{Windows\ 11\ 26300}) & \texttt{nvml.dll}
+\texttt{RTX\ 2060} cumulative \texttt{mJ} (\texttt{L2}
+\textbf{\texttt{reported\_\allowbreak{}j}}) + Win32 \texttt{L3}; \texttt{CPU\ RAPL} =
+\texttt{N} (\texttt{measured\_\allowbreak{}j\ =\ None}) & \texttt{15027705736}
+(\texttt{1,\allowbreak{}474.\allowbreak{}22\ ns} \texttt{MSVC\ /O2}, \texttt{2,\allowbreak{}885.\allowbreak{}6\ ns} Py) &
+\texttt{149,\allowbreak{}747\ B} (\texttt{0} \texttt{CRLF}) · \texttt{2.458\ ms}
+JobObj (\texttt{0} \texttt{PID}s) & \texttt{1,\allowbreak{}174.\allowbreak{}2\ µs} \texttt{NVML} ·
+\textbf{\texttt{64.64\ Hz}} (\texttt{NT} tick) & \texttt{0\ mJ} ·
+\textbf{\texttt{-89.88\%}} time (\texttt{-77.05\%} \texttt{RDTSC}) \\
+\end{longtable}
+}
+
+Five cross-platform hardware and operating-system findings emerge from
+these live receipts:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Bit-exact \texttt{Shape\ D} and \texttt{Lane\ B} replay
+  invariance across \texttt{macOS}, \texttt{Linux}, and
+  \texttt{Windows\ 11} (\texttt{arm64}/\allowbreak{}\texttt{aarch64} and
+  \texttt{x86-64})}: All five hosts --- including Win32
+  \texttt{CreateFileMappingA} + \texttt{MapViewOfFile} compiled under
+  \texttt{MSVC\ 19.\allowbreak{}44\ /\allowbreak{}O2} and \texttt{NTFS} file I/O on
+  \texttt{Windows\ 11} (\texttt{NT\ 10.\allowbreak{}0.\allowbreak{}26300}) --- produced the exact
+  \texttt{10,000}-probe \texttt{DNULLMM1} checksum
+  \textbf{\texttt{15027705736}}, the exact \texttt{test.\allowbreak{}setpoint} frozen
+  digest \texttt{0da4df8d\allowbreak{}9ccbce1e.\allowbreak{}.\allowbreak{}.\allowbreak{}4485781}, and the exact
+  \texttt{149,747}-byte \texttt{C9} transcript (\texttt{SHA-256}
+  \texttt{d697ed14\allowbreak{}76129939.\allowbreak{}.\allowbreak{}.\allowbreak{}} with \textbf{\texttt{0} \texttt{NTFS}
+  \texttt{CRLF} byte drift}), while reaping \texttt{4}-\texttt{PID}
+  runaway process trees in \texttt{0.868\ ms} to \texttt{9.544\ ms} via
+  kernel primitives (\texttt{SIGKILL} on \texttt{macOS}/\allowbreak{}\texttt{Linux}
+  and Win32 \texttt{TerminateJobObject} at \textbf{\texttt{2.458\ ms}
+  mean} on \texttt{Windows\ 11}, \textbf{\texttt{50.0×} faster} than
+  spawning \texttt{taskkill.\allowbreak{}exe\ /\allowbreak{}F\ /\allowbreak{}T\ /\allowbreak{}PID} at \texttt{122.\allowbreak{}817\ ms}
+  mean, and \texttt{\textgreater{}\ 200×} under the \texttt{2,000\ ms}
+  specification ceiling).
+\item
+  \textbf{Physical \texttt{INA238} / \texttt{INA3221} shunt separation
+  and \texttt{Falsifier\ 6} under live \texttt{GPU} co-tenancy on
+  \texttt{NVIDIA\ Jetson\ AGX\ Thor}}: On
+  \texttt{Linux\ 6.\allowbreak{}8.\allowbreak{}12-\allowbreak{}1021-\allowbreak{}tegra}, both \texttt{hwmon6}
+  (\texttt{ti,ina238} at \texttt{i2c@c600000/\allowbreak{}ina238@44}, \texttt{VIN}
+  whole-board \texttt{DC} input at \texttt{\textasciitilde{}27.97\ V})
+  and all three channels of \texttt{hwmon5} (\texttt{ina3221@40}:
+  \texttt{ch1\ VDD\_\allowbreak{}GPU}, \texttt{ch2\ VDD\_\allowbreak{}CPU\_\allowbreak{}SOC\_\allowbreak{}MSS}, and
+  \texttt{ch3\ VIN\_\allowbreak{}SYS\_\allowbreak{}5V0}) are world-readable (\texttt{0444})
+  without \texttt{sudo}. During our strictly \texttt{CPU}-only probe
+  (\texttt{dedicated\_\allowbreak{}host\ =\ false}), an independent co-tenant
+  \texttt{llama-\allowbreak{}server} held the host \texttt{GPU} lock:
+\end{enumerate}
+
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2208}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1039}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1494}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1623}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1104}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1818}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\texttt{Jetson\ AGX\ Thor} physical shunt channel (\texttt{0444}
+rootless \texttt{sysfs})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Boundary}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Pre-baseline (\texttt{W})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Phase 1 Compute (\texttt{measured\_\allowbreak{}j} / \texttt{W})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Phase 2 \texttt{DRAM+fsync} (\texttt{measured\_\allowbreak{}j} / \texttt{W})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Post-baseline (\texttt{W})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Drift (\texttt{F6}) \& \texttt{Kepler} \texttt{C} Phase-2 err}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{hwmon6} \texttt{INA238} \texttt{VIN}} (module + carrier
+input) & \textbf{\texttt{L1}} & \texttt{100.70\ W} & \texttt{122.12\ J}
+(\texttt{101.66\ W}) & \texttt{99.02\ J} (\texttt{81.94\ W}) &
+\texttt{97.21\ W} & \texttt{3.47\%} (\texttt{A2} withheld: co-tenant) ·
+\textbf{\texttt{-67.02\%}} \\
+\textbf{\texttt{hwmon5} \texttt{INA3221\ ch1} \texttt{VDD\_GPU}}
+(co-tenant \texttt{LLM}) & \textbf{\texttt{L2}} & \texttt{29.26\ W} &
+\texttt{40.29\ J} (\texttt{33.54\ W}) & \texttt{26.00\ J}
+(\texttt{21.52\ W}) & \texttt{28.13\ W} & External \texttt{GPU}
+co-tenant (\texttt{-36.1\%} swing in \texttt{F5}) \\
+\textbf{\texttt{hwmon5} \texttt{INA3221\ ch2}
+\texttt{VDD\_\allowbreak{}CPU\_\allowbreak{}SOC\_\allowbreak{}MSS}} & \textbf{\texttt{L2}} & \texttt{36.68\ W}
+& \texttt{45.73\ J} (\texttt{38.07\ W}) & \texttt{44.37\ J}
+(\texttt{36.71\ W}) & \texttt{36.08\ W} & \texttt{1.64\%}
+(\texttt{CPU}/\allowbreak{}\texttt{SoC}/\allowbreak{}\texttt{MSS} domain) ·
+\textbf{\texttt{-70.01\%}} \\
+\textbf{\texttt{hwmon5} \texttt{INA3221\ ch3} \texttt{VIN\_\allowbreak{}SYS\_\allowbreak{}5V0}}
+(\texttt{5.08\ V} rail) & \textbf{\texttt{L1}} & \texttt{14.89\ W} &
+\texttt{18.66\ J} (\texttt{15.53\ W}) & \texttt{16.82\ J}
+(\texttt{13.92\ W}) & \texttt{13.98\ W} &
+\textbf{\texttt{6.13\%\ \textgreater{}\ 5.0\%} (\texttt{F6} triggered)}
+· \textbf{\texttt{-68.85\%}} \\
+\end{longtable}
+}
+
+Across the four \texttt{Falsifier\ 5} cadence windows, fluctuating
+co-tenant \texttt{LLM} requests shifted \texttt{ch1\ VDD\_\allowbreak{}GPU} from
+\texttt{35.36\ J} down to \texttt{22.60\ J} (\texttt{-36.1\%}), pulling
+whole-board \texttt{INA238\ VIN} (\texttt{L1}) from \texttt{107.48\ J}
+down to \texttt{81.73\ J} (\texttt{-24.0\%}) even while
+\texttt{ch2\ VDD\_\allowbreak{}CPU\_\allowbreak{}SOC\_\allowbreak{}MSS} remained within
+\texttt{35.\allowbreak{}76–39.\allowbreak{}31\ J}. Because \texttt{dedicated\_\allowbreak{}host\ =\ false} (and
+\texttt{ch3\ VIN\_\allowbreak{}SYS\_\allowbreak{}5V0} exceeded \texttt{5.0\%} drift at
+\texttt{6.13\%}), \texttt{SATB} withholds \texttt{A2} whole-\texttt{SUT}
+net placement claims while preserving exact rail-separated
+\texttt{measured\_\allowbreak{}j} (\texttt{L1} and \texttt{L2} channels never
+summed).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{\texttt{PLATYPUS} \texttt{0440\ root:energy} isolation and
+  \texttt{Strix\ Halo} \texttt{APU} domain verification on
+  \texttt{Framework} \texttt{AMD}}: On \texttt{Framework} Desktop
+  (\texttt{AMD\ Ryzen\ AI\ Max+\ 395\ w/\allowbreak{}\ Radeon\ 8060S},
+  \texttt{Linux\ 7.\allowbreak{}0.\allowbreak{}0-\allowbreak{}43-\allowbreak{}generic}), \texttt{udev} rule
+  \texttt{90-\allowbreak{}energy-\allowbreak{}read.\allowbreak{}rules} sets
+  \texttt{/\allowbreak{}sys/\allowbreak{}class/\allowbreak{}powercap/\allowbreak{}intel-\allowbreak{}rapl:0/\allowbreak{}energy\_\allowbreak{}uj}
+  (\texttt{package-0}) and \texttt{intel-\allowbreak{}rapl:0:0/\allowbreak{}energy\_\allowbreak{}uj}
+  (\texttt{core}) to mode \textbf{\texttt{0440} (\texttt{root:energy},
+  \texttt{world\_\allowbreak{}readable\ =\ false})}: ungrouped \texttt{/work} sandbox
+  \texttt{UID}s receive \texttt{EACCES} (blocking \texttt{PLATYPUS}
+  side-channels), while the supervisor \texttt{GID} (\texttt{energy})
+  reads cumulative microjoules rootlessly at \texttt{24.34\ µs} median
+  latency (\texttt{0\ µJ} \texttt{Step\ 7} residual). Inspecting
+  \texttt{hwmon9} (\texttt{amdgpu}) further resolved an open
+  specification detail: \texttt{Strix\ Halo}'s integrated
+  \texttt{Radeon\ 8060S} exposes world-readable (\texttt{0444})
+  \texttt{PPT} power (\texttt{power1\_\allowbreak{}input} / \texttt{power1\_\allowbreak{}average}
+  in \texttt{µW}, \texttt{75.38\ W} Phase 1 / \texttt{69.72\ W} Phase 2)
+  rather than a separate \texttt{energy1\_\allowbreak{}input} counter, whereas
+  \texttt{cros\_ec} (\texttt{hwmon8}) exposes fans and board thermals
+  only.
+\item
+  \textbf{Bare-metal \texttt{Windows\ 11} rootless boundary
+  (\texttt{0x20000} Basic User \texttt{NVML} vs.~ring-0 \texttt{RAPL}
+  block) and \texttt{15.\allowbreak{}625\ ms} \texttt{NT} clock-tick aliasing}: Under
+  an explicitly de-elevated Basic User token
+  (\texttt{runas.\allowbreak{}exe\ /\allowbreak{}trustlevel:0x20000},
+  \texttt{IsUserAnAdmin(\allowbreak{})\ ==\ false}) on \texttt{Windows\ 11\ Pro}
+  (\texttt{NT\ 10.\allowbreak{}0.\allowbreak{}26300}, \texttt{Intel\ Core\ i7-\allowbreak{}1165G7} +
+  \texttt{NVIDIA\ GeForce\ RTX\ 2060}), in-process \texttt{FFI} calls to
+  \texttt{nvml.dll} \texttt{nvmlDeviceGetTotalEnergyConsumption}
+  (\texttt{mJ}) and \texttt{nvmlDeviceGetPowerUsage} (\texttt{mW})
+  succeed rootlessly in \textbf{\texttt{1,\allowbreak{}174.\allowbreak{}15\ µs} median}
+  (\textbf{\texttt{37.4×} faster} than spawning \texttt{nvidia-\allowbreak{}smi.\allowbreak{}exe}
+  at \texttt{43.88\ ms} per call), clearing \texttt{Step\ 7} with
+  \textbf{\texttt{0\ mJ} residual}
+  (\texttt{8.\allowbreak{}769\ J\ +\ 8.\allowbreak{}816\ J\ =\ 17.\allowbreak{}585\ J}, \texttt{3.0\%} pre/post
+  drift). By contrast, unprivileged user-mode reads of Intel
+  \texttt{RAPL} \texttt{MSR\ 0x611} are blocked by the
+  \texttt{Windows\ NT} kernel without a signed ring-0 driver (barred by
+  \texttt{OQ-5} and \texttt{HVCI}), and \texttt{WMI} \texttt{EMI}
+  (\texttt{\textbackslash{}\textbackslash{}.\textbackslash{}EnergyMeter}
+  / \texttt{Win32\_\allowbreak{}PerfRawData\_\allowbreak{}Counters\_\allowbreak{}PowerMeter}) exposes
+  \texttt{0} instances, placing Windows \texttt{CPU} package \texttt{L2}
+  strictly in \texttt{Label\ N} (\texttt{"not\_\allowbreak{}available"}).
+  Furthermore, because unadjusted \texttt{Windows\ NT} updates
+  \texttt{GetProcessTimes} on \texttt{\textasciitilde{}15.625\ ms} clock
+  interrupts, \texttt{8\ ms} sleep-plus-\texttt{FlushFileBuffers} bursts
+  in Phase 2 were aliased down to \texttt{62.5\ ms} (\texttt{5.06\%}
+  \texttt{CPU} share vs.~\texttt{1,\allowbreak{}171.\allowbreak{}9\ ms} in Phase 1), causing
+  \texttt{Kepler} \texttt{C} attribution to err by
+  \textbf{\texttt{-89.88\%}} (\texttt{-77.05\%} even when using sub-tick
+  \texttt{RDTSC} \texttt{QueryProcessCycleTime} cycles at
+  \texttt{11.48\%} share).
+\item
+  \textbf{Sensor bus and \texttt{OS} timer cadence physics across all
+  five platforms}: Whereas Linux \texttt{x86-64} \texttt{powercap}
+  \texttt{sysfs} reads complete in \texttt{24.\allowbreak{}34–45.\allowbreak{}37\ µs}
+  (\texttt{94.\allowbreak{}28–97.\allowbreak{}12\ Hz} achieved at \texttt{100\ Hz}),
+  \texttt{Windows\ NT}'s default \texttt{15.\allowbreak{}625\ ms} sleep quantum caps
+  unadjusted \texttt{10\ ms} \texttt{NVML} loops at
+  \textbf{\texttt{64.64\ Hz}} while delivering
+  \textbf{\texttt{9.45\ Hz}} cleanly at \texttt{SATB}'s \texttt{100\ ms}
+  (\texttt{10\ Hz}) reference tick, matching
+  \texttt{Jetson\ AGX\ Thor}'s \texttt{66.55\ Hz} \texttt{I2C} shunt
+  ceiling (\texttt{9.49\ Hz} at \texttt{100\ ms} ref) and contrasting
+  with \texttt{macmon}'s \texttt{7.44\ Hz} \texttt{IOReport} ceiling.
+  Across \textbf{\texttt{5\ /\ 5} silicon and \texttt{OS}
+  architectures}, \texttt{CPU}-proportional splitting (\texttt{C})
+  under-credited the \texttt{192\ MiB} \texttt{DRAM} + disk-sync phase
+  by \textbf{\texttt{32.59\%} to \texttt{89.88\%}}, confirming
+  universally why \texttt{SATB} restricts \texttt{C} to overlapping
+  parallel runs.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7. Open Hardware Verification and
+Limitations}\label{open-hardware-verification-and-limitations}
+
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3125}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2812}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4062}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Session falsifier}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Consequence when triggered}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Empirical status in this study}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{F1} Replay mismatch (\texttt{C9})} & Reference harness
+is non-deterministic & \textbf{Cleared on \texttt{5/5} hosts (\texttt{0}
+byte/\texttt{CRLF} diffs across \texttt{149,\allowbreak{}747\ B}, \texttt{14}
+turns)} \\
+\textbf{\texttt{F2} Sum check fails on \texttt{\textgreater{}\ 5\%} of
+attempts} & Attribution split broken on host & \textbf{Cleared on
+\texttt{5/5} hosts (\texttt{0\ µJ} Linux; \texttt{0\ mJ} Win11
+\texttt{NVML}; \texttt{\textless{}=\ 1\ µJ} \texttt{M5\ Max})} \\
+\textbf{\texttt{F3} \texttt{B} and \texttt{C} disagree by
+\texttt{\textgreater{}\ 20\%} sequentially} & \texttt{C}
+(\texttt{Kepler}) marked unreliable on host & \textbf{Triggered on
+\texttt{5/5} hosts (\texttt{32.\allowbreak{}59\%–89.\allowbreak{}88\%} error); \texttt{C}
+restricted} \\
+\textbf{\texttt{F4} Known pulse load outside sensor accuracy} & Sensor
+downgraded for session & \textbf{Open (\texttt{L0} smart-plug sync-pulse
+rig not yet attached)} \\
+\textbf{\texttt{F5} \texttt{10\ ms} vs.~\texttt{1\ s} tick shifts window
+energy} & Telemetry observer effect & \textbf{Cleared (\texttt{0.76\%}
+\texttt{M5\ Max} \texttt{L2} delta; \texttt{9.\allowbreak{}45–10.\allowbreak{}48\ Hz} achieved at
+\texttt{100\ ms} ref)} \\
+\textbf{\texttt{F6} Pre/post resident baselines drift
+\texttt{\textgreater{}\ 5.0\%}} & Derived net channels invalidated &
+\textbf{Active (\texttt{124/188} \texttt{M5\ Max} windows + Linux
+co-tenant drifts cleanly gated)} \\
+\textbf{\texttt{F7} Adapter passes \texttt{C1}--\texttt{C12}, fails
+canary} & Conformance insufficient; session \texttt{void} &
+\textbf{Verified in simulation (\texttt{session\_\allowbreak{}void\ =\ true} on
+swap)} \\
+\textbf{\texttt{F8} \texttt{Lane\ B} places below strong
+\texttt{Lane\ O} harnesses} & \texttt{Lane\ B} reported strictly as a
+floor & \textbf{Cleared (\texttt{24/24} \& \texttt{6/6} parity
+vs.~\texttt{Claude\ Code\ 2.\allowbreak{}1.\allowbreak{}330})} \\
+\end{longtable}
+}
+
+Three concrete hardware and adapter items remain open (\texttt{OQ-5}):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Dedicated quiesced \texttt{A2} sessions and \texttt{L0}
+  \texttt{AC} wall-plug calibration}: Although physical
+  \texttt{TI\ INA238} (\texttt{L1}) and \texttt{INA3221}
+  (\texttt{L2}/\allowbreak{}\texttt{L1}) shunt \texttt{measured\_\allowbreak{}j} rails are now
+  verified live on \texttt{NVIDIA\ Jetson\ AGX\ Thor} alongside rootless
+  \texttt{reported\_\allowbreak{}j} counters on \texttt{Apple\ M5\ Max},
+  \texttt{Framework\ AMD\ Strix\ Halo}, \texttt{Intel\ Raptor\ Lake},
+  and \texttt{Windows\ 11} (\texttt{RTX\ 2060} \texttt{NVML}), all five
+  bench machines ran shared services or co-tenant workloads
+  (\texttt{dedicated\_\allowbreak{}host\ =\ false}), withholding \texttt{A2}
+  whole-\texttt{SUT} placement claims; attaching a sync-pulsed
+  \texttt{L0} \texttt{AC} meter (\texttt{Shelly} / \texttt{Yokogawa}) on
+  a quiesced dedicated host is next.
+\item
+  \textbf{Integrated-\texttt{GPU} \texttt{NVML} counter check on
+  \texttt{Jetson\ AGX\ Thor}}: While discrete-\texttt{GPU}
+  \texttt{nvmlDeviceGetTotalEnergyConsumption} (\texttt{mJ}) is now
+  verified rootlessly via \texttt{nvml.dll} on
+  \texttt{NVIDIA\ GeForce\ RTX\ 2060} (\texttt{Windows\ 11}), probing
+  \texttt{NVML} cumulative energy on \texttt{Jetson\ AGX\ Thor}'s
+  unified Tegra \texttt{GPU} alongside its verified \texttt{0444}
+  \texttt{INA3221\ ch1\ VDD\_\allowbreak{}GPU} shunt awaits an idle window when the
+  shared \texttt{GPU} lock is free.
+\item
+  \textbf{Broader \texttt{Shape\ H} and \texttt{Shape\ I} live roster}:
+  Live external-harness runs in this study exercised \texttt{Shape\ H}
+  on \texttt{Claude\ Code\ 2.\allowbreak{}1.\allowbreak{}330} alongside \texttt{Lane\ B} and
+  \texttt{Shape\ D}; executing live \texttt{C1–C12} certification on
+  \texttt{Codex\ CLI}, \texttt{OpenHands}, \texttt{Terminus-\allowbreak{}2}, and
+  \texttt{Shape\ I} \texttt{Inspect} solvers is next.
+\end{enumerate}
+
+\section{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Anthropic (2026). Claude Code sandboxing and MCP configuration
+  documentation.
+  \url{https://docs.anthropic.com/en/docs/claude-code/security}
+\item
+  ARC Prize Foundation (2026). ARC-AGI-3 interactive benchmarking and
+  adapter harness specification. \url{https://github.com/arcprize/}
+\item
+  Chung, J.-W., Gu, Y., Jang, I., Meng, L., Bansal, N., \& Chowdhury, M.
+  (2024). Zeus / ML.ENERGY: Understanding and optimizing GPU energy
+  consumption of DNN training and inference. \emph{NSDI 2023 /
+  ML.ENERGY}. \url{https://ml.energy/}
+\item
+  Cloud Native Computing Foundation (2025). Kepler (Kubernetes-based
+  Efficient Power Level Exporter): Proportional CPU/GPU power
+  attribution model.
+  \url{https://github.com/sustainable-computing-io/kepler}
+\item
+  gerganov, g., \& contributors (2026). \texttt{llama.cpp} HTTP server
+  and prompt-cache determinism documentation.
+  \url{https://github.com/ggml-org/llama.cpp}
+\item
+  Kwon, W., Li, Z., Zhuang, S., Sheng, Y., Zheng, L., Yu, C. H., et
+  al.~(2023/2026). Efficient memory management for large language model
+  serving with PagedAttention and vLLM batch invariance notes.
+  \emph{SOSP 2023 / vLLM Docs}. \url{https://docs.vllm.ai/}
+\item
+  Lipp, M., Kogler, A., Oswald, D., Schwarz, M., Easdon, C., Canella,
+  C., \& Gruss, D. (2021). PLATYPUS: Software-based power side-channel
+  attacks on x86. \emph{IEEE Symposium on Security and Privacy (SP)},
+  355--371. \url{https://platypusattack.com/}
+\item
+  Luccioni, A. S., Jernite, Y., \& Strubell, E. (2024/2026). Power
+  hungry processing and comparative disclosures of commercial AI energy
+  figures. \emph{FAccT / Hugging Face Blog}.
+  \url{https://huggingface.co/blog}
+\item
+  Model Context Protocol (2025). MCP specification: Tools
+  (\texttt{tools/\allowbreak{}list}, \texttt{tools/\allowbreak{}call}, and
+  \texttt{tools/\allowbreak{}list\_\allowbreak{}changed}).
+  \url{https://modelcontextprotocol.io/specification}
+\item
+  NVIDIA Corporation (2025/2026). Jetson Thor series power management,
+  INA238 carrier, and INA3221 rail monitoring guide.
+  \url{https://docs.nvidia.com/jetson/}
+\item
+  Open Interface Engineering (2026). Metered Commit Gates; Task
+  Satiation vs.~Aggregate Rebound; Deterministic Null {[}same house{]}.
+  \url{https://research.openie.dev/}
+\item
+  OpenAI (2025/2026). Codex CLI Linux Landlock/seccomp and macOS
+  Seatbelt sandboxing architecture.
+  \url{https://github.com/openai/codex}
+\item
+  Rundgren, A., Jordan, B., \& Erdtman, S. (2020). JSON Canonicalization
+  Scheme (JCS). \emph{IETF RFC 8785}.
+  \url{https://www.rfc-editor.org/rfc/rfc8785}
+\item
+  Terminal-Bench Team (2025/2026). Terminal-Bench 2 and Terminus-2
+  (Harbor) terminal agent evaluation benchmark. \emph{arXiv / GitHub}.
+  \url{https://github.com/laude-institute/terminal-bench}
+\item
+  UK AI Safety Institute (2025/2026). Inspect Evals: ReAct solver
+  (\texttt{react()}) and Inspect Agent Bridge documentation.
+  \url{https://inspect.aisi.org.uk/}
+\item
+  vladkens (2025/2026). \texttt{macmon}: Sudoless Apple Silicon power
+  and performance monitoring CLI over \texttt{IOReport}.
+  \url{https://github.com/vladkens/macmon}
+\item
+  Wang, X., Li, B., Song, Y., Xu, F. F., Tang, X., Zhuge, M., et
+  al.~(2025). OpenHands: An open platform for AI software developers as
+  generalist agents. \emph{ICLR 2025}.
+\item
+  Xie, T., Zhang, D., Chen, J., Li, X., Zhao, S., Cao, R., et
+  al.~(2024). OSWorld: Benchmarking multimodal agents for open-ended
+  tasks in real computer environments. \emph{NeurIPS 2024}.
+\item
+  Yang, J., Jimenez, C. E., Wettig, A., Lieret, K., Yao, S., Narasimhan,
+  K., \& Press, O. (2024/2025). SWE-agent: Agent-computer interfaces
+  enable automated software engineering, and \texttt{mini-\allowbreak{}swe-\allowbreak{}agent}
+  reference implementation. \emph{NeurIPS 2024 / GitHub}.
+  \url{https://github.com/SWE-agent/mini-swe-agent}
+\item
+  Yang, Z., Adamek, K., \& Armour, W. (2024). Accurate and convenient
+  energy measurements for GPUs: Detailed study of \texttt{nvidia-\allowbreak{}smi}
+  part-time power sampling. \emph{arXiv:2312.12741}.
+\end{enumerate}
+
 
 \end{document}

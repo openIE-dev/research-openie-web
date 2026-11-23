@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="820" viewBox="0 0 1500 820">
+  <title>Three-Gear Verified Form Cascade and FormEBM-v2 Latent Energy Diagnostics</title>
+  <rect x="1" y="1" width="1498" height="818" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#009E73"/>
+    </marker>
+    <marker id="arr-verm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/>
+    </marker>
+  </defs>
+
+  <!-- Header -->
+  <text x="40" y="50" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="25" font-weight="800" fill="#0f172a">RCE-JEPA Three-Gear Residual Cascade &amp; FormEBM-v2 Contrastive Energy Landscape</text>
+  <text x="40" y="80" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15.5" fill="#475569">Measured at openIE-dev/rce 1762fb4b: 111/151 exact ladder (H14), 40/40 residual closure (H15-Iterative), H5 AUROC 0.8922, and H11 93.0% 5-step monotonicity.</text>
+
+  <!-- LEFT PANEL: 3-GEAR VERIFIED CASCADE -->
+  <rect x="36" y="104" width="784" height="646" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="58" y="136" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">A. THREE-GEAR RESIDUAL CASCADE (ZIPF s = 0.85, M = 200 ARRIVALS: 200/200 ADMITTED)</text>
+
+  <!-- Pre-filter Ladder -->
+  <rect x="58" y="154" width="490" height="72" rx="10" fill="#009E73" fill-opacity="0.10" stroke="#009E73" stroke-width="2"/>
+  <text x="76" y="179" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a">Exact Ladder Rungs a..e (rce repair, H14)</text>
+  <text x="76" y="201" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" fill="#334155">111 / 151 plain closes (73.5%, 0 model calls) · leaves 40 git-history residual tasks</text>
+  <text x="76" y="218" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#007a59">Rung f promotion check: 3 / 119 = 2.5% &gt; 2.0% cap -&gt; stays in observe mode</text>
+
+  <!-- Gear 0 -->
+  <rect x="58" y="256" width="490" height="106" rx="12" fill="#009E73" fill-opacity="0.14" stroke="#009E73" stroke-width="2.2"/>
+  <text x="76" y="283" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a">Gear 0 · Shape D Crystallized Store (DNULLMM1 mmap)</text>
+  <text x="76" y="305" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13.5" fill="#334155">Key: SHA-256(rce fmt nameless || contract_sig) · 7/9 alpha-renames hit (T7)</text>
+  <text x="76" y="326" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13.5" fill="#334155">Warm v2 replay: 40 / 40 (100%) at 0 model calls · 0.325 us · 1.771 uJ reported_j</text>
+  <text x="76" y="347" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#007a59">Zipf(0.85) stream: 163 / 200 hits (81.5%) served with zero neural wake</text>
+
+  <!-- Gear 1 -->
+  <rect x="58" y="394" width="490" height="128" rx="12" fill="#0072B2" fill-opacity="0.12" stroke="#0072B2" stroke-width="2.2" stroke-dasharray="9 5"/>
+  <text x="76" y="421" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a">Gear 1 · Local Latent JEPA + EBM (Untrusted Proposer)</text>
+  <text x="76" y="443" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13.5" fill="#334155">FormJEPA-v1 (8.42M): 177/200 unseen synth · 27/40 H15 (k=16, 474.8 mJ core RAPL)</text>
+  <text x="76" y="464" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13.5" fill="#334155">FormEBM-v2 (5.85M): 47.1 mJ/cand core RAPL · cuts solvable checks 3.58 -&gt; 1.50 (2.39x)</text>
+  <text x="76" y="485" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13.5" fill="#334155">H15 typed k=1 rerank: 25/40 (vs 22/40 v1; OOD multi-line pool AUROC 0.259)</text>
+  <text x="76" y="507" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#005a8d">Zipf(0.85) stream: 25 / 37 Gear-0 misses closed locally ($0.00 API)</text>
+
+  <!-- Gear 2 -->
+  <rect x="58" y="554" width="490" height="132" rx="12" fill="#E69F00" fill-opacity="0.13" stroke="#E69F00" stroke-width="2.2" stroke-dasharray="9 5"/>
+  <text x="76" y="581" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#0f172a">Gear 2 · H15-Iterative Frontier + Stdlib Headers (Untrusted)</text>
+  <text x="76" y="603" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13.5" fill="#334155">Input: broken mutant + public stdlib/lib signatures + rce check feedback (&lt;=5 turns)</text>
+  <text x="76" y="624" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13.5" fill="#334155">Zero access to original: Opus 5.5 40/40 ($1.81) · Sonnet 5.5 40/40 ($1.11) · Grok 39/40</text>
+  <text x="76" y="645" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13.5" fill="#334155">Closes all 6 prior single-shot misses (hpke, mls, pq, pqxdh, float_vectors, washer)</text>
+  <text x="76" y="668" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#9a6700">Zipf(0.85) stream: only 12 episodes (14 API turns, $0.98) -&gt; 16.67x fewer wakes</text>
+
+  <!-- Gate Column on Right of Panel A -->
+  <rect x="592" y="256" width="208" height="430" rx="14" fill="#009E73" fill-opacity="0.14" stroke="#009E73" stroke-width="2.5"/>
+  <text x="696" y="292" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="800" fill="#0f172a" text-anchor="middle">DETERMINISTIC</text>
+  <text x="696" y="314" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="800" fill="#0f172a" text-anchor="middle">COMMIT GATE</text>
+  <text x="696" y="346" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">1. rce check exit = 0</text>
+  <text x="696" y="368" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">(49.04 mJ M5 Max L3)</text>
+  <text x="696" y="398" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">2. W-MUT-1 non-vacuous</text>
+  <text x="696" y="420" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">mutation gate</text>
+  <text x="696" y="450" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">3. no_spec_deletion</text>
+  <text x="696" y="472" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">(examples + decls)</text>
+  <text x="696" y="502" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">4. Post-hoc audit:</text>
+  <text x="696" y="524" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" fill="#334155" text-anchor="middle">rce hash / rce equiv</text>
+  <text x="696" y="546" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#007a59" text-anchor="middle">0 contradictions (40/40)</text>
+  <line x1="614" y1="572" x2="778" y2="572" stroke="#009E73" stroke-width="1.5"/>
+  <text x="696" y="598" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#007a59" text-anchor="middle">Admit -&gt; Crystallize</text>
+  <text x="696" y="620" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#334155" text-anchor="middle">into Gear 0 DNULLMM1</text>
+  <text x="696" y="652" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#D55E00" text-anchor="middle">Refuse -&gt; Rule Diag</text>
+
+  <!-- Cascade Arrows -->
+  <line x1="303" y1="226" x2="303" y2="252" stroke="#334155" stroke-width="2.2" marker-end="url(#arr)"/>
+  <text x="313" y="244" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#475569">40 open residual</text>
+  <line x1="303" y1="362" x2="303" y2="390" stroke="#334155" stroke-width="2.2" marker-end="url(#arr)"/>
+  <text x="313" y="381" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#475569">miss</text>
+  <line x1="303" y1="522" x2="303" y2="550" stroke="#334155" stroke-width="2.2" marker-end="url(#arr)"/>
+  <text x="313" y="541" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#475569">unsolved (12)</text>
+
+  <line x1="548" y1="309" x2="588" y2="309" stroke="#009E73" stroke-width="2.2" marker-end="url(#arr-green)"/>
+  <line x1="548" y1="455" x2="588" y2="455" stroke="#334155" stroke-width="2.2" marker-end="url(#arr)"/>
+  <line x1="548" y1="610" x2="588" y2="610" stroke="#334155" stroke-width="2.2" marker-end="url(#arr)"/>
+
+  <!-- Feedback & Crystallization Arcs -->
+  <path d="M 696 686 C 696 734, 410 734, 360 690" fill="none" stroke="#D55E00" stroke-width="2.2" stroke-dasharray="6 5" marker-end="url(#arr-verm)"/>
+  <text x="545" y="726" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#D55E00" text-anchor="middle">requires change diagnostic (bounded &lt;=5 turns)</text>
+  <path d="M 696 256 C 696 234, 575 234, 550 272" fill="none" stroke="#009E73" stroke-width="2.2" marker-end="url(#arr-green)"/>
+  <text x="635" y="232" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#007a59" text-anchor="middle">crystallize (40/40)</text>
+
+  <!-- RIGHT TOP PANEL: H5 ROC CURVE -->
+  <rect x="844" y="104" width="620" height="312" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="866" y="134" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">B. H5 UNSEEN TEST ROC CURVE (N = 200 BEAMS, 3,064 CANDIDATES)</text>
+
+  <!-- Plot box: x=920..1240 (w=320), y=154..364 (h=210) -->
+  <rect x="920" y="154" width="320" height="210" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- Grid lines -->
+  <line x1="920" y1="206.5" x2="1240" y2="206.5" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="920" y1="259" x2="1240" y2="259" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="920" y1="311.5" x2="1240" y2="311.5" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="1000" y1="154" x2="1000" y2="364" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="1080" y1="154" x2="1080" y2="364" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="1160" y1="154" x2="1160" y2="364" stroke="#e2e8f0" stroke-width="1"/>
+  <!-- Chance diagonal -->
+  <line x1="920" y1="364" x2="1240" y2="154" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <!-- Siamese L2 ROC (AUROC = 0.7208) -->
+  <polyline fill="none" stroke="#E69F00" stroke-width="2.4" stroke-dasharray="6 4"
+    points="920,364 944.2,339.5 957.5,318.5 985.6,276.5 1011.6,236.8 1039.8,205.3 1067.6,187.8 1094.5,168.0 1137.6,164.5 1240,154"/>
+  <!-- FormEBM-v2 Exact Measured ROC (AUROC = 0.8922) -->
+  <polyline fill="none" stroke="#0072B2" stroke-width="3.2"
+    points="920,364 940.2,267.2 952.3,219.3 964.6,200.7 979.7,186.7 995.5,179.7 1010.0,170.3 1023.3,161.0 1037.3,158.7 1051.1,156.3 1094.3,154.0 1240,154"/>
+
+  <!-- Axis ticks -->
+  <text x="912" y="159" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="end">1.0</text>
+  <text x="912" y="263" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="end">0.5</text>
+  <text x="912" y="367" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="end">0.0</text>
+  <text x="920" y="381" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">0.0</text>
+  <text x="1080" y="381" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">0.5</text>
+  <text x="1240" y="381" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">1.0</text>
+  <text x="1080" y="401" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">False Positive Rate (Invalid Ranked Valid)</text>
+  <text x="875" y="259" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#334155" text-anchor="middle" transform="rotate(-90 875 259)">True Positive Rate</text>
+
+  <!-- ROC Legend & Callouts -->
+  <line x1="1256" y1="176" x2="1282" y2="176" stroke="#0072B2" stroke-width="3.2"/>
+  <text x="1288" y="180" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="800" fill="#0f172a">FormEBM-v2</text>
+  <text x="1288" y="198" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0072B2">AUROC = 0.8922 (&gt;=0.85)</text>
+  <line x1="1256" y1="224" x2="1282" y2="224" stroke="#E69F00" stroke-width="2.4" stroke-dasharray="6 4"/>
+  <text x="1288" y="228" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a">Siamese L2</text>
+  <text x="1288" y="246" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" fill="#475569">AUROC = 0.7208</text>
+  <text x="1256" y="276" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" fill="#475569">FormJEPA-v1 L2: 0.6180</text>
+  <rect x="1256" y="294" width="192" height="70" rx="8" fill="#009E73" fill-opacity="0.10" stroke="#009E73" stroke-width="1.4"/>
+  <text x="1266" y="314" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0f172a">k=1 Top-1 (0 beam checks):</text>
+  <text x="1266" y="333" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" fill="#007a59" font-weight="700">84.1% solvable (137/163)</text>
+  <text x="1266" y="351" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">68.5% all 200 (vs 22.5% raw)</text>
+
+  <!-- RIGHT BOTTOM PANEL: H11 5-STEP EDIT ENERGY LANDSCAPE -->
+  <rect x="844" y="438" width="620" height="312" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="866" y="468" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">C. H11 5-STEP EDIT-DISTANCE ENERGY (N = 100 UNSEEN CHAINS)</text>
+
+  <!-- Plot box: x=920..1240 (w=320, step=64px for d=0..5), y=488..698 (h=210, E=0..22 -> 9.545 px/unit) -->
+  <rect x="920" y="488" width="320" height="210" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="920" y1="554.8" x2="1240" y2="554.8" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="920" y1="602.5" x2="1240" y2="602.5" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="920" y1="650.3" x2="1240" y2="650.3" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- FormEBM-v2 IQR shaded band (p25..p75: [0,2.72], [1.83,2.72], [4.21,5.75], [6.57,9.08], [10.45,14.26], [13.25,20.71]) -->
+  <polygon fill="#0072B2" fill-opacity="0.16"
+    points="920,698 984,672.0 1048,643.1 1112,611.3 1176,561.9 1240,500.3 1240,571.5 1176,598.3 1112,635.3 1048,657.8 984,680.5 920,698"/>
+
+  <!-- Wave 3 FormJEPA-v1 L2 reference ([0.00, 0.99, 2.26, 3.27, 3.89, 3.72], rollover at d=5!) -->
+  <polyline fill="none" stroke="#D55E00" stroke-width="2.4" stroke-dasharray="6 4"
+    points="920,698 984,688.5 1048,676.4 1112,666.8 1176,660.9 1240,662.5"/>
+
+  <!-- FormEBM-v2 Mean Energy ([0.0007, 2.358, 5.159, 7.990, 12.214, 17.255]) -->
+  <polyline fill="none" stroke="#0072B2" stroke-width="3.2"
+    points="920,698 984,675.5 1048,648.8 1112,621.7 1176,581.4 1240,533.3"/>
+  <circle cx="920" cy="698" r="4.5" fill="#0072B2"/>
+  <circle cx="984" cy="675.5" r="4.5" fill="#0072B2"/>
+  <circle cx="1048" cy="648.8" r="4.5" fill="#0072B2"/>
+  <circle cx="1112" cy="621.7" r="4.5" fill="#0072B2"/>
+  <circle cx="1176" cy="581.4" r="4.5" fill="#0072B2"/>
+  <circle cx="1240" cy="533.3" r="4.5" fill="#0072B2"/>
+
+  <!-- Axis labels -->
+  <text x="912" y="495" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="end">22</text>
+  <text x="912" y="558" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="end">15</text>
+  <text x="912" y="606" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="end">10</text>
+  <text x="912" y="654" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="end">5</text>
+  <text x="912" y="701" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="end">0</text>
+  <text x="920" y="715" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">d=0</text>
+  <text x="984" y="715" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">d=1</text>
+  <text x="1048" y="715" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">d=2</text>
+  <text x="1112" y="715" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">d=3</text>
+  <text x="1176" y="715" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">d=4</text>
+  <text x="1240" y="715" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11" fill="#475569" text-anchor="middle">d=5</text>
+  <text x="1080" y="735" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">Cumulative Form AST Defect Steps (d = 0..5)</text>
+  <text x="875" y="593" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#334155" text-anchor="middle" transform="rotate(-90 875 593)">Scalar Energy E(y0, yd)</text>
+
+  <!-- H11 Legend -->
+  <line x1="1256" y1="510" x2="1282" y2="510" stroke="#0072B2" stroke-width="3.2"/>
+  <text x="1288" y="514" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="800" fill="#0f172a">FormEBM-v2 (mean+IQR)</text>
+  <text x="1288" y="532" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0072B2">93.0% strict (&gt;=80%)</text>
+  <text x="1288" y="549" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">Spearman rho = 0.9931</text>
+  <line x1="1256" y1="576" x2="1282" y2="576" stroke="#D55E00" stroke-width="2.4" stroke-dasharray="6 4"/>
+  <text x="1288" y="580" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a">FormJEPA-v1 L2</text>
+  <text x="1288" y="598" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11.5" fill="#D55E00">36.0% strict (d=5 rollover)</text>
+  <rect x="1256" y="618" width="192" height="72" rx="8" fill="#E69F00" fill-opacity="0.12" stroke="#E69F00" stroke-width="1.4"/>
+  <text x="1266" y="637" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#0f172a">Same-line random walk:</text>
+  <text x="1266" y="655" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">38.0% strict (rho = 0.8513;</text>
+  <text x="1266" y="672" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="11.5" fill="#334155">mean E still rises 0-&gt;7.07)</text>
+
+  <!-- Footer Disclosure -->
+  <text x="40" y="782" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569">Telemetry grammar: Apple M5 Max L2/L3 and AMD Ryzen AI Max+ 395 Linux RAPL counters are operating-system/on-chip reported_j (measured_j = None, board_metered = false; cloud API server energy = not_available).</text>
+  <text x="40" y="802" font-family="Inter, 'DejaVu Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#475569">Pre-registered SHA-256 manifests: FormEBM-v2 128f17e69361ea89... (1,387 disjoint Form shapes, 0 task overlap); H15-Iterative a7774d3bd03ae450... (zero access to original Form).</text>
+</svg>

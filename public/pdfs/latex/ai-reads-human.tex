@@ -1,0 +1,1244 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{xcolor}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{textcomp}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{longtable,booktabs,array,calc}
+\usepackage{caption}
+\captionsetup[table]{skip=6pt,font=small,labelfont=bf}
+\captionsetup[figure]{font=small,labelfont=bf}
+\newcounter{none}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\footnotesize}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\footnotesize}
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.80,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.80,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+
+\usepackage{newunicodechar}
+\newunicodechar{µ}{\ifmmode\mu\else\textmu\fi}
+\newunicodechar{°}{\ifmmode^\circ\else\textdegree\fi}
+\newunicodechar{·}{\ifmmode\cdot\else\textperiodcentered\fi}
+\newunicodechar{²}{\ensuremath{^{2}}}
+\newunicodechar{³}{\ensuremath{^{3}}}
+\newunicodechar{¹}{\ensuremath{^{1}}}
+\newunicodechar{⁴}{\ensuremath{^{4}}}
+\newunicodechar{⁶}{\ensuremath{^{6}}}
+\newunicodechar{⁻}{\ensuremath{^{-}}}
+\newunicodechar{₀}{\ensuremath{_{0}}}
+\newunicodechar{ₙ}{\ensuremath{_{n}}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Ω}{\ensuremath{\Omega}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{∧}{\ensuremath{\wedge}}
+\newunicodechar{∫}{\ensuremath{\int}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{⊆}{\ensuremath{\subseteq}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{≪}{\ensuremath{\ll}}
+\newunicodechar{↛}{\ensuremath{\nrightarrow}}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{∪}{\ensuremath{\cup}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\newunicodechar{・}{\textperiodcentered}
+
+\usepackage{xurl}
+\usepackage{bookmark}
+\usepackage{hyperref}
+
+\setcounter{secnumdepth}{-\maxdimen}
+\providecommand{\tightlist}{\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}}
+
+\definecolor{openieAmber}{HTML}{D97706}
+\definecolor{openieAmberBg}{HTML}{FFFBEB}
+\definecolor{openieAmberBorder}{HTML}{F59E0B}
+\definecolor{openieSlate}{HTML}{334155}
+\definecolor{openieDark}{HTML}{0F172A}
+\definecolor{openieCodeBg}{HTML}{F8FAFC}
+\definecolor{openieCodeBorder}{HTML}{CBD5E1}
+\definecolor{openieBlue}{HTML}{0057B8}
+
+\hypersetup{
+  pdftitle={"AI" Reads Human: Human Language Encoding at Machine Speed and the Energy Cost},
+  pdfauthor={David Charlot, Open Interface Engineering},
+  colorlinks=true,
+  linkcolor=openieBlue,
+  citecolor=openieBlue,
+  urlcolor=openieBlue,
+  pdfcreator={XeTeX / Tectonic — Open Interface Engineering}
+}
+
+\urlstyle{same}
+\setlength{\emergencystretch}{3em}
+\hfuzz=6pt
+\sloppy
+
+\newcommand{\openiefig}[3]{%
+  \IfFileExists{#1}{%
+    \includegraphics[width=#2\linewidth,height=0.70\textheight,keepaspectratio]{#1}%
+  }{%
+    \fcolorbox{openieCodeBorder}{openieCodeBg}{%
+      \parbox{0.92\linewidth}{\footnotesize\ttfamily Figure asset embedded in archival PDF; interactive/vector source: \url{#3}}%
+    }%
+  }%
+}
+
+\title{\vspace{-1.2em}\textbf{"AI" Reads Human: Human Language Encoding at Machine Speed and the Energy Cost}}
+\author{\textbf{David Charlot, Open Interface Engineering}\\[0.15em]
+{\small Work in progress $\cdot$ Open Interface Engineering $\cdot$ \href{https://research.openie.dev}{research.openie.dev}}}
+\date{\small Revision \texttt{af57f48} (22 November 2026) $\cdot$ Web: \href{https://research.openie.dev/papers/ai-reads-human/}{research.openie.dev/papers/ai-reads-human/} $\cdot$ Archival LaTeX: \href{https://research.openie.dev/pdfs/latex/ai-reads-human.pdf}{/pdfs/latex/ai-reads-human.pdf} (\href{https://research.openie.dev/pdfs/latex/ai-reads-human.tex}{.tex})}
+
+\begin{document}
+\maketitle
+\vspace{-0.6em}
+
+% OpenIE Measurement Honesty Callout Box
+\noindent\fcolorbox{openieAmberBorder}{openieAmberBg}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+    \small\color{openieDark}%
+    \textbf{Measurement.} Research study, not a journal final. Parse time, token counts, and Apple M5 Max dual-channel \texttt{reported\_j} (\texttt{L3 proc\_pid\_rusage(RUSAGE\_INFO\_V6).ri\_energy\_nj} and \texttt{L2 macmon IOReport} across \textbf{\texttt{34} workloads} and \texttt{170} windows on the reproducible \texttt{20,000}-record corpus: \textbf{\texttt{280.4 nJ/record}} fixed binary \texttt{struct} to \textbf{\texttt{2,212.1 nJ/record}} stdlib \texttt{JSON}, \textbf{\texttt{69,922.1 nJ/record}} C \texttt{libyaml}, \textbf{\texttt{575,799.3 nJ/record}} pure-Python \texttt{YAML}, and \textbf{\texttt{27,678.7 nJ/record}} \texttt{cl100k\_base} \texttt{JSON} tokenization; \texttt{Falsifier 6} triggered on \texttt{109/170} shared-host \texttt{L2} windows) were measured locally. No hardware power rail or wall meter was attached (\texttt{measured\_j = None}, \texttt{board\_metered = false}); model energy figures are other authors' measurements.
+  }%
+}
+
+\vspace{6pt}
+% OpenIE Amber Left-Rule Summary Quote
+\noindent{\color{openieAmber}\vrule width 3pt}\hspace{8pt}%
+\parbox{\dimexpr\linewidth-11pt\relax}{%
+  \small\itshape\color{openieSlate}%
+  Work in progress. Why so much of what machines exchange is written for people, what that costs in bytes, tokens, time, and per-process Apple Silicon kernel rusage energy (reported\_j) across 34 parse and tokenize workloads, and why external wall-meter energy (measured\_j) remains open.
+}
+\vspace{6pt}
+
+{
+\small
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\vspace{4pt}
+\hrule
+\vspace{8pt}
+
+\emph{Work in progress, revision
+\href{https://github.com/openIE-dev/research-openie-web/commits/main/src/content/papers/ai-reads-human.md}{\texttt{af57f48}},
+22 November 2026. Interactive observatory, data, code and read ledger:
+\href{https://research.openie.dev/living/ai-reads-human/}{research.openie.dev/living/ai-reads-human/}.
+Shared terms: \href{https://research.openie.dev/glossary/}{glossary}.}
+
+\section{Abstract}\label{abstract}
+
+Software agents pass data to each other in formats made for people to
+read, such as JSON, YAML, Markdown, XML and CSV. This study names the
+extra work this causes the impedance tax, defines it with units, and
+measures three parts of it on a seeded 20,000-record corpus: parse time,
+token count across five open tokenizers, and dual-channel Apple M5 Max
+operating-system/on-chip \texttt{reported\_j} counters across all 34
+parse and \texttt{tiktoken} workloads (section 5c). While an initial
+unisolated whole-chip attempt on two busy laptops could not separate
+parsing from background co-tenant drift (section 5b), isolating each
+workload inside a dedicated worker subprocess with macOS kernel
+per-process \texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage(\allowbreak{}RUSAGE\_\allowbreak{}INFO\_\allowbreak{}V6).\allowbreak{}ri\_\allowbreak{}energy\_\allowbreak{}nj}
+(\texttt{L3}, label \texttt{D}) resolves a \texttt{2,053.8×}
+parse-energy span --- from \texttt{280.\allowbreak{}4\ nJ/\allowbreak{}record} for fixed binary
+(\texttt{struct.\allowbreak{}iter\_\allowbreak{}unpack}) to \texttt{2,\allowbreak{}212.\allowbreak{}1\ nJ/\allowbreak{}record} for stdlib
+JSON (\texttt{7.89×}), \texttt{69,\allowbreak{}922.\allowbreak{}1\ nJ/\allowbreak{}record} for C
+\texttt{libyaml} (\texttt{249.4×}), and \texttt{575,\allowbreak{}799.\allowbreak{}3\ nJ/\allowbreak{}record}
+for pure-Python YAML (\texttt{2,053.8×}) --- and shows that
+\texttt{cl100k\_base} tokenization of compact JSON
+(\texttt{27,\allowbreak{}679.\allowbreak{}2\ nJ/\allowbreak{}record}, \texttt{98.7×} fixed binary) spends
+\texttt{12.5×} the on-chip \texttt{reported\_j} of \texttt{json.loads()}
+itself. Concurrently, whole-chip \texttt{IOReport} (\texttt{L2}, label
+\texttt{A2}) triggered Falsifier 6 (\texttt{\textgreater{}\ 5.0\%}
+pre/post idle baseline drift) on \texttt{109} of \texttt{170}
+shared-host measurement windows, confirming why unisolated package
+subtraction fails on active hosts. No external inline power probe or
+wall meter was attached (\texttt{measured\_\allowbreak{}j\ =\ None},
+\texttt{board\_\allowbreak{}metered\ =\ false}), and GPU model prefill/decode joules
+remain planned (M4).
+
+\textbf{In plain words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Computers and people often use the same written format. That format is
+  easy for people to read, but the computer has to do extra work to read
+  it back.
+\item
+  On our 20,000-record test corpus, reading fixed binary
+  (\texttt{struct.\allowbreak{}iter\_\allowbreak{}unpack}) cost \texttt{280.\allowbreak{}4\ nJ/\allowbreak{}record} in Apple
+  M5 Max per-process kernel \texttt{ri\_energy\_nj}
+  (\texttt{reported\_j}), compared with \texttt{2,\allowbreak{}212\ nJ/\allowbreak{}record}
+  (\texttt{7.89×}) for Python's built-in JSON reader,
+  \texttt{69,\allowbreak{}922\ nJ/\allowbreak{}record} (\texttt{249.4×}) for C-accelerated YAML,
+  and \texttt{575,\allowbreak{}799\ nJ/\allowbreak{}record} (\texttt{2,053.8×}) for pure-Python
+  YAML.
+\item
+  Tokenizing compact JSON for an AI model with \texttt{tiktoken}
+  (\texttt{cl100k\_base}) cost \texttt{27,\allowbreak{}679\ nJ/\allowbreak{}record}
+  (\texttt{1.69×} CSV tokenization and \texttt{12.5×}
+  \texttt{json.loads()} parsing itself), before the language model runs
+  a single matrix multiply. All energy figures on this page are
+  kernel/on-chip \texttt{reported\_j} counters
+  (\texttt{measured\_\allowbreak{}j\ =\ None}, \texttt{board\_\allowbreak{}metered\ =\ false});
+  GPU model prefill/decode energy and external hardware power probes are
+  still planned.
+\end{enumerate}
+
+\begin{quote}
+\textbf{Status: work in progress, and it will grow.} Sections marked
+\emph{Planned} (such as GPU prefill/decode counters M4, natural-language
+corpora M6, and cross-language C/Rust parsers M8) are not done. Every
+number on this page is recomputed from downloadable files under
+\texttt{/\allowbreak{}living/\allowbreak{}ai-\allowbreak{}reads-\allowbreak{}human/\allowbreak{}}. On-chip energy counters are strictly
+\texttt{reported\_j} (\texttt{measured\_\allowbreak{}j\ =\ None},
+\texttt{board\_\allowbreak{}metered\ =\ false}).
+\end{quote}
+
+\section{1. Background: formats written for
+people}\label{background-formats-written-for-people}
+
+Most data that agents exchange today travels in formats whose
+specifications put people ahead of machines. The passages cited below
+were read for this page; each source's read status (FULL, PARTIAL or
+UNAVAILABLE) is in the
+\href{https://research.openie.dev/living/ai-reads-human/READ_LEDGER.md}{read
+ledger}.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{TeX} began in 1982: the source file \texttt{tex.web} (header,
+  first 19,000 bytes read; PARTIAL) records that version 0 was released
+  in September 1982 and dates later versions from 3.0 (March 1990)
+  onward.
+\item
+  \textbf{Markdown} was developed by John Gruber with help from Aaron
+  Swartz and released in 2004 as a syntax description and a Perl script
+  that converts to HTML; the CommonMark specification (version 0.31.2,
+  28 January 2024) says that description ``does not specify the syntax
+  unambiguously'' and lists questions it leaves open (CommonMark 0.31.2,
+  sections 1.1 and 1.2).
+\item
+  \textbf{CSV} was documented in October 2005 by RFC 4180, an
+  \emph{informational} RFC that says ``there is no formal specification
+  in existence'' and writes down what most implementations seem to do.
+\item
+  \textbf{JSON} is defined by RFC 8259 (December 2017, obsoleting RFC
+  7159) as ``a lightweight, text-based, language-independent data
+  interchange format.'' RFC 7493 (March 2015, I-JSON) narrows it for
+  protocols.
+\item
+  \textbf{Canonical and binary forms} also exist in the standards
+  record: RFC 8785 (June 2020) defines a JSON Canonicalization Scheme,
+  and RFC 8949 (December 2020, obsoleting RFC 7049) defines CBOR, a
+  binary data format with a section on deterministic encoding (section
+  4.2) that protocols may adopt.
+\item
+  \textbf{YAML} revision 1.2.2 (1 October 2021) lists its design goals
+  ``in decreasing priority,'' and the highest-priority goal is ``YAML
+  should be easily readable by humans'' (section 1.1).
+\end{itemize}
+
+
+\begin{center}
+\openiefig{fig/ai-reads-human-fig01-format-timeline.png}{0.94}{https://research.openie.dev/living/ai-reads-human/charts/format-timeline.svg}
+\end{center}
+
+
+\emph{Figure 1. Dates printed in the documents listed in the read
+ledger. Generated by \texttt{scripts/\allowbreak{}make\_\allowbreak{}charts.\allowbreak{}py}.}
+
+These facts do not say that human-readable formats are mistakes. They
+say that readability by people was a stated design goal, and that the
+cost of reading them back by machine was not the thing being minimised.
+Where other work reaches machine-oriented forms (CBOR, canonical JSON,
+Protocol Buffers, Avro, safetensors, GGUF), this study records it as a
+convergence observation: several communities arrived at fixed or
+deterministic encodings for machine exchange while keeping text for
+people.
+
+\section{2. The impedance tax, defined}\label{the-impedance-tax-defined}
+
+Let a set of records R carry information that a machine consumer needs.
+Let F be a format with encoder enc\_F and decoder dec\_F, and let M be a
+canonical machine form: one valid byte string per value.
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2268}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5670}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2062}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Symbol}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Meaning}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Unit}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+B\_F & encoded size of R in format F & byte \\
+N & number of records & 1 \\
+k & a tokenizer & n/a \\
+T\_\{F,k\} & tokens produced by k on the encoding of R & token \\
+d\_\{F,k\} = B\_F / T\_\{F,k\} & bytes per token & byte/token \\
+t\_parse(F) & wall time to decode R to in-memory values & s \\
+P & average power during an operation & W = J/s \\
+E & energy of an operation, E = ∫ P dt, approximately P\_avg · t & J \\
+e\_prefill & model energy per input token & J/token \\
+\end{longtable}
+}
+}
+
+The \textbf{impedance tax} of F relative to M is the extra energy a
+consumer spends because the information arrives in F:
+
+Z(F) = E\_enc(F) + E\_parse(F) + E\_tok(F,k) + e\_prefill · T\_\{F,k\} +
+E\_ctx(F)
+
+τ(F) = Z(F) − Z(M) (joules), θ(F) = Z(F) / Z(M) (dimensionless)
+
+E\_ctx(F) is the extra decode cost that a longer context causes; its
+coefficient depends on the model and is a measurement target (M4 below).
+Section 5c measures \texttt{E\_parse(F)} and \texttt{E\_tok(F,k)} in
+per-process kernel \texttt{reported\_j} (\texttt{ri\_energy\_nj}) on
+Apple M5 Max.
+
+Three dimensionless ratios can be measured without any energy counter:
+
+\begin{itemize}
+\tightlist
+\item
+  byte ratio β\_F = B\_F / B\_ref
+\item
+  token ratio κ\_\{F,k\} = T\_\{F,k\} / T\_\{ref,k\}
+\item
+  parse-time ratio π\_F = t\_parse(F) / t\_parse(ref)
+\end{itemize}
+
+and they are linked by one identity that the token numbers below obey:
+
+κ\_F = β\_F · (d\_ref / d\_F)
+
+so a format can cost more tokens because it has more bytes, because its
+bytes split into more pieces, or both.
+
+
+\begin{center}
+\openiefig{fig/ai-reads-human-fig02-impedance-pipeline.png}{0.94}{https://research.openie.dev/living/ai-reads-human/charts/impedance-pipeline.svg}
+\end{center}
+
+
+\emph{Figure 2. The terms of Z(F). With no model in the path (machine to
+machine) only encode, transport and parse apply. With a model reading
+text, tokenize and read apply.}
+
+\subsection{2.1 Physical scale, and what this page does not
+claim}\label{physical-scale-and-what-this-page-does-not-claim}
+
+The thermodynamic floor for erasing one bit at temperature T is the
+Landauer limit E = k\_B T ln 2. With k\_B = 1.380649e-23 J/K (exact by
+the 2019 SI definition; the value was checked on 18 October 2026 against
+the NIST CODATA 2022 page for the Boltzmann constant) and T = 300 K this
+is \textbf{2.871e-21 J} per bit, recomputed in
+\texttt{scripts/\allowbreak{}verify\_\allowbreak{}numbers.\allowbreak{}py}. Eight bits is 2.297e-20 J. This is
+a lower bound for irreversible logic, not an estimate of what parsing
+costs: real software pays orders of magnitude more, in memory traffic,
+instruction execution and cooling. This page does not use the limit to
+predict any number.
+
+Energy figures for model inference come from other authors' measurements
+on their hardware, and are background only, not our measurement:
+
+\begin{itemize}
+\tightlist
+\item
+  Samsi et al., ``From Words to Watts: Benchmarking the Energy Costs of
+  Large Language Model Inference'' (arXiv:2310.03003), define energy per
+  output token as total GPU energy divided by decoded output tokens, and
+  report about 3 to 4 J per output token for a 65-billion-parameter
+  LLaMA model at a maximum generation length of 512, measured with
+  NVIDIA DCGM on their MIT SuperCloud setup (V100 GPUs for the 8, 16 and
+  32 shard runs). That paper does not separate prefill from decode
+  energy.
+\item
+  Luccioni, Jernite and Strubell, ``Power Hungry Processing: Watts
+  Driving the Cost of AI Deployment?'' (ACM FAccT 2024, DOI
+  10.1145/3630106.3658542), measured energy per 1,000 inferences by task
+  with CodeCarbon on an 8-GPU A100 node; their Table 2 reports mean
+  0.002 kWh for text classification and 0.047 kWh for text generation.
+  These numbers were checked against the ACM Corrected Version of Record
+  V1.1 (6 November 2024), which gives the same Table 2 values and the
+  same setup (8 A100 80GB GPUs on AWS, CodeCarbon). Cite V1.1: the paper
+  notes that an earlier version used 0.012 kWh in one comparison. The
+  rest of the paper was read only in part.
+\end{itemize}
+
+A per-word DRAM-read energy figure (a widely quoted 640 pJ per 32-bit
+read) is \textbf{not used on this page}. Its attributed source, Horowitz
+(2014), was read: the paper gives about 1 to 2 nJ per DRAM access and
+the plenary slides 1.3 to 2.6 nJ per 64-bit access; the 640 pJ figure
+appears only in later slides that cite it. Section 9 records this
+status.
+
+\section{3. What was measured}\label{what-was-measured}
+
+Initial parse-time and token-count baselines ran on one virtualised
+Intel Xeon machine (8 vCPU, Linux 6.12, Python 3.13.5), which exposes no
+RAPL energy counters (\texttt{/\allowbreak{}sys/\allowbreak{}class/\allowbreak{}powercap} is absent), followed
+by Apple M5 Max energy campaigns reported in sections 5b and 5c. The
+corpus is synthetic and seeded (\texttt{scripts/\allowbreak{}gen\_\allowbreak{}corpus.\allowbreak{}py}, seed
+20261016): 20,000 records, each with an id, a three-word name, a float
+score, a boolean, three tags and a 31-bit integer.
+
+
+\begin{center}
+\openiefig{fig/ai-reads-human-fig03-one-record-five-ways.png}{0.94}{https://research.openie.dev/living/ai-reads-human/charts/one-record-five-ways.svg}
+\end{center}
+
+
+\emph{Figure 3. Record 0 in CSV, compact JSON, YAML, XML and a 23-byte
+fixed binary layout. The binary layout stores each word as a one-byte
+index into a shared list of 24 words, so reading it back needs that
+list. Byte counts of the text forms include the line break.}
+
+\subsection{3.1 Parse time}\label{parse-time}
+
+
+\begin{center}
+\openiefig{fig/ai-reads-human-fig04-parse-time-headline.png}{0.94}{https://research.openie.dev/living/ai-reads-human/charts/parse-time-headline.svg}
+\end{center}
+
+
+\emph{Figure 4. Minimum of 9 repeats over 20,000 records on the Linux
+Xeon baseline. Source:
+\texttt{/\allowbreak{}living/\allowbreak{}ai-\allowbreak{}reads-\allowbreak{}human/\allowbreak{}data/\allowbreak{}parse\_\allowbreak{}time.\allowbreak{}tsv}, column
+\texttt{ns\_per\_record}. Log scale.}
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3854}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3021}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3125}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Format and parser}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{ns per record (Xeon)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{ratio to fixed binary}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Fixed binary, \texttt{struct.\allowbreak{}iter\_\allowbreak{}unpack} & 116 & 1.0 \\
+JSON, Python standard library & 904 & 7.8 \\
+YAML, PyYAML with libyaml & 85,300 & 735.3 \\
+\end{longtable}
+}
+}
+
+YAML took 94.4 times as long as stdlib JSON on the same records on the
+Xeon host (and \texttt{22,404\ ns} vs \texttt{570\ ns} = \texttt{39.3×}
+for C \texttt{libyaml}, or \texttt{161,227\ ns} = \texttt{282.9×} for
+pure-Python YAML, on Apple M5 Max in section 5c). The full Xeon table of
+every format and parser tried is in Figure 5.
+
+
+\begin{center}
+\openiefig{fig/ai-reads-human-fig05-parse-time-all.png}{0.94}{https://research.openie.dev/living/ai-reads-human/charts/parse-time-all.svg}
+\end{center}
+
+
+\emph{Figure 5. All rows of \texttt{data/\allowbreak{}parse\_\allowbreak{}time.\allowbreak{}tsv} except the
+zero-copy numpy row, which builds no objects and is not comparable.}
+
+\textbf{Limits of this measurement.} (a) Parsers do different work: the
+fixed binary reader returns tuples, JSON and YAML build typed Python
+objects, CSV returns strings, and the XML and Markdown rows build trees
+or token streams without converting values, so the ratios compare
+end-to-end library behaviour, not the intrinsic cost of each format. (b)
+One language runtime (CPython 3.13). (c) The corpus is synthetic and
+identifier-light. (d) Time alone is not energy: section 5c therefore
+measures per-process kernel \texttt{ri\_energy\_nj}
+(\texttt{reported\_j}) directly across all 34 parse and tokenize
+workloads.
+
+\subsection{3.2 Tokens}\label{tokens}
+
+A language model reads tokens, not bytes. The same records, counted with
+the \texttt{cl100k\_base} tokenizer on the initial 2,000 records of each
+view (and verified across all 20,000 records in section 5c):
+
+
+\begin{center}
+\openiefig{fig/ai-reads-human-fig06-tokens-vs-csv.png}{0.94}{https://research.openie.dev/living/ai-reads-human/charts/tokens-vs-csv.svg}
+\end{center}
+
+
+\emph{Figure 6. κ = tokens per record of the view divided by tokens per
+record of CSV. Source: \texttt{/\allowbreak{}living/\allowbreak{}ai-\allowbreak{}reads-\allowbreak{}human/\allowbreak{}data/\allowbreak{}tokens.\allowbreak{}tsv}.}
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3958}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2917}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3125}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{View}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{tokens per record}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{κ (relative to CSV)}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+CSV & 22.9 & 1.00 \\
+JSON, compact & 36.2 & 1.58 \\
+YAML & 51.4 & 2.24 \\
+JSON, pretty-printed (indent 2) & 65.6 & 2.86 \\
+\end{longtable}
+}
+}
+
+The identity in section 2 holds on these data: for compact JSON, β =
+1.912 and d\_CSV/d\_JSON = 0.826, giving κ = 1.58; for YAML, 2.028 ×
+1.107 = 2.24; for pretty JSON, 3.056 × 0.936 = 2.86. Compact JSON costs
+more tokens mainly because it has about 1.9 times the bytes of CSV, and
+pretty JSON mostly for the same reason plus indentation. YAML has both
+more bytes and shorter tokens.
+
+
+\begin{center}
+\openiefig{fig/ai-reads-human-fig07-tokens-five-tokenizers.png}{0.94}{https://research.openie.dev/living/ai-reads-human/charts/tokens-five-tokenizers.svg}
+\end{center}
+
+
+\emph{Figure 7. The same ratio under \texttt{cl100k\_base},
+\texttt{o200k\_base}, GPT-2, Mistral-7B-v0.1 and Qwen2.5-0.5B
+tokenizers. The ordering holds in all five; the size of the gap does not
+(pretty JSON is 3.66 times CSV under GPT-2 and 2.22 times under
+Qwen2.5). No closed commercial tokenizer was tested.}
+
+
+\begin{center}
+\openiefig{fig/ai-reads-human-fig08-bytes-per-record.png}{0.94}{https://research.openie.dev/living/ai-reads-human/charts/bytes-per-record.svg}
+\end{center}
+
+
+\emph{Figure 8. Bytes per record. The 23-byte binary figure does not
+count the shared word list; any honest size claim for a binary form must
+name the list (or dictionary) it depends on, by version and hash.}
+
+\textbf{A negative result worth stating.} Writing the binary layout as
+text for a model does not remove the tax: as base64 it was 20.3 tokens
+per record (κ = 0.89) and as hex 22.7 (κ = 0.99), about the same as CSV,
+because a text model needs a text view. The saving for a model comes
+from sending fewer, better chosen fields, not from changing the encoding
+of what is sent. That claim is Planned (M7), not measured.
+
+\section{4. Why the hazards come with the
+readability}\label{why-the-hazards-come-with-the-readability}
+
+Formats designed for people and for loosely coupled programs let one
+input mean different things to different readers. The table lists
+hazards found in the read specifications, and in tests run on named
+library versions (Python 3.13.5, Node v20.19.2, jq 1.7, PyYAML 6.0.2,
+lxml 6.1.3). Test lines (T, U, X, Y, C codes) are in
+\texttt{tests-\allowbreak{}formats/\allowbreak{}RESULTS.\allowbreak{}txt} and describe only those versions.
+``Spec'' means the text of the cited document.
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4688}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2188}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Format}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Hazard}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Evidence}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Ambiguity & JSON & Duplicate member names give ``unpredictable''
+behaviour; implementations report the last, all, or fail. Three tools
+tested kept the last value. & RFC 8259 section 4; T1 \\
+Ambiguity & Markdown & The original description does not specify syntax
+unambiguously; dialects diverged. & CommonMark 0.31.2 section 1.2 \\
+Parser differential & JSON numbers & 9007199254740993 is exact in Python
+and rounds to \ldots992 in Node. & RFC 8259 section 6; T2 and N2 \\
+Parser differential & JSON & Python's \texttt{json} accepts bare
+\texttt{NaN} and \texttt{Infinity}, which the spec says are not
+permitted. & RFC 8259 section 6; T6 \\
+Non-canonical forms & JSON & \texttt{1}, \texttt{1.0}, \texttt{1e0},
+\texttt{10E-1}, \texttt{0.1e1} are one number written five ways, and two
+Python types. & U3 \\
+Non-canonical forms & JSON & Member order does not change the meaning
+but changes the bytes and any hash of them. & T8 \\
+Ordering & JSON canonicalization & Sorting by UTF-16 code units differs
+from code point order for U+1F600 versus U+FFEE. & RFC 8785 section
+3.2.3; U2 \\
+Non-canonical forms & CBOR & Deterministic encoding is an optional
+profile that protocols may adopt; it is not the default. & RFC 8949
+section 4.2 \\
+Non-canonical forms & Protocol Buffers & ``Do not assume the byte output
+of a serialized message is stable.'' & Protobuf encoding guide,
+``Implications'' \\
+Number hazards & JSON & Implementations may limit range and precision;
+the exactly representable integer range is ±(2\^{}53)−1. & RFC 8259
+sections 6 and 9; RFC 7493 section 2.2 \\
+Number hazards & JSON & \texttt{1e400} becomes \texttt{inf} in both
+Python and Node; \texttt{-0} is handled differently. & T3, N3, T4, N4 \\
+Number hazards & YAML 1.1 resolver & In PyYAML, \texttt{010} is 8,
+\texttt{12:30:45} is 45045 and \texttt{country:\ NO} is
+\texttt{\{country:\ False\}}. & Y rows \\
+Number hazards & TOML & The spec says an integer that cannot be stored
+losslessly is an error; Python's \texttt{tomllib} accepted 2\^{}63. &
+TOML 1.0.0; T rows \\
+Unicode & JSON & \texttt{"\textbackslash{}uDEAD"} (an unpaired
+surrogate) is allowed by the grammar; it parses, then fails on UTF-8
+encode. & RFC 8259 section 8.2; T5 \\
+Unicode & JSON & NFC and NFD forms of the same text are distinct keys. &
+U1 \\
+Injection & CSV & A cell starting with \texttt{=} is plain data to the
+parser and a formula to some spreadsheet programs. & OWASP CSV
+Injection; C row \\
+Injection & XML & With entity resolution on, lxml read a local file
+through an external entity. & X rows \\
+Resource blow-up & YAML & 166 bytes of aliases expanded to 59,049
+logical leaves. & Y alias test \\
+Resource blow-up & XML & 202 bytes of internal entities expanded to
+10,000 characters (49.5 times). & X rows \\
+Resource blow-up & JSON & Depth limits are implementation-defined;
+Python raised \texttt{RecursionError} at 100,000 nesting. & RFC 8259
+section 9; T9 \\
+Totality & any parser & Library exceptions are control flow outside the
+function's return type. & T5, T9 \\
+\end{longtable}
+}
+}
+
+None of these is a reason to avoid the formats for people. Each is a
+reason not to use the same text as the single authority between
+machines.
+
+\section{5. Planned: measuring energy}\label{planned-measuring-energy}
+
+The measurement roadmap separates completed parse/tokenize
+\texttt{reported\_j} counters from open GPU inference and external
+hardware power probes:
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0625}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5521}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3854}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{ID}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Measurement}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Status}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+M1, M2, M3 & Parse time, tokens, tokenizer throughput & \textbf{Done}
+(\texttt{data/\allowbreak{}parse\_\allowbreak{}time.\allowbreak{}tsv}, \texttt{data/tokens.tsv},
+\texttt{data/\allowbreak{}tokenize\_\allowbreak{}time.\allowbreak{}tsv}) \\
+M5 & Parse and \texttt{tiktoken} energy across all 34 workloads via
+dual-channel Apple M5 Max \texttt{reported\_j} (\texttt{L3} per-process
+\texttt{ri\_energy\_nj} + \texttt{L2} whole-chip \texttt{IOReport} with
+Falsifier 6 idle-drift gating) & \textbf{Done for \texttt{reported\_j}}
+(section 5c; \texttt{data/\allowbreak{}energy\_\allowbreak{}reported\_\allowbreak{}j.\allowbreak{}tsv};
+\texttt{measured\_\allowbreak{}j\ =\ None}, \texttt{board\_\allowbreak{}metered\ =\ false}) \\
+M4 & Prefill energy and decode energy per token against context length,
+same model, GPU with a hardware energy counter or external rail/wall
+probe & Planned (needs dedicated GPU counter or inline power probe) \\
+M6 & A second corpus: natural-language documentation and logs against
+identifier-heavy telemetry & Planned \\
+M7 & Task level: tokens an agent needs to answer a fixed question set
+from a projection of the fields it needs versus the full document &
+Planned \\
+M8 & Other parsers per format (simdjson, rapidyaml, libxml2 C,
+pulldown-cmark) to bound language-runtime effects & Planned \\
+\end{longtable}
+}
+}
+
+External wall-plug or inline USB-C power-probe readings
+(\texttt{measured\_j}) remain uncollected; section 5c reports
+operating-system/on-chip \texttt{reported\_j} counters strictly.
+
+\section{5b. Measured energy: no net effect
+resolved}\label{b.-measured-energy-no-net-effect-resolved}
+
+\emph{First whole-chip subtraction attempt, run on 2026-10-18 on two
+Apple M5 Max laptops (48 GB on battery power, 128 GB on AC), macOS
+27.0.1, Python 3.13.16, power counter macmon 0.10.0 (48 GB) and 0.9.0
+(128 GB), reading whole-SoC \texttt{IOReport} and SMC sensors
+(\texttt{all\_power} and \texttt{sys\_power}). Nine parse workloads on
+the same 20,000 records, each looped for 10 s on one thread, 10
+interleaved rounds, with a 10 s idle window before and after every
+round. Files: \texttt{/\allowbreak{}living/\allowbreak{}ai-\allowbreak{}reads-\allowbreak{}human/\allowbreak{}data/\allowbreak{}energy\_\allowbreak{}joules.\allowbreak{}tsv}
+and raw samples in
+\texttt{/\allowbreak{}living/\allowbreak{}ai-\allowbreak{}reads-\allowbreak{}human/\allowbreak{}data/\allowbreak{}energy\_\allowbreak{}raw\_\allowbreak{}m5max48/\allowbreak{}} and
+\texttt{energy\_\allowbreak{}raw\_\allowbreak{}m5max128/\allowbreak{}}.}
+
+\textbf{Result of the unisolated whole-chip attempt: net-above-idle
+package subtraction could not resolve single-thread parsing on a busy
+host.} On both laptops (one-minute load average 41 to 68), the pre/post
+idle baseline moved by 2 to 7 W between windows while one parsing thread
+added only 1 to 5 W to a chip drawing 18 to 36 W, leaving every net mean
+within 1.5 standard errors of zero (several negative). That failure
+motivated the dual-channel protocol in section 5c: pairing whole-chip
+\texttt{IOReport} (\texttt{L2}, gated by Falsifier 6 so drifted net
+subtractions are automatically rejected) with macOS kernel per-PID
+\texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage(\allowbreak{}RUSAGE\_\allowbreak{}INFO\_\allowbreak{}V6).\allowbreak{}ri\_\allowbreak{}energy\_\allowbreak{}nj}
+(\texttt{L3}), which attributes CPU energy strictly to the dedicated
+worker subprocess executing each workload.
+
+\section{\texorpdfstring{5c. Dual-channel Apple M5 Max
+\texttt{reported\_j} across all 34 parse and tokenize
+workloads}{5c. Dual-channel Apple M5 Max reported\_j across all 34 parse and tokenize workloads}}\label{c.-dual-channel-apple-m5-max-reported_j-across-all-34-parse-and-tokenize-workloads}
+
+\emph{Executed on 2026-11-22 (\texttt{16:44:52} to
+\texttt{16:53:22\ UTC}) on Apple M5 Max (\texttt{128\ GB} RAM,
+\texttt{macOS\ 27.2.1} \texttt{arm64}, \texttt{Python\ 3.13.14},
+\texttt{macmon\ 0.12.0}), seeded corpus \texttt{20261016}
+(\texttt{20,000} records across 12 SHA-256-pinned files), \texttt{5}
+interleaved shuffled rounds × \texttt{34} workloads = \texttt{170}
+dedicated worker subprocess windows. Files:
+\href{https://research.openie.dev/living/ai-reads-human/data/energy_reported_j.tsv}{\texttt{/\allowbreak{}living/\allowbreak{}ai-\allowbreak{}reads-\allowbreak{}human/\allowbreak{}data/\allowbreak{}energy\_\allowbreak{}reported\_\allowbreak{}j.\allowbreak{}tsv}}
+and
+\href{https://research.openie.dev/living/ai-reads-human/data/energy_reported_j_summary.json}{\texttt{/\allowbreak{}living/\allowbreak{}ai-\allowbreak{}reads-\allowbreak{}human/\allowbreak{}data/\allowbreak{}energy\_\allowbreak{}reported\_\allowbreak{}j\_\allowbreak{}summary.\allowbreak{}json}}.
+Interactive explorer:
+\href{https://research.openie.dev/living/ai-reads-human/}{\texttt{/\allowbreak{}living/\allowbreak{}ai-\allowbreak{}reads-\allowbreak{}human/\allowbreak{}}}.}
+
+\subsection{Telemetry channels and Falsifier 6
+demonstration}\label{telemetry-channels-and-falsifier-6-demonstration}
+
+Every measurement window recorded two rootless telemetry channels
+simultaneously while keeping \texttt{measured\_\allowbreak{}j\ =\ None} and
+\texttt{board\_\allowbreak{}metered\ =\ false}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Per-process \texttt{L3} \texttt{reported\_j} (shared-host
+  label \texttt{D}, co-tenant isolated)}:
+  \texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage(\allowbreak{}worker\_\allowbreak{}pid,\allowbreak{}\ RUSAGE\_\allowbreak{}INFO\_\allowbreak{}V6).\allowbreak{}ri\_\allowbreak{}energy\_\allowbreak{}nj},
+  integrated by the XNU kernel strictly over the threads scheduled
+  inside the dedicated worker subprocess for that single
+  format/tokenizer pass.
+\item
+  \textbf{Whole-SoC \texttt{L2} \texttt{reported\_j} (shared-host label
+  \texttt{A2}, Falsifier 6 gated)}: \texttt{macmon\ pipe} sampling Apple
+  Silicon \texttt{IOReport} \texttt{chip\_power} alongside
+  \texttt{0.8\ s} pre- and post-window idle baselines. Under
+  \textbf{Falsifier 6}, any window whose pre/post idle baseline drifts
+  by \texttt{\textgreater{}\ 5.0\%} has its
+  \texttt{derived\_\allowbreak{}marginal\_\allowbreak{}j} automatically invalidated rather than
+  reported. On this shared host (mean 1-minute load average
+  \texttt{12.92}, idle chip draw \texttt{30.5–35.4\ W}), Falsifier 6
+  invalidated \textbf{\texttt{109} of \texttt{170} windows
+  (\texttt{64.1\%})} across the 34 workloads (\texttt{61\ /\ 170} valid,
+  \texttt{0\ /\ 34} workloads passing all \texttt{5\ /\ 5} replicates)
+  --- reproducing section 5b's diagnosis quantitatively while
+  \texttt{L3} \texttt{ri\_energy\_nj} cleanly resolved every single
+  workload.
+\end{enumerate}
+
+\subsection{\texorpdfstring{Parse-stage \texttt{L3} \texttt{reported\_j}
+(\texttt{16} workloads, \texttt{20,000}
+records)}{Parse-stage L3 reported\_j (16 workloads, 20,000 records)}}\label{parse-stage-l3-reported_j-16-workloads-20000-records}
+
+{\def\LTcaptype{none} % do not increment counter
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1940}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1045}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1567}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1567}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1045}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1269}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1567}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Format and parser}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Corpus bytes}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Wall ms / \texttt{20k} (mean ± SD)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{L3} \texttt{nJ\ /\ record} (mean ± SD)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{L3} \texttt{nJ\ /\ byte}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Instructions / rec}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{L3} energy ratio vs binary}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Fixed binary (\texttt{numpy.\allowbreak{}frombuffer}, zero-copy view) &
+\texttt{460,000} & \texttt{0.\allowbreak{}0002\ ±\ 0.\allowbreak{}0000} & \texttt{0.04\ ±\ 0.01} &
+\texttt{0.002} & \texttt{0.3} & \texttt{0.00×} (view only) \\
+\textbf{Fixed binary (\texttt{struct.\allowbreak{}iter\_\allowbreak{}unpack}, reference)} &
+\texttt{460,000} & \texttt{1.359\ ±\ 0.351} &
+\textbf{\texttt{280.\allowbreak{}36\ ±\ 111.\allowbreak{}38}} & \texttt{12.19} & \texttt{1,397.4}
+& \textbf{\texttt{1.00×}} \\
+JSON (\texttt{orjson}, C/Rust SIMD) & \texttt{2,325,428} &
+\texttt{7.053\ ±\ 1.359} & \textbf{\texttt{1,\allowbreak{}405.\allowbreak{}93\ ±\ 372.\allowbreak{}34}} &
+\texttt{12.09} & \texttt{6,187.0} & \textbf{\texttt{5.01×}} \\
+CSV (\texttt{csv}, Python stdlib) & \texttt{1,205,469} &
+\texttt{8.804\ ±\ 1.309} & \textbf{\texttt{1,\allowbreak{}798.\allowbreak{}22\ ±\ 435.\allowbreak{}28}} &
+\texttt{29.83} & \texttt{8,812.4} & \textbf{\texttt{6.41×}} \\
+MessagePack (\texttt{msgpack}) & \texttt{1,660,773} &
+\texttt{10.\allowbreak{}817\ ±\ 3.\allowbreak{}321} & \textbf{\texttt{1,\allowbreak{}802.\allowbreak{}46\ ±\ 593.\allowbreak{}84}} &
+\texttt{21.71} & \texttt{9,593.3} & \textbf{\texttt{6.43×}} \\
+\textbf{JSON (\texttt{json.loads}, Python stdlib)} & \texttt{2,325,428}
+& \texttt{11.\allowbreak{}396\ ±\ 1.\allowbreak{}219} & \textbf{\texttt{2,\allowbreak{}212.\allowbreak{}12\ ±\ 409.\allowbreak{}29}} &
+\texttt{19.03} & \texttt{12,700.6} & \textbf{\texttt{7.89×}} \\
+JSON pretty (\texttt{json.loads}, indent 2) & \texttt{3,685,429} &
+\texttt{11.\allowbreak{}716\ ±\ 2.\allowbreak{}225} & \textbf{\texttt{2,\allowbreak{}648.\allowbreak{}45\ ±\ 669.\allowbreak{}32}} &
+\texttt{14.37} & \texttt{13,433.3} & \textbf{\texttt{9.45×}} \\
+CBOR (\texttt{cbor2}) & \texttt{1,660,877} & \texttt{15.\allowbreak{}286\ ±\ 1.\allowbreak{}250} &
+\textbf{\texttt{2,\allowbreak{}719.\allowbreak{}58\ ±\ 365.\allowbreak{}78}} & \texttt{32.75} &
+\texttt{14,514.3} & \textbf{\texttt{9.70×}} \\
+XML (\texttt{lxml} C library) & \texttt{2,885,487} &
+\texttt{22.\allowbreak{}204\ ±\ 2.\allowbreak{}392} & \textbf{\texttt{3,\allowbreak{}800.\allowbreak{}46\ ±\ 331.\allowbreak{}49}} &
+\texttt{26.34} & \texttt{19,521.4} & \textbf{\texttt{13.56×}} \\
+XML (\texttt{xml.\allowbreak{}etree.\allowbreak{}ElementTree}) & \texttt{2,885,487} &
+\texttt{26.\allowbreak{}354\ ±\ 0.\allowbreak{}750} & \textbf{\texttt{6,\allowbreak{}029.\allowbreak{}30\ ±\ 370.\allowbreak{}65}} &
+\texttt{41.79} & \texttt{27,495.7} & \textbf{\texttt{21.51×}} \\
+JSON Lines (\texttt{json.loads} per line) & \texttt{2,325,427} &
+\texttt{22.\allowbreak{}729\ ±\ 1.\allowbreak{}481} & \textbf{\texttt{6,\allowbreak{}130.\allowbreak{}27\ ±\ 946.\allowbreak{}08}} &
+\texttt{52.72} & \texttt{27,414.8} & \textbf{\texttt{21.87×}} \\
+Markdown table (\texttt{markdown-it-py}, tokens) & \texttt{1,525,499} &
+\texttt{115.\allowbreak{}160\ ±\ 7.\allowbreak{}576} & \textbf{\texttt{22,\allowbreak{}824.\allowbreak{}50\ ±\ 2,\allowbreak{}464.\allowbreak{}64}} &
+\texttt{299.24} & \texttt{115,255.0} & \textbf{\texttt{81.41×}} \\
+TOML (\texttt{tomllib}, Python stdlib) & \texttt{2,505,426} &
+\texttt{298.\allowbreak{}582\ ±\ 60.\allowbreak{}674} & \textbf{\texttt{57,\allowbreak{}803.\allowbreak{}43\ ±\ 16,\allowbreak{}269.\allowbreak{}64}}
+& \texttt{461.43} & \texttt{260,140.9} & \textbf{\texttt{206.17×}} \\
+\textbf{YAML (\texttt{PyYAML} with C \texttt{libyaml})} &
+\texttt{2,445,427} & \texttt{448.\allowbreak{}071\ ±\ 95.\allowbreak{}009} &
+\textbf{\texttt{69,\allowbreak{}922.\allowbreak{}12\ ±\ 13,\allowbreak{}405.\allowbreak{}09}} & \texttt{571.86} &
+\texttt{371,347.0} & \textbf{\texttt{249.40×}} \\
+Markdown list (\texttt{markdown-it-py}, tokens) & \texttt{1,925,427} &
+\texttt{417.\allowbreak{}700\ ±\ 54.\allowbreak{}289} & \textbf{\texttt{99,\allowbreak{}595.\allowbreak{}04\ ±\ 17,\allowbreak{}044.\allowbreak{}11}}
+& \texttt{1,034.52} & \texttt{377,878.0} & \textbf{\texttt{355.23×}} \\
+\textbf{YAML (\texttt{PyYAML}, pure Python)} & \texttt{2,445,427} &
+\texttt{3,\allowbreak{}224.\allowbreak{}548\ ±\ 375.\allowbreak{}725} &
+\textbf{\texttt{575,\allowbreak{}799.\allowbreak{}27\ ±\ 56,\allowbreak{}674.\allowbreak{}36}} & \texttt{4,709.19} &
+\texttt{2,706,372.9} & \textbf{\texttt{2,053.75×}} \\
+\end{longtable}
+}
+}
+
+\subsection{\texorpdfstring{Tokenization-stage \texttt{L3}
+\texttt{reported\_j} (\texttt{18} \texttt{tiktoken} workloads,
+\texttt{20,000}
+records)}{Tokenization-stage L3 reported\_j (18 tiktoken workloads, 20,000 records)}}\label{tokenization-stage-l3-reported_j-18-tiktoken-workloads-20000-records}
+
+When a language model ingests text rather than structured memory,
+byte-pair tokenization (\texttt{E\_tok(F,k)} in section 2) dominates CPU
+decode cost on compact formats:
+
+{\def\LTcaptype{none} % do not increment counter
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1884}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1014}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1522}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1522}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1014}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1449}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1594}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Tokenizer \& view}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Tokens / \texttt{20k}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Wall ms / \texttt{20k} (mean ± SD)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{L3} \texttt{nJ\ /\ record} (mean ± SD)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{L3} \texttt{nJ\ /\ token}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Ratio vs CSV (\texttt{same\ tok})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Ratio vs fixed binary parse}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{cl100k\_base} · CSV (\texttt{recs.csv}) & \texttt{459,916} &
+\texttt{73.\allowbreak{}442\ ±\ 20.\allowbreak{}454} & \textbf{\texttt{16,\allowbreak{}384.\allowbreak{}84\ ±\ 4,\allowbreak{}362.\allowbreak{}40}} &
+\texttt{712.51} & \texttt{1.000×} & \texttt{58.44×} \\
+\texttt{cl100k\_base} · Markdown table & \texttt{569,973} &
+\texttt{105.\allowbreak{}364\ ±\ 18.\allowbreak{}819} & \textbf{\texttt{23,\allowbreak{}385.\allowbreak{}73\ ±\ 5,\allowbreak{}597.\allowbreak{}57}} &
+\texttt{820.59} & \texttt{1.427×} & \texttt{83.41×} \\
+\texttt{cl100k\_base} · Markdown list & \texttt{649,947} &
+\texttt{105.\allowbreak{}199\ ±\ 11.\allowbreak{}723} & \textbf{\texttt{26,\allowbreak{}749.\allowbreak{}70\ ±\ 4,\allowbreak{}445.\allowbreak{}05}} &
+\texttt{823.13} & \texttt{1.633×} & \texttt{95.41×} \\
+\texttt{cl100k\_base} · JSONL (\texttt{recs.jsonl}) & \texttt{753,109} &
+\texttt{154.\allowbreak{}114\ ±\ 43.\allowbreak{}130} & \textbf{\texttt{26,\allowbreak{}983.\allowbreak{}02\ ±\ 9,\allowbreak{}347.\allowbreak{}95}} &
+\texttt{716.58} & \texttt{1.647×} & \texttt{96.24×} \\
+\textbf{\texttt{cl100k\_base} · JSON compact (\texttt{recs.json})} &
+\texttt{733,111} & \texttt{124.\allowbreak{}295\ ±\ 7.\allowbreak{}051} &
+\textbf{\texttt{27,\allowbreak{}679.\allowbreak{}19\ ±\ 2,\allowbreak{}697.\allowbreak{}37}} & \texttt{755.12} &
+\textbf{\texttt{1.689×}} & \textbf{\texttt{98.73×}} (\texttt{12.51×}
+\texttt{json.loads}) \\
+\texttt{cl100k\_base} · XML (\texttt{recs.xml}) & \texttt{1,046,596} &
+\texttt{171.\allowbreak{}844\ ±\ 21.\allowbreak{}381} & \textbf{\texttt{36,\allowbreak{}730.\allowbreak{}51\ ±\ 6,\allowbreak{}968.\allowbreak{}26}} &
+\texttt{701.90} & \texttt{2.242×} & \texttt{131.01×} \\
+\texttt{cl100k\_base} · TOML (\texttt{recs.toml}) & \texttt{933,109} &
+\texttt{178.\allowbreak{}111\ ±\ 23.\allowbreak{}760} & \textbf{\texttt{38,\allowbreak{}499.\allowbreak{}73\ ±\ 6,\allowbreak{}633.\allowbreak{}02}} &
+\texttt{825.19} & \texttt{2.350×} & \texttt{137.32×} \\
+\texttt{cl100k\_base} · YAML (\texttt{recs.yaml}) & \texttt{1,029,947} &
+\texttt{208.\allowbreak{}434\ ±\ 33.\allowbreak{}837} & \textbf{\texttt{51,\allowbreak{}880.\allowbreak{}14\ ±\ 12,\allowbreak{}381.\allowbreak{}40}}
+& \texttt{1,007.43} & \texttt{3.166×} & \texttt{185.05×} \\
+\textbf{\texttt{cl100k\_base} · JSON pretty
+(\texttt{recs\_\allowbreak{}pretty.\allowbreak{}json})} & \texttt{1,313,111} &
+\texttt{266.\allowbreak{}827\ ±\ 21.\allowbreak{}754} & \textbf{\texttt{70,\allowbreak{}590.\allowbreak{}45\ ±\ 10,\allowbreak{}239.\allowbreak{}93}}
+& \texttt{1,075.16} & \textbf{\texttt{4.308×}} &
+\textbf{\texttt{251.78×}} (\texttt{26.65×} pretty
+\texttt{json.loads}) \\
+\texttt{o200k\_base} · CSV (\texttt{recs.csv}) & \texttt{464,995} &
+\texttt{51.\allowbreak{}864\ ±\ 5.\allowbreak{}906} & \textbf{\texttt{9,\allowbreak{}570.\allowbreak{}91\ ±\ 1,\allowbreak{}012.\allowbreak{}53}} &
+\texttt{411.66} & \texttt{1.000×} & \texttt{34.14×} \\
+\texttt{o200k\_base} · JSON compact (\texttt{recs.json}) &
+\texttt{754,794} & \texttt{93.\allowbreak{}277\ ±\ 8.\allowbreak{}521} &
+\textbf{\texttt{15,\allowbreak{}125.\allowbreak{}65\ ±\ 1,\allowbreak{}287.\allowbreak{}77}} & \texttt{400.79} &
+\texttt{1.580×} & \texttt{53.95×} (\texttt{6.84×}
+\texttt{json.loads}) \\
+\texttt{o200k\_base} · Markdown table / list & \texttt{574,818} /
+\texttt{654,792} & \texttt{68.091} / \texttt{68.666} &
+\textbf{\texttt{15,693.90}} / \textbf{\texttt{17,362.58}} &
+\texttt{546.05} / \texttt{530.32} & \texttt{1.640×} / \texttt{1.814×} &
+\texttt{55.98×} / \texttt{61.93×} \\
+\texttt{o200k\_base} · JSONL / XML / TOML & \texttt{774.8k} /
+\texttt{1,054.8k} / \texttt{934.8k} & \texttt{83.02} / \texttt{114.79} /
+\texttt{106.68} & \textbf{\texttt{21,530.58}} /
+\textbf{\texttt{22,997.48}} / \textbf{\texttt{25,307.32}} &
+\texttt{555.78} / \texttt{436.05} / \texttt{541.45} &
+\texttt{2.250×}--\texttt{2.644×} & \texttt{76.79×}--\texttt{90.27×} \\
+\texttt{o200k\_base} · YAML (\texttt{recs.yaml}) & \texttt{1,034,792} &
+\texttt{141.\allowbreak{}338\ ±\ 24.\allowbreak{}980} & \textbf{\texttt{29,\allowbreak{}401.\allowbreak{}44\ ±\ 7,\allowbreak{}308.\allowbreak{}15}} &
+\texttt{568.26} & \texttt{3.072×} & \texttt{104.87×} \\
+\texttt{o200k\_base} · JSON pretty (\texttt{recs\_\allowbreak{}pretty.\allowbreak{}json}) &
+\texttt{1,314,794} & \texttt{193.\allowbreak{}648\ ±\ 18.\allowbreak{}210} &
+\textbf{\texttt{37,\allowbreak{}070.\allowbreak{}18\ ±\ 3,\allowbreak{}651.\allowbreak{}35}} & \texttt{563.89} &
+\texttt{3.873×} & \texttt{132.22×} \\
+\end{longtable}
+}
+}
+
+Three findings emerge from the \texttt{170}-window campaign:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Tokenizing JSON costs an order of magnitude more CPU
+  \texttt{reported\_j} than parsing it}: \texttt{tiktoken}
+  (\texttt{cl100k\_base}, implemented in compiled Rust) spends
+  \texttt{27,\allowbreak{}679.\allowbreak{}2\ nJ/\allowbreak{}record} (\texttt{0.554\ J} per \texttt{20,000}
+  records, \texttt{129,192} instructions/record) on compact JSON ---
+  \textbf{\texttt{12.51×} Python's \texttt{json.loads()}
+  (\texttt{2,\allowbreak{}212.\allowbreak{}1\ nJ/\allowbreak{}record})}, \textbf{\texttt{19.69×}
+  \texttt{orjson.loads()} (\texttt{1,\allowbreak{}405.\allowbreak{}9\ nJ/\allowbreak{}record})}, and
+  \textbf{\texttt{98.73×} \texttt{struct.\allowbreak{}iter\_\allowbreak{}unpack}
+  (\texttt{280.\allowbreak{}4\ nJ/\allowbreak{}record})}. Indenting JSON (\texttt{indent=2})
+  inflates \texttt{cl100k\_base} tokenization energy a further
+  \texttt{2.55×} to \texttt{70,\allowbreak{}590.\allowbreak{}5\ nJ/\allowbreak{}record} (\texttt{4.31×} CSV
+  tokenization) simply to scan whitespace runs.
+\item
+  \textbf{Parse energy ratios closely track instruction ratios, with
+  minor effective-wattage variation (\texttt{3.28–5.65\ W} per worker
+  PID)}: C \texttt{libyaml} draws \texttt{3.31\ W} effective worker
+  power (\texttt{249.4×} binary \texttt{reported\_j} vs \texttt{329.8×}
+  wall time), whereas per-line \texttt{jsonl} and pretty-JSON
+  \texttt{tiktoken} draw \texttt{5.37–5.46\ W} (\texttt{21.87×} and
+  \texttt{251.78×} \texttt{reported\_j} vs \texttt{16.73×} and
+  \texttt{196.37×} wall time), confirming why direct per-process
+  \texttt{ri\_energy\_nj} counters are preferable to multiplying wall
+  time by a constant wattage guess.
+\item
+  \textbf{Provenance boundary}: \texttt{ri\_energy\_nj} is an
+  operating-system/firmware counter (\texttt{reported\_j}, telemetry
+  level \texttt{L3}), not an external hardware shunt or wall-plug power
+  analyzer (\texttt{measured\_\allowbreak{}j\ =\ None},
+  \texttt{board\_\allowbreak{}metered\ =\ false}), and still covers host CPU/memory
+  work prior to neural-network forward passes
+  (\texttt{e\_prefill\ ·\ T\_\{F,k\}} in M4).
+\end{enumerate}
+
+\section{6. Where a canonical machine form
+fits}\label{where-a-canonical-machine-form-fits}
+
+One response to the tax is to keep one canonical machine form for
+storage and exchange and emit human text only when a person asks to read
+it. Several projects have taken that route for parts of the problem:
+deterministic CBOR, canonical JSON, schema-bound binary formats. The
+properties such a form would need are testable: one valid byte string
+per value, a declared version, closed schema, bounds on size and depth
+stated before decoding, and a size claim that names the dictionary it
+depends on.
+
+\subsection{6.1 An open design question}\label{an-open-design-question}
+
+Which canonical exchange form is best is not decided here. Canonical
+JSON (RFC 8785) keeps a text form but needs rules for number formatting
+and key order; deterministic CBOR (RFC 8949 section 4.2) is binary
+(\texttt{2,\allowbreak{}719.\allowbreak{}6\ nJ/\allowbreak{}record} in Python \texttt{cbor2}, \texttt{9.70×}
+fixed binary) but leaves choices to each protocol. A length-prefixed or
+fixed-stride binary form (\texttt{280.\allowbreak{}4\ nJ/\allowbreak{}record} in
+\texttt{struct.\allowbreak{}iter\_\allowbreak{}unpack}, or \texttt{0.04\ nJ/record} for a
+zero-copy buffer view) removes almost all parsing work between machines,
+whereas a text model still requires a projected text view
+(\texttt{16,\allowbreak{}384.\allowbreak{}8\ nJ/\allowbreak{}record} for CSV vs \texttt{70,\allowbreak{}590.\allowbreak{}5\ nJ/\allowbreak{}record}
+for pretty JSON under \texttt{cl100k\_base}). Which end-to-end trade-off
+wins once GPU model prefill (\texttt{M4}) and field-projection tasks
+(\texttt{M7}) are included remains open.
+
+\section{7. Reproduce this page}\label{reproduce-this-page}
+
+Everything needed is under \texttt{/\allowbreak{}living/\allowbreak{}ai-\allowbreak{}reads-\allowbreak{}human/\allowbreak{}} in this
+site:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{data/\allowbreak{}parse\_\allowbreak{}time.\allowbreak{}tsv}, \texttt{data/tokens.tsv},
+  \texttt{data/\allowbreak{}tokenize\_\allowbreak{}time.\allowbreak{}tsv}, \texttt{data/ENV.txt},
+  \texttt{data/\allowbreak{}SUMMARY.\allowbreak{}txt}: the Linux Xeon time and token baselines.
+\item
+  \texttt{data/\allowbreak{}energy\_\allowbreak{}reported\_\allowbreak{}j.\allowbreak{}tsv} and
+  \texttt{data/\allowbreak{}energy\_\allowbreak{}reported\_\allowbreak{}j\_\allowbreak{}summary.\allowbreak{}json}: the 34-workload,
+  170-window Apple M5 Max dual-channel \texttt{reported\_j} (\texttt{L3}
+  \texttt{ri\_energy\_nj} + \texttt{L2} \texttt{IOReport} Falsifier 6)
+  dataset (\texttt{data/\allowbreak{}energy\_\allowbreak{}joules.\allowbreak{}tsv} retains the earlier October
+  2026 unisolated whole-chip null run).
+\item
+  \texttt{scripts/\allowbreak{}gen\_\allowbreak{}corpus.\allowbreak{}py} (seeded corpus),
+  \texttt{bench\_parse.py}, \texttt{bench\_\allowbreak{}tokens.\allowbreak{}py},
+  \texttt{bench\_\allowbreak{}tokenize\_\allowbreak{}time.\allowbreak{}py}, \texttt{summarize.py}: the
+  measurements.
+\item
+  \texttt{scripts/\allowbreak{}make\_\allowbreak{}charts.\allowbreak{}py}: rebuilds every chart from the result
+  files, and asserts the headline values.
+\item
+  \texttt{scripts/\allowbreak{}verify\_\allowbreak{}numbers.\allowbreak{}py}: recomputes every number quoted in
+  the text; exits non-zero on a mismatch.
+\item
+  \texttt{tests-formats/}: the scripts behind the hazard test lines.
+\end{itemize}
+
+\begin{verbatim}
+python3 -m venv --system-site-packages venv
+venv/bin/pip install tiktoken tokenizers msgpack cbor2 orjson ruamel.yaml markdown-it-py
+    psutil
+venv/bin/python scripts/gen_corpus.py 20000
+venv/bin/python scripts/bench_parse.py 9 > results/parse_time.tsv
+venv/bin/python scripts/bench_tokens.py 2000 > results/tokens.tsv
+venv/bin/python scripts/make_charts.py charts && venv/bin/python scripts/verify_numbers.py
+\end{verbatim}
+
+The tokenizer vocabularies for GPT-2, Mistral-7B-v0.1 and Qwen2.5-0.5B
+are downloaded from a model hub by \texttt{bench\_\allowbreak{}tokens.\allowbreak{}py}. Timings
+and \texttt{ri\_energy\_nj} counters depend on the host processor and
+operating system; expect the multi-order-of-magnitude ordering across
+formats to hold while absolute nanosecond and nanojoule figures shift
+with hardware.
+
+\section{8. Threats to validity}\label{threats-to-validity}
+
+\begin{itemize}
+\tightlist
+\item
+  Kernel \texttt{ri\_energy\_nj} (\texttt{L3} \texttt{reported\_j}) is
+  an Apple Silicon model-backed operating-system counter, not an inline
+  DC rail or AC wall-plug meter (\texttt{measured\_\allowbreak{}j\ =\ None},
+  \texttt{board\_\allowbreak{}metered\ =\ false}), and GPU model prefill/decode
+  joules (\texttt{M4}) are not yet measured here.
+\item
+  On shared hosts, whole-SoC \texttt{IOReport} (\texttt{L2})
+  net-above-idle subtraction is vulnerable to co-tenant drift
+  (\texttt{109\ /\ 170} windows invalidated by Falsifier 6 in section
+  5c; null result in section 5b).
+\item
+  Python object-allocation overhead contributes to several parse rows
+  (compiled C/Rust parsers in \texttt{M8} will bound runtime overhead;
+  note \texttt{orjson} and \texttt{tiktoken} already execute compiled
+  native code).
+\item
+  One synthetic, identifier-light corpus (\texttt{seed\ =\ 20261016});
+  natural-language and telemetry logs remain untested (\texttt{M6}).
+\item
+  Tokenizers tested are open ones; closed commercial tokenizers are
+  untested.
+\item
+  The 23-byte binary layout depends on a shared 24-word dictionary
+  (\texttt{SHA-256} pinned in
+  \texttt{data/\allowbreak{}energy\_\allowbreak{}reported\_\allowbreak{}j\_\allowbreak{}summary.\allowbreak{}json}) that per-record byte
+  figures do not repeat.
+\end{itemize}
+
+\section{9. Read ledger and
+references}\label{read-ledger-and-references}
+
+Status per source is in the
+\href{https://research.openie.dev/living/ai-reads-human/READ_LEDGER.md}{read
+ledger} (FULL, PARTIAL, UNAVAILABLE). Cited: RFC 8259, RFC 7493, RFC
+8785, RFC 8949, RFC 4180, CommonMark 0.31.2, YAML 1.2.2 (section 1.1),
+TOML 1.0.0, Protocol Buffers encoding guide, OWASP CSV Injection,
+\texttt{tex.web} (header only, PARTIAL), Samsi et al.~arXiv:2310.03003,
+Luccioni et al.~DOI 10.1145/3630106.3658542. HTML sources were read as
+tag-stripped text, so figures in them were not read.
+
+\textbf{Not read (paywalled or unavailable), listed with identifiers and
+not cited for any claim:}
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5312}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4688}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Item}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Identifier}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ISO 32000-1:2008, Portable Document Format & ISO catalogue
+(paywalled) \\
+ISO/IEC 29500, Office Open XML & ISO/IEC 29500 (free equivalent ECMA-376
+only partly read) \\
+ISO/IEC 26300, OpenDocument & ISO/IEC 26300 (free OASIS ODF 1.3 Part 1
+read) \\
+IEEE 754-2019, Floating-Point Arithmetic & DOI
+10.1109/IEEESTD.2019.8766229 \\
+Sennrich, Haddow, Birch, ``Neural Machine Translation of Rare Words with
+Subword Units'' & DOI 10.18653/v1/P16-1162 \\
+The Unicode Standard and UAX \#15 & unicode.org (not fetched) \\
+ECMA-262 (number serialisation referenced by RFC 8785) & not fetched \\
+The TeXbook, printed edition & ISBN 978-0-201-13447-6 \\
+Horowitz, ``Computing's energy problem'', attributed source of the
+quoted 640 pJ per 32-bit DRAM read & \textbf{read; 640 pJ not found in
+the paper or plenary slides (they give 1 to 2 nJ, and 1.3 to 2.6 nJ per
+64-bit access); not used} \\
+Strubell et al.~2019; Patterson et al.~2021 and 2022; Wu et al.~2021 &
+cited only inside the Samsi and Luccioni papers; not read, no claim
+made \\
+\end{longtable}
+}
+}
+
+\section{10. What will be added}\label{what-will-be-added}
+
+Planned expansions, in no fixed order: GPU model prefill and decode
+energy per token (\texttt{M4}) and external inline wall-meter validation
+(\texttt{measured\_j}); compiled C/Rust native parsers (\texttt{M8}); a
+natural-language and structured-log corpus (\texttt{M6}); per-task token
+counts for agent field-projection workloads (\texttt{M7}); more formats
+from the ledger (PDF 2.0, C2PA, Markdown dialects, LaTeX) with their
+hazards; and a worked comparison of canonical binary projections for
+models.
+
+\emph{© 2026 Open Interface Engineering, Inc.~Text, figures, data and
+scripts: MIT OR Apache-2.0, at your option.}
+
+
+\end{document}

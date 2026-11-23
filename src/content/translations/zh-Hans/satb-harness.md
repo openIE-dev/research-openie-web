@@ -1,6 +1,6 @@
 ---
 title: "饱足基准（Satiation Benchmark）：参考线束、适配器与遥测归因"
-deck: "饱足基准（Satiation Benchmark）：参考线束、适配器与遥测归因  固定顺序的 Rust 参考线束（Lane B）、单代理强制适配器桥（Shapes D、M、H 和 I）、十二项一致性检查套件（C1 至 C12），以及五级无根遥测归因引擎（L0 至 L4 与标签 A1 至 N 交叉）。已在四种硬件原型上进行经验验证：Apple M5 Max（arm64 macOS IOReport 和 proc_pid_rusage `reported_j`）、NVIDIA Jetson AGX Thor（aarch64 Tegra Linux 物理 INA238 整板和 INA3221 轨道分离分流 `measured_j`）、Framework Desktop AMD Ryzen AI Max+ 395 Strix Halo（x86-64 Linux 0440 root:energy PLATYPUS 隔离 RAPL `reported_j` 加上 amdgpu PPT），以及 Intel Core i9-13900H Raptor Lake（x86-64 Linux RAPL psys L1 和 package-0 L2 `reported_j`）。原始 `measured_j`、`reported_j` 和 L4 逻辑通道保持严格分离，从不求和；由于共同租户工作负载在共享主机上运行（`dedicated_host` 为 false），A2 网络放置归因根据 Falsifier 6 被保留。"
+deck: "固定顺序的 Rust 参考线束（Lane B）、单一代理强制执行的适配器桥接层（覆盖 Shapes D、M、H 和 I）、十二项一致性检查套件（C1 至 C12），以及五级无根权限遥测归因引擎（L0 至 L4 与标签 A1 至 N 的交叉组合）。该体系已在五种硬件原型上完成实证验证：Apple M5 Max（arm64 macOS，IOReport 与 proc_pid_rusage 提供的 reported_j）、Tegra aarch64 Jetson Thor（整板物理测量与三通道分轨电流分流器提供的 measured_j）、Framework Desktop Strix Halo（x86-64 Linux，由 0440 root:energy 组隔离保护的封装能耗 reported_j，并辅以图形封装功率跟踪）、Intel Core i9-13900H Raptor Lake（x86-64 Linux，平台级 L1 与 0 号封装级 L2 的 reported_j），以及 Windows 11 build 26300 上的 Intel Core i7-1165G7 Tiger Lake 与 GeForce 2060（x86-64，无根权限的独立显卡累计 L2 reported_j、Win32 Job Object 与周期计数，以及处理器封装级标签 N）。原始 measured_j、reported_j 与 L4 逻辑通道始终严格分离，绝不相加。由于共享主机上运行了同时存在的其他租户工作负载（dedicated_host 为 false），依据证伪条件 6（Falsifier 6），A2 净放置归因结果予以保留，不作报告。"
 lang: "zh-Hans"
 source: "satb-harness"
 complete: true
@@ -14,43 +14,41 @@ complete: true
 
 ## 0. 概述
 
-当两份智能体评测报告的任务完成率或能耗数字不一致时,差异往往来自模型的封装方式与宿主计数器的归因方式,而非模型本身。仅改变外围线束,就可使 `Gemini 2.5 Pro` 在 `Terminal-Bench 2` 上的任务解决率变化 `17` 个百分点;而若减去已漂移的空闲基线,或按处理器时间切分共享的硅片供电轨,则可能使能耗归因偏差超过 `30%`。
+当两个代理评估报告不同的任务完成率或不同的能耗数值时，差异常常来源于模型的包装方式以及主机计数的归因方式，而非模型本身。仅更换外围线束就使 `Gemini 2.5 Pro` 在 `Terminal-Bench 2` 上的任务解决率变化了 `17` 个百分点，而减去漂移的空闲基线或通过处理器时间分割共享硅轨道则可导致能耗归因误差超过 `30%`。
 
-本研究规定并实证验证了**饱足基准(Satiation Benchmark,`SATB`)**的评测契约:包括一套固定的顺序执行 Rust 参考线束(**`Lane B`**);一座用于零模型对照、原始模型端点、外部命令行线束及公开基准求解器的代理隔离适配器桥(**`Shapes D、M、H 与 I`**);一个五块式被测系统(`SUT`)密码学指纹;十二项强制一致性检查;以及一套五级无 root 遥测引擎。我们并未停留在纸面设计,而是在**四种硬件原型**上执行了实时一致性与证伪基准测试:`Apple M5 Max` 工作站(`128` 吉字节统一内存,`macOS 27.2.1`,片上 `IOReport` 与内核 `proc_pid_rusage` 提供的 `reported_j`);Tegra `aarch64` 开发套件(`Jetson Thor`,`Linux 6.8.12-1021-tegra`,提供德州仪器整板及三通道分轨电流分流器的物理 `measured_j`);`Framework` Desktop `Strix Halo` 工作站(`Ryzen Max+ 395`,`Linux 7.0.0-43-generic x86-64`,由 `0440 root:energy` 组隔离的封装能耗 `reported_j` 及 `amdgpu` 封装功耗跟踪);以及 `Raptor Lake` 工作站(`Intel Core i9-13900H`,`Linux 7.0.0-43-generic x86-64`,平台与封装能耗 `reported_j`)。对于封闭的云服务器能耗,则严格标记为 `not_available`。
+本研究规定并实证验证了 **饱足基准（Satiation Benchmark）(`SATB`)** 评估合同：一个固定的顺序 Rust 参考线束（**`Lane B`**），一个代理隔离的适配器桥接（**`Shapes D, M, H, and I`**）用于零模型控制、原始模型端点、外部命令行线束以及公共基准求解器，一个五块的系统待测（`SUT`）加密指纹，十二项强制一致性检查，和一个五层根less 遥测引擎。我们不再让设计悬而未测，而是在 **五种硬件原型** 跨 `macOS`、`Linux`、`Windows 11` 上执行实时一致性和伪造器基准：一台 `Apple M5 Max` 工作站（`128` GB 统一内存，`macOS 27.2.1`，芯片内 `IOReport` 与内核 `proc_pid_rusage` `reported_j`），一套 Tegra `aarch64` 开发套件（`Jetson Thor`，`Linux 6.8.12-1021-tegra`，物理 Texas Instruments 整板和三通道轨分离电流分流 `measured_j`），一台 `Framework` 桌面 `Strix Halo` 工作站（`Ryzen Max+ 395`，`Linux 7.0.0-43-generic x86-64`，`0440 root:energy` 组隔离的包能耗 `reported_j` 加上 `amdgpu` 包功率跟踪），一台 `Raptor Lake` 工作站（`Intel Core i9-13900H`，`Linux 7.0.0-43-generic x86-64`，平台与包能耗 `reported_j`），以及一台裸金属 `Windows 11` 工作站（`Intel Core i7-1165G7` 加 `GeForce 2060`，`Windows 11` 构建 `26300` `x86-64`，rootless 累计离散显卡 `reported_j`，Win32 Job Object 限制，以及严格标记为 `not_available` 的非特权处理器-包能耗），并附带闭源云服务器能耗（`not_available`）。
 
-**通俗而言**
+**用通俗语言**
 
-1. 代理的提示循环、上下文裁剪规则和工具沙箱可以使基准分数的波动程度相当于更换底层模型，因此 `Lane B` 在确定性 Rust 中将该包装器完全固定，而 `Lane O` 则通过一个经过审计的代理插件强制使用外部包装器。
-
-2. 能量通道在其真实的物理边界处原始记录，包括整壁插座、板卡输入、芯片封装、操作系统进程估计或逻辑令牌账本，且绝不合并为单一未标记的数值，也不在证据类别（`measured_j` 与 `reported_j` 与 `est_j`）之间求和，或使用车队可持续性平均值进行回填。
-
-3. 在四个平台硅芯片上进行的实时测试验证了精确的 `Shape D` 百万记录内存映射（`15027705736`）和 `C9` 重放（`149,747 B`、`0` 字节差异）确定性，`0.87-9.54 ms` 进程树杀死清理，云端 `temperature = 0` 在三家供应商之间的非确定性，硬件传感器采样率上限（`24.3-45.4 µs` `x86-64` 计数器读取在 `94-97 Hz` 与 `2.95 ms` 串行总线分流读取在 `66.6 Hz` 的 `Jetson Thor` 对比 `~8 Hz` 的 `macmon` `IOReport`），在按处理器时间划分顺序计算加存储阶段时出现 `32.59%-72.89%` 错误（`Falsifier 3`），以及物理图形与处理器分流轨道的分离，配合 `Falsifier 6` 共享主机漂移门控（`dedicated_host = false`）。
+1. 代理的提示循环、上下文裁剪规则和工具沙箱能够像更换底层模型一样显著影响基准分数，因此 `Lane B` 在确定性的 Rust 中将该包装器完全固定，而 `Lane O` 则通过一个经审计的代理插件强制使用外部包装器。  
+2. 能量通道在其真实的物理边界处原始记录, , 整壁插头、板卡输入、芯片封装、操作系统进程估计或逻辑令牌账本, , 绝不合并为单一未标记的数值，也不跨证据类别（`measured_j` 与 `reported_j` 与 `est_j`）求和，或使用舰队可持续性平均值进行回填。  
+3. 在五个硅片和操作系统平台（`macOS`、`Linux` 和 `Windows 11`）上的实时测试验证了精确的 `Shape D` 百万记录内存映射 (`15027705736`) 和 `C9` 回放 (`149,747 B`、`0` 换行或字节差异) 的确定性，`0.87-9.54 ms` 内核进程树清理（`Windows 11` 上通过 Win32 Job Objects 为 `2.46 ms`），云端 `temperature = 0` 在三家供应商间的非确定性，硬件传感器采样上限（Linux 计数器读取在 `94-97 Hz` 时为 `24.3-45.4 µs`，Windows 进程内图形计数器读取在 `64.6 Hz` 时为 `1.17 ms`，Jetson Thor 上串行总线分流读取在 `66.6 Hz` 时为 `2.95 ms`，以及约 `8 Hz` 的 `macmon` `IOReport`），在按处理器时间划分顺序计算加存储阶段时出现 `32.59%-89.88%` 的误差（`Falsifier 3`），以及物理图形与处理器分流轨道分离并伴随 `Falsifier 6` 共享主机漂移门控（`dedicated_host = false`）。
 
 <div id="1-terms-acronyms-and-attribution-labels" class="anchor-alias" aria-hidden="true"></div>
 
-## 1. 术语、首字母缩写词与归因标签
+## 1. 术语、缩写与归因标签
 
 <ul id="terms">
 <li>SATB、SUT、PFRK、OQ、SPEC、BUNDLE、SUBMIT、REFUSE、STOP：饱足基准（Satiation Benchmark）线束与归因规范、被测系统、四类尝试结果（通过、失败、拒绝、终止）、已解决的规范开放问题、规范性规范文档、任务包文件、终态答案提交调用、终态拒绝调用，以及顺序循环终止标记</li>
 <li>ACI、SWE、CLI、MCP、SDK、ACP、ARC、AGI、GUI：智能体-计算机接口、软件工程基准前缀、命令行接口、模型上下文协议、软件开发工具包、智能体客户端协议、抽象与推理语料库、通用人工智能基准套件，以及图形用户界面</li>
 <li>IO、JSON、JSONL、RPC、JCS、UTF、HTTP、SSE、URL：输入/输出协议、JavaScript 对象表示法、按行分隔的 JSON、远程过程调用、JSON 规范化方案（RFC 8785）、Unicode 转换格式、超文本传输协议、服务器发送事件，以及统一资源定位符</li>
-<li>POSIX、MMAP、DNULLMM1、SHA、SIGKILL、ESRCH、EACCES、EOF：可移植操作系统接口、内存映射文件接口、二进制内存映射的确定性空索引格式、安全哈希算法（SHA-256）、不可捕获的 POSIX 进程终止信号、内核“进程不存在”状态、POSIX 权限拒绝错误状态，以及 heredoc 文件结束分隔符</li>
+<li>POSIX、MMAP、DNULLMM1、SHA、SIGKILL、ESRCH、EACCES、EOF、NT、NTFS、CRLF、MSVC、UCRT、FFI、DLL：便携式操作系统接口、内存映射文件接口、二进制内存映射确定性空索引格式、安全哈希算法（SHA-256）、不可捕获的POSIX进程终止信号、内核无此进程状态、POSIX权限拒绝错误状态、文件结束世系文档分隔符、Windows新技术内核（`Windows NT`）、新技术文件系统、回车换行（`\r\n`）换行序列、Microsoft Visual C++编译器（`cl.exe`）、Windows通用C运行时（`ucrtbase.dll`）、外部函数接口和动态链接库</li>
 <li>AI、ML、LLM、MLX、GGUF、KV、TP、ENERGY：人工智能、机器学习、大语言模型、面向本地推理的 Apple 数组框架、GPT 生成统一格式量化权重、键值缓存、张量并行，以及 ML.ENERGY GPU 功耗基准联盟</li>
-<li>CPU、GPU、APU、ANE、SoC、ALU、ISA、IPC、PID、UID、GID、OS、VM、EC、GB：中央处理器、图形处理器、加速处理单元、Apple 神经网络引擎、片上系统、算术逻辑单元、指令集架构、每周期指令数、进程标识符、用户标识符、组标识符、操作系统、虚拟机、嵌入式控制器，以及吉字节</li>
-<li>RAM、DRAM、SLC、NVMe、PSU、PDU、AC、DC、DVFS、MSR、MMIO：随机存取存储器、动态随机存取存储器、系统级缓存、非易失性存储器快速访问协议、电源供应单元、配电单元、交流电、直流电、动态电压与频率调节、模型专用寄存器，以及内存映射输入/输出</li>
+<li>CPU、GPU、APU、ANE、SoC、ALU、ISA、IPC、PID、UID、GID、OS、VM、EC、GB、TGL、RTX：中央处理器、图形处理器、加速处理器、Apple神经引擎、片上系统、算术逻辑单元、指令集架构、每周期指令数、进程标识符、用户标识符、组标识符、操作系统、虚拟机、嵌入式控制器、吉字节、英特尔Tiger Lake移动架构和NVIDIA GeForce RTX独立GPU系列</li>
+<li>RAM、DRAM、SLC、NVMe、PSU、PDU、AC、DC、DVFS、MSR、MMIO、RDTSC、HVCI、WMI、EMI、SRUM：随机访问存储器、动态随机存取存储器、系统级缓存、非易失性存储器快速接口、供电单元、配电单元、交流电、直流电、动态电压与频率调节、特定模型寄存器、内存映射输入/输出、x86 读取时间戳计数器指令、Windows 超级管理程序保护代码完整性、Windows 管理工具、Windows 能源测量接口 (`\\.\EnergyMeter`)、以及 Windows 系统资源使用监视器</li>
 <li>RAPL、NVML、PPT、TI、I2C、ADC、INA、INA238、INA3221、AGX、VDD、SOC、MSS、VIN、SYS、PLATYPUS：英特尔/AMD 运行平均功率限制、NVIDIA 管理库、AMD 封装功率跟踪、德州仪器、集成电路间总线、模数转换器、德州仪器电流/功率监测芯片系列（`INA238`、`INA3221`）、NVIDIA Jetson AGX 模块等级、漏极供电电压轨、片上系统电压轨、存储子系统电压轨、输入系统电压轨，以及功耗泄漏攻击：利用软件攻击处理器（Power Leakage Attacks: Targeting Your Processor Using Software）</li>
 <li>API、USD、CNCF、AISI、UK、AMD、NVIDIA：应用程序编程接口、美元、云原生计算基金会、AI 安全研究所、英国、先进微电子公司，以及 NVIDIA 公司</li>
 <li>RCE、MoL、WCA、LUT6：Reality Code Engine [同一组织]、Mixture of Limits [同一组织]、Wise Computer Automation [同一组织]、以及 6 输入布尔查找表</li>
 </ul>
 
-在遥测等级 L0 至 L4 范围内，`SATB` 收据中记录的每个通道均须同时标注其物理边界，以及四类严格证据类别之一。
+在遥测等级 L0 至 L4 上，`SATB` 回执中记录的每个通道都同时携带其物理边界和以下四类严格证据类别之一：
 
-| 证据类别 | `SATB` 收据与表格中的适用范围 |
+| 证据类别 | 在 `SATB` 回执与表格中的适用范围 |
 | :--- | :--- |
-| **`Exact (L4 Logical & Cryptographic)`** | 任务包的 `SHA-256` 与 `JCS`（`RFC 8785`）规范摘要、五块式 `SUT` 指纹及重放记录；代理记录的提示、缓存、推理与补全 token 计数；挂钟时长；以及带日期的 `API` 标价 `USD`。 |
-| **`Measured Hardware Rail (measured_j: L0, L1, L2)`** | 仅当数据来自经校准的外部 `AC` 墙面功率分析仪（`L0`）或物理板级电流分流监测器（`L1`/`L2`）时才予以填充。已在 `NVIDIA Jetson AGX Thor` 上通过 `TI` `INA238`（`hwmon6` `VIN`，`L1`）与 `INA3221`（`hwmon5` `ch1 VDD_GPU`、`ch2 VDD_CPU_SOC_MSS`、`ch3 VIN_SYS_5V0`，`L2`/`L1`；`board_metered = true`）完成实时验证。由于采集期间活跃的同租户负载占用了 `VDD_GPU`（`dedicated_host = false`），原始轨道 `measured_j` 予以保留，而 `A2` 净放置归因则被扣留。`Apple M5 Max`、`AMD Strix Halo` 与 `Intel Raptor Lake` 上 `measured_j` 保持为 `None`，全程均未设置 `L0` 墙面功率。 |
-| **`Reported Counter (reported_j: L1, L2 & L3)`** | 无需 root 权限的片上遥测计数器：`Apple M5 Max` 通过 `IOReport` 在 `L1` 提供 `sys_power`，在 `L2` 经 `macmon` 提供 `chip_power`/`cpu_power`/`gpu_power`；`Intel Raptor Lake` 的 `RAPL` 在 `L1` 提供 `psys`，在 `L2` 提供 `package-0`/`core`/`uncore`；`Framework AMD Strix Halo` 的 `RAPL` 在 `L2` 提供 `package-0`/`core`，并附带 `amdgpu` `PPT` 瓦数。另有 `OS` 建模的逐进程估计：`macOS proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj`（`L3`，标签 `D`）。此类数值严禁与 `measured_j` 或 `est_j` 求和。 |
-| **`Provider-Attested (P) vs. Not Available (N)`** | 闭源 `API` 的远端服务器能耗仅当服务商返回附带逐字方法说明的单请求能耗数值时记为 `P`，否则字面记为 `"not_available"`（标签 `N`）。未通过 `5.0%` 漂移上限（`Falsifier 6`）或 `Step 7` 求和校验的派生基线减法将被自动剔除，原始通道保持完整。 |
+| **`Exact (L4 Logical & Cryptographic)`** | 任务包、五块 `SUT` 指纹和重放转录的 `SHA-256` 与 `JCS`（`RFC 8785`）规范化摘要；由代理记录的提示词、缓存、推理和补全 token 计数；墙钟时长；以及带日期的 `API` 标价 `USD`。 |
+| **`Measured Hardware Rail (measured_j: L0, L1, L2)`** | 仅由经校准的外部 `AC` 墙插分析仪（`L0`）或物理板级电流分流监测器（`L1`/`L2`）填充。已在 `NVIDIA Jetson AGX Thor` 上通过 `TI` `INA238`（`hwmon6` `VIN`，`L1`）和 `INA3221`（`hwmon5` `ch1 VDD_GPU`、`ch2 VDD_CPU_SOC_MSS`、`ch3 VIN_SYS_5V0`，`L2`/`L1`；`board_metered = true`）完成现场验证。由于采集期间有活跃的共租户占用 `VDD_GPU`（`dedicated_host = false`），原始电轨 `measured_j` 予以保留，而 `A2` 净放置归因则被暂缓；在 `Apple M5 Max`、`AMD Strix Halo`、`Intel Raptor Lake` 和 `Windows 11`（`i7-1165G7` + `RTX 2060`）上，`measured_j` 仍为 `None`，且 `L0` 墙插功率在全程均未设置。 |
+| **`Reported Counter (reported_j: L1, L2 & L3)`** | 无需 root 权限的片上遥测计数器（`Apple M5 Max` 经 `macmon` 读取的 `IOReport`：`L1` 的 `sys_power` 以及 `L2` 的 `chip_power`/`cpu_power`/`gpu_power`；`Intel Raptor Lake` 的 `RAPL`：`L1` 的 `psys` 以及 `L2` 的 `package-0`/`core`/`uncore`；`Framework AMD Strix Halo` 的 `RAPL`：`L2` 的 `package-0`/`core`，外加 `amdgpu` `PPT` 瓦数；`Windows 11` 无需 root 的 `NVML` `nvmlDeviceGetTotalEnergyConsumption` 在 `NVIDIA GeForce RTX 2060` 上给出的累计 `mJ`，`L2`），以及由 `OS` 建模的进程级估计值（`L3` 的 `macOS proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj`，标记为 `D`）。绝不与 `measured_j` 或 `est_j` 相加。 |
+| **`Provider-Attested (P) vs. Not Available (N)`** | 闭源 `API` 的远端服务器能耗（以及在禁用 ring-0 `RAPL` `MSR` 驱动的 Windows 11 上的用户态 `CPU` 封装能耗）仅当提供方返回逐请求能耗数值并附带原文方法说明时才记为 `P`，否则一律记为字面值 `"not_available"`（标记 `N`）。若推导出的基线扣减未通过 `5.0%` 漂移界限（`Falsifier 6`）或 `Step 7` 求和校验，则会被自动丢弃，而原始通道保持完整。 |
 
 <div id="11-lineage-design-invariants-and-same-house-disclosure" class="anchor-alias" aria-hidden="true"></div>
 
@@ -69,7 +67,7 @@ complete: true
 
 <div id="2-survey-of-agent-harnesses-and-why-context-policy-is-part-of-the-system" class="anchor-alias" aria-hidden="true"></div>
 
-## 2. 代理驾驭框架综述与上下文策略为何属于系统组成部分
+## 2. 智能体线束综述，以及为何上下文策略是系统的组成部分
 
 现代编码、终端与计算机使用类驾驭框架（harness）在工具暴露方式、文件编辑管控以及对不断增长的对话历史进行压缩等方面差异显著：
 
@@ -88,9 +86,9 @@ complete: true
 
 在 `Terminal-Bench 2` 上，在保持底层模型检查点不变的情况下，`Gemini 2.5 Pro` 搭配 `Terminus-2` 所解决的任务数比搭配 `OpenHands` 时**多 `17%`**。因此，上下文管理、输出截断、编辑 linting 与重试规则属于被评测系统的一级组成部分，而非中性的管道设施。`SATB` 通过将评测拆分为两条显式轨道来消解这一混淆，并关闭开放问题 `OQ-1` 与 `OQ-2`：
 
-1. **保持包装器不变 (`Lane B`) 与评估外部包装器 (`Lane O`)**: `Lane B` (`satb-agent`) 在所有模型中固定单一可审计的 Rust 循环，而 `Lane O` 将完整的第三方线束（`Claude Code`、`Codex CLI`、`OpenHands`、`Terminus-2`、`Inspect`）封装为黑盒 `SUT`，其内部提示和压缩调用被哈希进 `harness` 指纹块，并 100% 通过 `satb-proxy` 路由。
-2. **上下文策略解析 (`OQ-1`: `ContextRule_v0`)**: 直接终止且不省略的尝试会将多步推理与冗长的工具输出混为一谈，而 `LLM` 生成的摘要（`Claude Code` 自动压缩）会注入隐藏的随机模型调用，破坏确定性线束回放。`Lane B` 采用 **`ContextRule_v0`**：只要累计对话大小超过声明的上下文窗口的 **`80%`**，线束会确定性地用 `"[ELIDED_BY_CONTEXT_RULE_V0]"` 替换最早的工具输出，同时保留 `system(TEMPLATE_v0)`、初始的 `user(render(bundle))`，以及 **最近的 `8` 条工具输出**，使 **零模型调用**。仅当这些保留的消息本身仍超过窗口的 `100%` 时，才会触发硬性 `killed(context_ceiling)`。
-3. **工具表面解析 (`OQ-2`: `TOOLS_v0`)**: 纯 `exec`（`mini` 风格）迫使模型对多行源码补丁和代数证明进行 shell 转义（`cat << 'EOF'`），导致与任务推理无关的 shell 引号错误，并使在 `macOS` 与 `Linux` 上实现可移植的无根沙箱变得复杂。`Lane B` 修复了 **`TOOLS_v0`**，包括四个工作区工具（`exec`、`read_file`、`write_file`、`list_dir`）以及两个终端工具（`submit`、`refuse`），通过 `JCS` 规范化为 `tools_hash`（`d5b102...`）。
+1. **保持包装器不变（`Lane B`）与评估外部包装器（`Lane O`）**：`Lane B`（`satb-agent`）在所有模型上固定单个可审计的 Rust 循环，而 `Lane O` 将完整的第三方线束（`Claude Code`、`Codex CLI`、`OpenHands`、`Terminus-2`、`Inspect`）包装为黑盒 `SUT`，其内部提示和压缩调用被哈希到 `harness` 指纹块中，并 100% 通过 `satb-proxy` 路由。
+2. **上下文策略解析（`OQ-1`：`ContextRule_v0`）**：以零省略硬终止尝试会将多步推理与冗长工具输出混淆，而 `LLM` 生成的摘要（`Claude Code` 自动压缩）会注入隐藏的随机模型调用，从而破坏确定性线束重放。`Lane B` 采用 **`ContextRule_v0`**：当累积对话大小超过声明的上下文窗口的 **`80%`** 时，线束确定性地将最旧的工具输出替换为 `"[ELIDED_BY_CONTEXT_RULE_V0]"`，同时完整保留 `system(TEMPLATE_v0)`、初始 `user(render(bundle))` 以及 **最近 `8` 个工具输出**，且 **不进行任何模型调用**。仅当这些保留的消息单独超过窗口的 `100%` 时，才触发硬 `killed(context_ceiling)`。
+3. **工具表面解析（`OQ-2`：`TOOLS_v0`）**：纯 `exec` 模式（`mini` 风格）迫使模型对多行源代码补丁和代数证明进行 shell 转义（`cat << 'EOF'`），引入与任务推理正交的 shell 引用失败，并使跨 `macOS`、`Linux` 和 `Windows` 的可移植无根沙箱化变得复杂。`Lane B` 固定 **`TOOLS_v0`**，包括四个工作区工具（`exec`、`read_file`、`write_file`、`list_dir`）以及两个终端工具（`submit`、`refuse`），通过 `JCS` 规范化后得到 `tools_hash`（`d5b102...`）。
 
 ---
 
@@ -152,16 +150,16 @@ loop:
 
 <div id="41-four-adapter-shapes-behind-one-supervisor-and-proxy" class="anchor-alias" aria-hidden="true"></div>
 
-### 4.1 一个主管和代理背后的四种适配器形状
+### 4.1 四种适配器形状在单一监督者和代理后面
 
 `Lane B` 之外的任何系统均通过以下四种适配器形状之一连接到 `satb-supervisor`：
 
-| 适配器形状 | 目标系统 | 执行与隔离契约 | 复用的标准 |
+| 适配器形态 | 目标系统 | 执行与隔离约定 | 复用标准 |
 | :--- | :--- | :--- | :--- |
-| **`Shape D` (`dnull` 控制)** | 确定性空模型（`N0` 严格无模型和 `N1` 开发结晶化）基于冻结的 `DNULLMM1` `mmap` 存储 | 在 `/work` 内以完全相同的 `TOOLS_v0` 和 `Verifier` 规则执行，在决策时刻进行 **`0` 次代理模型调用**。 | `POSIX mmap`、`SPEC v0.4` 64 位整数循环 |
-| **`Shape M` (模型端点)** | 本地开源权重服务器和封闭云 `API` | 通过 `Chat Completions` 或 `Messages` 运行 `Lane B` `satb-agent`，附带工具调用和强制 `usage`，100% 经由 `satb-proxy` 路由。 | OpenAI 兼容 `API`（`llama.cpp`、`mlx_lm`、`vLLM`）；`Anthropic`、`Gemini`、`xAI` 转换器 |
-| **`Shape H` (盒中线束)** | `Claude Code`、`Codex CLI`、`Gemini CLI`、`OpenHands`、`Terminus-2` | 任务写入 `/work/task/BUNDLE.md`。基础 `URL` 指向 `satb-proxy`（`127.0.0.1:<port>`）；真实 `API` 密钥不提供给 `/work`；通过 `MCP` `submit` 或 `refuse` 结束；无其他出口。 | `Inspect` 沙箱桥接环境变量；`--strict-mcp-config` `MCP`；可选 `ACP` |
-| **`Shape I` (`Inspect` 代理)** | 现有的公开基准 `Inspect` 求解器 | 以 `attempts = 1` 将 `SATB` 任务束包装为 `submit` 和 `refuse` 工具，所有模型调用均通过 `satb-proxy` 路由。 | `UK AISI Inspect` `Task` 和 `Solver` 接口 |
+| **`Shape D` (`dnull` 对照)** | 确定性空模型（`N0` 严格无模型与 `N1` 开发期固化）作用于冻结的 `DNULLMM1` `mmap` 存储 | 在 `/work` 内执行，采用相同的 `TOOLS_v0` 与 `Verifier` 规则，决策时**零次**代理模型调用。 | POSIX `mmap` / Win32 `MapViewOfFile`，`SPEC v0.4` 64 位整数循环 |
+| **`Shape M` (模型端点)** | 本地开源权重服务器与闭源云端应用程序接口（`API`） | 通过 `Chat Completions` 或 `Messages` 运行 `Lane B` 的 `satb-agent`，支持工具调用并强制返回 `usage`，全部 100% 经由 `satb-proxy` 路由。 | 兼容 OpenAI 的 `API`（`llama.cpp`、`mlx_lm`、`vLLM`）；`Anthropic`、`Gemini`、`xAI` 转换器 |
+| **`Shape H` (盒装线束)** | `Claude Code`、`Codex CLI`、`Gemini CLI`、`OpenHands`、`Terminus-2` | 任务写入 `/work/task/BUNDLE.md`。基础 `URL` 指向 `satb-proxy`（`127.0.0.1:<port>`）；真实 `API` 密钥不写入 `/work`；通过 `MCP` 的 `submit` 或 `refuse` 结束；除此之外无其他出口流量。 | `Inspect` 沙箱桥接环境变量；`--strict-mcp-config` `MCP`；可选 `ACP` |
+| **`Shape I` (`Inspect` 智能体)** | 现有公开基准的 `Inspect` 求解器 | 以 `attempts = 1` 将 `SATB` 任务包包装为带有 `submit` 与 `refuse` 工具的形式，模型调用经由 `satb-proxy` 路由。 | `UK AISI Inspect` 的 `Task` 与 `Solver` 接口 |
 
 <div id="42-five-block-sut-fingerprint-and-session-validity" class="anchor-alias" aria-hidden="true"></div>
 
@@ -181,24 +179,24 @@ loop:
 
 <div id="43-mandatory-c1c12-adapter-conformance-suite" class="anchor-alias" aria-hidden="true"></div>
 
-### 4.3 强制性 `C1-C12` 适配器一致性测试套件
+### 4.3 强制性的 `C1-C12` 适配器一致性套件
 
 任何适配器或线束在通过全部十二项一致性检查（`C1` 至 `C12`）之前，均不得进入评测。
 
-| 检查项 | 通过要求 |
+| 检查 | 通过要求 |
 | :--- | :--- |
-| **`C1` 任务包往返** | 适配器回显输入任务包的 `JCS` `SHA-256` 摘要，须与其完全一致。 |
-| **`C2` 提交路径** | 外部 `Verifier` 接收到的字节序列，须与 `satb-proxy` / `MCP` 终端捕获日志中记录的字节序列完全一致。 |
-| **`C3` 拒绝路径** | 受指令触发的拒绝须干净地以 `refuse` 形式到达（`sub_reason = "other"`，`completion_score = 0`）。 |
-| **`C4` 单次终端调用** | 在第一个 `submit` 或 `refuse` 之后发出的任何工具或终端调用均被忽略，并计数。 |
-| **`C5` 无预言机** | 从 `/work` 无法访问 `Verifier` 与 `satb-supervisor` 的目录、套接字及父路径（`..`）。 |
-| **`C6` 出站网络** | 模型流量仅能通过 `satb-proxy`（`127.0.0.1:<port>`）访问；`/work` 子进程无任何外部网络访问权限，且不持有上游 `API` 密钥。 |
-| **`C7` 用量字段存在** | 每次模型调用均须携带 `usage`（缺失则触发 `missing -> killed(usage_missing)`）；代理侧的 token 总数须与上游引擎计数完全一致。 |
-| **`C8` 指纹稳定** | 在执行 3 次尝试的试运行前后，五块式 `SUT` 指纹的 `SHA-256` 须保持一致。 |
-| **`C9` 线束重放** | 重放已记录的 `satb-proxy` 响应，须复现字节级一致的转录文本（字节差异为 `0`；对 `Lane B` 为强制要求）。 |
-| **`C10` 终止路径** | 失控的 `/work` 进程树（包括已脱离的子进程）须在 `< 2,000 ms` 内被回收，并记录为 `killed`。 |
-| **`C11` 遥测握手** | 无特权的 `L3` 进程计数器（`cgroup v2` 或 `proc_pid_rusage`）须可读取，阶段标记须可到达，并记录单调时钟与墙钟之间的偏移量。 |
-| **`C12` 确定性探测** | 执行 `8` 次相同请求，并记录不同输出的数量，作为经验性的 `SUT` 属性。 |
+| **`C1` 捆绑往返** | 适配器回显输入任务捆绑的精确 `JCS` `SHA-256` 摘要。 |
+| **`C2` 提交路径** | 外部 `Verifier` 接收在 `satb-proxy` / `MCP` 终端捕获处记录的精确字节序列。 |
+| **`C3` 拒绝路径** | 指令性拒绝以 `refuse`（`sub_reason = "other"`，`completion_score = 0`）干净到达。 |
+| **`C4` 单终端调用** | 在首次 `submit` 或 `refuse` 之后发出的任何工具或终端调用均被忽略并计数。 |
+| **`C5` 无预言机** | `Verifier` 和 `satb-supervisor` 目录、套接字以及父路径（`..`）从 `/work` 不可达。 |
+| **`C6` 出站** | 仅 `satb-proxy`（`127.0.0.1:<port>`）可达以进行模型流量；`/work` 子进程具有零外部网络访问和零上游 `API` 密钥。 |
+| **`C7` 用量存在** | 每个模型调用均携带 `usage`（`missing -> killed(usage_missing)`）；代理令牌总数与上游引擎计数精确匹配。 |
+| **`C8` 指纹稳定** | 五块 `SUT` 指纹 `SHA-256` 在 3 次尝试空运行前后相同。 |
+| **`C9` 线束重放** | 重放记录的 `satb-proxy` 响应可重现字节完全相同的转录（`0` 字节或 `CRLF` 差异；对 `Lane B` 强制要求）。 |
+| **`C10` 终止路径** | 失控的 `/work` 进程树（`POSIX` 进程组或 Win32 Job Object，包括分离的子进程）在 `< 2,000 ms` 内被收割并记录为 `killed`。 |
+| **`C11` 遥测握手** | 无根 `L3` 进程计数器（`cgroup v2`、`proc_pid_rusage` 或 Win32 `GetProcessTimes`/`QueryProcessCycleTime`）可读，阶段标记到达，且单调到墙钟偏移被记录。 |
+| **`C12` 确定性探测** | 执行 `8` 个相同请求，并将不同输出的计数记录为经验性的 `SUT` 属性。 |
 
 ---
 
@@ -213,17 +211,17 @@ loop:
 
 <div id="51-telemetry-boundaries-l0l4-and-attribution-labels-a1n" class="anchor-alias" aria-hidden="true"></div>
 
-### 5.1 遥测边界（`L0-L4`）与归因标签（`A1-N`）
+### 5.1 遥测边界（`L0-L4`）和归因标签（`A1-N`）
 
 能量和活动传感器位于五个不同的边界，它们测量物理上不同的量，绝不能求和或混淆：
 
-| 层级 | 物理/逻辑边界 | 代表性传感器 | 通道可诚实归因的内容 |
+| 层级 | 物理 / 逻辑边界 | 代表性传感器 | 该通道可诚实归因的内容 |
 | :--- | :--- | :--- | :--- |
-| **`L0` wall** | `AC` 墙插座 | 智能插座或 `PDU`（`Shelly` `apower`, `aenergy`；`Yokogawa` 分析仪） | 整机包括 `PSU` 转换热、风扇、`DRAM` 和 `NVMe`；`~1 s` 采样率。 |
-| **`L1` platform** | 主板 `DC` 输入轨 | `Jetson Thor INA238` 载板；`Mac sys_power`；`RAPL psys` | 电源砖或 `PSU` 下游 `DC` 侧的整台计算机。 |
-| **`L2` package / SoC** | `CPU` 封装、`GPU` 和 `SoC` 轨 | `RAPL pkg`；无根 `macmon IOReport`；`Thor INA3221`；`amdgpu hwmon`；`NVML` 累积能量（`mJ`） | `SoC` 上的整个 `SUT`（`A2`），或当某轨物理上独占时仅推理引擎（`A1`）。 |
-| **`L3` process / cgroup** | 单个 `OS` 进程树 | `Linux cgroup v2`（`cpu.stat`、`memory.peak`、`io.stat`）、`perf`；`macOS proc_pid_rusage` `ri_energy_nj` | 资源活动份额（`C`），或 `OS` 内核自身的内部每进程能量模型（`D`）。 |
-| **`L4` logical** | 模型/工具对话 | `satb-proxy` 令牌计数和调用延迟；线束轮次、工具调用和 `ContextRule_v0` 省略 | 每个 `SUT` 上的精确计数，无一例外，包括封闭的云 `API`。 |
+| **`L0` 墙面** | 墙面插座处的 `AC` | 智能插座或 `PDU`（`Shelly` 的 `apower`、`aenergy`；`Yokogawa` 分析仪） | 整机功耗，包括 `PSU` 转换损耗产生的热量、风扇、`DRAM` 与 `NVMe`；采样周期约 ~1 s。 |
+| **`L1` 平台** | 主板 `DC` 输入供电轨 | `Jetson Thor INA238` 载板；`Mac sys_power`；`RAPL psys` | 位于电源适配器或 `PSU` 下游、直流侧的整机功耗。 |
+| **`L2` 封装 / SoC** | `CPU` 封装、`GPU` 与 `SoC` 供电轨 | `RAPL pkg`；免 root 的 `macmon IOReport`；`Thor INA3221`；`amdgpu hwmon`；`NVML` 累计能量（`mJ`） | 当 `SUT` 基于 `SoC`（`A2`）时，为整个 `SUT` 的功耗；当某一供电轨在物理上独占时，则仅为推理引擎的功耗（`A1`）。 |
+| **`L3` 进程 / cgroup** | 单个 `OS` 进程树 | `Linux cgroup v2`（`cpu.stat`、`memory.peak`、`io.stat`）、`perf`；`macOS proc_pid_rusage` 的 `ri_energy_nj`；Win32 的 `GetProcessTimes` 与 `QueryProcessCycleTime` | 资源活动占比（`C`），或操作系统内核自身的逐进程能耗模型（`D`）。 |
+| **`L4` 逻辑** | 模型/工具对话 | `satb-proxy` 的 token 计数与调用延迟；线束（harness）的轮次、工具调用及 `ContextRule_v0` 省略记录 | 对每个 `SUT` 均可获得精确计数，包括封闭的云端 `API`。 |
 
 收据中的每个能量值都携带七种归因标签之一：
 
@@ -237,7 +235,7 @@ loop:
 
 <div id="52-seven-step-counter-discipline-rootless-collection-oq-5-and-platform-maps" class="anchor-alias" aria-hidden="true"></div>
 
-### 5.2 七步计数器纪律、无 root 采集（`OQ-5`）与平台映射
+### 5.2 七步计数纪律、无根采集（`OQ-5`）与平台映射
 
 `satb-meter` 按七个有序步骤处理每一次尝试（attempt）：
 1. **在每个事件边界读取累积计数器**（`attempt.start`、每次 `model_call` 与 `tool_call`、`attempt.close`，外加一个 `100 ms` 参考时钟节拍），从而使窗口能量为精确的计数器差值 $\Delta E = E(t_{\text{end}}) - E(t_{\text{start}})$。
@@ -248,15 +246,16 @@ loop:
 6. **将基线存储为派生通道**：以常驻基线包围各会话的前后两端；若前后空闲功率漂移超过 `5.0%`（`Falsifier 6`），则丢弃派生的净高于空闲值，同时保持原始通道完整不变。
 7. **运行求和检验（`Falsifier 2`）**：验证派生的阶段分量之和能否在一个传感器量化单位（`1 mJ`）内还原为原始尝试计数器差值；若不能，则舍弃派生划分，仅保留原始通道。
 
-**无 root 采集规则（`OQ-5`）。** 基准测试绝不可以 `root` 身份运行 `SUT` 编排。在 `macOS` 上，`satb-meter` 使用无 root 权限的 `macmon`（`IOReport` 订阅）以及 `libSystem` 的 `proc_pid_rusage(RUSAGE_INFO_V6)`，绝不使用 `sudo` 或 `powermetrics`。在 `Linux` 上（自内核 `5.10` 起，在 `PLATYPUS` 事件之后，`/sys/class/powercap/intel-rapl` 变为仅 root 可读），管理员需一次性配置 `udev` 规则，向专用的 `satb-meter` 用户组授予读取权限，该组**仅包含 `satb-supervisor` 的 `UID`**，从而确保 `/work` 沙箱进程既无法通过侧信道窃取 `RAPL`，也无法读取其自身的能量计量数据：
+**无根采集规则（`OQ-5`）。** 基准测试绝不得以 `root` 身份运行 `SUT` 编排，或加载自定义的 ring-0 驱动。在 `macOS` 上，`satb-meter` 使用无根的 `macmon`（`IOReport` 订阅）和 `libSystem` 的 `proc_pid_rusage(RUSAGE_INFO_V6)`，从不使用 `sudo` 或 `powermetrics`。在 `Linux` 上（自内核 `5.10` 起 `/sys/class/powercap/intel-rapl` 因 `PLATYPUS` 而变为仅 root 可读），一次性的管理员 `udev` 规则向仅包含 **仅 `satb-supervisor` 的 `UID`** 的专用 `satb-meter` 组授予读权限，确保 `/work` 沙箱进程既无法侧信道 `RAPL`，也无法读取自身的能耗计量。在 `Windows 11`（`NT 10.0.26300`）上，非特权的基本用户令牌（`0x20000`）通过 `nvml.dll`（`nvmlDeviceGetTotalEnergyConsumption`）直接读取离散 `GPU` 累积能耗（`mJ`）以及通过 Win32 `QueryProcessCycleTime` 读取 `L3` 进程周期，而 Intel `RAPL` `MSR` `0x611` 则需要被 `OQ-5` 和 `HVCI` 禁止的 ring-0 内核驱动（将 Windows `CPU` 封装能耗严格置于 `"not_available"`，标签 `N`）：
 
-| 目标平台 | `L0` / `L1` 整系统通道 | `L2` 封装 / `SoC` 通道 | `L3` 进程与 `L4` 逻辑通道 | 关键验证状态 |
+| 目标平台 | `L0` / `L1` 整体系统通道 | `L2` 包 / `SoC` 通道 | `L3` 进程 & `L4` 逻辑通道 | 关键验证状态 |
 | :--- | :--- | :--- | :--- | :--- |
-| **Apple Silicon Mac** (`M5 Max` 已验证) | `L0`：`Shelly` `PDU`（未插入时为 `not_available`）；`L1`：`macmon sys_power`（`reported_j`） | `macmon IOReport`：`chip_power`、`cpu_power`、`gpu_power`、`ane_power`、`ram_power`（`reported_j`） | `L3`：`proc_pid_rusage` `ri_energy_nj`（`D`）、`ri_instructions`、`ri_diskio_*`；`L4`：`satb-proxy` | Rootless `L1`-`L4` 在 `Apple M5 Max` 上实时验证；`L0` 插头开放。 |
-| **Framework AMD Strix Halo** (`Ryzen AI Max+ 395`、`Linux x86-64` 已验证) | `L0`：`Shelly` `PDU`（未插入时为 `not_available`）；`L1`：`cros_ec`（`0` 功率属性） | `RAPL package-0` 与 `core`（`0440 root:energy` `udev`）`reported_j` + `amdgpu` `PPT` `power1_input`（`0444`；`energy1_input` 缺失） | `L3`：`cgroup v2` / `getrusage`（`C` 活动份额）；`L4`：`satb-proxy` | 实时验证（`0440 root:energy` `PLATYPUS` 隔离；`amdgpu PPT` `0444`）。 |
-| **Intel Raptor Lake** (`Core i9-13900H`、`Linux x86-64` 已验证) | `L0`：`not_available`；`L1`：`RAPL psys`（`intel-rapl:1/energy_uj`，`0444` `reported_j`） | `RAPL package-0`、`core` 与 `uncore`（`MSR` + `MMIO` `energy_uj`，`0444` `reported_j`） | `L3`：`cgroup v2` / `getrusage`（`C` 活动份额）；`L4`：`satb-proxy` | 实时验证（`0 µJ` `Step 7` 残差跨越 `psys` `L1` 和 `package-0` `L2`）。 |
-| **NVIDIA Jetson AGX Thor** (`Linux aarch64` Tegra 已验证) | `L1`：`TI INA238`（`hwmon6` `VIN`，`0444` `measured_j`）+ `INA3221 ch3 VIN_SYS_5V0`（`0444` `measured_j`） | `INA3221 ch1 VDD_GPU`（`0444` `measured_j`，独占时为 `A1`）；`ch2 VDD_CPU_SOC_MSS`（`0444` `measured_j`）；`NVML`（`unverified`） | `L3`：`cgroup v2` / `getrusage`（`C` 活动份额）；`L4`：`satb-proxy` | 实时验证（`INA238` + `INA3221 ch1-ch3` `0444` rootless；GPU `NVML` 在共同租户锁下开放）。 |
-| **Closed Cloud `API`** (`Anthropic`、`xAI`、`Cerebras`、`OpenAI`、`Google`) | 本地 `L0`-`L1` 仅测量客户端主机（从服务器推理中排除） | 远程服务器 `L2`：严格为 **`N` (`not_available`)** 或按请求 **`P`**（`OQ-6`） | 本地 `/work` `L3`（`D`/`C`）用于沙盒工具；`L4`：**精确** `satb-proxy` 令牌、调用、`USD` | 通过 `satb-proxy` 在 `Anthropic`、`Cerebras` 和 `xAI` 上实时验证。 |
+| **Apple Silicon Mac** (`M5 Max` 已验证) | `L0`：`Shelly` `PDU`（`not_available` 若拔掉）；`L1`：`macmon sys_power`（`reported_j`） | `macmon IOReport`：`chip_power`、`cpu_power`、`gpu_power`、`ane_power`、`ram_power`（`reported_j`） | `L3`：`proc_pid_rusage` `ri_energy_nj`（`D`），`ri_instructions`，`ri_diskio_*`；`L4`：`satb-proxy` | Rootless `L1`-`L4` 已在 `Apple M5 Max` 实时验证；`L0` 插孔打开。 |
+| **Framework AMD Strix Halo** (`Ryzen AI Max+ 395`, `Linux x86-64` 已验证) | `L0`：`Shelly` `PDU`（`not_available` 若拔掉）；`L1`：`cros_ec`（`0` 功耗属性） | `RAPL package-0` 与 `core`（`0440 root:energy` `udev`）`reported_j` + `amdgpu` `PPT` `power1_input`（`0444`；`energy1_input` 缺失） | `L3`：`cgroup v2` / `getrusage`（`C` activity shares）；`L4`：`satb-proxy` | 已实时验证（`0440 root:energy` `PLATYPUS` 隔离；`amdgpu PPT` `0444`）。 |
+| **Intel Raptor Lake** (`Core i9-13900H`, `Linux x86-64` 已验证) | `L0`：`not_available`；`L1`：`RAPL psys`（`intel-rapl:1/energy_uj`，`0444` `reported_j`） | `RAPL package-0`、`core` 与 `uncore`（`MSR` + `MMIO` `energy_uj`，`0444` `reported_j`） | `L3`：`cgroup v2` / `getrusage`（`C` activity shares）；`L4`：`satb-proxy` | 已实时验证（`0 µJ` `Step 7` 残留跨 `psys` `L1` 与 `package-0` `L2`）。 |
+| **NVIDIA Jetson AGX Thor** (`Linux aarch64` Tegra 已验证) | `L1`：`TI INA238`（`hwmon6` `VIN`，`0444` `measured_j`）+ `INA3221 ch3 VIN_SYS_5V0`（`0444` `measured_j`） | `INA3221 ch1 VDD_GPU`（`0444` `measured_j`，`A1` 为独占时）；`ch2 VDD_CPU_SOC_MSS`（`0444` `measured_j`）；`NVML`（`unverified`） | `L3`：`cgroup v2` / `getrusage`（`C` activity shares）；`L4`：`satb-proxy` | 已实时验证（`INA238` + `INA3221 ch1-ch3` `0444` rootless；GPU `NVML` 在共租户锁下打开）。 |
+| **Windows 11 `x86-64` + Discrete `RTX`** (`i7-1165G7` + `RTX 2060`, `NT 26300` 已验证) | `L0`：`not_available`；`L1`：`WMI` `EMI` `PowerMeter`（`0` 实例 -> `not_available`） | `RTX 2060`：rootless `nvml.dll` 累计 `mJ`（`reported_j`）；`CPU` `RAPL` `MSR 0x611`：**`N`（`not_available` 未使用 ring-0 驱动）** | `L3`：Win32 `GetProcessTimes` + `QueryProcessCycleTime`（`C` shares；`SRUM` 粗粒度 `OS` 背景排除）；`L4`：`satb-proxy` | 已在 Basic User `0x20000` 令牌下实时验证（`0 mJ` `Step 7` 残留；`2.46 ms` Job Object 终止）。 |
+| **Closed Cloud `API`** (`Anthropic`, `xAI`, `Cerebras`, `OpenAI`, `Google`) | 本地 `L0`-`L1` 仅测量客户端主机（排除服务器推理） | 远程服务器 `L2`：严格 **`N`（`not_available`）** 或每请求 **`P`**（`OQ-6`） | 本地 `/work` `L3`（`D`/`C`）用于沙箱工具；`L4`：**exact** `satb-proxy` 令牌、调用、`USD` | 已通过 `satb-proxy` 在 `Anthropic`、`Cerebras` 与 `xAI` 间实时验证。 |
 
 <div id="53-eight-hardware-measurement-pitfalls-and-seven-non-attributable-quantities" class="anchor-alias" aria-hidden="true"></div>
 
@@ -264,26 +263,26 @@ loop:
 
 标准功率测量捷径在现代`SoC`和`GPU`上会系统性地失效：
 
-| 硬件遥测陷阱 | `SATB`缓解措施 |
+| 硬件遥测陷阱 | `SATB` 缓解措施 |
 | :--- | :--- |
-| **空闲功率随管芯温度、风扇、`DVFS`和睿频而漂移** | 等待`GPU`冷却（`<= 1.5 W`），用前后基线括起每个窗口，记录峰值`GPU`温度，并在派生净焦耳高于`5.0%`漂移时使其无效（`Falsifier 6`）。 |
-| **冷机器空闲与权重驻留空闲之间的歧义** | 在`Step 6`中明确测量并标记两者，而不是默默减去其中之一。 |
-| **`Active - idle`减法会美化慢速运行** | 整个`SUT`原始窗口能量（`A2`）仍是主要放置指标（`OQ-4`）。 |
-| **子周期窗口被读作零、负值或量化噪声** | 将任何短于`10`个传感器周期的窗口标记为`"below_resolution"`（例如，在`~8 Hz`的`macmon`上`< 1.2 s`，或在`1 Hz`智能插座上`< 10 s`）。 |
-| **高频遥测采样器会消耗显著的`CPU`功率** | 在事件边界处读取累积计数器（`0.011 mW` at `0 Hz`）加一个`100 ms`滴答；记录`observer_only`基线。 |
-| **`NVML`在`A100`/`H100`上的瞬时功率仪表仅采样运行时的`~25%`** | 读取累积的`nvmlDeviceGetTotalEnergyConsumption`（`mJ`），绝不使用瞬时的`nvmlDeviceGetPowerUsage`轮询（Chung et al.; Yang et al.）。 |
-| **外部`L0`墙插运行在不同步的时钟上** | 在`session.open`和`session.close`处发出确定性的`50%`占空比校准负载脉冲，并进行时间戳互相关。 |
-| **共享主机后台守护进程或共同租户作业** | 记录进程列表，通过`Falsifier 6`降级共享`L2`派生减法，并记录共同租户隔离的`L3` `ri_energy_nj`（`D`）以及原始`L2`。 |
+| **空闲功耗随核心温度、风扇、`DVFS` 与睿频而漂移** | 等待 `GPU` 冷却至 `<= 1.5 W`，用前后基线包围每个测量窗口，记录 `GPU` 峰值温度，并在漂移超过 `5.0%` 时作废派生净焦耳值（`Falsifier 6`）。 |
+| **冷机空闲与权重驻留空闲之间的歧义** | 在 `Step 6` 中分别明确测量并标注两者，而不是静默地扣除其中一个。 |
+| **`Active - idle` 扣减会使运行缓慢的实验结果显得更优** | 整个 `SUT` 的原始窗口能耗（`A2`）仍是主要的放置指标（`OQ-4`）。 |
+| **短于采样周期的窗口被读作零、负值或量化噪声** | 将短于 `10` 个传感器周期的窗口标记为 `"below_resolution"`（例如，在 `~8 Hz` 的 `macmon` 上 `< 1.2 s`，或在 `1 Hz` 智能插座上 `< 10 s`）。 |
+| **高频遥测采样器消耗大量 `CPU` 功耗** | 在事件边界读取累计计数器（`0 Hz` 时为 `0.011 mW`），并辅以 `100 ms` 时钟节拍；记录 `observer_only` 基线。 |
+| **`A100`/`H100` 上的 `NVML` 瞬时功率计仅采样约 ~25% 的运行时间** | 通过进程内 `FFI` 读取累计值 `nvmlDeviceGetTotalEnergyConsumption`（单位 `mJ`）（在 `RTX 2060` 上为 `1.17 ms`，相较于 `nvidia-smi` 子进程的 `43.88 ms`），切勿轮询瞬时值 `nvmlDeviceGetPowerUsage`（Chung et al.; Yang et al.）。 |
+| **外部 `L0` 壁挂插座运行于未同步的时钟** | 在 `session.open` 与 `session.close` 处发出确定性的 `50%` 占空比校准负载脉冲，并对时间戳进行互相关。 |
+| **共享主机上的后台守护进程或同宿主任务** | 记录进程列表，通过 `Falsifier 6` 降级共享 `L2` 派生扣减结果，并与原始 `L2` 一并记录同宿主隔离的 `L3` `ri_energy_nj`（`D`）。 |
 
-因此，**七个量无法被诚实地归因**，且被禁止用于`SATB`声明：(1) 未经验证的封闭`API`服务器能量（仅`N`或`P`）；(2) 共享`SoC`或统一内存轨上的精确每进程物理焦耳（`C`和`D`是模型）；(3) 与服务内核、量化、批处理和硅片隔离的模型权重；(4) `OS`空闲基底和`DRAM`驻留权重功率的所有权（作为独立通道报告）；(5) 短于传感器周期的单个事件（例如在`1 s`插座下的`30 ms`工具调用）；(6) 缺少主机硬件计数器的共享云`VM`；以及(7) 静默的会话中提供商权重交换（由开始/结束金丝雀标记，绝不先验排除）。特别地（`OQ-6`），**提供商可持续性披露是机群中位数而非每请求测量，且绝不进入`SATB`收据**，包括Google的`0.24 Wh`中位数`Gemini Apps`提示、OpenAI的`0.34 Wh`数字（未附方法论发布）以及Mistral的每个`400`令牌响应的`1.14 gCO2e`。
+因此，**七个量值无法诚实归因**，且被禁止用于 `SATB` 声明：(1) 未经验证的封闭 `API` 服务器能耗（仅 `N` 或 `P`）；(2) 共享 `SoC` 或统一内存轨上的精确每进程物理焦耳（`C` 和 `D` 为模型）；(3) 与服务内核、量化、分批处理及硅片隔离的模型权重；(4) `OS` 空闲底板的所有权及 `DRAM` 常驻权重功耗（被报告为独立通道）；(5) 短于传感器周期的单个事件（例如在 `1 s` 插头下的 `30 ms` 工具调用）；(6) 共享云 `VM` 或缺乏用户态硬件计数器的非特权 Windows `CPU` 域；以及 (7) 无声的会话中提供者权重交换（由起始/结束金丝雀标记，从不先验排除）。特别地（`OQ-6`），**提供者可持续性披露是机群中位数而非每请求测量值，且从不进入 `SATB` 收据**，包括 Google 的 `0.24 Wh` 中位数 `Gemini Apps` 提示、OpenAI 的 `0.34 Wh` 数值（未附方法论发布）以及 Mistral 的每个 `400` 令牌响应的 `1.14 gCO2e`。
 
 ---
 
 <div id="6-measured-conformance-determinism-observer-effect-and-multi-host-attribution-results" class="anchor-alias" aria-hidden="true"></div>
 
-## 6. 测得的一致性、确定性、观察者效应与多主机归因结果
+## 已测量的一致性、确定性、观察者效应与多主机归因结果
 
-为将未测量的设计假设替换为可审计的收据，我们在 `Apple M5 Max` 工作站（`arm64`，`128 GB` 统一内存，`macOS 27.2.1`，`macmon 0.12.0`）上执行了完整的 `SATB` 一致性套件和伪造器线束（`bench_satb_falsifiers.py` $\to$ `satb_empirical_receipts.json`，总运行时间 `175.69 s`），同时进行了 `188` 窗口的跨研究审计。
+为了用可审计的收据取代未测量的设计假设，我们在 `Apple M5 Max` 工作站（`arm64`，`128 GB` 统一内存，`macOS 27.2.1`，`macmon 0.12.0`）上执行了完整的 `SATB` 一致性套件和伪造器线束（`bench_satb_falsifiers.py` $\to$ `satb_empirical_receipts.json`，总运行时间 `175.69 s`），并同步进行了 `188` 窗口跨研究审计以及跨 `Linux` 与 `Windows 11` 的实时跨 OS 多硅片运行。
 
 <div id="61-c1c12-conformance-c9-deterministic-replay-and-c10-process-tree-cleanup" class="anchor-alias" aria-hidden="true"></div>
 
@@ -354,61 +353,62 @@ Routing `8` identical algebraic-synthesis requests per model (`32` live cloud ca
 
 2. **`Falsifier 8`（`Lane B` 对比 `Shape H` `Claude Code 2.1.330`）**：在 `24` 组配对的 `/work` 正式与 `SQLite` 策略任务包中，`Lane B` 在 `Claude Opus 5.5`（`44` 次模型调用，`63,568` 个提示词加缓存 token，`\$0.5477`）与 `Claude Sonnet 5.5`（`43` 次调用，`60,284` 个 token，`\$0.3413`）上均达到 **`24 / 24`（`100.0%`）**，与 `Shape H`（`Claude Code 2.1.330`：在 `Opus 5.5` 上为 **`24 / 24`**，`89` 次调用 / `218,449` 个 token；在 `Sonnet 5.5` 上为 `83` 次调用 / `196,128` 个 token）持平，同时将提示词加缓存的 token 流量分别降低至 **`3.44×`** 与 **`3.25×`** 的倍数关系。在 `6` 个未见过的多文件 Python 缺陷修复仓库（`config-defaults`、`interval-merge`、`pagination`、`precedence`、`rate-window`、`retry-backoff`）上，`Lane B` 再次与 `Shape H` 持平：`Lane B`（`Opus 5.5` 为 `28` 次调用 / `52,045` 个 token；`Sonnet 5.5` 为 `31` 次调用；本地 `Qwen 3.6 35B-A3B` 为 `42` 次调用 / `2,342.05 J` `L2`）与 `Shape H`（`Claude Code 2.1.330` 加 `Opus 5.5`：**`6 / 6`**，`30` 次调用 / `86,744` 个 token，token 用量多出 `1.67×`）结果一致，证实 `Lane B` **并非** 能力受限的线束下限。
 
-<div id="66-multi-platform-hardware-attribution-across-four-silicon-archetypes" class="anchor-alias" aria-hidden="true"></div>
+<div id="66-multi-platform-hardware-attribution-across-five-silicon-and-os-archetypes" class="anchor-alias" aria-hidden="true"></div>
 
-### 6.6 跨四种硅架构的多平台硬件归因
+### 6.6 跨五类硬件与操作系统原型的多平台硬件归因
 
-为了验证 `SATB` 一致性、`Shape D` 定点确定性、无根 `PLATYPUS` 权限边界以及物理分流轨分离在 `macOS` 和 `Apple Silicon` 之外仍然成立，我们在 `Apple M5 Max` 之外的三个额外 `Linux` 硬件架构上执行了 `run_multi_host_satb.py`（`multi_host_satb_receipts.json`）：
+为验证 `SATB` 一致性、`Shape D` 定点确定性、免 root 的 `PLATYPUS` / `HVCI` 权限边界，以及物理分流器或累计 `NVML` 归因在 `macOS`、`Linux` 和 `Windows 11` 上均成立，我们在 `Apple M5 Max` 之外，又在四类额外的 `Linux` 和 `Windows 11` 硬件原型上运行了 `run_multi_host_satb.py`（`multi_host_satb_receipts.json`）和 `run_windows_suite.py`（`windows_satb_receipts.json`），结果如下：
 
-| 硬件架构与 `OS` 内核 | 无根传感器边界与证据类别 | `Shape D` `1M` `DNULLMM1`（`10k` 探测） | `C9` 重放与 `C10` `SIGKILL` 均值 | 单次读取延迟与 `100 Hz` 达成情况 | `Step 7` 残差与 `Falsifier 3`（`C` vs. `B`） |
+| 硬件原型与 `OS` 内核 | 免 root 传感器边界与证据类别 | `Shape D` `1M` `DNULLMM1`（`10k` 次探测） | `C9` 重放与 `C10` 进程树终止均值 | 单次读取延迟与 `100 Hz` 实际达到频率 | `Step 7` 残差与 `Falsifier 3`（`C` 相对 `B`） |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **`Apple M5 Max`**（`arm64`，`128 GB`，`macOS 27.2.1`） | `IOReport` `L1`/`L2` + `rusage` `L3`（`reported_j`；`measured_j = None`） | `15027705736`（`388.43 ns` `C++`，`582.57 ns` Rust） | `149,747 B`（`0` 差异）· `2.073 ms`（`0` `PID`） | `~120 ms` `IOReport` · **`7.44 Hz`** | `<= 1 µJ` · **`-32.59%`** Phase 2（`+35.86%` Ph. 1） |
-| **`NVIDIA Jetson AGX Thor`**（`aarch64`，`122.9 GiB`，`Linux 6.8.12-1021-tegra`） | `TI INA238`（`hwmon6` `VIN` `L1`）+ `INA3221`（`hwmon5` `ch1-ch3` `L2`/`L1`，`0444` **`measured_j`**） | `15027705736`（`984.86 ns` `C -O3`，`2,489.4 ns` Py） | `149,747 B`（`0` 差异）· `9.544 ms`（`0` `PID`） | `2,948.8 µs` `I2C` · **`66.55 Hz`** | `0.0 µJ` · **`-70.01%`** `ch2`（`-67.02%` `VIN`） |
-| **`Framework AMD Ryzen AI Max+ 395`**（`x86-64`，`122.8 GiB`，`Linux 7.0.0-43`） | `RAPL package-0` & `core`（`0440 root:energy` **`reported_j`**）+ `amdgpu PPT`（`0444`；`measured_j = None`） | `15027705736`（`376.61 ns` `C -O3`，`1,341.7 ns` Py） | `149,747 B`（`0` 差异）· `0.868 ms`（`0` `PID`） | `24.34 µs` `sysfs` · **`94.28 Hz`** | `0 µJ` · **`-71.61%`** `pkg-0`（`-63.34%` `core`） |
-| **`Intel Core i9-13900H`**（`x86-64`，`14.7 GiB`，`Linux 7.0.0-43`） | `RAPL psys`（`L1`）+ `package-0`，`core`，`uncore`（`L2`，`0444` **`reported_j`**；`measured_j = None`） | `15027705736`（`420.93 ns` `C -O3`，`863.6 ns` Py） | `149,747 B`（`0` 差异）· `1.120 ms`（`0` `PID`） | `45.37 µs` `sysfs` · **`97.12 Hz`** | `0 µJ` · **`-72.89%`** `pkg-0`（`-73.62%` `psys`） |
+| **`Apple M5 Max`**（`arm64`，`128 GB`，`macOS 27.2.1`） | `IOReport` `L1`/`L2` + `rusage` `L3`（`reported_j`；`measured_j = None`） | `15027705736`（`388.43 ns` `C++`，`582.57 ns` Rust） | `149,747 B`（`0` 处差异）· `2.073 ms`（`0` 个 `PID`） | 约 `120 ms` `IOReport` · **`7.44 Hz`** | `<= 1 µJ` · **`-32.59%`**（阶段 2，阶段 1 为 `+35.86%`） |
+| **`NVIDIA Jetson AGX Thor`**（`aarch64`，`122.9 GiB`，`Linux 6.8.12-1021-tegra`） | `TI INA238`（`hwmon6` `VIN` `L1`）+ `INA3221`（`hwmon5` `ch1-ch3` `L2`/`L1`，`0444` **`measured_j`**） | `15027705736`（`984.86 ns` `C -O3`，`2,489.4 ns` Py） | `149,747 B`（`0` 处差异）· `9.544 ms`（`0` 个 `PID`） | `2,948.8 µs` `I2C` · **`66.55 Hz`** | `0.0 µJ` · **`-70.01%`** `ch2`（`VIN` 为 `-67.02%`） |
+| **`Framework AMD Ryzen AI Max+ 395`**（`x86-64`，`122.8 GiB`，`Linux 7.0.0-43`） | `RAPL package-0` 与 `core`（`0440 root:energy` **`reported_j`**）+ `amdgpu PPT`（`0444`；`measured_j = None`） | `15027705736`（`376.61 ns` `C -O3`，`1,341.7 ns` Py） | `149,747 B`（`0` 处差异）· `0.868 ms`（`0` 个 `PID`） | `24.34 µs` `sysfs` · **`94.28 Hz`** | `0 µJ` · **`-71.61%`** `pkg-0`（`core` 为 `-63.34%`） |
+| **`Intel Core i9-13900H`**（`x86-64`，`14.7 GiB`，`Linux 7.0.0-43`） | `RAPL psys`（`L1`）+ `package-0`、`core`、`uncore`（`L2`，`0444` **`reported_j`**；`measured_j = None`） | `15027705736`（`420.93 ns` `C -O3`，`863.6 ns` Py） | `149,747 B`（`0` 处差异）· `1.120 ms`（`0` 个 `PID`） | `45.37 µs` `sysfs` · **`97.12 Hz`** | `0 µJ` · **`-72.89%`** `pkg-0`（`psys` 为 `-73.62%`） |
+| **`Intel Core i7-1165G7 + RTX 2060`**（`x86-64`，`63.7 GiB`，`Windows 11 26300`） | `nvml.dll` `RTX 2060` 累计 `mJ`（`L2` **`reported_j`**）+ Win32 `L3`；`CPU RAPL` = `N`（`measured_j = None`） | `15027705736`（`1,474.22 ns` `MSVC /O2`，`2,885.6 ns` Py） | `149,747 B`（`0` 处 `CRLF`）· `2.458 ms` JobObj（`0` 个 `PID`） | `1,174.2 µs` `NVML` · **`64.64 Hz`**（`NT` 时钟节拍） | `0 mJ` · **`-89.88%`** 时间（`RDTSC` 为 `-77.05%`） |
 
-从这些实时收据中得出了四项跨平台硬件发现：
+这些实时回执得出以下五项跨平台硬件与操作系统方面的发现：
 
-1. **位精确的 `Shape D` 和 `Lane B` 在 `arm64`/`aarch64` 与 `x86-64` 上的重放不变性**：所有四台主机均产生精确的 `10,000` 探针 `DNULLMM1` 校验和 **`15027705736`**、精确的 `test.setpoint` 冻结摘要 `0da4df8d9ccbce1e...4485781`，以及精确的 `149,747` 字节 `C9` 转录记录（`SHA-256` 为 `d697ed1476129939...`，`0` 字节差异），同时在 `0.868 ms` 至 `9.544 ms` 内通过 `SIGKILL` 回收 `4` 个失控 `PID` 进程组（即使在 `Jetson AGX Thor` 上 `loadavg_1m = 52.39` 时，仍远低于 `2,000 ms` 规范上限 `> 200×`）。
-2. **物理 `INA238` / `INA3221` 分流隔离与实时 `GPU` 共租下的 `Falsifier 6`（在 `NVIDIA Jetson AGX Thor` 上）**：在 `Linux 6.8.12-1021-tegra` 上，`hwmon6`（位于 `i2c@c600000/ina238@44` 的 `ti,ina238`，`VIN` 为整板 `DC` 输入，电压约为 `~27.97 V`）以及 `hwmon5` 的全部三个通道（`ina3221@40`：`ch1 VDD_GPU`、`ch2 VDD_CPU_SOC_MSS` 和 `ch3 VIN_SYS_5V0`）均可全局读取（`0444`），无需 `sudo`。在我们严格的仅 `CPU` 探针（`dedicated_host = false`）期间，一个独立的共租 `llama-server` 持有主机 `GPU` 锁：
+1. **`Shape D` 与 `Lane B` 重放在 `macOS`、`Linux` 和 `Windows 11`（`arm64`/`aarch64` 与 `x86-64`）上的逐位不变性**：全部五台主机（包括在 `MSVC 19.44 /O2` 下编译的 Win32 `CreateFileMappingA` + `MapViewOfFile`，以及 `Windows 11`（`NT 10.0.26300`）上的 `NTFS` 文件 I/O）均产生了精确的 `10,000` 次探测 `DNULLMM1` 校验和 **`15027705736`**、精确的 `test.setpoint` 冻结摘要 `0da4df8d9ccbce1e...4485781`，以及精确的 `149,747` 字节 `C9` 转录文本（`SHA-256` 为 `d697ed1476129939...`，**`NTFS` `CRLF` 字节漂移为 `0`**）。同时，经由内核原语回收了 `4` 个 `PID` 的失控进程树，耗时 `0.868 ms` 至 `9.544 ms`（`macOS`/`Linux` 上使用 `SIGKILL`；`Windows 11` 上使用 Win32 `TerminateJobObject`，平均耗时 **`2.458 ms`**）。相比平均耗时 `122.817 ms` 的 `taskkill.exe /F /T /PID` 调用，该方法快 **`50.0×`**，并且远低于 `2,000 ms` 的规格上限（超过 `200×` 的余量）。
+2. **在 `NVIDIA Jetson AGX Thor` 上于实时 `GPU` 共置条件下的物理 `INA238` / `INA3221` 分流分离与 `Falsifier 6`**：在 `Linux 6.8.12-1021-tegra` 上，`hwmon6`（`ti,ina238`，位于 `i2c@c600000/ina238@44`，`VIN` 为整板 `DC` 输入，约 `27.97 V`）以及 `hwmon5`（`ina3221@40`）的全部三个通道（`ch1 VDD_GPU`、`ch2 VDD_CPU_SOC_MSS` 和 `ch3 VIN_SYS_5V0`）均可在无需 `sudo` 的情况下读取（权限 `0444`）。在我们严格仅使用 `CPU` 的探测（`dedicated_host = false`）期间，一个独立的共置 `llama-server` 占用了主机 `GPU` 锁。
 
-| `Jetson AGX Thor` 物理分流通道（`0444` 无需 root 的 `sysfs`） | 边界 | 基线前（`W`） | 阶段 1 计算（`measured_j` / `W`） | 阶段 2 `DRAM+fsync`（`measured_j` / `W`） | 基线后（`W`） | 漂移（`F6`）与 `Kepler` `C` 阶段-2 误差 |
+| `Jetson AGX Thor` 物理分流通道（`0444` 免 root `sysfs`） | 边界 | 预基线（`W`） | 阶段 1 计算（`measured_j` / `W`） | 阶段 2 `DRAM+fsync`（`measured_j` / `W`） | 后基线（`W`） | 漂移（`F6`）与 `Kepler` `C` 阶段 2 误差 |
 | :--- | :---: | ---: | ---: | ---: | ---: | :--- |
-| **`hwmon6` `INA238` `VIN`**（模块 + 载板输入） | **`L1`** | `100.70 W` | `122.12 J`（`101.66 W`） | `99.02 J`（`81.94 W`） | `97.21 W` | `3.47%`（`A2` 暂不提供：共租）· **`-67.02%`** |
-| **`hwmon5` `INA3221 ch1` `VDD_GPU`**（共租 `LLM`） | **`L2`** | `29.26 W` | `40.29 J`（`33.54 W`） | `26.00 J`（`21.52 W`） | `28.13 W` | 外部 `GPU` 共租（`F5` 中 `-36.1%` 摆动） |
+| **`hwmon6` `INA238` `VIN`**（模块 + 载板输入） | **`L1`** | `100.70 W` | `122.12 J`（`101.66 W`） | `99.02 J`（`81.94 W`） | `97.21 W` | `3.47%`（`A2` 因共置负载而保留）· **`-67.02%`** |
+| **`hwmon5` `INA3221 ch1` `VDD_GPU`**（共置 `LLM`） | **`L2`** | `29.26 W` | `40.29 J`（`33.54 W`） | `26.00 J`（`21.52 W`） | `28.13 W` | 外部 `GPU` 共置负载（`F5` 中摆幅为 `-36.1%`） |
 | **`hwmon5` `INA3221 ch2` `VDD_CPU_SOC_MSS`** | **`L2`** | `36.68 W` | `45.73 J`（`38.07 W`） | `44.37 J`（`36.71 W`） | `36.08 W` | `1.64%`（`CPU`/`SoC`/`MSS` 域）· **`-70.01%`** |
 | **`hwmon5` `INA3221 ch3` `VIN_SYS_5V0`**（`5.08 V` 轨） | **`L1`** | `14.89 W` | `18.66 J`（`15.53 W`） | `16.82 J`（`13.92 W`） | `13.98 W` | **`6.13% > 5.0%`（触发 `F6`）** · **`-68.85%`** |
 
-跨越四个 `Falsifier 5` 节拍窗口，波动的同宿 `LLM` 请求使 `ch1 VDD_GPU` 从 `35.36 J` 降至 `22.60 J`（`-36.1%`），并带动整板 `INA238 VIN`（`L1`）从 `107.48 J` 降至 `81.73 J`（`-24.0%`）。与此同时，`ch2 VDD_CPU_SOC_MSS` 仍保持在 `35.76-39.31 J` 范围内。由于 `dedicated_host = false`（且 `ch3 VIN_SYS_5V0` 的漂移超过 `5.0%`，达到 `6.13%`），`SATB` 撤回 `A2` 级别的整机 `SUT` 净归属结论，同时保留逐轨精确的 `measured_j`（`L1` 与 `L2` 通道从不求和）。
+在四个 `Falsifier 5` 节奏窗口中，波动的共同租户 `LLM` 请求将 `ch1 VDD_GPU` 从 `35.36 J` 拉低至 `22.60 J`（`-36.1%`），即使 `ch2 VDD_CPU_SOC_MSS` 保持在 `35.76-39.31 J` 范围内，仍将整板 `INA238 VIN`（`L1`）从 `107.48 J` 拉低至 `81.73 J`（`-24.0%`）。由于 `dedicated_host = false`（且 `ch3 VIN_SYS_5V0` 在 `6.13%` 处超过 `5.0%` 漂移），`SATB` 拒绝给出 `A2` 整-`SUT` 网络布局声明，同时保留精确的轨道分离 `measured_j`（`L1` 和 `L2` 通道从未求和）。
 
-3. **`Framework` `AMD` 平台上 `PLATYPUS` `0440 root:energy` 隔离与 `Strix Halo` `APU` 域验证**：在 `Framework` Desktop（`AMD Ryzen AI Max+ 395 w/ Radeon 8060S`，`Linux 7.0.0-43-generic`）上，`udev` 规则 `90-energy-read.rules` 将 `/sys/class/powercap/intel-rapl:0/energy_uj`（`package-0`）与 `intel-rapl:0:0/energy_uj`（`core`）的模式设为 **`0440`（`root:energy`，`world_readable = false`）**：未分组的 `/work` 沙箱 `UID` 会收到 `EACCES`（阻断 `PLATYPUS` 侧信道），而监管者 `GID`（`energy`）可以无特权读取累计微焦耳值，中位延迟为 `24.34 µs`（`Step 7` 残差为 `0 µJ`）。进一步检查 `hwmon9`（`amdgpu`）后，解决了一个尚未明确的规格细节：`Strix Halo` 集成的 `Radeon 8060S` 暴露的是全局可读（`0444`）的 `PPT` 功率（以 `µW` 计的 `power1_input` / `power1_average`，阶段 1 为 `75.38 W`，阶段 2 为 `69.72 W`），而非独立的 `energy1_input` 计数器；`cros_ec`（`hwmon8`）则仅暴露风扇与板级温度。
+3. **`PLATYPUS` `0440 root:energy` 隔离与 `Strix Halo` `APU` 域在 `Framework` `AMD` 上的验证**：在 `Framework` Desktop（`AMD Ryzen AI Max+ 395 w/ Radeon 8060S`，`Linux 7.0.0-43-generic`）上，`udev` 规则 `90-energy-read.rules` 将 `/sys/class/powercap/intel-rapl:0/energy_uj`（`package-0`）和 `intel-rapl:0:0/energy_uj`（`core`）设置为模式 **`0440`（`root:energy`，`world_readable = false`）**：未分组的 `/work` 沙箱 `UID` 收到 `EACCES`（阻断 `PLATYPUS` 侧信道），而监管者 `GID`（`energy`）以无根方式读取累积微焦耳，中位延迟为 `24.34 µs`（`0 µJ` `Step 7` 残差）。进一步检查 `hwmon9`（`amdgpu`）解决了开放规范细节：`Strix Halo` 的集成 `Radeon 8060S` 暴露世界可读（`0444`）的 `PPT` 功率（`power1_input` / `power1_average`，单位 `µW`，Phase 1 为 `75.38 W` / Phase 2 为 `69.72 W`），而非单独的 `energy1_input` 计数器，而 `cros_ec`（`hwmon8`）仅暴露风扇和板级热量。
 
-4. **传感器总线节拍物理特性（`I2C` 对比 `MSR`/`MMIO` 对比 `IOReport`）与通用 `Falsifier 3` 触发条件**：`x86-64` `powercap` `sysfs` 读取耗时为 `24.34-45.37 µs`（在名义 `100 Hz` 下实际达到 `94.28-97.12 Hz`），而在 `Jetson AGX Thor` 上，每次九寄存器的 `INA238`+`INA3221` 快照需经过物理 `i2c@c600000`，中位耗时为 **`2,948.8 µs`**（均值 `4.48 ms`），使 `100 Hz` 轮询上限被压制在 **`66.55 Hz`**（约为 `macmon` `7.44 Hz` `IOReport` 上限的 `8.9×`）；而在 `SATB` 的 `100 ms`（`10 Hz`）参考节拍下，则可稳定达到 **`9.49 Hz`**。在全部三台 `Linux` 主机上，基于 `CPU` 时间比例划分的 `Kepler` 式方法（`C`）对 `192 MiB` `DRAM` + `fsync` 阶段的归因偏低了 **`67.02%` 至 `73.62%`**，这在四种硅架构上印证了 `SATB` 将 `C` 限定于重叠并行运行的原因。
+4. **裸金属 `Windows 11` 无根边界（`0x20000` 基本用户 `NVML` 与 ring-0 `RAPL` 块）以及 `15.625 ms` `NT` 时钟滴答混叠**：在明确降权的 Basic User 令牌（`runas.exe /trustlevel:0x20000`，`IsUserAnAdmin() == false`）下，于 `Windows 11 Pro`（`NT 10.0.26300`，`Intel Core i7-1165G7` + `NVIDIA GeForce RTX 2060`），进程内对 `nvml.dll` 的 `FFI` 调用 `nvmlDeviceGetTotalEnergyConsumption`（`mJ`）和 `nvmlDeviceGetPowerUsage`（`mW`）以无根方式成功，中位时间为 **`1,174.15 µs`**（**`37.4×` 快于** 每次调用生成 `nvidia-smi.exe` 的 `43.88 ms`），以 **`0 mJ` 残差** 清空 `Step 7`（`8.769 J + 8.816 J = 17.585 J`，前后漂移 `3.0%`）。相比之下，非特权用户态读取 Intel `RAPL` `MSR 0x611` 被 `Windows NT` 内核阻断（无签名 ring-0 驱动，由 `OQ-5` 和 `HVCI` 禁止），且 `WMI` `EMI`（`\\.\EnergyMeter` / `Win32_PerfRawData_Counters_PowerMeter`）暴露 `0` 个实例，将 Windows `CPU` 封装 `L2` 严格置于 `Label N`（`"not_available"`）。此外，由于未调整的 `Windows NT` 在约 `15.625 ms` 时钟中断上更新 `GetProcessTimes`，Phase 2 中的 `8 ms` 睡眠加 `FlushFileBuffers` 突发被混叠至 `62.5 ms`（`CPU` 份额 `5.06%`，而 Phase 1 为 `1,171.9 ms`），导致 `Kepler` `C` 归因误差达 **`-89.88%`**（即使使用亚滴答 `RDTSC` `QueryProcessCycleTime` 周期份额 `11.48%`，误差仍为 `-77.05%`）。
+
+5. **传感器总线与 `OS` 定时器节奏物理在全部五个平台上的表现**：相较于 Linux `x86-64` `powercap` `sysfs` 在 `24.34-45.37 µs`（实现 `94.28-97.12 Hz`，在 `100 Hz` 时达到）内完成读取，`Windows NT` 的默认 `15.625 ms` 睡眠量子将未调节的 `10 ms` `NVML` 循环限制在 **`64.64 Hz`**，但在 `SATB` 的 `100 ms`（`10 Hz`）参考时钟下能够平稳输出 **`9.45 Hz`**，这与 `Jetson AGX Thor` 的 `66.55 Hz` `I2C` 分流上限（`100 ms` 参考时为 `9.49 Hz`）相匹配，而 `macmon` 的 `7.44 Hz` `IOReport` 上限则形成对比。在 **`5 / 5` 硅片与 `OS` 架构** 中，`CPU`-比例拆分（`C`）对 `192 MiB` `DRAM` + 磁盘同步阶段的计量被 **`32.59%` 到 `89.88%`** 的低估，从而在全局层面验证了 `SATB` 限制 `C` 只能在并行运行重叠时使用的原因。
 
 ---
 
 <div id="7-open-hardware-verification-and-limitations" class="anchor-alias" aria-hidden="true"></div>
 
-## 7. 开放硬件验证与限制
+## 7. 开放硬件验证与局限性
 
-| 会话伪造器 | 触发时的后果 | 本研究中的经验状态 |
+| 会话证伪条件 | 触发后的后果 | 本研究中的实证状态 |
 | :--- | :--- | :--- |
-| **`F1` Replay mismatch (`C9`)** | 参考线束是非确定性的 | **已在 `4/4` 主机上通过（`149,747 B` 中 `0` 字节差异，`14` 次迭代）** |
-| **`F2` Sum check fails on `> 5%` of attempts** | 主机上的归因拆分破坏 | **已在 `4/4` 主机上通过（`0 µJ` Linux `RAPL`/分流；`<= 1 µJ` `M5 Max`）** |
-| **`F3` `B` and `C` disagree by `> 20%` sequentially** | `C`（`Kepler`）在主机上标记为不可靠 | **在 `4/4` 主机上触发（错误率 `32.59%-73.62%`）；`C` 受限** |
-| **`F4` Known pulse load outside sensor accuracy** | 会话的传感器降级 | **开放（`L0` 智能插座同步脉冲装置尚未连接）** |
-| **`F5` `10 ms` vs. `1 s` tick shifts window energy** | 遥测观察者效应 | **已通过（`0.76%` `M5 Max` `L2` 差异；在 `100 ms` 基准下达成 `9.49-10.48 Hz`）** |
-| **`F6` Pre/post resident baselines drift `> 5.0%`** | 派生的净通道失效 | **活跃（`124/188` `M5 Max` 窗口 + Linux 共租户漂移已清晰门控）** |
-| **`F7` Adapter passes `C1`-`C12`, fails canary** | 符合性不足；会话 `void` | **在仿真中验证（在切换时 `session_void = true`）** |
-| **`F8` `Lane B` places below strong `Lane O` harnesses** | `Lane B` 被严格报告为基准 | **已通过（相对于 `Claude Code 2.1.330` 的 `24/24` 与 `6/6` 奇偶性）** |
+| **`F1` 重放不一致（`C9`）** | 参考线束具有非确定性 | **在 `5/5` 台主机上已排除（`149,747 B`、`14` 轮中 `0` 字节/`CRLF` 差异）** |
+| **`F2` 在 `> 5%` 的尝试中求和校验失败** | 主机上的归因拆分失效 | **在 `5/5` 台主机上已排除（Linux `0 µJ`；Win11 `NVML` `0 mJ`；`M5 Max` `<= 1 µJ`）** |
+| **`F3` `B` 与 `C` 顺序测量相差 `> 20%`** | 主机上 `C`（`Kepler`）被标记为不可靠 | **在 `5/5` 台主机上已触发（误差 `32.59%-89.88%`）；`C` 受限使用** |
+| **`F4` 已知脉冲负载超出传感器精度** | 会话中传感器降级 | **未解决（`L0` 智能插座同步脉冲装置尚未接入）** |
+| **`F5` `10 ms` 与 `1 s` 采样周期导致窗口能量偏移** | 遥测观测者效应 | **已排除（`M5 Max` `L2` 差值 `0.76%`；`100 ms` 参考下达到 `9.45-10.48 Hz`）** |
+| **`F6` 前后驻留基线漂移 `> 5.0%`** | 派生的净通道失效 | **生效中（`M5 Max` 的 `124/188` 个窗口，以及 Linux 共驻负载漂移，已被干净地门控）** |
+| **`F7` 适配器通过 `C1`-`C12` 但未通过金丝雀测试** | 一致性不足；会话作废 | **已在仿真中验证（替换时 `session_void = true`）** |
+| **`F8` `Lane B` 低于强 `Lane O` 线束** | `Lane B` 严格作为下限报告 | **已排除（与 `Claude Code 2.1.330` 相比 `24/24` 与 `6/6` 一致）** |
 
-仍有三项具体硬件与适配器待解决（`OQ-5`）：
+仍有三项硬件与适配器相关事项待解决（`OQ-5`）：
 
-1. **专用静止 `A2` 会话和 `L0` `AC` 插座校准**：虽然物理 `TI INA238`（`L1`）和 `INA3221`（`L2`/`L1`）分流 `measured_j` 轨道已在 `NVIDIA Jetson AGX Thor` 上实时验证，并且在 `Apple M5 Max`、`Framework AMD Strix Halo` 与 `Intel Raptor Lake` 上的无根 `reported_j` 计数器也已验证，但所有四台基准机器均运行了并行的共租户工作负载（`dedicated_host = false`），从而保留了 `A2` 整体 `SUT` 放置的声明；下一步是将同步脉冲的 `L0` `AC` 仪表（`Shelly` / `Yokogawa`）连接到静止的专用主机上。
-
-2. **集成 `GPU` `NVML` 计数器检查在 `Jetson AGX Thor` 上**：对 `INA238` 与 `INA3221 ch1-ch3`（`VDD_GPU`、`VDD_CPU_SOC_MSS`、`VIN_SYS_5V0`）的无根 `sysfs` 权限（`0444`）以及 `Framework AMD Strix Halo` 的 `0440 root:energy` `RAPL` + `amdgpu PPT`（缺少 `energy1_input`）现已在设备上验证；对 `Jetson AGX Thor` 上的 `nvmlDeviceGetTotalEnergyConsumption` 进行探测仍需等到共享 `GPU` 锁空闲的空闲窗口。
-
-3. **更广泛的 `Shape H` 与 `Shape I` 实时名单**：本研究中的实时外部线束运行在 `Claude Code 2.1.330` 上使用了 `Shape H`，并与 `Lane B` 与 `Shape D` 一同运行；下一步是对 `Codex CLI`、`OpenHands`、`Terminus-2` 与 `Shape I` `Inspect` 求解器执行实时 `C1-C12` 认证。
+1. **专用静默 `A2` 会话与 `L0` `AC` 墙插校准**：尽管 `NVIDIA Jetson AGX Thor` 上已实时验证物理 `TI INA238`（`L1`）及 `INA3221`（`L2`/`L1`）分流器 `measured_j` 供电轨，并且 `Apple M5 Max`、`Framework AMD Strix Halo`、`Intel Raptor Lake` 与 `Windows 11`（`RTX 2060` `NVML`）上已验证免 root 的 `reported_j` 计数器，但五台测试设备均运行了共享服务或共驻工作负载（`dedicated_host = false`），因此暂不支持整机 `A2` 的功耗归属结论。下一步是在静默的专用主机上接入同步脉冲的 `L0` `AC` 电表（`Shelly` / `Yokogawa`）。
+2. **`Jetson AGX Thor` 集成 `GPU` 的 `NVML` 计数器检验**：独立 `GPU` 的 `nvmlDeviceGetTotalEnergyConsumption`（`mJ`）已在 `NVIDIA GeForce RTX 2060`（`Windows 11`）上通过 `nvml.dll` 免 root 验证。针对 `Jetson AGX Thor` 统一 Tegra `GPU` 的 `NVML` 累计能量探测，以及其已验证的 `0444` `INA3221 ch1 VDD_GPU` 分流器，仍需等待共享 `GPU` 锁空闲的时段进行。
+3. **更广泛的 `Shape H` 与 `Shape I` 实时线束清单**：本研究中的实时外部线束运行在 `Claude Code 2.1.330` 上执行了 `Shape H`，并与 `Lane B` 及 `Shape D` 一同运行。下一步是在 `Codex CLI`、`OpenHands`、`Terminus-2` 以及 `Shape I` 的 `Inspect` 求解器上执行实时 `C1-C12` 认证。
 
 <div id="references" class="anchor-alias" aria-hidden="true"></div>
 

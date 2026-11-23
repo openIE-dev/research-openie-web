@@ -1,226 +1,1384 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 \documentclass[10pt,letterpaper]{article}
 
-\usepackage[margin=0.72in]{geometry}
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{array}
-\usepackage{graphicx}
 \usepackage{xcolor}
-\usepackage{hyperref}
-\usepackage{enumitem}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{textcomp}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{longtable,booktabs,array,calc}
 \usepackage{caption}
+\captionsetup[table]{skip=6pt,font=small,labelfont=bf}
+\captionsetup[figure]{font=small,labelfont=bf}
+\newcounter{none}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\footnotesize}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\footnotesize}
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.80,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.80,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
 
-\definecolor{dnblue}{HTML}{1B4965}
-\definecolor{dnteal}{HTML}{0F766E}
-\definecolor{dnamber}{HTML}{B45309}
-\definecolor{dngray}{HTML}{475569}
+\usepackage{newunicodechar}
+\newunicodechar{µ}{\ifmmode\mu\else\textmu\fi}
+\newunicodechar{°}{\ifmmode^\circ\else\textdegree\fi}
+\newunicodechar{·}{\ifmmode\cdot\else\textperiodcentered\fi}
+\newunicodechar{²}{\ensuremath{^{2}}}
+\newunicodechar{³}{\ensuremath{^{3}}}
+\newunicodechar{¹}{\ensuremath{^{1}}}
+\newunicodechar{⁴}{\ensuremath{^{4}}}
+\newunicodechar{⁶}{\ensuremath{^{6}}}
+\newunicodechar{⁻}{\ensuremath{^{-}}}
+\newunicodechar{₀}{\ensuremath{_{0}}}
+\newunicodechar{ₙ}{\ensuremath{_{n}}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Ω}{\ensuremath{\Omega}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{∧}{\ensuremath{\wedge}}
+\newunicodechar{∫}{\ensuremath{\int}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{⊆}{\ensuremath{\subseteq}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{≪}{\ensuremath{\ll}}
+\newunicodechar{↛}{\ensuremath{\nrightarrow}}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{∪}{\ensuremath{\cup}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\newunicodechar{・}{\textperiodcentered}
+
+\usepackage{xurl}
+\usepackage{bookmark}
+\usepackage{hyperref}
+
+\setcounter{secnumdepth}{-\maxdimen}
+\providecommand{\tightlist}{\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}}
+
+\definecolor{openieAmber}{HTML}{D97706}
+\definecolor{openieAmberBg}{HTML}{FFFBEB}
+\definecolor{openieAmberBorder}{HTML}{F59E0B}
+\definecolor{openieSlate}{HTML}{334155}
+\definecolor{openieDark}{HTML}{0F172A}
+\definecolor{openieCodeBg}{HTML}{F8FAFC}
+\definecolor{openieCodeBorder}{HTML}{CBD5E1}
+\definecolor{openieBlue}{HTML}{0057B8}
 
 \hypersetup{
+  pdftitle={Deterministic Null: A Pre-Registered Control Experiment for Neural and Agentic Substrates},
+  pdfauthor={David Charlot, Open Interface Engineering},
   colorlinks=true,
-  linkcolor=dnblue,
-  urlcolor=dnblue,
-  citecolor=dnblue,
-  pdftitle={Deterministic Null: Pre-Registered Control Protocol, SPEC v0.4 + SATB Conformance, and Confirmatory Experiment exp-001},
-  pdfauthor={ai-null-hypothesis Project}
+  linkcolor=openieBlue,
+  citecolor=openieBlue,
+  urlcolor=openieBlue,
+  pdfcreator={XeTeX / Tectonic — Open Interface Engineering}
 }
 
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{3.8pt}
-\captionsetup{font=small,labelfont=bf}
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\urlstyle{same}
+\setlength{\emergencystretch}{3em}
+\hfuzz=6pt
+\sloppy
 
-\title{\vspace{-1.4em}\textbf{Deterministic Null: Pre-Registered Null-Model Control Protocol,\\Five-Language \texttt{SPEC v0.4} + \texttt{SATB} Conformance, and Runs \texttt{exp-001}, \texttt{exp-002} \& \texttt{exp-003}}\\[0.30em]
-\large Measuring the Relevance of Stochastic Neural Substrates Across Multi-Vendor Cloud (\texttt{Anthropic}, \texttt{OpenAI}, \texttt{xAI}, \texttt{DeepSeek}, \texttt{Qwen}),\\[-0.1em]\large Local Open-Weight (\texttt{Qwen 3.6 35B-A3B}, \texttt{Gemma 4 E4B-it}), and Multi-Turn Repository Harnesses}
-\author{\texttt{deterministic-null} Working Repository\\[-0.15em]\small(\texttt{SPEC.md v0.4} $\cdot$ \texttt{HYPOTHESIS.md v0.6} $\cdot$ \texttt{reg-exp-001} [\texttt{drand 6663734}] $\cdot$ \texttt{reg-exp-002} [\texttt{drand 6664089}])}
-\date{November 22, 2026 \quad|\quad Status: \textbf{Gates G0--G2, Track-A \texttt{exp-001}, Track-B \texttt{exp-002} \& Companion \texttt{exp-003} Complete}}
+\newcommand{\openiefig}[3]{%
+  \IfFileExists{#1}{%
+    \includegraphics[width=#2\linewidth,height=0.70\textheight,keepaspectratio]{#1}%
+  }{%
+    \fcolorbox{openieCodeBorder}{openieCodeBg}{%
+      \parbox{0.92\linewidth}{\footnotesize\ttfamily Figure asset embedded in archival PDF; interactive/vector source: \url{#3}}%
+    }%
+  }%
+}
+
+\title{\vspace{-1.2em}\textbf{Deterministic Null: A Pre-Registered Control Experiment for Neural and Agentic Substrates}}
+\author{\textbf{David Charlot, Open Interface Engineering}\\[0.15em]
+{\small Research study · draft $\cdot$ Open Interface Engineering $\cdot$ \href{https://research.openie.dev}{research.openie.dev}}}
+\date{\small Revision \texttt{af57f48} (22 November 2026) $\cdot$ Web: \href{https://research.openie.dev/papers/deterministic-null/}{research.openie.dev/papers/deterministic-null/} $\cdot$ Archival LaTeX: \href{https://research.openie.dev/pdfs/latex/deterministic-null.pdf}{/pdfs/latex/deterministic-null.pdf} (\href{https://research.openie.dev/pdfs/latex/deterministic-null.tex}{.tex})}
 
 \begin{document}
-\sloppy
 \maketitle
-\vspace{-1.1em}
+\vspace{-0.6em}
 
-\begin{abstract}
-\noindent
-Empirical evaluations of agentic artificial intelligence routinely compare one stochastic language model against another, leaving unmeasured how much task completion requires a neural substrate rather than a fixed deterministic procedure over verified prior cases. This paper reports the specification (\texttt{SPEC.md v0.4}), Satiation Benchmark (\texttt{SATB}) reference harness and rootless \texttt{L0--L4}/\texttt{A1--N} telemetry engine (\texttt{12/12} \texttt{C1--C12} checks passed), five-language bit-exact conformance (\textbf{Gate G2}), paired $n=200$ calibration across three November 2026 Frontier Cloud models (\textbf{Claude Opus 5.5}, \textbf{Sonnet 5.5}, \textbf{Sonnet 4.6}), two 2026 Local Open-Weight models (\textbf{Qwen 3.6 35B-A3B}, \textbf{Gemma 4 E4B-it}), and \textbf{Shape H} (\texttt{Claude Code 2.1.330}), and \textbf{Confirmatory Experiment \#1 (\texttt{exp-001}, Track-A)}. Following a 69-source prior-art and 36-finding red-team dossier, we claim no new loop architecture (case-based retrieve--reuse--revise--retain dates to 1986--1994; quantised tables to 1968--1975), testing instead $H_{0,k}: \Delta_k = p_{\text{LLM},k} - p_{\text{Null},k} \le \delta$ ($\delta = 0.05$). Manifest \texttt{cffb564cd9ad\dots}, $J=5$ frozen \texttt{dev} stores, and the confirmatory analysis script were committed at \texttt{git tag reg-exp-001} (\texttt{e5007a4}) and timestamped on the OpenTimestamps Bitcoin Calendar (\texttt{suite/manifest.json.ots}) at \texttt{drand} round \texttt{6663731}, strictly before League of Entropy \texttt{drand} round \texttt{6663734} seeded the $2{,}840$ held-out \texttt{test} instances ($1{,}420$/tier across Tier~1 and shifted Tier~2; $750/750$ scorer-audited trajectories passed with $0$ exploits). At Tier~1, \textbf{relevance was excluded in 5 of 5 classes} ($\hat{\Delta}_k \in [-0.004, 0.000]$). At shifted Tier~2, \textbf{relevance was excluded in all 4 formally verified mathematical classes} ($\texttt{N0} = \texttt{N1} = 1.000$ at $\$0.00$ vs.\ $\$27.25$ \texttt{Opus 5.5} spend) and \textbf{shown in 1 class} (\texttt{tool.tau2\_sqlite} unseen customer paraphrases: \texttt{Opus 5.5} $+36.40$ pts over \texttt{N1}, $99\%$ BCa $[+28.80, +44.80]$, leaving 12 unseen \texttt{surf:} keys unfilled; \texttt{Qwen 3.6} increment cost $23.38\;\text{J}$ per additional completed task).
-\end{abstract}
+% OpenIE Measurement Honesty Callout Box
+\noindent\fcolorbox{openieAmberBorder}{openieAmberBg}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+    \small\color{openieDark}%
+    \textbf{Measurement.} Research study, not a journal final. Five-language bit-exact \texttt{SPEC v0.4} + \texttt{SATB} conformance (\texttt{Gate G2}), OpenTimestamps Bitcoin Calendar proofs, and post-tag League of Entropy \texttt{drand} rounds (\texttt{6663734} for \texttt{exp-001}, \texttt{6664089} for \texttt{exp-002} and \texttt{exp-003}). Local \texttt{Apple M5 Max} energy readings are on-chip \texttt{L2 IOReport} and \texttt{L3 proc\_pid\_rusage(RUSAGE\_INFO\_V6).ri\_energy\_nj} \texttt{reported\_j} counters; closed-API runs report exact token, dollar, and wall-clock counts (\texttt{not\_available} server joules). No hardware power rail or wall meter was attached (\texttt{measured\_j = None}, \texttt{board\_metered = false}). No fabricated citations.
+  }%
+}
 
-\section{Experimental Framing, All AI Permutations, and Formal Verification}
+\vspace{6pt}
+% OpenIE Amber Left-Rule Summary Quote
+\noindent{\color{openieAmber}\vrule width 3pt}\hspace{8pt}%
+\parbox{\dimexpr\linewidth-11pt\relax}{%
+  \small\itshape\color{openieSlate}%
+  A zero-model-call 64-bit integer case loop (Shape D: strict N0 and dev-crystallized N1) implemented across Rust, Go, Python, C++20, and Julia, locked under OpenTimestamps Bitcoin Calendar proofs prior to League of Entropy drand randomness rounds, and compared against multi-vendor cloud (Anthropic, OpenAI, xAI, DeepSeek, Alibaba Qwen) and local open-weight language models across exp-001, exp-002, and reviewer-closure suite exp-003. On-chip Apple Silicon IOReport and kernel rusage counters are recorded as reported\_j; no external wall or rail joule monitor was attached (board\_metered is false; measured\_j is unset).
+}
+\vspace{6pt}
 
-In \texttt{HYPOTHESIS.md v0.6}, the \emph{null model} (reference system) and \emph{null hypothesis} (statistical statement) are strictly separated (\texttt{DOSSIER.md} ME1/TH4):
-\begin{enumerate}[leftmargin=1.5em,itemsep=1.5pt,topsep=1.5pt]
-  \item \textbf{Null Models (\texttt{N1} Primary; \texttt{N0} Strict Alongside It):} Both execute the fixed eight-step integer loop (\texttt{SPEC.md v0.4}, $Q = 10^6$, zero floats, zero neural calls at decision time). \textbf{\texttt{N1}} (Owner Decision D2) admits \texttt{dev}-verified records of any provenance (\texttt{lit:}, \texttt{human:}, \texttt{mut:}, \texttt{llm:}) with all \texttt{dev} model calls metered and charged to $C_{N1}$. \textbf{\texttt{N0}} prohibits any \texttt{llm:} record or model-derived per-class code; reporting $\Delta(\texttt{B3}-\texttt{N1})$ beside $\Delta(\texttt{B3}-\texttt{N0})$ (\textbf{S4}) separates decision-time relevance from offline entry discovery.
-  \item \textbf{All Operational AI Permutations (\S5):} \texttt{B0} (default floor enforcing assay sensitivity $>2\delta$), \texttt{B1} (standalone classical solver without store), \texttt{B2} (seed store, mutation off), \texttt{B3} (frontier cloud LLM), \texttt{B4} (matched-info LLM with \texttt{REDUCE} + \texttt{VERIFY} retries), \texttt{B5} (\texttt{code-once} Python solver authored once on \texttt{dev}, $0$ \texttt{test} calls), \texttt{B6} (same-host metered local 2026 LLM), and \texttt{SATB Shape H} (external \texttt{Claude Code 2.1.330} agentic CLI routed via \texttt{satb-proxy} + MCP \texttt{submit}/\texttt{refuse}).
-  \item \textbf{Formally Verifiable Mathematics (\S6):} Tasks governed by exact proof checkers---\texttt{formal.\allowbreak bv\_superopt} (12$\to$16-bit Tseitin Miter-SAT + 2-watched-literal \texttt{RUP/DRAT}), \texttt{formal.\allowbreak hoare\_inv} (3-obligation Hoare loop \texttt{DRAT}), \texttt{formal.\allowbreak poly\_ideal} (exact $\mathbb{Q}$ Buchberger Gr\"obner + cofactor check), and \texttt{formal.\allowbreak open\_drat\_synth} (\emph{no-menu} open-ended Hoare formula synthesis verified live by \texttt{dnull\_cli})---need no learned free-text reducer ($\texttt{N0}=\texttt{N1}$, \texttt{S-4}), obey \texttt{S-3} ($1{,}105\;\text{B}$ avg gzip/class $\le 4{,}096\;\text{B}$), and eliminate scorer gaming (\S11).
+{
+\small
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\vspace{4pt}
+\hrule
+\vspace{8pt}
+
+\emph{Revision
+\href{https://github.com/openIE-dev/research-openie-web/commits/main/src/content/papers/deterministic-null.md}{\texttt{af57f48}},
+22 November 2026. Public code, manifests, and result bundles:
+\href{https://github.com/openIE-dev/deterministic-null}{github.com/openIE-dev/deterministic-null}.
+Data and digest summary:
+\href{https://research.openie.dev/data/\#deterministic-null}{/data/\#deterministic-null}.
+Interactive living figures:
+\href{https://research.openie.dev/living/deterministic-null/}{/living/deterministic-null/}.
+LaTeX archival twin:
+\href{https://research.openie.dev/pdfs/latex/deterministic-null.pdf}{/pdfs/latex/deterministic-null.pdf}
+(\href{https://research.openie.dev/pdfs/latex/deterministic-null.tex}{source}).}
+
+\section{0. Overview}\label{overview}
+
+Empirical evaluations of agentic artificial intelligence routinely
+compare one stochastic language model against another, leaving
+unmeasured how much task completion requires a neural substrate at
+decision time rather than a fixed integer procedure over an explicit
+store of verified prior cases. This study constructs, freezes, and
+audits that missing control --- \textbf{Deterministic Null
+(\texttt{Shape\ D})} --- and tests the per-class null hypothesis
+\(H_{0,k}: \Delta_k = p_{\text{model},k} - p_{\text{null},k} \le \delta\)
+at margin \(\delta = 0.05\) (\texttt{5.0} percentage points) across two
+cryptographically pre-registered confirmatory experiments
+(\texttt{4,030} post-beacon held-out instances across \texttt{exp-001}
+and \texttt{exp-002}), a multi-turn repository bug-repair study
+(\texttt{6} multi-file Python repositories), and companion
+reviewer-closure suite \texttt{exp-003} (multi-vendor non-Anthropic
+cloud breadth, extended-thinking and multi-turn resolution of unique
+\texttt{3-\allowbreak{}satisfiability} formulas, and real upstream GitHub defect
+repair with \texttt{0}-call replay). Local Apple M5 Max energy counters
+(\texttt{IOReport} and \texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage}) are recorded as
+operating-system/on-chip \texttt{reported\_\allowbreak{}j} values; closed-model
+remote server energy is recorded strictly as \texttt{not\_\allowbreak{}available}; no
+hardware rail or wall-plug power monitor was attached
+(\texttt{board\_\allowbreak{}metered\ =\ false}, \texttt{measured\_\allowbreak{}j\ =\ None}).
+
+\textbf{In plain words}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Most agent benchmarks compare model A with model B without asking how
+  much a zero-model lookup loop over verified prior examples already
+  solves.
+\item
+  Across \texttt{2,840} instances drawn from bounded algebraic,
+  formal-proof, and structured transaction families (\texttt{exp-001},
+  Track-A), a frozen integer case table (\texttt{0} model calls at
+  decision time) matches frontier cloud models on \texttt{9} of
+  \texttt{10} class-tier cells, failing only on \texttt{12} unindexed
+  free-text customer idioms (\texttt{+36.40} percentage points for
+  \texttt{Claude\ Opus\ 5.\allowbreak{}5}).
+\item
+  Across \texttt{1,190} unique instances from externally authored public
+  benchmarks (\texttt{exp-002}, Track-B: Berkeley Function-Calling
+  Leaderboard \texttt{v3}, Sierra \texttt{tau-bench} Retail,
+  \texttt{BigCodeBench\ v0.\allowbreak{}1.\allowbreak{}3}, and \texttt{SWE}
+  (software-engineering)-bench Verified), plus \texttt{exp-003}
+  multi-vendor evaluations (\texttt{OpenAI\ gpt-\allowbreak{}oss-\allowbreak{}120b}
+  \texttt{+45.83} percentage points, \texttt{xAI\ Grok\ 4.\allowbreak{}20}
+  \texttt{+44.17} percentage points over \texttt{Shape\ D}) and
+  \texttt{6} real upstream GitHub defect commits (\texttt{5/6} patched
+  and \texttt{pytest}-verified by \texttt{Opus\ 5.5}, then \texttt{5/6}
+  replayed at \texttt{0} model calls), neural synthesis delivers large
+  gains wherever unseen key mass stays high --- while extended thinking
+  (\texttt{49/50}) and multi-turn clause feedback (\texttt{50/50})
+  resolve the \texttt{1,024}-token truncation cliff on unique
+  \texttt{3-\allowbreak{}satisfiability} formulas (still matched at \texttt{50/50}
+  and zero dollars by standalone conflict-driven clause learning), and
+  online crystallization cuts recurring Zipfian model calls and energy
+  by \texttt{3.59×}.
 \end{enumerate}
 
-\section{Normative \texttt{SPEC v0.4} Closures, \texttt{SATB C1--C12}, and \textbf{Gate G2}}
+\section{1. Terms, acronyms, and measurement
+labels}\label{terms-acronyms-and-measurement-labels}
 
-All five \texttt{SPEC.md} \S9 items (\texttt{S-1}..\texttt{S-5}) and \texttt{rust/src/satb/} pass \textbf{28/28} Rust unit tests and \textbf{12/12} \texttt{SATB C1--C12} checks + falsifiers: outcomes map losslessly onto \texttt{pass | fail | refuse | killed} (\texttt{OQ-3}); whole-SUT raw window energy (\texttt{A2}) is primary (\texttt{OQ-4}); macOS uses rootless \texttt{macmon} \texttt{IOReport} (\texttt{L2 A2}) and \texttt{proc\_pid\_rusage(\allowbreak RUSAGE\_INFO\_V6).\allowbreak ri\_energy\_nj} (\texttt{L3 D}, zero \texttt{sudo}, \texttt{OQ-5}); closed-API server energy is strictly \texttt{N} (\texttt{not\_available}, never estimated from fleet medians, \texttt{OQ-6}); and Falsifier~6 drops drifted derived net-above-idle subtractions automatically while preserving raw window joules. Table~\ref{tab:conf} summarises \textbf{Gate G2} across five languages alongside segregated \textbf{WP4 Positive Controls}.
+\begin{itemize}
+\tightlist
+\item
+  AI, ML, LLM, LLMs, MoE, OSS, E4B, A3B: artificial intelligence,
+  machine learning, large language model(s), Mixture-of-Experts,
+  open-source-software model release, effective 4-billion-parameter
+  architecture, and active 3-billion-parameter routing
+\item
+  OBSERVE, REDUCE, FUZZ, LOOKUP, ACT, VERIFY, MUTATE, WRITE: the eight
+  sequential steps of the Deterministic Null integer decision loop
+\item
+  SATB, SUT, SUTs, PFRK, TH2, DOSSIER: Satiation Benchmark harness
+  contract, system(s) under test, four-way attempt outcomes (pass, fail,
+  refuse, killed), red-team threat 2 (no hidden solver inside action
+  primitives), and the project prior-art/red-team dossier
+\item
+  DNULLMM1, FT, LCB: binary memory-mapped store index format, per-class
+  function table, and Hoeffding lower confidence bound
+\item
+  DRAT, RUP, CDCL, CNF, SAT, UNSAT: Deletion Resolution Asymmetric
+  Tautology, Reverse Unit Propagation, Conflict-Driven Clause Learning,
+  conjunctive normal form, satisfiable, and unsatisfiable
+\item
+  BV, AST, XOR, IEEE, UC: fixed-width modular bitvector, abstract syntax
+  tree, bitwise exclusive-OR, Institute of Electrical and Electronics
+  Engineers (IEEE-754 floating-point standard), and University of
+  California
+\item
+  BFCL, BCB, SWE, SQL, DB, SAVEPOINT: Berkeley Function-Calling
+  Leaderboard, BigCodeBench, software-engineering benchmark prefix,
+  Structured Query Language, relational database, and transactional
+  rollback checkpoint
+\item
+  API, CLI, MCP, HTTP, JSON, JSONL, UTF: application programming
+  interface, command-line interface, Model Context Protocol, Hypertext
+  Transfer Protocol, JavaScript Object Notation, line-delimited JSON,
+  and Unicode Transformation Format
+\item
+  POSIX, MMAP, SHA, OTS: Portable Operating System Interface,
+  memory-mapped file I/O, Secure Hash Algorithm (SHA-256), and
+  OpenTimestamps Bitcoin Calendar proof
+\item
+  BCa, CI, CIs, UCL: bias-corrected and accelerated bootstrap,
+  confidence interval(s), and Wilson upper confidence limit
+\item
+  CPU, GPU, ANE, SoC, PID, OS, RAM, DRAM, NVMe, PSU, AC: central
+  processing unit, graphics processing unit, Apple Neural Engine,
+  system-on-chip, process identifier, operating system, random-access
+  memory, dynamic RAM, Non-Volatile Memory Express, power supply unit,
+  and alternating-current wall power
+\item
+  RAPL, NVML, KV, GGUF, RPM, RPD, USD, EDA: Intel Running Average Power
+  Limit, NVIDIA Management Library, key-value cache, GPT-Generated
+  Unified Format quantized weights, requests per minute, requests per
+  day, United States dollars, and electronic design automation
+\item
+  RCE, MoL, WCA, JEPA, LUT6: Reality Code Engine {[}same house{]},
+  Mixture of Limits {[}same house{]}, Wise Computer Automation {[}same
+  house{]}, Joint-Embedding Predictive Architecture, and 6-input Boolean
+  look-up table
+\end{itemize}
 
-\begin{table}[h!]
-\centering
-\scriptsize
-\caption{\textbf{Gate G2}: Five-language \texttt{SPEC v0.4} conformance (\texttt{test.setpoint}, 58 records) and $10^6$-record \texttt{DNULLMM1} \texttt{POSIX mmap} index (\texttt{100.66 MB}, 10k probes). \textbf{WP4 Positive Controls} ($n=200$, excluded from agent breadth): \texttt{ctl.setpoint} ($\texttt{B0}=.110 \to \texttt{N0}=1.00$), \texttt{ctl.mamdani} ($\texttt{B0}=.525 \to \texttt{N0}=1.00$), \texttt{ctl.cartpole} ($\texttt{B0}=.000 \to \texttt{N0}=.805$).}
-\label{tab:conf}
-\begin{tabularx}{\textwidth}{Y l r r r}
-\toprule
-\textbf{Implementation} & \textbf{Frozen Store \texttt{SHA-256} Digest} & \textbf{1M \texttt{mmap} Mount} & \textbf{Mean Probe} & \textbf{10k Checksum} \\
-\midrule
-\textbf{Rust} (Primary + \texttt{SATB}) & \texttt{0da4df8d9ccbce1e...4485781} (Exact) & $44.67\;\mu\text{s}$ & $582.57\;\text{ns}$ & \texttt{15027705736} \\
-\textbf{C++20} (\texttt{clang++ -O3}) & \texttt{0da4df8d9ccbce1e...4485781} (Exact) & $41.58\;\mu\text{s}$ & $388.43\;\text{ns}$ & \texttt{15027705736} \\
-\textbf{Go 1.25} / \textbf{Julia 1.12} & \texttt{0da4df8d9ccbce1e...4485781} (Exact) & $60.63 / 125.92\;\mu\text{s}$ & $417.05 / 350.07\;\text{ns}$ & \texttt{15027705736} \\
-\textbf{Python 3.13} (\texttt{mmap}) & \texttt{0da4df8d9ccbce1e...4485781} (Exact) & $8{,}655.58\;\mu\text{s}$ & $633.87\;\text{ns}$ & \texttt{15027705736} \\
-\bottomrule
-\end{tabularx}
-\end{table}
+Across telemetry levels L0 to L4, four measurement classes stay strictly
+separated across all tables and figures in this study:
 
-\section{Multi-Model Calibration ($n=200$) and 8-Lane \texttt{SATB} Workspace Study}
-
-Pre-beacon calibration ($n=200$/class) established assay sensitivity ($>0.20$ over \texttt{B0}) and \texttt{HYPOTHESIS.md} \S9 sample sizes ($m=5$, $z_{0.995}=2.5758$, $90\%$ power, Wilson $90\%$ UCL on disagreement $\psi$ $\Rightarrow n_{\text{req}} = [404, 200, 200, 200, 200]$ for \texttt{Claude Opus 5.5}, registered upward to $n = [420, 250, 250, 250, 250]$). On calibration, \texttt{Claude Opus 5.5} ($136{,}121$ thinking tokens, $\$10.19$) scored $.955$--$1.000$, \texttt{Sonnet 5.5} scored $.600$--$1.000$, \texttt{Sonnet 4.6} scored $.000$--$1.000$, \texttt{Qwen 3.6 35B-A3B} scored $.340$--$.974$, and \texttt{Gemma 4 E4B-it} scored $.000$--$.970$ (Tables~\ref{tab:cal_compact} and~\ref{tab:lanes}).
-
-\begin{table}[h!]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{3.6pt}
-\caption{\textbf{Summary of Pre-Registration Calibration Contrasts} ($n=200$/class across 3 Frontier Cloud and 2 Local 2026 models, $\delta=+0.05$). Across all 4 formal classes, $\texttt{N0}=\texttt{N1}=\texttt{B1}=1.000$; cloud \texttt{B5} (\texttt{code-once}) scored $1.000$.}
-\label{tab:cal_compact}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{l r r r r r l}
-\toprule
-\textbf{Model Substrate ($n=200$/class)} & \texttt{bv\_superopt} & \texttt{hoare\_inv} & \texttt{poly\_ideal} & \texttt{open\_drat} & \texttt{tau2\_sqlite} (\texttt{N1/N0}) & \textbf{Total Cost / \texttt{L2 A2} Energy} \\
-\midrule
-\textbf{Shape D}: \texttt{dnull N1 / N0} & $1.000$ & $1.000$ & $1.000$ & $1.000$ & $1.000 \;/\; 0.675$ & $\$0.0088$ \texttt{N1 dev} / $<\!1\;\text{J}$ warm \\
-\textbf{B3}: \texttt{Claude Opus 5.5} (Cloud) & $0.955$ & $1.000$ & $1.000$ & $1.000$ & $1.000$ ($M^*_{\$}=5.5$) & $\$10.1884$ ($136{,}121$ think tok) \\
-\textbf{B3}: \texttt{Claude Sonnet 5.5} (Cloud) & $0.730$ & $0.600$ & $0.870$ & $1.000$ & $1.000$ ($M^*_{\$}=3.2$) & $\$7.7336$ ($163{,}073$ think tok) \\
-\textbf{B3}: \texttt{Claude Sonnet 4.6} (Cloud) & $0.265$ & $0.310$ & $0.000^*$ & $0.765$ & $1.000$ ($M^*_{\$}=9.2$) & $\$1.2652$ ($0$ think tok) \\
-\textbf{B6}: \texttt{Qwen 3.6 35B-A3B} (Local) & $0.785$ & $0.515$ & $0.974$ & $0.340$ & $0.897$ ($M^*_{J}=28.7$) & $15{,}430.0\;\text{J}$ (\texttt{L2 A2} M5 Max) \\
-\textbf{B6}: \texttt{Gemma 4 E4B-it} (Local) & $0.124^*$ & $0.393$ & $0.970$ & $0.000^*$ & $0.800$ ($M^*_{J}=8.5$) & $19{,}496.8\;\text{J}$ (\texttt{L2 A2} M5 Max) \\
-\bottomrule
-\end{tabular}%
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Measurement label}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Meaning in this study}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{Exact\ (\allowbreak{}L4\ Logical\ \&\ Cryptographic)}} &
+Bit-identical 64-bit fixed-point store digests (\texttt{SHA-256}),
+OpenTimestamps \texttt{.ots} calendar proofs, League of Entropy
+\texttt{drand} beacon rounds, token/call counts captured by
+\texttt{satb-\allowbreak{}proxy}, and dated API list-price dollars (\texttt{USD}). \\
+\textbf{\texttt{Reported\ (\allowbreak{}reported\_\allowbreak{}j:\ L2\ \&\ L3\ Counters)}} &
+Rootless Apple Silicon on-chip \texttt{IOReport} window joules
+(\texttt{macmon}, telemetry level \texttt{L2}, shared-host label
+\texttt{A2}) and macOS kernel per-PID
+\texttt{proc\_\allowbreak{}pid\_\allowbreak{}rusage(\allowbreak{}RUSAGE\_\allowbreak{}INFO\_\allowbreak{}V6).\allowbreak{}ri\_\allowbreak{}energy\_\allowbreak{}nj}
+(\texttt{L3}, label \texttt{D}). Not a physical hardware rail meter
+(\texttt{measured\_\allowbreak{}j\ =\ None}, \texttt{board\_\allowbreak{}metered\ =\ false}). \\
+\textbf{\texttt{Not\ Available\ (\allowbreak{}label\ N)}} & Closed-API remote server
+energy (\texttt{Claude\ Opus\ 5.\allowbreak{}5}, \texttt{Claude\ Sonnet\ 5.\allowbreak{}5},
+\texttt{OpenAI\ gpt-\allowbreak{}oss-\allowbreak{}120b}, \texttt{xAI\ Grok\ 4.\allowbreak{}20},
+\texttt{DeepSeek\ V4\ Flash}, \texttt{Qwen\ 3.\allowbreak{}8\ Max},
+\texttt{Gemini\ 2.\allowbreak{}5\ Flash}) and \texttt{L0} alternating-current
+wall-plug energy. Fleet medians and literature multipliers are never
+substituted into receipts. \\
+\textbf{\texttt{Invalidated\ Derived\ (\allowbreak{}Falsifier\ 6)}} & Net-above-idle
+subtraction (\texttt{derived\_\allowbreak{}marginal\_\allowbreak{}j}) is automatically dropped
+whenever shared-host co-tenant processes induce
+\texttt{\textgreater{}\ 5.0\%} pre/post idle baseline drift across
+telemetry levels L0 to L4, preserving raw \texttt{reported\_\allowbreak{}j} counters
+intact. \\
+\end{longtable}
 }
-\end{table}
-
-\begin{table}[h!]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{4.0pt}
-\caption{\textbf{8-Lane \texttt{SATB} Workspace Comparison (\texttt{Shape D} vs.\ \texttt{Lane B} vs.\ \texttt{Shape H})} across 24 multi-step \texttt{/work} bundles. \textbf{Falsifier 8 Cleared}: \texttt{Lane B} matches \texttt{Shape H} (\texttt{Claude Code 2.1.330}) at $1.000$ with $\sim\!2\times$ fewer calls and $3.25\times$--$3.44\times$ fewer prompt/cache tokens.}
-\label{tab:lanes}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{l r c r r r l}
-\toprule
-\textbf{Satiation Lane / Adapter} & \textbf{Pass} & \textbf{4-Way (\texttt{P/F/R/K})} & \textbf{Calls} & \textbf{Prompt+Cache} & \textbf{USD} & \textbf{Physical Energy (\texttt{L2 A2} Raw / Server)} \\
-\midrule
-\texttt{Shape D}: \texttt{dnull N0} / \texttt{N1} & $.875 / 1.00$ & \texttt{21/3/0/0} $\cdot$ \texttt{24/0/0/0} & $0$ & $0$ & $\$0.0000$ & \texttt{below\_resolution} warm ($53.1\;\text{J}$ cold fill) \\
-\texttt{Lane B}: Local \texttt{Gemma 4} / \texttt{Qwen 3.6} & $.458 / .500$ & \texttt{11/9/2/2} $\cdot$ \texttt{12/3/0/9} & $85 / 91$ & $73.3\text{k} / 73.0\text{k}$ & $\$0.0000$ & $\mathbf{13{,}446.3\;\text{J}} \;/\; \mathbf{10{,}087.8\;\text{J}}$ (\texttt{L2 A2}) \\
-\texttt{Lane B} vs \texttt{Shape H} (\texttt{Sonnet 5.5}) & $1.00 / 1.00$ & \texttt{24/0/0/0} $\cdot$ \texttt{24/0/0/0} & $43 / 83$ & $60.3\text{k} / 196.1\text{k}$ & $\$0.34 / \$0.24$ & \texttt{not\_available} (\texttt{N}, closed API) \\
-\texttt{Lane B} vs \texttt{Shape H} (\texttt{Opus 5.5}) & $1.00 / 1.00$ & \texttt{24/0/0/0} $\cdot$ \texttt{24/0/0/0} & $44 / 89$ & $63.6\text{k} / 218.4\text{k}$ & $\$0.55 / \$0.68$ & \texttt{not\_available} (\texttt{N}, closed API) \\
-\bottomrule
-\end{tabular}%
 }
-\end{table}
 
-\section{Pre-Registration Gate \texttt{G1} (\texttt{reg-exp-001}) and Confirmatory \texttt{exp-001} Results}
+\subsection{1.1 Lineage, prior-art boundaries, and same-house
+disclosure}\label{lineage-prior-art-boundaries-and-same-house-disclosure}
 
-\textbf{Cryptographic Pre-Beacon Lock (\textbf{Gate G1}).} Prior to any \texttt{test} run, $J=5$ deterministic \texttt{dev} episode permutations were frozen into \texttt{suite/stores/*.jsonl} + \texttt{.mmap} (with $\text{min}=\text{med}=\text{max}=1.000$ on calibration across all 3 formal classes, $966.2\;\text{J}$ total $J=5$ \texttt{L2 A2} fill energy charged in full, and $\$0.00955$ \texttt{Opus 5.5} \texttt{dev} discovery charged to \texttt{N1} on \texttt{tool.tau2\_sqlite}). Manifest \texttt{suite/manifest.json} (\texttt{cffb564cd9ad\dots}), including \texttt{SHA-256} digests of all frozen stores and of \texttt{tools/step2\_run\_confirmatory\_exp001.py}, was timestamped on the OpenTimestamps Bitcoin Calendar (\texttt{suite/manifest.json.ots}, $172\;\text{B}$) and committed at \texttt{git tag reg-exp-001} (\texttt{e5007a4}) while League of Entropy \texttt{drand} stood at round \texttt{6663731}, strictly before target round \texttt{6663734} (\texttt{randomness = 51576380bab74fb9\dots}, \texttt{test\_seed\_u64 = 5861262844585529273}) was published.
+No novelty is claimed for the decision loop itself. Case-based
+retrieve--reuse--revise--retain cycles date to Stanfill and Waltz (1986)
+and Aamodt and Plaza (1994); tabular pole-balancing dates to Michie and
+Chambers (1968); fuzzy rule tables date to Mamdani and Assilian (1975)
+and Wang and Mendel (1992); satisfiability proof logging via
+\texttt{RUP/DRAT} dates to Goldberg and Novikov (2003) and Wetzler,
+Heule, and Hunt (2014). Prior Open Interface Engineering works ---
+\href{https://research.openie.dev/papers/gates/}{Metered Commit Gates},
+\href{https://research.openie.dev/papers/satiation/}{Task Satiation
+vs.~Aggregate Rebound},
+\href{https://research.openie.dev/papers/rce/}{The Reality Code Engine},
+and \href{https://research.openie.dev/papers/lut-adapt/}{Downward LUT6
+Compilation} --- are \texttt{{[}same\ house{]}} companions cited for
+architectural context, never as independent confirmation.
 
-\textbf{Validity, Scorer Audit, and Confirmatory Endpoints (Table~\ref{tab:exp001}).} Every frozen store verified identical pre/post \texttt{SHA-256} digests ($0$ \texttt{test} writes), and an automated scorer audit (\texttt{suite/exp001\_scorer\_audit.json}) independently re-verified $25$ completed trajectories per cell ($750/750$ passed via \texttt{DRAT} proof checking and SQLite \texttt{SAVEPOINT} relational post-state replay, $0$ exploits). Frozen \texttt{dev}-authored \texttt{B5} (\texttt{code-once}, $0$ \texttt{test} calls) achieved $1.000$ on all three menu formal classes at both tiers.
+A 69-source prior-art audit and 36-finding red-team review
+(\texttt{docs/\allowbreak{}DOSSIER.\allowbreak{}md} in
+\href{https://github.com/openIE-dev/deterministic-null}{openIE-dev/deterministic-null})
+established one narrow gap in the 2024--2026 agent evaluation
+literature: existing agent benchmarks overwhelmingly omit non-neural
+controls, existing non-neural baselines lack pre-registered held-out
+store freezes, and existing energy studies of language-model agents
+include no zero-model control arm on the same host.
 
-\begin{table}[h!]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{2.9pt}
-\caption{\textbf{Confirmatory Experiment \#1 (\texttt{exp-001}, Track-A)}: $2{,}840$ held-out \texttt{test} instances seeded from post-tag \texttt{drand} round \texttt{6663734} ($99.0\%$ multiplicity-adjusted 10,000-resample BCa CIs, $m=5$, $\delta=+0.05$). \texttt{dnull} fully loaded energy includes all $J=5$ cold fill attempts ($966.2\;\text{J}$) plus warm \texttt{test} batch ($652.1\;\text{J}$ \texttt{L2 A2}; $0.331\;\text{J}$ \texttt{L3 ri\_energy\_nj}).}
-\label{tab:exp001}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{l r r r r r r c c r r r l}
-\toprule
-\textbf{Tier / Class} & $n$ & $p_{B0}$ & $p_{N0}$ & $p_{N1}$ & $p_{B3}$ & $p_{B6}$ & $\hat{\Delta}(\texttt{B3}\!-\!\texttt{N1})$ & \textbf{99\% BCa CI} & \textbf{\texttt{B3} P/F/R/K} & \textbf{\texttt{B6} J/pass} & \textbf{\texttt{B3} USD} & \textbf{Licensed Verdict (\S12)} \\
-\midrule
-\multicolumn{13}{l}{\textit{\textbf{Tier 1} (\texttt{dev}-matched generator distribution; $1{,}420$ held-out \texttt{test} instances; pooled descriptive $\hat{\Delta} = -0.0013$ $[-0.0034, +0.0000]$)}} \\
-\texttt{formal.bv\_superopt} & $420$ & $.000$ & $1.000$ & $1.000$ & $.998$ & $.836$ & $-0.0024$ & $[-0.0143, +0.0000]$ & \texttt{419/1/0/0} & $14.17\;\text{J}$ & $\$1.86$ & \textbf{Relevance excluded} ($M^*_J\!=\!32.7$) \\
-\texttt{formal.hoare\_inv} & $250$ & $.000$ & $1.000$ & $1.000$ & $1.000$ & $.508$ & $+0.0000$ & $[+0.0000, +0.0000]^\dagger$ & \texttt{250/0/0/0} & $23.32\;\text{J}$ & $\$3.32$ & \textbf{Relevance excluded} ($M^*_J\!=\!32.7$) \\
-\texttt{formal.poly\_ideal} & $250$ & $.348$ & $1.000$ & $1.000$ & $.996$ & $1.000$ & $-0.0040$ & $[-0.0280, +0.0000]$ & \texttt{249/0/0/1} & $7.26\;\text{J}$ & $\$5.53$ & \textbf{Relevance excluded} ($M^*_J\!=\!53.4$) \\
-\texttt{formal.open\_drat\_synth} & $250$ & $.000$ & $1.000$ & $1.000$ & $1.000$ & $.352$ & $+0.0000$ & $[+0.0000, +0.0000]^\dagger$ & \texttt{250/0/0/0} & $69.00\;\text{J}$ & $\$2.89$ & \textbf{Relevance excluded} ($M^*_J\!=\!16.0$) \\
-\texttt{tool.tau2\_sqlite} & $250$ & $.188$ & $.624$ & $1.000$ & $1.000$ & $.940$ & $+0.0000^\ddagger$ & $[+0.0000, +0.0000]^\dagger$ & \texttt{250/0/0/0} & $7.11\;\text{J}$ & $\$0.40$ & \textbf{Relevance excluded} ($M^*_{\$}\!=\!5.9$) \\
-\midrule
-\multicolumn{13}{l}{\textit{\textbf{Tier 2} (shifted 16-bit widths, bounds, scales $k\in[7,15]$, \& unseen free-text paraphrases; $1{,}420$ instances; pooled descriptive $\hat{\Delta} = +0.0695$)}} \\
-\texttt{formal.bv\_superopt} & $420$ & $.000$ & $1.000$ & $1.000$ & $.983$ & $1.000$ & $-0.0167$ & $[-0.0381, -0.0048]$ & \texttt{413/7/0/0} & $7.87\;\text{J}$ & $\$1.84$ & \textbf{Relevance excluded} ($M^*_J\!=\!49.2$) \\
-\texttt{formal.hoare\_inv} & $250$ & $.000$ & $1.000$ & $1.000$ & $1.000$ & $.600$ & $+0.0000$ & $[+0.0000, +0.0000]^\dagger$ & \texttt{250/0/0/0} & $16.41\;\text{J}$ & $\$3.37$ & \textbf{Relevance excluded} ($M^*_J\!=\!39.4$) \\
-\texttt{formal.poly\_ideal} & $250$ & $.376$ & $1.000$ & $1.000$ & $1.000$ & $1.000$ & $+0.0000$ & $[+0.0000, +0.0000]^\dagger$ & \texttt{250/0/0/0} & $6.74\;\text{J}$ & $\$5.56$ & \textbf{Relevance excluded} ($M^*_J\!=\!57.5$) \\
-\texttt{formal.open\_drat\_synth} & $250$ & $.000$ & $1.000$ & $1.000$ & $1.000$ & $.376$ & $+0.0000$ & $[+0.0000, +0.0000]^\dagger$ & \texttt{250/0/0/0} & $53.59\;\text{J}$ & $\$2.87$ & \textbf{Relevance excluded} ($M^*_J\!=\!19.2$) \\
-\texttt{tool.tau2\_sqlite} & $250$ & $.224$ & $.516$ & $.636$ & $1.000$ & $.916$ & $+0.3640^\S$ & $[+0.2880, +0.4480]$ & \texttt{250/0/0/0} & $7.15\;\text{J}$ & $\$0.39$ & \textbf{Relevance shown} ($12$ unfilled) \\
-\bottomrule
-\end{tabular}%
-}\\[2pt]
-{\scriptsize $^\dagger$Exact finite-sample Newcombe $99\%$ paired bound at $0/250$ disagreements is $[-0.0259, +0.0259]$ ($<\delta = +0.05$). $^\ddagger$Against strict \texttt{N0} at Tier~1, $\hat{\Delta}(\texttt{B3}-\texttt{N0}) = +0.3760$ ($[+0.3000, +0.4560]$). $^\S$At Tier~2, \texttt{Qwen 3.6} (\texttt{B6}) achieved $\hat{\Delta}(\texttt{B6}-\texttt{N1})=+0.2800$ ($[+0.2000, +0.3680]$) at $\mathbf{23.38\;\text{J}}$ per additional completed task.}
-\end{table}
 
-\textbf{Licensed Breadth Statements (\texttt{HYPOTHESIS.md} \S12) \& Registered Scope Boundaries (\S17).}
-\emph{``Of 5 task classes sampled from Track-A Self-Administered Formal+SQLite Stratum, relevance was shown in 0, excluded in 5, undetermined in 0 and not assessed in 0, at tier 1''} and \emph{``shown in 1, excluded in 4, undetermined in 0 and not assessed in 0, at tier 2.''} On \texttt{tool.tau2\_sqlite} Tier~2, the $+36.40$-point increment reflects $12$ unseen customer paraphrase surface hashes (\texttt{a0/a1:surf:\dots}) not encountered in the 120-\texttt{dev} fill budget---demonstrating both that the assay cleanly detects open-ended lexical generalisation and that bounded canonicalised domains ($K_{\text{eff}} = 6\text{--}12$) exclude neural relevance even against \texttt{Claude Opus 5.5}.
+\begin{center}
+\openiefig{fig/deterministic-null-fig01-dnull-control-protocol.png}{0.94}{https://research.openie.dev/figures/deterministic-null/dnull-control-protocol.svg}
+\end{center}
 
-\section{Course-Corrected Track-B (\texttt{exp-002}, $K_{\text{eff}} = n = 1{,}190$) and Online Crystallization}
 
-A post-\texttt{exp-001} audit noted that Track-A drew from modulo-$6$ to modulo-$12$ synthetic template families ($K_{\text{eff}} = 6\text{--}12$). To eliminate template saturation, \textbf{Confirmatory Experiment \#2 (\texttt{exp-002}, Track-B)} locked manifest \texttt{5fe640f00298\dots} and OpenTimestamps proof \texttt{suite\_exp002/\allowbreak manifest.\allowbreak json.ots} ($207\;\text{B}$) at \texttt{git tag reg-exp-002} (\texttt{d6bfae5}, \texttt{drand} round \texttt{6664086}), strictly prior to target \texttt{drand} round \texttt{6664089} (seed \texttt{9069507899917430179}; mechanical \texttt{llama-server} \texttt{-c 81920} slot-context fix recorded in \texttt{amendment\_01\_\allowbreak b6\_slot\_\allowbreak ctx.json} with zero changes to stores, prompts, or seed; $515/515$ scorer-audited trajectories passed with $0$ exploits). Table~\ref{tab:exp002} reports all $1{,}190$ unique held-out instances across four externally authored public benchmarks plus unique 12-variable 50-clause phase-transition 3-CNF formulas.
+\emph{Figure 1. Pre-beacon registration (\texttt{Gate\ G1} +
+OpenTimestamps + \texttt{drand}) and paired evaluation protocol across
+\texttt{Shape\ D} (\texttt{N0}, \texttt{N1}) and neural substrates
+(\texttt{B3}, \texttt{B6}, \texttt{Shape\ H}). Protocol diagram, not a
+hardware rail reading.}
 
-\begin{table}[h!]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{2.7pt}
-\caption{\textbf{Confirmatory Experiment \#2 (\texttt{exp-002}, Track-B External Public Benchmarks, $K_{\text{eff}} = n = 1{,}190$)} seeded from post-tag \texttt{drand} round \texttt{6664089} ($99.0\%$ BCa CIs, $m=5$, $\delta=+0.05$). All $1{,}190$ \texttt{Shape D} lookups completed in $0.92\;\text{s}$ ($35.72\;\text{J}$ \texttt{L2 A2}, $2.58\;\text{J}$ \texttt{L3 ri\_energy\_nj}, drift $3.09\%$).}
-\label{tab:exp002}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{l r r r r r r r r c c r l}
-\toprule
-\textbf{Unique-Instance Class} & $n$ & $p_{B0}$ & $p_{N0}$ & $p_{N1}$ & $p_{\text{Opus}}$ & $p_{\text{Sonnet}}$ & $p_{\text{Qwen36}}$ & $p_{\text{Gemma4}}$ & $\hat{\Delta}(\text{Opus}\!-\!\texttt{N1})$ & \textbf{99\% BCa CI} & \textbf{\texttt{Qwen} J/pass} & \textbf{Licensed Verdict (\S12)} \\
-\midrule
-\texttt{formal.unique\_3sat\_drat}$^\star$ & $250$ & $.000$ & $.696$ & $.696$ & $.052$ & $.008$ & $.000$ & $.000$ & $-0.6440$ & $[-0.7200, -0.5600]$ & --- ($7.59\text{k J}$) & \textbf{Not assessable} ($p_{\text{LLM}}\!<\!2\delta$) \\
-\texttt{external.bfcl\_v3\_live} & $250$ & $.180$ & $.200$ & $.228$ & $.828$ & $.840$ & $.804$ & $.720$ & $+0.6000$ & $[+0.5120, +0.6840]$ & $50.39\;\text{J}$ & \textbf{Relevance shown} ($28$ unfilled) \\
-\texttt{external.tau\_bench\_retail} & $220$ & $.005$ & $.396$ & $.259$ & $.864$ & $.805$ & $.755$ & $.623$ & $+0.6045^\dagger$ & $[+0.5182, +0.6864]$ & $267.30\;\text{J}$ & \textbf{Relevance shown} ($14$ unfilled) \\
-\texttt{external.bigcodebench\_exec} & $220$ & $.000$ & $.000$ & $.000$ & $.950$ & $.836$ & $.473$ & $.391$ & $+0.9500$ & $[+0.9000, +0.9773]$ & $238.79\;\text{J}$ & \textbf{Relevance shown} ($218$ unfilled) \\
-\texttt{external.swebench\_verified} & $250$ & $.096$ & $.460$ & $.456$ & $.984$ & $.952$ & $.900$ & $.812$ & $+0.5280$ & $[+0.4440, +0.6040]$ & $24.62\;\text{J}$ & \textbf{Relevance shown} ($4$ unfilled) \\
-\bottomrule
-\end{tabular}%
-}\\[2pt]
-{\scriptsize $^\star$On \texttt{formal.unique\_3sat\_drat}, standalone classical \texttt{CDCL+DRAT} (\texttt{B1}) completed $\mathbf{1.000}$ ($250/250$) with $0$ neural calls; single-turn neural substrates failed the $2\delta$ assay gate ($p_{\text{Opus}}=0.052$). $^\dagger$Against strict model-free \texttt{N0} ($0.3955$), $\hat{\Delta}(\text{Opus}-\texttt{N0}) = +0.4682$ ($[+0.3818, +0.5591]$), exposing \texttt{S4} bigram overfitting when \texttt{N1} greedy-extracts noisy \texttt{dev} phrases.}
-\end{table}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\textbf{Two Regimes Under Good--Turing Unseen Mass $N_1(t)/t$, Multi-Turn Repositories, and Online Crystallization.}
-\emph{``Of 5 task classes sampled from Track-B Unique-Instance External Public Benchmarks Stratum, relevance was shown in 4, excluded in 0, undetermined in 0 and not assessed in 1, at tier 1.''} Good--Turing unseen key mass separates the two tracks: where structural cells saturate ($N_1(t)/t \to 0$), frozen \texttt{Shape D} captures $39.6\%$ (\texttt{tau-bench N0}), $46.0\%$ (\texttt{SWE-bench}), $69.6\%$ (\texttt{Unique 3-SAT}), and $100\%$ (Track-A formal proofs) at zero decision-time model calls. Conversely, where fine keys remain compositional ($N_1(t)/t = 0.9917$ on \texttt{BigCodeBench}, and $6$ unseen multi-file bug-fix repositories in \texttt{joule-bench/tasks/real} where \texttt{Lane B Opus/Sonnet/Qwen 3.6} and \texttt{Shape H Claude Code 2.1.330} all achieved $6/6 = 1.000$ after pristine test restoration against cold \texttt{Shape D} $0/6$), neural synthesis supplies a genuine $+52.8$ to $+95.0$-point increment. Yet under \S7 online crystallization ($600$ Zipfian $s=0.85$ requests over \texttt{BigCodeBench}), verifying and caching model solutions on first miss preserves $\mathbf{98.0\%}$ completion while cutting LLM calls by $\mathbf{72.17\%}$ ($167$ vs.\ $600$), API cost by $\mathbf{3.59\times}$ ($\$2.04$ vs.\ $\$7.33$), and local \texttt{Qwen 3.6} energy by $\mathbf{3.59\times}$ ($18{,}851\;\text{J}$ vs.\ $67{,}730\;\text{J}$).
+\section{2. Machine Specification, Arms, and Five-Language
+Conformance}\label{machine-specification-arms-and-five-language-conformance}
 
-\subsection{Reviewer-Closure Companion Suite (\texttt{exp-003}: Multi-Vendor Breadth, Unique 3-SAT, and Real \texttt{SWE-bench} Patching)}
+\subsection{2.1 The eight-step integer loop and complexity
+caps}\label{the-eight-step-integer-loop-and-complexity-caps}
 
-Anchored read-only to \texttt{suite\_exp002/manifest.json} and post-tag \texttt{drand} round \texttt{6664089} ($0$ store or manifest mutations), companion suite \texttt{exp-003} (\texttt{bench/results/\allowbreak exp\_003\_reviewer\_closures.json}, Table~\ref{tab:exp003}) closed three methodological follow-ups:
-\begin{enumerate}[leftmargin=1.5em,itemsep=1.5pt,topsep=1.5pt]
-  \item \textbf{Closure A --- Multi-Vendor Cloud Frontier Breadth ($n=30$/class $=150$ unique instances/vendor):} Paired instance-for-instance against frozen \texttt{Shape D} (\texttt{N1} external 4-class mean $.275$) and \texttt{Opus 5.5} ($.925$), \texttt{OpenAI gpt-oss-120b} achieved $\mathbf{.733}$ across the four external public benchmarks ($\hat{\Delta}=+.458$, \textbf{Relevance shown} in $4/4$ external classes: \texttt{BFCL} $.867$, \texttt{tau-bench} $.700$, \texttt{BigCodeBench} $.467$, \texttt{SWE-bench} $.900$; $\$0.15$) and \texttt{xAI Grok 4.20} achieved $\mathbf{.717}$ ($\hat{\Delta}=+.442$, tying \texttt{Opus 5.5} at $.900$ on \texttt{BFCL v3}; $\$0.64$). Fireworks-hosted \texttt{DeepSeek V4 Flash} ($.308$) and \texttt{Qwen 3.8 Max} ($.183$) spent most completion budgets inside internal reasoning traces under fixed \texttt{max\_tokens}.
-  \item \textbf{Closure B --- Resolving \texttt{formal.unique\_3sat\_drat} ($n=50$ held-out 12-var 50-clause 3-CNF formulas):} In \texttt{exp-002}, single-turn \texttt{Opus 5.5} scored $.080$ ($4/50$) because \texttt{max\_tokens = 1{,}024} truncated adaptive thinking on $46/50$ instances (\texttt{killed}). Raising \texttt{Opus 5.5} headroom to $8{,}192$ tokens ($77{,}724$ thinking tokens, $\$2.14$) lifted completion to $\mathbf{.980}$ ($49/50$, $\hat{\Delta}=+.200$ over \texttt{TH2}-bounded $O(m)$ \texttt{Shape D} $\texttt{N1}=.780$, $95\%$ BCa $[+.080,+.340]$, \textbf{Relevance shown} vs.\ bounded \texttt{Shape D}), while \texttt{xAI Grok 4.20 Reasoning} ($519\text{k}$ reasoning tokens) tied \texttt{N1} at $\mathbf{.780}$ ($39/50$, $\hat{\Delta}=.000$, \textbf{Undetermined}). A 6-turn pure $O(m)$ clause-checker loop (reporting unsatisfied clause indices without solver or ground-truth access) lifted both \texttt{Sonnet 5.5} ($1.08$ mean turns, $\$1.98$) and \texttt{Opus 5.5} ($1.00$ turn, $\$2.15$) to $\mathbf{1.000}$ ($50/50$)---matching standalone zero-store classical \texttt{CDCL+DRAT} ($\texttt{B1}=1.000$ in $<\!1\;\text{ms}$ at $\$0.00$, \S10 Condition~2b).
-  \item \textbf{Closure C --- Real Upstream \texttt{SWE-bench Verified} Multi-Turn Patch + \texttt{pytest} Execution ($n=6$ held-out GitHub defect commits):} Across \texttt{psf/\allowbreak requests-5414}, \texttt{pytest-10051}, \texttt{pytest-10356}, \texttt{seaborn-3069}, \texttt{sympy-23824}, and \texttt{sympy-17655} (verified offline to fail \texttt{FAIL\_\allowbreak TO\_PASS} pre-patch and pass both \texttt{FAIL\_\allowbreak TO\_PASS} and \texttt{PASS\_\allowbreak TO\_PASS} under gold patches, with pristine upstream tests restored before grading), cold \texttt{Shape D} ($t=1$) completed $\mathbf{0/6}$ ($.000$), \texttt{Lane B Opus 5.5} (\texttt{max\_\allowbreak turns=10}) resolved $\mathbf{5/6}$ ($\mathbf{.833}$, $33$ calls, $\$0.86$), \texttt{Sonnet 5.5} resolved $\mathbf{4/6}$ ($.667$, $\$0.59$), \texttt{xAI Grok 4.20} resolved $\mathbf{1/6}$ ($.167$), and \texttt{Shape D} Online Crystallized Replay ($t=2$) reproduced all $\mathbf{5/6}$ ($\mathbf{.833}$) verified patches in $17.1\;\text{s}$ at $0$ LLM calls and $\$0.00$.
+Every \texttt{Shape\ D} null arm executes an eight-step 64-bit signed
+integer loop (\texttt{Q\ =\ 1,\allowbreak{}000,\allowbreak{}000} fixed-point scaling, zero
+IEEE-754 floating-point instructions, zero neural calls at decision
+time):
+
+\[\texttt{OBSERVE} \;\to\; \texttt{REDUCE} \;\to\; \texttt{FUZZ} \;\to\; \texttt{LOOKUP} \;\to\; \texttt{ACT} \;\to\; \texttt{VERIFY} \;\to\; \texttt{MUTATE} \;\to\; \texttt{WRITE}.\]
+
+During \texttt{dev} construction, \texttt{WRITE} appends verified
+records (\texttt{src} tagged \texttt{lit:}, \texttt{human:},
+\texttt{mut:}, or \texttt{llm:}) to a canonical \texttt{JSONL} log and
+compiles a zero-copy \texttt{POSIX\ mmap} open-addressed binary hash
+table (\texttt{DNULLMM1}: 64-byte header plus 48-byte slots). Before
+\texttt{test} evaluation, the store is frozen read-only by
+\texttt{SHA-256} digest; \texttt{VERIFY}, \texttt{MUTATE}, and
+\texttt{WRITE} execute zero test-time updates, and pre/post store
+digests are asserted byte-identical. To prevent smuggling a general
+solver into per-class code (\texttt{TH2}), each class's function table
+(\texttt{REDUCE} + \texttt{ACT}) is capped at
+\texttt{\textless{}=\ 4,096} gzipped bytes and
+\texttt{\textless{}=\ 50,000} primitive operations per call
+(\texttt{S-3}), and no learned natural-language reducer is permitted
+(\texttt{S-4}).
+
+\subsection{2.2 Operational permutations under
+comparison}\label{operational-permutations-under-comparison}
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1696}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4643}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1786}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1875}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Arm}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Definition}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Decision-time LLM calls}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Construction provenance}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{B0} (Floor)} & Emits the class default action
+unconditionally; enforces the \(> 2\delta\) (\texttt{10.0} percentage
+point) test-time assay-sensitivity gate. & \texttt{0} & None \\
+\textbf{\texttt{B1} (Classical)} & Standalone deductive solver without
+case store (\texttt{CDCL+DRAT}, trace-nullspace Houdini, rational
+Buchberger Gröbner). & \texttt{0} & Classical algorithm \\
+\textbf{\texttt{B2} (Seed-only)} & Literature-seeded store with
+\texttt{dev} mutation disabled. & \texttt{0} & \texttt{lit:} only \\
+\textbf{\texttt{N0} (Strict Null)} & Fixed integer loop filled on
+\texttt{dev} with zero model-derived records, repairs, or per-class code
+(\texttt{0} \texttt{llm:} provenance entries). & \texttt{0} &
+\texttt{lit:}, \texttt{human:}, \texttt{mut:} \\
+\textbf{\texttt{N1} (Primary Null)} & Fixed integer loop filled on
+\texttt{dev} admitting verified entries of any provenance, with all
+\texttt{dev} model calls charged to \(C_{N1}\). & \texttt{0} & Any
+verified (\texttt{C\_N1} charged) \\
+\textbf{\texttt{B5} (\texttt{code-once})} & Frontier LLM authors a
+deterministic Python policy once from \texttt{dev} specs; frozen before
+\texttt{test\_\allowbreak{}seed} exists. & \texttt{0} & \texttt{1} \texttt{dev} LLM
+call / class \\
+\textbf{\texttt{B3} (Cloud Frontier)} & Per-instance cloud evaluation
+(\texttt{Claude\ Opus\ 5.\allowbreak{}5} primary, \texttt{Sonnet\ 5.\allowbreak{}5} secondary;
+\texttt{OpenAI\ gpt-\allowbreak{}oss-\allowbreak{}120b}, \texttt{xAI\ Grok\ 4.\allowbreak{}20},
+\texttt{DeepSeek\ V4\ Flash}, \texttt{Qwen\ 3.\allowbreak{}8\ Max},
+\texttt{Gemini\ 2.\allowbreak{}5\ Flash} in \texttt{exp-002}/\allowbreak{}\texttt{exp-003}). &
+\texttt{\textgreater{}=\ 1} / instance & Pretrained cloud API \\
+\textbf{\texttt{B6} (Local Open-Weight)} & Same-host local inference
+(\texttt{Alibaba\ Qwen\ 3.\allowbreak{}6\ 35B-\allowbreak{}A3B} and
+\texttt{Google\ Gemma\ 4\ E4B-\allowbreak{}it} via \texttt{llama-\allowbreak{}server} on Apple M5
+Max Metal GPU). & \texttt{\textgreater{}=\ 1} / instance & Local
+\texttt{reported\_\allowbreak{}j} \\
+\textbf{\texttt{Shape\ H} (Harness Box)} & External
+\texttt{Claude\ Code\ 2.\allowbreak{}1.\allowbreak{}330} CLI inside \texttt{/work} with
+\texttt{-\allowbreak{}\/\allowbreak{}-\allowbreak{}strict-\allowbreak{}mcp-\allowbreak{}config} routed 100\% through \texttt{satb-\allowbreak{}proxy}.
+& Multi-turn & Tests \texttt{Lane\ B} floor (Falsifier 8) \\
+\end{longtable}
+}
+}
+
+\subsection{2.3 Gate G2 five-language conformance and positive
+controls}\label{gate-g2-five-language-conformance-and-positive-controls}
+
+Independent golden vectors generated via \texttt{/\allowbreak{}usr/\allowbreak{}bin/\allowbreak{}bc} and
+\texttt{openssl} verify bit-exact agreement across five languages
+(\texttt{Gate\ G2}), alongside three segregated positive controls
+(\texttt{ctl.\allowbreak{}setpoint}:
+\texttt{B0\ =\ 0.110\ -\textgreater{}\ N0\ =\ 1.000};
+\texttt{ctl.\allowbreak{}mamdani}:
+\texttt{B0\ =\ 0.525\ -\textgreater{}\ N0\ =\ 1.000};
+\texttt{ctl.\allowbreak{}cartpole}:
+\texttt{B0\ =\ 0.000\ -\textgreater{}\ N0\ =\ 0.805}, excluded from all
+statements about agents):
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1915}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2340}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2128}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1809}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1809}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Implementation}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Frozen Store \texttt{SHA-256} Digest}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{1M}-Record \texttt{DNULLMM1} Mount}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Mean Probe Latency}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{10k}-Probe Checksum}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Rust} (Reference + \texttt{SATB}) &
+\texttt{0da4df8d\allowbreak{}9ccbce1e.\allowbreak{}.\allowbreak{}.\allowbreak{}4485781} & \texttt{44.67\ µs} &
+\texttt{582.\allowbreak{}57\ ns} & \texttt{15027705736} \\
+\textbf{C++20} (\texttt{clang++\ -\allowbreak{}O3}) &
+\texttt{0da4df8d\allowbreak{}9ccbce1e.\allowbreak{}.\allowbreak{}.\allowbreak{}4485781} & \texttt{41.58\ µs} &
+\texttt{388.\allowbreak{}43\ ns} & \texttt{15027705736} \\
+\textbf{Go \texttt{1.25}} & \texttt{0da4df8d\allowbreak{}9ccbce1e.\allowbreak{}.\allowbreak{}.\allowbreak{}4485781} &
+\texttt{60.63\ µs} & \texttt{417.\allowbreak{}05\ ns} & \texttt{15027705736} \\
+\textbf{Julia \texttt{1.12}} & \texttt{0da4df8d\allowbreak{}9ccbce1e.\allowbreak{}.\allowbreak{}.\allowbreak{}4485781} &
+\texttt{125.\allowbreak{}92\ µs} & \texttt{350.\allowbreak{}07\ ns} & \texttt{15027705736} \\
+\textbf{Python \texttt{3.13}} (\texttt{mmap}) &
+\texttt{0da4df8d\allowbreak{}9ccbce1e.\allowbreak{}.\allowbreak{}.\allowbreak{}4485781} & \texttt{8,\allowbreak{}655.\allowbreak{}58\ µs} &
+\texttt{633.\allowbreak{}87\ ns} & \texttt{15027705736} \\
+\end{longtable}
+}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{3. Confirmatory Experiment 1 (\texttt{exp-001},
+Track-A Bounded Template
+Stratum)}{3. Confirmatory Experiment 1 (exp-001, Track-A Bounded Template Stratum)}}\label{confirmatory-experiment-1-exp-001-track-a-bounded-template-stratum}
+
+\subsection{\texorpdfstring{3.1 Pre-beacon registration
+(\texttt{reg-\allowbreak{}exp-\allowbreak{}001})}{3.1 Pre-beacon registration (reg-exp-001)}}\label{pre-beacon-registration-reg-exp-001}
+
+Five classes (\texttt{m\ =\ 5}: \texttt{formal.\allowbreak{}bv\_\allowbreak{}superopt},
+\texttt{formal.\allowbreak{}hoare\_\allowbreak{}inv}, \texttt{formal.\allowbreak{}poly\_\allowbreak{}ideal},
+\texttt{formal.\allowbreak{}open\_\allowbreak{}drat\_\allowbreak{}synth}, and \texttt{tool.\allowbreak{}tau2\_\allowbreak{}sqlite}) were
+filled across \(J = 5\) \texttt{dev} episode permutations
+(\texttt{966.2\ J} \texttt{L2} \texttt{reported\_\allowbreak{}j} across all formal
+fill attempts; \texttt{\$0.00955} \texttt{Opus\ 5.5} \texttt{dev} cost
+charged to \texttt{N1} on \texttt{tool.\allowbreak{}tau2\_\allowbreak{}sqlite}). Sample sizes
+(\texttt{n\ =\ {[}420,\ 250,\ 250,\ 250,\ 250{]}\ =\ 1,420} per tier;
+\texttt{2,840} total) were powered at \texttt{90\%} for \texttt{99.0\%}
+(\(1 - 0.05/5\)) multiplicity-adjusted \texttt{10,000}-resample paired
+\texttt{BCa} intervals. Manifest \texttt{cffb564cd9ad.\allowbreak{}.\allowbreak{}.\allowbreak{}} and
+OpenTimestamps proof \texttt{suite/\allowbreak{}manifest.\allowbreak{}json.\allowbreak{}ots} (\texttt{172\ B})
+were committed at \texttt{git\ tag\ reg-\allowbreak{}exp-\allowbreak{}001} (\texttt{e5007a4}) at
+\texttt{drand} round \texttt{6663731}, strictly prior to target round
+\texttt{6663734} (\texttt{test\_\allowbreak{}seed\_\allowbreak{}u64\ =\ 58612628\allowbreak{}44585529273}). All
+\texttt{750/750} sampled trajectories passed independent \texttt{DRAT}
+and \texttt{SQLite\ SAVEPOINT} scorer audits (\texttt{0} exploits).
+
+\subsection{\texorpdfstring{3.2 Track-A confirmatory results
+(\texttt{2,840}
+instances)}{3.2 Track-A confirmatory results (2,840 instances)}}\label{track-a-confirmatory-results-2840-instances}
+
+{\def\LTcaptype{none} % do not increment counter
+{\scriptsize\setlength{\tabcolsep}{2.4pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.1337}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0349}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0581}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0581}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0581}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0930}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0988}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.1512}}
+  >{\centering\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.0872}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.1047}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 20\tabcolsep) * \real{0.1221}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Tier \& Task Class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(n\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(p_{B0}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(p_{N0}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(p_{N1}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(p_{\text{Opus}}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(p_{\text{Qwen36}}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(\hat{\Delta}(\text{Opus}-\text{N1})\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\texttt{99.0\%} BCa CI}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{Qwen} \texttt{reported\_\allowbreak{}j}/pass}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Verdict (\(\delta = +0.05\))}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Tier 1} \texttt{formal.\allowbreak{}bv\_\allowbreak{}superopt} & \texttt{420} &
+\texttt{0.000} & \texttt{1.000} & \texttt{1.000} & \texttt{0.998} &
+\texttt{0.836} & \texttt{-\allowbreak{}0.\allowbreak{}24\ pts} & \texttt{{[}-1.43,\ +0.00{]}} &
+\texttt{14.17\ J} & \textbf{Relevance excluded} \\
+\textbf{Tier 1} \texttt{formal.\allowbreak{}hoare\_\allowbreak{}inv} & \texttt{250} &
+\texttt{0.000} & \texttt{1.000} & \texttt{1.000} & \texttt{1.000} &
+\texttt{0.508} & \texttt{+0.\allowbreak{}00\ pts} & \texttt{{[}+0.00,\ +0.00{]}} &
+\texttt{23.32\ J} & \textbf{Relevance excluded} \\
+\textbf{Tier 1} \texttt{formal.\allowbreak{}poly\_\allowbreak{}ideal} & \texttt{250} &
+\texttt{0.348} & \texttt{1.000} & \texttt{1.000} & \texttt{0.996} &
+\texttt{1.000} & \texttt{-\allowbreak{}0.\allowbreak{}40\ pts} & \texttt{{[}-2.80,\ +0.00{]}} &
+\texttt{7.26\ J} & \textbf{Relevance excluded} \\
+\textbf{Tier 1} \texttt{formal.\allowbreak{}open\_\allowbreak{}drat\_\allowbreak{}synth} & \texttt{250} &
+\texttt{0.000} & \texttt{1.000} & \texttt{1.000} & \texttt{1.000} &
+\texttt{0.352} & \texttt{+0.\allowbreak{}00\ pts} & \texttt{{[}+0.00,\ +0.00{]}} &
+\texttt{69.00\ J} & \textbf{Relevance excluded} \\
+\textbf{Tier 1} \texttt{tool.\allowbreak{}tau2\_\allowbreak{}sqlite} & \texttt{250} &
+\texttt{0.188} & \texttt{0.624} & \texttt{1.000} & \texttt{1.000} &
+\texttt{0.940} & \texttt{+0.\allowbreak{}00\ pts} & \texttt{{[}+0.00,\ +0.00{]}} &
+\texttt{7.11\ J} & \textbf{Relevance excluded} \\
+\textbf{Tier 2} \texttt{formal.\allowbreak{}bv\_\allowbreak{}superopt} (\texttt{16b}) &
+\texttt{420} & \texttt{0.000} & \texttt{1.000} & \texttt{1.000} &
+\texttt{0.983} & \texttt{1.000} & \texttt{-\allowbreak{}1.\allowbreak{}67\ pts} &
+\texttt{{[}-3.81,\ -0.48{]}} & \texttt{7.87\ J} & \textbf{Relevance
+excluded} \\
+\textbf{Tier 2} \texttt{formal.\allowbreak{}hoare\_\allowbreak{}inv} (\texttt{6b}) & \texttt{250}
+& \texttt{0.000} & \texttt{1.000} & \texttt{1.000} & \texttt{1.000} &
+\texttt{0.600} & \texttt{+0.\allowbreak{}00\ pts} & \texttt{{[}+0.00,\ +0.00{]}} &
+\texttt{16.41\ J} & \textbf{Relevance excluded} \\
+\textbf{Tier 2} \texttt{formal.\allowbreak{}poly\_\allowbreak{}ideal} (\(k\in[7,15]\)) &
+\texttt{250} & \texttt{0.376} & \texttt{1.000} & \texttt{1.000} &
+\texttt{1.000} & \texttt{1.000} & \texttt{+0.\allowbreak{}00\ pts} &
+\texttt{{[}+0.00,\ +0.00{]}} & \texttt{6.74\ J} & \textbf{Relevance
+excluded} \\
+\textbf{Tier 2} \texttt{formal.\allowbreak{}open\_\allowbreak{}drat\_\allowbreak{}synth} & \texttt{250} &
+\texttt{0.000} & \texttt{1.000} & \texttt{1.000} & \texttt{1.000} &
+\texttt{0.376} & \texttt{+0.\allowbreak{}00\ pts} & \texttt{{[}+0.00,\ +0.00{]}} &
+\texttt{53.59\ J} & \textbf{Relevance excluded} \\
+\textbf{Tier 2} \texttt{tool.\allowbreak{}tau2\_\allowbreak{}sqlite} (paraphrase) & \texttt{250} &
+\texttt{0.224} & \texttt{0.516} & \texttt{0.636} & \texttt{1.000} &
+\texttt{0.916} & \textbf{\texttt{+36.\allowbreak{}40\ pts}} &
+\textbf{\texttt{{[}+28.80,\ +44.80{]}}} & \texttt{7.15\ J} &
+\textbf{Relevance shown} (\texttt{12} unfilled) \\
+\end{longtable}
+}
+}
+
+\textbf{Scope audit of Track-A.} While \texttt{exp-001} cleanly
+separated canonicalized formal verification (\texttt{9/9} cells
+excluded, saving \texttt{\$27.25} API spend or \texttt{31,\allowbreak{}619.\allowbreak{}9\ J}
+local \texttt{reported\_\allowbreak{}j}) from unseen surface paraphrases
+(\texttt{+36.40} points on Tier 2 \texttt{tool.\allowbreak{}tau2\_\allowbreak{}sqlite}, costing
+\texttt{23.38\ J} per extra pass on \texttt{Qwen\ 3.6}), a post-run
+audit identified a key structural limitation: Track-A's generators drew
+from modulo-\texttt{6} to modulo-\texttt{12} template families
+(\(K_{\text{eff}} = 6\text{–}12\)), allowing a \texttt{120}-episode
+\texttt{dev} budget to saturate the feature cells completely.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{4. Confirmatory Experiment 2 (\texttt{exp-002},
+Track-B External Public Benchmarks,
+\(K_{\text{eff}} = n\))}{4. Confirmatory Experiment 2 (exp-002, Track-B External Public Benchmarks, K\_\{\textbackslash text\{eff\}\} = n)}}\label{confirmatory-experiment-2-exp-002-track-b-external-public-benchmarks-k_texteff-n}
+
+\subsection{\texorpdfstring{4.1 Course-corrected unique-instance design
+and registration
+(\texttt{reg-\allowbreak{}exp-\allowbreak{}002})}{4.1 Course-corrected unique-instance design and registration (reg-exp-002)}}\label{course-corrected-unique-instance-design-and-registration-reg-exp-002}
+
+To test \texttt{Shape\ D} without synthetic template menus, Track-B
+(\texttt{exp-002}) ingested four externally authored public benchmarks
+(\texttt{SHA-256}-pinned upstream artifacts) alongside structurally
+unique random phase-transition \texttt{3-SAT} instances (\texttt{12}
+variables, \texttt{50} clauses, clause-to-variable ratio \texttt{4.17}),
+yielding \texttt{1,190} unique held-out \texttt{test} instances
+(\(K_{\text{eff}} = n = 1,190\)):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{\texttt{formal.\allowbreak{}unique\_\allowbreak{}3sat\_\allowbreak{}drat} (\texttt{n\ =\ 250})}:
+  Unique \texttt{12}-variable, \texttt{50}-clause \texttt{3-CNF}
+  formulas; \texttt{Shape\ D} uses polynomial 1-level failed-literal
+  propagation and \texttt{45}-flip local walk (\texttt{3,108\ B} gzipped
+  FT), while standalone \texttt{CDCL} with 2-watched-literal
+  \texttt{RUP/DRAT} proof checking serves as classical \texttt{B1}.
+\item
+  \textbf{\texttt{external.\allowbreak{}bfcl\_\allowbreak{}v3\_\allowbreak{}live} (\texttt{n\ =\ 250} from
+  \texttt{1,292} pool)}: UC Berkeley Gorilla Function-Calling
+  Leaderboard \texttt{v3} (\texttt{live\_\allowbreak{}multiple} user-contributed
+  multi-tool schemas interleaved with \texttt{irrelevance} abstention
+  tasks; \texttt{1,381\ B} gzipped FT).
+\item
+  \textbf{\texttt{external.\allowbreak{}tau\_\allowbreak{}bench\_\allowbreak{}retail} (\texttt{n\ =\ 220} from
+  \texttt{635} pool)}: Sierra Research \texttt{tau-bench} retail policy
+  and relational database mutation suite (\texttt{500} users,
+  \texttt{1,000} orders, \texttt{50} products; \texttt{1,298\ B} gzipped
+  FT).
+\item
+  \textbf{\texttt{external.\allowbreak{}bigcodebench\_\allowbreak{}exec} (\texttt{n\ =\ 220} from
+  \texttt{487} locally verified runnable pool)}:
+  \texttt{BigCodeBench\ v0.\allowbreak{}1.\allowbreak{}3} multi-library Python coding
+  specifications graded by isolated \texttt{unittest} execution
+  (\texttt{286\ B} gzipped FT; \texttt{100\%} of pool tasks verified
+  offline to pass canonical solutions and reject \texttt{return\ None}).
+\item
+  \textbf{\texttt{external.\allowbreak{}swebench\_\allowbreak{}verified} (\texttt{n\ =\ 250} from
+  \texttt{500} pool)}: \texttt{princeton-\allowbreak{}nlp/\allowbreak{}SWE-\allowbreak{}bench\_\allowbreak{}Verified}
+  human-validated GitHub issues evaluated on \texttt{12}-way repository
+  \texttt{(\allowbreak{}file\_\allowbreak{}path\ ::\ symbol)} fault localization (\texttt{718\ B}
+  gzipped FT).
 \end{enumerate}
 
-\begin{table}[ht!]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{3.4pt}
-\caption{\textbf{Companion Suite \texttt{exp-003} Summary} on post-tag \texttt{drand 6664089} held-out slices: (A) Multi-vendor Track-B ($150$ inst./vendor), (B) \texttt{formal.unique\_3sat\_drat} resolution ($n=50$), and (C) real upstream \texttt{SWE-bench Verified} multi-turn \texttt{pytest} repair ($n=6$).}
-\label{tab:exp003}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{l l r r r c r l}
-\toprule
-\textbf{Closure / Evaluation Slice} & \textbf{Evaluated Arm} & $n$ & \textbf{Pass} & \textbf{Ref.\ (\texttt{N1} / \texttt{B1})} & $\hat{\Delta}$ \textbf{vs.\ \texttt{N1} (95\% BCa)} & \textbf{Calls / USD} & \textbf{Resolution / Finding} \\
-\midrule
-\textbf{A.} Track-B External 4-Class Mean & \texttt{OpenAI gpt-oss-120b} & $120$ & $.733$ & $.275$ / --- & $+0.458$ ($4/4$ shown) & $120 / \$0.12$ & Replicates neural relevance cross-lab \\
-\textbf{A.} Track-B External 4-Class Mean & \texttt{xAI Grok 4.20} & $120$ & $.717$ & $.275$ / --- & $+0.442$ ($.900$ \texttt{BFCL}) & $120 / \$0.58$ & Matches \texttt{Opus 5.5} on \texttt{BFCL v3} \\
-\midrule
-\textbf{B.} \texttt{unique\_3sat\_drat} (Single, $8\text{k}$ tok) & \texttt{Opus 5.5} Ext.\ Thinking & $50$ & $.980$ & $.780 \;/\; 1.000$ & $+0.200$ $[+.08, +.34]$ & $50 / \$2.14$ & Lifts $1\text{k}$-cap truncation ($.080 \to .980$) \\
-\textbf{B.} \texttt{unique\_3sat\_drat} (Single, $8\text{k}$ tok) & \texttt{xAI Grok 4.20 Reasoning} & $50$ & $.780$ & $.780 \;/\; 1.000$ & $+0.000$ $[-.18, +.18]$ & $50 / \$0.10$ & Clears $2\delta$; ties $O(m)$ \texttt{Shape D N1} \\
-\textbf{B.} \texttt{unique\_3sat\_drat} ($O(m)$ 6-Turn) & \texttt{Sonnet 5.5} / \texttt{Opus 5.5} & $50$ & $1.000$ & $.780 \;/\; 1.000$ & $+0.220$ $[+.12, +.36]$ & $54\text{--}50 / \$1.98\text{--}2.15$ & Matches $\$0.00$ \texttt{CDCL+DRAT B1} ($1.000$) \\
-\midrule
-\textbf{C.} Real \texttt{SWE-bench Verified} (\texttt{pytest}) & \texttt{Lane B Opus} / \texttt{Sonnet 5.5} & $6$ & $.833 / .667$ & $.000$ (cold $t\!=\!1$) & $+0.833 \;/\; +0.667$ & $33 / \$0.86 \cdot 31 / \$0.59$ & Real upstream GitHub repo patches \\
-\textbf{C.} Real \texttt{SWE-bench Verified} ($t\!=\!2$ Replay) & \texttt{Shape D} Crystallized Store & $6$ & $.833$ & $.000$ (cold $t\!=\!1$) & $+0.833$ (exact replay) & $0 / \$0.00$ & $5/6$ verified patches replayed in $17.1\;\text{s}$ \\
-\bottomrule
-\end{tabular}%
+Manifest \texttt{5fe640f00298.\allowbreak{}.\allowbreak{}.\allowbreak{}} (\texttt{355} \texttt{Opus\ 5.5}
+\texttt{dev} calls = \texttt{\$7.1902} charged to \(C_{N1}\)) and
+OpenTimestamps receipt \texttt{suite\_\allowbreak{}exp002/\allowbreak{}manifest.\allowbreak{}json.\allowbreak{}ots}
+(\texttt{207\ B}) were committed at \texttt{git\ tag\ reg-\allowbreak{}exp-\allowbreak{}002}
+(\texttt{d6bfae5}) at \texttt{drand} round \texttt{6664086}, strictly
+before target round \texttt{6664089}
+(\texttt{test\_\allowbreak{}seed\_\allowbreak{}u64\ =\ 90695078\allowbreak{}99917430179}). One mechanical
+harness amendment (\texttt{amendment\_\allowbreak{}01\_\allowbreak{}b6\_\allowbreak{}slot\_\allowbreak{}ctx.\allowbreak{}json}) raised
+\texttt{llama-\allowbreak{}server} total context from \texttt{-c\ 16384}
+(\texttt{4,096} tokens across \texttt{4} slots, which returned
+\texttt{HTTP\ 400} on \texttt{10k–13.7k}-token
+\texttt{BFCL}/\allowbreak{}\texttt{tau-bench} schemas) to \texttt{-c\ 81920}
+(\texttt{20,480} tokens per slot), leaving all frozen stores, prompts,
+verifiers, sample sizes, and \texttt{drand} round \texttt{6664089}
+unchanged. All \texttt{515/515} sampled trajectories passed independent
+scorer re-verification (\texttt{0} exploits).
+
+\subsection{\texorpdfstring{4.2 Track-B multi-vendor confirmatory
+results (\texttt{1,190} unique
+instances)}{4.2 Track-B multi-vendor confirmatory results (1,190 unique instances)}}\label{track-b-multi-vendor-confirmatory-results-1190-unique-instances}
+
+All \texttt{1,190} \texttt{Shape\ D} (\texttt{N0}, \texttt{N1}),
+\texttt{B0}, and \texttt{B1} (\texttt{CDCL+DRAT}) evaluations completed
+in \textbf{\texttt{0.9213\ s}} (\texttt{35.72\ J} \texttt{L2}
+\texttt{reported\_\allowbreak{}j}, \texttt{0.36\ J} \texttt{GPU}, \texttt{2.58\ J}
+\texttt{L3} \texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj}, \texttt{6.57\ ×\ 10\^{}9}
+instructions, pre/post idle drift \texttt{3.09\%\ \textless{}=\ 5.0\%}).
+
+{\def\LTcaptype{none} % do not increment counter
+{\scriptsize\setlength{\tabcolsep}{2.4pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0317}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0529}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0529}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0529}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0847}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0899}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0899}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0899}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.1376}}
+  >{\centering\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.0847}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 22\tabcolsep) * \real{0.1217}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Unique-Instance Class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(n\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(p_{B0}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(p_{N0}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(p_{N1}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(p_{\text{Opus}}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(p_{\text{Sonnet}}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(p_{\text{Qwen36}}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(p_{\text{Gemma4}}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\(\hat{\Delta}(\text{Opus}-\text{N1})\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\texttt{99.0\%} BCa CI}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Verdict (\(\delta = +0.05\))}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{formal.\allowbreak{}unique\_\allowbreak{}3sat\_\allowbreak{}drat} (\(p_{B1}=1.000\)) & \texttt{250} &
+\texttt{0.000} & \textbf{\texttt{0.696}} & \textbf{\texttt{0.696}} &
+\texttt{0.052} & \texttt{0.008} & \texttt{0.000} & \texttt{0.000} &
+\textbf{\texttt{-\allowbreak{}64.\allowbreak{}40\ pts}} & \texttt{{[}-72.00,\ -56.00{]}} &
+\textbf{Not assessable} (\(p_{\text{LLM}} < 2\delta\)) \\
+\texttt{external.\allowbreak{}bfcl\_\allowbreak{}v3\_\allowbreak{}live} & \texttt{250} & \texttt{0.180} &
+\texttt{0.200} & \texttt{0.228} & \texttt{0.828} &
+\textbf{\texttt{0.840}} & \texttt{0.804} & \texttt{0.720} &
+\textbf{\texttt{+60.\allowbreak{}00\ pts}} & \texttt{{[}+51.20,\ +68.40{]}} &
+\textbf{Relevance shown} (\texttt{28} unfilled) \\
+\texttt{external.\allowbreak{}tau\_\allowbreak{}bench\_\allowbreak{}retail} & \texttt{220} & \texttt{0.005} &
+\texttt{0.396} & \texttt{0.259} & \textbf{\texttt{0.864}} &
+\texttt{0.805} & \texttt{0.755} & \texttt{0.623} &
+\textbf{\texttt{+60.\allowbreak{}45\ pts}} & \texttt{{[}+51.82,\ +68.64{]}} &
+\textbf{Relevance shown} (\texttt{14} unfilled) \\
+\texttt{external.\allowbreak{}bigcodebench\_\allowbreak{}exec} & \texttt{220} & \texttt{0.000} &
+\texttt{0.000} & \texttt{0.000} & \textbf{\texttt{0.950}} &
+\texttt{0.836} & \texttt{0.473} & \texttt{0.391} &
+\textbf{\texttt{+95.\allowbreak{}00\ pts}} & \texttt{{[}+90.00,\ +97.73{]}} &
+\textbf{Relevance shown} (\texttt{218} unfilled) \\
+\texttt{external.\allowbreak{}swebench\_\allowbreak{}verified} & \texttt{250} & \texttt{0.096} &
+\textbf{\texttt{0.460}} & \texttt{0.456} & \textbf{\texttt{0.984}} &
+\texttt{0.952} & \texttt{0.900} & \texttt{0.812} &
+\textbf{\texttt{+52.\allowbreak{}80\ pts}} & \texttt{{[}+44.40,\ +60.40{]}} &
+\textbf{Relevance shown} (\texttt{4} unfilled) \\
+\end{longtable}
 }
-\end{table}
+}
+
+\emph{(A 15-call live cloud probe on \texttt{Google\ Gemini\ 2.\allowbreak{}5\ Flash}
+within AI Studio's \texttt{20\ RPD} free-tier cap recorded \texttt{0/3},
+\texttt{3/3}, \texttt{2/3}, \texttt{1/3}, and \texttt{3/3} across the
+five classes in the same order.)}
+
+Three empirical findings stand out in Section 4.2:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Single-turn \texttt{1,024}-token cap cliff on
+  \texttt{formal.\allowbreak{}unique\_\allowbreak{}3sat\_\allowbreak{}drat} (resolved in Section 4.3)}: Under
+  \texttt{exp-002}'s uniform single-turn \texttt{max\_\allowbreak{}tokens\ =\ 1,\allowbreak{}024}
+  cap, neural models failed almost completely (\texttt{Opus\ 5.5}
+  \texttt{5.2\%} at \texttt{\$13.55}, \texttt{Sonnet\ 5.\allowbreak{}5}
+  \texttt{0.8\%} at \texttt{\$8.17}, \texttt{Qwen\ 3.6} \texttt{0.0\%}
+  at \texttt{7,588\ J}, \texttt{Gemma\ 4} \texttt{0.0\%} at
+  \texttt{4,698\ J}), whereas the zero-call polynomial case table solved
+  \texttt{69.6\%} (\texttt{174/250}) and standalone classical
+  \texttt{CDCL+DRAT} (\texttt{B1}) solved \textbf{\texttt{100.0\%}
+  (\texttt{250/250})}. Because \texttt{Opus\ 5.5} failed to clear
+  \texttt{B0} by \(2\delta = 10.0\) percentage points (\texttt{95\%}
+  \texttt{BCa} \texttt{{[}+2.80,\ +8.40{]}} points), the pre-registered
+  decision rule withheld \texttt{"Relevance\ excluded"} and classified
+  the cell strictly as \textbf{\texttt{Not\ assessable}}.
+\item
+  \textbf{Non-trivial zero-model baselines alongside genuine neural
+  increments}: Even with zero neural parameters (\texttt{N0}), lexical
+  and schema case rules solve \textbf{\texttt{46.0\%}} of
+  \texttt{SWE-\allowbreak{}bench\ Verified} \texttt{12}-way fault localization
+  (vs.~\texttt{9.6\%} floor) and \textbf{\texttt{39.6\%}} of
+  \texttt{tau-bench} retail policy mutations (vs.~\texttt{0.5\%} floor).
+  On \texttt{tau-bench}, greedy \texttt{dev} bigram extraction in
+  \texttt{N1} overfit noisy customer phrasing (\texttt{25.9\%}
+  vs.~\texttt{N0}'s \texttt{39.6\%}), confirming the importance of
+  reporting strict \texttt{N0} alongside \texttt{N1} (\texttt{S4}).
+  Across all four public benchmarks, frontier and local open-weight
+  models deliver large, statistically decisive increments
+  (\texttt{+46.82} to \texttt{+95.00} percentage points over both
+  \texttt{N0} and \texttt{N1}).
+\item
+  \textbf{Dual-channel \texttt{reported\_\allowbreak{}j} cost of the local increment
+  (\texttt{B6})}: On the shared Apple M5 Max host (where concurrent
+  \texttt{yosys-abc} synthesis triggered Falsifier 6 on \texttt{4} of
+  \texttt{5} multi-minute windows, cleanly invalidating
+  \texttt{derived\_\allowbreak{}marginal\_\allowbreak{}j} while preserving raw \texttt{L2}
+  \texttt{IOReport} and per-PID \texttt{L3} \texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj}
+  counters), each additional task completed by
+  \texttt{Qwen\ 3.\allowbreak{}6\ 35B-\allowbreak{}A3B} above \texttt{N1} cost
+  \textbf{\texttt{49.90\ J}} (\texttt{SWE-bench}),
+  \textbf{\texttt{70.33\ J}} (\texttt{BFCL\ v3}),
+  \textbf{\texttt{238.80\ J}} (\texttt{BigCodeBench}), and
+  \textbf{\texttt{407.12\ J}} (\texttt{tau-bench} Retail) in raw
+  \texttt{L2} \texttt{reported\_\allowbreak{}j}.
+\end{enumerate}
+
+\subsection{\texorpdfstring{4.3 Reviewer-closure companion suite
+(\texttt{exp-003}: multi-vendor cloud breadth and Unique 3-SAT
+resolution)}{4.3 Reviewer-closure companion suite (exp-003: multi-vendor cloud breadth and Unique 3-SAT resolution)}}\label{reviewer-closure-companion-suite-exp-003-multi-vendor-cloud-breadth-and-unique-3-sat-resolution}
+
+Anchored read-only to \texttt{suite\_\allowbreak{}exp002/\allowbreak{}manifest.\allowbreak{}json} and post-tag
+\texttt{drand} round \texttt{6664089} (\texttt{0} store or manifest
+mutations; \texttt{bench/\allowbreak{}results/\allowbreak{}exp\_\allowbreak{}003\_\allowbreak{}reviewer\_\allowbreak{}closures.\allowbreak{}json} in
+\href{https://github.com/openIE-dev/deterministic-null}{openIE-dev/deterministic-null}),
+companion suite \texttt{exp-003} resolved two Track-B reviewer
+follow-ups (plus real upstream repository repair in Section 5.2):
+
+\subsubsection{\texorpdfstring{Closure A --- Non-Anthropic multi-vendor
+cloud frontier breadth (\texttt{n\ =\ 30}/\allowbreak{}class = \texttt{150} unique
+instances/vendor)}{Closure A --- Non-Anthropic multi-vendor cloud frontier breadth (n = 30/class = 150 unique instances/vendor)}}\label{closure-a-non-anthropic-multi-vendor-cloud-frontier-breadth-n-30class-150-unique-instancesvendor}
+
+Paired instance-for-instance on the initial \texttt{30} held-out
+\texttt{drand\ 6664089} instances per class (\texttt{N1} external
+4-class mean \texttt{0.2750}, \texttt{Opus\ 5.5} external 4-class mean
+\texttt{0.9250}):
+
+{\def\LTcaptype{none} % do not increment counter
+{\scriptsize\setlength{\tabcolsep}{2.4pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2164}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0896}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0672}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0821}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1045}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0821}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2164}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1418}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Non-Anthropic Cloud Substrate (\texttt{n\ =\ 30}/\allowbreak{}class)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{unique\_\allowbreak{}3sat}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{bfcl\_v3}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{tau\_\allowbreak{}bench}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{bigcodebench}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{\texttt{swebench}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{External 4-Class Mean (\(\hat{\Delta}\) vs \texttt{N1})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{API Spend (\texttt{150} calls)}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Paired \texttt{Shape\ D} \texttt{N1} (\texttt{0} calls)} &
+\texttt{0.833} & \texttt{0.300} & \texttt{0.300} & \texttt{0.000} &
+\texttt{0.500} & \texttt{0.275} (\texttt{0.00\ pts}) &
+\texttt{\$0.0000} \\
+\textbf{\texttt{OpenAI\ gpt-\allowbreak{}oss-\allowbreak{}120b}} (\texttt{cerebras:gpt-\allowbreak{}oss-\allowbreak{}120b})
+& \texttt{0.100} & \textbf{\texttt{0.867}} & \textbf{\texttt{0.700}} &
+\textbf{\texttt{0.467}} & \textbf{\texttt{0.900}} &
+\textbf{\texttt{0.733} (\texttt{+45.\allowbreak{}83\ pts}, \texttt{4/4} shown)} &
+\texttt{\$0.1458} \\
+\textbf{\texttt{xAI\ Grok\ 4.\allowbreak{}20}}
+(\texttt{grok-\allowbreak{}4.\allowbreak{}20-\allowbreak{}0309-\allowbreak{}non-\allowbreak{}reasoning}) & \texttt{0.000} &
+\textbf{\texttt{0.900}} & \textbf{\texttt{0.700}} &
+\textbf{\texttt{0.500}} & \textbf{\texttt{0.767}} &
+\textbf{\texttt{0.717} (\texttt{+44.\allowbreak{}17\ pts}, ties \texttt{Opus} on
+\texttt{BFCL})} & \texttt{\$0.6362} \\
+\textbf{\texttt{DeepSeek\ V4\ Flash}} (Fireworks spot router) &
+\texttt{0.000} & \texttt{0.533} & \texttt{0.133} & \texttt{0.200} &
+\texttt{0.367} & \texttt{0.308} (\texttt{+3.\allowbreak{}33\ pts}; \texttt{87/150}
+\texttt{killed}) & \texttt{\$0.1583} \\
+\textbf{\texttt{Alibaba\ Qwen\ 3.\allowbreak{}8\ Max}} (Fireworks) & \texttt{0.033} &
+\texttt{0.167} & \texttt{0.133} & \texttt{0.067} & \texttt{0.367} &
+\texttt{0.183} (\texttt{-\allowbreak{}9.\allowbreak{}17\ pts}; \texttt{124/150} \texttt{killed}) &
+\texttt{\$0.7832} \\
+\end{longtable}
+}
+}
+
+Both \texttt{OpenAI\ gpt-\allowbreak{}oss-\allowbreak{}120b} (\texttt{+45.83} percentage points
+over \texttt{N1}, \textbf{Relevance shown} across all \texttt{4/4}
+external public benchmarks) and \texttt{xAI\ Grok\ 4.\allowbreak{}20}
+(\texttt{+44.17} percentage points, matching \texttt{Claude\ Opus\ 5.\allowbreak{}5}
+at \texttt{0.900} on \texttt{BFCL\ v3}) replicate \texttt{exp-002}'s
+two-regime separation independently of Anthropic models, while
+Fireworks-hosted reasoning endpoints (\texttt{DeepSeek\ V4\ Flash},
+\texttt{Qwen\ 3.\allowbreak{}8\ Max}) consumed most single-turn \texttt{max\_\allowbreak{}tokens}
+budgets inside internal chain-of-thought traces (\texttt{killed}).
+
+\subsubsection{\texorpdfstring{Closure B --- Resolving
+\texttt{formal.\allowbreak{}unique\_\allowbreak{}3sat\_\allowbreak{}drat} (\texttt{n\ =\ 50} held-out
+\texttt{12}-variable, \texttt{50}-clause \texttt{3-CNF}
+formulas)}{Closure B --- Resolving formal.unique\_3sat\_drat (n = 50 held-out 12-variable, 50-clause 3-CNF formulas)}}\label{closure-b-resolving-formal.unique_3sat_drat-n-50-held-out-12-variable-50-clause-3-cnf-formulas}
+
+Inspecting \texttt{exp-002}'s paired \texttt{n\ =\ 50} slice
+(\texttt{i\ =\ 0.\allowbreak{}.\allowbreak{}49}) showed that \texttt{Opus\ 5.5}
+(\texttt{4/\allowbreak{}50\ =\ 0.\allowbreak{}080}) was truncated inside its adaptive thinking
+block on \texttt{45} of \texttt{50} instances under
+\texttt{max\_\allowbreak{}tokens\ =\ 1,\allowbreak{}024}. Removing that cap and testing a pure
+\(O(m)\) clause-checker loop (returning unsatisfied clause indices
+without solver or witness leakage) resolved the \texttt{Not\ assessable}
+status cleanly:
+
+{\def\LTcaptype{none} % do not increment counter
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2013}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0974}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0909}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1688}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1753}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1234}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{\texttt{formal.\allowbreak{}unique\_\allowbreak{}3sat\_\allowbreak{}drat} Arm (\texttt{n\ =\ 50},
+\texttt{drand\ 6664089})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Passes (\texttt{p})}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\texttt{SATB} \texttt{P/F/R/K}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\(\hat{\Delta}\) vs \texttt{Shape\ D} \texttt{N1} (\texttt{95\%}
+BCa)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\(\hat{\Delta}\) vs Classical \texttt{CDCL+DRAT} \texttt{B1}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Calls / API \texttt{USD}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Verdict vs \texttt{N1}}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{Shape\ D} \texttt{N0} = \texttt{N1}
+(\texttt{TH2}-bounded \(O(m)\) walk)} & \texttt{39\ /\ 50}
+(\texttt{0.780}) & \texttt{39/11/0/0} & Reference & \texttt{-\allowbreak{}22.\allowbreak{}00\ pts}
+& \texttt{0} / \texttt{\$0.00} & Zero-call null \\
+\textbf{Classical \texttt{B1} (\texttt{CDCL+DRAT}, zero store)} &
+\textbf{\texttt{50\ /\ 50} (\texttt{1.000})} & \texttt{50/0/0/0} &
+\texttt{+22.\allowbreak{}00\ pts} & Reference (\texttt{\textless{}\ 1\ ms}) &
+\texttt{0} / \texttt{\$0.00} & Exact solver ceiling \\
+\texttt{exp-002} Single-Turn \texttt{Opus\ 5.5} (\texttt{1,024}-tok cap)
+& \texttt{4\ /\ 50} (\texttt{0.080}) & \texttt{4/1/0/45} &
+\texttt{-\allowbreak{}70.\allowbreak{}00\ pts} \texttt{{[}-82.0,\ -56.0{]}} & \texttt{-\allowbreak{}92.\allowbreak{}00\ pts}
+& \texttt{50} / --- & \textbf{Not assessable} \\
+\textbf{Single-Turn \texttt{Opus\ 5.5} Ext. Thinking (\texttt{8,192}
+tok)} & \textbf{\texttt{49\ /\ 50} (\texttt{0.980})} & \texttt{49/1/0/0}
+& \textbf{\texttt{+20.\allowbreak{}00\ pts} \texttt{{[}+8.0,\ +34.0{]}}} &
+\texttt{-\allowbreak{}2.\allowbreak{}00\ pts} \texttt{{[}-12.0,\ +0.0{]}} & \texttt{50} /
+\texttt{\$2.14} & \textbf{Relevance shown} (vs bounded \texttt{N1}) \\
+\textbf{Single-Turn \texttt{xAI\ Grok\ 4.\allowbreak{}20\ Reasoning} (\texttt{8,192}
+tok)} & \textbf{\texttt{39\ /\ 50} (\texttt{0.780})} &
+\texttt{39/11/0/0} & \texttt{+0.\allowbreak{}00\ pts} \texttt{{[}-18.0,\ +18.0{]}} &
+\texttt{-\allowbreak{}22.\allowbreak{}00\ pts} \texttt{{[}-34.0,\ -12.0{]}} & \texttt{50} /
+\texttt{\$0.10} & \textbf{Undetermined} (ties \texttt{N1}) \\
+\textbf{6-Turn Pure \(O(m)\) Clause-Feedback \texttt{Sonnet\ 5.\allowbreak{}5}} &
+\textbf{\texttt{50\ /\ 50} (\texttt{1.000})} & \texttt{50/0/0/0} &
+\textbf{\texttt{+22.\allowbreak{}00\ pts} \texttt{{[}+12.0,\ +36.0{]}}} &
+\textbf{\texttt{+0.\allowbreak{}00\ pts} \texttt{{[}+0.0,\ +0.0{]}}} & \texttt{54}
+(\texttt{1.08} turns) / \texttt{\$1.98} & \textbf{Relevance shown}
+(matches \texttt{B1}) \\
+\textbf{6-Turn Pure \(O(m)\) Clause-Feedback \texttt{Opus\ 5.5}} &
+\textbf{\texttt{50\ /\ 50} (\texttt{1.000})} & \texttt{50/0/0/0} &
+\textbf{\texttt{+22.\allowbreak{}00\ pts} \texttt{{[}+12.0,\ +36.0{]}}} &
+\textbf{\texttt{+0.\allowbreak{}00\ pts} \texttt{{[}+0.0,\ +0.0{]}}} & \texttt{50}
+(\texttt{1.00} turn) / \texttt{\$2.15} & \textbf{Relevance shown}
+(matches \texttt{B1}) \\
+\end{longtable}
+}
+}
+
+Raising reasoning headroom lifts \texttt{Opus\ 5.5} to \texttt{49/50}
+(\texttt{77,724} thinking tokens) and \texttt{6}-turn \(O(m)\) clause
+feedback lifts both \texttt{Sonnet\ 5.\allowbreak{}5} and \texttt{Opus\ 5.5} to
+\texttt{50/50} --- beating the \texttt{TH2}-capped local walk
+(\texttt{39/50}), while standalone zero-store \texttt{CDCL+DRAT}
+(\texttt{B1}) already achieves \texttt{50/50} in under \texttt{1\ ms} at
+\texttt{\$0.00}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{5. Good--Turing Unseen Mass, Multi-Turn
+\texttt{/work} Repair, and Online
+Crystallization}{5. Good--Turing Unseen Mass, Multi-Turn /work Repair, and Online Crystallization}}\label{goodturing-unseen-mass-multi-turn-work-repair-and-online-crystallization}
+
+
+\begin{center}
+\openiefig{fig/deterministic-null-fig02-s3-good-turing-regimes.png}{0.94}{https://research.openie.dev/figures/deterministic-null/s3-good-turing-regimes.svg}
+\end{center}
+
+
+\emph{Figure 2. Good--Turing unseen key mass
+}N\emph{\textsubscript{1}(}t\emph{) / }t* predicts where frozen
+\texttt{Shape\ D} saturates versus where neural synthesis or online
+crystallization is required (\texttt{measured\_\allowbreak{}j\ =\ None}).*
+
+\subsection{\texorpdfstring{5.1 Good--Turing unseen mass (\(N_1(t)/t\))
+across the five Track-B
+streams}{5.1 Good--Turing unseen mass (N\_1(t)/t) across the five Track-B streams}}\label{goodturing-unseen-mass-n_1tt-across-the-five-track-b-streams}
+
+Along each \texttt{dev\ +\ cal} task stream \(t = 1 \dots T\), the
+Good--Turing singleton ratio \(N_1(t)/t\) estimates the probability that
+the next arriving key is unseen:
+
+{\def\LTcaptype{none} % do not increment counter
+{\footnotesize\setlength{\tabcolsep}{3.8pt}\renewcommand{\arraystretch}{1.15}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2212}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1635}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1827}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2212}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2115}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Task Class (\texttt{dev\ +\ cal} stream)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Stream Length \(T\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Coarse Cell \(N_1(T)/T\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Fine Schema/Instance \(N_1(T)/T\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Held-Out \texttt{N0} / \texttt{N1} Completion}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{formal.\allowbreak{}unique\_\allowbreak{}3sat\_\allowbreak{}drat} & \texttt{270} & \texttt{0.0000} &
+\texttt{1.0000} & \texttt{69.6\%} / \texttt{69.6\%} \\
+\texttt{external.\allowbreak{}swebench\_\allowbreak{}verified} & \texttt{250} & \texttt{0.0080} &
+\texttt{0.5960} & \texttt{46.0\%} / \texttt{45.6\%} \\
+\texttt{external.\allowbreak{}tau\_\allowbreak{}bench\_\allowbreak{}retail} & \texttt{285} & \texttt{0.0035} &
+\texttt{0.6386} & \texttt{39.6\%} / \texttt{25.9\%} \\
+\texttt{external.\allowbreak{}bfcl\_\allowbreak{}v3\_\allowbreak{}live} & \texttt{300} & \texttt{0.0233} &
+\texttt{0.4033} & \texttt{20.0\%} / \texttt{22.8\%} \\
+\texttt{external.\allowbreak{}bigcodebench\_\allowbreak{}exec} & \texttt{240} &
+\textbf{\texttt{0.9917}} & \textbf{\texttt{0.9917}} &
+\textbf{\texttt{0.0\%} / \texttt{0.0\%}} \\
+\end{longtable}
+}
+}
+
+Even after \texttt{N1} crystallized \texttt{108} unit-tested
+\texttt{Claude\ Opus\ 5.\allowbreak{}5} Python solutions on \texttt{BigCodeBench}
+\texttt{dev}, \(N_1(T)/T = 0.9917\) predicted near-zero key overlap on
+unseen compositional coding specifications --- matching the observed
+\texttt{0.0\%} held-out \texttt{test} completion (\texttt{218} unfilled
+keys).
+
+\subsection{\texorpdfstring{5.2 Multi-turn \texttt{/work}
+software-engineering repair (\texttt{6} multi-file
+repositories)}{5.2 Multi-turn /work software-engineering repair (6 multi-file repositories)}}\label{multi-turn-work-software-engineering-repair-6-multi-file-repositories}
+
+Two complementary multi-turn \texttt{/work} bug-repair suites
+(\texttt{max\_\allowbreak{}turns\ =\ 10}, restoring pristine upstream test files
+before \texttt{pytest} grading) verify repository-level patch synthesis
+and \texttt{0}-call crystallized replay:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Controlled \texttt{6}-repository multi-file Python suite}: Six
+  multi-function repositories (\texttt{config-\allowbreak{}defaults} spanning
+  \texttt{loader.py} + \texttt{schema.py}, \texttt{interval-\allowbreak{}merge},
+  \texttt{pagination}, \texttt{precedence} spanning \texttt{calc.py} +
+  \texttt{lexer.py}, \texttt{rate-\allowbreak{}window} spanning \texttt{window.py} +
+  \texttt{limiter.\allowbreak{}py}, and \texttt{retry-\allowbreak{}backoff}).
+\item
+  \textbf{Closure C (\texttt{exp-003}) --- Real upstream
+  \texttt{SWE-\allowbreak{}bench\ Verified} GitHub defect commits (\texttt{n\ =\ 6},
+  seeded from \texttt{drand\ 6664089})}: Six upstream commits across
+  four open-source repositories --- \texttt{psf/\allowbreak{}requests-\allowbreak{}5414},
+  \texttt{pytest-\allowbreak{}dev/\allowbreak{}pytest-\allowbreak{}10051}, \texttt{pytest-\allowbreak{}dev/\allowbreak{}pytest-\allowbreak{}10356},
+  \texttt{mwaskom/\allowbreak{}seaborn-\allowbreak{}3069}, \texttt{sympy/\allowbreak{}sympy-\allowbreak{}23824}, and
+  \texttt{sympy/\allowbreak{}sympy-\allowbreak{}17655} --- each verified offline to fail
+  \texttt{FAIL\_\allowbreak{}TO\_\allowbreak{}PASS} pre-patch and pass both
+  \texttt{FAIL\_\allowbreak{}TO\_\allowbreak{}PASS} and \texttt{PASS\_\allowbreak{}TO\_\allowbreak{}PASS} under gold
+  patches.
+\end{enumerate}
+
+{\def\LTcaptype{none} % do not increment counter
+{\scriptsize\setlength{\tabcolsep}{3.0pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2897}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1402}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1308}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1215}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1121}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2056}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Multi-Turn \texttt{/work} Suite \& Harness Lane}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Repos Passed}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\texttt{SATB} \texttt{P/F/R/K}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Model Calls}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{Tool Calls}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{API \texttt{USD} / Local \texttt{reported\_\allowbreak{}j}}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Controlled 6-Repo} · \texttt{Shape\ D} Cold (\texttt{t\ =\ 1}) &
+\texttt{0\ /\ 6} (\texttt{0.0\%}) & \texttt{0/6/0/0} & \texttt{0} &
+\texttt{0} & \texttt{\$0.0000} / \texttt{\textless{}\ 1\ J} \\
+\textbf{Controlled 6-Repo} · \texttt{Lane\ B} \texttt{Claude\ Opus\ 5.\allowbreak{}5}
+& \textbf{\texttt{6\ /\ 6} (\texttt{100.0\%})} & \texttt{6/0/0/0} &
+\texttt{28} & \texttt{29} & \texttt{\$0.3613}
+(\texttt{not\_\allowbreak{}available}) \\
+\textbf{Controlled 6-Repo} · \texttt{Lane\ B}
+\texttt{Claude\ Sonnet\ 5.\allowbreak{}5} & \textbf{\texttt{6\ /\ 6}
+(\texttt{100.0\%})} & \texttt{6/0/0/0} & \texttt{31} & \texttt{34} &
+\texttt{\$0.2080} (\texttt{not\_\allowbreak{}available}) \\
+\textbf{Controlled 6-Repo} · \texttt{Shape\ H}
+\texttt{Claude\ Code\ 2.\allowbreak{}1.\allowbreak{}330} & \textbf{\texttt{6\ /\ 6}
+(\texttt{100.0\%})} & \texttt{6/0/0/0} & \texttt{30} & \texttt{MCP} &
+\texttt{\$0.2646} (Falsifier 8 passed) \\
+\textbf{Controlled 6-Repo} · \texttt{Lane\ B} Local \texttt{Qwen\ 3.6} &
+\textbf{\texttt{6\ /\ 6} (\texttt{100.0\%})} & \texttt{6/0/0/0} &
+\texttt{42} & \texttt{42} & \textbf{\texttt{2,\allowbreak{}342.\allowbreak{}0\ J}} \texttt{L2}
+(\texttt{390.3\ J}/\allowbreak{}repo) \\
+\textbf{Controlled 6-Repo} · \texttt{Shape\ D} Replay (\texttt{t\ =\ 2})
+& \textbf{\texttt{6\ /\ 6} (\texttt{100.0\%})} & \texttt{6/0/0/0} &
+\texttt{0} & \texttt{0} & \texttt{\$0.0000} (verified patch replay) \\
+\textbf{Real \texttt{SWE-bench} (\texttt{exp-003})} · \texttt{Shape\ D}
+Cold (\texttt{t\ =\ 1}) & \texttt{0\ /\ 6} (\texttt{0.0\%}) &
+\texttt{0/6/0/0} & \texttt{0} & \texttt{0} & \texttt{\$0.0000} (unseen
+repo trees) \\
+\textbf{Real \texttt{SWE-bench} (\texttt{exp-003})} · \texttt{Lane\ B}
+\texttt{Claude\ Opus\ 5.\allowbreak{}5} & \textbf{\texttt{5\ /\ 6} (\texttt{83.3\%})}
+& \texttt{5/1/0/0} & \texttt{33} & \texttt{45} & \texttt{\$0.8557}
+(\texttt{not\_\allowbreak{}available}) \\
+\textbf{Real \texttt{SWE-bench} (\texttt{exp-003})} · \texttt{Lane\ B}
+\texttt{Claude\ Sonnet\ 5.\allowbreak{}5} & \textbf{\texttt{4\ /\ 6}
+(\texttt{66.7\%})} & \texttt{4/2/0/0} & \texttt{31} & \texttt{46} &
+\texttt{\$0.5865} (\texttt{not\_\allowbreak{}available}) \\
+\textbf{Real \texttt{SWE-bench} (\texttt{exp-003})} · \texttt{Lane\ B}
+\texttt{xAI\ Grok\ 4.\allowbreak{}20} & \texttt{1\ /\ 6} (\texttt{16.7\%}) &
+\texttt{1/5/0/0} & \texttt{60} & \texttt{51} & \texttt{\$0.8480}
+(\texttt{not\_\allowbreak{}available}) \\
+\textbf{Real \texttt{SWE-bench} (\texttt{exp-003})} ·
+\textbf{\texttt{Shape\ D} Replay (\texttt{t\ =\ 2})} &
+\textbf{\texttt{5\ /\ 6} (\texttt{83.3\%})} & \texttt{5/1/0/0} &
+\textbf{\texttt{0}} & \textbf{\texttt{0}} & \textbf{\texttt{\$0.0000}}
+(\texttt{17.1\ s} \texttt{pytest} re-verification) \\
+\end{longtable}
+}
+}
+
+On real upstream \texttt{SWE-\allowbreak{}bench\ Verified} repositories,
+\texttt{Claude\ Opus\ 5.\allowbreak{}5} synthesized valid patches passing full
+\texttt{FAIL\_\allowbreak{}TO\_\allowbreak{}PASS} and \texttt{PASS\_\allowbreak{}TO\_\allowbreak{}PASS} \texttt{pytest}
+suites on \texttt{requests-\allowbreak{}5414}, \texttt{pytest-\allowbreak{}10051},
+\texttt{seaborn-\allowbreak{}3069}, \texttt{sympy-\allowbreak{}23824}, and \texttt{sympy-\allowbreak{}17655}
+(\texttt{5/6}, failing only \texttt{pytest-\allowbreak{}10356}), and
+\texttt{Shape\ D} online crystallization replayed and re-verified all
+\texttt{5/6} repository fixes on \texttt{t\ =\ 2} in \texttt{17.1\ s} at
+\textbf{\texttt{0} model calls and \texttt{\$0.00}}.
+
+\subsection{\texorpdfstring{5.3 Online crystallization on recurring
+Zipfian traffic
+(\texttt{BigCodeBench})}{5.3 Online crystallization on recurring Zipfian traffic (BigCodeBench)}}\label{online-crystallization-on-recurring-zipfian-traffic-bigcodebench}
+
+On the secondary online track (\texttt{600} requests drawn from a
+Zipf-\(0.85\) distribution over the \texttt{220} unique
+\texttt{BigCodeBench} test tasks, where \texttt{Shape\ D} invokes
+\texttt{B3}/\allowbreak{}\texttt{B6} only on an unseen key miss and caches solutions
+that pass \texttt{unittest}), completion matches pure per-request
+\texttt{Opus\ 5.5} (\textbf{\texttt{98.0\%} vs.~\texttt{98.0\%}}) while
+\texttt{155} verified functions crystallize into the store, cutting
+cumulative LLM calls by \textbf{\texttt{72.17\%} (\texttt{167}
+vs.~\texttt{600})}, API spend from \textbf{\texttt{\$7.33} to
+\texttt{\$2.04} (\texttt{3.59×})}, and local \texttt{Qwen\ 3.6}
+\texttt{reported\_\allowbreak{}j} spend from \textbf{\texttt{67,\allowbreak{}729.\allowbreak{}6\ J} to
+\texttt{18,\allowbreak{}851.\allowbreak{}4\ J} (\texttt{3.59×})}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6. Limitations, Falsifiers, and Unfinished
+Work}\label{limitations-falsifiers-and-unfinished-work}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{No physical rail or AC wall-plug power meter
+  (\texttt{board\_\allowbreak{}metered\ =\ false}, \texttt{measured\_\allowbreak{}j\ =\ None})}:
+  All energy figures in this study are Apple Silicon on-chip
+  \texttt{IOReport} (\texttt{L2}) and kernel \texttt{ri\_\allowbreak{}energy\_\allowbreak{}nj}
+  (\texttt{L3}) \texttt{reported\_\allowbreak{}j} counters on a host running
+  concurrent jobs; \texttt{L0} AC wall-plug measurements
+  (\texttt{Shelly}/\allowbreak{}\texttt{Yokogawa}, capturing PSU, DRAM, and NVMe
+  losses) on a quiesced target machine remain open.
+\item
+  \textbf{Self-administered benchmark selection vs.~human outside-party
+  Tier 3}: Although Track-B (\texttt{exp-002}) and \texttt{exp-003}
+  evaluated externally authored public benchmarks and upstream GitHub
+  commits locked before \texttt{drand} round \texttt{6664089}, a sealed
+  Tier-3 benchmark authored and held in escrow by an independent human
+  third party has not yet been run.
+\item
+  \textbf{Finite-budget non-necessity}: Every
+  \texttt{"Relevance\ shown"} verdict is strictly relative to the
+  declared \texttt{dev} sample (\texttt{100–150} instances) and
+  \texttt{4,096\ B} function-table cap; as Closure B
+  (\texttt{formal.\allowbreak{}unique\_\allowbreak{}3sat\_\allowbreak{}drat}) illustrates directly, a
+  zero-store classical \texttt{CDCL+DRAT} solver (\texttt{B1}) solves
+  \texttt{100\%} of instances where a \texttt{TH2}-capped local walk
+  stops at \texttt{78.0\%}.
+\end{enumerate}
+
+\section{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Aamodt, A., \& Plaza, E. (1994). Case-based reasoning: Foundational
+  issues, methodological variations, and system approaches. \emph{AI
+  Communications}, 7(1), 39--59.
+\item
+  Efron, B. (1987). Better bootstrap confidence intervals. \emph{Journal
+  of the American Statistical Association}, 82(397), 171--185.
+\item
+  Goldberg, E., \& Novikov, Y. (2003). Verification of proofs of
+  unsatisfiability for CNF formulas. \emph{DATE 2003}, 886--891.
+\item
+  Good, I. J. (1953). The population frequencies of species and the
+  estimation of population parameters. \emph{Biometrika}, 40(3--4),
+  237--264.
+\item
+  Jimenez, C. E., Yang, J., Wettig, A., Yao, S., Pei, K., Press, O., \&
+  Narasimhan, K. (2024). SWE-bench: Can language models resolve
+  real-world GitHub issues? \emph{ICLR 2024}.
+\item
+  Mamdani, E. H., \& Assilian, S. (1975). An experiment in linguistic
+  synthesis with a fuzzy logic controller. \emph{International Journal
+  of Man-Machine Studies}, 7(1), 1--13.
+\item
+  Michie, D., \& Chambers, R. A. (1968). BOXES: An experiment in
+  adaptive control. \emph{Machine Intelligence}, 2, 137--152.
+\item
+  Open Interface Engineering (2026). Metered Commit Gates; Task
+  Satiation vs.~Aggregate Rebound; The Reality Code Engine; Downward
+  LUT6 Compilation {[}same house{]}. \url{https://research.openie.dev/}
+\item
+  Patil, S. G., Mao, H., Cheng-Jie Ji, C., Yan, F., Suresh, V., Stoica,
+  I., \& Gonzalez, J. E. (2024). Gorilla: Large language model connected
+  with massive APIs (Berkeley Function-Calling Leaderboard).
+  \emph{NeurIPS 2024}.
+\item
+  Simon, H. A., \& Kadane, J. B. (1975). Optimal problem-solving search:
+  All-or-none solutions. \emph{Artificial Intelligence}, 6(3), 235--247.
+\item
+  Stanfill, C., \& Waltz, D. (1986). Toward memory-based reasoning.
+  \emph{Communications of the ACM}, 29(12), 1213--1228.
+\item
+  Wang, L.-X., \& Mendel, J. M. (1992). Generating fuzzy rules by
+  learning from examples. \emph{IEEE Transactions on Systems, Man, and
+  Cybernetics}, 22(6), 1414--1427.
+\item
+  Wetzler, N., Heule, M. J. H., \& Hunt, W. A. (2014). DRAT-trim:
+  Efficient checking and trimming using expressive clausal proofs.
+  \emph{SAT 2014}, 422--429.
+\item
+  Yao, S., Shinn, N., Razavi, P., \& Narasimhan, K. (2024). tau-bench: A
+  benchmark for tool-agent-user interaction in real-world domains.
+  \emph{arXiv:2406.12045}.
+\item
+  Zhuo, T. Y., Vu, M. C., Chim, J., Hu, H., Yu, W., Widyasari, R., et
+  al.~(2025). BigCodeBench: Benchmarking code generation with diverse
+  function calls and complex instructions. \emph{ICLR 2025}.
+\end{enumerate}
+
 
 \end{document}

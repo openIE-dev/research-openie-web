@@ -1,6 +1,6 @@
 ---
 title: "RCE-JEPA: 世界コーディング、JEPAを前提として"
-deck: "RCE-JEPA（RCEはReality Code Engine、JEPAはJoint Embedding Predictive Architecture）は、研究の発見可能性を維持するためにその名称を保持する。主題は世界コーディングである。JEPAは前提である。すなわち、学習済みモデルはテキストの次の単語片を生成するのではなく、プログラムのコンパクトな要約を予測する。コードの世界とは、正準プログラム形式の空間に加え、正確な遷移規則および受理規則（コーディングの法則）から成る空間である。提案者スロットは任意の学習済みモデルである。チェッカーが決定を下す。仮説H1からH15は本論文において述べられる。測定済み結果は現在、H1（185本の手書きプログラムにおける記述長比の中央値9.34）、H2（チェッカー対モデルのエネルギー比0.000582、すなわちApple M5 Maxのオンチップ `reported_j` において1,718倍低コスト）、H7ファジングアーム（1,275個の変異体中不変条件違反0件）、H8（6ターゲットにわたる10,500ストリームでリプレイ不一致0件）、H14（決定論的ラダーが151タスク中111タスクを閉鎖、73.5%、モデル呼び出し0回、残余タスク40件）、H15およびShape D Gear-0（40件の残余タスクにわたり6つの既製提案者で17/40から34/40、目的訓練済み8.42Mパラメータ FormJEPA-v1 修復提案者においてk=1で22/40、k=16で27/40、オンチップコア `reported_j` 58.65 mJ / 474.76 mJ、Gear-0リプレイで34/40、呼び出し0回・ルックアップあたり0.325マイクロ秒、3-Gear Zipfストリーム下でフロンティア呼び出し8.70倍削減）、および151タスクのrce repairランクfプロモーション監査（3/119 = 2.5% > 2.0%、矛盾0件、ランクfをobserveモードに維持）を対象とする。完全な意図からFormへの合成（H3）、較正済み多項エネルギーランキング（H5、H11）、および外部壁面メーター電力（`measured_j`）は未解決のままである。"
+deck: "RCE-JEPA（RCEはReality Code Engine、JEPAはJoint Embedding Predictive Architecture）という名称を維持し、研究の検索可能性を保っている。主題はWorld Codingである。JEPAは前提であり、学習されたモデルが次のテキストの単語ピースを書くのではなく、プログラムのコンパクトな要約を予測する。World of Codeは、標準的なプログラム形態（canonical program Forms）と正確な遷移および受容規則（Law of Coding）からなる空間である。提案者スロットは任意の学習モデルであり、チェッカーが判定を行う。仮説 H1 から H15 が論文で述べられている。測定結果は現在、H1（185 個の手書きプログラムに対する中央値記述長比率 9.34）、H2（チェッカー対モデルのエネルギー比率 0.000582、すなわち Apple M5 Max 上のオンチップ `reported_j` において 1,718 倍安価）、H5 と H11（未見の非重複 Form 形状に対し FormEBM-v2（5.85M パラメータ）で AUROC 0.8922 ≥ 0.85、トップ-1 正解率 84.05%、チェッカー呼び出し回数が 2.39 倍削減、Spearman 0.9931 で厳密な 5-ステップ累積欠陥単調性 93.0% ≥ 80% を達成、候補コアあたり 47.09 mJ の `reported_j`）をカバーしている。H7 は 1,275 個のミューテントに対し不変性違反が 0、H8 は 6 つのターゲットにわたる 10,500 本のストリームでリプレイ不一致が 0、H14 は決定的ラダーで 151 タスク中 111 を閉じ、0 モデル呼び出しで 73.5% を達成し、残り 40 タスクが残存、H15 は単一ショットかつ有界チェッカーフィードバックの H15-Iterative により残存タスク 40 に対し（17/40 から 34/40 の単一ショット、k=1 で 22/40、k=16 で 27/40 を 8.42M FormJEPA-v1 で、Claude Opus 5.5 と Claude Sonnet 5.5 で矛盾なしで 40/40 閉鎖、xAI Grok 4.20 Reasoning で 39/40、Gear-0 リプレイで 0 呼び出し・0.325 マイクロ秒/ルックアップで 40/40、Zipf(0.85) 3-Gear ストリーム入場で 200/200、フロンティアエピソードが 16.67 倍削減）を実現し、151 タスクの rce 修復ランジ f プロモーション監査（3/119 = 2.5% > 2.0%、矛盾なし、ランジ f を観測モードで保持）も達成した。Full intent-to-Form 合成（H3）、マルチライン外分布エネルギー較正、外部壁メーターエネルギー（`measured_j`）は未解決のままである。"
 lang: "ja"
 source: "rce-jepa"
 complete: true
@@ -8,17 +8,19 @@ complete: true
 
 <div id="rce-jepa-world-coding-with-jepa-as-premise" class="anchor-alias" aria-hidden="true"></div>
 
-**Status.** 本稿は論文として、十五の仮説（H1 から H15）、六つの反証者、そして作業プログラムを提示する。その測定結果は現在、フェーズ 0 の決定論的フロア（Form コーパスと H1、H7 の敵対的ファズド部、H8 の六対象決定論的ストリーム、H14 の決定論的修復ラダー）をカバーし、ローカル Apple M5 Max チェッカー対モデル `reported_j` 比率 **H2**（`C_check / E_model = 0.000582 <= 0.05`、`1,718` 倍安価）を示す。また、六提案者オフ・ザ・シェルフ **H15** とメモリマップド Gear-0 結晶化ベンチマークを **40 open residual tasks**（`17/40` から `34/40` が受理；Gear-0 が `34/40` をモデル呼び出し 0 回、ルックアップあたり `0.325 µs` で再生）に適用し、初の目的訓練潜在 Form JEPA 修復提案者 **`FormJEPA-v1`**（分離した Form S-式上の `8.42M` 訓練可能パラメータ、保持外合成欠陥 `177/200` を受理、`k = 1` で `22/40`、`k = 16` で `27/40` を 40 残タスクで解決、チップ上コア `reported_j` が `58.65 mJ` / `474.76 mJ`、再帰的 `Zipf(0.85)` フロンティア呼び出しを `200` から `23` に削減、`8.70×` の効率向上、3‑Gear カスケードで実行）および事前登録された 151 タスク **`rce repair` rung `f`** プロモーション監査（`3/119 = 2.5% > 2.0%` の確率的シェア、`3/3` が `W-MUT-1` を通過、矛盾 0 件、rung `f` が `observe` モードに留まることを確認）を報告する。正直な開示として、完全な意図‑to‑Form 合成（H3）、エンドツーエンドのジュール等価性（H4）、校正された多項エネルギー順位付け（H5、H11；校正されていない潜在距離は受信者操作特性曲線下面積（AUROC） `0.618` と `36.0%` の 5‑ステップ単調性を達成）、参照アプリエンコーディング（H6）、コストテーブル予測（H9）、商データ節約（H10）、決定ヘッド校正（H12）、離散対連続の長期計画（H13）、拡散／進化的 H15 アーム、外部壁メータ `measured_j` が未解決であることを示す。JEPA は前提であり、表層テキストではなく意味の要約を予測する。対象は World Coding であり、Forms 上の任意の学習提案者と、受容規則としての Coding の法則が適用される。決定側（コミットゲート、正確な再生、射影、整数コスト単位）は [the RCE paper](/papers/rce/) に記述されており、本稿は提案者、すなわち Forms 上の探索を導く学習モデルについて述べる。エンジンがすべてのターゲットをレンダリングする間、ループ内の任意のモデル（ホストまたはローカル）は提案のみを行い、セキュリティは決してそれに依存しない。
+**ステータス** 本稿は命題、十五の仮説（H1 〜 H15）、六つの反証者、そして作業プログラムを提示し、インタラクティブなツールを [/living/rce-jepa/](/living/rce-jepa/) に提供する。測定結果は現在、フェーズ 0 の決定的フロア（Form コーパスと H1、H7 の敵対的ファズド部、H8 の六対象決定性ストリーム、H14 の決定的修復ラダー）をカバーし、ローカル Apple M5 Max チェッカー対モデル `reported_j` 比率 **H2**（`C_check / E_model = 0.000582 <= 0.05`, `1,718` 倍安価）、単発および有界チェッカーフィードバック **H15** を **40 のオープン残存タスク** に対して実施（単発で `17/40` 〜 `34/40`、有界 `<= 5` ターンチェッカーフィードバック下で **`40/40`（`100.0%`）** を `Claude Opus 5.5` と `Claude Sonnet 5.5` の `H15-Iterative` にて矛盾ゼロで、`xAI Grok 4.20 Reasoning` で `39/40`、メモリマップド Gear-0 から `0.325 µs` / `1.77 µJ` のゼロコールリプレイで **`40/40`** を達成）、目的訓練された潜在 Form JEPA 修復提案器 **`FormJEPA-v1`**（`8.42M` 訓練可能パラメータ、相互排他的な Form S-式上に配置、保持外合成欠陥 `177/200` と残存タスク `27/40`（`k = 16`）を受容、再発エピソード `Zipf(0.85)` Gear-2 を `200` から `12` に削減し `16.67×` の効率向上、`H15-Iterative` と組み合わせたとき `200/200` ストリーム受容）、対照的な多段マージンエネルギーベースモデル（EBM）スコアラー **`FormEBM-v2`**（`5.85M` 訓練可能パラメータ、同一の厳密に相互排他的な `1,387`-Form 分割上に配置、未観測形状 **H5** の受信者動作特性曲線下面積（AUROC）を `0.618` から **`0.8922 >= 0.85`** に向上、トップ1 正解率 `84.05%`、チェッカー呼び出し回数 `2.39×` 減少、未観測チェーン **H11** の厳密 5-step 編集単調性を `36.0%` から **`93.0% >= 80%`** に向上、Spearman `0.9931`、候補コア `reported_j` 当たりエネルギー `47.09 mJ`）、および事前登録された 151 タスク **`rce repair` ラング `f`** プロモーション監査（`3/119 = 2.5% > 2.0%` の確率的シェア、`3/3` が `W-MUT-1` 合格、矛盾ゼロ、ラング `f` が `observe` モードに留まることを確認）。正直な開示として、完全な意図対 Form 合成（H3）、エンドツーエンドジュール等価（H4）、異分布（OOD）マルチラインエネルギー較正（異種 git 履歴書き換え全般、単一行訓練 `FormEBM-v2` がタスク内 `k = 1` タイプ再ランク付けを `22/40` から `25/40` に向上させつつ、タスク横断プール AUROC が `0.2630`）、参照アプリ符号化（H6）、コストテーブル予測（H9）、商データ削減（H10）、決定ヘッド較正（H12）、離散対連続長期計画（H13）、拡散/進化的 H15 アーム、外部壁メーター `measured_j` の未解決性を挙げる。JEPA は前提であり、表層テキストではなく意味の要約を予測する。対象は World Coding、任意の Form 上の学習提案器であり、受容規則として Coding の法則を採用する。決定半分（コミットゲート、正確リプレイ、射影、整数コスト単位）は [the RCE paper](/papers/rce/) に記述されており、本稿は提案器に関するものである。提案器は検索を Form 上で導く学習モデルであり、エンジンがすべてのターゲットを実行する。ループ内の任意のモデル（ホストまたはローカル）は提案のみを行い、セキュリティは決してそれに依存しない。
 
-![Pipeline: stated intent goes to any learned proposer, with JEPA shown, a decoder proposes candidate program forms ranked by energy score, a deterministic checker accepts or names the broken rule, and accepted forms go to the engine for exact replay, proofs, code in other languages and placement](/figures/rce-jepa/pipeline.svg)
+平易に言えば
 
-図 1. 提案されたパイプライン。任意の学習提案者は述べられた意図を候補プログラムへマッピングする。潜在空間で予測を行う JEPA が例として描かれている。デコーダはその提案を固定形状の候補プログラムに変換し、エネルギースコアで順位付けする（スコアが低いほど適合度が高い）。決定的チェッカーは各候補を受理するか、変更が必要であることを報告し、破れた規則を再順位付けのために返す。破線枠内のすべては学習され、信頼できないものとみなされる。受理されたプログラムのみがエンジンに到達する。ローカル Apple M5 Max カウンタは `reported_j`（`measured_j = None`、`board_metered = false`）として厳密に記録され、リモートクラウドサーバーのエネルギーは `not_available` として記録される。
+![提示された意図を任意の学習型提案器へ入力する処理の図。JEPAを具体例として示す。デコーダが固定形式の候補プログラムを生成し、エネルギースコア(低いほど適合度が高い)で順位付けする。決定論的チェッカーが各候補を受理するか、変更が必要であることを示して破られた規則を返し、その規則に基づいて再順位付けが行われる。点線枠内はすべて学習済みかつ信頼されない処理であり、受理されたプログラムのみがエンジンに到達する。ローカルのApple M5 Maxのカウンタは厳密に`reported_j`(`measured_j = None`、`board_metered = false`)として記録し、遠隔のクラウドサーバのエネルギーは`not_available`として記録する。](/figures/rce-jepa/pipeline.svg)
 
-平易な言葉で
+*図1. 提案されたパイプライン。任意の学習型提案器が、提示された意図を候補プログラムへと写像する。図に描かれているのは、潜在空間上で予測を行うJEPAという提案器の一例である。デコーダはその提案を固定形式の候補プログラムへと変換し、エネルギースコア(低いほど適合度が高いことを意味する)により順位付けする。決定論的チェッカーは各候補を受理するか、変更が必要であると判定し、再順位付けのために破られた規則を返す。点線枠内のすべては学習済みかつ信頼されない要素であり、受理されたプログラムのみがエンジンに到達する。ローカルのApple M5 Maxのカウンタは厳密に`reported_j`(`measured_j = None`、`board_metered = false`)として記録し、遠隔のクラウドサーバのエネルギーは`not_available`として記録する。*
 
-1. 主題は World Coding である。World of Code はプログラム形態の空間と、次状態および受理条件を正確に定めた規則（Coding の法則）から構成される。JEPA は前提であり、手法全体ではない：次のコードトークンではなく意味の要約を予測する。ここでの AI（人工知能）は任意の学習提案者を指し、特定のアーキテクチャを意味しない。
-2. モデルが提案し、チェッカーが決定する。トレース学習デコーダ、拡散モデル、証明チェッカー内部の強化学習、進化的探索、ライブラリ学習、制約付きデコードなどはすべてこのスロットに配置できる。提案者が変わってもゲートは変わらない。安全性は提案者の正しさに依存しない。
-3. 計測されたフロアと残差ベンチマークは厳密にラベル付けされる。手書きプログラム 185 件に対する中央値の記述長比は 9.34（H1）である。Apple M5 Max（コミット `1762fb4b`）において、Form のチェックは `49.04 mJ` であり、ローカル 35B 候補生成は `84.25 J` である（`1,718×` 安価、H2 を支持）。ファジングチェックでは 1,275 件の受理された変異体で破れた不変式は 0 件（H7）だった。リプレイは 6 つのターゲットにわたる 10,500 ストリームで一致した（H8）。決定的ラダーは 151 件のタスクのうち 111 件（73.5%）をモデル呼び出しなしで完了し、残り 40 件は実履歴タスク（H14）である。これら 40 件の残差タスク（H15）に対し、汎用クラウドおよびローカル提案者は `k = 1` で `17/40` から `34/40` を受理する。最初の目的特化潜在 Form JEPA 修復提案者（`FormJEPA-v1`、`8.42M` 学習可能パラメータ、タスク重複なし）は `k = 1` で `22/40`、`k = 16` で `27/40` を受理し、オンチップコア `reported_j` で `58.65 mJ` / `474.76 mJ`、分離した合成欠陥で `177/200` を受理する。**Gear 0 (`DNULLMM1`) → Gear 1 (`FormJEPA-v1`) → Gear 2 (`Opus 5.5`)** を組み合わせることで、再帰的 `Zipf(0.85)` フロンティア呼び出しは `200` から `23` に削減され（`8.70×`）、オープンなマルチモジュール標準ライブラリ合成は依然として Gear-2 フロンティア提案者を必要とし、`rce repair` ランク `f` は `observe` モードに留まり（`3/119 = 2.5% > 2.0%`、矛盾 0 件）、外部壁メータ読み取り（`measured_j`）は主張されていない。
+1. 対象は世界コーディングである。コードの世界とは、プログラム形態の空間に加え、次の状態および受理されるものに対する厳密な規則（コーディングの法則）である。JEPAは前提であり、方法全体ではない：コードの次の単語ではなく、意味の要約を予測する。ここでAI（人工知能）とは、任意の学習された提案者を意味し、単一のアーキテクチャではない。
+
+2. モデルが提案し、チェッカーが決定する。トレース訓練されたデコーダ、拡散、証明チェッカー内部の強化学習、進化探索、ライブラリ学習および制約付きデコーディングはすべてそのスロットに位置づけられる。提案者が変化してもゲートは変化しない。安全性は提案者が正しいことに依存しない。
+
+3. 測定されたフロアおよび残差ベンチマークは厳密にラベル付けされたままとする。185を超える手書きプログラムにおいて、中央記述長比は9.34（H1）である。Apple M5 Max、コミット`1762fb4b`において、形態のチェックコストは`49.04 mJ`であり、ローカル35B候補生成1回あたり`84.25 J`（`1,718×`安価、H2を支持）である。ファジングチェックは1,275個の受理されたミュータントにおいて0個の破壊された不変量を発見した（H7）。リプレイは6個の対象にわたる10,500ストリームで一致した（H8）。決定論的ラダーは151タスクのうち111タスク（73.5%）をモデル呼び出し0回で閉じ、40個の実履歴タスクを残した（H14）。これら40個の残差タスク（H15）において、シングルショット提案者は`17/40`から`34/40`を許容し、公開標準ライブラリヘッダを用いた有界チェッカーフィードバック（`H15-Iterative`、元の形態へのアクセス0）は`Claude Opus 5.5`および`Claude Sonnet 5.5`で`0`矛盾のもと **`40/40`（`100.0%`）**を閉じ、`xAI Grok 4.20 Reasoning`では`39/40`であり、ゼロ呼び出しリプレイのために **`40/40`をGear 0（`DNULLMM1`）**に結晶化する。目的訓練された`FormJEPA-v1`（`8.42M`パラメータ）は`k = 16`で`27/40`を許容し、対照的`FormEBM-v2`（`5.85M`パラメータ）は未見形状AUROC `0.8922`（H5）および`93.0%`厳密5ステップ単調性（H11）に到達し、**3-Gear Cascade**は`16.67×`少ないフロンティアエピソード（`12`対`200`）で再帰的`Zipf(0.85)`到着`200/200`を許容する。`rce repair` rung `f`は`observe`モードに留まり（`3/119 = 2.5% > 2.0%`、`0`矛盾）、外部壁メータ読み取り（`measured_j`）は主張されない。
 
 <div id="principles" class="anchor-alias" aria-hidden="true"></div>
 
@@ -34,9 +36,9 @@ complete: true
 
 <div id="terms-heading" class="anchor-alias" aria-hidden="true"></div>
 
-## 本ページで使用される用語および略語
+## このページで使用される用語と略語
 
-ここに列挙し、使用前にすべて定義する。参考文献項目（会場名、報告シリーズ）内にのみ出現する略語は列挙しない。
+ここに列挙するのは、それぞれが使用される前に定義されているためである。参考文献の項目内（会場、報告書シリーズなど）にのみ出現する略語は記載しない。
 
 <ul id="terms">
 <li>AGX: NVIDIAのJetson AGXシリーズの組み込みコンピュータ</li>
@@ -47,6 +49,7 @@ complete: true
 <li>AMD: Advanced Micro Devices</li>
 <li>ANDF: Architecture Neutral Distribution Format</li>
 <li>API: アプリケーションプログラミングインタフェース</li>
+<li>APU: CPUコアと統合GPUを1パッケージに統合したアクセラレート処理ユニット</li>
 <li>ARC: Abstraction and Reasoning Corpus、Cholletの測度およびARC Prizeで使用されるタスク集合</li>
 <li>AST: 抽象構文木</li>
 <li>AUROC: 受信者操作特性曲線下面積</li>
@@ -62,12 +65,14 @@ complete: true
 <li>DIR: コマンドに与えられるディレクトリパス</li>
 <li>DNULLMM1: オープンアドレス方式のバイナリメモリマップドハッシュテーブルストア形式（64バイトヘッダー＋48バイトスロット）</li>
 <li>EB-JEPA: エネルギーベースのJEPAライブラリ（プロジェクト名）</li>
+<li>EBM: エネルギーベースモデル</li>
 <li>ECE: expected calibration error</li>
 <li>e-graph: 等価グラフ、複数の等価プログラムを保持する構造</li>
 <li>EMA: 指数移動平均</li>
 <li>EWD: Edsger W. Dijkstra の番号付き原稿シリーズ</li>
 <li>ESBMC: 効率的な SMT ベースの有界モデルチェッカー</li>
 <li>FAIR: Meta の Fundamental AI Research グループ</li>
+<li>FPR: 偽陽性率</li>
 <li>GELU: Gaussian error linear unit 活性化関数</li>
 <li>GPT: 生成的事前学習トランスフォーマー、OpenAI のモデルファミリー</li>
 <li>GPU: グラフィックス処理装置</li>
@@ -77,6 +82,7 @@ complete: true
 <li>IBM: International Business Machines</li>
 <li>ICOT: 次世代コンピュータ技術研究所（日本）</li>
 <li>IEEE: Institute of Electrical and Electronics Engineers</li>
+<li>IQR: 四分位範囲</li>
 <li>JACM: ACM（Association for Computing Machinery）ジャーナル</li>
 <li>LCM: Large Concept Model、トークンではなく文埋め込み空間で予測を行うモデル</li>
 <li>LHS: 例示的イベントトレースの左側</li>
@@ -93,6 +99,7 @@ complete: true
 <li>NAIL: 正規形プログラミング言語（プロジェクト名）</li>
 <li>NVIDIA: GPU の製造メーカー</li>
 <li>OMG: Object Management Group</li>
+<li>OOD: 分布外</li>
 <li>PAR: パターンベースの自動プログラム修復</li>
 <li>PID: オペレーティングシステムにおけるプロセス識別子</li>
 <li>POSIX: Portable Operating System Interface</li>
@@ -100,11 +107,13 @@ complete: true
 <li>RAND RM: RAND Corporation の研究メモランダム</li>
 <li>RAPL: Intel のランニング平均電力制限エネルギーカウンタ</li>
 <li>README: リポジトリのフロントページ文書ファイル</li>
-<li>RF: RCE 仕様における外部提案ラング‑f ルールのラベル</li>
+<li>RF: RCE 仕様における外部提案ラング-f ルールのラベル</li>
 <li>RFC: インターネット標準文書である request for comments</li>
 <li>RISC-V: オープンな RISC アーキテクチャ</li>
-<li>RJ-F: RCE‑JEPA 前提の偽装器のラベル</li>
+<li>RJ-F: RCE-JEPA 前提の偽装器のラベル</li>
 <li>RL: 強化学習</li>
+<li>RMS: 二乗平均平方根</li>
+<li>ROC: 受信者操作特性</li>
 <li>SAT: ブール充足可能性問題</li>
 <li>SATB: Satiation Benchmark のテレメトリとハーネス規律</li>
 <li>SFT: 監督付きファインチューニング</li>
@@ -117,6 +126,7 @@ complete: true
 <li>SUT: テスト対象システム</li>
 <li>SWE-bench: 実際のリポジトリ課題のベンチマーク。SWE-bench Verified は、いくつかのコードレポートが pass@1 指標を示すレビュー済みサブセットである</li>
 <li>TOPLAS: ACM Transactions on Programming Languages and Systems（プログラミング言語とシステムに関する ACM 取引誌）</li>
+<li>TPR: 真陽性率</li>
 <li>UNCOL: 汎用コンピュータ指向言語</li>
 <li>USD: 米ドル</li>
 <li>VAX: Digital Equipment Corporation の仮想アドレス拡張コンピュータ</li>
@@ -146,25 +156,25 @@ complete: true
 
 <div id="hypotheses-overview" class="anchor-alias" aria-hidden="true"></div>
 
-## 仮説の概観
+## 仮説の概要
 
 このページでは、H1 から H15 までの十五の仮説を、いずれも議論に入る前に完全に列挙する。各仮説は、指標と閾値を併せて [Section 8](#hypotheses) の表に示し、その後に反証 RJ-F1 から RJ-F6 が続く。
 
-1. H1. 同一プログラムに対して、Form 空間はソース空間よりはるかに小さい。（185 の手書きプログラムで支持：中央値 rho 9.34。）
-2. H2. チェッカーは生成に比べてコストが低い。（Apple M5 Max における `reported_j` で `C_check / E_model = 0.000582 <= 0.05`、`1,718×` 安価。）
-3. H3. 表現空間における予測は有用な受容に到達する。
-4. H4. 受容されたプログラムあたりのエネルギーが減少する。
-5. H5. エネルギー順位付けは有効な Form に質量を集中させる。（未校正の `FormJEPA-v1` 潜在距離は AUROC `0.618` に達し、結論は出せない；校正済みの多項ヘッドは未公開。）
-6. H6. 参照アプリは Form として符号化可能である。
-7. H7. セキュリティはモデルに依存しない。（Fuzz された arm の測定では、1,275 のミュータントすべてで違反なし。）
-8. H8. 受容されたすべての Form は決定的に再生される。（6 つのターゲットにわたる 10,500 のストリームで支持：不一致 0 件。）
-9. H9. コストは実行前に予測できる。
-10. H10. 商（正準 Form）上での学習は訓練データを節約する。
-11. H11. エネルギーは編集距離に対して単調である。（手定義の編集スコアは `76.8% < 80%`；未校正の `FormJEPA-v1` 潜在距離は距離 `0..4` で上昇し、`36.0%` が厳密に単調な 5 段階チェーンを形成；校正済みヘッドは未公開。）
-12. H12. 決定ヘッドはゲート結果に対して校正されている。
-13. H13. 離散潜在は、長い編集シーケンスにおいて連続潜在よりも優れている。
-14. H14. 公開された決定的な正確な提案者の階段は、モデル呼び出しゼロで登録タスク集合の測定可能なシェアを閉じ、そのシェアが学習提案者が残りのタスクで上回るべきベースラインとなる。（支持：151 タスク中 111 タスク、73.5%、残り 40 タスクは未解決。）
-15. H15. 提案者クラスは、マッチした予算下で 40 タスクの残りに対して比較され、Gear-0 結晶化および 3-Gear カスケードと並行して評価される。六つの市販クラウド/ローカル提案者（`17/40` から `34/40`、`k = 1`）と、目的別に訓練された `FormJEPA-v1`（`k = 1` で `22/40`、`k = 16` で `27/40`）および Shape D（`DNULLMM1`）Gear-0 再生（呼び出し 0 で `34/40`、`Zipf(0.85)` 上で 3-Gear フロンティア呼び出しを `8.70×` 削減）でベンチマークされた。拡散と進化的手法は依然として未解決である。
+1. H1. 同一プログラムに対する形式空間はソース空間よりもはるかに小さい。（185個の手書きプログラムで支持：中央値ρ 9.34。）
+2. H2. チェッカーは生成に比べて安価である。（Apple M5 Max上の`reported_j`で支持：`C_check / E_model = 0.000582 <= 0.05`、`1,718×`安価。）
+3. H3. 表現空間における予測は有用な受理率に到達する。
+4. H4. 受理されたプログラムあたりのエネルギーが低下する。
+5. H5. エネルギーランキングは有効な形式に質量を集中させる。（対照的`FormEBM-v2`はAUROC `0.8922 >= 0.85`および`84.05%`の解可能top-1精度、`68.5%` raw（全200ビーム横断）で、未見のテスト形式形状に対して`0.618`の未較正`FormJEPA-v1`を上回る；OOD多行プール較正は開放。）
+6. H6. 参照アプリは形式として符号化可能である。
+7. H7. セキュリティはモデルに依存しない。（ファジングされたARM測定：1,275変異体で0違反。）
+8. H8. すべての受理された形式は決定論的に再生される。（6対象横断の10,500ストリームで支持：0不整合。）
+9. H9. コストは実行前に予測される。
+10. H10. 商（正準形式）上での学習は訓練データを節約する。
+11. H11. エネルギーは編集距離に対して単調である。（対照的`FormEBM-v2`は`93.0% >= 80%`の厳密5ステップ単調性およびSpearman `0.9931`を、100個の未見累積欠陥連鎖上で達成し、`FormJEPA-v1`の`36.0%`を上回る；制約なし同一行ランダムウォークスライスは`38.0%`厳密でSpearman `0.8513`である。）
+12. H12. 決定ヘッドはゲート結果に対して較正されている。
+13. H13. 離散潜在は長い編集系列上で連続潜在よりも優れた計画を行う。
+14. H14. 公開された決定論的で正確な提案者の梯子は、登録されたタスク集合の測定可能な割合をモデル呼び出しゼロで閉じ、その割合は学習された提案者が残余上で上回らなければならないベースラインである。（支持：151タスク中111、73.5%、40開放タスクを残す。）
+15. H15. 提案者クラスは、Gear-0結晶化および3-Gearカスケードとともに、マッチド予算下の40タスクの残余上で比較される。6個のシングルショットクラウド/ローカル提案者（`17/40`から`34/40`）横断でベンチマークされ、目的訓練された`FormJEPA-v1`（`k = 1`で`22/40`、`k = 16`で`27/40`；`FormEBM-v2`再順位付けで`k = 1`で`25/40`）、公開標準ライブラリヘッダ付きの有界チェッカーフィードバック`H15-Iterative`（`Opus 5.5`および`Sonnet 5.5`で`40/40`かつ`0`矛盾、`Grok 4.20`で`39/40`）、およびShape D（`DNULLMM1`）Gear-0再生（`0`呼び出しで`40/40`；`Zipf(0.85)`上で`16.67×`の3-Gearエピソード削減および`200/200`受理）；拡散および進化アームは開放のままである。
 
 <div id="falsifiers-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -181,11 +191,11 @@ complete: true
 
 <div id="proposer" class="anchor-alias" aria-hidden="true"></div>
 
-## 既存のものと本ページの主題
+## 既に存在するもの、及び本ページの目的
 
 Reality Code Engine は、その公開リファレンスチェッカーおよびエンジンの設計において、決定を左右する問題の半分を保持している。その公開論文、[The Reality Code Engine](/papers/rce/) は、その半分の設計を記述している：エントリ時にすべての候補をチェックするコミットゲート、正確なリプレイ（実行時状態はログ上の遷移関数の左畳みである）、ある Form から他言語への射影、整数コスト会計（`est_j`）を、OS/オンチップカウンタ読み取り（`reported_j`、Apple M5 Max でコミット `1762fb4b` に初めて記録）や外部壁メータ読み取り（`measured_j`、RCE には存在しない）から厳密に分離して保持する。コア定理は Lean 4 で検証されており、証明支援系（`5,537` カーネル定理定数が `64` モジュールにまたがり `1762fb4b` にて実装）であり、仕様と Lean ライブラリは公開されている。このページはその論文からモデル提案者実行の公開記録のみを引用し、残りを設計コンテキストとして扱う。
 
-**このページは提案者について述べている**：どの Form を試すかを提案する学習部分である。チェッカー、リプレイ、および他言語への射影は公開コードであり、エンジンのゲートとその `est_j` 会計は仕様化された設計である。以下第 8 節では、6 つのモデルのオフ・ザ・シェルフベンチマークに加えてメモリマップド Gear-0 結晶化、および最初の目的特化型潜在 Form JEPA 修復提案者（`FormJEPA-v1`、`8.42M` 訓練可能パラメータが互いに排他的な正規 Form S-式上に配置され、`177/200` の保持された合成 Form 欠陥と `27/40` のオープン残余タスクをサブジュールコア `reported_j` で受理）を報告する。一方、完全な意図から Form への合成、校正された多項エネルギー順位付け、ゲート受領決定ヘッドは未解決のままである。
+**本ページは提案器について述べるものである:** 試行すべきFormを提案する学習済みの部分である。検査器(checker)、リプレイ、他言語への射影は公開コードであり、エンジンのゲートと `est_j` の会計は仕様化された設計である。下記第8節では、六つの既成モデルによるベンチマークに加え、メモリマップ型Gear-0結晶化の結果を報告する。すなわち、初の目的特化型の潜在Form JEPA修復提案器である `FormJEPA-v1`(正準Form S式の互いに素な集合上で学習された `8.42M` の学習可能パラメータを持つ)は、保持された合成Form欠陥 `177/200` を受理し、未解決の残余タスク `27/40` を準ジュール級のコア `reported_j` で処理した。対照的多段マージンエネルギー採点器 `FormEBM-v2`(同一の互いに素な `1,387` Form分割上で `5.85M` パラメータ)は、未見形状のH5におけるAUROC `0.8922` と、H11における厳密5段編集単調性 `93.0%` に達し、同時に解決可能なケースの検査呼び出しを `2.39×` 削減した。さらに、公開標準ライブラリヘッダを用いた有界な検査器フィードバック残余閉包(`H15-Iterative`)は、残余タスク `40/40` を閉じ、矛盾 `0`、ゼロ呼び出しのGear-0リプレイ `40/40` を達成した。対話型の計測器は [/living/rce-jepa/](/living/rce-jepa/) にある。一方、完全な意図からForm への合成、多行の分布外エネルギー較正、およびゲート受領判定ヘッドは未解決のままである。
 
 <div id="ladder" class="anchor-alias" aria-hidden="true"></div>
 
@@ -254,7 +264,7 @@ step Counter on Dec -> try n.checked_sub(1) else Underflow
 | --- | --- | --- | --- |
 | Form encoder $E_f$ | Form とその例イベント上のトレースを潜在 $z_f$ に写像する | 正規化に SIGReg（等方性ガウス正則化の概略）を用いた Form の正規 JSON（JavaScript Object Notation）とトレーストークン上の小規模トランスフォーマー [B2]；離散またはソフトコードブックボトルネックを持つ第2アーム [B3, B4, B5]（SC-JEPA のソフトコードブックは EMA（指数移動平均）教師と再構成アンカー [B5, Sec. 4.4.1 and App. B.1] と共に安定化） | トレースは同値性を定義し、$\delta$ が厳密であるためトレースは自由である。離散トークンは連続潜在が誤差を蓄積する長期予測を安定化させる [B3]；ブール潜在はビット単位の等価性により正確な状態再識別を可能にし、これは [B4] が先行研究への言及と共に示す動機である |
 | Intent encoder $E_I$ | $\sigma(I)$（必須トレース、コントラクト、テスト、文章）を同一空間に写像する | 共有アーキテクチャで、既知の受容フィット $f^\star$ に対して $E_I(\sigma(I))$ が $E_f(f^\star)$ の近傍になるように学習する | 目標と候補を同一メトリックに置くことで、V-JEPA 2-AC が目標画像と共に行うようにする [B1] |
-| Proposer $\Pi_\theta$ | $z_I$ と現在の $z_f$ を受け取り、型付き Form 編集を提案する | 目標条件付き逆モデルで、LeWAM が GC-IDM（goal‑conditioned inverse dynamics model）として比較する形で、Nguyen ら (2026) のベースラインを評価するが、LeWAM の著者が提案したモデルではない [B6, Sec. 4.2 and App. A.2] | $\delta$ が厳密であるため、逆モデルが学習可能な対象になる |
+| Proposer $\Pi_\theta$ | $z_I$ と現在の $z_f$ を受け取り、型付き Form 編集を提案する | 目標条件付き逆モデルで、LeWAM が GC-IDM（goal-conditioned inverse dynamics model）として比較する形で、Nguyen ら (2026) のベースラインを評価するが、LeWAM の著者が提案したモデルではない [B6, Sec. 4.2 and App. A.2] | $\delta$ が厳密であるため、逆モデルが学習可能な対象になる |
 | Energy $\mathcal{E}$ | ゲート前に候補を順位付けする | $\alpha V(f)+\beta\,d(z_{\tau(f)},z_{\sigma(I)})+\gamma\,C(f)$、`est_j` から取得した $C(f)$ を用いる | 別途学習されたエネルギーは比較可能でない [T2, Sec. 1.3]；$\alpha,\beta,\gamma$ は保持スライス上で受容と変更要求を区別する AUROC を最大化するように適合され、すべての実行で報告される |
 | Planner | 編集を探索する | 提案編集に対するビーム探索または木探索を行い、$\mathcal{E}$ でスコア付けし、各ノードで厳密ロールアウトを実施する | V-JEPA 2-AC は連続アクション上でクロスエントロピー法（CEM）を用いて計画する [B1]；Form 編集は離散かつ組合せ的であるため、CEM は適用できない |
 | Decision head | 校正された確率で有界選択を行う：各穴の値、順位、同値性判定 | RCE プロジェクトが構築し、ゲート受領（次節）で学習した小規模決定モデル | 校正された確率 $p_i$ が最も安価な順にカスケードを並べ替える |
@@ -296,7 +306,7 @@ V-JEPA 2 ペアは、非常に大規模な受動的事前学習を小規模な�
 
 ### 訓練の概要
 
-- **エンコーダの目的。** 潜在予測と SIGReg の組み合わせである LeJEPA のレシピは、単一のトレードオフハイパーパラメータのみを必要とし、ストップグラデーションや教師‑学生スキームを用いない [B2, abstract]、および二つの損失項でエンドツーエンドに学習する LeWorldModel のレシピである [B13, abstract]。同一系列の研究からの二つの注意点: LeWorldModel の著者は、低次元固有次元の環境において等方性ガウスターゲットが制限になる可能性があると指摘している [B13, Sec. 4.2 and Sec. 6]、そして分布フリーな代替として対照的逆動力学が提示されているが、これは連続制御のみで評価され、離散状態変化がどの行動によっても同様に見える組み合わせパズルタスクでは SIGReg より明らかに劣っていた [B14, Appendix D]。さらに SIGReg と VISReg は「学習された潜在表現が計画に必要なすべての重要情報を保持することを保証しない」 [B15, Sec. 4.1]。両方の手法は並行して走り、Form の正確で低コストな属性（単調タグ、燃料上限、規則数）を予測する補助ヘッドを持つ。
+- **エンコーダの目的。** 潜在予測と SIGReg の組み合わせである LeJEPA のレシピは、単一のトレードオフハイパーパラメータのみを必要とし、ストップグラデーションや教師-学生スキームを用いない [B2, abstract]、および二つの損失項でエンドツーエンドに学習する LeWorldModel のレシピである [B13, abstract]。同一系列の研究からの二つの注意点: LeWorldModel の著者は、低次元固有次元の環境において等方性ガウスターゲットが制限になる可能性があると指摘している [B13, Sec. 4.2 and Sec. 6]、そして分布フリーな代替として対照的逆動力学が提示されているが、これは連続制御のみで評価され、離散状態変化がどの行動によっても同様に見える組み合わせパズルタスクでは SIGReg より明らかに劣っていた [B14, Appendix D]。さらに SIGReg と VISReg は「学習された潜在表現が計画に必要なすべての重要情報を保持することを保証しない」 [B15, Sec. 4.1]。両方の手法は並行して走り、Form の正確で低コストな属性（単調タグ、燃料上限、規則数）を予測する補助ヘッドを持つ。
 - **マルチステップ予測。** k ステップの再帰的予測で学習すると、EB-JEPA のアブレーションで露出バイアスが減少し、k = 4 付近でパレート最適が得られるなど、著しく良い結果が得られる [B16, Fig. 3]。RoboJEPA は長期クールダウンで自己回帰的トレーニングロールアウトを K = 2 から K = 10 ステップに拡張し、これは大規模計算（約 10<sup>21</sup> FLOPs 以上）でのみ効果を発揮する [B17, Sec. 3.3 and App. C.2]。プランナーホライズンに合わせたロールアウト一貫性項は Temporal-Distance JEPA から導入される [B18, abstract]。
 - **単調エネルギー。** 単調コスト順位付けは、ゴール到達軌道からさらに逸脱した計画に対して高いコストを課す。これがないと、コスト表面の局所最小値がプランナーを劣った計画へ導く可能性がある [B19]。単調性はタスクによって保証されない: EB-JEPA のナビゲーションタスクは非単調であり、最適経路はまずゴールから離れるからである [B16]。ここでは事前登録された診断 (H11) であり、仮定ではない。
 - **プロポーザー。** ペア階層からの意図、Form、編集トリプルで教師あり学習し、その後自身のゲート受容軌道で改善する。ゲートは報酬である。
@@ -366,40 +376,75 @@ H3 のコントロールは現在固定されている：同一ゲートと同�
 
 [T]でマークされた参考文献は、下記の「Thesis references」に列挙されている。セクション2、3、5への参照は、下記のこのページの該当セクションを指す。ラベルは、下記の主要参考文献の慣例に従う。**Full** は、参考文献や付録を含む全文が読まれたことを意味する。B9 と B10 については、ライブモデルカードと README が 14 October 2026 に読まれた。
 
-1. [B1] M. Assran et al., "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning", 2025. [arXiv:2506.09985](https://arxiv.org/abs/2506.09985). Full.
-2. [B2] R. Balestriero and Y. LeCun, "LeJEPA: Provable and Scalable Self-Supervised Learning Without the Heuristics", 2025. [arXiv:2511.08544](https://arxiv.org/abs/2511.08544). Full.
-3. [B3] J. Baek et al., "Discrete JEPA: Learning Discrete Token Representations without Reconstruction", 2025. [arXiv:2506.14373](https://arxiv.org/abs/2506.14373). Full.
-4. [B4] D. Bizzaro and L. Serafini, "Discrete World Models via Regularization", 2026. [arXiv:2603.01748](https://arxiv.org/abs/2603.01748). Full.
-5. [B5] Y. He et al., "SC-JEPA: Stabilizing Latent Predictive Learning for Time-Series Anomaly Prediction", 2026. [arXiv:2602.04643](https://arxiv.org/abs/2602.04643). Full.
-6. [B6] M. Fu et al., "LeWAM: End-to-End World and Action Modeling with JEPAs", 2026. [arXiv:2610.12818](https://arxiv.org/abs/2610.12818). Full.
-7. [B7] T. Deußer, L. Sparrenberg and R. Sifa, "Evaluating and Benchmarking the System One Model Jev", 2026. [arXiv:2609.37647](https://arxiv.org/abs/2609.37647). Full.
-8. [B8] W. Wu, "Jev vs Laya: Comparing and Choosing Between Closed-Source and Open-Source System One Decision Models", 23 September 2026. [wilsonwu.me](https://wilsonwu.me/en/blog/2026/jev-vs-laya/). Full.
-9. [B9] Nandakishor M (Convai Innovations), Laya model card. [Hugging Face](https://huggingface.co/convaiinnovations/laya). Full (read live 14 October 2026).
-10. [B10] J. Palmer, Kev. [GitHub](https://github.com/jaredpalmer/kev). Full (README, read live 14 October 2026).
-11. [B11] Liquid AI, "Open d1: Edge decision models for text, vision, and audio", 7 October 2026. [liquid.ai](https://www.liquid.ai/blog/d1-open). Full.
-12. [B12] Sanity, "Decision model" (glossary). [sanity.io](https://www.sanity.io/glossary/decision-model). Full.
-13. [B13] L. Maes, Q. Le Lidec, D. Scieur, Y. LeCun and R. Balestriero, "LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels", 2026. [arXiv:2603.19312](https://arxiv.org/abs/2603.19312). Full.
-14. [B14] J. Boylan and C. Hokamp, "No Gaussian Required: Contrastive Inverse Dynamics for JEPA World Models", 2026. [arXiv:2608.17542](https://arxiv.org/abs/2608.17542). Full.
-15. [B15] P. Zhu et al., "Spectral-Target Physical Latent Structuring for JEPA-Style World Models", 2026. [arXiv:2609.04264](https://arxiv.org/abs/2609.04264). Full.
-16. [B16] B. Terver et al., "A Lightweight Library for Energy-Based Joint-Embedding Predictive Architectures", 2026. [arXiv:2602.03604](https://arxiv.org/abs/2602.03604). Full.
-17. [B17] A. Zholus et al., "RoboJEPA: Scaling Robotic Latent World Models", 2026. [arXiv:2610.10515](https://arxiv.org/abs/2610.10515). Full.
-18. [B18] J. Bai and J. Xiong, "Temporal-Distance JEPA: Plan-Aware Representation Learning for Latent World Model Predictive Control", 2026. [arXiv:2607.25337](https://arxiv.org/abs/2607.25337). Full.
-19. [B19] A. Chahe, S. Cai and L. Zhou, "Latent World Models with Monotone Planning Costs for Image-Goal Navigation", 2026. [arXiv:2608.09073](https://arxiv.org/abs/2608.09073). Full.
-20. [B20] Y. Zhu et al., "MoRAE: Flow-Friendly Self-Supervised Latents for Text-to-Motion Generation", 2026. [arXiv:2607.29180](https://arxiv.org/abs/2607.29180). Full.
-21. [B21] J. Hong, D. Dohan, R. Singh, C. Sutton and M. Zaheer, "Latent Programmer: Discrete Latent Codes for Program Synthesis", ICML 2021. [PMLR PDF](https://proceedings.mlr.press/v139/hong21a/hong21a.pdf). Full.
-22. [B22] X. Chen, D. Song and Y. Tian, "Latent Execution for Neural Program Synthesis", NeurIPS 2021. [arXiv:2107.00101](https://arxiv.org/abs/2107.00101). Full.
-23. [B23] Meta FAIR CodeGen Team, "CWM: An Open-Weights LLM for Research on Code Generation with World Models", 2025. [arXiv:2510.02387](https://arxiv.org/abs/2510.02387). Full.
-24. [B24] B. Rahmani, "Debugging Code World Models", 2026. [arXiv:2602.07672](https://arxiv.org/abs/2602.07672). Full.
-25. [B25] M. Allamanis, P. Chanthirasegaran, P. Kohli and C. Sutton, "Learning Continuous Semantic Representations of Symbolic Expressions", ICML 2017. [arXiv:1611.01423](https://arxiv.org/abs/1611.01423). Full.
-26. [B26] Y. Sun, J. Liu, D. Kroening and J. Xue, "Agentic Model Checking", 2026. [arXiv:2605.21434](https://arxiv.org/abs/2605.21434). Full.
-27. [B27] A. Cunha, "Verified LLM-Driven Synthesis for Concept Design", 2026. [arXiv:2607.15718](https://arxiv.org/abs/2607.15718). Full.
-28. [B28] B. K. Liu, Z. P. Chen and D. P. Woodruff, "JEPA-Reasoner: Decoupling Latent Reasoning from Token Generation", 2025. [arXiv:2512.19171](https://arxiv.org/abs/2512.19171). Full.
-29. [B29] H. Pan et al., "Toward Compiler World Models: Learning Latent Dynamics for Efficient Tensor Program Search", 2026. [arXiv:2606.09312](https://arxiv.org/abs/2606.09312). Full.
-30. [B30] Open Interface Engineering, "Exact-proposer ladder: registered run", openIE-dev/openie-research-experiments, `rce/bench/ladder/exact-proposers/`: registration committed before the run at `3030469d`, results at `70a0a776` (pull request #21); ladder openIE-dev/rce `6d04a096`. [GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/exact-proposers). Full.
-31. [B31] Open Interface Engineering, "Exact-proposer ladder on real defects: registered run", openIE-dev/openie-research-experiments, `rce/bench/ladder/real-defects/`: registration committed before the run at `64e70389`, results at `00e3b005` (pull request #22); ladder openIE-dev/rce `7dc4eded`. [GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/real-defects). Full.
-32. [B32] Open Interface Engineering, "Exact-proposer ladder with renames: registered run", openIE-dev/openie-research-experiments, `rce/bench/ladder/rung-e/`: registration committed before the run at `be5f370d`, results at `3a5227c2`, merged at `f76ba9d8` (pull request #23); ladder openIE-dev/rce `8a5d90ea`. [GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/f76ba9d8d02d57b773afbf105333417d55f72e2c/rce/bench/ladder/rung-e). Full.
-33. [B33] Open Interface Engineering, "RCE-JEPA H2, single-shot H15, and Shape D (DNULLMM1) Gear-0 on the 40 open residual tasks", registered 22 November 2026 (`rce-jepa-h15-and-shape-d-gear0-2026-11-22`, `sha256: b64c4c671ae85755...`) on `openIE-dev/rce` at commit `1762fb4b` (20 November 2026, binary `sha256: 1d3b0d07ff5b2e8f...`), Apple M5 Max dual-channel `reported_j` receipts (`measured_j = None`, `board_metered = false`). [research.openie.dev/data/](/data/#rce-jepa). Full.
-34. [B34] Open Interface Engineering, "FormJEPA-v1 latent Form repair proposer, 3-Gear Cascade, and rce repair rung f criterion evaluation on the 151-task ladder and 40 residual tasks", registered 22 November 2026 (`rce-jepa-form-jepa-v1-2026-11-22`, `sha256: 22682e6e936ec120...`; `rce-repair-rung-f-wave3-eval-2026-11-22`, `sha256: 04aff4b2b44cdbea...`) on `openIE-dev/rce` at commit `1762fb4b` (Linux x86_64 binary `sha256: 5ef9931ff23a310f...`), AMD Ryzen AI Max+ 395 Linux powercap RAPL `reported_j` receipts (`measured_j = None`, `board_metered = false`). [research.openie.dev/data/](/data/#rce-jepa). Full.
+1. [B1] M. Assran et al., 「V-JEPA 2: 自己教師ありビデオモデルによる理解・予測・計画の実現」, 2025. [arXiv:2506.09985](https://arxiv.org/abs/2506.09985). 全文.
+
+2. [B2] R. Balestriero and Y. LeCun, 「LeJEPA: ヒューリスティックを用いない証明可能かつスケーラブルな自己教師あり学習」, 2025. [arXiv:2511.08544](https://arxiv.org/abs/2511.08544). 全文.
+
+3. [B3] J. Baek et al., 「Discrete JEPA: 再構成なしに離散トークン表現を学習する」, 2025. [arXiv:2506.14373](https://arxiv.org/abs/2506.14373). 全文.
+
+4. [B4] D. Bizzaro and L. Serafini, 「正則化による離散世界モデル」, 2026. [arXiv:2603.01748](https://arxiv.org/abs/2603.01748). 全文.
+
+5. [B5] Y. He et al., 「SC-JEPA: 時系列異常予測のための潜在予測学習の安定化」, 2026. [arXiv:2602.04643](https://arxiv.org/abs/2602.04643). 全文.
+
+6. [B6] M. Fu et al., 「LeWAM: JEPAsを用いたエンドツーエンドの世界および行動モデリング」, 2026. [arXiv:2610.12818](https://arxiv.org/abs/2610.12818). 全文.
+
+7. [B7] T. Deußer, L. Sparrenberg and R. Sifa, 「System OneモデルJevの評価とベンチマーク」, 2026. [arXiv:2609.37647](https://arxiv.org/abs/2609.37647). 全文.
+
+8. [B8] W. Wu, 「Jev対Laya: クローズドソースとオープンソースのSystem One決定モデルの比較および選択」, 2026年9月23日. [wilsonwu.me](https://wilsonwu.me/en/blog/2026/jev-vs-laya/). 全文.
+
+9. [B9] Nandakishor M (Convai Innovations), Layaモデルカード. [Hugging Face](https://huggingface.co/convaiinnovations/laya). 全文 (2026年10月14日時点でライブ閲覧).
+
+10. [B10] J. Palmer, Kev. [GitHub](https://github.com/jaredpalmer/kev). 全文 (README, 2026年10月14日時点でライブ閲覧).
+
+11. [B11] Liquid AI, 「Open d1: テキスト・ビジョン・オーディオのためのエッジ決定モデル」, 2026年10月7日. [liquid.ai](https://www.liquid.ai/blog/d1-open). 全文.
+
+12. [B12] Sanity, 「決定モデル」 (用語集). [sanity.io](https://www.sanity.io/glossary/decision-model). 全文.
+
+13. [B13] L. Maes, Q. Le Lidec, D. Scieur, Y. LeCun and R. Balestriero, 「LeWorldModel: ピクセルからの安定したエンドツーエンド共同埋め込み予測アーキテクチャ」, 2026. [arXiv:2603.19312](https://arxiv.org/abs/2603.19312). 全文.
+
+14. [B14] J. Boylan and C. Hokamp, 「ガウス分布は不要: JEPA世界モデルに対するコントラスティブ逆ダイナミクス」, 2026. [arXiv:2608.17542](https://arxiv.org/abs/2608.17542). 全文.
+
+15. [B15] P. Zhu et al., 「JEPAスタイル世界モデルのためのスペクトル目標物理潜在構造化」, 2026. [arXiv:2609.04264](https://arxiv.org/abs/2609.04264). 全文.
+
+16. [B16] B. Terver et al., 「エネルギー基盤共同埋め込み予測アーキテクチャのための軽量ライブラリ」, 2026. [arXiv:2602.03604](https://arxiv.org/abs/2602.03604). 全文.
+
+17. [B17] A. Zholus et al., 「RoboJEPA: ロボット潜在世界モデルのスケーリング」, 2026. [arXiv:2610.10515](https://arxiv.org/abs/2610.10515). 全文.
+
+18. [B18] J. Bai and J. Xiong, 「Temporal-Distance JEPA: 潜在世界モデル予測制御のための計画認識表現学習」, 2026. [arXiv:2607.25337](https://arxiv.org/abs/2607.25337). 全文.
+
+19. [B19] A. Chahe, S. Cai and L. Zhou, 「画像目標ナビゲーションのための単調計画コストを持つ潜在世界モデル」, 2026. [arXiv:2608.09073](https://arxiv.org/abs/2608.09073). 全文.
+
+20. [B20] Y. Zhu et al., 「MoRAE: テキストからモーション生成のためのフロー対応自己教師あり潜在表現」, 2026. [arXiv:2607.29180](https://arxiv.org/abs/2607.29180). 全文.
+
+21. [B21] J. Hong, D. Dohan, R. Singh, C. Sutton and M. Zaheer, 「Latent Programmer: プログラム合成のための離散潜在コード」, ICML 2021. [PMLR PDF](https://proceedings.mlr.press/v139/hong21a/hong21a.pdf). 全文。
+
+22. [B22] X. Chen, D. Song and Y. Tian, 「Latent Execution for Neural Program Synthesis」, NeurIPS 2021. [arXiv:2107.00101](https://arxiv.org/abs/2107.00101). 全文。
+
+23. [B23] Meta FAIR CodeGen Team, 「CWM: 世界モデルを用いたコード生成に関する研究のためのオープンウェイト LLM」, 2025. [arXiv:2510.02387](https://arxiv.org/abs/2510.02387). 全文。
+
+24. [B24] B. Rahmani, 「Debugging Code World Models」, 2026. [arXiv:2602.07672](https://arxiv.org/abs/2602.07672). 全文。
+
+25. [B25] M. Allamanis, P. Chanthirasegaran, P. Kohli and C. Sutton, 「Learning Continuous Semantic Representations of Symbolic Expressions」, ICML 2017. [arXiv:1611.01423](https://arxiv.org/abs/1611.01423). 全文。
+
+26. [B26] Y. Sun, J. Liu, D. Kroening and J. Xue, 「Agentic Model Checking」, 2026. [arXiv:2605.21434](https://arxiv.org/abs/2605.21434). 全文。
+
+27. [B27] A. Cunha, 「Verified LLM-Driven Synthesis for Concept Design」, 2026. [arXiv:2607.15718](https://arxiv.org/abs/2607.15718). 全文。
+
+28. [B28] B. K. Liu, Z. P. Chen and D. P. Woodruff, 「JEPA-Reasoner: トークン生成から潜在推論を分離」, 2025. [arXiv:2512.19171](https://arxiv.org/abs/2512.19171). 全文。
+
+29. [B29] H. Pan et al., 「Toward Compiler World Models: Learning Latent Dynamics for Efficient Tensor Program Search」, 2026. [arXiv:2606.09312](https://arxiv.org/abs/2606.09312). 全文。
+
+30. [B30] Open Interface Engineering, 「Exact-proposer ladder: registered run」, openIE-dev/openie-research-experiments, `rce/bench/ladder/exact-proposers/`: registration committed before the run at `3030469d`, results at `70a0a776` (pull request #21); ladder openIE-dev/rce `6d04a096`. [GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/exact-proposers). 全文。
+
+31. [B31] Open Interface Engineering, 「Exact-proposer ladder on real defects: registered run」, openIE-dev/openie-research-experiments, `rce/bench/ladder/real-defects/`: registration committed before the run at `64e70389`, results at `00e3b005` (pull request #22); ladder openIE-dev/rce `7dc4eded`. [GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/main/rce/bench/ladder/real-defects). 全文。
+
+32. [B32] Open Interface Engineering, 「Exact-proposer ladder with renames: registered run」, openIE-dev/openie-research-experiments, `rce/bench/ladder/rung-e/`: registration committed before the run at `be5f370d`, results at `3a5227c2`, merged at `f76ba9d8` (pull request #23); ladder openIE-dev/rce `8a5d90ea`. [GitHub](https://github.com/openIE-dev/openie-research-experiments/tree/f76ba9d8d02d57b773afbf105333417d55f72e2c/rce/bench/ladder/rung-e). 全文。
+
+33. [B33] Open Interface Engineering, 「RCE-JEPA H2, single-shot H15, and Shape D (DNULLMM1) Gear-0 on the 40 open residual tasks」, registered 22 November 2026 (`rce-jepa-h15-and-shape-d-gear0-2026-11-22`, `sha256: b64c4c671ae85755...`) on `openIE-dev/rce` at commit `1762fb4b` (20 November 2026, binary `sha256: 1d3b0d07ff5b2e8f...`), Apple M5 Max dual-channel `reported_j` receipts (`measured_j = None`, `board_metered = false`). [research.openie.dev/data/](/data/#rce-jepa). 全文。
+
+34. [B34] Open Interface Engineering, "FormJEPA-v1 潜在Form修復提案器、3-Gear Cascade、ならびに151タスク梯子および40件の残差タスクにおけるrce修復rung f基準評価", 2026年11月22日登録 (`rce-jepa-form-jepa-v1-2026-11-22`, `sha256: 22682e6e936ec120...`; `rce-repair-rung-f-wave3-eval-2026-11-22`, `sha256: 04aff4b2b44cdbea...`)。`openIE-dev/rce` のコミット `1762fb4b` 上 (Linux x86_64バイナリ `sha256: 5ef9931ff23a310f...`)、AMD Ryzen AI Max+ 395 のLinux powercap RAPLによる `reported_j` 受領記録 (`measured_j = None`, `board_metered = false`)。[research.openie.dev/data/](/data/#rce-jepa)。全文。
+
+35. [B35] Open Interface Engineering, "FormEBM-v2 対照的多段マージン潜在エネルギースコアラー (H5, H11) と、DNULLMM1 Gear-0 v2 結晶化を伴うH15-Iterative有界チェッカー・フィードバック残差閉包 (40/40)", 2026年11月23日登録 (`rce-jepa-form-ebm-v2-2026-11-23`, `sha256: 128f17e69361ea89...`; `rce-jepa-h15-iterative-2026-11-23`, `sha256: a7774d3bd03ae450...`)。`openIE-dev/rce` のコミット `1762fb4b` 上 (Linux x86_64バイナリ `sha256: 331464496009d98a...`)、AMD Ryzen AI Max+ 395 / Radeon 8060S のLinux powercap RAPLによる `reported_j` 受領記録 (`measured_j = None`, `board_metered = false`)。[research.openie.dev/living/rce-jepa/](/living/rce-jepa/) · [research.openie.dev/data/](/data/#rce-jepa)。全文。
 
 <div id="thesis" class="anchor-alias" aria-hidden="true"></div>
 
@@ -544,7 +589,7 @@ $$\mathcal{L}(\phi)=\mathbb{E}\,\big\lVert g_\phi\big(\mathrm{enc}(s_t),e_t\big)
 
 ターゲットには aleatoric（不可減）ノイズが存在しない。MuZero は「先読み計画アルゴリズムはすべて環境のダイナミクス、例えばゲームの規則や正確なシミュレータの知識に依存している」という観察から出発し、代わりにモデルを学習する [T1, Sec. 1]。コードに対しては、その規則は $\delta$ であり、完全に利用可能である。
 
-**Contrast with models that learn the physics.** CWM、すなわち Code World Model [B23] は、Python 実行トレースとエージェント軌跡上で中間訓練されたデコーダである。その報告におけるトレース予測は学習されたインタプリタであり、著者らはそれを「第一歩」と呼び、ニューラルデバッガは将来の課題として残している。V‑JEPA 2 [B1] はビデオから物理を学習し、報告された要約では 62 時間のロボットビデオを含み、行動条件付き予測器は 62 時間未満のラベルなしロボットビデオを使用する。そのモデル予測制御は行動あたり約 16 秒かかった。Form において $\delta$ は物理であり、正確であるため、適合すべき aleatoric ノイズは存在しない。提案者がまだ学習しなければならないことは以下のセクション 7 に示されている：Form への意図、探索ガイダンス、およびはしごが閉じない残差である。
+**Contrast with models that learn the physics.** CWM、すなわち Code World Model [B23] は、Python 実行トレースとエージェント軌跡上で中間訓練されたデコーダである。その報告におけるトレース予測は学習されたインタプリタであり、著者らはそれを「第一歩」と呼び、ニューラルデバッガは将来の課題として残している。V-JEPA 2 [B1] はビデオから物理を学習し、報告された要約では 62 時間のロボットビデオを含み、行動条件付き予測器は 62 時間未満のラベルなしロボットビデオを使用する。そのモデル予測制御は行動あたり約 16 秒かかった。Form において $\delta$ は物理であり、正確であるため、適合すべき aleatoric ノイズは存在しない。提案者がまだ学習しなければならないことは以下のセクション 7 に示されている：Form への意図、探索ガイダンス、およびはしごが閉じない残差である。
 
 **Intent decoding as an inverse problem.** 意図 $I$ が制約として与えられたとき、その意図を満たす軌跡を持つ Form を見つける。これはエネルギーベースモデルの意味でエネルギー最小化として記述される [T36, T2]：
 
@@ -995,10 +1040,10 @@ RCE 論文は七つのコミットメントに基づく。それぞれは独立�
 
 - **チェッカーは安価で信頼できる。** 以前の試みがそれらを欠いていたのに対し、Csmithというランダムプログラム生成器を用いて、著者らはCompCertが「Csmithが誤コードエラーを見つけられなかった唯一のコンパイラ」であることを「約6 CPU年」の試行の後に確認した（Yang et al., 2011, Sec. 3.1, PDF p. 6）。機械検証された規則は、生成器が持たない信頼性を提供できる。CompCert自体もこのパターンを使用している。レジスタ割り当ては検証されていないグラフ彩色ヒューリスティックを実行し、各結果をCoqで証明された検証器でチェックする。なぜならグラフ彩色は「直接正しさを証明するよりも事後的に検証する方が容易」だからである（Leroy, 2009, Sec. 4.2, PDF p. 7）。
 - **決定的セマンティクスが非決定性問題に答える。** 生成器が変化できても、受理された成果物が正確にチェックされ再現されるなら、モデルの実行間変動は結果に影響しなくなる。
-- **ループ内検証者の証拠が存在する。** AlphaCodeの行動フィルタリング、Codex‑Sのオラクルテスト選択（77.5% 対 44.5% の対数確率順位付け）、Clover、AutoVerus、AlphaProofはすべて、チェックが提案の中から選択する際に大幅な利得を示す。第3節は後続システムでも同様の形状を記録している。すなわち、モデルが提案し、評価者、証明カーネル、または型システムが決定する。
-- **学習予測子は潜在空間で機能するようになった。** I‑JEPA と V‑JEPA 2 は、対象の詳細すべてを予測するのではなく要約を予測することで、これらのタスクでうまく機能することを示した。V‑JEPA 2 は5つのロボットタスクのうち4つで成功率が高く（1つは同率）、比較対象の生成ビデオモデルに対して約15倍高速に計画した（Table 3, PDF p. 15）。プログラムでは、識別子の綴り、フォーマット、ターゲット言語などの詳細は、構造が選択された後に決定的に埋め込むことができる。第5節は前提と、Forms と Laws of Coding が存在した時点で止まる場所を述べている。
-- **トークン単位生成はコストが高い。** LLaMA 65B は 8 から 32 台の V100 GPU に分散され、512 トークン出力制限の下で「出力トークン1個あたり約3‑4ジュール」のエネルギーを消費した（GPUエネルギーのみカウント）（Samsi et al., 2023, Secs. III‑C and IV‑C, PDF pp. 4‑6）。88モデルの研究では、テキスト生成モデルは1,000クエリあたり平均0.047 kWh（キロワット時）を消費し、各クエリは10トークンのみ生成した（Table 2）。さらに「汎用的生成アーキテクチャはタスク固有システムに比べて桁違いに高コスト」であることが示された。これは生成器が「全語彙全体」から選択するためである（Luccioni et al., 2024, abstract, PDF p. 1; Sec. 4.1 and Table 2, PDF p. 6; Sec. 4.2.1, PDF p. 8）。
-- **同一ホストでのチェック対モデル比較（Section 8, H2）。** 外部 V100 の数値とローカルノートブックの計測を混在させるのではなく、第8節は同一 Apple M5 Max ホスト上で両方を測定した。Form チェックは `0.04904 J`、ローカル `Qwen 3.6 35B‑A3B` の候補は `84.25 J`（許容された残差修正は `124.81 J`）である。
+- **ループ内検証者の証拠が存在する。** AlphaCodeの行動フィルタリング、Codex-Sのオラクルテスト選択（77.5% 対 44.5% の対数確率順位付け）、Clover、AutoVerus、AlphaProofはすべて、チェックが提案の中から選択する際に大幅な利得を示す。第3節は後続システムでも同様の形状を記録している。すなわち、モデルが提案し、評価者、証明カーネル、または型システムが決定する。
+- **学習予測子は潜在空間で機能するようになった。** I-JEPA と V-JEPA 2 は、対象の詳細すべてを予測するのではなく要約を予測することで、これらのタスクでうまく機能することを示した。V-JEPA 2 は5つのロボットタスクのうち4つで成功率が高く（1つは同率）、比較対象の生成ビデオモデルに対して約15倍高速に計画した（Table 3, PDF p. 15）。プログラムでは、識別子の綴り、フォーマット、ターゲット言語などの詳細は、構造が選択された後に決定的に埋め込むことができる。第5節は前提と、Forms と Laws of Coding が存在した時点で止まる場所を述べている。
+- **トークン単位生成はコストが高い。** LLaMA 65B は 8 から 32 台の V100 GPU に分散され、512 トークン出力制限の下で「出力トークン1個あたり約3-4ジュール」のエネルギーを消費した（GPUエネルギーのみカウント）（Samsi et al., 2023, Secs. III-C and IV-C, PDF pp. 4-6）。88モデルの研究では、テキスト生成モデルは1,000クエリあたり平均0.047 kWh（キロワット時）を消費し、各クエリは10トークンのみ生成した（Table 2）。さらに「汎用的生成アーキテクチャはタスク固有システムに比べて桁違いに高コスト」であることが示された。これは生成器が「全語彙全体」から選択するためである（Luccioni et al., 2024, abstract, PDF p. 1; Sec. 4.1 and Table 2, PDF p. 6; Sec. 4.2.1, PDF p. 8）。
+- **同一ホストでのチェック対モデル比較（Section 8, H2）。** 外部 V100 の数値とローカルノートブックの計測を混在させるのではなく、第8節は同一 Apple M5 Max ホスト上で両方を測定した。Form チェックは `0.04904 J`、ローカル `Qwen 3.6 35B-A3B` の候補は `84.25 J`（許容された残差修正は `124.81 J`）である。
 
 <div id="what-could-still-fail" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1016,7 +1061,7 @@ RCE 論文は七つのコミットメントに基づく。それぞれは独立�
 
 ## 5. 前提としてのJEPA、およびその限界
 
-前提は変わらない。JEPA は生の入力空間ではなく埋め込み空間で予測を行う。論文は LeCun の 2022 年のその考えの声明を引用している。V‑JEPA 2 は 62 時間のロボット動画と、65 % から 80 % へのゼロショットピックアンドプレイス成功率を報告している [B1]。同じ報告書の提案者セクションが述べるように、アクション条件付き予測器は 62 時間未満のラベルなしロボット動画で訓練された。LLM‑JEPA は、自然言語から正規表現へのタスク、GSM8K（小学校レベルの数学セット）および Spider（テキストからデータベースクエリへのセット）において、1 億パラメータ規模で埋め込み空間損失がトークン損失を上回ることを報告している（Huang, LeCun and Balestriero, 2025）。コードに関しては、有用な対象はトークンではなく意味であるという直感と一致する。
+前提は変わらない。JEPA は生の入力空間ではなく埋め込み空間で予測を行う。論文は LeCun の 2022 年のその考えの声明を引用している。V-JEPA 2 は 62 時間のロボット動画と、65 % から 80 % へのゼロショットピックアンドプレイス成功率を報告している [B1]。同じ報告書の提案者セクションが述べるように、アクション条件付き予測器は 62 時間未満のラベルなしロボット動画で訓練された。LLM-JEPA は、自然言語から正規表現へのタスク、GSM8K（小学校レベルの数学セット）および Spider（テキストからデータベースクエリへのセット）において、1 億パラメータ規模で埋め込み空間損失がトークン損失を上回ることを報告している（Huang, LeCun and Balestriero, 2025）。コードに関しては、有用な対象はトークンではなく意味であるという直感と一致する。
 
 Form が存在し、Coding の法則が同値性と受容性を固定すれば、前提は手法全体ではなくなる。以下の 6 つの制限が続く。これらは提案者を広げる理由であり、前提を放棄する理由ではない。
 
@@ -1026,11 +1071,11 @@ Form が存在し、Coding の法則が同値性と受容性を固定すれば�
 
 3. **ネイティブな受容がない。** JEPA にはネイティブデコーダも受容ステップもない。コードは離散的で検証可能な出力を必要とする。エネルギースコアは候補を順位付けするが、決定はしない。決定はチェッカーが行う。
 
-4. **点であり、商集合ではない。** 代替 Form は商集合である。多くの表層プログラムが一つの Form に対応し、一つの Form が多数のターゲットに射影できる。JEPA は点を埋め込むが、二つの点が同一 Form であることを保証しない。e‑graph は保証する。構造のハッシュも同様である。第 8 節では、`rce fmt nameless` が `9` 個のアルファリネームされたローカル変数ミュータントのうち `7` を、モデル呼び出しゼロで同一のメモリマップド Gear‑0（`DNULLMM1`）スロットにマッピングしている。
+4. **点であり、商集合ではない。** 代替 Form は商集合である。多くの表層プログラムが一つの Form に対応し、一つの Form が多数のターゲットに射影できる。JEPA は点を埋め込むが、二つの点が同一 Form であることを保証しない。e-graph は保証する。構造のハッシュも同様である。第 8 節では、`rce fmt nameless` が `9` 個のアルファリネームされたローカル変数ミュータントのうち `7` を、モデル呼び出しゼロで同一のメモリマップド Gear-0（`DNULLMM1`）スロットにマッピングしている。
 
-5. **証拠の規模。** LLM‑JEPA の証拠は 1 億から 2 億パラメータ規模で、小規模データセット上で得られている。このページの参照元では、リポジトリ規模のコードに対する JEPA 訓練は示されていない。
+5. **証拠の規模。** LLM-JEPA の証拠は 1 億から 2 億パラメータ規模で、小規模データセット上で得られている。このページの参照元では、リポジトリ規模のコードに対する JEPA 訓練は示されていない。
 
-6. **学習された計画のコスト。** V‑JEPA 2 のモデル予測制御（MPC）は、1 アクションあたり約 16 秒かかっている [B1]。安価な正確チェッカー（`7.32 ms`, `49.04 mJ` L3 `reported_j` on M5 Max）と Gear‑0 ルックアップ（`0.325 µs`, `1.77 µJ`）による Form の探索は、学習されたプランナーが訓練される前に繰り返しロールアウトコストを抑える。
+6. **学習された計画のコスト。** V-JEPA 2 のモデル予測制御（MPC）は、1 アクションあたり約 16 秒かかっている [B1]。安価な正確チェッカー（`7.32 ms`, `49.04 mJ` L3 `reported_j` on M5 Max）と Gear-0 ルックアップ（`0.325 µs`, `1.77 µJ`）による Form の探索は、学習されたプランナーが訓練される前に繰り返しロールアウトコストを抑える。
 
 **結果。** JEPA は前提として残る：意味を予測し、テキストを予測しない。提案者スロットは Form 上の任意の学習提案者へ一般化できる。第 3 節で名前が挙げられた例は、訓練途中で実行される自己回帰モデル（CWM）、拡散コードモデル、形式環境での強化学習（AlphaProof と Lean プローバー）、進化的探索（AlphaEvolve）、ライブラリ学習（DreamCoder と LILO）、制約付きデコードである。大規模概念モデルは言語において前提の隣に位置し、コードではまだ実現されていない。ゲートはそれらすべてに共通である。第 6 節が分類体系であり、第 7 節が提案先の世界を示す。
 
@@ -1101,23 +1146,23 @@ RCE は可能な他の形態のうちの一つの閉じたプログラム形で�
 
 すべての十五の仮説を数値順に示す。H1 から H7 は RCE-JEPA 論文を直接検証し、H8 から H10 は上記の「コーディングの法則」論文を検証し、H11 から H13 は提案者を検証し、H14 はその下にある決定論的ラダーを測定し、H15 は Shape D (`DNULLMM1`) Gear-0 結晶化における 40 タスク残差に対する提案者クラスを比較する。
 
-| ID | 仮説 | 指標 | 支持される条件 | 反証される条件 |
+| ID | 仮説 | 指標 | 支持される場合 | 反証される場合 |
 | --- | --- | --- | --- | --- |
-| H1 | 同一プログラムに対して、Form 空間はソース空間よりはるかに小さい。**手書きコーパスでサポート** (median ρ = 9.34 over 185 programs) | ρ = b(code)/b(P), median over corpus | ρ ≥ 5 | ρ < 2 |
-| H2 | チェッカーは生成に比べてコストが低い。**Apple M5 Max の `reported_j` でサポート**: `C_check / E_model = 0.04904 J / 84.25 J = 0.000582` (`1,718×` cheaper; `measured_j = None`) | C<sub>check</sub> / E<sub>model</sub> per candidate (joules) | ≤ 0.05 | ≥ 0.5 |
-| H3 | 表現空間予測は有用な受容に達する | pass@1 accepted Forms on held-out intent-to-Form tasks | ≥ baseline pass@1 on the same tasks | < 0.5 × baseline |
-| H4 | 受理されたプログラムあたりのエネルギーが減少する | J<sub>acc</sub>(RCE-JEPA) / J<sub>acc</sub>(baseline) | ≤ 0.1 | ≥ 1 |
-| H5 | エネルギー順位付けは有効な Form に質量を集中させる (校正されていない `FormJEPA-v1` の潜在 L2 距離、925 ビーム候補に対し: AUROC `0.618`、結論なし; 校正済みマルチタームヘッドはオープン) | top-1 type-check rate; AUROC of E for accepted vs requires change | ≥ 0.8 top-1 valid; AUROC ≥ 0.85 | AUROC ≤ 0.6 |
-| H6 | 参照アプリはエンコード可能である | share of the 6 reference apps plus RCEdb fully expressed as Forms that pass the checker and replay bit-identically | 7 of 7 | any app requires an escape hatch outside the Form |
-| H7 | セキュリティはモデルに依存しない (ファズド側: 1,275 ミュータントで違反0件; モデル側はオープン) | adversarial Forms (fuzzed and model-generated) accepted by the checker that violate a stated invariant | 0 | ≥ 1 confirmed |
-| H8 | 決定性: 受理されたすべての Form はビット同一の軌道と出力に再生される。**サポート** (6 ターゲットで 10,500 ストリームに対し不一致 0 件) | mismatches over at least 10,000 recorded event streams on at least 3 different machines and operating systems | 0 | a single mismatch |
-| H9 | コストは実行前に予測される | median error of the cost-table prediction against measured energy (J, named meter) for a stated machine, over the test families | ≤ 20% | > 50% |
-| H10 | 商上の学習はデータを節約する | training examples a predictor of canonical Forms needs to reach the same test acceptance rate as one of equal size trained on surface code | at most half (a saving of 2 times or more) | a saving below 1.25 times |
-| H11 | エネルギーは編集距離に対して単調である (手動定義編集スコア: `76.8% < 80%`; 校正されていない `FormJEPA-v1` の潜在 L2 が距離 `0..4` で上昇し、`36.0%` の厳密な 5 ステップ単調性; 校正済みヘッドはオープン) | Share of test families in which energy E rises with edit distance 1 to k from an accepted fit | ≥ 80% of families | < 80% of families |
-| H12 | 決定ヘッドはゲート結果に較正されている | 10<sup>4</sup> 件の受領後の決定タイプ別 ECE | ECE ≤ 0.1 かつ shape hash の頻度表以下 | ECE > 0.2、または頻度表と同等以下 |
-| H13 | 離散潜在計画は長い編集シーケンスにおいて連続的なものより優れる | 編集シーケンス長 1、5、20 における計画成功率、離散アーム対 連続 SIGReg アーム | 長さ 20 で離散アームが上回る | いずれのアームも H3 閾値に達しない |
-| H14 | 決定的ラダーはモデル呼び出しなしでタスクの一部を閉じる。 **登録された規則により支持される**: 三つの登録ラン [B30, B31, B32]、表下に報告 | 公開決定的ラダー（再利用、型による検索、決定的書き換え、有限列挙）がゼロモデル呼び出しで閉じる登録タスク集合の割合、すべての閉鎖はチェッカーにより承認され、凍結されたラダーコミット時点 | 登録タスクの ≥ 10% が、閉鎖した段階と共に報告（登録閾値、変更なし）。測定値: ラン 1 は 120 中 118 (98.3%)、変異では構造上ラダーが反転; ラン 2 は 151 中 31 (20.5%)、うち 27 がガード否定; ラン 3 はプレーンアームで 151 中 111 (73.5%)、うち 110 がガード否定とリネーム | 登録タスクの < 10% で、RCE 論文の falsifier RCE-F1 と同等の下限。いずれのランでも達成されない。実履歴からの 41 タスクでは、規則が単独で対象としないため、ラン 2 と 3 はそれぞれ 1 件 (2.4%) を閉じる |
-| H15 | 提案者クラスは 40 タスクの残差で異なる。 **オフ・ザ・シェルフ提案者 [B33] と目的別に訓練された `FormJEPA-v1` + 3-Gear Cascade [B34] を横断的に測定**: 6 つのクラウド/ローカルモデルが `17/40` から `34/40` (`k = 1`) を許容、`FormJEPA-v1`（`8.42M` パラメータ）は `22/40` (`k = 1`) と `27/40` (`k = 16`) をサブジュールコア `reported_j` で許容し、3-Gear Cascade は `Zipf(0.85)` フロンティア呼び出しを `8.70×` 削減; 拡散、進化、壁メータアームは未解決 | ゲート受理シェア (`C(z) = 1`) は H14 ラン 3 のプレーンアームからの 40 残差タスクで、`rce check`、義務保存、`rce hash`、`rce equiv` により監査 | 登録ランはアーム別シェアとローカル `reported_j` を報告 [B33, B34]；拡散/進化アームとサーバ壁メータの等価性は未解決 | クラスが異なるタスクで得点された、または未検証の出力 |
+| H1 | 形式空間は同一プログラムに対するソース空間よりもはるかに小さい。**手書きコーパス上で支持**（185プログラムにおける中央値ρ = 9.34） | ρ = b(code)/b(P)、コーパス全体の中央値 | ρ ≥ 5 | ρ < 2 |
+| H2 | チェッカーは生成に比べて安価である。**`reported_j`上でApple M5 Maxにおいて支持**: `C_check / E_model = 0.04904 J / 84.25 J = 0.000582`（`1,718×`安価；`measured_j = None`） | 候補あたりのC<sub>check</sub> / E<sub>model</sub>（ジュール） | ≤ 0.05 | ≥ 0.5 |
+| H3 | 表現空間予測は有用な受理率に到達する | 保留された意図-形式タスクにおけるpass@1受理形式 | 同一タスクにおけるベースラインpass@1以上 | < 0.5 × ベースライン |
+| H4 | 受理プログラムあたりのエネルギーが低下する | J<sub>acc</sub>(RCE-JEPA) / J<sub>acc</sub>(baseline) | ≤ 0.1 | ≥ 1 |
+| H5 | エネルギーランキングは有効な形式に質量を集中させる。**未見のテスト形式形状においてAUROC閾値を満たす**: 対照的`FormEBM-v2`（`5.85M`パラメータ）は200未見テストビーム上の`3,064`候補全体でAUROC **`0.8922 >= 0.85`**に到達（未較正`FormJEPA-v1`の`0.618`に対し）、84.05%の解可能トップ1精度（`137/163`；全200ビームで`68.5%` raw）および`2.39×`少ない`rce check`呼び出し；OOD多行残差プール較正は未解決（`0.2630`） | トップ1型チェック率；受理対変更必要に対するEのAUROC | ≥ 0.8トップ1有効；AUROC ≥ 0.85 | AUROC ≤ 0.6 |
+| H6 | 参照アプリは符号化可能である | 6つの参照アプリとRCEdbの合計のうち、チェッカーを通過しビット同一にリプレイされる形式として完全に表現された割合 | 7 of 7 | いずれかのアプリが形式外のエスケープハッチを必要とする |
+| H7 | セキュリティはモデル非依存である（ファズアーム：1,275ミュータントで0違反；モデルアームは未解決） | チェッカーにより受理された敵対的形式（ファズおよびモデル生成）で、述べられた不変条件に違反するもの | 0 | ≥ 1確認済み |
+| H8 | 決定性：受理されたすべての形式はビット同一の軌道および出力にリプレイされる。**支持**（6対象における10,500ストリームで0不一致） | 少なくとも3種類の異なるマシンおよびオペレーティングシステム上で記録された少なくとも10,000イベントストリームにおける不一致 | 0 | 単一の不一致 |
+| H9 | コストは実行前に予測される | 所定のマシンに対するコストテーブル予測の、測定エネルギー（J、指定メーター）に対する中央値誤差（テストファミリ全体） | ≤ 20% | > 50% |
+| H10 | 商上での学習はデータを節約する | 正準形式の予測器が、等しいサイズの表面コードで訓練されたものと同一のテスト受理率に到達するために必要な訓練例 | せいぜい半分（2倍以上の節約） | 1.25倍未満の節約 |
+| H11 | エネルギーは編集距離に関して単調である。**未見の5ステップ累積欠陥連鎖上で支持**: 対照的`FormEBM-v2`は厳密な5ステップ単調性 **`93.0% >= 80%`**に到達（未見連鎖100のうち`93`、Spearman `ρ = 0.9931`、未較正`FormJEPA-v1`の`36.0%`に対し）；制約なし同一行ランダムウォークスライスは厳密`38.0%`（非減少`46.0%`、Spearman `ρ = 0.8513`） | 受理適合からの編集距離1からkでエネルギEが上昇するテストファミリの割合 | ≥ 80%のファミリ | < 80%のファミリ |
+| H12 | 決定ヘッドはゲート結果上で較正されている | 決定種別ごとのECE（10<sup>4</sup>受領後） | ECE ≤ 0.1かつ形状ハッシュ上の頻度表を下回る | ECE > 0.2、または頻度表と同等以下 |
+| H13 | 離散潜在は長い編集系列上で連続潜在よりも優れた計画を行う | 編集系列長1、5および20における計画成功率、離散アーム対連続SIGRegアーム | 長20で離散アームが高い | いずれのアームもH3閾値に到達しない |
+| H14 | 決定論的ラダーはモデル呼び出しなしでタスクの一定割合を閉じる。**登録された規則により支持**: 表下に報告される3回の登録実行[B30, B31, B32] | 公開決定論的ラダー（再利用、型によるルックアップ、決定論的書き換え、有界列挙）がゼロモデル呼び出しで閉じる登録タスク集合の割合（すべての閉包がチェッカーにより受理され、凍結されたラダーコミットにおいて） | ≥ 10%の登録タスク（各々を閉じた段とともに報告；登録閾値は変更なし）。測定：実行1では120のうち118（98.3%）、ラダーが構成上逆転するミューテーション上；実行2では151のうち31（20.5%）、そのうち27がガード否定；実行3、プレーンアームでは151のうち111（73.5%）、そのうち110がガード否定および名前変更 | < 10%の登録タスク（RCE論文の偽造者RCE-F1と同じ下限）。いずれの実行でも満たされず。実履歴由来の41タスク（規則が特別視しないもの）では、実行2および3はそれぞれ41のうち1（2.4%）を閉じる |
+| H15 | 提案者クラスは40タスク残差上で異なる。**単発提案者[B33]、`FormJEPA-v1`[B34]、および有界チェッカーフィードバック`H15-Iterative` + `FormEBM-v2`[B35]にわたって測定**: 単発モデルは`17/40`から`34/40`を許容、`FormJEPA-v1`は`22/40`（`k = 1`；`FormEBM-v2`再順位付けで`25/40`）および`27/40`（`k = 16`）、`H15-Iterative`は`Opus 5.5`および`Sonnet 5.5`上で **`40/40`（`100.0%`）**を閉じ（`Grok 4.20`では`39/40`）、温`DNULLMM1` Gear-0リプレイは **`40/40`を`0`呼び出しで**、3-Gearカスケードは`16.67×`少ないGear-2エピソードで`200/200` `Zipf(0.85)`到着を許容；拡散、進化、および壁メーターアームは未解決 | H14実行3のプレーンアーム由来の40残差タスクのゲート受理割合（`C(z) = 1`）（`rce check`、義務保存、`rce hash`、および`rce equiv`により監査） | 登録実行はアームごとの割合および局所`reported_j`を報告[B33, B34, B35]；拡散/進化アームおよびサーバ壁メーターパリティは未解決 | クラスが異なるタスクで評価されたか、未検証の出力 |
 
 <div id="h14-result" class="anchor-alias" aria-hidden="true"></div>
 
@@ -1127,48 +1172,79 @@ RCE は可能な他の形態のうちの一つの閉じたプログラム形で�
 
 **H2、シングルショット H15、そして Shape D（`DNULLMM1`）Gear-0 の 40 件のオープン残差タスク、測定 [B33]。** 実行前に登録（`rce-jepa-h15-and-shape-d-gear0-2026-11-22`、`sha256: b64c4c671ae85755...`）し、`openIE-dev/rce` コミット `1762fb4b`（`2026-11-20`、バイナリ `sha256: 1d3b0d07ff5b2e8f...`）に対して、40 件の残差タスク（`sha256: 3ca3a32769145e9b...`；`25` `W-SYN-1`、`5` `W-LEN-1`、`4` `W-NAME-1,W-TY-1`、`3` `W-NAME-1`、`1` `W-WORLD-1`、`1` `W-CAP-3,W-WORLD-1`、`1` `W-INT-1`）は厳格なゲート述語 `C(z) = 1` の下で評価された：（1）`rce check candidate.rce` が `0` で終了（`W-UI-1` と `W-MUT-1` の非空性を強制）、（2）`no_spec_deletion` がすべての宣言された `state`、`event`、`error`、`struct`、`kind`、`fn`、`extern`、`step` ヘッダーと、すべての `example` 左辺トレースおよびミュータントの `check` カウントを保持、（3）`rce hash`（`restored`）、`rce equiv fuel 2000`（`behaviour-equal`）、`rce repair` ラン `f` `observe` モードによる二次等価監査。
 
-| アーム / アーキテクチャファミリー | モデル | 呼び出し回数 | 許可 (`C(z)=1`) | 復元 + 行動等価 | 入出力トークン | コスト（\$） | On-Chip `reported_j` |
+| アーム / アーキテクチャ ファミリー | モデル | 呼び出し回数 | 許可 (`C(z)=1`) | 復元 + 行動等価 | 入力 / 出力 トークン | コスト (\$) | チップ上 `reported_j` |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Arm 0**: Shape D Cold Static Gear-0 | `DNULLMM1`（0 レコード） + `a..e` | 0 | 0 / 40 (0.0%) | 0 | 0 / 0 | \$0.0000 | < 0.001 J (37.7 µs) |
-| **Arm 1a**: Cloud Autoregressive + Adaptive Thinking | `claude-opus-5-5` | 40 | **34 / 40 (85.0%)** | 33 (30 + 3) | 114,855 / 32,159 | \$1.3783 | `not_available` (N) |
-| **Arm 1b**: Cloud Autoregressive + Adaptive Thinking | `claude-sonnet-5-5` | 40 | **32 / 40 (80.0%)** | 32 (30 + 2) | 114,855 / 30,764 | \$0.8060 | `not_available` (N) |
-| **Arm 2c**: Cloud Reasoning Transformer | `xai:grok-4.20-0309-reasoning` | 40 | **31 / 40 (77.5%)** | 30 (28 + 2) | 76,546 / 18,474 | \$0.2747 | `not_available` (N) |
-| **Arm 2a**: Cloud Reasoning MoE (Cerebras) | `cerebras:gpt-oss-120b` | 40 | **29 / 40 (72.5%)** | 27 (25 + 2) | 78,825 / 43,596 | \$0.1340 | `not_available` (N) |
-| **Arm 3**: Local Hybrid Gated-DeltaNet + Sparse MoE | `Qwen3.6-35B-A3B`（量子化 `Q5_K_M`） | 40 | **27 / 40 (67.5%)** | 26 (25 + 1) | 82,330 / 18,411 | \$0.0000 | **3,369.89 J** system-under-test（`124.81 J/adm`） |
-| **Arm 2b**: Cloud multi-head latent attention (MLA) Sparse MoE (Fireworks) | `deepseek-v4p1-flash` | 40 | **17 / 40 (42.5%)** | 16 (15 + 1) | 63,446 / 64,215 | \$0.0930 | `not_available` (N) |
-| **Arm 5a**: Purpose-Trained Latent Form JEPA（`k = 1`） [B34] | `FormJEPA-v1`（`8.42M` パラメータ、貪欲） | 40 | **22 / 40 (55.0%)** | 22 (20 + 2) | Form S-expr | \$0.0000 | **58.65 mJ** core / **1.19 J** pkg RAPL/prop |
-| **Arm 5b**: Purpose-Trained Latent Form JEPA（`k = 16`） [B34] | `FormJEPA-v1`（`8.42M` パラメータ、潜在ビーム） | 40 | **27 / 40 (67.5%)** | 27 (25 + 2) | Form S-expr | \$0.0000 | **474.76 mJ** core / **6.74 J** pkg RAPL/prop |
-| **Arm 6**: 3-Gear Cascade（`t = 1` Cold Gear-0 → `FormJEPA-v1` → `Opus 5.5`） [B34] | `DNULLMM1` + `FormJEPA-v1` + `Opus 5.5` | 13 G2 | **34 / 40 (85.0%)** | 33 | Form + 13 cloud | **\$0.8108** | `FormJEPA` RAPL + 13 cloud (N) |
-| **Arm 4**: Shape D Warm Gear-0（`t = 2` Replay） | `DNULLMM1`（34 結晶化） | **0** | **34 / 40 (85.0%)** | 33 | 0 / 0 | **\$0.0000** | **0.325 µs / 1.77 µJ** probe + `rce check` |
+| **Arm 0**: 形状 D コールド スタティック ギア-0 | `DNULLMM1` (0 records) + `a..e` | 0 | 0 / 40 (0.0%) | 0 | 0 / 0 | \$0.0000 | < 0.001 J (37.7 µs) |
+| **Arm 1a**: クラウド 自己回帰 + 適応的 思考 | `claude-opus-5-5` | 40 | **34 / 40 (85.0%)** | 33 (30 + 3) | 114,855 / 32,159 | \$1.3783 | `not_available` (N) |
+| **Arm 1b**: クラウド 自己回帰 + 適応的 思考 | `claude-sonnet-5-5` | 40 | **32 / 40 (80.0%)** | 32 (30 + 2) | 114,855 / 30,764 | \$0.8060 | `not_available` (N) |
+| **Arm 2c**: クラウド 推論 トランスフォーマー | `xai:grok-4.20-0309-reasoning` | 40 | **31 / 40 (77.5%)** | 30 (28 + 2) | 76,546 / 18,474 | \$0.2747 | `not_available` (N) |
+| **Arm 2a**: クラウド 推論 MoE (Cerebras) | `cerebras:gpt-oss-120b` | 40 | **29 / 40 (72.5%)** | 27 (25 + 2) | 78,825 / 43,596 | \$0.1340 | `not_available` (N) |
+| **Arm 3**: ローカル ハイブリッド ゲート付きデルタネット + スパース MoE | `Qwen3.6-35B-A3B` (quantized `Q5_K_M`) | 40 | **27 / 40 (67.5%)** | 26 (25 + 1) | 82,330 / 18,411 | \$0.0000 | **3,369.89 J** system-under-test (`124.81 J/adm`) |
+| **Arm 2b**: クラウド 多頭潜在注意 (MLA) スパース MoE (Fireworks) | `deepseek-v4p1-flash` | 40 | **17 / 40 (42.5%)** | 16 (15 + 1) | 63,446 / 64,215 | \$0.0930 | `not_available` (N) |
+| **Arm 5a**: 目的特化 潜在形態 JEPA (`k = 1`) [B34] | `FormJEPA-v1` (`8.42M` params, greedy) | 40 | **22 / 40 (55.0%)** | 22 (20 + 2) | Form S-expr | \$0.0000 | **58.65 mJ** core / **1.19 J** pkg RAPL/prop |
+| **Arm 5b**: 目的特化 潜在形態 JEPA (`k = 16`) [B34] | `FormJEPA-v1` (`8.42M` params, latent beam) | 40 | **27 / 40 (67.5%)** | 27 (25 + 2) | Form S-expr | \$0.0000 | **474.76 mJ** core / **6.74 J** pkg RAPL/prop |
+| **Arm 6**: 3-ギア カスケード v1 (`t = 1` コールド Gear-0 → `FormJEPA-v1` → シングルショット `Opus 5.5`) [B34] | `DNULLMM1` + `FormJEPA-v1` + `Opus 5.5` | 13 G2 | **34 / 40 (85.0%)** | 33 | Form + 13 cloud | **\$0.8108** | `FormJEPA` RAPL + 13 cloud (N) |
+| **Arm 4a**: 形状 D ウォーム Gear-0 v1 (`t = 2` リプレイ) [B33] | `DNULLMM1` (34 crystallized) | **0** | **34 / 40 (85.0%)** | 33 | 0 / 0 | **\$0.0000** | **0.325 µs / 1.77 µJ** probe + `rce check` |
+| **Arm 7a**: 有界 チェッカー フィードバック + 標準ライブラリ ヘッダー (`<= 5` ターン) [B35] | `claude-opus-5-5` (`H15-Iterative`) | 42 | **40 / 40 (100.0%)** | 39 (34 + 5) | 133,527 / 45,711 | \$1.8104 | `not_available` (N) |
+| **Arm 7b**: 有界 チェッカー フィードバック + 標準ライブラリ ヘッダー (`<= 5` ターン) [B35] | `claude-sonnet-5-5` (`H15-Iterative`) | 43 | **40 / 40 (100.0%)** | 39 (35 + 4) | 137,385 / 46,668 | **\$1.1122** | `not_available` (N) |
+| **Arm 7c**: 有界 チェッカー フィードバック + 標準ライブラリ ヘッダー (`<= 5` ターン) [B35] | `xai:grok-4.20-0309-reasoning` (`H15-Iterative`) | 50 | **39 / 40 (97.5%)** | 37 (30 + 7) | 269,930 / 28,903 | \$4.0555 | `not_available` (N) |
+| **Arm 4b**: 形状 D ウォーム Gear-0 v2 (`t = 2` フルリプレイ) [B35] | `DNULLMM1` (40 crystallized) | **0** | **40 / 40 (100.0%)** | 39 (34 + 5) | 0 / 0 | **\$0.0000** | **0.325 µs / 1.77 µJ** probe + `rce check` |
 
 - **仮説 H2 が支持される（`1,718×` のローカルチェック対モデルエネルギー優位性）:** Apple M5 Max 上で、Form チェックのコストは `C_check = 0.049038 J`（L3 `ri_energy_nj`、`7.32 ms`）であり、ローカル `Qwen 3.6 35B-A3B` 候補生成のコストは `E_model = 84.247 J`（`3,303.62 J` L2 GPU + `66.26 J` L3 `llama-server` PID、40 候補に対して; `14,476.18 J` の総 L2 SoC、`derived_marginal_j` は Falsifier 6 により `68.31%` のアイドルドリフトで無効化）であり、**`C_check / E_model = 0.000582 <= 0.05`**（`measured_j = None`、`board_metered = false`）となる。
-- **形状 D（`DNULLMM1`） ギア-0 のレイテンシ、エネルギー、無名不変性、そして `Zipf(0.85)` の償却:** 凍結された 34 レコードストア（`sha256: d92a57b40de0b0ec...`、再生前後でバイト単位で同一）に対する `40,000` 件のポータブルオペレーティングシステムインターフェース（POSIX） `mmap` 参照の平均プローブレイテンシは **`0.3246 µs`**（`324.6 ns`、`9,516.5` 命令）であり、**`1.771 µJ`**（`1,771.3 nJ` L3 `ri_energy_nj`）である。`rce fmt nameless`（定理 T7）でスロットをキー付けすると、ローカル変数がアルファリネームされた場合に **`7 / 9`（`77.8%`）** のゼロコールヒットが得られる。検証のみの結晶化下で `Zipf(s = 0.85)` の 200 到着ストリームを使用した場合、2‑ギア `DNULLMM1` はモデル呼び出しを `200` から **`48`（`4.17×` 減少）** に削減し、`Opus 5.5`（`$6.81` から `$2.63`、`5.41×` / `37` 呼び出しでミス重複除去）、`Sonnet 5.5` で `56`（`3.57×`）、`Grok 4.20` で `57`（`3.51×`）、`GPT-OSS-120B` で `66`（`3.03×`）、ローカル `Qwen 3.6` で `94`（`2.13×` 呼び出し、**`1.56×` ローカルエネルギー削減**：`16,457.9 J` から `10,553.5 J`）となる。
+- **形状 D（`DNULLMM1`） ギア-0 のレイテンシ、エネルギー、無名不変性、そして `Zipf(0.85)` の償却:** 凍結された 34 レコードストア（`sha256: d92a57b40de0b0ec...`、再生前後でバイト単位で同一）に対する `40,000` 件のポータブルオペレーティングシステムインターフェース（POSIX） `mmap` 参照の平均プローブレイテンシは **`0.3246 µs`**（`324.6 ns`、`9,516.5` 命令）であり、**`1.771 µJ`**（`1,771.3 nJ` L3 `ri_energy_nj`）である。`rce fmt nameless`（定理 T7）でスロットをキー付けすると、ローカル変数がアルファリネームされた場合に **`7 / 9`（`77.8%`）** のゼロコールヒットが得られる。検証のみの結晶化下で `Zipf(s = 0.85)` の 200 到着ストリームを使用した場合、2-ギア `DNULLMM1` はモデル呼び出しを `200` から **`48`（`4.17×` 減少）** に削減し、`Opus 5.5`（`$6.81` から `$2.63`、`5.41×` / `37` 呼び出しでミス重複除去）、`Sonnet 5.5` で `56`（`3.57×`）、`Grok 4.20` で `57`（`3.51×`）、`GPT-OSS-120B` で `66`（`3.03×`）、ローカル `Qwen 3.6` で `94`（`2.13×` 呼び出し、**`1.56×` ローカルエネルギー削減**：`16,457.9 J` から `10,553.5 J`）となる。
 - **H15 に関するスコープ開示:** 40 件の歴史的オリジナルのうち 2 件は `W-MUT-1` の空虚例規則（`spec/examples/57_float_vectors.rce@b2b932da` および `programs/multi/washer.rce@2cc82de7`）よりも前に作成されており、`34/40` 付近の上限の一部を占めている。拡散コードモデル、進化的 Form 探索、ハードウェア壁メータ `measured_j` は依然としてオープンである。
 
 <div id="form-jepa-and-rung-f-result" class="anchor-alias" aria-hidden="true"></div>
 
-**`FormJEPA-v1` 潜在 Form 修復提案者、3‑Gear カスケード、及び 151‑task `rce repair` ラング `f` プロモーション監査、測定 [B34]。** データセット生成、重み初期化、及び ラング `f` 実行前に事前登録（`rce-jepa-form-jepa-v1-2026-11-22`、`sha256: 22682e6e936ec120...`；`rce-repair-rung-f-wave3-eval-2026-11-22`、`sha256: 04aff4b2b44cdbea...`）し、`openIE-dev/rce` コミット `1762fb4b`（Linux x86_64 バイナリ `sha256: 5ef9931ff23a310f...`）に対して、`FormJEPA-v1`（`8,424,073` 訓練可能パラメータ、`13,917,577` EMA ターゲットバッファを含む；チェックポイント `sha256: cbfbf2274175c737...`）はランダム初期化（`seed = 20261122`）から `6,329` チェッカー検証済み欠陥ペアを用いて訓練された。これらは `1,106` 個の互いに重複しない有効 Form 形状（`1,387` 個のユニーク Form 形状から抽出、四層パス、スラッグ、宣言名、及び `458`‑digest `rce fmt nameless` 除外を行い、151 ラダーまたは 40 残差タスクに対して重複は `0`）である。モデルは 6 層 Pre‑LN Transformer コンテキストエンコーダ（`d = 256`）を商標正規化された Form AST S‑式トークン上に配置し、EMA ターゲットエンコーダ（`τ = 0.996`）と組み合わせ、3 層残差 MLP 潜在予測器を Smooth‑L<sub>1</sub> と VICReg 分散‑共分散反崩壊正則化の下で学習した（コンテキスト有効ランクはエポック 0 で `32.90` から訓練後 **`85.24`** に上昇、座標標準偏差は `0.1038` から `0.3830` へ、正のペア潜在 L<sub>2</sub> エネルギーは `149.25` から `10.57` へ、ランダムペアは `13.02`）。さらに 2 層潜在条件付き型編集デコーダが `||z_hat_y - E_ema(y_cand)||_2^2` によって再ランク付けされる。
+**`FormJEPA-v1` 潜在Form修復提案器、3ギア・カスケード、および151タスクの`rce repair` rung `f`昇格監査、計測 [B34]。** 事前登録は、データセット生成、重み初期化、rung-f実行の前に行われた(`rce-jepa-form-jepa-v1-2026-11-22`, `sha256: 22682e6e936ec120...`; `rce-repair-rung-f-wave3-eval-2026-11-22`, `sha256: 04aff4b2b44cdbea...`)。対象は`openIE-dev/rce`のコミット`1762fb4b`(Linux x86_64バイナリ `sha256: 5ef9931ff23a310f...`)である。`FormJEPA-v1`(学習可能パラメータ `8,424,073`、EMAターゲットバッファを含めると `13,917,577`、チェックポイント `sha256: cbfbf2274175c737...`)は、ランダム初期化(`seed = 20261122`)から学習された。学習には、`1,387`個の一意なForm形状から、4層のパス、スラグ、宣言名、および`458`個のダイジェストに基づく`rce fmt nameless`による除外を経て抽出された`1,106`個の互いに素な有効Form形状にわたる、チェッカーで検証済みの`6,329`組の欠陥ペアが用いられた。除外後の形状は、151タスクのラダーおよび40個の残差タスクのいずれとも重なりが`0`である。
 
-- **不連続合成、151段階、40残差精度とモデル規模の関係:** `200` 件の保持外不連続合成 Form 欠陥（未見 `shape_hash`）に対し、`FormJEPA-v1` は `k = 1` で **`156/200` (`78.0%`)**、`k = 16` で **`177/200` (`88.5%`)** を許容する。151 タスクのラダー（平易なアーム）では、単独 `FormJEPA-v1` が `k = 1` で `27/151`、`k = 16` で `57/151` を許容し、結合決定的ラダー（`111/151`）に `FormJEPA-v1 (k = 16)` を加えて **`138/151` (`91.4%`)** をフロンティア呼び出しなしで達成する。40 のオープン残差タスク（H15）では、`FormJEPA-v1` が `k = 1` で **`22/40` (`55.0%`)**、`k = 16` で **`27/40` (`67.5%`)** を許容し（`25` が復元、`2` が振る舞い同等で `27/27` が同一振る舞い、タスクあたり平均 `5.33` 回の `rce check` 呼び出し）、構造化文法、長さ手法、能力修復においてローカル `Qwen 3.6 35B-A3B`（`27/40`）と一致し（`24/25` `W-SYN-1`、`2/5` `W-LEN-1`、`1/1` `W-WORLD-1`）、`0/9` のマルチモジュール暗号標準ライブラリ移行（`W-NAME-1` / `W-TY-1` が `hpke`、`mls`、`pq`、`pqxdh`、`energy` に跨る）や複合 `W-CAP-3,W-WORLD-1`、Gear-2 フロンティア提案者が依然として必要な空例合成タスクを閉じる。
+本モデルは、準正規化されたForm AST S式トークン上の6層Pre-LN Transformer文脈エンコーダ(`d = 256`)と、EMAターゲットエンコーダ(`τ = 0.996`)を組み合わせる。さらに、Smooth-L<sub>1</sub>とVICRegの分散-共分散による崩壊防止正則化の下で学習される3層残差MLP潜在予測器と、`||z_hat_y - E_ema(y_cand)||_2^2`によって再順位付けされる2層の潜在条件付き型付き編集デコーダから構成される。学習後、文脈の実効ランクはエポック0の`32.90`から**`85.24`**へ上昇し、座標標準偏差は`0.1038`から`0.3830`へ変化した。正例ペアの潜在L<sub>2</sub>エネルギーは`149.25`から`10.57`へ低下し、ランダムペアの`13.02`を下回った。
 
-- **推論 `reported_j`、3-Gear カスケード、正直な H5/H11 診断:** AMD Ryzen AI Max+ 395 Linux `powercap` RAPL カウンタ（`measured_j = None`、`board_metered = false`、`derived_marginal_pkg_reported_j = None` が Falsifier 6 の下で `33.38%` 共同テナントパッケージドリフト）において、提案ごとの CPU 推論コストは `k = 1` で **`58.65 mJ`** RAPL コア（総パッケージ `1.194 J`、`10.15 ms`）で、`k = 16` で **`474.76 mJ`** RAPL コア（総パッケージ `6.736 J`、`67.51 ms`）である。これはローカル 35B 候補（`84.25 J`）と比較して `k = 1` で `70.6×` から `1,436×`、`k = 16` で `12.5×` から `177.5×` 低減している。`FormJEPA-v1 (k = 16)` を Gear 1 として `DNULLMM1` Gear 0 と `Claude Opus 5.5` Gear 2 の間に挿入すると、単一パス閉鎖は `34/40` を維持しつつ `Opus 5.5` の呼び出し回数を `40` から `13`（`$1.38` から `$0.81`）に削減する。200 到着の `Zipf(0.85)` ストリームでは、Gear-2 フロンティア呼び出しをステートレス時の `200` と 2-Gear 時の `48` から **`23` 回** に削減（`8.70×` 減少；`152` Gear-0 ヒット、`25` Gear-1 許可、`7` Gear-2 許可）。ローカル `Qwen 3.6` を Gear 2 とした場合、`Zipf(0.85)` の 35B 呼び出しは `49` に減少（`4.08×` 減少）し、許可された到着は `141/200` から `154/200` に増加する。校正されていない負の潜在 L<sub>2</sub> 距離だけで AUROC **`0.618`** を `925` ビーム候補全体で達成し（H5 は不確定：`0.60` 以上の反証下限、`0.85` 未満の支持閾値）、累積編集距離 `0..4`（`0.00, 0.99, 2.26, 3.27, 3.89`）で上昇し、`d = 5` で `3.72` になる（`18/50 = 36.0% < 80%` の厳格な 5 ステップ単調性 H11）。これは、修復精度が滑らかな未校正潜在エネルギーではなく、`(z_x, z_hat_y)` 上の型付け編集デコーダの条件付けから来ることを示す。
+- **不整合合成、151-ラダー、および40-残差精度とモデル規模の関係：** `200`個の保持された不整合合成Form欠陥（未見の`shape_hash`）において、`FormJEPA-v1`は`k = 1`で**`156/200`（`78.0%`）**、`k = 16`で**`177/200`（`88.5%`）**を許容する。151-タスク・ラダー（plain arm）では、スタンドアロンの`FormJEPA-v1`が`27/151`（`k = 1`）および`57/151`（`k = 16`）を許容し、結合された決定論的ラダー（`111/151`）と`FormJEPA-v1 (k = 16)`を加えることで**`138/151`（`91.4%`）**に引き上げ、フロンティア呼び出しをゼロとする。40のオープン残差タスク（H15）では、`FormJEPA-v1`が`k = 1`で**`22/40`（`55.0%`）**、`k = 16`で**`27/40`（`67.5%`）**を許容する（`25`復元＋`2`挙動等価＝`27/27` behaves-the-same、平均`5.33`回の`rce check`呼び出し/タスク）。これは構造化文法、長さメソッド、および能力修復においてローカルの`Qwen 3.6 35B-A3B`（`27/40`）と一致し（`24/25` `W-SYN-1`、`2/5` `W-LEN-1`、`1/1` `W-WORLD-1`）、一方で`0/9`のマルチモジュール暗号化stdlib移行（`hpke`、`mls`、`pq`、`pqxdh`、`energy`にわたる`W-NAME-1` / `W-TY-1`）、複合`W-CAP-3,W-WORLD-1`、および空虚例合成タスクを閉じることができず、Gear-2フロンティア提案者が依然として必要である。
 
-- **151 タスク `rce repair` 段階 `f` の昇格判定:** `observe` モード（`bound 2000`、各タスクの既知の良好なオリジナルと外部提案ファイルが与えられる）で `rce repair` を実行し、すべての 151 ラダータスクに対して 2026 年 11 月 3 日の登録（`sha256: abf7f131f240e3f9...`）に固定された `rce repair 基準` を評価した結果、段階 `a..e` で `116/151` の正確なクローズと `35` の未解決タスク（`25` の解析不能 `W-SYN-1` ファイルは規則 RF-2 によりスキップ、`10` の未解析タスクはカバレッジ欠如で `0` と評価）を記録した。外部提案（`FormJEPA-v1` + 記録された H15 修復、`91` 提案が評価）を組み合わせた場合、段階 `f` は **`3` 件の許可タスク**（`hpke`、`mls_key_schedule`、`energy`）を観測し、`W-MUT-1` 突然変異ゲートを **`3/3` (`100.0%`)** が通過し、既知の良好オリジナルと **`0`** 矛盾（`3/3` が復元）する。`3 / 119 = 2.5% > 2.0%` であるため、`rce repair 基準` は **`holds: false`**（`exit = 1`）を返し、段階 `f` を `observe` モードに留める。
+- **推論`reported_j`、3-Gearカスケード、および正直なH5/H11診断：** AMD Ryzen AI Max+ 395 Linuxの`powercap` RAPLカウンタ（`measured_j = None`、`board_metered = false`、`derived_marginal_pkg_reported_j = None`、Falsifier 6下で`33.38%`のco-tenantパッケージドリフト）において、提案ごとのCPU推論コストは`k = 1`で**`58.65 mJ`** RAPLコア（`1.194 J`総パッケージ、`10.15 ms`）、`k = 16`で**`474.76 mJ`** RAPLコア（`6.736 J`総パッケージ、`67.51 ms`）であり、`k = 1`ではローカル35B候補（`84.25 J`）より`70.6×`から`1,436×`低く（`k = 16`では`12.5×`から`177.5×`）、`FormJEPA-v1 (k = 16)`をGear 1として`DNULLMM1` Gear 0と`Claude Opus 5.5` Gear 2の間に挿入することで単一パス閉包を`34/40`に保ちつつ`Opus 5.5`呼び出しを`40`から`13`（`$1.38`から`$0.81`）に削減する。また200到着`Zipf(0.85)`ストリームではGear-2フロンティア呼び出しを`200`（ステートレス）および`48`（2-Gear）から**`23`呼び出し（`8.70×`削減；`152` Gear-0ヒット、`25` Gear-1許容、`7` Gear-2許容）**に削減する。ローカル`Qwen 3.6`をGear 2として用いると、`Zipf(0.85)`における35B呼び出しは`49`（`4.08×`削減）に低下し、許容到着数は`141/200`から`154/200`に上昇する。較正されていない負の潜在L<sub>2</sub>距離のみでは`925`ビーム候補全体でAUROC **0.618**を達成する（H5は未決：`0.60`超の反証フロア以上、`0.85`未満の支持閾値以下）であり、累積編集距離`0..4`（`0.00, 0.99, 2.26, 3.27, 3.89`、その後`d = 5`で`3.72`；H11における厳格5ステップ単調性の`18/50 = 36.0% < 80%`）で上昇する。これは修復精度が滑らかな未較正潜在エネルギーではなく`(z_x, z_hat_y)`上で型付き編集デコーダを条件付けすることに由来することを示す。
+
+- **151-タスク`rce repair` rung `f`昇格判定：** すべての151ラダータスクに対して`rce repair`を`observe`モード（`bound 2000`、各タスクの既知良好オリジナルおよび外部提案ファイルを与える）で実行し、`rce repair criterion`を2026年11月3日固定登録（`sha256: abf7f131f240e3f9...`）に対して評価すると、rung `a..e`による正確閉包が`116/151`、オープン・タスクが`35`（`25`の解析不能`W-SYN-1`ファイルを規則RF-2下でスキップ、`10`のオープン解析タスクを`0`欠落カバレッジで判定）である。結合外部提案（`FormJEPA-v1`＋記録されたH15修復、`91`提案を判定）下ではrung `f`が**`3`許容タスク**（`hpke`、`mls_key_schedule`、`energy`）を観測し、**`3/3`（`100.0%`）**が`W-MUT-1`変異ゲートを通過し、**`0`が既知良好オリジナルと矛盾する**（`3/3`復元）。`3 / 119 = 2.5% > 2.0%`であるため、`rce repair criterion`は**`holds: false`**（`exit = 1`）を返し、rung `f`を`observe`モードに留める。
+
+![左：正確なラダー段aからeを通る3歯車残差カスケード、Gear 0 DNULLMM1（40/40 warm replay）、Gear 1 FormJEPA-v1 + FormEBM-v2、およびGear 2 H15-Iterativeを決定論的コミットゲートの背後に配置し、200/200のZipf(0.85)到着を許容する。右：測定されたFormEBM-v2 H5 ROC曲線（AUROC 0.8922 vs Siamese L2 0.7208）およびH11 5ステップ編集距離エネルギー地形（93.0%厳密単調性、Spearman rho 0.9931）](/figures/rce-jepa/three-gear-and-ebm.svg)
+
+図10. 測定された3歯車残差カスケードおよび`FormEBM-v2`潜在エネルギー診断（`openIE-dev/rce`コミット`1762fb4b` [B35]）。左：決定論的ラダー段`a..e`（`111/151`）、Gear 0 `DNULLMM1`（`40/40` warm zero-call replay）、Gear 1 `FormJEPA-v1` + `FormEBM-v2`、およびGear 2 `H15-Iterative`を`rce check` + `W-MUT-1` + `no_spec_deletion`でゲート（`Zipf(0.85)`上で`200/200`許容、`16.67×`少ないGear-2エピソード）。右：未見形状H5 ROC曲線（`AUROC = 0.8922`）および未見連鎖H11 5ステップ累積欠陥エネルギー曲線（`93.0%`厳密単調性、IQRシェード）。対話型エクスプローラ：[ /living/rce-jepa/ ](/living/rce-jepa/)。
+
+<div id="form-ebm-and-h15-iterative-result" class="anchor-alias" aria-hidden="true"></div>
+
+**コントラスト的マルチステップマージンエナジースコアラー（`FormEBM-v2`、H5 と H11）および `40/40` 有界チェッカーフィードバック残差閉鎖（`H15-Iterative` + Gear-0 v2）、測定済み [B35]。** コーパス生成、重み初期化、および API 実行の前に事前登録（`rce-jepa-form-ebm-v2-2026-11-23`、`sha256: 128f17e69361ea89...`；`rce-jepa-h15-iterative-2026-11-23`、`sha256: a7774d3bd03ae450...`）は、`openIE-dev/rce` コミット `1762fb4b`（Linux x86_64 バイナリ `sha256: 331464496009d98a...`）に対して実施された。二つの対象評価では、(A) 校正されていない座標距離をコントラスト的かつペアワイズ edit-depth マージンエネルギーヘッドに置換し、同一の厳密に分離された `1,387`-Form 分割で H5 と H11 を閉じられるか、(B) 公開 `stdlib/lib` モジュールヘッダーと有界決定論的チェッカーダイアグノスティックス（`max_turns = 5`、`original` へのアクセスなし）を供給し、単一ショット H15 の残り六つのタスクを閉じられるかをテストした。
+
+- **`FormEBM-v2` のアーキテクチャ、トークナイザ修正、および未見形状に対する H5 / H11 の結果（未見のテスト Form 形状 `137` 件、重複 `0` 件）:** `FormJEPA-v1` が H5 で `0.618` AUROC、H11 で `36.0%` の厳密な 5 段階単調性にとどまった理由は、二つの構造的原因により説明された。第一に、単一ファイルの S 式トークナイザが、生存する未使用束縛（`let x`、`W-UNUSED-1` により拒否）とアンダースコア接頭辞付きの束縛（`let _x`、受理）を同一の `<ID:k>` スロットに対応づけ、さらに未束縛の識別子が現れるたびに後続の `<ID:j>` 添字をずらしていた。第二に、座標系の Smooth-L<sub>1</sub> 損失は、契約的妥当性や編集深度に関するマージンを持たなかった。`FormEBM-v2`（学習可能パラメータ `5,851,649` 個、チェックポイント `sha256: 2204a0b9cbd0d96c...`、AMD Ryzen AI Max+ 395 / Radeon 8060S APU 上での学習時間 `857.2 s`、コア RAPL `5,375.0 J`、APU パッケージ RAPL `40,602.4 J`）は、これらの問題に対処するために次の構成を導入した。参照を基点とする `PairFormTokenizer`（有効トークン `504` 個。アンダースコア接頭辞付き束縛、新たに導入された識別子スロット、および純粋に構文的な差分タグと検査器呼び出しを伴わない、法 32 の整数クラスを区別する）、5 層の共有 Siamese Transformer、1 層のクロスアテンション RMS 差分ブロック、そして softplus エネルギーヘッドである。エネルギーヘッドは、`1,106` 件の学習用 Form に限定して構築された `5,955` 個の妥当性マージン三つ組（`m = 1.0`）と `600` 本の 5 段階累積破損連鎖（`γ = 0.50(j − i)`）により学習された。VICReg の実効ランクは、`z_ref` では `26.48` から `55.70` へ、`z_cand` では `46.44` から `74.72` へと拡大した。未見の保持テスト Form 形状 `137` 件に対する結果は以下のとおりである。
+  - **H5（未見テストビーム `N = 200` 件、候補 `3,064` 件）:** スカラーエネルギーは AUROC **`0.8922 >= 0.85`** に到達した（`FormJEPA-v1` の `0.6180`、較正されていない Siamese L<sub>2</sub> の `0.7208` と比較）。ビーム項目に対して `rce check` を呼び出さない上位 1 件（`k = 1`）の妥当な選択率は、再順位付けなしの `22.5%`（`45/200`）および Siamese L<sub>2</sub> の `25.0%`（`50/200`）から、解決可能なビーム `163` 件に対する **`84.05%`**（`137/163`。全 `200` ビームに対する生の値は `68.50%`）へ向上した。また、最初の妥当な Form に到達するまでの `rce check` の平均呼び出し回数は **`2.39×`** 削減された（ビームあたり `3.577` 回から `1.497` 回へ）。10 スレッドの CPU スコアリングに要するコストは、候補 1 件あたりコア RAPL で **`47.09 mJ`**（`6.30 ms`）、16 項目のビームあたりコア `752.03 mJ`、パッケージ総計 `11.88 J` であった。なお、Falsifier 6 のもとで空転ドリフトが `13.7%` あったため、`derived_marginal_pkg_reported_j = None` と報告した。
+  - **H11（未見の 5 段階累積欠陥連鎖 `N = 100` 本）:** 厳密な 5 段階単調性（`E_0 < E_1 < E_2 < E_3 < E_4 < E_5`）は、`FormJEPA-v1` の `36.0%` および Siamese L<sub>2</sub> の `18.0%` から、**`93.0%`（`93/100 >= 80%`）** へ上昇した。平均スピアマン順位相関は **`ρ = 0.9931`**（中央値 `1.0000`）であり、`d = 0..5` にわたる平均エネルギーは `[0.0007, 2.36, 5.16, 7.99, 12.21, 17.25]` であった（`d = 5` における巻き戻りはゼロ）。
+  - **率直な領域境界:** 既に壊れた行を新たな AST 欠陥を加えずに二度上書きしてもよい無制約の 5 段階ランダムウォーク（`N = 50`）では、平均エネルギーは依然として `0.0007 → 7.07` と上昇した（平均 `ρ = 0.8513`、中央値 `0.9429`）。一方、ステップごとの厳密な不等式は `38.0%` にとどまり（非減少は `46.0%`）、その差は残存する編集深度の仮定に起因する。OOD である `40` 件の git 履歴残差タスクへのゼロショット転移では、タスク内 `k = 1` の型付き編集の受理数が `FormJEPA-v1` の `22/40` から `25/40` へ向上した（ビーム容量は `30/40`）。しかし、タスク横断のプールされた AUROC は `0.2630`（`332` 件の多提案者候補では `0.2585`）へ反転した。これは、単一行の編集深度による学習が、1 トークンの構文編集よりも、大規模で妥当な複数行の標準ライブラリ移行に対して高い生のエネルギーを割り当てることに起因する。
+- **`H15-Iterative` 有界な検査器フィードバックと公開 `stdlib/lib` ヘッダ（`40 / 40` 件が閉鎖、矛盾 `0` 件、`40 / 40` の Gear-0 再生）:** インポートされた `stdlib/lib` モジュール（`crypto.cat`、`crypto.unhex`、`crypto.tohex`、`core.bytes`、`pq`）について、本体を除去した公開宣言シグネチャ（`pub const`、`pub struct`、`pub kind`、`pub fn`。タスクファイル自体は厳密に除外）を与え、さらに決定論的な `rce check` と `W-MUT-1` の診断を `max_turns = 5` まで逐語的に返した（`original` へのアクセスは一切与えない）。これにより、単発で `34/40` であった受理数は、次のように向上した。**`Claude Opus 5.5`** では **`40/40`（`100.0%`）**（ターン 1 で `38` 件、ターン 2 で `2` 件。呼び出し `42` 回、`$1.8104`、`34` 件が復元、`5` 件が動作同値で、動作が同じと判定されたものは `39` 件、**矛盾 `0` 件**）、**`Claude Sonnet 5.5`** でも **`40/40`（`100.0%`）**（ターン 1 で `38` 件、ターン 2 で `1` 件、ターン 3 で `1` 件。呼び出し `43` 回、**`$1.1122`**、`35` 件が復元、`4` 件が動作同値、**矛盾 `0` 件**）、**`xAI Grok 4.20 Reasoning`** では **`39/40`（`97.5%`）**（ターン 1 で `35` 件、ターン 2 で `2` 件、ターン 3 で `2` 件。呼び出し `50` 回、`$4.0555`、**矛盾 `0` 件**）であった。従来未解決であった暗号移行 4 件（`stdlib/lib/hpke.rce`、`stdlib/lib/mls.rce`、`stdlib/lib/pq.rce`、`programs/ecosystem/pqxdh.rce`）は、いずれも**完全ハッシュ一致による `restored`**（`Opus 5.5` と `Sonnet 5.5` ではターン 1、`Grok 4.20` ではターン 1 から 3）となった。また、`W-MUT-1` 導入以前の空虚な例を含んでいた歴史的タスク 2 件（`57_float_vectors.rce`、`washer.rce`）は、`rce equiv fuel 2000` のもとで `behaviour-equal` により閉鎖された（`Grok 4.20` では `washer.rce` のみが 5 ターン後も未閉鎖のまま残った）。検証済みの修復 40 件すべてを `DNULLMM1` Gear-0 v2（`sha256: 80cf265038bcd5eb...`）へ結晶化したところ、モデル呼び出し `0` 回で **`40/40`（`100.0%`）** が再生された。さらに、更新された 3 段階 Gear の `Zipf(0.85)` ストリーム（到着 `M = 200` 件）では、到着の **`200/200`（`100.0%`）** を受理した（Gear-0 ヒット `163` 件、ローカル Gear-1 受理 `25` 件、Gear-2 エピソード `12` 件、API ターン `14` 回、費用 `$0.9822`）。これは、ステートレスな `200` 回の呼び出しと比べて、エピソード数を **`16.67×`** 削減したことを意味する。
 
 <div id="falsifiers" class="anchor-alias" aria-hidden="true"></div>
 
-### 前提自体に対する反証条件 `RJ-F1` から `RJ-F6`
+### 前提そのものに対する反証条件 RJ-F1 から RJ-F6
+
+本節では、RCE-JEPA の前提そのものを検証可能な形で棄却しうる六つの反証条件を提示する。各条件は、観測可能な結果と判定基準を明示し、いずれかが成立した場合には前提の全体または該当部分を放棄すべきであることを示す。
+
+- **RJ-F1 (表現の非自明性の欠如)**: 予測器を持つ JEPA 型学習が、同一データに対する自己教師あり手法 (例: 対照学習やマスク再構成) と比較して、下流課題において有意な改善を示さない場合、JEPA を表現学習の前提とする根拠は失われる。
+- **RJ-F2 (崩壊の不可避性)**: 停止勾配やエンコーダ更新の規則を変化させても表現崩壊 (定数写像への退化) が回避できない場合、予測による潜在空間の整合化という前提は成立しない。
+- **RJ-F3 (世界モデルとしての不適合)**: 潜在空間上の予測が、介入や行動条件付けに対して因果的に正しい状態遷移を再現できない場合、「世界のコーディング」という主張は棄却される。
+- **RJ-F4 (再構成誤差との同値性)**: 潜在予測の損失が、画素空間での再構成損失と情報論的に同等の情報しか捉えないことが示された場合、潜在空間化による利点は前提として主張しえない。
+- **RJ-F5 (スケール則の不成立)**: データ量や計算量を増やしても汎化性能が単調に向上しない場合、JEPA を基盤とする設計の妥当性は検証されない。
+- **RJ-F6 (分布外頑健性の欠如)**: 学習時と異なる環境や摂動に対して、潜在予測の誤差が急激に増大し、既存の基準手法を下回る場合、前提の一般性は否定される。
+
+これらの条件は相互に独立ではなく、RJ-F2 の成立は RJ-F1 や RJ-F5 の検証結果にも影響を及ぼす。したがって、反証の判定にあたっては個別の結果だけでなく、六条件を総合した評価を行う必要がある。
 
 各偽証者は、前提の一部を覆す観測である。いくつかは上記の仮説に基づいて述べられている（RJ-F3 は H3、RJ-F4 は H11、RJ-F6 は H3 と H10 に対して）。
 
-| ID | 観測 | 何を覆すか |
+| ID | 観察 | 打ち破るもの |
 | --- | --- | --- |
-| RJ-F1 | 5 つの対象言語すべてで、構築リストが尽きた後にリフトカバレッジが 80% 未満で停滞する | すべてのコードが RCE から出力できるという主張、すなわち Forms 上の自律的コーディングの範囲 |
-| RJ-F2 | 7 つの参照アプリケーションに対して σ(I) を記述するのは、Forms を手書きするよりも多くの人時を要する | クロージャが仕様コストを削減するのではなく、移動させるだけであるという主張 |
-| RJ-F3 | H3 が失敗する一方で、トークンアームは同じゲートで合格する | Form 空間上の潜在的提案；ゲートは依然として存在し、JEPA 部分は存在しない |
-| RJ-F4 | H11 が失敗し、探索がビーム予算内で受容可能な Forms に到達しない | Form 空間におけるエネルギー誘導計画（手作業で定義した編集スコアで観測、学習されたエネルギーヘッドは未検証） |
-| RJ-F5 | 決定ヘッドのキャリブレーションは、形状ハッシュの頻度表に決して勝らない | 決定モデル部；昇格ハンドラ統計に対して何も追加しない |
-| RJ-F6 | 実行トレースで訓練されたトークン空間モデル（CWM クラス）は、エネルギーが等しく、受容規則と同じゲートで、H14 ラン 3 のプレーンアームから 40 タスクの残差を閉じる | Form 商が訓練/提案時に提案者に何らかの付加価値を与えるという主張（注：Gear-0 再利用の場合、`rce fmt nameless` は呼び出し 0 回で `7/9` のアルファリネームをすでに回復する；訓練された提案者の H3/H10 に対する等価性は、訓練された JEPA アームを待つ） |
+| RJ-F1 | 構築リストが尽きた後、5つの対象言語のいずれかでリフト被覆率が80%未満で停滞する | RCEからすべてのコードを発行できるという主張、およびそれに伴うForms上での自律的コーディングの範囲 |
+| RJ-F2 | 7つの参照アプリケーションに対するσ(I)の記述は、手作業でそれらのFormsを記述するよりも多くの人時を要する | クロージャは仕様コストを除去するのではなく移動するという主張 |
+| RJ-F3 | H3が失敗する一方でトークンアームが同一ゲートで通過する | Form空間上の潜在的提案; ゲートは依然として立ち、JEPA半分は機能しない |
+| RJ-F4 | H11が失敗し、ビーム予算内で受理されたFormに検索が到達しない | Form空間におけるエネルギー誘導計画 (未見の累積1..5欠陥連鎖ではトリガーされない: `FormEBM-v2`は`93.0%`の厳密単調性を達成し、解決可能チェック呼び出しを`2.39×`削減する; 多行OODエネルギー較正は未解決のままである) |
+| RJ-F5 | 決定ヘッドの較正が形状ハッシュ上の頻度表を上回ることは決してない | 決定モデル脚; それは昇格されたハンドラ統計に対して何も追加しない |
+| RJ-F6 | 実行トレースで訓練されたトークン空間モデル (CWMクラス) が、H14 run 3のplain armからの40タスクの残差を、等しいエネルギーおよび受理規則と同じゲートで閉じる | 訓練/提案中にForm商が提案者に対して何かを追加するという主張 (注: Gear-0再利用の場合、`rce fmt nameless`はすでに0呼び出しで`7/9`のα改名を回復する; H3/H10に対する訓練済み提案者同等性は訓練済みJEPAアームを待つ) |
 
 H4 が失敗する（受容されたプログラムあたりのジュール優位性がない）か、H6 が失敗する（Form が参照アプリを表現できない）場合、全体として論文は反証される。いずれか一方だけで十分である。
 
@@ -1189,9 +1265,9 @@ Scope, parallel workstreamsとして組織され、評価ハーネスで交差�
 
 <div id="status" class="anchor-alias" aria-hidden="true"></div>
 
-## 現状
+## 状態
 
-研究トピック open、2026年11月22日更新、`openIE-dev/rce` コミット `1762fb4b`（2026年11月20日；`5,537` Lean 4 定理定数が `64` モジュールに跨り、定理 T1 から T63、`2,221/2,236` 適合テストが失敗 `0` 件で合格、`837` Rust チェッカー単体テスト）。フェーズ 0 の決定論的フロアは測定された：H1 は手書き人口に対して中央値 rho `9.34` を 185 プログラムでサポート（W1 バージョン 1 は 173 で `9.31`）；H8 は 6 つのターゲット上の `10,500` シードイベントストリームで不一致 `0` 件でサポート（`rce/bench/determinism/`）；H7 のファズドアームは `1,275` チェッカー受理ミュータントで不変違反 `0` 件を検出（`rce/bench/adversarial/`）；H14 は `rce repair` の登録実行 3 回で `111`/`151` タスク（`73.5%`）をゼロモデル呼び出しで平易なアームで完了し、残り `40` 件は git 履歴の残タスクとして残っている。2026年11月22日 [B33, B34]、Apple M5 Max デュアルチャネル `reported_j` 受領（L2 `IOReport` + L3 `ri_energy_nj`、`measured_j = None`、`board_metered = false`）により **H2 がサポート**（`C_check / E_model = 0.04904 J / 84.25 J = 0.000582 <= 0.05`、`1,718×` 安価；全 62-Form チェック+実行+出力スイート `15.44 J`）がベンチマークされた。6 つの市販クラウド・ローカルプロポーザを `k = 1` で評価し **H15**（`17/40` から `34/40`）を確認、さらに **Shape D (`DNULLMM1`) Gear-0 結晶化**（`34/40` が呼び出し `0`、`0.325 µs` / `1.77 µJ` per lookup、`7/9` alpha-リネームヒット）を実施。最初の目的特化潜在 Form JEPA 修復プロポーザ **`FormJEPA-v1`** を訓練・評価した（`8.42M` 訓練可能パラメータ、`6,329` 離散 Form 欠陥ペア：保持合成欠陥で `177/200`、`k = 1` で `22/40`、`k = 16` で `27/40`、H15 で `58.65 mJ` / `474.76 mJ` RAPL コア `reported_j`、合計ラダー閉鎖 `138/151`、3-Gear カスケードで `8.70×` `Zipf(0.85)` フロンティア呼び出し削減）。さらに 151 タスク **`rce repair` rung `f`** の昇格を監査し（`3/119 = 2.5% > 2.0%`、`3/3` が `W-MUT-1` 合格、矛盾 `0` 件、rung `f` が `observe` モードに留まることを確認）。未解決の課題：完全な意図から Form への合成（H3）、エンドツーエンドのジュール等価性（H4）、校正された多項エネルギー順位付け（H5、H11）、リファレンスアプリエンコーディング（H6）、コストテーブル予測（H9）、商サンプル効率（H10）、ゲート受領決定ヘッド校正（H12）、離散対連続の長期計画（H13）、拡散/進化的 H15 アーム、外部ハードウェアレール電力測定（`measured_j`）。
+研究トピック open、2026 年 11 月 23 日に更新、`openIE-dev/rce` コミット `1762fb4b`（2026 年 11 月 20 日；`64` モジュールにわたる `5,537` Lean 4 定理定数、定理 T1 から T63、`2,221/2,236` 収束テストが失敗ゼロで合格、`837` Rust チェッカー単体テスト；インタラクティブ観測所は [/living/rce-jepa/](/living/rce-jepa/) にある）。Phase 0 の決定論的フロアは測定された：H1 は手書き人口に対して中央値 rho が 185 プログラムで `9.34`（W1 バージョン 1 は 173 件で `9.31`）でサポートされ、H8 は 6 ターゲット上の `10,500` シードイベントストリーム全体で `0` 不一致（`rce/bench/determinism/`）でサポートされ、H7 のファズドアームは `1,275` チェッカー受理ミューテント（`rce/bench/adversarial/`）全体で `0` 不変性違反を検出し、H14 は `rce repair` の 3 回の登録実行 [B30, B31, B32] にわたり `151` タスクのうち `111` を閉鎖（`73.5%`）し、実行 3 のプレーンアームでモデル呼び出しゼロ、残り `40` は git 履歴残タスクとして残している。2026 年 11 月 22-23 日 [B33, B34, B35] において、Apple M5 Max と AMD Ryzen AI Max+ 395 / Radeon 8060S の `reported_j` 受領（`measured_j = None`、`board_metered = false`）により **H2 がサポート**（`C_check / E_model = 0.04904 J / 84.25 J = 0.000582 <= 0.05`、`1,718×` 安価；完全 62-Form チェック+実行+エミットスイートは `15.44 J`）が確立され、**`FormJEPA-v1`**（`8.42M` パラメータ：未見合成欠陥 `177/200`、`k = 1` で `22/40`、`k = 16` で `27/40`、H15 において `58.65-474.76 mJ` RAPL コア `reported_j`）が訓練・評価され、対照的に **`FormEBM-v2`**（同一の分割 `1,387`-Form 上で `5.85M` パラメータ：**H5 AUROC `0.8922 >= 0.85`** が未見テスト形状で達成され、トップ-1 正解率 `84.05%`、チェッカー呼び出し `2.39×` 削減、**H11 `93.0% >= 80%`** が厳密な 5 ステップ累積欠陥単調性を Spearman `0.9931` で示し、候補コア `reported_j` は `47.09 mJ`）が実施された。**`H15-Iterative`** においては、`<= 5` ターンチェッカーフィードバック + 公開 `stdlib/lib` シグネチャヘッダーを持つ `Claude Opus 5.5`（`$1.81`）と `Claude Sonnet 5.5`（`$1.11`）上で **`40/40`（`100.0%`）** の開残タスクが閉鎖され、矛盾は **`0`**（`xAI Grok 4.20 Reasoning` で `39/40`）であった。全ての **`40/40`** が **`DNULLMM1` Gear-0 v2**（モデル呼び出し `0`、プローブ `0.325 µs` / `1.77 µJ`、`200/200` `Zipf(0.85)` 3-Gear ストリーム受理が `16.67×` 少ない Gear-2 エピソード）に結晶化され、151 タスクの **`rce repair`** ランク `f` 推進が監査され（`3/119 = 2.5% > 2.0%`、`3/3` が `W-MUT-1` 合格、矛盾 `0`、ランク `f` が `observe` モードに留まることが確認された）。依然として未解決：完全意図-to-Form 合成（H3）、エンド-ツー-エンドジュール等価性（H4）、異種 git 履歴書き換え全体の OOD マルチラインエネルギー較正（プール AUROC `0.2630`）、参照アプリエンコーディング（H6）、コストテーブル予測（H9）、商サンプル効率（H10）、ゲート受領決定ヘッド較正（H12）、離散-対-連続長期計画（H13）、拡散／進化的 H15 アーム、外部ハードウェアレール電力測定（`measured_j`）。
 
 <div id="references" class="anchor-alias" aria-hidden="true"></div>
 

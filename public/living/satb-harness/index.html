@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#F59E0B">
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="David Charlot">
-  <meta name="description" content="Interactive observatory for Satiation Benchmark (SATB): inspect live verified platform L0-L4 hardware attribution maps across Apple M5 Max, NVIDIA Jetson AGX Thor (INA238/INA3221 measured_j), Framework AMD Strix Halo (0440 root:energy RAPL + amdgpu PPT), Intel Raptor Lake (RAPL psys + package-0), and Closed Cloud APIs, plus C1-C12 conformance, C12 multi-vendor determinism, observer-effect cadences, and B-vs-C attribution falsifiers.">
+  <meta name="description" content="Interactive observatory for Satiation Benchmark (SATB): inspect live verified platform L0-L4 hardware attribution maps across 5 hardware archetypes — Apple M5 Max, NVIDIA Jetson AGX Thor (INA238/INA3221 measured_j), Framework AMD Strix Halo (0440 root:energy RAPL + amdgpu PPT), Intel Raptor Lake (RAPL psys + package-0), and Windows 11 (Intel i7-1165G7 + RTX 2060 rootless NVML reported_j & Win32 Job Objects) — plus Closed Cloud APIs, C1-C12 conformance, C12 determinism, observer cadences, and B-vs-C falsifiers.">
   <link rel="canonical" href="https://research.openie.dev/living/satb-harness/">
   <link rel="describedby" type="text/markdown" href="/llms.txt">
   <link rel="alternate" type="text/markdown" title="Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution (Markdown)" href="/papers/satb-harness.md">
@@ -46,26 +46,27 @@
 
       <div class="measurement-box">
         <strong>Measurement grammar on this page.</strong> Every table and explorer separates four evidence classes and never sums across them:
-        <span class="chip chip-meas">Exact (L4 &amp; JCS SHA-256)</span> for canonical bundle digests, 5-block SUT fingerprints, byte-identical replay hashes (<code>C9</code>: <code>149,747 B</code> across 4 OS/ISA hosts), <code>Shape D</code> <code>DNULLMM1</code> checksums (<code>15027705736</code>), <code>satb-proxy</code> token counts, and API list-price USD;
+        <span class="chip chip-meas">Exact (L4 &amp; JCS SHA-256)</span> for canonical bundle digests, 5-block SUT fingerprints, byte-identical replay hashes (<code>C9</code>: <code>149,747 B</code> across 5 macOS/Linux/Windows 11 hosts, <code>0</code> CRLF diffs), <code>Shape D</code> <code>DNULLMM1</code> checksums (<code>15027705736</code>), <code>satb-proxy</code> token counts, and API list-price USD;
         <span class="chip chip-meas">Measured Rail (measured_j)</span> for physical Texas Instruments <code>INA238</code> (<code>VIN</code> <code>L1</code>) and <code>INA3221</code> (<code>VDD_GPU</code>, <code>VDD_CPU_SOC_MSS</code>, <code>VIN_SYS_5V0</code> <code>L2</code>/<code>L1</code>) shunt monitors on <code>NVIDIA Jetson AGX Thor</code> (<code>dedicated_host = false</code>; <code>A2</code> net attribution withheld);
-        <span class="chip chip-sim">Reported Counter (reported_j)</span> for rootless <code>Apple M5 Max</code> <code>IOReport</code>/<code>rusage</code>, <code>Framework AMD Strix Halo</code> <code>0440 root:energy</code> <code>RAPL</code> + <code>amdgpu PPT</code>, and <code>Intel Raptor Lake</code> <code>RAPL psys</code>/<code>package-0</code>; and
-        <span class="chip chip-est">Not Available (Label N)</span> for closed-API server energy and unattached <code>L0</code> wall plugs.
+        <span class="chip chip-sim">Reported Counter (reported_j)</span> for rootless <code>Apple M5 Max</code> <code>IOReport</code>/<code>rusage</code>, <code>Framework AMD Strix Halo</code> <code>0440 root:energy</code> <code>RAPL</code> + <code>amdgpu PPT</code>, <code>Intel Raptor Lake</code> <code>RAPL psys</code>/<code>package-0</code>, and <code>Windows 11</code> <code>nvml.dll</code> <code>RTX 2060</code> cumulative <code>mJ</code>; and
+        <span class="chip chip-est">Not Available (Label N)</span> for closed-API server energy, unprivileged Windows 11 CPU <code>RAPL</code> <code>MSR</code>s, and unattached <code>L0</code> wall plugs.
       </div>
 
       <!-- Widget 1: Interactive Platform Hardware Attribution Switcher -->
       <section id="satb-diag-01" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>satb-diag-01</code> · Four-Host &amp; Cloud Telemetry Attribution Switcher (<code>L0–L4 × A1–N</code>)</h2>
-          <span class="chip chip-sim">4 Hardware Archetypes + Cloud Verified</span>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>satb-diag-01</code> · Five-Host &amp; Cloud Telemetry Attribution Switcher (<code>L0–L4 × A1–N</code>)</h2>
+          <span class="chip chip-sim">5 Hardware Archetypes + Cloud Verified</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          Inspect live verified physical boundaries, rootless sysfs/kernel permissions, and honest attribution labels across all four <code>SATB</code> silicon archetypes plus closed cloud APIs. Channels at different levels are recorded independently and never summed.
+          Inspect live verified physical boundaries, rootless sysfs/kernel/Win32 permissions, and honest attribution labels across all five <code>SATB</code> silicon/OS archetypes (<code>macOS</code>, <code>Linux</code>, <code>Windows 11</code>) plus closed cloud APIs. Channels at different levels are recorded independently and never summed.
         </p>
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;" role="group" aria-label="Select target hardware platform">
           <button type="button" class="theme-btn plat-btn" data-plat="apple_silicon" aria-pressed="true" style="border-color: var(--color-brand-amber); color: var(--color-brand-amber);">Apple M5 Max (IOReport + rusage)</button>
           <button type="button" class="theme-btn plat-btn" data-plat="jetson_thor" aria-pressed="false">NVIDIA Jetson AGX Thor (INA238/3221 measured_j)</button>
           <button type="button" class="theme-btn plat-btn" data-plat="framework_amd" aria-pressed="false">Framework AMD Strix Halo (0440 RAPL + PPT)</button>
           <button type="button" class="theme-btn plat-btn" data-plat="intel_raptor_lake" aria-pressed="false">Intel Core i9-13900H (RAPL psys + pkg)</button>
+          <button type="button" class="theme-btn plat-btn" data-plat="windows_11_nvml" aria-pressed="false">Windows 11 i7-1165G7 + RTX 2060 (NVML + JobObj)</button>
           <button type="button" class="theme-btn plat-btn" data-plat="closed_api" aria-pressed="false">Closed Cloud API (Label N / P)</button>
         </div>
 
@@ -89,13 +90,13 @@
       <section id="satb-diag-02" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
           <h2 style="margin: 0; font-size: 1.25rem;"><code>satb-diag-02</code> · Multi-Host Hardware Attribution, Conformance &amp; Falsifier Explorer</h2>
-          <span class="chip chip-meas">Measured Across 4 Silicon Hosts + 32 Cloud Calls</span>
+          <span class="chip chip-meas">Measured Across 5 Silicon/OS Hosts + 32 Cloud Calls</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          Explore the empirical receipts from <code>bench_satb_falsifiers.py</code> and <code>run_multi_host_satb.py</code> across Apple M5 Max, NVIDIA Jetson AGX Thor, Framework AMD Ryzen AI Max+ 395, and Intel Core i9-13900H: 4-host <code>Shape D</code> &amp; <code>C9/C10</code> parity, physical <code>INA3221</code> rail separation, <code>C12</code> determinism, <code>0–100 Hz</code> observer cadences, and <code>B</code>-vs-<code>C</code> (<code>Kepler</code>) divergence.
+          Explore the empirical receipts from <code>bench_satb_falsifiers.py</code>, <code>run_multi_host_satb.py</code>, and <code>run_windows_suite.py</code> across Apple M5 Max, NVIDIA Jetson AGX Thor, Framework AMD Ryzen AI Max+ 395, Intel Core i9-13900H, and bare-metal Windows 11 (Intel Core i7-1165G7 + RTX 2060): 5-host <code>Shape D</code> &amp; <code>C9/C10</code> parity, physical <code>INA3221</code> rail separation, rootless <code>NVML</code> vs ring-0 <code>RAPL</code>, <code>C12</code> determinism, <code>0–100 Hz</code> observer cadences, and <code>B</code>-vs-<code>C</code> (<code>Kepler</code>) divergence.
         </p>
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;" role="group" aria-label="Select empirical benchmark view">
-          <button type="button" class="theme-btn view-btn" data-view="multi_host" aria-pressed="false">Multi-Host · 4-Silicon Matrix &amp; Thor Rails</button>
+          <button type="button" class="theme-btn view-btn" data-view="multi_host" aria-pressed="false">Multi-Host · 5-Silicon/OS Matrix (macOS · Linux · Win11)</button>
           <button type="button" class="theme-btn view-btn" data-view="c12_det" aria-pressed="true" style="border-color: var(--color-brand-cyan); color: var(--color-brand-cyan);">C12 · Multi-Vendor Determinism (8x Probes)</button>
           <button type="button" class="theme-btn view-btn" data-view="c1_c12" aria-pressed="false">C1–C12 · Conformance &amp; C9/C10 Receipts</button>
           <button type="button" class="theme-btn view-btn" data-view="observer" aria-pressed="false">Falsifier 5 · Observer Cadence (0–100 Hz)</button>
@@ -233,6 +234,21 @@
             ['NVML cumulative energy (mJ)', 'L2 GPU counter', 'Deferred (GPU lock)', 'Held untouched behind co-tenant GPU lock during CPU-only probe; C10 SIGKILL 9.544 ms mean']
           ]
         },
+        windows_11_nvml: {
+          kpis: [
+            ['Host Verification', 'Verified Live (Win11)', 'Intel Core i7-1165G7 + RTX 2060 · NT 10.0.26300'],
+            ['Rootless Basic Token', '0x20000 Non-Admin', 'nvml.dll mJ OK · CPU RAPL MSR 0x611 blocked (N)'],
+            ['NVML FFI vs CLI', '1.17 ms vs 43.9 ms', '37.4× faster FFI · 64.64 Hz @ 100 Hz (NT tick)'],
+            ['Win32 Job Object C10', '2.458 ms Reap (0 PID)', '50× faster than taskkill /F /T · 0 mJ Step-7 err']
+          ],
+          rows: [
+            ['WMI EMI PowerMeter / L0 AC Plug', 'L0 / L1 platform', 'N (not_available)', '0 WMI EMI PowerMeter instances exposed on host; L0 AC wall plug unattached (measured_j = None)'],
+            ['nvml.dll nvmlDeviceGetTotalEnergyConsumption', 'L2 discrete GPU (mJ)', 'B reported_j (A1 if excl.)', 'Verified under Basic User 0x20000 token: 8.769 J + 8.816 J = 17.585 J (0 mJ Step-7 residual, 3.0% drift)'],
+            ['Intel RAPL MSR 0x611 (CPU Package)', 'L2 CPU package', 'N (ring-0 blocked)', 'Windows NT kernel + HVCI block unprivileged ring-3 MSR reads without custom kernel driver (barred by OQ-5)'],
+            ['Win32 GetProcessTimes + QueryProcessCycleTime', 'L3 process / JobObj', 'C (activity shares)', '15.625 ms tick aliases Phase 2 to 5.06% share (−89.9% F3 err; −77.1% even using RDTSC cycles); SRUM excluded'],
+            ['Win32 Job Object + NTFS C9 + MapViewOfFile', 'L3 / L4 conformance', 'Exact', 'Shape D 15027705736 (1,474.2 ns MSVC /O2); C9 149,747 B (0 CRLF diffs); C10 TerminateJobObject 2.458 ms']
+          ]
+        },
         closed_api: {
           kpis: [
             ['Host Verification', 'Verified Live (32 Calls)', 'Anthropic · Cerebras · xAI via satb-proxy'],
@@ -253,17 +269,18 @@
       var VIEWS = {
         multi_host: {
           kpis: [
-            ['Silicon Archetypes Verified', '4 / 4 Hosts Live', 'Apple M5 Max · Jetson AGX Thor · Strix Halo · Raptor Lake'],
-            ['Shape D & C9 Parity', '100% Bit-Exact', '15027705736 & 149,747 B (d697ed14…) across arm64 + x86-64'],
-            ['Physical Shunt Rail Split', 'TI INA238 + INA3221', 'Jetson Thor measured_j isolates VDD_GPU co-tenant from CPU_SOC'],
-            ['Universal Falsifier 3', '32.6% – 72.9% Err', 'Kepler CPU-share C fails >20% gate on all 4 architectures']
+            ['Silicon & OS Archetypes', '5 / 5 Hosts Live', 'macOS M5 Max · Linux Thor/Strix/RPL · Win11 i7+RTX 2060'],
+            ['Shape D & C9 Parity', '100% Bit-Exact', '15027705736 & 149,747 B (0 NTFS CRLF drift) on all 5'],
+            ['Rail & NVML Verification', 'INA238/3221 + NVML', 'Thor measured_j shunts + Win11 0x20000 rootless NVML mJ'],
+            ['Universal Falsifier 3', '32.6% – 89.9% Err', 'Kepler CPU-share C fails >20% gate on all 5 OS/silicon hosts']
           ],
-          cols: ['Silicon Host & OS', 'Evidence Class & Perm', 'DNULLMM1 Checksum (C/C++ Probe)', 'C9 Replay & C10 SIGKILL', 'Read Latency & 100 Hz Rate', 'Step 7 Residual & F3 Phase-2 Err'],
+          cols: ['Silicon Host & OS', 'Evidence Class & Perm', 'DNULLMM1 Checksum (C/C++/MSVC)', 'C9 Replay & C10 Tree Kill', 'Read Latency & 100 Hz Rate', 'Step 7 Residual & F3 Phase-2 Err'],
           rows: [
             ['Apple M5 Max · macOS 27.2.1 (arm64)', 'reported_j (IOReport + rusage)', '15027705736 (388.43 ns)', '149,747 B · 2.073 ms', '~120 ms · 7.44 Hz', '<= 1 µJ · Triggered (−32.59%)'],
             ['NVIDIA Jetson AGX Thor · Linux 6.8-tegra', 'measured_j (INA238/3221 0444)', '15027705736 (984.86 ns)', '149,747 B · 9.544 ms', '2,948.8 µs · 66.55 Hz', '0.0 µJ · Triggered (−70.01% ch2)'],
             ['Framework AMD Ryzen AI Max+ 395 · Linux 7.0', 'reported_j (0440 root:energy + PPT)', '15027705736 (376.61 ns)', '149,747 B · 0.868 ms', '24.34 µs · 94.28 Hz', '0 µJ · Triggered (−71.61% pkg-0)'],
-            ['Intel Core i9-13900H · Linux 7.0 (x86-64)', 'reported_j (psys L1 + pkg L2 0444)', '15027705736 (420.93 ns)', '149,747 B · 1.120 ms', '45.37 µs · 97.12 Hz', '0 µJ · Triggered (−72.89% pkg-0)']
+            ['Intel Core i9-13900H · Linux 7.0 (x86-64)', 'reported_j (psys L1 + pkg L2 0444)', '15027705736 (420.93 ns)', '149,747 B · 1.120 ms', '45.37 µs · 97.12 Hz', '0 µJ · Triggered (−72.89% pkg-0)'],
+            ['Intel i7-1165G7 + RTX 2060 · Windows 11 26300', 'reported_j (NVML mJ; CPU RAPL = N)', '15027705736 (1,474.22 ns MSVC)', '149,747 B (0 CRLF) · 2.458 ms', '1,174.2 µs · 64.64 Hz', '0 mJ · Triggered (−89.88% / −77.1% RDTSC)']
           ]
         },
         c12_det: {
@@ -485,10 +502,10 @@
           {
             name: 'select_satb_platform_map',
             title: 'Select SATB hardware telemetry attribution platform',
-            description: 'Switches Widget 1 on /living/satb-harness/ between apple_silicon, jetson_thor, framework_amd, intel_raptor_lake, and closed_api and returns the L0-L4 channel and A1-N attribution table.',
+            description: 'Switches Widget 1 on /living/satb-harness/ between apple_silicon, jetson_thor, framework_amd, intel_raptor_lake, windows_11_nvml, and closed_api and returns the L0-L4 channel and A1-N attribution table.',
             inputSchema: {
               type: 'object',
-              properties: { platform: { type: 'string', enum: ['apple_silicon', 'jetson_thor', 'framework_amd', 'intel_raptor_lake', 'closed_api'] } },
+              properties: { platform: { type: 'string', enum: ['apple_silicon', 'jetson_thor', 'framework_amd', 'intel_raptor_lake', 'windows_11_nvml', 'closed_api'] } },
               required: ['platform'],
               additionalProperties: false
             },
@@ -498,7 +515,7 @@
           {
             name: 'inspect_satb_empirical_falsifiers',
             title: 'Inspect SATB multi-host conformance and falsifier receipts',
-            description: 'Switches Widget 2 on /living/satb-harness/ between multi_host (4-host silicon matrix and Thor rails), c12_det (multi-vendor determinism probes), c1_c12 (conformance checks), observer (0-100 Hz cadence overhead), and b_vs_c (B-vs-C Kepler divergence and 188-window Falsifier 6 audit).',
+            description: 'Switches Widget 2 on /living/satb-harness/ between multi_host (5-host macOS/Linux/Windows 11 silicon matrix, Thor shunts, and Win11 NVML), c12_det (multi-vendor determinism probes), c1_c12 (conformance checks), observer (0-100 Hz cadence overhead), and b_vs_c (B-vs-C Kepler divergence and 188-window Falsifier 6 audit).',
             inputSchema: {
               type: 'object',
               properties: { view: { type: 'string', enum: ['multi_host', 'c12_det', 'c1_c12', 'observer', 'b_vs_c'] } },

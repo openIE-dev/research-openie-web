@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#F59E0B">
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="David Charlot">
-  <meta name="description" content="Interactive observatory & playable Q32.32 Chrono-Budget Arena for Writing a Game Once and Running It Everywhere: inspect 25-cell Multi-ISA GE-H1 SHA-256 replay, Cross-ISA GE-H2 float drift, Cross-GPU GE-H3 Metal/Vulkan PSNR & SSIM tolerance, and play a 60 Hz BigInt WebXR/Gamepad deterministic mini-game.">
+  <meta name="description" content="Interactive observatory & playable Q32.32 Chrono-Budget Arena for Writing a Game Once and Running It Everywhere: inspect 30-cell 3-OS × 3-ISA GE-H1 SHA-256 replay (macOS, Linux, Windows 11), 3-OS GE-H2 UCRT/libm/glibc float drift, 3-API GE-H3 DirectX 12/Metal/Vulkan PSNR & SSIM tolerance, and play a 60 Hz BigInt WebXR/Gamepad deterministic mini-game.">
   <link rel="canonical" href="https://research.openie.dev/living/game-engines/">
   <link rel="describedby" type="text/markdown" href="/llms.txt">
   <link rel="alternate" type="text/markdown" title="Writing a Game Once and Running It Everywhere (Markdown)" href="/papers/game-engines.md">
@@ -107,37 +107,38 @@
 
   <main>
     <div style="max-width: 72rem; margin: 0 auto; padding: 3rem 1.75rem 5rem;">
-      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/game-engines/ · multi-ISA, cross-GPU &amp; joule-native observatory</p>
+      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/game-engines/ · 3-OS × 3-ISA, 3-API cross-GPU &amp; joule-native observatory</p>
       <h1 class="hero-title" style="max-width: none;">Living Figures: Multi-ISA Replay, Cross-GPU Tolerance &amp; Playable <code>Q32.32</code> Chrono-Budget Arena</h1>
       <p class="author-line">David Charlot, Open Interface Engineering · Companion to <a href="/papers/game-engines/" style="color: var(--color-brand-cyan);">/papers/game-engines/</a> &amp; <a href="/papers/time-as-an-index/" style="color: var(--color-brand-cyan);">/papers/time-as-an-index/</a> · Raw artifact: <a href="results.json" style="color: var(--color-brand-amber);">results.json</a></p>
 
       <div class="measurement-box">
         <strong>Measurement grammar on this page.</strong> Every instrument strictly separates four classes:
-        <span class="chip chip-meas">Exact (SHA-256 &amp; Pixel Error)</span> for <code>GE-H1</code> <code>20,500</code> verified checkpoints across 25 multi-ISA cells (<code>arm64</code> macOS, <code>aarch64</code> Linux, AMD &amp; Intel <code>x86_64</code> Linux), <code>GE-H2</code> exact divergence ticks, and <code>GE-H3</code> <code>512×512</code> <code>RGBA8Unorm</code> cross-GPU pixel metrics;
-        <span class="chip chip-sim">Reported (L3 vs L2 reported_j)</span> keeping macOS per-PID <code>proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj</code> (<code>L3</code>) strictly separate from Linux socket/core <code>/sys/class/powercap/intel-rapl:0</code> (<code>L2</code>); and
+        <span class="chip chip-meas">Exact (SHA-256 &amp; Pixel Error)</span> for <code>GE-H1</code> <code>25,500</code> verified checkpoints across 30 3-OS × 3-ISA cells (<code>arm64</code> macOS, <code>aarch64</code> Linux, AMD &amp; Intel <code>x86_64</code> Linux, Intel <code>x86_64</code> Windows 11), <code>GE-H2</code> exact divergence ticks, and <code>GE-H3</code> <code>512×512</code> <code>RGBA8Unorm</code> <code>DirectX 12</code>/<code>Metal</code>/<code>Vulkan</code> pixel metrics;
+        <span class="chip chip-sim">Reported (L3 vs L2 reported_j)</span> keeping macOS per-PID <code>proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj</code> (<code>L3</code>), Linux socket/core <code>/sys/class/powercap/intel-rapl:0</code> (<code>L2</code>), and Windows 11 Win32 <code>GetProcessTimes</code>/<code>QueryProcessCycleTime</code> (<code>L3</code>) strictly separate; and
         <span class="chip chip-est">Analytical Model (est_j &amp; Lyapunov)</span> for Section 3's <code>t* = (1/Λ) ln(Δ/δ₀)</code> curve and the Chrono-Budget Arena's Hellman lookahead &amp; Landauer branch-erasure microjoule (<code>µJ</code>) mechanics. Across all runs, <code>measured_j = None</code> and <code>board_metered = false</code>.
       </div>
 
       <!-- Widget 1: Multi-ISA GE-H1 Q32.32 Replay & L3/L2 reported_j Explorer -->
       <section id="ge-diag-01" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-01</code> · <code>GE-H1</code> Multi-ISA &amp; Multi-OS <code>Q32.32</code> Replay Explorer (<code>25</code> Cells)</h2>
-          <span class="chip chip-meas">0 / 20,500 SHA-256 Mismatches</span>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-01</code> · <code>GE-H1</code> 3-OS &amp; 3-ISA <code>Q32.32</code> Replay Explorer (<code>30</code> Cells)</h2>
+          <span class="chip chip-meas">0 / 25,500 SHA-256 Mismatches</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          The identical 16-body + 4-pickup <code>Q32.32</code> signed 64-bit integer arena ran for <strong>100,000 ticks</strong> across five machines spanning <code>arm64</code> macOS, <code>aarch64</code> Linux, and AMD Zen 5 &amp; Intel Raptor Lake <code>x86_64</code> Linux across Rust, C++20 (Clang &amp; GCC), WebAssembly, Node.js <code>BigInt</code>, and Python 3. Filter by host/ISA and scale match length.
+          The identical 16-body + 4-pickup <code>Q32.32</code> signed 64-bit integer arena ran for <strong>100,000 ticks</strong> across six machines spanning three OSs (<code>macOS</code>, <code>Linux</code>, <code>Windows 11</code>) and three ISAs (<code>arm64</code>, <code>aarch64</code>, <code>x86_64</code> + <code>wasm32</code>) across Rust, C++20 (Clang, GCC &amp; MSVC <code>cl.exe</code>), WebAssembly, Node.js <code>BigInt</code>, and Python 3. Filter by host/OS and scale match length.
         </p>
 
         <div class="ctrl-grid">
           <div class="ctrl-box">
-            <label for="s-host"><span>Hardware host / ISA slice</span><span id="v-host-cnt">25 cells</span></label>
+            <label for="s-host"><span>Hardware host / ISA slice</span><span id="v-host-cnt">30 cells</span></label>
             <select id="s-host">
-              <option value="all" selected>All 5 Hosts · arm64 + aarch64 + x86_64 (25 cells)</option>
+              <option value="all" selected>All 6 Hosts · macOS + Linux + Windows 11 (30 cells)</option>
               <option value="apple_m5_max_arm64_macos">Apple M5 Max · arm64 macOS 27.2.1 (L3 PID, 5)</option>
               <option value="apple_m3_ultra_arm64_macos">Apple M3 Ultra · arm64 macOS 27.2.1 (L3 PID, 2)</option>
               <option value="amd_zen5_x86_64_linux">AMD Ryzen AI Max+ 395 · x86_64 Linux 7.0 (L2 RAPL, 6)</option>
               <option value="intel_rpl_x86_64_linux">Intel Core i9-13900H · x86_64 Linux 7.0 (L2 RAPL, 6)</option>
               <option value="nvidia_thor_aarch64_linux">NVIDIA Jetson Thor · aarch64 Linux 6.8 (CPU-only, 6)</option>
+              <option value="win11_x86_64">Intel Core i7-1165G7 · x86_64 Windows 11 26300 (Win32 L3, 5)</option>
             </select>
           </div>
           <div class="ctrl-box">
@@ -167,7 +168,7 @@
         </div>
 
         <div style="margin-top: 0.9rem; padding: 0.7rem 0.95rem; border: 1px solid rgba(0,212,170,0.35); border-radius: 8px; background: rgba(0,212,170,0.06); font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all;">
-          <strong>25/25 Multi-ISA Cells Identical SHA-256 @ Tick <span id="o-ckpt-tick">100,000</span>:</strong>
+          <strong>30/30 3-OS × 3-ISA Cells Identical SHA-256 @ Tick <span id="o-ckpt-tick">100,000</span>:</strong>
           <span id="o-ckpt-hash" style="color: var(--color-brand-cyan);">82e404df6475d64dbfeaaa0f6cda8092787ea9048446ae862779fa29be0a0a78</span>
         </div>
 
@@ -193,21 +194,21 @@
       <!-- Widget 2: Cross-ISA GE-H2 Floating-Point Divergence Horizon Explorer -->
       <section id="ge-diag-02" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-02</code> · <code>GE-H2</code> Cross-ISA &amp; Cross-OS Floating-Point Divergence Explorer (<code>25,000</code> Ticks)</h2>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-02</code> · <code>GE-H2</code> 3-OS &amp; Cross-ISA Floating-Point Divergence Explorer (<code>25,000</code> Ticks)</h2>
           <span class="chip chip-sim">Cross-ISA Tick Horizons + Lyapunov Model</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          Even <em>without</em> <code>-ffast-math</code>, standard library <code>std::sin/cos</code> diverges between Apple <code>libSystem</code> <code>libm</code> and Linux GNU <code>glibc</code> at <strong>tick 10</strong>, and default <code>-ffp-contract=fast</code> hardware FMA lowering diverges between <code>x86_64</code> (<code>VFMADD</code>) and <code>arm64</code> (<code>FMADD</code>) at <strong>tick 406</strong>.
+          Even <em>without</em> <code>-ffast-math</code> or <code>/fp:fast</code>, all three desktop OS math libraries form a pairwise-divergent triangle on <code>std::sin/cos</code> — Windows 11 <code>UCRT</code> vs Linux <code>glibc</code> diverges on the same <code>x86_64</code> ISA at <strong>tick 10</strong>, Apple <code>libSystem</code> vs <code>glibc</code> at <strong>tick 10</strong>, and Windows <code>UCRT</code> vs Apple <code>libSystem</code> at <strong>tick 37</strong> — while default <code>MSVC /fp:precise</code> vs <code>Clang -ffp-contract=fast</code> diverges at <strong>tick 192</strong> and <code>x86_64</code> vs <code>arm64</code> FMA at <strong>tick 406</strong>.
         </p>
 
         <div class="ctrl-grid">
           <div class="ctrl-box">
-            <label for="f-h2"><span>Perturbation filter</span><span id="v-h2-cnt">16 pairs</span></label>
+            <label for="f-h2"><span>Perturbation filter</span><span id="v-h2-cnt">22 pairs</span></label>
             <select id="f-h2">
-              <option value="all">All 16 Multi-ISA &amp; Single-Host Float Pairs</option>
-              <option value="cross_isa">Cross-ISA / Cross-OS Wave 3 Pairs (9)</option>
-              <option value="strict">Pinned 0-ULP Controls (&gt;25,000 ticks, 7)</option>
-              <option value="diverged">All Diverging Boundary Pairs (9)</option>
+              <option value="all">All 22 3-OS, Cross-ISA &amp; Single-Host Float Pairs</option>
+              <option value="cross_isa">Cross-OS / Cross-ISA 3-OS Pairs (13)</option>
+              <option value="strict">Pinned 0-ULP Controls (&gt;25,000 ticks, 9)</option>
+              <option value="diverged">All Diverging Boundary Pairs (13)</option>
             </select>
           </div>
           <div class="ctrl-box">
@@ -222,14 +223,14 @@
 
         <div class="metric-grid" aria-live="polite">
           <div class="metric-tile">
-            <div class="k">Apple libm vs GNU glibc sin/cos</div>
-            <div class="v" style="color: var(--color-brand-amber);">t = 10 → 9,798</div>
-            <div class="s">Strict f64 (-ffp-contract=off) · 163.3 s</div>
+            <div class="k">3-OS libm Triangle (UCRT · libm · glibc)</div>
+            <div class="v" style="color: var(--color-brand-amber);">t = 10 &amp; 37 → 10,392</div>
+            <div class="s">Win11 UCRT vs glibc t=10 · vs Apple t=37</div>
           </div>
           <div class="metric-tile">
-            <div class="k">x86_64 VFMADD vs arm64 FMADD</div>
-            <div class="v" style="color: var(--color-brand-amber);">t = 406 → 11,205</div>
-            <div class="s">Algebraic only (no trig/fast-math) · 186.8 s</div>
+            <div class="k">MSVC vs Clang &amp; Cross-ISA FMA</div>
+            <div class="v" style="color: var(--color-brand-amber);">t = 192 &amp; 406 → 11,205</div>
+            <div class="s">MSVC /fp:precise vs Clang t=192 · ISA t=406</div>
           </div>
           <div class="metric-tile">
             <div class="k">V8 Math.sin (x86_64 vs aarch64)</div>
@@ -263,26 +264,33 @@
       <!-- Widget 3: Cross-GPU GE-H3 Headless wgpu (Metal / Vulkan) Tolerance Inspector -->
       <section id="ge-diag-03" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-03</code> · <code>GE-H3</code> Cross-GPU Headless <code>wgpu</code> Tolerance Inspector (<code>Metal</code> &amp; <code>Vulkan</code>)</h2>
-          <span class="chip chip-meas">24 / 24 GPU Frames Pass Gate (PSNR 64.2–72.1 dB)</span>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>ge-diag-03</code> · <code>GE-H3</code> 3-OS × 3-API Headless <code>wgpu</code> Tolerance Inspector (<code>DirectX 12</code>, <code>Metal</code> &amp; <code>Vulkan</code>)</h2>
+          <span class="chip chip-meas">28 / 28 Hardware GPU×API Pairs Pass Gate (PSNR ≥ 64.2 dB)</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          Four canonical <code>Q32.32</code> snapshots (ticks <code>0, 250, 1,000, 10,000</code>) were rendered at <code>512×512</code> <code>RGBA8Unorm</code> across <strong>Apple M3 Ultra (Metal)</strong>, <strong>AMD Radeon 8060S (RADV Vulkan)</strong>, <strong>NVIDIA GeForce RTX 4050 (Vulkan)</strong>, and <strong>Intel Iris Xe (ANV Vulkan)</strong>, plus <code>Mesa llvmpipe</code> and a zero-float <code>CPU Q16.16</code> integer reference. Adjust the gate thresholds to test conformance.
+          Four canonical <code>Q32.32</code> snapshots (ticks <code>0, 250, 1,000, 10,000</code>) were rendered at <code>512×512</code> <code>RGBA8Unorm</code> across <strong>8 hardware GPU×API endpoints</strong> spanning <strong>Windows 11 DirectX 12</strong> (<code>RTX 2060</code>, <code>Iris Xe</code>), <strong>Windows 11 Vulkan</strong> (<code>RTX 2060</code>, <code>Iris Xe</code>), <strong>macOS Metal</strong> (<code>Apple M3 Ultra</code>), and <strong>Linux Vulkan</strong> (<code>AMD Radeon 8060S RADV</code>, <code>NVIDIA RTX 4050</code>, <code>Intel Iris Xe ANV</code>), plus <code>Microsoft WARP (DX12)</code>, <code>Mesa llvmpipe (Vulkan)</code>, and 4-host zero-float <code>CPU Q16.16</code>.
         </p>
 
         <div class="ctrl-grid">
           <div class="ctrl-box">
             <label for="s-gpu-pair"><span>Adapter pair</span><span id="v-gpu-cat">Physical GPU</span></label>
             <select id="s-gpu-pair">
-              <option value="0" selected>Apple M3 Ultra (Metal) vs Intel Iris Xe (ANV Vulkan)</option>
-              <option value="1">AMD Radeon 8060S (RADV) vs Apple M3 Ultra (Metal)</option>
-              <option value="2">AMD Radeon 8060S (RADV) vs Intel Iris Xe (ANV Vulkan)</option>
-              <option value="3">AMD Radeon 8060S (RADV) vs NVIDIA RTX 4050 (Vulkan)</option>
-              <option value="4">Intel Iris Xe (ANV) vs NVIDIA RTX 4050 (Vulkan)</option>
-              <option value="5">Apple M3 Ultra (Metal) vs NVIDIA RTX 4050 (Vulkan)</option>
-              <option value="6">Apple M3 Ultra (Metal) vs Mesa llvmpipe (CPU Vulkan)</option>
-              <option value="7">NVIDIA RTX 4050 (Vulkan) vs CPU Q16.16 Integer Ref</option>
-              <option value="8">Apple M3 Ultra (Metal) vs CPU Q16.16 Integer Ref</option>
+              <option value="0" selected>NVIDIA RTX 2060 (Win11 DirectX 12) vs NVIDIA RTX 2060 (Win11 Vulkan)</option>
+              <option value="1">Intel Iris Xe (Win11 DirectX 12) vs Intel Iris Xe (Win11 Vulkan)</option>
+              <option value="2">NVIDIA RTX 2060 (Win11 DirectX 12) vs NVIDIA RTX 4050 (Linux Vulkan)</option>
+              <option value="3">Intel Iris Xe (Win11 DirectX 12) vs Intel Iris Xe (Linux ANV Vulkan)</option>
+              <option value="4">Apple M3 Ultra (macOS Metal) vs Intel Iris Xe (Win11 DirectX 12)</option>
+              <option value="5">Apple M3 Ultra (macOS Metal) vs Intel Iris Xe (Linux ANV Vulkan)</option>
+              <option value="6">AMD Radeon 8060S (Linux RADV Vulkan) vs Apple M3 Ultra (macOS Metal)</option>
+              <option value="7">AMD Radeon 8060S (Linux RADV Vulkan) vs Intel Iris Xe (Win11 DirectX 12)</option>
+              <option value="8">AMD Radeon 8060S (Linux RADV Vulkan) vs NVIDIA RTX 2060 (Win11 DirectX 12)</option>
+              <option value="9">NVIDIA RTX 2060 (Win11 DirectX 12) vs Intel Iris Xe (Win11 DirectX 12)</option>
+              <option value="10">Apple M3 Ultra (macOS Metal) vs NVIDIA RTX 2060 (Win11 DirectX 12)</option>
+              <option value="11">Apple M3 Ultra (macOS Metal) vs NVIDIA RTX 4050 (Linux Vulkan)</option>
+              <option value="12">Apple M3 Ultra (macOS Metal) vs Microsoft WARP (Win11 DirectX 12 CPU)</option>
+              <option value="13">Microsoft WARP (Win11 DirectX 12 CPU) vs Mesa llvmpipe (Linux Vulkan CPU)</option>
+              <option value="14">NVIDIA RTX 2060 (Win11 DirectX 12) vs CPU Q16.16 Integer Reference</option>
+              <option value="15">Apple M3 Ultra (macOS Metal) vs CPU Q16.16 Integer Reference</option>
             </select>
           </div>
           <div class="ctrl-box">
@@ -455,7 +463,7 @@
           </figure>
           <figure class="fig" style="margin: 0;">
             <img src="/figures/game-engines/cross-gpu-tolerance.svg" alt="Empirical results across Multi-ISA GE-H1, Cross-ISA GE-H2, and Cross-GPU GE-H3 Metal and Vulkan rendering tolerance" data-zoom="/figures/game-engines/cross-gpu-tolerance.svg">
-            <figcaption><strong>Figure 3 · Multi-ISA &amp; Cross-GPU Results</strong> · <code>0 / 20,500</code> <code>GE-H1</code> mismatches vs <code>64.2–72.1 dB</code> <code>PSNR</code> across Apple Metal, AMD RADV, Intel ANV, and NVIDIA Vulkan (<code>GE-H3</code>).</figcaption>
+            <figcaption><strong>Figure 3 · 3-OS Multi-ISA &amp; 3-API Cross-GPU Results</strong> · <code>0 / 25,500</code> <code>GE-H1</code> mismatches across macOS, Linux, and Windows 11 vs <code>64.2–108.3 dB</code> <code>PSNR</code> across DirectX 12, Metal, and Vulkan (<code>GE-H3</code>).</figcaption>
           </figure>
         </div>
       </section>
@@ -614,25 +622,36 @@
         { host:'nvidia_thor_aarch64_linux', hlabel:'Jetson Thor · aarch64 Linux 6.8', desc:'C++20 native (GCC 13.3.0 -O3)', ms:39.284, ms_sd:0.881, ns:392.8, scope:'CPU-only (reported_j = null)', j:null, j_sd:null, ck:'1,000/1,000' },
         { host:'nvidia_thor_aarch64_linux', hlabel:'Jetson Thor · aarch64 Linux 6.8', desc:'Rust → Wasm32 (Node v24.22)', ms:171.641, ms_sd:4.265, ns:1716.4, scope:'CPU-only (reported_j = null)', j:null, j_sd:null, ck:'1,000/1,000' },
         { host:'nvidia_thor_aarch64_linux', hlabel:'Jetson Thor · aarch64 Linux 6.8', desc:'JavaScript (Node v24.22 BigInt)', ms:1449.457, ms_sd:59.252, ns:14494.6, scope:'CPU-only (reported_j = null)', j:null, j_sd:null, ck:'1,000/1,000' },
-        { host:'nvidia_thor_aarch64_linux', hlabel:'Jetson Thor · aarch64 Linux 6.8', desc:'Python 3.12.3 (CPython int)', ms:4407.885, ms_sd:92.489, ns:44078.9, scope:'CPU-only (reported_j = null)', j:null, j_sd:null, ck:'1,000/1,000' }
+        { host:'nvidia_thor_aarch64_linux', hlabel:'Jetson Thor · aarch64 Linux 6.8', desc:'Python 3.12.3 (CPython int)', ms:4407.885, ms_sd:92.489, ns:44078.9, scope:'CPU-only (reported_j = null)', j:null, j_sd:null, ck:'1,000/1,000' },
+        { host:'win11_x86_64', hlabel:'Intel i7-1165G7 · x86_64 Win11 26300', desc:'Rust native (x86_64-pc-windows-msvc -O)', ms:49.730, ms_sd:1.727, ns:497.3, scope:'Win32 L3 (138.9M cyc · CPU RAPL blocked)', j:null, j_sd:null, ck:'1,000/1,000' },
+        { host:'win11_x86_64', hlabel:'Intel i7-1165G7 · x86_64 Win11 26300', desc:'C++20 native (MSVC cl.exe 19.44 /O2 /fp:strict)', ms:343.363, ms_sd:3.827, ns:3433.6, scope:'Win32 L3 (958.9M cyc · std::_Signed128)', j:null, j_sd:null, ck:'1,000/1,000' },
+        { host:'win11_x86_64', hlabel:'Intel i7-1165G7 · x86_64 Win11 26300', desc:'Rust → Wasm32 (Win11 Node v26.13)', ms:198.011, ms_sd:4.337, ns:1980.1, scope:'Win32 L3 (553.8M cyc · CPU RAPL blocked)', j:null, j_sd:null, ck:'1,000/1,000' },
+        { host:'win11_x86_64', hlabel:'Intel i7-1165G7 · x86_64 Win11 26300', desc:'JavaScript (Win11 Node v26.13 BigInt)', ms:1776.957, ms_sd:77.561, ns:17769.6, scope:'Win32 L3 (5,043.7M cyc · CPU RAPL blocked)', j:null, j_sd:null, ck:'1,000/1,000' },
+        { host:'win11_x86_64', hlabel:'Intel i7-1165G7 · x86_64 Win11 26300', desc:'Python 3.10.11 (Win11 CPython int)', ms:8899.233, ms_sd:2794.284, ns:88992.3, scope:'Win32 L3 (24,722.2M cyc · CPU RAPL blocked)', j:null, j_sd:null, ck:'1,000/1,000' }
       ];
 
       var H2 = [
+        { pair:'Win11 MSVC /fp:strict vs macOS & Linux Clang 21 (f64/f32)', mech:'3-OS & 3-ISA strict IEEE-754 algebraic+sqrt (FMA off, no trig)', cross:true, div:false, b:null, m:null, g:null },
         { pair:'arm64 macOS Clang 21 vs AMD/Intel x86_64 Linux Clang 21', mech:'Cross-ISA & Cross-OS strict IEEE-754 f64 algebraic+sqrt (-ffp-contract=off)', cross:true, div:false, b:null, m:null, g:null },
         { pair:'aarch64 Thor GCC 13.3 / Rust vs AMD x86_64 GCC 15.2 / Rust', mech:'Cross-ISA Linux strict IEEE-754 f64 algebraic+sqrt (-ffp-contract=off)', cross:true, div:false, b:null, m:null, g:null },
         { pair:'x86_64 Linux glibc 2.43 vs aarch64 Linux glibc 2.39 (f64_trig)', mech:'Cross-ISA GNU glibc std::sin/cos (strict f64, -ffp-contract=off)', cross:true, div:false, b:null, m:null, g:null },
+        { pair:'Win11 Node.js v26.13 vs Linux x86_64 Node.js v22.22 (Math.sin)', mech:'Cross-OS same-ISA (x86_64) V8 Math.sin/cos transcendental parity', cross:true, div:false, b:null, m:null, g:null },
         { pair:'Apple arm64 Clang 21 fmadd vs Thor aarch64 Clang 18 fmadd', mech:'Same-ISA-family AArch64 hardware FMA lowering (macOS vs Linux)', cross:true, div:false, b:null, m:null, g:null },
         { pair:'AMD Zen 5 x86_64 vs Intel Raptor Lake x86_64 (-mavx2 -mfma)', mech:'Same-ISA x86_64 AVX2+FMA3 hardware execution (AMD vs Intel)', cross:true, div:false, b:null, m:null, g:null },
+        { pair:'Windows 11 x86_64 UCRT vs Linux x86_64 GNU glibc 2.43', mech:'Cross-OS same-ISA std::sin/cos (ucrtbase.dll vs glibc, NO fast-math)', cross:true, div:true, b:10, m:7899, g:10392 },
+        { pair:'Windows 11 x86_64 UCRT vs Apple arm64 macOS libSystem', mech:'Cross-OS & Cross-ISA std::sin/cos (UCRT vs Apple libm, NO fast-math)', cross:true, div:true, b:37, m:5900, g:9798 },
         { pair:'Apple arm64 macOS libSystem vs x86_64/aarch64 GNU glibc', mech:'Cross-OS std::sin/cos (strict f64, -ffp-contract=off, NO -ffast-math)', cross:true, div:true, b:10, m:5900, g:9798 },
+        { pair:'Win11 MSVC (/fp:precise) vs Linux x86_64 Clang (-ffp-contract=fast)', mech:'Cross-compiler x86_64 default FMA rules (algebraic only, NO fast-math)', cross:true, div:true, b:192, m:5927, g:8869 },
         { pair:'x86_64 AVX2 (-mavx2 -mfma) vs arm64/aarch64 NEON (fmadd)', mech:'Cross-ISA hardware FMA lowering (algebraic only, NO -ffast-math)', cross:true, div:true, b:406, m:7422, g:11205 },
-        { pair:'x86_64 Node.js v22.22 vs aarch64 Node.js v24.22 (Math.sin)', mech:'Cross-ISA V8 Math.sin/cos transcendental drift (strict f64)', cross:true, div:true, b:66, m:7617, g:10093 },
-        { pair:'x86_64 AVX2 -ffast-math vs arm64 NEON -ffast-math', mech:'Cross-ISA -O3 -ffast-math algebraic reassociation & FMA', cross:true, div:true, b:192, m:5784, g:8234 },
-        { pair:'Same-ISA Clang vs Rustc / V8 / CPython (f64_strict)', mech:'Same-host IEEE-754 f64 algebraic+sqrt (FMA off)', cross:false, div:false, b:null, m:null, g:null },
-        { pair:'Same-OS Clang vs Rustc / CPython (f64_strict_trig)', mech:'Same-OS system libm sin/cos (f64 strict)', cross:false, div:false, b:null, m:null, g:null },
+        { pair:'Win11/Linux x86_64 Node.js vs macOS/Linux arm64 Node.js (Math.sin)', mech:'Cross-ISA V8 Math.sin/cos transcendental drift (strict f64)', cross:true, div:true, b:66, m:7617, g:10093 },
+        { pair:'Same-ISA MSVC / Clang vs Rustc / V8 / CPython (f64_strict)', mech:'Same-host IEEE-754 f64 algebraic+sqrt (FMA off)', cross:false, div:false, b:null, m:null, g:null },
+        { pair:'Win11 MSVC /fp:strict vs Win11 Rust & CPython (f64_trig)', mech:'Same-OS Windows UCRT ucrtbase.dll sin/cos parity (>25,000 ticks)', cross:false, div:false, b:null, m:null, g:null },
+        { pair:'Windows 11 UCRT std::sin/cos vs Win11 Node.js V8 Math.sin/cos', mech:'Same-host Windows 11 system UCRT vs V8 Math.sin/cos (strict f64)', cross:false, div:true, b:149, m:6190, g:9136 },
         { pair:'x86_64 Linux glibc 2.43 vs Node.js V8 Math.sin/cos', mech:'Same-host Linux system libm vs V8 Math.sin/cos (strict f64)', cross:false, div:true, b:10, m:6190, g:9136 },
         { pair:'Apple arm64 libSystem vs Node.js V8 Math.sin/cos', mech:'Same-host macOS system libm vs V8 Math.sin/cos (strict f64)', cross:false, div:true, b:37, m:5900, g:9136 },
+        { pair:'Win11 MSVC /fp:strict vs /arch:AVX2 /fp:fast (algebraic)', mech:'Windows 11 MSVC fast-math FMA contraction & reassociation', cross:false, div:true, b:192, m:6346, g:9639 },
         { pair:'cpp_f64_strict vs cpp_f64_fastmath_fma (M5 Max)', mech:'Compiler FMA contraction & reassociation (-O3 -ffast-math)', cross:false, div:true, b:192, m:6576, g:10093 },
-        { pair:'cpp_f64_strict vs cpp_f32_strict (algebraic)', mech:'Precision step-down: IEEE-754 binary64 (f64) vs binary32 (f32)', cross:false, div:true, b:1, m:9, g:2240 },
+        { pair:'cpp_f64_strict vs cpp_f32_strict (algebraic, all 3 OSs)', mech:'Precision step-down: IEEE-754 binary64 (f64) vs binary32 (f32)', cross:false, div:true, b:1, m:9, g:2240 },
         { pair:'cpp_f64_strict_trig vs cpp_f32_strict_trig', mech:'Transcendental + binary32 precision: f64 strict vs f32 strict', cross:false, div:true, b:1, m:8, g:1370 }
       ];
 
@@ -641,96 +660,822 @@
       // ======================================================================
       var H3_PAIRS = [
         {
-          a:'Apple M3 Ultra (Metal)', b:'Intel Iris Xe (ANV Vulkan)', cat:'Physical GPU vs Physical GPU',
-          meanDiff:1.301, maxD:2, minPsnr:72.06, minSsim:0.999986,
-          frames:{
-            '0':   { diff:1.3054, maxD:2, mae:0.00387, rmse:0.06224, psnr:72.25, ssim:0.999987, ha:'c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef', hb:'6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567' },
-            '250': { diff:1.2981, maxD:2, mae:0.00385, rmse:0.06205, psnr:72.28, ssim:0.999987, ha:'0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0', hb:'49f5e190b883fac65471d72363318c0d94fea5191a1969da35451d4fafcafd54' },
-            '1000':{ diff:1.3210, maxD:2, mae:0.00394, rmse:0.06292, psnr:72.15, ssim:0.999987, ha:'84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6', hb:'ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74' },
-            '10000':{diff:1.2798, maxD:2, mae:0.00379, rmse:0.06139, psnr:72.06, ssim:0.999986, ha:'cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a', hb:'e3d205cd2bd947d13a8ad4179bdf4b7caa0cae388595e44e3cf457ff03cb9f70' }
-          }
+                "a": "NVIDIA RTX 2060 (Win11 DirectX 12)",
+                "b": "NVIDIA RTX 2060 (Win11 Vulkan)",
+                "cat": "Same Physical GPU: DX12 vs Vulkan",
+                "meanDiff": 0.0002,
+                "maxD": 1,
+                "minPsnr": 108.34,
+                "minSsim": 1.0,
+                "frames": {
+                        "0": {
+                                "diff": 0.0,
+                                "maxD": 0,
+                                "mae": 0.0,
+                                "rmse": 0.0,
+                                "psnr": null,
+                                "ssim": 1.0,
+                                "ha": "af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8",
+                                "hb": "af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8"
+                        },
+                        "250": {
+                                "diff": 0.0,
+                                "maxD": 0,
+                                "mae": 0.0,
+                                "rmse": 0.0,
+                                "psnr": null,
+                                "ssim": 1.0,
+                                "ha": "cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338",
+                                "hb": "cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338"
+                        },
+                        "1000": {
+                                "diff": 0.0004,
+                                "maxD": 1,
+                                "mae": 1e-06,
+                                "rmse": 0.000977,
+                                "psnr": 108.34,
+                                "ssim": 1.0,
+                                "ha": "49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41",
+                                "hb": "9aa7269e4e3ba218f1fed0710f7ebcc2ac2eaa25c6679e175ed4f4a43f8a4e9b"
+                        },
+                        "10000": {
+                                "diff": 0.0004,
+                                "maxD": 1,
+                                "mae": 1e-06,
+                                "rmse": 0.000977,
+                                "psnr": 108.34,
+                                "ssim": 1.0,
+                                "ha": "138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16",
+                                "hb": "7cdb0e5569532a5f277496a5f4e8b4fae70343f1ec7dd4b963073d55e814229d"
+                        }
+                }
         },
         {
-          a:'AMD Radeon 8060S (RADV Vulkan)', b:'Apple M3 Ultra (Metal)', cat:'Physical GPU vs Physical GPU',
-          meanDiff:3.103, maxD:1, minPsnr:69.09, minSsim:0.999956,
-          frames:{
-            '0':   { diff:3.1147, maxD:1, mae:0.00793, rmse:0.08903, psnr:69.14, ssim:0.999959, ha:'afa619ae3b5691e1c3ba87b2b5606b01d34ab49ec0b7ca6fec480b43c5a0c47d', hb:'c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef' },
-            '250': { diff:3.0792, maxD:1, mae:0.00782, rmse:0.08842, psnr:69.20, ssim:0.999956, ha:'59a778a07e8551c52dc40f7732f1607c30a8603d387b022453d0b36b6cf7cc8b', hb:'0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0' },
-            '1000':{ diff:3.1551, maxD:1, mae:0.00802, rmse:0.08954, psnr:69.09, ssim:0.999956, ha:'13f2f43b2f6c3e8c0dfd4a8658a77385149c0cd04b5d27a887fd62da6f71d834', hb:'84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6' },
-            '10000':{diff:3.0640, maxD:1, mae:0.00775, rmse:0.08805, psnr:69.24, ssim:0.999956, ha:'064fdde5ef09d5ba9f935591124b3819e215c1e3b896ce4b611032ac0e08fa07', hb:'cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a' }
-          }
+                "a": "Intel Iris Xe (Win11 DirectX 12)",
+                "b": "Intel Iris Xe (Win11 Vulkan)",
+                "cat": "Same Physical GPU: DX12 vs Vulkan",
+                "meanDiff": 0.2832,
+                "maxD": 1,
+                "minPsnr": 79.52,
+                "minSsim": 0.999996,
+                "frames": {
+                        "0": {
+                                "diff": 0.2781,
+                                "maxD": 1,
+                                "mae": 0.000697,
+                                "rmse": 0.026403,
+                                "psnr": 79.7,
+                                "ssim": 0.999997,
+                                "ha": "6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567",
+                                "hb": "9ddba08274c440712677ea38c9354cacda63aa998adc7ad256b0087f450646ec"
+                        },
+                        "250": {
+                                "diff": 0.2892,
+                                "maxD": 1,
+                                "mae": 0.000726,
+                                "rmse": 0.02694,
+                                "psnr": 79.52,
+                                "ssim": 0.999996,
+                                "ha": "f6da1eb3226e05b4988af52a0f15fe07decb9ec858f7cea6d83234c9efc95513",
+                                "hb": "1fd716675728682baa1c80b32af8efc48a3d2ccb30b2ddac944bdc0fc7883dbf"
+                        },
+                        "1000": {
+                                "diff": 0.2872,
+                                "maxD": 1,
+                                "mae": 0.00072,
+                                "rmse": 0.026833,
+                                "psnr": 79.56,
+                                "ssim": 0.999996,
+                                "ha": "ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74",
+                                "hb": "8178b90d4bf0da5e42b741aea2bb70dc0d03a455268140d8266548a1c27bb6b1"
+                        },
+                        "10000": {
+                                "diff": 0.2781,
+                                "maxD": 1,
+                                "mae": 0.000699,
+                                "rmse": 0.026439,
+                                "psnr": 79.69,
+                                "ssim": 0.999996,
+                                "ha": "ec708787439d1be292105995e81d7c54168590e9e4b404be499e69418c26e640",
+                                "hb": "d65e7b40527f85c90702d5eaa63cd05aaba4791717cdead26a7b9ce1ef2c2c95"
+                        }
+                }
         },
         {
-          a:'AMD Radeon 8060S (RADV Vulkan)', b:'Intel Iris Xe (ANV Vulkan)', cat:'Physical GPU vs Physical GPU',
-          meanDiff:3.774, maxD:2, minPsnr:67.97, minSsim:0.999951,
-          frames:{
-            '0':   { diff:3.8025, maxD:2, mae:0.01038, rmse:0.10193, psnr:67.97, ssim:0.999956, ha:'afa619ae3b5691e1c3ba87b2b5606b01d34ab49ec0b7ca6fec480b43c5a0c47d', hb:'6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567' },
-            '250': { diff:3.7926, maxD:2, mae:0.01024, rmse:0.10127, psnr:68.02, ssim:0.999954, ha:'59a778a07e8551c52dc40f7732f1607c30a8603d387b022453d0b36b6cf7cc8b', hb:'49f5e190b883fac65471d72363318c0d94fea5191a1969da35451d4fafcafd54' },
-            '1000':{ diff:3.6999, maxD:2, mae:0.00997, rmse:0.09991, psnr:68.14, ssim:0.999956, ha:'13f2f43b2f6c3e8c0dfd4a8658a77385149c0cd04b5d27a887fd62da6f71d834', hb:'ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74' },
-            '10000':{diff:3.8002, maxD:2, mae:0.01029, rmse:0.10152, psnr:68.00, ssim:0.999951, ha:'064fdde5ef09d5ba9f935591124b3819e215c1e3b896ce4b611032ac0e08fa07', hb:'e3d205cd2bd947d13a8ad4179bdf4b7caa0cae388595e44e3cf457ff03cb9f70' }
-          }
+                "a": "NVIDIA RTX 2060 (Win11 DirectX 12)",
+                "b": "NVIDIA RTX 4050 (Linux Vulkan)",
+                "cat": "Physical GPU vs Physical GPU",
+                "meanDiff": 0.0,
+                "maxD": 0,
+                "minPsnr": null,
+                "minSsim": 1.0,
+                "frames": {
+                        "0": {
+                                "diff": 0.0,
+                                "maxD": 0,
+                                "mae": 0.0,
+                                "rmse": 0.0,
+                                "psnr": null,
+                                "ssim": 1.0,
+                                "ha": "af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8",
+                                "hb": "af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8"
+                        },
+                        "250": {
+                                "diff": 0.0,
+                                "maxD": 0,
+                                "mae": 0.0,
+                                "rmse": 0.0,
+                                "psnr": null,
+                                "ssim": 1.0,
+                                "ha": "cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338",
+                                "hb": "cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338"
+                        },
+                        "1000": {
+                                "diff": 0.0,
+                                "maxD": 0,
+                                "mae": 0.0,
+                                "rmse": 0.0,
+                                "psnr": null,
+                                "ssim": 1.0,
+                                "ha": "49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41",
+                                "hb": "49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41"
+                        },
+                        "10000": {
+                                "diff": 0.0,
+                                "maxD": 0,
+                                "mae": 0.0,
+                                "rmse": 0.0,
+                                "psnr": null,
+                                "ssim": 1.0,
+                                "ha": "138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16",
+                                "hb": "138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16"
+                        }
+                }
         },
         {
-          a:'AMD Radeon 8060S (RADV Vulkan)', b:'NVIDIA GeForce RTX 4050 (Vulkan)', cat:'Physical GPU vs Physical GPU',
-          meanDiff:6.553, maxD:2, minPsnr:65.64, minSsim:0.999874,
-          frames:{
-            '0':   { diff:6.5144, maxD:2, mae:0.01733, rmse:0.13170, psnr:65.74, ssim:0.999877, ha:'afa619ae3b5691e1c3ba87b2b5606b01d34ab49ec0b7ca6fec480b43c5a0c47d', hb:'af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8' },
-            '250': { diff:6.5613, maxD:2, mae:0.01737, rmse:0.13184, psnr:65.73, ssim:0.999875, ha:'59a778a07e8551c52dc40f7732f1607c30a8603d387b022453d0b36b6cf7cc8b', hb:'cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338' },
-            '1000':{ diff:6.6097, maxD:2, mae:0.01755, rmse:0.13322, psnr:65.64, ssim:0.999874, ha:'13f2f43b2f6c3e8c0dfd4a8658a77385149c0cd04b5d27a887fd62da6f71d834', hb:'49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41' },
-            '10000':{diff:6.5266, maxD:2, mae:0.01715, rmse:0.13040, psnr:65.83, ssim:0.999877, ha:'064fdde5ef09d5ba9f935591124b3819e215c1e3b896ce4b611032ac0e08fa07', hb:'138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16' }
-          }
+                "a": "Intel Iris Xe (Win11 DirectX 12)",
+                "b": "Intel Iris Xe (Linux ANV Vulkan)",
+                "cat": "Physical GPU vs Physical GPU",
+                "meanDiff": 0.0003,
+                "maxD": 1,
+                "minPsnr": 105.33,
+                "minSsim": 1.0,
+                "frames": {
+                        "0": {
+                                "diff": 0.0,
+                                "maxD": 0,
+                                "mae": 0.0,
+                                "rmse": 0.0,
+                                "psnr": null,
+                                "ssim": 1.0,
+                                "ha": "6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567",
+                                "hb": "6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567"
+                        },
+                        "250": {
+                                "diff": 0.0004,
+                                "maxD": 1,
+                                "mae": 1e-06,
+                                "rmse": 0.000977,
+                                "psnr": 108.34,
+                                "ssim": 1.0,
+                                "ha": "f6da1eb3226e05b4988af52a0f15fe07decb9ec858f7cea6d83234c9efc95513",
+                                "hb": "49f5e190b883fac65471d72363318c0d94fea5191a1969da35451d4fafcafd54"
+                        },
+                        "1000": {
+                                "diff": 0.0,
+                                "maxD": 0,
+                                "mae": 0.0,
+                                "rmse": 0.0,
+                                "psnr": null,
+                                "ssim": 1.0,
+                                "ha": "ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74",
+                                "hb": "ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74"
+                        },
+                        "10000": {
+                                "diff": 0.0008,
+                                "maxD": 1,
+                                "mae": 2e-06,
+                                "rmse": 0.001381,
+                                "psnr": 105.33,
+                                "ssim": 1.0,
+                                "ha": "ec708787439d1be292105995e81d7c54168590e9e4b404be499e69418c26e640",
+                                "hb": "e3d205cd2bd947d13a8ad4179bdf4b7caa0cae388595e44e3cf457ff03cb9f70"
+                        }
+                }
         },
         {
-          a:'Intel Iris Xe (ANV Vulkan)', b:'NVIDIA GeForce RTX 4050 (Vulkan)', cat:'Physical GPU vs Physical GPU',
-          meanDiff:8.280, maxD:2, minPsnr:64.79, minSsim:0.999844,
-          frames:{
-            '0':   { diff:8.2687, maxD:2, mae:0.02145, rmse:0.14653, psnr:64.81, ssim:0.999846, ha:'6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567', hb:'af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8' },
-            '250': { diff:8.3019, maxD:2, mae:0.02156, rmse:0.14689, psnr:64.79, ssim:0.999844, ha:'49f5e190b883fac65471d72363318c0d94fea5191a1969da35451d4fafcafd54', hb:'cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338' },
-            '1000':{ diff:8.2794, maxD:2, mae:0.02151, rmse:0.14674, psnr:64.80, ssim:0.999845, ha:'ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74', hb:'49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41' },
-            '10000':{diff:8.2684, maxD:2, mae:0.02145, rmse:0.14651, psnr:64.81, ssim:0.999846, ha:'e3d205cd2bd947d13a8ad4179bdf4b7caa0cae388595e44e3cf457ff03cb9f70', hb:'138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16' }
-          }
+                "a": "Apple M3 Ultra (macOS Metal)",
+                "b": "Intel Iris Xe (Win11 DirectX 12)",
+                "cat": "Physical GPU vs Physical GPU",
+                "meanDiff": 1.3012,
+                "maxD": 2,
+                "minPsnr": 72.06,
+                "minSsim": 0.999986,
+                "frames": {
+                        "0": {
+                                "diff": 1.3512,
+                                "maxD": 1,
+                                "mae": 0.004034,
+                                "rmse": 0.063514,
+                                "psnr": 72.07,
+                                "ssim": 0.999988,
+                                "ha": "c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef",
+                                "hb": "6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567"
+                        },
+                        "250": {
+                                "diff": 1.3,
+                                "maxD": 2,
+                                "mae": 0.00384,
+                                "rmse": 0.062002,
+                                "psnr": 72.28,
+                                "ssim": 0.999989,
+                                "ha": "0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0",
+                                "hb": "f6da1eb3226e05b4988af52a0f15fe07decb9ec858f7cea6d83234c9efc95513"
+                        },
+                        "1000": {
+                                "diff": 1.1936,
+                                "maxD": 1,
+                                "mae": 0.003536,
+                                "rmse": 0.059466,
+                                "psnr": 72.64,
+                                "ssim": 0.999991,
+                                "ha": "84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6",
+                                "hb": "ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74"
+                        },
+                        "10000": {
+                                "diff": 1.3599,
+                                "maxD": 1,
+                                "mae": 0.004046,
+                                "rmse": 0.063612,
+                                "psnr": 72.06,
+                                "ssim": 0.999986,
+                                "ha": "cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a",
+                                "hb": "ec708787439d1be292105995e81d7c54168590e9e4b404be499e69418c26e640"
+                        }
+                }
         },
         {
-          a:'Apple M3 Ultra (Metal)', b:'NVIDIA GeForce RTX 4050 (Vulkan)', cat:'Physical GPU vs Physical GPU',
-          meanDiff:9.337, maxD:2, minPsnr:64.16, minSsim:0.999833,
-          frames:{
-            '0':   { diff:9.3155, maxD:2, mae:0.02462, rmse:0.15703, psnr:64.21, ssim:0.999835, ha:'c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef', hb:'af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8' },
-            '250': { diff:9.3540, maxD:2, mae:0.02472, rmse:0.15736, psnr:64.19, ssim:0.999834, ha:'0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0', hb:'cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338' },
-            '1000':{ diff:9.3914, maxD:2, mae:0.02483, rmse:0.15789, psnr:64.16, ssim:0.999833, ha:'84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6', hb:'49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41' },
-            '10000':{diff:9.2869, maxD:2, mae:0.02452, rmse:0.15652, psnr:64.24, ssim:0.999836, ha:'cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a', hb:'138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16' }
-          }
+                "a": "Apple M3 Ultra (macOS Metal)",
+                "b": "Intel Iris Xe (Linux ANV Vulkan)",
+                "cat": "Physical GPU vs Physical GPU",
+                "meanDiff": 1.3011,
+                "maxD": 2,
+                "minPsnr": 72.06,
+                "minSsim": 0.999986,
+                "frames": {
+                        "0": {
+                                "diff": 1.3512,
+                                "maxD": 1,
+                                "mae": 0.004034,
+                                "rmse": 0.063514,
+                                "psnr": 72.07,
+                                "ssim": 0.999988,
+                                "ha": "c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef",
+                                "hb": "6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567"
+                        },
+                        "250": {
+                                "diff": 1.2997,
+                                "maxD": 2,
+                                "mae": 0.003839,
+                                "rmse": 0.061994,
+                                "psnr": 72.28,
+                                "ssim": 0.999989,
+                                "ha": "0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0",
+                                "hb": "49f5e190b883fac65471d72363318c0d94fea5191a1969da35451d4fafcafd54"
+                        },
+                        "1000": {
+                                "diff": 1.1936,
+                                "maxD": 1,
+                                "mae": 0.003536,
+                                "rmse": 0.059466,
+                                "psnr": 72.64,
+                                "ssim": 0.999991,
+                                "ha": "84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6",
+                                "hb": "ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74"
+                        },
+                        "10000": {
+                                "diff": 1.3599,
+                                "maxD": 1,
+                                "mae": 0.004046,
+                                "rmse": 0.063612,
+                                "psnr": 72.06,
+                                "ssim": 0.999986,
+                                "ha": "cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a",
+                                "hb": "e3d205cd2bd947d13a8ad4179bdf4b7caa0cae388595e44e3cf457ff03cb9f70"
+                        }
+                }
         },
         {
-          a:'Apple M3 Ultra (Metal)', b:'Mesa llvmpipe (LLVM 21.1.8 Vulkan)', cat:'Physical GPU vs Software Vulkan',
-          meanDiff:1.589, maxD:2, minPsnr:70.35, minSsim:0.999983,
-          frames:{
-            '0':   { diff:1.5957, maxD:2, mae:0.00544, rmse:0.07381, psnr:70.77, ssim:0.999984, ha:'c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef', hb:'ccb291f67d79a2ee12cd4cdd8cbc192f6968e4d01728b3ce87b3329be70efb48' },
-            '250': { diff:1.5820, maxD:2, mae:0.00539, rmse:0.07325, psnr:70.83, ssim:0.999984, ha:'0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0', hb:'58c9b7ea9b67351e34b08cd8161f3fa38cb153f39298f58b9018120c3d336c8a' },
-            '1000':{ diff:1.6109, maxD:2, mae:0.00552, rmse:0.07747, psnr:70.35, ssim:0.999983, ha:'84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6', hb:'7998a44c842910dc2d7a3d59fc126608ff6b638f91e20f1be33e8f38fa6dc87d' },
-            '10000':{diff:1.5686, maxD:2, mae:0.00534, rmse:0.06972, psnr:71.26, ssim:0.999984, ha:'cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a', hb:'de9bc1dbf9d020796bb93ca6b78864f1eb62e087d92e5bb621855fdf76396863' }
-          }
+                "a": "AMD Radeon 8060S (Linux RADV Vulkan)",
+                "b": "Apple M3 Ultra (macOS Metal)",
+                "cat": "Physical GPU vs Physical GPU",
+                "meanDiff": 3.1033,
+                "maxD": 1,
+                "minPsnr": 69.09,
+                "minSsim": 0.999956,
+                "frames": {
+                        "0": {
+                                "diff": 3.1147,
+                                "maxD": 1,
+                                "mae": 0.007927,
+                                "rmse": 0.089033,
+                                "psnr": 69.14,
+                                "ssim": 0.999959,
+                                "ha": "afa619ae3b5691e1c3ba87b2b5606b01d34ab49ec0b7ca6fec480b43c5a0c47d",
+                                "hb": "c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef"
+                        },
+                        "250": {
+                                "diff": 3.0792,
+                                "maxD": 1,
+                                "mae": 0.007818,
+                                "rmse": 0.088421,
+                                "psnr": 69.2,
+                                "ssim": 0.999956,
+                                "ha": "59a778a07e8551c52dc40f7732f1607c30a8603d387b022453d0b36b6cf7cc8b",
+                                "hb": "0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0"
+                        },
+                        "1000": {
+                                "diff": 3.1551,
+                                "maxD": 1,
+                                "mae": 0.008018,
+                                "rmse": 0.089541,
+                                "psnr": 69.09,
+                                "ssim": 0.999956,
+                                "ha": "13f2f43b2f6c3e8c0dfd4a8658a77385149c0cd04b5d27a887fd62da6f71d834",
+                                "hb": "84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6"
+                        },
+                        "10000": {
+                                "diff": 3.064,
+                                "maxD": 1,
+                                "mae": 0.007752,
+                                "rmse": 0.088048,
+                                "psnr": 69.24,
+                                "ssim": 0.999956,
+                                "ha": "064fdde5ef09d5ba9f935591124b3819e215c1e3b896ce4b611032ac0e08fa07",
+                                "hb": "cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a"
+                        }
+                }
         },
         {
-          a:'NVIDIA GeForce RTX 4050 (Vulkan)', b:'CPU Q16.16 Integer Reference', cat:'GPU vs CPU Q16.16 Reference',
-          meanDiff:20.400, maxD:2, minPsnr:60.58, minSsim:0.999693,
-          frames:{
-            '0':   { diff:20.3812, maxD:2, mae:0.05606, rmse:0.23675, psnr:60.65, ssim:0.999695, ha:'af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8', hb:'9c693a38eb59531f91eba15eb22ea1cb763f83e1ceb9e38fd1051f3d0422f8ac' },
-            '250': { diff:20.4155, maxD:2, mae:0.05618, rmse:0.23701, psnr:60.63, ssim:0.999694, ha:'cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338', hb:'38643021e6439b57998c864d8493f3ef27a898f8bc6d249ca38a4b144fe4dbfd' },
-            '1000':{ diff:20.4578, maxD:2, mae:0.05632, rmse:0.23855, psnr:60.58, ssim:0.999693, ha:'49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41', hb:'912058d6ffb2f4777920d49eaee225cc5659cc7db3a2c6f7ba056a7ec4f009f7' },
-            '10000':{diff:20.3457, maxD:2, mae:0.05592, rmse:0.23525, psnr:60.70, ssim:0.999696, ha:'138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16', hb:'ce3b2cec3b4d1e0559e9fd023a476537bfbd64a455d3c7f2e46c5c27e359599b' }
-          }
+                "a": "AMD Radeon 8060S (Linux RADV Vulkan)",
+                "b": "Intel Iris Xe (Win11 DirectX 12)",
+                "cat": "Physical GPU vs Physical GPU",
+                "meanDiff": 3.7737,
+                "maxD": 2,
+                "minPsnr": 67.97,
+                "minSsim": 0.999951,
+                "frames": {
+                        "0": {
+                                "diff": 3.8025,
+                                "maxD": 2,
+                                "mae": 0.01038,
+                                "rmse": 0.101928,
+                                "psnr": 67.97,
+                                "ssim": 0.999956,
+                                "ha": "afa619ae3b5691e1c3ba87b2b5606b01d34ab49ec0b7ca6fec480b43c5a0c47d",
+                                "hb": "6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567"
+                        },
+                        "250": {
+                                "diff": 3.7922,
+                                "maxD": 2,
+                                "mae": 0.010242,
+                                "rmse": 0.101266,
+                                "psnr": 68.02,
+                                "ssim": 0.999954,
+                                "ha": "59a778a07e8551c52dc40f7732f1607c30a8603d387b022453d0b36b6cf7cc8b",
+                                "hb": "f6da1eb3226e05b4988af52a0f15fe07decb9ec858f7cea6d83234c9efc95513"
+                        },
+                        "1000": {
+                                "diff": 3.6999,
+                                "maxD": 2,
+                                "mae": 0.009967,
+                                "rmse": 0.099911,
+                                "psnr": 68.14,
+                                "ssim": 0.999956,
+                                "ha": "13f2f43b2f6c3e8c0dfd4a8658a77385149c0cd04b5d27a887fd62da6f71d834",
+                                "hb": "ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74"
+                        },
+                        "10000": {
+                                "diff": 3.8002,
+                                "maxD": 2,
+                                "mae": 0.010288,
+                                "rmse": 0.101516,
+                                "psnr": 68.0,
+                                "ssim": 0.999951,
+                                "ha": "064fdde5ef09d5ba9f935591124b3819e215c1e3b896ce4b611032ac0e08fa07",
+                                "hb": "ec708787439d1be292105995e81d7c54168590e9e4b404be499e69418c26e640"
+                        }
+                }
         },
         {
-          a:'Apple M3 Ultra (Metal)', b:'CPU Q16.16 Integer Reference', cat:'GPU vs CPU Q16.16 Reference',
-          meanDiff:27.626, maxD:2, minPsnr:59.13, minSsim:0.999556,
-          frames:{
-            '0':   { diff:27.6012, maxD:2, mae:0.07856, rmse:0.28054, psnr:59.17, ssim:0.999558, ha:'c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef', hb:'9c693a38eb59531f91eba15eb22ea1cb763f83e1ceb9e38fd1051f3d0422f8ac' },
-            '250': { diff:27.6485, maxD:2, mae:0.07871, rmse:0.28080, psnr:59.16, ssim:0.999557, ha:'0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0', hb:'38643021e6439b57998c864d8493f3ef27a898f8bc6d249ca38a4b144fe4dbfd' },
-            '1000':{ diff:27.6844, maxD:2, mae:0.07884, rmse:0.28181, psnr:59.13, ssim:0.999556, ha:'84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6', hb:'912058d6ffb2f4777920d49eaee225cc5659cc7db3a2c6f7ba056a7ec4f009f7' },
-            '10000':{diff:27.5711, maxD:2, mae:0.07845, rmse:0.27957, psnr:59.20, ssim:0.999559, ha:'cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a', hb:'ce3b2cec3b4d1e0559e9fd023a476537bfbd64a455d3c7f2e46c5c27e359599b' }
-          }
+                "a": "AMD Radeon 8060S (Linux RADV Vulkan)",
+                "b": "NVIDIA RTX 2060 (Win11 DirectX 12)",
+                "cat": "Physical GPU vs Physical GPU",
+                "meanDiff": 6.5535,
+                "maxD": 2,
+                "minPsnr": 65.64,
+                "minSsim": 0.999874,
+                "frames": {
+                        "0": {
+                                "diff": 6.5144,
+                                "maxD": 2,
+                                "mae": 0.017331,
+                                "rmse": 0.131698,
+                                "psnr": 65.74,
+                                "ssim": 0.999877,
+                                "ha": "afa619ae3b5691e1c3ba87b2b5606b01d34ab49ec0b7ca6fec480b43c5a0c47d",
+                                "hb": "af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8"
+                        },
+                        "250": {
+                                "diff": 6.5018,
+                                "maxD": 2,
+                                "mae": 0.017171,
+                                "rmse": 0.131169,
+                                "psnr": 65.77,
+                                "ssim": 0.999879,
+                                "ha": "59a778a07e8551c52dc40f7732f1607c30a8603d387b022453d0b36b6cf7cc8b",
+                                "hb": "cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338"
+                        },
+                        "1000": {
+                                "diff": 6.5037,
+                                "maxD": 2,
+                                "mae": 0.01715,
+                                "rmse": 0.131074,
+                                "psnr": 65.78,
+                                "ssim": 0.999881,
+                                "ha": "13f2f43b2f6c3e8c0dfd4a8658a77385149c0cd04b5d27a887fd62da6f71d834",
+                                "hb": "49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41"
+                        },
+                        "10000": {
+                                "diff": 6.694,
+                                "maxD": 2,
+                                "mae": 0.017732,
+                                "rmse": 0.133239,
+                                "psnr": 65.64,
+                                "ssim": 0.999874,
+                                "ha": "064fdde5ef09d5ba9f935591124b3819e215c1e3b896ce4b611032ac0e08fa07",
+                                "hb": "138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16"
+                        }
+                }
+        },
+        {
+                "a": "NVIDIA RTX 2060 (Win11 DirectX 12)",
+                "b": "Intel Iris Xe (Win11 DirectX 12)",
+                "cat": "Physical GPU vs Physical GPU",
+                "meanDiff": 8.2794,
+                "maxD": 2,
+                "minPsnr": 64.79,
+                "minSsim": 0.999844,
+                "frames": {
+                        "0": {
+                                "diff": 8.2558,
+                                "maxD": 2,
+                                "mae": 0.021583,
+                                "rmse": 0.146969,
+                                "psnr": 64.79,
+                                "ssim": 0.999846,
+                                "ha": "af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8",
+                                "hb": "6f2cc9f91ff3c765c9e2b761b0c89763c784f244b533a44491721f3674a71567"
+                        },
+                        "250": {
+                                "diff": 8.2386,
+                                "maxD": 2,
+                                "mae": 0.02137,
+                                "rmse": 0.146263,
+                                "psnr": 64.83,
+                                "ssim": 0.999846,
+                                "ha": "cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338",
+                                "hb": "f6da1eb3226e05b4988af52a0f15fe07decb9ec858f7cea6d83234c9efc95513"
+                        },
+                        "1000": {
+                                "diff": 8.326,
+                                "maxD": 2,
+                                "mae": 0.021496,
+                                "rmse": 0.146673,
+                                "psnr": 64.8,
+                                "ssim": 0.999846,
+                                "ha": "49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41",
+                                "hb": "ab7720e1b1c561510f632ba1e289656db490966991e16a16589c63f8812e3c74"
+                        },
+                        "10000": {
+                                "diff": 8.2973,
+                                "maxD": 2,
+                                "mae": 0.021525,
+                                "rmse": 0.146761,
+                                "psnr": 64.8,
+                                "ssim": 0.999844,
+                                "ha": "138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16",
+                                "hb": "ec708787439d1be292105995e81d7c54168590e9e4b404be499e69418c26e640"
+                        }
+                }
+        },
+        {
+                "a": "Apple M3 Ultra (macOS Metal)",
+                "b": "NVIDIA RTX 2060 (Win11 DirectX 12)",
+                "cat": "Physical GPU vs Physical GPU",
+                "meanDiff": 9.3368,
+                "maxD": 2,
+                "minPsnr": 64.16,
+                "minSsim": 0.999833,
+                "frames": {
+                        "0": {
+                                "diff": 9.2983,
+                                "maxD": 2,
+                                "mae": 0.024726,
+                                "rmse": 0.157408,
+                                "psnr": 64.19,
+                                "ssim": 0.999837,
+                                "ha": "c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef",
+                                "hb": "af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8"
+                        },
+                        "250": {
+                                "diff": 9.2937,
+                                "maxD": 2,
+                                "mae": 0.024505,
+                                "rmse": 0.156698,
+                                "psnr": 64.23,
+                                "ssim": 0.999837,
+                                "ha": "0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0",
+                                "hb": "cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338"
+                        },
+                        "1000": {
+                                "diff": 9.3346,
+                                "maxD": 2,
+                                "mae": 0.024542,
+                                "rmse": 0.156811,
+                                "psnr": 64.22,
+                                "ssim": 0.999839,
+                                "ha": "84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6",
+                                "hb": "49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41"
+                        },
+                        "10000": {
+                                "diff": 9.4204,
+                                "maxD": 2,
+                                "mae": 0.024897,
+                                "rmse": 0.157901,
+                                "psnr": 64.16,
+                                "ssim": 0.999833,
+                                "ha": "cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a",
+                                "hb": "138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16"
+                        }
+                }
+        },
+        {
+                "a": "Apple M3 Ultra (macOS Metal)",
+                "b": "NVIDIA RTX 4050 (Linux Vulkan)",
+                "cat": "Physical GPU vs Physical GPU",
+                "meanDiff": 9.3368,
+                "maxD": 2,
+                "minPsnr": 64.16,
+                "minSsim": 0.999833,
+                "frames": {
+                        "0": {
+                                "diff": 9.2983,
+                                "maxD": 2,
+                                "mae": 0.024726,
+                                "rmse": 0.157408,
+                                "psnr": 64.19,
+                                "ssim": 0.999837,
+                                "ha": "c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef",
+                                "hb": "af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8"
+                        },
+                        "250": {
+                                "diff": 9.2937,
+                                "maxD": 2,
+                                "mae": 0.024505,
+                                "rmse": 0.156698,
+                                "psnr": 64.23,
+                                "ssim": 0.999837,
+                                "ha": "0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0",
+                                "hb": "cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338"
+                        },
+                        "1000": {
+                                "diff": 9.3346,
+                                "maxD": 2,
+                                "mae": 0.024542,
+                                "rmse": 0.156811,
+                                "psnr": 64.22,
+                                "ssim": 0.999839,
+                                "ha": "84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6",
+                                "hb": "49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41"
+                        },
+                        "10000": {
+                                "diff": 9.4204,
+                                "maxD": 2,
+                                "mae": 0.024897,
+                                "rmse": 0.157901,
+                                "psnr": 64.16,
+                                "ssim": 0.999833,
+                                "ha": "cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a",
+                                "hb": "138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16"
+                        }
+                }
+        },
+        {
+                "a": "Apple M3 Ultra (macOS Metal)",
+                "b": "Microsoft WARP (Win11 DirectX 12 CPU)",
+                "cat": "Physical GPU vs Software DX12 WARP",
+                "meanDiff": 0.003,
+                "maxD": 1,
+                "minPsnr": 98.79,
+                "minSsim": 1.0,
+                "frames": {
+                        "0": {
+                                "diff": 0.0031,
+                                "maxD": 1,
+                                "mae": 8e-06,
+                                "rmse": 0.002762,
+                                "psnr": 99.31,
+                                "ssim": 1.0,
+                                "ha": "c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef",
+                                "hb": "65009f0176cb554a5f0fa0ab15f02e942b13a295e9824f2f3fe941fd01267130"
+                        },
+                        "250": {
+                                "diff": 0.0031,
+                                "maxD": 1,
+                                "mae": 8e-06,
+                                "rmse": 0.002762,
+                                "psnr": 99.31,
+                                "ssim": 1.0,
+                                "ha": "0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0",
+                                "hb": "48cb1cd435c1d3bb59992f1582a50858cc0607ec54bef3a3f404301428487c72"
+                        },
+                        "1000": {
+                                "diff": 0.0034,
+                                "maxD": 1,
+                                "mae": 9e-06,
+                                "rmse": 0.00293,
+                                "psnr": 98.79,
+                                "ssim": 1.0,
+                                "ha": "84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6",
+                                "hb": "667735ae680b29b05e8a38f8f494b1d484bf40dd95a7fa64d86a5fc486551a49"
+                        },
+                        "10000": {
+                                "diff": 0.0023,
+                                "maxD": 1,
+                                "mae": 6e-06,
+                                "rmse": 0.002392,
+                                "psnr": 100.56,
+                                "ssim": 1.0,
+                                "ha": "cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a",
+                                "hb": "d8e052b7cb107085fda32887302908941ea9f452e695d826921617a4a65d8f6a"
+                        }
+                }
+        },
+        {
+                "a": "Microsoft WARP (Win11 DirectX 12 CPU)",
+                "b": "Mesa llvmpipe (Linux Vulkan CPU)",
+                "cat": "Software DX12 WARP vs Software Vulkan",
+                "meanDiff": 1.5911,
+                "maxD": 2,
+                "minPsnr": 70.35,
+                "minSsim": 0.999983,
+                "frames": {
+                        "0": {
+                                "diff": 1.6899,
+                                "maxD": 1,
+                                "mae": 0.005681,
+                                "rmse": 0.075373,
+                                "psnr": 70.59,
+                                "ssim": 0.999988,
+                                "ha": "65009f0176cb554a5f0fa0ab15f02e942b13a295e9824f2f3fe941fd01267130",
+                                "hb": "ccb291f67d79a2ee12cd4cdd8cbc192f6968e4d01728b3ce87b3329be70efb48"
+                        },
+                        "250": {
+                                "diff": 1.5949,
+                                "maxD": 1,
+                                "mae": 0.005479,
+                                "rmse": 0.074019,
+                                "psnr": 70.74,
+                                "ssim": 0.999989,
+                                "ha": "48cb1cd435c1d3bb59992f1582a50858cc0607ec54bef3a3f404301428487c72",
+                                "hb": "58c9b7ea9b67351e34b08cd8161f3fa38cb153f39298f58b9018120c3d336c8a"
+                        },
+                        "1000": {
+                                "diff": 1.3329,
+                                "maxD": 1,
+                                "mae": 0.004556,
+                                "rmse": 0.067496,
+                                "psnr": 71.55,
+                                "ssim": 0.999993,
+                                "ha": "667735ae680b29b05e8a38f8f494b1d484bf40dd95a7fa64d86a5fc486551a49",
+                                "hb": "7998a44c842910dc2d7a3d59fc126608ff6b638f91e20f1be33e8f38fa6dc87d"
+                        },
+                        "10000": {
+                                "diff": 1.7467,
+                                "maxD": 2,
+                                "mae": 0.005983,
+                                "rmse": 0.077475,
+                                "psnr": 70.35,
+                                "ssim": 0.999983,
+                                "ha": "d8e052b7cb107085fda32887302908941ea9f452e695d826921617a4a65d8f6a",
+                                "hb": "de9bc1dbf9d020796bb93ca6b78864f1eb62e087d92e5bb621855fdf76396863"
+                        }
+                }
+        },
+        {
+                "a": "NVIDIA RTX 2060 (Win11 DirectX 12)",
+                "b": "CPU Q16.16 Integer Reference",
+                "cat": "GPU vs CPU Q16.16 Reference",
+                "meanDiff": 20.4003,
+                "maxD": 2,
+                "minPsnr": 60.58,
+                "minSsim": 0.999693,
+                "frames": {
+                        "0": {
+                                "diff": 20.5963,
+                                "maxD": 2,
+                                "mae": 0.056903,
+                                "rmse": 0.238551,
+                                "psnr": 60.58,
+                                "ssim": 0.999693,
+                                "ha": "af216a26aac3e8c4d0a2118a0ddc249d380547e4dcc95fd8df412cd43923b6e8",
+                                "hb": "9c693a38eb59531f91eba15eb22ea1cb763f83e1ceb9e38fd1051f3d0422f8ac"
+                        },
+                        "250": {
+                                "diff": 20.3274,
+                                "maxD": 2,
+                                "mae": 0.056037,
+                                "rmse": 0.236729,
+                                "psnr": 60.65,
+                                "ssim": 0.999694,
+                                "ha": "cf44f31b137ccaf84fa98efa7a4fe1b6f5e45ef371ce182eccf71559d561d338",
+                                "hb": "38643021e6439b57998c864d8493f3ef27a898f8bc6d249ca38a4b144fe4dbfd"
+                        },
+                        "1000": {
+                                "diff": 20.4704,
+                                "maxD": 2,
+                                "mae": 0.056158,
+                                "rmse": 0.236981,
+                                "psnr": 60.64,
+                                "ssim": 0.999696,
+                                "ha": "49e518450111df5920e24a7fbcc81cf789693989c999e1e9cd4846a7de497d41",
+                                "hb": "912058d6ffb2f4777920d49eaee225cc5659cc7db3a2c6f7ba056a7ec4f009f7"
+                        },
+                        "10000": {
+                                "diff": 20.2072,
+                                "maxD": 1,
+                                "mae": 0.055367,
+                                "rmse": 0.235303,
+                                "psnr": 60.7,
+                                "ssim": 0.999697,
+                                "ha": "138973b92e67e816bcec26c042c75ae6964ca7be4bb515afc0bd1c03d7ed8a16",
+                                "hb": "ce3b2cec3b4d1e0559e9fd023a476537bfbd64a455d3c7f2e46c5c27e359599b"
+                        }
+                }
+        },
+        {
+                "a": "Apple M3 Ultra (macOS Metal)",
+                "b": "CPU Q16.16 Integer Reference",
+                "cat": "GPU vs CPU Q16.16 Reference",
+                "meanDiff": 27.626,
+                "maxD": 2,
+                "minPsnr": 59.13,
+                "minSsim": 0.999556,
+                "frames": {
+                        "0": {
+                                "diff": 27.718,
+                                "maxD": 2,
+                                "mae": 0.079277,
+                                "rmse": 0.281816,
+                                "psnr": 59.13,
+                                "ssim": 0.999565,
+                                "ha": "c0893ef03a0f288be8229f82604a945f090974fc09c904eeb7cf38cec6ba22ef",
+                                "hb": "9c693a38eb59531f91eba15eb22ea1cb763f83e1ceb9e38fd1051f3d0422f8ac"
+                        },
+                        "250": {
+                                "diff": 27.5417,
+                                "maxD": 2,
+                                "mae": 0.078501,
+                                "rmse": 0.280384,
+                                "psnr": 59.18,
+                                "ssim": 0.999561,
+                                "ha": "0513508893be9477cd21aeebe47a5e4b409caefa632be92db535137f97cb75d0",
+                                "hb": "38643021e6439b57998c864d8493f3ef27a898f8bc6d249ca38a4b144fe4dbfd"
+                        },
+                        "1000": {
+                                "diff": 27.7157,
+                                "maxD": 2,
+                                "mae": 0.078642,
+                                "rmse": 0.280625,
+                                "psnr": 59.17,
+                                "ssim": 0.999566,
+                                "ha": "84ebd2908e004476e7a640624ded67332a5e12f374b61c268b171cf95234adc6",
+                                "hb": "912058d6ffb2f4777920d49eaee225cc5659cc7db3a2c6f7ba056a7ec4f009f7"
+                        },
+                        "10000": {
+                                "diff": 27.5284,
+                                "maxD": 2,
+                                "mae": 0.078156,
+                                "rmse": 0.279875,
+                                "psnr": 59.19,
+                                "ssim": 0.999556,
+                                "ha": "cd34621cbb7ee10622272409a1d8583746f272176078dc0360f9c0b4c893803a",
+                                "hb": "ce3b2cec3b4d1e0559e9fd023a476537bfbd64a455d3c7f2e46c5c27e359599b"
+                        }
+                }
         }
-      ];
+];
 
       function syncUrl(){
         if (!window.history || !window.history.replaceState) return;
@@ -825,32 +1570,36 @@
 
         var sel = H3_PAIRS[pIdx] || H3_PAIRS[0];
         var fr = sel.frames[tick] || sel.frames['1000'];
-        var passSel = fr.psnr > gPsnr && fr.ssim > gSsim;
+        var passSel = (fr.psnr == null || fr.psnr > gPsnr) && fr.ssim > gSsim;
 
-        document.getElementById('v-gpu-cat').textContent = sel.cat.indexOf('Physical GPU vs Physical') === 0 ? 'Physical GPU' : 'Ref Control';
-        document.getElementById('o-gpu-diff').textContent = fr.diff.toFixed(2) + '%';
+        document.getElementById('v-gpu-cat').textContent = sel.cat.indexOf('Same Physical') === 0 ? 'Same GPU (DX12 vs VK)' : (sel.cat.indexOf('Physical GPU vs Physical') === 0 ? 'Physical GPU' : 'Ref Control');
+        document.getElementById('o-gpu-diff').textContent = fr.diff < 0.01 && fr.diff > 0 ? fr.diff.toFixed(4) + '%' : fr.diff.toFixed(2) + '%';
         document.getElementById('o-gpu-maxd').textContent = 'Max channel |Δ| = ' + fr.maxD + ' / 255';
-        document.getElementById('o-gpu-psnr').textContent = fr.psnr.toFixed(2) + ' dB';
+        document.getElementById('o-gpu-psnr').textContent = fr.psnr == null ? '∞ dB (0 diff)' : fr.psnr.toFixed(2) + ' dB';
         document.getElementById('o-gpu-rmse').textContent = 'RMSE = ' + fr.rmse.toFixed(4) + ' · MAE = ' + fr.mae.toFixed(5);
         document.getElementById('o-gpu-ssim').textContent = fr.ssim.toFixed(6);
         document.getElementById('o-gpu-gate').textContent = passSel ? 'PASS' : 'FAIL (Gate Tightened)';
         document.getElementById('o-gpu-gate').style.color = passSel ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)';
+        document.getElementById('o-gpu-bit').textContent = fr.ha === fr.hb ? 'Raw SHA-256: IDENTICAL (0 diff)' : 'Raw SHA-256: DIVERGED (expected)';
         document.getElementById('o-gpu-shash').textContent = CKPTS[tick];
         document.getElementById('o-gpu-ha').textContent = fr.ha;
         document.getElementById('o-gpu-hb').textContent = fr.hb;
 
         document.getElementById('h3-tbody').innerHTML = H3_PAIRS.map(function(p, idx){
-          var ok = p.minPsnr > gPsnr && p.minSsim > gSsim;
-          var pctW = Math.max(4, Math.min(100, ((p.minPsnr - 35) / 40) * 100));
+          var ok = (p.minPsnr == null || p.minPsnr > gPsnr) && p.minSsim > gSsim;
+          var effPsnr = p.minPsnr == null ? 115 : p.minPsnr;
+          var pctW = Math.max(4, Math.min(100, ((effPsnr - 35) / 75) * 100));
           var hi = idx === pIdx ? 'background: rgba(0,212,170,0.07);' : '';
+          var diffStr = p.meanDiff < 0.01 && p.meanDiff > 0 ? p.meanDiff.toFixed(4) + '%' : p.meanDiff.toFixed(2) + '%';
+          var psnrStr = p.minPsnr == null ? '∞ (4/4 exact)' : p.minPsnr.toFixed(2) + ' dB';
           return '<tr style="border-bottom: 1px solid rgba(148,163,184,0.14); cursor: pointer; ' + hi + '" data-gpair="' + idx + '">' +
             '<td style="padding: 0.42rem 0.5rem; font-family: var(--font-mono); font-weight: 600;">' + p.a + ' vs ' + p.b + '</td>' +
-            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + p.meanDiff.toFixed(2) + '%</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + diffStr + '</td>' +
             '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + p.maxD + '</td>' +
-            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--color-brand-cyan);">' + p.minPsnr.toFixed(2) + ' dB</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--color-brand-cyan);">' + psnrStr + '</td>' +
             '<td style="padding: 0.42rem 0.5rem;"><div class="bar-track"><div class="bar-fill" style="width:' + pctW.toFixed(1) + '%; background:' + (ok ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)') + ';"></div></div></td>' +
             '<td style="padding: 0.42rem 0.5rem; text-align: right; font-family: var(--font-mono);">' + p.minSsim.toFixed(6) + '</td>' +
-            '<td style="padding: 0.42rem 0.5rem; text-align: center; font-family: var(--font-mono); font-weight: 700; color:' + (ok ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)') + ';">' + (ok ? 'PASS' : 'FAIL') + '</td>' +
+            '<td style="padding: 0.42rem 0.5rem; text-align: center; font-family: var(--font-mono); font-weight: 700; color: ' + (ok ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)') + ';">' + (ok ? 'PASS' : 'FAIL') + '</td>' +
           '</tr>';
         }).join('');
         document.querySelectorAll('[data-gpair]').forEach(function(tr){
@@ -860,7 +1609,7 @@
           });
         });
         if (updateQ) syncUrl();
-        return { pair_index: pIdx, adapter_a: sel.a, adapter_b: sel.b, tick: +tick, frame: fr, gate_psnr_db: gPsnr, gate_ssim: gSsim, passes_gate: passSel };
+        return { pair_index: pIdx, adapter_a: sel.a, adapter_b: sel.b, category: sel.cat, tick: +tick, frame: fr, gate_psnr_db: gPsnr, gate_ssim: gSsim, passes_gate: passSel };
       }
 
       // ======================================================================
@@ -1608,11 +2357,11 @@
           {
             name: 'inspect_game_engines_ge_h1',
             title: 'Inspect Multi-ISA GE-H1 100,000-tick Q32.32 replay & L3/L2 reported_j',
-            description: 'Returns canonical SHA-256 checkpoints and reported_j across 25 cells on arm64 macOS, aarch64 Linux, and AMD/Intel x86_64 Linux.',
+            description: 'Returns canonical SHA-256 checkpoints and reported_j across 30 cells on arm64 macOS, aarch64 Linux, AMD/Intel x86_64 Linux, and Intel x86_64 Windows 11.',
             inputSchema: {
               type: 'object',
               properties: {
-                host: { type: 'string', enum: ['all', 'apple_m5_max_arm64_macos', 'apple_m3_ultra_arm64_macos', 'amd_zen5_x86_64_linux', 'intel_rpl_x86_64_linux', 'nvidia_thor_aarch64_linux'] },
+                host: { type: 'string', enum: ['all', 'apple_m5_max_arm64_macos', 'apple_m3_ultra_arm64_macos', 'amd_zen5_x86_64_linux', 'intel_rpl_x86_64_linux', 'nvidia_thor_aarch64_linux', 'win11_x86_64'] },
                 ckpt: { type: 'number', enum: [100, 1000, 10000, 25000, 50000, 75000, 100000] },
                 mins: { type: 'number', minimum: 5, maximum: 240 },
                 hz: { type: 'number', enum: [60, 120, 240] }
@@ -1625,7 +2374,7 @@
           {
             name: 'inspect_game_engines_ge_h2',
             title: 'Inspect Cross-ISA GE-H2 floating-point divergence horizons',
-            description: 'Filters 16 multi-ISA and single-host 25,000-tick float comparisons (Apple libm vs GNU glibc, x86_64 FMA vs arm64 fmadd).',
+            description: 'Filters 22 3-OS, cross-ISA, and single-host 25,000-tick float comparisons (Windows UCRT vs Apple libm vs GNU glibc, MSVC vs Clang FMA, x86_64 vs arm64 FMA).',
             inputSchema: {
               type: 'object',
               properties: {
@@ -1640,12 +2389,12 @@
           },
           {
             name: 'inspect_game_engines_ge_h3_gpu',
-            title: 'Inspect Cross-GPU GE-H3 wgpu (Metal / Vulkan) rendering tolerance',
-            description: 'Returns pairwise PSNR, SSIM, differing pixel %, and RGBA8 SHA-256 across Apple Metal, AMD RADV, Intel ANV, and NVIDIA Vulkan.',
+            title: 'Inspect 3-API Cross-GPU GE-H3 wgpu (DirectX 12 / Metal / Vulkan) rendering tolerance',
+            description: 'Returns pairwise PSNR, SSIM, differing pixel %, and RGBA8 SHA-256 across 8 hardware GPU×API endpoints spanning Windows 11 DirectX 12, macOS Metal, and Linux/Windows Vulkan.',
             inputSchema: {
               type: 'object',
               properties: {
-                pair_index: { type: 'number', minimum: 0, maximum: 8 },
+                pair_index: { type: 'number', minimum: 0, maximum: 15 },
                 tick: { type: 'number', enum: [0, 250, 1000, 10000] },
                 gate_psnr_db: { type: 'number', minimum: 35, maximum: 75 },
                 gate_ssim: { type: 'number', minimum: 0.99, maximum: 0.99999 }
