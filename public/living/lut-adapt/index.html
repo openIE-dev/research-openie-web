@@ -207,6 +207,105 @@
         </div>
       </section>
 
+      <!-- Widget 4: 9-Rung Avalanche Ratchet & Compilation Threshold -->
+      <section id="la-diag-03" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-diag-03</code> · Nine-Rung Capability Ratchet &amp; Compilation Threshold (<code>ΔT &gt; ΔT*</code>)</h2>
+          <span class="chip chip-est">Theorem + Reported / Simulated Milestones</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Drag stationary persistence <code>ΔT</code> across Proposition 1's Compilation Threshold (<code>Cascade.lean</code>) to see why stateless tool calling stalls at Rung 5 and how Immersion (Rung 6) unlocks Competence, Ecology, and Economy.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Stationary agent horizon ΔT (queries)</span><span id="av-v-dt">260</span></label>
+            <input type="range" id="av-s-dt" min="1" max="800" step="5" value="260">
+          </div>
+          <div class="ctrl-box">
+            <label><span>Inspect Capability Rung (1–9)</span></label>
+            <select id="av-rung-sel">
+              <option value="1">Rung 1 · Search (Commoditized RAG access)</option>
+              <option value="2">Rung 2 · Generation (Deflationary production)</option>
+              <option value="3">Rung 3 · Reasoning (Bounded &lt;think&gt; · high MAC tax)</option>
+              <option value="4">Rung 4 · Communication (MCP delegation · network-effect rung)</option>
+              <option value="5">Rung 5 · Tool Use (Execution · stuck under cold-start ΔT ≤ ΔT*)</option>
+              <option value="6" selected>Rung 6 · Immersion (Agent stays · ΔT crosses ΔT*)</option>
+              <option value="7">Rung 7 · Competence (Compiled 0-FLOP LUT6 / .mol/ skill)</option>
+              <option value="8">Rung 8 · Ecology (Populations of sub-mJ native Rust agents)</option>
+              <option value="9">Rung 9 · Economy (p_i / c_i division of labor &amp; Joule receipts)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Threshold ΔT* (120B Wake)</div>
+            <div class="v" id="av-dtstar">15 steps</div>
+            <div class="s">E_compile / (p'₀·c_wake − c₀)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Phase Status</div>
+            <div class="v" id="av-phase" style="color: var(--color-brand-cyan);">RUNGS 6–9 UNLOCKED</div>
+            <div class="s" id="av-spend">63.7 kJ cold → 9.6 kJ compiled</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Selected Rung Regime</div>
+            <div class="v" id="av-rname">Rung 6 · Immersion</div>
+            <div class="s" id="av-rsub">Persistent graph crosses ΔT*</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Rung-0 Floor (Separated)</div>
+            <div class="v">272 µJ / 62.4 pJ</div>
+            <div class="s">Rust MCP reported_j / xck26 est_j</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Widget 5: Six-Kernel Paranoid Proof Audit Explorer -->
+      <section id="la-tab-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-tab-01</code> · Six-Kernel Paranoid Formal Proof Explorer (<code>Claim LA-19</code>)</h2>
+          <span class="chip chip-meas">6 / 6 Independent Kernels Accept (0 sorry)</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Inspect the six independent checkers executed by <code>scripts/verify_lean_proofs.py</code> (<code>lake check --paranoid</code>) across all <code>27</code> theorems in <code>proofs/LutAdapt/</code>, hardening against single-prover bugs (<code>CVE-2026-72844</code>, <code>CVE-2026-72711</code>) and <code>native_decide</code> (<code>Lean.ofReduceBool</code>).
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Select Independent Proof Checker</span></label>
+            <select id="sk-select">
+              <option value="conleche" selected>1 · con-leche --verified (Set-theory-proved consistent kernel · 58,683 decls)</option>
+              <option value="conron">2 · con-ron --verified (Aeneas-verified Rust refinement of con-leche · 58,683 decls)</option>
+              <option value="lean4lean">3 · lean4lean (Mario Carneiro's Lean-in-Lean CIC typechecker · 58,685 decls)</option>
+              <option value="nanoda">4 · nanoda (Standalone zero-Lean-runtime Rust export verifier · sorryAx blocked)</option>
+              <option value="paranoid">5 · leanchecker --paranoid (Fresh-environment C++ replay · zero tactic trust)</option>
+              <option value="default">6 · Lean v4.36.0 (Post-CVE Nov 2026 kernel · #print axioms enforced)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Kernel Verdict</div>
+            <div class="v" id="sk-verdict" style="color: var(--color-brand-cyan);">ACCEPTS</div>
+            <div class="s" id="sk-decls">58,683 declarations (--verified)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">LutAdapt Theorems</div>
+            <div class="v">27 / 27</div>
+            <div class="s">5 zero-axiom · 23/27 choice-free</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Forbidden Constructs</div>
+            <div class="v">0 / 0 / 0</div>
+            <div class="s">0 sorry · 0 opaque · 0 ofReduceBool</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Primary Vector Blocked</div>
+            <div class="v" id="sk-vec">CVE-2026-72844</div>
+            <div class="s" id="sk-basis">Proved consistent in ZFC set theory</div>
+          </div>
+        </div>
+      </section>
+
       <!-- Static Vector Diagrams Gallery -->
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
@@ -225,6 +324,14 @@
         <figure class="fig">
           <img src="/figures/lut-adapt/moe-expert-cascade.svg" alt="Expert-AirMoL router-sparse MoE NVMe streaming and VerifiedCodeCascade">
           <figcaption><strong>Figure 4.</strong> <code>Expert-AirMoL</code> router-sparse 4-bit expert-indexed NVMe streaming (<code>12.30×</code> I/O cut on <code>Qwen3.6-35B-A3B</code>) and <code>C(z)</code>-gated <code>VerifiedCodeCascade</code>.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/avalanche-compilation-threshold.svg" alt="Nine-Rung Computer Intelligence Avalanche Ratchet and the Compilation Threshold">
+          <figcaption><strong>Figure 5.</strong> The nine-rung capability ratchet and Proposition 1's Compilation Threshold (<code>ΔT &gt; ΔT*</code>), separating <code>reported_j</code> and <code>est_j</code> across twelve orders of magnitude (<code>board_metered = false</code>).</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/six-kernel-trust-and-stack.svg" alt="Six-Kernel Formal Proof Assurance and Three-Layer Compiled Stack">
+          <figcaption><strong>Figure 6.</strong> Six-kernel paranoid proof audit (<code>Claim LA-19</code>: <code>con-leche</code>, <code>con-ron</code>, <code>lean4lean</code>, <code>nanoda</code>, <code>leanchecker</code>, <code>Lean 4.36.0</code>) and the three-layer compiled stack.</figcaption>
         </figure>
       </section>
     </div>
@@ -400,6 +507,66 @@
       mSel.addEventListener('change', render);
       aSel.addEventListener('change', render);
       render();
+    })();
+
+    // Widget 4: 9-Rung Avalanche Ratchet & Compilation Threshold
+    (function(){
+      var rungs = {
+        '1': ['Rung 1 · Search', 'Collapsed access cost (linear RAG feature)'],
+        '2': ['Rung 2 · Generation', 'Collapsed drafting cost; surplus leaks downstream'],
+        '3': ['Rung 3 · Reasoning', 'Bounded <think>; burns 15–485 J per cold wake'],
+        '4': ['Rung 4 · Communication', 'MCP delegation; sole network-effect rung'],
+        '5': ['Rung 5 · Tool Use', 'Execution ceiling when ΔT ≈ 1 ≤ ΔT* (56–96% 1-shot bad)'],
+        '6': ['Rung 6 · Immersion', 'Agent stays locally; ΔT crosses ΔT* compile horizon'],
+        '7': ['Rung 7 · Competence', 'p\'₀ → 1 at 62.4 pJ est_j LUT6 / 11.8 mJ .mol/ floor'],
+        '8': ['Rung 8 · Ecology', 'Sub-mJ single-binary Rust MCP agents (0.154 ms/req)'],
+        '9': ['Rung 9 · Economy', 'Division of labor ordered by p_i / c_i & Joule receipts']
+      };
+      var dtEl = document.getElementById('av-s-dt'), rSel = document.getElementById('av-rung-sel');
+      function updAv() {
+        var dt = parseFloat(dtEl.value);
+        document.getElementById('av-v-dt').textContent = dt.toFixed(0);
+        var cw = 245.0, p0 = 0.85, c0 = 0.012, ec = cw * 12.0;
+        var dtStar = Math.ceil(ec / (p0 * cw - c0));
+        document.getElementById('av-dtstar').textContent = dtStar + ' steps';
+        var cold = dt * cw, comp = ec + dt * (c0 + (1 - p0) * cw);
+        var ph = document.getElementById('av-phase');
+        if (dt > dtStar) {
+          ph.textContent = 'RUNGS 6–9 UNLOCKED (' + (cold / comp).toFixed(1) + '×)';
+          ph.style.color = 'var(--color-brand-cyan)';
+        } else {
+          ph.textContent = 'STUCK AT RUNG 5';
+          ph.style.color = 'var(--color-brand-amber)';
+        }
+        document.getElementById('av-spend').textContent = (cold / 1000).toFixed(1) + ' kJ cold → ' + (comp / 1000).toFixed(1) + ' kJ compiled';
+        var info = rungs[rSel.value];
+        document.getElementById('av-rname').textContent = info[0];
+        document.getElementById('av-rsub').textContent = info[1];
+      }
+      dtEl.addEventListener('input', updAv);
+      rSel.addEventListener('change', updAv);
+      updAv();
+    })();
+
+    // Widget 5: Six-Kernel Paranoid Proof Audit Explorer
+    (function(){
+      var sk = {
+        conleche: { decls: '58,683 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
+        conron:   { decls: '58,683 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
+        lean4lean:{ decls: '58,685 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
+        nanoda:   { decls: '58,685 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
+        paranoid: { decls: '58,685 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
+        default:  { decls: '27 LutAdapt thms (1.04 s build)', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + #print axioms enforced' }
+      };
+      var sel = document.getElementById('sk-select');
+      function updSk() {
+        var d = sk[sel.value];
+        document.getElementById('sk-decls').textContent = d.decls;
+        document.getElementById('sk-vec').textContent = d.vec;
+        document.getElementById('sk-basis').textContent = d.basis;
+      }
+      sel.addEventListener('change', updSk);
+      updSk();
     })();
 
     // Lightbox for SVGs

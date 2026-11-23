@@ -120,7 +120,7 @@ This work closes the loop between the top and bottom of the cascade via \textbf{
   \item \textbf{Oracle-free Split-Conformal + Online ACI crystallization gate (Section 2.4, Claim LA-4)}: Pairs a quadratically regularized latent \texttt{JEPA-EBRM} score with Split Conformal calibration and Adaptive Conformal Inference (Gibbs and Cand\`es, 2021), achieving \texttt{0.00\%} false crystallization risk and \texttt{1.0000} OOD AUROC on shifted regimes where softmax MSP, margin, Helmholtz logit energy, and 5-pass MC-Dropout suffer \texttt{17.62\%--24.28\%} false risk.
   \item \textbf{\texttt{AirMoL} and \texttt{Expert-AirMoL} 4-bit NVMe streaming up to \texttt{34.66B} Sparse-MoE (Sections 3.4--3.5, Claims LA-6, LA-7, LA-9)}: Combines Darwin \texttt{F\_NOCACHE} \texttt{os.pread} 4-bit sharding, router-indexed \texttt{.experts.pack4} byte-stride expert \texttt{pread}, hybrid state rollback, and online token-\texttt{LUT6} burst speculation across October 2026 \texttt{LiquidAI/LFM3-1.7B} (\texttt{2.74$\times$} I/O cut in \texttt{3.79\%} RAM), \texttt{LiquidAI/LFM2.5-8B-A1B} (\texttt{8.47B}; \texttt{6.90$\times$} I/O cut), and \texttt{Qwen/Qwen3.6-35B-A3B} (\texttt{34.66B}; \textbf{\texttt{12.30$\times$} I/O cut}, \textbf{\texttt{2.53 GB} RAM = \texttt{3.83\%} of FP16}, \textbf{\texttt{6.50$\times$} speedup}) at \texttt{100.0\%} exact token parity.
   \item \textbf{\texttt{Sub1Bit-LUT6}, Metal + Rust \texttt{CubeCL} \texttt{INT4} MoE / \texttt{DeltaNet}, \texttt{Rung 3d} \texttt{<think>}, \& Official \texttt{BigCodeBench} / \texttt{SWE-bench} via \texttt{MCP} (Claims LA-10--LA-18)}: Replaces \texttt{LittleBit-2} binary MACs with zero-MAC \texttt{Sub1Bit-LUT6} (\texttt{< 4e-6} err); accelerates \texttt{GatedDeltaNet} (\texttt{20.66$\times$} \texttt{MSL}, \textbf{\texttt{69.20$\times$} \texttt{CubeCL} Metal}) and \texttt{INT4} MoE (\texttt{43.45$\times$} \texttt{MSL}, \textbf{\texttt{35.09$\times$} \texttt{CubeCL} Metal}); lifts the \texttt{48}-task bakeoff to \textbf{\texttt{91.67\%} (\texttt{93.75\%} W2--W3)}; and reaches \textbf{\texttt{90.62\%}} on \texttt{BigCodeBench v0.1.3} (vs.\ \texttt{78.12\%} \texttt{35B}) and \textbf{\texttt{50.00\%}} on \texttt{SWE-bench Verified} \texttt{sympy/sympy} (vs.\ \texttt{25.00\%} \texttt{35B}) with \textbf{\texttt{0.00\%} broken commits}.
-  \item \textbf{Lean \texttt{4.36.0} Formal Proofs, \texttt{4}-Repo \texttt{SWE-bench Verified}, Measured \texttt{120B} Hybrid MoE, \texttt{CE}-Gated \texttt{VCD} Power, \& Zero-Python Rust \texttt{mol-agent-rs} (Claims LA-19--LA-23)}: Verifies all \texttt{27} Section 2 theorems in Lean \texttt{4.36.0} (\texttt{0} \texttt{sorry}); expands zero-leakage \texttt{SWE-bench Verified} across \texttt{django}, \texttt{pytest}, \texttt{requests}, and \texttt{sympy} (\textbf{\texttt{20.83\%} = \texttt{2.50$\times$} standalone \texttt{24B}/\texttt{35B}}, \texttt{0.00\%} broken); measures \texttt{nvidia/Nemotron-3-Super-120B-A12B} (\texttt{58.1 GB} RSS, \textbf{\texttt{22.17 tok/s}}, \textbf{\texttt{62.50\%}} verified pass); cuts \texttt{P4-AXIS} idle power \textbf{\texttt{4.10$\times$}} (\texttt{15.59 est\_mW}); and serves \texttt{MCP} in \textbf{\texttt{0.154 ms/req} (\texttt{17.21$\times$} faster)} via Rust \texttt{mol-agent-rs} (\texttt{35/35} \texttt{pytest}).
+  \item \textbf{Six-Kernel Paranoid Lean \texttt{4.36.0} Formal Proofs (\texttt{CVE-2026-72844}-Hardened), \texttt{4}-Repo \texttt{SWE-bench Verified}, Measured \texttt{120B} Hybrid MoE, \texttt{CE}-Gated \texttt{VCD} Power, \& Zero-Python Rust \texttt{mol-agent-rs} (Claims LA-19--LA-23)}: Verifies all \texttt{27} Section 2 theorems across \textbf{six independent kernels} (\texttt{con-leche --verified} [\texttt{58,683} decls], \texttt{con-ron --verified} [\texttt{58,683} decls], \texttt{lean4lean}, \texttt{nanoda}, \texttt{leanchecker --paranoid}, and Lean \texttt{4.36.0}; \texttt{0} \texttt{sorry}, \texttt{0} \texttt{ofReduceBool}); expands zero-leakage \texttt{SWE-bench Verified} across \texttt{django}, \texttt{pytest}, \texttt{requests}, and \texttt{sympy} (\textbf{\texttt{20.83\%} = \texttt{2.50$\times$} standalone \texttt{24B}/\texttt{35B}}, \texttt{0.00\%} broken); measures \texttt{nvidia/Nemotron-3-Super-120B-A12B} (\texttt{58.1 GB} RSS, \textbf{\texttt{22.17 tok/s}}, \textbf{\texttt{62.50\%}} verified pass); cuts \texttt{P4-AXIS} idle power \textbf{\texttt{4.10$\times$}} (\texttt{15.59 est\_mW}); and serves \texttt{MCP} in \textbf{\texttt{0.154 ms/req} (\texttt{17.21$\times$} faster)} via Rust \texttt{mol-agent-rs} (\texttt{35/35} \texttt{pytest}).
 \end{enumerate}
 
 \subsection{0.2 Energy to correct completion and downward amortization}\label{energy-ranking}
@@ -329,6 +329,17 @@ Scaling disk-offloaded inference to frontier \texttt{8.47B} and \texttt{34.66B} 
 \end{figure}
 
 \texttt{Expert-AirMoL} splits each MoE layer into a compact non-expert header shard and a fixed-stride \texttt{INT4} block-64 \texttt{.experts.pack4} NVMe file, issuing \texttt{F\_NOCACHE} \texttt{os.pread} calls exclusively for the active union $\mathcal{U}_l = \bigcup_{t=0}^{K} \operatorname{TopK}(h_{l,t})$ across the $K+1$ burst positions (\texttt{6.90$\times$} and \texttt{12.30$\times$} NVMe I/O reductions; Claim LA-9). In parallel, \texttt{Sub1BitLUT6FactorLinear} (\texttt{0.576 bpw}, rank $r=258=43\times 6$) replaces the dense runtime binary matrix multiplications of \texttt{LittleBit-1 / LittleBit-2} (Lee et al., 2025; Lee and Kim, 2026) with \texttt{6}-input \texttt{LUT6} partial-sum tables (\texttt{0} binary MACs; Claim LA-10), while \texttt{VerifiedCodeCascade} gates commits across \texttt{LFM3-1.7B} $\to$ \texttt{Gemma-4-E2B-it} $\to$ \texttt{LFM2.5-8B-A1B} $\to$ \texttt{Qwen3.6-35B-A3B} via a \texttt{0.35s}-bounded contract verifier $C(z)\in\{0,1\}$ and compiles verified AST skills into Rungs \texttt{0--1} (Claim LA-11).
+
+\subsection{3.6 The nine-rung capability ratchet and the Compilation Threshold \texorpdfstring{($\Delta T > \Delta T^*$)}{(Delta T > Delta T*)}}\label{avalanche-threshold}
+
+Across the progression of computer intelligence (companion study: \emph{The Communication Tool Avalanche}, \url{https://research.openie.dev/papers/communication-avalanche/} \texttt{[same house]}), capability rungs advance as a ratchet divided at Rung 5 by Proposition 1's Compilation Threshold (Figure~\ref{fig:avalanche}): Rungs 1--5 (\emph{Search}, \emph{Generation}, \emph{Reasoning}, \emph{Communication}, and \emph{Tool Use}) stall under ephemeral cold-start \texttt{MAC} inference ($\Delta T \approx 1 \le \Delta T^*$, \texttt{56.25\%--95.83\%} standalone broken patches), whereas \textbf{Rung 6 (\emph{Immersion})} extends stationary persistence past $\Delta T^* = E_{\text{compile}}/(p_0' c_{\text{wake}} - c_0)$ under $C(z)=1$ (\texttt{0.00\%} broken commits), unlocking \textbf{Rung 7 (\emph{Competence}, $p_0'\to 1$ at \texttt{62.4 pJ} \texttt{est\_j} / \texttt{272 $\mu$J} \texttt{reported\_j})}, \textbf{Rung 8 (\emph{Ecology})}, and \textbf{Rung 9 (\emph{Economy})}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/avalanche-compilation-threshold.png}
+  \caption{The nine-rung capability ratchet and Proposition 1's Compilation Threshold ($\Delta T > \Delta T^*$), separating \texttt{reported\_j} (Apple M5 Max) and \texttt{est\_j} (\texttt{AMD DS925 VCD}) across twelve orders of magnitude (\texttt{measured\_j = None}, \texttt{board\_metered = false}).}
+  \label{fig:avalanche}
+\end{figure}
 
 \section{4. Claims and results}\label{claims-results}
 
@@ -652,23 +663,32 @@ Invoking \texttt{Qwen/Qwen3.6-35B-A3B} native \texttt{enable\_thinking=True} (\t
 \end{longtable}
 }
 
-\subsection{4.19 Claim LA-19: Lean \texttt{4.36.0} machine-checked formal proofs of Section 2 (\texttt{27} theorems, \texttt{0} \texttt{sorry})}\label{claim-la19}
+\subsection{4.19 Claim LA-19: Six-kernel paranoid formal proofs of Section 2 (\texttt{27} theorems, \texttt{6/6} kernels, \texttt{CVE-2026-72844}-hardened)}\label{claim-la19}
+
+To guard against single-prover kernel vulnerabilities (\texttt{CVE-2026-72844} nested-inductive \texttt{.proj} confusion and \texttt{CVE-2026-72711} \texttt{add\_opaque} cache poisoning in Lean $\le$ \texttt{v4.31.0}) and \texttt{native\_decide} (\texttt{Lean.ofReduceBool}) bypasses, \texttt{verify\_lean\_proofs.py} audits all \texttt{27} theorems across \textbf{six independent kernels} via \texttt{lake check --paranoid} (\texttt{175.8 s}, \texttt{77.75 J} \texttt{reported\_j}; clean \texttt{lake build}: \texttt{1.04 s}, \texttt{0.32 J}; Figure~\ref{fig:sixkernel}):
 
 {\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{longtable}{@{}L{0.28\linewidth}C{0.09\linewidth}L{0.35\linewidth}L{0.22\linewidth}@{}}
+\begin{longtable}{@{}L{0.28\linewidth}C{0.08\linewidth}L{0.36\linewidth}L{0.22\linewidth}@{}}
 \toprule
-\textbf{Lean \texttt{4.36.0} Module} & \textbf{Thms} & \textbf{Section 2 Coverage} & \textbf{Axioms (\texttt{0 sorry})} \\
+\textbf{Lean \texttt{4.36.0} Module} & \textbf{Thms} & \textbf{Section 2 Coverage} & \textbf{Axioms (\texttt{0 sorry/ofReduce})} \\
 \midrule
 \endhead
-\texttt{LutAdapt/Cascade.lean} & \texttt{6} & Simon--Kadane swap, Prop.\ 1 savings \& $\Delta T^*$ horizon & \texttt{propext}, \texttt{Quot.sound} (\texttt{1} zero-ax) \\
-\texttt{LutAdapt/BenesCopy.lean} & \texttt{8} & Prop.\ 2 \texttt{11,008} switches, \texttt{81-RAMB36}, \texttt{52$\to$13} depth, \texttt{IOB}s & \textbf{\texttt{2} zero-ax}; \texttt{propext}, \texttt{Quot.sound} \\
-\texttt{LutAdapt/JointMinterm.lean} & \texttt{6} & Prop.\ 3 XOR chimera witness, \texttt{uint64} BPE pack (\texttt{K=3,4}) & \textbf{\texttt{1} zero-ax}; \texttt{propext}, \texttt{Quot.sound} \\
-\texttt{LutAdapt/ConformalProvenance.lean} & \texttt{7} & Prop.\ 4 radial \texttt{EBRM}, conformal index, provenance lattice & \textbf{\texttt{1} zero-ax}; \texttt{propext}, \texttt{Quot.sound} \\
+\texttt{LutAdapt/Cascade.lean} & \texttt{7} & Simon--Kadane swaps, Prop.\ 1 $\Delta T^*$ horizon, churn refusal & \texttt{3} choice-free; \texttt{4} std ZFC \\
+\texttt{LutAdapt/BenesCopy.lean} & \texttt{7} & Thm.\ 2 \texttt{11,008} switches, \texttt{43} stages, \texttt{4}-stage depth, copy/Lee & \textbf{\texttt{2} zero-ax}; \texttt{5} choice-free \\
+\texttt{LutAdapt/JointMinterm.lean} & \texttt{7} & Prop.\ 3 chimera witness, \texttt{uint64} BPE pack (\texttt{K=3,4}) & \textbf{\texttt{1} zero-ax}; \texttt{6} choice-free \\
+\texttt{LutAdapt/ConformalProvenance.lean} & \texttt{6} & Result 4 radial \texttt{EBRM}, conformal bound, provenance lattice & \textbf{\texttt{2} zero-ax}; \texttt{4} choice-free \\
 \midrule
-\textbf{Total (\texttt{lake build}: \texttt{2.26 s})} & \textbf{\texttt{27}} & \textbf{All 4 Propositions + RTL/Provenance Corollaries} & \textbf{\texttt{0} custom, \texttt{0} \texttt{Classical.choice}} \\
+\textbf{Total (\texttt{6/6} Kernels Accept)} & \textbf{\texttt{27}} & \textbf{\texttt{con-leche} \& \texttt{con-ron} (\texttt{58,683} decls), \texttt{lean4lean}, \texttt{nanoda}} & \textbf{\texttt{5} zero-ax; \texttt{23/27} choice-free} \\
 \bottomrule
 \end{longtable}
 }
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/six-kernel-trust-and-stack.png}
+  \caption{Six-kernel paranoid formal proof audit (\texttt{Claim LA-19}, left) and the three-layer compiled stack spanning \texttt{CE}-gated \texttt{LUT6} RTL, \texttt{MoL} downward compilation, and single-binary Rust \texttt{MCP} dispatch (\texttt{Claim LA-23}, right).}
+  \label{fig:sixkernel}
+\end{figure}
 
 \subsection{4.20 Claim LA-20: Multi-repository upstream \texttt{SWE-bench Verified} (\texttt{4} repos, \texttt{24} evals) + call-graph localizer}\label{claim-la20}
 
@@ -779,7 +799,7 @@ Gating all \texttt{81} \texttt{RAMB36E2} \texttt{ENARDEN} ports on \texttt{bus\_
 \texttt{LA-F16} & \texttt{Claim LA-16} (\texttt{250 MHz} KV260 RTL) & \texttt{verify\_pipelined\_250mhz\_rtl.py} exceeds \texttt{20} logic levels, \texttt{189} \texttt{IOB}s, \texttt{0} \texttt{DSP48}s, or fails \texttt{256/256} \texttt{CPI = 1.00} parity. \\
 \texttt{LA-F17} & \texttt{Claim LA-17} (\texttt{Rung 3d} \texttt{<think>}) & \texttt{run\_rung3d\_thinking\_ceiling.py} admits \texttt{> 0\%} broken commits, calls cloud APIs, or fails to beat \texttt{87.50\%}. \\
 \texttt{LA-F18} & \texttt{Claim LA-18} (\texttt{CubeCL} \texttt{INT4}/\texttt{Delta}) & \texttt{bench\_cubecl\_moe\_deltanet} exceeds \texttt{1e-4} \texttt{FP32} error on \texttt{CPU}/\texttt{Metal} or achieves \texttt{< 25$\times$} Metal speedup. \\
-\texttt{LA-F19} & \texttt{Claim LA-19} (Lean \texttt{4.36.0} proofs) & \texttt{verify\_lean\_proofs.py} or \texttt{lake build} fails type-checking, leaves $\ge 1$ \texttt{sorry}, or adds $\ge 1$ custom axiom. \\
+\texttt{LA-F19} & \texttt{Claim LA-19} (\texttt{6}-Kernel Lean \texttt{4.36.0}) & \texttt{verify\_lean\_proofs.py} or \texttt{lake check --paranoid} fails any of \texttt{6} kernels, leaves $\ge 1$ \texttt{sorry}/\texttt{ofReduceBool}, or adds custom axioms. \\
 \texttt{LA-F20} & \texttt{Claim LA-20} (\texttt{4}-Repo \texttt{SWE-bench}) & \texttt{run\_multirepo\_swebench\_benchmark.py} leaks \texttt{patch}, tests \texttt{< 4} repos, or admits \texttt{> 0\%} broken patches. \\
 \texttt{LA-F21} & \texttt{Claim LA-21} (\texttt{120B} Hybrid MoE) & \texttt{run\_120b\_hybrid\_moe\_benchmark.py} fails \texttt{120B-A12B} local run, admits \texttt{> 0\%} broken commits, or misses W2 \texttt{.mol/}. \\
 \texttt{LA-F22} & \texttt{Claim LA-22} (\texttt{CE}-Gated \texttt{VCD} Power) & \texttt{verify\_ce\_gated\_vcd\_power.py} fails \texttt{320/320} \texttt{CE} parity, exceeds \texttt{189} \texttt{IOB}s, or gets \texttt{< 3.5$\times$} idle reduction. \\
