@@ -1,0 +1,471 @@
+{
+  "id": "ep15-codon-lut6-m2-silicon",
+  "number": 15,
+  "title": "Ep 15 · Why 64 Codons Match 6-Input Lookup Tables: Wobble Harmonics, ReTrace, & Fanless M.2 Silicon",
+  "subtitle": "Mei, Nia, and Rohan audit the 4^3 = 2^6 = 64 codon-LUT6 isomorphism, 20 six-kernel NucleusWobble.lean proofs, ReTrace & DiffLUT-Net -64.06% pruning, and Thor shunt vs. Alif DWT vs. fanless M.2 55.2 est_C bounds",
+  "summary": "Mei, Nia, and Rohan examine why 4^3 = 64 biological codons map one-to-one onto 2^6 = 64-bit u64 LUT6 truth tables inside a 16 KB #![no_std] 3-part Rust Nucleus; how 20 six-kernel Lean 4.36.0 theorems in NucleusWobble.lean cancel 7/64 (448/4,096) degree->=5 Walsh noise to exact 0 (87%–95% wake suppression, 0.00% silent corruption); how Columbia & Amazon's ReTrace (170s -> 1.3s) and Grounded Scaling (delta^k) connect to DiffLUT-Net (-64.06% gates); and how Jetson Thor INA3221 measured_j (125–176 nJ), live Alif E3 DWT cycles (12.18 cyc / 38.1 ns), and Numato Aller A7 XC7A200T M.2 3.3V + Particle Tachyon 5V thermal bounds (0.86 est_W @ 55.2 est_C with DDR3 held in reset vs. 95.8 est_C thermal failure) stay strictly separated.",
+  "topic_tags": [
+    "codon-lut6-nucleus",
+    "wobble-harmonics",
+    "retrace-difflut",
+    "m2-thermal-bounds"
+  ],
+  "panel": [
+    "Mei",
+    "Nia",
+    "Rohan"
+  ],
+  "panel_profiles": [
+    {
+      "name": "Mei",
+      "group": "host",
+      "title": "Tech & Physics Host · East/SE Asian English",
+      "voice_id": "7o3vIXfwm98KKuNfGmuY",
+      "fallback_voice": "en-SG-LunaNeural",
+      "color": "#38BDF8",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    {
+      "name": "Nia",
+      "group": "skeptic",
+      "title": "Empirical Auditor · African American English",
+      "voice_id": "GbDIo39THauInuigCmPM",
+      "fallback_voice": "en-US-JennyNeural",
+      "color": "#F97316",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    {
+      "name": "Rohan",
+      "group": "specialist",
+      "title": "Hardware & Compiler Specialist · South Asian English",
+      "voice_id": "QtQiNi8LdZTzSJzhCvXT",
+      "fallback_voice": "en-IN-PrabhatNeural",
+      "color": "#818CF8",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  ],
+  "tts_engines": [
+    "eleven_v4"
+  ],
+  "published_utc": "2026-11-24T12:00:00Z",
+  "duration_sec": 444.0,
+  "duration_human": "7:24",
+  "byte_length": 7325107,
+  "audio_url": "/media/radio/ep15-codon-lut6-m2-silicon.m4a",
+  "captions_url": "/media/radio/captions/ep15-codon-lut6-m2-silicon.vtt",
+  "transcript_url": "/media/radio/transcripts/ep15-codon-lut6-m2-silicon.json",
+  "turn_count": 15,
+  "card_count": 8,
+  "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "desk": "compute",
+  "desk_domain": "compute.openie.dev",
+  "studies": [
+    "lut-adapt",
+    "communication-avalanche",
+    "gates",
+    "jouleos"
+  ],
+  "hosts": [
+    "Mei",
+    "Nia",
+    "Rohan"
+  ],
+  "duration_s": 444.0,
+  "citations": [
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 29.99,
+      "turn_index": 0,
+      "speaker": "Mei",
+      "kind": "study",
+      "badge": "4^3 = 2^6 = 64",
+      "title": "64-Codon Lookup Nucleus & Fanless M.2 Silicon",
+      "detail": "Maps 4^3 = 64 genetic triplets onto 2^6 = 64-bit u64 LUT6 truth tables inside a 16 KB #![no_std] 3-part Rust Nucleus.",
+      "href": "/papers/lut-adapt/"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-02-0",
+      "at_sec": 56.427,
+      "end_sec": 96.51,
+      "turn_index": 2,
+      "speaker": "Rohan",
+      "kind": "receipt",
+      "badge": "16 KB #![no_std]",
+      "title": "3-Part lut6-core Nucleus & 64/64 Yosys Miter",
+      "detail": "4 x 4,096 B pages (immutable seed + 64-codon Operon FSM + surgical SRAM/DTCM overlays) across 7 targets; 64/64 abc -lut 6 miter pass.",
+      "href": "/papers/lut-adapt/"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-07-0",
+      "at_sec": 172.177,
+      "end_sec": 207.402,
+      "turn_index": 7,
+      "speaker": "Rohan",
+      "kind": "receipt",
+      "badge": "20 THMS · 6-KERNEL",
+      "title": "NucleusWobble.lean: Exact 0 Degree->=5 Noise",
+      "detail": "20 Lean 4.36.0 theorems checked across 6 kernels (0 sorry); 87%–95% noisy wake suppression, 0.00% silent corruption, 100% OOD abstention.",
+      "href": "/tutorials/?lab=lab-11-lut6-codon-wobble"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-09-0",
+      "at_sec": 225.998,
+      "end_sec": 272.084,
+      "turn_index": 9,
+      "speaker": "Rohan",
+      "kind": "study",
+      "badge": "-64.06% GATES",
+      "title": "ReTrace (170s -> 1.3s), Grounded Scaling & DiffLUT-Net",
+      "detail": "Connects trace-to-code replay (170s -> 1.3s) and delta^k horizon survival to closed-form DiffLUT-Net pruning (64 -> 23 LUT6 gates; 690–992 RP2040 slots).",
+      "href": "/papers/lut-adapt/"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-11-0",
+      "at_sec": 294.782,
+      "end_sec": 347.662,
+      "turn_index": 11,
+      "speaker": "Nia",
+      "kind": "receipt",
+      "badge": "measured_j vs DWT",
+      "title": "Thor INA3221 (125–176 nJ) & Live Alif E3 (12.18 cyc)",
+      "detail": "Thor DC shunt measured_j = 125.23–176 nJ/op (85.28x CpJ, board_metered=true) strictly separated from Alif E3 Cortex-M55 12.18 DWT cycles (38.1 ns, measured_j=null).",
+      "href": "/living/lut-adapt/"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-14-0",
+      "at_sec": 413.053,
+      "end_sec": 442.08,
+      "turn_index": 14,
+      "speaker": "Mei",
+      "kind": "ecosystem",
+      "badge": "LAB 11 + TV #28",
+      "title": "Interactive Wobble Harmonics Lab & TV Study #28",
+      "detail": "Explore 8x8 codon quartets, 64-bar Walsh filtering, and M.2 DDR3-reset thermals interactively on /tutorials/?lab=lab-11-lut6-codon-wobble and /tv/#lut6-codon-nucleus:90s.",
+      "href": "/tv/#lut6-codon-nucleus:90s"
+    }
+  ],
+  "falsifiers": [
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-04-0",
+      "at_sec": 109.717,
+      "end_sec": 129.6,
+      "turn_index": 4,
+      "speaker": "Nia",
+      "kind": "falsifier",
+      "badge": "KILLED (0% HIT)",
+      "title": "1-Hot Memorization Leaks 7/64 (448/4,096) Noise",
+      "detail": "1u64 << c scatters energy across all 7 degree->=5 Walsh modes (448/4,096 spectral norm; 28 bipolar AC units) and hits 0.0% on 2-LSB jitter.",
+      "href": "/papers/lut-adapt/"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-13-0",
+      "at_sec": 365.823,
+      "end_sec": 411.983,
+      "turn_index": 13,
+      "speaker": "Rohan",
+      "kind": "falsifier",
+      "badge": "55.2 vs 95.8 est_C",
+      "title": "Numato Aller A7 XC7A200T M.2 3.3V Thermal Gate",
+      "detail": "Analytical physics bound inside 5V Particle Tachyon host: 0.86 est_W @ 55.2 est_C with DDR3 held in reset vs. 95.8 est_C thermal failure if DDR3 stays active (measured_j=null).",
+      "href": "/papers/lut-adapt/"
+    }
+  ],
+  "personas": {
+    "Mei": {
+      "name": "Mei",
+      "group": "host",
+      "title": "Tech & Physics Host · East/SE Asian English",
+      "voice_id": "7o3vIXfwm98KKuNfGmuY",
+      "fallback_voice": "en-SG-LunaNeural",
+      "color": "#38BDF8",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    "Nia": {
+      "name": "Nia",
+      "group": "skeptic",
+      "title": "Empirical Auditor · African American English",
+      "voice_id": "GbDIo39THauInuigCmPM",
+      "fallback_voice": "en-US-JennyNeural",
+      "color": "#F97316",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    "Rohan": {
+      "name": "Rohan",
+      "group": "specialist",
+      "title": "Hardware & Compiler Specialist · South Asian English",
+      "voice_id": "QtQiNi8LdZTzSJzhCvXT",
+      "fallback_voice": "en-IN-PrabhatNeural",
+      "color": "#818CF8",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  },
+  "turns": [
+    {
+      "turn_index": 0,
+      "speaker": "Mei",
+      "role": "Tech & Physics Host · East/SE Asian English",
+      "group": "host",
+      "color": "#38BDF8",
+      "start_sec": 1.83,
+      "end_sec": 29.99,
+      "text": "Welcome to Episode Fifteen of OpenIE Research Radio! I'm Mei, joined by empirical auditor Nia and hardware specialist Rohan — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural speech and grounded strictly in verified Open Interface Engineering artifacts. Today we ask: why do living cells and modern FPGAs both build survival reflexes out of exact sixty-four-entry tables?"
+    },
+    {
+      "turn_index": 1,
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
+      "group": "skeptic",
+      "color": "#F97316",
+      "start_sec": 30.18,
+      "end_sec": 55.357,
+      "text": "Wait a second, Rohan — before anyone cries poetic biology metaphor, check the raw combinatorics! Four nucleotide bases read in triplets give four cubed equals sixty-four codons, and a six-input LUT6 primitive holds two to the sixth equals sixty-four bits in one u64 register. How does our sixteen-kilobyte #![no_std] Rust Nucleus wire that up?"
+    },
+    {
+      "turn_index": 2,
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 55.627,
+      "end_sec": 96.51,
+      "text": "It's a strict bit-level isomorphism, Nia! In lut6-core, each CompactLut6Page is an exact four-thousand-ninety-six-byte C-aligned struct holding header CRC32, two hundred fifty-six u64 LUT6 truth tables, and routing bytes. Four pages form a sixteen-kilobyte three-part Nucleus: an immutable ROM innate reflex seed, a sixty-four-codon Operon state machine with hex three-C apoptosis rollback, and two surgical SRAM or DTCM overlay pages guarded by an override_mask bitwise two-to-one mux — cross-compiled cleanly across seven targets and passing sixty-four out of sixty-four Yosys abc LUT6 Boolean miter vectors!"
+    },
+    {
+      "turn_index": 3,
+      "speaker": "Mei",
+      "role": "Tech & Physics Host · East/SE Asian English",
+      "group": "host",
+      "color": "#38BDF8",
+      "start_sec": 96.78,
+      "end_sec": 108.727,
+      "text": "Now let's test what breaks when an engineer tries to cache skills by memorizing exact single sixty-four-bit states — one-hot style — instead of biology's third-base wobble quartets!"
+    },
+    {
+      "turn_index": 4,
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
+      "group": "skeptic",
+      "color": "#F97316",
+      "start_sec": 108.917,
+      "end_sec": 129.6,
+      "text": "Our Dual-Reality falsifier killed uncanonicalized one-hot LUT6 immediately! The moment an analog sensor jitters by two least-significant bits or a user paraphrases a prompt, one-hot wake suppression collapses to zero point zero percent! Rohan, what is the Walsh-Hadamard spectrum doing under the hood?"
+    },
+    {
+      "turn_index": 5,
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 129.87,
+      "end_sec": 162.469,
+      "text": "By Parseval's identity over the sixty-four Walsh-Hadamard modes, a one-hot mask scatters uniform energy across all sixty-three non-constant frequencies — leaking seven sixty-fourths of the spectrum, four hundred forty-eight out of four thousand ninety-six spectral units or twenty-eight bipolar AC units, straight into brittle degree-five and degree-six harmonics! Grouping the two least-significant wobble wires into sixteen four-codon quartets makes alternating parity signs cancel pairwise on every quartet, driving degree-five-and-six noise to exact zero!"
+    },
+    {
+      "turn_index": 6,
+      "speaker": "Mei",
+      "role": "Tech & Physics Host · East/SE Asian English",
+      "group": "host",
+      "color": "#38BDF8",
+      "start_sec": 162.739,
+      "end_sec": 171.107,
+      "text": "And you didn't leave that harmonic cancellation to floating-point simulations — tell us about the formal verification receipt in NucleusWobble.lean!"
+    },
+    {
+      "turn_index": 7,
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 171.377,
+      "end_sec": 207.402,
+      "text": "All twenty theorems in NucleusWobble.lean — covering pigeonhole wobble overlap, universal degree-five-and-six Walsh vanishing across all sixty-five thousand five hundred thirty-six wobble gates, surgical mux non-regression, four-part Means Test break-even, and apoptosis seed restoration — passed all six independent Lean 4.36.0 proof kernels inside network-isolated bubblewrap with zero sorry! Empirically, wobble crystals suppress eighty-seven to ninety-five percent of noisy model wakes with zero point zero zero percent silent corruption and one hundred percent out-of-distribution conformal abstention."
+    },
+    {
+      "turn_index": 8,
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
+      "group": "skeptic",
+      "color": "#F97316",
+      "start_sec": 207.592,
+      "end_sec": 224.928,
+      "text": "Zoom out to late-2026 external literature! Two major results just landed — Columbia and Amazon's ReTrace, and Grounded Scaling's delta-to-the-k law. How do both converge directly onto closed-form DiffLUT-Net downward compilation?"
+    },
+    {
+      "turn_index": 9,
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 225.198,
+      "end_sec": 272.084,
+      "text": "They form one unified triangle! Columbia and Amazon's ReTrace compiles recurring web-agent execution traces into deterministic Python routines, slashing latency over a hundredfold from one hundred seventy seconds down to one point three seconds. Meanwhile, Grounded Scaling shows why uncompiled Rung-Five chains collapse: if each neural step succeeds with probability delta below one, a k-step chain survives only as delta to the k — whereas compiling verified steps sets delta equal to one on covered regimes! Lowering that trace compilation from software into Boolean logic via closed-form multilinear DiffLUT-Net prunes active LUT6 gates by sixty-four point zero six percent, from sixty-four down to twenty-three gates — nearly tripling skill slots on a four-dollar RP2040!"
+    },
+    {
+      "turn_index": 10,
+      "speaker": "Mei",
+      "role": "Tech & Physics Host · East/SE Asian English",
+      "group": "host",
+      "color": "#38BDF8",
+      "start_sec": 272.354,
+      "end_sec": 293.792,
+      "text": "Now let's enforce OpenIE's strictest hardware audit rule! We have three completely different physical substrates on the table: NVIDIA Jetson AGX Thor, a live USB-attached Alif Ensemble E3 microcontroller, and a fanless M.2 FPGA card inside a five-volt edge host. Nia, audit every column!"
+    },
+    {
+      "turn_index": 11,
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
+      "group": "skeptic",
+      "color": "#F97316",
+      "start_sec": 293.982,
+      "end_sec": 347.662,
+      "text": "Column one — and ONLY column one — carries board_metered true! On Jetson AGX Thor, physical Texas Instruments INA3221 direct-current shunts on VDD_CPU_SOC_MSS measured one hundred twenty-five to one hundred seventy-six nanojoules per bit-sliced lut6-core decision — eighty-five point two eight times higher physical Coherence per Joule than an INT8 Micro-MLP! Column two is bare-metal cycle counting with measured_j explicitly null: on our live attached Alif E3 Arm Cortex-M55 at four hundred megahertz, hardware DWT counters clocked twelve point one eight cycles — thirty-eight point one nanoseconds per decision, one thousand nine hundred forty-three times fewer cycles than the INT8 MLP with zero flash writes!"
+    },
+    {
+      "turn_index": 12,
+      "speaker": "Mei",
+      "role": "Tech & Physics Host · East/SE Asian English",
+      "group": "host",
+      "color": "#38BDF8",
+      "start_sec": 347.932,
+      "end_sec": 364.753,
+      "text": "And column three is where thermal physics saves you from melting a fanless edge box before you even order a circuit board! Rohan, walk us through slotting a Numato Aller A7 Artix-7 M.2 card into a five-volt Particle Tachyon SBC."
+    },
+    {
+      "turn_index": 13,
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 365.023,
+      "end_sec": 411.983,
+      "text": "A Particle Tachyon runs off a five-volt rail and feeds its M.2 PCIe slot at three point three volts inside a tight fanless enclosure. The Numato Aller A7 carries a two-hundred-thousand-cell Xilinx Artix-7 XC7A200T FPGA alongside onboard DDR3 SDRAM. Because our paged LUT6 Nucleus lives entirely inside on-die Block RAM with zero external DRAM traffic, holding that onboard DDR3 chip continuously in reset keeps total card power at zero point eight six estimated watts and passive junction temperature at a safe fifty-five point two estimated degrees Celsius! Leave DDR3 clocked and active, however, and card dissipation jumps past the passive M.2 envelope to ninety-five point eight estimated degrees Celsius — guaranteed thermal failure!"
+    },
+    {
+      "turn_index": 14,
+      "speaker": "Mei",
+      "role": "Tech & Physics Host · East/SE Asian English",
+      "group": "host",
+      "color": "#38BDF8",
+      "start_sec": 412.253,
+      "end_sec": 442.08,
+      "text": "Sixty-four biological codons, sixty-four LUT6 switches, zero high-degree wobble noise across twenty six-kernel theorems, and honest separation between Thor nanojoule shunts, Alif nanosecond cycles, and fifty-five-point-two-degree fanless M.2 silicon! Try Interactive Lab Eleven at research.openie.dev/tutorials, watch Study Twenty-Eight on Research TV, and thank you for tuning in to OpenIE Research Radio!"
+    }
+  ],
+  "cards": [
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 29.99,
+      "turn_index": 0,
+      "speaker": "Mei",
+      "kind": "study",
+      "badge": "4^3 = 2^6 = 64",
+      "title": "64-Codon Lookup Nucleus & Fanless M.2 Silicon",
+      "detail": "Maps 4^3 = 64 genetic triplets onto 2^6 = 64-bit u64 LUT6 truth tables inside a 16 KB #![no_std] 3-part Rust Nucleus.",
+      "href": "/papers/lut-adapt/"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-02-0",
+      "at_sec": 56.427,
+      "end_sec": 96.51,
+      "turn_index": 2,
+      "speaker": "Rohan",
+      "kind": "receipt",
+      "badge": "16 KB #![no_std]",
+      "title": "3-Part lut6-core Nucleus & 64/64 Yosys Miter",
+      "detail": "4 x 4,096 B pages (immutable seed + 64-codon Operon FSM + surgical SRAM/DTCM overlays) across 7 targets; 64/64 abc -lut 6 miter pass.",
+      "href": "/papers/lut-adapt/"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-04-0",
+      "at_sec": 109.717,
+      "end_sec": 129.6,
+      "turn_index": 4,
+      "speaker": "Nia",
+      "kind": "falsifier",
+      "badge": "KILLED (0% HIT)",
+      "title": "1-Hot Memorization Leaks 7/64 (448/4,096) Noise",
+      "detail": "1u64 << c scatters energy across all 7 degree->=5 Walsh modes (448/4,096 spectral norm; 28 bipolar AC units) and hits 0.0% on 2-LSB jitter.",
+      "href": "/papers/lut-adapt/"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-07-0",
+      "at_sec": 172.177,
+      "end_sec": 207.402,
+      "turn_index": 7,
+      "speaker": "Rohan",
+      "kind": "receipt",
+      "badge": "20 THMS · 6-KERNEL",
+      "title": "NucleusWobble.lean: Exact 0 Degree->=5 Noise",
+      "detail": "20 Lean 4.36.0 theorems checked across 6 kernels (0 sorry); 87%–95% noisy wake suppression, 0.00% silent corruption, 100% OOD abstention.",
+      "href": "/tutorials/?lab=lab-11-lut6-codon-wobble"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-09-0",
+      "at_sec": 225.998,
+      "end_sec": 272.084,
+      "turn_index": 9,
+      "speaker": "Rohan",
+      "kind": "study",
+      "badge": "-64.06% GATES",
+      "title": "ReTrace (170s -> 1.3s), Grounded Scaling & DiffLUT-Net",
+      "detail": "Connects trace-to-code replay (170s -> 1.3s) and delta^k horizon survival to closed-form DiffLUT-Net pruning (64 -> 23 LUT6 gates; 690–992 RP2040 slots).",
+      "href": "/papers/lut-adapt/"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-11-0",
+      "at_sec": 294.782,
+      "end_sec": 347.662,
+      "turn_index": 11,
+      "speaker": "Nia",
+      "kind": "receipt",
+      "badge": "measured_j vs DWT",
+      "title": "Thor INA3221 (125–176 nJ) & Live Alif E3 (12.18 cyc)",
+      "detail": "Thor DC shunt measured_j = 125.23–176 nJ/op (85.28x CpJ, board_metered=true) strictly separated from Alif E3 Cortex-M55 12.18 DWT cycles (38.1 ns, measured_j=null).",
+      "href": "/living/lut-adapt/"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-13-0",
+      "at_sec": 365.823,
+      "end_sec": 411.983,
+      "turn_index": 13,
+      "speaker": "Rohan",
+      "kind": "falsifier",
+      "badge": "55.2 vs 95.8 est_C",
+      "title": "Numato Aller A7 XC7A200T M.2 3.3V Thermal Gate",
+      "detail": "Analytical physics bound inside 5V Particle Tachyon host: 0.86 est_W @ 55.2 est_C with DDR3 held in reset vs. 95.8 est_C thermal failure if DDR3 stays active (measured_j=null).",
+      "href": "/papers/lut-adapt/"
+    },
+    {
+      "id": "ep15-codon-lut6-m2-silicon-card-14-0",
+      "at_sec": 413.053,
+      "end_sec": 442.08,
+      "turn_index": 14,
+      "speaker": "Mei",
+      "kind": "ecosystem",
+      "badge": "LAB 11 + TV #28",
+      "title": "Interactive Wobble Harmonics Lab & TV Study #28",
+      "detail": "Explore 8x8 codon quartets, 64-bar Walsh filtering, and M.2 DDR3-reset thermals interactively on /tutorials/?lab=lab-11-lut6-codon-wobble and /tv/#lut6-codon-nucleus:90s.",
+      "href": "/tv/#lut6-codon-nucleus:90s"
+    }
+  ]
+}

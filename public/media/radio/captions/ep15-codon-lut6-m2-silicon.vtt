@@ -1,0 +1,63 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:01.830 --> 00:00:29.990
+<v Mei>Welcome to Episode Fifteen of OpenIE Research Radio! I'm Mei, joined by empirical auditor Nia and hardware specialist Rohan — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural speech and grounded strictly in verified Open Interface Engineering artifacts. Today we ask: why do living cells and modern FPGAs both build survival reflexes out of exact sixty-four-entry tables?
+
+2
+00:00:30.180 --> 00:00:55.357
+<v Nia>Wait a second, Rohan — before anyone cries poetic biology metaphor, check the raw combinatorics! Four nucleotide bases read in triplets give four cubed equals sixty-four codons, and a six-input LUT6 primitive holds two to the sixth equals sixty-four bits in one u64 register. How does our sixteen-kilobyte #![no_std] Rust Nucleus wire that up?
+
+3
+00:00:55.627 --> 00:01:36.510
+<v Rohan>It's a strict bit-level isomorphism, Nia! In lut6-core, each CompactLut6Page is an exact four-thousand-ninety-six-byte C-aligned struct holding header CRC32, two hundred fifty-six u64 LUT6 truth tables, and routing bytes. Four pages form a sixteen-kilobyte three-part Nucleus: an immutable ROM innate reflex seed, a sixty-four-codon Operon state machine with hex three-C apoptosis rollback, and two surgical SRAM or DTCM overlay pages guarded by an override_mask bitwise two-to-one mux — cross-compiled cleanly across seven targets and passing sixty-four out of sixty-four Yosys abc LUT6 Boolean miter vectors!
+
+4
+00:01:36.780 --> 00:01:48.727
+<v Mei>Now let's test what breaks when an engineer tries to cache skills by memorizing exact single sixty-four-bit states — one-hot style — instead of biology's third-base wobble quartets!
+
+5
+00:01:48.917 --> 00:02:09.600
+<v Nia>Our Dual-Reality falsifier killed uncanonicalized one-hot LUT6 immediately! The moment an analog sensor jitters by two least-significant bits or a user paraphrases a prompt, one-hot wake suppression collapses to zero point zero percent! Rohan, what is the Walsh-Hadamard spectrum doing under the hood?
+
+6
+00:02:09.870 --> 00:02:42.469
+<v Rohan>By Parseval's identity over the sixty-four Walsh-Hadamard modes, a one-hot mask scatters uniform energy across all sixty-three non-constant frequencies — leaking seven sixty-fourths of the spectrum, four hundred forty-eight out of four thousand ninety-six spectral units or twenty-eight bipolar AC units, straight into brittle degree-five and degree-six harmonics! Grouping the two least-significant wobble wires into sixteen four-codon quartets makes alternating parity signs cancel pairwise on every quartet, driving degree-five-and-six noise to exact zero!
+
+7
+00:02:42.739 --> 00:02:51.107
+<v Mei>And you didn't leave that harmonic cancellation to floating-point simulations — tell us about the formal verification receipt in NucleusWobble.lean!
+
+8
+00:02:51.377 --> 00:03:27.402
+<v Rohan>All twenty theorems in NucleusWobble.lean — covering pigeonhole wobble overlap, universal degree-five-and-six Walsh vanishing across all sixty-five thousand five hundred thirty-six wobble gates, surgical mux non-regression, four-part Means Test break-even, and apoptosis seed restoration — passed all six independent Lean 4.36.0 proof kernels inside network-isolated bubblewrap with zero sorry! Empirically, wobble crystals suppress eighty-seven to ninety-five percent of noisy model wakes with zero point zero zero percent silent corruption and one hundred percent out-of-distribution conformal abstention.
+
+9
+00:03:27.592 --> 00:03:44.928
+<v Nia>Zoom out to late-2026 external literature! Two major results just landed — Columbia and Amazon's ReTrace, and Grounded Scaling's delta-to-the-k law. How do both converge directly onto closed-form DiffLUT-Net downward compilation?
+
+10
+00:03:45.198 --> 00:04:32.084
+<v Rohan>They form one unified triangle! Columbia and Amazon's ReTrace compiles recurring web-agent execution traces into deterministic Python routines, slashing latency over a hundredfold from one hundred seventy seconds down to one point three seconds. Meanwhile, Grounded Scaling shows why uncompiled Rung-Five chains collapse: if each neural step succeeds with probability delta below one, a k-step chain survives only as delta to the k — whereas compiling verified steps sets delta equal to one on covered regimes! Lowering that trace compilation from software into Boolean logic via closed-form multilinear DiffLUT-Net prunes active LUT6 gates by sixty-four point zero six percent, from sixty-four down to twenty-three gates — nearly tripling skill slots on a four-dollar RP2040!
+
+11
+00:04:32.354 --> 00:04:53.792
+<v Mei>Now let's enforce OpenIE's strictest hardware audit rule! We have three completely different physical substrates on the table: NVIDIA Jetson AGX Thor, a live USB-attached Alif Ensemble E3 microcontroller, and a fanless M.2 FPGA card inside a five-volt edge host. Nia, audit every column!
+
+12
+00:04:53.982 --> 00:05:47.662
+<v Nia>Column one — and ONLY column one — carries board_metered true! On Jetson AGX Thor, physical Texas Instruments INA3221 direct-current shunts on VDD_CPU_SOC_MSS measured one hundred twenty-five to one hundred seventy-six nanojoules per bit-sliced lut6-core decision — eighty-five point two eight times higher physical Coherence per Joule than an INT8 Micro-MLP! Column two is bare-metal cycle counting with measured_j explicitly null: on our live attached Alif E3 Arm Cortex-M55 at four hundred megahertz, hardware DWT counters clocked twelve point one eight cycles — thirty-eight point one nanoseconds per decision, one thousand nine hundred forty-three times fewer cycles than the INT8 MLP with zero flash writes!
+
+13
+00:05:47.932 --> 00:06:04.753
+<v Mei>And column three is where thermal physics saves you from melting a fanless edge box before you even order a circuit board! Rohan, walk us through slotting a Numato Aller A7 Artix-7 M.2 card into a five-volt Particle Tachyon SBC.
+
+14
+00:06:05.023 --> 00:06:51.983
+<v Rohan>A Particle Tachyon runs off a five-volt rail and feeds its M.2 PCIe slot at three point three volts inside a tight fanless enclosure. The Numato Aller A7 carries a two-hundred-thousand-cell Xilinx Artix-7 XC7A200T FPGA alongside onboard DDR3 SDRAM. Because our paged LUT6 Nucleus lives entirely inside on-die Block RAM with zero external DRAM traffic, holding that onboard DDR3 chip continuously in reset keeps total card power at zero point eight six estimated watts and passive junction temperature at a safe fifty-five point two estimated degrees Celsius! Leave DDR3 clocked and active, however, and card dissipation jumps past the passive M.2 envelope to ninety-five point eight estimated degrees Celsius — guaranteed thermal failure!
+
+15
+00:06:52.253 --> 00:07:22.080
+<v Mei>Sixty-four biological codons, sixty-four LUT6 switches, zero high-degree wobble noise across twenty six-kernel theorems, and honest separation between Thor nanojoule shunts, Alif nanosecond cycles, and fifty-five-point-two-degree fanless M.2 silicon! Try Interactive Lab Eleven at research.openie.dev/tutorials, watch Study Twenty-Eight on Research TV, and thank you for tuning in to OpenIE Research Radio!

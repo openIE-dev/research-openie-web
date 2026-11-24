@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="sk-t sk-d">
   <title id="sk-t">Six-Kernel Paranoid Proof Audit (Claim LA-19) and Three-Layer Compiled Intelligence Stack</title>
-  <desc id="sk-d">Left panel shows the 27 LutAdapt Lean 4.36.0 theorems passing six independent proof checkers via lake check --paranoid (con-leche --verified, con-ron --verified, lean4lean, nanoda, leanchecker --paranoid, and Lean 4.36.0), neutralizing CVE-2026-72844, CVE-2026-72711, and native_decide exploits. Right panel shows the three-layer compiled intelligence architecture spanning physical L0 control &amp; LUT6 silicon, cognitive MoL downward compilation, and verifier-first Rust MCP runtime with tier-typed Joule receipts.</desc>
+  <desc id="sk-d">Left panel shows the 42 LutAdapt Lean 4.36.0 theorems passing six independent proof checkers via lake check --paranoid (con-leche --verified, con-ron --verified, lean4lean, nanoda, leanchecker --paranoid, and Lean 4.36.0), neutralizing CVE-2026-72844, CVE-2026-72711, and native_decide exploits. Right panel shows the three-layer compiled intelligence architecture spanning physical L0 control &amp; LUT6 silicon, cognitive MoL downward compilation, and verifier-first Rust MCP runtime with tier-typed Joule receipts.</desc>
   <defs>
     <marker id="sk-emerald" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M0 0 L10 5 L0 10 z" fill="#10b981"/>
@@ -21,8 +21,8 @@
   <text x="46" y="106" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.2" font-weight="800" fill="#f8fafc">A · Six-Kernel Paranoid Proof Audit (lake check --paranoid)</text>
   <text x="46" y="124" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.3" fill="#94a3b8">Mechanized Section 2 theorems exported from Lean 4.36.0 and re-verified from scratch</text>
   <rect x="46" y="138" width="528" height="78" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-  <text x="62" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.8" font-weight="800" fill="#38bdf8">proofs/LutAdapt/{Cascade, BenesCopy, JointMinterm, ConformalProvenance}.lean</text>
-  <text x="62" y="181" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.4" fill="#e2e8f0">27 Machine-Checked Theorems · 5 Zero-Axiom · 23/27 Choice-Free · Standard ZFC Only</text>
+  <text x="58" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="800" fill="#38bdf8">proofs/LutAdapt/{Cascade,BenesCopy,JointMinterm,ConformalProvenance,NucleusCodon,TernaryTmac}.lean</text>
+  <text x="62" y="181" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.4" fill="#e2e8f0">42 Machine-Checked Theorems · 8 Zero-Axiom · 33/42 Choice-Free · Standard ZFC Only</text>
   <text x="62" y="200" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6" fill="#6ee7b7">0 sorry · 0 custom axioms · 0 opaque · 0 Lean.ofReduceBool (native_decide)</text>
   <rect x="46" y="228" width="528" height="76" rx="10" fill="#1c1219" stroke="#f43f5e" stroke-width="1.4"/>
   <text x="62" y="248" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.4" font-weight="800" fill="#fda4af">2026 PROVER SOUNDNESS &amp; AI REWARD-HACKING VECTORS BLOCKED:</text>
@@ -33,21 +33,21 @@
   <text x="58" y="341" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="800" fill="#f8fafc">1 · con-leche (--verified)</text>
   <text x="58" y="358" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.8" font-weight="700" fill="#10b981">Set-Theory Consistency Proof</text>
   <text x="58" y="376" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#cbd5e1">Breitner minimal kernel proved</text>
-  <text x="58" y="390" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#cbd5e1">never to accept False · 58,683 decls</text>
+  <text x="58" y="390" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#cbd5e1">never to accept False · 58,762 decls</text>
   <rect x="228" y="386" width="64" height="18" rx="9" fill="#052e16" stroke="#10b981" stroke-width="1.1"/>
   <text x="260" y="398" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="800" fill="#6ee7b7" text-anchor="middle">ACCEPTS</text>
   <rect x="316" y="320" width="258" height="92" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
   <text x="328" y="341" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="800" fill="#f8fafc">2 · con-ron (--verified)</text>
   <text x="328" y="358" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.8" font-weight="700" fill="#10b981">Aeneas-Verified Rust Kernel</text>
   <text x="328" y="376" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#cbd5e1">Formally refined Rust port of</text>
-  <text x="328" y="390" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#cbd5e1">con-leche · 58,683 decls checked</text>
+  <text x="328" y="390" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#cbd5e1">con-leche · 58,762 decls checked</text>
   <rect x="498" y="386" width="64" height="18" rx="9" fill="#052e16" stroke="#10b981" stroke-width="1.1"/>
   <text x="530" y="398" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="800" fill="#6ee7b7" text-anchor="middle">ACCEPTS</text>
   <rect x="46" y="424" width="258" height="92" rx="10" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
   <text x="58" y="445" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="800" fill="#f8fafc">3 · lean4lean</text>
   <text x="58" y="462" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.8" font-weight="700" fill="#22d3ee">Lean-in-Lean Typechecker</text>
   <text x="58" y="480" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#cbd5e1">Carneiro independent kernel;</text>
-  <text x="58" y="494" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#cbd5e1">58,685 declarations replayed</text>
+  <text x="58" y="494" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#cbd5e1">58,764 declarations replayed</text>
   <rect x="228" y="490" width="64" height="18" rx="9" fill="#052e16" stroke="#10b981" stroke-width="1.1"/>
   <text x="260" y="502" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="800" fill="#6ee7b7" text-anchor="middle">ACCEPTS</text>
   <rect x="316" y="424" width="258" height="92" rx="10" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
@@ -68,7 +68,7 @@
   <text x="328" y="549" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="800" fill="#f8fafc">6 · Lean v4.36.0 (Nov 2026)</text>
   <text x="328" y="566" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.8" font-weight="700" fill="#a78bfa">Post-CVE Default C++ Kernel</text>
   <text x="328" y="584" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#cbd5e1">Includes WHNF cache &amp; GMP fixes;</text>
-  <text x="328" y="598" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#cbd5e1">clean lake build in ~2.26 s</text>
+  <text x="328" y="598" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#cbd5e1">clean lake build in ~0.89 s</text>
   <rect x="498" y="594" width="64" height="18" rx="9" fill="#052e16" stroke="#10b981" stroke-width="1.1"/>
   <text x="530" y="606" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="800" fill="#6ee7b7" text-anchor="middle">ACCEPTS</text>
   <text x="46" y="652" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" fill="#6ee7b7">Artifact: artifacts/lean4_six_kernel_paranoid_audit.csv · verify_lean_proofs.py (exit 0)</text>

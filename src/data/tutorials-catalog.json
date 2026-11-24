@@ -2,9 +2,9 @@
   "version": "1.0.0",
   "storage_key": "oe-tutorials-v1",
   "tracks": [
-    { "id": "all", "label": "All 10 Labs", "count": 10 },
+    { "id": "all", "label": "All 12 Labs", "count": 12 },
     { "id": "avalanche", "label": "Communication Avalanche (1–5)", "count": 5 },
-    { "id": "core", "label": "Core OpenIE Stack (6–10)", "count": 5 }
+    { "id": "core", "label": "Core OpenIE & Silicon Stack (6–12)", "count": 7 }
   ],
   "labs": [
     {
@@ -133,7 +133,7 @@
       }
     },
     {
-      "id": "lab-06-rce-world-coding", "number": 6, "track": "core", "track_label": "Track B · Core OpenIE Stack",
+      "id": "lab-06-rce-world-coding", "number": 6, "track": "core", "track_label": "Track B · Core OpenIE & Silicon Stack",
       "title": "World Coding: RCE Total State Machines & FormEBM Repair",
       "subtitle": "Refuse unhandled edge cases in 49.04 mJ, score candidate repairs with FormEBM-v3, and emit Rust, C++, and Wasm from one total Form.",
       "study_id": "rce-jepa", "paper_url": "/papers/rce-jepa/", "tv_url": "/tv/?study=rce-jepa", "figures_url": "/living/rce-jepa/", "estimated_minutes": 7,
@@ -158,7 +158,7 @@
       }
     },
     {
-      "id": "lab-07-deterministic-null", "number": 7, "track": "core", "track_label": "Track B · Core OpenIE Stack",
+      "id": "lab-07-deterministic-null", "number": 7, "track": "core", "track_label": "Track B · Core OpenIE & Silicon Stack",
       "title": "Shape D & Zipf Crystallization: The Pre-Registered Null",
       "subtitle": "Stream Zipf(0.85) tasks against a 64-bit canonical case store (DNULLMM1) to separate true open-world reasoning from repeated work.",
       "study_id": "deterministic-null", "paper_url": "/papers/deterministic-null/", "tv_url": "/tv/?study=deterministic-null", "figures_url": "/living/deterministic-null/", "estimated_minutes": 6,
@@ -183,7 +183,7 @@
       }
     },
     {
-      "id": "lab-08-game-lockstep", "number": 8, "track": "core", "track_label": "Track B · Core OpenIE Stack",
+      "id": "lab-08-game-lockstep", "number": 8, "track": "core", "track_label": "Track B · Core OpenIE & Silicon Stack",
       "title": "Writing a Game Once: Q32.32 Lockstep vs. 3-OS Float Divergence",
       "subtitle": "Watch macOS, Linux, and Windows 11 split from a 1-ULP std::sin rounding seed at ticks 10–37, then lock all three to bit-exact Q32.32 replay.",
       "study_id": "game-engines", "paper_url": "/papers/game-engines/", "tv_url": "/tv/?study=game-engines", "figures_url": "/living/game-engines/", "estimated_minutes": 7,
@@ -208,7 +208,7 @@
       }
     },
     {
-      "id": "lab-09-lut6-benes", "number": 9, "track": "core", "track_label": "Track B · Core OpenIE Stack",
+      "id": "lab-09-lut6-benes", "number": 9, "track": "core", "track_label": "Track B · Core OpenIE & Silicon Stack",
       "title": "Downward LUT6 Compilation & Single-Cycle Beneš Fabrics",
       "subtitle": "Route Boolean features through a 6-wire Beneš switch and conformal wake gate in front of a 4-bit NVMe-streamed 35B sparse-MoE model.",
       "study_id": "lut-adapt", "paper_url": "/papers/lut-adapt/", "tv_url": "/tv/?study=lut-adapt", "figures_url": "/living/lut-adapt/", "estimated_minutes": 7,
@@ -233,7 +233,7 @@
       }
     },
     {
-      "id": "lab-10-time-index", "number": 10, "track": "core", "track_label": "Track B · Core OpenIE Stack",
+      "id": "lab-10-time-index", "number": 10, "track": "core", "track_label": "Track B · Core OpenIE & Silicon Stack",
       "title": "Time as an Index: Hellman Tables, Precomputation & Salted Horizons",
       "subtitle": "Slide memory M against online time T along T*M^2 = N^2 to see why precomputation pays O(N) upfront—and how a 128-bit salt zeroes it out.",
       "study_id": "time-as-an-index", "paper_url": "/papers/time-as-an-index/", "tv_url": "/tv/?study=time-as-an-index", "figures_url": "/living/time-as-an-index/", "estimated_minutes": 6,
@@ -255,6 +255,56 @@
       "verified_receipt": {
         "suite": "Time as an Index · Horizon.lean & Paradox.lean (31 Lean 4 Theorems)", "headline": "T*M^2 = N^2 upfront O(N) work · 100% pre-table miss under 128-bit salt",
         "metrics": [["Formal kernel proofs", "31 Lean 4.36.0 theorems · 0 sorry (Horizon & Paradox)"], ["SHA-256 spectral audit (M1–M8, F5)", "N = 65,536 digests · 0 bins below corrected p = 10^-6"], ["Unsalted Hellman tradeoff", "Online T = N^2 / M^2 paid by O(N) pre-query hashes"], ["128-bit salted horizon H_s(x)", "Pre-query table coverage < 2^-128 (0.0% hit rate)"]]
+      }
+    },
+    {
+      "id": "lab-11-lut6-codon-wobble", "number": 11, "track": "core", "track_label": "Track B · Core OpenIE & Silicon Stack",
+      "title": "The 64-Codon LUT6 (u64) Nucleus & Walsh-Hadamard Wobble Filter",
+      "subtitle": "Inspect 64-bit truth-table harmonics in zero floats, shatter 1-hot point memorization under 2-bit jitter, and lock in 87%–95% wake suppression at 125–176 nJ.",
+      "study_id": "lut-adapt", "paper_url": "/papers/lut-adapt/", "tv_url": "/tv/?study=lut-adapt", "figures_url": "/living/lut-adapt/", "estimated_minutes": 7,
+      "key_concept": "A 2-bit wobble codon (0xF << (target & 0x3C)) cancels all |S| >= 5 Walsh-Hadamard parity noise (0 / 4,096 vs 448 / 4,096 for 1-hot), while closed-form DiffLUT-Net prunes active LUT6 gates by 64.06%–75.00% (690–992 skill slots in 264 KB RP2040 SRAM) for 87%–95% wake suppression with 0.00% silent corruption.",
+      "predict": {
+        "question": "Under Parseval's identity (∑_{S ⊆ {0..5}} E_norm(S) = 4,096), how much high-degree (|S| >= 5) Walsh-Hadamard parity noise does a 2-bit wobble codon (0xF << (target & 0x3C)) leak compared with 1-hot memorization (448 / 4,096 = 7/64)?",
+        "choices": [
+          { "label": "448 / 4,096 (identical 7/64 parity tail across the 7 high-degree modes)", "ok": false, "why": "448 / 4,096 (7 * 64) is the brittle 1-hot mask (1u64 << target), which spreads uniform spectral energy across all 63 AC modes and misses on a 1-bit LSB flip." },
+          { "label": "112 / 4,096 (4x attenuation from grouping 4 neighboring truth-table entries)", "ok": false, "why": "Grouping arbitrary entries only damps high frequencies; aligning the 4-codon quartet on LSB wires {0,1} cancels every |S| >= 5 character identically." },
+          { "label": "Exact 0 / 4,096 (every |S| >= 5 mode intersects {0,1} by Pigeonhole and cancels)", "ok": true, "why": "Exact match (NucleusWobble.lean)! Any subset of {0..5} of size >= 5 must hit LSB wire i0 or i1, summing (+1, +1, -1, -1) = 0 across every 4-state wobble box." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict Wobble FWHT Noise", "prompt": "Apply Parseval's 4,096-unit normalization and Pigeonhole over {0..5} to predict degree->=5 parity leakage." },
+        { "step": 2, "kind": "break", "title": "Shatter 1-Hot Point Match", "prompt": "Select '1-Hot Point Match (64 gates)' and inject 1–2 bit Sensor/Paraphrase Jitter on the slider (or click cells on the 8x8 u64 bitboard) to observe 448 / 4,096 high-degree noise and 0.00% noisy hit rate (Killed under < 50% Dual-Reality rule; 39.37% corruption if unsmoothed).", "goal": "Observe 448 / 4,096 |S|>=5 noise and 0.00% noisy hit rate under 1–2 bit jitter" },
+        { "step": 3, "kind": "repair", "title": "Lock In DiffLUT-Net + 2-Bit Wobble", "prompt": "Switch Mode to 'DiffLUT-Net + 2-Bit Wobble (16–23 gates)' under jitter to cancel |S| >= 5 noise to 0 / 4,096, prune gates by 64.06%–75.00% (690–992 slots in 264 KB RP2040 SRAM), and achieve 87.00%–95.00% wake suppression with 0.00% silent corruption.", "goal": "Reach 0 / 4,096 |S|>=5 noise and 87%–95% wake suppression under jitter" },
+        { "step": 4, "kind": "verify", "title": "Verify Empirical Receipt", "prompt": "Compare your zero-float FWHT bitboard receipt against NucleusWobble.lean (20 theorems) and Claims LA-26..LA-28 hardware telemetry." }
+      ],
+      "verified_receipt": {
+        "suite": "NucleusWobble.lean (20 thms · 6 kernels) & lut-adapt Claims LA-26..LA-28", "headline": "0 / 4,096 |S|>=5 wobble noise · 87%–95% wake suppression · 125.23–176 nJ/op",
+        "metrics": [["Walsh-Hadamard |S|>=5 noise", "0 / 4,096 wobble vs 448 / 4,096 1-hot (20 Lean 4 thms)"], ["DiffLUT-Net + Wobble pruning", "64 -> 16–23 gates (-64.06% to -75.00% · 690–992 slots)"], ["Jetson AGX Thor INA3221 shunt", "125.23–176 nJ/op measured_j (85.28x–1,236x vs INT8)"], ["Live Alif E3 M55 & RP2040 M0+", "12.18 DWT cyc (38.1 ns) · 0-float RP2040 11,040 B ELF"]]
+      }
+    },
+    {
+      "id": "lab-12-aller-m2-thermal", "number": 12, "track": "core", "track_label": "Track B · Core OpenIE & Silicon Stack",
+      "title": "Fanless M.2 Silicon Envelope: XC7A200T + Tachyon Thermal Means Test",
+      "subtitle": "Sweep DDR3, PCIe lanes, clock gating, and airflow on an Artix-7 200T M.2 2280 card to prevent 95.8 °C slot runaway while holding 365 zero-wait LUT6 crystals.",
+      "study_id": "lut-adapt", "paper_url": "/papers/lut-adapt/", "tv_url": "/tv/?study=lut-adapt", "figures_url": "/living/lut-adapt/", "estimated_minutes": 7,
+      "key_concept": "Holding external DDR3 in CMOS reset (ddr3_cke = 0) and gating RAMB36E1 clock-enables (3.51x dynamic cut) eliminates 1,395 mW of non-compute heat on XC7A200T, dropping 45 °C M.2 junction temperature from 95.8 est_C (2.55 est_W) to 55.2 est_C (0.86 est_W M.2 / 0.97 est_W Tachyon 5V) with 365 4 KB crystals ready on-die.",
+      "predict": {
+        "question": "In a 45 °C fanless (0 LFM) M.2 2280 slot, what happens to junction temperature T_J on a Numato Aller A7 (XC7A200T-2FBG484C) at 250 MHz if onboard DDR3 800 MT/s and PCIe Gen2 x4 are left active instead of running purely from RAMB36E1?",
+        "choices": [
+          { "label": "T_J stays near 55.2 est_C because the 4 KB LUT6 core uses 0 DSP48E1 slices", "ok": false, "why": "55.2 est_C requires holding DDR3 in CMOS reset, trimming PCIe to Gen2 x1, and mounting the passive heatsink; MIG PHY + DDR3 + 4 GTP lanes add +1,395 mW of non-compute heat." },
+          { "label": "T_J plateaus at 78.0 est_C because 28nm static leakage stays constant above 45 °C", "ok": false, "why": "28nm HPL core/BRAM static leakage rises exponentially with T_J (DS181: 486.9 mW at 85 °C), amplifying self-heating in a bare 22x80 mm M.2 slot." },
+          { "label": "T_J climbs to 95.8 est_C (2.55 est_W on M.2 3.3V), breaching the 85 °C commercial limit", "ok": true, "why": "Exact match (AMD DS181 + UG475 coupled fixed-point)! MIG 7-Series PHY (680 mW), DDR3 (330 mW), and 4 GTP lanes (640 mW) drive M.2 3.3V draw to 2.55 est_W and T_J to 95.8 est_C." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict Fanless Slot Runaway", "prompt": "Evaluate the coupled 28nm electro-thermal fixed point when DDR3 MIG PHY and 4 PCIe Gen2 lanes stay active at 45 °C." },
+        { "step": 2, "kind": "break", "title": "Trigger 95.8 °C Thermal Violation", "prompt": "Enable 'DDR3 800 MT/s Active', 'PCIe Gen2 x4', and 'Bare 0 LFM' at 45 °C ambient (250 MHz) to watch M.2 3.3V draw hit 2.55 est_W and T_J breach 85 °C (95.8 est_C thermal violation!).", "goal": "Breach 85 °C commercial limit (95.8 est_C, >= 2.50 est_W M.2) in Bare 0 LFM" },
+        { "step": 3, "kind": "repair", "title": "Lock Pure-BRAM 55.2 °C Envelope", "prompt": "Hold DDR3 in 'CMOS Reset (ddr3_cke=0)', switch to 'PCIe Gen2 x1', 'CE-Gated 3.51x Cut', and 'Passive Heatsink' (or click the DDR3 / Heatsink blocks on canvas) to drop M.2 3.3V to 0.86 est_W (261 mA), Tachyon 5V FPC to 0.97 est_W (9.7% of 2A), and T_J to 55.2 est_C!", "goal": "Drop T_J <= 56.0 est_C and M.2 <= 0.90 est_W with 365 BRAM crystals ready" },
+        { "step": 4, "kind": "verify", "title": "Verify Empirical Receipt", "prompt": "Inspect Yosys xc7 synthesis, 10,500-vector KV260 Verilator equivalence, and AMD DS181/UG475 est_mW / est_C receipts." }
+      ],
+      "verified_receipt": {
+        "suite": "openie-research-experiments/aller-a7-xc7a200t @ 09511ee3 (est_mW / est_C)", "headline": "95.8 -> 55.2 est_C · 0.86 est_W M.2 · 365 x 4 KB BRAM crystals (0 DSPs)",
+        "metrics": [["Unified xc7 synthesis (09511ee3)", "62,211 LUTs (46.22%) · 83/365 RAMB36E1 · 0 DSP48E1"], ["KV260 Verilator equivalence", "10,500 / 10,500 vectors · 12,023 / 12,023 cycles (0 diffs)"], ["45 °C Pure-BRAM + x1 + Heatsink", "55.2 est_C · 0.86 est_W M.2 (261 mA) · 0.97 est_W 5V"], ["Evidence tier & crystal vault", "board_metered = false (est_mW/est_C) · 365 pages (2.53x KV260)"]]
       }
     }
   ]

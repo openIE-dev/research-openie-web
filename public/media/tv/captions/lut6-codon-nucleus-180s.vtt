@@ -1,0 +1,110 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — lut6-codon-nucleus (180s) Narrator Bobby
+
+1
+00:00:00.360 --> 00:00:04.756
+First, living cells use sixty-four genetic triplets to store survival rules,
+
+2
+00:00:04.756 --> 00:00:09.094
+and digital six-input lookup tables use the exact same sixty-four switches.
+
+3
+00:00:09.654 --> 00:00:13.409
+Second, grouping four neighboring switch settings together absorbs small
+
+4
+00:00:13.409 --> 00:00:17.269
+sensor or wording glitches while eliminating brittle high-frequency noise.
+
+5
+00:00:17.829 --> 00:00:25.785
+Third, a sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards,
+
+6
+00:00:25.785 --> 00:00:28.478
+waking large models only on genuine novelty.
+
+7
+00:00:29.038 --> 00:00:36.006
+When edge devices memorize brittle exact bit patterns, a two-bit sensor fluctuation or a slightly reworded sentence misses
+
+8
+00:00:36.006 --> 00:00:43.545
+the cache completely and wakes a power-hungry neural model from scratch. Worse still, chaining unverified neural guesses across many
+
+9
+00:00:43.545 --> 00:00:52.169
+steps multiplies tiny error rates until multi-step workflows collapse, whereas compiling verified steps into exact lookup tables preserves reliability.
+
+10
+00:00:52.729 --> 00:00:58.641
+Living cells solved this exact fragility problem billions of years ago inside the genetic code. Four chemical
+
+11
+00:00:58.641 --> 00:01:04.877
+bases read three at a time form sixty-four triplets, yet cells group neighboring third-letter variants into sixteen
+
+12
+00:01:04.877 --> 00:01:11.277
+four-triplet families so minor thermal or copying noise still builds the exact right protein without halting the cell.
+
+13
+00:01:11.837 --> 00:01:19.631
+Six binary input wires address sixty-four switch slots inside a single sixty-four-bit computer word—matching biology's sixty-four triplets one
+
+14
+00:01:19.631 --> 00:01:26.931
+for one. Our sixteen-kilobyte standalone Rust core combines an unchangeable factory reflex page, a sixty-four-state control loop, and
+
+15
+00:01:26.931 --> 00:01:34.012
+a surgical patch overlay that suppresses eighty-seven to ninety-five percent of repeat model wakeups with zero silent corruption.
+
+16
+00:01:34.572 --> 00:01:42.453
+Harmonic analysis explains why single-point memorization fails: lighting one slot out of sixty-four scatters brittle energy into fifth-order and
+
+17
+00:01:42.453 --> 00:01:50.826
+sixth-order frequencies. Twenty theorems verified across six independent Lean proof kernels prove four-slot wobble grouping cancels those top frequencies
+
+18
+00:01:50.826 --> 00:01:59.801
+to exact zero, aligning trace-to-code compilation—which shrinks two-minute agent replays to roughly one second—with sixty-four percent smaller truth-table networks.
+
+19
+00:02:00.361 --> 00:02:09.752
+This three-dimensional view shows a gum-stick fanless M.2 reconfigurable circuit card slotted into a compact five-volt edge computer's three-point-three-volt rail. Physics thermal
+
+20
+00:02:09.752 --> 00:02:17.149
+models show that holding the card's unused external memory chips continuously asleep in reset keeps board power at zero point eight six watts
+
+21
+00:02:17.149 --> 00:02:26.330
+and junction temperature at fifty-five point two degrees Celsius, whereas leaving those memory chips active drives temperatures to ninety-five point eight degrees overheating.
+
+22
+00:02:26.890 --> 00:02:34.219
+Every number states its physical evidence class plainly and never mixes instruments across hardware tiers. Direct circuit-board current sensors
+
+23
+00:02:34.219 --> 00:02:41.547
+on Jetson Thor measured one hundred twenty-five to one hundred seventy-six nanojoules per lookup decision; built-in processor cycle counters on
+
+24
+00:02:41.547 --> 00:02:49.081
+a live Alif microcontroller measured twelve point two cycles, or thirty-eight nanoseconds; and M.2 card temperatures remain physics thermal bounds.
+
+25
+00:02:49.641 --> 00:02:56.313
+Scientific candor requires stating what is not yet physically probed on a bench: M.2 card wattage and fifty-five-degree
+
+26
+00:02:56.313 --> 00:03:03.827
+temperatures are analytical physics calculations until a physical M.2 card sits under inline rail sensors, creative open-ended writing
+
+27
+00:03:03.827 --> 00:03:10.499
+bypasses lookup tables by design, and any drifted patch page automatically rolls back to the unchangeable factory seed.

@@ -195,7 +195,7 @@
     const factory = registry.get(activeId);
     activeInstance = factory ? factory(drawHelpers) : null; simTime = 0;
     const setTxt = (eid, v) => { const el = document.getElementById(eid); if (el) el.textContent = v; };
-    setTxt('tut-track-tag', `${meta.track_label} · Lab ${String(meta.number).padStart(2, '0')}/10`);
+    setTxt('tut-track-tag', `${meta.track_label} · Lab ${String(meta.number).padStart(2, '0')}/${String(catalog.length || 12).padStart(2, '0')}`);
     setTxt('tut-title', meta.title); setTxt('tut-subtitle', meta.subtitle); setTxt('tut-concept', meta.key_concept);
     const fullLink = document.getElementById('tut-embed-open-full'); if (fullLink) fullLink.href = `/tutorials/?lab=${meta.id}`;
     renderRail(); renderControls(); renderStepper(); renderLessonBox(); renderTelemetry(); syncUrl();

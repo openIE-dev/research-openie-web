@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:podcast="https://podcastindex.org/namespace/1.0">
+  <channel>
+    <title>OpenIE Research Radio</title>
+    <link>https://research.openie.dev/radio/</link>
+    <language>en-us</language>
+    <copyright>Open Interface Engineering, Inc.</copyright>
+    <lastBuildDate>Tue, 24 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://research.openie.dev/radio/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Global multi-voice research broadcasts auditing energy-per-completion, formal state machines, biological signaling ratchets, and live open-access science. AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+    <itunes:author>Open Interface Engineering</itunes:author>
+    <itunes:summary>Global multi-voice research broadcasts auditing energy-per-completion, formal state machines, biological signaling ratchets, and live open-access science. AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+    <itunes:type>episodic</itunes:type>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:owner>
+      <itunes:name>Open Interface Engineering</itunes:name>
+      <itunes:email>research@openie.dev</itunes:email>
+    </itunes:owner>
+    <itunes:category text="Science" />
+    <itunes:category text="Technology" />
+    <item>
+      <guid isPermaLink="false">openie-radio-ep15-codon-lut6-m2-silicon</guid>
+      <title>Ep. 15: Ep 15 · Why 64 Codons Match 6-Input Lookup Tables: Wobble Harmonics, ReTrace, &amp; Fanless M.2 Silicon</title>
+      <link>https://research.openie.dev/radio/#ep15-codon-lut6-m2-silicon</link>
+      <pubDate>Tue, 24 Nov 2026 12:00:00 GMT</pubDate>
+      <description>Roundtable Cast: Mei, Nia, Rohan. Mei, Nia, and Rohan examine why 4^3 = 64 biological codons map one-to-one onto 2^6 = 64-bit u64 LUT6 truth tables inside a 16 KB #![no_std] 3-part Rust Nucleus; how 20 six-kernel Lean 4.36.0 theorems in NucleusWobble.lean cancel 7/64 (448/4,096) degree-&gt;=5 Walsh noise to exact 0 (87%–95% wake suppression, 0.00% silent corruption); how Columbia &amp; Amazon&apos;s ReTrace (170s -&gt; 1.3s) and Grounded Scaling (delta^k) connect to DiffLUT-Net (-64.06% gates); and how Jetson Thor INA3221 measured_j (125–176 nJ), live Alif E3 DWT cycles (12.18 cyc / 38.1 ns), and Numato Aller A7 XC7A200T M.2 3.3V + Particle Tachyon 5V thermal bounds (0.86 est_W @ 55.2 est_C with DDR3 held in reset vs. 95.8 est_C thermal failure) stay strictly separated. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Mei, Nia, and Rohan audit the 4^3 = 2^6 = 64 codon-LUT6 isomorphism, 20 six-kernel NucleusWobble.lean proofs, ReTrace &amp; DiffLUT-Net -64.06% pruning, and Thor shunt vs. Alif DWT vs. fanless M.2 55.2 est_C bounds</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Mei, Nia, Rohan. Mei, Nia, and Rohan examine why 4^3 = 64 biological codons map one-to-one onto 2^6 = 64-bit u64 LUT6 truth tables inside a 16 KB #![no_std] 3-part Rust Nucleus; how 20 six-kernel Lean 4.36.0 theorems in NucleusWobble.lean cancel 7/64 (448/4,096) degree-&gt;=5 Walsh noise to exact 0 (87%–95% wake suppression, 0.00% silent corruption); how Columbia &amp; Amazon&apos;s ReTrace (170s -&gt; 1.3s) and Grounded Scaling (delta^k) connect to DiffLUT-Net (-64.06% gates); and how Jetson Thor INA3221 measured_j (125–176 nJ), live Alif E3 DWT cycles (12.18 cyc / 38.1 ns), and Numato Aller A7 XC7A200T M.2 3.3V + Particle Tachyon 5V thermal bounds (0.86 est_W @ 55.2 est_C with DDR3 held in reset vs. 95.8 est_C thermal failure) stay strictly separated. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>15</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>07:24</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/ep15-codon-lut6-m2-silicon.m4a" length="7325107" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep15-codon-lut6-m2-silicon.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep14-database-bitemporal-state-desk</guid>
+      <title>Ep. 14: OpenIE Database &amp; Data Desk: Sub-Microsecond Memory-Mapped Stores and Hash-Chained Logs</title>
+      <link>https://research.openie.dev/radio/#ep14-database-bitemporal-state-desk</link>
+      <pubDate>Mon, 23 Nov 2026 12:30:00 GMT</pubDate>
+      <description>Roundtable Cast: Cecily, Marcus, Kwame. At the OpenIE Database &amp; Data Desk (database.openie.dev / data.openie.dev), Cecily, Marcus, and Kwame tour 35.28M data cells, 0.325 us / 1.77 uJ DNULLMM1 POSIX mmap and Win32 MapViewOfFile case stores, 69.7 us RCE-VC name-free versioned logs, and zero-diff deterministic replay across macOS, Linux, and bare-metal Windows 11. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Cecily, Marcus, and Kwame examine 1.77 uJ DNULLMM1 POSIX mmap case stores, RCE-VC name-free logs, and bit-exact replay across macOS, Linux, and Windows</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Cecily, Marcus, Kwame. At the OpenIE Database &amp; Data Desk (database.openie.dev / data.openie.dev), Cecily, Marcus, and Kwame tour 35.28M data cells, 0.325 us / 1.77 uJ DNULLMM1 POSIX mmap and Win32 MapViewOfFile case stores, 69.7 us RCE-VC name-free versioned logs, and zero-diff deterministic replay across macOS, Linux, and bare-metal Windows 11. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>14</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>04:15</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep14-database-bitemporal-state-desk.m4a" length="4347833" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep14-database-bitemporal-state-desk.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep13-knowledge-six-kernel-desk</guid>
+      <title>Ep. 13: OpenIE Knowledge Desk: Seven-Axis Time Claims and the Lean 4.36.0 Six-Kernel Audit</title>
+      <link>https://research.openie.dev/radio/#ep13-knowledge-six-kernel-desk</link>
+      <pubDate>Mon, 23 Nov 2026 12:00:00 GMT</pubDate>
+      <description>Roundtable Cast: Priya, Sean, Claire. At the OpenIE Knowledge Desk (knowledge.openie.dev), Priya, Sean, and Claire explain seven-axis tritemporal anti-laundering claims &lt;Vt, Tt, Rt, G, S, C, P&gt; and detail how 5,496 Lean 4.36.0 theorem constants pass con-leche, con-ron, lean4lean, nanoda, leanchecker, and Lean 4.36.0 inside an isolated Linux bubblewrap sandbox with zero sorry, zero opaque, and zero ofReduceBool. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Priya, Sean, and Claire unpack tritemporal anti-laundering claims and why 5,496 theorem constants run through six independent Lean checkers inside bubblewrap</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Priya, Sean, Claire. At the OpenIE Knowledge Desk (knowledge.openie.dev), Priya, Sean, and Claire explain seven-axis tritemporal anti-laundering claims &lt;Vt, Tt, Rt, G, S, C, P&gt; and detail how 5,496 Lean 4.36.0 theorem constants pass con-leche, con-ron, lean4lean, nanoda, leanchecker, and Lean 4.36.0 inside an isolated Linux bubblewrap sandbox with zero sorry, zero opaque, and zero ofReduceBool. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>13</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>04:17</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep13-knowledge-six-kernel-desk.m4a" length="4286686" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep13-knowledge-six-kernel-desk.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep12-synthesis-routing-verb-desk</guid>
+      <title>Ep. 12: OpenIE Synthesis Desk: Why Routing Beats Cold-Start Generation</title>
+      <link>https://research.openie.dev/radio/#ep12-synthesis-routing-verb-desk</link>
+      <pubDate>Mon, 23 Nov 2026 11:30:00 GMT</pubDate>
+      <description>Roundtable Cast: Mateo, Marcus, Rohan. At the OpenIE Synthesis Desk (synthesis.openie.dev), Mateo, Marcus, and Rohan show why energy-ordered Mixture of Limits routing beats cold-start generation: deterministic repair ladders, 6.05M FormEBM-v3 pre-filtering (0.9437 AUROC), 970 MB NVMe sparse-MoE streaming, RCE integer state-machine verification, 91.67% / 90.62% verified coding rates, and 0.00% broken commits. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Mateo, Marcus, and Rohan unpack Mixture of Limits cascades, span-normalized FormEBM-v3 pre-filtering, RCE integer verification, and 0.00% broken commits</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Mateo, Marcus, Rohan. At the OpenIE Synthesis Desk (synthesis.openie.dev), Mateo, Marcus, and Rohan show why energy-ordered Mixture of Limits routing beats cold-start generation: deterministic repair ladders, 6.05M FormEBM-v3 pre-filtering (0.9437 AUROC), 970 MB NVMe sparse-MoE streaming, RCE integer state-machine verification, 91.67% / 90.62% verified coding rates, and 0.00% broken commits. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>12</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>03:54</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep12-synthesis-routing-verb-desk.m4a" length="3826254" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep12-synthesis-routing-verb-desk.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep11-compute-joule-substrate-desk</guid>
+      <title>Ep. 11: OpenIE Compute Desk: Physical Shunts, Zero-Clock Wakeups, and Lookup Silicon</title>
+      <link>https://research.openie.dev/radio/#ep11-compute-joule-substrate-desk</link>
+      <pubDate>Mon, 23 Nov 2026 11:00:00 GMT</pubDate>
+      <description>Roundtable Cast: Mei, Nia, Tariq. At the OpenIE Compute Desk (compute.openie.dev), Mei, Nia, and Tariq audit 258 hardware primitives across physical TI INA238/INA3221 rail shunts (measured_j), CPU/GPU counters (reported_j), and RTL power models (est_mW), alongside eventfd zero-clock wakeups, 20.07x pre-compiled Rust preludes, and 250 MHz Beneš-routed LUT6 FPGA fabrics. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Mei, Nia, and Tariq separate measured_j from reported_j and est_j, put polling loops to sleep, and tour 250 MHz Beneš LUT6 pages</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Mei, Nia, Tariq. At the OpenIE Compute Desk (compute.openie.dev), Mei, Nia, and Tariq audit 258 hardware primitives across physical TI INA238/INA3221 rail shunts (measured_j), CPU/GPU counters (reported_j), and RTL power models (est_mW), alongside eventfd zero-clock wakeups, 20.07x pre-compiled Rust preludes, and 250 MHz Beneš-routed LUT6 FPGA fabrics. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>11</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>04:14</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep11-compute-joule-substrate-desk.m4a" length="4398465" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep11-compute-joule-substrate-desk.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep10-stack-three-altitudes-desk</guid>
+      <title>Ep. 10: OpenIE Stack Desk: Shannon, von Neumann, and Hurwicz on One Substrate</title>
+      <link>https://research.openie.dev/radio/#ep10-stack-three-altitudes-desk</link>
+      <pubDate>Mon, 23 Nov 2026 10:30:00 GMT</pubDate>
+      <description>Roundtable Cast: Elena, Liam, Arthur. At the OpenIE Stack Desk (stack.openie.dev), Elena, Liam, and Arthur connect Shannon-Landauer bit thermodynamics, von Neumann-Nash strategic interaction, and Hurwicz-Maskin-Myerson incentive-compatible commit gates (11,428 pJ on KV260) across nine Periodic Stacks, handoff verification, and Jevons task satiation. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Elena, Liam, and Arthur show how information theory, game theory, and mechanism design lock together when computation pays joules</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Elena, Liam, Arthur. At the OpenIE Stack Desk (stack.openie.dev), Elena, Liam, and Arthur connect Shannon-Landauer bit thermodynamics, von Neumann-Nash strategic interaction, and Hurwicz-Maskin-Myerson incentive-compatible commit gates (11,428 pJ on KV260) across nine Periodic Stacks, handoff verification, and Jevons task satiation. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>10</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>04:17</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep10-stack-three-altitudes-desk.m4a" length="4285364" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep10-stack-three-altitudes-desk.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep09-avalanche-ratchet-desk</guid>
+      <title>Ep. 9: OpenIE Avalanche Desk: The Nine Rungs and Crossing the Compilation Threshold</title>
+      <link>https://research.openie.dev/radio/#ep09-avalanche-ratchet-desk</link>
+      <pubDate>Mon, 23 Nov 2026 10:00:00 GMT</pubDate>
+      <description>Roundtable Cast: Amara, Marcus, Kenji. At the OpenIE Avalanche Desk (avalanche.openie.dev), Amara, Marcus, and Kenji unpack the nine-rung intelligence ratchet across 3.8 billion years of biology and 76 years of AI, diagnose why ephemeral Rung 5 tool loops stall on compounding error and energy, and show how DES-10 digital enzymes (98/100 pass, 927.30 uJ Thor shunt measured_j) and downward compilation cross into Rungs 6–9. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Amara, Marcus, and Kenji trace 3.8 billion years of signaling ratchets, why Rung 5 Tool Use stalls, and how downward compilation unlocks Rungs 6–9</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Amara, Marcus, Kenji. At the OpenIE Avalanche Desk (avalanche.openie.dev), Amara, Marcus, and Kenji unpack the nine-rung intelligence ratchet across 3.8 billion years of biology and 76 years of AI, diagnose why ephemeral Rung 5 tool loops stall on compounding error and energy, and show how DES-10 digital enzymes (98/100 pass, 927.30 uJ Thor shunt measured_j) and downward compilation cross into Rungs 6–9. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>9</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>04:31</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep09-avalanche-ratchet-desk.m4a" length="4506242" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep09-avalanche-ratchet-desk.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep08-idea-foundry-redteam</guid>
+      <title>Ep. 8: The Idea Foundry Live — Pitching, Red-Teaming &amp; Pilot-Testing 6 New Research Topics</title>
+      <link>https://research.openie.dev/radio/#ep08-idea-foundry-redteam</link>
+      <pubDate>Mon, 23 Nov 2026 09:30:00 GMT</pubDate>
+      <description>Roundtable Cast: Mateo, Marcus, Kwame. Mateo, Marcus, and Kwame host the autonomous 6-hour Topic Idea Foundry &amp; &lt;60s Linux RAPL Pilot Loop: live red-teaming and exact receipts for TF-2026-01 through TF-2026-06 (4 PROMOTED_CANDIDATE, 1 HOLD_NEEDS_HARDWARE, 1 KILLED_BY_NULL). — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Mateo, Marcus, and Kwame audit 4 promoted pilots, 1 INA238 hardware hold, and 1 neural router crushed 63.7x by Shape D</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Mateo, Marcus, Kwame. Mateo, Marcus, and Kwame host the autonomous 6-hour Topic Idea Foundry &amp; &lt;60s Linux RAPL Pilot Loop: live red-teaming and exact receipts for TF-2026-01 through TF-2026-06 (4 PROMOTED_CANDIDATE, 1 HOLD_NEEDS_HARDWARE, 1 KILLED_BY_NULL). — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>8</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>05:36</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep08-idea-foundry-redteam.m4a" length="5742670" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep08-idea-foundry-redteam.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep07-time-as-an-index</guid>
+      <title>Ep. 7: Time as an Index — Closed Timelike Curves, Hellman T·M² = N² &amp; Salted Horizons</title>
+      <link>https://research.openie.dev/radio/#ep07-time-as-an-index</link>
+      <pubDate>Mon, 23 Nov 2026 09:00:00 GMT</pubDate>
+      <description>Roundtable Cast: Amara, Nia, Arthur. Amara, Nia, and Arthur unpack Time as an Index and Thermodynamic Bounds of Agency: Aaronson-Watrous D-CTC = PSPACE, quantum no-signalling, Hellman T*M^2 = N^2 tables, 31 Lean 4.36.0 theorems, and 195 cataloged temporal anomalies. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Amara, Nia, and Arthur explore PSPACE time loops, 31 Lean 4 theorems, 65,536 SHA-256 spectral runs, and salted horizons</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Amara, Nia, Arthur. Amara, Nia, and Arthur unpack Time as an Index and Thermodynamic Bounds of Agency: Aaronson-Watrous D-CTC = PSPACE, quantum no-signalling, Hellman T*M^2 = N^2 tables, 31 Lean 4.36.0 theorems, and 195 cataloged temporal anomalies. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>7</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>04:58</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep07-time-as-an-index.m4a" length="4942423" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep07-time-as-an-index.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep06-lut6-metabolic-jouleos</guid>
+      <title>Ep. 6: Downward LUT6 Compilation, MEI-JCP Sovereign Hardware Tags &amp; JouleOS</title>
+      <link>https://research.openie.dev/radio/#ep06-lut6-metabolic-jouleos</link>
+      <pubDate>Mon, 23 Nov 2026 08:30:00 GMT</pubDate>
+      <description>Roundtable Cast: Misha, Sean, Claire. Misha, Sean, and Claire trace Mixture of Limits cascades from 34.66B sparse-MoE NVMe streaming (970 MB RAM, 6.773 J/tok reported_j) down to Beneš-routed LUT6 FPGA fabrics, 32x24 mm MEI-JCP sovereign PCB tags, and JouleOS. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Misha, Sean, and Claire examine 970 MB NVMe MoE streaming, 81-RAMB36E2 LUT6 fabrics, 32x24 mm PCB tags, and JouleOS</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Misha, Sean, Claire. Misha, Sean, and Claire trace Mixture of Limits cascades from 34.66B sparse-MoE NVMe streaming (970 MB RAM, 6.773 J/tok reported_j) down to Beneš-routed LUT6 FPGA fabrics, 32x24 mm MEI-JCP sovereign PCB tags, and JouleOS. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>6</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>04:58</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep06-lut6-metabolic-jouleos.m4a" length="4994019" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep06-lut6-metabolic-jouleos.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep05-game-engines-everywhere</guid>
+      <title>Ep. 5: Writing a Game Once — Q32.32 Lockstep, DirectX 12/Metal/Vulkan &amp; Closing GE-H1..H9</title>
+      <link>https://research.openie.dev/radio/#ep05-game-engines-everywhere</link>
+      <pubDate>Mon, 23 Nov 2026 08:00:00 GMT</pubDate>
+      <description>Roundtable Cast: Mei, Liam, Malik. Mei, Liam, and Malik walk through all nine executed falsifier suites GE-H1..GE-H9 across macOS, Linux, and Windows 11: 0/25,500 Q32.32 mismatches, tick-10 float divergence, 28/28 DirectX 12/Metal/Vulkan GPU pairs, and Godot 4.7.2 projection. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Mei, Liam, and Malik map where bit-exact Q32.32 replay ends, where GPU tolerance begins, and why std::sin diverges in 10 ticks</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Mei, Liam, Malik. Mei, Liam, and Malik walk through all nine executed falsifier suites GE-H1..GE-H9 across macOS, Linux, and Windows 11: 0/25,500 Q32.32 mismatches, tick-10 float divergence, 28/28 DirectX 12/Metal/Vulkan GPU pairs, and Godot 4.7.2 projection. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>5</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>04:51</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep05-game-engines-everywhere.m4a" length="4947143" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep05-game-engines-everywhere.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep04-deterministic-null-satb</guid>
+      <title>Ep. 4: Deterministic Null &amp; SATB — Pre-Registered Baselines and INA238 Shunt Rails vs. RAPL</title>
+      <link>https://research.openie.dev/radio/#ep04-deterministic-null-satb</link>
+      <pubDate>Mon, 23 Nov 2026 07:30:00 GMT</pubDate>
+      <description>Roundtable Cast: Elena, Marcus, Tariq. Elena, Marcus, and Tariq examine why every AI benchmark needs a zero-model-call Shape-D control and rootless telemetry attribution: OpenTimestamps + drand pre-registration, 6 frontier models across 4,030 instances, and 5-host SATB conformance. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Elena, Marcus, and Tariq audit Bitcoin-anchored Shape-D controls, Jetson AGX Thor shunts, and 89.88% Kepler attribution errors</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Elena, Marcus, Tariq. Elena, Marcus, and Tariq examine why every AI benchmark needs a zero-model-call Shape-D control and rootless telemetry attribution: OpenTimestamps + drand pre-registration, 6 frontier models across 4,030 instances, and 5-host SATB conformance. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>4</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>05:13</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep04-deterministic-null-satb.m4a" length="5467820" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep04-deterministic-null-satb.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep03-rce-world-coding</guid>
+      <title>Ep. 3: World Coding — The Reality Code Engine, FormJEPA/FormEBM &amp; 40/40 Verified Repair</title>
+      <link>https://research.openie.dev/radio/#ep03-rce-world-coding</link>
+      <pubDate>Mon, 23 Nov 2026 07:00:00 GMT</pubDate>
+      <description>Roundtable Cast: Priya, Nia, Devon. Priya, Nia, and Devon unpack RCE, RCE-JEPA, RCE Compile, and RCE-VC: 5,537 Lean 4 theorem constants, FormJEPA-v1, FormEBM-v2, 40/40 H15-Iterative repair, compiler payback horizons N*, and candid falsifiers. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Priya, Nia, and Devon examine state-machine Forms, 8.42M FormJEPA-v1, compiler payback N*, and why Rung F stayed in observe mode</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Priya, Nia, Devon. Priya, Nia, and Devon unpack RCE, RCE-JEPA, RCE Compile, and RCE-VC: 5,537 Lean 4 theorem constants, FormJEPA-v1, FormEBM-v2, 40/40 H15-Iterative repair, compiler payback horizons N*, and candid falsifiers. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>3</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>05:12</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep03-rce-world-coding.m4a" length="5216340" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep03-rce-world-coding.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep02-communication-tool-avalanche</guid>
+      <title>Ep. 2: The Communication Tool Avalanche — Quorum Ratchets, 1950–2026 AI Winters &amp; DES-10</title>
+      <link>https://research.openie.dev/radio/#ep02-communication-tool-avalanche</link>
+      <pubDate>Mon, 23 Nov 2026 06:30:00 GMT</pubDate>
+      <description>Roundtable Cast: Cecily, Liam, Kenji. Cecily, Liam, and Kenji examine why collective intelligence scales by externalizing state behind selective gates: bacterial quorum switches, cyanobacterial SepJ circuit-breakers, mycorrhizal citation bias, 1950–2026 AI winters, and DES-10. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Cecily, Liam, and Kenji trace externalized signal gates from Archaean nanopores to sub-millijoule digital enzymes</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Cecily, Liam, Kenji. Cecily, Liam, and Kenji examine why collective intelligence scales by externalizing state behind selective gates: bacterial quorum switches, cyanobacterial SepJ circuit-breakers, mycorrhizal citation bias, 1950–2026 AI winters, and DES-10. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>2</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>05:51</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep02-communication-tool-avalanche.m4a" length="5890990" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep02-communication-tool-avalanche.vtt" type="text/vtt" language="en" />
+    </item>
+    <item>
+      <guid isPermaLink="false">openie-radio-ep01-global-literature-radar</guid>
+      <title>Ep. 1: Live Global Radar — Open-Access Preprints vs. OpenIE Commit Gates</title>
+      <link>https://research.openie.dev/radio/#ep01-global-literature-radar</link>
+      <pubDate>Mon, 23 Nov 2026 06:00:00 GMT</pubDate>
+      <description>Roundtable Cast: Elena, Marcus, Rohan. Elena, Marcus, and Rohan open the autonomous 6-hour literature radar, cross-examining live 2026 works — including TokenPowerBench, Lean Graph Search, AgentShield, INFRAMIND, and npj Biofilms extracellular-vesicle quorum studies — against OpenIE&apos;s Metered Commit Gates and Shape-D controls. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Elena, Marcus, and Rohan audit live 2026 arXiv, Europe PMC, OpenAlex, bioRxiv, and ClinicalTrials.gov feeds</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Elena, Marcus, Rohan. Elena, Marcus, and Rohan open the autonomous 6-hour literature radar, cross-examining live 2026 works — including TokenPowerBench, Lean Graph Search, AgentShield, INFRAMIND, and npj Biofilms extracellular-vesicle quorum studies — against OpenIE&apos;s Metered Commit Gates and Shape-D controls. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>1</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>05:28</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/episodes/ep01-global-literature-radar.m4a" length="5492407" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep01-global-literature-radar.vtt" type="text/vtt" language="en" />
+    </item>
+  </channel>
+</rss>

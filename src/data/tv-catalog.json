@@ -1,15 +1,15 @@
 {
   "title": "OpenIE Research TV Catalog",
   "version": "3.1.0",
-  "study_count": 27,
-  "film_count": 108,
+  "study_count": 28,
+  "film_count": 112,
   "tiers": [
     "15s",
     "45s",
     "90s",
     "180s"
   ],
-  "tts_model": "ElevenLabs eleven_v4 (21-Presenter Global Studio Ensemble across 27 Studies; edge-tts neural fallback)",
+  "tts_model": "ElevenLabs eleven_v4 (21-Presenter Global Studio Ensemble across 28 Studies; edge-tts neural fallback)",
   "categories": [
     "Foundations & Thermodynamics",
     "Reality Code Engine",
@@ -9419,6 +9419,390 @@
               "start": 168.079,
               "end": 174.898,
               "text": "cold solid-state drives or remote archival object stores still pay full storage transfer latency and energy."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "lut6-codon-nucleus",
+      "title": "The 64-Codon Lookup Table Nucleus, Wobble Harmonics, and Fanless M.2 Silicon",
+      "short_title": "64-Codon Lookup Nucleus & M.2 Silicon",
+      "category": "Hardware, Silicon & OS",
+      "paper_url": "/papers/lut-adapt/",
+      "pdf_url": "/pdfs/lut-adapt.pdf",
+      "figures_url": "/living/lut-adapt/",
+      "about_url": "/about/lut-adapt/",
+      "tutorial_lab_id": "lab-11-lut6-codon-wobble",
+      "narrator_name": "Bobby",
+      "narrator_profile": "Commanding Baritone · African American English",
+      "plain_bullets": [
+        "Living cells use sixty-four genetic triplets to store survival rules, and digital six-input lookup tables use the exact same sixty-four switches.",
+        "Grouping four neighboring switch settings together absorbs small sensor or wording glitches while eliminating brittle high-frequency noise.",
+        "A sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards, waking large models only on genuine novelty."
+      ],
+      "headline_metric": "125–176 nJ Board Sensor · 38 ns Cycle · 55.2 °C M.2 Bound",
+      "epistemic_tags": [
+        "T",
+        "E",
+        "M"
+      ],
+      "energy_tier": "Board Sensor + Thermal Bound",
+      "energy_disclosure": "Direct circuit-board current sensors on Jetson Thor, microcontroller cycle counters, and M.2 thermal physics bounds.",
+      "cutaway_3d": "11_m2_aller_codon_silicon",
+      "poster_url": "/media/tv/posters/lut6-codon-nucleus-poster.jpg",
+      "tiers": {
+        "15s": {
+          "video_url": "/media/tv/films/lut6-codon-nucleus-15s.mp4",
+          "vtt_url": "/media/tv/captions/lut6-codon-nucleus-15s.vtt",
+          "duration_s": 27.38,
+          "bytes": 3651943,
+          "sha256": "0492893bff32d68e9d1a87edd6545e80f1585f5eb09f43a2e767f27a83f6ce0a",
+          "hook": "How living genetic triplets and digital six-input truth tables share one sixty-four-state code—running verified skills on tiny chips and fanless M.2 cards.",
+          "transcript": "First, living cells use sixty-four genetic triplets to store survival rules, and digital six-input lookup tables use the exact same sixty-four switches. Second, grouping four neighboring switch settings together absorbs small sensor or wording glitches while eliminating brittle high-frequency noise. Third, a sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards, waking large models only on genuine novelty.",
+          "cues": [
+            {
+              "start": 0.24,
+              "end": 4.535,
+              "text": "First, living cells use sixty-four genetic triplets to store survival rules,"
+            },
+            {
+              "start": 4.535,
+              "end": 8.773,
+              "text": "and digital six-input lookup tables use the exact same sixty-four switches."
+            },
+            {
+              "start": 8.943,
+              "end": 12.61,
+              "text": "Second, grouping four neighboring switch settings together absorbs small"
+            },
+            {
+              "start": 12.61,
+              "end": 16.379,
+              "text": "sensor or wording glitches while eliminating brittle high-frequency noise."
+            },
+            {
+              "start": 16.55,
+              "end": 24.328,
+              "text": "Third, a sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards,"
+            },
+            {
+              "start": 24.328,
+              "end": 26.96,
+              "text": "waking large models only on genuine novelty."
+            }
+          ]
+        },
+        "45s": {
+          "video_url": "/media/tv/films/lut6-codon-nucleus-45s.mp4",
+          "vtt_url": "/media/tv/captions/lut6-codon-nucleus-45s.vtt",
+          "duration_s": 53.38,
+          "bytes": 5920874,
+          "sha256": "f79eaa58f0d0e9774678b376fd8777d622ddc57c6c409a6e0e6b680701a40cf1",
+          "hook": "Why grouping four neighboring switch states together stops sensor jitter and wording glitches—while running cool on fanless M.2 silicon.",
+          "transcript": "First, living cells use sixty-four genetic triplets to store survival rules, and digital six-input lookup tables use the exact same sixty-four switches. Second, grouping four neighboring switch settings together absorbs small sensor or wording glitches while eliminating brittle high-frequency noise. Third, a sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards, waking large models only on genuine novelty. Think of a sturdy door lock that turns smoothly in winter cold versus a fragile lock that jams on tiny dust. Grouping four neighboring switch states absorbs minor sensor jitter or reworded phrasing cleanly. Direct circuit-board current sensors on Jetson Thor measure one hundred twenty-five to one hundred seventy-six nanojoules per lookup, cycle counters clock thirty-eight nanoseconds, and thermal physics holds fanless M.2 cards at fifty-five point two degrees Celsius.",
+          "cues": [
+            {
+              "start": 0.28,
+              "end": 4.653,
+              "text": "First, living cells use sixty-four genetic triplets to store survival rules,"
+            },
+            {
+              "start": 4.653,
+              "end": 8.969,
+              "text": "and digital six-input lookup tables use the exact same sixty-four switches."
+            },
+            {
+              "start": 9.135,
+              "end": 12.874,
+              "text": "Second, grouping four neighboring switch settings together absorbs small"
+            },
+            {
+              "start": 12.874,
+              "end": 16.716,
+              "text": "sensor or wording glitches while eliminating brittle high-frequency noise."
+            },
+            {
+              "start": 16.882,
+              "end": 24.8,
+              "text": "Third, a sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards,"
+            },
+            {
+              "start": 24.8,
+              "end": 27.48,
+              "text": "waking large models only on genuine novelty."
+            },
+            {
+              "start": 27.646,
+              "end": 33.558,
+              "text": "Think of a sturdy door lock that turns smoothly in winter cold versus a fragile lock that jams on tiny dust."
+            },
+            {
+              "start": 33.558,
+              "end": 38.868,
+              "text": "Grouping four neighboring switch states absorbs minor sensor jitter or reworded phrasing cleanly."
+            },
+            {
+              "start": 39.034,
+              "end": 43.549,
+              "text": "Direct circuit-board current sensors on Jetson Thor measure one hundred twenty-five to"
+            },
+            {
+              "start": 43.549,
+              "end": 48.641,
+              "text": "one hundred seventy-six nanojoules per lookup, cycle counters clock thirty-eight nanoseconds, and"
+            },
+            {
+              "start": 48.641,
+              "end": 52.84,
+              "text": "thermal physics holds fanless M.2 cards at fifty-five point two degrees Celsius."
+            }
+          ]
+        },
+        "90s": {
+          "video_url": "/media/tv/films/lut6-codon-nucleus-90s.mp4",
+          "vtt_url": "/media/tv/captions/lut6-codon-nucleus-90s.vtt",
+          "duration_s": 96.48,
+          "bytes": 9176862,
+          "sha256": "9512885018a1caac17916a641fc31d50f639efd45f8a1401ebaf83642e414346",
+          "hook": "Full briefing on the 64-codon lookup nucleus: twenty six-kernel wobble theorems, 64% gate pruning, hardware shunts, and 55.2 °C fanless M.2 bounds.",
+          "transcript": "First, living cells use sixty-four genetic triplets to store survival rules, and digital six-input lookup tables use the exact same sixty-four switches. Second, grouping four neighboring switch settings together absorbs small sensor or wording glitches while eliminating brittle high-frequency noise. Third, a sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards, waking large models only on genuine novelty. Four DNA letters read in triplets create sixty-four genetic codons, and six binary wires create sixty-four truth-table slots. Our sixteen-kilobyte bare-metal core pairs an unchangeable safety seed and sixty-four-state control loop with a reversible patch layer that rolls back automatically if errors appear. Memorizing isolated switch points leaks brittle high-frequency noise that breaks on minor wording shifts. Twenty theorems checked across six independent Lean proof kernels prove four-state wobble grouping cancels top-degree noise to exact zero, while multilinear pruning cuts active truth tables sixty-four percent. Every hardware figure names its instrument: direct circuit-board current sensors on Jetson Thor measured one hundred twenty-five to one hundred seventy-six nanojoules per lookup, built-in cycle counters on an Alif microcontroller clocked thirty-eight nanoseconds, and noisy wakeups dropped eighty-seven to ninety-five percent. On a compact three-point-three-volt fanless M.2 reconfigurable card, physics thermal calculations show zero point eight six watts and a safe fifty-five point two degrees Celsius when onboard memory chips stay held asleep, versus ninety-five point eight degrees overheating if left awake.",
+          "cues": [
+            {
+              "start": 0.32,
+              "end": 4.716,
+              "text": "First, living cells use sixty-four genetic triplets to store survival rules,"
+            },
+            {
+              "start": 4.716,
+              "end": 9.054,
+              "text": "and digital six-input lookup tables use the exact same sixty-four switches."
+            },
+            {
+              "start": 9.554,
+              "end": 13.309,
+              "text": "Second, grouping four neighboring switch settings together absorbs small"
+            },
+            {
+              "start": 13.309,
+              "end": 17.169,
+              "text": "sensor or wording glitches while eliminating brittle high-frequency noise."
+            },
+            {
+              "start": 17.669,
+              "end": 25.625,
+              "text": "Third, a sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards,"
+            },
+            {
+              "start": 25.625,
+              "end": 28.318,
+              "text": "waking large models only on genuine novelty."
+            },
+            {
+              "start": 28.818,
+              "end": 33.731,
+              "text": "Four DNA letters read in triplets create sixty-four genetic codons, and six binary wires"
+            },
+            {
+              "start": 33.731,
+              "end": 39.927,
+              "text": "create sixty-four truth-table slots. Our sixteen-kilobyte bare-metal core pairs an unchangeable safety seed and"
+            },
+            {
+              "start": 39.927,
+              "end": 45.901,
+              "text": "sixty-four-state control loop with a reversible patch layer that rolls back automatically if errors appear."
+            },
+            {
+              "start": 46.401,
+              "end": 51.953,
+              "text": "Memorizing isolated switch points leaks brittle high-frequency noise that breaks on minor wording shifts."
+            },
+            {
+              "start": 51.953,
+              "end": 57.559,
+              "text": "Twenty theorems checked across six independent Lean proof kernels prove four-state wobble grouping cancels"
+            },
+            {
+              "start": 57.559,
+              "end": 62.953,
+              "text": "top-degree noise to exact zero, while multilinear pruning cuts active truth tables sixty-four percent."
+            },
+            {
+              "start": 63.453,
+              "end": 68.716,
+              "text": "Every hardware figure names its instrument: direct circuit-board current sensors on Jetson Thor measured"
+            },
+            {
+              "start": 68.716,
+              "end": 73.777,
+              "text": "one hundred twenty-five to one hundred seventy-six nanojoules per lookup, built-in cycle counters on"
+            },
+            {
+              "start": 73.777,
+              "end": 79.851,
+              "text": "an Alif microcontroller clocked thirty-eight nanoseconds, and noisy wakeups dropped eighty-seven to ninety-five percent."
+            },
+            {
+              "start": 80.351,
+              "end": 86.163,
+              "text": "On a compact three-point-three-volt fanless M.2 reconfigurable card, physics thermal calculations show zero"
+            },
+            {
+              "start": 86.163,
+              "end": 90.618,
+              "text": "point eight six watts and a safe fifty-five point two degrees Celsius when onboard"
+            },
+            {
+              "start": 90.618,
+              "end": 95.833,
+              "text": "memory chips stay held asleep, versus ninety-five point eight degrees overheating if left awake."
+            }
+          ]
+        },
+        "180s": {
+          "video_url": "/media/tv/films/lut6-codon-nucleus-180s.mp4",
+          "vtt_url": "/media/tv/captions/lut6-codon-nucleus-180s.vtt",
+          "duration_s": 191.28,
+          "bytes": 18622223,
+          "sha256": "947477e3270edc9795b4b2db19f171da4bd8e92abb1edf1f5ba718bab8719196",
+          "hook": "Three-minute deep cut into the 64-codon lookup nucleus, 64-bar Walsh harmonic cancellation, trace compilation, and fanless M.2 thermal physics.",
+          "transcript": "First, living cells use sixty-four genetic triplets to store survival rules, and digital six-input lookup tables use the exact same sixty-four switches. Second, grouping four neighboring switch settings together absorbs small sensor or wording glitches while eliminating brittle high-frequency noise. Third, a sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards, waking large models only on genuine novelty. When edge devices memorize brittle exact bit patterns, a two-bit sensor fluctuation or a slightly reworded sentence misses the cache completely and wakes a power-hungry neural model from scratch. Worse still, chaining unverified neural guesses across many steps multiplies tiny error rates until multi-step workflows collapse, whereas compiling verified steps into exact lookup tables preserves reliability. Living cells solved this exact fragility problem billions of years ago inside the genetic code. Four chemical bases read three at a time form sixty-four triplets, yet cells group neighboring third-letter variants into sixteen four-triplet families so minor thermal or copying noise still builds the exact right protein without halting the cell. Six binary input wires address sixty-four switch slots inside a single sixty-four-bit computer word—matching biology's sixty-four triplets one for one. Our sixteen-kilobyte standalone Rust core combines an unchangeable factory reflex page, a sixty-four-state control loop, and a surgical patch overlay that suppresses eighty-seven to ninety-five percent of repeat model wakeups with zero silent corruption. Harmonic analysis explains why single-point memorization fails: lighting one slot out of sixty-four scatters brittle energy into fifth-order and sixth-order frequencies. Twenty theorems verified across six independent Lean proof kernels prove four-slot wobble grouping cancels those top frequencies to exact zero, aligning trace-to-code compilation—which shrinks two-minute agent replays to roughly one second—with sixty-four percent smaller truth-table networks. This three-dimensional view shows a gum-stick fanless M.2 reconfigurable circuit card slotted into a compact five-volt edge computer's three-point-three-volt rail. Physics thermal models show that holding the card's unused external memory chips continuously asleep in reset keeps board power at zero point eight six watts and junction temperature at fifty-five point two degrees Celsius, whereas leaving those memory chips active drives temperatures to ninety-five point eight degrees overheating. Every number states its physical evidence class plainly and never mixes instruments across hardware tiers. Direct circuit-board current sensors on Jetson Thor measured one hundred twenty-five to one hundred seventy-six nanojoules per lookup decision; built-in processor cycle counters on a live Alif microcontroller measured twelve point two cycles, or thirty-eight nanoseconds; and M.2 card temperatures remain physics thermal bounds. Scientific candor requires stating what is not yet physically probed on a bench: M.2 card wattage and fifty-five-degree temperatures are analytical physics calculations until a physical M.2 card sits under inline rail sensors, creative open-ended writing bypasses lookup tables by design, and any drifted patch page automatically rolls back to the unchangeable factory seed.",
+          "cues": [
+            {
+              "start": 0.36,
+              "end": 4.756,
+              "text": "First, living cells use sixty-four genetic triplets to store survival rules,"
+            },
+            {
+              "start": 4.756,
+              "end": 9.094,
+              "text": "and digital six-input lookup tables use the exact same sixty-four switches."
+            },
+            {
+              "start": 9.654,
+              "end": 13.409,
+              "text": "Second, grouping four neighboring switch settings together absorbs small"
+            },
+            {
+              "start": 13.409,
+              "end": 17.269,
+              "text": "sensor or wording glitches while eliminating brittle high-frequency noise."
+            },
+            {
+              "start": 17.829,
+              "end": 25.785,
+              "text": "Third, a sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards,"
+            },
+            {
+              "start": 25.785,
+              "end": 28.478,
+              "text": "waking large models only on genuine novelty."
+            },
+            {
+              "start": 29.038,
+              "end": 36.006,
+              "text": "When edge devices memorize brittle exact bit patterns, a two-bit sensor fluctuation or a slightly reworded sentence misses"
+            },
+            {
+              "start": 36.006,
+              "end": 43.545,
+              "text": "the cache completely and wakes a power-hungry neural model from scratch. Worse still, chaining unverified neural guesses across many"
+            },
+            {
+              "start": 43.545,
+              "end": 52.169,
+              "text": "steps multiplies tiny error rates until multi-step workflows collapse, whereas compiling verified steps into exact lookup tables preserves reliability."
+            },
+            {
+              "start": 52.729,
+              "end": 58.641,
+              "text": "Living cells solved this exact fragility problem billions of years ago inside the genetic code. Four chemical"
+            },
+            {
+              "start": 58.641,
+              "end": 64.877,
+              "text": "bases read three at a time form sixty-four triplets, yet cells group neighboring third-letter variants into sixteen"
+            },
+            {
+              "start": 64.877,
+              "end": 71.277,
+              "text": "four-triplet families so minor thermal or copying noise still builds the exact right protein without halting the cell."
+            },
+            {
+              "start": 71.837,
+              "end": 79.631,
+              "text": "Six binary input wires address sixty-four switch slots inside a single sixty-four-bit computer word—matching biology's sixty-four triplets one"
+            },
+            {
+              "start": 79.631,
+              "end": 86.931,
+              "text": "for one. Our sixteen-kilobyte standalone Rust core combines an unchangeable factory reflex page, a sixty-four-state control loop, and"
+            },
+            {
+              "start": 86.931,
+              "end": 94.012,
+              "text": "a surgical patch overlay that suppresses eighty-seven to ninety-five percent of repeat model wakeups with zero silent corruption."
+            },
+            {
+              "start": 94.572,
+              "end": 102.453,
+              "text": "Harmonic analysis explains why single-point memorization fails: lighting one slot out of sixty-four scatters brittle energy into fifth-order and"
+            },
+            {
+              "start": 102.453,
+              "end": 110.826,
+              "text": "sixth-order frequencies. Twenty theorems verified across six independent Lean proof kernels prove four-slot wobble grouping cancels those top frequencies"
+            },
+            {
+              "start": 110.826,
+              "end": 119.801,
+              "text": "to exact zero, aligning trace-to-code compilation—which shrinks two-minute agent replays to roughly one second—with sixty-four percent smaller truth-table networks."
+            },
+            {
+              "start": 120.361,
+              "end": 129.752,
+              "text": "This three-dimensional view shows a gum-stick fanless M.2 reconfigurable circuit card slotted into a compact five-volt edge computer's three-point-three-volt rail. Physics thermal"
+            },
+            {
+              "start": 129.752,
+              "end": 137.149,
+              "text": "models show that holding the card's unused external memory chips continuously asleep in reset keeps board power at zero point eight six watts"
+            },
+            {
+              "start": 137.149,
+              "end": 146.33,
+              "text": "and junction temperature at fifty-five point two degrees Celsius, whereas leaving those memory chips active drives temperatures to ninety-five point eight degrees overheating."
+            },
+            {
+              "start": 146.89,
+              "end": 154.219,
+              "text": "Every number states its physical evidence class plainly and never mixes instruments across hardware tiers. Direct circuit-board current sensors"
+            },
+            {
+              "start": 154.219,
+              "end": 161.547,
+              "text": "on Jetson Thor measured one hundred twenty-five to one hundred seventy-six nanojoules per lookup decision; built-in processor cycle counters on"
+            },
+            {
+              "start": 161.547,
+              "end": 169.081,
+              "text": "a live Alif microcontroller measured twelve point two cycles, or thirty-eight nanoseconds; and M.2 card temperatures remain physics thermal bounds."
+            },
+            {
+              "start": 169.641,
+              "end": 176.313,
+              "text": "Scientific candor requires stating what is not yet physically probed on a bench: M.2 card wattage and fifty-five-degree"
+            },
+            {
+              "start": 176.313,
+              "end": 183.827,
+              "text": "temperatures are analytical physics calculations until a physical M.2 card sits under inline rail sensors, creative open-ended writing"
+            },
+            {
+              "start": 183.827,
+              "end": 190.499,
+              "text": "bypasses lookup tables by design, and any drifted patch page automatically rolls back to the unchangeable factory seed."
             }
           ]
         }

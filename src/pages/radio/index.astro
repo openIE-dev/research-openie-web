@@ -10,11 +10,21 @@ import RadioClientScript from '../../components/radio/RadioClientScript.astro';
 import radioFeed from '../../data/radio-feed.json';
 import radioRadar from '../../data/radio-radar.json';
 import topicFoundry from '../../data/topic-foundry.json';
-import ecosystemChannels from '../../data/openie-ecosystem-channels.json';
+import ecosystemChannelsRaw from '../../data/openie-ecosystem-channels.json';
+
+const ecosystemChannels = {
+  ...ecosystemChannelsRaw,
+  channels: (ecosystemChannelsRaw.channels || []).map((ch: any) => {
+    if ((ch.id === 'avalanche' || ch.id === 'compute') && !(ch.radio_episodes || []).includes('ep15-codon-lut6-m2-silicon')) {
+      return { ...ch, radio_episodes: ['ep15-codon-lut6-m2-silicon', ...(ch.radio_episodes || [])] };
+    }
+    return ch;
+  }),
+};
 
 const pageTitle = 'OpenIE Research Radio — Live Broadcast, Global Rung Radar & Pilot Foundry';
 const pageDesc =
-  'Multi-voice OpenIE Research Radio (14 episodes across 6 *.openie.dev desks + Podcast RSS), 6-hour autonomous Global Rung Radar scoring open-access literature onto the 9-Rung Avalanche, and sub-60-second deterministic RAPL pilot foundry.';
+  'Multi-voice OpenIE Research Radio (15 episodes across 6 *.openie.dev desks + Podcast RSS), 6-hour autonomous Global Rung Radar scoring open-access literature onto the 9-Rung Avalanche, and sub-60-second deterministic RAPL pilot foundry.';
 ---
 
 <Layout title={pageTitle} description={pageDesc}>
