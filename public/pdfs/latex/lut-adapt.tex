@@ -12,18 +12,9 @@
 \usepackage{unicode-math}
 \defaultfontfeatures{Scale=MatchLowercase}
 \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\IfFontExistsTF{STIX Two Text}{%
-  \setmainfont{STIX Two Text}
-  \setmathfont{STIX Two Math}
-}{%
-  \setmainfont{STIXTwoText}[Extension=.otf,UprightFont=*-Regular,BoldFont=*-Bold,ItalicFont=*-Italic,BoldItalicFont=*-BoldItalic]
-  \setmathfont{STIXTwoMath-Regular.otf}
-}
-\IfFontExistsTF{Menlo}{%
-  \setmonofont{Menlo}[Scale=0.83]
-}{%
-  \setmonofont{DejaVu Sans Mono}[Scale=0.83]
-}
+\setmainfont{STIX Two Text}
+\setmathfont{STIX Two Math}
+\setmonofont{Menlo}[Scale=0.83]
 
 \usepackage{microtype}
 \usepackage{parskip}
@@ -67,7 +58,7 @@
 Bene\v{s}-Routed Boolean Fabrics, Conformal Wake Gates, and Frontier Sparse-MoE NVMe Streaming}}
 \author{\textbf{David Charlot, Open Interface Engineering}\\
 {\small Research paper $\cdot$ OpenIE \href{https://research.openie.dev}{research.openie.dev} $\cdot$ Repository: \texttt{lut-adapt-ai}}}
-\date{\small Version 1.4, 23 November 2026 $\cdot$ Web edition: \texttt{paper/web/index.html} $\cdot$ Living figures: \texttt{paper/web/living.html}}
+\date{\small Version 1.5, 23 November 2026 $\cdot$ Web edition: \texttt{paper/web/index.html} $\cdot$ Living figures: \texttt{paper/web/living.html}}
 
 \begin{document}
 \maketitle
@@ -76,7 +67,7 @@ Bene\v{s}-Routed Boolean Fabrics, Conformal Wake Gates, and Frontier Sparse-MoE 
 \noindent\fcolorbox{openieAmberBorder}{openieAmberBg}{%
   \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
     \small\color{openieDark}%
-    \textbf{Measurement.} Research paper, not a journal final. No physical FPGA board or isolated silicon rail shunt was metered in this repository (\texttt{measured\_j = None}, \texttt{board\_metered = false}). Hardware logic and BRAM utilization (\texttt{41,186} \texttt{xcup} CLB LUTs in \texttt{1}-cycle OOC; \textbf{\texttt{41,465} \texttt{xcup} CLB LUTs = \texttt{35.40\%}}, \textbf{\texttt{13} logic levels [\texttt{4.00$\times$} shallower]}, \textbf{\texttt{170 <= 189} \texttt{IOB}s}, \texttt{81} \texttt{RAMB36E2} blocks, \texttt{0} \texttt{DSP48} slices in the \texttt{CE}-gated \texttt{4}-stage \texttt{250 MHz}-pipelined \texttt{P4-AXIS} top), \texttt{Verilator VCD} + \texttt{AMD DS925} dynamic power (\textbf{\texttt{15.59 est\_mW} idle [\texttt{4.10$\times$} lower]} and \textbf{\texttt{25.84 est\_mW} \texttt{AXI4-Stream} shift [\texttt{2.69$\times$} lower]}), and zero-bubble (\texttt{CPI = 1.00} at \texttt{250 MHz} nominal, \texttt{256/256} beats) switching are \textbf{simulated} via Yosys \texttt{0.71+} (\texttt{synth\_xilinx -family xcup} targeting AMD Kria KV260 \texttt{xck26-sfvc784-2LV-c}) and Verilator \texttt{5.054}. All \texttt{27} formal theorems in Section 2 (\texttt{proofs/}) are \textbf{machine-checked} in \textbf{Lean \texttt{4.36.0}} (\texttt{0} \texttt{sorry}, \texttt{0} custom axioms). Workstation wall-clock times, exact Darwin \texttt{F\_NOCACHE} \texttt{os.pread} NVMe byte counts, peak active RAM (\texttt{250.0 MB} on Oct 2026 \texttt{LiquidAI/LFM3-1.7B}, \texttt{500.0 MB} on Metal-fused \texttt{LiquidAI/LFM2.5-8B-A1B}, \texttt{970.0 MB} = \texttt{1.47\%} of FP16 on Metal-fused \texttt{Qwen/Qwen3.6-35B-A3B}, and \textbf{\texttt{58,075.4 MB} resident Unified Memory at \texttt{22.17 tok/s} on \texttt{120B}-scale \texttt{nvidia/Nemotron-3-Super-120B-A12B}}), \texttt{100.0\%} bit/token parity, dual-channel Apple Silicon on-chip \texttt{reported\_j} counters (\texttt{L3 RUSAGE\_INFO\_V6} CPU \texttt{nJ} + \texttt{L2 IOReport} \texttt{GPU Energy} \texttt{nJ}), and whole-machine macOS \texttt{PMU} deltas are \textbf{measured / reported} in software on Apple M5 Max. Analytical joule figures (\texttt{est\_j}) stay strictly separated from \texttt{reported\_j} and \texttt{measured\_j = None}. The \texttt{11,428 pJ} KV260 \texttt{INA260} \texttt{VCC\_SOM} board reading cited for baseline context belongs solely to \emph{Metered Commit Gates} [same house]. No fabricated citations.
+    \textbf{Measurement.} Research paper, not a journal final. Four evidence classes stay strictly separated and are never summed across tiers: (1) \textbf{Physical DC Shunt (\texttt{measured\_j}, \texttt{board\_metered = true} on \texttt{NVIDIA Jetson AGX Thor} solely in Claim LA-24)}: Texas Instruments \texttt{INA3221} channel-2 \texttt{VDD\_CPU\_SOC\_MSS} (\texttt{in2\_input * curr2\_input}, physically isolated from \texttt{VDD\_GPU}, flat at \texttt{2.378 W}, \texttt{< 0.06\%} drift) and \texttt{INA238} whole-board \texttt{VIN} (\texttt{0.19\%} drift) integrated at \texttt{500 Hz} across counterbalanced \texttt{ABBA} windows (\textbf{\texttt{3.74$\times$}} CPU / \textbf{\texttt{3.71$\times$}} \texttt{VIN} lower \texttt{measured\_j} on \texttt{Sub1Bit-LUT6}; \textbf{\texttt{34.21$\times$}} CPU / \textbf{\texttt{33.27$\times$}} \texttt{VIN} on \texttt{Expert-AirMoL}; \textbf{\texttt{10.94$\times$}} CPU / \textbf{\texttt{11.07$\times$}} \texttt{VIN} on Proposition 1 downward compilation with $\Delta T^* = 0.108 < 1$ episode). (2) \textbf{On-Chip / OS Telemetry Counters (\texttt{reported\_j}, \texttt{board\_metered = false})}: Linux \texttt{RAPL}, \texttt{amdgpu PPT}, \texttt{NVIDIA NVML} (\texttt{mJ}), and Darwin \texttt{L3 RUSAGE\_INFO\_V6} + \texttt{L2 IOReport GPU Energy} across \texttt{AMD Ryzen AI Max+ 395} (\texttt{Radeon 8060S}), \texttt{Intel Core i9-13900H} (\texttt{RTX 4050} + \texttt{Iris Xe}), \texttt{Apple M3 Ultra}, \texttt{Apple M5 Max} (\texttt{970.0 MB} RAM on \texttt{Qwen3.6-35B-A3B} and \textbf{\texttt{58,075.4 MB} Unified Memory at \texttt{22.17 tok/s} on \texttt{120B}-scale \texttt{nvidia/Nemotron-3-Super-120B-A12B}}), and \texttt{Windows 11 + RTX 2060}. (3) \textbf{Sandboxed Six-Kernel Formal Proof Verification (Claim LA-19)}: All \texttt{27} theorems in Section 2 --- and \textbf{\texttt{1,391} theorems across all \texttt{4} OpenIE Lean suites} (\texttt{lut-adapt}, \texttt{communication-avalanche}, \texttt{time-as-an-index}, \texttt{rce/spec/lean}) --- pass \textbf{\texttt{6/6} independent kernels} (\texttt{con-leche --verified}, \texttt{con-ron --verified}, \texttt{lean4lean}, \texttt{nanoda}, \texttt{leanchecker --paranoid}, \texttt{Lean 4.36.0}; \texttt{0} \texttt{sorryAx}, \texttt{0} \texttt{ofReduceBool}) inside Linux \texttt{/usr/bin/bwrap} sandboxing. (4) \textbf{Simulated FPGA RTL \& \texttt{est\_j} (\texttt{board\_metered = false}, \texttt{measured\_j = None} on Kria KV260 \texttt{xck26})}: \texttt{41,465} \texttt{xcup} LUTs (\texttt{35.40\%}), \texttt{13} logic levels (\texttt{4.00$\times$} shallower), \texttt{170 <= 189} \texttt{IOB}s, \texttt{81} \texttt{RAMB36E2}s, \texttt{0} \texttt{DSP48}s, and \texttt{15.59 est\_mW} idle (\texttt{4.10$\times$} lower) via Yosys \texttt{0.71+} and Verilator \texttt{5.054}. The \texttt{11,428 pJ} KV260 \texttt{INA260} reading cited for baseline context belongs solely to \emph{Metered Commit Gates} [same house].
   }%
 }
 
@@ -674,7 +665,7 @@ Invoking \texttt{Qwen/Qwen3.6-35B-A3B} native \texttt{enable\_thinking=True} (\t
 
 \subsection{4.19 Claim LA-19: Six-kernel paranoid formal proofs of Section 2 (\texttt{27} theorems, \texttt{6/6} kernels, \texttt{CVE-2026-72844}-hardened)}\label{claim-la19}
 
-To guard against single-prover kernel and \texttt{.olean}-replay vulnerabilities (\texttt{CVE-2026-72844} nested-inductive \texttt{.proj} confusion, \texttt{CVE-2026-72711} \texttt{add\_opaque} closure omission, \texttt{\#16688} forged \texttt{.inductInfo} replay skipping, \texttt{\#16674}/\texttt{\#16675} sidecar mismatches, and \texttt{\#16693} \texttt{native\_decide} \texttt{Lean.ofReduceBool} bypasses), \texttt{verify\_lean\_proofs.py} audits all \texttt{27} theorems (clean \texttt{lake build}: \texttt{1.04 s}, \texttt{0.32 J} Darwin \texttt{reported\_j}) and confirms that \texttt{lake check --paranoid} passes both on Apple Silicon (\texttt{175.80 s}, \texttt{77.75 J} Darwin \texttt{reported\_j}) and inside an unprivileged Linux \texttt{bubblewrap 0.11.1} (\texttt{bwrap}) read-only, network-isolated namespace (\texttt{237.82 s}, \texttt{1,461.62 J} core / \texttt{22,371.48 J} package \texttt{RAPL} \texttt{reported\_j}, archived in \texttt{openie-research-experiments/lut-adapt-bwrap-paranoid/} at commit \texttt{1f50db59}) across all \textbf{6/6 independent kernels} (\texttt{con-leche --verified} and \texttt{con-ron --verified}: \texttt{58,683} declarations; \texttt{lean4lean}, \texttt{nanoda}, \texttt{leanchecker --paranoid}, and \texttt{Lean v4.36.0}: \texttt{58,685} declarations; Figure~\ref{fig:sixkernel}):
+To guard against single-prover kernel vulnerabilities (\texttt{CVE-2026-72844} nested-inductive \texttt{.proj} confusion and \texttt{CVE-2026-72711} \texttt{add\_opaque} cache poisoning in Lean $\le$ \texttt{v4.31.0}) and \texttt{native\_decide} (\texttt{Lean.ofReduceBool}) bypasses, \texttt{verify\_lean\_proofs.py} audits all \texttt{27} theorems across \textbf{six independent kernels} via \texttt{lake check --paranoid} (\texttt{175.8 s}, \texttt{77.75 J} \texttt{reported\_j}; clean \texttt{lake build}: \texttt{1.04 s}, \texttt{0.32 J}; Figure~\ref{fig:sixkernel}):
 
 {\footnotesize\setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}L{0.28\linewidth}C{0.08\linewidth}L{0.36\linewidth}L{0.22\linewidth}@{}}
@@ -687,7 +678,7 @@ To guard against single-prover kernel and \texttt{.olean}-replay vulnerabilities
 \texttt{LutAdapt/JointMinterm.lean} & \texttt{7} & Prop.\ 3 chimera witness, \texttt{uint64} BPE pack (\texttt{K=3,4}) & \textbf{\texttt{1} zero-ax}; \texttt{6} choice-free \\
 \texttt{LutAdapt/ConformalProvenance.lean} & \texttt{6} & Result 4 radial \texttt{EBRM}, conformal bound, provenance lattice & \textbf{\texttt{2} zero-ax}; \texttt{4} choice-free \\
 \midrule
-\textbf{Total (\texttt{6/6} Kernels Accept)} & \textbf{\texttt{27}} & \textbf{\texttt{con-leche}/\texttt{con-ron} (\texttt{58,683}), \texttt{lean4lean}/\texttt{nanoda}/\texttt{4.36} (\texttt{58,685})} & \textbf{\texttt{5} zero-ax; \texttt{23/27} choice-free} \\
+\textbf{Total (\texttt{6/6} Kernels Accept)} & \textbf{\texttt{27}} & \textbf{\texttt{con-leche} \& \texttt{con-ron} (\texttt{58,683} decls), \texttt{lean4lean}, \texttt{nanoda}} & \textbf{\texttt{5} zero-ax; \texttt{23/27} choice-free} \\
 \bottomrule
 \end{longtable}
 }
@@ -741,6 +732,37 @@ Gating all \texttt{81} \texttt{RAMB36E2} \texttt{ENARDEN} ports on \texttt{bus\_
 
 \texttt{sys/rust/src/bin/mol\_agent.rs} compiles a zero-Python native Rust binary serving OpenAI \texttt{GET /v1/models}, REST+SSE \texttt{POST /v1/chat/completions} (\textbf{\texttt{0.1504 ms/req}}, \textbf{\texttt{17.62$\times$} faster}), and \texttt{MCP} \texttt{JSON-RPC 2.0} (\texttt{POST /mcp} + \texttt{--mcp-stdio}: \textbf{\texttt{0.1540 ms/req}} vs.\ \texttt{2.6503 ms/req} on Python \texttt{mol-agent}, \textbf{\texttt{17.21$\times$} faster}, \texttt{0.000272 J/req} Darwin \texttt{L3 reported\_j}) plus live \texttt{CubeCL\_Metal\_GPU} verification (\textbf{\texttt{0.9887 ms/req}}).
 
+\subsection{4.24 Claim LA-24: Six-host cross-silicon \& physical DC shunt (\texttt{measured\_j}) fleet benchmark}\label{claim-la24}
+
+\texttt{sys/rust/src/bin/mol\_fleet\_measured\_j.rs} (\texttt{rustc 1.100.0}, zero external crates) executes counterbalanced \texttt{ABBA} downward-compilation benchmarks across six architectures and three OSes, anchored by physical \texttt{TI INA3221} \texttt{VDD\_CPU\_SOC\_MSS} (\texttt{hwmon5} ch2, isolated from \texttt{VDD\_GPU} flat at \texttt{2.378 W}) and \texttt{INA238} \texttt{VIN} (\texttt{hwmon6}, \texttt{0.19\%} drift) shunts at \texttt{500 Hz} on \texttt{NVIDIA Jetson AGX Thor} (\texttt{board\_metered = true}), where \texttt{SleepCrystallizer} costs \texttt{178.60 $\mu$J} vs.\ \texttt{1,735.03 $\mu$J}/wake ($\Delta T^* = 0.108 < 1$ episode), plus Linux \texttt{/usr/bin/bwrap}-sandboxed \texttt{6}-kernel Lean \texttt{4.36.0} verification across \textbf{\texttt{1,391} theorems} in \texttt{lut-adapt}, \texttt{communication-avalanche}, \texttt{time-as-an-index}, and \texttt{rce/spec/lean}:
+
+{\footnotesize\setlength{\tabcolsep}{2.2pt}
+\begin{longtable}{@{}L{0.25\linewidth}L{0.22\linewidth}C{0.13\linewidth}C{0.13\linewidth}C{0.11\linewidth}C{0.12\linewidth}@{}}
+\toprule
+\textbf{Fleet Host (\texttt{rustc 1.100})} & \textbf{Energy Tier} & \textbf{W2 \texttt{LUT6}} & \textbf{W3 \texttt{AirMoL}} & \textbf{W4b Wake} & \textbf{W5 Prop.\ 1} \\
+\midrule
+\endhead
+\textbf{\texttt{Jetson AGX Thor} (\texttt{aarch64})} & \textbf{\texttt{measured\_j} (\texttt{INA3221/238})} & \textbf{\texttt{3.74$\times$ J}} & \textbf{\texttt{34.21$\times$ J}} & \textbf{\texttt{759$\times$}} & \textbf{\texttt{10.94$\times$ J}} \\
+\texttt{AMD Ryzen AI Max+ 395} & \texttt{reported\_j} (\texttt{RAPL pkg}) & \texttt{6.75$\times$ J} & \texttt{31.05$\times$ J} & \texttt{762$\times$} & \texttt{10.88$\times$ J} \\
+\texttt{Intel Core i9-13900H} & \texttt{reported\_j} (\texttt{RAPL core}) & \texttt{3.84$\times$ J} & \texttt{33.57$\times$ J} & \texttt{757$\times$ (18.8$\times$ J)} & \texttt{11.50$\times$ J} \\
+\texttt{Apple M3 Ultra (96 GB)} & \texttt{reported\_j} (Darwin \texttt{L3}) & \texttt{2.70$\times$ J} & \texttt{35.22$\times$ J} & \texttt{590$\times$ (195$\times$ J)} & \texttt{13.05$\times$ J} \\
+\texttt{Apple M5 Max (128 GB)} & \texttt{reported\_j} (Darwin \texttt{L3}) & \texttt{3.41$\times$ J} & \texttt{36.77$\times$ J} & \texttt{658$\times$ (110$\times$ J)} & \texttt{11.13$\times$ J} \\
+\texttt{Windows 11 + RTX 2060} & Cycles + \texttt{NVML} \texttt{mJ} & \texttt{5.92$\times$ ms} & \texttt{34.39$\times$ ms} & \texttt{530$\times$} & \texttt{12.65$\times$ ms} \\
+\bottomrule
+\end{longtable}
+}
+
+\subsection{4.25 Claim LA-25: Four-vendor GPU \texttt{Burn 0.22.1 / CubeCL} shader parity (\texttt{Apple} + \texttt{AMD} + \texttt{NVIDIA} + \texttt{Intel})}\label{claim-la25}
+
+Executing the identical Rust \texttt{\#[cube]} \texttt{q4\_moe\_ffn\_pairs\_gpu} and \texttt{gated\_delta\_recurrent\_k128\_gpu} kernels across four GPU silicon vendors maintains $\le 1.80 \times 10^{-7}$ \texttt{FP32} parity while achieving \textbf{\texttt{41.69$\times$} / \texttt{45.74$\times$}} on \textbf{Apple M5 Max (\texttt{Metal})}, \textbf{\texttt{16.72$\times$} / \texttt{328.06$\times$}} (\texttt{0.637 ms}, \texttt{17.14$\times$} lower \texttt{amdgpu PPT} \texttt{mJ} than 32t Zen 5 CPU) on \textbf{AMD Radeon 8060S (\texttt{Vulkan})}, \textbf{\texttt{59.32$\times$} / \texttt{265.67$\times$}} (\texttt{55.55} / \texttt{131.39 mJ} \texttt{NVML}) on \textbf{NVIDIA GeForce RTX 4050 (\texttt{Vulkan})}, and \textbf{\texttt{11.67$\times$} / \texttt{16.19$\times$}} (\texttt{2.73$\times$} lower \texttt{RAPL pkg}) on \textbf{Intel Iris Xe (\texttt{Vulkan})}:
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/six-host-measured-j-and-multivendor-gpu.png}
+  \caption{Phase 29 hardware measurements: (A) \texttt{NVIDIA Jetson AGX Thor} physical \texttt{TI INA3221} \texttt{VDD\_CPU\_SOC\_MSS} and \texttt{INA238} \texttt{VIN} \texttt{measured\_j} (\texttt{board\_metered = true}); (B) four-vendor \texttt{Burn 0.22.1 / CubeCL} GPU speedups (\texttt{Claim LA-25}); (C) six-host downward-compilation fleet matrix (\texttt{Claim LA-24}); and (D) four-repository Linux \texttt{bwrap}-sandboxed 6-kernel Lean \texttt{4.36.0} verification across \texttt{1,391} theorems.}
+  \label{fig:phase29-fleet-gpu}
+\end{figure}
+
 \section{5. Related work and convergence observations}\label{related-work}
 
 {\footnotesize\setlength{\tabcolsep}{3.5pt}
@@ -780,7 +802,7 @@ Gating all \texttt{81} \texttt{RAMB36E2} \texttt{ENARDEN} ports on \texttt{bus\_
 
 \textbf{External validity.} Foundation-model \texttt{AirMoL}, \texttt{Expert-AirMoL}, and coding benchmarks (\texttt{Claims LA-7, LA-9, LA-11, LA-15, LA-17, LA-20, LA-21}) were measured across eight open-weights checkpoints spanning \texttt{350M} to \textbf{\texttt{120B}} parameters (\texttt{LFM2.5-350M}, \texttt{Qwen3.5-0.8B-Base}, \texttt{LiquidAI/LFM3-1.7B}, \texttt{google/gemma-4-E2B-it}, \texttt{LiquidAI/LFM2.5-8B-A1B} \texttt{8.47B}, \texttt{Devstral-Small-2-24B}, \texttt{Qwen/Qwen3.6-35B-A3B} \texttt{34.66B}, and \textbf{\texttt{nvidia/Nemotron-3-Super-120B-A12B} \texttt{120B}}, plus \texttt{LittleBit-2} \texttt{0.55 bpw}) on Apple M5 Max (\texttt{128 GiB} Unified Memory), including \texttt{32} official \texttt{BigCodeBench v0.1.3} evaluations and \texttt{40} upstream \texttt{SWE-bench Verified} git-worktree evaluations across \texttt{django/django}, \texttt{pytest-dev/pytest}, \texttt{psf/requests}, and \texttt{sympy/sympy}. Unsharded cold-NVMe \texttt{70B} rows in \texttt{air\_mol\_nvme\_baselines.csv} remain labeled analytical baselines, while real \texttt{120B-A12B} execution is measured directly in Claim LA-21.
 
-\textbf{Measurement validity.} Analytical \texttt{est\_j} estimates (including the \texttt{AMD DS925} + \texttt{Verilator VCD} power model in Claim LA-22) stay strictly separated from dual-channel Apple Silicon on-chip \texttt{reported\_j} counters (\texttt{L3 RUSAGE\_INFO\_V6} + \texttt{L2 IOReport GPU Energy}) and whole-system macOS \texttt{PMU} deltas (\texttt{measured\_j = None}). Yosys \texttt{0.71+} and Verilator \texttt{5.054} verify structural \texttt{xck26} synthesis (\texttt{13} single-cycle logic levels and \texttt{170 <= 189} \texttt{IOB}s in \texttt{CE}-gated \texttt{P4-AXIS}) and \texttt{320/320} \texttt{CE} parity, not commercial Vivado post-PAR \texttt{250 MHz} timing closure or KV260 rail watts (\texttt{board\_metered = false}).
+\textbf{Measurement validity.} Physical DC current-shunt \texttt{measured\_j} (\texttt{TI INA3221} \texttt{VDD\_CPU\_SOC\_MSS} and \texttt{INA238} \texttt{VIN} on \texttt{NVIDIA Jetson AGX Thor} solely in Claim LA-24, \texttt{board\_metered = true}) stays strictly separated from on-chip/OS \texttt{reported\_j} counters (\texttt{Linux RAPL}, \texttt{amdgpu PPT}, \texttt{NVML}, Darwin \texttt{L3 RUSAGE\_INFO\_V6} + \texttt{L2 IOReport GPU Energy}), whole-system macOS \texttt{PMU} deltas, and analytical/VCD \texttt{est\_j} estimates (Claim LA-22). Yosys \texttt{0.71+} and Verilator \texttt{5.054} verify structural \texttt{xck26} synthesis (\texttt{13} single-cycle logic levels and \texttt{170 <= 189} \texttt{IOB}s in \texttt{CE}-gated \texttt{P4-AXIS}) and \texttt{320/320} \texttt{CE} parity, not commercial Vivado post-PAR \texttt{250 MHz} timing closure or KV260 rail watts (\texttt{measured\_j = None} for all \texttt{xck26} RTL claims).
 
 \textbf{Not claimed.} Not claimed here: physical KV260 bitstream loading or rail-metered joules; commercial Vivado post-PAR timing closure at \texttt{250 MHz}; silicon energy leadership over commercial ASICs; promotion of \texttt{ModelGenerated} outputs to \texttt{Deterministic}; or full \texttt{500}-instance \texttt{SWE-bench Verified} evaluation beyond the \texttt{40} real git-worktree evaluations across \texttt{django}, \texttt{pytest}, \texttt{requests}, and \texttt{sympy} in Claims LA-15 \& LA-20.
 
@@ -797,7 +819,7 @@ Gating all \texttt{81} \texttt{RAMB36E2} \texttt{ENARDEN} ports on \texttt{bus\_
 \texttt{LA-F5} & \texttt{Claim LA-5} (Byte speculation) & \texttt{run\_code\_corpus\_benchmark.py} yields \texttt{< 100.0\%} byte parity vs.\ greedy \texttt{Mamba3CodeLM} on \texttt{48} unseen prompts. \\
 \texttt{LA-F6} & \texttt{Claim LA-6} (\texttt{AirMoL} 14.3M) & \texttt{run\_air\_mol\_benchmark.py} under \texttt{F\_NOCACHE} fails \texttt{100\%} parity or reads more bytes than \texttt{AirLLM} 4-Bit \texttt{T=1}. \\
 \texttt{LA-F7} & \texttt{Claim LA-7} (2026 HF \texttt{AirMoL}) & \texttt{run\_hf\_lfm3\_air\_mol.py}, \texttt{run\_hf\_air\_mol\_pretrained.py}, or \texttt{run\_hf\_qwen35\_air\_mol.py} diverges by $\ge 1$ token. \\
-\texttt{LA-F8} & \texttt{Claim LA-8} (Full test suite) & \texttt{pytest -v} fails any of the \texttt{35} tests in \texttt{tests/}. \\
+\texttt{LA-F8} & \texttt{Claim LA-8} (Full test suite) & \texttt{pytest -v} fails any of the \texttt{38} tests in \texttt{tests/}. \\
 \texttt{LA-F9} & \texttt{Claim LA-9} (\texttt{8.5B/35B} MoE) & \texttt{run\_hf\_moe\_8b\_35b\_air\_mol.py} fails \texttt{100\%} token parity or reads more NVMe bytes than \texttt{AirLLM} / \texttt{Expert-AirLLM}. \\
 \texttt{LA-F10} & \texttt{Claim LA-10} (\texttt{Sub1Bit-LUT6}) & \texttt{run\_sub1bit\_lut\_benchmark.py} exceeds \texttt{1e-3} max error vs.\ dense \texttt{ITQ} binary matmul or fails \texttt{100\%} verified parity. \\
 \texttt{LA-F11} & \texttt{Claim LA-11} (48-Task Bakeoff) & \texttt{run\_frontier\_ai\_bakeoff.py} admits \texttt{> 0\%} broken commits or admits a stale Wave-1 skill under Wave-2 spec drift. \\
@@ -813,6 +835,8 @@ Gating all \texttt{81} \texttt{RAMB36E2} \texttt{ENARDEN} ports on \texttt{bus\_
 \texttt{LA-F21} & \texttt{Claim LA-21} (\texttt{120B} Hybrid MoE) & \texttt{run\_120b\_hybrid\_moe\_benchmark.py} fails \texttt{120B-A12B} local run, admits \texttt{> 0\%} broken commits, or misses W2 \texttt{.mol/}. \\
 \texttt{LA-F22} & \texttt{Claim LA-22} (\texttt{CE}-Gated \texttt{VCD} Power) & \texttt{verify\_ce\_gated\_vcd\_power.py} fails \texttt{320/320} \texttt{CE} parity, exceeds \texttt{189} \texttt{IOB}s, or gets \texttt{< 3.5$\times$} idle reduction. \\
 \texttt{LA-F23} & \texttt{Claim LA-23} (Rust \texttt{mol-agent-rs}) & \texttt{mol\_agent --self-test-bench} requires Python for \texttt{/v1} or \texttt{/mcp}, fails \texttt{--mcp-stdio}, or gets \texttt{< 10$\times$} speedup. \\
+\texttt{LA-F24} & \texttt{Claim LA-24} (\texttt{6}-Host + \texttt{Thor} Shunt) & \texttt{aggregate\_fleet\_measured\_j.py} mixes \texttt{measured\_j}/\texttt{reported\_j}, exceeds \texttt{1\%} \texttt{VIN} drift on \texttt{Thor}, or fails \texttt{4/4} \texttt{ABBA} on W2/W3/W5. \\
+\texttt{LA-F25} & \texttt{Claim LA-25} (\texttt{4}-Vendor \texttt{CubeCL} GPU) & \texttt{aggregate\_multivendor\_cubecl\_gpu.py} exceeds \texttt{1e-4} \texttt{FP32} error or gets \texttt{< 10$\times$} GPU speedup on Apple/AMD/NVIDIA/Intel. \\
 \bottomrule
 \end{longtable}
 }
@@ -882,7 +906,7 @@ All claims, Lean \texttt{4.36.0} proofs, RTL simulations, and CSV/JSON logs repr
 \noindent\fcolorbox{openieCodeBorder}{openieCodeBg}{%
   \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
     \footnotesize\ttfamily
-    PYTHONPATH=src pytest -v \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \# 35/35 tests pass (Lean4, RTL, AirMoL, CubeCL, 120B, SWE)\\
+    PYTHONPATH=src pytest -v \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \# 38/38 tests pass (Lean4, RTL, Shunt, 4-GPU, 120B, SWE)\\
     (cd proofs \&\& lake build) \&\& python3 scripts/verify\_lean\_proofs.py \# Claim LA-19 27 Lean 4.36.0 thms (0 sorry)\\
     python3 scripts/run\_multirepo\_swebench\_benchmark.py \# Claim LA-20 4-repo SWE-bench Verified (24 evals, 2.50x)\\
     python3 scripts/run\_120b\_hybrid\_moe\_benchmark.py \ \ \ \# Claim LA-21 Measured Nemotron-3-120B-A12B + Devstral-24B\\

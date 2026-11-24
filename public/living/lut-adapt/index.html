@@ -45,11 +45,11 @@
       <p class="author-line">David Charlot, Open Interface Engineering · Companion to <a href="/papers/lut-adapt/" style="color: var(--color-brand-cyan);">/papers/lut-adapt/</a></p>
 
       <div class="measurement-box">
-        <strong>Measurement grammar on this page.</strong> Every widget below stamps its numbers with an explicit honesty chip:
-        <span class="chip chip-meas">Measured (SW / NVMe I/O)</span> for Darwin <code>F_NOCACHE</code> bytes, RAM, and wall-clock runs from <code>artifacts/*.csv</code>;
-        <span class="chip chip-meas">Reported (OS / On-Chip reported_j)</span> for Apple M5 Max dual-channel <code>IOReport</code> GPU + <code>proc_pid_rusage</code> CPU joules;
-        <span class="chip chip-sim">Simulated (RTL)</span> for Yosys <code>0.71+</code> <code>xcup</code> + Verilator <code>5.054</code> netlist results; and
-        <span class="chip chip-est">Modelled (est_j)</span> for analytical cascade equations. <code>measured_j = None</code>; <code>board_metered = false</code>.
+        <strong>Measurement grammar on this page.</strong> Every widget below stamps its numbers with an explicit honesty chip and never sums across tiers:
+        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claim LA-24)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor);
+        <span class="chip chip-meas">Reported (OS / On-Chip reported_j)</span> for <code>RAPL</code>, <code>amdgpu PPT</code>, <code>NVML</code>, and Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters;
+        <span class="chip chip-sim">Simulated (RTL)</span> for Yosys <code>0.71+</code> <code>xcup</code> + Verilator <code>5.054</code> netlist results (<code>measured_j = None</code> on <code>xck26</code>); and
+        <span class="chip chip-est">Modelled (est_j)</span> for analytical cascade equations.
       </div>
 
       <!-- Widget 1: Proposition 1 Simon-Kadane + Downward Amortization -->
@@ -289,14 +289,14 @@
             <div class="s" id="sk-decls">58,683 declarations (--verified)</div>
           </div>
           <div class="metric-tile">
-            <div class="k">LutAdapt Theorems</div>
-            <div class="v">27 / 27</div>
-            <div class="s">5 zero-axiom · 23/27 choice-free</div>
+            <div class="k">Fleet Sandboxed Audit</div>
+            <div class="v">1,391 Thms</div>
+            <div class="s">4 OpenIE repos · Linux bwrap 6/6</div>
           </div>
           <div class="metric-tile">
             <div class="k">Forbidden Constructs</div>
             <div class="v">0 / 0 / 0</div>
-            <div class="s">0 sorry · 0 opaque · 0 ofReduceBool</div>
+            <div class="s">0 sorryAx · 0 opaque · 0 ofReduceBool</div>
           </div>
           <div class="metric-tile">
             <div class="k">Primary Vector Blocked</div>
@@ -306,9 +306,68 @@
         </div>
       </section>
 
+      <!-- Widget 6: Six-Host Physical Shunt Fleet & 4-Vendor GPU Explorer -->
+      <section id="la-diag-04" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-diag-04</code> · Six-Host Fleet (<code>measured_j</code> / <code>reported_j</code>) &amp; 4-Vendor GPU <code>CubeCL</code> Explorer (<code>Claims LA-24 &amp; LA-25</code>)</h2>
+          <span class="chip chip-meas" id="fl-chip">Physical DC Shunt measured_j (board_metered = true)</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Inspect counterbalanced <code>ABBA</code> downward-compilation measurements from <code>artifacts/mol_six_host_measured_j_fleet.csv</code> alongside single-source Rust <code>Burn 0.22.1 / CubeCL</code> GPU shader speedups across Apple, AMD, NVIDIA, and Intel from <code>artifacts/cubecl_four_vendor_gpu_parity.csv</code>.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Select Fleet Host (Claim LA-24)</span></label>
+            <select id="fl-host">
+              <option value="thor" selected>NVIDIA Jetson AGX Thor (aarch64 Linux · TI INA3221 + INA238 DC Shunt measured_j)</option>
+              <option value="strix">AMD Ryzen AI Max+ 395 (x86_64 Linux · RAPL pkg + amdgpu PPT reported_j)</option>
+              <option value="asus">Intel Core i9-13900H (x86_64 Linux · RAPL core + pkg reported_j)</option>
+              <option value="m3u">Apple M3 Ultra 96 GB (arm64 macOS · Darwin L3 ri_energy_nj reported_j)</option>
+              <option value="m5m">Apple M5 Max 128 GB (arm64 macOS · Darwin L3 ri_energy_nj reported_j)</option>
+              <option value="win11">Windows 11 + RTX 2060 (x86_64 NT · QueryProcessCycleTime + NVML)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label><span>Select CubeCL GPU Silicon Vendor (Claim LA-25)</span></label>
+            <select id="fl-gpu">
+              <option value="amd" selected>AMD Radeon 8060S (gfx1151 RDNA 3.5 · CubeCL_Vulkan_SPIRV)</option>
+              <option value="nvidia">NVIDIA GeForce RTX 4050 (sm_89 Ada · CubeCL_Vulkan_SPIRV)</option>
+              <option value="apple">Apple M5 Max 40-Core GPU (arm64 · CubeCL_Metal_GPU MSL)</option>
+              <option value="intel">Intel Iris Xe Graphics (RPL-P · CubeCL_Vulkan_SPIRV)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">W2 Sub1Bit-LUT6 vs MAC</div>
+            <div class="v" id="fl-w2">3.74× J</div>
+            <div class="s" id="fl-w2-sub">7.76 vs 28.98 J CPU shunt (3.71× VIN)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">W3 Expert-AirMoL vs Dense</div>
+            <div class="v" id="fl-w3">34.21× J</div>
+            <div class="s" id="fl-w3-sub">0.98 vs 33.36 J CPU shunt (33.3× VIN)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">W5 Prop. 1 Compiled vs Cold</div>
+            <div class="v" id="fl-w5">10.94× J</div>
+            <div class="s" id="fl-w5-sub">ΔT* = 0.108 ep (178.6 vs 1,735 µJ)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k" id="fl-gpu-k">Radeon 8060S #[cube] Speedup</div>
+            <div class="v" id="fl-gpu-v" style="color: var(--color-brand-cyan);">328.1× / 16.7×</div>
+            <div class="s" id="fl-gpu-sub">0.64 ms DeltaNet (32.2 mJ PPT) · err ≤ 1.5e-7</div>
+          </div>
+        </div>
+      </section>
+
       <!-- Static Vector Diagrams Gallery -->
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/six-host-measured-j-and-multivendor-gpu.svg" alt="Physical DC Shunt measured_j, Four-Vendor CubeCL GPUs, and Sandboxed 6-Kernel Proof Audit">
+          <figcaption><strong>Figure 7.</strong> Fleet-wide empirical measurements (<code>Claims LA-24, LA-25, LA-19</code>): <code>NVIDIA Jetson AGX Thor</code> physical <code>TI INA3221</code> + <code>INA238</code> <code>measured_j</code> (<code>board_metered = true</code>), four-vendor <code>CubeCL</code> GPU speedups (Apple, AMD, NVIDIA, Intel), six-host fleet matrix, and four-repository Linux <code>bwrap</code> 6-kernel audit across <code>1,391</code> theorems.</figcaption>
+        </figure>
         <figure class="fig">
           <img src="/figures/lut-adapt/mol-downward-cascade.svg" alt="Four-rung Mixture of Limits downward compilation cascade">
           <figcaption><strong>Figure 1.</strong> Downward compilation across a four-rung Mixture of Limits cascade. Design diagram, not a board power measurement.</figcaption>
@@ -567,6 +626,41 @@
       }
       sel.addEventListener('change', updSk);
       updSk();
+    })();
+
+    // Widget 6: Six-Host Fleet & 4-Vendor GPU Explorer
+    (function(){
+      var hosts = {
+        thor:  { chip: 'Physical DC Shunt measured_j (board_metered = true)', w2: '3.74× J', w2s: '7.76 vs 28.98 J CPU shunt (3.71× VIN)', w3: '34.21× J', w3s: '0.98 vs 33.36 J CPU shunt (33.3× VIN)', w5: '10.94× J', w5s: 'ΔT* = 0.108 ep (178.6 vs 1,735 µJ)' },
+        strix: { chip: 'Linux RAPL pkg + amdgpu PPT reported_j (board_metered = false)', w2: '6.75× J', w2s: '21.66 vs 146.28 J RAPL pkg (6.78× ms)', w3: '31.05× J', w3s: '4.27 vs 132.66 J RAPL pkg (34.4× ms)', w5: '10.88× J', w5s: '3.31 vs 36.02 J RAPL pkg (762× wake cut)' },
+        asus:  { chip: 'Linux RAPL core + pkg reported_j (board_metered = false)', w2: '3.84× J', w2s: '9.29 vs 35.68 J RAPL core (4.09× ms)', w3: '33.57× J', w3s: '1.42 vs 47.55 J RAPL core (34.8× ms)', w5: '11.50× J', w5s: '1.41 vs 16.21 J RAPL core (18.8× daemon cut)' },
+        m3u:   { chip: 'Darwin L3 ri_energy_nj reported_j (board_metered = false)', w2: '2.70× J', w2s: '2.19 vs 5.90 J L3 CPU (5.23× ms)', w3: '35.22× J', w3s: '0.13 vs 4.71 J L3 CPU (34.6× ms)', w5: '13.05× J', w5s: '0.26 vs 3.35 J L3 CPU (194.8× daemon cut)' },
+        m5m:   { chip: 'Darwin L3 ri_energy_nj reported_j (board_metered = false)', w2: '3.41× J', w2s: '1.88 vs 6.40 J L3 CPU (5.42× ms)', w3: '36.77× J', w3s: '0.15 vs 5.46 J L3 CPU (35.4× ms)', w5: '11.13× J', w5s: '0.35 vs 3.94 J L3 CPU (110.4× daemon cut)' },
+        win11: { chip: 'Win32 QueryProcessCycleTime + NVML (board_metered = false)', w2: '5.92× ms', w2s: '735.6 vs 4,355.7 ms (5.90× fewer cycles)', w3: '34.39× ms', w3s: '97.3 vs 3,346.0 ms (33.0× fewer cycles)', w5: '12.65× ms', w5s: '136.5 vs 1,725.6 ms (530× wake cut)' }
+      };
+      var gpus = {
+        amd:    { k: 'Radeon 8060S #[cube] Speedup', v: '328.1× / 16.7×', s: '0.64 ms DeltaNet (32.2 mJ PPT) · err ≤ 1.5e-7' },
+        nvidia: { k: 'GeForce RTX 4050 #[cube] Speedup', v: '265.7× / 59.3×', s: '1.44 ms DeltaNet / 0.94 ms MoE (55.6 mJ NVML)' },
+        apple:  { k: 'Apple M5 Max Metal #[cube] Speedup', v: '45.7× / 41.7×', s: '0.66 ms Q4 MoE / 3.72 ms DeltaNet · err ≤ 1.8e-7' },
+        intel:  { k: 'Intel Iris Xe #[cube] Speedup', v: '16.2× / 11.7×', s: '4.62 ms Q4 MoE (2.7× < CPU RAPL pkg) · err ≤ 1.8e-7' }
+      };
+      var hSel = document.getElementById('fl-host'), gSel = document.getElementById('fl-gpu');
+      function updFl() {
+        var h = hosts[hSel.value], g = gpus[gSel.value];
+        document.getElementById('fl-chip').textContent = h.chip;
+        document.getElementById('fl-w2').textContent = h.w2;
+        document.getElementById('fl-w2-sub').textContent = h.w2s;
+        document.getElementById('fl-w3').textContent = h.w3;
+        document.getElementById('fl-w3-sub').textContent = h.w3s;
+        document.getElementById('fl-w5').textContent = h.w5;
+        document.getElementById('fl-w5-sub').textContent = h.w5s;
+        document.getElementById('fl-gpu-k').textContent = g.k;
+        document.getElementById('fl-gpu-v').textContent = g.v;
+        document.getElementById('fl-gpu-sub').textContent = g.s;
+      }
+      hSel.addEventListener('change', updFl);
+      gSel.addEventListener('change', updFl);
+      updFl();
     })();
 
     // Lightbox for SVGs
