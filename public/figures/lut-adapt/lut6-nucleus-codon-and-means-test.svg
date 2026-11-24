@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="p30-t p30-d">
+  <title id="p30-t">4 KB LUT6 Bootstrap Nucleus, Wobble Harmonics, DiffLUT-Net Means Test, and Nov 2026 Looped Models</title>
+  <desc id="p30-d">Data-driven summary of Phase 30: #![no_std] Rust 1.100.0 lut6-core physical DC shunt measured_j on NVIDIA Jetson AGX Thor and live DWT cycles on Alif Ensemble E3 (OpenMV-AE3 Cortex-M55); 64-codon biological Operon ABI with 2-bit wobble Walsh-Hadamard high-harmonic vanishing proved across 36 theorems in 6 Lean 4.36.0 kernels; closed-form multilinear DiffLUT-Net 64.06% LUT6 gate pruning and Dual-Reality evaluation; and October-November 2026 open-weight looped/hybrid models (Inkling-2-Mini, Nemotron-Labs-Dory1.0-4B, LFM2.5-24B-A2B, Nemotron-3.5-Bolt-E4B) under uint64 LUT6 burst speculation and Rung-6 compilation.</desc>
+  <defs>
+    <linearGradient id="bg30" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="55%" stop-color="#0b1322"/>
+      <stop offset="100%" stop-color="#08151e"/>
+    </linearGradient>
+    <linearGradient id="g-emerald" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="g-rose" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <linearGradient id="g-indigo" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="g-amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="820" fill="url(#bg30)"/>
+  <text x="34" y="36" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="19.5" font-weight="700">4 KB LUT6 Bootstrap Nucleus, Wobble Harmonics, DiffLUT-Net Means Test &amp; Nov 2026 Looped Models</text>
+  <text x="34" y="56" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.6">Claims LA-19 (36 Thms), LA-26..LA-29  |  Rust 1.100.0 #![no_std] lut6-core  |  Thor Shunt measured_j != Host reported_j != Bare-Metal Cycles</text>
+  <rect x="32" y="72" width="560" height="352" rx="12" fill="#0f172a" stroke="#10b981" stroke-opacity="0.55" stroke-width="1.4"/>
+  <rect x="46" y="84" width="144" height="21" rx="10.5" fill="#064e3b" stroke="#10b981"/>
+  <text x="118" y="98" text-anchor="middle" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="700">Shunt + Live MCU</text>
+  <text x="200" y="99" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">A. Thor Shunt measured_j &amp; Live Alif E3 Cortex-M55</text>
+  <text x="46" y="119" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">Thor TI INA3221 VDD_CPU_SOC_MSS (board_metered=true)  +  USB OpenMV-AE3 @ 400 MHz DWT</text>
+  <text x="46" y="140" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.2" font-weight="600">1. Jetson AGX Thor Physical DC Shunt (measured_j per decision):</text>
+  <text x="210" y="164" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">INT8 Micro-MLP (64-&gt;32-&gt;16)</text>
+  <rect x="218" y="154" width="240.0" height="13" rx="3" fill="url(#g-rose)"/>
+  <text x="465.0" y="164" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">10680.1 nJ (1.0x base)</text>
+  <text x="210" y="192" text-anchor="end" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">Nucleus Wobble Overlay Hit</text>
+  <rect x="218" y="182" width="71.9" height="13" rx="3" fill="url(#g-indigo)"/>
+  <text x="296.9" y="192" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">3199.1 nJ (3.3x CpJ)</text>
+  <text x="210" y="220" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">Nucleus Innate Rung-6 Hit</text>
+  <rect x="218" y="210" width="44.7" height="13" rx="3" fill="url(#g-emerald)"/>
+  <text x="269.7" y="220" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">1987.6 nJ (5.4x CpJ)</text>
+  <text x="210" y="248" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">Vertical Bit-Sliced Batch-64</text>
+  <rect x="218" y="238" width="6.0" height="13" rx="3" fill="url(#g-emerald)"/>
+  <text x="231.0" y="248" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">125.2 nJ (85.3x CpJ)</text>
+  <text x="46" y="280" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.2" font-weight="600">2. Attached Alif Ensemble E3 (AE302F80F55D5AE Cortex-M55 @ 400 MHz):</text>
+  <text x="54" y="296" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">INT8 Micro-MLP      </text>
+  <text x="242" y="296" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">23663.5 cyc</text>
+  <text x="367" y="296" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">59.17 us (&gt;10 us)</text>
+  <text x="574" y="296" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">1.0x</text>
+  <text x="54" y="317" fill="#a5f3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">LUT6 Wobble Overlay </text>
+  <text x="242" y="317" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">1174.2 cyc</text>
+  <text x="367" y="317" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">2.94 us (&lt;10 us)</text>
+  <text x="574" y="317" text-anchor="end" fill="#a5f3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">20.2x</text>
+  <text x="54" y="338" fill="#a5f3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">LUT6 Scalar Innate  </text>
+  <text x="242" y="338" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">671.9 cyc</text>
+  <text x="367" y="338" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">1.69 us (&lt;10 us)</text>
+  <text x="574" y="338" text-anchor="end" fill="#a5f3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">35.2x</text>
+  <text x="54" y="359" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">LUT6 Bit-Sliced B32 </text>
+  <text x="242" y="359" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">12.18 cyc</text>
+  <text x="367" y="359" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">38.1 ns (&lt;10 us)</text>
+  <text x="574" y="359" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">1943x</text>
+  <rect x="46" y="388" width="532" height="24" rx="6" fill="#091e1a" stroke="#059669" stroke-opacity="0.55"/>
+  <text x="312" y="404" text-anchor="middle" fill="#a7f3d0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.5">ELFs: Alif M55 .text=30496B .dtcm=8192B | Pico M0+ .text=27520B .sram=8192B | Thor N_crit=133.15 calls</text>
+  <rect x="608" y="72" width="560" height="352" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-opacity="0.55" stroke-width="1.4"/>
+  <rect x="622" y="84" width="146" height="21" rx="10.5" fill="#0c4a6e" stroke="#38bdf8"/>
+  <text x="695" y="98" text-anchor="middle" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="700">6/6 Lean Kernels</text>
+  <text x="778" y="99" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">B. 64-Codon Operon, Wobble FWHT &amp; 36-Thm Proof</text>
+  <text x="622" y="119" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">Parseval sum_S f_hat(S)^2 = 4096  |  con-leche &amp; con-ron --verified (58729 decls)</text>
+  <text x="622" y="141" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.2" font-weight="600">1. Boolean Fourier High-Harmonic Noise (|S| &gt;= 5 out of 4,096):</text>
+  <text x="808" y="166" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">6-Bit XOR Parity (0x6996...)</text>
+  <rect x="816" y="156" width="190.0" height="13" rx="3" fill="url(#g-rose)"/>
+  <text x="1013.0" y="166" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">100.0% brittle noise (REJECTED)</text>
+  <text x="808" y="196" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">1-Hot Point Mask (1u64 &lt;&lt; c)</text>
+  <rect x="816" y="186" width="18.0" height="13" rx="3" fill="url(#g-amber)"/>
+  <text x="841.0" y="196" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">28 / 252 AC leak = 11.1% (REJECTED)</text>
+  <text x="808" y="226" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">2-Bit Wobble Codon (0x0F&lt;&lt;4q)</text>
+  <rect x="816" y="216" width="4.0" height="13" rx="3" fill="url(#g-emerald)"/>
+  <text x="827.0" y="226" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">EXACT 0 across all 64 codons (PROVED)</text>
+  <text x="622" y="258" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.2" font-weight="600">2. 16 KB Self-Refining Nucleus &amp; 64-Codon Operon ABI (u64 -&gt; u64):</text>
+  <rect x="622" y="268" width="172" height="66" rx="8" fill="#131f35" stroke="#10b981" stroke-width="1.2"/>
+  <text x="708" y="287" text-anchor="middle" fill="#10b981" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">#1 SEED_KNOWLEDGE</text>
+  <text x="708" y="305" text-anchor="middle" fill="#f1f5f9" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="600">4 KB MRAM/ROM</text>
+  <text x="708" y="322" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">Innate 0x08..0x0B -&gt; 0xA1</text>
+  <rect x="802" y="268" width="172" height="66" rx="8" fill="#131f35" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="888" y="287" text-anchor="middle" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">#2 SEED_AGENCY</text>
+  <text x="888" y="305" text-anchor="middle" fill="#f1f5f9" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="600">4 KB Operon FSM</text>
+  <text x="888" y="322" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">00 Stop | 10 Splice | 20 Tool | 3C</text>
+  <rect x="982" y="268" width="172" height="66" rx="8" fill="#131f35" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="1068" y="287" text-anchor="middle" fill="#a78bfa" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">#3 SURGICAL OVERLAY</text>
+  <text x="1068" y="305" text-anchor="middle" fill="#f1f5f9" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="600">2 x 4 KB SRAM/DTCM</text>
+  <text x="1068" y="322" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">FWHT &lt;=16 &amp; 100% Anchor Gate</text>
+  <text x="622" y="356" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">Yosys 0.71+ abc -lut 6 Miter: 64/64 vectors PASS (CRC32 0xd1cc025a, 4,096 B)</text>
+  <text x="622" y="374" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">Lean 4.36.0 Modules: Cascade(7) + Benes(7) + Minterm(7) + Conformal(6) + NucleusCodon(9)</text>
+  <rect x="622" y="388" width="532" height="24" rx="6" fill="#0b1d33" stroke="#0284c7" stroke-opacity="0.55"/>
+  <text x="888" y="404" text-anchor="middle" fill="#bae6fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2">36/36 Theorems Verified Across 6 Kernels (Darwin + Linux bwrap)  |  0 sorryAx  |  0 ofReduceBool</text>
+  <rect x="32" y="440" width="560" height="356" rx="12" fill="#0f172a" stroke="#f59e0b" stroke-opacity="0.55" stroke-width="1.4"/>
+  <rect x="46" y="452" width="150" height="21" rx="10.5" fill="#451a03" stroke="#f59e0b"/>
+  <text x="121" y="466" text-anchor="middle" fill="#fcd34d" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">arXiv:2609.09254</text>
+  <text x="206" y="467" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">C. DiffLUT-Net Pruning &amp; Dual-Reality Means Test</text>
+  <text x="46" y="487" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">Closed-form 64-entry multilinear relaxation + ST port lock-in + AST/Hadamard canonicalizer</text>
+  <text x="48" y="510" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">Regime</text>
+  <text x="250" y="510" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">LUT6s</text>
+  <text x="318" y="510" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">NoisyHit</text>
+  <text x="388" y="510" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">Corrupt</text>
+  <text x="460" y="510" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">OOD_Abst</text>
+  <text x="576" y="510" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">Verdict</text>
+  <line x1="46" y1="516" x2="578" y2="516" stroke="#334155" stroke-width="1"/>
+  <text x="48" y="535" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">Uncanonicalized 1-Hot</text>
+  <text x="250" y="535" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">64</text>
+  <text x="318" y="535" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">0.0%</text>
+  <text x="388" y="535" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">0.0%</text>
+  <text x="460" y="535" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">100.0%</text>
+  <text x="576" y="535" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7" font-weight="700">KILLED (&lt;50%)</text>
+  <text x="48" y="559" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">Finite-Diff DWN (Unpruned)</text>
+  <text x="250" y="559" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">64</text>
+  <text x="318" y="559" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">95.0%</text>
+  <text x="388" y="559" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">0.0%</text>
+  <text x="460" y="559" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">100.0%</text>
+  <text x="576" y="559" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7" font-weight="700">PASS (64 LUTs)</text>
+  <text x="48" y="583" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">DiffLUT-Net Pruned (Ours)</text>
+  <text x="250" y="583" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">23</text>
+  <text x="318" y="583" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">95.0%</text>
+  <text x="388" y="583" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">0.0%</text>
+  <text x="460" y="583" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">100.0%</text>
+  <text x="576" y="583" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7" font-weight="700">PASS (-64.1%)</text>
+  <text x="48" y="607" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">Nucleus Wobble Crystal</text>
+  <text x="250" y="607" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">16</text>
+  <text x="318" y="607" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">95.0%</text>
+  <text x="388" y="607" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">0.0%</text>
+  <text x="460" y="607" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">100.0%</text>
+  <text x="576" y="607" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7" font-weight="700">PASS (16 LUTs)</text>
+  <text x="46" y="644" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.2" font-weight="600">4-Part Thermodynamic Means Test (Admission &amp; Eviction Audit):</text>
+  <text x="50" y="664" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">1. Verification Purity (delta = 1.0):</text>
+  <text x="264" y="664" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">Unverified guess (delta=0.82) -&gt; REFUSED</text>
+  <text x="50" y="686" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">2. Amortization (N &gt; N_crit):</text>
+  <text x="264" y="686" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">spi_anomaly_guard (N_crit=2.28 &lt; 500) -&gt; ADMITTED (+9.2 J)</text>
+  <text x="50" y="708" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">3. Low Behavioral Freedom (H &lt; 1.25b):</text>
+  <text x="264" y="708" fill="#fcd34d" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">open_ended_essay (H=4.85 bits) -&gt; REFUSED (stays Rung 5)</text>
+  <text x="50" y="730" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">4. Kill-Budget Eviction (rej &lt; 3):</text>
+  <text x="264" y="730" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">drifted_stale_overlay (rej=3) -&gt; EVICTED to immutable seed</text>
+  <rect x="46" y="760" width="532" height="24" rx="6" fill="#271705" stroke="#d97706" stroke-opacity="0.55"/>
+  <text x="312" y="776" text-anchor="middle" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2">DiffLUT-Net cuts active LUT6s 64 -&gt; 23 (-64.06%)  =&gt;  2.78x more skills fit in RP2040 264 KB SRAM</text>
+  <rect x="608" y="440" width="560" height="356" rx="12" fill="#0f172a" stroke="#818cf8" stroke-opacity="0.55" stroke-width="1.4"/>
+  <rect x="622" y="452" width="152" height="21" rx="10.5" fill="#1e1b4b" stroke="#818cf8"/>
+  <text x="698" y="466" text-anchor="middle" fill="#c7d2fe" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">Oct-Nov 2026 Drops</text>
+  <text x="784" y="467" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">D. Looped &amp; Hybrid Frontier + LUT6 Speculation</text>
+  <text x="622" y="487" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">Apple M5 Max (128 GB Unified, Darwin L3 reported_j)  |  100% Exact Greedy Token Parity</text>
+  <rect x="622" y="504" width="532" height="54" rx="8" fill="#131c31" stroke="#334155" stroke-width="1"/>
+  <text x="632" y="522" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.3" font-weight="700">Nemotron-Labs-Dory1.0-4B (2026-10) — Looped nGPT (36 blocks, mid-20 x 2 = 56 passes)</text>
+  <text x="632" y="540" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">u64 Pack: 51/64b  |  Passes: 1344-&gt;336 (4.00x)  |  Speedup: 3.95x  |  Rung-6 CpJ: 1.1e+10x</text>
+  <text x="632" y="553" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">Verified greedy sample: &quot; 0xFF\n}\n\nfn eval_lut8_gate(init_mask: u64, lut_addr:&quot;</text>
+  <rect x="622" y="566" width="532" height="54" rx="8" fill="#131c31" stroke="#334155" stroke-width="1"/>
+  <text x="632" y="584" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.3" font-weight="700">LFM2.5-24B-A2B (2026-10) — Liquid Hybrid 64-Exp MoE (24B/A2B, 30 Conv + 10 GQA)</text>
+  <text x="632" y="602" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">u64 Pack: 51/64b  |  Passes: 960-&gt;240 (4.00x)  |  Speedup: 4.00x  |  Rung-6 CpJ: 3.7e+08x</text>
+  <text x="632" y="615" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">Metal GPU (-ngl 99, temp=0, 24 greedy BPE tokens, 4.94 J reported_j)</text>
+  <rect x="622" y="628" width="532" height="54" rx="8" fill="#131c31" stroke="#334155" stroke-width="1"/>
+  <text x="632" y="646" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.3" font-weight="700">Nemotron-3.5-Bolt-E4B (2026-10) — Compressed Edge Agent Router (E4B Q4_K_XL)</text>
+  <text x="632" y="664" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">u64 Pack: 54/64b  |  Passes: 816-&gt;204 (4.00x)  |  Speedup: 4.00x  |  Rung-6 CpJ: 3.6e+08x</text>
+  <text x="632" y="677" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">Metal GPU (-ngl 99, temp=0, 24 greedy BPE tokens, 4.81 J reported_j)</text>
+  <rect x="622" y="690" width="532" height="54" rx="8" fill="#131c31" stroke="#334155" stroke-width="1"/>
+  <text x="632" y="708" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.3" font-weight="700">Inkling-2-Mini (2026-11-20) — Looped 128-Exp MoE (26.4B/A3.4B, mid-12 x 3 = 48 passes)</text>
+  <text x="632" y="726" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">u64 Pack: 54/64b  |  Passes: 576-&gt;144 (4.00x)  |  Speedup: 3.52x  |  Rung-6 CpJ: 1.6e+11x</text>
+  <text x="632" y="739" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">Verified greedy sample: &quot; 1\n}\n\nfn eval_lut6_gate&quot;</text>
+  <rect x="622" y="760" width="532" height="24" rx="6" fill="#17153b" stroke="#6366f1" stroke-opacity="0.55"/>
+  <text x="888" y="776" text-anchor="middle" fill="#c7d2fe" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">Looped middle-layer models (Inkling-2-Mini 48-pass, Dory-4B 56-pass) save 3x-4x sweeps per u64 LUT6 burst</text>
+</svg>

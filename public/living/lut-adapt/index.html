@@ -46,9 +46,9 @@
 
       <div class="measurement-box">
         <strong>Measurement grammar on this page.</strong> Every widget below stamps its numbers with an explicit honesty chip and never sums across tiers:
-        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claim LA-24)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor);
-        <span class="chip chip-meas">Reported (OS / On-Chip reported_j)</span> for <code>RAPL</code>, <code>amdgpu PPT</code>, <code>NVML</code>, and Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters;
-        <span class="chip chip-sim">Simulated (RTL)</span> for Yosys <code>0.71+</code> <code>xcup</code> + Verilator <code>5.054</code> netlist results (<code>measured_j = None</code> on <code>xck26</code>); and
+        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24 &amp; LA-28)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>125.23 nJ/op</code> = <code>85.28×</code> <code>CpJ</code> on <code>lut6-core</code>);
+        <span class="chip chip-meas">Reported &amp; Bare-Metal Cycles (reported_j / DWT)</span> for <code>RAPL</code>, <code>amdgpu PPT</code>, <code>NVML</code>, Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters, and live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>board_metered = false</code>);
+        <span class="chip chip-sim">Simulated (RTL &amp; Miter)</span> for Yosys <code>0.71+</code> <code>xcup</code> + <code>abc -lut 6</code> 64/64 miter + Verilator <code>5.054</code> netlist results (<code>measured_j = None</code> on <code>xck26</code>); and
         <span class="chip chip-est">Modelled (est_j)</span> for analytical cascade equations.
       </div>
 
@@ -365,8 +365,12 @@
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
         <figure class="fig">
+          <img src="/figures/lut-adapt/lut6-nucleus-codon-and-means-test.svg" alt="4 KB LUT6 Bootstrap Nucleus, Wobble Harmonics, DiffLUT-Net Means Test, and Nov 2026 Looped Models">
+          <figcaption><strong>Figure 8.</strong> Phase 30 hardware, formal, and looped-frontier measurements (<code>Claims LA-19 [36 thms], LA-26..LA-29</code>): <code>Jetson AGX Thor</code> physical DC shunt <code>measured_j</code> (<code>85.28×</code> bit-sliced <code>CpJ</code>, <code>board_metered = true</code>), live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>1,943×</code>), 64-codon Operon + 2-bit wobble FWHT noise vanishing, closed-form <code>DiffLUT-Net</code> <code>-64.06%</code> pruning, and Oct–Nov 2026 looped models (<code>Inkling-2-Mini</code>, <code>Dory1.0-4B</code>).</figcaption>
+        </figure>
+        <figure class="fig">
           <img src="/figures/lut-adapt/six-host-measured-j-and-multivendor-gpu.svg" alt="Physical DC Shunt measured_j, Four-Vendor CubeCL GPUs, and Sandboxed 6-Kernel Proof Audit">
-          <figcaption><strong>Figure 7.</strong> Fleet-wide empirical measurements (<code>Claims LA-24, LA-25, LA-19</code>): <code>NVIDIA Jetson AGX Thor</code> physical <code>TI INA3221</code> + <code>INA238</code> <code>measured_j</code> (<code>board_metered = true</code>), four-vendor <code>CubeCL</code> GPU speedups (Apple, AMD, NVIDIA, Intel), six-host fleet matrix, and four-repository Linux <code>bwrap</code> 6-kernel audit across <code>1,391</code> theorems.</figcaption>
+          <figcaption><strong>Figure 7.</strong> Fleet-wide empirical measurements (<code>Claims LA-24, LA-25, LA-19</code>): <code>NVIDIA Jetson AGX Thor</code> physical <code>TI INA3221</code> + <code>INA238</code> <code>measured_j</code> (<code>board_metered = true</code>), four-vendor <code>CubeCL</code> GPU speedups (Apple, AMD, NVIDIA, Intel), six-host fleet matrix, and four-repository Linux <code>bwrap</code> 6-kernel audit.</figcaption>
         </figure>
         <figure class="fig">
           <img src="/figures/lut-adapt/mol-downward-cascade.svg" alt="Four-rung Mixture of Limits downward compilation cascade">
@@ -610,12 +614,12 @@
     // Widget 5: Six-Kernel Paranoid Proof Audit Explorer
     (function(){
       var sk = {
-        conleche: { decls: '58,683 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
-        conron:   { decls: '58,683 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
-        lean4lean:{ decls: '58,685 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
-        nanoda:   { decls: '58,685 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
-        paranoid: { decls: '58,685 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
-        default:  { decls: '27 LutAdapt thms (1.04 s build)', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + #print axioms enforced' }
+        conleche: { decls: '58,729 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
+        conron:   { decls: '58,729 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
+        lean4lean:{ decls: '58,731 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
+        nanoda:   { decls: '58,731 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
+        paranoid: { decls: '58,731 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
+        default:  { decls: '36 LutAdapt thms (5 modules)', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + #print axioms enforced' }
       };
       var sel = document.getElementById('sk-select');
       function updSk() {
